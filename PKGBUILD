@@ -8,8 +8,8 @@
 # Contributor: Ike Devolder <ike.devolder+gmail+com>
 
 pkgname=nvidia-390xx
-pkgver=390.141
-pkgrel=3
+pkgver=390.143
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux, 390xx legacy branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"

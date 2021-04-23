@@ -1,20 +1,20 @@
 pkgbase = nvidia-390xx
 	pkgdesc = NVIDIA drivers for linux, 390xx legacy branch
-	pkgver = 390.141
-	pkgrel = 3
+	pkgver = 390.143
+	pkgrel = 1
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
-	makedepends = nvidia-390xx-utils=390.141
+	makedepends = nvidia-390xx-utils=390.143
 	makedepends = libglvnd
 	makedepends = linux-headers
-	makedepends = nvidia-390xx-dkms=390.141
+	makedepends = nvidia-390xx-dkms=390.143
 	provides = NVIDIA-MODULE
 	conflicts = nvidia
 	options = !strip
 
 pkgname = nvidia-390xx
 	depends = linux
-	depends = nvidia-390xx-utils=390.141
+	depends = nvidia-390xx-utils=390.143
 	depends = libglvnd
 
