@@ -2,7 +2,7 @@
 pkgname=openhantek6022
 _gitname=OpenHantek6022
 pkgver=3.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A DSO software for Hantek USB digital signal oscilloscopes 6022BE/BL."
 arch=('i686' 'x86_64')
 url="https://github.com/OpenHantek/OpenHantek6022"
@@ -13,12 +13,6 @@ conflicts=(openhantek6022-git openhantek openhantek-git)
 provides=(openhantek6022)
 source=("$_gitname::git+https://github.com/OpenHantek/OpenHantek6022.git")
 md5sums=('SKIP')
-
-prepare() {
-    cd $_gitname
-    # change the udev directory to match arch defaults
-    sed -i 's/\/lib\/udev\/rules.d\//\/usr\/lib\/udev\/rules.d\//g' CMakeLists.txt
-}
 
 pkgver() {
     curl --silent https://api.github.com/repos/OpenHantek/OpenHantek6022/releases/latest | grep -Po '"tag_name": "\K.*?(?=")'
