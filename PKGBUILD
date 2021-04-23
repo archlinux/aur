@@ -1,7 +1,7 @@
 # Maintainer:  <yatsen71@oarchbox1>
 pkgname=zy-player-bin
 _pkgname=zy-player
-pkgver=2.8.2
+pkgver=2.8.3
 _pkgver=$(echo $pkgver | sed 's/\./-/3')
 pkgrel=1
 epoch=
@@ -25,7 +25,7 @@ noextract=()
 options=(!strip)
 source=("https://github.com/Hunlongyu/ZY-Player/releases/download/v${_pkgver}/ZY-Player-${_pkgver}.AppImage"
         'zy-player.sh')
-sha256sums=('196088318afbacf2e22c29946510ff3d6b211428679b24a2ae3770ade478bcc0'
+sha256sums=('fc6b6d5fd6592cb2d91f2409f14fcd3710acaf300ee623a86e2be53033d1c5bb'
             '4ef23f78868eaa861b979039102529779d6714e5faa1cf865ded1da8b3b83baf')
 
 _filename=ZY-Player-${_pkgver}.AppImage
