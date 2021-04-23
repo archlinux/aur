@@ -1,7 +1,7 @@
 pkgbase = budgie-clipboard-applet
 	pkgdesc = A clipboard manager for Budgie.
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/prateekmedia/budgie-clipboard-applet
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = budgie-clipboard-applet
 	makedepends = vala
 	depends = budgie-desktop
 	depends = libpeas
+	optdepends = xdotool: For pasting text in active window.
 	source = budgie-clipboard-applet-1.1.0.tar.xz::https://github.com/prateekmedia/budgie-clipboard-applet/archive/refs/tags/v1.1.0.tar.gz
 	sha256sums = b638afa717bc3ac0949f4f8b8894e73951046cded6879a51d14e0e3e7c9c1655
 

@@ -5,12 +5,13 @@
 #
 pkgname="budgie-clipboard-applet"
 pkgver="1.1.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A clipboard manager for Budgie."
 arch=('i686' 'x86_64')
 url="https://github.com/prateekmedia/${pkgname}"
 license=('GPL3')
 depends=('budgie-desktop' 'libpeas')
+optdepends=('xdotool: For pasting text in active window.')
 makedepends=('gobject-introspection' 'meson' 'ninja' 'vala')
 
 source=("${pkgname}-${pkgver}.tar.xz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
