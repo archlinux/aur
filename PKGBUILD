@@ -1,26 +1,18 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=lmdbxx
-pkgver=0.9.14.0+25+g0b43ca8
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="C++11 wrapper for the LMDB database library"
+pkgdesc="C++17 wrapper for the LMDB embedded B+ tree database library"
 arch=('any')
-url="http://lmdbxx.sourceforge.net/"
+url="https://github.com/hoytech/lmdbxx"
 license=('custom:Public Domain')
 depends=('lmdb')
-makedepends=('git')
-#source=("https://github.com/drycpp/lmdbxx/releases/download/$pkgver/lmdbxx-$pkgver.tar.xz")
-_commit=0b43ca87d8cfabba392dfe884eb1edb83874de02
-source=("git+https://github.com/drycpp/lmdbxx.git#commit=$_commit")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd $pkgname
-  git describe --tags | sed 's/-/+/g'
-}
+source=("https://github.com/hoytech/lmdbxx/archive/$pkgver/lmdbxx-$pkgver.tar.gz")
+sha512sums=('54f6c4863273b4de8aed6bc19f353c7a66d8ae633198e9784c55cea8e54460e4030ebe45e91a7c820aade084933f21cd4193ef8c04bb2aef11bf252281404171')
 
 package() {
-    cd $pkgname
+    cd "$pkgname-$pkgver"
     make PREFIX=/usr DESTDIR="$pkgdir/" install
     install -m644 -D UNLICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
