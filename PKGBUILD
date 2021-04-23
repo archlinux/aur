@@ -2,25 +2,36 @@
 # Contributor: Hugo Courtial <hugo [at] courtial [not colon] me>
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
+_openfx_supportext_commit=bde8d6a2b119ca35e9229d8af18cda2f57114a20
+
 pkgname=openfx-misc
-pkgver=2.3.15
-_pkgname="${pkgname}-Natron-${pkgver}"
-pkgrel=2
-arch=('i686' 'pentium4' 'x86_64')
+pkgver=2.4.0
+pkgrel=1
+arch=('x86_64')
 pkgdesc="Miscellaneous OpenFX plugins"
 url="https://github.com/NatronGitHub/openfx-misc"
 license=('GPL')
 depends=('libgl')
 makedepends=('openmp')
 optdepends=('natron-plugins-git: More presets for the Shadertoy plugin')
-source=("${_pkgname}.tar.xz::${url}/releases/download/Natron-${pkgver}/${_pkgname}.tar.xz"
-        "openfx-misc-2.3.15-DenoiseSharpen.patch")
-sha512sums=('614b12da180ceb4df2ea3a309b434d52eaa4ea6d2bf79ababb00b4b53c637b21c5b96f88ea7e74a2f05a0ef6df4ec1d32484f2c83ee390a193638379c5b868bf'
-            'e95ee15c7a7215b99d2ab57b8a2b04ff1f504df6993f195a142b4623287ab999c00a9cc767718eb64a072ac4bef16eef1b4646884e9321d3ae652669e9a823cc')
+conflicts=("${pkgname}-git")
+
+_natron_ver="Natron-${pkgver}"
+_pkgname="${pkgname}-${_natron_ver}"
+_url=${url%/${pkgname}}
+
+source=("${_pkgname}.tar.gz::${url}/archive/refs/tags/${_natron_ver}.tar.gz"
+        "openfx-${_natron_ver}.tar.gz::${_url}/openfx/archive/refs/tags/${_natron_ver}.tar.gz"
+        "openfx-supportext-${_openfx_supportext_commit}.tar.gz::${_url}/openfx-supportext/archive/${_openfx_supportext_commit}.tar.gz")
+sha512sums=('81d87f116e18ba15c9609ac18177fe38f338433f95fe22e6e0557671ecddbf89accf4685d8fbe7106350714d22aa157ac78441f15a8dee795bcae54da4e7ab55'
+            '0a01ea18970a06eb58b03e16f9027a84f37e53581387a0fbd208be16e2fa71f3e0d314307934348e3a7a0c3bc699c36535fd044f18e89a937e9bfca239037096'
+            'SKIP')
 
 prepare() {
-    cd "${srcdir}/${_pkgname}"
-    patch --forward --strip=1 --input="${srcdir}/openfx-misc-2.3.15-DenoiseSharpen.patch"
+  tar -xzf "openfx-${_natron_ver}.tar.gz" --strip 1 \
+      -C   "${_pkgname}/openfx/"
+  tar -xzf "openfx-supportext-${_openfx_supportext_commit}.tar.gz" --strip 1 \
+      -C   "${_pkgname}/SupportExt/"
 }
 
 build() {

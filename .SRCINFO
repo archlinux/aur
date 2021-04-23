@@ -1,19 +1,20 @@
 pkgbase = openfx-misc
 	pkgdesc = Miscellaneous OpenFX plugins
-	pkgver = 2.3.15
-	pkgrel = 2
+	pkgver = 2.4.0
+	pkgrel = 1
 	url = https://github.com/NatronGitHub/openfx-misc
-	arch = i686
-	arch = pentium4
 	arch = x86_64
 	license = GPL
 	makedepends = openmp
 	depends = libgl
 	optdepends = natron-plugins-git: More presets for the Shadertoy plugin
-	source = openfx-misc-Natron-2.3.15.tar.xz::https://github.com/NatronGitHub/openfx-misc/releases/download/Natron-2.3.15/openfx-misc-Natron-2.3.15.tar.xz
-	source = openfx-misc-2.3.15-DenoiseSharpen.patch
-	sha512sums = 614b12da180ceb4df2ea3a309b434d52eaa4ea6d2bf79ababb00b4b53c637b21c5b96f88ea7e74a2f05a0ef6df4ec1d32484f2c83ee390a193638379c5b868bf
-	sha512sums = e95ee15c7a7215b99d2ab57b8a2b04ff1f504df6993f195a142b4623287ab999c00a9cc767718eb64a072ac4bef16eef1b4646884e9321d3ae652669e9a823cc
+	conflicts = openfx-misc-git
+	source = openfx-misc-Natron-2.4.0.tar.gz::https://github.com/NatronGitHub/openfx-misc/archive/refs/tags/Natron-2.4.0.tar.gz
+	source = openfx-Natron-2.4.0.tar.gz::https://github.com/NatronGitHub/openfx/archive/refs/tags/Natron-2.4.0.tar.gz
+	source = openfx-supportext-bde8d6a2b119ca35e9229d8af18cda2f57114a20.tar.gz::https://github.com/NatronGitHub/openfx-supportext/archive/bde8d6a2b119ca35e9229d8af18cda2f57114a20.tar.gz
+	sha512sums = 81d87f116e18ba15c9609ac18177fe38f338433f95fe22e6e0557671ecddbf89accf4685d8fbe7106350714d22aa157ac78441f15a8dee795bcae54da4e7ab55
+	sha512sums = 0a01ea18970a06eb58b03e16f9027a84f37e53581387a0fbd208be16e2fa71f3e0d314307934348e3a7a0c3bc699c36535fd044f18e89a937e9bfca239037096
+	sha512sums = SKIP
 
 pkgname = openfx-misc
 
