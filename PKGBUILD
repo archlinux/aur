@@ -1,7 +1,7 @@
 # Maintainer: Serge K <arch@phnx47.net>
 # Contributor: Stephen Argent <steve [at] tuxcon [dot] com>
 
-# Repository for PR: https://gitlab.com/phnx47-aur/ledger-live-bin
+# https://github.com/phnx47/pkgbuilds
 
 _pkgbin=ledger-live-desktop
 pkgname=ledger-live-bin
