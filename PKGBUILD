@@ -1,7 +1,7 @@
 # Maintainer: Kacper Zybała <zyperpl at gmail dot com>
 
 pkgname=ldtk
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Modern and efficient 2D level editor with a strong focus on user-friendliness"
 arch=('x86_64')
@@ -9,19 +9,17 @@ url="https://github.com/deepnight/ldtk"
 license=('MIT')
 makedepends=('haxe' 'git' 'nodejs' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/deepnight/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('8512e2cc2bb4ef5d13ff03b1191076be258bdd74ed4786c23afa9eee2ce93118')
+sha256sums=('8dcd179fcc932495d948e37bae99060aa89cf63bd9fae10faa06dff942102df4')
 options=('!strip' 'emptydirs' '!makeflags')
 
 build() {
   haxelib newrepo
-  haxelib --always git castle https://github.com/ncannasse/castle
-  haxelib --always git heaps https://github.com/deepnight/heaps.git
-  haxelib --always git hxnodejs https://github.com/HaxeFoundation/hxnodejs.git
-  haxelib --always git electron https://github.com/tong/hxelectron.git
-  haxelib --always git ldtk-haxe-api https://github.com/deepnight/ldtk-haxe-api.git
-  haxelib --always git deepnightLibs https://github.com/deepnight/deepnightLibs.git
+  haxe -version
   
   pushd "${pkgname}-${pkgver}"
+  haxe setup.hxml
+  haxelib list
+  
   pushd app
   npm cache clean --force --cache "${srcdir}/npm-cache"
   npm install --cache "${srcdir}/npm-cache"
