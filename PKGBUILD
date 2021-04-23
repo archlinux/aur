@@ -1,7 +1,7 @@
 # Maintainer: Streaksu <assemblyislaw@gmail.com>
 pkgname=mantissa
-pkgver=1.3.0
-pkgrel=3
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="A webkit-based browser made in D and with a fair share of love"
 arch=("i686" "x86_64")
 url="https://github.com/streaksu/mantissa"
@@ -11,10 +11,6 @@ sha256sums=('SKIP')
 makedepends=('dub' 'ldc' 'pkgconfig')
 depends=('webkit2gtk>=2.30.4' 'sqlite3>=3.34.0')
 optdepends=('gst-libav: Support for some online video codecs')
-
-prepare() {
-  patch -p1 < ../dub.patch
-}
 
 build() {
   cd "${srcdir}/mantissa"
