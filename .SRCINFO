@@ -14,7 +14,7 @@ pkgbase = keysmith
 	makedepends = qt5-quickcontrols2
 	makedepends = sudo
 	conflicts = keysmith-git
-	source = keysmith-0.2.tar.gz::https://invent.kde.org/utilities/keysmith/-/archive/v0.2/keysmith-v0.2.tar.gz
+	source = keysmith-v0.2.tar.gz::https://invent.kde.org/utilities/keysmith/-/archive/v0.2/keysmith-v0.2.tar.gz
 	md5sums = bb63b3c244d5a6ca5686f0af423866e8
 
 pkgname = keysmith
