@@ -2,13 +2,13 @@
 
 pkgname=sxlock-git
 _pkgname=sxlock
-pkgver=1.1.r15.g76ac317
+pkgver=2.0
 pkgrel=1
 pkgdesc="Simple screen locker utility for X, fork of sflock. Uses PAM authentication, no suid needed."
 arch=('i686' 'x86_64')
 url="https://github.com/lahwaacz/sxlock"
 license=('MIT')
-depends=('libxext' 'libxrandr' 'pam')
+depends=('libxext' 'libxrandr' 'libxft' 'pam')
 makedepends=('git')
 optdepends=('xorg-fonts-misc: default font')
 source=('git://github.com/lahwaacz/sxlock.git')
