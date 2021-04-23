@@ -10,6 +10,7 @@ url="https://github.com/Suwayomi/Tachidesk"
 license=("MPL2")
 depends=("java-runtime")
 provides=("tachidesk")
+conflicts=("tachidesk-preview")
 _semver=$(printf v${pkgver} | cut -d'.' -f4 --complement)
 _commit=$(printf ${pkgver} | cut -d'.' -f4)
 _jar=Tachidesk-${_semver}-${_commit}.jar
