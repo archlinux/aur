@@ -5,8 +5,10 @@ pkgbase = tblock
 	url = https://tblock.codeberg.page
 	arch = any
 	license = GPL3
-	makedepends = git
 	makedepends = make
+	makedepends = zip
+	makedepends = pandoc
+	makedepends = gzip
 	depends = python>=3
 	depends = python-urllib3
 	depends = python-requests
