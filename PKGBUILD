@@ -4,7 +4,7 @@
 
 pkgname=midivisualizer
 _upstreampkgname=MIDIVisualizer
-pkgver=6.3
+pkgver=6.4
 pkgrel=1
 pkgdesc='A small MIDI visualizer tool, using OpenGL'
 arch=('x86_64')
@@ -13,12 +13,12 @@ license=('MIT')
 depends=('gtk3' 'ffmpeg')
 makedepends=('cmake')
 source=("$_upstreampkgname-$pkgver.tar.gz::https://github.com/kosua20/$_upstreampkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cda3900ae3f4f6032669c3eae713dfd2afd9474ca8fb926bf30d87052bfd9542')
+sha256sums=('ad08ab49fed6c845ff692dc59577a15b074f478c83c726fd828c7844158ce6ec')
 
 build() {
-  cmake -B build -S "$_upstreampkgname-$pkgver" \
+  cmake -B "$_upstreampkgname-$pkgver/build" -S "$_upstreampkgname-$pkgver" \
     -Wno-dev
-  make -C build
+  make -C "$_upstreampkgname-$pkgver/build" 
 }
 
 package() {
