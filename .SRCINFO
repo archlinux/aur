@@ -1,14 +1,14 @@
 pkgbase = displaylink-connect
 	pkgdesc = Automatically set monitors when Displaylink dock is connected
-	pkgver = 3.1
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://gitlab.com/hadogenes/displaylink-connect
 	install = displaylink-connect.install
 	arch = x86_64
 	license = MIT
 	depends = displaylink
-	source = https://gitlab.com/hadogenes/displaylink-connect/-/archive/v3.1/displaylink-connect-v3.1.zip
-	sha256sums = 803522aa92cf8b781405f4790a54e19e3173696776f8eab49593437cdb195a69
+	source = https://gitlab.com/hadogenes/displaylink-connect/-/archive/v3.1.1/displaylink-connect-v3.1.1.zip
+	sha256sums = 5cdc728b755bf3ab665be43176a967dcd6f924aa2991baf38956496ed51f635a
 
 pkgname = displaylink-connect
 
