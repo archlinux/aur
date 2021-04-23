@@ -20,11 +20,11 @@ build() {
 }
 
 package() {
-    mkdir -p "$pkgdir/usr/bin"
     mkdir -p "$pkgdir/etc"
-    mkdir -p "$pkgdir/usr/share/man/man1"
+    mkdir -p "$pkgdir/usr/local/bin"
+    mkdir -p "$pkgdir/usr/local/share/man/man1"
     cd "$srcdir/$pkgname-$pkgver"
-    install -v ./build/qlstatus "$pkgdir/usr/local/bin"
     install -v --mode=644 qlstatus.conf "$pkgdir/etc"
+    install -v ./build/qlstatus "$pkgdir/usr/local/bin"
     install -v --mode=644 qlstatus.1 "$pkgdir/usr/local/share/man/man1"
 }
