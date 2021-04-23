@@ -1,7 +1,7 @@
 pkgbase = blender-2.80-git
 	pkgdesc = Maintenance version of blender-v2.80-release branch
 	pkgver = 2.80.r89282.gf6cb5f54494
-	pkgrel = 1
+	pkgrel = 2
 	url = https://blender.org/
 	arch = i686
 	arch = x86_64
@@ -46,6 +46,7 @@ pkgbase = blender-2.80-git
 	source = python.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/e413b39a936181cc954dfbf054b0a19794d8902c
 	source = python39.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/56d0df51a36fdce7ec2d1fbb7b47b1d95b591b5f
 	source = osl111.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/7d85b6431fc331d9869f945bf7c9f3353b7b8c95
+	source = openvdb8.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -58,6 +59,7 @@ pkgbase = blender-2.80-git
 	sha256sums = 21b45266503f71bd2245528a206cc215d9eb5cbcf0cd06977bbd529b09ee3a44
 	sha256sums = 7ae5ac4d636934cd46213e3f29ea67013d17316e122d8f312daec288e4f90cd9
 	sha256sums = 99b96f4f6d02cd3e226d814175f7915a85a43966216d5a522265c68091a3b73a
+	sha256sums = 596e6327bad0c206408abd7c6ced8f109b4d56200889b9041ef7b8605e30e1b6
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -70,6 +72,7 @@ pkgbase = blender-2.80-git
 	b2sums = fd1c4a53803a9fb9cf64a23f43dbbf34629bc942759914422e700923c542f158ea3ff38463a4fde8ea488ac5c639e057b4b1c72515bbdbad1a6be1a97870f413
 	b2sums = 4b11df6d494644e740cfda654fbebb2988c430d18c093739724f331738099100925fd0399b94cf0a1188c4ae804081c8380424b64f35355f7cbfde6c7ee91b44
 	b2sums = ab990d0771b593ec9e8637e330ba2721fe9d6c82c72eb2296f1580129da0e4de525e58921869fabd36c3b92ec4fc1754b7dc4cb2da1674b5baa5d26332eebdc8
+	b2sums = 4fefb9bacb1c27e9cf7551c8c0775f35c9f0d5783bdb5eff9e51b98dd660809ef88038e8dfa9e9d28319ba93bb80960f4becce8b9f65fad4a870657c09469bca
 
 pkgname = blender-2.80-git
 
