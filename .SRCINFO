@@ -1,0 +1,21 @@
+pkgbase = yajsv-bin
+	pkgdesc = Yet Another CLI JSON Schema Validator
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/neilpa/yajsv
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = glibc
+	provides = yajsv
+	conflicts = yajsv
+	noextract = yajsv-bin-1.4.0.LICENSE
+	noextract = yajsv-bin-1.4.0.yajsv
+	source = yajsv-bin-1.4.0.LICENSE::https://raw.githubusercontent.com/neilpa/yajsv/v1.4.0/LICENSE
+	sha512sums = 93312901560a0b9ba609957645a8c448c57519606294b925ca3c4141ae024b0889dc165f2662d4a6c4d578f33777d255b5d6c3be10e651d79942208991bf294d
+	source_x86_64 = yajsv-bin-1.4.0.yajsv::https://github.com/neilpa/yajsv/releases/download/v1.4.0/yajsv.linux.amd64
+	sha512sums_x86_64 = 4b9f40e916193023374f8393dc8d75cf8a0ba0c65d0a84d3d420c03dffd979f749e8db870e60fa92bd1ab525a71e5f4e9850425f6b47cca3f44d73e5cc72d665
+	source_i686 = yajsv-bin-1.4.0.yajsv::https://github.com/neilpa/yajsv/releases/download/v1.4.0/yajsv.linux.386
+
+pkgname = yajsv-bin
+
