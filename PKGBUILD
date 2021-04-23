@@ -12,7 +12,7 @@ conflicts=('ryujinx-git')
 options=('staticlibs')
 source=('https://www.patreon.com/file?h=45268370&i=7775869'
         'https://github.com/Ryujinx/Ryujinx/raw/master/Ryujinx/Ryujinx.ico')
-sha256sums=('a20929730011f3a8cad7fc991daf6a824f94ea13a14f0b1c0f1a7f9a9765650b'
+sha256sums=('176084b91b7706a46b54e26253a4e65b27980a4477893362a4493d20b58fef2a'
             'c6063c96dc0cf44dd38b7c14b14cc77ed49ad53b925ea7d7ccf08754eb6e52da')
 
 package() {
@@ -30,5 +30,3 @@ Icon=/opt/${pkgname}/Ryujinx.ico
 Terminal=false
 Categories=Game;" >> "${pkgdir}/usr/share/applications/ryujinx.desktop"
 }
-sha256sums=('176084b91b7706a46b54e26253a4e65b27980a4477893362a4493d20b58fef2a'
-            'c6063c96dc0cf44dd38b7c14b14cc77ed49ad53b925ea7d7ccf08754eb6e52da')
