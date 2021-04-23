@@ -1,0 +1,22 @@
+pkgbase = python-ctfcli
+	pkgdesc = Tool for creating and running Capture The Flag competitions
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/CTFd/ctfcli
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-cookiecutter>=1.6.0
+	depends = python-click>=7.0
+	depends = python-fire>=0.2.1
+	depends = python-yaml>=5.2
+	depends = python-pygments>=2.5.2
+	depends = python-requests>=2.22.0
+	depends = python-colorama>=0.4.3
+	depends = python-appdirs>=1.4.3
+	source = https://pypi.python.org/packages/source/c/ctfcli/ctfcli-0.0.7.tar.gz
+	sha256sums = 8ecdc2d1ef6ae3b416cd5724be4aa8385a815158ee24cdf04a63fa31f1313273
+
+pkgname = python-ctfcli
+
