@@ -1,0 +1,15 @@
+pkgbase = provok
+	pkgdesc = A text renderer written in Rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/o2sh/provok
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = freetype2
+	depends = harfbuzz
+	source = provok-0.1.0.tar.gz::https://github.com/o2sh/provok/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = f0847ae33691212e05961970498fe03bea09b8f6cbd12148842aae06cc50fbeb
+
+pkgname = provok
+
