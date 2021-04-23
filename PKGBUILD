@@ -1,8 +1,8 @@
 # Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 
 pkgname=spim-svn
-pkgver=717
-pkgrel=2
+pkgver=739
+pkgrel=1
 pkgdesc="A MIPS32 simulator (SVN version)"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/spimsimulator/"
