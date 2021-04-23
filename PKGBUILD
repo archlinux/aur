@@ -5,14 +5,15 @@
 
 pkgname=subliminal-git
 pkgver=2.1.0.r22.g160ea63
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library and CLI tool for searching and downloading subtitles."
 arch=('any')
 url="https://github.com/Diaoul/subliminal"
 license=('MIT')
-depends=('python-guessit' 'python-enzyme' 'python-beautifulsoup4' 'python-requests'
-         'python-click' 'python-dogpile.cache' 'python-stevedore' 'python-pysrt'
-         'python-six' 'python-appdirs' 'python-rarfile' 'python-pytz')
+depends=('python-guessit' 'python-babelfish'  'python-enzyme' 'python-beautifulsoup4'
+         'python-requests' 'python-click' 'python-dogpile.cache' 'python-stevedore'
+         'python-chardet'  'python-pysrt' 'python-six' 'python-appdirs' 'python-rarfile'
+         'python-pytz')
 makedepends=('git' 'python-setuptools' 'python-sphinxcontrib-programoutput'
              'python-sphinx_rtd_theme')
 provides=("${pkgname%-git}")
@@ -40,9 +41,10 @@ build() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
+    export PYTHONHASHSEED=0
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
-    install -Dm644 docs/_build/man/subliminal.1 -t "$pkgdir/usr/share/man/man1"
+    install -Dm644 "docs/_build/man/${pkgname%-git}.1" -t "$pkgdir/usr/share/man/man1"
 }
 
