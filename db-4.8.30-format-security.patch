@@ -1,0 +1,57 @@
+# Adjustments necessary in order for gcc with -Werror=format-security to compile libdb4
+
+diff -up db-4.8.30/repmgr/repmgr_net.c.broken db-4.8.30/repmgr/repmgr_net.c
+--- db-4.8.30/repmgr/repmgr_net.c.broken	2013-12-03 09:22:53.411671609 +0100
++++ db-4.8.30/repmgr/repmgr_net.c	2013-12-03 09:23:13.020780748 +0100
+@@ -1331,7 +1331,7 @@ __repmgr_listen(env)
+ 	}
+ 
+ 	ret = net_errno;
+-	__db_err(env, ret, why);
++	__db_err(env, ret, "%s", why);
+ clean:	if (s != INVALID_SOCKET)
+ 		(void)closesocket(s);
+ 	return (ret);
+
+diff -up db-4.8.30/crypto/aes_method.c.broken db-4.8.30/crypto/aes_method.c
+--- db-4.8.30/crypto/aes_method.c.broken	2013-12-03 09:31:46.131623201 +0100
++++ db-4.8.30/crypto/aes_method.c	2013-12-03 09:32:12.875772465 +0100
+@@ -267,6 +267,6 @@ __aes_err(env, err)
+ 		errstr = "AES error unrecognized";
+ 		break;
+ 	}
+-	__db_errx(env, errstr);
++	__db_errx(env, "%s", errstr);
+ 	return;
+ }
+
+diff -up db-4.8.30/txn/txn.c.broken db-4.8.30/txn/txn.c
+--- db-4.8.30/txn/txn.c.broken	2013-12-03 09:35:35.259668694 +0100
++++ db-4.8.30/txn/txn.c	2013-12-03 09:36:34.155889373 +0100
+@@ -113,7 +113,7 @@ __txn_begin_pp(dbenv, parent, txnpp, fla
+ 		return (ret);
+ 	if (parent != NULL && !F_ISSET(parent, TXN_SNAPSHOT) &&
+ 	    LF_ISSET(DB_TXN_SNAPSHOT)) {
+-		__db_errx(env,
++		__db_errx(env, "%s",
+ 		    "Child transaction snapshot setting must match parent");
+ 		return (EINVAL);
+ 	}
+@@ -168,7 +168,7 @@ __txn_begin(env, ip, parent, txnpp, flag
+ 
+ 	*txnpp = NULL;
+ 	if ((ret = __os_calloc(env, 1, sizeof(DB_TXN), &txn)) != 0) {
+-		__db_errx(env, TxnAlloc);
++		__db_errx(env, "%s", TxnAlloc);
+ 		return (ret);
+ 	}
+ 
+@@ -315,7 +315,7 @@ __txn_compensate_begin(env, txnpp)
+ 	int ret;
+ 
+ 	if ((ret = __os_calloc(env, 1, sizeof(DB_TXN), &txn)) != 0) {
+-		__db_errx(env, TxnAlloc);
++		__db_errx(env, "%s", TxnAlloc);
+ 		return (ret);
+ 	}
+ 

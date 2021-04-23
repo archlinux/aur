@@ -1,7 +1,7 @@
 pkgbase = db4.8
 	pkgdesc = The Berkeley DB embedded database system 4.8
 	pkgver = 4.8.30
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.oracle.com/technology/software/products/berkeley-db/index.html
 	arch = any
 	license = custom
@@ -11,12 +11,15 @@ pkgbase = db4.8
 	source = http://download.oracle.com/berkeley-db/db-4.8.30.tar.gz
 	source = db-atomic.patch
 	source = CVE-2017-10140-cwd-db_config.patch
+	source = db-4.8.30-format-security.patch
 	md5sums = f80022099c5742cd179343556179aa8c
 	md5sums = d56cef85d0fc9432b54a32993d4c9f06
 	md5sums = c2d29f72c20625c09f30e35af3c4f2ff
+	md5sums = 7609752e93e9f762307c7d9aa204400c
 	sha256sums = e0491a07cdb21fb9aa82773bbbedaeb7639cbd0e7f96147ab46141e0045db72a
 	sha256sums = 7ab718c5624b4724a585c91f4cfdcd3830cfaf0ce1e865a4a79b316ba35990c0
 	sha256sums = 7dfea34368f4d3d5b81973f7b0dbb8a54cdd09effb09b2b28763b2470833a614
+	sha256sums = fbe47fafa17cd15b3343295c6fc191984e1baa94c1f591dc0b14a96953629437
 
 pkgname = db4.8
 
