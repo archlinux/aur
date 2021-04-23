@@ -13,7 +13,7 @@
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
-pkgver=7.0.11.7
+pkgver=7.0.11.8
 pkgrel=1
 arch=('x86_64')
 _qdepth='32'
@@ -32,7 +32,7 @@ makedepends=(
     # AUR:
         'autotrace-nomagick' 'dmalloc' 'flif' 'libfpx' 'libumem-git'
 )
-_commit='1f074fc7068b2f9c2658c8ce6aca7999b5aaeb33'
+_commit='0b8f536a918b77cbb575aa70c668fc2c8f4aa024'
 source=("git+https://github.com/ImageMagick/ImageMagick.git#commit=${_commit}"
         'arch-fonts.diff')
 sha256sums=('SKIP'
