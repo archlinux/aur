@@ -1,0 +1,29 @@
+From f2f43e19046695d48fc08e01846f172fbb073359 Mon Sep 17 00:00:00 2001
+From: Thomas Lamprecht <t.lamprecht@proxmox.com>
+Date: Thu, 22 Apr 2021 21:24:40 +0200
+Subject: [PATCH backup] server/rest: fix new type ambiguity
+
+basically the same as commit eeff085d9d09028aba722d4106634e2f9c9ce931
+Will be required once we get to use a newer rustc, at least the
+client build for archlinux was broken due to this.
+
+Signed-off-by: Thomas Lamprecht <t.lamprecht@proxmox.com>
+---
+ src/server/rest.rs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/server/rest.rs b/src/server/rest.rs
+index 7cf00532..7d280477 100644
+--- a/src/server/rest.rs
++++ b/src/server/rest.rs
+@@ -440,7 +440,7 @@ pub async fn handle_api_request<Env: RpcEnvironment, S: 'static + BuildHasher +
+             );
+             resp.map(|body| {
+                 Body::wrap_stream(DeflateEncoder::with_quality(
+-                    body.map_err(|err| {
++                    TryStreamExt::map_err(body, |err| {
+                         proxmox::io_format_err!("error during compression: {}", err)
+                     }),
+                     Level::Default,
+-- 
+2.29.2

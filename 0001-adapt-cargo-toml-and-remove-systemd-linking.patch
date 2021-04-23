@@ -37,9 +37,9 @@ index 283453e7..29db166d 100644
  pin-utils = "0.1.0"
  pin-project = "1.0"
 -pathpatterns = "0.1.2"
--proxmox = { version = "0.11.0", features = [ "sortable-macro", "api-macro", "websocket" ] }
+-proxmox = { version = "0.11.1", features = [ "sortable-macro", "api-macro", "websocket" ] }
 +pathpatterns = { version = "0.1.2", git = "git://git.proxmox.com/git/pathpatterns.git" }
-+proxmox = { version = "0.11.0", features = [ "sortable-macro", "api-macro" ], git = "git://git.proxmox.com/git/proxmox.git", rev = "1fce0ff41ddeb177f92874bf4e95a775cfd99c69" }
++proxmox = { version = "0.11.1", features = [ "sortable-macro", "api-macro" ], git = "git://git.proxmox.com/git/proxmox.git", rev = "31402407c4c1fe40d20a5b6eb014219694a85eff" }
  #proxmox = { git = "git://git.proxmox.com/git/proxmox", version = "0.1.2", features = [ "sortable-macro", "api-macro" ] }
  #proxmox = { path = "../proxmox/proxmox", features = [ "sortable-macro", "api-macro", "websocket" ] }
 -proxmox-fuse = "0.1.1"
