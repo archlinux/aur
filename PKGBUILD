@@ -2,7 +2,7 @@
 pkgname=tomate-exec-plugin
 pkgver=0.3.0
 pkgrel=1
-pkgdesc="Run commands when the timer starts, stops or finishes"
+pkgdesc="Tomate plugin that run bash commands when the session starts, stops or finishes"
 arch=('any')
 url="https://github.com/eliostvs/tomate-exec-plugin"
 license=('GPL')
