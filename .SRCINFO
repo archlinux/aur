@@ -1,22 +1,18 @@
 pkgbase = python-vk_api-git
 	pkgdesc = Module for writing scripts for vk.com (vkontakte)
-	pkgver = 9.3.r1.ea556a5
-	pkgrel = 3
+	pkgver = 11.9.1.r2.d49c1dc
+	pkgrel = 1
 	url = https://github.com/python273/vk_api
 	arch = any
 	license = APACHE
 	makedepends = python-setuptools
-	source = git://github.com/python273/vk_api
-	md5sums = SKIP
-
-pkgname = python-vk_api-git
 	depends = python
 	depends = python-requests
 	depends = python-beautifulsoup4
+	depends = python-websocket-client
+	depends = python-six
+	source = git://github.com/python273/vk_api
+	sha256sums = SKIP
 
-pkgname = python2-vk_api-git
-	depends = python2
-	depends = python2-requests
-	depends = python2-enum34
-	depends = python2-beautifulsoup4
+pkgname = python-vk_api-git
 
