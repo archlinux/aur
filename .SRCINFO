@@ -1,6 +1,6 @@
 pkgbase = amazon-corretto-16
 	pkgdesc = No-cost, multiplatform, production-ready distribution of OpenJDK
-	pkgver = 16.0.0.36.1
+	pkgver = 16.0.1.9.1
 	pkgrel = 1
 	url = https://aws.amazon.com/corretto/
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = amazon-corretto-16
 	provides = java-runtime-headless=16
 	provides = java-runtime=16
 	provides = java-environment=16
-	source = https://corretto.aws/downloads/resources/16.0.0.36.1/amazon-corretto-16.0.0.36.1-linux-x64.tar.gz
-	source = https://corretto.aws/downloads/resources/16.0.0.36.1/amazon-corretto-16.0.0.36.1-linux-x64.tar.gz.sig
+	source = https://corretto.aws/downloads/resources/16.0.1.9.1/amazon-corretto-16.0.1.9.1-linux-x64.tar.gz
+	source = https://corretto.aws/downloads/resources/16.0.1.9.1/amazon-corretto-16.0.1.9.1-linux-x64.tar.gz.sig
 	validpgpkeys = 6DC3636DAE534049C8B94623A122542AB04F24E3
-	md5sums = d56849ca9f9bcf2c28f19ec1585579a9
+	md5sums = 18a7d7483729530e7e3d9109a7e00128
 	md5sums = SKIP
 
 pkgname = amazon-corretto-16
