@@ -1,6 +1,6 @@
 # Maintainer: tuxifreund <kaiser.barbarossa@yandex.com>
 pkgname=mybrowse
-pkgver=0.3
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A simple WebKit browser written in Python3 and using GTK3"
 arch=('any')
