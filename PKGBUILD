@@ -1,6 +1,6 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
-# Repository for PR: https://gitlab.com/phnx47-aur/kaizen
+# https://github.com/phnx47/pkgbuilds
 
 pkgname=kaizen
 pkgdesc="Kaizen ElasticSearch GUI"
