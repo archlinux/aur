@@ -1,6 +1,6 @@
 pkgbase = okular-vim-colemak
 	pkgdesc = Document Viewer with colemak vim-binding
-	pkgver = v20.12.3
+	pkgver = v21.04.0
 	pkgrel = 1
 	url = https://invent.kde.org/graphics/okular.git
 	arch = any
@@ -30,10 +30,8 @@ pkgbase = okular-vim-colemak
 	optdepends = unrar
 	optdepends = unarchiver
 	conflicts = okular
-	source = okular-vim-colemak-v20.12.3.zip::https://invent.kde.org/graphics/okular/-/archive/v20.12.3/okular-v20.12.3.zip
-	source = pageview_colemak.patch
-	sha512sums = 21cabe63161e98291ca2de8c9832f9a626fa274cd8159c6aedb90d92ea578861cdb9770458edc347f5d05eebd84d640052ac278c5d6220d0a2042ae5a961e248
-	sha512sums = 90f3ce005333e0656af89be331515cbaea306c89fedd28a3d32d95cffeff79aeb3dc0c7a49bcfbde24d1d66c6dd0fc6295fe60f3aab0c695634639b8c3fb1dbe
+	source = okular-vim-colemak-v21.04.0.zip::https://invent.kde.org/graphics/okular/-/archive/v21.04.0/okular-v21.04.0.zip
+	sha512sums = d04c396f5350e4b819b723a340ff5707290df579e5fc2d7ef2771fad34642c7bdef94248ceb961157ae6f73ea1335ab53f518b1cdd121d5aac2696cb09a9b429
 
 pkgname = okular-vim-colemak
 
