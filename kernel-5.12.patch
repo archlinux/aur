@@ -1,10 +1,20 @@
 Taken from https://build.opensuse.org/package/view_file/X11:Drivers:Video/nvidia-gfxG04/kernel-5.12.patch
 Credit to Larry Finger <Larry.Finger@lwfinger.net>
+390.143 refresh and version check by JF
 
-Index: NVIDIA-Linux-x86_64-390.141-no-compat32/kernel/nvidia-drm/nvidia-drm-drv.c
+Index: NVIDIA-Linux-x86_64-390.143-no-compat32/kernel/nvidia-drm/nvidia-drm-drv.c
 ===================================================================
---- NVIDIA-Linux-x86_64-390.141-no-compat32.orig/kernel/nvidia-drm/nvidia-drm-drv.c
-+++ NVIDIA-Linux-x86_64-390.141-no-compat32/kernel/nvidia-drm/nvidia-drm-drv.c
+--- NVIDIA-Linux-x86_64-390.143-no-compat32.orig/kernel/nvidia-drm/nvidia-drm-drv.c
++++ NVIDIA-Linux-x86_64-390.143-no-compat32/kernel/nvidia-drm/nvidia-drm-drv.c
+@@ -20,6 +20,8 @@
+  * DEALINGS IN THE SOFTWARE.
+  */
+ 
++#include <linux/version.h>
++
+ #include "nvidia-drm-conftest.h" /* NV_DRM_AVAILABLE and NV_DRM_DRM_GEM_H_PRESENT */
+ 
+ #include "nvidia-drm-priv.h"
 @@ -737,6 +737,17 @@ static struct drm_driver nv_drm_driver =
  #endif
  };
