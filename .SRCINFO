@@ -1,6 +1,6 @@
 pkgbase = python-tomate
 	pkgdesc = A pomodoro timer
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/eliostvs/tomate/
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = python-tomate
 	depends = python-xdg
 	depends = python-yapsy
 	options = !emptydirs
-	source = https://github.com/eliostvs/tomate/archive/0.12.0.tar.gz
-	md5sums = 23d5ab172033eba94a79e910191dbfc7
+	source = https://github.com/eliostvs/tomate/archive/0.13.0.tar.gz
+	md5sums = 7388a4072394b78695dfedd66f35ae4a
 
 pkgname = python-tomate
 
