@@ -1,12 +1,12 @@
-# Maintainer: pingplug < aur at pingplug dot me >
-# Submitter: Rolinh < robin DOT hahling AT gw-computing DOT net >
+# Maintainer: necklace <ns@nsz.no> 
+# Contributor: pingplug < aur at pingplug dot me >
 # Contributor: Rolinh < robin DOT hahling AT gw-computing DOT net>
 
 _pkgname=VQMT
 
 pkgname=vqmt-git
-pkgver=v1.1.23.ge49803f
-pkgrel=1
+pkgver=v1.1.25.g640a3a8
+pkgrel=2
 pkgdesc="Video Quality Measurement Tool which can compute PSNR, SSIM, MS-SSIM, VIFp, PSNR-HVS and PSNR-HVS-M metrics"
 arch=('x86_64')
 url="https://mmspg.epfl.ch/downloads/vqmt/"
@@ -25,7 +25,7 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
   cmake \
-    -DPREFIX=/usr \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=RELEASE \
     .
   make
