@@ -1,6 +1,6 @@
 pkgbase = telegram-tg
 	pkgdesc = terminal telegram client that really works
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/paul-nameless/tg
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = telegram-tg
 	optdepends = nnn: can be used to choose file when sending, customizable with FILE_PICKER_CMD
 	optdepends = fzf: to create groups and secret chats, used for single and multiple user selection
 	conflicts = telegram-tg-git
-	source = telegram-tg-0.11.0.tar.gz::https://github.com/paul-nameless/tg/archive/v0.11.0.tar.gz
-	md5sums = f4a5ee804d02f4ef035fcb138c905aed
+	source = telegram-tg-0.12.0.tar.gz::https://github.com/paul-nameless/tg/archive/v0.12.0.tar.gz
+	md5sums = 1408a6d19a0962fcd872a594c5955dcd
 
 pkgname = telegram-tg
 
