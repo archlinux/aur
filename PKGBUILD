@@ -1,9 +1,9 @@
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=googlemaps
-pkgver=20180602
-_commit=54a357f9590d9cf011bf1713589f66bad65e00eb
-pkgrel=15
+pkgver=20210323
+_commit=8f7def10c203fd3faa5ef96c5010a7294dca0759
+pkgrel=1
 pkgdesc='Google Maps plugin for QtLocation'
 url='https://github.com/vladest/googlemaps'
 license=('MIT')

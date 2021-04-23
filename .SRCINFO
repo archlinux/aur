@@ -1,14 +1,14 @@
 pkgbase = googlemaps
 	pkgdesc = Google Maps plugin for QtLocation
-	pkgver = 20180602
-	pkgrel = 15
+	pkgver = 20210323
+	pkgrel = 1
 	url = https://github.com/vladest/googlemaps
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = qt5-tools
 	depends = qt5-location
-	source = git+https://github.com/vladest/googlemaps#commit=54a357f9590d9cf011bf1713589f66bad65e00eb?signed
+	source = git+https://github.com/vladest/googlemaps#commit=8f7def10c203fd3faa5ef96c5010a7294dca0759?signed
 	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
 	sha256sums = SKIP
 
