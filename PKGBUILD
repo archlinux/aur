@@ -13,7 +13,7 @@ source=(${pkgname%-qfix}-$pkgver.tar.gz::https://github.com/alembic/alembic/arch
 sha512sums=('23fc881863741f7fd081342f5c53c1ec3d00ab300ba8cd10e4a659ee820a9ed1244cf7cf2fd40482f6be32b9d7df44128363246e942bd03c802f3a2a81533b57')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname%-qfix}-${pkgver}"
 
   cmake . \
     -Bbuild \
@@ -25,9 +25,9 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname%-qfix}-${pkgver}"
 
-  install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname%-qfix}/LICENSE
 
   DESTDIR="${pkgdir}/" ninja -C build install
 
