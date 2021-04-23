@@ -1,6 +1,6 @@
 pkgbase = fgit-go
 	pkgdesc = A tool to do git operation with fastgit easily
-	pkgver = 076
+	pkgver = 0.7
 	pkgrel = 1
 	url = https://github.com/fastgitorg/fgit-go
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = fgit-go
 	depends = glibc
 	provides = fgit
 	conflicts = fgit
-	source = fgit-go-076::git+https://github.com/fastgitorg/fgit-go#tag=076
+	source = fgit-go-0.7::git+https://github.com/fastgitorg/fgit-go#tag=0.7
 	sha512sums = SKIP
 
 pkgname = fgit-go

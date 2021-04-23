@@ -3,7 +3,7 @@
 # Maintainer: DuckSoft <realducksoft@gmail.com>
 
 pkgname=fgit-go
-pkgver=076
+pkgver=0.7
 pkgrel=1
 pkgdesc="A tool to do git operation with fastgit easily"
 arch=('x86_64')
