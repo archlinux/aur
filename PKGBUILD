@@ -1,25 +1,25 @@
 # Maintainer: Jan Ole Zabel <joz@spline.de>
 # This package is not maintained by the author himself.
 pkgname=doh-proxy
-pkgver=0.3.1
+pkgver=0.3.8
 pkgrel=0
 pkgdesc="A DNS-over-HTTP server proxy written in Rust by jedisct1"
 arch=('x86_64')
-url="https://github.com/jedisct1/rust-doh"
+url="https://github.com/jedisct1/doh-server"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
-source=("https://github.com/jedisct1/rust-doh/archive/$pkgver.tar.gz")
-sha512sums=('6f483f805b9e13aab0b622038e270cdc69a552e9a7d536d5e0539fbfe50277b2ceb4c1956f8f014ac8f3674931a1623f670d9417adcf72d5e517d844c5ee150c')
+source=("$url/archive/$pkgver.tar.gz")
+sha512sums=('bb71fbc40d86bb1b635318c994e35535c58a333d10faa41b663e289e91a4e0063225008e7b1d04df4f85bfcff134ff46ca33fe138e738262c99f4c4c3fc919d2')
 
 build() {
-	cd "rust-doh-$pkgver"
+	cd "doh-server-$pkgver"
 	cargo update
 	cargo build --release
 }
 
 package() {
-	cd "rust-doh-$pkgver"
+	cd "doh-server-$pkgver"
 	install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
