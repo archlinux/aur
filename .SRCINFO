@@ -1,6 +1,6 @@
 pkgbase = openrct2-git
 	pkgdesc = Open source re-implementation of Roller Coaster Tycoon 2 (requires full copy of the game)
-	pkgver = r19968.0ae86d055
+	pkgver = r21143.594b08c91
 	pkgrel = 1
 	url = https://openrct2.io
 	install = openrct2.install
@@ -11,7 +11,7 @@ pkgbase = openrct2-git
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
-	makedepends = rapidjson
+	makedepends = discord-rpc-api
 	depends = hicolor-icon-theme
 	depends = sdl2
 	depends = curl
@@ -31,8 +31,6 @@ pkgbase = openrct2-git
 	provides = openrct2
 	conflicts = openrct2
 	source = openrct2-git::git+https://github.com/OpenRCT2/OpenRCT2.git#branch=develop
-	source = discord-rpc::git+https://github.com/discordapp/discord-rpc.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = openrct2-git

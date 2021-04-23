@@ -1,6 +1,6 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2-git
-pkgver=r19968.0ae86d055
+pkgver=r21143.594b08c91
 pkgrel=1
 pkgdesc='Open source re-implementation of Roller Coaster Tycoon 2 (requires full
          copy of the game)'
@@ -9,7 +9,7 @@ url='https://openrct2.io'
 license=('GPL3')
 depends=('hicolor-icon-theme' 'sdl2' 'curl' 'nlohmann-json' 'speexdsp'
          'fontconfig' 'libpng' 'openssl' 'libzip' 'icu' 'duktape' 'benchmark')
-makedepends=('git' 'cmake' 'rapidjson')
+makedepends=('git' 'cmake' 'discord-rpc-api')
 optdepends=('zenity: System dialog box support (GNOME/GTK)'
             'kdialog: System dialog box support (KDE)'
             'alsa-lib: ALSA audio driver'
@@ -17,22 +17,12 @@ optdepends=('zenity: System dialog box support (GNOME/GTK)'
 conflicts=('openrct2')
 provides=('openrct2')
 install=openrct2.install
-source=("$pkgname"::'git+https://github.com/OpenRCT2/OpenRCT2.git#branch=develop'
-        'discord-rpc::git+https://github.com/discordapp/discord-rpc.git')
-sha256sums=('SKIP'
-            'SKIP')
+source=("$pkgname"::'git+https://github.com/OpenRCT2/OpenRCT2.git#branch=develop')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir/$pkgname"
-  ln -sf "$srcdir/discord-rpc"
-
-  mkdir -p discord-rpc/thirdparty
-  ln -sf "/usr/include/rapidjson" discord-rpc/thirdparty
 }
 
 build() {
@@ -51,10 +41,5 @@ package() {
   make DESTDIR="$pkgdir" install
 
   rm "$pkgdir/usr/lib/libopenrct2.a"
-  rm "$pkgdir/usr/lib/libdiscord-rpc.a"
   rmdir "$pkgdir/usr/lib"
-
-  rm "$pkgdir/usr/include/discord_rpc.h"
-  rm "$pkgdir/usr/include/discord_register.h"
-  rmdir "$pkgdir/usr/include"
 }
