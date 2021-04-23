@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 
 pkgname=gnome-search-providers-vscode
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Add VSCode workspaces to Gnome search"
 arch=('x86_64')
@@ -10,12 +10,12 @@ license=('MPL2')
 depends=('gnome-shell')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-md5sums=('045c79ebfdba149fb287d5ebda17559c')
-sha1sums=('2b432f90ac6ffa85b14652638c4185abcf91675c')
-sha512sums=('546e4b96ba276702e18d318d8af9c4ae5a815eee55764c6a34b055a21cf411fc846ddf9b9a9563d4919059928a6f5e8eb57c708e259d6bd4a7583aae513d3489')
+md5sums=('53d471bd0a2dd29e4ed1093c7621cff7')
+sha1sums=('c22104743bf8c0337e10afa704965b6a3b0e9a07')
+sha512sums=('b95bc46877388ebc9703e15e87f7ff52974dd4e49ecf9dcf4a57a54c52e9bd126c0b3cf187b9b89f0b92dc361027c6d12f98178c358b5d7b3b4035d0b17fcce3')
 
 package() {
 	cd "$pkgname-$pkgver"
 
-	make DESTDIR="$pkgdir" PREFIX="/usr" build install
+	make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
