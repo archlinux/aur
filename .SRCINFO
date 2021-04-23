@@ -1,7 +1,7 @@
 pkgbase = tomate-exec-plugin
 	pkgdesc = Tomate plugin that run bash commands when the session starts, stops or finishes
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eliostvs/tomate-exec-plugin
 	arch = any
 	license = GPL

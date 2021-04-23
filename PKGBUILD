@@ -1,7 +1,7 @@
 # Maintainer: Elio Esteves Duarte <elio.esteves.duarte@gmail.com>
 pkgname=tomate-exec-plugin
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tomate plugin that run bash commands when the session starts, stops or finishes"
 arch=('any')
 url="https://github.com/eliostvs/tomate-exec-plugin"
