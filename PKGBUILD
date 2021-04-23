@@ -13,7 +13,7 @@ sha256sums=('1a47cf5a4c115974f09d765408ab2116efd4dc1ec13faccd078f2870404316d2')
 
 prepare() {
   cd "$srcdir/Bonmin-$pkgver"
-  cd Bonmin && curl -L https://github.com/coin-or/Bonmin/pull/23.patch
+  cd Bonmin && curl -L https://github.com/coin-or/Bonmin/pull/23.patch | patch -p1
 }
 
 build() {
