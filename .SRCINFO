@@ -1,4 +1,4 @@
-pkgbase = printr
+pkgbase = printr-git
 	pkgdesc = The smarter echo alternative
 	pkgver = 0.1.2
 	pkgrel = 1
@@ -12,8 +12,8 @@ pkgbase = printr
 	optdepends = fish: fish completions
 	provides = printr
 	conflicts = printr
-	source = printr::git+https://github.com/IgnisDa/printr
+	source = printr-git::git+https://github.com/IgnisDa/printr
 	sha1sums = SKIP
 
-pkgname = printr
+pkgname = printr-git
 
