@@ -1,6 +1,6 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 
-pkgname=alembic
+pkgname=alembic-qfix
 pkgver=1.8.0
 pkgrel=2
 pkgdesc="An open framework for storing and sharing scene data"
@@ -9,7 +9,7 @@ url="http://www.alembic.io/"
 license=('BSD')
 depends=('openexr' 'boost-libs' 'hdf5')
 makedepends=('cmake' 'boost' 'ninja')
-source=($pkgname-$pkgver.tar.gz::https://github.com/alembic/alembic/archive/${pkgver}.tar.gz)
+source=(${pkgname%-qfix}-$pkgver.tar.gz::https://github.com/alembic/alembic/archive/${pkgver}.tar.gz)
 sha512sums=('23fc881863741f7fd081342f5c53c1ec3d00ab300ba8cd10e4a659ee820a9ed1244cf7cf2fd40482f6be32b9d7df44128363246e942bd03c802f3a2a81533b57')
 
 build() {
