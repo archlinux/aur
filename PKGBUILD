@@ -1,5 +1,6 @@
 # Maintainer: jzbor <zborof at posteo dot de>
 pkgname=moonwm
+_pkgname=MoonWM
 pkgver=7.0.0
 pkgrel=1
 pkgdesc="My own outstandingly named Window Manager (a dynamic window manager)"
@@ -20,19 +21,18 @@ conflicts=(moonwm)
 replaces=()
 backup=()
 options=()
-source=("git+$url")
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
 noextract=()
 md5sums=('26d04522e165f1626285efbd3463c97d')
 validpgpkeys=()
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$_pkgname-$pkgver"
     make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 FREETYPEINC=/usr/include/freetype2
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$_pkgname-$pkgver"
     make PREFIX=/usr DESTDIR="${pkgdir}" install install-scripts
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/moonwm/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/moonwm/README.md"
