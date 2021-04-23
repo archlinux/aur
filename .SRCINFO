@@ -1,7 +1,7 @@
 pkgbase = termius-app
 	pkgdesc = Desktop SSH Client
-	pkgver = 7.8.0
-	pkgrel = 2
+	pkgver = 7.9.0
+	pkgrel = 1
 	url = https://www.termius.com/
 	arch = x86_64
 	license = custom
@@ -19,9 +19,9 @@ pkgbase = termius-app
 	depends = libsecret
 	provides = termius
 	conflicts = termius
-	source = termius-app-7.8.0.deb::https://deb.termius.com/pool/main/t/termius-app/termius-app_7.8.0_amd64.deb
+	source = termius-app-7.9.0.deb::https://deb.termius.com/pool/main/t/termius-app/termius-app_7.9.0_amd64.deb
 	source = TERMS_OF_USE
-	sha512sums = 0eadd8df40134c696927953a0f38f3294ae2da70bc6dc19d0e1d5036f3fb7893127310a6cef562567de0dfa956c16f9b390b876a0ebdf554aa7d64a7cabdebfe
+	sha512sums = f669beef28f6d7c5261a8113e8488a3408e8ae0d39fb2d60fce599fb110b5ab1f7286e101db2aa90c2b2018b2fc8a4ffae149b43733488e3d3e4681dc53740b2
 	sha512sums = bf187f1ec9387d9c3ddbd0e401a235ec9bafab14698f49a182546ed4a057c398f3532f472b2a6be22b9a200b29d1ccb6e3c2fb69a92dfce2a4bf29264617565b
 
 pkgname = termius-app
