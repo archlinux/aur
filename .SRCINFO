@@ -1,12 +1,12 @@
 pkgbase = lib32-nvidia-390xx-utils
-	pkgver = 390.141
+	pkgver = 390.143
 	pkgrel = 1
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = https://us.download.nvidia.com/XFree86/Linux-x86/390.141/NVIDIA-Linux-x86-390.141.run
-	sha512sums = 6dfde3b54520070954b45f6bc071251084e1741f55e582b1abd806eb367e4b9ce0015615bf6a887fa784d075b3db08b6940da4163b960969773d1bdc52b4961e
+	source = https://us.download.nvidia.com/XFree86/Linux-x86/390.143/NVIDIA-Linux-x86-390.143.run
+	sha512sums = 17bbcc2f5e9dde3f131b7924ea1e99a591b5e18b835dd324c528d17f74eded94e087c6a9a2b364189851e9972ad27bcd47e901c9ec14eedc568b99890f1e0a4f
 
 pkgname = lib32-nvidia-390xx-utils
 	pkgdesc = NVIDIA drivers utilities (32-bit), 390xx legacy branch
