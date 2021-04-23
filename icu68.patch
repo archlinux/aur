@@ -1,0 +1,11 @@
+diff -ur postgresql-10.13.orig/src/include/utils/pg_locale.h postgresql-10.13/src/include/utils/pg_locale.h
+--- postgresql-10.13.orig/src/include/utils/pg_locale.h	2020-05-11 23:12:38.000000000 +0200
++++ postgresql-10.13/src/include/utils/pg_locale.h	2021-04-23 23:05:22.732461418 +0200
+@@ -17,6 +17,7 @@
+ #endif
+ #ifdef USE_ICU
+ #include <unicode/ucol.h>
++#undef bool
+ #endif
+ 
+ #include "utils/guc.h"
