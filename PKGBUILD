@@ -2,9 +2,9 @@
 _target='compass-readonly-beta'
 _edition=' Readonly Beta'
 pkgname="mongodb-$_target"
-_pkgver='1.26.1-beta.7'
+_pkgver='1.27.0-beta.1'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='2'
+pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - beta version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
@@ -16,10 +16,10 @@ source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
 	'hadron-build.diff'
 )
-sha256sums=('5e274d8e923f1592589d374ebf5db91126f9ce4c693d5a937c95ea33c3952d5b'
+sha256sums=('2b929ce66f7b4718d5ffcb9d7e49540bee7fba1fd862aab514fed03a9aeb9bf4'
             '559564c32e2b499d09b9c5b3badcaf64c88d89786d4542bb11bb36a26b5ca657')
 
-_sourcedirectory="compass-$_pkgver"
+_sourcedirectory="compass-$_pkgver/packages/compass"
 _homedirectory="$pkgname-$pkgver-$pkgrel-home"
 
 prepare() {
@@ -35,7 +35,7 @@ prepare() {
 	HOME="$srcdir/$_homedirectory" npm install
 
 	# Apply hadron-build fixes
-	patch -d 'node_modules/hadron-build/' --forward -p1 < '../hadron-build.diff'
+	patch -d 'node_modules/hadron-build/' --forward -p1 < "$srcdir/hadron-build.diff"
 }
 
 build() {
