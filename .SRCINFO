@@ -1,9 +1,9 @@
 pkgbase = apart-gtk
 	pkgdesc = Linux GUI for cloning & restoring disk partitions to & from compressed image files.
 	pkgver = 0.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexheretic/apart-gtk
-	arch = any
+	arch = x86_64
 	license = GPL3
 	makedepends = rustup
 	makedepends = git

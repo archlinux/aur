@@ -1,9 +1,9 @@
 # Maintainer: Alex Butler <alexheretic@gmail.com>
 pkgname=apart-gtk
 pkgver=0.25
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux GUI for cloning & restoring disk partitions to & from compressed image files."
-arch=('any')
+arch=('x86_64')
 url="https://github.com/alexheretic/apart-gtk"
 license=('GPL3')
 depends=('python'
