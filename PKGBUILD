@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxj-git
-pkgver=v0.3.10.r0.g6a7525a
+pkgver=v0.3.12.r0.g9579c7a
 pkgrel=1
 pkgdesc="JSON Reader/generation - JSON string variant"
 arch=('any')
