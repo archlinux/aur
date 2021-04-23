@@ -1,7 +1,7 @@
 pkgbase = phoenixminer
 	pkgdesc = Unofficial installer for PhoenixMiner
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PhoenixMinerDevTeam/PhoenixMiner/
 	arch = x86_64
 	license = GPL

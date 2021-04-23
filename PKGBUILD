@@ -1,7 +1,7 @@
 # Maintainer: Saurabh Kumar Sharma <imesskayesss at gmail dot com>
 pkgname=phoenixminer
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial installer for PhoenixMiner"
 arch=("x86_64")
 url="https://github.com/PhoenixMinerDevTeam/PhoenixMiner/"
@@ -27,7 +27,7 @@ prepare(){
 
 package(){
     install -dm755 "${pkgdir}/"{opt,usr/bin/}
-    cp -rL "${srcdir}/${pkgname}" "${pkgdir}/opt/${pkgname}"
-    ln -sf "${srcdir}/phoenix-miner" "${pkgdir}/usr/bin/phoenixminer"
+    cp -rfL "${srcdir}/${pkgname}" "${pkgdir}/opt/${pkgname}"
+    cp -rfL "${srcdir}/phoenix-miner" "${pkgdir}/usr/bin/phoenixminer"
     ln -sf "/opt/${pkgname}/config.txt" "${HOME}/.config/phoenixminer.cfg"
 }
