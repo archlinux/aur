@@ -6,10 +6,12 @@
 
 pkgname=skaffold-git
 pkgver=1.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line tool that facilitates continuous development for Kubernetes applications"
 arch=("x86_64")
 reponame=skaffold
+provides=('skaffold')
+conflicts=('skaffold')
 url="https://github.com/GoogleContainerTools/${reponame}"
 license=("Apache")
 depends=("docker")
