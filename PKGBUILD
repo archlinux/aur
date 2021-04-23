@@ -28,13 +28,15 @@ makedepends+=(boost{,-python2} 'cmake' 'git' 'intel-tbb' 'ninja')
 provides=("usd=${pkgver}")
 source=("git+https://github.com/PixarAnimationStudios/USD.git${_fragment}"
         "boost_python2.patch"
-        "blender.patch")
+        "blender.patch"
+        "std.patch")
 sha256sums=('SKIP'
             '2f595ce72b9fb33e6da7db97b02be11fe6262e31b83b0e59232ee8713afed97e'
-            '95a4934ae8154e1650a024b09ed3237ba7d9411ada089a4b6337cbba9312705a')
+            '95a4934ae8154e1650a024b09ed3237ba7d9411ada089a4b6337cbba9312705a'
+            '5e9dfc3daa97271b959e78737079335907a3536bb8af2d74ef9b8f7529f2f8e5')
 
 prepare() {
-  git -C USD apply -v "${srcdir}"/{boost_python2,blender}.patch
+  git -C USD apply -v "${srcdir}"/{boost_python2,blender,std}.patch
 }
 
 #pkgver() {
