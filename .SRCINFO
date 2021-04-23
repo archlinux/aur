@@ -1,7 +1,7 @@
 pkgbase = cura-appimage-bin
 	pkgdesc = Ultimakers 3D printer / slicing GUI built on top of the Uranium framework
 	pkgver = 4.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ultimaker.com/software/ultimaker-cura
 	arch = x86_64
 	license = LGPL3
