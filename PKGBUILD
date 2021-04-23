@@ -16,7 +16,7 @@ else
   eval "makedepends+=( python2-{jinja,pyside-tools} )"
 fi
 
-pkgname=usd
+pkgname=usd20
 pkgver=${_ver#v}
 pkgrel=1
 pkgdesc="3D VFX pipeline interchange file format."
@@ -25,6 +25,7 @@ url="https://graphics.pixar.com/usd/docs/index.html"
 license=('Apache')
 depends+=(boost{,-python2}-libs 'glew' 'openexr' 'opensubdiv')
 makedepends+=(boost{,-python2} 'cmake' 'git' 'intel-tbb' 'ninja')
+conflicts=("usd")
 provides=("usd=${pkgver}")
 source=("git+https://github.com/PixarAnimationStudios/USD.git${_fragment}"
         "boost_python2.patch"
