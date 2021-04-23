@@ -3,6 +3,7 @@ pkgbase = displaylink-connect
 	pkgver = 3.1
 	pkgrel = 1
 	url = https://gitlab.com/hadogenes/displaylink-connect
+	install = displaylink-connect.install
 	arch = x86_64
 	license = MIT
 	depends = displaylink
