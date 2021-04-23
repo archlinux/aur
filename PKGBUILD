@@ -1,5 +1,5 @@
 # Contributor: Ivan Semkin (ivan at semkin dot ru)
-# Maintainer: monosans <hsyqixco at protonmail dot com>
+# Maintainer: monosans
 
 pkgname=python-vk_api
 _pkgname=vk_api
@@ -18,3 +18,4 @@ package() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	python setup.py install --root="$pkgdir/" --optimize=1
 }
+# vim:set ts=4 sw=4 noet:
