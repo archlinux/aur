@@ -1,6 +1,6 @@
 pkgbase = libjpeg-xl-git
 	pkgdesc = JPEG XL image format reference implementation (git version)
-	pkgver = 0.3.3.r0.g65825c8
+	pkgver = 0.3.7.r3.gab7c5e9
 	pkgrel = 1
 	url = https://jpeg.org/jpegxl/
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = libjpeg-xl-git
 	makedepends = gtest
 	makedepends = gmock
 	makedepends = python
+	makedepends = asciidoc
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = highway
