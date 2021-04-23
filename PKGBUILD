@@ -6,7 +6,7 @@ pkgrel=1
 epoch=
 pkgdesc="OTP client for Plasma Mobile and Desktop."
 arch=("any")
-url="https://github.com/KDE/${pkgname}"
+url="https://invent.kde.org/utilities/${pkgname}"
 license=("GPL3")
 groups=()
 depends=()
@@ -20,9 +20,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KDE/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 noextract=()
-md5sums=("SKIP")
+md5sums=("bb63b3c244d5a6ca5686f0af423866e8")
 validpgpkeys=()
 
 build()

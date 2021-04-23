@@ -2,7 +2,7 @@ pkgbase = keysmith
 	pkgdesc = OTP client for Plasma Mobile and Desktop.
 	pkgver = 0.2
 	pkgrel = 1
-	url = https://github.com/KDE/keysmith
+	url = https://invent.kde.org/utilities/keysmith
 	arch = any
 	license = GPL3
 	makedepends = cmake
@@ -14,8 +14,8 @@ pkgbase = keysmith
 	makedepends = qt5-quickcontrols2
 	makedepends = sudo
 	conflicts = keysmith-git
-	source = keysmith-0.2.tar.gz::https://github.com/KDE/keysmith/archive/refs/tags/v0.2.tar.gz
-	md5sums = SKIP
+	source = keysmith-0.2.tar.gz::https://invent.kde.org/utilities/keysmith/-/archive/v0.2/keysmith-v0.2.tar.gz
+	md5sums = bb63b3c244d5a6ca5686f0af423866e8
 
 pkgname = keysmith
 
