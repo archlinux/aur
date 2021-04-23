@@ -1,7 +1,7 @@
 # Maintainer: Serge K <arch@phnx47.net>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 
-# Repository for PR: https://gitlab.com/phnx47-aur/ledger-live
+# https://github.com/phnx47/pkgbuilds
 
 _pkgbin=ledger-live-desktop
 pkgname=ledger-live
