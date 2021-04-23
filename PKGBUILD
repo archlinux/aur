@@ -6,7 +6,7 @@ url='https://wiki.ros.org/hls_lfcd_lds_driver'
 pkgname='ros-melodic-hls-lfcd-lds-driver'
 pkgver='1.1.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -30,7 +30,7 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="hls-lfcd-lds-driver-${pkgver}/"
+_dir="hls_lfcd_lds_driver-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ROBOTIS-GIT/hls_lfcd_lds_driver/archive/${pkgver}.tar.gz")
 sha256sums=('3176593c1bb31ced2f12cf31a784029ab270cc7f0098ffdbc556b17915c67cf2')
 
