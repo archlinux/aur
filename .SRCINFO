@@ -1,7 +1,7 @@
 pkgbase = openvas-scanner
 	pkgdesc = Vulnerability scanning Daemon
 	pkgver = 20.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greenbone/openvas-scanner
 	arch = x86_64
 	groups = greenbone-vulnerability-manager
@@ -10,6 +10,7 @@ pkgbase = openvas-scanner
 	makedepends = doxygen
 	depends = gvm-libs-20
 	depends = redis
+	depends = rsync
 	source = openvas-scanner-20.8.1.tar.gz::https://github.com/greenbone/openvas-scanner/archive/v20.8.1.tar.gz
 	source = greenbone-nvt-sync.timer
 	source = greenbone-nvt-sync.service
