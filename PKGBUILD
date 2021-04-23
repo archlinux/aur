@@ -2,12 +2,12 @@
 
 pkgname=steam-tweaks
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Various tools for tweaking Steam/game settings"
 arch=('any')
 url="https://github.com/gamer-os/steam-tweaks"
 license=('MIT')
-depends=('python' 'python-yaml' 'python-vdf' 'pycrc' 'python-inotify-simple')
+depends=('python' 'python-yaml' 'python-vdf' 'python-inotify-simple')
 source=("https://github.com/gamer-os/steam-tweaks/archive/$pkgver.tar.gz")
 md5sums=('6930b10b8048f9d89cebc6ff5af66e8a')
 
