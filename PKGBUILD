@@ -4,10 +4,10 @@
 
 _pkgname=gwenview
 pkgname=gwenview-no-purpose
-pkgver=20.12.3
+pkgver=21.04.0
 pkgrel=1
-pkgdesc="A fast and easy to use image viewer, without the dependency on purpose. This disables the share menu"
-url='https://kde.org/applications/graphics/gwenview/'
+pkgdesc='A fast and easy to use image viewer, without the dependency on purpose. This disables the share menu'
+url='https://apps.kde.org/gwenview/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
 groups=(kde-applications kde-graphics)
@@ -19,8 +19,8 @@ optdepends=('qt5-imageformats: support for tiff, webp, and more image formats'
 conflicts=('gwenview')
 replaces=('gwenview')
 makedepends=(extra-cmake-modules kdoctools)
-source=("https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('68234a515f0870c295020a4a7495f42e785e4ad1cce536c77f108a41561b41a2'
+source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('a5f9839db9e756c4e442982314a053b4765f5907398350d7776cf544dc71de1b'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
