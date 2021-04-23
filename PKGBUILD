@@ -1,4 +1,4 @@
-# Maintainer: monosans <hsyqixco at protonmail dot com>
+# Maintainer: monosans
 
 pkgname=lunar-client
 _pkgname=lunarclient
