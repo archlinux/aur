@@ -24,7 +24,7 @@ package() {
     mkdir -p "$pkgdir/etc"
     mkdir -p "$pkgdir/usr/share/man/man1"
     cd "$srcdir/$pkgname-$pkgver"
-    install -v ./build/qlstatus "$pkgdir/usr/bin"
+    install -v ./build/qlstatus "$pkgdir/usr/local/bin"
     install -v --mode=644 qlstatus.conf "$pkgdir/etc"
-    install -v --mode=644 qlstatus.1 "$pkgdir/usr/share/man/man1"
+    install -v --mode=644 qlstatus.1 "$pkgdir/usr/local/share/man/man1"
 }
