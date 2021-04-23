@@ -1,32 +1,26 @@
-# Maintainer: Ivan Semkin (ivan at semkin dot ru)
+# Contributor: Ivan Semkin (ivan at semkin dot ru)
+# Maintainer: monosans
 
-appname=vk_api
-pkgname=(python-vk_api-git python2-vk_api-git)
-pkgver=9.3.r1.ea556a5
-pkgrel=3
+pkgname=python-vk_api-git
+_pkgname=vk_api
+pkgver=11.9.1.r2.d49c1dc
+pkgrel=1
 pkgdesc='Module for writing scripts for vk.com (vkontakte)'
 arch=('any')
 url='https://github.com/python273/vk_api'
 license=('APACHE')
-depends=()
-makedepends=('python-setuptools')
+depends=(python python-requests python-beautifulsoup4 python-websocket-client python-six)
+makedepends=(python-setuptools)
 source=('git://github.com/python273/vk_api')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $appname
-  echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
+	cd $_pkgname
+  	echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
 }
 
-package_python-vk_api-git() {
-  depends=('python' 'python-requests' 'python-beautifulsoup4')
-  cd "$srcdir/$appname"
-  python setup.py install --optimize=1 --root="${pkgdir}/"
+package() {
+	cd "$srcdir/$_pkgname"
+	python setup.py install --root="${pkgdir}/" --optimize=1 
 }
-
-package_python2-vk_api-git() {
-  depends=('python2' 'python2-requests' 'python2-enum34' 'python2-beautifulsoup4')
-  cd "$srcdir/$appname"
-  python2 setup.py install --optimize=1 --root="${pkgdir}/"
-}
-# vim:set ts=2 sw=2 et:
+# vim:set ts=4 sw=4 noet:
