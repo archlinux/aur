@@ -1,6 +1,6 @@
 pkgbase = python-mkl-fft-bin
 	pkgdesc = Fast Fourier Transform using Intel MKL - prebuilt binaries from Anaconda
-	pkgver = 1.3.0.anaconda0
+	pkgver = 1.3.0.anaconda2
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/IntelPython/mkl_fft
@@ -10,8 +10,8 @@ pkgbase = python-mkl-fft-bin
 	depends = python-numpy
 	provides = python-mkl-fft
 	conflicts = python-mkl-fft
-	source = https://repo.anaconda.com/pkgs/main/linux-64/mkl_fft-1.3.0-py39h54f3939_0.tar.bz2
-	sha256sums = ffedf2e6fc4fd28c050d3082d7d6118471385ed23ac1c5414bd0a240bad52cc1
+	source = https://repo.anaconda.com/pkgs/main/linux-64/mkl_fft-1.3.0-py39h42c9631_2.tar.bz2
+	sha256sums = 2bf9febbcc29d3da7d0beaf1373bb47b343b7a3a4fb707460a7619b2270fa9a0
 
 pkgname = python-mkl-fft-bin
 
