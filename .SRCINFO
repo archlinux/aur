@@ -1,8 +1,8 @@
 pkgbase = terminus-font-ll2
 	pkgdesc = Monospace bitmap font (for X11 and console) with ll2 patch (pass the il1I test)
-	pkgver = 4.48
+	pkgver = 4.49.1
 	pkgrel = 2
-	url = https://sourceforge.net/projects/terminus-font/
+	url = http://terminus-font.sourceforge.net/
 	arch = any
 	license = GPL2
 	license = custom:OFL
@@ -10,10 +10,12 @@ pkgbase = terminus-font-ll2
 	makedepends = python
 	provides = terminus-font
 	conflicts = terminus-font
-	source = https://downloads.sourceforge.net/project/terminus-font/terminus-font-4.48/terminus-font-4.48.tar.gz
+	conflicts = terminus-font-otb
+	replaces = terminus-font-ll2-td1-otb
+	source = https://downloads.sourceforge.net/project/terminus-font/terminus-font-4.49/terminus-font-4.49.1.tar.gz
 	source = fix-75-yes-terminus.patch
-	sha256sums = 34799c8dd5cec7db8016b4a615820dfb43b395575afbb24fc17ee19c869c94af
-	sha256sums = 67ef6187106912f81208de39d791bf0ef45f7623c2dced36c99164f58654242b
+	sha256sums = d961c1b781627bf417f9b340693d64fc219e0113ad3a3af1a3424c7aa373ef79
+	sha256sums = ddd86485cf6d54e020e36f1c38c56e8b21b57c23a5d76250e15c1d16fed9caa5
 
 pkgname = terminus-font-ll2
 
