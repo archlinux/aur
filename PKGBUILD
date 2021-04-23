@@ -1,6 +1,6 @@
 # Maintainer: Hendrik 'T4cC0re' Meyer <aur@t4cc0.re>
 pkgname=curl-http3
-pkgver=7.76.0
+pkgver=7.76.1
 pkgrel=1
 pkgdesc="An URL retrieval utility and library - compiled with HTTP/3 support - binary is called curl3"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("https://curl.haxx.se/download/curl-$pkgver.tar.gz"{,.asc})
 validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
 #source=("curl-$pkgver.zip::https://github.com/curl/curl/archive/master.zip")
 
-_quiche_ref=0.7.0
+_quiche_ref=0.8.1
 
 build(){
   rm -rf quiche
@@ -75,4 +75,4 @@ package() {
   # libquice is requried
   install -Dm755 quiche/target/release/libquiche.so "${pkgdir}/usr/lib/libquiche.so"
 }
-sha512sums=(f074e9315739bb05fc194ef66b154912620df3ddec11c01ded8f2ecde08875006418a716919dafe5001256f912c07e5576072e1df9a683f91cd3bc8143c6f054             SKIP)
+sha512sums=(43edacadbb823eb43008dd7d3b3851097cc40bc06ed6c701d7af2605a461ec556a9a15d1d71a8703cb2e0180aa3183995a67a072f4043ecc3a3972f25619722b             SKIP)
