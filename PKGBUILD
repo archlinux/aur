@@ -19,7 +19,12 @@ source=(
 sha256sums=('7ceaa20c68ef927ba74db9d46fef2baece4635ea50f524377fc24c6931aaaf30'
             '559564c32e2b499d09b9c5b3badcaf64c88d89786d4542bb11bb36a26b5ca657')
 
-_sourcedirectory="compass-$_pkgver/packages/compass"
+if [[ $_target =~ .*-beta ]]; then
+	_sourcedirectory="compass-$_pkgver/packages/compass"
+else
+	_sourcedirectory="compass-$_pkgver"
+fi
+
 _homedirectory="$pkgname-$pkgver-$pkgrel-home"
 
 prepare() {
