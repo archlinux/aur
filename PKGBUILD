@@ -23,8 +23,8 @@ pkgdesc="3D VFX pipeline interchange file format."
 arch=('x86_64')
 url="https://graphics.pixar.com/usd/docs/index.html"
 license=('Apache')
-depends+=('boost-libs' 'glew' 'openexr' 'opensubdiv')
-makedepends+=('boost' 'cmake' 'git' 'intel-tbb' 'ninja')
+depends+=(boost{,-python2}-libs 'glew' 'openexr' 'opensubdiv')
+makedepends+=(boost{,-python2} 'cmake' 'git' 'intel-tbb' 'ninja')
 provides=("usd=${pkgver}")
 source=("git+https://github.com/PixarAnimationStudios/USD.git${_fragment}"
         "boost_python2.patch"
