@@ -7,7 +7,7 @@ pkgbase = lc0-client-git
 	arch = x86_64
 	license = GPLv3
 	makedepends = git
-	makedepends = go
+	makedepends = go<=1.15.8
 	optdepends = lc0-cudnn-git
 	source = lc0-client::git+https://github.com/LeelaChessZero/lczero-client.git#branch=master
 	md5sums = SKIP

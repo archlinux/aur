@@ -8,13 +8,13 @@ arch=('i686' 'x86_64')
 url="https://lczero.org/"
 license=('GPLv3')
 optdepends=('lc0-cudnn-git')
-makedepends=('git' 'go')
+makedepends=('git' 'go<=1.15.8')
 source=("${_pkgname}::git+https://github.com/LeelaChessZero/lczero-client.git#branch=master")
 md5sums=('SKIP')
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
-    export GOPATH=`pwd`:$GOPATH
+    export GOPATH=${GOPATH}:${HOME}/go:`pwd`
     go get -u github.com/Tilps/chess
     go get -u github.com/nightlyone/lockfile
 }
@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    export GOPATH=`pwd`:$GOPATH
+    export GOPATH=${GOPATH}:${HOME}/go:`pwd`
     go build lc0_main.go
 }
 
