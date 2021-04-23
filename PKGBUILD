@@ -1,4 +1,4 @@
-# Maintainer: monosans <hsyqixco at protonmail dot com>
+# Maintainer: monosans
 
 pkgname=dwm-monosans-git
 pkgver=6.2.r1720.9b87439
