@@ -1,4 +1,4 @@
-# Maintainer: monosans <hsyqixco at protonmail dot com>
+# Maintainer: monosans
 
 pkgname=dwm-luke-git
 pkgver=6.2.r1870.3eb52c3
