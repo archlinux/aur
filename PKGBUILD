@@ -8,17 +8,13 @@ arch=('i686' 'x86_64')
 url="https://github.com/rgriebl/brickstore"
 license=('GPL')
 depends=('qt5-base' 'tbb')
-makedepends=('qt5-translations')
+makedepends=('qt5-translations' 'wget' 'patch')
 source=("https://github.com/rgriebl/brickstore/archive/v$pkgver.tar.gz")
 sha256sums=('82d6224b39fdd670fa0c3ddaf27db46768a07192c9092fa9d81c50cc6075e2f1')
 
 build() {
 	cd "$pkgname-$pkgver"
-        cd "src"
-        rm document.cpp src.pri
-        wget https://raw.githubusercontent.com/rgriebl/brickstore/697298c04ce988a157ebea14261621cf1508b147/src/document.cpp
-        wget https://raw.githubusercontent.com/rgriebl/brickstore/697298c04ce988a157ebea14261621cf1508b147/src/src.pri
-        cd ".."
+        wget -O - https://github.com/rgriebl/brickstore/commit/697298c04ce988a157ebea14261621cf1508b147.patch | patch -p 1
         qmake-qt5 -r PREFIX=/usr CONFIG+=release
 	make
 }
