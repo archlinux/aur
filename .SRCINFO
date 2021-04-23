@@ -1,13 +1,15 @@
 pkgbase = fw-git
 	pkgdesc = Workspace productivity booster (git)
 	pkgver = 2.8.0.r1.g271a655
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/brocode/fw
 	arch = x86_64
 	license = custom:WTFPL
 	makedepends = rust
 	makedepends = git
 	depends = fzf
+	depends = zlib
+	depends = openssl
 	provides = fw
 	conflicts = fw
 	source = git+https://github.com/brocode/fw

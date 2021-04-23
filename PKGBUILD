@@ -3,12 +3,12 @@
 
 pkgname=fw-git
 pkgver=2.8.0.r1.g271a655
-pkgrel=1
+pkgrel=2
 pkgdesc="Workspace productivity booster (git)"
 arch=('x86_64')
 url="https://github.com/brocode/fw"
 license=('custom:WTFPL')
-depends=('fzf')
+depends=('fzf' 'zlib' 'openssl')
 makedepends=('rust' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
