@@ -1,0 +1,14 @@
+pkgbase = yajsv
+	pkgdesc = Yet Another CLI JSON Schema Validator
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/neilpa/yajsv
+	arch = any
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = yajsv-1.4.0.tar.gz::https://github.com/neilpa/yajsv/archive/refs/tags/v1.4.0.tar.gz
+	sha512sums = b177bc924635b1cfbe2826d6c346d58d110e1cfdaea113d13fbc46cdeb40496bc80d57919c298118eca6d59acc0ce645b0a9bc97ffc0c2dd49199cb24ce541c7
+
+pkgname = yajsv
+
