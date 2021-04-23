@@ -1,12 +1,12 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 13b92c4..63e463c 100644
+index 3de01ecf..a6330bc4 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -54,6 +54,7 @@ add_subdirectory (editcase)
- add_subdirectory (align)
- add_subdirectory (autowrap)
- add_subdirectory (drawline)
-+add_subdirectory (far-gvfs)
- add_subdirectory (editorcomp)
+@@ -428,6 +428,8 @@ else()
+ 		" COMPONENT system)
+ endif()
  
- if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
++add_subdirectory (far-gvfs)
++
+ ##############################
+ # common install directives
