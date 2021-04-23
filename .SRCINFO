@@ -1,0 +1,16 @@
+pkgbase = xtensor-fftw
+	pkgdesc = FFTW bindings for the xtensor C++14 multi-dimensional array library
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/xtensor-stack/xtensor-fftw
+	arch = any
+	license = BSD-3-Clause
+	makedepends = cmake
+	depends = xtensor
+	depends = xtl
+	depends = fftw>=3
+	source = xtensor-fftw-0.2.3.tar.gz::https://github.com/xtensor-stack/xtensor-fftw/archive/0.2.3.tar.gz
+	sha512sums = db947fd162a88b716ff85dadf58d2fcb82d1ffc058b1484322d9978d9c74d68209e0b9e626238027b01e8bb0b45bf221365c2d8319acdb3361c65471322ee3d9
+
+pkgname = xtensor-fftw
+
