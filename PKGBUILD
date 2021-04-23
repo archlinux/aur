@@ -3,9 +3,9 @@ pkgname=compressonator-cli-bin
 pkgver=4.1.5057
 # this is different to the linux bin version for some reason
 release_name=V4.1.5083
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI for GPU texture compression, decompression, format transcoding, and more"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/GPUOpen-Tools/Compressonator"
 license=('MIT')
 depends=()
