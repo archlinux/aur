@@ -3,7 +3,7 @@
 pkgname=zrepl-bin
 _pkgname=zrepl
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='One-stop ZFS backup & replication solution'
 arch=('x86_64')
 url='https://zrepl.github.io/'
@@ -15,7 +15,7 @@ source=(
     ${_pkgname}-bin::"https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-linux-amd64"
 )
 sha256sums=('e7035a8a40913614f4ab24d7caad2c26419fd2b0aaa3565c16439e59214ae590'
-            'a87115fbd8ee802c71e3f279696ac27822eca488477705a70fc397aee985da3e')
+            '928bbdbf16b6b2d24f9d1299bbc4616195caa3a7abfdfa171bb075bb6e62368c')
 
 package() {
     install -d "${pkgdir}/usr/share/licenses/${_pkgname}"
