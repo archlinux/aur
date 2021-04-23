@@ -1,9 +1,8 @@
 pkgbase = coin-or-bonmin
 	pkgdesc = Experimental open-source C++ code for solving general MINLP problems
 	pkgver = 1.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.coin-or.org/Bonmin
-	arch = i686
 	arch = x86_64
 	groups = coin-or
 	license = EPL
