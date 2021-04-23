@@ -1,17 +1,24 @@
 pkgbase = openfx-io
 	pkgdesc = A set of Readers/Writers plugins written using the OpenFX standard
-	pkgver = 2.3.15
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/NatronGitHub/openfx-io
-	arch = i686
-	arch = pentium4
 	arch = x86_64
 	license = GPL
 	depends = ffmpeg
 	depends = openimageio
-	depends = seexpr1-2
-	source = openfx-io-Natron-2.3.15.tar.xz::https://github.com/NatronGitHub/openfx-io/releases/download/Natron-2.3.15/openfx-io-Natron-2.3.15.tar.xz
-	sha512sums = c5c2dde19f9b2eec4852f217ebded06fdaa5496e0e49a40172d8d14b8c998ed1fa22f361fe4e4ea39b1308d8489ada192e960386913b024033fc78752ae18425
+	depends = libseexpr2
+	conflicts = openfx-io-git
+	source = openfx-io-Natron-2.4.0.tar.gz::https://github.com/NatronGitHub/openfx-io/archive/refs/tags/Natron-2.4.0.tar.gz
+	source = openfx-Natron-2.4.0.tar.gz::https://github.com/NatronGitHub/openfx/archive/refs/tags/Natron-2.4.0.tar.gz
+	source = openfx-supportext-bde8d6a2b119ca35e9229d8af18cda2f57114a20.tar.gz::https://github.com/NatronGitHub/openfx-supportext/archive/bde8d6a2b119ca35e9229d8af18cda2f57114a20.tar.gz
+	source = SequenceParsing-ab247c293c12066bd31cc1caabeedeac9c387e49.tar.gz::https://github.com/NatronGitHub/SequenceParsing/archive/ab247c293c12066bd31cc1caabeedeac9c387e49.tar.gz
+	source = tinydir-3aae9224376b5e1a23fd824f19d9501162620b53.tar.gz::https://github.com/NatronGitHub/tinydir/archive/3aae9224376b5e1a23fd824f19d9501162620b53.tar.gz
+	sha512sums = 5c51eb2ee3c4210dc07546e7424ed6e038a5c0f0d2c4a65b3b9a8f70caab1d07a13de410bc3c2cb95b58b45159ae98671e41db843b0a6ff88e36df7d80a6a22c
+	sha512sums = 0a01ea18970a06eb58b03e16f9027a84f37e53581387a0fbd208be16e2fa71f3e0d314307934348e3a7a0c3bc699c36535fd044f18e89a937e9bfca239037096
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = openfx-io
 
