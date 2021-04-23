@@ -6,7 +6,7 @@ pkgbase=holland
 pkgname=('holland' 'holland-common' 'holland-lvm' 'holland-mysql' 
          'holland-mysqldump' 'holland-mysqllvm' 'holland-pgdump'
          'holland-xtrabackup' 'holland-mariabackup' 'holland-mongodump')
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 arch=('any')
 url="http://hollandbackup.org"
@@ -14,10 +14,10 @@ license=('BSD' 'GPL2')
 options=('emptydirs')
 makedepends=('python-setuptools' 'python-sphinx')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/holland-backup/holland/archive/v${pkgver}.tar.gz"
-        "${pkgbase}-backup.github.com-${pkgver}.tar.gz::https://github.com/holland-backup/holland-backup.github.com/archive/v${pkgver}.tar.gz"
+        "${pkgbase}-backup.github.io-${pkgver}.tar.gz::https://github.com/holland-backup/holland-backup.github.com/archive/v${pkgver}.tar.gz"
         "holland.logrotate")
-sha256sums=('9f2be8fbdba0849cbd3b2d3b8c47d82f538ef21e251d8c3304c87067722e1a8b'
-            'b051f92d078d87e03429fb74d367d4f69da4064c3e7ccb91852f94e30d3b52af'
+sha256sums=('b8fec6ae97c1d0c0769f36510cc460392f064327a81e8857e596d9984bb994da'
+            'd40e255154a16b7c963ccbc0ceb198f963e99a92651e9ab68f22ca37ed2c5b64'
             '6b0240375e5cafe24a4e0c6fd078e42eaff4f5b2030f7fba4202d052d9a54995')
 
 prepare() {
@@ -29,7 +29,7 @@ build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
   python setup.py build
 
-  cd "${srcdir}/${pkgbase}-backup.github.com-${pkgver}"
+  cd "${srcdir}/${pkgbase}-backup.github.io-${pkgver}"
   make man
 
   cd "${srcdir}/${pkgbase}-${pkgver}/plugins/holland.lib.common"
@@ -98,7 +98,7 @@ package_holland() {
   install -Dm0644 "${srcdir}/holland.logrotate" \
     "${pkgdir}/etc/logrotate.d/holland"
 
-  cd "${srcdir}/${pkgbase}-backup.github.com-${pkgver}"
+  cd "${srcdir}/${pkgbase}-backup.github.io-${pkgver}"
   install -Dm0644 _build/holland.1 "${pkgdir}/usr/share/man/man1/holland.1"
 }
 
