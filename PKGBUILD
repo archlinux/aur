@@ -22,7 +22,7 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 
 pkgname=blender-${_blenver}-git
 pkgver=2.81.r91465.gf1aa4d18d49
-pkgrel=2
+pkgrel=3
 pkgdesc="Maintenance version of ${_branch} branch"
 changelog=blender.changelog
 arch=('i686' 'x86_64')
@@ -52,6 +52,7 @@ source=("git://git.blender.org/blender.git${_fragment}"
         'python.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/e413b39a936181cc954dfbf054b0a19794d8902c'
         'python39.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/56d0df51a36fdce7ec2d1fbb7b47b1d95b591b5f'
         'osl111.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/7d85b6431fc331d9869f945bf7c9f3353b7b8c95'
+        'openvdb8.patch'
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -64,7 +65,8 @@ sha256sums=('SKIP'
             '41e745b8fb37464a83dfedc09ff2158369cec09b96fdc855b71001e16b6cbe75'
             '21b45266503f71bd2245528a206cc215d9eb5cbcf0cd06977bbd529b09ee3a44'
             '7ae5ac4d636934cd46213e3f29ea67013d17316e122d8f312daec288e4f90cd9'
-            '99b96f4f6d02cd3e226d814175f7915a85a43966216d5a522265c68091a3b73a')
+            '99b96f4f6d02cd3e226d814175f7915a85a43966216d5a522265c68091a3b73a'
+            '596e6327bad0c206408abd7c6ced8f109b4d56200889b9041ef7b8605e30e1b6')
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
@@ -76,7 +78,8 @@ b2sums=('SKIP'
         '33f4b7e71153b272f0ae3b16c9eabdb65fb275c2344a6454866c660ac9bdf6da1207e75c6f9198c64c52cebeab71f816d2852425596c0cfbcfed0835e64403ff'
         'fd1c4a53803a9fb9cf64a23f43dbbf34629bc942759914422e700923c542f158ea3ff38463a4fde8ea488ac5c639e057b4b1c72515bbdbad1a6be1a97870f413'
         '4b11df6d494644e740cfda654fbebb2988c430d18c093739724f331738099100925fd0399b94cf0a1188c4ae804081c8380424b64f35355f7cbfde6c7ee91b44'
-        'ab990d0771b593ec9e8637e330ba2721fe9d6c82c72eb2296f1580129da0e4de525e58921869fabd36c3b92ec4fc1754b7dc4cb2da1674b5baa5d26332eebdc8')
+        'ab990d0771b593ec9e8637e330ba2721fe9d6c82c72eb2296f1580129da0e4de525e58921869fabd36c3b92ec4fc1754b7dc4cb2da1674b5baa5d26332eebdc8'
+        '4fefb9bacb1c27e9cf7551c8c0775f35c9f0d5783bdb5eff9e51b98dd660809ef88038e8dfa9e9d28319ba93bb80960f4becce8b9f65fad4a870657c09469bca')
 
 pkgver() {
   blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
@@ -97,7 +100,7 @@ prepare() {
     git -C "$srcdir/blender" apply -v <(sed "s/@@_suffix@@/${_suffix}/g" "${srcdir}/addon_path.patch")
   fi
   ((DISABLE_EMBREE)) || git -C "$srcdir/blender" apply -v "${srcdir}"/embree.patch
-  git -C "$srcdir/blender" apply -v "$srcdir"/{cpp14,cuda11,python{,39},osl111}.patch
+  git -C "$srcdir/blender" apply -v "$srcdir"/{cpp14,cuda11,python{,39},openvdb8,osl111}.patch
 }
 
 build() {
