@@ -48,14 +48,14 @@ pkgbase = firefox-beta
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = https://archive.mozilla.org/pub/firefox/releases/89.0b3/source/firefox-89.0b3.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/89.0b3/source/firefox-89.0b3.source.tar.xz.asc
+	source = http://archive.mozilla.org/pub/firefox/releases/89.0b3/source/firefox-89.0b3.source.tar.xz
+	source = http://archive.mozilla.org/pub/firefox/releases/89.0b3/source/firefox-89.0b3.source.tar.xz.asc
 	source = 0001-Use-remoting-name-for-GDK-application-names.patch
 	source = firefox-beta.desktop
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha256sums = ec97a270676a3edc9d90b0550a5b0461ae0eb4718b79f16a34c0b518c78a67e1
 	sha256sums = SKIP
-	sha256sums = 3bb7463471fb43b2163a705a79a13a3003d70fff4bbe44f467807ca056de9a75
+	sha256sums = 1b6814e85f13dcf069482ad1acfc1a099661922c85e3344aa4ee059288506ccc
 	sha256sums = 54d93249fedc9c4cdc5eb82da498b08f08bcb089f85a138b457f3251a0913ad1
 
 pkgname = firefox-beta
