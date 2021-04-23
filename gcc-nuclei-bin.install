@@ -2,6 +2,5 @@ all_off="$(tput sgr0)"
 bold="${all_off}$(tput bold)"
 post_install() {
     echo "add ${bold}export NUCLEI_TOOL_ROOT=/opt/Nuclei-Toolchain${all_off}"
-    echo "and ${bold}export PATH=\$NUCLEI_TOOL_ROOT/gcc/bin:\$NUCLEI_TOOL_ROOT/openocd/bin:\$PATH${all_off}"
     echo "to ${bold}~/.bashrc${all_off} and ${bold}source ~/.bashrc${all_off} before compile any project."
 }
