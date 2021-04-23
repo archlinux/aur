@@ -6,8 +6,8 @@
 
 pkgbase=nvidia-390xx-utils
 pkgname=('nvidia-390xx-utils' 'opencl-nvidia-390xx' 'nvidia-390xx-dkms')
-pkgver=390.141
-pkgrel=3
+pkgver=390.143
+pkgrel=1
 arch=('x86_64')
 url="https://www.nvidia.com/"
 license=('custom')
@@ -16,15 +16,11 @@ _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 source=('nvidia-drm-outputclass.conf'
         'nvidia-390xx-utils.sysusers'
         "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
-        kernel-4.16.patch
-        kernel-5.11.patch
-        kernel-5.12.patch)
+        kernel-4.16.patch)
 b2sums=('8e24aea70b139185bd682b080d32aeda673e6e92b45a90e6f6e0d736674180400bc8bd1aa5c66b8d033fc9d5e0cfffed456a87298bd93a3afbbc30b8dc48c4e9'
         'c1da4ce5784e43385465913a95053a3e54f800aac6f1b49f33e2a77504d76da5e6db6ec7074fbe7ba5f52dcef9e1ebaa620942c33ff825a56caba5c9c8b0d1be'
-        'fae33e5fcd8f0429f163ad40e58a07c42ff47260bd1b0f56989d6147d63294c475f33ddc02f06a16eaf8c8ea9f74a98dbcb32b5322c68661331ebf7dfe976770'
-        '16480a3df51248b5adf3a3349f602f96cd830b5364c0a1c142a53099ed1e881f727026fe36b837b76f20aef7e7bf606f52c1af28f1eec7cc8bf39a571243a4ba'
-        '51f0c73e5e2b3fa96267b60c53c4acf966a6cf4de9acabd10cfc26bbfadba95cc7766546afe37e0e0ce67b5b9a0fb3cbea35ed8d47505d456473d1a9f7248dad'
-        'a5898e232067a697261840b57e1c3b02b6476f3cad1ab1873fa54235d872bfabab39b78fa9f56495dd3c7bcdee10a63b3adc1d3932f853d5ce5c5d92109f9c4d')
+        'd1871a27b1df73b4daea26f45c5cc33fa7582dea538ac2acfbb5ed23c0254fe5261d6be60cdb7ce8643ee77b0259195acb2ba2a3784b74c404e79d960005b83d'
+        '16480a3df51248b5adf3a3349f602f96cd830b5364c0a1c142a53099ed1e881f727026fe36b837b76f20aef7e7bf606f52c1af28f1eec7cc8bf39a571243a4ba')
 
 create_links() {
     # create soname links
@@ -46,14 +42,6 @@ prepare() {
     # Restore phys_to_dma support (still needed for 390.138)
     # From loqs via https://bugs.archlinux.org/task/58074
     patch -Np1 -i ../kernel-4.16.patch
-
-    # From Joan Bruguera via Ike Devolder
-    # https://gitlab.com/herecura/packages/nvidia-390xx-dkms/-/blob/herecura/linux-5.11.patch
-    patch -Np1 -i ../kernel-5.11.patch
-
-    # From Larry Finger
-    # https://build.opensuse.org/package/view_file/X11:Drivers:Video/nvidia-gfxG04/kernel-5.12.patch?expand=1
-    patch -Np1 -i ../kernel-5.12.patch
 
     cd kernel
     sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
