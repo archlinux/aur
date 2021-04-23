@@ -1,0 +1,22 @@
+pkgbase = libseexpr2
+	pkgdesc = An embeddable expression evaluation engine (main library only)
+	pkgver = 2.11
+	pkgrel = 1
+	url = http://www.disneyanimation.com/technology/seexpr.html
+	arch = i686
+	arch = x86_64
+	license = custom:Apache
+	makedepends = libpng
+	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	provides = libSeExpr.so=2.11
+	conflicts = seexpr
+	conflicts = seexpr1
+	conflicts = seexpr1-2
+	conflicts = seexpr2
+	source = git+https://github.com/wdas/SeExpr.git#tag=v2.11
+	md5sums = SKIP
+
+pkgname = libseexpr2
+
