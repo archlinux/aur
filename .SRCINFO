@@ -2,13 +2,13 @@ pkgbase = pidgin-latex
 	pkgdesc = Small latex plugin for pidgin
 	pkgver = 1.5.0
 	pkgrel = 1
-	url = http://sourceforge.net/projects/pidgin-latex/
+	url = https://sourceforge.net/projects/pidgin-latex/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = pidgin
 	depends = texlive-core
-	source = http://downloads.sourceforge.net/pidgin-latex/pidgin-latex_1.5.0.tar.gz
+	source = https://downloads.sourceforge.net/pidgin-latex/pidgin-latex_1.5.0.tar.gz
 	sha256sums = 5885666363867630de3dcb426420b07f9efd2467f562127d3998cc190c939d3a
 
 pkgname = pidgin-latex
