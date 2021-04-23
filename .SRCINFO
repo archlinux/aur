@@ -1,7 +1,7 @@
 pkgbase = rust-clippy
 	pkgdesc = A bunch of lints to catch common mistakes and improve your Rust code
-	pkgver = 0.0.190
-	pkgrel = 1
+	pkgver = 0.1.53
+	pkgrel = 2
 	url = https://github.com/rust-lang-nursery/rust-clippy
 	arch = i686
 	arch = x86_64

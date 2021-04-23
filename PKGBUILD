@@ -1,7 +1,7 @@
-# Maintainer: sum01 <sum01@protonmail.com>
+# Maintainer: FreddyMaster <blackcatshd@gmail.com>
 pkgname=rust-clippy
-pkgver=0.0.190
-pkgrel=1
+pkgver=0.1.53
+pkgrel=2
 pkgdesc="A bunch of lints to catch common mistakes and improve your Rust code"
 arch=('i686' 'x86_64')
 url="https://github.com/rust-lang-nursery/rust-clippy"
