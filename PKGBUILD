@@ -2,7 +2,7 @@
 # Contributer : Guinux <nuxgui@gmail.com>
 
 pkgname=mhwd-nvidia-390xx
-pkgver=390.141
+pkgver=390.143
 pkgrel=1
 pkgdesc="mhwd-nvidia-390xx PCI ID database"
 arch=("any")
