@@ -2,7 +2,7 @@
 
 pkgname=tblock
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 provides=("$pkgname")
 pkgdesc="An anticapitalist ad-blocker that uses the hosts file"
 url="https://tblock.codeberg.page"

@@ -1,7 +1,7 @@
 pkgbase = tblock
 	pkgdesc = An anticapitalist ad-blocker that uses the hosts file
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tblock.codeberg.page
 	arch = any
 	license = GPL3
