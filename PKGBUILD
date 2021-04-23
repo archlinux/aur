@@ -1,5 +1,6 @@
 
-# Maintainer : abdus <nail@abdus.xyz>
+# Contributor : abdus <nail@abdus.xyz>
+# Maintainer: Jack Rubacha <rubacha.jack03@gmail.com>
 
 pkgname=2048.c
 pkgver=108
@@ -8,10 +9,10 @@ pkgdesc="A terminal 2048 written in c"
 arch=('any')
 url="https://github.com/mevdschee/2048.c"
 license=('MIT')
-source=("https://raw.githubusercontent.com/mevdschee/2048.c/9b387c3071d962a1c923f66b5caa3f849d519a0c/2048.c"
-        "https://raw.githubusercontent.com/mevdschee/2048.c/9b387c3071d962a1c923f66b5caa3f849d519a0c/Makefile")
+source=("https://raw.githubusercontent.com/mevdschee/2048.c/bdb7527db2c4b5ce5eb8b8067ed9c0330ead77ea/2048.c"
+        "https://raw.githubusercontent.com/mevdschee/2048.c/bdb7527db2c4b5ce5eb8b8067ed9c0330ead77ea/Makefile")
 md5sums=('4d7e729490b577df6d22a0959a7423c4'
-         '23bf7679190d5f35fcd9d26b67c42e70')
+         '006de8d5fdd80f801619f1b4c98654e5')
 
 build() {
     cd "${srcdir}"
@@ -19,11 +20,10 @@ build() {
 }
 
 check() {
-    cd "${srcdir}"
-    ./2048 test
+    make test 
 }
 
 package() {
-    install "${srcdir}/2048" -D "${pkgdir}/usr/bin/2048"
+      make DESTDIR="$pkgdir/" install
 }
 
