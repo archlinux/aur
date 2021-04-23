@@ -1,7 +1,7 @@
 pkgbase = python-npyscreen-git
 	pkgdesc = A python widget library and application framework
-	pkgver = r480.d286599
-	pkgrel = 2
+	pkgver = r494.8ce3120
+	pkgrel = 1
 	url = https://github.com/npcole/npyscreen
 	arch = any
 	license = BSD
