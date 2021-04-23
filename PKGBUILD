@@ -2,7 +2,7 @@
 
 pkgname=yesplaymusic
 pkgver=0.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A third party music application for Netease Music"
 arch=("x86_64")
 url="https://github.com/qier222/YesPlayMusic"
@@ -31,16 +31,13 @@ md5sums=('48f7830332470cf218ee4c945d3a6b72')
 
 package() {
     cd ${srcdir}
-    mv YesPlayMusic-${pkgver}.pacman YesPlayMusic-${pkgver}.pkg.tar.zst
-    tar -I zstd -xvf YesPlayMusic-${pkgver}.pkg.tar.zst -C ${pkgdir}
+    tar -xvf YesPlayMusic-${pkgver}.pacman -C ${pkgdir}
 
     # remove exsiting files
     rm -f ${pkgdir}/.PKGINFO ${pkgdir}/.MTREE ${pkgdir}/.INSTALL
 }
 
 post_install() {
-        :
-    #!/bin/bash
 
     # Link to the binary
     ln -sf '/opt/YesPlayMusic/yesplaymusic' '/usr/bin/yesplaymusic'
@@ -54,10 +51,7 @@ post_install() {
 }
 
 post_remove() {
-        :
-    #!/bin/bash
 
-    # Delete the link to the binary
     rm -f '/usr/bin/yesplaymusic'
 
 }
