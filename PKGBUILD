@@ -1,29 +1,34 @@
-# Maintainer: Alexander Susha <isushik94@gmail.com>
-# Maintainer : Nathan Owens <ndowens @ artixlinux.org>
-
+# Maintainer: chn <g897331845@gmail.com>
 pkgname=xtensor-io
-pkgver=0.7.0
+pkgver=0.12.6
 pkgrel=1
-pkgdesc="QuantStack tools library - Multi-dimensional arrays with broadcasting and lazy computing."
-arch=('x86_64')
-url="https://github.com/QuantStack/${pkgname}"
+pkgdesc="xtensor plugin to read and write images, audio files, numpy (compressed) npz and HDF5"
+arch=('any')
+url="https://github.com/xtensor-stack/xtensor-io"
 license=('BSD-3-Clause')
-depends=('xtensor' 'xtl' 'openimageio' 'libsndfile' 'zlib')
-makedepends=('cmake' 'git')
-source=("git+https://github.com/QuantStack/xtensor-io.git#tag=${pkgver}")
-sha512sums=('SKIP')
+depends=('xtensor' 'openimageio' 'libsndfile' 'zlib' 'blosc' 'gdal')
+makedepends=('cmake')
+source=(
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/xtensor-stack/xtensor-io/archive/${pkgver}.tar.gz")
 
 build() {
-  cd "${pkgname}"
-  mkdir build
-  
-  cmake -B build \
+	cd "${pkgname}-${pkgver}"
+  mkdir -p build
+  cd build
+  cmake \
     -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib
-  make -C build
+    -DHAVE_OIIO=ON \
+    -DHAVE_SndFile=ON \
+    -DHAVE_ZLIB=ON \
+    -DHAVE_Blosc=ON \
+    -DHAVE_GDAL=ON \
+    ..
+  make
 }
 
 package() {
-  cd "${pkgname}"
-  make -C build install
+	cd "${pkgname}-${pkgver}/build"
+  make install
 }
+
+sha512sums=('b73f180097540da998ff9b6974050e335d7c4e33c3c46c0f3abdedffc44eb59ba6cdba1508885a71e7749f3bc3a9ff1499e105332dff5e2b5e23e2e96e542924')

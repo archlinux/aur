@@ -1,19 +1,19 @@
 pkgbase = xtensor-io
-	pkgdesc = QuantStack tools library - Multi-dimensional arrays with broadcasting and lazy computing.
-	pkgver = 0.7.0
+	pkgdesc = xtensor plugin to read and write images, audio files, numpy (compressed) npz and HDF5
+	pkgver = 0.12.6
 	pkgrel = 1
-	url = https://github.com/QuantStack/xtensor-io
-	arch = x86_64
+	url = https://github.com/xtensor-stack/xtensor-io
+	arch = any
 	license = BSD-3-Clause
 	makedepends = cmake
-	makedepends = git
 	depends = xtensor
-	depends = xtl
 	depends = openimageio
 	depends = libsndfile
 	depends = zlib
-	source = git+https://github.com/QuantStack/xtensor-io.git#tag=0.7.0
-	sha512sums = SKIP
+	depends = blosc
+	depends = gdal
+	source = xtensor-io-0.12.6.tar.gz::https://github.com/xtensor-stack/xtensor-io/archive/0.12.6.tar.gz
+	sha512sums = b73f180097540da998ff9b6974050e335d7c4e33c3c46c0f3abdedffc44eb59ba6cdba1508885a71e7749f3bc3a9ff1499e105332dff5e2b5e23e2e96e542924
 
 pkgname = xtensor-io
 
