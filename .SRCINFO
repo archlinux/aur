@@ -1,12 +1,12 @@
 pkgbase = hackernews_tui
 	pkgdesc = A Terminal UI to browse hacker news.
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/aome510/hackernews-TUI
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = hackernews_tui-0.4.0.tar.gz::https://github.com/aome510/hackernews-TUI/archive/v0.4.0.tar.gz
-	sha512sums = 7aa095bbebb3b4143a5e912d0b9766a8bd2e5978909337b8c0762499566f94fe3aa773845bbd28239a70fe377b031959f5f2929b0bcdd57e967b89d03649a439
+	source = hackernews_tui-0.5.0.tar.gz::https://github.com/aome510/hackernews-TUI/archive/v0.5.0.tar.gz
+	sha512sums = 7597a0087bc7353e3147796d866f5ead7487078ba4bcb8070405ded01f905a0b4ef507605b0b729104117bdab15163a3929edaf6e959c9aa3fafe04008c8a0a9
 
 pkgname = hackernews_tui
