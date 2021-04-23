@@ -1,0 +1,64 @@
+diff --git a/intern/ghost/intern/GHOST_SystemPathsUnix.cpp b/intern/ghost/intern/GHOST_SystemPathsUnix.cpp
+index 8fd6aee28da..99d61882451 100644
+--- a/intern/ghost/intern/GHOST_SystemPathsUnix.cpp
++++ b/intern/ghost/intern/GHOST_SystemPathsUnix.cpp
+@@ -56,7 +56,7 @@ const GHOST_TUns8 *GHOST_SystemPathsUnix::getSystemDir(int, const char *versions
+ {
+   /* no prefix assumes a portable build which only uses bundled scripts */
+   if (static_path) {
+-    static string system_path = string(static_path) + "/blender/" + versionstr;
++    static string system_path = string(static_path) + "/blender/" + versionstr + "_@@_suffix@@";
+     return (GHOST_TUns8 *)system_path.c_str();
+   }
+ 
+@@ -77,7 +77,7 @@ const GHOST_TUns8 *GHOST_SystemPathsUnix::getUserDir(int version, const char *ve
+       last_version = version;
+ 
+       if (home) {
+-        user_path = string(home) + "/.blender/" + versionstr;
++        user_path = string(home) + "/.blender/" + versionstr + "_@@_suffix@@";
+       }
+       else {
+         return NULL;
+@@ -92,7 +92,7 @@ const GHOST_TUns8 *GHOST_SystemPathsUnix::getUserDir(int version, const char *ve
+       last_version = version;
+ 
+       if (home) {
+-        user_path = string(home) + "/blender/" + versionstr;
++        user_path = string(home) + "/blender/" + versionstr + "_@@_suffix@@";
+       }
+       else {
+         home = getenv("HOME");
+@@ -100,7 +100,7 @@ const GHOST_TUns8 *GHOST_SystemPathsUnix::getUserDir(int version, const char *ve
+         if (home == NULL)
+           home = getpwuid(getuid())->pw_dir;
+ 
+-        user_path = string(home) + "/.config/blender/" + versionstr;
++        user_path = string(home) + "/.config/blender/" + versionstr + "_@@_suffix@@";
+       }
+     }
+ 
+diff --git a/source/creator/CMakeLists.txt b/source/creator/CMakeLists.txt
+index 8fb04c320a0..3102752ec97 100644
+--- a/source/creator/CMakeLists.txt
++++ b/source/creator/CMakeLists.txt
+@@ -303,15 +303,15 @@ endif()
+ if(UNIX AND NOT APPLE)
+   if(WITH_PYTHON_MODULE)
+     if(WITH_INSTALL_PORTABLE)
+-      set(TARGETDIR_VER ${BLENDER_VERSION})
++      set(TARGETDIR_VER ${BLENDER_VERSION}_@@_suffix@@)
+     else()
+-      set(TARGETDIR_VER ${PYTHON_SITE_PACKAGES}/${BLENDER_VERSION})
++      set(TARGETDIR_VER ${PYTHON_SITE_PACKAGES}/${BLENDER_VERSION}_@@_suffix@@)
+     endif()
+   else()
+     if(WITH_INSTALL_PORTABLE)
+-      set(TARGETDIR_VER ${BLENDER_VERSION})
++      set(TARGETDIR_VER ${BLENDER_VERSION}_@@_suffix@@)
+     else()
+-      set(TARGETDIR_VER share/blender/${BLENDER_VERSION})
++      set(TARGETDIR_VER share/blender/${BLENDER_VERSION}_@@_suffix@@)
+     endif()
+   endif()
+ 

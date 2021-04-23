@@ -1,6 +1,6 @@
-pkgbase = blender-develop-git
+pkgbase = blender-cycles-x-git
 	pkgdesc = Development version of Blender (non-conflicting version)
-	pkgver = 2.93.r105258.gd63b72e9f93
+	pkgver = 3.0.r105857.g1dea1d93d39
 	pkgrel = 1
 	url = https://blender.org/
 	changelog = blender.changelog
@@ -37,14 +37,15 @@ pkgbase = blender-develop-git
 	depends = libpng
 	depends = openimagedenoise
 	optdepends = cuda: CUDA support in Cycles
-	provides = blender=2.93
-	conflicts = blender=2.93
-	source = git://git.blender.org/blender.git#branch=master
+	provides = blender-cycles-x
+	conflicts = blender-cycles-x
+	source = git://git.blender.org/blender.git#branch=cycles-x
 	source = blender-addons.git::git://git.blender.org/blender-addons.git
 	source = blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git
 	source = blender-translations.git::git://git.blender.org/blender-translations.git
 	source = blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git
 	source = SelectCudaComputeArch.patch
+	source = addon_path.patch
 	source = usd_python.patch
 	source = embree.patch
 	sha256sums = SKIP
@@ -53,8 +54,9 @@ pkgbase = blender-develop-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c
+	sha256sums = ff05a19c9ff8aa3622b7d31f86c6218ac1a3ac06ad1a7cfd7e0587f623b3bd2f
 	sha256sums = 333b6fd864d55da2077bc85c55af1a27d4aee9764a1a839df26873a9f19b8703
 	sha256sums = 6249892f99ffd960e36f43fb893c14e2f8e4dd1d901b9581d25882e865f2603f
 
-pkgname = blender-develop-git
+pkgname = blender-cycles-x-git
 

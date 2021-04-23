@@ -2,7 +2,9 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 # Configuration.
-_fragment=${FRAGMENT:-#branch=master}
+_branch="cycles-x"
+_suffix=${_branch}
+_fragment=${FRAGMENT:-#branch=${_branch}}
 # shellcheck disable=SC2206
 [[ -v CUDA_ARCH ]] && _cuda_capability=(${CUDA_ARCH})
 
@@ -25,8 +27,9 @@ _CMAKE_FLAGS+=( -DOSL_ROOT_DIR=/opt/osl
 #shellcheck disable=SC2015
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
 
-pkgname=blender-develop-git
-pkgver=2.93.r105258.gd63b72e9f93
+pkgname=blender-${_suffix}-git
+pkgver=3.0.r105857.g1dea1d93d39
+_blenver=${pkgver%.r*}
 pkgrel=1
 pkgdesc="Development version of Blender (non-conflicting version)"
 changelog=blender.changelog
@@ -37,8 +40,8 @@ depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2' 'libhar
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage-qfix' 'libtiff' 'libpng')
 depends+=('openimagedenoise')
 makedepends+=('git' 'cmake' 'boost' 'mesa' 'llvm')
-provides=("blender=${pkgver%%.r*}")
-conflicts=("blender=${pkgver%%.r*}")
+provides=("blender-${_suffix}")
+conflicts=("blender-${_suffix}")
 license=('GPL')
 # NOTE: the source array has to be kept in sync with .gitmodules
 # the submodules has to be stored in path ending with git to match
@@ -51,6 +54,7 @@ source=("git://git.blender.org/blender.git${_fragment}"
         'blender-translations.git::git://git.blender.org/blender-translations.git'
         'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git'
         SelectCudaComputeArch.patch
+        addon_path.patch
         usd_python.patch #add missing python headers when building against python enabled usd.
         embree.patch #add missing embree link.
         )
@@ -60,6 +64,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c'
+            'ff05a19c9ff8aa3622b7d31f86c6218ac1a3ac06ad1a7cfd7e0587f623b3bd2f'
             '333b6fd864d55da2077bc85c55af1a27d4aee9764a1a839df26873a9f19b8703'
             '6249892f99ffd960e36f43fb893c14e2f8e4dd1d901b9581d25882e865f2603f')
 
@@ -77,6 +82,9 @@ prepare() {
   git -C "$srcdir/blender" submodule update --init --recursive --remote
   if [ ! -v _cuda_capability ] && grep -q nvidia <(lsmod); then
     git -C "$srcdir/blender" apply -v "${srcdir}"/SelectCudaComputeArch.patch
+  fi
+  if [[ -v _suffix ]]; then
+    git -C "$srcdir/blender" apply -v <(sed "s/@@_suffix@@/${_suffix}/g" "${srcdir}/addon_path.patch")
   fi
   ((DISABLE_USD)) || git -C "$srcdir/blender" apply -v "${srcdir}"/usd_python.patch
   git -C "$srcdir/blender" apply -v "${srcdir}"/embree.patch
@@ -118,7 +126,7 @@ build() {
 }
 
 package() {
-  _suffix=${pkgver%%.r*}
+  local _suffix=${_blenver}${_suffix:+_$_suffix}
   export DESTDIR="$pkgdir"
   if ((DISABLE_NINJA)); then make -C "$srcdir/build" install; else ninja -C "$srcdir/build" install; fi
 
