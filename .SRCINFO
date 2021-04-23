@@ -1,7 +1,7 @@
 pkgbase = audiotube-git
 	pkgdesc = Client for YouTube Music
 	pkgver = r81.5e5ee60
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/jbbgameich/audiotube
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,7 @@ pkgbase = audiotube-git
 	makedepends = git
 	makedepends = extra-cmake-modules
 	makedepends = pybind11
+	makedepends = qt5-svg
 	depends = ki18n
 	depends = kirigami2
 	depends = python-ytmusicapi
