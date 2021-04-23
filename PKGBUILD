@@ -8,6 +8,7 @@ arch=('x86_64')
 license=('MIT')
 url='https://gitlab.com/hadogenes/displaylink-connect'
 depends=('displaylink')
+install=displaylink-connect.install
 source=("https://gitlab.com/hadogenes/displaylink-connect/-/archive/v${pkgver}/displaylink-connect-v${pkgver}.zip")
 sha256sums=('803522aa92cf8b781405f4790a54e19e3173696776f8eab49593437cdb195a69')
 
@@ -27,6 +28,4 @@ package() {
     install -Dm644 systemd/system/displaylink.service.d/displaylink-connect.conf "$pkgdir/usr/lib/systemd/system/displaylink.service.d/displaylink-connect.conf"
     install -Dm644 systemd/user/displaylink-connect.service "$pkgdir/usr/lib/systemd/user/displaylink-connect.service"
     install -Dm644 displaylink-connect.desktop "$pkgdir/etc/xdg/autostart/displaylink-connect.desktop"
-    mkdir -p "$pkgdir/usr/lib/systemd/user/default.target.wants"
-    ln -s /usr/lib/systemd/user/displaylink-connect.service "$pkgdir/usr/lib/systemd/user/default.target.wants/displaylink-connect.service"
 }

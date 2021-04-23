@@ -1,0 +1,7 @@
+post_install() {
+  systemctl --global enable displaylink-connect.service
+}
+
+pre_remove() {
+  systemctl --global disable displaylink-connect.service
+}
