@@ -1,12 +1,13 @@
 pkgbase = gcc-nuclei-bin
 	pkgdesc = GNU Compiler Collection for RISC-V processor from Nuclei System Technology (official build).
 	pkgver = 2020.08
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nucleisys.com/download.php
 	install = gcc-nuclei-bin.install
 	arch = x86_64
 	license = GPL LGPL FDL custom
 	noextract = nuclei_riscv_newlibc_prebuilt_linux64_2020.08.tar.bz2
+	options = !strip
 	source = https://nucleisys.com/upload/files/toochain/gcc/nuclei_riscv_newlibc_prebuilt_linux64_2020.08.tar.bz2
 	sha256sums = 398c25b9385b8122d2e864bf71e47b1d871f6c326c21d0ae6d3afd2858f36041
 
