@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-coin-or-bonmin
 	pkgdesc = Experimental open-source C++ code for solving general MINLP problems (mingw-w64)
 	pkgver = 1.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.coin-or.org/Bonmin
 	arch = any
 	groups = mingw-w64-coin-or
