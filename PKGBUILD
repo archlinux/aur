@@ -5,7 +5,7 @@
 
 pkgname=ghidra-git
 pkgver=9.2.3+r725+gb57744d4e
-pkgrel=1
+pkgrel=2
 pkgdesc='Software reverse engineering framework (git)'
 arch=('x86_64')
 url='https://www.nsa.gov/ghidra'
