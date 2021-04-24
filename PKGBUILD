@@ -1,7 +1,7 @@
 # Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
 
 pkgname=web-ext
-pkgver=6.0.0
+pkgver=6.1.0
 pkgrel=1
 pkgdesc='A command line tool to help build, run, and test web extensions'
 arch=(any)
@@ -17,7 +17,7 @@ conflicts=('nodejs-web-ext')
 options=('!strip')
 # tarball on npmjs lacks scripts for building from sources
 source=("https://github.com/mozilla/web-ext/archive/$pkgver/web-ext-$pkgver.tar.gz")
-sha256sums=('432bf216035360b957fc06daba8588678a03e8b85d6a0b7c2304e3ca7ffc3490')
+sha256sums=('cb7f55b1b3ab4ecc9c76cb10f52a1e3ff7c31101e6e73a48a8bc55ea104a5ec3')
 
 prepare() {
   cd "$srcdir"
