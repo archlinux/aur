@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=2.2
+Name=Buttercup
+Comment=Javascript Password Vault
+Exec=buttercup
+Icon=buttercup
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupWMClass=Buttercup
