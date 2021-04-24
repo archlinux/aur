@@ -1,11 +1,10 @@
 pkgbase = pynotifyd
 	pkgdesc = Simple freedesktop notification server
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ricede/pynotifyd
 	arch = any
 	license = ISC
-	makedepends = git
 	makedepends = python
 	makedepends = python-setuptools
 	depends = python-gobject
