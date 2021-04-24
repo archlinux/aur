@@ -18,4 +18,5 @@ build() {
 
 package() {
 	mv ${srcdir}/opt ${pkgdir}
+	ln -sfT "$pkgver" ${pkgdir}/opt/intel/oneapi/licensing/latest
 }
