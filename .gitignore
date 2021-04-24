@@ -1,0 +1,8 @@
+# downloaded sources
+/*.tar.gz
+logo-256x256.png
+
+# build files
+/pkg
+/src
+/*.tar.zst
