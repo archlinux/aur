@@ -19,6 +19,7 @@ depends=(
 makedepends=(
   'git'
   'gradle'
+  'unzip'
 )
 source=(
   "git+https://github.com/NationalSecurityAgency/ghidra"
@@ -79,7 +80,7 @@ package() {
   echo -e "${_prefix}Extracting the zip archive"
   _appver=$(grep -oP '(?<=^application.version=).*$' Ghidra/application.properties)
   _relname=$(grep -oP '(?<=^application.release.name=).*$' Ghidra/application.properties)
-  (cd "$pkgdir"/opt && jar xf "$srcdir/$_pkgname"/build/dist/ghidra_"${_appver}_${_relname}_$(date +"%Y%m%d")"_linux64.zip)
+  unzip -u build/dist/ghidra_"${_appver}_${_relname}_$(date +"%Y%m%d")"_linux64.zip -d "$pkgdir"/opt
 
   echo -e "${_prefix}Setting up a versionless directory name"
   mv "$pkgdir"/opt/ghidra{_"${_appver}_${_relname}",}
