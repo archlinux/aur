@@ -1,0 +1,18 @@
+post_install() {
+  cat <<EOF
+To enable binfmt support, run:
+# ln -s /usr/share/wine/binfmt/wine.conf /etc/binfmt.d/wine.conf
+# systemctl restart systemd-binfmt
+EOF
+}
+
+post_upgrade() {
+  # Check the version upgraded from is less than 4.0.3-1
+  if [ $(vercmp 4.0.3-1 "$2") -eq 1 ]; then
+    cat <<EOF
+binfmt support has been made optional, to enable it, run:
+# ln -s /usr/share/wine/binfmt/wine.conf /etc/binfmt.d/wine.conf
+# systemctl restart systemd-binfmt
+EOF
+  fi
+}
