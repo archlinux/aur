@@ -1,16 +1,15 @@
 # Contributor: ConnorBehan <connor.behan@gmail.com>
 pkgname=trlan
-pkgver=20021121
-pkgrel=3
+pkgver=201009
+pkgrel=1
 pkgdesc="The thick-restart Lanczos algorithm for finding extremal eigenvalues of sparse symmetric matrices"
 arch=(i686 x86_64)
-url="http://crdl.lbl.gov/~kewu/trlan.html"
+url="https://code.lbl.gov/projects/trlan/"
 license=('custom')
 depends=('lapack')
 makedepends=('gcc-fortran')
 options=('staticlibs')
-source=(http://codeforge.lbl.gov/frs/download.php/15/$pkgname.tar.gz \
-	http://crd-legacy.lbl.gov/~kewu/trlan-license.txt)
+source=(https://codeforge.lbl.gov/frs/download.php/file/210/$pkgname-$pkgver.tar.gz trlan-license.txt)
 
 build() {
   cd "$srcdir"/TRLan
@@ -31,4 +30,6 @@ package() {
   cp doc/*.info* "$pkgdir"/usr/share/info/
   cp "$srcdir"/trlan-license.txt "$pkgdir"/usr/share/licenses/
 }
-md5sums=('9d40431e887542523a81d55778437521' '9d1a871edbd72f88ffbf68454cf8ca4b')
+
+md5sums=('f8e17d136ae4b38cb606a4fb2166e01f'
+         '9d1a871edbd72f88ffbf68454cf8ca4b')

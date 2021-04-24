@@ -1,17 +1,17 @@
 pkgbase = trlan
 	pkgdesc = The thick-restart Lanczos algorithm for finding extremal eigenvalues of sparse symmetric matrices
-	pkgver = 20021121
-	pkgrel = 3
-	url = http://crdl.lbl.gov/~kewu/trlan.html
+	pkgver = 201009
+	pkgrel = 1
+	url = https://code.lbl.gov/projects/trlan/
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = gcc-fortran
 	depends = lapack
 	options = staticlibs
-	source = http://codeforge.lbl.gov/frs/download.php/15/trlan.tar.gz
-	source = http://crd-legacy.lbl.gov/~kewu/trlan-license.txt
-	md5sums = 9d40431e887542523a81d55778437521
+	source = https://codeforge.lbl.gov/frs/download.php/file/210/trlan-201009.tar.gz
+	source = trlan-license.txt
+	md5sums = f8e17d136ae4b38cb606a4fb2166e01f
 	md5sums = 9d1a871edbd72f88ffbf68454cf8ca4b
 
 pkgname = trlan
