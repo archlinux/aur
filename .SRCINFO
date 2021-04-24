@@ -1,0 +1,17 @@
+pkgbase = neovim-neoline-git
+	pkgdesc = Status line for Neovim focused on beauty and performance
+	pkgver = r93.f743568
+	pkgrel = 1
+	url = https://github.com/adelarsq/neoline.vim
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	makedepends = git
+	depends = neovim
+	provides = neovim-neoline
+	conflicts = neovim-neoline
+	source = neovim-neoline-git::git+https://github.com/adelarsq/neoline.vim
+	md5sums = SKIP
+
+pkgname = neovim-neoline-git
+
