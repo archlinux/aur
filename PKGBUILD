@@ -3,8 +3,8 @@
 _pyname=neutron
 pkgbase=openstack-$_pyname
 pkgname=(openstack-$_pyname{,-doc})
-pkgver=17.1.1
-pkgrel=3
+pkgver=18.0.0
+pkgrel=1
 pkgdesc="OpenStack Networking Service"
 arch=('any')
 url="https://docs.openstack.org/neutron/latest/"
@@ -67,7 +67,6 @@ depends=(
 	python-novaclient
 	python-openstacksdk
 	python-designateclient
-	python-os-xenapi
 	python-os-vif
 	python-futurist
 	python-tooz
@@ -78,14 +77,10 @@ makedepends=(
 	python-sphinx-feature-classification
 	python-openstackdocstheme
 	python-oslotest
-	python-reno
 )
 checkdepends=(
-	python-hacking
-	bandit
 	python-coverage
 	python-fixtures
-	python-flake8-import-order
 	python-subunit
 	python-testtools
 	python-testresources
@@ -95,16 +90,10 @@ checkdepends=(
 	python-stestr
 	python-reno
 	python-ddt
-	python-astroid
-	python-pylint
-	python-isort
 	python-pymysql
-	python-bashate
 )
 source=(
 	https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz
-	0000-Finish-the-new-DB-engine-facade-migration.patch
-	0001-Arch-Rootwrap-Path.patch
 	openstack-neutron-dhcp-agent.service
 	openstack-neutron-l3-agent.service
 	openstack-neutron-linuxbridge-agent.service
@@ -119,9 +108,7 @@ source=(
 	sysusers.conf
 	tmpfiles.conf
 )
-md5sums=('0283ec5cf4e8b2618777978bf276e7c4'
-         'd331c9e3095d6b9001fb6bbe88998c57'
-         'b5f58a9fe03abe3ac0c5b90249c9870d'
+md5sums=('f478f4666d422f134b8fbb55bc762584'
          '6c4b505df881dcf0a281b9114a54254c'
          '9e1241abb06716283f2fea1f5211595d'
          '46c6be76ff13aed512e7e2df8f7b85d0'
@@ -135,9 +122,7 @@ md5sums=('0283ec5cf4e8b2618777978bf276e7c4'
          '04ca03ff0f88a3a358949559434112d4'
          'e51c63b54d8111d7cd9009ede40e5da3'
          '83b6d257b171f9cb15245b14869026af')
-sha256sums=('acd89f4e592a277ec77f0747060f2fdf2e7fede2e573ee23afc87d46983d0230'
-            'd9792643a47dddb01c40b0313694bfd4a51d4eaf2c83d8dbc5a6e913ebe41c42'
-            'e385701d170eed1cf22b69abc7175d5db71e47717a228e6fbbe68b340f0498ae'
+sha256sums=('3a6e549a2f08f474dd66697f518742e02ac90b36e7fe29edffd33cec243e43e1'
             '8344bea72f4acf0364f1f0a8ff7db616ebead43ae326e6c87ddfb9df38d23b9b'
             '3f859b88563c0e6adab6c7b3b7920a8a6da23244bdfcdbc89470c3bcc75b1d37'
             '7fa619b78f56d9202b73ed231ab2871159e8f911e21566c0ab3c47e37d46b064'
@@ -151,9 +136,7 @@ sha256sums=('acd89f4e592a277ec77f0747060f2fdf2e7fede2e573ee23afc87d46983d0230'
             'ac52e466878aa6e60e51c0ec5d56667ece4a7d0b64972ce65f0cc70a43ad5a2b'
             '6a3f7e9b1780e70ab4dbcc8181f0dc7d1c1e9115e835a00a618e043158d291b5'
             'cea7556a75189c9e77d8aa1ee134a198b008d542e7bce5368db09e88b927c111')
-sha512sums=('cd707d4adaa6a6b606940370606fcef61a35af0d1f1108f24891d2f88611f4f2812c061d3b7a9540d4b6df882615a9366d39273184a791a911775e7c9f4402b8'
-            'dfd2fb7fdd791394722bb75eb654e2bd485e152b3713957839b02c2fbf84dcf64617dfa2942f5c1fa328cb750b1302f64a48fdabf0ec2baafbca750be856c7a4'
-            '4f443b5bc7a177b620fffc4a28198a418e529071f23d24cbd8f3751304318b76a0f9ea1c5d793bf7f163dffb2024a51f11934cf4ecb777d0d9658c094a9e6d20'
+sha512sums=('8517ea11cc6be785ac2fa4962f058daf7b8b14da47e7e9525d4575fdefe0b14acead83d5746f737c5f0b24c14ba4b725f22c522b0ed2ba4bfd1c6b421c3be6c8'
             'cb15ed133af39682d4ae827645643582d3235f5051041d712933cd4c68f9c59102744c4fc48fe9abdd984a4fea6080520bd51537ecd9474f3bf01456ae358d77'
             '6aa70136ec28037913ffda90b1c22968c1333601d77d6b61332d6055fa4b6862bc2c00ee4a932a39c23b6c0fb4416db4665efc600328c8c29520757967e59a64'
             'e9e8b4ce76e61525daf49f7a4253a74ed86192aeec53e4bdd35e5920d51166b8b985f6029ee6b40a400b4ee8f63e1eb62632651310b8543ad228658a6f49d81f'
@@ -219,12 +202,11 @@ _package_pkg(){
 		etc/neutron/rootwrap.d/openvswitch-plugin.filters
 		etc/neutron/rootwrap.d/linuxbridge-plugin.filters
 		etc/neutron/rootwrap.d/l3.filters
-		etc/neutron/rootwrap.d/iptables-firewall.filters
 		etc/neutron/rootwrap.d/ipset-firewall.filters
-		etc/neutron/rootwrap.d/ebtables.filters
 		etc/neutron/rootwrap.d/dibbler.filters
 		etc/neutron/rootwrap.d/dhcp.filters
 		etc/neutron/rootwrap.d/debug.filters
+		etc/sudoers.d/neutron
 	)
 	cd $_pyname-$pkgver
 	export PYTHONPATH=${PWD}
