@@ -42,4 +42,5 @@ package() {
 	cd ngtcp2
 
 	make DESTDIR="$pkgdir" install
+	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
