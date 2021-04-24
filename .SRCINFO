@@ -1,5 +1,5 @@
 pkgbase = directx-headers
-	pkgdesc = DirectX headers for mesa-wslg
+	pkgdesc = DirectX headers for mesa-d3d12
 	pkgver = 1.4.9
 	pkgrel = 1
 	url = https://github.com/microsoft/DirectX-Headers

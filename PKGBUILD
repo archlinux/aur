@@ -1,7 +1,7 @@
 # Maintainer: Cyano Hao <c@cyano.cn>
 
 pkgname=directx-headers
-pkgdesc="DirectX headers for mesa-wslg"
+pkgdesc="DirectX headers for mesa-d3d12"
 pkgver=1.4.9
 pkgrel=1
 arch=('x86_64' 'aarch64')
