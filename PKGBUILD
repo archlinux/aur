@@ -1,6 +1,7 @@
 # Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
 # Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
+# Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
 pkgname=python-blivet
 pkgver=3.3.3
