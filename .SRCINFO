@@ -8,7 +8,6 @@ pkgbase = yabridge
 	license = GPL3
 	makedepends = meson
 	makedepends = ninja
-	makedepends = wine<6.6
 	depends = wine
 	depends = boost
 	depends = libxcb
