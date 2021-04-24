@@ -1,14 +1,14 @@
-# Maintainer: Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
+# Maintainer: workonfire <kolucki62@gmail.com>
 
 pkgname='contrast'
-pkgver='0.0.3'
-pkgrel='1'
+pkgver=0.0.3
+pkgrel=2
 pkgdesc='Checks whether the contrast between two colors meet the WCAG requirements.'
 changelog='CHANGELOG'
 arch=('x86_64')
 url="https://gitlab.gnome.org/World/design/${pkgname}"
 license=('GPL3')
-depends=('libhandy')
+depends=('libhandy0')
 makedepends=('rust' 'meson' 'git')
 source=("git+${url}.git#tag=${pkgver}")
 sha256sums=('SKIP')

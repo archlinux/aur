@@ -1,7 +1,7 @@
 pkgbase = contrast
 	pkgdesc = Checks whether the contrast between two colors meet the WCAG requirements.
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/World/design/contrast
 	changelog = CHANGELOG
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = contrast
 	makedepends = rust
 	makedepends = meson
 	makedepends = git
-	depends = libhandy
+	depends = libhandy0
 	source = git+https://gitlab.gnome.org/World/design/contrast.git#tag=0.0.3
 	sha256sums = SKIP
 
