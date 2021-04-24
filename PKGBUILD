@@ -1,4 +1,4 @@
-# Maintainer: <ehern.lee@gmail.com>
+# Maintainer: E-Hern Lee <ehern.lee@gmail.com>
 
 pkgname=cloudflare-wrangler-bin
 pkgver=1.16.0
