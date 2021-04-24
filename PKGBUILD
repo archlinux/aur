@@ -1,6 +1,6 @@
 # Maintainer: Jeremy Hofer <fuego0607@gmail.com>
 pkgname=godot-headless-export-templates-bin
-pkgver=3.2.3
+pkgver=3.3
 pkgrel=1
 pkgdesc="A headless version of the latest official release of the Godot engine and all export templates."
 arch=("x86_64")
@@ -12,8 +12,8 @@ source=(
     "https://downloads.tuxfamily.org/godotengine/${pkgver}/Godot_v${pkgver}-stable_linux_headless.64.zip"
     "https://downloads.tuxfamily.org/godotengine/${pkgver}/Godot_v${pkgver}-stable_export_templates.tpz"
 )
-md5sums=('0370448cf58e9d22b11e0b203ccc8520'
-         '672474a6feb20b09de9d04b208cf8f01')
+md5sums=('46b908a8cf1fb325b6f106979ef28b52'
+         '420d4928f798df2d2bcea95e0b5452d0')
 
 package() {
     install -D -m755 "${srcdir}/Godot_v${pkgver}-stable_linux_headless.64" "${pkgdir}/usr/bin/godot"
