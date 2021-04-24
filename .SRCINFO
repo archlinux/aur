@@ -13,7 +13,6 @@ pkgbase = intel-oneapi-mpi
 	sha256sums = ecf1496558997c727268288ce6d0cb93a563cf8a6281fa82087c731162b4b6f1
 
 pkgname = intel-oneapi-mpi
-	depends = intel-oneapi-condaindex
 	depends = intel-oneapi-common-vars
 	depends = intel-oneapi-common-licensing
 
