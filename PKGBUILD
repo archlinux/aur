@@ -16,20 +16,6 @@ provides=("$_pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('477b9a62d6f31109a288e63e79eb3189f99d2d7c03b1f395fc1d1e072131f747')
 
-prepare() {
-    cd "$pkgname-$pkgver"
-
-  # XDG desktop file
-  gendesk -n -f \
-          --pkgname "$pkgname" \
-          --pkgdesc "$pkgdesc" \
-          --exec "$_pkgname %F" \
-          --name "Lite XL" \
-          --categories "Utility;TextEditor;Development" \
-          --mimetype "text/plain"
-
-}
-
 build() {
     cd "$pkgname-$pkgver"
     arch-meson build
@@ -43,7 +29,7 @@ package() {
   
   install -Dm 644 "dev-utils/$_pkgname.svg" \
 	"$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
-  install -Dm 644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm 644 "dev-utils/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
   install -Dm 644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
