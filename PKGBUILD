@@ -1,13 +1,13 @@
 # Mainintainer : Lucas Rooyakkers <lucas dot rooyakkers at queensu at ca>
 pkgname=rmatrix
-pkgver=3738314
+pkgver=8431ec1
 pkgrel=1
 pkgdesc="Rust port of a curses-based 'Matrix'-like screen"
 arch=('any')
 url="https://github.com/Fierthraix/rmatrix"
 license=('GPL3')
 provides=("rmatrix")
-makedepends=('cargo')
+makedepends=('git' 'cargo')
 conflicts=('rmatrix')
 source=("$pkgname::git+https://github.com/Fierthraix/rmatrix")
 sha1sums=('SKIP')
