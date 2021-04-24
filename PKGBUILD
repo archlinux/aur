@@ -12,7 +12,7 @@ license=("custom")
 source=(
 	"https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb"
 	"https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-common-${pkgver}-${pkgver}-${_debpkgrel}_all.deb"
-	"${pkgname}.install"
+	"${pkgname}.conf"
 )
 noextract=(
 	"${pkgname}-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb"
@@ -20,7 +20,7 @@ noextract=(
 )
 sha256sums=('aaec45cb7240bcf5626728d5b59afb121a10ea4db46707bf38b061caa5161ef3'
             '54760ad7e180c4a2ba13b8a695f9e657be586ecd58c5cceb60c831bcafc7cba6'
-            '4694beda4c61ef2a8df66bcb786ea9decdebb301d4f4984fcc18861c105d80eb')
+            '83c341462ed40bff10af52f44a617634e958782899b5e6a210f3ccb9151e3acc')
 install="${pkgname}.install"
 
 build() {
