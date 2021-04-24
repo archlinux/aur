@@ -1,6 +1,6 @@
 pkgbase="autorestic-bin"
 pkgname="autorestic"
-pkgver=1.0.4
+pkgver=1.0.5
 _pkgid="${pkgname}-${pkgver}"
 pkgrel=1
 pkgdesc="High level CLI utility for restic"
