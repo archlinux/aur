@@ -1,6 +1,6 @@
 pkgbase = lib32-pipewire
 	pkgdesc = Low-latency audio/video router and processor (32-bit client libraries)
-	pkgver = 0.3.25
+	pkgver = 0.3.26
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = lib32-pipewire
 	makedepends = lib32-dbus
 	makedepends = libsndfile
 	makedepends = lib32-libsndfile
-	source = git+https://github.com/PipeWire/pipewire#commit=c324107211718043553337cb10d022fe9d2d12d8
+	source = git+https://github.com/PipeWire/pipewire#commit=f0fc4f7fc644c29762fa34e57e60d4b5cbcefb47
 	sha256sums = SKIP
 
 pkgname = lib32-pipewire
@@ -37,11 +37,11 @@ pkgname = lib32-pipewire
 
 pkgname = lib32-pipewire-jack
 	pkgdesc = Low-latency audio/video router and processor (32-bit client libraries) (JACK support)
-	depends = lib32-pipewire=0.3.25
+	depends = lib32-pipewire=0.3.26
 	depends = lib32-jack2
 
 pkgname = lib32-gst-plugin-pipewire
 	pkgdesc = Multimedia graph framework - pipewire plugin (32-bit version)
-	depends = lib32-pipewire=0.3.25
+	depends = lib32-pipewire=0.3.26
 	depends = lib32-gst-plugins-base-libs
 
