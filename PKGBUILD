@@ -3,7 +3,7 @@
 
 pkgname=krathalans-endlessh-git
 _pkgname=endlessh
-pkgver=r120.4034294
+pkgver=r121.f063a48
 pkgrel=1
 pkgdesc="A tarpit to lock up SSH clients. Krathalan's fork"
 arch=('x86_64' 'i686' 'aarch64')
@@ -38,6 +38,7 @@ package() {
   install -Dm644 99-endlessh.hook "${pkgdir}/usr/share/libalpm/hooks/99-endlessh.hook"
 
   cd "${srcdir}/${_pkgname}"
+  install -Dm644 util/endlessh "${pkgdir}/etc/apparmor.d/endlessh"
   install -Dm644 util/smf/endlessh.conf "${pkgdir}/etc/endlessh.conf"
   install -Dm644 util/endlessh.service "${pkgdir}/usr/lib/systemd/system/endlessh.service"
   install -Dm644 "UNLICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
