@@ -1,4 +1,5 @@
-pkgname="autorestic-bin"
+pkgbase="autorestic-bin"
+pkgname="autorestic"
 pkgver=1.0.4
 _pkgid="${pkgname}-${pkgver}"
 pkgrel=1
