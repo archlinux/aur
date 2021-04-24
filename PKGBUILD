@@ -4,7 +4,7 @@ _pyname=qpid-proton
 _pycname=python-$_pyname
 pkgbase=$_pycname
 pkgname=(python{,2}-$_pyname)
-pkgver=0.33.0
+pkgver=0.34.0
 pkgrel=1
 pkgdesc="An AMQP based messaging library."
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -17,10 +17,10 @@ makedepends=(
 	python-setuptools
 	python2-setuptools
 )
-source=("https://pypi.io/packages/7b/9f/01debe555e64d18e8689a40bdaee9979e2aaaa9ea9fbf2e1bc8fb0c8a4b7/$_pycname-$pkgver.zip")
-md5sums=('b195485df49027346e7e60cd011c42a8')
-sha256sums=('9535acf706eda58e615705371a2745f1939278be2924d6d61e55a33a44d94fa2')
-sha512sums=('6a37579abe800b2ce55a2dcc15f9ece03a39eae750452e4277f1311ea0b4d295bd71e262641008350865bfe04eb163da20c0d8686544cccdbe1890d36d911e27')
+source=("https://pypi.io/packages/source/${_pycname::1}/${_pycname}/$_pycname-$pkgver.zip")
+md5sums=('56fb4cfc927b0c1478f8d1f7856990f7')
+sha256sums=('64a983cc51c78dd6c7c206eb610f52da8edc5e1c5cb6c4e9cdc16ee62a9e1b5e')
+sha512sums=('f45427849b0f8e20d2fdb0803c384641766baa6655f0728c6f1960d417f9340decef587c1b55084e48964aa96b5d8a6442510f87aaa2720654dff67773d26051')
 
 prepare(){
 	cp -a $_pycname-$pkgver{,-py2}
