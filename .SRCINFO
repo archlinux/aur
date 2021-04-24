@@ -1,7 +1,7 @@
 pkgbase = neovim-cursorline-git
 	pkgdesc = A Neovim plugin that highlights cursor words and lines
 	pkgver = r15.b6ad7dd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yamatsum/nvim-cursorline
 	arch = any
 	groups = neovim-plugins

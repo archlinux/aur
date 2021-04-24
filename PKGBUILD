@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 pkgname=neovim-cursorline-git
 pkgver=r15.b6ad7dd
-pkgrel=1
+pkgrel=2
 pkgdesc="A Neovim plugin that highlights cursor words and lines"
 arch=('any')
 url="https://github.com/yamatsum/nvim-cursorline"
@@ -22,7 +22,7 @@ pkgver() {
 package() {
   cd "$pkgname"
   find lua plugin \
-    -type f -exec install Dvm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+    -type f -exec install -Dvm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
   install -Dvm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
