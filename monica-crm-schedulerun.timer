@@ -7,7 +7,7 @@ Description=Monica CRM schedule:run Timer
 # Running this every ten minutes is deemed to be a suitable compromise.
 # Reference: app/Console/Kernel.php
 
-OnCalendar=10 minutes
+OnCalendar=*:0/10
 Persistent=true
 
 [Install]
