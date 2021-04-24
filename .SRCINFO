@@ -1,21 +1,17 @@
-pkgbase = xmrig-bin
-	pkgdesc = Monero cryptocurrency CPU miner, HTTP API enabled, with default donation level
+pkgbase = xmrig-c3-bin
+	pkgdesc = Monero cryptocurrency CPU miner, with C3Pool auto alg switching
 	pkgver = 6.12.0
 	pkgrel = 1
-	url = https://github.com/xmrig/xmrig
+	url = https://github.com/C3Pool/xmrig-C3
 	install = xmrig.install
 	arch = x86_64
 	license = GPL
 	depends = glibc
-	optdepends = monero: wallet
-	optdepends = xmrig-cuda: CUDA plugin to mine on NVidia GPU
 	provides = xmrig
 	conflicts = xmrig
 	replaces = xmrig
-	source = https://github.com/xmrig/xmrig/releases/download/v6.12.0/xmrig-6.12.0-linux-x64.tar.gz
-	source = https://raw.githubusercontent.com/xmrig/xmrig/v6.12.0/README.md
-	sha256sums = ec46ae1a3511a923ed0c74b4f0975726705b6b672672b61314deee8ef7b75341
-	sha256sums = 440289d5e37326d669aa61743dac7b73ad1d65cd49cfde985902c23399cdf606
+	source = https://github.com/C3Pool/xmrig-C3/releases/download/v6.12.0-C3/xmrig-v6.12.0-C3-linux-Static.tar.gz
+	md5sums = 2d8fd031e9173bd17ede78c83771d9d6
 
-pkgname = xmrig-bin
+pkgname = xmrig-c3-bin
 
