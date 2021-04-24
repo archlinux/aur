@@ -1,0 +1,16 @@
+pkgbase = libonvif
+	pkgdesc = A client side implementation of the ONVIF specification.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/sr99622/libonvif
+	arch = i686
+	arch = x86_64
+	license = GPL-2
+	makedepends = intltool
+	makedepends = autoconf
+	depends = libxml2
+	source = https://github.com/sr99622/libonvif/archive/refs/tags/v1.1.0.zip
+	md5sums = 4a7a03d252565cdefba93a21ff52936c
+
+pkgname = libonvif
+
