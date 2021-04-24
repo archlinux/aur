@@ -1,7 +1,7 @@
 pkgbase = python-meshplex
 	pkgdesc = Compute interesting points, areas, and volumes in triangular and tetrahedral meshes.
-	pkgver = 0.15.13
-	pkgrel = 2
+	pkgver = 0.16.0
+	pkgrel = 1
 	url = https://github.com/nschloe/meshplex
 	arch = any
 	license = GPL
@@ -11,8 +11,8 @@ pkgbase = python-meshplex
 	depends = python-numpy
 	optdepends = python-matplotlib
 	optdepends = python-vtk
-	source = https://files.pythonhosted.org/packages/source/m/meshplex/meshplex-0.15.13.tar.gz
-	sha256sums = b5ba5d7b142c743d955457a16fda84e504910fee2cff518939c3e89a842107f9
+	source = https://files.pythonhosted.org/packages/source/m/meshplex/meshplex-0.16.0.tar.gz
+	sha256sums = b07ed79d7a7e7853790754fc067312725f326f43ce6d5153c7836b653cb53999
 
 pkgname = python-meshplex
 
