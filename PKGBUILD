@@ -12,7 +12,8 @@ source=(https://github.com/microsoft/DirectX-Headers/archive/refs/tags/v${pkgver
 sha256sums=('a30fb05ba012343a7aa42afb5c32c6474f15c18d3650438ecee7ce2092806195')
 
 build() {
-  arch-meson DirectX-Headers-$pkgver build -Dbuild-test=false
+  # LTO breaks mesa...
+  CXXFLAGS="$CXXFLAGS -fno-lto" arch-meson DirectX-Headers-$pkgver build -Dbuild-test=false
   ninja -C build
 }
 
