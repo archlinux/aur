@@ -18,12 +18,13 @@ source=('git+https://github.com/Xerbo/aptdec'
 	'install-palettes-to-usr-share.patch')
 
 pkgver() {
-	cd "aptdec"
+	cd aptdec
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	patch -i install-palettes-to-usr-share.patch
+	cd aptdec
+	patch --input="${srcdir}/install-palettes-to-usr-share.patch"
 }
 
 build() {
