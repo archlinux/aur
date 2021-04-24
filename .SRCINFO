@@ -1,14 +1,14 @@
 pkgbase = nvidia-390xx-settings
 	pkgdesc = Tool for configuring the NVIDIA graphics driver, 390xx legacy branch
 	pkgver = 390.143
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NVIDIA/nvidia-settings
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	makedepends = inetutils
-	makedepends = gtk2
 	makedepends = jansson
+	makedepends = gtk2
 	makedepends = gtk3
 	makedepends = libxv
 	makedepends = libvdpau
@@ -36,5 +36,6 @@ pkgname = libxnvctrl-390xx
 	pkgdesc = NVIDIA NV-CONTROL X extension, 390xx legacy branch
 	depends = libxext
 	provides = libxnvctrl
+	provides = libXNVCtrl.so
 	conflicts = libxnvctrl
 
