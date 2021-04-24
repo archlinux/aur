@@ -3,9 +3,9 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=('sqlite-fts3-parenthesis')
-_srcver=3340100
+_srcver=3350500
 _docver=${_srcver}
-pkgver=3.34.1
+pkgver=3.35.5
 pkgrel=1
 pkgdesc="A C library that implements an SQL database engine. Compiled with 'SQLITE_ENABLE_FTS3_PARENTHESIS' option to allow operators AND and NOT and nested parenthesis in queries."
 arch=('x86_64')
@@ -19,7 +19,7 @@ replaces=("sqlite3")
 source=(https://www.sqlite.org/2021/sqlite-src-${_srcver}.zip)
 options=('!emptydirs' '!makeflags') # json extensions breaks parallel build
 # upstream now switched to sha3sums - currently not supported by makepkg
-sha256sums=('dddd237996b096dee8b37146c7a37a626a80306d6695103d2ec16ee3b852ff49')
+sha256sums=('f4beeca5595c33ab5031a920d9c9fd65fe693bad2b16320c3a6a6950e66d3b11')
 
 package() {
   cd sqlite-src-$_srcver
@@ -46,18 +46,20 @@ prepare() {
   # https://src.fedoraproject.org/rpms/sqlite/blob/master/f/sqlite.spec
 #  patch -Np1 -i ../sqlite-lemon-system-template.patch
 
-#  autoreconf -vfi
+  #autoreconf -vfi
 }
 
 build() {
-  export CPPFLAGS="$CPPFLAGS -DSQLITE_ENABLE_COLUMN_METADATA=1 \
-                             -DSQLITE_ENABLE_UNLOCK_NOTIFY \
-                             -DSQLITE_ENABLE_DBSTAT_VTAB=1 \
-                             -DSQLITE_ENABLE_FTS3_TOKENIZER=1 \
-                             -DSQLITE_ENABLE_FTS3_PARENTHESIS \
-                             -DSQLITE_SECURE_DELETE \
-                             -DSQLITE_MAX_VARIABLE_NUMBER=250000 \
-                             -DSQLITE_MAX_EXPR_DEPTH=10000"
+  export CPPFLAGS="$CPPFLAGS \
+      -DSQLITE_ENABLE_COLUMN_METADATA=1 \
+      -DSQLITE_ENABLE_UNLOCK_NOTIFY \
+      -DSQLITE_ENABLE_DBSTAT_VTAB=1 \
+      -DSQLITE_ENABLE_FTS3_TOKENIZER=1 \
+      -DSQLITE_ENABLE_FTS3_PARENTHESIS \
+      -DSQLITE_SECURE_DELETE \
+      -DSQLITE_ENABLE_STMTVTAB \
+      -DSQLITE_MAX_VARIABLE_NUMBER=250000 \
+      -DSQLITE_MAX_EXPR_DEPTH=10000"
 
   # build sqlite
   cd sqlite-src-$_srcver
