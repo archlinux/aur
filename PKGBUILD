@@ -1,4 +1,5 @@
-# Maintainer: zhullyb <zhullyb [at] outlook dot com>
+# Maintainer:  zhullyb < zhullyb [at] outlook dot com >
+# Contributor: David Birks <david@birks.dev>
 
 pkgname=cloudflare-wrangler
 pkgver=1.16.0
