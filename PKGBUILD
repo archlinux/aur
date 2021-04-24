@@ -1,7 +1,7 @@
 # Maintainer: Blair Bonnett <blair dot bonnett at gmail dot com>
 
 pkgname=python-quaternionic
-pkgver=0.2.4
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Interpret NumPy arrays as quaternionic arrays with Numba acceleration"
 url="https://quaternionic.readthedocs.io"
@@ -15,7 +15,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/q/quaternionic/quaternionic-$pkgver.tar.gz"
 )
 sha256sums=(
-  '5daebc0935a9a04f34f09b8840c561c76e8a357753e7052eb7624d518c747fbd'
+  '302626fc625c1ea65e3fdee4e7cdbe122beb6bf65e4ed7ea8ecf4d79e3d3ad45'
 )
 
 build() {
@@ -35,7 +35,6 @@ check() {
 	# version). Remove it and let the install command create the final version.
 	rm -r build/lib/quaternionic.egg-info
 }
-
 
 package() {
 	cd "quaternionic-$pkgver"
