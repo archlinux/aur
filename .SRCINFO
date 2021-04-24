@@ -1,17 +1,20 @@
 pkgbase = dain-ncnn-vulkan-bin
 	pkgdesc = DAIN, Depth-Aware Video Frame Interpolation implemented with ncnn library
 	pkgver = 20210210
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nihui/dain-ncnn-vulkan
 	arch = x86_64
 	license = MIT
+	makedepends = sh
 	depends = vulkan-icd-loader
 	depends = vulkan-headers
 	provides = dain-ncnn-vulkan
 	conflicts = dain-ncnn-vulkan
 	conflicts = dain-ncnn-vulkan-git
 	source = https://github.com/nihui/dain-ncnn-vulkan/releases/download/20210210/dain-ncnn-vulkan-20210210-ubuntu.zip
+	source = dain-ncnn-vulkan
 	sha256sums = 960a42921a4c646f9176232147d3a5883703f815276a40df794125046a682f4d
+	sha256sums = bc7fb31ade458a268fe1bb96b98d5a7970f35574eaa88e55247dad8fc6e2e3df
 
 pkgname = dain-ncnn-vulkan-bin
 
