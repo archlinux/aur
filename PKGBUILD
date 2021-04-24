@@ -2,14 +2,14 @@
 # Contributor: Karol "Kenji Takahashi" Woźniak <kenji.sx>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=copyq-git
-pkgver=r5328.a7ab619d
+pkgver=r5499.9c53b6ac
 pkgrel=1
 epoch=1
 pkgdesc="Clipboard manager with searchable and editable history."
 url="https://github.com/hluk/CopyQ"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('hicolor-icon-theme' 'libxtst' 'qt5-script' 'qt5-svg' 'qt5-x11extras' 'desktop-file-utils')
+depends=('hicolor-icon-theme' 'libxtst' 'qt5-script' 'qt5-svg' 'qt5-x11extras' 'desktop-file-utils' 'knotifications')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'qt5-tools')
 optdepends=('copyq-plugin-itemweb-git')
 provides=('copyq')
