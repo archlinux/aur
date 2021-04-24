@@ -23,7 +23,7 @@ prepare() {
 
 build() {
     cd "$srcdir"
-    make FC=${FC-gfortran} all
+    make FC="${FC-gfortran -fallow-argument-mismatch}" all
 }
 
 package() {
