@@ -1,7 +1,7 @@
 # Maintainer: Jon Gjengset <jon@thesquareplanet.com>
 pkgname=autojump-rs
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A faster way to navigate your filesystem from the command line (in Rust)"
 arch=('x86_64' 'i686' 'arm' 'armv7h' 'aarch64')
 url="https://github.com/xen0n/autojump-rs"
@@ -43,6 +43,7 @@ md5sums_armv7h=('b7ab473f1dc541c0d8503b32f969a2f4'
 prepare() {
     cd "autojump-release-v${_autojump_version}"
     sed -i "s:/env python:/python3:g" bin/autojump
+    sed -i "/print('\\\\n\\\\t' + source_msg)/ s@source_msg@source_msg.replace('$pkgdir', '')@" install.py
 }
 
 package() {
