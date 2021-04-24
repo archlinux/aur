@@ -11,6 +11,7 @@ pkgbase = julia-mkl
 	makedepends = gmp
 	makedepends = python
 	makedepends = llvm
+	makedepends = patchelf
 	depends = fftw
 	depends = hicolor-icon-theme
 	depends = intel-mkl
@@ -29,9 +30,11 @@ pkgbase = julia-mkl
 	conflicts = julia-git
 	backup = etc/julia/startup.jl
 	source = https://github.com/JuliaLang/julia/releases/download/v1.6.1/julia-1.6.1-full.tar.gz
+	source = julia-hardcoded-libs.patch
 	source = make-install-no-build.patch
 	sha256sums = 71d8e40611361370654e8934c407b2dec04944cf3917c5ecb6482d6b85ed767f
-	sha256sums = 0b57e0bc6e25c92fde8a6474394f7a99bfb57f9b5d0f7b53f988622ae67de8b7
+	sha256sums = 7497bff3cc6faac0a0664e620fd5525d7bb19d1bc3d2ff7f4d900dc36d476ceb
+	sha256sums = 8be4605f92a009072ca7e843549c225fc4e959893498e7c4f8f79e861e63714d
 
 pkgname = julia-mkl
 
