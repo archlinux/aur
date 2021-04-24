@@ -1,0 +1,15 @@
+pkgbase = intel-oneapi-common-licensing
+	pkgdesc = oneAPI Common License
+	pkgver = 2021.2.0
+	pkgrel = 1
+	url = https://www.anaconda.com/
+	arch = any
+	license = BSD
+	options = !strip
+	options = libtool
+	options = staticlibs
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-common-licensing-2021.2.0-2021.2.0-195_all.deb
+	sha256sums = b9c7b7bebf05b817a2640562253959a0745296337a40354e9a22234f31543821
+
+pkgname = intel-oneapi-common-licensing
+
