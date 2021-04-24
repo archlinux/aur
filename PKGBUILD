@@ -4,7 +4,7 @@
 # source: https://aur.archlinux.org/packages/abseil-cpp
 
 pkgname=google-cloud-cpp-abseil-cpp
-pkgver=20200225.2
+pkgver=20200923.3
 pkgrel=1
 pkgdesc="Abseil Common Libraries (C++)"
 arch=('any')
@@ -13,7 +13,7 @@ license=('Apache')
 makedepends=('cmake' 'git')
 conflicts=('abseil-cpp')
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('f41868f7a938605c92936230081175d1eae87f6ea2c248f41077c8f88316f111')
+sha256sums=('ebe2ad1480d27383e4bf4211e2ca2ef312d5e6a09eba869fd2e8a5c5d553ded2')
 
 prepare() {
 	mv "abseil-cpp-$pkgver" "$pkgname-$pkgver"
