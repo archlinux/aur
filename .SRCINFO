@@ -1,12 +1,13 @@
 pkgbase = intel-oneapi-common-vars
-	pkgdesc = oneAPI Common License
+	pkgdesc = oneAPI Common Environment Scripts
 	pkgver = 2021.2.0
 	pkgrel = 1
 	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
 	arch = any
 	license = custom
 	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-common-vars-2021.2.0-195_all.deb
-	sha256sums = b9c7b7bebf05b817a2640562253959a0745296337a40354e9a22234f31543821
+	sha256sums = 8d3abdd2b117d5be4bbc215bb901df043cb7c3711c43b3d10a99f36c8f83855c
 
 pkgname = intel-oneapi-common-vars
+	depends = intel-oneapi-common-licensing
 
