@@ -13,7 +13,8 @@ arch=('i686' 'x86_64')
 url='https://github.com/SebKuzminsky/pycam'
 license=('GPL3')
 makedepends=('git')
-depends=('python-opengl' 'python-svg.path')
+depends=('python-opengl' 'python-svg.path' 'python-yaml' 'python-opengl')
+
 conflicts=('pycam')
 source=('git+https://github.com/SebKuzminsky/pycam.git'
         'launcher.sh')
