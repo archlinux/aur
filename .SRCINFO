@@ -1,6 +1,6 @@
 pkgbase = anbox-image-nocsd-gapps
 	pkgdesc = Android image for running in Anbox, with no-csd patch, OpenGApps and Houdini
-	pkgver = r31.6c997ef4
+	pkgver = r32.a6947e91
 	pkgrel = 1
 	url = https://anbox.io
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = anbox-image-nocsd-gapps
 	source = media_codecs_google_video.xml
 	source = media_codecs_google_audio.xml
 	source = media_codecs_google_telephony.xml
-	source = https://downloads.sourceforge.net/project/opengapps/x86_64/20210423/open_gapps-x86_64-7.1-pico-20210423.zip
+	source = https://downloads.sourceforge.net/project/opengapps/x86_64/20210424/open_gapps-x86_64-7.1-pico-20210424.zip
 	md5sums = 6c31bf493856f982da3d7d78b6e23b85
 	md5sums = 7ebf618b1af94a02322d9f2d2610090b
 	md5sums = 5ca37e1629edb7d13b18751b72dc98ad
@@ -26,7 +26,7 @@ pkgbase = anbox-image-nocsd-gapps
 	md5sums = 2c96f31ead428ee2d1fbd2a65dd6962d
 	md5sums = 9f0dd33e444d816ab62fe8e8514a0c0e
 	md5sums = 0a59e1a43891f21a09fe06f18f0f5feb
-	md5sums = 08c3060b2bbc85cb2718b796adc256a0
+	md5sums = dc604a7409dd700a9ac59f012c4b8611
 
 pkgname = anbox-image-nocsd-gapps
 
