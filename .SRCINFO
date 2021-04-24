@@ -1,0 +1,15 @@
+pkgbase = proverbilo
+	pkgdesc = Montras hazardajn proverbaojn kaj diraĵojn en terminalo.
+	pkgver = 46949d6
+	pkgrel = 1
+	url = https://github.com/Fierthraix/proverbilo
+	arch = any
+	license = GPL3
+	makedepends = cargo
+	provides = proverbilo
+	conflicts = proverbilo
+	source = proverbilo::git+https://github.com/Fierthraix/proverbilo
+	sha1sums = SKIP
+
+pkgname = proverbilo
+
