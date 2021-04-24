@@ -1,11 +1,11 @@
 # Maintainer: João Figueiredo <jf.mundox@gmail.com>
 
 pkgname=layer-shell-qt-git
-pkgver=5.21.80_r10.g82fec33
-pkgrel=2
+pkgver=5.21.80_r34.g8d1aeb7
+pkgrel=1
 pkgdesc='Qt component to allow applications to make use of the Wayland wl-layer-shell protocol'
 arch=($CARCH)
-url='https://invent.kde.org/vladz/layer-shell-qt'
+url='https://invent.kde.org/plasma/layer-shell-qt'
 license=(LGPL)
 depends=(qt5-wayland)
 makedepends=(git extra-cmake-modules-git wayland-protocols)
