@@ -1,10 +1,10 @@
-# Maintainer: Hunter Peavey < printf "srht@die.bots" | sed "s/die.bots/krathalan.net/g" >
+# Maintainer: Hunter Peavey < printf "dev@die.bots" | sed "s/die.bots/krathalan.net/g" >
 # Contributor:  mrxx <mrxx at cyberhome dot at>
 
 pkgname=krathalans-endlessh-git
 _pkgname=endlessh
-pkgver=r114.ededc7f
-pkgrel=2
+pkgver=r116.6ce0218
+pkgrel=1
 pkgdesc="A tarpit to lock up SSH clients. Krathalan's fork"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/krathalan/endlessh"
