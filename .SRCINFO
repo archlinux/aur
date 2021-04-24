@@ -1,0 +1,14 @@
+pkgbase = directx-headers
+	pkgdesc = DirectX headers for mesa-wslg
+	pkgver = 1.4.9
+	pkgrel = 1
+	url = https://github.com/microsoft/DirectX-Headers
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = meson
+	source = https://github.com/microsoft/DirectX-Headers/archive/refs/tags/v1.4.9.tar.gz
+	sha256sums = a30fb05ba012343a7aa42afb5c32c6474f15c18d3650438ecee7ce2092806195
+
+pkgname = directx-headers
+

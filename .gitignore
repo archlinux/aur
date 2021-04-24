@@ -1,0 +1,4 @@
+/src/
+/pkg/
+/v*.tar.gz
+/directx-headers-*.pkg.tar*
