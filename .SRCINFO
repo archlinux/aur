@@ -1,0 +1,30 @@
+pkgbase = python-gunicorn
+	pkgdesc = WSGI HTTP Server for UNIX
+	pkgver = 20.1.0
+	pkgrel = 1
+	url = https://gunicorn.org/
+	arch = any
+	license = MIT
+	checkdepends = python-aiohttp
+	checkdepends = python-gevent
+	checkdepends = python-eventlet
+	checkdepends = python-coverage
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	depends = python
+	optdepends = python-gevent
+	optdepends = python-eventlet
+	optdepends = python-tornado
+	optdepends = python-gthread
+	optdepends = python-setproctitle
+	source = https://pypi.io/packages/source/g/gunicorn/gunicorn-20.1.0.tar.gz
+	md5sums = db8a7c5c2064000af70286534803bf1d
+	sha256sums = e0a968b5ba15f8a328fdfd7ab1fcb5af4470c28aaf7e55df02a99bc13138e6e8
+	sha512sums = 586c7373504b4018fd462dc9c728991a8cc9f2be71fc2fb5aa23707ff6157dd3953121f6a070cae64d58b10f9ddf77ad59b66ed33981d37919b4764c60609027
+
+pkgname = python-gunicorn
+
