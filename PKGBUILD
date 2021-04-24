@@ -26,7 +26,7 @@ makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
              rust xorg-server-xwayland xorg-server-xvfb
              autoconf2.13 mercurial clang llvm jack gtk2 nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard git binutils lld)
-optdepends=('firejail: Sandboxing the browser using the included profiles'
+optdepends=('firejail-git: Sandboxing the browser using the included profiles'
             'profile-sync-daemon: Load the browser profile into RAM'
             'whoogle: Searching the web using a locally running Whoogle instance'
             'searx: Searching the web using a locally running searX instance'
@@ -184,17 +184,13 @@ fi
 
   # Remove mozilla vpn ads
   patch -p1 -i ../mozilla-vpn-ad.patch
-  
-  # To enable global menubar
-  # Set these to true
-  # browser.proton.appmenu.enabled
 
   # Disabling Pocket
   sed -i "s/'pocket'/#'pocket'/g" browser/components/moz.build
 
   patch -p1 -i ../context-menu.patch
 
-  # this one only to remove an annoying error message:
+  # This one only to remove an annoying error message:
   sed -i 's#SaveToPocket.init();#// SaveToPocket.init();#g' browser/components/BrowserGlue.jsm
 
   # Remove Internal Plugin Certificates
@@ -204,12 +200,12 @@ fi
   _cert_sed+='// NOTE: removed#g'
   sed -z "$_cert_sed" -i toolkit/mozapps/extensions/internal/XPIInstall.jsm
 
-  # allow SearchEngines option in non-ESR builds
+  # Allow SearchEngines option in non-ESR builds
   sed -i 's#"enterprise_only": true,#"enterprise_only": false,#g' browser/components/enterprisepolicies/schemas/policies-schema.json
 
   _settings_services_sed='s#firefox.settings.services.mozilla.com#f.s.s.m.c.qjz9zk#g'
 
-  # stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)
+  # Stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)
   sed "$_settings_services_sed" -i browser/components/newtab/data/content/activity-stream.bundle.js
   sed "$_settings_services_sed" -i modules/libpref/init/all.js
   sed "$_settings_services_sed" -i services/settings/Utils.jsm
@@ -308,10 +304,7 @@ fi
 package() {
   cd mozilla-unified
   DESTDIR="$pkgdir" ./mach install
-
-  install -Dvm644 "$srcdir/settings/$__pkgname.profile" "$pkgdir/etc/firejail/$__pkgname.profile"
-  install -Dvm644 "$srcdir/settings/$__pkgname-common-addons.profile" "$pkgdir/etc/firejail/$__pkgname-common-addons.profile"  
-  install -Dvm644 "$srcdir/settings/$__pkgname-common.profile" "$pkgdir/etc/firejail/$__pkgname-common.profile"
+  
   install -Dvm644 "$srcdir/settings/$__pkgname.psd" "$pkgdir/usr/share/psd/browsers/firedragon"
   
   rm "$pkgdir"/usr/lib/${__pkgname}/pingsender
