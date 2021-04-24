@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Google Keep
-Comment=Quickly capture whats on your mind and get a reminder later at the right place or time. Speak a voice memo on the go and have it automatically transcribed.
-Exec=google-keep
-Icon=google-keep
-Terminal=false
-Categories=Productivity;Notes;Google;Nativefier;

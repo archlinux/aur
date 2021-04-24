@@ -1,17 +1,15 @@
 pkgbase = google-keep-nativefier
-	pkgdesc = Electron wrapper for the Google Keep web application
-	pkgver = 0.4.1
-	pkgrel = 2
+	pkgdesc = Google Keep in shared Electron runtime
+	pkgver = 2021.04.24
+	pkgrel = 1
 	url = https://keep.google.com
 	arch = x86_64
 	license = MIT
-	makedepends = nodejs
+	makedepends = gendesk
 	makedepends = nodejs-nativefier
-	makedepends = npm
+	depends = electron
 	source = google-keep-nativefier.png
-	source = google-keep-nativefier.desktop
 	sha256sums = 30bf408abb4d6639864c05a6c829fba7624bbec254eeab52a72ce0d8b91fbb1f
-	sha256sums = 2ef4f9ffb7aa8405083f50413bd4f16bd3856a6146887f68c66589331d4f8193
 
 pkgname = google-keep-nativefier
 

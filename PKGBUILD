@@ -1,35 +1,56 @@
-pkgname=google-keep-nativefier
-pkgver=0.4.1
-pkgrel=2
-pkgdesc="Electron wrapper for the Google Keep web application"
-arch=(x86_64)
-license=(MIT)
-url=https://keep.google.com
-source=($pkgname.png
-        $pkgname.desktop)
-makedepends=(nodejs nodejs-nativefier npm)
-sha256sums=('30bf408abb4d6639864c05a6c829fba7624bbec254eeab52a72ce0d8b91fbb1f'
-            '2ef4f9ffb7aa8405083f50413bd4f16bd3856a6146887f68c66589331d4f8193')
+# Maintainer: akaessens
 
-_instname=google-keep
+pkgname=google-keep-nativefier
+pkgver=2021.04.24
+pkgrel=1
+pkgdesc='Google Keep in shared Electron runtime'
+arch=('x86_64')
+url='https://keep.google.com'
+license=('MIT')
+depends=('electron')
+makedepends=(
+  'gendesk'
+  'nodejs-nativefier'
+)
+
+source=("${pkgname}.png")
+sha256sums=('30bf408abb4d6639864c05a6c829fba7624bbec254eeab52a72ce0d8b91fbb1f')
+
+_name='Google Keep'
+
+prepare() {
+  cat > "${pkgname}" <<EOF
+#!/usr/bin/env bash
+exec electron /usr/share/${pkgname} "\$@"
+EOF
+  gendesk \
+    --pkgname "${pkgname}" \
+    --pkgdesc "${pkgdesc}" \
+    --name "${_name}" \
+    --categories "Network;Office;Notes;" \
+    -n \
+    -f
+}
+
 build() {
-    nativefier "https://keep.google.com/" \
-      --icon $pkgname.png \
-      --maximize \
-      --name $_instname \
-      --user-agent "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0" \
-      --internal-urls "(.*?keep\.google\.com.*?|.*?accounts\.google\.com.*?)" \
-      --single-instance
+  cd "${srcdir}"
+  # https://github.com/nativefier/nativefier/issues/831
+  nativefier \
+    --name "${_name}" \
+    --icon "${pkgname}.png" \
+    --maximize \
+    --user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:86.0) Gecko/20100101 Firefox/87.0" \
+    --single-instance \
+    --verbose \
+    https://keep.google.com
 }
 
 package() {
-    install -d "$pkgdir"/opt "$pkgdir"/usr/{bin,share/pixmaps}
-    install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$_instname.desktop
-
-    cp -rL $_instname-linux-* "$pkgdir"/opt/$pkgname
-    ln -sf /opt/$pkgname/$_instname "$pkgdir"/usr/bin/$_instname
-    ln -sf /opt/$pkgname/resources/app/icon.png "$pkgdir"/usr/share/pixmaps/$_instname.png
-
-    chmod 666 "$pkgdir"/opt/$pkgname/resources/app/nativefier.json
+  mkdir -p "${pkgdir}/usr/share"
+  local _x=`echo "${_name// /}-linux-"*`
+  cp -r "${_x}/resources/app" "${pkgdir}/usr/share/${pkgname}"
+  install -Dm 755 -t "${pkgdir}/usr/bin/" "${pkgname}"
+  install -Dm 644 -t "${pkgdir}/usr/share/applications/" "${pkgname}.desktop"
+  install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_x}/LICENSE"
+  install -Dm 644 -t "${pkgdir}/usr/share/pixmaps/" "${pkgname}.png"
 }
-
