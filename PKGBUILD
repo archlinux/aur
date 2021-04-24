@@ -11,7 +11,7 @@ url='https://www.hancom.com/'
 license=('custom:hoffice')
 depends=('harfbuzz-icu' 'libcurl-gnutls' )
 source=(
-    "https://github.com/DisLogicator/hoffice/releases/download/11,20,0,1520-rc2/hoffice-11.20.0.1520.tar.gz"
+    "https://github.com/DisLogicator/hoffice/releases/download/11.20.0.1520-rc2/hoffice-11.20.0.1520.tar.gz"
     "LICENSE"
 )
 sha256sums=(
