@@ -1,0 +1,28 @@
+pkgbase = ipython2
+	pkgdesc = An enhanced Interactive Python2 shell.
+	pkgver = 5.9.0
+	pkgrel = 1
+	url = https://ipython.org
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-traitlets
+	depends = python2-pexpect
+	depends = sqlite
+	depends = python2-setuptools
+	depends = python2-pickleshare
+	depends = python2-pathlib
+	depends = python2-backports.shutil_get_terminal_size
+	depends = python2-prompt_toolkit1
+	optdepends = wxpython: needed for ipython2 --gui=wx
+	optdepends = python2-nose: for IPython's test suite
+	source = ipython-5.9.0.tgz::https://github.com/ipython/ipython/archive/5.9.0.tar.gz
+	source = https://pypi.python.org/packages/source/s/simplegeneric/simplegeneric-0.8.1.zip
+	source = https://www.packal.org/sites/default/files/public/styles/icon_large/public/workflow-files/nkeimipynbworkflow/icon/icon.png
+	md5sums = d8905868c8618494827b4546608540b8
+	md5sums = f9c1fab00fd981be588fc32759f474e3
+	md5sums = 2901d65f1b1fe354e72850085cd1c072
+
+pkgname = ipython2
+
