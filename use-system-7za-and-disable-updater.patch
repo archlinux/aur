@@ -2,6 +2,14 @@ diff --git i/src/app/desktop/utils/index.js w/src/app/desktop/utils/index.js
 index 9d23894..37ae04d 100644
 --- i/src/app/desktop/utils/index.js
 +++ w/src/app/desktop/utils/index.js
+@@ -5,7 +5,6 @@ import { extractFull } from 'node-7z';
+ import jimp from 'jimp/es';
+ import makeDir from 'make-dir';
+ import { promisify } from 'util';
+-import { ipcRenderer } from 'electron';
+ import path from 'path';
+ import crypto from 'crypto';
+ import { exec, spawn } from 'child_process';
 @@ -301,14 +301,7 @@ export const isLatestJavaDownloaded = async (meta, userData, retry) => {
    return isValid;
  };
@@ -27,9 +35,9 @@ index 38ac891..8113d39 100644
  const path = require('path');
  const { spawn, exec } = require('child_process');
 -const { autoUpdater } = require('electron-updater');
- const nsfw = require('nsfw');
- const murmur = require('murmur2-calculator');
  const log = require('electron-log');
+ const fss = require('fs');
+ const { promisify } = require('util');
 @@ -149,43 +148,6 @@ log.log(process.env.REACT_APP_RELEASE_TYPE, app.getVersion());
  
  const isDev = process.env.NODE_ENV === 'development';
@@ -74,7 +82,7 @@ index 38ac891..8113d39 100644
  function createWindow() {
    mainWindow = new BrowserWindow({
      width: 1100,
-@@ -539,78 +501,3 @@ ipcMain.handle('calculateMurmur2FromPath', (e, filePath) => {
+@@ -539,79 +501,3 @@ ipcMain.handle('calculateMurmur2FromPath', (e, filePath) => {
      });
    });
  });
@@ -83,7 +91,8 @@ index 38ac891..8113d39 100644
 -
 -if (process.env.REACT_APP_RELEASE_TYPE === 'setup') {
 -  autoUpdater.autoDownload = false;
--  autoUpdater.allowDowngrade = !allowUnstableReleases;
+-  autoUpdater.allowDowngrade =
+-    !allowUnstableReleases && app.getVersion().includes('beta');
 -  autoUpdater.allowPrerelease = allowUnstableReleases;
 -  autoUpdater.setFeedURL({
 -    owner: 'gorilla-devs',
