@@ -2,36 +2,30 @@
 # Maintainer: Dominic Meiser [git at msrd0 dot de]
 
 # Package Information
-pkgname=sqlx-cli
-pkgver=0.5.1
+_crate="sqlx-cli"
+pkgname="$_crate"
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='Command-line utility for SQLx, the Rust SQL toolkit.'
-arch=('x86_64')
 license=('Apache' 'MIT')
 
+# Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
+arch=('aarch64' 'i686' 'x86_64')
+
 # Generic Stuff for cargo packages
-url="https://crates.io/crates/$pkgname"
+url="https://github.com/launchbadge/sqlx"
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha512sums=('8d5b2feeb0e145f56f48321ea614922ae4382243dbc5e14a74af8c22320a5539ab160d1e88199abad131a209a58bedf2253de329775500dd17b1325e41023ad2')
+source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$_crate/$pkgver/download")
+sha512sums=('e8030c856872a4c48b793a72debb4214d94c7af3a076ed5aa4a3df6319715f4bc2eb1ec8887ece0e61bd683c2a274d8c5a6d55cd0898d61881835c9d5608c3f4')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	
-	# crates.io packages aren't supposed to contain a Cargo.lock file so
-	# don't use --locked  flag
-	cargo build --release
+	cargo build --release --locked
 }
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
-
-	install -Dm755 "target/release/sqlx" -t "$pkgdir/usr/bin"
 	install -Dm755 "target/release/cargo-sqlx" -t "$pkgdir/usr/bin"
-
-	# install whatever license files the distribution included
-	for file in $(ls | grep -i -e license -e copying -e copyring); do
-		install -Dm644 "$file" -t "$pkgdir/usr/share/licenses/$pkgname"
-	done
+	install -Dm755 "target/release/sqlx" -t "$pkgdir/usr/bin"
 }
