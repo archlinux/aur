@@ -2,16 +2,16 @@
 pkgbase=python-sncosmo
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=2.3.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Python library for supernova cosmology"
 arch=('i686' 'x86_64')
 url="https://sncosmo.readthedocs.io"
 license=('BSD')
 makedepends=('cython' 'python-numpy')
-checkdepends=('python-pytest-astropy' 'python-astropy' 'python-extinction' 'python-iminuit')
+checkdepends=('python-pytest-astropy' 'python-scipy' 'python-astropy' 'python-extinction' 'python-iminuit')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('e33ecd2c59a3cb4d254d96a01084ac49')
+md5sums=('2a1f7c67b4c10734c8c1a7f8e01c74a3')
 
 prepare() {
     export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
@@ -31,7 +31,7 @@ check() {
 }
 
 package() {
-    depends=('python>=3.5' 'python-astropy>=1.0.0' 'python-extinction>=0.2.2')
+    depends=('python>=3.5' 'python-scipy>=0.9.0' 'python-astropy>=1.0.0' 'python-extinction>=0.2.2')
     optdepends=('python-matplotlib: For plotting functions'
                 'python-iminuit: For light curve fitting using the Minuit minimizer in sncosmo.fit_lc'
                 'python-emcee: For MCMC light curve parameter estimation in sncosmo.mcmc_lc'
