@@ -1,7 +1,7 @@
 pkgbase = ghidra-darcula
 	pkgdesc = Software reverse engineering framework (with dark theme)
 	pkgver = 9.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ghidra-sre.org
 	arch = x86_64
 	license = Apache
