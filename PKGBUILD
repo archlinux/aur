@@ -3,8 +3,8 @@
 
 _pkgbase="sddm"
 pkgname="$_pkgbase-git"
-pkgver=0.19.0.8.gfc3e286
-pkgrel=2
+pkgver=0.19.0.31.g9881225
+pkgrel=1
 pkgdesc="The Simple Desktop Display Manager"
 arch=("x86_64")
 url="https://github.com/sddm/sddm"
@@ -18,7 +18,7 @@ backup=('usr/share/sddm/scripts/Xsetup'
         'etc/pam.d/sddm'
         'etc/pam.d/sddm-autologin'
         'etc/pam.d/sddm-greeter')
-source=("git://github.com/sddm/sddm.git#branch=master"
+source=("git://github.com/sddm/sddm.git#branch=develop"
 sddm.sysusers sddm.tmpfiles
 pam-faillock.patch)
 sha256sums=('SKIP'
