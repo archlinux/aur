@@ -8,7 +8,7 @@ arch=('any')
 url=https://chatterino.com
 license=('MIT')
 depends=('qt5-multimedia' 'qt5-base' 'boost-libs' 'openssl')
-makedepends=('git' 'qt5-svg' 'boost')
+makedepends=('git' 'qt5-svg' 'boost' 'cmake')
 optdepends=('streamlink: For piping streams to video players'
             'pulseaudio: For audio output'
             'gst-plugins-good: For audio output')
@@ -60,7 +60,7 @@ build() {
     cd "$srcdir/chatterino2"
     mkdir -p build
     cd build
-    qmake ..
+    cmake -DCMAKE_BUILD_TYPE=Release ..
     if [ -z "$CCACHE_SLOPPINESS" ]; then
         # We need to set the ccache sloppiness for the chatterino build to use it properly
         # This is due to our use of precompiled headers
