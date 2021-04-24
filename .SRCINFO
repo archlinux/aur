@@ -1,0 +1,19 @@
+pkgbase = srmd-ncnn-vulkan-bin
+	pkgdesc = SRMD super resolution implemented with ncnn library
+	pkgver = 20210210
+	pkgrel = 1
+	url = https://github.com/nihui/srmd-ncnn-vulkan
+	arch = x86_64
+	license = MIT
+	depends = vulkan-icd-loader
+	depends = vulkan-headers
+	provides = srmd-ncnn-vulkan
+	conflicts = srmd-ncnn-vulkan
+	conflicts = srmd-ncnn-vulkan-git
+	source = https://github.com/nihui/srmd-ncnn-vulkan/releases/download/20210210/srmd-ncnn-vulkan-20210210-ubuntu.zip
+	source = srmd-ncnn-vulkan
+	sha256sums = ea4690e128e278517d8b288c8b3597d4f2df7bd862c97b2f7575719979269d1c
+	sha256sums = 68aab0058035d57bc285a5af2713ea48ebf11667434780fc82e1b0df9da25009
+
+pkgname = srmd-ncnn-vulkan-bin
+
