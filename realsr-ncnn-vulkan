@@ -1,0 +1,31 @@
+#!/bin/sh
+
+default_model_path="/usr/share/realsr-ncnn-vulkan/"
+readonly default_model_path
+
+args=""
+
+while getopts "hvi:o:n:s:t:m:g:j:xf:" arg; do
+    case $arg in
+    h) args="$args -$arg" ;;
+    v) args="$args -$arg" ;;
+    i) args="$args -$arg $OPTARG" ;;
+    o) args="$args -$arg $OPTARG" ;;
+    n) args="$args -$arg $OPTARG" ;;
+    s) args="$args -$arg $OPTARG" ;;
+    t) args="$args -$arg $OPTARG" ;;
+    m)
+        if ! [ -d $OPTARG ]; then
+            args="$args -m $default_model_path$OPTARG"
+        else
+            args="$args -$arg $OPTARG"
+        fi
+        ;;
+    g) args="$args -$arg $OPTARG" ;;
+    j) args="$args -$arg $OPTARG" ;;
+    x) args="$args -$arg" ;;
+    f) args="$args -$arg $OPTARG" ;;
+    esac
+done
+
+/usr/share/realsr-ncnn-vulkan/realsr-ncnn-vulkan $args

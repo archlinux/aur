@@ -1,0 +1,21 @@
+pkgbase = realsr-ncnn-vulkan-bin
+	pkgdesc = RealSR super resolution implemented with ncnn library
+	pkgver = 20210210
+	pkgrel = 1
+	url = https://github.com/nihui/realsr-ncnn-vulkan
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = sh
+	depends = vulkan-icd-loader
+	depends = vulkan-headers
+	provides = realsr-ncnn-vulkan
+	conflicts = realsr-ncnn-vulkan
+	conflicts = realsr-ncnn-vulkan-git
+	source = https://github.com/nihui/realsr-ncnn-vulkan/releases/download/20210210/realsr-ncnn-vulkan-20210210-ubuntu.zip
+	source = realsr-ncnn-vulkan
+	sha256sums = 8abf0834444d768080637fc2d4784444f5d959d1424c586c8a4e44f79f4b54c8
+	sha256sums = 9307f1bfe988b2d2e780c28b447df68ee0acf8f94d18c08cb20ed17bb88c9763
+
+pkgname = realsr-ncnn-vulkan-bin
+
