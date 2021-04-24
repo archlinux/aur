@@ -37,10 +37,10 @@ pkgbase = netdata-cloud
 	conflicts = netdata-git
 	backup = etc/netdata/netdata.conf
 	source = netdata-cloud-1.30.1.tar.gz::https://github.com/netdata/netdata/releases/download/v1.30.1/netdata-v1.30.1.tar.gz
-	source = https://github.com/netdata/mosquitto/releases/download/v.1.6.8_Netdata-5/libmosquitto-v.1.6.8_Netdata-5-linux-amd64.tar.gz
+	source = https://github.com/netdata/mosquitto/archive/refs/tags/v.1.6.8_Netdata-5.tar.gz
 	source = netdata-cloud.sysusers
 	sha512sums = c3d116bf3459ca6224f5cd8341933c2696581178262a37887c532e09e98e5d075217fcd66574e00cc644fc16ec583b7e2fe54be95c98c477fb20fbe7ad9ed1a9
-	sha512sums = 9c77117f0c2f22c4b413497d475b956f94e0827b08eb99a2b769568e704f4ad65c0229775ffc68990ec7d18758b2a7e5023c91e9bc537e9d2b2eefbe0759b512
+	sha512sums = 5661c7219517ed9a804f1b6fbac6f18f840aa1855d0acae2edf609c869eea826239ce57e604e77a9f1e95b8aca18564066c56ce71f7022a0017211b77a1d6c30
 	sha512sums = a910809a823ba58ca7bdaa72e8d68427b48f452c1fbb2343fa182ecb0a091a7640e73af24b8ba2fdd90e00aed8ef53b7fccd25cb8f04ca9b9fa6c8e52223ca66
 
 pkgname = netdata-cloud
