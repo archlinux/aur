@@ -1,0 +1,24 @@
+pkgbase = intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic
+	pkgdesc = Intel® oneAPI DPC++/C++ Compiler & Intel® C++ Compiler Classic 2021.2.0 for Linux* for Intel(R) 64
+	pkgver = 2021.2.0
+	pkgrel = 1
+	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
+	arch = x86_64
+	license = custom
+	noextract = intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic-2021.2.0-2021.2.0-610_amd64.deb
+	noextract = intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic-common-2021.2.0-2021.2.0-610_all.deb
+	noextract = intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic-runtime-2021.2.0-2021.2.0-610_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic-2021.2.0-2021.2.0-610_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic-common-2021.2.0-2021.2.0-610_all.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic-runtime-2021.2.0-2021.2.0-610_amd64.deb
+	sha256sums = b6698762fdd2a40582234f8c72d92a31bb07d6d604bfbe4eb3296293df2785a6
+	sha256sums = 9c5f3f48b2fdb5c62bf93cb9f8c28f8267138ed84c48b0ff95d881204a9b8e33
+	sha256sums = cd32dc63cbfc806f4a7b3bf90ab33ae5a39e2d3f65a114a4c2180dde21887a6a
+
+pkgname = intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic
+	depends = intel-oneapi-dpcpp-cpp
+	depends = intel-oneapi-compiler-dpcpp-cpp
+	depends = intel-oneapi-compiler-shared
+	depends = intel-oneapi-common-vars
+	depends = intel-oneapi-common-licensing
+
