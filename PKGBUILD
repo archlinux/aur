@@ -1,40 +1,67 @@
-# Maintainer: Hugo Courtial <hugo [at] courtial [not colon] me>
-# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
+# Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
+# Contributor: Hugo Courtial <hugo [at] courtial [not colon] me>
+# Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-arena-git
-name=openfx-arena
-pkgver=2.3.10
+pkgver=Natron.2.4.0.r0.ge9ab79a
 pkgrel=1
-arch=("x86_64")
-pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
-url="https://github.com/MrKepzie/openfx-io"
-license=("GPL2")
-depends=("seexpr" "openimageio" "ffmpeg") 
-#depends=("opencolorio" "openexr" "openimageio" "ffmpeg" "boost-libs")
-makedepends=("git" "expat" "boost")
-optdepends=("openfx-gmic-bin" "natron-plugins")
-com=7da90f3f855d880572a9214445ba861a884a9132
-source=("$name::git+https://github.com/NatronGitHub/openfx-arena.git#commit=$com"
-)
-sha512sums=('SKIP'
-)
+arch=('x86_64')
+pkgdesc="Extra OpenFX plugins for Natron"
+url="https://github.com/NatronGitHub/openfx-arena"
+license=('GPL')
+depends=('libcdr' 'libgl' 'libmagick' 'librsvg' 'libxt' 'libzip' 'opencolorio1' 'poppler-glib' 'sox')
+makedepends=('jbigkit' 'openmp' 'pango')
 
-_bits=32 ; [[ "$CARCH" = 'x86_64' ]] && _bits=64
+_pkgname=${pkgname%-git}
+_url=${url%/${_pkgname}}
+
+conflicts=("${_pkgname}")
+
+source=("${_pkgname}::git+${url}"
+        "openfx::git+${_url}/openfx"
+        "openfx-io::git+${_url}/openfx-io"
+        "lodepng::git+https://github.com/lvandeve/lodepng"
+        "openfx-supportext::git+${_url}/openfx-supportext"
+        "SequenceParsing::git+${_url}/SequenceParsing"
+        "tinydir::git+${_url}/tinydir")
+sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 prepare() {
-  cd "$srcdir/$name"
+  cd ${_pkgname}
+  git submodule init
+  git config submodule.OpenFX.url ${srcdir}/openfx
+  git config submodule.OpenFX-IO.url ${srcdir}/openfx-io
+  git config submodule.SupportExt.url ${srcdir}/openfx-supportext
+  git config submodule.lodepng.url ${srcdir}/lodepng
+  git submodule update
 
-  git submodule update --init --recursive
+  cd OpenFX-IO
+  git submodule init
+  git config submodule.openfx.url ${srcdir}/openfx
+  git config submodule.SupportExt.url ${srcdir}/openfx-supportext
+  git config submodule.IOSupport/SequenceParsing.url ${srcdir}/SequenceParsing
+  git submodule update
 
+  cd IOSupport/SequenceParsing
+  git submodule init
+  git config submodule.tinydir.url ${srcdir}/tinydir
+  git submodule update
 }
 
 build() {
-  cd "$srcdir/$name"
-  make CONFIG=release BITS=$_bits
+  cd "${srcdir}/${_pkgname}"
+  make CONFIG=release
 }
 
 package() {
-  cd "$srcdir/$name"
-  mkdir -p "$pkgdir/usr/OFX/Plugins"
-  make install PLUGINPATH=$pkgdir/usr/OFX/Plugins CONFIG=release BITS=$_bits
+  cd "${srcdir}/${_pkgname}"
+  mkdir -p "${pkgdir}/usr/OFX/Plugins"
+  make install PLUGINPATH="${pkgdir}/usr/OFX/Plugins" \
+               CONFIG=release
 }
