@@ -35,7 +35,6 @@ prepare() {
 build() {
     cd "$pkgname-$pkgver"
     local _electron="$(electron --version | sed 's/^v//')"
-    set -x
     npx electron-rebuild -f --version="$_electron"
     node-prune node_modules
     _ep () {
