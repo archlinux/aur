@@ -1,7 +1,7 @@
 # Maintainer: lmbbrkr <lmbbrkr at protonmail dot ch>
 
 pkgname=fastmod
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="A fast partial replacement for the codemod tool"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('0e0c2d50489c90cb8c8904772be2e9d31353fbed814d9088ee6013c27c2d111b')
+sha256sums=('5afb4c449aa7d1efe34e0540507fc1d1f40f7eba0861b2bb10409080faeffc4a')
 
 build() {
   cd "${pkgname}-${pkgver}"
