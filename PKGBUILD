@@ -5,7 +5,7 @@ pkgname='hoffice'
 pkgver=11.20.0.1520
 pkgrel=1
 pkgdesc="한글, 한셀, 한쇼 뿐만 아니라 MS 워드, 파워포인트 ,
-엑셀 문서를 편집할 수 있는 한컴오피스 통합 편집기입니다."
+엑셀 문서를 편집할 수 있는 한컴오피스 통합 편집기입니다.(This program is extracted from Hancom Gooroom OS in /opt/hnc/*. For more information please check https://github.com/DisLogicator/hoffice/)"
 arch=('x86_64')
 url='https://www.hancom.com/'
 license=('custom:hoffice')
