@@ -5,7 +5,7 @@
 pkgname=firedragon
 _pkgname=FireDragon
 pkgver=88.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -18,7 +18,7 @@ depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss nspr ttf-font libpulse
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
              rust ccache autoconf2.13 clang llvm jack gtk2 nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard git binutils lld)
-optdepends=('firejail: Sandboxing the browser using the included profiles'
+optdepends=('firejail-git: Sandboxing the browser using the included profiles'
             'profile-sync-daemon: Load the browser profile into RAM'
             'whoogle: Searching the web using a locally running Whoogle instance'
             'searx: Searching the web using a locally running searX instance'
@@ -234,10 +234,10 @@ fi
 
   patch -p1 -i ../context-menu.patch
 
-  # remove mozilla vpn ads
+  # Remove Mozilla VPN ads
   patch -p1 -i ../mozilla-vpn-ad.patch
 
-  # this one only to remove an annoying error message:
+  # This one only to remove an annoying error message:
   sed -i 's#SaveToPocket.init();#// SaveToPocket.init();#g' browser/components/BrowserGlue.jsm
 
   # Remove Internal Plugin Certificates
@@ -247,12 +247,12 @@ fi
   _cert_sed+='// NOTE: removed#g'
   sed -z "$_cert_sed" -i toolkit/mozapps/extensions/internal/XPIInstall.jsm
 
-  # allow SearchEngines option in non-ESR builds
+  # Allow SearchEngines option in non-ESR builds
   sed -i 's#"enterprise_only": true,#"enterprise_only": false,#g' browser/components/enterprisepolicies/schemas/policies-schema.json
 
   _settings_services_sed='s#firefox.settings.services.mozilla.com#f.s.s.m.c.qjz9zk#g'
 
-  # stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)
+  # Stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)
   sed "$_settings_services_sed" -i browser/components/newtab/data/content/activity-stream.bundle.js
   sed "$_settings_services_sed" -i modules/libpref/init/all.js
   sed "$_settings_services_sed" -i services/settings/Utils.jsm
@@ -352,9 +352,6 @@ package() {
   cd firefox-$pkgver
   DESTDIR="$pkgdir" ./mach install
 
-  install -Dvm644 "$srcdir/settings/$pkgname.profile" "$pkgdir/etc/firejail/$pkgname.profile"
-  install -Dvm644 "$srcdir/settings/$pkgname-common-addons.profile" "$pkgdir/etc/firejail/$pkgname-common-addons.profile"
-  install -Dvm644 "$srcdir/settings/$pkgname-common.profile" "$pkgdir/etc/firejail/$pkgname-common.profile"
   install -Dvm644 "$srcdir/settings/$pkgname.psd" "$pkgdir/usr/share/psd/browsers/$pkgname"
   
   local vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
