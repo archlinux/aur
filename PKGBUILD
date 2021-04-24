@@ -1,48 +1,45 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: chn <g897331845@gmail.com>
+# This PKGBUILD is picked directly from asp which is maintained by Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=openssl-static
 _pkgname=openssl
-_ver=1.1.1g
+_ver=1.1.1k
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-pkgrel=2
-pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (static library)'
-arch=('i686' 'x86_64')
+pkgrel=1
+pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (with static libs)'
+arch=('x86_64')
 url='https://www.openssl.org'
 license=('custom:BSD')
-depends=('perl')
-optdepends=('openssl: headers and pkg-config files')
+depends=('glibc')
+makedepends=('perl')
+optdepends=('ca-certificates' 'perl')
+replaces=('openssl-perl' 'openssl-doc')
+backup=('etc/ssl/openssl.cnf')
 options=('staticlibs')
+provides=("openssl=$pkgver")
+conflicts=('openssl')
 source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"{,.asc}
-        'ca-dir.patch')
-sha512sums=('01e3d0b1bceeed8fb066f542ef5480862001556e0f612e017442330bbd7e5faee228b2de3513d7fc347446b7f217e27de1003dc9d7214d5833b97593f3ec25ab'
+	'ca-dir.patch')
+sha256sums=('892a0875b9872acd04a9fde79b1f943075d5ea162415de3047c327df33fbaee5'
             'SKIP'
-            '6eb0e388107a751d2ab1222efe5dec736111d4edad72c9b7c3f4dc55270e19811e89e9df596210e3f79751e60b77c7bc891e181e67cff79aa1b64a02a20bc2e7')
+            '75aa8c2c638c8a3ebfd9fa146fc61c7ff878fc997dc6aa10d39e4b2415d669b2')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
-              '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C')
+	'7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C')
 
 prepare() {
-	cd $srcdir/$_pkgname-$_ver
+	cd "$srcdir/$_pkgname-$_ver"
 
 	# set ca dir to /etc/ssl by default
-	patch -p0 -i $srcdir/ca-dir.patch
+	patch -p0 -i "$srcdir/ca-dir.patch"
 }
 
 build() {
-	cd $srcdir/$_pkgname-$_ver
-
-	if [ "${CARCH}" == 'x86_64' ]; then
-		openssltarget='linux-x86_64'
-		optflags='enable-ec_nistp_64_gcc_128'
-	elif [ "${CARCH}" == 'i686' ]; then
-		openssltarget='linux-elf'
-		optflags=''
-	fi
+	cd "$srcdir/$_pkgname-$_ver"
 
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
-		no-shared no-ssl3-method ${optflags} \
-		"${openssltarget}" \
+		shared no-ssl3-method enable-ec_nistp_64_gcc_128 linux-x86_64 \
 		"-Wa,--noexecstack ${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
 
 	make depend
@@ -50,17 +47,23 @@ build() {
 }
 
 check() {
-	cd $srcdir/$_pkgname-$_ver
+	cd "$srcdir/$pkgbase-$_ver"
+
 	# the test fails due to missing write permissions in /etc/ssl
 	# revert this patch for make test
-	patch -p0 -R -i $srcdir/ca-dir.patch
+	patch -p0 -R -i "$srcdir/ca-dir.patch"
+
 	make test
-	patch -p0 -i $srcdir/ca-dir.patch
+
+	patch -p0 -i "$srcdir/ca-dir.patch"
+	# re-run make to re-generate CA.pl from th patched .in file.
+	make apps/CA.pl
 }
 
 package() {
-	cd $srcdir/$_pkgname-$_ver
-	make INSTALL_PREFIX=$pkgdir MANDIR=/usr/share/man MANSUFFIX=ssl install_sw install_ssldirs install_man_docs
-	rm -rf "$pkgdir/usr/"{bin,include,share,lib/engines,lib/pkgconfig} $pkgdir/usr/lib/*.so* $pkgdir/etc
-	install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+	cd "$srcdir/$_pkgname-$_ver"
+
+	make DESTDIR="$pkgdir" MANDIR=/usr/share/man MANSUFFIX=ssl install_sw install_ssldirs install_man_docs
+
+	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
