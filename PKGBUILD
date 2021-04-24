@@ -36,4 +36,6 @@ build() {
 package() {
 	depends=('intel-oneapi-common-vars' 'intel-oneapi-common-licensing')
 	mv ${srcdir}/opt ${pkgdir}
+
+	install -Dm644 ${pkgname}.conf ${pkgdir}/etc/ld.so.conf.d/${pkgname}.conf
 }
