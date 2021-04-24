@@ -3,32 +3,41 @@
 # Contributor: Rich Li <rich@dranek.com>
 
 pkgname=python-cartopy
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
-pkgdesc="A cartographic python library with matplotlib support for visualisation"
+pkgdesc="A cartographic Python library with Matplotlib support for visualisation"
 url="https://scitools.org.uk/cartopy/docs/latest/"
-depends=('python-numpy' 'python-six' 'python-shapely' 'python-pyshp' 'proj'
+depends=('python-numpy' 'python-six' 'python-shapely' 'python-pyshp' 'proj6'
          'geos' 'python-matplotlib' 'python-pillow' 'python-scipy')
 optdepends=('python-fiona: faster shapefile reading'
             'python-gdal: for use with SRTM data'
             'python-pyepsg: interface to https://epsg.io'
             'python-owslib: access OGC clients')
-makedepends=('python-setuptools' 'cython')
-checkdepends=('python-pytest' 'python-filelock')
+makedepends=('python-setuptools' 'cython' 'python-setuptools-scm')
+checkdepends=('python-pytest' 'python-flufl-lock')
 license=('LGPL3')
 arch=('x86_64')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/SciTools/cartopy/archive/v${pkgver}.tar.gz")
-md5sums=('792c63511641c843759c5b774f2a8b33')
-sha1sums=('e1eb5b99f8d504ad75e99a788566fcf14da97171')
-sha256sums=('493ced4698361ffabec1a213d2b711dc836117242c304f3b93f5406182fd8bc2')
+source=(
+  "cartopy-v$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/c/cartopy/Cartopy-$pkgver.post1.tar.gz"
+  'use-proj6.patch'
+)
+sha256sums=(
+  '4b8b4773a98ed7009fe17d9b6ec87ac3ac62b7d14634d7768c190eadc647d576'
+  'f0367e38237739fe4c4700353eeae34f892a102a16ff43012b4758fcba564e9b'
+)
+
+prepare() {
+    cd "$srcdir/Cartopy-${pkgver}.post1"
+    patch -p0 -i "$srcdir/use-proj6.patch"
+}
 
 build() {
-    cd "$srcdir/cartopy-${pkgver}"
-    python setup.py build
+    cd "$srcdir/Cartopy-${pkgver}.post1"
+    FORCE_CYTHON=1 python setup.py build
 }
 
 check() {
-    cd "$srcdir/cartopy-${pkgver}"
+    cd "$srcdir/Cartopy-${pkgver}.post1"
 
     # The deselected tests fail an image comparison due to small changes in the
     # size and position of text labels.
@@ -39,6 +48,6 @@ check() {
 }
 
 package() {
-    cd "$srcdir/cartopy-${pkgver}"
+    cd "$srcdir/Cartopy-${pkgver}.post1"
     python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1 --skip-build
 }

@@ -1,0 +1,24 @@
+--- setup.py
++++ setup.py
+
+@@ -143,5 +143,5 @@
+ # Proj
+ def find_proj_version_by_program(conda=None):
+-    proj = find_executable('proj')
++    proj = find_executable('proj6')
+     if proj is None:
+         print(
+
+--- setup.py
++++ setup.py
+
+@@ -288,6 +288,9 @@
+     extra_extension_args["define_macros"].append(
+         ('CYTHON_TRACE_NOGIL', '1')
+     )
+ 
++proj_includes = ["/usr/include/proj6"]
++proj_libraries = ["proj6"]
++
+ extensions = [
+     Extension(
