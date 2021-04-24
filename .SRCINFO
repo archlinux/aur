@@ -1,7 +1,7 @@
 pkgbase = nginx-quic
 	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch
 	pkgver = 1.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nginx.org
 	install = nginx.install
 	arch = i686
