@@ -1,37 +1,37 @@
 _KVER=$(uname -r)
-#_KVER=4.10.8-1-ARCH
+#_KVER=5.11.2-1-ARCH
 
 pkgname=xradio-git
+_pkgname=xradio
 pkgver=r107.b00ccb0
-pkgver() {
-	cd "$srcdir/xradio"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 pkgrel=1
-pkgdesc="Port Allwinner xradio driver to mainline Linux"
-arch=(armv7h)
-url="https://github.com/fifteenhex/xradio.git"
+pkgdesc="Driver for the Allwinner XRadio XR819 wifi chip"
+arch=('armv7h')
+url="https://github.com/fifteenhex/xradio"
 license=('GPL')
-depends=()
 install=xradio.install
 makedepends=('git' 'linux-headers')
-source=("git+https://github.com/fifteenhex/xradio.git"
-	boot_xr819.bin
-	fw_xr819.bin
-	sdd_xr819.bin)
-sha256sums=('SKIP'
-            '6583350b3eb12f70fc6d6081426717bd0019b55c6558ffe820c1548f0702bb8c'
-            '4954ceb85807959c42e82c432109455bd9eabe95971402299a16d77ddd7d79f5'
-            '84d3fb3ca8e5d25a0c113a5063bccbeb5b53da230a0afa236b5b625f37db5161')
+source=("git+https://github.com/fifteenhex/xradio.git")
+sha256sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/x${_pkgname}"
+	
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-	cd "xradio"
+	cd "${_pkgname}"
+
+	sed -i "s|.*CONFIG_WLAN_VENDOR_XRADIO := m.*| CONFIG_WLAN_VENDOR_XRADIO := m|g" Makefile
+	sed -i "s|.*DCONFIG_XRADIO_USE_EXTENSIONS.*| ccflags-y += -DCONFIG_XRADIO_USE_EXTENSIONS|g" Makefile
 	make -C /usr/lib/modules/${_KVER}/build M=$PWD modules
 }
 
 package() {
-	cd "xradio"
-	make -C /usr/lib/modules/${_KVER}/build M=$PWD INSTALL_MOD_PATH="$pkgdir" modules_install
+	cd "${_pkgname}"
+	
+  make -C /usr/lib/modules/${_KVER}/build M=$PWD INSTALL_MOD_PATH="$pkgdir" modules_install
 
 	# fix modules path
 	mkdir -p "$pkgdir"/usr
@@ -39,6 +39,8 @@ package() {
 
 	# install firmware
 	for i in boot fw sdd; do
-		install -Dm0644 "$srcdir"/${i}_xr819.bin "$pkgdir"/usr/lib/firmware/xr819/${i}_xr819.bin
+		install -Dm0644 "$srcdir"/xradio/firmware/${i}_xr819.bin "$pkgdir"/usr/lib/firmware/xr819/${i}_xr819.bin
 	done
+	install -Dpm644 README* -t "${pkgdir}/usr/share/doc/${_pkgname}/"
 }
+# vim: set sw=2 ts=2 et:
