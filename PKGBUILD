@@ -1,5 +1,5 @@
 pkgname=ttf-neodgm-pro
-pkgver=1.000
+pkgver=1.010
 pkgrel=1
 pkgdesc='Proportional Korean TrueType font based on NeoDunggeunmo.'
 arch=('any')
