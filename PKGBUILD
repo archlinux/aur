@@ -33,7 +33,7 @@ package_aritim-dark-kde() {
 
     cp -r KDE/auroraeTheme/* ${pkgdir}/usr/share/aurorae/themes/Aritim-Dark
     cp -r KDE/colorScheme/AritimDark.colors ${pkgdir}/usr/share/color-schemes
-    cp -r KDE/lookAndFeel/* ${pkgdir}/usr/share/plasma/look-and-feel/Aritim-Dark
+    cp -r KDE/globalTheme/* ${pkgdir}/usr/share/plasma/look-and-feel/Aritim-Dark
     cp -r KDE/plasmaTheme/* ${pkgdir}/usr/share/plasma/desktoptheme
 }
 
