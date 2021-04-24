@@ -1,8 +1,8 @@
 pkgbase = dolphin-meld
 	pkgdesc = KDE File Manager, using Meld rather than Kompare
-	pkgver = 20.12.3
+	pkgver = 21.04.0
 	pkgrel = 1
-	url = https://kde.org/applications/system/dolphin/
+	url = https://apps.kde.org/dolphin/
 	arch = x86_64
 	groups = kde-applications
 	groups = kde-system
@@ -24,15 +24,15 @@ pkgbase = dolphin-meld
 	optdepends = konsole: terminal panel
 	optdepends = purpose: share context menu
 	optdepends = packagekit-qt5: service menu installer
-	provides = dolphin=20.12.3
-	conflicts = dolphin=20.12.3
-	source = https://download.kde.org/stable/release-service/20.12.3/src/dolphin-20.12.3.tar.xz
-	source = https://download.kde.org/stable/release-service/20.12.3/src/dolphin-20.12.3.tar.xz.sig
+	provides = dolphin=21.04.0
+	conflicts = dolphin=21.04.0
+	source = https://download.kde.org/stable/release-service/21.04.0/src/dolphin-21.04.0.tar.xz
+	source = https://download.kde.org/stable/release-service/21.04.0/src/dolphin-21.04.0.tar.xz.sig
 	source = dolphin-meld.patch
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
-	sha256sums = 9794b825de2440f53bd237c0bc1c974e89431b5c440ab81ccc1135e696f8a1f3
+	sha256sums = 4988e59d4e3edfd58c2d0857745398fc1840c87ec03ea13b0d73254874cfbdbe
 	sha256sums = SKIP
 	sha256sums = 9bf8e1d53bb482e3cc2f3a114fb894fc3d0216ad2933d0c6e1f0b7df6d640b7a
 
