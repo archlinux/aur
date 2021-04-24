@@ -1,7 +1,7 @@
 # Maintainer: vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com>
 
 pkgname=listen1-desktop-appimage
-pkgver=2.20.1
+pkgver=2.21.0
 pkgrel=1
 pkgdesc="One for all free music in China"
 arch=("x86_64")
@@ -13,7 +13,7 @@ options=("!strip")
 provides=("listen1")
 conflicts=("listen1")
 source=("https://github.com/listen1/listen1_desktop/releases/download/v${pkgver}/${_pkgname}")
-sha512sums=("a322cd3b5d0552e0581be26e31b4ba781073b1262515d02fd5d5abf087a99fb606a233691262973bd0912b5702c74ceea2a10b4926d3867c7d0de72c1e3d5947")
+sha512sums=("16a715688b2cda703e64ae24cae03284da6d0a9af9ae4e7ace0eb290a4f5baff46f33816c93ee3b5f5d8206d2d3a6e18a7ae7fbcc94bdf7a09f389c4f3dafd1d")
 
 _installdir=/opt/appimages
 _installname=listen1
