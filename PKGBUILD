@@ -13,13 +13,11 @@ source=(
 	"https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb"
 	"https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-common-${pkgver}-${pkgver}-${_debpkgrel}_all.deb"
 	"https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-runtime-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb"
-	"https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-compiler-dpcpp-cpp-classic-fortran-shared-runtime-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb"
 )
 noextract=(
 	"${pkgname}-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb"
 	"${pkgname}-common-${pkgver}-${pkgver}-${_debpkgrel}_all.deb"
 	"${pkgname}-runtime-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb"
-	"intel-oneapi-compiler-dpcpp-cpp-classic-fortran-shared-runtime-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb"
 )
 sha256sums=('9fd08227fda9d5f46e0629c6cbd228793acf758d42bbb92556c546d7e873fc38'
             '230f0acbbf2280c12e7104d3fdac420bd98d8adbc7991b2841f5a0e810bdd157'
@@ -34,9 +32,6 @@ build() {
 	tar xvf data.tar.xz
 
 	ar x ${pkgname}-runtime-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb
-	tar xvf data.tar.xz
-
-	ar x "intel-oneapi-compiler-dpcpp-cpp-classic-fortran-shared-runtime-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb"
 	tar xvf data.tar.xz
 }
 
