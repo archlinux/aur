@@ -1,0 +1,6 @@
+post_install()  {
+  printf ":: Visp requires a premium account to work properly!\n"
+  printf ":: This is also not a player, but a controller.\n"
+  printf ":: You will not be able to output sound with this.\n"
+  printf ":: Report all Visp-related bugs to upstream!\n"
+}

@@ -1,0 +1,18 @@
+pkgbase = visp-spotify-git
+	pkgdesc = A Vi-like Spotify client for terminal users
+	pkgver = r1151.539512a
+	pkgrel = 1
+	url = https://github.com/ambientsound/visp
+	install = visp-spotify-git.install
+	arch = x86_64
+	license = MIT
+	makedepends = go>=1.16
+	makedepends = git
+	depends = glibc
+	provides = visp-spotify
+	conflicts = visp-spotify
+	source = visp-spotify-git::git+https://github.com/ambientsound/visp
+	md5sums = SKIP
+
+pkgname = visp-spotify-git
+
