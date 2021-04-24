@@ -1,40 +1,50 @@
-# Maintainer: Hugo Courtial <hugo [at] courtial [not colon] me>
-# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
+# Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 
 pkgname=openfx-gmic-git
-name=openfx-gmic
-pkgver=3.0.0.4
+pkgver=Natron.2.4.0.r0.g626699d
 pkgrel=1
-arch=("x86_64")
-pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
-url="https://github.com/MrKepzie/openfx-io"
-license=("GPL2")
-depends=("seexpr" "openimageio" "ffmpeg") 
-#depends=("opencolorio" "openexr" "openimageio" "ffmpeg" "boost-libs")
-makedepends=("git" "expat" "boost")
-optdepends=("openfx-gmic-bin" "natron-plugins")
-com=1cb9ced110f2c2ba28a92477d887620566572eca
-source=("$name::git+https://github.com/NatronGitHub/openfx-gmic.git#commit=$com"
-)
-sha512sums=('SKIP'
-)
+arch=('x86_64')
+pkgdesc="OpenFX wrapper for the G'MIC framework"
+url="https://github.com/NatronGitHub/openfx-gmic"
+license=('custom:CeCILL-C' 'custom:CeCILLv2')
+depends=('fftw' 'libgl' 'libpng')
+makedepends=('openmp')
 
-_bits=32 ; [[ "$CARCH" = 'x86_64' ]] && _bits=64
+_pkgname=${pkgname%-git}
+_url=${url%/${_pkgname}}
+
+conflicts=("${_pkgname}")
+
+source=("${_pkgname}::git+${url}"
+        "openfx::git+${_url}/openfx")
+sha512sums=('SKIP'
+            'SKIP')
 
 prepare() {
-  cd "$srcdir/$name"
-
-  git submodule update --init --recursive
-
+  cd ${_pkgname}
+  git submodule init
+  git config submodule.openfx.url ${srcdir}/openfx
+  git submodule update
 }
 
 build() {
-  cd "$srcdir/$name"
-  make -j10 CONFIG=release 
+  cd ${_pkgname}
+  make CONFIG=release \
+       OPENMP=1
 }
 
 package() {
-  cd "$srcdir/$name"
-  mkdir -p "$pkgdir/usr/OFX/Plugins"
-  make install PLUGINPATH=$pkgdir/usr/OFX/Plugins CONFIG=release BITS=$_bits
+  cd ${_pkgname}
+  install -d "${pkgdir}/usr/OFX/Plugins"
+  make install PLUGINPATH="${pkgdir}/usr/OFX/Plugins" \
+               CONFIG=release
+
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  install -Dm644 COPYING \
+                 "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 Licence_CeCILL-C_V1-en.txt \
+                 "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 Licence_CeCILL_V2-en.txt \
+                 "${pkgdir}/usr/share/licenses/${pkgname}/"
 }

@@ -1,19 +1,19 @@
 pkgbase = openfx-gmic-git
-	pkgdesc = A set of Readers/Writers plugins written using the OpenFX standard
-	pkgver = 3.0.0.4
+	pkgdesc = OpenFX wrapper for the G'MIC framework
+	pkgver = Natron.2.4.0.r0.g626699d
 	pkgrel = 1
-	url = https://github.com/MrKepzie/openfx-io
+	url = https://github.com/NatronGitHub/openfx-gmic
 	arch = x86_64
-	license = GPL2
-	makedepends = git
-	makedepends = expat
-	makedepends = boost
-	depends = seexpr
-	depends = openimageio
-	depends = ffmpeg
-	optdepends = openfx-gmic-bin
-	optdepends = natron-plugins
-	source = openfx-gmic::git+https://github.com/NatronGitHub/openfx-gmic.git#commit=1cb9ced110f2c2ba28a92477d887620566572eca
+	license = custom:CeCILL-C
+	license = custom:CeCILLv2
+	makedepends = openmp
+	depends = fftw
+	depends = libgl
+	depends = libpng
+	conflicts = openfx-gmic
+	source = openfx-gmic::git+https://github.com/NatronGitHub/openfx-gmic
+	source = openfx::git+https://github.com/NatronGitHub/openfx
+	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = openfx-gmic-git
