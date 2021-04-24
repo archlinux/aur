@@ -10,12 +10,12 @@ pkgname=julia-mkl
 _pkgname=julia
 epoch=2
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 pkgdesc='High-level, high-performance, dynamic programming language (compiled with the Intel MKL library)'
 url='https://julialang.org/'
 license=(MIT)
-depends=(fftw hicolor-icon-theme intel-mkl libgit2 libunwind libutf8proc suitesparse mbedtls openlibm pcre2 llvm-libs p7zip)
+depends=(fftw hicolor-icon-theme intel-mkl intel-oneapi-compiler-shared libgit2 libunwind libutf8proc suitesparse mbedtls pcre2 llvm-libs p7zip)
 makedepends=(cmake gcc-fortran gmp python llvm patchelf)
 optdepends=('gnuplot: If using the Gaston Package from julia')
 provides=('julia')
@@ -37,8 +37,6 @@ prepare() {
   patch -p1 -i ../make-install-no-build.patch
   # Fix test failure
   sed -e 's|0.22314355f0 + 3.1415927f0im|0.22314355f0 - 3.1415927f0im|' -i stdlib/LinearAlgebra/test/lu.jl
-  # Remove libimf.so
-  sed -e '/libimf/d' -e 's/-limf//' -i Make.inc
 }
 
 _buildopts="prefix=/usr \
@@ -67,7 +65,6 @@ _buildopts="prefix=/usr \
     USE_SYSTEM_PATCHELF=1 \
     USE_SYSTEM_ZLIB=1 \
     USE_SYSTEM_P7ZIP=1 \
-    USE_SYSTEM_OPENLIBM=1 \
     MARCH=x86-64"
 
 build() {
