@@ -1,41 +1,37 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
-# Maintainer: Marcin Mikołajczak <me@mkljczk.pl>
+# Merged with official ABS kscreenlocker PKGBUILD by João, 2021/04/20 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Marcin Mikołajczak <me@mkljczk.pl>
 
 pkgname=kscreenlocker-git
-pkgver=v5.18.90.r21.gf53b9b3
+pkgver=5.21.80_r832.gd610b79
 pkgrel=1
 pkgdesc='Library and components for secure lock screen architecture'
-arch=(i686 x86_64)
-url='https://projects.kde.org/kscreenlocker'
+arch=($CARCH)
+url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(plasma-framework kidletime kwayland libxcursor)
-makedepends=(extra-cmake-modules git python kdoctools kcmutils)
-provides=(kscreenlocker)
-conflicts=(kscreenlocker)
-source=('git+https://anongit.kde.org/kscreenlocker.git')
-md5sums=('SKIP')
+groups=(plasma-git)
+depends=(kidletime-git kwayland-git kdeclarative-git perl layer-shell-qt-git)
+makedepends=(git extra-cmake-modules-git kdoctools-git kcmutils-git libxcursor)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+optdepends=('kcmutils-git: configuration module')
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  mkdir -p build
+  _ver="$(grep -m1 'set(PROJECT_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../kscreenlocker \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DSYSCONF_INSTALL_DIR=/etc \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
