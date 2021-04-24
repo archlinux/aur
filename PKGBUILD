@@ -2,7 +2,7 @@
 
 pkgname=ezra-bible-app
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A user-friendly Bible study tool focussing on topical study based on keywords/tags'
 arch=('x86_64')
 url="https://github.com/$pkgname/$pkgname"
@@ -10,6 +10,8 @@ license=('GPL3')
 depends=('electron'
          'icu'
          'nodejs')
+provides=('ezra-project')
+conflicts=('ezra-project')
 replaces=('ezra-project')
 makedepends=('jq'
              'moreutils'
