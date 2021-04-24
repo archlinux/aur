@@ -1,13 +1,13 @@
 pkgbase = ttf-neodgm-pro
 	pkgdesc = Proportional Korean TrueType font based on NeoDunggeunmo.
 	pkgver = 1.010
-	pkgrel = 1
+	pkgrel = 2
 	url = https://neodgm.dalgona.dev/neodgm_pro.html
 	install = ttf-neodgm-pro.install
 	arch = any
 	license = OFL
 	source = https://github.com/Dalgona/neodgm-pro/releases/download/v1.010/neodgm_pro.ttf
-	sha256sums = 54a3923f20e5f9546d886d05b301003c2bb0eee9bad5c567d9860b7983d265de
+	sha256sums = 7a7822b29a2b9490883d4e4a51232f117ba37eeb87bc92f3ed730608ff48790b
 
 pkgname = ttf-neodgm-pro
 
