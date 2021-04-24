@@ -3,11 +3,11 @@
 _pyname=keystone
 pkgbase=openstack-$_pyname
 pkgname=(openstack-$_pyname{,-doc})
-pkgver=18.0.0
-pkgrel=2
+pkgver=19.0.0
+pkgrel=1
 pkgdesc="OpenStack Identity"
 arch=(any)
-url="https://opendev.org/openstack/glance"
+url="https://opendev.org/openstack/keystone"
 license=(Apache)
 depends=(
 	python
@@ -91,24 +91,24 @@ source=(
 	0000-httpd-config-path.patch
 	0001-fix-tests-assertItemsEqual.patch
 )
-md5sums=('b4942ccf6f7827d40d89cee0bc69c3ae'
+md5sums=('beef0d054c2b98a7da888df4bb1244e5'
          'a110a86d00a4d9feea328be3b3659cf2'
          '1c5d5d6f9e2d5fd7af60ead1c722fd62'
          '151474571c660abda387ead70a1a4da1'
-         'fd882a2029c40c99f92e97d3e39c2bd1'
-         '05233f88ce33eae0d4b5cc79808d23cc')
-sha256sums=('35a5e13cf89124c3d50d93968c7f4b05422e1b81c7a950da118c02d2d9331272'
+         '933d5fcbdb9c202dd9645bea793ab027'
+         'd25722f3b4a2bde96d2e7c8fab0bbaf8')
+sha256sums=('dc5654ff1148c3e48c9892ec22da1195a23bf9ec503241a89f18548987394f89'
             '008afd2e7e24945a7d2609f936ae52c829157330cac03628c44a71aff512fb85'
             'f74083084fe20aaa5cd83d321d00d0f7f64fc7ff25d8723faea5ca6317639f14'
             'fc44ad3720e7a58f281efa01e4a6ec02041a30411084d661f34fd393d76a44e5'
-            'c462b3f3d4479db1256ff097656ef566678cd9b79eff4fd72e88cd5bea3ad136'
-            '208873383deda6dd366ff471d51fd105ebc800d242c9af12c6563dbf66ff12e0')
-sha512sums=('48aa9aae46e0f61596222aa37def152cdb48876afb7edc1eadf84ea91c8bd2f6bfd645d64e9bfb82cf9d041d7ae432c34d25e34130b32b4815d9a73cea903ffc'
+            'a55dcf6033f1a0c956a0d8ce74a64dc4e77ed3c75d11fd0c852a0a533daeccda'
+            '09a38ba3f256f71c3e1a093173de454282d5d25a69fa926e02d188b64a0f41ec')
+sha512sums=('4a514a5fe7891441726bade7ccc0b5ad1ae29468daab6272fdd055969eda8fc025bce6710abf4cfb8a7092cc5c4a8f73ff21c2fc3e6c150e4db4ecedc7939942'
             '01a24019b32684ae339b058742b63fc69b17eb97d5b47e90266dad32729293bead3495edb58960a974a7c88d3f35ccd158730f9c625ef9bc4d6f0b1ff319fdf8'
             '664014795d38fe2eac93a11a1233b59098fe475ca57d31f4c2578dd5e968708a51036fefde34f43ff4f5599820c9ededb7e129dcc78bebcf00b56a56784ec9f3'
             '9f6449f18757cefb349356e956e964bb21e225de28f961ddc4a3ff024289d5dfe1498c6950823880c5f806f5f2bf41c53c8ce2301728a046b76c554a51c81dca'
-            '2c91f58ea58eba0bea2c99cf92234acfbb49fad67c6346a31a32a330627d4dfde87d8d3e76f5b088cfa8722e9e537a0e8bdf13b74a6053d7aa4891ff44c6db18'
-            '6c5a28d7723efb7c86d0fe5209e19c7f4c55686cc964e4eb806331df5c11e88e4ae4d5a63b4aeba6984eb76505ca39f273fb97f5d385dc9fe8e56e7f614fe5c3')
+            'e5f1462e2e496e5f1c58b5d12e9bbd958fdd831d8327e116a894ee7f2f28e06f77587b727d3509f952ce648dd50fcbdb389e814acb89d2b985f29a22c6e7493b'
+            'b1d5b39bbea8805189e8993e64c081ea252c995a66e67664a5ecf07a177117654e2299c464f17eb47636d62e1e2184cfd232803b1ded52ea30c3c9bf386a6fa9')
 
 export PBR_VERSION=$pkgver
 

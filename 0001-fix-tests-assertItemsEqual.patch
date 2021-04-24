@@ -1,7 +1,7 @@
-diff --git a/keystone-18.0.0-old/keystone/tests/unit/common/test_notifications.py b/keystone-18.0.0/keystone/tests/unit/common/test_notifications.py
+diff --git a/keystone-19.0.0/keystone/tests/unit/common/test_notifications.py b/keystone-19.0.0/keystone/tests/unit/common/test_notifications.py
 index b0fb720..f90b97e 100644
---- a/keystone-18.0.0-old/keystone/tests/unit/common/test_notifications.py
-+++ b/keystone-18.0.0/keystone/tests/unit/common/test_notifications.py
+--- a/keystone-19.0.0/keystone/tests/unit/common/test_notifications.py
++++ b/keystone-19.0.0/keystone/tests/unit/common/test_notifications.py
 @@ -1045,7 +1045,7 @@ class TestEventCallbacks(test_v3.RestfulTestCase):
          Foo()
          project_ref = unit.new_project_ref(domain_id=self.domain_id)
@@ -11,10 +11,10 @@ index b0fb720..f90b97e 100644
  
      def test_invalid_event_callbacks(self):
          @notifications.listener
-diff --git a/keystone-18.0.0-old/keystone/tests/unit/contrib/federation/test_utils.py b/keystone-18.0.0/keystone/tests/unit/contrib/federation/test_utils.py
+diff --git a/keystone-19.0.0/keystone/tests/unit/contrib/federation/test_utils.py b/keystone-19.0.0/keystone/tests/unit/contrib/federation/test_utils.py
 index f233ac5..f9153cb 100644
---- a/keystone-18.0.0-old/keystone/tests/unit/contrib/federation/test_utils.py
-+++ b/keystone-18.0.0/keystone/tests/unit/contrib/federation/test_utils.py
+--- a/keystone-19.0.0/keystone/tests/unit/contrib/federation/test_utils.py
++++ b/keystone-19.0.0/keystone/tests/unit/contrib/federation/test_utils.py
 @@ -777,7 +777,7 @@ class MappingRuleEngineTests(unit.BaseTestCase):
          self.assertIsNotNone(mapped_properties)
          self.assertEqual('opilotte', mapped_properties['user']['name'])
@@ -42,10 +42,10 @@ index f233ac5..f9153cb 100644
                                mapped_properties['group_ids'])
  
      def test_mapping_projects(self):
-diff --git a/keystone-18.0.0-old/keystone/tests/unit/endpoint_policy/backends/test_base.py b/keystone-18.0.0/keystone/tests/unit/endpoint_policy/backends/test_base.py
+diff --git a/keystone-19.0.0/keystone/tests/unit/endpoint_policy/backends/test_base.py b/keystone-19.0.0/keystone/tests/unit/endpoint_policy/backends/test_base.py
 index 279b3d7..7c63fb3 100644
---- a/keystone-18.0.0-old/keystone/tests/unit/endpoint_policy/backends/test_base.py
-+++ b/keystone-18.0.0/keystone/tests/unit/endpoint_policy/backends/test_base.py
+--- a/keystone-19.0.0/keystone/tests/unit/endpoint_policy/backends/test_base.py
++++ b/keystone-19.0.0/keystone/tests/unit/endpoint_policy/backends/test_base.py
 @@ -95,7 +95,7 @@ class DriverTestCase(object):
                                           policy_id=policy_id)
  
@@ -55,10 +55,10 @@ index 279b3d7..7c63fb3 100644
  
      def test_delete_association_by_endpoint(self):
          endpoint_id = uuid.uuid4().hex
-diff --git a/keystone-18.0.0-old/keystone/tests/unit/identity/shadow_users/test_backend.py b/keystone-18.0.0/keystone/tests/unit/identity/shadow_users/test_backend.py
+diff --git a/keystone-19.0.0/keystone/tests/unit/identity/shadow_users/test_backend.py b/keystone-19.0.0/keystone/tests/unit/identity/shadow_users/test_backend.py
 index ee89edf..da43a21 100644
---- a/keystone-18.0.0-old/keystone/tests/unit/identity/shadow_users/test_backend.py
-+++ b/keystone-18.0.0/keystone/tests/unit/identity/shadow_users/test_backend.py
+--- a/keystone-19.0.0/keystone/tests/unit/identity/shadow_users/test_backend.py
++++ b/keystone-19.0.0/keystone/tests/unit/identity/shadow_users/test_backend.py
 @@ -66,7 +66,7 @@ class ShadowUsersBackendTests(object):
          user_created = PROVIDERS.shadow_users_api.create_nonlocal_user(user)
          self.assertEqual(user_created['id'], user['id'])
@@ -77,10 +77,10 @@ index ee89edf..da43a21 100644
          self.assertEqual(user_dict_create["id"], user_dict_get["id"])
  
      def test_update_federated_user_display_name(self):
-diff --git a/keystone-18.0.0-old/keystone/tests/unit/policy/backends/test_base.py b/keystone-18.0.0/keystone/tests/unit/policy/backends/test_base.py
+diff --git a/keystone-19.0.0/keystone/tests/unit/policy/backends/test_base.py b/keystone-19.0.0/keystone/tests/unit/policy/backends/test_base.py
 index e7f39a2..94f07b0 100644
---- a/keystone-18.0.0-old/keystone/tests/unit/policy/backends/test_base.py
-+++ b/keystone-18.0.0/keystone/tests/unit/policy/backends/test_base.py
+--- a/keystone-19.0.0/keystone/tests/unit/policy/backends/test_base.py
++++ b/keystone-19.0.0/keystone/tests/unit/policy/backends/test_base.py
 @@ -38,7 +38,7 @@ class DriverTestCase(object):
  
          policies = self.driver.list_policies()
@@ -90,10 +90,10 @@ index e7f39a2..94f07b0 100644
  
      def test_get_policy(self):
          self.assertEqual(self.policy,
-diff --git a/keystone-18.0.0-old/keystone/tests/unit/test_associate_project_endpoint_extension.py b/keystone-18.0.0/keystone/tests/unit/test_associate_project_endpoint_extension.py
+diff --git a/keystone-19.0.0/keystone/tests/unit/test_associate_project_endpoint_extension.py b/keystone-19.0.0/keystone/tests/unit/test_associate_project_endpoint_extension.py
 index ad1d527..78673f2 100644
---- a/keystone-18.0.0-old/keystone/tests/unit/test_associate_project_endpoint_extension.py
-+++ b/keystone-18.0.0/keystone/tests/unit/test_associate_project_endpoint_extension.py
+--- a/keystone-19.0.0/keystone/tests/unit/test_associate_project_endpoint_extension.py
++++ b/keystone-19.0.0/keystone/tests/unit/test_associate_project_endpoint_extension.py
 @@ -352,7 +352,7 @@ class EndpointFilterCRUDTestCase(EndpointFilterTestCase):
  
          ep_id_list = [catalog[0]['endpoints'][0]['id'],
@@ -130,10 +130,10 @@ index ad1d527..78673f2 100644
  
          # remove endpoint_group project association, bypassing
          # catalog_api API manager.
-diff --git a/keystone-18.0.0-old/keystone/tests/unit/test_backend_id_mapping_sql.py b/keystone-18.0.0/keystone/tests/unit/test_backend_id_mapping_sql.py
+diff --git a/keystone-19.0.0/keystone/tests/unit/test_backend_id_mapping_sql.py b/keystone-19.0.0/keystone/tests/unit/test_backend_id_mapping_sql.py
 index e5aa878..aebb882 100644
---- a/keystone-18.0.0-old/keystone/tests/unit/test_backend_id_mapping_sql.py
-+++ b/keystone-18.0.0/keystone/tests/unit/test_backend_id_mapping_sql.py
+--- a/keystone-19.0.0/keystone/tests/unit/test_backend_id_mapping_sql.py
++++ b/keystone-19.0.0/keystone/tests/unit/test_backend_id_mapping_sql.py
 @@ -351,7 +351,7 @@ class SqlIDMapping(test_backend_sql.SqlTests):
                  )
              )
@@ -158,10 +158,10 @@ index e5aa878..aebb882 100644
              domain_b_mappings_group = domain_b_mappings_group.first().to_dict()
 -        self.assertItemsEqual(local_entities[2], domain_b_mappings_group)
 +        self.assertCountEqual(local_entities[2], domain_b_mappings_group)
-diff --git a/keystone-18.0.0-old/keystone/tests/unit/test_backend_sql.py b/keystone-18.0.0/keystone/tests/unit/test_backend_sql.py
+diff --git a/keystone-19.0.0/keystone/tests/unit/test_backend_sql.py b/keystone-19.0.0/keystone/tests/unit/test_backend_sql.py
 index 82285fc..c720696 100644
---- a/keystone-18.0.0-old/keystone/tests/unit/test_backend_sql.py
-+++ b/keystone-18.0.0/keystone/tests/unit/test_backend_sql.py
+--- a/keystone-19.0.0/keystone/tests/unit/test_backend_sql.py
++++ b/keystone-19.0.0/keystone/tests/unit/test_backend_sql.py
 @@ -242,7 +242,7 @@ class SqlModels(SqlTests):
              else:
                  actual_schema.append((column.name, type(column.type), None))
@@ -180,10 +180,10 @@ index 82285fc..c720696 100644
  
  
  class SqlPolicy(SqlTests, policy_tests.PolicyTests):
-diff --git a/keystone-18.0.0-old/keystone/tests/unit/test_backend_templated.py b/keystone-18.0.0/keystone/tests/unit/test_backend_templated.py
+diff --git a/keystone-19.0.0/keystone/tests/unit/test_backend_templated.py b/keystone-19.0.0/keystone/tests/unit/test_backend_templated.py
 index 4b56b37..ad103eb 100644
---- a/keystone-18.0.0-old/keystone/tests/unit/test_backend_templated.py
-+++ b/keystone-18.0.0/keystone/tests/unit/test_backend_templated.py
+--- a/keystone-19.0.0/keystone/tests/unit/test_backend_templated.py
++++ b/keystone-19.0.0/keystone/tests/unit/test_backend_templated.py
 @@ -93,7 +93,7 @@ class TestTemplatedCatalog(unit.TestCase, catalog_tests.CatalogTests):
              expected_endpoints = e.pop('endpoints')
              observed_endpoints = o.pop('endpoints')
@@ -202,10 +202,10 @@ index 4b56b37..ad103eb 100644
  
      # NOTE(dstanek): the following methods have been overridden
      # from unit.catalog.test_backends.CatalogTests.
-diff --git a/keystone-18.0.0-old/keystone/tests/unit/test_hacking_checks.py b/keystone-18.0.0/keystone/tests/unit/test_hacking_checks.py
+diff --git a/keystone-19.0.0/keystone/tests/unit/test_hacking_checks.py b/keystone-19.0.0/keystone/tests/unit/test_hacking_checks.py
 index f7be762..9afe4d4 100644
---- a/keystone-18.0.0-old/keystone/tests/unit/test_hacking_checks.py
-+++ b/keystone-18.0.0/keystone/tests/unit/test_hacking_checks.py
+--- a/keystone-19.0.0/keystone/tests/unit/test_hacking_checks.py
++++ b/keystone-19.0.0/keystone/tests/unit/test_hacking_checks.py
 @@ -49,7 +49,7 @@ class BaseStyleCheck(unit.BaseTestCase):
  
      def assert_has_errors(self, code, expected_errors=None):
@@ -215,10 +215,10 @@ index f7be762..9afe4d4 100644
  
  
  class TestCheckForMutableDefaultArgs(BaseStyleCheck):
-diff --git a/keystone-18.0.0-old/keystone/tests/unit/test_policy.py b/keystone-18.0.0/keystone/tests/unit/test_policy.py
+diff --git a/keystone-19.0.0/keystone/tests/unit/test_policy.py b/keystone-19.0.0/keystone/tests/unit/test_policy.py
 index 8346549..096e87a 100644
---- a/keystone-18.0.0-old/keystone/tests/unit/test_policy.py
-+++ b/keystone-18.0.0/keystone/tests/unit/test_policy.py
+--- a/keystone-19.0.0/keystone/tests/unit/test_policy.py
++++ b/keystone-19.0.0/keystone/tests/unit/test_policy.py
 @@ -228,7 +228,7 @@ class PolicyJsonTestCase(unit.TestCase):
                      yield str(target)
  
@@ -228,10 +228,10 @@ index 8346549..096e87a 100644
  
  
  class GeneratePolicyFileTestCase(unit.TestCase):
-diff --git a/keystone-18.0.0-old/keystone/tests/unit/test_sql_upgrade.py b/keystone-18.0.0/keystone/tests/unit/test_sql_upgrade.py
+diff --git a/keystone-19.0.0/keystone/tests/unit/test_sql_upgrade.py b/keystone-19.0.0/keystone/tests/unit/test_sql_upgrade.py
 index 50c2870..0cfb03e 100644
---- a/keystone-18.0.0-old/keystone/tests/unit/test_sql_upgrade.py
-+++ b/keystone-18.0.0/keystone/tests/unit/test_sql_upgrade.py
+--- a/keystone-19.0.0/keystone/tests/unit/test_sql_upgrade.py
++++ b/keystone-19.0.0/keystone/tests/unit/test_sql_upgrade.py
 @@ -297,7 +297,7 @@ class SqlMigrateBase(db_fixtures.OpportunisticDBTestMixin,
          actual_cols = [col.name for col in table.columns]
          # Check if the columns are equal, but allow for a different order,
@@ -250,10 +250,10 @@ index 50c2870..0cfb03e 100644
  
      def test_migrate_user_with_null_password_to_password_tables(self):
          USER_TABLE_NAME = 'user'
-diff --git a/keystone-18.0.0-old/keystone/tests/unit/test_v3_assignment.py b/keystone-18.0.0/keystone/tests/unit/test_v3_assignment.py
+diff --git a/keystone-19.0.0/keystone/tests/unit/test_v3_assignment.py b/keystone-19.0.0/keystone/tests/unit/test_v3_assignment.py
 index d9e4389..605db50 100644
---- a/keystone-18.0.0-old/keystone/tests/unit/test_v3_assignment.py
-+++ b/keystone-18.0.0/keystone/tests/unit/test_v3_assignment.py
+--- a/keystone-19.0.0/keystone/tests/unit/test_v3_assignment.py
++++ b/keystone-19.0.0/keystone/tests/unit/test_v3_assignment.py
 @@ -2866,7 +2866,7 @@ class ImpliedRolesTests(test_v3.RestfulTestCase, test_v3.AssignmentTestMixin,
          actual_implied_ids = [implied['id']
                                for implied in role_inference['implies']]
@@ -263,10 +263,10 @@ index d9e4389..605db50 100644
  
          self.assertIsNotNone(role_inference['prior_role']['links']['self'])
          for implied in role_inference['implies']:
-diff --git a/keystone-18.0.0-old/keystone/tests/unit/test_v3_federation.py b/keystone-18.0.0/keystone/tests/unit/test_v3_federation.py
+diff --git a/keystone-19.0.0/keystone/tests/unit/test_v3_federation.py b/keystone-19.0.0/keystone/tests/unit/test_v3_federation.py
 index b0cd558..4f09ea9 100644
---- a/keystone-18.0.0-old/keystone/tests/unit/test_v3_federation.py
-+++ b/keystone-18.0.0/keystone/tests/unit/test_v3_federation.py
+--- a/keystone-19.0.0/keystone/tests/unit/test_v3_federation.py
++++ b/keystone-19.0.0/keystone/tests/unit/test_v3_federation.py
 @@ -1304,7 +1304,7 @@ class FederatedIdentityProviderTests(test_v3.RestfulTestCase):
          entities = self._fetch_attribute_from_response(resp,
                                                         'identity_providers')

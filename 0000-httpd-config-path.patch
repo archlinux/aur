@@ -1,7 +1,7 @@
-diff --git a/keystone-18.0.0/httpd/keystone-uwsgi-admin.ini.old b/keystone-18.0.0/httpd/keystone-uwsgi-admin.ini
+diff --git a/keystone-19.0.0/httpd/keystone-uwsgi-admin.ini b/keystone-19.0.0/httpd/keystone-uwsgi-admin.ini
 index 3401f42..fe7ef7b 100644
---- a/keystone-18.0.0/httpd/keystone-uwsgi-admin.ini.old
-+++ b/keystone-18.0.0/httpd/keystone-uwsgi-admin.ini
+--- a/keystone-19.0.0/httpd/keystone-uwsgi-admin.ini
++++ b/keystone-19.0.0/httpd/keystone-uwsgi-admin.ini
 @@ -1,5 +1,5 @@
  [uwsgi]
 -wsgi-file = /usr/local/bin/keystone-wsgi-admin
@@ -9,10 +9,10 @@ index 3401f42..fe7ef7b 100644
 
  # Versions of mod_proxy_uwsgi>=2.0.6 should use a UNIX socket, see
  # http://uwsgi-docs.readthedocs.org/en/latest/Apache.html#mod-proxy-uwsgi
-diff --git a/keystone-18.0.0/httpd/keystone-uwsgi-public.ini.old b/keystone-18.0.0/httpd/keystone-uwsgi-public.ini
+diff --git a/keystone-19.0.0/httpd/keystone-uwsgi-public.ini b/keystone-19.0.0/httpd/keystone-uwsgi-public.ini
 index d7917f5..8decf20 100644
---- a/keystone-18.0.0/httpd/keystone-uwsgi-public.ini.old
-+++ b/keystone-18.0.0/httpd/keystone-uwsgi-public.ini
+--- a/keystone-19.0.0/httpd/keystone-uwsgi-public.ini
++++ b/keystone-19.0.0/httpd/keystone-uwsgi-public.ini
 @@ -1,5 +1,5 @@
  [uwsgi]
 -wsgi-file = /usr/local/bin/keystone-wsgi-public
