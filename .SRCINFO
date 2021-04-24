@@ -1,7 +1,7 @@
 pkgbase = vim-embark-git
 	pkgdesc = A deep inky purple theme leveraging bright colors
 	pkgver = r58.fda8867
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/embark-theme/vim
 	arch = any
 	groups = vim-plugins
