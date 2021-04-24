@@ -1,9 +1,9 @@
 # Maintainer: Alex Butler <alexheretic@gmail.com>
 pkgname=aurto
 pkgver=0.10.6
-pkgrel=2
+pkgrel=3
 pkgdesc="An AUR tool for managing an auto-updating local 'aurto' package repository using aurutils."
-arch=('x86_64')
+arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/alexheretic/aurto"
 license=('MIT')
 depends=('aurutils'

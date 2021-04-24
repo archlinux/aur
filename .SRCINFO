@@ -1,10 +1,12 @@
 pkgbase = aurto
 	pkgdesc = An AUR tool for managing an auto-updating local 'aurto' package repository using aurutils.
 	pkgver = 0.10.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alexheretic/aurto
 	install = aurto.install
 	arch = x86_64
+	arch = aarch64
+	arch = armv7h
 	license = MIT
 	makedepends = cargo
 	depends = aurutils
