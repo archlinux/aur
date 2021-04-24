@@ -3,7 +3,7 @@
 pkgname=nodejs-sword-interface
 _npmname=${pkgname/js}
 pkgver=0.222.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Javascript (N-API) interface to SWORD library'
 arch=('x86_64')
 url="https://github.com/tobias-klein/$_npmname"
@@ -16,7 +16,7 @@ sha256sums=('119378d01ae62a647bd3b86e7883a4e4af0b289dac23ac1eb6358baee4720720')
 prepare() {
     cd "$_npmname-$pkgver"
     # Suppress install or link against this package triggering a build!
-    jq 'del(.scripts[])' package.json | sponge package.json
+    jq 'del(.scripts[]) | .gypfile=false' package.json | sponge package.json
 }
 
 build() {
@@ -30,6 +30,9 @@ package() {
     npm install \
         --production \
         --global \
+        --no-audit \
+        --no-fund \
+        --no-update-notifier \
         --cache "$srcdir/npm-cache" \
         --prefix "$pkgdir/usr" \
         $_npmname-$pkgver.tgz

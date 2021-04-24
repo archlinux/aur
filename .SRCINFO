@@ -1,7 +1,7 @@
 pkgbase = nodejs-sword-interface
 	pkgdesc = Javascript (N-API) interface to SWORD library
 	pkgver = 0.222.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tobias-klein/node-sword-interface
 	arch = x86_64
 	license = GPL3
