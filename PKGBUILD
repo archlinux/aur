@@ -6,7 +6,7 @@
 
 pkgname=beebeep
 pkgver=5.8.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Secure LAN messenger and file sender'
 arch=('x86_64')
 url='https://www.beebeep.net/'
@@ -15,7 +15,7 @@ depends=('qt5-multimedia' 'qt5-x11extras')
 source=("https://downloads.sourceforge.net/$pkgname/$pkgname-code-$pkgver.zip"
         'beebeep.appdata.xml')
 sha256sums=('43e65a9d5249385fde782907d0cc3e26d6dd435bb623bcc0f93499055988f04c'
-            '3f338fb741adb2b7f20a6576a02559385c1f43334483877fe101c075be21e424')
+            '05c6add5d33f4e429b213f25d46053611f838fdd709c593af211133c96788ca7')
  
 build() {
   cd $pkgname-code-r*

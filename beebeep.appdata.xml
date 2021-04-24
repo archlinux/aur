@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>net.beebeep.BeeBEEP/</id>
+  <id>net.beebeep.BeeBEEP</id>
   <launchable type="desktop-id">beebeep.desktop</launchable>
   <name>BeeBEEP</name>
   <summary>Free office messenger</summary>
