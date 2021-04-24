@@ -7,7 +7,7 @@ pkgdesc="U-Boot for Tinker Board / S"
 arch=('armv7h')
 url="https://github.com/armbian/build"
 license=('GPL2')
-backup=('boot/boot.txt' 'boot/boot.scr')
+backup=('boot/boot.txt')
 makedepends=('uboot-tools')
 install="$pkgname.install"
 source=(
@@ -17,7 +17,7 @@ source=(
 )
 sha512sums=(
   '7046ab4d88efbba636be049be2f660e18c05e48d161d39437c1580b12795ba4d9197ad57ac4572398f80a38d4777507b57228abf4cc41f0081d196ece27ea9d0'
-  '7e1f67c9e2fbbb5de2c32e83b0f8ed71fb9d2601a8e9312398db986fd8c2662487e2d9d30d03ace85694446fbfacc297a76b0e1dffe542d8e5a4afaa19c9f234'
+  '8019f7196ff3a40408ea577daa6fb6249f4eaddafaeb89ffee32c6e49aaf44d8881c69ab66421fda3fbfe5a9c8749925394685b46f0cf52f44cc8c249f2d223a'
   'SKIP'
 )
 noextract=("${source[@]##*/}")
@@ -40,8 +40,5 @@ package() {
   major="$(mountpoint -d / | cut -f 1 -d ':')"
   minor="$(mountpoint -d / | cut -f 2 -d ':')"
   device="$(cat /proc/partitions | awk {'if ($1 == "'$major'" && $2 == "'$minor'") print $4 '})"
-  sed "s|%ROOTDEV%|$device|g" boot.txt |
-    install -Dm644 /dev/stdin "$pkgdir/boot/boot.txt"
-
-  mkimage -A arm -O linux -T script -C none -n "U-Boot boot script" -d "$pkgdir/boot/boot.txt" "$pkgdir/boot/boot.scr"
+  sed "s|%ROOTDEV%|$device|g" boot.txt | install -Dm644 /dev/stdin "$pkgdir/boot/boot.txt"
 }

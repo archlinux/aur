@@ -6,8 +6,8 @@ setenv bootargs earlyprintk root=/dev/%ROOTDEV% rw rootwait console=ttyS2,115200
 if test "${board}" = "tinkerboard"; then setenv fdtfile "rk3288-tinker.dtb"; fi
 if test "${board}" = "tinkerboard-s"; then setenv fdtfile "rk3288-tinker-s.dtb"; fi
 
-if load ${devtype} ${devnum} ${fdt_addr_r} ${prefix}dtbs/${fdtfile}; then
-  if load ${devtype} ${devnum} ${kernel_addr_r} ${prefix}zImage; then
+if load ${devtype} ${devnum} ${kernel_addr_r} ${prefix}zImage; then
+  if load ${devtype} ${devnum} ${fdt_addr_r} ${prefix}dtbs/${fdtfile}; then
     if load ${devtype} ${devnum} ${ramdisk_addr_r} ${prefix}Initrd; then
       bootz ${kernel_addr_r} ${ramdisk_addr_r}:${filesize} ${fdt_addr_r}
     else

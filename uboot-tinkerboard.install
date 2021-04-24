@@ -39,11 +39,12 @@ flash_uboot() {
 
 ## arg 1:  the new package version
 post_install() {
+  mkimage -A arm -O linux -T script -C none -n "U-Boot boot script" -d "/boot/boot.txt" "/boot/boot.scr"
   flash_uboot
 }
 
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 post_upgrade() {
-  flash_uboot
+  post_install
 }
