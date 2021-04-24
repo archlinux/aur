@@ -1,12 +1,13 @@
 pkgbase = krack
 	pkgdesc = Krathalan's packaging softwares
-	pkgver = 0.3.2
-	pkgrel = 2
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/krathalan/krack
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = scdoc
+	depends = brotli
 	depends = ccache
 	depends = devtools
 	depends = git
@@ -15,11 +16,11 @@ pkgbase = krack
 	conflicts = krack-git
 	backup = etc/krack/build.conf
 	backup = etc/krack/receive.conf
-	source = https://github.com/krathalan/krack/archive/refs/tags/0.3.2.tar.gz
-	source = https://github.com/krathalan/krack/releases/download/0.3.2/0.3.2.tar.gz.sig
+	source = https://github.com/krathalan/krack/archive/refs/tags/0.4.0.tar.gz
+	source = https://github.com/krathalan/krack/releases/download/0.4.0/0.4.0.tar.gz.sig
 	validpgpkeys = 0C6B73F391FA26F0EBCD1F75C0F9AEE56E47D174
-	sha256sums = aa7149b42ca4b308afb887300d7dd87d225ee08026dfaad28296559b0c085799
-	sha256sums = a36106a7f5ae631aa868e629101149f6af4cbb319e03beab7ac02b01322868a4
+	sha256sums = 561f5dc3bca7544d7204645d0b2fba317cf79256f6a54c065ac6b6b1be5aba28
+	sha256sums = 4caa1379b937f06185db0fc8c395d1adfe513315fde25beeca8d79027eeea2cb
 
 pkgname = krack
 

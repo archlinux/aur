@@ -5,8 +5,8 @@
 
 # General package information
 pkgname=krack
-pkgver=0.3.2
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Krathalan's packaging softwares"
 url="https://github.com/krathalan/krack"
 license=("GPL3")
@@ -16,15 +16,15 @@ arch=("any")
 backup=("etc/krack/build.conf" "etc/krack/receive.conf")
 
 # Dependencies
-depends=("ccache" "devtools" "git" "gnupg" "rsync")
+depends=("brotli" "ccache" "devtools" "git" "gnupg" "rsync")
 makedepends=("git" "scdoc")
 conflicts=("krack-git")
 
 # Download information
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz"
         "${url}/releases/download/${pkgver}/${pkgver}.tar.gz.sig")
-sha256sums=("aa7149b42ca4b308afb887300d7dd87d225ee08026dfaad28296559b0c085799"
-            "a36106a7f5ae631aa868e629101149f6af4cbb319e03beab7ac02b01322868a4")
+sha256sums=("561f5dc3bca7544d7204645d0b2fba317cf79256f6a54c065ac6b6b1be5aba28"
+            "4caa1379b937f06185db0fc8c395d1adfe513315fde25beeca8d79027eeea2cb")
 validpgpkeys=("0C6B73F391FA26F0EBCD1F75C0F9AEE56E47D174")
 
 build()
