@@ -31,4 +31,5 @@ build() {
 package() {
 	depends=('intel-oneapi-common-vars' 'intel-oneapi-common-licensing')
 	mv ${srcdir}/opt ${pkgdir}
+	ln -sfT "$pkgver" ${pkgdir}/opt/intel/oneapi/debugger/latest
 }
