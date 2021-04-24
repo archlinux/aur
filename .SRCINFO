@@ -1,0 +1,18 @@
+pkgbase = intel-oneapi-dpcpp-debugger
+	pkgdesc = Intel® Distribution for GDB*
+	pkgver = 10.1.1
+	pkgrel = 1
+	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
+	arch = x86_64
+	license = custom
+	noextract = intel-oneapi-dpcpp-debugger-10.1.1-10.1.1-80_amd64.deb
+	noextract = intel-oneapi-dpcpp-debugger-eclipse-cfg-10.1.1-10.1.1-80_all.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dpcpp-debugger-10.1.1-10.1.1-80_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dpcpp-debugger-eclipse-cfg-10.1.1-80_all.deb
+	sha256sums = cbd18e772db0c9a781b2f340f1cdc06a29c8cc8499772be99f75fa67eba58bf3
+	sha256sums = 3f9ea224b178085a688effc2726ba65493c5fdf91bad53bb585c3c2bef17e1a5
+
+pkgname = intel-oneapi-dpcpp-debugger
+	depends = intel-oneapi-common-vars
+	depends = intel-oneapi-common-licensing
+
