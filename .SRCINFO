@@ -9,8 +9,10 @@ pkgbase = intel-oneapi-mpi
 	noextract = intel-oneapi-mpi-devel-2021.2.0-2021.2.0-215_amd64.deb
 	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-mpi-2021.2.0-2021.2.0-215_amd64.deb
 	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-mpi-devel-2021.2.0-2021.2.0-215_amd64.deb
+	source = intel-oneapi-mpi.conf
 	sha256sums = 993ccb5b7420fccd03bcd20ca60f54eeba54bfb7fb8841313922db212849f98f
 	sha256sums = ecf1496558997c727268288ce6d0cb93a563cf8a6281fa82087c731162b4b6f1
+	sha256sums = c994f2dc82f7479c229ee102775a12bb12d80fec364f511f8b73c1e4f0ae2653
 
 pkgname = intel-oneapi-mpi
 	depends = intel-oneapi-common-vars
