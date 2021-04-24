@@ -1,0 +1,14 @@
+pkgbase = python2-pathlib
+	pkgdesc = This module offers a set of classes featuring all the common operations on paths in an easy, object-oriented way
+	pkgver = 1.0.1
+	pkgrel = 5
+	url = https://pathlib.readthedocs.org/en/1.0.1/
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://files.pythonhosted.org/packages/source/p/pathlib/pathlib-1.0.1.tar.gz
+	sha512sums = d85e45dfcc85ce75a7e7b609163dc8c75c688f279c1833510185f280af5501e473376dc09bddc6a804d1fcc3177a939db85af37b7b8d5b183b9bc2b85b3b0f8b
+
+pkgname = python2-pathlib
+
