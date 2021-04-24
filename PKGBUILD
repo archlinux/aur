@@ -2,7 +2,7 @@
 pkgname=python-scipy-mkl-bin
 _pkgname=scipy
 _pkgver=1.6.2
-_build=py39h91f5cce_0
+_build=py39had2a1c9_1
 _libgfortran=libgfortran-ng-7.3.0-hdf63c60_0
 pkgver="${_pkgver}.anaconda${_build##*_}"
 pkgrel=1
@@ -27,7 +27,7 @@ optdepends=('python-pillow: for image saving module')
 source=("https://repo.anaconda.com/pkgs/main/linux-64/${_pkgname}-${_pkgver}-${_build}.tar.bz2"
         "https://repo.anaconda.com/pkgs/main/linux-64/${_libgfortran}.tar.bz2"
         )
-sha256sums=('716391373b82bac432eb3f05f6d5d481bf78d65f21681ac881639fa068c5f3f1'
+sha256sums=('2cf06019a66fbb0a9df571bac7f0460eb66f60d6b9c37f6a64a6dcddbe2c765f'
             '83c6fdb30a240fbaa09f5d2e2ae8f092759cb710bc3fa628ccb18934fc237b7f')
 
 package() {
