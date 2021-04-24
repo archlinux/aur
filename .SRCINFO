@@ -1,15 +1,16 @@
 pkgbase = cargo-readme
 	pkgdesc = A cargo subcommand to generate README.md content from doc comments
 	pkgver = 3.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://crates.io/crates/cargo-readme
+	arch = aarch64
+	arch = i686
 	arch = x86_64
 	license = Apache
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = cargo-readme.tar.gz::https://crates.io/api/v1/crates/cargo-readme/3.2.0/download
+	source = cargo-readme-3.2.0.tar.gz::https://crates.io/api/v1/crates/cargo-readme/3.2.0/download
 	sha512sums = 49fdfcde0913e330e4f79e56d41ff675e2a1b0d0e11b09d8b3db348e11fabe9024ec71eeef72465113e92aa49324b6d5ab5e7607e196d35730d4fe059feeb5e9
 
 pkgname = cargo-readme
-
