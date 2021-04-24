@@ -2,13 +2,14 @@
 
 pkgname=ptags
 pkgver=0.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A parallel universal-ctags wrapper for git repository.'
 arch=('i686' 'x86_64')
 url='https://github.com/dalance/ptags'
 license=('MIT')
 makedepends=('git' 'cargo')
-depends=('git' 'ctags' 'git-lfs')
+depends=('git' 'ctags')
+optdepends=('git-lfs: git-lfs indexing')
 provides=('ptags')
 conflicts=('ptags-git')
 source=("$pkgname"::'git+https://github.com/dalance/ptags.git')
