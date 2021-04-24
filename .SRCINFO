@@ -1,7 +1,7 @@
 pkgbase = beautyline
 	pkgdesc = Outlined icons designed to have unified look and comprehensive coverage with the Sweet icon pack (best suited to use with Sweet theme)
-	pkgver = 20210329
-	pkgrel = 3
+	pkgver = 20210423
+	pkgrel = 1
 	url = https://gitlab.com/garuda-linux/themes-and-settings/artwork/beautyline
 	arch = any
 	license = unknown
@@ -11,3 +11,4 @@ pkgbase = beautyline
 	sha256sums = SKIP
 
 pkgname = beautyline
+

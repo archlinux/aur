@@ -3,7 +3,7 @@
 
 _gitname=beautyline
 pkgname=beautyline
-pkgver=20210330
+pkgver=20210423
 pkgrel=1
 pkgdesc="Outlined icons designed to have unified look and comprehensive coverage with the Sweet icon pack (best suited to use with Sweet theme)"
 arch=('any')
