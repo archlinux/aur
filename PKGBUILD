@@ -2,14 +2,14 @@
 
 pkgname=tarantool
 pkgver=2.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Lua application server integrated with a database management system'
 arch=(x86_64)
 url='https://www.tarantool.org'
 license=(BSD)
 depends=(readline ncurses zlib libyaml openssl libunwind icu)
 makedepends=(git cmake systemd)
-checkdepends=(python2-gevent python2-tarantool)
+checkdepends=(python-gevent python-tarantool)
 source=(git+https://github.com/tarantool/tarantool.git#tag=$pkgver
         git+https://github.com/tarantool/luajit.git#branch=tarantool-1.7
         git+https://github.com/tarantool/libyaml.git
@@ -76,8 +76,11 @@ build() {
 }
 
 check() {
-  cd tarantool/test
-  ./test-run.py --suite box
+  cd "$srcdir/tarantool/test-run"
+  git checkout 5baa4f080dc82cd45bdc619743504a3c7203dd0d
+
+  cd "$srcdir/tarantool/test"
+  python test-run.py --suite box
 }
 
 package() {
