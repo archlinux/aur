@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Maintainer: Hunter Peavey < printf "srht@die.bots" | sed "s/die.bots/krathalan.net/g" >
+# Maintainer: Hunter Peavey < printf "dev@die.bots" | sed "s/die.bots/krathalan.net/g" >
 # shellcheck disable=SC2034
 # shellcheck disable=SC2154
 
