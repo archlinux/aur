@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=blanket
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Improve focus and increase your productivity by listening to different sounds."
 arch=('any')
 url="https://github.com/rafaelmardojai/blanket"
 license=('GPL3')
-depends=('gtk3' 'gst-python' 'python-gobject' 'libhandy')
+depends=('gtk3' 'gst-plugins-bad-libs' 'gst-python' 'python-gobject' 'libhandy')
 makedepends=('meson')
 checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
@@ -18,7 +18,7 @@ build() {
 }
 
 check() {
-	meson test -C build
+	meson test -C build --print-errorlogs
 }
 
 package() {
