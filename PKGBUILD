@@ -1,4 +1,5 @@
-# Maintainer: Vyacheslav Konovalov <vyachkonovalov@protonmail.com>
+# Maintainer: Igor Deyashkin <igor_deyawka at mail dot ru>
+# Contributor: Vyacheslav Konovalov <vyachkonovalov at protonmail dot com>
 
 pkgname=robo3t-bin
 pkgver=1.4.2
