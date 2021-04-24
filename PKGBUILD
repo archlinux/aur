@@ -3,7 +3,7 @@
 pkgbase=shodo
 pkgname=${pkgbase}
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Assinador fornecido pela Justiça do Trabalho para realizar assinaturas digitais no PJe"
 url="https://pje.csjt.jus.br/manual/index.php/Shod%C5%8D"
@@ -44,7 +44,8 @@ package() {
     cd ${srcdir}
 
     install -Dm 755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm 755 ${pkgname}-${pkgver}.jar "${pkgdir}/opt/${pkgname}/${pkgname}.jar"
+    install -Dm 755 "${pkgname}-${pkgver}.jar" "${pkgdir}/opt/${pkgname}/${pkgname}.jar"
+    install -Dm 644 "${srcdir}/${pkgname}-128.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm 644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
     for i in 48 64 128; do
