@@ -1,7 +1,7 @@
 pkgbase = kotatogram-dev-git
 	pkgdesc = Kotatogram – experimental Telegram Desktop fork - Dev branch
-	pkgver = k1.4.0.g2eabfee52
-	pkgrel = 2
+	pkgver = k1.4.12.g40df43998
+	pkgrel = 1
 	url = https://github.com/kotatogram/kotatogram-desktop
 	arch = x86_64
 	license = GPL3
@@ -27,7 +27,7 @@ pkgbase = kotatogram-dev-git
 	optdepends = ttf-opensans: default Open Sans font family
 	provides = kotatogram-desktop
 	conflicts = kotatogram-desktop
-	source = kotatogram-desktop::git+https://github.com/kotatogram/kotatogram-desktop.git
+	source = kotatogram-desktop::git+https://github.com/kotatogram/kotatogram-desktop.git#branch=test
 	source = kotatogram-desktop-libtgvoip::git+https://github.com/telegramdesktop/libtgvoip
 	source = kotatogram-desktop-rlottie::git+https://github.com/desktop-app/rlottie.git
 	source = kotatogram-desktop-lib_crl::git+https://github.com/desktop-app/lib_crl.git

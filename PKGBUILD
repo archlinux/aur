@@ -2,8 +2,8 @@
 
 pkgname=kotatogram-dev-git
 _pkgname=kotatogram-desktop
-pkgver=k1.4.0.g2eabfee52
-pkgrel=2
+pkgver=k1.4.12.g40df43998
+pkgrel=1
 pkgdesc="Kotatogram – experimental Telegram Desktop fork - Dev branch"
 arch=(x86_64)
 url="https://github.com/kotatogram/kotatogram-desktop"
@@ -37,7 +37,7 @@ optdepends=(
 conflicts=('kotatogram-desktop')
 provides=('kotatogram-desktop')
 source=(
-  "${_pkgname}::git+${url}.git"
+  "${_pkgname}::git+${url}.git#branch=test"
   "${_pkgname}-libtgvoip::git+https://github.com/telegramdesktop/libtgvoip"
   "${_pkgname}-rlottie::git+https://github.com/desktop-app/rlottie.git"
   "${_pkgname}-lib_crl::git+https://github.com/desktop-app/lib_crl.git"
