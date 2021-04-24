@@ -1,20 +1,23 @@
 pkgbase = nagstamon-git
-	pkgdesc = Status monitor for Nagios, Icinga, Zabbix and more
-	pkgver = 3.0
+	pkgdesc = Nagios status monitor for the desktop
+	pkgver = 3.7.20210408.r2190.a2dd499
 	pkgrel = 1
-	url = https://github.com/HenriWahl/Nagstamon/
+	url = https://nagstamon.ifw-dresden.de/
 	arch = any
 	license = GPL2
 	makedepends = git
 	makedepends = python-setuptools
-	depends = python>=3.4
+	depends = python-pyqt5
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = python-requests
+	depends = python-beautifulsoup4
 	depends = python-keyring
 	depends = python-psutil
-	depends = python-pyqt5>=5.5
-	depends = python-beautifulsoup4
-	depends = python-requests
 	depends = python-requests-kerberos
 	depends = python-lxml
+	depends = python-dbus
+	depends = python-dateutil
 	provides = nagstamon
 	conflicts = nagstamon
 	source = repo::git+https://github.com/HenriWahl/Nagstamon.git
