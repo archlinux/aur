@@ -1,0 +1,17 @@
+pkgbase = python2-traitlets
+	pkgdesc = A configuration system for Python applications.
+	pkgver = 4.3.3
+	pkgrel = 6
+	url = https://traitlets.readthedocs.io/en/stable/
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2-decorator
+	depends = python2-enum34
+	source = https://files.pythonhosted.org/packages/source/t/traitlets/traitlets-4.3.3.tar.gz
+	source = https://pypi.python.org/packages/source/i/ipython_genutils/ipython_genutils-0.2.0.tar.gz
+	md5sums = 3a4f263af65d3d79f1c279f0247077ef
+	md5sums = 5a4f9781f78466da0ea1a648f3e1f79f
+
+pkgname = python2-traitlets
+
