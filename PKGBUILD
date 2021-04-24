@@ -17,7 +17,7 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
 
   cp -r "$srcdir/frum-v$_pkgver-x86_64-unknown-linux-musl/." "$pkgdir/opt/frum"
-  ln -s "$pkgdir/opt/frum/frum" "$pkgdir/usr/bin/frum"
+  ln -s "/opt/frum/frum" "$pkgdir/usr/bin/frum"
 
   chmod +x "$pkgdir/opt/frum"
 }
