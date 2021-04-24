@@ -35,6 +35,6 @@ build() {
 }
 
 package() {
-	depends=('intel-oneapi-dpcpp-cpp' 'intel-oneapi-compiler-dpcpp-cpp' 'intel-oneapi-compiler-shared' 'intel-oneapi-common-vars' 'intel-oneapi-common-licensing')
+	depends=('intel-oneapi-compiler-dpcpp-cpp' 'intel-oneapi-compiler-shared' 'intel-oneapi-common-vars' 'intel-oneapi-common-licensing')
 	mv ${srcdir}/opt ${pkgdir}
 }

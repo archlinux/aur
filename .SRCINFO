@@ -16,7 +16,6 @@ pkgbase = intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic
 	sha256sums = cd32dc63cbfc806f4a7b3bf90ab33ae5a39e2d3f65a114a4c2180dde21887a6a
 
 pkgname = intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic
-	depends = intel-oneapi-dpcpp-cpp
 	depends = intel-oneapi-compiler-dpcpp-cpp
 	depends = intel-oneapi-compiler-shared
 	depends = intel-oneapi-common-vars
