@@ -1,7 +1,7 @@
 #Maintainer: Doommsatic <keniscoolu@gmail.com>
 pkgname=libretro-easyrpg-player
 pkgver=0.6.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="FLOSS RPG Maker 2000/2003 and EasyRPG games interpreter (libretro core)"
 arch=('x86_64')
 url="https://easyrpg.org/"
