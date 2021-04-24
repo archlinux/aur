@@ -13,15 +13,18 @@ source=(
 	"https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb"
 	"https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-common-${pkgver}-${pkgver}-${_debpkgrel}_all.deb"
 	"https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-runtime-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb"
+	"https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-compiler-dpcpp-cpp-classic-fortran-shared-runtime-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb"
 )
 noextract=(
 	"${pkgname}-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb"
 	"${pkgname}-common-${pkgver}-${pkgver}-${_debpkgrel}_all.deb"
 	"${pkgname}-runtime-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb"
+	"intel-oneapi-compiler-dpcpp-cpp-classic-fortran-shared-runtime-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb"
 )
 sha256sums=('9fd08227fda9d5f46e0629c6cbd228793acf758d42bbb92556c546d7e873fc38'
             '230f0acbbf2280c12e7104d3fdac420bd98d8adbc7991b2841f5a0e810bdd157'
-            '4da4af4e33c451eaf95441eec852d8352aaf7d4d6c7c8662de7da75e592e85ed')
+            '4da4af4e33c451eaf95441eec852d8352aaf7d4d6c7c8662de7da75e592e85ed'
+            '0af1a42f77ece189b33565c23d471fa10316cb0f09b99f185e8a70a827e20b36')
 
 build() {
 	ar x ${pkgname}-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb
@@ -32,9 +35,12 @@ build() {
 
 	ar x ${pkgname}-runtime-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb
 	tar xvf data.tar.xz
+
+	ar x "intel-oneapi-compiler-dpcpp-cpp-classic-fortran-shared-runtime-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb"
+	tar xvf data.tar.xz
 }
 
 package() {
-	depends=('intel-oneapi-compiler-shared' 'intel-oneapi-common-vars' 'intel-oneapi-common-licensing')
+	depends=('intel-oneapi-mpi' 'intel-oneapi-compiler-shared' 'intel-oneapi-common-vars' 'intel-oneapi-common-licensing')
 	mv ${srcdir}/opt ${pkgdir}
 }
