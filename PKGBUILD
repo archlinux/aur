@@ -4,14 +4,14 @@ pkgname=wine-wl-git
 pkgver=6.0.rc1.r2311.g684614924d6
 pkgrel=1
 
-source=(ghttps://gitlab.collabora.com/alf/wine/-/archive/wayland/wine-wayland.tar.gz
+source=(https://gitlab.collabora.com/alf/wine/-/archive/wayland/wine-wayland.tar.gz
         30-win32-aliases.conf
         wine-binfmt.conf)
 sha512sums=('SKIP'
         '6200d75042a5993294ee58583fa9d145e46a36bcc2a38ddae92482366aaf67423b160556f748cd85d3ee1c521c497488810bdc0b79e192742f83ae49e7f55938'
         '0ae5202b0ec9b4b1437f8c19f6e5f9c8ed32ef5d112f87c2bebdad62dcc60cdc0016fb9fbf911773bfab0701bc7481e686a06d2a25c9127895b7bc2dde2f2035')
 
-pkgdesc="A compatibility layer for running Windows programs (git version)"
+pkgdesc="A compatibility layer for running Windows programs (wayland version from gitlab.collabora.com/alf/wine/ wayland branch)"
 url="http://www.winehq.com"
 arch=(x86_64)
 options=(staticlibs)
@@ -95,8 +95,8 @@ optdepends=(
     'dosbox'
 )
 
-provides=("wine=${pkgver}" "bin32-wine=${pkgver}" "wine-wow64=${pkgver}")
-conflicts=('wine' 'bin32-wine' 'wine-wow64')
+provides=("wine=${pkgver}" "wine64=${pkgver}")
+conflicts=('wine' 'wine64')
 
 prepare() {
   # Allow ccache to work
