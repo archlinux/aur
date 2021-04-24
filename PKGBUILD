@@ -20,8 +20,8 @@ sha256sums_armv7h=('89a9a0e3d9594075ea856571e194dfda43566a295645c90d30827eca75d4
 
 source_x86_64=("$pkgname-$pkgver.bz2"::"https://github.com/cupcakearmy/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_${_arch_x86_64}.bz2")
 source_i686=("$pkgname-$pkgver.bz2"::"https://github.com/cupcakearmy/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_${_arch_i686}.bz2")
-source_armv6h=("$pkgname-$pkgver.bz2"::"$https://github.com/cupcakearmy/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_${_arch_armv6h}.bz2")
-source_armv7h=("$pkgname-$pkgver.bz2"::"$https://github.com/cupcakearmy/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_${_arch_armv7h}.bz2")
+source_armv6h=("$pkgname-$pkgver.bz2"::"https://github.com/cupcakearmy/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_${_arch_armv6h}.bz2")
+source_armv7h=("$pkgname-$pkgver.bz2"::"https://github.com/cupcakearmy/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_${_arch_armv7h}.bz2")
 
 prepare() {
   bzip2 -fdc $pkgname-$pkgver.bz2 > autorestic

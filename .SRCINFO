@@ -12,9 +12,9 @@ pkgbase = autorestic-bin
 	sha256sums_x86_64 = 3ebbd57dcbc2409b11869c9afff8657496c0bfd33aefd95e4b7e54686cb6fd84
 	source_i686 = autorestic-1.0.4.bz2::https://github.com/cupcakearmy/autorestic/releases/download/v1.0.4/autorestic_1.0.4_linux_386.bz2
 	sha256sums_i686 = 5e05e884eb4988ea75d0e00aec5b66b83d8f29492199396c537ada2ece4affe1
-	source_armv6h = autorestic-1.0.4.bz2::://github.com/cupcakearmy/autorestic/releases/download/v1.0.4/autorestic_1.0.4_linux_arm.bz2
+	source_armv6h = autorestic-1.0.4.bz2::https://github.com/cupcakearmy/autorestic/releases/download/v1.0.4/autorestic_1.0.4_linux_arm.bz2
 	sha256sums_armv6h = 10dbed83b50e343cf278b4742054bed1976530eef61436076116cf446c4632ed
-	source_armv7h = autorestic-1.0.4.bz2::://github.com/cupcakearmy/autorestic/releases/download/v1.0.4/autorestic_1.0.4_linux_arm64.bz2
+	source_armv7h = autorestic-1.0.4.bz2::https://github.com/cupcakearmy/autorestic/releases/download/v1.0.4/autorestic_1.0.4_linux_arm64.bz2
 	sha256sums_armv7h = 89a9a0e3d9594075ea856571e194dfda43566a295645c90d30827eca75d4bffe
 
 pkgname = autorestic
