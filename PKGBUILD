@@ -2,7 +2,7 @@
 
 pkgname=wayfire-desktop-git
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://wayfire.org/'
 pkgdesc='A meta package to use Wayfire as a desktop'
@@ -39,7 +39,6 @@ depends=(
         'wlogout'
         'wofi'
         'nwg-launchers'
-        'nwg-panel'
         'bemenu-wlroots'
 		'perl-file-mimeinfo'
 		'xdg-user-dirs-gtk'
@@ -47,21 +46,10 @@ depends=(
 		'xdg-desktop-portal-wlr'
         )
 optdepends=(
-        'performance-tweaks: for fast and responsive desktop experience'
-        'systemd-guest-user: guest user support'
-        'timeshift-autosnap: timeshift snapshots before pacman upgrades'
-        'grub-btrfs: grub menuentry for btrfs snapshots'
         'blueberry: for bluetooth'
         'connman-gtk: for connman gtk frontend'
         'greetd-qtgreet: recommonded display manager'
         'xorg-server-xwayland: xwayland support'
         'xorg-xhost: to run xwayland apps with elevated privilage'
-        'mpv: recommended video player'
         'alacritty: recommended terminal'
-        'lollypop: recommended music player'
-        'nautilus: recommended file manager'
-        'file-roller: recommended archiver'
-        'evince: recommended pdf viewer'
-        'gedit: recommended text editor'
-        'deluge-gtk: bittorrent client'
         )
