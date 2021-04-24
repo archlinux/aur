@@ -1,9 +1,9 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 _pkgname='natron'
 pkgname="${_pkgname}-bin"
-_pkgver=2.3.15
-pkgver=2.3.15.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Node-graph video compositor'
 arch=('x86_64')
@@ -16,8 +16,8 @@ options=('!strip')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 noextract=("${_pkgname}-${pkgver}.tar.xz")
-source=("${_pkgname}-${pkgver}.tar.xz::${_url_source}/releases/download/v${_pkgver}/${_pkgname^}-${pkgver}-Linux-64-no-installer.tar.xz")
-sha256sums=('3d5dd363382dfaae52b6868ec5a2a4baa7bba1226a8c0f76201e1849d9fb8cb9')
+source=("${_pkgname}-${pkgver}.tar.xz::${_url_source}/releases/download/v${pkgver}/${_pkgname^}-${pkgver}-Linux-64-no-installer.tar.xz")
+sha512sums=('416b166caf0d41131116adab3db4f0b5b5a2d5a5c79f5ffdaa6b8f0f54fef7ad79b34a70a0cae24271827340627298f113e3a8897f40d2f9fbef7a5d8e4c6a5b')
 
 prepare() {
   gendesk -f -n \
