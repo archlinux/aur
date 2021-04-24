@@ -1,7 +1,7 @@
 pkgbase = dain-ncnn-vulkan
 	pkgdesc = DAIN, Depth-Aware Video Frame Interpolation implemented with ncnn library
 	pkgver = 20210210
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/nihui/dain-ncnn-vulkan
 	arch = x86_64
 	license = MIT

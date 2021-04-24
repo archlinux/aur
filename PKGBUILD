@@ -2,7 +2,7 @@
 
 pkgname=dain-ncnn-vulkan
 pkgver=20210210
-pkgrel=3
+pkgrel=4
 pkgdesc="DAIN, Depth-Aware Video Frame Interpolation implemented with ncnn library"
 arch=('x86_64')
 url="https://github.com/nihui/dain-ncnn-vulkan"
@@ -34,6 +34,6 @@ package() {
 	
     cd "${srcdir}/${pkgname}-${pkgver}/models/"
     for f in best/*; do
-        install -Dm 644 "$f" ${pkgdir}/usr/share/${pkgname}/best/"$f"
+        install -Dm 644 "$f" ${pkgdir}/usr/share/${pkgname}/"$f"
     done
 }
