@@ -4,14 +4,18 @@
 
 pkgname=cryptpad
 pkgver=4.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Realtime collaborative visual editor with zero knowlege server"
 arch=('any')
 url="https://github.com/xwiki-labs/cryptpad"
 license=(AGPL3)
 depends=(nodejs)
 makedepends=(bower npm git)
-backup=(etc/webapps/"$pkgname"/config.js)
+optdepends=('nginx: HTTP server providing TLS'
+            'certbot: Let’s Encrypt – automatically receive and install X.509 certificates to enable TLS'
+            'certbot-nginx: Nginx plugin for Let’s Encrypt client')
+backup=(etc/webapps/"$pkgname"/config.js
+        etc/nginx/sites-available/"$pkgname".conf)
 options=(!strip) # There are no ELF files, no need to strip anything.
 source=("$pkgname-$pkgver.tar.gz::https://github.com/xwiki-labs/cryptpad/archive/$pkgver.tar.gz"
         "cryptpad.service"
@@ -50,13 +54,20 @@ package() {
     install -Dt "$pkgdir/usr/share/webapps/$pkgname" package.json server.js
     cp -rt "$pkgdir/usr/share/webapps/$pkgname" customize.dist lib node_modules scripts www
     rmdir "$pkgdir/usr/share/webapps/$pkgname/www/bower_components/codemirror/mode/rpm/changes"
+
     # Config
     sed -e "s|\(Path: '\)\./|\1/var/lib/cryptpad/|" \
         -e "s|'/var/lib/cryptpad/data/logs'|false|" \
         -e "s|logToStdout: false|logToStdout: true|" \
         -i config/config.example.js
-
     install -Dm 644 config/config.example.js "${pkgdir}/etc/webapps/$pkgname/config.js"
+
+    # Nginx config
+    sed -Ee "s|^( *root  *)/.*|\1/usr/share/webapps/$pkgname/www;|" \
+        -e "s|/home/cryptpad/.acme.sh/|/etc/letsencrypt/live/|" \
+        -i docs/example.nginx.conf
+    install -Dm 644 docs/example.nginx.conf "${pkgdir}/etc/nginx/sites-available/$pkgname.conf"
+
     ln -s /etc/webapps/"$pkgname" "$pkgdir/usr/share/webapps/$pkgname/config"
     install -dm 750 "$pkgdir/var/lib/$pkgname"/{,blob,block,data{,store},logs}
     ln -s /var/lib/"$pkgname"/{blob,block,data{,store}} "$pkgdir/usr/share/webapps/$pkgname"
