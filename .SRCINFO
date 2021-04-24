@@ -1,0 +1,17 @@
+pkgbase = sgp4-git
+	pkgdesc = SGP4 library
+	pkgver = r301.ca9d4d9
+	pkgrel = 1
+	url = https://github.com/dnwrnr/sgp4
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	provides = sgp4
+	conflicts = sgp4
+	source = git+https://github.com/dnwrnr/sgp4.git
+	sha256sums = SKIP
+
+pkgname = sgp4-git
+
