@@ -13,10 +13,10 @@ _arch_x86_64="amd64"
 _arch_armv6h="arm"
 _arch_armv7h="arm64"
 
-sha256sums_x86_64=('3ebbd57dcbc2409b11869c9afff8657496c0bfd33aefd95e4b7e54686cb6fd84')
-sha256sums_i686=('5e05e884eb4988ea75d0e00aec5b66b83d8f29492199396c537ada2ece4affe1')
-sha256sums_armv6h=('10dbed83b50e343cf278b4742054bed1976530eef61436076116cf446c4632ed')
-sha256sums_armv7h=('89a9a0e3d9594075ea856571e194dfda43566a295645c90d30827eca75d4bffe')
+sha256sums_x86_64=('2f2297546e00cfec1367817f866c75b09ffbff91e9fee41cfa9986bb7771677e')
+sha256sums_i686=('a9cb66d3d2081fec059d86c3e46714e917f71177c58bb1b0571e9b2061d2fb4d')
+sha256sums_armv6h=('39f18ad97915773d75102900b5d1cf194e35c0a0a7d7d9a9291c06c2269db79f')
+sha256sums_armv7h=('4a8c8ad3f1187f0ab3cf836b8b4ca9a99b0117009b5beffb0961097f133b2e19')
 
 source_x86_64=("$pkgname-$pkgver.bz2"::"https://github.com/cupcakearmy/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_${_arch_x86_64}.bz2")
 source_i686=("$pkgname-$pkgver.bz2"::"https://github.com/cupcakearmy/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_${_arch_i686}.bz2")
