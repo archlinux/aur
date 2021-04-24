@@ -1,12 +1,12 @@
 # Maintainer: nekgem2 <nekgem2@firemail.cc>
 pkgname=lokinet
-pkgver=0.8.5
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Anonymous, decentralized and IP based overlay network for the internet."
 arch=('x86_64' 'aarch64')
 url="https://lokinet.org"
 license=('GPL3')
-depends=('libuv' 'libsodium' 'curl' 'zeromq' 'unbound' 'sqlite')
+depends=('libuv' 'libsodium' 'curl' 'zeromq' 'unbound' 'sqlite' 'ngtcp2-notls')
 makedepends=('git' 'cmake')
 conflicts=('oxen-mq')
 install='lokinet.install'
@@ -20,7 +20,7 @@ source=("https://github.com/loki-project/loki-network/releases/download/v$pkgver
         'lokinet-resume.service'
         'lokinet.sysusers'
         'lokinet.tmpfiles')
-sha256sums=('7be3097b1479b02853426ac0e1390769c521307fadefc8957b850b9fee53e3a7'
+sha256sums=('e996ce0329b06c532cb1715261241900bb417ce91beea384e2f02158d506ba35'
             'SKIP'
             'ff5e7db4e65463e50978da0185487bd4a7f213f04bdb6256e221089f833c6ab6'
             '41f02f6ca693cd596165a7431795f36a2559504361857063278d31f833b3b7b1'
@@ -59,8 +59,8 @@ build() {
 
 package() {
 	cd "lokinet-v$pkgver"
-	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm755 contrib/systemd-resolved/lokinet.conf "$pkgdir/usr/lib/systemd/resolved.conf.d/00-lokinet.conf"
+	install -D -m 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -D -m 644 contrib/systemd-resolved/lokinet.conf "$pkgdir/usr/lib/systemd/resolved.conf.d/00-lokinet.conf"
 	cd build
 	make DESTDIR="$pkgdir" install
 
