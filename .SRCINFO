@@ -1,7 +1,7 @@
 pkgbase = autorestic-bin
 	pkgdesc = High level CLI utility for restic
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cupcakearmy/autorestic
 	arch = x86_64
 	arch = i686
