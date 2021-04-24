@@ -9,7 +9,7 @@ url='http://www.losslessaudio.org'
 license=('custom:OptimFROG')
 arch=('x86_64')
 provides=('optimfrog')
-conflicts=('optimgrog')
+conflicts=('optimfrog')
 source=("http://www.losslessaudio.org/Downloads/A1C0/${pkgver//./}/Linux/OptimFROG_Linux_x64_${pkgver//./}.zip")
 sha1sums=("$(curl -s http://www.losslessaudio.org/Downloads/A1C0/${pkgver//./}/Linux/OptimFROG_Linux_x64_${pkgver//./}.zip.sha1 | cut -d ' ' -f1)")
 

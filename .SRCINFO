@@ -6,7 +6,7 @@ pkgbase = optimfrog-bin
 	arch = x86_64
 	license = custom:OptimFROG
 	provides = optimfrog
-	conflicts = optimgrog
+	conflicts = optimfrog
 	source = http://www.losslessaudio.org/Downloads/A1C0/5100/Linux/OptimFROG_Linux_x64_5100.zip
 	sha1sums = e3dd9fd56ee11c544b1faadee24ae6adef661b6a
 
