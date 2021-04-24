@@ -1,0 +1,5 @@
+/src/
+/pkg/
+mesa-*.tar.xz
+mesa-*.tar.xz.sig
+mesa-wslg-*.pkg.tar*
