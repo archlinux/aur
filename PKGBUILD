@@ -3,7 +3,7 @@
 _pyname=zstd
 pkgbase=python-$_pyname
 pkgname=(python{,2}-$_pyname)
-pkgver=1.4.8.1
+pkgver=1.4.9.1
 pkgrel=1
 pkgdesc="ZSTD Bindings for Python"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -17,9 +17,9 @@ makedepends=(
 	python2-setuptools
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('ecd0f6e4882b973c54588973196e5383')
-sha256sums=('b62b21eb850abd6b8c0046bfc1c5c773c873eeb94f1904ef1ff304e98b62b80e')
-sha512sums=('fa0d30d614ea30dfd80baff8f37eba575636731e43f9bbcaaa7907e1711820c32b7873330eab0ac4e3e5e887fa8359102a4ff6036c408073ef9639cfc29e03c6')
+md5sums=('cefc30b442b16fb61939ca0fe3db4b32')
+sha256sums=('714218559970d3aaeb020097ea2601f47e0b6d1867e5576f67b48142ebd8f0e4')
+sha512sums=('53816d252611ce3a1aa0dfa7b568ce8ffba07dd8ca6009ab3406680e674f5040633718cc65e1d5a0cfea1e1f5dd746a8f3e91b313b2be39b0ed4c6f9d887b24e')
 
 prepare(){
 	cp -a $_pyname-$pkgver{,-py2}
