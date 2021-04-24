@@ -3,8 +3,8 @@
 
 pkgname=lite-xl
 _pkgname=lite
-pkgver=1.16.5
-pkgrel=2
+pkgver=1.16.6
+pkgrel=1
 pkgdesc='A lightweight text editor written in Lua'
 arch=('x86_64')
 url="https://github.com/franko/$pkgname"
@@ -14,7 +14,7 @@ makedepends=('meson' 'gendesk')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2f02e0460bd628f068461c5098a4c651cbfc6471b0c41f0b6252aa9e4a9dbe8d')
+sha256sums=('477b9a62d6f31109a288e63e79eb3189f99d2d7c03b1f395fc1d1e072131f747')
 
 prepare() {
     cd "$pkgname-$pkgver"
