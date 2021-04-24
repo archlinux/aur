@@ -3,7 +3,7 @@
 # Contributor: bender02 at gmx dot com
 
 pkgname=emacs-planner-git
-pkgver=3.42.23.g145e9e3
+pkgver=3.42.r23.g145e9e3
 pkgrel=1
 pkgdesc="A Personal Information Management tool for emacs from git"
 arch=('any')
@@ -13,14 +13,13 @@ depends=('emacs-muse')
 makedepends=('git')
 provides=('emacs-planner')
 conflicts=('emacs-planner')
-install=
 source=("git://repo.or.cz/planner-el.git")
 md5sums=('SKIP')
 _gitname="planner-el"
 
 pkgver() {
   cd "$srcdir"/"$_gitname"
-  git describe --tags | sed 's|-|.|g' |cut -c2-
+  git describe --tags | sed 's|-|.r|' | tr - . | cut -c2-
 }
 
 build() {

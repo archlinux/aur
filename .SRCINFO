@@ -1,6 +1,6 @@
 pkgbase = emacs-planner-git
 	pkgdesc = A Personal Information Management tool for emacs from git
-	pkgver = 3.42.23.g145e9e3
+	pkgver = 3.42.r23.g145e9e3
 	pkgrel = 1
 	url = http://www.emacswiki.org/cgi-bin/wiki/PlannerMode
 	arch = any
