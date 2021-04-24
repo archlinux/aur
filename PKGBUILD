@@ -48,7 +48,7 @@ build() {
           -DVTK_MODULE_USE_EXTERNAL_VTK_lzma=ON \
           -DVTK_MODULE_USE_EXTERNAL_VTK_netcdf=ON \
           -DVTK_MODULE_USE_EXTERNAL_VTK_ogg=ON \
-          -DVTK_MODULE_USE_EXTERNAL_VTK_pegtl=ON \
+          -DVTK_MODULE_USE_EXTERNAL_VTK_pegtl=OFF \
           -DVTK_MODULE_USE_EXTERNAL_VTK_png=ON \
           -DVTK_MODULE_USE_EXTERNAL_VTK_pugixml=ON \
           -DVTK_MODULE_USE_EXTERNAL_VTK_sqlite=ON \
@@ -57,7 +57,7 @@ build() {
           -DVTK_MODULE_USE_EXTERNAL_VTK_utf8=ON \
           -DVTK_MODULE_USE_EXTERNAL_VTK_zlib=ON \
           -DVTK_MODULE_ENABLE_VTK_RenderingRayTracing=WANT \
-          -DVTKOSPRAY_ENABLE_DENOISER=ON \
+          -DVTK_ENABLE_OSPRAY=OFF \
           ..
     make
 }
