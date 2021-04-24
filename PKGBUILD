@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://easyrpg.org/"
 license=('GPL3')
 depends=("liblcf>=${pkgver:0:5}" 'sdl2_mixer' 'pixman' 'freetype2' 'libvorbis' 'mpg123' 'libsndfile' 'speexdsp' 'wildmidi' 'libretro-core-info' )
-makedepends=('git')
+makedepends=('git' 'cmake')
 _commit=4dd00a6e1ec4b12174019f39624d268619bb3776
 source=($pkgname::git+https://github.com/EasyRPG/Player.git#commit=${_commit})
 sha256sums=(SKIP)
