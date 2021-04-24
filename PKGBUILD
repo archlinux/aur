@@ -1,6 +1,6 @@
 # Maintainer: arkhan <arkhan@disroot.org>
 pkgname=eless
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="A Better 'less' - A bash script that loads emacs with minimal view-mode config"
 arch=('any')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=("bash" "emacs")
 url='https://eless.scripter.co'
 source=("https://github.com/kaushalmodi/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('c188fcceb2b3f006f7bb3855b525fa29')
+md5sums=('2c9405bc77dda2abcf7429551e4d6a9e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
