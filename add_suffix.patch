@@ -1,0 +1,257 @@
+--- src/lib_proj.cmake
++++ src/lib_proj.cmake
+
+@@ -355,4 +355,4 @@
+ # Core targets configuration
+ string(TOLOWER "${PROJECT_INTERN_NAME}" PROJECTNAMEL)
+-set(PROJ_CORE_TARGET ${PROJECTNAMEL})
++set(PROJ_CORE_TARGET ${PROJECTNAMEL}6)
+ proj_target_output_name(${PROJ_CORE_TARGET} PROJ_CORE_TARGET_OUTPUT_NAME)
+
+
+--- src/CMakeLists.txt
++++ src/CMakeLists.txt
+
+@@ -40,33 +40,33 @@
+ endif()
+ 
+ if(BUILD_CCT)
+   include(bin_cct.cmake)
+-  set(BIN_TARGETS ${BIN_TARGETS} cct)
++  set(BIN_TARGETS ${BIN_TARGETS} cct6)
+ endif()
+ 
+ if(BUILD_CS2CS)
+   include(bin_cs2cs.cmake)
+-  set(BIN_TARGETS ${BIN_TARGETS} cs2cs)
++  set(BIN_TARGETS ${BIN_TARGETS} cs2cs6)
+ endif()
+ 
+ if(BUILD_GEOD)
+   include(bin_geod.cmake)
+   include(bin_geodtest.cmake)
+-  set(BIN_TARGETS ${BIN_TARGETS} geod)
++  set(BIN_TARGETS ${BIN_TARGETS} geod6)
+ endif()
+ 
+ if(BUILD_PROJ)
+   include(bin_proj.cmake)
+-  set(BIN_TARGETS ${BIN_TARGETS} binproj)
++  set(BIN_TARGETS ${BIN_TARGETS} binproj6)
+ endif()
+ 
+ if(BUILD_PROJINFO)
+   include(bin_projinfo.cmake)
+-  set(BIN_TARGETS ${BIN_TARGETS} binprojinfo)
++  set(BIN_TARGETS ${BIN_TARGETS} binprojinfo6)
+ endif()
+ 
+ if(BUILD_GIE)
+   include(bin_gie.cmake)
+-  set(BIN_TARGETS ${BIN_TARGETS} gie)
++  set(BIN_TARGETS ${BIN_TARGETS} gie6)
+ endif()
+
+
+--- src/bin_cct.cmake
++++ src/bin_cct.cmake
+
+@@ -8,12 +8,12 @@
+ source_group("Source Files\\Bin" FILES ${CCT_SRC})
+ 
+-add_executable(cct ${CCT_SRC} ${CCT_INCLUDE})
++add_executable(cct6 ${CCT_SRC} ${CCT_INCLUDE})
+-target_link_libraries(cct ${PROJ_LIBRARIES})
++target_link_libraries(cct6 ${PROJ_LIBRARIES})
+-target_compile_options(cct PRIVATE ${PROJ_CXX_WARN_FLAGS})
++target_compile_options(cct6 PRIVATE ${PROJ_CXX_WARN_FLAGS})
+ 
+-install(TARGETS cct
++install(TARGETS cct6
+   RUNTIME DESTINATION ${BINDIR})
+ 
+ if(MSVC AND BUILD_LIBPROJ_SHARED)
+-  target_compile_definitions(cct PRIVATE PROJ_MSVC_DLL_IMPORT=1)
++  target_compile_definitions(cct6 PRIVATE PROJ_MSVC_DLL_IMPORT=1)
+ endif()
+
+
+--- src/bin_cs2cs.cmake
++++ src/bin_cs2cs.cmake
+
+@@ -7,12 +7,12 @@
+ source_group("Source Files\\Bin" FILES ${CS2CS_SRC})
+ 
+-add_executable(cs2cs ${CS2CS_SRC} ${CS2CS_INCLUDE})
++add_executable(cs2cs6 ${CS2CS_SRC} ${CS2CS_INCLUDE})
+-target_link_libraries(cs2cs ${PROJ_LIBRARIES})
++target_link_libraries(cs2cs6 ${PROJ_LIBRARIES})
+-target_compile_options(cs2cs PRIVATE ${PROJ_CXX_WARN_FLAGS})
++target_compile_options(cs2cs6 PRIVATE ${PROJ_CXX_WARN_FLAGS})
+ 
+-install(TARGETS cs2cs
++install(TARGETS cs2cs6
+   RUNTIME DESTINATION ${BINDIR})
+ 
+ if(MSVC AND BUILD_LIBPROJ_SHARED)
+-  target_compile_definitions(cs2cs PRIVATE PROJ_MSVC_DLL_IMPORT=1)
++  target_compile_definitions(cs2cs6 PRIVATE PROJ_MSVC_DLL_IMPORT=1)
+ endif()
+
+
+--- src/bin_geod.cmake
++-- src/bin_geod.cmake
+
+@@ -9,12 +9,12 @@
+ source_group("Source Files\\Bin" FILES ${GEOD_SRC} ${GEOD_INCLUDE})
+ 
+-add_executable(geod ${GEOD_SRC} ${GEOD_INCLUDE})
++add_executable(geod6 ${GEOD_SRC} ${GEOD_INCLUDE})
+-target_link_libraries(geod ${PROJ_LIBRARIES})
++target_link_libraries(geod6 ${PROJ_LIBRARIES})
+-target_compile_options(geod PRIVATE ${PROJ_CXX_WARN_FLAGS})
++target_compile_options(geod6 PRIVATE ${PROJ_CXX_WARN_FLAGS})
+ 
+-install(TARGETS geod
++install(TARGETS geod6
+   RUNTIME DESTINATION ${BINDIR})
+ 
+ if(MSVC AND BUILD_LIBPROJ_SHARED)
+-  target_compile_definitions(geod PRIVATE PROJ_MSVC_DLL_IMPORT=1)
++  target_compile_definitions(geod6 PRIVATE PROJ_MSVC_DLL_IMPORT=1)
+ endif()
+
+
+--- src/bin_geodtest.cmake
++++ src/bin_geodtest.cmake
+
+@@ -4,12 +4,12 @@
+ source_group("Source Files\\Bin" FILES ${GEODTEST_SRC} ${GEODTEST_INCLUDE})
+ 
+-add_executable(geodtest ${GEODTEST_SRC} ${GEODTEST_INCLUDE})
++add_executable(geod6test ${GEODTEST_SRC} ${GEODTEST_INCLUDE})
+-target_link_libraries(geodtest ${PROJ_LIBRARIES})
++target_link_libraries(geod6test ${PROJ_LIBRARIES})
+-target_compile_options(geodtest PRIVATE ${PROJ_CXX_WARN_FLAGS})
++target_compile_options(geod6test PRIVATE ${PROJ_CXX_WARN_FLAGS})
+ 
+ # Do not install, instead run as a test
+-add_test(NAME geodesic-test COMMAND geodtest)
++add_test(NAME geodesic-test COMMAND geod6test)
+ 
+ if(MSVC AND BUILD_LIBPROJ_SHARED)
+-  target_compile_definitions(geodtest PRIVATE PROJ_MSVC_DLL_IMPORT=1)
++  target_compile_definitions(geodtest6 PRIVATE PROJ_MSVC_DLL_IMPORT=1)
+ endif()
+
+
+--- src/bin_proj.cmake
++++ src/bin_proj.cmake
+
+@@ -7,15 +7,15 @@
+ source_group("Source Files\\Bin" FILES ${PROJ_SRC})
+ 
+-add_executable(binproj ${PROJ_SRC})
++add_executable(binproj6 ${PROJ_SRC})
+-set_target_properties(binproj
++set_target_properties(binproj6
+   PROPERTIES
+-  RUNTIME_OUTPUT_NAME proj)
++  RUNTIME_OUTPUT_NAME proj6)
+-target_link_libraries(binproj ${PROJ_LIBRARIES})
++target_link_libraries(binproj6 ${PROJ_LIBRARIES})
+-target_compile_options(binproj PRIVATE ${PROJ_CXX_WARN_FLAGS})
++target_compile_options(binproj6 PRIVATE ${PROJ_CXX_WARN_FLAGS})
+ 
+-install(TARGETS binproj
++install(TARGETS binproj6
+   RUNTIME DESTINATION ${BINDIR})
+ 
+ if(MSVC AND BUILD_LIBPROJ_SHARED)
+-  target_compile_definitions(binproj PRIVATE PROJ_MSVC_DLL_IMPORT=1)
++  target_compile_definitions(binproj6 PRIVATE PROJ_MSVC_DLL_IMPORT=1)
+ endif()
+
+
+--- src/bin_projinfo.cmake
++++ src/bin_projinfo.cmake
+
+@@ -3,15 +3,15 @@
+ source_group("Source Files\\Bin" FILES ${PROJINFO_SRC})
+ 
+-add_executable(binprojinfo ${PROJINFO_SRC})
++add_executable(binprojinfo6 ${PROJINFO_SRC})
+-set_target_properties(binprojinfo
++set_target_properties(binprojinfo6
+   PROPERTIES
+-  OUTPUT_NAME projinfo)
++  OUTPUT_NAME projinfo6)
+-target_link_libraries(binprojinfo ${PROJ_LIBRARIES})
++target_link_libraries(binprojinfo6 ${PROJ_LIBRARIES})
+-target_compile_options(binprojinfo PRIVATE ${PROJ_CXX_WARN_FLAGS})
++target_compile_options(binprojinfo6 PRIVATE ${PROJ_CXX_WARN_FLAGS})
+ 
+-install(TARGETS binprojinfo
++install(TARGETS binprojinfo6
+   RUNTIME DESTINATION ${BINDIR})
+ 
+ if(MSVC AND BUILD_LIBPROJ_SHARED)
+-  target_compile_definitions(binprojinfo PRIVATE PROJ_MSVC_DLL_IMPORT=1)
++  target_compile_definitions(binprojinfo6 PRIVATE PROJ_MSVC_DLL_IMPORT=1)
+ endif()
+
+
+--- src/bin_gie.cmake
++++ src/bin_gie.cmake
+
+@@ -8,12 +8,12 @@
+ source_group("Source Files\\Bin" FILES ${GIE_SRC})
+ 
+-add_executable(gie ${GIE_SRC} ${GIE_INCLUDE})
++add_executable(gie6 ${GIE_SRC} ${GIE_INCLUDE})
+-target_link_libraries(gie ${PROJ_LIBRARIES})
++target_link_libraries(gie6 ${PROJ_LIBRARIES})
+-target_compile_options(gie PRIVATE ${PROJ_CXX_WARN_FLAGS})
++target_compile_options(gie6 PRIVATE ${PROJ_CXX_WARN_FLAGS})
+ 
+-install(TARGETS gie
++install(TARGETS gie6
+   RUNTIME DESTINATION ${BINDIR})
+ 
+ if(MSVC AND BUILD_LIBPROJ_SHARED)
+-  target_compile_definitions(gie PRIVATE PROJ_MSVC_DLL_IMPORT=1)
++  target_compile_definitions(gie6 PRIVATE PROJ_MSVC_DLL_IMPORT=1)
+ endif()
+
+
+--- cmake/ProjTest.cmake
++++ cmake/ProjTest.cmake
+
+@@ -37,6 +47,6 @@
+ function(proj_add_gie_test TESTNAME TESTCASE)
+ 
+-    set(GIE_BIN $<TARGET_FILE_NAME:gie>)
++    set(GIE_BIN $<TARGET_FILE_NAME:gie6>)
+     set(TESTFILE ${CMAKE_SOURCE_DIR}/test/${TESTCASE})
+     add_test(NAME ${TESTNAME}
+       WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/test
+
+
+--- test/cli/CMakeLists.txt
++++ test/cli/CMakeLists.txt
+
+@@ -1,10 +1,10 @@
+ #
+ # test
+ #
+-set(CS2CS_BIN "cs2cs")
++set(CS2CS_BIN "cs2cs6")
+-set(PROJ_BIN "proj")
++set(PROJ_BIN "proj6")
+-set(PROJINFO_BIN "projinfo")
++set(PROJINFO_BIN "projinfo6")
+-set(CCT_BIN "cct")
++set(CCT_BIN "cct6")
+ proj_add_test_script_sh("test27" PROJ_BIN)
+ proj_add_test_script_sh("test83" PROJ_BIN)
+ proj_add_test_script_sh("testproj" PROJ_BIN)
