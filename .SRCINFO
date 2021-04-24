@@ -1,6 +1,6 @@
 pkgbase = s6-rc
 	pkgdesc = A complete service manager for s6 systems.
-	pkgver = 0.5.2.1
+	pkgver = 0.5.2.2
 	pkgrel = 1
 	url = https://skarnet.org/software/s6-rc/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = s6-rc
 	depends = skalibs>=2.10.0.0
 	depends = execline>=2.7.0.0
 	depends = s6>=2.10.0.0
-	source = https://skarnet.org/software/s6-rc/s6-rc-0.5.2.1.tar.gz
-	sha256sums = 2842fa55e2bddb65573d78d2c475c4a2f2b26b9258a18b457f8a0342e2fafa0a
+	source = https://skarnet.org/software/s6-rc/s6-rc-0.5.2.2.tar.gz
+	sha256sums = 2a8d1cd455c05c8502b34517cfe79841aa46d08ad969076b37a15d3910617f89
 
 pkgname = s6-rc
 
