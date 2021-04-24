@@ -1,6 +1,6 @@
 pkgbase = evisum
 	pkgdesc = EFL Process Viewer
-	pkgver = 0.5.12
+	pkgver = 0.5.13
 	pkgrel = 1
 	url = https://www.enlightenment.org
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = evisum
 	makedepends = meson
 	makedepends = ninja
 	depends = efl
-	source = https://download.enlightenment.org/rel/apps/evisum/evisum-0.5.12.tar.xz
-	sha256sums = 547350d6e143be4046dd84c05784b6be3bbacbbe65b24ff56f9943cf6262e559
+	source = https://download.enlightenment.org/rel/apps/evisum/evisum-0.5.13.tar.xz
+	sha256sums = 4cc571c7b0fdc1dba3c8de8f71b2310bc33acdbcb99b2bf13bd02aa25adc58e6
 
 pkgname = evisum
 
