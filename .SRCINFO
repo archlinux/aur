@@ -17,6 +17,7 @@ pkgbase = intel-oneapi-compiler-shared
 
 pkgname = intel-oneapi-compiler-shared
 	depends = intel-oneapi-dpcpp-debugger
+	depends = intel-oneapi-openmp
 	depends = intel-oneapi-common-vars
 	depends = intel-oneapi-common-licensing
 

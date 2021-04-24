@@ -35,6 +35,6 @@ build() {
 }
 
 package() {
-	depends=('intel-oneapi-dpcpp-debugger' 'intel-oneapi-common-vars' 'intel-oneapi-common-licensing')
+	depends=('intel-oneapi-dpcpp-debugger' 'intel-oneapi-openmp' 'intel-oneapi-common-vars' 'intel-oneapi-common-licensing')
 	mv ${srcdir}/opt ${pkgdir}
 }
