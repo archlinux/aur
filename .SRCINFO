@@ -1,8 +1,8 @@
 pkgbase = python-dmsh
 	pkgdesc = Simple mesh generator inspired by distmesh.
-	pkgver = 0.2.11
+	pkgver = 0.2.13
 	pkgrel = 1
-	url = https://github.com/nschloe/optimesh
+	url = https://github.com/nschloe/dmsh
 	arch = any
 	license = GPL
 	makedepends = python
@@ -11,8 +11,8 @@ pkgbase = python-dmsh
 	depends = python-numpy
 	depends = python-scipy
 	optdepends = python-matplotlib
-	source = https://files.pythonhosted.org/packages/source/d/dmsh/dmsh-0.2.11.tar.gz
-	sha256sums = 42dcd07fd597d73ce4b33cdc8b5410af92ead22f5d1e721c7107f083d1710e60
+	source = https://files.pythonhosted.org/packages/source/d/dmsh/dmsh-0.2.13.tar.gz
+	sha256sums = 2d0f35bc9b53d58276776498b7fa9c05646a0a3641fa552ec4ca73d1f8e8bd9b
 
 pkgname = python-dmsh
 
