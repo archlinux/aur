@@ -14,7 +14,9 @@ pkgbase = aptdec-git
 	provides = aptdec
 	conflicts = aptdec
 	source = git+https://github.com/Xerbo/aptdec
+	source = install-palettes-to-usr-share.patch
 	md5sums = SKIP
+	md5sums = cbbc61ab679d38896a1bd2de1631227c
 
 pkgname = aptdec-git
 
