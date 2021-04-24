@@ -2,15 +2,14 @@
 
 pkgname=yabridge-git
 _pkgname=yabridge
-pkgver=3.0.2.r0.g0d7b9bd
+pkgver=3.1.0.r13.g671c6a4
 pkgrel=1
 pkgdesc="A modern and transparent way to use Windows VST2 and VST3 plugins on Linux"
 arch=('x86_64')
 url="https://github.com/robbert-vdh/yabridge"
 license=('GPL3')
 depends=('wine' 'boost'  'libxcb' 'lib32-boost-libs>=1.72.0' 'lib32-libxcb')
-# FIXME: Wine 6.6 broke wineg++, see https://bugs.winehq.org/show_bug.cgi?id=50996
-makedepends=('meson' 'ninja' 'wine<6.6')
+makedepends=('meson' 'ninja')
 optdepends=('yabridgectl: utility for setting up and managing yabridge')
 provides=('yabridge')
 conflicts=('yabridge')
