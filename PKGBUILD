@@ -1,24 +1,24 @@
 # Maintainer: phpusr
 pkgname=yandex-music-player
-pkgver=1.1.1
+pkgver=1.3
 pkgrel=1
 pkgdesc='Yandex Music desktop Electron application with MPRIS support'
 arch=('x86_64')
 url='https://github.com/phpusr/yandex-music-player'
 license=('GPL')
-depends=('electron')
+depends=('electron5-bin')
 makedepends=('npm')
 provides=('yandex-music-player')
 source_x86_64=(
-  "yandex-music-player-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+  "yandex-music-player-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 source=(
   "ymp.desktop"
   "ymp.sh"
 )
 sha1sums=('6b8693c7069e85149c60f1057a34179a878b57b7'
-          'a10d6976131fa866a68366c5ce2e74542f54c86e')
-sha1sums_x86_64=('4538bac974d94c06e74667e80662c513f03cfb9f')
+          '1c13ac59bfb4e15e91f42924905f92f1ace31f0f')
+sha1sums_x86_64=('a642091272c9402c4e006bb964dadc3434a59d2f')
 
 package() {
   cd "${srcdir}/yandex-music-player-${pkgver}"

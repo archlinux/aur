@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-exec electron /usr/share/ymp $@
+exec electron5 /usr/share/ymp $@
