@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # shellcheck disable=2034,2154
-# Maintainer: Hunter Peavey < printf "srht@die.bots" | sed "s/die.bots/krathalan.net/g" >
+# Maintainer: Hunter Peavey < printf "dev@die.bots" | sed "s/die.bots/krathalan.net/g" >
 # Contributor: Pierre Choffet
 
 pkgname=gmnisrv-git
