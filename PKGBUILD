@@ -39,7 +39,7 @@ build() {
     --name "${_name}" \
     --icon "${pkgname}.png" \
     --maximize \
-    --user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:86.0) Gecko/20100101 Firefox/87.0" \
+    --user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0" \
     --single-instance \
     --verbose \
     https://keep.google.com
