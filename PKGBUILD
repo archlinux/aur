@@ -1,16 +1,17 @@
 # Maintainer: Andreas Born <futur[DOT]andy[AT]googlemail[DOT]com>
 
 pkgname=lrz-syncshare
-pkgver=15.6.101
+pkgver=16.1.100
 pkgrel=1
 pkgdesc="Sync client for the LRZ Sync+Share service"
 url='https://syncandshare.lrz.de/'
 arch=('any')
 license=('custom')
-#depends=('desktop-file-utils' 'hicolor-icon-theme' 'jre>8u' 'jre<9' 'xdg-utils')
-depends=('desktop-file-utils' 'hicolor-icon-theme' 'jre8' 'xdg-utils')
+#depends=('desktop-file-utils' 'hicolor-icon-theme' 'jre>16' 'jre<17' 'xdg-utils')
+#depends=('desktop-file-utils' 'hicolor-icon-theme' 'jre11' 'xdg-utils')
+depends=('desktop-file-utils' 'hicolor-icon-theme' 'java-runtime>=11' 'xdg-utils' 'archlinux-java-run')
 source=("LRZ_Sync_Share_${pkgver}_Linux.tar.gz::https://syncandshare.lrz.de/client_deployment/LRZ_Sync_Share_Latest_Linux.tar.gz")
-sha256sums=('22f5ac666cd7263d2b23d4dad4d4c96dd1998546c8a980643e88c3f73c1f76ac')
+sha256sums=('48f34177bc21df233c7873e26e91c8ce41669656a08e5bd8889c93983474932e')
 
 pkgver() {
   cat "${srcdir}/LRZ_Sync_Share/VERSION" | sed -e 's/\s*$//'
@@ -20,7 +21,7 @@ prepare() {
   cd "${srcdir}/LRZ_Sync_Share"
 
   sed -e "s;^CLIENT_INSTALL=.*\$;CLIENT_INSTALL=/usr/share/${pkgname};" \
-      -e 's;^RUN_CMD="$CLIENT_INSTALL/jre/bin/java ;RUN_CMD="/usr/lib/jvm/java-8-jre/jre/bin/java ;' \
+      -e 's;^RUN_CMD="$CLIENT_INSTALL/jre/bin/java ;RUN_CMD="/usr/bin/archlinux-java-run -a 11 -- --illegal-access=permit ;' \
       -i LRZ_Sync_Share-Client.sh
   sed -e "s;^Icon=.*;Icon=${pkgname};" \
       -e "s;^Exec=.*;Exec=${pkgname};" -i install-files/LRZ_Sync_Share.desktop
