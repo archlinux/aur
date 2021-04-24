@@ -1,10 +1,11 @@
 pkgbase = proverbilo
 	pkgdesc = Montras hazardajn proverbaojn kaj diraĵojn en terminalo.
-	pkgver = 46949d6
+	pkgver = c15b95f
 	pkgrel = 1
 	url = https://github.com/Fierthraix/proverbilo
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = cargo
 	provides = proverbilo
 	conflicts = proverbilo

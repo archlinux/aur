@@ -1,13 +1,13 @@
 # Mainintainer : Lucas Rooyakkers <lucas dot rooyakkers at queensu at ca>
 pkgname=proverbilo
-pkgver=46949d6
+pkgver=c15b95f
 pkgrel=1
 pkgdesc="Montras hazardajn proverbaojn kaj diraĵojn en terminalo."
 arch=('any')
 url="https://github.com/Fierthraix/proverbilo"
 license=('GPL3')
 provides=("proverbilo")
-makedepends=('cargo')
+makedepends=('git' 'cargo')
 conflicts=('proverbilo')
 source=("$pkgname::git+https://github.com/Fierthraix/proverbilo")
 sha1sums=('SKIP')
