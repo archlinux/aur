@@ -1,0 +1,25 @@
+From 4584e99f26608eec9bdc8262aca377c2da85d256 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sat, 24 Apr 2021 17:19:38 +0200
+Subject: [PATCH] cmake: fix installation of fbs files
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2f58c73..103dbef 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -177,7 +177,7 @@ configure_file(
+ install(  # install flatbuf proto defs
+   DIRECTORY ${LIBSIGMF_GEN_HEADERS}/
+   DESTINATION include/sigmf/fbs
+-  FILES_MATCHING PATTERN "*.fbs)")
++  FILES_MATCHING PATTERN "*.fbs")
+ install(  # install generated headers
+   DIRECTORY ${LIBSIGMF_GEN_HEADERS}/
+   DESTINATION include/sigmf
+-- 
+2.31.1
+
