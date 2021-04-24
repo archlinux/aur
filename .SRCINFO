@@ -1,6 +1,6 @@
 pkgbase = privacy-redirect
 	pkgdesc = Redirect Youtube, Twitter, Instagram, ... to privacy friendly alternatives
-	pkgver = 1.1.46
+	pkgver = 1.1.47
 	pkgrel = 1
 	url = https://github.com/SimonBrazell/privacy-redirect
 	install = privacy-redirect.install
@@ -8,8 +8,8 @@ pkgbase = privacy-redirect
 	license = GPL3
 	makedepends = npm
 	makedepends = nodejs>=10.0.0
-	source = privacy-redirect-1.1.46.tar.gz::https://github.com/SimonBrazell/privacy-redirect/archive/v1.1.46.tar.gz
-	b2sums = 2b5f14a8657513493a456f2db63f1167e8cc5016e9c7f3e9034166c3a9ed5844abf93c3f98ba5921bc0629e004ebd84505ee33f1eb94dbbfc5f4d48a5b475ca0
+	source = privacy-redirect-1.1.47.tar.gz::https://github.com/SimonBrazell/privacy-redirect/archive/v1.1.47.tar.gz
+	b2sums = 293bcfb3aec279fd79e248bf26f95c1e2ccf34ada54fbc9f464dc345e67d410f11fd1b332dfdbdc79b290df252d36f1532580f52bef924d6cae2ed9a031ff501
 
 pkgname = privacy-redirect
 
