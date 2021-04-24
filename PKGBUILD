@@ -20,6 +20,7 @@ prepare() {
 }
 
 package_python-cheetah3() {
+  depends=('python')
   optdepends=('python-markdown')
 
   cd "${srcdir}/${_name}-${pkgver}.${_subver}"
@@ -28,6 +29,7 @@ package_python-cheetah3() {
 }
 
 package_python2-cheetah3() {
+  depends=('python2')
   optdepends=('python2-markdown')
 
   cd "${srcdir}/${_name}-${pkgver}.${_subver}-py2"
