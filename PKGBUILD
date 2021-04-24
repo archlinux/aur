@@ -6,7 +6,7 @@
 
 pkgname=nginx-quic
 pkgver=1.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
@@ -81,7 +81,10 @@ prepare() {
 }
 
 build() {
+  # Clear -D_FORTIFY_SOURCE from build flags, it causes Boringssl tests to fail to compile
   export CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=[1-9]/-D_FORTIFY_SOURCE=0}
+  export CXXFLAGS=${CXXFLAGS/-D_FORTIFY_SOURCE=[1-9]/-D_FORTIFY_SOURCE=0}
+
   export CXXFLAGS="$CXXFLAGS -fPIC"
   export CFLAGS="$CFLAGS -fPIC"
 
