@@ -9,6 +9,7 @@ pkgbase = pycam-git
 	makedepends = git
 	depends = python-opengl
 	depends = python-svg.path
+	depends = python-yaml
 	conflicts = pycam
 	source = git+https://github.com/SebKuzminsky/pycam.git
 	source = launcher.sh
