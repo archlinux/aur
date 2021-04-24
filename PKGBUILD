@@ -4,7 +4,7 @@
 # Contributor: Emanuel Fontelles ("emanuelfontelles") <emanuelfontelles@hotmail.com>
 
 pkgname=apache-spark
-pkgver=3.0.2
+pkgver=3.1.1
 pkgrel=0
 pkgdesc="Apache Spark is a unified analytics engine for large-scale data processing."
 arch=('any')
@@ -28,7 +28,7 @@ source=("https://archive.apache.org/dist/spark/spark-${pkgver}/spark-${pkgver}-b
         'run-master.sh'
         'run-slave.sh')
 
-sha256sums=('c5ba77f2b84b622904c169a03d12e3c8cc9e471094e50488600094f294a70523'
+sha256sums=('4e0846207bf10311de43451bc99309086fce7990aaf54bf3038608b1981afbe7'
             'e4333e4a484543786e82d1f7af144ad99d9cc666d2e2742f30b5120996f32183'
             'e656ef5599d095472641e6fd58e9046d7db3f983b334e9a695e278ba799afc5b'
             '0e9c3721cfac02e3b67248e1dfe2def49a9fc6408092b291b1c67e89a9c130cb'
