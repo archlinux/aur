@@ -2,7 +2,7 @@
 
 _pkgname=kindle2anki
 pkgname=${_pkgname}-git
-pkgver=r19.0173afb
+pkgver=r21.44f9270
 pkgrel=1
 pkgdesc='Add words from Kindle to Anki'
 url='https://github.com/psamim/kindle2anki'
