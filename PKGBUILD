@@ -12,7 +12,10 @@ makedepends=(
 	python
 	python-setuptools
 )
-depends=(python)
+depends=(
+	python
+	ffmpeg
+)
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
 md5sums=('633492c6355d857a1c043f490e44e42f')
 sha256sums=('757591581eee25b4a50ac9ffb9b58035a2794533db47e0512f53fb2d7b6f9adc')

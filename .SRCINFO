@@ -8,6 +8,7 @@ pkgbase = python-ffmpy
 	makedepends = python
 	makedepends = python-setuptools
 	depends = python
+	depends = ffmpeg
 	source = https://pypi.io/packages/source/f/ffmpy/ffmpy-0.3.0.tar.gz
 	md5sums = 633492c6355d857a1c043f490e44e42f
 	sha256sums = 757591581eee25b4a50ac9ffb9b58035a2794533db47e0512f53fb2d7b6f9adc
