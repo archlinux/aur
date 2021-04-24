@@ -60,7 +60,7 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-cacule-uksm-cjktty
-pkgver=5.11.15
+pkgver=5.11.16
 _major=5.11
 _branch=5.x
 xanmod=1
@@ -95,13 +95,13 @@ for _patch in $_commits; do
 done
 
 sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'
-            'b8bc4f6312bdc086c0fecd1cce1ab1ee12b7b4eff63f88239a65461d9ec5e91b'
             'SKIP'
+            '058152214727c204b2284f716991a015c4dcb563ebfc8d907cd8cdf7749fdf79'
             'e840e41f0f91108f63fd6e085c93b02daa78729268bc31be7be7fb355203e38a'
             '74339b8ad0ad99f08606c5de0dd3c38f502e29e5c6a78d6efbe656662edb8d73'
             'f00a84fd382d63cd0d47d6fd8ef6c8608b1c83ff9d6dbdd32cb985898afbbf58'
             '7d8375f80012443a6d507eaaa913a6c8e4d8b7789b2523cceef9c5214a7650c5'
-            'd1278ce5e576b6aec5228152b97fde119c5cd2f4abd8b624403ad6fa64b6f79a')
+            '2264a33da476a51a844d09fa3bb13a41e8cf9f924258caffddf62a5a3857bba9')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
