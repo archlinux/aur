@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/nihui/dain-ncnn-vulkan"
 license=('MIT')
 depends=('vulkan-icd-loader' 'libwebp')
-makedepends=('git' 'cmake' 'glslang' 'vulkan-headers' 'vulkan-icd-loader' 'ncnn-git' 'libwebp')
+makedepends=('git' 'cmake' 'glslang-git' 'vulkan-headers' 'vulkan-icd-loader' 'ncnn' 'libwebp')
 provides=("dain-ncnn-vulkan")
 conflicts=("dain-ncnn-vulkan" "dain-ncnn-vulkan-bin")
 source=('git+https://github.com/nihui/dain-ncnn-vulkan.git')
@@ -18,9 +18,11 @@ pkgver() {
     git -C ${pkgname%-git} describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
- prepare() {
- 	sed -i 's|path_t model = PATHSTR("best")|path_t model = PATHSTR("/usr/share/dain-ncnn-vulkan/best/")|' "${pkgname%-git}"/src/main.cpp
- }
+prepare() {
+    sed -i 's|path_t model = PATHSTR("best")|path_t model = PATHSTR("/usr/share/dain-ncnn-vulkan/best/")|' "${pkgname%-git}"/src/main.cpp
+
+    sed -i 's|return get_executable_directory() + path;|return "/usr/share/dain-ncnn-vulkan/" + path;|' "${pkgname%-git}"/src/filesystem_utils.h
+}
 
 build() {
     cmake -B build -S "${pkgname%-git}"/src \
@@ -34,7 +36,7 @@ build() {
 package() {
     install -Dm755 -t "${pkgdir}/usr/bin" build/${pkgname%-git}
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ${pkgname%-git}/LICENSE
-	
+
     cd "${srcdir}/${pkgname%-git}/models/"
     for f in best/*; do
         install -Dm 644 "$f" ${pkgdir}/usr/share/${pkgname%-git}/"$f"
