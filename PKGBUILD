@@ -12,13 +12,16 @@ license=("custom")
 source=(
 	"https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb"
 	"https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-common-${pkgver}-${pkgver}-${_debpkgrel}_all.deb"
+	"${pkgname}.install"
 )
 noextract=(
 	"${pkgname}-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb"
 	"${pkgname}-common-${pkgver}-${pkgver}-${_debpkgrel}_all.deb"
 )
-sha256sums=('9fd08227fda9d5f46e0629c6cbd228793acf758d42bbb92556c546d7e873fc38'
-            '230f0acbbf2280c12e7104d3fdac420bd98d8adbc7991b2841f5a0e810bdd157')
+sha256sums=('aaec45cb7240bcf5626728d5b59afb121a10ea4db46707bf38b061caa5161ef3'
+            '54760ad7e180c4a2ba13b8a695f9e657be586ecd58c5cceb60c831bcafc7cba6'
+            '4694beda4c61ef2a8df66bcb786ea9decdebb301d4f4984fcc18861c105d80eb')
+install="${pkgname}.install"
 
 build() {
 	ar x ${pkgname}-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb
@@ -27,9 +30,10 @@ build() {
 	ar x ${pkgname}-common-${pkgver}-${pkgver}-${_debpkgrel}_all.deb
 	tar xvf data.tar.xz
 
+	rm -r opt/intel/oneapi/conda_channel
 }
 
 package() {
-	depends=('intel-oneapi-condaindex' 'intel-oneapi-common-vars' 'intel-oneapi-common-licensing')
+	depends=('intel-oneapi-common-vars' 'intel-oneapi-common-licensing')
 	mv ${srcdir}/opt ${pkgdir}
 }
