@@ -8,7 +8,7 @@ pkgname=('pipewire-git'
          'pipewire-media-session-git'
          'alsa-card-profiles-git'
          )
-pkgver=0.3.23.74.ge2ac16cc
+pkgver=0.3.26.13.g962d3b91
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -67,6 +67,8 @@ build() {
     -D gstreamer=disabled \
     -D gstreamer-device-provider=disabled \
     -D ffmpeg=enabled \
+    -D jack-devel=enabled \
+    -D libjack-path=/usr/lib
 
   ninja
 }
@@ -131,7 +133,8 @@ package_pipewire-git() {
   _pick pms usr/lib/systemd/user/pipewire-media-session.service
 
   _pick jack etc/pipewire/{jack.conf,media-session.d/with-jack}
-  _pick jack usr/bin/pw-jack usr/lib/pipewire-${pkgver:0:3}/jack
+  _pick jack usr/bin/pw-jack usr/lib/libjack* usr/lib/pkgconfig/jack.pc
+  _pick jack usr/include/jack
   _pick jack usr/share/man/man1/pw-jack.1
 
   _pick pulse etc/pipewire/media-session.d/with-pulseaudio
@@ -155,8 +158,14 @@ package_pipewire-jack-git() {
            "libpipewire-${pkgver:0:3}.so"
            )
   backup=('etc/pipewire/jack.conf')
-  provides=('pipewire-jack')
-  conflicts=('pipewire-jack')
+  provides=('pipewire-jack'
+            'jack'
+            'libjack.so'
+            'libjackserver.so'
+            )
+  conflicts=('pipewire-jack'
+            'jack'
+            )
 
   mv jack/* "${pkgdir}"
 }

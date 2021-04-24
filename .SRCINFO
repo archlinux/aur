@@ -1,6 +1,6 @@
 pkgbase = pipewire-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version)
-	pkgver = 0.3.23.74.ge2ac16cc
+	pkgver = 0.3.26.13.g962d3b91
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -73,7 +73,11 @@ pkgname = pipewire-jack-git
 	depends = pipewire-media-session
 	depends = libpipewire-0.3.so
 	provides = pipewire-jack
+	provides = jack
+	provides = libjack.so
+	provides = libjackserver.so
 	conflicts = pipewire-jack
+	conflicts = jack
 	backup = etc/pipewire/jack.conf
 
 pkgname = pipewire-alsa-git
