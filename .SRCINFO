@@ -1,0 +1,23 @@
+pkgbase = rife-ncnn-vulkan-git
+	pkgdesc = RIFE, Real-Time Intermediate Flow Estimation for Video Frame Interpolation implemented with ncnn library.
+	pkgver = 20210227.r0.g6e0d8b2
+	pkgrel = 1
+	url = https://github.com/nihui/rife-ncnn-vulkan
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = glslang-git
+	makedepends = vulkan-headers
+	makedepends = ncnn
+	depends = vulkan-icd-loader
+	depends = libwebp
+	provides = rife-ncnn-vulkan
+	conflicts = rife-ncnn-vulkan
+	conflicts = rife-ncnn-vulkan-bin
+	source = git+https://github.com/nihui/rife-ncnn-vulkan.git
+	md5sums = SKIP
+
+pkgname = rife-ncnn-vulkan-git
+
