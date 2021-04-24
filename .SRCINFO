@@ -1,6 +1,6 @@
 pkgbase = vulkan-caps-viewer
 	pkgdesc = Vulkan Hardware Capability Viewer
-	pkgver = 3.0
+	pkgver = 3.01
 	pkgrel = 1
 	url = http://vulkan.gpuinfo.org/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = vulkan-caps-viewer
 	depends = qt5-base
 	optdepends = qt5-x11extras
 	optdepends = qt5-wayland
-	source = https://github.com/SaschaWillems/VulkanCapsViewer#tag=3.0
+	source = https://github.com/SaschaWillems/VulkanCapsViewer#tag=3.01
 	source = https://github.com/KhronosGroup/Vulkan-Headers
 	sha1sums = SKIP
 	sha1sums = SKIP
