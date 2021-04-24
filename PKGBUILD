@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=xplr-bin
-pkgver=0.5.6
+pkgver=0.5.7
 pkgrel=1
 pkgdesc="A hackable, minimal, fast TUI file explorer"
 arch=('x86_64')
@@ -16,10 +16,10 @@ source_x86_64=("$pkgname-$pkgver.tar.gz::${url}/releases/download/v${pkgver}/${p
                "$pkgname-$pkgver-README.md::$url/raw/v$pkgver/README.md"
                "$pkgname-$pkgver-config.yml::$url/raw/v$pkgver/src/config.yml"
                "$pkgname-$pkgver.desktop::$url/raw/v$pkgver/${pkgname%-bin}.desktop")
-sha512sums_x86_64=('7b17de0c661154a03708eb3d18f26de2a895714306b946874cd513a1a0600f8353e84dd54062696cc2923525447a4d6a06c50274c87051a69fcff5198f13a752'
+sha512sums_x86_64=('e6743ca437541a4b3eeb9296a8540c46ebfd6ceb50dab2c41b6683de63f1373d159dddce36a760e88ee400b56519ed0832011aa42128da8cc74ea201eb597f3c'
                    '10d441de2060f413df1fd70ce44816a46eedaca9f3a672b38d2fabd99398158a115fafe137cbc5c1ba60791c89086946d978889f6d708f95aa5cb81f57d1143e'
-                   'dbd7c22663bb4238e468b2e88dd7f0c25318f62ff809649a0211c687a12bcd0c03a7b7957954710945afe59e04f00d7c8f7891d3a58a0916cf88a990a902e945'
-                   '0c94d9ce7e56ce5a115ae280837fb79939ba062bf38ef47731e2e2efc2bbddae9a0f008d765f1c20903b42cbed9658d54a1b68617160d0613e95789f85f84e71'
+                   '38109752ad73d3eb0333de899a28b58bba70e54f9a1a83416597f379a0fe9376019a93feff8332fd3af35d7596079fb63ceff1e665bcbf03cca21f396cb99989'
+                   '8841eb81f8abf0f2d71f62288bd9a50dfb5034ac5f5e42920c1517841f64f99693604e34ddd379ff351fccb22e05faf7262b43d86033e4f7f014c9be172221e2'
                    'a05e0cc83fdce3132a05928ab455f6ec8060ef81f6032270575d79188573c9af62863872a008c1b7b0ad7c9fdf1ce1dcf914c82224e275463f9b7bd4c3992a9a')
 
 package() {
