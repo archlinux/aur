@@ -2,8 +2,8 @@
 # Contributor: TZ86
 
 pkgname=vivaldi-snapshot
-_rpmversion=3.8.2259.16-1
-pkgver=3.8.2259.16
+_rpmversion=3.8.2259.21-1
+pkgver=3.8.2259.21
 pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind. Snapshot'
 url="https://vivaldi.com"
@@ -18,7 +18,7 @@ optdepends=(
 )
 source=("https://downloads.vivaldi.com/snapshot/vivaldi-snapshot-${_rpmversion}.x86_64.rpm"
         "eula.txt")
-sha512sums=('77c37e7f78c6f0dc48380e1ecdb6165d790e0d7d68613fa15038033ab7185e1f45559aeef41ccf858dd9388c4f63a8b734eab7dff27065a391659ad15a28ede2'
+sha512sums=('602283985c8ca4310f74fb8d940d108613b2bfb0f3d16af087bc0bd8ffb3a55e9f3a6df98b5514eaecc30606fba31dfa8efd45ac16f132e89f99a0df49ea3227'
             '7cbfc3258a92ee05eeb67c5b65a92aab27f34146fd097007de5eb8e2703610c03bfa52f7ee1d6055735f927b4dcc919a79b7caf6fb5a5a9596cac11cc083e874')
 
 package() {
