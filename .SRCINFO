@@ -1,0 +1,16 @@
+pkgbase = python2-backports.shutil_get_terminal_size
+	pkgdesc = The get_terminal_size() function from Python 3.3
+	pkgver = 1.0.0
+	pkgrel = 4
+	url = https://pypi.python.org/pypi/backports.ssl_match_hostname
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2-backports
+	source = https://github.com/chrippa/backports.shutil_get_terminal_size/archive/v1.0.0.tar.gz
+	source = fix-fallback.patch::https://github.com/chrippa/backports.shutil_get_terminal_size/commit/afc5714b.patch
+	md5sums = 82499a36a98dd7ed37c8678e6002a375
+	md5sums = 071e696dba553fd4fcee24b1dfb8ef3a
+
+pkgname = python2-backports.shutil_get_terminal_size
+
