@@ -8,6 +8,7 @@ pkgbase = keysmith
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = frameworkintegration
+	makedepends = gcc
 	makedepends = kirigami2
 	makedepends = libsodium
 	makedepends = qt5-base
