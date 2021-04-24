@@ -1,7 +1,7 @@
 pkgbase = intel-oneapi-compiler-shared
 	pkgdesc = Intel(R) Compiler Shared Files
 	pkgver = 2021.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
 	install = intel-oneapi-compiler-shared.install
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = intel-oneapi-compiler-shared
 	sha256sums = 248c0d1736ba22647a3d194ba9f3ab56e9f5fb8aa6b6e4294744be552503371f
 	sha256sums = c3f9221c674cfd40087382cb801e95587c2d6f551c1a0ded945a43ef27ebc4dd
 	sha256sums = 2f190d34f79b5518f3769d8cfb9bd46a55f68bd8a10099ace5e9018339e96042
-	sha256sums = acca503fb1b60245cf482f8a4d3246cdf8d99d70673b34dd20c3445ba24cedad
+	sha256sums = 281bd45641b4b00eb4feffc7b47ea9371a6e584a9c12213bd9b6c71389a4bba6
 
 pkgname = intel-oneapi-compiler-shared
 	depends = intel-oneapi-dpcpp-debugger

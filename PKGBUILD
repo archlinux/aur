@@ -4,7 +4,7 @@
 pkgname=intel-oneapi-compiler-shared
 pkgver=2021.2.0
 _debpkgrel=610
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel(R) Compiler Shared Files"
 arch=('x86_64')
 url='https://software.intel.com/content/www/us/en/develop/tools/oneapi.html'
@@ -26,7 +26,7 @@ sha256sums=('a491103d6a6e954bb02cbbcd7a90f0e68f968fda9a807a45167864e1d90588aa'
             '248c0d1736ba22647a3d194ba9f3ab56e9f5fb8aa6b6e4294744be552503371f'
             'c3f9221c674cfd40087382cb801e95587c2d6f551c1a0ded945a43ef27ebc4dd'
             '2f190d34f79b5518f3769d8cfb9bd46a55f68bd8a10099ace5e9018339e96042'
-            'acca503fb1b60245cf482f8a4d3246cdf8d99d70673b34dd20c3445ba24cedad')
+            '281bd45641b4b00eb4feffc7b47ea9371a6e584a9c12213bd9b6c71389a4bba6')
 install="${pkgname}.install"
 
 build() {
