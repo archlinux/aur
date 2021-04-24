@@ -73,7 +73,7 @@ _srcname=linux-${_major}
 
 pkgbase=linux-mini
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux kernel and modules with minimal configuration'
 
 url="https://www.kernel.org/"
@@ -254,7 +254,6 @@ prepare() {
 build() {
   cd $_srcname
   make -j$(nproc) all
-  make htmldocs
 }
 
 _package() {
