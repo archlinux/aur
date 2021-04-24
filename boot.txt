@@ -1,6 +1,6 @@
 # After modifying, run ./mkscr
 
-setenv fdtfile rk3288-tinker.dtb
+setenv fdtfile rk3288-tinker-s.dtb
 setenv bootargs earlyprintk root=/dev/%ROOTDEV% rw rootwait console=ttyS2,115200n8 console=tty1 panic=10 consoleblank=0 loglevel=3 quiet
 
 if load ${devtype} ${devnum} ${kernel_addr_r} ${prefix}zImage; then

@@ -15,7 +15,7 @@ pkgbase = uboot-tinkerboard
 	source = boot.txt
 	source = https://apt.armbian.com/pool/main/l/linux-u-boot-tinkerboard-current/linux-u-boot-current-tinkerboard_21.02.3_armhf.deb
 	sha512sums = 7046ab4d88efbba636be049be2f660e18c05e48d161d39437c1580b12795ba4d9197ad57ac4572398f80a38d4777507b57228abf4cc41f0081d196ece27ea9d0
-	sha512sums = 5a5c4bf4fdabc30644a79844064eb77ff570ceb560a53cc919c1b57ca9511f980ca1d7207acae1aea6e965ded9d853177b5e8047b45c56ed73a5e982d23ccd0f
+	sha512sums = 5a01ef3a48a336812bec623d8e93ca5e760e50db3fef2b64b92cc4b357aa754def0c4d1fa8071cad88e396fdc65371fc6b13ba2182342887f976051038e515b8
 	sha512sums = SKIP
 
 pkgname = uboot-tinkerboard
