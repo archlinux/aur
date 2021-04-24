@@ -1,7 +1,7 @@
 # Maintainer: Franck Stauffer <franck.stauffer@monaco.mc>
 
 pkgname='firefox-extension-privacy-redirect'
-pkgver=1.1.46
+pkgver=1.1.47
 pkgrel=1
 pkgdesc="Redirect Youtube, Twitter, Instagram, ... to privacy friendly alternatives"
 license=('GPL3')
@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/SimonBrazell/privacy-redirect"
 makedepends=('npm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SimonBrazell/privacy-redirect/archive/v$pkgver.tar.gz")
-b2sums=('2b5f14a8657513493a456f2db63f1167e8cc5016e9c7f3e9034166c3a9ed5844abf93c3f98ba5921bc0629e004ebd84505ee33f1eb94dbbfc5f4d48a5b475ca0')
+b2sums=('293bcfb3aec279fd79e248bf26f95c1e2ccf34ada54fbc9f464dc345e67d410f11fd1b332dfdbdc79b290df252d36f1532580f52bef924d6cae2ed9a031ff501')
 
 prepare() {
   cd "privacy-redirect-$pkgver"
