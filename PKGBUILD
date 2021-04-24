@@ -2,15 +2,15 @@
 _pkgname=dab-cmdline
 pkgname=libdab-git
 pkgver=r333.d996709
-pkgrel=1
+pkgrel=2
 pkgdesc="DAB decoding library"
 arch=(x86_64)
 url="https://github.com/JvanKatwijk/dab-cmdline"
 license=('GPL')
 depends=('fftw' 'faad2')
 makedepends=('cmake' 'git')
-provides=("$_pkgname" 'libdab_lib.so')
-conflicts=("$_pkgname")
+provides=("${pkgname%-git}" 'libdab_lib.so')
+conflicts=("${pkgname%-git}")
 source=("git+$url.git")
 sha256sums=('SKIP')
 
