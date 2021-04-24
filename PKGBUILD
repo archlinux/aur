@@ -1,12 +1,13 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=stylelint-config-recommended
-pkgver=4.0.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc='Recommended shareable config for stylelint'
 arch=('any')
 url=https://github.com/stylelint/stylelint-config-recommended
 license=('MIT')
+depends=('stylelint')
 makedepends=('git' 'npm')
 source=("git+$url.git")
 b2sums=('SKIP')
@@ -24,7 +25,7 @@ check() {
 package() {
   cd $pkgname
   install -Dm644 -t "$pkgdir"/usr/lib/node_modules/$pkgname index.js
-  install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname CHANGELOG.md README.md
+  install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname {CHANGELOG,README}.md
   install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
 }
 
