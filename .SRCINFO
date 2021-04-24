@@ -1,0 +1,12 @@
+pkgbase = intel-oneapi-condaindex
+	pkgdesc = oneAPI Common Install components
+	pkgver = 2021.2.0
+	pkgrel = 1
+	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
+	arch = x86_64
+	license = custom
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-condaindex-2021.2.0-94_amd64.deb
+	sha256sums = 6ef412eef9e4b6e4919e4edea97d05ddd68b2830b5ff08ae0534346490d5ee5d
+
+pkgname = intel-oneapi-condaindex
+
