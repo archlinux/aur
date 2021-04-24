@@ -1,14 +1,15 @@
 # Maintainer: Andrej Radović <r.andrej@gmail.com>
 
 pkgname=ptags-git
-pkgver=r135.82ad409
+pkgver=r212.cb74f53
 pkgrel=1
 pkgdesc='A parallel universal-ctags wrapper for git repository.'
 arch=('i686' 'x86_64')
 url='https://github.com/dalance/ptags'
 license=('MIT')
 makedepends=('git' 'cargo')
-depends=('git' 'ctags' 'git-lfs')
+depends=('git' 'ctags')
+optdepends=('git-lfs: git-lfs indexing')
 provides=('ptags')
 conflicts=('ptags')
 source=("$pkgname"::'git+https://github.com/dalance/ptags.git')
