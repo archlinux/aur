@@ -1,4 +1,4 @@
-# Maintainer: Hunter Peavey < vrywjvgviuotxeioqipx at disroot dot org >
+# Maintainer: Hunter Peavey < printf "dev@die.bots" | sed "s/die.bots/krathalan.net/g" >
 
 # General package information
 pkgname=hashboot
