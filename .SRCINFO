@@ -1,7 +1,7 @@
 pkgbase = firedragon
 	pkgdesc = Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE
 	pkgver = 88.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://gitlab.com/dr460nf1r3/settings/
 	install = firedragon.install
 	arch = x86_64
@@ -54,7 +54,7 @@ pkgbase = firedragon
 	depends = graphite
 	depends = dav1d
 	depends = kfiredragonhelper
-	optdepends = firejail: Sandboxing the browser using the included profiles
+	optdepends = firejail-git: Sandboxing the browser using the included profiles
 	optdepends = profile-sync-daemon: Load the browser profile into RAM
 	optdepends = whoogle: Searching the web using a locally running Whoogle instance
 	optdepends = searx: Searching the web using a locally running searX instance
