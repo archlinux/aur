@@ -1,6 +1,5 @@
-pkg/**
-src/**
-**.pkg.tar
-**.tgz
-**.tar.gz
-dive*
+pkg/
+src/
+*.tar
+*.tgz
+*.[gx]z
