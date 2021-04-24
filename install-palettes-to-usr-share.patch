@@ -1,0 +1,11 @@
+--- CMakeLists.txt	2021-03-25 11:48:00.833349729 +0000
++++ CMakeLists.txt	2021-04-24 13:31:43.034279151 +0100
+@@ -77,7 +77,7 @@
+ 
+     if (TARGET aptdec)
+         install(TARGETS aptdec DESTINATION "bin/")
+-        install(DIRECTORY "${PROJECT_SOURCE_DIR}/palettes/" DESTINATION "palettes/")
++        install(DIRECTORY "${PROJECT_SOURCE_DIR}/palettes/" DESTINATION "share/aptdec/palettes/")
+     endif()
+ 
+     install(TARGETS apt LIBRARY DESTINATION lib)
