@@ -2,7 +2,7 @@
 
 pkgname=rife-ncnn-vulkan
 pkgver=20210227
-pkgrel=1
+pkgrel=2
 pkgdesc="RIFE, Real-Time Intermediate Flow Estimation for Video Frame Interpolation implemented with ncnn library."
 arch=('x86_64')
 url="https://github.com/nihui/rife-ncnn-vulkan"
@@ -15,7 +15,7 @@ source=("https://github.com/nihui/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
 sha256sums=('0328e4b2cef04b8791071eb0b232f183c1175f130b04bbaf48a8f6651b0d4de8')
 
 prepare() {
-    sed -i 's|path_t model = PATHSTR("best")|path_t model = PATHSTR("/usr/share/rife-ncnn-vulkan/best/")|' "${pkgname}-${pkgver}"/src/main.cpp
+    sed -i 's|path_t model = PATHSTR("rife-HD")|path_t model = PATHSTR("/usr/share/rife-ncnn-vulkan/rife-HD")|' "${pkgname}-${pkgver}"/src/main.cpp
 
     sed -i 's|return get_executable_directory() + path;|return "/usr/share/rife-ncnn-vulkan/" + path;|' "${pkgname}-${pkgver}"/src/filesystem_utils.h
 }
