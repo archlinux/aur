@@ -1,7 +1,7 @@
 pkgbase = woeusb-ng
 	pkgdesc = Simple tool that enable you to create your own usb stick with Windows installer.
-	pkgver = 0.2.7
-	pkgrel = 3
+	pkgver = 0.2.8
+	pkgrel = 2
 	url = https://github.com/WoeUSB/WoeUSB-ng
 	arch = any
 	license = GPL3

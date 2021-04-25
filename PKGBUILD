@@ -1,7 +1,7 @@
 # Maintainer: Jakub Szymański <jakubmateusz@poczta.onet.pl>
 pkgname=woeusb-ng
-pkgver=0.2.7
-pkgrel=3
+pkgver=0.2.8
+pkgrel=2
 pkgdesc="Simple tool that enable you to create your own usb stick with Windows installer."
 arch=('any')
 url="https://github.com/WoeUSB/WoeUSB-ng"
@@ -27,7 +27,7 @@ conflicts=(
     'woeusb-git'
 )
 source=(
-    "https://github.com/WoeUSB/WoeUSB-ng/archive/v$pkgver.tar.gz"
+    "https://github.com/WoeUSB/WoeUSB-ng/archive/v0.2.7.tar.gz"
     "com.github.woeusb.woeusb-ng.policy"
 )
 sha256sums=(
@@ -37,13 +37,13 @@ sha256sums=(
 
 
 build() {
-    cd WoeUSB-ng-$pkgver
+    cd WoeUSB-ng-0.2.7
 
     python setup.py build
 }
 
 package() {
-    cd WoeUSB-ng-$pkgver
+    cd WoeUSB-ng-0.2.7
 
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
