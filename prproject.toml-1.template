@@ -1,0 +1,16 @@
+makedepends+=("python-setuptools" "python-dephell")
+
+prepare() {
+  cd ${_gitname:-$pkgname}
+  dephell deps convert --from pyproject.toml --to setup.py
+}
+
+build() {
+  cd ${_gitname:-$pkgname}
+  python setup.py build
+}
+
+package() {
+  cd ${_gitname:-$pkgname}
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
