@@ -1,12 +1,13 @@
 pkgbase = wlsunset
 	pkgdesc = Day/night gamma adjustments for Wayland compositors
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sr.ht/~kennylevinsen/wlsunset
 	arch = x86_64
 	license = MIT
 	makedepends = meson
 	makedepends = wayland-protocols
+	makedepends = scdoc
 	depends = wayland
 	source = wlsunset-0.2.0.tar.gz::https://git.sr.ht/~kennylevinsen/wlsunset/archive/0.2.0.tar.gz
 	sha256sums = 88bce695722a09d79545f14d404cc0659f7176bb08d5db5f4f23228b6ba8bb03
