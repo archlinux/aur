@@ -1,7 +1,7 @@
 pkgbase = gdal-ecw
 	pkgdesc = A translator library for raster geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package.
-	pkgver = 3.0.4
-	pkgrel = 4
+	pkgver = 3.2.2
+	pkgrel = 1
 	url = http://www.gdal.org/
 	changelog = gdal-ecw.changelog
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = gdal-ecw
 	makedepends = swig
 	makedepends = chrpath
 	makedepends = doxygen
+	makedepends = python-breathe
 	makedepends = python-numpy
+	makedepends = python-sphinx
 	makedepends = boost
 	depends = curl
 	depends = geos
@@ -35,23 +37,19 @@ pkgbase = gdal-ecw
 	optdepends = mariadb: mariadb database support
 	optdepends = perl: perl binding support
 	optdepends = unixodbc: when present while building, will add odbc support
-	provides = gdal=3.0.4
+	provides = gdal=3.2.2
 	conflicts = gdal
 	options = !emptydirs
-	source = https://download.osgeo.org/gdal/3.0.4/gdal-3.0.4.tar.xz
-	source = poppler-20.08.0.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/poppler-20.08.0.patch?h=packages/gdal
+	source = https://download.osgeo.org/gdal/3.2.2/gdal-3.2.2.tar.xz
 	source = gdal-perl-vendor.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/gdal-perl-vendor.patch?h=packages/gdal
-	source = jpeg2000-issue-vendor.patch
-	sha256sums = 5569a4daa1abcbba47a9d535172fc335194d9214fdb96cd0f139bb57329ae277
-	sha256sums = dc8ccbc9a672a8489a1660fa66804d74c3015c47b44e2d41e17f8609249279df
+	sha256sums = a7e1e414e5c405af48982bf4724a3da64a05770254f2ce8affb5f58a7604ca57
 	sha256sums = 2103b98f2f15954f042d5620658b30d703125927bde2e5eb671c5facb6c2f5ed
-	sha256sums = e0e07aecffea83fd8b926d7e2c460b31c028826766f68947f96bf2d2ecb3bb7b
 
 pkgname = gdal-ecw
 
 pkgname = python-gdal-ecw
 	pkgdesc = Python bindings for GDAL, with support to ECW format
-	depends = gdal-ecw=3.0.4
+	depends = gdal-ecw=3.2.2
 	depends = python-numpy
 	optdepends = 
 	provides = python-gdal

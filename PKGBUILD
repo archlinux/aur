@@ -2,15 +2,18 @@
 # Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 # Contributor: William Rea <sillywilly@gmail.com>
 # Contributor: Luigi Ranghetti <ggranga@gmail.com>
-# Contributor: Oliver Kuster <olivervbk@gmail.com>
+# Contributor: Oliver Kuster <olivervbk (at) gmail>
+#
+# Original can be found at:
+# https://github.com/archlinux/svntogit-community/blob/packages/gdal/trunk/PKGBUILD
 
 pkgbase=gdal-ecw
 _pkgbase=gdal
-provides=('gdal=3.0.4')
+provides=('gdal=3.2.2')
 conflicts=('gdal')
 pkgname=('gdal-ecw' 'python-gdal-ecw')
-pkgver=3.0.4
-pkgrel=4
+pkgver=3.2.2
+pkgrel=1
 pkgdesc="A translator library for raster geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package."
 arch=('x86_64')
 url="http://www.gdal.org/"
@@ -20,7 +23,7 @@ depends=('curl' 'geos' 'giflib' 'hdf5' 'libgeotiff' 'libjpeg-turbo' 'libpng' 'li
 # needed for ecw support:
 'libecwj2' )
 
-makedepends=('perl' 'swig' 'chrpath' 'doxygen' 'python-numpy' 'boost')
+makedepends=('perl' 'swig' 'chrpath' 'doxygen' 'python-breathe' 'python-numpy' 'python-sphinx' 'boost')
 optdepends=('postgresql: postgresql database support'
             'mariadb: mariadb database support'
             'perl: perl binding support'
@@ -29,30 +32,20 @@ optdepends=('postgresql: postgresql database support'
 options=('!emptydirs')
 changelog=$pkgbase.changelog
 source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
-        poppler-20.08.0.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/poppler-20.08.0.patch?h=packages/gdal
         gdal-perl-vendor.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/gdal-perl-vendor.patch?h=packages/gdal
-        jpeg2000-issue-vendor.patch)
-sha256sums=('5569a4daa1abcbba47a9d535172fc335194d9214fdb96cd0f139bb57329ae277'
-            'dc8ccbc9a672a8489a1660fa66804d74c3015c47b44e2d41e17f8609249279df'
+)
+sha256sums=('a7e1e414e5c405af48982bf4724a3da64a05770254f2ce8affb5f58a7604ca57'
             '2103b98f2f15954f042d5620658b30d703125927bde2e5eb671c5facb6c2f5ed'
-            'e0e07aecffea83fd8b926d7e2c460b31c028826766f68947f96bf2d2ecb3bb7b'
 )
 
 prepare() {
   cd "${srcdir}"/$_pkgbase-$pkgver
 
-# Fix mandir
+  echo "Fixing mandir..."
   sed -i "s|^mandir=.*|mandir='\${prefix}/share/man'|" configure
 
-# Fix build with poppler 20.08.0
-  patch -Np2 -i "${srcdir}"/poppler-20.08.0.patch
-  
-# Fix Perl bindings installation path
+  echo "Fixing gdal-perl bindings..."
   patch -Np0 -i "${srcdir}"/gdal-perl-vendor.patch
-  
-# Fix compilation issues related to jpeg2000:
-# https://github.com/OSGeo/gdal/issues/2844
-  patch -Np2 -i "${srcdir}"/jpeg2000-issue-vendor.patch
 }
 
 build() {
