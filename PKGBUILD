@@ -1,4 +1,4 @@
-# Maintainer: Muflone http://url.muflone.com/contacts
+# Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=bluewho-git
 pkgver=0.3.0
