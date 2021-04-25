@@ -1,6 +1,6 @@
 pkgbase = mcpelauncher-thesonicmaster
 	pkgdesc = Minecraft Bedrock Edition Linux launcher with license error fixed.
-	pkgver = 20210422
+	pkgver = 20210425
 	pkgrel = 1
 	url = https://www.thesonicmaster.net/software/mcpelauncher-thesonicmaster
 	arch = i686
@@ -30,8 +30,8 @@ pkgbase = mcpelauncher-thesonicmaster
 	conflicts = mcpelauncher-msa-ui-qt-git
 	conflicts = mcpelauncher-linux-git
 	conflicts = mcpelauncher-ui-git
-	source = https://www.thesonicmaster.net/software/mcpelauncher-thesonicmaster/source/mcpelauncher-thesonicmaster-20210422.tar.xz
-	sha256sums = 2c900c599492c6aa640401e13f7fcf155302055b6b22337a62704eb58003e90c
+	source = https://www.thesonicmaster.net/software/mcpelauncher-thesonicmaster/source/mcpelauncher-thesonicmaster-20210425.tar.xz
+	sha256sums = ee95e9ebaaa5e981a4428862cbe6fe3775307500994e3163a4392dbbb2f5de86
 
 pkgname = mcpelauncher-thesonicmaster
 

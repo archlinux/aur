@@ -1,7 +1,7 @@
 # Maintainer: Daniel Massey <masseyd1396@gmail.com>
 
 pkgname=mcpelauncher-thesonicmaster
-pkgver=20210422
+pkgver=20210425
 pkgrel=1
 pkgdesc="Minecraft Bedrock Edition Linux launcher with license error fixed."
 arch=("i686" "x86_64")
@@ -11,7 +11,7 @@ depends=("curl" "libegl" "libevdev" "libpng" "libx11" "libxi" "libzip" "openssl"
 makedepends=("clang" "cmake" "ninja")
 conflicts=("mcpelauncher-msa-git" "mcpelauncher-msa-ui-qt-git" "mcpelauncher-linux-git" "mcpelauncher-ui-git")
 source=("https://www.thesonicmaster.net/software/mcpelauncher-thesonicmaster/source/$pkgname-$pkgver.tar.xz")
-sha256sums=("2c900c599492c6aa640401e13f7fcf155302055b6b22337a62704eb58003e90c")
+sha256sums=("ee95e9ebaaa5e981a4428862cbe6fe3775307500994e3163a4392dbbb2f5de86")
 
 build() {
 	cd $pkgname-$pkgver/msa
@@ -20,7 +20,7 @@ build() {
 	ninja
 	cd ../../mcpelauncher
 	mkdir -p build && cd build
-	CC=clang CXX=clang++ CFLAGS='-O3' CXXFLAGS='-O3' cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -Wno-dev -G Ninja ..
+	CC=clang CXX=clang++ CFLAGS='-O3' CXXFLAGS='-O3' cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DENABLE_QT_ERROR_UI=OFF -Wno-dev -G Ninja ..
 	ninja
 	cd ../../mcpelauncher-ui
 	mkdir -p build && cd build
