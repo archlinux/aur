@@ -1,7 +1,7 @@
 pkgbase = vimix-gtk-themes
 	pkgdesc = A flat Material Design theme for GTK 3, GTK 2, GNOME Shell, etc.
 	pkgver = 2021.04.25
-	pkgrel = 2
+	pkgrel = 1
 	url = https://vinceliuice.github.io/theme-vimix.html
 	arch = any
 	license = GPL3
