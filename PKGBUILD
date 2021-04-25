@@ -1,19 +1,44 @@
-# Maintainer: David Harrigan <dharrigan@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=joker
-pkgver=0.12.4
+pkgver=0.17.1
 pkgrel=1
-pkgdesc="Joker, a Clojure interpreter and linter written in Go - Precompiled binary from official repository"
+pkgdesc="A Clojure interpreter and linter written in Go"
 arch=('x86_64')
 url="https://github.com/candid82/joker"
 license=('EPL')
-provides=('joker')
-conflicts=('joker')
+depends=('glibc')
+makedepends=('go')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('58d86fbc77e8438a5149e87f07eef7c98f3692576c1bf38d1916026a4642ab7c')
 
-source=("https://github.com/candid82/joker/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux-amd64.zip")
+build() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-md5sums=('2bc3812c70e885eab8f8b0e9462fb6be')
+  cd "$pkgname-$pkgver"
+  go generate ./...
+  go vet ./...
+  go build
+}
+
+check() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+	cd "$pkgname-$pkgver"
+  go test
+}
 
 package() {
-  install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  cd "$pkgname-$pkgver"
+  install -Dvm 755 joker -t "$pkgdir/usr/bin/"
+  install -Dvm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dvm 644 README.md DEVELOPER.md LIBRARIES.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
