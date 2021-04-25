@@ -2,8 +2,8 @@
 # Contributor: mis
 # Contributor: oslik
 pkgname=solvespace
-pkgver=2.3
-pkgrel=3
+pkgver=3.0
+pkgrel=0
 pkgdesc="A parametric 3d CAD program"
 arch=('i686' 'x86_64')
 url='http://solvespace.com/'
@@ -15,15 +15,8 @@ sha256sums=('SKIP')
 
 prepare() {
     cd "${srcdir}/${pkgname}"
-
-    # Backport of https://github.com/solvespace/solvespace/commit/7c2417ab735cf05960939647a2a016fb51f88135
-    cd "src"
-    sed -i'' -e's/CHAR_WIDTH/CHAR_WIDTH_/g' ui.h textwin.cpp toolbar.cpp
-    cd ".."
-
-    mkdir -p build
-    cd "extlib"
-    git submodule update --init "libdxfrw"
+    git submodule update --init extlib/{libdxfrw,mimalloc}
+    mkdir build
 }
 
 build() {
@@ -31,7 +24,8 @@ build() {
     cmake .. \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=/usr/lib/${pkgname} \
-        -DCMAKE_BUILD_TYPE=Release
+        -DCMAKE_BUILD_TYPE=Release \
+        -DENABLE_OPENMP=ON
     make
 }
 
