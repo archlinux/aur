@@ -1,17 +1,19 @@
 pkgbase = kdiagram-git
-	pkgdesc = Powerful libraries (KChart, KGantt) for creating business diagrams. (GIT version)
-	pkgver = 2.6.1.r21.g47b29c2
+	pkgdesc = Powerful libraries for creating business diagrams
+	pkgver = 2.7.90_r297.gd5089ef
 	pkgrel = 1
-	url = http://quickgit.kde.org/?p=kdiagram.git
-	arch = i686
+	url = https://www.kde.org/
 	arch = x86_64
-	license = LGPL
+	license = GPL2
 	makedepends = git
-	makedepends = extra-cmake-modules
+	makedepends = extra-cmake-modules-git
+	makedepends = qt5-tools
+	makedepends = qt5-doc
+	makedepends = doxygen
 	depends = qt5-svg
 	provides = kdiagram
 	conflicts = kdiagram
-	source = git://anongit.kde.org/kdiagram.git
+	source = git+https://github.com/KDE/kdiagram.git
 	sha256sums = SKIP
 
 pkgname = kdiagram-git

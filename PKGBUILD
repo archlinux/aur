@@ -1,38 +1,33 @@
+# Merged with official ABS kdiagram PKGBUILD by João, 2021/02/13 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+
 pkgname=kdiagram-git
-pkgver=2.6.1.r21.g47b29c2
+pkgver=2.7.90_r297.gd5089ef
 pkgrel=1
-pkgdesc="Powerful libraries (KChart, KGantt) for creating business diagrams. (GIT version)"
-arch=('i686' 'x86_64')
-url='http://quickgit.kde.org/?p=kdiagram.git'
-license=('LGPL')
-depends=('qt5-svg')
-makedepends=('git'
-             'extra-cmake-modules'
-             )
-conflicts=('kdiagram')
-provides=('kdiagram')
-source=("git://anongit.kde.org/kdiagram.git")
+pkgdesc="Powerful libraries for creating business diagrams"
+arch=($CARCH)
+url="https://www.kde.org/"
+license=(GPL2)
+depends=(qt5-svg)
+makedepends=(git extra-cmake-modules-git qt5-tools qt5-doc doxygen)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd kdiagram
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _ver="$(git describe | sed 's/^v//;s/-.*//')"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../kdiagram \
-      -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DKDE_INSTALL_LIBDIR=lib \
-      -DBUILD_TESTING=OFF
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 }
