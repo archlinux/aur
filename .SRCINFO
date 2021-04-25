@@ -1,0 +1,18 @@
+pkgbase = hncviewer
+	pkgdesc = An official HWP viewer for Linux by Hancom
+	pkgver = 9.20.0.1573
+	pkgrel = 3
+	url = https://www.hancom.com/
+	arch = x86_64
+	license = custom:hwpviewer
+	depends = gtk3
+	depends = webkitgtk
+	depends = gvfs
+	depends = icu68
+	source = https://cdn.hancom.com/pds/hnc/VIE/hancomoffice-hwpviewer-Ubuntu-amd64.deb
+	source = LICENSE
+	sha512sums = ae8c1a8ed4ca2b09d24a7749c54f2a02ca6105814a82e389074a495e0b4022865c02aa6c6507f54d3283fa0d0a675a4578ea66b595bd47f83714a4e00be7802b
+	sha512sums = 3d26f57ebbeeb1d54d80b604a376c93a8df82cbab67a4a3eb18f2d3aed99611a40ca183859a16ceb51fe89d4b9823b232cb3100b80e0a9ff355b0fc43c813620
+
+pkgname = hncviewer
+
