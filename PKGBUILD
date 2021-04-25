@@ -24,8 +24,6 @@ package() {
     install -Dm644 -t "${pkgdir}/usr/share/licenses/$pkgname" "${srcdir}/LICENSE"
     install -Dm644 -t "${pkgdir}/usr/share/applications" "${srcdir}"/*.desktop
     bsdtar -xf hoffice11.zip -C "${pkgdir}/opt/hnc"
-    sudo mkdir /opt/hnc
-    sudo mkdir /opt/hnc/icons
-    sudo cp "${srcdir}"/*.png /opt/hnc/icons
+    install -Dm644 -t "${pkgdir}/opt/hnc/icons" "${srcdir}"/*.png
 
 }
