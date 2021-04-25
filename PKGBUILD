@@ -18,7 +18,7 @@ sha256sums=(
 )
 
 package() {
-    msg2 "The installation process will spit out meaningless errors. Please ignore them since it doesn't mean it is failing."
+    msg2 "Please ignore the errors. They don't mean anything."
     mkdir "${pkgdir}/opt"
     mkdir "${pkgdir}/opt/hnc"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/$pkgname" "${srcdir}/LICENSE"
