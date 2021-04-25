@@ -9,13 +9,13 @@ pkgdesc='Ledger Live - Desktop'
 license=('MIT')
 url='https://github.com/LedgerHQ/ledger-live-desktop'
 pkgver=2.25.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 package="ledger-live-desktop-${pkgver}-linux-${arch}.AppImage"
 depends=('ledger-udev')
 options=(!strip)
 provides=('ledger-live')
-conflicts=('ledger-live')
+conflicts=('ledger-live' 'ledger-live-git')
 source=(
   "${package}::${url}/releases/download/v${pkgver}/${package}"
   "LICENSE::https://raw.githubusercontent.com/LedgerHQ/ledger-live-desktop/v${pkgver}/LICENSE"
