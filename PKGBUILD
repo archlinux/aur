@@ -2,7 +2,7 @@
 # Contributor: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=mothur
-pkgver=1.45.1
+pkgver=1.45.2
 pkgrel=1
 pkgdesc='A bioinformatics program for analyzing microbial communities.'
 arch=('x86_64')
@@ -11,13 +11,14 @@ license=('GPL3')
 depends=('boost-libs')
 makedepends=('boost' 'hdf5')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('5e568f03cabb35adc53b053ee62ef8c4b3198b33bf6933144b9568aba38af6ff')
+sha256sums=('73fddddfeea140537b8b037da971964091b2149177e376d98d19ba8a2183e471')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
 
   sed -i '87d' source/mothur.h
   sed -i 's/skipUchime),/skipUchime), source\/,/g' Makefile
+  rm splitkmerdist.cpp splitkmerdist.hpp
 }
 
 build() {
