@@ -4,8 +4,8 @@ pkgbase="python-github3.py"
 pkgname=("python-github3.py" "python2-github3.py")
 
 _commit="e586949a4dbed22f169afaffe25cb07e5a60a606"
-pkgver="1.3.0"
-pkgrel="1"
+pkgver="2.0.0"
+pkgrel=1
 
 pkgdesc="A comprehensive wrapper around the GitHub API (v3)"
 arch=("any")
