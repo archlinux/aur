@@ -1,7 +1,7 @@
 pkgbase = ruby-sigdump
 	pkgdesc = Show stacktrace of Ruby processes without restarting it
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/frsyuki/sigdump
 	arch = x86_64
 	license = MIT

@@ -3,7 +3,7 @@
 _gemname=sigdump
 pkgname=ruby-$_gemname
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Show stacktrace of Ruby processes without restarting it'
 arch=(x86_64)
 url='https://github.com/frsyuki/sigdump'
