@@ -1,5 +1,5 @@
 pkgbase = hncviewer
-	pkgdesc = An official HWP viewer for Linux by Hancom. PKGBUILD made by Jhyub and all rights reserved for that user.Dependency issues fixed from original package.
+	pkgdesc = An official HWP viewer for Linux by Hancom. PKGBUILD made by Jhyub and all rights reserved for that user. Dependency issues fixed from original package.
 	pkgver = 9.20.0.1573
 	pkgrel = 3
 	url = https://www.hancom.com/
