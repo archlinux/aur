@@ -1,7 +1,7 @@
 pkgbase = code-transparent
 	pkgdesc = The Open Source build of Visual Studio Code (vscode) editor - with transparency enabled.
-	pkgver = 1.54.3
-	pkgrel = 3
+	pkgver = 1.55.2
+	pkgrel = 1
 	url = https://github.com/microsoft/vscode
 	install = code-transparent.install
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = code-transparent
 	provides = code
 	provides = vscode
 	conflicts = code
-	source = code::git+https://github.com/microsoft/vscode.git#tag=1.54.3
+	source = code::git+https://github.com/microsoft/vscode.git#tag=1.55.2
 	source = code.js
 	source = code.sh
 	source = product_json.diff

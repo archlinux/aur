@@ -14,8 +14,8 @@ pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - with tran
 #   - erbium: 12
 # Important: Remember to check https://github.com/microsoft/vscode/blob/master/.yarnrc (choose correct tag) for target electron version
 _electron=electron11
-pkgver=1.54.3
-pkgrel=3
+pkgver=1.55.2
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/microsoft/vscode'
 license=('MIT')
