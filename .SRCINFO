@@ -12,6 +12,7 @@ pkgbase = chatterino2-git
 	makedepends = cmake
 	depends = qt5-multimedia
 	depends = qt5-base
+	depends = qt5-tools
 	depends = boost-libs
 	depends = openssl
 	optdepends = streamlink: For piping streams to video players
