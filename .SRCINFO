@@ -1,0 +1,21 @@
+pkgbase = ledger-live-git
+	pkgdesc = Ledger Live - Desktop
+	pkgver = 2.26.0.r1.g9e3055bd0
+	pkgrel = 1
+	url = https://github.com/LedgerHQ/ledger-live-desktop
+	arch = x86_64
+	license = MIT
+	makedepends = yarn
+	makedepends = python
+	makedepends = nodejs>=12
+	depends = ledger-udev
+	provides = ledger-live
+	conflicts = ledger-live-bin
+	conflicts = ledger-live
+	source = ledger-live-git::git+https://github.com/LedgerHQ/ledger-live-desktop#branch=master
+	source = ledger-live-desktop.desktop
+	sha512sums = SKIP
+	sha512sums = 01bee3b5a90d9a87bb8b1f8edd8fa5851b39db7f9374d0e31114301876fafbc9226b120f114b66a3158a4e98eb514569f34cd0d4f1212062a55d0c8d0e698dda
+
+pkgname = ledger-live-git
+
