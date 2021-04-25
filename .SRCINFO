@@ -1,16 +1,16 @@
 pkgbase = python-versioneer
 	pkgdesc = Easy VCS-based management of project version strings
-	pkgver = 0.18
+	pkgver = 0.19
 	pkgrel = 1
-	url = https://github.com/warner/python-versioneer
+	url = https://github.com/python-versioneer/python-versioneer
 	arch = any
 	license = custom:Public Domain
 	makedepends = python-pip
 	depends = python-setuptools
 	optdepends = python-cx_freeze: Executable generation support
-	noextract = versioneer-0.18-py2.py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py2.py3/v/versioneer/versioneer-0.18-py2.py3-none-any.whl
-	sha256sums = 08e395c0acc544f78645b9c0ebfccaf47950ae61e0c85bd1aaea98ff59609aeb
+	noextract = versioneer-0.19-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/v/versioneer/versioneer-0.19-py3-none-any.whl
+	sha256sums = 691e0ded8da37494f27197ccc1fb8a0bba370632dba820c09c240bc410161435
 
 pkgname = python-versioneer
 

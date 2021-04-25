@@ -2,18 +2,18 @@
 
 _pyname=versioneer
 pkgname=python-$_pyname
-pkgver=0.18
+pkgver=0.19
 pkgrel=1
 pkgdesc='Easy VCS-based management of project version strings'
-url="https://github.com/warner/$pkgname"
+url="https://github.com/$pkgname/$pkgname"
 depends=(python-setuptools)
 optdepends=('python-cx_freeze: Executable generation support')
 makedepends=(python-pip)
 license=('custom:Public Domain')
 arch=(any)
-_wheel="$_pyname-$pkgver-py2.py3-none-any.whl"
-source=("https://files.pythonhosted.org/packages/py2.py3/${_pyname::1}/$_pyname/$_wheel")
-sha256sums=('08e395c0acc544f78645b9c0ebfccaf47950ae61e0c85bd1aaea98ff59609aeb')
+_wheel="$_pyname-$pkgver-py3-none-any.whl"
+source=("https://files.pythonhosted.org/packages/py3/${_pyname::1}/$_pyname/$_wheel")
+sha256sums=('691e0ded8da37494f27197ccc1fb8a0bba370632dba820c09c240bc410161435')
 noextract=("$_wheel")
 
 package() {
