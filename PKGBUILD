@@ -3,7 +3,7 @@
 pkgbase=vim-nord-git
 pkgname=('vim-nord-git' 'vim-airline-nord-git' 'vim-lightline-nord-git')
 pkgver=0.7.0.r94.gea7ff9c
-pkgrel=1
+pkgrel=2
 pkgdesc="An arctic, north-bluish clean and elegant Vim theme."
 arch=('any')
 url="https://github.com/arcticicestudio/nord-vim"
@@ -20,6 +20,8 @@ pkgver() {
 
 package_vim-nord-git() {
   depends=('vim-plugin-runtime')
+  optdepends=('vim-airline-nord: Airline theme'
+              'vim-lightline-nord: Lightline theme')
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
 
@@ -30,6 +32,7 @@ package_vim-nord-git() {
 
 package_vim-airline-nord-git()  {
   depends=('vim-airline' 'vim-plugin-runtime')
+  optdepends=("${pkgbase%-git}: Base vim theme")
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
 
@@ -39,7 +42,8 @@ package_vim-airline-nord-git()  {
 }
 
 package_vim-lightline-nord-git()  {
-  depends=('vim-lightline' 'vim-plugin-runtime')
+  depends=('vim-lightline-git' 'vim-plugin-runtime')
+  optdepends=("${pkgbase%-git}: Base vim theme")
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
 
