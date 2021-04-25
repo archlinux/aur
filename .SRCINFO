@@ -1,7 +1,7 @@
 pkgbase = wraith-master
 	pkgdesc = A Wraith Prism RGB control application built with Kotlin/Native
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/serebit/wraith-master
 	arch = x86_64
 	license = Apache-2.0
@@ -10,7 +10,16 @@ pkgbase = wraith-master
 	source = wraith-master-v1.1.2::git+https://gitlab.com/serebit/wraith-master#tag=v1.1.2
 	sha256sums = SKIP
 
+pkgname = wraith-master-common
+	pkgdesc = Version information and udev rules for wraith-master frontends
+
 pkgname = wraith-master-cli
+	pkgdesc = Command-line application for controlling RGB on the Wraith Prism
+	depends = wraith-master-common
+	depends = libusb
 
 pkgname = wraith-master-gtk
+	pkgdesc = Native Linux GUI for controlling RGB on the Wraith Prism
+	depends = wraith-master-common
+	depends = libusb
 	depends = gtk3
