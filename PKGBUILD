@@ -7,6 +7,7 @@ arch=("any")
 url="https://github.com/eliostvs/tomate-gtk"
 license=("GPL")
 depends=("desktop-file-utils"
+         "gnome-icon-theme"
          "gtk-update-icon-cache"
          "gtk3"
          "hicolor-icon-theme"
