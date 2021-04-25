@@ -12,11 +12,10 @@ license=('custom:tresorit')
 depends=(bash libglvnd)
 makedepends=('xxd' 'sed')
 source=("tresorit_installer_${pkgver}.run::https://installerstorage.blob.core.windows.net/public/install/tresorit_installer.run"
-        "https://support.tresorit.com/hc/en-us/article_attachments/360013145193/check_signature.sh"
+        "https://support.tresorit.com/hc/article_attachments/360009964719/check_signature.sh"
         "tresorit.service")
-
-sha512sums=('5277dcabdb6e6a27d9ecc3e4d1f2dc2d99f6da6d010062197d7556c202a8a69f8d2919298388746a6e3914ddf15b518474ca7b76c424965e78ce40d1829f032c'
-            'ad5876d1477fd20ecbbd18ceeda41aa89f8faa08ea4ce5899e441942a1d777b34a5621181853730688bef0b9b7892ab1058b9ba0de2b22c3b72444b867827e65'
+sha512sums=('8eb7dee70cd5bd4e081058ae9a88627c37eb8b3a0ec35253d732da4575c39c2095e1094d2b590bf01a274f6319279ea0731ede0db545e08d71f6d820108f4d0b'
+            '22f884078f530b20bb91ef3edd8b70fced7ffdcce8904d46249a3d595e9f350f4afb237fc02ae51e383d1fe709362cade7ed4c0105770434fac0e725e7a1059f'
             '58aa3738fd17d5930ed76b9491a3ef0dd481b918f5329b56650e6d77078ad74caeea60c9cf83d524a483a9be7fc41aba2712400922d4ab3db775f1c2a1365765')
 
 prepare() {
