@@ -6,7 +6,7 @@
 
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2021.03.20.a.r8.g4e55f435c3b
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2021.04.24.a.r4.gc15dde42658
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
