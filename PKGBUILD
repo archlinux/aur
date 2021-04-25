@@ -1,13 +1,13 @@
 # Maintainer: leonekmi <usingarchbtw@leonekmi.fr>
 pkgname=karaokemugen-git
-pkgver=4.1.10.r1080.g414ec54e8
+pkgver=5.0.33.r1.g3c91037ef
 pkgrel=1
 pkgdesc="Karaoke playlist manager/player app used in parties or events."
-arch=('any')
+arch=('x86_64')
 url="https://mugen.karaokes.moe/"
 license=('MIT')
 groups=()
-depends=('mpv' 'ffmpeg' 'postgresql' 'electron') # Warning : to be replaced with electron11 when Electron 12 will be pushed to [community]
+depends=('mpv' 'ffmpeg' 'postgresql' 'electron11')
 makedepends=('git' 'npm' 'typescript' 'yarn' 'nodejs>=12' 'python2')
 optdepends=('sudo: for using karaokemugen-install script')
 provides=("${pkgname%-git}")
@@ -27,7 +27,7 @@ noextract=()
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
-         '412f93c38e0d79eb2d98cce3afd2a194'
+         'e505996fcb8200002be4df3021666d85'
          '0d0d432f35c56a962f9d386f391c6036'
          '5e9a33a42fef7572b7e0fa504c586f32'
          '10561eed906a5efeed427f90501b4f49')
@@ -57,16 +57,15 @@ build() {
     export XDG_CACHE_HOME="$srcdir/$pkgname-cache"
     export npm_config_devdir="$srcdir/$pkgname-npm-dev"
     export npm_config_cache="$srcdir/$pkgname-npm-cache"
-    yarn global add electron-builder
-    yarn install
+    yarn install --ignore-scripts --frozen-scripts
+    yarn add --dev electron-builder
     yarn installkmfrontend
     # Build and package with electron-builder
     export NODE_ENV='production'
-    electronDist=$(dirname $(realpath $(which electron)))
     electronVer=$(electron --version | tail -c +2)
     yarn build
     yarn buildkmfrontend
-    "$(yarn global dir)/node_modules/.bin/electron-builder" --linux --x64 -c.electronDist=$electronDist -c.electronVersion=$electronVer --dir
+    yarn electron-builder --linux --x64 -c.electronDist=/usr/lib/electron11 -c.electronVersion=$electronVer --dir
 }
 
 package() {
@@ -75,8 +74,6 @@ package() {
     # Application itself
     install -dm755 "$pkgdir/usr/lib/${pkgname%-git}"
     cp -dr --no-preserve=ownership packages/linux-unpacked/resources/* "$pkgdir/usr/lib/${pkgname%-git}/"
-    install -dm 755 "$pkgdir/usr/lib/${pkgname%-git}/asar"
-    mv "$pkgdir/usr/lib/${pkgname%-git}/app.asar" "$pkgdir/usr/lib/${pkgname%-git}/asar"
     chmod -R 755 "$pkgdir/usr/lib/${pkgname%-git}/"
 
     # License

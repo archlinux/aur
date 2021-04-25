@@ -53,6 +53,7 @@ setup_postgres() {
     sudo -u postgres -g postgres -H -- psql -c "CREATE DATABASE karaokemugen_app ENCODING 'UTF8';"
     sudo -u postgres -g postgres -H -- psql -c "CREATE USER karaokemugen_app WITH ENCRYPTED PASSWORD 'musubi'; GRANT ALL PRIVILEGES ON DATABASE karaokemugen_app TO karaokemugen_app;"
     sudo -u postgres -g postgres -H -- psql -d karaokemugen_app -c "CREATE EXTENSION unaccent;"
+    sudo -u postgres -g postgres -H -- psql -d karaokemugen_app -c "CREATE EXTENSION pgcrypto;"
     echo -e "${_COL_GREEN_}karaokemugen_app database created!"
 }
 
