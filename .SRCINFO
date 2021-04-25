@@ -1,7 +1,7 @@
 pkgbase = webkitgtk
 	pkgdesc = Legacy Web content engine for GTK+ 3
 	pkgver = 2.4.11
-	pkgrel = 23
+	pkgrel = 24
 	epoch = 3
 	url = https://webkitgtk.org/
 	install = webkitgtk.install
@@ -54,7 +54,7 @@ pkgbase = webkitgtk
 	sha256sums = d1a9ccc1ae5cb042bc47ae846ff84513ca7b9c7bc999c546ffba48572f0373a0
 	sha256sums = 7341eb4c229656046be6ac526f94b9f4a742a66178412caf22a988677f5bf9d9
 	sha256sums = 5a62fbd0df69c6951562e72cd7b3c58cae7f2807338ced7b4a1973440b3dd193
-	sha256sums = 453e826ad09cdceb12cad750e16cf6b9d43d8810eb1ea14bd291e5556a14d9df
+	sha256sums = db202fedd72a21318646c561afcd76656ea8ba6b1d641363fc7b69ae5687aa28
 
 pkgname = webkitgtk
 
