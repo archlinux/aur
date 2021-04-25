@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>net.nitroshare.NitroShare</id>
+  <launchable type="desktop-id">nitroshare.desktop</launchable>
+  <name>NitroShare</name>
+  <summary>Network File Transfer Application</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <developer_name>Nathan Osman</developer_name>
+  <description>
+    <p>NitroShare is designed to make transferring files from one device to another extremely simple.</p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://nitroshare.net/static/img/screenshot.png</image>
+    </screenshot>
+  </screenshots>
+  <url type="bugtracker">https://github.com/nitroshare/nitroshare-desktop/issues</url>
+  <url type="homepage">https://nitroshare.net/</url>
+  <update_contact>nathan@quickmediasolutions.com</update_contact>
+</component>
