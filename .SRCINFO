@@ -12,7 +12,7 @@ pkgbase = globalprotect-openconnect
 	source = GlobalProtect-openconnect-1.2.8.tar.gz::https://github.com/yuezk/GlobalProtect-openconnect/archive/v1.2.8.tar.gz
 	source = https://github.com/itay-grudev/SingleApplication/archive/v3.0.19.tar.gz
 	source = https://github.com/SergiusTheBest/plog/archive/1.1.5.tar.gz
-	sha256sums = b10a23f04681f14a71240272765882e56618bbf696b680e6aeebcdce7963aa24 -
+	sha256sums = b10a23f04681f14a71240272765882e56618bbf696b680e6aeebcdce7963aa24
 	sha256sums = 9405fd259288b2a862e91e5135bccee936f0438e1b32c13603277132309d15e0
 	sha256sums = 6c80b4701183d2415bec927e1f5ca9b1761b3b5c65d3e09fb29c743e016d5609
 
