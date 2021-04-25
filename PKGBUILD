@@ -1,34 +1,49 @@
-# Maintainer: reedts <j.reedts at gmail dot com>
-pkgname=vim-nord-git
-pkgver=r51.05d536f
+# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Contributor: reedts <j.reedts at gmail dot com>
+pkgbase=vim-nord-git
+pkgname=('vim-nord-git' 'vim-airline-nord-git' 'vim-lightline-nord-git')
+pkgver=0.7.0.r94.gea7ff9c
 pkgrel=1
-epoch=
-pkgdesc="A arctic, north-bluish clean and elegant Vim theme."
+pkgdesc="An arctic, north-bluish clean and elegant Vim theme."
 arch=('any')
 url="https://github.com/arcticicestudio/nord-vim"
-license=('Apache')
+license=('MIT')
 groups=('vim-plugins')
-depends=('vim')
 makedepends=('git')
-optdepends=()
-checkdepends=()
-conflicts=()
-provides=('vim-nord-git')
-replaces=()
-backup=()
-options=()
-changelog=
-source=("$pkgname::git+https://github.com/arcticicestudio/nord-vim.git")
-noextract=()
+source=("$pkgbase::git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$pkgbase"
+  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
-package() {
-  cd "$srcdir/$pkgname"
-  install -Dm644 colors/nord.vim $pkgdir/usr/share/vim/vimfiles/colors/nord.vim
+package_vim-nord-git() {
+  depends=('vim-plugin-runtime')
+  provides=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}")
+
+  cd "$pkgbase"
+  install -Dm644 colors/nord.vim -t "$pkgdir/usr/share/vim/vimfiles/colors/"
+  install -Dm 644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
+package_vim-airline-nord-git()  {
+  depends=('vim-airline' 'vim-plugin-runtime')
+  provides=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}")
+
+  cd "$pkgbase"
+  install -Dm 644 autoload/airline/themes/nord.vim -t "$pkgdir/usr/share/vim/vimfiles/autoload/airline/themes/"
+  install -Dm 644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
+}
+
+package_vim-lightline-nord-git()  {
+  depends=('vim-lightline' 'vim-plugin-runtime')
+  provides=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}")
+
+  cd "$pkgbase"
+  install -Dm 644 autoload/lightline/colorscheme/nord.vim -t "$pkgdir/usr/share/vim/vimfiles/autoload/lightline/colorscheme/"
+  install -Dm 644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
+}
