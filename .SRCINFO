@@ -1,8 +1,8 @@
 pkgbase = cncli
-	pkgdesc = Helium Wallet
+	pkgdesc = A community-based cardano-node CLI tool
 	pkgver = 2.0.3
-	pkgrel = 1
-	url = https://github.com/helium/helium-wallet-rs
+	pkgrel = 2
+	url = https://github.com/AndrewWestberg/cncli
 	arch = x86_64
 	license = Apache
 	makedepends = cargo

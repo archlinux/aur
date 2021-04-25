@@ -1,11 +1,11 @@
 # Maintainer: Kyle Manna <kyle [at] kylemanna [dot] com>
 
 pkgname=cncli
-pkgdesc='Helium Wallet'
+pkgdesc='A community-based cardano-node CLI tool'
 license=('Apache')
-url='https://github.com/helium/helium-wallet-rs'
+url='https://github.com/AndrewWestberg/cncli'
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 makedepends=('cargo')
 
