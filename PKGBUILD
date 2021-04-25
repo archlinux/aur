@@ -3,8 +3,8 @@
 _pyname=nova
 pkgbase=openstack-$_pyname
 pkgname=(openstack-$_pyname{,-doc})
-pkgver=22.2.0
-pkgrel=3
+pkgver=23.0.0
+pkgrel=1
 pkgdesc="Cloud computing fabric controller"
 arch=(any)
 url="https://docs.openstack.org/nova/latest/"
@@ -140,7 +140,7 @@ source=(
 	sysusers.conf
 	tmpfiles.conf
 )
-md5sums=('c186cca0778eedf936fe4dd1d15e036b'
+md5sums=('049dde8907622ae7dfa15bcca42c6a05'
          '3f26a8660462ae32a683ad79ef733b79'
          'c1d03d4898525c76d02f3b291ec46e21'
          '3fa4675ec19fe27b37ee571961d54407'
@@ -151,7 +151,7 @@ md5sums=('c186cca0778eedf936fe4dd1d15e036b'
          '063c88893366f685c380fae0aa678b15'
          'fdc38aa4d35b511165091aac88c6614d'
          '7e4af4b03bf0ac69b3a657b6642ae5bb')
-sha256sums=('dd2561a576f8f0c38e545e2cf71c896740bf64b40ac991537af1dec3d1fea3a1'
+sha256sums=('9a4143021eeb8a4b98786b613d8db44e95414b1b6b1d6e79ee5b082db63694db'
             'ccee044c78f73566662b46ae1d2837b34fa998e607a5b965dff85c5042eb21de'
             '14c3724e55fa7d094cc95c334d564c5b2276d73bbf3771de6fa2c8acaab9f71b'
             '2cd6e2275d437297d6c2706cd6c1ccc38b4d2788da21ff1c82b2ce5597235c39'
@@ -162,7 +162,7 @@ sha256sums=('dd2561a576f8f0c38e545e2cf71c896740bf64b40ac991537af1dec3d1fea3a1'
             'a8101096ca72a2f70d003c54b3339d16697315380795d657134cf9c02388a49f'
             'ed64bd90f87a3c41ed57e8fea77055d9df85ed6229bd3f75d74627c42322eb4c'
             '46ac6ef1d5b31996e3cfb4ec3647acbdc056efd01a91ff0d757f5fd8f4f8637d')
-sha512sums=('acb9745b2bebd669f919a2d3d73e9dc5dad5aa3de49690daddd779fb6467139f857d67c6d8af3761f12db9bf6c5120d1af7bee3e73b3c0e0c44d6b41cafe7883'
+sha512sums=('7c7bda93742a7975011094956b9cd3e8b8660c7bed51a83dbd3fb371f1a336de67efa7abfd5f0858e1580bbcac05d9390afeb56ccad002fe6d6e4cfd71c31d8f'
             'bcd6c94e9d882528b4883fa947822e6dbea6ca8b438815556471f54f8f5bd8b413f0906d4cc210a85891fef09846972689d7d4c25ed1ae8a582fd413c22c4820'
             'df839698bf257be1de5ed667c1c8f3c53c9384e549edc79b0988edae366ea6c10aff96ca9bbfb272852f5dd2348fbf1ea95c610ef261a771e8e6ca42b3448abc'
             'e091ac769761211bcd7e864802f762c34012e9f539b5b629a70a69bfc784023500ad64486fa9b0a896204b9f7c5daf2a48547d341b7bc6efd78512f3c7541574'
