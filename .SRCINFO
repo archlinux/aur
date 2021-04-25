@@ -6,21 +6,13 @@ pkgbase = python-github3.py
 	arch = any
 	license = custom:Modified BSD
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = github3::git+https://github.com/sigmavirus24/github3.py.git#commit=e586949a4dbed22f169afaffe25cb07e5a60a606
-	sha256sums = SKIP
-
-pkgname = python-github3.py
 	depends = python
 	depends = python-requests
 	depends = python-uritemplate
 	depends = python-dateutil
 	depends = python-jwcrypto
+	source = github3::git+https://github.com/sigmavirus24/github3.py.git#commit=e586949a4dbed22f169afaffe25cb07e5a60a606
+	sha256sums = SKIP
 
-pkgname = python2-github3.py
-	depends = python2
-	depends = python2-requests
-	depends = python2-uritemplate
-	depends = python-dateutil
-	depends = python-jwcrypto
+pkgname = python-github3.py
 
