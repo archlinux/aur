@@ -1,7 +1,7 @@
 pkgbase = prover9
 	pkgdesc = Prover9 is an automated theorem prover for first-order and equational logic
 	pkgver = 2009.11A
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.cs.unm.edu/~mccune/prover9/
 	arch = i686
 	arch = x86_64

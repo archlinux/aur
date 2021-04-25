@@ -2,7 +2,7 @@
 # Submitter: Max de Bayser <maxdebayser@gmail.com>
 pkgname=prover9
 pkgver=2009.11A
-pkgrel=2
+pkgrel=3
 pkgdesc="Prover9 is an automated theorem prover for first-order and equational logic"
 arch=('i686' 'x86_64')
 url="http://www.cs.unm.edu/~mccune/prover9/"
@@ -15,7 +15,7 @@ md5sums=('ab409f31ecbb4410b1c7d75deadea2c6')
 build() {
   cd "$srcdir/LADR-${pkgver/./-}"
 
-  make all
+  make all -j1
 }
 
 package() {
