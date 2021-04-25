@@ -1,14 +1,14 @@
 # Maintainer: leonekmi <usingarchbtw@leonekmi.fr>
 pkgname=karaokemugen
-pkgver=4.1.18
-pkgrel=2
+pkgver=5.0.33
+pkgrel=1
 pkgdesc="Karaoke playlist manager/player app used in parties or events."
-arch=('any')
+arch=('x86_64')
 url="https://mugen.karaokes.moe/"
 license=('MIT')
 groups=()
-depends=('mpv' 'ffmpeg' 'postgresql' 'electron')
-makedepends=('git' 'npm' 'typescript' 'yarn' 'nodejs>=12' 'python2')
+depends=('mpv' 'ffmpeg' 'postgresql' 'electron11')
+makedepends=('git' 'npm' 'typescript' 'yarn' 'nodejs>=12' 'python2' 'patch')
 optdepends=('sudo: for using karaokemugen-install script')
 provides=()
 conflicts=()
@@ -16,25 +16,32 @@ replaces=()
 backup=()
 options=()
 install=${pkgname}.install
-source=('karaokemugen::git+https://lab.shelter.moe/karaokemugen/karaokemugen-app.git#tag=v4.1.18'
+source=('karaokemugen::git+https://lab.shelter.moe/karaokemugen/karaokemugen-app.git#tag=v5.0.33'
         'karaokemugen-lib::git+https://lab.shelter.moe/karaokemugen/lib.git'
+        'karaokemugen-avatars::git+https://lab.shelter.moe/karaokemugen/medias/guest-avatars.git'
         'install.sh'
         'run.sh'
         'icon256.png'
-        'karaokemugen.desktop')
+        'karaokemugen.desktop'
+        'appPath.patch')
 noextract=()
 md5sums=('SKIP'
          'SKIP'
-         '412f93c38e0d79eb2d98cce3afd2a194'
+         'SKIP'
+         '4ad5390b139dc5b5e78e6eef8411e90b'
          '0d0d432f35c56a962f9d386f391c6036'
          '5e9a33a42fef7572b7e0fa504c586f32'
-         '10561eed906a5efeed427f90501b4f49')
+         '10561eed906a5efeed427f90501b4f49'
+         '1c331f8ccc9b3157ac0d9af4b559dd69')
 
 prepare() {
     cd "$srcdir/${pkgname}"
     git submodule init
     git config submodule.src/lib.url $srcdir/${pkgname}-lib
+    git config submodule.assets/guestAvatars.url $srcdir/${pkgname}-avatars
     git submodule update
+    # Apply appPath patch
+    patch "$srcdir/${pkgname}/src/index.ts" "$srcdir/appPath.patch"
 }
 
 build() {
@@ -45,18 +52,15 @@ build() {
     export XDG_CACHE_HOME="$srcdir/$pkgname-cache"
     export npm_config_devdir="$srcdir/$pkgname-npm-dev"
     export npm_config_cache="$srcdir/$pkgname-npm-cache"
-    yarn global add electron-builder
     yarn install
-    yarn installFrontend
-    yarn installSystemPanel
+    yarn add --dev electron-builder
+    yarn installkmfrontend
     # Build and package with electron-builder
     export NODE_ENV='production'
-    electronDist=$(dirname $(realpath $(which electron)))
-    electronVer=$(electron --version | tail -c +2)
+    electronVer=$(electron11 --version | tail -c +2)
     yarn build
-    yarn buildFrontend
-    yarn buildSystemPanel
-    "$(yarn global dir)/node_modules/.bin/electron-builder" --linux --x64 -c.electronDist=$electronDist -c.electronVersion=$electronVer --dir
+    yarn buildkmfrontend
+    yarn electron-builder --linux --x64 -c.electronDist=/usr/lib/electron11 -c.electronVersion=$electronVer --dir
 }
 
 package() {

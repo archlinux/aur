@@ -1,0 +1,40 @@
+Index: src/index.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/index.ts b/src/index.ts
+--- a/src/index.ts	(revision 34a92a6909d715ac95609eb4047e9b94a2de8152)
++++ b/src/index.ts	(revision 33ae1fd1580e7ac890c400d7514953a07c3c7eca)
+@@ -5,7 +5,7 @@
+ import {copy, mkdirpSync, remove} from 'fs-extra';
+ import i18n from 'i18next';
+ import cloneDeep from 'lodash.clonedeep';
+-import {resolve} from 'path';
++import {dirname,resolve} from 'path';
+ import {getPortPromise} from 'portfinder';
+ import {createInterface} from 'readline';
+ 
+@@ -85,12 +85,18 @@
+ 			: resolve(app.getAppPath(), '../../');
+ 		resourcePath = process.resourcesPath;
+ 	} else {
+-		// Starting Electron from source folder
+-		appPath = app.getAppPath();
+-		resourcePath = appPath;
++		if (app.getAppPath().endsWith('.asar')) {
++			// Starting Electron from an asar directly (electron /path/to/app.asar)
++			appPath = dirname(app.getAppPath());
++			resourcePath = appPath;
++		} else {
++			// Starting Electron from source folder
++			appPath = app.getAppPath();
++			resourcePath = appPath;
++		}
+ 	}
+ } else {
+-	// No Electron start, so in git mode
++	// Non-electron environments (ts-node, node)
+ 	appPath = process.cwd();
+ 	resourcePath = appPath;
+ }
