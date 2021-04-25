@@ -24,11 +24,4 @@ package() {
     -type f -exec install -Dvm 755 '{}' "$pkgdir/usr/share/$pkgname/{}" \;
 }
 
-# package() {
-#   mkdir -p "${pkgdir}/usr/share/"
-#   install -D -m755 "${srcdir}/cloud-buster.sh" "${pkgdir}/usr/bin/cloud-buster"
-#   cd "${srcdir}"
-#   mv "${pkgname}-${pkgver}" "${pkgdir}/usr/share/"
-# }
-
 # vim:set et sw=2 ts=2 tw=79:
