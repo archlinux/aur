@@ -1,0 +1,27 @@
+pkgbase = mauikit-imagetools-git
+	pkgdesc = MauiKit Image Tools Components
+	pkgver = r6.6073ba0
+	pkgrel = 1
+	url = https://invent.kde.org/maui/mauikit-imagetools
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = mauikit-git
+	depends = ki18n
+	depends = kconfig
+	depends = kcoreaddons
+	depends = exiv2
+	depends = kquickimageeditor-git
+	provides = mauikit-imagetools
+	conflicts = mauikit-imagetools
+	source = git+https://invent.kde.org/maui/mauikit-imagetools.git
+	sha256sums = SKIP
+
+pkgname = mauikit-imagetools-git
+
