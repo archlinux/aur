@@ -11,6 +11,7 @@ pkgbase = communicator-git
 	makedepends = qt5-tools
 	depends = mauikit-git
 	depends = mauikit-filebrowsing-git
+	depends = mauikit-texteditor-git
 	depends = ki18n
 	depends = kcoreaddons
 	depends = kservice
