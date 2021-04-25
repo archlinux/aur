@@ -10,7 +10,7 @@ depends=()
 makedepends=(git gcc-fortran)
 provides=(slatec)
 conflicts=(slatec)
-source=($pkgname::git://github.com/Rufflewind/slatec)
+source=($pkgname::git+https://github.com/Rufflewind/slatec)
 sha256sums=(SKIP)
 
 pkgver() {

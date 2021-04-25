@@ -10,7 +10,7 @@ pkgbase = slatec-git
 	makedepends = gcc-fortran
 	provides = slatec
 	conflicts = slatec
-	source = slatec-git::git://github.com/Rufflewind/slatec
+	source = slatec-git::git+https://github.com/Rufflewind/slatec
 	sha256sums = SKIP
 
 pkgname = slatec-git
