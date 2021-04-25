@@ -73,7 +73,7 @@ _srcname=linux-${_major}
 
 pkgbase=linux-mini
 pkgver=${_major}.${_minor}
-pkgrel=3
+pkgrel=4
 pkgdesc='Linux kernel and modules with minimal configuration'
 
 url="https://www.kernel.org/"
@@ -253,7 +253,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make -j$(nproc) all
+  make bzImage modules
 }
 
 _package() {
