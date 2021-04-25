@@ -1,6 +1,6 @@
 pkgbase = kooha
 	pkgdesc = Simple screen recorder for GNOME
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/SeaDve/Kooha
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = kooha
 	depends = gtk3
 	depends = libhandy
 	depends = python-gobject
-	source = kooha-1.1.1.tar.gz::https://github.com/SeaDve/Kooha/archive/v1.1.1.tar.gz
-	sha256sums = 7087a268e02c27d47fa30fd761f05c36135bbb3aa80d80ab89ef0708f0559fd3
+	source = kooha-1.1.2.tar.gz::https://github.com/SeaDve/Kooha/archive/v1.1.2.tar.gz
+	sha256sums = c2c3c5b68cfb8cd7b0ec94771d12d9ed77e8bea93be4dfc2398f3eb882c386c5
 
 pkgname = kooha
 
