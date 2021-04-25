@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Better CrewLink
+Exec=bettercrewlink
+Icon=bettercrewlink.png
+Type=Application
+Terminal=false
+Categories=Game
+Comment=Proximity chat for Among Us
