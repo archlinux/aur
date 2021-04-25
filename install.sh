@@ -27,7 +27,7 @@ check_postgres() {
 }
 
 check_mugen() {
-    if [ -f "/usr/lib/karaokemugen/asar/app.asar" ]; then
+    if [ -f "/usr/lib/karaokemugen/app.asar" ]; then
         echo -e "${_COL_GREEN_}Karaoke Mugen is installed in /usr/lib/karaokemugen."
     else
         echo -e "${_COL_BRED_}Karaoke Mugen is not installed in /usr/lib/karaokemugen. Exiting."

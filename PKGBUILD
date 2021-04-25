@@ -1,7 +1,7 @@
 # Maintainer: leonekmi <usingarchbtw@leonekmi.fr>
 pkgname=karaokemugen-git
 pkgver=5.0.33.r1.g3c91037ef
-pkgrel=1
+pkgrel=2
 pkgdesc="Karaoke playlist manager/player app used in parties or events."
 arch=('x86_64')
 url="https://mugen.karaokes.moe/"
@@ -27,8 +27,8 @@ noextract=()
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
-         'e505996fcb8200002be4df3021666d85'
-         '55557823030b7824a85a55469e119cb4'
+         'e31ff0dc6707adce89c3221a7c9c3cb6'
+         '19475472f2046c57de4b627ac90982df'
          '5e9a33a42fef7572b7e0fa504c586f32'
          '10561eed906a5efeed427f90501b4f49')
 
@@ -57,6 +57,7 @@ build() {
     export XDG_CACHE_HOME="$srcdir/$pkgname-cache"
     export npm_config_devdir="$srcdir/$pkgname-npm-dev"
     export npm_config_cache="$srcdir/$pkgname-npm-cache"
+    mkdir -p $HOME $XDG_CACHE_HOME $npm_config_devdir $npm_config_cache
     yarn install --ignore-scripts --frozen-scripts
     yarn add --dev electron-builder
     yarn installkmfrontend
