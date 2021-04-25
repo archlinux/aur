@@ -6,7 +6,7 @@
 
 pkgname=webkitgtk2
 pkgver=2.4.11
-pkgrel=23
+pkgrel=24
 epoch=3
 pkgdesc="Legacy Web content engine for GTK+ 2"
 arch=("armv7h" "i686" "x86_64")
@@ -44,7 +44,7 @@ sha256sums=(
   "d1a9ccc1ae5cb042bc47ae846ff84513ca7b9c7bc999c546ffba48572f0373a0"
   "7341eb4c229656046be6ac526f94b9f4a742a66178412caf22a988677f5bf9d9"
   "5a62fbd0df69c6951562e72cd7b3c58cae7f2807338ced7b4a1973440b3dd193"
-  "453e826ad09cdceb12cad750e16cf6b9d43d8810eb1ea14bd291e5556a14d9df"
+  "db202fedd72a21318646c561afcd76656ea8ba6b1d641363fc7b69ae5687aa28"
 )
 
 prepare() {
@@ -65,6 +65,9 @@ prepare() {
 
   # https://www.linuxquestions.org/questions/slackware-14/sbo-scripts-not-building-on-current-read-1st-post-pls-4175561999/page195.html#post6160562
   patch -Np1 -i "${srcdir}/grammar.patch"
+
+  # glib>=2.68.0
+  patch -Np1 -i "${srcdir}/glib-2.68.0.patch"
 }
 
 build() (
@@ -85,11 +88,6 @@ build() (
     --with-gtk=2.0 \
     --disable-webkit2 \
     --disable-gtk-doc
-
-  # patch for glib>=2.68.0
-  cd "${srcdir}/${pkgname%2}-${pkgver}"
-  patch -Np0 -i "${srcdir}/glib-2.68.0.patch"
-  cd "${srcdir}/build-gtk2"
 
   # https://bugzilla.gnome.org/show_bug.cgi?id=655517
   sed -i "s/ -shared / -Wl,-O1,--as-needed\0/g" "${srcdir}/build-gtk2/libtool"
