@@ -5,7 +5,11 @@ pkgbase = aria2-systemd
 	arch = any
 	depends = aria2
 	source = aria2.service
-	sha512sums = e21bfeb353a8ab8b1879bbe8e6015ba9517c0c570f5c90f81b78e40365a8341ec1156321ee760af3d906ece26608da2601e2638e6e62848948f4e8e7c525f0d5
+	source = aria2.conf.example
+	source = start-daemon.sh
+	md5sums = 29dbe4a84d98cdb3824ceb1587236f1b
+	md5sums = ad931e8a6e4989cff16f7196eccca99a
+	md5sums = 20842350316227bbd90fa3925dc7c4e5
 
 pkgname = aria2-systemd
 
