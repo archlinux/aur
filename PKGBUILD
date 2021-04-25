@@ -15,7 +15,7 @@ optdepends=('djvulibre') # for the djvudigital converter
 url="http://djvu.sourceforge.net/gsdjvu.html"
 source=("http://downloads.sourceforge.net/sourceforge/djvu/gsdjvu-${pkgver}.tar.gz" 
         "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs${_gsver/./}/ghostpdl-${_gsver}.tar.gz"
-        "http://downloads.sourceforge.net/ghostscript/ghostscript-fonts-std-${_fontsver}.tar.gz")
+        "https://downloads.sourceforge.net/gs-fonts/ghostscript-fonts-std-${_fontsver}.tar.gz")
 noextract=("ghostscript-${_gsver}.tar.bz2"
 	"ghostscript-fonts-std-${_fontsver}.tar.gz")
 options=('!libtool' '!makeflags')
