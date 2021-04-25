@@ -20,16 +20,16 @@ source=("https://github.com/LedgerHQ/ledger-live-desktop/archive/v${pkgver}.tar.
 sha512sums=('33c03e3319c188127d4ae7a0f3f5c4007d719d2691f9e6c04347acbce6b5f30fa2dff792ca940f77c9aeab0ab42d7737f86fd9cd8d0a4e006911a3d4383d8430'
             '01bee3b5a90d9a87bb8b1f8edd8fa5851b39db7f9374d0e31114301876fafbc9226b120f114b66a3158a4e98eb514569f34cd0d4f1212062a55d0c8d0e698dda')
 
-extractedFolder=ledger-live-desktop-$pkgver
+extracted_folder=ledger-live-desktop-$pkgver
 
 prepare() {
-  cd $extractedFolder
+  cd $extracted_folder
   export JOBS=max
   yarn --ignore-scripts
 }
 
 build() {
-  cd $extractedFolder
+  cd $extracted_folder
   export GIT_REVISION=$pkgver
   export JOBS=max
   yarn dist
@@ -38,7 +38,7 @@ build() {
 package() {
   install -Dm644 "${_pkgbin}.desktop" "${pkgdir}/usr/share/applications/${_pkgbin}.desktop"
 
-  cd $extractedFolder
+  cd $extracted_folder
 
   install -dm755 "${pkgdir}/opt"
   cp -r "dist/linux-unpacked" "${pkgdir}/opt/${_pkgbin}"
