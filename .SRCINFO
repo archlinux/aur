@@ -1,0 +1,13 @@
+pkgbase = cncli
+	pkgdesc = Helium Wallet
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/helium/helium-wallet-rs
+	arch = x86_64
+	license = Apache
+	makedepends = cargo
+	source = git+https://github.com/AndrewWestberg/cncli.git#tag=v2.0.3
+	sha256sums = SKIP
+
+pkgname = cncli
+
