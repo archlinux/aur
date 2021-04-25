@@ -1,7 +1,7 @@
 pkgbase = python-orange
 	pkgdesc = Open source data visualization and analysis for novice and experts. Data mining through visual programming or Python scripting.
 	pkgver = 3.27.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://orange.biolab.si/
 	arch = x86_64
 	license = GPL3
