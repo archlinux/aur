@@ -1,7 +1,6 @@
 # Maintainer: Diego Nieto Cid <dnietoc@gmail.com>
 
 pkgname="python-github3.py"
-_commit="e586949a4dbed22f169afaffe25cb07e5a60a606"
 pkgver="2.0.0"
 pkgrel=1
 pkgdesc="A comprehensive wrapper around the GitHub API (v3)"
@@ -10,8 +9,8 @@ url="https://github.com/sigmavirus24/github3.py"
 license=("custom:Modified BSD")
 makedepends=("python-setuptools")
 depends=("python" "python-requests" "python-uritemplate" "python-dateutil" "python-jwcrypto")
-source=(github3::"git+https://github.com/sigmavirus24/github3.py.git#commit=${_commit}")
-sha256sums=('SKIP')
+source=("github3-$pkgver.tar.gz::https://github.com/sigmavirus24/github3.py/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('3ee0481402d94f0737da5687e70d836b5a3dbe5567cb2d240cb0c616334a95a5')
 
 build() {
     cd "${srcdir}/github3"
