@@ -1,6 +1,6 @@
 pkgbase = drogon
 	pkgdesc = A C++14/17 based HTTP web application framework running on Linux/macOS/Unix/Windows
-	pkgver = 1.4.1
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/an-tao/drogon
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = drogon
 	depends = mariadb-libs
 	depends = postgresql-libs
 	depends = sqlite
-	source = git+https://github.com/an-tao/drogon.git#tag=v1.4.1
+	source = git+https://github.com/an-tao/drogon.git#tag=v1.5.1
 	sha256sums = SKIP
 
 pkgname = drogon

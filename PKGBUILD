@@ -1,7 +1,7 @@
 # Maintainer: Marat Moustafine <moustafine-@t-tuta-d.t-io>
 
 pkgname=drogon
-pkgver=1.4.1
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='A C++14/17 based HTTP web application framework running on Linux/macOS/Unix/Windows'
 arch=('x86_64')
