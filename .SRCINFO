@@ -1,13 +1,13 @@
 pkgbase = handlr-bin
 	pkgdesc = Powerful alternative to xdg-utils written in Rust
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/chmln/handlr
 	arch = x86_64
 	license = unknown
-	source = https://github.com/chmln/handlr/releases/download/v0.6.1/handlr
-	source = https://github.com/chmln/handlr/raw/v0.6.1/completions/handlr.fish
-	source = https://github.com/chmln/handlr/raw/v0.6.1/completions/_handlr
+	source = https://github.com/chmln/handlr/releases/download/v0.6.2/handlr
+	source = https://github.com/chmln/handlr/raw/v0.6.2/completions/handlr.fish
+	source = https://github.com/chmln/handlr/raw/v0.6.2/completions/_handlr
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
