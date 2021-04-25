@@ -1,7 +1,7 @@
 pkgbase = ruby-tzinfo-data
 	pkgdesc = Timezone data for ruby-tzinfo
 	pkgver = 1.2021.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tzinfo/tzinfo-data
 	arch = x86_64
 	license = MIT

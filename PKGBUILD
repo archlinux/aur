@@ -3,7 +3,7 @@
 _gemname=tzinfo-data
 pkgname=ruby-$_gemname
 pkgver=1.2021.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Timezone data for ruby-tzinfo'
 arch=(x86_64)
 url='https://github.com/tzinfo/tzinfo-data'
