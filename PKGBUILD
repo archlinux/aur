@@ -1,4 +1,4 @@
-# Maintainer: Phil Ruffwind <rf@rufflewind.com>
+# Contributor: Phil Ruffwind <rf@rufflewind.com>
 pkgname=python2-fastimport-git
 pkgver=latest
 pkgrel=1
