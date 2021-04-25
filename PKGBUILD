@@ -1,7 +1,7 @@
 # Maintainer: 4679 <4679@pm.me>
 
 pkgname=shadowsocks-rust-bin
-pkgver=1.10.0
+pkgver=1.10.6
 pkgrel=1
 pkgdesc='A Rust port of shadowsocks https://shadowsocks.org/ (binary version)'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
     "shadowsocks-rust@.service::https://aur.archlinux.org/cgit/aur.git/plain/shadowsocks-rust@.service?h=shadowsocks-rust-git"
     "shadowsocks-rust-server@.service::https://aur.archlinux.org/cgit/aur.git/plain/shadowsocks-rust-server@.service?h=shadowsocks-rust-git"
 )
-sha512sums=('1fc4355cb73a780ec806a03e0d2abd3db62906569f4b80c866ee73e6e33e4cbab5340bcd2470d898be0979fba00634562d302b2884fad986c31fabf8c6e9b480'
+sha512sums=('10378842fce6ca5bb708d8c2933f7c855f0f84a63136d589a70331dc1a66d8e06061696ac25948ada38ac79ee6273a1199076dab3da40a1ae5ef3acc162aea83'
             'c143767fdf60497f6661de0067448f1ba3eed9d654548739fbc480b721f11e8f8bef856e77ed09e7b95f0e8e7b5f69ed0f18d759f538b0555c58c832ea9138f5'
             '4ac52e6fe04e02543f54d57fccfd863f18b157fd28fb61c9a56ba46269b9dff410a80960943d911afa55b45c3fc42e98d91f8bb75e9103abf3f3dbfffb73a6e0'
             '3f56e02462ba8fa0a1cf62eaae5b796d7efb31ae1a8383a1132878244c1ab834ca3e23befa4c0c14c461c9883522d4f54f80aba45cd6331061bdd42618cbcfc6'
