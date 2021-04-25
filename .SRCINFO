@@ -1,15 +1,15 @@
 pkgbase = oak
 	pkgdesc = Tool to monitor syslogs from a collection of servers
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ktools.org/oak/
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = smtp-server
 	depends = glibc
-	source = http://www.ktools.org/dist/oak/oak-1.5.0.tar.gz
-	md5sums = 69ccdfae317b8f6bb6bf1f27aae5bd02
+	source = https://www.ktools.org/dist/oak/oak-1.5.0.tar.gz
+	sha256sums = cc4e7efa32788eaaa139c2a7aab7dea297b6a4d71f17885cd6d9df492fec6079
 
 pkgname = oak
 
