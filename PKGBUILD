@@ -1,14 +1,14 @@
-# Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com > 
+# Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=maui-clip-git
-pkgver=r70.e140751
+pkgver=r98.1d1c5aa
 pkgrel=1
 pkgdesc="Video player and video collection manager"
 arch=('x86_64')
 groups=('maui-apps')
 url="https://invent.kde.org/maui/clip"
 license=('GPL3')
-depends=('kio' 'mauikit-git' 'attica' 'ki18n')
+depends=('kio' 'mauikit-git' 'mauikit-filebrowsing-git' 'attica' 'ki18n' 'kcoreaddons')
 makedepends=('git' 'extra-cmake-modules' 'qt5-tools')
 provides=('cinema' 'maui-clip')
 conflicts=('cinema' 'cinema-git' 'maui-clip')
