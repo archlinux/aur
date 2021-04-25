@@ -1,17 +1,18 @@
-# Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com > 
+# Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=pix-maui-git
-pkgver=v1.1.1.r34.ge2ceb78
+pkgver=v1.2.1.r34.geb52869
 pkgrel=2
 pkgdesc="Image gallery application"
 arch=('x86_64')
 groups=('maui-apps')
 url="https://invent.kde.org/maui/pix"
 license=('GPL3')
-depends=('ki18n' 'qt5-location' 'mauikit-git' 'kio' 'syntax-highlighting' 'attica' 'exiv2' 'kquickimageeditor')
+depends=('ki18n' 'qt5-location' 'mauikit-git' 'kio' 'syntax-highlighting'
+         'attica' 'exiv2' 'kquickimageeditor' 'mauikit-filebrowsing-git' 'mauikit-imagetools-git')
 makedepends=('git' 'extra-cmake-modules')
-provides=('pix-maui')
-conflicts=('pix-maui')
+provides=('pix-maui' 'maui-pix')
+conflicts=('pix-maui' 'maui-pix')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
@@ -23,23 +24,11 @@ pkgver() {
   )
 }
 
-prepare() {
-  cd pix
-  mkdir build
+build() {
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -B build -S pix
+  make -C build
 }
 
-build() {
-  cd pix/build
-  cmake .. \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib
-  make
-}
- 
 package() {
-  cd pix/build
-  install -d "$pkgdir/usr/share/icons/hicolor/scalable/apps"
-  install -Dm644 ../src/assets/pix.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/pix.svg"
-  make DESTDIR="$pkgdir" install
+  make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
 }

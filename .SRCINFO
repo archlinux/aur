@@ -1,6 +1,6 @@
 pkgbase = pix-maui-git
 	pkgdesc = Image gallery application
-	pkgver = v1.1.1.r34.ge2ceb78
+	pkgver = v1.2.1.r34.geb52869
 	pkgrel = 2
 	url = https://invent.kde.org/maui/pix
 	arch = x86_64
@@ -16,8 +16,12 @@ pkgbase = pix-maui-git
 	depends = attica
 	depends = exiv2
 	depends = kquickimageeditor
+	depends = mauikit-filebrowsing-git
+	depends = mauikit-imagetools-git
 	provides = pix-maui
+	provides = maui-pix
 	conflicts = pix-maui
+	conflicts = maui-pix
 	source = git+https://invent.kde.org/maui/pix.git
 	sha256sums = SKIP
 
