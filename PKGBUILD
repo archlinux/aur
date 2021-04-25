@@ -1,4 +1,5 @@
-# Maintainer: David Birks <david@tellus.space>
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Contributor: David Birks <david@tellus.space>
 # Contributor: Victor Demonchy <demonchy.v@gmail.com>
 # Contributor: Wael Nasreddine <wael.nasreddine@gmail.com>
 
