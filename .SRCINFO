@@ -1,0 +1,16 @@
+pkgbase = hancomoffice
+	pkgdesc = Hancom office programs provided by Hancom. Ported to Arch Linux from Hancom Gooroom OS.
+	pkgver = 11.20.0.1520
+	pkgrel = 1
+	url = https://www.hancom.com/
+	arch = x86_64
+	license = custom:hancomoffice
+	depends = harfbuzz-icu
+	depends = libcurl-gnutls
+	source = https://github.com/DisLogicator/hoffice/releases/download/11.20.0.1520-rc2/hoffice-11.20.0.1520.tar.gz
+	source = LICENSE
+	sha256sums = 4a683809eff85b460efbf2989219adbf2d7e246d414be52f55823a2e3605605d
+	sha256sums = bd67280ffdf6928abab99f3f7f01ad46b19d85d641bd49286ef6d3e6a258cee3
+
+pkgname = hancomoffice
+
