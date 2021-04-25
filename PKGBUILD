@@ -1,7 +1,7 @@
-# Maintainer: Kim Scarborough <kim@scarborough.kim>
+# Maintainer: Joe Bashe <joe@bashe.joe>
 pkgname=deluge1
 pkgver=1.3.15
-pkgrel=6
+pkgrel=7
 pkgdesc='A BitTorrent client with multiple interfaces in a client/server model (legacy 1.3.x version)'
 arch=('any')
 url='https://deluge-torrent.org/'
@@ -10,9 +10,9 @@ makedepends=('intltool'
 	'libtorrent-rasterbar'
 	'python2-chardet'
 	'python2-pyopenssl'
-	'python2-twisted'
 	'python2-xdg')
 depends=('python2'
+	'python2-twisted-git'
 	'desktop-file-utils'
 	'hicolor-icon-theme')
 optdepends=('python2-service-identity'
