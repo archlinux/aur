@@ -2,7 +2,7 @@
 # Maintainer: Xaver Hellauer <software@hellauer.bayern>
 
 pkgname=tresorit
-pkgver=3.5.753.961
+pkgver=3.5.852.1550
 pkgrel=1
 pkgdesc='Encrypted cloud storage for your confidential files. Using Tresorit, files are encrypted before being uploaded to the cloud. Start encrypting files for free.'
 arch=('i686' 'x86_64')
