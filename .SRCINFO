@@ -1,6 +1,6 @@
 pkgbase = cov-analysis
 	pkgdesc = Coverity Scan Build Tool for C/C++ - REQUIRES MANUAL DOWNLOAD
-	pkgver = 2019.03
+	pkgver = 2020.09
 	pkgrel = 3
 	url = https://scan.coverity.com/download
 	arch = i686
@@ -10,9 +10,9 @@ pkgbase = cov-analysis
 	depends = java-environment
 	options = !strip
 	source_i686 = https://scan.coverity.com/download/cxx/linux32
-	sha256sums_i686 = a0e6c35db1effbbc33194f5aa8db63619911306314ce29c278a0bec2002038ed
+	sha256sums_i686 = d251243887c3219738bae254c6bfcbc24ccde9633a53283587576d333d41bff0
 	source_x86_64 = https://scan.coverity.com/download/cxx/linux64
-	sha256sums_x86_64 = 831289253c4630423cdb3dc7b80782b045c0dbf66d0fee51e8337025fe23b72b
+	sha256sums_x86_64 = dd520c04197d58d01e2b3cdaf4fe67d8e9af8e55236e556a19fb0d0a72531223
 
 pkgname = cov-analysis
 

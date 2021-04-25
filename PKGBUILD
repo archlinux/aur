@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=cov-analysis
-pkgver=2019.03
+pkgver=2020.09
 pkgrel=3
 pkgdesc='Coverity Scan Build Tool for C/C++ - REQUIRES MANUAL DOWNLOAD'
 url='https://scan.coverity.com/download'
@@ -13,15 +13,12 @@ options=('!strip')
 
 source_i686=(  "cov-analysis-linux-$pkgver.tar.gz")
 source_x86_64=("cov-analysis-linux64-$pkgver.tar.gz")
-sha256sums_i686=('a0e6c35db1effbbc33194f5aa8db63619911306314ce29c278a0bec2002038ed')
-sha256sums_x86_64=('831289253c4630423cdb3dc7b80782b045c0dbf66d0fee51e8337025fe23b72b')
+sha256sums_i686=('d251243887c3219738bae254c6bfcbc24ccde9633a53283587576d333d41bff0')
+sha256sums_x86_64=('dd520c04197d58d01e2b3cdaf4fe67d8e9af8e55236e556a19fb0d0a72531223')
 
 package() {
-  tar=$(echo *.tar)
-  msg2 "Extracting $tar with bsdtar"
   install -dm755 "$pkgdir/opt/$pkgname"
-  cd "$pkgdir/opt/$pkgname"
-  bsdtar --strip-components=1 -xf "$srcdir/$tar"
+  mv $pkgname-*-$pkgver/* "$pkgdir/opt/$pkgname"
   chown root: -R "$pkgdir/opt/$pkgname/"
 
   cd "$srcdir"
