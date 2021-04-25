@@ -4,7 +4,7 @@
 
 pkgname=gns3-server
 pkgver=2.2.20
-pkgrel=1
+pkgrel=2
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64')
 url='https://github.com/GNS3/gns3-server'
@@ -28,12 +28,12 @@ depends=(
     'python-yarl'
 )
 optdepends=(
-    'dynamips: Cisco router emulator.'
-    'gns3-gui: graphical user interface for GNS3 server.'
-    'qemu: Used by GNS3 to run Cisco ASA, PIX and IDS.'
+    'dynamips: Cisco router emulator'
+    'gns3-gui: graphical user interface for GNS3 server'
+    'qemu: Used by GNS3 to run Cisco ASA, PIX and IDS'
     'libvirt: needed for the NAT cloud'
-    'vpcs: Simple PC emulation for basic network operations.'
-    'ubridge: Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces.'
+    'vpcs: Simple PC emulation for basic network operations'
+    'ubridge: Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces'
 )
 install="$pkgname".install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
@@ -49,6 +49,7 @@ prepare() {
         -e 's|^aiofiles==0\.6\.0$|aiofiles>=0.6.0|' \
         -e 's|^psutil==5\.8\.0$|psutil>=5.8.0|' \
         -e 's|^distro==1\.5\.0$|distro>=1.5.0|' \
+        -e 's|^py-cpuinfo==7\.0\.0$|py-cpuinfo>=7.0.0|' \
         requirements.txt
 }
 
