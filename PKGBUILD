@@ -1,12 +1,12 @@
 # Maintainer: BrainDamage
 pkgname=mautrix-telegram
 pkgver=0.9.0
-pkgrel=8
+pkgrel=9
 pkgdesc="A Matrix-Telegram hybrid puppeting/relaybot bridge."
 url="https://github.com/tulir/mautrix-telegram"
 depends=('python' 'python-sqlalchemy' 'python-alembic' 'python-ruamel-yaml'
 	'python-magic-ahupp' 'python-commonmark' 'python-aiohttp' 'python-yarl'
-	'python-mautrix' 'python-telethon<1.18' 'python-telethon-session-sqlalchemy')
+	'python-mautrix<0.9' 'python-telethon<1.18' 'python-telethon-session-sqlalchemy')
 makedepends=('python-setuptools' 'python-pytest-runner')
 optdepends=('python-cryptg: faster encryption'
 	'python-cchardet: faster encoding detection'
