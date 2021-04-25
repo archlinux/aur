@@ -1,0 +1,16 @@
+diff -aur src.orig/gcrontab-0.8.0/config.h.in src/gcrontab-0.8.0/config.h.in
+--- src.orig/gcrontab-0.8.0/config.h.in	2021-04-26 00:31:19.560384869 +0200
++++ src/gcrontab-0.8.0/config.h.in	2021-04-26 00:31:32.767068048 +0200
+@@ -22,12 +22,6 @@
+ /* Define as __inline if that's what the C compiler calls it.  */
+ #undef inline
+ 
+-/* Define to `long' if <sys/types.h> doesn't define.  */
+-#undef off_t
+-
+-/* Define to `unsigned' if <sys/types.h> doesn't define.  */
+-#undef size_t
+-
+ /* If using the C implementation of alloca, define if you know the
+    direction of stack growth for your system; otherwise it will be
+    automatically deduced at run-time.
