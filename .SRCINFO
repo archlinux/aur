@@ -1,7 +1,7 @@
 pkgbase = qqmusic-bin
 	pkgdesc = tencent qq music
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://y.qq.com/
 	arch = x86_64
 	license = CC0-1.0
