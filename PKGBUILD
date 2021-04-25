@@ -2,7 +2,7 @@
 
 pkgbase=linux-zen-g14
 _pkgbase=linux-zen
-pkgver=5.11.11.zen1
+pkgver=5.11.16.zen1
 pkgrel=1
 pkgdesc='Linux ZEN with patches for Zephyrus G14'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -18,7 +18,7 @@ options=('!strip')
 _srcname=zen-kernel
 source=(
   "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
-  "config-$pkgver::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-zen&id=e90f68035a7497185426ccffb0b1bbfc7c1bed0a"
+  "config-$pkgver::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-zen&id=3e54632fa3c7496acefa5c49b1e7716d438e70ca"
   "https://github.com/dolohow/uksm/raw/master/v5.x/uksm-5.11.patch"
   "https://lab.retarded.farm/zappel/zGentoo/-/raw/master/sys-kernel/gentoo-sources-g14/files/0001-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch"
   "https://lab.retarded.farm/zappel/zGentoo/-/raw/master/sys-kernel/gentoo-sources-g14/files/0002-HID-ASUS-Add-support-for-ASUS-N-Key-keyboard_fanmode.patch"
@@ -31,7 +31,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'df59b8605e86ee358f905b19cc3db9eef06356e8170a1785a0a0b1e27d071004'
+            '275b93c1ee3c557a919586868351c02c801072fb1c67ab029ba044fca9dd75a8'
             '34f4ae617a2407fed2ba347b663d31f39c1ec9b390e1ea5ea636c91a4cc6f875'
             'd9f5742fed4406396698897aa042d4d5fdbfd7c51add7483a777f9ab41901aac'
             '9a8ff7948b16c1ad2ab23f390fd9a2cad4c765821bae7a2a1e4a61b79ffee522'
