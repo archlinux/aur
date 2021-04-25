@@ -1,6 +1,6 @@
 pkgbase = emacs-less-css-mode-git
 	pkgdesc = Major mode for LESS CSS (lesscss.org), with support for compile-on-save.
-	pkgver = 20150609
+	pkgver = 20181102
 	pkgrel = 1
 	url = https://github.com/purcell/less-css-mode
 	install = emacs-less-css-mode-git.install
@@ -10,6 +10,8 @@ pkgbase = emacs-less-css-mode-git
 	depends = emacs
 	provides = emacs-less-css-mode
 	replaces = emacs-less-css-mode
+	source = emacs-less-css-mode-git::git://github.com/purcell/less-css-mode.git
+	md5sums = SKIP
 
 pkgname = emacs-less-css-mode-git
 

@@ -1,7 +1,7 @@
 # Maintainer: Mort Yao <soi@mort.ninja>
 
 pkgname=emacs-less-css-mode-git
-pkgver=20150609
+pkgver=20181102
 pkgrel=1
 pkgdesc="Major mode for LESS CSS (lesscss.org), with support for compile-on-save."
 arch=('any')
@@ -12,26 +12,20 @@ makedepends=('git')
 provides=('emacs-less-css-mode')
 replaces=('emacs-less-css-mode')
 install=$pkgname.install
+source=("${pkgname}::git://github.com/purcell/less-css-mode.git")
+md5sums=('SKIP')
 
-_gitroot="https://github.com/purcell/less-css-mode"
-_gitname="less-css-mode"
+pkgver() {
+  cd "$pkgname"
+  git log -1 --pretty=format:%cd --date=short | sed 's/-//g'
+}
+
 build() {
-  cd $startdir/src
-  msg "Connecting to github.com GIT server...."
-
-  if [ -d $startdir/src/$_gitname ] ; then
-    cd $_gitname && git pull origin
-    msg "The local files are updated."
-  else
-    git clone $_gitroot
-  fi
-
-  msg "GIT checkout done or server timeout"
+  cd "$pkgname"
 }
 
 package() {
-  cd $startdir/src/$_gitname
-
-  mkdir -p $pkgdir/usr/share/emacs/site-lisp/less-css-mode
-  install -Dm644 less-css-mode.el $pkgdir/usr/share/emacs/site-lisp/less-css-mode
+  cd "$pkgname"
+  install -d $pkgdir/usr/share/emacs/site-lisp/
+  install less-css-mode.el $pkgdir/usr/share/emacs/site-lisp/
 }
