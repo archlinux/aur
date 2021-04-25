@@ -1,14 +1,15 @@
 pkgbase = zpm-git
 	pkgdesc = A plugin manager for zsh
-	pkgver = r1151.205c1f2
-	pkgrel = 1
+	pkgver = r1153.a9c89bc
+	pkgrel = 2
 	url = https://github.com/horosgrisa/zpm
 	install = zpm-git.install
 	arch = any
 	license = LGPL3
 	makedepends = git
 	depends = zsh
-	replaces = zpm
+	optdepends = parallel: Parallel execution
+	optdepends = rush: Parallel execution
 	source = zpm-git::git+https://github.com/horosgrisa/zpm
 	sha256sums = SKIP
 
