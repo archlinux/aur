@@ -1,15 +1,15 @@
 # Maintainer Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
 
 pkgname=gnome-shell-extension-ds4battery-git
-pkgver=2ecf34d
-pkgrel=2
+pkgver=e104666
+pkgrel=1
 pkgdesc="Gnome Shell extensions battery indicator for Sony DS4 Controller"
 arch=('any')
-url="https://bitbucket.org/thankjura/ds4battery"
+url="https://github.com/thankjura/ds4battery"
 license=('MIT')
 depends=('gnome-shell')
 makedepends=('git')
-source=("$pkgname::git+https://bitbucket.org/thankjura/ds4battery.git")
+source=("$pkgname::git+https://github.com/thankjura/ds4battery.git")
 sha256sums=('SKIP')
 
 pkgver() {
