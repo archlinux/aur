@@ -1,5 +1,5 @@
 pkgname=python-orange
-pkgver=3.26.0
+pkgver=3.27.1
 pkgrel=1
 pkgdesc="Open source data visualization and analysis for novice and experts. Data mining through visual programming or Python scripting."
 arch=('x86_64')
