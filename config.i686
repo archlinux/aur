@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.11.13-arch1 Kernel Configuration
+# Linux/x86 5.11.16-arch1 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 10.2.0"
 CONFIG_CC_IS_GCC=y
@@ -2239,7 +2239,7 @@ CONFIG_MTD_MAP_BANK_WIDTH_2=y
 CONFIG_MTD_MAP_BANK_WIDTH_4=y
 CONFIG_MTD_CFI_I1=y
 CONFIG_MTD_CFI_I2=y
-# CONFIG_MTD_RAM is not set
+CONFIG_MTD_RAM=m
 # CONFIG_MTD_ROM is not set
 # CONFIG_MTD_ABSENT is not set
 # end of RAM/ROM/Flash chip drivers
@@ -2248,8 +2248,9 @@ CONFIG_MTD_CFI_I2=y
 # Mapping drivers for chip access
 #
 # CONFIG_MTD_COMPLEX_MAPPINGS is not set
+# CONFIG_MTD_PHYSMAP is not set
 # CONFIG_MTD_INTEL_VR_NOR is not set
-# CONFIG_MTD_PLATRAM is not set
+CONFIG_MTD_PLATRAM=m
 # end of Mapping drivers for chip access
 
 #
@@ -6464,7 +6465,7 @@ CONFIG_FB_TILEBLITTING=y
 # CONFIG_FB_ASILIANT is not set
 # CONFIG_FB_IMSTT is not set
 # CONFIG_FB_VGA16 is not set
-# CONFIG_FB_UVESA is not set
+CONFIG_FB_UVESA=m
 CONFIG_FB_VESA=y
 CONFIG_FB_EFI=y
 # CONFIG_FB_N411 is not set
@@ -7332,7 +7333,7 @@ CONFIG_HID_ZEROPLUS=m
 CONFIG_ZEROPLUS_FF=y
 CONFIG_HID_ZYDACRON=m
 CONFIG_HID_SENSOR_HUB=m
-# CONFIG_HID_SENSOR_CUSTOM_SENSOR is not set
+CONFIG_HID_SENSOR_CUSTOM_SENSOR=m
 CONFIG_HID_ALPS=m
 CONFIG_HID_MCP2221=m
 # end of Special HID drivers
