@@ -1,7 +1,7 @@
 pkgbase = mlbv
 	pkgdesc = Command-line interface to MLB game information, schedule, scores, and standings.
 	pkgver = 0.0.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kmac/mlbv
 	arch = any
 	license = GPL3
