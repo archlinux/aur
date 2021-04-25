@@ -1,5 +1,5 @@
 pkgbase = virtualbox-svn
-	pkgver = 87670
+	pkgver = 88654
 	pkgrel = 2
 	url = http://virtualbox.org
 	arch = x86_64
@@ -67,7 +67,6 @@ pkgbase = virtualbox-svn
 	source = 013-Makefile.patch
 	source = 017-fix-narrowing-conversion.patch
 	source = 018-xclient.patch
-	source = 020-linux-5-11.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 76d98ea062fcad9e5e3fa981d046a6eb12a3e718a296544a68b66f4b65cb56db
@@ -88,10 +87,9 @@ pkgbase = virtualbox-svn
 	sha256sums = 13c6ca9be0f91582445fd2a14a8c58a0625a15d9cb98cb6e8c2736d77ea976ab
 	sha256sums = 053bfeee8863f3ffdf2f0e3f9f0d77dc61dd32764700a97a7635fd8611e20491
 	sha256sums = 81900e13d36630488accd8c0bfd2ceb69563fb2c4f0f171caba1cca59d438024
-	sha256sums = da7e58ed37dc23c6202aab3017864579a99e78417f3421ddcc98a198198fe2c9
+	sha256sums = baafc9aa33b7022f7e7f6af16f75621dc311abbea538bf953c227e040006fb3f
 	sha256sums = 5aac692909a0a0ec56b08bdece9e42cf7463abdca9da2f990d441ff463be6a99
 	sha256sums = cac5a573e9ed5aafb2f469c2e6fffb8cd4f389bbadba5a968c9f65be7a72fee3
-	sha256sums = a8fb9e4d0bb662a60953c17df79f60f225aaebf192bbd2319aa2b5d7a8a28bbc
 
 pkgname = virtualbox-svn
 	pkgdesc = Powerful x86 virtualization for enterprise as well as home use
