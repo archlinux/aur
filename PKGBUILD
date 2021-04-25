@@ -14,8 +14,12 @@ source=("https://github.com/nitroshare/$pkgname/archive/$pkgver/$pkgname-$pkgver
 sha256sums=('6505cf889909dc29bab4069116656e7ca5a9e879f04935139439c5691a76c55e')
 
 build() {
-  cmake -S $pkgname-$pkgver -B build -G Ninja -DCMAKE_INSTALL_PREFIX='/usr'
+  cmake -S $pkgname-$pkgver -B build -G Ninja -DCMAKE_INSTALL_PREFIX='/usr' -DBUILD_TESTS=ON
   cmake --build build
+}
+
+check(){
+  ctest --test-dir build
 }
 
 package() {
