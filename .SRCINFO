@@ -1,6 +1,6 @@
 pkgbase = python-louvain
 	pkgdesc = Louvain algorithm for community detection
-	pkgver = 0.14
+	pkgver = 0.15
 	pkgrel = 1
 	url = https://github.com/taynaud/python-louvain
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-louvain
 	makedepends = python-setuptools
 	depends = python-networkx
 	depends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/p/python-louvain/python-louvain-0.14.tar.gz
-	sha256sums = e0a50c7a1e87b45410cd2a1d6298268862e55edaa46f90ae6b834bbb62df0951
+	source = https://files.pythonhosted.org/packages/source/p/python-louvain/python-louvain-0.15.tar.gz
+	sha256sums = 2a856edfbe29952a60a5538a84bb78cca18f6884a88b9325e85a11c8dd4917eb
 
 pkgname = python-louvain
 
