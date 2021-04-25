@@ -2,20 +2,18 @@
 
 pkgname=sway-systemd-git
 pkgver=v0.1.1.r3.a57f982861b9d402
-pkgrel=1
-pkgdesc="Systemd integration for Sway session "
+pkgrel=2
+pkgdesc="Systemd integration for Sway session"
 arch=(any)
 url="https://github.com/alebastr/sway-systemd"
 license=("custom:MIT")
 depends=("python" "sway" "dbus" "python-dbus-next" "python-i3ipc" "python-psutil" "python-xlib")
 makedepends=("git" "meson")
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+conflicts=("${pkgname%-git} sway-services-git")
 source=('sway-systemd::git+https://github.com/alebastr/sway-systemd.git')
 sha512sums=('SKIP')
 
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
