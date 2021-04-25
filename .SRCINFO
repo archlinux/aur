@@ -1,6 +1,6 @@
 pkgbase = ncdns
 	pkgdesc = Namecoin to DNS bridge daemon
-	pkgver = 0.0.10.3
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/namecoin/ncdns
 	install = ncdns.install
@@ -11,9 +11,11 @@ pkgbase = ncdns
 	depends = libcap
 	optdepends = namecoin-core: the Namecoin node
 	backup = etc/ncdns.conf
-	source = ncdns-0.0.10.3.tar.gz::https://github.com/namecoin/ncdns/archive/v0.0.10.3.tar.gz
+	source = ncdns-0.1.2.tar.gz::https://github.com/namecoin/ncdns/archive/v0.1.2.tar.gz
+	source = x509-compressed-11c148e3a82a374dc8cc7800729ae31d1de3514b.tar.gz::https://github.com/namecoin/x509-compressed/archive/11c148e3a82a374dc8cc7800729ae31d1de3514b.tar.gz
 	source = ncdns.service
-	sha512sums = 6e6d25989edbcdf963c0e4275fe164a0726c142a0acbf7fe3e74c2a18da7dcf2fbe8f0a3a5877ac7b551614ff227dd085490c9cfab6c8dce8e891badd87087a0
+	sha512sums = a7b95bdaeb781f49f6bc70e4d43f6a513b48d46f279a2c1993002cf20ef63330799e32a7442db37cda84590d57a352e3bd2642db1d863cb858bd8de7d7741177
+	sha512sums = 6a78e4777ea041ccfb7299322cc2bf6ab0db10ad7a28c6f8ec8293409fd4af1638e0c91618b465b6b4fbbaf25bc2b8f32af0e08191713afe420620a8534c5910
 	sha512sums = 4fca961ae7fc17fbb159dc6cfe3bf6be52b7e1423f0c04591100780a72f250cb87263e3eb736b363d2e67dbd8485018cbaa720ccaa4450bb93d220f802b4be40
 
 pkgname = ncdns
