@@ -1,6 +1,6 @@
 pkgbase = pnpm
 	pkgdesc = Fast, disk space efficient package manager
-	pkgver = 6.1.0
+	pkgver = 6.2.1
 	pkgrel = 1
 	url = https://pnpm.js.org/
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = pnpm
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs>=12.17.0
-	noextract = pnpm-6.1.0.tgz
-	source = https://registry.npmjs.org/pnpm/-/pnpm-6.1.0.tgz
-	md5sums = 138ed86ec5b44f3ab302a8f4d185d11d
+	noextract = pnpm-6.2.1.tgz
+	source = https://registry.npmjs.org/pnpm/-/pnpm-6.2.1.tgz
+	md5sums = dbf87b26a4c177b726bd1354acd9fca6
 
 pkgname = pnpm
 
