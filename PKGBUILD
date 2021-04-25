@@ -7,10 +7,10 @@ arch=(any)
 url=https://pypi.python.org/pypi/fastimport
 license=('GPL')
 depends=(python2)
-makedepends=(python2-distutils-extra)
+makedepends=(git python2-distutils-extra python2-setuptools)
 provides=(python2-fastimport)
 conflicts=(python2-fastimport)
-source=($pkgname::git://github.com/jelmer/python-fastimport)
+source=($pkgname::git+https://github.com/jelmer/python-fastimport)
 sha512sums=(SKIP)
 
 pkgver() {
