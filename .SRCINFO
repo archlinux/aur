@@ -1,6 +1,6 @@
 pkgbase = marp-cli
 	pkgdesc = A CLI interface for Marp and Marpit based converters
-	pkgver = 0.23.3
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/marp-team/marp-cli
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = marp-cli
 	conflicts = marp-cli-bin
 	replaces = marp
 	options = !strip
-	source = https://registry.npmjs.org/@marp-team/marp-cli/-/marp-cli-0.23.3.tgz
-	sha256sums = 26ca79a293209266006393ece6e67051bd33a92d46ec4acfc0cb009acc1d93c2
+	source = https://registry.npmjs.org/@marp-team/marp-cli/-/marp-cli-1.0.0.tgz
+	sha256sums = da9338ce328efa2870c393577e0e609f71e8a46b6b1aa910eb8b004494f6e840
 
 pkgname = marp-cli
 
