@@ -1,0 +1,18 @@
+[Unit]
+Description=Template (:%i) rendering, notifier, and supervisor for HashiCorp Consul and Vault
+Documentation=https://github.com/hashicorp/consul-template
+PartOf=consul-template.target
+
+[Service]
+
+# You want to run Consul-template as a non root user, particularly when using it in exec mode
+# User=consul
+# Group=consul
+
+EnvironmentFile=-/etc/default/consul-template
+ExecStart=/usr/bin/consul-template -config /etc/consul-template.d/%i.hcl
+ExecReload=/usr/bin/kill -HUP $MAINPID
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target
