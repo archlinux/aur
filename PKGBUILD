@@ -1,9 +1,9 @@
-# Maintainer: Vyacheslav Konovalov <f4f7l1hvr@relay.firefox.com>
+# Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=polaris
-pkgver=0.13.4
+pkgver=0.13.5
 _webver=build-50
-pkgrel=2
+pkgrel=1
 pkgdesc='Music streaming application, designed to let you enjoy your music collection from any computer or mobile device'
 arch=('x86_64')
 url='https://github.com/agersant/polaris'
@@ -12,7 +12,7 @@ depends=('openssl' 'sqlite')
 makedepends=('cargo' 'npm')
 backup=('etc/polaris/config.toml')
 source=(
-    "$url/archive/$pkgver.tar.gz"
+    "https://github.com/agersant/polaris/archive/$pkgver.tar.gz"
     "https://github.com/agersant/polaris-web/archive/$_webver.tar.gz"
     'config.toml'
     'polaris.tmpfiles'
@@ -20,7 +20,7 @@ source=(
     'polaris.service'
 )
 sha512sums=(
-    'dddb9bb2af472a7cf4478ffeaccfa932cf774100169ac371946d579e5abadf4777cd39de88c8f0935cad866fecf3d8cab0cf078a6bfe2ec9d8720e48be27e051'
+    '968d012337102b1fd178940b2bcf1976e479efa37cbc68775e97800afbcf37a85048d5f988142057c067c69a25058b4e9aaacdc8bf362c2c8a31077ca909670e'
     '1566df56a0e4dfbd454d8aeddd20b37f67d7747e53eef47b35a110e9217fbe25e96994d83247d0b6c32593a799aa7b8d31745c5f5d0b364319a39cc55908762b'
     '2e4fe41b394508cb6a767a5b5732745d48d08c32967f66696934346e78f42de529ae47b3102d269198781c04f76cdf8c15555f5090f6b08bce09b2a0c13779ff'
     'ca327748ca9c297a8facede92b6e8e8aa0c040228b1d84c5754b5f10a8e8a60a8a13b4e4db501b1bdd3c24ff13bec6ec0eec7dc3f2881ba6de72bf095e936644'
