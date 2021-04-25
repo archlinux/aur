@@ -12,7 +12,7 @@ depends=('libcap>=2')
 source=("https://mirror.bettercrewl.ink/pc/latest/BetterCrewlink-Linux.AppImage"
         "bettercrewlink.desktop"
         "https://github.com/OhMyGuus/BetterCrewLink/raw/nightly/logo.png")
-md5sums=('719bb613dad5b2add4e65a238431e936'
+md5sums=('SKIP'
          '617a6fc40e38cb2be31a1541e39fcf96'
          '9aa2c25d72fa9c16b52dbc04699021e7')
 options=(!strip libtool emptydirs staticlibs)
