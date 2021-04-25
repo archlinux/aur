@@ -2,15 +2,15 @@
 
 pkgname=teleport-share-git
 _pkgname=teleport
-pkgver=0.0.1.r231.3610dff
+pkgver=0.0.1.r233.d90681d
 pkgrel=1
 pkgdesc="Send files on the local network"
 arch=('x86_64')
-url="https://github.com/frac-tion/teleport"
+url="https://gitlab.gnome.org/jsparber/teleport"
 license=('AGPL')
 depends=('libsoup' 'avahi' 'gtk3')
 makedepends=('git' 'meson')
-source=("git+https://github.com/frac-tion/teleport")
+source=("git+https://gitlab.gnome.org/jsparber/teleport.git")
 md5sums=('SKIP')
 
 pkgver() {
