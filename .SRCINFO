@@ -1,0 +1,22 @@
+pkgbase = mx
+	pkgdesc = A widget toolkit using Clutter
+	pkgver = 1.4.7+13+g24efb0cc
+	pkgrel = 3
+	url = http://www.clutter-project.org
+	arch = x86_64
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = intltool
+	makedepends = libtool
+	makedepends = vala
+	makedepends = git
+	depends = clutter
+	depends = dbus-glib
+	depends = gtk2
+	depends = startup-notification
+	source = git+https://github.com/clutter-project/mx#commit=24efb0cc16007bee02d3b077e8e11cfb5747b256
+	sha256sums = SKIP
+
+pkgname = mx
+
