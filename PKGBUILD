@@ -1,4 +1,6 @@
 # Maintainer: Carson Rueter <roachh at proton mail dot com>
+# Maintainer: Icelk <main at icelk.dev>
+
 pkgname=vscodium-bin-marketplace
 pkgver=1.55.2
 pkgrel=1
