@@ -7,8 +7,8 @@ ENABLE_APPINDICATOR=1
 ENABLE_GNOME=0
 
 pkgname=pamac-all
-pkgver=10.0.5
-pkgrel=3
+pkgver=10.1.0
+pkgrel=1
 _pkgfixver=$pkgver
 
 pkgdesc="A Gtk3 frontend for libalpm (everything in one package - snap, flatpak, appindicator)"
@@ -25,12 +25,8 @@ conflicts=('pamac' 'pamac-gtk' 'pamac-cli' 'pamac-common' 'pamac-aur' 'pamac-aur
 provides=("pamac" "pamac-aur" "pamac-aur-git")
 options=(!emptydirs)
 install=pamac.install
-source=("pamac-$pkgver.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.gz"
-        "build.patch"
-        "gnome-40.patch") 
-sha256sums=('3650d0a2d9633d27ee465ecaaaf33fa1255b4d44d1034433b2a2f16d963521b0'
-            'bcb9c3cafac802342cb597dadbe6d0384a3c8b2e462bbc46464fbf9c4c7497c7'
-            '7246c8a0424c08870acb448c57d0a90ca5f675dc8e15e118ee8c13930ba584e1')
+source=("pamac-$pkgver.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.gz") 
+sha256sums=('d62fff34f5be9fa7921c5381c59fbf0bd48b52d475b8fffc96b39afb84cc4bbb')
 define_meson=''
 if [ "${ENABLE_FLATPAK}" = 1 ]; then
   depends+=('flatpak')
@@ -63,8 +59,6 @@ prepare() {
   cd "$srcdir/pamac-v$pkgver"
   # adjust version string
   sed -i -e "s|\"$_pkgfixver\"|\"$pkgver-$pkgrel\"|g" src/version.vala
-  patch -Np1 -i ../gnome-40.patch
-  patch -Np1 -i ../build.patch
 }
 
 build() {
