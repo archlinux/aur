@@ -1,20 +1,20 @@
 pkgbase = ssg
 	pkgdesc = static site generator written on POSIX shell
 	pkgver = 6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.romanzolotarev.com
 	arch = any
 	license = ISC
 	depends = sh
-	depends = lowdown
 	depends = cpio
+	optdepends = lowdown: better/advanced HTML translation (than the included Markdown.pl)
 	provides = ssg
 	conflicts = ssg5
 	conflicts = ssg6
 	conflicts = ssg7
 	source = https://www.romanzolotarev.com/bin/ssg6
 	source = https://www.romanzolotarev.com/bin/Markdown.pl
-	sha1sums = 53a8a94c50f4798434c05050606dd306cf9602f2
+	sha1sums = 5e862a1bce0c1a5bd9d41a3c1e9ac29707f3bd4a
 	sha1sums = 3ff20882221ba2ea73fc11e640ee0c4e1fb39bbf
 
 pkgname = ssg
