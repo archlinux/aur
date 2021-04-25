@@ -1,5 +1,5 @@
 # ex: ts=2 sts=2 sw=2 et
-# Maintainer: maniacata <yhfudev at gmail dot com>
+# Maintainer: maniacata <maniaciachao at gmail dot com>
 # Contributor: yhfudev <yhfudev at gmail dot com>
 # Contributor: veox <veox at wemakethings dot net>
 # Contributor: Nick Østergaard <oe.nick at gmail dot com>
