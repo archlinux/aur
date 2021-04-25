@@ -7,14 +7,14 @@ _pkgbin=ledger-live-desktop
 pkgname=ledger-live
 pkgdesc="Ledger Live - Desktop"
 pkgver=2.25.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live-desktop'
 license=('MIT')
 depends=('ledger-udev')
 makedepends=('yarn' 'python' 'nodejs>=12')
 provides=('ledger-live')
-conflicts=('ledger-live-bin')
+conflicts=('ledger-live-bin' 'ledger-live-git')
 source=("https://github.com/LedgerHQ/ledger-live-desktop/archive/v${pkgver}.tar.gz"
         "ledger-live-desktop.desktop")
 sha512sums=('33c03e3319c188127d4ae7a0f3f5c4007d719d2691f9e6c04347acbce6b5f30fa2dff792ca940f77c9aeab0ab42d7737f86fd9cd8d0a4e006911a3d4383d8430'
