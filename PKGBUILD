@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/$pkgname"
-    make FC=gfortran all
+    make FC="${FC-gfortran -fallow-argument-mismatch}" all
 }
 
 package() {
