@@ -1,18 +1,19 @@
 pkgbase = nautilus-hide
-	pkgdesc = Extension for Nautilus to hide files without renaming them
-	pkgver = 0.2.1
+	pkgdesc = A simple Nautilus extension that adds "Hide" and "Unhide" to Nautilus right-click menu
+	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://github.com/brunonova/nautilus-hide
+	url = https://gitlab.gnome.org/madmurphy/nautilus-hide
 	install = nautilus-hide.install
-	arch = any
-	license = GPL3
-	makedepends = cmake>=2.6
-	makedepends = gettext
-	depends = nautilus
-	depends = python-nautilus
-	depends = xdotool
-	source = https://github.com/brunonova/nautilus-hide/releases/download/v0.2.1/nautilus-hide_0.2.1.tar.xz
-	md5sums = 7eea2effd69b779f8caddb480352fb68
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = glib2
+	depends = libnautilus-extension
+	conflicts = nautilus-hide-git
+	conflicts = nautilus-hide-bin
+	source = https://gitlab.gnome.org/madmurphy/nautilus-hide/-/archive/0.1.0/nautilus-hide-0.1.0.tar.gz
+	sha256sums = 5accaef09428f86cc8f862330b830f664d890690386e677d91ce0600dd0a464a
 
 pkgname = nautilus-hide
 

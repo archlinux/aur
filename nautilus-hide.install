@@ -1,3 +1,7 @@
 post_install() {
-	echo 'Nautilus, if running, must be restarted for this extension to work (execute "nautilus -q").'
+	echo
+	echo 'After installing this package don'\''t forget to restart Nautilus, with'
+	echo
+	echo '    nautilus -q'
+	echo
 }

@@ -1,27 +1,38 @@
-# Maintainer: Bruno Nova <brunomb.nova@gmail.com>
-pkgname=nautilus-hide
-pkgver=0.2.1
+# Maintainer: grufo <madmurphy333 AT gmail DOT com>
+
+pkgname='nautilus-hide'
+pkgver='0.1.0'
 pkgrel=1
-pkgdesc="Extension for Nautilus to hide files without renaming them"
-arch=('any')
-url="https://github.com/brunonova/$pkgname"
-license=('GPL3')
-depends=('nautilus' 'python-nautilus' 'xdotool')
-makedepends=('cmake>=2.6' 'gettext')
-install="$pkgname.install"
-source=("https://github.com/brunonova/$pkgname/releases/download/v$pkgver/${pkgname}_$pkgver.tar.xz")
-md5sums=('7eea2effd69b779f8caddb480352fb68')
+pkgdesc='A simple Nautilus extension that adds "Hide" and "Unhide" to Nautilus right-click menu'
+arch=('i686' 'x86_64')
+url='https://gitlab.gnome.org/madmurphy/nautilus-hide'
+license=('GPL')
+depends=('glib2' 'libnautilus-extension')
+makedepends=('intltool')
+conflicts=("${pkgname}-git" "${pkgname}-bin")
+source=("https://gitlab.gnome.org/madmurphy/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+install="${pkgname}.install"
+sha256sums=('5accaef09428f86cc8f862330b830f664d890690386e677d91ce0600dd0a464a')
+
+prepare() {
+
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	./bootstrap --noconfigure
+
+}
 
 build() {
-	cd "$srcdir"
-	cmake . -DCMAKE_INSTALL_PREFIX=/usr
+
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	./configure --prefix=/usr
 	make
+
 }
 
 package() {
-	cd "$srcdir"
-	make DESTDIR="$pkgdir" install
-	install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-	install -Dm644 "NEWS" "$pkgdir/usr/share/doc/$pkgname/NEWS"
-	install -Dm644 "AUTHORS" "$pkgdir/usr/share/doc/$pkgname/AUTHORS"
+
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	make DESTDIR="${pkgdir}" install
+
 }
+
