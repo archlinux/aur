@@ -3,7 +3,7 @@
 _gemname=serverengine
 pkgname=ruby-$_gemname
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A framework to implement robust multiprocess servers'
 arch=(x86_64)
 url='https://github.com/treasure-data/serverengine'

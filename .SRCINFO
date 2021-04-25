@@ -1,7 +1,7 @@
 pkgbase = ruby-serverengine
 	pkgdesc = A framework to implement robust multiprocess servers
 	pkgver = 2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/treasure-data/serverengine
 	arch = x86_64
 	license = Apache
