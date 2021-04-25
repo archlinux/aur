@@ -1,17 +1,7 @@
 pre_install() {
-    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-
     localedef pt_BR.ISO8859-1 -i pt_BR -f ISO-8859-1
-
-    update-desktop-database -q
 }
 
 pre_upgrade() {
     pre_install
-}
-
-post_remove() {
-    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-
-    update-desktop-database -q
 }

@@ -3,7 +3,7 @@
 pkgbase=shodo
 pkgname=${pkgbase}
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="Assinador fornecido pela Justiça do Trabalho para realizar assinaturas digitais no PJe"
 url="https://pje.csjt.jus.br/manual/index.php/Shod%C5%8D"
@@ -32,7 +32,8 @@ Name=Shodõ - Assinador Digital
 Comment=Assinador fornecido pela Justiça do Trabalho para realizar assinaturas digitais no PJe
 Exec=${pkgbase}
 Icon=${pkgbase}
-Categories=Utility;"
+Categories=Utility;
+StartupWMClass=br-jus-csjt-assinadorjt-Main"
 
 build() {
     cd "${srcdir}"

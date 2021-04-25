@@ -1,7 +1,7 @@
 pkgbase = shodo
 	pkgdesc = Assinador fornecido pela Justiça do Trabalho para realizar assinaturas digitais no PJe
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pje.csjt.jus.br/manual/index.php/Shod%C5%8D
 	install = shodo.install
 	arch = any
