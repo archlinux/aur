@@ -3,17 +3,18 @@
 
 pkgname=ssg
 pkgver=6
-pkgrel=1
+pkgrel=2
 pkgdesc='static site generator written on POSIX shell'
 url='https://www.romanzolotarev.com'
 license=('ISC')
 arch=('any')
-depends=('sh' 'lowdown' 'cpio')
+depends=('sh' 'cpio')
+optdepends=('lowdown: better/advanced HTML translation (than the included Markdown.pl)')
 provides=('ssg')
 conflicts=('ssg5' 'ssg6' 'ssg7')
 source=("${url}/bin/${pkgname}${pkgver}"
         "${url}/bin/Markdown.pl")
-sha1sums=("53a8a94c50f4798434c05050606dd306cf9602f2"
+sha1sums=("5e862a1bce0c1a5bd9d41a3c1e9ac29707f3bd4a"
           "3ff20882221ba2ea73fc11e640ee0c4e1fb39bbf")
 
 build() {
