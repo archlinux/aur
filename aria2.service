@@ -3,7 +3,7 @@ Description=Aria2 Service
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/aria2c --enable-rpc --rpc-listen-all --rpc-allow-origin-all --save-session /etc/aria2/session.lock --input-file /etc/aria2/session.lock --conf-path=/etc/aria2/aria2.conf
+ExecStart=/etc/aria2/start-daemon.sh
 
 [Install]
 WantedBy=default.target

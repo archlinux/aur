@@ -1,0 +1,106 @@
+
+# 下载位置
+dir=Downloads/aria2
+# RPC端口
+rpc-listen-port=6800
+
+
+## 下载设置 ##
+
+# 断点续传
+continue=true
+# 最大同时下载任务数
+max-concurrent-downloads=5
+# 单个任务最大线程数
+split=16
+# 最小文件分片大小, 添加时可指定, 取值范围1M -1024M, 默认:20M
+min-split-size=1M
+# 同一服务器连接数
+max-connection-per-server=16
+# 断开速度过慢的连接
+lowest-speed-limit=0
+# 整体下载速度限制
+max-overall-download-limit=0
+# 单个任务下载速度限制
+max-download-limit=0
+# 整体上传速度限制
+max-overall-upload-limit=0
+# 单个任务上传速度限制
+max-upload-limit=0
+# 禁用IPv6
+disable-ipv6=false
+# 当服务器返回503错误时, aria2会尝试重连
+# 尝试重连次数, 0代表无限, 默认:5
+max-tries=5
+# 重连冷却, 默认:0
+retry-wait=0
+
+## 进度保存相关 ##
+
+# 读取会话
+#input-file=.config/arai2/session.lock
+# 保存会话
+#save-session=.config/arai2/session.lock
+# 定时保存会话, 0为退出时才保存, 需1.16.1以上版本, 默认:0
+save-session-interval=30
+# 强制保存会话, 即使任务已经完成, 默认:false
+# 较新的版本开启后会在任务完成后依然保留.aria2文件
+force-save=true
+
+## RPC相关设置 ##
+
+# 启用RPC, 默认:false
+enable-rpc=true
+# 允许所有来源, 默认:false
+rpc-allow-origin-all=true
+# 允许非外部访问, 默认:false
+rpc-listen-all=true
+# 事件轮询方式, 取值:[epoll, kqueue, port, poll, select], 不同系统默认值不同
+event-poll=epoll
+# 设置的RPC授权令牌, v1.18.4新增功能, 取代 --rpc-user 和 --rpc-passwd 选项
+#rpc-secret=<TOKEN>
+
+## BT/PT下载相关 ##
+
+# 当下载的是一个种子(以.torrent结尾)时, 自动开始BT任务, 默认:true
+follow-torrent=true
+# BT监听端口, 当端口被屏蔽时使用, 默认:6881-6999
+#listen-port=51413
+# 单个种子最大连接数, 默认:55
+bt-max-peers=55
+# 打开DHT功能, PT需要禁用, 默认:true
+enable-dht=false
+# 打开IPv6 DHT功能, PT需要禁用, 默认:true
+#enable-dht6=false
+# DHT网络监听端口, 默认:6881-6999
+#dht-listen-port=6881-6999
+# 本地节点查找, PT需要禁用, 默认:false
+bt-enable-lpd=false
+# 种子交换, PT需要禁用, 默认:true
+enable-peer-exchange=false
+# 每个种子限速, 对少种的PT很有用, 默认:50K
+#bt-request-peer-speed-limit=50K
+# 客户端伪装, PT需要
+peer-id-prefix=-TR2770-
+user-agent=Transmission/2.77
+# 当种子的分享率达到这个数时, 自动停止做种, 0为一直做种, 默认:1.0
+seed-ratio=0
+# BT校验相关, 默认:true
+bt-hash-check-seed=true
+# 继续之前的BT任务时, 无需再次校验, 默认:false
+bt-seed-unverified=true
+# 保存磁力链接元数据为种子文件(.torrent文件), 默认:false
+bt-save-metadata=true
+# 强制加密, 防迅雷必备
+bt-require-crypto=true
+
+## 磁盘相关 ##
+
+#文件保存路径, 默认为当前启动位置
+
+#另一种Linux文件缓存方式, 使用前确保您使用的内核支持此选项, 需要1.15及以上版本(?)
+enable-mmap=true
+# 文件预分配方式, 能有效降低磁盘碎片, 默认:prealloc
+file-allocation=trunc
+# 启用磁盘缓存, 0为禁用缓存, 需1.16以上版本, 默认:16M
+disk-cache=64M
