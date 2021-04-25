@@ -8,7 +8,7 @@
 
 pkgname=firefox-wayland-hg
 _pkgname=firefox
-pkgver=r635306.b898442a9527
+pkgver=r644365.60929718b9c0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org (mozilla-unified hg, release branding, targeting wayland)"
 arch=(x86_64)
@@ -33,7 +33,7 @@ provides=('firefox')
 source=("hg+$_repo#revision=autoland"
         $_pkgname.desktop $_pkgname-symbolic.svg)
 sha256sums=('SKIP'
-            'a9e5264257041c0b968425b5c97436ba48e8d294e1a0f02c59c35461ea245c33'
+            '5e225b788ab184bbb058db222303635dd056e98bde82e882b45124a2a0d676f1'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)

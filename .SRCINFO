@@ -1,6 +1,6 @@
 pkgbase = firefox-wayland-hg
 	pkgdesc = Standalone web browser from mozilla.org (mozilla-unified hg, release branding, targeting wayland)
-	pkgver = r635306.b898442a9527
+	pkgver = r644365.60929718b9c0
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
@@ -60,7 +60,7 @@ pkgbase = firefox-wayland-hg
 	source = firefox.desktop
 	source = firefox-symbolic.svg
 	sha256sums = SKIP
-	sha256sums = a9e5264257041c0b968425b5c97436ba48e8d294e1a0f02c59c35461ea245c33
+	sha256sums = 5e225b788ab184bbb058db222303635dd056e98bde82e882b45124a2a0d676f1
 	sha256sums = 9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797
 
 pkgname = firefox-wayland-hg
