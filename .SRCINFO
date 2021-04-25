@@ -1,7 +1,7 @@
 pkgbase = notion-app
 	pkgdesc = The all-in-one workspace for your notes and tasks
 	pkgver = 2.0.16
-	pkgrel = 7
+	pkgrel = 8
 	epoch = 2
 	url = https://www.notion.so/desktop
 	arch = i686
@@ -15,13 +15,10 @@ pkgbase = notion-app
 	depends = re2
 	depends = gtk3
 	depends = xdg-utils
-	optdepends = notion-enhancer: enhancements and fixes
 	source = Notion-2.0.16.exe::https://desktop-release.notion-static.com/Notion%20Setup%202.0.16.exe
 	source = notion-app.desktop
-	source = exit-after-windows-closed.patch
 	md5sums = 9f72284086cda3977f7f569dff3974d5
 	md5sums = 257f3106e5d9364ef2df557a656cd8e7
-	md5sums = aaa50ed0208c4d6d31f553fd3bd46b1c
 
 pkgname = notion-app
 
