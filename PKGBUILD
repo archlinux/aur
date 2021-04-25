@@ -1,7 +1,7 @@
 # Maintainer: Julien Nicoulaud <julien DOT nicoulaud AT gmail DOT com>
 pkgname=colin
-pkgver=0.4.0
-pkgrel=3
+pkgver=0.5.0
+pkgrel=1
 pkgdesc='Tool to check generic rules/best-practices for containers/images/dockerfiles.'
 arch=(any)
 url='https://github.com/user-cont/colin'
@@ -19,7 +19,7 @@ optdepends=('podman: for checking image target-type'
 makedepends=('python-setuptools')
 conflicts=("${pkgname}-git")
 source=("https://github.com/user-cont/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('34d830b68eeeb6384c12074202343ae0a1bb12e2a7fd7c869b04075e1e8df941896ac30c66f7fa1ed8482c8bd4c68f64ae920b105181e3f0f7303b5fb645020b')
+sha512sums=('01685bd681bb5482e8a6f284613a0aa303df64eba1b53824dbbc89fe9cd92b8cdd9585ccdac5bb67d023007c572c210c821cd9d5d0a81577c91de3671a15e8a6')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

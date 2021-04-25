@@ -1,7 +1,7 @@
 pkgbase = colin
 	pkgdesc = Tool to check generic rules/best-practices for containers/images/dockerfiles.
-	pkgver = 0.4.0
-	pkgrel = 3
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://github.com/user-cont/colin
 	arch = any
 	license = GPL3
@@ -17,8 +17,8 @@ pkgbase = colin
 	optdepends = atomic: to use ostree target
 	optdepends = skopeo: to use ostree target
 	conflicts = colin-git
-	source = https://github.com/user-cont/colin/archive/0.4.0.tar.gz
-	sha512sums = 34d830b68eeeb6384c12074202343ae0a1bb12e2a7fd7c869b04075e1e8df941896ac30c66f7fa1ed8482c8bd4c68f64ae920b105181e3f0f7303b5fb645020b
+	source = https://github.com/user-cont/colin/archive/0.5.0.tar.gz
+	sha512sums = 01685bd681bb5482e8a6f284613a0aa303df64eba1b53824dbbc89fe9cd92b8cdd9585ccdac5bb67d023007c572c210c821cd9d5d0a81577c91de3671a15e8a6
 
 pkgname = colin
 
