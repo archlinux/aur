@@ -2,7 +2,7 @@
 
 pkgname=argagg
 pkgver=0.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple C++ command line argument/option parser'
 arch=('any')
 url='https://github.com/vietjtnguyen/argagg'

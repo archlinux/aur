@@ -1,9 +1,9 @@
 pkgbase = argagg
 	pkgdesc = Simple C++ command line argument/option parser
 	pkgver = 0.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vietjtnguyen/argagg
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = cmake
 	makedepends = doxygen
