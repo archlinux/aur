@@ -1,14 +1,14 @@
-# Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com > 
+# Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=buho-git
-pkgver=v1.1.1.r12.g2e51dd7
-pkgrel=2
+pkgver=v1.2.1.r10.g610d337
+pkgrel=1
 pkgdesc="Task and Note Keeper"
 arch=('x86_64')
 groups=('maui-apps')
 url="https://invent.kde.org/maui/buho"
 license=('GPL3')
-depends=('ki18n' 'qt5-webview' 'mauikit-git' 'kio' 'syntax-highlighting' 'attica')
+depends=('ki18n' 'qt5-webview' 'mauikit-git' 'kio' 'syntax-highlighting' 'attica' 'mauikit-filebrowsing-git')
 makedepends=('git' 'extra-cmake-modules')
 provides=('buho')
 conflicts=('buho')
@@ -23,23 +23,11 @@ pkgver() {
   )
 }
 
-prepare() {
-  cd "${pkgname%-git}"
-  mkdir build
+build() {
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -B build -S "${pkgname%-git}"
+  make -C build
 }
 
-build() {
-  cd "${pkgname%-git}/build"
-  cmake .. \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib
-  make
-}
- 
 package() {
-  cd "${pkgname%-git}/build"
-  install -d "$pkgdir/usr/share/icons/hicolor/scalable/apps"
-  install -Dm644 ../src/assets/buho.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/buho.svg"
-  make DESTDIR="$pkgdir" install
+  make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
 }

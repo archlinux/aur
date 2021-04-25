@@ -1,7 +1,7 @@
 pkgbase = buho-git
 	pkgdesc = Task and Note Keeper
-	pkgver = v1.1.1.r12.g2e51dd7
-	pkgrel = 2
+	pkgver = v1.2.1.r10.g610d337
+	pkgrel = 1
 	url = https://invent.kde.org/maui/buho
 	arch = x86_64
 	groups = maui-apps
@@ -14,6 +14,7 @@ pkgbase = buho-git
 	depends = kio
 	depends = syntax-highlighting
 	depends = attica
+	depends = mauikit-filebrowsing-git
 	provides = buho
 	conflicts = buho
 	source = git+https://invent.kde.org/maui/buho.git
