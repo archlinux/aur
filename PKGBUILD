@@ -3,7 +3,7 @@
 
 _gemname=jwt
 pkgname=ruby-${_gemname}
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc='JSON Web Token implementation in Ruby'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('ruby' 'ruby-rdoc')
 makedepends=('ruby-rake')
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem"
         "LICENSE")
-sha256sums=('56a47115e514b9cfba93b8067332462a74ecbcea843a0784bc7a208203f6d693'
+sha256sums=('da2d43a5f7ff46037abd426574ce558adf1409ac83f09a88aee58804982bd10c'
             'b9f95c496bd9dba93a2b6ee6382f4692918e8648f2d9dab03e93457f8b71ac4c')
 
 package() {
