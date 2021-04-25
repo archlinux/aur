@@ -8,3 +8,30 @@ KillMode=process
 
 [Install]
 WantedBy=multi-user.target
+
+[Unit]
+Description=YADIFA Domain Name Server
+Documentation=man:yadifad(8)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/yadifad --nodaemon
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+CapabilityBoundingSet=CAP_CHOWN CAP_DAC_OVERRIDE CAP_IPC_LOCK CAP_NET_BIND_SERVICE CAP_SETGID CAP_SETUID CAP_SYS_CHROOT
+MemoryDenyWriteExecute=true
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateTmp=true
+ProtectHome=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectSystem=strict
+ReadOnlyPaths=/etc/yadifa
+ReadWritePaths=/run /var/lib/yadifa /var/log/yadifa
+RestrictRealtime=true
+
+[Install]
+WantedBy=multi-user.target
