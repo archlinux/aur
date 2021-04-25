@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f9785621..4f03d83e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -15,7 +15,7 @@ endif()
+ include(${CPM_DOWNLOAD_LOCATION})
+ # -----------------------------------------------------------------------------
+ 
+-set(BUILD_SHARED_LIBS true)
++set(BUILD_SHARED_LIBS false)
+ set(SFML_STATIC_LIBRARIES false)
+ set(USE_LUAJIT true)
+ 

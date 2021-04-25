@@ -1,9 +1,8 @@
 #!/bin/sh
 
-if id --name --groups --zero | grep --quiet --null-data --line-regexp --fixed-strings 'games'; then
-	cd /usr/lib/open-hexagon
-	./SSVOpenHexagon
-else
-	zenity --error --text="Your user must be in 'games' group."
-	exit 1
+id -nG | grep -qE '[ ^]games[ $]'
+if [ "${?}" -ne 0 ]; then
+  zenity --error --text="Your user must be in 'games' group."
+  exit 1
 fi
+LD_LIBRARY_PATH="$(dirname "$(readlink -f "${0}")")/../lib/open-hexagon${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}" ../lib/open-hexagon/SSVOpenHexagon
