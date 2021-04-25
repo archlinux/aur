@@ -1,11 +1,11 @@
 # Maintainer: Henil <henil2911 + aur at gmail <.> com>
 pkgname=zellij-git
 _pkgname=zellij
-pkgver=r494.7bbd5e2
+pkgver=r554.d89e3e9
 _pkgver=0.1
 pkgrel=1
 epoch=
-pkgdesc="Terminal Workspace (WIP)"
+pkgdesc="A terminal workspace with batteries included"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://www.github.com/zellij-org/zellij"
 license=('MIT')
@@ -24,6 +24,10 @@ build() {
     cd "$srcdir/$_pkgname"
     cargo install --force cargo-make
     cargo make install ./zellij
+    mkdir -p assets/completions
+    ./zellij generate-completion bash > assets/completions/zellij.bash
+    ./zellij generate-completion fish > assets/completions/zellij.fish
+    ./zellij generate-completion zsh > assets/completions/_zellij
 }
 
 package() {
