@@ -1,5 +1,4 @@
-# Maintainer: K. Hampf <khampf@users.sourceforge.net>
-# Contributor: AndyRTR <andyrtr@archlinux.org>
+# Maintainer: sem.z <sem.z@protonmail.com>
 
 pkgname=gsdjvu
 pkgver=1.10
