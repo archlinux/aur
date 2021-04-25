@@ -3,7 +3,7 @@
 _gemname=strptime
 pkgname=ruby-$_gemname
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='a fast strptime/strftime engine'
 arch=(x86_64)
 url='https://github.com/nurse/strptime'

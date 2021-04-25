@@ -1,7 +1,7 @@
 pkgbase = ruby-strptime
 	pkgdesc = a fast strptime/strftime engine
 	pkgver = 0.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nurse/strptime
 	arch = x86_64
 	license = BSD
