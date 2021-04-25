@@ -22,7 +22,7 @@ prepare() {
 
 build() {
   cd Penguin-Subtitle-Player-$pkgver
-  qmake PREFIX=/usr PenguinSubtitlePlayer.pro
+  qmake-qt5 PREFIX=/usr PenguinSubtitlePlayer.pro
   make
 }
 
