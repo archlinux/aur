@@ -1,7 +1,7 @@
 pkgbase = solvespace
 	pkgdesc = A parametric 3d CAD program
-	pkgver = 2.3
-	pkgrel = 3
+	pkgver = 3.0
+	pkgrel = 0
 	url = http://solvespace.com/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = solvespace
 	depends = json-c
 	depends = glew
 	depends = gtkmm
-	source = solvespace::git+https://github.com/solvespace/solvespace.git#tag=v2.3
+	source = solvespace::git+https://github.com/solvespace/solvespace.git#tag=v3.0
 	sha256sums = SKIP
 
 pkgname = solvespace
