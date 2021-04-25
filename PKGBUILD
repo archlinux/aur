@@ -22,7 +22,7 @@ prepare() {
 build() {
   cd $pkgname-$pkgver
   lrelease src/QXmlEdit.pro src/QXmlEditWidget.pro src/sessions/QXmlEditSessions.pro
-  qmake \
+  qmake-qt5 \
     QXMLEDIT_INST_DIR=/usr/bin \
     QXMLEDIT_INST_LIB_DIR=/usr/lib \
     QXMLEDIT_INST_INCLUDE_DIR=/usr/include/$pkgname \
