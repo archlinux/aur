@@ -32,7 +32,7 @@ check() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-	cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   go test
 }
 
