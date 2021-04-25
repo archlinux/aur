@@ -1,7 +1,7 @@
 pkgbase = dexed-git
 	pkgdesc = A software synth closely modelled on the Yamaha DX7 (git version)
 	pkgver = 0.9.6.r0.g11ae4d7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://asb2m10.github.io/dexed/
 	changelog = ChangeLog
 	arch = i686

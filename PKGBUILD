@@ -4,7 +4,7 @@ _pkgname=dexed
 _juce_version=6.0.7
 pkgname="${_pkgname}-git"
 pkgver=0.9.6.r0.g11ae4d7
-pkgrel=1
+pkgrel=2
 pkgdesc="A software synth closely modelled on the Yamaha DX7 (git version)"
 arch=('i686' 'x86_64')
 url="http://asb2m10.github.io/dexed/"
@@ -64,7 +64,7 @@ package() {
 
   # install VST plugin
   install -Dm755 Builds/Linux/build/Dexed.vst3/Contents/$(uname -m)-linux/Dexed.so \
-    -t "${pkgdir}/usr/lib/vst/Dexed.vst3/Contents/$(uname -m)-linux/"
+    -t "${pkgdir}/usr/lib/vst3/Dexed.vst3/Contents/$(uname -m)-linux/"
   # install standalone program
   install -Dm755 Builds/Linux/build/Dexed \
     "${pkgdir}/usr/bin/dexed"
