@@ -1,6 +1,6 @@
 pkgbase = sd-boot-helper-git
 	pkgdesc = Add/Update/Remove sd-boot entries automatically
-	pkgver = r14.09c5751
+	pkgver = r17.ebc9707
 	pkgrel = 1
 	url = https://github.com/ahmubashshir/sd-boot-helper
 	arch = any
