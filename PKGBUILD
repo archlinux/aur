@@ -7,7 +7,7 @@ pkgdesc="Hancom office programs provided by Hancom. Ported to Arch Linux from Ha
 arch=('x86_64')
 url='https://www.hancom.com/'
 license=('custom:hancomoffice')
-depends=('harfbuzz-icu' 'libcurl-gnutls' )
+depends=('harfbuzz-icu' 'libcurl-gnutls' 'glu')
 source=(
     "https://github.com/DisLogicator/hoffice/releases/download/11.20.0.1520-rc2/hoffice-11.20.0.1520.tar.gz"
     "LICENSE"
