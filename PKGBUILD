@@ -7,7 +7,7 @@
 
 pkgname=swift-language
 #pkgname=(swift swift-lldb)
-_swiftver=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-03-20-a
+_swiftver=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-04-23-a
 pkgver=5.4
 pkgrel=1
 swiftargumentparserversion=0.4.1

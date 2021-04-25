@@ -20,27 +20,27 @@ pkgbase = swift-language
 	depends = ncurses
 	provides = swift-language
 	options = !strip
-	source = git+https://github.com/apple/swift#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-03-20-a
-	source = cmark::git+https://github.com/apple/swift-cmark#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-03-20-a
-	source = llbuild::git+https://github.com/apple/swift-llbuild#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-03-20-a
+	source = git+https://github.com/apple/swift#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-04-23-a
+	source = cmark::git+https://github.com/apple/swift-cmark#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-04-23-a
+	source = llbuild::git+https://github.com/apple/swift-llbuild#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-04-23-a
 	source = swift-argument-parser::git+https://github.com/apple/swift-argument-parser#tag=0.4.1
-	source = swift-driver::git+https://github.com/apple/swift-driver#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-03-20-a
-	source = swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-03-20-a
-	source = swiftpm::git+https://github.com/apple/swift-package-manager#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-03-20-a
-	source = swift-syntax::git+https://github.com/apple/swift-syntax#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-03-20-a
-	source = swift-stress-tester::git+https://github.com/apple/swift-stress-tester#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-03-20-a
-	source = swift-corelibs-xctest::git+https://github.com/apple/swift-corelibs-xctest#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-03-20-a
-	source = swift-corelibs-foundation::git+https://github.com/apple/swift-corelibs-foundation#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-03-20-a
-	source = swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-03-20-a
-	source = swift-integration-tests::git+https://github.com/apple/swift-integration-tests#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-03-20-a
-	source = llvm-project::git+https://github.com/apple/llvm-project#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-03-20-a
+	source = swift-driver::git+https://github.com/apple/swift-driver#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-04-23-a
+	source = swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-04-23-a
+	source = swiftpm::git+https://github.com/apple/swift-package-manager#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-04-23-a
+	source = swift-syntax::git+https://github.com/apple/swift-syntax#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-04-23-a
+	source = swift-stress-tester::git+https://github.com/apple/swift-stress-tester#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-04-23-a
+	source = swift-corelibs-xctest::git+https://github.com/apple/swift-corelibs-xctest#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-04-23-a
+	source = swift-corelibs-foundation::git+https://github.com/apple/swift-corelibs-foundation#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-04-23-a
+	source = swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-04-23-a
+	source = swift-integration-tests::git+https://github.com/apple/swift-integration-tests#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-04-23-a
+	source = llvm-project::git+https://github.com/apple/llvm-project#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-04-23-a
 	source = 0001-arch-aur-pachtes.patch
-	source = indexstore-db::git+https://github.com/apple/indexstore-db#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-03-20-a
+	source = indexstore-db::git+https://github.com/apple/indexstore-db#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-04-23-a
 	source = yams::git+https://github.com/jpsim/Yams#tag=3.0.1
-	source = sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-03-20-a
+	source = sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-04-23-a
 	source = swift-format::git+https://github.com/apple/swift-format#tag=swift-5.3.2-RELEASE
-	source = swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-03-20-a
-	source = swift-xcode-playground-support::git+https://github.com/apple/swift-xcode-playground-support#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-03-20-a
+	source = swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-04-23-a
+	source = swift-xcode-playground-support::git+https://github.com/apple/swift-xcode-playground-support#tag=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-04-23-a
 	source = tensorflow-swift-apis::git+https://github.com/tensorflow/swift-apis.git#tag=v0.2
 	md5sums = SKIP
 	md5sums = SKIP
