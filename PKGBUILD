@@ -1,7 +1,7 @@
 # Maintainer: Bruno Bollos Correa <bollos@outlook.com.br>
 pkgname=libremines
 
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="A Free/Libre and Open Source Software Qt based Minesweeper game available for GNU/Linux and FreeBSD"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('cmake')
 provides=('libremines')
 conflicts=('libremines')
 source=("LibreMines-$pkgver.tar.gz::https://github.com/Bollos00/LibreMines/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d6ad4ca42d621ab81a2a1c82ad0917ac8e49b6c3f7161119035fb07cb52271cf')
+sha256sums=('225585238dae35f4589c72d165885d0a5cd3533bebd4edeb5304d3a4828dd7f9')
 
 
 build() {
