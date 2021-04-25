@@ -1,6 +1,6 @@
 pkgbase = otoclone
 	pkgdesc = Automatic backup utility
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/bilyes/otoclone
 	arch = x86_64
