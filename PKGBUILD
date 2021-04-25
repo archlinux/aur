@@ -5,7 +5,7 @@
 
 pkgname=openscap
 pkgver=1.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Security Compliance Solution"
 
 # i686 is theoretically bulitable, if anyone needs it
@@ -18,7 +18,8 @@ license=('GPL')
 # here for now.
 # packege missing: libselinux-devel
 depends=('swig' 'python' 'acl' 'libcap' 'curl' 'libgcrypt' 'libxml2' 'libxslt'
-         'libldap' 'pcre' 'bzip2' 'procps-ng' 'gconf' 'perl' 'perl-xml-parser' 'perl-xml-xpath')
+         'libldap' 'pcre' 'bzip2' 'procps-ng' 'gconf' 'perl' 'perl-xml-parser'
+         'perl-xml-xpath' 'xmlsec')
 optdepends=()
 makedepends=('doxygen' 'cmake')
 source=("https://github.com/OpenSCAP/openscap/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
