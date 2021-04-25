@@ -1,0 +1,14 @@
+pkgbase = otf-aoyagikouzant
+	pkgdesc = Brush font created by calligrapher Kouzan Aoyagi, includes JIS Non-Kanji and level-1 Kanji.
+	pkgver = 2.01
+	pkgrel = 1
+	url = https://opentype.jp/aoyagikouzanfontt.htm
+	arch = any
+	license = CUSTOM
+	source = https://opentype.jp/bin/AoyagiKouzanTOTF.zip
+	source = https://opentype.jp/aoyagikouzanfontt.htm
+	md5sums = c663e0899b8ce92f76e05b711f017378
+	md5sums = b6f76bb1f1881ea9dcebedc4d64a2cb3
+
+pkgname = otf-aoyagikouzant
+
