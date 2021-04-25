@@ -1,0 +1,19 @@
+pkgbase = python-pysignald
+	pkgdesc = Signald python bindings
+	pkgver = 0.0.6.r30.g95dae82
+	pkgrel = 1
+	url = https://gitlab.com/stavros/pysignald/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-dephell
+	depends = python
+	provides = python-pysignald=0.0.6.r30.g95dae82
+	conflicts = python-pysignald
+	source = python-pysignald::git+https://gitlab.com/stavros/pysignald/
+	md5sums = SKIP
+
+pkgname = python-pysignald
+

@@ -1,0 +1,12 @@
+pkgname=python-pysignald
+pkgver=0
+pkgrel=1
+pkgdesc="Signald python bindings"
+arch=('i686' 'x86_64')
+url="https://gitlab.com/stavros/pysignald/"
+license=('GPL')
+depends=('python')
+
+# template input; name=git
+
+# template input; name=prproject.toml
