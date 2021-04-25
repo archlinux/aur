@@ -1,6 +1,6 @@
 pkgbase = ludo
 	pkgdesc = Ludo is a minimalist frontend for emulators
-	pkgver = 0.12.5
+	pkgver = 0.12.8
 	pkgrel = 1
 	url = https://github.com/libretro/ludo
 	arch = x86_64
