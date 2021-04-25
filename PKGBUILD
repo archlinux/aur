@@ -1,7 +1,7 @@
 # Maintainer: leonekmi <usingarchbtw@leonekmi.fr>
 pkgname=karaokemugen
 pkgver=5.0.33
-pkgrel=1
+pkgrel=2
 pkgdesc="Karaoke playlist manager/player app used in parties or events."
 arch=('x86_64')
 url="https://mugen.karaokes.moe/"
@@ -29,7 +29,7 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          '4ad5390b139dc5b5e78e6eef8411e90b'
-         '0d0d432f35c56a962f9d386f391c6036'
+         '55557823030b7824a85a55469e119cb4'
          '5e9a33a42fef7572b7e0fa504c586f32'
          '10561eed906a5efeed427f90501b4f49'
          '1c331f8ccc9b3157ac0d9af4b559dd69')
@@ -52,7 +52,7 @@ build() {
     export XDG_CACHE_HOME="$srcdir/$pkgname-cache"
     export npm_config_devdir="$srcdir/$pkgname-npm-dev"
     export npm_config_cache="$srcdir/$pkgname-npm-cache"
-    yarn install
+    yarn install --ignore-scripts --frozen-lockfile
     yarn add --dev electron-builder
     yarn installkmfrontend
     # Build and package with electron-builder
@@ -69,8 +69,6 @@ package() {
     # Application itself
     install -dm755 "$pkgdir/usr/lib/${pkgname}"
     cp -dr --no-preserve=ownership packages/linux-unpacked/resources/* "$pkgdir/usr/lib/${pkgname}/"
-    install -dm 755 "$pkgdir/usr/lib/${pkgname}/asar"
-    mv "$pkgdir/usr/lib/${pkgname}/app.asar" "$pkgdir/usr/lib/${pkgname}/asar"
     chmod -R 755 "$pkgdir/usr/lib/${pkgname}/"
 
     # License
