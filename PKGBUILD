@@ -26,7 +26,7 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  qmake QMAKE_DEFAULT_INCDIRS="" qnapi.pro
+  qmake-qt5 QMAKE_DEFAULT_INCDIRS="" qnapi.pro
   make
 }
 
