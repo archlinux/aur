@@ -1,0 +1,14 @@
+pkgbase = python2-twisted-git
+	pkgdesc = An open source network framework written entirely in Python.
+	pkgver = 20.3.0
+	pkgrel = 4
+	url = https://github.com/twisted/twisted
+	arch = any
+	license = GPL2
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://github.com/twisted/twisted/archive/refs/tags/twisted-20.3.0.tar.gz
+	sha256sums = 64173c6a561b206bea4193f810ff6f26b549b34e3b581a34eba499669c798427
+
+pkgname = python2-twisted-git
+
