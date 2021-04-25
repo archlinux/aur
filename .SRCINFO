@@ -1,6 +1,6 @@
 pkgbase = stemns
 	pkgdesc = Tor plugin for resolving names using Stem
-	pkgver = 0.0.0.r33.g68d437
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/namecoin/StemNS
 	install = stemns.install
@@ -10,12 +10,10 @@ pkgbase = stemns
 	license = BSD
 	depends = python-stem
 	optdepends = tor: anonymizing overlay network
-	source = stemns-68d437491c0308545e149181768cd98e45c1ac82.tar.gz::https://github.com/namecoin/StemNS/archive/68d437491c0308545e149181768cd98e45c1ac82.tar.gz
+	source = stemns-0.1.1.tar.gz::https://github.com/namecoin/StemNS/archive/v0.1.1.tar.gz
 	source = stemns.service
-	source = stream-id.patch
-	sha512sums = 74fbab5a741a77ab13419620a970ce75517bbf81392bdac2fb174ab6547ae7ce624d9112d533bf1d48a8af0abb5926606f4fe2ce3ecccd551aad8d37d0324cf2
+	sha512sums = f2a3b87d78e8d54002a06e14254fc240d624803bfd41d80bd7bd6aa689794b3fec9c2c77a1ae95a86673a8d823646c001d6d4079eb545d3e4f10b539f3234e5c
 	sha512sums = 75bc2987995aed6143a44677908f847d7537c6c1870263a92b7ac16a0c40f779391a7442c40a7815dba8f18e16e75dd2957a285e2d13076c9c93439b06294e39
-	sha512sums = 28b4b4f91b290c2b8c791ba5cf7b81d5bc15327d01383d71e77c92d3f15314b5a8d49c9810c4f33c38fdea6514f1789dbb9faecc66adade62b95439d2131294b
 
 pkgname = stemns
 
