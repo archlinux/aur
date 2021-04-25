@@ -1,23 +1,31 @@
 # Maintainer: Elio Esteves Duarte <elio.esteves.duarte@gmail.com>
 pkgname=tomate-gtk
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A timer for the Pomodoro Technique"
-arch=('any')
+arch=("any")
 url="https://github.com/eliostvs/tomate-gtk"
-license=('GPL')
-depends=('desktop-file-utils'
-         'gtk-update-icon-cache'
-         'gtk3'
-         'hicolor-icon-theme'
-         'python'
-         'python-tomate')
-optdependes=('tomate-alarm-plugin: Plays alarm at session end'
-             'tomate-indicator-plugin: Shows session progress in tray area'
-             'tomate-notify-plugin: Plugin that shows screen notifications'
-             'tomate-exec-plugin: Run commands when timer starts, stops or finishes'
-             'tomate-statusicon-plugin: Plugin that shows the session progress in the notification area')
-makedepends=('python-setuptools')
+license=("GPL")
+depends=("desktop-file-utils"
+         "gtk-update-icon-cache"
+         "gtk3"
+         "hicolor-icon-theme"
+         "python"
+         "python-blinker"
+         "python-dbus"
+         "python-object"
+         "python-venusian"
+         "python-wiring"
+         "python-tomate"
+         "python-wrapt"
+         "python-xdg"
+         "python-yapsy")
+optdependes=("tomate-alarm-plugin: Plays alarm at session end"
+             "tomate-indicator-plugin: Shows session progress in tray area"
+             "tomate-notify-plugin: Plugin that shows screen notifications"
+             "tomate-exec-plugin: Run commands when timer starts, stops or finishes"
+             "tomate-statusicon-plugin: Plugin that shows the session progress in the notification area")
+makedepends=("python-setuptools")
 options=(!emptydirs)
 source=("https://github.com/eliostvs/$pkgname/archive/$pkgver.tar.gz")
 md5sums=('59abad75b8a231188e3ae48dc8065efb')
