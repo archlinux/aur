@@ -1,7 +1,7 @@
 pkgbase = nota-git
 	pkgdesc = Multi-platform text editor
-	pkgver = v1.1.1.r17.gd50e906
-	pkgrel = 3
+	pkgver = v1.2.1.r30.gd59b3a2
+	pkgrel = 1
 	url = https://invent.kde.org/maui/nota
 	arch = x86_64
 	groups = maui-apps
@@ -15,6 +15,7 @@ pkgbase = nota-git
 	depends = mauikit-git
 	depends = kirigami2
 	depends = syntax-highlighting
+	depends = mauikit-filebrowsing-git
 	provides = nota
 	conflicts = nota
 	source = git+https://invent.kde.org/maui/nota.git
