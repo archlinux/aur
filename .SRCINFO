@@ -1,6 +1,6 @@
 pkgbase = libpng-git
 	pkgdesc = The official PNG reference library
-	pkgver = 1.6.29.r2.gfbff8986e
+	pkgver = 1.6.37.r36.ga37d48365
 	pkgrel = 1
 	url = http://www.libpng.org/pub/png/libpng.html
 	arch = i686
