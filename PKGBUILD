@@ -1,7 +1,7 @@
 # Maintainer: Ckat <ckat@teknik.io>
 pkgname=chatterino2-git
 _pkgname=chatterino2
-pkgver=r3126.3ad1f109
+pkgver=r3127.d1f81ab5
 pkgrel=1
 pkgdesc='Second installment of the Twitch chat client series "Chatterino", dev/git version'
 arch=('any')
