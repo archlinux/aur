@@ -1,0 +1,12 @@
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade () {
+  # Upgrading from pre-1.4.0: output message about new systemd service.
+  if [ $(vercmp "$2" 1.4.0-1) -lt 0 ]; then
+    echo "From 1.4.0-1 this package provides a systemd service file at"
+	echo "  /usr/lib/systemd/system/jupyterhub.service"
+	echo "If you have a custom service in /etc/systemd/system or a"
+	echo "similar location, it will continue to be used instead of the"
+	echo "service from this package."
+  fi
+}

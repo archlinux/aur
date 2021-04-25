@@ -1,0 +1,46 @@
+[Unit]
+Description=JupyterHub server
+After=network.target
+Documentation=https://jupyterhub.readthedocs.io/en/stable/
+
+[Service]
+# Where the PID and other runtime files will be placed.
+RuntimeDirectory=jupyterhub
+RuntimeDirectoryMode=0755
+
+# Paths in the configuration are relative to the working directory.
+WorkingDirectory=/etc/jupyterhub
+
+# The actual command to run. Note this service doesn't need the PID files, but
+# JupyterHub does use them internally.
+ExecStart=/usr/bin/jupyterhub \
+          -f /etc/jupyterhub/jupyterhub_config.py \
+          --pid-file=/run/jupyterhub/jupyterhub.pid \
+          --ConfigurableHTTPProxy.pid_file=/run/jupyterhub/jupyterhub-proxy.pid
+
+# Apply some service hardening.
+# The default LocalProcess spawner needs SETUID and SETGID to run the
+# single-user servers.
+CapabilityBoundingSet=CAP_SETUID CAP_SETGID
+LockPersonality=true
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectProc=invisible
+ProtectSystem=full
+ReadWritePaths=/etc/jupyterhub
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+SystemCallArchitectures=native
+SystemCallErrorNumber=EPERM
+SystemCallFilter=@system-service
+
+[Install]
+WantedBy=multi-user.target
