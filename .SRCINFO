@@ -1,6 +1,6 @@
 pkgbase = raxml-standard-git
 	pkgdesc = Randomized Axelerated Maximum Likelihood - standard version from git
-	pkgver = 20150208
+	pkgver = 20180529
 	pkgrel = 1
 	url = https://github.com/stamatak/standard-RAxML
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = raxml-standard-git
 	optdepends = openmpi: for buildin MPI capable binary
 	conflicts = raxml
 	conflicts = raxml-mpi
-	source = git+git://github.com/stamatak/standard-RAxML.git
+	source = git+https://github.com/stamatak/standard-RAxML.git
 	md5sums = SKIP
 
 pkgname = raxml-standard-git

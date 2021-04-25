@@ -1,6 +1,6 @@
 # Contributor: Stunts <f.pinamartins@gmail.com> 
 pkgname=raxml-standard-git
-pkgver=20150208
+pkgver=20180529
 pkgrel=1
 pkgdesc="Randomized Axelerated Maximum Likelihood - standard version from git"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ depends=()
 optdepends=('openmpi: for buildin MPI capable binary')
 makedepends=('git' 'make')
 conflicts=('raxml' 'raxml-mpi')
-source=('git+git://github.com/stamatak/standard-RAxML.git')
+source=('git+https://github.com/stamatak/standard-RAxML.git')
 md5sums=('SKIP')
 
 pkgver() {
