@@ -1,7 +1,7 @@
 # Maintainer: Albert Graef <aggraef at gmail.com>
 
 pkgname=faustlive-git
-pkgver=2.5.2.r899.162f643
+pkgver=2.5.5.r978.baf1175
 pkgrel=1
 epoch=2
 pkgdesc="A graphical frontend to the Faust compiler."
@@ -35,7 +35,7 @@ package() {
   install -d "$pkgdir/usr/bin"
   install -d "$pkgdir/usr/share/applications"
   install -d "$pkgdir/usr/share/icons/hicolor/256x256/apps"
-  install Build/FaustLive/FaustLive "$pkgdir/usr/bin"
+  install Build/bin/FaustLive "$pkgdir/usr/bin"
   install Build/rsrc/FaustLive.desktop "$pkgdir/usr/share/applications"
   install Resources/FaustLive.png "$pkgdir/usr/share/icons/hicolor/256x256/apps"
 }
