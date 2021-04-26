@@ -1,6 +1,6 @@
 pkgbase = python-mizani
 	pkgdesc = Scales for python
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/has2k1/mizani
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = python-mizani
 	depends = python-pandas
 	depends = python-matplotlib
 	depends = python-palettable
-	noextract = mizani-0.7.2-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/m/mizani/mizani-0.7.2-py3-none-any.whl
-	sha256sums = 8a8035f6b3b8294378e21acb24d742896b27b471cfd14cd8da8a0ccd9adf3cb5
+	noextract = mizani-0.7.3-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/m/mizani/mizani-0.7.3-py3-none-any.whl
+	sha256sums = 7f95d713e2bd28d51919e065d3453d470a654a0a219a7f777f8e9b6ed6e6ed35
 
 pkgname = python-mizani
 

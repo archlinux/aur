@@ -1,6 +1,6 @@
 _name=mizani
 pkgname=python-$_name
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc='Scales for python'
 arch=(any)
@@ -16,7 +16,7 @@ depends=(
 _pyarch=py3
 _wheel="${_name/-/_}-$pkgver-$_pyarch-none-any.whl"
 source=("https://files.pythonhosted.org/packages/$_pyarch/${_name::1}/$_name/$_wheel")
-sha256sums=('8a8035f6b3b8294378e21acb24d742896b27b471cfd14cd8da8a0ccd9adf3cb5')
+sha256sums=('7f95d713e2bd28d51919e065d3453d470a654a0a219a7f777f8e9b6ed6e6ed35')
 noextract=("$_wheel")
 
 package() {
