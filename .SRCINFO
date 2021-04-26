@@ -1,18 +1,18 @@
 pkgbase = lightnovel-crawler-bin
 	pkgdesc = An app to download novels from online sources and generate e-books.
-	pkgver = v2.24.5
+	pkgver = v2.25.1
 	pkgrel = 1
 	url = https://github.com/dipu-bd/lightnovel-crawler.git
 	arch = any
 	license = Apache
-	makedepends = git
-	depends = python
+	depends = zlib
 	optdepends = calibre: Output suport for docx, mobi, pdf, rtf, azw3, txt, fb2, lit, lrf, oeb, pdb, rb, snb, tcr
 	provides = lncrawl
 	conflicts = lncrawl
-	source = https://github.com/dipu-bd/lightnovel-crawler/releases/download/v2.24.5/lncrawl
+	source = https://github.com/dipu-bd/lightnovel-crawler/releases/download/v2.25.1/lncrawl
 	md5sums = SKIP
 	sha1sums = SKIP
 	sha256sums = SKIP
 
 pkgname = lightnovel-crawler-bin
+
