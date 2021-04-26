@@ -1,7 +1,7 @@
 # Maintainer: Ben Silverman <bensilverman10 at gmail dot com>
 _npmname=alacritty-themes
 pkgname=${_npmname}
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="A utility for choosing and applying Alacritty terminal themes."
 arch=(any)
@@ -11,7 +11,7 @@ depends=("nodejs")
 makedepends=("npm" "jq")
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-md5sums=('7577fe140c3ea1e821f2de9b7bd34ba8')
+md5sums=('ddf0def67624656e4f0b6d964ee5282f')
 
 package() {
     npm install -g --cache "${srcdir}/npm-cache" --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
