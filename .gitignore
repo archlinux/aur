@@ -1,0 +1,4 @@
+*~
+*.log
+properties-cpp_*.orig.tar.gz
+properties-cpp-*-any.pkg.tar.*
