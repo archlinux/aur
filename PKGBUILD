@@ -9,7 +9,7 @@ pkgver=29.1.1
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('x86_64')
-url="http://linux.palemoon.org/"
+url="https://linux.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
 depends=('alsa-lib'
     'dbus-glib'
