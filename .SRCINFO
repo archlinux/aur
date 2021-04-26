@@ -1,5 +1,5 @@
 pkgbase = linux-nitrous
-	pkgver = 5.11.16
+	pkgver = 5.12.0
 	pkgrel = 1
 	url = https://gitlab.com/xdevs23/linux-nitrous
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = linux-nitrous
 	makedepends = libelf
 	makedepends = coreutils
 	options = !strip
-	source = git+https://gitlab.com/xdevs23/linux-nitrous.git#tag=v5.11.16-1
+	source = git+https://gitlab.com/xdevs23/linux-nitrous.git#tag=v5.12.0-1
 	source = linux-nitrous.preset
 	sha256sums = SKIP
 	sha256sums = 59cf1dfe08c144868ad87705dd62a0400921c042b1e12691e42cf214fe9a9402
@@ -37,7 +37,4 @@ pkgname = linux-nitrous
 
 pkgname = linux-nitrous-headers
 	pkgdesc = Header files and scripts for building modules for Linux kernel (tagged git version)
-
-pkgname = linux-nitrous-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel (tagged git version)
 
