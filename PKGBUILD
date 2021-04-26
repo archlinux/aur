@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Rouma <whatsthetgeek@gmail.com>
 pkgname=sdrpp-git
-pkgver=0.2.5
+pkgver=0.3.0
 pkgrel=5
 epoch=
 pkgdesc="The Bloat-free SDR Receiver"
@@ -8,10 +8,10 @@ arch=('any')
 url="https://github.com/AlexandreRouma/SDRPlusPlus"
 license=('GPL')
 groups=()
-depends=("fftw" "glfw" "glew" "libvolk" "soapysdr" "libiio" "libad9361" "rtaudio" "rtl-sdr" "airspy-git" "airspyhf-git")
-makedepends=("gcc" "make" "cmake")
+depends=("fftw" "glfw" "glew" "libvolk" "rtaudio")
+makedepends=("gcc" "make" "cmake" "soapysdr" "libiio" "libad9361" "rtl-sdr" "airspy-git" "airspyhf-git" "hackrf" "libsdrplay")
 checkdepends=()
-optdepends=()
+optdepends=("soapysdr" "libiio" "libad9361" "rtl-sdr" "airspy-git" "airspyhf-git" "hackrf" "libsdrplay")
 provides=()
 conflicts=()
 replaces=()
@@ -28,8 +28,8 @@ build() {
 	cd "SDRPlusPlus"
 	mkdir build
 	cd build
-	cmake ..
-	make -j$(nproc)
+	cmake .. -DOPT_BUILD_SDRPLAY_SOURCE=ON
+	make $MAKEOPTS
 }
 
 package() {
