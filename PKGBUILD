@@ -1,7 +1,7 @@
 # Maintainer: Michael Berlinger <michaelmberlinger@gmail.com>
 
 pkgname=gooseberry-bin
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Knowledge Base for the Lazy"
 url='https://github.com/out-of-cheese-error/gooseberry'
