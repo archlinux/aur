@@ -7,7 +7,7 @@ User=ombi
 Group=ombi
 Type=simple
 WorkingDirectory=/usr/lib/ombi
-ExecStart=/usr/lib/ombi/Ombi --storage /var/lib/ombi
+ExecStart=/usr/lib/ombi/Ombi --storage /var/lib/ombi --host http://*:5000
 Restart=always
 TimeoutStopSec=30
 

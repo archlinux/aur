@@ -1,15 +1,12 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 # Maintainer: Zack Baldwin <zack@zackb.com>
 
-# Helpful URL: https://ci.appveyor.com/project/tidusjar/requestplex/branch/develop/artifacts
-
 pkgname=ombi-develop
-pkgver=3.0.5223
+pkgver=4.0.1342
 pkgrel=1
-#_buildhash="03pr2x76ru4jsx0o"
-pkgdesc="Simple automated way for users to request new content for Plex"
+pkgdesc='Simple automated way for users to request new content for Plex'
 arch=('x86_64' 'aarch64' 'armv7h')
-url="https://github.com/tidusjar/Ombi"
+url='https://github.com/Ombi-app/Ombi'
 license=('GPL2')
 depends=('libunwind' 'openssl-1.0' 'icu')
 optdepends=('sonarr: TV daemon for usenet & torrents'
@@ -20,33 +17,29 @@ optdepends=('sonarr: TV daemon for usenet & torrents'
             'plex-media-server: Media server'
             'plex-media-server-plexpass: Media server (plexpass version)'
             'emby-server: Media server')
+backup=('var/lib/ombi/appsettings.json')
 provides=('ombi')
 conflicts=('ombi')
-options=('staticlibs')
+options=('!strip' 'staticlibs')
 
 source=("ombi.service"
         "ombi.sysusers"
         "ombi.tmpfiles")
 
-# Commented while release is higher than develop.
-# https://ci.appveyor.com/api/buildjobs/${_buildhash}/artifacts/linux.tar.gz
-#source_x86_64=("ombi-x86_64-${pkgver}.tar.gz::https://ci.appveyor.com/api/buildjobs/${_buildhash}/artifacts/linux.tar.gz")
-#source_armv7h=("ombi-armv7h-${pkgver}.tar.gz::https://ci.appveyor.com/api/buildjobs/${_buildhash}/artifacts/linux-arm.tar.gz")
-#source_aarch64=("ombi-aarch64-${pkgver}.tar.gz::https://ci.appveyor.com/api/buildjobs/${_buildhash}/artifacts/linux-arm64.tar.gz")
-source_x86_64=("ombi-x86_64-${pkgver}.tar.gz::https://github.com/tidusjar/Ombi/releases/download/v${pkgver}/linux.tar.gz")
-source_armv7h=("ombi-armv7h-${pkgver}.tar.gz::https://github.com/tidusjar/Ombi/releases/download/v${pkgver}/linux-arm.tar.gz")
-source_aarch64=("ombi-aarch64-${pkgver}.tar.gz::https://github.com/tidusjar/Ombi/releases/download/v${pkgver}/linux-arm64.tar.gz")
+source_x86_64=("ombi-x86_64-${pkgver}.tar.gz::https://github.com/Ombi-app/Ombi.Releases/releases/download/v${pkgver}/linux-x64.tar.gz")
+source_armv7h=("ombi-armv7h-${pkgver}.tar.gz::https://github.com/Ombi-app/Ombi.Releases/releases/download/v${pkgver}/linux-arm.tar.gz")
+source_aarch64=("ombi-aarch64-${pkgver}.tar.gz::https://github.com/Ombi-app/Ombi.Releases/releases/download/v${pkgver}/linux-arm64.tar.gz")
 
 noextract=("ombi-x86_64-${pkgver}.tar.gz"
            "ombi-i686-${pkgver}.tar.gz"
            "ombi-armv7h-${pkgver}.tar.gz")
 
-sha256sums=('d5893f6b665a0646054343a051e462a49569d51de224b45d3d2542b6c4e3d168'
+sha256sums=('f940ba92228b198ffa59603e10e25a3a1958c06207705edcc62b805adfa1a9d4'
             '6efc381990e1113737686d4f61795095fa8edbc176daa877fd755f1ddb3a40fa'
             '49fc5edca9d88fc9d6e9f0f4a6d707b072f32daa097305f0bf905dfff342f44a')
-sha256sums_x86_64=('51ef1e6a5f4ea3a1e16c84e897a0409952b7f948902bf19cb30c83fb714a566a')
-sha256sums_aarch64=('196ce9b4573e5cff1b86f9262dcaa78980b6773389de47d73dd860baa442aa93')
-sha256sums_armv7h=('9de774a1049902524f79b182f0f9b8e515ff826a8aa8c2fedf20dc6741391b30')
+sha256sums_x86_64=('d7ca719440b33c2f2b0da62732108c2ac553d08205cd2d90c4b849638ad99f4a')
+sha256sums_aarch64=('99d0a3247c33274113c7b0bec600cea8922abdc72be061352e5326ac195fbfd6')
+sha256sums_armv7h=('30a61cdd95423941ff974ddd7a8a672a0b613ec012eba76595b354776a2104ea')
 
 prepare() {
   # The source is packaged w/o a sub directory, so create our own and 
@@ -56,6 +49,11 @@ prepare() {
 }
 
 package() {
+  # Copy the default appsettings.json
+  install -d -m 755 "${pkgdir}/var/lib/ombi"
+  install -D -m 644 "${srcdir}/ombi/appsettings.json" "${pkgdir}/var/lib/ombi/"
+  #install -D -m 644 "${srcdir}/ombi/HealthCheck.css" "${pkgdir}/var/lib/ombi/"
+
   # Copy in files and then fix permissions
   install -d -m 755 "${pkgdir}/usr/lib/ombi"
   cp -dpr --no-preserve=ownership "${srcdir}/ombi/"* "${pkgdir}/usr/lib/ombi/"
