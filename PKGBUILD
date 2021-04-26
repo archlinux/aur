@@ -1,12 +1,12 @@
-# Maintainer: Vincent Cheung <coolingfall@gmail.com>
+# Maintainer: curlywei <dewei0724@gmail.com>
 
 _target=arm-linux-gnueabihf
-_pkgdate=2019.02
+_pkgdate=2019.12
 
 
 pkgname=${_target}-gcc-linaro-bin
-pkgver=7.4
-pkgrel=1
+pkgver=7.5
+pkgrel=0
 epoch=
 pkgdesc="The GNU Compiler Collection - cross compiler for ARM EABI hard float target."
 arch=('x86_64')
@@ -24,13 +24,13 @@ backup=()
 options=(!emptydirs !strip staticlibs)
 install=
 changelog=
-source=(http://releases.linaro.org/components/toolchain/binaries/${pkgver}-${_pkgdate}/${_target}/gcc-linaro-${pkgver}.1-${_pkgdate}-x86_64_${_target}.tar.xz)
-sha512sums=('c93b226093606081ea71c88c3a1dea3f509553e9ed0a30578ee003e91a35711fab94496704369824855a0b46642f77cc7d0dc47cfbd51cf08773efd473a02964')
+source=(http://releases.linaro.org/components/toolchain/binaries/${pkgver}-${_pkgdate}/${_target}/gcc-linaro-${pkgver}.${pkgrel}-${_pkgdate}-x86_64_${_target}.tar.xz)
+sha512sums=('a216e4c1dfab7302f1c6457a07f377486144925a2ba3ecd20f17cc3d27bb62a09bbcfdc8ffcf61b9de49e7ef60bb659e1ce6a96c0bf91ef764097d216f45dde5')
 
 
 package() {
 	mkdir -p ${pkgdir}/usr
-	cp -a ${srcdir}/gcc-linaro-${pkgver}.1-${_pkgdate}-x86_64_${_target}/* ${pkgdir}/usr
+	cp -a ${srcdir}/gcc-linaro-${pkgver}.${pkgrel}-${_pkgdate}-x86_64_${_target}/* ${pkgdir}/usr
 
 	rm -f 	${pkgdir}/usr/*-manifest.txt
 	rm -f 	${pkgdir}/usr/bin/runtest
