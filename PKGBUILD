@@ -68,7 +68,7 @@ pkgver=${_major}
 #_stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -101,7 +101,7 @@ source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz
         "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch")
 
 sha512sums=('c2f3510ea7feb8d334592a00b0ff74ad7821b1d4a38a6025c5c30e8f565fbb7ec4cd653ec5629d12f22a13c1235635addf28172354388c1dc8291517ca2ece69'
-            '17a703eb4557f173420bd708a93ca96239e504788e69e1c356026b1afd8c4e93f668172cafa5d7d1998e3e6d0ea9d4b5de6d599f7e0eb2f8ff278c4800a7e3c7'
+            'ecdc2e041e8c7f75e20a6ef0c10f57ed7d0683efdeab1ac20e880c753272c3c667b3955e5d023b13cded5240b35b5a1cb6dfbf8668e52b7241c65aeb8a143d4c'
             '01a59958b88f4f0fae72943883937bccb5be2a1ceeac9ba8a689c4b47125edcd3360aa6a94a535b6dae24ea8b1ac52002431ad72b2a623373c905901af2b3609'
             'bafda1ec6114a360bed8a9f8ae6b1e8dc5c22adf15f7545c3455a090f14b491639707f6624d7a891ec66b459842e61df9d62274b070b7a611f0bdbd367219ae5'
             'f475db6e28a33cca3fde7409eb010c3472007443e62a889dd301db48516015d9f3f3d965856faa824512786255ca1236bd06bb918bac76f921ba7e1766838451'
