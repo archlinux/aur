@@ -1,7 +1,7 @@
 # Maintainer: Maik Broemme <mbroemme@libmpq.org>
 pkgname="vdi-stream-client"
 pkgdesc="A tiny and low latency desktop streaming client for remote Windows guests with GPU passthrough"
-pkgver="0.1.0"
+pkgver="0.2.0"
 pkgrel="1"
 arch=("x86_64")
 url="https://libmpq.org/"
@@ -12,7 +12,7 @@ source=(
   "https://github.com/parsec-cloud/parsec-sdk/archive/5.0.tar.gz"
 )
 sha256sums=(
-  "693a8a644e0146b5b392ad2bd7f9503ffc0b9a7a5e98dedef392262b216a763f"
+  "d4535e67a730c3e646a031557070f12cd23ae2dc63006841561ecc8935b45382"
   "d0b3f46f5b67830f6e38d7417e92ed8bf34d2e8d7508fa796454a0214cdb7452"
 )
 
