@@ -1,12 +1,12 @@
 # Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=ghdl-mcode-git
-pkgver=2.0.0dev.r6076.g9f796794
+pkgver=2.0.0dev.r6204.gfcd93aa1
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64' 'i686' 'pentium4')
 pkgdesc='VHDL simulator - mcode back-end'
 url='https://github.com/ghdl/ghdl'
-license=('GPLv2')
+license=('GPL2')
 
 provides=("ghdl=$pkgver" "ghdl-git=$pkgver")
 conflicts=('ghdl' 'ghdl-gcc-git' 'ghdl-llvm-git')
