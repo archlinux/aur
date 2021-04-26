@@ -20,6 +20,7 @@ pkgbase = sunshine-git
 	depends = libxfixes
 	depends = libevdev
 	depends = libxcb
+	depends = udev
 	provides = sunshine
 	conflicts = sunshine
 	source = sunshine::git+https://github.com/loki-47-6F-64/sunshine.git

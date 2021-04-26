@@ -10,7 +10,7 @@ url="https://github.com/loki-47-6F-64/sunshine"
 arch=('x86_64' 'i686')
 license=('GPL3')
 
-depends=('boost-libs' 'ffmpeg' 'openssl' 'libpulse' 'opus' 'libxtst' 'libx11' 'libxfixes' 'libevdev' 'libxcb')
+depends=('boost-libs' 'ffmpeg' 'openssl' 'libpulse' 'opus' 'libxtst' 'libx11' 'libxfixes' 'libevdev' 'libxcb' 'udev')
 makedepends=('git' 'cmake' 'boost')
 
 provides=('sunshine')
