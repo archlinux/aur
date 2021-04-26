@@ -6,7 +6,7 @@
 # Maintainer: David Strawn <isomarcte a__t gmail d__o__t c__o__m>
 pkgname='metals'
 pkgver='0.10.2'
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='Language Server For Scala'
 url='https://scalameta.org/metals/'
@@ -27,7 +27,7 @@ changelog=
 source=("https://github.com/scalameta/$pkgname/archive/v$pkgver.tar.gz" 'metals-client.sh' 'metals-emacs.sh' 'metals-vim.sh' 'metals-vscode.sh' 'metals-sublime.sh' 'version-fix.patch' 'JREMajorVersion.java')
 noextract=()
 md5sums=('c1252cf4a386d6969c6c6742399a291e'
-         '1d0b48af2e8a16f80177f8e73e7ef383'
+         'b8c712df94a74a7564ec8107895688b0'
          'ad97e9262c7b22dd71b017a6402f612a'
          '000bd73ebc3ea46b23e2c418ef97f4c7'
          '83b5669127510100d6e7ab4094877a6e'
@@ -35,7 +35,7 @@ md5sums=('c1252cf4a386d6969c6c6742399a291e'
          '19bbf77c97d35be615e0635fef4fe866'
          '8a6b25ac88a8836a68d9dc55b4d17eda')
 sha1sums=('b5ed93da674dee57c58bdfcd21639877d734ca24'
-          '9adaef9256e7d77e8b16ecb046e4a746771e9bb1'
+          'd279b6e2667d0c0e4d9fb5d7aa364baf247d9e94'
           'b498568936dcfd03a06d7b41f76bbb7fffbc3bdf'
           '3882901e88f4a85f85d67dcda53f83c89d4563c6'
           'f2d0e8aa2744697d4dad0a7c10f835fe5814524b'
@@ -43,7 +43,7 @@ sha1sums=('b5ed93da674dee57c58bdfcd21639877d734ca24'
           'df6555421b4d5320c41076665dcab22b89e2c88b'
           'c95efcaad9c6417d858575a381648a4c9a928a46')
 sha224sums=('088a31491facf71dc5eacad626ca58e61e4c12f45a4807113f23b968'
-            'c752a8044b6b31dfb90f0c006c271060e1f6c984f949b5cd2b2a5515'
+            '1ab773e110957c39faa0c1a2f923fc2c891ed354572b2d50e438ee04'
             '43d2f6b0b4b7ef539f5109b1127dcd88828f2f8ae0b9c052899af1c9'
             'a99d9457fd6cf582b349e56e5e8e9cece30e33ff6866c5969f090f5e'
             '6ffcb9ee870dd260f90e333082e90b9b30212f1f21dd3d3a0048a67e'
@@ -51,7 +51,7 @@ sha224sums=('088a31491facf71dc5eacad626ca58e61e4c12f45a4807113f23b968'
             '44d4dea9c6335c5fcc8a4541b1953a00a1d9a92cbb8294f78c93bfcf'
             '1566b25eee6a99d3e6ca78497e7393c8466bf6e919681054ba14c4af')
 sha256sums=('6312f962fbc65617150c4c04ed50533dd9eb9e66eb993d084d92d2ae47aa1e03'
-            '9a274276578e6c9770da8c8dc90dc06560c3a67ea87853a625aa03b707ed360e'
+            'ab7c3c46650d64ed40f6a155be20371ed484aad4615378e429875ca80e381f78'
             'b3579e68cee7f23f6f6a12fe0bc6396f1722434d23ce3c58e7c9fac2233cd1d3'
             'e9bbc61ec99dc0893560a12a8a0f56c9f27016895e177a164019ab9174fe94e2'
             'c2213c8d4a1a0fe5bb12d5bcde53ab04d9b0aa08ddcabd60de938a8d480e49d5'
@@ -59,7 +59,7 @@ sha256sums=('6312f962fbc65617150c4c04ed50533dd9eb9e66eb993d084d92d2ae47aa1e03'
             'f5589ab0f99a91012deaa464fa391c760550759ff5a41633d57bfb73efebbfa4'
             '379144a4e426683565c46916adb105fe1afa1e1daf98f557883feeca1aa95d43')
 sha384sums=('3724d8e3b4a2e8aee79226ad2ccfa7b2d20ebacde0b18d7771a36f6a60de1bda29978a8ab5ca063f8d91136b0badc6b7'
-            '4a4d45991c93b3abc30757cd974d4f31f7ce9e7804f67d9bde46fed3f670a275ef940ab19053dc52e3782f02fdab6993'
+            '85ae632b2bb14380ab10b8c8c767d98c9b88a1bbb3711d4dc8433c4aac47af525471635166baa6600b20166628aadf41'
             '762dd7c73e994b74ebeb5c975ca0b53ddf4cbf181664d465bd9c543798333dcc4939c360a4b5b8b1b162810ea363d288'
             '6bee0d21d0fcf3d8f5ee14545be63fb2bbababb0665020540daafc708939bbc539ab940cfe122b2281156bc78d401768'
             '26859b59a04e38a5e7d02e188643765d06b893385232895f5b1435fb3d4fa4d676e8d43bbc80360f9ee7a2ee01e64d2c'
@@ -67,7 +67,7 @@ sha384sums=('3724d8e3b4a2e8aee79226ad2ccfa7b2d20ebacde0b18d7771a36f6a60de1bda299
             'ab110795333b4941feacb8c3614f54438a1d2606b72e24d438ce3163e85bb397a5fc52542659278c6fcf4fae6fc2fade'
             'eba6ead826268c42600ba41098bfcfaa1a13e4f7f5f8f367af6836995c41ad125ef5c5464242727b1c0f10caa3b4de37')
 sha512sums=('b22f5d70b761a65c982d14f175eee8130357834553cea66379cba8e9a8bf524eb5c97633fdbcae3bdb6a5cae2d02b5643f6ada777d50d870cd1e90d6cd787e00'
-            '96e5306816fd15ed338d27d3929e798feff16d3eb9929216e4333fc44439380ae026294095a6464f8d1dc9453e932b3ead567a9abfec55dad08e6f42208b5619'
+            'e1b39277bb1c594a9a05657e0a071a3fd67157b33e37fce13368765d170e776c8f9d3a12073bb16b6057d5c62f40724339443ae21d2bf7e378b2bffcf282a26d'
             'bd26818e43627c4e20aa931663b4623e45ade0930a29952d6508fa6e1302f5140afed7f57a796c12da3e9ae256ff7c0b3eb2e5075b00ceda9d2e4ddc22e89205'
             '16d01a820f1ed93ae46194d3d77187adf6fd4e9764fcf99554430e3e2f2af4cc2b6f7918f595febd3c5e6a380bbfb930bb47a3dd2ba93c60b2ca1f874f264fee'
             '722770a6c30ccf75c73ae9be19655cdff00561c62bf15b619dfa618cdd636e97aaf5a6aca1297add4e6a54274cd49e81781d98a59986526d0077a6c64855562d'
@@ -241,6 +241,9 @@ package() {
         install -m 755 "../$launcher" "$_BIN_DEST_DIR"
         ln -s "$_TARGET_DIR/bin/$launcher" "$_USR_BIN/$_LINK_NAME"
     done
+
+    # Add symbolic install for "generic" metals client.
+    ln -s "$_TARGET_DIR/bin/metals-client.sh" "$_USR_BIN/metals"
 
     ## Ensure Correct Permissions ##
 

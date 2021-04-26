@@ -117,7 +117,12 @@ function main {
 
     setup_metals_java_opts
 
-    exec java "${_METALS_JAVA_OPTS[@]}" -Dmetals.client="$_METALS_CLIENT" -cp "$_CP" scala.meta.metals.Main "$@"
+    if [ -z "$_METALS_CLIENT" ]
+    then
+        exec java "${_METALS_JAVA_OPTS[@]}" -cp "$_CP" scala.meta.metals.Main "$@"
+    else
+        exec java "${_METALS_JAVA_OPTS[@]}" -Dmetals.client="$_METALS_CLIENT" -cp "$_CP" scala.meta.metals.Main "$@"
+    fi
 }
 
 main "$@"
