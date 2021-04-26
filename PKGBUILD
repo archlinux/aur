@@ -6,7 +6,7 @@
 _gemname=jekyll
 pkgname=$_gemname
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, blog aware, static site generator.'
 arch=('any')
 url='https://github.com/jekyll/jekyll'
@@ -26,6 +26,7 @@ depends=('ruby>=2.1.0'
     'ruby-em-websocket>=0.5'
     'ruby-kramdown-parser-gfm'
     'ruby-terminal-table'
+    'ruby-webrick'
     )
 optdepends=(
     'ruby-minima: Default theme for Jekyll'

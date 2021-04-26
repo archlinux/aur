@@ -1,7 +1,7 @@
 pkgbase = jekyll
 	pkgdesc = A simple, blog aware, static site generator.
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jekyll/jekyll
 	arch = any
 	license = MIT
@@ -20,6 +20,7 @@ pkgbase = jekyll
 	depends = ruby-em-websocket>=0.5
 	depends = ruby-kramdown-parser-gfm
 	depends = ruby-terminal-table
+	depends = ruby-webrick
 	optdepends = ruby-minima: Default theme for Jekyll
 	optdepends = ruby-jekyll-paginate
 	optdepends = ruby-jekyll-gist
