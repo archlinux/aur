@@ -2,3 +2,4 @@ pkg/
 src/
 *.gz
 *.zst
+readme.md

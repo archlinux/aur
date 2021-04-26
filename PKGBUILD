@@ -1,7 +1,7 @@
 # Maintainer: Adrien Wu <adrien.sf.wu@gmail.com>
 pkgname=python-labml
-pkgver=0.4.102
-pkgrel=2
+pkgver=0.4.117
+pkgrel=1
 pkgdesc="Monitor PyTorch & TensorFlow model training on mobile phones"
 url="https://github.com/lab-ml/labml"
 arch=('any')
@@ -9,10 +9,11 @@ provides=('python-labml')
 depends=('python' 'python-gitpython' 'python-numpy' 'python-yaml')
 makedepends=('python-setuptools')
 _name="${pkgname#python-}"
+_commit="926f48c107b3f8742474028544ebe7862337153d"
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
-        "https://raw.githubusercontent.com/lab-ml/labml/d985590982103204baf5ae72cd19078c118e14ba/readme.md")
-sha256sums=('731491bdfd247bb68b2d432a0774e1cad92748122be94f2123ad48732a711ad0'
-            'eaaa2f650a237b5b68cc191fda014b55a04ced341387b86e7666acf3d989b996')
+        "https://raw.githubusercontent.com/lab-ml/labml/$_commit/readme.md")
+sha256sums=('a9b38363d8a24647556b191627502a3f8527769f67a6ba31bf0ebacefd95a075'
+            'dfb521c2309e5816079c13101873cc468a98c7d0b473add1dfb17751c489d4d0')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
