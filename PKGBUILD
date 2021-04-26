@@ -1,7 +1,7 @@
 # Maintainer: Arnau Sanchez <pyarnau {at} gmail {dot} com>
 pkgname="xmlindent"
 pkgver="0.2.17"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="XML stream reformatter written in ANSI C"
 arch=(i686 x86_64)
 url="http://${pkgname}.sourceforge.net/"
