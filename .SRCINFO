@@ -1,13 +1,13 @@
 pkgbase = conftest
 	pkgdesc = A utility to help you write tests against structured configuration data
-	pkgver = 0.21.0
+	pkgver = 0.24.0
 	pkgrel = 1
 	url = https://github.com/open-policy-agent/conftest
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	source = conftest-0.21.0.tar.gz::https://github.com/open-policy-agent/conftest/archive/v0.21.0.tar.gz
-	sha512sums = 2e91bb5d7ea58aa41aeb15ad860d9ce63601cf150aefdaccb1f36777dfa56936347dbaa11088cf3ccf8a40d427f9473c7ff7d21bf0afbafc7353fcd417003f2b
+	source = conftest-0.24.0.tar.gz::https://github.com/open-policy-agent/conftest/archive/v0.24.0.tar.gz
+	sha512sums = 5ea71eae75ac8ede4a28621a793345662bbf234dc8d4c99a958338b7e9393ee4f927ebe40f5362ea91739bad138aa55bc3cb0312ead630e62a52b64cd3dcca69
 
 pkgname = conftest
 
