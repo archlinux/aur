@@ -1,16 +1,14 @@
 # Maintainer: edubart <edub4rt@gmail.com>
 pkgname=openal-static
-pkgver=1.18.2
+pkgver=1.21.1
 pkgrel=1
 pkgdesc="Cross-platform 3D audio library, software implementation"
 arch=(i686 x86_64)
 url="https://github.com/kcat/openal-soft"
 license=(LGPL)
 depends=(glibc)
-makedepends=(alsa-lib pkgconfig cmake libpulse qt4 fluidsynth portaudio jack sdl2 sdl_sound ffmpeg
-             git)
-_commit=ce6076091bac3c00cd10803916e8911495580bd0  # tags/openal-soft-1.18.2
-source=("git+https://github.com/kcat/openal-soft#commit=$_commit")
+makedepends=(alsa-lib pkgconfig cmake libpulse fluidsynth portaudio jack sdl2 ffmpeg git)
+source=("git+https://github.com/kcat/openal-soft#tag=$pkgver")
 sha256sums=('SKIP')
 
 prepare() {
