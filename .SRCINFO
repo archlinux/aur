@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-meson
 	pkgdesc = Meson wrapper for MinGW (mingw-w64)
 	pkgver = 1
-	pkgrel = 21
+	pkgrel = 22
 	url = http://fedoraproject.org/wiki/MinGW
 	arch = any
 	license = GPL
