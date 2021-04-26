@@ -5,7 +5,7 @@
 
 # Maintainer: Kuklin István <kuklinistvan@zoho.com>
 pkgname=anki-official-binary-bundle
-pkgver=2.1.38
+pkgver=2.1.43
 pkgrel=1
 epoch=
 pkgdesc="The official binary shipped with the tested versions of the dependent libraries."
@@ -30,7 +30,7 @@ source=(
   "install_sh.patch"
 )
 noextract=()
-md5sums=('ab70980ca8b87a6f0fd67d05fc7a37d4'
+md5sums=('3b92f142730710fa89b9557fbfcd851c'
          '0ffca54471c2b5b2a300a68a93e135db')
 
 validpgpkeys=()
