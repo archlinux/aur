@@ -1,6 +1,6 @@
 pkgbase = clickhouse-lts
 	pkgdesc = An open-source column-oriented database management system that allows generating analytical data reports in real time. LTS version
-	pkgver = 20.8.4.11
+	pkgver = 21.3.6.55
 	pkgrel = 1
 	url = https://clickhouse.tech/
 	install = clickhouse-lts.install
@@ -10,18 +10,18 @@ pkgbase = clickhouse-lts
 	depends = libcap
 	provides = clickhouse
 	conflicts = clickhouse
-	noextract = clickhouse-common-static_20.8.4.11_amd64.deb
-	noextract = clickhouse-client_20.8.4.11_all.deb
-	noextract = clickhouse-server_20.8.4.11_all.deb
+	noextract = clickhouse-common-static_21.3.6.55_amd64.deb
+	noextract = clickhouse-client_21.3.6.55_all.deb
+	noextract = clickhouse-server_21.3.6.55_all.deb
 	backup = etc/clickhouse-client/config.xml
 	backup = etc/clickhouse-server/config.xml
 	backup = etc/clickhouse-server/users.xml
-	source = https://repo.clickhouse.tech/deb/lts/main/clickhouse-common-static_20.8.4.11_amd64.deb
-	source = https://repo.clickhouse.tech/deb/lts/main/clickhouse-client_20.8.4.11_all.deb
-	source = https://repo.clickhouse.tech/deb/lts/main/clickhouse-server_20.8.4.11_all.deb
-	sha256sums = 3bed2bcc5197cdf3c934e67be350f1c5eb767a53a83dcd09c591ef30a755c3db
-	sha256sums = ab8e6da45cdfa124dce15a50f90c717023aba426907c4ea65a5717b58ff7119e
-	sha256sums = edeb40e216ee821f8df21e0e2ebcd0853281b7723aa9e9419373824281374a32
+	source = https://repo.clickhouse.tech/deb/lts/main/clickhouse-client_21.3.6.55_all.deb
+	source = https://repo.clickhouse.tech/deb/lts/main/clickhouse-common-static_21.3.6.55_amd64.deb
+	source = https://repo.clickhouse.tech/deb/lts/main/clickhouse-server_21.3.6.55_all.deb
+	sha256sums = 5c8d593dd7b26a9e3793888dc72613d1d173a042d0c56ac3e555b649cbba15c3
+	sha256sums = 970ba9504208235bd730d39ed7dc11dc9661d842c6d82eb2b5edf8bf3850f588
+	sha256sums = 032487c7c6d28918d63dfe9eaa19cf62b39189184654d00a64c44ec0b4610eb0
 
 pkgname = clickhouse-lts
 
