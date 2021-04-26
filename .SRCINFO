@@ -1,0 +1,16 @@
+pkgbase = cweather
+	pkgdesc = Simple weather utility written in C - read the source code for more info
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = cjson
+	depends = curl
+	optdepends = nerd-fonts: for the expanded icon set
+	provides = cweather
+	source = git+https://github.com/raptor8134/cweather.git
+	md5sums = SKIP
+
+pkgname = cweather
+
