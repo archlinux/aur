@@ -1,7 +1,7 @@
 # Maintainer: Ilya Zlobintsev <ilya.zlve@gmail.com>
 pkgname=qbittorrent-cli-bin
 pkgver=1.7.21116.1
-pkgrel=3
+pkgrel=1
 pkgdesc="Command line interface for remote qBittorrent instances"
 arch=("any")
 url="https://github.com/fedarovich/qbittorrent-cli"

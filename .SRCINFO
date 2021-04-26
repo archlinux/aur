@@ -1,7 +1,7 @@
 pkgbase = qbittorrent-cli-bin
 	pkgdesc = Command line interface for remote qBittorrent instances
 	pkgver = 1.7.21116.1
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/fedarovich/qbittorrent-cli
 	arch = any
 	license = MIT
