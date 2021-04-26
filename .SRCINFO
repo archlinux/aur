@@ -1,7 +1,7 @@
 pkgbase = python-feedparser-dev
 	pkgdesc = Parse RSS and Atom feeds in Python: development version
 	pkgver = 6.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kurtmckee/feedparser/
 	arch = any
 	license = custom
