@@ -18,6 +18,6 @@ build() {
 }
 package() {
 	mv $srcdir/setup $pkgdir/
-	cd $pkgdir/gentor/
+	cd $pkgdir/gentor/setup/
 	sudo ./setup
 }
