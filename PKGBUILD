@@ -11,9 +11,6 @@ license=('GPL3')
 depends=('boost-libs' 'ffmpeg' 'openssl' 'libpulse' 'opus' 'libxtst' 'libx11' 'libxfixes' 'libevdev' 'libxcb')
 makedepends=('git' 'cmake' 'boost')
 
-provides=('sunshine')
-conflicts=("sunshine")
-
 source=($pkgname::git+https://github.com/loki-47-6F-64/sunshine.git#tag=v$pkgver
         systemd-cleanup.patch::https://github.com/loki-47-6F-64/sunshine/pull/42.patch)
 sha256sums=('SKIP'
