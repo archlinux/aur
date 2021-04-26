@@ -1,0 +1,6 @@
+*
+!.gitignore
+!PKGBUILD
+!rockpass.conf
+!rockpass.service
+!.SRCINFO

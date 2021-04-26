@@ -1,0 +1,15 @@
+[Unit]
+Description=A small and ultrasecure Lesspass database server written in Rust
+Documentation=https://github.com/ogarcia/rockpass/blob/master/README.md
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+StateDirectory=rockpass
+EnvironmentFile=/etc/rockpass.conf
+ExecStart=/usr/bin/rockpass
+
+[Install]
+WantedBy=multi-user.target
