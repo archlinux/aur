@@ -16,7 +16,9 @@ _fsync=y
 
 _futex2=y
 
-_winesync=y
+_winesync=
+### Disable Debug options - can give a better performance
+_disable_debugoption=y
 ### Enable protect file mappings under memory pressure
 _mm_protect=y
 ### Set performance governor as default
@@ -54,18 +56,18 @@ _localmodcfg=
 # a new kernel is released, but again, convenient for package bumps.
 _use_current=
 
-### IMPORTANT: Do no edit below this line unless you know what you're doing
+### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-cacule
 # pkgname=('linux-cacule' linux-cacule-headers)
-_major=5.11
-_minor=16
+_major=5.12
+#_minor=1
 #_minorc=$((_minor+1))
-#_rcver=rc7
-pkgver=${_major}.${_minor}
-_stable=${_major}.${_minor}
+#_rcver=rc8
+pkgver=${_major}
+#_stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
-_srcname=linux-${_stable}
+_srcname=linux-${_major}
 pkgrel=1
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
@@ -74,52 +76,54 @@ license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
-_patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/main/5.11"
-source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz"
+_patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.12"
+source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz"
+        "https://git.kernel.org/torvalds/t/linux-5.12.tar.gz"
         "config"
-        "${_patchsource}/cacule-patches/cacule-5.11.patch"
+        "${_patchsource}/cacule-patches/cacule-5.12.patch"
         "${_patchsource}/cacule-patches/0002-cacule-Change-default-preemption-latency-to-2ms-for-.patch"
-        "${_patchsource}/cpu-patches/0001-cpu-5.11-merge-graysky-s-patchset.patch"
-        "${_patchsource}/misc/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
-        "${_patchsource}/futex-patches/0001-futex2-resync-from-gitlab.collabora.com.patch"
-        "${_patchsource}/wine-patches/0007-v5.11-winesync.patch"
-        "${_patchsource}/futex-patches/0007-v5.11-fsync.patch"
-        "${_patchsource}/misc/0002-init-Kconfig-enable-O3-for-all-arches.patch"
-        "${_patchsource}/misc/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
+        "${_patchsource}/cpu-patches/0001-cpu-patches.patch"
+        "${_patchsource}/ll-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
+        "${_patchsource}/futex2-patches/0001-futex2-resync-from-gitlab.collabora.com.patch"
+        "${_patchsource}/bfq-patches/0001-bfq-patches.patch"
+        "${_patchsource}/block-patches/0001-block-patches.patch"
+        "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
+        "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
+        "${_patchsource}/ll-patches/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
+        "${_patchsource}/bbr2-patches/0001-bbr2-5.12-introduce-BBRv2.patch"
         "${_patchsource}/btrfs-patches/0001-btrfs-patches.patch"
-        "${_patchsource}/bbr2-patches/0001-bbr2-5.11-introduce-BBRv2.patch"
-        "${_patchsource}/lqx-patches/0001-lqx-patches.patch"
-        "${_patchsource}/xanmod-patches/0001-xanmod-patches.patch"
-        "${_patchsource}/mm-patches/0001-mm-patches.patch"
+#        "${_patchsource}/lqx-patches-v2/0001-lqx-patches.patch"
+        "${_patchsource}/pf-patches/0001-genirq-i2c-Provide-and-use-generic_dispatch_irq.patch"
+        "${_patchsource}/mm-patches/0001-mm-5.12-protect-file-mappings-under-memory-pressure.patch"
         "${_patchsource}/zstd-patches/0001-zstd-patches.patch"
-        "${_patchsource}/zstd-patches/0001-zstd-dev-patches.patch"
-        "${_patchsource}/zswap-patches/0001-zswap-patches.patch"
-        "${_patchsource}/clearlinux-patches/0001-clearlinux-patches.patch")
+        "${_patchsource}/zstd-dev-patches/0001-zstd-dev-patches.patch"
+        "${_patchsource}/clearlinux-patches/0001-clearlinux-patches.patch"
+        "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch")
 
-sha256sums=('21163681d130cbce5a6be39019e2c69e44f284855ddd70b1a3bd039249540f43'
-            '2e3b1f1b6ceb958a3e4b2a4740c77953287a2cdb156234af8c9bf9ddad9268e3'
-            'c539655de9eef5084b6349389b1a2fac3aaab274149c9b95667cca93570166ea'
-            'cf00507d6881b737a9814d152e27b1db02f45a4d8a8ba3f4c9f542f0964ac697'
-            'b74526f681f3eafa12f74764e79792949cb949fe1c8424118746c48fe16a09a8'
-            '39a36b356e2452aa244f80700524c73884f995bd29ccabd3bdb760480f37ce8e'
-            '05cebcd1dbab8d5f8d26b5351ba0237d36b8e848c830dad7a4f7d1c58cc7824c'
-            'd220593436059b76c975ceee061fd124dec37fff774db45a4419c2ce1839c351'
-            'b302ba6c5bbe8ed19b20207505d513208fae1e678cf4d8e7ac0b154e5fe3f456'
-            '15524321f6e532747be4145341dd6d426a4240bf190e85160bdf06ae6ea0ff20'
-            'bc35b9f8f695d3f0ef88ba1a5abad8c881c8ad1eda681dd139d887df6f7a9849'
-            '4e25daa2c11d9f24af8d34b7621689ab3beeb5af185b1178cdec7f610283b5be'
-            '68dcadab17c405335633e0ded03d13a78ee524311bc927df2a0f0fc1a1463caf'
-            'b268f8f50734239fee6910d8d7cfa5742e9f17cbd9e90f258139a5df44fed407'
-            'a571b8db83f36d36222b3b11ed607fc93728a351782edbe1129b623c236f050e'
-            'f797fb4fd2ac4c1116e988e9ccf8bf1b4d9ba53511c388b958f17888d33cf994'
-            '3fe144975c1b30b983fca9e34ba58e7b4704456a340130584a1aca0feabdc22e'
-            'ba228b7688cb3c8be9312edadf1f9067e91ce8f303941b3b921a748e3cf974d2'
-            '251327be9627d8039e8c344d1beca19982676ba1eadc1b97251531fbd7611108'
-            '3547dd94fceb67dbf7d013310ce2732944a2d02d82759c8b3c23f37b1bd5252b')
+sha512sums=('c2f3510ea7feb8d334592a00b0ff74ad7821b1d4a38a6025c5c30e8f565fbb7ec4cd653ec5629d12f22a13c1235635addf28172354388c1dc8291517ca2ece69'
+            '17a703eb4557f173420bd708a93ca96239e504788e69e1c356026b1afd8c4e93f668172cafa5d7d1998e3e6d0ea9d4b5de6d599f7e0eb2f8ff278c4800a7e3c7'
+            '01a59958b88f4f0fae72943883937bccb5be2a1ceeac9ba8a689c4b47125edcd3360aa6a94a535b6dae24ea8b1ac52002431ad72b2a623373c905901af2b3609'
+            'bafda1ec6114a360bed8a9f8ae6b1e8dc5c22adf15f7545c3455a090f14b491639707f6624d7a891ec66b459842e61df9d62274b070b7a611f0bdbd367219ae5'
+            'f475db6e28a33cca3fde7409eb010c3472007443e62a889dd301db48516015d9f3f3d965856faa824512786255ca1236bd06bb918bac76f921ba7e1766838451'
+            '8a5e530dd90ac257e1db0495db0cabd303939851c18dd5b2fd1a1e6d5eba336720cf0f2a260baaac906dead1f61989a4bd592eed632a2f5e10c00c6702f0fe58'
+            '9bdc6e95c683ec0a93777234f327b8f15c6e8ba8e061ac5314d6ca875a0515d39daddce6d548a64e24052c3dfb6322ada23620c0a351fe1c7b5dd26f647a10fb'
+            '0d79826b79f791af185d723af8c18cc58e7092968dadac5e304ecdd40683972fd1b9c9130765d7852fb0c9ff10cd53535196b6310d25226bde5fb5ec437bbc3b'
+            '77ed5c037fd27489415f228219e3b291c655c8ba49745b04c554739ffbc40df685cca8bb5e9a12e6eda083b7f7ef74d1a3307ecc4180bec0ba422d957e10baad'
+            '370014469fd04db4f00eefa1b9e415458131fdd3f8915b169cba4207a79ed20631e9e5d54f103adba64e0b932b9b34bfc825cc72cde76becddc4a8dbac772380'
+            'e6c765a12435e974f2490971178b22c8b28be24613647f8ebae408c7a7a042c7a22ee5dc4fc0344fce88b2d158a5e8e37c4939a2f605e712fa1fd6ba74f66833'
+            '782e98da0d0082c2c99de7c8ef5454e9a1d8e155b0c620b7a8d3ea4f9694035b475abb969fcdaf446edb2b61a6536be98f2dbde15f7d60f52bbf117222a42707'
+            '094eb59f297cc8bea3f8f7373269a3753d2fbf2b43daa4a20483513349dae0547a3b5eb72d32d8ab81e459baa29382dd9edfdaad487786522050568b75bd7fd7'
+            '9003998b110556dc7f8201a62f00a1c5a6728aa74405aedc2a876715751d9b389f0fe052da63bf2089a83f7ba4ac6d236b060f1f3d20833955adb7602159a999'
+            '91f858ea5e7d8257392ffe5bb6e2433ed22f715767f412b2f73bf18569e2b4c8336e4406ac816f0c2eb306bf4014782a2a60760a87e9ad7fd325d57b49245220'
+            '8e962879988445ce30f47a587903f33b878206f0f0cb727c2f1610b5fa3832004f2438a28356c768a8b417638db0f394fb85352e38e7e8bbc74dd1b8f69fbd1f'
+            '4ea5e17df4cb11ace456be0244768206a645e40427ea1730d61d263b0f84d86f889d1b4396d568341c0329492ce93fcffa2511f1aed280b99305440f767189da'
+            '5c3ce23c42e76237a5e218b545187d91cbed46e24be8f5220802b49c3042d2c385442acbd52ecd42fb956e7edca8ecd53f3366eb33dcca5af1b7b55d60c6abec'
+            'ff837a7a966bb6a5cc31fc12866c3e7d9b8b66b6d1082b59a6cb18ec7081999516157599160754dcd9435cc7925e099ad9011096792531aab641c029dfc08ced'
+            'd1272b76986cd760ffbe1fc2f90897546ef65987702dfc8f15d97ea2135c3a599b9fc7e5ed607d10dc6154acbc4b6b0ab14b56ebf51ceb1af7003163b73e71d7')
 
-export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
-export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
-export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})}
+export KBUILD_BUILD_HOST=archlinux
+export KBUILD_BUILD_USER=$pkgbase
+export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
     cd $_srcname
@@ -165,9 +169,7 @@ prepare() {
 		fi
 	fi
 
-  source "${startdir}"/cacule_config
-
-  configure
+  source "${startdir}"/configure
 
   cpu_arch
 
@@ -249,6 +251,131 @@ prepare() {
   		echo "Disabling Kyber I/O scheduler..."
   		scripts/config --disable CONFIG_MQ_IOSCHED_KYBER
   	fi
+
+    if [ -n "$_disable_debugoption" ]; then
+          echo "Disable debug options"
+          scripts/config --disable CONFIG_SLUB_DEBUG
+          scripts/config --disable CONFIG_PM_DEBUG
+          scripts/config --disable CONFIG_PM_ADVANCED_DEBUG
+          scripts/config --disable CONFIG_PM_SLEEP_DEBUG
+           scripts/config --disable CONFIG_ACPI_DEBUG
+           scripts/config --disable CONFIG_SCHED_DEBUG
+           scripts/config --disable CONFIG_LATENCYTOP
+           scripts/config --disable CONFIG_DEBUG_PREEMPT
+           scripts/config --disable CONFIG_DEBUG_INFO
+           scripts/config --disable CONFIG_CGROUP_BPF
+           scripts/config --disable CONFIG_BPF_LSM
+           scripts/config --disable CONFIG_BPF_PRELOAD
+           scripts/config --disable CONFIG_BPF_LIRC_MODE2
+           scripts/config --disable CONFIG_BPF_KPROBE_OVERRIDE
+           scripts/config --disable CONFIG_DEBUG_INFO_REDUCED
+           scripts/config --disable CONFIG_DEBUG_INFO_COMPRESSED
+           scripts/config --disable CONFIG_DEBUG_INFO_SPLI
+           scripts/config --disable CONFIG_GDB_SCRIPTS
+           scripts/config --disable CONFIG_DEBUG_INFO_DWARF4
+           scripts/config --disable CONFIG_DEBUG_INFO_BTF
+           scripts/config --disable CONFIG_BPF_PRELOAD
+           scripts/config --disable CONFIG_BPF_PRELOAD_UMD
+           scripts/config --disable CONFIG_BPF_STREAM_PARSER
+           scripts/config --disable CONFIG_DMA_API_DEBUG
+           scripts/config --disable CONFIG_DMA_API_DEBUG_SG
+           scripts/config --disable CONFIG_DMA_MAP_BENCHMARK
+           scripts/config --disable CONFIG_DEBUG_FS
+           scripts/config --disable CONFIG_GCOV_KERNEL
+           scripts/config --disable CONFIG_GCOV_PROFILE_ALL
+           scripts/config --disable CONFIG_DEBUG_FS
+           scripts/config --disable CONFIG_GENERIC_IRQ_DEBUGFS
+           scripts/config --disable CONFIG_ACPI_DEBUGGER
+           scripts/config --disable CONFIG_ACPI_DEBUGGER_USER
+           scripts/config --disable CONFIG_ACPI_EC_DEBUGFS
+           scripts/config --disable CONFIG_ACPI_APEI_ERST_DEBUG
+           scripts/config --disable CONFIG_NFIT_SECURITY_DEBUG
+           scripts/config --disable CONFIG_DMADEVICES_DEBUG
+           scripts/config --disable CONFIG_DMADEVICES_VDEBUG
+           scripts/config --disable CONFIG_DMATEST
+           scripts/config --disable CONFIG_BTRFS_DEBUG
+           scripts/config --disable CONFIG_BTRFS_FS_REF_VERIFY
+           scripts/config --disable CONFIG_BTRFS_ASSERT
+           scripts/config --disable CONFIG_BTRFS_FS_RUN_SANITY_TESTS
+           scripts/config --disable CONFIG_BTRFS_FS_CHECK_INTEGRITY
+           scripts/config --disable CONFIG_EXT4_DEBUG
+           scripts/config --disable CONFIG_EXT4_KUNIT_TESTS
+           scripts/config --disable CONFIG_SECURITY_APPARMOR_DEBUG
+           scripts/config --disable CONFIG_SECURITY_APPARMOR_DEBUG_ASSERTS
+           scripts/config --disable CONFIG_SECURITY_APPARMOR_DEBUG_MESSAGES
+           scripts/config --disable CONFIG_SECURITY_APPARMOR_KUNIT_TEST
+           scripts/config --disable CONFIG_POWER_SUPPLY_DEBUG
+           scripts/config --disable CONFIG_NTFS_DEBUG
+           scripts/config --disable CONFIG_GENERIC_IRQ_DEBUGFS
+           scripts/config --disable CONFIG_CIFS_STATS2
+           scripts/config --disable CONFIG_CIFS_DEBUG
+           scripts/config --disable CONFIG_CIFS_DEBUG2
+           scripts/config --disable CONFIG_CIFS_DEBUG_DUMP_KEYS
+           scripts/config --disable CONFIG_JBD2_DEBUG
+           scripts/config --disable CONFIG_CONFIG_NFS_DEBUG
+           scripts/config --disable CONFIG_TRACE_IRQFLAGS_SUPPORT
+           scripts/config --disable CONFIG_TRACE_IRQFLAGS_NMI_SUPPORT
+           scripts/config --disable CONFIG_EARLY_PRINTK_USB
+           scripts/config --disable CONFIG_X86_VERBOSE_BOOTUP
+           scripts/config --disable CONFIG_EARLY_PRINTK
+           scripts/config --disable CONFIG_EARLY_PRINTK_DBGP
+           scripts/config --disable CONFIG_EARLY_PRINTK_USB_XDBC
+           scripts/config --disable CONFIG_EFI_PGT_DUMP
+           scripts/config --disable CONFIG_DEBUG_TLBFLUSH
+           scripts/config --disable CONFIG_IOMMU_DEBUG
+           scripts/config --disable CONFIG_IOMMU_LEAK
+           scripts/config --disable CONFIG_HAVE_MMIOTRACE_SUPPORT
+           scripts/config --disable CONFIG_X86_DECODER_SELFTEST
+           scripts/config --disable CONFIG_IO_DELAY_0X80
+           scripts/config --disable CONFIG_IO_DELAY_0XED
+           scripts/config --disable CONFIG_IO_DELAY_UDELAY
+           scripts/config --disable CONFIG_IO_DELAY_NONE
+           scripts/config --disable CONFIG_DEBUG_BOOT_PARAMS
+           scripts/config --disable CONFIG_CPA_DEBUG
+           scripts/config --disable CONFIG_DEBUG_ENTRY
+           scripts/config --disable CONFIG_DEBUG_NMI_SELFTEST
+           scripts/config --disable CONFIG_DEBUG_IMR_SELFTEST
+           scripts/config --disable CONFIG_X86_DEBUG_FPU
+           scripts/config --disable CONFIG_PUNIT_ATOM_DEBUG
+           scripts/config --disable CONFIG_UNWINDER_ORC
+           scripts/config --disable CONFIG_UNWINDER_FRAME_POINTER
+           scripts/config --disable CONFIG_UNWINDER_GUESS
+           scripts/config --disable CONFIG_FRAME_POINTER
+           scripts/config --disable CONFIG_THINKPAD_ACPI_DEBUGFACILITIES
+           scripts/config --disable CONFIG_THINKPAD_ACPI_DEBUG
+           scripts/config --disable CONFIG_THINKPAD_ACPI_UNSAFE_LEDS
+           scripts/config --disable CONFIG_CMA_DEBUG
+           scripts/config --disable CONFIG_CMA_DEBUGFS
+           scripts/config --disable CONFIG_EDAC_DEBUG
+           scripts/config --disable CONFIG_ATM_IA_DEBUG
+           scripts/config --disable CONFIG_ATM_FORE200E_DEBUG
+           scripts/config --disable CONFIG_BCMA_DEBUG
+         fi
+
+        echo "Set module compression to ZSTD"
+        scripts/config --enable CONFIG_MODULE_COMPRESS
+        scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
+        scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
+        scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
+
+        echo "Enable CacULE CPU scheduler..."
+        scripts/config --enable CONFIG_CACULE_SCHED
+        #scripts/config --enable CONFIG_FAIR_GROUP_SCHED
+        #scripts/config --disable CONFIG_SCHED_AUTOGROUP
+        #scripts/config --set-val CONFIG_NR_CPUS "12"
+        scripts/config --disable CONFIG_SCHED_DEBUG
+        scripts/config --disable CONFIG_SCHED_INFO
+        scripts/config --disable CONFIG_SCHEDSTATS
+        scripts/config --disable CONFIG_DEBUG_KERNEL
+        scripts/config --disable CONFIG_EXPERT
+        echo "Enable PREEMPT"
+        scripts/config --disable CONFIG_PREEMPT_NONE
+        scripts/config --disable CONFIG_PREEMPT_VOLUNTARY
+        scripts/config --enable CONFIG_PREEMPT
+        scripts/config --enable CONFIG_PREEMPT_COUNT
+        scripts/config --enable CONFIG_PREEMPTION
+
+
 
 
     ### Optionally load needed modules for the make localmodconfig
