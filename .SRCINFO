@@ -1,0 +1,15 @@
+pkgbase = python-better-profanity
+	pkgdesc = Blazingly fast cleaning swear words (and their leetspeak) in strings
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/snguyenthanh/better_profanity
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/b/better_profanity/better_profanity-0.7.0.tar.gz
+	sha256sums = 8a6fdc8606d7471e7b5f6801917eca98ec211098262e82f62da4f5de3a73145b
+
+pkgname = python-better-profanity
+	depends = python
+
