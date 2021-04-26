@@ -1,7 +1,7 @@
 pkgbase = zuki-themes-git
 	pkgdesc = A selection of themes for GTK3, gnome-shell and more.
-	pkgver = r256.5cc9f1c
-	pkgrel = 3
+	pkgver = r316.460cabb
+	pkgrel = 1
 	url = https://github.com/lassekongo83/zuki-themes
 	arch = any
 	license = GPL3
@@ -13,7 +13,9 @@ pkgbase = zuki-themes-git
 	depends = gtk-engines
 	optdepends = gnome-themes-standard: Required for the GTK3 theme
 	optdepends = ttf-droid: Font family for the Gnome Shell theme
+	provides = zuki-themes
 	conflicts = zukitwo-themes
+	conflicts = zuki-themes
 	source = zuki-themes-git::git+https://github.com/lassekongo83/zuki-themes
 	sha512sums = SKIP
 
