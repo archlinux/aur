@@ -76,14 +76,15 @@ package() {
 	cd "${srcdir}/${_reponame}"
 	cp -r "_RELEASE" "${pkgdir}/usr/lib/open-hexagon"
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/open-hexagon/"
+
+
+	ln -s "$(ls -1r /usr/lib/libluajit-*.so | head -n1)" libluajit.so
 	
 	# Dirty hack to allow writing data to current directory
 	# (also see .install file)
 	cp "${srcdir}/${_reponame}/misc/default_config.json" "${pkgdir}/var/lib/open-hexagon/default_config.json"
-	cp "${srcdir}/${_reponame}/misc/default_config.json" "${pkgdir}/var/lib/open-hexagon/config.json"
 
 	cd "${pkgdir}/usr/lib/open-hexagon"
-	ln -s "$(ls -1r /usr/lib/libluajit-*.so | head -n1)" libluajit.so
 	for i in config.json default_config.json scores.json users.json log.txt Profiles Replays; do
 		ln -sf "../../../var/lib/open-hexagon/${i}"
 	done
