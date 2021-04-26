@@ -1,13 +1,13 @@
 # Maintainer: Ben Westover <kwestover.kw@gmail.com>
 
 pkgname='chia-gui-git'
-pkgver=1.0.0.r158.gf1be1714
-pkgrel=2
+pkgver=1.1.1.r14.ge7304c59
+pkgrel=1
 pkgdesc="A new blockchain and smart transaction platform that is easier to use, more efficient, and secure. - Also installs GUI"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://www.chia.net/"
 license=('Apache')
-depends=('git' 'python' 'python-websockets' 'npm' 'nodejs' 'gtk')
+depends=('python' 'python-pip' 'python-websockets' 'python-wheel' 'npm' 'nodejs' 'gtk3')
 makedepends=('cmake')
 conflicts=('chia' 'chia-gui')
 provides=('chia' 'chia-gui')
@@ -32,8 +32,6 @@ build() {
 	python3 -m venv venv
 	ln -s venv/bin/activate .
 	. ./activate
-	pip install --upgrade pip
-	pip install wheel
 	pip install https://download-chia-net.s3-us-west-2.amazonaws.com/simple/miniupnpc/miniupnpc-2.1.tar.gz
 	pip install -e .
 	cd chia-blockchain-gui
