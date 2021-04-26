@@ -7,8 +7,8 @@
 # Contributor: Franck Stauffer <franck.stauffer@monaco.mc>
 
 pkgname=solarus
-pkgver=1.6.4
-pkgrel=2
+pkgver=1.6.5
+pkgrel=1
 pkgdesc="A lightweight, free and open-source game engine for Action-RPGs"
 arch=('i686' 'x86_64')
 url="http://www.solarus-games.org/"
@@ -28,7 +28,7 @@ depends=('glm'
 makedepends=('cmake')
 conflicts=('solarus-git' 'solarus-run')
 source=("https://gitlab.com/solarus-games/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-b2sums=('fdf9b6703af8424b4731b25b307dcc7a0966cbf89a0bf043bcfb6745d0c6e8aa1fee026f206a41ebf6c8d54b23a9a3816a6c2d7ae004c9db7c436425a94aa7d3')
+b2sums=('96a67c7210c70d23d3fa08e24ee2c4cfbeb6e95dce7236ab860695bf4fc57aaa5d54b02e25ad2f10dfc498cc836bf83753d99cbeca1ff7bf496f7d589accbbf5')
 
 prepare() {
   cd "$pkgname-v$pkgver"
