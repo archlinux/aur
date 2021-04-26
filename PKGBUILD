@@ -7,9 +7,10 @@ pkgdesc='A small and ultrasecure Lesspass database server written in Rust'
 arch=('any')
 url='https://github.com/ogarcia/rockpass'
 license=('GPL3')
+depends=('sqlite')
 makedepends=('rustup')
 backup=("etc/${pkgname}.conf")
-source=("https://github.com/ogarcia/${pkgname}/archive/${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ogarcia/${pkgname}/archive/${pkgver}.tar.gz"
         "${pkgname}.conf"
         "${pkgname}.service")
 sha256sums=('0daca365828f15ec03ad129778f743720fbabad89a7aab3d1eb6271683135e09'
