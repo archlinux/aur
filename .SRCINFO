@@ -1,6 +1,6 @@
 pkgbase = pycharm-professional-edition
 	pkgdesc = Python IDE for Professional Developers. Professional Edition
-	pkgver = 2020.3.4
+	pkgver = 2021.1
 	pkgrel = 1
 	url = https://www.jetbrains.com/pycharm/
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = pycharm-professional-edition
 	makedepends = cython
 	provides = pycharm
 	options = !strip
-	source = https://download.jetbrains.com/python/pycharm-professional-2020.3.4.tar.gz
+	source = https://download.jetbrains.com/python/pycharm-professional-2021.1.tar.gz
 	source = pycharm-professional.desktop
-	sha256sums = 2060539f9c4c42819a58a7bcae1143d6383507907acd1cc4d1f05d2c0a93f3a1
+	sha256sums = bf86f3b316191e9d7e2e96d4fa055c095c59202f6af287103f54fde75b256bd8
 	sha256sums = 718e049d2a54afff457e4c507047bd3948bbf407c3d738c913cda9256c304521
 
 pkgname = pycharm-professional-edition
