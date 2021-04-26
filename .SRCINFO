@@ -1,4 +1,4 @@
-pkgbase = kaf-cli
+pkgbase = kaf-wifi
 	pkgdesc = kaf wifi传书软件,支持kindle
 	pkgver = v1.0.3
 	pkgrel = 1
@@ -8,5 +8,5 @@ pkgbase = kaf-cli
 	source = https://github.com/ystyle/kaf-wifi/releases/download/v1.0.3/kaf-wifi-linux.zip
 	md5sums = c1ed98fa499f216fd9c261fcf2dd6ed0
 
-pkgname = kaf-cli
+pkgname = kaf-wifi
 

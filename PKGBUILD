@@ -1,5 +1,5 @@
 # Maintainer: YSTYLE <lxy5266@live.com>
-pkgname=kaf-cli
+pkgname=kaf-wifi
 pkgver=v1.0.3
 pkgrel=1
 epoch=
