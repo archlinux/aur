@@ -1,6 +1,6 @@
 pkgbase = openturns
 	pkgdesc = Uncertainty treatment library
-	pkgver = 1.16
+	pkgver = 1.17rc1
 	pkgrel = 1
 	url = http://www.openturns.org/
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = openturns
 	depends = hmat-oss
 	depends = python-matplotlib
 	depends = python-psutil
+	depends = python-dill
 	depends = nlopt
 	depends = cminpack
 	depends = ceres-solver
@@ -21,8 +22,8 @@ pkgbase = openturns
 	depends = dlib
 	depends = hdf5
 	backup = etc/openturns/openturns.conf
-	source = https://github.com/openturns/openturns/archive/v1.16.tar.gz
-	sha256sums = 9ab4c0d8f68d54a87df1cc19975f78cf0a16d6401afa83459eed9613695995dc
+	source = https://github.com/openturns/openturns/archive/v1.17rc1.tar.gz
+	sha256sums = a51653558e5a500a14dd04c6b6afaa798088e0888244d9ae879b34aa7b22cf80
 
 pkgname = openturns
 
