@@ -4,7 +4,7 @@ _group_name="swcdb"
 _sub_name="utils"
 
 pkgname=${_group_name}-${_sub_name}
-pkgver=0.4.19
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="The SWC-DB Utilities Applications"
 arch=("x86_64")

@@ -1,6 +1,6 @@
 pkgbase = swcdb-utils
 	pkgdesc = The SWC-DB Utilities Applications
-	pkgver = 0.4.19
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://www.swcdb.org
 	install = README.md
@@ -24,7 +24,7 @@ pkgbase = swcdb-utils
 	provides = libswcdb_utils_shell.so
 	provides = swcdb
 	provides = swcdb_load_generator
-	source = swcdb-utils-0.4.19-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.4.19
+	source = swcdb-utils-0.5.0-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.5.0
 	sha256sums = SKIP
 
 pkgname = swcdb-utils
