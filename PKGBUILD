@@ -39,13 +39,13 @@ build() {
 }
 
 package() {
-    install -Dm755 "$pkgname/assets/sunshine.conf" "$pkgdir/usr/share/$pkgname/sunshine.conf"
-    install -Dm755 "$pkgname/assets/apps_linux.json" "$pkgdir/usr/share/$pkgname/apps_linux.json"
+    install -Dm644 "$pkgname/assets/sunshine.conf" "$pkgdir/usr/share/$pkgname/sunshine.conf"
+    install -Dm644 "$pkgname/assets/apps_linux.json" "$pkgdir/usr/share/$pkgname/apps_linux.json"
  
     install -Dm755 build/$pkgname "$pkgdir/usr/bin/$pkgname"
     install -Dm755 build/sunshine.service "$pkgdir/usr/lib/systemd/user/sunshine.service"
 
-    install -Dm644 udev.rules "$pkgdir/usr/lib/udev/rules.d/85-$_pkgname-rules.rules"
+    install -Dm644 udev.rules "$pkgdir/usr/lib/udev/rules.d/85-$pkgname.rules"
 }
 
 # vim: ts=2 sw=2 et:
