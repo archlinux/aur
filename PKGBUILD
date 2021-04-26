@@ -2,7 +2,7 @@
 pkgname=moonwm
 _pkgname=MoonWM
 pkgver=7.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="My own outstandingly named Window Manager (a dynamic window manager)"
 arch=(x86_64 i686)
 url="https://github.com/jzbor/moonwm"
@@ -12,9 +12,10 @@ depends=(libx11 libxcb libxinerama slop xmenu xorg-xsetroot  dmenu ffmpeg geoclu
 makedepends=()
 checkdepends=()
 optdepends=(\
+    'lxappearance: GUI for configuring GTK and icon theme',
     'matcha-gtk-theme: a fitting GTK theme (Matcha-dark-aliz)',
     'numix-circle-icon-theme: an icon theme that fits nicely',
-    'lxappearance: GUI for configuring GTK and icon theme',
+    'scrot: integrated screenshot support',
 	'xfce4-notifyd: a good default notification-daemon')
 provides=(moonwm)
 conflicts=(moonwm)
