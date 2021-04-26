@@ -1,5 +1,6 @@
 [Unit]
 Description=Fluentd daemon
+Documentation=https://docs.fluentd.org
 After=network-online.target
 Wants=network-online.target
 
@@ -7,15 +8,15 @@ Wants=network-online.target
 User=fluentd
 Group=fluentd
 LimitNOFILE=65536
-Environment=FLUENT_CONF=/etc/fluentd/fluentd.conf
-Environment=FLUENT_PLUGIN=/etc/fluentd/plugin
-Environment=FLUENT_SOCKET=/run/fluentd/fluentd.sock
+Environment=FLUENT_CONF=/etc/fluent/fluentd.conf
+Environment=FLUENT_PLUGIN=/etc/fluent/plugin
+Environment=FLUENT_SOCKET=/run/fluent/fluentd.sock
 Environment=FLUENT_LOG_FILE=/var/log/fluentd/fluentd.log
 EnvironmentFile=-/etc/conf.d/fluentd
 PIDFile=/run/fluentd/fluentd.pid
 RuntimeDirectory=fluentd
 Type=forking
-ExecStart=/usr/bin/fluentd --log $FLUENT_LOG_FILE --daemon /run/fluentd/fluentd.pid
+ExecStart=/usr/bin/fluentd --log $FLUENT_LOG_FILE --daemon /run/fluentd/fluentd.pid $FLUENT_AGENT_OPTIONS
 ExecStop=/usr/bin/kill -TERM ${MAINPID}
 ExecReload=/usr/bin/kill -HUP ${MAINPID}
 Restart=always
