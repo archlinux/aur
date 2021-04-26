@@ -1,7 +1,7 @@
 pkgbase = gkrellm-fchart
 	pkgdesc = general-purpose plugin for gkrellm
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.cs.hmc.edu/~geoff/gkrellm-fchart.html
 	arch = i686
 	arch = x86_64

@@ -2,7 +2,7 @@
 
 pkgname=gkrellm-fchart
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="general-purpose plugin for gkrellm"
 url="https://www.cs.hmc.edu/~geoff/gkrellm-fchart.html"
 arch=('i686' 'x86_64')
