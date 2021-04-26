@@ -1,0 +1,17 @@
+pkgbase = wine-appimage
+	pkgdesc = Appimage For Wine.
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/Hackerl/Wine_Appimage
+	arch = x86_64
+	license = unknow
+	provides = wine-appimage
+	conflicts = wine-appimage
+	conflicts = wine
+	conflicts = wine-staging
+	options = !strip
+	source = wine-appimage.AppImage::https://github.com/Hackerl/Wine_Appimage/releases/download/v3.0/Wine-x86_64-arch.latest.AppImage
+	sha256sums = 0db0112ce9f639df7ea739aa735fec1cf3c695d7b623b2120e70a69583ce603e
+
+pkgname = wine-appimage
+
