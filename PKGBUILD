@@ -1,7 +1,7 @@
 # Maintainer: Elio Esteves Duarte <elio.esteves.duarte@gmail.com>
 pkgname=tomate-gtk
 pkgver=0.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A timer for the Pomodoro Technique"
 arch=("any")
 url="https://github.com/eliostvs/tomate-gtk"
@@ -14,12 +14,12 @@ depends=("desktop-file-utils"
          "python"
          "python-blinker"
          "python-dbus"
-         "python-object"
+         "python-gobject"
+         "python-pyxdg"
+         "python-tomate"
          "python-venusian"
          "python-wiring"
-         "python-tomate"
          "python-wrapt"
-         "python-xdg"
          "python-yapsy")
 optdependes=("tomate-alarm-plugin: Plays alarm at session end"
              "tomate-indicator-plugin: Shows session progress in tray area"
