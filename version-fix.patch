@@ -10,7 +10,7 @@ index 390a37a7f..2b41d0dd9 100644
 -      if (isCI) dynVer
 -      else localSnapshotVersion // only for local publishing
 -    },
-+    version := "0.10.1",
++    version := "0.10.2",
      // note bucket created by @tgodzik
      munitBucketName := Some("scala-metals-test-reports"),
      scalaVersion := V.scala212,
