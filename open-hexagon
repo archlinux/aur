@@ -1,6 +1,6 @@
 #!/bin/sh
 
-id -nG | grep -qE '[ ^]games[ $]'
+id -nG --zero | grep -q 'games' --null-data --line-regexp
 if [ "${?}" -ne 0 ]; then
   zenity --error --text="Your user must be in 'games' group."
   exit 1
