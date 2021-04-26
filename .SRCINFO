@@ -1,6 +1,6 @@
 pkgbase = vmango
 	pkgdesc = Your own personal IaaS cloud
-	pkgver = 0.12.0
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://github.com/subuk/vmango
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = vmango
 	depends = qemu
 	depends = cdrtools
 	backup = etc/vmango.conf
-	source = vmango::git+https://github.com/subuk/vmango.git#tag=v0.12.0
+	source = vmango::git+https://github.com/subuk/vmango.git#tag=v0.12.1
 	source = service
 	source = sysusers
 	source = tmpfiles

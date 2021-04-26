@@ -2,7 +2,7 @@
 
 _pkgname=vmango
 pkgname=${_pkgname}
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="Your own personal IaaS cloud"
 arch=("any")
