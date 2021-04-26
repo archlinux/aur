@@ -1,7 +1,7 @@
 # Maintainer: Joey Dumont <joey.dumont@gmail.com>
 _target=mips64-elf
 pkgname=$_target-gdb
-pkgver=10.1
+pkgver=10.2
 pkgrel=1
 pkgdesc="The GNU Debugger (${_target})"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ depends=(mpfr gdb-common guile2.0 libelf)
 makedepends=(texinfo python)
 options=(!emptydirs)
 source=("ftp://ftp.gnu.org/gnu/gdb/gdb-$pkgver.tar.xz")
-sha256sums=('f82f1eceeec14a3afa2de8d9b0d3c91d5a3820e23e0a01bbb70ef9f0276b62c0')
+sha256sums=('aaa1223d534c9b700a8bec952d9748ee1977513f178727e1bee520ee000b4f29')
 
 prepare() {
   cd "${srcdir}/gdb-${pkgver}"
