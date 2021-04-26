@@ -1,4 +1,4 @@
-pkg
-src
-*.bin
-*.pkg.tar.xz
+/pkg
+/src
+/*.bin
+/*.pkg.tar.xz
