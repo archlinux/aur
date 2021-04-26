@@ -10,7 +10,7 @@ pkgname=julia-mkl
 _pkgname=julia
 epoch=2
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 pkgdesc='High-level, high-performance, dynamic programming language (compiled with the Intel MKL library)'
 url='https://julialang.org/'
@@ -35,8 +35,6 @@ prepare() {
   patch -p1 -i ../julia-hardcoded-libs.patch
   # Don't build again in install
   patch -p1 -i ../make-install-no-build.patch
-  # Fix test failure
-  sed -e 's|0.22314355f0 + 3.1415927f0im|0.22314355f0 - 3.1415927f0im|' -i stdlib/LinearAlgebra/test/lu.jl
 }
 
 _buildopts="prefix=/usr \
@@ -66,39 +64,45 @@ _buildopts="prefix=/usr \
     USE_SYSTEM_ZLIB=1 \
     USE_SYSTEM_P7ZIP=1 \
     MARCH=x86-64"
+    #USEICC=1 \
+    #USEIFC=1 \
 
 build() {
   cd $_pkgname-$pkgver
   make VERBOSE=1 JLDFLAGS=${LDFLAGS} $_buildopts
 }
 
-#check() {
-#  cd $_pkgname-$pkgver/test
-#
-#  # this is the make testall target, plus the --skip option from
-#  # travis/appveyor/circleci (one test fails with DNS resolution errors)
-#  # Also skip tests that check for a hardcoded version number
-#  ../julia --check-bounds=yes --startup-file=no ./runtests.jl all \
-#    --skip Sockets \
-#    --skip broadcast \
-#    --skip Distributed \
-#    --skip nghttp2_jll \
-#    --skip GMP_jll \
-#    --skip LibCURL \
-#    --skip LibSSH2_jll \
-#    --skip MbedTLS_jll \
-#    --skip SuiteSparse_jll \
-#    --skip PCRE2_jll \
-#    --skip LibGit2_jll \
-#    --skip MozillaCACerts_jll \
-#    --skip NetworkOptions
-#  find ../stdlib \( -name \*.cov -o -name \*.mem \) -delete
-#  rm -fr ../stdlib/Artifacts/test/artifacts
-#}
+check() {
+  cd $_pkgname-$pkgver/test
+
+  # this is the make testall target, plus the --skip option from
+  # travis/appveyor/circleci (one test fails with DNS resolution errors)
+  # Also skip tests that check for a hardcoded version number
+  ../julia --check-bounds=yes --startup-file=no ./runtests.jl all \
+    --skip Sockets \
+    --skip broadcast \
+    --skip Distributed \
+    --skip nghttp2_jll \
+    --skip GMP_jll \
+    --skip LibCURL \
+    --skip LibSSH2_jll \
+    --skip MbedTLS_jll \
+    --skip SuiteSparse_jll \
+    --skip PCRE2_jll \
+    --skip LibGit2_jll \
+    --skip MozillaCACerts_jll \
+    --skip NetworkOptions \
+    --skip OpenBLAS_jll \
+    --skip cmdlineargs
+  find ../stdlib \( -name \*.cov -o -name \*.mem \) -delete
+  rm -fr ../stdlib/Artifacts/test/artifacts
+}
 
 package() {
   cd $_pkgname-$pkgver
   make DESTDIR="$pkgdir" install $_buildopts
+
+  ln -s /opt/intel/oneapi/compiler/latest/linux/compiler/lib/intel64/libimf.so "$pkgdir"/usr/lib/julia
 
   rm "$pkgdir"/usr/lib/julia/libccalltest.so.debug # Remove debug testing library
   install -Dm644 LICENSE.md -t "$pkgdir"/usr/share/licenses/$pkgname
