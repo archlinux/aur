@@ -9,7 +9,6 @@ pkgbase = octave-miscellaneous
 	license = GPL3
 	makedepends = ncurses
 	makedepends = units
-	makedepends = termcap
 	depends = octave>=3.8.0
 	noextract = miscellaneous-1.3.0.tar.gz
 	source = http://downloads.sourceforge.net/octave/miscellaneous-1.3.0.tar.gz

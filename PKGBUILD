@@ -18,7 +18,7 @@ url="http://octave.sourceforge.net/$_pack/"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=3.8.0')
-makedepends=('ncurses' 'units' 'termcap')
+makedepends=('ncurses' 'units')
 optdepends=()
 backup=()
 options=()
