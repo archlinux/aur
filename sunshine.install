@@ -1,0 +1,7 @@
+post_install() {
+    if ! getent group input > /dev/null; then
+        echo "Creating group $GROUP_INPUT"
+        groupadd -r input
+    fi
+}
+

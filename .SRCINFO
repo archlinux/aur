@@ -3,6 +3,7 @@ pkgbase = sunshine-git
 	pkgver = 0.4.0.310.488d8e5
 	pkgrel = 1
 	url = https://github.com/loki-47-6F-64/sunshine
+	install = sunshine.install
 	arch = x86_64
 	arch = i686
 	license = GPL3
@@ -23,8 +24,10 @@ pkgbase = sunshine-git
 	conflicts = sunshine
 	source = sunshine::git+https://github.com/loki-47-6F-64/sunshine.git
 	source = systemd-cleanup.patch::https://github.com/loki-47-6F-64/sunshine/pull/42.patch
+	source = udev.rules
 	sha256sums = SKIP
 	sha256sums = f785ab0ac13f4d3bcd61cc20de1422d8006bb3eee444b9b2e38705d45eb7c28d
+	sha256sums = 5ce01689247cb01d3f119cac32c731607d99bb875dcdd39c92b547f76d2befa0
 
 pkgname = sunshine-git
 
