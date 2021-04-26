@@ -1,6 +1,6 @@
 pkgbase = glaxnimate-bin
 	pkgdesc = Simple vector animation program.
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://glaxnimate.mattbas.org/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = glaxnimate-bin
 	provides = glaxnimate
 	conflicts = glaxnimate
 	source = glaxnimate-0.3.2.deb::https://gitlab.com/mattbas/glaxnimate-artifacts/-/raw/master/0.3.2/Deb/glaxnimate.deb
-	sha1sums = c7baab225eeea5e2619f2f8a23fec2d5dc9b92d8
+	sha1sums = d530ea4d5596565e27fd40ed6cd2d1cadfc263b0
 
 pkgname = glaxnimate-bin
 
