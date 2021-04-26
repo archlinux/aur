@@ -4,9 +4,9 @@
 pkgname=dsnet-git
 _pkgname=${pkgname%-git}
 pkgver=0.5.r38.g9a71222
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple command to manage a centralised wireguard VPN."
-arch=(x86_64)
+arch=(any)
 url="https://github.com/naggie/dsnet"
 license=(MIT)
 makedepends=("go" "git")
