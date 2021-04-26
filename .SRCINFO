@@ -1,0 +1,12 @@
+pkgbase = todobg
+	pkgdesc = Todo list on the X root window
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://github.com/cdown/todobg
+	arch = any
+	license = Public Domain
+	source = https://github.com/cdown/todobg/archive/refs/tags/0.1.0.zip
+	md5sums = b5836549cc01b9d67b5ef1555fd0ff88
+
+pkgname = todobg
+
