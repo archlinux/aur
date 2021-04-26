@@ -2,7 +2,7 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=leagueoflegends-git
-pkgver=0.10.25.r10.g39dd837
+pkgver=0.11.8.r0.g428d14f
 pkgrel=1
 pkgdesc="League of Legends helper script"
 arch=('any')
