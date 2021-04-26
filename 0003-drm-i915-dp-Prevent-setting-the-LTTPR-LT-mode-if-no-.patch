@@ -1,0 +1,115 @@
+From 6cbe4ead29eb88f3a5d4257adbb77a944ed4c9de Mon Sep 17 00:00:00 2001
+From: Imre Deak <imre.deak@intel.com>
+Date: Mon, 18 Jan 2021 20:31:43 +0200
+Subject: [PATCH 3/6] drm/i915/dp: Prevent setting the LTTPR LT mode if no
+ LTTPRs are detected
+
+Cherry-picked from 3b7bbb3619d2cc92f04ba10ad27d3b616aabf175
+
+Atm, the driver programs explicitly the default transparent link
+training mode (0x55) to DP_PHY_REPEATER_MODE even if no LTTPRs are
+detected.
+
+This conforms to the spec (3.6.6.1):
+"DP upstream devices that do not enable the Non-transparent mode of
+ LTTPRs shall program the PHY_REPEATER_MODE register (DPCD Address
+ F0003h) to 55h (default) prior to link training"
+
+however writing the default value to this DPCD register seems to cause
+occasional link training errors at least for a DELL WD19TB TBT dock, when
+no LTTPRs are detected.
+
+Writing to DP_PHY_REPEATER_MODE will also cause an unnecessary timeout
+on systems without any LTTPR.
+
+To fix the above two issues let's assume that setting the default mode
+is redundant when no LTTPRs are detected. Keep the existing behavior and
+program the default mode if more than 8 LTTPRs are detected or in case
+the read from DP_PHY_REPEATER_CNT returns an invalid value.
+
+References: https://gitlab.freedesktop.org/drm/intel/-/issues/2801
+Signed-off-by: Imre Deak <imre.deak@intel.com>
+Reviewed-by: Khaled Almahallawy <khaled.almahallawy@intel.com>
+Link: https://patchwork.freedesktop.org/patch/msgid/20210118183143.1145707-1-imre.deak@intel.com
+---
+ .../drm/i915/display/intel_dp_link_training.c | 36 ++++++++-----------
+ 1 file changed, 15 insertions(+), 21 deletions(-)
+
+diff --git a/drivers/gpu/drm/i915/display/intel_dp_link_training.c b/drivers/gpu/drm/i915/display/intel_dp_link_training.c
+index f916b9f04b6b..0359d5936901 100644
+--- a/drivers/gpu/drm/i915/display/intel_dp_link_training.c
++++ b/drivers/gpu/drm/i915/display/intel_dp_link_training.c
+@@ -34,18 +34,6 @@ intel_dp_dump_link_status(const u8 link_status[DP_LINK_STATUS_SIZE])
+ 		      link_status[3], link_status[4], link_status[5]);
+ }
+ 
+-static int intel_dp_lttpr_count(struct intel_dp *intel_dp)
+-{
+-	int count = drm_dp_lttpr_count(intel_dp->lttpr_common_caps);
+-
+-	/*
+-	 * Pretend no LTTPRs in case of LTTPR detection error, or
+-	 * if too many (>8) LTTPRs are detected. This translates to link
+-	 * training in transparent mode.
+-	 */
+-	return count <= 0 ? 0 : count;
+-}
+-
+ static void intel_dp_reset_lttpr_count(struct intel_dp *intel_dp)
+ {
+ 	intel_dp->lttpr_common_caps[DP_PHY_REPEATER_CNT -
+@@ -151,6 +139,17 @@ int intel_dp_lttpr_init(struct intel_dp *intel_dp)
+ 	int i;
+ 
+ 	ret = intel_dp_read_lttpr_common_caps(intel_dp);
++	if (!ret)
++		return 0;
++
++	lttpr_count = drm_dp_lttpr_count(intel_dp->lttpr_common_caps);
++	/*
++	 * Prevent setting LTTPR transparent mode explicitly if no LTTPRs are
++	 * detected as this breaks link training at least on the Dell WD19TB
++	 * dock.
++	 */
++	if (lttpr_count == 0)
++		return 0;
+ 
+ 	/*
+ 	 * See DP Standard v2.0 3.6.6.1. about the explicit disabling of
+@@ -159,17 +158,12 @@ int intel_dp_lttpr_init(struct intel_dp *intel_dp)
+ 	 */
+ 	intel_dp_set_lttpr_transparent_mode(intel_dp, true);
+ 
+-	if (!ret)
+-		return 0;
+-
+-	lttpr_count = intel_dp_lttpr_count(intel_dp);
+-
+ 	/*
+ 	 * In case of unsupported number of LTTPRs or failing to switch to
+ 	 * non-transparent mode fall-back to transparent link training mode,
+ 	 * still taking into account any LTTPR common lane- rate/count limits.
+ 	 */
+-	if (lttpr_count == 0)
++	if (lttpr_count < 0)
+ 		return 0;
+ 
+ 	if (!intel_dp_set_lttpr_transparent_mode(intel_dp, false)) {
+@@ -231,11 +225,11 @@ intel_dp_phy_is_downstream_of_source(struct intel_dp *intel_dp,
+ 				     enum drm_dp_phy dp_phy)
+ {
+ 	struct drm_i915_private *i915 = dp_to_i915(intel_dp);
+-	int lttpr_count = intel_dp_lttpr_count(intel_dp);
++	int lttpr_count = drm_dp_lttpr_count(intel_dp->lttpr_common_caps);
+ 
+-	drm_WARN_ON_ONCE(&i915->drm, lttpr_count == 0 && dp_phy != DP_PHY_DPRX);
++	drm_WARN_ON_ONCE(&i915->drm, lttpr_count <= 0 && dp_phy != DP_PHY_DPRX);
+ 
+-	return lttpr_count == 0 || dp_phy == DP_PHY_LTTPR(lttpr_count - 1);
++	return lttpr_count <= 0 || dp_phy == DP_PHY_LTTPR(lttpr_count - 1);
+ }
+ 
+ static u8 intel_dp_phy_voltage_max(struct intel_dp *intel_dp,
+-- 
+2.31.1
+

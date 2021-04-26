@@ -1,0 +1,53 @@
+From 5ffd31225f0df5dcd0a1ba60bdae3e7e19afb684 Mon Sep 17 00:00:00 2001
+From: Imre Deak <imre.deak@intel.com>
+Date: Tue, 13 Apr 2021 02:24:12 +0300
+Subject: [PATCH 5/6] drm/i915: Fix modesetting in case of unexpected AUX
+ timeouts
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In case AUX failures happen unexpectedly during a modeset, the driver
+should still complete the modeset. In particular the driver should
+perform the link training sequence steps even in case of an AUX failure,
+as this sequence also includes port initialization steps. Not doing that
+can leave the port/pipe in a broken state and lead for instance to a
+flip done timeout.
+
+Fix this by continuing with link training (in a no-LTTPR mode) if the
+DPRX DPCD readout failed for some reason at the beginning of link
+training. After a successful connector detection we already have the
+DPCD read out and cached, so the failed repeated read for it should not
+cause a problem. Note that a partial AUX read could in theory partly
+overwrite the cached DPCD (and return error) but this overwrite should
+not happen if the returned values are corrupted (due to a timeout or
+some other IO error).
+
+Kudos to Ville to root cause the problem.
+
+Fixes: 7dffbdedb96a ("drm/i915: Disable LTTPR support when the DPCD rev < 1.4")
+References: https://gitlab.freedesktop.org/drm/intel/-/issues/3308
+Cc: stable@vger.kernel.org # 5.11
+Cc: Ville Syrjälä <ville.syrjala@linux.intel.com>
+Signed-off-by: Imre Deak <imre.deak@intel.com>
+---
+ drivers/gpu/drm/i915/display/intel_dp_link_training.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/i915/display/intel_dp_link_training.c b/drivers/gpu/drm/i915/display/intel_dp_link_training.c
+index e6532ea5757b..6f2cb9d55e1b 100644
+--- a/drivers/gpu/drm/i915/display/intel_dp_link_training.c
++++ b/drivers/gpu/drm/i915/display/intel_dp_link_training.c
+@@ -843,7 +843,8 @@ void intel_dp_start_link_train(struct intel_dp *intel_dp,
+ 	int lttpr_count = intel_dp_init_lttpr_and_dprx_caps(intel_dp);
+ 
+ 	if (lttpr_count < 0)
+-		return;
++		/* Still continue with enabling the port and link training. */
++		lttpr_count = 0;
+ 
+ 	if (!intel_dp_link_train_all_phys(intel_dp, crtc_state, lttpr_count))
+ 		intel_dp_schedule_fallback_link_training(intel_dp, crtc_state);
+-- 
+2.31.1
+

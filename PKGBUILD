@@ -2,12 +2,12 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-rc
-pkgrel=2
+pkgrel=1
 _srcname=linux-5.11
 _major=5.11
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=13
+_minor=16
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -30,17 +30,25 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-drm-i915-ilk-glk-Fix-link-training-on-links-with-LTT.patch
+  0003-drm-i915-dp-Prevent-setting-the-LTTPR-LT-mode-if-no-.patch
+  0004-drm-i915-Disable-LTTPR-support-when-the-DPCD-rev-1.4.patch
+  0005-drm-i915-Fix-modesetting-in-case-of-unexpected-AUX-t.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('1146f808dee9bf29b02e135caea52ee49ea8cbc6d4718ecddd9a296239484baa9d06f5968495949973fe22bddd2bd49dc85508cd12c7959d2291b3dc0e5f0d3b'
+b2sums=('f4974eb6000b349713c86ee75bff06d64061509908ec96ea11459999bda9c1e289a48e9b08925aaf9b8eff428488ceaed44c4561cffb6c4c67302905a033e942'
         'SKIP'
-        'fd9537a0eb265660ed25d12ff4098ca208035576c580f81cb6a1355eedde2748bdb65521641f68e626a1aee49e7494c79627015a376b7ee4a6373622605ac760'
+        'fe7a296697d21ac4572b6714da898bc9303cf04f988297329e10d660a957ea6142a182fe583e7a98bf2f767f61989288454ecf640844346af079d90b4fdd21b1'
         'SKIP'
-        '837aeac7d38490f5457f53d2fcb1e114624b0e0b4931b50f016c6b3c7f67d5638df946b960d50b1a14c945229827c936e3f112fddffb80103cd60873fcd15e7d'
-        '2c197117aa915971edb97ec98233d4c394f6790829486403bc51732a18fe12338d82e680ccafd138153affe9830d815ee1b52c7d1f3ed7937bc7a0c1fac3a5ef')
+        'bd8c382158f579c173ac68a7f27d3abfe52b1bd60413dea593534fa6c126d6a804e6dd98c2d9b1f402cd22c9bbd8f39bacaba7d96b13320bd529badba0ec3e0c'
+        '7f6962283f1439ed219c99328acbabea2b5493ee6a8ce476b51ee7f7a38fc741d0a2b546c79a4611acedb6808ac8ab3b3c8f3386837cfef64a343a26f9c84180'
+        'a1f420194ee0c398ec4dd4fb94fd03eea2c156ac1daf89b1238adeb6085871a871099b291249255ebd8cf863c5ed9e8963a35828d9a1061f10554927574f1eac'
+        '10882461985bc99a22e9cceae7a80ba2fd2892a84abb528977ed154725419622c10a515d66a827c1cca567386483445ab3d3e6640439afe114a5c89feb2a69e7'
+        'aa1f093e359ff743e8fe9d7dbbecc780fd7d3e46952c32c051bf1fa8572f2a8c456babedfb5076337274fc0c2f8e026b285eb7343ee8d0d617c446936a65604c'
+        '70d64a1af2c815f40f17abca038b2bc364d609dc857f8c5c08dd5b3293037b8da08e7e3ca9143d17c8c0d482f65b9a3c1d1e6d1b1244e4816e117b948f52570a')
 
 
 export KBUILD_BUILD_HOST=archlinux
