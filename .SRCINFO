@@ -1,21 +1,17 @@
 pkgbase = raid-check
-	pkgdesc = raid-check script, config and cronjob for data scrubbing to be used with mdadm.
-	pkgver = 3.3
+	pkgdesc = Raid-check script, config and cronjob for data scrubbing to be used with mdadm.
+	pkgver = 4.1.6.el7
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/RAID#Scrubbing
 	install = raid-check.install
-	arch = i686
 	arch = x86_64
-	arch = arm
-	arch = armv6h
-	arch = armv7h
-	license = GPLv3
-	makedepends = rpmextract
+	license = GPL
 	depends = mdadm
+	depends = cron
 	backup = etc/cron.d/raid-check
 	backup = etc/conf.d/raid-check
-	source = http://mirror.centos.org/centos/6/os/x86_64/Packages/mdadm-3.3-6.el6.x86_64.rpm
-	md5sums = 487e6671a8b1e023a3ebe55ee246cef2
+	source = http://mirror.centos.org/centos/7/os/x86_64/Packages/mdadm-4.1-6.el7.x86_64.rpm
+	md5sums = 707301aa677c579524535ff3a5bb9963
 
 pkgname = raid-check
 

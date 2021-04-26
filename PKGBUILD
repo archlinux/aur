@@ -1,19 +1,19 @@
-# Maintainer: (divansantana) Divan Santana <divan (a) santanas  co za>
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Contributor: (divansantana) Divan Santana <divan (a) santanas  co za>
 
 pkgname=raid-check
-_pkgname=mdadm
-pkgver=3.3.2
-_pkgver=3.3.2-5
+_pkgver=4.1
+_centosver=6.el7
+pkgver=${_pkgver}.${_centosver}
 pkgrel=1
-pkgdesc="raid-check script, config and cronjob for data scrubbing to be used with mdadm."
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+pkgdesc="Raid-check script, config and cronjob for data scrubbing to be used with mdadm."
+arch=('x86_64')
 url="https://wiki.archlinux.org/index.php/RAID#Scrubbing"
-license=('GPLv3')
-depends=('mdadm')
-makedepends=('rpmextract')
+license=('GPL')
+depends=('mdadm' 'cron')
 install="raid-check.install"
-source=(http://mirror.centos.org/centos/6/os/x86_64/Packages/${_pkgname}-${_pkgver}.el6.x86_64.rpm)
-md5sums=('524a0586dad326943e3b5c8339c053ac')
+source=(http://mirror.centos.org/centos/7/os/x86_64/Packages/mdadm-${_pkgver}-${_centosver}.x86_64.rpm)
+md5sums=('707301aa677c579524535ff3a5bb9963')
 backup=(etc/cron.d/raid-check
         etc/conf.d/raid-check)
 
