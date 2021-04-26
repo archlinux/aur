@@ -2,11 +2,12 @@
 # Place the gog installation file in the same folder as this PKGBUILD
 pkgname=gog-tangledeep
 _pkgname=tangledeep
-pkgver=1.36b
-_pkgver=1_36b
-_build=43839
+pkgver=1.4i.2
+_pkgver=1_4i_2
+_build=45967
 _goggame=1703478259
 pkgrel=1
+epoch=1
 pkgdesc="Trapped in underground villages with no memory of the world at the surface, you must survive an ever-changing labyrinth to discover what lies above."
 arch=('i686' 'pentium4' 'x86_64')
 url="https://www.gog.com/game/${_pkgname}"
@@ -18,8 +19,8 @@ source=("${_pkgname}_${_pkgver}_${_build}.sh::gog://${_pkgname}_${_pkgver}_${_bu
         "${_pkgname}.desktop")
 # don't download anything via makepkg
 DLAGENTS+=("gog::/usr/bin/perl -E print\(\"${RED}\"\ .\ substr\(\"%u\",\ 6\)\ .\ \"\ not\ found.\ \ Check\ the\ PKGBUILD\ for\ further\ information.${ALL_OFF}\\\\n\"\)\;\ exit\ 1")
-sha256sums=('7a4767cb94200302cdd1b517a13b5bdb73df6672ba3ac7f517a9bbc4c38b0d1e'
-            '13b1809ed2232f90fece7e46dae5d7f1d0dd983e0997501316f9e57703553fd4')
+sha256sums=('fd40dc7950ec130f017608cd589bdd312bc4c667b8e3f47d4164ed2368a9d5da'
+            'a5d0ecd7d72687445a91822f06b15194c728be37a18df85343340a864ac112c0')
 noextract=("${_pkgname}_${_pkgver}_${_build}.sh"
         "${_pkgname}.desktop")
 
