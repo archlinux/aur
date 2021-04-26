@@ -11,7 +11,7 @@ depends=()
 optdepends=('bat: display highlighted markdown in the terminal')
 provides=('gooseberry')
 source=("https://github.com/out-of-cheese-error/gooseberry/releases/download/$pkgver/gooseberry-linux.tar.gz")
-sha256sums=('a3d409ea4de1f69d65172d1d0d01edcd3afac373aec52e7675856f5bf961cfa8')
+sha256sums=('ad3819bf49cfc46dd5b0602f80c393890f278c804d9026af207261917d3e00ef')
 
 package() {
   cd "$srcdir/"
