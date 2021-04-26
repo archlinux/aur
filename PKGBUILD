@@ -1,9 +1,8 @@
 # Maintainer: Jason Papakostas <vithos@gmail.com>
 pkgname=epaste
-pkgver=1.0.2
-pkgrel=2
-_commit=7eb82903bd207d4655a53c688148319b50cd5586
-_dirname="$pkgname-v$pkgver-$_commit"
+pkgver=2.0.0
+pkgrel=1
+_dirname="$pkgname-v$pkgver"
 pkgdesc="encrypts given text and turns encrypted bytes into base64 text which can be easily pasted/retrieved on pastebin websites"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/zetok/epaste"
@@ -17,9 +16,9 @@ replaces=()
 backup=()
 options=()
 install=
-source=("$_dirname.tar.gz::${url}/repository/archive.tar.gz?ref=v${pkgver}")
+source=("${url}/-/archive/v${pkgver}/epaste-v${pkgver}.tar.gz")
 noextract=()
-sha512sums=('48131bfd87244a64c17ee83682d9d70ca676235052b651e5f47578dd1b476732bea8f7db43d50ea769a9434b07cae23d327620d683a6414119180203aa520c82')
+sha512sums=('b1bc6e31043236e559119bd6e3fe2d5ad110e637e07e8c6a9945959cde40f8263d18286fd7373d91ca66797dda5313503412a99898d50aaea4ab94334d430f59')
 
 build() {
 	cd "$srcdir/$_dirname"
