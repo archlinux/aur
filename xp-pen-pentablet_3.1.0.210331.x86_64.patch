@@ -1,0 +1,260 @@
+Only in xp-pen-pentablet_3.1.0.210331.x86_64/App: etc
+Only in xp-pen-pentablet_3.1.0.210331.x86_64/App: lib
+Only in xp-pen-pentablet_3.1.0.210331.x86_64/App/usr/lib/pentablet: LGPL
+Only in xp-pen-pentablet_3.1.0.210331.x86_64/App/usr/lib/pentablet: conf
+Only in xp-pen-pentablet_3.1.0.210331.x86_64/App/usr/lib/pentablet: lib
+Only in xp-pen-pentablet_3.1.0.210331.x86_64/App/usr/lib/pentablet: pentablet
+diff -ru xp-pen-pentablet_3.1.0.210331.x86_64/App/usr/lib/pentablet/pentablet.sh patch/App/usr/lib/pentablet/pentablet.sh
+--- xp-pen-pentablet_3.1.0.210331.x86_64/App/usr/lib/pentablet/pentablet.sh	2021-03-12 08:49:54.000000000 +0100
++++ patch/App/usr/lib/pentablet/pentablet.sh	2021-04-26 23:52:59.141538629 +0200
+@@ -1,5 +1,79 @@
+ #!/bin/sh
++
++
++
++userinfo="$( who )"
++user="$( who | awk  '{print $1}'|head -1 )"
++user_home_dir="$( getent passwd "${user}" | cut -d: -f6 )"
++
++
+ appname=`basename $0 | sed s,\.sh$,,`
++
++
++sysAppDir="/usr/lib"
++
++sysAppDataDir=$user_home_dir/.local/share
++sysAppDataPath=$sysAppDataDir/$appname
++appConfDir=$sysAppDir/$appname/conf
++sysConfName=config.xml
++sysLangName=language.ini
++sysNameConfName=name_config.ini
++
++
++if [ ! -d "$sysAppDataDir" ]; then
++	str=`mkdir $sysAppDataDir`
++	if [ "$str" !=  "" ]; then 
++		echo "$str";
++	fi
++	chmod 777 $sysAppDataDir
++fi
++
++if [ ! -d "$sysAppDataPath" ]; then
++	str=`mkdir $sysAppDataPath`
++	if [ "$str" !=  "" ]; then 
++		echo "$str";
++	fi
++fi
++chmod 777 $sysAppDataPath
++
++
++if [ -f $appConfDir/$sysConfName ] && [ ! -f $sysAppDataPath/$sysConfName ]; then
++	str="$( cp $appConfDir/$sysConfName $sysAppDataPath/$sysConfName )"
++	if [ "$str" !=  "" ]; then 
++		echo "$str";
++	else
++		chmod +0666 $sysAppDataPath/$sysConfName		
++	fi
++else
++	echo "Cannot find driver's configuration in package"
++	exit
++fi
++
++if [ -f $appConfDir/$sysLangName ] && [ ! -f $sysAppDataPath/$sysLangName ]; then
++	str="$( cp $appConfDir/$sysLangName $sysAppDataPath/$sysLangName )"
++	if [ "$str" !=  "" ]; then 
++		echo "$str";
++	else
++		chmod +0666 $sysAppDataPath/$sysLangName
++	fi
++else
++	echo "Cannot find driver's configuration of language in package"
++	exit
++fi
++
++if [ -f $appConfDir/$sysNameConfName ] && [ ! -f $sysAppDataPath/$sysNameConfName ]; then
++	str="$( cp $appConfDir/$sysNameConfName $sysAppDataPath/$sysNameConfName )"
++	if [ "$str" !=  "" ]; then 
++		echo "$str";
++	else
++			chmod +0666 $sysAppDataPath/$sysNameConfName
++	fi
++else
++	echo "Cannot find driver's configuration of name in package"
++	exit
++fi
++
++
+ dirname=`dirname $0`
+ tmp="${dirname#?}"
+ if [ "${dirname%$tmp}" != "/" ]; then
+Only in xp-pen-pentablet_3.1.0.210331.x86_64/App/usr/lib/pentablet: platforms
+Only in xp-pen-pentablet_3.1.0.210331.x86_64/App/usr/lib/pentablet: plugins
+Only in xp-pen-pentablet_3.1.0.210331.x86_64/App/usr/lib/pentablet: qt.conf
+Only in xp-pen-pentablet_3.1.0.210331.x86_64/App/usr/lib/pentablet: resource.rcc
+Only in xp-pen-pentablet_3.1.0.210331.x86_64/App/usr/lib/pentablet: translations
+Only in xp-pen-pentablet_3.1.0.210331.x86_64/App/usr: share
+diff -ru xp-pen-pentablet_3.1.0.210331.x86_64/install.sh patch/install.sh
+--- xp-pen-pentablet_3.1.0.210331.x86_64/install.sh	2021-02-04 02:31:17.000000000 +0100
++++ patch/install.sh	2021-04-26 23:40:37.607545076 +0200
+@@ -1,11 +1,6 @@
+ #! /bin/bash
+ 
+ 
+-userinfo=`who`
+-user=`who | awk  '{print $1}'|head -1`
+-echo $user
+-
+-
+ dirname=`dirname $0`
+ tmp="${dirname#?}"
+ if [ "${dirname%$tmp}" != "/" ]; then
+@@ -17,10 +12,23 @@
+ appName=pentablet
+ 
+ #Close driver if it running
+-pid=`ps -e|grep $appName|awk '{print $1}'`
+-if [ -n "$pid" ]; then
+-	echo "close $appName"
+-	kill -15 $pid
++#pid=`ps -e|grep $appName|awk '{print $1}'`
++#if [ -n "$pid" ]; then
++#	echo "close $appName"
++#	kill -15 $pid
++#fi
++
++
++rootDir="$1"
++if [ -n "${rootDir}" ]; then
++	if [ -d "${rootDir}" ]; then
++		rootDir="$(realpath "${rootDir}")"
++	else
++		echo "'${rootDir}' is not a directory"
++		exit 1
++	fi
++else
++	rootDir=""
+ fi
+ 
+ #Copy rule
+@@ -32,13 +40,13 @@
+ #echo "$sysRuleDir/$ruleName"
+ 
+ if [ -f $appRuleDir/$ruleName ]; then
+-	str=`cp $appRuleDir/$ruleName $sysRuleDir/$ruleName`
++	str=`cp $appRuleDir/$ruleName ${rootDir}/usr/$sysRuleDir/$ruleName`
+ 	if [ "$str" !=  "" ]; then 
+ 		echo "$str";
+ 	fi
+ else
+ 	echo "Cannot find driver's rules in package"
+-	exit
++	exit 2
+ fi
+ 
+ #install app
+@@ -50,41 +58,41 @@
+ #echo $appAppDir
+ 
+ if [ -d "$appAppDir" ]; then
+-	str=`cp -rf $appAppDir $sysAppDir`
++	str=`cp -rf $appAppDir ${rootDir}/$sysAppDir`
+ 	if [ "$str" !=  "" ]; then 
+ 		echo "$str";
+ 	fi
+ else
+ 	echo "Cannot find driver's files in package"
+-	exit
++	exit 3
+ fi
+ 
+-if [ -f $sysAppDir/$appName/$exeShell ]; then
+-	str=`chmod +0755 $sysAppDir/$appName/$exeShell`
++if [ -f ${rootDir}/$sysAppDir/$appName/$exeShell ]; then
++	str=`chmod +0755 ${rootDir}/$sysAppDir/$appName/$exeShell`
+ 	if [ "$str" !=  "" ]; then 
+ 		echo "Cannot add permission to start script"
+ 		echo "$str";
+ 	fi
+ else
+ 	echo "can not find start script"
+-	exit
++	exit 4
+ fi
+ 
+-if [ -f $sysAppDir/$appName/$appName ]; then
+-	str=`chmod +0555 $sysAppDir/$appName/$appName`
++if [ -f ${rootDir}/$sysAppDir/$appName/$appName ]; then
++	str=`chmod +0555 ${rootDir}/$sysAppDir/$appName/$appName`
+ 	if [ "$str" !=  "" ]; then 
+ 		echo "Cannot add permission to app"
+ 		echo "$str";
+ 	fi
+ else
+ 	echo "can not find app"
+-	exit
++	exit 5
+ fi
+ 
+ # install shortcut
+-sysDesktopDir=/usr/share/applications
+-sysAppIconDir=/usr/share/icons
+-sysAutoStartDir=/etc/xdg/autostart
++sysDesktopDir="/usr/share/applications"
++sysAppIconDir="/usr/share/icons"
++sysAutoStartDir="/etc/xdg/autostart"
+ 
+ appDesktopDir=./App$sysDesktopDir
+ appAppIconDir=./App$sysAppIconDir
+@@ -100,27 +108,27 @@
+ #echo $sysAppIconDir/$appIconName
+ 
+ if [ -f $appDesktopDir/$appDesktopName ]; then
+-	str=`cp $appDesktopDir/$appDesktopName $sysDesktopDir/$appDesktopName`
++	str=`cp $appDesktopDir/$appDesktopName ${rootDir}/$sysDesktopDir/$appDesktopName`
+ 	if [ "$str" !=  "" ]; then 
+ 		echo "$str";
+ 	fi
+ else
+ 	echo "Cannot find driver's shortcut in package"
+-	exit
++	exit 6
+ fi
+ 
+ if [ -f $appAppIconDir/$appIconName ]; then
+-	str=`cp $appAppIconDir/$appIconName $sysAppIconDir/$appIconName`
++	str=`cp $appAppIconDir/$appIconName ${rootDir}/$sysAppIconDir/$appIconName`
+ 	if [ "$str" !=  "" ]; then 
+ 		echo "$str";
+ 	fi
+ else
+ 	echo "Cannot find driver's icon in package"
+-	exit
++	exit 7
+ fi
+ 
+ if [ -f $appAutoStartDir/$appDesktopName ]; then
+-	str=`cp $appAutoStartDir/$appDesktopName $sysAutoStartDir/$appDesktopName`
++	str=`cp $appAutoStartDir/$appDesktopName ${rootDir}/$sysAutoStartDir/$appDesktopName`
+ 	if [ "$str" !=  "" ]; then 
+ 		echo "$str";
+ 	fi
+@@ -128,6 +136,8 @@
+ 	echo "Cannot find set auto start"
+ fi
+ 
++exit 0
++
+ #Copy config files
+ sysAppDataDir=/home/$user/.local/share
+ sysAppDataPath=$sysAppDataDir/$appName
+@@ -152,6 +162,9 @@
+ fi
+ chmod 777 $sysAppDataPath
+ 
++
++
++
+ #echo $appConfDir/$sysConfName
+ #echo $sysAppDataPath/$sysConfName
+ 
+Only in xp-pen-pentablet_3.1.0.210331.x86_64: uninstall.sh
