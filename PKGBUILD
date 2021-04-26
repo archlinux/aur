@@ -15,8 +15,6 @@ makedepends=('binutils' 'dconf' 'desktop-file-utils' 'gettext' 'git'
              'gtksourceview3' 'json-glib' 'libelf' 'librsvg' 'python-cairo'
              'python-gobject' 'python-requests' 'python-sphinx' 'scons'
              'util-linux-libs' 'xdg-utils')
-provides=("${_pkgname}=${pkgver}")
-conflicts=("$_pkgname")
 source=("git+https://github.com/sahib/${_pkgname}.git#branch=develop")
 md5sums=('SKIP')
 
@@ -34,6 +32,8 @@ build() {
 package_rmlint-develop-git() {
     pkgdesc="Tool to remove duplicates and other lint, being much faster than fdupes"
     depends=('binutils' 'json-glib' 'libelf' 'util-linux-libs')
+    provides=("${_pkgname}=${pkgver}")
+    conflicts=("$_pkgname")
 
     cd "$_pkgname"
     scons DEBUG=1 --prefix="$pkgdir"/usr install --actual-prefix=/usr
@@ -46,6 +46,8 @@ package_rmlint-shredder-develop-git() {
     pkgdesc="Graphical user interface for rmlint"
     depends=('dconf' 'gtksourceview3' 'librsvg' 'python-cairo' 'python-gobject'
              'rmlint-develop-git' 'xdg-utils')
+    provides=("rmlint-shredder=${pkgver}")
+    conflicts=('rmlint-shredder')
 
     cd "$_pkgname"
     scons DEBUG=1 --prefix="$pkgdir"/usr install --actual-prefix=/usr
