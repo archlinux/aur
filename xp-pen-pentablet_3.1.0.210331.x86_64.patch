@@ -6,8 +6,8 @@ Only in xp-pen-pentablet_3.1.0.210331.x86_64/App/usr/lib/pentablet: lib
 Only in xp-pen-pentablet_3.1.0.210331.x86_64/App/usr/lib/pentablet: pentablet
 diff -ru xp-pen-pentablet_3.1.0.210331.x86_64/App/usr/lib/pentablet/pentablet.sh patch/App/usr/lib/pentablet/pentablet.sh
 --- xp-pen-pentablet_3.1.0.210331.x86_64/App/usr/lib/pentablet/pentablet.sh	2021-03-12 08:49:54.000000000 +0100
-+++ patch/App/usr/lib/pentablet/pentablet.sh	2021-04-26 23:52:59.141538629 +0200
-@@ -1,5 +1,79 @@
++++ patch/App/usr/lib/pentablet/pentablet.sh	2021-04-27 00:25:36.616576048 +0200
+@@ -1,5 +1,85 @@
  #!/bin/sh
 +
 +
@@ -47,40 +47,46 @@ diff -ru xp-pen-pentablet_3.1.0.210331.x86_64/App/usr/lib/pentablet/pentablet.sh
 +chmod 777 $sysAppDataPath
 +
 +
-+if [ -f $appConfDir/$sysConfName ] && [ ! -f $sysAppDataPath/$sysConfName ]; then
-+	str="$( cp $appConfDir/$sysConfName $sysAppDataPath/$sysConfName )"
-+	if [ "$str" !=  "" ]; then 
-+		echo "$str";
-+	else
-+		chmod +0666 $sysAppDataPath/$sysConfName		
-+	fi
-+else
-+	echo "Cannot find driver's configuration in package"
-+	exit
++if [ ! -f $sysAppDataPath/$sysConfName ]; then
++    if [ -f $appConfDir/$sysConfName ]; then
++	    str="$( cp $appConfDir/$sysConfName $sysAppDataPath/$sysConfName )"
++	    if [ "$str" !=  "" ]; then 
++		    echo "$str";
++	    else
++		    chmod +0666 $sysAppDataPath/$sysConfName		
++	    fi
++    else
++	    echo "Cannot find driver's configuration in package"
++	    exit
++    fi
 +fi
 +
-+if [ -f $appConfDir/$sysLangName ] && [ ! -f $sysAppDataPath/$sysLangName ]; then
-+	str="$( cp $appConfDir/$sysLangName $sysAppDataPath/$sysLangName )"
-+	if [ "$str" !=  "" ]; then 
-+		echo "$str";
-+	else
-+		chmod +0666 $sysAppDataPath/$sysLangName
-+	fi
-+else
-+	echo "Cannot find driver's configuration of language in package"
-+	exit
++if [ ! -f $sysAppDataPath/$sysLangName ]; then
++    if [ -f $appConfDir/$sysLangName ]; then
++	    str="$( cp $appConfDir/$sysLangName $sysAppDataPath/$sysLangName )"
++	    if [ "$str" !=  "" ]; then 
++		    echo "$str";
++	    else
++		    chmod +0666 $sysAppDataPath/$sysLangName
++	    fi
++    else
++	    echo "Cannot find driver's configuration of language in package"
++	    exit
++    fi
 +fi
 +
-+if [ -f $appConfDir/$sysNameConfName ] && [ ! -f $sysAppDataPath/$sysNameConfName ]; then
-+	str="$( cp $appConfDir/$sysNameConfName $sysAppDataPath/$sysNameConfName )"
-+	if [ "$str" !=  "" ]; then 
-+		echo "$str";
-+	else
-+			chmod +0666 $sysAppDataPath/$sysNameConfName
-+	fi
-+else
-+	echo "Cannot find driver's configuration of name in package"
-+	exit
++if [ ! -f $sysAppDataPath/$sysNameConfName ]; then
++    if [ -f $appConfDir/$sysNameConfName ]; then
++	    str="$( cp $appConfDir/$sysNameConfName $sysAppDataPath/$sysNameConfName )"
++	    if [ "$str" !=  "" ]; then 
++		    echo "$str";
++	    else
++			    chmod +0666 $sysAppDataPath/$sysNameConfName
++	    fi
++    else
++	    echo "Cannot find driver's configuration of name in package"
++	    exit
++    fi
 +fi
 +
 +

@@ -1,7 +1,7 @@
 # Maintainer: Hurstel Alexandre <alexandre at hurstel dot eu>
 pkgname=xp-pen-tablet
 pkgver=20210331
-pkgrel=1
+pkgrel=2
 pkgdesc="XP-Pen (Official) Linux utility (New UI driver)"
 arch=('x86_64')
 url='https://www.xp-pen.com/download/index.html'
@@ -10,7 +10,7 @@ source=("https://download01.xp-pen.com/file/2021/04/xp-pen-pentablet_3.1.0.21033
         "xp-pen-pentablet_3.1.0.210331.x86_64.patch"
 )
 sha256sums=('9e50510d0f6afaad349e6182d6a275ad1527cc02ed90251620c38a37b0486d12'
-    '7593456c18b0ef5b1aff718cfbb4ab8058cd26a9d39af786232a8231772a3c24'
+    'c257b58ff9a3b0ef24f65f5a882ca540f711befaed179ae5f7ecbb0ffc91eed0'
 )
 
 prepare() {
