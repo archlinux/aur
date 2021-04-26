@@ -1,7 +1,7 @@
 pkgbase = moonwm
 	pkgdesc = My own outstandingly named Window Manager (a dynamic window manager)
 	pkgver = 7.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jzbor/moonwm
 	arch = x86_64
 	arch = i686
@@ -43,7 +43,7 @@ pkgbase = moonwm
 	provides = moonwm
 	conflicts = moonwm
 	source = https://github.com/jzbor/moonwm/archive/refs/tags/7.0.1.tar.gz
-	md5sums = a89f94b05f874803e67f3d2371073a39
+	md5sums = 1681498f236f0b35c75d31a01457d27d
 
 pkgname = moonwm
 
