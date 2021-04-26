@@ -1,17 +1,17 @@
 pkgbase = mingw-w64-sz
-	pkgdesc = Error-bounded Lossy Data Compressor (for floating-point/integer datasets) (mingw-w64)
-	pkgver = 2.1.9
+	pkgdesc = Modular parametrizable lossy compressor framework for scientific data (mingw-w64)
+	pkgver = 2.1.11
 	pkgrel = 1
-	url = https://szcompressor.github.io/homepage/
+	url = https://szcompressor.org
 	arch = any
-	license = custom
+	license = BSD
 	makedepends = mingw-w64-cmake
 	depends = mingw-w64-zstd
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://github.com/szcompressor/SZ/archive/v2.1.9.tar.gz
-	sha256sums = 491724ff1c0eaaab5e1a7a28e36aba6da9dcbeddb29d8d21a6d1388383d4891e
+	source = https://github.com/szcompressor/SZ/archive/v2.1.11.tar.gz
+	sha256sums = 85b8ef99344a3317ba9ee63ca4b9d99a51d1832d4d8880e01c7c56b3a69cacc9
 
 pkgname = mingw-w64-sz
 
