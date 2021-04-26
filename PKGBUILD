@@ -33,6 +33,9 @@ Categories=Graphics;" > "${srcdir}"/kumoworks-${pkgver}/kumoworks.desktop
 }
 
 package(){
+     mkdir -p "${pkgdir}"/usr/bin/
+     echo -e '#!/bin/sh\n/opt/kumoworks/kumoworks' > "${pkgdir}"/usr/bin/kumoworks
+     chmod 755 "${pkgdir}"/usr/bin/kumoworks
      mkdir -p "${pkgdir}"/usr/share/applications/
      mkdir -p "${pkgdir}"/usr/share/pixmaps/
      mkdir -p "${pkgdir}"/opt/kumoworks/
