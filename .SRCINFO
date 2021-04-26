@@ -1,7 +1,7 @@
 pkgbase = allusion-appimage
 	pkgdesc = Allusion is a tool built for artists, aimed to help you organize your Visual Library – A single place that contains your entire collection of references, inspiration and any other kinds of images.
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://allusion-app.github.io
 	arch = x86_64
 	license = GNU
