@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=slice
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='GUI app to generate custom static fonts from variable fonts'
 arch=(any)
@@ -11,7 +11,7 @@ _py_deps=(fonttools pyqt5)
 depends=(python ${_py_deps[@]/#/python-})
 makedepends=(python-setuptools)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a57ab7a3b5d767b731fc5e72923995db0bc1351b4223524228e117984c63d2eb')
+sha256sums=('8d8b8ba41f0268c81e0fbb56715f85ad3c33545338694d9ae33e2afce0f807a8')
 
 build() {
 	cd "${pkgname^}-$pkgver"
