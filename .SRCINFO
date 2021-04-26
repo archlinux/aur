@@ -1,12 +1,12 @@
 pkgbase = v2ray-extra
 	pkgdesc = The extra resources of v2ray
 	pkgver = 4.37.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/v2fly/v2ray-core
 	arch = any
 	license = MIT
-	source = v2ray-extra-4.37.3.tar.gz::https://github.com/v2fly/v2ray-core/releases/download/v4.37.3/v2ray-extra.zip
-	sha256sums = 127ad21249d1f35a9760a938abe1b1b6d3042df21e62648b83150e4ea850bbe2
+	source = v2ray-4.37.3.tar.gz::https://github.com/v2fly/v2ray-core/archive/v4.37.3.tar.gz
+	sha512sums = 303df7373811a613a962358a080f6de3d661401b8eaf9c8c7b665e540938655dd01c6b134cb127be0d183f800b7cb992c22d571aac2e580fefedeb68cd871eae
 
 pkgname = v2ray-extra
 
