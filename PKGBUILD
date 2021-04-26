@@ -4,7 +4,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo at gmail dot com>
 
 pkgname=geary-git
-pkgver=r6443.a24a6124
+pkgver=40.0.r3.g7b8e41732
 pkgrel=1
 pkgdesc="An email application built around conversations, for the GNOME 3 desktop."
 arch=(i686 x86_64)
@@ -22,7 +22,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/geary"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long | sed 's/^gnome-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
