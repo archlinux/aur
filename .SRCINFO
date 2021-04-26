@@ -9,7 +9,7 @@ pkgbase = gooseberry-bin
 	optdepends = bat: display highlighted markdown in the terminal
 	provides = gooseberry
 	source = https://github.com/out-of-cheese-error/gooseberry/releases/download/0.9.0/gooseberry-linux.tar.gz
-	sha256sums = ed3206b70627b6d54396f3dc02c6f80fe93ad8b1c1639f7a11c83bdde192858a
+	sha256sums = ad3819bf49cfc46dd5b0602f80c393890f278c804d9026af207261917d3e00ef
 
 pkgname = gooseberry-bin
 
