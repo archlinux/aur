@@ -1,6 +1,6 @@
 pkgbase = multimonitorlock-gui
 	pkgdesc = GUI for multimonitorlock to set the background using QT6 and pyside6
-	pkgver = 2021.04.07
+	pkgver = 2021.04.26
 	pkgrel = 1
 	url = https://github.com/The-Repo-Club/multimonitorlock-gui
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = multimonitorlock-gui
 	license = CC BY-NC-SA 4.0
 	depends = pyside2
 	depends = multimonitorlock
-	source = multimonitorlock-gui-2021.04.07.tar.gz::https://github.com/The-Repo-Club/multimonitorlock-gui/archive/2021.04.07.tar.gz
-	sha256sums = 3ca6a11fcb97da2dd5e4b5ef8491d614baeee93324825f86c3d0f34ccdf07755
+	source = multimonitorlock-gui-2021.04.26.tar.gz::https://github.com/The-Repo-Club/multimonitorlock-gui/archive/2021.04.26.tar.gz
+	sha256sums = 5f8385b0443e1a20a56fa5aa1f48bc8f1fbe51052f1213773bee0e339ca76cab
 
 pkgname = multimonitorlock-gui
 
