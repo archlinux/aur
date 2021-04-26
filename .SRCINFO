@@ -1,13 +1,13 @@
 pkgbase = opa
 	pkgdesc = Command-line utility and REPL for Open Policy Agent
-	pkgver = 0.24.0
+	pkgver = 0.27.1
 	pkgrel = 1
 	url = https://github.com/open-policy-agent/opa
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	source = opa-0.24.0.tar.gz::https://github.com/open-policy-agent/opa/archive/v0.24.0.tar.gz
-	sha256sums = 6401f8ce1c99fe90fddd27e1fb54b04477faee8d6ce0a1e4565405df26e47383
+	source = opa-0.27.1.tar.gz::https://github.com/open-policy-agent/opa/archive/v0.27.1.tar.gz
+	sha256sums = d1f3cee2261adc83df54fba2d62b045549d064ac14b7683031ec3897c2bdbd44
 
 pkgname = opa
 
