@@ -1,7 +1,7 @@
 # Maintainer: Iliya Ivanov <i.ivanov@proforge.org>
 
 _pkgname=pgadmin4
-pkgname=${_pkgname}_last
+pkgname=${_pkgname}-last
 pkgver=5.2
 pkgrel=1
 pkgdesc='Comprehensive design and management interface for PostgreSQL'
