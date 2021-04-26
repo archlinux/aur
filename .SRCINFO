@@ -1,6 +1,6 @@
 pkgbase = swcdb-env
 	pkgdesc = The SWC-DB Runtime Environment
-	pkgver = 0.4.19
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://www.swcdb.org
 	install = README.md
@@ -29,7 +29,7 @@ pkgbase = swcdb-env
 	backup = etc/swcdb/swc_fsbroker.dyn.cfg
 	backup = etc/swcdb/swc_fs_broker.dyn.cfg
 	backup = etc/swcdb/swc_thriftbroker.dyn.cfg
-	source = swcdb-env-0.4.19-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.4.19
+	source = swcdb-env-0.5.0-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.5.0
 	sha256sums = SKIP
 
 pkgname = swcdb-env
