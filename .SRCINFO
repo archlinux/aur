@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-environment
 	pkgdesc = Script providing common environment variables and functions for MinGW (mingw-w64)
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://fedoraproject.org/wiki/MinGW
 	arch = any
 	license = BSD
