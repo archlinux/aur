@@ -2,7 +2,7 @@
 
 pkgname=disig-web-signer
 pkgver=2.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Slovak eID Web Signer by Disig"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -34,10 +34,10 @@ package() {
     native_messaging_host_filename=$(basename $(find ${pkgdir}/opt/disig/websigner/chrome/ -name sk.disig.websigner.*.java.json))
 
     mkdir -p ${pkgdir}/etc/opt/chrome/native-messaging-hosts
-    ln -sf ${pkgdir}/opt/disig/websigner/chrome/${native_messaging_host_filename} ${pkgdir}/etc/opt/chrome/native-messaging-hosts/${native_messaging_host_filename}
+    ln -sf /opt/disig/websigner/chrome/${native_messaging_host_filename} ${pkgdir}/etc/opt/chrome/native-messaging-hosts/${native_messaging_host_filename}
 
     mkdir -p  ${pkgdir}/etc/chromium/native-messaging-hosts/
-    ln -sf ${pkgdir}/opt/disig/websigner/chrome/${native_messaging_host_filename} ${pkgdir}/etc/chromium/native-messaging-hosts/${native_messaging_host_filename}
+    ln -sf /opt/disig/websigner/chrome/${native_messaging_host_filename} ${pkgdir}/etc/chromium/native-messaging-hosts/${native_messaging_host_filename}
 
     # Let autostart configuration up to a user's discretion
     # rm -r ${pkgdir}/etc/xdg
