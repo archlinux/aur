@@ -1,7 +1,8 @@
 pkgbase = gog-tangledeep-legend-of-shara
 	pkgdesc = DLC for the tangledeep game.
-	pkgver = 1.36b
+	pkgver = 1.4i.2
 	pkgrel = 1
+	epoch = 1
 	url = https://www.gog.com/game/tangledeep_legend_of_shara
 	arch = i686
 	arch = pentium4
@@ -9,9 +10,9 @@ pkgbase = gog-tangledeep-legend-of-shara
 	license = custom
 	makedepends = p7zip
 	depends = tangledeep
-	noextract = tangledeep_legend_of_shara_1_36b_43839.sh
-	source = tangledeep_legend_of_shara_1_36b_43839.sh::gog://tangledeep_legend_of_shara_1_36b_43839.sh
-	sha256sums = ca52ba0ff305b4ac06e44af6b9de752b37f9fe413ebf41a975367effa1d68817
+	noextract = tangledeep_legend_of_shara_1_4i_2_45967.sh
+	source = tangledeep_legend_of_shara_1_4i_2_45967.sh::gog://tangledeep_legend_of_shara_1_4i_2_45967.sh
+	sha256sums = d3c97ae068592cd7dd9de62287fdce865d1f7492938200ec5fba0f5231a1d944
 
 pkgname = gog-tangledeep-legend-of-shara
 
