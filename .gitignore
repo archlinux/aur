@@ -1,0 +1,7 @@
+.idea
+src
+pkg
+*.kate-swp
+*.zst
+*.zip
+
