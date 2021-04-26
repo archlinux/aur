@@ -55,7 +55,7 @@ package() {
     install -Dm755 build/$_pkgname "$pkgdir/usr/bin/$_pkgname"
     install -Dm755 build/sunshine.service "$pkgdir/usr/lib/systemd/user/sunshine.service"
 
-    install -Dm644 udev.rules "$pkgdir/usr/lib/udev/rules.d/85-$_pkgname-rules.rules"
+    install -Dm644 udev.rules "$pkgdir/usr/lib/udev/rules.d/85-$_pkgname.rules"
 }
 
 # vim: ts=2 sw=2 et:
