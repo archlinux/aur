@@ -1,9 +1,0 @@
-#!/usr/bin/sh
-
-set -e
-
-cd
-mkdir .config/sunshine &> /dev/null || true
-cd .config/sunshine
-
-/usr/lib/sunshine/bin/sunshine  $*
