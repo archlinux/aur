@@ -1,6 +1,6 @@
 pkgbase = obs-streamfx-git
 	pkgdesc = Bring your stream back to life with modern effects!
-	pkgver = 0.10.0a1.r0.gfbe35d1
+	pkgver = 0.10.0.r0.g5888c7d
 	pkgrel = 1
 	url = https://github.com/Xaymar/obs-StreamFX
 	arch = x86_64
