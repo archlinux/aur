@@ -1,14 +1,14 @@
 pkgbase = python-mmcif-pdbx
 	pkgdesc = Python utilities for PDBx/mmCIF storage model
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/mmcif-pdbx
 	arch = any
 	license = BSD
 	depends = python>=3.6
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/m/mmcif-pdbx/mmcif_pdbx-2.0.0.tar.gz
-	sha256sums = ffd76b08f0215d052fcf3015b8bac927cdf369ca60e4e26974f8aec99ca66986
+	source = https://files.pythonhosted.org/packages/source/m/mmcif-pdbx/mmcif-pdbx-2.0.1.tar.gz
+	sha256sums = a1f20cf35f92916160ae066f510cce9a0c21a630d064dafce545ba0cf47c9280
 
 pkgname = python-mmcif-pdbx
 
