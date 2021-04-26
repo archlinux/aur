@@ -20,10 +20,10 @@ build() {
 	mkdir -p "$srcdir/build"
 	cd "$srcdir/build"
 	cmake "$srcdir/$_name" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_TESTING=OFF
-	make
+	cmake --build .
 }
 
 package() {
 	cd "$srcdir/build"
-	make DESTDIR="$pkgdir/" install
+	cmake --install . --prefix "$pkgdir/"
 }
