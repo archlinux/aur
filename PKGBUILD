@@ -1,14 +1,12 @@
 # Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
-# This PKGBUILD file is inspired from the package ghdl
-# https://aur.archlinux.org/packages/ghdl/
 
 pkgname=ghdl-gcc-git
-pkgver=2.0.0dev.r6030.ga03aeddd
+pkgver=2.0.0dev.r6204.gfcd93aa12
 pkgrel=1
-arch=('any')
+arch=('x86_64' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='VHDL simulator - GCC back-end'
 url='https://github.com/ghdl/ghdl'
-license=('GPLv2')
+license=('GPL2')
 
 provides=("ghdl=$pkgver" "ghdl-git=$pkgver")
 conflicts=('ghdl' 'ghdl-llvm-git' 'ghdl-mcode-git')
@@ -17,7 +15,7 @@ depends=('gcc-ada')
 install=ghdl.install
 options=(!emptydirs staticlibs)
 
-_gccver=10.2.0
+_gccver=10.3.0
 _islver=0.23
 
 source=(
@@ -27,7 +25,7 @@ source=(
 )
 sha256sums=(
 	'SKIP'
-	'b8dd4368bb9c7f0b98188317ee0254dd8cc99d1e3a18d0ff146c855fe16c1d8c'
+	'64f404c1a650f27fc33da242e1f2df54952e3963a49e06e73f6940f3223ac344'
 	'c58922c14ae7d0791a77932f377840890f19bc486b653fa64eba7f1026fb214d'
 )
 
@@ -54,7 +52,6 @@ prepare() {
 
 	cd "${srcdir}/ghdl"
 
-	# Note : Add --enable-openieee to use free (but not complete) implementation of IEEE VHDL libs
 	./configure \
 		--prefix=/usr \
 		--with-gcc="${srcdir}/gcc" \
