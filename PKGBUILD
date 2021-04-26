@@ -1,8 +1,8 @@
 # Maintainer: ml <>
 # Contributor: Fredy García <frealgagu at gmail dot com>
 pkgname=kaniko
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.5.2
+pkgrel=1
 pkgdesc='Build Container Images In Kubernetes'
 arch=('x86_64')
 url="https://github.com/GoogleContainerTools/kaniko"
@@ -11,7 +11,7 @@ depends=('glibc')
 optdepends=('bash: run_in_docker.sh script')
 makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('cf2d915aeb5e82ab2f4b241d1b8b251938df57f7b89c610bf51a1a4eda40ca3c')
+sha256sums=('ef0611aff3aec45f010d56a4d528cc48fceaa42c2c997e4e1b5ef1ad1bb53699')
 
 build() {
   cd "$pkgname-$pkgver"
