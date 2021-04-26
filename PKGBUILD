@@ -1,12 +1,16 @@
 # Maintainer: Iliya Ivanov <i.ivanov@proforge.org>
 
-pkgname=pgadmin4
+_pkgname=pgadmin4
+pkgname=${_pkgname}_last
 pkgver=5.2
 pkgrel=1
 pkgdesc='Comprehensive design and management interface for PostgreSQL'
 url='https://www.pgadmin.org/'
 arch=('x86_64')
 license=('custom')
+replaces=("${_pkgname}")
+conflicts=("${_pkgname}")
+provides=("${_pkgname}=${pkgver}")
 depends=('postgresql-libs' 'hicolor-icon-theme' 'python' 'python-cheroot'
          'python-flask' 'python-flask-gravatar' 'python-flask-login'
          'python-flask-mail' 'python-flask-migrate' 'python-flask-sqlalchemy'
@@ -17,7 +21,7 @@ depends=('postgresql-libs' 'hicolor-icon-theme' 'python' 'python-cheroot'
          'python-bcrypt' 'python-cryptography' 'python-sshtunnel' 'python-ldap3'
          'python-flask-babelex' 'python-gssapi')
 makedepends=('python-html5lib' 'python-sphinx' 'python-testtools')
-source=(https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v${pkgver}/source/${pkgname}-${pkgver}.tar.gz{,.asc}
+source=(https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v${pkgver}/source/${_pkgname}-${pkgver}.tar.gz{,.asc}
         pgAdmin4.desktop
         config_distro.py
         config_local.py
@@ -31,7 +35,7 @@ sha512sums=('ad68c41d91ce37ca3e2c959eab814ebf6e58947abef8afae5556de39026638f52f9
             'c8bcf9a38f2111b03032034e2cbe4942c07f9a76067c49ca3046da8a02c70c85e342297c3b864a5fa3d12fb2a276d6973bd81b4ef7576bd6aaa2e29ca983810f')
 
 prepare() {
-  cd ${pkgname}-${pkgver}
+  cd ${_pkgname}-${pkgver}
 
   patch -Np1 < ../../pgAdmin4.py.patch
 
@@ -81,7 +85,7 @@ build() {
   export LC_ALL=en_US.UTF-8
   export PGADMIN_PYTHON_DIR=/usr
 
-  cd ${pkgname}-${pkgver}
+  cd ${_pkgname}-${pkgver}
   # override doctree directory
   make docs SPHINXOPTS='-d /tmp/'
 
@@ -90,7 +94,7 @@ build() {
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd ${_pkgname}-${pkgver}
 
   install -dm 755 "${pkgdir}/usr/lib/pgadmin4"
   cp -a docs web runtime "${pkgdir}/usr/lib/pgadmin4"
@@ -117,7 +121,7 @@ export PGADMIN_SERVER_MODE='OFF'
 python web/pgAdmin4.py "\$@"
 END
 
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
