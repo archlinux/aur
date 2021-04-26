@@ -1,6 +1,6 @@
 pkgbase = linux-amd
 	pkgver = 5.12.v.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -19,7 +19,7 @@ pkgbase = linux-amd
 	source = linux.install
 	source = 5013_enable-cpu-optimizations-for-gcc10.patch
 	sha256sums = SKIP
-	sha256sums = 6c7d97f280cfe2df81396cfa1ce04ce00d436e87b0e333e6224ea2abc531d11d
+	sha256sums = 37bc7191a81942dcab8b9e8233a95f0ec9e9294b4820c0627418967161e3a024
 	sha256sums = 60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = 0384ddcf6be0901c3996fb90885f100657eff584b0f64b0a05c25bd81a37b1bb
