@@ -3,23 +3,23 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 
 pkgname=chgrep
-pkgver=1.2.4
-pkgrel=3
+pkgver=1.2.5
+pkgrel=1
 pkgdesc="Fast pattern replacement utility, grep style"
 depends=('glibc')
-source=(http://www.sfr-fresh.com/unix/privat/$pkgname-$pkgver.tgz)
-md5sums=('9c4306a51550fca58ca4b29c0d31bd79')
-url="http://linux.softpedia.com/progDownload/Chgrep-Download-23787.html"
+source=(https://github.com/jose1711/chgrep/archive/refs/tags/${pkgver}.tar.gz)
+md5sums=('ff3637163e9dde1994029595bef65186')
+url="https://github.com/jose1711/chgrep"
 license=("GPL")
 arch=('x86_64' 'i686')
 
 build() {
-	cd $srcdir/$pkgname-$pkgver
-	./configure --prefix=/usr --mandir=/usr/share/man
-	make
+  cd $srcdir/$pkgname-$pkgver
+  ./configure --prefix=/usr --mandir=/usr/share/man
+  make
 }
 
 package() {
-	cd $srcdir/$pkgname-$pkgver
-	make DESTDIR=$pkgdir install
+  cd $srcdir/$pkgname-$pkgver
+  make DESTDIR=$pkgdir install
 }
