@@ -1,6 +1,6 @@
 pkgbase = markiza_cli-git
 	pkgdesc = Play live streams from Markiza TV using mpv
-	pkgver = r2.2552773
+	pkgver = r4.c15b871
 	pkgrel = 1
 	url = https://github.com/jose1711/markiza_cli
 	arch = any

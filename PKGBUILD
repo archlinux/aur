@@ -2,7 +2,7 @@
 
 _pkgname=markiza_cli
 pkgname=${_pkgname}-git
-pkgver=r2.2552773
+pkgver=r4.c15b871
 pkgrel=1
 pkgdesc="Play live streams from Markiza TV using mpv"
 arch=('any')
@@ -22,6 +22,6 @@ pkgver() {
 package() {
   cd "${srcdir}/$_pkgname"
   install -Dm755 markiza_cli "${pkgdir}/usr/bin/markiza_cli" 
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licences/${_pkgname}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 }
