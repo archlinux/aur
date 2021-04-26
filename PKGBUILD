@@ -1,7 +1,7 @@
 # Maintainer: Chris Down <chris@chrisdown.name>
 
 pkgname=todobg
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Todo list on the X root window'
 url="http://github.com/cdown/$pkgname"
@@ -10,7 +10,7 @@ license=('Public Domain')
 depends=()
 
 source=("https://github.com/cdown/${pkgname}/archive/refs/tags/${pkgver}.zip")
-md5sums=('b5836549cc01b9d67b5ef1555fd0ff88')
+md5sums=('bc7f2a8be86b985dca72d31d1a2ce3f0')
 
 package() {
     install -D -m755 \
@@ -19,4 +19,10 @@ package() {
     install -D -m644 \
         "${srcdir?}/$pkgname-$pkgver/todobg.service" \
         "${pkgdir?}/usr/lib/systemd/user/todobg.service"
+    install -D -m644 \
+        "${srcdir?}/$pkgname-$pkgver/todobg-recreate.service" \
+        "${pkgdir?}/usr/lib/systemd/user/todobg-recreate.service"
+    install -D -m644 \
+        "${srcdir?}/$pkgname-$pkgver/todobg-recreate.timer" \
+        "${pkgdir?}/usr/lib/systemd/user/todobg-recreate.timer"
 }
