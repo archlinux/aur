@@ -5,7 +5,7 @@
 pkgname=kaizen
 pkgdesc="Kaizen ElasticSearch GUI"
 pkgver=5.79.97
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.elastic-kaizen.com/'
 license=('custom')
@@ -32,10 +32,11 @@ package() {
   install -Dm644 "$srcdir/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   install -dm755 "${pkgdir}/opt"
-  cp -a "${srcdir}/." "${pkgdir}/opt/${pkgname}/"
+  mkdir -p "${pkgdir}/opt/${pkgname}/"
+  cp -a "${srcdir}/${pkgname}.jar" "${pkgdir}/opt/${pkgname}/"
+  cp -a "${srcdir}/${pkgname}.sh" "${pkgdir}/opt/${pkgname}/"
+  cp -a "${srcdir}/jvm" "${pkgdir}/opt/${pkgname}/"
 
-  install -dm755 "${pkgdir}/usr/share/${pkgname}"
-  
   # dirty hack
   mkdir -p "$HOME/.config/${pkgname}"
 
