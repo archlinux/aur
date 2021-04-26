@@ -1,0 +1,15 @@
+pkgbase = python-decli
+	pkgdesc = Minimal, easy to use, declarative command line interface tool
+	pkgver = 0.5.2
+	pkgrel = 0
+	url = https://github.com/Woile/decli
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = python-dephell
+	source = python-decli-0.5.2.tar.gz::https://github.com/Woile/decli/archive/refs/tags/v0.5.2.tar.gz
+	sha256sums = 1220794eaedc778f1c36d2656708ced782afbfd1d91cb45c4054f116a55c7bd3
+
+pkgname = python-decli
+
