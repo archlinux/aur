@@ -1,7 +1,7 @@
 pkgbase = piavpn-bin
 pkgdesc = Private Internet Access client
 pkgver = 2.8.1_06335
-pkgrel = 1
+pkgrel = 2
 url = https://privateinternetaccess.com/
 install = piavpn-bin.install
 arch = x86_64

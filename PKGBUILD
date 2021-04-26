@@ -3,7 +3,7 @@ pkgname=piavpn-bin
 pkgver=2.8.1_06335
 _pkgver=${pkgver/_/-}
 _pkgver=${_pkgver/.0/}
-pkgrel=1
+pkgrel=2
 pkgdesc="Private Internet Access client"
 arch=(x86_64)
 url="https://privateinternetaccess.com/"
@@ -40,7 +40,7 @@ package() {
 	mkdir -p $pkgdir/usr/share/applications
 	cp installfiles/piavpn.desktop $pkgdir/usr/share/applications/piavpn.desktop
 	mkdir -p $pkgdir/etc/NetworkManager/conf.d
-	echo -e "[keyfile]\nunmanaged-devices=interface-name:wgpia*" > $pkgdir/etc/NetworkManager/conf.d/wgpia.conf
+	echo -e "[keyfile]\nunmanaged-devices=interface-name:wgpia*" > $pkgdir/etc/NetworkManager/conf.d/50-wgpia.conf
 
 	mkdir -p $pkgdir/usr/lib/systemd/system
 	cp installfiles/piavpn.service $pkgdir/usr/lib/systemd/system/piavpn.service	
