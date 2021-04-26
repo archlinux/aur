@@ -1,0 +1,44 @@
+pkgbase = rmlint-develop-git
+	pkgver = 2.10.1.r210.g1ab4d8ae
+	pkgrel = 1
+	url = https://github.com/sahib/rmlint
+	arch = x86_64
+	license = GPL3
+	makedepends = binutils
+	makedepends = dconf
+	makedepends = desktop-file-utils
+	makedepends = gettext
+	makedepends = git
+	makedepends = gtksourceview3
+	makedepends = json-glib
+	makedepends = libelf
+	makedepends = librsvg
+	makedepends = python-cairo
+	makedepends = python-gobject
+	makedepends = python-requests
+	makedepends = python-sphinx
+	makedepends = scons
+	makedepends = util-linux-libs
+	makedepends = xdg-utils
+	provides = rmlint=2.10.1.r210.g1ab4d8ae
+	conflicts = rmlint
+	source = git+https://github.com/sahib/rmlint.git#branch=develop
+	md5sums = SKIP
+
+pkgname = rmlint-develop-git
+	pkgdesc = Tool to remove duplicates and other lint, being much faster than fdupes
+	depends = binutils
+	depends = json-glib
+	depends = libelf
+	depends = util-linux-libs
+
+pkgname = rmlint-shredder-develop-git
+	pkgdesc = Graphical user interface for rmlint
+	depends = dconf
+	depends = gtksourceview3
+	depends = librsvg
+	depends = python-cairo
+	depends = python-gobject
+	depends = rmlint-develop-git
+	depends = xdg-utils
+
