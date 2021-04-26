@@ -1,8 +1,8 @@
 pkgbase = arm-linux-gnueabihf-gcc-linaro-bin
-	pkgdesc = The GNU Compiler Collection - cross compiler for ARM EABI hard float target.
+	pkgdesc = The GNU Compiler Collection - cross compiler for ARM EABI hard float target. (for armV7 target, Linux host)
 	pkgver = 7.5
 	pkgrel = 0
-	url = http://www.linaro.org/downloads/
+	url = http://releases.linaro.org/components/toolchain/binaries
 	arch = x86_64
 	groups = arm-linux-gnueabihf-toolchain-linaro-bin
 	license = GPL
