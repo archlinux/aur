@@ -1,0 +1,16 @@
+pkgbase = srcry-git
+	pkgdesc = A simple but very fast recursive source code spell checker made in C
+	pkgver = master
+	pkgrel = 1
+	url = https://github.com/Theldus/sourcery
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	makedepends = clang
+	makedepends = llvm
+	makedepends = lld
+	source = git://github.com/Theldus/sourcery
+	sha256sums = SKIP
+
+pkgname = srcry-git
+
