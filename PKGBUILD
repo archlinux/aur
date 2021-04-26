@@ -17,7 +17,7 @@ provides=('sunshine')
 conflicts=("sunshine")
 
 source=(${pkgname}::git+https://github.com/loki-47-6F-64/sunshine.git
-        systemd-cleanup.patch::https://patch-diff.githubusercontent.com/raw/loki-47-6F-64/sunshine/pull/42.patch)
+        systemd-cleanup.patch::https://github.com/loki-47-6F-64/sunshine/pull/42.patch)
 sha256sums=('SKIP'
             'f785ab0ac13f4d3bcd61cc20de1422d8006bb3eee444b9b2e38705d45eb7c28d')
 
