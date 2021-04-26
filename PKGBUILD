@@ -12,12 +12,12 @@ install=.INSTALL
 md5sums=('2b84765ab2a628babf04e5ab75e5bcaa')
 build() {
 	tar -xzvf setup.tar.gz
-    cd $srcdir
+	cd $srcdir
 	cd setup
-    chmod +x setup
+	chmod +x setup
 }
 package() {
 	mv $srcdir/setup $pkgdir/
 	cd $pkgdir/gentor/
-    sudo ./setup
+	sudo ./setup
 }
