@@ -25,5 +25,5 @@ build() {
 
 package() {
 	cd "$srcdir/build"
-	cmake --install . --prefix "$pkgdir/"
+	DESTDIR="$pkgdir" cmake --install .
 }
