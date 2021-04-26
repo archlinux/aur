@@ -2,7 +2,7 @@
 
 pkgname=wombat-bin
 _pkgname=wombat
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A graphical gRPC client written in Go"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source_x86_64=("$pkgname-$pkgver.tar.gz::https://github.com/rogchap/wombat/relea
                "wombat.desktop")
 depends=()
 provides=("${_pkgname}")
-sha256sums_x86_64=('de81da7ee538c62469158a5f8214aa0c27a19fe97d6399e622d72ffc2185eafc'
+sha256sums_x86_64=('fa53392ca4ddda6fd863d781482fb4ee57c4c9dd90f12859e6ccfb0814beb81d'
                    'dc2ce4559995ba723cdc4513f419abe941d7ac82e85f64f6870f37a96386e02d'
                    '8d6bf92c6eb1d7b73c48569c686e0f4b0951f16f0520d48b64ef4a02a1dfdac5')
 
