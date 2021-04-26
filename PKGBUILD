@@ -1,25 +1,25 @@
 # Maintainer: Michał Lisowski <lisu@riseup.net>
 
-_assets_ver=1908
+_assets_ver=2009
 
 pkgname=maszyna-git
-pkgver=r1277.c45081b2
-pkgrel=3
+pkgver=r2131.2376aa6f
+pkgrel=1
 pkgdesc="Polish train simulator"
 arch=('x86_64')
 url="https://eu07.pl/"
 license=('MPL2' 'custom')
-makedepends=('cmake' 'git' 'glfw' 'glm' 'libserialport' 'p7zip' 'python2-virtualenv')
-depends=('glfw' 'libserialport')
-source=("$pkgname"::'git://github.com/eu07/maszyna.git'
+makedepends=('asio' 'cmake' 'git' 'glfw' 'glm' 'libserialport' 'openvr' 'p7zip' 'python2-virtualenv')
+depends=('glfw' 'libserialport' 'openvr' 'python2')
+source=("$pkgname"::'git+https://github.com/eu07/maszyna.git'
         "http://stuff.eu07.pl/MaSzyna${_assets_ver}.zip"
         "http://stuff.eu07.pl/${_assets_ver}HF.zip"
         "https://eu07.pl/theme/Maszyna/dokumentacja/inne/readme_pliki/licencja.html")
 noextract=("MaSzyna${_assets_ver}.zip"
            "${_assets_ver}HF.zip")
 md5sums=('SKIP'
-         '1e33a4155c4dfeabfe8a72aaab6406be'
-         '70178c340fc236217343fe8ddcb63114'
+         '009a039e320592cf30f11ee07c8237e9'
+         'c77ac9dea108545ec5dea76d896f083a'
          'fdbde83abd66899b540800c3d4b5f0a2')
 
 pkgver() {
@@ -41,10 +41,11 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
-  install -D -m755 build/bin/eu07_$(date +'%y%m%d') "${pkgdir}/opt/maszyna/eu07"
+  install -D -m755 build/bin/eu07_2021-01-31 "${pkgdir}/opt/maszyna/eu07"
+  cp -r shaders "${pkgdir}/opt/maszyna/"
   7z x "${srcdir}/MaSzyna${_assets_ver}.zip" -o"${pkgdir}/opt/maszyna" -y
   7z x "${srcdir}/${_assets_ver}HF.zip" -o"${pkgdir}/opt/maszyna" -y
-  install -Dm644 "${srcdir}/licencja.html" "${pkgdir}/usr/share/licenses/${pkgname}/license.html"
+  install -D -m644 "${srcdir}/licencja.html" "${pkgdir}/usr/share/licenses/${pkgname}/license.html"
 
   cd "${pkgdir}/opt/maszyna"
   virtualenv2 linuxpython64
