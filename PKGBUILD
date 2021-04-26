@@ -5,7 +5,7 @@ _sub_name="lib"
 
 pkgname=${_group_name}-${_sub_name}
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The SWC-DB library"
 arch=("x86_64")
 
@@ -52,7 +52,7 @@ build() {
   cmake ../$pkgname-$pkgver-source \
     -DO_LEVEL=3 -DSWC_BUILD_PKG=${_sub_name} \
     -DCMAKE_SKIP_RPATH=ON -DCMAKE_INSTALL_PREFIX=$pkgdir/usr \
-    -DCMAKE_BUILD_TYPE=Release;
+    -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-lre2";
   make -j$((`grep -c processor < /proc/cpuinfo || echo 1`));
 }
 

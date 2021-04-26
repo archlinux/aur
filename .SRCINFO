@@ -1,7 +1,7 @@
 pkgbase = swcdb-lib
 	pkgdesc = The SWC-DB library
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.swcdb.org
 	install = README.md
 	arch = x86_64
