@@ -3,7 +3,7 @@
 _pkgname=pgadmin4
 pkgname=${_pkgname}-last
 pkgver=5.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Comprehensive design and management interface for PostgreSQL'
 url='https://www.pgadmin.org/'
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=('postgresql-libs' 'hicolor-icon-theme' 'python' 'python-cheroot'
          'python-dateutil' 'python-sqlalchemy' 'python-flask-security-too'
          'python-bcrypt' 'python-cryptography' 'python-sshtunnel' 'python-ldap3'
          'python-flask-babelex' 'python-gssapi' 'python-pyqt5')
-makedepends=('imagemagic' 'python-html5lib' 'python-sphinx' 'python-testtools')
+makedepends=('imagemagick' 'python-html5lib' 'python-sphinx' 'python-testtools')
 source=(https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v${pkgver}/source/${_pkgname}-${pkgver}.tar.gz{,.asc}
         pgAdmin4.desktop
         config_distro.py
