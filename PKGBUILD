@@ -14,9 +14,9 @@ conflicts=(lncrawl)
 
 source=("https://github.com/dipu-bd/lightnovel-crawler/releases/download/$pkgver/lncrawl")
 
-md5sums=('SKIP')
-sha1sums=('SKIP')
-sha256sums=('SKIP')
+md5sums=('bbc464d4461315f0c57c1630f8b93767')
+sha1sums=('6ae2c514033976434dad47ac44af89c77b8a6293')
+sha256sums=('deea716726839311ff6af8b3e294ed8ba090a19f7dbf676dc8555ccf6d27d7a5')
 
 package() {
   install -Dm755 lncrawl ${pkgdir}/usr/bin/lncrawl
