@@ -2,7 +2,7 @@
 # Old maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rhythmbox-plugin-alternative-toolbar-git
-pkgver=0.r296.3fe2958
+pkgver=v0.17.3.r147.ge712804
 pkgrel=1
 pkgdesc='Replace the Rhythmbox large toolbar with a Client-Side Decorated or Compact Toolbar which can be hidden'
 url='https://github.com/fossfreedom/alternative-toolbar'
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd rhythmbox-plugin-alternative-toolbar
 
-  echo "0.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
