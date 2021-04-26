@@ -9,45 +9,37 @@
 pkgname=python-cssutils
 _name="${pkgname#python-}"
 
-pkgver=1.0.2
-pkgrel=7
+pkgver=2.2.0
+pkgrel=1
 
 pkgdesc='CSS Cascading Style Sheets library for Python'
 arch=('any')
-url="http://cthedot.de/$_name"
-license=('LGPL3')
+url="https://github.com/jaraco/$_name"
+license=('LGPL3' 'GPL3')
 
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-wheel' 'python-pip')
 depends=('python')
-checkdepends=('python-nose')
 
+changelog=CHANGES.rst
 source=("https://files.pythonhosted.org/packages/source/c/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('a2fcf06467553038e98fea9cfe36af2bf14063eb147a70958cfcaa8f5786acaf')
+sha256sums=('5bef59f6b59bdccbea8e36cb292d2be1b6be1b485fc4a9f5886616f19eb31aaf')
 
 
 prepare() {
   cd "$_name-$pkgver"
-  # don't pin old versions of testrunner
-  sed -i "/tests_require/{s/pbr < 1\.7\.0/pbr/;s/'mock', //}" setup.py
-  sed -i 's/\(import mock\)/from unittest \1/' "src/$_name/tests/"*.py
-  find . -name __init__.py -exec sed -i 's/w\(indows-1252\)/W\1/g' '{}' ';'
+  find . -name __init__.py -exec sed -i 's/w\(indows-1252\)/W\1/g' \{\} \;
 }
 
 build() {
   cd "$_name-$pkgver"
-  2to3 --no-diffs -nw src
+  2to3 --no-diffs -nw "$_name"
   python setup.py build
-}
-
-check() {
-  cd "$_name-$pkgver"
-  python setup.py nosetests
 }
 
 package() {
   cd "$_name-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 README.txt -t"$pkgdir/usr/share/doc/$pkgname/"
+  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm644 README.rst -t"$pkgdir/usr/share/doc/$pkgname/"
   install -Dm644 examples/* -t"$pkgdir/usr/share/doc/$pkgname/examples/"
 }
 
