@@ -28,7 +28,7 @@ build() {
 package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/libiconv-${pkgver}/build-${_arch}"
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" install -j1
     rm -r "$pkgdir"/usr/${_arch}/share/
     rm "$pkgdir"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
