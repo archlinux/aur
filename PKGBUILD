@@ -3,8 +3,8 @@
 
 pkgbase=java8-adoptopenjdk
 pkgname=("${pkgbase/java/jre}-headless" "${pkgbase/java/jre}" "${pkgbase/java/jdk}" "${pkgbase/java8-/}8-src")
-pkgver=8u282
-_jdk_build=08
+pkgver=8u292
+_jdk_build=10
 pkgrel=1
 pkgdesc="AdoptOpenJDK ${pkgver%u*} HotSpot"
 arch=("x86_64")
@@ -12,7 +12,7 @@ url="https://${pkgbase/java8-/}.net/"
 license=("custom")
 makedepends=("ca-certificates-utils" "hicolor-icon-theme" "java-environment-common" "java-runtime-common" "nss" "xdg-utils")
 source=("https://github.com/AdoptOpenJDK/openjdk${pkgver%u*}-binaries/releases/download/jdk${pkgver}-b${_jdk_build}/OpenJDK${pkgver%u*}U-jdk_x64_linux_hotspot_${pkgver}b${_jdk_build}.tar.gz")
-sha256sums=("e6e6e0356649b9696fa5082cfcb0663d4bef159fc22d406e3a012e71fce83a5c")
+sha256sums=("0949505fcf42a1765558048451bb2a22e84b3635b1a31dd6191780eeccaa4ada")
 
 _nonheadless=(
   "bin/policytool"

@@ -6,7 +6,7 @@ jdk8-adoptopenjdk-8u*.pkg.tar.zst
 jdk8-adoptopenjdk-8u*.pkg.tar.xz
 adoptopenjdk8-src-8u*.pkg.tar.zst
 adoptopenjdk8-src-8u*.pkg.tar.xz
-OpenJDK8U-jdk_x64_linux_hotspot_8u282b08.tar.gz
+OpenJDK8U-jdk_x64_linux_hotspot_8u*.tar.gz
 java8-adoptopenjdk-8u*.log
 jre8-adoptopenjdk-8u*.log
 jre8-adoptopenjdk-headless-8u*.log

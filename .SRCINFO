@@ -1,6 +1,6 @@
 pkgbase = java8-adoptopenjdk
 	pkgdesc = AdoptOpenJDK 8 HotSpot
-	pkgver = 8u282
+	pkgver = 8u292
 	pkgrel = 1
 	url = https://adoptopenjdk.net/
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = java8-adoptopenjdk
 	makedepends = java-runtime-common
 	makedepends = nss
 	makedepends = xdg-utils
-	source = https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u282-b08/OpenJDK8U-jdk_x64_linux_hotspot_8u282b08.tar.gz
-	sha256sums = e6e6e0356649b9696fa5082cfcb0663d4bef159fc22d406e3a012e71fce83a5c
+	source = https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u292-b10/OpenJDK8U-jdk_x64_linux_hotspot_8u292b10.tar.gz
+	sha256sums = 0949505fcf42a1765558048451bb2a22e84b3635b1a31dd6191780eeccaa4ada
 
 pkgname = jre8-adoptopenjdk-headless
 	pkgdesc = AdoptOpenJDK Java 8 headless runtime environment
@@ -43,7 +43,7 @@ pkgname = jre8-adoptopenjdk-headless
 pkgname = jre8-adoptopenjdk
 	pkgdesc = AdoptOpenJDK Java 8 full runtime environment
 	install = install_jre8-adoptopenjdk.sh
-	depends = jre8-adoptopenjdk-headless=8u282-1
+	depends = jre8-adoptopenjdk-headless=8u292-1
 	depends = xdg-utils
 	depends = hicolor-icon-theme
 	optdepends = icedtea-web: web browser plugin + Java Web Start
@@ -57,7 +57,7 @@ pkgname = jdk8-adoptopenjdk
 	pkgdesc = AdoptOpenJDK Java 8 development kit
 	install = install_jdk8-adoptopenjdk.sh
 	depends = java-environment-common
-	depends = jre8-adoptopenjdk=8u282-1
+	depends = jre8-adoptopenjdk=8u292-1
 	provides = java-environment=8
 	provides = java-environment-openjdk=8
 
