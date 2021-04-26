@@ -1,6 +1,6 @@
 pkgbase = pamac-cli
 	pkgdesc = Pamac cli frontend for libalpm
-	pkgver = 10.0.99
+	pkgver = 10.1.0
 	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/pamac
 	arch = i686
@@ -34,9 +34,9 @@ pkgbase = pamac-cli
 	conflicts = pamac-aur-git
 	replaces = pamac
 	options = !emptydirs
-	source = pamac-10.0.99-1.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/611726156318c13e46ce932f7f7c962119b533e5/pamac-611726156318c13e46ce932f7f7c962119b533e5.tar.gz
+	source = pamac-10.1.0-1.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/8f6327c00b2303f88ff637a831aa7a049f1a4ec3/pamac-8f6327c00b2303f88ff637a831aa7a049f1a4ec3.tar.gz
 	source = meson.build
-	sha256sums = 04b2fe9979ab0ac5351d4d9f8e566953f0075f5eeff8ba2c7a7b1af9ad5c8204
+	sha256sums = c046479e265d5093ba80f0ff40697ab776853fb9b17f6a2572cd2e9a28ab6250
 	sha256sums = 13159694127c05fdc41f1ad83aa20e6d1c7c44d73b15046c62613d7f8e522c22
 
 pkgname = pamac-cli
