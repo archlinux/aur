@@ -1,6 +1,6 @@
 pkgbase = swcdb-lib-core
 	pkgdesc = The SWC-DB core libraries
-	pkgver = 0.4.19
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://www.swcdb.org
 	install = README.md
@@ -28,7 +28,7 @@ pkgbase = swcdb-lib-core
 	provides = libswcdb_core.so
 	provides = libswcdb_core_config.so
 	provides = libswcdb_core_comm.so
-	source = swcdb-lib-core-0.4.19-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.4.19
+	source = swcdb-lib-core-0.5.0-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.5.0
 	sha256sums = SKIP
 
 pkgname = swcdb-lib-core
