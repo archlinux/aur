@@ -3,7 +3,7 @@
 _pkgname=lssecret
 pkgname=${_pkgname}-git
 pkgver=r5.722013d
-pkgrel=1
+pkgrel=2
 pkgdesc="utility to list all secret items in a secret service using libsecret"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/GrantMoyer/lssecret"
@@ -28,6 +28,6 @@ package() {
   cd "${srcdir}/$_pkgname"
   make DESTDIR="${pkgdir}/usr" install
   chmod 755 "${pkgdir}/usr/bin/lssecret" 
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licences/${_pkgname}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 }

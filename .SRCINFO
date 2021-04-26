@@ -1,7 +1,7 @@
 pkgbase = lssecret-git
 	pkgdesc = utility to list all secret items in a secret service using libsecret
 	pkgver = r5.722013d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/GrantMoyer/lssecret
 	arch = i686
 	arch = x86_64
