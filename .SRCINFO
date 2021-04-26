@@ -1,7 +1,7 @@
 pkgbase = openboard-develop
 	pkgdesc = Interactive whiteboard software for schools and universities (development version)
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://openboard.ch/index.en.html
 	arch = x86_64
 	arch = i686
@@ -23,12 +23,12 @@ pkgbase = openboard-develop
 	depends = poppler
 	provides = openboard=1.6.1
 	conflicts = openboard
-	source = https://github.com/OpenBoard-org/OpenBoard/archive/v1.6.1rc-0309.tar.gz
+	source = https://github.com/OpenBoard-org/OpenBoard/archive/v1.6.1.tar.gz
 	source = openboard.desktop
 	source = qchar.patch
 	source = quazip.patch
 	source = drop_ThirdParty_repo.patch
-	sha256sums = 34e811bda1939371c3713d86baf2034398b3a193183edea7fc2c267d4a008fc5
+	sha256sums = cf5bfb570b9ac4e61e1670c5a433f1dcaf0de1e8dbcbd544f058711690afba79
 	sha256sums = 18ee4fab83b0c92490c81c2aaace98f669d07d7260cc0f83a24acb8d6224e5e7
 	sha256sums = b40fdab85f5921d0404c07db64628a2428a87d39193d2797bbef2e69b1d51549
 	sha256sums = 8c0b28ebd6cade0a551b695af9c04a2c45052f2d955357825b3be97bf00d5be7
