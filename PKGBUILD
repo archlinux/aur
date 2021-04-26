@@ -1,7 +1,8 @@
 # Maintainer: peeweep <peeweep at 0x0 dot ee>
+# Contributor: Alexander Bruegmann <mail at abruegmann dot eu>
 
 pkgname=sigma
-pkgver=0.16.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc="Generic Signature Format for SIEM Systems"
 arch=('any')
@@ -9,16 +10,11 @@ url="https://github.com/Neo23x0/sigma"
 license=('LGPL3')
 depends=('python-yaml' 'python-argparse' 'python-urllib3' 'python-pymisp')
 makedepends=('python-setuptools')
-source=(
-  "${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
-  "pymisp.patch"
-)
-sha256sums=('32325c7653096fd7b6e75ca950b9f4ea78c98f5e566ed7cbdd9dac11e18b0601'
-            'f6489322336e0e72d967fd22be157365676626a27e1f7da19df88d9efeff2eb7')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('344fce7b04844f84dbbf793d2aaec37f49ff030a9595399e09042bac0c743d71')
 
 prepare() {
   cd "${pkgname}-${pkgver}"/tools
-  patch -p1 <"${srcdir}/pymisp.patch"
 }
 
 build() {
@@ -32,7 +28,7 @@ package() {
   mv "${pkgdir}/usr/etc/" "${pkgdir}"
 
   # Update License
-  install -Dm 644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.LGPL.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 "${srcdir}/${pkgname}-${pkgver}/tools/LICENSE.LGPL.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim: ts=2 sw=2 et:
