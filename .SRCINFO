@@ -1,10 +1,11 @@
 pkgbase = pgadmin4-last
 	pkgdesc = Comprehensive design and management interface for PostgreSQL
 	pkgver = 5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pgadmin.org/
 	arch = x86_64
 	license = custom
+	makedepends = imagemagic
 	makedepends = python-html5lib
 	makedepends = python-sphinx
 	makedepends = python-testtools
@@ -39,6 +40,7 @@ pkgbase = pgadmin4-last
 	depends = python-ldap3
 	depends = python-flask-babelex
 	depends = python-gssapi
+	depends = python-pyqt5
 	provides = pgadmin4=5.2
 	conflicts = pgadmin4
 	replaces = pgadmin4
