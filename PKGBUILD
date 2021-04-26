@@ -4,7 +4,7 @@
 
 _target=x86_64-elf
 pkgname=$_target-gcc
-pkgver=10.2.0
+pkgver=10.3.0
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for x86_64-elf target'
 arch=(x86_64)
@@ -14,7 +14,7 @@ depends=($_target-binutils zlib libmpc mpfr gmp)
 options=(!emptydirs)
 source=("https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz.sig")
-sha256sums=('b8dd4368bb9c7f0b98188317ee0254dd8cc99d1e3a18d0ff146c855fe16c1d8c'
+sha256sums=('64f404c1a650f27fc33da242e1f2df54952e3963a49e06e73f6940f3223ac344'
             'SKIP')
 _basedir=gcc-$pkgver
 validpgpkeys=("13975A70E63C361C73AE69EF6EEB81F8981C74C7")
@@ -31,13 +31,13 @@ build() {
 	cd gcc-build
 
 	$srcdir/$_basedir/configure \
-		--target=$_target \
-		--libexecdir=/usr/lib \
+    --target=$_target \
+     --libexecdir=/usr/lib \
 		--prefix=/usr \
-		--disable-nls \
+	  --disable-nls \
 		--disable-plugin \
 		--enable-languages=c,c++ \
-		--without-headers
+	 	--without-headers
 
 	make all-gcc
 	make all-target-libgcc
