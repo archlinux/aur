@@ -6,7 +6,7 @@
 
 pkgname=allusion-appimage
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Allusion is a tool built for artists, aimed to help you organize your Visual Library – A single place that contains your entire collection of references, inspiration and any other kinds of images."
 arch=('x86_64')
 url='https://allusion-app.github.io'
@@ -18,7 +18,7 @@ gittag=$(curl -s https://github.com/allusion-app/Allusion/releases | sed -n -e "
 gitver="${pkgver}${gittag}"
 source_x86_64=("Allusion-${pkgver}.AppImage::https://github.com/allusion-app/Allusion/releases/download/v${gitver}/Allusion-${gitver}.AppImage")
 noextract=("Allusion-${pkgver}.AppImage")
-sha256sums_x86_64=('6d4e79d5c56f20fd326b9001737c79ee5f9fea2fc94864e1ed84a087572f22d3')
+sha256sums_x86_64=('394e85d980e8e6fedf3ec885cd6b680b3fd740aaadedeb61b3b198c514688b15')
 
 package() {
     # Install AppImage
