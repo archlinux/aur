@@ -1,8 +1,8 @@
 pkgbase = bibellese
 	pkgdesc = Helps with reading the bible according to various reading plans (German only)
-	pkgver = 1.7.0
-	pkgrel = 2
-	url = http://www.brodbeck-online.de/software/bibellese
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = http://git.rustysoft.de/martin/bibellese
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -10,8 +10,8 @@ pkgbase = bibellese
 	depends = glibc
 	depends = libical
 	depends = qt5-base
-	source = bibellese-1.7.0.tar.gz
-	md5sums = cf5202ae1547ac3e1b718324f6f814c3
+	source = bibellese-1.9.1.tar.gz::https://git.rustysoft.de/martin/bibellese/archive/v1.9.1.tar.gz
+	sha256sums = d380397cd600811c09aca735ecc67adb4edf32cb636fbcaf7f55c7863e743c65
 
 pkgname = bibellese
 
