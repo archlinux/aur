@@ -1,8 +1,8 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 
 pkgname=gnome-search-providers-vscode
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Add VSCode workspaces to Gnome search"
 arch=('x86_64')
 url="https://github.com/lunaryorn/gnome-search-providers-vscode"
@@ -10,9 +10,9 @@ license=('MPL2')
 depends=('gnome-shell')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-md5sums=('492a84b53d586ddcdf12c55ceacaaae6')
-sha1sums=('bf64d4c2e57335e9f39d17849121d7232f84d065')
-sha512sums=('919f618930cc35fcfe152d2a635cab40a48fa518ce5a72620f5f78e6b2046074db3558ec543dc52ec8f8c78b87908c778a062e44ec4dee3186d87a375caadb15')
+md5sums=('4a1b74216e3c26c63a78fabd9e2b4e22')
+sha1sums=('079add23ac53ac50d15b6e25fb2e61e9cf206ee0')
+sha512sums=('6cfc9df4a9adcb085cfb38e74b3366f14affa7d2dd7a6336350fe2f2e38d5ccbf66d01eaadaa439e16e1f2fb14e631c1ff93ae97c8877cf2d8100f170d176c9f')
 
 package() {
 	cd "$pkgname-$pkgver"
