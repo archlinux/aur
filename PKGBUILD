@@ -2,7 +2,7 @@
 
 pkgname=lightnovel-crawler-bin
 pkgver=v2.25.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An app to download novels from online sources and generate e-books."
 arch=('any')
 url="https://github.com/dipu-bd/lightnovel-crawler.git"
