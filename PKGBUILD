@@ -1,8 +1,8 @@
 # Maintainer: Alec Mev <alec@mev.earth>
 
 pkgname=todoist-nativefier
-pkgver=2021.04.05
-pkgrel=2
+pkgver=2021.04.26
+pkgrel=1
 pkgdesc='Todoist in shared Electron runtime'
 arch=('x86_64')
 url='https://todoist.com'
@@ -35,14 +35,12 @@ EOF
 
 build() {
   cd "${srcdir}"
-  # https://github.com/nativefier/nativefier/pull/1146
   # https://github.com/nativefier/nativefier/issues/831
   nativefier \
     --name "${_name}" \
     --icon "${pkgname}.png" \
-    --internal-urls '^(https?:\/\/)?(todoist\.com|appleid\.apple\.com)(\/.*)?$' \
     --maximize \
-    --user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:86.0) Gecko/20100101 Firefox/87.0" \
+    --user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0" \
     --single-instance \
     --verbose \
     https://todoist.com
@@ -52,8 +50,8 @@ package() {
   mkdir -p "${pkgdir}/usr/share"
   local _x=`echo "${_name}-linux-"*`
   cp -r "${_x}/resources/app" "${pkgdir}/usr/share/${pkgname}"
-  install -Dm 755 -t "${pkgdir}/usr/bin/" "${pkgname}"
-  install -Dm 644 -t "${pkgdir}/usr/share/applications/" "${pkgname}.desktop"
-  install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_x}/LICENSE"
-  install -Dm 644 -t "${pkgdir}/usr/share/pixmaps/" "${pkgname}.png"
+  install -Dm755 -t "${pkgdir}/usr/bin/" "${pkgname}"
+  install -Dm644 -t "${pkgdir}/usr/share/applications/" "${pkgname}.desktop"
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_x}/LICENSE"
+  install -Dm644 -t "${pkgdir}/usr/share/pixmaps/" "${pkgname}.png"
 }
