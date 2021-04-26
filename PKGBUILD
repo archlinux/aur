@@ -1,12 +1,12 @@
 # Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=ghdl-llvm-git
-pkgver=2.0.0dev.r6076.g9f796794
+pkgver=2.0.0dev.r6204.gfcd93aa12
 pkgrel=1
-arch=('any')
+arch=('x86_64' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='VHDL simulator - LLVM back-end'
 url='https://github.com/ghdl/ghdl'
-license=('GPLv2')
+license=('GPL2')
 
 provides=("ghdl=$pkgver" "ghdl-git=$pkgver")
 conflicts=('ghdl' 'ghdl-gcc-git' 'ghdl-mcode-git')
