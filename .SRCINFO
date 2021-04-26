@@ -1,6 +1,6 @@
 pkgbase = swcdb-pam-max-retries
 	pkgdesc = The SWC-DB PAM Max Retries auth Library
-	pkgver = 0.4.19
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://www.swcdb.org
 	install = README.md
@@ -15,7 +15,7 @@ pkgbase = swcdb-pam-max-retries
 	makedepends = swcdb-lib-thrift-c
 	depends = swcdb-lib-thrift-c
 	provides = pam_swcdb_max_retries.so
-	source = swcdb-pam-max-retries-0.4.19-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.4.19
+	source = swcdb-pam-max-retries-0.5.0-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.5.0
 	sha256sums = SKIP
 
 pkgname = swcdb-pam-max-retries
