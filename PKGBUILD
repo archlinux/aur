@@ -8,7 +8,7 @@ url="http://${pkgname}.sourceforge.net/"
 license=('GPL')
 depends=()
 makedepends=('flex')
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+source=("https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('c08be3867ee906ca69b949d55a4f3780')
  
 package() {
