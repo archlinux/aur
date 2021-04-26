@@ -1,15 +1,15 @@
 pkgbase = ruby-dotenv
 	pkgdesc = Loads environment variables from '.env'.
-	pkgver = 2.7.5
+	pkgver = 2.7.6
 	pkgrel = 1
 	url = https://rubygems.org/gems/dotenv
 	arch = any
 	license = MIT
 	depends = ruby
-	noextract = dotenv-2.7.5.gem
+	noextract = dotenv-2.7.6.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/dotenv-2.7.5.gem
-	sha256sums = c5465769f188f96a62a6cc1f801f440af077b06b788a14f66760a5178569139e
+	source = https://rubygems.org/downloads/dotenv-2.7.6.gem
+	sha256sums = 2451ed5e8e43776d7a787e51d6f8903b98e446146c7ad143d5678cc2c409d547
 
 pkgname = ruby-dotenv
 
