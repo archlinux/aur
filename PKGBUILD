@@ -1,14 +1,14 @@
 # Maintainer: Fedor Piecka <teplavoda at gmail dot com>
 
 pkgname=disig-web-signer
-pkgver=1.1.5
-pkgrel=3
+pkgver=2.0.7
+pkgrel=1
 pkgdesc="Slovak eID Web Signer by Disig"
 arch=('i686' 'x86_64')
 license=('custom')
 url="https://zep.disig.sk/"
-source_i686=('https://download.disigcdn.sk/cdn/products/websigner/disig-web-signer.debian_i386.deb')
-source_x86_64=('https://download.disigcdn.sk/cdn/products/websigner/disig-web-signer.debian_amd64.deb')
+source_i686=('https://download.disigcdn.sk/cdn/products/websigner2/disig-web-signer.debian_i386.deb')
+source_x86_64=('https://download.disigcdn.sk/cdn/products/websigner2/disig-web-signer.debian_amd64.deb')
 md5sums_i686=('SKIP')
 md5sums_x86_64=('SKIP')
 options=("!strip")
@@ -30,12 +30,16 @@ package() {
 
     ar p ${srcdir}/disig-web-signer.debian_${upstream_arch}.deb data.tar.xz | tar -xJ -C "${pkgdir}"
 
-    # Create a native messaging host for Google Chrome browser (as a link to Chromium version); this is done by a postinst script in upstream Debian package
+    # Create a native messaging host for Google Chrome browser and Chromium; this is done by a postinst script in upstream Debian package
+    native_messaging_host_filename=$(basename $(find ${pkgdir}/opt/disig/websigner/chrome/ -name sk.disig.websigner.*.java.json))
+
     mkdir -p ${pkgdir}/etc/opt/chrome/native-messaging-hosts
-    native_messaging_host_filename=$(basename $(find ${pkgdir}/etc/chromium/native-messaging-hosts/ -name sk.disig.websigner.*.java.json))
-    ln -s /etc/chromium/native-messaging-hosts/${native_messaging_host_filename} ${pkgdir}/etc/opt/chrome/native-messaging-hosts
+    ln -sf ${pkgdir}/opt/disig/websigner/chrome/${native_messaging_host_filename} ${pkgdir}/etc/opt/chrome/native-messaging-hosts/${native_messaging_host_filename}
+
+    mkdir -p  ${pkgdir}/etc/chromium/native-messaging-hosts/
+    ln -sf ${pkgdir}/opt/disig/websigner/chrome/${native_messaging_host_filename} ${pkgdir}/etc/chromium/native-messaging-hosts/${native_messaging_host_filename}
 
     # Let autostart configuration up to a user's discretion
-    rm -r ${pkgdir}/etc/xdg
+    # rm -r ${pkgdir}/etc/xdg
 
 }

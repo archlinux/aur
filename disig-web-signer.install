@@ -1,12 +1,12 @@
-post_install() {
-  echo ">>> disig-web-signer browser addon has NOT been installed into Firefox."
-  echo ">>> You can install the plugin into Firefox from the following location:"
-  echo -n ">>>     "
-  ls /opt/disig/websigner/firefox/*.xpi
-}
+# post_install() {
+#   echo ">>> disig-web-signer browser addon has NOT been installed into Firefox."
+#   echo ">>> You can install the plugin into Firefox from the following location:"
+#   echo -n ">>>     "
+#   ls /opt/disig/websigner/firefox/*.xpi
+# }
 
-post_upgrade() {
-  echo ">>> You may need to upgrade the Firefox addon for disig-web-signer if you use it:"
-  echo -n ">>>     "
-  ls /opt/disig/websigner/firefox/*.xpi
-}
+# post_upgrade() {
+#   echo ">>> You may need to upgrade the Firefox addon for disig-web-signer if you use it:"
+#   echo -n ">>>     "
+#   ls /opt/disig/websigner/firefox/*.xpi
+# }
