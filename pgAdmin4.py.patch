@@ -1,0 +1,28 @@
+--- a/web/pgAdmin4.py
++++ b/web/pgAdmin4.py
+
+@@ -140,7 +140,10 @@
+ ##########################################################################
+ # The entry point
+ ##########################################################################
++import threading
++from arch_additions import setupTrayIcon, checkRunning
+ def main():
++    checkRunning();
+     # Set null device file path to stdout, stdin, stderr if they are None
+     for _name in ('stdin', 'stdout', 'stderr'):
+         if getattr(sys, _name) is None:
+@@ -214,8 +217,11 @@
+                 server_name=config.APP_NAME)
+             try:
+                 print("Using production server...")
+-                prod_server.start()
+-            except KeyboardInterrupt:
++                prod_server.prepare()
++                threading.Thread(target=prod_server.serve).start()
++
++                setupTrayIcon("http://{}:{}".format(config.DEFAULT_SERVER, config.EFFECTIVE_SERVER_PORT))
++            finally:
+                 prod_server.stop()
+ 
+     except IOError:
