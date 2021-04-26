@@ -2,7 +2,7 @@
 # Contributor: Sean Enck <enckse@gmail.com>
 
 pkgname=oragono
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="A modern IRC server written in Go."
 arch=('x86_64')
