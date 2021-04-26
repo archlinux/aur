@@ -3,7 +3,7 @@
 # Contributor: der_fenix <derfenix -_AT_- gmail -_DOT_- com>
 pkgname=semantik
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="mindmapping-like tool for document generation (reports, thesis, etc)"
 arch=('x86_64')
 url="https://waf.io/semantik.html"
@@ -16,7 +16,7 @@ sha256sums=('3b33b4b4ab92158598d05b0d38cba2bca2b062927989249466bca668cfb7a635')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./waf configure clean build
+  CXXFLAGS='-I/usr/include/KF5/KIOCore -I/usr/include/KF5/KAuth -I/usr/include/KF5/KIOWidgets -I/usr/include/KF5/KIconThemes -I/usr/include/KF5/KConfigWidgets -I/usr/include/KF5/KXmlGui -I/usr/include/KF5/KCoreAddons -I/usr/include/KF5/KConfigGui -I/usr/include/KF5/KConfigCore -I/usr/include/KF5/KWidgetsAddons -I/usr/include/KF5/KI18n -I/usr/include/KF5/SonnetUi' ./waf configure clean build
 }
 
 
