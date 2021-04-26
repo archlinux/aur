@@ -11,10 +11,13 @@ license=('GPL3')
 depends=('boost-libs' 'ffmpeg' 'openssl' 'libpulse' 'opus' 'libxtst' 'libx11' 'libxfixes' 'libevdev' 'libxcb')
 makedepends=('git' 'cmake' 'boost')
 
-source=($pkgname::git+https://github.com/loki-47-6F-64/sunshine.git#tag=v$pkgver
-        systemd-cleanup.patch::https://github.com/loki-47-6F-64/sunshine/pull/42.patch)
+source=("$pkgname::git+https://github.com/loki-47-6F-64/sunshine.git#tag=v$pkgver"
+        "systemd-cleanup.patch::https://github.com/loki-47-6F-64/sunshine/pull/42.patch"
+        "udev.rules")
 sha256sums=('SKIP'
-            'f785ab0ac13f4d3bcd61cc20de1422d8006bb3eee444b9b2e38705d45eb7c28d')
+            'f785ab0ac13f4d3bcd61cc20de1422d8006bb3eee444b9b2e38705d45eb7c28d'
+            '5ce01689247cb01d3f119cac32c731607d99bb875dcdd39c92b547f76d2befa0')
+install=sunshine.install
 
 prepare() {
     cd "$pkgname"
@@ -41,6 +44,8 @@ package() {
  
     install -Dm755 build/$pkgname "$pkgdir/usr/bin/$pkgname"
     install -Dm755 build/sunshine.service "$pkgdir/usr/lib/systemd/user/sunshine.service"
+
+    install -Dm644 udev.rules "$pkgdir/usr/lib/udev/rules.d/85-$_pkgname-rules.rules"
 }
 
 # vim: ts=2 sw=2 et:
