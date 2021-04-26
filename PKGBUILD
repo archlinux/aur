@@ -32,7 +32,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/geary"
-	meson --prefix=/usr --buildtype=release build
+	meson --prefix=/usr --buildtype=release -Dprofile=release build
 	ninja -v -C build
 }
 
