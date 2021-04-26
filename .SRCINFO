@@ -1,14 +1,14 @@
 pkgbase = devspace-bin
 	pkgdesc = The Fastest Developer Tool for Kubernetes, develop software directly inside Kubernetes
-	pkgver = 5.11.0
+	pkgver = 5.12.1
 	pkgrel = 1
 	url = https://devspace.sh
 	arch = x86_64
 	license = Apache
-	source = devspace-bin-5.11.0::https://github.com/loft-sh/devspace/releases/download/v5.11.0/devspace-linux-amd64
-	source = devspace-bin-5.11.0-src::https://github.com/loft-sh/devspace/archive/refs/tags/v5.11.0.tar.gz
-	sha256sums = 03f7b7e428f25b2909b9872580b0bb4770a36aa74248d0f5517aa907d751ea55
-	sha256sums = a59a099deb63c868a6b1b056b0ba1b2f3158146160abfd33fdcd975cd756c80c
+	source = devspace-bin-5.12.1::https://github.com/loft-sh/devspace/releases/download/v5.12.1/devspace-linux-amd64
+	source = devspace-bin-5.12.1-src::https://github.com/loft-sh/devspace/archive/refs/tags/v5.12.1.tar.gz
+	sha256sums = e9c0adfd37125f24c2ce2ca2562988254c7439000cfc0ff80b18d0198330a3f1
+	sha256sums = 6c601ca3e10eadbdcb550c93add4c3e175b503b2e60fb94b1ecdc732cce205bb
 
 pkgname = devspace-bin
 
