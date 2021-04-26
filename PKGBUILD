@@ -12,7 +12,7 @@ makedepends=('intltool')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 source=("https://gitlab.gnome.org/madmurphy/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 install="${pkgname}.install"
-sha256sums=('34cc889595c0e059f75432594a9f6763eeac51e9aec9d11aedbc1c2728970f21')
+sha256sums=('f932e0b3ecd4c6971e4b997ef179fca2885aa050e71cb880088fe13e90172935')
 
 prepare() {
 
