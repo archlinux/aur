@@ -1,6 +1,6 @@
 pkgbase = minlau-git
 	pkgdesc = A minimalist game launcher for wine
-	pkgver = 1.1
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/theRealCarneiro/minlau
 	arch = i686
@@ -8,7 +8,8 @@ pkgbase = minlau-git
 	license = MIT
 	makedepends = git
 	depends = wine
-	optdepends = gamemode
+	optdepends = gamemode: optimizations to run games smoother
+	optdepends = winetricks: sandboxing prefix
 	source = minlau::git+https://github.com/theRealCarneiro/minlau.git
 	md5sums = SKIP
 
