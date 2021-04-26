@@ -1,6 +1,6 @@
 pkgbase = swcdb-lib-fs
 	pkgdesc = The SWC-DB File System Interface library
-	pkgver = 0.4.19
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://www.swcdb.org
 	install = README.md
@@ -14,7 +14,7 @@ pkgbase = swcdb-lib-fs
 	makedepends = swcdb-lib-core
 	depends = swcdb-lib-core
 	provides = libswcdb_fs.so
-	source = swcdb-lib-fs-0.4.19-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.4.19
+	source = swcdb-lib-fs-0.5.0-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.5.0
 	sha256sums = SKIP
 
 pkgname = swcdb-lib-fs
