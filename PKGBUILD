@@ -1,7 +1,7 @@
 # Maintainer: grufo <madmurphy333 AT gmail DOT com>
 
 pkgname='nautilus-hide'
-pkgver='0.1.0'
+pkgver='0.1.1'
 pkgrel=1
 pkgdesc='A simple Nautilus extension that adds "Hide" and "Unhide" to Nautilus right-click menu'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('intltool')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 source=("https://gitlab.gnome.org/madmurphy/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 install="${pkgname}.install"
-sha256sums=('5accaef09428f86cc8f862330b830f664d890690386e677d91ce0600dd0a464a')
+sha256sums=('34cc889595c0e059f75432594a9f6763eeac51e9aec9d11aedbc1c2728970f21')
 
 prepare() {
 
