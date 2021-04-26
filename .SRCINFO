@@ -1,0 +1,16 @@
+pkgbase = sdl_kitchensink
+	pkgdesc = FFmpeg and SDL2 based library for audio and video playback, written in C99.
+	pkgver = 1.0.9
+	pkgrel = 1
+	arch = any
+	license = GPL
+	makedepends = cmake
+	makedepends = sdl2
+	makedepends = ffmpeg
+	makedepends = gcc
+	depends = unzip
+	source = https://github.com/katajakasa/SDL_kitchensink/archive/refs/tags/1.0.9.tar.gz
+	sha256sums = SKIP
+
+pkgname = sdl_kitchensink
+
