@@ -1,6 +1,6 @@
 # Maintainer: Hugo Denizart <hugo at denizart dot pro>
 pkgname=obs-streamfx
-pkgver=0.9.3
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Bring your stream back to life with modern effects!"
 arch=("x86_64")
@@ -12,15 +12,12 @@ depends=("ffmpeg" "jansson" "libxinerama" "libxkbcommon-x11"
          "obs-studio>=25")
 makedepends=("cmake" "git" "libfdk-aac" "libxcomposite" "x264" "jack"
              "vlc" "swig" "luajit" "python" "ninja")
-source=("$pkgname::git+https://github.com/Xaymar/obs-StreamFX.git#tag="$pkgver
-        fix_updater.patch::https://patch-diff.githubusercontent.com/raw/Xaymar/obs-StreamFX/pull/452.patch)
-md5sums=("SKIP"
-         "0322447810b8871a4fc5da6099240876")
+source=("$pkgname::git+https://github.com/Xaymar/obs-StreamFX.git#tag="$pkgver)
+md5sums=("SKIP")
 
 prepare() {
   cd $pkgname
   git submodule update --init --recursive
-  git apply ../fix_updater.patch
 }
 
 build() {
