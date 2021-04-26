@@ -1,6 +1,6 @@
 pkgbase = kindle2anki-git
 	pkgdesc = Add words from Kindle to Anki
-	pkgver = r21.44f9270
+	pkgver = r22.f587b3d
 	pkgrel = 1
 	url = https://github.com/psamim/kindle2anki
 	arch = any
