@@ -4,7 +4,7 @@ _group_name="swcdb"
 _sub_name="lib-thrift"
 
 pkgname=${_group_name}-${_sub_name}
-pkgver=0.4.19
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="The SWC-DB Thrift C++ Service Library"
 arch=("x86_64")
