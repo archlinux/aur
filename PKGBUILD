@@ -10,6 +10,8 @@ md5sums=(SKIP)
 arch=(x86_64 i386 armv7h)
 depends=(ananicy fmt spdlog nlohmann-json)
 makedepends=(cmake git gcc)
+conflicts=(ananicy-cpp)
+provides=(ananicy-cpp)
 
 pkgver() {
   cd "$_pkgname"

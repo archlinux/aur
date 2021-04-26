@@ -12,6 +12,8 @@ pkgbase = ananicy-cpp-git
 	depends = fmt
 	depends = spdlog
 	depends = nlohmann-json
+	provides = ananicy-cpp
+	conflicts = ananicy-cpp
 	source = git+https://gitlab.com/aviallon/ananicy-cpp.git
 	md5sums = SKIP
 
