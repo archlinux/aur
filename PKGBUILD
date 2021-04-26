@@ -23,6 +23,6 @@ package() {
 	msg2 "Extracting data.tar.xz..."
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
 
-	install -Dm644 license.txt "$pkgdir/usr/share/licenses/hwpviewer/license.txt"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/hwpviewer/LICENSE"
 }
 
