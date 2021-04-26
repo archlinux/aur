@@ -10,9 +10,9 @@ depends=()
 makedepends=('flex')
 source=("https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('c08be3867ee906ca69b949d55a4f3780')
- 
+
 package() {
   cd $srcdir/$pkgname-$pkgver
   make
-  make install PREFIX=${pkgdir}/usr 
+  make install PREFIX=${pkgdir}/usr
 }
