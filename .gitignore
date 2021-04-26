@@ -2,4 +2,4 @@
 /pkg/
 mesa-*.tar.xz
 mesa-*.tar.xz.sig
-mesa-wslg-*.pkg.tar*
+mesa-d3d12-*.pkg.tar*
