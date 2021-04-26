@@ -1,7 +1,7 @@
 pkgbase = zsa-wally-bin
 	pkgdesc = Flash your ZSA Keyboard the EZ way.
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zsa/wally
 	arch = i686
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = zsa-wally-bin
 	source = https://github.com/zsa/wally/raw/2.1.1-linux/dist/linux64/wally.desktop
 	source = udev-rules.patch
 	source = desktop.patch
-	sha256sums = f1cc556d91a9851f34e4280efffc536798b494191ef62b24ad248826916e445f
+	sha256sums = 46984b397a8a3488d4982c01009795a3d6824ec97ba5fb17d52ef69751d91242
 	sha256sums = 81df9f24859cfd19ee8128d74a72155fe222e33349c9a647da98922f3f5b7857
 	sha256sums = d2841d63f4e0bdfda102390ab1ca09136230d22f88538863b24b0c7fc68e548e
 	sha256sums = 269c9196bc65b2e62be549e3d34e56768fe702ff099b7780a1661ca4c92a0143
