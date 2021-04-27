@@ -1,4 +1,5 @@
-# Maintainer : gborzi <gborzi@ieee.org>
+# Maintainer : Yamada Hayao <hayao@fascode.net>
+# Contributer: gborzi <gborzi@ieee.org>
 
 pkgname=xfce4-topmenu-plugin-git
 _gitname=topmenu-gtk
@@ -16,6 +17,7 @@ optdepends=('topmenu-gtk3-git: for gtk3 apps menu'
 options=(!libtool)
 source=("git+http://git.javispedro.com/cgit/$_gitname.git")
 sha1sums=('SKIP')
+provides=("xfce4-topmenu-plugin=${pkgver}")
 
 pkgver() {
    cd "$_gitname"
