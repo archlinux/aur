@@ -5,7 +5,7 @@
 pkgname=ncnn-git
 _pkgname=ncnn
 pkgver=20210322.r16.gcc8e7a13
-pkgrel=2
+pkgrel=3
 pkgdesc="High-performance neural network inference framework optimized for the mobile platform"
 url="https://github.com/Tencent/ncnn"
 license=('BSD')
