@@ -1,6 +1,6 @@
 pkgbase = imagemagick6
 	pkgdesc = An image viewing/manipulation program (version 6)
-	pkgver = 6.9.12.8
+	pkgver = 6.9.12.9
 	pkgrel = 1
 	url = https://legacy.imagemagick.org/
 	arch = x86_64
@@ -31,9 +31,9 @@ pkgbase = imagemagick6
 	depends = liblqr
 	depends = libraqm
 	depends = libpng
-	source = ImageMagick6-6.9.12-8.tar.gz::https://github.com/ImageMagick/ImageMagick6/archive/refs/tags/6.9.12-8.tar.gz
+	source = ImageMagick6-6.9.12-9.tar.gz::https://github.com/ImageMagick/ImageMagick6/archive/refs/tags/6.9.12-9.tar.gz
 	source = arch-fonts.diff
-	sha256sums = 894c05f0a2c33f3a7e3ac7125112410ce216cab635238fd5bdba7620d83e7458
+	sha256sums = b5195997636c7ffd7b0f94ec77d4c720b1950a43ac254274981fcf2ffeb2c539
 	sha256sums = a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73
 
 pkgname = libmagick6
