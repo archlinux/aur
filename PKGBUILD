@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-session-shell-git
-pkgver=5.4.5.r37.gc9ea6be
+pkgver=5.4.9.r52.g6e6657e
 pkgrel=1
 pkgdesc='Deepin desktop-environment - session-shell module'
 arch=('x86_64')
@@ -23,10 +23,7 @@ pkgver() {
 prepare() {
   cd $pkgname
   sed -i '/darrowrectangle/d' CMakeLists.txt src/widgets/widgets.pri
-  sed -i '1i#include <QPainterPath>' src/widgets/useravatar.cpp
-
-  # We don't have common-auth on Arch
-  sed -i 's/common-auth/system-login/' src/libdde-auth/authagent.cpp
+  sed -i 's/5\.5//g' CMakeLists.txt tests/lightdm-deepin-greeter/CMakeLists.txt tests/dde-lock/CMakeLists.txt
 }
 
 build() {

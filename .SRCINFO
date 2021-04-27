@@ -1,6 +1,6 @@
 pkgbase = deepin-session-shell-git
 	pkgdesc = Deepin desktop-environment - session-shell module
-	pkgver = 5.4.5.r37.gc9ea6be
+	pkgver = 5.4.9.r52.g6e6657e
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-session-shell
 	arch = x86_64
