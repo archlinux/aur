@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=jquerylib
-_cranver=0.1.3
+_cranver=0.1.4
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=(MIT)
 depends=(r r-htmltools)
 optdepends=(r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('b8fdc95bd40aceba90c9f1f074c52a408171f7f1b96279409f1c8ea079350de8')
+sha256sums=('f0bcc11dcde3a6ff180277e45c24642d3da3c8690900e38f44495efbc9064411')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
