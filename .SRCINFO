@@ -11,7 +11,7 @@ pkgbase = dmenu-vus-git
 	depends = ttf-joypixels
 	provides = dmenu
 	conflicts = dmenu
-	source = git+http://15.228.28.1:3000/agus/dmenu-vus.git
+	source = git+https://github.com/AgusDOLARD/dmenu.git
 	md5sums = SKIP
 
 pkgname = dmenu-vus-git
