@@ -1,0 +1,23 @@
+diff --unified --recursive --text ./orig/hmap2/light.c ./pkg/hmap2/light.c
+--- ./orig/hmap2/light.c	2012-02-20 13:34:19.000000000 +0100
++++ ./hmap2/light.c	2021-04-27 22:03:25.812382850 +0200
+@@ -4,7 +4,6 @@
+ 
+ qboolean	lightvis;
+ qboolean	relight;
+-qboolean	verbose;
+ 
+ int			extrasamplesbit;	// power of 2 extra sampling (0 = 1x1 sampling, 1 = 2x2 sampling, 2 = 4x4 sampling, etc)
+ vec_t		extrasamplesscale;	// 1.0 / pointspersample (extrasamples related)
+diff --unified --recursive --text ./orig/hmap2/vis.c ./pkg/hmap2/vis.c
+--- ./orig/hmap2/vis.c	2009-04-06 16:14:40.000000000 +0200
++++ ./hmap2/vis.c	2021-04-27 22:02:42.076202634 +0200
+@@ -26,7 +26,7 @@
+ int bitlongs;
+ 
+ qboolean fastvis;
+-qboolean verbose;
++static qboolean verbose;
+ qboolean rvis;
+ qboolean noreuse;
+ 
