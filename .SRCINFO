@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-user-theme-x-git
+	pkgdesc = Customizable gnome shell user-theme with user stylesheet and night theme autoswitch support
+	pkgver = 3.38.r2.g4fb2622
+	pkgrel = 1
+	url = https://github.com/tuberry/user-theme-x
+	arch = any
+	license = LGPL3
+	makedepends = git
+	makedepends = make
+	depends = gnome-shell>=3.36
+	source = user-theme-x::git+https://github.com/tuberry/user-theme-x.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-user-theme-x-git
+
