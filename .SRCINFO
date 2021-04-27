@@ -1,7 +1,7 @@
 pkgbase = mqttui-bin
 	pkgdesc = Subscribe to a MQTT Topic or publish something quickly from the terminal
-	pkgver = 0.11.1
-	pkgrel = 2
+	pkgver = 0.12.0
+	pkgrel = 1
 	url = https://github.com/EdJoPaTo/mqttui
 	arch = x86_64
 	arch = aarch64
@@ -10,14 +10,14 @@ pkgbase = mqttui-bin
 	license = GPL-3.0-or-later
 	provides = mqttui
 	conflicts = mqttui
-	source_x86_64 = mqttui-bin-x86_64-0.11.1.tar.gz::https://github.com/EdJoPaTo/mqttui/releases/download/v0.11.1/mqttui-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 49ea1defd908a9e2f53962905f6848c9d94016a86cc15bea9188f7c6f5a034ef
-	source_aarch64 = mqttui-bin-aarch64-0.11.1.tar.gz::https://github.com/EdJoPaTo/mqttui/releases/download/v0.11.1/mqttui-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 335e2d838c98555f5071a6b6bcbf27972955f837071fe5f97c76fee6173152d8
-	source_armv6h = mqttui-bin-armv6h-0.11.1.tar.gz::https://github.com/EdJoPaTo/mqttui/releases/download/v0.11.1/mqttui-arm-unknown-linux-gnueabihf.tar.gz
-	sha256sums_armv6h = f01dec0e0a7993036725a4a46ad7b81fa8771ccf1d49e63aef73595ed4b9d56f
-	source_armv7h = mqttui-bin-armv7h-0.11.1.tar.gz::https://github.com/EdJoPaTo/mqttui/releases/download/v0.11.1/mqttui-armv7-unknown-linux-gnueabihf.tar.gz
-	sha256sums_armv7h = a379715aae12cd4d6e470e70522d20c851c5cb9bef2acf668b2f00e4fa227c36
+	source_x86_64 = mqttui-bin-x86_64-0.12.0.tar.gz::https://github.com/EdJoPaTo/mqttui/releases/download/v0.12.0/mqttui-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = e1f1c3a75792308fb9e92400df41c2f55314a175c3f252db3e58aa999b03ebd9
+	source_aarch64 = mqttui-bin-aarch64-0.12.0.tar.gz::https://github.com/EdJoPaTo/mqttui/releases/download/v0.12.0/mqttui-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = ddb6e035525c38e21c380bb49be420a6e6a36fafc72476c935fe962465edf555
+	source_armv6h = mqttui-bin-armv6h-0.12.0.tar.gz::https://github.com/EdJoPaTo/mqttui/releases/download/v0.12.0/mqttui-arm-unknown-linux-gnueabihf.tar.gz
+	sha256sums_armv6h = 98ed0b0f06658659ef383c64b696b6fb40dd78eb95df6ee579d05af94534e9a3
+	source_armv7h = mqttui-bin-armv7h-0.12.0.tar.gz::https://github.com/EdJoPaTo/mqttui/releases/download/v0.12.0/mqttui-armv7-unknown-linux-gnueabihf.tar.gz
+	sha256sums_armv7h = 3e3456ca88051a0d780ecdbf67284e2790b1b5489f6ec0100ad7dc860fd2b818
 
 pkgname = mqttui-bin
 
