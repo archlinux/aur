@@ -46,3 +46,27 @@ pkgbase = vtfedit
 
 pkgname = vtfedit
 
+pkgbase = vtfedit
+	pkgdesc = A .NET graphical frontend for VTFLib
+	pkgver = 1.3.3
+	pkgrel = 7
+	url = https://nemstools.github.io/pages/VTFLib-Download.html
+	arch = any
+	license = GPL2
+	license = LGPL2.1
+	depends = wine
+	depends = winetricks
+	depends = zenity
+	source = http://nemstools.github.io/files/vtfedit133.zip
+	source = vtfedit.sh
+	source = vtfedit.png
+	source = vtfedit.desktop
+	source = x-vtf.xml
+	sha256sums = eb2329d105f57057f6fc6d38c34a741c2abc9f05125e80e8b0f8ab5f269a3c49
+	sha256sums = e879ea5e01c4c339ec828ab94d747b3266a963355d1843f1b7d0770b16d9698a
+	sha256sums = 269aa8fecd703b65396750d266f0034df747fbcc9caf4285ea8b506c013e8edb
+	sha256sums = 5bf6cdaab92992074396e531878bb28816b6392484504fa6ee0b962812862357
+	sha256sums = 2ef3ee8a61eff0014084187e250191b332b5cee1e916df627c5571776ee6868d
+
+pkgname = vtfedit
+
