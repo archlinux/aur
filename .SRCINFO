@@ -1,0 +1,13 @@
+pkgbase = vim-pgsql
+	pkgdesc = Vim syntax highlighting and auto-completion support for PostgreSQL
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://github.com/lifepillar/pgsql.vim
+	arch = any
+	license = custom:vim
+	depends = vim-runtime
+	source = vim-pgsql-2.3.1.tar.gz::https://github.com/lifepillar/pgsql.vim/archive/refs/tags/v2.3.1.tar.gz
+	md5sums = SKIP
+
+pkgname = vim-pgsql
+
