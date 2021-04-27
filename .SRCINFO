@@ -1,0 +1,22 @@
+pkgbase = py3-chirp-git
+	pkgdesc = GUI tool for programming ham radios, built from a fork of CHIRP for testing with Python 3.
+	pkgver = r54.1e8bf92
+	pkgrel = 1
+	url = https://github.com/mpoletiek/py3-CHIRP
+	arch = any
+	license = GPL3
+	depends = python-wxpython
+	depends = python-six
+	depends = python-lxml
+	depends = python-pyserial
+	depends = python-future
+	depends = python-gobject
+	depends = curl
+	optdepends = hamradio-menus: XDG menus for ham radio software
+	provides = chirp
+	conflicts = chirp
+	source = git+https://github.com/mpoletiek/py3-CHIRP
+	md5sums = SKIP
+
+pkgname = py3-chirp-git
+
