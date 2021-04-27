@@ -1,6 +1,6 @@
 pkgbase = jdk-adoptopenjdk
 	pkgdesc = OpenJDK Java 16 development kit (AdoptOpenJDK build)
-	pkgver = 16.u36
+	pkgver = 16.0.1.u9
 	pkgrel = 1
 	url = https://adoptopenjdk.net/
 	install = install_jdk-adoptopenjdk.sh
@@ -16,18 +16,18 @@ pkgbase = jdk-adoptopenjdk
 	optdepends = gtk3: for the Gtk+ 3 look and feel
 	provides = java-runtime-headless=16
 	provides = java-runtime-headless-openjdk=16
-	provides = jre16-openjdk-headless=16.u36
-	provides = jre-openjdk-headless=16.u36
+	provides = jre16-openjdk-headless=16.0.1.u9
+	provides = jre-openjdk-headless=16.0.1.u9
 	provides = java-runtime=16
 	provides = java-runtime-openjdk=16
-	provides = jre16-openjdk=16.u36
-	provides = jre-openjdk=16.u36
+	provides = jre16-openjdk=16.0.1.u9
+	provides = jre-openjdk=16.0.1.u9
 	provides = java-environment=16
 	provides = java-environment-openjdk=16
-	provides = jdk16-openjdk=16.u36
-	provides = jdk-openjdk=16.u36
-	provides = openjdk16-src=16.u36
-	provides = openjdk-src=16.u36
+	provides = jdk16-openjdk=16.0.1.u9
+	provides = jdk-openjdk=16.0.1.u9
+	provides = openjdk16-src=16.0.1.u9
+	provides = openjdk-src=16.0.1.u9
 	backup = etc/jdk-adoptopenjdk/logging.properties
 	backup = etc/jdk-adoptopenjdk/management/jmxremote.access
 	backup = etc/jdk-adoptopenjdk/management/jmxremote.password.template
@@ -43,11 +43,11 @@ pkgbase = jdk-adoptopenjdk
 	backup = etc/jdk-adoptopenjdk/security/policy/unlimited/default_local.policy
 	backup = etc/jdk-adoptopenjdk/security/policy/unlimited/default_US_export.policy
 	backup = etc/jdk-adoptopenjdk/sound.properties
-	source = https://github.com/AdoptOpenJDK/openjdk16-binaries/releases/download/jdk-16%2B36/OpenJDK16-jdk_x64_linux_hotspot_16_36.tar.gz
+	source = https://github.com/AdoptOpenJDK/openjdk16-binaries/releases/download/jdk-16.0.1%2B9/OpenJDK16U-jdk_x64_linux_hotspot_16.0.1_9.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = 2e031cf37018161c9e59b45fa4b98ff2ce4ce9297b824c512989d579a70f8422
+	sha256sums = 7fdda042207efcedd30cd76d6295ed56b9c2e248cb3682c50898a560d4aa1c6f
 	sha256sums = e931a0070e4a69dd4b37789c28057c1b956e9830fbedc0efe38aa9988a02b444
 	sha256sums = bb86dc8ef9ad1bac2045b575e84fb6696d70104dd610d8a5507b068d1f96cc58
 	sha256sums = 31122fb2dc414968d7cea452e5abc90c32813cce8db2f83023d19fe04b40f6d5
