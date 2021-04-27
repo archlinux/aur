@@ -9,7 +9,7 @@ _provide_udev_rule=true
 pkgbase='winesync'
 pkgname=()
 pkgver=5.11
-pkgrel=8
+pkgrel=9
 pkgdesc="Wine synchronization primitive driver"
 arch=('any')
 url='https://repo.or.cz/linux/zf.git/shortlog/refs/heads/winesync'
@@ -39,7 +39,7 @@ sha256sums=('33b79f4c0b99bd623cf2b1b50fe2ff6d8eaa7f71cd73c3949898862a102fa23d'
             'ab632cb5ec60a285846bd491de49a35e629f08a0a29882672f56ae280144e95d'
             '9b22d9976a83785e6a1cfc4a3aa230a8c5e4e903730bbafc598ec86bfaa35c3e'
             '05735aa1fef1eda3c6dca8b7a0c2a7eebf1eba8af38f608b4b1c34d4acbad453'
-            '650fc356d45409fdf22811d9ffde63cc24a169d438e002a2a749a42d5369f916')
+            'aafe48ff97db7d25d3f23774e644d01fe98b07e9ae0b519f633f3407ce7d68eb')
 
 if [ "${PRINTSRCINFO:-0}" -eq 1 ]; then
     _provide_nondkms=true
@@ -64,8 +64,10 @@ fi
 
 if [ "$_provide_nondkms" = true ] || [ "$_provide_dkms" = true ]; then
 prepare() {
-    kernver="$(echo "$pkgver" | sed 's/\./\\\\\\\\\\./g')"
-    sed -i -e "s/@PACKAGE_VERSION@/$pkgver/g" -e "s/@KERNVER@/$kernver/g" "$srcdir/dkms.conf"
+    _supported_kernvers=('5.11' '5.12')
+    _regex=("${_supported_kernvers[@]//./\\\\.}")
+    _regex="^($(IFS='|'; printf '%s' "${_regex[*]}"))(\\.|\$)"
+    sed -i -e "s/@PACKAGE_VERSION@/$pkgver/g" -e "s/@KERNVER_REGEX@/$_regex/g" "$srcdir/dkms.conf"
 }
 fi
 
