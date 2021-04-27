@@ -1,6 +1,6 @@
 pkgbase = jdk11-adoptopenjdk
 	pkgdesc = OpenJDK Java 11 development kit (AdoptOpenJDK build)
-	pkgver = 11.0.10.u9
+	pkgver = 11.0.11.u9
 	pkgrel = 1
 	url = https://adoptopenjdk.net/
 	install = install_jdk11-adoptopenjdk.sh
@@ -16,18 +16,18 @@ pkgbase = jdk11-adoptopenjdk
 	optdepends = gtk3: for the Gtk+ 3 look and feel
 	provides = java-runtime-headless=11
 	provides = java-runtime-headless-openjdk=11
-	provides = jre11-openjdk-headless=11.0.10.u9
-	provides = jre-openjdk-headless=11.0.10.u9
+	provides = jre11-openjdk-headless=11.0.11.u9
+	provides = jre-openjdk-headless=11.0.11.u9
 	provides = java-runtime=11
 	provides = java-runtime-openjdk=11
-	provides = jre11-openjdk=11.0.10.u9
-	provides = jre-openjdk=11.0.10.u9
+	provides = jre11-openjdk=11.0.11.u9
+	provides = jre-openjdk=11.0.11.u9
 	provides = java-environment=11
 	provides = java-environment-openjdk=11
-	provides = jdk11-openjdk=11.0.10.u9
-	provides = jdk-openjdk=11.0.10.u9
-	provides = openjdk11-src=11.0.10.u9
-	provides = openjdk-src=11.0.10.u9
+	provides = jdk11-openjdk=11.0.11.u9
+	provides = jdk-openjdk=11.0.11.u9
+	provides = openjdk11-src=11.0.11.u9
+	provides = openjdk-src=11.0.11.u9
 	backup = etc/jdk11-adoptopenjdk/net.properties
 	backup = etc/jdk11-adoptopenjdk/logging.properties
 	backup = etc/jdk11-adoptopenjdk/security/java.security
@@ -42,11 +42,11 @@ pkgbase = jdk11-adoptopenjdk
 	backup = etc/jdk11-adoptopenjdk/management/jmxremote.access
 	backup = etc/jdk11-adoptopenjdk/management/jmxremote.password.template
 	backup = etc/jdk11-adoptopenjdk/sound.properties
-	source = https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.10%2B9/OpenJDK11U-jdk_x64_linux_hotspot_11.0.10_9.tar.gz
+	source = https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.11%2B9/OpenJDK11U-jdk_x64_linux_hotspot_11.0.11_9.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = ae78aa45f84642545c01e8ef786dfd700d2226f8b12881c844d6a1f71789cb99
+	sha256sums = e99b98f851541202ab64401594901e583b764e368814320eba442095251e78cb
 	sha256sums = 734aab5e8fca5360fd996142a0c0ff23434da56f83c21b26cfbcbf31556230eb
 	sha256sums = 53b7da18785675438d1d7cfa776be419a313c11049c48f791c7426224fe51025
 	sha256sums = bc4305c5870fa8e050c0a2cbc629a8f84e366200b436429c789038596a4259f6
