@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-gettext-tools-git
-pkgver=1.0.8.r3.gc4d7bdb
+pkgver=1.0.8.r4.g0282bcd
 pkgrel=1
 pkgdesc='Deepin Gettext Tools'
 arch=('any')
