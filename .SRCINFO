@@ -1,0 +1,15 @@
+pkgbase = star-ruler2-community-patch
+	pkgdesc = Star Ruler 2 Community Patch
+	pkgver = r81.b390eeb
+	pkgrel = 1
+	url = https://github.com/sol-oriens/SR2-Community-Patch
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = star-ruler2-community-patch
+	conflicts = star-ruler2-community-patch
+	source = star-ruler2-community-patch::git+https://github.com/sol-oriens/SR2-Community-Patch.git
+	md5sums = SKIP
+
+pkgname = star-ruler2-community-patch
+
