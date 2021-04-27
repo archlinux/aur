@@ -1,0 +1,18 @@
+pkgbase = yubiguard-git
+	pkgdesc = Python script to protect against accidental triggering of YubiKeys on Linux.
+	pkgver = 0.9.3.r145.a16c8a3.r145.a16c8a3
+	pkgrel = 1
+	url = https://github.com/dmccombs/YubiGuard
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = xorg-xinput
+	depends = python-pyzmq
+	depends = python-gobject
+	source = git+https://github.com/dmccombs/YubiGuard
+	source = YubiGuard.desktop
+	md5sums = SKIP
+	md5sums = c1d6573df66b0659c7c5f85f023f4454
+
+pkgname = yubiguard-git
+

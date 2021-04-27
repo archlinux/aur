@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=YubiGuard
+Comment=Protect against accidental triggering of YubiKeys
+Exec=/usr/bin/YubiGuard %F
+Icon=YubiGuard
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=System;
