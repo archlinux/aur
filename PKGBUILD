@@ -10,7 +10,7 @@ pkgrel=1
 epoch=
 pkgdesc="Dmenu with Xresources, borders, fzf, highlight, center, etc"
 arch=(x86_64 i686)
-url="https://github.com/AgusDOLARD/dmenu.git"
+url="https://github.com/AgusDOLARD/dmenu-vus.git"
 license=('MIT')
 groups=()
 depends=(ttf-fira-code ttf-joypixels)
@@ -35,12 +35,12 @@ pkgver() {
 }
 
 build() {
-	cd dmenu
+	cd dmenu-vus
     make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
-    cd dmenu
+    cd dmenu-vus
     mkdir -p ${pkgdir}/opt/${pkgname}
     cp -rf * ${pkgdir}/opt/${pkgname}
     make PREFIX=/usr DESTDIR="${pkgdir}" install
