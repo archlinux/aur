@@ -1,7 +1,7 @@
 # Maintainer: Carneiro <gabriel dot chaves dot carneiro at gmail dot com>
 pkgname=minlau-git
 _pkgname=minlau
-pkgver=1.3
+pkgver=1.5
 pkgrel=1
 pkgdesc="A minimalist game launcher for wine"
 url="https://github.com/theRealCarneiro/minlau"
@@ -10,7 +10,8 @@ license=('MIT')
 depends=('wine')
 makedepends=('git')
 optdepends=('gamemode: optimizations to run games smoother'
-		  'winetricks: sandboxing prefix')
+		  'winetricks: sandboxing prefix'
+		  'bash-completion: bash tab completion')
 source=(${_pkgname}::git+${url}.git)
 md5sums=('SKIP')
 
