@@ -5,7 +5,7 @@
 
 _pkgname="concourse-fly"
 pkgname=$_pkgname-git
-pkgver=5.6.0.r90.gcb8a08f02
+pkgver=7.2.0.r78.g9c16b0934
 pkgrel=1
 pkgdesc="A command line interface that runs a build in a container with ATC."
 arch=('x86_64')
