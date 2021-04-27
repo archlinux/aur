@@ -1,6 +1,6 @@
 pkgbase = qrcp-bin
 	pkgdesc = Transfer files over wifi from your computer to your mobile device by scanning a QR code without leaving the terminal.
-	pkgver = 0.8.2
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://github.com/claudiodangelis/qrcp
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = qrcp-bin
 	conflicts = qrcp-git
 	conflicts = qr-filetransfer-git
 	conflicts = qrcp
-	source_x86_64 = qrcp-bin-0.8.2.tar.gz::https://github.com/claudiodangelis/qrcp/releases/download/0.8.2/qrcp_0.8.2_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 079a6d43840c1feaadf37e2e53c6a0be37a3b3d7510aa3058f75b95fcfb73d20
-	source_i386 = qrcp-bin-0.8.2.tar.gz::https://github.com/claudiodangelis/qrcp/releases/download/0.8.2/qrcp_0.8.2_linux_i386.tar.gz
-	sha256sums_i386 = 369cc5e7e7f22b3aec791e6fc05cbf1296a834b8e4ef2cc55a0593724a559f73
+	source_x86_64 = qrcp-bin-0.8.4.tar.gz::https://github.com/claudiodangelis/qrcp/releases/download/0.8.4/qrcp_0.8.4_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 8f20693ab15c45328cfb330848d7bbd9034ed3722308a552c992d185bc896d80
+	source_i386 = qrcp-bin-0.8.4.tar.gz::https://github.com/claudiodangelis/qrcp/releases/download/0.8.4/qrcp_0.8.4_linux_i386.tar.gz
+	sha256sums_i386 = 8a3f9327e63dd1cbfc60edeb5f13c95da1e4056bb74c92a26d96a89c3bda7901
 
 pkgname = qrcp-bin
 
