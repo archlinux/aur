@@ -1,0 +1,21 @@
+pkgbase = fabricversions
+	pkgdesc = Fetch FabricMC versions
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/YTG1234/fabricversions
+	changelog = CHANGELOG
+	arch = x86_64
+	license = MIT
+	makedepends = swift-language
+	makedepends = git
+	makedepends = libedit
+	depends = curl
+	depends = libxml2
+	depends = gcc-libs
+	source = git+https://github.com/YTG1234/fabricversions?signed#tag=v0.1.3
+	validpgpkeys = 04DBDABBF85C4D4987116AE14B81184A270A28B5
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = fabricversions
+
