@@ -1,14 +1,14 @@
 pkgbase = browserstack-local-x64
 	pkgdesc = BrowserStack Local Testing binary - 64bit
-	pkgver = 8.1
-	pkgrel = 1
+	pkgver = 8.3
+	pkgrel = 0
 	url = https://www.browserstack.com/local-testing/
 	arch = x86_64
 	license = commercial
 	depends = gcc-libs
 	conflicts = browserstack-local-x32
 	source = https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip
-	sha512sums = a0167df92d2e5f1636144dd22da6c8b95ebfe088e19b801b3b1f4544a5ea66b48c98eeccb72dc0a27af1952ceee40d6adc11be967fd4a4a0e052159fa6f54609
+	sha512sums = 4a30ac839ef977e50c8b98d979fb846dd6b982b85979bb56d2ef7545258f982ef9a801c8e5c43fa014b4ee43ef7f5e541118c0cc50e909140f96ee7566cbe5c4
 
 pkgname = browserstack-local-x64
 
