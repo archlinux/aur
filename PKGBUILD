@@ -4,7 +4,7 @@
 # Contributor: American_Jesus
 pkgname=palemoon
 _repo=Pale-Moon
-pkgver=29.1.1
+pkgver=29.2.0
 # Commit can be found at https://repo.palemoon.org/MoonchildProductions/Pale-Moon/releases
 _commit=e7ccadb26f
 pkgrel=1
