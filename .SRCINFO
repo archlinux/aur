@@ -1,0 +1,16 @@
+pkgbase = python-ancypwn-backend-unix
+	pkgdesc = ancypwn unix universal backend
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/Escapingbug/ancypwn-backend-unix
+	arch = any
+	license = unknown
+	makedepends = python-setuptools
+	depends = python-docker
+	depends = python-appdirs
+	depends = python-daemonize
+	source = https://files.pythonhosted.org/packages/source/a/ancypwn-backend-unix/ancypwn-backend-unix-0.0.2.tar.gz
+	sha256sums = caa5c8dd483600ef53cb23a361b74f4cb2ddff3df03c0a417488c7fbeef90207
+
+pkgname = python-ancypwn-backend-unix
+
