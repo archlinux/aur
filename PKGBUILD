@@ -3,7 +3,7 @@
 pkgbase='citra-canary-bin'
 pkgname=('citra-canary-bin' 'citra-qt-canary-bin')
 pkgrel=1
-pkgver=1903_20201209_6385727
+pkgver=1959_20210424_651c9d0
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 conflicts=('citra-git' 'citra-qt-git' 'citra-nightly-bin' 'citra-qt-nightly-bin' 'citra-bin' 'citra-qt' 'citra-canary-bin' 'citra-qt-canary-bin')
 license=('GPL2')
@@ -16,7 +16,7 @@ _ref="$(echo $pkgver | cut -d'_' -f2)-$(echo $pkgver | cut -d'_' -f3)"
 source=("https://github.com/citra-emu/citra-canary/releases/download/canary-$_canary_id/citra-linux-$_ref.tar.xz"
         "https://raw.githubusercontent.com/citra-emu/citra/master/dist/citra.desktop")
 
-sha256sums=('4c8d189f8475e59c5867029e37efc6e0093a40e8c3b4505baed954ab83e99d8b'
+sha256sums=('019eb0b3afa4a83edcb8666affb4469963d152c1ffc638945472f462d53678b4'
             '93bd8f799877eba7dd87ed7a4c29607d78c42b8769626c1d479f7e34fb7b39e2')
 
 package_citra-canary-bin() {
