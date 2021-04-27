@@ -7,12 +7,12 @@ pkgname=displaylink
 pkgver=5.4
 _releasedate=2021-04
 _pkgfullver=5.4.0-55.153
-pkgrel=2
+pkgrel=3
 pkgdesc="Linux driver for DL-6xxx, DL-5xxx, DL-41xx and DL-3x00"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url=""
 license=('custom' 'GPL2' 'LGPL2.1')
-depends=('evdi-git>=1.9.1.r4.gb0b3d13'
+depends=('evdi>=1.9.1'
          'libusb>=1.0.0')
 makedepends=('grep' 'gawk' 'wget')
 install=

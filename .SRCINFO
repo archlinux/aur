@@ -1,7 +1,7 @@
 pkgbase = displaylink
 	pkgdesc = Linux driver for DL-6xxx, DL-5xxx, DL-41xx and DL-3x00
 	pkgver = 5.4
-	pkgrel = 2
+	pkgrel = 3
 	changelog = DisplayLink USB Graphics Software for Ubuntu5.4-Release Notes.txt
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = displaylink
 	makedepends = grep
 	makedepends = gawk
 	makedepends = wget
-	depends = evdi-git>=1.9.1.r4.gb0b3d13
+	depends = evdi>=1.9.1
 	depends = libusb>=1.0.0
 	source = displaylink-driver-5.4.zip::https://www.synaptics.com/sites/default/files/exe_files/2021-04/DisplayLink%20USB%20Graphics%20Software%20for%20Ubuntu5.4-EXE.zip
 	source = DISPLAYLINK-EULA
