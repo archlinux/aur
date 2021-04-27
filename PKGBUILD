@@ -1,4 +1,5 @@
-# Maintainer: Frederik Schwan <freswa@archlinux.org>
+# Maintainer: Shakil Shaikh <sshaikh@hotmail.com>
+# Original Maintainer: Frederik Schwan <freswa@archlinux.org>
 # Contributor: Jelle van der Waa <jelle@archlinux.org>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 
