@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=dtkcommon-git
-pkgver=5.5.2.r1.g5a27b3b
+pkgver=5.5.2.r4.g6a49c23
 pkgrel=1
 pkgdesc='DTK common modules'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/linuxdeepin/dtkcommon"
 license=('LGPL3')
 depends=()
 makedepends=('git' 'qt5-tools' 'gtest' 'gmock')
-conflicts=('dtkcore-git<5.4.0' 'dtkcore<5.4.0' 'dtkgui-git<5.4.0' 'dtkgui<5.4.0')
+conflicts=('dtkcore-git<5.4.0' 'dtkcore<5.4.0' 'dtkgui-git<5.4.0' 'dtkgui<5.4.0' 'dtkcommon')
 providers=('dtkcore-git' 'dtkgui-git')
 groups=('deepin-git')
 source=("$pkgname::git://github.com/linuxdeepin/dtkcommon.git")
