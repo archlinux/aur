@@ -1,10 +1,11 @@
 pkgbase = yin-yang-git
 	pkgdesc = Auto Nightmode for KDE, Gnome, Budgie, VSCode, Atom and more
-	pkgver = 1.0.beta.r85.g8b7af3f
+	pkgver = 1.0.beta.r95.ge6ebfcf
 	pkgrel = 1
 	url = https://github.com/daehruoydeef/Yin-Yang
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = python-pyqt5
 	depends = python-qtpy
 	depends = python-suntime

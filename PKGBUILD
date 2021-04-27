@@ -3,13 +3,14 @@
 # Contributor: neverix <nev at ateverix dot io>
 # Contributor: Stepan Shabalin <stomperhomp at gmail dot com>
 pkgname=yin-yang-git
-pkgver=1.0.beta.r85.g8b7af3f
+pkgver=1.0.beta.r95.ge6ebfcf
 pkgrel=1
 pkgdesc="Auto Nightmode for KDE, Gnome, Budgie, VSCode, Atom and more"
 arch=('any')
 url="https://github.com/daehruoydeef/Yin-Yang"
 license=('MIT')
 depends=('python-pyqt5' 'python-qtpy' 'python-suntime')
+makedepends=('git')
 optdepends=('kvantum-qt5: Kvantum theme support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -26,7 +27,7 @@ package() {
 	install -d "$pkgdir"/{opt/"${pkgname%-git}",usr/share/applications}
 	cp -r ./* "$pkgdir/opt/${pkgname%-git}"
 	rm -rf "$pkgdir/opt/${pkgname%-git}"/{build,install.sh,uninstall.sh}
-	install -Dm755 "src/${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
+	install -Dm755 "src/${pkgname%-git}" -t "$pkgdir/usr/bin"
 	install -Dm644 "src/ui/assets/${pkgname%-git}.svg" -t \
 		"$pkgdir/usr/share/icons/hicolor/scalable/apps"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
