@@ -1,0 +1,7 @@
+#! /bin/sh
+
+GRADLE_HOME=/usr/share/java/gradle6
+export GRADLE_HOME
+exec /usr/share/java/gradle6/bin/gradle ${1+"$@"}
+
+# eof

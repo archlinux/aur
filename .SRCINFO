@@ -1,0 +1,34 @@
+pkgbase = gradle6
+	pkgdesc = Powerful build system for the JVM
+	pkgver = 6.8.3
+	pkgrel = 1
+	url = https://gradle.org/
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = asciidoc
+	makedepends = xmlto
+	makedepends = kotlin
+	makedepends = groovy
+	makedepends = java-environment=11
+	depends = java-environment
+	depends = bash
+	source = https://services.gradle.org/distributions/gradle-6.8.3-src.zip
+	source = gradle6
+	sha256sums = e1faea761ad9cc74d56e1a11731eec4d6d2c2ea80d68dabb0eb0aed8ae8b79d4
+	sha256sums = ce8519fbb899af7817a1959f02326c54647be83ddea0784ada34fc5de3acdb80
+	sha512sums = db00f4c8f33821ab3c8d50c9466c550bb20c795b4674b9f1826d21cb1ce33f0f1c199786630a79921ac452575ebf0a91e2d29cf50e18aa9f33ac0bc080617872
+	sha512sums = 2e2d8697dac7eae7d552b0e3a048d100093dd14199c716fe354bd1644ee3be4f90c3f88b1a89cfeb87c7ee8853f18aa09bedb5b0a5838e66ef3ca0fcfaf5b269
+
+pkgname = gradle6
+	optdepends = gradle-doc: gradle documentation
+	optdepends = gradle-src: gradle sources
+
+pkgname = gradle6-doc
+	pkgdesc = Powerful build system for the JVM (documentation)
+	options = !strip
+
+pkgname = gradle6-src
+	pkgdesc = Powerful build system for the JVM (sources)
+	options = !strip
+
