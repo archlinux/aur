@@ -1,14 +1,14 @@
 pkgbase = flash-bio
 	pkgdesc = An accurate and fast tool to merge paired-end DNA reads
 	pkgver = 1.2.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/flashpage/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = zlib
-	source = http://downloads.sourceforge.net/project/flashpage/FLASH-1.2.11.tar.gz
-	sha1sums = 0df7b2467e5e5d778031ae10dbbd2ed52996a282
+	source = https://downloads.sourceforge.net/project/flashpage/FLASH-1.2.11.tar.gz
+	sha256sums = 685ca6f7fedda07434d8ee03c536f4763385671c4509c5bb48beb3055fd236ac
 
 pkgname = flash-bio
 
