@@ -21,8 +21,6 @@ pkgver() {
 prepare() {
   cd py3-CHIRP
   sed -i 's|/usr/sbin|/usr/bin|' setup.py
-  # catches most of the remaining issues
-  2to3 -w chirp/drivers/*.py
 }
 
 package() {
