@@ -1,0 +1,15 @@
+pkgbase = star-ruler2-modpack
+	pkgdesc = Star Ruler 2 Community Patch
+	pkgver = r199.197b6a9
+	pkgrel = 1
+	url = https://github.com/OpenSRProject/OpenStarRuler-Modpack
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = star-ruler2-modpack
+	conflicts = star-ruler2-modpack
+	source = star-ruler2-modpack::git+https://github.com/OpenSRProject/OpenStarRuler-Modpack.git
+	md5sums = SKIP
+
+pkgname = star-ruler2-modpack
+
