@@ -1,15 +1,14 @@
 pkgbase = vim-workspace
-	pkgdesc = vim workspace manager plugin for managing groups of files
-	pkgver = 1.0b1
-	pkgrel = 10
-	url = http://www.vim.org/scripts/script.php?script_id=1410
+	pkgdesc = Vim workspace manager plugin for managing groups of files
+	pkgver = 1.8.3
+	pkgrel = 1
+	url = https://github.com/thaerkh/vim-workspace
 	arch = any
 	groups = vim-plugins
-	license = unknown
-	makedepends = unzip
-	depends = vim
-	source = https://www.vim.org/scripts/download_script.php?src_id=4812
-	md5sums = bd6828d19ce7c62aac0afe28b881a8ba
+	license = Apache
+	depends = vim-plugin-runtime
+	source = vim-workspace-1.8.3.tar.gz::https://github.com/thaerkh/vim-workspace/archive/refs/tags/1.8.3.tar.gz
+	sha256sums = fa08cc225ec31973aaf5751bf51eefdfb5edcc379f1d698006af1e68974d4a31
 
 pkgname = vim-workspace
 
