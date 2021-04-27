@@ -1,0 +1,22 @@
+pkgbase = plasmatube-git
+	pkgdesc = Kirigami YouTube video player based on libmpv and youtube-dl
+	pkgver = r60.630fd5e
+	pkgrel = 1
+	url = https://invent.kde.org/lnj/plasmatube
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = ki18n
+	depends = kirigami2
+	depends = qt5-svg
+	depends = youtube-dl
+	depends = mpv
+	provides = plasmatube
+	conflicts = plasmatube
+	source = git+https://invent.kde.org/lnj/plasmatube.git
+	sha256sums = SKIP
+
+pkgname = plasmatube-git
+
