@@ -1,7 +1,7 @@
 pkgbase = brave
 	pkgdesc = A web browser that stops ads and trackers by default
 	pkgver = 1.23.73
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.brave.com/download
 	arch = x86_64
 	license = custom

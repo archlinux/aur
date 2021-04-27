@@ -28,7 +28,7 @@ fi
 
 pkgname=brave
 pkgver=1.23.73
-pkgrel=1
+pkgrel=2
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
 url='https://www.brave.com/download'
@@ -106,16 +106,16 @@ _unwanted_bundled_libs=(
 
 # Add depends if user wants a release with custom cflags and system libs
 if [ "$COMPONENT" = "4" ]; then
-  echo "Build with system libs is disabled for now" && exit 1
+  #echo "Build with system libs is disabled for now" && exit 1
   brave_base_ver="$(echo $pkgver | cut -d . -f 1-2)"
   brave_patchset="1"
   brave_patchset_name="brave-${brave_base_ver}-patches-${brave_patchset}"
   source+=("https://gitlab.com/hadogenes/brave-patches/-/archive/${brave_patchset_name}/brave-patches-${brave_patchset_name}.zip")
-  sha256sums+=("0f6a78c2bbe9803f57cbccdb797efded3c2b55ebcb96e931273be380aa4c264b")
+  sha256sums+=("04a4f1e3c54b5f76873e9d178124a016028fae10374abb2b35bac822337d5dde")
 
   depends+=('libpulse' 'pciutils')
   depends+=(${_system_libs[@]})
-  makedepends+=('lld' 'libva' 'libpipewire02' 'python2-xcb-proto')
+  makedepends+=('lld' 'libva' 'pipewire' 'python2-xcb-proto')
 else
   makedepends+=('ncurses5-compat-libs')
 fi
