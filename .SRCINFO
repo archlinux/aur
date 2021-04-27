@@ -1,0 +1,17 @@
+pkgbase = cryptodredge
+	pkgdesc = Simple in use and highly optimized cryptocurrency mining software with stable power consumption. It is designed to take full advantage of your GPU.
+	pkgver = 0.25.1
+	pkgrel = 1
+	url = https://cryptodredge.org/
+	arch = x86_64
+	license = custom
+	depends = cuda
+	provides = cryptodredge
+	conflicts = cryptodredge
+	replaces = cryptodredge
+	options = !strip
+	source = cryptodredge-0.25.1.tar.gz::https://cryptodredge.org/download/linux/10.2/latest
+	md5sums = a9d0c90ed6127740acf692d804f68364
+
+pkgname = cryptodredge
+
