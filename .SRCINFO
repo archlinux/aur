@@ -1,0 +1,20 @@
+pkgbase = go-licenses-git
+	pkgdesc = Reports on the licenses used by a Go package and its dependencies.
+	pkgver = r37.ce1d916
+	pkgrel = 1
+	url = https://github.com/google/go-licenses
+	arch = aarch64
+	arch = armv5h
+	arch = armv6h
+	arch = armv7h
+	arch = x86_64
+	license = APACHE
+	makedepends = git
+	makedepends = go
+	provides = go-licenses
+	conflicts = go-licenses
+	source = go-licenses::git+https://github.com/google/go-licenses.git#branch=master
+	sha256sums = SKIP
+
+pkgname = go-licenses-git
+
