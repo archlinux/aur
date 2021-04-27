@@ -1,0 +1,14 @@
+pkgbase = python-kmeans1d
+	pkgdesc = convenient access to the OpenAI API from applications written in the Python language.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://openai.com/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = kmeans1d-0.3.1.tar.gz::https://github.com/dstein64/kmeans1d/archive/v0.3.1.tar.gz
+	sha512sums = ab2999e839fc584ecd05251374eef0122b8b44d512d7d441db783d5a3e2a1f5342b3f2d65f85f6f27969bdee179f02b881cdfda104f5da9bed0caa6d60c6b9a9
+
+pkgname = python-kmeans1d
+
