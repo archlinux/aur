@@ -2,7 +2,7 @@
 # Contributer: Aloxaf <aloxafx@gmail.com>
 
 pkgname=python-playwright-git
-pkgver=ea7857e
+pkgver=9d79662
 pkgrel=1
 pkgdesc="a Python library to automate Chromium, Firefox and WebKit browsers with a single API"
 arch=(x86_64 aarch64)
