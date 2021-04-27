@@ -4,7 +4,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=haven
-_cranver=2.4.0
+_cranver=2.4.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -16,7 +16,7 @@ depends=('r>=3.2' 'r-forcats>=0.2.0' r-hms 'r-readr>=0.1.0' 'r-rlang>=0.4.0' r-t
 makedepends=(make)
 optdepends=(r-cli r-covr r-crayon r-fs r-knitr r-pillar r-rmarkdown r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('b80bec184270dbcec85f9d84965ca6419677d5a0665229f9fd769c80ec98ce28')
+sha256sums=('408c710e2ca4dbdecd3def718e9a55b97d24f20ab764199cf15cbc79583356e9')
 
 build() {
   cd "${srcdir}"
