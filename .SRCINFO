@@ -1,13 +1,13 @@
 pkgbase = createtorrent
 	pkgdesc = A small and fast command line utility for all Linux and Unix operating systems to create BitTorrent files easily.
 	pkgver = 1.1.4
-	pkgrel = 5
-	url = http://createtorrent.sourceforge.net
+	pkgrel = 6
+	url = https://createtorrent.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = openssl
-	source = http://distfiles.macports.org/createtorrent/createtorrent-1.1.4.tar.gz
+	source = https://distfiles.macports.org/createtorrent/createtorrent-1.1.4.tar.gz
 	md5sums = 922b18eeec74ea81f22a3392e2680307
 	sha1sums = f96fec9b8e1daa06d180f985f58b6d57a05d262d
 
