@@ -1,21 +1,25 @@
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Contributor: Richard Quirk
+
 pkgname=cmake-lint
-pkgver=1.4
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Check for coding style issues in CMake files"
 arch=('any')
-url="http://github.com/richq/cmake-lint/"
-license=('APACHE')
+url="https://github.com/cmake-lint/cmake-lint"
+license=('Apache')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://github.com/richq/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('ab453e14929ccfb31ff610f5d953ce79')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha512sums=('7be6c4bab4c46c21a4c96cc8451ec112ee6c6190ff97a169f0920be5711c49def38e02926da2cf37c2f3a227ccb858defd310eed8f87b79a2c21ce643942110f')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python ./setup.py install --prefix=/usr --root="$pkgdir"
+  cd "$pkgname-$pkgver"
+  export PYTHONHASHSEED=0
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
