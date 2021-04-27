@@ -1,14 +1,14 @@
 pkgbase = python-dunamai
 	pkgdesc = Produce dynamic, standards-compliant version strings
-	pkgver = 1.5.4
+	pkgver = 1.5.5
 	pkgrel = 1
 	url = https://github.com/mtkennerly/dunamai
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/d/dunamai/dunamai-1.5.4.tar.gz
-	sha256sums = 82eb8dbdad6734a6ad475a2e8d0d5167fde7b0ae0d9529da0042129ca3736523
+	source = https://files.pythonhosted.org/packages/source/d/dunamai/dunamai-1.5.5.tar.gz
+	sha256sums = 32f30db71e8fd1adeb42fac45c04433680e47a28298447cd30304e0bba95a7dd
 
 pkgname = python-dunamai
 
