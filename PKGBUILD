@@ -35,7 +35,7 @@ pkgver() {
 }
 
 build() {
-	cd dmenu-vus
+	cd dmenu
     make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
