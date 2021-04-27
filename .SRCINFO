@@ -1,0 +1,14 @@
+pkgbase = nginx-config-formatter
+	pkgdesc = nginx config file formatter/beautifier written in Python.
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/slomkowski/nginx-config-formatter
+	arch = any
+	license = Apache 2.0
+	depends = python
+	provides = nginx-config-formatter
+	source = https://github.com/slomkowski/nginx-config-formatter/archive/refs/tags/v1.2.2.zip
+	sha256sums = 68335b3f80b4d813ac73496546c9a0015f1d6058b40bcfb4ec93cd3d60f3c944
+
+pkgname = nginx-config-formatter
+
