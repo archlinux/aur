@@ -1,0 +1,43 @@
+pkgbase = termite-putty-clipboard
+	pkgdesc = A simple VTE-based terminal with PuTTY like clipboard actions
+	pkgver = 15
+	pkgrel = 3.1
+	url = https://github.com/thestinger/termite/
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = ncurses
+	makedepends = intltool
+	makedepends = gperf
+	makedepends = gtk-doc
+	depends = gtk3
+	depends = pcre2
+	depends = gnutls
+	depends = vte-common
+	source = git+https://github.com/thestinger/termite.git#tag=v15?signed
+	source = git+https://github.com/thestinger/vte-ng.git#tag=0.56.2.a
+	source = termite-util::git+https://github.com/thestinger/util.git#tag=409b8449ab51fccf51057621168c9c15c54d4807
+	source = rc-paste.patch
+	validpgpkeys = E499C79F53C96A54E572FEE1C06086337C50773E
+	validpgpkeys = 65EEFE022108E2B708CBFCF7F9E712E59AF5F22A
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = termite-putty-clipboard
+	depends = gtk3
+	depends = pcre2
+	depends = gnutls
+	depends = vte-common
+	depends = termite-terminfo-putty-clipboard
+	provides = termite=15
+	conflicts = termite
+	backup = etc/xdg/termite/config
+
+pkgname = termite-terminfo-putty-clipboard
+	pkgdesc = Terminfo for Termite, a simple VTE-based terminal
+	depends = ncurses
+	provides = termite-terminfo=15
+	conflicts = termite-terminfo
+

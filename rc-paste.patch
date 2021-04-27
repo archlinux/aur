@@ -1,0 +1,51 @@
+diff -ruN src.org/termite/termite.cc src/termite/termite.cc
+--- src.org/termite/termite.cc	2020-11-20 18:59:41.916665978 +0000
++++ src/termite/termite.cc	2020-11-20 19:00:45.603332618 +0000
+@@ -1183,6 +1183,9 @@
+ }
+ 
+ gboolean button_press_cb(VteTerminal *vte, GdkEventButton *event, const config_info *info) {
++    if (event->type == GDK_BUTTON_PRESS && event->button == 3) {
++        vte_terminal_paste_clipboard(vte);
++    }
+     if (info->clickable_url && event->type == GDK_BUTTON_PRESS) {
+ #if VTE_CHECK_VERSION (0, 49, 1)
+         auto match = make_unique(vte_terminal_hyperlink_check_event(vte, (GdkEvent*)event), g_free);
+diff -ru src.orig/vte-ng/src/vte.cc src/vte-ng/src/vte.cc
+--- src.orig/vte-ng/src/vte.cc	2020-12-01 18:17:40.022906123 +0000
++++ src/vte-ng/src/vte.cc	2020-12-01 18:53:51.532904979 +0000
+@@ -6509,10 +6509,21 @@
+         }
+ }
+ 
++/* If copying to PRIMARY, then also copy to CLIPBOARD */
++void
++Terminal::widget_copy(VteSelection sel,
++                                VteFormat format)
++{
++        widget_copy2(sel, format);
++        if (sel == VTE_SELECTION_PRIMARY) {
++		widget_copy2(VTE_SELECTION_CLIPBOARD, format);
++        }
++}
++
+ /* Place the selected text onto the clipboard.  Do this asynchronously so that
+  * we get notified when the selection we placed on the clipboard is replaced. */
+ void
+-Terminal::widget_copy(VteSelection sel,
++Terminal::widget_copy2(VteSelection sel,
+                                 VteFormat format)
+ {
+         /* Only put HTML on the CLIPBOARD, not PRIMARY */
+diff -ru src.orig/vte-ng/src/vteinternal.hh src/vte-ng/src/vteinternal.hh
+--- src.orig/vte-ng/src/vteinternal.hh	2020-12-01 18:17:40.026239456 +0000
++++ src/vte-ng/src/vteinternal.hh	2020-12-01 18:30:35.299572364 +0000
+@@ -703,6 +703,8 @@
+         void widget_paste(GdkAtom board);
+         void widget_copy(VteSelection sel,
+                          VteFormat format);
++        void widget_copy2(VteSelection sel,
++                         VteFormat format);
+         void widget_paste_received(char const* text);
+         void widget_clipboard_cleared(GtkClipboard *clipboard);
+         void widget_clipboard_requested(GtkClipboard *target_clipboard,
