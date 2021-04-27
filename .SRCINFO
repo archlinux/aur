@@ -1,0 +1,18 @@
+pkgbase = vim-mkdx
+	pkgdesc = Vim plugin that adds Markdown-related features
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://github.com/sidofc/mkdx
+	changelog = CHANGELOG.md
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	depends = vim-plugin-runtime
+	optdepends = vim-repeat: Compatible plugin
+	source = vim-mkdx-1.10.0.tar.gz::https://github.com/sidofc/mkdx/archive/refs/tags/v1.10.0.tar.gz
+	source = https://raw.githubusercontent.com/sidofc/mkdx/v1.10.0/CHANGELOG.md
+	sha256sums = acc09a8367aab71baa292f5cf0a81e587ee01a150e7c027eb99d9079ec1e0977
+	sha256sums = ec5c9cbb3b71abb57738b4db098143e497ac0ea16b96275e6cc3daca07916d5f
+
+pkgname = vim-mkdx
+
