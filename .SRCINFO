@@ -1,0 +1,17 @@
+pkgbase = zerotier-gui-git
+	pkgdesc = A Linux front-end for ZeroTier
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/tralph3/ZeroTier-GUI.git
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = tk
+	depends = python
+	depends = polkit
+	optdepends = zerotier-one: Provides the backend of the program
+	source = git+https://github.com/tralph3/ZeroTier-GUI.git
+	md5sums = SKIP
+
+pkgname = zerotier-gui-git
+
