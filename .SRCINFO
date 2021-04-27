@@ -1,6 +1,6 @@
 pkgbase = linux-next-git
 	pkgdesc = Linux NEXT
-	pkgver = 20210421.r0.gb74523885a71
+	pkgver = 20210427.r0.gc83540783e90
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = linux-next-git
 	makedepends = xz
 	options = !strip
 	source = git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
-	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.11/arch-patches-v2/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.12/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 	source = config
 	sha512sums = SKIP
-	sha512sums = a37860b6b2eb0aadcd394416789d3e81da85058c1a6acaca808543fc99d132fa9c3ece1d64bb53c9c2ea0fc01ff96fdece46c6c83a71ac2c6f885e4b674bce82
-	sha512sums = 2d7a6b503d54fb5e9e88a944e734ee41fb182b14aec8c1e6834b4acd237485b3abcf3b47063a6c87dc8f0b2ff357934ef25a771a3b8938d5625a7401e86a9013
+	sha512sums = 88f9f1e6ea206068fd029566e4610c16b7c3007f10363c7db37cd922fe75646437d2e4814317bc292d06eff7e9ebd29d8cd1ee82c8abf45ddd1843c1ff55f5c7
+	sha512sums = 8e53114f9a4497c887ee83d501348a84765e63e1aba058160d9cb781a5225ddb336f00bc55a45cb36c5fd4c64b6791825de3749d7bd1d06c5ddd28a19e298ffb
 
 pkgname = linux-next-git
 	pkgdesc = The Linux NEXT kernel and modules
