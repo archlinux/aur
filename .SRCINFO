@@ -13,14 +13,14 @@ pkgbase = linux-raspberrypi4-cacule
 	makedepends = bc
 	makedepends = git
 	options = !strip
-	source = https://github.com/raspberrypi/linux/archive/911b22a0692740a569798a4db3e673a5bc449398.tar.gz
+	source = https://github.com/raspberrypi/linux/archive/31b07b274fc0a1f42f9edcad38bfc3bc8fc4f3fe.tar.gz
 	source = cmdline.txt
 	source = linux.preset
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = 0001-Make-proc-cpuinfo-consistent-on-arm64-and-arm.patch
 	source = cacule-5.10.patch
-	md5sums = ea6f8cbb7fb2a7935e8782b8eaa387f8
+	md5sums = 14171165c3b52e0e1532b4b3a39110ce
 	md5sums = 31c02f4518d46deb5f0c2ad1f8b083cd
 	md5sums = 86d4a35722b5410e3b29fc92dae15d4b
 	md5sums = ce6c81ad1ad1f8b333fd6077d47abdaf
@@ -41,4 +41,3 @@ pkgbase = linux-raspberrypi4-cacule
 pkgname = linux-raspberrypi4-cacule
 
 pkgname = linux-raspberrypi4-cacule-headers
-

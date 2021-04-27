@@ -4,10 +4,10 @@
 # Maintainer: graysky <graysky@archlinux.us>
 # Maintainer: ptr1337 <admin@ptr1337.dev>
 
-buildarch=12
+buildarch=20
 
 pkgbase=linux-raspberrypi4-cacule
-_commit=911b22a0692740a569798a4db3e673a5bc449398
+_commit=31b07b274fc0a1f42f9edcad38bfc3bc8fc4f3fe
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _desc="Raspberry Pi 4 with the cacule scheduler"
@@ -29,7 +29,7 @@ source=("https://github.com/raspberrypi/linux/archive/${_commit}.tar.gz"
         )
 source_armv7h=('config' 'config.txt' 'cacule-32bit-converter.patch')
 source_aarch64=('config8' 'config8.txt')
-md5sums=('ea6f8cbb7fb2a7935e8782b8eaa387f8'
+md5sums=('14171165c3b52e0e1532b4b3a39110ce'
          '31c02f4518d46deb5f0c2ad1f8b083cd'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
