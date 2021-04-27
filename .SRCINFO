@@ -24,14 +24,14 @@ pkgbase = palemoon
 	depends = startup-notification
 	optdepends = libpulse: PulseAudio audio driver
 	optdepends = ffmpeg: various video and audio support
-	source = git+https://repo.palemoon.org/MoonchildProductions/Pale-Moon?signed#commit=0487fd6d5c
+	source = git+https://repo.palemoon.org/MoonchildProductions/Pale-Moon?signed#commit=e7ccadb26f
 	source = git+https://repo.palemoon.org/MoonchildProductions/UXP
 	source = mozconfig.in
 	validpgpkeys = 3059E09144F56804F0FBF4E126B40624BDBFD9F3
 	validpgpkeys = 3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC
 	sha1sums = SKIP
 	sha1sums = SKIP
-	sha1sums = 3269db35d05a04e5edfca9e2562a094425d82d96
+	sha1sums = e025965b7a99b04af2b6e332b52712f31ecbaa89
 
 pkgname = palemoon
 
