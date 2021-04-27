@@ -1,6 +1,6 @@
 pkgbase = creators-tf-launcher-bin
 	pkgdesc = The community launcher from the Creators.TF project for Team Fortress 2
-	pkgver = 0.2.1
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://creators.tf/launcher
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = creators-tf-launcher-bin
 	depends = nspr
 	depends = nss
 	depends = gtk3
-	source = https://github.com/ampersoftware/Creators.TF-Community-Launcher/releases/download/v0.2.1/creators-tf-launcher_0.2.1_amd64.deb
-	md5sums = dd0b6cd88804c0e977ef63ccd5ca0107
+	source = https://github.com/ampersoftware/Creators.TF-Community-Launcher/releases/download/0.2.3/creators-tf-launcher_0.2.3_amd64.deb
+	md5sums = 86e40b610bbabc2e931d976c96591d18
 
 pkgname = creators-tf-launcher-bin
 
