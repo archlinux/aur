@@ -1,6 +1,6 @@
 pkgbase = enlightenment-git
 	pkgdesc = Enlightenment window manager - Development version
-	pkgver = 0.24.99.24530.g52d7ca648
+	pkgver = 0.24.99.24572.gea14bdf0d
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
@@ -33,7 +33,7 @@ pkgbase = enlightenment-git
 	optdepends = geoclue2: needed for geolocation module
 	optdepends = packagekit: needed for packagekit module
 	optdepends = ddcutil: from AUR needed for desktop monitor backlight etc. controls
-	provides = enlightenment=0.24.99.24530.g52d7ca648
+	provides = enlightenment=0.24.99.24572.gea14bdf0d
 	provides = notification-daemon
 	conflicts = enlightenment
 	options = debug
