@@ -1,6 +1,6 @@
 pkgbase = deepin-turbo-git
 	pkgdesc = A daemon that helps to launch applications faster
-	pkgver = 0.0.5.r1.g4bd4671
+	pkgver = 0.0.5.r13.g8c85d2c
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/deepin-turbo
 	arch = x86_64

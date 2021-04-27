@@ -1,7 +1,7 @@
 # Maintainer: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=deepin-turbo-git
-pkgver=0.0.5.r1.g4bd4671
+pkgver=0.0.5.r13.g8c85d2c
 pkgrel=1
 pkgdesc='A daemon that helps to launch applications faster'
 arch=('x86_64')
