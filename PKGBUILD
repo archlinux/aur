@@ -1,3 +1,5 @@
+# maintainer: chn <g897331845@gmail.com>
+
 pkgname=boost-stacktrace-backtrace
 pkgver=1.76.0
 _boostver=${pkgver//./_}
