@@ -22,13 +22,10 @@ sha256sums=(
 )
 # https://github.com/returntocorp/semgrep/releases/download/v${pkgver}/semgrep-v${pkgver}-ubuntu-16.04.tgz.sha256
 
-prepare() {
-  export SEMGREP_CORE_BIN="${srcdir}/semgrep-files/semgrep-core"
-  export SPACEGREP_BIN="${srcdir}/semgrep-files/spacegrep"
-}
-
 build() {
   cd "$srcdir/${_name}-${pkgver}"
+  export SEMGREP_CORE_BIN="${srcdir}/semgrep-files/semgrep-core"
+  export SPACEGREP_BIN="${srcdir}/semgrep-files/spacegrep"
   python setup.py build
   chmod +x build/lib/semgrep/bin/{semgrep-core,spacegrep}
 }
