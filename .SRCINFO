@@ -1,0 +1,32 @@
+pkgbase = autokey-git
+	pkgdesc = A desktop automation utility for Linux and X11 - GTK & Qt frontends
+	pkgver = 0.95.10.r18.4b87b32
+	pkgrel = 1
+	url = https://github.com/autokey/autokey
+	arch = x86_64
+	license = GPL3
+	makedepends = python-pyqt5
+	makedepends = python-setuptools
+	depends = gtksourceview3
+	depends = kdialog
+	depends = libappindicator-gtk3
+	depends = libnotify
+	depends = python
+	depends = python-gobject
+	depends = python-pyqt5
+	depends = python-qscintilla-qt5
+	depends = qt5-svg
+	depends = zenity
+	optdepends = python-atspi
+	optdepends = qt-at-spi
+	provides = autokey
+	provides = autokey-gtk
+	provides = autokey-qt
+	conflicts = autokey-common
+	conflicts = autokey-gtk
+	conflicts = autokey-qt
+	source = git+https://github.com/autokey/autokey
+	sha512sums = SKIP
+
+pkgname = autokey-git
+
