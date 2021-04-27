@@ -2,7 +2,7 @@
 
 _pkgname=fabric
 pkgname="hyperledger-${_pkgname}"
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="A platform for distributed ledger solutions, underpinned by a modular architecture delivering high degrees of confidentiality, resiliency, flexibility and scalability"
 arch=(armv6h armv7h arm aarch64 i686 x86_64)
@@ -11,7 +11,7 @@ license=('APACHE')
 groups=('hyperledger')
 depends=('go')
 makedepends=('git' 'docker')
-install="$pkgname.install"
+install="${pkgname}.install"
 source=("${url}/archive/v$pkgver.tar.gz"
   "${_pkgname}-peer.conf"
   "${_pkgname}-peer.service"
@@ -36,15 +36,15 @@ build() {
 package() {
   cd "${GOPATH}/src/${url#*://}"
 
-  install -Dm 644 -t "${pkgdir}/usr/share/licenses/$pkgname" LICENSE
-  install -Dm 644 -t "${pkgdir}/usr/share/doc/$pkgname" README.md
+  install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+  install -Dm 644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
 
   cp -r release/*/bin \
     "${pkgdir}/usr"
-  install -dm 755 ${pkgdir}/etc/hyperledger/fabric/msp
-  install -dm 755 ${pkgdir}/etc/hyperledger/fabric/tls
+  install -dm 755 "${pkgdir}/etc/hyperledger/fabric/msp"
+  install -dm 755 "${pkgdir}/etc/hyperledger/fabric/tls"
   cp -r sampleconfig/*.yaml \
-    ${pkgdir}/etc/hyperledger/fabric
+    "${pkgdir}/etc/hyperledger/fabric"
 
   msg2 "Install systemd service"
   install -Dm644 "${srcdir}/${_pkgname}-peer.service" \
@@ -59,8 +59,8 @@ package() {
     "${pkgdir}/usr/lib/environment.d/${_pkgname}-peer.conf"
 }
 
-md5sums=('fdfd422b3264dd11ca6614abae04edfd'
-         '6d766c337ac87760a14198c54c052826'
-         'f073e38d65495162dbb53fd5a8430ab3'
-         'e6d2e667cbf6fae5f236dade2ce42193'
-         '2fe223bd9e94c0d968766612d6406d63')
+sha256sums=('c0362ed6df6eff71879f1eb4d690dd793ebcfc478fbe0ee5535176c8d13d631b'
+            'bfdfb0f96bea3f6c2cafb17224fd5b21ec664352ef347841803e2448ca05426f'
+            'de85c5359019e44d5086d880cbcf6ab0b84e9bb456ed3e7302997f7e715eb908'
+            '9b29b63afd556563de227841060a2c7653d289cc70458992ef54d0339a53de94'
+            '729e4eba887b6b81d2d0bf40cb14db7163ada201657eef776017263d4a31dfdb')
