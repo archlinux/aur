@@ -1,7 +1,7 @@
 pkgbase = python-daphne
 	pkgdesc = HTTP, HTTP2 and WebSocket protocol server for ASGI, and developed to power Django Channels
-	pkgver = 3.0.1
-	pkgrel = 1
+	pkgver = 3.0.2
+	pkgrel = 0
 	url = https://github.com/django/daphne
 	arch = any
 	license = BSD
@@ -11,8 +11,8 @@ pkgbase = python-daphne
 	depends = python-asgiref
 	depends = python-twisted
 	depends = python-autobahn
-	source = https://pypi.io/packages/source/d/daphne/daphne-3.0.1.tar.gz
-	sha256sums = c22b692707f514de9013651ecb687f2abe4f35cf6fe292ece634e9f1737bc7e3
+	source = https://pypi.io/packages/source/d/daphne/daphne-3.0.2.tar.gz
+	sha256sums = 76ffae916ba3aa66b46996c14fa713e46004788167a4873d647544e750e0e99f
 
 pkgname = python-daphne
 
