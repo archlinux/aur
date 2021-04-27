@@ -2,12 +2,12 @@
 
 pkgname=todobg
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Todo list on the X root window'
 url="http://github.com/cdown/$pkgname"
 arch=('any')
 license=('Public Domain')
-depends=()
+depends=(inotify-tools imagemagick xorg-xrandr)
 
 source=("https://github.com/cdown/${pkgname}/archive/refs/tags/${pkgver}.zip")
 md5sums=('bc7f2a8be86b985dca72d31d1a2ce3f0')
