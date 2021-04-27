@@ -1,16 +1,16 @@
 # Maintainer: John A. Leuenhagen <john@zlima12.com>
 
 pkgname=cpr
-pkgver=1.6.0
-pkgrel=2
-pkgdesc="C++ requests library by whoshuu"
+pkgver=1.6.1
+pkgrel=1
+pkgdesc='C++ requests library by whoshuu'
 arch=('i686' 'x86_64')
 url="https://github.com/whoshuu/cpr"
 license=('MIT')
 depends=('curl')
 makedepends=('cmake')
 source=("https://github.com/whoshuu/cpr/archive/refs/tags/$pkgver.tar.gz")
-md5sums=('c2b074ed245e3e357c4ff0845bb0360a')
+md5sums=('84b21579cf201144eabb767df740ed24')
 
 prepare() {
 	cd "$srcdir/cpr-$pkgver"
