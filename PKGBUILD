@@ -1,12 +1,13 @@
 # Maintainer: fordprefect <fordprefect@dukun.de>
 pkgname=snallygaster-git
-pkgver=r25.7d5dc67
+pkgver=r164.bfe8914
 pkgrel=1
 pkgdesc="Tool to scan for secret files on HTTP servers"
 url="https://github.com/hannob/snallygaster"
 arch=('any')
 license=('GPL2')
 depends=("python-urllib3" "python-beautifulsoup4" "python-dnspython")
+conflicts=("snallygaster")
 source=("snallygaster::git+https://github.com/hannob/snallygaster.git")
 md5sums=('SKIP')
 
