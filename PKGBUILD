@@ -1,7 +1,7 @@
 # Maintainer:   Razer <razer[AT]neuf[DOT]fr>
 
 pkgname=python-rf24-network
-pkgver=1.0.14
+pkgver=1.0.15
 pkgrel=0
 pkgdesc='Python bindings for networking with RF24 radio modules'
 arch=(any)
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('boost-libs' 'rf24-network' 'python' 'python-rf24')
 makedepends=('boost' 'python-setuptools')
 source=("https://github.com/nRF24/RF24Network/archive/v${pkgver}.tar.gz")
-sha256sums=('31a719921fa608be8c931574dfe772bc93f0103b21cca00e9ced6a7ad451d92c')
+sha256sums=('08d0a7e22709ba49f787ddf64f908b4319600a1de95b0567f577e5cb11806862')
 
 build() {
   cd "$srcdir/RF24Network-$pkgver/RPi/pyRF24Network"
