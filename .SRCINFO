@@ -1,0 +1,110 @@
+pkgbase = gcc-11
+	pkgdesc = The GNU Compiler Collection
+	pkgver = 11.1.0
+	pkgrel = 1
+	url = https://gcc.gnu.org
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	license = custom
+	checkdepends = dejagnu
+	checkdepends = inetutils
+	makedepends = binutils
+	makedepends = libmpc
+	makedepends = gcc-ada
+	makedepends = doxygen
+	makedepends = lib32-glibc
+	makedepends = lib32-gcc-libs
+	makedepends = python
+	makedepends = git
+	options = !emptydirs
+	source = https://sourceware.org/pub/gcc/releases/gcc-11.1.0/gcc-11.1.0.tar.xz
+	source = http://isl.gforge.inria.fr/isl-0.23.tar.xz
+	source = c89
+	source = c99
+	b2sums = fe617e776b0270d11adea21b5c37d889de90865c19ab82d1c37bbd5c5b9c583a98c174606c4f893ca4950a4233e2a58aae93ad6aa7ad33d4e78a31c72371c1ed
+	b2sums = ce026eaa1d6c814f4067c555d97a453bdf01d5fa240aa9b6ccd22c9a0e7f19b0c30cd834f976a29b10a5d57eaa747a3f45cf55717f05d98ae405ec93dd42f27b
+	b2sums = 2c64090b879d6faea7f20095eff1b9bd6a09fe3b15b3890783d3715171678ab62d32c91af683b878746fb14441dbe09768474417840f96a561443415f76afb63
+	b2sums = 3cf318835b9833ac7c5d3a6026fff8b4f18b098e18c9649d00e32273688ff06ec3af41f0d0aee9d2261725e0ff08f47a224ccfe5ebb06646aaf318ff8ac9a0d1
+
+pkgname = gcc-11
+	pkgdesc = The GNU Compiler Collection - C and C++ frontends
+	groups = base-devel
+	depends = gcc-libs=11.1.0-1
+	depends = binutils>=2.28
+	depends = libmpc
+	optdepends = lib32-gcc-libs: for generating code for 32-bit ABI
+	provides = gcc-multilib=11.1.0-1
+	provides = gcc=11.1.0-1
+	conflicts = gcc
+	options = !emptydirs
+	options = staticlibs
+
+pkgname = gcc-libs-11
+	pkgdesc = Runtime libraries shipped by GCC
+	depends = glibc>=2.27
+	provides = gcc-libs-multilib=11.1.0-1
+	provides = libgo.so=11.1.0-1
+	provides = libgfortran.so=11.1.0-1
+	provides = libgphobos.so=11.1.0-1
+	provides = libubsan.so=11.1.0-1
+	provides = libasan.so=11.1.0-1
+	provides = libtsan.so=11.1.0-1
+	provides = liblsan.so=11.1.0-1
+	provides = gcc-libs=11.1.0-1
+	conflicts = gcc-libs
+	options = !emptydirs
+	options = !strip
+
+pkgname = gcc-fortran-11
+	pkgdesc = Fortran front-end for GCC
+	depends = gcc=11.1.0-1
+	provides = gcc-fortran-multilib=11.1.0-1
+	provides = gcc-fortran=11.1.0-1
+	conflicts = gcc-fortran
+
+pkgname = gcc-objc-11
+	pkgdesc = Objective-C front-end for GCC
+	depends = gcc=11.1.0-1
+	provides = gcc-objc-multilib=11.1.0-1
+	provides = gcc-objc=11.1.0-1
+	conflicts = gcc-objc
+
+pkgname = gcc-ada-11
+	pkgdesc = Ada front-end for GCC (GNAT)
+	depends = gcc=11.1.0-1
+	provides = gcc-ada-multilib=11.1.0-1
+	provides = gcc-ada=11.1.0-1
+	conflicts = gcc-ada
+	options = !emptydirs
+	options = staticlibs
+
+pkgname = gcc-go-11
+	pkgdesc = Go front-end for GCC
+	depends = gcc=11.1.0-1
+	provides = go=1.12.2
+	provides = gcc-go-multilib=11.1.0-1
+	provides = gcc-go=11.1.0-1
+	conflicts = go
+	conflicts = gcc-go
+
+pkgname = lib32-gcc-libs-11
+	pkgdesc = 32-bit runtime libraries shipped by GCC
+	depends = lib32-glibc>=2.27
+	provides = libgo.so=11.1.0-1
+	provides = libgfortran.so=11.1.0-1
+	provides = libubsan.so=11.1.0-1
+	provides = libasan.so=11.1.0-1
+	provides = lib32-gcc-libs=11.1.0-1
+	conflicts = lib32-gcc-libs
+	options = !emptydirs
+	options = !strip
+
+pkgname = gcc-d-11
+	pkgdesc = D frontend for GCC
+	depends = gcc=11.1.0-1
+	provides = gdc=11.1.0-1
+	provides = gcc-d=11.1.0-1
+	conflicts = gcc-d
+	options = staticlibs
