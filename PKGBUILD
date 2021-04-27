@@ -18,7 +18,6 @@ build() {
     meson compile -C build
 }
 
-
 package() {
     DESTDIR="$pkgdir" meson install -C build
 }
