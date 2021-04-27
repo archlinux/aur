@@ -1,10 +1,11 @@
 pkgbase = gnome-network-displays
 	pkgdesc = Miracast implementation for GNOME
-	pkgver = 0.90.3
+	pkgver = 0.90.5
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-network-displays
 	arch = any
 	license = GPL3
+	checkdepends = appstream-glib
 	makedepends = meson
 	depends = gtk3
 	depends = faac
@@ -15,8 +16,8 @@ pkgbase = gnome-network-displays
 	depends = python-gobject
 	depends = x264
 	depends = xdg-desktop-portal
-	source = https://gitlab.gnome.org/GNOME/gnome-network-displays/-/archive/v0.90.3/gnome-network-displays-v0.90.3.tar.gz
-	sha256sums = 6296e7bd25a750cac24cf86d97819e3855a133e44553aacdb3d9f7b9b7ab56a6
+	source = https://gitlab.gnome.org/GNOME/gnome-network-displays/-/archive/v0.90.5/gnome-network-displays-v0.90.5.tar.gz
+	sha256sums = 1a36cb33735fc8ec50ebdb4b31a507ad870dc2ff4905be5170128f17a9f74172
 
 pkgname = gnome-network-displays
 
