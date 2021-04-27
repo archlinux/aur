@@ -2,7 +2,7 @@
 
 pkgname=eam-git
 pkgver=1.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Epic Asset Manager used to manage assets from Epic Games Store'
 url='https://github.com/AchetaGames/Epic-Asset-Manager'
 license=(MIT)
