@@ -1,7 +1,7 @@
 # .install file for mdatp
 
 post_install() {
-    systemd-sysusers mdatp-user.conf
+    systemd-sysusers mdatp.conf
 }
 
 post_remove() {
