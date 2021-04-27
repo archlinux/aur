@@ -1,0 +1,22 @@
+pkgbase = keepassk-git
+	pkgdesc = A Kirigami password manager for KDBX password databases
+	pkgver = r1.9bd9801
+	pkgrel = 1
+	url = https://invent.kde.org/tfella/keepassk
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = corrosion-git
+	depends = ki18n
+	depends = kirigami2
+	depends = kcoreaddons
+	depends = qt5-svg
+	provides = keepassk
+	conflicts = keepassk
+	source = git+https://invent.kde.org/tfella/keepassk.git
+	sha256sums = SKIP
+
+pkgname = keepassk-git
+
