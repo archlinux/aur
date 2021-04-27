@@ -11,7 +11,7 @@
 pkgbase=networkmanager-git
 _gitname=NetworkManager
 pkgname=(networkmanager-git libnm-git)
-pkgver=1.29.10.r27639.ga3d686a0e
+pkgver=1.31.2.r28078.gaf360238be
 pkgrel=1
 pkgdesc="Network Management daemon"
 arch=(i686 x86_64)
@@ -24,7 +24,7 @@ _pppver=2.4.8
 makedepends=(dnsmasq mobile-broadband-provider-info  meson ninja intltool dhclient openresolv iptables gobject-introspection gtk-doc "ppp=$_pppver" modemmanager
               iproute2 nss polkit wpa_supplicant libsoup systemd libgudev
              libnewt libndp libteam vala perl-yaml python-gobject git vala jansson bluez-libs
-             glib2-docs libselinux)
+             glib2-docs)
 optdepends=( 'iwd: alternative way to connect to wifi'
     'dhclient: DHCPv6 support'
     'dnsmasq: connection sharing'
@@ -32,8 +32,7 @@ optdepends=( 'iwd: alternative way to connect to wifi'
     'openresolv: resolvconf support'
     'ppp: dialup connection support'
     'rp-pppoe: ADSL support'
-    'modemmanager: cellular network support'
-    'libselinux: selinux support')
+    'modemmanager: cellular network support')
 options=(!libtool !emptydirs)
 source=(git://github.com/$_gitname/$_gitname
     NetworkManager.conf
@@ -98,7 +97,7 @@ build() {
         -D systemdsystemunitdir=/usr/lib/systemd/system \
         -D udev_dir=/usr/lib/udev \
         -D iwd=true \
-        -D selinux=true \
+        -D selinux=false \
         -D qt=false
       )
       arch-meson NetworkManager build "${meson_args[@]}"
