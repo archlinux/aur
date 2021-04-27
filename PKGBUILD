@@ -15,9 +15,8 @@ conflicts=('ncnn')
 provides=('ncnn')
 arch=('i686' 'x86_64')
 source=("git://github.com/Tencent/ncnn.git"
-	"https://sdk.lunarg.com/sdk/download/1.2.154.0/linux/vulkansdk-linux-x86_64-1.2.154.0.tar.gz?Human=true")
-sha256sums=('SKIP'
-            '6d8828fa9c9113ef4083a07994cf0eb13b8d239a5263bd95aa408d2f57585268')
+	"vulkansdk-linux-x86_64-latest.tar.gz::https://sdk.lunarg.com/sdk/download/latest/linux/vulkan-sdk.exe")
+sha256sums=('SKIP' 'SKIP')
 pkgver() {
     cd "${srcdir}/ncnn"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -25,8 +24,8 @@ pkgver() {
 
 prepare() {
 
-
-export VULKAN_SDK=$srcdir/1.2.154.0/x86_64
+	mv $srcdir/1.* $srcdir/latest
+export VULKAN_SDK=$srcdir/latest/x86_64
     cd "${srcdir}/ncnn"
 
     # init glslang submodule

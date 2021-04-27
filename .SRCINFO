@@ -12,9 +12,9 @@ pkgbase = ncnn-git
 	provides = ncnn
 	conflicts = ncnn
 	source = git://github.com/Tencent/ncnn.git
-	source = https://sdk.lunarg.com/sdk/download/1.2.154.0/linux/vulkansdk-linux-x86_64-1.2.154.0.tar.gz?Human=true
+	source = vulkansdk-linux-x86_64-latest.tar.gz::https://sdk.lunarg.com/sdk/download/latest/linux/vulkan-sdk.exe
 	sha256sums = SKIP
-	sha256sums = 6d8828fa9c9113ef4083a07994cf0eb13b8d239a5263bd95aa408d2f57585268
+	sha256sums = SKIP
 
 pkgname = ncnn-git
 
