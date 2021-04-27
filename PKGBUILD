@@ -27,11 +27,11 @@ optdepends=(
      )
 arch=('any')
 options=(!emptydirs)
-source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/fdroid/${pkgname}/repository/archive.tar.gz?ref=${pkgver}")
-sha256sums=('e1aabf5f8d751898a2719e83f90ec19b5385f51378008947f288a3f8196f5b7a')
+source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/fdroid/fdroidserver/-/archive/${pkgver}/fdroidserver-${pkgver}.tar.gz")
+sha256sums=('176c19bf3ea6e1f1934129322508043cf190b2655bf5f11add0f0925df64e194')
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}-"*
+    cd "${srcdir}/${pkgname}-${pkgver}"
 
     python setup.py compile_catalog
     python setup.py bdist_egg
