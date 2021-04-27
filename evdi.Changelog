@@ -1,3 +1,9 @@
+v1.9.1
+- Add support for 5.11 and 5.12 kernels
+
+v1.9.0
+- Fix evdi build on v5.10 kernel
+
 v1.7.2
 - Add support for kernel 5.9 and 5.10
 
