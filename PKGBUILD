@@ -1,4 +1,4 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
+# Contributor: Daniel Nagy <danielnagy at gmx de>
 # Contributor: Filirom1 <filirom1@gmail.com>
 
 _npmname=aur
@@ -10,8 +10,8 @@ pkgdesc="Archlinux AUR cli"
 arch=(any)
 url="https://github.com/Filirom1/nodejs-aur"
 license=(MIT)
-depends=('nodejs' )
-optdepends=()
+depends=('nodejs')
+makedepends=('npm')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
 sha1sums=("7bbe7ce1c7be3ef86e88869833466541d2901b05")

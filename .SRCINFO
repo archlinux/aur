@@ -5,6 +5,7 @@ pkgbase = nodejs-aur
 	url = https://github.com/Filirom1/nodejs-aur
 	arch = any
 	license = MIT
+	makedepends = npm
 	depends = nodejs
 	noextract = aur-0.1.2.tgz
 	source = http://registry.npmjs.org/aur/-/aur-0.1.2.tgz
