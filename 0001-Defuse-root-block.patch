@@ -12,43 +12,61 @@ That way it's only an impact on usability.
  kwrite/main.cpp | 3 +--
  2 files changed, 2 insertions(+), 4 deletions(-)
 
-Index: kate-19.03.60git.20181224T024634~7203979fc/kate/main.cpp
+Index: kate/main.cpp
 ===================================================================
---- kate-19.03.60git.20181224T024634~7203979fc.orig/kate/main.cpp	2018-12-25 09:49:15.867478873 +0100
-+++ kate-19.03.60git.20181224T024634~7203979fc/kate/main.cpp	2018-12-25 09:49:19.231424088 +0100
-@@ -61,13 +61,8 @@
+--- a/kate/main.cpp	2018-12-25 09:49:15.867478873 +0100
++++ b/kate/main.cpp	2018-12-25 09:49:19.231424088 +0100
+@@ -46,21 +46,10 @@
+ int main(int argc, char **argv)
+ {
  #ifndef Q_OS_WIN
-     // Prohibit using sudo or kdesu (but allow using the root user directly)
+-    // Prohibit using sudo or kdesu (but allow using the root user directly)
++    // Allow running Kate as root, but with a warning
      if (getuid() == 0) {
 -        if (!qEnvironmentVariableIsEmpty("SUDO_USER")) {
--            std::cout << "Executing Kate with sudo is not possible due to unfixable security vulnerabilities." << std::endl;
+-            std::cout << "Executing Kate with sudo is not possible due to unfixable security vulnerabilities. "
+-                         "It is also not necessary; simply use Kate normally, and you will be prompted for "
+-                         "elevated privileges when saving documents if needed."
+-                      << std::endl;
 -            return EXIT_FAILURE;
 -        } else if (!qEnvironmentVariableIsEmpty("KDESU_USER")) {
--            std::cout << "Executing Kate with kdesu is not possible due to unfixable security vulnerabilities." << std::endl;
+-            std::cout << "Executing Kate with kdesu is not possible due to unfixable security vulnerabilities. "
+-                         "It is also not necessary; simply use Kate normally, and you will be prompted for "
+-                         "elevated privileges when saving documents if needed."
+-                      << std::endl;
 -            return EXIT_FAILURE;
 -        }
 +        std::cout << "THIS IS POTENTIALLY INSECURE!\nTo edit files as root please use:" << std::endl;
-+        std::cout << "SUDO_EDITOR=kwrite sudoedit <file>" << std::endl;
++        std::cout << "SUDO_EDITOR=kate sudoedit <file>" << std::endl;
      }
  #endif
      /**
-Index: kate-19.03.60git.20181224T024634~7203979fc/kwrite/main.cpp
+Index: kwrite/main.cpp
 ===================================================================
---- kate-19.03.60git.20181224T024634~7203979fc.orig/kwrite/main.cpp	2018-12-25 09:49:19.231424088 +0100
-+++ kate-19.03.60git.20181224T024634~7203979fc/kwrite/main.cpp	2018-12-25 09:50:32.302253532 +0100
-@@ -52,13 +52,8 @@
+--- a/kwrite/main.cpp	2018-12-25 09:49:19.231424088 +0100
++++ b/kwrite/main.cpp	2018-12-25 09:50:32.302253532 +0100
+@@ -38,21 +38,10 @@
+ extern "C" Q_DECL_EXPORT int main(int argc, char **argv)
+ {
  #ifndef Q_OS_WIN
-     // Prohibit using sudo or kdesu (but allow using the root user directly)
+-    // Prohibit using sudo or kdesu (but allow using the root user directly)
++    // Allow running KWrite as root, but with a warning
      if (getuid() == 0) {
 -        if (!qEnvironmentVariableIsEmpty("SUDO_USER")) {
--            std::cout << "Executing KWrite with sudo is not possible due to unfixable security vulnerabilities." << std::endl;
+-            std::cout << "Executing KWrite with sudo is not possible due to unfixable security vulnerabilities. "
+-                         "It is also not necessary; simply use KWrite normally, and you will be prompted for "
+-                         "elevated privileges when saving documents if needed."
+-                      << std::endl;
 -            return EXIT_FAILURE;
 -        } else if (!qEnvironmentVariableIsEmpty("KDESU_USER")) {
--            std::cout << "Executing KWrite with kdesu is not possible due to unfixable security vulnerabilities." << std::endl;
+-            std::cout << "Executing KWrite with kdesu is not possible due to unfixable security vulnerabilities. "
+-                         "It is also not necessary; simply use KWrite normally, and you will be prompted for "
+-                         "elevated privileges when saving documents if needed."
+-                      << std::endl;
 -            return EXIT_FAILURE;
 -        }
 +       std::cout << "THIS IS POTENTIALLY INSECURE!\nTo edit files as root please use:" << std::endl;
 +       std::cout << "SUDO_EDITOR=kwrite sudoedit <file>" << std::endl;
      }
  #endif
-     /**
+ 
