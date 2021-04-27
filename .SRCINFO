@@ -1,6 +1,6 @@
 pkgbase = instawm
 	pkgdesc = A dynamic window manager for X
-	pkgver = 2021.04.15
+	pkgver = 2021.04.27
 	pkgrel = 1
 	url = https://github.com/The-Repo-Club/instawm
 	install = instawm.install
@@ -15,8 +15,8 @@ pkgbase = instawm
 	depends = instamenu
 	depends = ttf-remixicon
 	options = zipman
-	source = instawm-2021.04.15.tar.gz::https://github.com/The-Repo-Club/instawm/archive/2021.04.15.tar.gz
-	sha256sums = 31a0a3b4d7d09e2574eef27f15dcd51568a564ccb223c7412b894bf71f7b7ea0
+	source = instawm-2021.04.27.tar.gz::https://github.com/The-Repo-Club/instawm/archive/2021.04.27.tar.gz
+	sha256sums = 7b535ee689f7a5e2cec42795ed1129aa2717935f6b6031a4a010c53f91d034c3
 
 pkgname = instawm
 
