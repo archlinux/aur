@@ -9,6 +9,7 @@ arch=('x86_64')
 url="https://github.com/hwangeug/rofi-gister"
 license=('MIT')
 depends=('gister-git')
+makedepends=('git')
 provides=('rofi-gister')
 conflicts=('rofi-gister')
 source=("$_pkgname::git://github.com/hwangeug/rofi-gister.git")

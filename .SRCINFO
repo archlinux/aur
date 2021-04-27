@@ -5,6 +5,7 @@ pkgbase = rofi-gister-git
 	url = https://github.com/hwangeug/rofi-gister
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	depends = gister-git
 	provides = rofi-gister
 	conflicts = rofi-gister
