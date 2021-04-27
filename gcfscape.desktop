@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=VTFEdit
+Comment=Half-Life package browser
+Type=Application
+Version=1.8.6
+Exec=gcfscape %f
+Terminal=false
+Icon=/usr/share/gcfscape/gcfscape.png
+Encoding=UTF-8
