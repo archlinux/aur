@@ -1,11 +1,11 @@
 pkgname=nginx-config-formatter-git
-pkgver=r19.4ea6bbc
+pkgver=r43.e942e40
 pkgrel=1
 pkgdesc="nginx config file formatter/beautifier written in Python. "
 depends=('python')
 license=('Apache 2.0')
 arch=('any')
-url="https://github.com/1connect/nginx-config-formatter"
+url="https://github.com/slomkowski/nginx-config-formatter"
 source=($pkgname::git+$url)
 sha256sums=('SKIP')
 
