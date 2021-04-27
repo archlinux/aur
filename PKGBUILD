@@ -1,6 +1,6 @@
 # Maintainer: Tomasz Jakub Rup <tomasz.rup@gmail.com>
 pkgname=cppzmq
-pkgver=4.6.0
+pkgver=4.7.1
 pkgrel=1
 pkgdesc="Header-only C++ binding for libzmq (only CMake module)"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('cmake')
 optdepends=('cmake')
 source=("https://github.com/zeromq/cppzmq/archive/v${pkgver}.tar.gz")
-md5sums=('7cae1b3fbfeaddb9cf1f70e99a98add2')
+md5sums=('e85cf23b5aed263c2c5c89657737d107')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"

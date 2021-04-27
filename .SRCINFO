@@ -1,14 +1,14 @@
 pkgbase = cppzmq
 	pkgdesc = Header-only C++ binding for libzmq (only CMake module)
-	pkgver = 4.6.0
+	pkgver = 4.7.1
 	pkgrel = 1
 	url = https://github.com/zeromq/cppzmq
 	arch = any
 	license = MIT
 	makedepends = cmake
 	optdepends = cmake
-	source = https://github.com/zeromq/cppzmq/archive/v4.6.0.tar.gz
-	md5sums = 7cae1b3fbfeaddb9cf1f70e99a98add2
+	source = https://github.com/zeromq/cppzmq/archive/v4.7.1.tar.gz
+	md5sums = e85cf23b5aed263c2c5c89657737d107
 
 pkgname = cppzmq
 	depends = zeromq>=4.2.0
