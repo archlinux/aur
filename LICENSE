@@ -1,0 +1,2700 @@
+
+* Notice: You may find broken characters below. Those are encoded in UTF-8 Korean.
+
+ 
+
+누구나 한컴구름 버전 2.0을 자유롭게 설치 및 사용할 수 있습니다. 한컴구름 버전 2.0은 새롭게 개발하거나 기존 오픈소스를 활용하여 개발한 여러 소프트웨어 패키지들로 구성되며, 이들 소프트웨어 패키지들은 모두 오픈소스 라이선스로 배포됩니다. 한컴구름 버전 2.0에 포함된 새로운 오픈소스 소프트웨어 및 수정 버전 오픈소스 소프트웨어들과 그 라이선스 및 저작권은 아래쪽의 표와 같습니다.
+
+ 
+
+Anyone may freely install and use Hancom Gooroom Version 2.0. Hancom Gooroom Version 2.0 contains multiple software packages that are distributed under open source licenses. Some of the packages are newly developed and some utilize existing open sources. The newly developed software packages or modified versions of existing open source software are detailed below.
+
+ 
+
+* 범례(Legend):
+
+- GPL-2.0: GNU General Public License v2.0 only
+
+- GPL-3.0: GNU General Public License v3.0 only
+
+- LGPL-2.1: GNU Lesser General Public License Version 2.1 only
+
+- LGPL-2.0: GNU Library General Public License, version 2.0 only
+
+- GPL-2.0+: GNU General Public License v2.0, or later versions
+
+- GPL-3.0+: GNU General Public License v3.0, or later versions
+
+- LGPL-2.1+: GNU Lesser General Public License Version 2.1, or later versions
+
+- LGPL-2.0+: GNU Library General Public License, version 2.0, or later versions
+
+- LGPL-3.0+: GNU Library General Public License, version 3.0, or later versions
+
+- BSD-3-Clause: The 3-Clause BSD License
+
+ 
+
+1. PkgAdduser (https://wiki.debian.org/PkgAdduser)
+
+GPL-2.0+
+
+- Copyright (C) 1997, 1998, 1999 Guy Maor. Modifications by Roland Bauerschmidt and Marc Haber. Additional patches by Joerg Hoh and Stephen Gran.
+
+- Copyright (C) 1995 Ted Hajek, with a great deal borrowed from the original Debian adduser
+
+- Copyright (C) 1994 Ian Murdock.
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+2. Arc Icon Theme (https://github.com/horst3180/arc-icon-theme)
+
+GPL-3.0+
+
+ 
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+ 
+
+3. Arc Theme (https://github.com/horst3180/arc-theme)
+
+GPL-3.0+
+
+- Copyright 2016-2017, horst3180 <email address hidden>
+
+2017-2019, Nicohood <mail@nicohood.de> and David Mohammed <fossfreedom@ubuntu.com>
+
+- Copyright 2009, Intel Corporation
+
+2009, 2015, Red Hat, Inc
+
+- Copyright: 2016-2017, David Mohammed <foss.freedom@gmail.com>
+
+2016-2019, David Mohammed <fossfreedom@ubuntu.com>
+
+ 
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+ 
+
+4. debian-system-adjustments (http://packages.linuxmint.com/pool/main/d/debian-system-adjustments/)
+
+GPL-2.0+
+
+- Copyright 2010-2015 Clement Lefebvre <root@linuxmint.com>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+5. gnome-control-center(https://gitlab.gnome.org/GNOME/gnome-control-center)
+
+GPL-2.0+
+
+- Copyright (C) 2010 Red Hat, Inc
+
+- Copyright (C) 2008 William Jon McCann <jmccann@redhat.com>
+
+- Copyright (C) 2010 Richard Hughes <richard@hughsie.com>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+6. Gnome Flashback (https://wiki.gnome.org/Projects/GnomeFlashback)
+
+GPL-3.0+
+
+- Copyright: 2001-2017, Red Hat, Inc.
+
+- Copyright 2014-2018, Alberts Muktup？vels
+
+- Copyright 1996-2018, Free Software Foundation, Inc.
+
+- Copyright 2001, Dominik Vogt, Matthias Clasen, and fvwm2 team
+
+2001-2002, Havoc Pennington
+
+2003, Rob Adams
+
+2004-2006, Elijah Newren
+
+2010, Giovanni Campagna
+
+- Copyright 2001, Ximian, Inc.
+
+2007, William Jon McCann <mccann@jhu.edu>
+
+- Copyright: 2008, William Jon McCann <mccann@jhu.edu>
+
+- Copyright 2015-2016, Sebastian Geiger
+
+- Copyright 2005, John (J5) Palmieri <johnp@redhat.com>
+
+2006, Christian Hammond <chipx86@chipx86.com>
+
+- Copyright 2004-2006, William Jon McCann
+
+- Copyright 2008, Alexander “weej” Jones
+
+2008, Thomas Perl
+
+2001-2006, Jonathan Blandford
+
+2008, Cosimo Cecchi
+
+- Copyright 2008, William Jon McCann <mccann@jhu.edu>
+
+- Copyright 2006-2008, Lennart Poettering
+
+2008, William Jon McCann <mccann@jhu.edu>
+
+2008, Sjoerd Simons <sjoerd@luon.net>
+
+2011-2012, Conor Curran <conor.curran@canonical.com>
+
+2012, David Henningsson <david.henningsson@canonical.com>
+
+2012, Canonical Ltd
+
+- Copyright 1995-2010, Ulrich Drepper <drepper@gnu.ai.mit.edu>
+
+- Copyright 1994-2016, Free Software Foundation, Inc.
+
+- Copyright 2014-2018, Dmitry Shachnev <mitya57@debian.org>
+
+ 
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+ 
+
+7. Gnome Panel (https://wiki.gnome.org/Projects/GnomePanel
+
+GPL-2.0+
+
+- Copyright (C) 2003 Frank Worsley <fworsley@shaw.ca>
+
+- Copyright (C) 1997, 1998, 1999, 2000 The Free Software Foundation
+
+- Copyright 2000 Helix Code, Inc.
+
+- Copyright 2000,2001 Eazel, Inc.
+
+- Copyright 2001 George Lebl
+
+- Copyright 2002 Sun Microsystems Inc.
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+8. Gnome Screensaver (https://wiki.gnome.org/Attic/GnomeScreensaver)
+
+GPL-2.0+
+
+- Copyright 1991-2004 Jamie Zawinski <jwz@jwz.org>
+
+2004-2009 William Jon McCann <mccann@jhu.edu>
+
+2008-2011 Red Hat, Inc.
+
+2006 Ray Strode <rstrode@redhat.com>
+
+2003 Bill Nottingham <notting@redhat.com>
+
+2010 Saleem Abdulrasool <compnerd@compnerd.org>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+9. Gooroom Agent Service
+
+GPL-2.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+10. Gooroom App Launcher
+
+GPL-2.0
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; version 2.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+11. xfce4-notifyd
+
+GPL-2.0
+
+- Copyright (c) 2008-2009 Brian Tarricone <bjt23@cornell.edu>
+
+- Copyright (c) 2009 J？r？me Guelfucci <jeromeg@xfce.org>
+
+- Copyright (c) 2015 Ali Abdallah <ali@xfce.org>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; version 2.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+12. Gooroom Archive Keyring
+
+GPL-2.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+13. Gooroom Artwork Common
+
+GPL-2.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+14. Gooroom Artwork Gnome Flashback
+
+GPL-2.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+15. Gooroom Boot Protector
+
+GPL-2.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+16. Gooroom Bootsplash Theme
+
+GPL-2.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+17. Gooroom Browser
+
+BSD-3-Clause
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+ 
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+ 
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+ 
+
+18. Chromium Browser
+
+BSD-3-Clause
+
+- Copyright 2015 The Chromium Authors.
+
+ 
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+ 
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+ 
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+ 
+
+19. Gooroom Client Server Register
+
+GPL-2.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
+
+ 
+
+20. Gooroom Dockbarx Applet
+
+GPL-2.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
+
+ 
+
+21. Gooroom Dockbarx
+
+GPL-3.0
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+ 
+
+22. DockbarX (https://github.com/M7S/dockbarx)
+
+GPL-3.0
+
+- Copyright ？ 2010 Ivan Zorin <ivan.a.zorin@gmail.com>
+
+ 
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+ 
+
+23. Gooroom EXE Protector
+
+GPL-2.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+24. Gooroom Greeter
+
+GPL-3.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+ 
+
+25. LightDM GTK+ Greeter (https://packages.debian.org/buster/lightdm-gtk-greeter )
+
+GPL-3.0+
+
+- Copyright (C) 2010-2011 Robert Ancell <robert.ancell@canonical.com>
+
+ 
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+ 
+
+26. Gooroom GRUB
+
+GPL-3.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+ 
+
+27. GRUB (https://packages.ubuntu.com/source/xenial/grub)
+
+GPL-2.0+
+
+- Copyright (C) 1996 Erich Boleyn <erich@uruk.org>
+
+- Copyright (C) 1999-2000 Free Software Foundation, Inc.
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+28. GRUB2 (https://packages.debian.org/buster/grub2)
+
+GPL-3.0+
+
+- Copyright 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc
+
+- Copyright 2003, 2004, 2005, 2006, 2007, 2008, 2009, Robert Millan
+
+2005-2007, 2005, 2006, 2007, Otavio Salvador
+
+2005-2007, 2008, 2009, Felix Zielcke
+
+2005-2007, 2009, Jordi Mallach
+
+- Copyright Nathan Coulson
+
+2003, 2007 Free Software Foundation, Inc
+
+2003 NIIBE Yutaka
+
+- Copyright:2012 Free Software Foundation, Inc
+
+- Copyright 2011 Daniel Tschudi
+
+ 
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+ 
+
+29. Gooroom Guide
+
+GPL-2.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+30. Nanum Font(https://hangeul.naver.com/)
+
+SIL Open Font License 1.1
+
+- Copyright (c) 2010, NAVER Corporation (https://www.navercorp.com/),
+
+ 
+
+THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM OTHER DEALINGS IN THE FONT SOFTWARE.
+
+ 
+
+31. Gooroom Icon Themes
+
+GPL-2.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+32. Gooroom Indicator Applet
+
+GPL-2.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+33. Gooroom Info
+
+GPL-2.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+34. Gooroom Integration Applet
+
+GPL-2.0
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; version 2.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+35. Gooroom Libsecurity Extensions
+
+GPL-2.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+36. Gooroom Logout
+
+GPL-2.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+37. Gooroom Notice Applet
+
+GPL-2.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+38. Gooroom Notice Application
+
+GPL-2.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+39. Gooroom Notifyd
+
+GPL-2.0
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+40. Gooroom OS Protector
+
+GPL-2.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+41. Gooroom Resource Access Control
+
+GPL-2.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+42. Gooroom Security Status Tools
+
+GPL-2.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+43. Gooroom Security Utils
+
+GPL-2.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+44. Gooroom Session Manager
+
+GPL-2.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+45. Gooroom Showdesktop Applet
+
+GPL-2.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+46. Gooroom Software
+
+GPL-2.0
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; version 2.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+47. Gnome Software (https://github.com/GNOME/gnome-software/)
+
+GPL-2.0
+
+- Copyright (C) 2012-2013 Richard Hughes <richard@hughsie.com>
+
+- Copyright (C) 2013 Matthias Clasen <mclasen@redhat.com>
+
+- Copyright (C) 2014-2016 Kalev Lember <kalevlember@gmail.com>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; version 2.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+48. Gooroom Translations
+
+GPL-2.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+49. Gooroom Update
+
+GPL-3.0+
+
+ 
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+ 
+
+50. linuxmint/mintupdate (https://github.com/linuxmint/mintupdate/)
+
+GPL-3.0+
+
+- Copyright 2007-2015 Clement Lefebvre
+
+ 
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+ 
+
+51. Gooroomsystem
+
+GPL-2.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+52. linuxmint/mintsystem (https://github.com/linuxmint/mintsystem/)
+
+GPL-2.0+
+
+- Copyright 2007-2015 Clement Lefebvre
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+53. gtk+3.0 (https://www.gtk.org/)
+
+LGPL-2.1+
+
+ 
+
+This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either version 2.1 of the License, or (at your option) any later version.
+
+ 
+
+This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+
+ 
+
+54. ima-evm-utils (https://sourceforge.net/projects/linux-ima/)
+
+GPL-2.0+
+
+- Copyright (C) 2012 - 2014 Linux Integrity Project
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+55. live-config (https://salsa.debian.org/live-team/live-config)
+
+GPL-3.0+
+
+- Copyright 2006-2015 Daniel Baumann <mail@daniel-baumann.ch>
+
+ 
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+ 
+
+56. live-installer (https://salsa.debian.org/installer-team/live-installer)
+
+GPL-2+
+
+- 2007-2010 Otavio Salvador <otavio@ossystems.com.br>
+
+- 2007-2012 Daniel Baumann <daniel@debian.org>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+57. nautilus (https://salsa.debian.org/gnome-team/nautilus)
+
+GPL-3.0+
+
+- Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
+
+- Copyright (C) 1997-2000, 2008 Free Software Foundation, Inc.
+
+- Copyright (C) 1999, 2000, 2001 Eazel, Inc.
+
+- Copyright (C) 1999-2017 Red Hat, Inc.
+
+- Copyright (C) 2001, 2002 Anders Carlsson
+
+- Copyright (C) 2001 Maciej Stachowiak
+
+- Copyright (C) 2002, 2004 James Willcox
+
+- Copyright (C) 2002 Bent Spoon Software
+
+- Copyright (C) 2002 Christophe Fergeau
+
+- Copyright (C) 2002 Darin Adler
+
+- Copyright (C) 2002 Jan Arne Petersen
+
+- Copyright (C) 2002 Sun Microsystems, Inc.
+
+- Copyright (C) 2003, 2004, 2005 Christian Persch
+
+- Copyright (C) 2003, 2004 Marco Pesenti Gritti
+
+- Copyright (C) 2005 Jamie McCracken
+
+- Copyright (C) 2005 Raffaele Sandrini
+
+- Copyright (C) 2005 Roberto Majadas
+
+- Copyright (C) 2005 Vincent Untz
+
+- Copyright (C) 2006 Paolo Borelli
+
+- Copyright (C) 2006 Zbigniew Chyla
+
+- Copyright (C) 2007 Collabora Ltd.
+
+- Copyright (C) 2007 Martin Wehner
+
+- Copyright (C) 2007 Nokia Corporation
+
+- Copyright (C) 2008-2010 Cosimo Cecchi
+
+- Copyright (C) 2009 Alexander Larsson
+
+- Copyright (C) 2010 Carlos Garcia Campos
+
+- Copyright (C) 2011 Ignacio Casal Quinteiro
+
+- Copyright (C) 2018 Ernestas Kulik
+
+- Copyright (C) 2018 Canonical Ltd.
+
+ 
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+ 
+
+58. network-manager-applet (https://salsa.debian.org/utopia-team/network-manager-applet)
+
+GPL-2+
+
+- 2004 - 2015 Red Hat, Inc.
+
+- 2005 - 2008 Novell, Inc.
+
+- 2001, 2002 Free Software Foundation
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+59. pam-gooroom
+
+GPL-2.0+
+
+- Copyright 2015-2019 Gooroom Developers<gooroom@gooroom.kr>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+60. pam-radius-auth (https://packages.debian.org/stable/libpam-radius-auth)
+
+GPL-2.0+
+
+- Copyright (c) Cristian Gafton, 1996, <gafton@redhat.com>
+
+- Copyright (c) CRYPTOCard Inc, 1998.
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+61. policykit-1 (https://gitlab.freedesktop.org/polkit/polkit/)
+
+LGPL-2.0+
+
+- Copyright 2008-2011 Red Hat, Inc.
+
+ 
+
+This library is free software; you can redistribute it and/or modify it under the terms of the GNU Library General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Library General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU Library General Public License along with this library; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+62. accountsservice(http://cgit.freedesktop.org/accountsservice/)
+
+GPL-3.0+
+
+- Copyright 2009-2010 Red Hat, Inc
+
+2013 Canonical Limited
+
+- Copyright 2009-2010 Red Hat, Inc
+
+2007-2008 William Jon McCann <mccann@jhu.edu>
+
+2004-2005 James M. Cape <jcape@ignore-your.tv>
+
+- Copyright: 2011-2014 Alessio Treglia <alessio@debian.org>
+
+ 
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+ 
+
+63. dpkg (https://git.dpkg.org/git/dpkg/dpkg.git)
+
+GPL-2+
+
+- Copyright ？ 1994 Ian Murdock <imurdock@debian.org>
+
+- Copyright ？ 1994 Matt Welsh <mdw@sunsite.unc.edu>
+
+- Copyright ？ 1994 Carl Streeter <streeter@cae.wisc.edu>
+
+- Copyright ？ 1994-1999, 2008 Ian Jackson <ijackson@chiark.greenend.org.uk>
+
+- Copyright ？ 1995 Bruce Perens <bruce@pixar.com>
+
+- Copyright ？ 1995-1996 Erick Branderhorst <branderhorst@heel.fgg.eur.nl>
+
+- Copyright ？ 1996 Michael Shields <shields@crosslink.net>
+
+- Copyright ？ 1996 Klee Dienes <klee@debian.org>
+
+- Copyright ？ 1996 Kim-Minh Kaplan <kkaplan@cdfhp3.in2p3.fr>
+
+- Copyright ？ 1996-1998 Miquel van Smoorenburg <miquels@cistron.nl>
+
+- Copyright ？ 1997-1998 Charles Briscoe-Smith <cpbs@debian.org>
+
+- Copyright ？ 1997-1998 Juho Vuori <javuori@cc.helsinki.fi>
+
+- Copyright ？ 1998 Koichi Sekido <sekido@mbox.kyoto-inet.or.jp>
+
+- Copyright ？ 1998 Jim Van Zandt <jrv@vanzandt.mv.com>
+
+- Copyright ？ 1998 Juan Cespedes <cespedes@debian.org>
+
+- Copyright ？ 1998 Nils Rennebarth <nils@debian.org>
+
+- Copyright ？ 1987-2006 Free Software Foundation, Inc.
+
+- Copyright ？ 1996 Andy Guy <awpguy@acs.ucalgary.ca>
+
+Copyright ？ 1998 Martin Schulze <joey@infodrom.org>
+
+Copyright ？ 1999-2001, 2005-2006, 2009 Rapha？l Hertzog <hertzog@debian.org>
+
+- Copyright ？ 2000 Joey Hess <joeyh@debian.org>
+
+Copyright ？ 2007, 2009-2010, 2012-2015 Guillem Jover <guillem@debian.org>
+
+- Copyright ？ 1999 Marek Michalkiewicz <marekm@i17linuxb.ists.pwr.wroc.pl>
+
+Copyright ？ 1999 Christian Schwarz <schwarz@monet.m.isar.de>
+
+Copyright ？ 1999 Klee Dienes <klee@debian.org>
+
+Copyright ？ 1999 Ben Collins <bcollins@debian.org>
+
+Copyright ？ 1999-2002 Wichert Akkerman <wakkerma@debian.org>
+
+Copyright ？ 2000-2003 Adam Heath <doogie@debian.org>
+
+Copyright ？ 2001 Sontri Tomo Huynh <huynh.29@osu.edu>
+
+Copyright ？ 2001 Andreas Schuldei <andreas@schuldei.org>
+
+Copyright ？ 2001 Ian Jackson <ijackson@chiark.greenend.org.uk>
+
+Copyright ？ 2004-2005 Scott James Remnant <keybuk@debian.org>
+
+Copyright ？ 2006-2014 Guillem Jover <guillem@debian.org>
+
+Copyright ？ 2008 Samuel Thibault <samuel.thibault@ens-lyon.org>
+
+Copyright ？ 2008 Andreas P？hlsson <andreas.pahlsson@xcerion.com>
+
+Copyright ？ 2009 Chris Coulson <chrisccoulson@googlemail.com>
+
+Copyright ？ 2012 Carsten Hey <carsten@debian.org>
+
+Copyright ？ 2014 Nir Soffer <nirs@hyperms.com>
+
+- Copyright ？ 1993 Colin Plumb
+
+Copyright ？ 1998 Heiko Schlittermann <hs@schlittermann.de>
+
+Copyright ？ 1998-1999, 2001, 2003, 2006 Martin Schulze <joey@infodrom.org>
+
+Copyright ？ 1999 Roderick Shertler <roderick@argon.org>
+
+Copyright ？ 1999 Ben Collins <bcollins@debian.org>
+
+Copyright ？ 1999 Richard Kettlewell <rjk@sfere.greenend.org.uk>
+
+Copyright ？ 1999-2001 Marcus Brinkmann <brinkmd@debian.org>
+
+Copyright ？ 1999-2002 Wichert Akkerman <wakkerma@debian.org>
+
+Copyright ？ 2001, 2007, 2010 Joey Hess <joeyh@debian.org>
+
+Copyright ？ 2004-2005, 2007-2008, 2010 Canonical Ltd.
+
+Copyright ？ 2004-2005 Scott James Remnant <scott@netsplit.com>
+
+Copyright ？ 2006-2008 Frank Lichtenheld <djpig@debian.org>
+
+Copyright ？ 2006-2015 Guillem Jover <guillem@debian.org>
+
+Copyright ？ 2007-2012 Rapha？l Hertzog <hertzog@debian.org>
+
+Copyright ？ 2007 Nicolas Fran？ois <nicolas.francois@centraliens.net>
+
+Copyright ？ 2007 Don Armstrong <don@donarmstrong.com>
+
+Copyright ？ 2007 Colin Watson <cjwatson@debian.org>
+
+Copyright ？ 2007, 2008 Tollef Fog Heen <tfheen@err.no>
+
+Copyright ？ 2008 Zack Weinberg <zackw@panix.com>
+
+Copyright ？ 2008 Pierre Habouzit <madcoder@debian.org>
+
+Copyright ？ 2009 Romain Francoise <rfrancoise@debian.org>
+
+Copyright ？ 2009-2010 Modestas Vainius <modax@debian.org>
+
+Copyright ？ 2009-2011 Kees Cook <kees@debian.org>
+
+Copyright ？ 2009 Romain Francoise <rfrancoise@debian.org>
+
+Copyright ？ 2009-2010 Modestas Vainius <modax@debian.org>
+
+Copyright ？ 2009-2011 Kees Cook <kees@debian.org>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+64. eog (https://download.gnome.org/sources/eog/)
+
+GPL-2
+
+- Copyright (C) 2000-2008 The Free Software Foundation
+
+Copyright (C) 1999 Michael Zucchi
+
+Copyright (C) 1999-2004 Red Hat, Inc
+
+Copyright (C) 2005 Raphael Slinckx
+
+Copyright (C) 1997 Thomas G. Lane
+
+Copyright (C) 2003-2004 Marco Pesenti Gritti
+
+Copyright (C) 2003-2005 Christian Persch
+
+Copyright (C) 2004-2006 Bastien Nocera <hadess@hadess.net>
+
+- eog-image-jpeg.c: 1999 The Free Software Foundation,
+
+1999 Michael Zucchi, 1999 Red Hat, Inc
+
+- totem-scrsaver.c: 2004-2006 Bastien Nocera,
+
+- totem-scrsaver.h: 2004-2006 Bastien Nocera
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; version 2.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+65. file-roller (https://download.gnome.org/sources/file-roller)
+
+GPL-2.0+
+
+- Copyright: 2001, 2003-2008 Free Software Foundation, Inc.
+
+- Copyright: 2007 Mathias Hasselmann
+
+2001 Ben Tea Spoons, Inc.
+
+2005 Free Software Foundation, Inc.
+
+2001 Red Hat, Inc.
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+66. gnome-mpv (https://github.com/gnome-mpv/gnome-mpv)
+
+GPL-3.0+
+
+- Copyright: 2014-2015 gnome-mpv contributors
+
+- Copyright: 2015 Ximin Luo <infinity0@debian.org>
+
+ 
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+ 
+
+67. gnome-settings-daemon(https://download.gnome.org/sources/gnome-settings-daemon)
+
+GPL-2.0+
+
+- Copyright ？ 1998-2000 Kenneth Christiansen
+
+Copyright ？ 1998-2001 Pablo Saratxaga
+
+Copyright ？ 1998, 2001 Tim Janik
+
+Copyright ？ 1999-2018 Free Software Foundation, Inc.
+
+Copyright ？ 2000-2005 Martin Willemoes Hansen
+
+Copyright ？ 2000 Dennis Smit
+
+Copyright ？ 2000 Keld Simonsen
+
+Copyright ？ 2001-2006 Ole Laursen
+
+Copyright ？ 2001 Almer S. Tigelaar
+
+Copyright ？ 2001 Carlos Perell？ Mar？n
+
+Copyright ？ 2001 H？ctor Garc？a ？lvarez
+
+Copyright ？ 2001 Jonathan Blandford <jrb@gnome.org>
+
+Copyright ？ 2001 Red Hat, Inc.
+
+Copyright ？ 2001 Udaltsoft
+
+Copyright ？ 2001 Ximian, Inc.
+
+Copyright ？ 2002-2003 Pablo Gonzalo del Campo
+
+Copyright ？ 2002-2013 Reinout van Schouwen
+
+Copyright ？ 2002 Germ？n Poo Caama？o
+
+Copyright ？ 2002 Huib Kleinhout
+
+Copyright ？ 2002 Jan-Willem Harmanny
+
+Copyright ？ 2002 Lucas Di Pentima
+
+Copyright ？ 2002 Ronald Hummelink
+
+Copyright ？ 2002 Sun Microsystems, Inc.
+
+Copyright ？ 2003-2006 Francisco Javier F. Serrador
+
+Copyright ？ 2003-2017 Prevod.org team
+
+Copyright ？ 2004-2008 Tino Meinen
+
+Copyright ？ 2004 Red Hat, Inc.
+
+Copyright ？ 2005,2006 Novell, Inc.
+
+Copyright ？ 2005 Данило Шеган (Danilo ？egan)
+
+Copyright ？ 2006-2011 Wouter Bolsterlee
+
+Copyright ？ 2006 Lasse Bang Mikkelsen
+
+Copyright ？ 2006 Слободан Д. Средо？еви？ (Slobodan D. Sredojevi？)
+
+Copyright ？ 2007-2011 Jorge Gonz？lez
+
+Copyright ？ 2007-2018 Ask Hjorth Larsen
+
+Copyright ？ 2007 Claudio Saavedra
+
+Copyright ？ 2007 Matthias Clasen
+
+Copyright ？ 2007 The GNOME Foundation
+
+Copyright ？ 2009 Johannes Berg <johannes@sipsolutions.net>
+
+Copyright ？ 2010-2015 Милош Попови？ (Milo？ Popovi？)
+
+Copyright ？ 2010-2017 Hannie Dumoleyn
+
+Copyright ？ 2010 Bastien Nocera <hadess@hadess.net>
+
+Copyright ？ 2010 Rob van den Berg
+
+Copyright ？ 2011-2017 Мирослав Николи？ (Miroslav Nikoli？)
+
+Copyright ？ 2011-2018 Daniel Mustieles
+
+Copyright ？ 2011 flemming christensen
+
+Copyright ？ 2011 Red Hat, Inc.
+
+Copyright ？ 2011 Redmar
+
+Copyright ？ 2011 Sebi Kul
+
+Copyright ？ 2012 Kenneth Nielsen
+
+Copyright ？ 2013 Canonical Ltd.
+
+Copyright ？ 2013 Intel Corporation.
+
+Copyright ？ 2015-2016 Nathan Follens
+
+Copyright ？ 2016-2018 Justin van Steijn
+
+Copyright ？ 2016 scootergrisen
+
+Copyright ？ 2017 Endless Mobile, Inc.
+
+Copyright ？ 2017 Endless Mobile, Inc.
+
+Copyright ？ Bas Wagter
+
+Copyright ？ Birger Langkjer
+
+Copyright (C) 2000-2001 Ximian, Inc.
+
+Copyright (C) 2000 Helix Code, Inc
+
+Copyright (C) 2001, 2002, 2003 Bastien Nocera
+
+Copyright (C) 2001-2003 Bastien Nocera <hadess@hadess.net>
+
+Copyright (C) 2001-2006 Jonathan Blandford <jrb@alum.mit.edu>
+
+Copyright (C) 2001 Bastien Nocera <hadess@hadess.net>
+
+Copyright (C) 2002-2005 - Paolo Maggi
+
+Copyright (C) 2002 Red Hat, Inc.
+
+Copyright (C) 2003 Ross Burton <ross@burtonini.com>
+
+Copyright (C) 2005-2011 Richard Hughes <richard@hughsie.com>
+
+Copyright (C) 2005 Paolo Maggi
+
+Copyright (C) 2005 William Jon McCann <mccann@jhu.edu>
+
+Copyright (C) 2006-2007 Ivo van Doorn
+
+Copyright (C) 2006-2007 William Jon McCann <mccann@jhu.edu>
+
+Copyright (C) 2006-2008 Lennart Poettering
+
+Copyright (C) 2006 Emmanuele Bassi <ebassi@gnome.org>
+
+Copyright (C) 2007 Anders Carlsson
+
+Copyright (C) 2007 Dmitry Torokhov
+
+Copyright (C) 2007 Matthias Clasen
+
+Copyright (C) 2007 Rodrigo Moya
+
+Copyright (C) 2007 William Jon McCann <mccann@jhu.edu>
+
+Copyright (C) 2008-2009 Red Hat, Inc.
+
+Copyright (C) 2008-2012 Cosimo Cecchi <cosimoc@gnome.org>
+
+Copyright (C) 2008 Carlos Garnacho <carlos@imendio.com>
+
+Copyright (C) 2008 Lennart Poettering <lennart@poettering.net>
+
+Copyright (C) 2008 Michael J. Chudobiak <mjc@avtechpulse.com>
+
+Copyright (c) 2008, Novell, Inc.
+
+Copyright (C) 2008 Sjoerd Simons <sjoerd@luon.net>
+
+Copyright (C) 2008 Soren Sandmann <sandmann@redhat.com>
+
+Copyright (C) 2008 William Jon McCann
+
+Copyright (C) 2008 William Jon McCann <jmccann@redhat.com>
+
+Copyright (C) 2009 Bastien Nocera
+
+Copyright (C) 2010,2011 Red Hat, Inc.
+
+Copyright (C) 2010 Bastien Nocera <hadess@hadess.net>
+
+Copyright (C) 2011 Bastien Nocera <hadess@hadess.net>
+
+Copyright (C) 2011 Ritesh Khadgaray <khadgaray@gmail.com>
+
+Copyright (C) 2012-2013 Red Hat Inc.
+
+Copyright (C) 2012 Bastien Nocera <hadess@hadess.net>
+
+Copyright (C) 2012 Conor Curran
+
+Copyright (C) 2012 David Henningsson, Canonical Ltd. <david.henningsson@canonical.com>
+
+Copyright (C) 2012 Przemo Firszt <przemo@firszt.eu>
+
+Copyright (C) 2013 Carlos Garnacho <carlosg@gnome.org>
+
+Copyright (C) 2013 Kalev Lember <kalevlember@gmail.com>
+
+Copyright (C) 2013 Przemo Firszt <przemo@firszt.eu>
+
+Copyright (C) 2014 Bastien Nocera <hadess@hadess.net>
+
+Copyright (C) 2014 Carlos Garnacho <carlosg@gnome.org>
+
+Copyright (C) 2014 Red Hat, Inc.
+
+Copyright (C) 2015 Red Hat
+
+Copyright (C) 2017 Bastien Nocera <hadess@hadess.net>
+
+Copyright (C) 2017 Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+
+Copyright (C) 2017 Richard Hughes <richard@hughsie.com>
+
+Copyright (C) Conor Curran 2011 <conor.curran@canonical.com>
+
+Copyright ？ Hein-Jan Leliveld
+
+Copyright ？ Ве？ко М. Стано？еви？ (Veljko M. Stanojevi？)
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+68. gtk+ (https://download.gnome.org/sources/gtk+)
+
+GPL-2.0+
+
+- Copyright: 1985, 1986, 1987, 1988, 1998 The Open Group
+
+Copyright: 1987, 1988 by Digital Equipment Corporation, Maynard, Massachusetts
+
+Copyright: 1987 by Digital Equipment Corporation, Maynard, Massachusetts
+
+Copyright: 1991-2017 Free Software Foundation, Inc
+
+Copyright: 1991-1998 by LCS/Telegraphics
+
+Copyright: 1992-1994 The Regents of the University of California
+
+Copyright: 1993, Robert Nation
+
+Copyright: 1994-2007 Sun Microsystems, Inc
+
+Copyright: 1995, 1996, 1997, 1998 by Steffen Beyer
+
+Copyright: 1995-1999 Josh MacDonald
+
+Copyright: 1995-2007 Peter Mattis
+
+Copyright: 1995-2007 Spencer Kimball
+
+Copyright: 1997-1998 Jay Painter
+
+Copyright: 1997-2009 The GTK+ Team
+
+Copyright: 1997 David Mosberger
+
+Copyright: 1997-1998 Owen Taylor
+
+Copyright: 1997 Paolo Molaro
+
+Copyright: 1997-2013 Red Hat, Inc
+
+Copyright: 1998-2003 James Henstridge
+
+Copyright: 1998-2006 Tim Janik
+
+Copyright: 1998-2007 Tor Lillqvist
+
+Copyright: 1998 Cesar Miquel
+
+Copyright: 1998 Mattias Groenlund
+
+Copyright: 1998 David Abilleira Freijeiro
+
+Copyright: 1998 Elliot Lee
+
+Copyright: 1998 Lars Hamann
+
+Copyright: 1998 Stefan Jeske
+
+Copyright: 1998 Shawn T. Amundson
+
+Copyright: 1999 Mark Crichton, Larry Ewing
+
+Copyright: 1999 Michael Zucchi
+
+Copyright: 2000,2001 Jonathan Blandford
+
+Copyright: 2000-2004 Hans Breuer
+
+Copyright: 2000 Keith Packard
+
+Copyright: 2000 SuSE Linux Ltd
+
+Copyright: 1998-2000 Tony Gale
+
+Copyright: 1999-2000 Jesus Bravo Alvarez
+
+Copyright: 2001-2004 Anders Carlsson
+
+Copyright: 2001-2002 convergence integrated media GmbH
+
+Copyright: 2001-2009 Kristian Rietveld
+
+Copyright: 2001-2009 Hans Breuer
+
+Copyright: 2001 Archaeopteryx Software Inc
+
+Copyright: 2001 CodeFactory AB
+
+Copyright: 2001 Havoc Pennington
+
+Copyright: 2001 Stefan Ondrejicka
+
+Copyright: 2002-2004 convergence GmbH
+
+Copyright: 2002 convergence GmbH
+
+Copyright: 2002 Naba Kumar
+
+Copyright: 2002-2005 Sharif FarsiWeb, Inc.
+
+Copyright: 2003, 2004 Dom Lachowicz
+
+Copyright: 2003-2004 Kazuki IWAMOTO
+
+Copyright: 2003-2009 Matthias Clasen
+
+Copyright: 2003, 2004 Raymond Penners
+
+Copyright: 2003, 2004 Soeren Sandmann
+
+Copyright: 2003 Alex Graveley
+
+Copyright: 2003 Apple Computer, Inc. All rights reserved
+
+Copyright: 2003 Kazuki IWAMOTO
+
+Copyright: 2003 Ricardo Fernandez Pascual
+
+Copyright: 2003 Takuro Ashie
+
+Copyright: 2003 OpenMN team
+
+Copyright: 2003-2005 Miloslav Trmac
+
+Copyright: 2004-2006 Christian Hammond
+
+Copyright: 2004 James M. Cape
+
+Copyright: 2004 Lorenzo Gil Sanchez
+
+Copyright: 2004 Morten Welinder
+
+Copyright: 2004 Paolo Borelli
+
+Copyright: 2004-2008 Canonical Ltd.
+
+Copyright: 2004-2008 Rosetta contributors
+
+Copyright: 2004 Adam Weinberger
+
+Copyright: 2004 Gurban M？hemmet Tewekgeli
+
+Copyright: 2004 Kakilik - Turkmen free software developers community
+
+Copyright: 2004 Zuza Software Foundation
+
+Copyright: 2004 Amir Hedayaty
+
+Copyright: 2004 Thierry Vignaud
+
+Copyright: 2004-2009 GNOME Foundation
+
+Copyright: 2005-2007, Emmanuele Bassi
+
+Copyright: 2005-2007 Vincent Untz
+
+Copyright: 2005-2007 Free Software Foundation, Andhra Pradesh
+
+Copyright: 2005-2008 Imendio AB
+
+Copyright: 2005 Jamie McCracken
+
+Copyright: 2005-2008 Novell, Inc
+
+Copyright: 2005 - Paolo Maggi
+
+Copyright: 2005 Ronald S. Bultje
+
+Copyright: 2006, 2007, 2008 Christian Persch
+
+Copyright: 2006-2007 Async Open Source
+
+Copyright: 2006-2009 Openismus GmbH
+
+Copyright: 2006 Alexander Larsson
+
+Copyright: 2006 Hong Jen Yee (PCMan)
+
+Copyright: 2006-2008 Jan Arne Petersen
+
+Copyright: 2006 John (J5) Palmieri
+
+Copyright: 2006 Lukas Novotny
+
+Copyright: 2004-2010 Nokia Corporation
+
+Copyright: 2005-2008 Carlos Garnacho
+
+Copyright: 2007-2009 Cody Russell
+
+Copyright: 2007 John Stowers
+
+Copyright: 2007 Neil Jagdish Patel
+
+Copyright: 2007 Xan L？pez
+
+Copyright: 2008 Christian Kellner
+
+Copyright: 2008 Cody Russell
+
+Copyright: 2008 Jaap Haitsma
+
+Copyright: 2008 Richard Hughes
+
+Copyright: 2008 Tristan Van Berkom
+
+Copyright: 2009 Bastien Nocera
+
+Copyright: 2009 David Zeuthen
+
+Copyright: 2009 Ghee Teo
+
+Copyright: 2009 Stefan Walter
+
+Copyright: 2009 Johan Dahlin
+
+Copyright: 2010 Christian Dywan
+
+Copyright: 2010 HZ
+
+Copyright: 2010 GNOME i18n Project for Vietnamese
+
+Copyright: 2011 Hiroyuki Yamamoto
+
+Copyright: Federico Mena
+
+Copyright: Croatiann team
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+69. linux (https://www.kernel.org/pub/linux/kernel)
+
+GPL-2
+
+- Copyright: 1991-2012 Linus Torvalds and many others
+
+- Copyright: 1996-2006 Manoj Srivastava
+
+2005-2012 Debian kernel team
+
+- Copyright 2011 Lennart Poettering
+
+- Copyright: 2012-2018 Linus Torvalds and many others
+
+- Copyright: 2006,2014 Andy Polyakov <appro@openssl.org>
+
+- Copyright: 1991-2012 Unicode, Inc.
+
+- Copyright: 2002-2006 Keir Fraser
+
+2004 Tim Deegan
+
+2004 Andrew Warfield
+
+2005 Nguyen Anh Quynh
+
+2005-2006 IBM Corporation
+
+2005 Anthony Liguori
+
+2005 Rusty Russell
+
+2005-2006 XenSource Ltd.
+
+2006 Ian Campbell
+
+2006 Red Hat, Inc.
+
+2010 Ryan Wilson
+
+- Copyright: 2014-2015 Red Hat, Inc.
+
+2015 Intel Corporation
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+70. linux-latest (https://salsa.debian.org/kernel-team/linux-latest.git)
+
+GPL-2.0+
+
+- Copyright (C) 2006-2009 Bastian Blank <waldi@debian.org>
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+71. nimf (https://gitlab.com/nimf-i18n/nimf)
+
+LGPL-3+
+
+- Copyright: 2015-2019 Hodong Kim <cogniti@gmail.com>
+
+- Copyright: 1993, 1994 Digital Equipment Corporation, Maynard, Massachusetts
+
+- Copyright: 1993, 1994 Hewlett-Packard Company
+
+- Copyright: 1994, 1995 Sun Microsystems, Inc.
+
+- Copyright: 2014 Peng Huang <shawn.p.huang@gmail.com>
+
+- Copyright: 2014 Red Hat, Inc.
+
+- Copyright: 2005-2014 Choe Hwanjin <choe.hwanjin@gmail.com>
+
+ 
+
+This library is free software; you can redistribute it and/or modify it under the terms of the GNU Library General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+ 
+
+This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Library General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+ 
+
+72. system-config-printer(http://cyberelk.net/tim/data/system-config-printer/)
+
+GPL-2.0+
+
+- Copyright: 2002-2015 Red Hat, Inc.
+
+2008-2013 Novell, Inc.
+
+2008-2014 Tim Waugh <twaugh@redhat.com>
+
+2006-2007 Florian Festi <ffesti@redhat.com>
+
+2010 Jiri Popelka <jpopelka@redhat.com>
+
+- Copyright: 2002 Jorn Baayen <jorn@nl.linux.org>
+
+2003 Colin Walters <walters@verbum.org>
+
+2008 Rui Matos <tiagomatos@gmail.com>
+
+2009-2012 Red Hat, Inc.
+
+- Copyright: 2006 Jani Monoses <jani@ubuntu.com>
+
+2007 Otavio Salvador <otavio@ossystems.com.br>
+
+2008-2009 Josselin Mouette <joss@debian.org>
+
+2010-2011 Guido G？nther <agx@sigxcpu.org>
+
+2008-2015 Debian GNOME Maintainers
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+73. hancom-gooroom-themepack
+GPL-2.0+
+- Copyright 2020 Hancom Inc. <gooroom@hancom.com>
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+74. hancomgrm-adjustments-utils
+GPL-2.0+
+- Copyright 2020 Hancom Inc. <gooroom@hancom.com>
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+75. hancom-toolkit
+GPL-2.0+
+- Copyright 2020 Hancom Inc. <gooroom@hancom.com>
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+76. nemo(https://github.com/linuxmint/nemo)
+GPL-2.0+
+- Copyright : 2009, Alexander Larsson
+
+2007-2011, Amos Brocco
+
+2002, Anders Carlsson
+
+2002, Bent Spoon Software
+
+2003-2005, Christian Persch
+
+2002, Christophe Fergeau
+
+2008-2010, Cosimo Cecchi
+
+2010, Cosimo Cecchi <cosimoc@gnome.org>
+
+2002, Darin Adler
+
+2000-2001, Eazel, Inc
+
+1999-2000, Free Software Foundation
+
+2008, Free Software Foundation, Inc
+
+1999-2000, Free Software Foundaton
+
+2004, James Willcox
+
+2001, Maciej Stachowiak
+
+2003-2004, Marco Pesenti Gritti
+
+2007, Martin Wehner
+
+2005, Mr Jamie McCracken
+
+2007, Novell, Inc
+
+2006, Paolo Borelli <pborelli@katamail.com>
+
+2004, Red Hat Inc
+
+1999-2000, Red Hat, Inc
+
+2002, Sun Microsystems, Inc
+
+2005, Vincent Untz
+
+1999-2000, Eazel, Inc
+
+1999-2000, Red Hat Inc
+
+
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+한컴구름 버전 2.0 개발을 위해 사용한 오픈소스 소프트웨어 및 사용 내역은 다음과 같습니다.
+
+ 
+
+The list of open source software that are used by Hancom Gooroom Version 2.0 software packages are as below.
+
+ 
+
+1. gnome-control-center (https://gitlab.gnome.org/GNOME/gnome-control-center) [GPL-2.0+]
+
+ 
+
+, which is used by
+
+Gooroom Integration Applet [GPL-2.0]
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+2. Gnome Panel (https://wiki.gnome.org/Projects/GnomePanel) [GPL-2.0+]
+
+ 
+
+, which is used by
+
+Gooroom App Launcher [GPL-2.0],
+
+Gooroom Dockbarx Applet [GPL-2.0+]
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+3. xfce4-notifyd [GPL-2.0]
+
+ 
+
+, which is used by
+
+Gooroom App Launcher [GPL-2.0],
+
+Gooroom Integration Applet [GPL-2.0],
+
+Gooroom Notifyd [GPL-2.0]
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; version 2.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+4. DockbarX (https://github.com/M7S/dockbarx) [GPL-3.0]
+
+ 
+
+, which is used by
+
+Gooroom Dockbarx [GPL-3.0]
+
+ 
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+ 
+
+5. LightDM GTK+ Greeter (https://packages.debian.org/buster/lightdm-gtk-greeter) [GPL-3.0+]
+
+ 
+
+, which is used by
+
+Gooroom Greeter [GPL-3.0+]
+
+ 
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+ 
+
+6. GRUB (https://packages.ubuntu.com/source/xenial/grub) [GPL-2.0+]
+
+ 
+
+, which is used by
+
+Gooroom GRUB [GPL-3.0+]
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+7. GRUB2 (https://packages.debian.org/buster/grub2) [GPL-3.0+]
+
+ 
+
+, which is used by
+
+Gooroom GRUB [GPL-3.0+]
+
+ 
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+ 
+
+8. Gnome Software (https://github.com/GNOME/gnome-software/) [GPL-2.0]
+
+ 
+
+, which is used by
+
+Gooroom Software [GPL-2.0]
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; version 2.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+9. linuxmint/mintupdate (https://github.com/linuxmint/mintupdate/) [GPL-3.0+]
+
+ 
+
+, which is used by
+
+Gooroom Update [GPL-3.0+]
+
+ 
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+ 
+
+10. linuxmint/mintsystem (https://github.com/linuxmint/mintsystem/) [GPL-2.0+]
+
+ 
+
+, which is used by
+
+Gooroomsystem [GPL-2.0+]
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+ 
+
+11. pam-radius-auth (https://packages.debian.org/stable/libpam-radius-auth) [GPL-2.0+]
+
+ 
+
+, which is used by
+
+pam-gooroom [GPL-2.0+]
+
+ 
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+ 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+ 
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
