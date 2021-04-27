@@ -1,6 +1,6 @@
 pkgbase = deepin-network-utils-git
 	pkgdesc = DDE network utils
-	pkgver = 5.4.3.r4.g5da4850
+	pkgver = 5.4.5.r2.g3fb082a
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-network-utils
 	arch = x86_64
