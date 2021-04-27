@@ -1,14 +1,14 @@
 pkgbase = spw
 	pkgdesc = spw - secure password generator
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/Plague_Doctor/spw
 	arch = any
 	license = GPL
 	depends = python
-	source = spw-1.7-1.tar.bz2::https://gitlab.com/Plague_Doctor/spw/repository/archive.tar.bz2?ref=1.7
+	source = spw-1.7-2.tar.bz2::https://gitlab.com/Plague_Doctor/spw/-/archive/1.7/spw-1.7.tar.bz2
 	validpgpkeys = A8F7858263C1E39480B731DCEAD4F103068DF8E5
-	sha256sums = 83ba029631694816b9827b5457238ab2dc7b30af2d83273fe2e2fbd1ce9a9d88
+	sha256sums = 4652f97ad9f979ed896e33307044906bb73f437931d417974ee93ea64fd3a174
 
 pkgname = spw
 
