@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=golang-deepin-gir-git
-pkgver=2.0.2.r1.gd9225a1
+pkgver=2.0.2.r5.g452029c
 pkgrel=1
 pkgdesc='Generate static golang bindings for GObject'
 arch=('any')
