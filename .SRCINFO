@@ -50,7 +50,7 @@ pkgbase = waterfox-classic-kpe
 	options = !emptydirs
 	options = !makeflags
 	options = zipman
-	source = git+https://github.com/MrAlex94/Waterfox.git#tag=2021.04.2-classic
+	source = git+https://github.com/MrAlex94/Waterfox.git#tag=2021.04.2
 	source = waterfox-classic.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8056d442bb78d009400bc0823cf39d8571e96df3/waterfox-classic-kpe/waterfox-classic.desktop
 	source = kde.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8056d442bb78d009400bc0823cf39d8571e96df3/waterfox-classic-kpe/kde.js
 	source = distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8056d442bb78d009400bc0823cf39d8571e96df3/waterfox-classic-kpe/distribution.ini

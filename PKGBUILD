@@ -27,7 +27,7 @@ _filesrev=8056d442bb78d009400bc0823cf39d8571e96df3
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-classic-kpe
 _commit=709bbfedcb2750665fbda4993b253737615ee8f8
 #"git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
-source=("git+https://github.com/MrAlex94/Waterfox.git#tag=$pkgver-classic"
+source=("git+https://github.com/MrAlex94/Waterfox.git#tag=$pkgver"
         "waterfox-classic.desktop::$_filesurl/waterfox-classic.desktop"
         "kde.js::$_filesurl/kde.js"
         "distribution.ini::$_filesurl/distribution.ini"
