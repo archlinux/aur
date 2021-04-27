@@ -14,15 +14,18 @@ conflicts=("pkger")
 sha1sums=('SKIP')
 source=("${url}/archive/refs/tags/${pkgver}-${pkgrel}.tar.gz")
 
+PACKAGE_NAME="pkger"
+SOURCE_DIR="${PACKAGE_NAME}-${pkgver}-${pkgrel}"
+
 build() {
-    cd $pkgname
+    cd $SOURCE_DIR
     cargo build --release
 }
 
 package() {
-	cd $pkgname
-	install -Dm755 "target/release/pkger" "$pkgdir/usr/bin/pkger"
+	cd $SOURCE_DIR
+	install -Dm755 "target/release/pkger" "${pkgdir}/usr/bin/pkger"
 
-    install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
-	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${PACKAGE_NAME}/README.md"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${PACKAGE_NAME}/LICENSE"
 }
