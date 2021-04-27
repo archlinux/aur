@@ -1,0 +1,17 @@
+pkgbase = mdatp-bin
+	pkgdesc = Microsoft Defender Advanced Threat Protection for Endpoints
+	pkgver = 101.25.72
+	pkgrel = 0
+	install = mdatp.install
+	arch = x86_64
+	license = custom: commercial
+	depends = systemd
+	depends = libselinux
+	provides = mdatp=101.25.72
+	source = https://packages.microsoft.com/debian/10/prod/pool/main/m/mdatp/mdatp_101.25.72.amd64.deb
+	source = mdatp-user.conf
+	sha256sums = d7a8f56970f48dbc7ea30a611e68cb9afcd91d5603c5ced0df51329920211bd5
+	sha256sums = d516a208a443dd35716250f9a9ef9b12f7e752ba91a213c70cb4592ab8c0435c
+
+pkgname = mdatp-bin
+

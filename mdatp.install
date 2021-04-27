@@ -1,0 +1,9 @@
+# .install file for mdatp
+
+post_install() {
+    systemd-sysusers mdatp-user.conf
+}
+
+post_remove() {
+    userdel -r mdatp
+}
