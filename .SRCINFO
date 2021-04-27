@@ -10,7 +10,7 @@ pkgbase = earthly-bin
 	depends = docker
 	depends = git
 	source = https://github.com/earthly/earthly/releases/download/v0.5.10/earthly-linux-amd64
-	sha512sums = 734af8e869b79015b567ee9968a4b0df9d00608b6675e699debe0933ff7361a007580386df67a5d3b95df60de8f63f003e3cedb6f379d5e39de5339c3cbc3c0e
+	sha512sums = f515acb2270414c824a069f221c8d5f9d775d9bce6647f1dbb2738dd58b852ce8126439734300d7ea5a3fdc94b7d13f349f04911c93dd788d6993ae51cf7aa09
 
 pkgname = earthly-bin
 
