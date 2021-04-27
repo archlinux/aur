@@ -1,0 +1,37 @@
+pkgbase = gnome-screensaver
+	pkgdesc = Legacy GNOME screensaver
+	pkgver = 3.6.1
+	pkgrel = 17
+	url = https://wiki.gnome.org/Projects/GnomeScreensaver
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = gnome-common
+	depends = dbus-glib
+	depends = libgnomekbd
+	depends = gnome-desktop
+	optdepends = gnome-backgrounds: default background
+	backup = etc/pam.d/gnome-screensaver
+	source = https://download.gnome.org/sources/gnome-screensaver/3.6/gnome-screensaver-3.6.1.tar.xz
+	source = gnome-screensaver.pam
+	source = move-desktop-file.patch
+	source = fix-autoconf.patch
+	source = fix-systemd-support.patch
+	source = lock_screen_on_suspend.patch
+	source = lightdm_switch_user.patch
+	source = use-screensaver-background.patch
+	source = recenter.patch
+	source = gnome-desktop-3.36.patch
+	sha256sums = f39b78d4f7fed748c7f0a31d694112fb907c6d3c4e63db22eb858df07e962cd0
+	sha256sums = b6ea9e2eb586d94bcabb617a8f1c2958111df87afdbb51f645882bccdc15cbda
+	sha256sums = 4bb96f62aa069c83b629204a79a3f63b146bcaf773569aee8b5dd23fbcd88974
+	sha256sums = c4da9c18b543ecbc781c1f103321b324a855bdd0979fd36b437f6033736ad4bb
+	sha256sums = 8aa387578c1756e573f6558a66be25fc96d7e8567fb7bee580159479841f5f45
+	sha256sums = 516c479558576c6c5a2509abfcbf4fdafb5953d252e7a4ab972f9db6137daca8
+	sha256sums = 5d40bd6e1843150912dc52932eaa94c0f6d57931fd45a3769ef40e2335fe3c6f
+	sha256sums = 7161ff962801d9e34ea564c372de4b5f93b30180b83c13aadbc9a8a1cd73ff65
+	sha256sums = 6c428b9296376e4b5e2aaf503a754a1ba58333aab50c82279b7c5615d8dd9e69
+	sha256sums = 412acd14cf665c43a6e2831ed9941fc034174b8beb454210bca8b6068e1239c3
+
+pkgname = gnome-screensaver
+
