@@ -3,8 +3,8 @@
 # Contributor: J0k3r <moebius282 at gmail dot com>
 
 pkgname=netradiant-git
-pkgver=r2146.c94d5210
-pkgrel=2
+pkgver=r2180.93836301
+pkgrel=1
 epoch=1
 pkgdesc='The open source, cross platform level editor for idtech games (GtkRadiant fork)'
 url='https://netradiant.gitlab.io/'
@@ -12,7 +12,7 @@ license=('GPL' 'BSD' 'LGPL')
 arch=('i686' 'x86_64')
 depends=('gtk2' 'gtkglext' 'minizip' 'libjpeg-turbo' 'libwebp')
 makedepends=('git' 'svn' 'wget' 'unzip' 'cmake' 'make')
-provides=('netradiant' 'q3map2' 'q3data' 'q2map' 'qdata3' 'h2data')
+provides=('netradiant' 'q3map2' 'q3data' 'q2map' 'qdata3' 'h2data' 'daemonmap')
 source=("${pkgname}::git+https://gitlab.com/xonotic/netradiant.git")
 sha256sums=('SKIP')
 
@@ -24,8 +24,8 @@ pkgver() {
 build() {
     cd "${srcdir}/${pkgname}/"
 
-    # Optional, fetch submodules too (such as Crunch and Daemonmap, they will be compiled if present)
-    # git submodule update --init --recursive
+    # Fetch submodules by default (such as Crunch and Daemonmap, they are compiled if present)
+    git submodule update --init --recursive
     
     # Possible values for the GAMEPACKS_LICENSE_LIST filter are "free",
     # "all" (free + proprietary) and "none".
@@ -49,6 +49,6 @@ package() {
     cmake --install build
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     
-    # update-mime-database will erase the map mime type anyway
+    # Running update-mime-database will erase the map mime type anyway
     rm -r ${pkgdir}/usr/share/mime/
 }
