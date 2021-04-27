@@ -13,11 +13,11 @@ source=('http://nemstools.github.io/files/vtfedit133.zip'
         "${pkgname}.png"
         "${pkgname}.desktop"
         'x-vtf.xml')
-md5sums=('9a510e0b4a4a69293059a054cd116f29'
-         'c5f4f4f4c352b63aa995dda00c7cc1da'
-         '0ee76e48e7ee98b870aa359cd54c483a'
-         'c202c94be95e951ca7659c2ad3a4115c'
-         '11d66d71d41f2ce92de9d09f7c86c67f')
+sha256sums=('eb2329d105f57057f6fc6d38c34a741c2abc9f05125e80e8b0f8ab5f269a3c49'
+            'e879ea5e01c4c339ec828ab94d747b3266a963355d1843f1b7d0770b16d9698a'
+            '269aa8fecd703b65396750d266f0034df747fbcc9caf4285ea8b506c013e8edb'
+            '5bf6cdaab92992074396e531878bb28816b6392484504fa6ee0b962812862357'
+            '2ef3ee8a61eff0014084187e250191b332b5cee1e916df627c5571776ee6868d')
 
 package() {
   install -Dd "$pkgdir/usr/share/${pkgname}"
