@@ -1,6 +1,6 @@
 pkgbase = vice-svn-sdl2
 	pkgdesc = The Versatile Commodore Emulator 8-bits (PET/C64/C128/Plus4/Vic20) - SDL2 development version
-	pkgver = r39896
+	pkgver = r39940
 	pkgrel = 1
 	url = http://vice-emu.sourceforge.net
 	arch = i686

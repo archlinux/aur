@@ -3,7 +3,7 @@
 
 pkgname=vice-svn-sdl2
 _pkgname=vice-svn
-pkgver=r39896
+pkgver=r39940
 pkgrel=1
 pkgdesc="The Versatile Commodore Emulator 8-bits (PET/C64/C128/Plus4/Vic20) - SDL2 development version"
 arch=('i686' 'x86_64')
