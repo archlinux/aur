@@ -14,11 +14,11 @@ makedepends=('make' 'gettext')
 source=("http://www.level7.org.uk/${pkgname}/download/${pkgname}-${pkgver}.tar.bz2"
         "${pkgname}.desktop")
 
-prepare() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  sed -i 's/inline//g' sdlshadowdisplay.c
+#prepare() {
+#  cd ${srcdir}/${pkgname}-${pkgver}
+#  sed -i 's/inline//g' sdlshadowdisplay.c
   # Thanks goes to Phobian for the sed line.
-}
+#}
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}
