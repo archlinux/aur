@@ -1,0 +1,15 @@
+pkgbase = python-djangorestframework
+	pkgdesc = Web APIs for Django, made easy.
+	pkgver = 3.12.4
+	pkgrel = 1
+	url = https://www.django-rest-framework.org/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/d/djangorestframework/djangorestframework-3.12.4.tar.gz
+	sha256sums = f747949a8ddac876e879190df194b925c177cdeb725a099db1460872f7c0a7f2
+
+pkgname = python-djangorestframework
+	depends = python
+
