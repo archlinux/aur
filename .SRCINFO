@@ -1,0 +1,13 @@
+pkgbase = python-ancypwn-terminal-alacritty
+	pkgdesc = ancypwn terminal plugin
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/Escapingbug/ancypwn-terminal-alacritty
+	arch = any
+	license = unknown
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/a/ancypwn-terminal-alacritty/ancypwn-terminal-alacritty-0.0.2.tar.gz
+	sha256sums = 47917effdf0218d684008c339743e1a435df21db72c569e4ab1a038fd0edcc56
+
+pkgname = python-ancypwn-terminal-alacritty
+
