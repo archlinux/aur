@@ -1,15 +1,15 @@
 pkgbase = amdgpu-pro-installer
-	pkgver = 20.45_1188099
-	pkgrel = 5
-	url = https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-20-30
+	pkgver = 21.10_1247438
+	pkgrel = 1
+	url = https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-21-10
 	arch = x86_64
 	groups = Radeon_Software_for_Linux
 	license = custom: multiple
 	makedepends = wget
-	source = https://drivers.amd.com/drivers/linux/amdgpu-pro-20.45-1188099-ubuntu-20.04.tar.xz
+	source = https://drivers.amd.com/drivers/linux/amdgpu-pro-21.10-1247438-ubuntu-20.04.tar.xz
 	source = progl
 	source = progl.bash-completion
-	sha256sums = a4040db7822cde36c0783912428e1b4897ecdacb9b3d21d716357dae6e4fc6b7
+	sha256sums = 2d63e6709909559b35f0d37504bd194b8a5cba8069b80aa849ec085d05bba1e2
 	sha256sums = feb74796c3152cbafaba89d96e68a152f209bd3058c7eb0413cbe1ab0764e96f
 	sha256sums = e32801c38b475cd8df17a407726b86db3de26410f563d688325b4d4314fc5354
 
@@ -18,7 +18,7 @@ pkgname = amf-amdgpu-pro
 	license = custom: AMDGPU-PRO EULA
 	depends = libglvnd
 	depends = libx11
-	depends = vulkan-amdgpu-pro=20.45_1188099-5
+	depends = vulkan-amdgpu-pro=21.10_1247438-1
 
 pkgname = amdgpu-pro-libgl
 	pkgdesc = AMDGPU Pro OpenGL driver
@@ -37,7 +37,7 @@ pkgname = amdgpu-pro-libgl
 pkgname = lib32-amdgpu-pro-libgl
 	pkgdesc = AMDGPU Pro OpenGL driver (32-bit)
 	license = custom: AMDGPU-PRO EULA
-	depends = amdgpu-pro-libgl=20.45_1188099-5
+	depends = amdgpu-pro-libgl=21.10_1247438-1
 	depends = lib32-libdrm
 	depends = lib32-libx11
 	depends = lib32-libxcb
