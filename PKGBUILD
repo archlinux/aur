@@ -2,7 +2,7 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=composer1
-pkgver=1.10.21
+pkgver=1.10.22
 pkgrel=1
 pkgdesc="Dependency Manager for PHP, version 1"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('git' 'unzip')
 source=("${pkgname}::git+https://github.com/composer/composer.git#tag=${pkgver}"
         "${pkgname}-${pkgver}.phar::https://getcomposer.org/download/${pkgver}/composer.phar")
 sha256sums=('SKIP'
-            '1477d56da4a941de4203982c05b8a371ee4a9f2bb88a69f1b31c75d6bd6b8306')
+            '6127ae192d3b56cd6758c7c72fe2ac6868ecc835dae1451a004aca10ab1e0700')
 
 prepare() {
 	cd "${srcdir}/${pkgname}"
