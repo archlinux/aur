@@ -12,10 +12,10 @@ makedepends=('cargo')
 provides=("pkger")
 conflicts=("pkger")
 sha1sums=('SKIP')
-source=("${url}/archive/refs/tags/${pkgver}-${pkgrel}.tar.gz")
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
 
 PACKAGE_NAME="pkger"
-SOURCE_DIR="${PACKAGE_NAME}-${pkgver}-${pkgrel}"
+SOURCE_DIR="${PACKAGE_NAME}-${pkgver}"
 
 build() {
     cd $SOURCE_DIR
