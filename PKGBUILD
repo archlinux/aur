@@ -10,9 +10,9 @@ license=('GPL2' 'LGPL2.1')
 depends=('wine' 'winetricks' 'zenity')
 source=('http://nemstools.github.io/files/vtfedit133.zip'
         "${pkgname}.sh"
-	"${pkgname}.png"
-	"${pkgname}.desktop"
-	'x-vtf.xml')
+        "${pkgname}.png"
+        "${pkgname}.desktop"
+        'x-vtf.xml')
 md5sums=('9a510e0b4a4a69293059a054cd116f29'
          'c5f4f4f4c352b63aa995dda00c7cc1da'
          '0ee76e48e7ee98b870aa359cd54c483a'
