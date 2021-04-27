@@ -2,31 +2,29 @@
 
 pkgname=ghidra-dev
 pkgbranch=debugger
-pkgver=9.2.3.r704.1a3458ef7+debugger
+pkgver=9.2.3.r714.75f950880+debugger
 pkgrel=1
 pkgdesc='Software reverse engineering framework (git, current branch: debugger)'
 arch=('x86_64')
 url='https://www.nsa.gov/ghidra'
 license=(Apache)
-provides=(ghidra)
-conflicts=(ghidra)
-depends=(
-  'java-environment>=11'
-  'bash'
-  'polkit'
-)
-makedepends=(
-  'git'
-  'unzip'
-  'gradle'
-  'java-environment>=11'
-)
 provides=(
   'ghidra'
 )
 conflicts=(
   'ghidra'
   'ghidra-git'
+)
+depends=(
+  'bash'
+  'java-environment>=11'
+  'polkit'
+)
+makedepends=(
+  'git'
+  'gradle6' # gradle>=7 is currently not supported
+  'java-environment=11'
+  'unzip'
 )
 source=(
   "git+https://github.com/NationalSecurityAgency/ghidra#branch=${pkgbranch}"
@@ -69,7 +67,7 @@ prepare() {
 #  patch --no-backup-if-mismatch --forward --strip=2 --input="${srcdir}/0000-uninitialized_attributes.patch"
 
   echo -e "${prefix}Setting up the build dependencies"
-  gradle --parallel --init-script gradle/support/fetchDependencies.gradle init
+  gradle6 --parallel --init-script gradle/support/fetchDependencies.gradle init
 
   ##
   ## FOR GHIDRA DEVELOPERS
@@ -78,22 +76,22 @@ prepare() {
   ##
 
 #  echo -e "${prefix}Setting up the developers environment"
-#  gradle --parallel prepDev
+#  gradle6 --parallel prepDev
 #
 #  echo -e "${prefix}Setting up the eclipse configurations"
-#  gradle --parallel eclipse
+#  gradle6 --parallel eclipse
 #
 #  echo -e "${prefix}Compiling the linux64 native binaries"
-#  gradle --parallel buildNatives_linux64
+#  gradle6 --parallel buildNatives_linux64
 #
 #  echo -e "${prefix}Compiling the precompile language modules"
-#  gradle --parallel sleighCompile
+#  gradle6 --parallel sleighCompile
 }
 
 build() {
   cd "$pkgname2" || return
   echo -e "${prefix}Building Ghidra"
-  gradle --parallel buildGhidra
+  gradle6 --parallel buildGhidra
 }
 
 package() {
