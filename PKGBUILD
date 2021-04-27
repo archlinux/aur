@@ -40,7 +40,7 @@ build() {
 }
 
 package() {
-    cd dmenu-vus
+    cd dmenu
     mkdir -p ${pkgdir}/opt/${pkgname}
     cp -rf * ${pkgdir}/opt/${pkgname}
     make PREFIX=/usr DESTDIR="${pkgdir}" install
