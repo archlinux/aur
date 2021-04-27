@@ -2,6 +2,7 @@ pkgbase = mdatp-bin
 	pkgdesc = Microsoft Defender Advanced Threat Protection for Endpoints
 	pkgver = 101.25.72
 	pkgrel = 0
+	url = https://docs.microsoft.com/en-us/microsoft-365/security/defender-endpoint/linux-install-manually
 	install = mdatp.install
 	arch = x86_64
 	license = custom: commercial

@@ -8,6 +8,7 @@ arch=('x86_64')
 license=('custom: commercial')
 provides=("$_actual_pkgname=$pkgver")
 install=mdatp.install
+url=https://docs.microsoft.com/en-us/microsoft-365/security/defender-endpoint/linux-install-manually
 
 # libselinux was apparently the sole missing dependency on my system
 # btw, libselinux is from AUR
