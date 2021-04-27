@@ -1,14 +1,14 @@
 pkgbase = hyx
 	pkgdesc = A minimalistic, but powerful console hex editor
-	pkgver = 2020.06.09
+	pkgver = 2020.12.24
 	pkgrel = 1
 	url = https://yx7.cc/code/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = glibc
-	source = https://yx7.cc/code/hyx/hyx-2020.06.09.tar.xz
-	sha512sums = c2a0fb3b37f1589a9a810dafbc2fa3ea85ee41b988c7a8a9e3f577eb3f4b959a5516a7d059d46b1f5bb5127b2aed6381f7759f9185dfbcbb4489192ffc73e767
+	source = https://yx7.cc/code/hyx/hyx-2020.12.24.tar.xz
+	sha512sums = a1b84fc7b4f566424292fb03b8b8bf25fe0c3cd5342efeb0894b29856394cc8350f2c3f749649e6ca345c7bf3a24ac331ba276070301102a27cd6b067daec35b
 
 pkgname = hyx
 
