@@ -4,7 +4,7 @@ _pkgname=NBXplorer
 _pkgname_lc=$(echo ${_pkgname} | tr "[A-Z]" "[a-z]")
 
 pkgname=nbxplorer-git
-pkgver=_latest_tag
+pkgver=latest_tag
 pkgrel=1
 epoch=
 pkgdesc="A minimalist UTXO tracker for HD wallets."
