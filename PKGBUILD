@@ -1,16 +1,16 @@
 # Maintainer: ransome <ransome@uber.space>
 pkgname="sleek"
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Todo app based on the todo.txt format for Linux, free and open-source"
 arch=("x86_64")
 url="https://github.com/ransome1/sleek/"
 license=("MIT")
 options=(!strip)
-makedepends=("npm")
+makedepends=("yarn")
 depends=("electron")
 source=("${url}archive/refs/tags/v${pkgver}.zip" "sleek.desktop" "sleek.sh")
-sha512sums=('087766830521e94bc40faeef15ab85ea0025c9c9ed681fb9eb35f5e295c3ff190956c3c81770e1d67ef3e5324e2b27309c32b0ea9ce65b07695861f49871a2b7'
+sha512sums=('24457a25cbe71ec45927945f45fe9866ca83f23d885abc88593a7f50fb2c232b62bb2a13138568a4ce14145113408063d24e413d0f5ff4bf44c96f7b2439b1bf'
             '60777dbda8202e5a265a274d126d30269fb8fba67641d22a83be19b353b4805cbed2a3c80bbc0e6ed7c0fe7ae21c3cde59b784d42d3ba941bb0fdf022c1375e8'
             'ea1d322bd56c7944a9eae97f4968a6a2e937b510eb3c1c21266428450c5b2ddcd8576718d0b66b69fbce5694ba94e80a692d04bda1e8c2b24a8d814a5ed50963')
 
@@ -20,14 +20,14 @@ build() {
   cd "$srcdir/$pkgname-${pkgver}"
 
   msg2 "Installing node modules"
-  npm install
+  yarn install
 }
 
 package() {
   cd "$srcdir/$pkgname-${pkgver}"
 
   msg2 "Building sleek with packaged Electron"
-  npm run pack
+  yarn run pack
   install -Dm644 "dist/linux-unpacked/resources/app.asar" "$pkgdir/usr/lib/$pkgname.asar"
   install -d -Dm644 "${pkgdir}/usr/share"
   chmod 755 "${pkgdir}/usr/share"
