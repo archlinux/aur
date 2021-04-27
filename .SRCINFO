@@ -1,6 +1,6 @@
 pkgbase = efl-git
 	pkgdesc = Enlightenment Foundation Libraries - Development version
-	pkgver = 1.25.99.66531.g012d3cf797
+	pkgver = 1.25.99.66566.g994f520bfd
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
@@ -72,10 +72,10 @@ pkgbase = efl-git
 	optdepends = gst-plugins-ugly: Video and thumbnail codecs
 	optdepends = gst-libav: Video and thumbnails with ffmpeg/libav
 	optdepends = libreoffice: Office document thumbnails
-	provides = efl=1.25.99.66531.g012d3cf797
-	provides = elementary=1.25.99.66531.g012d3cf797
-	provides = elementary-git=1.25.99.66531.g012d3cf797
-	provides = evas_generic_loaders=1.25.99.66531.g012d3cf797
+	provides = efl=1.25.99.66566.g994f520bfd
+	provides = elementary=1.25.99.66566.g994f520bfd
+	provides = elementary-git=1.25.99.66566.g994f520bfd
+	provides = evas_generic_loaders=1.25.99.66566.g994f520bfd
 	conflicts = efl
 	conflicts = elementary
 	conflicts = elementary-git
