@@ -1,6 +1,6 @@
 pkgbase = octoprint-venv
 	pkgdesc = Web interface for 3D printers (venv installation type)
-	pkgver = 1.5.3
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = http://octoprint.org/
 	install = octoprint.install
@@ -16,14 +16,13 @@ pkgbase = octoprint-venv
 	optdepends = mjpg-streamer: stream images from webcam
 	provides = octoprint
 	conflicts = octoprint
-	source = https://pypi.io/packages/source/o/octoprint/OctoPrint-1.5.3.tar.gz
+	source = https://pypi.io/packages/source/o/octoprint/OctoPrint-1.6.0.tar.gz
 	source = octoprint.service
 	source = octoprint.sysusers
 	source = octoprint.tmpfiles
-	sha256sums = 89ae85920c005090b8adbec1fd3364873459c6f342c412375f1b60bb3496ae0d
+	sha256sums = 8598b6d40dcd648370dd7cadf9179ec53dd1149347f88e3c293e5d2aa51caa28
 	sha256sums = 70be0efa0f6a536ed8a89a81bfdb5a978b1036ffead09a4db2e4d67599e02302
 	sha256sums = 79d0f9fe053181eaa77f472b5235463ce217475d47fada9869f42d313b4651a9
 	sha256sums = 67f7844f39428058d59e2a7cb03b3d3077b5f4b0a136fc9dd123e6538a92e851
 
 pkgname = octoprint-venv
-
