@@ -2,7 +2,7 @@
 
 _pkgname=yesplaymusic
 pkgname=yesplaymusic-appimage
-pkgver=0.3.5
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="高颜值的第三方网易云播放器，支持 Windows / macOS / Linux。"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(!strip)
 _appimage="YesPlayMusic-${pkgver}.AppImage"
 source=(${url}/releases/download/v${pkgver}/YesPlayMusic-${pkgver}.AppImage)
 noextract=("${_appimage}")
-sha512sums=('26bf91b123c2f4448afb2d03fa16aba57e1a1613ec543a9998f5f40865220fdedd61c52acf868b3e494db4dcaeddb44dad7658d4cb101206cf24fdb85fbb5da4')
+sha512sums=('f42b9727438371a189d20a8820ffd8c39b33e3bce58cbc604095db1eed84bb6e639536cdcc2162d920a049a46b43b46e53e9878a43eaeb64c2ec7818e0c16164')
 
 prepare() {
     chmod +x "${_appimage}"
