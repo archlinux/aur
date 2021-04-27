@@ -1,6 +1,6 @@
 pkgbase = golang-github-linuxdeepin-go-x11-client-git
 	pkgdesc = X11 protocol go language binding
-	pkgver = 0.6.4.r3.g60170eb
+	pkgver = 0.6.7.r0.g60170eb
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/go-x11-client
 	arch = any
