@@ -1,6 +1,6 @@
 pkgbase = cpr
 	pkgdesc = C++ requests library by whoshuu
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/whoshuu/cpr
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = cpr
 	license = MIT
 	makedepends = cmake
 	depends = curl
-	source = https://github.com/whoshuu/cpr/archive/refs/tags/1.6.1.tar.gz
-	md5sums = 84b21579cf201144eabb767df740ed24
+	source = https://github.com/whoshuu/cpr/archive/refs/tags/1.6.2.tar.gz
+	md5sums = 7032dc8b49840488e3aded733bc7a454
 
 pkgname = cpr
 
