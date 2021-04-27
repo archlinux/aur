@@ -1,15 +1,14 @@
 pkgbase = libuev
 	pkgdesc = Lightweight event loop library
-	pkgver = 2.3.0
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://github.com/troglobit/libuev
 	arch = i686
 	arch = x86_64
-	license = custom
-	makedepends = gcc
-	depends = pkgconfig
-	source = https://github.com/troglobit/libuev/releases/download/v2.3.0/libuev-2.3.0.tar.xz
-	sha256sums = 7e62e96d8832a45e353c99bb67ae24a7e4d67a3b22ca2c10b288a94d104ac03a
+	license = MIT
+	depends = pkgconf
+	source = https://github.com/troglobit/libuev/releases/download/v2.3.2/libuev-2.3.2.tar.xz
+	sha256sums = af31ffe1058a2ff6c56fee26ec8749688704d297189b6a898380a601efefbec9
 
 pkgname = libuev
 

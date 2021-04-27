@@ -1,16 +1,16 @@
-# Maintainer: Javier Tiá <javier dot tia at gmail dot com>
+# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Contributor: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=libuev
-pkgver=2.3.0
+pkgver=2.3.2
 pkgrel=1
 pkgdesc='Lightweight event loop library'
 arch=('i686' 'x86_64')
 url='https://github.com/troglobit/libuev'
-depends=('pkgconfig')
-makedepends=('gcc')
-license=('custom')
+depends=('pkgconf')
+license=('MIT')
 source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('7e62e96d8832a45e353c99bb67ae24a7e4d67a3b22ca2c10b288a94d104ac03a')
+sha256sums=('af31ffe1058a2ff6c56fee26ec8749688704d297189b6a898380a601efefbec9')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
