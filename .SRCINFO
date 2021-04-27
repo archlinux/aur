@@ -1,0 +1,22 @@
+pkgbase = automirror-git
+	pkgdesc = An xrandr-wrapper that automatically configures the attached monitors in a mirror configuration that is optimized for the primary display and makes all other outputs scale to that.
+	pkgver = 50_20170328.3b88aff
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/schlomo/automirror
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = ruby-ronn
+	depends = bash
+	depends = sed
+	depends = xorg-xrandr
+	optdepends = libnotify: For displaying notification about the script's action.
+	optdepends = zenity: For using a GUI in interactive mode.
+	provides = automirror=50_20170328.3b88aff
+	conflicts = automirror
+	source = automirror::git+git://github.com/schlomo/automirror.git
+	sha256sums = SKIP
+
+pkgname = automirror-git
+
