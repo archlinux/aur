@@ -1,9 +1,0 @@
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Type=Application
-Name=Write Stylus
-Comment=A word processor for handwriting
-
-Exec=/usr/bin/write_stylus %f
-Terminal=false
-Categories=Utility;TextEditor;
