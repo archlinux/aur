@@ -1,6 +1,6 @@
 pkgbase = zerotier-gui-git
 	pkgdesc = A Linux front-end for ZeroTier
-	pkgver = 1.2.2
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/tralph3/ZeroTier-GUI.git
 	arch = any
