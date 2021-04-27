@@ -1,7 +1,7 @@
 pkgbase = gdlauncher-git
 	pkgdesc = Modded Minecraft launcher built with Electron/React (git version)
 	pkgver = 1.1.2.r0.g92dab09b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gdevs.io
 	arch = x86_64
 	license = GPL3

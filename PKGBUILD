@@ -2,7 +2,7 @@
 
 pkgname=gdlauncher-git
 pkgver=1.1.2.r0.g92dab09b
-pkgrel=2
+pkgrel=3
 pkgdesc='Modded Minecraft launcher built with Electron/React (git version)'
 arch=('x86_64')
 url='https://gdevs.io'
@@ -77,5 +77,6 @@ Terminal=false
 StartupWMClass=GDLauncher
 Icon=gdlauncher
 Categories=Game;
+Type=Application
 EOF
 }
