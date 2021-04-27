@@ -1,39 +1,34 @@
-# Maintaienr:Bernie Innocenti <bernie@codewiz.org>
+# Maintainer: Nafis <mnabid.25@outlook.com>
+# Contributor: Bernie Innocenti <bernie@codewiz.org>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
-pkgname=plasma-thunderbolt-git
 _pkgname=plasma-thunderbolt
-pkgver=82.ce67155
+pkgname=${_pkgname}-git
+pkgver=5.20.90.r7.4641eef
 pkgrel=1
-pkgdesc='Plasma addons for managing Thunderbolt devices'
+pkgdesc="Plasma integration for controlling Thunderbolt devices"
 arch=(x86_64)
-url="https://cgit.kde.org/${_pkgname}.git"
-license=(GPL)
-depends=(bolt kservice)
-makedepends=(git extra-cmake-modules plasma-framework)
+url="https://kde.org/plasma-desktop"
+license=(LGPL)
 groups=(plasma)
-source=("git+https://anongit.kde.org/${_pkgname}.git")
+depends=(bolt systemsettings)
+makedepends=(git extra-cmake-modules)
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("${_pkgname}::git+https://invent.kde.org/plasma/${_pkgname}.git")
 sha256sums=('SKIP')
-validpgpkeys=('DD0AC837C3FAA57615747A2FC451030771FF4BAC') # Bernie Innocenti <bernie@codewiz.org>
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${srcdir}/${_pkgname}
+  echo "$(git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
-  cd build
-  cmake ../${_pkgname} \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
+  cmake -B build -S ${_pkgname} \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR=${pkgdir} cmake --install build
 }
