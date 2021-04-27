@@ -1,7 +1,7 @@
 # Maintainer: Derek Taylor (DistroTube) <derek@distrotube.com>
 pkgname=dmscripts-git
 _pkgname=dmscripts
-pkgver=1.0.r98.a94bc1b
+pkgver=1.0.r156.f7f5309
 pkgrel=1
 pkgdesc="A collection of dmenu scripts"
 arch=('any')
@@ -13,10 +13,10 @@ makedepends=()
 checkdepends=()
 optdepends=(
   'emacs: editor for dmconf '
-  'slock: used by dmlogout' 
-  'libnotify: used by dmlogout' 
+  'slock: used by dmlogout'
+  'libnotify: used by dmlogout'
   'qutebrowser: used by dmqute'
-  'reddio: used by dmred' 
+  'reddio: used by dmred'
   )
 provides=(dmscripts)
 conflicts=(dmscripts)
@@ -36,13 +36,9 @@ pkgver() {
 
 package() {
   cd ${_pkgname}
-  install -Dm755 dman -t "${pkgdir}/usr/bin"
-  install -Dm755 dmconf -t "${pkgdir}/usr/bin"
-  install -Dm755 dmkill -t "${pkgdir}/usr/bin"
-  install -Dm755 dmlogout -t "${pkgdir}/usr/bin"
-  install -Dm755 dmqute -t "${pkgdir}/usr/bin"
-  install -Dm755 dmred -t "${pkgdir}/usr/bin"
-  install -Dm755 dmscrot -t "${pkgdir}/usr/bin"
-  install -Dm755 dmsearch -t "${pkgdir}/usr/bin"
+  # Make sure to install all scripts
+  for script in $(echo scripts/*); do 
+    install -Dm755 ${script} -t "${pkgdir}/usr/bin"
+  done
 }
 
