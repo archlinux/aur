@@ -1,0 +1,16 @@
+pkgbase = vim-splitjoin-git
+	pkgdesc = Vim plugin for switching between single-line and multi-line forms of code
+	pkgver = 1.0.0.r144.gf4773c0
+	pkgrel = 1
+	url = https://github.com/andrewradev/splitjoin.vim
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = ruby
+	depends = vim-plugin-runtime
+	source = vim-splitjoin-git::git+https://github.com/andrewradev/splitjoin.vim
+	sha256sums = SKIP
+
+pkgname = vim-splitjoin-git
+
