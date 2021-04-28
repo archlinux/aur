@@ -1,0 +1,17 @@
+pkgbase = vim-ferm-git
+	pkgdesc = Vim syntax highlighting for "ferm" filetype
+	pkgver = r15.64b49c8
+	pkgrel = 1
+	url = https://github.com/cometsong/ferm.vim
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-ferm
+	conflicts = vim-ferm
+	source = vim-ferm-git::git+https://github.com/cometsong/ferm.vim
+	sha256sums = SKIP
+
+pkgname = vim-ferm-git
+
