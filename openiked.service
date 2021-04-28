@@ -5,7 +5,7 @@ After=network-online.target
 
 [Service]
 Type=forking
-ExecStart=/usr/local/sbin/iked
+ExecStart=/usr/bin/iked
 
 [Install]
 WantedBy=multi-user.target

@@ -1,6 +1,6 @@
 pkgbase = openiked-git
-	pkgdesc = Free implementation of the IKEv2 protocol
-	pkgver = 0.r15.ged8c9ed
+	pkgdesc = Free implementation of the IKEv2 protocol (Git)
+	pkgver = 0.r15.g3c4b04b
 	pkgrel = 1
 	url = https://www.openiked.org
 	arch = x86_64
@@ -14,11 +14,13 @@ pkgbase = openiked-git
 	depends = openssl
 	provides = iked
 	provides = ikectl
+	conflicts = iked
+	conflicts = ikectl
 	source = openiked::git://github.com/openiked/openiked-portable.git
 	source = openiked.service
 	source = sysusers.conf
 	sha256sums = SKIP
-	sha256sums = c15f9ec3fc58333d90779b4ff69d5815809f3cf423dda31f42126e76e1bc1874
+	sha256sums = 692eca0595a26e33b3d305909a4b70b2b62913118386117e91c81c2f85c3e612
 	sha256sums = 0b9806bc8e75fdc473db71d12b9096b6016cc0023835c84f83e36316e594847b
 
 pkgname = openiked-git
