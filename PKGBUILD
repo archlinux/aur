@@ -8,6 +8,7 @@ source=(
 md5sums=(SKIP)
 arch=(x86_64 i386 armv7h)
 depends=(ananicy fmt spdlog nlohmann-json)
+makedepends=(cmake git)
 
 prepare() {
 	cd "$pkgname"
