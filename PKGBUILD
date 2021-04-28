@@ -3,8 +3,8 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 # Contributor: Quan Guo <guotsuan@gmail.com>
 pkgname=cheat-git
-pkgver=4.2.0.r0.g883a170
-pkgrel=2
+pkgver=4.2.1.r0.g1eb44e8
+pkgrel=1
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/cheat/cheat"
@@ -30,6 +30,9 @@ pkgver() {
 }
 
 prepare() {
+	# Prevent creation of a `go` directory in one's home.
+	# Sometimes this directory cannot be removed with even `rm -rf` unless
+	# one becomes root or changes the write permissions.
 	export GOPATH="$srcdir/gopath"
 	go clean -modcache
 }
