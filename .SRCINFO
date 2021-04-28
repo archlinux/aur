@@ -1,12 +1,14 @@
 pkgbase = nextcloud-app-calendar-git
 	pkgdesc = Calendar app for nextcloud
-	pkgver = 2.0.0.r1.g6a8575a0
+	pkgver = 2.1.1.r441.g902994dd
 	pkgrel = 1
 	epoch = 1
 	url = http://nextcloud.com
 	arch = any
 	license = AGPL
+	makedepends = nodejs-lts-fermium
 	makedepends = npm
+	makedepends = composer
 	makedepends = git
 	depends = nextcloud
 	provides = nextcloud-app-calendar

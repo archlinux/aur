@@ -4,14 +4,15 @@
 
 pkgname=nextcloud-app-calendar-git
 epoch=1
-pkgver=2.0.0.r1.g6a8575a0
+pkgver=2.1.1.r441.g902994dd
 pkgrel=1
 pkgdesc="Calendar app for nextcloud"
 arch=('any')
 url="http://nextcloud.com"
 license=('AGPL')
 depends=('nextcloud')
-makedepends=('npm' 'git')
+# Using older node.js due to https://github.com/sass/node-sass/issues/3077
+makedepends=('nodejs-lts-fermium' 'npm' 'composer' 'git')
 conflicts=('nextcloud-app-calendar')
 provides=('nextcloud-app-calendar')
 options=('!strip')
@@ -26,14 +27,14 @@ pkgver() {
 build() {
   cd "${srcdir}/calendar"
   # -j1 so that `npm install` runs before other steps
-  make -j1 dev-setup build-js-production appstore
+  make -j1 dev-setup build-js-production composer-init
 }
 
 package() {
-  install -d "$pkgdir"/usr/share/webapps/nextcloud/apps
-  tar -xvf "${srcdir}/calendar/build/artifacts/appstore/calendar.tar.gz" -C "${pkgdir}/usr/share/webapps/nextcloud/apps/"
-  # npm polishments
-  chown -R root:root "$pkgdir"
-  find "${pkgdir}"/usr -type d -exec chmod 755 {} +
-  find "${pkgdir}"/usr -type f -exec chmod 644 {} +
+  cd "${srcdir}/calendar"
+
+  install -Ddm755 "$pkgdir"/usr/share/webapps/nextcloud/apps/calendar
+  # Upstream `appstore` target now creates tarball from a separate cloned repo
+  cp -dr --no-preserve=ownership CHANGELOG.md appinfo css img js l10n lib templates vendor \
+    "$pkgdir"/usr/share/webapps/nextcloud/apps/calendar
 }
