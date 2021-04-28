@@ -1,6 +1,6 @@
 # Maintainer: DuckSoft <realducksoft at gmail dot com>
 pkgname=ventoy-iso-bin
-pkgver=1.0.41
+pkgver=1.0.42
 pkgrel=1
 pkgdesc="A multiboot ISO image (Binary)"
 arch=(any)
@@ -10,7 +10,7 @@ provides=(ventoy-iso)
 conflicts=(ventoy-iso)
 source=("$url/releases/download/v$pkgver/ventoy-$pkgver-livecd.iso")
 noextract=(ventoy-$pkgver-livecd.iso)
-b2sums=('f5f1a74011ed69967df4dda1a39229c8257a6c823750bcb3af2bf4ade595fabc21d64d90e458eaee65a237a09eecbecb4796f6df90b759af48fec8a80a96bb1d')
+b2sums=('6f0640e9c0ee51bcc407990465ebd972555976a6aae223ba201bfb93f3bbc76b47d0e3e0f06402a1026a629cff4d24c780796d57ffd77c82cf2f6046d35eac4f')
 
 package() {
     install -Dm644 -v ventoy-$pkgver-livecd.iso "$pkgdir"/usr/share/ventoy/livecd.iso
