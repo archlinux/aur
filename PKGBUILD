@@ -8,7 +8,7 @@
 
 pkgname=librewolf-nightly
 _pkgname="Librewolf Nightly"
-pkgver=r640483.d8d407400667
+pkgver=r645672.6c87ac236bb8
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom. (nightly edition)"
 arch=(x86_64 aarch64)
@@ -59,7 +59,7 @@ sha512sums_aarch64=('7c2f0c792eb5744eaf0f2ee7c0887a74118796d691029e824451b063d5b
 
 pkgver() {
   cd mozilla-unified
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)" | sed 's/\+//g'
 }
 
 prepare() {
