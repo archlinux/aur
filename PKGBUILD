@@ -3,7 +3,7 @@
 # Contributor: Philipp A. <flying-sheep@web.de>
 
 pkgname=rambox
-pkgver=0.7.5
+pkgver=0.7.7
 pkgrel=2
 pkgdesc='Free and Open Source messaging and emailing app that combines common web applications into one.'
 arch=(i686 x86_64)
@@ -14,8 +14,8 @@ license=(GPL3)
 source=("https://github.com/ramboxapp/community-edition/archive/$pkgver.tar.gz"
         "https://github.com/ramboxapp/community-edition/releases/download/$pkgver/Rambox-$pkgver-linux-x64.tar.gz"
         "$pkgname.desktop" "$pkgname.js")
-sha256sums=('a9f8fd67d93b193b82e6aaf57971303297918f581dae80e5dcd907ae43e348dc'
-            '12400d7c774eb360e3dd15dc356af0a72b9f5813ca829cd436f9b274aaf3e67a'
+sha256sums=('4d20226cfd6f816bb4563eaeb257dddbf600fbc46c3b90c261f4b4d98f5cb882'
+            'de4bef9738fd130771b0cb6440c6f2377151ec3d1da43bf10a03f27818edc3dd'
             '61ad70a929c402e24c79b8868208310f9b3c4d7801db2b791af38293231ee524'
             '3b5ed6f04eea66f239b5ae56ea1ff9e47de156cd38bb54ebc46541daba6091b6')
 noextract=("Rambox-$pkgver-x64.tar.gz")
