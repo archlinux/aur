@@ -3,7 +3,7 @@
 pkgname=texlive-upstream
 pkgver=1
 pkgrel=1
-pkgdesc="If you install TeXLive by hand, this package provides fake distro packages."
+pkgdesc="If you install TeXLive by hand, this package provides fake distribution packages."
 url="http://www.tug.org/texlive/"
 arch=('any')
 license=('GPL')
@@ -12,5 +12,11 @@ replaces=('texlive-full' 'texlive-installer' 'texlive-most-doc' 'texlive-bin' 't
 conflicts=('texlive-full' 'texlive-installer' 'texlive-most-doc' 'texlive-bin' 'texlive-htmlxml' $(pacman -Sgq texlive-most texlive-lang))
 
 package() {
-	exit 0
+	mkdir -p "$pkgdir"/usr/share/doc/texlive-upstream
+	echo "If you install TeXLive by hand, this package provides fake" > "$pkgdir"/usr/share/doc/texlive-upstream/README
+	echo "distrubution packages and some conflicting packages in AUR." >> "$pkgdir"/usr/share/doc/texlive-upstream/README
+	echo "" >> "$pkgdir"/usr/share/doc/texlive-upstream/README
+	echo "It works for me. Cry me a river." >> "$pkgdir"/usr/share/doc/texlive-upstream/README
+	echo "" >> "$pkgdir"/usr/share/doc/texlive-upstream/README
+	echo "The author." >> "$pkgdir"/usr/share/doc/texlive-upstream/README
 }
