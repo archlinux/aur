@@ -1,6 +1,6 @@
 pkgbase = wechat-nativefier
-	pkgdesc = Built with nativefier (based on electron 12), seemed to Windows version.
-	pkgver = 20210314.1
+	pkgdesc = 由nativefier生成（基于Electron 12）, 模仿了Windows版微信的界面。
+	pkgver = 20210429.1
 	pkgrel = 1
 	url = https://wx.qq.com/
 	arch = x86_64

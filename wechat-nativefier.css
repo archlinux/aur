@@ -1,179 +1,107 @@
-/* 语言选项 */
-.lang {
-    display: none !important;
-}
-
-/* 版权声明 */
 .copyright {
     display: none !important;
 }
 
-/* 主体高度 */
 .main {
     height: 100% !important;
     padding-top: 0 !important;
 }
 
-/* 主体宽度 */
 .main_inner {
     max-width: 100% !important;
 }
 
-/* 左侧面板背景 */
 .panel {
     background: #eeeae8 !important;
 }
 
-/* 自己的昵称 */
 .header .info .nickname .display_name {
     color: #000 !important;
 }
 
-/* 搜索框 */
 .search_bar .frm_search {
     background-color: #dad8d8 !important;
     color: #989898 !important;
 }
 
-/* 搜索候选菜单标题 */
 .recommendation .contact_title {
     color: #000 !important;
-    margin-top: 0 !important;
     background-color: #ddddde !important;
 }
 
-/* 搜索项 */
 .recommendation .contact_item {
-    border-bottom: 0 !important;
     background-color: #e9e7e6 !important;
 }
 
-/* 选中搜索项 */
 .recommendation .contact_item.on {
     background: #c6c6c6 !important;
 }
 
-/* 搜索项文字 */
 .recommendation .info .nickname {
     color: #000 !important;
 }
 
-/* 导航栏 */
 .tab {
     background: #eeeae8 !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-around !important;
 }
 
-/* 导航栏分割线 */
+.tab .tab_item.ng-scope {
+    display: none;
+}
+
 .tab .tab_item::after {
-    border-right: 0 !important;
+    display: none !important;
 }
 
-/* 导航栏底边 */
 .tab::after {
-    border-bottom: 0 !important;
+    display: none !important;
 }
 
-/* 聊天列表 */
 .chat_item {
     background-color: #e9e7e6 !important;
-    border-bottom: 0 !important;
+    border-color: #00000000 !important;
 }
 
-/* 置顶聊天 */
 .chat_item.top {
     background-color: #ddddde !important;
 }
 
-/* 当前聊天 */
 .chat_item.active {
     background: #c6c6c6 !important;
 }
 
-/* 聊天名称 */
 .chat_item .info .nickname {
     color: #000 !important;
 }
 
-/* 选中聊天的时间 */
 .chat_item.active .ext, .chat_item.active .info .msg {
     color: #989898 !important;
 }
 
-/* 选中聊天的内容 */
 .chat_item .info .msg {
     color: #989898 !important;
 }
 
-/* 公众号标题背景 */
-.read_item_hd {
-    background-color: #ddddde !important;
-}
-
-/* 公众号标题 */
-.read_item_hd .info .username {
-    color: #000 !important;
-}
-
-/* 公众号列表 */
-.read_item {
-    border-bottom: 0 !important;
-    background-color: #e9e7e6 !important;
-}
-
-/* 当前公众号 */
-.read_item.active {
-    background-color: #c6c6c6 !important;
-}
-
-/* 公众号文章标题 */
-.read_item .title {
-    color: #000 !important;
-}
-
-/* 公众号间隔 */
-.read_list .just_for_bg {
-    padding-top: 0 !important;
-}
-
-/* 联系人列表标题 */
 .contact_list .contact_title {
     background: #ddddde !important;
 }
 
-/* 联系人列表 */
 .contact_list .contact_item {
-    border-bottom: 0 !important;
+    border-color: #00000000 !important;
     background-color: !important;
 }
 
-/* 选中联系人背景 */
 .contact_list .active {
     background: #c6c6c6 !important;
 }
 
-/* 联系人名称 */
 .contact_list .info .nickname {
     color: #000 !important;
 }
 
-/* 聊天框背景 */
-.box {
-    background-color: #f5f5f5 !important;
-}
-
-/* 聊天框标题 */
-.box_hd .title_wrap {
-    background-color: #f5f5f5 !important;
-}
-
-/* 自己发送的消息 */
-.bubble.bubble_primary {
-    background-color: #9eea6a !important;
-}
-
-/* 截图按钮 */
 .web_wechat_screencut {
     display: none !important;
 }
