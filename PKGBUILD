@@ -5,13 +5,13 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 _pkgname='ferdi'
 pkgname="$_pkgname-git"
-pkgver='5.6.0.beta.5.r124.ge3898e2f'
-pkgrel='2'
+pkgver='5.6.0.beta.5.r136.gcced2638'
+pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$_pkgname.com"
 license=('Apache')
-depends=('electron10' 'libxkbfile')
+depends=('electron11' 'libxkbfile')
 makedepends=('git' 'npm6' 'python' 'python2')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -26,7 +26,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '7eb846fe8242c78afcdef9c8e1fbce6fdcf100f59da85fee83a99690a57f60ea'
-            '7b969f94dfbdcbdf813118258a72963e7c472c92245560d3c4b8cea472e99737')
+            '306321dfaa62710bff49fb289d192fea24b369f1d34845cc8db9d626b4b9b68f')
 
 _sourcedirectory="$pkgname"
 _homedirectory="$pkgname-home"
@@ -56,7 +56,7 @@ prepare() {
 	git submodule update --init --recursive
 
 	# Set system Electron version for ABI compatibility
-	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron10/version')"'"|' 'package.json'
+	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron11/version')"'"|' 'package.json'
 
 	# Prevent Ferdi from being launched in dev mode
 	sed -i "s|import isDevMode from 'electron-is-dev'|const isDevMode = false|g" 'src/index.js' 'src/config.js'
@@ -90,7 +90,7 @@ build() {
 	cd "$srcdir/$_sourcedirectory/"
 
 	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npx gulp build
-	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npx electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist='/usr/lib/electron10' -c.electronVersion="$(cat '/usr/lib/electron10/version')"
+	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npx electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist='/usr/lib/electron11' -c.electronVersion="$(cat '/usr/lib/electron11/version')"
 }
 
 package() {
@@ -109,7 +109,7 @@ package() {
 	install -dm755 "$pkgdir/usr/bin/"
 	cat << EOF > "$pkgdir/usr/bin/$_pkgname"
 #!/bin/sh
-NODE_ENV=production exec electron10 '/usr/lib/$_pkgname/app.asar' "\$@"
+NODE_ENV=production exec electron11 '/usr/lib/$_pkgname/app.asar' "\$@"
 EOF
 	chmod +x "$pkgdir/usr/bin/$_pkgname"
 

@@ -1,7 +1,7 @@
 pkgbase = ferdi-git
 	pkgdesc = A messaging browser that allows you to combine your favorite messaging services into one application - git version
-	pkgver = 5.6.0.beta.5.r124.ge3898e2f
-	pkgrel = 2
+	pkgver = 5.6.0.beta.5.r136.gcced2638
+	pkgrel = 1
 	url = https://getferdi.com
 	arch = x86_64
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = ferdi-git
 	makedepends = npm6
 	makedepends = python
 	makedepends = python2
-	depends = electron10
+	depends = electron11
 	depends = libxkbfile
 	provides = ferdi
 	conflicts = ferdi
@@ -25,6 +25,6 @@ pkgbase = ferdi-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 7eb846fe8242c78afcdef9c8e1fbce6fdcf100f59da85fee83a99690a57f60ea
-	sha256sums = 7b969f94dfbdcbdf813118258a72963e7c472c92245560d3c4b8cea472e99737
+	sha256sums = 306321dfaa62710bff49fb289d192fea24b369f1d34845cc8db9d626b4b9b68f
 
 pkgname = ferdi-git

@@ -10,13 +10,13 @@ index 7091dfb7..7400d348 100644
    - ./assets/images/taskbar
 \ No newline at end of file
 diff --git a/package.json b/package.json
-index 63dabe5b..4c80e823 100644
+index 2eafe780..510356f4 100644
 --- a/package.json
 +++ b/package.json
 @@ -90,7 +90,6 @@
      "hex-to-rgba": "1.0.2",
      "jsonwebtoken": "8.5.1",
-     "lodash": "^4.17.4",
+     "lodash": "4.17.21",
 -    "mac-screen-capture-permissions": "1.1.0",
      "macos-version": "5.2.0",
      "marked": "0.7.0",
