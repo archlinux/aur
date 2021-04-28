@@ -66,7 +66,7 @@ pkgver=${_major}
 #_stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=5
+pkgrel=6
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -260,8 +260,7 @@ prepare() {
         scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
         scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
         scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
-        scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
-    	scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
+
 
         echo "Enable CacULE CPU scheduler..."
         scripts/config --enable CONFIG_CACULE_SCHED
