@@ -1,0 +1,14 @@
+pkgbase = archive-cli
+	pkgdesc = Extract/Compress easy to learn function. The script takes care of the file extension to call the good command.
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/azlux/archive-cli
+	arch = any
+	license = unknown
+	depends = sh
+	optdepends = p7zip: 7-zip support
+	source = https://github.com/azlux/archive-cli/archive/refs/tags/0.4.tar.gz
+	b2sums = 318e7ca3a14c940647c5642508482811a947d87b97a0a33dd93f3db04a16d88aaf4c43e1bc62d9c77b0ccf97ce086c2e8e8d7fe587717fa27cd1d6235eee10bf
+
+pkgname = archive-cli
+
