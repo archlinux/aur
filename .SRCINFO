@@ -1,0 +1,14 @@
+pkgbase = archlinuxmx-keyring
+	pkgdesc = Arch Linux MX PGP keyring
+	pkgver = 20210427
+	pkgrel = 1
+	url = https://github.com/archlinuxmx/archlinuxmx-keyring.git/
+	install = archlinuxmx-keyring.install
+	arch = any
+	license = GPL
+	source = https://github.com/archlinuxmx/archlinuxmx-keyring/releases/download/20210427/archlinuxmx-keyring-20210427.tar.gz
+	validpgpkeys = 903BAB73640EB6D65533EFF3468F122CE8162295
+	sha256sums = 8b8eef7cff463120ba474c8a0cae2c0f05a7acd312fec21d708d30d6820ceea4
+
+pkgname = archlinuxmx-keyring
+
