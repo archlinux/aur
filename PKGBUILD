@@ -1,6 +1,6 @@
 pkgname='chia-gui'
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A new blockchain and smart transaction platform that is easier to use, more efficient, and secure. - Also installs GUI, using system electron"
 arch=('any')
 url="https://www.chia.net/"
@@ -22,6 +22,7 @@ package() {
   install -Dm644 -t "${pkgdir}/usr/share/applications" "usr/share/applications/chia-blockchain.desktop"
   install -Dm644 "chia-blockchain.png" "$pkgdir/usr/share/pixmaps/chia-blockchain.png"
   install -Dm755 "chia-blockchain" "${pkgdir}/usr/bin/chia-blockchain"
+  ln -s /usr/share/chia-blockchain/app.asar.unpacked/daemon/chia "${pkgdir}/usr/bin/chia"
 } 
 md5sums=('d228338ce1eb68e496c5fafdb2f92070'
          '05797ff1f5ef580c7243e0182c822701'

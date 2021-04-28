@@ -1,7 +1,7 @@
 pkgbase = chia-gui
 	pkgdesc = A new blockchain and smart transaction platform that is easier to use, more efficient, and secure. - Also installs GUI, using system electron
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.chia.net/
 	arch = any
 	license = Apache
