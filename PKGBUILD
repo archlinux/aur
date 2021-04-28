@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.11.16
+pkgver=5.12
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -33,8 +33,8 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=bee111cdd35a8bc92a47de46caed6ec91efac606
-_bmqversion=5.11-r3
+_arch_config_commit=a50fbb19009197f7cde96fb2f86bb8b7e7e1c010
+_bmqversion=5.12-r0
 _bmq_patch="prjc_v${_bmqversion}.patch"
 _gcc_more_v=20210402
 source=(
@@ -42,26 +42,18 @@ source=(
   "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=e8731a36ed9d0652a25b4a018b0cb92dec65edb7"
-  "0002-drm-i915-ilk-glk-Fix-link-training-on-links-with-LTT.patch::https://git.archlinux.org/linux.git/patch/?id=51281a71543d75213ee3c718019b569f863f4a37"
-  "0003-drm-i915-dp-Prevent-setting-the-LTTPR-LT-mode-if-no-.patch::https://git.archlinux.org/linux.git/patch/?id=6cbe4ead29eb88f3a5d4257adbb77a944ed4c9de"
-  "0004-drm-i915-Disable-LTTPR-support-when-the-DPCD-rev-1.4.patch::https://git.archlinux.org/linux.git/patch/?id=713058d68c0bef0b8add47ff67875a077b834552"
-  "0005-drm-i915-Fix-modesetting-in-case-of-unexpected-AUX-t.patch::https://git.archlinux.org/linux.git/patch/?id=5ffd31225f0df5dcd0a1ba60bdae3e7e19afb684"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=1ed48c405ba85328bae25d2f393700ba715a2f81"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('fe7a296697d21ac4572b6714da898bc9303cf04f988297329e10d660a957ea6142a182fe583e7a98bf2f767f61989288454ecf640844346af079d90b4fdd21b1'
+b2sums=('842d921b9a73d2aaade763dbd2ec67bdfe0275baa6d628b775f5c87574ad7dc86f0419afcd48c10c1235f4bffa16084243f2cf4556e6afcd391e975fe8ba530b'
         'SKIP'
-        'bd8c382158f579c173ac68a7f27d3abfe52b1bd60413dea593534fa6c126d6a804e6dd98c2d9b1f402cd22c9bbd8f39bacaba7d96b13320bd529badba0ec3e0c'
-        '13efa1d20f89452d036f300c311e0a4b5920fad3d27e4c8ddc9bf97d0c5105b599113c21c48e636c8a84bd38f8590d7f6ad8d9ce6306097fcca2c9ecd300344d'
+        'e4f405e6817b3203802ba2951d463639a12b82a1747ac23f116ca70f9a6f70ea62655e2e3e848c5753a6222c02b18de96393206c209396242a6c7beda4f4486d'
+        'cc843d32e3cc36cc850fadab2cd6bbde7b04b29e103f81473b6e53f70f678d6f5c82f90f5107296aa6cb54e53545e15487c5a2796498a38c9cfa00c93929f894'
         'b8c3ba685a7fa34f8b047467a41e2e78702c41e54469934515c7d2f221411b2357a7378b86edaf2ca7ce1a3f9b627878438ab1cfcdae4fc681f47021d9a813d9'
-        'a82761f2aef7647ce3f14a7c55b9d8c73912f953d3a4b792380b213adece85f562d02c88f27afa8da53871e15c30ab72e31dde567f6ed60ea0ad8188faf0bfd2'
-        'b643f5deda522fa87047cedda15ea8063a4c22c93783895d02d92f25701777b0fd121b7c6cb1c02a622b8b1bb502f890f40f8e46d223c9fdce18521772810040'
-        'c0643cc959048e968a2c24fb3566337ee3cae66b95aad2fbd5426ac45c48553545b9481409526d8bfd86eec6c43c7e255fca176a95a801ee7a939d9ec1ed4745'
-        '8b6511f410a51aacb514ea822565ca6ce7d044ffcfcf4c5a3a679b0a906d9f5c41b0a0d86765f49a2e6f8965911a8937ee5645ccab78326220c5191e83156cac'
-        'f217a61552eadbf381c5206c803d305ec78b40dee7bdf651d12e67c425255f561ab8c374ce949fd1c1b2f0aff852f432828d71e68dd15d96e0b2f4caad267bd4')
+        'd3a0830d937c5103238c9edb1ef98b8478d00251cc0b83e0e62bd359c38fd5e125b62a80f43e22ed81f7f5024f7b1a1de8402e3e9830858ad5e8b2b8112577b5')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
