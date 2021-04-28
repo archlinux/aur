@@ -1,7 +1,7 @@
 # Maintainer: Vasilly Prokopyev <Vasilly.Prokopyev at google mail>
 
 pkgname=easyeda-bin
-pkgver=6.4.19.3
+pkgver=6.4.19.4
 pkgrel=1
 pkgdesc="easyeda.com desktop client"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=()
 makedepends=('unzip')
 source=("https://image.easyeda.com/files/easyeda-linux-x64-${pkgver}.zip"
 		"custom-dest-dir.patch")
-md5sums=("3ec9da29c8f1e4f1f4f1c0817089ea5f"
+md5sums=("d81e46d64728cc7fea725f0bf7e044a5"
 		"bcf19d29779d81c21b57df4742e428df")
 
 prepare() {
