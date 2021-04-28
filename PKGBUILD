@@ -11,14 +11,12 @@
 # A single multi-core CPU actually runs slower with NUMA enabled.
 # See, https://bugs.archlinux.org/task/31187
 _NUMAdisable=y
-
+# Enable fsync
 _fsync=y
-
+#enable futex2
 _futex2=y
-
+#enable winesync
 _winesync=
-### Disable Debug options - can give a better performance
-_disable_debugoption=y
 ### Enable protect file mappings under memory pressure
 _mm_protect=y
 ### Set performance governor as default
@@ -55,7 +53,6 @@ _localmodcfg=
 # through the trouble of customizing your config options.  NOT recommended when
 # a new kernel is released, but again, convenient for package bumps.
 _use_current=
-
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-cacule-rdb
@@ -84,20 +81,20 @@ source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz
         "${_patchsource}/cacule-patches/cacule-5.12.patch"
         "${_patchsource}/cacule-patches/0002-cacule-Change-default-preemption-latency-to-2ms-for-.patch"
         "${_patchsource}/cpu-patches/0001-cpu-patches.patch"
-        "${_patchsource}/ll-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
         "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/futex2-patches/0001-futex2-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/bfq-patches/0001-bfq-patches.patch"
         "${_patchsource}/block-patches/0001-block-patches.patch"
-        "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
         "${_patchsource}/ll-patches/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
+        "${_patchsource}/ll-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
+        "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
         "${_patchsource}/bbr2-patches-v2/0001-bbr2-5.12-introduce-BBRv2.patch"
         "${_patchsource}/btrfs-patches/0001-btrfs-patches.patch"
         "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
         "${_patchsource}/pf-patches/0001-genirq-i2c-Provide-and-use-generic_dispatch_irq.patch"
         "${_patchsource}/mm-patches/0001-mm-5.12-protect-file-mappings-under-memory-pressure.patch"
-        "${_patchsource}/zstd-patches/0001-zstd-patches.patch"
-        "${_patchsource}/zstd-dev-patches/0001-zstd-dev-patches.patch"
+        "${_patchsource}/zstd-upstream-patches-v2/0001-zstd-upstream-patches.patch"
+        "${_patchsource}/zstd-ll-patches/0001-zstd-patches.patch"
         "${_patchsource}/clearlinux-patches/0001-clearlinux-patches.patch"
         "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch")
 
@@ -107,20 +104,20 @@ sha512sums=('c2f3510ea7feb8d334592a00b0ff74ad7821b1d4a38a6025c5c30e8f565fbb7ec4c
             '01a59958b88f4f0fae72943883937bccb5be2a1ceeac9ba8a689c4b47125edcd3360aa6a94a535b6dae24ea8b1ac52002431ad72b2a623373c905901af2b3609'
             'bafda1ec6114a360bed8a9f8ae6b1e8dc5c22adf15f7545c3455a090f14b491639707f6624d7a891ec66b459842e61df9d62274b070b7a611f0bdbd367219ae5'
             '15933126feeb56ccc6ace70db9fa7afb64d148900e41a780e42e03ce09faf7bab12413f526675b918aeff55e91dc038ad58884bb7add4a45962aca79d576cb93'
-            '47f265716ebd268e4296aaba1efe5098df00736b69ec7d0413cace6dbb5cb162c1c952f7527a2a41b246ed76e6e112514c5349e8dc52f4609def30257e18d7aa'
             '449570b8b9a04391cc2cc171cc806b3a132c6e969c7cedf9c4925d24244888e6f2e5afb6c551521fe62fcb7e2bf08cb8d396f9ec785ecfcdd5ea27dd9ffed4ea'
             '898c02e531dec8be746bec715127e9827bd8b1a181cc24489a1969a75c974b8b7ca3db6bfc5544f808404938e348fc70581dffdfb0b83ef5d1430f819ea3a63d'
             '86da27380a3a8d17b5b6705cab3e0e0258a241fc5e9f07d403e3da13346fb9c426b85243125b94e9d0880fbd29c81451753e977b3b42e5cdf63acedb91c61010'
             'daeec34905469d8e3a10eca2bf71e3875423fc72a92ff62bff74aef8f0af90cfc3282d5c67483379feb33b1c518287b6165b5fe42f9a8bcbc6dd3dbfcde38121'
-            '5081a6a3a3db160ef0a23acd0c0db403cc4b3eb2dfd280b1b7ba2ae907d362e4d6a653d546523c870af07009c62f58eec26e7b8174a3f4fcbaa32808d965ad73'
             '58bdb0b745c8b52cd65e48af41764d4b5c54f054878e3fe9c83d4580fd94e190693c77a2b76990db79ef68e441c21cbd6f475137823c6e02b38e7c38602b7934'
+            '47f265716ebd268e4296aaba1efe5098df00736b69ec7d0413cace6dbb5cb162c1c952f7527a2a41b246ed76e6e112514c5349e8dc52f4609def30257e18d7aa'
+            '5081a6a3a3db160ef0a23acd0c0db403cc4b3eb2dfd280b1b7ba2ae907d362e4d6a653d546523c870af07009c62f58eec26e7b8174a3f4fcbaa32808d965ad73'
             '28446f518e88ab934330111a01019cb164bfdd21094c69e96cc16c7931440d069ef997ae141154c97c80fcb727e8c4d940b8bf63554e3f4179652523e285c5b4'
             'c9d7d9fc00e46fefd9c947fd75e344ba314f97a764f9e2356817323a7d76efc632e0aac0b62a5f393540d8a0de42209878055a6a3581ca926df3982f2657723c'
             '1b3b48246fe70e8ca7390cacacf560696c1d98604a7716ac32df8f3d7fc7cc2ab733ab24e372fffa63016344f2e4ed078f7d597c3c1261f0ca3ff1c87a13dcb9'
             '800ce2518d4ff38c2d40399a5b104bb4552ba81c67398cc301adcb1f80035c2531a188f42eb20526f5384028fa0e39578b4b36ebfb9a8c0d70fb0283577f6faf'
             '0563235769866375905d9bf6c33acae6aaff7b39351b4c9693f0f7dc7fef45d5850f267519a2ab8cc05ce60899f41080f071f00a417cf09d3985d89407a40f86'
-            'c5fb633c308365089f8d69ecdc549f0622130e7d1b6f1e1c97b4b3f14e1afa4dacef5a85e51e236dfa3f2c965245629bdf704a1d4cfd29f03e43884d8df25fab'
-            '7c69ae81a6adae82d05a503c4e11bd20604bfa1c42762d23b9b41182300e192aaf1fd8c36f09acc9681a0b346b299a69cc15baa149e60947b64da201775d6ab6'
+            '07f68347a31b6c65f7a9dcd3d0940da26ee79fd922799ca64b8d6888087dec25bb2776c9a995c9865652c68c1b25bfccdc7298b0a8599f4f0cac7d26acea31a0'
+            'e9a405643af07f8065c53c24b7ffce89d65716a6c009984c6fcd26fecf345a3a38c2ab0e58a0fac0f48ec9ea6a9cf74e06c04631ea4fcaaae4a4e7c51447a0d6'
             'a441e14f4fa25e771d51e2d0e5cb626a8eddc4dfd0e9e91c6585b35cdf4e238bc56c76ad81aa269f25067cb60eeb6f9d431b710d6f40349867cbae73b434b3bd'
             '21a613ef65497ecf66daf31b43e02022c71195b48082ae7628a9d2ba8619819f69a6702c4c87e39e8718074c7ebfd674694a29a962049a16d47f1e5f748c78c3')
 
@@ -255,111 +252,13 @@ prepare() {
   		scripts/config --disable CONFIG_MQ_IOSCHED_KYBER
   	fi
 
-    if [ -n "$_disable_debugoption" ]; then
-          echo "Disable debug options"
-          scripts/config --disable CONFIG_SLUB_DEBUG
-          scripts/config --disable CONFIG_PM_DEBUG
-          scripts/config --disable CONFIG_PM_ADVANCED_DEBUG
-          scripts/config --disable CONFIG_PM_SLEEP_DEBUG
-           scripts/config --disable CONFIG_ACPI_DEBUG
-           scripts/config --disable CONFIG_SCHED_DEBUG
-           scripts/config --disable CONFIG_LATENCYTOP
-           scripts/config --disable CONFIG_DEBUG_PREEMPT
-           scripts/config --disable CONFIG_DEBUG_INFO
-           scripts/config --disable CONFIG_CGROUP_BPF
-           scripts/config --disable CONFIG_BPF_LSM
-           scripts/config --disable CONFIG_BPF_PRELOAD
-           scripts/config --disable CONFIG_BPF_LIRC_MODE2
-           scripts/config --disable CONFIG_BPF_KPROBE_OVERRIDE
-           scripts/config --disable CONFIG_DEBUG_INFO_REDUCED
-           scripts/config --disable CONFIG_DEBUG_INFO_COMPRESSED
-           scripts/config --disable CONFIG_DEBUG_INFO_SPLI
-           scripts/config --disable CONFIG_GDB_SCRIPTS
-           scripts/config --disable CONFIG_DEBUG_INFO_DWARF4
-           scripts/config --disable CONFIG_DEBUG_INFO_BTF
-           scripts/config --disable CONFIG_BPF_PRELOAD
-           scripts/config --disable CONFIG_BPF_PRELOAD_UMD
-           scripts/config --disable CONFIG_BPF_STREAM_PARSER
-           scripts/config --disable CONFIG_DMA_API_DEBUG
-           scripts/config --disable CONFIG_DMA_API_DEBUG_SG
-           scripts/config --disable CONFIG_DMA_MAP_BENCHMARK
-           scripts/config --disable CONFIG_DEBUG_FS
-           scripts/config --disable CONFIG_GCOV_KERNEL
-           scripts/config --disable CONFIG_GCOV_PROFILE_ALL
-           scripts/config --disable CONFIG_DEBUG_FS
-           scripts/config --disable CONFIG_GENERIC_IRQ_DEBUGFS
-           scripts/config --disable CONFIG_ACPI_DEBUGGER
-           scripts/config --disable CONFIG_ACPI_DEBUGGER_USER
-           scripts/config --disable CONFIG_ACPI_EC_DEBUGFS
-           scripts/config --disable CONFIG_ACPI_APEI_ERST_DEBUG
-           scripts/config --disable CONFIG_NFIT_SECURITY_DEBUG
-           scripts/config --disable CONFIG_DMADEVICES_DEBUG
-           scripts/config --disable CONFIG_DMADEVICES_VDEBUG
-           scripts/config --disable CONFIG_DMATEST
-           scripts/config --disable CONFIG_BTRFS_DEBUG
-           scripts/config --disable CONFIG_BTRFS_FS_REF_VERIFY
-           scripts/config --disable CONFIG_BTRFS_ASSERT
-           scripts/config --disable CONFIG_BTRFS_FS_RUN_SANITY_TESTS
-           scripts/config --disable CONFIG_BTRFS_FS_CHECK_INTEGRITY
-           scripts/config --disable CONFIG_EXT4_DEBUG
-           scripts/config --disable CONFIG_EXT4_KUNIT_TESTS
-           scripts/config --disable CONFIG_SECURITY_APPARMOR_DEBUG
-           scripts/config --disable CONFIG_SECURITY_APPARMOR_DEBUG_ASSERTS
-           scripts/config --disable CONFIG_SECURITY_APPARMOR_DEBUG_MESSAGES
-           scripts/config --disable CONFIG_SECURITY_APPARMOR_KUNIT_TEST
-           scripts/config --disable CONFIG_POWER_SUPPLY_DEBUG
-           scripts/config --disable CONFIG_NTFS_DEBUG
-           scripts/config --disable CONFIG_GENERIC_IRQ_DEBUGFS
-           scripts/config --disable CONFIG_CIFS_STATS2
-           scripts/config --disable CONFIG_CIFS_DEBUG
-           scripts/config --disable CONFIG_CIFS_DEBUG2
-           scripts/config --disable CONFIG_CIFS_DEBUG_DUMP_KEYS
-           scripts/config --disable CONFIG_JBD2_DEBUG
-           scripts/config --disable CONFIG_CONFIG_NFS_DEBUG
-           scripts/config --disable CONFIG_TRACE_IRQFLAGS_SUPPORT
-           scripts/config --disable CONFIG_TRACE_IRQFLAGS_NMI_SUPPORT
-           scripts/config --disable CONFIG_EARLY_PRINTK_USB
-           scripts/config --disable CONFIG_X86_VERBOSE_BOOTUP
-           scripts/config --disable CONFIG_EARLY_PRINTK
-           scripts/config --disable CONFIG_EARLY_PRINTK_DBGP
-           scripts/config --disable CONFIG_EARLY_PRINTK_USB_XDBC
-           scripts/config --disable CONFIG_EFI_PGT_DUMP
-           scripts/config --disable CONFIG_DEBUG_TLBFLUSH
-           scripts/config --disable CONFIG_IOMMU_DEBUG
-           scripts/config --disable CONFIG_IOMMU_LEAK
-           scripts/config --disable CONFIG_HAVE_MMIOTRACE_SUPPORT
-           scripts/config --disable CONFIG_X86_DECODER_SELFTEST
-           scripts/config --disable CONFIG_IO_DELAY_0X80
-           scripts/config --disable CONFIG_IO_DELAY_0XED
-           scripts/config --disable CONFIG_IO_DELAY_UDELAY
-           scripts/config --disable CONFIG_IO_DELAY_NONE
-           scripts/config --disable CONFIG_DEBUG_BOOT_PARAMS
-           scripts/config --disable CONFIG_CPA_DEBUG
-           scripts/config --disable CONFIG_DEBUG_ENTRY
-           scripts/config --disable CONFIG_DEBUG_NMI_SELFTEST
-           scripts/config --disable CONFIG_DEBUG_IMR_SELFTEST
-           scripts/config --disable CONFIG_X86_DEBUG_FPU
-           scripts/config --disable CONFIG_PUNIT_ATOM_DEBUG
-           scripts/config --disable CONFIG_UNWINDER_ORC
-           scripts/config --disable CONFIG_UNWINDER_FRAME_POINTER
-           scripts/config --disable CONFIG_UNWINDER_GUESS
-           scripts/config --disable CONFIG_FRAME_POINTER
-           scripts/config --disable CONFIG_THINKPAD_ACPI_DEBUGFACILITIES
-           scripts/config --disable CONFIG_THINKPAD_ACPI_DEBUG
-           scripts/config --disable CONFIG_THINKPAD_ACPI_UNSAFE_LEDS
-           scripts/config --disable CONFIG_CMA_DEBUG
-           scripts/config --disable CONFIG_CMA_DEBUGFS
-           scripts/config --disable CONFIG_EDAC_DEBUG
-           scripts/config --disable CONFIG_ATM_IA_DEBUG
-           scripts/config --disable CONFIG_ATM_FORE200E_DEBUG
-           scripts/config --disable CONFIG_BCMA_DEBUG
-         fi
-
         echo "Set module compression to ZSTD"
         scripts/config --enable CONFIG_MODULE_COMPRESS
         scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
         scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
         scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
+        scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
+    	scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
 
         echo "Enable CacULE CPU scheduler..."
         scripts/config --enable CONFIG_CACULE_SCHED
