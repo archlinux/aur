@@ -1,10 +1,10 @@
 # Maintainer 5amu <v.casalino@protonmail.com>
 
 pkgname=wordlists
-pkgver=0.1
-pkgrel=6
+pkgver=0.2
+pkgrel=1
 pkgdesc="Download a great set of wordlists. In /usr/share/wordlists"
-url="https://github.com/5amu/wordlists"
+url="https://github.com/5amu"
 license=('MIT' 'GPLv2')
 arch=('any')
 source=(
@@ -38,5 +38,5 @@ package() {
     mkdir -p $pkgdir/usr/share/wordlists/seclists
     cp -r $( find $srcdir/SecLists-2021.1/* -type d -maxdepth 0) $pkgdir/usr/share/wordlists/seclists
     install -Dm644 $srcdir/SecLists-2021.1/LICENSE $pkgdir/usr/share/licenses/wordlists/seclists/LICENSE
-    find /usr/share/wordlists -type f -exec chmod 644 \{\} \;
+    find $pkgdir/usr/share/wordlists -type f -exec chmod 644 \{\} \;
 }
