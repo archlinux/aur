@@ -5,19 +5,18 @@
 # Contributor: Mantas Mikulėnas <grawity at gmail.com>
 
 pkgname=eggdrop
-pkgver=1.8.4
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="The world's most popular Open Source IRC bot."
 arch=('i686' 'x86_64')
 url="http://www.eggheads.org/"
 license=('GPL2')
-depends=('tcl' 'openssl')
-source=("http://ftp.eggheads.org/pub/$pkgname/source/1.8/$pkgname-$pkgver.tar.gz"
-        "http://ftp.eggheads.org/pub/$pkgname/source/1.8/$pkgname-$pkgver.tar.gz.asc"
+depends=('tcl' 'openssl' 'bash')
+source=("http://ftp.eggheads.org/pub/$pkgname/source/1.9/$pkgname-$pkgver.tar.gz"
+        "http://ftp.eggheads.org/pub/$pkgname/source/1.9/$pkgname-$pkgver.tar.gz.asc"
         'dlopen.c' 'utf8.patch')
 backup=("etc/$pkgname.conf")
-#options=('!makeflags')
-sha512sums=('d08af09dc83045bf89eae957e7817591f16456f83ba3efe6b361fd421a3d4068348543275c26b27b006f09f06344c04cdf58ee4231f1aee0e7537ec39bc24b49'
+sha512sums=('e78e220c8207361c6d7bda06be6d0094d747809ff8554fed2ce4a5fb63df1d87f8b82a98d4f0b98909042af8f6719f4a7bf548f864d3d6dfa8caa57b346d32dc'
             'SKIP'
             'e1d254a6adae76198f7e20729aaff5d01a0947cb07faed560574886c1ce3794242204ec0c2f5905584240b243bf36103fffbb06f4154c022228c1b701a070e5c'
             '7966d4d42994e44a0e571b89f1c66cb41f672d75e6ced7051d1ece23d8c209059c3565b41de950bf9c907701ce7a5e33a215b637587075ed300a002a58eda503')
@@ -50,12 +49,11 @@ check() {
   cd "$srcdir/$pkgname-$pkgver"
 
   # If this fails, theres a rather good chance something is broken.
-
   gcc -O2 "$srcdir/dlopen.c" -o dlopen -ldl
 
   for module in *.so ; do
     if ! env LD_PRELOAD='' ./dlopen "${module}" ; then
-      error "Sanity check failed: "${module}" cannot be loaded. Proceeding anyway.."
+      echo "Sanity check failed: "${module}" cannot be loaded. Proceeding anyway.."
     fi
   done
 
