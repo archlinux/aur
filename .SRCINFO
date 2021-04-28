@@ -1,20 +1,21 @@
 pkgbase = imgui-sfml
 	pkgdesc = Library which allows you to use ImGui with SFML
-	pkgver = 2.1
-	pkgrel = 6
+	pkgver = 2.3
+	pkgrel = 1
 	url = https://github.com/eliasdaler/imgui-sfml/
-	arch = any
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = MIT
 	makedepends = cmake
 	depends = sfml
-	source = https://github.com/eliasdaler/imgui-sfml/archive/v2.1.tar.gz
-	source = https://github.com/ocornut/imgui/archive/v1.81.tar.gz
-	source = package.patch
-	source = imgui_tables.patch
-	md5sums = 6e7fc0bd05372e668c786f7e25591302
-	md5sums = 9b48ac38829b538233f99c0aa8cacf50
-	md5sums = 7e2a85494a0987e44e44ddaf79adb152
-	md5sums = 3a48bd7bacc9e322f03aa69a83c46932
+	source = imgui-sfml-2.3.tar.gz::https://github.com/eliasdaler/imgui-sfml/archive/v2.3.tar.gz
+	source = imgui-1.82.tar.gz::https://github.com/ocornut/imgui/archive/v1.82.tar.gz
+	sha512sums = 2c7c848cf99a2a2ecc834e20aa65252c1986aabe397c9241f7ae8eb5e78ffa49ad70cc140fba37001386df9e515bf847abcc16631c7bdea944926b1128d55b9f
+	sha512sums = 210076c2b04c09e63a4924e1f874bfe240668f4d2656511c96dd5499efe04d795ad01d5af8e2aa2543849d3ca5ef1a6c6555a9232d4d92f95bf98c41e8505b58
 
 pkgname = imgui-sfml
 
