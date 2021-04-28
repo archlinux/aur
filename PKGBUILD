@@ -1,19 +1,20 @@
-# Maintainer: Scott Percival <code@moral.net.au>
-# Contributor: Felix Schindler <felix at schindlerfamily dot de>
+# Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
+#              Scott Percival <code@moral.net.au>
+#              Felix Schindler <felix at schindlerfamily dot de>
 #              Christoph Haag <haagch@studi,informatik.uni-stuttgart.de>
 #              WorMzy Tykashi <wormzy.tykashi@gmail.com>
 pkgname=steamos-compositor
 pkgver=1.35
-pkgrel=1
+pkgrel=2
 pkgdesc="Compositor used by SteamOS \"based on xcompmgr by Keith Packard et al.\""
 arch=('i686' 'x86_64')
 url="http://repo.steampowered.com/steamos/pool/main/s/steamos-compositor/"
 license=('GPL')
-depends=('libxfixes' 'libxext' 'libxcomposite' 'libxdamage' 'libxrender' 'libxxf86vm' 'sdl_image' 'libgl')
+depends=('libxfixes' 'libxext' 'libxcomposite' 'libxdamage' 'libxrender' 'libxxf86vm' 'sdl_image' 'libgl' 'xorg-xrandr')
 makedepends=('mesa')
 _msver=1.10
-source=("http://repo.steamstatic.com/steamos/pool/main/s/steamos-compositor/steamos-compositor_${pkgver}.tar.xz"
-        "http://repo.steamstatic.com/steamos/pool/main/s/steamos-modeswitch-inhibitor/steamos-modeswitch-inhibitor_${_msver}.tar.xz")
+source=("http://repo.steampowered.com/steamos/pool/main/s/steamos-compositor/steamos-compositor_${pkgver}.tar.xz"
+        "http://repo.steampowered.com/steamos/pool/main/s/steamos-modeswitch-inhibitor/steamos-modeswitch-inhibitor_${_msver}.tar.xz")
 md5sums=('7615da46332153b2e5f17aeb674214b1'
          'ab8b731fb917aff183aa338bf3298495')
 
