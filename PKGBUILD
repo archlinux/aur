@@ -16,11 +16,11 @@ sha512sums=("0493fe8c465036a8e487f38513483cd816ffe2f1ba2ebdca35ae71e98b752be0c20
 
 package() {
   # Copy worldwind files to destination folder
-	mkdir -p  "$pkgdir/usr/share/$pkgname"
-	cp -r "$srcdir"/* "$pkgdir/usr/share/$pkgname/"
+  mkdir -p  "$pkgdir/usr/share/$pkgname"
+  cp -r "$srcdir"/* "$pkgdir/usr/share/$pkgname/"
 
   # Create launch script
-	mkdir -p "$pkgdir/usr/bin/"
+  mkdir -p "$pkgdir/usr/bin/"
   cp "$srcdir"/worldwind "$pkgdir/usr/bin/"
-	chmod +x "$pkgdir/usr/bin/worldwind"
+  chmod +x "$pkgdir/usr/bin/worldwind"
 }
