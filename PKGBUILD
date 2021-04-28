@@ -5,7 +5,7 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-libtiff
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Library for manipulation of TIFF images (mingw-w64)"
 arch=('any')
@@ -17,7 +17,7 @@ depends=('mingw-w64-libjpeg-turbo'
 makedepends=('mingw-w64-configure')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("http://download.osgeo.org/libtiff/tiff-${pkgver}.tar.gz")
-sha256sums=('eb0484e568ead8fa23b513e9b0041df7e327f4ee2d22db5a533929dfc19633cb')
+sha256sums=('0e46e5acb087ce7d1ac53cf4f56a09b221537fc86dfc5daaad1c2e89e1b37ac8')
 
 build() {
   export CFLAGS="-fno-strict-aliasing"
