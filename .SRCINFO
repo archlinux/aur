@@ -1,7 +1,7 @@
 pkgbase = xeus-cling
 	pkgdesc = A C++ jupyter kernel based on xeus and cling
-	pkgver = 0.10.0
-	pkgrel = 3
+	pkgver = 0.12.1
+	pkgrel = 1
 	url = https://github.com/jupyter-xeus/xeus-cling
 	arch = x86_64
 	license = BSD
@@ -13,15 +13,17 @@ pkgbase = xeus-cling
 	depends = nlohmann-json
 	depends = jupyter
 	depends = jupyter-widgetsnbextension
-	depends = cling-dev
+	depends = cling
 	depends = pugixml
 	depends = cxxopts
-	source = https://github.com/jupyter-xeus/xeus-cling/archive/0.10.0.tar.gz
+	source = https://github.com/jupyter-xeus/xeus-cling/archive/0.12.1.tar.gz
 	source = 0001-Rename-kernels.patch
 	source = 0002-Use-llvm-from-cling.patch
-	md5sums = f81624ee2777dacfa5507bd448c174b5
+	source = 0003-put-config-file-at-etc.patch
+	md5sums = 8831c891c059428b24148435d2305172
 	md5sums = e03c81c3701e4f0dea249955051c2ddf
 	md5sums = 30e86ddf8e4996352eb456e12ec686bb
+	md5sums = fb1bf5fdaa53af1c010b9da9d29f63b6
 
 pkgname = xeus-cling
 

@@ -1,0 +1,12 @@
+diff --unified --recursive --text xeus-cling-0.12.1/CMakeLists.txt xeus-cling-0.12.1-fixed/CMakeLists.txt
+--- xeus-cling-0.12.1/CMakeLists.txt	2021-03-16 22:48:10.000000000 +0800
++++ xeus-cling-0.12.1-fixed/CMakeLists.txt	2021-04-23 08:48:47.772221440 +0800
+@@ -371,7 +371,7 @@
+ # Configuration and data directories for jupyter and xeus-cling
+ set(XJUPYTER_DATA_DIR   "share/jupyter"    CACHE STRING "Jupyter data directory")
+ set(XEUS_CLING_DATA_DIR "share/xeus-cling" CACHE STRING "xeus-cling data directory")
+-set(XEUS_CLING_CONF_DIR "etc/xeus-cling"   CACHE STRING "xeus-cling configuration directory")
++set(XEUS_CLING_CONF_DIR "../etc/xeus-cling"   CACHE STRING "xeus-cling configuration directory")
+ 
+ # Install xcpp headers
+ install(FILES ${XCPP_HEADERS}
