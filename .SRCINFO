@@ -1,13 +1,17 @@
 pkgbase = mkusb
 	pkgdesc = A shell script to create ISO multiboot USB flash drives that support both legacy and EFI boot
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/lilyinstarlight/mkusb
 	arch = any
 	license = MIT
 	depends = bash
-	source = mkusb-0.2.3.tar.gz::https://github.com/lilyinstarlight/mkusb/archive/v0.2.3.tar.gz
-	sha256sums = 2a0808dbaf43ec37d1bf27e1471a65f30b6ea9e83eb027ef2fb6b6b7fb97a529
+	depends = dosfstools
+	depends = grub
+	optdepends = dialog: required if not specifying device on command line
+	optdepends = syslinux: only required for FreeDOS
+	source = mkusb-0.2.4.tar.gz::https://github.com/lilyinstarlight/mkusb/archive/v0.2.4.tar.gz
+	sha256sums = c3fd9bb258dee27820d6a38dd4766db2442bcb5a2e39507e9b061f3dd011558a
 
 pkgname = mkusb
 
