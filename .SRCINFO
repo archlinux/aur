@@ -1,0 +1,12 @@
+pkgbase = socketwrench
+	pkgdesc = Socket Wrench is to Websockets what Postman/Insomnia is to HTTP connections (kinda).
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://asleepysamurai.com/articles/socketwrench
+	arch = x86_64
+	license = custom
+	noextract = SocketWrench-0.0.1-setup.deb
+	source = https://asleepysamurai.com/articles/socketwrench/binary/SocketWrench-0.0.1-setup.deb
+	sha256sums = bcd2dd48a953ff649999ff28bc4fb4b62e4f2f248e74c627332607d554c1d19b
+
+pkgname = socketwrench
