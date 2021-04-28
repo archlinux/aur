@@ -2,7 +2,7 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
-pkgver=3.82.18
+pkgver=3.83.2
 pkgrel=1
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('npm' 'nvm')
 source=("https://github.com/tutao/tutanota/archive/tutanota-release-$pkgver.tar.gz"
         "$pkgname"
         "$pkgname.desktop")
-sha256sums=('f6353a94b2cc0d82d18a13d3f69ba5767effc16db60b0b929204b33c43897f27'
+sha256sums=('78a2464bae6af61c70ab7ee43267fd1fcf164c62bd8fa870e90117ce1e76da05'
             '4f91e842bd92a3312943854383e4929f9baf6cb684a7027aa55edcce1bf4ca16'
             'a2e2b932eb0bc2ad2413b7f39eb9fbdb517f5670367413f76d718d5d270996f7')
 
@@ -29,7 +29,7 @@ _ensure_local_nvm() {
 }
 
 prepare() {
-	# Use nodejs v14 per upstream
+	# Use Node.js 14 per upstream
 	export npm_config_cache="$srcdir/npm-cache"
 	local npm_prefix=$(npm config get prefix)
 	local nodeversion='14.16.1'
@@ -59,8 +59,7 @@ package() {
 
 	for icon_size in 64 512; do
 		icons_dir=/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
-		install -d $pkgdir$icons_dir
-		install -m644 resources/desktop-icons/icon/${icon_size}.png \
+		install -Dm644 resources/desktop-icons/icon/${icon_size}.png \
 			$pkgdir$icons_dir/$pkgname.png
 	done
 
