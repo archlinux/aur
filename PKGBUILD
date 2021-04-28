@@ -4,20 +4,21 @@
 
 pkgname=reuse
 pkgver=0.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Helper tool for providing and confirming copyright and licensing information'
 arch=('any')
 url='https://github.com/fsfe/reuse-tool'
 license=('GPL-3.0-or-later' 'Apache-2.0' 'CC-BY-SA-4.0' 'CC0-1.0')
 depends=('python'
          'git'
-         'python-debian'
-         'python-requests'
-         'python-jinja'
          'python-binaryornot'
          'python-boolean.py'
-         'python-license-expression')
-makedepends=('python-setuptools')
+         'python-debian'
+         'python-jinja'
+         'python-license-expression'
+         'python-requests')
+makedepends=('python-pip'
+             'python-setuptools')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/fsfe/reuse-tool/archive/v${pkgver}.tar.gz"
 )
