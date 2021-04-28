@@ -2,3 +2,4 @@ pkg/
 src/
 Mac_Linux.zip
 *pkg.tar.xz
+*pkg.tar.zst
