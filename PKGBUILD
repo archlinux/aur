@@ -20,20 +20,19 @@ noextract=()
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/wasm3"
 	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/wasm3"
 	mkdir -p build
 	cd build
-	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+	CFLAGS=-ffile-prefix-map=$srcdir/wasm3/='' cmake ..
 	make
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	mkdir -p "$pkgdir"/usr/bin
-	install ./build/wasm3 "$pkgdir"/usr/bin
+	cd "$srcdir/wasm3"
+	install -D ./build/wasm3 -t "$pkgdir"/usr/bin
 }
