@@ -5,7 +5,7 @@
 
 pkgname=factor-git
 _pkgname=factor
-pkgver=0.98.r4.g5e9b804d66
+pkgver=0.98.r1776.24607b2608
 pkgrel=1
 pkgdesc="A general purpose, dynamically typed, stack-based programming language"
 arch=(i686 x86_64)
@@ -17,16 +17,14 @@ depends=(pango cairo glib2 freetype2 mesa libgl gtkglext)
 optdepends=(udis86)
 makedepends=(git)
 options=(!strip)
-source=(#'git://factorcode.org/git/factor.git' # Official
-        'git://github.com/factor/factor.git' # Mirror
-        'factor.desktop')
+source=(
+  'git+https://github.com/factor/factor.git'
+  'factor.desktop'
+  )
 
 pkgver() {
   cd "${_pkgname}"
-  ( set -o pipefail
-    git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --tags --long | sed 's/-/.r/; s/-g/./'
 }
 
 md5sums=('SKIP'
