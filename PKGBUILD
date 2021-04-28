@@ -45,14 +45,17 @@ prepare() {
 }
 
 build() {
+  msg2 'build QtOIIO'
   cd "${srcdir}"/QtOIIO
   cmake -DCMAKE_INSTALL_PREFIX="/usr/lib/qt/" -DCMAKE_BUILD_TYPE=Release .
   make
 
+  msg2 'build qmlAlembic'
   cd "${srcdir}"/qmlAlembic
   cmake -DCMAKE_INSTALL_PREFIX="/usr/lib/qt/" -DCMAKE_BUILD_TYPE=Release .
   make
 
+  msg2 'build Meshroom'
   cd "${srcdir}"/${pkgname}
   python setup.py build
 }
