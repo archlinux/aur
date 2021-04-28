@@ -1,0 +1,101 @@
+diff --git a/FAQ.md b/FAQ.md
+index eddd059..99d5501 100644
+--- a/FAQ.md
++++ b/FAQ.md
+@@ -32,7 +32,7 @@ Also please remember that most of the time these issues are caused by MSYS2, so
+ 
+ ## **Q:** Some of the textures appear black and purple, how do I fix this?
+ 
+-**A:** Hold "left", "right", and "backspace" keys down for 5 seconds in the title screen.
++**A:** Hold "left", "right", and "backspace" keys down for 5 seconds in the title screen. On non-windows platforms, you can also try passing the path to the `gfx` directory as the first argument to the executable; by default it's generated at `build/us_pc/gfx`.
+ 
+ <br>
+ 
+diff --git a/extract_assets.py b/extract_assets.py
+index 00d72bf..1218018 100755
+--- a/extract_assets.py
++++ b/extract_assets.py
+@@ -55,6 +55,8 @@ def clean_assets(local_asset_file):
+         except FileNotFoundError:
+             pass
+ 
++def get_baserom_path(lang):
++    return os.environ.get("SM64PLUS_BASEROM_" + lang) or "baserom." + lang + ".z64"
+ 
+ def main():
+     # In case we ever need to change formats of generated files, we keep a
+@@ -132,7 +134,7 @@ def main():
+     # Load ROMs
+     roms = {}
+     for lang in langs:
+-        fname = "baserom." + lang + ".z64"
++        fname = get_baserom_path(lang)
+         try:
+             with open(fname, "rb") as f:
+                 roms[lang] = f.read()
+@@ -207,7 +209,7 @@ def main():
+                     "-d",
+                     "-o",
+                     str(mio0),
+-                    "baserom." + lang + ".z64",
++                    get_baserom_path(lang),
+                     "-",
+                 ],
+                 check=True,
+diff --git a/src/pc/gfx/gfx_pc.c b/src/pc/gfx/gfx_pc.c
+index 2dc2ba0..1e69898 100644
+--- a/src/pc/gfx/gfx_pc.c
++++ b/src/pc/gfx/gfx_pc.c
+@@ -663,6 +663,9 @@ static bool import_texture_custom(const char *path) {
+     return TRUE;
+ }
+ 
++// defined in pc_main.c
++extern const char* GFX_DIR_PATH;
++
+ static void import_texture(int tile) {
+     uint8_t fmt = rdp.texture_tile.fmt;
+     uint8_t siz = rdp.texture_tile.siz;
+@@ -673,7 +676,8 @@ static void import_texture(int tile) {
+ 
+     // Load the textures
+     char path[1024];
+-    snprintf(path, sizeof(path), "gfx/%s.png", (const char*)rdp.loaded_texture[tile].addr);
++    const char* gfx_dir = GFX_DIR_PATH == NULL ? "gfx" : GFX_DIR_PATH;
++    snprintf(path, sizeof(path), "%s/%s.png", gfx_dir, (const char*)rdp.loaded_texture[tile].addr);
+ 
+     import_texture_custom(path);
+     
+diff --git a/src/pc/pc_main.c b/src/pc/pc_main.c
+index bf101e2..a44cbae 100644
+--- a/src/pc/pc_main.c
++++ b/src/pc/pc_main.c
+@@ -184,7 +184,11 @@ static void on_fullscreen_changed(bool is_now_fullscreen) {
+     configFullscreen = is_now_fullscreen;
+ }
+ 
+-void main_func(void) {
++// used primarily in gfx_pc.c
++const char* GFX_DIR_PATH = NULL;
++
++void main_func(const char* gfx_dir) {
++    GFX_DIR_PATH = gfx_dir;
+ #ifdef USE_SYSTEM_MALLOC
+     main_pool_init();
+     gGfxAllocOnlyPool = alloc_only_pool_init();
+@@ -303,12 +307,12 @@ void main_func(void) {
+ 
+ #if defined(_WIN32) || defined(_WIN64)
+ int WINAPI WinMain(UNUSED HINSTANCE hInstance, UNUSED HINSTANCE hPrevInstance, UNUSED LPSTR pCmdLine, UNUSED int nCmdShow) {
+-    main_func();
++    main_func(NULL);
+     return 0;
+ }
+ #else
+-int main(UNUSED int argc, UNUSED char *argv[]) {
+-    main_func();
++int main(int argc, const char *argv[]) {
++    main_func(argc > 1 ? argv[1] : NULL);
+     return 0;
+ }
+ #endif

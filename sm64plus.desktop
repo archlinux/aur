@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Super Mario 64 Plus
+Comment=Fork of SM64 Desktop with improvements
+Exec=/usr/bin/sm64plus
+Icon=sm64plus
+Terminal=false
+Type=Application
+Categories=Game;
