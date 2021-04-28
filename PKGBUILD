@@ -1,6 +1,6 @@
 # Maintainer: Noah (coolreader18)
 pkgname=wasm3-git
-pkgver=v0.4.7.r0.3b970de
+pkgver=v0.4.9.r212.4f0b769
 pkgrel=1
 pkgdesc="A high performance WebAssembly interpreter written in C"
 arch=(x86_64 i686)
