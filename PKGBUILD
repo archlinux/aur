@@ -1,4 +1,5 @@
 # Maintainer: Dan Elkouby <streetwalrus@codewalr.us>
+# Maintainer: Hydral <nathan.dacunha.nd@gmail.com>
 
 pkgname=3dstools
 pkgver=1.1.5
