@@ -6,7 +6,7 @@ pkgbase = coronapoker
 	arch = x86_64
 	license = GPL3
 	source = https://github.com/tonikelope/coronapoker/releases/download/v8.51/CoronaPokerLINUX_8.51_portable.zip
-	md5sums = e634ae4a4f0593f362c578535f2541df
+	md5sums = a4b22ca34e4d08094e8de863b393bc74
 
 pkgname = coronapoker
 
