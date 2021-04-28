@@ -3,7 +3,7 @@
 
 pkgname=b4
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Helper utility to work with patches made available via a public-inbox archive like lore.kernel.org.'
 license=('GPL')
 arch=('any')
@@ -22,5 +22,6 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
+	export PYTHONHASHSEED=0
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
