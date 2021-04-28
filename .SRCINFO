@@ -1,6 +1,6 @@
 pkgbase = pamac-all
 	pkgdesc = A Gtk3 frontend for libalpm (everything in one package - snap, flatpak, appindicator)
-	pkgver = 10.1.0
+	pkgver = 10.1.1
 	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/pamac
 	install = pamac.install
@@ -56,8 +56,8 @@ pkgbase = pamac-all
 	conflicts = pamac-aur-tray-appindicator-git
 	options = !emptydirs
 	backup = etc/pamac.conf
-	source = pamac-10.1.0.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/v10.1.0/pamac-v10.1.0.tar.gz
-	sha256sums = d62fff34f5be9fa7921c5381c59fbf0bd48b52d475b8fffc96b39afb84cc4bbb
+	source = pamac-10.1.1.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/v10.1.1/pamac-v10.1.1.tar.gz
+	sha256sums = 7477130baee00a1622e4f10964a36dea44b8cacd36263de470b97dc121c95ec2
 
 pkgname = pamac-all
 
