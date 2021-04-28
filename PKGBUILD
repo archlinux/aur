@@ -60,8 +60,8 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-cacule-uksm-cjktty
-pkgver=5.11.16
-_major=5.11
+pkgver=5.12.0
+_major=5.12
 _branch=5.x
 xanmod=1
 pkgrel=${xanmod}
@@ -77,11 +77,11 @@ options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
-        "https://github.com/HougeLangley/customkernel/releases/download/Kernel-v5.11.x/patch-${pkgver}-xanmod1-cacule"
+        "https://github.com/HougeLangley/customkernel/releases/download/v5.12-patch/patch-${pkgver}-xanmod1-cacule"
         choose-gcc-optimization.sh
         'sphinx-workaround.patch'
         '0002-UKSM.patch'
-        '0003-CJKTTY.patch::https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v5.x/cjktty-5.11.patch'
+        "0003-CJKTTY.patch::https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v5.x/cjktty-${_major}.patch"
         '0004-DISABLEAUDIT.patch')
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -94,13 +94,13 @@ for _patch in $_commits; do
     source+=("${_patch}.patch::https://git.archlinux.org/linux.git/patch/?id=${_patch}")
 done
 
-sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'
+sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
             'SKIP'
-            '058152214727c204b2284f716991a015c4dcb563ebfc8d907cd8cdf7749fdf79'
+            '6fd7f3bc041577614474eb67d1efef1b3e5151457b3caacbf2591d42513c81da'
             'e840e41f0f91108f63fd6e085c93b02daa78729268bc31be7be7fb355203e38a'
             '74339b8ad0ad99f08606c5de0dd3c38f502e29e5c6a78d6efbe656662edb8d73'
             'f00a84fd382d63cd0d47d6fd8ef6c8608b1c83ff9d6dbdd32cb985898afbbf58'
-            '7d8375f80012443a6d507eaaa913a6c8e4d8b7789b2523cceef9c5214a7650c5'
+            'a29a24e9ceaf0d18f56c826331e2ce993b621a90c3ad18f449c44efd5b2e84d1'
             '2264a33da476a51a844d09fa3bb13a41e8cf9f924258caffddf62a5a3857bba9')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
