@@ -2,11 +2,12 @@ Changelog
 =========
 
 
-r1010.b78f892
+r1018.fc61611
 ------------
 
 Fix
 ~~~
+- Fix build errors on MSVC with /std:c++latest. [Masashi Fujita]
 - Resurrect Clang fix. [Masashi Fujita]
 
   5e66557a88ab747985913b2406c9157cfe377a0b is wrong :-(
@@ -17,6 +18,38 @@ Fix
 
 Other
 ~~~~~
+- Merge pull request #273 from objectx/fix/msvc-cpp-20. [emil-e]
+
+  Fix build errors on MSVC with /std:c++latest
+- Merge pull request #272 from joelwilliamson/master. [emil-e]
+
+  Remove implicit capture of this
+- Remove implicit capture of this. [Joel Williamson]
+
+  GCC emits a deprecated warning when 'this' is implicitly captured by
+  value. Change the lambdas that were implicitly capturing to an explicit
+  capture.
+- Merge pull request #271 from
+  MicheleCicciottiWork/MicheleCicciottiWork-return_type. [emil-e]
+
+  Fix rc::compat::return_type definition warning
+- Fix rc::compat::return_type definition warning. [MicheleCicciottiWork]
+
+  Alias `rc::compat::return_type` to `std::result_of` for C++14 and earlier, instead of C++17 and earlier as it used to be.
+
+  The reason is that `std::result_of`, while still available in C++17, is deprecated and may result in warnings, for example warning STL4014 in Visual Studio 2017:
+
+  ```
+  c:\project\thirdparty\rapidcheck\include\rapidcheck\compat.hpp(10): error C4996: 'std::result_of<_Callable(_Args...)>': warning STL4014: std::result_of and std::result_of_t are deprecated in C++17. They are superseded by std::invoke_result and std::invoke_result_t. You can define _SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.
+  ```
+- Merge pull request #269 from mkloczko/compat20. [emil-e]
+
+  Added rc::compat::return_type for both std::result_of and std::invoke_result
+- Support for C++11 and C++20 (std::result_of vs std::invoke_result)
+  [Mateusz Kłoczko]
+
+  The compatibilty is done by adding using clause named
+  ```rc::compat::return_type``` in ```rapidcheck/Compat.hpp```.
 - Merge pull request #268 from tsmanner/invert_use_rtti_flag. [emil-e]
 
   Inverted logic of rtti enablement.
