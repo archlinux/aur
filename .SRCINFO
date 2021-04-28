@@ -1,6 +1,6 @@
 pkgbase = hardinfo-git
 	pkgdesc = A system information and benchmark tool.
-	pkgver = 0.6.alpha.1330.g0557696
+	pkgver = 0.6.alpha.1359.g2ad914d
 	pkgrel = 1
 	url = https://github.com/lpereira/hardinfo
 	arch = x86_64
@@ -10,11 +10,10 @@ pkgbase = hardinfo-git
 	depends = gtk3
 	depends = libsoup
 	optdepends = lm_sensors: for sensor readings
-	optdepends = hddtemp: obtain hard disk drive temperature
 	provides = hardinfo
 	conflicts = hardinfo
 	source = git+https://github.com/lpereira/hardinfo.git
-	sha1sums = SKIP
+	sha256sums = SKIP
 
 pkgname = hardinfo-git
 
