@@ -2,7 +2,7 @@
 
 pkgname=wayfire-desktop-git
 pkgver=0.7
-pkgrel=2
+pkgrel=3
 arch=(any)
 url='https://wayfire.org/'
 pkgdesc='A meta package to use Wayfire as a desktop'
@@ -33,7 +33,6 @@ depends=(
         'clipman'
         'wl-clipboard'
         'brightnessctl'
-        'pulseaudio-ctl'
         'playerctl'
         'wtype'
         'wlogout'
