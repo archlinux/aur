@@ -1,7 +1,7 @@
 pkgbase = ntfs3-dkms
 	pkgdesc = NTFS read-write driver GPL implementation by Paragon Software. Current version works with NTFS (including v3.1), normal/compressed/sparse files and supports journal replaying.
 	pkgver = 26.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.paragon-software.com/home/ntfs3-driver-faq/
 	arch = any
 	license = GPL2
@@ -17,7 +17,7 @@ pkgbase = ntfs3-dkms
 	source = v26.0.0~6.patch::https://lore.kernel.org/lkml/20210402155347.64594-7-almaz.alexandrovich@paragon-software.com/raw
 	source = v26.0.0~7.patch::https://lore.kernel.org/lkml/20210402155347.64594-8-almaz.alexandrovich@paragon-software.com/raw
 	source = v26.0.0~8.patch::https://lore.kernel.org/lkml/20210402155347.64594-9-almaz.alexandrovich@paragon-software.com/raw
-	source = kernel_version_fix.patch
+	source = legacy_kernel.patch
 	sha512sums = 5b5b487eb66d2f74699cbd10c0c669c0dbbd87c0c8ed1d96685aa5f3eb992fdfe859f0eb7aa3a31ade9e267cf6a9a9df228a760f305ff4a2874f01cd7844bf98
 	sha512sums = 46020b5f6ec435168d1998ae8dd2f771c1992a0a312efbabbc0afc93769c636b688030bc5cc8052eb17e5a9f36fc4a7f9eb99ddb43905c36517183d21f713f32
 	sha512sums = b5492e4398c0155bb8f9c23a70435983579d142b8e4e8f90c6b03a67ccefd20c56a26e9cb62f74b1a8c172be300b81582e01a788b2c730f49d39cad70641d0a8

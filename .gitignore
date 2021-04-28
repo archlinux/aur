@@ -2,5 +2,5 @@ pkg/
 src/
 *.patch
 !Makefile.patch
-!kernel_version_fix.patch
+!legacy_kernel.patch
 *.pkg.tar.*
