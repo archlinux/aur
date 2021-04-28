@@ -2,7 +2,7 @@
 # Contributor: Shining Xu <skyfiretime@gmail.com>
 
 pkgname=timecamp-bin
-pkgver=1.7.1.6
+pkgver=1.7.1.7
 pkgrel=1
 pkgdesc='Client application for TimeCamp software (Binary).'
 arch=('x86_64')
@@ -14,14 +14,12 @@ provides=('timecamp')
 options=()
 
 source=(
-    "https://timecamp.s3.amazonaws.com/downloadsoft/${pkgver}/TimeCampSetup_LinAmd64.tar.gz"
-    'LICENSE.html::https://docs.google.com/document/d/e/2PACX-1vSj_4_AJgXCuyKze5XFckN9-DwR8Jobo5lUyrgimRgKXjgpGdxUkFetSK8Nogxe7YkuPySCpUhRfrjz/pub?embedded=true'
+    "timecamp-${pkgver}.tar.gz::https://timecamp.s3.amazonaws.com/downloadsoft/${pkgver}/TimeCampSetup_LinAmd64.tar.gz"
+    'LICENSE.html'
 )
 
-sha256sums=(
-	'a7ac692f04ccb6ef31bdac21eb34a72be14366df89ac771480ca85480413bd4d'
-	'SKIP'
-)
+sha256sums=('a7ac692f04ccb6ef31bdac21eb34a72be14366df89ac771480ca85480413bd4d'
+            '47c5c4cefd061e1f4f2d2fbeaf49b3c13954dce3582e35e6eda732d2e55287fa')
 
 prepare() {
     ar x timecamp.deb
@@ -31,7 +29,7 @@ package() {
     tar xzf data.tar.gz -C "$pkgdir"
 
     # Install license
-    install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.html
+    install -Dm 644 -t "${pkgdir}/usr/share/licenses/timecamp" LICENSE.html
 
     # Move binary to /usr/bin
     install -Dm 755 -t "${pkgdir}/usr/bin" "${pkgdir}/usr/share/timecamp/timecamp"
