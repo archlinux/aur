@@ -17,7 +17,7 @@ license=('MIT')
 depends=('zlib' 'krb5')
 optdepends=('kwallet: For storing credentials' 
 			'gnome-keyring: For storing credentials' 
-			'gpg: For storing credentials in a gpg file'
+			'gnupg: For storing credentials in a gpg file'
 			'pass: For storing credentials in a gpg file' )
 provides=($_pkgname)
 conflicts=($_pkgname)
