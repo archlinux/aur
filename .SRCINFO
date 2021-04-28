@@ -1,11 +1,12 @@
 pkgbase = winesync
 	pkgdesc = Wine synchronization primitive driver
 	pkgver = 5.11
-	pkgrel = 9
+	pkgrel = 10
 	url = https://repo.or.cz/linux/zf.git/shortlog/refs/heads/winesync
 	arch = any
 	license = GPL2
 	makedepends = linux-headers
+	makedepends = dkms
 	options = !strip
 	source = winesync.c-d8c6e2ca1d6291f6c8489b7c24d481451e8c3c10::https://repo.or.cz/linux/zf.git/blob_plain/d8c6e2ca1d6291f6c8489b7c24d481451e8c3c10:/drivers/misc/winesync.c
 	source = winesync.h-d8c6e2ca1d6291f6c8489b7c24d481451e8c3c10::https://repo.or.cz/linux/zf.git/blob_plain/d8c6e2ca1d6291f6c8489b7c24d481451e8c3c10:/include/uapi/linux/winesync.h
@@ -16,7 +17,7 @@ pkgbase = winesync
 	sha256sums = ab632cb5ec60a285846bd491de49a35e629f08a0a29882672f56ae280144e95d
 	sha256sums = 9b22d9976a83785e6a1cfc4a3aa230a8c5e4e903730bbafc598ec86bfaa35c3e
 	sha256sums = 05735aa1fef1eda3c6dca8b7a0c2a7eebf1eba8af38f608b4b1c34d4acbad453
-	sha256sums = aafe48ff97db7d25d3f23774e644d01fe98b07e9ae0b519f633f3407ce7d68eb
+	sha256sums = dec74d835e8f96ace131b7a16441d99b49d2e0ea4bb292dd17c617c8f156d812
 
 pkgname = winesync
 	pkgdesc = Wine synchronization primitive driver - out-of-tree module

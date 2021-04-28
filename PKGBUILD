@@ -9,7 +9,7 @@ _provide_udev_rule=true
 pkgbase='winesync'
 pkgname=()
 pkgver=5.11
-pkgrel=9
+pkgrel=10
 pkgdesc="Wine synchronization primitive driver"
 arch=('any')
 url='https://repo.or.cz/linux/zf.git/shortlog/refs/heads/winesync'
@@ -20,7 +20,7 @@ provides=()
 conflicts=()
 _nondkms_depends=('linux')
 _dkms_depends=('dkms')
-_nondkms_makedepends=('linux-headers')
+_nondkms_makedepends=('linux-headers' 'dkms')
 _dkms_optdepends=('linux-headers: build the module for Arch kernel')
 _module_provides=("WINESYNC-MODULE=$pkgver")
 _header_provides=("$pkgbase-header=$pkgver")
@@ -39,7 +39,7 @@ sha256sums=('33b79f4c0b99bd623cf2b1b50fe2ff6d8eaa7f71cd73c3949898862a102fa23d'
             'ab632cb5ec60a285846bd491de49a35e629f08a0a29882672f56ae280144e95d'
             '9b22d9976a83785e6a1cfc4a3aa230a8c5e4e903730bbafc598ec86bfaa35c3e'
             '05735aa1fef1eda3c6dca8b7a0c2a7eebf1eba8af38f608b4b1c34d4acbad453'
-            'aafe48ff97db7d25d3f23774e644d01fe98b07e9ae0b519f633f3407ce7d68eb')
+            'dec74d835e8f96ace131b7a16441d99b49d2e0ea4bb292dd17c617c8f156d812')
 
 if [ "${PRINTSRCINFO:-0}" -eq 1 ]; then
     _provide_nondkms=true
