@@ -7,9 +7,9 @@ ENABLE_APPINDICATOR=1
 ENABLE_GNOME=0
 _pkgname=pamac
 pkgname=pamac-all-git
-pkgver=10.1.0.r0.g8f6327c
+pkgver=10.1.1.r0.g59b0a95
 pkgrel=1
-_pkgfixver=$pkgver
+_pkgfixver=10.1.1
 
 pkgdesc="A Gtk3 frontend for libalpm (everything in one package - snap, flatpak, appindicator)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
