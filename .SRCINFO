@@ -5,6 +5,7 @@ pkgbase = evillimiter-git
 	url = https://github.com/bitbrute/evillimiter
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python-colorama
 	depends = python-netaddr

@@ -11,14 +11,13 @@ license=('MIT')
 provides=('evillimiter')
 depends=('python-colorama' 'python-netaddr' 'python-netifaces' 'python-tqdm'
          'python-scapy' 'python-terminaltables')
-makedepends=('python-setuptools')
+makedepends=('git' 'python-setuptools')
 source=("git+https://github.com/bitbrute/evillimiter.git#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/evillimiter/"
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-
 }
 
 build() {
