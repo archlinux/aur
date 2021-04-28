@@ -1,12 +1,11 @@
 pkgname="autorestic-bin"
 pkgver=1.0.8
 _pkgid="${pkgname%-bin}-${pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="High level CLI utility for restic"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url="https://github.com/cupcakearmy/${pkgname%-bin}"
 license=('Apache')
-license=('GPL3')
 depends=('restic')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
