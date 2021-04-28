@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=batman-adv
-pkgver=2020.3
+pkgver=2020.4
 pkgrel=1
 epoch=1
 pkgdesc='Batman kernel module'
@@ -19,7 +19,7 @@ source=("https://downloads.open-mesh.org/batman/releases/${pkgname}-${pkgver}/${
 )
 depends=('linux')
 makedepends=('linux-headers')
-sha256sums=('65516dca919ea5be58d141c78bd1f0a94a02a784c5c85fb4e8f27f4226803f73'
+sha256sums=('cdec428a2397c343fe4c08b1608479177497da7f60ba3cb9d2f1db64eb07b9b3'
             '347599c02426a905690002885c277f91b82da2b29d3372348e5f02d03c435c37')
 
 build() {
