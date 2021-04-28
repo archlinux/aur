@@ -2,7 +2,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=opencascade-rc
-_pkgver="V7_5_1"
+_pkgver="V7_5_2"
 pkgver=$(echo ${_pkgver} | sed 's,^V,,g;s,_,.,g')
 pkgrel=1
 pkgdesc="An object-oriented C++ class library designed for rapid production of sophisticated domain-specific CAD/CAM/CAE applications -- release candidates and dev snapshots"
@@ -36,7 +36,7 @@ source=(
 "${pkgname}-${pkgver}.tgz::https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/${_pkgver};sf=tgz"
 opencascade.sh
 )
-sha256sums=('3a43d8b50df78ade72786fa63bc8808deac6380189333663e7b4ef8558ae7739'
+sha256sums=('1a32d2b0d6d3c236163cb45139221fb198f0f3cdad56606c5b1c9a2a8869b3ac'
             '9acb2439f1f7f066c111adef5d9f34dcb19c906cc928f87b71eb194317948dfb')
 
 prepare() {
@@ -45,7 +45,7 @@ prepare() {
   curl https://src.fedoraproject.org/rpms/opencascade/raw/rawhide/f/opencascade-cmake.patch | patch -p1
 
   # https://tracker.dev.opencascade.org/view.php?id=32264
-  curl -L 'http://git.dev.opencascade.org/gitweb/?p=occt.git;a=patch;h=refs/heads/CR32264' | patch -p1
+  #curl -L 'http://git.dev.opencascade.org/gitweb/?p=occt.git;a=patch;h=refs/heads/CR32264' | patch -p1
   
   # fix for None type build
   #sed '/OpenCASCADECompileDefinitionsAndFlags/d' -i CMakeLists.txt
