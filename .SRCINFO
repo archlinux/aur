@@ -1,0 +1,19 @@
+pkgbase = rsp_tcp-git
+	pkgdesc = a rtl_tcp compatible IQ server for the RSP range of SDRPlay SDR
+	pkgver = v0.1.beta.r8.ga799c49
+	pkgrel = 1
+	url = https://github.com/SDRplay/RSPTCPServer
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = libusb>=1.0
+	depends = libsdrplay
+	provides = rsp_tcp
+	source = git+https://github.com/SDRplay/RSPTCPServer
+	md5sums = SKIP
+
+pkgname = rsp_tcp-git
+
