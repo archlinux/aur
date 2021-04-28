@@ -5,7 +5,7 @@
 # this package.
 
 pkgname=legendofdungeon
-pkgver=Unicorn
+pkgver=Zombie
 pkgrel=1
 pkgdesc="A 4 Player Co-op Rogue-Like-like Beat'em'up with Dynamic Lighting on AWESOME Pixel Art."
 group=("games")
@@ -17,8 +17,8 @@ depends=(lib32-libxdmcp lib32-libxau lib32-libxrender lib32-libdrm
          lib32-libxfixes lib32-libxdamage lib32-mesa lib32-expat lib32-glibc
          lib32-gcc-libs lib32-glibc lib32-libxcursor lib32-libxext lib32-libx11
          lib32-mesa-libgl lib32-glu lib32-gcc-libs)
-source=(LegendofDungeon-Linux-${pkgver}.zip::https://manual-download-required)
-md5sums=('87c9099e06a446b8159454b9a03a5912')
+source=(LegendofDungeon-Linux.zip::https://manual-download-required)
+md5sums=('4c1a3d87fcb70e3de677e517a3cdac3a')
 PKGEXT=".pkg.tar"
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = legendofdungeon
 	pkgdesc = A 4 Player Co-op Rogue-Like-like Beat'em'up with Dynamic Lighting on AWESOME Pixel Art.
-	pkgver = Unicorn
+	pkgver = Zombie
 	pkgrel = 1
 	url = http://www.robotloveskitty.com/LoD/
 	arch = x86_64
@@ -26,8 +26,8 @@ pkgbase = legendofdungeon
 	depends = lib32-mesa-libgl
 	depends = lib32-glu
 	depends = lib32-gcc-libs
-	source = LegendofDungeon-Linux-Unicorn.zip::https://manual-download-required
-	md5sums = 87c9099e06a446b8159454b9a03a5912
+	source = LegendofDungeon-Linux.zip::https://manual-download-required
+	md5sums = 4c1a3d87fcb70e3de677e517a3cdac3a
 
 pkgname = legendofdungeon
 
