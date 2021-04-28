@@ -1,0 +1,26 @@
+pkgbase = r-fredr
+	pkgdesc = An R client for the 'Federal Reserve Economic Data' ('FRED') API <https://research.stlouisfed.org/docs/api/>. Functions to retrieve economic time series and other data from 'FRED'.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://cran.r-project.org/web/packages/fredr/
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-httr
+	depends = r-jsonlite
+	depends = r-rlang
+	depends = r-tibble
+	optdepends = r-covr
+	optdepends = r-dplyr
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-purrr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-xts
+	optdepends = r-zoo
+	source = https://cran.r-project.org/src/contrib/fredr_2.1.0.tar.gz
+	sha512sums = fa8f0bb72772e96dcfa15034e2ae16e253d958a3bf314b54374fe801e7225918e9c63bccb2cd2c8dd7c7e6d73633b2626412b815755e5dd6cc39fc71dd61d93a
+
+pkgname = r-fredr
+
