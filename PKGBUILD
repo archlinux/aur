@@ -4,8 +4,8 @@
 # Contributor: Konstantin Gizdov < arch at kge dot pw >
 # Contributor: Lin Further 
 pkgname=cvmfs
-pkgver=2.8.0
-pkgrel=2
+pkgver=2.8.1
+pkgrel=1
 pkgdesc="A client-server file system implemented in FUSE and developed to deliver software distributions onto virtual machines in a fast, scalable, and reliable way."
 arch=('x86_64')
 url="http://cernvm.cern.ch/portal/filesystem"
@@ -19,7 +19,7 @@ source=("https://ecsft.cern.ch/dist/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.t
         'settings.cmake'
 	    'externals.patch'
         )
-md5sums=('ad6a9b6e5362159748be73b53814944a'
+md5sums=('8b7b3c412a90606bef9e6fed70c386cc'
          '20dc60c61077f4a3711463e8686d260d'
          '3457552a8f37584868b60e011a54546c')
 
