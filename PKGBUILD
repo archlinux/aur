@@ -1,6 +1,6 @@
 pkgbase="autorestic-bin"
 pkgname="autorestic"
-pkgver=1.0.6
+pkgver=1.0.7
 _pkgid="${pkgname}-${pkgver}"
 pkgrel=1
 pkgdesc="High level CLI utility for restic"
@@ -13,10 +13,10 @@ _arch_x86_64="amd64"
 _arch_armv6h="arm"
 _arch_armv7h="arm64"
 
-sha256sums_x86_64=('ca498e10be4b7e3920c62aad8c3547769c6b1fd983053418097cb7ec25d6972e')
-sha256sums_i686=('9f9b2fa516a1a6975d38bbac1f74b06f17ebe839ed1cf6920b152250df78ba22')
-sha256sums_armv6h=('a0a216b9ef40d47dbecd913837d68dc56558553afcbe31420a02ec2ffbad4de4')
-sha256sums_armv7h=('bcb84e8f06998d568abecec852a35a63ff00a2c35d861103e3ee17080e8755fa')
+sha256sums_x86_64=('c7fe7da7dbcbfcc1f46bfbcf9d79a9de16978470f4fd6e33e5aab8c7eb2126f0')
+sha256sums_i686=('bb65eb5de9bebe8a3b8f8732d088e2b6e528a9dcc7ffdc421898000bc30cfc46')
+sha256sums_armv6h=('b21e90a772871d3f17825e9dc97d70dbe54ec541c61806257b2cd263e54c8240')
+sha256sums_armv7h=('43622d9bcace3a73562ea5c518f3bdff694e975d57f305567de61492f261c6fe')
 
 source_x86_64=("$pkgname-$pkgver.bz2"::"https://github.com/cupcakearmy/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_${_arch_x86_64}.bz2")
 source_i686=("$pkgname-$pkgver.bz2"::"https://github.com/cupcakearmy/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_${_arch_i686}.bz2")

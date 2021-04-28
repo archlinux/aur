@@ -1,6 +1,6 @@
 pkgbase = autorestic-bin
 	pkgdesc = High level CLI utility for restic
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/cupcakearmy/autorestic
 	arch = x86_64
@@ -8,14 +8,14 @@ pkgbase = autorestic-bin
 	arch = armv6h
 	arch = armv7h
 	license = Apache
-	source_x86_64 = autorestic-1.0.6.bz2::https://github.com/cupcakearmy/autorestic/releases/download/v1.0.6/autorestic_1.0.6_linux_amd64.bz2
-	sha256sums_x86_64 = ca498e10be4b7e3920c62aad8c3547769c6b1fd983053418097cb7ec25d6972e
-	source_i686 = autorestic-1.0.6.bz2::https://github.com/cupcakearmy/autorestic/releases/download/v1.0.6/autorestic_1.0.6_linux_386.bz2
-	sha256sums_i686 = 9f9b2fa516a1a6975d38bbac1f74b06f17ebe839ed1cf6920b152250df78ba22
-	source_armv6h = autorestic-1.0.6.bz2::https://github.com/cupcakearmy/autorestic/releases/download/v1.0.6/autorestic_1.0.6_linux_arm.bz2
-	sha256sums_armv6h = a0a216b9ef40d47dbecd913837d68dc56558553afcbe31420a02ec2ffbad4de4
-	source_armv7h = autorestic-1.0.6.bz2::https://github.com/cupcakearmy/autorestic/releases/download/v1.0.6/autorestic_1.0.6_linux_arm64.bz2
-	sha256sums_armv7h = bcb84e8f06998d568abecec852a35a63ff00a2c35d861103e3ee17080e8755fa
+	source_x86_64 = autorestic-1.0.7.bz2::https://github.com/cupcakearmy/autorestic/releases/download/v1.0.7/autorestic_1.0.7_linux_amd64.bz2
+	sha256sums_x86_64 = c7fe7da7dbcbfcc1f46bfbcf9d79a9de16978470f4fd6e33e5aab8c7eb2126f0
+	source_i686 = autorestic-1.0.7.bz2::https://github.com/cupcakearmy/autorestic/releases/download/v1.0.7/autorestic_1.0.7_linux_386.bz2
+	sha256sums_i686 = bb65eb5de9bebe8a3b8f8732d088e2b6e528a9dcc7ffdc421898000bc30cfc46
+	source_armv6h = autorestic-1.0.7.bz2::https://github.com/cupcakearmy/autorestic/releases/download/v1.0.7/autorestic_1.0.7_linux_arm.bz2
+	sha256sums_armv6h = b21e90a772871d3f17825e9dc97d70dbe54ec541c61806257b2cd263e54c8240
+	source_armv7h = autorestic-1.0.7.bz2::https://github.com/cupcakearmy/autorestic/releases/download/v1.0.7/autorestic_1.0.7_linux_arm64.bz2
+	sha256sums_armv7h = 43622d9bcace3a73562ea5c518f3bdff694e975d57f305567de61492f261c6fe
 
 pkgname = autorestic
 
