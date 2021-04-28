@@ -1,7 +1,7 @@
 pkgbase = hornet-bin
 	pkgdesc = Powerful, community driven IOTA fullnode software written in Go (official precompiled binary)
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gohornet/hornet
 	install = hornet.install
 	arch = x86_64

@@ -4,7 +4,7 @@ pkgname=hornet-bin
 _pkgname=hornet
 pkgver=1.0.1
 _pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful, community driven IOTA fullnode software written in Go (official precompiled binary)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/gohornet/hornet'
@@ -33,5 +33,6 @@ package() {
 	install -Dm 644 "hornet.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/hornet.conf"
 	
 	# Systemd service must go to /usr/lib/...
-	mv "${pkgdir}/lib" "${pkgdir}/usr/lib"
+	mv "${pkgdir}/lib/systemd" "${pkgdir}/usr/lib/"
+        rmdir "${pkgdir}/lib/"
 }
