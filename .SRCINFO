@@ -1,6 +1,6 @@
 pkgbase = atompaw
 	pkgdesc = Tool to generate projector and basis functions needed for performing electronic structure calculations based on the projector augmented wave (PAW) method.
-	pkgver = 4.1.0.6
+	pkgver = 4.1.1.0
 	pkgrel = 1
 	url = http://users.wfu.edu/natalie/papers/pwpaw/man.html
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = atompaw
 	depends = lapack
 	depends = libxc
 	optdepends = csh: analysis scripts
-	source = http://users.wfu.edu/natalie/papers/pwpaw/atompaw-4.1.0.6.tar.gz
-	sha256sums = 42a46c0569367c0b971fbc3dcaf5eaec7020bdff111022b6f320de9f11c41c2c
+	source = http://users.wfu.edu/natalie/papers/pwpaw/atompaw-4.1.1.0.tar.gz
+	sha256sums = b1ee2b53720066655d98523ef337e54850cb1e68b3a2da04ff5a1576d3893891
 
 pkgname = atompaw
 

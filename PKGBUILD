@@ -1,7 +1,7 @@
 # Maintainer: James Spencer <james.s.spencer@gmail.com>
 
 pkgname=atompaw
-pkgver=4.1.0.6
+pkgver=4.1.1.0
 pkgrel=1
 pkgdesc="Tool to generate projector and basis functions needed for performing electronic structure calculations based on the projector augmented wave (PAW) method."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('lapack' 'libxc')
 optdepends=('csh: analysis scripts')
 makedepends=('gcc-fortran')
 source=(http://users.wfu.edu/natalie/papers/pwpaw/$pkgname-$pkgver.tar.gz)
-sha256sums=('42a46c0569367c0b971fbc3dcaf5eaec7020bdff111022b6f320de9f11c41c2c')
+sha256sums=('b1ee2b53720066655d98523ef337e54850cb1e68b3a2da04ff5a1576d3893891')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
