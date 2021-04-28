@@ -2,8 +2,8 @@
 # Co-Maintainer: Joost Bremmer <contact at madeofmagicandwires dot online>
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
-pkgver=4.2.0
-pkgrel=4
+pkgver=4.2.1
+pkgrel=1
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/cheat/cheat"
@@ -19,12 +19,15 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         'conf.yml'
         'git+https://github.com/cheat/cheatsheets.git'
         "https://github.com/cheat/cheat/raw/$pkgver/LICENSE.txt")
-sha256sums=('23c3c30fe1ad63916718eef534dcef22c0ae607695f74860180304c5cde3ea49'
+sha256sums=('2a63b18bf8d55b865606f4be91af3650aacff70b8c9b8729661d60323367d455'
             'a0aa691a318219d048107b835fe0e8cddfa734618fc5ccbb800b5bb463e00ea5'
             'SKIP'
             '5eaa85b8023f915629de53c3604015ab5b23bed404afa9e551ab44e0bc46dde3')
 
 prepare() {
+	# Prevent creation of a `go` directory in one's home.
+	# Sometimes this directory cannot be removed with even `rm -rf` unless
+	# one becomes root or changes the write permissions.
 	export GOPATH="$srcdir/gopath"
 	go clean -modcache
 }
