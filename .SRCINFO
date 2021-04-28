@@ -1,6 +1,6 @@
 pkgbase = gomarkpdf-edersonferreira-git
 	pkgdesc = A Markdown to PDF transformer
-	pkgver = 1.1.r.
+	pkgver = 1.1.r1.8941540
 	pkgrel = 1
 	url = https://github.com/edersonferreira/gomarkpdf
 	arch = x86_64

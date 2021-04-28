@@ -5,7 +5,7 @@
 
 # Maintainer: Ederson Ferreira <edersondeveloper@gmail.com>
 pkgname=gomarkpdf-edersonferreira-git
-pkgver=1.1.r.
+pkgver=1.1.r1.8941540
 pkgrel=1
 epoch=
 pkgdesc="A Markdown to PDF transformer"
