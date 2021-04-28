@@ -9,6 +9,7 @@ license=('ISC')
 depends=('glibc' 'libevent' 'openssl')
 makedepends=('linux-headers' 'bison' 'cmake' 'git')
 provides=('iked' 'ikectl')
+conflicts=('iked' 'ikectl')
 source=("https://github.com/openiked/openiked-portable/archive/refs/tags/v${pkgver}.tar.gz"
         'openiked.service'
         'sysusers.conf')
