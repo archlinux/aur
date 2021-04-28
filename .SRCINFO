@@ -7,6 +7,7 @@ pkgbase = sleek
 	license = MIT
 	makedepends = yarn
 	depends = electron
+	depends = nodejs-lts-fermium
 	options = !strip
 	source = https://github.com/ransome1/sleek/archive/refs/tags/v1.0.2.zip
 	source = sleek.desktop
