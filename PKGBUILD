@@ -7,7 +7,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=iproute2-selinux
-pkgver=5.11.0
+pkgver=5.12.0
 pkgrel=1
 pkgdesc='IP Routing Utilities with SELinux support'
 arch=('x86_64')
@@ -31,7 +31,7 @@ options=('staticlibs')
 validpgpkeys=('9F6FC345B05BE7E766B83C8F80A77F6095CDE47E') # Stephen Hemminger
 source=("https://www.kernel.org/pub/linux/utils/net/${pkgname/-selinux}/${pkgname/-selinux}-${pkgver}.tar."{xz,sign}
         '0001-make-iproute2-fhs-compliant.patch')
-sha256sums=('c5e2ea108212b3445051b35953ec267f9f3469e1d5c67ac034ab559849505c54'
+sha256sums=('9d268db98a36ee2a0e3ff3b92b2efff66fc1138a51e409bdef6ab3cfe15f326f'
             'SKIP'
             'f60fefe4c17d3b768824bb50ae6416292bcebba06d73452e23f4147b46b827d3')
 
