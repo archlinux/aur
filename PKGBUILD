@@ -9,6 +9,7 @@ url="http://vulkan.gpuinfo.org/"
 license=('GPL2')
 provides=("${pkgname%-*-*}")
 conflicts=("${pkgname%-*-*}")
+replaces=("${pkgname%-*-*}-bin")
 options=('!strip')
 source=("https://vulkan.gpuinfo.org/downloads/vulkancapsviewer_${pkgver}_linux64.AppImage")
 sha256sums=('e3878b807c994ad77177c786b7a7accb65ab9f2e024033253011fd7db3bf5bf1')
