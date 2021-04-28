@@ -1,7 +1,7 @@
 # Maintainer 5amu <v.casalino@protonmail.com>
 
 pkgname=zsh-minimal-prompt
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Personal prompt design"
 url="https://github.com/5amu/minimal-prompt/"
