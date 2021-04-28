@@ -1,7 +1,7 @@
 pkgbase = velvetyne-fonts
 	pkgdesc = A package depending on all the released fonts from Velvetyne Type Foudry
 	pkgver = 0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://velvetyne.fr
 	arch = any
 	license = OFL
@@ -12,6 +12,7 @@ pkgname = otf-velvetyne-fonts
 	depends = otf-backout
 	depends = otf-cantique
 	depends = otf-compagnon
+	depends = otf-daubenton
 	depends = otf-format-1452
 	depends = otf-happy-times
 	depends = otf-kaerukaeru
