@@ -2,7 +2,7 @@
 
 pkgname=alembic-qfix
 pkgver=1.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An open framework for storing and sharing scene data"
 arch=('x86_64')
 url="http://www.alembic.io/"
@@ -33,8 +33,8 @@ package() {
 
   DESTDIR="${pkgdir}/" ninja -C build install
 
-# quick fix for missing `imath` package ( internal of openexr )
-  sed '/find_dependency(IMath)/d' -i "${pkgdir}"/usr/lib/cmake/Alembic/AlembicConfig.cmake
+# quick fix for miss capitalization of `imath` package
+  sed '/find_dependency(IMath)/s|IMath|Imath|' -i "${pkgdir}"/usr/lib/cmake/Alembic/AlembicConfig.cmake
 }
 
 # vim:set ts=2 sw=2 et:

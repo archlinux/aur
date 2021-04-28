@@ -1,7 +1,7 @@
 pkgbase = alembic-qfix
 	pkgdesc = An open framework for storing and sharing scene data
 	pkgver = 1.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.alembic.io/
 	arch = x86_64
 	license = BSD
