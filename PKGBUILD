@@ -1,24 +1,16 @@
+# Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/user/vorbote>
 # Maintainer: Yichao Zhou <broken.zhou@gmail.com>
-pkgname=texlive-installer
-pkgver=2021
+pkgname=texlive-upstream
+pkgver=1
 pkgrel=1
-pkgdesc="This packages provides the installer of texlive.  It also tricks Arch into thinking it has its texlive packages installed."
+pkgdesc="If you install TeXLive by hand, this package provides fake distro packages."
 url="http://www.tug.org/texlive/"
 arch=('any')
 license=('GPL')
-depends=('wget' 'xz')
-optdepends=()
-makedepends=()
-replaces=()
-provides=('texlive-bin' 'texlive-htmlxml' 'texlive-formatsextra=2021' $(pacman -Sgq texlive-most texlive-lang))
-source=("http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz")
-md5sums=('SKIP')
-install=${pkgname}.install
+provides=('texlive-full' 'texlive-installer' 'texlive-most-doc' 'texlive-bin' 'texlive-htmlxml' $(pacman -Sgq texlive-most texlive-lang))
+replaces=('texlive-full' 'texlive-installer' 'texlive-most-doc' 'texlive-bin' 'texlive-htmlxml' $(pacman -Sgq texlive-most texlive-lang))
+conflicts=('texlive-full' 'texlive-installer' 'texlive-most-doc' 'texlive-bin' 'texlive-htmlxml' $(pacman -Sgq texlive-most texlive-lang))
 
 package() {
-  rm -r ${srcdir}/install-tl-[0-9]*/tlpkg/installer/wget
-  rm -r ${srcdir}/install-tl-[0-9]*/tlpkg/installer/xz
-
-  install -d "$pkgdir"/opt
-  cp -R ${srcdir}/install-tl-[0-9]*/ "$pkgdir"/opt/texlive-installer
+	exit 0
 }
