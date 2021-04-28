@@ -1,7 +1,7 @@
 # Maintainer: qvshuo
 
 pkgname=wechat-nativefier
-pkgver=20210429.3
+pkgver=20210429.4
 pkgrel=1
 pkgdesc="由nativefier生成（基于Electron 12）, 模仿了Windows版微信的界面。"
 arch=("x86_64")
@@ -23,12 +23,13 @@ _instname=WeChat
 
 build() {
   nativefier \
-	--icon "${pkgname}.png" \
-	--user-agent 'Mozilla/5.0 (X11; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0' \
-	--internal-urls ".*?" \
-	--tray \
-	--file-download-options '{"saveAs": true}' \
-	"${url}"
+	  --name "WeChat" \
+	  --icon "${pkgname}.png" \
+	  --user-agent 'Mozilla/5.0 (X11; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0' \
+	  --internal-urls ".*?" \
+	  --tray \
+	  --file-download-options '{"saveAs": true}' \
+	  "${url}"
 }
 
 package() {
