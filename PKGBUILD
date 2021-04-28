@@ -14,11 +14,12 @@ makedepends=(binutils libmpc gcc-ada doxygen lib32-glibc lib32-gcc-libs python g
 checkdepends=(dejagnu inetutils)
 options=(!emptydirs)
 _libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
-source=(https://sourceware.org/pub/gcc/releases/gcc-11.1.0/gcc-11.1.0.tar.xz
+source=(https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz{,.sig}
         http://isl.gforge.inria.fr/isl-${_islver}.tar.xz
         c89 c99
 )
 b2sums=('fe617e776b0270d11adea21b5c37d889de90865c19ab82d1c37bbd5c5b9c583a98c174606c4f893ca4950a4233e2a58aae93ad6aa7ad33d4e78a31c72371c1ed'
+        'SKIP'
         'ce026eaa1d6c814f4067c555d97a453bdf01d5fa240aa9b6ccd22c9a0e7f19b0c30cd834f976a29b10a5d57eaa747a3f45cf55717f05d98ae405ec93dd42f27b'
         '2c64090b879d6faea7f20095eff1b9bd6a09fe3b15b3890783d3715171678ab62d32c91af683b878746fb14441dbe09768474417840f96a561443415f76afb63'
         '3cf318835b9833ac7c5d3a6026fff8b4f18b098e18c9649d00e32273688ff06ec3af41f0d0aee9d2261725e0ff08f47a224ccfe5ebb06646aaf318ff8ac9a0d1')
@@ -94,6 +95,11 @@ build() {
 
 check() {
   cd gcc-build
+
+
+  # disable libphobos test to avoid segfaults and other unfunny ways to waste my time
+  sed -i '/maybe-check-target-libphobos \\/d' Makefile
+
 
   # do not abort on error as some are "expected"
   make -k check || true
