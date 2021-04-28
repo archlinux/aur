@@ -1,7 +1,7 @@
 # Maintainer: Daniel Milde <daniel@milde.cz>
 
 pkgname=gdu-bin
-pkgver=4.10.1
+pkgver=4.11.1
 pkgrel=1
 license=('MIT')
 pkgdesc="Fast disk usage analyzer"
@@ -11,8 +11,8 @@ url="https://github.com/Dundee/gdu"
 source=("${pkgname}-${pkgver}.tgz::https://github.com/dundee/gdu/releases/download/v${pkgver}/gdu_linux_amd64.tgz"
 	"${pkgname}.1-${pkgver}.tgz::https://github.com/dundee/gdu/releases/download/v${pkgver}/gdu.1.tgz"
 	"LICENSE")
-sha256sums=('7c5d6f7dedc643c59f3a17d46a1b7d017a606b5bc16a39f0ffa171eb7328d160'
-            'eae9cc78ce563827117c5b73454a9ff93b8f6f2554784b7c4203bfbefbea699d'
+sha256sums=('b01234139a6f229edce46dbf2b105bada35ddc70e2cf796ca88dc70f6756900d'
+            'a96bb5330d71de2b55d01834062e46c3520046d11d49ae74396ebcf8ecc32c6e'
             '613e9144d1403bba9553d64daf6a5e28d4c6bd9fabed81da80efaf91eb573dad')
 
 package() {
