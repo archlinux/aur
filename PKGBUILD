@@ -8,7 +8,7 @@ url="https://github.com/ransome1/sleek/"
 license=("MIT")
 options=(!strip)
 makedepends=("yarn")
-depends=("electron", "nodejs-lts-fermium")
+depends=("electron" "nodejs-lts-fermium")
 source=("${url}archive/refs/tags/v${pkgver}.zip" "sleek.desktop" "sleek.sh")
 sha512sums=('24457a25cbe71ec45927945f45fe9866ca83f23d885abc88593a7f50fb2c232b62bb2a13138568a4ce14145113408063d24e413d0f5ff4bf44c96f7b2439b1bf'
             '60777dbda8202e5a265a274d126d30269fb8fba67641d22a83be19b353b4805cbed2a3c80bbc0e6ed7c0fe7ae21c3cde59b784d42d3ba941bb0fdf022c1375e8'
