@@ -3,13 +3,13 @@
 _pkgbase=hysteria
 pkgname=$_pkgbase
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='TCP relay & SOCKS5/HTTP proxy tool optimized for poor network environments'
 arch=('x86_64')
-url="https://github.com/tobyxdd/hysteria"
+url="https://github.com/HyNetwork/hysteria"
 license=('MIT')
 makedepends=('go')
-source=("$_pkgbase-$pkgver.tar.gz"::"https://github.com/tobyxdd/hysteria/archive/refs/tags/v$pkgver.tar.gz"
+source=("$_pkgbase-$pkgver.tar.gz"::"$url/archive/refs/tags/v$pkgver.tar.gz"
         hysteria@.service
         hysteria-server@.service
         sysusers.conf
@@ -26,6 +26,15 @@ prepare(){
   mkdir -p build/
 }
 
+_commit_hash() {
+  # magic to obtain commit hash without makedepends git
+  curl -sA 'git/2.31.1' "$url.git/info/refs?service=git-upload-pack" \
+      | sed 's/\^{}/\n/g' \
+      | grep -a "refs/tags/v$pkgver" \
+      | grep '0041' \
+      | cut -b 5-44
+}
+
 build() {
   cd "$srcdir/$_pkgbase-$pkgver"
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -33,7 +42,11 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o build/$_pkgbase ./cmd/...
+  export GOLDFLAGS="-w -s"
+  export GOLDFLAGS="$GOLDFLAGS -X 'main.appVersion=$pkgver'"
+  export GOLDFLAGS="$GOLDFLAGS -X 'main.appCommit=$(_commit_hash)'"
+  export GOLDFLAGS="$GOLDFLAGS -X 'main.appDate=$(date "+%F %T")'"
+  go build -o build/$_pkgbase -ldflags "$GOLDFLAGS" ./cmd/...
 }
 
 #check() {
