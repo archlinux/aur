@@ -2,19 +2,33 @@
 
 pkgname=notion-app
 pkgver=2.0.16
-pkgrel=8
+pkgrel=9
 epoch=2
 pkgdesc="The all-in-one workspace for your notes and tasks"
 arch=('i686' 'x86_64')
 url="https://www.notion.so/desktop"
 license=('MIT')
 depends=('re2' 'gtk3' 'xdg-utils')
-makedepends=('imagemagick' 'p7zip' 'npm' 'nodejs>=14' 'python2')
+makedepends=('imagemagick' 'p7zip' 'npm' 'nvm' 'python2')
 source=("Notion-"${pkgver}".exe::https://desktop-release.notion-static.com/Notion%20Setup%20${pkgver}.exe" 
         'notion-app.desktop')
 md5sums=('9f72284086cda3977f7f569dff3974d5'
          '257f3106e5d9364ef2df557a656cd8e7')
+
+_ensure_local_nvm() {
+  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+  export NVM_DIR="${srcdir}/.nvm"
+  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
+
+prepare() {
+  _ensure_local_nvm
+  nvm install 14.16.1
+}
+
 build() {
+  _ensure_local_nvm
+
   msg "Extracting app from Windows build..."
   7z x -y "${srcdir}/Notion-"${pkgver}".exe" -o"${srcdir}/extracted-exe" >/dev/null
   7z x -y "${srcdir}/extracted-exe/\$PLUGINSDIR/app-64.7z" -o"${srcdir}/extracted-app" >/dev/null
