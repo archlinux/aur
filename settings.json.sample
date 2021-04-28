@@ -10,9 +10,11 @@
           ]
         }
       },
+      "providers": "any",
       "tunnel_protocol": "any",
       "wireguard_constraints": {
-        "port": "any"
+        "port": "any",
+        "ip_version": "any"
       },
       "openvpn_constraints": {
         "port": "any",
@@ -22,7 +24,8 @@
   },
   "bridge_settings": {
     "normal": {
-      "location": "any"
+      "location": "any",
+      "providers": "any"
     }
   },
   "bridge_state": "auto",
@@ -34,11 +37,17 @@
       "mssfix": null
     },
     "wireguard": {
-      "mtu": null
+      "mtu": null,
+      "rotation_interval": null
     },
     "generic": {
       "enable_ipv6": true
+    },
+    "dns_options": {
+      "custom": false,
+      "addresses": []
     }
   },
-  "settings_version": 2
+  "show_beta_releases": false,
+  "settings_version": 3
 }

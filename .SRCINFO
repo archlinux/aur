@@ -1,6 +1,6 @@
 pkgbase = mullvad-vpn-cli
 	pkgdesc = The Mullvad VPN client cli
-	pkgver = 2021.2
+	pkgver = 2021.3
 	pkgrel = 1
 	url = https://www.mullvad.net
 	install = mullvad-vpn-cli.install
@@ -11,12 +11,11 @@ pkgbase = mullvad-vpn-cli
 	makedepends = go
 	depends = nss
 	depends = iputils
-	depends = resolvconf
 	optdepends = networkmanager: create Wireguard interface
 	provides = mullvad-vpn
 	conflicts = mullvad-vpn
-	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2021.2?signed
-	source = git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=fa76f058d6f5fa66e62f9c4a291e6079cea22e37?signed
+	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2021.3?signed
+	source = git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=2063422c167c874eceab10692d4385a0c40b3f47?signed
 	source = override.conf
 	source = settings.json.sample
 	validpgpkeys = EA0A77BF9E115615FC3BD8BC7653B940E494FE87

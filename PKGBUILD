@@ -2,19 +2,19 @@
 # Contributor: Timo Kramer <fw minus aur at timokramer dot de>
 
 pkgname=mullvad-vpn-cli
-pkgver=2021.2
+pkgver=2021.3
 pkgrel=1
 pkgdesc="The Mullvad VPN client cli"
 url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
-depends=('nss' 'iputils' 'resolvconf')
+depends=('nss' 'iputils')
 makedepends=('git' 'rust' 'go')
 optdepends=('networkmanager: create Wireguard interface')
 conflicts=('mullvad-vpn')
 provides=('mullvad-vpn')
 install="${pkgname}.install"
-_commit='fa76f058d6f5fa66e62f9c4a291e6079cea22e37'
+_commit='2063422c167c874eceab10692d4385a0c40b3f47'
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${pkgver}?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
         'override.conf'
@@ -36,8 +36,9 @@ prepare() {
     git submodule update
 
     echo "Removing old Rust build artifacts"
-    cargo clean
+    cargo clean --target-dir=target
 
+    # Prevent creation of `go` directory in user's HOME.
     export GOPATH="$srcdir/gopath"
     go clean -modcache
 }
@@ -67,13 +68,13 @@ build() {
     echo "Building Rust code in release mode"
 
     # Build mullvad-daemon
-    cargo build --release --locked
+    cargo build --release --locked --target-dir=target
 
     mkdir -p dist-assets/shell-completions
     for sh in bash zsh fish; do
         echo "Generating shell completion script for $sh..."
-        cargo run --bin mullvad --release --locked -- shell-completions "$sh" \
-            dist-assets/shell-completions/
+        cargo run --bin mullvad --release --locked --target-dir=target \
+            -- shell-completions "$sh" dist-assets/shell-completions/
     done
 
     echo "Copying binaries"
@@ -92,10 +93,10 @@ build() {
 
     echo "Updating relay list..."
     # Update relays.json
-    cargo run --bin relay_list --release > dist-assets/relays.json
+    cargo run --bin relay_list --release --target-dir=target > dist-assets/relays.json
 
     echo "Updating API address cache..."
-    cargo run --bin address_cache --release > dist-assets/api-ip-address.txt
+    cargo run --bin address_cache --release --target-dir=target > dist-assets/api-ip-address.txt
 }
 
 package() {
