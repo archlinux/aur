@@ -3,7 +3,7 @@
 # Contributor: agnotek <agnostic.sn [at]gmail.com>
 # Contributor: silentnoodle <lonnqvistben at gmail dot com>
 pkgname=telegram-desktop-bin-dev
-pkgver=2.7.3
+pkgver=2.7.4
 pkgrel=1
 _dev=0 # If it is a dev-only version, set this to 1
 pkgdesc="Official desktop version of Telegram messaging app - Static binaries, developement version"
