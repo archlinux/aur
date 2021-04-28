@@ -3,3 +3,4 @@ pkg
 logo.ico
 vnaJ.*.jar
 *.pkg.tar.xz
+*.pkg.tar.zst
