@@ -1,15 +1,15 @@
 # Maintainer: Dan Elkouby <streetwalrus@codewalr.us>
 
 pkgname=3dstools
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="Various tools for 3DS development"
 arch=('x86_64')
 url="https://github.com/devkitPro/3dstools"
 license=('unknown')
 depends=('gcc-libs')
-source=("https://github.com/devkitPro/3dstools/releases/download/v$pkgver/3dstools-$pkgver.tar.bz2")
-sha256sums=('d41cab378fbc5210c2a5dc68987b020c9dafea641d39edc087c69ea78f5d6fb0')
+source=("https://github.com/devkitPro/3dstools/archive/refs/tags/v1.1.5.tar.gz")
+sha256sums=('47b6a830e583631708d5919e50c7e0155b378bf8f42aa0a5fb56c3f9b5d898dc')
 
 build() {
   cd "$srcdir/3dstools-$pkgver"
