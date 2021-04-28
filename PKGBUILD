@@ -5,7 +5,7 @@ pkgdesc="upctl - a CLI tool for managing UpCloud services."
 arch=('x86_64')
 url="https://upcloud.com"
 license=('Apache')
-source=("https://github.com/kaminek/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_x86_64.tar.gz")
+source=("https://github.com/UpCloudLtd/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_x86_64.tar.gz")
 sha256sums=('SKIP')
 
 package() {
