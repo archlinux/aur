@@ -14,7 +14,7 @@ conflicts=(opencascade opencascade-git)
 
 depends=(
 tk
-vtk
+vtk9-java
 gl2ps
 ffmpeg
 freeimage
