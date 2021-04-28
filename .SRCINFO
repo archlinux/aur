@@ -1,13 +1,13 @@
 pkgbase = bash-complete-alias
 	pkgdesc = automagical bash shell alias completion
-	pkgver = 1.9.0
-	pkgrel = 2
+	pkgver = 1.10.0
+	pkgrel = 1
 	url = https://repo.cykerway.com/complete-alias
 	install = bash-complete-alias.install
 	arch = any
 	license = GPL3
-	source = https://github.com/cykerway/complete-alias/archive/1.9.0.tar.gz
-	sha256sums = f636b9c9262fb05fd2cd71da4a570d7cff5b25ccf88e1f78a74c8c80484f1a29
+	source = https://github.com/cykerway/complete-alias/archive/1.10.0.tar.gz
+	sha256sums = 467a8a0cff0e2c5096f2e42c7b991cff20f5252b7f69e4cfbb6984d3ce0ab06d
 
 pkgname = bash-complete-alias
 	depends = bash-completion
