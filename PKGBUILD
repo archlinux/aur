@@ -4,7 +4,7 @@
 
 pkgname=vim-workspace-git
 pkgver=1.8.3.r18.gfaa8354
-pkgrel=1
+pkgrel=2
 pkgdesc="Vim workspace manager plugin for managing groups of files"
 arch=('any')
 url="https://github.com/thaerkh/vim-workspace"
@@ -12,6 +12,8 @@ license=('Apache')
 groups=('vim-plugins')
 depends=('vim-plugin-runtime')
 makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
