@@ -1,13 +1,13 @@
 pkgbase = python-simple-pid
 	pkgdesc = A simple and easy to use PID controller in Python
-	pkgver = 0.2.4
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/m-lundberg/simple-pid
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	source = python-simple-pid-0.2.4.tar.gz::https://github.com/m-lundberg/simple-pid/archive/v0.2.4.tar.gz
-	sha256sums = 441150075c846460acd38eeb232bab1ac75194f851237f0459307217e4a57525
+	source = python-simple-pid-1.0.1.tar.gz::https://github.com/m-lundberg/simple-pid/archive/v1.0.1.tar.gz
+	sha256sums = babdf0e355eaf4188860d558d732f2723d0b6586d41f81c8eba8f442a748448a
 
 pkgname = python-simple-pid
 

@@ -2,7 +2,7 @@
 
 pkgname=python-simple-pid
 _name=${pkgname#python-}
-pkgver=0.2.4
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A simple and easy to use PID controller in Python"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=()
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/m-lundberg/$_name/archive/v$pkgver.tar.gz")
-sha256sums=('441150075c846460acd38eeb232bab1ac75194f851237f0459307217e4a57525')
+sha256sums=('babdf0e355eaf4188860d558d732f2723d0b6586d41f81c8eba8f442a748448a')
 
 build() {
     cd $_name-$pkgver
