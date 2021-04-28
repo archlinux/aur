@@ -19,7 +19,7 @@ pkgbase = git-credential-manager-core-bin
 	source = git-credential-manager-core.install
 	source = LICENSE
 	sha256sums = a261a5dcfd8563c8edd498717e2a6f4ae70ec3a2fb3e39560edbba4f129ee865
-	sha256sums = 28e0fe2c913d89b226274dfc8ec4ff7fb9bf8c11cea920608043521daff76081
+	sha256sums = 399aa9e3cf7a30c3658129564f9aa14871de61aed9a1b429ecc4f96a92a69400
 	sha256sums = 30147347d5ce41662672ea2be7b158ae0e014398b97a148dd07bfd46c5166292
 
 pkgname = git-credential-manager-core-bin
