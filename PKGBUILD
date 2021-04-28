@@ -3,7 +3,7 @@
 
 pkgname=mopidy-youtube-git
 _pkgname=mopidy-youtube
-pkgver=v3.0.r21.g3d75925
+pkgver=v3.3.r2.g9db86ff
 pkgrel=1
 pkgdesc="Mopidy extension for playing music from Youtube"
 
@@ -11,13 +11,14 @@ arch=('any')
 url="https://github.com/natumbri/mopidy-youtube"
 license=('APACHE')
 depends=(
-  'mopidy>=3.0'
+  'mopidy>=3.1'
   'python-pykka>=2.0.1'
   'python-setuptools'
   'python-requests'
   'python-cachetools'
   'python-beautifulsoup4'
-  'youtube-dl')
+  'youtube-dl>=2020.12.22'
+  'python-ytmusicapi')
 makedepends=('python' 'git')
 
 conflicts=("mopidy-youtube")
