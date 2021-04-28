@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Ederson Ferreira <edersondeveloper@gmail.com>
-pkgname=buildit-edersonferreira-git
+pkgname=gomarkpdf-edersonferreira-git
 pkgver=1.1.r1.8941540
 pkgrel=1
 epoch=
