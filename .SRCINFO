@@ -1,6 +1,6 @@
 pkgbase = pyp2rpm
 	pkgdesc = Convert Python packages to RPM SPECFILES
-	pkgver = 3.3.5
+	pkgver = 3.3.6
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/pyp2rpm
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = pyp2rpm
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-jinja
-	source = https://files.pythonhosted.org/packages/source/p/pyp2rpm/pyp2rpm-3.3.5.tar.gz
-	sha256sums = e5812c3dafe5a143f29d3896d9b2e93077c703d1f00f00aa72445f99f886fe85
+	source = https://files.pythonhosted.org/packages/source/p/pyp2rpm/pyp2rpm-3.3.6.tar.gz
+	sha256sums = 45ed9304d2add00e6e2f94986d8c6ded31efd6461dda65778cb03e2097f1c90c
 
 pkgname = pyp2rpm
 
