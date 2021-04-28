@@ -1,28 +1,27 @@
 # Maintainer: Andr0med4
 # Contributor: Garrett <floft.net/contact>
+
 pkgname=worldwind
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
-pkgdesc="an open source 3D interactive world viewer"
-arch=('x86_64')
+pkgdesc="Open source 3D interactive world viewer"
+arch=("x86_64")
 url="http://worldwind.arc.nasa.gov/java/"
-license=('custom')
-optdepends=('libtxc_dxtn: radeon and nouveau support')
-source=('https://github.com/NASAWorldWind/WorldWindJava/releases/download/v2.1.0/worldwind-v2.1.0.zip')
-md5sums=('22ab1fd93b851873e771650b9f5ec7e2')
+license=("Apache License 2.0")
+depends=("java-runtime>=11")
+optdepends=("libtxc_dxtn: radeon and nouveau support")
+source=("https://github.com/NASAWorldWind/WorldWindJava/releases/download/v${pkgver}/worldwind-v${pkgver}.zip"
+        "worldwind")
+sha512sums=("0493fe8c465036a8e487f38513483cd816ffe2f1ba2ebdca35ae71e98b752be0c207e51e1151d71abd2a2ef7397fea2dcd4709373524a2d7a0149a7f2ad5aab4"
+            "6cb0eb5b2c1e901f27572ea9e4c654a0c031bc7ac5d48d58d8d24baaacc9f71e686f7dec4e7a07a923f79f36da51e962bb507df1727c6cdf62996d4864d6be44")
 
 package() {
-	cd "$srcdir"
-
-	mkdir -p "$pkgdir/usr/bin/"
-	cat > "$pkgdir/usr/bin/worldwind" <<EOF
-#!/bin/bash
-cd '/usr/share/worldwind/';
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib/jogl"
-java -Xmx512m -Djava.library.path=. -classpath ./src:./classes:./worldwind.jar:./worldwindx.jar:./jogl.jar:./gluegen-rt.jar:./gdal.jar gov.nasa.worldwindx.examples.ApplicationTemplate
-EOF
-	chmod +x "$pkgdir/usr/bin/worldwind"
-
+  # Copy worldwind files to destination folder
 	mkdir -p  "$pkgdir/usr/share/$pkgname"
-	cp -r ./* "$pkgdir/usr/share/$pkgname/"
+	cp -r "$srcdir"/* "$pkgdir/usr/share/$pkgname/"
+
+  # Create launch script
+	mkdir -p "$pkgdir/usr/bin/"
+  cp "$srcdir"/worldwind "$pkgdir/usr/bin/"
+	chmod +x "$pkgdir/usr/bin/worldwind"
 }
