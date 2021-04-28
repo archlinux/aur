@@ -51,7 +51,7 @@ prepare() {
   #sed '/OpenCASCADECompileDefinitionsAndFlags/d' -i CMakeLists.txt
 
   # fix for trying to write into the system during build
-  #sed 's,if (EXISTS "${INSTALL_DIR}/${INSTALL_DIR_SCRIPT}/custom.${SCRIPT_EXT}"),if (0),g' -i CMakeLists.txt
+  sed 's,if (EXISTS "${INSTALL_DIR}/${INSTALL_DIR_SCRIPT}/custom.${SCRIPT_EXT}"),if (0),g' -i CMakeLists.txt
 }
 
 build() {
