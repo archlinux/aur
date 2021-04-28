@@ -1,30 +1,33 @@
-pkgbase="autorestic-bin"
-pkgname="autorestic"
-pkgver=1.0.7
-_pkgid="${pkgname}-${pkgver}"
+pkgname="autorestic-bin"
+pkgver=1.0.8
+_pkgid="${pkgname%-bin}-${pkgver}"
 pkgrel=1
 pkgdesc="High level CLI utility for restic"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
-url="https://github.com/cupcakearmy/${pkgname}"
+url="https://github.com/cupcakearmy/${pkgname%-bin}"
 license=('Apache')
+license=('GPL3')
+depends=('restic')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
 
 _arch_i686="386"
 _arch_x86_64="amd64"
 _arch_armv6h="arm"
 _arch_armv7h="arm64"
 
-sha256sums_x86_64=('c7fe7da7dbcbfcc1f46bfbcf9d79a9de16978470f4fd6e33e5aab8c7eb2126f0')
-sha256sums_i686=('bb65eb5de9bebe8a3b8f8732d088e2b6e528a9dcc7ffdc421898000bc30cfc46')
-sha256sums_armv6h=('b21e90a772871d3f17825e9dc97d70dbe54ec541c61806257b2cd263e54c8240')
-sha256sums_armv7h=('43622d9bcace3a73562ea5c518f3bdff694e975d57f305567de61492f261c6fe')
+sha256sums_x86_64=('34bacb5bb9b1236a540d5f188a4542bd2fed6e82ebd826f8ea432734b4936044')
+sha256sums_i686=('1ab806ca51f6bdb20dfd40de8d530fe95d01bdc92c163d1920cb18fa76f48be4')
+sha256sums_armv6h=('c5b53529e002f6cb22a84011621532964cc6b72846c01cf35a794bd866263f8c')
+sha256sums_armv7h=('7f4044458cdd8b1602fd7108d46f37ecb526482855a663536d6882b894765277')
 
-source_x86_64=("$pkgname-$pkgver.bz2"::"https://github.com/cupcakearmy/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_${_arch_x86_64}.bz2")
-source_i686=("$pkgname-$pkgver.bz2"::"https://github.com/cupcakearmy/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_${_arch_i686}.bz2")
-source_armv6h=("$pkgname-$pkgver.bz2"::"https://github.com/cupcakearmy/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_${_arch_armv6h}.bz2")
-source_armv7h=("$pkgname-$pkgver.bz2"::"https://github.com/cupcakearmy/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_${_arch_armv7h}.bz2")
+source_x86_64=("${pkgname%-bin}-$pkgver.bz2"::"${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_${_arch_x86_64}.bz2")
+source_i686=("${pkgname%-bin}-$pkgver.bz2"::"${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_${_arch_i686}.bz2")
+source_armv6h=("${pkgname%-bin}-$pkgver.bz2"::"${url}/${pkgname}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_${_arch_armv6h}.bz2")
+source_armv7h=("${pkgname%-bin}-$pkgver.bz2"::"${url}/${pkgname}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_${_arch_armv7h}.bz2")
 
 prepare() {
-  bzip2 -fdc $pkgname-$pkgver.bz2 > autorestic
+  bzip2 -fdc ${pkgname%-bin}-$pkgver.bz2 > autorestic
   chmod +x autorestic
 }
 
