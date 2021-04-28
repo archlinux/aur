@@ -1,0 +1,15 @@
+pkgbase = vim-workspace-git
+	pkgdesc = Vim workspace manager plugin for managing groups of files
+	pkgver = 1.8.3.r18.gfaa8354
+	pkgrel = 1
+	url = https://github.com/thaerkh/vim-workspace
+	arch = any
+	groups = vim-plugins
+	license = Apache
+	makedepends = git
+	depends = vim-plugin-runtime
+	source = vim-workspace-git::git+https://github.com/thaerkh/vim-workspace
+	sha256sums = SKIP
+
+pkgname = vim-workspace-git
+
