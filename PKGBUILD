@@ -1,4 +1,5 @@
 # Maintainer: Joe Bashe <joe@bashe.joe>
+# Contributor: Kim Scarborough <kim@scarborough.kim>
 pkgname=deluge1
 pkgver=1.3.15
 pkgrel=7
