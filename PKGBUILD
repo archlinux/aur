@@ -1,16 +1,17 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=touche
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="The desktop application to configure Touchégg "
 arch=('x86_64')
 url="https://github.com/JoseExposito/touche"
 license=('GPL3')
-depends=('gjs' 'gtk3' 'libwnck3' 'touchegg')
+depends=('gjs' 'gtk3' 'touchegg')
 makedepends=('gobject-introspection' 'meson' 'npm')
 checkdepends=('appstream-glib')
+provides=('libtouche.so')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('d99e3ee7320af900c7a34b4a3a4cc4c0c4f7109c911e2b00cf382749fed61c18')
+sha256sums=('e8979333dd176715b0c51e2193bce73b3f06cf63eb7d78fc0a8d47f2cd8c7563')
 
 build() {
 	export npm_config_cache="$srcdir/npm_cache"
