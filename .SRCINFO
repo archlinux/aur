@@ -1,6 +1,6 @@
 pkgbase = hornet-git
 	pkgdesc = HORNET is a powerful IOTA fullnode software
-	pkgver = 0.5.6
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/gohornet/hornet
 	install = hornet.install
@@ -9,15 +9,14 @@ pkgbase = hornet-git
 	makedepends = go
 	makedepends = git
 	backup = etc/hornet/config.json
-	backup = etc/hornet/config_comnet.json
-	backup = etc/hornet/config_devnet.json
-	backup = etc/hornet/mqtt_config.json
+	backup = etc/hornet/config_as.json
+	backup = etc/hornet/config_chrysalis_testnet.json
 	backup = etc/hornet/peering.json
 	backup = etc/hornet/profiles.json
-	source = git://github.com/gohornet/hornet.git#branch=master
+	source = git://github.com/gohornet/hornet.git#branch=main
 	source = hornet.service
 	sha256sums = SKIP
-	sha256sums = 56c5ecbdb4691465d0cdc3d5c95ea885c38281e1c721aa7153fd226755ea997b
+	sha256sums = 06f5b5c6d3a7384610438f73ff82f6ba669c4d6274b70ffd0784b0011cc9b560
 
 pkgname = hornet-git
 
