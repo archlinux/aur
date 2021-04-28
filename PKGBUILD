@@ -1,6 +1,6 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=tang-git
-pkgver=8.r0.95d4822
+pkgver=9.r0.d98ce92
 pkgrel=1
 pkgdesc='Server for binding data to network presence'
 arch=('x86_64')
@@ -33,4 +33,5 @@ check() {
 package() {
 	cd "${pkgname%-git}"
 	DESTDIR="$pkgdir" meson install -C build
+	mkdir -pm700 "$pkgdir/var/db/tang"
 }
