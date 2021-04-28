@@ -1,22 +1,20 @@
 # Maintainer: robertfoster
 
 pkgname=xmysql
-pkgver=0.4.4
+pkgver=0.4.9
 pkgrel=1
 pkgdesc="One command to generate REST APIs for any MySql Database"
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
 url="https://github.com/o1lab/xmysql/"
 license=('MIT')
-depends=(npm)
-makedepends=(npm)
-source=("https://github.com/o1lab/xmysql/archive/v$pkgver.tar.gz")
+depends=('npm')
+makedepends=('npm')
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
 
-package(){
-	cd $srcdir
-	local _npmdir="$pkgdir/usr/lib/node_modules/"
-	mkdir -p $_npmdir
-	cd $_npmdir
-	npm install -g --prefix "$pkgdir/usr" --ignore-scripts --production https://github.com/o1lab/xmysql/archive/master.zip
+package() {
+  npm install -g \
+    --prefix "$pkgdir"/usr \
+    --production "$srcdir"/$pkgver.tar.gz
 }
 
-md5sums=('0c72d59428aa88fd834700b5fc21fd07')
+sha256sums=('b2f8c8fe94a5c1830ad0179d77c3a1a1cfe9b28d2e887b8ec8df36e17292b04b')

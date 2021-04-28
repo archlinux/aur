@@ -1,6 +1,6 @@
 pkgbase = xmysql
 	pkgdesc = One command to generate REST APIs for any MySql Database
-	pkgver = 0.4.4
+	pkgver = 0.4.9
 	pkgrel = 1
 	url = https://github.com/o1lab/xmysql/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = xmysql
 	license = MIT
 	makedepends = npm
 	depends = npm
-	source = https://github.com/o1lab/xmysql/archive/v0.4.4.tar.gz
-	md5sums = 0c72d59428aa88fd834700b5fc21fd07
+	source = https://github.com/o1lab/xmysql//archive/refs/tags/0.4.9.tar.gz
+	sha256sums = b2f8c8fe94a5c1830ad0179d77c3a1a1cfe9b28d2e887b8ec8df36e17292b04b
 
 pkgname = xmysql
 
