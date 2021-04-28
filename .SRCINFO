@@ -1,7 +1,7 @@
 pkgbase = dbxfs
 	pkgdesc = User-space file system for Dropbox
 	pkgver = 1.0.51
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rianhunter/dbxfs
 	arch = x86_64
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = dbxfs
 	depends = python-block_tracing
 	depends = python-privy
 	depends = python-keyrings-alt
-	depends = python-sentry_sdk=0.19.5
+	depends = python-sentry_sdk
 	source = https://pypi.org/packages/source/d/dbxfs/dbxfs-1.0.51.tar.gz
 	source = https://pypi.org/packages/source/d/dbxfs/dbxfs-1.0.51.tar.gz.asc
 	source = dbxfs.patch
