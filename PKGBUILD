@@ -3,7 +3,7 @@
 # Maintainer: tyjak
 
 pkgname=binance
-pkgver=1.15.4
+pkgver=1.15.5
 pkgrel=1
 pkgdesc="The Binance desktop application"
 arch=('x86_64')
