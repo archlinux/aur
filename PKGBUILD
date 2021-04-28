@@ -9,7 +9,6 @@ arch=("x86_64")
 url="http://worldwind.arc.nasa.gov/java/"
 license=("Apache License 2.0")
 depends=("java-runtime>=11")
-optdepends=("libtxc_dxtn: radeon and nouveau support")
 source=("https://github.com/NASAWorldWind/WorldWindJava/releases/download/v${pkgver}/worldwind-v${pkgver}.zip"
         "worldwind")
 sha512sums=("0493fe8c465036a8e487f38513483cd816ffe2f1ba2ebdca35ae71e98b752be0c207e51e1151d71abd2a2ef7397fea2dcd4709373524a2d7a0149a7f2ad5aab4"
