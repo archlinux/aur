@@ -1,6 +1,6 @@
 pkgbase = dmscripts-git
 	pkgdesc = A collection of dmenu scripts
-	pkgver = 1.0.r156.f7f5309
+	pkgver = 1.0.r165.994d7a4
 	pkgrel = 1
 	url = https://gitlab.com/dwt1/dmscripts.git
 	arch = any
