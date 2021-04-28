@@ -1,5 +1,5 @@
 pkgbase = texlive-upstream
-	pkgdesc = If you install TeXLive by hand, this package provides fake distribution packages.
+	pkgdesc = If you install TeXLive by hand, this package provides fake distribution packages and replaces some AUR conflicts.
 	pkgver = 1
 	pkgrel = 1
 	url = http://www.tug.org/texlive/
