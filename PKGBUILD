@@ -7,16 +7,16 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn
-pkgver=2021.2
-pkgrel=6
+pkgver=2021.3
+pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop"
 url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
 depends=('iputils' 'libnotify' 'libappindicator-gtk3' 'nss')
-makedepends=('git' 'go' 'rust' 'nodejs>=12' 'npm>=6.12' 'python')
+makedepends=('git' 'go' 'rust' 'nodejs>=12' 'npm>=6.12' 'python' 'nvm')
 install="$pkgname.install"
-_commit='fa76f058d6f5fa66e62f9c4a291e6079cea22e37'
+_commit='2063422c167c874eceab10692d4385a0c40b3f47'
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
         "$pkgname.sh")
@@ -28,8 +28,18 @@ validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87'
               '8339C7D2942EB854E3F27CE5AEE9DECFD582E984')
               # David Lönnhager (code signing) <david dot l at mullvad dot net>
 
+_ensure_local_nvm() {
+	# lets be sure we are starting clean
+	which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+	export NVM_DIR="$srcdir/.nvm"
+
+	# The init script returns 3 if version
+	# specified in ./.nvrc is not (yet) installed in $NVM_DIR
+	# but nvm itself still gets loaded ok
+	source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
+
 prepare() {
-	# Point the submodule to our local copy
 	cd "$srcdir/mullvadvpn-app"
 	git submodule init dist-assets/binaries
 	git config submodule.mullvadvpn-app-binaries.url "$srcdir/mullvadvpn-app-binaries"
@@ -41,8 +51,19 @@ prepare() {
 	echo "Removing old Rust build artifacts"
 	cargo clean --target-dir=target
 
+	# Prevent creation of a `go` directory in one's home.
+	# Sometimes this directory cannot be removed with even `rm -rf` unless
+	# one becomes root or changes the write permissions.
 	export GOPATH="$srcdir/gopath"
 	go clean -modcache
+
+	# Build fails with Node.js 16, use 15
+	export npm_config_cache="$srcdir/npm-cache"
+	local npm_prefix=$(npm config get prefix)
+	local nodeversion='15.14.0'
+	npm config delete prefix
+	_ensure_local_nvm
+	nvm install "$nodeversion" && nvm use "$nodeversion"
 }
 
 build() {
@@ -55,7 +76,7 @@ build() {
 	echo "Building Mullvad VPN $PRODUCT_VERSION..."
 
 	echo "Updating version in metadata files..."
-	./version-metadata.sh inject $PRODUCT_VERSION
+	./version-metadata.sh inject $PRODUCT_VERSION --desktop
 
 	echo "Building wireguard-go..."
 	pushd wireguard/libwg
@@ -106,11 +127,16 @@ build() {
 
 	# Build Electron GUI app
 	pushd gui
+	_ensure_local_nvm
 	echo "Installing JavaScript dependencies..."
-	npm ci --no-optional --cache "$srcdir/npm-cache"
+	npm ci --cache "$srcdir/npm-cache"
 	echo "Packing final release artifact..."
 	npm run pack:linux
 	popd
+
+	# Restore node config from nvm
+	npm config set prefix "$npm_prefix"
+	nvm unalias default
 }
 
 #check() {
