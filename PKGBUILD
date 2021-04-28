@@ -1,7 +1,7 @@
 # Maintainer: Remi Gacogne <rgacogne(at)archlinux(dot)org>
 _pkgbase=lkrg
 pkgname=lkrg-dkms
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Linux Kernel Runtime Guard (DKMS)'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL2')
 source=("${url}/${_pkgbase}-${pkgver}.tar.gz"
         "${url}/${_pkgbase}-${pkgver}.tar.gz.sign"
         'dkms.conf')
-sha512sums=('7422b8a103aa6411209328e68f4349a164b18ae6a35063696247b7f8fdbd9320609a098db30f7c2e13d74b5cd12c6d2c9c9f28c3fec812a4d4f6a4b6e374e3e8'
+sha512sums=('1a943e76cf2c53a29807758f688c3bc346c7a03d0fdd03e5efd506e08d9d89d902a472c745885ff38c43f1f8a016925f6936fb8764c842e22a3a43553f5cf2e2'
             'SKIP'
             '2b4dd1787d318820b3bd3117ec0e5a57148ea67156ff27718d143d99e152fec0ce973b4f09c90889d4a72bca81a76f9b170580d27e5c3d54ab1dadebe4d85d72')
 validpgpkeys=('297AD21CF86C948081520C1805C027FD4BDC136E')
