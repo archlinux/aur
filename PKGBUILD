@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=5.11.15.arch1
+pkgver=5.11.16.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -24,7 +24,7 @@ source=(
 	"sys-kernel_arch-sources-g14_files_6008-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch"
 	#"sys-kernel_arch-sources-g14_files_6009-WMI-asus-Reduce-G14-and-G15-match-to-min-product-nam.patch"
 	"sys-kernel_arch-sources-g14_files-6010-acpi_unused.patch"
-	"git+https://gitlab.com/asus-linux/fedora-kernel#commit=3e893afb4b3fcc73192caa1d5a645abae87d2112"
+	"git+https://gitlab.com/asus-linux/fedora-kernel#commit=24c2a9ca9dd5a557641f5237e7a49b909531b01b"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds

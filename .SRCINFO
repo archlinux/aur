@@ -1,6 +1,6 @@
 pkgbase = linux-g14
 	pkgdesc = Linux
-	pkgver = 5.11.15.arch1
+	pkgver = 5.11.16.arch1
 	pkgrel = 1
 	url = https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/
 	arch = x86_64
@@ -12,12 +12,12 @@ pkgbase = linux-g14
 	makedepends = xmlto
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.11.15-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.11.16-arch1
 	source = config
 	source = sys-kernel_arch-sources-g14_files_6007-HID-asus-Add-support-for-2021-ASUS-N-Key-keyboard.patch
 	source = sys-kernel_arch-sources-g14_files_6008-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch
 	source = sys-kernel_arch-sources-g14_files-6010-acpi_unused.patch
-	source = git+https://gitlab.com/asus-linux/fedora-kernel#commit=3e893afb4b3fcc73192caa1d5a645abae87d2112
+	source = git+https://gitlab.com/asus-linux/fedora-kernel#commit=24c2a9ca9dd5a557641f5237e7a49b909531b01b
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
