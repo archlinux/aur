@@ -6,20 +6,20 @@
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
 _pkgver=2021.3
-_channel=beta
-pkgver=${_pkgver}.${_channel}1
+_channel=stable
+pkgver=${_pkgver}.${_channel}
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
 depends=('iputils' 'libnotify' 'libappindicator-gtk3' 'nss')
-makedepends=('git' 'go' 'rust' 'nodejs>=12' 'npm>=6.12' 'python')
+makedepends=('git' 'go' 'rust' 'nodejs>=12' 'npm>=6.12' 'python' 'nvm')
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
 _commit='2063422c167c874eceab10692d4385a0c40b3f47'
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}1?signed"
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
         "${pkgname%-beta}.sh")
 sha256sums=('SKIP'
@@ -29,6 +29,17 @@ validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87'
               # Linus Färnstrand (code signing key) <linus at mullvad dot net>
               '8339C7D2942EB854E3F27CE5AEE9DECFD582E984')
               # David Lönnhager (code signing) <david dot l at mullvad dot net>
+
+_ensure_local_nvm() {
+	# lets be sure we are starting clean
+	which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+	export NVM_DIR="$srcdir/.nvm"
+
+	# The init script returns 3 if version
+	# specified in ./.nvrc is not (yet) installed in $NVM_DIR
+	# but nvm itself still gets loaded ok
+	source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
 
 prepare() {
 	cd "$srcdir/mullvadvpn-app"
@@ -42,8 +53,19 @@ prepare() {
 	echo "Removing old Rust build artifacts"
 	cargo clean --target-dir=target
 
+	# Prevent creation of a `go` directory in one's home.
+	# Sometimes this directory cannot be removed with even `rm -rf` unless
+	# one becomes root or changes the write permissions.
 	export GOPATH="$srcdir/gopath"
 	go clean -modcache
+
+	# Build fails with Node.js 16, use 15
+	export npm_config_cache="$srcdir/npm-cache"
+	local npm_prefix=$(npm config get prefix)
+	local nodeversion='15.14.0'
+	npm config delete prefix
+	_ensure_local_nvm
+	nvm install "$nodeversion" && nvm use "$nodeversion"
 }
 
 build() {
@@ -107,11 +129,16 @@ build() {
 
 	# Build Electron GUI app
 	pushd gui
+	_ensure_local_nvm
 	echo "Installing JavaScript dependencies..."
 	npm ci --cache "$srcdir/npm-cache"
 	echo "Packing final release artifact..."
 	npm run pack:linux
 	popd
+
+	# Restore node config from nvm
+	npm config set prefix "$npm_prefix"
+	nvm unalias default
 }
 
 #check() {
