@@ -1,7 +1,7 @@
 # Maintainer : Ista Zahn <istazahn@gmail.com>
 ## Based on miniconda3 aur package by Ashwin Vishn Immae, Martin Wimpress and Jingbei Li
 pkgname=mambaforge
-pkgver=4.10.0
+pkgver=4.10.1
 pkgrel=1
 pkgdesc="Conda and Mamba package managers configured to use conda-forge."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=("BSD-3-Clause")
 source=("Mambaforge-${pkgver}.sh::https://github.com/conda-forge/miniforge/releases/download/${pkgver}-0/Mambaforge-${pkgver}-0-Linux-x86_64.sh"
         "$pkgname.install")
 options=(!strip libtool staticlibs)
-sha256sums=('c56cc2da96043688c6bdb521d825de27754de0a342d5228ba3155cd94532ff75'
+sha256sums=('d4065b376f81b83cfef0c7316f97bb83337e4ae27eb988828363a578226e3a62'
             '1df814280df859c40cd7dd1f7ff2552ca72dfbf9cde083f52e55c557b93d8977')
 install="$pkgname.install"
 
