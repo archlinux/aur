@@ -1,0 +1,21 @@
+pkgbase = qdmr-git
+	pkgdesc = A GUI application for configuring and programming cheap DMR radios
+	pkgver = r515.dab309d
+	pkgrel = 1
+	url = https://github.com/hmatuschek/qdmr
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = libusb
+	depends = qt5-tools
+	depends = qt5-serialport
+	depends = qt5-location
+	provides = qdmr
+	conflicts = qdmr
+	source = qdmr::git+https://github.com/hmatuschek/qdmr.git
+	md5sums = SKIP
+
+pkgname = qdmr-git
+
