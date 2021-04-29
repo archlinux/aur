@@ -2,17 +2,17 @@
 _pkgname=qiskit
 pkgname=python-${_pkgname}
 pkgver=0.25.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source SDK for working with quantum computers at the level of circuits, algorithms, and application modules"
 arch=('x86_64')
 url="https://github.com/Qiskit/qiskit"
 license=('Apache')
 depends=(
-    'python-qiskit-terra=0.17.1'
-    'python-qiskit-aer=0.8.2'
-    'python-qiskit-ibmq-provider=0.12.3'
-    'python-qiskit-ignis=0.6.0'
-    'python-qiskit-aqua=0.9.1'
+    'python-qiskit-terra'
+    'python-qiskit-aer'
+    'python-qiskit-ibmq-provider'
+    'python-qiskit-ignis'
+    'python-qiskit-aqua'
 )
 optdepends=(
     'python-matplotlib: plotting support'
