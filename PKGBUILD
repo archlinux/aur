@@ -1,6 +1,6 @@
 pkgname=bgfx-cmake-git
-pkgver=r7652.7daf5e0ba
-pkgrel=2
+pkgver=r7790.9310d1914
+pkgrel=1
 pkgdesc="Cross-platform, graphics API agnostic, \"Bring Your Own Engine/Framework\" style rendering library. (With CMake build scripts)"
 arch=('x86_64')
 url="https://bkaradzic.github.io/bgfx"
@@ -14,7 +14,7 @@ provides=(bgfx)
 source=('git://github.com/bkaradzic/bx.git'
         'git://github.com/bkaradzic/bimg.git'
         'git://github.com/bkaradzic/bgfx.git'
-        'git://github.com/widberg/bgfx.cmake.git'
+        'git://github.com/bkaradzic/bgfx.cmake.git'
         '0001-cmake-turn-on-CMAKE_POSITION_INDEPENDENT_CODE-for-sh.patch'
         '0002-bimg-specify-visibility-of-linked-libs.patch'
         '0003-install-if-generating-shared-only-install-bgfx.patch'
