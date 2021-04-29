@@ -1,14 +1,14 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=keepassk-git
-pkgver=r1.9bd9801
+pkgver=r2.f88dfc0
 pkgrel=1
 pkgdesc="A Kirigami password manager for KDBX password databases"
 arch=(x86_64 aarch64)
 url="https://invent.kde.org/tfella/keepassk"
 license=(GPL3)
-depends=('ki18n' 'kirigami2' 'kcoreaddons' 'qt5-svg')
-makedepends=('git' 'extra-cmake-modules' 'corrosion-git')
+depends=('ki18n' 'kirigami2' 'kcoreaddons')
+makedepends=('git' 'extra-cmake-modules' 'corrosion-git' 'qt5-svg')
 provides=('keepassk')
 conflicts=('keepassk')
 source=("git+${url}.git")
@@ -23,10 +23,10 @@ pkgver() {
 }
 
 build() {
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -B build -S "${pkgname%-git}"
-  make -C build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -B build -S "${pkgname%-git}"
+  cmake --build build --config Release
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
+  DESTDIR="${pkgdir}" cmake --install build --config Release
 }
