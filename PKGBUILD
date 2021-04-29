@@ -12,7 +12,7 @@ pkgname=(python-ipalib
          freeipa-client-common
          freeipa-client)
 pkgver=4.9.2
-pkgrel=2
+pkgrel=3
 pkgdesc='The Identity, Policy and Audit system'
 arch=('i686' 'x86_64')
 url='http://www.freeipa.org/'
@@ -47,7 +47,7 @@ sha256sums=('66bc4f858d4b1b78ab1549c1188e8dbb4df53b86946ae531ca9feac35339092d'
             '9fbac49fa4bc23afe0c4d575ea2795f1da435399289dbd04c5a3ac47580e2a0d'
             '1e73f394d276357dcd578df7a349b1f381c9edc7b1c053ecf65f7a9255c0490d'
             '74a394af693e3677146eff18a770a4271fba961b2af93b15b8ae26157af1760a'
-            '5a531a1e82ae115d4876e84eb5d716851ba2fa11e9dd3c1d2b773e7b5c5f3df3')
+            '7e20412c9347106485adee06b5fcee174c67eb5a30b6730452e300dfc44faa5e')
 
 prepare() {
     cd freeipa-${pkgver}
@@ -173,6 +173,7 @@ package_python-ipaclient() {
              "python-ipalib=$pkgver-$pkgrel"
              'python-dnspython>=1.15'
              'python-jinja')
+    optdepends=('oddjob: mkhomedir support')
 
     cd freeipa-${pkgver}
 
