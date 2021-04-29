@@ -104,6 +104,6 @@ package() {
   # documentation
   install -Dm644 README.txt -t "$pkgdir/usr/share/doc/${pkgname}"
   # icons license
-  install -Dm755 icons/readme.txt "$pkgdir/share/licenses/${pkgname}/license-icons.txt"
+  install -Dm755 icons/readme.txt "$pkgdir/usr/share/licenses/${pkgname}/license-icons.txt"
 }
 
