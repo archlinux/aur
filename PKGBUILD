@@ -1,8 +1,8 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: luzea <me at luzea dot ovh>
 
 pkgname=smartversion
-pkgver=3.80
-_pkgver=38
+pkgver=3.82
+_pkgver=382
 pkgrel=1
 pkgdesc='A tool for storing multiple versions of your files inside SVF files (Shareware)'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://www.smartversion.com'
 license=("custom:${pkgname}")
 depends=('glibc')
 source=("${pkgname}-${pkgver}.zip::https://www.smartversion.com/smartvs${_pkgver}_linux_x64.zip")
-sha256sums=('98664dafb4d39223236275b7b173fc4bacc41b7cc0d3adc883d81a8a31e7a40e')
+sha256sums=('a34e70f8415edc3729810fcb8baa11036b36cc6beb0e47e8f37a9e071972e2e3')
 
 package() {
   install -Dm755 smv -t "${pkgdir}/usr/bin"
