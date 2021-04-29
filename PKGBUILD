@@ -3,7 +3,7 @@
 
 pkgname=libtd
 pkgver=1.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform library for building Telegram clients "
 arch=('x86_64')
 url='https://core.telegram.org/tdlib'
@@ -11,15 +11,14 @@ license=('Boost')
 depends=(
 	'openssl'
 	'zlib'
+	'gcc-libs'
 )
 makedepends=(
 	'git'
 	'clang>=3.4'
-	'make'
 	'cmake>=3.0.2'
 	'gperf'
 	'php'
-	'gcc-libs'
 )
 provides=('libtd')
 conflicts=('telegram-tdlib')
