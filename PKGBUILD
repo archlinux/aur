@@ -1,10 +1,12 @@
-# Maintainer: Eric Liu <eric@hnws.me>
-# former Maintainer: Daniele Vazzola <daniele.vazzola@gmail.com>
+# Maintainer: Stephan Springer <buzo+arch@Lini.de>
+# Contributor: Eric Liu <eric@hnws.me>
+# Contributor: Daniele Vazzola <daniele.vazzola@gmail.com>
 # Contributor: Ciarán Coffey <ciaran@ccoffey.ie>
 # Contributor: Matthew Gyurgyik <matthew@pyther.net>
 # Contributor: Giorgio Azzinnaro <giorgio@azzinna.ro>
+
 pkgname=icaclient
-pkgver=21.03
+pkgver=21.4.0.11
 pkgrel=1
 pkgdesc="Citrix Workspace App for x86_64 (64bit) Linux (ICAClient, Citrix Receiver)"
 arch=('x86_64' 'i686' 'armv7h')
@@ -23,8 +25,8 @@ source_url32="http:$(curl -L -silent 'https://www.citrix.com/downloads/workspace
 source_url64="http:$(curl -L -silent 'https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html' | awk -F 'rel=\"' '/linuxx64-/ {print $2}'| awk -F'"' '{print $1}'| sed '/^$/d' |uniq)"
 source_urlarmhf="http:$(curl -L -silent 'https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html' | awk -F 'rel=\"' '/linuxarmhf-/ {print $2}'| awk -F'"' '{print $1}'| sed '/^$/d' |uniq)"
 source=('configmgr.desktop'  'conncenter.desktop'  'selfservice.desktop' 'wfica.desktop' 'wfica.sh' 'wfica_assoc.sh')
-source_i686=($pkgname-x86-$pkgver.tar.gz::$source_url32)
 source_x86_64=($pkgname-x64-$pkgver.tar.gz::$source_url64)
+source_i686=($pkgname-x86-$pkgver.tar.gz::$source_url32)
 source_armv7h=($pkgname-armhf-$pkgver.tar.gz::$source_urlarmhf)
 md5sums=('71aca6257f259996ac59729604f32978'
          'a38c3f844a0fefe8017a25bee213b843'
@@ -32,9 +34,9 @@ md5sums=('71aca6257f259996ac59729604f32978'
          '1f214f6f456f59afd1a3275580f4240e'
          '59f8e50cc0e0c399d47eb7ace1df5a32'
          'dca5a1f51449ef35f1441b900d622276')
-sha256sums_x86_64=('ec0faaed2855af0a939f4f549a73108cca1de5febde8bcb14e890644fb7e9700')
-sha256sums_i686=('c38a82da2458882f88f55ec53ca09f11f50d2b4f1f2084436d251445c649d686')
-sha256sums_armv7h=('737b0c8a2e9f451f25e7a8f21e619cd4c4a3d05091bb94912d0305e08d79ca99')
+sha256sums_x86_64=('c2744b5be36d2c7b49fcec987b8f1c8dd5bc69b7078e50ea50fde4405defe8a8')
+sha256sums_i686=('b143a4c2323ca9d838dbf62fffe117977aec370d90dae2844a30437a66a4ec45')
+sha256sums_armv7h=('ce03ade65ba13469bef9672471f02b6e19c9961f5b9bf8be0be4c8fadb8b09d6')
 install=citrix-client.install
 
 package() {
@@ -73,7 +75,7 @@ package() {
     cp -r ./util/ "${pkgdir}$ICAROOT"
 
 	rm "${pkgdir}$ICAROOT/lib/UIDialogLibWebKit.so"
-	
+
     # Install License
     install -m644 -D nls/en.UTF-8/eula.txt \
       "${pkgdir}$ICAROOT/eula.txt"
@@ -109,7 +111,7 @@ package() {
     cp "${pkgdir}$ICAROOT/nls/$lang/module.ini" "${pkgdir}/$ICAROOT/config/"
     cp "${pkgdir}$ICAROOT/nls/$lang/appsrv.template" "${pkgdir}/$ICAROOT/config/appsrv.ini"
     cp "${pkgdir}$ICAROOT/nls/$lang/wfclient.template" "${pkgdir}/$ICAROOT/config/wfclient.ini"
- 
+
 	sed -i 's/Ceip=Enable/Ceip=Disable/g' "${pkgdir}$ICAROOT/config/module.ini"
     cd "${srcdir}"
     # install freedesktop.org files
