@@ -1,7 +1,7 @@
 # Maintainer: Cole Gerdemann <aur@corvettecole.com>
 
 pkgname=p3x-onenote
-pkgver=2021.4.173
+pkgver=2021.4.175
 pkgrel=1
 pkgdesc="Linux Electron Onenote - A Linux compatible version of OneNote"
 arch=('any')
@@ -14,11 +14,9 @@ source=("https://github.com/patrikx3/onenote/archive/v${pkgver//_/-}.tar.gz"
         "p3x-onenote.sh"
         "p3x-onenote.desktop")
 
-sha256sums=(
-        'c3e23e089a3d7d1411858806b80592f7f58020cae1040dc43d5a87c2dcf959f0'
-        '97aca184d656b8021ce43d524d9de91f014c838372356844c845a531f8ab2b9f'
-        '9bbb2f84f401a4da62ffe7f533aa0b149921f3f88fec7f470c4d4b5fcf63f331'
-)
+sha256sums=('6696d54da93831064086143c327015f06f145aaba13c9098650195dfb11e7624'
+            '97aca184d656b8021ce43d524d9de91f014c838372356844c845a531f8ab2b9f'
+            '9bbb2f84f401a4da62ffe7f533aa0b149921f3f88fec7f470c4d4b5fcf63f331')
 
 build() {
     cd "$srcdir/onenote-${pkgver//_/-}"
