@@ -6,7 +6,6 @@ pkgbase = rollback-git
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = bash
 	depends = coreutils
 	depends = python
 	depends = btrfs-progs
