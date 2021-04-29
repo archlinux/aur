@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Matt C <matt@xhec.us>
 pkgname=nofetch-git
 _pkgname=nofetch
 pkgver=1.0
