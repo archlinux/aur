@@ -78,7 +78,7 @@ package() {
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/open-hexagon/"
 
 
-	ln -s "$(ls -1r /usr/lib/libluajit-*.so | head -n1)" libluajit.so
+	ln -sf "$(ls -1r /usr/lib/libluajit-*.so | head -n1)" libluajit.so
 	
 	# Dirty hack to allow writing data to current directory
 	# (also see .install file)
