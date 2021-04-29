@@ -3,7 +3,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: hexchain <i@hexchain.org>
 pkgname=telegram-desktop-userfonts
-pkgver=2.7.1
+pkgver=2.7.4
 pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
@@ -12,12 +12,12 @@ arch=('x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
-         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'gtk3' 'glibmm')
+         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'gtk3' 'glibmm' 'webkit2gtk')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'libtg_owt')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
-        "fix-tgcalls-gcc10.patch")
-sha512sums=('dffd184c4369c5c5947b1ca085add533e54313ce39aebcdca4f0958431a305aa5e95c2f2b48592f6992e666b2d33eeba5697f9e09f6048a53b807f2950fbd17b'
-            'dbc61a8520f3698fdeec6c9849cfd8241b8b778589f89277f82d6c748d8ed7a81db90daa0a69dedc3ab2b81bba848ee68e1df79a9cb3fb055f99bd7d19f46e5d')
+        "fix-webview-includes.patch")
+sha512sums=('0a796d7a8c5e5982bc60f19c41da53996a609bf794fad224e7beea5fc3816b5cf35f16b0ec2cc7279085c69996063a44085f48e1596dfe746d260a2e8f1b2d14'
+            '5492c73f0b984da1e2d1f21c3a36c11c4b9ad511522dccd4d6440681f68d6ebc9e672806a534b1e551f736f080d3ef307c8ddd012e4646bd84d09c5e8fa85a40')
 
 prepare() {
     cd tdesktop-$pkgver-full
@@ -31,9 +31,8 @@ prepare() {
     cd tdesktop-$pkgver-full/cmake
     # force webrtc link to libjpeg
     echo "target_link_libraries(external_webrtc INTERFACE jpeg)" | tee -a external/webrtc/CMakeLists.txt
-
-    cd ../Telegram/ThirdParty/tgcalls
-    patch -Np1 -i "$srcdir"/fix-tgcalls-gcc10.patch
+    cd ../Telegram/lib_webview
+    patch -Np1 -i "$srcdir"/fix-webview-includes.patch
 }
 
 build() {
