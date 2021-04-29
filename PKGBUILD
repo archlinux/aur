@@ -1,13 +1,13 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=ffmpeg-normalize-git
-pkgver=1.21.2.r8.gf3be1d1
+pkgver=1.22.1.r2.ga3eb8bd
 pkgrel=1
 pkgdesc="Normalize loudness of audio and video files using FFmpeg"
 arch=('any')
 url="https://github.com/slhck/ffmpeg-normalize"
 license=('MIT')
-depends=('ffmpeg' 'python-colorama' 'python-tqdm')
+depends=('ffmpeg' 'python-colorama' 'python-ffmpeg-progress-yield' 'python-tqdm')
 checkdepends=('python-pytest')
 makedepends=('git' 'python-setuptools')
 provides=("${pkgname%-git}")
