@@ -1,0 +1,215 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e4f3119..cdbed74 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -36,11 +36,9 @@ option(OCIO_PYGLUE_RESPECT_ABI "If ON, the Python module install path includes P
+ option(OCIO_PYGLUE_SONAME "If ON, soname/soversion will be set for Python module library" OFF)
+ option(OCIO_PYGLUE_LIB_PREFIX "If ON, prefix the Python module with 'lib'" OFF)
+ 
+-if(UNIX AND NOT APPLE)
+-    option(USE_EXTERNAL_YAML "Use system installed yaml-cpp library." OFF)
+-    option(USE_EXTERNAL_TINYXML "Use system installed tinyxml library." OFF)
+-    option(USE_EXTERNAL_LCMS "Use system install lcms2 library." OFF)
+-endif()
++option(USE_EXTERNAL_YAML "Use system installed yaml-cpp library." OFF)
++option(USE_EXTERNAL_TINYXML "Use system installed tinyxml library." OFF)
++option(USE_EXTERNAL_LCMS "Use system install lcms2 library." OFF)
+ 
+ # This does not include the SOVERSION override, on purpose, so that the
+ # OCIO_VERSION value will be an accurate reflection of the underlying library version.
+@@ -231,7 +229,7 @@ else(USE_EXTERNAL_TINYXML)
+             INSTALL_DIR     ext/dist
+             CMAKE_ARGS      ${TINYXML_CMAKE_ARGS}
+         )
+-        if(WIN32)
++        if(OFF)
+             set(TINYXML_STATIC_LIBRARIES  ${PROJECT_BINARY_DIR}/ext/dist/lib/tinyxml.lib)
+         else()
+             set(TINYXML_STATIC_LIBRARIES ${PROJECT_BINARY_DIR}/ext/dist/lib/libtinyxml.a)
+@@ -251,48 +249,9 @@ endif(USE_EXTERNAL_TINYXML)
+ if(USE_EXTERNAL_YAML)
+     # Set minimum yaml version for non-patched sources.
+     set(YAML_VERSION_MIN "0.3.0")
+-    include(FindPkgConfig)
+-    pkg_check_modules(PC_YAML_CPP REQUIRED QUIET yaml-cpp)
+-    find_path(YAML_CPP_INCLUDE_DIR yaml-cpp/yaml.h
+-        HINTS  ${PC_YAML_CPP_INCLUDEDIR} ${PC_YAML_CPP_INCLUDE_DIRS} )
+-    find_library(YAML_CPP_LIBRARY LIBRARY_NAMES yaml-cpp libyaml-cpp
+-        HINTS ${PC_YAML_CPP_LIBRARY_DIRS} )
+-    set(YAML_CPP_LIBRARIES ${YAML_CPP_LIBRARY})
+-    set(YAML_CPP_INCLUDE_DIRS ${YAML_CPP_INCLUDE_DIR})
+-    set(YAML_CPP_VERSION ${PC_YAML_CPP_VERSION})
+-
+-    if(YAML_CPP_VERSION VERSION_LESS ${YAML_VERSION_MIN})
+-        message(FATAL_ERROR "ERROR: yaml-cpp ${YAML_VERSION_MIN} or greater is required.")
+-    endif()
+-
+-    find_package_handle_standard_args(yaml-cpp
+-                                      REQUIRED_VARS YAML_CPP_LIBRARIES YAML_CPP_INCLUDE_DIRS )
+-    set(YAML_CPP_FOUND ${YAML-CPP_FOUND})
+-    mark_as_advanced(YAML_CPP_INCLUDE_DIR YAML_CPP_LIBRARY YAML-CPP_FOUND)
+-
+-    if(YAML_CPP_FOUND)
+-        if(YAML_CPP_VERSION VERSION_GREATER "0.5.0")
+-            # Need to also get the boost headers here, as yaml-cpp 0.5.0+ requires them.
+-            # Don't bother doing this step if we are already including the boost headers for shared_ptr
+-            if(NOT OCIO_USE_BOOST_PTR)
+-                set(Boost_ADDITIONAL_VERSIONS "1.49" "1.45" "1.44" "1.43" "1.43.0" "1.42"
+-                                              "1.42.0" "1.41" "1.41.0" "1.40"
+-                                              "1.40.0" "1.39" "1.39.0" "1.38"
+-                                              "1.38.0" "1.37" "1.37.0" "1.34.1"
+-                                              "1_34_1")
+-                set(Boost_USE_MULTITHREADED ON)
+-                find_package(Boost 1.34)
+-                if(NOT Boost_FOUND)
+-                    message(FATAL_ERROR "Error: Detected system yaml-cpp version ${YAML_CPP_VERSION} is greater than 0.5.0, and therefore requires boost, but a boost installation could not be found.")
+-                endif()
+-
+-                set(EXTERNAL_INCLUDE_DIRS ${EXTERNAL_INCLUDE_DIRS} ${Boost_INCLUDE_DIR})
+-            endif()
+-        endif()
+-        set(EXTERNAL_INCLUDE_DIRS ${EXTERNAL_INCLUDE_DIRS} ${YAML_CPP_INCLUDE_DIRS})
+-    else(YAML_CPP_FOUND)
+-        message(FATAL_ERROR "ERROR: System yaml-cpp library was not found. Make sure the library is installed and the pkg-config file exists.")
+-    endif(YAML_CPP_FOUND)
++    
++    find_package(yaml-cpp ${YAML_VERSION_MIN} REQUIRED)
++    
+ else(USE_EXTERNAL_YAML) ## provide 2 ways to build this dependency
+     set(YAML_CPP_VERSION 0.3.0)
+     set(YAML_CPP_CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${PROJECT_BINARY_DIR}/ext/dist -DYAML_CPP_BUILD_TOOLS:BOOL=FALSE -DOCIO_INLINES_HIDDEN:BOOL=${OCIO_INLINES_HIDDEN})
+@@ -348,7 +307,7 @@ else(USE_EXTERNAL_YAML) ## provide 2 ways to build this dependency
+         set(YAML_CPP_INCLUDE_DIRS ${PROJECT_BINARY_DIR}/ext/dist/include)
+         set(YAML_CPP_LIBRARY_DIRS ${PROJECT_BINARY_DIR}/ext/dist/lib)
+         add_library(YAML_CPP_LIB STATIC IMPORTED)
+-        if(WIN32)
++        if(OFF)
+             set(YAML_CPP_STATIC_DEBUG_LIBRARIES     ${PROJECT_BINARY_DIR}/ext/dist/lib/libyaml-cppmdd.lib)
+             set(YAML_CPP_STATIC_OPTIMIZED_LIBRARIES ${PROJECT_BINARY_DIR}/ext/dist/lib/libyaml-cppmd.lib)
+             set_property(TARGET YAML_CPP_LIB PROPERTY IMPORTED_LOCATION_DEBUG   ${YAML_CPP_STATIC_DEBUG_LIBRARIES})
+@@ -384,7 +343,7 @@ else()
+     set(OCIO_INLINES_HIDDEN OFF)
+ endif()
+ 
+-set(EXTERNAL_COMPILE_FLAGS "-DTIXML_USE_STL ${YAML_CPP_COMPILE_FLAGS} ${GCC_COMPILE_FLAGS}")
++set(EXTERNAL_COMPILE_FLAGS "-DTIXML_USE_STL ${GCC_COMPILE_FLAGS}")
+ 
+ set(EXTERNAL_LINK_FLAGS "")
+ set(EXTERNAL_LIBRARY_DIRS ${PROJECT_BINARY_DIR}/ext/dist/lib)
+@@ -415,7 +374,7 @@ endif()
+ messageonce("SSE Optimizations: ${OCIO_USE_SSE}")
+ 
+ if(OCIO_USE_SSE)
+-    if(WIN32)
++    if(OFF)
+         # SSE instructions are automatically compiled into 64-bit applications so enabling the option is redundant and
+         # actually produces an unknown option warning in Visual Studio.
+         if(NOT CMAKE_CL_64)
+@@ -602,13 +561,13 @@ file(WRITE "${CMAKE_BINARY_DIR}/OpenColorIOConfig.cmake"
+     get_filename_component(OpenColorIO_DIR \"\${CMAKE_CURRENT_LIST_FILE}\" PATH)
+     
+     ## include
+-    set(OpenColorIO_INCLUDE_DIR     \"\${OpenColorIO_DIR}/include\")
++    set(OpenColorIO_INCLUDE_DIR     \"\${OpenColorIO_DIR}/../include\")
+     set(OpenColorIO_INCLUDE_DIRS    \"\${OpenColorIO_INCLUDE_DIR}\")
+     message(STATUS OpenColorIO_INCLUDE_DIRS=\${OpenColorIO_INCLUDE_DIRS})
+     
+     ## targets libraries + associated definitions
+     if(NOT TARGET OpenColorIO)
+-        include(\"\${OpenColorIO_DIR}/cmake/OpenColorIO.cmake\") ## thanks to imported target
++        include(\"\${OpenColorIO_DIR}/OpenColorIO.cmake\") ## thanks to imported target
+         if(TARGET OpenColorIO AND NOT OpenColorIO_USE_STATIC)
+             message(STATUS \"shared target OpenColorIO : see OpenColorIO_LIBRARY\")
+             set(OpenColorIO_LIBRARY         OpenColorIO)
+@@ -646,4 +605,4 @@ file(WRITE "${CMAKE_BINARY_DIR}/OpenColorIOConfig.cmake"
+     message(STATUS OPENCOLORIO_FOUND=\${OPENCOLORIO_FOUND})
+     "
+ )
+-install(FILES "${CMAKE_BINARY_DIR}/OpenColorIOConfig.cmake" DESTINATION .)
++install(FILES "${CMAKE_BINARY_DIR}/OpenColorIOConfig.cmake" DESTINATION "cmake/")
+diff --git a/src/core/CMakeLists.txt b/src/core/CMakeLists.txt
+index 1eb691b..b1d65cd 100755
+--- a/src/core/CMakeLists.txt
++++ b/src/core/CMakeLists.txt
+@@ -18,13 +18,13 @@ list(APPEND core_export_headers ${CMAKE_BINARY_DIR}/export/OpenColorABI.h)
+ 
+ # Process all warnings as errors
+ 
+-if(WIN32)
++if(OFF)
+     # On debug mode there are other kinds of warning...
+     if("${CMAKE_BUILD_TYPE}" STREQUAL "Release")
+         set(EXTERNAL_COMPILE_FLAGS "${EXTERNAL_COMPILE_FLAGS} /WX")
+     endif()
+ else()
+-    set(EXTERNAL_COMPILE_FLAGS "${EXTERNAL_COMPILE_FLAGS} -Werror")
++    set(EXTERNAL_COMPILE_FLAGS "${EXTERNAL_COMPILE_FLAGS} ")
+ endif()
+ 
+ # SHARED
+@@ -39,7 +39,7 @@ if(OCIO_BUILD_SHARED)
+     endif(USE_EXTERNAL_TINYXML)
+ 
+     if(USE_EXTERNAL_YAML)
+-        target_link_libraries(OpenColorIO ${YAML_CPP_LIBRARIES})
++        target_link_libraries(OpenColorIO yaml-cpp)
+     else(USE_EXTERNAL_YAML)
+         add_dependencies(OpenColorIO YAML_CPP_LIB)
+     endif()
+@@ -48,7 +48,7 @@ if(OCIO_BUILD_SHARED)
+         target_link_libraries(OpenColorIO ${EXTERNAL_LIBRARIES})
+     endif()
+ 
+-    if(WIN32)
++    if(OFF)
+         # Mute a design issue where the Exception public class inherits 
+         # from a STL Exception. STL classes are never supposed to
+         # be exported among different dynamic libraries.
+@@ -66,9 +66,9 @@ if(OCIO_BUILD_SHARED)
+         SOVERSION ${SOVERSION})
+     
+     install(TARGETS OpenColorIO EXPORT OpenColorIO 
+-        ARCHIVE DESTINATION ${CMAKE_INSTALL_EXEC_PREFIX}/lib${LIB_SUFFIX}
+-        LIBRARY DESTINATION ${CMAKE_INSTALL_EXEC_PREFIX}/lib${LIB_SUFFIX}
+-        RUNTIME DESTINATION ${CMAKE_INSTALL_EXEC_PREFIX}/bin
++        ARCHIVE DESTINATION
++        LIBRARY DESTINATION
++        RUNTIME DESTINATION
+     )
+ endif()
+ 
+@@ -94,7 +94,7 @@ if(OCIO_BUILD_STATIC)
+         VERSION ${OCIO_VERSION}
+         SOVERSION ${SOVERSION})
+     
+-    install(TARGETS OpenColorIO_STATIC EXPORT OpenColorIO ARCHIVE DESTINATION ${CMAKE_INSTALL_EXEC_PREFIX}/lib/static)
++    install(TARGETS OpenColorIO_STATIC EXPORT OpenColorIO ARCHIVE)
+ endif()
+ 
+ macro(target_link_OCIO target)
+diff --git a/src/core/Platform.cpp b/src/core/Platform.cpp
+index f4681fe..3889dfb 100755
+--- a/src/core/Platform.cpp
++++ b/src/core/Platform.cpp
+@@ -18,7 +18,7 @@ OCIO_NAMESPACE_ENTER
+         // 
+         void getenv (const char* name, std::string& value)
+         {
+-#ifdef WINDOWS
++#if 0
+             // To remove the security compilation warning, the _dupenv_s method
+             // must be used (instead of the getenv). The improvement is that
+             // the buffer length is now under control to mitigate buffer overflow attacks.
+diff --git a/src/core/Platform.h b/src/core/Platform.h
+index c1796e8..15500f5 100755
+--- a/src/core/Platform.h
++++ b/src/core/Platform.h
+@@ -75,7 +75,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ #define NOMINMAX 1
+ 
+ // windows - defined for both Win32 and Win64
+-#include <Windows.h>
++#include <windows.h>
+ #include <malloc.h>
+ #include <io.h>
+ #include <tchar.h> 
