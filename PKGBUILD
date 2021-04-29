@@ -1,14 +1,14 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
 pkgname=adobe-source-han-sans-classic-fonts
-pkgver=2.003
+pkgver=2.004
 pkgrel=1
 pkgdesc='Adobe Source Han Sans fonts with classic orthography.'
 arch=('any')
 url="https://github.com/redchenjs/source-han-sans-classic"
 license=('custom:OFL')
-source=("https://github.com/redchenjs/source-han-sans-classic/releases/download/$pkgver/source-han-sans-classic-otf.zip")
-sha512sums=('22857b8c440919f9b33d2083fc3071ba8a658d7350394a9604f1ad7dff7097a78c9ba3d062fa3942cf02ea90566c3dd831b94e4b71d0ed771a71d677ee33637f')
+source=($pkgver.zip::"https://github.com/redchenjs/source-han-sans-classic/releases/download/$pkgver/source-han-sans-classic-otf.zip")
+sha512sums=('85d0580d8d74fda42f32bbeb8aa5636ddda31332b2e99f007d1adf1566db8bab63ce3f13231206e8212a791df2f7c5179d6aa7812d9e270302f0a870907ad4fb')
 
 package() {
   cd "$srcdir/OTF"
