@@ -1,6 +1,6 @@
 pkgbase = apg-go
 	pkgdesc = A "Automated Password Generator"-clone
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/wneessen/apg-go
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = apg-go
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = https://github.com/wneessen/apg-go/archive/refs/tags/v0.3.1.tar.gz
-	sha256sums = 1a798bd729c2985a11001118ad7d222e75c4f01e642184c37dec409a899a565b
+	source = https://github.com/wneessen/apg-go/archive/refs/tags/v0.3.2.tar.gz
+	sha256sums = 42f082d2f54d1cb20e1d6d63c1d923255b711151c937041f64164180758ce0e4
 
 pkgname = apg-go
 
