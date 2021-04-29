@@ -7,7 +7,7 @@ pkgdesc="the simple man's fetch tool"
 arch=('any')
 url="https://github.com/jnats/nofetch"
 license=('GPL')
-depends=()
+depends=('coreutils' 'grep' 'sed' 'bash')
 provides=('nofetch')
 
 source=("nofetch::git+https://github.com/jnats/nofetch.git")
