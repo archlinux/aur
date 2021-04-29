@@ -2,13 +2,12 @@
 
 pkgname=rtl8761usb
 pkgver=20201202
-pkgrel=2
+pkgrel=3
 pkgdesc="Realtek bluetooth modules for RTL8761 usb based devices"
-arch=('any')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://www.xmpow.com/pages/download"
 license=('unknown')
-source=("https://mpow.s3-us-west-1.amazonaws.com/${pkgver}_mpow_BH456A_driver+for+Linux.7z"
-	"rtl8761usb.conf")
+source=("https://mpow.s3-us-west-1.amazonaws.com/${pkgver}_mpow_BH456A_driver+for+Linux.7z")
 conflicts=('rtl8761b-fw')
 depends=('linux')
 makedepends=('linux-headers')
@@ -19,15 +18,15 @@ prepare() {
     sed -i 's/=\ \/lib/=\ \.\/lib/g'  Makefile
     sed -i 's/=\ \/lib/=\ \.\.\/lib/g'  */Makefile
     sed -i 's/depmod/\# depmod/g'  */Makefile
+    sed -i 's/rmmod/\# rmmod/g'  */Makefile
+    sed -i 's/rtk_btusb/rtl8761usb/g'  Makefile
+    sed -i 's/rtk_btusb/rtl8761usb/g'  */Makefile
+    sed -i 's/rtk_btusb/rtl8761usb/g'  */*/Makefile
 }
 package() {
     cd ${pkgver}_LINUX_BT_DRIVER
     make install INTERFACE=usb
     install -d "$pkgdir/usr/lib/"
-    install -d "$pkgdir/etc/modprobe.d/"
     cp -r lib/* "$pkgdir/usr/lib/"
-    install -m644 "$srcdir/rtl8761usb.conf" "$pkgdir/etc/modprobe.d/"
 }
-
-md5sums=('994ad1d6f6bd1e63190dfef7f64bbb34'
-         '70d0ec0c62293d5c64e0bf148300c998')
+md5sums=('994ad1d6f6bd1e63190dfef7f64bbb34')
