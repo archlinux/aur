@@ -47,7 +47,7 @@ package() {
     cp -aT -- ./dist/linux-unpacked "$pkgdir"/usr/share/jitsi-meet-electron
 
     mkdir -p -- "$pkgdir"/usr/bin
-    ln -s -- '../share/jitsi-meet-electron/jitsi-meet' "$pkgdir"/usr/bin/jitsi-meet-electron
+    ln -s -- '../share/jitsi-meet-electron/jitsi-meet.bin' "$pkgdir"/usr/bin/jitsi-meet-electron
 
     install -Dm644 -- resources/icon.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
