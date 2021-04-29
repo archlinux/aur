@@ -1,11 +1,12 @@
-# Maintainer: Drew DeVault <sir@cmpwn.com>
+# Maintainer: Josip Janzic <me@josip.dev>
+# Contributor: Drew DeVault <sir@cmpwn.com>
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
-pkgname=sway-git
+pkgname=sway-titlebar-positioning-git
 _pkgname=sway
-pkgver=r6607.28cadf55
+pkgver=r6651.2bba3c7d
 pkgrel=1
 license=("MIT")
-pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager"
+pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager patched with config option to have titlebars on the bottom"
 makedepends=(
 	"git"
 	"meson"
@@ -39,7 +40,7 @@ optdepends=(
 backup=(etc/sway/config)
 arch=("i686" "x86_64")
 url="https://swaywm.org"
-source=("${pkgname%-*}::git+https://github.com/swaywm/sway.git"
+source=("${pkgname%-*}::git+https://github.com/janza/sway.git#branch=titlebar-position"
 	50-systemd-user.conf)
 sha512sums=('SKIP'
             '57590bc0d14c87289a4a9cd67991c6a841e54244d2a6186b5da5a08e633de2e8631959fa8c77ede211b0a5f315d920f2c1350951a53d6f2e9e81859056cb3c9e')
