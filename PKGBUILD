@@ -2,7 +2,8 @@
 
 pkgname=yubiguard-git
 _gitname=YubiGuard
-pkgver=0.9.3.r145.a16c8a3.r145.a16c8a3
+_gitver=0.9.3
+pkgver=0.9.3.r145.a16c8a3
 pkgrel=1
 pkgdesc="Python script to protect against accidental triggering of YubiKeys on Linux."
 url="https://github.com/dmccombs/YubiGuard"
@@ -17,7 +18,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd ${_gitname}
-  printf "${pkgver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "${_gitver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

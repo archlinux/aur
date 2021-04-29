@@ -1,6 +1,6 @@
 pkgbase = yubiguard-git
 	pkgdesc = Python script to protect against accidental triggering of YubiKeys on Linux.
-	pkgver = 0.9.3.r145.a16c8a3.r145.a16c8a3
+	pkgver = 0.9.3.r145.a16c8a3
 	pkgrel = 1
 	url = https://github.com/dmccombs/YubiGuard
 	arch = any
