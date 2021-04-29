@@ -4,7 +4,7 @@ pkgname=betaflight-configurator-nightlies-bin
 _pkgname=betaflight-configurator
 pkgver=v20210413.2497
 _pkgver=10.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Crossplatform configuration tool for the Betaflight flight control system"
 arch=('x86_64')
 url="https://github.com/betaflight/betaflight-configurator"
@@ -12,7 +12,7 @@ source=("https://github.com/betaflight/betaflight-configurator-nightlies/release
 sha256sums=('61cd542953fb8fcbfac6cd62484dae96f2bbffdf97b460ce3feff08d181ce0e5')
 options=(!strip)
 license=('GPL3')
-conflicts=('betaflight-configurator')
+conflicts=('betaflight-configurator' 'betaflight-configurator-bin')
 
 package() {
   mkdir -p "$pkgdir/opt/betaflight"
