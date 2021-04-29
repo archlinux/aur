@@ -14,22 +14,21 @@ md5sums=(SKIP)
 package() {
     cd "$srcdir"
 
-    install -D -m 0644 -t "$pkgdir/usr/share/doc/linux-status" "../README.Arch"
+    install -D -m 0644 -t "$pkgdir/usr/share/doc/linux-status" ../README.Arch
 
     cd "$pkgname-$pkgver"
 
     install -D -m 0644 -t "$pkgdir/usr/share/linux-status" LICENSE.txt
 
     install -D -m 0644 -t "$pkgdir/usr/share/doc/linux-status" README.md
-    install -D -m 0644 -t "$pkgdir/usr/share/doc/linux-status/img" img/example.png
+    find img -type f -exec install -D -m 0644 -t "$pkgdir/srv/linux-status/img" {} ';'
 
     install -D -m 0755 -t "$pkgdir/srv/linux-status" app.py
     install -D -m 0755 -t "$pkgdir/srv/linux-status" server.py
 
     install -D -m 0644 -t "$pkgdir/srv/linux-status" index.html
-    install -D -m 0644 -t "$pkgdir/srv/linux-status/css" css/bootstrap.min.css
-    install -D -m 0644 -t "$pkgdir/srv/linux-status/js" js/bootstrap.bundle.min.js
-    install -D -m 0644 -t "$pkgdir/srv/linux-status/js" js/jquery-3.3.1.min.js
+    find css -type f -exec install -D -m 0644 -t "$pkgdir/srv/linux-status/css" {} ';'
+    find js  -type f -exec install -D -m 0644 -t "$pkgdir/srv/linux-status/js"  {} ';'
 
     install -D -m 0644 -t "$pkgdir/usr/lib/systemd/system" dist/systemd/linux-status.service
 }
