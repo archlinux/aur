@@ -1,7 +1,7 @@
 pkgbase = soundux-git
 	pkgdesc = A cross-platform soundboard - unstable development version
-	pkgver = r798.c37b646
-	pkgrel = 1
+	pkgver = r971.d39246f
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/Soundux/Soundux
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = soundux-git
 	depends = webkit2gtk
 	depends = libwnck3
 	depends = libappindicator-gtk3
+	depends = lsb-release
 	optdepends = youtube-dl: downloader integration
 	optdepends = ffmpeg: downloader integration
 	provides = soundux
@@ -21,3 +22,4 @@ pkgbase = soundux-git
 	sha256sums = SKIP
 
 pkgname = soundux-git
+
