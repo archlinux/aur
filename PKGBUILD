@@ -9,7 +9,7 @@ groups=('maui-apps')
 url="https://invent.kde.org/maui/communicator"
 license=('GPL3')
 depends=('mauikit-git' 'mauikit-filebrowsing-git' 'mauikit-texteditor-git' 'ki18n' 'kcoreaddons' 'kservice')
-makedepends=('git' 'extra-cmake-modules' 'qt5-tools')
+makedepends=('git' 'extra-cmake-modules' 'qt5-tools' 'qt5-svg')
 provides=('communicator')
 conflicts=('communicator')
 source=("git+$url.git")
@@ -22,9 +22,9 @@ pkgver() {
 
 build() {
   cmake -DCMAKE_INSTALL_PREFIX=/usr -B build -S "${pkgname%%-git}"
-  make -C build
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
+  DESTDIR="${pkgdir}" cmake --install build
 }
