@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/wfpaisa/plane-theme"
 license=('GPL3')
 depends=('gnome-shell')
-makedepends=('git' 'gulp' 'npm')
+makedepends=('git' 'gulp' 'npm' 'python2' 'nodejs-lts-erbium')
 source=("${pkgname}::git+https://github.com/vantu5z/plane-theme")
 sha256sums=('SKIP')
 
