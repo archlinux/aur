@@ -13,7 +13,7 @@
 
 pkgname=jitsi-meet-electron
 pkgver=2.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Jitsi Meet desktop application powered by Electron. Uses npm version of electron"
 arch=('any')
 url="https://github.com/jitsi/jitsi-meet-electron"

@@ -1,7 +1,7 @@
 pkgbase = jitsi-meet-electron
 	pkgdesc = Jitsi Meet desktop application powered by Electron. Uses npm version of electron
 	pkgver = 2.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jitsi/jitsi-meet-electron
 	arch = any
 	license = APACHE-2.0
