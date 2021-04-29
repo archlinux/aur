@@ -1,50 +1,12 @@
 pkgbase = geary-stable-fix
-	pkgdesc = A lightweight email client for the GNOME desktop; fix FS#70566, FS#70577
+	pkgdesc = metapkg that is useless since geary 1:40.0-2 was released
 	pkgver = 40.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://wiki.gnome.org/Apps/Geary
 	arch = x86_64
 	license = GPL3
-	makedepends = appstream-glib
-	makedepends = cmake
-	makedepends = git
-	makedepends = gobject-introspection
-	makedepends = meson
-	makedepends = vala
-	makedepends = yelp-tools
-	depends = cairo
-	depends = enchant
-	depends = folks
-	depends = gcr
-	depends = gdk-pixbuf2
-	depends = glib2
-	depends = gmime3
-	depends = gnome-online-accounts
-	depends = gsound
-	depends = gspell
-	depends = gtk3
-	depends = iso-codes
-	depends = libcanberra
-	depends = libgee
-	depends = libhandy
-	depends = libnotify
-	depends = libpeas
-	depends = libsecret
-	depends = libsoup
-	depends = libstemmer
-	depends = libxml2
-	depends = libytnef
-	depends = org.freedesktop.secrets
-	depends = pango
-	depends = sqlite
-	depends = webkit2gtk
-	provides = geary
-	conflicts = geary
-	replaces = geary
-	source = git+https://gitlab.gnome.org/GNOME/geary.git#commit=e561775c1580a9f60a726355b2b897bfc9cb3382
-	validpgpkeys = 3A2EF7F138557A145F2866E99FAB18747A8FC649
-	sha256sums = SKIP
+	depends = geary>=1:40.0-2
 
 pkgname = geary-stable-fix
 
