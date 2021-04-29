@@ -18,8 +18,8 @@ prepare() {
 }
 
 package() {
-  install -Dm755 ~/.cache/yay/raxmlgui/raxmlGUI-${pkgver}.AppImage "${pkgdir}/opt/appimages/raxmlGUI.AppImage"
-  install -dm755 "${pkgdir}/usr/share/"
-  mkdir "${pkgdir}/usr/share/applications/" 
-  cp ~/.cache/yay/raxmlgui/raxmlgui.desktop "${pkgdir}/usr/share/applications/" 
+    install -dm755 "${pkgdir}/usr/share/icons"
+    install -Dm755 "squashfs-root/raxmlgui" "${pkgdir}/usr/bin/raxmlgui"
+    install -Dm644 ~/.cache/yay/raxmlgui/raxmlgui.desktop "${pkgdir}/usr/share/applications/raxmlGUI.desktop"
+    cp -R "squashfs-root/usr/share/icons/hicolor" "${pkgdir}/usr/share/icons"
 }

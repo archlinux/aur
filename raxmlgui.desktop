@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=raxmlGUI
-Exec=./opt/appimages/raxmlGUI.AppImage
+Exec=raxmlgui
 Terminal=false
 Type=Application
 Icon=raxmlgui
