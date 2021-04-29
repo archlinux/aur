@@ -1,6 +1,6 @@
 pkgbase = roxterm-git
 	pkgdesc = Tabbed, VTE-based terminal emulator
-	pkgver = 3.10.2
+	pkgver = 3.10.3
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/realh/roxterm
