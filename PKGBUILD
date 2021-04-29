@@ -7,7 +7,6 @@ arch=('x86_64')
 url="https://github.com/l4l/yofi"
 license=('MIT')
 depends=('fontconfig' 'expat' 'graphite' 'pcre' 'wayland-protocols' 'libxkbcommon')
-makedepends=('cargo' 'git')
 provides=('yofi')
 _binname="yofi-ubuntu-20.04"
 source=("https://github.com/l4l/yofi/releases/download/${pkgver}/${_binname}")
