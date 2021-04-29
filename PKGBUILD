@@ -1,7 +1,7 @@
 # Maintainer: Kitsu mail@kitsu.me
 pkgname=yofi-bin
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimalistic menu for Wayland-based compositors"
 arch=('x86_64')
 url="https://github.com/l4l/yofi"
