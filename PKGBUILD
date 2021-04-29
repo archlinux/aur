@@ -5,7 +5,7 @@
 
 _pkgname=telegram-desktop-userfonts
 pkgname=${_pkgname}-bin
-pkgver=2.7.1
+pkgver=2.7.4
 pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
@@ -16,7 +16,7 @@ license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
          'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'gtk3' 'glibmm')
 source=("https://github.com/AndydeCleyre/archbuilder_${_pkgname}/releases/download/${pkgver}-${pkgrel}/${_pkgname}-${pkgver}-${pkgrel}-${arch}.pkg.tar.zst")
-sha512sums=('7a88e1da52968fbd3f32809deafe5fe7cc7df2cbdf244b6f8b199b16ca2677d96b762daa4b8d71cbc68f8df9eedd19315b9aebd645fd8a08a2c54ac05a115e79')
+sha512sums=('c8dd43ee3c46f689167dade7bae5958aa21fe785574eddc4d63a70180a789ffe38cd17387f205b518022d033f9e9aa2b1489b0496fb6adf33e996a7cce03fd5a')
 
 package() {
   cp -a usr $pkgdir/
