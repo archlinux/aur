@@ -3,12 +3,12 @@
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
 pkgver=3.83.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
 url="https://tutanota.com"
 license=('GPL3')
-depends=('nss' 'libappindicator-gtk3' 'libnotify' 'libsecret')
+depends=('nss' 'libappindicator-gtk3' 'libnotify' 'org.freedesktop.secrets')
 makedepends=('npm' 'nvm')
 source=("https://github.com/tutao/tutanota/archive/tutanota-release-$pkgver.tar.gz"
         "$pkgname"
