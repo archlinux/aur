@@ -4,9 +4,9 @@ pkgdesc="ROS - roslaunch is a tool for easily launching multiple ROS nodes local
 url='https://wiki.ros.org/roslaunch'
 
 pkgname='ros-melodic-roslaunch'
-pkgver='1.14.10'
+pkgver='1.14.11'
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -39,7 +39,7 @@ depends=(
 _dir="ros_comm-${pkgver}/tools/roslaunch"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz"
         https://patch-diff.githubusercontent.com/raw/ros/ros_comm/pull/2092.patch)
-sha256sums=('b3b75612feb447afe70600e3ba80bf3e356493a058ba8ebf2746e8db0c55165c'
+sha256sums=('a7f3cf19059c189d3326d3e35f5795d707fa405fb55e7250353d71e0698410f5'
             'ad42681c4249a89f4a0188f8202e73286c4090bbc919a470543af7e8f1b198f4')
 
 prepare() {
