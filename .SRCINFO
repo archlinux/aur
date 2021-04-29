@@ -1,14 +1,14 @@
 pkgbase = capture
 	pkgdesc = Tool for periodic image capturing with digital Canon cameras
 	pkgver = 1.0.4
-	pkgrel = 4
+	pkgrel = 5
 	url = http://capture.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = gtk2
 	depends = libptp2
-	source = http://downloads.sourceforge.net/sourceforge/capture/capture-1.0.4-cvs-20071123.tar.gz
+	source = https://downloads.sourceforge.net/sourceforge/capture/capture-1.0.4-cvs-20071123.tar.gz
 	md5sums = 78899a989e7c2cc585a382e3aa17f491
 
 pkgname = capture
