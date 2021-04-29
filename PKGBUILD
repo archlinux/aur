@@ -2,7 +2,7 @@
 _pkgname=qiskit-aer
 pkgname=python-${_pkgname}
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A high performance simulator for quantum circuits that includes noise models"
 arch=('x86_64')
 url="https://github.com/Qiskit/qiskit-aer"
@@ -32,7 +32,7 @@ makedepends=(
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Qiskit/${_pkgname}/archive/${pkgver}.tar.gz")
 
-sha256sums=('ded2d0ac38fb522420db6b36f403b7182f9cee9e9150c711a0711837a17da3f1')
+sha256sums=('bcf0ae0a00a44e3887d2f0ced083e1c27c916a73d29a61b08de63f3aa2a157a1')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
