@@ -1,7 +1,7 @@
 pkgbase = tutanota-desktop-bin
 	pkgdesc = Official Tutanota email client
 	pkgver = 3.83.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tutanota.com
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = tutanota-desktop-bin
 	depends = nss
 	depends = libappindicator-gtk3
 	depends = libnotify
-	depends = libsecret
+	depends = org.freedesktop.secrets
 	provides = tutanota-desktop
 	conflicts = tutanota-desktop
 	conflicts = tutanota-desktop-linux
