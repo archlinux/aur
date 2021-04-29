@@ -2,19 +2,20 @@
 pkgname=moonwm
 _pkgname=MoonWM
 pkgver=7.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="My own outstandingly named Window Manager (a dynamic window manager)"
 arch=(x86_64 i686)
 url="https://github.com/jzbor/moonwm"
 license=('MIT')
 groups=()
-depends=(libx11 libxcb libxinerama slop xmenu xorg-xsetroot  dmenu ffmpeg geoclue i3lock imagemagick kdeconnect libnotify light network-manager-applet notification-daemon otf-nerd-fonts-fira-code pamixer picom polkit-gnome redshift skippy-xd wmname xdotool xfce4-power-manager xorg-setxkbmap xorg-xrandr xorg-xrdb xwallpaper)
+depends=(libx11 libxcb libxinerama slop xmenu xorg-xsetroot  arandr dmenu ffmpeg geoclue i3lock imagemagick libnotify light network-manager-applet notification-daemon otf-nerd-fonts-fira-code pamixer picom polkit-gnome skippy-xd wmname xdotool xfce4-power-manager xorg-setxkbmap xorg-xrandr xorg-xrdb xwallpaper)
 makedepends=()
 checkdepends=()
 optdepends=(\
     'lxappearance: GUI for configuring GTK and icon theme',
     'matcha-gtk-theme: a fitting GTK theme (Matcha-dark-aliz)',
     'numix-circle-icon-theme: an icon theme that fits nicely',
+    'redshift: night mode',
     'scrot: integrated screenshot support',
 	'xfce4-notifyd: a good default notification-daemon')
 provides=(moonwm)
