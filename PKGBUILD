@@ -7,8 +7,8 @@ pkgdesc="Kirigami YouTube video player based on libmpv and youtube-dl"
 arch=(x86_64 aarch64)
 url="https://invent.kde.org/lnj/plasmatube"
 license=(GPL3)
-depends=('ki18n' 'kirigami2' 'qt5-svg' 'youtube-dl' 'mpv')
-makedepends=('git' 'extra-cmake-modules')
+depends=('ki18n' 'kirigami2' 'youtube-dl' 'mpv')
+makedepends=('git' 'extra-cmake-modules' 'qt5-svg' 'qt5-tools')
 provides=('plasmatube')
 conflicts=('plasmatube')
 source=("git+${url}.git")
@@ -24,9 +24,9 @@ pkgver() {
 
 build() {
   cmake -DCMAKE_INSTALL_PREFIX=/usr -B build -S "${pkgname%-git}"
-  make -C build
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
+  DESTDIR="${pkgdir}" cmake --install build
 }
