@@ -10,7 +10,7 @@ depends=('alsa-lib' 'atk' 'at-spi2-atk' 'at-spi2-core' 'cairo' 'dbus' 'desktop-f
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://dl.todesktop.com/2102273jsy18baz/linux/deb/x64")
-sha512sums_x86_64=('f1e8376be6efc4377b6b011d008f76ba690e4561673ccdd51251067e2227eadf8281d88d3f792130c219b22e9030d7c3e932a1bbac02905ecadbfc630b446645')
+sha512sums_x86_64=('ace150143118976c207e088e8bfd0cfa1e48cc16499b66a583ad8a0d2199c4a361b37df498938cf4b670bba71529624cc198996fa26aae7c7a4d5174cf16268d')
 
 package(){
 
