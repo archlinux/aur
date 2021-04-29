@@ -1,5 +1,4 @@
-# Contributor: Juanma Hernandez <juanmah@gmail.com>
-# Maintainer: Juanma Hernandez <juanmah@gmail.com>
+# Maintainer: Michael Berlinger <michaelmberlinger@gmail.com>
 
 pkgname=zotero
 pkgver=5.0.97_beta.18+1eb888d02
