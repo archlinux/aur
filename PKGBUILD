@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=joindesktop-git
-pkgver=0.5.1.r0.g2baf670
+pkgver=0.5.2.r0.g0ed54bf
 pkgrel=1
 pkgdesc="An official desktop app for Join by Joaoapps built in Electron."
 arch=('x86_64')
 url="https://joaoapps.com/join/desktop"
 license=('unknown')
 depends=('electron9')
-makedepends=('git' 'npm')
+makedepends=('git' 'npm' 'nvm')
 optdepends=('libnotify: for native notifications')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -25,8 +25,30 @@ pkgver() {
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+_ensure_local_nvm() {
+	# lets be sure we are starting clean
+	which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+	export NVM_DIR="$srcdir/.nvm"
+
+	# The init script returns 3 if version
+	# specified in ./.nvrc is not (yet) installed in $NVM_DIR
+	# but nvm itself still gets loaded ok
+	source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
+
+prepare() {
+	# Build fails with Node.js 16, use 15
+	export npm_config_cache="$srcdir/npm-cache"
+	local npm_prefix=$(npm config get prefix)
+	local nodeversion='15.14.0'
+	npm config delete prefix
+	_ensure_local_nvm
+	nvm install "$nodeversion" && nvm use "$nodeversion"
+}
+
 build() {
 	cd "$srcdir/${pkgname%-git}"
+	_ensure_local_nvm
 	npm install --cache "$srcdir/npm-cache"
 	npm run pack
 }
