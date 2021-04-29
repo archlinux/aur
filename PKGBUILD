@@ -20,8 +20,8 @@ package() {
   cd $pkgname-$pkgver
   install -d $pkgdir/usr/bin/
   install -d $pkgdir/etc/ss-tproxy
-  install -d $pkgdir/usr/share/systemd/system
+  install -d $pkgdir/usr/lib/systemd/system
   install -m 755 ss-tproxy $pkgdir/usr/bin
   install -m 644 ss-tproxy.conf gfwlist* chnroute* ignlist* $pkgdir/etc/ss-tproxy
-  install -m 644 ss-tproxy.service $pkgdir/usr/share/systemd/system
+  install -m 644 ss-tproxy.service $pkgdir/usr/lib/systemd/system
 }
