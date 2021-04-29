@@ -5,7 +5,7 @@
 
 # General package information
 pkgname=krack
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Krathalan's packaging softwares"
 url="https://github.com/krathalan/krack"
@@ -23,13 +23,13 @@ conflicts=("krack-git")
 # Download information
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz"
         "${url}/releases/download/${pkgver}/${pkgver}.tar.gz.sig")
-sha256sums=("561f5dc3bca7544d7204645d0b2fba317cf79256f6a54c065ac6b6b1be5aba28"
-            "4caa1379b937f06185db0fc8c395d1adfe513315fde25beeca8d79027eeea2cb")
+sha256sums=("606cf4783d189f6670eb1e65372cb5eddedc8daf367b8157b1f71ba96f467b1f"
+            "08bb8401eda586b9fabee0ff7a85096c5a013ee255ecbdf8e7656c5d36378ca9")
 validpgpkeys=("0C6B73F391FA26F0EBCD1F75C0F9AEE56E47D174")
 
 build()
 {
-  # "Build" man pages
+  # Generate man pages
   cd "${srcdir}/${pkgname}-${pkgver}/man" || exit
 
   for manpage in ./*.scd; do
