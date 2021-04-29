@@ -84,7 +84,7 @@ source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz
         "${_patchsource}/cacule-patches/select_task_interactive_aware.patch"
         "${_patchsource}/cpu-patches/0001-cpu-patches.patch"
         "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
-        "${_patchsource}/futex2-patches/0001-futex2-resync-from-gitlab.collabora.com.patch"
+        "${_patchsource}/futex2-patches-stable/0001-futex2-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/bfq-patches/0001-bfq-patches.patch"
         "${_patchsource}/block-patches/0001-block-patches.patch"
         "${_patchsource}/ll-patches/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
@@ -109,7 +109,7 @@ sha512sums=('be03b6fee1d1ea8087b09874d27c0a602c0b04fd90ad38b975bd2c8455a07e83c29
             'f602cf078dfa90441c12fabd4102a8503310833f6652c32fea77379d5823508cf546d378f04a788e1ef9fde071c2d3a20bd0c116291bb33d4e00f59e2b2f4155'
             '15933126feeb56ccc6ace70db9fa7afb64d148900e41a780e42e03ce09faf7bab12413f526675b918aeff55e91dc038ad58884bb7add4a45962aca79d576cb93'
             '449570b8b9a04391cc2cc171cc806b3a132c6e969c7cedf9c4925d24244888e6f2e5afb6c551521fe62fcb7e2bf08cb8d396f9ec785ecfcdd5ea27dd9ffed4ea'
-            '898c02e531dec8be746bec715127e9827bd8b1a181cc24489a1969a75c974b8b7ca3db6bfc5544f808404938e348fc70581dffdfb0b83ef5d1430f819ea3a63d'
+            '549883e3ec059c284b5858ad6b4e9a03af81ef5efcf74802234c2953462b27fa97ac335c27fe854d62bc37f8fcc49613361563cb6f48b0e23a146a3d6a4522cd'
             '86da27380a3a8d17b5b6705cab3e0e0258a241fc5e9f07d403e3da13346fb9c426b85243125b94e9d0880fbd29c81451753e977b3b42e5cdf63acedb91c61010'
             'daeec34905469d8e3a10eca2bf71e3875423fc72a92ff62bff74aef8f0af90cfc3282d5c67483379feb33b1c518287b6165b5fe42f9a8bcbc6dd3dbfcde38121'
             '58bdb0b745c8b52cd65e48af41764d4b5c54f054878e3fe9c83d4580fd94e190693c77a2b76990db79ef68e441c21cbd6f475137823c6e02b38e7c38602b7934'
