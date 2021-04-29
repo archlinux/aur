@@ -6,7 +6,7 @@ pkgdesc='Script to rollback to snapper snapshot using the layout proposed in the
 arch=('any')
 license=('GPL3')
 url='https://gitlab.freedesktop.org/Gabby/rollback'
-depends=('bash' 'coreutils' 'python' 'btrfs-progs')
+depends=('coreutils' 'python' 'btrfs-progs')
 optdepends=('doas: Automatic priv escalation'
             'sudo: Automatic priv escalation'
 )
