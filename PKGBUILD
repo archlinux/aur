@@ -39,8 +39,18 @@ depends=(
 )
 
 _dir="rqt_tf_tree-${pkgver}"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_tf_tree/archive/${pkgver}.tar.gz")
-sha256sums=('0d5996679310b747ac49d52c39e7869870458065b8ba118ed48b105d9f252604')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_tf_tree/archive/${pkgver}.tar.gz"
+        "https://github.com/ros-visualization/rqt_tf_tree/pull/28.patch"
+        "https://github.com/ros-visualization/rqt_tf_tree/pull/30.patch")
+sha256sums=('0d5996679310b747ac49d52c39e7869870458065b8ba118ed48b105d9f252604'
+        'SKIP'
+        'SKIP')
+
+prepare() {
+    cd "$srcdir/$_dir"
+    patch --forward --strip=1 --input="${srcdir}/28.patch"
+    patch --forward --strip=1 --input="${srcdir}/30.patch"
+}
 
 build() {
 	# Use ROS environment variables.
