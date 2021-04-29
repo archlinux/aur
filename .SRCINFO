@@ -1,0 +1,14 @@
+pkgbase = dns2tcp-zfl9
+	pkgdesc = utility to convert dns query from udp to tcp
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/zfl9/dns2tcp
+	arch = x86_64
+	license = GPL3
+	provides = dns2tcp
+	conflicts = dns2tcp
+	source = dns2tcp-1.1.0::https://github.com/zfl9/dns2tcp/archive/refs/tags/latest.tar.gz
+	sha512sums = SKIP
+
+pkgname = dns2tcp-zfl9
+
