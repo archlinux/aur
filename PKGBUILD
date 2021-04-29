@@ -13,7 +13,6 @@ url='http://molevol.cmima.csic.es/castresana/Gblocks.html'
 arch=('x86_64')
 
 license=('unknown')
-makedepends=('wget')
 depends=('glibc')
 
 source=("http://molevol.cmima.csic.es/castresana/$_pkgname/${_pkgname}_Linux64_0.91b.tar.Z")
