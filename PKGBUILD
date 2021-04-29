@@ -2,7 +2,7 @@
 
 _pkgname=buildtools
 pkgname=buildozer-bin
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="A command line tool to rewrite Bazel BUILD files using standard conventions"
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
   "${pkgname%-bin}-${pkgver}::${url}/releases/download/${pkgver}/${pkgname%-bin}-linux-amd64"
   "https://raw.githubusercontent.com/bazelbuild/buildtools/${pkgver}/LICENSE"
 )
-sha256sums=('0731bbcecec3ae96eec2ed48e3a69817494d4b1ec9c7eb3da7bc2c3648915c51'
+sha256sums=('082aea1df38fe30ce41d955a2cbf309cae8ec386507e0c10cc16f0d9a93e151f'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
 
 package() {
