@@ -1,7 +1,7 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 _pkgname=tg
 pkgname=telegram-$_pkgname
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="terminal telegram client that really works"
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
 )
 conflicts=('telegram-tg-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('e189bf5475d0b379ba6de8421b73ea91')
+md5sums=('a9b619805bf79f6f92093e3f96e54125')
 
 build() {
 	cd "$_pkgname-$pkgver"
