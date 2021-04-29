@@ -21,5 +21,6 @@ sha256sums=('563658f03cc5e76234a8aa705bdc149398defec813d3a0c172b5f94c06c880dc')
 
 package() {
   install -Dm755 ${_pkgname}_$pkgver/$_pkgname "${pkgdir}/usr/bin/${_pkgname}"
+  git clone "https://github.com/starsareintherose/AUR_desktop/blob/main/Gblocks.desktop"
   mv Gblocks.desktop "${pkgdir}/usr/share/applications"
 }
