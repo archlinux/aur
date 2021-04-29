@@ -13,7 +13,7 @@ makedepends=('go')
 conflicts=('2fa-git')
 replaces=('2fa-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ecd5ba067d3e3bbc3f8c10fa2df01b1b388b1cd6503fb56381573d8d17497755')
+sha256sums=("SKIP")
 
 prepare() {
   mkdir -p src/rsc.io
@@ -22,7 +22,7 @@ prepare() {
 
 build() {
   cd src/rsc.io/2fa
-  env GOPATH="${srcdir}" go build
+  env GOPATH="${srcdir}" go mod vendor && go build
 }
 
 # check() {

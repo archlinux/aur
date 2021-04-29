@@ -9,7 +9,7 @@ pkgbase = 2fa
 	conflicts = 2fa-git
 	replaces = 2fa-git
 	source = 2fa-1.2.0.tar.gz::https://github.com/rsc/2fa/archive/v1.2.0.tar.gz
-	sha256sums = ecd5ba067d3e3bbc3f8c10fa2df01b1b388b1cd6503fb56381573d8d17497755
+	sha256sums = SKIP
 
 pkgname = 2fa
 
