@@ -4,9 +4,9 @@ pkgdesc="ROS - A Python and C++ implementation of the LZ4 streaming format."
 url='https://wiki.ros.org/roslz4'
 
 pkgname='ros-melodic-roslz4'
-pkgver='1.14.10'
+pkgver='1.14.11'
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -31,7 +31,7 @@ depends=(
 
 _dir="ros_comm-${pkgver}/utilities/roslz4"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
-sha256sums=('b3b75612feb447afe70600e3ba80bf3e356493a058ba8ebf2746e8db0c55165c')
+sha256sums=('a7f3cf19059c189d3326d3e35f5795d707fa405fb55e7250353d71e0698410f5')
 
 build() {
 	# Use ROS environment variables.
