@@ -1,20 +1,25 @@
-# Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
+# Maintainer: AlphaJack <alphajack at tuta dot io>
+# Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
 # Contributor: Neil Santos <nsantos16+aur@gmail.com>
 
-pkgname=python-onetimepass
-_pkgname=onetimepass
+pkgname="python-onetimepass"
 pkgver=1.0.1
-pkgrel=1
-pkgdesc='Module for generating and validating HOTP and TOTP tokens'
-arch=('any')
-url='https://github.com/tadeck/onetimepass/'
-license=('ISC')
-depends=('python')
-makedepends=('python-setuptools')
-source=("https://pypi.python.org/packages/aa/b2/cb6832704aaf11ed0e471910a8da360129e2c23398d2ea3a71961a2f5746/onetimepass-1.0.1.tar.gz")
-md5sums=('1d2aa6422b9077913c1aca1c481c175e')
+pkgrel=2
+pkgdesc="Module for generating and validating HOTP and TOTP tokens"
+url="https://github.com/tadeck/onetimepass"
+license=("MIT")
+arch=("any")
+depends=("python-six")
+makedepends=("python-setuptools" "python-wheel")
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('2dbeec63eed7866a5b3d297ce7a05b081a7e10153f88020e1530b033ff13f123')
 
-package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --prefix=/usr --root="$pkgdir"
+build(){
+ cd "onetimepass-$pkgver"
+ python setup.py build
+}
+
+package(){
+ cd "onetimepass-$pkgver"
+ python setup.py install --root="$pkgdir" --optimize=1
 }
