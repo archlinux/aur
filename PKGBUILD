@@ -1,11 +1,12 @@
 # Maintainer: Benjamin Landis <bmlandis2010@gmail.com>
 
 pkgname=mpv-vapoursynth
-pkgver=0.33.0
+_tag='4c9d3669a0f672e6754ac456acd324db570964d3' # git rev-parse v${pkgver}
+pkgver=0.33.1
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (with Vapoursynth libs)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-license=('GPL')
+license=('GPL3')
 url='https://mpv.io/'
 depends=('alsa-lib' 'libasound.so' 'desktop-file-utils' 'ffmpeg' 'libavcodec.so' 'libavdevice.so'
          'libavfilter.so' 'libavformat.so' 'libavutil.so' 'libswresample.so' 'libswscale.so'
@@ -24,17 +25,19 @@ optdepends=('youtube-dl: for video-sharing websites playback')
 provides=('mpv')
 conflicts=('mpv')
 options=('!emptydirs')
-source=("mpv-${pkgver}.tar.gz"::"https://github.com/mpv-player/mpv/archive/v${pkgver}.tar.gz"
-        '010-mpv-libplacebo-fix.patch'::'https://github.com/mpv-player/mpv/commit/7c4465cefb27d4e0d07535d368febdf77b579566.patch')
-sha256sums=('f1b9baf5dc2eeaf376597c28a6281facf6ed98ff3d567e3955c95bf2459520b4'
-            'a9f656a163e17a33050ea3ffe51203b948168437c87038239fc3a2424927b35a')
+validpgpkeys=('145077D82501AA20152CACCE8D769208D5E31419') # sfan5 <sfan5@live.de>
+source=("git+https://github.com/mpv-player/mpv.git#tag=${_tag}?signed")
+sha256sums=('SKIP')
 
 prepare() {
-    patch -d "mpv-${pkgver}" -Np1 -i "${srcdir}/010-mpv-libplacebo-fix.patch"
+  cd mpv
+
+  # vo_gpu: placebo: update for upstream API changes
+  git cherry-pick -n 7c4465cefb27d4e0d07535d368febdf77b579566
 }
 
 build() {
-  cd mpv-${pkgver}
+  cd mpv
 
   waf configure --prefix=/usr \
     --confdir=/etc/mpv \
@@ -50,7 +53,7 @@ build() {
 }
 
 package() {
-  cd mpv-${pkgver}
+  cd mpv
 
   waf install --destdir="$pkgdir"
 
