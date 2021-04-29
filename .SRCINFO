@@ -1,7 +1,7 @@
 pkgbase = linux-lts-logo
 	pkgdesc = LTS Linux with tux logo
 	pkgver = 5.10.33
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2

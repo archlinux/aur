@@ -3,7 +3,7 @@
 
 pkgbase=linux-lts-logo
 pkgver=5.10.33
-pkgrel=1
+pkgrel=2
 pkgdesc='LTS Linux with tux logo'
 url="https://www.kernel.org/"
 arch=(x86_64)
