@@ -1,13 +1,14 @@
-# Maintainer: Adrian Perez de Castro <aperez@igalia.com>
-# Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
-pkgname=wlroots-git
-pkgver=0.13.0.r12.gb29ac8fb
+# Maintainer: Josip Janzic <me@josip.dev>
+# Contributor: Adrian Perez de Castro <aperez@igalia.com>
+# Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
+pkgname=wlroots-hi-res-scroll-git
+pkgver=0.13.0.r95.g8e9e6e1a
 pkgrel=1
 license=(custom:MIT)
-pkgdesc='Modular Wayland compositor library (git version)'
-url=https://github.com/swaywm/wlroots
+pkgdesc='Modular Wayland compositor library with hi-res scroll patches (git version)'
+url=https://github.com/janza/wlroots
 arch=(x86_64)
-provides=("wlroots=${pkgver%%.r*}")
+provides=("wlroots=${pkgver%%.r*}" "wlroots-git")
 conflicts=(wlroots)
 options=(debug)
 depends=(

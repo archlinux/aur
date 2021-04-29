@@ -1,8 +1,8 @@
-pkgbase = wlroots-git
-	pkgdesc = Modular Wayland compositor library (git version)
-	pkgver = 0.13.0.r12.gb29ac8fb
+pkgbase = wlroots-hi-res-scroll-git
+	pkgdesc = Modular Wayland compositor library with hi-res scroll patches (git version)
+	pkgver = 0.13.0.r95.g8e9e6e1a
 	pkgrel = 1
-	url = https://github.com/swaywm/wlroots
+	url = https://github.com/janza/wlroots
 	arch = x86_64
 	license = custom:MIT
 	makedepends = git
@@ -22,10 +22,11 @@ pkgbase = wlroots-git
 	depends = systemd
 	depends = xorg-xwayland
 	provides = wlroots=0.13.0
+	provides = wlroots-git
 	conflicts = wlroots
 	options = debug
-	source = wlroots-git::git+https://github.com/swaywm/wlroots
+	source = wlroots-hi-res-scroll-git::git+https://github.com/janza/wlroots
 	sha512sums = SKIP
 
-pkgname = wlroots-git
+pkgname = wlroots-hi-res-scroll-git
 
