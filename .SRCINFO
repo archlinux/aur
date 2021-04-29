@@ -1,7 +1,7 @@
 pkgbase = linux-lts-logo
 	pkgdesc = LTS Linux with tux logo
 	pkgver = 5.10.33
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -30,7 +30,7 @@ pkgbase = linux-lts-logo
 	sha256sums = SKIP
 	sha256sums = cd62ea9a06d89bda2dce45cc0ccbdb5a2ee9f588a04fa3acb02776a790668be9
 	sha256sums = 6992aed5d5398f9442f0ce94d5d5b6503bf492df0ebe719ed6e0fc1dc2ee1929
-	sha256sums = 917e17cde2be80bef2baffbb9cdc6afca98a89703c343d504f8edf0111abff08
+	sha256sums = 3ab720992acb44e8b0fc859eb9ac18120d19fca7cb3e2eab43b18695a240dcd7
 
 pkgname = linux-lts-logo
 	pkgdesc = The LTS Linux with tux logo kernel and modules
