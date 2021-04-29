@@ -40,7 +40,7 @@ tag:
 
 .PHONY: push
 push:
-	git push ssh://aur@aur.archlinux.org/linux-status.git "$$( git symbolic-ref HEAD ):master"
+	git push 'ssh://aur@aur.archlinux.org/$(call escape,$(PKG_NAME)).git' "$$( git symbolic-ref HEAD ):master"
 
 .PHONY: clean
 clean:
