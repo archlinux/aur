@@ -1,7 +1,7 @@
 pkgbase = mullvad-vpn-cli
 	pkgdesc = The Mullvad VPN client cli
 	pkgver = 2021.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mullvad.net
 	install = mullvad-vpn-cli.install
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = mullvad-vpn-cli
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = ed978958f86da9acbce950a832491b140a350c594e2446b99a7c397a98731316
-	sha256sums = 2729b6842bff30eb3dae23a2133054ab1cfe9312a4fc9baa8433a81e9bafd362
+	sha256sums = 448755ee76e7c150d6a091a003ed5ccbdefdcac3a13514ed88e35e9617383f40
 
 pkgname = mullvad-vpn-cli
 

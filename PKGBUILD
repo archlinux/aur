@@ -3,7 +3,7 @@
 
 pkgname=mullvad-vpn-cli
 pkgver=2021.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mullvad VPN client cli"
 url="https://www.mullvad.net"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${pkgver}?signed"
 sha256sums=('SKIP'
             'SKIP'
             'ed978958f86da9acbce950a832491b140a350c594e2446b99a7c397a98731316'
-            '2729b6842bff30eb3dae23a2133054ab1cfe9312a4fc9baa8433a81e9bafd362')
+            '448755ee76e7c150d6a091a003ed5ccbdefdcac3a13514ed88e35e9617383f40')
 validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87'
               # Linus Färnstrand (code signing key) <linus at mullvad dot net>
               '8339C7D2942EB854E3F27CE5AEE9DECFD582E984')
