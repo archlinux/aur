@@ -1,4 +1,5 @@
-# Maintainer: Felix Serrano Blanco <felixseblanc@gmail.com>
+# Maintainer: j.r <j.r@jugendhacker.de>
+# Contributor: Felix Serrano Blanco <felixseblanc@gmail.com>
 
 _pkgname=libtd
 pkgname=${_pkgname}
