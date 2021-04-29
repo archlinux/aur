@@ -8,7 +8,7 @@ pkgdesc="the no-bullshit wpm utility"
 arch=('any')
 url="https://github.com/jnats/nowpm"
 license=('custom:beerware')
-depends=('coreutils' 'grep' 'sed' 'bash')
+depends=('coreutils' 'grep' 'sed' 'bash' 'wdiff' 'bc')
 provides=('nowpm')
 
 source=("nowpm::git+https://github.com/jnats/nowpm.git")
