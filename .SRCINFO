@@ -8,7 +8,6 @@ pkgbase = dsda-doom
 	makedepends = cmake
 	makedepends = deutex
 	makedepends = imagemagick
-	makedepends = git
 	depends = fluidsynth
 	depends = glu
 	depends = libmad

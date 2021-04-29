@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/kraflab/dsda-doom"
 license=('GPL')
 depends=('fluidsynth' 'glu' 'libmad' 'portmidi' 'sdl2_image' 'sdl2_mixer' 'sdl2_net' 'dumb')
-makedepends=('cmake' 'deutex' 'imagemagick' 'git')
+makedepends=('cmake' 'deutex' 'imagemagick')
 conflicts=('prboom-plus')
 source=("https://github.com/kraflab/dsda-doom/archive/refs/tags/v${pkgver}.tar.gz"
 'dsda-doom.desktop')
