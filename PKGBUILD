@@ -22,7 +22,7 @@ sha256sums=('6c492d0c7b4a40e7674d088191d3aa11f373bb1da60762e098b8ee2dda96ef22'
 build() {
   cd "$srcdir/WordNet-$_srcver"
   ./configure --prefix=/usr --mandir=/usr/share/man \
-              CFLAGS="${CFLAGS} -fPIC -DUSE_INTERP_RESULT" \
+              CFLAGS="${CFLAGS} -fPIC -DUSE_INTERP_RESULT -Wno-error=format-security" \
               CXXFLAGS="${CXXFLAGS} -fPIC"
   sed 's:#define DEFAULTPATH "/usr/dict":#define DEFAULTPATH "/usr/share/wordnet/dict":' -i config.h
   sed 's:"/usr/local/WordNet-3.0/lib/wnres":"/usr/share/wordnet/wnres":' -i src/wnb
