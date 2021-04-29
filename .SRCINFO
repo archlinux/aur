@@ -1,0 +1,27 @@
+pkgbase = gamehub-bin
+	pkgdesc = Games manager, downloader, library that supports GOG, Steam and Humble Bundle
+	pkgver = 0.16.0.1
+	pkgrel = 1
+	url = https://tkashkin.tk/projects/gamehub/
+	arch = x86_64
+	license = GPL3
+	depends = gtk3
+	depends = glib2
+	depends = libgee
+	depends = libsoup
+	depends = json-glib
+	depends = sqlite
+	depends = webkit2gtk
+	depends = libmanette
+	depends = libxtst
+	optdepends = steam: Support for Steam
+	optdepends = itch: Support for itch.io
+	optdepends = wine: Compatibility layer for running Windows games
+	optdepends = dosbox: Emulator for running DOS Games
+	provides = gamehub
+	conflicts = gamehub
+	source = GameHub-0.16.0.1_amd64.deb::https://github.com/tkashkin/GameHub/releases/download/0.16.0-1-master/GameHub-0.16.0-1-master-bionic-amd64.deb
+	sha256sums = d5adf1b48f8ad566fe37b14a494e2b1cacb9ffc164044ad836943bc388ab006f
+
+pkgname = gamehub-bin
+
