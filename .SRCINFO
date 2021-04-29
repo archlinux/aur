@@ -1,6 +1,6 @@
 pkgbase = emulsion-git
 	pkgdesc = A fast and minimalistic image viewer
-	pkgver = 7.2.r9.ge11578a
+	pkgver = 9.0.r2.ge25e53a
 	pkgrel = 1
 	url = https://arturkovacs.github.io/emulsion-website/
 	arch = i686

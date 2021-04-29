@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emulsion-git
-pkgver=7.2.r9.ge11578a
+pkgver=9.0.r2.ge25e53a
 pkgrel=1
 pkgdesc="A fast and minimalistic image viewer"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP'
 
 build() {
     cd "${pkgname%-git}"
-    cargo build --release --locked --features avif
+    cargo build --release --locked
 }
 
 pkgver() {
@@ -29,7 +29,7 @@ pkgver() {
   
 check() {
   cd "${pkgname%-git}"
-  cargo test --release --locked --features avif
+  cargo test --release --locked 
 }
 
 package() {
