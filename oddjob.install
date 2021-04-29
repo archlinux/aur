@@ -1,0 +1,3 @@
+post_upgrade() {
+  killall -HUP dbus-daemon &>/dev/null
+}
