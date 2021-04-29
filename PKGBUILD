@@ -2,7 +2,7 @@
 
 pkgname=adobe-source-han-mono-classic-fonts
 pkgver=1.002
-pkgrel=1
+pkgrel=7
 pkgdesc='Adobe Source Han Mono fonts with classic orthography.'
 arch=('any')
 url="https://github.com/redchenjs/source-han-mono-classic"
