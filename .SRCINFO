@@ -1,6 +1,6 @@
 pkgbase = pyright
 	pkgdesc = Type checker for the Python language
-	pkgver = 1.1.135
+	pkgver = 1.1.136
 	pkgrel = 1
 	url = https://github.com/microsoft/pyright
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = pyright
 	depends = nodejs>=12
 	provides = pyright
 	provides = pyright-langserver
-	source = https://github.com/microsoft/pyright/archive/1.1.135.tar.gz
-	sha256sums = ca2080306cf899b128cc2a6be8ae1b9b782a7a7e58e2a3046fcd12faa8804a76
+	source = https://github.com/microsoft/pyright/archive/1.1.136.tar.gz
+	sha256sums = 8e9ed47821ad6c81cd8031bac387af01e5b6e79010fa705da0d6a7e47a1cdcc5
 
 pkgname = pyright
 
