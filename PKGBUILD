@@ -4,7 +4,7 @@
 _pkgname=libtd
 pkgname=${_pkgname}
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='TDLib (Telegram Database library) is a cross-platform library for building Telegram clients'
 arch=('x86_64')
 url='https://core.telegram.org/tdlib'
@@ -15,12 +15,12 @@ depends=(
 )
 makedepends=(
   'git'
-  'gcc>=4.9.2'
+  'clang>=3.4'
   'make'
   'cmake>=3.0.2'
   'gperf'
   'php'
-  'ninja'
+  'gcc-libs'
 )
 provides=('libtd')
 conflicts=('telegram-tdlib')
@@ -32,9 +32,12 @@ build() {
   rm -rf build
   mkdir build
   cd build
-  CXXFLAGS=""
-  cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH="$pkgdir/usr" ..
-  cmake --build .
+  CC=/usr/bin/clang
+  CXX=/usr/bin/clang++
+  cmake -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX:PATH="$pkgdir/usr" ..
+  cmake --build . --target prepare_cross_compiling
+  cd ..
+  php SplitSource.php
 }
 
 package() {
