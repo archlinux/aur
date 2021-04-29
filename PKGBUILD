@@ -1,8 +1,8 @@
-# Maintainer: ptr1337 <admin@ptr1337.dev>
 # Contributor: Piotr Gorski <lucjan.lucjanov@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
+# Maintainer: ptr1337 <admin@ptr1337.dev>
 
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
@@ -16,7 +16,7 @@ _fsync=y
 #enable futex2
 _futex2=y
 #enable winesync
-_winesync=
+#_winesync=
 ### Enable protect file mappings under memory pressure
 _mm_protect=y
 ### Set performance governor as default
@@ -66,7 +66,7 @@ pkgver=${_major}
 #_stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=6
+pkgrel=7
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -76,7 +76,7 @@ makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
 _patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.12"
 source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz"
-        "https://git.kernel.org/torvalds/t/linux-5.12.tar.gz"
+        "https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/$_srcname.tar.xz"
         "config"
         "${_patchsource}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_patchsource}/cacule-patches/cacule-5.12.patch"
@@ -94,13 +94,14 @@ source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz
         "${_patchsource}/btrfs-patches/0001-btrfs-patches.patch"
         "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
         "${_patchsource}/pf-patches/0001-genirq-i2c-Provide-and-use-generic_dispatch_irq.patch"
+        "${_patchsource}/ntfs3-patches/0001-ntfs3-patches.patch"
         "${_patchsource}/mm-patches/0001-mm-5.12-protect-file-mappings-under-memory-pressure.patch"
         "${_patchsource}/zstd-upstream-patches-v2/0001-zstd-upstream-patches.patch"
         "${_patchsource}/zstd-ll-patches/0001-zstd-patches.patch"
         "${_patchsource}/clearlinux-patches/0001-clearlinux-patches.patch"
         "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch")
 
-sha512sums=('c2f3510ea7feb8d334592a00b0ff74ad7821b1d4a38a6025c5c30e8f565fbb7ec4cd653ec5629d12f22a13c1235635addf28172354388c1dc8291517ca2ece69'
+sha512sums=('be03b6fee1d1ea8087b09874d27c0a602c0b04fd90ad38b975bd2c8455a07e83c29b56814aaf1389e82305fae0e4c2d1701075a7f0a7295dd28149f967ec5b3d'
             '1ab27f634f844a096c1c6572349581495fa76555888100028a694abfe5529900ed4ba748be2452f1fcdf97c1fbbf25cd2cb3b8f2e00dff83cb86632988926bd9'
             '88f9f1e6ea206068fd029566e4610c16b7c3007f10363c7db37cd922fe75646437d2e4814317bc292d06eff7e9ebd29d8cd1ee82c8abf45ddd1843c1ff55f5c7'
             '01a59958b88f4f0fae72943883937bccb5be2a1ceeac9ba8a689c4b47125edcd3360aa6a94a535b6dae24ea8b1ac52002431ad72b2a623373c905901af2b3609'
@@ -118,6 +119,7 @@ sha512sums=('c2f3510ea7feb8d334592a00b0ff74ad7821b1d4a38a6025c5c30e8f565fbb7ec4c
             'c9d7d9fc00e46fefd9c947fd75e344ba314f97a764f9e2356817323a7d76efc632e0aac0b62a5f393540d8a0de42209878055a6a3581ca926df3982f2657723c'
             '1b3b48246fe70e8ca7390cacacf560696c1d98604a7716ac32df8f3d7fc7cc2ab733ab24e372fffa63016344f2e4ed078f7d597c3c1261f0ca3ff1c87a13dcb9'
             '800ce2518d4ff38c2d40399a5b104bb4552ba81c67398cc301adcb1f80035c2531a188f42eb20526f5384028fa0e39578b4b36ebfb9a8c0d70fb0283577f6faf'
+            '6d837eed8014bbb09b580867ed94fa03373a6a063ee68a0337109aff20b0e469c985d42b71704d08f4ea30d359cebd0a4a801a5ef6ec02c21331e40e5be1e602'
             '0563235769866375905d9bf6c33acae6aaff7b39351b4c9693f0f7dc7fef45d5850f267519a2ab8cc05ce60899f41080f071f00a417cf09d3985d89407a40f86'
             '07f68347a31b6c65f7a9dcd3d0940da26ee79fd922799ca64b8d6888087dec25bb2776c9a995c9865652c68c1b25bfccdc7298b0a8599f4f0cac7d26acea31a0'
             'e9a405643af07f8065c53c24b7ffce89d65716a6c009984c6fcd26fecf345a3a38c2ab0e58a0fac0f48ec9ea6a9cf74e06c04631ea4fcaaae4a4e7c51447a0d6'
@@ -138,7 +140,7 @@ prepare() {
         echo "-$pkgrel" > localversion.10-pkgrel
         echo "${pkgbase#linux}" > localversion.20-pkgname
 
-    ### Patching sources
+  ### Patching sources
         local src
         for src in "${source[@]}"; do
             src="${src%%::*}"
@@ -148,17 +150,18 @@ prepare() {
         patch -Np1 < "../$src"
         done
 
-    ### Setting config
+  ### Setting config
         echo "Setting config..."
-        cp ../config .config
-        make olddefconfig
+      cp "${srcdir}"/config .config
+      make olddefconfig
 
-    ### Prepared version
+
+  ### Prepared version
         make -s kernelrelease > version
         echo "Prepared $pkgbase version $(<version)"
 
     ### Optionally use running kernel's config
-	# code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
+	# code originally by nous; http://aur.archlinux.org/packages.php?#ID=40191
 	if [ -n "$_use_current" ]; then
 		if [[ -s /proc/config.gz ]]; then
 			echo "Extracting config from /proc/config.gz..."
@@ -170,70 +173,71 @@ prepare() {
 			warning "Aborting!"
 			exit
 		fi
-	fi
+ fi
 
-  source "${startdir}"/configure
+  ### CPU_ARCH SCRIPT ##
+    source "${startdir}"/configure
 
-  cpu_arch
+    cpu_arch
 
-    ### Optionally set tickrate to 1000
-	if [ -n "$_1k_HZ_ticks" ]; then
-		echo "Setting tick rate to 1k..."
-                scripts/config --disable CONFIG_HZ_300
-                scripts/config --enable CONFIG_HZ_1000
-                scripts/config --set-val CONFIG_HZ 1000
-	fi
+  ### Optionally set tickrate to 1000
+	   if [ -n "$_1k_HZ_ticks" ]; then
+		    echo "Setting tick rate to 1k..."
+        scripts/config --disable CONFIG_HZ_300
+        scripts/config --enable CONFIG_HZ_1000
+        scripts/config --set-val CONFIG_HZ 1000
+	   fi
 
   ### Optionally set tickrate to 750HZ
-  if [ -n "$_750_HZ_ticks" ]; then
-    echo "Setting tick rate to 1k..."
-                scripts/config --disable CONFIG_HZ_300
-                scripts/config --enable CONFIG_HZ_750
-                scripts/config --set-val CONFIG_HZ 750
-  fi
+    if [ -n "$_750_HZ_ticks" ]; then
+      echo "Setting tick rate to 1k..."
+      scripts/config --disable CONFIG_HZ_300
+      scripts/config --enable CONFIG_HZ_750
+      scripts/config --set-val CONFIG_HZ 750
+    fi
 
   ### Optionally set tickrate to 500HZ
-  if [ -n "$_500_HZ_ticks" ]; then
-    echo "Setting tick rate to 1k..."
-                scripts/config --disable CONFIG_HZ_300
-                scripts/config --enable CONFIG_HZ_500
-                scripts/config --set-val CONFIG_HZ 500
-  fi
+    if [ -n "$_500_HZ_ticks" ]; then
+      echo "Setting tick rate to 1k..."
+      scripts/config --disable CONFIG_HZ_300
+      scripts/config --enable CONFIG_HZ_500
+      scripts/config --set-val CONFIG_HZ 500
+    fi
 
-    ### Optionally disable NUMA for 64-bit kernels only
-        # (x86 kernels do not support NUMA)
-        if [ -n "$_NUMAdisable" ]; then
-            echo "Disabling NUMA from kernel config..."
-            scripts/config --disable CONFIG_NUMA
-        fi
+  ### Optionally disable NUMA for 64-bit kernels only
+    # (x86 kernels do not support NUMA)
+    if [ -n "$_NUMAdisable" ]; then
+      echo "Disabling NUMA from kernel config..."
+      scripts/config --disable CONFIG_NUMA
+    fi
 
-        if [ -n "$_fsync" ]; then
-          echo "Enable Fsync support"
-          scripts/config --enable CONFIG_FUTEX
-          scripts/config --enable CONFIG_FUTEX_PI
-        fi
+    if [ -n "$_fsync" ]; then
+      echo "Enable Fsync support"
+      scripts/config --enable CONFIG_FUTEX
+      scripts/config --enable CONFIG_FUTEX_PI
+    fi
 
-        if [ -n "$_futex2" ]; then
-          echo "Enable Futex2 support"
-          scripts/config --enable CONFIG_FUTEX2
-        fi
+    if [ -n "$_futex2" ]; then
+      echo "Enable Futex2 support"
+      scripts/config --enable CONFIG_FUTEX2
+    fi
 
-        if [ -n "$_winesync" ]; then
-          echo "Enable winesync support"
-          scripts/config --module CONFIG_WINESYNC
-        fi
+#      if [ -n "$_winesync" ]; then
+#          echo "Enable winesync support"
+#        scripts/config --module CONFIG_WINESYNC
+#      fi
 
-        ### Enable protect file mappings under memory pressure
-    	if [ -n "$_mm_protect" ]; then
+        ### Enable protect file mapings under memory pressurep
+    if [ -n "$_mm_protect" ]; then
     		echo "Enabling protect file mappings under memory pressure..."
-    		scripts/config --enable CONFIG_UNEVICTABLE_FILE
-    		scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
-    		scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
-    	fi
+    	scripts/config --enable CONFIG_UNEVICTABLE_FILE
+    	scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
+    	scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
+    fi
 
-      ### Set performance governor
-          if [ -n "$_per_gov" ]; then
-  		echo "Setting performance governor..."
+  ### Set performance governor
+    if [ -n "$_per_gov" ]; then
+      echo "Setting performance governor..."
   		scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
   		scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
   		echo "Disabling uneeded governors..."
@@ -241,70 +245,94 @@ prepare() {
   		scripts/config --disable CONFIG_CPU_FREQ_GOV_CONSERVATIVE
   		scripts/config --disable CONFIG_CPU_FREQ_GOV_USERSPACE
   		scripts/config --disable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
-          fi
+    fi
 
-      ### Disable Deadline I/O scheduler
+  ### Disable Deadline I/O scheduler
   	if [ -n "$_deadline_disable" ]; then
   		echo "Disabling Deadline I/O scheduler..."
   		scripts/config --disable CONFIG_MQ_IOSCHED_DEADLINE
   	fi
 
-      ### Disable Kyber I/O scheduler
+  ### Disable Kyber I/O scheduler
   	if [ -n "$_kyber_disable" ]; then
   		echo "Disabling Kyber I/O scheduler..."
   		scripts/config --disable CONFIG_MQ_IOSCHED_KYBER
   	fi
 
-        echo "Set module compression to ZSTD"
-        scripts/config --enable CONFIG_MODULE_COMPRESS
-        scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
-        scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
-        scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
+  ### Enabling ZSTD COMPRESSION ##
+      echo "Set module compression to ZSTD"
+      scripts/config --enable CONFIG_MODULE_COMPRESS
+      scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
+      scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
+      scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
+      scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
+
+  ### Enabling Cacule-Config ##
+      echo "Enable CacULE CPU scheduler..."
+      scripts/config --enable CONFIG_CACULE_SCHED
+      scripts/config --disable CONFIG_CACULE_RDB
+      scripts/config --disable CONFIG_FAIR_GROUP_SCHED
+      scripts/config --disable CONFIG_SCHED_AUTOGROUP
+      #scripts/config --set-val CONFIG_NR_CPUS "12"
+      scripts/config --disable CONFIG_SCHED_DEBUG
+      scripts/config --disable CONFIG_SCHED_INFO
+      scripts/config --disable CONFIG_SCHEDSTATS
+      scripts/config --disable CONFIG_DEBUG_KERNEL
+      scripts/config --disable CONFIG_EXPERT
+      echo "Enable PREEMPT"
+      scripts/config --disable CONFIG_PREEMPT_NONE
+      scripts/config --disable CONFIG_PREEMPT_VOLUNTARY
+      scripts/config --enable CONFIG_PREEMPT
+      scripts/config --enable CONFIG_PREEMPT_COUNT
+      scripts/config --enable CONFIG_PREEMPTION
+  ### Enable NTFS3
+      echo "Enable NTFS3"
+      scripts/config --module CONFIG_NTFS_FS
+      scripts/config --enable CONFIG_NTFS_RW
+      scripts/config --enable CONFIG_NTFS_DEBUG
+      scripts/config --module CONFIG_NTFS3_FS
+      scripts/config --enable CONFIG_NTFS3_64BIT_CLUSTER
+      scripts/config --enable CONFIG_NTFS3_LZX_XPRESS
+      scripts/config --enable CONFIG_NTFS3_FS_POSIX_ACL
+  ### Enable ANBOX
+      echo "Enable Anbox"
+      scripts/config --module  CONFIG_ASHMEM
+      scripts/config --enable  CONFIG_ANDROID_BINDER_IPC_SELFTEST
+      scripts/config --enable  CONFIG_ANDROID
+      scripts/config --enable  CONFIG_ANDROID_BINDER_IPC
+      scripts/config --enable  CONFIG_ANDROID_BINDERFS
+      scripts/config --set-str CONFIG_ANDROID_BINDER_DEVICES binder,hwbinder,vndbinder
 
 
-        echo "Enable CacULE CPU scheduler..."
-        scripts/config --enable CONFIG_CACULE_SCHED
-        #scripts/config --enable CONFIG_FAIR_GROUP_SCHED
-        #scripts/config --disable CONFIG_SCHED_AUTOGROUP
-        #scripts/config --set-val CONFIG_NR_CPUS "12"
-        scripts/config --disable CONFIG_SCHED_DEBUG
-        scripts/config --disable CONFIG_SCHED_INFO
-        scripts/config --disable CONFIG_SCHEDSTATS
-        scripts/config --disable CONFIG_DEBUG_KERNEL
-        scripts/config --disable CONFIG_EXPERT
-        echo "Enable PREEMPT"
-        scripts/config --disable CONFIG_PREEMPT_NONE
-        scripts/config --disable CONFIG_PREEMPT_VOLUNTARY
-        scripts/config --enable CONFIG_PREEMPT
-        scripts/config --enable CONFIG_PREEMPT_COUNT
-        scripts/config --enable CONFIG_PREEMPTION
+  ### Optionally load needed modules for the make localmodconfig
+  # See https://aur.archlinux.org/packages/modprobed-db
+      if [ -n "$_localmodcfg" ]; then
+          if [ -f $HOME/.config/modprobed.db ]; then
+          echo "Running Steven Rostedt's make localmodconfig now"
+          make LSMOD=$HOME/.config/modprobed.db localmodconfig
+      else
+          echo "No modprobed.db data found"
+          exit
+          fi
+      fi
 
-    ### Optionally load needed modules for the make localmodconfig
-        # See https://aur.archlinux.org/packages/modprobed-db
-        if [ -n "$_localmodcfg" ]; then
-            if [ -f $HOME/.config/modprobed.db ]; then
-            echo "Running Steven Rostedt's make localmodconfig now"
-            make LSMOD=$HOME/.config/modprobed.db localmodconfig
-        else
-            echo "No modprobed.db data found"
-            exit
-            fi
-        fi
 
-    ### Running make nconfig
-	[[ -z "$_makenconfig" ]] ||  make nconfig
+  ### Running make nconfig
+	   [[ -z "$_makenconfig" ]] ||  make nconfig
 
-    ### Running make menuconfig
-	[[ -z "$_makemenuconfig" ]] || make menuconfig
+  ### Running make menuconfig
+	   [[ -z "$_makemenuconfig" ]] || make menuconfig
 
-    ### Running make xconfig
-	[[ -z "$_makexconfig" ]] || make xconfig
+  ### Running make xconfig
+	   [[ -z "$_makexconfig" ]] || make xconfig
 
-    ### Running make gconfig
-	[[ -z "$_makegconfig" ]] || make gconfig
+  ### Running make gconfig
+	   [[ -z "$_makegconfig" ]] || make gconfig
 
-    ### Save configuration for later reuse
-	cat .config > "${startdir}/config.last"
+  ### Save configuration for later reuse
+     echo "Save config for reuse"
+	   cat .config > "${startdir}/config.last"
+
 }
 
 build() {
