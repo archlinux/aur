@@ -1,0 +1,18 @@
+pkgbase = vim-wiki-ft-git
+	pkgdesc = Simple Vim filetype plugin for Wiki files
+	pkgver = r23.03a6e36
+	pkgrel = 1
+	url = https://github.com/lervag/wiki-ft.vim
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	depends = vim-wiki
+	provides = vim-wiki-ft
+	conflicts = vim-wiki-ft
+	source = vim-wiki-ft-git::git+https://github.com/lervag/wiki-ft.vim
+	sha256sums = SKIP
+
+pkgname = vim-wiki-ft-git
+
