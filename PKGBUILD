@@ -23,11 +23,7 @@ package() {
 
     install -D -m 0755 -t "$pkgdir/usr/lib/config-links" links-update
     install -D -m 0755 -t "$pkgdir/usr/lib/config-links" links-remove
-    install -D -m 0644 -t "$pkgdir/usr/lib/config-links/src" src/common.sh
-    install -D -m 0644 -t "$pkgdir/usr/lib/config-links/src" src/db.sh
-    install -D -m 0644 -t "$pkgdir/usr/lib/config-links/src" src/os.sh
-    install -D -m 0644 -t "$pkgdir/usr/lib/config-links/src" src/path.sh
-    install -D -m 0644 -t "$pkgdir/usr/lib/config-links/src" src/vars.sh
+    find src -type f -exec install -D -m 0644 -t "$pkgdir/usr/lib/config-links/src" {} ';'
 
     install -d "$pkgdir/usr/bin"
     ln -s -- /usr/lib/config-links/links-update "$pkgdir/usr/bin/"
