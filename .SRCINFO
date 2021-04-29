@@ -15,7 +15,7 @@ pkgbase = ttf-iosevka-term-custom-git
 	source = git+https://github.com/be5invis/Iosevka#branch=dev
 	source = private-build-plans.toml.example
 	sha256sums = SKIP
-	sha256sums = 1b5ea519966261cf71177efa6bb07a453b9b34397a4b647bee53d85f7d131419
+	sha256sums = fae9ae12fbf94d4276916b0aecc57fb5eb816c5bba03af2127483dbe068896b3
 
 pkgname = ttf-iosevka-term-custom-git
 
