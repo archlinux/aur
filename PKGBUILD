@@ -2,7 +2,7 @@
 
 pkgname=python-btreefolder2
 _pkgname=Products.BTreeFolder2
-pkgver=4.2
+pkgver=4.3
 pkgrel=1
 pkgdesc="A BTree based implementation for Zope's OFS"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('python')
 makedepends=('python-setuptools')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zopefoundation/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('4631c50ed7ce4828a27983baf6440994bad6bd322ad0845e55f26c57788610d6')
+sha256sums=('f9aad7f207ab30e465cbe3f2f74bfcf795f5d89bb06a1a4802665382dbca536c')
 
 build() {
 	cd "${_pkgname}-${pkgver}"
