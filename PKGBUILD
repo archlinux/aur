@@ -2,9 +2,9 @@ pkgdesc="ROS - roscpp is a C++ implementation of ROS."
 url='https://github.com/ros/ros_comm'
 
 pkgname='ros-melodic-roscpp'
-pkgver='1.14.10'
+pkgver='1.14.11'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=6
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -50,7 +50,7 @@ conflicts=(
 
 _dir="ros_comm-${pkgver}/clients/roscpp"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
-sha256sums=('b3b75612feb447afe70600e3ba80bf3e356493a058ba8ebf2746e8db0c55165c')
+sha256sums=('a7f3cf19059c189d3326d3e35f5795d707fa405fb55e7250353d71e0698410f5')
 
 prepare() {
   cd "${srcdir}/${_dir}"
