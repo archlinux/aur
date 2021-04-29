@@ -2,7 +2,7 @@
 # Maintainer: bilux <i.bilux@gmail.com>
 
 pkgname=mobydroid
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 arch=('any')
 pkgdesc="GUI for Android SDK/ADB, Android phone manager"
@@ -14,7 +14,7 @@ source=("https://github.com/ibilux/MobyDroid/releases/download/v$pkgver/MobyDroi
         "$pkgname.desktop"
         "$pkgname-arch.sh")
 
-md5sums=('05bb64f76aa8c9911ab8e334f52cd12c'
+md5sums=('0821fb58ae28b89c6ea475f48b3a4534'
          '7118cfd58a0ac4d16b7818423226ce89'
          '51bec0dc091c9b6ca6f98c435ec2bf62'
          '9f0bc607aee8683ded5c8eeb8411d364')
@@ -37,6 +37,10 @@ package()
   install -Dm755 "${srcdir}/${pkgname}-arch.sh" "${pkgdir}/usr/bin/${pkgname}"
 }
 md5sums=('106dae01be096b444654ba684af7b88b'
+         '7118cfd58a0ac4d16b7818423226ce89'
+         '51bec0dc091c9b6ca6f98c435ec2bf62'
+         '9f0bc607aee8683ded5c8eeb8411d364')
+md5sums=('0821fb58ae28b89c6ea475f48b3a4534'
          '7118cfd58a0ac4d16b7818423226ce89'
          '51bec0dc091c9b6ca6f98c435ec2bf62'
          '9f0bc607aee8683ded5c8eeb8411d364')
