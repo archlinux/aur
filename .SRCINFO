@@ -1,6 +1,6 @@
 pkgbase = prs
 	pkgdesc = Secure, fast & convenient password manager CLI using GPG and git to sync
-	pkgver = 0.2.8
+	pkgver = 0.2.10
 	pkgrel = 1
 	url = https://gitlab.com/timvisee/prs
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = prs
 	depends = gpgme
 	depends = dbus
 	depends = libxcb
-	source = prs-0.2.8.tar.gz::https://gitlab.com/timvisee/prs/-/archive/v0.2.8/prs-v0.2.8.tar.gz
-	sha512sums = d19a4eaac478dd8497c177f2e9d40bb7d799ec018f6f87a7e9b7177b4751a9e4fac2995df794c9be9dec0d734c03d36d2b9533705936cb66838dd5565b0b91e0
+	source = prs-0.2.10.tar.gz::https://gitlab.com/timvisee/prs/-/archive/v0.2.10/prs-v0.2.10.tar.gz
+	sha512sums = d7777cefd9ab6b9acd54cf4cd59ee075fa29a4124049720de7418405152fc721bb1e4b1a7e3543713ffb575ea665b74a016466914837e25e27dd12593087feab
 
 pkgname = prs
