@@ -1,7 +1,7 @@
 # Maintainer: Roshless <pkg@roshless.com>
 
 pkgname=lagrange
-pkgrel=1
+pkgrel=2
 pkgver=1.3.4
 pkgdesc="Beautiful Gemini Client"
 url="https://git.skyjake.fi/skyjake/lagrange"
@@ -23,7 +23,6 @@ makedepends=("cmake")
 
 build() {
     cmake -B build -S "$pkgname-${pkgver}" \
-        -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -Wno-dev
     make -C build
