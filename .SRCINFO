@@ -1,0 +1,19 @@
+pkgbase = sync-my-moodle-git
+	pkgdesc = a synchronization client for the RWTH Moodle
+	pkgver = r121.f65ea92
+	pkgrel = 1
+	url = https://github.com/Romern/syncMyMoodle
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python>=3.6
+	depends = python-requests
+	depends = python-beautifulsoup4
+	depends = youtube-dl
+	depends = python-tqdm
+	optdepends = python-secretstorage
+	source = sync-my-moodle-git::git+https://github.com/Romern/syncMyMoodle.git
+	sha512sums = SKIP
+
+pkgname = sync-my-moodle-git
+
