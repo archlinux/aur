@@ -20,4 +20,5 @@ sha256sums=('SKIP')
 
 package() {
   install -Dm755 ${_pkgname}_$pkgver/$_pkgname "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 ~/.cache/yay/gblocks-bin/gblocks.desktop "${pkgdir}/usr/share/applications/gblocks.desktop"
 }
