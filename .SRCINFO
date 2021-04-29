@@ -1,0 +1,13 @@
+pkgbase = alcase
+	pkgdesc = Turn text into alternating case
+	pkgver = fb11109
+	pkgrel = 1
+	url = https://github.com/LevitatingBusinessMan/alcase
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/LevitatingBusinessMan/alcase.git
+	sha256sums = SKIP
+
+pkgname = alcase
+
