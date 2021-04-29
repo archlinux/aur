@@ -5,6 +5,7 @@ pkgbase = gblocks-bin
 	url = http://molevol.cmima.csic.es/castresana/Gblocks.html
 	arch = x86_64
 	license = unknown
+	makedepends = wget
 	depends = glibc
 	source = http://molevol.cmima.csic.es/castresana/Gblocks/Gblocks_Linux64_0.91b.tar.Z
 	sha256sums = SKIP
