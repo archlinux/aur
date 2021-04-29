@@ -2,7 +2,7 @@
 
 pkgname=dislocker
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Read/write BitLocker-encrypted volumes"
 arch=('i686' 'x86_64')
 url="https://github.com/Aorimn/dislocker"
@@ -17,9 +17,12 @@ sha1sums=('1b40d70030cf914e86da8960fac83e9922ede04a')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
+  # Fix inapt variable naming
+  sed -i 's/true/trueval/g' src/config.c
+
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -Dlibdir=/usr/lib \
-        -DC_INCLUDE_PATH="$C_INCLUDE_PATH:/usr/include/ruby-2.6.0/" \
+        -DC_INCLUDE_PATH="$C_INCLUDE_PATH:/usr/include/ruby-3.0.0/" \
         -D WARN_FLAGS:STRING="-Wall -Wextra" \
         .
   make
