@@ -22,8 +22,10 @@ pkgbase = albion-online-launcher-bin
 	options = staticlibs
 	source = https://live.albiononline.com/clients/20210419110001/albion-online-setup
 	source = albion-online-launcher.desktop
+	source = albion-online
 	sha256sums = e220437b7a943769af42196ed23df2e6652b147f2eb78f6ad8f60a0c0028b078
-	sha256sums = 60d094ded1087eb304acbe59564778ac4fe540977ab69996820ac823b143aee1
+	sha256sums = 4d94016e053c4d670c88631cbeb89442b1d0447265a2993e44337037288143c2
+	sha256sums = 5127e055b747d3deb0a8563daeeb3dfacd123c108e027d286759e0ea3938a17e
 
 pkgname = albion-online-launcher-bin
 

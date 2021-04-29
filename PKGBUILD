@@ -11,11 +11,12 @@ makedepends=('chrpath')
 depends=('libgl' 'qt5-webengine' 'sndio' 'xdelta3' 'ttf-font')
 optdepends=(albion-online-live-game-data-bin albion-online-staging-game-data-bin)
 source=("https://live.albiononline.com/clients/20210419110001/albion-online-setup"
-	"albion-online-launcher.desktop")
+	"albion-online-launcher.desktop" "albion-online")
 install=albion-online-launcher-bin.install
 options=(!strip docs libtool emptydirs !zipman staticlibs)
 sha256sums=('e220437b7a943769af42196ed23df2e6652b147f2eb78f6ad8f60a0c0028b078'
-            '60d094ded1087eb304acbe59564778ac4fe540977ab69996820ac823b143aee1')
+            '4d94016e053c4d670c88631cbeb89442b1d0447265a2993e44337037288143c2'
+            '5127e055b747d3deb0a8563daeeb3dfacd123c108e027d286759e0ea3938a17e')
 
 prepare() {
   chrpath -d "${srcdir}/data/launcher/Albion-Online"
@@ -44,7 +45,7 @@ package() {
 
   mkdir "${pkgdir}/opt/${pkgname}/staging_x64"
   chmod 775 "${pkgdir}/opt/${pkgname}/staging_x64"
-
+  mkdir -p "${pkgdir}/opt/${pkgname}/game_x64"
 
   chmod 775 "${pkgdir}/opt/${pkgname}/launcher"
 
@@ -54,7 +55,7 @@ package() {
   
   # link launcher launcher
   mkdir -p "${pkgdir}/usr/bin"
-  ln -s "/opt/$pkgname/Albion-Online" "${pkgdir}/usr/bin/albion-online-launcher"
+  install -m755 -D "${srcdir}/albion-online" "${pkgdir}/usr/bin"
 
   # install .desktop file
   install -m755 -D "${srcdir}/albion-online-launcher.desktop" -t "${pkgdir}/usr/share/applications"
