@@ -12,7 +12,6 @@ arch=('i686' 'x86_64')
 url="https://github.com/realh/roxterm"
 license=('GPL3')
 depends=('dbus-glib' 'vte3')
-optdepends=('vte3-kinetic: Enables kinetic scrolling with libinput')
 makedepends=('cmake' 'git' 'docbook-xsl' 'xmlto' 'po4a' 'imagemagick' \
   'librsvg' 'itstool' 'sed')
 provides=('roxterm')
