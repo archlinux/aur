@@ -44,6 +44,5 @@ package() {
 	tar -p -zxvf data.tar.gz -C "${pkgdir}"
 	chmod 755 -R ../pkg/${pkgname}/usr
 	cp -r ../pkg/${pkgname}/usr/local/* ../pkg/${pkgname}/usr/
-	rm -r ../pkg/${pkgname}/usr/local
-	mv zotero-beta.desktop "${pkgdir}/usr/share/applications" 
+	rm -r ../pkg/${pkgname}/usr/local 
 }
