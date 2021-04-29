@@ -1,26 +1,28 @@
 pkgbase = roxterm-git
 	pkgdesc = Tabbed, VTE-based terminal emulator
-	pkgver = 2.9.0.r10.g4415109
+	pkgver = 3.10.2
 	pkgrel = 1
 	epoch = 1
-	url = http://roxterm.sourceforge.net
-	install = roxterm.install
+	url = https://github.com/realh/roxterm
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = cmake
+	makedepends = git
 	makedepends = docbook-xsl
 	makedepends = xmlto
 	makedepends = po4a
-	makedepends = python2
-	makedepends = python2-lockfile
 	makedepends = imagemagick
 	makedepends = librsvg
+	makedepends = itstool
+	makedepends = sed
 	depends = dbus-glib
 	depends = vte3
-	depends = libsm
+	optdepends = vte3-kinetic: Enables kinetic scrolling with libinput
 	provides = roxterm
 	conflicts = roxterm
-	source = roxterm-git::git://git.code.sf.net/p/roxterm/code
+	source = roxterm-git::git+https://github.com/realh/roxterm.git
+	md5sums = SKIP
 
 pkgname = roxterm-git
 
