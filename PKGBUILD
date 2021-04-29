@@ -1,6 +1,6 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 pkgname=python-meshio
-pkgver=4.4.0
+pkgver=4.4.1
 pkgrel=1
 pkgdesc='Input/output for many mesh formats'
 url='https://github.com/nschloe/meshio'
@@ -10,7 +10,7 @@ depends=('python-numpy')
 makedepends=('python-build' 'python-pip')
 optdepends=('python-netcdf4' 'python-h5py')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('62810734754bc3c35eca1222fb6067b930b4de8cd430f8bab3f62ca72ee97d10')
+sha256sums=('96a0451cd814dcc8c1d958b33ad4d994b20bace2273d520b0249331fe218d20d')
 
 build() {
   cd "meshio-$pkgver"
