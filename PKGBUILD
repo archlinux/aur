@@ -2,7 +2,7 @@
 
 pkgname=taskflow-git
 pkgver=r45.d96fc79
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple resource-aware task scheduler"
 arch=('x86_64')
 url="https://github.com/lanPN85/taskflow"
