@@ -1,8 +1,8 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=tarantool
-pkgver=2.8.0
-pkgrel=3
+pkgver=2.8.1
+pkgrel=1
 pkgdesc='Lua application server integrated with a database management system'
 arch=(x86_64)
 url='https://www.tarantool.org'
@@ -76,9 +76,6 @@ build() {
 }
 
 check() {
-  cd "$srcdir/tarantool/test-run"
-  git checkout 5baa4f080dc82cd45bdc619743504a3c7203dd0d
-
   cd "$srcdir/tarantool/test"
   python test-run.py --suite box
 }
