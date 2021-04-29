@@ -21,5 +21,5 @@ package() {
   install -Dm755 "${srcdir}/raxmlGUI-${pkgver}.AppImage" "${pkgdir}/opt/appimages/raxmlGUI.AppImage"
   install -dm755 "${pkgdir}/usr/share/"
   mkdir "${pkgdir}/usr/share/applications/" 
-  cp "${srcdir}/squashfs-root/raxmlgui.desktop" "${pkgdir}/usr/share/applications/" 
+  cp "raxmlgui.desktop" "${pkgdir}/usr/share/applications/" 
 }

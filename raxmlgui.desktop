@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=raxmlGUI
+Exec=./opt/appimages/raxmlGUI.AppImage
+Terminal=false
+Type=Application
+Icon=raxmlgui
+StartupWMClass=raxmlGUI
+X-AppImage-Version=2.0.3
+Comment=raxmlGUI - A new graphical front-end for RAxML
+Categories=Education;
