@@ -1,12 +1,13 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=asclock-gtk
 pkgver=2.1.10beta
-pkgrel=4
+pkgrel=5
 pkgdesc="The AfterStep clock dock app - Gtk version"
 url="http://www.cs.mun.ca/~gstarkes/wmaker/dockapps/time.html#asclock"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('gtk')
+makedepends=('libxt')
 provides=('asclock')
 conflicts=('asclock-classic' 'asclock-xlib')
 source=("http://www.cs.mun.ca/~gstarkes/wmaker/dockapps/files/$pkgname-$pkgver.tar.gz"
@@ -27,7 +28,8 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname"
-  make asclock
+  CFLAGS+=" -fcommon"
+  make CFLAGS="$CFLAGS" asclock
 }
 
 package() {
