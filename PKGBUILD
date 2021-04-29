@@ -1,7 +1,7 @@
 # Maintainer:  Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=pinentry-bemenu
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Pinentry based on bemenu"
 arch=(x86_64)
@@ -13,7 +13,7 @@ makedepends=(meson)
 source=(
 	pinentry-bemenu-$pkgver.tar.gz::https://github.com/t-8ch/$pkgname/archive/refs/tags/v$pkgver.tar.gz
 )
-sha256sums=('d7a5e71bc72270aa306adcaf1ba21b635a8719bd545b7cabd85b604975b92bb3')
+sha256sums=('933ba1740e94a5e775057c0536e17d18f3fd693de74f4b23b338953af88979da')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"

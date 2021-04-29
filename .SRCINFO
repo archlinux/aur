@@ -1,6 +1,6 @@
 pkgbase = pinentry-bemenu
 	pkgdesc = Pinentry based on bemenu
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/t-8ch/pinentry-bemenu
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = pinentry-bemenu
 	depends = libassuan
 	depends = libgpg-error
 	provides = pinentry
-	source = pinentry-bemenu-0.5.0.tar.gz::https://github.com/t-8ch/pinentry-bemenu/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = d7a5e71bc72270aa306adcaf1ba21b635a8719bd545b7cabd85b604975b92bb3
+	source = pinentry-bemenu-0.6.0.tar.gz::https://github.com/t-8ch/pinentry-bemenu/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 933ba1740e94a5e775057c0536e17d18f3fd693de74f4b23b338953af88979da
 
 pkgname = pinentry-bemenu
 
