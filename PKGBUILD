@@ -3,18 +3,18 @@
 _pkgname=notification-daemon
 pkgname=notification-daemon-gtk2
 pkgver=0.5.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Notification daemon for the desktop notifications framework for GTK2"
 arch=(i686 x86_64)
 license=('GPL')
-url="http://www.galago-project.org/specs/notification/"
+url="https://www.galago-project.org/specs/notification/"
 depends=('libsexy>=0.1.11' 'libwnck>=2.28.0' 'gconf-gtk2>=2.28.0' 'gstreamer0.10-base>=0.10.25' 'libnotify>=0.4.5' 'libglade>=2.6.4' 'hicolor-icon-theme')
 groups=('gnome')
 makedepends=('pkgconfig' 'intltool' 'libcanberra')
 provides=("$_pkgname")
 options=('!libtool' '!emptydirs')
 install=notification-daemon.install
-source=(http://download.gnome.org/sources/${_pkgname}/0.5/${_pkgname}-${pkgver}.tar.bz2
+source=(https://download.gnome.org/sources/${_pkgname}/0.5/${_pkgname}-${pkgver}.tar.bz2
 	libnotify.patch)
 md5sums=('18919b2aa2a88b71a40f59393edf70d0'
          'baf7f42dd226f2da7a02d6605ca1e08f')
