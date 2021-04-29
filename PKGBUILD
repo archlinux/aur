@@ -4,9 +4,9 @@ pkgdesc="ROS - ROS communications-related packages, including core client librar
 url='https://wiki.ros.org/ros_comm'
 
 pkgname='ros-melodic-ros-comm'
-pkgver='1.14.10'
+pkgver='1.14.11'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -49,8 +49,15 @@ depends=(
 )
 
 _dir="ros_comm-${pkgver}/ros_comm"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
-sha256sums=('b3b75612feb447afe70600e3ba80bf3e356493a058ba8ebf2746e8db0c55165c')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz"
+        https://patch-diff.githubusercontent.com/raw/ros/ros_comm/pull/2092.patch)
+sha256sums=('a7f3cf19059c189d3326d3e35f5795d707fa405fb55e7250353d71e0698410f5'
+            'ad42681c4249a89f4a0188f8202e73286c4090bbc919a470543af7e8f1b198f4')
+
+prepare() {
+    cd ${srcdir}/ros_comm-${pkgver}
+    patch -p1 < ${srcdir}/2092.patch
+}
 
 build() {
 	# Use ROS environment variables.
