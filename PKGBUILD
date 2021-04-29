@@ -5,11 +5,11 @@
 
 pkgname=kotatogram-desktop-bin
 pkgdesc="Experimental Telegram Desktop fork with option to select custom fonts. - Static binaries"
-pkgver=1.4
+pkgver=1.4.1
 pkgrel=1
 url="https://github.com/kotatogram/kotatogram-desktop"
 arch=(x86_64)
-license=(GPL3)
+license=('GPL3')
 options=("!strip")
 
 depends=(fuse)
@@ -30,7 +30,7 @@ source=($pkgname-$pkgver::$url/releases/download/k$pkgver/$pkgver-appimage.tar.x
         icon256-$pkgver.png::$url/raw/k$pkgver/Telegram/Resources/art/icon256.png
         icon512-$pkgver.png::$url/raw/k$pkgver/Telegram/Resources/art/icon512.png)
 
-sha512sums=('febda3c775f5e0850e68b26af13c279592e35eaf2a3f09ff67bb71defd884f13cf6c1e21d794bd51415e5a7867fa372ad1fb1d0f5d0440cd809dfbb178c903e8'
+sha512sums=('4b898ff5144b9cd46170e53ef2ecb48cfc9630c60d2c058f449d3d55526bd6e2874a56c4cd0b8cba1f33855d825d8cf607b2ff517c287a1e7bcb1a27ea4ae85d'
             'e9f0d9174f43cf30b8dc982ce898f5330152cf4d8da03f6e99bd409f6caee7a93f05121d9acdac4ead0c0ef3dfc82ba597b670deac43fe17d08dc221e01e463a'
             '89bb399142ec968a1c9d96e7e3639036aa8d70968c89c6d2b77def5ea6cbb0d88de8b3c8bb10f457600cdd4c7926d7f8ff9907f511aaaac832b218c9353c4b50'
             'facff9860ebb15045e6c7fb6483317c2319bea8b256cbc0986a252863ccedd80e1cf1e4c81a259b303651b450371b1daaf9f61be26129296b71c58ed08644cf9'
