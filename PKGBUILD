@@ -2,13 +2,14 @@
 
 pkgname=mingw-w64-imath
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Imath is a basic, light-weight, and efficient C++ representation of 2D and 3D vectors and matrices and other simple but useful mathematical objects, functions and data types (mingw-w64)"
 url="https://github.com/AcademySoftwareFoundation/Imath"
 arch=(any)
 license=('BSD')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake' 'wine')
+checkdepends=('mingw-w64-wine')
 options=('staticlibs' '!buildflags' '!strip')
 source=("https://github.com/AcademySoftwareFoundation/Imath/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=("9cd984bb6b0a9572dd4a373b1fab60bc4c992a52ec5c68328fe0f48f194ba3c0")
