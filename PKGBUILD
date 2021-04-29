@@ -27,8 +27,8 @@ fi
 ##
 
 pkgname=brave
-pkgver=1.23.73
-pkgrel=2
+pkgver=1.23.75
+pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
 url='https://www.brave.com/download'
