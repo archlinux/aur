@@ -13,7 +13,7 @@ pkgbase = raxml-ng
 	makedepends = git
 	makedepends = gmp
 	depends = gcc-libs
-	source = git+https://github.com/amkozlov/raxml-ng.git#commit=411611611793e53c992717d869ca64370f2e4789
+	source = https://github.com/amkozlov/raxml-ng/releases/1.0.2/raxml-ng_v1.0.2_linux_x86_64_MPI.zip
 	sha256sums = SKIP
 
 pkgname = raxml-ng
