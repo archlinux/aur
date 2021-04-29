@@ -1,7 +1,7 @@
 # Maintainer: Gabby <28601 dash gabby at users dot noreply dot gitlab dot freedesktop dot org>
 pkgname=rollback-git
 pkgver=r2.da990ff
-pkgrel=1
+pkgrel=2
 pkgdesc='Script to rollback to snapper snapshot using the layout proposed in the snapper arch wiki page https://wiki.archlinux.org/index.php/Snapper#Suggested_filesystem_layout'
 arch=('any')
 license=('GPL3')
@@ -13,6 +13,7 @@ optdepends=('doas: Automatic priv escalation'
 makedepends=('git')
 provides=('rollback')
 conflicts=('rollback')
+backup=(etc/rollback.conf)
 source=(git+"https://gitlab.freedesktop.org/Gabby/rollback.git")
 md5sums=('SKIP')
 
