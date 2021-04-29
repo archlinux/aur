@@ -19,6 +19,12 @@ prepare() {
 
 package() {
     install -dm755 "${pkgdir}/usr/share/icons"
+    mkdir "${pkgdir}/usr/lib"
+    install -Dm755 "squashfs-root/libEGL.so" "${pkgdir}/usr/lib/libEGL.so"
+    install -Dm755 "squashfs-root/libffmpeg.so" "${pkgdir}/usr/lib/libffmpeg.so"
+    install -Dm755 "squashfs-root/libGLESv2.so" "${pkgdir}/usr/lib/libGLESv2.so"
+    install -Dm755 "squashfs-root/libvk_swiftshader.so" "${pkgdir}/usr/lib/libvk_swiftshader.so"
+    install -Dm755 "squashfs-root/libvulkan.so.1" "${pkgdir}/usr/lib/libvulkan.so.1"
     install -Dm755 "squashfs-root/raxmlgui" "${pkgdir}/usr/bin/raxmlgui"
     install -Dm644 ~/.cache/yay/raxmlgui/raxmlgui.desktop "${pkgdir}/usr/share/applications/raxmlGUI.desktop"
     cp -R "squashfs-root/usr/share/icons/hicolor" "${pkgdir}/usr/share/icons"
