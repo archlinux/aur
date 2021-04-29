@@ -1,42 +1,32 @@
+# Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: Felix Mauch <felix_mauch@web.de>
 
 pkgname=kdevelop-php-git
-pkgver=v4.90.91.r33.gd3b3852
+pkgver=v5.6.2.r3.gc967ed0
 pkgrel=1
-pkgdesc="PHP language plugin for KDevelop - Git build"
-arch=('i686' 'x86_64')
+pkgdesc="PHP language and documentation plugin for KDevelop"
+arch=(x86_64)
 url="http://www.kdevelop.org/"
-license=('GPL')
-groups=('kde' 'kdevelop-plugins')
-depends=('kdevplatform-git' 'kdevelop-git' 'php')
-makedepends=('cmake' 'automoc4' 'git' 'php')
-source=('git+git://anongit.kde.org/kdev-php.git')
-provides=('kdevelop-php')
-conflicts=('kdevelop-php')
-md5sums=('SKIP')
+license=(GPL)
+depends=(kdevelop)
+makedepends=(extra-cmake-modules kdoctools kdevelop-pg-qt git)
+source=("git+https://invent.kde.org/kdevelop/kdev-php.git#branch=5.6") # currently master branch fails
+provides=(kdevelop-php)
+conflicts=(kdevelop-php)
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/kdev-php"
-    git describe --long | sed -r 's/^foo-//;s/([^-]*-g)/r\1/;s/-/./g'
+  cd kdev-php
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$srcdir/kdev-php"
-
-    mkdir -p "$srcdir/kdev-php/build"
-    cd "$srcdir/kdev-php/build"
-
-    cmake ../ \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DLIB_INSTALL_DIR=lib \
-        -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-
-    make
+  cmake -B build -S kdev-php \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-    cd "$srcdir/kdev-php/build"
-
-    make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir" cmake --install build
 }
+
