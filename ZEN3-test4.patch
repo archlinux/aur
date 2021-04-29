@@ -1,0 +1,135 @@
+diff --git a/zenpower.c b/zenpower.c
+index e32bb2d..574248a 100644
+--- a/zenpower.c
++++ b/zenpower.c
+@@ -38,7 +38,11 @@
+ MODULE_DESCRIPTION("AMD ZEN family CPU Sensors Driver");
+ MODULE_AUTHOR("Ondrej Čerman");
+ MODULE_LICENSE("GPL");
+-MODULE_VERSION("0.1.12");
++MODULE_VERSION("0.1.12-ZEN3-test4");
++
++static bool zen1_calc;
++module_param(zen1_calc, bool, 0);
++MODULE_PARM_DESC(zen1_calc, "Set to 1 to use ZEN1 calculation");
+ 
+ 
+ #ifndef PCI_DEVICE_ID_AMD_17H_DF_F3
+@@ -61,6 +65,13 @@ MODULE_VERSION("0.1.12");
+ #define PCI_DEVICE_ID_AMD_17H_M70H_DF_F3    0x1443
+ #endif
+ 
++/* ZEN3 */
++#ifndef PCI_DEVICE_ID_AMD_19H_DF_F3
++#define PCI_DEVICE_ID_AMD_19H_DF_F3         0x1653
++#endif
++
++/* F17H_M01H_SVI, should be renamed to something generic I think... */
++
+ #define F17H_M01H_REPORTED_TEMP_CTRL        0x00059800
+ #define F17H_M01H_SVI                       0x0005A000
+ #define F17H_M01H_SVI_TEL_PLANE0            (F17H_M01H_SVI + 0xC)
+@@ -69,6 +80,13 @@ MODULE_VERSION("0.1.12");
+ #define F17H_M30H_SVI_TEL_PLANE1            (F17H_M01H_SVI + 0x10)
+ #define F17H_M70H_SVI_TEL_PLANE0            (F17H_M01H_SVI + 0x10)
+ #define F17H_M70H_SVI_TEL_PLANE1            (F17H_M01H_SVI + 0xC)
++/* ZEN3 SP3/TR */
++#define F19H_M01H_SVI_TEL_PLANE0            (F17H_M01H_SVI + 0x14)
++#define F19H_M01H_SVI_TEL_PLANE1            (F17H_M01H_SVI + 0x10)
++/* ZEN3 Ryzen desktop */
++#define F19H_M21H_SVI_TEL_PLANE0            (F17H_M01H_SVI + 0x10)
++#define F19H_M21H_SVI_TEL_PLANE1            (F17H_M01H_SVI + 0xC)
++
+ #define F17H_M70H_CCD_TEMP(x)               (0x00059954 + ((x) * 4))
+ 
+ #define F17H_TEMP_ADJUST_MASK               0x80000
+@@ -595,7 +613,13 @@ static int zenpower_probe(struct pci_dev *pdev, const struct pci_device_id *id)
+ 				break;
+ 
+ 			case 0x31: // Zen2 Threadripper/EPYC
+-				data->zen2 = true;
++				/* fixme: add helper for that */
++				if (!zen1_calc) {
++					data->zen2 = true;
++					dev_info(dev, "Using ZEN2 calculation formula.\n");
++				} else {
++					dev_info(dev, "Using ZEN1 calculation formula.\n");
++				}
+ 				data->amps_visible = true;
+ 				data->svi_core_addr = F17H_M30H_SVI_TEL_PLANE0;
+ 				data->svi_soc_addr = F17H_M30H_SVI_TEL_PLANE1;
+@@ -603,22 +627,60 @@ static int zenpower_probe(struct pci_dev *pdev, const struct pci_device_id *id)
+ 				break;
+ 
+ 			case 0x60: // Zen2 APU
+-				data->zen2 = true;
++				if (!zen1_calc) {
++					data->zen2 = true;
++					dev_info(dev, "Using ZEN2 calculation formula.\n");
++				} else {
++					dev_info(dev, "Using ZEN1 calculation formula.\n");
++				}
+ 				break;
+ 
+ 			case 0x71: // Zen2 Ryzen
+-				data->zen2 = true;
++				if (!zen1_calc) {
++					data->zen2 = true;
++					dev_info(dev, "Using ZEN2 calculation formula.\n");
++				} else {
++					dev_info(dev, "Using ZEN1 calculation formula.\n");
++				}
+ 				data->amps_visible = true;
+ 				data->svi_core_addr = F17H_M70H_SVI_TEL_PLANE0;
+ 				data->svi_soc_addr = F17H_M70H_SVI_TEL_PLANE1;
+ 				ccd_check = 8;
+ 				break;
+-
+-			default:
++		}
++	} else if (boot_cpu_data.x86 == 0x19) {
++			switch (boot_cpu_data.x86_model) {
++			case 0x0 ... 0x1: /* Zen3 SP3/TR */
++				if (!zen1_calc) {
++					/* The code need refactoring but calculation is the same
++					 * Is this per Server/Desktop/APU?. EG: each one has his own set of formula(s)?
++					*/
++					data->zen2 = true;
++					dev_info(dev, "Using ZEN2 calculation formula.\n");
++				} else {
++					dev_info(dev, "Using ZEN1 calculation formula.\n");
++				}
++				data->amps_visible = true;
++				data->svi_core_addr = F19H_M01H_SVI_TEL_PLANE0;
++				data->svi_soc_addr = F19H_M01H_SVI_TEL_PLANE1;
++				ccd_check = 8; /* max 64C, 8C per CCD = max 8 CCDs */
++				break;
++			case 0x21:       /* Zen3 Ryzen */
++				if (!zen1_calc) {
++					data->zen2 = true;
++					dev_info(dev, "using ZEN2 calculation formula.\n");
++				} else {
++					dev_info(dev, "using ZEN1 calculation formula.\n");
++				}
++				data->amps_visible = true;
++				data->svi_core_addr = F19H_M21H_SVI_TEL_PLANE0;
++				data->svi_soc_addr = F19H_M21H_SVI_TEL_PLANE1;
++				ccd_check = 2; /* max 16C, 8C per CCD = max 2 CCD's */
++				break;
++			}
++	} else {
+ 				data->svi_core_addr = F17H_M01H_SVI_TEL_PLANE0;
+ 				data->svi_soc_addr = F17H_M01H_SVI_TEL_PLANE1;
+-				break;
+-		}
+ 	}
+ 
+ 	for (i = 0; i < ccd_check; i++) {
+@@ -652,6 +714,7 @@ static const struct pci_device_id zenpower_id_table[] = {
+ 	{ PCI_VDEVICE(AMD, PCI_DEVICE_ID_AMD_17H_M30H_DF_F3) },
+ 	{ PCI_VDEVICE(AMD, PCI_DEVICE_ID_AMD_17H_M60H_DF_F3) },
+ 	{ PCI_VDEVICE(AMD, PCI_DEVICE_ID_AMD_17H_M70H_DF_F3) },
++	{ PCI_VDEVICE(AMD, PCI_DEVICE_ID_AMD_19H_DF_F3) },
+ 	{}
+ };
+ MODULE_DEVICE_TABLE(pci, zenpower_id_table);
