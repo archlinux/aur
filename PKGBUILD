@@ -10,7 +10,7 @@ license=('Apache')
 depends=(
 python
 opencascade-rc
-vtk9-fix
+vtk9-java
 )
 makedepends=(
 git
@@ -45,6 +45,9 @@ pkgver() {
 prepare(){
   cd OCP
   git submodule update --init --recursive
+
+  # opencascade is 7.5.2 not 7.5.1
+  sed 's,7.5.1,7.5.2,g' -i dump_symbols.py
   
   # don't use the opencascade headers packaged here
   # instead use the ones from the installed opencascade package
