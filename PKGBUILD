@@ -1,13 +1,13 @@
 # Maintainer: Derek Taylor (DistroTube) <derek@distrotube.com>
 pkgname=dmscripts-git
 _pkgname=dmscripts
-pkgver=1.0.r171.79c6922
+pkgver=1.0.r177.cec16c4
 pkgrel=1
 pkgdesc="A collection of dmenu scripts"
 arch=('any')
 url="https://gitlab.com/dwt1/dmscripts.git"
 license=('GPL3')
-depends=(dmenu findutils xclip xdotool xorg-xrandr zenity )
+depends=(dmenu ffmpeg findutils xclip xdotool xorg-xrandr )
 groups=()
 makedepends=()
 checkdepends=()
@@ -17,9 +17,9 @@ optdepends=(
   'maim: used by dmscrot'
   'mpc: used by dm-music'
   'mpd: used by dm-music'
-  'mpv: used by dmsounds'
   'qutebrowser: used by dmqute'
   'reddio: used by dmred'
+  'zenity: used by dmred'
   'slock: used by dmlogout'
   'sxiv: used by dmwall'
   'xwallpaper: used by dmwall'
