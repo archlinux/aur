@@ -2,7 +2,7 @@
 
 pkgname=adobe-source-han-serif-classic-fonts
 pkgver=1.001
-pkgrel=1
+pkgrel=6
 pkgdesc='Adobe Source Han Serif fonts with classic orthography.'
 arch=('any')
 url="https://github.com/redchenjs/source-han-serif-classic"
