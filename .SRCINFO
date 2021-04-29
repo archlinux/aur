@@ -1,0 +1,22 @@
+pkgbase = embeetle-ide
+	pkgdesc = A new IDE for microcontrollers, built from scratch
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://embeetle.com
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = qt5-svg
+	depends = qt5-tools
+	depends = qt5-sensors
+	depends = qt5-location
+	depends = qt5-x11extras
+	depends = qt5-multimedia
+	depends = qt5-webchannel
+	source = embeetle-ide-0.2.6::https://embeetle.com/downloads/linux/embeetle.tar.gz
+	source = LICENSE
+	sha256sums = 8a42d1429eae8500348ea79251b6da925a318081ed5f2360dd42fe28cd42eae6
+	sha256sums = d5353ae25be837afd2dbd385a5bc6dc580e007c786798795d045b4d799bebcf1
+
+pkgname = embeetle-ide
+
