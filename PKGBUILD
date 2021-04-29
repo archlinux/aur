@@ -21,9 +21,9 @@ package() {
 }
 
 depends=(
-'goldendict'
 )
 
 optdepends=(
+'goldendict'
 'stardict-tools'
 )
