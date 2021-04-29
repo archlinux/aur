@@ -3,7 +3,7 @@ pkgname="hornet-git"
 _pkgname="hornet"
 _branch="main"
 pkgver="1.0.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="HORNET is a powerful IOTA fullnode software"
 arch=('x86_64')
 url="https://github.com/gohornet/hornet"
@@ -21,7 +21,7 @@ build() {
 	cd ${srcdir}/hornet
 
         # Build with rocksdb
-	go build -tags=rocksdb
+	go build -tags=builtin_static,rocksdb
 
 }
 package() {
