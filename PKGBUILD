@@ -2,13 +2,13 @@ pkgname=roundcubemail-plugin-converse
 _pkgname=roundcube-converse.js-xmpp-plugin
 pkgver=0.8.3.0
 pkgrel=1
-pkgdesc=('XMPP plugin for Roundcube Webmail based on converse.js')
+pkgdesc='XMPP plugin for Roundcube Webmail based on converse.js'
 arch=('any')
-url="https://github.com/priyadi/${_pkgname}"
+url="https://github.com/devurandom/${_pkgname}"
 license=('MIT')
 depends=('roundcubemail')
 optdepends=()
-source=("git://github.com/priyadi/roundcube-converse.js-xmpp-plugin.git#tag=v${pkgver}")
+source=("git://github.com/devurandom/roundcube-converse.js-xmpp-plugin.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 makedepends=('git')
 backup=("etc/webapps/roundcubemail/plugins/converse/config.inc.php")
