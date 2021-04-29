@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=usql-bin
-pkgver=0.8.2
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Universal command-line interface for SQL databases"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=('!strip')
 provides=("${pkgname%-bin}")
 source=("${pkgname}-${pkgver}.tar.bz2::${url}/releases/download/v${pkgver}/usql-${pkgver}-linux-amd64.tar.bz2"
     'LICENSE::https://github.com/xo/usql/raw/master/LICENSE')
-sha256sums=('433615da5157ebd46a90d3ed5f932afae3c75f3b3015e99172e727b66917ca47'
+sha256sums=('b2c8f124406a50395dfb6b6064875a000a4199e43c523aad350976b451d39fb1'
     '1aae8f533b6341e4dd3c891cce64a321ec21f6ed1216c963eb9b6669f3c906bf')
 
 package() {
