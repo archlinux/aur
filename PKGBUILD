@@ -2,7 +2,7 @@
 # Github Contributor: ahmubashir <https://github.com/amubashir>
 
 pkgname=heroku-cli-bin
-pkgver=7.52.0
+pkgver=7.53.0
 pkgrel=1
 _builddir=cli-$pkgver-$pkgrel
 pkgdesc="CLI to Manage Heroku apps with forced auto-update removed. Packaged before release to save time and bandwidth."
@@ -13,8 +13,8 @@ depends=('nodejs')
 optdepends=('git: Deploying to Heroku')
 conflicts=('heroku-cli' 'heroku-client-standalone' 'heroku-toolbelt' 'ruby-heroku')
 source=("https://github.com/SampsonCrowley/heroku-cli-bin/raw/v$pkgver-$pkgrel/heroku-cli-bin-v$pkgver-$pkgrel.tar.xz")
-sha256sums=('e33cac9a260182e05a92f109955fcfc9d1e497d568cfe86c3063bdd9852964b8')
-sha512sums=('ee70862f4fd4f4d5795e70bc5e2fffd5b3f4adea181d543a07af05c63639611fc16d1e65d9c52c954a427a6a44b0dab6f0c7c807b80ca8ff237a75e6b3b7aea6')
+sha256sums=('c9c1f6a48e5168efe75e15f6e0cb98c21e7f25246eeb27b7fbe5197fe2742dd7')
+sha512sums=('21725c2c76683bf8cec82afcf9d2cf2c18c4a6553515f2324f5144a50500bfeeaf5c824457df769bbca41bd1728bc2e36151e47557768c282c46c6e04021392a')
 options=('!strip')
 provides=('heroku' 'heroku-cli')
 
