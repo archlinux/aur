@@ -15,5 +15,5 @@ package() {
 
   install -dm755 "$pkgdir/usr/share/fonts/adobe-source-han-sans"
   install -Dm644 *.otf "$pkgdir/usr/share/fonts/adobe-source-han-sans/"
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 ../LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
