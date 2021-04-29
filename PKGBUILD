@@ -1,8 +1,9 @@
-# Maintainer: Dmitri Goutnik <dg@syrec.org>
+# Maintainer: Sabu Siyad <ssiyad at disroot.org>
+# Contributor: Dmitri Goutnik <dg@syrec.org>
 # Contributor: Doron Behar <doron.behar@gmail.com>
 
 pkgname=2fa
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Two factor authentication agent"
 arch=('x86_64')

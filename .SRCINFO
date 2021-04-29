@@ -1,6 +1,6 @@
 pkgbase = 2fa
 	pkgdesc = Two factor authentication agent
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/rsc/2fa
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = 2fa
 	makedepends = go
 	conflicts = 2fa-git
 	replaces = 2fa-git
-	source = 2fa-1.1.0.tar.gz::https://github.com/rsc/2fa/archive/v1.1.0.tar.gz
+	source = 2fa-1.2.0.tar.gz::https://github.com/rsc/2fa/archive/v1.2.0.tar.gz
 	sha256sums = ecd5ba067d3e3bbc3f8c10fa2df01b1b388b1cd6503fb56381573d8d17497755
 
 pkgname = 2fa
