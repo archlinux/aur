@@ -1,12 +1,12 @@
 pkgbase = adobe-source-han-mono-classic-fonts
 	pkgdesc = Adobe Source Han Mono fonts with classic orthography.
 	pkgver = 1.002
-	pkgrel = 6
+	pkgrel = 1
 	url = https://github.com/redchenjs/source-han-mono-classic
 	arch = any
 	license = custom:OFL
-	source = https://github.com/redchenjs/source-han-mono-classic/archive/5888cdabc66f48976e7a9605aae91ed39cea27f8/source-han-mono-classic-5888cdabc66f48976e7a9605aae91ed39cea27f8.tar.gz
-	sha512sums = 438ed2426479979cd908734b4f7c5c56870cbbcec4365c6ecc9cb86b79a14a37ebacb1df7050fdbb8726a0c268b24fc0e4d60f6d56e9cccb9bd71c77f749abe9
+	source = 1.002.zip::https://github.com/redchenjs/source-han-mono-classic/releases/download/1.002/source-han-mono-classic-otf.zip
+	sha512sums = 95ac32419bb072b474755caee7424baf2ae5eec7a439ba7e4986cd0752e52192e5fcae2ade9c7fd508f68289d07e6d187f80178514f3ca97eea6e8d8dd4fe435
 
 pkgname = adobe-source-han-mono-classic-fonts
 
