@@ -2,7 +2,7 @@
 
 pkgname=ghidra-dev
 pkgbranch=debugger
-pkgver=9.2.3.r714.75f950880+debugger
+pkgver=9.2.4.r782.293c00bfc+debugger
 pkgrel=1
 pkgdesc='Software reverse engineering framework (git, current branch: debugger)'
 arch=('x86_64')
@@ -58,9 +58,9 @@ pkgver() {
 prepare() {
   cd "$pkgname2" || return
 
-  # PATCH - Attaching with GDB doesn't work - https://github.com/NationalSecurityAgency/ghidra/issues/2735
-  echo -e "${prefix}[PATCH] - Attaching with GDB doesn't work (https://github.com/NationalSecurityAgency/ghidra/issues/2735)"
-  patch --no-backup-if-mismatch --forward --strip=2 --input="${srcdir}/2735-attaching_with_gdb_doesnt_work.patch"
+  # DEPRECATED PATCH - Attaching with GDB doesn't work - https://github.com/NationalSecurityAgency/ghidra/issues/2735
+#  echo -e "${prefix}[PATCH] - Attaching with GDB doesn't work (https://github.com/NationalSecurityAgency/ghidra/issues/2735)"
+#  patch --no-backup-if-mismatch --forward --strip=2 --input="${srcdir}/2735-attaching_with_gdb_doesnt_work.patch"
 
   # DEPRECATED PATCH - Uninitialized attributes (ERROR Object GdbModelTargetSession ... is missing required attributes [_focus, _supported_attach_kinds])
 #  echo "  ==> [PATCH] - Uninitialized attributes"
