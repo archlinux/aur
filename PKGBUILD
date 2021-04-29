@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-openimageio
 pkgver=2.2.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for reading and writing images. (mingw-w64)"
 url="http://www.openimageio.org/"
 license=("BSD-3-Clause")
@@ -19,7 +19,7 @@ depends=(
 	"mingw-w64-pugixml"
 	"mingw-w64-fmt"
 	"mingw-w64-freetype2"
-	"mingw-w64-opencolorio"
+	"mingw-w64-opencolorio1"
 	"mingw-w64-opencv"
 	"mingw-w64-ffmpeg"
 	"mingw-w64-hdf5"
@@ -27,6 +27,7 @@ depends=(
 	"mingw-w64-libheif"
 )
 makedepends=("mingw-w64-cmake" "mingw-w64-robin-map")
+#checkdepends=('mingw-w64-wine' 'python')
 arch=("any")
 options=(!strip !buildflags staticlibs)
 optdepends=()
