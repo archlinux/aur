@@ -5,7 +5,7 @@ pkgbase = chinadns-ng-zfl9
 	url = https://github.com/zfl9/chinadns-ng
 	arch = x86_64
 	license = GPL3
-	source = _-latest::https://github.com/zfl9/chinadns-ng/archive/refs/tags/latest.tar.gz
+	source = chinadns-ng-latest::https://github.com/zfl9/chinadns-ng/archive/refs/tags/latest.tar.gz
 	sha512sums = SKIP
 
 pkgname = chinadns-ng-zfl9
