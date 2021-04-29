@@ -13,12 +13,10 @@ source=("git+${url}.git#commit=b63b4f315ca2f69b086257b95531b5be13a5fb20")
 md5sums=('SKIP')
 
 build() {
-  cd "${pkgname}"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -B build
-  make -C build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -B build -S "${pkgname}"
+  cmake --build build --config Release
 }
 
 package() {
-  cd "${pkgname}"
-  make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
+  DESTDIR="${pkgdir}" cmake --install build --config Release
 }
