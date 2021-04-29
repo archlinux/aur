@@ -1,6 +1,6 @@
 pkgbase = dmscripts-git
 	pkgdesc = A collection of dmenu scripts
-	pkgver = 1.0.r168.6bca243
+	pkgver = 1.0.r171.79c6922
 	pkgrel = 1
 	url = https://gitlab.com/dwt1/dmscripts.git
 	arch = any
@@ -16,6 +16,7 @@ pkgbase = dmscripts-git
 	optdepends = maim: used by dmscrot
 	optdepends = mpc: used by dm-music
 	optdepends = mpd: used by dm-music
+	optdepends = mpv: used by dmsounds
 	optdepends = qutebrowser: used by dmqute
 	optdepends = reddio: used by dmred
 	optdepends = slock: used by dmlogout

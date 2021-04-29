@@ -1,7 +1,7 @@
 # Maintainer: Derek Taylor (DistroTube) <derek@distrotube.com>
 pkgname=dmscripts-git
 _pkgname=dmscripts
-pkgver=1.0.r168.6bca243
+pkgver=1.0.r171.79c6922
 pkgrel=1
 pkgdesc="A collection of dmenu scripts"
 arch=('any')
@@ -17,6 +17,7 @@ optdepends=(
   'maim: used by dmscrot'
   'mpc: used by dm-music'
   'mpd: used by dm-music'
+  'mpv: used by dmsounds'
   'qutebrowser: used by dmqute'
   'reddio: used by dmred'
   'slock: used by dmlogout'
