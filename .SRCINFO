@@ -1,10 +1,14 @@
 pkgbase = python-semantic-release
 	pkgdesc = Automatic semantic versioning for Python projects
-	pkgver = 7.15.1
+	pkgver = 7.15.4
 	pkgrel = 1
 	url = https://github.com/relekang/python-semantic-release
 	arch = any
 	license = MIT
+	checkdepends = python-pytest-runner
+	checkdepends = python-mock
+	checkdepends = python-pytest-mock
+	checkdepends = python-responses
 	makedepends = python-setuptools
 	depends = python-click
 	depends = python-click-log
@@ -17,8 +21,8 @@ pkgbase = python-semantic-release
 	depends = python-gitlab
 	depends = python-tomlkit
 	depends = python-dotty-dict
-	source = python-semantic-release-7.15.1.tar.gz::https://github.com/relekang/python-semantic-release/archive/v7.15.1.tar.gz
-	b2sums = 45b1d3bec80cd6cd865015bc8c81049196432febc375c24021888527529c8a43da6b23bc87ba2f35e34f3e87a5002f9106b86252821291adb35ecabbe4226c82
+	source = python-semantic-release-7.15.4.tar.gz::https://github.com/relekang/python-semantic-release/archive/v7.15.4.tar.gz
+	b2sums = 9cf048b086f8c120c95121211c732d77116e2a63f5351038949470c35b7b10628ec940bcf658b4ad69ebb11c21301eb740e53a9e6cd1da93fb21e03f723848b7
 
 pkgname = python-semantic-release
 
