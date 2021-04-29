@@ -2,12 +2,12 @@
 
 pkgname=dewobble-git
 _pkgname=dewobble
-pkgver=0.0.1.r36.gf440216
+pkgver=0.0.1.r98.g1e15ad0
 pkgrel=1
 pkgdesc="Video stabilisation library with awareness of lens projections"
 url="https://git.sr.ht/~hedgepigdaniel/dewobble"
 arch=(x86_64)
-license=(LGPL)
+license=(GPL3)
 depends=(opencl-driver opencv gram-savitzky-golay)
 makedepends=(git meson opencl-clhpp)
 provides=(dewobble)
@@ -24,7 +24,7 @@ pkgver() {
 prepare() {
 	cd "$_pkgname"
 	if check_option debug y; then
-		BUILD_TYPE=debugoptimized
+		BUILD_TYPE=debug
 	else
 		BUILD_TYPE=plain
 	fi
