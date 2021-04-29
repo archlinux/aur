@@ -1,0 +1,19 @@
+linux-status on AUR
+===================
+
+There's a Vagrantfile to make maintenance easier.  To start, use `vagrant up`,
+then `vagrant ssh`.
+
+There're a bunch of useful one-liners in Makefile.
+
+  * Make the package:
+
+      make package
+
+  * Tag the last commit:
+
+      make tag
+
+  * Push to the AUR repository:
+
+      make push
