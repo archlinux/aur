@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=4.5.r101969.g6c65e49990
+pkgver=4.5.r102179.gab38a48c48
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
         'libiec61883' 'libilbc' 'jack' 'kvazaar' 'libmodplug' 'lame'
         'opencore-amr' 'openjpeg2' 'opus' 'libpulse' 'librabbitmq-c' 'rav1e' 'librsvg'
         'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh'
-        'svt-hevc' 'svt-av1' 'svt-vp9' 'tensorflow' 'tesseract' 'libtheora' 'twolame'
+        'svt-hevc' 'svt-av1' 'svt-vp9' 'tesseract' 'libtheora' 'twolame'
         'v4l-utils' 'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'libwebp' 'x264' 'x265'
         'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz'
         'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
@@ -35,23 +35,24 @@ makedepends=(
         'decklink-sdk'
 )
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
-          'libavutil.so' 'libpostproc.so' 'libavresample.so' 'libswscale.so'
-          'libswresample.so' 'ffmpeg' 'ffmpeg-full' 'ffmpeg-git')
+          'libavutil.so' 'libpostproc.so' 'libswscale.so' 'libswresample.so'
+          'ffmpeg' 'ffmpeg-full' 'ffmpeg-git')
 conflicts=('ffmpeg')
 _svt_hevc_ver='33ca9aa8a2a2d28022d3fc03704e99ce01828376'
+_svt_vp9_ver='34c8398e097cb775477b7576e9338f3cf51a5c63'
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
         '010-ffmpeg-fix-vmaf-model-path.patch'
         '015-ffmpeg-cuda11-fix.patch'
-        "020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
+        '020-ffmpeg-add-svt-hevc.patch'
         "030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
-        '040-ffmpeg-add-svt-vp9.patch'
+        "040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
         'LICENSE')
 sha256sums=('SKIP'
             '52778c70d9fe6e3a10941b99b96ac7749cec325dc1b9ee11ab75332b5ff68e50'
-            'e096996903d4e19348fabe9c61923678cbadf57299cd03809c9e06065d6ffbe2'
-            '740dc9838aa47daa9f9b107178e53e384344f4c6f90865bd7e3af189257da544'
+            'de0eeda63c2b0adf185e8c96e15872940cb8cfae5dd7590d593f56ef2c7db09d'
+            'e65cef16604e699e56041b1c76cca13ed6719525badd62d8f001b782d75f1917'
             '1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0'
-            'ab62715392cb1aee475a95bbe4d4205552fe23e5dd50b85ca7be72a8fcd9fbfe'
+            '5096f89ad10041a2013cfbf1224af3b7303d4c3295f1b225f7f3d0184027a635'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
@@ -59,9 +60,9 @@ prepare() {
     sed -i 's/general.texi/general_contents.texi/g' "030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-fix-vmaf-model-path.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/015-ffmpeg-cuda11-fix.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-svt-vp9.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
 }
 
 pkgver() {
@@ -76,7 +77,7 @@ build() {
     
     ./configure \
         --prefix='/usr' \
-        --extra-cflags='-I/opt/cuda/include -I/usr/include/tensorflow' \
+        --extra-cflags='-I/opt/cuda/include' \
         --extra-ldflags='-L/opt/cuda/lib64' \
         --enable-lto \
         \
@@ -88,7 +89,6 @@ build() {
         --disable-static \
         --disable-stripping \
         --enable-gray \
-        --enable-avresample \
         \
         --enable-alsa \
         --enable-avisynth \
@@ -152,7 +152,7 @@ build() {
         --enable-libssh \
         --enable-libsvthevc \
         --enable-libsvtav1 \
-        --enable-libtensorflow \
+        --disable-libtensorflow \
         --enable-libtesseract \
         --enable-libtheora \
         --disable-libtls \
