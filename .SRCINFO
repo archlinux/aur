@@ -1,7 +1,7 @@
 pkgbase = rtl8761usb-dkms
 	pkgdesc = Realtek bluetooth modules for RTL8761 usb based devices (DKMS)
 	pkgver = 20201202
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xmpow.com/pages/download
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = rtl8761usb-dkms
 	source = dkms.conf
 	md5sums = 994ad1d6f6bd1e63190dfef7f64bbb34
 	md5sums = 70d0ec0c62293d5c64e0bf148300c998
-	md5sums = 6af1c381da425c2932e00331db576ced
+	md5sums = 5a5426f2a32be28f0ed00f2cb79731a9
 
 pkgname = rtl8761usb-dkms
 
