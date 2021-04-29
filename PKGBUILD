@@ -14,19 +14,11 @@ provides=(bgfx)
 source=('git://github.com/bkaradzic/bx.git'
         'git://github.com/bkaradzic/bimg.git'
         'git://github.com/bkaradzic/bgfx.git'
-        'git://github.com/bkaradzic/bgfx.cmake.git'
-        '0001-cmake-turn-on-CMAKE_POSITION_INDEPENDENT_CODE-for-sh.patch'
-        '0002-bimg-specify-visibility-of-linked-libs.patch'
-        '0003-install-if-generating-shared-only-install-bgfx.patch'
-        '0004-bgfx-make-bx-and-bimg-private.patch') # https://github.com/widberg/bgfx.cmake/pull/100
+        'git://github.com/bkaradzic/bgfx.cmake.git')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'eaf8ef931488b41614125459bee028659d082637922c0475400cb68438b78eed'
-            '20d6949f9a5d95bd0f21c51a99baca8b84163462b42a5472c2b237ee915993cc'
-            '471c2f61b071246bd653623e5939aa2874aac7b006af6907459b1a3c23dc1952'
-            '294df452d039824ac8280af6089918ac09a5feafd3bc1821e125e602cca073fa')
+            'SKIP')
 
 pkgver() {
   cd "${srcdir}/bgfx"
@@ -41,11 +33,6 @@ prepare() {
   git config --file=.gitmodules submodule.bgfx.url $srcdir/bgfx
   git submodule sync
   git submodule update --init
-
-  patch --binary -p1 -i $srcdir/0001-cmake-turn-on-CMAKE_POSITION_INDEPENDENT_CODE-for-sh.patch
-  patch --binary -p1 -i $srcdir/0002-bimg-specify-visibility-of-linked-libs.patch
-  patch --binary -p1 -i $srcdir/0003-install-if-generating-shared-only-install-bgfx.patch
-  patch --binary -p1 -i $srcdir/0004-bgfx-make-bx-and-bimg-private.patch
 
   # prepend bgfx to bin names to avoid naming conflicts
   for BIN in geometryc geometryv shaderc texturec texturev
