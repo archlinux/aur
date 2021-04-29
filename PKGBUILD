@@ -1,11 +1,12 @@
 # Maintainer:   Anton Kudelin <kudelin at protonmail dot com>
+# Maintainer:   chn <g897331845@gmail.com>
 # Contributor:  Ross Whitfield <whitfieldre@ornl.gov>
 # Contributor:  Brian Lam <blamm9[at]gmail[dot]com>
 # Contributor:  AG_Caesar <caesar[at]drachenhain[dot]net>
 # Contributor:  Jan Oliver Oelerich <janoliver[at]oelerich[dot]org>
 
 pkgname=ovito
-pkgver=3.3.4
+pkgver=3.4.4
 pkgrel=1
 pkgdesc="Open Visualization Tool"
 url="http://www.ovito.org"
@@ -14,8 +15,12 @@ license=('GPL')
 depends=('fftw' 'python' 'netcdf' 'ffmpeg' 'qt5-base')
 makedepends=('cmake' 'boost' 'qscintilla-qt5' 'qt5-svg' 'libxslt' 'git')
 conflicts=("$pkgname-git")
-source=("https://gitlab.com/stuko/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.bz2")
-sha256sums=('3ba11673e3dc4f82e4bac4df22df5069975f6383661e2c51628f47040b9aab76')
+source=("https://gitlab.com/stuko/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.bz2"
+    "https://www.ovito.org/wp-content/uploads/logo_rgb-768x737.png"
+    "ovito.desktop")
+sha256sums=('6d2c6f1fdc0d5022156d1a172264d822fca0e9ed5ea8aed80315497360fd123d'
+            '14e98851e5de9bee0c8dabd035a83450895c476c1ad9e9898e2bf0c68261e9f2'
+            '09b16de717b1b4140678d17958dcee2ea96ff5ae3a1c75f3168a0ad17f62f4ea')
 
 prepare() {
   mkdir -p "$srcdir/build"
@@ -33,4 +38,8 @@ build() {
 package() {
   cd "$srcdir/build"
   make DESTDIR="$pkgdir" install
+  mkdir -p "${pkgdir}/usr/share/pixmaps/"
+  install -m 644 "${srcdir}/logo_rgb-768x737.png" "${pkgdir}/usr/share/pixmaps/ovito.png"
+  mkdir -p "${pkgdir}/usr/share/applications/"
+  install -m 644 "${srcdir}/ovito.desktop" "${pkgdir}/usr/share/applications/"
 }

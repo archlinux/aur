@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=OVITO
+Comment=Open Visualization Tool
+Exec=ovito
+Icon=ovito
+Terminal=false
+StartupNotify=false
+Categories=Education;Science;Mathematics;
