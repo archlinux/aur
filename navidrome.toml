@@ -1,0 +1,6 @@
+MusicFolder = "/var/lib/Music"
+#LastFM.ApiKey = ""
+#LastFM.Secret = ""
+#Spotify.ID = ""
+#Spotify.Secret = ""
+#DevActivityPanel = false

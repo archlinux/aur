@@ -16,8 +16,13 @@ pkgbase = navidrome-git
 	depends = ffmpeg
 	provides = navidrome
 	conflicts = navidrome
+	conflicts = navidrome-systemd
 	source = navidrome-git::git+https://github.com/deluan/navidrome.git
+	source = navidrome.service
+	source = navidrome.toml
 	sha256sums = SKIP
+	sha256sums = f35e82317c2e5c87577337d64347c4e5baf12e24e0a7544bbc171c9b37cdfdd4
+	sha256sums = 6e2ef6b6b734abbbae0422bdb4e79f79169962fd9c595d19492612eecf75f579
 
 pkgname = navidrome-git
 

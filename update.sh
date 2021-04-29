@@ -13,7 +13,7 @@ if [[ $# == 1 ]]; then
 fi
 
 printf '' > PKGBUILD
-echo "# Maintainer: thelostpolaris <thelostpolaris [at] gmail [dot] com>
+echo "# Maintainer: lostpolaris <me [at] lostpolaris [dot] com>
 
 pkgbase='${AUR_NAME}'
 pkgname=(${AUR_NAME})
@@ -24,10 +24,14 @@ url='${URL}'
 license=('${LICENSE}')
 arch=(x86_64 armv6h armv7h aarch64)
 provides=('${EXECUTABLE_NAME}')
-conflicts=('${EXECUTABLE_NAME}')
+conflicts=('${EXECUTABLE_NAME}' '${EXECUTABLE_NAME}-systemd')
+backup=('var/lib/${EXECUTABLE_NAME}/${EXECUTABLE_NAME}.toml')
 makedepends=('go' 'git' 'npm' 'taglib' 'nodejs-lts-fermium')
 depends=('ffmpeg')
-source=('${AUR_NAME}::git+https://github.com/deluan/navidrome.git')
+source=('${AUR_NAME}::git+https://github.com/deluan/navidrome.git'
+        'navidrome.service'
+        'navidrome.toml'
+       )
 sha256sums=('SKIP')
 
 pkgver() {
@@ -44,10 +48,15 @@ build() {
 }
 
 package() {
-  install -Dm755 \"\${srcdir}/\${pkgname}/navidrome\" \"\$pkgdir/usr/bin/${EXECUTABLE_NAME}\"
+  install -d -o navidrome -g navidrome \"\${pkgdir}/usr/bin/${EXECUTABLE_NAME}\"
+  install -d -o navidrome -g navidrome \"\${pkgdir}/var/lib/${EXECUTABLE_NAME}\"
+  install -Dm 755 \"\${srcdir}/\${pkgname}/navidrome\" \"\$pkgdir/usr/bin/${EXECUTABLE_NAME}\"
+  install -Dm 644 \"\${srcdir}/navidrome.service\" -t \"\${pkgdir}/usr/lib/systemd/system\"
+  install -Dm 644 \"\${srcdir}/navidrome.toml\" -t \"\${pkgdir}/var/lib/${EXECUTABLE_NAME}\"
 }
 " >> PKGBUILD
 
+updpkgsums
 makepkg --printsrcinfo > .SRCINFO
 
 # Test
