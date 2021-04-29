@@ -1,7 +1,7 @@
 # Maintainer: Giovanni Harting <539@idlegandalf.com>
 
 pkgname=pyfan
-pkgver=1.5.1
+pkgver=1.6
 pkgrel=1
 pkgdesc="Fan control utilising hwmon and pid"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-yaml' 'python-simple-pid')
 optdepends=('lm_sensors: check and load required hwmon modules')
 backup=('etc/pyfan')
 source=("https://git.harting.dev/anonfunc/PyFan/archive/$pkgver.tar.gz")
-b2sums=('73c6c83aa19922f20fc56bbde339e4d99f8fee585c52fe57a2e92e50cab5c7e9f20b52fd5446f19c68617673e5b68cefa418aae609c63b37d227a869e35760ee')
+b2sums=('858866a2c9b4598eef0b717de491d7c66e799c8d77d461cb7d379d21733c772899d118d2f1a51db4809a7462d0eb45c871c09d05dec9c311ca0b5c70708f1c74')
 
 package() {
   cd "$pkgname"
