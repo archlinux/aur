@@ -19,7 +19,7 @@ if [[ $# == 2 ]]; then
 fi
 
 printf '' > PKGBUILD
-echo "# Maintainer: Sitansh Rajput <thelostpolaris [at] gmail [dot] com>
+echo "# Maintainer: Sitansh Rajput <me [at] lostpolaris [dot] com>
 
 pkgbase='${AUR_NAME}'
 pkgname=(${AUR_NAME})
@@ -30,12 +30,25 @@ url='${URL}'
 license=('${LICENSE}')
 arch=(x86_64 armv6h armv7h aarch64)
 provides=('${EXECUTABLE_NAME}')
-conflicts=('${EXECUTABLE_NAME}')
+conflicts=('${EXECUTABLE_NAME}' '${EXECUTABLE_NAME}-systemd')
+backup=('var/lib/${EXECUTABLE_NAME}/${EXECUTABLE_NAME}.toml')
 depends=('glibc' 'ffmpeg')
-source_x86_64=('https://github.com/navidrome/navidrome/releases/download/v$1/navidrome_$1_Linux_x86_64.tar.gz')
-source_armv6h=('https://github.com/navidrome/navidrome/releases/download/v$1/navidrome_$1_Linux_armv6.tar.gz')
-source_armv7h=('https://github.com/navidrome/navidrome/releases/download/v$1/navidrome_$1_Linux_armv7.tar.gz')
-source_aarch64=('https://github.com/navidrome/navidrome/releases/download/v$1/navidrome_$1_Linux_arm64.tar.gz')
+source_x86_64=('https://github.com/navidrome/navidrome/releases/download/v$1/navidrome_$1_Linux_x86_64.tar.gz'
+               'navidrome.service'
+               'navidrome.toml'
+              )
+source_armv6h=('https://github.com/navidrome/navidrome/releases/download/v$1/navidrome_$1_Linux_armv6.tar.gz'
+               'navidrome.service'
+               'navidrome.toml'
+              )
+source_armv7h=('https://github.com/navidrome/navidrome/releases/download/v$1/navidrome_$1_Linux_armv7.tar.gz'
+               'navidrome.service'
+               'navidrome.toml'
+              )
+source_aarch64=('https://github.com/navidrome/navidrome/releases/download/v$1/navidrome_$1_Linux_arm64.tar.gz'
+                'navidrome.service'
+                'navidrome.toml'
+              )
 md5sums=()
 md5sums_x86_64=()
 md5sums_armv6h=()
@@ -43,7 +56,11 @@ md5sums_armv7h=()
 md5sums_aarch64=()
 
 package() {
-  install -Dm755 \"\$srcdir/navidrome\" \"\$pkgdir/usr/bin/${EXECUTABLE_NAME}\"
+  install -d -o navidrome -g navidrome \"\${pkgdir}/usr/bin/${EXECUTABLE_NAME}\"
+  install -d -o navidrome -g navidrome \"\${pkgdir}/var/lib/${EXECUTABLE_NAME}\"
+  install -Dm 755 \"\${srcdir}/navidrome\" \"\${pkgdir}/usr/bin/${EXECUTABLE_NAME}\"
+  install -Dm 644 \"\${srcdir}/navidrome.service\" -t \"\${pkgdir}/usr/lib/systemd/system\"
+  install -Dm 644 \"\${srcdir}/navidrome.toml\" -t \"\${pkgdir}/var/lib/${EXECUTABLE_NAME}\"
 }
 " >> PKGBUILD
 
