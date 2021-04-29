@@ -18,7 +18,7 @@ prepare() {
 }
 
 package() {
-  install -Dm755 "${srcdir}/raxmlGUI-${pkgver}.AppImage" "${pkgdir}/opt/appimages/raxmlGUI.AppImage"
+  install -Dm755 ~/.cache/yay/raxmlgui/raxmlGUI-${pkgver}.AppImage "${pkgdir}/opt/appimages/raxmlGUI.AppImage"
   install -dm755 "${pkgdir}/usr/share/"
   mkdir "${pkgdir}/usr/share/applications/" 
   cp ~/.cache/yay/raxmlgui/raxmlgui.desktop "${pkgdir}/usr/share/applications/" 
