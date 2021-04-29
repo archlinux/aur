@@ -1,9 +1,9 @@
 # Maintainer: Benjamin Landis <bmlandis2010@gmail.com>
 
 pkgname=mpv-vapoursynth-git
-pkgver=r1.8121d958
+pkgver=r2.0d38459
 pkgrel=1
-pkgdesc='a free, open source, and cross-platform media player (with Vapoursynth libs)'
+pkgdesc='A free, open source, and cross-platform media player (with Vapoursynth libs)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
 url='https://mpv.io/'

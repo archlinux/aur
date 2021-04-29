@@ -1,6 +1,6 @@
 pkgbase = mpv-vapoursynth-git
-	pkgdesc = a free, open source, and cross-platform media player (with Vapoursynth libs)
-	pkgver = r1.8121d958
+	pkgdesc = A free, open source, and cross-platform media player (with Vapoursynth libs)
+	pkgver = r2.0d38459
 	pkgrel = 1
 	url = https://mpv.io/
 	arch = i686
