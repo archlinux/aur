@@ -1,0 +1,17 @@
+pkgbase = nowpm-git
+	pkgdesc = the no-bullshit wpm utility
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/jnats/nowpm
+	arch = any
+	license = custom:beerware
+	depends = coreutils
+	depends = grep
+	depends = sed
+	depends = bash
+	provides = nowpm
+	source = nowpm::git+https://github.com/jnats/nowpm.git
+	md5sums = SKIP
+
+pkgname = nowpm-git
+
