@@ -1,7 +1,7 @@
 # Maintainer: Digimezzo <raphael@digimezzo.com>
 _pkgname=Knowte
 pkgname=knowte
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="A note taking application that allows you to quickly and easily organize and find your notes"
 arch=('x86_64')
@@ -16,7 +16,7 @@ backup=()
 options=(!strip)
 source=("${_pkgname}-${pkgver}.AppImage::https://github.com/digimezzo/${pkgname}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver}.AppImage"
 	"${pkgname}.desktop")
-sha256sums=('42ad20564149cfbaf2ff1c3a8feca4e5fc493d824644dd2a4b028ea5964515ec'
+sha256sums=('83900c5ba2c03c9750b6d46af8b68eb546c7f5b10e94b5fa9911f1800eb7b5e4'
 		'2e0022cf360af289e0fecb677ecd629759299f9e845e628bfb10eda88201f154')
 
 prepare() {
