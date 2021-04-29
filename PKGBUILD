@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=albion-online-launcher-bin
-pkgver=1.0.34.283
+pkgver=1.16
 pkgrel=2
 pkgdesc="The first true cross-platform Sandbox MMO -- launcher client"
 url="https://albiononline.com/"
@@ -10,11 +10,11 @@ license=('custom')
 makedepends=('chrpath')
 depends=('libgl' 'qt5-webengine' 'sndio' 'xdelta3' 'ttf-font')
 optdepends=(albion-online-live-game-data-bin albion-online-staging-game-data-bin)
-source=("https://live.albiononline.com/autoupdate/launcher-linux-setup-${pkgver}"
+source=("https://live.albiononline.com/clients/20210419110001/albion-online-setup"
 	"albion-online-launcher.desktop")
 install=albion-online-launcher-bin.install
 options=(!strip docs libtool emptydirs !zipman staticlibs)
-sha256sums=('71c894984f13872880d57a68a222f11e6809ef1b095f72539123f4ac1eef4280'
+sha256sums=('e220437b7a943769af42196ed23df2e6652b147f2eb78f6ad8f60a0c0028b078'
             '60d094ded1087eb304acbe59564778ac4fe540977ab69996820ac823b143aee1')
 
 prepare() {
@@ -40,12 +40,11 @@ prepare() {
 package() {
   mkdir -p "${pkgdir}/opt"
   cp -a "${srcdir}/data" "${pkgdir}/opt/${pkgname}"
+  chmod 777 $pkgdir/opt
 
   mkdir "${pkgdir}/opt/${pkgname}/staging_x64"
   chmod 775 "${pkgdir}/opt/${pkgname}/staging_x64"
 
-  mkdir "${pkgdir}/opt/${pkgname}/game_x64"
-  chmod 775 "${pkgdir}/opt/${pkgname}/game_x64"
 
   chmod 775 "${pkgdir}/opt/${pkgname}/launcher"
 
