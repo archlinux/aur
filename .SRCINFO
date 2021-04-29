@@ -1,0 +1,13 @@
+pkgbase = nofetch-git
+	pkgdesc = the simple man's fetch tool
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/jnats/nofetch
+	arch = any
+	license = GPL
+	provides = nofetch
+	source = nofetch::git+https://github.com/jnats/nofetch.git
+	md5sums = SKIP
+
+pkgname = nofetch-git
+
