@@ -16,16 +16,17 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
-  cd "${pkgname%-git}"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -B build
-  make -C build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -B build -S "${pkgname%-git}"
+  cmake --build build
 }
 
 package() {
-  cd "${pkgname%-git}"
-  make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
+  DESTDIR="${pkgdir}" cmake --install build
 }
