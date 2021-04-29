@@ -1,10 +1,11 @@
 pkgbase = mingw-w64-openexr
 	pkgdesc = An high dynamic-range image file format library (mingw-w64)
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openexr.com/
 	arch = any
 	license = BSD
+	checkdepends = mingw-w64-wine
 	makedepends = mingw-w64-cmake
 	makedepends = wine
 	depends = mingw-w64-crt
