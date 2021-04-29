@@ -1,0 +1,14 @@
+pkgbase = vim-dim
+	pkgdesc = Default IMproved -- An improvement of Vim's default colorscheme
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/jeffkreeftmeijer/vim-dim
+	arch = any
+	groups = vim-plugins
+	license = unknown
+	depends = vim-plugin-runtime
+	source = vim-dim-1.1.0.tar.gz::https://github.com/jeffkreeftmeijer/vim-dim/archive/refs/tags/1.1.0.tar.gz
+	sha256sums = c135506f1300f8738ba79cad8c35d963ede9f8e82ba64ec7305a7a53a0691a97
+
+pkgname = vim-dim
+
