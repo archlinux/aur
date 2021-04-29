@@ -43,9 +43,7 @@ sha256sums=('76d247566298b20ee7b328f03e5ac87bc125947f5671ccae53f3fc5d0cc12c30')
 package() {
 	tar -p -zxvf data.tar.gz -C "${pkgdir}"
 	chmod 755 -R ../pkg/${pkgname}/usr
-	
-	# namcap does not like local
 	cp -r ../pkg/${pkgname}/usr/local/* ../pkg/${pkgname}/usr/
 	rm -r ../pkg/${pkgname}/usr/local
-	
+	mv zotero-beta.desktop "${pkgdir}/usr/share/applications" 
 }
