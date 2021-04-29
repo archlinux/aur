@@ -4,14 +4,14 @@ pkgname=q-dns-git
 pkgdesc='A tiny command line DNS client with support for UDP, DoT, DoH, and DoQ.'
 arch=(x86_64)
 url='https://github.com/natesales/q'
-pkgrel=4
+pkgrel=1
 license=('GPL-3.0')
 makedepends=('go' 'git')
 source=('git+https://github.com/natesales/q')
 md5sums=('SKIP')
 provides=($pkgname)
 conflicts=($pkgname)
-pkgver=0.1.1.r1.gfe236bd
+pkgver=0.3.2.r3.gc11d592
 
 pkgver() {
     cd 'q'
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd 'q'
-  go build -o q main.go
+  go build
 }
 
 package() {
