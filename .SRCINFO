@@ -1,7 +1,7 @@
 pkgbase = frameworks
 	pkgdesc = Stop-motion animation frame capture software primarily for Linux.
 	pkgver = 0.3.7
-	pkgrel = 3
+	pkgrel = 4
 	url = http://frameworks.polycrystal.org/
 	arch = i686
 	arch = x86_64
