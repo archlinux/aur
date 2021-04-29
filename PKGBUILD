@@ -1,7 +1,7 @@
-# Maintainer: Ryozuki <ryo@ryozuki.xyz>
+# Maintainer: Edgar Luque <git@edgarluque.com>
 pkgname=digital
-pkgver=0.25
-pkgrel=2
+pkgver=0.27
+pkgrel=1
 pkgdesc="A digital logic designer and circuit simulator."
 arch=('x86_64')
 url="https://github.com/hneemann/Digital"
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('java-runtime')
 source=("$pkgname-$pkgver.zip::https://github.com/hneemann/Digital/releases/download/v${pkgver}/Digital.zip"
     "digital.desktop")
-sha256sums=("855670949e09443fa550e0c82230f8c2b42c8e6dbdc7e0b4914fbc412a6555c1"
+sha256sums=("a93b9dd70ed5b051bf04aacc37f2794c3c3d17f214ab99f0c8f4a36e55bbe835"
     "cec54a264aa24c5116521d0846b88da4e6a032ce85f484782d5ad222c024e29c")
 
 prepare() {
