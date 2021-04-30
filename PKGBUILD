@@ -3,18 +3,18 @@
 
 _basename=openexr
 pkgname=lib32-openexr
-pkgver=2.5.4
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="An high dynamic-range image file format library (32-bit)"
 url="https://www.openexr.com/"
 arch=('x86_64')
 license=('BSD')
-depends=('lib32-gcc-libs' 'lib32-zlib' 'openexr')
-makedepends=('cmake' 'lib32-freeglut')
+depends=('lib32-gcc-libs' 'lib32-imath' 'lib32-zlib' 'openexr')
+makedepends=('cmake')
 conflicts=('lib32-ilmbase')
 replaces=('lib32-ilmbase')
 source=($_basename-$pkgver.tar.gz::"https://github.com/openexr/openexr/archive/v$pkgver.tar.gz")
-sha256sums=('dba19e9c6720c6f64fbc8b9d1867eaa75da6438109b941eefdc75ed141b6576d')
+sha256sums=('6d14a8df938bbbd55dd6e55b24c527fe9323fe6a45f704e56967dfbf477cecc1')
 
 build() {
     export CC='gcc -m32'
@@ -23,8 +23,8 @@ build() {
 
     cmake -B build -S $_basename-$pkgver \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_LIBDIR=lib32 \
-        -DPYILMBASE_ENABLE=false \
         -DOPENEXR_BUILD_UTILS=false
 
     cmake --build build
