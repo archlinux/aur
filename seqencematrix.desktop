@@ -1,10 +1,10 @@
 [Desktop Entry]
 Categories=
 Encoding=UTF-8
-Exec=java -Xmx8G -jar SequenceMatrix.jar
+Exec=java -jar /usr/bin/SeqenceMatrix.jar
 GenericName=
 GenericName[zh]=
-Icon=/home/guoyi/AppLogo/java.png
+Icon=java15-openjdk
 MimeType=
 Name=SequenceMatrix
 Name[zh]=SequenceMatrix
