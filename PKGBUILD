@@ -3,7 +3,7 @@
 
 _pkgname="sfizz"
 pkgname="${_pkgname}-git"
-pkgver=r3599.5da137a8
+pkgver=r3668.528ca22a
 pkgrel=1
 pkgdesc="SFZ library and LV2 plugin"
 url="https://sfz.tools/sfizz"
@@ -12,6 +12,7 @@ license=('custom:BSD-2-Clause' 'custom:ISC')
 makedepends=('git' 'cmake')
 depends=('jack' 'libx11' 'libxcb' 'xcb-util' 'xcb-util-cursor' 'xcb-util-keysyms'
         'libxkbcommon' 'libxkbcommon-x11' 'fontconfig' 'cairo' 'freetype2' 'pango' 'zenity')
+optdepends=('pd: sfizz external for puredata')
 provides=("${_pkgname}" "lib${_pkgname}.so")
 conflicts=("${_pkgname}")
 source=("$pkgname"::"git+https://github.com/sfztools/sfizz#branch=develop")
@@ -27,7 +28,14 @@ prepare() {
 build() {
     mkdir -p build
     cd build
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr" "${srcdir}/${pkgname}"
+    cmake \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_INSTALL_PREFIX="/usr" \
+      -DSFIZZ_JACK=ON \
+      -DSFIZZ_LV2=ON \
+      -DSFIZZ_VST=ON \
+      -DSFIZZ_PUREDATA=ON \
+      "${srcdir}/${pkgname}"
     cmake --build . --target all
 }
 package() {
