@@ -6,7 +6,6 @@ pkgdesc='A self-hosted, security-centric and composable Kubernetes distribution 
 arch=(x86_64)
 url='https://kinvolk.io/lokomotive-kubernetes/'
 _url='https://github.com/kinvolk/lokomotive'
-_branch='master'
 pkgver=0.7.0
 pkgrel=1
 license=('APACHE')
