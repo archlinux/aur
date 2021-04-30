@@ -1,0 +1,80 @@
+From 1608c3d8be9ec4be18e89e265bbce36aa3cc7e26 Mon Sep 17 00:00:00 2001
+From: Anthony Wang <ta180m@gmail.com>
+Date: Fri, 30 Apr 2021 11:31:43 -0500
+Subject: [PATCH] Fix code for compatibility with 2021 Boost
+
+---
+ src/core/filesystem/filesystem.cpp | 6 +++---
+ src/overworld/world_manager.cpp    | 2 +-
+ src/video/video.cpp                | 4 ++--
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/src/core/filesystem/filesystem.cpp b/src/core/filesystem/filesystem.cpp
+index 5f80e26..0805cc6 100644
+--- a/src/core/filesystem/filesystem.cpp
++++ b/src/core/filesystem/filesystem.cpp
+@@ -64,7 +64,7 @@ bool File_Exists( const std::string &filename )
+ 
+ bool Dir_Exists( const std::string &dir )
+ {
+-	return fs::exists( fs::path( dir, fs::native ) );
++	return fs::exists( fs::path{dir} );
+ 
+ 	/*struct stat file_info;
+ 
+@@ -89,7 +89,7 @@ bool Delete_File( const std::string &filename )
+ 
+ bool Create_Directory( const std::string &dir )
+ {
+-	return fs::create_directory( fs::path( dir, fs::native ) );
++	return fs::create_directory( fs::path{dir} );
+ }
+ 
+ size_t Get_File_Size( const std::string &filename )
+@@ -130,7 +130,7 @@ vector<std::string> Get_Directory_Files( const std::string &dir, const std::stri
+ {
+ 	vector<std::string> valid_files;
+ 
+-	fs::path full_path( dir, fs::native );
++	fs::path full_path{dir};
+ 	fs::directory_iterator end_iter;
+ 
+ 	// load all available objects
+diff --git a/src/overworld/world_manager.cpp b/src/overworld/world_manager.cpp
+index 4b440f5..601c9b5 100644
+--- a/src/overworld/world_manager.cpp
++++ b/src/overworld/world_manager.cpp
+@@ -111,7 +111,7 @@ void cOverworld_Manager :: Load( void )
+ void cOverworld_Manager :: Load_Dir( const std::string &dir, bool user_dir /* = 0 */ ) 
+ {
+ 	// set world directory
+-	fs::path full_path( dir, fs::native );
++	fs::path full_path{dir};
+ 	fs::directory_iterator end_iter;
+ 
+ 	for( fs::directory_iterator dir_itr( full_path ); dir_itr != end_iter; ++dir_itr )
+diff --git a/src/video/video.cpp b/src/video/video.cpp
+index 667a8ef..6ca6e58 100644
+--- a/src/video/video.cpp
++++ b/src/video/video.cpp
+@@ -747,7 +747,7 @@ void cVideo :: Init_Image_Cache( bool recreate /* = 0 */, bool draw_gui /* = 0 *
+ 		{
+ 			try
+ 			{
+-				fs::remove_all( fs::path( m_imgcache_dir, fs::native ) );
++				fs::remove_all( fs::path{m_imgcache_dir} );
+ 			}
+ 			// could happen if a file is locked or we have no write rights
+ 			catch( const std::exception &ex )
+@@ -769,7 +769,7 @@ void cVideo :: Init_Image_Cache( bool recreate /* = 0 */, bool draw_gui /* = 0 *
+ 	// no cache available
+ 	if( !Dir_Exists( imgcache_dir_active ) )
+ 	{
+-		fs::create_directories( fs::path( imgcache_dir_active + "/" GAME_PIXMAPS_DIR, fs::native ) );
++		fs::create_directories( fs::path{imgcache_dir_active + "/" GAME_PIXMAPS_DIR} );
+ 	}
+ 	// cache available
+ 	else
+-- 
+2.31.1
+
