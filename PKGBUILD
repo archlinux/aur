@@ -5,12 +5,12 @@
 
 # Maintainer: Emiel Kollof <emiel@kollof.nl>
 pkgname=dwm-ekollof-git
-pkgver=6.2.r25.054e184
-pkgrel=2
+pkgver=6.2.r50.6fcf1b0
+pkgrel=1
 epoch=
 pkgdesc="Emiel Kollof's personal patched build of dwm."
 arch=(x86_64)
-url="https://git.hackerheaven.org/ekollof/dwm-ekollof-new.git"
+url="https://git.hackerheaven.org/ekollof/dwm-ekollof.git"
 license=('MIT')
 groups=()
 depends=(nerd-fonts-iosevka ttf-twemoji-color ttf-joypixels dbus libxft-bgra dunst)
@@ -30,17 +30,17 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-    cd "dwm-ekollof-new"
+    cd "dwm-ekollof"
     printf "6.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "dwm-ekollof-new"
+	cd "dwm-ekollof"
 	make > /dev/null
 }
 
 package() {
-	cd "dwm-ekollof-new"
+	cd "dwm-ekollof"
 	make DESTDIR="$pkgdir/" install
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
