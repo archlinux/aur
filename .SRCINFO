@@ -1,6 +1,6 @@
 pkgbase = deepin-qt5integration-git
 	pkgdesc = Qt platform theme integration plugins for DDE
-	pkgver = 5.1.11.r8.gc27d4fe
+	pkgver = 5.1.11.r9.g12edc12
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/qt5integration
 	arch = x86_64
