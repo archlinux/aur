@@ -1,12 +1,12 @@
 pkgbase = icewm-extra-themes
 	pkgdesc = Extra themes for IceWM (too large to include in IceWM distribution)
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/bbidulock/icewm-extra-themes
 	arch = any
 	license = GPL
 	makedepends = markdown
-	depends = icewm2
+	depends = icewm>=2.3
 	provides = icewm-themes
 	conflicts = icewm-themes
 	replaces = icewm-themes
