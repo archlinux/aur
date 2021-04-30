@@ -9,8 +9,8 @@ url="https://github.com/cycloidio/$pkgname"
 license=('MIT')
 source_x86_64=("https://github.com/cycloidio/$pkgname/releases/download/v$pkgver/$pkgname-linux-amd64.tar.gz")
 source_i386=("https://github.com/cycloidio/$pkgname/releases/download/v$pkgver/$pkgname-linux-386.tar.gz")
-sha256sums_i386=('a572921bf786f438d2a20919c9fbb6b62f7ddb29cc0fac598776c4c73d215f7b')
-sha256sums_x86_64=('ee4ff0e0552db90f582e0e5a0b236dafb58b3d3d47992900eb58a2226e98a3d5')
+sha256sums_i386=('c368349d75867d9f184be2f030e5442f0145b683005062b61bb54bb90a36d3e5')
+sha256sums_x86_64=('9550fb5efa23187c3539bd1171407cb8de7c78cc92aff4d0e80f1e0cdb85f368')
 
 package() {
 	case $CARCH in
