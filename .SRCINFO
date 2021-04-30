@@ -7,6 +7,7 @@ pkgbase = gord-bin
 	license = BSD
 	depends = glibc
 	provides = gord
+	conflicts = gord-git
 	source = https://github.com/cainy-a/gord/releases/download/2021-04-19/gord_2021-04-19_linux_amd64.tar.gz
 	md5sums = a4efc7323336332a0185c6297d9c2d8a
 

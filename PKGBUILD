@@ -14,6 +14,7 @@ _tarname="${_pkgname}_${_pkgver}_linux_amd64"
 source=("https://github.com/cainy-a/$_pkgname/releases/download/${_pkgver}/$_tarname.tar.gz")
 md5sums=('a4efc7323336332a0185c6297d9c2d8a')
 provides=('gord')
+conflicts=('gord-git')
 depends=('glibc')
 arch=('x86_64')
 
