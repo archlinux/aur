@@ -1,12 +1,12 @@
 pkgbase = isa-l
 	pkgdesc = A collection of optimized low-level functions targeting storage applications
-	pkgver = 2.28.0
+	pkgver = 2.30.0
 	pkgrel = 1
 	url = https://github.com/intel/isa-l
 	arch = x86_64
 	license = BSD
 	makedepends = nasm
-	source = https://github.com/intel/isa-l/archive/v2.28.0.tar.gz
+	source = https://github.com/intel/isa-l/archive/v2.30.0.tar.gz
 	sha1sums = 3e8db24c27adebf40ba8c5344358bef48a27d6b2
 
 pkgname = isa-l
