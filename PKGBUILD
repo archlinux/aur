@@ -13,23 +13,22 @@ url='https://www.beebeep.net/'
 license=('GPL3')
 depends=('qt5-multimedia' 'qt5-x11extras')
 source=("https://downloads.sourceforge.net/$pkgname/$pkgname-code-$pkgver.zip"
-        'beebeep.appdata.xml')
+        'install-target.patch')
 sha256sums=('43e65a9d5249385fde782907d0cc3e26d6dd435bb623bcc0f93499055988f04c'
-            '05c6add5d33f4e429b213f25d46053611f838fdd709c593af211133c96788ca7')
+            '35f28432630bd9cf7ca3d99e33454cafe6e8127ef9d0935071f587ddb062269d')
+ 
+prepare() {
+  cd $pkgname-code-r*
+  patch -Np0 -i ../install-target.patch
+}
  
 build() {
   cd $pkgname-code-r*
-  qmake-qt5
+  qmake-qt5 PREFIX=/usr
   make
 }
  
 package(){
   cd $pkgname-code-r*
-  install -Dm755 test/beebeep "$pkgdir/usr/bin/beebeep"
-  install -Dm644 test/lib*.so -t "$pkgdir/usr/lib/beebeep/"
-  install -Dm644 locale/beebeep_*.qm -t "$pkgdir/usr/share/beebeep/"
-  install -Dm644 src/images/beebeep.png "$pkgdir/usr/share/beebeep/beebeep.png"
-  install -Dm644 misc/beep.wav "$pkgdir/usr/share/beebeep/beep.wav"
-  install -Dm644 scripts/debian_amd64/$pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 ../beebeep.appdata.xml "$pkgdir/usr/share/metainfo/$pkgname.appdata.xml"
+  make INSTALL_ROOT="$pkgdir" install
 }

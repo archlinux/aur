@@ -1,0 +1,124 @@
+Index: beebeep.pri
+===================================================================
+--- beebeep.pri	(revision 1502)
++++ beebeep.pri	(working copy)
+@@ -21,4 +21,28 @@
+   UI_DIR = $$OBJECTS_DIR
+   MOC_DIR = $$OBJECTS_DIR
+   RCC_DIR = $$OBJECTS_DIR
++
++  isEmpty(PREFIX) {
++    PREFIX = /usr/local
++  }
++  isEmpty(BINDIR) {
++    BINDIR = $$PREFIX/bin
++  }
++  isEmpty(DATADIR) {
++    DATADIR = $$PREFIX/share
++  }
++  isEmpty(PLUGINDIR) {
++    PLUGINDIR = $$PREFIX/lib/beebeep
++  }
++
++  data.files = locale/*.qm src/images/beebeep.png misc/beep.wav
++  data.path = $$DATADIR/beebeep/
++
++  desktop.files = scripts/debian_amd64/beebeep.desktop
++  desktop.path = $$DATADIR/applications/
++
++  appdata.files = scripts/debian_amd64/beebeep.appdata.xml
++  appdata.path = $$DATADIR/metainfo/
++
++  INSTALLS += data desktop appdata
+ }
+Index: plugins/lifegame/lifegame.pro
+===================================================================
+--- plugins/lifegame/lifegame.pro	(revision 1502)
++++ plugins/lifegame/lifegame.pro	(working copy)
+@@ -21,3 +21,8 @@
+ 
+ FORMS += \
+     GuiLife.ui
++
++unix:!macx:!android: {
++  target.path = $$PLUGINDIR
++  INSTALLS += target
++}
+Index: plugins/numbertextmarker/numbertextmarker.pro
+===================================================================
+--- plugins/numbertextmarker/numbertextmarker.pro	(revision 1502)
++++ plugins/numbertextmarker/numbertextmarker.pro	(working copy)
+@@ -17,3 +17,8 @@
+ 
+ RESOURCES += \
+     numbertextmarker.qrc
++
++unix:!macx:!android: {
++  target.path = $$PLUGINDIR
++  INSTALLS += target
++}
+Index: plugins/rainbowtextmarker/rainbowtextmarker.pro
+===================================================================
+--- plugins/rainbowtextmarker/rainbowtextmarker.pro	(revision 1502)
++++ plugins/rainbowtextmarker/rainbowtextmarker.pro	(working copy)
+@@ -17,3 +17,8 @@
+ 
+ RESOURCES += \
+     rainbowtextmarker.qrc
++
++unix:!macx:!android: {
++  target.path = $$PLUGINDIR
++  INSTALLS += target
++}
+Index: plugins/regularboldtextmarker/regularboldtextmarker.pro
+===================================================================
+--- plugins/regularboldtextmarker/regularboldtextmarker.pro	(revision 1502)
++++ plugins/regularboldtextmarker/regularboldtextmarker.pro	(working copy)
+@@ -17,3 +17,8 @@
+ 
+ RESOURCES += \
+     regularboldtextmarker.qrc
++
++unix:!macx:!android: {
++  target.path = $$PLUGINDIR
++  INSTALLS += target
++}
+Index: scripts/debian_amd64/beebeep.appdata.xml
+===================================================================
+--- scripts/debian_amd64/beebeep.appdata.xml	(nonexistent)
++++ scripts/debian_amd64/beebeep.appdata.xml	(working copy)
+@@ -0,0 +1,21 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<component type="desktop-application">
++  <id>net.beebeep.BeeBEEP</id>
++  <launchable type="desktop-id">beebeep.desktop</launchable>
++  <name>BeeBEEP</name>
++  <summary>Free office messenger</summary>
++  <metadata_license>CC0-1.0</metadata_license>
++  <project_license>GPL-3.0</project_license>
++  <developer_name>Marco Mastroddi</developer_name>
++  <description>
++    <p>This office messaging application, BeeBEEP, does not need an external server to let users communicate with each other. In your office, in your laboratory, at school, at home, in the hospital or in any other activity having the need for security and privacy, BeeBEEP is the best way to keep your private messages safe.</p>
++  </description>
++  <screenshots>
++    <screenshot type="default">
++      <image>https://www.beebeep.net/images/shots/beebeep_in_action_windows.png</image>
++    </screenshot>
++  </screenshots>
++  <url type="bugtracker">https://sourceforge.net/p/beebeep/tickets/</url>
++  <url type="homepage">https://www.beebeep.net/</url>
++  <update_contact>marco.mastroddi@gmail.com</update_contact>
++</component>
+Index: src/src.pro
+===================================================================
+--- src/src.pro	(revision 1502)
++++ src/src.pro	(working copy)
+@@ -125,3 +125,8 @@
+ message( Object dir: $$OBJECTS_DIR )
+ unix: message( CXX flags: $$QMAKE_CXXFLAGS )
+ message( QT Plugins: $$QTPLUGIN )
++
++unix:!macx:!android: {
++  target.path = $$BINDIR
++  INSTALLS += target
++}
