@@ -1,8 +1,8 @@
 pkgbase = qemu-git
 	pkgdesc = A generic and open source machine emulator and virtualizer. Git version.
-	pkgver = 6.0.0.rc5.r0.g0cef06d187
+	pkgver = 6.0.0.r1.gccdf06c1db
 	pkgrel = 1
-	epoch = 12
+	epoch = 13
 	url = http://wiki.qemu.org/
 	arch = i686
 	arch = x86_64
@@ -43,6 +43,7 @@ pkgbase = qemu-git
 	depends = liburing
 	depends = ndctl
 	depends = dtc
+	depends = fuse3
 	source = git://git.qemu.org/qemu.git
 	source = qemu-guest-agent.service
 	source = 65-kvm.rules
@@ -80,6 +81,7 @@ pkgname = qemu-headless-git
 	depends = liburing
 	depends = ndctl
 	depends = dtc
+	depends = fuse3
 	optdepends = qemu-headless-arch-extra-git: extra architectures support
 	conflicts = qemu-headless
 
