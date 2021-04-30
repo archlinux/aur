@@ -1,5 +1,6 @@
+# Maintainer: Andrew Whatson <https://aur.archlinux.org/account/flatwhatson>
 # Maintainer: ZenTauro <zentauro at riseup dot net>
-# Maintainer: Ruben De Smet <ruben dot de dot smet at glycos dot org>
+# Contributor: Ruben De Smet <ruben dot de dot smet at glycos dot org>
 # Contributor: Jashandeep Sohi <jashandeep.s.sohi@gmail.com>
 
 _gccmajor="10.2.0"
@@ -56,6 +57,8 @@ build() {
  cd "$srcdir/$pkgname-build"
 
  CPPFLAGS="$CPPFLAGS -O2"
+ CFLAGS=${CFLAGS/-Werror=format-security/}
+ CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
  ../$_gccsrc/configure \
   --prefix="/usr" \
