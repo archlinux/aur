@@ -24,5 +24,5 @@ prepare() {
 package() {
     cd nullfsvfs
     install -Dm644 debian/nullfsvfs.dkms "$pkgdir/usr/src/nullfs-$pkgver/dkms.conf"
-    install -Dm644 {Makefile,nullfs.c} -t "$pkgdir/usr/src/nullfs-$pkgver"
+    install -Dm644 Makefile nullfs.c -t "$pkgdir/usr/src/nullfs-$pkgver"
 }
