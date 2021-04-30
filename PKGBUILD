@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc='Source Han & Noto CJK Mega/Ultra OTCs'
 arch=('any')
 url='https://github.com/adobe-fonts/source-han-super-otc'
-license=('OFL')
+license=('custom:OFL')
 source=("${pkgname}-${pkgver}-${pkgrel}-SourceHanNotoCJK.ttc::https://github.com/adobe-fonts/source-han-super-otc/releases/download/${pkgver}/SourceHanNotoCJK.ttc"
         "${pkgname}-${pkgver}-${pkgrel}-LICENSE.md::https://github.com/adobe-fonts/source-han-super-otc/raw/${pkgver}/LICENSE.md")
 sha256sums=('128edf85c23a4fabd6f169977b535ce4b10b7a66e80147676e33d2f3d66fbb98'
