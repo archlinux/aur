@@ -2,7 +2,7 @@
 
 pkgname=system76-power
 pkgver=1.1.16
-pkgrel=2
+pkgrel=3
 pkgdesc="System76 Power Management"
 arch=('any')
 url="https://github.com/pop-os/system76-power"
@@ -10,13 +10,14 @@ license=('GPL')
 install="${pkgname}.install"
 depends=(
 'dbus'
-'systemd'
 'libusb'
+'polkit'
+'systemd'
 )
 optdepends=(
-'system76-dkms: some systems might need these drivers'
-'system76-io-dkms'
-'system76-acpi-dkms'
+'system76-acpi-dkms: some systems might need this driver'
+'system76-dkms: some systems might need this driver'
+'system76-io-dkms: some systems might need this driver'
 )
 makedepends=('rust')
 source=(
@@ -52,5 +53,6 @@ package() {
   install -Dm644 debian/system76-power.service "${pkgdir}/usr/lib/systemd/system/system76-power.service"
 
   # Install scripts and configuration
-  install -Dm755 data/system76-power.conf "${pkgdir}/usr/share/dbus-1/system.d/system76-power.conf"
+  install -Dm644 data/system76-power.conf "${pkgdir}/usr/share/dbus-1/system.d/system76-power.conf"
+  install -Dm644 data/com.system76.powerdaemon.policy "${pkgdir}/usr/share/polkit-1/actions/com.system76.powerdaemon.policy"
 }
