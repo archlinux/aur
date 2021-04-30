@@ -8,7 +8,7 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
          python-buildbot-www python-buildbot-waterfall-view
          python-buildbot-console-view python-buildbot-grid-view
          python-buildbot-wsgi-dashboards python-buildbot-badges)
-pkgver=3.1.0
+pkgver=3.1.1
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
 pkgrel=1
 arch=(any)
@@ -29,7 +29,7 @@ source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbo
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
         "subunit-tests.diff"
         "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch")
-sha256sums=('3def7d2a771bf958c55cb22ec0d1cc70952ff4918a9d978140b0e81636435c24'
+sha256sums=('ffa127b06f375908c7882c246402171d461eb92f4036023282328c0ed53f0db3'
             'SKIP'
             'SKIP'
             'cd66bf65e45fa0a5916a6e0201dcebc4db001e4f47da856afbffc58a04356d55'
@@ -116,10 +116,10 @@ check() {
   export PATH="$PATH:$srcdir/tmp_install"
 
   cd "$srcdir"/buildbot-$pkgver/master
-  TZ=UTC trial --reporter=summary --rterrors buildbot
+  TZ=UTC trial --rterrors buildbot
 
   cd "$srcdir"/buildbot-$pkgver/worker
-  PYTHONPATH=. trial --reporter=summary buildbot_worker
+  PYTHONPATH=. trial buildbot_worker
 
   for module in base waterfall_view console_view grid_view wsgi_dashboards
   do
