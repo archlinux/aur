@@ -6,12 +6,13 @@
 pkgname=bin32-lightscribe
 _realname=lightscribe
 pkgver=1.18.27.10
-pkgrel=4
+pkgrel=5
 pkgdesc="LightScribe Host Software for Linux"
 arch=('x86_64')
 url="http://www.lightscribe.com/downloadsection/linux/index.aspx?id=1372"
 license=('custom')
-source=(http://www.pawtec.com/lightscribe_files/Linux/LSS/$_realname-$pkgver-linux-2.6-intel.rpm)
+# source=(http://www.pawtec.com/lightscribe_files/Linux/LSS/$_realname-$pkgver-linux-2.6-intel.rpm)
+source=(http://web.archive.org/web/20200404105932/http://www.pawtec.com/lightscribe_files/Linux/LSS/lightscribe-1.18.27.10-linux-2.6-intel.rpm)
 sha256sums=('069703c3b5a572191f53697fcccb83504bb1c2405382d02d952fe5d4f12f2643')
 
 package() {
