@@ -1,0 +1,17 @@
+pkgbase = dnsmasq-domainlist-v2ray
+	pkgdesc = dnsmasq domain list converted from v2ray domain-list-community
+	pkgver = 210430
+	pkgrel = 1
+	url = https://github.com/v2fly/domain-list-community
+	arch = any
+	license = MIT
+	makedepends = gcc
+	makedepends = fmt
+	depends = dnsmasq-regex
+	source = git+https://github.com/v2fly/domain-list-community.git#commit=a5a42dcac50301cf4f505e0ef7837cf31b2e64df
+	source = convert.cpp
+	md5sums = SKIP
+	md5sums = 33b96dd5dacad8944327069baad629b5
+
+pkgname = dnsmasq-domainlist-v2ray
+
