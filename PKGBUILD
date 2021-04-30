@@ -1,8 +1,8 @@
 # Maintainer: Leo <i@setuid0.dev>
 
 pkgname=roadrunner
-pkgver=2.0.4
-pkgrel=4
+pkgver=2.1.1
+pkgrel=1
 pkgdesc="High-performance PHP application server, load-balancer and process manager written in Golang"
 arch=(x86_64)
 url="https://roadrunner.dev/"
@@ -16,8 +16,8 @@ source=(
 	".rr.yaml.sample-minimal"
 )
 sha256sums=(
-	"2625a698a7a6f2ada05ca1333066923eca1cf1503ceb1e045138adb2d12561cf"
-	"14ab387b378fd7909f5dc6e8be22442ca14fb5353ae1ef55ab70dea0381a5fd3"
+	"7ffdff13d854e41ff48a1a64b037d98138fae5b0c8705c952f8f433e6eb80d77"
+	"8d2dd324ea27bffb30f86a0192ae50ff2bd1150836d6bd4689486b8cd9b64f06"
 	SKIP
 	SKIP
 )
@@ -25,6 +25,8 @@ options=("!buildflags")
 
 prepare() {
 	export GOPATH="$srcdir"/gopath
+
+	cd "$srcdir/$pkgname-$pkgver"
 
 	cd "$srcdir/$pkgname-binary-$pkgver"
 	go mod edit -replace "github.com/spiral/roadrunner/v2=../roadrunner-$pkgver"

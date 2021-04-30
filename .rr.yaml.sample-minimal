@@ -1,11 +1,13 @@
 rpc:
-	listen: tcp://127.0.0.1:6001
+  listen: tcp://127.0.0.1:6001
 
 server:
-	command: "php worker.php"
+  command: "php tests/psr-worker-bench.php"
 
 http:
-	address: "0.0.0.0:8080"
+  address: "0.0.0.0:8080"
+  pool:
+    num_workers: 4
 
 logs:
-	level: error
+  level: error
