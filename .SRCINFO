@@ -1,6 +1,6 @@
 pkgbase = heb12-cli-git
 	pkgdesc = Bible command line interface reader.
-	pkgver = 0.1.0.r32.g9f1a743
+	pkgver = 0.1.2.r12.gee269fd
 	pkgrel = 1
 	url = https://heb12.com/
 	arch = x86_64

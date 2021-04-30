@@ -1,6 +1,6 @@
 # Maintainer: Elijah Gregg <lovetocode999@ctrl-c.club>
 pkgname=heb12-cli-git
-pkgver=0.1.0.r32.g9f1a743
+pkgver=0.1.2.r12.gee269fd
 pkgrel=1
 pkgdesc="Bible command line interface reader."
 arch=("x86_64")
@@ -22,17 +22,13 @@ pkgver() {
 prepare() {
     cd "$srcdir/cli"
 
-    touch option.h
-    echo "char *defaultIndex = \"/usr/share/heb12/bibles/web.i\";" >> option.h
-    echo "char *defaultReference = \"Ps 139 14\";" >> option.h
-
     git submodule --quiet update --init --recursive
 }
 
 build() {
     cd "$srcdir/cli"
 
-    gcc biblec/biblec.c fbrp/fbrp.c app.c -o heb12
+    make
 }
 
 package() {
