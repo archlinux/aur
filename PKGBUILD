@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('dtkwidget-git' 'deepin-account-faces' 'libpwquality' 'startdde-git'
          'deepin-daemon-git' 'startdde-git' 'networkmanager-qt'
          'deepin-qt-dbus-factory-git' 'deepin-network-utils-git')
-makedepends=('git' 'cmake' 'ninja' 'qt5-tools' 'qt5-base' 'qt5-x11extras' 'qt5-multimedia' 'qt5-svg' 'dtkcore-git' 'dtkwidget-git' 'dtkgui-git' 'networkmanager-qt' 'deepin-network-utils-git' 'deepin-qt-dbus-factory-git' 'gtest' 'gmock' 'polkit-qt5')
+makedepends=('git' 'cmake' 'ninja' 'qt5-tools' 'qt5-base' 'qt5-x11extras' 'qt5-multimedia' 'qt5-svg' 'dtkcore-git' 'dtkwidget-git' 'dtkgui-git' 'networkmanager-qt' 'deepin-network-utils-git' 'deepin-qt-dbus-factory-git' 'gtest' 'gmock' 'polkit-qt5' 'deepin-pw-check')
 optdepends=('redshift: automatic color temperature support'
             'networkmanager-openconnect: for OpenConnect support'
             'networkmanager-openvpn: for OpenVPN support'
