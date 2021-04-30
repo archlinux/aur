@@ -5,7 +5,7 @@
 # Contributor: Lucien Immink <l.immink@student.fnt.hvu.nl>
 
 pkgname=('pidgin' 'libpurple' 'finch')
-pkgver=2.14.3
+pkgver=2.14.4
 pkgrel=1
 arch=('x86_64')
 url="https://pidgin.im/"
@@ -16,7 +16,7 @@ makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
              'libgnt' 'libxcrypt')
 options=('!emptydirs')
 source=(https://downloads.sourceforge.net/project/pidgin/Pidgin/$pkgver/$pkgname-$pkgver.tar.bz2{,.asc})
-sha256sums=('2b064802fdfec008878f7179120ccf1e67c68b46ec0966399a095e20bc762e76'
+sha256sums=('67c1a0104b0624a50100c6d73cd5504d53c9d221922b1b28fa86020531a9904e'
             'SKIP')
 validpgpkeys=('40DE1DC7288FE3F50AB938C548F66AFFD9BDB729') # Gary Kramlich <grim@reaperworld.com>
 
@@ -31,6 +31,7 @@ build() {
     --prefix=/usr \
     --sysconfdir=/etc \
     --disable-schemas-install \
+    --disable-gevolution \
     --disable-meanwhile \
     --disable-gnutls \
     --enable-cyrus-sasl \
