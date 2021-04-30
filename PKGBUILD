@@ -2,12 +2,12 @@
 # Maintainer: Alastair Pharo  asppsa at gmail dot com
 
 pkgname=pure-reduce-git
-pkgver=r5862.7f1c857d
+pkgver=r5928.fc71134b
 pkgrel=1
 pkgdesc="Computer Algebra with Pure: A Reduce Interface"
 arch=("i686" "x86_64")
 license=('BSD' 'LGPL')
-url="http://purelang.bitbucket.org/"
+url="https://agraef.github.io/pure-lang/"
 depends=('pure')
 makedepends=('git')
 provides=('pure-reduce')
