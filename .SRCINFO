@@ -1,7 +1,7 @@
 pkgbase = pam-oauth2
 	pkgdesc = OAuth2 pam module
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CyberDem0n/pam-oauth2
 	arch = x86_64
 	license = MIT

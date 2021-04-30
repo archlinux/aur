@@ -3,7 +3,7 @@
 pkgname=pam-oauth2
 pkgver=1.0.1
 _jsmnver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OAuth2 pam module"
 arch=(x86_64)
 url="https://github.com/CyberDem0n/$pkgname"
@@ -18,6 +18,7 @@ prepare() {
 	cd "$pkgname-$pkgver"
 	rm -rf .gitmodules jsmn
 	ln -sf ../jsmn-$_jsmnver jsmn
+	sed -i -e '/^LIBDIR=/,/^PAM_DIR=/d' Makefile
 }
 
 build() {
@@ -27,5 +28,5 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir/" PAM_DIR="/usr/lib/security" install
 }
