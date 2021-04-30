@@ -2,11 +2,11 @@
 # Maintainer: Albert Graef <aggraef at gmail.com>
 
 pkgname=pure-docs-git
-pkgver=r91.8aafd20
+pkgver=r99.7393a3b
 pkgrel=1
 pkgdesc="Pure Language and Library Documentation, latest snapshot"
 arch=('any')
-url="http://purelang.bitbucket.org/"
+url="https://agraef.github.io/pure-lang/"
 license=('FDL')
 provides=('pure-docs')
 conflicts=('pure-docs')
