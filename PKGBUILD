@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phosh
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="A pure Wayland shell prototype for GNOME on mobile devices"
 url="https://source.puri.sm/Librem5/phosh"
@@ -11,6 +11,7 @@ depends=(
 	feedbackd
 	libhandy
 	phoc
+	libwlroots.so=7
 )
 makedepends=(
 	ctags
@@ -37,7 +38,7 @@ prepare() {
 }
 
 build() {
-	arch-meson phosh build
+	arch-meson phosh build -D gtk_doc=true
 	meson compile -C build
 }
 
