@@ -1,0 +1,19 @@
+pkgbase = music-lounge
+	pkgdesc = Yet another music player
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/aercloud-systems/music-lounge
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	makedepends = gzip
+	depends = ncurses
+	depends = gcc-libs
+	depends = glibc
+	depends = sqlite
+	source = https://gitlab.com/aercloud-systems/music-lounge/-/archive/0.1.0/music-lounge-0.1.0.zip
+	md5sums = SKIP
+
+pkgname = music-lounge
+
