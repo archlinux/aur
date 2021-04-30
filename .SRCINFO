@@ -1,14 +1,12 @@
-pkgbase = kubectl-kudo-bin
-	pkgdesc = Kubernetes Universal Declarative Operator (KUDO)
-	pkgver = 0.19.0
+pkgbase = kubectl-konfig
+	pkgdesc = konfig helps to merge, split or import kubeconfig files
+	pkgver = 0.2.5
 	pkgrel = 0
-	url = https://github.com/kudobuilder/kudo
+	url = https://github.com/corneliusweig/konfig
 	arch = x86_64
 	license = APACHE
-	conflicts = kudo
-	conflicts = kudo-git
-	source = kudo-0.19.0.tar.gz::https://github.com/kudobuilder/kudo/releases/download/v0.19.0/kudo_0.19.0_linux_x86_64.tar.gz
-	sha512sums = 2c21050c660ed84bb2b176ae09805c9d6aff94bece30c97f769d46bc31ac6cf67a3b294ecd7d6cbf538a5a0c3805f4b0cec14633f876697dd20bf7f05104ee3e
+	source = konfig-0.2.5.tar.gz::https://github.com/corneliusweig/konfig/archive/refs/tags/v0.2.5.tar.gz
+	sha512sums = 4d7bcf87970d62864a084d23640fd942eb08280e141e399f883f521da47ea06dad87a4cb357f69b9fe4fd3ba4d6152159cfefb3e273389530f98c6604cbbaa6a
 
-pkgname = kubectl-kudo-bin
+pkgname = kubectl-konfig
 

@@ -1,19 +1,18 @@
 # Maintainer Chris Werner Rau <aur@cwrau.io>
 
-_pkgname=kudo
-pkgname=kubectl-$_pkgname-bin
-pkgver=0.19.0
+_pkgname=konfig
+pkgname=kubectl-$_pkgname
+pkgver=0.2.5
 pkgrel=0
-pkgdesc="Kubernetes Universal Declarative Operator (KUDO)"
-url="https://github.com/kudobuilder/$_pkgname"
+pkgdesc="konfig helps to merge, split or import kubeconfig files"
+url="https://github.com/corneliusweig/$_pkgname"
 license=('APACHE')
 arch=('x86_64')
-source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${_pkgname}_${pkgver}_linux_x86_64.tar.gz")
-sha512sums=('2c21050c660ed84bb2b176ae09805c9d6aff94bece30c97f769d46bc31ac6cf67a3b294ecd7d6cbf538a5a0c3805f4b0cec14633f876697dd20bf7f05104ee3e')
-conflicts=("$_pkgname" "${_pkgname}-git")
+source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha512sums=('4d7bcf87970d62864a084d23640fd942eb08280e141e399f883f521da47ea06dad87a4cb357f69b9fe4fd3ba4d6152159cfefb3e273389530f98c6604cbbaa6a')
 
 package() {
-  install -D -m 0755 $srcdir/kubectl-$_pkgname $pkgdir/usr/bin/kubectl-$_pkgname
+  install -D -m 0755 $srcdir/$_pkgname-$pkgver/$_pkgname $pkgdir/usr/bin/kubectl-$_pkgname
 }
 
 #vim: syntax=sh
