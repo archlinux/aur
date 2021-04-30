@@ -1,7 +1,7 @@
 # Original Maintainer: Jonatan Bravo <zephrax@gmail.com>
 # Maintainer: Hendrik "T4cC0re" Meyer <aur@t4cc0.re>
 pkgname=tfenv
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 epoch=
 pkgdesc="Terraform version manager inspired by rbenv"
@@ -44,4 +44,4 @@ package() {
 	install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 LICENSE
 }
 
-sha512sums=(aaf21c00d38ffae567462d1cd15eafe0a6c48d9663b4994eb98ee01d3bb30a64fecadc85f446e1691fdcbb4e5cee17664f6a22a933a8d4a354f41ad27795a850)
+sha512sums=(f902f28d7eaaf1a462aef94c973812311631dcdeee50cd6d798ce345ba9d421ee0ed4f6eba04f040c2070a1610154b326e4f4937859082d625e20f002489f9a2)
