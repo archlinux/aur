@@ -28,6 +28,8 @@ check() {
 package() {
   cd "${pkgname}-${pkgver%r*}"
   make DESTDIR="${pkgdir}" install
+  install -dm755 ${pkgdir}/usr/include
+  cp *.h ${pkgdir}/usr/include
 }
 
 sha256sums=('bb9c22c02ecda189a3389c9340a0eb6a8f287aa257099b54c3d9e1802a454630')
