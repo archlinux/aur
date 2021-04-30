@@ -1,0 +1,24 @@
+commit b69790a7760647efcfbd7a4cd582a3824fa34ae4
+Author: Chun-wei Fan <fanchunwei@src.gnome.org>
+Date:   Fri Apr 16 15:38:17 2021 +0800
+
+    gtkimcontextsimple.c: Declare variables at top-of-block
+    
+    This way, things will continue to build on older compilers
+
+diff --git a/gtk/gtkimcontextsimple.c b/gtk/gtkimcontextsimple.c
+index 89221ce80e..38806d05c3 100644
+--- a/gtk/gtkimcontextsimple.c
++++ b/gtk/gtkimcontextsimple.c
+@@ -553,8 +553,10 @@ no_sequence_matches (GtkIMContextSimple *context_simple,
+ 
+           if (i == n_compose - 1)
+             {
++              int j;
++
+               /* dead keys are never *really* dead */
+-              for (int j = 0; j < i; j++)
++              for (j = 0; j < i; j++)
+                 {
+                   ch = dead_key_to_unicode (priv->compose_buffer[j], &need_space);
+                   if (ch)
