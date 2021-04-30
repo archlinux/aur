@@ -3,7 +3,7 @@
 
 _basename=imagemagick
 pkgname=lib32-imagemagick
-pkgver=7.0.11.5
+pkgver=7.0.11.10
 pkgrel=1
 pkgdesc="An image viewing/manipulation program (32-bit)"
 url="https://www.imagemagick.org/"
@@ -17,7 +17,7 @@ _relname=ImageMagick-${pkgver%%.*}
 _tarname=ImageMagick-${pkgver%.*}-${pkgver##*.}
 source=(https://imagemagick.org/download/releases/$_tarname.tar.xz{,.asc}
         arch-fonts.diff)
-sha256sums=('9d2f65d6ee86a7c2a09c451b6d2635e44da3bc4ed3aa03241e011d04537eadf8'
+sha256sums=('b7f58d344330a22a48fbe46f3ebeb3180398c2be4d37f7e3a6e299fd57f9b6d7'
             'SKIP'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
 validpgpkeys=(D8272EF51DA223E4D05B466989AB63D48277377A)  # Lexie Parsimoniae
