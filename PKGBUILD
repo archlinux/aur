@@ -1,8 +1,8 @@
 # Author: Kyle Manna <kyle at kylemanna dot com>
 
 pkgname=do-agent
-pkgver=3.5.6
-pkgrel=2
+pkgver=3.9.4
+pkgrel=1
 pkgdesc='DigitalOcean Agent for Enhanced Droplet Graphs'
 url='https://github.com/digitalocean/do-agent'
 arch=('x86_64')
@@ -14,8 +14,8 @@ license=('Apache')
 source=("https://github.com/digitalocean/${pkgname}/archive/${pkgver}.tar.gz"
         "do-agent.service")
 
-sha512sums=('e0007dcc8df3eb5f217e8db0b8dc9696c5b8557090712254f2b91e6d7e9c94321141d2fcc9cd13dc0153d3f76c966b968818a1ff01130a561cb97765edf840a5'
-            '19d040ae8a75a73a86c1b473983ecf84410fc6a24a7f9142e98dc00c6dbda1ff1f2e2caec0d37bb3c6f557133644ea91f49a75697f5c4bdc23af56407d1fbcaa')
+sha512sums=('50d42921937a8f6d3bcf094e91b5d4219980db3888252fad8c4e0ef0833f8cff8e0cfff4e44fa59d2e77a5484ed5e3135d1fdf08d1f538e74fe53070f5f6859f'
+            '3758a5d63c12db885d54829f67ce62a00ce0155c0d292969fcbb7d9177666fc499d1d5c37c05424fd6684ee793d2c93ddd442948805b313f23af12b97bcd695b')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -29,7 +29,7 @@ build() {
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-    go build -ldflags "-s -w -X \"main.version=3.5.6\" -X \"main.buildDate=$(date -u)\"" -o build ./cmd/do-agent
+    go build -ldflags "-s -w -X \"main.version=${pkgver}\" -X \"main.buildDate=$(date -u)\"" -o build ./cmd/do-agent
 }
 
 package() {

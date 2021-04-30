@@ -4,8 +4,7 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
-User=nobody
-Group=nobody
+DynamicUser=yes
 ExecStart=/usr/bin/do-agent
 
 [Install]
