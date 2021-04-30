@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="monica-git"
-pkgver=v2.19.1.r262.g124a063fd
+pkgver=v3.0.0.r1.g392f9aaa9
 pkgrel=1
 pkgdesc="Personal CRM. Remember everything about your friends, family and business relationships"
 url="https://www.monicahq.com/"
@@ -26,6 +26,8 @@ pkgver(){
 package(){
  cd "monica"
  composer install --no-interaction --no-suggest --no-dev --ignore-platform-reqs
+ yarn install
+ yarn run production
 
  install -d "$pkgdir/usr/share/webapps/monica"
  cp -r * "$pkgdir/usr/share/webapps/monica"
