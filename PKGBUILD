@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Flores <gabriel.flores.m at ug dot uchile dot cl>
 
 pkgname=python-aed-utilities
-pkgver=0.4.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="AED es un paquete de Python que permite visualizar estructuras de datos."
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 depends=('python-validators' 'python-beautifulsoup4' 'python-graphviz' 'python-ipykernel')
 provides=('python-aed-utilities')
 source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=('c1825dc15dbb9e91459c61a6c5357cc0')
+md5sums=('463cd9e0ac25f870d2d36f01f01a5ba2')
 
 build() {
     cd $srcdir/aed-utilities-$pkgver

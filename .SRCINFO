@@ -1,6 +1,6 @@
 pkgbase = python-aed-utilities
 	pkgdesc = AED es un paquete de Python que permite visualizar estructuras de datos.
-	pkgver = 0.4.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/ivansipiran/aed-utilities
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-aed-utilities
 	depends = python-graphviz
 	depends = python-ipykernel
 	provides = python-aed-utilities
-	source = https://github.com/ivansipiran/aed-utilities/archive/v0.4.1.tar.gz
-	md5sums = c1825dc15dbb9e91459c61a6c5357cc0
+	source = https://github.com/ivansipiran/aed-utilities/archive/v0.5.2.tar.gz
+	md5sums = 463cd9e0ac25f870d2d36f01f01a5ba2
 
 pkgname = python-aed-utilities
 
