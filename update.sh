@@ -36,31 +36,34 @@ depends=('glibc' 'ffmpeg')
 source_x86_64=('https://github.com/navidrome/navidrome/releases/download/v$1/navidrome_$1_Linux_x86_64.tar.gz'
                'navidrome.service'
                'navidrome.toml'
+               'navidrome.sysusers'
               )
 source_armv6h=('https://github.com/navidrome/navidrome/releases/download/v$1/navidrome_$1_Linux_armv6.tar.gz'
                'navidrome.service'
                'navidrome.toml'
+               'navidrome.sysusers'
               )
 source_armv7h=('https://github.com/navidrome/navidrome/releases/download/v$1/navidrome_$1_Linux_armv7.tar.gz'
                'navidrome.service'
                'navidrome.toml'
+               'navidrome.sysusers'
               )
 source_aarch64=('https://github.com/navidrome/navidrome/releases/download/v$1/navidrome_$1_Linux_arm64.tar.gz'
                 'navidrome.service'
                 'navidrome.toml'
+               'navidrome.sysusers'
               )
-md5sums=()
-md5sums_x86_64=()
-md5sums_armv6h=()
-md5sums_armv7h=()
-md5sums_aarch64=()
+sha512sums_x86_64=()
+sha512sums_armv6h=()
+sha512sums_armv7h=()
+sha512sums_aarch64=()
 
 package() {
-  install -d -o navidrome -g navidrome \"\${pkgdir}/usr/bin/${EXECUTABLE_NAME}\"
   install -d -o navidrome -g navidrome \"\${pkgdir}/var/lib/${EXECUTABLE_NAME}\"
-  install -Dm 755 \"\${srcdir}/navidrome\" \"\${pkgdir}/usr/bin/${EXECUTABLE_NAME}\"
+  install -Dm 755 \"\${srcdir}/navidrome\" -t \"\${pkgdir}/usr/bin/\"
   install -Dm 644 \"\${srcdir}/navidrome.service\" -t \"\${pkgdir}/usr/lib/systemd/system\"
   install -Dm 644 \"\${srcdir}/navidrome.toml\" -t \"\${pkgdir}/var/lib/${EXECUTABLE_NAME}\"
+  install -Dm 644 \"\${srcdir}/navidrome.sysusers\" \"\${pkgdir}/usr/lib/sysusers.d/navidrome.conf\"
 }
 " >> PKGBUILD
 
