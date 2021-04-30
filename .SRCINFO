@@ -1,0 +1,19 @@
+pkgbase = pam-exec-oauth2
+	pkgdesc = Allows Linux user authentication to OAuth2 via pam_exec
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/shimt/pam-exec-oauth2
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	backup = etc/pam.d/exec-oauth2
+	backup = etc/pam-exec-oauth2.yml
+	source = pam-exec-oauth2-0.0.0.tar.gz::https://github.com/shimt/pam-exec-oauth2/archive/023ac35ab559f3e0210c6dd4a88256234bfc7ce9.tar.gz
+	source = pam-exec-oauth2.pam
+	source = pam-exec-oauth2.yml
+	sha256sums = 3067444aa8c9b388f37dd4feeb75057bed2d5ce6b762c5db2ddb49c1ef530b33
+	sha256sums = 90e85140a7194f4f2d95daa0959e75ec784fac9f49226ff43cef6e35139b48de
+	sha256sums = 1c302bb98640aa0a6197a1fdd6e6643dc94b3c961f99a6f73851c665c91de55b
+
+pkgname = pam-exec-oauth2
+
