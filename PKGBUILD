@@ -16,10 +16,10 @@ md4sums=("SKIP")
 
 package() {
 	mkdir -p $pkgdir/usr/bin
-	#mkdir -p $pkgdir/usr/share/licenses/$_pkgname
+	mkdir -p $pkgdir/usr/share/licenses/$_pkgname
 	cd $_pkgname
 	chmod +x aurtomatic.py
 	cp aurtomatic.py $pkgdir/usr/bin/aurtomatic
-	#install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
 md5sums=('SKIP')
