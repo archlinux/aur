@@ -1,18 +1,20 @@
 pkgbase = opentrack-git
 	pkgdesc = An application dedicated to tracking user's head movements and relaying the information to games and flight simulation software
-	pkgver = r6186
-	pkgrel = 1
+	pkgver = 2.3.13+r6207.20210425.0ddcf4eb
+	pkgrel = 2
+	epoch = 1
 	url = https://github.com/opentrack/opentrack/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
-	makedepends = xplane-sdk-devel
-	makedepends = wine
+	makedepends = git
 	makedepends = ninja
-	depends = qt5-base
+	makedepends = wine
+	makedepends = xplane-sdk-devel
 	depends = opencv
-	provides = opentrack
+	depends = qt5-base
+	provides = opentrack=2.3.13+r6207.20210425.0ddcf4eb
 	conflicts = opentrack
 	source = git+https://github.com/opentrack/opentrack.git
 	source = opentrack.desktop

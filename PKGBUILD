@@ -1,23 +1,52 @@
 # Maintainer: Maxime Morel <maxime@mmorel.eu>
+# Co-Maintainer: dreieck
 
 pkgname=opentrack-git
-pkgver=r6186
-pkgrel=1
+epoch=1
+pkgver=2.3.13+r6207.20210425.0ddcf4eb
+pkgrel=2
 pkgdesc="An application dedicated to tracking user's head movements and relaying the information to games and flight simulation software"
-arch=('i686' 'x86_64')
+arch=(
+  'i686'
+  'x86_64'
+)
 url="https://github.com/opentrack/opentrack/"
 license=('GPL3')
-depends=('qt5-base' 'opencv')
-makedepends=('cmake' 'xplane-sdk-devel' 'wine' 'ninja')
-provides=('opentrack')
+depends=(
+  'opencv'
+  'qt5-base'
+)
+optdepends=()
+makedepends=(
+  'cmake' 
+  'git'
+  'ninja'
+  'wine'
+  'xplane-sdk-devel'
+)
+provides=("opentrack=${pkgver}")
 conflicts=('opentrack')
-source=("git+https://github.com/opentrack/opentrack.git" "opentrack.desktop")
-sha256sums=('SKIP'
-            '40f856cae6f8651fbbc37666b9d5ef35c3aa2399cd28f8b89d411bfc1ad871e7')
+source=(
+  "git+https://github.com/opentrack/opentrack.git"
+  "opentrack.desktop"
+)
+sha256sums=(
+  'SKIP'
+  '40f856cae6f8651fbbc37666b9d5ef35c3aa2399cd28f8b89d411bfc1ad871e7'
+)
 
 pkgver() {
   cd "$srcdir/opentrack"
-  printf "r%s" "$(git rev-list --count HEAD)"
+  _ver="$(git describe --tags | awk -F- '{print $2}')"
+  _rev="$(git rev-list --count HEAD)"
+  _date="$(git log -1 --format=%cd --date=format:%Y%m%d)"
+  _hash="$(git rev-parse --short HEAD)"
+  if [ -z "${_ver}" ]; then
+    error "Could not determine version."
+    return 11
+  else
+    printf '%s' "${_ver}+r${_rev}.${_date}.${_hash}"
+  fi
 }
 
 build() {
@@ -37,6 +66,7 @@ build() {
       -DSDK_XPLANE=xplane_sdk \
       -DSDK_WINE=ON \
       -DCMAKE_INSTALL_PREFIX=/usr
+
   ninja
 }
 
