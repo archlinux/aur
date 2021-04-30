@@ -1,0 +1,12 @@
+# -*- mode: shell-script -*-
+
+post_install() {
+    echo -e "\n\e[1m Tailscale $1\e[0m\n"
+    cat <<EOF
+To start using Tailscale:
+
+    sudo systemctl enable --now tailscaled.service
+    sudo tailscale up
+
+EOF
+}
