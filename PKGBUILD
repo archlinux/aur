@@ -5,7 +5,7 @@
 # Contributor: Mikhail Burakov <mikhail.burakov@gmail.com>
 
 pkgname=cockatrice-client-git
-pkgver=2.8.1.beta.r3.gdb5f6e01
+pkgver=2.8.1.beta.r33.g10628943
 pkgrel=1
 pkgdesc='Open-source multiplatform supported program for playing tabletop card games over a network.'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url='https://cockatrice.github.io/'
 license=('GPL2')
 depends=('protobuf' 'qt5-svg' 'qt5-tools' 'qt5-multimedia' 'qt5-websockets')
 makedepends=('cmake' 'git' 'zlib' 'xz')
-checkdepends=('gtest' 'valgrind')
+checkdepends=('gtest' 'gmock' 'valgrind')
 optdepends=('zlib: Support compressed MTGJSON' 'xz: Support compressed MTGJSON')
 provides=('cockatrice-client')
 conflicts=('cockatrice-client')
