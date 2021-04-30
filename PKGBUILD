@@ -8,10 +8,12 @@ arch=('i686' 'x86_64')
 url="http://libsmacker.sourceforge.net"
 license=('LGPL2.1')
 depends=('glibc')
-source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver%.*}/${pkgname}-${pkgver}.tar.gz")
+source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver%.*}/${pkgname}-${pkgver}.tar.gz"
+	palette.patch)
 
 prepare() {
   cd "${pkgname}-${pkgver%r*}"
+  patch -Np1 -i ../palette.patch
   autoreconf -i
 }
 
@@ -32,4 +34,5 @@ package() {
   cp *.h ${pkgdir}/usr/include
 }
 
-sha256sums=('bb9c22c02ecda189a3389c9340a0eb6a8f287aa257099b54c3d9e1802a454630')
+sha256sums=('bb9c22c02ecda189a3389c9340a0eb6a8f287aa257099b54c3d9e1802a454630'
+            '0a8ca9ce7a11106b6584c142b71cb034bf8ab4c6ce7603851f3b4aa9fd86bec2')

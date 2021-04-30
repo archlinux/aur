@@ -8,7 +8,9 @@ pkgbase = libsmacker
 	license = LGPL2.1
 	depends = glibc
 	source = https://downloads.sourceforge.net/project/libsmacker/libsmacker-1.1/libsmacker-1.1.1r35.tar.gz
+	source = palette.patch
 	sha256sums = bb9c22c02ecda189a3389c9340a0eb6a8f287aa257099b54c3d9e1802a454630
+	sha256sums = 0a8ca9ce7a11106b6584c142b71cb034bf8ab4c6ce7603851f3b4aa9fd86bec2
 
 pkgname = libsmacker
 

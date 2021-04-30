@@ -1,0 +1,35 @@
+--- a/smacker.c	2020-01-06 02:28:16.000000000 +0100
++++ b/smacker.c	2021-05-01 00:50:21.510161523 +0200
+@@ -800,8 +800,7 @@
+ 			p ++; size --;
+ 
+ 			/* overflow: see if we write/read beyond 256colors, or overwrite own palette */
+-			if (i + count > 256 || src + count > 256 ||
+-				(src < i && src + count > i) )
++			if (i + count > 256 || src + count > 256)
+ 			{
+ 				fprintf(stderr,"libsmacker::palette_render(s,p,size) - ERROR: overflow, 0x40 attempt to copy %d entries from %d to %d\n",count,src,i);
+ 				goto error;
+@@ -1360,6 +1359,11 @@
+ 	return -1;
+ }
+ 
++unsigned char smk_palette_updated(smk s)
++{
++	return s->frame_type[s->cur_frame] & 0x01;
++}
++
+ /* advance to next frame */
+ char smk_next(smk s)
+ {
+--- a/smacker.h	2020-01-06 02:32:24.000000000 +0100
++++ b/smacker.h	2021-05-01 00:50:21.511161527 +0200
+@@ -91,6 +91,8 @@
+ 
+ /** rewind to first frame and unpack */
+ char smk_first(smk object);
++/** was the pallet updated this frame */
++unsigned char smk_palette_updated(smk s);
+ /** advance to next frame and unpack */
+ char smk_next(smk object);
+ /** seek to first keyframe before/at N in an smk */
