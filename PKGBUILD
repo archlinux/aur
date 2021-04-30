@@ -1,9 +1,11 @@
-# Maintainer: orhun <orhunparmaksiz@gmail.com>
 # Maintainer: timvisee <3a4fb3964f@sinenomine.email>
-# https://github.com/orhun/pkgbuilds
+# Maintainer: orhun <orhunparmaksiz@gmail.com>
+#
+# Based on template. Changes made here will be overwritten each release.
+# See: https://gitlab.com/timvisee/prs
 
 pkgname=prs-git
-pkgver=0.2.10.r1.gbd175ea
+pkgver=0.2.11.r0.gb7141e6
 pkgrel=1
 pkgdesc="Secure, fast & convenient password manager CLI using GPG and git to sync (git)"
 arch=('any')
