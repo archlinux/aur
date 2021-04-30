@@ -1,0 +1,17 @@
+pkgbase = notop-git
+	pkgdesc = no-bullshit, general purpose process management program
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/jnats/notop
+	arch = any
+	license = custom:beerware
+	depends = procps-ng
+	depends = coreutils
+	depends = sed
+	depends = bc
+	provides = notop
+	source = notop::git+https://github.com/jnats/notop.git
+	md5sums = SKIP
+
+pkgname = notop-git
+
