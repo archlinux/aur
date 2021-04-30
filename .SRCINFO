@@ -1,7 +1,7 @@
 pkgbase = obs-studio-tytan652
-	pkgdesc = Free and open source software for video recording and live streaming. Built with Browser and VST plugins and some patches but without FTL and Python.
+	pkgdesc = Free and open source software for video recording and live streaming. Built with Browser, VST plugins and my bind interface PR. No FTL and Python
 	pkgver = 26.1.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/obsproject/obs-studio
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = obs-studio-tytan652
 	makedepends = vlc
 	makedepends = swig
 	makedepends = luajit
-	makedepends = cef-minimal-3770
 	depends = ffmpeg
 	depends = jansson
 	depends = libxinerama
@@ -46,6 +45,10 @@ pkgbase = obs-studio-tytan652
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 169af464164ef05384586f31fbde3d509159976e0afb914907fb3cf395adaf6e
+	source_i686 = https://cef-builds.spotifycdn.com/cef_binary_76.1.13+gf19c584+chromium-76.0.3809.132_linux32_minimal.tar.bz2
+	sha256sums_i686 = baa0624e2d6b86a60d18117cb65e125f882ef66cf413cd7ac63a480d904004f0
+	source_x86_64 = https://cef-builds.spotifycdn.com/cef_binary_76.1.13+gf19c584+chromium-76.0.3809.132_linux64_minimal.tar.bz2
+	sha256sums_x86_64 = 6b0dfa8ddafcec822fcd20018cf081959ffa6d0565be3793da1f596ac0733c38
 
 pkgname = obs-studio-tytan652
 
