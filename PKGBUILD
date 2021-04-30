@@ -1,7 +1,7 @@
 # Maintainer: Daniel Souza <danisztls@gmail.com>
 
 _gitbranch=main
-_gitauthor=lbcnz
+_gitauthor=danisztls
 pkgname=arbie-git
 pkgver=v1.0.1.r0.g6f49e02
 pkgrel=1
