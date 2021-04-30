@@ -1,7 +1,7 @@
 # Maintainer: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 pkgname=zellij
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal multiplexer."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://zellij.dev"
@@ -31,7 +31,7 @@ package() {
   install -Dm755 target/release/zellij -t "${pkgdir}/usr/bin"
   install -Dm644 GOVERNANCE.md README.md -t "${pkgdir}/usr/share/doc/zellij"
   install -Dm644 LICENSE.md -t "${pkgdir}/usr/share/licenses/zellij"
-  install -Dm644 target/zellij.bash -t "${pkgdir}/usr/share/bash-completion/completions/zellij"
-  install -Dm644 target/zellij.fish -t "${pkgdir}/usr/share/fish/vendor_completions.d/zellij.fish"
-  install -Dm644 target/zellij.zsh -t "${pkgdir}/usr/share/zsh/site-functions/_zellij"
+  install -Dm644 target/zellij.bash "${pkgdir}/usr/share/bash-completion/completions/zellij"
+  install -Dm644 target/zellij.fish "${pkgdir}/usr/share/fish/vendor_completions.d/zellij.fish"
+  install -Dm644 target/zellij.zsh "${pkgdir}/usr/share/zsh/site-functions/_zellij"
 }

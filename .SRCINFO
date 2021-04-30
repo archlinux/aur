@@ -1,7 +1,7 @@
 pkgbase = zellij
 	pkgdesc = A terminal multiplexer.
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zellij.dev
 	arch = i686
 	arch = x86_64
