@@ -1,6 +1,6 @@
 pkgbase = deepin-wine-helper-full
 	pkgdesc = Deepin Wine helper
-	pkgver = 5.1.16
+	pkgver = 5.1.19
 	pkgrel = 1
 	url = http://www.deepin.org
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = deepin-wine-helper-full
 	license = Proprietary
 	makedepends = tar
 	makedepends = p7zip
-	provides = deepin-wine-helper=5.1.16
+	provides = deepin-wine-helper=5.1.19
 	conflicts = deepin-wine-helper
-	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.youku.deepin/com.youku.deepin_8.0.7.11061deepin2_i386.deb
-	sha256sums = 09fae5688383d9706001c72c04f09667215263446ab3f9ee15ddd80de517cb9e
+	source = http://community-store.deepin.com/appstore/apricot/pool/appstore/c/com.tencent.meeting.deepin/com.tencent.meeting.deepin_2.8.7.400deepin2_i386.deb
+	sha256sums = a738cddcfdf54595145676c402733eb5e9df2bde733615aa811e765e4fcb2d45
 
 pkgname = deepin-wine-helper-full
