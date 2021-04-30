@@ -1,0 +1,15 @@
+pkgbase = libpassman
+	pkgdesc = Library for interacting with passman++ database files.
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/binex-dsk/libpassman/
+	arch = x86_64
+	license = GPL
+	depends = botan
+	depends = qt6-base
+	provides = libpassman
+	source = https://github.com/binex-dsk/libpassman/archive/2.1.1.tar.gz
+	md5sums = d27cadf7b8bc3e5760c70f9c5ddf9574
+
+pkgname = libpassman
+
