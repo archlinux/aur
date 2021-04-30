@@ -1,7 +1,7 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 _pkgname=httpx-gssapi
 pkgname=python-httpx-gssapi
-pkgver=0.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="GSSAPI (HTTP Negotiate) authentication for Python httpx"
 url="https://github.com/pythongssapi/httpx-gssapi"
@@ -9,7 +9,7 @@ arch=(any)
 license=(custom:ISC)
 depends=(python-gssapi python-httpx)
 makedepends=(git python-setuptools)
-_commit=8e2caac74e37d7a20c0c4504720c33760cd51742
+_commit=93622fb062c3ef47713b62587d4b7974e29d8e48
 source=("git+https://github.com/pythongssapi/httpx-gssapi#commit=$_commit")
 sha256sums=('SKIP')
 
