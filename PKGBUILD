@@ -2,19 +2,18 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Chris Brendel <cdbrendel@gmail.com>
 
-_pkgname='catalogue'
+_pkgname=catalogue
 pkgname="python-${_pkgname}"
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc='Super lightweight function registries for your library'
 arch=('any')
 url='https://github.com/explosion/catalogue'
-_url_pypi='https://pypi.org/project/catalogue'
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('887d8a579f7e9e7a6ec424212931ad367a5e6c09e01dfa3eb398ac3b3a2765ba')
+sha256sums=('9ed345d12855af315f1715583612b26b8621a2b0a2e3bef974dc5d712f7983aa')
 
 build() {
 	cd "${_pkgname}-${pkgver}"
