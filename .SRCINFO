@@ -1,6 +1,6 @@
 pkgbase = pidgin-gnutls
-	pkgver = 2.14.1
-	pkgrel = 5
+	pkgver = 2.14.4
+	pkgrel = 1
 	url = https://pidgin.im/
 	arch = x86_64
 	license = GPL
@@ -24,10 +24,11 @@ pkgbase = pidgin-gnutls
 	makedepends = dbus-glib
 	makedepends = libgnt
 	makedepends = libxcrypt
-	source = https://downloads.sourceforge.net/project/pidgin/Pidgin/2.14.1/pidgin-2.14.1.tar.bz2
-	source = https://downloads.sourceforge.net/project/pidgin/Pidgin/2.14.1/pidgin-2.14.1.tar.bz2.asc
+	options = !emptydirs
+	source = https://downloads.sourceforge.net/project/pidgin/Pidgin/2.14.4/pidgin-2.14.4.tar.bz2
+	source = https://downloads.sourceforge.net/project/pidgin/Pidgin/2.14.4/pidgin-2.14.4.tar.bz2.asc
 	validpgpkeys = 40DE1DC7288FE3F50AB938C548F66AFFD9BDB729
-	sha256sums = f132e18d551117d9e46acce29ba4f40892a86746c366999166a3862b51060780
+	sha256sums = 67c1a0104b0624a50100c6d73cd5504d53c9d221922b1b28fa86020531a9904e
 	sha256sums = SKIP
 
 pkgname = pidgin-gnutls

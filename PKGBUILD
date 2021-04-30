@@ -9,8 +9,8 @@
 pkgname=('pidgin-gnutls' 'libpurple-gnutls' 'finch-gnutls')
 pkgbase=pidgin-gnutls
 _pkgname="${pkgname%-gnutls}"
-pkgver=2.14.1
-pkgrel=5
+pkgver=2.14.4
+pkgrel=1
 arch=('x86_64')
 url="https://pidgin.im/"
 license=('GPL')
@@ -18,8 +18,9 @@ makedepends=('startup-notification' 'gtkspell' 'libxss' 'gnutls' 'libsasl' 'libs
              'libidn' 'libgadu' 'python' 'hicolor-icon-theme' 'farstream' 'tk'
              'libnsl' 'avahi' 'ca-certificates' 'intltool' 'libnm' 'dbus-glib'
              'libgnt' 'libxcrypt')
+options=('!emptydirs')
 source=(https://downloads.sourceforge.net/project/pidgin/Pidgin/$pkgver/$_pkgname-$pkgver.tar.bz2{,.asc})
-sha256sums=('f132e18d551117d9e46acce29ba4f40892a86746c366999166a3862b51060780'
+sha256sums=('67c1a0104b0624a50100c6d73cd5504d53c9d221922b1b28fa86020531a9904e'
             'SKIP')
 validpgpkeys=('40DE1DC7288FE3F50AB938C548F66AFFD9BDB729') # Gary Kramlich <grim@reaperworld.com>
 
@@ -34,6 +35,7 @@ build() {
     --prefix=/usr \
     --sysconfdir=/etc \
     --disable-schemas-install \
+    --disable-gevolution \
     --disable-meanwhile \
     --enable-gnutls=yes \
     --enable-nss=no \
@@ -66,6 +68,10 @@ package_pidgin-gnutls(){
   make -C libpurple DESTDIR="$pkgdir" uninstall-libLTLIBRARIES
 
   rm "$pkgdir/usr/share/man/man1/finch.1"
+
+  # https://bugs.archlinux.org/task/53770
+  # https://bugs.archlinux.org/task/69026
+  find "$pkgdir/usr/lib/perl5" -name perllocal.pod -delete
 }
 
 package_libpurple-gnutls(){
@@ -84,6 +90,10 @@ package_libpurple-gnutls(){
   for _dir in libpurple share/sounds share/ca-certs m4macros po; do
     make -C "$_dir" DESTDIR="$pkgdir" install
   done
+
+  # https://bugs.archlinux.org/task/53770
+  # https://bugs.archlinux.org/task/69026
+  find "$pkgdir/usr/lib/perl5" -name perllocal.pod -delete
 }
 
 package_finch-gnutls(){
