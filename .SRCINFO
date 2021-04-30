@@ -1,14 +1,14 @@
 pkgbase = pandaroule-customization
 	pkgdesc = the PandaRoule#5870 (DISCORD) Linux GNOME 40 Customization
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	arch = i686
 	license = GPL
-	source = http://wevofiles.epizy.com/DAdwaita.tar.xz
-	source = http://wevofiles.epizy.com/Inverse.tar.xz
-	source = http://wevofiles.epizy.com/Kimi-dark.tar.gz
-	source = http://wevofiles.epizy.com/Simple-dark.tgz
+	source = https://drive.google.com/uc?export=download&id=1VA36SeLRHfwApAqNH2aBh6ACt4zR8non
+	source = https://drive.google.com/uc?export=download&id=1aroBJkbq_Yp8w-_XPphbC76Vfp9yKMYV
+	source = https://drive.google.com/uc?export=download&id=1udmqkh9BS-XWjJHbKOZ4Ts8bP7ocyzXT
+	source = https://drive.google.com/uc?export=download&id=1LizWggRqUYj5JRTkpNea86gvf8cS9QVk
 	md5sums = a69314fa126b6fd4708889c649b1e260
 	md5sums = 4b8527706eaf8f5ca948992b0395a9bf
 	md5sums = fcba4615150f09ecc9a35f6a47cb80e6

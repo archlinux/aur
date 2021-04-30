@@ -6,7 +6,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=pandaroule-customization
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="the PandaRoule#5870 (DISCORD) Linux GNOME 40 Customization"
 arch=(x86_64 i686)
@@ -24,8 +24,8 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://wevofiles.epizy.com/DAdwaita.tar.xz"
-        "http://wevofiles.epizy.com/Inverse.tar.xz" "http://wevofiles.epizy.com/Kimi-dark.tar.gz" "http://wevofiles.epizy.com/Simple-dark.tgz")
+source=("https://drive.google.com/uc?export=download&id=1VA36SeLRHfwApAqNH2aBh6ACt4zR8non"
+        "https://drive.google.com/uc?export=download&id=1aroBJkbq_Yp8w-_XPphbC76Vfp9yKMYV" "https://drive.google.com/uc?export=download&id=1udmqkh9BS-XWjJHbKOZ4Ts8bP7ocyzXT" "https://drive.google.com/uc?export=download&id=1LizWggRqUYj5JRTkpNea86gvf8cS9QVk")
 noextract=()
 md5sums=("a69314fa126b6fd4708889c649b1e260" "4b8527706eaf8f5ca948992b0395a9bf" "fcba4615150f09ecc9a35f6a47cb80e6" "4cf6257fe59f3521537cb4c840e3ce76")
 validpgpkeys=()
