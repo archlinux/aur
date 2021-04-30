@@ -1,8 +1,8 @@
 pkgbase = pure-glpk
 	pkgdesc = A feature complete GLPK interface for the Pure programming language.
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
-	url = http://purelang.bitbucket.org/
+	url = https://agraef.github.io/pure-lang/
 	arch = i686
 	arch = x86_64
 	groups = pure-complete
@@ -11,8 +11,8 @@ pkgbase = pure-glpk
 	makedepends = unixodbc
 	depends = pure
 	depends = glpk
-	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-glpk-0.5.tar.gz
-	sha1sums = cf7146328d8ebbaefedc92ea8fe8b3eb84083ab4
+	source = https://github.com/agraef/pure-lang/releases/download/pure-glpk-0.6/pure-glpk-0.6.tar.gz
+	sha1sums = 97c66826d98641f84a53e5aa8a148ed5e443face
 
 pkgname = pure-glpk
 
