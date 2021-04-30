@@ -1,7 +1,7 @@
 pkgbase = lib32-raptor
 	pkgdesc = A C library that parses RDF/XML/N-Triples into RDF triples (32 bit)
 	pkgver = 2.0.15
-	pkgrel = 9
+	pkgrel = 10
 	url = http://librdf.org/raptor
 	arch = x86_64
 	license = Apache
@@ -15,6 +15,7 @@ pkgbase = lib32-raptor
 	depends = lib32-libxslt
 	depends = lib32-xz
 	depends = lib32-zlib
+	depends = raptor
 	source = http://librdf.org/dist/source/raptor2-2.0.15.tar.gz
 	source = http://librdf.org/dist/source/raptor2-2.0.15.tar.gz.asc
 	source = raptor-2.0.15-CVE-2017-18926.patch::https://github.com/dajobe/raptor/commit/590681e546cd9aa18d57dc2ea1858cb734a3863f.patch
