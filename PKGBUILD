@@ -4,8 +4,8 @@
 
 pkgname=manuskript-git
 _pkgname=manuskript
-pkgver=0.11.0.r0.g12defa8
-pkgrel=3
+pkgver=0.12.0.r0.g1eab989
+pkgrel=1
 arch=('any')
 
 pkgdesc="Manuskript is an open-source tool for writers (git version)."
