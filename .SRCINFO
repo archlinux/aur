@@ -1,0 +1,14 @@
+pkgbase = aurtomatic-git
+	pkgdesc = manage local AUR repo
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/SomethingGeneric/aurtomatic
+	arch = any
+	license = GPL
+	depends = python
+	provides = aurtomatic
+	source = aurtomatic::git+https://github.com/SomethingGeneric/aurtomatic.git
+	md5sums = SKIP
+
+pkgname = aurtomatic-git
+
