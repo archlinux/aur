@@ -1,5 +1,5 @@
 pkgbase = com.tencent.meeting.deepin
-	pkgdesc = Tencent Meeting Client on Deepin Wine5 Stable
+	pkgdesc = Tencent Meeting Client on Deepin Wine Stable
 	pkgver = 2.8.7.400
 	pkgrel = 2
 	url = https://meeting.tencent.com/
