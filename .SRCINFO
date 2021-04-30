@@ -1,8 +1,8 @@
 pkgbase = zellij
 	pkgdesc = A terminal multiplexer.
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
-	url = https://www.github.com/zellij-org/zellij
+	url = https://zellij.dev
 	arch = i686
 	arch = x86_64
 	arch = armv6h
@@ -13,8 +13,8 @@ pkgbase = zellij
 	depends = gcc-libs
 	provides = zellij
 	conflicts = zellij-git
-	source = https://github.com/zellij-org/zellij/archive/refs/tags/v0.5.1.tar.gz
-	sha512sums = 05ddb52ca72d38db239e89d5b6e9aef6bc8f9dda28ffb115448f26c216690d619cda7f7a9bab05ac6c8a66663c153525fa239950609313f9cb747bc4b241d29a
+	source = https://github.com/zellij-org/zellij/archive/refs/tags/v0.6.0.tar.gz
+	sha512sums = be166dd54f3add1d202d29629a2139efa42230faa99f43f14be04f5e6b4d451fefe47966a36469afa8f8660c532ef3ba03760cbc15e27c0e0bf16cae97719a80
 
 pkgname = zellij
 
