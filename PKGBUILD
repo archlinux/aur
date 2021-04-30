@@ -4,13 +4,13 @@
 
 pkgbase=jellyfin-git
 pkgname=(jellyfin-git jellyfin-web-git jellyfin-server-git)
-pkgver=10.6.0.r39.g89ff865d40
+pkgver=10.6.0.r3918.g360d80c873
 pkgrel=1
 pkgdesc='The Free Software Media System'
 arch=('i686' 'x86_64' 'armv6h')
 url='https://github.com/jellyfin/jellyfin'
 license=('GPL2')
-makedepends=('dotnet-sdk>=3' 'yarn' 'git')
+makedepends=('dotnet-sdk>=3' 'npm' 'git')
 provides=('jellyfin')
 conflicts=('jellyfin')
 source=('git+https://github.com/jellyfin/jellyfin.git'
@@ -37,7 +37,7 @@ build(){
   # Build jellyfin-web
   cd jellyfin-web
 
-  yarn install
+  npm ci --no-audit
 
   # Build jellyfin-server
   cd ../jellyfin
