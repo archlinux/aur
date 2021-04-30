@@ -1,9 +1,11 @@
-# Maintainer: orhun <orhunparmaksiz@gmail.com>
 # Maintainer: timvisee <3a4fb3964f@sinenomine.email>
-# https://github.com/orhun/pkgbuilds
+# Maintainer: orhun <orhunparmaksiz@gmail.com>
+#
+# Based on template. Changes made here will be overwritten each release.
+# See: https://gitlab.com/timvisee/prs
 
 pkgname=prs
-pkgver=0.2.10
+pkgver=0.2.11
 pkgrel=1
 pkgdesc="Secure, fast & convenient password manager CLI using GPG and git to sync"
 arch=('any')
@@ -12,7 +14,7 @@ license=('GPL3')
 depends=('gpgme' 'dbus' 'libxcb')
 makedepends=('rust' 'python')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('d7777cefd9ab6b9acd54cf4cd59ee075fa29a4124049720de7418405152fc721bb1e4b1a7e3543713ffb575ea665b74a016466914837e25e27dd12593087feab')
+sha512sums=('ca678d9138dfcd0c9826c2cac51ee3e27133b986e14278d67ffbebc91ecb4338cd5a200b13c126a4fde3e9125222cea223bb83169b44f42a2fe51fe58187d03e')
 
 build() {
   cd "$pkgname-v$pkgver"
