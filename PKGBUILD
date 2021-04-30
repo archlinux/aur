@@ -2,7 +2,7 @@
 
 pkgname=ananicy-cpp-git
 _pkgname=ananicy-cpp
-pkgver=v0.2.1.r17.g5d8f1b6
+pkgver=0.2.1.r18.g6e494a4
 pkgrel=1
 pkgdesc="Ananicy Cpp is a full rewrite of Ananicy in C++, featuring lower CPU and RAM usage."
 source=("git+https://gitlab.com/aviallon/ananicy-cpp.git")
@@ -13,10 +13,10 @@ makedepends=(cmake git gcc)
 conflicts=(ananicy-cpp)
 provides=(ananicy-cpp)
 
-pkgver() {                                                                                                                                                                                  
-  cd "${_pkgname}"                                                                                                                                                                          
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'                                                                                                                             
-} 
+pkgver() {
+  cd "$pkgname"
+  git describe --long | sed 's/^v-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
 	cd "$_pkgname"
