@@ -2,7 +2,7 @@ pkgbase = pure-xml
 	pkgdesc = A simplified interface to the Gnome libxml2 and libxslt libraries for Pure
 	pkgver = 0.7
 	pkgrel = 1
-	url = http://purelang.bitbucket.org/
+	url = https://agraef.github.io/pure-lang/
 	arch = i686
 	arch = x86_64
 	groups = pure-complete
@@ -11,7 +11,7 @@ pkgbase = pure-xml
 	depends = pure
 	depends = libxml2
 	depends = libxslt
-	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-xml-0.7.tar.gz
+	source = https://github.com/agraef/pure-lang/releases/download/pure-xml-0.7/pure-xml-0.7.tar.gz
 	md5sums = 245f8c39c2c09da1730f2bb3926d1870
 
 pkgname = pure-xml
