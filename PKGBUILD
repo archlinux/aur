@@ -8,7 +8,7 @@ pkgdesc="GStreamer Multimedia Framework Bad Plugins"
 arch=('i686' 'x86_64')
 license=('LGPL')
 provides=('gst-plugins-bad='$pkgver)
-conflicts=('gst-plugins-bad' 'gst-plugins-gl')
+conflicts=('gst-plugins-bad' 'gst-plugins-gl' 'gst-plugins-bad-libs')
 url="http://gstreamer.freedesktop.org/"
 depends=('mjpegtools' 'gst-plugins-base-git' 'curl'
         'chromaprint' 'libmms' 'faad2' 'mpg123'
@@ -28,7 +28,7 @@ depends=('mjpegtools' 'gst-plugins-base-git' 'curl'
 makedepends=('git' 'meson' 'schroedinger'
              'libexif' 'libdvdread' 'lilv-git'
             'libvdpau' 'libmpeg2'
-            'gtk-doc' 'glu' 'gobject-introspection' )
+            'gtk-doc' 'glu' 'gobject-introspection')
 options=(!emptydirs)
 
 source=('git+https://anongit.freedesktop.org/git/gstreamer/gst-plugins-bad.git'

@@ -73,6 +73,7 @@ pkgbase = gst-plugins-bad-git
 	provides = gst-plugins-bad=1.18.0.r589.g99ebbf72e
 	conflicts = gst-plugins-bad
 	conflicts = gst-plugins-gl
+	conflicts = gst-plugins-bad-libs
 	options = !emptydirs
 	source = git+https://anongit.freedesktop.org/git/gstreamer/gst-plugins-bad.git
 	source = gst-common::git+https://gitlab.freedesktop.org/gstreamer/common.git
@@ -80,3 +81,4 @@ pkgbase = gst-plugins-bad-git
 	sha256sums = SKIP
 
 pkgname = gst-plugins-bad-git
+
