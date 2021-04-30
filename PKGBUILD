@@ -1,6 +1,6 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=rivet
-pkgver=3.1.3
+pkgver=3.1.4
 pkgrel=1
 pkgdesc="A particle physics package for data analysis and validation of Monte Carlo event generators"
 arch=('x86_64' 'i686')
@@ -13,18 +13,11 @@ optdepends=('texlive-core: Plotting functionality'
             'python2: For Python2 module in addition to Python3')
 makedepends=('cython')
 source=(http://www.hepforge.org/archive/rivet/Rivet-$pkgver.tar.gz
-        https://gitlab.com/hepcedar/rivet/-/commit/3203bf12a4bef81f880789eb9cde7ff489ae5115.diff
-        https://gitlab.com/hepcedar/rivet/-/commit/476f267c46b126fa163a92aa6cbcb7806c4624c3.diff
         )
-md5sums=('4738ae56037ce7edfedc2fe59432563c'
-         'f38fb653e6927c0a3103abe7015f4372'
-         '4873c74c63650765c2d5270197978e05')
+md5sums=('43ff4bcab2209d483417ed878d1e6483')
 
 package() {
 	cd "$srcdir/Rivet-$pkgver"
-
-        patch -p1 < ../3203bf12a4bef81f880789eb9cde7ff489ae5115.diff
-        patch -p1 < ../476f267c46b126fa163a92aa6cbcb7806c4624c3.diff
 
         # If python2 is present, also build a library for it
         # Have to do this first, such that files like rivet-config get overwritten with the "proper" Python3 version
