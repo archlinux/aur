@@ -3,14 +3,14 @@
 pkgname=bluez-git
 _pkgname=bluez
 pkgver=5.58.r21.gd9fdbedf0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Libraries and tools for the Bluetooth protocol stack"
 
 url="http://www.bluez.org/"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('dbus' 'libical' 'glib2' 'alsa-lib' 'ell' 'json-c')
+depends=('libical' 'libdbus' 'glib2' 'alsa-lib' 'ell' 'json-c')
 optdepends=('cups: CUPS backend')
 makedepends=('git')
 conflicts=($_pkgname
