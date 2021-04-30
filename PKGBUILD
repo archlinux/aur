@@ -2,7 +2,7 @@
  
 pkgname=irpf
 pkgver=2021.1.3
-pkgrel=1
+pkgrel=2
 license=('custom')
  
 arch=(any)
