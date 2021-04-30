@@ -1,5 +1,5 @@
---- /opt/powercord/src/Powercord/plugins/pc-updater/components/Settings.jsx	2020-08-15 18:33:09.000000000 +0200
-+++ ./pc-updater_settings.jsx	2020-08-15 21:48:42.927277433 +0200
+--- ./src/powercord/src/Powercord/plugins/pc-updater/components/Settings.jsx.orig	2021-04-30 10:05:20.297344941 +0200
++++ ./src/powercord/src/Powercord/plugins/pc-updater/components/Settings.jsx	2021-04-30 10:07:22.686640903 +0200
 @@ -83,7 +83,7 @@
          <div className="about">
            <div>
@@ -13,7 +13,7 @@
          >
            {Messages.POWERCORD_UPDATES_OPTS_CHANGE_LOGS}
          </ButtonItem>
--        <ButtonItem
+-        {/* <ButtonItem
 -          note={Messages.POWERCORD_UPDATES_OPTS_RELEASE_DESC}
 -          button={powercord.gitInfos.branch === 'v2'
 -            ? Messages.POWERCORD_UPDATES_OPTS_RELEASE_DEVELOP_BTN
@@ -23,11 +23,11 @@
 -          )}
 -        >
 -          {Messages.POWERCORD_UPDATES_OPTS_RELEASE}
--        </ButtonItem>
+-        </ButtonItem> */}
  
          <Category
            name={Messages.POWERCORD_UPDATES_OPTS_DEBUG}
-@@ -394,7 +383,7 @@
+@@ -397,7 +386,7 @@
  
            <b>Git </b>
            <div className='row'>
