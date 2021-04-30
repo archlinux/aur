@@ -3,7 +3,7 @@
 
 pkgname=python-pytvmaze
 pkgver=2.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Python interface to the TV Maze API "
 arch=(any)
 url="http://pypi.python.org/pypi/pytvmaze"
