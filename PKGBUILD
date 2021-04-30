@@ -17,8 +17,6 @@ _fsync=y
 _futex2=y
 #enable winesync
 #_winesync=
-### Enable protect file mappings under memory pressure
-_mm_protect=y
 ### Set performance governor as default
 _per_gov=y
 ### Disable Deadline I/O scheduler
@@ -66,7 +64,7 @@ pkgver=${_major}
 #_stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=7
+pkgrel=8
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -80,8 +78,8 @@ source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz
         "config"
         "${_patchsource}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_patchsource}/cacule-patches/cacule-5.12.patch"
-        "${_patchsource}/cacule-patches/0002-cacule-Change-default-preemption-latency-to-2ms-for-.patch"
-        "${_patchsource}/cacule-patches/select_task_interactive_aware.patch"
+        "${_patchsource}/xanmod-patches/0001-sched-autogroup-Add-kernel-parameter-and-config-opti.patch"
+        "${_patchsource}/xanmod-patches/0003-XANMOD-init-Kconfig-cacule-Set-SCHED_AUTOGROUP_DEFAU.patch"
         "${_patchsource}/cpu-patches/0001-cpu-patches.patch"
         "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/futex2-patches-stable/0001-futex2-resync-from-gitlab.collabora.com.patch"
@@ -95,8 +93,7 @@ source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz
         "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
         "${_patchsource}/pf-patches/0001-genirq-i2c-Provide-and-use-generic_dispatch_irq.patch"
         "${_patchsource}/ntfs3-patches/0001-ntfs3-patches.patch"
-        "${_patchsource}/mm-patches/0001-mm-5.12-protect-file-mappings-under-memory-pressure.patch"
-        "${_patchsource}/zstd-upstream-patches-v2/0001-zstd-upstream-patches.patch"
+        "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
         "${_patchsource}/zstd-ll-patches/0001-zstd-patches.patch"
         "${_patchsource}/clearlinux-patches/0001-clearlinux-patches.patch"
         "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch")
@@ -104,9 +101,9 @@ source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz
 sha512sums=('be03b6fee1d1ea8087b09874d27c0a602c0b04fd90ad38b975bd2c8455a07e83c29b56814aaf1389e82305fae0e4c2d1701075a7f0a7295dd28149f967ec5b3d'
             '1ab27f634f844a096c1c6572349581495fa76555888100028a694abfe5529900ed4ba748be2452f1fcdf97c1fbbf25cd2cb3b8f2e00dff83cb86632988926bd9'
             '88f9f1e6ea206068fd029566e4610c16b7c3007f10363c7db37cd922fe75646437d2e4814317bc292d06eff7e9ebd29d8cd1ee82c8abf45ddd1843c1ff55f5c7'
-            '01a59958b88f4f0fae72943883937bccb5be2a1ceeac9ba8a689c4b47125edcd3360aa6a94a535b6dae24ea8b1ac52002431ad72b2a623373c905901af2b3609'
-            'bafda1ec6114a360bed8a9f8ae6b1e8dc5c22adf15f7545c3455a090f14b491639707f6624d7a891ec66b459842e61df9d62274b070b7a611f0bdbd367219ae5'
-            'f602cf078dfa90441c12fabd4102a8503310833f6652c32fea77379d5823508cf546d378f04a788e1ef9fde071c2d3a20bd0c116291bb33d4e00f59e2b2f4155'
+            '635abf2f044d7d2d6c4e236c60a0651d28a3237a2fba71a14144c636912a09841b3cd6d920a9bbeee40ff9a701090b502d5cb1a510b21ce62bc2876a3ed30bf7'
+            '0ded7aae3a1d143206e22eaf7028d34a8ba529c8a6934e726ebe1ca9e9df415228c7b37f2ade4e4c2a7cacb2005e3f514677a07763fba0e6f66ce58ecbda8d13'
+            'f37e8fe798d3fb328ceabb6c8303e93f365f0f3c6bae2ffee027ed35406ea6bda8bd14a18333fbc9ea3ef6b5fb396325e98e834eefaf3b4018496ae068e6c12f'
             '15933126feeb56ccc6ace70db9fa7afb64d148900e41a780e42e03ce09faf7bab12413f526675b918aeff55e91dc038ad58884bb7add4a45962aca79d576cb93'
             '449570b8b9a04391cc2cc171cc806b3a132c6e969c7cedf9c4925d24244888e6f2e5afb6c551521fe62fcb7e2bf08cb8d396f9ec785ecfcdd5ea27dd9ffed4ea'
             '549883e3ec059c284b5858ad6b4e9a03af81ef5efcf74802234c2953462b27fa97ac335c27fe854d62bc37f8fcc49613361563cb6f48b0e23a146a3d6a4522cd'
@@ -120,8 +117,7 @@ sha512sums=('be03b6fee1d1ea8087b09874d27c0a602c0b04fd90ad38b975bd2c8455a07e83c29
             '1b3b48246fe70e8ca7390cacacf560696c1d98604a7716ac32df8f3d7fc7cc2ab733ab24e372fffa63016344f2e4ed078f7d597c3c1261f0ca3ff1c87a13dcb9'
             '800ce2518d4ff38c2d40399a5b104bb4552ba81c67398cc301adcb1f80035c2531a188f42eb20526f5384028fa0e39578b4b36ebfb9a8c0d70fb0283577f6faf'
             '6d837eed8014bbb09b580867ed94fa03373a6a063ee68a0337109aff20b0e469c985d42b71704d08f4ea30d359cebd0a4a801a5ef6ec02c21331e40e5be1e602'
-            '0563235769866375905d9bf6c33acae6aaff7b39351b4c9693f0f7dc7fef45d5850f267519a2ab8cc05ce60899f41080f071f00a417cf09d3985d89407a40f86'
-            '07f68347a31b6c65f7a9dcd3d0940da26ee79fd922799ca64b8d6888087dec25bb2776c9a995c9865652c68c1b25bfccdc7298b0a8599f4f0cac7d26acea31a0'
+            '5c020b81e4cfd1943d40926e3eaa2b4921144c52c1a16a90d89f113a32bab55f44b5a65bdea3a1550391db4cc6b53ff00459a0b794c96163816446e888bfe268'
             'e9a405643af07f8065c53c24b7ffce89d65716a6c009984c6fcd26fecf345a3a38c2ab0e58a0fac0f48ec9ea6a9cf74e06c04631ea4fcaaae4a4e7c51447a0d6'
             'a441e14f4fa25e771d51e2d0e5cb626a8eddc4dfd0e9e91c6585b35cdf4e238bc56c76ad81aa269f25067cb60eeb6f9d431b710d6f40349867cbae73b434b3bd'
             '21a613ef65497ecf66daf31b43e02022c71195b48082ae7628a9d2ba8619819f69a6702c4c87e39e8718074c7ebfd674694a29a962049a16d47f1e5f748c78c3')
@@ -227,13 +223,6 @@ prepare() {
 #        scripts/config --module CONFIG_WINESYNC
 #      fi
 
-        ### Enable protect file mapings under memory pressurep
-    if [ -n "$_mm_protect" ]; then
-    		echo "Enabling protect file mappings under memory pressure..."
-    	scripts/config --enable CONFIG_UNEVICTABLE_FILE
-    	scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
-    	scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
-    fi
 
   ### Set performance governor
     if [ -n "$_per_gov" ]; then
@@ -272,13 +261,16 @@ prepare() {
       scripts/config --enable CONFIG_CACULE_SCHED
       scripts/config --disable CONFIG_CACULE_RDB
       scripts/config --disable CONFIG_FAIR_GROUP_SCHED
-      scripts/config --disable CONFIG_SCHED_AUTOGROUP
+      scripts/config --enable CONFIG_SCHED_AUTOGROUP
       #scripts/config --set-val CONFIG_NR_CPUS "12"
       scripts/config --disable CONFIG_SCHED_DEBUG
       scripts/config --disable CONFIG_SCHED_INFO
       scripts/config --disable CONFIG_SCHEDSTATS
       scripts/config --disable CONFIG_DEBUG_KERNEL
       scripts/config --disable CONFIG_EXPERT
+      echo "Enabling KBUILD_CFLAGS -O3..."
+    	scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
+    	scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
       echo "Enable PREEMPT"
       scripts/config --disable CONFIG_PREEMPT_NONE
       scripts/config --disable CONFIG_PREEMPT_VOLUNTARY
