@@ -3,8 +3,8 @@
 _appname=TickTick
 _pkgname=ticktick
 pkgname=ticktick-nativefier
-pkgver=2020.04.09
-pkgrel=1
+pkgver=2021.04.30
+pkgrel=2
 pkgdesc='Todo list, checklist, and task manager app'
 arch=('any')
 url='https://www.ticktick.com'
