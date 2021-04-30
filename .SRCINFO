@@ -1,10 +1,12 @@
 pkgbase = openexr-thumbnailer
 	pkgdesc = Tool to display thumbnails for OpenEXR images in your file manager.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yama-chan/openexr-thumbnailer
 	arch = any
 	license = GPL
+	makedepends = cmake
+	makedepends = git
 	depends = gnome-common
 	depends = glib2
 	depends = gdk-pixbuf2
