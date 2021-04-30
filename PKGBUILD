@@ -12,7 +12,7 @@ pkgname=('scangearmp-mpseries-common'
 _pkgname=scangearmp
 
 pkgver=1.40
-pkgrel=10
+pkgrel=11
 _pkgreview=1
 
 pkgdesc="Canon IJ Scanner Driver for MP250, MP270, MP490, MP550, MP560, and MP640 series"
@@ -23,7 +23,7 @@ license=('custom')
 
 conflicts=('lib32-cnijfilter320')
 
-makedepends_x86_64=('gcc-multilib' 'libtool-multilib' 'lib32-gimp' 'lib32-libusb-compat' 'lib32-gtk2')
+makedepends_x86_64=('gcc-multilib' 'libtool-multilib' 'lib32-gimp' 'lib32-libusb-compat' 'libusb-compat' 'lib32-gtk2')
 makedepends_i686=('gcc' 'libtool' 'gimp' 'libusb-compat' 'gtk2')
 
 makedepends=('autoconf>=2.59' 'automake>=1.10' 'tar' 'make' 'sane')
@@ -70,7 +70,7 @@ package_scangearmp-mpseries-common() {
   conflicts=('scangearmp-common')
   provides=('scangearmp-common=1.40')
 
-  depends_x86_64=('lib32-libusb-compat' 'lib32-gimp')
+  depends_x86_64=('lib32-libusb-compat' 'libusb-compat' 'lib32-gimp')
   depends_i686=('libusb-compat' 'gimp')
   depends=('sane')
 
