@@ -28,6 +28,7 @@ prepare() {
   sed -i 's#\$(GO4TOPPATH)#$(DESTDIR)/&#g' Makefile
 
   # something change and the libraries are not found now at compilation time
+  # works in combination to NOT having go4 already installed in the system
   patch -Np2 < ${srcdir}/Makefile.config.patch
 
   # gSystem not found
@@ -36,6 +37,9 @@ prepare() {
   # something with time
   sed -i '1s;^;#include <TDatime.h>\n;' Go4ConditionsBase/TGo4Condition.cxx
   sed -i '1s;^;#include <TDatime.h>\n;' Go4AnalysisClient/TGo4AnalysisClientImp.cxx
+
+  # error: field ... has incomplete type ‘TString’
+  sed -i '1s;^;#include "TString.h"\n;' Go4ConditionsBase/TGo4Marker.h
 
   # error: incomplete type ‘TF1’ used in nested name specifier
   sed -i 's;#include "TLatex.h";&\n#include "TF1.h";g' Go4Proxies/TGo4BrowserProxy.cxx
@@ -49,6 +53,10 @@ prepare() {
 
   # error: invalid use of incomplete type ‘class TObjString’
   sed -i '1s;^;#include "TObjString.h"\n;' qt4/Go4QtRoot/QRootCanvas.cpp
+
+  # error: invalid use of incomplete type ‘class TCanvasImp’
+  sed -i '1s;^;#include "TCanvasImp.h"\n;' qt4/Go4GUI/TGo4ViewPanel.cpp
+
 }
 
 build() {
@@ -58,7 +66,7 @@ build() {
   make clean
 
   make prefix=/usr \
-       withqt=4 \
+       withqt=5 \
        GO4_OS=Linux \
        rpath=true \
        withdabc=yes \
