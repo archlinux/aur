@@ -3,7 +3,7 @@
 pkgname=pam-exec-oauth2
 pkgver=0.0.0
 _sha=023ac35ab559f3e0210c6dd4a88256234bfc7ce9
-pkgrel=1
+pkgrel=2
 pkgdesc='Allows Linux user authentication to OAuth2 via pam_exec'
 arch=(x86_64)
 url="https://github.com/shimt/$pkgname"
@@ -33,5 +33,5 @@ package() {
 	cd "$pkgname-$_sha"
 	install -Dm755 -t "$pkgdir/usr/bin/" "$pkgname"
 	install -Dm600 -t "$pkgdir/etc/" ../$pkgname.yml
-	install -Dm600 "../$pkgname.pam" "$pkgdir/etc/pam.d/${pkgname#pam-}"
+	install -Dm644 "../$pkgname.pam" "$pkgdir/etc/pam.d/${pkgname#pam-}"
 }
