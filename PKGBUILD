@@ -5,7 +5,7 @@
 # ported from i3-gaps PKGBUILD
 
 pkgname=i3-gaps-desktop
-pkgver=4.19.1
+pkgver=4.19.1.1
 pkgrel=1
 pkgdesc='A fork of i3-gaps with desktop manager support'
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ optdepends=('rxvt-unicode: The terminal emulator used in the default config.'
 backup=(etc/i3/config)
 options=('docs')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}-desktop.tar.gz")
-sha256sums=('b81bba72f98f2ecd5d6ce7c3c9b63a234292d07897a44de662d9adbb8e41019a')
+sha256sums=('343767b2a4d0d97cceb0fd09626eba69d2fa2178b23d3463128e8d7d2130eb41')
 
 build() {
     cd "i3"
