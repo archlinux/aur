@@ -1,0 +1,4 @@
+post_install()  {
+  printf ":: This plugin conflicts with Vim's built-in spell check.\n"
+  printf ":: Disable it with set nospell, either locally or in your configuration.\n"
+}

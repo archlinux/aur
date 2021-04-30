@@ -1,0 +1,20 @@
+pkgbase = vim-spelunker-git
+	pkgdesc = Improved Vim spelling plugin with camel case support
+	pkgver = r283.a0bc530
+	pkgrel = 1
+	url = https://github.com/kamykn/spelunker.vim
+	install = vim-spelunker-git.install
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-spelunker
+	provides = vim-ctrlp-spelunker
+	conflicts = vim-spelunker
+	conflicts = vim-ctrlp-spelunker
+	source = vim-spelunker-git::git+https://github.com/kamykn/spelunker.vim
+	sha256sums = SKIP
+
+pkgname = vim-spelunker-git
+
