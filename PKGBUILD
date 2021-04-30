@@ -1,8 +1,8 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=ctranslate2-git
-pkgver=1209.3190be5
-pkgrel=2
+pkgver=1235.6d8b6f9
+pkgrel=1
 pkgdesc='Fast inference engine for OpenNMT models'
 arch=('x86_64' 'i686')
 url='https://github.com/OpenNMT/ctranslate2'
@@ -18,11 +18,13 @@ source=(
         'git+https://github.com/NVlabs/cub.git'
         'git+https://github.com/thrust/thrust.git'
         'git+https://github.com/google/googletest.git'
+        'git+https://github.com/google/cpu_features.git'
 
 )
 md5sums=(
     'SKIP'
 
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -42,6 +44,7 @@ prepare() {
     git config submodule.third_party/cub.url "$srcdir/cub"
     git config submodule.third_party/thrust.url "$srcdir/thrust"
     git config submodule.third_party/googletest.url "$srcdir/googletest"
+    git config submodule.third_party/cpu_features.url "$srcdir/cpu_features"
     git submodule update
 }
 
