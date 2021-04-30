@@ -1,0 +1,12 @@
+pkgbase = seqencematrix
+	pkgdesc = Taxonomy-aware DNA sequence processing toolkit
+	pkgver = 1.8.2
+	pkgrel = 1
+	url = https://github.com/gaurav/taxondna
+	arch = x86_64
+	license = GPL2
+	source = https://github.com/gaurav/taxondna/releases/download/v1.8.2/SequenceMatrix.jar
+	sha256sums = SKIP
+
+pkgname = seqencematrix
+
