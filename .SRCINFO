@@ -1,14 +1,14 @@
-pkgbase = kubectl-kudo-bin
-	pkgdesc = Kubernetes Universal Declarative Operator (KUDO)
-	pkgver = 0.19.0
+pkgbase = kubectl-access-matrix-bin
+	pkgdesc = Review Access - kubectl plugin to show an access matrix for k8s server resources
+	pkgver = 0.4.7
 	pkgrel = 0
-	url = https://github.com/kudobuilder/kudo
+	url = https://github.com/corneliusweig/access-matrix
 	arch = x86_64
 	license = APACHE
-	conflicts = kudo
-	conflicts = kudo-git
-	source = kudo-0.19.0.tar.gz::https://github.com/kudobuilder/kudo/releases/download/v0.19.0/kudo_0.19.0_linux_x86_64.tar.gz
-	sha512sums = 2c21050c660ed84bb2b176ae09805c9d6aff94bece30c97f769d46bc31ac6cf67a3b294ecd7d6cbf538a5a0c3805f4b0cec14633f876697dd20bf7f05104ee3e
+	conflicts = access-matrix
+	conflicts = access-matrix-git
+	source = access-matrix-0.4.7.tar.gz::https://github.com/corneliusweig/rakkess/releases/download/v0.4.7/access-matrix-amd64-linux.tar.gz
+	sha512sums = 663bf8014f4d446a3850c7a254aa62554795c9c6a9f03c0ac09f2c916df1cbe0a458df256b9a04f16a30170fc564b45cd9d0daea2a8120ddfb6d8716f9f3cdb7
 
-pkgname = kubectl-kudo-bin
+pkgname = kubectl-access-matrix-bin
 

@@ -1,19 +1,19 @@
 # Maintainer Chris Werner Rau <aur@cwrau.io>
 
-_pkgname=kudo
+_pkgname=access-matrix
 pkgname=kubectl-$_pkgname-bin
-pkgver=0.19.0
+pkgver=0.4.7
 pkgrel=0
-pkgdesc="Kubernetes Universal Declarative Operator (KUDO)"
-url="https://github.com/kudobuilder/$_pkgname"
+pkgdesc="Review Access - kubectl plugin to show an access matrix for k8s server resources"
+url="https://github.com/corneliusweig/$_pkgname"
 license=('APACHE')
 arch=('x86_64')
-source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${_pkgname}_${pkgver}_linux_x86_64.tar.gz")
-sha512sums=('2c21050c660ed84bb2b176ae09805c9d6aff94bece30c97f769d46bc31ac6cf67a3b294ecd7d6cbf538a5a0c3805f4b0cec14633f876697dd20bf7f05104ee3e')
+source=("$_pkgname-$pkgver.tar.gz::${url/$_pkgname/rakkess}/releases/download/v$pkgver/${_pkgname}-amd64-linux.tar.gz")
+sha512sums=('663bf8014f4d446a3850c7a254aa62554795c9c6a9f03c0ac09f2c916df1cbe0a458df256b9a04f16a30170fc564b45cd9d0daea2a8120ddfb6d8716f9f3cdb7')
 conflicts=("$_pkgname" "${_pkgname}-git")
 
 package() {
-  install -D -m 0755 $srcdir/kubectl-$_pkgname $pkgdir/usr/bin/kubectl-$_pkgname
+  install -D -m 0755 $srcdir/$_pkgname-amd64-linux $pkgdir/usr/bin/kubectl-${_pkgname/-/_}
 }
 
 #vim: syntax=sh
