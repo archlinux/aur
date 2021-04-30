@@ -1,6 +1,6 @@
 pkgbase = kotatogram-desktop
 	pkgdesc = Kotatogram – experimental Telegram Desktop fork
-	pkgver = 1.4
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://kotatogram.github.io
 	arch = x86_64
@@ -26,9 +26,10 @@ pkgbase = kotatogram-desktop
 	depends = kwayland
 	depends = gtk3
 	depends = glibmm
+	depends = webkit2gtk
 	conflicts = kotatogram-desktop-bin
 	conflicts = kotatogram-desktop-dynamic-bin
-	source = kotatogram-desktop::git+https://github.com/kotatogram/kotatogram-desktop.git#tag=k1.4
+	source = kotatogram-desktop::git+https://github.com/kotatogram/kotatogram-desktop.git#tag=k1.4.1
 	source = kotatogram-desktop-libtgvoip::git+https://github.com/telegramdesktop/libtgvoip
 	source = kotatogram-desktop-rlottie::git+https://github.com/desktop-app/rlottie.git
 	source = kotatogram-desktop-lib_crl::git+https://github.com/desktop-app/lib_crl.git
@@ -46,7 +47,9 @@ pkgbase = kotatogram-desktop
 	source = kotatogram-desktop-lib_qr::git+https://github.com/desktop-app/lib_qr.git
 	source = kotatogram-desktop-lib_webrtc::git+https://github.com/desktop-app/lib_webrtc.git
 	source = kotatogram-desktop-tgcalls::git+https://github.com/TelegramMessenger/tgcalls.git
+	source = kotatogram-desktop-lib_webview::git+https://github.com/kotatogram/lib_webview.git
 	source = 0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP

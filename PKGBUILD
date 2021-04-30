@@ -1,14 +1,14 @@
 # Maintainer: Ilya Fedin <fedin-ilja2010@ya.ru>
 # Contributor: Auteiy <dmitry@auteiy.me>
 pkgname=kotatogram-desktop
-pkgver=1.4
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Kotatogram – experimental Telegram Desktop fork'
 arch=('x86_64')
 url="https://kotatogram.github.io"
 license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
-         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'gtk3' 'glibmm')
+         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'gtk3' 'glibmm' 'webkit2gtk')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'libtg_owt')
 conflicts=('kotatogram-desktop-bin' 'kotatogram-desktop-dynamic-bin')
 source=("${pkgname}::git+https://github.com/kotatogram/${pkgname}.git#tag=k${pkgver}"
@@ -29,8 +29,10 @@ source=("${pkgname}::git+https://github.com/kotatogram/${pkgname}.git#tag=k${pkg
         "${pkgname}-lib_qr::git+https://github.com/desktop-app/lib_qr.git"
         "${pkgname}-lib_webrtc::git+https://github.com/desktop-app/lib_webrtc.git"
         "${pkgname}-tgcalls::git+https://github.com/TelegramMessenger/tgcalls.git"
+        "${pkgname}-lib_webview::git+https://github.com/kotatogram/lib_webview.git"
         "0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch")
 sha512sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -68,8 +70,9 @@ prepare() {
     git config submodule.cmake.url "${srcdir}/${pkgname}-cmake_helpers"
     git config submodule.Telegram/ThirdParty/QR.url "${srcdir}/${pkgname}-QR-Code-generator"
     git config submodule.Telegram/lib_qr.url "${srcdir}/${pkgname}-lib_qr"
-    git config sumbodule.Telegram/lib_webrtc.url "${srcdir}/${pkgname}-lib_webrtc"
-    git config sumbodule.Telegram/ThirdParty/tgcalls.url "${srcdir}/${pkgname}-tgcalls"
+    git config submodule.Telegram/lib_webrtc.url "${srcdir}/${pkgname}-lib_webrtc"
+    git config submodule.Telegram/ThirdParty/tgcalls.url "${srcdir}/${pkgname}-tgcalls"
+    git config submodule.Telegram/lib_webview.url "${srcdir}/${pkgname}-lib_webview"
     git submodule update
 
     pushd cmake
