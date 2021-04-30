@@ -1,6 +1,6 @@
 pkgbase = downzemall
 	pkgdesc = A mass download manager based on the Qt5 framework and written in C/C++
-	pkgver = 2.3.1
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://setvisible.github.io/DownZemAll
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = downzemall
 	depends = youtube-dl
 	optdepends = libnotify: desktop notifications
 	optdepends = libappindicator-gtk3: tray icon
-	source = downzemall-2.3.1.tar.gz::https://github.com/setvisible/DownZemAll/archive/v2.3.1.tar.gz
+	source = downzemall-2.3.2.tar.gz::https://github.com/setvisible/DownZemAll/archive/v2.3.2.tar.gz
 	source = downzemall.desktop
-	sha256sums = b4fc3645bffce9313517f7d037451108fff64364ecaa3d422e755dbf558dca0f
+	sha256sums = 48d72182b5339f4314aab3dcda3f01d0708a1bda1a0c9ef8e80b36afcf26b34b
 	sha256sums = 3cb8f2eefbd9f04dd4b3a706058d8ab82c42514db81fbfbdf213fc833ca01eff
 
 pkgname = downzemall
