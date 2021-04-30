@@ -6,7 +6,7 @@ pkgname=("python-pytorch" "python-pytorch-opt" "python-pytorch-cuda" "python-pyt
 _pkgname="pytorch"
 pkgver=1.8.1
 _pkgver=1.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -54,8 +54,6 @@ source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v
         "${pkgname}-fmt::git+https://github.com/fmtlib/fmt.git"
         fix_include_system.patch
         use-system-libuv.patch
-        use-system-libuv2.patch
-        nccl_version.patch
         disable_non_x86_64.patch)
 sha256sums=('SKIP'
             'SKIP'
@@ -94,8 +92,6 @@ sha256sums=('SKIP'
             'SKIP'
             '557761502bbd994d9795bef46779e4b8c60ba0b45e7d60841f477d3b7f28a00a'
             'cd9ac4aaa9f946ac5eafc57cf66c5c16b3ea7ac8af32c2558fad0705411bb669'
-            '7b65c3b209fc39f92ba58a58be6d3da40799f1922910b1171ccd9209eda1f9eb'
-            'e4a96887b41cbdfd4204ce5f16fcb16a23558d23126331794ab6aa30a66f2e0d'
             'd3ef8491718ed7e814fe63e81df2f49862fffbea891d2babbcb464796a1bd680')
 
 prepare() {
@@ -146,9 +142,6 @@ prepare() {
 
   # Use system libuv
   patch -Np1 -i "${srcdir}"/use-system-libuv.patch
-
-  # FindNCCL patch to export correct nccl version
-  # patch -Np1 -i "${srcdir}"/nccl_version.patch
 
   # remove local nccl
   rm -rf third_party/nccl/nccl
