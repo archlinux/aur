@@ -1,44 +1,40 @@
-# Maintainer: Alex Talker
-# okular-frameworks-git:
-# Maintainer: Antonio Rojas
-# Contributor Martchus <martchus@gmx.net>
+# Merged with official ABS okular PKGBUILD by João, 2021/04/30 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Contributor: Alex Talker
 
 pkgname=okular-git
-pkgver=20.08.1.r120.gd78e2ff9e
+pkgver=21.07.70_r9293.g97264b534
 pkgrel=1
-pkgdesc='Universal document viewer'
-arch=(i686 x86_64)
-url='http://kde.org/applications/graphics/okular/'
-license=(GPL)
-depends=(kpty kirigami2 discount kdegraphics-mobipocket purpose threadweaver kactivities khtml chmlib djvulibre libspectre poppler-qt5 libkexiv2)
-makedepends=(extra-cmake-modules kdoctools git python ebook-tools qca-qt5)
-optdepends=('ebook-tools: mobi and epub support' 
-            'qca-qt5: support for encrypted ODF documents')
-conflicts=(kdegraphics-okular okular okular-frameworks-git)
-provides=(okular)
-replaces=(okular-frameworks-git)
-source=('git+https://invent.kde.org/graphics/okular.git')
+pkgdesc='Document Viewer'
+arch=($CARCH)
+url="https://kde.org/applications/graphics/okular/"
+license=(GPL LGPL FDL)
+groups=(kde-applications-git kde-graphics-git)
+depends=(djvulibre libspectre libkexiv2-git poppler-qt5 kpty-git kactivities-git threadweaver-git kjs-git kparts-git purpose-git discount phonon-qt5-git)
+makedepends=(git extra-cmake-modules-git ebook-tools kdegraphics-mobipocket-git kdoctools-git khtml-git chmlib)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+optdepends=('ebook-tools: mobi and epub support'
+            'kdegraphics-mobipocket-git: mobi support' 'libzip: CHM support'
+            'khtml-git: CHM support' 'chmlib: CHM support' 'calligra: ODT and ODP support'
+            'unrar: Comic Book Archive support' 'unarchiver: Comic Book Archive support (alternative)')
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd okular
-   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  mkdir -p build
-}
+  cd ${pkgname%-git}
+  _major_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MAJOR' CMakeLists.txt | cut -d '"' -f2)"
+  _minor_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MINOR' CMakeLists.txt | cut -d '"' -f2)"
+  _micro_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MICRO' CMakeLists.txt | cut -d '"' -f2)"
+  echo "${_major_ver}.${_minor_ver}.${_micro_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  }
 
 build() {
-  cd build
-  cmake ../okular \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DKDE_INSTALL_LIBDIR=lib
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
