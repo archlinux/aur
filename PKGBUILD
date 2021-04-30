@@ -3,7 +3,7 @@
 pkgbase=oidc-agent
 pkgname=('oidc-agent')
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A set of tools to manage OpenID Connect tokens and make them easily usable from the command line'
 arch=('x86_64')
 license=('MIT')
@@ -29,8 +29,8 @@ build() {
 
 package() {
   cd "$srcdir"/"${pkgbase}-${pkgver}"
-  make install_lib PREFIX="$pkgdir"
-  make install PREFIX="$pkgdir"
+  make install_lib PREFIX="$pkgdir" LIB_PATH="$pkgdir/usr/lib" BIN_AFTER_INST_PATH="/usr"
+  make install PREFIX="$pkgdir" LIB_PATH="$pkgdir/usr/lib" BIN_AFTER_INST_PATH="/usr"
   #make install BIN_PATH="${pkgdir}/usr" BIN_AFTER_INST_PATH="/usr" MAN_PATH="${pkgdir}/usr/share/man" CONFIG_PATH="${pkgdir}/etc" BASH_COMPLETION_PATH="${pkgdir}/usr/share/bash-completion/completions" LIB_PATH="${pkgdir}/usr/lib64" DESKTOP_APPLICATION_PATH="${pkgdir}/usr/share/applications" XSESSION_PATH="${pkgdir}/"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -1,7 +1,7 @@
 pkgbase = oidc-agent
 	pkgdesc = A set of tools to manage OpenID Connect tokens and make them easily usable from the command line
 	pkgver = 4.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/indigo-dc/oidc-agent
 	arch = x86_64
 	license = MIT
