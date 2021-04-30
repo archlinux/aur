@@ -2,14 +2,14 @@
 # Maintainer: heinrich5991 <heinrich5991@gmail.com>
 pkgname=srs
 pkgver=3.0_r1
-pkgrel=1
+pkgrel=2
 pkgdesc="High performance RTMP Server"
 arch=('x86_64')
 url="https://github.com/ossrs/srs"
 license=('MIT')
 depends=('openssl'
          'srs-state-threads')
-makedepends=('zlib' 'libtool' 'unzip' 'gcc' 'net-tools' 'make' 'python' 'patch' 'autoconf')
+makedepends=('zlib' 'unzip' 'net-tools' 'python' 'git')
 backup=(etc/srs/srs.conf)
 options=('docs')
 backup=('usr/conf/srs.conf')
