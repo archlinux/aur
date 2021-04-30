@@ -8,6 +8,7 @@ pkgbase = qt5-translations-git
 	license = GPL3
 	makedepends = git
 	depends = qt5-base-git
+	depends = qt5-tools-git
 	provides = qt5-translations
 	conflicts = qt5-translations
 	source = qt5-translations::git+https://code.qt.io/qt/qttranslations.git#branch=5.15
