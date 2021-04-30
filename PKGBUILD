@@ -3,14 +3,14 @@
 # Contributor: Marc Mettke <marc@itmettke.de>
 
 pkgname=firefox-kde-opensuse-bin
-pkgver=87.0
+pkgver=88.0
 _pkgrel=1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://aur.archlinux.org/packages/firefox-kde-opensuse"
-depends=('mozilla-common' 'libxt' 'mime-types'
+depends=('libxt' 'mime-types'
          'dbus-glib' 'hicolor-icon-theme'
          'libvpx' 'icu'  'libevent' 'nss>=3.28.3' 'nspr>=4.10.6' 'hunspell'
          'sqlite' 'libnotify' 'kmozillahelper' 'ffmpeg' 'gtk3'
@@ -37,7 +37,7 @@ validpgpkeys=(
         BBFE2FD421597395E4FC8C8DF6C85FEE79D661A4 # Björn "Thaodan" Bidar <theodorstormgrade@gmail.com>
 )
 
-sha256sums=('c8c0aef0513d41cb98645d3940d1f1cc13f888f9f8c4c2016901c10d289b5b8f'
+sha256sums=('182f5c531d94e61410c372c524927f2db887dc33b49b67f909f8803d14521dd8'
             'SKIP')
 
 package() {
