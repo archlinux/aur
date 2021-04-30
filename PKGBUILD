@@ -2,7 +2,7 @@
 
 _pkgname=qt5-script
 pkgname=$_pkgname-git
-pkgver=v5.6.0.alpha1.r3.g0967458
+pkgver=v5.15.3.lts.r2.g5cec94b
 pkgrel=1
 pkgdesc='Classes for making Qt applications scriptable. Provided for Qt 4.x compatibility'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=("qt5-base")
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://code.qt.io/qt/qtscript.git#branch=dev")
+source=("$_pkgname::git+https://code.qt.io/qt/qtscript.git#branch=5.15")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -37,5 +37,6 @@ package() {
 
     make INSTALL_ROOT="$pkgdir" install
 
-    install -D -m644 $srcdir/$_pkgname/LGPL_EXCEPTION.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LGPL_EXCEPTION.txt
+    mkdir -p "${pkgdir}"/usr/share/licenses/"${pkgname}"
+    install -D -m644 $srcdir/$_pkgname/LICENSE.* "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }

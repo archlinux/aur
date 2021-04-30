@@ -1,6 +1,6 @@
 pkgbase = qt5-script-git
 	pkgdesc = Classes for making Qt applications scriptable. Provided for Qt 4.x compatibility
-	pkgver = v5.6.0.alpha1.r3.g0967458
+	pkgver = v5.15.3.lts.r2.g5cec94b
 	pkgrel = 1
 	url = https://code.qt.io/cgit/qt/qtscript.git
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = qt5-script-git
 	depends = qt5-base
 	provides = qt5-script
 	conflicts = qt5-script
-	source = qt5-script::git+https://code.qt.io/qt/qtscript.git#branch=dev
+	source = qt5-script::git+https://code.qt.io/qt/qtscript.git#branch=5.15
 	sha256sums = SKIP
 
 pkgname = qt5-script-git
