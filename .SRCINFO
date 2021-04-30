@@ -1,6 +1,6 @@
 pkgbase = feroxbuster-git
 	pkgdesc = A fast, simple, recursive content discovery tool written in Rust.
-	pkgver = 1.0.5
+	pkgver = 0.0.0
 	pkgrel = 1
 	url = https://github.com/epi052/feroxbuster
 	arch = any

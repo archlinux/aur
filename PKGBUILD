@@ -1,7 +1,7 @@
 # Maintainer: spikecodes <19519553+spikecodes@users.noreply.github.com>
 pkgname=feroxbuster-git
 _pkgname=${pkgname%-git}
-pkgver=1.0.5
+pkgver=0.0.0
 pkgrel=1
 pkgdesc="A fast, simple, recursive content discovery tool written in Rust. "
 arch=('any')
@@ -15,9 +15,7 @@ sha256sums=("SKIP")
 
 pkgver() {
 	cd "${_pkgname}"
-	( set -o pipefail
-		printf "$(git describe --tags | awk -F- '{print $1}' | cut -c2-)"
-	)
+        git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
