@@ -2,32 +2,24 @@
 # Contributor: Markus Weimar <mail@markusweimar.de>
 _pkgname=ttf-iosevka-term-custom
 pkgname=${_pkgname}-git
-pkgver=r2317.a3fab8995
+pkgver=1619488675
 pkgrel=1
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
 license=('custom:OFL')
-makedepends=('git' 'nodejs>=12.16.0' 'npm' 'ttfautohint')
+makedepends=('git' 'nodejs>=12.22.0' 'npm' 'ttfautohint')
 depends=()
 conflicts=(${_pkgname})
 provides=(${_pkgname})
 replaces=('ttf-iosevka-termlig-custom-git')
-source=(
-  'git+https://github.com/be5invis/Iosevka#branch=dev'
-  'private-build-plans.toml.example'
-)
-sha256sums=(
-  'SKIP'
-  'fae9ae12fbf94d4276916b0aecc57fb5eb816c5bba03af2127483dbe068896b3'
-)
+source=('private-build-plans.toml.example')
+sha256sums=('3c3b60e894209794fde865673171ecefd9f46bda134dff4e240dd17b5eeb55ad')
 
-pkgver() {
-  cd Iosevka
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+prepare () {
+  rm -rf Iosevka
+  git clone --depth 1 --branch master 'https://github.com/be5invis/Iosevka'
 
-prepare() {
   buildplans="$HOME/.config/iosevka/private-build-plans.toml"
   if [[ -f "$buildplans" ]]; then
     cp "$buildplans" Iosevka/
@@ -37,14 +29,19 @@ prepare() {
   fi
 }
 
-build() {
+pkgver () {
+  cd Iosevka
+  git log -1 --format=%ct
+}
+
+build () {
   cd Iosevka
   npm install
   npm update
   npm run build -- ttf::${_pkgname#*-}
 }
 
-package() {
+package () {
   install -d "${pkgdir}/usr/share/fonts/TTF"
   install -m644 Iosevka/dist/*/ttf/*.ttf "${pkgdir}/usr/share/fonts/TTF/"
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
