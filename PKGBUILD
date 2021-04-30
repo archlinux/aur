@@ -2,7 +2,7 @@
 
 pkgname=lokoctl
 _distribution=lokomotive
-pkgdesc='A self-hosted, security-centric and composable Kubernetes distribution for bare-metal and cloud platforms.'
+pkgdesc='A tool for managing Lokomotive clusters, components and updates.'
 arch=(x86_64)
 url='https://kinvolk.io/lokomotive-kubernetes/'
 _url='https://github.com/kinvolk/lokomotive'
