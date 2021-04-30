@@ -2,11 +2,11 @@
 
 pkgname=ttf-lxgw-wenkai
 pkgver=0.302
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source Chinese font derived from Fontworks' Klee One."
 arch=('any')
 url='https://github.com/lxgw/LxgwWenKai'
-license=('OFL')
+license=('custom:OFL')
 
 _fontfiles=(
     'LXGWWenKai-Bold.ttf'
