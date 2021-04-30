@@ -4,6 +4,7 @@ pkgbase = evolution-etesync
 	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/evolution-etesync/
 	arch = x86_64
+	arch = aarch64
 	license = LGPL
 	makedepends = cmake
 	makedepends = meson
