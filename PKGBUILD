@@ -28,7 +28,7 @@ build(){
   # Build jellyfin-web
   cd jellyfin-web-$pkgver
 
-  yarn install
+  yarn install --cache-folder "$srcdir"/yarn-cache
 
   # Build jellyfin-server
   cd ../jellyfin-$pkgver
