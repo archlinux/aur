@@ -2,7 +2,7 @@
 # Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=gst-plugins-bad-git
-pkgver=1.18.0.r589.g99ebbf72e
+pkgver=1.18.0.r970.g4900e3583
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Bad Plugins"
 arch=('i686' 'x86_64')
