@@ -1,23 +1,21 @@
 pkgbase = qucs-qt5-git
-	pkgdesc = An integrated circuit simulator with a graphical user interface - experimental qt5 branch
-	pkgver = 0.0.20.rc1.r666.g99db53e97
+	pkgdesc = An integrated circuit simulator with a graphical user interface - modular branch
+	pkgver = r4538.deef90e5f
 	pkgrel = 1
 	url = http://qucs.sourceforge.net
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	makedepends = git
 	makedepends = gperf
 	depends = gcc-libs
 	depends = qt5-base
 	depends = qt5-script
 	depends = qt5-svg
-	depends = adms
 	depends = hicolor-icon-theme
-	depends = qucsator
-	optdepends = freehdl: to permit digital circuit simulation
+	optdepends = freehdl: digital circuit simulation
+	optdepends = qucsator: circuit simulation
 	optdepends = perl
-	source = git+https://github.com/Qucs/qucs.git#branch=refactor+qt5-22
+	source = git+https://github.com/Qucs/qucs.git#branch=modular
 	sha256sums = SKIP
 
 pkgname = qucs-qt5-git
-

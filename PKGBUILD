@@ -3,19 +3,22 @@
 # Contributor: Víctor Martínez Romanos <vmromanos@gmail.com>
 
 pkgname=qucs-qt5-git
-pkgver=0.0.20.rc1.r666.g99db53e97
+pkgver=r4538.deef90e5f
 pkgrel=1
-pkgdesc="An integrated circuit simulator with a graphical user interface - experimental qt5 branch"
+pkgdesc="An integrated circuit simulator with a graphical user interface - modular branch"
 arch=('x86_64')
 url="http://qucs.sourceforge.net"
-license=('GPL')
-depends=('gcc-libs' 'qt5-base' 'qt5-script' 'qt5-svg' 'adms' 'hicolor-icon-theme' 'qucsator')
+license=('GPL3')
+depends=('gcc-libs' 'qt5-base' 'qt5-script' 'qt5-svg' 'hicolor-icon-theme')
 makedepends=('git' 'gperf')
-optdepends=('freehdl: to permit digital circuit simulation'
-#	    'asco: to enable circuit optimization'
-	    'perl')
+optdepends=(
+    'freehdl: digital circuit simulation'
+    'qucsator: circuit simulation'
+#   'asco: circuit optimization'
+    'perl'
+  )
 source=(
-  'git+https://github.com/Qucs/qucs.git#branch=refactor+qt5-22'
+  'git+https://github.com/Qucs/qucs.git#branch=modular'
 )
 sha256sums=('SKIP')
 
@@ -37,7 +40,7 @@ prepare() {
 build() {
     cd "$srcdir/qucs"
 
-    ./configure --prefix=/usr --disable-doc
+    ./configure --prefix=/usr
     make RCC=/usr/bin/rcc-qt5
 }
 
