@@ -5,7 +5,9 @@ pkgbase = cloudflare-wrangler-bin
 	arch = x86_64
 	license = Apache
 	license = MIT
+	provides = cloudflare-wrangler=1.16.1
 	source = https://github.com/cloudflare/wrangler/releases/download/v1.16.1/wrangler-v1.16.1-x86_64-unknown-linux-musl.tar.gz
 	sha512sums = eaf90308fea76d4a14220de2c18eea295cc669a48781a8c59c2a8de2e85b56b67e7cef66ab8451635020fbe42c423ef112baa01080c765dcf42a68b88c2057d9
 
 pkgname = cloudflare-wrangler-bin
+
