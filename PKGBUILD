@@ -2,19 +2,19 @@
 
 _pkgname=qt5-tools
 pkgname=$_pkgname-git
-pkgver=v5.8.0.alpha1.r1.g13946e3
+pkgver=v5.15.0.r76.g33693a92
 pkgrel=1
 pkgdesc='A cross-platform application and UI framework (Development Tools, QtHelp)'
 arch=('i686' 'x86_64')
 url='https://code.qt.io/cgit/qt/qttools.git'
 license=('GPL3' 'LGPL')
-depends=('qt5-webkit-git' 'desktop-file-utils' 'qt5-translations-git' 'hicolor-icon-theme' 'xdg-utils')
+depends=('desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils')
 makedepends=('git')
 install='qt5-tools.install'
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('staticlibs') # libQt5UiTools builds as static only
-source=("$_pkgname::git+https://code.qt.io/qt/qttools.git#branch=dev"
+source=("$_pkgname::git+https://code.qt.io/qt/qttools.git#branch=5.15"
         'assistant.desktop' 'designer.desktop' 'linguist.desktop' 'qdbusviewer.desktop')
 sha256sums=('SKIP'
             'a34645c26ccedfd95a1285c316564828dc1a4da00072490d8be419b874286b55'
@@ -72,5 +72,6 @@ package() {
         ln -s /usr/bin/$(basename $b) "${pkgdir}"/usr/bin/$(basename $b)-qt5
     done
 
-    install -D -m644 $srcdir/$_pkgname/LGPL_EXCEPTION.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LGPL_EXCEPTION.txt
+    mkdir -p "${pkgdir}"/usr/share/licenses/"${pkgname}"
+    install -D -m644 $srcdir/$_pkgname/LICENSE.* "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }
