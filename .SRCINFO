@@ -1,6 +1,6 @@
 pkgbase = doomretro
 	pkgdesc = The classic, refined DOOM source port
-	pkgver = 4.0.8
+	pkgver = 4.0.9
 	pkgrel = 1
 	url = http://doomretro.com
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = doomretro
 	depends = sdl2_mixer
 	depends = glibc
 	optdepends = timidity++: for music playback
-	source = doomretro-4.0.8.tar.gz::https://github.com/bradharding/doomretro/archive/v4.0.8.tar.gz
-	b2sums = 3ebbca6e35ba93624185782798f64113db5a1cc888fff04f106af4acd30252a62241092f8f733294336501f61d626dd38f616da20fc1ec6b4754ea1c0194db11
+	source = doomretro-4.0.9.tar.gz::https://github.com/bradharding/doomretro/archive/v4.0.9.tar.gz
+	b2sums = f4b005774553d6329dc1bc1af323160f5f605a2702cc0f431b73995cf89d797ef0930838f0ec936f1a05b2616a705add826b49978be0ba33775dce7a5a4c5efe
 
 pkgname = doomretro
 
