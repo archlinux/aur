@@ -1,7 +1,9 @@
-# Maintainer: spikecodes <19519553+spikecodes@users.noreply.github.com>
+# Maintainer: theguy147 <yakamoz147 (at) protonmail (dot) com>
+# Contributor: spikecodes <19519553+spikecodes@users.noreply.github.com>
+
 pkgname=feroxbuster-git
 _pkgname=${pkgname%-git}
-pkgver=0.0.0
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="A fast, simple, recursive content discovery tool written in Rust. "
 arch=('any')
@@ -10,7 +12,7 @@ license=("MIT")
 makedepends=("git" "cargo")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-source=("${_pkgname}::git+${url}")
+source=("${_pkgname}::git+${url}.git")
 sha256sums=("SKIP")
 
 pkgver() {

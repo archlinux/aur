@@ -9,7 +9,7 @@ pkgbase = feroxbuster-git
 	makedepends = cargo
 	provides = feroxbuster
 	conflicts = feroxbuster
-	source = feroxbuster::git+https://github.com/epi052/feroxbuster
+	source = feroxbuster::git+https://github.com/epi052/feroxbuster.git
 	sha256sums = SKIP
 
 pkgname = feroxbuster-git
