@@ -5,13 +5,16 @@
 pkgname=tailscale-git
 _pkgname=tailscale
 pkgver=1.7.422+tf6e3240de
-pkgrel=1
+pkgrel=2
 pkgdesc="A mesh VPN that makes it easy to connect your devices, wherever they are."
 arch=("x86_64")
 url="https://tailscale.com"
 license=("MIT")
 makedepends=("git" "go")
 depends=("glibc")
+optdepends=('networkmanager: DNS resolver integration'
+            'openresolv: DNS resolver integration'
+            'systemd: DNS resolver integration with systemd-resolved')
 provides=($_pkgname)
 conflicts=($_pkgname)
 backup=("etc/default/tailscaled")
