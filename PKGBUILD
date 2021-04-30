@@ -7,11 +7,11 @@ pkgrel=1
 pkgdesc="A simplified interface to the Gnome libxml2 and libxslt libraries for Pure"
 arch=("i686" "x86_64")
 license=('LGPL3')
-url="http://purelang.bitbucket.org/"
+url="https://agraef.github.io/pure-lang/"
 depends=('pure' 'libxml2' 'libxslt')
 makedepends=()
 groups=(pure-complete pure-web)
-source=("https://bitbucket.org/purelang/pure-lang/downloads/$pkgname-$pkgver.tar.gz")
+source=("https://github.com/agraef/pure-lang/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
 md5sums=('245f8c39c2c09da1730f2bb3926d1870')
 
 build() {
