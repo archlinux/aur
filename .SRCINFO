@@ -1,0 +1,25 @@
+pkgbase = salt-viewer
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/GuiltyCat/SaltViewer
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	depends = unrar
+	depends = poppler
+	depends = python-send2trash
+	depends = python-pillow
+	depends = python-send2trash
+	depends = python-cairosvg
+	depends = python-natsort
+	depends = python-py7zr
+	depends = python-pdf2image
+	depends = python-rarfile
+	optdepends = unarchiver: unrar alternative
+	optdepends = libarchive: unar alternative
+	source = https://github.com/GuiltyCat/SaltViewer/archive/refs/tags/v0.1.2.tar.gz
+	md5sums = SKIP
+
+pkgname = salt-viewer
+
