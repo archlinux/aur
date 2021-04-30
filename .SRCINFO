@@ -1,8 +1,8 @@
 pkgbase = journal-git
 	pkgdesc = An agnostic approach to note management and personal organization.
 	pkgver = v1.1.r1.g95bef0d
-	pkgrel = 1
-	url = https://github.com/lbcnz/journal
+	pkgrel = 2
+	url = https://github.com/danisztls/journal
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -12,7 +12,7 @@ pkgbase = journal-git
 	depends = bat
 	provides = journal
 	conflicts = journal
-	source = git://github.com/lbcnz/journal#branch=main
+	source = git://github.com/danisztls/journal#branch=main
 	sha512sums = SKIP
 
 pkgname = journal-git

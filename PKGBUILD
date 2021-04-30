@@ -1,10 +1,10 @@
 # Maintainer: Daniel Souza <danisztls@gmail.com>
 
 _gitbranch=main
-_gitauthor=lbcnz
+_gitauthor=danisztls
 pkgname=journal-git
 pkgver=v1.1.r1.g95bef0d
-pkgrel=1
+pkgrel=2
 pkgdesc="An agnostic approach to note management and personal organization."
 arch=('any')
 license=('GPL3')
