@@ -11,7 +11,7 @@ source=("https://github.com/binex-dsk/$_pkgname/archive/$pkgver.tar.gz")
 md5sums=('10875cba388b6502b5e6999280ad5c31')
 provides=('passman')
 conflicts=('passman-git' 'passman++-devel' 'passman++-lts')
-depends=('botan' 'qt6-base')
+depends=('botan' 'qt6-base' 'libpassman')
 arch=('x86_64')
 
 build() {
