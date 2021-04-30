@@ -25,6 +25,7 @@ build() {
         --single-instance \
         --tray \
         --verbose \
+        --internal-urls "facebook.com|api.twitter.com|ticktick.com" \
         https://www.ticktick.com
 }
 
