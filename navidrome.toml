@@ -1,6 +1,8 @@
+# additional configuration options can be seen
+# https://www.navidrome.org/docs/usage/configuration-options/#available-options
 MusicFolder = "/var/lib/Music"
+#BaseURL = ""
 #LastFM.ApiKey = ""
 #LastFM.Secret = ""
 #Spotify.ID = ""
 #Spotify.Secret = ""
-#DevActivityPanel = false
