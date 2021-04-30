@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="manage local AUR repo"
 arch=('any')
 url="https://github.com/SomethingGeneric/aurtomatic"
-license=('GPL')
+license=('custom:nolicense')
 depends=('python')
 provides=('aurtomatic')
 
