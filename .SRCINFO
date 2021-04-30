@@ -1,12 +1,12 @@
 pkgbase = kicad-library-utils-git
 	pkgdesc = Some scripts for helping with library development, git checkout
-	pkgver = r992.0c0b035
-	pkgrel = 2
-	url = https://github.com/KiCad/kicad-library-utils
+	pkgver = r1004.704becd
+	pkgrel = 1
+	url = https://gitlab.com/kicad/libraries/kicad-library-utils
 	arch = any
 	license = GPLv3
 	depends = python3
-	source = git+https://github.com/KiCad/kicad-library-utils
+	source = git+https://gitlab.com/kicad/libraries/kicad-library-utils.git#branch=v5
 	sha256sums = SKIP
 
 pkgname = kicad-library-utils-git

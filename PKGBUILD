@@ -2,15 +2,15 @@
 
 _pkgname=kicad-library-utils
 pkgname="${_pkgname}-git"
-pkgver=r992.0c0b035
-pkgrel=2
+pkgver=r1004.704becd
+pkgrel=1
 pkgdesc='Some scripts for helping with library development, git checkout'
 arch=('any')
-url='https://github.com/KiCad/kicad-library-utils'
+url='https://gitlab.com/kicad/libraries/kicad-library-utils'
 license=('GPLv3')
 depends=('python3')
 source=(
-  "git+${url}"
+  "git+${url}.git#branch=v5"
 )
 sha256sums=(
   'SKIP'
