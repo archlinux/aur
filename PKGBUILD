@@ -1,19 +1,18 @@
 # Maintainer Chris Werner Rau <aur@cwrau.io>
 
-_pkgname=kudo
-pkgname=kubectl-$_pkgname-bin
-pkgver=0.19.0
+_binname=kubectl-node_shell
+pkgname=${_binname/_/-}
+pkgver=1.2.5
 pkgrel=0
-pkgdesc="Kubernetes Universal Declarative Operator (KUDO)"
-url="https://github.com/kudobuilder/$_pkgname"
+pkgdesc="Exec into node via kubectl"
+url="https://github.com/kvaps/$pkgname"
 license=('APACHE')
 arch=('x86_64')
-source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${_pkgname}_${pkgver}_linux_x86_64.tar.gz")
-sha512sums=('2c21050c660ed84bb2b176ae09805c9d6aff94bece30c97f769d46bc31ac6cf67a3b294ecd7d6cbf538a5a0c3805f4b0cec14633f876697dd20bf7f05104ee3e')
-conflicts=("$_pkgname" "${_pkgname}-git")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha512sums=('70e298224d7e8b3260942b433c86430369fadecfc195753a312f616a15d1d1505963e9a9cd63f0fadb2522edbeeec4b3afdf20e965b53251302304804338de46')
 
 package() {
-  install -D -m 0755 $srcdir/kubectl-$_pkgname $pkgdir/usr/bin/kubectl-$_pkgname
+  install -D -m 0755 $srcdir/$pkgname-$pkgver/$_binname $pkgdir/usr/bin/$_binname
 }
 
 #vim: syntax=sh
