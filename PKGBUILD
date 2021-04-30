@@ -3,14 +3,15 @@
 pkgname=nsfminer-cuda
 _pkgname=nsfminer
 pkgver=1.3.13
-pkgrel=1
+pkgrel=2
 pkgdesc='No Fee Ethash miner for AMD and Nvidia'
 url='https://github.com/no-fee-ethereum-mining/nsfminer'
 license=('GPL3')
 arch=('x86_64')
 depends=('cuda' 'opencl-mesa' 'mesa' 'ethash-lib')
 makedepends=('cmake')
-conflicts=('ethminer-cuda')
+conflicts=('ethminer-cuda' 'nsfminer-cuda-opencl')
+provides=('nsfminer')
 source=(https://github.com/no-fee-ethereum-mining/$_pkgname/archive/refs/tags/v$pkgver.tar.gz
         https://github.com/ethereum/cable/archive/refs/tags/v0.2.14.tar.gz)
 sha256sums=('a692628346301f7c3d56d19f50a973405dc0d2142a82a132d7c3367c9505f675'
