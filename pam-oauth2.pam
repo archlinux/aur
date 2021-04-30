@@ -1,0 +1,4 @@
+#%PAM-1.0
+
+auth sufficient pam_oauth2.so https://example.com/oauth2/tokeninfo?access_token= uid grp=tester
+auccount sufficient pam_oauth2.so
