@@ -16,9 +16,9 @@ license=('GPL2')
 url="http://linux-pam.org"
 depends=('glibc' 'libtirpc' 'audit' 'libselinux' 'pambase-selinux' 'libaudit.so' 'libxcrypt' 'libcrypt.so')
 makedepends=('flex' 'w3m' 'docbook-xml>=4.4' 'docbook-xsl')
-provides=('libpam.so' 'libpamc.so' 'libpam_misc.so')
 conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
-provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
+provides=('libpam.so' 'libpamc.so' 'libpam_misc.so'
+          "${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 backup=(etc/security/{access.conf,faillock.conf,group.conf,limits.conf,namespace.conf,namespace.init,pam_env.conf,time.conf} etc/environment)
 groups=('selinux')

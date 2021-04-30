@@ -18,6 +18,9 @@ pkgbase = pam-selinux
 	depends = libaudit.so
 	depends = libxcrypt
 	depends = libcrypt.so
+	provides = libpam.so
+	provides = libpamc.so
+	provides = libpam_misc.so
 	provides = pam=1.5.1-1
 	provides = selinux-pam=1.5.1-1
 	conflicts = pam
