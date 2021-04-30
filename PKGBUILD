@@ -1,7 +1,7 @@
 # Maintainer: Elijah Gregg <lovetocode999@ctrl-c.club>
 pkgname=python-makelove-git
 _name="makelove"
-pkgver=0.0.6.r10.g13732ab
+pkgver=0.0.6.r11.g1a3de34
 pkgrel=1
 pkgdesc="A packaging tool for löve games"
 arch=("x86_64")
