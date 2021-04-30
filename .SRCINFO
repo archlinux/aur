@@ -1,0 +1,14 @@
+pkgbase = libsmacker
+	pkgdesc = A C library for decoding .smk Smacker Video files
+	pkgver = 1.1.1r35
+	pkgrel = 1
+	url = http://libsmacker.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	depends = glibc
+	source = https://downloads.sourceforge.net/project/libsmacker/libsmacker-1.1/libsmacker-1.1.1r35.tar.gz
+	sha256sums = bb9c22c02ecda189a3389c9340a0eb6a8f287aa257099b54c3d9e1802a454630
+
+pkgname = libsmacker
+
