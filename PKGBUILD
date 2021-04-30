@@ -2,7 +2,7 @@
 # Contributor: Markus Weimar <mail@markusweimar.de>
 _pkgname=ttf-iosevka
 pkgname=${_pkgname}-git
-pkgver=r2089.115f5b19
+pkgver=1619488675
 pkgrel=1
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
@@ -12,26 +12,27 @@ makedepends=('git' 'nodejs>=12.16.0' 'npm' 'ttfautohint')
 depends=()
 conflicts=(${_pkgname})
 provides=(${_pkgname})
-source=(
-  'git+https://github.com/be5invis/Iosevka'
-)
-sha256sums=(
-  'SKIP'
-)
+source=()
+sha256sums=()
 
-pkgver() {
-  cd Iosevka
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+prepare () {
+  rm -rf Iosevka
+  git clone --depth 1 --branch master 'https://github.com/be5invis/Iosevka'
 }
 
-build() {
+pkgver () {
+  cd Iosevka
+  git log -1 --format=%ct
+}
+
+build () {
   cd Iosevka
   npm install
   npm update
   npm run build -- ttf::${_pkgname#*-}
 }
 
-package() {
+package () {
   install -d "${pkgdir}/usr/share/fonts/TTF"
   install -m644 Iosevka/dist/*/ttf/*.ttf "${pkgdir}/usr/share/fonts/TTF/"
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
