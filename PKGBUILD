@@ -1,7 +1,7 @@
 # Maintainer: Sam L. Yes <samlukeyes123@gmail.com>
 pkgname=com.qq.weixin.spark
-pkgver=3.1.0.41spark0
-pkgrel=2
+pkgver=3.2.1.127spark0
+pkgrel=1
 epoch=
 pkgdesc="Tencent WeChat Client on Deepin Wine 5 (from Spark Store)"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ options=()
 install=wechat.install
 changelog=
 source=("https://sucdn.jerrywang.top/store/chat/${pkgname}/${pkgname}_${pkgver}_i386.deb")
-md5sums=('1657615d7e945f0dd2f2283754db602e')
+md5sums=('d4c75622d33e5ae5f8d59f0b6b70de00')
 validpgpkeys=()
 
 package() {
