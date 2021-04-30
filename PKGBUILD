@@ -6,12 +6,12 @@
 # Contributor: Moses Miller <Majora320@gmail.com>
 
 pkgname=counter-strike-2d
-pkgver=1.0.0.4
+pkgver=1.0.1.1
 _ver=${pkgver//./}
 pkgrel=1
 pkgdesc="More than just a freeware clone of the well known game Counter-Strike"
 arch=('i686' 'x86_64')
-url="http://www.cs2d.com/"
+url="https://www.unrealsoftware.de"
 license=('custom')
 if [ "$CARCH" == "x86_64" ]; then
   depends=('lib32-freetype2' 'lib32-libtxc_dxtn' 'lib32-glu')
@@ -37,7 +37,7 @@ backup=(opt/cs2d/sys/autobuy.cfg    opt/cs2d/sys/autoexec.cfg
         opt/cs2d/sys/weapons.cfg    opt/cs2d/sys/weapons_recoil.cfg
         opt/cs2d/sys/favorites.lst  opt/cs2d/sys/bans.lst 
         opt/cs2d/sys/serverinfo.txt opt/cs2d/sys/servertransfer.lst)
-sha512sums=('56932c0326c74d943a418793720286e38a8f0d70791f8e0fbf3308ffff4c68520ec0a5f35d5a65ec9a512b3d95bc452be3a87525a47737d76c75271da258ee0d'
+sha512sums=('ae69edb5ff2afc3104f045dd403112b4bc094b35deedf0aaf6a2a2441493556912e40954d189bde7ab489c05a98d2a077f95d30e876ddafaff95b38d37e20833'
             'd7d452fa4a2310ec2ac68c2c500e2a66f3a6df2291ad6615f9a957cbc6cb4ccd7f00f9578ccebeb1367aa21205e3743b16463d841c63c73f9b0bfbbf37bd6992'
             'dfe79598af30797195fad38461119f7d611021577a1e1e624567adeceade8f9bc4c97cd110515e492d612d09b740f78faf7dce55448f64a9a698e7748f121a80')
 _url=http://www.unrealsoftware.de/get.php?get
@@ -48,7 +48,7 @@ grabcid() {
 }
 
 _cid=$(grabcid) # this will hide the cmd line above from AUR interface
-source=(cs2d_${_ver}_linux.zip::"$_url=cs2d_${_ver}_linux.zip&p=1&cid=${_cid}"
+source=(cs2d_${_ver}_linux.zip::"$_url=cs2d_${_ver}_linux.zip&p=1&cid=16245"
         "cs2d.desktop"
         "cs2d.png")
 options=(emptydirs)
