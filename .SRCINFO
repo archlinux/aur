@@ -1,11 +1,11 @@
 pkgbase = otf-fontemon
 	pkgdesc = World's first video game in a font.
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/mmulet/font-game-engine
 	arch = any
 	license = GPL3
-	source = otf-fontemon-1.0-3-fontemon_small.otf::https://github.com/mmulet/font-game-engine/releases/download/1.0/fontemon_small.otf
+	source = otf-fontemon-1.0-4-fontemon_small.otf::https://github.com/mmulet/font-game-engine/releases/download/1.0/fontemon_small.otf
 	sha256sums = 9fa30993fbdd822ab8476ee992056f45d0abf0e31205291fa2cd142c8ec8300f
 
 pkgname = otf-fontemon

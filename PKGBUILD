@@ -2,7 +2,7 @@
 
 pkgname=otf-fontemon
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="World's first video game in a font."
 arch=('any')
 url='https://github.com/mmulet/font-game-engine'
