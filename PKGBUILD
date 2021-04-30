@@ -1,7 +1,7 @@
 # Maintainer: Daniel Souza <danisztls@gmail.com>
 
 _gitbranch=main
-_gitauthor=lbcnz
+_gitauthor=danisztls
 pkgname=fzfx-git
 pkgver=v1.1.2.r0.ged3d2f1
 pkgrel=1
