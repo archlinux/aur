@@ -1,0 +1,28 @@
+pkgbase = strawberry-qt6
+	pkgdesc = A music player aimed at audio enthusiasts and music collectors (QT6 version)
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://www.strawbs.org/
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = boost
+	makedepends = qt6-tools
+	depends = chromaprint
+	depends = protobuf
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = udisks2
+	depends = libcdio
+	depends = libgpod
+	depends = libmtp
+	depends = fftw
+	optdepends = gst-libav: additional codecs
+	optdepends = gst-plugins-bad: additional codecs
+	optdepends = gst-plugins-ugly: additional codecs
+	conflicts = strawberry
+	source = https://github.com/jonaski/strawberry/releases/download/0.9.2/strawberry-0.9.2.tar.xz
+	sha256sums = e9bf7dd862364dd7debf5651d8e44acd74380be11c27e7c9b1e33203eeacb266
+
+pkgname = strawberry-qt6
+
