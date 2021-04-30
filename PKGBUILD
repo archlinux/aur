@@ -26,4 +26,8 @@ build() {
 package() {
 	install -Dm644 "${_pkgname}/LICENSE" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
 	install -Dm755 "${_pkgname}/target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+        # shell completions
+        install -Dm644 "${_pkgname}/shell_completions/${_pkgname}.fish" "$pkgdir/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
+        install -Dm644 "${_pkgname}/shell_completions/_${_pkgname}"     "$pkgdir/usr/share/zsh/site-functions/_${_pkgname}"
 }
