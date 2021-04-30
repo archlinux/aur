@@ -1,0 +1,17 @@
+pkgbase = gord-git
+	pkgdesc = Discord TUI client - Fork of cordless (git releases)
+	pkgver = 2021.04.19.r4.g5db229e
+	pkgrel = 1
+	url = https://github.com/cainy-a/gord/
+	arch = x86_64
+	license = BSD
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = gord
+	conflicts = gord-bin
+	source = git+https://github.com/cainy-a/gord.git
+	md5sums = SKIP
+
+pkgname = gord-git
+
