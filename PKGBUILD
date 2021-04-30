@@ -3,7 +3,7 @@
 pkgname=adguardhome
 _pkgname=AdGuardHome
 pkgver=0.106.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Network-wide ads and trackers blocking DNS server"
 arch=(x86_64 aarch64 armv7h armv6h)
@@ -22,7 +22,8 @@ b2sums=('4c5d5169464aecaad00ba93feef5e092fa24b8d3624b171351ff26526b6733947ee299f
 build(){
   cd "$_pkgname-$pkgver"
   # https://github.com/AdguardTeam/AdGuardHome/issues/2668
-  make -j1
+
+  make -j1 CHANNEL=release VERBOSE=1
 }
 
 package() {
