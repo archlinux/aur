@@ -1,7 +1,7 @@
 # Maintainer: Alban Fichet <alban.fichet@gmx.fr>
 pkgname=spectral-viewer
 pkgver=3.2.4
-pkgrel=7
+pkgrel=8
 pkgdesc="Tool for visualising and manipulating spectral images and HDR images."
 arch=('any')
 url="https://adufay.gitlabpages.inria.fr/SpectralViewer/"
@@ -10,7 +10,7 @@ groups=()
 depends=('qt5-base' 'qt5-charts' 'qt5-svg')
 makedepends=('git' 'cmake')
 checkdepends=()
-optdepends=('eigen3')
+optdepends=('eigen')
 provides=($pkgname=$pkgver)
 conflicts=()
 replaces=()
