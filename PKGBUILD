@@ -5,12 +5,12 @@ pkgname=vidcutter
 pkgver=6.0.5
 pkgrel=2
 pkgdesc='Modern, simple to use, constantly evolving and hella fast media cutter + joiner with frame-accurate SmartCut technology'
-arch=(x86_64)
+arch=('x86_64')
 url='https://github.com/ozmartian/vidcutter'
-license=(GPL3)
-depends=(ffmpeg mediainfo mpv python-opengl python-pyqt5 python-simplejson)
-makedepends=(python-setuptools cython)
-source=(https://github.com/ozmartian/$pkgname/archive/$pkgver/$pkgname-$pkgver.tar.gz)
+license=('GPL3')
+depends=('ffmpeg' 'mediainfo' 'mpv' 'python-opengl' 'python-pyqt5' 'python-simplejson')
+makedepends=('python-setuptools' 'cython')
+source=("https://github.com/ozmartian/$pkgname/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('b33c50606de20d480f14682d4c958d266257a34f8b2765a6c1a7aef991bec769')
 
 prepare() {
@@ -21,11 +21,11 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  python3 setup.py build
+  python setup.py build
 }
 
 package() {
   cd $pkgname-$pkgver
   export PYTHONHASHSEED=0
-  python3 setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
