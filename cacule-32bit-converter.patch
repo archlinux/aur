@@ -15,10 +15,10 @@ index c99fc326ec24..71c27133c53c 100644
  
  #endif
  #ifdef CONFIG_CACULE_SCHED
--int cacule_max_lifetime					= 30000; // in ms
-+int cacule_max_lifetime					= 4000; // in ms
- int cacule_harsh_mode					= 0;
- int interactivity_factor				= 32768;
+-int __read_mostly cacule_max_lifetime			= 22000; // in ms
++int __read_mostly cacule_max_lifetime			= 4000; // in ms
+ int __read_mostly interactivity_factor			= 32768;
+ unsigned int __read_mostly interactivity_threshold	= 20480;
  #endif
 @@ -602,6 +604,7 @@ calc_interactivity(u64 now, struct cacule_node *se)
  {
