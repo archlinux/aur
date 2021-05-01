@@ -1,0 +1,28 @@
+pkgbase = chia-bin
+	pkgdesc = A new blockchain and smart transaction platform that is easier to use, more efficient, and secure. - Binary Release, Provides GUI
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://www.chia.net/
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxtst
+	depends = xdg-utils
+	depends = python-atspi
+	depends = libdrm
+	depends = libxcb
+	depends = gvfs
+	provides = chia
+	provides = chia-gui
+	conflicts = chia
+	conflicts = chia-gui
+	source_x86_64 = https://github.com/Chia-Network/chia-blockchain/releases/download/1.1.2/chia-blockchain_1.1.2_amd64.deb
+	sha256sums_x86_64 = 4671de0981357401766682da21964f6957cc9f07d46ff08010ba0cfe20bb0fe5
+	source_aarch64 = https://github.com/Chia-Network/chia-blockchain/releases/download/1.1.2/chia-blockchain_1.1.2_arm64.deb
+	sha256sums_aarch64 = e8bed385599ec22cad115bb153abe9a21b539006126c3fa79455ff7638100292
+
+pkgname = chia-bin
+
