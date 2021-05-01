@@ -19,6 +19,12 @@ post_install() {
 
 post_upgrade () {
 	chown -R bee:bee /var/lib/bee /etc/bee
+
+	printf  "#######################################################################################\
+		\n# Please diff your config in /etc/bee/config.toml with the new one provided by the    #\
+		\n# package in /etc/bee/config.toml.pacnew for any changes made upstream as the upgrade #\
+		\n# process doesn't touch your existing configuration.                                  #\
+		\n#######################################################################################\n"
 }
 
 pre_remove() {
