@@ -16,7 +16,7 @@ source=(
   "https://github.com/humbug/box/releases/download/${pkgver}/box.phar"
   "https://raw.githubusercontent.com/humbug/box/${pkgver}/LICENSE"
 )
-sha512sums=('cd0a8bc290e0cfb51367480938b31fa8706e441c8931a46ea9faac32c521a04fb7377d589aca8167e83071dbd6d21a23417e496049ea01734ced025c753f2808'
+sha512sums=('b593d908d562ce2e0f4cfeaf84cbc6fb315a777550844e381f07ed546640039e7d4e52f0a9cbf66c691cfaac4c43c5ffbcd4b69052bc07718383da4d74b23e14'
             '4574410c9a00c41e11d166bcc0d44b4e31b5beaf24bf498a608ebf611e86466a3a61549da6d608b714b3c32c5c361a1514baf38e4db2a5fc0a0d36b69169cb50')
 
 package() {
