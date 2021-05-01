@@ -1,7 +1,7 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 
 pkgname=xscreensaver-aerial
-pkgver=1.20
+pkgver=1.21
 pkgrel=1
 arch=(any)
 url="https://github.com/graysky2/xscreensaver-aerial"
@@ -14,7 +14,7 @@ optdepends=(
 )
 install=readme.install
 source=("https://github.com/graysky2/xscreensaver-aerial/archive/v$pkgver.tar.gz")
-b2sums=('4f25e7f66fdd272a67ef292dc1cc249a2e64f3c08580d67f0d3aed9530661ad7891587f4f9347ea31a75e5fe39191e15c20d6a5008a625d4eb59df7c404149dd')
+b2sums=('d4ff7880ac25299ca582be4cb26ae0592cf0a30c15af233c7ad9ee094aabfff418bc402ed087aa78f9cdca1b35dadd5c4644878547c70191cce3c30c9e15ebb5')
 
 package() {
 	cd "$pkgname-$pkgver"

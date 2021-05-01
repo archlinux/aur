@@ -1,6 +1,6 @@
 pkgbase = xscreensaver-aerial
 	pkgdesc = xscreensaver hack that randomly selects one of the Apple TV4 HD aerial movies
-	pkgver = 1.20
+	pkgver = 1.21
 	pkgrel = 1
 	url = https://github.com/graysky2/xscreensaver-aerial
 	install = readme.install
@@ -11,8 +11,8 @@ pkgbase = xscreensaver-aerial
 	depends = wget
 	optdepends = aerial-2k-videos: pre-downloaded videos to save bandwidth
 	optdepends = aerial-4k-videos: pre-downloaded videos to save bandwidth
-	source = https://github.com/graysky2/xscreensaver-aerial/archive/v1.20.tar.gz
-	b2sums = 4f25e7f66fdd272a67ef292dc1cc249a2e64f3c08580d67f0d3aed9530661ad7891587f4f9347ea31a75e5fe39191e15c20d6a5008a625d4eb59df7c404149dd
+	source = https://github.com/graysky2/xscreensaver-aerial/archive/v1.21.tar.gz
+	b2sums = d4ff7880ac25299ca582be4cb26ae0592cf0a30c15af233c7ad9ee094aabfff418bc402ed087aa78f9cdca1b35dadd5c4644878547c70191cce3c30c9e15ebb5
 
 pkgname = xscreensaver-aerial
 
