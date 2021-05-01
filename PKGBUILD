@@ -1,7 +1,8 @@
-# Maintainer: Dario Bosch <LastnameFirstname at gmail dot com>
+# Maintainer: Liam Timms <timms5000 at gmail dot com>
+# Contributor: Dario Bosch <LastnameFirstname at gmail dot com>
 
 pkgname=mrtrix3
-pkgver=r6677.fce21191
+pkgver=r6677.fce21191f
 pkgrel=1
 pkgdesc="tools for diffusion MRI analyses, data conversion and a viewer (mrview)"
 arch=('x86_64')
