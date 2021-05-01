@@ -1,0 +1,12 @@
+pkgbase = chfs
+	pkgdesc = CuteHttpFileServer(CHFS) is a free, HTTP-protocol file-sharing server that is quickly accessible using a browser
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://iscute.cn/chfs
+	arch = x86_64
+	license = custom
+	source = http://iscute.cn/tar/chfs/2.0/chfs-linux-amd64-2.0.zip
+	sha256sums = ef14f7cb385054d7e23121d94b673810e3a67c80e3efdb179068e4ad6bb58cd1
+
+pkgname = chfs
+
