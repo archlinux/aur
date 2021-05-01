@@ -1,6 +1,6 @@
 pkgbase = wechat-nativefier
 	pkgdesc = WeChat desktop built with nativefier (electron)
-	pkgver = 20210501.1
+	pkgver = 20210501.2
 	pkgrel = 1
 	url = https://wx.qq.com/
 	arch = x86_64

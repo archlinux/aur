@@ -2,7 +2,7 @@
 
 _instname=WeChat
 pkgname=wechat-nativefier
-pkgver=20210501.1
+pkgver=20210501.2
 pkgrel=1
 pkgdesc="WeChat desktop built with nativefier (electron)"
 arch=("x86_64")
@@ -26,13 +26,13 @@ sha512sums=(
 
 build() {
   nativefier \
-	  --name "${_instname}" \
-	  --icon "${pkgname}.png" \
+    --name "${_instname}" \
+    --icon "${pkgname}.png" \
     --inject "${pkgname}.css" \
     --inject "${pkgname}.js" \
-	  --internal-urls ".*?" \
-	  --file-download-options '{"saveAs": true}' \
-	  "${url}"
+    --internal-urls ".*?" \
+    --file-download-options '{"saveAs": true}' \
+    "${url}"
 }
 
 package() {
