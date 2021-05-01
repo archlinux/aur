@@ -4,8 +4,8 @@
 pkgname=vdr-text2skin
 pkgver=1.3.4_11_g8f7954d
 _gitver=8f7954da2488ced734c30e7c2704b92a44e6e1ad
-_vdrapi=2.4.6
-pkgrel=4
+_vdrapi=2.4.7
+pkgrel=5
 pkgdesc="VDR Text2Skin Plugin"
 url="http://projects.vdr-developer.org/projects/plg-text2skin"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
