@@ -1,7 +1,7 @@
 pkgbase = duplicati-latest
 	pkgdesc = A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers
 	pkgver = 2.0.5.114
-	pkgrel = 4
+	pkgrel = 5
 	url = http://duplicati.com
 	install = duplicati.install
 	arch = i686
@@ -16,11 +16,13 @@ pkgbase = duplicati-latest
 	source = duplicati-user.service
 	source = duplicati.service
 	source = duplicati.sysusers
+	source = duplicati.tmpfiles.conf
 	source = duplicati-cli
 	sha256sums = 02e046acae6c13a4ffa9d9e0fa8283dd85c90172fd45e4244fb156c57fe205ed
 	sha256sums = 2eb973cef79731d407bfbc83f754cef588c62ec83dae2112ac93f9c9f0baa403
 	sha256sums = 499eb63532bcad50b897c0874b723eebc6693816fcb9626532f367b5ff51da70
 	sha256sums = b9389b399467f3e02aa8e76bb98f6efbca1166fbc4d0bdf939493f8403462959
+	sha256sums = 326f06396c18ee5413be6f1ae91a0d85344975078d0029a973ca10a4051d4689
 	sha256sums = f6f903ca443935314afeab4cd2e46cf4bef7c5fb1e81c2d95f670f0993774ce5
 
 pkgname = duplicati-latest
