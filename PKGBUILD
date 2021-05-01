@@ -4,8 +4,8 @@
 pkgname=vdr-live
 pkgver=3.0.6
 epoch=1
-_vdrapi=2.4.6
-pkgrel=1
+_vdrapi=2.4.7
+pkgrel=2
 pkgdesc="Adds the possibility to control VDR and some of it's plugins by a web interface."
 url="https://github.com/MarkusEh/vdr-plugin-live"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
