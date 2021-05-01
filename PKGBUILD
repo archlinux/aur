@@ -16,7 +16,7 @@ url="https://micheleg.github.io/dash-to-dock/"
 _giturl="git+https://github.com/ewlsh/dash-to-dock/"
 license=('GPL')
 depends=('gnome-shell')
-makedepends=('intltool' 'gettext' 'git')
+makedepends=('intltool' 'gettext' 'git' 'sassc')
 conflicts=('gnome-shell-extension-dash-to-dock')
 provides=('gnome-shell-extension-dash-to-dock')
 source=("git+https://github.com/ewlsh/${_srcname}.git#branch=ewlsh/gnome-40")
