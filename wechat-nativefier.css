@@ -25,6 +25,10 @@
     display: none !important;;
 }
 
+.tab .tab_item:after {
+    border-right: 1px solid #00000000;
+}
+
 .web_wechat_screencut {
     display: none !important;
 }
