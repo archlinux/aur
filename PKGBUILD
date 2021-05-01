@@ -1,10 +1,11 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
+# Contributor: zootboy
 # Contributor: FadeMind <fademind@gmail.com>
 # Contributor: Richard Jackson <rj@iinet.net.au>
 pkgname=abiword-gtk2
 _pkgname=abiword
 pkgver=3.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Fully-featured word processor, GTk2, No plugins, Lite version'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -12,19 +13,21 @@ depends=('fribidi' 'wv' 'librsvg' 'enchant' 'desktop-file-utils' 'gtk2' 'libxslt
 makedepends=('boost')
 conflicts=('abiword' 'abiword-plugins')
 url='https://www.abisource.com'
-# At time of writing, the abiword website has broken https (but redirects http->https)
-# Download manually with:
-# curl -O -L -k https://abisource.com/downloads/abiword/3.0.4/source/abiword-3.0.4.tar.gz
 source=("$_pkgname-$pkgver.tar.gz::https://abisource.com/downloads/$_pkgname/$pkgver/source/$_pkgname-$pkgver.tar.gz"
-        enchant-2.patch)
+        enchant-2.patch
+        glib2-segfault-fix.patch)
 sha256sums=('e93096cb192e5bc19d62e180fc5eda643206465315a710113ae5036bc2a1a5d7'
-            'f510f4df2cf597f5493f52ce855b4209628d7622b03532c2ef221f8b7032a349')
+            'f510f4df2cf597f5493f52ce855b4209628d7622b03532c2ef221f8b7032a349'
+            '8a4d873309b5cec444b0cf88141f190a35d8225ea143a57cca6366275788c175')
 
 prepare() {
   cd $_pkgname-$pkgver
 
   # Replace deprecated enchant functions
   patch -Np1 -i ../enchant-2.patch
+
+  # Fix for segfault when selecting/copying text
+  patch -Np1 -i ../glib2-segfault-fix.patch
 }
 
 build() {

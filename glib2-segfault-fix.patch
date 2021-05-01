@@ -1,0 +1,16 @@
+--- abiword-3.0.4/src/af/util/xp/ut_go_file.cpp	2021-04-29 13:06:35.196255120 -0700
++++ abiword-3.0.4/src/af/util/xp/ut_go_file.cpp	2021-04-29 13:08:07.790716736 -0700
+@@ -1002,6 +1002,12 @@
+ 	GFile *f = g_file_new_for_uri (uri);
+ 	char *basename = g_file_get_basename (f);
+ 	g_object_unref (G_OBJECT (f));
++	if (!basename) // Try again since the "uri" might just be a plain path.
++	{
++		f = g_file_new_for_path (uri);
++		basename = g_file_get_basename (f);
++		g_object_unref (G_OBJECT (f));
++	}
+ #elif defined(GOFFICE_WITH_GNOME)
+ 	char *raw_uri = gnome_vfs_unescape_string (uri, G_DIR_SEPARATOR_S);
+ 	char *basename = raw_uri ? g_path_get_basename (raw_uri) : NULL;
+

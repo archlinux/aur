@@ -1,7 +1,7 @@
 pkgbase = abiword-gtk2
 	pkgdesc = Fully-featured word processor, GTk2, No plugins, Lite version
 	pkgver = 3.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.abisource.com
 	arch = i686
 	arch = x86_64
@@ -18,8 +18,10 @@ pkgbase = abiword-gtk2
 	conflicts = abiword-plugins
 	source = abiword-3.0.4.tar.gz::https://abisource.com/downloads/abiword/3.0.4/source/abiword-3.0.4.tar.gz
 	source = enchant-2.patch
+	source = glib2-segfault-fix.patch
 	sha256sums = e93096cb192e5bc19d62e180fc5eda643206465315a710113ae5036bc2a1a5d7
 	sha256sums = f510f4df2cf597f5493f52ce855b4209628d7622b03532c2ef221f8b7032a349
+	sha256sums = 8a4d873309b5cec444b0cf88141f190a35d8225ea143a57cca6366275788c175
 
 pkgname = abiword-gtk2
 
