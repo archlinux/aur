@@ -2,24 +2,23 @@
 
 pkgname=molsketch
 _PkgName=Molsketch
-pkgver=0.6.0
-pkgrel=3
+pkgver=0.7.2
+pkgrel=1
 pkgdesc="A 2D molecular editing tool"
 url="http://molsketch.sourceforge.net"
 arch=("x86_64")
 license=("GPL2")
-depends=('qt5-svg' 'desktop-file-utils' 'hicolor-icon-theme')
+depends=('qt5-svg' 'openbabel' 'hicolor-icon-theme' 'desktop-file-utils')
 makedepends=('cmake')
 source=("https://downloads.sourceforge.net/$pkgname/$_PkgName-$pkgver-src.tar.gz")
-sha256sums=('999751d0dca25fe5c0b117dddd8a43f2583bb9e2df7fd14cddfa859896389537')
+sha256sums=('1c6911163f7648aa0e0e4cafc1709cb1d30328c3c0131d6ad2e44e25e1c48f3f')
 
 build() {
   mkdir "$srcdir/build"
   cd "$srcdir/build"
   cmake "../$_PkgName-$pkgver" \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DMSK_INSTALL_LIBS64=/lib \
-    -DMSK_OBABELIFACE=False
+    -DMSK_INSTALL_LIBS64=/lib
   make
 }
 
