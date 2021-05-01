@@ -14,4 +14,15 @@ post_upgrade() {
 END
 		fi
 	done
+
+	for test in 2.217-1; do
+		if [ "$(vercmp $2 $test)" -lt 0 ]; then
+      cat <<END
+
+>>> WARNING: Changes to this release require some users to nuke any existing
+             buildroot before using ccm with this release!
+
+END
+		fi
+	done
 }
