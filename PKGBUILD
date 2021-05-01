@@ -4,8 +4,8 @@
 pkgbase=vdr-mp3
 pkgname=('vdr-mp3' 'vdr-mplayer')
 pkgver=0.10.2
-_vdrapi=2.4.6
-pkgrel=20
+_vdrapi=2.4.7
+pkgrel=21
 url="http://www.muempf.de/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
