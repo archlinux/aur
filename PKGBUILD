@@ -8,7 +8,7 @@ url='https://github.com/aws-cloudformation/cloudformation-guard'
 license=('Apache')
 arch=('x86_64')
 depends=('gcc-libs')
-provides=("${pkgname}-git")
+conflicts=("cfn-guard-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${pkgname}-linux-${pkgver}.tar.gz")
 sha256sums=('e8b9e503257baaefdabb74311813b6d44eac64e05f10b9157569e5828d14370e')
 
