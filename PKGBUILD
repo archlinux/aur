@@ -1,7 +1,7 @@
 # Maintainer: stardust95
 # Contributor: yochananmargos
 pkgname=lebiniou
-pkgver=3.55.0
+pkgver=3.56.0
 pkgrel=1
 pkgdesc="A tool to create images from sound"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('libmagick6' 'fftw' 'sdl2_ttf' 'libcaca' 'ffmpeg' 'lebiniou-data' 'ulfius')
 makedepends=('uglify-js' 'nodejs-clean-css-cli' 'htmlmin')
 source=("https://gitlab.com/lebiniou/lebiniou/-/archive/version-$pkgver/lebiniou-version-$pkgver.tar.gz")
-sha256sums=('9d4756704e32738886003d64993177453fd5dd6949a8142b9e24395ca0ad5135')
+sha256sums=('ad25dc83ece29a1e1dbd6c84626bd69bbac8d7eac1a4fe4487a829ab27456955')
 
 build() {
 	cd "$pkgname-version-$pkgver"
