@@ -1,19 +1,27 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 pkgname=openshadinglanguage-qfix
-pkgver=1.11.11.0
-pkgrel=3
+pkgver=1.11.13.0
+pkgrel=1
 pkgdesc="Advanced shading language for production GI renderers (build against opencolorio=2"
 arch=(x86_64)
 url="https://github.com/imageworks/OpenShadingLanguage"
 license=('custom')
-depends=('boost-libs' 'openimageio-qfix' 'openexr' 'intel-tbb' 'freetype2' 'libpng'
+depends=('boost-libs' 'openimageio-qfix' 'imath' 'intel-tbb' 'freetype2' 'libpng'
          'libtiff' 'zlib' 'ncurses' 'clang')
 makedepends=('boost' 'cmake' 'python' 'llvm' 'ninja')
 optdepends=('python: the Python module')
 #provides=(openshadinglanguage)
 #conflicts=(openshadinglanguage)
-source=($pkgname-$pkgver.tar.gz::https://github.com/imageworks/OpenShadingLanguage/archive/Release-${pkgver}.tar.gz)
-sha512sums=('2a5e45255d21edea631cf6fd957eb8516fc87760e16ae4f32c7f732cfb3500f92477ad9b9fbda50bc34e2fc89867d3c7ff0e31ecb815c053dcf77dc226a2681c')
+source=($pkgname-$pkgver.tar.gz::https://github.com/imageworks/OpenShadingLanguage/archive/Release-${pkgver}.tar.gz
+        https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/pull/1361.patch)
+sha512sums=('518650541c53a40f0396d702c1664727854bc67ba2c1301835ce11f8f3e17451abc5a56bbf5768a5f10a34e14435349e6a691f5be80f918c0ad76c960d139bd7'
+            'a3986d9c458338d1002e119b2c16372fced00a10ddf734b790774f533500f4e3c2cf8fae88431f14a8709d916f9eae4f3f5bdff573e38a1808bc39b0a015ffbf')
+
+prepare() {
+  cd OpenShadingLanguage-Release-$pkgver
+
+  patch -Np1 -i "${srcdir}"/1361.patch
+}
 
 build() {
   cd OpenShadingLanguage-Release-$pkgver
