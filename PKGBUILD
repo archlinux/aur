@@ -1,6 +1,6 @@
 # Maintainer: ml <>
 pkgname=google-chat-linux
-_pkgver='5.12.11-2'
+_pkgver='5.12.11-3'
 pkgver=${_pkgver/-/+}
 pkgrel=1
 pkgdesc='Unofficial electron-based desktop client for Google Chat, electron not included'
@@ -9,11 +9,11 @@ url='https://github.com/squalou/google-chat-linux'
 license=('custom:UNKNOWN')
 depends=('electron')
 makedepends=('jq' 'npm' 'nodejs-lts-fermium')
-source=("${url}/archive/${_pkgver}/${pkgname}-${_pkgver}.tar.gz"
+source=("$url/archive/$_pkgver/$pkgname-$_pkgver.tar.gz"
   google-chat-linux.sh
   google-chat-linux.desktop
   sandbox.patch)
-sha256sums=('c80772d4c3403d4b4a329058f9c9e9874948a3e0277c7358e40580337361dda6'
+sha256sums=('683d58efce724296253b929c9871e365e50190b5b276385ac5dfb8fe55d10749'
             '5a458e5d7193784383ceda44faf8852410296f310acb5495d53c16bd0ea50059'
             'c7fdfa74422ce7900563fd1a0f5d76c4d4cd6d153ca3b28ab5a8912a33cba9c7'
             'e4b63ca04f05b03de70fd7440981646ae7eb778fa749fd8ac26dd545833b0a43')
@@ -50,7 +50,7 @@ build() {
 
 package() {
   install -Dm755 "$pkgname".sh "$pkgdir"/usr/bin/"$pkgname"
-  install -Dm644 "$pkgname".desktop -t "${pkgdir}/usr/share/applications"
+  install -Dm644 "$pkgname".desktop -t "$pkgdir/usr/share/applications"
 
   cd "$pkgname-$_pkgver"
   install -Dm644 dist/linux-unpacked/resources/app.asar "$pkgdir"/usr/lib/"$pkgname".asar
@@ -59,5 +59,5 @@ package() {
     : "${i##*/}"
     install -Dm644 "$i" "$pkgdir/usr/share/icons/hicolor/${_%.png}x${_%.png}/apps/$pkgname.png"
   done
-  #install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
