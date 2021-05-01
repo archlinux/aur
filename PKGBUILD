@@ -2,21 +2,21 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-vdrtva
-pkgver=0.3.6
-_vdrapi=2.4.6
-pkgrel=6
+pkgver=0.3.7
+_vdrapi=2.4.7
+pkgrel=1
 pkgdesc="Automatic 'series record' function. Written for UK Freeview"
-url="http://projects.vdr-developer.org/projects/vdrtva"
+url="https://projects.vdr-developer.org/git/vdrtva.git"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 makedepends=('git')
 _plugname=${pkgname//vdr-/}
-source=("http://projects.vdr-developer.org/attachments/download/1965/$_plugname-$pkgver.tar.gz"
+source=("https://projects.vdr-developer.org/git/vdrtva.git/snapshot/vdrtva-$pkgver.tar.bz2"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-md5sums=('79d08007a2794b970b5d7864c213c980'
-         '64e2f9ed3471495641a465e705c85447')
+sha256sums=('c96456935053640c6dce9e34093e6ab678291c643485477fb888495a550a9fbf'
+            'c9d53920822753461d997a7190992c867af4f523d7c64ec2f528f7fce783840f')
 
 build() {
   cd "${srcdir}/$_plugname-$pkgver"
