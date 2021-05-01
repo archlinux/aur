@@ -1,11 +1,12 @@
-# Mantainer: anon@sansorgan.es
-# Maintainer: heavysink <winstonwu91 at gmail>
+# Maintainer: somebody <ehern.lee@gmail.com>
+# Contributor: anon@sansorgan.es
+# Contributor: heavysink <winstonwu91 at gmail>
 
 pkgname=proton
 # Upstream version
-_pkgver='5.13-5'
+_pkgver='6.3-2'
 # Arch - no hyphens
-pkgver=5.13.5
+pkgver=6.3.2
 pkgrel=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 arch=('x86_64')
@@ -18,14 +19,20 @@ depends=(
 makedepends=(
 	'vulkan-headers'
 )
-source=("https://github.com/ValveSoftware/Proton/archive/$pkgname-$_pkgver.tar.gz"
-        "wined3d-interop.h")
+source=(
+  "https://github.com/ValveSoftware/Proton/archive/$pkgname-$_pkgver.tar.gz"
+  "wined3d-interop.h"
+)
+sha512sums=(
+  'dc31dcb627c7c4b98e56c29ca8e4b0b9c84c36317896b3574ac8ca7ac74cf32a546a7439da623e29cdc2b2ec08a4ef0a314cffd767ae1722810ff38b189abfcb'
+  'f2caacca6bd55030331de7d017d85772b09e5ad9e5fdbfc6343f303ac5447595660fd3f83ba2a177ef321d9b54335245bac548ca804e6e3e9346690f29d55ad0'
+)
 
 prepare() {
   cd "Proton-$pkgname-$_pkgver"
   cp $srcdir/wined3d-interop.h vrclient_x64/vrclient_x64/
-  #patch -p1 < $srcdir/wine-dynamic_load_wrapper.patch
 }
+
 build() {
 	cd "Proton-$pkgname-$_pkgver"
 
@@ -69,10 +76,6 @@ build() {
 	winebuild --dll --fake-module -E vrclient_x64.spec -o vrclient_x64.dll.fake
 }
 
-check() {
-	cd "Proton-$pkgname-$_pkgver"
-}
-
 package() {
 	cd "Proton-$pkgname-$_pkgver"
 	
@@ -99,5 +102,3 @@ package() {
 	install -m644 build/vrclient.win64/vrclient_x64/vrclient_x64.dll.fake $pkgdir/usr/lib/wine/fakedlls/vrclient_x64.dll
 }
 
-md5sums=('69a65111fabf03a09ea7c1db13c2bea0'
-         '1f6f0f5e4679418d4976e0cf9589a8d9')
