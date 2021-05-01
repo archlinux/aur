@@ -1,4 +1,4 @@
-pkgbase = lightdm-webkit-theme-sequoia-git
+pkgbase = flova-lightdm-webkit-theme-sequoia-git
 	pkgdesc = A simple LightDM theme (Flova fork, fixes buttons alignement)
 	pkgver = r30.378dd0c
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = lightdm-webkit-theme-sequoia-git
 	source = git+https://github.com/Flova/lightdm-webkit-sequoia.git#branch=patch-1
 	md5sums = SKIP
 
-pkgname = lightdm-webkit-theme-sequoia-git
+pkgname = flova-lightdm-webkit-theme-sequoia-git
 

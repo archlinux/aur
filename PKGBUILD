@@ -1,6 +1,6 @@
 # Maintainer: Victor B <victor.bonnelle@protonmail.com>
 # Maintainer: Jonas Tranberg <jonastranberg93@gmail.com>
-pkgname=lightdm-webkit-theme-sequoia-git
+pkgname=flova-lightdm-webkit-theme-sequoia-git
 pkgver=r30.378dd0c
 pkgrel=1
 pkgdesc="A simple LightDM theme (Flova fork, fixes buttons alignement)"
