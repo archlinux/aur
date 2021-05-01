@@ -1,6 +1,6 @@
 pkgbase = perl-bioperl
 	pkgdesc = Perl modules for biology
-	pkgver = 1.7.7
+	pkgver = 1.7.8
 	pkgrel = 1
 	url = https://metacpan.org/release/BioPerl
 	arch = any
@@ -22,7 +22,6 @@ pkgbase = perl-bioperl
 	depends = perl-set-scalar>=0
 	depends = perl-uri>=0
 	depends = perl-xml-dom>=0
-	depends = perl-xml-dom-xpath>=0
 	depends = perl-xml-libxml>=0
 	depends = perl-xml-sax>=0
 	depends = perl-xml-sax-base>=0
@@ -34,9 +33,9 @@ pkgbase = perl-bioperl
 	depends = libxml-perl>=0
 	depends = perl>=5.006
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/C/CJ/CJFIELDS/BioPerl-1.7.7.tar.gz
-	md5sums = 6618f1f826fb17fec04cd3f957542393
-	sha512sums = adcb04b5aa8af2c15edd85b057842ba5f2f8c269a2c9d1b65b96c265539e49b0bb27901d687ec7382cf96c07c576e95c50a32caddf9286eb19c9591a56a12c82
+	source = https://cpan.metacpan.org/authors/id/C/CJ/CJFIELDS/BioPerl-1.7.8.tar.gz
+	md5sums = 8164ac52f37bc6355ec1b69633ac795f
+	sha512sums = 0fa4ca0691409dd2d0ad431f47be41544c3a627098d17a09b6796b3a4cb0d7d1502bed5118b6e2139d299e72780f60e5d97570e945d03d63f38e8326f49e3ba9
 
 pkgname = perl-bioperl
 

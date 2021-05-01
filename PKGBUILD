@@ -1,21 +1,21 @@
-# Contributor: ordoban <dirk.langer@vvovgonik.de>
+# Contributor: Ordoban <dirk.langer@vvovgonik.de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-bioperl'
-pkgver='1.7.7'
+pkgver='1.7.8'
 pkgrel='1'
 pkgdesc="Perl modules for biology"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-data-stag>=0' 'perl-error>=0' 'perl-graph>=0' 'perl-http-message>=0' 'perl-io-string>=0' 'perl-io-stringy>=0' 'perl-ipc-run>=0' 'perl-list-moreutils>=0' 'perl-module-build>=0' 'perl-set-scalar>=0' 'perl-uri>=0' 'perl-xml-dom>=0' 'perl-xml-dom-xpath>=0' 'perl-xml-libxml>=0' 'perl-xml-sax>=0' 'perl-xml-sax-base>=0' 'perl-xml-sax-writer>=0' 'perl-xml-twig>=0' 'perl-xml-writer>=0' 'perl-yaml>=0' 'perl-libwww>=0' 'libxml-perl>=0' 'perl>=5.006')
+depends=('perl-data-stag>=0' 'perl-error>=0' 'perl-graph>=0' 'perl-http-message>=0' 'perl-io-string>=0' 'perl-io-stringy>=0' 'perl-ipc-run>=0' 'perl-list-moreutils>=0' 'perl-module-build>=0' 'perl-set-scalar>=0' 'perl-uri>=0' 'perl-xml-dom>=0' 'perl-xml-libxml>=0' 'perl-xml-sax>=0' 'perl-xml-sax-base>=0' 'perl-xml-sax-writer>=0' 'perl-xml-twig>=0' 'perl-xml-writer>=0' 'perl-yaml>=0' 'perl-libwww>=0' 'libxml-perl>=0' 'perl>=5.006')
 makedepends=()
 checkdepends=('perl-test-memory-cycle>=0' 'perl-test-most>=0' 'perl-test-requiresinternet>=0' 'perl-test-weaken>=0')
 url='https://metacpan.org/release/BioPerl'
-source=('https://cpan.metacpan.org/authors/id/C/CJ/CJFIELDS/BioPerl-1.7.7.tar.gz')
-md5sums=('6618f1f826fb17fec04cd3f957542393')
-sha512sums=('adcb04b5aa8af2c15edd85b057842ba5f2f8c269a2c9d1b65b96c265539e49b0bb27901d687ec7382cf96c07c576e95c50a32caddf9286eb19c9591a56a12c82')
-_distdir="BioPerl-1.7.7"
+source=("https://cpan.metacpan.org/authors/id/C/CJ/CJFIELDS/BioPerl-$pkgver.tar.gz")
+md5sums=('8164ac52f37bc6355ec1b69633ac795f')
+sha512sums=('0fa4ca0691409dd2d0ad431f47be41544c3a627098d17a09b6796b3a4cb0d7d1502bed5118b6e2139d299e72780f60e5d97570e945d03d63f38e8326f49e3ba9')
+_distdir="BioPerl-$pkgver"
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                      \
