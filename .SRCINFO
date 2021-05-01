@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-fullscreen-notifications-git
+	pkgdesc = Extension that enables all notifications in fullscreen mode
+	pkgver = 4
+	pkgrel = 1
+	url = https://github.com/soal/gnome-shell-extension-fullscreen-notifications
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = gnome-shell
+	source = git+https://github.com/soal/gnome-shell-extension-fullscreen-notifications
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-fullscreen-notifications-git
+
