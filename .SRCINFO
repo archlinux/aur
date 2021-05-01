@@ -1,19 +1,19 @@
 pkgbase = ugit
 	pkgdesc = ugit helps you undo your last git command with grace. Your damage control git buddy
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Bhupesh-V/ugit
 	arch = any
-	groups = 
 	license = MIT
 	depends = bash
 	depends = awk
 	depends = grep
 	depends = ncurses
+	depends = fzf
 	options = !strip
 	options = !emptydirs
-	source = ugit::https://github.com/Bhupesh-V/ugit/releases/latest/download/ugit
-	sha512sums = 2707641cf42e4ca34618ec25ab6b13dabdc994ee51cc67bc7d6302296f93de80d05f072933b342a32439f082f3757773f6886f0bf1db91c73791f9846b5c8e1d
+	source = ugit-1.0.tar.gz::https://github.com/Bhupesh-V/ugit/archive/refs/tags/v1.0.tar.gz
+	sha512sums = c8eda62827138f6cd4be4a975cafb5cbd9d306db22cf6d19dc5ef5ae45adbb91100b14d218e53e57769c6b4f6f2bf90470dbe1438f65aac44fec602ece99b465
 
 pkgname = ugit
 
