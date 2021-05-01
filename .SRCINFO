@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-glslang
 	pkgdesc = OpenGL and OpenGL ES shader front end and validator (mingw-w64)
-	pkgver = 11.2.0
+	pkgver = 11.4.0
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/glslang
 	arch = any
@@ -13,11 +13,11 @@ pkgbase = mingw-w64-glslang
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/KhronosGroup/glslang/archive/11.2.0.tar.gz
+	source = https://github.com/KhronosGroup/glslang/archive/11.4.0.tar.gz
 	source = wine-glslangValidator.sh
-	source = git+https://github.com/KhronosGroup/SPIRV-Tools#commit=c79edd260c2b503f0eca57310057b4a100999cc5
-	source = git+https://github.com/KhronosGroup/SPIRV-Headers#commit=75b30a659c8a4979104986652c54cc421fc51129
-	sha256sums = 8ff2fcf9b054e4a4ef56fcd8a637322f827b2b176a592a618d63672ddb896e06
+	source = git+https://github.com/KhronosGroup/SPIRV-Tools#commit=dc72924cb31cd9f3dbc3eb47e9d926cf641e3a07
+	source = git+https://github.com/KhronosGroup/SPIRV-Headers#commit=dafead1765f6c1a5f9f8a76387dcb2abe4e54acd
+	sha256sums = 9bae79c2b640b60474f8944a5ab4aff3af990074636ea2a0a3c97cb86be61dfa
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

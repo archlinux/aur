@@ -1,5 +1,5 @@
 pkgname=mingw-w64-glslang
-pkgver=11.2.0
+pkgver=11.4.0
 pkgrel=1
 pkgdesc='OpenGL and OpenGL ES shader front end and validator (mingw-w64)'
 arch=('any')
@@ -10,9 +10,9 @@ makedepends=('mingw-w64-cmake' 'python' 'git')
 optdepends=('mingw-w64-wine: runtime support')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(https://github.com/KhronosGroup/glslang/archive/${pkgver}.tar.gz wine-glslangValidator.sh
-        git+https://github.com/KhronosGroup/SPIRV-Tools#commit=c79edd260c2b503f0eca57310057b4a100999cc5
-        git+https://github.com/KhronosGroup/SPIRV-Headers#commit=75b30a659c8a4979104986652c54cc421fc51129)
-sha256sums=('8ff2fcf9b054e4a4ef56fcd8a637322f827b2b176a592a618d63672ddb896e06' SKIP SKIP SKIP)
+        git+https://github.com/KhronosGroup/SPIRV-Tools#commit=dc72924cb31cd9f3dbc3eb47e9d926cf641e3a07
+        git+https://github.com/KhronosGroup/SPIRV-Headers#commit=dafead1765f6c1a5f9f8a76387dcb2abe4e54acd)
+sha256sums=('9bae79c2b640b60474f8944a5ab4aff3af990074636ea2a0a3c97cb86be61dfa' SKIP SKIP SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
