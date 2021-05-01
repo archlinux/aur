@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-blur-me-git
 	pkgdesc = Extension that adds a blur look to different parts of the GNOME Shell
 	pkgver = 7.r53.g9d9d481
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/ckissane/blur-me
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = gnome-shell-extension-blur-me-git
 	depends = gnome-shell
 	provides = gnome-shell-extension-blur-me
 	conflicts = gnome-shell-extension-blur-me
+	conflicts = gnome-shell-extension-blur-my-shell
 	source = git+https://github.com/ckissane/blur-me.git
 	sha256sums = SKIP
 

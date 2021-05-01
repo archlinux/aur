@@ -2,7 +2,7 @@
 pkgname=gnome-shell-extension-blur-me-git
 _pkgname=blur-me
 pkgver=7.r53.g9d9d481
-pkgrel=2
+pkgrel=3
 pkgdesc="Extension that adds a blur look to different parts of the GNOME Shell"
 arch=('any')
 url="https://github.com/ckissane/blur-me"
