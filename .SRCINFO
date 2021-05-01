@@ -8,6 +8,7 @@ pkgbase = gnome-shell-extension-dash-to-dock-gnome40-git
 	makedepends = intltool
 	makedepends = gettext
 	makedepends = git
+	makedepends = sassc
 	depends = gnome-shell
 	provides = gnome-shell-extension-dash-to-dock
 	conflicts = gnome-shell-extension-dash-to-dock

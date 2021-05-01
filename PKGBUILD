@@ -28,6 +28,7 @@ pkgver() {
 }
 
 build() {
+  export SASS=sassc
   cd "${srcdir}"/${_pkgname}
   make
 }
