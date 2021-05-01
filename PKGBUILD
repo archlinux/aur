@@ -4,9 +4,9 @@
 pkgname=vdr-epgsearch
 pkgver=2.4.0.r11.gd8cff1a
 _gitver=d8cff1a251ef2b54f1de3f8e6ea55a838eeb73c3
-_vdrapi=2.4.6
+_vdrapi=2.4.7
 epoch=1
-pkgrel=3
+pkgrel=4
 pkgdesc="Searchtimer and replacement of the VDR program menu"
 url="https://projects.vdr-developer.org/projects/plg-epgsearch"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
