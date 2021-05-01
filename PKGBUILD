@@ -2,16 +2,16 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=xplr
-pkgver=0.5.10
+pkgver=0.5.12
 pkgrel=1
 pkgdesc="A hackable, minimal, fast TUI file explorer"
 arch=('x86_64')
 url="https://github.com/sayanarijit/xplr"
 license=('MIT')
-depends=('gcc-libs')
+depends=('gcc-libs' 'hicolor-icon-theme')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('692916cb42805a76a8c550170c7f2ef27f20213cdb9382cff0f6dae8732df25c45e2649c8168e4310b77e14a3458071456d3483b2123483d06078fc0597e4c1e')
+sha512sums=('081c23440b9d2a2582bac5c1d2769cfe2b1a1bfdad67377aaa415dc0499fee82bf5e4c654f22029c4108cd51af1c004bc26982f92156f5efb4283a6b9f0e2c32')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -29,5 +29,9 @@ package() {
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm 644 src/config.yml -t "$pkgdir/usr/share/$pkgname/examples"
-  install -Dm 644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm 644 "assets/desktop/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
+  for i in 128 16 32 64; do
+      install -Dm 644 "assets/icon/${pkgname}${i}.png" "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
+  done
+  install -Dm 644 "assets/icon/$pkgname.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
 }
