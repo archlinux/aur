@@ -1,9 +1,9 @@
 pkgname=plasma5-applets-mpdnowplaying
 _pkgname=mpdnowplaying
-pkgver=0.4
-pkgrel=3
+pkgver=0.5
+pkgrel=1
 pkgdesc="MPD plasmoid for Plasma 5."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://sourceforge.net/projects/mpdnowplaying"
 license=('GPL')
 depends=('plasma-framework' 'libmpdclient')
@@ -11,7 +11,7 @@ makedepends=('extra-cmake-modules')
 conflicts=("${pkgname}")
 provides=("${pkgname}")
 source=("${_pkgname}-${pkgver}.tar.bz2::https://sourceforge.net/projects/${_pkgname}/files/${_pkgname}-${pkgver}.tar.bz2/download")
-md5sums=('4988eaac0ebceba173b747f1beb736ca')
+sha256sums=('f5a8f549c1e5d0f353eae52c8c36da7d619e4c4ac861f202c1459e0009ea4608')
 
 build() {
   cd "${_pkgname}"
@@ -25,7 +25,7 @@ build() {
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
 
   make
