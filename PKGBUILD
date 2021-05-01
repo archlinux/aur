@@ -3,7 +3,7 @@
 pkgname=elpa
 PkgName=ELPA
 pkgver=2020.11.001
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 pkgdesc="Eigenvalue SoLvers for Petaflop-Applications"
 url="https://elpa.mpcdf.mpg.de"
