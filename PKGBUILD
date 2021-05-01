@@ -2,7 +2,7 @@
 
 _instname=WeChat
 pkgname=wechat-nativefier
-pkgver=20210501.2
+pkgver=20210501.3
 pkgrel=1
 pkgdesc="WeChat desktop built with nativefier (electron)"
 arch=("x86_64")
