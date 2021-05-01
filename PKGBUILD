@@ -1,7 +1,7 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=superslicer-git
-pkgver=2.3.55.5.r123.g802520519
+pkgver=2.3.55.5.r124.g2e9562d5d
 pkgrel=1
 epoch=1
 pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
@@ -39,7 +39,7 @@ prepare()
 	patch --forward --strip=1 --input="$srcdir/0001-wxgtk3-is-broken-on-wayland.patch"
 	if pacman -qQi imath &> /dev/null # not all distros has already upgrade to openEXR 3
 	then
-		test $? -eq 0 && patch -p1 < "$srcdir/prusa-slicer-openexr3.patch" # Fix build with openEXR 3
+		patch -p1 < "$srcdir/prusa-slicer-openexr3.patch" # Fix build with openEXR 3
 	fi
 }
 
