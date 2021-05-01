@@ -1,6 +1,6 @@
 pkgbase = weboob-git
 	pkgdesc = Core library and modules for Web Outside of Browsers
-	pkgver = 2.0.r492.gea2752d36
+	pkgver = 3.0.r73.gfd7610aaa
 	pkgrel = 1
 	url = https://weboob.org
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = weboob-git
 	provides = weboob-headless
 	conflicts = weboob-headless
 	replaces = weboob-headless
-	source = weboob::git+https://git.weboob.org/weboob/weboob
+	source = git+https://gitlab.com/woob/woob
 	sha256sums = SKIP
 
 pkgname = weboob-git

@@ -1,13 +1,13 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer:  Louise Zanier
 # Contributor: sputnick <gilles *DOT* quenot *AT* gmail *DOT* com>
 # Contributor: ianux <ianux@free.fr>
 
 pkgname=weboob-git
-pkgver=2.0.r492.gea2752d36
+pkgver=3.0.r73.gfd7610aaa
 pkgrel=1
 pkgdesc="Core library and modules for Web Outside of Browsers"
 arch=(any)
-url="https://weboob.org"
+url="https://woob.tech"
 license=('LGPL3')
 depends=('python-lxml'
          'python-cssselect'
@@ -26,20 +26,20 @@ makedepends=('python-setuptools' 'git')
 replaces=('weboob-headless')
 provides=('weboob-headless')
 conflicts=('weboob-headless')
-source=("weboob::git+https://git.weboob.org/weboob/weboob")
+source=("git+https://gitlab.com/woob/woob")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/weboob"
+  cd "${srcdir}/woob"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/weboob"
+  cd "${srcdir}/woob"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/weboob"
+  cd "${srcdir}/woob"
   python setup.py install --prefix=/usr --root="${pkgdir}" --skip-build --optimize=1
 }
