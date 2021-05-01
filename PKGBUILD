@@ -7,8 +7,6 @@ _pkgname=gimp
 pkgver=2.10.24
 pkgrel=3
 pkgdesc='Gimp with easy-to-handle tool sizes'
-conflicts=('gimp' 'gimp-plugin-wavelet-decompose')
-replaces=('gimp' 'gimp-plugin-wavelet-decompose')
 url='https://www.gimp.org/'
 arch=('x86_64')
 license=('GPL' 'LGPL')
@@ -21,8 +19,8 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
             'alsa-lib: for MIDI event controller module'
             'curl: for URI support'
             'ghostscript: for postscript support')
-conflicts=('gimp-plugin-wavelet-decompose')
-replaces=('gimp-plugin-wavelet-decompose')
+conflicts=('gimp' 'gimp-plugin-wavelet-decompose')
+replaces=('gimp' 'gimp-plugin-wavelet-decompose')
 install=gimp.install
 source=(https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2
         0001-no-check-update.patch
