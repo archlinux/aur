@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-remoteosd
 pkgver=1.0.0
-_vdrapi=2.4.6
-pkgrel=19
+_vdrapi=2.4.7
+pkgrel=20
 pkgdesc="Display the menu of a remote VDR as submenu item of your local VDR menu"
 url="http://vdr.schmirler.de/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
