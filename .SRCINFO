@@ -16,7 +16,9 @@ pkgbase = libsignal-client
 	makedepends = zip
 	makedepends = protobuf
 	source = libsignal-client-java-0.2.3.tar.gz::https://github.com/signalapp/libsignal-client/archive/java-0.2.3.tar.gz
+	source = fix_gradle_7.patch
 	sha512sums = 8bb650fe1ab20401b69990b92aa0906b3d7d3118f4315821b0b947700ef7179e78f8e2297a5863716ead507b97b27f0ebbf098ff7424143aa6b25a8740bb9ad6
+	sha512sums = fdaf7037f0338379701e9669012e4b4e47d17f99a195c70ce057dbdd626c8699abb1c6387fb65d0ab0e32bed5cdceed50db39712f542c150b24606824a3361f5
 
 pkgname = libsignal-client
 
