@@ -1,7 +1,7 @@
 # Maintainer: Matt C <matt@xhec.us>
 pkgname=aurtomatic-git
 _pkgname=aurtomatic
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="manage local AUR repo"
 arch=('any')
