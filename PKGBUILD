@@ -5,14 +5,14 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 _pkgname='ferdi'
 pkgname="$_pkgname-git"
-pkgver='5.6.0.beta.5.r136.gcced2638'
+pkgver='5.6.0.beta.5.r150.g0aaaaeb1'
 pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$_pkgname.com"
 license=('Apache')
-depends=('electron11' 'libxkbfile')
-makedepends=('git' 'npm6' 'python' 'python2')
+depends=('electron' 'libxkbfile')
+makedepends=('git' 'nodejs-lts-fermium' 'npm6' 'python' 'python2')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
@@ -56,7 +56,7 @@ prepare() {
 	git submodule update --init --recursive
 
 	# Set system Electron version for ABI compatibility
-	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron11/version')"'"|' 'package.json'
+	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron/version')"'"|' 'package.json'
 
 	# Prevent Ferdi from being launched in dev mode
 	sed -i "s|import isDevMode from 'electron-is-dev'|const isDevMode = false|g" 'src/index.js' 'src/config.js'
@@ -90,7 +90,7 @@ build() {
 	cd "$srcdir/$_sourcedirectory/"
 
 	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npx gulp build
-	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npx electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist='/usr/lib/electron11' -c.electronVersion="$(cat '/usr/lib/electron11/version')"
+	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npx electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist='/usr/lib/electron' -c.electronVersion="$(cat '/usr/lib/electron/version')"
 }
 
 package() {
@@ -109,7 +109,7 @@ package() {
 	install -dm755 "$pkgdir/usr/bin/"
 	cat << EOF > "$pkgdir/usr/bin/$_pkgname"
 #!/bin/sh
-NODE_ENV=production exec electron11 '/usr/lib/$_pkgname/app.asar' "\$@"
+NODE_ENV=production exec electron '/usr/lib/$_pkgname/app.asar' "\$@"
 EOF
 	chmod +x "$pkgdir/usr/bin/$_pkgname"
 
