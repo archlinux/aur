@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-rpihddevice
 pkgver=1.0.5
-_vdrapi=2.4.6
-pkgrel=1
+_vdrapi=2.4.7
+pkgrel=2
 pkgdesc="Output device for Raspberry Pi"
 url="https://github.com/reufer/rpihddevice"
 arch=('armv6h' 'armv7h')
