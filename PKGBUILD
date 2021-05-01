@@ -22,7 +22,6 @@ source=(
   "https://github.com/dolohow/uksm/raw/master/v5.x/uksm-5.12.patch"
   "https://lab.retarded.farm/zappel/zGentoo/-/raw/master/sys-kernel/gentoo-sources-g14/files/0001-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch"
   "https://lab.retarded.farm/zappel/zGentoo/-/raw/master/sys-kernel/gentoo-sources-g14/files/0002-HID-ASUS-Add-support-for-ASUS-N-Key-keyboard_fanmode.patch"
-  "https://lab.retarded.farm/zappel/zGentoo/-/raw/master/sys-kernel/gentoo-sources-g14/files/0001-HID-asus-Add-support-for-2021-ASUS-N-Key-keyboard.patch"
   "https://lab.retarded.farm/zappel/zGentoo/-/raw/master/sys-kernel/gentoo-sources-g14/files/0001-WMI-asus-Reduce-G14-and-G15-match-to-min-product-nam.patch"
 )
 validpgpkeys=(
@@ -35,7 +34,6 @@ sha256sums=('SKIP'
             '8b2e476ae108255ae5dc6da43cda57620021a8e68da0e3c568eb44afd3d3254a'
             'd9f5742fed4406396698897aa042d4d5fdbfd7c51add7483a777f9ab41901aac'
             '9a8ff7948b16c1ad2ab23f390fd9a2cad4c765821bae7a2a1e4a61b79ffee522'
-            '2edfb8dbb0fe7202191c51a5f645559c5da9f800e8aad2f8a4fd2731092138ff'
             'eec1d016c5f53f1d808701b6c038db2e73a61310713f859d99bf97b9c793cefe')
 
 export KBUILD_BUILD_HOST=archlinux
