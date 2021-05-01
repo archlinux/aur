@@ -14,7 +14,7 @@ md5sums=('d7c52a9cde6573f7d7b98bf4cffa22fd')
 build () {
   cd "$srcdir/$pkgname-$pkgver"
   RUSTUP_TOOLCHAIN=stable \
-    cargo build --release
+    RUSTFLAGS="-Ctarget-cpu=native" cargo build --release
 }
 
 package() {
