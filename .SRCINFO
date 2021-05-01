@@ -1,13 +1,13 @@
 pkgbase = tunnelto
 	pkgdesc = Expose your local web server to the internet with a public URL.
-	pkgver = 0.1.15
+	pkgver = 0.1.16
 	pkgrel = 1
 	url = https://tunnelto.dev/
 	arch = any
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	source = git+https://github.com/agrinman/tunnelto#tag=0.1.15
+	source = git+https://github.com/agrinman/tunnelto#tag=0.1.16
 	sha256sums = SKIP
 
 pkgname = tunnelto
