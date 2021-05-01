@@ -3,7 +3,7 @@
 # Special thanks to RyanTheAllmighty for making hyper-appimage
 pkgname="gdlauncher-appimage"
 _pkgname="gdlauncher"
-pkgver="1.0.11"
+pkgver="1.1.5"
 pkgrel=1
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
@@ -19,12 +19,15 @@ source_x86_64=(
 
 md5sums_x86_64=('SKIP')
 
-prepare() {
 
+
+prepare() {
+    # deprecation
+    echo -e "\e[36m>>>\e[0m \e[38;5;160mgdlauncher-appimage is \e[1mdeprecated.\e[0m\e[0m Please consider moving to \e[1mgdlauncher-bin\e[0m to continue receiving updates."
     # make executable
-    chmod +x "${srcdir}/GDLauncher-linux-setup.AppImage"
+    chmod +x "${srcdir}/GDLauncher-$pkgver.AppImage"
     # extract appimage (didn't know this was possible)
-    "${srcdir}/GDLauncher-linux-setup.AppImage" --appimage-extract
+    "${srcdir}/GDLauncher-$pkgver.AppImage" --appimage-extract
     cd "${srcdir}"
     gendesk --pkgname "GDLauncher" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n -f
     mv "GDLauncher.desktop" "${pkgname}.desktop"
