@@ -4,8 +4,8 @@
 pkgname=vdr-play
 pkgver=0.1.14.r21.g8035264
 _gitver=8035264d471f75407222a48f2fa707795e25d461
-_vdrapi=2.4.6
-pkgrel=5
+_vdrapi=2.4.7
+pkgrel=6
 pkgdesc="Mediaplayer plugin for VDR and X11"
 url="http://projects.vdr-developer.org/projects/plg-play"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
