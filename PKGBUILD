@@ -1,5 +1,5 @@
 pkgname=mingw-w64-spirv-tools
-pkgver=2020.7
+pkgver=2021.1
 pkgrel=1
 pkgdesc="API and commands for processing SPIR-V modules (mingw-w64)"
 arch=('any')
@@ -9,7 +9,8 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake' 'mingw-w64-spirv-headers' 'python' 'git')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://github.com/KhronosGroup/SPIRV-Tools/archive/v${pkgver}.tar.gz" "git+https://github.com/KhronosGroup/SPIRV-Headers.git")
-sha256sums=('c06eed1c7a1018b232768481184b5ae4d91d614d7bd7358dc2fe306bd0a39c6e' SKIP)
+sha256sums=('bd42f6d766ac50f1a1ab46ce96d59e24ab28fb9779a71fccfa8bad760842c274'
+            'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
