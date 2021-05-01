@@ -1,7 +1,7 @@
 # Maintainer: Bruno Miguel
 
 pkgname=q-dns-git
-pkgdesc='A tiny command line DNS client with support for UDP, DoT, DoH, and DoQ.'
+pkgdesc='A tiny command line DNS client with support for UDP, DoT, DoH, DoQ and ODoH.'
 arch=(x86_64)
 url='https://github.com/natesales/q'
 pkgrel=1
