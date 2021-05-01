@@ -5,8 +5,8 @@ pkgbase = adobe-source-han-mono-classic-fonts
 	url = https://github.com/redchenjs/source-han-mono-classic
 	arch = any
 	license = custom:OFL
-	source = 1.002-8.zip::https://github.com/redchenjs/source-han-mono-classic/releases/download/1.002/SourceHanMonoC-OTF.zip
-	sha512sums = 7b02b5d0252dd3076405f23659e26192dda6a2e330d00f935d9d05014afcf27b45aac82b8a6bc846796abf695ab0e50d8f1fff0728ee057cd4f9037aab0f0762
+	source = bd68695e78831f592f5f14e06af3cdf7cb28766f1cbb89beffde0d02afead8464643556ee69e9bcc70ae9ce1d242cdb1c7ba406a40c702627ba969376aa5051a.zip::https://github.com/redchenjs/source-han-mono-classic/releases/download/1.002/SourceHanMonoC-OTF.zip
+	sha512sums = bd68695e78831f592f5f14e06af3cdf7cb28766f1cbb89beffde0d02afead8464643556ee69e9bcc70ae9ce1d242cdb1c7ba406a40c702627ba969376aa5051a
 
 pkgname = adobe-source-han-mono-classic-fonts
 
