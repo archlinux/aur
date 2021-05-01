@@ -14,7 +14,7 @@ conflicts=(ananicy-cpp)
 provides=(ananicy-cpp)
 
 pkgver() {
-  cd "$pkgname"
+  cd "$_pkgname"
   git describe --long | sed 's/^v-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
