@@ -3,7 +3,7 @@
 pkgname=dk
 pkgver=1.2
 pkgrel=1
-pkgdesc="A list based tiling window manager in the vein of dwm, bspwm, and xmonad."
+pkgdesc="A tiling window manager in the vein of dwm, bspwm, and xmonad."
 url="https://bitbucket.org/natemaia/dk"
 arch=('x86_64')
 license=('MIT')
