@@ -7,6 +7,12 @@ post_install() {
   * Running duplicati user instance (using current user account)
     - to start duplicati manually:           systemctl --user start duplicati
     - to autostart duplicati on user login:  systemctl --user enable duplicati
+  *
+  * To run Duplicati.Server.exe as root, simply use systemd's "drop-in" feature
+  * and specify
+  *    User=root
+  *    Group=root
+
 EOF
 }
 
