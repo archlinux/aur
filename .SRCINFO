@@ -1,19 +1,16 @@
 pkgbase = packettracer
-	pkgdesc = Cisco PacketTracer 8.0 installation package
+	pkgdesc = A cross-platform visual simulation tool designed by Cisco Systems that allows users to create network topologies and imitate modern computer network
 	pkgver = 8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.netacad.com/courses/packet-tracer
-	install = packettracer.install
 	arch = x86_64
 	license = custom
 	options = !strip
 	options = !emptydirs
 	source = local://PacketTracer_800_amd64_build212_final.deb
 	source = packettracer.sh
-	source = packettracer.install
 	sha512sums = 3a56a369ae2028fa866ad2e27bbe07d1bee14fd0f16f82790c5f7ad9b7a7c3fc39b4b88d52aae652dccf1a21a3ae0f433e8b586ace4f48dfab7271524c5d163c
 	sha512sums = 3246843441207d66ccffd0717aa85a7bf828842c2c337d1527597bdf57cc2f9966c75c764aa22f9cb6a331e6268dd64af0da7ce4cc89725d418fc54e163230f2
-	sha512sums = c0e894ff34e5e635574edcca9cd06dddc1706deef82032a964f779c1ac734e41ba328287ee7a8c989b9c4baf6a517e4d482465803f8f2dabd691616bf972cb7a
 	depends = openssl>=1.0
 	depends = dbus
 	depends = icu
@@ -22,6 +19,7 @@ pkgbase = packettracer
 	depends = libjpeg-turbo
 	depends = nss
 	depends = libxss
+	depends = java-runtime>=1.7.0
 
 pkgname = packettracer
 
