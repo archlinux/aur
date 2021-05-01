@@ -1,15 +1,15 @@
 # Maintainer: lmartinez-mirror
 pkgbase=sniprun
 pkgname=('sniprun' 'neovim-sniprun')
-pkgver=0.5.3
-pkgrel=2
+pkgver=0.5.4
+pkgrel=1
 pkgdesc='A neovim plugin to independently run snippets of code'
 arch=('x86_64')
 url="https://github.com/michaelb/sniprun"
 license=('MIT')
 makedepends=('cargo' 'gcc-libs')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a69b3010528497e5578ca40fced04b86a0550e1b01f41e9f8a8db85abb9ad12b')
+sha256sums=('02b484fd24a545575aa2edfe4ea21e645f101978c26583355dc53345fefe4b2c')
 
 build() {
   cd "$pkgbase-$pkgver"
