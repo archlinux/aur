@@ -8,7 +8,13 @@ pkgver=r1308.d275df8
 pkgrel=1
 pkgdesc="NGINX-based MP4 Repackager"
 arch=('i686' 'x86_64')
-depends=('nginx-mainline')
+depends=(
+  'nginx-mainline'
+  'ffmpeg-libfdk_aac'
+  'openssl'
+  'libxml2'
+  'iconv'
+)
 makedepends=('git' 'nginx-mainline-src')
 provides=('nginx-mainline-mod-vod')
 conflicts=('nginx-mainline-mod-vod')
