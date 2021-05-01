@@ -45,25 +45,26 @@ source=("git+$url")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g;s/\.rc./rc/g'
+	cd "$_pkgname"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g;s/\.rc./rc/g'
 }
 
 build() {
-  # https://bugs.gentoo.org/704322
-  export CXXFLAGS="$CXXFLAGS -fpermissive"
-  cmake -B build -S "$_pkgname" \
-  	-Wno-dev \
-  	-DARCH_OPT="" \
-  	-DCMAKE_BUILD_TYPE=Release \
-  	-DCMAKE_INSTALL_PREFIX=/usr \
-  	-DLIBDSDCC_INCLUDE_DIR=/usr/include/dsdcc \
-  	-DCM256CC_INCLUDE_DIR=/usr/include/cm256cc
+	# https://bugs.gentoo.org/704322
+	export CXXFLAGS="$CXXFLAGS -fpermissive"
+	cmake -B build -S "$_pkgname" \
+		-Wno-dev \
+		-DARCH_OPT="" \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DLIBDSDCC_INCLUDE_DIR=/usr/include/dsdcc \
+		-DCM256CC_INCLUDE_DIR=/usr/include/cm256cc
 
-  make -C build
+	make -C build
 }
 
 package() {
-  make -C build DESTDIR="$pkgdir" install
+	make -C build DESTDIR="$pkgdir" install
 }
 
+# vim: set noet ts=4
