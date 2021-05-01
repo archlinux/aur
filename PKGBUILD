@@ -1,15 +1,14 @@
 # Maintainer: Ben Widawsky <ben@bwidawsk.net>
 # Contributor: Rob McCathie <korrode at gmail>
-# Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-# Contributor: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
-pkgver=4.3.2
-pkgrel=2
+pkgver=4.4
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=(x86_64)
@@ -38,6 +37,7 @@ depends=(
   libpulse
   librav1e.so
   libraw1394
+  librsvg-2.so
   libsoxr
   libssh
   libtheora
@@ -98,14 +98,17 @@ provides=(
   libswscale.so
   "ffmpeg=$pkgver"
 )
-_tag=f719f869907764e6412a6af6e178c46e5f915d25
+_tag=dc91b913b6260e85e1304c74ff7bb3c22a8c9fb1
 conflicts=("$_name")
 source=(
   git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
   vmaf-model-path.patch
 )
-sha256sums=('SKIP'
-            '8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d')
+sha256sums=(
+  SKIP
+  8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d
+)
+
 pkgver() {
   cd ffmpeg
 
@@ -153,6 +156,7 @@ build() {
     --enable-libopus \
     --enable-libpulse \
     --enable-librav1e \
+    --enable-librsvg \
     --enable-libsoxr \
     --enable-libspeex \
     --enable-libsrt \
