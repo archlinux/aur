@@ -1,6 +1,6 @@
 pkgbase = stylua-git
 	pkgdesc = An opinionated code formatter for Lua 5.1 and Luau, built using full-moon.
-	pkgver = 0.7.1.r1.gce8e990
+	pkgver = 0.8.1.r0.g0a7b6fd
 	pkgrel = 1
 	url = https://github.com/morganamilo/paru
 	arch = any

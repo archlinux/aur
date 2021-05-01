@@ -1,7 +1,7 @@
 # Maintainer: mnabila nblid48[at]gmail[dot]com
 
 pkgname=stylua-git
-pkgver=0.7.1.r1.gce8e990
+pkgver=0.8.1.r0.g0a7b6fd
 pkgrel=1
 pkgdesc='An opinionated code formatter for Lua 5.1 and Luau, built using full-moon.'
 url='https://github.com/morganamilo/paru'
