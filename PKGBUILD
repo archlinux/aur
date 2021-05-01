@@ -6,8 +6,8 @@
 pkgname=combblas
 _PkgName=CombBLAS
 pkgver=1.6.2+r4666
-pkgrel=1
-pkgdesc="Combinatorial BLAS Library"
+pkgrel=2
+pkgdesc="A library offering a set of linear algebra primitives for graph analytics"
 arch=('x86_64')
 url="https://github.com/PASSIONLab/CombBLAS"
 license=("BSD")
@@ -50,4 +50,6 @@ package() {
   # Add extra headers
   install -Dm644 "$srcdir/$_PkgName"/Applications/*.h \
     -t "$pkgdir/usr/include/CombBLAS/Applications"
+  install -Dm644 "$srcdir/$_PkgName"/Applications/BipartiteMatchings/*.h \
+    -t "$pkgdir/usr/include/CombBLAS/Applications/BipartiteMatchings"
 }

@@ -1,7 +1,7 @@
 pkgbase = combblas
-	pkgdesc = Combinatorial BLAS Library
+	pkgdesc = A library offering a set of linear algebra primitives for graph analytics
 	pkgver = 1.6.2+r4666
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PASSIONLab/CombBLAS
 	arch = x86_64
 	license = BSD
