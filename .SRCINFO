@@ -1,0 +1,19 @@
+pkgbase = dk
+	pkgdesc = A list based tiling window manager in the vein of dwm, bspwm, and xmonad.
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://bitbucket.org/natemaia/dk
+	install = dk.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = xcb-proto
+	makedepends = xcb-util
+	makedepends = xcb-util-wm
+	makedepends = xcb-util-keysyms
+	makedepends = xcb-util-cursor
+	source = git+https://bitbucket.org/natemaia/dk.git#tag=v0.9
+	sha256sums = SKIP
+
+pkgname = dk
+
