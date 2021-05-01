@@ -2,31 +2,31 @@
 # Contributor: garion < garion @ mailoo.org >
 
 pkgname=mkclean
-pkgver=0.8.10
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Clean up and optimize MKV files"
 arch=('x86_64')
 url='http://www.matroska.org/downloads/mkclean.html'
 license=('BSD')
+depends=('glibc')
+makedepends=('cmake')
 source=("http://sourceforge.net/projects/matroska/files/mkclean/mkclean-${pkgver}.tar.bz2")
-sha256sums=('96773e72903b00d73e68ba9d5f19744a91ed46d27acd511a10eb23533589777d')
-options=('!makeflags')
+sha256sums=('2f5cdcab0e09b65f9fef8949a55ef00ee3dd700e4b4050e245d442347d7cc3db')
 
-prepare() {
-  cd "mkclean-${pkgver}"
-
-  gcc ${CFAGS} -o coremake corec/tools/coremake/coremake.c
-
-  sed "s|/usr/local|${pkgdir}/usr|g" -i corec/tools/coremake/gcc_mak.inc
-
-  ./coremake gcc_linux_x64
+prepare(){
+  mkdir -p build
 }
 
 build(){
-  make -C "mkclean-${pkgver}/mkclean"
+  cd build
+  cmake "../mkclean-${pkgver}" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr
+
+  make
 }
 
 package(){
-  mkdir -p "${pkgdir}/usr/bin"
-  make -C "mkclean-${pkgver}/mkclean" install
+  install -Dm755 build/mkclean/mkclean "${pkgdir}/usr/bin/mkclean"
+  install -Dm644 "mkclean-${pkgver}/ReadMe.txt" "${pkgdir}/usr/share/licenses/${pkgname}/License.txt"
 }
