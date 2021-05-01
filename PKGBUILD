@@ -2,13 +2,13 @@
 
 pkgname=adobe-source-han-mono-classic-fonts
 pkgver=1.002
-pkgrel=7
+pkgrel=8
 pkgdesc='Adobe Source Han Mono fonts with classic orthography.'
 arch=('any')
 url="https://github.com/redchenjs/source-han-mono-classic"
 license=('custom:OFL')
-source=($pkgver.zip::"https://github.com/redchenjs/source-han-mono-classic/releases/download/$pkgver/source-han-mono-classic-otf.zip")
-sha512sums=('95ac32419bb072b474755caee7424baf2ae5eec7a439ba7e4986cd0752e52192e5fcae2ade9c7fd508f68289d07e6d187f80178514f3ca97eea6e8d8dd4fe435')
+source=($pkgver-$pkgrel.zip::"https://github.com/redchenjs/source-han-mono-classic/releases/download/$pkgver/SourceHanMonoC-OTF.zip")
+sha512sums=('7b02b5d0252dd3076405f23659e26192dda6a2e330d00f935d9d05014afcf27b45aac82b8a6bc846796abf695ab0e50d8f1fff0728ee057cd4f9037aab0f0762')
 
 package() {
   cd "$srcdir/OTF"
