@@ -24,7 +24,7 @@ Server = https://us-ut-mirror.chaotic.cx/$repo/$arch
 Server = https://us-ca-mirror.chaotic.cx/$repo/$arch
 
 # Netherlands
-# * By: Var Bhat
+# * By: Easy Lee
 Server = https://nl-mirror.chaotic.cx/$repo/$arch
 
 # Burgos, Spain
@@ -36,6 +36,8 @@ Server = https://es-mirror.chaotic.cx/$repo/$arch
 Server = https://de-1-mirror.chaotic.cx/$repo/$arch
 # * By: ParanoidBangL (without HTTPS)
 Server = http://de-2-mirror.chaotic.cx/$repo/$arch
+# * By: ptr1337
+Server = https://de-3-mirror.chaotic.cx/$repo/$arch
 
 # Brussels, Belgium
 # * By: Belnet, the Belgian Education and Research Network
