@@ -1,0 +1,14 @@
+pkgbase = cfn-guard
+	pkgdesc = A set of tools to check AWS CloudFormation templates for policy compliance using a simple, policy-as-code, declarative syntax
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/aws-cloudformation/cloudformation-guard
+	arch = x86_64
+	license = Apache
+	depends = gcc-libs
+	provides = cfn-guard-git
+	source = cfn-guard-1.0.0.tar.gz::https://github.com/aws-cloudformation/cloudformation-guard/releases/download/1.0.0/cfn-guard-linux-1.0.0.tar.gz
+	sha256sums = e8b9e503257baaefdabb74311813b6d44eac64e05f10b9157569e5828d14370e
+
+pkgname = cfn-guard
+
