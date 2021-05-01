@@ -2,7 +2,7 @@
 
 pkgname=woob
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Core library and modules for Web Outside of Browsers"
 arch=(any)
 url="https://woob.tech"
@@ -19,7 +19,8 @@ depends=('python-lxml'
          'python-babel'
          'python-simplejson')
 optdepends=('python-prettytable: CLI output formatting'
-        'python-feedparser: required by some modules')
+        'python-feedparser: required by some modules'
+	'python-google-api-python-client: required by Google modules')
 makedepends=('python-setuptools')
 replaces=('weboob-headless' 'weboob')
 provides=('weboob-headless' 'weboob')

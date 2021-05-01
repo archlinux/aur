@@ -1,7 +1,7 @@
 pkgbase = woob
 	pkgdesc = Core library and modules for Web Outside of Browsers
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://woob.tech
 	arch = any
 	license = LGPL3
@@ -19,6 +19,7 @@ pkgbase = woob
 	depends = python-simplejson
 	optdepends = python-prettytable: CLI output formatting
 	optdepends = python-feedparser: required by some modules
+	optdepends = python-google-api-python-client: required by Google modules
 	provides = weboob-headless
 	provides = weboob
 	conflicts = weboob-headless
