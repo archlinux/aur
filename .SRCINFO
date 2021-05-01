@@ -110,3 +110,4 @@ pkgname = gcc-d-11
 	provides = gcc-d=11.1.0-1
 	conflicts = gcc-d
 	options = staticlibs
+

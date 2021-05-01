@@ -24,11 +24,6 @@ b2sums=('fe617e776b0270d11adea21b5c37d889de90865c19ab82d1c37bbd5c5b9c583a98c1746
         '2c64090b879d6faea7f20095eff1b9bd6a09fe3b15b3890783d3715171678ab62d32c91af683b878746fb14441dbe09768474417840f96a561443415f76afb63'
         '3cf318835b9833ac7c5d3a6026fff8b4f18b098e18c9649d00e32273688ff06ec3af41f0d0aee9d2261725e0ff08f47a224ccfe5ebb06646aaf318ff8ac9a0d1')
 
-#pkgver() {
-#  cd gcc
-#  echo $(cat gcc/BASE-VER).r$(git rev-list --count HEAD).$(git rev-parse --#short HEAD)
-#}
-
 prepare() {
   [[ ! -d gcc ]] && ln -s gcc-${pkgver/+/-} gcc
   cd gcc
@@ -49,6 +44,7 @@ prepare() {
 }
 
 build() {
+
   cd gcc-build
 
   # using -pipe causes spurious test-suite failures
@@ -93,19 +89,19 @@ build() {
   make -C $CHOST/libstdc++-v3/doc doc-man-doxygen
 }
 
-check() {
-  cd gcc-build
-
-
-  # disable libphobos test to avoid segfaults and other unfunny ways to waste my time
-  sed -i '/maybe-check-target-libphobos \\/d' Makefile
-
-
-  # do not abort on error as some are "expected"
-  make -k check || true
-  "$srcdir/gcc/contrib/test_summary"
-}
-
+#check() {
+#  cd gcc-build
+#
+#
+#  # disable libphobos test to avoid segfaults and other unfunny ways to waste my time
+#  sed -i '/maybe-check-target-libphobos \\/d' Makefile
+#
+#
+#  # do not abort on error as some are "expected"
+#  make -k check || true
+#  "$srcdir/gcc/contrib/test_summary"
+#}
+#
 package_gcc-libs-11() {
   pkgdesc='Runtime libraries shipped by GCC'
   depends=('glibc>=2.27')
