@@ -37,7 +37,7 @@ package() {
   
   cd $_pkgname-$pkgver-beta
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "./_icons/icon.svg" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -Dm644 "./_icons/icon.svg" "$pkgdir/usr/share/pixmaps/$pkgname.svg"
   cd ..
   install -Dm644 "freetube.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
