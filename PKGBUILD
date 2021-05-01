@@ -2,8 +2,8 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-io-skins-bonus
-pkgver=20.1018
-pkgrel=2
+pkgver=21.0308
+pkgrel=1
 pkgdesc="Additional skins for RVGL default and community cars."
 url='https://re-volt.io/downloads/packs'
 arch=('any')
@@ -18,10 +18,5 @@ sha256sums=('SKIP')
 
 package() {
     cd "$srcdir/rvgl_io_skins_bonus"
-
-    # Remove conflicting files present in cars pack
-    rm cars/bendor/carbattle.bmp
-    rm -r cars/camboldr
-
     find * -type f -exec install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 }
