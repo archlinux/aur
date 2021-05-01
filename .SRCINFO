@@ -1,12 +1,14 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = lightdm-webkit-theme-sequoia-git
+	pkgdesc = A simple LightDM theme (Flova fork, fixes buttons alignement)
+	pkgver = r30.378dd0c
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
-	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	url = https://github.com/Flova/lightdm-webkit-sequoia/tree/patch-1
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = lightdm-webkit2-greeter
+	source = git+https://github.com/Flova/lightdm-webkit-sequoia.git#branch=patch-1
+	md5sums = SKIP
 
-pkgname = yarxi
+pkgname = lightdm-webkit-theme-sequoia-git
 
