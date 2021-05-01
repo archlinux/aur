@@ -1,8 +1,8 @@
 # Maintainer: Giuseppe Calà <gcala at mailbox dot org>
 
 pkgname=audiotube-git
-pkgver=r81.5e5ee60
-pkgrel=2
+pkgver=r87.cf76238
+pkgrel=1
 pkgdesc="Client for YouTube Music"
 arch=(x86_64 aarch64)
 url="https://invent.kde.org/jbbgameich/audiotube"
