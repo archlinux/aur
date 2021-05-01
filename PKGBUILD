@@ -5,15 +5,15 @@
 _pkgname=sdrangel
 pkgname=$_pkgname-git
 pkgver=6.10.3.r0.873ec7809
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt5/OpenGL SDR and signal analyzer frontend.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/f4exb/sdrangel'
 license=('GPL3')
 depends=('pkg-config' 'log4cpp' 'opencv' 'fftw'
          'cm256cc' 'dsdcc' 'pulseaudio' 'lz4' 'nanomsg'
-         'qt5-base' 'qt5-tools' 'qt5-multimedia' 'qt5-websockets' 'qt5-quick3d'
-         'qt5-charts' 'qt5-serialport' 'qt5-declarative' 'qt5-location' 'qt5-speech') # QT5
+         'qt5-base' 'qt5-multimedia' 'qt5-websockets' 'qt5-tools' 'qt5-charts' 'qt5-quickcontrols' 'qt5-quickcontrols2'
+         'qt5-serialport' 'qt5-declarative' 'qt5-location' 'qt5-speech')
 
 # libsigmf requires the vendored version at https://github.com/f4exb/libsigmf/tree/new-namespaces, which isn't packaged yet
 makedepends=('git' 'cmake' 'boost' 'doxygen' 'graphviz'
