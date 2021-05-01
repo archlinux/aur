@@ -2,7 +2,7 @@
 pkgname=cq
 pkgver=1.0.0.A15
 
-_cyanversion=1.0.0.A11 # Needed to find the right version ZIP
+_cyanversion=1.0.0.A12 # Needed to find the right version ZIP
 _aosutilverion=0.0.0.13 # Needed for CCFG
 
 pkgrel=2
@@ -23,7 +23,7 @@ install=
 changelog=
 source=("https://aerialworks.ddns.net/maven/org/asf/cyan/CyanLoader-Sources/$_cyanversion/CyanLoader-Sources-$_cyanversion-full.zip" "https://aerialworks.ddns.net/maven/org/asf/aos/util/service/aosutil-service-SLIB-UTIL/$_aosutilverion/aosutil-service-SLIB-UTIL-$_aosutilverion.jar")
 noextract=()
-md5sums=('e8affc3eea165dc31da6d251f775fbf6'
+md5sums=('5bc602d56f6f1f8215094bee3c847c46'
          'c725e9bee57d6a63ce27b829cfa1a03e')
 
 build() {
