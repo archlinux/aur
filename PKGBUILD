@@ -3,7 +3,7 @@
 # Contributor: cornholio <vigo.the.unholy.carpathian@gmail.com>
 # Contributor: martin <martin pipegrep.co.uk>
 pkgname=afni
-pkgver=20.3.02
+pkgver=21.1.03
 pkgrel=1
 pkgdesc="An open-source environment for processing and displaying functional MRI data"
 arch=("x86_64")
@@ -11,7 +11,7 @@ url="http://afni.nimh.nih.gov"
 license=(custom)
 depends=("tcsh" "python" "gcc-libs" "gsl" "libxpm" "glu" "openmotif" "libjpeg-turbo" "libxmu" "libxft")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/afni/afni/archive/AFNI_$pkgver.tar.gz" "Makefile.patch")
-md5sums=('7ac8062cce4159c36d8ecfa74f02eddf'
+md5sums=('763780228a67ba12a669f8923f6ab182'
          '2cc1916ecd1e775f52d189f1dd5b0ed9')
 
 prepare() {
