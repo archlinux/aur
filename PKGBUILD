@@ -2,62 +2,68 @@
 # Contributor: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
 # Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
 
-pkgname=sdrangel-git
-_pkgname=${pkgname%-git}
-pkgver=6.10.1.r15.ec8cdc63f
+_pkgname=sdrangel
+pkgname=$_pkgname-git
+pkgver=6.10.3.r0.873ec7809
 pkgrel=1
 pkgdesc='Qt5/OpenGL SDR and signal analyzer frontend.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/f4exb/sdrangel'
 license=('GPL3')
-depends=('pkg-config' 'log4cpp' 'opencv' 'fftw' 'ffmpeg'
+depends=('pkg-config' 'log4cpp' 'opencv' 'fftw'
          'cm256cc' 'dsdcc' 'pulseaudio' 'lz4' 'nanomsg'
-         'limesuite'
          'qt5-base' 'qt5-tools' 'qt5-multimedia' 'qt5-websockets' 'qt5-quick3d'
          'qt5-charts' 'qt5-serialport' 'qt5-declarative' 'qt5-location' 'qt5-speech') # QT5
-makedepends=('git' 'cmake' 'airspy' 'bladerf' 'hackrf' 'rtl-sdr' 'boost')
+
+# libsigmf requires the vendored version at https://github.com/f4exb/libsigmf/tree/new-namespaces, which isn't packaged yet
+makedepends=('git' 'cmake' 'boost' 'doxygen' 'graphviz'
+             'ffmpeg' 'libdab' 'zlib' 'faad2' 'sgp4' 'aptdec' 'codec2'
+             'libmirisdr4' 'rtl-sdr' 'hackrf' 'libiio' 'limesuite' 'bladerf' 'libperseus-sdr' 'airspy' 'airspyhf' 'libxtrx' 'libuhd')
 optdepends=('ffmpeg: DATV demodulator'
+            'libdab: DAB demodulator'
+            'zlib: DAB demodulator'
+            'faad2: DAB demodulator'
+            'sgp4: satellite tracker'
+            'aptdec: APT (weather satellite) decoder'
+            'codec2: FreeDV modulator/demodulator'
+
             'libmirisdr4: SDRPlay support'
             'rtl-sdr: RTLSDR support'
             'hackrf: HackRF support'
-            'libad9361-iio: PlutoSDR support'
+            'libiio: PlutoSDR support'
             'limesuite: LimeSDR support'
             'bladerf: BladeRF support'
-            'airspy: AirSPY support')
-provides=("sdrangel")
-conflicts=("sdrangel")
+            'libperseus-sdr: Perseus SDR support'
+            'airspy: Airspy support'
+            'airspyhf: Airspy HF+ support'
+            'libxtrx: XTRX SDR support'
+            'libuhd: USRP support'
+)
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 source=("git+$url")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+  cd "$_pkgname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g;s/\.rc./rc/g'
 }
 
-prepare() {
-  cd $_pkgname
-
-}
-
 build() {
-  mkdir -p $_pkgname/build
-  cd $_pkgname/build
-
   # https://bugs.gentoo.org/704322
   export CXXFLAGS="$CXXFLAGS -fpermissive"
-  cmake .. \
+  cmake -B build -S "$_pkgname" \
+  	-Wno-dev \
   	-DARCH_OPT="" \
   	-DCMAKE_BUILD_TYPE=Release \
   	-DCMAKE_INSTALL_PREFIX=/usr \
   	-DLIBDSDCC_INCLUDE_DIR=/usr/include/dsdcc \
   	-DCM256CC_INCLUDE_DIR=/usr/include/cm256cc
 
-  make
+  make -C build
 }
 
 package() {
-  cd $_pkgname/build
-
-  make DESTDIR="$pkgdir" install
+  make -C build DESTDIR="$pkgdir" install
 }
 
