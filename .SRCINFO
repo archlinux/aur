@@ -1,6 +1,6 @@
 pkgbase = delphes-git
 	pkgdesc = A framework for fast simulation of a generic collider experiment
-	pkgver = 3.4.2.r139.g3cfe61d
+	pkgver = 3.4.2.r96.g3cfe61d
 	pkgrel = 1
 	url = http://cp3.irmp.ucl.ac.be/projects/delphes
 	arch = i686
