@@ -1,7 +1,7 @@
 # Maintainer: Stephanie Wilde-Hobbs (RX14) <steph@rx14.co.uk>
 
 pkgname=mcstatus
-pkgver=5.1.4
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="Provides an easy way to query Minecraft servers for any information they can expose."
 arch=(any)
@@ -11,7 +11,7 @@ depends=(python python-six python-click python-dnspython python-asyncio-dgram)
 makedepends=(python-setuptools)
 checkdepends=(python-mock python-pytest python-pytest-asyncio)
 source=("https://github.com/Dinnerbone/mcstatus/archive/v${pkgver}.tar.gz")
-sha256sums=('b090b5bdef6ff5e4d0eb03bb4ea939c8a93224fe8642a3d5fcc7b50e7fdcad85')
+sha256sums=('c0c23f875e304e4d9e667ed0d8d3a0f0457e5d3f64ab273bcfccad3d2dc01fce')
 
 prepare() {
   cd "${srcdir}/mcstatus-${pkgver}"
