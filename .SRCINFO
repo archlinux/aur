@@ -1,0 +1,14 @@
+pkgbase = wayback
+	pkgdesc = A toolkit for snapshot webpage to Internet Archive, archive.today, IPFS and beyond
+	pkgver = 0.10.3
+	pkgrel = 1
+	url = https://github.com/wabarc/wayback
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/wabarc/wayback.git
+	sha256sums = SKIP
+
+pkgname = wayback
+
