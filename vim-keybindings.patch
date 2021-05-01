@@ -1,42 +1,42 @@
 diff --git a/Action.c b/Action.c
-index 0b5c899..c3b7166 100644
+index d6fd737..a9bd9cf 100644
 --- a/Action.c
 +++ b/Action.c
-@@ -432,7 +432,7 @@ static const struct {
-    const char* key;
+@@ -452,7 +452,7 @@ static const struct {
+    bool roInactive;
     const char* info;
  } helpLeft[] = {
--   { .key = " Arrows: ", .info = "scroll process list" },
-+   { .key = "   hjkl: ", .info = "scroll process list" },
-    { .key = " Digits: ", .info = "incremental PID search" },
-    { .key = "   F3 /: ", .info = "incremental name search" },
-    { .key = "   F4 \\: ",.info = "incremental name filtering" },
-@@ -458,7 +458,7 @@ static const struct {
-    { .key = "  Space: ", .info = "tag process" },
-    { .key = "      c: ", .info = "tag process and its children" },
-    { .key = "      U: ", .info = "untag all processes" },
--   { .key = "   F9 k: ", .info = "kill process/tagged processes" },
-+   { .key = "   F9 x: ", .info = "kill process/tagged processes" },
-    { .key = "   F7 ]: ", .info = "higher priority (root only)" },
-    { .key = "   F8 [: ", .info = "lower priority (+ nice)" },
+-   { .key = " Arrows: ",  .roInactive = false, .info = "scroll process list" },
++   { .key = "   hjkl: ",  .roInactive = false, .info = "scroll process list" },
+    { .key = " Digits: ",  .roInactive = false, .info = "incremental PID search" },
+    { .key = "   F3 /: ",  .roInactive = false, .info = "incremental name search" },
+    { .key = "   F4 \\: ", .roInactive = false, .info = "incremental name filtering" },
+@@ -479,7 +479,7 @@ static const struct {
+    { .key = "  Space: ", .roInactive = false, .info = "tag process" },
+    { .key = "      c: ", .roInactive = false, .info = "tag process and its children" },
+    { .key = "      U: ", .roInactive = false, .info = "untag all processes" },
+-   { .key = "   F9 k: ", .roInactive = true,  .info = "kill process/tagged processes" },
++   { .key = "   F9 x: ", .roInactive = true,  .info = "kill process/tagged processes" },
+    { .key = "   F7 ]: ", .roInactive = true,  .info = "higher priority (root only)" },
+    { .key = "   F8 [: ", .roInactive = false, .info = "lower priority (+ nice)" },
  #if (defined(HAVE_LIBHWLOC) || defined(HAVE_LINUX_AFFINITY))
-@@ -466,12 +466,12 @@ static const struct {
+@@ -487,12 +487,12 @@ static const struct {
  #endif
-    { .key = "      e: ", .info = "show process environment" },
-    { .key = "      i: ", .info = "set IO priority" },
--   { .key = "      l: ", .info = "list open files with lsof" },
--   { .key = "      x: ", .info = "list file locks of process" },
-+   { .key = "      L: ", .info = "list open files with lsof" },
-+   { .key = "      X: ", .info = "list file locks of process" },
-    { .key = "      s: ", .info = "trace syscalls with strace" },
-    { .key = "      w: ", .info = "wrap process command in multiple lines" },
-    { .key = " F2 C S: ", .info = "setup" },
--   { .key = "   F1 h: ", .info = "show this help screen" },
-+   { .key = "   F1 ?: ", .info = "show this help screen" },
-    { .key = "  F10 q: ", .info = "quit" },
+    { .key = "      e: ", .roInactive = false, .info = "show process environment" },
+    { .key = "      i: ", .roInactive = true,  .info = "set IO priority" },
+-   { .key = "      l: ", .roInactive = true,  .info = "list open files with lsof" },
+-   { .key = "      x: ", .roInactive = false, .info = "list file locks of process" },
++   { .key = "      L: ", .roInactive = true,  .info = "list open files with lsof" },
++   { .key = "      X: ", .roInactive = false, .info = "list file locks of process" },
+    { .key = "      s: ", .roInactive = true,  .info = "trace syscalls with strace" },
+    { .key = "      w: ", .roInactive = false, .info = "wrap process command in multiple lines" },
+    { .key = " F2 C S: ", .roInactive = false, .info = "setup" },
+-   { .key = " F1 h ?: ", .roInactive = false, .info = "show this help screen" },
++   { .key = "   F1 ?: ", .roInactive = false, .info = "show this help screen" },
+    { .key = "  F10 q: ", .roInactive = false, .info = "quit" },
     { .key = NULL, .info = NULL }
  };
-@@ -641,12 +641,14 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -666,12 +666,14 @@ void Action_setBindings(Htop_Action* keys) {
     keys['H'] = actionToggleUserlandThreads;
     keys['I'] = actionInvertSortOrder;
     keys['K'] = actionToggleKernelThreads;
@@ -51,7 +51,7 @@ index 0b5c899..c3b7166 100644
     keys['Z'] = actionTogglePauseProcessUpdate;
     keys['['] = actionLowerPriority;
     keys['\014'] = actionRedraw; // Ctrl+L
-@@ -656,9 +658,6 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -681,9 +683,6 @@ void Action_setBindings(Htop_Action* keys) {
     keys['a'] = actionSetAffinity;
     keys['c'] = actionTagAllChildren;
     keys['e'] = actionShowEnvScreen;
@@ -61,7 +61,7 @@ index 0b5c899..c3b7166 100644
     keys['m'] = actionToggleMergedCommand;
     keys['p'] = actionToggleProgramPath;
     keys['q'] = actionQuit;
-@@ -666,7 +665,7 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -691,7 +690,7 @@ void Action_setBindings(Htop_Action* keys) {
     keys['t'] = actionToggleTreeView;
     keys['u'] = actionFilterByUser;
     keys['w'] = actionShowCommandScreen;
@@ -70,7 +70,7 @@ index 0b5c899..c3b7166 100644
     keys[KEY_F(1)] = actionHelp;
     keys[KEY_F(2)] = actionSetup;
     keys[KEY_F(3)] = actionIncSearch;
-@@ -678,5 +677,6 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -703,5 +702,6 @@ void Action_setBindings(Htop_Action* keys) {
     keys[KEY_F(9)] = actionKill;
     keys[KEY_F(10)] = actionQuit;
     keys[KEY_F(18)] = actionExpandCollapseOrSortColumn;
@@ -97,10 +97,10 @@ index 4ee1ad4..43930da 100644
        case EVENT_SET_SELECTED:
           result = HANDLED;
 diff --git a/MainPanel.c b/MainPanel.c
-index 842e8e1..93a8895 100644
+index 5a75af3..48e6345 100644
 --- a/MainPanel.c
 +++ b/MainPanel.c
-@@ -49,7 +49,7 @@ static const char* MainPanel_getValue(Panel* this, int i) {
+@@ -50,7 +50,7 @@ static const char* MainPanel_getValue(Panel* this, int i) {
     return Process_getCommand(p);
  }
  
@@ -110,10 +110,10 @@ index 842e8e1..93a8895 100644
  
     HandlerResult result = IGNORED;
 diff --git a/MainPanel.h b/MainPanel.h
-index 2427ca3..6354744 100644
+index 04f347d..6c8fd32 100644
 --- a/MainPanel.h
 +++ b/MainPanel.h
-@@ -48,4 +48,6 @@ void MainPanel_setState(MainPanel* this, State* state);
+@@ -46,4 +46,6 @@ void MainPanel_setState(MainPanel* this, State* state);
  
  void MainPanel_delete(Object* object);
  
@@ -121,7 +121,7 @@ index 2427ca3..6354744 100644
 +
  #endif
 diff --git a/Panel.c b/Panel.c
-index 986a989..e7cb440 100644
+index 69933ae..98eb588 100644
 --- a/Panel.c
 +++ b/Panel.c
 @@ -351,6 +351,7 @@ bool Panel_onKey(Panel* this, int key) {
@@ -192,7 +192,7 @@ index 986a989..e7cb440 100644
        break;
  
 diff --git a/README b/README
-index 880597d..0c44936 100644
+index a9cb1df..e8723ec 100644
 --- a/README
 +++ b/README
 @@ -19,6 +19,48 @@ The information displayed is configurable through a graphical setup and can be s
@@ -245,7 +245,7 @@ index 880597d..0c44936 100644
  
  For more information and details on how to contribute to `htop` visit [htop.dev](https://htop.dev).
 diff --git a/ScreenManager.c b/ScreenManager.c
-index 64af535..dc8c6f8 100644
+index 6e7551f..27afda3 100644
 --- a/ScreenManager.c
 +++ b/ScreenManager.c
 @@ -14,6 +14,7 @@ in the source distribution for its full text.
@@ -254,9 +254,9 @@ index 64af535..dc8c6f8 100644
  #include "FunctionBar.h"
 +#include "MainPanel.h"
  #include "Object.h"
+ #include "Platform.h"
  #include "ProcessList.h"
- #include "ProvideCurses.h"
-@@ -214,14 +215,16 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+@@ -222,14 +223,16 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
           redraw = false;
           continue;
        }
@@ -279,7 +279,7 @@ index 64af535..dc8c6f8 100644
           result = Panel_eventHandler(panelFocus, ch);
        }
        if (result & SYNTH_KEY) {
-@@ -251,7 +254,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+@@ -259,7 +262,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
           continue;
        }
        case KEY_LEFT:
@@ -288,7 +288,7 @@ index 64af535..dc8c6f8 100644
           if (this->panelCount < 2) {
              goto defaultHandler;
           }
-@@ -272,7 +275,7 @@ tryLeft:
+@@ -280,7 +283,7 @@ tryLeft:
  
           break;
        case KEY_RIGHT:
