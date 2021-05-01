@@ -1,6 +1,6 @@
 # Maintainer: ANDRoid7890 <andrey.android7890@gmail.com>
 
-# https://gitlab.manjaro.org/packages/core/linux511
+# https://gitlab.manjaro.org/packages/core/linux512
 #
 # Maintainer: Philip Müller
 # Maintainer: Bernhard Landauer
@@ -64,8 +64,8 @@ _makenconfig=
 
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-_major=5.11
-pkgver=${_major}.15
+_major=5.12
+pkgver=${_major}.0
 _branch=5.x
 xanmod=1
 pkgrel=1
@@ -73,7 +73,7 @@ pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="32a92e224750858e414016656a0e1c1e3e86b63c" # 5.11.15-1
+__commit="3153154c3de2123c20231c0a259cbc3a0c1f70e7" # 5.12.0-1
 
 license=(GPL2)
 makedepends=(
@@ -85,7 +85,7 @@ _srcname="linux-${pkgver}-xanmod${xanmod}"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
         "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz"
         choose-gcc-optimization.sh
-        "https://gitlab.manjaro.org/packages/core/linux511/-/archive/${__commit}/linux59-${__commit}.tar.gz")
+        "https://gitlab.manjaro.org/packages/core/linux512/-/archive/${__commit}/linux512-${__commit}.tar.gz")
         #"patch-${pkgver}-xanmod${xanmod}.xz::https://sourceforge.net/projects/xanmod/files/releases/stable/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz/download"
 
 # Archlinux patches
@@ -95,11 +95,11 @@ for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${_commit}")
 done
         
-sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'  # kernel tar.xz
+sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'  # kernel tar.xz
             'SKIP'                                                              #        tar.sign
-            'c2b8554405d57c76a06c53196ace136213c2084ec34d6ceb4a20d3c25ba0deb6'  # xanmod
-            '03bb8b234a67b877a34a8212936ba69d8700c54c7877686cbd9742a536c87134'  # choose-gcc-optimization.sh
-            '0559e5114de7c69a96eef725167c7891d776320caa683105bbfd2c91ef15386f'  # manjaro
+            '690bd1fe99a57db8d6c3b94cdaf30d5f1a879e5cd879c1186a9919908a1c30e9'  # xanmod
+            '51742dee57cd15bece152d6527f48af87cb7930f0f6a356d5282f778e7c35b39'  # choose-gcc-optimization.sh
+            '957d1338c9fda1e0fe7c282ad5fbca8bdaa91eb876d0a4c26ff93dd2c8b0bfe8'  # manjaro
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -139,15 +139,15 @@ prepare() {
   done
   
   # Manjaro patches
-  rm ../linux511-$__commit/0103-futex.patch  # remove conflicting ones
-  rm ../linux511-$__commit/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
+  rm ../linux512-$__commit/0103-futex.patch  # remove conflicting ones
+  rm ../linux512-$__commit/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
   local _patch
-  for _patch in ../linux511-$__commit/*; do
+  for _patch in ../linux512-$__commit/*; do
       [[ $_patch = *.patch ]] || continue
       msg2 "Applying patch: $_patch..."
-      patch -Np1 < "../linux511-$__commit/$_patch"
+      patch -Np1 < "../linux512-$__commit/$_patch"
   done 
-  git apply -p1 < "../linux511-$__commit/0513-bootsplash.gitpatch"
+  git apply -p1 < "../linux512-$__commit/0513-bootsplash.gitpatch"
   scripts/config --enable CONFIG_BOOTSPLASH
   
   
