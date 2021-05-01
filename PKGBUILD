@@ -1,9 +1,11 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Sergii Fesenko <sergii_f@outlook.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=granite-git
-pkgver=5.2.2.r15.c1d97d82
+_pkgname=granite
+pkgver=6.0.0.r22.d55a14fa
 pkgrel=1
-pkgdesc='Library that extends Gtk+'
+pkgdesc='Library that extends GTK with common widgets and utilities'
 arch=(x86_64)
 url=https://github.com/elementary/granite
 license=(LGPL3)
@@ -20,6 +22,7 @@ makedepends=(
   git
   gobject-introspection
   meson
+  ninja
   vala
 )
 provides=(
@@ -31,13 +34,13 @@ source=(git+https://github.com/elementary/granite.git)
 sha256sums=(SKIP)
 
 pkgver() {
-  cd granite
+  cd ${srcdir}/${_pkgname}
 
   git describe --tags | sed 's/-/.r/; s/-g/./'
 }
 
 build() {
-  arch-meson granite build \
+  arch-meson ${_pkgname} build \
     -D b_pie='false'
   ninja -C build
 }
