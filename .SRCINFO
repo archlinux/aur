@@ -1,15 +1,15 @@
 pkgbase = php-humbug-box-bin
 	pkgdesc = Fast, zero config application bundler with PHARs.
-	pkgver = 3.11.1
-	pkgrel = 2
+	pkgver = 3.12.0
+	pkgrel = 1
 	url = https://github.com/humbug/box
 	install = php-humbug-box.install
 	arch = any
 	license = MIT
 	provides = php-box
 	conflicts = php-box
-	source = https://github.com/humbug/box/releases/download/3.11.1/box.phar
-	source = https://raw.githubusercontent.com/humbug/box/3.11.1/LICENSE
+	source = https://github.com/humbug/box/releases/download/3.12.0/box.phar
+	source = https://raw.githubusercontent.com/humbug/box/3.12.0/LICENSE
 	sha512sums = cd0a8bc290e0cfb51367480938b31fa8706e441c8931a46ea9faac32c521a04fb7377d589aca8167e83071dbd6d21a23417e496049ea01734ced025c753f2808
 	sha512sums = 4574410c9a00c41e11d166bcc0d44b4e31b5beaf24bf498a608ebf611e86466a3a61549da6d608b714b3c32c5c361a1514baf38e4db2a5fc0a0d36b69169cb50
 
