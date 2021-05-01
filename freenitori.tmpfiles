@@ -1,1 +1,2 @@
 d /var/lib/freenitori 0700 freenitori freenitori - -
+d /var/db/freenitori 0700 freenitori freenitori - -

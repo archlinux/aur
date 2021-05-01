@@ -1,7 +1,7 @@
 # Maintainer: Watanabe Fumihiko <random@chars.jp>
 
 pkgname=freenitori
-pkgver=1.12.4
+pkgver=1.13.0
 pkgrel=3
 pkgdesc="Open source, general purpose Discord utility."
 arch=("x86_64")
@@ -19,7 +19,7 @@ source=(
 sha256sums=('SKIP'
             '7b50e0e628828635d639238b003da5749a38b5942d765418cdeb466bcce95782'
             '89719b5009884f17fed228d2cb0562c4e71f3a6dc61618d8989d632a2fa5a953'
-            'cb8d60723616d8153505850a6ec8cb5458c34a833e5d5bc87b3efcce1486202b')
+            '9c387032930c51ca0232839c29e95dc66e6f1feb46e0d3a1d1ba8fe3b910c57f')
 
 build() {
   cd "FreeNitori"
