@@ -1,0 +1,15 @@
+[Unit]
+Description=Monitoring system and forwarder
+Documentation=https://github.com/grafana/agent/blob/main/docs/README.md
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=grafana-agent
+ExecStart=/usr/bin/grafana-agent --config.file=/etc/grafana-agent/grafana-agent.yaml
+Restart=always
+TimeoutStopSec=20s
+SendSIGKILL=no
+
+[Install]
+WantedBy=multi-user.target
