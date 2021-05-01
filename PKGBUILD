@@ -2,36 +2,29 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-targavfd
-pkgver=0.3.1
+pkgver=0.3.2
 epoch=1
-_vdrapi=2.4.6
-pkgrel=5
-pkgdesc="shows information about the current state of VDR on Targa USB Graphic Vacuum Fluorescent Display"
-url="http://projects.vdr-developer.org/projects/show/plg-targavfd"
+_vdrapi=2.4.7
+pkgrel=1
+pkgdesc="Shows information about the current state of VDR on Targa USB Graphic Vacuum Fluorescent Display"
+url="https://github.com/vdr-projects/vdr-plugin-targavfd"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL3')
 depends=('fontconfig' 'freetype2' 'libusb' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
-source=("https://projects.vdr-developer.org/attachments/download/2087/$pkgname-$pkgver.tgz"
-        'targavfd-freetype-2.9.1-fix.diff'
+source=("$pkgname-$pkgver.tar.gz::https://github.com/vdr-projects/vdr-plugin-targavfd/archive/refs/tags/$pkgver.tar.gz"
         '92-targavfd.rules')
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-md5sums=('ddd4893d206039c6738e7e81d2aac811'
-         '7fa986311cba912c95f601e90d36e8b5'
-         'ee53f6e044af746a1e518937edc9a341')
-
-prepare() {
-  cd "$srcdir/$_plugname-$pkgver"
-  patch -p1 -i "${srcdir}/targavfd-freetype-2.9.1-fix.diff"
-}
+sha256sums=('1fae0afa633fa83632f2cfb82376614355a686a59740eaa9173c82faeb84673b'
+            '01806805d602c4e97fed9318bd0d2c2f1d6ea92bf241a702bb086c7ebd0d5e99')
 
 build() {
-  cd "$srcdir/$_plugname-$pkgver"
+  cd "$srcdir/vdr-plugin-$_plugname-$pkgver"
   make
 }
 
 package() {
-  cd "$srcdir/$_plugname-$pkgver"
+  cd "$srcdir/vdr-plugin-$_plugname-$pkgver"
   make DESTDIR="$pkgdir" install
 
   install -Dm644 "$srcdir/92-targavfd.rules" "$pkgdir/usr/lib/udev/rules.d/92-targavfd.rules"
