@@ -1,0 +1,33 @@
+pkgbase = woob-git
+	pkgdesc = Core library and modules for Web Outside of Browsers
+	pkgver = 3.0.r73.gfd7610aaa
+	pkgrel = 1
+	url = https://woob.tech
+	arch = any
+	license = LGPL3
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-lxml
+	depends = python-cssselect
+	depends = python-requests
+	depends = python-dateutil
+	depends = python-yaml
+	depends = python-html2text
+	depends = python-six
+	depends = python-unidecode
+	depends = python-pillow
+	depends = python-babel
+	depends = python-simplejson
+	optdepends = python-prettytable: CLI output formatting
+	optdepends = python-feedparser: required by some modules
+	provides = woob-headless
+	conflicts = weboob-headless
+	conflicts = weboob-git
+	conflicts = weboob-qt
+	replaces = woob-headless
+	replaces = weboob
+	source = woob::git+https://gitlab.com/woob/woob.git
+	sha256sums = SKIP
+
+pkgname = woob-git
+
