@@ -31,7 +31,7 @@ conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
 install=mutter.install
-_commit=99abb086fbc912bcf140ccd575c39313e2196052  # master
+_commit=8989c42d407436aa8f1976c17de22b73ed6a6caa  # master
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
 sha256sums=('SKIP')
 
