@@ -4,8 +4,8 @@
 # Contributor: Danny Bautista <pyrolagus@gmail.com>
 
 pkgname=ghidra-git
-pkgver=9.2.3+r725+gb57744d4e
-pkgrel=2
+pkgver=9.2.4+r796+gf19811622
+pkgrel=1
 pkgdesc='Software reverse engineering framework (git)'
 arch=('x86_64')
 url='https://www.nsa.gov/ghidra'
@@ -18,7 +18,7 @@ depends=(
 )
 makedepends=(
   'git'
-  'gradle'
+  'gradle6' # gradle>=7 is currently not supported
   'unzip'
 )
 source=(
@@ -44,7 +44,7 @@ prepare() {
   cd "$_pkgname"
 
   echo -e "${_prefix}Setting up the build dependencies"
-  gradle --parallel --init-script gradle/support/fetchDependencies.gradle init
+  gradle6 --parallel --init-script gradle/support/fetchDependencies.gradle init
 
   ##
   ## FOR GHIDRA DEVELOPERS
@@ -53,22 +53,22 @@ prepare() {
   ##
 
 #  echo -e "${_prefix}Setting up the developers environment"
-#  gradle --parallel prepDev
+#  gradle6 --parallel prepDev
 #
 #  echo -e "${_prefix}Setting up the eclipse configurations"
-#  gradle --parallel eclipse
+#  gradle6 --parallel eclipse
 #
 #  echo -e "${_prefix}Compiling the linux64 native binaries"
-#  gradle --parallel buildNatives_linux64
+#  gradle6 --parallel buildNatives_linux64
 #
 #  echo -e "${_prefix}Compiling the precompile language modules"
-#  gradle --parallel sleighCompile
+#  gradle6 --parallel sleighCompile
 }
 
 build() {
   cd "$_pkgname"
   echo -e "${_prefix}Building Ghidra"
-  gradle --parallel buildGhidra
+  gradle6 --parallel buildGhidra
 }
 
 package() {
