@@ -1,12 +1,14 @@
-# Maintainer: lmartinez-mirror
+# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 # Contributor: Andrea Feletto <andrea@andreafeletto.com>
+
 pkgname=vim-goyo-git
 pkgver=1.6.0.r37.ga865dec
-pkgrel=3
+pkgrel=4
 pkgdesc='Distraction-free writing in Vim'
 arch=('any')
 url='https://github.com/junegunn/goyo.vim'
 license=('MIT')
+groups=('vim-plugins')
 depends=('vim-plugin-runtime')
 optdepends=('vim-limelight')
 makedepends=('git')

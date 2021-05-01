@@ -1,9 +1,10 @@
 pkgbase = vim-goyo-git
 	pkgdesc = Distraction-free writing in Vim
 	pkgver = 1.6.0.r37.ga865dec
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/junegunn/goyo.vim
 	arch = any
+	groups = vim-plugins
 	license = MIT
 	makedepends = git
 	depends = vim-plugin-runtime
