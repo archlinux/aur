@@ -27,7 +27,6 @@ _channel=beta
 source=("https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-beta/${_pkgname}_${pkgver}-1_amd64.deb"
         "Microsoft Standard Application License Terms - Standalone (free) Use Terms.pdf")
 sha256sums=('1504d3d15cbeada93478d1c813137a9bd88c998a76af930111ac6bccd6f1dd06'
-            'c19bde1db2ec8b9d6461e5bae7a01ff8e1baead69fa5895ebba2669462d97064'
             'edf2ed596eb068f168287fc76aa713ad5e0afb59f0a0a47a4f29c0c124ade15e')
 
 package() {
