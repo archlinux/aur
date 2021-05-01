@@ -1,0 +1,14 @@
+pkgbase = fzpac-git
+	pkgdesc = Arch Linux (pacman) package finder with fzf
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/sheepla/fzpac
+	arch = any
+	license = custom
+	depends = fzf
+	depends = pacman
+	source = git+https://github.com/sheepla/fzpac
+	sha256sums = SKIP
+
+pkgname = fzpac-git
+
