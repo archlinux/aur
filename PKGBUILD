@@ -7,7 +7,7 @@
 
 pkgname=icaclient
 pkgver=21.4.0.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Citrix Workspace App for x86_64 (64bit) Linux (ICAClient, Citrix Receiver)"
 arch=('x86_64' 'i686' 'armv7h')
 url='https://www.citrix.com/downloads/workspace-app/linux/'
@@ -60,8 +60,9 @@ package() {
 
     cd "$ICADIR"
     install -m755 -t "${pkgdir}$ICAROOT" \
-            wfica *.so *.DLL \
-            adapter AuthManagerDaemon PrimaryAuthManager ServiceRecord selfservice
+            *.so *.DLL \
+            adapter AuthManagerDaemon icasessionmgr NativeMessagingHost \
+            PrimaryAuthManager ServiceRecord selfservice UtilDaemon wfica
 
     # copy directories
     cp -r ./config/ "${pkgdir}$ICAROOT"
