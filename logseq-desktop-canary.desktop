@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=Logseq
-Exec=/usr/bin/logseq
+Name=Logseq Canary
+Exec=/usr/bin/logseq-canary
 Terminal=false
 Type=Application
-Icon=logseq
-StartupWMClass=logseq
+Icon=logseq-canary
+StartupWMClass=logseq-canary
 Comment=Open Source platform for knowledge sharing and management
 Categories=Office
