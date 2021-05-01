@@ -20,17 +20,17 @@ makedepends=(
 	'vulkan-headers'
 )
 source=(
-  "https://github.com/ValveSoftware/Proton/archive/$pkgname-$_pkgver.tar.gz"
-  "wined3d-interop.h"
+	"https://github.com/ValveSoftware/Proton/archive/$pkgname-$_pkgver.tar.gz"
+	"wined3d-interop.h"
 )
 sha512sums=(
-  'dc31dcb627c7c4b98e56c29ca8e4b0b9c84c36317896b3574ac8ca7ac74cf32a546a7439da623e29cdc2b2ec08a4ef0a314cffd767ae1722810ff38b189abfcb'
-  'f2caacca6bd55030331de7d017d85772b09e5ad9e5fdbfc6343f303ac5447595660fd3f83ba2a177ef321d9b54335245bac548ca804e6e3e9346690f29d55ad0'
+	'dc31dcb627c7c4b98e56c29ca8e4b0b9c84c36317896b3574ac8ca7ac74cf32a546a7439da623e29cdc2b2ec08a4ef0a314cffd767ae1722810ff38b189abfcb'
+	'f2caacca6bd55030331de7d017d85772b09e5ad9e5fdbfc6343f303ac5447595660fd3f83ba2a177ef321d9b54335245bac548ca804e6e3e9346690f29d55ad0'
 )
 
 prepare() {
-  cd "Proton-$pkgname-$_pkgver"
-  cp $srcdir/wined3d-interop.h vrclient_x64/vrclient_x64/
+	cd "Proton-$pkgname-$_pkgver"
+	cp $srcdir/wined3d-interop.h vrclient_x64/vrclient_x64/
 }
 
 build() {
