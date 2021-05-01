@@ -59,7 +59,7 @@ pkgbase=linux-cacule
 _major=5.12
 #_minor=1
 #_minorc=$((_minor+1))
-#_rcver=rc8
+#_rcver=rc9
 pkgver=${_major}
 #_stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
@@ -78,8 +78,6 @@ source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz
         "config"
         "${_patchsource}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_patchsource}/cacule-patches/cacule-5.12.patch"
-        "${_patchsource}/xanmod-patches/0001-sched-autogroup-Add-kernel-parameter-and-config-opti.patch"
-        "${_patchsource}/xanmod-patches/0003-XANMOD-init-Kconfig-cacule-Set-SCHED_AUTOGROUP_DEFAU.patch"
         "${_patchsource}/cpu-patches/0001-cpu-patches.patch"
         "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/futex2-patches-stable/0001-futex2-resync-from-gitlab.collabora.com.patch"
@@ -101,9 +99,7 @@ source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz
 sha512sums=('be03b6fee1d1ea8087b09874d27c0a602c0b04fd90ad38b975bd2c8455a07e83c29b56814aaf1389e82305fae0e4c2d1701075a7f0a7295dd28149f967ec5b3d'
             '1ab27f634f844a096c1c6572349581495fa76555888100028a694abfe5529900ed4ba748be2452f1fcdf97c1fbbf25cd2cb3b8f2e00dff83cb86632988926bd9'
             '88f9f1e6ea206068fd029566e4610c16b7c3007f10363c7db37cd922fe75646437d2e4814317bc292d06eff7e9ebd29d8cd1ee82c8abf45ddd1843c1ff55f5c7'
-            '635abf2f044d7d2d6c4e236c60a0651d28a3237a2fba71a14144c636912a09841b3cd6d920a9bbeee40ff9a701090b502d5cb1a510b21ce62bc2876a3ed30bf7'
-            '0ded7aae3a1d143206e22eaf7028d34a8ba529c8a6934e726ebe1ca9e9df415228c7b37f2ade4e4c2a7cacb2005e3f514677a07763fba0e6f66ce58ecbda8d13'
-            'f37e8fe798d3fb328ceabb6c8303e93f365f0f3c6bae2ffee027ed35406ea6bda8bd14a18333fbc9ea3ef6b5fb396325e98e834eefaf3b4018496ae068e6c12f'
+            'ee80f6bc58b5748704a6e9b2728cebba6aa8e003000415a617b4e8ff5629f640b5285f9e04fb515553935fa329fd593c160988c6e5c5b614b21fc415500c6f3b'
             '15933126feeb56ccc6ace70db9fa7afb64d148900e41a780e42e03ce09faf7bab12413f526675b918aeff55e91dc038ad58884bb7add4a45962aca79d576cb93'
             '449570b8b9a04391cc2cc171cc806b3a132c6e969c7cedf9c4925d24244888e6f2e5afb6c551521fe62fcb7e2bf08cb8d396f9ec785ecfcdd5ea27dd9ffed4ea'
             '549883e3ec059c284b5858ad6b4e9a03af81ef5efcf74802234c2953462b27fa97ac335c27fe854d62bc37f8fcc49613361563cb6f48b0e23a146a3d6a4522cd'
@@ -259,8 +255,7 @@ prepare() {
   ### Enabling Cacule-Config ##
       echo "Enable CacULE CPU scheduler..."
       scripts/config --enable CONFIG_CACULE_SCHED
-      scripts/config --disable CONFIG_CACULE_RDB
-      scripts/config --disable CONFIG_FAIR_GROUP_SCHED
+      scripts/config --enable CONFIG_FAIR_GROUP_SCHED
       scripts/config --enable CONFIG_SCHED_AUTOGROUP
       #scripts/config --set-val CONFIG_NR_CPUS "12"
       scripts/config --disable CONFIG_SCHED_DEBUG
