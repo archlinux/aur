@@ -1,6 +1,6 @@
 pkgbase = neovim-coc-opt-git
 	pkgdesc = Intellisense engine for neovim.
-	pkgver = 543.6b7767f0
+	pkgver = 724.473668ea
 	pkgrel = 1
 	url = https://github.com/neoclide/coc.nvim
 	arch = any
