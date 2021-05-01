@@ -5,7 +5,7 @@
 
 pkgname=lib32-enet
 _pkgbasename=enet
-pkgver=1.3.16
+pkgver=1.3.17
 pkgrel=1
 pkgdesc='A relatively thin, simple and robust network communication layer on top of UDP (32 bit)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('custom')
 depends=('lib32-glibc' $_pkgbasename)
 makedepends=('gcc-multilib')
 source=("http://enet.bespin.org/download/${_pkgbasename}-${pkgver}.tar.gz")
-sha512sums=('79761749d0f127c30b3c7186ca3c73795532d2e96ac1c152cd1fb5ca422b020f75e0c08ef9c9744e16866f8e5261dc24985e0421be56bcb0a4b072411af425ae')
+sha512sums=('efa0cb093a6ca295e5012a4fdebc5ffd6516a66a967e97b386b72781b18ce4a118c9bf94e87adbbdcd0ed441e22c62a05c24ff39fd6b475919e8efe9ab4715e4')
 
 build() {
   export CC="gcc -m32"
