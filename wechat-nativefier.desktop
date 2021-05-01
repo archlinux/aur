@@ -7,5 +7,6 @@ Icon=/usr/share/pixmaps/WeChat.png
 Encoding=UTF-8
 Terminal=false
 StartupNotify=true
+StartupWMClass=wechat-nativefier-4418c7
 Type=Application
 Categories=Network;Chat;InstantMessaging;Application;

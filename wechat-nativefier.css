@@ -11,95 +11,14 @@
     max-width: 100% !important;
 }
 
-.panel {
-    background: #eeeae8 !important;
-}
-
-.header .info .nickname .display_name {
-    color: #000 !important;
-}
-
-.search_bar .frm_search {
-    background-color: #dad8d8 !important;
-    color: #989898 !important;
-}
-
-.recommendation .contact_title {
-    color: #000 !important;
-    background-color: #ddddde !important;
-}
-
-.recommendation .contact_item {
-    background-color: #e9e7e6 !important;
-}
-
-.recommendation .contact_item.on {
-    background: #c6c6c6 !important;
-}
-
-.recommendation .info .nickname {
-    color: #000 !important;
-}
-
 .tab {
-    background: #eeeae8 !important;
     display: flex !important;
     flex-direction: row !important;
     justify-content: space-around !important;
 }
 
 .tab .tab_item.ng-scope {
-    display: none;
-}
-
-.tab .tab_item::after {
-    display: none !important;
-}
-
-.tab::after {
-    display: none !important;
-}
-
-.chat_item {
-    background-color: #e9e7e6 !important;
-    border-color: #00000000 !important;
-}
-
-.chat_item.top {
-    background-color: #ddddde !important;
-}
-
-.chat_item.active {
-    background: #c6c6c6 !important;
-}
-
-.chat_item .info .nickname {
-    color: #000 !important;
-}
-
-.chat_item.active .ext, .chat_item.active .info .msg {
-    color: #989898 !important;
-}
-
-.chat_item .info .msg {
-    color: #989898 !important;
-}
-
-.contact_list .contact_title {
-    background: #ddddde !important;
-}
-
-.contact_list .contact_item {
-    border-color: #00000000 !important;
-    background-color: !important;
-}
-
-.contact_list .active {
-    background: #c6c6c6 !important;
-}
-
-.contact_list .info .nickname {
-    color: #000 !important;
+    display: none !important;;
 }
 
 .web_wechat_screencut {

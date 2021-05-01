@@ -1,33 +1,34 @@
 # Maintainer: qvshuo
 
+_instname=WeChat
 pkgname=wechat-nativefier
-pkgver=20210429.4
+pkgver=20210501.1
 pkgrel=1
-pkgdesc="由nativefier生成（基于Electron 12）, 模仿了Windows版微信的界面。"
+pkgdesc="WeChat desktop built with nativefier (electron)"
 arch=("x86_64")
 url="https://wx.qq.com/"
 license=("MIT")
-makedepends=("nodejs-nativefier")
+makedepends=("nodejs-nativefier" "electron")
 source=(
   "${pkgname}.css"
+  "${pkgname}.js"
   "${pkgname}.desktop"
   "${pkgname}.png"
 )
 sha512sums=(
-  "1891c4f990b53bcca7dcfc2c4401d6afae82028d802fc0861b706be4fc02c3ea432af8d7fd47f0565822ff4435aeaf0b23acb2ca9af3804093a30b350c4178df"
-  "1d7f3f2b11f689b22149b369dd1d6261c2c5ffc77a27e5351596597d790a1066a1765511975e8260188db8d48f8c5dbabb2375dba60027316c8e3809591c9b4f"
+  "7fd2eddefe52776fc5125be318a444540deec6166ea7d4fb1b9504a9341ec741915a8c74cfb6c16a909f7e74668c6721d2b416a2c2b453a56606de3b571ca376"
+  "d0fff3abb41f93104e60d1659cfe27a5512836fa4dd7a0ab859438345f016681465959e907346d840f26b9d8f850758f81ee92b576d71b6fed9659d50602286e"
+  "7386c8f93d262a09baac34f815487c10e8998439416bd9276a61405e2b85e2087f77db91a1bb4b34d428c01775bdb40f8ea6f68f4927ae527cd4e42c8b505bb8"
   "718d0a44567a32a9ae4e875df8ee905b93f52bc6570dd7b75120bd5f801d2d350ae6d378e84b243cb8af80ccf85c1c873f43a8138efb880f27df8e356a2bcfce"
 )
 
-_instname=WeChat
+
 
 build() {
   nativefier \
-	  --name "WeChat" \
+	  --name "${_instname}" \
 	  --icon "${pkgname}.png" \
-	  --user-agent 'Mozilla/5.0 (X11; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0' \
 	  --internal-urls ".*?" \
-	  --tray \
 	  --file-download-options '{"saveAs": true}' \
 	  "${url}"
 }
