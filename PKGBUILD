@@ -1,6 +1,6 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 
-pkgname=openexr
+pkgname=openexr2
 pkgver=2.5.5
 pkgrel=1
 pkgdesc="An high dynamic-range image file format library"
@@ -10,20 +10,20 @@ license=('BSD')
 depends=('zlib')
 makedepends=('cmake' 'python' 'boost' 'freeglut' 'python-numpy' 'chrpath')
 optdepends=('boost-libs: python support' 'python: python support') 
-conflicts=('ilmbase')
-replaces=('ilmbase')
+conflicts=('openexr')
+provides=("openexr=${pkgver}")
 source=($pkgname-$pkgver.tar.gz::"https://github.com/openexr/openexr/archive/v$pkgver.tar.gz")
 sha256sums=('59e98361cb31456a9634378d0f653a2b9554b8900f233450f2396ff495ea76b3')
 
 build() {
-  cmake -B build -S $pkgname-$pkgver \
+  cmake -B build -S ${pkgname%2}-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build
 }
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
-  install -D -m644 $pkgname-$pkgver/LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -D -m644 ${pkgname%2}-$pkgver/LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname%2}"
 
 # Install missing python module
   _pythonpath=`python -c "from sysconfig import get_path; print(get_path('platlib'))"`
