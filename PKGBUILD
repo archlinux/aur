@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=tunnelto
-pkgver=0.1.14
-pkgrel=2
+pkgver=0.1.15
+pkgrel=1
 pkgdesc="Expose your local web server to the internet with a public URL."
 arch=('any')
 url="https://tunnelto.dev/"
