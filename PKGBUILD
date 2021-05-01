@@ -2,33 +2,26 @@
 
 # Maintainer: Alexander Grothe <seahawk1986[at]hotmail[dot]com>
 pkgname=vdr-zappilot
-pkgver=0.0.5
-_vdrapi=2.4.6
-pkgrel=20
+pkgver=0.0.6
+_vdrapi=2.4.7
+pkgrel=1
 pkgdesc="Plugin for VDR forked from the plugin pilotskin to browse EPG in channel info"
-url="http://projects.vdr-developer.org/projects/plg-zappilot"
+url="https://github.com/vdr-projects/vdr-plugin-zappilot"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
-source=("http://projects.vdr-developer.org/attachments/download/1318/$pkgname-$pkgver.tgz"
-        "zappilot-0.0.5-vdr-2.3.1-porting.diff")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/vdr-projects/vdr-plugin-zappilot/archive/refs/tags/$pkgver.tar.gz")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-md5sums=('0774d4093fc6158dc321e52b336aa2ab'
-         '6acf67f7e5f84d2965ba6826f91124f3')
-
-prepare() {
-  cd "$srcdir/$_plugname-$pkgver"
-  patch -p1 -i "$srcdir/zappilot-0.0.5-vdr-2.3.1-porting.diff"
-}
+sha256sums=('a4551a80582c432ecddf73b50c0e028e53abab4c8b863698397d8ff96f886e78')
 
 build() {
-  cd "$srcdir/$_plugname-$pkgver"
+  cd "$srcdir/vdr-plugin-$_plugname-$pkgver"
   make
 }
 
 package() {
-  cd "$srcdir/$_plugname-$pkgver"
+  cd "$srcdir/vdr-plugin-$_plugname-$pkgver"
   make DESTDIR="$pkgdir" install
 
   mkdir -p "$pkgdir/etc/vdr/conf.avail"
