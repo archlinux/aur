@@ -1,7 +1,9 @@
 # Maintainer: pryme-svg <edoc.www@gmail.com>
 
+_nodeversion='12'
+
 pkgname=lightcord-git
-pkgver=0.1.5.r4.g6bd9c0a
+pkgver=0.1.5.r40.gf150671
 pkgrel=1
 pkgdesc="A simple - customizable - Discord Client"
 arch=('x86_64')
@@ -9,7 +11,7 @@ url="https://github.com/Lightcord/Lightcord"
 license=('MIT')
 depends=()
 optdepends=()
-makedepends=('npm' 'nodejs' 'git')
+makedepends=('npm' 'nvm' 'git')
 provides=('lightcord')
 conflicts=('lightcord-bin')
 source=("$pkgname::git://github.com/Lightcord/Lightcord.git"
@@ -30,6 +32,8 @@ md5sums=('SKIP'
 
 build() {
     cd "$pkgname"
+    source /usr/share/nvm/init-nvm.sh
+    nvm install ${_nodeversion} && nvm use ${_nodeversion}
     npm run devInstall
     npm run build
 }
