@@ -4,18 +4,19 @@
 pkgname=freetube
 _pkgname=FreeTube
 pkgver=0.12.0
-pkgrel=3
+pkgrel=4
 pkgdesc='An open source desktop YouTube player built with privacy in mind.'
 arch=('x86_64' 'aarch64' 'armv7h')
 license=('AGPL3')
 depends=( 'gtk3' 'nss' 'electron' )
-makedepends=('npm' )
+makedepends=('npm' 'nodejs-lts-fermium')
 conflicts=('freetube-git' 'freetube-bin')
 url=https://freetubeapp.io
 source=(https://github.com/FreeTubeApp/FreeTube/archive/v$pkgver-beta.tar.gz
         package-only-necessary.diff
         freetube.desktop
         freetube.sh)
+noextract=("${pkgname}-${pkgver}.tgz")
 sha256sums=(cabe45f066c39f3e521a480bcfdf267bab92a5f483cd53f6e4c801601f107fe8
             SKIP SKIP SKIP)
 
@@ -25,8 +26,8 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver-beta"
-  npm install
-  npm run build
+  npm --cache "${srcdir}/npm-cache" install
+  npm --cache "${srcdir}/npm-cache" run build
 }
 
 package() {
