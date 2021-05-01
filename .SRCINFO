@@ -1,0 +1,15 @@
+pkgbase = ghidra-extension-switch-loader-git
+	pkgdesc = A Nintendo Switch binary loader for Ghidra
+	pkgver = 1.4.0.r2.gdcb08e0
+	pkgrel = 1
+	url = https://github.com/encounter/Ghidra-Switch-Loader
+	arch = any
+	license = Apache 2.0
+	makedepends = git
+	makedepends = unzip
+	depends = ghidra
+	source = Ghidra-Switch-Loader::git+https://github.com/encounter/Ghidra-Switch-Loader#branch=fix
+	sha512sums = SKIP
+
+pkgname = ghidra-extension-switch-loader-git
+
