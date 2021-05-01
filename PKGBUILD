@@ -1,12 +1,14 @@
-# Maintainer: lmartinez-mirror
+# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 # Contributor: Andrea Feletto <andrea@andreafeletto.com>
+
 pkgname=vim-limelight-git
 pkgver=r32.4412a84
-pkgrel=2
+pkgrel=3
 pkgdesc='Hyperfocus-writing in Vim.'
 arch=('any')
 url='https://github.com/junegunn/limelight.vim'
 license=('MIT')
+groups=('vim-plugins')
 depends=('vim-plugin-runtime')
 optdepends=('vim-goyo: Complementary Vim plugin for a zen mode-like experience')
 makedepends=('git')
