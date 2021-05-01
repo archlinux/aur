@@ -13,6 +13,12 @@ post_install() {
 
 post_upgrade () {
 	chown -R hornet:hornet /var/lib/hornet /etc/hornet
+	
+	printf  "##########################################################################################\
+		\n# Please diff your config in /etc/hornet/config.json with the new one provided by the    #\
+		\n# package in /etc/hornet/config.json.pacnew for any changes made upstream as the upgrade #\
+		\n# process doesn't touch your existing configuration.                                     #\
+		\n##########################################################################################\n"
 }
 
 pre_remove() {
