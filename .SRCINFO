@@ -1,0 +1,23 @@
+pkgbase = openexr
+	pkgdesc = An high dynamic-range image file format library
+	pkgver = 2.5.5
+	pkgrel = 1
+	url = https://www.openexr.com/
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = python
+	makedepends = boost
+	makedepends = freeglut
+	makedepends = python-numpy
+	makedepends = chrpath
+	depends = zlib
+	optdepends = boost-libs: python support
+	optdepends = python: python support
+	conflicts = ilmbase
+	replaces = ilmbase
+	source = openexr-2.5.5.tar.gz::https://github.com/openexr/openexr/archive/v2.5.5.tar.gz
+	sha256sums = 59e98361cb31456a9634378d0f653a2b9554b8900f233450f2396ff495ea76b3
+
+pkgname = openexr
+
