@@ -1,7 +1,7 @@
 pkgbase = fzpac-git
 	pkgdesc = Arch Linux (pacman) package finder with fzf
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/sheepla/fzpac
 	arch = any
 	license = custom
