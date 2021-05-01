@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=hippoplayer
-pkgver=0.1.23
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A modern music player for your oldsk00l needs"
 arch=('x86_64')
@@ -12,12 +12,11 @@ provides=("${pkgname}")
 depends=('alsa-lib' 'qt5-base')
 makedepends=('git' 'tundra2' 'rustup' 'qt5-base' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/emoon/HippoPlayer/archive/${pkgver}.tar.gz")
-sha256sums=('889d3f469a2e89ae5908ea9facee3a01a6b14c951d362121bdc750db0ee95fdc')
+sha256sums=('0e36e0402428b9731eebfec2f8023b7cdd7efc20efa80b6ec37fa9d47c4908e7')
 
 prepare() {
   cd "HippoPlayer-${pkgver}"
-  sed -i "145s|.*|const char* core_name = \"/usr/share/hippoplayer/libhippo_core.so\";|" src/hippo_core_loader/hippo_core_loader.c
-  sed -i "s|VGMEnd|VGMEndFmts|g" src/plugins/playback/vgm/VGMPlay/VGMPlay_AddFmts.c
+  sed -i "153s|.*|const char* core_name = \"/usr/share/hippoplayer/libhippo_core.so\";|" src/hippo_core_loader/hippo_core_loader.c
 }
 
 build() {
@@ -38,7 +37,6 @@ package() {
   install -Dm755 hippoplayer.sh "${pkgdir}/usr/bin/hippoplayer"
   install -Dm644 data/hippo.png "${pkgdir}/usr/share/pixmaps/hippoplayer.png"
   install -Dm755 t2-output/linux-gcc-release-default/hippo_player -t "${pkgdir}/usr/share/hippoplayer/"
-  install -Dm755 t2-output/linux-gcc-release-default/uade-* -t "${pkgdir}/usr/share/hippoplayer/"
   install -Dm755 t2-output/linux-gcc-release-default/*.so -t "${pkgdir}/usr/share/hippoplayer/"
   chmod 757 "${pkgdir}/usr/share/hippoplayer/"
   install -Dm644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
