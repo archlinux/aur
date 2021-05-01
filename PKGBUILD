@@ -12,7 +12,7 @@ _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _desc="Raspberry Pi 4 with the cacule scheduler"
 pkgver=5.10.33
-pkgrel=1
+pkgrel=2
 pkgdesc="Raspberry Pi 4 lts Kernel with the cacule scheduler, aarch64 and armv7"
 arch=('armv7h' 'aarch64')
 url="http://www.kernel.org/"
@@ -38,7 +38,7 @@ md5sums=('ce18f324dbd9d2ca8b7689694f33b54b'
          '3de067c154b0a232f5a4f481e22826cd')
 md5sums_armv7h=('7ef446c2accbc95d5d48429d74e25b61'
                 '9669d916a5929a2eedbd64477f83d99e'
-                '02808e3fb2f6b142e0cd9f1ae50a8d46')
+                '60020b476ade77049c832f55fc0bea1f')
 md5sums_aarch64=('44040b01d35e9a7f89dbfe0870580c59'
                  '9669d916a5929a2eedbd64477f83d99e')
 

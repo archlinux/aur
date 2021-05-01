@@ -1,7 +1,7 @@
 pkgbase = linux-raspberrypi4-cacule
 	pkgdesc = Raspberry Pi 4 lts Kernel with the cacule scheduler, aarch64 and armv7
 	pkgver = 5.10.33
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kernel.org/
 	arch = armv7h
 	arch = aarch64
@@ -32,7 +32,7 @@ pkgbase = linux-raspberrypi4-cacule
 	source_armv7h = cacule-32bit-converter.patch
 	md5sums_armv7h = 7ef446c2accbc95d5d48429d74e25b61
 	md5sums_armv7h = 9669d916a5929a2eedbd64477f83d99e
-	md5sums_armv7h = 02808e3fb2f6b142e0cd9f1ae50a8d46
+	md5sums_armv7h = 60020b476ade77049c832f55fc0bea1f
 	source_aarch64 = config8
 	source_aarch64 = config8.txt
 	md5sums_aarch64 = 44040b01d35e9a7f89dbfe0870580c59
