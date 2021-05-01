@@ -4,8 +4,8 @@
 
 _target=sh3eb-elf
 pkgname=${_target}-binutils
-pkgver=2.34
-pkgrel=2
+pkgver=2.36.1
+pkgrel=1
 pkgdesc="GNU binary utilities for the ${_target} target."
 arch=(i686 x86_64)
 options=('!libtool' '!buildflags')
@@ -13,7 +13,7 @@ url='https://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=('zlib' 'flex')
 source=(https://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2)
-sha256sums=('89f010078b6cf69c23c27897d686055ab89b198dddf819efb0a4f2c38a0b36e6')
+sha256sums=('5b4bd2e79e30ce8db0abd76dd2c2eae14a94ce212cfc59d3c37d23e24bc6d7a3')
 
 prepare() {
   cd "${srcdir}/binutils-${pkgver}"
@@ -59,7 +59,7 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   rm -f "${pkgdir}"/usr/bin/{ar,as,ld,nm,objdump,ranlib,strip,objcopy}
-  rm -f "${pkgdir}"/usr/lib/libiberty.a
+  rm -rf "${pkgdir}"/usr/lib
   rm -rf "${pkgdir}/usr/share/info"
   # rm -rf "${pkgdir}/usr/share/gdb"
   # rm -rf "${pkgdir}/usr/include/gdb"
