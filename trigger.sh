@@ -6,7 +6,6 @@ ver_msg="autohook $ver"
 git commit -am "$ver_msg"
 git push
 (
-return
   sed "s/PKGVER/${ver}/g" _service \
    > home:nicman23/thunderbird-appmenu-bin/_service
   [ -e 'home:nicman23/thunderbird-appmenu-bin/' ] || osc co home:nicman23 thunderbird-appmenu-bin
