@@ -6,7 +6,7 @@ After=network-online.target
 
 [Service]
 User=grafana-agent
-ExecStart=/usr/bin/grafana-agent --config.file=/etc/grafana-agent/grafana-agent.yaml
+ExecStart=/usr/bin/grafana-agent --config.file=/etc/grafana-agent.yaml
 Restart=always
 TimeoutStopSec=20s
 SendSIGKILL=no

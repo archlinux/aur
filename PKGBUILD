@@ -39,7 +39,7 @@ package() {
   install -Dm644 "grafana-agent.sysusers" "$pkgdir/usr/lib/sysusers.d/grafana-agent.conf"
 
   # Install Config File
-  install -D -m0755 "grafana-agent.yaml" "${pkgdir}/etc/grafana-agent/grafana-agent.yaml"
+  install -D -m0755 "grafana-agent.yaml" "${pkgdir}/etc/grafana-agent.yaml"
 
   # Install SystemD Service File
   install -D -m0644 "grafana-agent.service" "${pkgdir}/usr/lib/systemd/system/grafana-agent.service"
