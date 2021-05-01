@@ -11,7 +11,7 @@ arch=( 'any' )
 url=""
 license=('GPL')
 groups=()
-depends=( 'jdk-openjdk' )
+depends=( 'java-environment' )
 makedepends=( 'gradle>=6.7' )
 optdepends=()
 provides=()
