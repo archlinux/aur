@@ -1,5 +1,5 @@
 pkgbase = gimp-brush-max-512
-	pkgdesc = GNU Image Manipulation Program
+	pkgdesc = Gimp with easy-to-handle tool sizes
 	pkgver = 2.10.24
 	pkgrel = 3
 	url = https://www.gimp.org/
