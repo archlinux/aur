@@ -14,7 +14,7 @@
 # The sha1 should be: 9bef1128717f958171a4afac3ed78ee2bb4e86ce
 
 pkgname=sm64plus-git
-pkgver=1.1.3.1
+pkgver=1.1.3.2
 pkgrel=1
 pkgdesc="A standalone fork of the Super Mario 64 PC Port with quality of life improvements"
 arch=(x86_64)
@@ -29,10 +29,9 @@ replaces=()
 backup=()
 options=()
 install=
-source=('sm64plus::git+https://github.com/MorsGames/sm64plus' sm64plus.patch sm64plus-wrapper.sh sm64plus.desktop file://baserom.us.z64)
+source=('sm64plus::git+https://github.com/MorsGames/sm64plus' sm64plus-wrapper.sh sm64plus.desktop file://baserom.us.z64)
 noextract=()
 sha1sums=('SKIP'
-          '5ca99550d893044d6f7c915ec5dfc0fa2a958d6f'
           '1d5610570e9a715f08b3024db84b55c0f46d064e'
           'd8b8b8065fac319ac095ec2248c0200a9b9d6eb4'
           '9bef1128717f958171a4afac3ed78ee2bb4e86ce')
@@ -44,11 +43,6 @@ pkgver() {
 	cd "$srcdir/sm64plus"
 
 	printf "%s" "$(cat README.md | grep -Po '### v\K[0-9\.]+' | head -n1)"
-}
-
-prepare() {
-	cd "$srcdir/sm64plus"
-	patch -p1 -i "$srcdir/sm64plus.patch"
 }
 
 build() {
