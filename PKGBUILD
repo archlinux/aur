@@ -2,8 +2,7 @@
 # Contributor: Daniel Isenmann <daniel@archlinux.org>
 # brush-max-512: Ernesto Bazzano <bazza@riseup.net>
 
-pkgname=gimp-brush-max-512
-_pkgname=gimp
+pkgname=gimp
 pkgver=2.10.24
 pkgrel=3
 pkgdesc='Gimp with easy-to-handle tool sizes'
@@ -22,7 +21,7 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
 conflicts=('gimp-plugin-wavelet-decompose')
 replaces=('gimp-plugin-wavelet-decompose')
 install=gimp.install
-source=(https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2
+source=(https://download.gimp.org/pub/gimp/v${pkgver%.*}/${pkgname}-${pkgver}.tar.bz2
         0001-no-check-update.patch
         linux.gpl)
 sha256sums=('bd1bb762368c0dd3175cf05006812dd676949c3707e21f4e6857435cb435989e'
@@ -30,7 +29,7 @@ sha256sums=('bd1bb762368c0dd3175cf05006812dd676949c3707e21f4e6857435cb435989e'
             '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
 
 prepare() {
-  cd ${_pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
 
   patch -Np1 < ../0001-no-check-update.patch
   autoreconf -vi
@@ -38,7 +37,7 @@ prepare() {
 
 build() {
 pkg-config --exists --print-errors "OpenEXR >= 1.6.1"
-  cd ${_pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
   PYTHON=/usr/bin/python2 ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -57,7 +56,7 @@ pkg-config --exists --print-errors "OpenEXR >= 1.6.1"
 }
 
 package() {
-  cd ${_pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
   install -D -m644 "${srcdir}/linux.gpl" "${pkgdir}/usr/share/gimp/2.0/palettes/Linux.gpl"
 
