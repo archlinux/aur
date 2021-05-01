@@ -1,17 +1,20 @@
 pkgbase = proton-git
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components
-	pkgver = 4.11.7.r0.g71d4637
+	pkgver = 6.3.2.r0.g372d299e
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/ValveSoftware/Proton/
 	arch = x86_64
 	license = BSD
+	makedepends = git
 	depends = python2
-	depends = wine
+	depends = wine-valve
 	provides = proton
 	conflicts = proton
 	source = proton-git::git+https://github.com/ValveSoftware/Proton.git
+	source = wined3d-interop.h
 	sha512sums = SKIP
+	sha512sums = f2caacca6bd55030331de7d017d85772b09e5ad9e5fdbfc6343f303ac5447595660fd3f83ba2a177ef321d9b54335245bac548ca804e6e3e9346690f29d55ad0
 
 pkgname = proton-git
 
