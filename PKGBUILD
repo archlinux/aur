@@ -18,13 +18,13 @@ source=("${pkgname}::git+https://github.com/ValveSoftware/Proton.git" "wined3d-i
 sha512sums=('SKIP' 'f2caacca6bd55030331de7d017d85772b09e5ad9e5fdbfc6343f303ac5447595660fd3f83ba2a177ef321d9b54335245bac548ca804e6e3e9346690f29d55ad0')
 
 pkgver() {
-  cd "${pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/proton\.//g'
+	cd "${pkgname}"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/proton\.//g'
 }
 
 prepare() {
 	cd "${pkgname}"
-  cp $srcdir/wined3d-interop.h vrclient_x64/vrclient_x64/
+	cp $srcdir/wined3d-interop.h vrclient_x64/vrclient_x64/
 }
 
 build() {
@@ -71,7 +71,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname}"
+	cd "${pkgname}"
 
 	install -d -m755 $pkgdir/usr/share/licenses/$pkgname
 	install -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
