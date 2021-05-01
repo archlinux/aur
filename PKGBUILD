@@ -2,31 +2,31 @@
 # Contributor: garion < garion @ mailoo.org >
 
 pkgname=mkvalidator
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Validator for MKV files"
 arch=('x86_64')
 url='http://www.matroska.org/downloads/mkvalidator.html'
 license=('BSD')
+depends=('glibc')
+makedepends=('cmake')
 source=("http://sourceforge.net/projects/matroska/files/mkvalidator/mkvalidator-${pkgver}.tar.bz2")
-sha1sums=('cd702e87568580d5db4184e64c19cd16eccb5263')
-options=(!makeflags)
+sha256sums=('f9eaa2138fade7103e6df999425291d2947c5355294239874041471e3aa243f0')
 
-prepare() {
-  cd "mkvalidator-${pkgver}"
-
-  gcc ${CFAGS} -o coremake corec/tools/coremake/coremake.c
-
-  sed "s|/usr/local|${pkgdir}/usr|g" -i corec/tools/coremake/gcc_mak.inc
-
-  ./coremake gcc_linux_x64
+prepare(){
+  mkdir -p build
 }
 
 build(){
-  make -C "mkvalidator-${pkgver}/mkvalidator"
+  cd build
+  cmake "../mkvalidator-${pkgver}" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr
+
+  make
 }
 
 package(){
-  mkdir -p "${pkgdir}/usr/bin"
-  make -C "mkvalidator-${pkgver}/mkvalidator" install
+  install -Dm755 build/mkvalidator/mkvalidator "${pkgdir}/usr/bin/mkvalidator"
+  install -Dm644 "mkvalidator-${pkgver}/ReadMe.txt" "${pkgdir}/usr/share/licenses/${pkgname}/License.txt"
 }
