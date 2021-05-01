@@ -13,7 +13,7 @@ depends=(
   'ffmpeg-libfdk_aac'
   'openssl'
   'libxml2'
-  'iconv'
+  'libiconv'
 )
 makedepends=('git' 'nginx-mainline-src')
 provides=('nginx-mainline-mod-vod')
