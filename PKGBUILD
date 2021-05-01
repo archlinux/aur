@@ -19,7 +19,7 @@ depends=(
 )
 makedepends=(
   'git'
-  'gradle'
+  'gradle6' # gradle>=7 is currently not supported
   'unzip'
 )
 source=(
@@ -49,7 +49,7 @@ prepare() {
   cd "$_pkgname"
 
   echo -e "${_prefix}Setting up the build dependencies"
-  gradle --parallel --init-script gradle/support/fetchDependencies.gradle init
+  gradle6 --parallel --init-script gradle/support/fetchDependencies.gradle init
 
   echo -e "${_prefix}Applying Darcula patch"
   patch -Np1 -i "$srcdir"/darcula.patch
@@ -66,28 +66,28 @@ prepare() {
   ##
 
 #  echo -e "${_prefix}Setting up the developers environment"
-#  gradle --parallel prepDev
+#  gradle6 --parallel prepDev
 #
 #  echo -e "${_prefix}Setting up the eclipse configurations"
-#  gradle --parallel eclipse
+#  gradle6 --parallel eclipse
 #
 #  echo -e "${_prefix}Compiling the linux64 native binaries"
-#  gradle --parallel buildNatives_linux64
+#  gradle6 --parallel buildNatives_linux64
 #
 #  echo -e "${_prefix}Compiling the precompile language modules"
-#  gradle --parallel sleighCompile
+#  gradle6 --parallel sleighCompile
 }
 
 build() {
   cd "$srcdir"/darcula-laf
   echo -e "${_prefix}Building darcula-laf"
-  gradle --parallel jar
+  gradle6 --parallel jar
   mkdir -p "$srcdir/$_pkgname"/flatRepo
   cp build/libs/darcula-laf-${_darcula_version}.jar -t "$srcdir/$_pkgname"/flatRepo
 
   cd "$srcdir/$_pkgname"
   echo -e "${_prefix}Building Ghidra"
-  gradle --parallel buildGhidra
+  gradle6 --parallel buildGhidra
 }
 
 package() {
