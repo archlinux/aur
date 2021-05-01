@@ -1,0 +1,66 @@
+diff --git a/thirdparty/qwt-lib/qwt/qwt_null_paintdevice.h b/thirdparty/qwt-lib/qwt/qwt_null_paintdevice.h
+index d7f03be..cef492e 100644
+--- a/thirdparty/qwt-lib/qwt/qwt_null_paintdevice.h
++++ b/thirdparty/qwt-lib/qwt/qwt_null_paintdevice.h
+@@ -13,6 +13,7 @@
+ #include "qwt_global.h"
+ #include <qpaintdevice.h>
+ #include <qpaintengine.h>
++#include <QPainterPath>
+ 
+ /*!
+   \brief A null paint device doing nothing
+diff --git a/thirdparty/qwt-lib/qwt/qwt_painter.h b/thirdparty/qwt-lib/qwt/qwt_painter.h
+index 9609b69..67095a3 100644
+--- a/thirdparty/qwt-lib/qwt/qwt_painter.h
++++ b/thirdparty/qwt-lib/qwt/qwt_painter.h
+@@ -17,6 +17,7 @@
+ #include <qpen.h>
+ #include <qline.h>
+ #include <qpalette.h>
++#include <QPainterPath>
+ 
+ class QPainter;
+ class QBrush;
+@@ -31,7 +32,6 @@ class QwtColorMap;
+ class QwtInterval;
+ 
+ class QTextDocument;
+-class QPainterPath;
+ 
+ /*!
+   \brief A collection of QPainter workarounds
+diff --git a/thirdparty/qwt-lib/qwt/qwt_painter_command.h b/thirdparty/qwt-lib/qwt/qwt_painter_command.h
+index 2da597a..3a85b68 100644
+--- a/thirdparty/qwt-lib/qwt/qwt_painter_command.h
++++ b/thirdparty/qwt-lib/qwt/qwt_painter_command.h
+@@ -15,8 +15,7 @@
+ #include <qpixmap.h>
+ #include <qimage.h>
+ #include <qpolygon.h>
+-
+-class QPainterPath;
++#include <QPainterPath>
+ 
+ /*!
+   QwtPainterCommand represents the attributes of a paint operation
+diff --git a/thirdparty/qwt-lib/qwt/qwt_symbol.h b/thirdparty/qwt-lib/qwt/qwt_symbol.h
+index ea16d88..8dc65c3 100644
+--- a/thirdparty/qwt-lib/qwt/qwt_symbol.h
++++ b/thirdparty/qwt-lib/qwt/qwt_symbol.h
+@@ -12,6 +12,7 @@
+ 
+ #include "qwt_global.h"
+ #include <qpolygon.h>
++#include <QPainterPath>
+ 
+ class QPainter;
+ class QRect;
+@@ -21,7 +22,6 @@ class QPen;
+ class QColor;
+ class QPointF;
+ class QPolygonF;
+-class QPainterPath;
+ class QPixmap;
+ class QByteArray;
+ class QwtGraphic;

@@ -1,6 +1,6 @@
 pkgbase = entropy-piano-tuner
 	pkgdesc = Free Software for Piano Tuning
-	pkgver = git
+	pkgver = 1.2.0.r27.gee7857a
 	pkgrel = 1
 	url = https://gitlab.com/tp3/Entropy-Piano-Tuner
 	arch = i686
@@ -14,9 +14,19 @@ pkgbase = entropy-piano-tuner
 	depends = fftw
 	depends = qt5-declarative
 	source = git+https://gitlab.com/tp3/Entropy-Piano-Tuner.git
+	source = git+https://gitlab.com/chwick/fftw3-qmake.git
+	source = git+https://github.com/libuv/libuv.git
+	source = git+https://gitlab.com/chwick/qwt-lib.git
+	source = git+https://gitlab.com/tp3/tp3log.git
 	source = rpath.patch
+	source = qwt-lib-qt5.15.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = e7f34645ebe707be6d417f1f4bc31ebd
+	md5sums = ec874c86d32d0e4a7e4acbfb8262c86d
 
 pkgname = entropy-piano-tuner
 
