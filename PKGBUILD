@@ -11,7 +11,7 @@ source=('git+https://github.com/natesales/q')
 md5sums=('SKIP')
 provides=($pkgname)
 conflicts=($pkgname)
-pkgver=0.3.2.r3.gc11d592
+pkgver=0.4.1.r2.gb354941
 
 pkgver() {
     cd 'q'
