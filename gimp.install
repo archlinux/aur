@@ -1,0 +1,8 @@
+#!/bin/bash
+
+post_upgrade() {
+  if [[ $(vercmp '2.10.18-4' "$2") -eq 1 ]]; then
+    echo ' > The python2 plugin support is disabled, you will need to install this'
+    echo ' > separately if you need it, e.g. the python2-gimp package in the AUR.'
+  fi
+}
