@@ -1,8 +1,8 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=ffmpeg-ndi
-pkgver=4.3.2
-pkgrel=2
+pkgver=4.4
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video with NDI restored and enabled'
 arch=(x86_64)
 url=https://ffmpeg.org/
@@ -30,6 +30,7 @@ depends=(
   libpulse
   librav1e.so
   libraw1394
+  librsvg-2.so
   libsoxr
   libssh
   libtheora
@@ -92,24 +93,24 @@ provides=(
   libswscale.so
 )
 conflicts=('ffmpeg')
-_tag=f719f869907764e6412a6af6e178c46e5f915d25
+_tag=dc91b913b6260e85e1304c74ff7bb3c22a8c9fb1
 source=(
-  git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
-  vmaf-model-path.patch
-  '0001-Revert-lavd-Remove-libndi_newtek.patch'::'https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/0001-Revert-lavd-Remove-libndi_newtek.patch?inline=false'
-  'libndi_newtek_common.h'::'https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_common.h?inline=false'
-  'libndi_newtek_dec.c'::'https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_dec.c?inline=false'
-  'libndi_newtek_enc.c'::'https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_enc.c?inline=false'
-  LICENSE
+  "ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}"
+  "vmaf-model-path.patch"
+  "Revert-lavd-Remove-libndi_newtek.patch::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/Revert-lavd-Remove-libndi_newtek.patch?inline=false"
+  "libndi_newtek_common.h::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_common.h?inline=false"
+  "libndi_newtek_dec.c::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_dec.c?inline=false"
+  "libndi_newtek_enc.c::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_enc.c?inline=false"
+  "LICENSE"
 )
 sha256sums=(
-  SKIP
-  8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d
-  207b0005fe9310d9985c4903c259a5e55441a3728577ff6d9b9f562a20462fdf
-  462e984a7cb3d0af17b0ea0eb2a010aee2f79a3e77c2055fdfd760163dd75fa4
-  3c6dea7583d79911e9ea198c35b1b56830b85eea84e49d63c2d5c03af5210eca
-  83cc714edc8d1c37ffabd2ee17960d6ed91a1d019bd43d01383f84eea28e4fbb
-  04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36
+  "SKIP"
+  "8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d"
+  "5a37c295d01ae02f02b366c3ba4867d27bc3ac29c1420472fbe8e4d7bca3bd4c"
+  "462e984a7cb3d0af17b0ea0eb2a010aee2f79a3e77c2055fdfd760163dd75fa4"
+  "3c6dea7583d79911e9ea198c35b1b56830b85eea84e49d63c2d5c03af5210eca"
+  "83cc714edc8d1c37ffabd2ee17960d6ed91a1d019bd43d01383f84eea28e4fbb"
+  "04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36"
 )
 
 pkgver() {
@@ -121,11 +122,10 @@ pkgver() {
 prepare() {
   cd ffmpeg
 
-  git cherry-pick -n 7c59e1b0f285cd7c7b35fcd71f49c5fd52cf9315 # fix build against libsrt 1.4.2
   patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
-  patch -Np1 -i "${srcdir}"/0001-Revert-lavd-Remove-libndi_newtek.patch
+  patch -Np1 -i "${srcdir}"/Revert-lavd-Remove-libndi_newtek.patch
 
-  printf 'Copying libndi missing file'
+  printf 'Copying libndi missing file\n'
   cp "${srcdir}"/libndi_newtek_* libavdevice/
 }
 
@@ -165,6 +165,7 @@ build() {
     --enable-libopus \
     --enable-libpulse \
     --enable-librav1e \
+    --enable-librsvg \
     --enable-libsoxr \
     --enable-libspeex \
     --enable-libsrt \
