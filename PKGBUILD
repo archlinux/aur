@@ -1,7 +1,7 @@
 # Maintainer: Matt C <matt@xhec.us>
 pkgname=aurtoo-git
 _pkgname=aurtoo
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Tool to manage your local AUR repo"
 arch=('any')
