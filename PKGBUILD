@@ -2,7 +2,7 @@
 pkgname=fzpac-git
 _pkgname=fzpac
 pkgver=af14599
-pkgrel=1
+pkgrel=5
 pkgdesc="Arch Linux (pacman) package finder with fzf "
 arch=("any")
 url="https://github.com/sheepla/fzpac"
