@@ -6,6 +6,7 @@ pkgname=(corefreq-client corefreq-server corefreq-dkms)
 _gitname=CoreFreq
 pkgver=1.84
 pkgrel=3
+pkgdesc="A CPU monitoring software with BIOS like functionalities"
 arch=('x86_64')
 url='https://github.com/cyring/CoreFreq'
 license=('GPL2')
