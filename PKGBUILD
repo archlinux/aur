@@ -4,7 +4,7 @@
 
 pkgname=sunvox
 pkgver=1.9.6c
-pkgrel=2
+pkgrel=3
 pkgdesc="Small, fast and powerful modular synthesizer with pattern-based sequencer (tracker)."
 arch=('i686' 'x86_64')
 url="http://warmplace.ru/soft/sunvox/"
@@ -19,14 +19,20 @@ depends=(
 	'libxcb'
 	'libxau'
 	'libxdmcp'
+	'gendesk'
 )
 makedepends=('unzip')
 source=(http://warmplace.ru/soft/sunvox/$pkgname-$pkgver.zip)
 md5sums=('65c67faf242cdaed46e27bf311def60d')
 
+prepare() {
+	gendesk --pkgname "$pkgname" --pkgdesc "$pkgdesc"
+}
+
 package() {
 	install -dm755 "${pkgdir}/opt/${pkgname}"
 	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 
 	if [ "$CARCH" = "x86_64" ]; then
 		install -Dm755 "${srcdir}/sunvox/sunvox/linux_x86_64/sunvox" "${pkgdir}/usr/bin/sunvox"
