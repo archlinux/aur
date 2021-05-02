@@ -1,6 +1,6 @@
 # Maintainer: Tony G. <aur at tonyskapunk dot net>
 
-pkgname='scaleft-server-tools'
+pkgname='scaleft-server-tools-bin'
 pkgdesc='ScaleFT(TM) daemon and shell'
 pkgver=1.52.2
 pkgrel=1
@@ -9,7 +9,7 @@ url="https://scaleft.com"
 license=('custom')
 install=${pkgname}.install
 depends=('glibc')
-source=("https://pkg.scaleft.com/rpm/${pkgname}-${pkgver}-${pkgrel}.${arch}.rpm")
+source=("https://pkg.scaleft.com/rpm/${pkgname%-*}-${pkgver}-${pkgrel}.${arch}.rpm")
 sha256sums=('fa1f49ff4d0dfe652b6b05a76b02ee0767daeee5db785104ac15886607eaa138')
 
 package() {
