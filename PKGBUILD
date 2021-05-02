@@ -2,7 +2,7 @@
 
 pkgname=roadrunner
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance PHP application server, load-balancer and process manager written in Golang"
 arch=(x86_64)
 url="https://roadrunner.dev/"
@@ -26,10 +26,9 @@ options=("!buildflags")
 prepare() {
 	export GOPATH="$srcdir"/gopath
 
-	cd "$srcdir/$pkgname-$pkgver"
-
 	cd "$srcdir/$pkgname-binary-$pkgver"
 	go mod edit -replace "github.com/spiral/roadrunner/v2=../roadrunner-$pkgver"
+	go mod tidy
 	go mod download
 }
 
