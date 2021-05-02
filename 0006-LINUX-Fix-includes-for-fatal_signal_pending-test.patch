@@ -1,7 +1,7 @@
 From 95a8c71f80e6d0aa83297fedf9f808ee01c32623 Mon Sep 17 00:00:00 2001
 From: Andrew Deason <adeason@sinenomine.net>
 Date: Thu, 28 Jan 2021 16:59:47 -0600
-Subject: [PATCH 6/8] LINUX: Fix includes for fatal_signal_pending test
+Subject: [PATCH 06/11] LINUX: Fix includes for fatal_signal_pending test
 
 Commit 8b6ae289 (LINUX: Avoid lookup ENOENT on fatal signals) added a
 configure test for fatal_signal_pending(). However, this check fails
@@ -69,5 +69,5 @@ index 11d071806..e45a30540 100644
  AC_CHECK_LINUX_FUNC([file_dentry],
                      [#include <linux/fs.h>],
 -- 
-2.30.1
+2.31.1
 

@@ -7,7 +7,7 @@
 pkgname=openafs-modules-dkms
 _srcname=openafs
 pkgver=1.8.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Kernel module for OpenAFS (dkms)"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -25,17 +25,23 @@ source=("http://openafs.org/dl/openafs/${pkgver}/${_srcname}-${pkgver}-src.tar.b
         0005-LINUX-5.9-Remove-HAVE_UNLOCKED_IOCTL-COMPAT_IOCTL.patch
         0006-LINUX-Fix-includes-for-fatal_signal_pending-test.patch
         0007-Linux-Refactor-test-for-32bit-compat.patch
-        0008-Linux-5.11-Test-32bit-compat-with-in_compat_syscall.patch)
+        0008-Linux-5.11-Test-32bit-compat-with-in_compat_syscall.patch
+        0009-LINUX-Introduce-afs_d_path.patch
+        0010-Linux-Create-wrapper-for-setattr_prepare.patch
+        0011-Linux-5.12-Add-user_namespace-param-to-inode-ops.patch)
 sha256sums=('53543a561fce67714fec9f2a6bf408c5cc1d061c7dc9d1459458275e8ccbfa79'
             '5ea5e184f9b44f5ed45817d2b5a10149d15c8c54f49e0b5b4b773652673cb9b0'
-            '89d423281ae4664467ff583d664cd014362f0f829f2bb1ef76809593626b55e0'
-            'cceb2501cca12956644718c64db1c8c0e8d460afbbde302045427f0610b60a92'
-            '729f14132a917c2397f4dc713d31c74c0a278c7359c5dd4edc3758fb08e534c4'
-            '73b69cea6eef193457091090fe2c6ae090040537395618dcb47c770196bc14ef'
-            'aef54d871c376648ef712e9cc224aa65ef012762a28778d53d509a72f99d174e'
-            '38eaec2c4e08d45b4aa130ec581ed1e265950553432d8dd878f99decc54416de'
-            'c62380c6284f7da43234c7c2bea8503851cd455e0c06d688bbafb1d77cdbd476'
-            'ebb0c7ddd0fde966e35c277c7474abc39772a1bbaa601e7a678c95aad31bfb48')
+            '909ebe2f2f82187ec5c8bd19a385e310521dceedb0b0d5ce8413809a37fe5654'
+            '2439b2f663feed02c526f4e34b2cdc2a1d5ad35f7223ade87508c1cf4359ee9c'
+            'e605d4e7154f9ccf4dec24fec27abe4e2947713f35dae6aa8698e5f8722609a7'
+            '15b53b4ab0578eaa31f849670990e15949e67be8b330d7581825a5e8408953ed'
+            'ba8c81c035303cbcf204744516a83b66adac94384aaa59ea2ea1a619a41aa7c0'
+            'd078882d94adf881bac2e7955689931abe7ac443db86d85e0b60c72d8b27738e'
+            '19ca49013e32824002e355a85df6e25028283a0b06a6409cc7d5cd9800fea488'
+            '52d40f8a3b032a9fa0ae57bc15d3611bc652ff6e417a488eac4223cef0db9142'
+            '457474e625565c28daa6d642b2416b4398b2b9fec3a8b90c048fc0460412a0ce'
+            '76d73a55d3e8da63c9ead2cecdec1efbaeb78739bb5abf635a64380eeba35158'
+            '8bc24efe33f06228134dd27e5c9a6832abb436e2fbe3fab09b529fed4a5b406c')
 
 prepare() {
   cd "${srcdir}/${_srcname}-${pkgver}"
@@ -55,6 +61,11 @@ prepare() {
   patch -p1 < "${srcdir}"/0006-LINUX-Fix-includes-for-fatal_signal_pending-test.patch
   patch -p1 < "${srcdir}"/0007-Linux-Refactor-test-for-32bit-compat.patch
   patch -p1 < "${srcdir}"/0008-Linux-5.11-Test-32bit-compat-with-in_compat_syscall.patch
+
+  # Compatibility with Linux 5.12
+  patch -p1 < "${srcdir}"/0009-LINUX-Introduce-afs_d_path.patch
+  patch -p1 < "${srcdir}"/0010-Linux-Create-wrapper-for-setattr_prepare.patch
+  patch -p1 < "${srcdir}"/0011-Linux-5.12-Add-user_namespace-param-to-inode-ops.patch
 
   # Only needed when changes to configure were made
   ./regen.sh -q
