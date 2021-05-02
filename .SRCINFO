@@ -1,0 +1,18 @@
+pkgbase = normalmap-git
+	pkgdesc = Allows to create a RGB normal map from a heightmap. The output picture is RGBA and you can store various combination of the height in the Alpha channel.
+	pkgver = r20.20200602.fb90c69
+	pkgrel = 1
+	url = https://github.com/eatdust/normalmap
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = waf
+	depends = imagemagick>=7
+	provides = normalmap=r20.20200602.fb90c69
+	conflicts = normalmap
+	source = normalmap::git+git://github.com/eatdust/normalmap.git
+	sha256sums = SKIP
+
+pkgname = normalmap-git
+
