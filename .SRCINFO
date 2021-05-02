@@ -1,6 +1,6 @@
 pkgbase = taiwins-git
 	pkgdesc = Tiling and floating wayland window manager focused on speed and size
-	pkgver = 0.2.0
+	pkgver = v0.2.0.r434.gb98dd4b
 	pkgrel = 1
 	url = https://taiwins.org
 	arch = x86_64
@@ -27,8 +27,21 @@ pkgbase = taiwins-git
 	depends = libgl
 	depends = libegl
 	depends = libgles
-	depends = wlroots=0.11.0
-	source = git+http://github.com/taiwins/taiwins.git
+	source = git+https://github.com/taiwins/taiwins#tag=v0.3
+	source = git+https://github.com/taiwins/twclient#tag=v0.2
+	source = git+https://github.com/taiwins/twidgets#tag=v0.1
+	source = git+https://github.com/xeechou/ctypes#tag=v0.2
+	source = git+https://github.com/xeechou/tdbus#tag=v0.1
+	source = git+https://github.com/xeechou/love-nuklear#branch=nklua
+	source = git+https://github.com/Immediate-Mode-UI/Nuklear#commit=d829ff1
+	source = git+https://github.com/nothings/stb#commit=b42009b
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = taiwins-git
