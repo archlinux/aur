@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Moura <develop@srmoura.com.br>
 
 pkgname=raven-reader
-pkgver=1.0.50
+pkgver=1.0.51
 pkgrel=1
 pkgdesc="Simple Desktop RSS Reader made using VueJS"
 url="https://github.com/hello-efficiency-inc/raven-reader"
@@ -12,7 +12,7 @@ _pkgname="Raven\ Reader"
 arch=('x86_64')
 source=("https://download.helloefficiency.com/ravenreader/Raven Reader-${pkgver}.AppImage"
  "${pkgname}.desktop")
-sha512sums=('a2890e0f2d2764d1b55527b9bc0e4bf6ae547333fecaa95d3cfe220e20926b232dc3840172b37428aa2e8609fb985bb6da48425e435f4762b6c5f441296bda17'
+sha512sums=('90a024cac25b8819bf15db041c9b439dc23cd4e47973286284818be110868a8d57e41b3b3f056d4eb2ff2530f3054b2f74f958c3379f18b40fc57b72442517b5'
             '9fa28be0cfac906f0d6acb6be147f797999660fda207df0b282a132950e587b5db0e77c719a38892bf6bc5e1cd77e5e9e24bf9ba169fd5505abd2dcd71ed27cf')
 
 build(){
