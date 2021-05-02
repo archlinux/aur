@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgbase=snowpack
 pkgname=('snowpack' 'snowpack-docs')
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Make data access easy and safe for numerical simulations in environmental sciences"
 arch=('x86_64')
@@ -9,10 +9,11 @@ url="https://models.slf.ch/p/snowpack/"
 license=('LGPL3')
 depends=('meteoio')
 makedepends=('cmake' 'doxygen')
-source=("https://models.slf.ch/p/snowpack/downloads/get/Snowpack-$pkgver-src.tar.gz")
+source=("https://gitlabext.wsl.ch/snow-models/snowpack/-/archive/Snowpack-$pkgver/snowpack-Snowpack-$pkgver.tar.gz")
+sha256sums=('e3ef84ebd18d31ffd63c2bae3b99f3a88d3f9c0c9bfa45b0577a4beb08f7ed3d')
 
 build() {
-  cd "Snowpack-$pkgver-src"
+  cd "snowpack-Snowpack-$pkgver"
   mkdir -p build
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DINSTALL_DOC=1 .
   make
@@ -20,15 +21,14 @@ build() {
 }
 
 package_snowpack() {
-  cd "Snowpack-$pkgver-src"
+  cd "snowpack-Snowpack-$pkgver"
   make DESTDIR="$pkgdir/" install
   rm -r "$pkgdir/usr/share"
 }
 
 package_snowpack-docs() {
-  cd "Snowpack-$pkgver-src/doc/html"
+  cd "snowpack-Snowpack-$pkgver/doc/html"
   mkdir -p "$pkgdir/usr/share/doc/snowpack"
   cp -r * "$pkgdir/usr/share/doc/snowpack"
 }
 
-sha256sums=('94cd59a97d3b3d9a40d8af3841207846b317c7c515be327731a02d4d7d37eb75')

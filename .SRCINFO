@@ -1,6 +1,6 @@
 pkgbase = snowpack
 	pkgdesc = Make data access easy and safe for numerical simulations in environmental sciences
-	pkgver = 3.5.0
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://models.slf.ch/p/snowpack/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = snowpack
 	makedepends = cmake
 	makedepends = doxygen
 	depends = meteoio
-	source = https://models.slf.ch/p/snowpack/downloads/get/Snowpack-3.5.0-src.tar.gz
-	sha256sums = 94cd59a97d3b3d9a40d8af3841207846b317c7c515be327731a02d4d7d37eb75
+	source = https://gitlabext.wsl.ch/snow-models/snowpack/-/archive/Snowpack-3.6.0/snowpack-Snowpack-3.6.0.tar.gz
+	sha256sums = e3ef84ebd18d31ffd63c2bae3b99f3a88d3f9c0c9bfa45b0577a4beb08f7ed3d
 
 pkgname = snowpack
 
