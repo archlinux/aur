@@ -1,4 +1,4 @@
-From f615330c6169a5fe5750706f1db7cbdd520f9534 Mon Sep 17 00:00:00 2001
+From e8731a36ed9d0652a25b4a018b0cb92dec65edb7 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Mon, 16 Sep 2019 04:53:20 +0200
 Subject: ZEN: Add sysctl and CONFIG to disallow unprivileged CLONE_NEWUSER
@@ -13,35 +13,35 @@ Our default behavior continues to match the vanilla kernel.
  5 files changed, 53 insertions(+)
 
 diff --git a/include/linux/user_namespace.h b/include/linux/user_namespace.h
-index 6ef1c7109fc4..2140091b0b8d 100644
+index 64cf8ebdc4ec..bd29529ac188 100644
 --- a/include/linux/user_namespace.h
 +++ b/include/linux/user_namespace.h
-@@ -106,6 +106,8 @@ void dec_ucount(struct ucounts *ucounts, enum ucount_type type);
- 
+@@ -105,6 +105,8 @@ void dec_ucount(struct ucounts *ucounts, enum ucount_type type);
+
  #ifdef CONFIG_USER_NS
- 
+
 +extern int unprivileged_userns_clone;
 +
  static inline struct user_namespace *get_user_ns(struct user_namespace *ns)
  {
  	if (ns)
-@@ -139,6 +141,8 @@ extern bool current_in_userns(const struct user_namespace *target_ns);
+@@ -138,6 +140,8 @@ extern bool current_in_userns(const struct user_namespace *target_ns);
  struct ns_common *ns_get_owner(struct ns_common *ns);
  #else
- 
+
 +#define unprivileged_userns_clone 0
 +
  static inline struct user_namespace *get_user_ns(struct user_namespace *ns)
  {
  	return &init_user_ns;
 diff --git a/init/Kconfig b/init/Kconfig
-index 0872a5a2e759..a40d8afeb1bb 100644
+index a3d27421de8f..7e27f080d186 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
-@@ -1173,6 +1173,22 @@ config USER_NS
- 
+@@ -1171,6 +1171,22 @@ config USER_NS
+
  	  If unsure, say N.
- 
+
 +config USER_NS_UNPRIVILEGED
 +	bool "Allow unprivileged users to create namespaces"
 +	default y
@@ -62,13 +62,13 @@ index 0872a5a2e759..a40d8afeb1bb 100644
  	bool "PID Namespaces"
  	default y
 diff --git a/kernel/fork.c b/kernel/fork.c
-index c675fdbd3dce..9266039e28e4 100644
+index 808af2cc8ab6..09658cb5317e 100644
 --- a/kernel/fork.c
 +++ b/kernel/fork.c
 @@ -97,6 +97,10 @@
  #include <linux/scs.h>
  #include <linux/io_uring.h>
- 
+
 +#ifdef CONFIG_USER_NS
 +#include <linux/user_namespace.h>
 +#endif
@@ -76,10 +76,10 @@ index c675fdbd3dce..9266039e28e4 100644
  #include <asm/pgalloc.h>
  #include <linux/uaccess.h>
  #include <asm/mmu_context.h>
-@@ -1863,6 +1867,10 @@ static __latent_entropy struct task_struct *copy_process(
+@@ -1872,6 +1876,10 @@ static __latent_entropy struct task_struct *copy_process(
  	if ((clone_flags & (CLONE_NEWUSER|CLONE_FS)) == (CLONE_NEWUSER|CLONE_FS))
  		return ERR_PTR(-EINVAL);
- 
+
 +	if ((clone_flags & CLONE_NEWUSER) && !unprivileged_userns_clone)
 +		if (!capable(CAP_SYS_ADMIN))
 +			return ERR_PTR(-EPERM);
@@ -87,10 +87,10 @@ index c675fdbd3dce..9266039e28e4 100644
  	/*
  	 * Thread groups must share signals as well, and detached threads
  	 * can only be started up within the thread group.
-@@ -2928,6 +2936,12 @@ int ksys_unshare(unsigned long unshare_flags)
+@@ -2941,6 +2949,12 @@ int ksys_unshare(unsigned long unshare_flags)
  	if (unshare_flags & CLONE_NEWNS)
  		unshare_flags |= CLONE_FS;
- 
+
 +	if ((unshare_flags & CLONE_NEWUSER) && !unprivileged_userns_clone) {
 +		err = -EPERM;
 +		if (!capable(CAP_SYS_ADMIN))
@@ -101,7 +101,7 @@ index c675fdbd3dce..9266039e28e4 100644
  	if (err)
  		goto bad_unshare_out;
 diff --git a/kernel/sysctl.c b/kernel/sysctl.c
-index afad085960b8..a94828fb31c2 100644
+index 62fbd09b5dc1..01192edd25f3 100644
 --- a/kernel/sysctl.c
 +++ b/kernel/sysctl.c
 @@ -103,6 +103,9 @@
@@ -111,9 +111,9 @@ index afad085960b8..a94828fb31c2 100644
 +#ifdef CONFIG_USER_NS
 +#include <linux/user_namespace.h>
 +#endif
- 
+
  #if defined(CONFIG_SYSCTL)
- 
+
 @@ -1902,6 +1905,15 @@ static struct ctl_table kern_table[] = {
  		.proc_handler	= proc_dointvec,
  	},
@@ -131,13 +131,13 @@ index afad085960b8..a94828fb31c2 100644
  	{
  		.procname	= "tainted",
 diff --git a/kernel/user_namespace.c b/kernel/user_namespace.c
-index e703d5d9cbe8..5758274feaee 100644
+index af612945a4d0..95c54dae4aa1 100644
 --- a/kernel/user_namespace.c
 +++ b/kernel/user_namespace.c
 @@ -21,6 +21,13 @@
  #include <linux/bsearch.h>
  #include <linux/sort.h>
- 
+
 +/* sysctl */
 +#ifdef CONFIG_USER_NS_UNPRIVILEGED
 +int unprivileged_userns_clone = 1;
@@ -147,43 +147,453 @@ index e703d5d9cbe8..5758274feaee 100644
 +
  static struct kmem_cache *user_ns_cachep __read_mostly;
  static DEFINE_MUTEX(userns_state_mutex);
- 
--- 
+
+--
 cgit v1.2.3-1-gf6bb5
 
-From 3df6111e2ffaf7a57dd245a9df1997f773840b74 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Felix=20H=C3=A4dicke?= <felixhaedicke@web.de>
-Date: Thu, 19 Nov 2020 09:22:32 +0100
-Subject: HID: quirks: Add Apple Magic Trackpad 2 to hid_have_special_driver
- list
+
+From 51281a71543d75213ee3c718019b569f863f4a37 Mon Sep 17 00:00:00 2001
+From: Imre Deak <imre.deak@intel.com>
+Date: Wed, 17 Mar 2021 20:48:59 +0200
+Subject: drm/i915/ilk-glk: Fix link training on links with LTTPRs
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
-The Apple Magic Trackpad 2 is handled by the magicmouse driver. And
-there were severe stability issues when both drivers (hid-generic and
-hid-magicmouse) were loaded for this device.
+Cherry-picked from intel-drm-next 984982f3ef7b240cd24c2feb2762d81d9d8da3c2
 
-Fixes: https://bugzilla.kernel.org/show_bug.cgi?id=210241
+The spec requires to use at least 3.2ms for the AUX timeout period if
+there are LT-tunable PHY Repeaters on the link (2.11.2). An upcoming
+spec update makes this more specific, by requiring a 3.2ms minimum
+timeout period for the LTTPR detection reading the 0xF0000-0xF0007
+range (3.6.5.1).
 
-Signed-off-by: Felix Hädicke <felixhaedicke@web.de>
+Accordingly disable LTTPR detection until GLK, where the maximum timeout
+we can set is only 1.6ms.
+
+Link training in the non-transparent mode is known to fail at least on
+some SKL systems with a WD19 dock on the link, which exposes an LTTPR
+(see the References below). While this could have different reasons
+besides the too short AUX timeout used, not detecting LTTPRs (and so not
+using the non-transparent LT mode) fixes link training on these systems.
+
+While at it add a code comment about the platform specific maximum
+timeout values.
+
+v2: Add a comment about the g4x maximum timeout as well. (Ville)
+
+Reported-by: Takashi Iwai <tiwai@suse.de>
+Reported-and-tested-by: Santiago Zarate <santiago.zarate@suse.com>
+Reported-and-tested-by: Bodo Graumann <mail@bodograumann.de>
+References: https://gitlab.freedesktop.org/drm/intel/-/issues/3166
+Fixes: b30edfd8d0b4 ("drm/i915: Switch to LTTPR non-transparent mode link training")
+Cc: <stable@vger.kernel.org> # v5.11
+Cc: Takashi Iwai <tiwai@suse.de>
+Cc: Ville Syrjälä <ville.syrjala@linux.intel.com>
+Signed-off-by: Imre Deak <imre.deak@intel.com>
+Reviewed-by: Ville Syrjälä <ville.syrjala@linux.intel.com>
+Link: https://patchwork.freedesktop.org/patch/msgid/20210317184901.4029798-2-imre.deak@intel.com
 ---
- drivers/hid/hid-quirks.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/gpu/drm/i915/display/intel_dp.c               |  7 +++++++
+ drivers/gpu/drm/i915/display/intel_dp_link_training.c | 15 ++++++++++++---
+ 2 files changed, 19 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/hid/hid-quirks.c b/drivers/hid/hid-quirks.c
-index bf7ecab5d9e5..142e9dae2837 100644
---- a/drivers/hid/hid-quirks.c
-+++ b/drivers/hid/hid-quirks.c
-@@ -478,6 +478,8 @@ static const struct hid_device_id hid_have_special_driver[] = {
- #if IS_ENABLED(CONFIG_HID_MAGICMOUSE)
- 	{ HID_BLUETOOTH_DEVICE(USB_VENDOR_ID_APPLE, USB_DEVICE_ID_APPLE_MAGICMOUSE) },
- 	{ HID_BLUETOOTH_DEVICE(USB_VENDOR_ID_APPLE, USB_DEVICE_ID_APPLE_MAGICTRACKPAD) },
-+	{ HID_BLUETOOTH_DEVICE(BT_VENDOR_ID_APPLE, USB_DEVICE_ID_APPLE_MAGICTRACKPAD2) },
-+	{ HID_USB_DEVICE(USB_VENDOR_ID_APPLE, USB_DEVICE_ID_APPLE_MAGICTRACKPAD2) },
- #endif
- #if IS_ENABLED(CONFIG_HID_MAYFLASH)
- 	{ HID_USB_DEVICE(USB_VENDOR_ID_DRAGONRISE, USB_DEVICE_ID_DRAGONRISE_PS3) },
--- 
+diff --git a/drivers/gpu/drm/i915/display/intel_dp.c b/drivers/gpu/drm/i915/display/intel_dp.c
+index 8a26307c4896..1930df9a8bcc 100644
+--- a/drivers/gpu/drm/i915/display/intel_dp.c
++++ b/drivers/gpu/drm/i915/display/intel_dp.c
+@@ -1400,6 +1400,7 @@ static u32 g4x_get_aux_send_ctl(struct intel_dp *intel_dp,
+ 	else
+ 		precharge = 5;
+
++	/* Max timeout value on G4x-BDW: 1.6ms */
+ 	if (IS_BROADWELL(dev_priv))
+ 		timeout = DP_AUX_CH_CTL_TIME_OUT_600us;
+ 	else
+@@ -1426,6 +1427,12 @@ static u32 skl_get_aux_send_ctl(struct intel_dp *intel_dp,
+ 	enum phy phy = intel_port_to_phy(i915, dig_port->base.port);
+ 	u32 ret;
+
++	/*
++	 * Max timeout values:
++	 * SKL-GLK: 1.6ms
++	 * CNL: 3.2ms
++	 * ICL+: 4ms
++	 */
+ 	ret = DP_AUX_CH_CTL_SEND_BUSY |
+ 	      DP_AUX_CH_CTL_DONE |
+ 	      DP_AUX_CH_CTL_INTERRUPT |
+diff --git a/drivers/gpu/drm/i915/display/intel_dp_link_training.c b/drivers/gpu/drm/i915/display/intel_dp_link_training.c
+index d8c6d7054d11..f916b9f04b6b 100644
+--- a/drivers/gpu/drm/i915/display/intel_dp_link_training.c
++++ b/drivers/gpu/drm/i915/display/intel_dp_link_training.c
+@@ -93,6 +93,18 @@ static void intel_dp_read_lttpr_phy_caps(struct intel_dp *intel_dp,
+
+ static bool intel_dp_read_lttpr_common_caps(struct intel_dp *intel_dp)
+ {
++	struct drm_i915_private *i915 = dp_to_i915(intel_dp);
++
++	if (intel_dp_is_edp(intel_dp))
++		return false;
++
++	/*
++	 * Detecting LTTPRs must be avoided on platforms with an AUX timeout
++	 * period < 3.2ms. (see DP Standard v2.0, 2.11.2, 3.6.6.1).
++	 */
++	if (INTEL_GEN(i915) < 10)
++		return false;
++
+ 	if (drm_dp_read_lttpr_common_caps(&intel_dp->aux,
+ 					  intel_dp->lttpr_common_caps) < 0) {
+ 		memset(intel_dp->lttpr_common_caps, 0,
+@@ -138,9 +150,6 @@ int intel_dp_lttpr_init(struct intel_dp *intel_dp)
+ 	bool ret;
+ 	int i;
+
+-	if (intel_dp_is_edp(intel_dp))
+-		return 0;
+-
+ 	ret = intel_dp_read_lttpr_common_caps(intel_dp);
+
+ 	/*
+--
 cgit v1.2.3-1-gf6bb5
+
+
+From 6cbe4ead29eb88f3a5d4257adbb77a944ed4c9de Mon Sep 17 00:00:00 2001
+From: Imre Deak <imre.deak@intel.com>
+Date: Mon, 18 Jan 2021 20:31:43 +0200
+Subject: drm/i915/dp: Prevent setting the LTTPR LT mode if no LTTPRs are
+ detected
+
+Cherry-picked from 3b7bbb3619d2cc92f04ba10ad27d3b616aabf175
+
+Atm, the driver programs explicitly the default transparent link
+training mode (0x55) to DP_PHY_REPEATER_MODE even if no LTTPRs are
+detected.
+
+This conforms to the spec (3.6.6.1):
+"DP upstream devices that do not enable the Non-transparent mode of
+ LTTPRs shall program the PHY_REPEATER_MODE register (DPCD Address
+ F0003h) to 55h (default) prior to link training"
+
+however writing the default value to this DPCD register seems to cause
+occasional link training errors at least for a DELL WD19TB TBT dock, when
+no LTTPRs are detected.
+
+Writing to DP_PHY_REPEATER_MODE will also cause an unnecessary timeout
+on systems without any LTTPR.
+
+To fix the above two issues let's assume that setting the default mode
+is redundant when no LTTPRs are detected. Keep the existing behavior and
+program the default mode if more than 8 LTTPRs are detected or in case
+the read from DP_PHY_REPEATER_CNT returns an invalid value.
+
+References: https://gitlab.freedesktop.org/drm/intel/-/issues/2801
+Signed-off-by: Imre Deak <imre.deak@intel.com>
+Reviewed-by: Khaled Almahallawy <khaled.almahallawy@intel.com>
+Link: https://patchwork.freedesktop.org/patch/msgid/20210118183143.1145707-1-imre.deak@intel.com
+---
+ .../gpu/drm/i915/display/intel_dp_link_training.c  | 36 +++++++++-------------
+ 1 file changed, 15 insertions(+), 21 deletions(-)
+
+diff --git a/drivers/gpu/drm/i915/display/intel_dp_link_training.c b/drivers/gpu/drm/i915/display/intel_dp_link_training.c
+index f916b9f04b6b..0359d5936901 100644
+--- a/drivers/gpu/drm/i915/display/intel_dp_link_training.c
++++ b/drivers/gpu/drm/i915/display/intel_dp_link_training.c
+@@ -34,18 +34,6 @@ intel_dp_dump_link_status(const u8 link_status[DP_LINK_STATUS_SIZE])
+ 		      link_status[3], link_status[4], link_status[5]);
+ }
+
+-static int intel_dp_lttpr_count(struct intel_dp *intel_dp)
+-{
+-	int count = drm_dp_lttpr_count(intel_dp->lttpr_common_caps);
+-
+-	/*
+-	 * Pretend no LTTPRs in case of LTTPR detection error, or
+-	 * if too many (>8) LTTPRs are detected. This translates to link
+-	 * training in transparent mode.
+-	 */
+-	return count <= 0 ? 0 : count;
+-}
+-
+ static void intel_dp_reset_lttpr_count(struct intel_dp *intel_dp)
+ {
+ 	intel_dp->lttpr_common_caps[DP_PHY_REPEATER_CNT -
+@@ -151,6 +139,17 @@ int intel_dp_lttpr_init(struct intel_dp *intel_dp)
+ 	int i;
+
+ 	ret = intel_dp_read_lttpr_common_caps(intel_dp);
++	if (!ret)
++		return 0;
++
++	lttpr_count = drm_dp_lttpr_count(intel_dp->lttpr_common_caps);
++	/*
++	 * Prevent setting LTTPR transparent mode explicitly if no LTTPRs are
++	 * detected as this breaks link training at least on the Dell WD19TB
++	 * dock.
++	 */
++	if (lttpr_count == 0)
++		return 0;
+
+ 	/*
+ 	 * See DP Standard v2.0 3.6.6.1. about the explicit disabling of
+@@ -159,17 +158,12 @@ int intel_dp_lttpr_init(struct intel_dp *intel_dp)
+ 	 */
+ 	intel_dp_set_lttpr_transparent_mode(intel_dp, true);
+
+-	if (!ret)
+-		return 0;
+-
+-	lttpr_count = intel_dp_lttpr_count(intel_dp);
+-
+ 	/*
+ 	 * In case of unsupported number of LTTPRs or failing to switch to
+ 	 * non-transparent mode fall-back to transparent link training mode,
+ 	 * still taking into account any LTTPR common lane- rate/count limits.
+ 	 */
+-	if (lttpr_count == 0)
++	if (lttpr_count < 0)
+ 		return 0;
+
+ 	if (!intel_dp_set_lttpr_transparent_mode(intel_dp, false)) {
+@@ -231,11 +225,11 @@ intel_dp_phy_is_downstream_of_source(struct intel_dp *intel_dp,
+ 				     enum drm_dp_phy dp_phy)
+ {
+ 	struct drm_i915_private *i915 = dp_to_i915(intel_dp);
+-	int lttpr_count = intel_dp_lttpr_count(intel_dp);
++	int lttpr_count = drm_dp_lttpr_count(intel_dp->lttpr_common_caps);
+
+-	drm_WARN_ON_ONCE(&i915->drm, lttpr_count == 0 && dp_phy != DP_PHY_DPRX);
++	drm_WARN_ON_ONCE(&i915->drm, lttpr_count <= 0 && dp_phy != DP_PHY_DPRX);
+
+-	return lttpr_count == 0 || dp_phy == DP_PHY_LTTPR(lttpr_count - 1);
++	return lttpr_count <= 0 || dp_phy == DP_PHY_LTTPR(lttpr_count - 1);
+ }
+
+ static u8 intel_dp_phy_voltage_max(struct intel_dp *intel_dp,
+--
+cgit v1.2.3-1-gf6bb5
+
+
+From 713058d68c0bef0b8add47ff67875a077b834552 Mon Sep 17 00:00:00 2001
+From: Imre Deak <imre.deak@intel.com>
+Date: Wed, 17 Mar 2021 21:01:49 +0200
+Subject: drm/i915: Disable LTTPR support when the DPCD rev < 1.4
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Cherry picked from intel-drm-next 264613b406eb0d74cd9ca582c717c5e2c5a975ea
+
+By the specification the 0xF0000-0xF02FF range is only valid when the
+DPCD revision is 1.4 or higher. Disable LTTPR support if this isn't so.
+
+Trying to detect LTTPRs returned corrupted values for the above DPCD
+range at least on a Skylake host with an LG 43UD79-B monitor with a DPCD
+revision 1.2 connected.
+
+v2: Add the actual version check.
+v3: Fix s/DRPX/DPRX/ typo.
+
+Fixes: 7b2a4ab8b0ef ("drm/i915: Switch to LTTPR transparent mode link training")
+Cc: <stable@vger.kernel.org> # v5.11
+Cc: Ville Syrjälä <ville.syrjala@linux.intel.com>
+Signed-off-by: Imre Deak <imre.deak@intel.com>
+Reviewed-by: Ville Syrjälä <ville.syrjala@linux.intel.com>
+Link: https://patchwork.freedesktop.org/patch/msgid/20210317190149.4032966-1-imre.deak@intel.com
+---
+ drivers/gpu/drm/i915/display/intel_dp.c            |  4 +-
+ .../gpu/drm/i915/display/intel_dp_link_training.c  | 48 +++++++++++++++++-----
+ .../gpu/drm/i915/display/intel_dp_link_training.h  |  2 +-
+ 3 files changed, 39 insertions(+), 15 deletions(-)
+
+diff --git a/drivers/gpu/drm/i915/display/intel_dp.c b/drivers/gpu/drm/i915/display/intel_dp.c
+index 1930df9a8bcc..bc2aae63fe40 100644
+--- a/drivers/gpu/drm/i915/display/intel_dp.c
++++ b/drivers/gpu/drm/i915/display/intel_dp.c
+@@ -4878,9 +4878,7 @@ intel_dp_get_dpcd(struct intel_dp *intel_dp)
+ {
+ 	int ret;
+
+-	intel_dp_lttpr_init(intel_dp);
+-
+-	if (drm_dp_read_dpcd_caps(&intel_dp->aux, intel_dp->dpcd))
++	if (intel_dp_init_lttpr_and_dprx_caps(intel_dp) < 0)
+ 		return false;
+
+ 	/*
+diff --git a/drivers/gpu/drm/i915/display/intel_dp_link_training.c b/drivers/gpu/drm/i915/display/intel_dp_link_training.c
+index 0359d5936901..e6532ea5757b 100644
+--- a/drivers/gpu/drm/i915/display/intel_dp_link_training.c
++++ b/drivers/gpu/drm/i915/display/intel_dp_link_training.c
+@@ -34,6 +34,11 @@ intel_dp_dump_link_status(const u8 link_status[DP_LINK_STATUS_SIZE])
+ 		      link_status[3], link_status[4], link_status[5]);
+ }
+
++static void intel_dp_reset_lttpr_common_caps(struct intel_dp *intel_dp)
++{
++	memset(&intel_dp->lttpr_common_caps, 0, sizeof(intel_dp->lttpr_common_caps));
++}
++
+ static void intel_dp_reset_lttpr_count(struct intel_dp *intel_dp)
+ {
+ 	intel_dp->lttpr_common_caps[DP_PHY_REPEATER_CNT -
+@@ -95,8 +100,7 @@ static bool intel_dp_read_lttpr_common_caps(struct intel_dp *intel_dp)
+
+ 	if (drm_dp_read_lttpr_common_caps(&intel_dp->aux,
+ 					  intel_dp->lttpr_common_caps) < 0) {
+-		memset(intel_dp->lttpr_common_caps, 0,
+-		       sizeof(intel_dp->lttpr_common_caps));
++		intel_dp_reset_lttpr_common_caps(intel_dp);
+ 		return false;
+ 	}
+
+@@ -118,30 +122,49 @@ intel_dp_set_lttpr_transparent_mode(struct intel_dp *intel_dp, bool enable)
+ }
+
+ /**
+- * intel_dp_lttpr_init - detect LTTPRs and init the LTTPR link training mode
++ * intel_dp_init_lttpr_and_dprx_caps - detect LTTPR and DPRX caps, init the LTTPR link training mode
+  * @intel_dp: Intel DP struct
+  *
+- * Read the LTTPR common capabilities, switch to non-transparent link training
+- * mode if any is detected and read the PHY capabilities for all detected
+- * LTTPRs. In case of an LTTPR detection error or if the number of
++ * Read the LTTPR common and DPRX capabilities and switch to non-transparent
++ * link training mode if any is detected and read the PHY capabilities for all
++ * detected LTTPRs. In case of an LTTPR detection error or if the number of
+  * LTTPRs is more than is supported (8), fall back to the no-LTTPR,
+  * transparent mode link training mode.
+  *
+  * Returns:
+- *   >0  if LTTPRs were detected and the non-transparent LT mode was set
++ *   >0  if LTTPRs were detected and the non-transparent LT mode was set. The
++ *       DPRX capabilities are read out.
+  *    0  if no LTTPRs or more than 8 LTTPRs were detected or in case of a
+- *       detection failure and the transparent LT mode was set
++ *       detection failure and the transparent LT mode was set. The DPRX
++ *       capabilities are read out.
++ *   <0  Reading out the DPRX capabilities failed.
+  */
+-int intel_dp_lttpr_init(struct intel_dp *intel_dp)
++int intel_dp_init_lttpr_and_dprx_caps(struct intel_dp *intel_dp)
+ {
+ 	int lttpr_count;
+ 	bool ret;
+ 	int i;
+
+ 	ret = intel_dp_read_lttpr_common_caps(intel_dp);
++
++	/* The DPTX shall read the DPRX caps after LTTPR detection. */
++	if (drm_dp_read_dpcd_caps(&intel_dp->aux, intel_dp->dpcd)) {
++		intel_dp_reset_lttpr_common_caps(intel_dp);
++		return -EIO;
++	}
++
+ 	if (!ret)
+ 		return 0;
+
++	/*
++	 * The 0xF0000-0xF02FF range is only valid if the DPCD revision is
++	 * at least 1.4.
++	 */
++	if (intel_dp->dpcd[DP_DPCD_REV] < 0x14) {
++		intel_dp_reset_lttpr_common_caps(intel_dp);
++		return 0;
++	}
++
+ 	lttpr_count = drm_dp_lttpr_count(intel_dp->lttpr_common_caps);
+ 	/*
+ 	 * Prevent setting LTTPR transparent mode explicitly if no LTTPRs are
+@@ -181,7 +204,7 @@ int intel_dp_lttpr_init(struct intel_dp *intel_dp)
+
+ 	return lttpr_count;
+ }
+-EXPORT_SYMBOL(intel_dp_lttpr_init);
++EXPORT_SYMBOL(intel_dp_init_lttpr_and_dprx_caps);
+
+ static u8 dp_voltage_max(u8 preemph)
+ {
+@@ -817,7 +840,10 @@ void intel_dp_start_link_train(struct intel_dp *intel_dp,
+ 	 * TODO: Reiniting LTTPRs here won't be needed once proper connector
+ 	 * HW state readout is added.
+ 	 */
+-	int lttpr_count = intel_dp_lttpr_init(intel_dp);
++	int lttpr_count = intel_dp_init_lttpr_and_dprx_caps(intel_dp);
++
++	if (lttpr_count < 0)
++		return;
+
+ 	if (!intel_dp_link_train_all_phys(intel_dp, crtc_state, lttpr_count))
+ 		intel_dp_schedule_fallback_link_training(intel_dp, crtc_state);
+diff --git a/drivers/gpu/drm/i915/display/intel_dp_link_training.h b/drivers/gpu/drm/i915/display/intel_dp_link_training.h
+index 6a1f76bd8c75..9cb7c28027f0 100644
+--- a/drivers/gpu/drm/i915/display/intel_dp_link_training.h
++++ b/drivers/gpu/drm/i915/display/intel_dp_link_training.h
+@@ -11,7 +11,7 @@
+ struct intel_crtc_state;
+ struct intel_dp;
+
+-int intel_dp_lttpr_init(struct intel_dp *intel_dp);
++int intel_dp_init_lttpr_and_dprx_caps(struct intel_dp *intel_dp);
+
+ void intel_dp_get_adjust_train(struct intel_dp *intel_dp,
+ 			       const struct intel_crtc_state *crtc_state,
+--
+cgit v1.2.3-1-gf6bb5
+
+
+From 5ffd31225f0df5dcd0a1ba60bdae3e7e19afb684 Mon Sep 17 00:00:00 2001
+From: Imre Deak <imre.deak@intel.com>
+Date: Tue, 13 Apr 2021 02:24:12 +0300
+Subject: drm/i915: Fix modesetting in case of unexpected AUX timeouts
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In case AUX failures happen unexpectedly during a modeset, the driver
+should still complete the modeset. In particular the driver should
+perform the link training sequence steps even in case of an AUX failure,
+as this sequence also includes port initialization steps. Not doing that
+can leave the port/pipe in a broken state and lead for instance to a
+flip done timeout.
+
+Fix this by continuing with link training (in a no-LTTPR mode) if the
+DPRX DPCD readout failed for some reason at the beginning of link
+training. After a successful connector detection we already have the
+DPCD read out and cached, so the failed repeated read for it should not
+cause a problem. Note that a partial AUX read could in theory partly
+overwrite the cached DPCD (and return error) but this overwrite should
+not happen if the returned values are corrupted (due to a timeout or
+some other IO error).
+
+Kudos to Ville to root cause the problem.
+
+Fixes: 7dffbdedb96a ("drm/i915: Disable LTTPR support when the DPCD rev < 1.4")
+References: https://gitlab.freedesktop.org/drm/intel/-/issues/3308
+Cc: stable@vger.kernel.org # 5.11
+Cc: Ville Syrjälä <ville.syrjala@linux.intel.com>
+Signed-off-by: Imre Deak <imre.deak@intel.com>
+---
+ drivers/gpu/drm/i915/display/intel_dp_link_training.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/i915/display/intel_dp_link_training.c b/drivers/gpu/drm/i915/display/intel_dp_link_training.c
+index e6532ea5757b..6f2cb9d55e1b 100644
+--- a/drivers/gpu/drm/i915/display/intel_dp_link_training.c
++++ b/drivers/gpu/drm/i915/display/intel_dp_link_training.c
+@@ -843,7 +843,8 @@ void intel_dp_start_link_train(struct intel_dp *intel_dp,
+ 	int lttpr_count = intel_dp_init_lttpr_and_dprx_caps(intel_dp);
+
+ 	if (lttpr_count < 0)
+-		return;
++		/* Still continue with enabling the port and link training. */
++		lttpr_count = 0;
+
+ 	if (!intel_dp_link_train_all_phys(intel_dp, crtc_state, lttpr_count))
+ 		intel_dp_schedule_fallback_link_training(intel_dp, crtc_state);
+--
+cgit v1.2.3-1-gf6bb5
+
 
