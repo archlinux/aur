@@ -1,8 +1,8 @@
 # Maintainer: Michael Riegert <michael at eowyn net>
 
 pkgname=fpga-toolchain-bin
-pkgver=20210428
-pkgrel=2
+pkgver=20210502
+pkgrel=1
 pkgdesc="Nightly builds of open-source FPGA tools"
 arch=('x86_64')
 url="https://github.com/open-tool-forge/fpga-toolchain"
@@ -25,10 +25,13 @@ conflicts=(
     'prjtrellis'
     'prjtrellis-db'
     )
-source_x86_64=($url/releases/download/nightly-$pkgver/fpga-toolchain-linux_x86_64-nightly-$pkgver.tar.xz)
-sha256sums_x86_64=('c09b9cc3a8aa47ee7bc3dd5487e70e8a53b4996956a815bdae408a8fc3768e41')
+source_x86_64=($url/releases/download/nightly-$pkgver/fpga-toolchain-linux_x86_64-nightly-$pkgver.tar.xz
+    path.install)
+sha256sums_x86_64=('4c566b0aa6d2b63281a47baec4e350ad2576125cb1720b1b01edf224c1e95f38'
+                   'e7ed3de09af8a6353ae2627284e597ae37278623e206a26f16aeb9db0a35aaea')
+install='path.install'
 package() {
-    mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/include" "$pkgdir/usr/lib/ghdl" "$pkgdir/usr/share"
-    rsync -a "$srcdir/fpga-toolchain/" "$pkgdir/usr/" --chmod=755 --exclude VERSION --exclude lib/libghdl.link
-    chmod 644 "$pkgdir/usr/lib/libghdl.a"
+    mkdir -p "$pkgdir/opt/fpga-toolchain/bin" "$pkgdir/opt/fpga-toolchain/include" "$pkgdir/opt/fpga-toolchain/lib/ghdl" "$pkgdir/opt/fpga-toolchain/share"
+    rsync -a "$srcdir/fpga-toolchain/" "$pkgdir/opt/fpga-toolchain/" --chmod=755 --exclude VERSION
+    chmod 644 "$pkgdir/opt/fpga-toolchain/lib/libghdl.a"
 }
