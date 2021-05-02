@@ -3,13 +3,13 @@
 
 _pkgname='klavaro'
 pkgname="${_pkgname}-svn"
-pkgver=3.12.r125
+pkgver=3.12.r134
 pkgrel=1
 pkgdesc='Flexible touch typing tutor that supports customizable keyboard layouts'
 arch=('x86_64')
 url='https://klavaro.sourceforge.io'
 license=('GPL3')
-depends=('gtk3')
+depends=('gtkdatabox')
 makedepends=('clang' 'intltool' 'python' 'subversion')
 optdepends=('espeakup: voice output')
 provides=("${_pkgname}")
