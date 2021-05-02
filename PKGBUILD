@@ -2,7 +2,8 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 # Configuration.
-_fragment=${FRAGMENT:-#branch=master}
+_ver=2.93
+_fragment=${FRAGMENT:-#branch=blender-v${_ver}-release}
 # shellcheck disable=SC2206
 [[ -v CUDA_ARCH ]] && _cuda_capability=(${CUDA_ARCH})
 
@@ -25,10 +26,10 @@ _CMAKE_FLAGS+=( -DOSL_ROOT_DIR=/opt/osl
 #shellcheck disable=SC2015
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
 
-pkgname=blender-develop-git
-pkgver=3.0.r105731.gecc7a837982
+pkgname=blender-${_ver}-git
+pkgver=2.93.r105442.g018cca94b8a
 pkgrel=1
-pkgdesc="Development version of Blender (non-conflicting version)"
+pkgdesc="Maintenance version of Blender v${_ver} branch"
 changelog=blender.changelog
 arch=('i686' 'x86_64')
 url="https://blender.org/"
