@@ -1,7 +1,7 @@
 pkgbase = python-pyctr
 	pkgdesc = Python library to interact with Nintendo 3DS files
-	pkgver = 0.4.3
-	pkgrel = 2
+	pkgver = 0.4.7
+	pkgrel = 1
 	url = https://github.com/ihaveamac/pyctr
 	arch = x86_64
 	license = MIT
@@ -9,9 +9,9 @@ pkgbase = python-pyctr
 	depends = python
 	depends = python-pycryptodomex
 	options = !strip
-	source = pyctr-0.4.3.tar.gz::https://github.com/ihaveamac/pyctr/archive/v0.4.3.tar.gz
-	sha256sums = a669742ccf6b87a51855e9118f4a9b4bda7d43c6ea112532007fc333616bfe5b
-	sha512sums = d4cfaaa2db3923a041b7d62ce296d7f5132e556e221af07ad3bff2215a795ff0a898548e1174e03db818e2299956188f6bade6ca7e7c3ed5dfc4ef4c84b11ba6
+	source = pyctr-0.4.7.tar.gz::https://github.com/ihaveamac/pyctr/archive/v0.4.7.tar.gz
+	sha256sums = 89622fec720f2f64f46e742db1ddb4fce7764247c3ccc5b5c5fecf4084bd0f53
+	sha512sums = 98cbdba54a9f6330470b3a0c2ff0e7771d174bfde90bede7cd3b734c9e29eaf574150185ab0e852699b55ee4f41c704c4b3a746f415528e0cf4c0258ad323369
 
 pkgname = python-pyctr
 
