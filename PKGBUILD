@@ -5,7 +5,7 @@
 pkgname=firedragon
 _pkgname=FireDragon
 pkgver=88.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
