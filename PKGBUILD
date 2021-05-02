@@ -1,7 +1,7 @@
 # Maintainer: Sophie Tauchert <sophie@999eagle.moe>
 
 pkgname=gkraken
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="GUI that allows to control cooling of NZXT Kraken X (X42, X52, X62 or X72) pumps from Linux"
 arch=('any')
@@ -14,7 +14,7 @@ conflicts=()
 install="$pkgname.install"
 source=("https://gitlab.com/leinardi/gkraken/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         '60-gkraken.rules')
-sha256sums=('c0e3fa983f6832e701760d7595307481ea0e0bd40356a9c22adc457f249cb8a8'
+sha256sums=('ffb8a54c5b8aad002caedda8775c20bbe3ee0b59a116b0618a1634b2f4d5b5ca'
             '26ce441dbe4a6e4e0ae879570612aa60e268eb0a5ef26589c40ad117b51bfb8c')
 
 build() {
