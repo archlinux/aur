@@ -2,15 +2,16 @@
 
 pkgname=fastbuild
 pkgver=1.04
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance build system"
 arch=('x86_64')
 url="https://www.fastbuild.org"
 license=('custom')
+makedepends=('gcc')
 source=("https://www.fastbuild.org/downloads/v$pkgver/FASTBuild-Src-v$pkgver.zip")
 md5sums=('26d7bfa5eaac4494710eec8fbbbbf897')
 
-package() {
+build() {
 	cd dist_v$pkgver
 	chmod +x Bin/Linux-x64/fbuild
 	
@@ -28,8 +29,12 @@ package() {
 		" ../External/SDK/GCC/Linux/GCC_CI.bff
 
 	 ../Bin/Linux-x64/fbuild All-x64Linux-Release
+}
 
-	install -Dm755 ../tmp/x64Linux-Release/Tools/FBuild/FBuild/fbuild "$pkgdir/usr/bin/fbuild"
-	install -Dm755 ../tmp/x64Linux-Release/Tools/FBuild/FBuildWorker/fbuildworker "$pkgdir/usr/bin/fbuildworker"
-	install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+package() {
+	cd dist_v$pkgver
+
+	install -Dm755 tmp/x64Linux-Release/Tools/FBuild/FBuild/fbuild "$pkgdir/usr/bin/fbuild"
+	install -Dm755 tmp/x64Linux-Release/Tools/FBuild/FBuildWorker/fbuildworker "$pkgdir/usr/bin/fbuildworker"
+	install -Dm644 Code/LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
