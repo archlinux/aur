@@ -1,11 +1,11 @@
-# Maintainer: Rohit Goswami <rohit.goswami@aol.com>
-# Maintainer: Anton Kudelin <kudelin@protonmail.com>
+# Maintainer:  Rohit Goswami <rohit.goswami@aol.com>
+# Maintainer:  Anton Kudelin <kudelin at protonmail dot com>
 # Contributor: eolianoe <eolianoe [at] gmail [DoT] com>
 
 pkgname=nvhpc
 _REL_YEAR=2021
 _CUDA_VER=11.2
-pkgver=21.1
+pkgver=21.3
 pkgrel=1
 pkgdesc='NVIDIA HPC SDK'
 arch=('x86_64')
@@ -18,8 +18,8 @@ conflicts=('pgi-compilers')
 _pkgname="${pkgname}_${_REL_YEAR}_${pkgver//.}_Linux_${arch}_cuda_${_CUDA_VER}"
 source=("https://developer.download.nvidia.com/hpc-sdk/$pkgver/$_pkgname.tar.gz"
         "nvhpc.sh")
-sha256sums=('e021bb3d99873613edb9dba93a2e19e9a13de42349ee4b4775cd4d09af89d379'
-            'b4066e52abf7ae524f4dce64bb534ca7c77c3d5371d61d8e73d82fd648fad746')
+sha256sums=('d5e90baf1aaf8d6b41c2901950c2c2d02ac441456276f3f46c9fee962527c042'
+            '378bf04318ba8272df95cd79ec0d32f6d3bfeccb58220af1560d76a488131397')
 options=(!strip)
 
 package() {

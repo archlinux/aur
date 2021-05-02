@@ -1,6 +1,6 @@
 export nvhome=/opt/nvidia
 export target=Linux_x86_64
-export version=20.9
+export version=21.3
 
 export nvcudadir=$nvhome/$target/$version/cuda
 export nvcompdir=$nvhome/$target/$version/compilers
