@@ -1,27 +1,29 @@
 pkgbase = mysql56
 	pkgdesc = Fast SQL database server, community edition v5.6
-	pkgver = 5.6.50
+	pkgver = 5.6.51
 	pkgrel = 1
 	url = https://www.mysql.com/products/community/
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = zlib
 	makedepends = cmake
 	makedepends = systemd-tools
+	makedepends = systemd-libs
 	makedepends = libaio
 	makedepends = jemalloc
 	options = !libtool
-	source = https://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.50.tar.gz
+	source = https://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.51.tar.gz
 	source = mysqld-post.sh
 	source = mysqld-tmpfile.conf
 	source = mysqld.service
 	source = mysql-srv_buf_size.patch
-	sha256sums = efc48d8160a66b50fc498bb42ea730c3b6f30f036b709a7070d356edd645923e
+	source = systemd-sysusers.conf
+	sha256sums = 262ccaf2930fca1f33787505dd125a7a04844f40d3421289a51974b5935d9abc
 	sha256sums = 368f9fd2454d80eb32abb8f29f703d1cf9553353fb9e1ae4529c4b851cb8c5dd
 	sha256sums = 2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd
 	sha256sums = 50212165bdb09855b97b15a917464ba34f82edf30a0c43f9a0c93a27071df556
 	sha256sums = bfa3ba5546d470e1c1d32246f687f0faa8c225913a648262fbcae6b2296cb57f
+	sha256sums = 1375640da77573d74c302285da6fcab931671c847d4dd4955dcf80a395173ae4
 
 pkgname = mysql56
 	pkgdesc = Fast SQL database server, community edition v5.6
@@ -29,8 +31,8 @@ pkgname = mysql56
 	depends = mysql-clients56
 	depends = libaio
 	depends = perl
-	provides = mariadb=5.6.50
-	provides = mysql=5.6.50
+	provides = mariadb=5.6.51
+	provides = mysql=5.6.51
 	conflicts = mariadb
 	options = emptydirs
 	backup = etc/mysql/my.cnf
@@ -40,8 +42,8 @@ pkgname = libmysqlclient56
 	depends = openssl
 	depends = zlib
 	depends = bash
-	provides = libmariadbclient=5.6.50
-	provides = libmysqlclient=5.6.50
+	provides = libmariadbclient=5.6.51
+	provides = libmysqlclient=5.6.51
 	conflicts = libmariadbclient
 
 pkgname = mysql-clients56
@@ -49,7 +51,7 @@ pkgname = mysql-clients56
 	depends = libmysqlclient56
 	depends = jemalloc
 	depends = ncurses
-	provides = mariadb-clients=5.6.50
-	provides = mysql-clients=5.6.50
+	provides = mariadb-clients=5.6.51
+	provides = mysql-clients=5.6.51
 	conflicts = mariadb-clients
 

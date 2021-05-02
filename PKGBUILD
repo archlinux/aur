@@ -6,11 +6,11 @@
 pkgname=('mysql56' 'libmysqlclient56' 'mysql-clients56')
 _pkgname=mysql
 pkgbase=mysql56
-pkgver=5.6.50
+pkgver=5.6.51
 pkgrel=1
 pkgdesc="Fast SQL database server, community edition v5.6"
-arch=('i686' 'x86_64')
-makedepends=('zlib' 'cmake' 'systemd-tools' 'libaio' 'jemalloc')
+arch=('x86_64')
+makedepends=('zlib' 'cmake' 'systemd-tools' 'systemd-libs' 'libaio' 'jemalloc')
 license=('GPL')
 url="https://www.mysql.com/products/community/"
 options=('!libtool')
@@ -18,12 +18,14 @@ source=("https://dev.mysql.com/get/Downloads/MySQL-5.6/${_pkgname}-${pkgver}.tar
         "mysqld-post.sh"
         "mysqld-tmpfile.conf"
         "mysqld.service"
-        "mysql-srv_buf_size.patch")
-sha256sums=('efc48d8160a66b50fc498bb42ea730c3b6f30f036b709a7070d356edd645923e'
+        "mysql-srv_buf_size.patch"
+        "systemd-sysusers.conf")
+sha256sums=('262ccaf2930fca1f33787505dd125a7a04844f40d3421289a51974b5935d9abc'
             '368f9fd2454d80eb32abb8f29f703d1cf9553353fb9e1ae4529c4b851cb8c5dd'
             '2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd'
             '50212165bdb09855b97b15a917464ba34f82edf30a0c43f9a0c93a27071df556'
-            'bfa3ba5546d470e1c1d32246f687f0faa8c225913a648262fbcae6b2296cb57f')
+            'bfa3ba5546d470e1c1d32246f687f0faa8c225913a648262fbcae6b2296cb57f'
+            '1375640da77573d74c302285da6fcab931671c847d4dd4955dcf80a395173ae4')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
@@ -134,6 +136,8 @@ package_mysql56(){
   install -m 644 -D "${srcdir}/mysqld-tmpfile.conf" "${pkgdir}/usr/lib/tmpfiles.d/mysqld.conf"
   install -m 755 -d "${pkgdir}/usr/lib/systemd/system"
   install -m 644 -D "${srcdir}/mysqld.service" "${pkgdir}/usr/lib/systemd/system/"
+  install -m 755 -d "${pkgdir}/usr/lib/sysusers.d"
+  install -m 644 "${srcdir}/systemd-sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 
   # provided by libmysqlclient
   rm "${pkgdir}/usr/bin/mysql_config"
