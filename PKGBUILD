@@ -1,6 +1,6 @@
 # Maintainer: Tony G. <aur at tonyskapunk dot net>
 
-pkgname='scaleft-client-tools'
+pkgname='scaleft-client-tools-bin'
 pkgdesc='ScaleFT(TM) client tools'
 pkgver=1.52.2
 pkgrel=1
@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://scaleft.com"
 license=('custom')
 depends=('glibc')
-source=("https://pkg.scaleft.com/rpm/${pkgname}-${pkgver}-${pkgrel}.${arch}.rpm")
+source=("https://pkg.scaleft.com/rpm/${pkgname%-*}-${pkgver}-${pkgrel}.${arch}.rpm")
 sha256sums=('c1eea4ec9227df59c86a619c020a3089aae808c826e80ac3d6d5f37327441c03')
 
 package() {

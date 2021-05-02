@@ -1,4 +1,4 @@
-pkgbase = scaleft-client-tools
+pkgbase = scaleft-client-tools-bin
 	pkgdesc = ScaleFT(TM) client tools
 	pkgver = 1.52.2
 	pkgrel = 1
@@ -9,5 +9,5 @@ pkgbase = scaleft-client-tools
 	source = https://pkg.scaleft.com/rpm/scaleft-client-tools-1.52.2-1.x86_64.rpm
 	sha256sums = c1eea4ec9227df59c86a619c020a3089aae808c826e80ac3d6d5f37327441c03
 
-pkgname = scaleft-client-tools
+pkgname = scaleft-client-tools-bin
 
