@@ -1,7 +1,7 @@
 pkgbase = cryptomator-bin
 	pkgdesc = Multiplatform transparent client-side encryption of your files in the cloud.
 	pkgver = 1.5.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cryptomator.org/
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = cryptomator-bin
 	conflicts = cryptomator
 	replaces = cryptomator
 	options = !strip
-	source = cryptomator-1.5.15-1-x86_64.AppImage::https://github.com/cryptomator/cryptomator/releases/download/1.5.15/cryptomator-1.5.15-x86_64.AppImage
+	source = cryptomator-1.5.15-2-x86_64.AppImage::https://github.com/cryptomator/cryptomator/releases/download/1.5.15/cryptomator-1.5.15-x86_64.AppImage
 	source = org.cryptomator.Cryptomator.desktop
 	source = org.cryptomator.Cryptomator.png
 	source = org.cryptomator.Cryptomator.svg

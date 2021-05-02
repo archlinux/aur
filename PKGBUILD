@@ -4,7 +4,7 @@
 
 pkgname=cryptomator-bin
 pkgver=1.5.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Multiplatform transparent client-side encryption of your files in the cloud."
 arch=('x86_64')
 url="https://cryptomator.org/"
@@ -25,7 +25,7 @@ sha256sums=('cdaa5221fc166fed76fe4a894939d335559e8840d8c354e3e1c8fd2135dfccd5'
 options=('!strip')
 
 package() {
-  install -Dm755 "${srcdir}/cryptomator-${pkgver}-${pkgrel}-x86_64.AppImage" "${pkgdir}/opt/cryptomator/cryptomator-${pkgver}-x86_64.AppImage"
+  install -Dm755 "${srcdir}/cryptomator-${pkgver}-${pkgrel}-x86_64.AppImage" "${pkgdir}/opt/${pkgname}/cryptomator-${pkgver}-x86_64.AppImage"
   install -Dm644 "${srcdir}/cryptomator-vault.xml" "${pkgdir}/usr/share/mime/packages/cryptomator-vault.xml"
   install -Dm644 "${srcdir}/org.cryptomator.Cryptomator.desktop" "${pkgdir}/usr/share/applications/org.cryptomator.Cryptomator.desktop"
   install -Dm644 "${srcdir}/org.cryptomator.Cryptomator.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/org.cryptomator.Cryptomator.png"
