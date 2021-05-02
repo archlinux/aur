@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.0.r1198.6f7890b70
+pkgver=1.7.0.r1225.5639273ce
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -16,15 +16,15 @@ license=(
 )
 
 depends=(
-  lib32-libaio
-  lib32-libjpeg-turbo
-  lib32-libpcap
-  lib32-libpulse
-  lib32-portaudio
-  lib32-libsamplerate
-  lib32-sdl2
-  lib32-soundtouch
-  lib32-wxgtk3
+  libaio
+  libjpeg-turbo
+  libpcap
+  libpulse
+  portaudio
+  libsamplerate
+  sdl2
+  soundtouch
+  wxgtk3
 )
 makedepends=(
   cmake
@@ -41,7 +41,6 @@ sha256sums=(SKIP)
 
 pkgver() {
   cd pcsx2
-
   git describe --tags | sed 's/^v//; s/-dev//; s/-/.r/; s/-g/./'
 }
 
@@ -55,17 +54,15 @@ build() {
   git config submodule.https://github.com/fmtlib/src/fmt.git.url $srcdir/fmt
   git config submodule.https://github.com/jbeder/yaml-cpp.git.url $srcdir/yaml-cpp
   git submodule update
-  
+
   cd ../..
   
   cd build
 
   cmake ../pcsx2 \
-    -DCMAKE_TOOLCHAIN_FILE=cmake/linux-compiler-i386-multilib.cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_LIBRARY_PATH=/usr/lib32 \
-    -DPLUGIN_DIR=/usr/lib32/pcsx2 \
+    -DPLUGIN_DIR=/usr/lib/pcsx2 \
     -DGAMEINDEX_DIR=/usr/share/pcsx2 \
     -GNinja \
     -DPACKAGE_MODE=ON \
