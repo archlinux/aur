@@ -1,0 +1,13 @@
+pkgbase = hla-bin
+	pkgdesc = The High-Level Assembler for the 80x86 CPU
+	pkgver = 2.16
+	pkgrel = 1
+	url = https://www.plantation-productions.com/Webster/HighLevelAsm
+	arch = x86_64
+	arch = i686
+	license = GPL-2
+	source = https://www.plantation-productions.com/Webster/HighLevelAsm/HLAv2.16/linux.hla.tar.gz
+	sha256sums = 6c9a7773ed12a27d8ab4871e4b64544a56936db23c067230168f26178af2815c
+
+pkgname = hla-bin
+
