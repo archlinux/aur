@@ -7,7 +7,7 @@ _pkgname=mpv
 pkgname=${_pkgname}-pipewire
 _tag='4c9d3669a0f672e6754ac456acd324db570964d3' # git rev-parse v${pkgver}
 pkgver=0.33.1
-pkgrel=1
+pkgrel=2
 pkgdesc='a free, open source, and cross-platform media player including an experimental PipeWire audio backend'
 arch=('x86_64')
 # We link against libraries that are licensed GPLv3 explicitly, so our
@@ -35,7 +35,7 @@ validpgpkeys=('145077D82501AA20152CACCE8D769208D5E31419') # sfan5 <sfan5@live.de
 source=("git+https://github.com/mpv-player/mpv.git#tag=${_tag}?signed"
         "pipewire.patch::https://github.com/Oschowa/mpv/commit/fddb143282fa74425a8a6f29c9566e51777759d0.patch")
 sha256sums=('SKIP'
-            '68220adf209efbccd4a8376fe8576fea1f84749009bb0b57e315a30a76f786ea')
+            'd72a5863bceb5ac542c656ff85a9cb23d27d30c1609022e1b1735744f2777aaf')
 
 prepare() {
   cd ${_pkgname}
