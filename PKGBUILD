@@ -6,7 +6,7 @@
 _pkgname=rmlint
 pkgbase=${_pkgname}-develop-git
 pkgname=(rmlint-develop-git rmlint-shredder-develop-git)
-pkgver=2.10.1.r210.g1ab4d8ae
+pkgver=2.10.1.r213.g183647b8
 pkgrel=1
 url="https://github.com/sahib/rmlint"
 license=('GPL3')
@@ -15,6 +15,8 @@ makedepends=('binutils' 'dconf' 'desktop-file-utils' 'gettext' 'git'
              'gtksourceview3' 'json-glib' 'libelf' 'librsvg' 'python-cairo'
              'python-gobject' 'python-requests' 'python-sphinx' 'scons'
              'util-linux-libs' 'xdg-utils')
+checkdepends=('dash' 'python-nose' 'python-parameterized' 'python-psutil'
+              'python-xattr')
 source=("git+https://github.com/sahib/${_pkgname}.git#branch=develop")
 md5sums=('SKIP')
 
@@ -27,6 +29,11 @@ build() {
     cd "$_pkgname"
     scons config
     scons -j4 DEBUG=1 --prefix="$pkgdir"/usr --actual-prefix=/usr
+}
+
+check() {
+    cd "$_pkgname"
+    RM_TS_PRINT_CMD=1 python -m nose -d -a '!slow' -e 'test_symlinks' -e 'test_order'
 }
 
 package_rmlint-develop-git() {

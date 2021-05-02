@@ -1,9 +1,14 @@
 pkgbase = rmlint-develop-git
-	pkgver = 2.10.1.r210.g1ab4d8ae
+	pkgver = 2.10.1.r213.g183647b8
 	pkgrel = 1
 	url = https://github.com/sahib/rmlint
 	arch = x86_64
 	license = GPL3
+	checkdepends = dash
+	checkdepends = python-nose
+	checkdepends = python-parameterized
+	checkdepends = python-psutil
+	checkdepends = python-xattr
 	makedepends = binutils
 	makedepends = dconf
 	makedepends = desktop-file-utils
@@ -29,7 +34,7 @@ pkgname = rmlint-develop-git
 	depends = json-glib
 	depends = libelf
 	depends = util-linux-libs
-	provides = rmlint=2.10.1.r210.g1ab4d8ae
+	provides = rmlint=2.10.1.r213.g183647b8
 	conflicts = rmlint
 
 pkgname = rmlint-shredder-develop-git
@@ -41,6 +46,6 @@ pkgname = rmlint-shredder-develop-git
 	depends = python-gobject
 	depends = rmlint-develop-git
 	depends = xdg-utils
-	provides = rmlint-shredder=2.10.1.r210.g1ab4d8ae
+	provides = rmlint-shredder=2.10.1.r213.g183647b8
 	conflicts = rmlint-shredder
 
