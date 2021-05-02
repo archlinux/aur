@@ -1,11 +1,11 @@
 pkgbase = ttf-dmcasansserif
 	pkgdesc = General purpose sans serif font metric-compatible with Microsoft Consolas
 	pkgver = 9.0_20252
-	pkgrel = 1
-	url = https://typedesign.netlify.app
+	pkgrel = 2
+	url = https://typedesigndead.coosucks.repl.co
 	arch = any
 	license = Unlicense
-	source = ttf-dmcasansserif-9.0_20252.zip::https://typedesign.netlify.app/DMCAsansserif9.0-20252.zip
+	source = ttf-dmcasansserif-9.0_20252.zip::https://typedesigndead.coosucks.repl.co/DMCAsansserif9.0-20252.zip
 	sha256sums = ee9a205e84fd8913f53e6845cfdbe7a915104d7d1989761bd0e0cd43ca5d436d
 
 pkgname = ttf-dmcasansserif
