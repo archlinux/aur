@@ -153,8 +153,6 @@ build() {
     export CCACHE_SLOPPINESS=time_macros
   fi
 
-  export CFLAGS=$(printf '%s\n' "${CFLAGS//-fcf-protection/}")
-
   export CC=clang
   export CXX=clang++
   export AR=ar
@@ -188,6 +186,10 @@ build() {
   _ungoogled_repo="$srcdir/$_pkgname-$_uc_ver"
   readarray -t -O ${#_flags[@]} _flags < "${_ungoogled_repo}/flags.gn"
 
+  # -fcf-protection breaks some third_party libraries
+  CFLAGS=$(printf '%s\n' "${CFLAGS//-fcf-protection/}")
+  CXXFLAGS="$CFLAGS"
+
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
   CFLAGS+='   -Wno-builtin-macro-redefined'
   CXXFLAGS+=' -Wno-builtin-macro-redefined'
@@ -196,7 +198,7 @@ build() {
   # Do not warn about unknown warning options
   CFLAGS+='   -Wno-unknown-warning-option'
   CXXFLAGS+=' -Wno-unknown-warning-option'
-
+  
   msg2 'Configuring Chromium'
   gn gen out/Release --args="${_flags[*]}"
   msg2 'Building Chromium'
