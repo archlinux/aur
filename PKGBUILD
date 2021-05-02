@@ -13,4 +13,6 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/assetnote/kiterunner/re
 sha256sums=('6f0b70aabf747de592445a690281897eebbc45927e9264185d34ffb11637613b')
 package(){
   install -Dm755 kr -t "${pkgdir}/usr/bin"
+  echo Packaged By @AlbonyCal
 }
+
