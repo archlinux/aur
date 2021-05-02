@@ -1,6 +1,6 @@
-diff -up src/xrdp-0.9.9/instfiles/xrdp.service.in.orig src/xrdp-0.9.9/instfiles/xrdp.service.in
---- src/xrdp-0.9.9/instfiles/xrdp.service.in.orig	2018-10-19 01:09:19.000000000 -0600
-+++ src/xrdp-0.9.9/instfiles/xrdp.service.in	2019-01-13 06:49:55.000000000 -0700
+diff -up src/xrdp-0.9.16/instfiles/xrdp.service.in.orig src/xrdp-0.9.16/instfiles/xrdp.service.in
+--- src/xrdp-0.9.16/instfiles/xrdp.service.in.orig	2020-06-26 05:13:58.000000000 -0600
++++ src/xrdp-0.9.16/instfiles/xrdp.service.in	2021-05-02 13:34:02.650000000 -0600
 @@ -6,11 +6,9 @@ After=network.target xrdp-sesman.service
  
  [Service]
@@ -16,9 +16,9 @@ diff -up src/xrdp-0.9.9/instfiles/xrdp.service.in.orig src/xrdp-0.9.9/instfiles/
  
  [Install]
  WantedBy=multi-user.target
-diff -up src/xrdp-0.9.9/instfiles/xrdp-sesman.service.in.orig src/xrdp-0.9.9/instfiles/xrdp-sesman.service.in
---- src/xrdp-0.9.9/instfiles/xrdp-sesman.service.in.orig	2018-10-19 01:09:19.000000000 -0600
-+++ src/xrdp-0.9.9/instfiles/xrdp-sesman.service.in	2019-01-13 06:49:55.000000000 -0700
+diff -up src/xrdp-0.9.16/instfiles/xrdp-sesman.service.in.orig src/xrdp-0.9.16/instfiles/xrdp-sesman.service.in
+--- src/xrdp-0.9.16/instfiles/xrdp-sesman.service.in.orig	2020-06-26 05:13:58.000000000 -0600
++++ src/xrdp-0.9.16/instfiles/xrdp-sesman.service.in	2021-05-02 13:34:02.660000000 -0600
 @@ -7,11 +7,9 @@ BindsTo=xrdp.service
  
  [Service]
@@ -34,10 +34,10 @@ diff -up src/xrdp-0.9.9/instfiles/xrdp-sesman.service.in.orig src/xrdp-0.9.9/ins
  
  [Install]
  WantedBy=multi-user.target
-diff -up src/xrdp-0.9.9/sesman/startwm.sh.orig src/xrdp-0.9.9/sesman/startwm.sh
---- src/xrdp-0.9.9/sesman/startwm.sh.orig	2018-10-25 00:20:43.000000000 -0600
-+++ src/xrdp-0.9.9/sesman/startwm.sh	2019-01-13 06:52:12.000000000 -0700
-@@ -58,11 +58,22 @@ post_start()
+diff -up src/xrdp-0.9.16/sesman/startwm.sh.orig src/xrdp-0.9.16/sesman/startwm.sh
+--- src/xrdp-0.9.16/sesman/startwm.sh.orig	2020-12-28 07:03:43.000000000 -0700
++++ src/xrdp-0.9.16/sesman/startwm.sh	2021-05-02 13:37:03.440000000 -0600
+@@ -58,11 +58,26 @@ post_start()
  #start the window manager
  wm_start()
  {
@@ -50,12 +50,16 @@ diff -up src/xrdp-0.9.9/sesman/startwm.sh.orig src/xrdp-0.9.9/sesman/startwm.sh
  
 +  # arch user
 +  if [ -r ~/.xinitrc ]; then
++    pre_start
 +    . ~/.xinitrc
++    post_start
 +    exit 0
 +  fi
 +  # arch
 +  if [ -r /etc/X11/xinit/xinitrc ]; then
++    pre_start
 +    . /etc/X11/xinit/xinitrc
++    post_start
 +    exit 0
 +  fi
 +
