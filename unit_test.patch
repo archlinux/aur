@@ -1,0 +1,43 @@
+From 552cde9dd580f77af466d818220ed0cfa26532a1 Mon Sep 17 00:00:00 2001
+From: Nehal J Wani <nehaljw.kkd1@gmail.com>
+Date: Tue, 19 Feb 2019 13:34:35 +0530
+Subject: [PATCH] Allow exception to be thrown in ~FixtureDtorThrows()
+
+This change allows buiding and running the tests with c++11 and above.
+
+xref: https://akrzemi1.wordpress.com/2013/08/20/noexcept-destructors/
+
+Fixes #61, #47
+---
+ UnitTest++/src/TestMacros.h             | 5 +++++
+ UnitTest++/src/tests/TestTestMacros.cpp | 2 +-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/UnitTest++/src/TestMacros.h b/UnitTest++/src/TestMacros.h
+index a297f15c3..47ace52bd 100644
+--- a/UnitTest++/src/TestMacros.h
++++ b/UnitTest++/src/TestMacros.h
+@@ -109,5 +109,10 @@
+ 
+ #define TEST_FIXTURE(Fixture,Name) TEST_FIXTURE_EX(Fixture, Name, UnitTest::Test::GetTestList())
+ 
++#if __cplusplus >= 201103L
++#define NOEXCEPT_FALSE noexcept(false)
++#else
++#define NOEXCEPT_FALSE
++#endif
+ 
+ #endif
+diff --git a/UnitTest++/src/tests/TestTestMacros.cpp b/UnitTest++/src/tests/TestTestMacros.cpp
+index 8bed9dc55..101b271a4 100644
+--- a/UnitTest++/src/tests/TestTestMacros.cpp
++++ b/UnitTest++/src/tests/TestTestMacros.cpp
+@@ -131,7 +131,7 @@ TEST(FixturesWithThrowingCtorsAreFailures)
+ 
+ struct FixtureDtorThrows
+ {
+-	~FixtureDtorThrows() { throw "exception"; }
++	~FixtureDtorThrows() NOEXCEPT_FALSE { throw "exception"; }
+ };
+ 
+ TestList throwingFixtureTestList2;

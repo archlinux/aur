@@ -2,28 +2,39 @@
 
 pkgname=quickfix
 pkgver=1.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ Fix Engine Library"
 arch=("x86_64")
 url="http://www.quickfixengine.org/"
 license=('custom:The QuickFIX Software License, Version 1.0')
-depends=('gcc-libs')
-makedepends=('cmake' 'gcc')
+depends=('tbb' 'python')
+makedepends=('boost')
 conflicts=('quickfix-git')
-source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('1c4322a68704526ca3d1f213e7b0dcd30e067a8815be2a79b2ab1197ef70dcf7')
+source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz"
+        "unit_test.patch")
+sha256sums=('1c4322a68704526ca3d1f213e7b0dcd30e067a8815be2a79b2ab1197ef70dcf7'
+            '238110374f3082db505cd0574b67d20aeb23c36e76f68ea7b2e277d8e1b3cada')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  patch -p1 < ../unit_test.patch
+  ./bootstrap
+}
 
 build() {
-    mkdir $pkgname-$pkgver/build
-    cd $pkgname-$pkgver/build
-    cmake .. \
-            -DCMAKE_INSTALL_PREFIX=/usr
-    make
+  cd "$srcdir/$pkgname-$pkgver"
+  ./configure \
+                --prefix=/usr \
+                --with-boost=/usr \
+                --with-openssl=/usr \
+                --with-tbb=/usr \
+                --with-python3
+  make
 }
 
 package() {
-    cd $pkgname-$pkgver/build
-    make DESTDIR=$pkgdir install
-    install -dm755 $pkgdir/usr/share/licenses/quickfix
-    install -m755 ../LICENSE $pkgdir/usr/share/licenses/quickfix
+  cd "$srcdir/$pkgname-$pkgver"
+  make DESTDIR="$pkgdir" install
+  install -dm755 "$pkgdir/usr/share/licenses/quickfix"
+  install -m755 LICENSE "$pkgdir/usr/share/licenses/quickfix"
 } 
