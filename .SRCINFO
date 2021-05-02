@@ -1,13 +1,14 @@
 pkgbase = hornet-git
 	pkgdesc = HORNET is a powerful IOTA fullnode software
 	pkgver = 1.0.1.r0.gb185dbcf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gohornet/hornet
 	install = hornet.install
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	makedepends = git
+	conflicts = hornet-bin
 	backup = etc/hornet/config.json
 	backup = etc/hornet/config_as.json
 	backup = etc/hornet/config_chrysalis_testnet.json

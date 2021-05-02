@@ -4,12 +4,13 @@ _pkgname="hornet"
 _branch="main"
 _pkgver="1.0.1"
 pkgver="1.0.1.r0.gb185dbcf"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="HORNET is a powerful IOTA fullnode software"
 arch=('x86_64')
 url="https://github.com/gohornet/hornet"
 license=("Apache")
 depends=()
+conflicts=('hornet-bin')
 makedepends=('go' 'git')
 source=("git://github.com/gohornet/$_pkgname.git#branch=$_branch"
 	"$_pkgname.service")
