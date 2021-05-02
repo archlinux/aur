@@ -1,7 +1,7 @@
 pkgbase = grub-theme-zorin-bin
 	pkgdesc = GRand Unified Bootloader, version 2 (Zorin theme)
 	pkgver = 1.2.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://zorinos.com/
 	arch = any
 	license = GPL

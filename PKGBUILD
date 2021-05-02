@@ -6,7 +6,7 @@ pkgdesc="GRand Unified Bootloader, version 2 (Zorin theme)"
 
 deb_pkgver="1.2.1"
 pkgver="${deb_pkgver}"
-pkgrel="4"
+pkgrel="5"
 
 arch=('any')
 url="https://zorinos.com/"
@@ -34,6 +34,6 @@ prepare(){
 }
 
 package() {
-    cp -ar "${srcdir}/data/"* "${pkgdir}"
-    cp -a "${srcdir}/alter.png" "${pkgdir}/usr/share/grub/themes/zorin/icons/"
+    cp -arv "${srcdir}/data/"* "${pkgdir}"
+    cp -aLv "${srcdir}/alter.png" "${pkgdir}/usr/share/grub/themes/zorin/icons/"
 }
