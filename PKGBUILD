@@ -1,7 +1,7 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wlroots-hidpi-git
-pkgver=0.13.0.r61.gce30a221
+pkgver=0.13.0.r105.gd0c1f0c0
 pkgrel=1
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library, with XWayland HiDPI (git version)'
@@ -34,7 +34,7 @@ source=("${pkgname}::git+${url}"
         "xwayland_hidpi.diff::https://github.com/swaywm/wlroots/compare/master...MisterDA:xwayland_hidpi.diff"
        )
 sha512sums=('SKIP'
-            'a47b8fc69558ed4f6e4e45903cae7cba6877fc1358b7b381995cb0fe3c180084367013abda92fc6b91f1ff11b14aced0542e64be8ee006e54a7dfd6106c44628')
+            'eade099a5db472a3feb6617a03c588e04a980ee474211461bc5d69dcaf09493f6ce55498e649aadf5808a996e52abb24cc32d9107e8400bf93ea17d2f6ba1a2a')
 
 pkgver () {
 	cd "${pkgname}"
