@@ -2,14 +2,14 @@
 # shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=xemu
 pkgname=$_pkgname-git
-pkgver=0.5.0.r56.gf6d9a5abeb
+pkgver=0.5.1.r7096.g30042e8091
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
 url="https://xemu.app/"
 license=('GPL2')
-depends=('glu' 'gtk3' 'libsamplerate' 'sdl2')
-makedepends=('git' 'python')
+depends=('gtk3' 'libsamplerate' 'sdl2')
+makedepends=('git' 'glu' 'ninja' 'python')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+https://github.com/mborgerson/xemu.git")
