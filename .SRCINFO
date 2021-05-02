@@ -3,7 +3,7 @@ pkgbase = flightgear-data-git
 	pkgver = 2020.4.0r9837.d145a52ac
 	pkgrel = 1
 	url = https://home.flightgear.org
-	arch = x86_64
+	arch = any
 	license = GPL
 	makedepends = git
 	provides = flightgear-data=2020.4.0r9837.d145a52ac
