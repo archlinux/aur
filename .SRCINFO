@@ -1,0 +1,15 @@
+pkgbase = concurrent-queue
+	pkgdesc = A fast multi-producer, multi-consumer lock-free concurrent queue for C++11
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/cameron314/concurrentqueue
+	arch = i686
+	arch = x86_64
+	license = BSD
+	options = !libtool
+	options = !debug
+	source = https://github.com/cameron314/concurrentqueue/archive/refs/tags/v1.0.3.tar.gz
+	md5sums = 118e5bb661b567634647312991e10222
+
+pkgname = concurrent-queue
+
