@@ -11,9 +11,9 @@ post_install() {
 }
 
 post_upgrade() {
-    msg "Included are profiles for Firejail and profile-sync-daemon."
+    echo "Firejail profiles are now present in firejail-git."
     echo ""
-    msg "To use psd add firedragon to ~/.config/psd/psd.conf"
+    msg "To use profile-sync-daemon add firedragon to ~/.config/psd/psd.conf"
     echo ""
     msg "Enjoy the Firedragon 🔥🐉"
     echo ""
