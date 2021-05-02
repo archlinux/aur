@@ -1,5 +1,5 @@
 pkgbase = zettl-git
-	pkgdesc = A simple GTK font downloader
+	pkgdesc = A blazing fast note-taking system
 	pkgver = r9.9430608
 	pkgrel = 1
 	url = https://github.com/hedonhermdev/zettl
