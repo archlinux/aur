@@ -3,11 +3,14 @@ pkgbase = hla-bin
 	pkgver = 2.16
 	pkgrel = 1
 	url = https://www.plantation-productions.com/Webster/HighLevelAsm
+	install = hla-bin.install
 	arch = x86_64
 	arch = i686
-	license = GPL-2
+	license = custom: Creative Commons 4.0 (by/attribution)
+	makedepends = wget
+	provides = hla
+	conflicts = hla
 	source = https://www.plantation-productions.com/Webster/HighLevelAsm/HLAv2.16/linux.hla.tar.gz
 	sha256sums = 6c9a7773ed12a27d8ab4871e4b64544a56936db23c067230168f26178af2815c
 
 pkgname = hla-bin
-

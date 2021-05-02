@@ -1,0 +1,18 @@
+post_install() {
+   echo
+   echo -e "\e[1m\e[97m\e[44m====================================================================================>\e[0m "
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m "
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m \e[1mFinal steps you have to take:\e[0m"
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m   "
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m   Add required environment variables"
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m   "
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m   Add the following to your .bashrc/.zshrc file"
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m   (Yes, the variables needs to be lowercase)"
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m   "
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m      \e[47m\e[30 \'export PATH=\$PATH:/usr/bin/hla'\e[0m"
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m      \e[47m\e[30 \'export hlalib=/usr/bin/hla/hlalib'\e[0m"
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m      \e[47m\e[30 \'export hlainc=/usr/bin/hla/include'\e[0m"
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m   "
+   echo -e "\e[1m\e[97m\e[44m====================================================================================>\e[0m "
+   echo
+}
