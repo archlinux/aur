@@ -1,6 +1,6 @@
 pkgbase = av1an
 	pkgdesc = A cross-platform all-in-one tool for streamlining AV1 encoding
-	pkgver = 6.1.post2
+	pkgver = 6.1.post3
 	pkgrel = 1
 	url = https://github.com/master-of-zen/Av1an
 	arch = any
@@ -30,8 +30,8 @@ pkgbase = av1an
 	optdepends = vapoursynth-plugin-lsmashsource
 	provides = python-av1an
 	conflicts = python-av1an
-	source = av1an-6.1.post2.tar.gz::https://files.pythonhosted.org/packages/source/A/Av1an/Av1an-6.1.post2.tar.gz
-	sha256sums = 2b84b0450286ba941183ab5902c6527ebd767ff2a5563dd8c37bc189619249a7
+	source = av1an-6.1.post3.tar.gz::https://files.pythonhosted.org/packages/source/A/Av1an/Av1an-6.1.post3.tar.gz
+	sha256sums = ab06a4383a77ecb3bdef4b1d3604c9031943d6653fa5da28ccda23071eff9b4f
 
 pkgname = av1an
 
