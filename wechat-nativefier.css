@@ -26,7 +26,7 @@
 }
 
 .tab .tab_item:after {
-    border-right: 1px solid #00000000;
+    border-right: 1px solid #00000000 !important;
 }
 
 .web_wechat_screencut {
