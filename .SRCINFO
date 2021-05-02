@@ -1,0 +1,15 @@
+pkgbase = grub-theme-zorin-bin
+	pkgdesc = GRand Unified Bootloader, version 2 (Zorin theme)
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://zorinos.com/
+	arch = any
+	license = GPL
+	depends = grub
+	conflicts = grub-theme-zorin
+	conflicts = grub-theme-zorin-git
+	source = https://launchpad.net/~zorinos/+archive/ubuntu/stable/+files/grub-theme-zorin_1.2.1_all.deb
+	md5sums = SKIP
+
+pkgname = grub-theme-zorin-bin
+
