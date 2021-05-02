@@ -1,6 +1,6 @@
 pkgbase = salt-viewer
 	pkgdesc = Very simple (archived) image viewer
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/GuiltyCat/SaltViewer
 	arch = any
@@ -16,9 +16,10 @@ pkgbase = salt-viewer
 	depends = python-py7zr
 	depends = python-pdf2image
 	depends = python-rarfile
+	depends = python-pypdf3
 	optdepends = unarchiver: unrar alternative
 	optdepends = libarchive: unar alternative
-	source = https://github.com/GuiltyCat/SaltViewer/archive/refs/tags/v0.1.3.tar.gz
+	source = https://github.com/GuiltyCat/SaltViewer/archive/refs/tags/v0.1.4.tar.gz
 	md5sums = SKIP
 
 pkgname = salt-viewer

@@ -1,12 +1,12 @@
 # Maintainer: GuiltyCat <guiltycat.icloud AT icloud DOT com
 pkgname=salt-viewer
-pkgver=0.1.3
+pkgver=0.1.4
 pkgdesc="Very simple (archived) image viewer"
 pkgrel=1
 arch=("any")
 url="https://github.com/GuiltyCat/SaltViewer"
 license=("GPL")
-depends=("python" "unrar" "poppler" "python-pillow"  "python-send2trash" "python-cairosvg" "python-natsort" "python-py7zr" "python-pdf2image" "python-rarfile")
+depends=("python" "unrar" "poppler" "python-pillow"  "python-send2trash" "python-cairosvg" "python-natsort" "python-py7zr" "python-pdf2image" "python-rarfile" "python-pypdf3")
 makedepends=("python-setuptools")
 md5sums=('SKIP')
 
