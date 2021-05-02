@@ -1,27 +1,36 @@
-# Maintainer: lmartinez-mirror
+# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 # Contributor: desbma
+
 pkgname=zoxide-bin
 _pkgname=zoxide
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc='A fast cd command that learns your habits (binary release)'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/ajeetdsouza/zoxide"
 license=('MIT')
 depends=('gcc-libs')
-provides=('zoxide')
-conflicts=('zoxide')
-source_x86_64=("${_pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu")
-source_armv7h=("${_pkgname}-${pkgver}-armv7h::${url}/releases/download/v${pkgver}/${_pkgname}-armv7-unknown-linux-gnueabihf")
-source_aarch64=("${_pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/${_pkgname}-aarch64-unknown-linux-gnu")
-source=("https://raw.githubusercontent.com/ajeetdsouza/${_pkgname}/v${pkgver}/LICENSE")
-sha512sums=('abf8fa83fc3e17f92046611974d837029da055eb53d5d17ac0453e6edef27ed172416376751be76833a2a54d28e1d173bb82635ff62ba51ebcca3733d51600c3')
-sha512sums_x86_64=('c45938296b8737581bd31098658f41290735c77761a089aaf763f466d439911a3d623cd46c32513bde06deb8e92ff003d127928f8b1bcca684910296a81d07b8')
-sha512sums_armv7h=('79a128a06f16507b915c6c60d9457220f265d6935ded48090d8514e88fdf9c4a805ffbcfd4a4e67b44bca68f7e418171c5a8c49babbaf5a1fbcab690892d23bc')
-sha512sums_aarch64=('34017ce904c84f322ec7827422105500536d396bde73f245551819683137a3754c7b670830047a8c9efb14c70e933a82dd04c0d2450a98181bce7d69b2f582c8')
-options=(strip)
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-x86_64-unknown-linux-musl.tar.gz")
+source_armv7h=("$_pkgname-$pkgver-armv7h.tar.gz::$url/releases/download/v$pkgver/$_pkgname-armv7-unknown-linux-musleabihf.tar.gz")
+source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-aarch64-unknown-linux-musl.tar.gz")
+sha512sums_x86_64=('fbe1d24f1996575836552243ecc27734fca31e04aeb7ba31a9e17bdc3c0cfa7754cde4f361e4ef3e9e5fa568ff9c8d4411b58a4dae4e5df9a9c30fab04e9e9c7')
+sha512sums_armv7h=('157ee53127e3a6d06a6ee6b8816bfaee588a48e7b87e6db1df8f6361918f5a538c6429ec6de8f472926fdb409add10b8917325e86cbf1d0bd5492b3a7fe548e3')
+sha512sums_aarch64=('97dfe8909e473130339138ccd1f3ac80965bd9f5f86b27b1c3c55f13ba72992da08df81978d4e52314527a2c961bd494cc0a7abbff9df8198b72c9836931c239')
+
+prepare() {
+  if [[ "$CARCH" == 'armv7h' ]]
+  then
+    test -d "$_pkgname-armv7-unknown-linux-musleabihf" || mv "$_pkgname-armv7-unknown-linux-musleabihf" "$_pkgname-$CARCH-unknown-linux-musl"
+  fi
+}
 
 package() {
-  install -Dm 755 "${_pkgname}-$pkgver-${CARCH}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "$_pkgname-$CARCH-unknown-linux-musl"
+  install -Dm 755 zoxide -t "$pkgdir/usr/bin/"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  find man \
+    -type f -exec install -Dm 644 '{}' -t "$pkgdir/usr/share/man/man1/" \;
 }

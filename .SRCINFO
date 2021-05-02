@@ -1,7 +1,7 @@
 pkgbase = zoxide-bin
 	pkgdesc = A fast cd command that learns your habits (binary release)
-	pkgver = 0.6.0
-	pkgrel = 2
+	pkgver = 0.7.0
+	pkgrel = 1
 	url = https://github.com/ajeetdsouza/zoxide
 	arch = x86_64
 	arch = armv7h
@@ -10,15 +10,12 @@ pkgbase = zoxide-bin
 	depends = gcc-libs
 	provides = zoxide
 	conflicts = zoxide
-	options = strip
-	source = https://raw.githubusercontent.com/ajeetdsouza/zoxide/v0.6.0/LICENSE
-	sha512sums = abf8fa83fc3e17f92046611974d837029da055eb53d5d17ac0453e6edef27ed172416376751be76833a2a54d28e1d173bb82635ff62ba51ebcca3733d51600c3
-	source_x86_64 = zoxide-0.6.0-x86_64::https://github.com/ajeetdsouza/zoxide/releases/download/v0.6.0/zoxide-x86_64-unknown-linux-gnu
-	sha512sums_x86_64 = c45938296b8737581bd31098658f41290735c77761a089aaf763f466d439911a3d623cd46c32513bde06deb8e92ff003d127928f8b1bcca684910296a81d07b8
-	source_armv7h = zoxide-0.6.0-armv7h::https://github.com/ajeetdsouza/zoxide/releases/download/v0.6.0/zoxide-armv7-unknown-linux-gnueabihf
-	sha512sums_armv7h = 79a128a06f16507b915c6c60d9457220f265d6935ded48090d8514e88fdf9c4a805ffbcfd4a4e67b44bca68f7e418171c5a8c49babbaf5a1fbcab690892d23bc
-	source_aarch64 = zoxide-0.6.0-aarch64::https://github.com/ajeetdsouza/zoxide/releases/download/v0.6.0/zoxide-aarch64-unknown-linux-gnu
-	sha512sums_aarch64 = 34017ce904c84f322ec7827422105500536d396bde73f245551819683137a3754c7b670830047a8c9efb14c70e933a82dd04c0d2450a98181bce7d69b2f582c8
+	source_x86_64 = zoxide-0.7.0-x86_64.tar.gz::https://github.com/ajeetdsouza/zoxide/releases/download/v0.7.0/zoxide-x86_64-unknown-linux-musl.tar.gz
+	sha512sums_x86_64 = fbe1d24f1996575836552243ecc27734fca31e04aeb7ba31a9e17bdc3c0cfa7754cde4f361e4ef3e9e5fa568ff9c8d4411b58a4dae4e5df9a9c30fab04e9e9c7
+	source_armv7h = zoxide-0.7.0-armv7h.tar.gz::https://github.com/ajeetdsouza/zoxide/releases/download/v0.7.0/zoxide-armv7-unknown-linux-musleabihf.tar.gz
+	sha512sums_armv7h = 157ee53127e3a6d06a6ee6b8816bfaee588a48e7b87e6db1df8f6361918f5a538c6429ec6de8f472926fdb409add10b8917325e86cbf1d0bd5492b3a7fe548e3
+	source_aarch64 = zoxide-0.7.0-aarch64.tar.gz::https://github.com/ajeetdsouza/zoxide/releases/download/v0.7.0/zoxide-aarch64-unknown-linux-musl.tar.gz
+	sha512sums_aarch64 = 97dfe8909e473130339138ccd1f3ac80965bd9f5f86b27b1c3c55f13ba72992da08df81978d4e52314527a2c961bd494cc0a7abbff9df8198b72c9836931c239
 
 pkgname = zoxide-bin
 
