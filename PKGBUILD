@@ -36,15 +36,14 @@ _neovim="$NEOVIM_YOUCOMPLETEME"
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=vim-youcompleteme-git
-pkgver=r2791.a3d02238
+pkgver=r2807.ee7f9b64
 pkgrel=1
 pkgdesc='A code-completion engine for Vim'
 arch=('x86_64')
 url='https://ycm-core.github.io/YouCompleteMe/'
 license=('GPL3')
 groups=('vim-plugins')
-depends=('vim' 'python>=3.6' 'python-watchdog' 'python-requests' 'python-requests-futures'
-  'python-bottle' 'clang>=11.0')
+depends=('vim' 'python>=3.6' 'python-watchdog' 'python-bottle' 'clang>=11.0')
 makedepends=('git' 'cmake' 'pybind11')
 optdepends=(
   'gopls: Go semantic completion'
