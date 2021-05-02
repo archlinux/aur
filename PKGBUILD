@@ -2,7 +2,7 @@
 
 pkgname='zwcad-bin'
 _pkgname='zwcad'
-pkgver=2021.0.2884
+pkgver=2021.1.4523
 _year=$(echo $pkgver | cut -d '.' -f1)
 pkgrel=1
 pkgdesc="ZWSOFT研发的二维CAD软件，可满足看图、审图、打印工作需要"
@@ -11,11 +11,11 @@ license=('unknown')
 url="https://www.zwcad.com"
 provides=("zwcad")
 options=('!strip')
-source_x86_64=("${pkgname}-${pkgver}.deb::http://download.zwcad.com/zwcad/cad_linux/${_year}/deb/x64/zwcad_${pkgver}-1_zh-cn_amd64.deb")
-sha512sums_x86_64=('1b2324eb487982e7b929f0cd2abd8ba14e3e6c2c7a89e5e554456d40d3a68608f125bf291dcb24803b9480b16ecb6f18952913b21bde50a4922aa88cc69eff76')
+source_x86_64=("${pkgname}-${pkgver}-${arch}.deb::https://download.zwcad.com/zwcad/cad_linux/${_year}/${pkgver:7}/zwcad_${pkgver}-1_zh-cn_amd64.deb")
+sha512sums_x86_64=('1b7a70252c2718bc0d3f93ddc2fda561d8c593c64c9375ef5f20ad6cc2cd36370c9740c60d9715e0df0c37160a12a4ecdc7717ca51d71a058ce48521800a3cfa')
+sha512sums_aarch64=('9845fcc430883a7586c04c68ab929ca1e71cd68a7e616ae24c1cd269f5231023efb3750a49c5d90739daca53f3d80a950f25057b9512246e32f8868d075d9c65')
 
-source_aarch64=("${pkgname}-${pkgver}.deb::http://download.zwcad.com/zwcad/cad_linux/${_year}/deb/arm/zwcad_${pkgver}-1_zh-cn_arm64.deb")
-sha512sums_aarch64=('b7333ed86e9e6e9bb8966116dc3ead34915b427050cd81b83184f789e6e041d5aca57d410d378962a71d07c0eece26e336ad729741e0eeafd45a1294faa8d6c5')
+source_aarch64=("${pkgname}-${pkgver}-${arch}.deb::https://download.zwcad.com/zwcad/cad_linux/${_year}/${pkgver:7}/zwcad_${pkgver}-1_zh-cn_arm64.deb")
 
 prepare(){
     cd $srcdir
