@@ -1,0 +1,33 @@
+pkgbase = minivmac-beta
+	pkgdesc = a miniature early Macintosh emulator
+	pkgver = 37.03
+	pkgrel = 1
+	url = https://www.gryphel.com/c/minivmac/
+	arch = x86_64
+	license = GPL2
+	depends = bash
+	depends = libx11
+	depends = sdl
+	source = minivmac-beta-37.03.tgz::https://www.gryphel.com/d/minivmac/minivmac-37.03/minivmac-37.03.src.tgz
+	source = blanks-1.1.zip::https://www.gryphel.com/d/minivmac/extras/blanks/blanks-1.1.zip
+	source = clipin-1.1.0.zip::https://www.gryphel.com/d/minivmac/extras/clipin/clipin-1.1.0.zip
+	source = clipout-1.1.0.zip::https://www.gryphel.com/d/minivmac/extras/clipout/clipout-1.1.0.zip
+	source = dafkey-1.1.0b.zip::https://www.gryphel.com/d/minivmac/extras/dafkey/dafkey-1.0.0b.zip
+	source = exportfl-1.3.1.zip::https://www.gryphel.com/d/minivmac/extras/exportfl/exportfl-1.3.1.zip
+	source = exportps-1.0.0.zip::https://www.gryphel.com/d/minivmac/extras/exportps/exportps-1.0.0.zip
+	source = minivmac.man::https://raw.githubusercontent.com/ajacocks/minivmac-aur/beta/minivmac.man
+	source = minivmac.sh::https://raw.githubusercontent.com/ajacocks/minivmac-aur/beta/minivmac.sh
+	source = importfl-1.2.2.zip::https://www.gryphel.com/d/minivmac/extras/importfl/importfl-1.2.2.zip
+	sha256sums = 5f840fa5943dae6dcb6c0d81d1d78381795b89de1efea33e9d819d0a676d1ac7
+	sha256sums = 3c3040148c0e128a8402ac0fa3494098b0dee7df7bd06b26e9196c5dd1addff3
+	sha256sums = ef4912e9d10471ddfc1e4976ccf98d0bf76e9ef5ad2f8748c548d44714127223
+	sha256sums = 29c5e3c2604f9e6e9dcaf48cc716c17f8a89333fcf37770878c40382b62c4d92
+	sha256sums = bb1b62edbb0729d09db49026ca8108c4a610e2b1d219f7c5644b7f66501c98b8
+	sha256sums = aa263b994e15eea8ccbef05c04d40ad6a968f68a87a6a496d00671e75937a17e
+	sha256sums = 633a531500854af6e899ab6501fdf6b0060f6100bba726421aa6f37a860f6f7b
+	sha256sums = f3d913c3a039f394c04c255f100f91541b4885f7f48d87c0373356806027dca3
+	sha256sums = 616becb7fc17719d6d0d43965014b92793be6bdb821e1e0def56d7cb033acd9b
+	sha256sums = bd6e70489d9bac12d9012634f4f5ae51f30a2c5d647fe3b2b071ff1b5a649419
+
+pkgname = minivmac-beta
+

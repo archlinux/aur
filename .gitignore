@@ -1,0 +1,9 @@
+*.man
+*.sh
+*.tgz
+*.zip
+*.zst
+pkg
+pkg/**
+src
+src/**
