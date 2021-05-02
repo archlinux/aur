@@ -2,40 +2,27 @@
 
 set -e
 
-printf "\n\n Buildscript for the distribution independed installer of"
-printf " EVE Online Launcher Setup (Lite)\n\n"
+printf "\n\n Build installer for EVE Online Setup (Lite Version)\n\n"
 
 version=$(grep ^pkgver PKGBUILD | cut -d= -f2) || exit 1
 release=$(grep ^pkgrel PKGBUILD | cut -d= -f2) || exit 1
 arch=$(uname -m)
 
-dvver=$(grep doitsujin PKGBUILD | cut -d\" -f2 | sed 's,.*-,,;s,.tar.*,,' )
-dvcsum=""
-elcsum=""
-mscsum="ca66a6113ce98152b85c8d847949f8c90ab9ba798e106bfc225d4ed3c2e2e3e2"
-rcsum=""
+csum() {
+	sha=$(grep -n ^sha256sum PKGBUILD | cut -d: -f1)
+	src=$(grep -n ^source PKGBUILD | cut -d: -f1)
+	sln=$(grep -n $1\" PKGBUILD | cut -d: -f1)
+	ofs=$(expr $sln - $src)
+	cln=$(expr $sha + $ofs)
+	printf $(tail -n+$cln PKGBUILD | head -n1 | tr -cd '[:alnum:]')
+}
 
-pshal=$(grep -n ^sha256sum PKGBUILD | cut -d: -f1)
-psrcl=$(grep -n ^source PKGBUILD | cut -d: -f1)
-pdvsl=$(grep -n dxvk-$dvver.tar.gz\" PKGBUILD | cut -d: -f1)
-pelsl=$(grep -n evelauncher-\${pkgver}.tar.gz\" PKGBUILD | cut -d: -f1)
-pdfsl=$(expr $pdvsl - $psrcl)
-pofsl=$(expr $pelsl - $psrcl)
-pdvcs=$(expr $pshal + $pdfsl)
-pelcs=$(expr $pshal + $pofsl)
+dvver=$(grep doitsujin PKGBUILD | sed 's,.*-,,;s,.tar.*,,' )
+msver=$(grep makeself PKGBUILD | sed 's,.*-,,;s,.run.*,,' )
 
-plc=1
-while read pline ;do
-	if [ $plc -eq $pdvcs ] ;then
-		dvcsum=${pline#*\'}
-		dvcsum=${dvcsum%%\'*}
-	fi
-	if [ $plc -eq $pelcs ] ;then
-		elcsum=${pline#*\'}
-		elcsum=${elcsum%%\'*}
-	fi
-	plc=$(expr $plc + 1)
-done < PKGBUILD
+dvcsum=$(csum dxvk-$dvver.tar.gz)
+elcsum=$(csum evelauncher-\${pkgver}.tar.gz)
+mscsum=$(csum makeself-$msver.run)
 
 if [ ! -x "$(which curl 2>/dev/null)" ] ;then
 	printf "\nError: Curl not found. Curl are needed for downloading makeself build tool."
@@ -44,13 +31,13 @@ if [ ! -x "$(which curl 2>/dev/null)" ] ;then
 	exit 0
 fi
 
-if [ ! -f "./makeself-2.4.0.run" ] ;then
+if [ ! -f "./makeself-$msver.run" ] ;then
 	printf "\nGet makeself...\n\n"
-	curl -L -O https://github.com/megastep/makeself/releases/download/release-2.4.0/makeself-2.4.0.run
+	curl -L -O https://github.com/megastep/makeself/releases/download/release-$msver/makeself-$msver.run
 fi
-rcsum="$(sha256sum ./makeself-2.4.0.run | cut -d' ' -f1)"
+rcsum="$(sha256sum ./makeself-$msver.run | cut -d' ' -f1)"
 if [ "$rcsum" != "$mscsum" ] ;then
-	printf "\n\nError: Checksum makeself-2.4.0.run mismatch!"
+	printf "\n\nError: Checksum makeself-$msver.run mismatch!"
 	printf "\nLeaving.\n\n"
 	exit 0
 fi
@@ -79,9 +66,9 @@ fi
 printf "\nCreate clean build environment..."
 if [ -d src/ ] ;then rm -rf src/* ;else mkdir src/ ;fi
 
-chmod a+x ./makeself-2.4.0.run
-./makeself-2.4.0.run --tar x ./makeself.sh ./makeself-header.sh 2>/dev/null
-chmod a-x ./makeself-2.4.0.run
+chmod a+x ./makeself-$msver.run
+./makeself-$msver.run --tar x ./makeself.sh ./makeself-header.sh 2>/dev/null
+chmod a-x ./makeself-$msver.run
 mv ./makeself.sh ./makeself-header.sh src/
 
 cd src/

@@ -13,5 +13,4 @@ if [ "x$WINETRICKS" = "x"  ] ;then
 	exit 1
 fi
 
-env WINEPREFIX=$WINEPREFIX \
-	WINE=$WINEPATH/wine $WINETRICKS "$@"
+env WINEPREFIX=$WINEPREFIX WINE=$WINEPATH/wine $WINETRICKS "$@"

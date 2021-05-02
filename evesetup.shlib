@@ -36,6 +36,7 @@ check_env() {
 SharedCacheFolder=$EVEDIR/SharedCache/
 UseCustomWine=true
 CustomWinePath=$WINEPATH/wine
+LauncherRunClientsWithDx9=false
 EOF
 		mkdir -p $EVEDIR/SharedCache
 		if [ -d "$SHAREDIR/ResFiles/" ] ;then
@@ -47,7 +48,7 @@ EOF
 }
 
 check_steam() {
-	if [ ! -r "$LAUNCHER/steam_appid.txt" -a -x "$(which steam)" ] ;then
+	if [ ! -r "$LAUNCHER/steam_appid.txt" -a -x "$(which steam 2>/dev/null)" ] ;then
 		echo "8500" >$LAUNCHER/steam_appid.txt
 	fi
 }
@@ -85,14 +86,8 @@ check_wine() {
 				rm $W32SYSDIR/$DXVKFILE.dll* || true
 				sed -i /\"$DXVKFILE\"=\"/d $WINEPREFIX/user.reg || true
 			done
-			env WINEPREFIX=$WINEPREFIX \
-				WINEDEBUG=-all \
-				WINEDLLOVERRIDES="mscoree,mshtml=d" \
-				$WINE wineboot
-			env WINEPREFIX=$WINEPREFIX \
-				$WINE reg add \
-				'HKCU\Software\Wine\FileOpenAssociations' \
-				/v Enable /d N /f >/dev/null
+			env WINEPREFIX=$WINEPREFIX WINEDEBUG=-all WINEDLLOVERRIDES="mscoree,mshtml=d" $WINE wineboot
+			env WINEPREFIX=$WINEPREFIX $WINE reg add 'HKCU\Software\Wine\FileOpenAssociations' /v Enable /d N /f >/dev/null
 		fi
 		if [ -d "$DXVKLIBDIR" ] ;then
 			DXVKARC=$(getdate $DXVKLIBDIR/x64/d3d10core.dll)
@@ -103,18 +98,12 @@ check_wine() {
 					if [ -d "$W32SYSDIR" ] ;then
 						cp --preserve=timestamps $DXVKLIBDIR/x32/$DXVKFILE.dll $W32SYSDIR/$DXVKFILE.dll
 					fi
-					env WINEPREFIX=$WINEPREFIX \
-						$WINE reg add \
-						'HKCU\Software\Wine\DllOverrides' \
-						/v $DXVKFILE /d native /f >/dev/null
+					env WINEPREFIX=$WINEPREFIX $WINE reg add 'HKCU\Software\Wine\DllOverrides' /v $DXVKFILE /d native /f >/dev/null
 				done
 			fi
 		fi
 		if [ "$(grep -csw winemenubuilder $WINEPREFIX/system.reg)" != "0" ] ;then
-			env WINEPREFIX=$WINEPREFIX \
-				$WINE reg delete \
-				'HKLM\Software\Microsoft\Windows\CurrentVersion\RunServices' \
-				/v winemenubuilder /f >/dev/null
+			env WINEPREFIX=$WINEPREFIX $WINE reg delete 'HKLM\Software\Microsoft\Windows\CurrentVersion\RunServices' /v winemenubuilder /f >/dev/null
 		fi
 	fi
 }

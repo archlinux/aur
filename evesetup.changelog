@@ -1,1 +1,6 @@
-Temporary fix to terminate hanging evelauncher binary in all setup variants added.
+In build scripts checksum routine added and minor changes.
+Enabled DX11 mode as default in evesetup.shlib in eve environment function.
+
+
+
+
