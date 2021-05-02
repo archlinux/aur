@@ -189,8 +189,6 @@ build() {
   # -fcf-protection breaks some third_party libraries
   CFLAGS=${CFLAGS/-fcf-protection}
   CXXFLAGS="$CFLAGS"
-  #CFLAGS=$(printf '%s\n' "${CFLAGS//-fcf-protection/}")
-  #CXXFLAGS="$CFLAGS"
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
   CFLAGS+='   -Wno-builtin-macro-redefined'
