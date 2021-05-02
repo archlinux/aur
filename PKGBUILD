@@ -6,7 +6,7 @@ pkgdesc="GRand Unified Bootloader, version 2 (Zorin theme)"
 
 deb_pkgver="1.2.1"
 pkgver="${deb_pkgver}"
-pkgrel="1"
+pkgrel="2"
 
 arch=('any')
 url="https://zorinos.com/"
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 prepare(){
     while read -r pkg; do
-        dir="$(echo "${pkg}" | cut -d "." -f 1)"
+        dir="${srcdir}/$(echo "${pkg}" | cut -d "." -f 1)"
         mkdir -p "${dir}"
         tar -x -v -f "${pkg}" -C "${dir}"
     done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -name "*.tar*" -printf "%p\n")
