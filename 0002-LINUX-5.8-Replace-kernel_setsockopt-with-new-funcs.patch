@@ -1,7 +1,7 @@
 From 509169ed302741e2499fbb116ed08408c08d3999 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Fri, 3 Jul 2020 10:33:51 -0600
-Subject: [PATCH 2/8] LINUX 5.8: Replace kernel_setsockopt with new funcs
+Subject: [PATCH 02/11] LINUX 5.8: Replace kernel_setsockopt with new funcs
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -155,5 +155,5 @@ index 9fbb563f3..50607c8f5 100644
      return (osi_socket *)sockp;
  }
 -- 
-2.30.1
+2.31.1
 

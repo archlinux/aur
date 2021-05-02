@@ -1,7 +1,7 @@
 From ac4debb46bc0b95ff2f98d416703bc8df60b8415 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Fri, 22 May 2020 12:16:48 -0600
-Subject: [PATCH 1/8] Avoid duplicate definitions of globals
+Subject: [PATCH 01/11] Avoid duplicate definitions of globals
 
 GCC 10 changed a default flag from -fcommon to -fno-common.  See
 https://gcc.gnu.org/bugzilla/show_bug.cgi?id=85678 for some background.
@@ -349,5 +349,5 @@ index 853c2121e..d58ecf014 100644
  	    printf("[%s] Returned from LWP_WaitProcess()\n", rn);
  	if (waitCode) {
 -- 
-2.30.1
+2.31.1
 
