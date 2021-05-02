@@ -3,17 +3,17 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=gtkdatabox
-pkgver=0.9.3.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="widget for the Gtk+ library designed to display large amounts of numerical data"
 arch=(x86_64)
 url="http://sourceforge.net/projects/gtkdatabox/"
 license=("LGPL")
-depends=('gtk2' 'libglade')
-makedepends=('gtk-doc')
+depends=('gtk3')
+makedepends=('gtk-doc' 'dblatex')
 options=('docs')
-source=(http://downloads.sourceforge.net/project/gtkdatabox/gtkdatabox/$pkgver/gtkdatabox-$pkgver.tar.gz)
-md5sums=('46c64813080a06a9a3111e283c62e4f2')
+source=(http://downloads.sourceforge.net/project/gtkdatabox/gtkdatabox-1/gtkdatabox-$pkgver.tar.gz)
+sha256sums=('8bee70206494a422ecfec9a88d32d914c50bb7a0c0e8fedc4512f5154aa9d3e3')
 
 build() {
   cd "$srcdir"/gtkdatabox-$pkgver
@@ -30,3 +30,4 @@ package() {
   cd "$srcdir"/gtkdatabox-$pkgver
   make DESTDIR="$pkgdir" install
 }
+
