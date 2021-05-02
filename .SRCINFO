@@ -1,7 +1,7 @@
 pkgbase = vim-m3u
 	pkgdesc = Syntax description file for m3u file format in vim/neovim
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FauveNoir/vim-m3u-syntax
 	arch = any
 	groups = vim-plugins

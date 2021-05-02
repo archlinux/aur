@@ -2,7 +2,7 @@
 _pkgname=vim-m3u-syntax
 pkgname=vim-m3u
 pkgver=1
-pkgrel=1
+pkgrel=2
 groups=('vim-plugins' 'neovim-plugins')
 pkgdesc="Syntax description file for m3u file format in vim/neovim"
 arch=('any')
@@ -25,6 +25,6 @@ package() {
   install -dm 755 "$pkgdir/usr/share/vim/vimfiles/syntax" \
                   "$pkgdir/usr/share/vim/vimfiles/ftdetect"
 # Neovim can load plugin directory vim's
-  install -Dm 755 "$srcdir/$_pkgname/m3u.vim" "$pkgdir/usr/share/vim/vimfiles/syntax/"
-  install -Dm 755 "$srcdir/m3u.vim" "$pkgdir/usr/share/vim/vimfiles/ftdetect"
+  install -Dm 644 "$srcdir/$_pkgname/m3u.vim" "$pkgdir/usr/share/vim/vimfiles/syntax/"
+  install -Dm 644 "$srcdir/m3u.vim" "$pkgdir/usr/share/vim/vimfiles/ftdetect"
 }
