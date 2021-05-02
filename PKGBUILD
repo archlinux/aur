@@ -1,4 +1,5 @@
-# Maintainer: Yeqin Su <hougelangley1987@gmail.com>
+# Maintainer: zhullyb <zhullyb@outlook.com>
+# Contributor: Yeqin Su <hougelangley1987@gmail.com>
 # Contributor: Torge Matthies <openglfreak at googlemail dot com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Yoshi2889 <rick.2889 at gmail dot com>
@@ -63,7 +64,7 @@ pkgbase=linux-xanmod-cacule-uksm-cjktty
 pkgver=5.12.0
 _major=5.12
 _branch=5.x
-xanmod=1
+xanmod=2
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod. Branch with Cacule scheduler by Hamad Marri'
 url="http://www.xanmod.org/"
@@ -77,7 +78,7 @@ options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
-        "https://github.com/HougeLangley/customkernel/releases/download/v5.12-patch/patch-${pkgver}-xanmod1-cacule"
+        "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}-cacule/patch-${pkgver}-xanmod${xanmod}-cacule.xz"
         choose-gcc-optimization.sh
         'sphinx-workaround.patch'
         '0002-UKSM.patch'
@@ -95,8 +96,8 @@ for _patch in $_commits; do
 done
 
 sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
+            '39045607567d69f84424b224e4fa6bf8f97a21a06ac9d6396acab16a18c4bcd3'
             'SKIP'
-            '6fd7f3bc041577614474eb67d1efef1b3e5151457b3caacbf2591d42513c81da'
             'e840e41f0f91108f63fd6e085c93b02daa78729268bc31be7be7fb355203e38a'
             '74339b8ad0ad99f08606c5de0dd3c38f502e29e5c6a78d6efbe656662edb8d73'
             'f00a84fd382d63cd0d47d6fd8ef6c8608b1c83ff9d6dbdd32cb985898afbbf58'
@@ -111,7 +112,7 @@ prepare() {
   cd linux-${_major}
 
   # Apply Xanmod patch
-  patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}-cacule
+  xz -d < ../patch-${pkgver}-xanmod${xanmod}-cacule.xz | patch -Np1
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
