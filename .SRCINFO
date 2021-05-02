@@ -1,12 +1,12 @@
 pkgbase = purescript-language-server-bin
 	pkgdesc = Node-based Language Server Protocol server for PureScript.
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nwolverson/purescript-language-server
 	arch = any
 	license = MIT
+	makedepends = npm
 	depends = nodejs
-	depends = npm
 	noextract = purescript-language-server-0.15.0.tgz
 	source = https://registry.npmjs.org/purescript-language-server/-/purescript-language-server-0.15.0.tgz
 	sha256sums = 03f1cf97ebfc5dfe5c3de3887cac83d99e4b73379aaa49953b8b853b56eeb033
