@@ -1,19 +1,18 @@
 pkgbase = ncnn
 	pkgdesc = High-performance neural network inference framework optimized for the mobile platform
-	pkgver = 20210124
+	pkgver = 20210322
 	pkgrel = 1
 	url = https://github.com/Tencent/ncnn
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = git
 	makedepends = cmake
-	makedepends = glslang
+	makedepends = glslang-git
 	makedepends = vulkan-headers
 	makedepends = vulkan-icd-loader
 	conflicts = ncnn-git
-	source = ncnn-20210124.tar.gz::https://github.com/Tencent/ncnn/archive/20210124.tar.gz
-	sha256sums = ca9d74efe0a4bccfed5f14953e096936a70a97f0ce2ad80d187c849635459d76
+	source = ncnn-20210322.tar.gz::https://github.com/Tencent/ncnn/archive/20210322.tar.gz
+	sha256sums = cb812a3ae1c70335fd775ff6db3027afd264751a2259604535f53d94c8a37233
 
 pkgname = ncnn
 
