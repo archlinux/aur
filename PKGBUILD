@@ -1,8 +1,8 @@
 # Maintainer: Romain GERARD <erebe@erebe.eu>
 
 pkgname=rofi-greenclip
-pkgver=3.4
-pkgrel=5
+pkgver=4.0
+pkgrel=0
 pkgdesc="Clipboard manager to use with rofi - Image support and blacklist"
 arch=('x86_64')
 url="https://github.com/erebe/greenclip"
@@ -18,10 +18,10 @@ conflicts=("rofi-greenclip-beta")
 replaces=("rofi-greenclip-beta")
 backup=()
 options=('!strip')
-source=("https://github.com/erebe/greenclip/releases/download/3.4/greenclip"
+source=("https://github.com/erebe/greenclip/releases/download/4.0/greenclip"
         "greenclip.service")
 noextract=()
-sha256sums=('6b3d5804be52cd477c8cc1c86f20fcaeb5ba55c89f72f5a690e84d6998dc6583'
+sha256sums=('7ea27bec008d3c55bd85f1130e13c8072dbca7c84461b08fc2fbb1cd266fc6fb'
             '85ecca9b6f5903ee53615c09802efd389662ddba7ce1febe34302a6a1d87179e')
 
 package() {
