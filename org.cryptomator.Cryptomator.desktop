@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Cryptomator
+Comment=Cloud Storage Encryption Utility
+Exec=/usr/bin/cryptomator
+Icon=org.cryptomator.Cryptomator
+Terminal=false
+Type=Application
+Categories=Utility;Security;FileTools;
+MimeType=application/x-vnd.cryptomator-vault-metadata
+StartupWMClass=org-cryptomator-launcher-Cryptomator
