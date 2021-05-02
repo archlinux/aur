@@ -1,0 +1,40 @@
+pkgbase = taiwins
+	pkgdesc = Tiling and floating wayland window manager focused on speed and size
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://taiwins.org
+	arch = x86_64
+	license = GPL2
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	makedepends = wayland-protocols>=1.18
+	depends = glibc
+	depends = wayland>=1.17
+	depends = libxkbcommon
+	depends = libinput
+	depends = pixman>=0.25.0
+	depends = libdrm>=2.4.68
+	depends = pam
+	depends = systemd-libs
+	depends = dbus
+	depends = lua>=5.3.0
+	depends = libxcursor
+	depends = cairo
+	depends = fontconfig
+	depends = freetype2
+	depends = librsvg
+	depends = libgl
+	depends = libegl
+	depends = libgles
+	provides = taiwins
+	conflicts = taiwins
+	conflicts = taiwins-git
+	source = https://github.com/taiwins/taiwins/releases/download/v0.3/taiwins-0.3.tar.gz
+	source = https://github.com/taiwins/taiwins/releases/download/v0.3/taiwins-0.3.tar.gz.sig
+	validpgpkeys = A9C874AAE5654786A694114A041BB7CB35A212C3
+	md5sums = 1f55d0ee7cacb6cc18905c2df17a343a
+	md5sums = SKIP
+
+pkgname = taiwins
+
