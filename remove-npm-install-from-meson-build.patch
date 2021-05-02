@@ -1,0 +1,13 @@
+diff --git a/meson.build b/meson.build
+index 3928f9c2..e2be180f 100644
+--- a/meson.build
++++ b/meson.build
+@@ -27,9 +27,6 @@ if sass.found()
+ endif
+
+ if not sass.found() or sass_is_ruby_sass or not sass_has_module_system
+-  message('dart-sass >= 1.23.0 not found, installing it locally via npm')
+-  npm = find_program('npm')
+-  run_command(npm, 'install')
+   sass = find_program('./node_modules/.bin/sass')
+ endif
