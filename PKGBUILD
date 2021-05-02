@@ -16,7 +16,8 @@ optdepends=('qt5-base: qmake build system for projects'
             'qtcreator: IDE for projects'
             'codelite: IDE for projects'
             'kdevelop: IDE for projects'
-            'clion: IDE for projects')
+            'clion: IDE for projects'
+	    'ccache: cache compilations')
 license=(custom:UnrealEngine)
 source=(com.unrealengine.UE4Editor.desktop
 	clang_11.patch
