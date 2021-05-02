@@ -9,7 +9,7 @@
 
 _pkgname='gitea'
 pkgname=gitea-git
-pkgver=v1.14.0_dev_445_gc236fe2f10
+pkgver=v1.15.0_dev_211_g0590176a23
 pkgrel=1
 pkgdesc='Painless self-hosted Git service. Community managed fork of Gogs.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -36,7 +36,7 @@ sha512sums=('SKIP'
             '89bf119a91fd48ed35c06131c67de1b4300bd2e79522c47aee9a73d7f1ebb08d9bceadc37408bd2425475d92c8bf59d87a799f2ce0a46bee860bf9fc7a904103'
             'd65e053a98976423c6c1f3a4b6b0fd40f51e50a32d7afc651fc02414bb9f3bf574a58cc6a8c96760b85ab9f4f2bfcd0884bd7e9edcc2d71f07e7c1a548783c4c'
             '77f672ed82bc8f78ca04b1e2b7c7d026cb897da6e4f057817adbe1242bf8a67875061553806e6b027cdb3266cdf217ee3993efd9242a66c5802ed34344b5ded1'
-            '087264a388ba7296e8508a3da04ad4b5d43165ff289cc618f8a6396238080b46ee0cdc4ec67404750ad0a8c5f885fedf05926d93d11b7bd3e186375664d166d6')
+            '6b5b1e2da05f8b2dc7015608c86db0095402f2139f41d5ac6d4de8b27b0bea387b6f7032985aced0c46603f0fdcb0201767f8b153aa31e62798eb93d90c49129')
 install=gitea.install
 
 pkgver() {

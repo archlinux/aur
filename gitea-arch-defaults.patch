@@ -1,6 +1,6 @@
 --- a/custom/conf/app.example.ini
 +++ b/custom/conf/app.example.ini
-@@ -7,7 +7,7 @@
+@@ -9,7 +9,7 @@
  ; App name that shows in every page title
  APP_NAME = Gitea: Git with a cup of tea
  ; Change it if you run locally
@@ -9,16 +9,16 @@
  ; Application run mode, affects performance and debugging. Either "dev", "prod" or "test", default is "prod"
  RUN_MODE = prod
  
-@@ -18,7 +18,7 @@
+@@ -20,7 +20,7 @@
  
  [repository]
- ; Root path for storing all repository data. It must be an absolute path. By default it is stored in a sub-directory of `APP_DATA_PATH`.
+ ; Root path for storing all repository data. It must be an absolute path. By default, it is stored in a sub-directory of `APP_DATA_PATH`.
 -ROOT =
 +ROOT = /var/lib/gitea/repos
  ; The script type this server supports. Usually this is `bash`, but some users report that only `sh` is available.
  SCRIPT_TYPE = bash
  ; DETECTED_CHARSETS_ORDER tie-break order for detected charsets.
-@@ -426,7 +426,7 @@
+@@ -444,7 +444,7 @@
  ; For iterate buffer, default is 50
  ITERATE_BUFFER_SIZE = 50
  ; Show the database generated SQL
@@ -27,7 +27,7 @@
  ; Maximum number of DB Connect retries
  DB_RETRIES = 10
  ; Backoff time per DB retry (time.Duration)
-@@ -840,10 +840,10 @@
+@@ -903,10 +903,10 @@
  DEFAULT_UI_LOCATION =
  
  [log]
@@ -39,8 +39,8 @@
 +MODE = console, file
  ; Buffer length of the channel, keep it as it is if you don't know what it is.
  BUFFER_LEN = 10000
- REDIRECT_MACARON_LOG = false
-@@ -868,7 +868,7 @@
+ ; Either "Trace", "Debug", "Info", "Warn", "Error", "Critical", default is "Info"
+@@ -929,7 +929,7 @@
  
  ; For "console" mode only
  [log.console]
