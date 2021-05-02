@@ -1,6 +1,6 @@
 # Maintainer: Anton Leontiev <scileont /at/ gmail dot com>
 pkgname=gst-devtools
-pkgver=1.18.2
+pkgver=1.18.4
 pkgrel=1
 pkgdesc='Development and debugging tools for GStreamer'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
@@ -9,7 +9,7 @@ license=('LGPL')
 makedepends=('meson')
 depends=("gstreamer>=$pkgver")
 source=(https://gitlab.freedesktop.org/gstreamer/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('8e414f8f59875bfdf366848fb5224cea9eefab43505862b91b07c4e9e0d033c4')
+sha256sums=('0f886306c7588927b55b8e4359de79c9056d549c902ae6a29406d36836989095')
 
 build() {
 	meson --prefix /usr --buildtype plain $pkgname-$pkgver build
