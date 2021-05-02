@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=clight-gui-git
-pkgver=r54.630438b
+pkgver=r61.48c9579
 pkgrel=1
 pkgdesc="Qt GUI for Clight"
 arch=('x86_64')
@@ -23,12 +23,15 @@ pkgver() {
 build() {
 	cmake -B build -S "${pkgname%-git}/src" \
 		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_PREFIX_PATH=/usr/lib/cmake/Qt5 \
 		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DGENERATE_TRANSLATIONS=ON \
 		-Wno-dev
 	make -C build
 }
 
 package() {
-	install -Dm755 "build/${pkgname%-git}" -t "$pkgdir/usr/bin"
+	make -C build DESTDIR="$pkgdir" install
+
 	install -Dm644 "${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications"
 }
