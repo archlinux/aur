@@ -1,7 +1,7 @@
 pkgbase = materia-transparent-gtk-theme-git
 	pkgdesc = A Transparent Material Design theme for GNOME/GTK+ based desktop environments
-	pkgver = 85bdc29
-	pkgrel = 2
+	pkgver = 85bdc295
+	pkgrel = 3
 	arch = any
 	license = GPL
 	makedepends = meson
@@ -14,10 +14,10 @@ pkgbase = materia-transparent-gtk-theme-git
 	provides = materia-theme
 	conflicts = materia-theme
 	replaces = materia-theme
-	source = git+https://github.com/ckissane/materia-theme-transparent#commit=85bdc29
+	source = materia-theme-transparent::git+https://github.com/ckissane/materia-theme-transparent
 	source = remove-npm-install-from-meson-build.patch
-	md5sums = SKIP
-	md5sums = SKIP
+	sha256sums = SKIP
+	sha256sums = c74a6f934c58b50256fc09014ebd683b483800ddf8aade5e01f6f79d2832cc41
 
 pkgname = materia-transparent-gtk-theme-git
 
