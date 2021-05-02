@@ -1,6 +1,6 @@
 pkgbase = fastfetch-git
 	pkgdesc = Like neofetch, but much faster because written in c. Only Linux.
-	pkgver = r209.88d2530
+	pkgver = r210.bd2e1da
 	pkgrel = 1
 	url = https://github.com/LinusDierheimer/fastfetch
 	arch = any
@@ -13,9 +13,10 @@ pkgbase = fastfetch-git
 	optdepends = pciutils: GPU output
 	optdepends = libx11: Resolution output
 	optdepends = libxrandr: Refresh rate in Resolution output
-	optdepends = dconf: GTK ouput on DEs which dont use config files (like Gnome)
 	optdepends = wayland: Better resolution performance + support for monitors with different refresh rates in wayland sessions
-	provides = flashfetch=r209.88d2530
+	optdepends = glib2: Output for values that are only stored in GSettings / DConf
+	optdepends = dconf: Fallback for glib2, usually not needed if glib2 is installed
+	provides = flashfetch=r210.bd2e1da
 	source = git+https://github.com/LinusDierheimer/fastfetch.git
 	sha256sums = SKIP
 
