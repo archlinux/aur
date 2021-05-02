@@ -186,9 +186,8 @@ build() {
   _ungoogled_repo="$srcdir/$_pkgname-$_uc_ver"
   readarray -t -O ${#_flags[@]} _flags < "${_ungoogled_repo}/flags.gn"
 
-  # remove flags the break building
-  CFLAGS=${CFLAGS/-fcf-protection}
-  CFLAGS=${CFLAGS/-fexceptions}
+  # use fixed flags as system flags break build
+  CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt"
   CXXFLAGS="$CFLAGS"
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
