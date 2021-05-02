@@ -1,7 +1,7 @@
 pkgbase = gst-rtsp-server
 	pkgdesc = RTSP server library based on GStreamer
-	pkgver = 1.16.2
-	pkgrel = 2
+	pkgver = 1.18.4
+	pkgrel = 1
 	url = https://gstreamer.freedesktop.org/modules/gst-rtsp-server.html
 	arch = i686
 	arch = x86_64
@@ -10,15 +10,14 @@ pkgbase = gst-rtsp-server
 	license = LGPL
 	makedepends = meson
 	makedepends = gobject-introspection
-	depends = gst-plugins-base>=1.16.2
-	depends = gst-plugins-bad>=1.16.2
+	depends = gst-plugins-base>=1.18.4
+	depends = gst-plugins-bad>=1.18.4
+	provides = libgstrtspserver-1.0.so
 	provides = libgstrtspclientsink.so
-	provides = libgstrtspserver-1.0.so=0-64
-	conflicts = libgstrtspclientsink.so
-	source = https://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-1.16.2.tar.xz
-	source = https://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-1.16.2.tar.xz.asc
+	source = https://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-1.18.4.tar.xz
+	source = https://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-1.18.4.tar.xz.asc
 	validpgpkeys = D637032E45B8C6585B9456565D2EEE6F6F349D7C
-	sha256sums = de07a2837b3b04820ce68264a4909f70c221b85dbff0cede7926e9cdbb1dc26e
+	sha256sums = a46bb8de40b971a048580279d2660e616796f871ad3ed00c8a95fe4d273a6c94
 	sha256sums = SKIP
 
 pkgname = gst-rtsp-server
