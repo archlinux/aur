@@ -16,8 +16,14 @@ conflicts=("${_pkgname}" "${_pkgname}-git")
 depends=("grub")
 optdepends=()
 
-source=("https://launchpad.net/~zorinos/+archive/ubuntu/stable/+files/${_pkgname}_${deb_pkgver}_all.deb")
-md5sums=('SKIP')
+source=(
+    "https://launchpad.net/~zorinos/+archive/ubuntu/stable/+files/${_pkgname}_${deb_pkgver}_all.deb"
+    "alter.png"
+)
+md5sums=(
+    'SKIP'
+    "65bfa30ea04f36b1944f4d0a959a52eb"
+)
 
 prepare(){
     while read -r pkg; do
@@ -29,4 +35,5 @@ prepare(){
 
 package() {
     cp -ar "${srcdir}/data/"* "${pkgdir}"
+    cp -a "${srcdir}/alter.png" "${pkgdir}/usr/share/grub/themes/zorin/icons/"
 }

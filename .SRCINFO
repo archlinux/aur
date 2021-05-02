@@ -9,7 +9,9 @@ pkgbase = grub-theme-zorin-bin
 	conflicts = grub-theme-zorin
 	conflicts = grub-theme-zorin-git
 	source = https://launchpad.net/~zorinos/+archive/ubuntu/stable/+files/grub-theme-zorin_1.2.1_all.deb
+	source = alter.png
 	md5sums = SKIP
+	md5sums = 65bfa30ea04f36b1944f4d0a959a52eb
 
 pkgname = grub-theme-zorin-bin
 
