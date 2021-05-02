@@ -1,0 +1,35 @@
+pkgbase = python-datalad
+	pkgdesc = Keep code, data, containers under control with git and git-annex
+	pkgver = 0.14.3
+	pkgrel = 1
+	url = https://github.com/datalad/datalad
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = git-annex
+	depends = python-msgpack
+	depends = python-appdirs
+	depends = python-simplejson
+	depends = python-chardet
+	depends = python-wrapt
+	depends = python-secretstorage
+	depends = python-iso8601
+	depends = python-fasteners
+	depends = python-whoosh
+	depends = python-pygithub
+	depends = python-jsmin
+	depends = python-keyrings-alt
+	depends = python-boto
+	depends = python-annexremote
+	depends = python-humanize
+	depends = patool
+	depends = python-requests
+	depends = python-tqdm
+	depends = python-keyring
+	depends = python-gitpython
+	source = datalad-0.14.3.tar.gz::https://github.com/datalad/datalad/archive/0.14.3.tar.gz
+	sha512sums = 2c4f4433069380e753c0f2f161793f6c6cf98c47acdbcdc1d510f4e6795bebb81fc19a41b78db8581038f91704d1b32918c50a4a71f9d2895139c1690b88e972
+
+pkgname = python-datalad
+
