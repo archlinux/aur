@@ -1,0 +1,14 @@
+pkgbase = aurtoo-git
+	pkgdesc = Tool to manage your local AUR repo
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/SomethingGeneric/aurtoo
+	arch = any
+	license = custom:nolicense
+	depends = python
+	provides = aurtoo
+	source = aurtoo::git+https://github.com/SomethingGeneric/aurtoo.git
+	md5sums = SKIP
+
+pkgname = aurtoo-git
+
