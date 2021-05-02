@@ -53,10 +53,10 @@ _makenconfig=
 
 pkgbase=linux-xanmod-cacule
 _major=5.12
-pkgver=${_major}.0
+pkgver=${_major}.1
 _branch=5.x
-xanmod=2
-pkgrel=3
+xanmod=1
+pkgrel=${xanmod}
 pkgdesc='Linux Xanmod. Branch with Cacule scheduler by Hamad Marri'
 url="http://www.xanmod.org/"
 arch=(x86_64)
@@ -85,7 +85,7 @@ done
 
 sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
             'SKIP'
-            '5f687de7365b0d21cb90d78d451f2bb78589fbd4de960e080489dbbc10671f80'
+            '4e3e26e7c3caa4c6fb3b40bbfb8ff9f72035b30eb154e75e0b3537ff2568148f'
             '51742dee57cd15bece152d6527f48af87cb7930f0f6a356d5282f778e7c35b39'
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
 
