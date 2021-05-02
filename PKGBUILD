@@ -1,34 +1,43 @@
-# Maintainer: Brokenpip3 <brokenpip3[at]gmail[dot]com>
+# Maintainer: George Rawlinson <george@rawlinson.net.nz>
+# Contributor: Brokenpip3 <brokenpip3[at]gmail[dot]com>
 # Contributor: Jens John <dev@2ion.de>
 
 pkgname=python-pylxd
-pkgver=2.2.9
+_name="${pkgname#python-}"
+pkgver=2.3.0
 pkgrel=1
-pkgdesc="Python module for LXD"
-arch=(any)
-url=https://github.com/lxc/pylxd
-license=("APACHE")
+pkgdesc="A library for interacting with the LXD REST API"
+arch=('any')
+url='https://github.com/lxc/pylxd'
+license=('Apache')
 depends=(
-  'python'                     
-  'python-pbr' 
-  'python-six' 
-  'python-ws4py' 
-  'python-requests' 
-  'python-requests-unixsocket' 
-  'python-requests-toolbelt' 
-  'python-cryptography' 
-  'python-pyopenssl' 
+  'python'
+  'python-pbr'
+  'python-six'
+  'python-ws4py'
+  'python-requests'
+  'python-requests-unixsocket'
+  'python-requests-toolbelt'
+  'python-cryptography'
+  'python-pyopenssl'
 )
-optdepends=('lxd: Core LXD services')
-source=("https://github.com/lxc/pylxd/archive/${pkgver}.tar.gz")
-sha512sums=('b8c44a830aab3a01a52b2db12cea66a4f5962489cc2075f0eb925b67cb1c92286b52c40d035b8cb5c74f7f3e13fa2dbe74bc6a462880d881900748ae867e093d')
+optdepends=('lxd: to use a local LXD server')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+b2sums=('da2d5a69c9b568d12a6dd1499640e1fb7ab4d831a4b05d6c991600d48ccfbec2202f9f2dd064af3bcb520443a1f23e1b41cf156f8440727b60886786dabbe499')
 
 build() {
-  cd "$srcdir/pylxd-$pkgver"
+  cd "$_name-$pkgver"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/pylxd-$pkgver"
-  python setup.py install --root=$pkgdir --optimize=1
+  cd "$_name-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  # obtain site packages directory
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+
+  # remove unnecessary files/folders
+  cd "$pkgdir$site_packages"
+  rm -rf integration migration "$_name/tests"
 }
