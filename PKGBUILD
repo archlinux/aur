@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark.wagie at tutanota dot com>
 pkgname=sticky-git
-pkgver=0.0.1.r63.6af87f9
+pkgver=0.0.1.r72.d7e7f82
 pkgrel=1
 pkgdesc="A sticky notes app for the Linux desktop"
 arch=('x86_64')
@@ -8,12 +8,7 @@ url="https://github.com/collinss/sticky"
 license=('GPL')
 depends=('gtk3' 'xapp' 'gspell' 'python-gobject' 'python-xapp')
 makedepends=('git')
-optdepends=('libappindicator-gtk3: for tray icon'
-            'gnote: Import notes from Gnote'
-            'aspell: spell checking'
-            'nuspell: spell checking'
-            'hspell: spell checking'
-            'libvoikko: spell checking for Finnish language')
+optdepends=('libappindicator-gtk3: for tray icon')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/collinss/sticky.git')
