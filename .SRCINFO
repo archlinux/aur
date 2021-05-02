@@ -1,19 +1,20 @@
 pkgbase = simgear-git
 	pkgdesc = A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications.
-	pkgver = 2020.3.0r5530.49285096
+	pkgver = 2020.4.0r5819.5e30d83a
 	pkgrel = 1
 	url = http://home.flightgear.org/
 	arch = x86_64
 	license = GPL
 	makedepends = boost
 	makedepends = cmake
+	makedepends = git
 	makedepends = mesa
 	depends = glu
 	depends = glut
 	depends = freealut
 	depends = plib
 	depends = openscenegraph
-	provides = simgear
+	provides = simgear=2020.4.0r5819.5e30d83a
 	conflicts = simgear
 	options = staticlibs
 	source = simgear::git+https://git.code.sf.net/p/flightgear/simgear#branch=next
