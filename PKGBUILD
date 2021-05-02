@@ -2,7 +2,8 @@
 
 _name=delphes
 pkgname=${_name}-git
-pkgver=3.4.2.r96.g3cfe61d
+pkgver=3.4.3pre11.r5.g952bbbc
+#pkgver=3.4.3.r96.g3cfe61d
 pkgrel=1
 pkgdesc="A framework for fast simulation of a generic collider experiment"
 url="http://cp3.irmp.ucl.ac.be/projects/delphes"
@@ -16,7 +17,7 @@ source=("${pkgname}::git+https://github.com/delphes/delphes.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/$_pkgname
+  cd $srcdir/$pkgname
   git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
