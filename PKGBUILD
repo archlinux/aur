@@ -2,7 +2,7 @@
 
 pkgname=capa-bin
 _pkg=capa
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="The FLARE team's open-source tool to identify capabilities in executable files"
 url="https://github.com/fireeye/capa"
@@ -12,7 +12,7 @@ optdepends=('python2')
 conflicts=('capa')
 source=("$url/releases/download/v$pkgver/${_pkg}-v$pkgver-linux.zip"
         "https://raw.githubusercontent.com/fireeye/capa/master/LICENSE.txt")
-sha256sums=('f615597fa2b2810d86be4e6700ebb0de39690b8eb05050d84117a760600c0c21'
+sha256sums=('957d8632a315a16609c0fe64cf0e7bd6d2e2771691f5669a62ec972f25dfaf69'
             'd102438d6fed7e9df7a4a72fb85df369ed4c4a631d54634642f22af7d3450cf9')
 
 package() {
