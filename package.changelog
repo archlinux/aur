@@ -1,3 +1,7 @@
+2021-05-02
+	upstream update: 3.40.0 -> 3.40.1
+	rebase patches
+
 2021-04-10
 	remove leftover patch files
 
