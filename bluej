@@ -19,6 +19,7 @@ JFXRTOPT="-javafxpath=$JAVAFXPATH"
 JFXRTOPT2="-javafxjars=$JAVAFXJARS"
 
 archlinux-java-run -a 11 -b 11 -- \
+        -Djdk.gtk.version=2 \
         -Dawt.useSystemAAFontSettings=on -Xmx512M \
         -cp "$CP" bluej.Boot ${JFXRTOPT:+"$JFXRTOPT"} ${JFXRTOPT2:+"$JFXRTOPT2"} \
         "$@"

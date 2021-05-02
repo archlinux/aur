@@ -8,20 +8,20 @@
 # Contributor: zerathidune <zerathidune @ gmail . com>
 
 pkgname=bluej
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="A free Java Development Environment designed for beginners, used by millions worlwide."
 arch=('any')
 url="https://www.${pkgname}.org"
 license=('GPL2' 'Apache' 'BSD' 'CPL' 'LGPL2.1' 'MIT' 'custom')
-depends=('archlinux-java-run' 'java-runtime=11' 'java-environment=11' 'java11-openjfx')
+depends=('gtk2' 'archlinux-java-run' 'java-runtime=11' 'java-environment=11' 'java11-openjfx')
 source=("https://www.${pkgname}.org/download/files/BlueJ-linux-${pkgver//.}.deb"
         "${pkgname}"
         "${pkgname}.desktop"
         "${pkgname}.xml")
 noextract=("BlueJ-linux-${pkgver//.}.deb")
-sha256sums=('53cd4521febb426ffcebe840f625021edeb5771899b139247aaba55637edebfd'
-            '6b11a4e49f92d636ac170c95de8a2ae02ad94031d403cbd23c626ffa7f0ac068'
+sha256sums=('2a1361276c6cc35836c9e9b03fa350989be4e1cc5901040d3c4501b8bb28e6a3'
+            'c1bdaad64fcf45b1efac00e010d5f750c417d64896cde80b9b7c5745277422b8'
             'a845f3997ce91cfb1eeb882f4a6e1e4408b7a7d7c2e164495b5a077bdf353e7f'
             'e05453bd791b34ab6cfd6b67250dd18210f47505344b7980ad28bf922c014772')
 
