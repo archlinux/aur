@@ -1,30 +1,24 @@
-# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
+# Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-nvcc
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
 url="https://github.com/ROCm-Developer-Tools/HIP"
 license=('MIT')
-makedepends=('libelf' 'cmake')
+makedepends=('libelf' 'cmake' 'git')
 depends=('cuda' 'llvm-amdgpu')
 provides=('hip')
 conflicts=('hip')
 _git='https://github.com/ROCm-Developer-Tools/HIP'
-source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz"
-        "hipinfo.patch")
-sha256sums=('d7b78d96cec67c55b74ea3811ce861b16d300410bc687d0629e82392e8d7c857'
-            'bddced0c770848aaa44514986fed3fe1c01699dffe41d11767a5014f0ebfa69f')
-
-prepare() {
-  cd "${srcdir}/HIP-rocm-$pkgver"
-  patch --forward --strip=1 --input="${srcdir}/hipinfo.patch"
-}
+source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
+sha256sums=('e21c10b62868ece7aa3c8413ec0921245612d16d86d81fe61797bf9a64bc37eb')
 
 build() {
   cmake -B build -Wno-dev \
         -DCMAKE_INSTALL_PREFIX=/opt/rocm/hip \
-        -DHIP_PLATFORM=nvcc \
+        -DHIP_PLATFORM=nvidia \
         -DHIP_COMPILER=clang \
         "$srcdir/HIP-rocm-$pkgver"
   make -C build
