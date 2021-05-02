@@ -1,8 +1,8 @@
 # Maintainer: AlbonyCal <albonycal at gmail dot com>
 
 pkgname=kiterunner-bin
-pkgver=1.0.2.a
-pkgrel=1
+pkgver=1.0.2
+pkgrel=2
 pkgdesc=" Contextual Content Discovery Tool "
 arch=('x86_64')
 url="https://github.com/assetnote/kiterunner"
