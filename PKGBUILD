@@ -3,10 +3,6 @@
 
 ### BUILD OPTIONS
 
-# Set to "undead" to use Undead PDS, or "prjc" to use Project C PDS.
-# Defaults to Undead PDS.
-_pds_choice=undead
-
 # Set these variables to ANYTHING that is not null to enable them
 
 # Tweak kernel options prior to a build via nconfig
@@ -64,7 +60,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.11.16.arch1
+pkgver=5.12.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -102,9 +98,7 @@ source=(
     "${_reponame}::git+${_repo_url}#tag=$_srcver_tag"
     "git+${_repo_url_gcc_patch}"
     config # kernel config file
-    0005-v5.11_undead-pds099o.patch
-    0005-undead-glitched-pds.patch
-    0009-prjc_v5.11-r3.patch
+    0009-prjc_v5.12-r0.patch
     0005-glitched-pds.patch
 )
 validpgpkeys=(
@@ -114,10 +108,8 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '369ea24c1ae49ea0d36d87395e405917d6cbafd0bdfb09bbae497e24275fe6ff77ffd229e553414880871eb840af338fb780c5f78c48fd87d117614f687b8d62'
-            '9c08c605b86739ac1110f8e4eaecedc46e335bf708f8a1cda34b02735a4a7f9189a8a868efcb0f2bbcae4aab784c5b51cac95db83c6f61da42f5cf6fb6b16b60'
-            '2cf83af1322f0fe5b9751e2b77fa1c890c7c22d9213b1cdfb57ca7f7a89a2cb263c213e178417ae1b7e947b386796b4b71507b127ec698cba661799346b33bbd'
-            'e56e7bd631cd855e968c0ee7fd2a0410393b2275ccc569b0ad698e8a23f88bd94219400d624d024e0e2b94a3e393c7af5327cec91262c8af71691cbf93c419bc'
+            '86c924809ea8df48852409ba8546b736aec2fb8c3ae55b1931c96b8567c1610852f70e75917b562f7ef3c326727f699a40e543dd2536c5f407ce825130ab73e1'
+            '7d96b7e9e1caa6681f5c662e58777c26f0c579ffa49ae08f92b72a609c582dc7d2a3514c3d2d8e708af7fd9b1d387991ae065db798c85cac7d139291d86f7c21'
             '889f0a49f326de3f119290256393b09a9e9241c2a297ca0b7967a2884e4e35d71388d2a559e4c206f55f67228b65e8f2013a1ec61f6ff8f1de3b6a725fd5fa57')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -134,18 +126,9 @@ prepare() {
 
     PatchesArray=(
         $_reponame_gcc_patch/$_gcc_patch_name
+        0009-prjc_v5.12-r0.patch
+        0005-glitched-pds.patch
     )
-    if [ "${_pds_choice}" = "undead" ]; then
-        PatchesArray+=(
-            0005-v5.11_undead-pds099o.patch
-            0005-undead-glitched-pds.patch
-        )
-    elif [ "${_pds_choice}" = "prjc" ]; then
-        PatchesArray+=(
-            0009-prjc_v5.11-r3.patch
-            0005-glitched-pds.patch
-        )
-    fi
 
     for MyPatch in "${PatchesArray[@]}"
     do
@@ -175,11 +158,7 @@ prepare() {
     fi
 
     # Set yield_type to 0
-    if [ "${_pds_choice}" = "prjc" ]; then
-        sed -i -e 's/int sched_yield_type __read_mostly = 1;/int sched_yield_type __read_mostly = 0;/' ./kernel/sched/alt_core.c
-    elif [ "${_pds_choice}" = "undead" ]; then
-        sed -i -e 's/int sched_yield_type __read_mostly = 1;/int sched_yield_type __read_mostly = 0;/' ./kernel/sched/pds.c
-    fi
+    sed -i -e 's/int sched_yield_type __read_mostly = 1;/int sched_yield_type __read_mostly = 0;/' ./kernel/sched/alt_core.c
 
     # do not run 'make olddefconfig' as it sets default options
     yes "" | make config >/dev/null
