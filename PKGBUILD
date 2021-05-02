@@ -5,7 +5,7 @@
 [[ -v CUDA_ARCH ]] && _cuda_capability=(${CUDA_ARCH})
 
 pkgname=cycles-standalone
-pkgver=v1.11.0.r387.ge5ba3557
+pkgver=v1.11.0.r582.gaab1ad98
 pkgrel=1
 pkgdesc="Blender Cycles rendering engine, standalone version"
 arch=(x86_64)
@@ -17,9 +17,11 @@ optdepends=(cuda optix)
 provides=(cycles)
 source=("cycles-standalone::git+https://git.blender.org/cycles.git"
         SelectCudaComputeArch.patch
+        OpenEXR3.patch
         cycles_wrap.sh)
 sha256sums=('SKIP'
             '7abd5530694535db488568cc98d2a7be4cb5ded0f5d8d5d2dad2d08da7008330'
+            '9e644ccbfb58f1e9cd4a31ada9abcc5496371fb29195b2a92069a7f8888750e7'
             '00afc4aab5541d147b013c31ab91d78e272654a75cae60b39cf70c23a2612c96')
 
 pkgver() {
@@ -30,6 +32,7 @@ pkgver() {
 prepare() {
     if [ ! -v _cuda_capability ] && grep -q nvidia <(lsmod); then
       git -C "$srcdir/$pkgname" apply -v "${srcdir}"/SelectCudaComputeArch.patch
+      git -C "$srcdir/$pkgname" apply -v "${srcdir}"/OpenEXR3.patch
     fi
 }
 
