@@ -4,9 +4,10 @@
 pkgbase=corefreq-git
 pkgname=(corefreq-client-git corefreq-server-git corefreq-dkms-git)
 _gitname=CoreFreq
-_pkgbase=corefreq
-pkgver=1.84.r13.gb9c84b0
-pkgrel=1
+_pkgbase=${pkgbase%-*}
+pkgver=1.83.r51.g8204ff9
+pkgrel=2
+pkgdesc="A CPU monitoring software with BIOS like functionalities"
 arch=('x86_64')
 url='https://github.com/cyring/CoreFreq'
 license=('GPL2')
