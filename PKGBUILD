@@ -2,7 +2,7 @@
 #Contributor: Mike Swanson
 
 pkgname=woof-git
-pkgver=4.0.2.r20.40a04da
+pkgver=5.0.0.r1.ff51cb9
 pkgrel=1
 pkgdesc="Doom port remaining faithful to Lee Killough’s MBF on DOS"
 arch=("x86_64")
@@ -17,25 +17,21 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-
 	printf "%s" "$(git describe --tags --long | sed 's/^woof_//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
 	mkdir "$srcdir/${pkgname%-git}-build"
 	cd "$srcdir/${pkgname%-git}-build"
-
 	cmake -DCMAKE_INSTALL_PREFIX=/usr "$srcdir/${pkgname%-git}"
 }
 
 build() {
 	cd "$srcdir/${pkgname%-git}-build"
-
 	make
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}-build"
-
 	make DESTDIR="$pkgdir/" install
 }
