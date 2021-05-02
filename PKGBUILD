@@ -2,13 +2,13 @@
 
 _instname=WeChat
 pkgname=wechat-nativefier
-pkgver=20210502.2
+pkgver=20210503.1
 pkgrel=1
 pkgdesc="WeChat desktop built with nativefier (electron)"
 arch=("x86_64")
 url="https://wx.qq.com/"
 license=("MIT")
-makedepends=("nodejs-nativefier" "electron")
+makedepends=("nodejs-nativefier")
 source=(
   "${pkgname}.css"
   "${pkgname}.js"
