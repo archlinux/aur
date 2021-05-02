@@ -1,6 +1,6 @@
 diff -up src/xrdp-git/instfiles/xrdp.service.in.orig src/xrdp-git/instfiles/xrdp.service.in
---- src/xrdp-git/instfiles/xrdp.service.in.orig	2017-07-29 19:28:37.000000000 -0600
-+++ src/xrdp-git/instfiles/xrdp.service.in	2017-07-29 19:32:15.000000000 -0600
+--- src/xrdp-git/instfiles/xrdp.service.in.orig	2021-05-02 13:42:58.210000000 -0600
++++ src/xrdp-git/instfiles/xrdp.service.in	2021-05-02 13:42:59.450000000 -0600
 @@ -7,10 +7,8 @@ After=network.target xrdp-sesman.service
  [Service]
  Type=forking
@@ -15,8 +15,8 @@ diff -up src/xrdp-git/instfiles/xrdp.service.in.orig src/xrdp-git/instfiles/xrdp
  [Install]
  WantedBy=multi-user.target
 diff -up src/xrdp-git/instfiles/xrdp-sesman.service.in.orig src/xrdp-git/instfiles/xrdp-sesman.service.in
---- src/xrdp-git/instfiles/xrdp-sesman.service.in.orig	2017-07-29 19:28:46.000000000 -0600
-+++ src/xrdp-git/instfiles/xrdp-sesman.service.in	2017-07-29 19:33:02.000000000 -0600
+--- src/xrdp-git/instfiles/xrdp-sesman.service.in.orig	2021-05-02 13:42:58.210000000 -0600
++++ src/xrdp-git/instfiles/xrdp-sesman.service.in	2021-05-02 13:42:59.460000000 -0600
 @@ -8,10 +8,8 @@ BindsTo=xrdp.service
  [Service]
  Type=forking
@@ -31,20 +31,24 @@ diff -up src/xrdp-git/instfiles/xrdp-sesman.service.in.orig src/xrdp-git/instfil
  [Install]
  WantedBy=multi-user.target
 diff -up src/xrdp-git/sesman/startwm.sh.orig src/xrdp-git/sesman/startwm.sh
---- src/xrdp-git/sesman/startwm.sh.orig	2017-07-29 19:27:43.000000000 -0600
-+++ src/xrdp-git/sesman/startwm.sh	2017-07-29 19:27:45.000000000 -0600
-@@ -56,6 +56,17 @@ wm_start()
+--- src/xrdp-git/sesman/startwm.sh.orig	2021-05-02 13:42:58.410000000 -0600
++++ src/xrdp-git/sesman/startwm.sh	2021-05-02 13:44:03.660000000 -0600
+@@ -63,6 +63,21 @@ wm_start()
      export LANG LANGUAGE
    fi
  
 +  # arch user
 +  if [ -r ~/.xinitrc ]; then
++    pre_start
 +    . ~/.xinitrc
++    post_start
 +    exit 0
 +  fi
 +  # arch
 +  if [ -r /etc/X11/xinit/xinitrc ]; then
++    pre_start
 +    . /etc/X11/xinit/xinitrc
++    post_start
 +    exit 0
 +  fi
 +
