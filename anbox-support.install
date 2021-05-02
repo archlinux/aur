@@ -1,0 +1,30 @@
+msg() {
+    ALL_OFF="\e[1;0m"
+    BOLD="\e[1;1m"
+    RED="${BOLD}\e[1;31m"
+	local mesg=$1; shift
+	printf "${RED}==>${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}" "$@" >&2
+}
+
+post_install() {
+  systemctl enable --now anbox-container-manager.service
+  systemctl enable --now systemd-networkd
+
+  echo ""
+  msg "Enable the session manager now using systemctl --user enable --now anbox-session-manager.service"
+  echo ""
+  msg "Also add 'none /dev/binderfs binder nofail 0 0' to /etc/fstab."
+  echo ""
+}
+
+post_upgrade() {
+  msg "Attempting to enable services..."
+  systemctl is-active anbox-container-manager.service >/dev/null || systemctl enable anbox-container-manager.service
+  systemctl is-active systemd-networkd >/dev/null || systemctl enable systemd-networkd
+
+  echo ""
+  msg "Enable the session manager now using systemctl --user enable --now anbox-session-manager.service"
+  echo ""
+  msg "Also add 'none /dev/binderfs binder nofail 0 0' to /etc/fstab."
+  echo ""
+}
