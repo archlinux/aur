@@ -9,7 +9,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium
-pkgver=90.0.4430.85
+pkgver=90.0.4430.93
 pkgrel=1
 _launcher_ver=7
 _gcc_patchset=6
@@ -42,8 +42,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-glibc-2.33.patch
         wayland-egl.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('01c5594d4b7eaa67e00b4fa16ae0c9d35ec5917467abd387ba1b5cc332d44922'
-            '72c4b5225b88b73bbb5d31e6402313950c1a2b5e046a65a2c523874625dc6376'
+sha256sums=('532ec75f4e08384fe2fb17b69af9210103379ee212dbf0bf081bdc5d4eca357e'
+            '3e4059169aa2910df36e17fcd39990df88b6f5ae12c66e2754b528e859436f8b'
             '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
             '3eb9580ea35a96789e02815270498226fa33726f4210a5ee36f3868af2ffae1f'
             '5e22afcb91b5402bc09e80630c5323d61013c3fccb0bbd9b23d1e79a400b00d0'
