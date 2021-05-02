@@ -1,0 +1,16 @@
+pkgbase = python-pybliometrics
+	pkgdesc = A python-based API-wrapper to access Scopus
+	pkgver = 2.9.1
+	pkgrel = 1
+	url = https://pybliometrics.readthedocs.io/en/stable/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-pbr
+	depends = python-requests
+	depends = python-simplejson
+	source = https://files.pythonhosted.org/packages/source/p/pybliometrics/pybliometrics-2.9.1.tar.gz
+	md5sums = c5dccbb479657d5c25404a61776e536d
+
+pkgname = python-pybliometrics
+
