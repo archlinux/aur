@@ -26,7 +26,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs' 'pipewire'
-             'java-runtime-headless' 'python2' 'python2-setuptools' 'flatbuffers')
+             'java-runtime-headless' 'python2' 'python2-setuptools')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: needed for file dialogs in KDE'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
@@ -139,9 +139,6 @@ prepare() {
       -delete
   done
 
-  # delete flatbuffers
-  rm -r third_party/flatbuffers
-
   ./build/linux/unbundle/replace_gn_files.py \
     --system-libraries "${!_system_libs[@]}"
 }
@@ -155,6 +152,8 @@ build() {
     # Avoid falling back to preprocessor mode when sources contain time macros
     export CCACHE_SLOPPINESS=time_macros
   fi
+
+  export CFLAGS=$(printf '%s\n' "${CFLAGS//-fcf-protection/}")
 
   export CC=clang
   export CXX=clang++
