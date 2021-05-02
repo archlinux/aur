@@ -1,0 +1,47 @@
+Only in b: bin
+Only in b: Makefile
+Only in b/src: Makefile
+Only in b/src: moc
+Only in b/src: obj
+diff '--color=auto' -ru a/src/objects/tool_object.cpp b/src/objects/tool_object.cpp
+--- a/src/objects/tool_object.cpp	2010-10-20 08:23:29.000000000 -0400
++++ b/src/objects/tool_object.cpp	2021-05-02 19:25:43.246468135 -0400
+@@ -50,6 +50,7 @@
+ #include <QKeySequence>
+ #include <QString>
+ #include <QStringList>
++#include <unistd.h>
+ 
+ 
+ #if 1
+diff '--color=auto' -ru a/src/utils/vk_config.cpp b/src/utils/vk_config.cpp
+--- a/src/utils/vk_config.cpp	2010-10-20 08:23:29.000000000 -0400
++++ b/src/utils/vk_config.cpp	2021-05-02 19:26:39.496393814 -0400
+@@ -25,6 +25,7 @@
+ #include "utils/vk_utils.h"
+ 
+ #include <pwd.h>     // getpwuid
++#include <unistd.h>
+ 
+ #include <QColor>
+ #include <QDir>
+Only in b/src/utils: vk_defines.h
+diff '--color=auto' -ru a/src/utils/vk_utils.cpp b/src/utils/vk_utils.cpp
+--- a/src/utils/vk_utils.cpp	2010-10-20 08:23:29.000000000 -0400
++++ b/src/utils/vk_utils.cpp	2021-05-02 19:26:11.466430879 -0400
+@@ -29,7 +29,6 @@
+ #include <QRegExp>
+ #include <QString>
+ 
+-/*
+ #include <stdlib.h>                 // mkstemp()
+ #include <stdarg.h>                 // va_start, va_end
+ #include <sys/types.h>              // getpid
+@@ -42,7 +41,6 @@
+ #include <qdir.h>
+ #include <qstringlist.h>
+ #include <qregexp.h>
+-*/
+ 
+ 
+ /* prints various info msgs to stdout --------------------------------- */
