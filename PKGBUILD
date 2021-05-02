@@ -7,7 +7,7 @@
 
 pkgname=yubikey-agent
 pkgver=0.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc='A seamless ssh-agent for YubiKeys'
 arch=('x86_64' 'aarch64')
 url="https://filippo.io/yubikey-agent"
@@ -16,11 +16,11 @@ depends=('pcsclite' 'pinentry')
 makedepends=('go')
 source=(
   "https://github.com/FiloSottile/yubikey-agent/archive/v${pkgver}.tar.gz"
-  'yubikey-agent.service'
+  "https://github.com/FiloSottile/yubikey-agent/raw/5000c3231e05c8998dbee18cddb5413c1f6a5fe5/contrib/systemd/user/yubikey-agent.service"
 )
 sha256sums=(
   '58c597551daf0c429d7ea63f53e72b464f8017f5d7f88965d4dae397ce2cb70a'
-  'f0daac762ed6242814a7857494968d18cd400672333b6ab9aa9c9abf714de7dc'
+  'e76c9d5850755e6066478baafbb2d9717ef1f0ffa1a7ed9fc415b7479034e36d'
 )
 
 build() {
