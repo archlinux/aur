@@ -10,7 +10,7 @@
 
 pkgname=ungoogled-chromium
 pkgver=90.0.4430.93
-pkgrel=2
+pkgrel=1
 _launcher_ver=7
 _gcc_patchset=6
 _pkgname=$(echo $pkgname | cut -d\- -f1-2)
@@ -187,8 +187,10 @@ build() {
   readarray -t -O ${#_flags[@]} _flags < "${_ungoogled_repo}/flags.gn"
 
   # -fcf-protection breaks some third_party libraries
-  CFLAGS=$(printf '%s\n' "${CFLAGS//-fcf-protection/}")
+  CFLAGS=${CFLAGS/-fcf-protection}
   CXXFLAGS="$CFLAGS"
+  #CFLAGS=$(printf '%s\n' "${CFLAGS//-fcf-protection/}")
+  #CXXFLAGS="$CFLAGS"
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
   CFLAGS+='   -Wno-builtin-macro-redefined'
