@@ -4,7 +4,7 @@
 pkgname=lightdm-cmd-greeter
 pkgver=1.2.0
 pkgrel=1
-pkgdesc="a command line lightdm greeter"
+pkgdesc="super minimal, non-graphical, terminal based desktop session launcher via lightdm"
 arch=(any)
 url="https://github.com/greyltc-org/cmd-greeter"
 license=(GPL3)

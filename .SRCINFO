@@ -1,5 +1,5 @@
 pkgbase = lightdm-cmd-greeter
-	pkgdesc = a command line lightdm greeter
+	pkgdesc = super minimal, non-graphical, terminal based desktop session launcher via lightdm
 	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/greyltc-org/cmd-greeter
