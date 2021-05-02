@@ -60,7 +60,7 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.12
+pkgver=5.12.1
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -71,7 +71,7 @@ makedepends=(
 )
 options=('!strip')
 _ckpatch="patch-5.12-ck${_ckpatchversion}"
-_gcc_more_v=20210402
+_gcc_more_v=20210412
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
@@ -83,10 +83,10 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('842d921b9a73d2aaade763dbd2ec67bdfe0275baa6d628b775f5c87574ad7dc86f0419afcd48c10c1235f4bffa16084243f2cf4556e6afcd391e975fe8ba530b'
+b2sums=('71db3031f059b4411e542fb17acf15d9d2fcff10c35958f74b190f8a4cc352658f9101b34cd35a306d36f39a3c194cde1c3d5ad7a53a758bbe0a9671b8becdd3'
         'SKIP'
-        'e4f405e6817b3203802ba2951d463639a12b82a1747ac23f116ca70f9a6f70ea62655e2e3e848c5753a6222c02b18de96393206c209396242a6c7beda4f4486d'
-        'b8c3ba685a7fa34f8b047467a41e2e78702c41e54469934515c7d2f221411b2357a7378b86edaf2ca7ce1a3f9b627878438ab1cfcdae4fc681f47021d9a813d9'
+        '87016e66e9ff6b92872e7ddb049f770f687eb341d72b0b2dae01ae00cced00df26c14b67664239c80f6f34c9824df31ac353a0e5c7d133ea2ba878f6e8d09624'
+        '72194a32a06c43809d1272bd675890b6d27c6c54353150a366e8e2c50ad6eca6ee23c5d6281822965a228cfedfa07a60fe135d1b4f539e4a62728d4460cc0b0e'
         'c9f729ba1efe6f04e7b2c57d3999bc9675b577596dccb2f227e5b6e444285e1fdd270bf67c0fcf9f5808a4c3a4b1c7a5c13a76f754ad9b9447243ccbaf2ce6a3'
         'f44d66eed6a4a0a1e78d2d9b7fedc9739a181311b77ba813078554b70b8b78151c7cb903ff5b9d08b9137a392588446a2e385cfe6cc735945ca1d36c125cdcff')
 
