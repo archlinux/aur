@@ -1,18 +1,20 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: PolpOnline <aur at t0mmy dot anonaddy dot com>
+# Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=exifcleaner-bin
-pkgver=3.4.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Cross-platform desktop app to clean image metadata"
 arch=('x86_64')
 url="https://exifcleaner.com"
 license=('MIT')
 depends=('nss'
-         'gtk3')
+         'gtk3'
+         'perl')
 provides=('exifcleaner')
 source=("${pkgname}-${pkgver}.deb::https://github.com/szTheory/exifcleaner/releases/download/v${pkgver}/exifcleaner_${pkgver}_amd64.deb"
         'LICENSE::https://github.com/szTheory/exifcleaner/raw/master/LICENSE')
-sha256sums=('841592a1957581cb9603f2ecd0657f4a6c32529ce71ae8154c4bb3c8da135298'
+sha256sums=('043118e435f68c8ee46d6c84d52830012e1ef4dd0dfc6d41c82b612e5b613589'
             'a74847d1e523991859009094dca82f704240d291dea5728a59de9e419cf104ac')
 
 package() {
