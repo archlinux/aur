@@ -6,12 +6,12 @@
 pkgname=('mysql57' 'libmysqlclient57' 'mysql-clients57')
 _pkgname=mysql
 pkgbase=mysql57
-pkgver=5.7.32
+pkgver=5.7.34
 pkgrel=1
 pkgdesc="Fast SQL database server, community edition, v5.7"
 arch=('x86_64')
-makedepends=('openssl' 'zlib' 'cmake' 'systemd-tools' 'libaio' 'jemalloc'
-             'rpcsvc-proto' 'libtirpc')
+makedepends=('openssl' 'zlib' 'cmake' 'systemd-tools' 'systemd-libs' 'libaio'
+             'jemalloc' 'rpcsvc-proto' 'libtirpc')
 _boost_ver=1.59.0
 license=('GPL')
 url="https://www.mysql.com/products/community/"
@@ -21,13 +21,15 @@ source=("https://dev.mysql.com/get/Downloads/MySQL-5.7/${_pkgname}-${pkgver}.tar
         "mysqld-post.sh"
         "mysqld-tmpfile.conf"
         "mysqld.service"
-        "my-default.cnf")
-sha256sums=('1f4b59b43f82de4ccf4ba9cfce087318a192012a752aee8f66ca16f73bb082c9'
+        "my-default.cnf"
+        "systemd-sysusers.conf")
+sha256sums=('78d2aeb1320226590755a5734383c2f61284c337dad7f947bdff345f790686a6'
             '47f11c8844e579d02691a607fbd32540104a9ac7a2534a8ddaef50daf502baac'
             '368f9fd2454d80eb32abb8f29f703d1cf9553353fb9e1ae4529c4b851cb8c5dd'
             '2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd'
             '50212165bdb09855b97b15a917464ba34f82edf30a0c43f9a0c93a27071df556'
-            '3cc3ba4149fb2f9e823601b9a414ff5b28a2a52f20bc68c74cc0505cf2d1832d')
+            '3cc3ba4149fb2f9e823601b9a414ff5b28a2a52f20bc68c74cc0505cf2d1832d'
+            '1375640da77573d74c302285da6fcab931671c847d4dd4955dcf80a395173ae4')
 
 build() {
   rm -rf build
@@ -140,6 +142,8 @@ package_mysql57(){
   install -m 644 -D "${srcdir}/mysqld-tmpfile.conf" "${pkgdir}/usr/lib/tmpfiles.d/mysqld.conf"
   install -m 755 -d "${pkgdir}/usr/lib/systemd/system"
   install -m 644 -D "${srcdir}/mysqld.service" "${pkgdir}/usr/lib/systemd/system/"
+  install -m 755 -d "${pkgdir}/usr/lib/sysusers.d"
+  install -m 644 "${srcdir}/systemd-sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 
   # provided by libmysqlclient
   rm "${pkgdir}/usr/bin/mysql_config"
