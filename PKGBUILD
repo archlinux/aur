@@ -4,18 +4,18 @@
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
 
 pkgname=flightgear-git
-pkgver=2020.3.0r14766.c5e45f2b4
+pkgver=2020.4.0r15376.4e432b3f8
 pkgrel=1
 pkgdesc="An open-source, multi-platform flight simulator"
 arch=('x86_64')
 url="https://home.flightgear.org"
 license=('GPL')
 depends=('libxmu' 'libxi' 'zlib' 'openscenegraph' 'libxrandr' 'glu' 'openal')
-makedepends=('boost' 'cmake' 'mesa' 'sharutils' 'simgear' 'qt5-base' 'qt5-declarative' 'qt5-svg')
+makedepends=('boost' 'cmake' 'git' 'mesa' 'sharutils' 'simgear' 'qt5-base' 'qt5-declarative' 'qt5-svg')
 optdepends=('qt5-base: fgfs --launcher'
             'qt5-declarative: fgfs --launcher'
             'flightgear-data')
-provides=('flightgear')
+provides=("flightgear=${pkgver}")
 conflicts=('flightgear')
 source=("flightgear::git+https://git.code.sf.net/p/flightgear/flightgear#branch=next")
 sha256sums=('SKIP')
