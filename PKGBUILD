@@ -10,7 +10,7 @@
 
 pkgname=ungoogled-chromium
 pkgver=90.0.4430.93
-pkgrel=1
+pkgrel=2
 _launcher_ver=7
 _gcc_patchset=6
 _pkgname=$(echo $pkgname | cut -d\- -f1-2)
@@ -26,7 +26,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs' 'pipewire'
-             'java-runtime-headless' 'python2' 'python2-setuptools')
+             'java-runtime-headless' 'python2' 'python2-setuptools' 'flatbuffers')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: needed for file dialogs in KDE'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
@@ -138,6 +138,9 @@ prepare() {
       \! -regex '.*\.\(gn\|gni\|isolate\)' \
       -delete
   done
+
+  # delete flatbuffers
+  rm -r third_party/flatbuffers
 
   ./build/linux/unbundle/replace_gn_files.py \
     --system-libraries "${!_system_libs[@]}"

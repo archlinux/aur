@@ -1,7 +1,7 @@
 pkgbase = ungoogled-chromium
 	pkgdesc = A lightweight approach to removing Google web service dependency
 	pkgver = 90.0.4430.93
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Eloston/ungoogled-chromium
 	arch = x86_64
 	license = BSD
@@ -16,6 +16,7 @@ pkgbase = ungoogled-chromium
 	makedepends = java-runtime-headless
 	makedepends = python2
 	makedepends = python2-setuptools
+	makedepends = flatbuffers
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
