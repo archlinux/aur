@@ -3,7 +3,7 @@
 
 _pkgname=hadolint
 pkgname=hadolint-git
-pkgver=2.1.0.r0.g85a5357
+pkgver=2.3.0.r2.g4b949a8
 pkgrel=1
 pkgdesc='Dockerfile linter, validate inline bash'
 url='https://github.com/hadolint/hadolint'
@@ -11,7 +11,7 @@ license=('GPL')
 source=('git+https://github.com/hadolint/hadolint.git')
 sha256sums=('SKIP')
 arch=('any')
-makedepends=('git' 'stack' 'libgmp-static')
+makedepends=('git' 'stack')
 provides=('hadolint')
 
 pkgver() {
@@ -27,7 +27,7 @@ package() {
   cd "${srcdir}/${_pkgname}"
 
   # Build
-  stack build hadolint
+  stack build hadolint --flag hadolint:-static
 
   # Install the program.
   install -Dm755 .stack-work/install/*/*/*/bin/hadolint "${pkgdir}/usr/bin/hadolint"
