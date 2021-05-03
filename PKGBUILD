@@ -1,28 +1,44 @@
-# Maintainer: Joseph R. Prostko <joe dot prostko at gmail dot com>
+# Maintainer: robertfoster
+# Contributor: Joseph R. Prostko <joe dot prostko at gmail dot com>
 
 pkgname=aptly
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Swiss Army knife for Debian repository management."
 url="https://www.aptly.info"
 license=('MIT')
 options=('!strip')
 arch=('i686' 'x86_64')
-source_i686=("https://github.com/aptly-dev/aptly/releases/download/v${pkgver}/aptly_1.4.0_linux_386.tar.gz")
-source_x86_64=("https://github.com/aptly-dev/aptly/releases/download/v${pkgver}/aptly_${pkgver}_linux_amd64.tar.gz")
-sha256sums_i686=('53aee380cbfc96dc2e7c30b3df2ae11524d7227af1f613ad0964a24a88e15b10')
-sha256sums_x86_64=('b3eb077d0e53b2361ab8db37b9bca1bf22018663274fddac0f3e4da6c48f1efb')
+_commit="f9d08e1377970d2b13410da3d1d452b935041a4e"
+_org="aptly-dev"
+_repo="aptly"
+source=("https://github.com/${_org}/${_repo}/archive/${_commit}.tar.gz")
+
+build() {
+  cd "${srcdir}/${pkgname}-${_commit}"
+  export GO11MODULE=on
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOPATH="$srcdir"
+  export GOFLAGS="-buildmode=pie -ldflags=-linkmode=external -trimpath -mod=readonly -modcacherw"
+  go build -o aptly_build
+}
 
 package() {
-    # Test for current architecture
-    if test "$CARCH" == x86_64; then
-      _arch="amd64"; else
-      _arch="386"
-    fi
-    
-    # Install the binary, along with the license file and the manual page
-    cd ${pkgname}_${pkgver}_linux_${_arch} 
-    install -Dm755 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
-    install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-    install -Dm644 man/${pkgname}.1 ${pkgdir}/usr/share/man/man1/${pkgname}.1
+  cd "${srcdir}/${pkgname}-${_commit}"
+  install -Dm755 "${pkgname}_build" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system"
+
+  mkdir -p "${pkgdir}/usr/share/man/man1" \
+    "${pkgdir}/usr/share/bash-completion/completions/" \
+    "${pkgdir}/usr/share/zsh/site-functions/"
+  cp completion.d/aptly "${pkgdir}/usr/share/bash-completion/completions/"
+  cp completion.d/_aptly "${pkgdir}/usr/share/zsh/site-functions/"
+  cp man/aptly.1 "${pkgdir}/usr/share/man/man1"
+  gzip "${pkgdir}/usr/share/man/man1/aptly.1"
 }
+
+sha256sums=('7904a9422d93d79839e315931dd7061b41a7d8b414612c6a9cfc1b0609fa4d45')
