@@ -10,7 +10,7 @@ _group=OpenModelica
 _name=OMLibraries
 _commit=c5f7048f4682b367d59a01145e777a041ac4a558
 depends=('openmodelica-omc')
-makedepends=('git' 'python-requests' 'python-simplejson' 'parallel-python' 'python-joblib' 'perl-xml-xpath')
+makedepends=('git' 'python-requests' 'python-simplejson' 'python-joblib' 'perl-xml-xpath')
 source=("git+https://github.com/${_group}/${_name}.git#commit=${_commit}")
 sha1sums=('SKIP')
 

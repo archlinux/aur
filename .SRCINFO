@@ -9,7 +9,6 @@ pkgbase = openmodelica-omlibraries
 	makedepends = git
 	makedepends = python-requests
 	makedepends = python-simplejson
-	makedepends = parallel-python
 	makedepends = python-joblib
 	makedepends = perl-xml-xpath
 	depends = openmodelica-omc
