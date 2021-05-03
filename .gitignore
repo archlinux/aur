@@ -2,5 +2,5 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!xorgxrdp-nvidia-git.install
+!xorgxrdp-nvidia.install
 !Dockerfile

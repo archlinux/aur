@@ -1,8 +1,8 @@
 # Maintainer: Jat <chat@jat.email>
 
 _pkgname=xorgxrdp
-pkgname=xorgxrdp-nvidia-git
-pkgver=0.2.15.r12.g37d8ae7
+pkgname=xorgxrdp-nvidia
+pkgver=0.2.16
 pkgrel=1
 pkgdesc="Xorg drivers for xrdp, with NVIDIA GPU support."
 arch=('i686' 'x86_64')
@@ -11,20 +11,20 @@ license=('MIT')
 provides=('xorgxrdp')
 conflicts=('xorgxrdp')
 depends=('nvidia')
-makedepends=('git' 'nasm' 'xorg-server-devel' 'xrdp-git')
+makedepends=('nasm' 'xorg-server-devel' 'xrdp')
 options=('staticlibs')
-source=('git+https://github.com/Nexarian/xorgxrdp.git#branch=resize_wyhash_egfx_nvidia_features')
-sha256sums=('SKIP')
+source=("https://github.com/neutrinolabs/xorgxrdp/releases/download/v$pkgver/xorgxrdp-$pkgver.tar.gz"{,.asc}
+        "nvidia.patch::https://github.com/neutrinolabs/xorgxrdp/compare/v$pkgver...jsorg71:nvidia_hack.diff")
+sha256sums=('e6b5f3df44cbf147dcbbc326cdd08c95fe28dba80c2a216e046fe42d962f9215'
+            'SKIP'
+            '5065757020d8a2d07096ee5dc3d7998b459dd0ea172907e52ae2945338cee154')
+validpgpkeys=('61ECEABBF2BB40E3A35DF30A9F72CDBC01BF10EB')  # Koichiro IWAO <meta@vmeta.jp>
 install="$pkgname.install"
 
-pkgver() {
-    cd "$_pkgname"
-
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 prepare() {
-  cd "$_pkgname"
+  cd "$_pkgname-$pkgver"
+
+  patch -p1 -i"${srcdir}/nvidia.patch"
 
   busid=$(nvidia-xconfig --query-gpu-info | grep -im1 busid | awk '{print $NF}')
   sed -i 's/Identifier "layout"/Identifier "X11 Server"/
@@ -33,15 +33,14 @@ prepare() {
 }
 
 build() {
-  cd "$_pkgname"
+  cd "$_pkgname-$pkgver"
 
-  ./bootstrap
   ./configure --prefix="/usr"
   make
 }
 
 package() {
-  cd "$_pkgname"
+  cd "$_pkgname-$pkgver"
 
   make DESTDIR="$pkgdir" install
   install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/$_pkgname"
