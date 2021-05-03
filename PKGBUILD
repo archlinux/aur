@@ -1,7 +1,7 @@
 # Maintainer: Noah Jelen <noahtjelen@gmail.com>
 
 pkgname=music-lounge-git
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Yet another music player"
 arch=('i686' 'x86_64')
