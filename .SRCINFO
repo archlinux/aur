@@ -1,14 +1,14 @@
 pkgbase = python2-gvgen
 	pkgdesc = Generates dot language files for easy scripting, to be processed with graphviz.
-	pkgver = 0.9.1
-	pkgrel = 3
-	url = http://www.picviz.com/en/community/gvgen/gvgen.html
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/stricaud/gvgen
 	arch = any
 	license = GPL2
 	depends = python2
-	source = http://www.picviz.com/downloads/gvgen-latest.tar.gz
-	md5sums = 950f6f5384ea21b1a3ac502cda266b05
-	sha256sums = 73fadff46ceea5309c2e8e9b47ba96917bfd9ae109c6228a994938e73efef39a
+	source = https://github.com/stricaud/gvgen/archive/refs/tags/v1.0.tar.gz
+	md5sums = 4f7430fbe65eee5d93c64b8f063b806f
+	sha256sums = 47510a6eb70a7a435bdcdf56e58b08a6bf3c8adf42e4ae5430d9fb9b7760872b
 
 pkgname = python2-gvgen
 

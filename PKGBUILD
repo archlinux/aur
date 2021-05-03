@@ -2,21 +2,27 @@
 # Contributor: Han Xiao <arak.hx@gmail.com>
 
 pkgname=python2-gvgen
-_pythonname='gvgen'
-pkgver=0.9.1
-pkgrel=3
+_name=${pkgname#python2-}
+pkgver=1.0
+pkgrel=1
 pkgdesc='Generates dot language files for easy scripting, to be processed with graphviz.'
 arch=('any')
-url='http://www.picviz.com/en/community/gvgen/gvgen.html'
+url='https://github.com/stricaud/gvgen'
 license=('GPL2')
 depends=('python2')
 makedepends=()
-source=("http://www.picviz.com/downloads/${_pythonname}-latest.tar.gz")
+source=("https://github.com/stricaud/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
+md5sums=('4f7430fbe65eee5d93c64b8f063b806f')
+sha256sums=('47510a6eb70a7a435bdcdf56e58b08a6bf3c8adf42e4ae5430d9fb9b7760872b')
 
-package() {
-    cd "$srcdir/${_pythonname}-latest"
-    python2 setup.py install --prefix=/usr --root=$pkgdir
+PYTHON='python2'
+
+build() {
+  cd "${srcdir}/${_name}-${pkgver}"
+  $PYTHON setup.py build
 }
 
-md5sums=('950f6f5384ea21b1a3ac502cda266b05')
-sha256sums=('73fadff46ceea5309c2e8e9b47ba96917bfd9ae109c6228a994938e73efef39a')
+package() {
+    cd "$srcdir/${_name}-${pkgver}"
+    $PYTHON setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
