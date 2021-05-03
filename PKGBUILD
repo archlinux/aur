@@ -2,7 +2,7 @@
 
 pkgname='nautilus-hide-git'
 _extname='nautilus-hide'
-pkgver='r3.08c61f6'
+pkgver='r4.3806692'
 pkgrel=1
 pkgdesc='A simple Nautilus extension that adds "Hide" and "Unhide" to Nautilus right-click menu'
 arch=('i686' 'x86_64')
