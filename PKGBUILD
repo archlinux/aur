@@ -1,36 +1,32 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=edwood-git
-pkgver=r414.6b29b01
+pkgver=v0.2.0.r81.g70e9289
 pkgrel=1
-epoch=
 pkgdesc="Go version of Plan9 Acme Editor "
 arch=('i686' 'x86_64')
 url="https://github.com/rjkroege/edwood"
 license=('BSD 3-Clause')
-categories=()
-groups=()
 depends=('plan9port')
 makedepends=('git' 'go')
-optdepends=()
-checkdepends=()
 provides=()
 conflicts=("${pkgname%-*}")
-replaces=()
-backup=()
-options=()
-changelog=
-install=
-noextract=()
+source=(git+$url)
 _gourl=github.com/rjkroege/edwood
 
 pkgver() {
-  GOPATH="$srcdir" go get -d ${_gourl}
-  cd "$srcdir/src/${_gourl}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+   cd edwood
+   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  GOPATH="$srcdir" go get -fix -v ${_gourl}
+  mkdir edwood/go-build
+  cd edwood
+ export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o go-build .
 }
 
 #check() {
@@ -38,9 +34,10 @@ build() {
 #}
 
 package() {
-  cd "$srcdir"
-  install -Dm755 bin/edwood "$pkgdir/usr/bin/edwood"
-  install -Dm644 src/${_gourl}/README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
-  install -Dm644 src/${_gourl}/LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
+  cd "$srcdir/edwood"
+  install -Dm755 go-build/edwood "$pkgdir/usr/bin/edwood"
+  install -Dm644 README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
+  install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
 }
 
+sha256sums=('SKIP')
