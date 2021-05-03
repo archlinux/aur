@@ -1,0 +1,30 @@
+pkgbase = wanderers-git
+	pkgdesc = An open world adventure and dungeon crawling game
+	pkgver = r97.054c1cd
+	pkgrel = 1
+	url = https://github.com/a-nikolaev/wanderers
+	arch = x86_64
+	license = GPL3
+	makedepends = sdl2
+	makedepends = sdl2_mixer
+	makedepends = sdl2_ttf
+	makedepends = sdl2_net
+	makedepends = sdl2_image
+	depends = ocaml
+	depends = ocaml-graphics
+	depends = sdl2
+	depends = sdl2_mixer
+	depends = sdl2_ttf
+	depends = sdl2_net
+	depends = sdl2_image
+	source = wanderers::git+https://github.com/a-nikolaev/wanderers.git
+	source = game.save
+	source = wanderers.desktop
+	source = wanderers.png
+	sha256sums = SKIP
+	sha256sums = 885e40f5eda48b5e038c21e95205f26a6926b1c57945a6372a3e3a921a955fd2
+	sha256sums = 10cbbe46afda68f125da45a1e66440f24229fdad3600a3aed86150107ebc9dbe
+	sha256sums = 3fa60dca3791f6bf62abe0904abf7bdb2b2b3ca3ca0162b9e254c8cbb1f7c502
+
+pkgname = wanderers-git
+

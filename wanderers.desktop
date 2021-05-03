@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=WANDERERS
+Comment=An open world adventure and dungeon crawling game
+Exec=wanderers
+Icon=wanderers
+Terminal=false
+StartupNotify=false
+Categories=Game;
