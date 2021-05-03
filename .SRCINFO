@@ -1,0 +1,21 @@
+pkgbase = soqt-git
+	pkgdesc = The glue between Coin and Qt
+	pkgver = r2135.2f85c94b
+	pkgrel = 1
+	url = https://github.com/coin3d/soqt
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = mesa
+	makedepends = ninja
+	makedepends = doxygen
+	depends = coin
+	depends = qt5-base
+	provides = soqt
+	conflicts = soqt
+	source = git+https://github.com/coin3d/soqt
+	sha256sums = SKIP
+
+pkgname = soqt-git
+
