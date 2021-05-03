@@ -9,7 +9,6 @@ pkgbase = lynx-desktop-settings
 	depends = dex
 	depends = qt5-styleplugins
 	depends = dunst
-	depends = xcursor-breeze
 	depends = qt5ct
 	depends = polkit-gnome
 	depends = sxhkd-git

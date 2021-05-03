@@ -14,7 +14,6 @@ depends=(
         'dex'
         'qt5-styleplugins'
         'dunst'
-        'xcursor-breeze'
         'qt5ct'
         'polkit-gnome'
         'sxhkd-git'
