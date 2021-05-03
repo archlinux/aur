@@ -1,8 +1,8 @@
 # Contributor: ConnorBehan <connor.behan@gmail.com>
 
 pkgname=perl4-corelibs
-pkgver=0.003
-pkgrel=4
+pkgver=0.004
+pkgrel=1
 pkgdesc="Deprecated libraries slated for removal from perl5"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/~zefram/Perl4-CoreLibs-${pkgver}"
@@ -13,13 +13,13 @@ source=(http://search.cpan.org/CPAN/authors/id/Z/ZE/ZEFRAM/Perl4-CoreLibs-${pkgv
 
 build() {
   cd "$srcdir"/Perl4-CoreLibs-$pkgver
-  perl Makefile.PL INSTALLDIRS=vendor
-  make
+  perl Build.PL
+  ./Build
 }
 
 package() {
   cd "$srcdir"/Perl4-CoreLibs-$pkgver
-  make DESTDIR="$pkgdir" install
+  ./Build destdir="$pkgdir" installdirs=vendor install
   rm -r "$pkgdir"/usr/lib
 }
-md5sums=('f74747c234470a087871f564a5f5db15')
+md5sums=('1595fb1cd62c70935081f6a115e8120a')
