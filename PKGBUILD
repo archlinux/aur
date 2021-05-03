@@ -7,7 +7,7 @@ pkgdesc="A shell written in Go and extended with Lua"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hilbis/hilbish"
 license=('MIT')
-depends=('readline' 'lua51-lunacolors')
+depends=('readline' 'lua51-lunacolors-git')
 makedepends=('go>=1.16')
 optdepends=('lua')
 install="$pkgname.install"
