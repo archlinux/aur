@@ -1,0 +1,11 @@
+TERMS OF USE:
+
+I am doing my best to continuously develop VfrFlight and support it in my free time. However, I don't guarantee that this software is free of bugs.
+
+You are using this on your sole responsibility.
+
+VfrFlight uses free, openly accessed data and I don't guarantee that it is current and accurate with reality. That is why VfrFlight should not be used as a sole and primary source of information for flight preparation, but as a supplementary and secondary role to traditional methods and sources provided and approved by legal authorities.
+
+Minimum Safe Altitudes, calculated by this application, are based on maximum terrain elevation in given area +1000 feet. These calculations don't include obstacles height.
+
+USE IT AT YOUR OWN RISK. You are Pilot in Command and you should decide on your own. Never plan your route altitude without sensible safe altitudes and don't relay on accuracy of elevation data provided by VfrFlight. 
