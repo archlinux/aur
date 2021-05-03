@@ -1,13 +1,13 @@
 pkgbase = plasma5-applets-latte-sidebar-button
 	pkgdesc = Plasma applet to show and hide Latte Sidebars
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/psifidotos/applet-latte-sidebar-button
 	arch = any
 	license = GPL2
 	depends = plasma-workspace
-	source = plasma5-applets-latte-sidebar-button-0.1.2.tar.gz::https://github.com/psifidotos/applet-latte-sidebar-button/archive/0.1.2.tar.gz
-	sha256sums = 7c69bdeaf3dbf37026c78fc4dae842c9cc2f029330acb18c7d1ee3397cae1424
+	source = plasma5-applets-latte-sidebar-button-0.2.0.tar.gz::https://github.com/psifidotos/applet-latte-sidebar-button/archive/0.2.0.tar.gz
+	sha256sums = 9bef2d7fad8fa023a02d995673d23f2c3af9d7b598509ddb3a689590b9831418
 
 pkgname = plasma5-applets-latte-sidebar-button
 
