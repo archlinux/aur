@@ -1,7 +1,7 @@
 # Maintainer: Edgar Luque <git@edgarluque.com>
 pkgname=digital
 pkgver=0.27
-pkgrel=2
+pkgrel=3
 pkgdesc="A digital logic designer and circuit simulator."
 arch=('x86_64')
 url="https://github.com/hneemann/Digital"
@@ -31,8 +31,8 @@ package() {
 	install -vDm644 "$srcdir/Digital/ReleaseNotes.txt" "$pkgdir/usr/share/doc/$pkgname/changelog.txt"
 	install -vDm644 "$srcdir/Digital/Digital.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
 	install -vDm644 "$srcdir/Digital/linux/digital-simulator.xml" "$pkgdir/usr/share/mime/packages/digital-simulator.xml"
-	install -vdDm644 "$srcdir/Digital/lib/" "$pkgdir/usr/share/java/$pkgname/lib/"
-	install -vdDm644 "$srcdir/Digital/examples/" "$pkgdir/usr/share/java/$pkgname/examples/"
+	cp -dr --no-preserve=ownership "$srcdir/Digital/lib/" "$pkgdir/usr/share/java/$pkgname/lib/"
+	cp -dr --no-preserve=ownership "$srcdir/Digital/examples/" "$pkgdir/usr/share/java/$pkgname/examples/"
 	install -vDm644 digital.desktop "$pkgdir/usr/share/applications/$pkgname/$pkgname.desktop"
 	install -vDm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 	for SIZE in 16 32 48 128 256 512
