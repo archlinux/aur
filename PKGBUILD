@@ -1,7 +1,9 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Contributor: Kyle Keen <keenerd@gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Sandarr95
 
 pkgname=femto-emacs-git
-pkgver=2016.08.27.dcde8d2
+pkgver=2019.12.16.abb1c38
 pkgrel=1
 pkgdesc="Tiny emacs clone with configuring in FemtoLisp"
 url="https://github.com/FemtoEmacs/Femto-Emacs/"
@@ -22,9 +24,8 @@ pkgver() {
 
 prepare() {
   cd "$_gitname"
-  # tweaks for system-wide config
-  sed -i 's|"aliases.scm"|"/usr/share/femto-emacs/aliases.scm"|' init.lsp
-  sed -i 's|getenv("HOME")|"/usr/share/femto-emacs"|' femtolisp/{flcall.c,lixo.c}
+  sed -i 's|"femtolisp/aliases.scm"|"/usr/share/femto-emacs/aliases.scm"|' init.lsp
+  sed -i 's|getenv("HOME")|"/usr/share/femto-emacs"|' femtolisp/flcall.c
 }
 
 build() {
@@ -34,9 +35,9 @@ build() {
 
 package() {
   cd "$_gitname"
-  install -Dm755 femto       "$pkgdir/usr/bin/femto"
-  install -Dm644 femto.boot  "$pkgdir/usr/bin/femto.boot"
-  install -Dm644 init.lsp    "$pkgdir/usr/share/femto-emacs/init.lsp"
-  install -Dm644 aliases.scm "$pkgdir/usr/share/femto-emacs/aliases.scm"
-  install -Dm644 femtolisp/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 femto                 "$pkgdir"/usr/bin/femto
+  install -Dm644 femto.boot            "$pkgdir"/usr/bin/femto.boot
+  install -Dm644 init.lsp              "$pkgdir"/usr/share/femto-emacs/init.lsp
+  install -Dm644 femtolisp/aliases.scm "$pkgdir"/usr/share/femto-emacs/aliases.scm
+  install -Dm644 femtolisp/LICENSE     "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
