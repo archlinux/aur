@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=freecad-git
-pkgver=0.19.r421.gfafff351aa
+pkgver=0.19.r559.gccc4151b30
 pkgrel=1
 epoch=0
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
@@ -29,6 +29,8 @@ qt5-x11extras
 qt5-xmlpatterns
 shared-mime-info
 xerces-c
+vtk
+#vtk9-java
 )
 makedepends=(
 boost
@@ -61,6 +63,10 @@ pkgver() {
 
 prepare() {
   cd FreeCAD
+
+  # add support for vtk version 9
+  curl https://github.com/wwmayer/FreeCAD/commit/52599f771fa934ceeb11a970c3639bfa8f90411e.patch | patch -p1 --forward || true
+
   #git revert --no-commit 663ac994a794606e56d086cac85598517bd323dc
   #git checkout 927fdc9edc
 }
@@ -73,6 +79,10 @@ build() {
     -D BUILD_QT5=ON \
     -D BUILD_FEM=ON \
     -D BUILD_MESH=ON \
+    -D BUILD_MESH_PART=ON \
+    -D BUILD_SHIP=ON \
+    -D BUILD_ASSEMBLY=OFF \
+    -D BUILD_PLOT=ON \
     -D CMAKE_INSTALL_PREFIX="" \
     -D CMAKE_BUILD_TYPE=None \
     -D CMAKE_C_FLAGS="${CFLAGS} -fPIC -w" \
@@ -93,35 +103,23 @@ check() {
   DESTDIR=check cmake --build build_dir -- install
 
   cd build_dir/check
-  export LD_LIBRARY_PATH=lib:${LD_LIBRARY_PATH}
-  #exit
-  export PYTHONPATH=lib
+  export LD_LIBRARY_PATH="$(pwd)/lib"
+  export PYTHONPATH="$(pwd)/lib"
   bin/FreeCADCmd --console --run-test 0
 }
 
 package() {
   cd FreeCAD
-  local _destdir=/usr/local/freecad  # maybe this belongs in /opt/freecad-git
+  local _destdir=/usr  # maybe this belongs in /opt/freecad-git
   DESTDIR="${pkgdir}${_destdir}" cmake --build build_dir -- install
 
-  mkdir -p "${pkgdir}"/usr/{share,bin,lib}
+  # fix some bad install locations
+  mkdir -p "${pkgdir}${_destdir}"/share/freecad
+  mv "${pkgdir}${_destdir}"/share/{examples,Mod,Gui} "${pkgdir}${_destdir}"/share/freecad
 
-  # links for bin
-  FILES="${pkgdir}${_destdir}"/bin/*
-  for f in $FILES
-  do
-    ln -s ${_destdir}/bin/$(basename $f) "${pkgdir}"/usr/bin/$(basename $f)
-  done
-
-  # links for lib
-  FILES="${pkgdir}${_destdir}"/lib/*
-  for f in $FILES
-  do
-    ln -s ${_destdir}/lib/$(basename $f) "${pkgdir}"/usr/lib/$(basename $f)
-  done
-
-  # manage share files
-  mv "${pkgdir}${_destdir}"/share/{applications,doc,icons,metainfo,mime,pixmaps,thumbnailers} "${pkgdir}"/usr/share
+  # fix Ext & Mod locations
+  mkdir -p "${pkgdir}${_destdir}"/lib/freecad
+  mv "${pkgdir}${_destdir}"/{Ext,Mod} "${pkgdir}${_destdir}"/lib/freecad
 
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 "${pkgdir}${_destdir}"/share/License.txt
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICENSE
