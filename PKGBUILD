@@ -70,6 +70,7 @@ package() {
   install -m644 misc/emacs/ini-mode.el ${pkgdir}/usr/share/emacs/site-lisp
 
   install -d ${pkgdir}/opt/omnetpp
+  cp -R samples/* ${pkgdir}/opt/omnetpp
   cp -R ide ${pkgdir}/opt/omnetpp
   touch ${pkgdir}/opt/omnetpp/ide/error.log
   chmod a+rw ${pkgdir}/opt/omnetpp/ide/error.log
