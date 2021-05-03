@@ -5,7 +5,7 @@ _name='usbimager'
 _pkgname="${_name}-x11"
 pkgname="${_pkgname}-bin"
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimal GUI application to write compressed disk images to USB drives (X11 Frontend)'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://gitlab.com/bztsrc/usbimager'
@@ -23,7 +23,7 @@ source_aarch64=("${_pkgname}-${pkgver}-aarch64.zip::${url}/-/raw/binaries/${_nam
 
 sha256sums=('bbc44ee4aa2241847fafbe031f2ce127a2c2b32d7dd1afbe4a031d071f9f559b'
             '6fcb3449da17f96893b74d52bc248fd11fd0d6b0731c9f5d8e2065bbe2685e0b')
-sha256sums_x86_64=('cc90063245840d6ee7477b7308725e22bf539d985cd9cc2feb464dab488b9107')
+sha256sums_x86_64=('e6b37ba80f25e41a0682510c19a5736f46a1000e17791bd7e4e3f348445ddac9')
 sha256sums_armv7h=('0570a6cde9bf3771e540c062845805f6390d2ce05080298437b7b8c454948384')
 sha256sums_aarch64=('1fe242601359a727ff6f40cca7488237fcf32d40f780b21e5fd37b426e6aed31')
 
