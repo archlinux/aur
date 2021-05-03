@@ -1,13 +1,14 @@
 pkgbase = strawberry-qt6-git
 	pkgdesc = A music player aimed at audio enthusiasts and music collectors (QT6 version)
-	pkgver = 0.9.3.r20.ga8b4d724
-	pkgrel = 1
+	pkgver = 0.9.3.r24.ge18e1749
+	pkgrel = 2
 	url = https://www.strawbs.org/
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	makedepends = boost
 	makedepends = qt6-tools
+	makedepends = gmock
 	depends = chromaprint
 	depends = protobuf
 	depends = gst-plugins-base
