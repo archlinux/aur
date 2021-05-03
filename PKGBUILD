@@ -29,6 +29,10 @@ prepare() {
   msg2 "Patching sources for CUDA v10"
   sed -i 's|nvcuvid.h|nvidia-sdk/nvcuvid.h|' opencv_contrib-$pkgver/modules/cud*/src/*.hpp
 
+  # See https://github.com/opencv/opencv/issues/19846
+  msg2 "Patching sources for lapack 3.9.1"
+  find "opencv-$pkgver" -name '*.cpp' -exec sed -i s/dgels_/LAPACK_dgels/g {} \;
+
   mkdir -p build
 }
 
