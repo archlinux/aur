@@ -1,7 +1,7 @@
 pkgbase = python-docrep
 	pkgdesc = A Python Module for intelligent reuse of docstrings
 	pkgver = 0.3.1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/Chilipp/docrep
 	arch = any
 	license = GPL
