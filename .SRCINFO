@@ -7,6 +7,7 @@ pkgbase = pidgin-broadcast
 	arch = x86_64
 	license = GPL2
 	makedepends = perl-xml-parser
+	makedepends = mercurial
 	depends = pidgin
 	source = hg+https://keep.imfreedom.org/pidgin/purple-plugin-pack/
 	md5sums = SKIP

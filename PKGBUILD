@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://keep.imfreedom.org/pidgin/purple-plugin-pack/"
 license=('GPL2')
 depends=('pidgin')
-makedepends=('perl-xml-parser')
+makedepends=('perl-xml-parser' 'mercurial')
 #http://downloads.guifications.org/plugins/Plugin%20Pack%20Archive/purple-plugin_pack-$pkgver.tar.bz2
 #https://bitbucket.org/rekkanoryo/purple-plugin-pack/get/pp_2_2_0.tar.bz2
 source=('hg+https://keep.imfreedom.org/pidgin/purple-plugin-pack/')
