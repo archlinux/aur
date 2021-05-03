@@ -1,7 +1,7 @@
 pkgbase = python-adb-git
 	pkgdesc = Python ADB + Fastboot implementation
-	pkgver = r65.fb09de9
-	pkgrel = 10
+	pkgver = r109.f4e597f
+	pkgrel = 1
 	url = https://github.com/google/python-adb.git
 	arch = any
 	license = apachev2
