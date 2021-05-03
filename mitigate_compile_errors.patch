@@ -1,0 +1,12 @@
+diff --git a/setup.py b/setup.py
+index 9be0468e..dab4b624 100755
+--- a/setup.py
++++ b/setup.py
+@@ -74,6 +74,7 @@ class cmake_build(build):
+         python_version = "{v[0]}.{v[1]}".format(v=platform.python_version_tuple())
+         self._build(
+             "build_{}".format(python_version),
++            " -DPYMESH_USE_CORK=Off -DPYMESH_USE_MMG=Off" +
+             " -DPythonLibsNew_FIND_VERSION={}".format(python_version),
+             False,
+         )

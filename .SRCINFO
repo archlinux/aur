@@ -1,21 +1,32 @@
 pkgbase = python-pymesh-git
-	pkgdesc = Geometry Processing Library for Python
-	pkgver = 20170324
+	pkgver = r2064.384ba882
 	pkgrel = 1
-	url = https://github.com/qnzhou/PyMesh
 	arch = i686
 	arch = x86_64
-	license = MPL
+	license = GPL
 	makedepends = git
-	makedepends = swig
-	depends = python-scipy
-	depends = eigen
-	depends = cgal
-	depends = sparsehash
-	depends = suitesparse
-	options = !emptydirs
-	source = git+https://github.com/qnzhou/PyMesh.git#branch=master
+	makedepends = cmake
+	makedepends = python
+	makedepends = python-scipy
+	makedepends = python-nose
+	makedepends = python-numpy
+	makedepends = cork-git
+	makedepends = cgal
+	makedepends = eigen
+	makedepends = triangle
+	makedepends = qhull
+	makedepends = draco
+	makedepends = tbb
+	makedepends = mmg
+	makedepends = nlohmann-json
+	provides = python-pymesh
+	conflicts = python-pymesh
+	source = python-pymesh::git+https://github.com/PyMesh/PyMesh.git
+	source = disable_third_party.patch
+	source = mitigate_compile_errors.patch
 	md5sums = SKIP
+	md5sums = c3f33b2c3795218e8811ceb18776c672
+	md5sums = fe3c9982fd5bd89b55642d969f82976d
 
 pkgname = python-pymesh-git
 
