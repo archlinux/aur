@@ -1,4 +1,4 @@
-# Maintainer: altaway <aur@altaway.uk> 
+# Maintainer: altaway <aur at altaway dot uk> 
 pkgname_orig=hpack
 pkgname=${pkgname_orig}-static-bin
 pkgver=0.34.2
