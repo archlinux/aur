@@ -1,0 +1,37 @@
+pkgbase = 64gram-desktop-bin
+	pkgdesc = Unofficial desktop version of Telegram messaging app - binary version
+	pkgver = 2.7.4.1
+	pkgrel = 1
+	url = https://github.com/TDesktop-x64/tdesktop
+	arch = x86_64
+	license = GPL3
+	depends = desktop-file-utils
+	depends = glib2
+	depends = hicolor-icon-theme
+	depends = libdbus
+	depends = libx11
+	optdepends = ttf-opensans: default Open Sans font family
+	provides = 64gram-desktop
+	conflicts = telegram-desktop
+	conflicts = 64gram-desktop
+	source = https://github.com/TDesktop-x64/tdesktop/raw/dev/lib/xdg/telegramdesktop.desktop
+	source = https://github.com/TDesktop-x64/tdesktop/raw/dev/Telegram/Resources/art/icon16.png
+	source = https://github.com/TDesktop-x64/tdesktop/raw/dev/Telegram/Resources/art/icon32.png
+	source = https://github.com/TDesktop-x64/tdesktop/raw/dev/Telegram/Resources/art/icon48.png
+	source = https://github.com/TDesktop-x64/tdesktop/raw/dev/Telegram/Resources/art/icon64.png
+	source = https://github.com/TDesktop-x64/tdesktop/raw/dev/Telegram/Resources/art/icon128.png
+	source = https://github.com/TDesktop-x64/tdesktop/raw/dev/Telegram/Resources/art/icon256.png
+	source = https://github.com/TDesktop-x64/tdesktop/raw/dev/Telegram/Resources/art/icon512.png
+	source = https://github.com/TDesktop-x64/tdesktop/releases/download/v2.7.4.1/64Gram_2.7.4.1_linux.zip
+	sha256sums = 324e312734dfae1f36eb71aaeb5072f6f051171cf067ff22a4517fde5102e27a
+	sha256sums = fc052d1e28b68761bfb6c30ff012e54a4bba0311fc3fc470c728d028c33e9d9f
+	sha256sums = 8ae874ada23687c95cbcfe7cfa4cbe1c37f097d9c96e5a836c20109d976a86c7
+	sha256sums = 57d9c71074a619dbe6c361e49f4bee60b1b8c574d8b223d75e61b3744b660ed1
+	sha256sums = 10507a1ddc379b00230c6f6e2bd9f94ea0c7caff9cae05335a66b4d10b7571eb
+	sha256sums = 83e3e8eeecadcb3429704626d4ac80ef61ef4e06ba2c6ca2b105a4a436f33032
+	sha256sums = 871f2a6d3bd9d657f8379196e51fd3117c1586e0042e9e993ae138f78b2bcd76
+	sha256sums = a9eb77ca5a428b32f6e01f62b859cce788c4c9a170dc2cd080800a9de59faa3d
+	sha256sums = 9679968c3759e737ceb1088d57e49490dd7937ae9d0e8319226c120a20f0cc92
+
+pkgname = 64gram-desktop-bin
+
