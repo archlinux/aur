@@ -1,14 +1,14 @@
 # Maintainer: uint2048_t
 pkgname=das-keyboard-q
-pkgver=3.2.8
+pkgver=3.3.2
 pkgrel=1
-pkgdesc="Software for Das Keyboard 4/5Q."
+pkgdesc="Software for Das Keyboard 5Q, 5Qs, 4Q."
 arch=('x86_64')
 url=https://www.daskeyboard.io/get-started/software/
 license=('unknown')
 options=('emptydirs')
-source=("https://download.daskeyboard.com/q-software-releases/3.2.8/Das-Keyboard-Q_3.2.8.deb")
-md5sums=('fb888ead37997f1b17d17f7fa042f461')
+source=("https://download.daskeyboard.com/q-software-releases/3.3.2/Das-Keyboard-Q_3.3.2.deb")
+md5sums=('5ce70b66b2dd24a6b341f6ba68fc5042')
 
 package() {
 	tar xf data.tar.xz -C "${pkgdir}"
