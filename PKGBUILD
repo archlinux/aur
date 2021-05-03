@@ -2,7 +2,7 @@
 
 pkgname=chemtool-proper
 pkgver=1.6.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Chemtool without the stupid right justified help menu"
 arch=(i686 x86_64)
 license=('GPL2')
@@ -16,6 +16,7 @@ source=(http://ruby.chemie.uni-freiburg.de/~martin/chemtool/chemtool-$pkgver.tar
 build() {
   cd "$srcdir"/chemtool-$pkgver
   sed -i -e 's/.*right_justify.*//g' main.c
+  CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
   ./configure --prefix=/usr --mandir=/usr/share/man
   make
 }
