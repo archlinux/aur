@@ -1,7 +1,7 @@
 pkgbase = opentodolist
 	pkgdesc = Maintain todo lists, notes and images in libraries, which can be synced via various services like NextCloud between your devices.
 	pkgver = 3.34.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opentodolist.rpdev.net/
 	arch = x86_64
 	license = GPL
