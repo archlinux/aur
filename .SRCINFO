@@ -1,11 +1,12 @@
 pkgbase = app-outlet
 	pkgdesc = A Universal linux app store
 	pkgver = 1.3.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://app-outlet.github.io
 	arch = x86_64
 	license = MIT
 	makedepends = nvm
+	makedepends = rpm-tools
 	source = app-outlet-1.3.4.tar.gz::https://github.com/app-outlet/app-outlet/archive/refs/tags/v1.3.4.tar.gz
 	sha256sums = bb3a1aeffbac83a177f1e86f9cb02a5d18c93fd9c736ae65be31aa89fd146f68
 
