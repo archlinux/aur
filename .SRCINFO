@@ -1,7 +1,7 @@
 pkgbase = youtubedl-gui
 	pkgdesc = Download Youtube videos to local audio or video files.
 	pkgver = 2.5
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = GPL3
 	makedepends = qt5-quickcontrols
@@ -10,7 +10,8 @@ pkgbase = youtubedl-gui
 	depends = qt5-base
 	depends = ffmpeg
 	depends = hicolor-icon-theme
-	conflicts = youtubedl-gui-beta
+	provides = youtubedl-gui
+	conflicts = youtubedl-gui
 	source = https://github.com/JaGoLi/ytdl-gui/archive/2.5.tar.gz
 	sha256sums = d725f94061819f9366e6a170e9cebd06dd6bf824d180a13976f7b1f9bd8e5754
 
