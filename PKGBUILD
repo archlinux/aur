@@ -1,5 +1,5 @@
 pkgname=fmilib
-pkgver=2.2.3
+pkgver=2.3
 pkgrel=1
 pkgdesc="open-source implementation of the FMI open standard"
 arch=('x86_64')
@@ -8,7 +8,7 @@ makedepends=('cmake')
 depends=('minizip' 'expat')
 license=('BSD')
 source=("https://github.com/modelon-community/fmi-library/archive/${pkgver}.tar.gz")
-sha256sums=('9a7f70f3ad3ad06c1a33c6bd80ddd6552f065f6a514de3fade99f82a3bd720dc')
+sha256sums=('826bf4ee9ab52673e8993fe3e275505adeddd8d7c9ee3cb152c700108f82a05a')
 
 prepare() {
   cd "$srcdir"/fmi-library-${pkgver}
