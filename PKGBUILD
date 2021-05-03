@@ -1,16 +1,16 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=platypus
-pkgver=1.3.8
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="A modern multiple reverse shell sessions manager written in go"
 arch=("x86_64" "i686")
 url="https://github.com/WangYihang/Platypus"
 license=("LGPL3")
 depends=("glibc")
-makedepends=("go" "yarn" "go-bindata")
+makedepends=("go" "yarn" "go-bindata" "python" "nodejs-lts-erbium")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('66d6adc8ed5074189f0e625da5d1496fe65b436db05e7fb9fd0a06491e69dda0')
+sha256sums=('bf8f1dbaa1144c506316d80d230becf30130a2310c9ec363bcd896339d45d55f')
 
 build() {
   cd Platypus-${pkgver}
@@ -22,10 +22,10 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build .
+  go build -o platypus platypus.go
 }
 
 package() {
   cd Platypus-${pkgver}
-  install -Dm755 Platypus ${pkgdir}/usr/bin/${pkgname}
+  install -Dm755 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
 }
