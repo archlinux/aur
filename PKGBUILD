@@ -2,7 +2,7 @@
 pkgname=minlau-git
 _pkgname=minlau
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalist game launcher for wine"
 url="https://github.com/theRealCarneiro/minlau"
 arch=('i686' 'x86_64')
