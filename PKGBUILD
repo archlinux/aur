@@ -1,7 +1,7 @@
 pkgname=strawberry-qt6-git
 _name=strawberry
-pkgver=0.9.3.r20.ga8b4d724
-pkgrel=1
+pkgver=0.9.3.r24.ge18e1749
+pkgrel=2
 pkgdesc='A music player aimed at audio enthusiasts and music collectors (QT6 version)'
 arch=(x86_64)
 url='https://www.strawbs.org/'
@@ -10,7 +10,6 @@ depends=(chromaprint
          protobuf
          gst-plugins-base
          gst-plugins-good
-         #qt6-x11extras
          udisks2
          libcdio
          libgpod
@@ -19,7 +18,8 @@ depends=(chromaprint
 conflicts=(strawberry)
 makedepends=(cmake
              boost
-             qt6-tools)
+             qt6-tools
+             gmock)
 optdepends=('gst-libav: additional codecs'
             'gst-plugins-bad: additional codecs'
             'gst-plugins-ugly: additional codecs')
