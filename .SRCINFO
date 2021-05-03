@@ -1,7 +1,7 @@
 pkgbase = mpv-pipewire
 	pkgdesc = a free, open source, and cross-platform media player including an experimental PipeWire audio backend
 	pkgver = 0.33.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://mpv.io/
 	arch = x86_64
 	license = GPL3
@@ -79,6 +79,7 @@ pkgbase = mpv-pipewire
 	depends = zlib
 	optdepends = youtube-dl: for video-sharing websites playback
 	provides = libmpv.so
+	provides = mpv
 	conflicts = mpv
 	options = !emptydirs
 	source = git+https://github.com/mpv-player/mpv.git#tag=4c9d3669a0f672e6754ac456acd324db570964d3?signed
