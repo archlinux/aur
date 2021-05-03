@@ -1,23 +1,21 @@
 # Maintainer: Jason Goulet-Lipman <jason.gouletlipman@gmail.com>
 pkgname=youtubedl-gui-beta
 _pkgname=ytdl-gui
-pkgver=20210125.r73.0bbc2c1
+pkgver=latest
 pkgrel=1
 arch=('x86_64')
 license=('GPL3')
 pkgdesc="Download Youtube videos to local audio or video files. - Beta Branch"
 source=("git+https://github.com/JaGoLi/$_pkgname#branch=beta")
-install="youtubedl-gui.install"
 md5sums=('SKIP')
 conflicts=("youtubedl-gui")
 makedepends=("git"
-	     "qt5-quickcontrols")
+	     "qt5-quickcontrols"
+	     "cmake")
 depends=("youtube-dl"
 	 "qt5-base"
 	 "ffmpeg"
-	 "hicolor-icon-theme"
-	 "gtk-update-icon-cache")
-
+	 "hicolor-icon-theme")
 
 pkgver(){
   	cd ${_pkgname}
@@ -27,10 +25,11 @@ pkgver(){
 
 build() {
 	cd ${_pkgname}
-	make build
+	cmake -B build
+	make -C build -j`nproc`
 }
 
 package() {
 	cd ${_pkgname}
-	make DESTDIR="$pkgdir/" install
+	make -C build DESTDIR="$pkgdir/" install
 }
