@@ -6,3 +6,10 @@
 
 # Ignore Archinux packages
 *.pkg.tar.*
+
+# Ignore common directories.
+/src/
+/pkg/
+
+# Ignore bare repo.
+/jax/
