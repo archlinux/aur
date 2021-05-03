@@ -1,6 +1,6 @@
 pkgbase = beamerpresenter-git
 	pkgdesc = Modular multi-screen pdf presenter (git)
-	pkgver = 0.2.0
+	pkgver = 0.2.0_509.1d7d575
 	pkgrel = 1
 	url = https://github.com/stiglers-eponym/BeamerPresenter
 	install = beamerpresenter.install

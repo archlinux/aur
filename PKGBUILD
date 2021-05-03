@@ -2,7 +2,7 @@
 # The default configuration installs the MuPDF version.
 _renderer=mupdf
 pkgname=beamerpresenter-git
-pkgver=0.2.0
+pkgver=0.2.0_509.1d7d575
 pkgrel=1
 pkgdesc="Modular multi-screen pdf presenter (git)"
 arch=('x86_64')
