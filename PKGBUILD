@@ -1,7 +1,7 @@
 # Maintainer: qvshuo
 
 pkgname=wechat-nativefier
-pkgver=20210503.5
+pkgver=20210503.6
 pkgrel=1
 pkgdesc='Yet another electron WeChat for Linux desktop.'
 arch=('x86_64')
@@ -27,6 +27,7 @@ build() {
 }
 
 package() {
+  cd $gitname
 
   # Creating needed directories
   install -dm755 "$pkgdir/opt/"
@@ -40,7 +41,7 @@ package() {
 
   # Install desktop launcher
   install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$appname.desktop
-  ln -sf /opt/$pkgname/resources/app/icon.png "$pkgdir"/usr/share/pixmaps/$appname.png
+  ln -sf "$pkgdir"/opt/$pkgname/resources/app/icon.png "$pkgdir"/usr/share/pixmaps/$appname.png
 
   chmod 666 "$pkgdir"/opt/$pkgname/resources/app/nativefier.json
 }
