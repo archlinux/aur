@@ -1,13 +1,12 @@
 pkgbase = termite-aperezdc
 	pkgdesc = A simple VTE-based terminal, aperezdc fork
 	pkgver = 15.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/aperezdc/termite
 	arch = x86_64
 	license = LGPL
-	makedepends = intltool
 	makedepends = gperf
-	makedepends = meson
+	makedepends = meson>=0.58
 	makedepends = ninja
 	depends = gtk3
 	depends = pcre2
