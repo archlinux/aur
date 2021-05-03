@@ -19,7 +19,7 @@ pkgbase = xorgxrdp-glamor
 	validpgpkeys = 61ECEABBF2BB40E3A35DF30A9F72CDBC01BF10EB
 	sha256sums = e6b5f3df44cbf147dcbbc326cdd08c95fe28dba80c2a216e046fe42d962f9215
 	sha256sums = SKIP
-	sha256sums = 2fd812f4e7cb649d9af4c75b0115b31154e8ac5b8d95c601251f515b177cb847
+	sha256sums = 10d289d1a11c9a5a8b4c6af534c2f9e7900ae2b4351860a063ba572010d95912
 
 pkgname = xorgxrdp-glamor
 
