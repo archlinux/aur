@@ -9,7 +9,7 @@ pkgbase = python-montepython
 	depends = python-polychord
 	options = !emptydirs
 	source = https://github.com/brinckmann/montepython_public/archive/v3.4.0.tar.gz
-	sha256sums = 578f950ec209730b0994fc56940509f52aa80decded6ad3a00a15ca71db8dc7b
+	sha256sums = ce4f889bd9c11359122749e03f804257c31fc962bde8fbe6a6259897fabca0fd
 
 pkgname = python-montepython
 
