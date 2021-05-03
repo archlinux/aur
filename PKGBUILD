@@ -13,12 +13,12 @@
 # update and just generally don't seem to care much.
 pkgname=synergy
 pkgver=1.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Share a single mouse and keyboard between multiple computers'
 url='https://symless.com/synergy/'
 arch=('x86_64')
 license=('GPL2')
-depends=('gcc-libs' 'libxtst' 'libxinerama' 'libxkbcommon-x11' 'avahi' 'curl' 'openssl')
+depends=('gcc-libs' 'libxtst' 'libxinerama' 'libxkbcommon-x11' 'avahi' 'curl' 'openssl' 'hicolor-icon-theme')
 makedepends=('libxt' 'cmake' 'qt5-base' 'gmock' 'gtest')
 optdepends=('qt5-base: gui support')
 source=(synergy-${pkgver}.tar.gz::https://github.com/symless/synergy-core/archive/v${pkgver}-stable.tar.gz
@@ -53,6 +53,9 @@ prepare() {
   # remove tests that need working X
   rm src/test/integtests/platform/XWindowsScreenTests.cpp \
     src/test/integtests/platform/XWindowsKeyStateTests.cpp
+  # fix path for gmock and gtest
+  sed -i 's|/usr/src/gmock|/usr/src/gmock/src|
+          s|/usr/src/gtest|/usr/src/googletest|' src/test/CMakeLists.txt
 }
 
 build() {
@@ -84,7 +87,7 @@ package() {
   install -Dm 644 "${srcdir}"/synergys.{service,socket} -t "${pkgdir}/usr/lib/systemd/user"
 
   # install desktop/icon stuff
-  install -Dm 644 res/synergy.ico -t "${pkgdir}/usr/share/icons"
+  install -Dm 644 res/synergy.svg -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
   install -Dm 644 res/synergy.desktop -t "${pkgdir}/usr/share/applications"
 }
 
