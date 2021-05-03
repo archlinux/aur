@@ -1,27 +1,15 @@
 pkgbase = openmodelica-omlibraries
 	pkgdesc = The Open Source Modelica Suite - A collection of Modelica libraries for use with OpenModelica.
-	pkgver = 1.13.2
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = https://openmodelica.org
-	arch = i686
 	arch = x86_64
 	groups = openmodelica
 	license = OSMC-PL
 	makedepends = git
-	makedepends = subversion
-	makedepends = python
-	makedepends = python-requests
-	makedepends = python-simplejson
-	makedepends = python-joblib
-	makedepends = perl-xml-xpath
 	depends = openmodelica-omc
-	conflicts = openmodelica-dev
-	conflicts = openmodelica-dev-omlibraries
-	conflicts = openmodelica-git
-	source = git+https://github.com/OpenModelica/OMLibraries.git#commit=eff6efaa31937b27912edebbf608a4a34b50d8c2
-	source = Makefile.libs.patch
+	source = git+https://github.com/OpenModelica/OMLibraries.git#commit=c5f7048f4682b367d59a01145e777a041ac4a558
 	sha1sums = SKIP
-	sha1sums = 2e680f70a6cae244a9ba7d68d1b3c1a1ec54e05a
 
 pkgname = openmodelica-omlibraries
 
