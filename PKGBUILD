@@ -1,6 +1,6 @@
 # Maintainer: Thomas Mashos <thomas at mashos dot com>
 pkgname=remote-desktop-manager-free
-pkgver=2021.1.0.10
+pkgver=2021.1.1.4
 pkgrel=1
 pkgdesc="Devolutions Remote Desktop Manager Free centralizes all remote connections on a single platform that is securely shared between users and across the entire team."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('webkit2gtk' 'p11-kit')
 options=(!strip)
 install=${pkgname}.install
 source=("RemoteDesktopManager.Free_${pkgver}_amd64.deb::https://cdn.devolutions.net/download/Linux/RDM/${pkgver}/RemoteDesktopManager.Free_${pkgver}_amd64.deb")
-sha256sums=('8a42da609be2880d6fb0b10732254be06a9bb0efad2af7a46e269995ab3c4c45')
+sha256sums=('e711e8c7b15be5a3f433aaf38b93da006d29024b560a687ba9182ba63c44c0f6')
 
 prepare() {
   tar -xf ${srcdir}/data.tar.xz
