@@ -5,7 +5,7 @@
 # The source is about 200 MiB, with an extra ~11 GiB of dependencies downloaded in Setup.sh, and may take several hours to compile.
 pkgname=unreal-engine
 pkgver=4.26.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=(x86_64)
 url=https://www.unrealengine.com/
@@ -22,13 +22,17 @@ license=(custom:UnrealEngine)
 source=(com.unrealengine.UE4Editor.desktop
 	clang_11.patch
 	PackageWithSystemCompiler.patch
-	ccache.patch
-	compile_and_regenerate.patch)
+	ccache_executor.patch
+	compile_and_regenerate.patch
+	processor_multiplier.patch
+	BuildConfiguration.xml)
 sha256sums=('15e9f9d8dc8bd8513f6a5eca990e2aab21fd38724ad57d213b06a6610a951d58'
             '8042bed3405298b5a4357068dd6b22a5a8a0f19def64b4f61ed0362fb46cb00d'
             '9e403b939a0601c6271da17af9497742cacd74e3cde41562c9f288dfbdcbdbfe'
-            'a0a0d3f065e27f4d31e21e5f9d15cb4d8f59c50245a45469878fc1fe8bdc78e6'
-            '7e53beb5818ceadb765689ad8e1baf55ce1d6afe8a9d6884b6f2bd121083c3f7')
+            '315c5d9726e672146a71dd2946e81b67151050f675b5713599803ce8540b4ed4'
+            '7e53beb5818ceadb765689ad8e1baf55ce1d6afe8a9d6884b6f2bd121083c3f7'
+            'a129607acc1ea6a48ee5af073da6bd9318176d07e91e743ce93662065f7288dd'
+            'c8eaf488f6da113c8f8167b405fab58ff4163e49c593b9062582fa25d9650af4')
 options=(!strip staticlibs) # Package is 3 Gib smaller with "strip" but it takes a long time and generates many warnings
 
 # Set options to anything that is not null to enable them.
@@ -40,6 +44,7 @@ _system_mono= # Uses System mono for unreal.
 		# must set UE_USE_SYSTEM_MONO
 		# in your environment for it to
 		# work after install
+_processor_multiplier=  # Allows multiplier on processor count. Allowing the Maximum threads your cpu can handle 
 
 prepare() {
   # Check access to the repository
@@ -76,7 +81,13 @@ prepare() {
   fi
   if [ -n "$_ccache_support" ]
   then
-    patch -p1 -i "$srcdir/ccache.patch"
+    patch -p1 -i "$srcdir/ccache_executor.patch"
+  fi
+  if [ -n "$_processor_multiplier" ]
+  then
+    patch -p1 -i "$srcdir/processor_multiplier.patch"
+    mkdir -p "$srcdir/$pkgname/Engine/Saved/UnrealBuildTool"
+    mv "$srcdir/BuildConfiguration.xml" "$_"
   fi
 
   # Qt Creator source code access
@@ -140,6 +151,7 @@ package() {
   mv Engine/Programs "$pkgdir/$dir/Engine/Programs"
   mv Engine/Shaders "$pkgdir/$dir/Engine/Shaders"
   mv Engine/Source "$pkgdir/$dir/Engine/Source"
+  mv Engine/Saved "$pkgdir/$dir/Engine/Saved"
   
   # Required folders
   # install -d "$pkgdir/$dir/Engine/DerivedDataCache"

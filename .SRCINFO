@@ -1,7 +1,7 @@
 pkgbase = unreal-engine
 	pkgdesc = A 3D game engine by Epic Games which can be used non-commercially for free.
 	pkgver = 4.26.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.unrealengine.com/
 	arch = x86_64
 	license = custom:UnrealEngine
@@ -20,18 +20,23 @@ pkgbase = unreal-engine
 	optdepends = codelite: IDE for projects
 	optdepends = kdevelop: IDE for projects
 	optdepends = clion: IDE for projects
-	options = strip
+	optdepends = ccache: cache compilations
+	options = !strip
 	options = staticlibs
 	source = com.unrealengine.UE4Editor.desktop
 	source = clang_11.patch
 	source = PackageWithSystemCompiler.patch
-	source = ccache.patch
+	source = ccache_executor.patch
 	source = compile_and_regenerate.patch
+	source = processor_multiplier.patch
+	source = BuildConfiguration.xml
 	sha256sums = 15e9f9d8dc8bd8513f6a5eca990e2aab21fd38724ad57d213b06a6610a951d58
 	sha256sums = 8042bed3405298b5a4357068dd6b22a5a8a0f19def64b4f61ed0362fb46cb00d
 	sha256sums = 9e403b939a0601c6271da17af9497742cacd74e3cde41562c9f288dfbdcbdbfe
-	sha256sums = a0a0d3f065e27f4d31e21e5f9d15cb4d8f59c50245a45469878fc1fe8bdc78e6
+	sha256sums = 315c5d9726e672146a71dd2946e81b67151050f675b5713599803ce8540b4ed4
 	sha256sums = 7e53beb5818ceadb765689ad8e1baf55ce1d6afe8a9d6884b6f2bd121083c3f7
+	sha256sums = a129607acc1ea6a48ee5af073da6bd9318176d07e91e743ce93662065f7288dd
+	sha256sums = c8eaf488f6da113c8f8167b405fab58ff4163e49c593b9062582fa25d9650af4
 
 pkgname = unreal-engine
 
