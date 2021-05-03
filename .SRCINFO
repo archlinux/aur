@@ -1,7 +1,7 @@
 pkgbase = nerdfetch
 	pkgdesc = A POSIX fetch using NerdFonts
-	pkgver = 2
-	pkgrel = 1
+	pkgver = 3.1
+	pkgrel = 2
 	url = https://github.com/ThatOneCalculator/NerdFetch
 	arch = any
 	license = GPL
