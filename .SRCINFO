@@ -1,13 +1,13 @@
 pkgbase = gnome-encfs-manager-bin
 	pkgdesc = An easy to use manager and mounter for encfs stashes
 	pkgver = 1.8.19
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/gencfsm
 	arch = x86_64
 	makedepends = binutils
 	makedepends = tar
 	depends = encfs
-	depends = libgee06
+	depends = libgee
 	depends = gtk3
 	depends = libsm
 	depends = libgnome-keyring

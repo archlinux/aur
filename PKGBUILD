@@ -1,14 +1,15 @@
-# maintainer: Mike Krüger <mikekrueger81[at]gmail.com>
+# maintainer: Sergio Schneider <spsf64[at]gmail.com>
+# Former maintainer: Mike Krüger
 
 pkgname=gnome-encfs-manager-bin
 _pkgname=gnome-encfs-manager
 pkgver=1.8.19
-pkgrel=2
+pkgrel=3
 pkgdesc="An easy to use manager and mounter for encfs stashes"
 arch=('x86_64')
 replaces=('gnome-encfs-manager')
 conflicts=('gnome-encfs-manager-bzr')
-depends=('encfs' 'libgee06' 'gtk3' 'libsm' 'libgnome-keyring' 'libappindicator-gtk3')
+depends=('encfs' 'libgee' 'gtk3' 'libsm' 'libgnome-keyring' 'libappindicator-gtk3')
 makedepends=('binutils' 'tar')
 url="https://launchpad.net/gencfsm"
 
