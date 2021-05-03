@@ -4,7 +4,7 @@
 _pkgname=nextcloud
 pkgname=${_pkgname}-client-appimage-daily
 pkgver=3.2.50.20210503
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Nextcloud desktop client (official daily AppImage build)"
 arch=('x86_64' 'i686')
@@ -38,9 +38,9 @@ package() {
 
   # Install to /opt/appimage/
   install -Dm644 "com.${_pkgname}.desktopclient.${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install -Dm755 "${_pkgname}-${pkgver}.AppImage" "${pkgdir}/opt/appimages/${_pkgname}-${pkgver}.AppImage"
+  install -Dm755 "${_pkgname}-${pkgver}.AppImage" "${pkgdir}/opt/appimages/${_pkgname}.AppImage"
 
   # Create Link in /usr/bin/
   install -d "${pkgdir}/usr/bin"
-  ln -s "/opt/appimages/${_pkgname}-${pkgver}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+  ln -s "/opt/appimages/${_pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
 }
