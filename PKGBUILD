@@ -1,7 +1,7 @@
 # Maintainer: grufo <madmurphy333 AT gmail DOT com>
 
 pkgname='nautilus-hide'
-pkgver='0.2.0'
+pkgver='0.2.1'
 pkgrel=1
 pkgdesc='A simple Nautilus extension that adds "Hide" and "Unhide" to Nautilus right-click menu'
 arch=('i686' 'x86_64')
@@ -10,20 +10,13 @@ license=('GPL')
 depends=('glib2' 'libnautilus-extension')
 makedepends=('intltool')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
-source=("https://gitlab.gnome.org/madmurphy/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+source=("https://github.com/madmurphy/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}-with-configure.tar.gz")
 install="${pkgname}.install"
-sha256sums=('2654b0e9942f2eaf285c76195806ccfae5ef847bcb699aa8c56baa956a67c54e')
-
-prepare() {
-
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	./bootstrap --noconfigure
-
-}
+sha256sums=('a76fe7353d5255441c7de25c1d67056baf251cc6f21ced6b0c873c49a83dd698')
 
 build() {
 
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}-with-configure"
 	./configure --prefix=/usr
 	make
 
@@ -31,8 +24,9 @@ build() {
 
 package() {
 
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}-with-configure"
 	make DESTDIR="${pkgdir}" install
 
 }
+
 

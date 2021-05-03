@@ -1,6 +1,6 @@
 pkgbase = nautilus-hide
 	pkgdesc = A simple Nautilus extension that adds "Hide" and "Unhide" to Nautilus right-click menu
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://gitlab.gnome.org/madmurphy/nautilus-hide
 	install = nautilus-hide.install
@@ -12,8 +12,8 @@ pkgbase = nautilus-hide
 	depends = libnautilus-extension
 	conflicts = nautilus-hide-git
 	conflicts = nautilus-hide-bin
-	source = https://gitlab.gnome.org/madmurphy/nautilus-hide/-/archive/0.2.0/nautilus-hide-0.2.0.tar.gz
-	sha256sums = 2654b0e9942f2eaf285c76195806ccfae5ef847bcb699aa8c56baa956a67c54e
+	source = https://github.com/madmurphy/nautilus-hide/releases/download/0.2.1/nautilus-hide-0.2.1-with-configure.tar.gz
+	sha256sums = a76fe7353d5255441c7de25c1d67056baf251cc6f21ced6b0c873c49a83dd698
 
 pkgname = nautilus-hide
 
