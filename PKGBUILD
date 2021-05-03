@@ -10,7 +10,7 @@ pkgname=('yaru-sound-theme'
          'yaru-icon-theme'
          'yaru-session')
 pkgver=21.04.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
 url="https://github.com/ubuntu/yaru"
@@ -19,10 +19,10 @@ license=('GPL3')
 makedepends=('meson' 'sassc' 'git')
 options=('!strip' '!buildflags' 'staticlibs')
 
-_commit=b01004d7ca3eb86f2110c5aabecd9fed93ede70f
+_commit=d0c123036b0cd855102e1df3c24a946c223c1672
 _shorthash=${_commit:0:7}
 source=("https://github.com/ubuntu/yaru/archive/${_commit}.tar.gz")
-sha256sums=('e2a400527451e33abb44d96b6878514482d008355639add6ab30d6e9b2dd70f3')
+sha256sums=('89528b139a97987d8189d36d8a84d6b85d38c4b2432e09ca9c4451cee88983ea')
 
 build() {
   # Avoid very long filename that eCryptfs might choke on:
