@@ -1,0 +1,16 @@
+pkgbase = lua-lunacolors-git
+	pkgdesc = ANSI colors library for Lua
+	pkgver = r9.004bca9
+	pkgrel = 1
+	url = https://github.com/hilbis/lunacolors
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = lua51
+	provides = lua51-lunacolors
+	conflicts = lua51-lunacolors
+	source = lua-lunacolors-git::git+https://github.com/hilbis/lunacolors
+	sha256sums = SKIP
+
+pkgname = lua51-lunacolors-git
+
