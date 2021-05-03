@@ -4,7 +4,7 @@ _pkgname="getoptions"
 pkgname="${_pkgname}"
 pkgdesc="An elegant option/argument parser for shell scripts "
 pkgver="3.3.0"
-pkgrel="1"
+pkgrel="2"
 
 arch=('any')
 url="https://github.com/ko1nksm/getoptions"
@@ -23,5 +23,5 @@ build(){
 
 package() {
     cd "${srcdir}/${_dir}"
-    make install PREFIX="${pkgdir}/usr/bin/"
+    make install PREFIX="${pkgdir}/usr/"
 }
