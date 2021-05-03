@@ -1,0 +1,27 @@
+pkgbase = termite-aperezdc
+	pkgdesc = A simple VTE-based terminal, aperezdc fork
+	pkgver = 15.1
+	pkgrel = 1
+	url = https://github.com/aperezdc/termite
+	arch = x86_64
+	license = LGPL
+	makedepends = intltool
+	makedepends = gperf
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	depends = pcre2
+	depends = gnutls
+	depends = vte-common
+	provides = termite
+	conflicts = termite
+	conflicts = termite-git
+	backup = etc/xdg/termite/config
+	source = https://github.com/aperezdc/termite/releases/download/v15.1/termite-15.1.tar.xz
+	source = https://github.com/aperezdc/termite/releases/download/v15.1/termite-15.1.tar.xz.asc
+	validpgpkeys = 5AA3BC334FD7E3369E7C77B291C559DBE4C9123B
+	sha512sums = 075d5f37396bbf6dbe5850d9cae65209cf1e8da6d6f9b869d932da236f0fcb62b3dc8baf504d9ce7c2573c21bc4c0baf359b9b45d296514a89ead33fa0992e06
+	sha512sums = SKIP
+
+pkgname = termite-aperezdc
+
