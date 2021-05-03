@@ -1,0 +1,14 @@
+pkgbase = lightmon
+	pkgdesc = A lightweight, cross-platform, language-agnostic 'run code on file change' tool, inspired by Nodemon
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/reaganmcf/lightmon
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	source = git+https://github.com/reaganmcf/lightmon.git
+	sha256sums = SKIP
+
+pkgname = lightmon
+
