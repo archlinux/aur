@@ -2,7 +2,7 @@
 
 pkgname=evolution-etesync
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="EteSync (end-to-end encrypted sync) plugin for Evolution"
 arch=(x86_64 aarch64)
 url="https://gitlab.gnome.org/GNOME/evolution-etesync/"
@@ -16,7 +16,7 @@ sha256sums=('4e0daa9144962176e474d7f3acb03417d69057cea7fe5131381c7c5b68e6205d' '
 
 prepare() {
   cd "$_pkgname_ver"
-  git apply "${srcdir}/c75e4e0d2baef67dea73ef1e01fd860692e4c70e.diff"
+  patch --forward --strip=1 --input="${srcdir}/c75e4e0d2baef67dea73ef1e01fd860692e4c70e.diff"
 }
 
 build() {
