@@ -1,6 +1,6 @@
 pkgname=rsyslog
 pkgver=8.2102.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An enhanced multi-threaded syslogd with a focus on security and reliability"
 url="http://www.rsyslog.com/"
 arch=('x86_64' 'i686' 'aarch64')
@@ -28,23 +28,22 @@ install=$pkgname.install
 
 build() {
   cd "$srcdir"/${pkgname}-${pkgver}
-  ./autogen.sh
-  ./configure --prefix=/usr \
-              --sbindir=/usr/bin \
-              --enable-mysql \
-              --enable-pgsql \
-              --enable-mail \
-              --enable-imfile \
-              --enable-snmp \
-              --enable-gnutls \
-              --enable-inet \
-              --enable-imjournal \
-              --enable-omjournal \
-              --enable-relp \
-              --enable-impstats \
-              --enable-imptcp \
-              --enable-omprog \
-              --with-systemdsystemunitdir=/usr/lib/systemd/system
+  ./autogen.sh --prefix=/usr \
+               --sbindir=/usr/bin \
+               --enable-mysql \
+               --enable-pgsql \
+               --enable-mail \
+               --enable-imfile \
+               --enable-snmp \
+               --enable-gnutls \
+               --enable-inet \
+               --enable-imjournal \
+               --enable-omjournal \
+               --enable-relp \
+               --enable-impstats \
+               --enable-imptcp \
+               --enable-omprog \
+               --with-systemdsystemunitdir=/usr/lib/systemd/system
 
   make
 }

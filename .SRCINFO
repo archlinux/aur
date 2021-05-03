@@ -1,7 +1,7 @@
 pkgbase = rsyslog
 	pkgdesc = An enhanced multi-threaded syslogd with a focus on security and reliability
 	pkgver = 8.2102.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rsyslog.com/
 	install = rsyslog.install
 	arch = x86_64
