@@ -9,6 +9,7 @@ pkgbase = opencv-cuda
 	makedepends = python-numpy
 	makedepends = python2-numpy
 	makedepends = mesa
+	makedepends = ninja
 	makedepends = eigen
 	makedepends = hdf5
 	makedepends = lapacke

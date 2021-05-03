@@ -13,7 +13,7 @@ license=(BSD)
 url="http://opencv.org/"
 options=(staticlibs)
 depends=(intel-tbb openexr gst-plugins-base libdc1394 cblas lapack libgphoto2 jasper cuda)
-makedepends=(cmake python-numpy python2-numpy mesa eigen hdf5 lapacke gtk3 nvidia-sdk)
+makedepends=(cmake python-numpy python2-numpy mesa ninja eigen hdf5 lapacke gtk3 nvidia-sdk)
 optdepends=('opencv-samples: samples'
             'gtk3: for the HighGUI module'
             'hdf5: support for HDF5 format'
@@ -34,9 +34,11 @@ prepare() {
 
 build() {
   cd build
+
   # cmake's FindLAPACK doesn't add cblas to LAPACK_LIBRARIES, so we need to specify them manually
   _pythonpath=`python -c "from sysconfig import get_path; print(get_path('platlib'))"`
   cmake ../opencv-$pkgver \
+    -GNinja \
     -DWITH_OPENCL=ON \
     -DWITH_OPENGL=ON \
     -DWITH_TBB=ON \
@@ -64,12 +66,12 @@ build() {
     -DLAPACK_CBLAS_H="/usr/include/cblas.h" \
     -DLAPACK_LAPACKE_H="/usr/include/lapacke.h" \
     -DOPENCV_GENERATE_PKGCONFIG=ON
-  make
+  ninja
 }
 
 package() {
   cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja install
 
   # install license file
   install -Dm644 "$srcdir"/opencv-$pkgver/LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
