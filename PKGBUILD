@@ -1,9 +1,9 @@
 # Maintainer: foxcub <archlinux "at" foxcub {dot} org>
 # Contributor: calegria  <calegria "at" gmail {dot} com>
 pkgname=cgal-ipelets
-pkgver=4.14.2
-pkgrel=4
-_ipever=7.2.21
+pkgver=4.14.3
+pkgrel=1
+_ipever=7.2.24
 pkgdesc="Ipelets from CGAL"
 arch=('i686' 'x86_64')
 url="http://www.cgal.org"
@@ -25,4 +25,4 @@ package() {
   cp "$srcdir/CGAL-$pkgver/demo/CGAL_ipelets/build/"*.so "$pkgdir/usr/lib/ipe/$_ipever/ipelets/"
   cp "$srcdir/CGAL-$pkgver/demo/CGAL_ipelets/lua/"* "$pkgdir/usr/lib/ipe/$_ipever/ipelets/"
 }
-md5sums=('3e8ff310d55155a429d81fbf0278072e')
+md5sums=('41c56ad048ce882aae6ff5b56256fe95')
