@@ -2,16 +2,16 @@
 
 _extname='nautilus-launch'
 pkgname="${_extname}-git"
-pkgver='r4.a93dcc9'
+pkgver='r5.39f86a0'
 pkgrel=1
 pkgdesc='A simple Nautilus extension that allows to run executables and launchers via right-click menu'
 arch=('i686' 'x86_64')
-url='https://github.com/madmurphy/nautilus-launch'
+url='https://gitlab.gnome.org/madmurphy/nautilus-launch'
 license=('GPL')
 depends=('glib2' 'libnautilus-extension')
 makedepends=('intltool')
 conflicts=("${_extname}" "${_extname}-bin")
-source=("git+https://github.com/madmurphy/${_extname}.git")
+source=("git+https://gitlab.gnome.org/madmurphy/${_extname}.git")
 install="${pkgname}.install"
 md5sums=('SKIP')
 
