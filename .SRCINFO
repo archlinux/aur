@@ -1,0 +1,16 @@
+pkgbase = gcfuse-git
+	pkgdesc = Mount Nintendo GameCube disc images using FUSE
+	pkgver = 0.9.1.r11.892e69e
+	pkgrel = 1
+	url = https://multimedia.cx/gcfuse/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = fuse2
+	provides = gcfuse
+	conflicts = gcfuse
+	source = git+https://github.com/multimediamike/gcfuse.git
+	md5sums = SKIP
+
+pkgname = gcfuse-git
+
