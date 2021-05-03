@@ -1,0 +1,18 @@
+pkgbase = allegro-dialog-dev
+	pkgdesc = This package is required to build programs that use the Allegro 5 dialog addon.
+	pkgver = 5.2.3.0
+	pkgrel = 1
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = allegro
+	depends = allegro-dialog
+	depends = gtk2
+	source_x86_64 = http://archive.ubuntu.com/ubuntu/pool/universe/a/allegro5/liballegro-dialog5-dev_5.2.3.0-1_amd64.deb
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = http://ports.ubuntu.com/pool/universe/a/allegro5/liballegro-dialog5-dev_5.2.3.0-1_arm64.deb
+	sha256sums_aarch64 = SKIP
+
+pkgname = allegro-dialog-dev
+
