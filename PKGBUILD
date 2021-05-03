@@ -2,7 +2,7 @@
 
 pkgname=app-outlet
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A Universal linux app store"
 url="https://app-outlet.github.io"
 arch=("x86_64")
