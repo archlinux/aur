@@ -1,7 +1,7 @@
 # Packager: Joseph R. Quinn <quinn.josephr@protonmail.com>
 # Maintainer: Joseph R. Quinn <quinn.josephr@protonmail.com>
 pkgname=php-psr
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="PHP extension providing the accepted PSR interfaces."
 arch=('any')
@@ -12,7 +12,7 @@ provides=("$pkgname")
 backup=('etc/php/conf.d/psr.ini')
 source=("https://github.com/jbboehr/$pkgname/archive/v$pkgver.tar.gz"
   'psr.ini')
-sha1sums=('9690d1ebe0e92764de7ab689e09bff8b62569985'
+sha1sums=('ff2ac61953f7a141704ef6151e29ee1b9a2d651e'
           'a5111be5b2ea0c2be3a2b6795be6f47d60dc0d77')
 
 build() {

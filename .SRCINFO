@@ -1,6 +1,6 @@
 pkgbase = php-psr
 	pkgdesc = PHP extension providing the accepted PSR interfaces.
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/jbboehr/php-psr
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = php-psr
 	depends = php>=5.5
 	provides = php-psr
 	backup = etc/php/conf.d/psr.ini
-	source = https://github.com/jbboehr/php-psr/archive/v1.0.1.tar.gz
+	source = https://github.com/jbboehr/php-psr/archive/v1.1.0.tar.gz
 	source = psr.ini
-	sha1sums = 9690d1ebe0e92764de7ab689e09bff8b62569985
+	sha1sums = ff2ac61953f7a141704ef6151e29ee1b9a2d651e
 	sha1sums = a5111be5b2ea0c2be3a2b6795be6f47d60dc0d77
 
 pkgname = php-psr
