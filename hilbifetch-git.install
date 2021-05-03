@@ -1,0 +1,4 @@
+post_install()  {
+  printf ":: A configuration file is required to run hilbifetch.\n"
+  printf ":: You can find a working example under /etc/hfconf.lua, or simply copy it to \$HOME/.config/hilbifetch/hfconf.lua\n"
+}
