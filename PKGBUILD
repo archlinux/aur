@@ -2,12 +2,13 @@
 pkgname=youtubedl-gui-beta
 _pkgname=ytdl-gui
 pkgver=latest
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('GPL3')
 pkgdesc="Download Youtube videos to local audio or video files. - Beta Branch"
 source=("git+https://github.com/JaGoLi/$_pkgname#branch=beta")
 md5sums=('SKIP')
+provides=("youtubedl-gui")
 conflicts=("youtubedl-gui")
 makedepends=("git"
 	     "qt5-quickcontrols"
