@@ -1,6 +1,6 @@
 pkgbase = paru-git
 	pkgdesc = Feature packed AUR helper
-	pkgver = 1.4.0.r0.g425a32a
+	pkgver = 1.6.0.r0.g1ba3bee
 	pkgrel = 1
 	url = https://github.com/morganamilo/paru
 	arch = i686

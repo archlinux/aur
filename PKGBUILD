@@ -1,7 +1,7 @@
 # Maintainer: Morgan <morganamilo@archlinux.org>
 pkgname=paru-git
 _pkgname=paru
-pkgver=1.4.0.r0.g425a32a
+pkgver=1.6.0.r0.g1ba3bee
 pkgrel=1
 pkgdesc='Feature packed AUR helper'
 url='https://github.com/morganamilo/paru'
@@ -19,12 +19,16 @@ sha256sums=(SKIP)
 build () {
   cd "$srcdir/$_pkgname"
 
-  if pacman -T pacman-git > /dev/null || pacman -T 'pacman>6.0.0alpha' > /dev/null; then
+  if pacman -T pacman-git > /dev/null; then
     _features+="git,"
   fi
 
   if [[ $(rustc -V) == *"nightly"* ]]; then
     _features+="backtrace,"
+  fi
+
+  if [[ $CARCH != x86_64 ]]; then
+    export CARGO_PROFILE_RELEASE_LTO=off
   fi
 
   PARU_VERSION=$pkgver cargo build --locked --features "${_features:-}" --release --target-dir target
