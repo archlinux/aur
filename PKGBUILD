@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Thor K. Høgås <thor that-circular-a roht dot no>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Yunhui Fu (yhfudev@gmail.com)
 # Contributor: Julien Sopena (jsopena.archlinux@free.fr)
@@ -9,11 +9,11 @@
 
 pkgname='omnetpp'
 pkgver=5.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Component-based simulation package designed for modeling communication networks'
 url='http://www.omnetpp.org'
 license=('Academic Public License')
-depends=('tcl' 'openscenegraph' 'tk' 'blt' 'qt5-base')
+depends=('tcl' 'openscenegraph' 'tk' 'qt5-base')
 makedepends=('libxml2' 'bison' 'flex' 'openscenegraph' 'qt4')
 arch=('i686' 'x86_64')
 optdepends=(
