@@ -4,7 +4,7 @@
 pkgname=opencascade-rc
 _pkgver="V7_5_2"
 pkgver=$(echo ${_pkgver} | sed 's,^V,,g;s,_,.,g')
-pkgrel=1
+pkgrel=2
 pkgdesc="An object-oriented C++ class library designed for rapid production of sophisticated domain-specific CAD/CAM/CAE applications -- release candidates and dev snapshots"
 arch=(x86_64)
 url="https://dev.opencascade.org/"
@@ -14,7 +14,8 @@ conflicts=(opencascade opencascade-git)
 
 depends=(
 tk
-vtk9-java
+vtk
+#vtk9-java
 gl2ps
 ffmpeg
 freeimage
@@ -52,6 +53,9 @@ prepare() {
 
   # fix for trying to write into the system during build
   sed 's,if (EXISTS "${INSTALL_DIR}/${INSTALL_DIR_SCRIPT}/custom.${SCRIPT_EXT}"),if (0),g' -i CMakeLists.txt
+
+  # fix for https://tracker.dev.opencascade.org/view.php?id=32328
+  sed 's,#include <TopoDS_Shape.hxx>,#include <TopoDS_Edge.hxx>\n#include <TopoDS_Shape.hxx>,g' -i src/ShapeUpgrade/ShapeUpgrade_UnifySameDomain.hxx
 }
 
 build() {
