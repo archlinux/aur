@@ -33,18 +33,18 @@ sha256sums=('15e9f9d8dc8bd8513f6a5eca990e2aab21fd38724ad57d213b06a6610a951d58'
             '7e53beb5818ceadb765689ad8e1baf55ce1d6afe8a9d6884b6f2bd121083c3f7'
             'a129607acc1ea6a48ee5af073da6bd9318176d07e91e743ce93662065f7288dd'
             'c8eaf488f6da113c8f8167b405fab58ff4163e49c593b9062582fa25d9650af4')
-options=(!strip staticlibs) # Package is 3 Gib smaller with "strip" but it takes a long time and generates many warnings
+options=(strip staticlibs) # Package is 3 Gib smaller with "strip" but it takes a long time and generates many warnings
 
 # Set options to anything that is not null to enable them.
-_system_compiler= 	# for the system compiler you'll need to set LINUX_MULTIARCH_ROOT 
+_system_compiler=y 	# for the system compiler you'll need to set LINUX_MULTIARCH_ROOT 
 		   	# as an environment to /usr/sbin compile projects after building.
 			# The system compiler should work for everything in engine now.
-_ccache_support=       # Patches for ccache. More optimizations might be needed.
-_system_mono= # Uses System mono for unreal.
+_ccache_support=y       # Patches for ccache. More optimizations might be needed.
+_system_mono=y # Uses System mono for unreal.
 		# must set UE_USE_SYSTEM_MONO
 		# in your environment for it to
 		# work after install
-_processor_multiplier=  # Allows multiplier on processor count. Allowing the Maximum threads your cpu can handle 
+_processor_multiplier=y  # Allows multiplier on processor count. Allowing the Maximum threads your cpu can handle 
 
 prepare() {
   # Check access to the repository
@@ -129,18 +129,18 @@ package() {
     sed -i "5c\Path=/$dir/Engine/Binaries/Linux/" com.unrealengine.UE4Editor.desktop
     sed -i "6c\Exec=/$dir/Engine/Binaries/Linux/UE4Editor %F" com.unrealengine.UE4Editor.desktop
   fi
-  install -Dm777 com.unrealengine.UE4Editor.desktop $pkgdir/usr/share/applications/com.unrealengine.UE4Editor.desktop
+  install -Dm770 com.unrealengine.UE4Editor.desktop $pkgdir/usr/share/applications/com.unrealengine.UE4Editor.desktop
   
   cd $pkgname
   
   # Icon for Desktop entry
-  install -Dm777 Engine/Source/Programs/UnrealVS/Resources/Preview.png $pkgdir/usr/share/pixmaps/ue4editor.png
+  install -Dm770 Engine/Source/Programs/UnrealVS/Resources/Preview.png $pkgdir/usr/share/pixmaps/ue4editor.png
 
   # License
-  install -Dm777 LICENSE.md $pkgdir/usr/share/licenses/UnrealEngine/LICENSE.md
+  install -Dm770 LICENSE.md $pkgdir/usr/share/licenses/UnrealEngine/LICENSE.md
   
   # Engine
-  install -dm777 "$pkgdir/$dir/Engine"
+  install -dm770 "$pkgdir/$dir/Engine"
   mv Engine/Binaries "$pkgdir/$dir/Engine/Binaries"
   mv Engine/Build "$pkgdir/$dir/Engine/Build"
   mv Engine/Config "$pkgdir/$dir/Engine/Config"
@@ -162,7 +162,8 @@ package() {
   mv Templates "$pkgdir/$dir/Templates"
 
   # Build scripts, used by some plugins (CLion)
-  install -Dm777 GenerateProjectFiles.sh "$pkgdir/$dir/GenerateProjectFiles.sh"
-  install -Dm777 Setup.sh "$pkgdir/$dir/Setup.sh"
-  install -Dm777 .ue4dependencies "$pkgdir/$dir/.ue4dependencies"
+  install -Dm770 GenerateProjectFiles.sh "$pkgdir/$dir/GenerateProjectFiles.sh"
+  install -Dm770 Setup.sh "$pkgdir/$dir/Setup.sh"
+  install -Dm770 .ue4dependencies "$pkgdir/$dir/.ue4dependencies"
+  install -Dm770 Engine/Saved/UnrealBuildTool/BuildConfiguration.xml "$pkgdir/$dir/Engine/Saved/UnrealBuildTool
 }
