@@ -41,13 +41,12 @@ sha1sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/sm64plus"
-
-	printf "%s" "$(cat README.md | grep -Po '### v\K[0-9\.]+' | head -n1)"
+	printf "%s" "$(cat VERSION | sed 's/^v//')"
 }
 
 build() {
 	cd "$srcdir/sm64plus"
-	SM64PLUS_BASEROM_us="$srcdir/baserom.us.z64" make -j4
+	SM64PLUS_BASEROM_us="$srcdir/baserom.us.z64" make -j "$(nproc)"
 	convert star.ico[1] star.png
 }
 
