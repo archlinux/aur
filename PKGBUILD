@@ -1,6 +1,6 @@
 # Maintainer: Thomas Mashos <thomas at mashos dot com>
 pkgname=remote-desktop-manager
-pkgver=2021.1.0.10
+pkgver=2021.1.1.4
 pkgrel=1
 pkgdesc="Devolutions Remote Desktop Manager Enterprise centralizes all remote connections on a single platform that is securely shared between users and across the entire team."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('webkit2gtk' 'p11-kit')
 options=(!strip)
 install=${pkgname}.install
 source=("RemoteDesktopManager_${pkgver}_amd64.deb::https://cdn.devolutions.net/download/Linux/RDM/${pkgver}/RemoteDesktopManager_${pkgver}_amd64.deb")
-sha256sums=('556528d3bf1016e10ca5c772f84846565624332f8c657c9a2f61c2d02ef914d0')
+sha256sums=('b5ed81cb1b69a9067483dc4144289349b25dd326f36b179321975fae6b752fbd')
 
 prepare() {
   tar -xf ${srcdir}/data.tar.xz
