@@ -1,6 +1,6 @@
 pkgbase = python-dasbus
 	pkgdesc = DBus library in Python 3
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/rhinstaller/dasbus
 	arch = any
@@ -9,8 +9,9 @@ pkgbase = python-dasbus
 	makedepends = python-setuptools
 	depends = python
 	depends = python-gobject
-	source = dasbus-1.4.tar.gz::https://github.com/rhinstaller/dasbus/archive/v1.4.tar.gz
-	sha256sums = f6c1aa5a85a0be625d2e65a2811451ed6f19b4f5cffddbe2827cedb15a246f46
+	depends = dbus
+	source = dasbus-1.5.tar.gz::https://github.com/rhinstaller/dasbus/archive/v1.5.tar.gz
+	sha256sums = d951109cfb67c5a27491d7e8b4c12119eddae98904c90986e62459d321f72b95
 
 pkgname = python-dasbus
 

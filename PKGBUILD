@@ -4,17 +4,17 @@
 
 _name='dasbus'
 pkgname="python-${_name}"
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc='DBus library in Python 3'
 arch=('any')
 url="https://github.com/rhinstaller/dasbus"
 license=('LGPL')
-depends=('python' 'python-gobject')
+depends=('python' 'python-gobject' 'dbus')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('f6c1aa5a85a0be625d2e65a2811451ed6f19b4f5cffddbe2827cedb15a246f46')
+sha256sums=('d951109cfb67c5a27491d7e8b4c12119eddae98904c90986e62459d321f72b95')
 
 build() {
     cd "$_name-$pkgver"
