@@ -1,11 +1,13 @@
 pkgbase = perl-xml-mini
 	pkgdesc = XML::Mini - Perl implementation of the XML::Mini XML create/parse interface
 	pkgver = 1.38
-	pkgrel = 3
+	pkgrel = 4
 	url = https://metacpan.org/release/XML-Mini
 	arch = any
 	license = GPL
 	license = PerlArtistic
+	makedepends = perl
+	depends = perl
 	provides = perl-xml-mini-document
 	provides = perl-xml-mini-element
 	provides = perl-xml-mini-element-cdata
