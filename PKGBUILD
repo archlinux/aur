@@ -1,7 +1,7 @@
 # Maintainer: Zauberfisch <aur at zauberfisch dot at>
 
 pkgname=rdircd-git
-pkgver=r152.4e6ec15
+pkgver=r221.e8537ed
 pkgrel=1
 pkgdesc="Reliable Discord-client IRC Daemon written in python3 (rdircd)"
 arch=("any")
