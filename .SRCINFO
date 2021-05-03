@@ -1,7 +1,7 @@
 pkgbase = jdtextedit
 	pkgdesc = An advanced text editor
 	pkgver = 8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/JakobDev/jdTextEdit
 	arch = any
 	license = GPL3
