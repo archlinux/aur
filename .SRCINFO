@@ -1,0 +1,13 @@
+pkgbase = getoptions
+	pkgdesc = An elegant option/argument parser for shell scripts
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://github.com/ko1nksm/getoptions
+	arch = any
+	license = CC0-1.0
+	conflicts = getoptions-git
+	source = https://github.com/ko1nksm/getoptions/archive/refs/tags/v3.3.0.zip
+	md5sums = SKIP
+
+pkgname = getoptions
+
