@@ -1,3 +1,8 @@
+2021-05-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.0.6.6-1:
+    Fixed a crash related to Humanizer on Windows 7 machines (ref).
+  * 5.0.6.5:
+    Fixed regression of IPC in docker latest builds (#2316).
 2021-05-01 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.0.6.3-1:
     We've added missing localization support for our SteamTokenDumper plugin, it's now consistent with the rest of ASF.
