@@ -2,7 +2,7 @@
 pkgname=cdhist
 pkgver=2.5
 pkgrel=1
-pkgdesc="Bash cd history"
+pkgdesc="Linux shell cd history"
 url="https://github.com/bulletmark/$pkgname"
 license=("GPL3")
 arch=("any")

@@ -1,5 +1,5 @@
 pkgbase = cdhist
-	pkgdesc = Bash cd history
+	pkgdesc = Linux shell cd history
 	pkgver = 2.5
 	pkgrel = 1
 	url = https://github.com/bulletmark/cdhist
