@@ -1,0 +1,13 @@
+diff --git a/Settings.cmake b/Settings.cmake
+index ab982eba..cedb0910 100644
+--- a/Settings.cmake
++++ b/Settings.cmake
+@@ -54,7 +54,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ set(CMAKE_CXX_EXTENSIONS OFF)
+ 
+ # Add pybind11
+-add_subdirectory(${PROJECT_SOURCE_DIR}/third_party/pybind11)
++find_package(pybind11 CONFIG)
+ 
+ ## Setup RPath
+ set(CMAKE_MACOSX_RPATH ON)
