@@ -19,16 +19,16 @@ RUN echo 'nobody ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 RUN usermod -d /tmp nobody
 
 USER nobody
-COPY --chown=nobody:nobody PKGBUILD xorgxrdp-nvidia-git.install /code/
+COPY --chown=nobody:nobody PKGBUILD xorgxrdp-nvidia.install /code/
 WORKDIR /code
 
 ENV ALL_PROXY=socks5h://host.docker.internal:1080
 RUN updpkgsums
 RUN makepkg --printsrcinfo > .SRCINFO
-RUN yay -S xrdp-git --needed --noconfirm
+RUN yay -S xrdp --needed --noconfirm
 RUN makepkg -si --needed --noconfirm
 
-RUN pacman -Ql xorgxrdp-nvidia-git
+RUN pacman -Ql xorgxrdp-nvidia
 RUN namcap PKGBUILD
 RUN [ -z "$(namcap PKGBUILD 2>&1)" ]
 
