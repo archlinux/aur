@@ -19,12 +19,7 @@ arch=('i686' 'x86_64')
 optdepends=('openmpi: message passing library for parallel simulation',
   'java-environment: Java runtime for using OMNeT++/OMNEST IDE')
 install=${pkgname}.install
-_pkgname='omnetpp'
 
-DLAGENTS=(
-  'http::/usr/bin/wget --no-check-certificate -c -r -np -nd -H --referer https://omnetpp.org/ %u'
-  'https::/usr/bin/wget --no-check-certificate -c -r -np -nd -H --referer https://omnetpp.org/ %u'
-)
 source=(
   omnetpp-${pkgver}-src-linux.tgz::"https://github.com/omnetpp/omnetpp/releases/download/omnetpp-${pkgver}/omnetpp-${pkgver}-src-linux.tgz"
   OMNeT++.desktop
@@ -33,11 +28,11 @@ sha512sums=('d36e1e1aee75ddaba3e61340e3fdd71beb00fc0d8bbf934ac4781ed65a2a9697495
   'd92f9f791d6347317a1e833ca52a5423f30feaac6212ea5d280ad334541bcd8786252076598d45551b3c41d4b64423d9f4c05e67fe1a535bb03d951881f7e544')
 
 build() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
-  PATH=${srcdir}/${_pkgname}-${pkgver}/bin:$PATH
+  cd ${srcdir}/${pkgname}-${pkgver}
+  PATH=${srcdir}/${pkgname}-${pkgver}/bin:$PATH
   changeText1=". .\/configure.user"
   changeText2=".\/configure.user"
-  LD_LIBRARY_PATH=${srcdir}/${_pkgname}-${pkgver}/lib:$LD_LIBRARY_PATH
+  LD_LIBRARY_PATH=${srcdir}/${pkgname}-${pkgver}/lib:$LD_LIBRARY_PATH
 
   sed -i 's!OMNETPP_ROOT/images!OMNETPP_ROOT/images;/usr/share/omnetpp/images!' configure*
   sed -i '/for arg in \$ac_configure_args/,+8 d' configure
@@ -50,11 +45,11 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
+  cd ${srcdir}/${pkgname}-${pkgver}
   mkdir -p ${pkgdir}/usr/bin
   install -m755 bin/* ${pkgdir}/usr/bin
 
-  sed "s|${srcdir}/${_pkgname}-${pkgver}|/usr|g" -i ${pkgdir}/usr/bin/opp_makemake
+  sed "s|${srcdir}/${pkgname}-${pkgver}|/usr|g" -i ${pkgdir}/usr/bin/opp_makemake
   sed "s|OMNETPP_INCL_DIR=/usr/include|OMNETPP_INCL_DIR=/usr/include/omnetpp|" -i ${pkgdir}/usr/bin/opp_makemake
 
   mkdir -p ${pkgdir}/usr/lib
