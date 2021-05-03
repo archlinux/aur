@@ -2,14 +2,14 @@
 
 pkgname=xfsudo
 pkgver=0.7.1
-pkgrel=1
-pkgdesc="To run graphical applications as superuser using sudo."
-url="http://github.com/aadityabagga/xfsudo"
+pkgrel=2
+pkgdesc="To run graphical applications as superuser using sudo"
+url="https://github.com/aadityabagga/xfsudo"
 arch=('any')
 license=('GPL')
 depends=('sudo' 'zenity')
 optdepends=()
-source=("http://github.com/aadityabagga/xfsudo/archive/${pkgver}.tar.gz")
+source=("https://github.com/aadityabagga/xfsudo/archive/${pkgver}.tar.gz")
 sha1sums=('0f4ed6df1826cda279acd62a6146244b2795224e')
 
 package() {
