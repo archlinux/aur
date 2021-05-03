@@ -29,7 +29,7 @@ prepare() {
 build() {
   _ensure_local_nvm
   cd ${pkgname}-${pkgver}
-  npm run install
+  npm install
   npm run electron:linux
 }
 
