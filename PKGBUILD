@@ -2,7 +2,7 @@
 
 pkgname=app-outlet
 pkgver=1.3.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A Universal linux app store"
 url="https://app-outlet.github.io"
 arch=("x86_64")
@@ -29,7 +29,7 @@ prepare() {
 build() {
   _ensure_local_nvm
   rm ${pkgname}-${pkgver}/electron-builder.json
-  cp electron-builder.json ${pkgname}-${pkgver}/electron-builder.json
+  cp ./electron-builder.json ${pkgname}-${pkgver}/electron-builder.json
   cd ${pkgname}-${pkgver}
   npm install
   npm run electron:linux
