@@ -1,6 +1,6 @@
 pkgbase = qt5-base-headless
 	pkgdesc = A cross-platform application and UI framework - headless build, no QtGui or QtWidgets
-	pkgver = 5.15.2+kde+r188
+	pkgver = 5.15.2+kde+r192
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = qt5-base-headless
 	provides = qt5-base
 	conflicts = qtchooser
 	conflicts = qt5-base
-	source = git+https://invent.kde.org/qt/qt/qtbase#commit=4dad2a02c2f3f98ee0d61bbd5098c7dc66ae6309
+	source = git+https://invent.kde.org/qt/qt/qtbase#commit=97bf6942ed9e540dcd1826da8e3147e7f9d2f499
 	source = qt5-base-cflags.patch
 	source = qt5-base-nostrip.patch
 	sha256sums = SKIP
