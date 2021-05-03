@@ -1,7 +1,7 @@
 # Maintainer: grufo <madmurphy333 AT gmail DOT com>
 
 pkgname='nautilus-launch'
-pkgver='1.0.0'
+pkgver='1.0.1'
 pkgrel=1
 pkgdesc='A simple Nautilus extension that allows to run executables and launchers via right-click menu'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('intltool')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 source=("https://github.com/madmurphy/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}-with-configure.tar.gz")
 install="${pkgname}.install"
-sha256sums=('2a3016372d7938d2f618ae4c823cd0f6a5f07ae0a25a942a00f90f3c1578002a')
+sha256sums=('72a3254ea2980f023787a22f19324cab82651317694cd88e68e7848667f0fa98')
 
 build() {
 
