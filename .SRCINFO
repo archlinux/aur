@@ -1,7 +1,7 @@
 pkgbase = python-fastkde
 	pkgdesc = Fast kernel density estimation
-	pkgver = 1.0.14
-	pkgrel = 2
+	pkgver = 1.0.16
+	pkgrel = 1
 	url = https://bitbucket.org/lbl-cascade/fastkde
 	arch = any
 	makedepends = python-setuptools
@@ -10,8 +10,8 @@ pkgbase = python-fastkde
 	depends = python-scipy
 	depends = cython
 	options = !emptydirs
-	source = https://bitbucket.org/lbl-cascade/fastkde/get/v1.0.14.tar.gz
-	sha256sums = 7731af4ad0712573b9544991d9ab7c45ddaa90608683f9e2ccf072251066a3bb
+	source = https://bitbucket.org/lbl-cascade/fastkde/get/v1.0.16.tar.gz
+	sha256sums = 3ed7043573766ce2e71b091541c9d41690c4758f95c12cf7bd4fabfb6a991050
 
 pkgname = python-fastkde
 
