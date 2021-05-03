@@ -1,6 +1,6 @@
 pkgbase = rnr-fm
 	pkgdesc = Text mode file manager combining the best features of ranger and mc
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/bugnano/rnr
 	arch = any
@@ -12,11 +12,11 @@ pkgbase = rnr-fm
 	depends = python-fuzzyfinder
 	depends = python-urwid
 	depends = python-pygments
-	optdepends = archivemount: compressed archive support
+	optdepends = archivefs: compressed archive support
 	conflicts = rnr
 	conflicts = rnr-bin
-	source = https://files.pythonhosted.org/packages/b2/a0/93b6903693ee5fa28050b05c3e94a9ab8d207c57a1c7a9842742f249e291/rnr-1.0.4-py3-none-any.whl
-	md5sums = a67267040640a1465aa9c2ea61abae39
+	source = https://files.pythonhosted.org/packages/48/d4/09349938a4c4f28ada36d79c43bd55f4756a812fb8705aa2d03b59154f80/rnr-1.0.5-py3-none-any.whl
+	md5sums = 8b6d2028d724b577948abbece1e2304c
 
 pkgname = rnr-fm
 
