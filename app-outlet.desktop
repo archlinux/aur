@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=App Outlet
+Exec="/opt/app-outlet/app-outlet" %U
+Terminal=false
+Type=Application
+Icon=app-outlet
+StartupWMClass=App Outlet
+Comment=An Universal linux app store 
+Categories=Utility;
