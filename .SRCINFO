@@ -16,9 +16,10 @@ pkgbase = opentodolist
 	depends = libsecret
 	depends = ttf-roboto
 	depends = noto-fonts
+	depends = qtkeychain-qt5
 	provides = opentodolist
 	conflicts = opentodolist
-	source = opentodolist::git+https://gitlab.com/rpdev/opentodolist.git#commit=b18ecb7078aec295a6c6d4f4f978ec6141d08442
+	source = opentodolist::git+https://gitlab.com/rpdev/opentodolist.git#commit=91ca5d44a32c3b77f38a01634367227e8bc7d368
 	md5sums = SKIP
 
 pkgname = opentodolist
