@@ -1,0 +1,18 @@
+pkgbase = fabiscafe-keyring
+	pkgdesc = Fabiscafe PGP keyring
+	pkgver = 20210503
+	pkgrel = 1
+	url = https://gitlab.com/fabis_cafe/fabiscafe-keyring
+	install = fabiscafe-keyring.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = archlinux-keyring
+	provides = fcgu-keyring=20210308
+	conflicts = fcgu-keyring
+	replaces = fcgu-keyring
+	source = git+https://gitlab.com/fabis_cafe/fabiscafe-keyring.git#commit=2a981729d9fbe513f45a3d88a60be1af017eee92
+	sha512sums = SKIP
+
+pkgname = fabiscafe-keyring
+
