@@ -5,7 +5,7 @@
 
 pkgname="fabiscafe-keyring"
 pkgver="20210503"
-pkgrel=1
+pkgrel=2
 pkgdesc='Fabiscafe PGP keyring'
 arch=('any')
 url='https://gitlab.com/fabis_cafe/fabiscafe-keyring'

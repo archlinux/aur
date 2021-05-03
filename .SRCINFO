@@ -1,7 +1,7 @@
 pkgbase = fabiscafe-keyring
 	pkgdesc = Fabiscafe PGP keyring
 	pkgver = 20210503
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/fabis_cafe/fabiscafe-keyring
 	install = fabiscafe-keyring.install
 	arch = any

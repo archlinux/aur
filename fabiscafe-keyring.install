@@ -1,6 +1,6 @@
 post_upgrade() {
     if usr/bin/pacman-key -l >/dev/null 2>&1; then
-        usr/bin/pacman-key --populate fcgu
+        usr/bin/pacman-key --populate fabiscafe
     fi
 }
 
