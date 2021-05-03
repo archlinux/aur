@@ -1,0 +1,37 @@
+From a483e39777470538e2e94cb5048b3dc370a35e83 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@archlinux.org>
+Date: Sun, 18 Apr 2021 15:35:15 -0400
+Subject: [PATCH] makeplugin: do not bundle system dependencies
+
+---
+ makeplugin.py | 12 +-----------
+ 1 file changed, 1 insertion(+), 11 deletions(-)
+
+diff --git a/makeplugin.py b/makeplugin.py
+index 6ee101fb..e6f7c20c 100644
+--- a/makeplugin.py
++++ b/makeplugin.py
+@@ -34,19 +34,9 @@ if __name__=="__main__":
+                   files,
+                   exclude=exclude)
+ 
+-    os.chdir('../included_dependencies')
+-    files=['bs4','chardet','html2text','soupsieve','backports',
+-           'cloudscraper','requests','requests_toolbelt',
+-           'requests_file.py','urllib3','certifi','idna','brotlidecpy']
+-    ## Kept only for v2.85.1 support now.
+-    createZipFile("../"+filename,"a",
+-                  files,
+-                  exclude=exclude)
+-
+     os.chdir('..')
+     # 'a' for append
+     files=['fanficfare']
+     createZipFile(filename,"a",
+                   files,
+-                  exclude=exclude)
+-
++                  exclude=exclude + ['*.py'])
+-- 
+2.31.1
+

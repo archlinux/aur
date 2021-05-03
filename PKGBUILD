@@ -4,7 +4,7 @@
 
 _pkgname=FanFicFare
 pkgname=fanficfare-git
-pkgver=4.0.2.r5.g158b4b75
+pkgver=4.2.0.r0.g6d6f2737
 pkgrel=1
 pkgdesc="A tool for downloading fanfiction to eBook formats"
 arch=('any')
@@ -14,29 +14,41 @@ _deps=('beautifulsoup4' 'brotli' 'chardet' 'cloudscraper' 'html5lib' 'html2text'
        'requests-file')
 depends=("${_deps[@]/#/python-}")
 makedepends=('git')
-optdepends=('python-pillow: support for converting/resizing story images and covers')
+optdepends=('calibre: use FanFicFare as a calibre plugin'
+            'python-pillow: support for converting/resizing story images and covers')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+${url}.git")
-sha256sums=('SKIP')
+source=("git+${url}.git"
+        "0001-makeplugin-do-not-bundle-system-dependencies.patch")
+sha256sums=('SKIP'
+            '6d172dcc98a8f6dcef2048272bfabd810ceeb5740969fbe406ebcd7b638e072c')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
+
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "${srcdir}/${_pkgname}"
+
+    patch -p1 -i ../0001-makeplugin-do-not-bundle-system-dependencies.patch
 }
 
 build() {
     cd "${srcdir}/${_pkgname}"
+
     python setup.py build
 
-    if command -v calibre-customize > /dev/null; then
-        msg2 "Creating and installing FanFicFare calibre plugin..."
-        python makeplugin.py
-        calibre-customize -a FanFicFare.zip || true
-    fi
+    for i in calibre-plugin/translations/*.po; do
+        msgfmt -vv "$i" -o "${i%.po}.mo"
+    done
+    python makeplugin.py
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
+
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    install -Dm644 FanFicFare.zip "${pkgdir}"/usr/share/calibre/system-plugins/FanFicFare.zip
 }
