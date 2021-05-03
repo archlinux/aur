@@ -9,6 +9,7 @@ pkgbase = hilbish
 	license = MIT
 	makedepends = go>=1.16
 	depends = readline
+	depends = lua51-lunacolors
 	optdepends = lua
 	source = hilbish-0.4.0.tar.gz::https://github.com/hilbis/hilbish/archive/refs/tags/v0.4.0.tar.gz
 	sha256sums = 5c6e9bc93df00c8225f34dfa51c5dc4f52f526d23b34785854fd6019a3e7d77e
