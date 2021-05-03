@@ -1,7 +1,15 @@
-# Ignore special directories
-pkg/
-src/
+# Ignore Python Wheels
+*.whl
 
-# Ignore archives
+# Ignore Python source distribution
 *.tar.gz
-*.tar.zst
+
+# Ignore Archinux packages
+*.pkg.tar.*
+
+# Ignore common directories.
+/src/
+/pkg/
+
+# Ignore bare repo.
+/jax/

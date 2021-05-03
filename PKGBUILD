@@ -1,30 +1,41 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=python-jaxlib
-pkgver=0.1.59
+pkgver=0.1.65
 pkgrel=1
-pkgdesc='Differentiate, compile, and transform Numpy code.'
+pkgdesc='XLA library for JAX'
 arch=('x86_64')
 url='https://github.com/google/jax/'
 license=('Apache')
-depends=('python'
+depends=('absl-py'
+         'python'
+         'python-flatbuffers'
          'python-numpy'
-         'python-protobuf'
-         'python-scipy'
-         'python-wheel')
-makedepends=('bazel'
-             'gcc'
-             'python-pip'
-             'python-six')
-source=("https://github.com/google/jax/archive/jaxlib-v$pkgver.tar.gz")
-md5sums=('0224b6654ec87d5bbbf0ca51f6b5e15a')
+         'python-scipy')
+makedepends=('python-pip')
+source=('git+https://github.com/google/jax.git')
+md5sums=('SKIP')
+
+pkgver() {
+    cd $srcdir/jax
+    git describe --match 'jaxlib-*' | sed 's/^jaxlib-v//;s/-.*$//'
+}
+
+prepare() {
+    cd $srcdir/jax
+    git checkout "jaxlib-v$pkgver"
+}
 
 build() {
-    cd jax-jaxlib-v$pkgver
-    build/build.py --enable_march_native
+    cd $srcdir/jax
+    python build/build.py \
+        --target_cpu_features native
 }
 
 package() {
-    cd jax-jaxlib-v$pkgver
-    pip install dist/*.whl
+    cd $srcdir/jax
+    ls -l dist
+    python -m pip install \
+        --prefix $pkgdir \
+        dist/*.whl
 }
