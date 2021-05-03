@@ -1,11 +1,12 @@
 pkgbase = materia-transparent-gtk-theme-git
 	pkgdesc = A Transparent Material Design theme for GNOME/GTK+ based desktop environments
 	pkgver = 85bdc295
-	pkgrel = 3
+	pkgrel = 4
 	arch = any
-	license = GPL
+	license = GPLV2
 	makedepends = meson
 	makedepends = npm
+	makedepends = git
 	makedepends = gtk3
 	makedepends = gtk4
 	makedepends = gnome-shell

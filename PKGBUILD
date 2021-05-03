@@ -2,12 +2,12 @@
 _pkgname=materia-theme-transparent
 pkgname=materia-transparent-gtk-theme-git
 pkgver=85bdc295
-pkgrel=3
+pkgrel=4
 pkgdesc="A Transparent Material Design theme for GNOME/GTK+ based desktop environments"
 arch=(any)
-license=(GPL)
+license=(GPLV2)
 depends=(gnome-themes-extra)
-makedepends=(meson npm gtk3 gtk4 gnome-shell)
+makedepends=(meson npm git gtk3 gtk4 gnome-shell)
 optdepends=('gtk-engine-murrine: for gtk2 theme')
 provides=(materia-theme)
 conflicts=(materia-theme)
@@ -39,4 +39,5 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" meson install -C build
+  install -Dm644 $srcdir/$_pkgname/COPYING -t "$pkgdir/usr/share/licenses/${pkgname}"
 }
