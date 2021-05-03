@@ -4,11 +4,12 @@
 # Contributor: mh00h
 # Contributor: Frank Phillips <frankalso[at]gmail[dot]com>
 # Contributor: Mr.Elendig
+# Contributor: Internauta
 
 set -u
 pkgname='iscan-plugin-gt-x820'
 pkgver='2.2.1'; _bundlever='2.30.4'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='iscan plugin for Epson Colorio GT-X820 Perfection V600 Photo scanners'
 arch=('x86_64')
 url='http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX'
@@ -16,8 +17,8 @@ license=('custom')
 depends=('iscan>=2.21')
 install='gt-x820.install'
 source=("https://download2.ebz.epson.net/iscan/plugin/gt-x820/rpm/x64/iscan-gt-x820-bundle-${_bundlever}.x64.rpm.tar.gz")
-md5sums=('aeed0eb08f5e529ff6fd8e8908312e82')
-sha256sums=('3412ad0a6821e6e36091087e69c6e7d2506c002e51522db9b33066475cefa682')
+md5sums=('f0b466d04e05018af6942e82a571e1f5')
+sha256sums=('63647dac68e26bfee5bd75108cc6a4df0fddb8453a1e3bac2d63dea7db518bee')
 
 prepare() {
   set -u
