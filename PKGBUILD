@@ -4,7 +4,7 @@
 _pkgname='usbimager'
 pkgname="${_pkgname}-bin"
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimal GUI application to write compressed disk images to USB drives (GTK+ Frontend)'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://gitlab.com/bztsrc/usbimager'
@@ -22,7 +22,7 @@ source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/-/raw/binaries/${_pkg
 
 sha256sums=('bbc44ee4aa2241847fafbe031f2ce127a2c2b32d7dd1afbe4a031d071f9f559b'
             '6fcb3449da17f96893b74d52bc248fd11fd0d6b0731c9f5d8e2065bbe2685e0b')
-sha256sums_x86_64=('a5b35dc7f308e9dc5c36b61f333798deee16c38ebc897eab7c10cbe419f99cb9')
+sha256sums_x86_64=('a2855384caabf440dcb18349a3df6d733f82af8805d5a50a6f26cf785e820044')
 sha256sums_armv7h=('2594dc6dd1e41153cc8a3050d9fd99a70e8e77dd3a71f19a24ffbee3e5fb4ca9')
 sha256sums_aarch64=('2594dc6dd1e41153cc8a3050d9fd99a70e8e77dd3a71f19a24ffbee3e5fb4ca9')
 
