@@ -1,0 +1,21 @@
+pkgbase = translatelocally-git
+	pkgdesc = A fast privacy focussed machine translation toolkit that translates on your own machine.
+	pkgver = 0.01
+	pkgrel = 1
+	url = https://github.com/XapaJIaMnu/translateLocally
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc-libs
+	makedepends = make
+	makedepends = binutils
+	depends = qt5-base
+	depends = qt5-tools
+	depends = libarchive
+	depends = protobuf
+	source = git+https://github.com/XapaJIaMnu/translateLocally.git
+	sha256sums = SKIP
+
+pkgname = translatelocally-git
+
