@@ -1,6 +1,6 @@
 # Maintainer: Sammy <shaughn.chan@gmail.com>
 pkgname=cogsy
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='TUI-based Discogs collection tracker'
 arch=('x86_64')
@@ -10,7 +10,7 @@ conflicts=("cogsy")
 depends=('openssl' 'sqlite3' 'ncurses')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cartoon-raccoon/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e07bdc5eaad6d288426cc1c7902e8bab704cf38ee17b9e48d3c600dc61c1eae0')
+sha256sums=('506f5dd2d87244b85d0701c153b11ec90c462f4675826c7fa9d19f1258725465')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
