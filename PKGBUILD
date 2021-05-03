@@ -8,7 +8,7 @@ url="https://app-outlet.github.io"
 arch=("x86_64")
 license=("MIT")
 depends=()
-makedepends=("npm" "nvm")
+makedepends=("nvm")
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/app-outlet/app-outlet/archive/refs/tags/v${pkgver}.tar.gz"
 )
@@ -28,6 +28,8 @@ prepare() {
 
 build() {
   _ensure_local_nvm
+  rm ${pkgname}-${pkgver}/electron-builder.json
+  cp electron-builder.json ${pkgname}-${pkgver}/electron-builder.json
   cd ${pkgname}-${pkgver}
   npm install
   npm run electron:linux
