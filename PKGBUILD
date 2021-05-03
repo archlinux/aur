@@ -1,6 +1,6 @@
 # Maintainer: sseneca <me at ssene dot ca>
 pkgname=html5validator
-pkgver=0.3.3
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Command line tool to validate HTML5 files."
 arch=('any')
@@ -9,8 +9,7 @@ license=('MIT')
 depends=('python-yaml' 'java-environment-openjdk=8')
 makedepends=('python')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('28299180c3ae77f7a1eca731781ad52eab7aed02ae1f3eecf917f5eb9ff891b7e778d5581dfbb06d45527889b8992af478a7d99534eb366a750e80445d708a94')
-
+sha512sums=('b37528430115d54971e2856c1d46268e9003a7c9f94b6e94c435d160b00c44dcc7f9bb32101ab2fc21a8cea61d03dc08df96639e4f8fb0b65a5d5d426ba68d1d')
 
 package() {
   cd "$pkgname-$pkgver"
