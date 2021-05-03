@@ -1,7 +1,7 @@
 pkgbase = mpv-pipewire
 	pkgdesc = a free, open source, and cross-platform media player including an experimental PipeWire audio backend
 	pkgver = 0.33.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mpv.io/
 	arch = x86_64
 	license = GPL3
@@ -47,7 +47,7 @@ pkgbase = mpv-pipewire
 	depends = libjpeg
 	depends = libjpeg.so
 	depends = libplacebo
-	depends = libplacebo.so
+	depends = libplacebo.so>=120-64
 	depends = libpulse
 	depends = libpulse.so
 	depends = libva

@@ -7,7 +7,7 @@ _pkgname=mpv
 pkgname=${_pkgname}-pipewire
 _tag='4c9d3669a0f672e6754ac456acd324db570964d3' # git rev-parse v${pkgver}
 pkgver=0.33.1
-pkgrel=2
+pkgrel=3
 pkgdesc='a free, open source, and cross-platform media player including an experimental PipeWire audio backend'
 arch=('x86_64')
 # We link against libraries that are licensed GPLv3 explicitly, so our
@@ -19,7 +19,7 @@ depends=('alsa-lib' 'libasound.so' 'desktop-file-utils' 'ffmpeg' 'libavcodec.so'
          'glibc' 'hicolor-icon-theme' 'jack' 'libjack.so' 'lcms2' 'liblcms2.so' 'libarchive'
          'libarchive.so' 'libass' 'libass.so' 'libbluray' 'libbluray.so' 'libcaca' 'libcdio'
          'libcdio-paranoia' 'libdrm' 'libdvdnav' 'libdvdread' 'libegl' 'libgl' 'libglvnd'
-         'libjpeg' 'libjpeg.so' 'libplacebo' 'libplacebo.so' 'libpulse' 'libpulse.so'
+         'libjpeg' 'libjpeg.so' 'libplacebo' 'libplacebo.so>=120-64' 'libpulse' 'libpulse.so'
          'libva' 'libva.so' 'libva-drm.so' 'libva-wayland.so' 'libva-x11.so' 'libvdpau' 'libx11'
          'libxext' 'libxinerama' 'libxkbcommon' 'libxkbcommon.so' 'libxrandr' 'libxss'
          'libxv' 'lua52' 'mesa' 'mujs' 'pipewire' 'rubberband' 'librubberband.so' 'shaderc'
