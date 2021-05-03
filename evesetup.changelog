@@ -1,6 +1,4 @@
-In build scripts checksum routine added and minor changes.
+In build scripts checksum routine and minor changes added.
+Wget as alternative to curl in build and setup scripts added.
+Installation with missing requirements added (temporary solution, not final).
 Enabled DX11 mode as default in evesetup.shlib in eve environment function.
-
-
-
-

@@ -67,26 +67,31 @@ bootstrap_remove() {
 }
 
 check_req() {
-	if [ ! -r "$(find /usr/lib -type f -name 'libxcb-xinerama*' 2>/dev/null)" ] ;then
-		req="${req}libxcb-xinerama\n"
-	fi
 	if [ ! -x "$(which 7z 2>/dev/null)" ] ;then
 		req="${req}7z\n"
+	fi
+	if [ ! -x "$(which lsof 2>/dev/null)" ] ;then
+		req="${req}lsof\n"
 	fi
 	if [ ! -x "$(which wine 2>/dev/null)" ] ;then
 		req="${req}wine\n"
 	fi
+	if [ ! -r "$(find /usr/lib -type f -name 'libxcb-xinerama*' 2>/dev/null)" ] ;then
+		req="${req}libxcb-xinerama\n"
+	fi
 	tar xf evelauncher-$elver.tar.gz
 	cd evelauncher/
-	req="${req}$(LD_LIBRARY_PATH=$(pwd) ldd ./evelauncher | grep -i not | sed 's,\t,,;s,.so.*,,')"
+	req="${req}$(LD_LIBRARY_PATH=$(pwd) ldd ./evelauncher | grep -i not | sed 's,\t,,;s,.so.*,,')\n"
 	cd ../
 	rm -rf evelauncher/
 	if [ "x$req" != "x" ] ;then
 		printf "\nError: Following requirements are missing:\n"
 		printf "\n$req\n"
-		printf "\nPlease install these requirements with your Package Manager.\n"
-		printf "\nLeaving.\n\n"
-		exit 0
+		read -p 'Install anyway? (y/N) ' key
+		if [ "x$(echo $key | tr [:upper:] [:lower:])" != "xy" ] ;then
+			printf "\nLeaving.\n\n"
+			exit 0
+		fi
 	fi
 }
 

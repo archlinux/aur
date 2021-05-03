@@ -24,16 +24,20 @@ dvcsum=$(csum dxvk-$dvver.tar.gz)
 elcsum=$(csum evelauncher-\${pkgver}.tar.gz)
 mscsum=$(csum makeself-$msver.run)
 
-if [ ! -x "$(which curl 2>/dev/null)" ] ;then
-	printf "\nError: Curl not found. Curl are needed for downloading makeself build tool."
-	printf "\n\tPlease install curl with your Package Manager.\n"
-	printf "\nLeaving.\n\n"
-	exit 0
-fi
+dltool=$(which curl 2>/dev/null || which wget 2>/dev/null  || true)
+
+case ${dltool##*/} in
+	curl)	dltool="$dltool -L -O" ;;
+	wget)	dltool="$dltool -nc" ;;
+	*)	printf "\nError: curl or wget not found. One of them are needed for downloading makeself build tool."
+		printf "\n       Please install curl or wget with your Package Manager.\n"
+		printf "\nLeaving.\n\n"
+		exit 0 ;;
+esac
 
 if [ ! -f "./makeself-$msver.run" ] ;then
 	printf "\nGet makeself...\n\n"
-	curl -L -O https://github.com/megastep/makeself/releases/download/release-$msver/makeself-$msver.run
+	$dltool https://github.com/megastep/makeself/releases/download/release-$msver/makeself-$msver.run
 fi
 rcsum="$(sha256sum ./makeself-$msver.run | cut -d' ' -f1)"
 if [ "$rcsum" != "$mscsum" ] ;then

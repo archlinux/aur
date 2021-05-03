@@ -24,16 +24,20 @@ dvcsum=$(csum dxvk-$dvver.tar.gz)
 elcsum=$(csum evelauncher-\${pkgver}.tar.gz)
 mscsum=$(csum makeself-$msver.run)
 
-if [ ! -x "$(which curl 2>/dev/null)" ] ;then
-	printf "\nError: Curl not found. Curl are needed for downloading makeself build tool."
-	printf "\n\tPlease install curl with your Package Manager.\n"
-	printf "\nLeaving.\n\n"
-	exit 0
-fi
+dltool=$(which curl2 2>/dev/null || which wget 2>/dev/null  || true)
+
+case ${dltool##*/} in
+	curl)	dltool="$dltool -L -O" ;;
+	wget)	dltool="$dltool -nc" ;;
+	*)	printf "\nError: curl or wget not found. One of them are needed for downloading makeself build tool."
+		printf "\n       Please install curl or wget with your Package Manager.\n"
+		printf "\nLeaving.\n\n"
+		exit 0 ;;
+esac
 
 if [ ! -f "./makeself-$msver.run" ] ;then
 	printf "\nGet makeself...\n\n"
-	curl -L -O https://github.com/megastep/makeself/releases/download/release-$msver/makeself-$msver.run
+	$dltool https://github.com/megastep/makeself/releases/download/release-$msver/makeself-$msver.run
 fi
 rcsum="$(sha256sum ./makeself-$msver.run | cut -d' ' -f1)"
 if [ "$rcsum" != "$mscsum" ] ;then
@@ -44,7 +48,7 @@ fi
 
 if [ ! -r "./evelauncher-$version.tar.gz" ] ;then
 	printf "\nGet evelauncher-$version.tar.gz...\n\n"
-	curl -L -O https://binaries.eveonline.com/evelauncher-$version.tar.gz
+	$dltool https://binaries.eveonline.com/evelauncher-$version.tar.gz
 fi
 rcsum="$(sha256sum ./evelauncher-$version.tar.gz| cut -d' ' -f1)"
 if [ "$rcsum" != "$elcsum" ] ;then
@@ -54,8 +58,8 @@ if [ "$rcsum" != "$elcsum" ] ;then
 fi
 
 if [ ! -r "./dxvk-$dvver.tar.gz" ] ;then
-	printf "\nDownload dxvk-$dvver.tar.gz...\n\n"
-	curl -L -O https://github.com/doitsujin/dxvk/releases/download/v$dvver/dxvk-$dvver.tar.gz
+	printf "\nGet dxvk-$dvver.tar.gz...\n\n"
+	$dltool https://github.com/doitsujin/dxvk/releases/download/v$dvver/dxvk-$dvver.tar.gz
 fi
 rcsum="$(sha256sum ./dxvk-$dvver.tar.gz| cut -d' ' -f1)"
 if [ "$rcsum" != "$dvcsum" ] ;then

@@ -73,7 +73,7 @@ bootstrap_remove() {
 build_lib() {
 	if [ ! -r "./evelauncher-$elver.tar.gz" ] ;then
 		printf "\nDownload evelauncher-$elver.tar.gz...\n\n"
-		curl -L -O https://binaries.eveonline.com/evelauncher-$elver.tar.gz
+		$dltool https://binaries.eveonline.com/evelauncher-$elver.tar.gz
 	fi
 	rcsum="$(sha256sum ./evelauncher-$elver.tar.gz| cut -d' ' -f1)"
 	if [ "$rcsum" != "$elcsum" ] ;then
@@ -81,7 +81,7 @@ build_lib() {
 		printf "\nLeaving.\n\n"
 		exit 0
 	fi
-	printf "\n\nExtract evelauncher-$elver.tar.gz..."
+	printf "\nExtract evelauncher-$elver.tar.gz..."
 	tar xf evelauncher-$elver.tar.gz
 	echo "done."
 	printf "\nClean up evelauncher directory..."
@@ -118,13 +118,13 @@ build_lib() {
 	rm evelauncher-$elver.tar.gz
 	tar czf evelauncher-$elver.tar.gz evelauncher/
 	rm -rf evelauncher/
-	echo "done."
+	printf "done.\n\n"
 }
 
 get_dxvk() {
 	if [ ! -r "./dxvk-$dvver.tar.gz" ] ;then
 		printf "\nDownload dxvk-$dvver.tar.gz...\n\n"
-		curl -L -O https://github.com/doitsujin/dxvk/releases/download/v$dvver/dxvk-$dvver.tar.gz
+		$dltool https://github.com/doitsujin/dxvk/releases/download/v$dvver/dxvk-$dvver.tar.gz
 	fi
 	rcsum="$(sha256sum ./dxvk-$dvver.tar.gz| cut -d' ' -f1)"
 	if [ "$rcsum" != "$dvcsum" ] ;then
@@ -134,24 +134,34 @@ get_dxvk() {
 }
 
 check_req() {
-	if [ ! -r "$(find /usr/lib -type f -name 'libxcb-xinerama*' 2>/dev/null)" ] ;then
-		req="${req}libxcb-xinerama\n"
-	fi
+	case ${dltool##*/} in
+		curl)	dltool="$dltool -L -O" ;;
+		wget)	dltool="$dltool -nc" ;;
+		*)	printf "\nError: curl or wget not found. One of them are needed for downloading sources."
+			printf "\n       Please install curl or wget with your Package Manager.\n"
+			printf "\nLeaving.\n\n"
+			exit 0 ;;
+	esac
 	if [ ! -x "$(which 7z 2>/dev/null)" ] ;then
 		req="${req}7z\n"
 	fi
-	if [ ! -x "$(which curl 2>/dev/null)" ] ;then
-		req="${req}curl\n"
+	if [ ! -x "$(which lsof 2>/dev/null)" ] ;then
+		req="${req}lsof\n"
 	fi
 	if [ ! -x "$(which wine 2>/dev/null)" ] ;then
 		req="${req}wine\n"
 	fi
+	if [ ! -r "$(find /usr/lib -type f -name 'libxcb-xinerama*' 2>/dev/null)" ] ;then
+		req="${req}libxcb-xinerama\n"
+	fi
 	if [ "x$req" != "x" ] ;then
 		printf "\nError: Following requirements are missing:\n"
 		printf "\n$req\n"
-		printf "\nPlease install these requirements with your Package Manager.\n"
-		printf "\nLeaving.\n\n"
-		exit 0
+		read -p 'Install anyway? (y/N) ' key
+		if [ "x$(echo $key | tr [:upper:] [:lower:])" != "xy" ] ;then
+			printf "\nLeaving.\n\n"
+			exit 0
+		fi
 	fi
 }
 
@@ -167,6 +177,8 @@ dvver=""
 dvcsum=""
 rcsum=""
 key=""
+
+dltool=$(which curl 2>/dev/null || which wget 2>/dev/null  || true)
 
 if [ $(id -u) -ne 0 ] ;then
 	printf "\nEVE Online Launcher Setup need root permissions."
@@ -189,7 +201,6 @@ else
 		check_req
 		build_lib
 		get_dxvk
-		printf "\n"
 		bootstrap_install
 		printf "\nYou can now start EVE Online Launcher and his Tools:\n\n"
 		for cmd in *.desktop ;do
