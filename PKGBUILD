@@ -1,7 +1,7 @@
 # Maintainer: qvshuo
 
 pkgname=wechat-nativefier
-pkgver=20210503.3
+pkgver=20210503.4
 pkgrel=1
 pkgdesc='Yet another electron WeChat for Linux desktop.'
 arch=('x86_64')
@@ -37,7 +37,7 @@ package() {
 
   # Install program
   cp -rL "$appname-linux-x64" "$pkgdir"/opt/$pkgname
-  ln -sf /opt/$pkgname/$appname "$pkgdir"/usr/bin/$appname
+  ln -sf /opt/$pkgname/$pkgname "$pkgdir"/usr/bin/$appname
 
   # Install desktop launcher
   install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$appname.desktop
