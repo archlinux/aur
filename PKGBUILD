@@ -1,6 +1,6 @@
 pkgname=watchman-bin
-pkgver=2021.04.19.00
-pkgrel=2
+pkgver=2021.05.03.00
+pkgrel=1
 pkgdesc="An inotify-based file watching and job triggering command line utility"
 url="https://facebook.github.io/watchman/"
 arch=(x86_64)
@@ -11,7 +11,7 @@ provides=("watchman=$pkgver")
 conflicts=(watchman)
 # https://github.com/facebook/watchman/releases
 source=("https://github.com/facebook/watchman/releases/download/v$pkgver/watchman-v$pkgver-linux.zip")
-sha256sums=('048dc4136bddc8251b802287018e9f83b6e783d43770a851bb2ad63527f67fa7')
+sha256sums=('925412b69c23cab7fdde0c7567a93bd01428e61b0ae40f27e6dfad15b1e306dd')
 
 prepare() {
   python <<END

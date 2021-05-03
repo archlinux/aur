@@ -1,7 +1,7 @@
 pkgbase = watchman-bin
 	pkgdesc = An inotify-based file watching and job triggering command line utility
-	pkgver = 2021.04.19.00
-	pkgrel = 2
+	pkgver = 2021.05.03.00
+	pkgrel = 1
 	url = https://facebook.github.io/watchman/
 	arch = x86_64
 	license = Apache
@@ -10,10 +10,10 @@ pkgbase = watchman-bin
 	depends = openssl
 	depends = google-glog
 	depends = gflags
-	provides = watchman=2021.04.19.00
+	provides = watchman=2021.05.03.00
 	conflicts = watchman
-	source = https://github.com/facebook/watchman/releases/download/v2021.04.19.00/watchman-v2021.04.19.00-linux.zip
-	sha256sums = 048dc4136bddc8251b802287018e9f83b6e783d43770a851bb2ad63527f67fa7
+	source = https://github.com/facebook/watchman/releases/download/v2021.05.03.00/watchman-v2021.05.03.00-linux.zip
+	sha256sums = 925412b69c23cab7fdde0c7567a93bd01428e61b0ae40f27e6dfad15b1e306dd
 
 pkgname = watchman-bin
 
