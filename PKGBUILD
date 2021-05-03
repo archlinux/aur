@@ -1,7 +1,7 @@
 # Maintainer: qvshuo
 
 pkgname=wechat-nativefier
-pkgver=20210503.2
+pkgver=20210503.3
 pkgrel=1
 pkgdesc='Yet another electron WeChat for Linux desktop.'
 arch=('x86_64')
@@ -14,6 +14,8 @@ appname=WeChat
 gitname=yachat
 
 build() {
+  cd $gitname
+
   nativefier \
     --name "$appname" \
     --icon "$pkgname.png" \

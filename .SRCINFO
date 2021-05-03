@@ -1,6 +1,6 @@
 pkgbase = wechat-nativefier
 	pkgdesc = Yet another electron WeChat for Linux desktop.
-	pkgver = 20210503.2
+	pkgver = 20210503.3
 	pkgrel = 1
 	url = https://wx.qq.com/
 	arch = x86_64
