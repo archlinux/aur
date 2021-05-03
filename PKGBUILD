@@ -1,28 +1,31 @@
 # Maintainer: stiglers-eponym
 # The default configuration installs the MuPDF version.
+_renderer=mupdf
 pkgname=beamerpresenter-git
-pkgver=0.2.0beta
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Modular multi-screen pdf presenter (git)"
 arch=('x86_64')
 url="https://github.com/stiglers-eponym/BeamerPresenter"
 license=('AGPL3')
 
-# Dependencies for MuPDF:
-# dependence on libharfbuzz.so is implicit because qt5-base depends on fontconfig
+# Dependencies when using MuPDF:
 depends=('jbig2dec' 'openjpeg2' 'gumbo-parser' 'qt5-multimedia' 'hicolor-icon-theme')
 makedepends=('git' 'libmupdf')
 
-# Dependencies for poppler:
-#depends=('poppler-qt5' 'qt5-multimedia' 'hicolor-icon-theme')
-#makedepends=('git')
-
 optdepends=('gst-libav: show videos' 'gst-plugins-good: show videos')
 conflicts=('beamerpresenter')
-source=('git://github.com/stiglers-eponym/BeamerPresenter.git')
-md5sums=('SKIP')
 backup=("etc/xdg/beamerpresenter/beamerpresenter.conf" "etc/xdg/beamerpresenter/gui.json")
 install=beamerpresenter.install
+source=('git://github.com/stiglers-eponym/BeamerPresenter.git')
+sha256sums=('SKIP')
+
+# Change depends and makedepends if poppler is used as renderer.
+if [ "${_renderer}" == "poppler" ]; then
+    # Dependencies when using poppler:
+    depends=('poppler-qt5' 'qt5-multimedia' 'hicolor-icon-theme')
+    makedepends=('git')
+fi
 
 pkgver() {
   cd "${srcdir}/BeamerPresenter"
@@ -34,8 +37,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/BeamerPresenter"
-  qmake RENDERER=mupdf && make
-  #qmake RENDERER=poppler && make
+  qmake RENDERER="${_renderer}" && make
 }
 
 package() {
