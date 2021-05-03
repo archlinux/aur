@@ -1,8 +1,8 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=rofimoji-git
-pkgver=5.1.0.r7.g064a596
-pkgrel=2
+pkgver=5.1.0.r8.g7641ab2
+pkgrel=1
 pkgdesc='Character picker for rofi'
 arch=('any')
 url=https://github.com/fdw/rofimoji
@@ -16,7 +16,7 @@ optdepends=('emoji-font: for the emojis character file'
             'xsel: for one of the X.Org clipboarders'
             'xdotool: for the X.Org typer'
             'wofi: for the Wayland selector'
-            'wl-copy: for the Wayland clipboarder'
+            'wl-clipboard: for the Wayland clipboarder'
             'wtype: for the Wayland typer')
 provides=('rofimoji')
 conflicts=('rofimoji')
@@ -49,7 +49,7 @@ package() {
               --no-deps \
               --root="$pkgdir" \
               --ignore-installed \
-              --no-warn-script-location dist/*.whl
+              --no-warn-script-location *.whl
   install -Dm644 -t "$pkgdir"/usr/share/man/man1 src/picker/docs/rofimoji.1
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
