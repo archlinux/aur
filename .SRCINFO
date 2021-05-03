@@ -1,18 +1,18 @@
-pkgbase = shiftfs-dkms
-	pkgdesc = kernel module that provides a kernel filesystem for uid/gid shifting; dkms version for custom kernels
-	pkgver = 20210417
-	pkgrel = 2
-	url = https://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/hirsute/tree/fs/shiftfs.c?h=master-next
+pkgbase = shiftfs-lts-dkms
+	pkgdesc = kernel module that provides a kernel filesystem for uid/gid shifting; dkms version for custom lts kernels
+	pkgver = 20210412
+	pkgrel = 1
+	url = https://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/groovy/tree/fs/shiftfs.c
 	arch = x86_64
 	license = GPL2
-	source = shiftfs.c::https://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/hirsute/plain/fs/shiftfs.c?h=master-next&id=e11c90784cc33940ee3143d55706cea203080dc5
+	source = shiftfs.c::https://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/groovy/plain/fs/shiftfs.c?id=a92f3ddbb391ce466a470e578cb24a37d7eb813c
 	source = dkms.conf
 	source = Makefile
 	sha512sums = SKIP
 	sha512sums = 186a0d0bb6f85db978636a9e8471865542aae8f2170b3d4bdd35952c9eaa73a055acb2d4bea6b5c62ca7732d3c5fb478a267f1f5d78b50a4ac3e095ba689833f
 	sha512sums = 564fa7777089f16ca1522b1893d0e77ce34cd2b3632ff807c4a932eb29559053ad04a3d6a083c2b34e50864d72f6707c96a951aafca663fa67d483af04bcf0e9
 
-pkgname = shiftfs-dkms
+pkgname = shiftfs-lts-dkms
 	depends = dkms
 	provides = shiftfs
 	conflicts = shiftfs
