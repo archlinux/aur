@@ -4,7 +4,7 @@
 _pkgname=nextcloud
 pkgname=${_pkgname}-client-appimage-daily
 pkgver=3.2.50.20210503
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Nextcloud desktop client (official daily AppImage build)"
 arch=('x86_64' 'i686')
@@ -17,15 +17,15 @@ optdepends=('hicolor-icon-theme: needed for hicolor theme hierarchy')
 makedepends=('p7zip' 'curl')
 noextract=("$_pkgname.AppImage")
 options=('!strip')
-source=(${_pkgname}.AppImage::${url}/Nextcloud-${pkgver}-daily-x86_64.AppImage)
-sha256sums=('276d66c48a3ed2e302a417dc8473f5fb9779532bf3a9362a9ba1cfc9a2cde3db')
+source=(${_pkgname}-${pkgver}.AppImage::${url}/Nextcloud-${pkgver}-daily-x86_64.AppImage)
+sha256sums=('6da02eee4e357e8b23da8f934740ecee2a4e3dcf74ea74432d6f2689b8f9001a')
 
 prepare() {
     cd "${srcdir}"
 
     # Extract relevant files from AppImage
-    7z x -y ${_pkgname}.AppImage usr/share/icons > /dev/null
-    7z x -y ${_pkgname}.AppImage com.${_pkgname}.desktopclient.${_pkgname}.desktop > /dev/null
+    7z x -y ${_pkgname}-${pkgver}.AppImage usr/share/icons > /dev/null
+    7z x -y ${_pkgname}-${pkgver}.AppImage com.${_pkgname}.desktopclient.${_pkgname}.desktop > /dev/null
 }
 
 package() {
@@ -38,9 +38,9 @@ package() {
 
   # Install to /opt/appimage/
   install -Dm644 "com.${_pkgname}.desktopclient.${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install -Dm755 "${_pkgname}.AppImage" "${pkgdir}/opt/appimages/${_pkgname}.AppImage"
+  install -Dm755 "${_pkgname}-${pkgver}.AppImage" "${pkgdir}/opt/appimages/${_pkgname}-${pkgver}.AppImage"
 
   # Create Link in /usr/bin/
   install -d "${pkgdir}/usr/bin"
-  ln -s "/opt/appimages/${_pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+  ln -s "/opt/appimages/${_pkgname}-${pkgver}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
 }
