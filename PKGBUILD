@@ -3,8 +3,8 @@
 
 pkgname=heliocron-git
 _pkgname=${pkgname%-*}
-pkgver=0.5.0.r0.g7fd3b66
-pkgrel=2
+pkgver=0.5.0.r3.g791f3b8
+pkgrel=1
 pkgdesc='Execute tasks relative to sunset, sunrise and other solar events.'
 arch=('x86_64')
 url="https://github.com/mfreeborn/$_pkgname"
@@ -24,7 +24,7 @@ pkgver() {
 build() {
 	cd "$srcdir/$_pkgname"
 
-	cargo build --release --locked --all-features --target-dir=target
+	RUSTUP_TOOLCHAIN=stable cargo build --release --locked --target-dir=target
 }
 
 package() {
