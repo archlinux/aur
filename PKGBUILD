@@ -2,14 +2,14 @@
 # Co-Maintainer: Lukas Grossar <lukasgrossar@gmail.com>
 
 pkgname=k0sctl-bin
-pkgver=0.7.0
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="A bootstrapping and management tool for k0s clusters."
 arch=('x86_64')
 url="https://github.com/k0sproject/k0sctl"
 license=('Apache')
 source=("https://github.com/k0sproject/k0sctl/releases/download/v${pkgver}/k0sctl-linux-x64")
-sha256sums=('a35edaa7ed74d423d7be45f8d09b3122b57085313a2cc5edfb3603fb0f62b3c3')
+sha256sums=('799cec26b2f62008e9b6ecd883637e07de4b607950c0d6aaf5dc6282aaf23120')
 options=(!strip)
 
 package() {
