@@ -7,6 +7,11 @@ pkgbase = openmodelica-omlibraries
 	groups = openmodelica
 	license = OSMC-PL
 	makedepends = git
+	makedepends = python-requests
+	makedepends = python-simplejson
+	makedepends = parallel-python
+	makedepends = python-joblib
+	makedepends = perl-xml-xpath
 	depends = openmodelica-omc
 	source = git+https://github.com/OpenModelica/OMLibraries.git#commit=c5f7048f4682b367d59a01145e777a041ac4a558
 	sha1sums = SKIP
