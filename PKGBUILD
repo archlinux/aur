@@ -6,7 +6,7 @@ epoch=
 pkgdesc=""
 arch=('i686' 'x86_64')
 url=""
-license=('GPL')
+license=('MPL')
 groups=()
 depends=()
 # FIXME: cork-git doesn't seem to provide cork
