@@ -3,16 +3,22 @@
 
 pkgname=glibd
 _pkgname=GlibD
-pkgver=2.2.0
-pkgrel=6
+pkgver=2.3.0
+pkgrel=1
 pkgdesc='D bindings for the GLib C Utility Library'
 arch=('x86_64')
 url='https://github.com/gtkd-developers/GlibD'
 license=('LGPL3')
 depends=('glib2' 'liblphobos')
 makedepends=('meson' 'ldc' 'gobject-introspection' 'gir-to-d')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('c39af9a13fb3cb352e726f61e2a79e659ec18a0fefb7aaaefd9c6341cb8f4288c9072ed20e237d0723b2c2dbb08aec725c396e981ea5957532d5ba80704cfb28')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+        "FixBuildingGlib2.68.patch::https://github.com/gtkd-developers/GlibD/commit/b22a87ee6f42806aff5f9173a24cd05995db6cb0.patch")
+sha512sums=('3312eb81f6a586be4755942c23f46b23144c7ca5239a187eb30917f8e1c6726a63ecdfbe408276502f688f39dfb0f281248905a88692ec7d79875af53f893455'
+            '39e4eaba9fe01ae072e9c179b3e132bd241c94339ca31a47e64cda460aa9cd2ba2b59c8c25e0fb095386b10d83a033b1860afe8ca82e4a2076934a96a4a94012')
+
+prepare() {
+  patch -d $_pkgname-$pkgver -p1 -i "$srcdir"/FixBuildingGlib2.68.patch
+}
 
 build() {
   mkdir -p $_pkgname-$pkgver/build
