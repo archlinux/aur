@@ -1,14 +1,14 @@
 pkgbase = python-montepython
 	pkgdesc = The Monte Carlo code for class in Python
-	pkgver = 3.3.2
-	pkgrel = 2
+	pkgver = 3.4.0
+	pkgrel = 1
 	url = https://github.com/brinckmann/montepython_public
 	arch = any
 	makedepends = python-setuptools
 	depends = python-class
 	depends = python-polychord
 	options = !emptydirs
-	source = https://github.com/brinckmann/montepython_public/archive/3.3.2.tar.gz
+	source = https://github.com/brinckmann/montepython_public/archive/3.4.0.tar.gz
 	sha256sums = 578f950ec209730b0994fc56940509f52aa80decded6ad3a00a15ca71db8dc7b
 
 pkgname = python-montepython

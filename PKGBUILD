@@ -1,8 +1,8 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _modulename=montepython
 pkgname=python-$_modulename
-pkgver=3.3.2
-pkgrel=2
+pkgver=3.4.0
+pkgrel=1
 pkgdesc="The Monte Carlo code for class in Python"
 arch=(any)
 url="https://github.com/brinckmann/${_modulename}_public"
