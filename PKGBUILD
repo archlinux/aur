@@ -2,7 +2,7 @@
 
 pkgname=python-jaxlib
 pkgver=0.1.65
-pkgrel=1
+pkgrel=2
 pkgdesc='XLA library for JAX'
 arch=('x86_64')
 url='https://github.com/google/jax/'
@@ -36,6 +36,6 @@ package() {
     cd $srcdir/jax
     ls -l dist
     python -m pip install \
-        --prefix $pkgdir \
+        --root $pkgdir \
         dist/*.whl
 }
