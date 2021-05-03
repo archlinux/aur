@@ -6,7 +6,7 @@ pkgdesc='A tools collection of text frontend for ESPnet tts recipes'
 arch=('any')
 url='https://github.com/espnet/espnet_tts_frontend'
 license=('Apache 2.0')
-depends=('python>=3.7' )
+depends=('python>=3.7' 'python-unidecode')
 makedepends=('git' 'python-setuptools')
 provides=('python-espnet-tts-frontend')
 conflicts=("python-espnet-tts-frontend" "${pkgname}")

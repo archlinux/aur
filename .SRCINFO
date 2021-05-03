@@ -8,6 +8,7 @@ pkgbase = python-espnet-tts-frontend-git
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python>=3.7
+	depends = python-unidecode
 	provides = python-espnet-tts-frontend
 	conflicts = python-espnet-tts-frontend
 	conflicts = python-espnet-tts-frontend-git
