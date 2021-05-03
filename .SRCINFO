@@ -1,6 +1,6 @@
 pkgbase = hilbish
 	pkgdesc = A shell written in Go and extended with Lua
-	pkgver = 0.3.2
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/hilbis/hilbish
 	install = hilbish.install
@@ -10,8 +10,8 @@ pkgbase = hilbish
 	makedepends = go>=1.16
 	depends = readline
 	optdepends = lua
-	source = hilbish-0.3.2.tar.gz::https://github.com/hilbis/hilbish/archive/refs/tags/v0.3.2.tar.gz
-	sha256sums = 995c98696dd08642262a4576031a881a61e91ff52eb58694db25212b54f3ce54
+	source = hilbish-0.4.0.tar.gz::https://github.com/hilbis/hilbish/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 5c6e9bc93df00c8225f34dfa51c5dc4f52f526d23b34785854fd6019a3e7d77e
 
 pkgname = hilbish
 
