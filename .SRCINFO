@@ -1,14 +1,14 @@
 pkgbase = libsvg
 	pkgdesc = A library for rendering SVG documents
 	pkgver = 0.1.4
-	pkgrel = 5
+	pkgrel = 6
 	url = http://cairographics.org/
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	depends = libxml2
 	options = !libtool
-	source = http://cairographics.org/snapshots/libsvg-0.1.4.tar.gz
+	source = https://cairographics.org/snapshots/libsvg-0.1.4.tar.gz
 	source = libpng14.patch
 	md5sums = ce0715e3013f78506795fba16e8455d3
 	md5sums = 76eee76d69e79dddbe6de8c75ed0ac1c
