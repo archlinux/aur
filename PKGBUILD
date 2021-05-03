@@ -29,7 +29,12 @@ provides=(libboost_atomic.so libboost_chrono.so libboost_container.so
           libboost_timer.so libboost_type_erasure.so libboost_unit_test_framework.so
           libboost_wave.so libboost_wserialization.so)
 options=('staticlibs')
-source=(https://dl.bintray.com/boostorg/release/${pkgver}/source/boost_${_boostver}.tar.bz2
+# FIXME: The repository used in the orignal Arch package seems to be gone. This
+#        download is listed on Boost's own download page so it should be safe,
+#        but we should check what the regular boost PKGBUILD is doing after
+#        that gets updated:
+#        https://github.com/archlinux/svntogit-packages/blob/packages/boost/trunk/PKGBUILD
+source=(https://boostorg.jfrog.io/artifactory/main/release/${pkgver}/source/boost_${_boostver}.tar.bz2
        boost-ublas-c++20-iterator.patch::https://github.com/boostorg/ublas/commit/a31e5cffa85f.patch)
 sha256sums=('953db31e016db7bb207f11432bef7df100516eeb746843fa0486a222e3fd49cb'
             'aa38addb40d5f44b4a8472029b475e7e6aef1c460509eb7d8edf03491dc1b5ee')
