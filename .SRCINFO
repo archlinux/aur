@@ -1,11 +1,11 @@
 pkgbase = app-outlet-bin
 	pkgdesc = A Universal linux app store
 	pkgver = 1.3.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://app-outlet.github.io
 	arch = x86_64
 	license = MIT
-	source = app-outlet-1.3.4.AppImage::https://github.com/app-outlet/app-outlet/releases/download/v1.3.4/App.Outlet-1.3.4.AppImage
+	source = app-outlet.AppImage::https://github.com/app-outlet/app-outlet/releases/download/v1.3.4/App.Outlet-1.3.4.AppImage
 	source = app-outlet.desktop
 	source = LICENSE
 	source = icon.png

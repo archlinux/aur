@@ -3,13 +3,13 @@
 _appname=app-outlet
 pkgname=app-outlet-bin
 pkgver=1.3.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A Universal linux app store"
 url="https://app-outlet.github.io"
 arch=("x86_64")
 license=("MIT")
 source=(
-  "${_appname}-${pkgver}.AppImage::https://github.com/app-outlet/app-outlet/releases/download/v${pkgver}/App.Outlet-${pkgver}.AppImage"
+  "${_appname}.AppImage::https://github.com/app-outlet/app-outlet/releases/download/v${pkgver}/App.Outlet-${pkgver}.AppImage"
   "app-outlet.desktop"
   "LICENSE"
   "icon.png"
@@ -26,5 +26,6 @@ package() {
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_appname}"
   install -Dm644 icon.png "${pkgdir}/usr/share/pixmaps/${_appname}.png"
   install -d "${pkgdir}/opt/${_appname}"
-  install -Dm755 ${_appname}-${pkgver}.AppImage "$pkgdir/opt/${_appname}/${_appname}.AppImage"
+  mv ${_appname}.AppImage "$pkgdir/opt/${_appname}/${_appname}.AppImage"
+  chmod +x "$pkgdir/opt/${_appname}/${_appname}.AppImage"
 }
