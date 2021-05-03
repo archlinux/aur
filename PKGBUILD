@@ -13,11 +13,14 @@ pkgrel=2
 pkgdesc='Component-based simulation package designed for modeling communication networks'
 url='http://www.omnetpp.org'
 license=('Academic Public License')
-depends=('tcl' 'openscenegraph' 'tk' 'blt' 'osgearth')
-makedepends=('libxml2' 'bison' 'flex' 'openscenegraph' 'qt4' 'osgearth')
+depends=('tcl' 'openscenegraph' 'tk' 'blt' 'qt5-base')
+makedepends=('libxml2' 'bison' 'flex' 'openscenegraph' 'qt4')
 arch=('i686' 'x86_64')
-optdepends=('openmpi: message passing library for parallel simulation',
-  'java-environment: Java runtime for using OMNeT++/OMNEST IDE')
+optdepends=(
+  'openmpi: message passing library for parallel simulation'
+  'java-environment: Java runtime for using OMNeT++/OMNEST IDE'
+  'osgearth: geospatial API with 3D rendering'
+)
 install=${pkgname}.install
 
 source=(
@@ -33,6 +36,9 @@ build() {
   changeText1=". .\/configure.user"
   changeText2=".\/configure.user"
   LD_LIBRARY_PATH=${srcdir}/${pkgname}-${pkgver}/lib:$LD_LIBRARY_PATH
+
+  # Disable OSGEARTH because even in AUR it's >3.0
+  sed -i 's/WITH_OSGEARTH=yes/WITH_OSGEARTH=no/' configure.user
 
   sed -i 's!OMNETPP_ROOT/images!OMNETPP_ROOT/images;/usr/share/omnetpp/images!' configure*
   sed -i '/for arg in \$ac_configure_args/,+8 d' configure
