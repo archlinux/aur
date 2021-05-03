@@ -2,11 +2,11 @@
 _pkgname=SerialTool
 pkgname=serialtool-git
 _softname=serialtool
-pkgver=1.4.0alpha.0.21.gf25f840
+pkgver=1.4.0alpha.0.22.g48a0fcb
 pkgrel=1
 pkgdesc="A practical Serial-Port/TCP/UDP debugging tool."
 arch=('any')
-url="https://github.com/Skiars/SerialTool"
+url="https://github.com/HoGC/SerialTool"
 license=('GPL3')
 provides=(${pkgname})
 conflicts=(${pkgname} 'serialtool')
@@ -16,8 +16,10 @@ makedepends=('git' 'qscintilla-qt5' 'qt5-serialport' 'qt5-charts' 'qt5-script' '
 backup=()
 options=('!strip')
 install=${pkgname}.install
-source=("${_pkgname}::git+https://github.com/Skiars/${_pkgname}.git")
-sha256sums=('SKIP')
+source=("${_pkgname}::git+https://github.com/HoGC/${_pkgname}.git"
+    ${_softname})
+sha256sums=('SKIP'
+    'b93065b98d21ce9054da53004edf703d7801fe7657583f4f594eb04f25df672c')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}/${_pkgname}"
@@ -33,15 +35,16 @@ build() {
 package() {
 
     install -dm755 "${pkgdir}/usr/bin/" \
-                   "${pkgdir}/usr/share/${_softname}/" 
+                   "${pkgdir}/usr/share/${_softname}/"
 
     cd ${srcdir}/${_pkgname}/${_pkgname}/
     cp --preserve=mode -r ${_pkgname} language config themes slave  "${pkgdir}/usr/share/${_softname}/"
-    
+
     cd pkg/
     cp --preserve=mode -r icons "${pkgdir}/usr/share/"
 
-    ln -sf  "/usr/share/${_softname}/${_pkgname}" "${pkgdir}/usr/bin/${_softname}"
+    #ln -sf  "/usr/share/${_softname}/${_pkgname}" "${pkgdir}/usr/bin/${_softname}"
+    install -Dm755 "${srcdir}/${_softname}" "${pkgdir}/usr/bin/${_softname}"
     install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_softname}/LICENSE"
     install -Dm644 "${srcdir}/${_pkgname}/${_pkgname}/pkg/io.github.skiars.${_softname}.desktop" "${pkgdir}/usr/share/applications/io.github.skiars.${_softname}.desktop"
     install -Dm644 "${srcdir}/${_pkgname}/${_pkgname}/pkg/20-usb-serial.rules" "${pkgdir}/etc/udev/rules.d/20-usb-serial.rules"
