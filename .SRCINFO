@@ -1,0 +1,16 @@
+pkgbase = python-randcrack-git
+	pkgdesc = Python random module cracker / predictor
+	pkgver = 0.1.5.r28.6b8d738
+	pkgrel = 1
+	url = https://github.com/tna0y/Python-random-module-cracker
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = python
+	source = python-randcrack-git::git+https://github.com/tna0y/Python-random-module-cracker
+	sha512sums = SKIP
+
+pkgname = python-randcrack-git
+
