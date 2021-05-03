@@ -1,0 +1,15 @@
+pkgbase = spl-token
+	pkgdesc = A token program on the Solana blockchain, usable for fungible and non-fungible tokens
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/solana-labs/solana-program-library
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = rustup
+	provides = spl-token
+	source = spl-token-0.1.3.tar.gz::https://github.com/solana-labs/solana-program-library/archive/refs/tags/@solana/spl-token@v0.1.3.tar.gz
+	md5sums = a04a251d13e50e68bb31fe8e4c07fce2
+
+pkgname = spl-token
+
