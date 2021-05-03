@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="no-bullshit, general purpose process management program"
 arch=('any')
 url="https://github.com/jnats/notop"
-license=('custom:beerware')
+license=('custom:nolicense')
 depends=('procps-ng' 'coreutils' 'sed' 'bc')
 provides=('notop')
 
