@@ -1,6 +1,6 @@
 pkgbase = dokku
 	pkgdesc = Docker-powered PaaS that helps build and manage the lifecycle of applications
-	pkgver = 0.23.7
+	pkgver = 0.24.4
 	pkgrel = 1
 	url = https://github.com/dokku/dokku
 	install = dokku.install
@@ -21,10 +21,10 @@ pkgbase = dokku
 	depends = procfile-util
 	depends = rsyslog
 	depends = sshcommand
-	source = https://github.com/dokku/dokku/archive/v0.23.7.zip
+	source = https://github.com/dokku/dokku/archive/v0.24.4.zip
 	source = dokku.install
 	source = LICENSE
-	sha256sums = 959ceb5647fd70d4419a279664c6d6a89be707290a16b5b29b4a6c44715b6900
+	sha256sums = 5efe5d433a1cbece837dcff1209533e1c691da1477818030e5a0923c54ccee58
 	sha256sums = dd7ca19339e18f8434ca74faeb994ae8446cb3ccf020e558eaa340ad1f72effe
 	sha256sums = b1ac2fed5ac269fb7bbf651a3d37ef5fd56d2c33320e17cb6e23a22a93f5c046
 
