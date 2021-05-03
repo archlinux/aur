@@ -2,7 +2,7 @@ _author=P/PD/PDEEGAN
 _perlmod=XML-Mini
 pkgname=perl-xml-mini
 pkgver=1.38
-pkgrel=3
+pkgrel=4
 pkgdesc='XML::Mini - Perl implementation of the XML::Mini XML create/parse interface'
 arch=('any')
 url='https://metacpan.org/release/XML-Mini'
@@ -18,6 +18,8 @@ perl-xml-mini-element-header
 perl-xml-mini-node
 perl-xml-mini-treecomponent
 )
+depends=(perl)
+makedepends=(perl)
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
 sha256sums=('af803d38036a3184e124a682e5466f1bc107f48a89ef35b0c7647e11a073fe2d')
