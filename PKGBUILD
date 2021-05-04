@@ -3,10 +3,8 @@
 # Contributor: heavysink <winstonwu91 at gmail>
 
 pkgname=proton
-# Upstream version
-_pkgver='6.3-2'
-# Arch - no hyphens
-pkgver=6.3.2
+_pkgver=6.3-3
+pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 arch=('x86_64')
@@ -24,7 +22,7 @@ source=(
 	"wined3d-interop.h"
 )
 sha512sums=(
-	'dc31dcb627c7c4b98e56c29ca8e4b0b9c84c36317896b3574ac8ca7ac74cf32a546a7439da623e29cdc2b2ec08a4ef0a314cffd767ae1722810ff38b189abfcb'
+	'ef62405c8ea79bb8f9511b13412534b657e13bf1b011d635ca87c528dae106641ea05e16ba3204ac09a7bbac51c561b26048e5e07d7fa66959d413c38ed196ab'
 	'f2caacca6bd55030331de7d017d85772b09e5ad9e5fdbfc6343f303ac5447595660fd3f83ba2a177ef321d9b54335245bac548ca804e6e3e9346690f29d55ad0'
 )
 
