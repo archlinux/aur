@@ -3,7 +3,7 @@
 pkgbase='python-london-unified-prayer-times'
 pkgname=('python-london-unified-prayer-times')
 _module='london_unified_prayer_times'
-pkgver='1.1.0'
+pkgver='1.2.0'
 pkgrel=1
 pkgdesc="A library for retrieving data from The London Unified Prayer Timetable."
 url="https://github.com/sshaikh/london_unified_prayer_times"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python-pip')
 license=('GPL')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('dc36598a5ac5b8bfe66b92be5f70ad5d6470bb787d5ffa97359cea7f98ca970d')
+sha256sums=('c354102a5ba81773441ecbcb2cabf333b9af4160c8d52287458fe4dbc1a883b6')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"

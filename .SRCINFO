@@ -1,6 +1,6 @@
 pkgbase = python-london-unified-prayer-times
 	pkgdesc = A library for retrieving data from The London Unified Prayer Timetable.
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/sshaikh/london_unified_prayer_times
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = python-london-unified-prayer-times
 	depends = python-appdirs
 	depends = python-tzlocal
 	depends = python-humanize
-	source = https://files.pythonhosted.org/packages/source/l/london_unified_prayer_times/london_unified_prayer_times-1.1.0.tar.gz
-	sha256sums = dc36598a5ac5b8bfe66b92be5f70ad5d6470bb787d5ffa97359cea7f98ca970d
+	source = https://files.pythonhosted.org/packages/source/l/london_unified_prayer_times/london_unified_prayer_times-1.2.0.tar.gz
+	sha256sums = c354102a5ba81773441ecbcb2cabf333b9af4160c8d52287458fe4dbc1a883b6
 
 pkgname = python-london-unified-prayer-times
 	depends = python
