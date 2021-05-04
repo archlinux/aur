@@ -1,7 +1,7 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=fsleyes-widgets
 pkgver=0.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="FSLeyes is the FSL image viewer, widgets is one of its dependent projects"
 arch=('any')
 url="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes"
@@ -13,14 +13,10 @@ optdepends=()
 provides=()
 conflicts=()
 replaces=()
-source=($pkgname-$pkgver.tar.gz::https://git.fmrib.ox.ac.uk/fsl/fsleyes/widgets/repository/archive.tar.gz?ref=$pkgver)
-sha256sums=('35b100ec0668d75436de7c92b28cf1abd6a25beadc0bd4e76fd83090839ab43b')
+source=("https://git.fmrib.ox.ac.uk/fsl/fsleyes/${pkgname#fsleyes-}/-/archive/${pkgver}/${pkgname#fsleyes-}-${pkgver}.tar.gz")
+sha256sums=('3b97f5cdab9415b6cb3f2424a1e863f5576e86c886d6bf04cab2d26075ba38e4')
 
 package() {
-  cd "$srcdir/${pkgname#fsleyes-}-$pkgver-"*
-  # "Patching" for deprecation 2.x support
-  sed -i 's/deprecation>=1\.\*,<=2\.\*/deprecation>=1\.\*/g' requirements.txt
-  # "Patching" for matplotlib>3 support
-  sed -i 's/matplotlib>=1\.5,<3/matplotlib>=1\.5/g' requirements.txt
+  cd "$srcdir/${pkgname#fsleyes-}-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
