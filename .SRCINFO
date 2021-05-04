@@ -1,11 +1,12 @@
 pkgbase = vpn-whitelist-git
 	pkgdesc = Whitelist domains and addresses to bypass an active VPN connection
-	pkgver = r30.7584109
+	pkgver = r46.c51abb9
 	pkgrel = 1
 	url = https://github.com/cryzed/vpn-whitelist
 	arch = any
-	license = GPL3
+	license = AGPL3
 	depends = python
+	depends = python-psutil
 	optdepends = networkmanager: support for automatic whitelisting of addresses
 	optdepends = ufw: support for whitelisting addresses in UFW
 	backup = etc/vpn-whitelist.conf

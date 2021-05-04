@@ -1,18 +1,18 @@
-# Maintainer: Michael Serajnik <ms dot mserajnik dot at>
+# Maintainer: Michael Serajnik <m at mser dot at>
 pkgname=vpn-whitelist-git
 _pkgname=vpn-whitelist
-pkgver=r30.7584109
+pkgver=r46.c51abb9
 pkgrel=1
 pkgdesc="Whitelist domains and addresses to bypass an active VPN connection"
-arch=('any')
+arch=("any")
 url="https://github.com/cryzed/${_pkgname}"
-license=('GPL3')
-depends=('python')
-optdepends=('networkmanager: support for automatic whitelisting of addresses'
-            'ufw: support for whitelisting addresses in UFW')
-backup=('etc/vpn-whitelist.conf')
+license=("AGPL3")
+depends=("python" "python-psutil")
+optdepends=("networkmanager: support for automatic whitelisting of addresses"
+            "ufw: support for whitelisting addresses in UFW")
+backup=("etc/vpn-whitelist.conf")
 source=("git+https://github.com/cryzed/${_pkgname}.git")
-md5sums=('SKIP')
+md5sums=("SKIP")
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -22,7 +22,7 @@ pkgver() {
 package() {
   install -D --mode 755 "${srcdir}/${_pkgname}/vpn-whitelist" --target-directory "${pkgdir}/usr/bin"
   install -D --mode 755 "${srcdir}/${_pkgname}/vpn-whitelist-dns-proxy" --target-directory "${pkgdir}/usr/bin"
-
   install -D --mode 644 "${srcdir}/${_pkgname}/vpn-whitelist.conf" --target-directory "${pkgdir}/etc"
   install -D --mode 755 "${srcdir}/${_pkgname}/vpn-whitelist.NetworkManager-dispatcher" --target-directory "${pkgdir}/etc/NetworkManager/dispatcher.d"
+  install -D --mode 755 "${srcdir}/${_pkgname}/vpn-whitelist.service" --target-directory "${pkgdir}/etc/systemd/system"
 }
