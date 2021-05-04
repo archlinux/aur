@@ -11,7 +11,7 @@ conflicts=('anyvc')
 replaces=('anyvc')
 provides=('anyvc')
 license=('LGPL')
-url="http://pidsoff.appspot.com/anyvc"
+url="https://github.com/RonnyPfannschmidt-Attic/anyvc"
 source=(http://pypi.python.org/packages/source/a/anyvc/anyvc-${pkgver}.tar.gz)
  
 package() {
