@@ -1,0 +1,22 @@
+pkgbase = satdump-git
+	pkgdesc = The Bloat-free SDR Receiver
+	pkgver = 1.0
+	pkgrel = 5
+	url = https://github.com/altillimity/SatDump
+	arch = any
+	license = GPL
+	makedepends = gcc
+	makedepends = make
+	makedepends = cmake
+	makedepends = libcorrect-git
+	makedepends = airspy-git
+	depends = libvolk
+	depends = glfw
+	depends = glew
+	depends = fftw
+	depends = libcorrect-git
+	source = git+https://github.com/altillimity/SatDump
+	md5sums = SKIP
+
+pkgname = satdump-git
+
