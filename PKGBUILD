@@ -7,6 +7,7 @@ pkgdesc="A simple GUI for Neovim (prebuilt)"
 arch=('x86_64')
 url="https://github.com/Kethku/neovide"
 license=('MIT')
+provides=('neovide')
 depends=('neovim' 'fontconfig' 'freetype2' 'libglvnd' 'sndio')
 optdepends=(
     'vulkan-intel: Vulkan support for Intel GPUs'

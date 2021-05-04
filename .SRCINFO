@@ -12,6 +12,7 @@ pkgbase = neovide-bin
 	depends = sndio
 	optdepends = vulkan-intel: Vulkan support for Intel GPUs
 	optdepends = vulkan-radeon: Vulkan support for AMD Radeon GPUs
+	provides = neovide
 	conflicts = neovide
 	conflicts = neovide-git
 	source_x86_64 = neovide-0.7.0-1::https://github.com/Kethku/neovide/releases/download/0.7.0/neovide
