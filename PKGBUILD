@@ -53,7 +53,7 @@ _use_current=
 
 pkgbase=linux-cacule-rdb
 # pkgname=('linux-cacule-rdb' linux-cacule-rdb-headers)
-_major=5.12
+_major=5.12.1
 #_minor=1
 #_minorc=$((_minor+1))
 #_rcver=rc8
@@ -61,7 +61,7 @@ pkgver=${_major}
 #_stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=5
+pkgrel=1
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -94,10 +94,10 @@ source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz
         "${_patchsource}/clearlinux-patches/0001-clearlinux-patches.patch"
         "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch")
 
-sha512sums=('be03b6fee1d1ea8087b09874d27c0a602c0b04fd90ad38b975bd2c8455a07e83c29b56814aaf1389e82305fae0e4c2d1701075a7f0a7295dd28149f967ec5b3d'
+sha512sums=('9bb9831459557a87ecb822ee5862b27ec1cb0de7df1a0131f534bd57a152b6ea75b710fa319cf533a8f89b8cbaa6b4844bd260c4bd825e83e1d62e7734510240'
             '1ab27f634f844a096c1c6572349581495fa76555888100028a694abfe5529900ed4ba748be2452f1fcdf97c1fbbf25cd2cb3b8f2e00dff83cb86632988926bd9'
             '88f9f1e6ea206068fd029566e4610c16b7c3007f10363c7db37cd922fe75646437d2e4814317bc292d06eff7e9ebd29d8cd1ee82c8abf45ddd1843c1ff55f5c7'
-            'ee80f6bc58b5748704a6e9b2728cebba6aa8e003000415a617b4e8ff5629f640b5285f9e04fb515553935fa329fd593c160988c6e5c5b614b21fc415500c6f3b'
+            '9ae489f10dc259add64967c6f1fa7f1cddbb1026bb3d5af8f3ec8c61aeaa82baba8ffbca27ef0633135442c2fc15aeb7511dd6b1fd8e10169a355e3f00c625cf'
             'af6361e7c6e5a857d346b04b0654b4a00284fe200eeb32cd66f47d8559d2595a1f79f05281764732bf08b8c5135523a0b3a2000882fa3c7e1c1e9b42bb8a696c'
             '15933126feeb56ccc6ace70db9fa7afb64d148900e41a780e42e03ce09faf7bab12413f526675b918aeff55e91dc038ad58884bb7add4a45962aca79d576cb93'
             '449570b8b9a04391cc2cc171cc806b3a132c6e969c7cedf9c4925d24244888e6f2e5afb6c551521fe62fcb7e2bf08cb8d396f9ec785ecfcdd5ea27dd9ffed4ea'
