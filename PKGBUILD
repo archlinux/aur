@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 package() {
   cd "${srcdir}"
+  mkdir ${pkgdir}/usr/share/morphoj
   chmod +x download.php?get=MorphoJ-installer_Unix_Linux.jar
   java -jar download.php?get=MorphoJ-installer_Unix_Linux.jar
-  mkdir ${pkgdir}/usr/share/morphoj
 }
