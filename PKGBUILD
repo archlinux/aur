@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=kbs2
-pkgver=0.2.6
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A secret manager backed by age"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('libx11' 'gcc-libs')
 makedepends=('rust' 'python')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('fa39895a51a0507d472d56ee8aba1b22962c6649fe1e70975c6be7e1d5afd8ddee8e23c59d2d990e0598dbe274c7e5ef6522c6b061c236d4735721bd2387e103')
+sha512sums=('b67fcbb6d830b54fd838754e25ad4e82872d4a552f41b6a44b7a11b840a1383607a8b4dc451675cb4319ad1a29267e3d787f3455573cce1bc9fc7aab36b312f2')
 
 build() {
   cd "$pkgname-$pkgver"
