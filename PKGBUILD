@@ -1,6 +1,6 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=fsleyes
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="FSLeyes is the FSL image viewer"
 arch=('any')
@@ -16,16 +16,16 @@ makedepends=()
 provides=()
 conflicts=()
 replaces=()
-source=("${pkgname}-${pkgver}.tar.gz::https://git.fmrib.ox.ac.uk/fsl/fsleyes/fsleyes/repository/archive.tar.gz?ref=${pkgver}"
+source=("https://git.fmrib.ox.ac.uk/fsl/${pkgname}/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('bd18cc0e467b2ffeef7f98787dd9c97adfb2c061b5cd79a98e812bddea37f300'
+sha256sums=('c0f08f60ef059d989b5177fa6ef974ee1274dffc0f8ed0902c824af9ad99edd7'
             '6e91e88eb74602f8da7cda6575245dbaaf4577022bffe15c0efedb33106139fb')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}-"*
+  cd "${srcdir}/${pkgname}-${pkgver}"
   
   python setup.py install --root="${pkgdir}/" --optimize=1
   
-  install -Dm644 ./assets/icons/app_icon/fsleyes.iconset/icon_512x512.png "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/${pkgname}.png
+  install -Dm644 ./fsleyes/assets/icons/app_icon/fsleyes.iconset/icon_512x512.png "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/${pkgname}.png
   install -Dm644 "${srcdir}"/${pkgname}.desktop "${pkgdir}"/usr/share/applications/${pkgname}.desktop
 }
