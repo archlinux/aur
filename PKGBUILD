@@ -5,6 +5,13 @@ pkgname=seqencematrix
 _installname=SeqenceMatrix
 pkgver=1.8.2
 pkgrel=1
+depends=(
+	'jre-openjdk-headless'
+	'jre-openjdk'
+	'jdk-openjdk'
+	'openjdk-doc'
+	'openjdk-src'
+)
 pkgdesc="Taxonomy-aware DNA sequence processing toolkit"
 arch=('x86_64')
 url="https://github.com/gaurav/taxondna"
