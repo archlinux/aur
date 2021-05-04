@@ -1,45 +1,38 @@
 # Maintainer: AkinoKaede <autmaple@protonmail.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: pandada8 <pandada8@gmail.com>
+# Contributor: Dct Mei <dctxmei@yandex.com>
 
 pkgname=xray-git
-pkgver=1.3.0
+pkgver=1.4.2.r4.1e3d739
 pkgrel=1
 pkgdesc="The best v2ray-core, with XTLS support."
 arch=('x86_64')
 url="https://github.com/XTLS/Xray-core"
 license=('MPL2')
-depends=('glibc' 'v2ray-domain-list-community' 'v2ray-geoip')
-makedepends=('go' 'git' 'patch')
+depends=('glibc' 'xray-domain-list-community' 'xray-geoip')
+makedepends=('go' 'git')
 backup=(etc/xray/config.json)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(
     "Xray-core::git+${url}.git"
-    "config.json"
-    "vpoint_socks_vmess.json"
-    "vpoint_vmess_freedom.json"
+    "xray.sysusers"
+    "xray.tmpfiles"
     "xray.service"
     "xray@.service"
-    "location_asset.patch"
 )
-sha512sums=(
+sha256sums=(
     'SKIP'
-    '2000211cbf987adaee7f278cc8cb23268965caab3bc46401f9324f2beaad95bec11012f5f4500f1016f4b75f097f3ac96cc5be2da7a6df0261582b3f23b3d78d'
-    '9914fd3da02511b716951e521ca22006a6e8ad66e64d32cc7dd7dc3544a754174b37e35df6108ca217130f02763265d74f8bc56c4e52b262bdd48dcdb5310eb5'
-    '532f66fe19196de0cc43df1812d6f32cbca7bbcacaa0cd4141bd80b3121b17eb8b23e0464765cf05a97b11e0213fb688eade83e393e36b3e7ebded6f0925de97'
-    '1d31e11c3a11090ee2616adfcf77a4a1013793c8f63a41e5293d07e889e34f85223b9f5a0791b649f22ecc5e18e12182b5b074e61aa36f5cd6de523f3c64f95d'
-    '6582aa9bf988acb2660a7172282768c217ad8335a55ccee916d7786c227bc62cc973d7d6d3b5632260c69eec98c15804c2b52cdd91c5f395d3a0fe36519586b4'
-    '3fc64f9980fb9d5ceedf6c77fa88abcbf9c3ca15189de7f4e5e319d525591d7049676b8a89e9ef1341ed3ba198041539db4fe37338bab4df9f9b7594f77b36b6'
+    '801131bf2eb079750f17d3e703e414eab8494db0d512164cdef3cc68cef308b8'
+    '2d301e9f2fae728da55f33a15b2c36e90cdb657deafb5d6ab7d74375ce9fdf38'
+    '66a8a3280aa5b3ed41b9855ba3de3f884bd2113b4a965cf097fcb31c3a6066ed'
+    '05d16acd6e00989ece245bf0df919accae858555c7165a50ce2b3db9c0c5a725'
 )
 
 pkgver() {
     cd "${srcdir}"/Xray-core
     printf "%s" "$(git describe --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
-}
-
-prepare() {
-    patch "${srcdir}"/Xray-core/common/platform/others.go "${srcdir}"/location_asset.patch
 }
 
 build() {
@@ -57,12 +50,10 @@ check() {
 }
 
 package() {
-    cd "${srcdir}"
-    install -Dm644 xray.service "${pkgdir}"/usr/lib/systemd/system/xray.service
-    install -Dm644 xray@.service "${pkgdir}"/usr/lib/systemd/system/xray@.service
-    install -Dm644 *.json -t "${pkgdir}"/etc/xray/
- 
-    cd "${srcdir}"/Xray-core
-    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/xray/LICENSE
-    install -Dm755 xray -t "${pkgdir}"/usr/bin/
+    install -Dm755 "${srcdir}"/Xray-core/xray -t "${pkgdir}"/usr/bin/
+    install -Dm644 "${srcdir}"/Xray-core/LICENSE -t "${pkgdir}"/usr/share/licenses/xray/
+    install -Dm644 "${srcdir}"/xray.sysusers "${pkgdir}"/usr/lib/sysusers.d/xray.conf
+    install -Dm644 "${srcdir}"/xray.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/xray.conf
+    install -Dm644 "${srcdir}"/xray.service -t "${pkgdir}"/usr/lib/systemd/system/
+    install -Dm644 "${srcdir}"/xray@.service -t "${pkgdir}"/usr/lib/systemd/system/
 }
