@@ -1,0 +1,19 @@
+pkgbase = realvnc-vnc-viewer-aarch64
+	pkgdesc = VNC remote desktop client software by RealVNC - aarch64 version from Raspbian repos
+	pkgver = 6.20.530.42683
+	pkgrel = 1
+	url = https://www.realvnc.com/
+	arch = aarch64
+	license = custom
+	depends = libsm
+	depends = libxext
+	provides = realvnc-vnc-viewer
+	conflicts = tightvnc
+	conflicts = tigervnc
+	conflicts = turbovnc
+	conflicts = realvnc-vnc-viewer
+	source = http://archive.raspberrypi.org/debian/pool/main/r/realvnc-vnc/realvnc-vnc-viewer_6.20.530.42683_arm64.deb
+	sha256sums = 5cafc1aed06ef6c0b1b8d6f581b9819bc3b0538b0d22ae40d7a6b88bbc6aae39
+
+pkgname = realvnc-vnc-viewer-aarch64
+
