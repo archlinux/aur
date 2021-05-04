@@ -1,17 +1,16 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 pkgname=ambertools
-pkgver=20
+pkgver=21
 _releasever=20
-_gccver=9.3.0
-pkgrel=7
+pkgrel=1
 pkgdesc="Biomolecular simulation package (tools only)"
 url="http://ambermd.org/"
 license=(GPL LGPL)
 arch=(x86_64)
-depends=(boost zlib bzip2 gcc9-libs gcc9-fortran tk libx11 libxext blas lapack python python-numpy python-scipy python-matplotlib python-setuptools perl perl-chemistry-mol)
-makedepends=('cmake>=3.8.1' make gcc9 flex bison patch tcsh imake openmpi-gcc9 'cuda>=10.1')
-optdepends=('openmpi-gcc9: MPI support'
+depends=(boost zlib bzip2 gcc-fortran tk libx11 libxext blas lapack python python-numpy python-scipy python-matplotlib python-setuptools perl perl-chemistry-mol)
+makedepends=('cmake>=3.10' make gcc flex bison patch tcsh imake openmpi 'cuda>=11.1')
+optdepends=('openmpi: MPI support'
             'cuda: GPU acceleration support'
             'plumed: metadynamics support'
             'plumed-mpi: metadynamics support with MPI'
@@ -26,23 +25,20 @@ source=("local://AmberTools${pkgver}.tar.bz2"
         "sander"
         "sander.MPI"
         "sander.OMP"
-        ".version"
-        "cuda-11.1.patch")
-sha256sums=('b1e1f8f277c54e88abc9f590e788bbb2f7a49bcff5e8d8a6eacfaf332a4890f9'
-            'cc06f57d7f81dfe7b3e3d9e5a00be105fef462b690076b4a274a02df4713339c'
-            'bdbf6bdbe87ae7473a015cef775896e2fb8bda4cf9da534e67848bc3a2e13e87'
-            'd99716e83d04217fd653d3a44b348e0d948ba671fb246480cf2b764fd4c07280'
-            '675895e85b2ac518aee4d196f5162d8110e3c4a4d147f566bc2160f174a65c1c'
-            '37e8c94c7d1ed88ace6a67eba5bcc146f030db0a8b230794b0b246cb635bb44c'
-            '0736c740ec86bbe1545df3b66566d6fcffdd78368e457bb96fca2501d124de18'
-            'b666b2f186c5fd40b0be71a52b854060deea690205dbca24606c13c97cbf07de')
+        ".version")
+sha256sums=('f55fa930598d5a8e9749e8a22d1f25cab7fcf911d98570e35365dd7f262aaafd'
+            '7344dcd9c2dc3407a01551af46714cefeff52e20b43ce395c1479d88422c29d8'
+            '034e2a84531a7db77d4a19f9976f5b3f8a7a96f222de0157cc4f47bb1c0efe1e'
+            '5296a44c433f80188c1a77b7f993540a0d17e302971696fb542523a6dd512839'
+            'ce3fc27c1d05ab1a47b4701dc18a8a1e15625047594c35b57aa649054fcd25c1'
+            '3b55bc5d1aa9f1c045448c07ccee4af209d836f54cfbf2ee2d32a412e6b77e8b'
+            '3f7d7a0cae1531ad36513ec554cae302e78b2b574026e5dbfacf9a0d0c72b1cc')
 
 prepare() {
   cd ${srcdir}/amber${_releasever}_src
 
+  # apply updates manually
   ./update_amber --update
-
-  patch -Np0 -i "${srcdir}/cuda-11.1.patch"
 }
 
 build() {
@@ -50,10 +46,10 @@ build() {
 
   export AMBER_PREFIX="${srcdir}"
 
-  CC=gcc-9 CXX=g++-9 FC=gfortran-9 cmake $AMBER_PREFIX/amber${_releasever}_src \
+  cmake $AMBER_PREFIX/amber${_releasever}_src \
       -DCMAKE_INSTALL_PREFIX=/opt/amber \
       -DCHECK_UPDATES=FALSE \
-      -DCOMPILER=MANUAL  \
+      -DCOMPILER=GNU \
       -DMPI=TRUE -DCUDA=TRUE \
       -DOPENMP=TRUE \
       -DINSTALL_TESTS=FALSE \
