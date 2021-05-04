@@ -3,7 +3,7 @@
 
 pkgname=libtd
 pkgver=1.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Cross-platform library for building Telegram clients "
 arch=('x86_64')
 url='https://core.telegram.org/tdlib'
@@ -26,20 +26,18 @@ source=("$pkgname::git+https://github.com/tdlib/td.git#tag=v$pkgver")
 md5sums=('SKIP')
 
 build() {
-	cd "$srcdir/$pkgname"
-	rm -rf build
-	mkdir build
-	cd build
+	cd "$srcdir"
 	CC=/usr/bin/clang
 	CXX=/usr/bin/clang++
-	cmake -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX:PATH="$pkgdir/usr" ..
-	cmake --build . --target prepare_cross_compiling
-	cd ..
+	cmake -B build -S "$pkgname" -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX:PATH="$pkgdir/usr" -Wno-dev
+	make -C build prepare_cross_compiling
+	cd "$pkgname"
 	php SplitSource.php
+	cd ..
+	make -C build
 }
 
 package() {
-	cd "$srcdir/$pkgname/build"
-	mkdir -p "$pkgdir/usr"
-	cmake --build . --target install
+	cd "$srcdir"
+	make -C build install
 }
