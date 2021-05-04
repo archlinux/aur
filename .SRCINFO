@@ -1,0 +1,17 @@
+pkgbase = easycodeml
+	pkgdesc = A visual tool for analysis of selection using CodeML
+	pkgver = 1.21
+	pkgrel = 1
+	url = https://github.com/BioEasy/EasyCodeML
+	arch = x86_64
+	license = unknow
+	depends = jre-openjdk-headless
+	depends = jre-openjdk
+	depends = jdk-openjdk
+	depends = openjdk-doc
+	depends = openjdk-src
+	source = https://github.com/starsareintherose/easycodeml/releases/download/1.21/EasyCodeML.zip
+	sha256sums = SKIP
+
+pkgname = easycodeml
+
