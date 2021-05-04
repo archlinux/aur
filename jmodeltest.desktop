@@ -1,0 +1,18 @@
+[Desktop Entry]
+Categories=
+Encoding=UTF-8
+Exec=java -jar /usr/share/jmodeltest/jModelTest.jar
+GenericName=
+GenericName[zh]=
+Icon=/usr/share/jmodeltest/resources/template/resources/logo0.png
+MimeType=
+Name=jModelTest
+Name[zh]=jModelTest
+ServiceTypes=
+SwallowExec=
+SwallowTitle=
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=root%

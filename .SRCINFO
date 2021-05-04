@@ -1,0 +1,17 @@
+pkgbase = jmodeltest
+	pkgdesc = Phylogenetic Model Averaging, more models, new heuristics and high-performance computing
+	pkgver = 2.1.10
+	pkgrel = 1
+	url = https://github.com/ddarriba/jmodeltest2
+	arch = x86_64
+	license = GPL-3.0 License
+	depends = jre-openjdk-headless
+	depends = jre-openjdk
+	depends = jdk-openjdk
+	depends = openjdk-doc
+	depends = openjdk-src
+	source = https://github.com/ddarriba/jmodeltest2/files/157117/jmodeltest-2.1.10.tar.gz
+	sha256sums = SKIP
+
+pkgname = jmodeltest
+
