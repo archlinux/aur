@@ -3,7 +3,7 @@ pkgname=tt
 # To match default theme with v4.0.0 binary release
 _gitcommit=57357e2674e30912c6ebae7c0b5009d770ff50e0
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal based typing test"
 arch=('any')
 url="https://github.com/lemnos/tt"
@@ -13,6 +13,7 @@ depends=(
 )
 makedepends=(
 	'go'
+	'git'
 )
 source=("$pkgname-$pkgver::git+$url/#commit=$_gitcommit")
 b2sums=('SKIP')
