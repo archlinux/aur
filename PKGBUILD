@@ -1,9 +1,11 @@
 # Maintainer Crewmate <sus@morshu.xyz>
 _pkgname=materia-theme-transparent
 pkgname=materia-transparent-gtk-theme-git
-pkgver=85bdc295
-pkgrel=4
+pkgver=r1648.85bdc295
+pkgrel=1
+epoch=1
 pkgdesc="A Transparent Material Design theme for GNOME/GTK+ based desktop environments"
+url="https://github.com/ckissane/materia-theme-transparent"
 arch=(any)
 license=(GPLV2)
 depends=(gnome-themes-extra)
@@ -23,7 +25,7 @@ sha256sums=(
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
-  git rev-parse --short HEAD
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
