@@ -1,6 +1,6 @@
 pkgbase = jdk8
 	pkgdesc = Oracle Java 8 Development Kit LTS
-	pkgver = 8u281
+	pkgver = 8u291
 	pkgrel = 1
 	url = https://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = jdk8.install
@@ -41,24 +41,24 @@ pkgbase = jdk8
 	backup = etc/java-jdk8/psfont.properties.ja
 	backup = etc/java-jdk8/psfontj2d.properties
 	backup = etc/java-jdk8/sound.properties
-	source = manual://jdk-8u281-linux-x64.tar.gz
+	source = manual://jdk-8u291-linux-x64.tar.gz
 	source = jconsole-jdk8.desktop
 	source = jmc-jdk8.desktop
 	source = jvisualvm-jdk8.desktop
 	source = policytool-jdk8.desktop
 	source = readme.sh
-	md5sums = e85f591a370400c99fc314e5c43015a7
+	md5sums = 66902b60fb9b45c0af9e90002ac3a711
 	md5sums = 8a66f50efdc867ffd6a27168bc93b210
 	md5sums = 1cbde70639abd98db4bace284dbf2bc4
 	md5sums = f0b39865361437f3778ecbe6ffbc0a06
 	md5sums = 89704501aff8efe859c31968d8d168e6
-	md5sums = 51c8839211cc53f09c9b11a8e28ed1ef
-	sha256sums = 85e8c7da7248c7450fb105567a78841d0973597850776c24a527feb02ef3e586
+	md5sums = 46d719bf4872333ad6d138b050f1ad2d
+	sha256sums = c5052d2e1dd9621a44658ef06be145c5cdfcd7ea956c0c9d655ccd64e79c8613
 	sha256sums = 65282603bd0804d162f3f7da47bc7f3c91373e87504297d6a6fd6f2f8a1ec4ee
 	sha256sums = 8f865b52946a9ab98556c56306c7e70ae7aa432b4d005c70df0bba9d2c3111b1
 	sha256sums = 144e6651fcea08d95f3148d3a8ad17deb93fec4dd9236d37d27d7c648230b870
 	sha256sums = 635433e9c78ff58af65c316232ac9907d289a324428923788ea0f82ae7f8083b
-	sha256sums = f1081b08cfbb467277e95b3794191c9963398579733fa8832425b308b5917711
+	sha256sums = 4c9d5ab69494b3d0d8b166fd5552aa7d587f44f804cec9e2990842ebcd1c8e1d
 
 pkgname = jdk8
 

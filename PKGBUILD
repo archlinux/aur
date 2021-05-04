@@ -12,7 +12,8 @@ pkgname="${_pkgname}${_major}"
 #_minor='251'; _build='b08'; _hash='3d5a2bb8f8d4428bbe94aed7ec7ae784'
 #_minor='261'; _build='b12'; _hash='a4634525489241b9a9e1aa73d9e118e6'
 #_minor='271'; _build='b09'; _hash='61ae65e088624f5aaa0b1d2d801acb16'
-_minor='281'; _build='b09'; _hash='89d678f2be164786b292527658ca1605'
+#_minor='281'; _build='b09'; _hash='89d678f2be164786b292527658ca1605'
+_minor='291'; _build='b10'; _hash='d7fc238d0cbf4b0dac67be84580cfb4b'
 pkgver="${_major}u${_minor}"
 pkgrel='1'
 pkgdesc="Oracle Java ${_major} Development Kit"
@@ -75,7 +76,7 @@ source=(
 )
 # from oracle-sqldeveloper
 if :; then
-DLAGENTS+=("manual::${startdir:-}/readme.sh %o %u")
+DLAGENTS+=("manual::${startdir:-}/readme.sh ${url} %o %u")
 source[0]="manual://${_srcfil}"
 if [ ! -z "${HOME:-}" ]; then # block mksrcinfo
   XDG_DOWNLOAD_DIR="$(xdg-user-dir DOWNLOAD 2>/dev/null)" || :
@@ -96,18 +97,18 @@ unset _srcfil
 unset XDG_DOWNLOAD_DIR
 fi
 
-md5sums=('e85f591a370400c99fc314e5c43015a7'
+md5sums=('66902b60fb9b45c0af9e90002ac3a711'
          '8a66f50efdc867ffd6a27168bc93b210'
          '1cbde70639abd98db4bace284dbf2bc4'
          'f0b39865361437f3778ecbe6ffbc0a06'
          '89704501aff8efe859c31968d8d168e6'
-         '51c8839211cc53f09c9b11a8e28ed1ef')
-sha256sums=('85e8c7da7248c7450fb105567a78841d0973597850776c24a527feb02ef3e586'
+         '46d719bf4872333ad6d138b050f1ad2d')
+sha256sums=('c5052d2e1dd9621a44658ef06be145c5cdfcd7ea956c0c9d655ccd64e79c8613'
             '65282603bd0804d162f3f7da47bc7f3c91373e87504297d6a6fd6f2f8a1ec4ee'
             '8f865b52946a9ab98556c56306c7e70ae7aa432b4d005c70df0bba9d2c3111b1'
             '144e6651fcea08d95f3148d3a8ad17deb93fec4dd9236d37d27d7c648230b870'
             '635433e9c78ff58af65c316232ac9907d289a324428923788ea0f82ae7f8083b'
-            'f1081b08cfbb467277e95b3794191c9963398579733fa8832425b308b5917711')
+            '4c9d5ab69494b3d0d8b166fd5552aa7d587f44f804cec9e2990842ebcd1c8e1d')
 
 #PKGEXT='.pkg.tar.zst' # gz is much faster than .xz, zst is much faster than gz
 ## Alternative mirror, if your local one is throttled:
