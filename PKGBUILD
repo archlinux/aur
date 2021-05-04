@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxo-git
-pkgver=v0.6.3.r0.g80e198d
+pkgver=v1.1.0.r0.g2ae7b4e
 pkgrel=1
 pkgdesc="Generic C-implementation for ODL (Object Definition Language)"
 arch=('any')
@@ -32,13 +32,11 @@ pkgver() {
 }
 
 build() {
-	# fix absolute value error
-	export CFLAGS+=" -Wno-error=absolute-value"
 	cd "${pkgname}"
 	make
 }
 
 package() {
 	cd "${pkgname}"
-	make DEST="${pkgdir}/" INSTALL_LIB_DIR="/lib" install
+	make DEST="${pkgdir}/" LIBDIR="/usr/lib" install
 }
