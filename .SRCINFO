@@ -1,6 +1,6 @@
 pkgbase = certbot-dns-infomaniak
 	pkgdesc = Infomaniak DNS Authenticator plugin for Certbot
-	pkgver = 0.1.9
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/certbot-dns-infomaniak
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = certbot-dns-infomaniak
 	depends = python-setuptools
 	depends = python-mock
 	depends = python-requests-mock
-	source = https://pypi.io/packages/source/c/certbot-dns-infomaniak/certbot-dns-infomaniak-0.1.9.tar.gz
-	sha256sums = 55f93b9173011fb367fcb16831384437515d89f136bc2f151fdfe3c7b2083234
+	source = https://pypi.io/packages/source/c/certbot-dns-infomaniak/certbot-dns-infomaniak-0.1.11.tar.gz
+	sha256sums = edf16927cd26901b4ee30bb2a5fa36487f29b6034c2868e2c29bf13173a1ca37
 
 pkgname = certbot-dns-infomaniak
 
