@@ -1,7 +1,7 @@
 pkgname=xava-git
 _pkgname=xava
-pkgver=0.6.2.1.r0.g960965b
-pkgrel=2
+pkgver=0.6.3.1.r147.g71db641
+pkgrel=1
 pkgdesc='X11 Audio Visualizer for Alsa/Pulseaudio/FIFO'
 arch=('any')
 url='https://github.com/nikp123/xava'
@@ -26,6 +26,11 @@ build() {
 package() {
   cd $_pkgname
   install -Dm755 build/"$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  cd build
+  for i in filter*.so out*.so in*.so; do
+    install -Dm755 $i "$pkgdir/usr/lib/xava/$i"
+  done
+  cd ..
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
   install -Dm644 build/"$_pkgname".desktop "$pkgdir"/usr/share/applications/"$_pkgname".desktop
   install -Dm644 assets/linux/"$_pkgname".svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/"$_pkgname".svg
