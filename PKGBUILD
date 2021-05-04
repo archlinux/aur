@@ -29,7 +29,7 @@ _GUID="EA4BB293-2D7F-4456-A681-1F22F42CD0BC"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-git"
 
-pkgver=28925.edk2.stable201903.3188.gf297b7f200
+pkgver=28925.edk2.stable202102.190.gf297b7f200
 pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - GIT Version"
 url="https://github.com/tianocore/edk2"
@@ -65,7 +65,7 @@ sha1sums=(
 
 pkgver() {
 	cd "${srcdir}/${_TIANO_DIR_}/"
-	echo "$(git rev-list --count HEAD).$(git describe --always)" | sed -e 's|-|\.|g'
+	echo "$(git rev-list --count HEAD).$(git describe --always --tags)" | sed -e 's|-|\.|g'
 }
 
 _setup_env_vars() {
