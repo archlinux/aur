@@ -1,7 +1,7 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=fsleyes-props
 pkgver=1.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The fsleyes-props project is an event programming framework, which includes the ability for automatic CLI generation and, optionally, automatic GUI generation (if wxPython is present). It is used by FSLeyes."
 arch=('any')
 url="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes"
@@ -13,14 +13,10 @@ optdepends=()
 provides=()
 conflicts=()
 replaces=()
-source=($pkgname-$pkgver.tar.gz::https://git.fmrib.ox.ac.uk/fsl/fsleyes/props/repository/archive.tar.gz?ref=$pkgver)
-sha256sums=('368f243b6c1ae9fa513cf9e5d59e97256e940666754aeb733fd61329def78d5b')
+source=("https://git.fmrib.ox.ac.uk/fsl/fsleyes/${pkgname#fsleyes-}/-/archive/${pkgver}/${pkgname#fsleyes-}-${pkgver}.tar.gz")
+sha256sums=('b798deda298a47d32d3585c1743001c36df3ea18a491b2f7c6de257e8dc4774d')
 
 package() {
-  cd "$srcdir/${pkgname#fsleyes-}-$pkgver-"*
-  # "Patching for deprecation 2.x support
-  sed -i 's/deprecation>=1\.\*,<=2\.\*/deprecation>=1\.\*/g' requirements.txt
-  # "Patching" for matplotlib>3 support
-  sed -i 's/matplotlib>=1\.5,<3/matplotlib>=1.5.1/g' requirements.txt
+  cd "$srcdir/${pkgname#fsleyes-}-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
