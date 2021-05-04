@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=fheroes2
+Exec=fheroes2.sh
 ;Icon=fheroes2
 Type=Application
 Terminal=false
