@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxt-git
-pkgver=v0.1.3.r0.g017c2d1
+pkgver=v0.1.15.r0.g29f6612
 pkgrel=1
 pkgdesc="simple tty api library, adds interactive terminal interface to your applications"
 arch=('any')
@@ -37,5 +37,5 @@ build() {
 
 package() {
 	cd "${pkgname}"
-	make DEST="${pkgdir}/" INSTALL_LIB_DIR="/lib" install
+	make DEST="${pkgdir}/" LIBDIR="/usr/lib" install
 }
