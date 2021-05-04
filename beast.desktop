@@ -1,0 +1,18 @@
+[Desktop Entry]
+Categories=
+Encoding=UTF-8
+Exec=/usr/share/beast/bin/beast
+GenericName=
+GenericName[zh]=
+Icon=/usr/share/beast/images/beast.png
+MimeType=
+Name=beast
+Name[zh]=beast
+ServiceTypes=
+SwallowExec=
+SwallowTitle=
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=root

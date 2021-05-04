@@ -1,0 +1,17 @@
+pkgbase = beast
+	pkgdesc = Bayesian Evolutionary Analysis Sampling Trees
+	pkgver = 1.10.4
+	pkgrel = 1
+	url = http://beast.community/
+	arch = x86_64
+	license = LGPL-2.1 License
+	depends = jre-openjdk-headless
+	depends = jre-openjdk
+	depends = jdk-openjdk
+	depends = openjdk-doc
+	depends = openjdk-src
+	source = https://github.com/beast-dev/beast-mcmc/releases/download/v1.10.4/BEASTv1.10.4.tgz
+	sha256sums = SKIP
+
+pkgname = beast
+
