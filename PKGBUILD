@@ -64,17 +64,17 @@ package() {
     install -m 755 ${srcdir}/BEASTv${pkgver}/native/NucleotideLikelihoodCore.c ${pkgdir}/usr/share/beast/native/NucleotideLikelihoodCore.c
     install -m 755 ${srcdir}/BEASTv${pkgver}/native/NucleotideLikelihoodCore.h ${pkgdir}/usr/share/beast/native/NucleotideLikelihoodCore.h    
     
-    ln -s /usr/share/beast/bin/beauti ${pkgdir}/usr/bin/beauti
-    ln -s /usr/share/beast/bin/beast ${pkgdir}/usr/bin/beast
-    ln -s /usr/share/beast/bin/logcombiner ${pkgdir}/usr/bin/logcombiner
-    ln -s /usr/share/beast/bin/treeannotator ${pkgdir}/usr/bin/treeannotator
-    ln -s /usr/share/beast/bin/treestat ${pkgdir}/usr/bin/treestat
+    ln -s /usr/share/beast/bin/beauti ${pkgdir}/usr/bin/beauti_beast
+    ln -s /usr/share/beast/bin/beast ${pkgdir}/usr/bin/beast_beast
+    ln -s /usr/share/beast/bin/logcombiner ${pkgdir}/usr/bin/logcombiner_beast
+    ln -s /usr/share/beast/bin/treeannotator ${pkgdir}/usr/bin/treeannotator_beast
+    ln -s /usr/share/beast/bin/treestat ${pkgdir}/usr/bin/treestat_beast
     
     cp ~/.cache/yay/beast/treestat.png ${pkgdir}/usr/share/beast/images/
     
-    cp ~/.cache/yay/beast/beauti.desktop ${pkgdir}/usr/share/applications
-    cp ~/.cache/yay/beast/beast.desktop ${pkgdir}/usr/share/applications
-    cp ~/.cache/yay/beast/treestat.desktop ${pkgdir}/usr/share/applications
-    cp ~/.cache/yay/beast/logcombiner.desktop ${pkgdir}/usr/share/applications
-    cp ~/.cache/yay/beast/treeannotator.desktop ${pkgdir}/usr/share/applications
+    cp ~/.cache/yay/beast/beauti_beast.desktop ${pkgdir}/usr/share/applications
+    cp ~/.cache/yay/beast/beast_beast.desktop ${pkgdir}/usr/share/applications
+    cp ~/.cache/yay/beast/treestat_beast.desktop ${pkgdir}/usr/share/applications
+    cp ~/.cache/yay/beast/logcombiner_beast.desktop ${pkgdir}/usr/share/applications
+    cp ~/.cache/yay/beast/treeannotator_beast.desktop ${pkgdir}/usr/share/applications
 }
