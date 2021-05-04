@@ -1,17 +1,17 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=megapixels
-pkgver=0.16.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="GTK3 camera application that knows how to deal with the media request api"
 url="https://git.sr.ht/~martijnbraam/megapixels"
 license=("LGPL")
 arch=(x86_64 aarch64)
-depends=(gtk3 zbar)
+depends=(gtk4 zbar)
 makedepends=(meson)
 checkdepends=()
 source=("${pkgname}-${pkgver}::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('70430a7b4fee4e6edcc3a9da70f630d9943d474e64b2ce3f4f5eb6a5452f2ca5')
+sha256sums=('4d0dcbce3a80ab800ca79524e814156fe1ceeb8196262c312861f208b9ca802f')
 
 build() {
 	arch-meson ${pkgname}-${pkgver} build -D gtk_doc=true
