@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=amxo-cg-git
-pkgver=v0.2.3.r0.g02eee25
+pkgver=v1.0.4.r3.gc201165
 pkgrel=1
 pkgdesc="ODL (Object Definition Language) Compiler/Generator"
 arch=('any')
@@ -38,5 +38,5 @@ build() {
 
 package() {
 	cd "${pkgname}"
-	make DEST="${pkgdir}/" install
+	make DEST="${pkgdir}/" LIBDIR="/usr/lib" install
 }
