@@ -8,6 +8,7 @@ pkgbase = disomaster-git
 	license = GPL3
 	makedepends = git
 	makedepends = qt5-tools
+	depends = libisoburn
 	provides = disomaster
 	conflicts = disomaster
 	source = disomaster-git::git://github.com/linuxdeepin/disomaster
