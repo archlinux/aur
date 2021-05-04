@@ -2,7 +2,7 @@
 # Contributor: Malacology <guoyizhang at malacology dot com>
 
 pkgname=open-delta
-pkgver=1.0.2
+pkgver=1.02
 pkgrel=1
 pkgdesc="DEscription Language of TAxonomy"
 arch=('x86_64')
