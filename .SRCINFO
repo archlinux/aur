@@ -1,12 +1,11 @@
 pkgbase = r-curl
 	pkgdesc = A Modern and Flexible Web Client for R
-	pkgver = 4.3
+	pkgver = 4.3.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=curl
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = gcc
 	depends = r>=3.0.0
 	depends = curl
 	optdepends = r-spelling
@@ -17,8 +16,8 @@ pkgbase = r-curl
 	optdepends = r-magrittr
 	optdepends = r-httpuv
 	optdepends = r-webutils
-	source = https://cran.r-project.org/src/contrib/curl_4.3.tar.gz
-	md5sums = 7e3ba9a151543a10ae209b0877b1d605
+	source = https://cran.r-project.org/src/contrib/curl_4.3.1.tar.gz
+	sha256sums = 2266cb041addf121195108975ae1ad34c433046a7b4e95eec630ee5eda5fff62
 
 pkgname = r-curl
 

@@ -4,29 +4,25 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=curl
-_cranver=4.3
-pkgname=r-curl
+_cranver=4.3.1
+pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="A Modern and Flexible Web Client for R"
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
-license=('MIT')
-depends=('r>=3.0.0' 'curl')
-optdepends=('r-spelling' 'r-testthat' 'r-knitr' 'r-jsonlite' 'r-rmarkdown' 'r-magrittr' 'r-httpuv' 'r-webutils')
-makedepends=('gcc')
+license=(MIT)
+depends=('r>=3.0.0' curl)
+optdepends=(r-spelling r-testthat r-knitr r-jsonlite r-rmarkdown r-magrittr r-httpuv r-webutils)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('7e3ba9a151543a10ae209b0877b1d605')
+sha256sums=('2266cb041addf121195108975ae1ad34c433046a7b4e95eec630ee5eda5fff62')
 
-build(){
-    cd "${srcdir}"
-
-    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+build() {
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-    cd "${srcdir}"
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
 
-    install -dm0755 "${pkgdir}/usr/lib/R/library"
-    cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
