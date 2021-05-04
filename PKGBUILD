@@ -282,7 +282,6 @@ prepare() {
       scripts/config --disable CONFIG_SCHEDSTATS
       scripts/config --disable CONFIG_DEBUG_KERNEL
       scripts/config --disable CONFIG_EXPERT
-      scripts/config --enable CONFIG_BPFILTER
       echo "Enabling KBUILD_CFLAGS -O3..."
       scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
       scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
