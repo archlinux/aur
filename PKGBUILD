@@ -28,7 +28,7 @@ build() {
 	cd "SatDump"
 	mkdir build
 	cd build
-	cmake -CMAKE_BUILD_TYPE=Release -CMAKE_INSTALL_PREFIX=/usr -DBUILD_LIVE=ON ..
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_LIVE=ON ..
 	make $MAKEOPTS
 }
 
