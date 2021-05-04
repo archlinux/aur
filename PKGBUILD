@@ -33,5 +33,5 @@ package() {
     install -m 755 ${srcdir}/Tracer_v${pkgver}/README.txt ${pkgdir}/usr/share/Tracer/README.txt
     ln -s ${pkgdir}/usr/share/Tracer/bin/tracer ${pkgdir}/usr/bin/tracer
     cd "${srcdir}"
-    cp ~/.cache/yay/tracer/Tracer.desktop ${pkgdir}/usr/share/applications
+    cp ~/.cache/yay/tracer-bin/Tracer.desktop ${pkgdir}/usr/share/applications
 }
