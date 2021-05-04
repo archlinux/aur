@@ -1,15 +1,15 @@
 pkgbase = sawfish-pager
 	pkgdesc = A pager for sawfish
 	pkgver = 0.90.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sawfish.wikia.com/wiki/Main_Page
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = sawfish
 	options = !libtool
-	source = http://download.tuxfamily.org/sawfishpager/sawfish-pager_0.90.4.tar.xz
-	md5sums = 5f2df9cc76a225a6bd91798e80f19a4e
+	source = https://download.tuxfamily.org/sawfishpager/sawfish-pager_0.90.4.tar.xz
+	sha256sums = 1ed6701ce65b3791e5ba9b54e65594502aa4e736db7a670e31fa0ddf24cecd6e
 
 pkgname = sawfish-pager
 
