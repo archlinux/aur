@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="Advanced Text Editor"
 groups=(kde-applications-git kde-utilities-git)
 url="https://www.kde.org/applications/utilities/kate/"
-depends=(knewstuff-git ktexteditor-git kactivities-git kuserfeedback-git hicolor-icon-theme)
+depends=(knewstuff ktexteditor kactivities kuserfeedback hicolor-icon-theme)
 optdepends=('konsole-git: open a terminal in Kate'
             'clang: C and C++ LSP support'
             'python-language-server: Python LSP support'
@@ -17,7 +17,7 @@ optdepends=('konsole-git: open a terminal in Kate'
             'rust: Rust LSP support')
 arch=(x86_64)
 license=(GPL LGPL FDL)
-makedepends=(extra-cmake-modules-git kdoctools-git plasma-framework-git knewstuff-git kitemmodels-git ktexteditor-git kactivities-git kuserfeedback-git git)
+makedepends=(extra-cmake-modules kdoctools plasma-framework knewstuff kitemmodels ktexteditor kactivities kuserfeedback git)
 provides=('kate')
 conflicts=('kate' 'kdesdk-kate' 'kdebase-kwrite')
 source=(git+https://invent.kde.org/utilities/kate.git)
