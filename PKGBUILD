@@ -1,11 +1,12 @@
-# Maintainer:  ptr1337 <admin@ptr1337.dev>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
+# Maintainer:  ptr1337 <admin@ptr1337.dev>
+
 
 pkgbase=linux-hardened-cacule
-pkgver=5.11.16.hardened1
+pkgver=5.11.18.hardened1
 pkgrel=1
 pkgdesc='Security-Hardened Linux with the cacule scheduler'
 url='https://github.com/anthraxx/linux-hardened'
@@ -20,7 +21,7 @@ _srcname=linux-${pkgver%.*}
 _srctag=${pkgver%.*}-${pkgver##*.}
 source=(
   https://www.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
-  https://github.com/anthraxx/linux-hardened/releases/download/5.11.16-hardened1/linux-hardened-5.11.16-hardened1.patch
+  https://github.com/anthraxx/linux-hardened/releases/download/5.11.18-hardened1/linux-hardened-5.11.18-hardened1.patch
   cacule-5.11.patch
   config         # the main kernel config file
 )
@@ -29,11 +30,11 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'E240B57E2C4630BA768E2F26FC1B547C8D8172C8'  # Levente Polyak
 )
-sha256sums=('21163681d130cbce5a6be39019e2c69e44f284855ddd70b1a3bd039249540f43'
+sha256sums=('8b070bbdd66eced489cbfcf842d540f50742df10f7b221e10998ab57284fcc6f'
             'SKIP'
-            'b400901ab35b7a7aebf3489b8713231e680fd0564b73ef6de7feed8c190eaebb'
-            'c539655de9eef5084b6349389b1a2fac3aaab274149c9b95667cca93570166ea'
-            '0a827643e5cc830d8efc6136f418ab7f02d9c76375918ae636043e61c319a3dc')
+            'cdb101c77aa305824819fb344ad048fca005c6f6898befe92d9506cf3634e768'
+            '302a771ca3f2b2c8b9f1d9aed7afe222ef770f2b5ce6c5bb743e9d4ca5645115'
+            'b8d0a96303d908269f5b96ba21cc97fbc948f099fd7dd01e6c91fce095f6b861')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
