@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="A modern format for Haskell packages (statically linked binary)"
 arch=('x86_64')
 url="https://github.com/sol/hpack"
+provides=('hpack')
 license=('MIT')
 depends=('gmp' 'zlib')
 conflicts=('haskell-hpack')
