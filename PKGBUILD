@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=amxb_pcb-git
-pkgver=v1.0.2.r0.g2286db6
+pkgver=v2.0.5.r0.gfd496a3
 pkgrel=1
 pkgdesc="PCB baapi back-end"
 arch=('any')
@@ -41,5 +41,5 @@ build() {
 
 package() {
 	cd "${pkgname}"
-	make DEST="${pkgdir}/" INSTALL_LIB_DIR="/lib" install
+	make DEST="${pkgdir}/" LIBDIR="/usr/lib" install
 }
