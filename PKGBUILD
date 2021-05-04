@@ -49,6 +49,9 @@ package() {
     install -m 755 ${srcdir}/beast/README.txt ${pkgdir}/usr/share/beast2/README.txt
     install -m 755 "${srcdir}/beast/VERSION HISTORY.txt" "${pkgdir}/usr/share/beast2/VERSION HISTORY.txt"
     
+    cd /usr/share/beast2
+    chmod -R 755 *
+    
     ln -s /usr/share/beast2/bin/beauti /usr/bin/beauti
     ln -s /usr/share/beast2/bin/logcombiner /usr/bin/logcombiner
     ln -s /usr/share/beast2/bin/treeannotator /usr/bin/treeannotator
