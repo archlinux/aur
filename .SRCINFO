@@ -1,0 +1,18 @@
+pkgbase = siaprime-ui
+	pkgdesc = ScPrime - Blockchain-based marketplace for file storage
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://scpri.me
+	arch = x86_64
+	license = MIT
+	depends = gconf
+	depends = gtk2
+	depends = nss
+	depends = libxss
+	source = https://scpri.me/releases/ScPrime-UI-1.5.1.AppImage
+	source = https://gitlab.com/scpcorp/ScPrime/-/raw/master/LICENSE
+	sha512sums = 83904d27c4db496358ced3ae1a023150d6e662fbe5069435437f1024ee5cd246089d8a51f140dabfca96e563625003b488a166b04b45a7b3f87b5efba5949abe
+	sha512sums = f2eb222fff7fe71e37e2e60ed34630fbcf5464a8b05de415b346002f8b33b0a2735027649d595280f026801ba26978442b743abc54dc5451c7f8396979f5b1ae
+
+pkgname = siaprime-ui
+
