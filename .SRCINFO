@@ -1,0 +1,20 @@
+pkgbase = alienvault-agent
+	pkgdesc = AlienVault Agent
+	pkgver = 20.07.0003.0301
+	pkgrel = 1
+	url = https://cybersecurity.att.com/documentation/usm-anywhere/agents/alienvault-agents.htm
+	arch = x86_64
+	license = custom
+	depends = bash
+	depends = rsyslog
+	depends = zlib
+	backup = etc/osquery/osquery.flags.default
+	backup = etc/osquery/osquery.flags.example
+	backup = etc/osquery/secret
+	backup = etc/rsyslog.d/90-osquery.conf
+	backup = etc/sysconfig/osqueryd
+	source = https://prod-usm-saas-agent-config.s3.amazonaws.com/repo/deb/pool/stable/a/al/alienvault-agent_20.07.0003.0301_amd64.deb
+	sha256sums = dd49ec87cedd0a10644de46a3aecb5169c840a93e4a5993616eb5281d381b9d1
+
+pkgname = alienvault-agent
+
