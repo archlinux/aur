@@ -13,5 +13,8 @@ the user could do one of the following:
 
 By installing this package as-is, the user acknowledges this warning.
 
+Due to issues with properly building an Arch-based initrd, VM templating support
+is broken at the moment.
+
 EOF
 }

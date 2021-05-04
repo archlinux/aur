@@ -9,7 +9,7 @@ pkgname=(
   kata2-linux-container
   kata2-containers-image
 )
-pkgver=2.0.3
+pkgver=2.1.0~rc0
 _pkgver=${pkgver/\~/-}
 pkgrel=1
 pkgdesc="Lightweight virtual machines for containers, version 2"
@@ -24,7 +24,7 @@ makedepends=(
 )
 
 _gh_org="github.com/kata-containers"
-_kata_kernel_ver="${KATA_KERNEL_VER:-5.4.71}"
+_kata_kernel_ver="${KATA_KERNEL_VER:-5.10.25}"
 
 source=(
   "${_pkgbase}-${_pkgver}.tar.gz::https://${_gh_org}/kata-containers/archive/${_pkgver}.tar.gz"
@@ -45,8 +45,8 @@ source=(
   "0001-config-preemption.diff"
 )
 sha512sums=(
-  "82cf0d0f36bb811460c0770c862cd38f8cbeecbfc834935bd4cce147a0d04b253661faa480ea201d835c28ab643f4c261d3bb90909fe60671d0f375271b315d7"
-  "${KATA_KERNEL_SUM_SHA512:-2b9c83425c3fd40abb76197e65933d1f79c60b71b3eccc6e0dcbb6748001ccbd002366cc2b61a796536166f08d831478a840bcb1e19ca0531b7f180a451e4d1c}"
+  "7fa45ec3a85f9494166d4b3f4848fdc4b0eb279c045906a883541ac269464cc7e6d95c4f1802b6ac26add1f73758ca60651716cdf62d90730e4f00c60e109e83"
+  "${KATA_KERNEL_SUM_SHA512:-20d81a5930f4877e4a67930c8fc52406767bc1c1ca65a78037e4f42738bae54009a59d1a21e3bfde773f67af608a763e67a8829564b3665cae937dbc19947c13}"
   "SKIP"
 
   "182a249aecbab33b8704e9567e96d33b535ee59e6d2f52f0c30fbc3d12813f60192886539cc745933caaf59268925d78db9e0b6b427321e2bac932ebde77d62e"
@@ -60,8 +60,8 @@ sha512sums=(
   "76c27fe0e2b84a9ae0d4b0e2a96ef0c07777811991b4aae21c88494b91fa2837fb67be335cebf4874e5e3235b5ba4641ec4544f9e055765e2dcf399d9d875e8c"
 )
 b2sums=(
-  "c55439c8da3ecb11527e491260604d0625d2167254bfa571a4e0f4124fdb18482e1fb06941b5912a7873fcc715465ce587d4f733fe9f075271caac277a15b0f3"
-  "${KATA_KERNEL_SUM_B2:-450f91dd84df37cb16c6937e2a4cc55a8b2e5046b6396685cf2ae5a733a925ed5502944b5a60a1056827c788407fa3f916e04b48b9c8e3d68df6b0830039ff0b}"
+  "14c305be9ee6656df47dc2400a575548a7afc64e0ff087a4f36ebe536d662adff034a83bcd1164028a61bd2673729ad8a4df6b53da43f60abad90ede30216801"
+  "${KATA_KERNEL_SUM_B2:-1aa774dcd894f4f5a24cc26375dac4dfe0b8d1c37e58c6878dd81c2f6466a8fbb635b46e881bec75b00c041c6d0c73c545bd10ff25afde6a5bca1e63e165e51c}"
   "SKIP"
 
   "43c81141a65fd14b60ae72c5b98168bec531990903cc7c8b224b416c71d1d05c1cf3f73891954604e0b0c6f48c52a3a41a8e9e78874a79e72b14282373108e8b"
@@ -92,7 +92,8 @@ _kernel_prepare(){
   #  patch -p1 <"${p}"
   #done
 
-  patch -p1 <"${srcdir}/0001-config-preemption.diff"
+  # 5.4.71
+  #patch -p1 <"${srcdir}/0001-config-preemption.diff"
 
   # kernel config prep from upstream ("${srcdir}/${_pkgbase}-${_pkgver}/tools/packaging/obs-packaging/linux-container/kata-linux-container.spec-template")
   make -s mrproper
@@ -176,10 +177,10 @@ package_kata2-containers-image(){
   install=kata2-guest.install
   local -r _img_filename="kata-containers-${_pkgver%%~*}-arch-systemd-image.img" _initrd_filename="kata-containers-${_pkgver%%~*}-arch-agent-initrd.img"
   install -Dm 0644 "${srcdir}/${_pkgbase}-${_pkgver}/tools/osbuilder/image-builder/kata-containers.img" "${pkgdir}/usr/share/kata-containers/${_img_filename}"
-  install -Dm 0644 "${srcdir}/initrd-arch-agent.img" "${pkgdir}/usr/share/kata-containers/${_initrd_filename}"
+  #install -Dm 0644 "${srcdir}/initrd-arch-agent.img" "${pkgdir}/usr/share/kata-containers/${_initrd_filename}"
   pushd "${pkgdir}/usr/share/kata-containers"
   ln -sf "${_img_filename}" "kata-containers-arch.img"
-  ln -sf "${_initrd_filename}" "kata-containers-arch-initrd.img"
+  #ln -sf "${_initrd_filename}" "kata-containers-arch-initrd.img"
   popd
 }
 
@@ -202,8 +203,8 @@ package_kata2-linux-container(){
 package_kata2-runtime(){
   depends=('qemu-headless' "kata2-linux-container" "kata2-containers-image")
   optdepends=(
-    'firecracker<0.23.0'
-    'cloud-hypervisor<0.15.0'
+    'firecracker<0.24.0'
+    'cloud-hypervisor<16.0'
   )
   install=kata2-runtime.install
   cd "${srcdir}/${_pkgbase}-${_pkgver}/src/runtime"
