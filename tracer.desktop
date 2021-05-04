@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Tracer
 MimeType=
-Exec=tracer
+Exec=java -jar /usr/share/Tracer/lib/tracer.jar
 Type=Application
 Terminal=flase
 Icon=/usr/share/Tracer/image/Tracer.png
