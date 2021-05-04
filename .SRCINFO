@@ -1,12 +1,12 @@
 pkgbase = discordrpcmaker
 	pkgdesc = Discord RPC Maker lets you make and manage custom Discord Rich Presences with buttons!
-	pkgver = 2.0.2
-	pkgrel = 2
+	pkgver = 2.0.3
+	pkgrel = 1
 	url = https://drpcm.t1c.dev/
 	arch = x86_64
 	license = GPL
 	noextract = discordrpcmaker-linux.appimage
-	source_x86_64 = discordrpcmaker-linux.appimage::https://github.com/thatonecalculator/discordrpcmaker/releases/download/v2.0.2/discordrpcmaker-linux.appimage
+	source_x86_64 = discordrpcmaker-linux.appimage::https://github.com/thatonecalculator/discordrpcmaker/releases/download/v2.0.3/discordrpcmaker-linux.appimage
 	sha256sums_x86_64 = SKIP
 
 pkgname = discordrpcmaker
