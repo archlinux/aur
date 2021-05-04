@@ -1,13 +1,13 @@
 # Maintainer: Archimede Pitagorico <archimede.pitagorico@mail.com>
 
 pkgname=megasync-headless
-pkgver=v3.6.8.0.g93cc57d75
+pkgver=v3.8.6.0.gd5608a7f9
 pkgrel=1
 pkgdesc="Sync with MEGA. Daemon, fuse and cli client. Original sdk (git)."
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://mega.co.nz/#sync'
 license=('custom:MEGA')
-source=('git+https://github.com/meganz/sdk.git#tag=v3.6.8'
+source=('git+https://github.com/meganz/sdk.git#tag=v3.8.6'
         'megasyncd@.service'
         'megasync.conf'
         )
@@ -16,14 +16,14 @@ backup=('usr/lib/systemd/system/megasyncd@.service'
         'etc/conf.d/megasync.conf'
        )
 conflicts=('megasync'
-	   'megasync-git'
+           'megasync-git'
            'megatools'
            )
 depends=('c-ares'
          'curl'
          'crypto++'
-	 'zlib'
-	 'openssl'
+         'zlib'
+         'openssl'
          'libsodium'
          )
 makedepends=('git'
