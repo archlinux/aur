@@ -1,6 +1,6 @@
 pkgbase = translatelocally-git
-	pkgdesc = A fast privacy focussed machine translation toolkit that translates on your own machine.
-	pkgver = 0.01
+	pkgdesc = A fast privacy focused machine translation client that translates on your own machine.
+	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/XapaJIaMnu/translateLocally
 	arch = x86_64
