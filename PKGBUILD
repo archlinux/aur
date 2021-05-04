@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=amxrt-git
-pkgver=v0.3.0.r0.g3e841ff
+pkgver=v1.0.2.r0.g30d5526
 pkgrel=1
 pkgdesc="Ambiorix application runtime"
 arch=('any')
@@ -41,5 +41,5 @@ build() {
 
 package() {
 	cd "${pkgname}"
-	make DEST="${pkgdir}/" install
+	make DEST="${pkgdir}/" LIBDIR="/usr/lib" install
 }
