@@ -2,14 +2,14 @@
 # Author: Nick <https://github.com/nick92>
 
 pkgname=lightdm-enso-os-greeter-git
-pkgver=r172.c949a8c
+pkgver=r195.bf0d53c
 pkgrel=1
 pkgdesc="A fork of Pantheon greeter."
-arch=('any')
-url="https://github.com/nick92/Enso-OS/greeter"
+arch=('x86_64')
+url="ssh://aur@aur.archlinux.org/lightdm-enso-os-greeter-git.git"
 license=('GPL')
-depends=('cairo' 'clutter' 'clutter-gtk' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee' 'libgl' 'libx11' 'lightdm' 'vala')
-makedepends=('meson' 'git')
+depends=('clutter-gtk' 'libgee' 'libgl' 'lightdm' )
+makedepends=('meson' 'git' 'vala')
 conflicts=('lightdm-pantheon-greeter')
 source=(git+https://github.com/nick92/Enso-OS)
 sha256sums=('SKIP')
