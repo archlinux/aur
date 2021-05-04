@@ -1,0 +1,15 @@
+*.tar.xz
+*.tar.gz
+*.tar.zst
+**/*.rs.bk
+*~
+\#*
+.\#*
+*.swp
+/pkg
+/src
+
+# Source files
+10-acmed.rules
+LICENSE-APACHE-2.0.txt
+LICENSE-MIT.txt
