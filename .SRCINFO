@@ -1,0 +1,15 @@
+pkgbase = gdb-ctest-git
+	pkgdesc = Run ctest in gdb with fixtures and environment
+	pkgver = rf5d8f00
+	pkgrel = 1
+	url = https://github.com/syyyr/gdb-ctest
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	provides = gdb-ctest
+	conflicts = gdb-ctest
+	source = git+https://github.com/syyyr/gdb-ctest.git
+	md5sums = SKIP
+
+pkgname = gdb-ctest-git
