@@ -43,7 +43,7 @@ package() {
 
     install -m 755 ${srcdir}/BEASTv${pkgver}/images/beast.png ${pkgdir}/usr/share/beast/images/beast.png
     install -m 755 ${srcdir}/BEASTv${pkgver}/images/beauti.png ${pkgdir}/usr/share/beast/images/beauti.png
-    install -m 755 ${srcdir}/beBEASTv${pkgver}/images/utility.png ${pkgdir}/usr/share/beast/images/utility.png
+    install -m 755 ${srcdir}/BEASTv${pkgver}/images/utility.png ${pkgdir}/usr/share/beast/images/utility.png
     
     install -m 755 ${srcdir}/BEASTv${pkgver}/README.txt ${pkgdir}/usr/share/beast/README.txt
     install -m 755 "${srcdir}/BEASTv${pkgver}/VERSION HISTORY.txt" "${pkgdir}/usr/share/beast/VERSION HISTORY.txt"
