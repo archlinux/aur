@@ -5,6 +5,7 @@ _pkgver=2.3.0
 _build=py39h27cfd23_1
 pkgver="${_pkgver}.anaconda${_build##*_}"
 pkgrel=1
+epoch=1
 pkgdesc="Python bindings to MKL service functions - prebuilt binaries from Anaconda"
 arch=('x86_64')
 url="https://github.com/IntelPython/mkl-service"
