@@ -14,10 +14,10 @@ index 0957ae99925..a20a95da3aa 100644
  		/// </summary>
 diff --git a/Engine/Source/Programs/UnrealBuildTool/Executors/Experimental/CCache.cs b/Engine/Source/Programs/UnrealBuildTool/Executors/Experimental/CCache.cs
 new file mode 100644
-index 00000000000..20ec55c46bf
+index 00000000000..4f00dc80bbf
 --- /dev/null
 +++ b/Engine/Source/Programs/UnrealBuildTool/Executors/Experimental/CCache.cs
-@@ -0,0 +1,72 @@
+@@ -0,0 +1,74 @@
 +using System.Collections.Generic;
 +using System.Diagnostics;
 +using Tools.DotNETCommon;
@@ -29,7 +29,8 @@ index 00000000000..20ec55c46bf
 +		private readonly string ClangPath;
 +		private readonly string CCachePath;
 +		
-+		private string CcacheCommand;
++		private string ClangCommand;
++		private string CompileCommand;
 +		
 +		public CCache()
 +			:base(0)
@@ -52,7 +53,7 @@ index 00000000000..20ec55c46bf
 +		public override bool ExecuteActions(List<Action> Actions, bool bLogDetailedActionStats)
 +		{
 +			Log.TraceInformation("Using CCache");
-+			CcacheCommand = ClangPath + " -fpch-preprocess -Xclang -fno-validate-pch ";
++			ClangCommand = ClangPath + " -fpch-preprocess -Xclang -fno-validate-pch ";
 +			
 +			return base.ExecuteActions(Actions, bLogDetailedActionStats);
 +		}
@@ -63,8 +64,9 @@ index 00000000000..20ec55c46bf
 +			{
 +				case ActionType.Compile:
 +					if (Action.StatusDescription.EndsWith(".ispc"))
-+						goto case ActionType.Link;
-+					var CompileCommand = CcacheCommand + Action.CommandArguments;
++						CompileCommand = Action.CommandPath.ToString() + " " + Action.CommandArguments;
++					else
++						CompileCommand = ClangCommand + Action.CommandArguments;
 +					ProcessStartInfo CcacheStartInfo = new ProcessStartInfo(CCachePath, CompileCommand);
 +					CcacheStartInfo.UseShellExecute = false;
 +					CcacheStartInfo.WorkingDirectory = Action.WorkingDirectory.FullName;
@@ -92,7 +94,7 @@ index 00000000000..20ec55c46bf
 +}
 \ No newline at end of file
 diff --git a/Engine/Source/Programs/UnrealBuildTool/Executors/LocalExecutor.cs b/Engine/Source/Programs/UnrealBuildTool/Executors/LocalExecutor.cs
-index 8f4f153bd75..47cd98680ba 100644
+index 8f4f153bd75..0636a29be10 100644
 --- a/Engine/Source/Programs/UnrealBuildTool/Executors/LocalExecutor.cs
 +++ b/Engine/Source/Programs/UnrealBuildTool/Executors/LocalExecutor.cs
 @@ -63,6 +63,12 @@ namespace UnrealBuildTool
@@ -280,12 +282,9 @@ index 8f4f153bd75..47cd98680ba 100644
  		/// <summary>
  		/// Starts a thread and runs the action in that thread
  		/// </summary>
-@@ -212,8 +241,12 @@ namespace UnrealBuildTool
- 		/// <summary>
- 		/// How many processes that will be executed in parallel
+@@ -214,6 +243,10 @@ namespace UnrealBuildTool
  		/// </summary>
--		int NumParallelProcesses;
-+		protected int NumParallelProcesses;
+ 		int NumParallelProcesses;
  
 +		private int JobNumber;
 +		private int TotalJobs;
@@ -546,6 +545,33 @@ index a1cdcdad1ed..27725550c87 100644
  				else if (BuildConfiguration.bAllowDistcc)
  				{
  					Executor = new Distcc();
+diff --git a/Engine/Source/Programs/UnrealBuildTool/ToolChain/UEToolChain.cs b/Engine/Source/Programs/UnrealBuildTool/ToolChain/UEToolChain.cs
+index 7f1baf9a147..fc7c9ae84cc 100644
+--- a/Engine/Source/Programs/UnrealBuildTool/ToolChain/UEToolChain.cs
++++ b/Engine/Source/Programs/UnrealBuildTool/ToolChain/UEToolChain.cs
+@@ -420,12 +420,10 @@ namespace UnrealBuildTool
+ 					}
+ 				}
+ 
+-				// Build target triplet
+ 				Arguments.Add(String.Format("--target-os={0}", GetISPCOSTarget(CompileEnvironment.Platform)));
+ 				Arguments.Add(String.Format("--arch={0}", GetISPCArchTarget(CompileEnvironment.Platform, null)));
+ 				Arguments.Add(String.Format("--target={0}", TargetString));
+-
+-				// PIC is needed for modular builds except on Windows
++				
+ 				if ((CompileEnvironment.bIsBuildingDLL ||
+ 					CompileEnvironment.bIsBuildingLibrary) &&
+ 					!UEBuildPlatform.IsPlatformInGroup(CompileEnvironment.Platform, UnrealPlatformGroup.Windows))
+@@ -433,6 +431,8 @@ namespace UnrealBuildTool
+ 					Arguments.Add("--pic");
+ 				}
+ 
++				// PIC is needed for modular builds except on Windows
++
+ 				// Include paths. Don't use AddIncludePath() here, since it uses the full path and exceeds the max command line length.
+ 				// Because ISPC response files don't support white space in arguments, paths with white space need to be passed to the command line directly.
+ 				foreach (DirectoryReference IncludePath in CompileEnvironment.UserIncludePaths)
 diff --git a/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj b/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj
 index 2736ef225e2..453153cc0cc 100644
 --- a/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj

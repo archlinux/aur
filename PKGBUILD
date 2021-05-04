@@ -29,7 +29,7 @@ source=(com.unrealengine.UE4Editor.desktop
 sha256sums=('15e9f9d8dc8bd8513f6a5eca990e2aab21fd38724ad57d213b06a6610a951d58'
             '8042bed3405298b5a4357068dd6b22a5a8a0f19def64b4f61ed0362fb46cb00d'
             '9e403b939a0601c6271da17af9497742cacd74e3cde41562c9f288dfbdcbdbfe'
-            '315c5d9726e672146a71dd2946e81b67151050f675b5713599803ce8540b4ed4'
+            '33982486f7fafac35a33dfa37c85cfba8543aa78b5fe13c395d9cccf691ef4b3'
             '7e53beb5818ceadb765689ad8e1baf55ce1d6afe8a9d6884b6f2bd121083c3f7'
             'a129607acc1ea6a48ee5af073da6bd9318176d07e91e743ce93662065f7288dd'
             'c8eaf488f6da113c8f8167b405fab58ff4163e49c593b9062582fa25d9650af4')
@@ -165,5 +165,5 @@ package() {
   install -Dm770 GenerateProjectFiles.sh "$pkgdir/$dir/GenerateProjectFiles.sh"
   install -Dm770 Setup.sh "$pkgdir/$dir/Setup.sh"
   install -Dm770 .ue4dependencies "$pkgdir/$dir/.ue4dependencies"
-  install -Dm770 Engine/Saved/UnrealBuildTool/BuildConfiguration.xml "$pkgdir/$dir/Engine/Saved/UnrealBuildTool
+  install -Dm770 Engine/Saved/UnrealBuildTool/BuildConfiguration.xml "$pkgdir/$dir/Engine/Saved/UnrealBuildTool"
 }
