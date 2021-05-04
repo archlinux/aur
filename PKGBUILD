@@ -3,11 +3,11 @@
 
 pkgname=gnome-shell-extension-customize-ibus
 _pkgname=Customize-IBus
-_commit=eb87fbdf031f733208b970dbb002e73c950e6b1c
-pkgver=31
+_commit=1b133959bb421624ee30ad1ea4ebf795e0625425
+pkgver=33
 pkgrel=1
 epoch=0
-pkgdesc="Customize IBus for orientation, font, ascii mode auto-switch; theme and background picture follow GNOME Night Light Mode."
+pkgdesc="Customize IBus for orientation, font, ascii mode auto-switch, system tray menu entries; theme and background picture follow GNOME Night Light Mode."
 arch=('any')
 url="https://extensions.gnome.org/extension/4112/customize-ibus/"
 license=('GPLv3')
