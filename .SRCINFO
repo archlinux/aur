@@ -1,0 +1,12 @@
+pkgbase = morphoj
+	pkgdesc = MorphoJ is an integrated program package for doing geometric morphometrics
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://morphometrics.uk/MorphoJ_page.html
+	arch = x86_64
+	license = Apache License version 2
+	source = https://morphometrics.uk/MorphoJ_stuff/download.php?get=MorphoJ-installer_Unix_Linux.jar
+	sha256sums = SKIP
+
+pkgname = morphoj
+
