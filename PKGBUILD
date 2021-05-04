@@ -1,7 +1,7 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
 # pkg: git
 pkgname="openbangla-keyboard-git"
-pkgver=2.0.0.r16.g86ad86d
+pkgver=2.0.0.r22.geb9b7fe
 pkgrel=1
 pkgdesc="An OpenSource, Unicode compliant Bengali Input Method"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('ttf-indic-otf: fonts for Bangla and other Indic scripts'
             'ttf-freebanglafont: miscellaneous fonts for Bangla script')
 install="${pkgname%*-git}.install"
 source=(
-    "${pkgname%*-git}::git+https://github.com/OpenBangla/OpenBangla-Keyboard"
+    "${pkgname%*-git}::git+https://github.com/OpenBangla/OpenBangla-Keyboard#branch=develop"
     "riti::git+https://github.com/OpenBangla/riti"
 )
 sha256sums=('SKIP'
