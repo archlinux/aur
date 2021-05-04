@@ -9,7 +9,7 @@
 
 _pkgname=enlightenment
 pkgname=$_pkgname-git-asan
-pkgver=0.24.0.beta1.24079.gd63f4a53e
+pkgver=0.24.99.24576.g3faf1a462
 pkgrel=1
 pkgdesc="Enlightenment window manager - Development version - Asan debug build"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
