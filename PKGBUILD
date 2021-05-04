@@ -2,18 +2,18 @@
 
 _pkgname="piglit"
 pkgname="${_pkgname}-git"
-pkgver=r11303.d4d9353b7
+pkgver=r11383.b73f20ffd
 pkgrel=1
 pkgdesc="OpenGL implementation testing suite. Provides a simple means to perform regression tests."
 arch=('i686' 'x86_64')
 url="http://piglit.freedesktop.org/"
 license=('GPL2' 'GPL3' 'LGPL2.1')
-depends=('waffle' 'python-mako' 'python-numpy' 'libxrender' 'glu' 'libcaca' 'libxkbcommon')
+depends=('waffle' 'python-mako' 'python-numpy' 'libxrender' 'glu' 'libcaca' 'libxkbcommon' 'ocl-icd')
 optdepends=('python-lxml: Accelerated python XML library using libxml2'
             'python-simplejson: Fast implementation of the python JSON library'
             'python-jsonstreams: A JSON stream writer for python'
             'vkrunner: Vulkan shader script testing')
-makedepends=('git' 'cmake' 'xorgproto' 'vulkan-headers' 'opencl-headers' 'ocl-icd')
+makedepends=('git' 'cmake' 'xorgproto' 'vulkan-headers' 'opencl-headers' 'glslang')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!emptydirs')
