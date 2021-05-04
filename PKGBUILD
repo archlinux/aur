@@ -63,7 +63,7 @@ pkgver=${_major}.${_minor}
 _stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux XanMod CacULE RT'
 versiontag=5.11.12-rt11-xanmod1
 arch=('x86_64')
@@ -72,7 +72,7 @@ license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
-_patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/main/$_major"
+_patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.11"
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_major.tar.xz"
         "https://github.com/xanmod/linux/releases/download/$versiontag/patch-$versiontag.xz"
         "${_patchsource}/cacule-patches/cacule-5.11-rt.patch"
