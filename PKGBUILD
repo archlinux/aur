@@ -1,13 +1,18 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
-pkgname=('foot' 'foot-terminfo')
+pkgdesc="Wayland terminal emulator - fast, lightweight and minimalistic"
+pkgname=foot
 pkgver=1.7.2  # Don’t forget to update CHANGELOG.md
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
-depends=('libxkbcommon' 'wayland' 'pixman' 'fontconfig' 'fcft')
+changelog=CHANGELOG.md
+depends=('libxkbcommon' 'wayland' 'pixman' 'fontconfig' 'fcft' 'foot-terminfo')
 makedepends=('meson' 'ninja' 'scdoc' 'python' 'ncurses' 'wayland-protocols' 'tllist')  # ‘llvm’, for PGO with clang
 checkdepends=('check')
+optdepends=('libnotify: desktop notifications'
+            'xdg-utils: URI launching'
+            'bash-completion: bash completions for foot itself')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
 sha256sums=('0c5fa72a315b65100dfb8b7343212535e75e990b2a9500e028c6078c7915eb8a')
 
@@ -88,25 +93,9 @@ check() {
   ninja -C build test
 }
 
-package_foot() {
-  pkgdesc="Wayland terminal emulator - fast, lightweight and minimalistic"
-  changelog=CHANGELOG.md
-  depends+=('foot-terminfo')
-  optdepends=('libnotify: desktop notifications'
-              'xdg-utils: URI launching'
-              'bash-completion: bash completions for foot itself')
-
+package() {
   cd foot
   DESTDIR="${pkgdir}/" ninja -C build install
   rm -rf "${pkgdir}/usr/share/terminfo"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_foot-terminfo() {
-  pkgdesc="Terminfo files for the foot terminal emulator"
-  depends=('ncurses')
-
-  cd foot
-  install -dm 755 "${pkgdir}/usr/share/terminfo/f/"
-  cp build/f/* "${pkgdir}/usr/share/terminfo/f/"
 }
