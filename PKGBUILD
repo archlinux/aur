@@ -1,6 +1,6 @@
 # Maintainer: Wilhelm Schuster <aur [aT] rot13 dot io>
 pkgname=moonraker-git
-pkgver=r573.2c078cb
+pkgver=r592.40d4daa
 pkgrel=1
 pkgdesc="HTTP frontend for Klipper 3D printer firmware"
 arch=(any)
@@ -12,6 +12,7 @@ depends=(klipper
          python-pyserial
          python-lmdb
          python-streaming-form-data
+         python-distro
          libgpiod)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
