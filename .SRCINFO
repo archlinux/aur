@@ -1,6 +1,6 @@
 pkgbase = perl-autodie
 	pkgdesc = Replace functions with ones that succeed or die with lexical scope
-	pkgver = 2.32
+	pkgver = 2.34
 	pkgrel = 1
 	url = https://metacpan.org/release/autodie
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = perl-autodie
 	license = GPL
 	depends = perl>=5.8.8
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/autodie-2.32.tar.gz
-	md5sums = 8e28b6c0eea1d8d79407e23de270db3c
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/autodie-2.34.tar.gz
+	md5sums = e1d9609ed1655f951151ee4cd2a14fa4
 
 pkgname = perl-autodie
 
