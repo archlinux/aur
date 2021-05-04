@@ -2,14 +2,14 @@
 
 _pkgname=efl
 pkgname=($_pkgname-git-asan)
-pkgver=1.24.99.65805.g27630114ef
+pkgver=1.25.99.66579.g6297159c5d
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version - Asan debug build"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1' 'GPL2' 'MIT' 'custom')
 depends=('curl' 'fontconfig' 'fribidi' 'harfbuzz'
-         'gst-plugins-base-libs' 'lua' 'libgl' 'libinput'
+         'gst-plugins-base-libs' 'lua52' 'libgl' 'libinput'
          'libpulse' 'libsndfile' 'libspectre' 'libraw' 'librsvg' 'libwebp'
          'libxcomposite' 'libxcursor' 'libxinerama' 'libxkbcommon' 'libxrandr'
          'libxss' 'libunwind' 'mesa' 'poppler' 'openjpeg2' 'libjpeg-turbo'
@@ -62,6 +62,7 @@ build() {
     -Ddrm=true \
     -Dwl=true \
     -Dnetwork-backend=connman \
+    -Dlua-interpreter=lua \
     -Dbindings= \
     -Dbuild-examples=false \
     -Dbuild-tests=false \
