@@ -26,6 +26,7 @@ package() {
     mkdir "${pkgdir}/usr/share/EasyCodeML/Custom/dat"
     mkdir "${pkgdir}/usr/share/EasyCodeML/CodeMLSrc"
     mkdir "${pkgdir}/usr/share/EasyCodeML/CodeMLSrc/Linux"
+    mkdir "${pkgdir}/usr/share/EasyCodeML/Preset"
 
     
     install -m 755 ${srcdir}/EasyCodeML/EasyCodeML.jar ${pkgdir}/usr/share/EasyCodeML/EasyCodeML.jar
@@ -65,6 +66,9 @@ package() {
     install -m 755 ${srcdir}/EasyCodeML/Custom/dat/mtREV24.dat ${pkgdir}/usr/share/EasyCodeML/Custom/dat/mtREV24.dat
     install -m 755 ${srcdir}/EasyCodeML/Custom/dat/MtZoa.dat ${pkgdir}/usr/share/EasyCodeML/Custom/dat/MtZoa.dat
     install -m 755 ${srcdir}/EasyCodeML/Custom/dat/wag.dat ${pkgdir}/usr/share/EasyCodeML/Custom/dat/wag.dat
+    
+    install -m 755 ${srcdir}/EasyCodeML/Preset/chi2.exe ${pkgdir}/usr/share/EasyCodeML/Preset/chi2.exe
+    install -m 755 ${srcdir}/EasyCodeML/Preset/codeml.exe ${pkgdir}/usr/share/EasyCodeML/Preset/codeml.exe
     
     cp ~/.cache/yay/easycodeml/easycodeml.desktop ${pkgdir}/usr/share/applications
 }
