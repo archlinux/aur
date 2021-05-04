@@ -1,9 +1,8 @@
 pkgbase = nyxt
-	pkgdesc = Keyboard-oriented, Common Lisp extensible web-browser
-	pkgver = 2.pre.release.5
-	pkgrel = 2
-	url = https://nyxt.atlas.engineer
-	arch = i686
+	pkgdesc = A keyboard-oriented, infinitely extensible web browser designed for power users
+	pkgver = 2.pre.release.6
+	pkgrel = 1
+	url = https://github.com/atlas-engineer/nyxt
 	arch = x86_64
 	license = custom:BSD
 	makedepends = git
@@ -24,7 +23,7 @@ pkgbase = nyxt
 	conflicts = nyxt-browser
 	options = !strip
 	options = !makeflags
-	source = git+https://github.com/atlas-engineer/nyxt.git#commit=a065942ce03be5b85addf3fa0b9b5617f5ee1e08
+	source = git+https://github.com/atlas-engineer/nyxt.git#commit=37914e99febff8faad6a1ab595e63165e1dd694c
 	sha256sums = SKIP
 
 pkgname = nyxt
