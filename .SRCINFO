@@ -1,6 +1,6 @@
 pkgbase = kbs2-git
 	pkgdesc = A secret manager backed by age (git)
-	pkgver = 0.2.6.r2.ga05c022
+	pkgver = 0.3.0.r1.g6c238e3
 	pkgrel = 1
 	url = https://github.com/woodruffw/kbs2
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = kbs2-git
 	makedepends = python
 	makedepends = git
 	depends = libx11
+	depends = gcc-libs
 	provides = kbs2
 	conflicts = kbs2
 	source = git+https://github.com/woodruffw/kbs2

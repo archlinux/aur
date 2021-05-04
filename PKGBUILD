@@ -2,13 +2,13 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=kbs2-git
-pkgver=0.2.6.r2.ga05c022
+pkgver=0.3.0.r1.g6c238e3
 pkgrel=1
 pkgdesc="A secret manager backed by age (git)"
 arch=('x86_64')
 url="https://github.com/woodruffw/kbs2"
 license=('MIT')
-depends=('libx11')
+depends=('libx11' 'gcc-libs')
 makedepends=('rust' 'python' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
