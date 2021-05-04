@@ -1,17 +1,17 @@
 pkgbase = gm2
 	pkgdesc = GNU Modula2 compiler
-	pkgver = 10.3.0.r2456.g14ffac67961
+	pkgver = 10.2.0.r20210503
 	pkgrel = 1
+	epoch = 1
 	url = https://floppsie.comp.glam.ac.uk/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = git
 	depends = bash
 	depends = zstd
 	depends = libmpc
-	source = git+http://floppsie.comp.glam.ac.uk/gm2#commit=14ffac67961
-	sha256sums = SKIP
+	source = http://floppsie.comp.glam.ac.uk/download/c/gcc-10.2.0+gm2-20210503.tar.gz
+	sha256sums = f22411943229ba0bc6ae00f796a29b362049f9bc56627da860cca99bc8d7b059
 
 pkgname = gm2
 

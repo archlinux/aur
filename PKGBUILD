@@ -1,27 +1,29 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gm2
-pkgver=10.3.0.r2456.g14ffac67961
+_gccver=10.2.0
+_gm2ver=20210503
+pkgver=${_gccver}.r${_gm2ver}
 pkgrel=1
+epoch=1
 pkgdesc="GNU Modula2 compiler"
 url="https://floppsie.comp.glam.ac.uk/"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('bash' 'zstd' 'libmpc')
-makedepends=('git')
-source=(git+http://floppsie.comp.glam.ac.uk/gm2#commit=14ffac67961)
-sha256sums=('SKIP')
+source=(http://floppsie.comp.glam.ac.uk/download/c/gcc-${_gccver}+gm2-${_gm2ver}.tar.gz)
+sha256sums=('f22411943229ba0bc6ae00f796a29b362049f9bc56627da860cca99bc8d7b059')
 
-pkgver() {
-  cd gm2
-  git describe --tags| cut -c14-| sed 's+-+.r+'|tr - .
-}
+# pkgver() {
+#   cd gm2
+#   git describe --tags| cut -c14-| sed 's+-+.r+'|tr - .
+# }
 
 build() {
   [[ -d build-gcc-10 ]] || mkdir build-gcc-10
   cd build-gcc-10
   CXXFLAGS=-g BOOT_CFLAGS=-g CFLAGS=-g \
-  ../gm2/configure \
+  ../gcc-${_gccver}+gm2-${_gm2ver}/configure \
   --prefix=/usr \
   --libdir=/usr/lib \
   --libexecdir=/usr/lib \
