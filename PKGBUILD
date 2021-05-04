@@ -9,7 +9,7 @@
 
 pkgname='omnetpp'
 pkgver=5.6.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Component-based simulation package designed for modeling communication networks'
 url='http://www.omnetpp.org'
 license=('Academic Public License')
@@ -69,7 +69,6 @@ package() {
   install -d ${pkgdir}/usr/share/omnetpp/{images,doc,samples}
   cp -R images/* ${pkgdir}/usr/share/omnetpp/images
   cp -R doc/* ${pkgdir}/usr/share/omnetpp/doc
-  cp -R samples/* ${pkgdir}/opt/omnetpp
 
   install -d ${pkgdir}/usr/share/emacs/site-lisp
   install -m644 misc/emacs/ned-mode.el ${pkgdir}/usr/share/emacs/site-lisp
