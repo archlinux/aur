@@ -1,8 +1,9 @@
 pkgbase = cage-git
 	pkgdesc = A Wayland kiosk
-	pkgver = r83.f0eb115
+	pkgver = 0.1.3.r1.gefaf76e
 	pkgrel = 1
-	url = https://hjdskes.nl/projects/cage
+	epoch = 1
+	url = https://www.hjdskes.nl/projects/cage/
 	arch = x86_64
 	license = MIT
 	makedepends = meson

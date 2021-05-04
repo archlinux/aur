@@ -1,16 +1,15 @@
 # Maintainer: gilbus <aur(AT)tinkershell.eu>
 pkgname=cage-git
 _pkgname=cage
-pkgver=r83.f0eb115
+pkgver=0.1.3.r1.gefaf76e
 pkgrel=1
+epoch=1
 license=("MIT")
 pkgdesc="A Wayland kiosk"
 makedepends=("meson" "git" "wayland-protocols")
-depends=(
-	"wlroots-git" "wayland" "libxkbcommon" "xorg-server-xwayland"
-)
+depends=("wlroots-git" "wayland" "libxkbcommon" "xorg-server-xwayland")
 arch=("x86_64")
-url="https://hjdskes.nl/projects/cage"
+url="https://www.hjdskes.nl/projects/cage/"
 source=("${pkgname%-*}::git+https://github.com/Hjdskes/cage.git")
 sha1sums=("SKIP")
 #provides=("cage")
@@ -19,7 +18,7 @@ options=(debug !strip)
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
 }
 
 prepare() {
