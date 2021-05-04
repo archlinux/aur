@@ -22,15 +22,15 @@ md5sums=('SKIP')
 
 prepare () {
     cd "$srcdir"
-	chmod +x $_appimage
-	./$_appimage --appimage-extract
+    chmod +x $_appimage
+    ./$_appimage --appimage-extract
 }
 
 package() {
     cd "$srcdir"
-	install -Dm755 $_appimage "$pkgdir/opt/$_pkgname/$_appimage"
-	install -dm755 "$pkgdir/usr/bin"
-	ln -s "/opt/$_pkgname/$_appimage" "$pkgdir/usr/bin/$_pkgname"
+    install -Dm755 $_appimage "$pkgdir/opt/$_pkgname/$_appimage"
+    install -dm755 "$pkgdir/usr/bin"
+    ln -s "/opt/$_pkgname/$_appimage" "$pkgdir/usr/bin/$_pkgname"
     install -Dm644 "squashfs-root/com.chatterino.chatterino.desktop" "$pkgdir/usr/share/applications/com.chatterino.chatterino.desktop"
     install -Dm644 "squashfs-root/chatterino.png" "$pkgdir/usr/share/pixmaps/chatterino.png"
 }
