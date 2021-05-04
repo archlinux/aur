@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxm-git
-pkgver=v0.0.19.r0.g338a718
+pkgver=v0.0.20.r0.gb91c255
 pkgrel=1
 pkgdesc="Generic C-implementation of modular support"
 arch=('any')
@@ -36,5 +36,5 @@ build() {
 
 package() {
 	cd "${pkgname}"
-	make DEST="${pkgdir}/" INSTALL_LIB_DIR="/lib" install
+	make DEST="${pkgdir}/" LIBDIR="/usr/lib" install
 }
