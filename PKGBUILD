@@ -1,6 +1,6 @@
 pkgname=python-amqpy-git
-pkgver=v0.11.0.r0.g87977a5
-pkgrel=2
+pkgver=v0.13.1.r3.gc5346b1
+pkgrel=1
 pkgdesc="Python 3 AMQP 0.9.1 client library"
 arch=(any)
 url='https://github.com/veegee/amqpy/'
@@ -14,8 +14,13 @@ pkgver() {
    git describe --long | sed 's/\([^-]*-g\)/r\1/;y/-/./'
 }
 
+build() {
+   cd "$srcdir/$pkgname"
+   python setup.py build
+}
+
 package() {
    cd "$srcdir/$pkgname"
-   python setup.py install --root="$pkgdir/" -O1
+   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
    install -D -m644 -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/$pkgname"/LICENSE
 }
