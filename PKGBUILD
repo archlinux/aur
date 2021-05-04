@@ -1,8 +1,8 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 _pkgname=debugpy
 pkgname=python-$_pkgname
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="A debugger for Python used with Visual Studio and Visual Studio Code"
 url="https://github.com/microsoft/$_pkgname"
 license=("MIT")
@@ -10,7 +10,7 @@ arch=("x86_64")
 depends=("python>=3.5")
 makedepends=("python-pip" "python-wheel")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha1sums=('76ac8fc75009b2e7497d17a73b3dffc92b22ad6a')
+sha1sums=('a25d0a58c440b3c203e73ad5fb5c6b116e0b089f')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
