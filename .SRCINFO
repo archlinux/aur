@@ -1,11 +1,11 @@
 pkgbase = alterlinux-wallpapers
 	pkgdesc = AlterLinux wallpapers
-	pkgver = 7.1
+	pkgver = 7.2
 	pkgrel = 1
 	url = https:/fascode.net
 	install = alterlinux-wallpapers.install
 	arch = any
-	source = https://github.com/FascodeNet/alterlinux-wallpapers/archive/refs/tags/v7.1.zip
+	source = https://github.com/FascodeNet/alterlinux-wallpapers/archive/refs/tags/v7.2.zip
 	md5sums = SKIP
 
 pkgname = alterlinux-wallpapers
