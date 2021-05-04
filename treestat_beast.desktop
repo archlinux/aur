@@ -1,11 +1,11 @@
 [Desktop Entry]
 Categories=
 Encoding=UTF-8
-Exec=/usr/share/beast/bin/logcombiner
+Exec=/usr/share/beast/bin/treestat
 Icon=/usr/share/beast/images/treestat.png
 MimeType=
-Name=logcombiner
-Name[zh]=logcombiner
+Name=treestat
+Name[zh]=treestat
 ServiceTypes=
 SwallowExec=
 SwallowTitle=
