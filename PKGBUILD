@@ -5,7 +5,7 @@
 pkgname=libwebp052
 _pkgname=libwebp
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="WebP library and conversion tools (old version providing libwebp.so.6)"
 arch=(i486 i686 pentium4 x86_64)
 url="https://developers.google.com/speed/webp/"

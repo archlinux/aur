@@ -1,7 +1,7 @@
 pkgbase = libwebp052
 	pkgdesc = WebP library and conversion tools (old version providing libwebp.so.6)
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developers.google.com/speed/webp/
 	arch = i486
 	arch = i686
