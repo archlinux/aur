@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Name=Infra Arcana
 Comment=Roguelike game inspired by H.P. Lovecraft
-Exec=infra-arcana
+Exec=infra-arcana-git
 Icon=infra-arcana
 Terminal=false
 X-MultipleArgs=false

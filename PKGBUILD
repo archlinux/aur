@@ -3,7 +3,7 @@
 
 pkgname=infra-arcana-git
 pkgver=20.0.r255.g61d2a844
-pkgrel=1
+pkgrel=2
 pkgdesc="Roguelike game inspired by the writings of H.P. Lovecraft - git version"
 arch=('i686' 'x86_64')
 url="https://sites.google.com/site/infraarcana/home"
@@ -67,9 +67,9 @@ package() {
   install -Dm644 "icon/icon.ico" \
   "$pkgdir/usr/share/icons/hicolor/128x128/apps/infra-arcana.png"
   install -Dm644 "${srcdir}/infra-arcana.desktop" \
-  "$pkgdir/usr/share/applications/${pkgname}.desktop"
+  "$pkgdir/usr/share/applications/infra-arcana.desktop"
 }
 sha256sums=('SKIP'
             '3675cbaa28ce7e9e99271914f957cdbec942799aef0f88584cd99ddd642360d2'
-            'c7738445681a33b5a1ca95528c0d3a6131bd867d6ce76f3b64677cee846a83c3'
+            'a2a439114bca255464fb80e8221ec252437c87cfe1adddba6c95a6c86f43109d'
             '7d7b35aa75f204bce23b6629e20b4113c8ea19f3b67c415d4bba0389ea3ede59')
