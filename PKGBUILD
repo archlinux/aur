@@ -1,8 +1,8 @@
 # Maintainer: Rhys Perry <rhysperry111@gmail.com>
 
 pkgname=komga
-== AUTOMATICALLY UPDATED BY SCRIPT ON NEW RELEASE ==
-pkgver=0.83.0
+# AUTOMATICALLY UPDATED BY SCRIPT ON NEW RELEASE #
+pkgver=0.90.3
 pkgrel=1
 pkgdesc="Media server for comics/mangas/BDs with API and OPDS support "
 arch=('any')
@@ -25,5 +25,10 @@ package() {
   install -Dm644 "${srcdir}/komga.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/komga.conf"
   install -Dm644 "${srcdir}/komga.env" "${pkgdir}/etc/komga.conf"
 }
-== AUTOMATICALLY ADDED BY SCRIPT ON NEW RELEASE ==
-md5sums=('bc4c64044e4f5f20b75273abb0881ed5' 'e5713c297be47045511f06664574754f' 'cce81e91d6710d7413f4c934834ef8e4' '537b1c70998d793639a3132345af33f6' 'ed67e35d511c361799745573dd77a16a' '48cc6870981e1fa66a7def9bc2029425')
+# AUTOMATICALLY ADDED BY SCRIPT ON NEW RELEASE #
+md5sums=('b86a2c846243ef03dbf05b45033ea38b'
+         'e5713c297be47045511f06664574754f'
+         'cce81e91d6710d7413f4c934834ef8e4'
+         '537b1c70998d793639a3132345af33f6'
+         'ed67e35d511c361799745573dd77a16a'
+         '48cc6870981e1fa66a7def9bc2029425')
