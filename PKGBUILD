@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc='Meta package to install KDE Plasma'
 arch=(any)
 license=(None)
-url='https://www.archlinux.org/'
+url='https://kde.org/plasma-desktop/'
 depends=(bluedevil
          drkonqi
          kde-gtk-config
