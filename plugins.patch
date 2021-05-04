@@ -40,8 +40,8 @@
  	"LOPTO = -fPIC -m64 -lstdc++ -o " \
 -	"CC = gcc" \
 -	"CXX = g++" \
-+	"CC = gcc-9" \
-+	"CXX = g++-9" \
++	"CC = gcc" \
++	"CXX = g++" \
  	"DEF = -D" \
  	"CCFLAGS = -m64 -O2 -fPIC -Wall" \
  	"CXXFLAGS = -m64 -O2 -fPIC -Wall" \
@@ -54,7 +54,7 @@
  	"NM = nm -p" \
  	"RANLIB = touch" \
 -	"SHLD = gcc -shared"
-+	"SHLD = gcc-9 -shared"
++	"SHLD = gcc -shared"
  
  LINUXARM64:
  	$(MAKE) dynlibs staticlibs bins \
