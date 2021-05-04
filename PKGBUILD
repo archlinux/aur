@@ -1,8 +1,8 @@
 # Maintainer: Renato Caldas <renato@calgera.com>
 _pkgname=pdm
 pkgname=python-pdm
-pkgver=1.4.5
-pkgrel=2
+pkgver=1.5.2
+pkgrel=1
 pkgdesc="A modern Python package manager with PEP 582 support."
 arch=('any')
 url="https://pdm.fming.dev/"
@@ -24,9 +24,8 @@ depends=(
     'python-wheel'
 )
 makedepends=('python-build' 'python-pip')
-#checkdepends=('python-pytest')
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/pdm-project/$_pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('da1ac59d6e6b74e6e8f8860125b04056c9087c0a36dd943da439b03916fa3aea619bd832f1d1444ad635b00d6a9f6a25cd037cbc4662129b47ddbcb19ff3a792')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('e9cc62a2782fa79e36ea738a7ef8afbdb52ecb432f3cff68779a492606dc6ebf3f664afc356033a34baaf6c5747e46eebe43d29f67b4740b5ca59f1c0051c3da')
 
 prepare() {
     cd $_pkgname-$pkgver
@@ -37,12 +36,6 @@ build() {
     cd $_pkgname-$pkgver
     python -m build --no-isolation --wheel .
 }
-
-# This seems to be broken upstream
-# check() {
-#     cd $_pkgname-$pkgver
-#     pytest
-# }
 
 package() {
     cd $_pkgname-$pkgver

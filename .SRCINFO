@@ -1,7 +1,7 @@
 pkgbase = python-pdm
 	pkgdesc = A modern Python package manager with PEP 582 support.
-	pkgver = 1.4.5
-	pkgrel = 2
+	pkgver = 1.5.2
+	pkgrel = 1
 	url = https://pdm.fming.dev/
 	arch = any
 	license = MIT
@@ -20,8 +20,8 @@ pkgbase = python-pdm
 	depends = python-shellingham
 	depends = python-tomlkit
 	depends = python-wheel
-	source = pdm-1.4.5.tar.gz::https://github.com/pdm-project/pdm/archive/refs/tags/1.4.5.tar.gz
-	sha512sums = da1ac59d6e6b74e6e8f8860125b04056c9087c0a36dd943da439b03916fa3aea619bd832f1d1444ad635b00d6a9f6a25cd037cbc4662129b47ddbcb19ff3a792
+	source = https://files.pythonhosted.org/packages/source/p/pdm/pdm-1.5.2.tar.gz
+	sha512sums = e9cc62a2782fa79e36ea738a7ef8afbdb52ecb432f3cff68779a492606dc6ebf3f664afc356033a34baaf6c5747e46eebe43d29f67b4740b5ca59f1c0051c3da
 
 pkgname = python-pdm
 
