@@ -1,7 +1,7 @@
 pkgbase = python-axolotl-curve25519-git
 	pkgdesc = Python wrapper for curve25519 library
 	pkgver = 0.4.1.2.r0.293f9cd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tgalal/python-axolotl-curve25519
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = python-axolotl-curve25519-git
 	depends = python
 	provides = python-axolotl-curve25519
 	conflicts = python-axolotl-curve25519
-	source = git://github.com/tgalal/python-axolotl-curve25519
+	source = git+https://github.com/tgalal/python-axolotl-curve25519
 	sha512sums = SKIP
 
 pkgname = python-axolotl-curve25519-git
