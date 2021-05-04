@@ -1,6 +1,7 @@
 pkgbase = foot-git
+	pkgdesc = Wayland terminal emulator - fast, lightweight and minimalistic
 	pkgver = 1.7.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://codeberg.org/dnkl/foot
 	arch = x86_64
 	arch = aarch64
@@ -19,27 +20,14 @@ pkgbase = foot-git
 	depends = fontconfig
 	depends = freetype2
 	depends = fcft
-	source = git+https://codeberg.org/dnkl/foot.git
-	sha256sums = SKIP
-
-pkgname = foot-git
-	pkgdesc = Wayland terminal emulator - fast, lightweight and minimalistic
-	depends = libxkbcommon
-	depends = wayland
-	depends = pixman
-	depends = fontconfig
-	depends = freetype2
-	depends = fcft
 	depends = foot-terminfo
 	optdepends = libnotify: desktop notifications
 	optdepends = xdg-utils: URI launching
 	optdepends = bash-completion: bash completions for foot itself
 	provides = foot
 	conflicts = foot
+	source = git+https://codeberg.org/dnkl/foot.git
+	sha256sums = SKIP
 
-pkgname = foot-terminfo-git
-	pkgdesc = Terminfo files for the foot terminal emulator
-	depends = ncurses
-	provides = foot-terminfo
-	conflicts = foot-terminfo
+pkgname = foot-git
 

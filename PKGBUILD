@@ -1,13 +1,19 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
-pkgname=('foot-git' 'foot-terminfo-git')
+pkgdesc='Wayland terminal emulator - fast, lightweight and minimalistic'
+pkgname=foot-git
 pkgver=1.7.2
-pkgrel=3
+pkgrel=4
+conflicts=('foot')
+provides=('foot')
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
 makedepends=('meson' 'ninja' 'scdoc' 'python' 'ncurses' 'wayland-protocols' 'tllist')  # ‘llvm’, for PGO with clang
 checkdepends=('check')
-depends=('libxkbcommon' 'wayland' 'pixman' 'fontconfig' 'freetype2' 'fcft')
+depends=('libxkbcommon' 'wayland' 'pixman' 'fontconfig' 'freetype2' 'fcft' 'foot-terminfo')
+optdepends=('libnotify: desktop notifications'
+            'xdg-utils: URI launching'
+            'bash-completion: bash completions for foot itself')
 source=(git+https://codeberg.org/dnkl/foot.git)
 sha256sums=('SKIP')
 
@@ -95,28 +101,9 @@ check() {
   ninja -C build test
 }
 
-package_foot-git() {
-  pkgdesc="Wayland terminal emulator - fast, lightweight and minimalistic"
-  depends+=('foot-terminfo')
-  optdepends=('libnotify: desktop notifications'
-              'xdg-utils: URI launching'
-              'bash-completion: bash completions for foot itself')
-  conflicts=('foot')
-  provides=('foot')
-
+package() {
   cd foot
   DESTDIR="${pkgdir}/" ninja -C build install
   rm -rf "${pkgdir}/usr/share/terminfo"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/foot/LICENSE"
-}
-
-package_foot-terminfo-git() {
-  pkgdesc="Terminfo files for the foot terminal emulator"
-  depends=('ncurses')
-  conflicts=('foot-terminfo')
-  provides=('foot-terminfo')
-
-  cd foot
-  install -dm 755 "${pkgdir}/usr/share/terminfo/f/"
-  cp build/f/* "${pkgdir}/usr/share/terminfo/f/"
 }
