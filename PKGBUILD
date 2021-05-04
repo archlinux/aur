@@ -4,24 +4,22 @@
 # Contributor: Damien Flament <damien.flament at gmx dot com>
 
 pkgname=brittany
-pkgver=0.12.1.1.x2
+pkgver=0.13.1.1
 pkgrel=1
 pkgdesc='Haskell source code formatter'
 arch=(x86_64)
 url='https://github.com/lspitzner/brittany'
 license=(AGPL3)
-makedepends=(stack)
-source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('97fc02baba76a42d19847f5a695af7fa1c2699e6cfbf91c2604998d8501c0d75')
+makedepends=(git stack)
+source=("git+$url#commit=4d064db674203626fe5011d10874fcbc335ec9b1") # tag: 0.13.1.1
+b2sums=('SKIP')
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   stack build
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   stack install --local-bin-path "$pkgdir/usr/bin"
 }
-
-# vim: ts=2 sw=2 et:
