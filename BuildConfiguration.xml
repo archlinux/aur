@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Configuration xmlns="https://www.unrealengine.com/BuildConfiguration">
 	<LocalExecutor>
-		<ProcessorCountMultiplier>1.5</ProcessorCountMultiplier>
+		<ProcessorCountMultiplier>1.2</ProcessorCountMultiplier>
 		<MaxProcessorCount>30</MaxProcessorCount>
 	</LocalExecutor>
 </Configuration>
