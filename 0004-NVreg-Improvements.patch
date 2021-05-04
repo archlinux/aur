@@ -1,0 +1,60 @@
+From becb71f3e815df0df1d2895bd3ad300269a695a4 Mon Sep 17 00:00:00 2001
+From: Vasiliy Stelmachenok <cabopust@yandex.ru>
+Date: Tue, 4 May 2021 14:56:48 +0300
+Subject: [PATCH] NVreg Improvements
+
+This patch edits the default values of the NVIDIA kernel module
+parameters, and makes the following changes:
+
+NVreg_UsePageAttributeTable=1 (Default 0) - Activating the better
+memory management method (PAT). The PAT method creates a partition type table
+at a specific address mapped inside the register and utilizes the memory architecture
+and instruction set more efficiently and faster.
+If your system can support this feature, it should improve CPU performance.
+
+NVreg_EnablePCIeGen3=1 (Default 0) - Enable PCIe Gen 3.x support.
+If your graphics card supports PCIe 3.x, this driver module option
+can active the high-speed 8 GT bus.
+By default the Nvidia driver is set to use PCIe Gen 2.x for compatibility reasons.
+
+NVreg_InitializeSystemMemoryAllocations=0 (Default 1) - Disables
+clearing system memory allocation before using it for the GPU.
+Potentially improves performance, but at the cost of increased security risks.
+Write "options nvidia NVreg_InitializeSystemMemoryAllocations=1" in /etc/modprobe.d/nvidia.conf,
+if you want to return the default value.
+Note: It is possible to use more video memory (?)
+
+NVreg_EnableStreamMemOPs=1 (Default 0) - Activates the support for
+CUDA Stream Memory Operations in user-mode applications.
+
+If you want to learn more about the NVIDIA driver module parameters,
+you can go to the Gentoo Wiki page or view the source code of the nv-reg.h file.
+---
+ kernel/nvidia/nv-reg.h | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/kernel/nvidia/nv-reg.h b/kernel/nvidia/nv-reg.h
+index 1ee7473..7ea5acf 100644
+--- a/kernel/nvidia/nv-reg.h
++++ b/kernel/nvidia/nv-reg.h
+@@ -774,13 +774,13 @@ NV_DEFINE_REG_ENTRY_GLOBAL(__NV_MODIFY_DEVICE_FILES, 1);
+ NV_DEFINE_REG_ENTRY(__NV_DEVICE_FILE_UID, 0);
+ NV_DEFINE_REG_ENTRY(__NV_DEVICE_FILE_GID, 0);
+ NV_DEFINE_REG_ENTRY(__NV_DEVICE_FILE_MODE, 0666);
+-NV_DEFINE_REG_ENTRY(__NV_INITIALIZE_SYSTEM_MEMORY_ALLOCATIONS, 1);
+-NV_DEFINE_REG_ENTRY(__NV_USE_PAGE_ATTRIBUTE_TABLE, ~0);
++NV_DEFINE_REG_ENTRY(__NV_INITIALIZE_SYSTEM_MEMORY_ALLOCATIONS, 0);
++NV_DEFINE_REG_ENTRY(__NV_USE_PAGE_ATTRIBUTE_TABLE, 1);
+ NV_DEFINE_REG_ENTRY(__NV_REGISTER_FOR_ACPI_EVENTS, 1);
+-NV_DEFINE_REG_ENTRY(__NV_ENABLE_PCIE_GEN3, 0);
++NV_DEFINE_REG_ENTRY(__NV_ENABLE_PCIE_GEN3, 1);
+ NV_DEFINE_REG_ENTRY(__NV_ENABLE_MSI, 1);
+ NV_DEFINE_REG_ENTRY(__NV_TCE_BYPASS_MODE, NV_TCE_BYPASS_MODE_DEFAULT);
+-NV_DEFINE_REG_ENTRY(__NV_ENABLE_STREAM_MEMOPS, 0);
++NV_DEFINE_REG_ENTRY(__NV_ENABLE_STREAM_MEMOPS, 1);
+ NV_DEFINE_REG_ENTRY(__NV_RM_PROFILING_ADMIN_ONLY_PARAMETER, 1);
+ NV_DEFINE_REG_ENTRY(__NV_PRESERVE_VIDEO_MEMORY_ALLOCATIONS, 0);
+ 
+-- 
+2.31.1
+
