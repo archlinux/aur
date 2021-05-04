@@ -1,8 +1,8 @@
 pkgbase = infra-arcana-git
 	pkgdesc = Roguelike game inspired by the writings of H.P. Lovecraft - git version
-	pkgver = v19.2.r359.gf3c8e782
+	pkgver = 20.0.r255.g61d2a844
 	pkgrel = 1
-	url = https://gitlab.com/martin-tornqvist/ia
+	url = https://sites.google.com/site/infraarcana/home
 	arch = i686
 	arch = x86_64
 	license = custom: Infra Arcana License
@@ -11,9 +11,16 @@ pkgbase = infra-arcana-git
 	makedepends = cmake
 	depends = sdl2_image
 	depends = sdl2_mixer
+	depends = hicolor-icon-theme
 	conflicts = infra-arcana
 	source = git+https://gitlab.com/martin-tornqvist/ia.git
-	md5sums = SKIP
+	source = infra-arcana.install
+	source = infra-arcana.desktop
+	source = infra-arcana.sh
+	sha256sums = SKIP
+	sha256sums = 3675cbaa28ce7e9e99271914f957cdbec942799aef0f88584cd99ddd642360d2
+	sha256sums = c7738445681a33b5a1ca95528c0d3a6131bd867d6ce76f3b64677cee846a83c3
+	sha256sums = 7d7b35aa75f204bce23b6629e20b4113c8ea19f3b67c415d4bba0389ea3ede59
 
 pkgname = infra-arcana-git
 

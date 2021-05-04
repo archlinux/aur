@@ -2,72 +2,74 @@
 # Contributor: SoVerySour <gmaiadremailfeis22 at gmail dot com>
 
 pkgname=infra-arcana-git
-pkgver=v19.2.r359.gf3c8e782
+pkgver=20.0.r255.g61d2a844
 pkgrel=1
-
 pkgdesc="Roguelike game inspired by the writings of H.P. Lovecraft - git version"
 arch=('i686' 'x86_64')
-url="https://gitlab.com/martin-tornqvist/ia"
+url="https://sites.google.com/site/infraarcana/home"
 license=('custom: Infra Arcana License' 'Apache')
 
-depends=('sdl2_image' 'sdl2_mixer')
+depends=('sdl2_image' 'sdl2_mixer' 'hicolor-icon-theme')
 makedepends=('git' 'cmake')
 conflicts=('infra-arcana')
-md5sums=('SKIP')
+source=("git+https://gitlab.com/martin-tornqvist/ia.git"
+	"infra-arcana.install"
+	"infra-arcana.desktop"
+	"infra-arcana.sh")
 
-source=("git+https://gitlab.com/martin-tornqvist/ia.git")
+# Note:	install, desktop and sh file are taken from Infra-Arcana
+# stable PKGBUILD.
+# Credits goes to paskali here. Thanks!
+# I modified them to work with infra-arcana-git specific part.
 
 pkgver() {
   cd $srcdir/ia
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
 }
 
 build() {
   cd $srcdir/ia
-
   mkdir -p build && cd build
   git submodule init
   git submodule update
-  cmake ../
+  cmake ..
   make ia
-
 }
 
 package() {
-  cd $pkgdir
-
-  install -DTm644 "$srcdir/ia/installed_files/LICENSE.txt" \
-    "$pkgdir/usr/share/licenses/$pkgname/license.txt"
-  install -DTm644 "$srcdir/ia/installed_files/contact.txt" \
-    "$pkgdir/usr/share/doc/$pkgname/contact.txt"
-  install -DTm644 "$srcdir/ia/installed_files/credits.txt" \
-    "$pkgdir/usr/share/doc/$pkgname/credits.txt"
-  install -DTm644 "$srcdir/ia/installed_files/manual.txt" \
-    "$pkgdir/usr/share/doc/$pkgname/manual.txt"
-  install -DTm644 "$srcdir/ia/installed_files/release_history.txt" \
-    "$pkgdir/usr/share/doc/$pkgname/release_history.txt"
-
-  install -d "$pkgdir/usr/bin/"
-  install -d "$pkgdir/opt/games/$pkgname"
-
-  install -Dm775 "$srcdir/ia/build/ia" \
-    "$pkgdir/opt/games/$pkgname/infra-arcana"
-
-  ln -s /opt/games/$pkgname/infra-arcana $pkgdir/usr/bin/
-
-  cp -r "$srcdir/ia/build/audio" "$pkgdir/opt/games/$pkgname/"
-  chmod 775 "$pkgdir/opt/games/$pkgname/audio"
+  cd $srcdir/ia
   
-  cp -r "$srcdir/ia/build/data" "$pkgdir/opt/games/$pkgname/"
-  chmod 775 "$pkgdir/opt/games/$pkgname/data"
-
-  cp -r "$srcdir/ia/build/gfx" "$pkgdir/opt/games/$pkgname/"
-  chmod 775 "$pkgdir/opt/games/$pkgname/gfx"
- 
-  printf "\n\n\n"
-  printf "*** Note that updating the package will keep ***\n"
-  printf "*** Your \"config\", \"save\" and \"highscores\" files ***\n"
-  printf "*** From under /usr/share/games/%s/res/data/ ***\n" "$pkgname"
-  printf "*** If anything unusual happens after an update, try deleting those ***\n"
-  printf "\n\n\n"
+  # Using here Infra-Arcana stable PKGBUILD. Credits goes to paskali here.
+  # I just tweaked the lines to make them work with the git version.
+  
+  #install licenses
+  install -DTm644 "build/LICENSE.txt"\
+  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+  #install docs
+  install -DTm644 "build/contact.txt" \
+  "${pkgdir}/usr/share/doc/${pkgname}/contact.txt"
+  install -DTm644 "build/credits.txt" \
+  "${pkgdir}/usr/share/doc/${pkgname}/credits.txt"
+  install -DTm644 "build/release_history.txt" \
+  "${pkgdir}/usr/share/doc/${pkgname}/release_history.txt"
+  # copy data
+  mkdir -p "${pkgdir}/opt/${pkgname}/"
+  cp -R build/audio "${pkgdir}/opt/${pkgname}/"
+  cp -R build/data "${pkgdir}/opt/${pkgname}/"
+  cp -R build/gfx "${pkgdir}/opt/${pkgname}/"
+  cp build/manual.txt "${pkgdir}/opt/${pkgname}/"
+  # copy main binary
+  cp build/ia "${pkgdir}/opt/${pkgname}/"
+  # this shell script is required as the compiled binary relies on
+  # relative references
+  install -Dm755 "../infra-arcana.sh" "${pkgdir}/usr/bin/${pkgname}"
+  #install icon
+  install -Dm644 "icon/icon.ico" \
+  "$pkgdir/usr/share/icons/hicolor/128x128/apps/infra-arcana.png"
+  install -Dm644 "${srcdir}/infra-arcana.desktop" \
+  "$pkgdir/usr/share/applications/${pkgname}.desktop"
 }
+sha256sums=('SKIP'
+            '3675cbaa28ce7e9e99271914f957cdbec942799aef0f88584cd99ddd642360d2'
+            'c7738445681a33b5a1ca95528c0d3a6131bd867d6ce76f3b64677cee846a83c3'
+            '7d7b35aa75f204bce23b6629e20b4113c8ea19f3b67c415d4bba0389ea3ede59')
