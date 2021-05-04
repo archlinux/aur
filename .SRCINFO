@@ -1,8 +1,8 @@
 pkgbase = gthumb-openexr-extension
 	pkgdesc = Extension for gThumb to support OpenEXR
 	pkgver = 3.10
-	pkgrel = 8
-	url = https://github.com/yama-chan/gthumb-openexr-extension
+	pkgrel = 9
+	url = https://github.com/afichet/gthumb-openexr-extension
 	arch = any
 	license = GPL
 	makedepends = git
@@ -15,7 +15,7 @@ pkgbase = gthumb-openexr-extension
 	depends = gconf
 	depends = openexr
 	provides = gthumb-openexr-extension=3.10
-	source = gthumb-openexr-extension::git+https://github.com/yama-chan/gthumb-openexr-extension.git#branch=cmake
+	source = gthumb-openexr-extension::git+https://github.com/afichet/gthumb-openexr-extension.git#tag=v3.10
 	md5sums = SKIP
 
 pkgname = gthumb-openexr-extension
