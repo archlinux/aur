@@ -1,29 +1,35 @@
 # Maintainer: Rodolphe Bréard <packages@what.tf>
 pkgname=acmed
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="An ACME (RFC 8555) client daemon"
 arch=('x86_64')
 url="https://github.com/breard-r/acmed/"
 license=('Apache' 'MIT')
-depends=('openssl')
+provides=('acmed')
+depends=('gcc-libs' 'openssl')
 makedepends=('rust' 'cargo')
 backup=('etc/acmed/acmed.toml')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/breard-r/$pkgname/archive/v$pkgver.tar.gz"
-        "acmed.service")
-sha256sums=('3073883da50d7fa875222f82737b90645826f2b5d8e268747061ae0cfde29cf9'
-            '41d96853da7de90f66ae89cba4ffa59360587ea79bdc39e0710935de9eee0afe')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/breard-r/${pkgname}/archive/v${pkgver}.tar.gz"
+        "acmed.sysusers"
+        "acmed.tmpfiles")
+sha256sums=('3c6d43afe2dd62b1d5505b5aa002a0a0317646505e3bd677ca2e3b3772a1dbeb'
+            'dcc0cc36c3fafcd4bb940fdd2f6bf90a9b1ba95858d908fcaed23851361a3a90'
+            'f43f62263a210a60bea2a6fe684881711fae9107702288c575521ff2246b46d6')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
 
-  make DESTDIR="$pkgdir" install
-  install -Dm644 "$srcdir/acmed.service" "$pkgdir/usr/lib/systemd/system/acmed.service"
-  install -Dm644 "LICENSE-APACHE-2.0.txt" "$pkgdir/usr/share/licenses/acmed/LICENSE-APACHE-2.0.txt"
-  install -Dm644 "LICENSE-MIT.txt" "$pkgdir/usr/share/licenses/acmed/LICENSE-MIT.txt"
+  make DESTDIR="${pkgdir}" install
+  rm -rf "${pkgdir}/var"
+  install -Dm644 "contrib/acmed.service" "${pkgdir}/usr/lib/systemd/system/acmed.service"
+  install -Dm644 "${srcdir}/acmed.sysusers" "${pkgdir}/usr/lib/sysusers.d/acmed.conf"
+  install -Dm644 "${srcdir}/acmed.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/acmed.conf"
+  install -Dm644 "LICENSE-APACHE-2.0.txt" "${pkgdir}/usr/share/licenses/acmed/LICENSE-APACHE-2.0.txt"
+  install -Dm644 "LICENSE-MIT.txt" "${pkgdir}/usr/share/licenses/acmed/LICENSE-MIT.txt"
 }

@@ -1,0 +1,7 @@
+#Type Path                               Mode User  Group Age Argument
+d     /run/acmed                         0755 acmed acmed -   -
+f     /run/acmed/acmed.pid               0644 acmed acmed -   -
+d     /var/lib/acmed                     0755 acmed acmed -   -
+d     /var/lib/acmed/accounts            0700 acmed acmed -   -
+d     /var/lib/acmed/certs               0755 acmed acmed -   -
+d     /var/lib/acmed/domains             0755 acmed acmed -   -

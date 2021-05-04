@@ -1,6 +1,6 @@
 pkgbase = acmed
 	pkgdesc = An ACME (RFC 8555) client daemon
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/breard-r/acmed/
 	arch = x86_64
@@ -8,12 +8,16 @@ pkgbase = acmed
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
+	depends = gcc-libs
 	depends = openssl
+	provides = acmed
 	backup = etc/acmed/acmed.toml
-	source = acmed-0.16.0.tar.gz::https://github.com/breard-r/acmed/archive/v0.16.0.tar.gz
-	source = acmed.service
-	sha256sums = 3073883da50d7fa875222f82737b90645826f2b5d8e268747061ae0cfde29cf9
-	sha256sums = 41d96853da7de90f66ae89cba4ffa59360587ea79bdc39e0710935de9eee0afe
+	source = acmed-0.17.0.tar.gz::https://github.com/breard-r/acmed/archive/v0.17.0.tar.gz
+	source = acmed.sysusers
+	source = acmed.tmpfiles
+	sha256sums = 3c6d43afe2dd62b1d5505b5aa002a0a0317646505e3bd677ca2e3b3772a1dbeb
+	sha256sums = dcc0cc36c3fafcd4bb940fdd2f6bf90a9b1ba95858d908fcaed23851361a3a90
+	sha256sums = f43f62263a210a60bea2a6fe684881711fae9107702288c575521ff2246b46d6
 
 pkgname = acmed
 
