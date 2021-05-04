@@ -2,12 +2,27 @@
 _pkgname=pdm
 pkgname=python-pdm
 pkgver=1.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern Python package manager with PEP 582 support."
 arch=('any')
 url="https://pdm.fming.dev/"
 license=('MIT')
-depends=('python-cfonts' 'python-pythonfinder' 'python-pdm-pep517')
+# 'python-pycomplete' is needed for auto-completion, but missing from aur
+depends=(
+    'python-appdirs'
+    'python-click'
+    'python-cfonts'
+    'python-distlib'
+    'python-dotenv'
+    'python-keyring'
+    'python-pdm-pep517'
+    'python-pep517'
+    'python-pythonfinder'
+    'python-resolvelib'
+    'python-shellingham'
+    'python-tomlkit'
+    'python-wheel'
+)
 makedepends=('python-build' 'python-pip')
 #checkdepends=('python-pytest')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/pdm-project/$_pkgname/archive/refs/tags/$pkgver.tar.gz")
