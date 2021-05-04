@@ -1,6 +1,6 @@
 pkgbase = tea-qt
 	pkgdesc = Powerful text editor for Linux, *BSD, Windows, OS/2, Mac and Haiku OS
-	pkgver = 60.0.3
+	pkgver = 60.1.0
 	pkgrel = 1
 	url = http://semiletov.org/tea
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = tea-qt
 	depends = zlib
 	depends = hunspell
 	depends = desktop-file-utils
-	source = https://github.com/psemiletov/tea-qt/archive/60.0.3.tar.gz
-	md5sums = 661bca198f706a054a9196267b1954dd
+	source = https://github.com/psemiletov/tea-qt/archive/60.1.0.tar.gz
+	md5sums = 6cc56888bc886a005bc0efa9b677a63b
 
 pkgname = tea-qt
 
