@@ -4,13 +4,13 @@
 pkgname=nordic-bluish-theme-git
 _pkgname=Nordic
 _branch=bluish-accent
-pkgver=r95.cdfef35
-pkgrel=1
+pkgver=r104.aca5dbb
+pkgrel=2
 pkgdesc="Dark Gtk3.20+ theme created using the awesome Nord color pallete. Bluish accent branch"
 arch=("any")
 url="https://github.com/EliverLara/${_pkgname}"
 license=('GPL')
-makedepends=('inkscape' 'optipng')
+makedepends=('git' 'inkscape' 'optipng')
 optdepends=('ttf-roboto: primary font face defined'
 			'ttf-ubuntu-font-family: secondary font face defined'
 			'cantarell-fonts: tertiary font face defined')

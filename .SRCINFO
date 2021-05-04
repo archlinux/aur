@@ -1,10 +1,11 @@
 pkgbase = nordic-bluish-theme-git
 	pkgdesc = Dark Gtk3.20+ theme created using the awesome Nord color pallete. Bluish accent branch
-	pkgver = r95.cdfef35
-	pkgrel = 1
+	pkgver = r104.aca5dbb
+	pkgrel = 2
 	url = https://github.com/EliverLara/Nordic
 	arch = any
 	license = GPL
+	makedepends = git
 	makedepends = inkscape
 	makedepends = optipng
 	optdepends = ttf-roboto: primary font face defined
@@ -14,4 +15,3 @@ pkgbase = nordic-bluish-theme-git
 	sha256sums = SKIP
 
 pkgname = nordic-bluish-theme-git
-
