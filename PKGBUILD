@@ -6,7 +6,7 @@
 set -u
 pkgname='gravit-designer-bin'
 pkgver='2021.i1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A cross-platform, free design tool for the 21st century empowering everyone to design'
 arch=('x86_64')
 url='https://designer.io/'
@@ -14,7 +14,7 @@ license=('custom:freeware')
 depends=('libxss' 'gconf' 'nss' 'gtk3' 'libindicator-gtk2' 'libdbusmenu-gtk2')
 makedepends=('patchelf')
 _srcdir='squashfs-root'
-source=("${pkgname}-${pkgver}.zip::https://designer.gravit.io/_downloads/linux/GravitDesigner.zip?v=${pkgver/_/-}"
+source=("${pkgname}-${pkgver}.zip::https://designer.gravit.io/_downloads/linux/GravitDesigner.zip?v=Version%20${pkgver/_/-}"
         'gravit-designer.png'
         'gravit-designer-document.svg'
         'gravit-designer.xml'
