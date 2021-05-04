@@ -1,13 +1,14 @@
 # Maintainer: Rodolphe Bréard <packages@what.tf>
 pkgname=acmed
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An ACME (RFC 8555) client daemon"
 arch=('x86_64')
 url="https://github.com/breard-r/acmed/"
 license=('Apache' 'MIT')
 provides=('acmed')
 depends=('gcc-libs' 'openssl')
+optdepends=('acmed-polkit-reload: polkit service reload rule')
 makedepends=('rust' 'cargo')
 backup=('etc/acmed/acmed.toml')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/breard-r/${pkgname}/archive/v${pkgver}.tar.gz"
