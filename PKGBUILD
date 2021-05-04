@@ -1,6 +1,6 @@
 # Contributer: abcfy2 <abcfy2@163.com>
 pkgname='deepin-wine6-stable'
-pkgver=6.0.0.3
+pkgver=6.0.0.6
 pkgrel=1
 pkgdesc="Deepin Wine6 stable"
 arch=('i686' 'x86_64')
@@ -18,13 +18,13 @@ depends=(
     )
 makedepends=('tar' 'p7zip')
 source=(
-    "http://community-store.deepin.com/appstore/apricot/pool/appstore/c/com.tencent.meeting.deepin/com.tencent.meeting.deepin_2.8.7.400deepin2_i386.deb"
+    "http://community-store.deepin.com/appstore/apricot/pool/appstore/c/com.qq.weixin.work.deepin/com.qq.weixin.work.deepin_3.1.6.3605deepin3_i386.deb"
 )
-sha256sums=('a738cddcfdf54595145676c402733eb5e9df2bde733615aa811e765e4fcb2d45')
+sha256sums=('13fb8400ae9a7983ba065001695161574e79670dcdee3950f31c5068d8814f94')
 
 package() {
 	cd ${srcdir}
 	tar xpvf data.tar.xz --xattrs-include='*' --numeric-owner
 	install -d ${pkgdir}/usr/lib/deepin-wine6-stable
-    7z x -o${pkgdir}/usr/lib/deepin-wine6-stable opt/apps/com.tencent.meeting.deepin/files/wine_archive.7z
+    7z x -o${pkgdir}/usr/lib/deepin-wine6-stable opt/apps/com.qq.weixin.work.deepin/files/wine_archive.7z
 }
