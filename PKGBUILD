@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-mpris_server
 _name=${pkgname#python-}
-pkgver=0.2.17
+pkgver=0.2.18
 pkgrel=1
 pkgdesc="Integrate MPRIS Media Player support into your app"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-gobject>=3.34.0' 'python-pydbus>=0.6.0' 'python-unidecode=1.2.0
          'python-emoji=1.2.0')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('a41e4dce2e322a991640c4b2b02010d6233d2d9306eb271f41721d49bba63248')
+sha256sums=('6d00efd7f30ba1138c6ed83a73b9fcdc8fbc53343865b9ef92750aabca386515')
 
 build() {
 	cd "$_name-$pkgver"
