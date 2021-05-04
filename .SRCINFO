@@ -1,0 +1,14 @@
+pkgbase = discordrpcmaker-cli
+	pkgdesc = CLI Helper for DiscordRPCMaker
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://drpcm.t1c.dev/
+	arch = x86_64
+	license = GPL
+	depends = discordrpcmaker
+	noextract = discordrpcmaker-cli
+	source_x86_64 = discordrpcmaker-cli::https://github.com/thatonecalculator/discordrpcmaker-cli/releases/download/v1.0.0/discordrpcmaker-cli
+	sha256sums_x86_64 = SKIP
+
+pkgname = discordrpcmaker-cli
+
