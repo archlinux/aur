@@ -1,4 +1,4 @@
-# Maintainer: somebody <ehern.lee@gmail.com>
+# Maintainer: E-Hern Lee <ehern.lee@gmail.com>
 # Contributor: anon@sansorgan.es
 # Contributor: heavysink <winstonwu91 at gmail>
 
