@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=processx
-_cranver=3.5.1
+_cranver=3.5.2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,9 +10,9 @@ arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
 depends=(r 'r-ps>=1.2.0' r-r6)
-optdepends=(r-callr r-cli r-codetools r-covr r-curl r-debugme r-testthat r-withr)
+optdepends=(r-callr r-cli r-covr r-curl r-debugme r-testthat r-withr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('d35c13f131692573939949f21be03988c12bfc18d4b5093fa43d10f0ce53fffc')
+sha256sums=('ed6f2d1047461c6061e6ed58fb6de65a289b56009867892abad76c6bba46fc2b')
 
 build() {
   cd "${srcdir}"
