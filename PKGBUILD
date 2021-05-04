@@ -49,10 +49,10 @@ package() {
     install -m 755 ${srcdir}/beast/README.txt ${pkgdir}/usr/share/beast2/README.txt
     install -m 755 "${srcdir}/beast/VERSION HISTORY.txt" "${pkgdir}/usr/share/beast2/VERSION HISTORY.txt"
     
-    ln -s ${pkgdir}/usr/share/beast2/bin/beauti ${pkgdir}/usr/bin/beauti
-    ln -s ${pkgdir}/usr/share/beast2/bin/logcombiner ${pkgdir}/usr/bin/logcombiner
-    ln -s ${pkgdir}/usr/share/beast2/bin/treeannotator ${pkgdir}/usr/bin/treeannotator
-    ln -s ${pkgdir}/usr/share/beast2/bin/densitree ${pkgdir}/usr/bin/densitree
+    ln -s /usr/share/beast2/bin/beauti /usr/bin/beauti
+    ln -s /usr/share/beast2/bin/logcombiner /usr/bin/logcombiner
+    ln -s /usr/share/beast2/bin/treeannotator /usr/bin/treeannotator
+    ln -s /usr/share/beast2/bin/densitree /usr/bin/densitree
     
     cp ~/.cache/yay/beast2/beauti.desktop ${pkgdir}/usr/share/applications
     cp ~/.cache/yay/beast2/densitree.desktop ${pkgdir}/usr/share/applications
