@@ -1,5 +1,5 @@
 pkgbase = satdump-git
-	pkgdesc = The Bloat-free SDR Receiver
+	pkgdesc = A generic satellite processing software
 	pkgver = 1.0
 	pkgrel = 5
 	url = https://github.com/altillimity/SatDump
