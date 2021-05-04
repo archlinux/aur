@@ -1,6 +1,6 @@
 pkgbase = stgit
 	pkgdesc = Pushing/popping patches to/from a stack on top of Git, similar to Quilt
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://stacked-git.github.io/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = stgit
 	makedepends = asciidoc
 	depends = python
 	depends = git
-	source = https://github.com/stacked-git/stgit/releases/download/v1.0/stgit-1.0.tar.gz
-	sha256sums = c2a26b2e6a8fe2eb9c8aa4ade6d6dd35858137c381448b6142c4d2c142b47b94
+	source = https://github.com/stacked-git/stgit/releases/download/v1.1/stgit-1.1.tar.gz
+	sha256sums = fc9674943c8e5534122ad96646078b4f07b7b69fc202b57eaa9b430ee13f0d9b
 
 pkgname = stgit
 
