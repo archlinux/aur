@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxp-git
-pkgver=v0.6.11.r0.ga6344fa
+pkgver=v0.6.12.r0.ge1036ef
 pkgrel=1
 pkgdesc="Generic C-API for common patterns"
 arch=('any')
@@ -30,13 +30,11 @@ pkgver() {
 }
 
 build() {
-	# fix absolute value error
-	export CFLAGS+=" -Wno-error=absolute-value"
 	cd "${pkgname}"
 	make
 }
 
 package() {
 	cd "${pkgname}"
-	make DEST="${pkgdir}/" INSTALL_LIB_DIR="/lib" install
+	make DEST="${pkgdir}/" LIBDIR="/usr/lib" install
 }
