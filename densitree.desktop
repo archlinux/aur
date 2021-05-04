@@ -1,0 +1,18 @@
+[Desktop Entry]
+Categories=
+Encoding=UTF-8
+Exec=./usr/share/beast2/bin/densitree
+GenericName=
+GenericName[zh]=
+Icon=/usr/share/beast2/images/DensiTree.png
+MimeType=
+Name=densitree
+Name[zh]=densitree
+ServiceTypes=
+SwallowExec=
+SwallowTitle=
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=root
