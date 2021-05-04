@@ -15,7 +15,7 @@ User=hornet
 WorkingDirectory=/var/lib/hornet
 TimeoutSec=1200
 Restart=always
-ExecStart=/usr/bin/hornet -c "/etc/hornet/config.json"
+ExecStart=/usr/bin/hornet --config "/etc/hornet/config.json" --peering "/etc/hornet/peering.json" --profiles "/etc/hornet/profiles.json"
 
 [Install]
 WantedBy=multi-user.target
