@@ -27,7 +27,6 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_name"
-	sed -i 's/decorator>=4.4,<5/decorator>=5.0.7/' requirements/default.txt
 	python setup.py build
 }
 
