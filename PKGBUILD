@@ -2,23 +2,32 @@
 pkgname=fzpac-git
 _pkgname=fzpac
 pkgver=r56.1736c8c
-pkgrel=1
+pkgrel=2
 pkgdesc="Arch Linux (pacman) package finder with fzf "
 arch=("any")
 url="https://github.com/sheepla/fzpac"
 license=('MIT')
 depends=("fzf" "pacman")
+optdepends=('bash-completion: completion for bash')
 source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd $srcdir/$_pkgname
+	cd "$_pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+	cd "$_pkgname"
+	sed -i -e "s|/local||" -e "s/sudo //g" -e "s|/u|\$(DESTDIR)/u|g" Makefile
+}
+
 package() {
-	cd "$srcdir/$_pkgname"
-	install -Dm755 fzpac "$pkgdir/usr/bin/fzpac"
+	cd "$_pkgname"
+	export DESTDIR="$pkgdir"
+	mkdir -p "$pkgdir/usr/bin"
+	mkdir -p "$pkgdir/usr/share/bash-completion/completions"
+	make install
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENCE"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
 }

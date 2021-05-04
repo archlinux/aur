@@ -1,12 +1,13 @@
 pkgbase = fzpac-git
 	pkgdesc = Arch Linux (pacman) package finder with fzf
 	pkgver = r56.1736c8c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sheepla/fzpac
 	arch = any
 	license = MIT
 	depends = fzf
 	depends = pacman
+	optdepends = bash-completion: completion for bash
 	source = git+https://github.com/sheepla/fzpac
 	sha256sums = SKIP
 
