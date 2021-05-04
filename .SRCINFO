@@ -1,0 +1,17 @@
+pkgbase = python3-anilistpy
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/anilistpy/anilistpy
+	arch = i686
+	arch = x86_64
+	license = AGPL2
+	makedepends = python
+	makedepends = rust
+	makedepends = python-pip
+	provides = python3-anilistpy
+	conflicts = python3-anilistpy
+	source = git+https://github.com/anilistpy/anilistpy.git
+	md5sums = SKIP
+
+pkgname = python3-anilistpy
+
