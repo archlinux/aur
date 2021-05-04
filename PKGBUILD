@@ -25,7 +25,7 @@ prepare() {
 build() {
   cd $_pkgname-$pkgver
   ./configure \
-    --prefix=/usr \
+    --prefix=/opt/$_pkgname-$pkgver \
     --disable-static \
     --enable-swap-16bit-csp \
     --enable-experimental \
@@ -42,7 +42,11 @@ check() {
 package() {
   cd $_pkgname-$pkgver
   make DESTDIR="$pkgdir" install
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/COPYING"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -D -d -m755 "$pkgdir"/etc/ld.so.conf.d
+  cat > "$pkgdir"/etc/ld.so.conf.d/$pkgname.conf << EOF
+/opt/$_pkgname-$pkgver/lib
+EOF
 }
 
 # vim:set ts=2 sw=2 et:
