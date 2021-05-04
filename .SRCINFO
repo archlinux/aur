@@ -1,0 +1,15 @@
+pkgbase = superbmk-git
+	pkgdesc = page_facing_up SuperB way to create new folders and files
+	pkgver = r46.16173cf
+	pkgrel = 1
+	url = https://github.com/NNBnh/mk
+	arch = any
+	license = GPL 3
+	makedepends = git
+	provides = mk
+	conflicts = mk-git
+	source = git+https://github.com/NNBnh/mk
+	md5sums = SKIP
+
+pkgname = superbmk-git
+
