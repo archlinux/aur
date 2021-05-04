@@ -1,0 +1,17 @@
+pkgbase = open-delta
+	pkgdesc = DEscription Language of TAxonomy
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/AtlasOfLivingAustralia/open-delta
+	arch = x86_64
+	license = unknown
+	depends = jre-openjdk-headless
+	depends = jre-openjdk
+	depends = jdk-openjdk
+	depends = openjdk-doc
+	depends = openjdk-src
+	source = https://github.com/AtlasOfLivingAustralia/open-delta/files/4686516/open-delta-1.02-bin.zip
+	sha256sums = SKIP
+
+pkgname = open-delta
+
