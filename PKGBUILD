@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=slice
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='GUI app to generate custom static fonts from variable fonts'
 arch=(any)
@@ -11,7 +11,7 @@ _py_deps=(brotli fonttools pyqt5 zopfli)
 depends=(python ${_py_deps[@]/#/python-})
 makedepends=(python-setuptools)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ec0ab36800794d666e669d7c28cba37541066e72bd170fc8f257b3a98e0d816c')
+sha256sums=('54e1f8f6a9f6baef785e142c9329305dd83618d3ef8af34256385bce14dd97d9')
 
 build() {
 	cd "${pkgname^}-$pkgver"
