@@ -9,10 +9,10 @@ pkgname=(
   kata2-containers-image-bin
   kata2-linux-container-bin
 )
-pkgver="2.0.3"
+pkgver="2.1.0~rc0"
 _pkgver=${pkgver/\~/-}
 pkgrel=1
-pkgdesc="Lightweight virtual machines for containers (binary version)"
+pkgdesc="Lightweight virtual machines for containers (version 2, binary packaging)"
 arch=(x86_64)
 url="https://katacontainers.io"
 license=('Apache')
@@ -22,8 +22,8 @@ _bin_pkg_root="/opt/kata"  # `/usr` for f30 packages, `/opt/kata` for static pac
 if [ "${_bin_pkg_root}" = "/opt/kata" ]; then
   #pkgname+=(kata2-containers-static)
   source=("https://github.com/kata-containers/kata-containers/releases/download/${_pkgver}/kata-static-${_pkgver}-${CARCH}.tar.xz")
-  sha512sums=(4940aec221970f9d8e036dc935b5bd3bf67f9a3f8cbe93bcaeffa6b28bf1ea49ee0d869747bb0b3d4bf139f141fa1cc419eeab98526b672ea8e1b1ac1224e784)
-  b2sums=(b904680ca68ecce6f4e72f4dc6c647b544fe4599b1e997634e197292fc14c109f5152c55a1cc5d4aa6ddeb44af4a9894ab0a0d43651203a4651390efc692bf81)
+  sha512sums=(a2b80c5507895df2c704ae53016c770297efc6e5e5e80ff8e32d929ca1b8dab3bf506ca916b007393e1fff090f5171fee2e1cac592223a4e44a35fe9b36a2605)
+  b2sums=(4ea11cd5ed5d1366b16c595d5dbe3a3ad5bbcf7e6f19a41c6fa99d53bf4c731188bc1d68f481fd4b21651f8451079eaa57289e2ef6c1d067d51a834e923b817f)
 else
   _kata_kernel_ver="5.4.32.76"
   _default_suffix="-8.1"  # f30 package build revision
@@ -60,8 +60,8 @@ fi
 package_kata2-runtime-bin() {
   depends=(qemu-headless kata2-containers-image kata2-linux-container)
   optdepends=(
-    'cloud-hypervisor<0.11.0'
-    'firecracker<0.22.0'
+    'cloud-hypervisor<16.0'
+    'firecracker<0.24.0'
   )
   conflicts=('kata2-runtime' 'kata-runtime')
   provides=('kata2-runtime')
@@ -98,12 +98,6 @@ package_kata2-linux-container-bin(){
     ${srcdir}${_bin_pkg_root}/share/kata-containers/vmlinuz-*
   [ "${_bin_pkg_root}" = "/opt/kata" ] && install -Dm644 -t "${pkgdir}/usr/share/kata-containers/" \
     ${srcdir}${_bin_pkg_root}/share/kata-containers/config-*
-  cd "${pkgdir}/usr/share/kata-containers/"
-  ln -sf vmlinux-virtio-fs-* vmlinux-virtiofs.container
-  ln -sf vmlinuz-virtio-fs-* vmlinuz-virtiofs.container
-  # bash-specific behavior?
-  ln -s vmlinux-[0-9].[0-9]* vmlinux.container
-  ln -s vmlinuz-[0-9].[0-9]* vmlinuz.container
 }
 
 package_kata2-containers-static(){
