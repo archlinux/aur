@@ -6,7 +6,13 @@ pkgver=1.07a
 pkgrel=1
 pkgdesc="MorphoJ is an integrated program package for doing geometric morphometrics"
 arch=('x86_64')
-depends=('jre-openjdk-headless' 'jre-openjdk' 'jdk-openjdk' 'openjdk-doc' 'openjdk-src ')
+depends=(
+'jre-openjdk-headless'
+'jre-openjdk'
+'jdk-openjdk'
+'openjdk-doc'
+'openjdk-src '
+)
 url="https://morphometrics.uk/MorphoJ_page.html"
 license=('Apache License version 2')
 source=("https://morphometrics.uk/MorphoJ_stuff/download.php?get=MorphoJ-installer_Unix_Linux.jar")
