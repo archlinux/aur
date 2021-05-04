@@ -6,12 +6,12 @@
 # Maintainer: zzy-ac <1304024859@qq.com>
 pkgname=plantsvszombies
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="plantsvszombies by deepin-wine5"
 arch=(x86_64)
 url="https://github.com/zzy-ac/plantsvszombies"
 license=('GPL')
-depends=('deepin-wine5' 'deepin-wine5-helper')
+depends=('deepin-wine5' 'deepin-wine-helper')
 provides=(plantsvszombies=$pkgver)
 replaces=()
 backup=()
