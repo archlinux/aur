@@ -12,8 +12,8 @@ pkgname=(exim-heavy
          exim-lookup-passwd
          exim-lookup-pgsql)
 pkgname=exim-heavy
-pkgver=4.93
-pkgrel=3
+pkgver=4.94.2
+pkgrel=1
 pkgdesc='Message Transfer Agent with maximal-enabled features'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://www.exim.org/'
@@ -31,13 +31,13 @@ source=("https://ftp.exim.org/pub/exim/exim4/exim-$pkgver.tar.bz2"{,.asc}
         exim-submission.socket
         exim.sysusers
         exim.tmpfiles)
-sha512sums=('18301520ff02978e4f19d7b651495bc9b86d99e45c60d4bef63aa07ec43a5d8ee2e1bdbd512861c974af2210a3aeae2d34d41cff1112a97ec7cedf771126b499'
+sha512sums=('5302fe84146d360d40ba790a25d7ab76bfa3d171dfbd66fe12d34213c24131b981eb93a2efddb4d81731050df1bf0720fabe79816991b478902e46ef342936b7'
             'SKIP'
             'a91c6a9e5b3ac9d143741dba01e11616812ba44c3a8c768c8232364026460f0b8fdeeb120a2f2b86742a6e3ebbfc9d6335b86d108b044e43108b4a6f0374c9ad'
             'd8e3b466e0bba8175cfe762058dec49018495a260aa5efd139f4ef435284c305958cbd7fc514e81042146368b749ae38f0bf276fc0b4b91918ef33126900aa81'
-            '7544cab32ecb37bd90c6b7e44c97343e628e8b4302a62fb0fdabc01b27bfdfef7e1e1160c9b040d1df9bb6c91cc1db58fc12152d91fbdcbb69d06df99ff4f3c3'
+            'dcb61b84f008e0de439df6be6628d0e0140d0f698af2a87c3f9c1d422b53ccd8fa9d1321c1fb4f226ef0837106b587c53fec7bcd05ca4706657f615c123db02f'
             'dc28698f15e8eaa4614ae81fc8cb76d92fed1110ce02f7a6ee8feace418dbb194711eb2d4dd444cf818628c11721e21d80b7b974879ab6ddd78cc717cce17c2f'
-            'e2fc3966c320460a26fbbf83e98df725587dc126dfe9d7a84c3285eb4b22a061b30499425c70f3d73cf13aa81c194274004efd20ce1316836463b982117909f8'
+            'b3c3b18652df435cb87d647cfd4f19e182fbf12b0b56f9c91f72b27ae5a819fb3d8c4c25445c5a3c184f70a0c181925fabda891f2057b8a917070d6c40529b8d'
             '11c8133ee15b3e5193c9b1c59aed66c81b6e045dd23310bede9fcde6c88905db5ef08afdb798b53b75a7465915ea1247e980edf95db07a7f9b7bb58ce95fbb5a'
             'db621116907ceb573e6f34581f47c91f751bff593054d7ddc32397b34c7f2405bec184bdb0589d2ac457fa3a61bcba072761e3a6293a99c9c764d2d9fd6069ae'
             '4a233761793e3510e9efa5aad3a6098c41b757f13133a7ea825680f2b393aba8d7935f16bf1dd065dde884fe7ba45639a8d398333a7d9bf0a6b72f88c8f2a09d'

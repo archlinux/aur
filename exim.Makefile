@@ -1363,7 +1363,7 @@ MAX_NAMED_LIST=16
 # (process id) to a file so that it can easily be identified. The path of the
 # file can be specified here. Some installations may want something like this:
 
-PID_FILE_PATH=/var/run/exim.pid
+PID_FILE_PATH=/run/exim.pid
 
 # If PID_FILE_PATH is not defined, Exim writes a file in its spool directory
 # using the name "exim-daemon.pid".
