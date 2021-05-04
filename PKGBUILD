@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxj-git
-pkgver=v0.3.14.r0.g10f9f41
+pkgver=v0.3.15.r0.g64a870f
 pkgrel=1
 pkgdesc="JSON Reader/generation - JSON string variant"
 arch=('any')
@@ -37,5 +37,5 @@ build() {
 
 package() {
 	cd "${pkgname}"
-	make DEST="${pkgdir}/" INSTALL_LIB_DIR="/lib" install
+	make DEST="${pkgdir}/" LIBDIR="/usr/lib" install
 }
