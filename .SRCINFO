@@ -1,0 +1,26 @@
+pkgbase = realvnc-vnc-server-aarch64
+	pkgdesc = VNC remote desktop server software by RealVNC - aarch64 version from Raspbian Repos
+	pkgver = 6.7.2.43081
+	pkgrel = 1
+	url = https://www.realvnc.com/
+	install = realvnc-vnc-server-aarch64.install
+	arch = aarch64
+	license = custom
+	depends = libsm
+	depends = libxtst
+	depends = xorg-xauth
+	optdepends = cups: Printer support
+	conflicts = tightvnc
+	conflicts = tigervnc
+	conflicts = turbovnc
+	source = http://archive.raspberrypi.org/debian/pool/main/r/realvnc-vnc/realvnc-vnc-server_6.7.2.43081_arm64.deb
+	source = libbcm_host.so
+	source = libvcos.so
+	source = libvchiq_arm.so
+	sha256sums = 39522bd3931b9ce5ff25d198b45a1c84220edcb2a6ae364851c4942e9cdb3f9c
+	sha256sums = bfa7a3f00618736f313ae2871948c159013c9058342a3bc56e04096b68568ca0
+	sha256sums = ac88b83490c44b000c365cb1a5e8dc1dc9a07852a393e12e4b061c7c2eb8ebcd
+	sha256sums = 9727eed77e101149b68d43735e7ecfdedbda664537c2309c3752528125218c75
+
+pkgname = realvnc-vnc-server-aarch64
+
