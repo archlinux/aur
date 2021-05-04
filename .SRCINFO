@@ -1,6 +1,6 @@
 pkgbase = simtoolkitpro-appimage
 	pkgdesc = The all-in-one flight simulation EFB
-	pkgver = 0.6.76
+	pkgver = 0.6.79
 	pkgrel = 1
 	url = https://simtoolkitpro.co.uk/
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = simtoolkitpro-appimage
 	provides = simtoolkitpro
 	conflicts = simtoolkitpro
 	options = !strip
-	source = https://cdn.simtoolkitpro.co.uk/automated-builds/SimToolkitPro-0.6.76-x86_64.Setup.AppImage
+	source = https://cdn.simtoolkitpro.co.uk/automated-builds/SimToolkitPro-0.6.79-x86_64.Setup.AppImage
 	source = SimToolkitPro.desktop
 	source = simtoolkitpro.png
-	sha512sums = 0426b5c0a34e997c85f32730542980953f42ee7ed7eec43ea0cebe7df86f4de743e221414d4f13ee5ee8feb9de937439e89c26d92f714bd51f3ff8ff30d9b886
+	sha512sums = da588d4a772bb9103220664a84a774ac2706c9f3ab8d332fb0f8e168aa60ddd75e71775921dd8c883454a0fe4736caf40e50716ac2d685827a0facd6e5d84566
 	sha512sums = 82b6be8bdb19ec1973cae124068240ade1ca4b282465e410d47bf2dfceaf0f7854c8de5cf709e6ba27dfcbf43c5ad11e50617c44cfea161d6870ac86f56d6704
 	sha512sums = fcbbecca8c3719aa59ac22de057fd6775282b4600d6d2a505fd24e1346e1ab92cdd456dfb28b028e880039623ac2e1aa81756b64a87b208a98e6dcbbbf38260d
 
