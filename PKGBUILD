@@ -7,11 +7,11 @@ pkgrel=1
 pkgdesc="MorphoJ is an integrated program package for doing geometric morphometrics"
 arch=('x86_64')
 depends=(
-'jre-openjdk-headless'
-'jre-openjdk'
-'jdk-openjdk'
-'openjdk-doc'
-'openjdk-src '
+	'jre-openjdk-headless'
+	'jre-openjdk'
+	'jdk-openjdk'
+	'openjdk-doc'
+	'openjdk-src'
 )
 url="https://morphometrics.uk/MorphoJ_page.html"
 license=('Apache License version 2')
