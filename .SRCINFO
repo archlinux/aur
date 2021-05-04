@@ -8,7 +8,7 @@ pkgbase = flowee-pay
 	license = GPL3
 	makedepends = boost
 	makedepends = cmake
-	depends = flowee>=2021.04.0
+	makedepends = flowee>=2021.04.0
 	depends = qt5-base
 	provides = flowee-pay
 	source = https://gitlab.com/FloweeTheHub/pay/-/archive/2021.04.0/pay-2021.04.0.tar.gz
