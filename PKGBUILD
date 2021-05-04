@@ -29,40 +29,40 @@ package() {
     mkdir "${pkgdir}/usr/share/beast/native"
     mkdir "${pkgdir}/usr/share/beast/doc"
     
-    install -m 755 ${srcdir}/beast/bin/beast ${pkgdir}/usr/share/beast/bin/beast
-    install -m 755 ${srcdir}/beast/bin/beauti ${pkgdir}/usr/share/beast/bin/beauti
-    install -m 755 ${srcdir}/beast/bin/loganalyser ${pkgdir}/usr/share/beast/bin/loganalyser
-    install -m 755 ${srcdir}/beast/bin/logcombiner ${pkgdir}/usr/share/beast/bin/logcombiner
-    install -m 755 ${srcdir}/beast/bin/treeannotator ${pkgdir}/usr/share/beast/bin/treeannotator
-    install -m 755 ${srcdir}/beast/bin/treestat ${pkgdir}/usr/share/beast/bin/treestat
+    install -m 755 ${srcdir}/BEASTv${pkgver}/bin/beast ${pkgdir}/usr/share/beast/bin/beast
+    install -m 755 ${srcdir}/BEASTv${pkgver}/bin/beauti ${pkgdir}/usr/share/beast/bin/beauti
+    install -m 755 ${srcdir}/BEASTv${pkgver}/bin/loganalyser ${pkgdir}/usr/share/beast/bin/loganalyser
+    install -m 755 ${srcdir}/BEASTv${pkgver}/bin/logcombiner ${pkgdir}/usr/share/beast/bin/logcombiner
+    install -m 755 ${srcdir}/BEASTv${pkgver}/bin/treeannotator ${pkgdir}/usr/share/beast/bin/treeannotator
+    install -m 755 ${srcdir}/BEASTv${pkgver}/bin/treestat ${pkgdir}/usr/share/beast/bin/treestat
     
-    install -m 755 ${srcdir}/beast/doc/README.txt ${pkgdir}/usr/share/beast/doc/README.txt
+    install -m 755 ${srcdir}/BEASTv${pkgver}/doc/README.txt ${pkgdir}/usr/share/beast/doc/README.txt
 
-    install -m 755 ${srcdir}/beast/lib/beast.jar ${pkgdir}/usr/share/beast/lib/beast.jar
-    install -m 755 ${srcdir}/beast/lib/beauti.jar ${pkgdir}/usr/share/beast/lib/beauti.jar
+    install -m 755 ${srcdir}/BEASTv${pkgver}/lib/beast.jar ${pkgdir}/usr/share/beast/lib/beast.jar
+    install -m 755 ${srcdir}/BEASTv${pkgver}/lib/beauti.jar ${pkgdir}/usr/share/beast/lib/beauti.jar
 
-    install -m 755 ${srcdir}/beast/images/beast.png ${pkgdir}/usr/share/beast/images/beast.png
-    install -m 755 ${srcdir}/beast/images/beauti.png ${pkgdir}/usr/share/beast/images/beauti.png
-    install -m 755 ${srcdir}/beast/images/utility.png ${pkgdir}/usr/share/beast/images/utility.png
+    install -m 755 ${srcdir}/BEASTv${pkgver}/images/beast.png ${pkgdir}/usr/share/beast/images/beast.png
+    install -m 755 ${srcdir}/BEASTv${pkgver}/images/beauti.png ${pkgdir}/usr/share/beast/images/beauti.png
+    install -m 755 ${srcdir}/beBEASTv${pkgver}/images/utility.png ${pkgdir}/usr/share/beast/images/utility.png
     
-    install -m 755 ${srcdir}/beast/README.txt ${pkgdir}/usr/share/beast/README.txt
-    install -m 755 "${srcdir}/beast/VERSION HISTORY.txt" "${pkgdir}/usr/share/beast/VERSION HISTORY.txt"
+    install -m 755 ${srcdir}/BEASTv${pkgver}/README.txt ${pkgdir}/usr/share/beast/README.txt
+    install -m 755 "${srcdir}/BEASTv${pkgver}/VERSION HISTORY.txt" "${pkgdir}/usr/share/beast/VERSION HISTORY.txt"
     
-    install -m 755 ${srcdir}/beast/native/AminoAcidLikelihoodCore.c ${pkgdir}/usr/share/beast/native/AminoAcidLikelihoodCore.c
-    install -m 755 ${srcdir}/beast/native/AminoAcidLikelihoodCore.h ${pkgdir}/usr/share/beast/native/AminoAcidLikelihoodCore.h
-    install -m 755 ${srcdir}/beast/native/compileNativeWin32.bat ${pkgdir}/usr/share/beast/native/compileNativeWin32.bat
-    install -m 755 ${srcdir}/beast/native/GeneralLikelihoodCore.c ${pkgdir}/usr/share/beast/native/GeneralLikelihoodCore.c
-    install -m 755 ${srcdir}/beast/native/GeneralLikelihoodCore.h ${pkgdir}/usr/share/beast/native/GeneralLikelihoodCore.h
-    install -m 755 ${srcdir}/beast/native/Makefile.amd64 ${pkgdir}/usr/share/beast/native/Makefile.amd64
-    install -m 755 ${srcdir}/beast/native/Makefile.ia64 ${pkgdir}/usr/share/beast/native/Makefile.ia64
-    install -m 755 ${srcdir}/beast/native/Makefile.icc ${pkgdir}/usr/share/beast/native/Makefile.icc
-    install -m 755 ${srcdir}/beast/native/Makefile.linux ${pkgdir}/usr/share/beast/native/Makefile.linux
-    install -m 755 ${srcdir}/beast/native/NativeMemoryLikelihoodCore.c ${pkgdir}/usr/share/beast/native/NativeMemoryLikelihoodCore.c
-    install -m 755 ${srcdir}/beast/native/NativeMemoryLikelihoodCore.h ${pkgdir}/usr/share/beast/native/NativeMemoryLikelihoodCore.h
-    install -m 755 ${srcdir}/beast/native/NativeSubstitutionModel.c ${pkgdir}/usr/share/beast/native/NativeSubstitutionModel.c
-    install -m 755 ${srcdir}/beast/native/NativeSubstitutionModel.h ${pkgdir}/usr/share/beast/native/NativeSubstitutionModel.h
-    install -m 755 ${srcdir}/beast/native/NucleotideLikelihoodCore.c ${pkgdir}/usr/share/beast/native/NucleotideLikelihoodCore.c
-    install -m 755 ${srcdir}/beast/native/NucleotideLikelihoodCore.h ${pkgdir}/usr/share/beast/native/NucleotideLikelihoodCore.h    
+    install -m 755 ${srcdir}/BEASTv${pkgver}/native/AminoAcidLikelihoodCore.c ${pkgdir}/usr/share/beast/native/AminoAcidLikelihoodCore.c
+    install -m 755 ${srcdir}/BEASTv${pkgver}/native/AminoAcidLikelihoodCore.h ${pkgdir}/usr/share/beast/native/AminoAcidLikelihoodCore.h
+    install -m 755 ${srcdir}/BEASTv${pkgver}/native/compileNativeWin32.bat ${pkgdir}/usr/share/beast/native/compileNativeWin32.bat
+    install -m 755 ${srcdir}/BEASTv${pkgver}/native/GeneralLikelihoodCore.c ${pkgdir}/usr/share/beast/native/GeneralLikelihoodCore.c
+    install -m 755 ${srcdir}/BEASTv${pkgver}/native/GeneralLikelihoodCore.h ${pkgdir}/usr/share/beast/native/GeneralLikelihoodCore.h
+    install -m 755 ${srcdir}/BEASTv${pkgver}/native/Makefile.amd64 ${pkgdir}/usr/share/beast/native/Makefile.amd64
+    install -m 755 ${srcdir}/BEASTv${pkgver}/native/Makefile.ia64 ${pkgdir}/usr/share/beast/native/Makefile.ia64
+    install -m 755 ${srcdir}/BEASTv${pkgver}/native/Makefile.icc ${pkgdir}/usr/share/beast/native/Makefile.icc
+    install -m 755 ${srcdir}/BEASTv${pkgver}/native/Makefile.linux ${pkgdir}/usr/share/beast/native/Makefile.linux
+    install -m 755 ${srcdir}/BEASTv${pkgver}/native/NativeMemoryLikelihoodCore.c ${pkgdir}/usr/share/beast/native/NativeMemoryLikelihoodCore.c
+    install -m 755 ${srcdir}/BEASTv${pkgver}/native/NativeMemoryLikelihoodCore.h ${pkgdir}/usr/share/beast/native/NativeMemoryLikelihoodCore.h
+    install -m 755 ${srcdir}/BEASTv${pkgver}/native/NativeSubstitutionModel.c ${pkgdir}/usr/share/beast/native/NativeSubstitutionModel.c
+    install -m 755 ${srcdir}/BEASTv${pkgver}/native/NativeSubstitutionModel.h ${pkgdir}/usr/share/beast/native/NativeSubstitutionModel.h
+    install -m 755 ${srcdir}/BEASTv${pkgver}/native/NucleotideLikelihoodCore.c ${pkgdir}/usr/share/beast/native/NucleotideLikelihoodCore.c
+    install -m 755 ${srcdir}/BEASTv${pkgver}/native/NucleotideLikelihoodCore.h ${pkgdir}/usr/share/beast/native/NucleotideLikelihoodCore.h    
     
     ln -s /usr/share/beast/bin/beauti ${pkgdir}/usr/bin/beauti
     ln -s /usr/share/beast/bin/beast ${pkgdir}/usr/bin/beast
