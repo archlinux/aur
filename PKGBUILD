@@ -2,7 +2,7 @@
 
 pkgname=macchina-git
 _pkgname=macchina
-pkgver=0.7.0.9427a9e
+pkgver=0.7.4.0bc4320
 pkgrel=1
 pkgdesc="Basic system information fetcher, written in Rust"
 
