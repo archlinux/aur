@@ -1,7 +1,7 @@
 pkgbase = sosi2osm-git
 	pkgdesc = SOSI to OSM conversion tool
 	pkgver = 2015.01.17.c8465d7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.github.com/Gnonthgol/sosi2osm
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = sosi2osm-git
 	depends = libfyba
 	depends = proj
 	depends = lua
-	source = sosi2osm-git::git://github.com/Gnonthgol/sosi2osm
+	source = sosi2osm-git::git+https://github.com/Gnonthgol/sosi2osm
 	md5sums = SKIP
 
 pkgname = sosi2osm-git
