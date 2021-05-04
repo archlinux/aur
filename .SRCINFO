@@ -1,0 +1,15 @@
+pkgbase = commit
+	pkgdesc = Git commit message editor.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/sonnyp/Commit
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	depends = git
+	depends = gjs
+	source = commit-2.0.0.tar.gz::https://github.com/sonnyp/Commit/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 25878bf684f90e67bafa10e27da36df84959376ede3636f81eb03a56c1328a8c
+
+pkgname = commit
+
