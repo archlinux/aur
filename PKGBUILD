@@ -1,4 +1,4 @@
-# Maintainer: somebody <ehern.lee@gmail.com>
+# Maintainer: E-Hern Lee <ehern.lee@gmail.com>
 
 pkgname=proton-git
 _pkgname=proton
