@@ -1,25 +1,25 @@
 pkgbase = r-rlang
 	pkgdesc = Functions for Base Types and Core R and 'Tidyverse' Features
-	pkgver = 0.4.10
+	pkgver = 0.4.11
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rlang
 	arch = x86_64
 	license = MIT
-	depends = r>=3.2.0
+	depends = r>=3.3.0
 	optdepends = r-cli
 	optdepends = r-covr
 	optdepends = r-crayon
 	optdepends = r-glue
 	optdepends = r-magrittr
+	optdepends = r-pak
 	optdepends = r-pillar
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-vctrs
 	optdepends = r-withr
-	optdepends = r-winch
-	noextract = r-rlang-0.4.10.tar.gz
-	source = r-rlang-0.4.10.tar.gz::https://cran.r-project.org/src/contrib/rlang_0.4.10.tar.gz
-	sha256sums = 07530270c4c199f2b7efc5d57a476d99babd9d0c3388a02bb7d57fe312da3576
+	noextract = r-rlang-0.4.11.tar.gz
+	source = r-rlang-0.4.11.tar.gz::https://cran.r-project.org/src/contrib/rlang_0.4.11.tar.gz
+	sha256sums = 740e926b20b00788a7ea64cb92ddfdc94cdf256b05b0c57059edf7292511d5dd
 
 pkgname = r-rlang
 
