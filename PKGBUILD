@@ -1,4 +1,4 @@
-# Maintainer: somebody <ehern.lee@gmail.com>
+# Maintainer: E-Hern Lee <ehern.lee@gmail.com>
 # Contributor: navigaid <navigaid@gmail.com>
 
 pkgname=apk-tools-static-bin
