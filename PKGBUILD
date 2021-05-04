@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=amxb_ubus-git
-pkgver=v1.0.0.r0.g22e58d7
+pkgver=v2.0.6.r0.g1782b06
 pkgrel=1
 pkgdesc="Ubus baapi back-end"
 arch=('any')
@@ -39,5 +39,5 @@ build() {
 
 package() {
 	cd "${pkgname}"
-	make DEST="${pkgdir}/" INSTALL_LIB_DIR="/lib" install
+	make DEST="${pkgdir}/" LIBDIR="/usr/lib" install
 }
