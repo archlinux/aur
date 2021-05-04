@@ -1,6 +1,6 @@
 # Maintainer: Michał Sałaban <michal@salaban.info>
 pkgname=cardano-node
-pkgver=1.26.1
+pkgver=1.26.2
 pkgrel=3
 pkgdesc='The core component that is used to participate in a Cardano decentralised blockchain.'
 license=('Apache')
@@ -13,7 +13,7 @@ _ghc_version="8.10.4"       # 8.10.3 fails to compile
 # This is probably configurable but I'm not experienced in Haskell. Suggestions are welcome.
 makedepends=('git' 'cabal-install-bin' 'ghc>=8.10.4')
 depends=('libsodium')
-_config_build="5367762"
+_config_build="6198010"
 backup=("etc/conf.d/cardano-node"
         "var/lib/cardano-node/config/mainnet-config.json"
         "var/lib/cardano-node/config/mainnet-topology.json"
@@ -34,7 +34,7 @@ source=("https://github.com/input-output-hk/${pkgname}/archive/${pkgver}.zip"
         "cardano-node.confd"
         "cardano-node-testnet.service"
         "cardano-node-testnet.confd")
-sha256sums=("e725f425cb7b7e581208a9b7b6989049fbaba8634475889910d92a09a14cac13"
+sha256sums=("6f2d116f13f3271aec71fcbb134e55d68972d05b157cf16777e8b677416e60b5"
             "9999052dc926506d350cfca2bcfd291e50b48cc7f5215a154c344ad7ad7d70eb"
             "4f28b3b437b2c4f6ee26cc70964b3a5f1a274b0b3909c31535091c00316c13aa"
             "59cd3932c6dd792bc5020ca3336064a8faabde4e4a8dc7d143ff4df6eec36961"
