@@ -2,20 +2,30 @@
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=exifcleaner-bin
-pkgver=3.5.1
+pkgver=3.6.0
 pkgrel=1
-pkgdesc="Cross-platform desktop app to clean image metadata"
+pkgdesc="Desktop app to clean metadata from images, videos, PDFs, and other files."
 arch=('x86_64')
 url="https://exifcleaner.com"
 license=('MIT')
-depends=('nss'
-         'gtk3'
-         'perl')
+
+depends=(
+  'nss'
+  'gtk3'
+  'perl'
+)
 provides=('exifcleaner')
-source=("${pkgname}-${pkgver}.deb::https://github.com/szTheory/exifcleaner/releases/download/v${pkgver}/exifcleaner_${pkgver}_amd64.deb"
-        'LICENSE::https://github.com/szTheory/exifcleaner/raw/master/LICENSE')
-sha256sums=('043118e435f68c8ee46d6c84d52830012e1ef4dd0dfc6d41c82b612e5b613589'
-            'a74847d1e523991859009094dca82f704240d291dea5728a59de9e419cf104ac')
+
+source=(
+  "${pkgname}-${pkgver}.deb::https://github.com/szTheory/exifcleaner/releases/download/v${pkgver}/exifcleaner_${pkgver}_amd64.deb"
+  'LICENSE::https://github.com/szTheory/exifcleaner/raw/master/LICENSE'
+)
+sha512sums=(
+  # For the `.deb` file
+  '7416bbb800b9decb7dad931e75ea7636ecd0a98f6677c17b4b854363c547b46876df3155ea4ed37bfd91d09cb8ed4384caab75293d0d31f438def6093b43efcf'
+  # For the `LICENSE` file
+  '40505bfe313ac2630ff38bfb2e60ef71c73e23a6733d895e7af298074588d4a3831e11d38242af433cdffd0ac1ac66faeb5035894e4c87761f9fffc09fb501e2'
+)
 
 package() {
   tar xvf "${srcdir}/data.tar.xz" -C "${pkgdir}/"

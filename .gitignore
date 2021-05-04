@@ -1,0 +1,7 @@
+# Exclude makepkg generated data
+pkg/
+src/
+
+# Exclude downloaded/generated files
+exifcleaner-bin-*
+LICENSE
