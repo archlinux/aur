@@ -1,6 +1,6 @@
 # Maintainer: Bryan Ndjeutcha <ndjeutcha@gmail.com>
 pkgname=kile-wl
-pkgver=r104.b10ba7d
+pkgver=r152.4e2f3be
 pkgrel=1
 pkgdesc="A tiling layout generator for river"
 arch=('x86_64')
