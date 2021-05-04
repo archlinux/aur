@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxd-git
-pkgver=v1.2.3.r0.g19d60ce
+pkgver=v2.0.6.r0.g75e9d83
 pkgrel=1
 pkgdesc="Generic C-implementation for managing a data model"
 arch=('any')
@@ -37,5 +37,5 @@ build() {
 
 package() {
 	cd "${pkgname}"
-	make DEST="${pkgdir}/" INSTALL_LIB_DIR="/lib" install
+	make DEST="${pkgdir}/" LIBDIR="/usr/lib" install
 }

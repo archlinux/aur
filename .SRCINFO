@@ -1,6 +1,6 @@
 pkgbase = lib_amxd-git
 	pkgdesc = Generic C-implementation for managing a data model
-	pkgver = v1.2.3.r0.g19d60ce
+	pkgver = v2.0.6.r0.g75e9d83
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/libraries/libamxd.git
 	arch = any
