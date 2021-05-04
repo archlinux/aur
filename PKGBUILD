@@ -1,7 +1,7 @@
 # Maintainer: Michael Berlinger <michaelmberlinger@gmail.com>
 
 pkgname=zotero-dev-bin
-pkgver=5.0.97_beta.20+83a12bca8
+pkgver=5.0.97_beta
 pkgrel=1
 pkgdesc="Zotero Standalone. Is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources."
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ provides=("zotero=${pkgver}")
 conflicts=('zotero')
 
 sha256sums=('a26167a3055ed7af7cb8cf4fad0f906e00b1a3eb2c78ff9151db4542f5208e2a'
-            '73d782414db095d7100ab9d5764abd58a306df603bed7b85ffeb7b9187e9c54a')
+            'SKIP')
 
 source=(
 	'zotero.desktop'
