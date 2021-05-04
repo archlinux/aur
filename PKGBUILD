@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxb-git
-pkgver=v2.0.2.r0.gadd1cf8
+pkgver=v3.0.6.r0.gd7db04d
 pkgrel=1
 pkgdesc="Generic C-implementation for Ambiorix Backend library"
 arch=('any')
@@ -39,5 +39,5 @@ build() {
 
 package() {
 	cd "${pkgname}"
-	make DEST="${pkgdir}/" INSTALL_LIB_DIR="/lib" install
+	make DEST="${pkgdir}/" LIBDIR="/usr/lib" install
 }
