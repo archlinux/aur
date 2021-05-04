@@ -1,12 +1,12 @@
 pkgname=duckstation-git
-pkgver=preview.r3723.65daf1d6
+pkgver=preview.r4442.d3fea7b5
 pkgdesc='A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability'
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/stenzek/duckstation"
 license=('GPL3')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'qt5-tools')
-depends=('sdl2' 'qt5-base')
+depends=('qt5-base' 'libxrandr' 'sdl2' 'curl')
 optdepends=(
 )
 provides=('duckstation')
@@ -35,9 +35,9 @@ package() {
   install -m 755 -t "${pkgdir}/usr/bin/" bin/duckstation-nogui bin/duckstation-qt
 
   install -m 755 -d "${pkgdir}/usr/share/applications/"
-  install -m 644 appimage/duckstation-qt.desktop "${pkgdir}/usr/share/applications/duckstation.desktop"
+  install -m 644 dist/duckstation-qt.desktop "${pkgdir}/usr/share/applications/duckstation.desktop"
   sed -e 's/Terminal=true/Terminal=false/' -e 's/Name=DuckStation Qt/Name=DuckStation/' -e 's/Icon=duckstation-qt/Icon=duckstation/' -i "${pkgdir}/usr/share/applications/duckstation.desktop"
 
   install -m 755 -d "${pkgdir}/usr/share/pixmaps/"
-  install -m 644 appimage/icon-64px.png "${pkgdir}/usr/share/pixmaps/duckstation.png"
+  install -m 644 dist/icon-64px.png "${pkgdir}/usr/share/pixmaps/duckstation.png"
 }
