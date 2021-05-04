@@ -1,11 +1,12 @@
 pkgbase = python-arpreq
 	pkgdesc = Python C extension to query the Kernel ARP cache for the MAC address of a given IP address.
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/arpreq/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-pip
 	depends = python
 	provides = python-arpreq
 	options = !emptydirs
