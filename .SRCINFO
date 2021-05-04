@@ -1,0 +1,18 @@
+pkgbase = vim-fzf-checkout-git
+	pkgdesc = Vim plugin for managing branches and tags with fzf
+	pkgver = r108.aaab59e
+	pkgrel = 1
+	url = https://github.com/stsewd/fzf-checkout.vim
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	depends = fzf
+	provides = vim-fzf-checkout
+	conflicts = vim-fzf-checkout
+	source = vim-fzf-checkout-git::git+https://github.com/stsewd/fzf-checkout.vim
+	sha256sums = SKIP
+
+pkgname = vim-fzf-checkout-git
+
