@@ -1,6 +1,6 @@
 pkgbase = kile-wl
 	pkgdesc = A tiling layout generator for river
-	pkgver = r104.b10ba7d
+	pkgver = r152.4e2f3be
 	pkgrel = 1
 	url = https://gitlab.com/snakedye/kile
 	arch = x86_64
