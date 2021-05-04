@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=V8
-_cranver=3.4.1
+_cranver=3.4.2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=(MIT)
 depends=(r 'r-rcpp>=0.12.12' 'r-jsonlite>=1.0' 'r-curl>=1.0' 'v8>=6')
 optdepends=(r-testthat r-knitr r-rmarkdown)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('6a00646d4c62e32e2aec70ef1d27710a757d5cfb6b89a626314acf83898e31b0')
+sha256sums=('210643473ca8bf423fae34ce72ceb37a3e44c3315ec4abae59a77f077542d2ed')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
