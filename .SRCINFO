@@ -1,6 +1,6 @@
 pkgbase = fluidd-git
 	pkgdesc = Klipper web frontend
-	pkgver = r488.ca5ff43
+	pkgver = r788.b955bfd
 	pkgrel = 1
 	url = https://github.com/cadriel/fluidd
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = fluidd-git
 	optdepends = ustreamer: webcam streaming support
 	provides = fluidd
 	conflicts = fluidd
-	source = git+https://github.com/cadriel/fluidd.git#branch=master
+	source = git+https://github.com/cadriel/fluidd.git#branch=develop
 	source = fluidd-klipper.cfg
 	source = fluidd-nginx.conf
 	sha256sums = SKIP

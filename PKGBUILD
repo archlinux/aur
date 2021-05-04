@@ -1,7 +1,7 @@
 # Maintainer: Wilhelm Schuster <aur [aT] rot13 dot io>
 pkgname=fluidd-git
 _pkgname="${pkgname%-git}"
-pkgver=r488.ca5ff43
+pkgver=r788.b955bfd
 pkgrel=1
 pkgdesc="Klipper web frontend"
 arch=(any)
@@ -13,7 +13,7 @@ optdepends=('nginx: serve via HTTP'
             'ustreamer: webcam streaming support')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=('git+https://github.com/cadriel/fluidd.git#branch=master' 'fluidd-klipper.cfg' 'fluidd-nginx.conf')
+source=('git+https://github.com/cadriel/fluidd.git#branch=develop' 'fluidd-klipper.cfg' 'fluidd-nginx.conf')
 sha256sums=('SKIP'
             '8cc7f8e97459cc9e529363f63151a205d4a3702a1d20ce864d9f7d7b51a4e1cf'
             'e7b5ad3cf3024961e072add95e7367076874330dde8b1594e3410354005fbc7b')
