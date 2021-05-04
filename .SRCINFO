@@ -1,0 +1,15 @@
+pkgbase = networker
+	pkgdesc = A TCP/UDP debugging tool.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bbs.deepin.org/zh/post/216113
+	arch = x86_64
+	license = unknow
+	provides = networker
+	conflicts = networker
+	options = !strip
+	source = networker-1.0.0-1-x86_64.pkg.tar.zst
+	sha256sums = 10d762ad80dc25ee1303f77d4d7c63628c53fe266c32ac243b403d3f1fab2d83
+
+pkgname = networker
+
