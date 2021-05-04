@@ -2,7 +2,7 @@
 
 _pyname=ovsdbapp
 pkgname=python-$_pyname
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="A library for creating OVSDB applications"
 arch=(any)
@@ -34,9 +34,9 @@ checkdepends=(
 	python-testtools
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('770f2c33fb5a7c1e58b26df4d241f284')
-sha256sums=('7d17274831a785b611f407bddc0422f7f50f54fe1234a4fcdd8e59f9ab134cf6')
-sha512sums=('4d0975cd67e83b6e35b55ef6a932654f3244b99dcc7de2d691a721c551116a636fb27ee60d91bc38fe33678f2a315b2dd7d438d7917df41e42a4f99aa82902b5')
+md5sums=('92a599255fb12e78ebea0f22b3781207')
+sha256sums=('3672279288d7ced8251874154d29a3d1ddfbfe7ce950df78f702b939f044ceb5')
+sha512sums=('c3108b3dd168b26603f9af12ad518bee8807a4090f3204a81431863d84179980eeb3f887bd1dd1a30b2a7f973d2552740cb756065d39b714a0784bbe04382678')
 
 export PBR_VERSION=$pkgver
 
