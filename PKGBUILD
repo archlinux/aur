@@ -6,12 +6,12 @@
 
 pkgname=openshot
 pkgver=2.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="An award-winning free and open-source video editor"
 arch=(any)
 url="https://www.openshot.org/"
 license=(GPL3)
-depends=(ffmpeg mlt python-pyqt5 python-requests python-setuptools libopenshot
+depends=(ffmpeg python-pyqt5 python-requests python-setuptools libopenshot
          libopenshot-audio python-pyzmq qt5-base qt5-svg qt5-webkit)
 optdepends=('faac: for exporting audio using AAC')
 source=(https://github.com/OpenShot/openshot-qt/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
