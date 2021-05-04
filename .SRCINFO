@@ -1,0 +1,15 @@
+pkgbase = foot-terminfo-git
+	pkgdesc = Terminfo files for the foot terminal emulator
+	pkgver = 1.7.2
+	pkgrel = 4
+	url = https://codeberg.org/dnkl/foot
+	arch = any
+	license = mit
+	makedepends = ncurses
+	provides = foot-terminfo
+	conflicts = foot-terminfo
+	source = git+https://codeberg.org/dnkl/foot.git
+	sha256sums = SKIP
+
+pkgname = foot-terminfo-git
+
