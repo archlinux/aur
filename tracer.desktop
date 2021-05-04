@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Tracer
+MimeType=
+Exec=tracer
+Type=Application
+Terminal=flase
+Icon=/usr/share/Tracer/image/Tracer.png
+Comment=Tracer
+X-KDE-StartupNotify=false
+Categories=System;
+X-GNOME-UsesNotifications=true

@@ -1,0 +1,17 @@
+pkgbase = tracer-bin
+	pkgdesc = Posterior summarisation in Bayesian phylogenetics
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = https://github.com/beast-dev/tracer
+	arch = x86_64
+	license = unknown
+	depends = jre-openjdk-headless
+	depends = jre-openjdk
+	depends = jdk-openjdk
+	depends = openjdk-doc
+	depends = openjdk-src
+	source = https://github.com/beast-dev/tracer/releases/download/v1.7.1/Tracer_v1.7.1.tgz
+	sha256sums = SKIP
+
+pkgname = tracer-bin
+
