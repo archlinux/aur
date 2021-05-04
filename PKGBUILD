@@ -29,8 +29,8 @@ _GUID="EA4BB293-2D7F-4456-A681-1F22F42CD0BC"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-git"
 
-pkgver=28272.edk2.stable201903.2535.gd150439b72
-pkgrel=3
+pkgver=28925.edk2.stable201903.3188.gf297b7f200
+pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - GIT Version"
 url="https://github.com/tianocore/edk2"
 arch=('x86_64' 'i686')
