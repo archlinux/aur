@@ -7,7 +7,7 @@ pkgname=foo2zjs-nightly
 pkgver=20200917
 pkgrel=1
 pkgdesc="foo2zjs Printer Drivers (automatically updated). Includes also foo2hp, foo2hbpl, foo2oak, foo2xqx, foo2qpdl, foo2slx, foo2hiperc and foo2lava drivers."
-url="http://foo2zjs.rkkda.com/"
+url="http://foo2zjs.linkevich.net/"
 license=('GPL' 'custom')
 depends=('psutils' 'cups')
 conflicts=('foo2zjs')
@@ -32,35 +32,35 @@ _patches=(
 )
 
 _firmware=(
-        http://foo2hiperc.rkkda.com/icm/okic301.tar.gz
-        http://foo2hiperc.rkkda.com/icm/okic310.tar.gz
-        http://foo2hiperc.rkkda.com/icm/okic3200.tar.gz
-        http://foo2hiperc.rkkda.com/icm/okic3400.tar.gz
-        http://foo2hiperc.rkkda.com/icm/okic511.tar.gz
-        http://foo2hiperc.rkkda.com/icm/okic5600.tar.gz
-        http://foo2hiperc.rkkda.com/icm/okic810.tar.gz
-        http://foo2hp.rkkda.com/icm/hp1215.tar.gz
-        http://foo2hp.rkkda.com/icm/hpclj2500.tar.gz
-        http://foo2hp.rkkda.com/icm/hpclj2600n.tar.gz
-        http://foo2lava.rkkda.com/icm/km-1600.tar.gz
-        http://foo2lava.rkkda.com/icm/km2530.tar.gz
-        http://foo2qpdl.rkkda.com/icm/samclp300.tar.gz
-        http://foo2qpdl.rkkda.com/icm/samclp315.tar.gz
-        http://foo2slx.rkkda.com/icm/lexc500.tar.gz
-        http://foo2zjs.rkkda.com/firmware/sihp1000.tar.gz
-        http://foo2zjs.rkkda.com/firmware/sihp1005.tar.gz
-        http://foo2zjs.rkkda.com/firmware/sihp1018.tar.gz
-        http://foo2zjs.rkkda.com/firmware/sihp1020.tar.gz
-        http://foo2zjs.rkkda.com/firmware/sihpP1005.tar.gz
-        http://foo2zjs.rkkda.com/firmware/sihpP1006.tar.gz
-        http://foo2zjs.rkkda.com/firmware/sihpP1505.tar.gz
-        http://foo2zjs.rkkda.com/icm/dl2300.tar.gz
-        http://foo2zjs.rkkda.com/icm/hp-cp1025.tar.gz
-        http://foo2zjs.rkkda.com/icm/km2430.tar.gz
+        http://foo2zjs.linkevich.net/foo2hiperc/icm/okic301.tar.gz
+        http://foo2zjs.linkevich.net/foo2hiperc/icm/okic310.tar.gz
+        http://foo2zjs.linkevich.net/foo2hiperc/icm/okic3200.tar.gz
+        http://foo2zjs.linkevich.net/foo2hiperc/icm/okic3400.tar.gz
+        http://foo2zjs.linkevich.net/foo2hiperc/icm/okic511.tar.gz
+        http://foo2zjs.linkevich.net/foo2hiperc/icm/okic5600.tar.gz
+        http://foo2zjs.linkevich.net/foo2hiperc/icm/okic810.tar.gz
+        http://foo2zjs.linkevich.net/foo2hp/icm/hp1215.tar.gz
+        http://foo2zjs.linkevich.net/foo2hp/icm/hpclj2500.tar.gz
+        http://foo2zjs.linkevich.net/foo2hp/icm/hpclj2600n.tar.gz
+        http://foo2zjs.linkevich.net/foo2lava/icm/km-1600.tar.gz
+        http://foo2zjs.linkevich.net/foo2lava/icm/km2530.tar.gz
+        http://foo2zjs.linkevich.net/foo2qpdl/icm/samclp300.tar.gz
+        http://foo2zjs.linkevich.net/foo2qpdl/icm/samclp315.tar.gz
+        http://foo2zjs.linkevich.net/foo2slx/icm/lexc500.tar.gz
+        http://foo2zjs.linkevich.net/foo2zjs/firmware/sihp1000.tar.gz
+        http://foo2zjs.linkevich.net/foo2zjs/firmware/sihp1005.tar.gz
+        http://foo2zjs.linkevich.net/foo2zjs/firmware/sihp1018.tar.gz
+        http://foo2zjs.linkevich.net/foo2zjs/firmware/sihp1020.tar.gz
+        http://foo2zjs.linkevich.net/foo2zjs/firmware/sihpP1005.tar.gz
+        http://foo2zjs.linkevich.net/foo2zjs/firmware/sihpP1006.tar.gz
+        http://foo2zjs.linkevich.net/foo2zjs/firmware/sihpP1505.tar.gz
+        http://foo2zjs.linkevich.net/foo2zjs/icm/dl2300.tar.gz
+        http://foo2zjs.linkevich.net/foo2zjs/icm/hp-cp1025.tar.gz
+        http://foo2zjs.linkevich.net/foo2zjs/icm/km2430.tar.gz
 )
 
 pkgver() {
-	local date=$(curl -s 'http://foo2zjs.rkkda.com' | sed -nre 's|.*Tarball last modified: <i>(.+)</i>.*|\1|p')
+	local date=$(curl -s https://foo2zjs.linkevich.net | grep 'Current\ version' | awk '{print $3}')
 	if ! [[ "$date" ]]; then
 		error "Could not extract package last modification date '$date', please report this to the maintainer"
 		return 1
@@ -72,7 +72,7 @@ pkgver() {
 # `source` is evaluated before `pkgver()`, so a lazy downloader will not re-download the existing source file even if version changes.
 # Hence, manually include `pkgver()` in the source file name so that it will be re-downloaded if version changes.
 source=(
-	"foo2zjs-$(pkgver).tar.gz::http://foo2zjs.rkkda.com/foo2zjs.tar.gz"
+	"foo2zjs-$(pkgver).tar.gz::http://foo2zjs.linkevich.net/foo2zjs/foo2zjs.tar.gz"
 	"${_patches[@]}"
 	"${_firmware[@]}"
 	'listweb.patch'
