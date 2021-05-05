@@ -3,9 +3,9 @@ pkgdesc="Header files and scripts for Clear Linux kernel and modules"
 url="https://github.com/clearlinux-pkgs/linux"
 pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
-_major=5.10
-_minor=33
-_clr=1036
+_major=5.12
+_minor=1
+_clr=1038
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -16,12 +16,12 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=34560
+_clear_version=34580
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=942b50dc6f3593db3075ab75b75ee8eaa515971a1d31d0e7818a11aa2cee71e5
-_config_hash_clear_version=34560
+_config_hash=1ca868b20e2ee0f949fd63907efbe4423aadaa13da88c13b533096dbb07900f7
+_config_hash_clear_version=34580
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -53,6 +53,6 @@ package() {
     mkdir -p $pkgdir/usr/lib
     cp -Pr modules $pkgdir/usr/lib
 }
-b2sums=('ea2c0e8835b5df533242be48f6bc6df13774b50f21121bf19c42d9817894afccd8f2b126249a20dbcbe9b07230185e008be4671ade7652cc673947e5660ed5b4'
-        'f6ca87035fd2d523508e623b1731be86883ee9b6b0edc68d0cde3aec8a204fa2f1bd09f15c54cad1e9036f7ad20227356d903fff347db4cbdc6483659c986e12'
-        '4ebb3fc5ee245b8601445f8b1a63d8af5894bf429fde6fb3964f51e14733273ba73f3d3421cd62e88f0602ce46c9be8e3b2cc570ccd27b4c9c3707a9d3a1367a')
+b2sums=('a6379278fa6d39512175fdc2818dc1f9eda86731cbacdb0b98561f6aa2a0b6fafa305911304da51ffa9bdae1bc086a1d10a4ee991e3b2b0eddba1fb7d9f261e5'
+        '49d8069e35be991a873270d49c1c6587ce9f67c35ce73865fc0f8ca7740c1ef3349ee91dafc8fbeeaa16b1b21bd3e40bd814f78fd6ac0d17d6d1a9ace8f947a1'
+        'bcddbef0273bc8e00bc6817b2f1f5f59074783a635e14604cbedad20d36461cb9ec3220e604bfb75d17fa3def8d7f12729c8caa39451217af20e674bcca70845')
