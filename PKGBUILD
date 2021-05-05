@@ -1,9 +1,10 @@
-# Maintainer: Mckol <mckol363@gmail.com>
+# Maintainer: Lukas1818 aur at lukas1818 dot de
+# Contributor: Mckol <mckol363@gmail.com>
 
 export GIT_LFS_SKIP_SMUDGE=1
-pkgname=veloren-git
-pkgver=0.8.0.r476.a5c76a6d3
-pkgrel=2
+pkgname=veloren-nightly
+pkgver=0.9.0.r860.fb940ad27
+pkgrel=1
 pkgdesc="An open-world, open-source multiplayer voxel RPG"
 arch=('x86_64' 'i686')
 url='https://veloren.net/'
@@ -12,7 +13,7 @@ options=('!strip') # This makes debugging issues easier sometimes, comment out i
 depends=('systemd-libs' 'alsa-lib' 'libxcb' 'pulseaudio-alsa')
 makedepends=('systemd' 'git' 'git-lfs' 'rustup' 'cairo' 'pango' 'atk' 'gdk-pixbuf2' 'python' 'openssl')
 provides=("$pkgname" 'veloren')
-conflicts=("$pkgname" 'veloren')
+conflicts=(veloren-git 'veloren')
 _repo='https://gitlab.com/veloren/veloren.git'
 source=("$pkgname"::"git+$_repo")
 noextract=()
@@ -24,9 +25,12 @@ pkgver() {
 }
 
 prepare() {
-    unset GIT_LFS_SKIP_SMUDGE
     cd "$srcdir/$pkgname"
     git remote set-url origin "$_repo"
+    git checkout master
+    git pull
+    git checkout `git rev-list -n 1 --before="06:00" master`
+    unset GIT_LFS_SKIP_SMUDGE
     git lfs install
     git lfs fetch
     git lfs checkout
