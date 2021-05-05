@@ -17,7 +17,7 @@ arch=('x86_64')
 url="https://github.com/gaurav/taxondna"
 license=('GPL2')
 source=("https://github.com/gaurav/taxondna/releases/download/v${pkgver}/SequenceMatrix.jar")
-sha256sums=('bc62c6ae0ac0e9ea24e670b4b60445xa53ck3134sexy80b654e618eb2be6224c')
+sha256sums=('0e018fa3a737044cde9877946aa8616baeb879429bd05675b743f28927a555c0')
 
 package() {
     mkdir "${pkgdir}/usr"
