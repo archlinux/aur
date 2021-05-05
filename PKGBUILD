@@ -1,48 +1,45 @@
-pkgname=duckstation-git
-pkgver=preview.r4442.d3fea7b5
-pkgdesc='A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability'
-pkgrel=2
-arch=('x86_64' 'aarch64')
-url="https://github.com/stenzek/duckstation"
-license=('GPL3')
-makedepends=('git' 'cmake' 'extra-cmake-modules' 'qt5-tools')
-depends=('qt5-base' 'libxrandr' 'sdl2' 'curl')
-optdepends=(
-)
-provides=('duckstation')
-conflicts=()
+# Maintainer: katt <magunasu.b97@gmail.com>
 
-_branch=master
-source=("git+https://github.com/stenzek/duckstation.git#branch=${_branch}")
+pkgname=duckstation-git
+pkgver=r4442.d3fea7b5
+pkgdesc='A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (git version)'
+pkgrel=1
+arch=(x86_64 aarch64)
+url=https://github.com/stenzek/duckstation
+license=(GPL3)
+makedepends=(git cmake extra-cmake-modules qt5-tools libdrm gtk3 ninja)
+depends=(sdl2 qt5-base)
+optdepends=()
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=(git+"$url".git)
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/duckstation"
-  printf "%s.r%s.%s" "$(git describe --abbrev=0 --tags)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${srcdir}/duckstation"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/duckstation"
-
-  cmake -DCMAKE_BUILD_TYPE=Release -DUSE_WAYLAND=1 -DUSE_DRMKMS=1
-  make
+    cmake -B build -S duckstation \
+        -DUSE_DRMKMS=ON \
+        -DUSE_WAYLAND=ON \
+        -G Ninja
+    ninja -C build
 }
 
 package() {
-  cd "${srcdir}/duckstation"
+    # Main files
+    install -m755 -d "${pkgdir}/opt"
+    cp -rv build/bin "${pkgdir}/opt/${pkgname%-git}"
 
-  install -m 755 -d "${pkgdir}/usr/bin/"
-  install -m 755 -t "${pkgdir}/usr/bin/" bin/duckstation-nogui
+    # Symlink to /usr/bin
+    install -m755 -d "${pkgdir}/usr/bin"
+    ln -svt "${pkgdir}/usr/bin" /opt/"${pkgname%-git}"/"${pkgname%-git}"-{qt,nogui}
 
-  install -m 755 -d "${pkgdir}/usr/lib/duckstation/translations/"
-  install -m 755 -t "${pkgdir}/usr/lib/duckstation/translations/" bin/translations/*.qm
-  install -m 755 -t "${pkgdir}/usr/lib/duckstation/" bin/duckstation-qt
-  ln -s /usr/lib/duckstation/duckstation-qt "${pkgdir}/usr/bin/duckstation-qt"
-
-  install -m 755 -d "${pkgdir}/usr/share/applications/"
-  install -m 644 dist/duckstation-qt.desktop "${pkgdir}/usr/share/applications/duckstation.desktop"
-  sed -e 's/Terminal=true/Terminal=false/' -e 's/Name=DuckStation Qt/Name=DuckStation/' -e 's/Icon=duckstation-qt/Icon=duckstation/' -i "${pkgdir}/usr/share/applications/duckstation.desktop"
-
-  install -m 755 -d "${pkgdir}/usr/share/pixmaps/"
-  install -m 644 dist/icon-64px.png "${pkgdir}/usr/share/pixmaps/duckstation.png"
+    # Desktop file
+    install -Dm644 -t "${pkgdir}/usr/share/applications/" "${pkgname%-git}"/dist/duckstation-{qt,nogui}.desktop
+    sed -e 's/Icon=duckstation-qt/Icon=duckstation/' -i "${pkgdir}/usr/share/applications/duckstation-qt.desktop"
+    sed -e 's/Icon=duckstation-qt/Icon=duckstation/' -i "${pkgdir}/usr/share/applications/duckstation-nogui.desktop"
+    install -Dm644 "${pkgname%-git}"/dist/icon-64px.png "${pkgdir}/usr/share/pixmaps/duckstation.png"
 }

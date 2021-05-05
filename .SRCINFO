@@ -1,7 +1,7 @@
 pkgbase = duckstation-git
-	pkgdesc = A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability
-	pkgver = preview.r4442.d3fea7b5
-	pkgrel = 2
+	pkgdesc = A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (git version)
+	pkgver = r4442.d3fea7b5
+	pkgrel = 1
 	url = https://github.com/stenzek/duckstation
 	arch = x86_64
 	arch = aarch64
@@ -10,12 +10,14 @@ pkgbase = duckstation-git
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = qt5-tools
-	depends = qt5-base
-	depends = libxrandr
+	makedepends = libdrm
+	makedepends = gtk3
+	makedepends = ninja
 	depends = sdl2
-	depends = curl
+	depends = qt5-base
 	provides = duckstation
-	source = git+https://github.com/stenzek/duckstation.git#branch=master
+	conflicts = duckstation
+	source = git+https://github.com/stenzek/duckstation.git
 	sha256sums = SKIP
 
 pkgname = duckstation-git
