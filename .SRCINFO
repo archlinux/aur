@@ -1,0 +1,25 @@
+pkgbase = clipd-bin
+	pkgdesc = Clipd is a simple secure and cross-platform cloud clipboard application
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://clipber.com
+	arch = x86_64
+	license = custom: clipber.com
+	depends = libnghttp2>=1.40.0
+	depends = libbsd>=0.10.0
+	depends = libev>=4.31
+	depends = libevdev>=1.9.0
+	depends = icu>=66.1
+	depends = libpng>=1.6.37
+	depends = openssl>=1.1.1.f
+	depends = libjpeg-turbo
+	depends = libtiff>=4.1.0
+	depends = libzip>=1.5.1
+	depends = imagemagick>=6.9.10
+	depends = mosquitto>=1.6.9
+	depends = z3>=4.8.7
+	source = clipd_1.0.1_amd64.deb::https://apt.clipber.com/debian/pool/main/c/clipd/clipd_1.0.1_amd64.deb
+	sha256sums = 4d7db9bbc92c5f1c315e88910417322192170657305d5d4085d24af8b0982187
+
+pkgname = clipd-bin
+
