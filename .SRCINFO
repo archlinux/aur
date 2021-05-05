@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-system-monitor-git
 	pkgdesc = System monitor extension for Gnome-Shell (display mem swap cpu usage)
-	pkgver = 1055.942603d
+	pkgver = 1083.bc38ccf
 	pkgrel = 1
 	url = http://github.com/paradoxxxzero/gnome-shell-system-monitor-applet
 	install = gschemas.install
@@ -15,9 +15,7 @@ pkgbase = gnome-shell-extension-system-monitor-git
 	conflicts = gnome-shell-system-monitor-applet-git
 	replaces = gnome-shell-system-monitor-applet-git
 	source = git+https://github.com/paradoxxxzero/gnome-shell-system-monitor-applet.git
-	source = gnome-40.patch
 	sha256sums = SKIP
-	sha256sums = c0d4d5456eb865949f8b21834b5792331a8979241c4c6a9d647014902e06ff5c
 
 pkgname = gnome-shell-extension-system-monitor-git
 
