@@ -1,66 +1,71 @@
-# Maintainer: Darren Ng <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
+# Maintainer: Darren Ng <$(base64 --decode <<<VW4xR2ZuQGdtYWlsLmNvbQo=)>
 
 pkgname=buildroot-meta
-pkgver=2020.11.1
+pkgver=2021.02.1
 pkgrel=1
 pkgdesc="dependency requirements for buildroot"
 arch=('any')
 url="https://buildroot.org/downloads/manual/manual.html#requirement"
 license=('GPL')
+
 depends=(
-	'which'
-	'sed'
-	'make>=3.81'
-	'binutils'
-	'gcc>=4.8'
-	'bash'
-	'patch'
-	'gzip'
-	'bzip2'
-	'perl>=5.8.7'
-	'tar'
-	'cpio'
-	'unzip'
-	'rsync'
-	'file'
-	'bc'
-	'wget'
+  'which'
+  'sed'
+  'make>=3.81'
+  'binutils'
+  'gcc>=4.8'
+  'bash'
+  'patch'
+  'gzip'
+  'bzip2'
+  'perl>=5.8.7'
+  'tar'
+  'cpio'
+  'unzip'
+  'rsync'
+  'file'
+  'bc'
+  'wget'
 )
+
 optdepends=(
 
-	# Recommended dependencies
-	'python'
+  # Recommended dependencies
+  'python2>=2.7'
+  'python'
 
-	# Configuration interface dependencies
-	# output/build/buildroot-config/
-	'ncurses: menuconfig & nconfig'
-	'qt5-base: xconfig'
-	'gtk2: gconfig'
-	'glib2: gconfig'
-	'libglade: gconfig'
+  # Configuration interface dependencies
+  # output/build/buildroot-config/
+  'ncurses: menuconfig & nconfig'
+  'qt5-base: xconfig'
+  'glib2: gconfig'
+  'gtk2: gconfig'
+  # 'glade: gconfig' # /usr/lib/libgladeui-2.so (NOT required)
+  'libglade: gconfig' # /usr/lib/libglade-2.0.so (optionally required)
 
-	# Source fetching tools
-	'breezy: bazaar'
-	'cvs'
-	'git'
-	'mercurial'
-	'rsync'
-	'openssh: scp'
-	'subversion'
+  # Source fetching tools
+  'breezy: bazaar'
+  'cvs'
+  'git'
+  'mercurial'
+  'rsync'
+  'openssh: scp'
+  'subversion'
 
-	# Java-related packages
+  # Java-related packages
 
-	# Documentation generation tools
-	'asciidoc'
-	'w3m'
-	'python-argparse'
-	'dblatex: pdf manual'
+  # Documentation generation tools
+  'asciidoc>=8.6.3'
+  'w3m'
+  'python-argparse'
+  'dblatex: pdf manual'
 
-	# Graph generation tools
-	'graphviz: graph-depends & <pkg>-graph-depends'
-	'python-matplotlib: graph-build'
+  # Graph generation tools
+  'graphviz: graph-depends & <pkg>-graph-depends'
+  'python-matplotlib: graph-build'
 
 )
+
 # provides=("${pkgname%-meta}")
 # conflicts=("${pkgname%-meta}")
 # source=('SKIP')

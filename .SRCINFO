@@ -1,6 +1,6 @@
 pkgbase = buildroot-meta
 	pkgdesc = dependency requirements for buildroot
-	pkgver = 2020.11.1
+	pkgver = 2021.02.1
 	pkgrel = 1
 	url = https://buildroot.org/downloads/manual/manual.html#requirement
 	arch = any
@@ -22,11 +22,12 @@ pkgbase = buildroot-meta
 	depends = file
 	depends = bc
 	depends = wget
+	optdepends = python2>=2.7
 	optdepends = python
 	optdepends = ncurses: menuconfig & nconfig
 	optdepends = qt5-base: xconfig
-	optdepends = gtk2: gconfig
 	optdepends = glib2: gconfig
+	optdepends = gtk2: gconfig
 	optdepends = libglade: gconfig
 	optdepends = breezy: bazaar
 	optdepends = cvs
@@ -35,7 +36,7 @@ pkgbase = buildroot-meta
 	optdepends = rsync
 	optdepends = openssh: scp
 	optdepends = subversion
-	optdepends = asciidoc
+	optdepends = asciidoc>=8.6.3
 	optdepends = w3m
 	optdepends = python-argparse
 	optdepends = dblatex: pdf manual
