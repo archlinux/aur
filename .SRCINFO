@@ -1,12 +1,14 @@
 pkgbase = listmonk-bin
 	pkgdesc = Self-hosted newsletter and mailing list manager with a modern dashboard
 	pkgver = 0.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://listmonk.app
 	install = listmonk.install
 	arch = x86_64
 	license = AGPL3
 	depends = postgresql
+	provides = listmonk
+	conflicts = listmonk
 	backup = etc/listmonk/config.toml
 	source = https://github.com/knadh/listmonk/releases/download/v0.9.0-beta/listmonk_0.9.0-beta_linux_amd64.tar.gz
 	source = listmonk.conf
