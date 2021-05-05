@@ -35,7 +35,7 @@ prepare() {
     cd resources/
     asar extract app.asar app
 
-	cd "$srcdir/resources/app"
+    cd "$srcdir/resources/app"
     prettier --write "build/*.js"
     # Ugly systray icon fix
     patch -p1 <"$srcdir/systray.patch"
@@ -63,7 +63,7 @@ package() {
     install -Dm644 resources/win/deezer-3.png "$pkgdir/usr/share/icons/hicolor/64x64/apps/deezer.png"
     install -Dm644 resources/win/deezer-4.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/deezer.png"
     install -Dm644 resources/win/deezer-5.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/deezer.png"
-	install -Dm644 resources/win/systray.png "$pkgdir/usr/share/deezer/systray.png"
+    install -Dm644 resources/win/systray.png "$pkgdir/usr/share/deezer/systray.png"
     install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/"
     install -Dm755 deezer "$pkgdir/usr/bin/"
 }
