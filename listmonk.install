@@ -6,9 +6,16 @@ post_install() {
 		\$ listmonk --new-config
 		\$ sudo mv config.toml /etc/listmonk/
 		
-		To setup database, run
+		Setup credentials and a database (substiting your own password!):
 		
-		\$ listmonk --config /etc/listmonk/config.toml --install
+		\$ sudo -u postgres psql
+		postgres=# CREATE USER listmonk WITH PASSWORD 'TKByjizucIoex3mA';
+		postgres=# CREATE DATABASE listmonk;
+		postgres=# GRANT ALL PRIVILEGES ON DATABASE listmonk TO listmonk;
+		
+		Edit with PostgreSQL database credentials, then to setup database, run:
+		
+		\$ sudo -u listmonk listmonk --config /etc/listmonk/config.toml --install
 	EOF
 }
 
@@ -16,7 +23,7 @@ post_upgrade() {
 	cat <<- EOF
 		To update database, run
 		
-		\$ listmonk --config /etc/listmonk/config.toml --upgrade
+		\$ sudo -u listmonk listmonk --config /etc/listmonk/config.toml --upgrade
 	EOF
 }
 
