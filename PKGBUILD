@@ -4,11 +4,11 @@ _pyname=oslo.vmware
 _pycname=${_pyname/./-}
 pkgname=python-${_pycname}
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Oslo VMware library"
-arch=('any')
+arch=(any)
 url="https://docs.openstack.org/oslo.vmware/latest/"
-license=('Apache')
+license=(Apache)
 depends=(
 	python
 	python-pbr
@@ -54,18 +54,21 @@ export PBR_VERSION=$pkgver
 
 build(){
 	cd $_pyname-$pkgver
+	export PYTHONPATH="$PWD"
 	python setup.py build
-	PYTHONPATH=${PWD} sphinx-build -b html doc/source doc/build/html
+	sphinx-build -b text doc/source doc/build/text
 }
 
 check(){
 	cd $_pyname-$pkgver
-	PYTHONPATH=${PWD} stestr run
+	stestr run
 }
 
 package(){
 	cd $_pyname-$pkgver
 	python setup.py install --root="$pkgdir/" --optimize=1
-	mkdir -p "${pkgdir}/usr/share/doc"
-	cp -r doc/build/html "${pkgdir}/usr/share/doc/${pkgname}"
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	mkdir -p "$pkgdir/usr/share/doc"
+	cp -r doc/build/text "$pkgdir/usr/share/doc/$pkgname"
+	rm -r "$pkgdir/usr/share/doc/$pkgname/.doctrees"
 }
