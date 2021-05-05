@@ -5,7 +5,7 @@
 # Contributor: Jamesjon <universales@protonmail.com>
 pkgname=plymouth-kcm
 pkgver=5.21.5
-pkgrel=1
+pkgrel=2
 pkgdesc="KCM to manage the Plymouth (Boot) theme"
 arch=('any')
 url="https://invent.kde.org/plasma/plymouth-kcm.git"
@@ -15,7 +15,7 @@ makedepends=('cmake' 'kdoctools' 'extra-cmake-modules')
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz"{,.sig})
 sha256sums=('607f8c569a15938ccde869f836725d5af53dcc15605e3bd0ff978c84fecb56c9'
             'SKIP')
-validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E')
+validpgpkeys=('B3CB366552540BE06EE9AD9711968C44928CAEFC')
 
 prepare() {
 	mkdir -p $srcdir/${pkgname}-$pkgver/build
