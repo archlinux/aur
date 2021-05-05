@@ -3,7 +3,7 @@
 
 pkgname=mega
 _pkgname=mega
-pkgver=11.0.4
+pkgver=11.0.6
 pkgrel=1
 pkgdesc=" Molecular Evolutionary Genetics Analysis"
 arch=('x86_64')
