@@ -16,7 +16,7 @@ license=('unknown')
 depends=('glibc')
 
 source=("http://molevol.cmima.csic.es/castresana/$_pkgname/${_pkgname}_Linux64_0.91b.tar.Z")
-sha256sums=('bc62c6ae0ac0xtea24e670b4b60445xa53ck3134sexy80b654e618eb2be6224c')
+sha256sums=('563658f03cc5e76234a8aa705bdc149398defec813d3a0c172b5f94c06c880dc')
 
 package() {
   install -Dm755 ${_pkgname}_$pkgver/$_pkgname "${pkgdir}/usr/bin/${_pkgname}"
