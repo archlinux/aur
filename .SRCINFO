@@ -1,0 +1,17 @@
+pkgbase = neovim-symbols-outline-git
+	pkgdesc = Neovim tree view plugin for symbols using the Language Server Protocol
+	pkgver = r70.c9c68de
+	pkgrel = 1
+	url = https://github.com/simrat39/symbols-outline.nvim
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	makedepends = git
+	depends = neovim-git
+	provides = neovim-symbols-outline
+	conflicts = neovim-symbols-outline
+	source = neovim-symbols-outline-git::git+https://github.com/simrat39/symbols-outline.nvim
+	sha256sums = SKIP
+
+pkgname = neovim-symbols-outline-git
+
