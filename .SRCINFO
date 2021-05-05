@@ -1,7 +1,7 @@
 pkgbase = duckstation-git
 	pkgdesc = A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability
 	pkgver = preview.r4442.d3fea7b5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stenzek/duckstation
 	arch = x86_64
 	arch = aarch64
