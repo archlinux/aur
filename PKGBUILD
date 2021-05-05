@@ -1,7 +1,7 @@
 # Contributer: Bruce Zhang
 # This PKGBUILD is directly modified from aur/dingtalk
 pkgname=lx-music
-pkgver=1.8.2
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='一个基于 electron 的音乐软件'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache 2.0')
 depends=('electron9')
 makedepends=('jq' 'moreutils' 'npm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lyswhut/lx-music-desktop/archive/v$pkgver.tar.gz")
-sha256sums=('51c060b1a8ed9b6a135108e91f9574954fe4c539d5aa4e76ebdfd6a4ebcb60bc')
+sha256sums=('c0b399444aef6286d7686831be520f1d9e9b6f6f5ccc556bbfb5d44c82d2df5f')
 
 prepare() {
 	cd "$srcdir/$pkgname-desktop-$pkgver"
