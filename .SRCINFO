@@ -1,6 +1,6 @@
 pkgbase = mega
 	pkgdesc = Molecular Evolutionary Genetics Analysis
-	pkgver = 11.0.4
+	pkgver = 11.0.6
 	pkgrel = 1
 	url = https://megasoftware.net
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = mega
 	depends = gtk2>=2.0
 	depends = hicolor-icon-theme
 	depends = metasploit>=2.0
-	source = https://megasoftware.net/releases/megax_11.0.4-1_amd64_alpha.deb
-	sha256sums = SKIP
+	source = https://megasoftware.net/releases/megax_11.0.6-1_amd64_alpha.deb
+	sha256sums = bc62c6ae0ac0e9ea14e660b4a603355a53ca3134c1ab90b654e618eb2be6ce5b
 
 pkgname = mega
 

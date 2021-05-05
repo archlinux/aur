@@ -17,7 +17,7 @@ depends=(
 	'metasploit>=2.0'
 )
 source=("https://megasoftware.net/releases/megax_${pkgver}-1_amd64_alpha.deb")
-sha256sums=('SKIP')
+sha256sums=('bc62c6ae0ac0e9ea14e660b4a603355a53ca3134c1ab90b654e618eb2be6ce5b')
 
 package() {
 	tar -p -xf data.tar.xz -C "${pkgdir}"
