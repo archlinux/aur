@@ -1,12 +1,12 @@
 pkgbase = opensend-git
 	pkgdesc = Send files and securely across systems
 	pkgver = r39.07e35af
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = Apache-2.0
 	makedepends = go
 	backup = etc/opensend.toml
-	source = git+https://gitea.arsenm.dev/opensend/opensend.git
+	source = git+https://gitea.arsenm.dev/Arsen6331/opensend.git
 	md5sums = SKIP
 
 pkgname = opensend-git
