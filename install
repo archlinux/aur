@@ -1,0 +1,19 @@
+post_install() {
+    ## Load uinput if it's unloaded
+    /usr/bin/grep -q 'uinput' /proc/modules
+    if [ ! $? -eq 0 ] && [ -d "/lib/modules/$(uname -r)" ]
+        then
+            /usr/bin/modprobe uinput
+    fi
+
+    ## reload udev rules
+    /usr/bin/udevadm control --reload-rules
+}
+
+post_upgrade() {
+    /usr/bin/udevadm control --reload-rules
+}
+
+post_remove() {
+    post_upgrade
+}
