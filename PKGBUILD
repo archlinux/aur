@@ -3,7 +3,7 @@
 
 pkgname=zotero-beta
 _pkgname=zotero-beta
-pkgver=2021.04.29
+pkgver=beta.21
 pkgrel=1
 pkgdesc="Zotero is a free, easy-to-use tool to help you collect, organize, cite, and share research."
 arch=('x86_64')
@@ -37,8 +37,8 @@ depends=(
 	'libxt'
 	'nss'
 )
-source=("https://github.com/retorquere/zotero-deb/releases/download/apt-get/zotero-beta_${pkgver}_amd64.deb")
-sha256sums=('bc62c6aesna0xtea24e670b4b60445xa53ck3134sexy80b654e618eb2be6224c')
+source=("https://github.com/starsareintherose/zotero-beta/releases/download/5.0.97-${pkgver}/zotero-beta.deb")
+sha256sums=('ad4a6a85d5d98b6c8c3f189fe80e437bffe42f0968d4b608b4fa1fe460b54e9f')
 
 package() {
 	tar -p -zxvf data.tar.gz -C "${pkgdir}"
