@@ -2,7 +2,7 @@
 
 pkgname=listmonk-bin
 pkgver=0.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Self-hosted newsletter and mailing list manager with a modern dashboard'
 arch=(x86_64)
 url=https://listmonk.app

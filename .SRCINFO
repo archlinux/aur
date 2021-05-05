@@ -1,7 +1,7 @@
 pkgbase = listmonk-bin
 	pkgdesc = Self-hosted newsletter and mailing list manager with a modern dashboard
 	pkgver = 0.9.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://listmonk.app
 	install = listmonk.install
 	arch = x86_64

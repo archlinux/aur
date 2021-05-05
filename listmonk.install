@@ -8,7 +8,7 @@ post_install() {
 		
 		To setup database, run
 		
-		\$ listmonk --install
+		\$ listmonk --config /etc/listmonk/config.toml --install
 	EOF
 }
 
@@ -16,7 +16,7 @@ post_upgrade() {
 	cat <<- EOF
 		To update database, run
 		
-		\$ listmonk --upgrade
+		\$ listmonk --config /etc/listmonk/config.toml --upgrade
 	EOF
 }
 
