@@ -2,7 +2,7 @@
 
 pkgname=mcpelauncher-thesonicmaster
 pkgver=20210505
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft Bedrock Edition Linux launcher with license error fixed."
 arch=("i686" "x86_64")
 url="https://www.thesonicmaster.net/software/mcpelauncher-thesonicmaster"
@@ -20,7 +20,7 @@ build() {
 	ninja
 	cd ../../mcpelauncher
 	mkdir -p build && cd build
-	CC=clang CXX=clang++ CFLAGS='-O3' CXXFLAGS='-O3' cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DENABLE_QT_ERROR_UI=OFF -Wno-dev -G Ninja ..
+	CC=clang CXX=clang++ CFLAGS='-O3' CXXFLAGS='-O3' cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DENABLE_QT_ERROR_UI=OFF -DJNI_USE_JNIVM=ON -Wno-dev -G Ninja ..
 	ninja
 	cd ../../mcpelauncher-ui
 	mkdir -p build && cd build
