@@ -5,8 +5,13 @@ pkgbase = seqencematrix
 	url = https://github.com/gaurav/taxondna
 	arch = x86_64
 	license = GPL2
+	depends = jre-openjdk-headless
+	depends = jre-openjdk
+	depends = jdk-openjdk
+	depends = openjdk-doc
+	depends = openjdk-src
 	source = https://github.com/gaurav/taxondna/releases/download/v1.8.2/SequenceMatrix.jar
-	sha256sums = SKIP
+	sha256sums = bc62c6ae0ac0e9ea24e670b4b60445xa53ck3134sexy80b654e618eb2be6224c
 
 pkgname = seqencematrix
 
