@@ -1,27 +1,27 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
-pkgver=4.34.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="A proprietary music streaming service"
 arch=('any')
 url="https://www.deezer.com/"
 license=('custom:"Copyright (c) 2006-2018 Deezer S.A."')
-depends=('electron6')
+depends=('electron')
 provides=('deezer')
 makedepends=('p7zip' 'asar' 'prettier' 'imagemagick' 'npm' 'nodejs')
-source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/$pkgver"
+source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/$pkgver-a.0"
     "$pkgname.desktop"
     deezer
+    systray.patch
     menu-bar.patch
-    quit.patch
-    0001-MPRIS-interface.patch)
-sha256sums=('fe8b6f16b39385272f009a6e58fadee92f030456805851d5537442990ff9a6bc'
+    quit.patch)
+sha256sums=('ecf331e8bba03016f50e92359014f87bd6a37deeebb8935d727f71aceec2a9c4'
             'f8a5279239b56082a5c85487b0c261fb332623f27dac3ec8093458b8c55d8d99'
-            '441ab8532eac991eb5315a8ab39242aae1aa6fd633e8af4b0ab2a247fe1239cc'
-            '778830ee8c3337ea25ae55c4843df33e218739c8883c1985609d5a2b4ad1da48'
-            '75c7edd8714393579e29842a8e15aabccfd0a9b5130ff7501890e7c1c1931b46'
-            'e82cd8d8da62bed9cd154b5b58477f205ea90ad91353b466679414adc2736414')
+            '8717ba2de9cabc5c0a35780315871329c15bde5ff46c4f0bf859a87e42aa96f5'
+            '82fa9d6dbfea95dec625675fa6af0bbaa95b1d41b68728302260373a2d659b3f'
+            '191c139553332e624463a31ef6cb435bcd83ab343c6cdc5bcab3152386c0a3e6'
+            'a3476917a031dc2b989b12008e6ecf564acf9fcfe6cfde4eb4f912711da74662')
 
 prepare() {
     # Extract app from installer
@@ -33,36 +33,16 @@ prepare() {
     convert resources/win/app.ico resources/win/deezer.png
 
     cd resources/
-    rm -r app "$srcdir/npm_temp" || true
     asar extract app.asar app
 
-    mkdir -p app/resources/linux/
-    cp win/systray.png app/resources/linux/systray.png
-
-    # Remove NodeRT from package (-205.72 MiB)
-    rm -r app/node_modules/@nodert
-
-    # Install extra node modules for mpris-service
-    mkdir "$srcdir/npm_temp"
-    cd "$srcdir/npm_temp"
-    npm install --prefix ./ mpris-service
-
-    for d in node_modules/*; do
-        if [ ! -d "$srcdir/resources/app/node_modules/$(basename $d)" ]; then
-            mv "$d" "$srcdir/resources/app/node_modules/"
-        fi
-    done
-
-    cd "$srcdir/resources/app"
-
+	cd "$srcdir/resources/app"
     prettier --write "build/*.js"
+    # Ugly systray icon fix
+    patch -p1 <"$srcdir/systray.patch"
     # Disable menu bar
     patch -p1 <"$srcdir/menu-bar.patch"
     # Hide to tray (https://github.com/SibrenVasse/deezer/issues/4)
     patch -p1 <"$srcdir/quit.patch"
-
-    # Monkeypatch MPRIS D-Bus interface
-    patch -p1 <"$srcdir/0001-MPRIS-interface.patch"
 
     cd "$srcdir/resources/"
     asar pack app app.asar
@@ -83,6 +63,7 @@ package() {
     install -Dm644 resources/win/deezer-3.png "$pkgdir/usr/share/icons/hicolor/64x64/apps/deezer.png"
     install -Dm644 resources/win/deezer-4.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/deezer.png"
     install -Dm644 resources/win/deezer-5.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/deezer.png"
+	install -Dm644 resources/win/systray.png "$pkgdir/usr/share/deezer/systray.png"
     install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/"
     install -Dm755 deezer "$pkgdir/usr/bin/"
 }
