@@ -20,7 +20,7 @@ pkgbase = osu
 	source = osu.xml
 	sha256sums = 58eff9a415b6d8d46fc8b6bd006dbffb81e545fe964c2d11d337b8f1838fb8a9
 	sha256sums = SKIP
-	sha256sums = f46d063e16da50175154bfd9c09c1c461bb41d17bc2b6544842cbbd247b517e7
+	sha256sums = 327ab47237be712e07e2d35ad16dc5c71e23b91d91af0d63e83efd60d977ec68
 	sha256sums = 0a2bb920ba3e8ddc9aa6e1bb2321c748b6efb06189294ccdb59fb1977d7a39b5
 	sha256sums = 85a5f5468a22dad75b8e8cfad8bd0754ed5e4ece693a398de0b90ba1934ac4fe
 

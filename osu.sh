@@ -16,6 +16,7 @@ if [ ! -d "${OSU_STABLE_DATA_DIRECTORY}" ]; then
 	mkdir -p "${OSU_STABLE_DATA_DIRECTORY}"
 	cp '/usr/share/osu/osu-stable-installer.exe' "${OSU_STABLE_DATA_DIRECTORY}"
 	wine "${OSU_STABLE_DATA_DIRECTORY}/osu-stable-installer.exe"
+	wineserver -w
 	echo 'Completed installing osu!stable.'
 	exit
 fi
@@ -34,6 +35,7 @@ case "$1" in
 		;;
 	'')
 		env vblank_mode=0 __GL_SYNC_TO_VBLANK=0 wine "${OSU_STABLE_DATA_DIRECTORY}/osu!.exe" "$@"
+		wineserver -w
 		;;
 	*)
 		echo 'Usage:'
