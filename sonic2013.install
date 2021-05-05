@@ -1,7 +1,16 @@
 post_install() {
 	echo "Use 'sonic1-launcher' and 'sonic2-launcher' to automatically run " \
-"'sonic2013' from 'sonic1' and 'sonic2' folders created in your " \
+"'RSDKv4' from 'sonic1' and 'sonic2' folders created in your " \
 "\$XDG_DATA_HOME or '~/.local/share' folder."
-	echo "Alternatively, you may simply run 'sonic2013' directly from any " \
+	echo "Alternatively, you may simply run 'RSDKv4' directly from any " \
 "folder containing compatible data files."
+}
+
+post_upgrade() {
+	old_rev="$(echo $2 | sed -nr 's/^r([0-9]+)\..*/\1/p')"
+
+	if (( $old_rev < 293 )); then
+		echo "Heads up, 'sonic2013' has been renamed to 'RSDKv4'!" \
+"Launchers are not affected."
+	fi
 }
