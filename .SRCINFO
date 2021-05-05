@@ -1,7 +1,7 @@
 pkgbase = himalaya-git
 	pkgdesc = Minimalist CLI email client, written in Rust.
-	pkgver = r82.0d763a1
-	pkgrel = 1
+	pkgver = r167.9d40a7d
+	pkgrel = 2
 	url = https://github.com/soywod/himalaya
 	arch = any
 	license = BSD
