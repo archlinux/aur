@@ -52,6 +52,8 @@ prepare() {
     patch --forward $srcdir/ros2/src/ros2/mimick_vendor/CMakeLists.txt mimick_vendor.patch || true
     ## yaml_cpp_vendor:
     patch --forward $srcdir/ros2/src/ros2/yaml_cpp_vendor/CMakeLists.txt yaml_cpp_vendor.patch || true
+    ## ros1_bridge
+    git -C $srcdir/ros2/src/ros2/ros1_bridge revert 81b7610568286ec7b390c64cf6207b362d0a6550 --no-edit
 }
 
 build() {
