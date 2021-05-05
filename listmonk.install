@@ -1,0 +1,30 @@
+post_install() {
+	cat <<- EOF
+		Installed with default password. To generate a new random one:
+		
+		\$ cd /tmp
+		\$ listmonk --new-config
+		\$ sudo mv config.toml /etc/listmonk/
+		
+		Setup credentials and a database (substiting your own password!):
+		
+		\$ sudo -u postgres psql
+		postgres=# CREATE USER listmonk WITH PASSWORD 'password';
+		postgres=# CREATE DATABASE listmonk;
+		postgres=# GRANT ALL PRIVILEGES ON DATABASE listmonk TO listmonk;
+		
+		Edit with PostgreSQL database credentials, then to setup database, run:
+		
+		\$ sudo -u listmonk listmonk --config /etc/listmonk/config.toml --static-dir /usr/share/listmonk --install
+	EOF
+}
+
+post_upgrade() {
+	cat <<- EOF
+		To update database, run
+		
+		\$ sudo -u listmonk listmonk --config /etc/listmonk/config.toml --static-dir /usr/share/listmonk --upgrade
+	EOF
+}
+
+# vim: : ts=4 sw=4 noet
