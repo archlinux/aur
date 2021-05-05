@@ -1,6 +1,6 @@
 # Maintainer: Ivan Marquesi Lerner <ivanmlerner@protonmail.com>
 pkgname=solana  
-pkgver=1.5.19
+pkgver=1.6.7
 pkgrel=1
 pkgdesc="A fast, secure, and censorship resistant blockchain."
 url="https://www.solana.com"
@@ -11,7 +11,7 @@ makedepends=("rustup")
 conflicts=("solana-bin")
 provides=("solana")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/solana-labs/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('5614868eb1f7f1b908b3381c2be84a28')
+md5sums=('105daf012e3b8c1a4ac1e80532f12140')
 
 prepare() {
   rustup update stable
