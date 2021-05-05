@@ -1,0 +1,17 @@
+pkgbase = colorgo-git
+	pkgdesc = Colorize (highlight) `go build` command output
+	pkgver = 20161027.1e1a5b5
+	pkgrel = 1
+	url = https://github.com/songgao/colorgo
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	makedepends = git
+	makedepends = go
+	provides = colorgo
+	conflicts = colorgo
+	source = git://github.com/songgao/colorgo.git
+	sha256sums = SKIP
+
+pkgname = colorgo-git
+
