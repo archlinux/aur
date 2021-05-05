@@ -1,0 +1,20 @@
+pkgbase = rfetch
+	pkgdesc = No dependancy fetch program written in Rust
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/caverym/rfetch
+	arch = x86_64
+	arch = i686
+	arch = pentiumm4
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = gcc
+	source = rfetch-0.3.0.tar.gz::https://github.com/caverym/rfetch/archive/refs/tags/0.3.0.tar.gz
+	sha256sums = ff8fdb0263ef13137ae22c003b89886751f0853812512d31358f1dbf4d7700d9
+
+pkgname = rfetch
+
