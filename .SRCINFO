@@ -1,7 +1,7 @@
 pkgbase = python-oslo-rootwrap
 	pkgdesc = Oslo Rootwrap
 	pkgver = 6.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.openstack.org/oslo.rootwrap/latest/
 	arch = any
 	license = Apache
@@ -20,16 +20,17 @@ pkgbase = python-oslo-rootwrap
 	makedepends = python-mock
 	makedepends = python-fixtures
 	depends = python
+	depends = python-pbr
 	depends = python-six
 	options = !emptydirs
 	source = https://pypi.io/packages/source/o/oslo.rootwrap/oslo.rootwrap-6.2.0.tar.gz
 	source = 0000-lost-binary2string.patch
 	md5sums = 3dad1a7a001be9f6283bcc25ce511c39
-	md5sums = 13d2c35be1e37af81d708cfe8c96297d
+	md5sums = 781fdf0abc0d4549396493bff5a6dc22
 	sha256sums = 83e01cf523b04a2f7c1a4c9000c55bbc1b75a26391cce25b3a7c94b50cafa848
-	sha256sums = 0fb81f04ddd9f1897c11e363d1b2be61fd0940493bed50861194a3a6ee7b5e26
+	sha256sums = e61c6e768aad32df895744652a1238c32d13659b3ba2c8735b830e6e8e95b497
 	sha512sums = bf3e91ec8a18f92f6f5974a6d8369ae73dba6e61fa3001996678b85d0bfb2426536d27097ad784169e6eca50ad23471505d5089e8d4a6a84c9e0e009a6a38f5a
-	sha512sums = feaa869fb50943464b006d14633e40f43ea75243836f5c4a8ee6a916878275498ddb421d7df73c51336cc71725e7eb4498b5f7214f61394fe0ba09f58aebd11b
+	sha512sums = 3c3dd8a25956eddd8a1c8707c07c2a82fadcf4419e58d7cea72ce36f1147747f2b51fd8c02b94814d9f63189b273ed2a43f42d491dc8b0653aec56f8ebe1d846
 
 pkgname = python-oslo-rootwrap
 

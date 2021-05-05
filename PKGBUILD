@@ -4,13 +4,14 @@ _pyname=oslo.rootwrap
 _pycname=${_pyname/./-}
 pkgname=python-${_pycname}
 pkgver=6.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Oslo Rootwrap"
-arch=('any')
+arch=(any)
 url="https://docs.openstack.org/oslo.rootwrap/latest/"
-license=('Apache')
+license=(Apache)
 depends=(
 	python
+	python-pbr
 	python-six
 )
 makedepends=(
@@ -37,11 +38,11 @@ source=(
 	0000-lost-binary2string.patch
 )
 md5sums=('3dad1a7a001be9f6283bcc25ce511c39'
-         '13d2c35be1e37af81d708cfe8c96297d')
+         '781fdf0abc0d4549396493bff5a6dc22')
 sha256sums=('83e01cf523b04a2f7c1a4c9000c55bbc1b75a26391cce25b3a7c94b50cafa848'
-            '0fb81f04ddd9f1897c11e363d1b2be61fd0940493bed50861194a3a6ee7b5e26')
+            'e61c6e768aad32df895744652a1238c32d13659b3ba2c8735b830e6e8e95b497')
 sha512sums=('bf3e91ec8a18f92f6f5974a6d8369ae73dba6e61fa3001996678b85d0bfb2426536d27097ad784169e6eca50ad23471505d5089e8d4a6a84c9e0e009a6a38f5a'
-            'feaa869fb50943464b006d14633e40f43ea75243836f5c4a8ee6a916878275498ddb421d7df73c51336cc71725e7eb4498b5f7214f61394fe0ba09f58aebd11b')
+            '3c3dd8a25956eddd8a1c8707c07c2a82fadcf4419e58d7cea72ce36f1147747f2b51fd8c02b94814d9f63189b273ed2a43f42d491dc8b0653aec56f8ebe1d846')
 
 prepare(){
 	for i in "${source[@]}"
@@ -56,23 +57,26 @@ prepare(){
 
 build(){
 	cd $_pyname-$pkgver
+	export PYTHONPATH="$PWD"
 	python setup.py build
-	sphinx-build -b html doc/source doc/build/html
+	sphinx-build -b text doc/source doc/build/text
 }
 
 check(){
 	cd $_pyname-$pkgver
-	PYTHONPATH=${PWD} stestr run
+	stestr run
 }
 
 package(){
 	cd $_pyname-$pkgver
 	python setup.py install --root="$pkgdir/" --optimize=1
-	install -Dm644 etc/*.sample -t "$pkgdir"/usr/share/${pkgname}/conf
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	install -Dm644 etc/*.sample -t "$pkgdir"/usr/share/$pkgname/conf
 	install -Dm644 etc/*.sample -t "$pkgdir"/etc/oslo
 	for i in "$pkgdir"/etc/oslo/*.sample
 	do mv -v $i ${i//.sample}
 	done
-	mkdir -p "${pkgdir}/usr/share/doc"
-	cp -r doc/build/html "${pkgdir}/usr/share/doc/${pkgname}"
+	mkdir -p "$pkgdir/usr/share/doc"
+	cp -r doc/build/text "$pkgdir/usr/share/doc/$pkgname"
+	rm -r "$pkgdir/usr/share/doc/$pkgname/.doctrees"
 }
