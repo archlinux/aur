@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/BioEasy/EasyCodeML"
 license=('unknow')
 source=("https://github.com/starsareintherose/easycodeml/releases/download/${pkgver}/EasyCodeML.zip")
-sha256sums=('SKIP')
+sha256sums=('bc62c6ae0ac0e9ea14e664b4a603355a53ca3134c1ab90b654e618eb2be6ce5b')
 depends=(
 	'jre-openjdk-headless'
 	'jre-openjdk'
