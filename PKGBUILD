@@ -5,7 +5,7 @@
 pkgname=franz
 #pkgver=${_pkgver//-/_} # Leaving it here for possible dev/beta package :)
 pkgver=5.6.1
-pkgrel=8
+pkgrel=9
 # Due to the previous "_beta" naming
 epoch=1
 pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more.'
@@ -13,18 +13,39 @@ arch=(x86_64 i686)
 url='https://meetfranz.com'
 license=(Apache)
 # Allow to easily switch between Electron versions.
-# Expected one is 'electron' (Electron 11). May change soon.
+# Expected one is 'electron10' (Electron 10). May change soon.
 # This is automatically replaced in `franz.sh` with the package name, as
 # the executable matches the package name (as of 2020-11-15).
-_electron='electron'
+_electron='electron10'
 depends=($_electron)
-makedepends=(expac git npm python python2)
+makedepends=(expac git nvm python python2)
 source=("git+https://github.com/meetfranz/$pkgname#tag=v$pkgver"
         franz.desktop
         franz.sh.in)
 sha512sums=('SKIP'
             '049c4bf2e0f362f892e8eef28dd18a6c321251c686a9c9e49e4abfb778057de2fc68b95b4ff7bb8030a828a48b58554a56b810aba078c220cb01d5837083992e'
             '7ccf058421b173830493f35417d204e3a735fc20f801283dad3f658abeb484f6244bc535634c2f02ab2cb8e35a0e1a92dd3d06be5943e121ddccbbee7ad74b48')
+
+# Helper function for setting up nvm nicely.
+# Found here: https://wiki.archlinux.org/title/Node.js_package_guidelines#Using_nvm
+# Personal extras at the bottom of the function :)
+_ensure_nvm_setup() {
+  # let's be sure we are starting clean
+  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+  export NVM_DIR="$srcdir/.nvm"
+
+  # The init script returns 3 if version specified
+  # in ./.nvrc is not (yet) installed in $NVM_DIR
+  # but nvm itself still gets loaded ok
+  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+
+  # Personal extras
+  # Avoid installing Electron as we use the system one
+  export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+  # For safety, define the NPM cache in $srcdir
+  # Better configuration for npm cache and calling installed binaries
+  export npm_config_cache="$srcdir/npm_cache"
+}
 
 prepare() {
   # Small patching
@@ -37,27 +58,29 @@ prepare() {
   sed -i -E "s|(\s+\"electron\":).*,|\1 \"$electron_version\",|" package.json
 
   # Prevent franz from being launched in dev mode
-  sed -i \
-    "s|export const isDevMode = .*|export const isDevMode = false;|g" \
-    src/environment.js
-  sed -i \
-    "s|import isDevMode from 'electron-is-dev'|export const isDevMode = false|g" \
-    src/index.js
+  sed "s|export const isDevMode = .*|export const isDevMode = false;|g" \
+      -i src/environment.js
+  sed "s|import isDevMode from 'electron-is-dev'|export const isDevMode = false|g" \
+      -i src/index.js
 
-  # Better configuration for npm cache and calling installed binaries
-  export npm_config_cache="$srcdir/npm_cache"
+  # Setup nvm
+  _ensure_nvm_setup
 
-  # Prepare the packages for building
-  npx lerna bootstrap
+  echo "--> Install toolchain with nvm"
+  nvm install
+
+  echo "--> Install modules dependencies with lerna"
+  npx --package="lerna@^3.8.0" lerna bootstrap
 }
 
 build() {
   cd "$pkgname"
 
-  # Better configuration for npm cache and calling installed binaries
-  export npm_config_cache="$srcdir/npm_cache"
+  # Be sure we are correctly setup
+  _ensure_nvm_setup
 
   # Actually build the package
+  echo "--> Building the package"
   npx gulp build
   npx electron-builder --linux dir
 }
