@@ -1,4 +1,4 @@
-# Maintainer: Nico <d3sox at protonmail dot com>
+# Maintainer: Erik Moldtmann <erik@moldtmann.de>
 # Contributor: Zack Emmert <zemmert@fastmail.com>
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 # Contributor: Daniel Cohen <dan@supercore.co.uk>
