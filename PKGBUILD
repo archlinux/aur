@@ -3,10 +3,10 @@
 _pyname=oslosphinx
 pkgname=python-$_pyname
 pkgver=4.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenStack Sphinx Extensions and Theme"
 arch=(any)
-url="https://opendev.org/openstack/ldappool"
+url="https://docs.openstack.org/oslosphinx/latest/"
 license=(Apache)
 depends=(
 	python
@@ -14,12 +14,14 @@ depends=(
 	python-requests
 	python-six
 )
-makedepends=(python-setuptools)
-checkdepends=(
-	python-hacking
+makedepends=(
+	python-setuptools
 	python-sphinx
 	python-openstackdocstheme
 	python-reno
+)
+checkdepends=(
+	python-hacking
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
 md5sums=('f2e63063eeae74ca0f92452d964b9b5c')
@@ -30,11 +32,16 @@ export PBR_VERSION=$pkgver
 
 build(){
 	cd $_pyname-$pkgver
+	export PYTHONPATH="$PWD"
 	python setup.py build
+	sphinx-build -b text doc/source doc/build/text
 }
 
 package(){
 	cd $_pyname-$pkgver
-	python setup.py install --root "$pkgdir" --optimize=1
+	python setup.py install --root="$pkgdir/" --optimize=1
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	mkdir -p "$pkgdir/usr/share/doc"
+	cp -r doc/build/text "$pkgdir/usr/share/doc/$pkgname"
+	rm -r "$pkgdir/usr/share/doc/$pkgname/.doctrees"
 }
