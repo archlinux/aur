@@ -1,27 +1,18 @@
 # Maintainer: Adis Hamzić <adis at hamzadis dot com>
 
 pkgname=foo2zjs-minimal-nightly
-pkgver=20200610
+pkgver=20210313
 pkgrel=1
-pkgdesc="foo2zjs printer drivers with the bare minimum compilation options to ensure package stability."
-url="http://foo2zjs.rkkda.com/"
+pkgdesc="Archived version of foo2zjs printer drivers with the bare minimum compilation options to ensure package stability."
+url="https://github.com/hamzadis/foo2zjs-archive"
 license=('GPL' 'custom')
 depends=('cups' 'ghostscript')
 makedepends=('foomatic-db-engine' 'foomatic-db' 'curl' 'bc')
 conflicts=('foo2zjs-nightly')
 provides=('foo2zjs-nightly')
 arch=('i686' 'x86_64')
-source=("http://foo2zjs.rkkda.com/foo2zjs.tar.gz")
-md5sums=('SKIP')
-
-pkgver() {
-  local modified=$(curl -s 'http://foo2zjs.rkkda.com' | sed -nre 's|.*Tarball last modified: <i>(.+)</i>.*|\1|p')
-  if ! [[ "$modified" ]]; then
-    echo "Warning: can't find package date, using today"
-  fi
-
-  date "+%Y%m%d" -u -d "$modified"
-}
+source=("https://github.com/hamzadis/foo2zjs-archive/releases/download/20210313/foo2zjs.tar.gz")
+md5sums=('c6cbaa467a9a73a7c542f5a6c63723de')
 
 build() {
   cd "${srcdir}/foo2zjs"
