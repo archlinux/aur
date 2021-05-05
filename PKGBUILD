@@ -2,7 +2,7 @@
 
 pkgname=isis
 pkgver=1.6.2
-pkgrel=43
+pkgrel=47
 pkgdesc="ISIS is designed to facilitate the interpretation and analysis of high resolution X-ray spectra."
 url="http://space.mit.edu/asc/isis/"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=()
 replaces=()
 backup=()
 source=("ftp://space.mit.edu/pub/cxc/ISIS/isis-${pkgver}-${pkgrel}.tar.gz")
-sha1sums=('5b9e325de6420f36b67318e98457f9dd4a7dac33')
+sha1sums=('cfb8c55d41d856d02cc9d231ca1f29e3893256ea')
 install="${pkgname}.install"
 
 build() {
