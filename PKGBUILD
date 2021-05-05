@@ -20,7 +20,7 @@ source=('LICENSE'
 	'ib-gw'
 	'ib-gw.conf'
 	'ib-gw.desktop'
-	'https://download2.interactivebrokers.com/installers/tws/latest-standalone/tws-latest-standalone-linux-x64.sh')
+	"tws-${pkgver}-standalone-linux-x64.sh"::'https://download2.interactivebrokers.com/installers/tws/latest-standalone/tws-latest-standalone-linux-x64.sh')
 md5sums=('c93bcc44678aef8b9d0ec6faecb27927'
          '428c553da90bb2ea650a7f96ae076937'
          '384f68e00a3010f7317cbfa0ffb9d719'
@@ -32,11 +32,11 @@ md5sums=('c93bcc44678aef8b9d0ec6faecb27927'
 
 build() {
   cd ${srcdir}
-  chmod +x tws-latest-standalone-linux-x64.sh
+  chmod +x tws-${pkgver}-standalone-linux-x64.sh
   # Assumes no other Install4J packages are in use by user; if so, makepkg from dedicated user account
   majorVer=$(echo "$pkgver" | sed "s/\([0-9]\+\)\..*/\1/")
   rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/tws $HOME/Desktop/Trader\ Workstation*.desktop $HOME/.local/share/applications/Trader\ Workstation*.desktop
-  ./tws-latest-standalone-linux-x64.sh -q
+  ./tws-${pkgver}-standalone-linux-x64.sh -q
 
   BUNDLED_JRE_VER=$(ls -1 ${HOME}/.i4j_jres)
   mv ${HOME}/.i4j_jres/${BUNDLED_JRE_VER} ${HOME}/.i4j_jres/jre
@@ -46,8 +46,8 @@ build() {
   cd ${srcdir}
 
   # Thanks to http://finance.groups.yahoo.com/group/TWSAPI/files/RPM%20spec%20file/
-  unzip jts4launch-${majorVer}.jar trader/common/images/ibapp_icon_48x48.gif
-  unzip jts4launch-${majorVer}.jar trader/common/images/quote_details_48x48.jpg
+  unzip -o jts4launch-${majorVer}.jar trader/common/images/ibapp_icon_48x48.gif
+  unzip -o jts4launch-${majorVer}.jar trader/common/images/quote_details_48x48.jpg
   convert trader/common/images/ibapp_icon_48x48.gif ${pkgname}.png
   convert trader/common/images/ibapp_icon_48x48.gif -resize 66.666% ${pkgname}-32x32.png
   convert trader/common/images/ibapp_icon_48x48.gif -resize 33.333% ${pkgname}-16x16.png
