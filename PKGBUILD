@@ -1,7 +1,7 @@
 # Maintainer: Aconscious
 pkgname=qusb2snes-git
-pkgver=r225.4bfbc6a
-pkgrel=1
+pkgver=r313.71edc93
+pkgrel=3
 pkgdesc="A Qt based webserver for usb2snes"
 arch=("x86_64")
 license=("GPL3")
@@ -15,9 +15,11 @@ depends=("qt5-websockets"
          "qt5-serialport")
 url="https://github.com/Skarsnik/QUsb2snes"
 source=("git+https://github.com/Skarsnik/QUsb2snes"
+        "git+https://github.com/black-sliver/EmuNWAccess-qt"
         "QUsb2Snes.desktop"
         "QFile2Snes.desktop")
 md5sums=("SKIP"
+         "SKIP"
          "SKIP"
          "SKIP")
 _projname="QUsb2snes"
@@ -25,6 +27,14 @@ _projname="QUsb2snes"
 pkgver() {
     cd "$srcdir/$_projname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "$srcdir/$_projname"
+    convert icon64x64.ico icon.png
+    git submodule init
+    git config submodule.EmuNWAccess-qt $srcdir/EmuNWaccess-qt
+    git submodule update
 }
 
 build() {
@@ -36,10 +46,6 @@ build() {
     make
 }
 
-prepare() {
-    cd "$srcdir/$_projname"
-    convert icon64x64.ico icon.png
-}
 
 package() {
     cd "$srcdir/$_projname"
