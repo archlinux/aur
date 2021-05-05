@@ -4,7 +4,7 @@
 
 pkgname=sddm
 pkgver=0.19.0
-pkgrel=5
+pkgrel=6
 pkgdesc='QML based X11 and Wayland display manager'
 arch=(x86_64)
 url='https://github.com/sddm/sddm'
@@ -23,7 +23,6 @@ source=($pkgname-$pkgver.tar.gz::"https://github.com/$pkgname/$pkgname/archive/v
         sddm-fix-race-pre.patch::"https://github.com/sddm/sddm/commit/68cc9e31.patch"
         sddm-fix-race.patch::"https://patch-diff.githubusercontent.com/raw/sddm/sddm/pull/1324.patch"
         sddm-desktop-session.patch::"https://github.com/sddm/sddm/commit/5fd5ed27.patch"
-        sddm-x11-server-vt-allocate.patch::"https://github.com/sddm/sddm/commit/f0b6dec6.patch"
         sddm-fix-build.patch)
 sha256sums=('e76da1f13d5ad5e0179e3fec57543126044339405ef19c397e105e0807bd4e41'
             '9fce66f325d170c61caed57816f4bc72e9591df083e89da114a3bb16b0a0e60f'
@@ -32,7 +31,6 @@ sha256sums=('e76da1f13d5ad5e0179e3fec57543126044339405ef19c397e105e0807bd4e41'
             '33770560315b5369fd15baf5cd877f1191e642cefc6d2a1b4f0a7a80c109c025'
             'bbe45a316140c145d7de67dbe95764e44a0787ad9c6bcd2f7e0694484bd79640'
             '83e4df6e1c0c23e7b38c1d523c236108eae177ba11c5d466825690845ef99fcf'
-            '2ddf6cbf626548094ba34dce3db1aa07671b27f00e2d378ae1a5b1d022d43350'
             'e9058d261138e637248b20243e3e81ff337ab669a4a25fbff387bf9558a682c6')
 
 prepare() {
@@ -40,7 +38,6 @@ prepare() {
   patch -d $pkgname-$pkgver -p1 < sddm-fix-race-pre.patch # Make next patch apply
   patch -d $pkgname-$pkgver -p1 < sddm-fix-race.patch # Fix race at startup
   patch -d $pkgname-$pkgver -p1 < sddm-desktop-session.patch # Fix desktop session name
-  patch -d $pkgname-$pkgver -p1 < sddm-x11-server-vt-allocate.patch # Fix allocating VTs
   patch -d $pkgname-$pkgver -p1 < sddm-fix-build.patch # Fix build with Qt post 5.15.2
 }
 
