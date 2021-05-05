@@ -22,7 +22,7 @@ sha512sums_aarch64=('97dfe8909e473130339138ccd1f3ac80965bd9f5f86b27b1c3c55f13ba7
 prepare() {
   if [[ "$CARCH" == 'armv7h' ]]
   then
-    test -d "$_pkgname-armv7-unknown-linux-musleabihf" || mv "$_pkgname-armv7-unknown-linux-musleabihf" "$_pkgname-$CARCH-unknown-linux-musl"
+    test -d "$_pkgname-$CARCH-unknown-linux-musl" || mv "$_pkgname-armv7-unknown-linux-musleabihf" "$_pkgname-$CARCH-unknown-linux-musl"
   fi
 }
 
