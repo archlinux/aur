@@ -4,11 +4,11 @@ _pyname=oslo.messaging
 _pycname=${_pyname/./-}
 pkgname=python-${_pycname}
 pkgver=12.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Oslo Messaging API"
-arch=('any')
+arch=(any)
 url="https://docs.openstack.org/oslo.messaging/latest/"
-license=('Apache')
+license=(Apache)
 depends=(
 	python
 	python-pbr
@@ -27,7 +27,16 @@ depends=(
 	python-kombu
 	python-oslo-middleware
 )
-makedepends=(python-setuptools)
+makedepends=(
+	python-setuptools
+	python-openstackdocstheme
+	python-sphinx
+	python-reno
+	python-fixtures
+	python-confluent-kafka
+	python-pyngus
+	python-tenacity
+)
 checkdepends=(
 	python-hacking
 	python-fixtures
@@ -54,7 +63,9 @@ export PBR_VERSION=$pkgver
 
 build(){
 	cd $_pyname-$pkgver
+	export PYTHONPATH="$PWD"
 	python setup.py build
+	sphinx-build -b text doc/source doc/build/text
 }
 
 check(){
@@ -65,4 +76,8 @@ check(){
 package(){
 	cd $_pyname-$pkgver
 	python setup.py install --root="$pkgdir/" --optimize=1
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	mkdir -p "$pkgdir/usr/share/doc"
+	cp -r doc/build/text "$pkgdir/usr/share/doc/$pkgname"
+	rm -r "$pkgdir/usr/share/doc/$pkgname/.doctrees"
 }
