@@ -1,14 +1,16 @@
-# Maintainer: richteer <richteer at lastprime.net>
+# Maintainer: Frederik Schwan <freswa at archlinux dot org>
+# Contributor: richteer <richteer at lastprime.net>
 
 pkgname=profanity-git
 _pkgname=profanity
-pkgver=5179.c94f3d0b
+pkgver=6435.4a94c051
 pkgrel=1
 pkgdesc="A console based jabber client."
 arch=('i686' 'x86_64')
 url="http://profanity-im.github.io"
 license=('GPL3')
-depends=('curl' 'expat' 'libgcrypt' 'libnotify' 'libotr' 'libxss' 'libsignal-protocol-c' 'libstrophe-git')
+depends=('curl' 'expat' 'libgcrypt' 'libnotify' 'libotr' 'libxss' 'libsignal-protocol-c'
+          'gpgme' 'libstrophe-git')
 makedepends=('git' 'autoconf-archive')
 provides=('profanity')
 conflicts=('profanity')
