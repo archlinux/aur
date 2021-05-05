@@ -31,5 +31,3 @@ pkgbase = python-oslo-limit
 
 pkgname = python-oslo-limit
 
-pkgname = python-oslo-limit-doc
-

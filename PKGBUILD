@@ -2,8 +2,7 @@
 
 _pyname=oslo.limit
 _pycname=${_pyname/./-}
-pkgbase=python-${_pycname}
-pkgname=(python-${_pycname}{,-doc})
+pkgname=python-${_pycname}
 pkgver=1.3.0
 pkgrel=1
 pkgdesc="Limit enforcement library to assist with quota calculation."
@@ -44,8 +43,9 @@ export PBR_VERSION=$pkgver
 
 build(){
 	cd $_pyname-$pkgver
+	export PYTHONPATH="${PWD}"
 	python setup.py build
-	sphinx-build -b html doc/source doc/build/html
+	sphinx-build -b text doc/source doc/build/text
 }
 
 check(){
@@ -53,20 +53,10 @@ check(){
 	stestr run
 }
 
-_package_pkg(){
+package(){
 	cd $_pyname-$pkgver
 	python setup.py install --root="$pkgdir/" --optimize=1
+	mkdir -p "$pkgdir/usr/share/doc"
+	cp -r doc/build/text "$pkgdir/usr/share/doc/${pkgname}"
+	rm -r "$pkgdir/usr/share/doc/${pkgname}/.doctrees"
 }
-
-_package_doc(){
-	pkgdesc="${pkgdesc} Documents"
-	depends=()
-	cd $_pyname-$pkgver
-	DOCDIR="$pkgdir/usr/share/doc"
-	mkdir -p "$DOCDIR"
-	cp -r doc/build/html "$DOCDIR/${pkgname}"
-	rm -r "$DOCDIR/${pkgname}/.doctrees"
-}
-
-eval "package_${pkgbase}(){ _package_pkg; }"
-eval "package_${pkgbase}-doc(){ _package_doc; }"
