@@ -16,5 +16,5 @@ package() {
     ar x "$srcdir/logdna-cli-$pkgver-$pkgrel.deb" data.tar.gz
     tar -C "$srcdir" -xf data.tar.gz
 
-    install -Dm 755 "$srcdir/usr/local/logdna/bin/logdna" "$pkgdir/usr/bin/logdna-cli"
+    install -Dm 755 "$srcdir/usr/local/logdna/bin/logdna" "$pkgdir/usr/bin/logdna"
 }
