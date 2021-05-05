@@ -8,6 +8,7 @@ pkgbase = pr-downloader-git
 	license = GPL-2
 	makedepends = git
 	makedepends = cmake
+	makedepends = boost
 	depends = curl
 	provides = pr-downloader
 	conflicts = pr-downloader
