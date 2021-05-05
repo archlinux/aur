@@ -2,12 +2,21 @@
 # Contributor:
 
 ### BUILD OPTIONS
-# Set these variables to ANYTHING that is not null to enable them
+# Set the next two variables to ANYTHING that is not null to enable them
 
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
-_enable_gcc_more_v="y"
+# Only compile active modules to VASTLY reduce the number of modules built and
+# the build time.
+#
+# To keep track of which modules are needed for your specific system/hardware,
+# give module_db a try: https://aur.archlinux.org/packages/modprobed-db
+# This PKGBUILD reads the database kept if it exists
+#
+# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
+_localmodcfg=
+
 # Optionally select a sub architecture by number or leave blank which will
 # require user interaction during the build. Note that the generic (default)
 # option is 32.
@@ -48,16 +57,6 @@ _enable_gcc_more_v="y"
 #  34. AMD-Native optimizations autodetected by GCC (MNATIVE_AMD)
 _subarch=33
 
-# Only compile active modules to VASTLY reduce the number of modules built and
-# the build time.
-#
-# To keep track of which modules are needed for your specific system/hardware,
-# give module_db a try: https://aur.archlinux.org/packages/modprobed-db
-# This PKGBUILD reads the database kept if it exists
-#
-# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=
-
 # Use the current kernel's .config file
 # Enabling this option will use the .config of the RUNNING kernel rather than
 # the ARCH defaults. Useful when the package gets updated and you already went
@@ -67,10 +66,10 @@ _use_current=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-_major=5.10
-_minor=34
+_major=5.12
+_minor=1
 _srcname=linux-${_major}
-_clr=${_major}.32-1035
+_clr=${_major}.1-1038
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -80,7 +79,7 @@ url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_gcc_more_v='20210402'
+_gcc_more_v='20210412'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
@@ -99,20 +98,20 @@ prepare() {
     cd ${_srcname}
 
     ### Add upstream patches
-        echo "Add upstream patches"
-        patch -Np1 -i ../patch-${pkgver}
+    echo "Add upstream patches"
+    patch -Np1 -i ../patch-${pkgver}
 
     ### Setting version
-        echo "Setting version..."
-        scripts/setlocalversion --save-scmversion
-        echo "-$pkgrel" > localversion.10-pkgrel
-        echo "${pkgbase#linux}" > localversion.20-pkgname
+    echo "Setting version..."
+    scripts/setlocalversion --save-scmversion
+    echo "-$pkgrel" > localversion.10-pkgrel
+    echo "${pkgbase#linux}" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-        for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | sed -n 's/.*: //p'); do
+    for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch0112|^Patch0118|^Patch0121' | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/clearlinux/${i}"
-        done
+    done
 
     local src
         for src in "${source[@]}"; do
@@ -124,77 +123,72 @@ prepare() {
     done
 
     ### Setting config
-        echo "Setting config..."
-        cp -Tf $srcdir/clearlinux/config ./.config
+    echo "Setting config..."
+    cp -Tf $srcdir/clearlinux/config ./.config
 
     ### Enable extra stuff from arch kernel
-        echo "Enable extra stuff from arch kernel..."
+    echo "Enable extra stuff from arch kernel..."
 
-        # General setup
-        scripts/config --enable IKCONFIG \
-                       --enable-after IKCONFIG IKCONFIG_PROC \
-                       --undefine RT_GROUP_SCHED
+    # General setup
+    scripts/config --enable IKCONFIG \
+                   --enable-after IKCONFIG IKCONFIG_PROC \
+                   --undefine RT_GROUP_SCHED
 
-        # Power management and ACPI options
-        scripts/config --enable ACPI_REV_OVERRIDE_POSSIBLE \
-                       --enable ACPI_TABLE_UPGRADE
+    # Power management and ACPI options
+    scripts/config --enable ACPI_REV_OVERRIDE_POSSIBLE \
+                   --enable ACPI_TABLE_UPGRADE
 
-        # Enable loadable module support
-        scripts/config --undefine MODULE_SIG_FORCE \
-                       --enable MODULE_COMPRESS \
-                       --enable-after MODULE_COMPRESS MODULE_COMPRESS_XZ
+    # Enable loadable module support
+    scripts/config --undefine MODULE_SIG_FORCE \
+                   --enable MODULE_COMPRESS \
+                   --enable-after MODULE_COMPRESS MODULE_COMPRESS_XZ
 
-        # Networking support
-        scripts/config --enable NETFILTER_INGRESS
+    # Networking support
+    scripts/config --enable NETFILTER_INGRESS
 
-        # Device Drivers
-        scripts/config --enable FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER \
-                       --enable DELL_SMBIOS_SMM \
-                       --enable NET_VENDOR_AQUANTIA \
-                       --module PATA_JMICRON \
-                       --enable-after SOUND SOUND_OSS_CORE \
-                       --enable SND_OSSEMUL \
-                       --module-after SND_OSSEMUL SND_MIXER_OSS \
-                       --module-after SND_MIXER_OSS SND_PCM_OSS \
-                       --enable-after SND_PCM_OSS SND_PCM_OSS_PLUGINS \
-                       --module AGP --module-after AGP AGP_INTEL --module-after AGP_INTEL AGP_VIA
+    # Device Drivers
+    scripts/config --enable FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER \
+                   --enable DELL_SMBIOS_SMM \
+                   --enable NET_VENDOR_AQUANTIA \
+                   --module PATA_JMICRON \
+                   --enable-after SOUND SOUND_OSS_CORE \
+                   --enable SND_OSSEMUL \
+                   --module-after SND_OSSEMUL SND_MIXER_OSS \
+                   --module-after SND_MIXER_OSS SND_PCM_OSS \
+                   --enable-after SND_PCM_OSS SND_PCM_OSS_PLUGINS \
+                   --module AGP --module-after AGP AGP_INTEL --module-after AGP_INTEL AGP_VIA
 
-        # Kernel hacking -> Compile-time checks and compiler options -> Make section mismatch errors non-fatal
-        scripts/config --enable SECTION_MISMATCH_WARN_ONLY
+    # Kernel hacking -> Compile-time checks and compiler options -> Make section mismatch errors non-fatal
+    scripts/config --enable SECTION_MISMATCH_WARN_ONLY
 
-        # Security options
-        scripts/config --enable SECURITY_SELINUX \
-                       --enable-after SECURITY_SELINUX SECURITY_SELINUX_BOOTPARAM \
-                       --enable SECURITY_SMACK \
-                       --enable-after SECURITY_SMACK SECURITY_SMACK_BRINGUP \
-                       --enable-after SECURITY_SMACK_BRINGUP SECURITY_SMACK_NETFILTER \
-                       --enable-after SECURITY_SMACK_NETFILTER SECURITY_SMACK_APPEND_SIGNALS \
-                       --enable SECURITY_TOMOYO \
-                       --enable SECURITY_APPARMOR \
-                       --enable SECURITY_YAMA
+    # Security options
+    scripts/config --enable SECURITY_SELINUX \
+                   --enable-after SECURITY_SELINUX SECURITY_SELINUX_BOOTPARAM \
+                   --enable SECURITY_SMACK \
+                   --enable-after SECURITY_SMACK SECURITY_SMACK_BRINGUP \
+                   --enable-after SECURITY_SMACK_BRINGUP SECURITY_SMACK_NETFILTER \
+                   --enable-after SECURITY_SMACK_NETFILTER SECURITY_SMACK_APPEND_SIGNALS \
+                   --enable SECURITY_TOMOYO \
+                   --enable SECURITY_APPARMOR \
+                   --enable SECURITY_YAMA
 
-        # Library routines
-        scripts/config --enable FONT_TER16x32
+    # Library routines
+    scripts/config --enable FONT_TER16x32
 
-        make olddefconfig
+    make olddefconfig
 
-    ### Patch source to unlock additional gcc CPU optimizations
-        # https://github.com/graysky2/kernel_gcc_patch
-        if [ "${_enable_gcc_more_v}" = "y" ]; then
-        echo "Patching to enable GCC optimization for other uarchs..."
-        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/more-uarches-for-kernel-5.8+.patch"
-        fi
+    # https://github.com/graysky2/kernel_gcc_patch
+    # make sure to apply after olddefconfig to allow the next section
+    echo "Patching to enable GCC optimization for other uarchs..."
+    patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/more-uarches-for-kernel-5.8+.patch"
 
-    ### Get kernel version
-        if [ "${_enable_gcc_more_v}" = "y" ] || [ -n "${_subarch}" ]; then
+    if [ -n "$_subarch" ]; then
+        # user wants a subarch so apply choice defined above interactively via 'yes'
         yes "$_subarch" | make oldconfig
-        else
-        make prepare
-        fi
-
-    ### Prepared version
-        make -s kernelrelease > version
-        echo "Prepared $pkgbase version $(<version)"
+    else
+        # no subarch defined so allow user to pick one
+        make oldconfig
+    fi
 
     ### Optionally use running kernel's config
     # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
@@ -212,32 +206,29 @@ prepare() {
     fi
 
     ### Optionally load needed modules for the make localmodconfig
-        # See https://aur.archlinux.org/packages/modprobed-db
-        if [ -n "$_localmodcfg" ]; then
-          if [ -e $HOME/.config/modprobed.db ]; then
+    # See https://aur.archlinux.org/packages/modprobed-db
+    if [ -n "$_localmodcfg" ]; then
+        if [ -e $HOME/.config/modprobed.db ]; then
             echo "Running Steven Rostedt's make localmodconfig now"
             make LSMOD=$HOME/.config/modprobed.db localmodconfig
-          else
+        else
             echo "No modprobed.db data found"
             exit
-          fi
         fi
+    fi
 
-    ### do not run `make olddefconfig` as it sets default options
-        yes "" | make config >/dev/null
+    make -s kernelrelease > version
+    echo "Prepared $pkgbase version $(<version)"
 
-    ### Running make nconfig
-
-        [[ -z "$_makenconfig" ]] || make nconfig
+    [[ -z "$_makenconfig" ]] || make nconfig
 
     ### Save configuration for later reuse
-
-        cp -Tf ./.config "${startdir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
+    cp -Tf ./.config "${startdir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
 }
 
 build() {
     cd ${_srcname}
-    make -j$(nproc) bzImage modules
+    make bzImage modules
 }
 
 _package() {
@@ -352,13 +343,13 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
+sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
             'SKIP'
-            'ca4e6b6f69a5ac75b0deebd67d1b1eb111ed6e874fe765b450ddaa7d97cd0c41'
+            'd90692a8c4bc8d4ea20a21e30927ba4d01bc772c3ff537059303f01a0bfaa813'
             'SKIP'
-            '8aea0d8a9999b0510fa128d79af8a8dc94d25f0a193fd698ebfdf09808472d2e'
+            'f1f62b6d2cd89d0ab15f8d7311f5bb775dfc97ff39f93bc77f6f733f75fa7558'
             '2c98de0814366b041aeee4cbf82b82620c7834bc33752d50f089e8bd7ea5cf5e'
-            '261574aeee09864929d44a5f9896ad2645fe4539d9ee8a86575bd19a07eed865')
+            'f3eb1e857f60a96a0c8d4f25f55a64ddf4aa4b3a33e9fcc6886430cf4789cb1c')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
