@@ -1,6 +1,6 @@
 # Maintainer: Benoît Giraudou <archlinux.ajaiqwf5@giraudou.fr>
 pkgname=stegseek
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc="Lightning fast steghide cracker"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('mhash' 'libmcrypt' 'libjpeg' 'zlib')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/RickdeJager/stegseek/archive/v${pkgver}.tar.gz")
-sha512sums=('9155ddbbbe651e688cfe3665c9ec2237f1eb7b7b3c95c3f82721b17dc99c4a532a5e6213cbe4f884bdb951b74f7d1923e73f08a3e155470188b07f3cdeb6c048')
+sha256sums=('66cdd8e4e4b815d7fe368843e7df2f0416af0304df35e4f22db9f16c7ae6c771')
 
 build() {
     cmake -B build -S "${srcdir}/stegseek-${pkgver}" -DCMAKE_INSTALL_PREFIX=/usr
