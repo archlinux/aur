@@ -16,8 +16,8 @@ depends=(
 	'hicolor-icon-theme'
 	'metasploit>=2.0'
 )
-source=("https://megasoftware.net/releases/megax_${pkgver}-1_amd64_alpha.deb")
-sha256sums=('bc62c6ae0ac0e9ea14e660b4a603355a53ca3134c1ab90b654e618eb2be6ce5b')
+source=("https://megasoftware.net/releases/mega_${pkgver}-1_amd64_alpha.deb")
+sha256sums=('fab4cfe4863efa21a9ce1564313a1ec111fad2f1e5efa70916c758e67b63525d')
 
 package() {
 	tar -p -xf data.tar.xz -C "${pkgdir}"
