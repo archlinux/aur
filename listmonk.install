@@ -1,0 +1,23 @@
+post_install() {
+	cat <<- EOF
+		Installed with default password. To generate a new random one:
+		
+		\$ cd /tmp
+		\$ listmonk --new-config
+		\$ sudo mv config.toml /etc/listmonk/
+		
+		To setup database, run
+		
+		\$ listmonk --install
+	EOF
+}
+
+post_upgrade() {
+	cat <<- EOF
+		To update database, run
+		
+		\$ listmonk --upgrade
+	EOF
+}
+
+# vim: : ts=4 sw=4 noet
