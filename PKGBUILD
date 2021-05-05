@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/AtlasOfLivingAustralia/open-delta"
 license=('unknown')
 source=("https://github.com/AtlasOfLivingAustralia/open-delta/files/4686516/open-delta-1.02-bin.zip")
-sha256sums=('SKIP')
+sha256sums=('bc62c6ae0ac0e9ea24e670b4b604455a53ca3134c1ab80b654e618eb2be6ce4c')
 depends=(
 	'jre-openjdk-headless'
 	'jre-openjdk'
