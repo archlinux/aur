@@ -1,7 +1,7 @@
 # Maintainer: Daniel Massey <masseyd1396@gmail.com>
 
 pkgname=mcpelauncher-thesonicmaster
-pkgver=20210525
+pkgver=20210505
 pkgrel=1
 pkgdesc="Minecraft Bedrock Edition Linux launcher with license error fixed."
 arch=("i686" "x86_64")
