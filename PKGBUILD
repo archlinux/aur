@@ -1,7 +1,7 @@
 # Maintainer: zuyoutoki <zuyoutoki+aur at oki dot moe>
 pkgname=romog-git
 pkgver=r18.1df7645
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line ROM manager written in C++, specifically for Linux. "
 arch=('x86_64')
 url="https://github.com/xprism1/romog"
@@ -15,8 +15,6 @@ options=(!strip)
 
 prepare() {
 	cd "$srcdir/romog/src"
-	sed 's/xalanc_1_11/xalanc_1_12/g' dir2dat.cpp > dir2dat.cpp.patched
-	mv dir2dat.cpp.patched dir2dat.cpp
 	mkdir -p obj
 }
 
