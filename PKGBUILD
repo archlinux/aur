@@ -32,7 +32,7 @@ pkgdesc="LTS Maintenance version of ${_branch} branch"
 changelog=blender.changelog
 arch=('i686' 'x86_64')
 url="https://blender.org/"
-depends+=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg2'
+depends+=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg2' 'openexr'
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 depends+=('openimagedenoise')
@@ -55,6 +55,7 @@ source=("git://git.blender.org/blender.git${_fragment}"
         embree.patch #add missing embree link.
         'cpp14.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/171c4fb238a2a65291540ac5406187bc69f3a6bc'
         'python39.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/56d0df51a36fdce7ec2d1fbb7b47b1d95b591b5f'
+        'openexr3.patch'
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -65,7 +66,8 @@ sha256sums=('SKIP'
             '333b6fd864d55da2077bc85c55af1a27d4aee9764a1a839df26873a9f19b8703'
             '42afe119529a5350034a489225958112bf4b84bdee38757a932e5caaa9bd5ed4'
             '41e745b8fb37464a83dfedc09ff2158369cec09b96fdc855b71001e16b6cbe75'
-            '7ae5ac4d636934cd46213e3f29ea67013d17316e122d8f312daec288e4f90cd9')
+            '7ae5ac4d636934cd46213e3f29ea67013d17316e122d8f312daec288e4f90cd9'
+            '4d7c2db0464287178f0663debb6e00b4e9358cd5833f2a2b025e8be3f541e997')
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
@@ -75,7 +77,8 @@ b2sums=('SKIP'
         'e60e8f47cd25d23e70c330ca0f69a9e60b0a525bf3fa53c98d9fa288fdb3235138f93c3fad66c710741196589594069387082ede788ec5bd62b03d8e6254504b'
         '62567f79f86684e7fd99b8879b692e862c7ea85317cfacae4539d3035fe3ffc71fd39b0aa385be1efc8c31c8fe9ccac86e4b20275905150540349ba5fe3f8cbb'
         '33f4b7e71153b272f0ae3b16c9eabdb65fb275c2344a6454866c660ac9bdf6da1207e75c6f9198c64c52cebeab71f816d2852425596c0cfbcfed0835e64403ff'
-        '4b11df6d494644e740cfda654fbebb2988c430d18c093739724f331738099100925fd0399b94cf0a1188c4ae804081c8380424b64f35355f7cbfde6c7ee91b44')
+        '4b11df6d494644e740cfda654fbebb2988c430d18c093739724f331738099100925fd0399b94cf0a1188c4ae804081c8380424b64f35355f7cbfde6c7ee91b44'
+        '3a3d31deceb2cbe838e5054f43c288a8e8d98aab0f4ae8a67b9bb361a991b355d3c8c680ce6fd6c8efd4e38b387ac3396a67eaaba70f0c4785826d33d86c0fbe')
 
 pkgver() {
   git -C "$srcdir"/blender describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -92,7 +95,7 @@ prepare() {
   fi
   ((DISABLE_USD)) || git -C "$srcdir/blender" apply -v "${srcdir}"/usd_python.patch
   ((DISABLE_EMBREE)) || git -C "$srcdir/blender" apply -v "${srcdir}"/embree.patch
-  git -C "$srcdir/blender" apply -v "$srcdir"/{cpp14,python39}.patch
+  git -C "$srcdir/blender" apply -v "$srcdir"/{cpp14,python39,openexr3}.patch
 }
 
 build() {
