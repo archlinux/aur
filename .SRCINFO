@@ -1,7 +1,7 @@
 pkgbase = bluespec-contrib-git
 	pkgdesc = Bluespec Compiler (BSC) - Contributed libraries and utilities
 	pkgver = r3.ced0e9f
-	pkgrel = 1
+	pkgrel = 202
 	url = https://github.com/B-Lang-org/bsc-contrib
 	arch = any
 	license = BSD

@@ -1,7 +1,7 @@
 # Maintainer: Áron Ricardo Perez-Lopez <perez.aron@gmail.com>
 pkgname=bluespec-contrib-git
 pkgver=r3.ced0e9f
-pkgrel=1
+pkgrel=2
 pkgdesc='Bluespec Compiler (BSC) - Contributed libraries and utilities'
 arch=('any')
 url='https://github.com/B-Lang-org/bsc-contrib'
@@ -10,6 +10,9 @@ depends=('bluespec-git')
 makedepends=('git')
 source=('git+https://github.com/B-Lang-org/bsc-contrib.git')
 md5sums=('SKIP')
+
+# Needs to be updated whenever bsc is updated.
+eval pkgrel=$(pacman -Q bluespec-git | cut -d" " -f2 | cut -d"-" -f2)
 
 pkgver() {
 	cd "$srcdir/bsc-contrib"
