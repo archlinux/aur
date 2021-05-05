@@ -8,6 +8,8 @@ url='https://github.com/LithApp/Lith'
 license=('GPL')
 depends=('qt5-base' 'qt5-declarative' 'qt5-websockets' 'qt5-multimedia' 'qt5-quickcontrols2')
 makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=('git+https://github.com/lithapp/lith.git')
 md5sums=('SKIP')
 
