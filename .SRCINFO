@@ -1,0 +1,20 @@
+pkgbase = impact-git
+	pkgdesc = Meteor-M LRPT decoder, successor of meteor_decode
+	pkgver = r1.f6f73e8
+	pkgrel = 1
+	url = https://github.com/dbdexter-dev/impact
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = libpng
+	optdepends = libpng
+	provides = impact
+	conflicts = impact
+	source = git+https://github.com/dbdexter-dev/impact
+	md5sums = SKIP
+
+pkgname = impact-git
+
