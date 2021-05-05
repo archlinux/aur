@@ -3,7 +3,7 @@
 # Contributor: Pinky <j-pi@seznam.cz>
 
 pkgname=mestrenova
-pkgver=14.1.2
+pkgver=14.2.0
 pkgrel=1
 pkgdesc="Widely used commercial NMR interpreter"
 arch=('x86_64')
