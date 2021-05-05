@@ -3,8 +3,8 @@
 
 pkgname=(gcc-11 gcc-libs-11 gcc-fortran-11 gcc-objc-11 gcc-ada-11 gcc-go-11 lib32-gcc-libs-11 gcc-d-11)
 pkgver=11.1.0
-_majorver=${pkgver}
-_islver=0.24
+_majorver=${pkgver%%.*}
+_islver=0.23
 pkgrel=2
 pkgdesc='The GNU Compiler Collection'
 arch=(x86_64)
@@ -13,7 +13,7 @@ url='https://gcc.gnu.org'
 makedepends=(binutils libmpc gcc-ada doxygen lib32-glibc lib32-gcc-libs python git)
 checkdepends=(dejagnu inetutils)
 options=(!emptydirs)
-_libdir=usr/lib/gcc/$CHOST/11.1.0
+_libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
 source=(https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz
         http://isl.gforge.inria.fr/isl-${_islver}.tar.xz
         c89 c99
@@ -88,6 +88,7 @@ build() {
   make -C $CHOST/libstdc++-v3/doc doc-man-doxygen
 }
 
+## SKIP FOR FASTER BUILDING ### 
 #check() {
 #  cd gcc-build
 #
@@ -100,7 +101,7 @@ build() {
 #  make -k check || true
 #  "$srcdir/gcc/contrib/test_summary"
 #}
-#
+
 package_gcc-libs-11() {
   pkgdesc='Runtime libraries shipped by GCC'
   depends=('glibc>=2.27')
@@ -296,16 +297,16 @@ package_gcc-ada-11() {
   ln -s gcc "$pkgdir/usr/bin/gnatgcc"
 
   # insist on dynamic linking, but keep static libraries because gnatmake complains
-#  mv "$pkgdir"/${_libdir}/adalib/libgna{rl,t}-${_majorver}.so "$pkgdir/usr/lib"
-#  ln -s libgnarl-${_majorver}.so "$pkgdir/usr/lib/libgnarl.so"
-#  ln -s libgnat-${_majorver}.so "$pkgdir/usr/lib/libgnat.so"
-#  rm -f "$pkgdir"/${_libdir}/adalib/libgna{rl,t}.so
+  mv "$pkgdir"/${_libdir}/adalib/libgna{rl,t}-${_majorver}.so "$pkgdir/usr/lib"
+  ln -s libgnarl-${_majorver}.so "$pkgdir/usr/lib/libgnarl.so"
+  ln -s libgnat-${_majorver}.so "$pkgdir/usr/lib/libgnat.so"
+  rm -f "$pkgdir"/${_libdir}/adalib/libgna{rl,t}.so
 
-#  install -d "$pkgdir/usr/lib32/"
-#  mv "$pkgdir"/${_libdir}/32/adalib/libgna{rl,t}-${_majorver}.so "$pkgdir/usr/lib32"
-#  ln -s libgnarl-${_majorver}.so "$pkgdir/usr/lib32/libgnarl.so"
-#  ln -s libgnat-${_majorver}.so "$pkgdir/usr/lib32/libgnat.so"
-#  rm -f "$pkgdir"/${_libdir}/32/adalib/libgna{rl,t}.so
+  install -d "$pkgdir/usr/lib32/"
+  mv "$pkgdir"/${_libdir}/32/adalib/libgna{rl,t}-${_majorver}.so "$pkgdir/usr/lib32"
+  ln -s libgnarl-${_majorver}.so "$pkgdir/usr/lib32/libgnarl.so"
+  ln -s libgnat-${_majorver}.so "$pkgdir/usr/lib32/libgnat.so"
+  rm -f "$pkgdir"/${_libdir}/32/adalib/libgna{rl,t}.so
 
   # Install Runtime Library Exception
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
