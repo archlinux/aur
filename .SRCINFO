@@ -1,7 +1,7 @@
 pkgbase = python-oslo-privsep
 	pkgdesc = OpenStack library for privilege separation
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.openstack.org/oslo.privsep/latest/
 	arch = any
 	license = Apache
@@ -17,6 +17,7 @@ pkgbase = python-oslo-privsep
 	makedepends = python-reno
 	makedepends = python-sphinxcontrib-apidoc
 	depends = python
+	depends = python-pbr
 	depends = python-oslo-log
 	depends = python-oslo-i18n
 	depends = python-oslo-config

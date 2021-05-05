@@ -4,13 +4,14 @@ _pyname=oslo.privsep
 _pycname=${_pyname/./-}
 pkgname=python-${_pycname}
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenStack library for privilege separation"
-arch=('any')
+arch=(any)
 url="https://docs.openstack.org/oslo.privsep/latest/"
-license=('Apache')
+license=(Apache)
 depends=(
 	python
+	python-pbr
 	python-oslo-log
 	python-oslo-i18n
 	python-oslo-config
@@ -41,20 +42,25 @@ md5sums=('f69c47ab712f0f20c08131bf4b621765')
 sha256sums=('97a969fac3d70f61151b3dfbfc04b4541b4954b60de34fdc11525dc6002ae0d2')
 sha512sums=('aa042e0ff53bd636e916f68940927ca5aa7b74a4d0ed0d7e62280815beb5b015c3bc8476aff0ab60070bcd948f800b7e3d4b6f83d12ec67eb7d4c5494121a9bb')
 
+export PBR_VERSION=$pkgver
+
 build(){
 	cd $_pyname-$pkgver
+	export PYTHONPATH="$PWD"
 	python setup.py build
-	PYTHONPATH=${PWD} sphinx-build -b html doc/source doc/build/html
+	sphinx-build -b text doc/source doc/build/text
 }
 
 check(){
 	cd $_pyname-$pkgver
-	PYTHONPATH=${PWD} stestr run
+	stestr run
 }
 
 package(){
 	cd $_pyname-$pkgver
 	python setup.py install --root="$pkgdir/" --optimize=1
-	mkdir -p "${pkgdir}/usr/share/doc"
-	cp -r doc/build/html "${pkgdir}/usr/share/doc/${pkgname}"
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	mkdir -p "$pkgdir/usr/share/doc"
+	cp -r doc/build/text "$pkgdir/usr/share/doc/$pkgname"
+	rm -r "$pkgdir/usr/share/doc/$pkgname/.doctrees"
 }
