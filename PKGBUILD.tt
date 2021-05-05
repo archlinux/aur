@@ -9,7 +9,7 @@ pkgdesc='Perl package to log/report a problem with exceptions, pluggable handler
 arch=('any')
 url='[% url %]'
 license=('PerlArtistic' 'GPL')
-depends=('perl>=5.10.1' 'perl-devel-globaldestruction>=0.09' 'perl-log-report-optional>=1.03' 'perl-string-print>=0.91')
+depends=('perl>=5.10.1' 'perl-devel-globaldestruction>=0.09' 'perl-log-report-optional>=1.07' 'perl-string-print>=0.91')
 source=([% source %])
 options=(!emptydirs)
 md5sums=('[% md5sums %]')
