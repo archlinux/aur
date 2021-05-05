@@ -9,7 +9,7 @@ arch=('x86_64')
 url="http://www.beast2.org/"
 license=('LGPL-2.1 License')
 source=("https://github.com/CompEvol/beast2/releases/download/v${pkgver}/BEAST.v${pkgver}.Linux.tgz")
-sha256sums=('SKIP')
+sha256sums=('bc62c6ae0ac0e9ea24e670b4b604455a53ca3134c1ab80b654e618eb2be6224c')
 depends=(
 	'jre-openjdk-headless'
 	'jre-openjdk'

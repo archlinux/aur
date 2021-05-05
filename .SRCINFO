@@ -11,7 +11,7 @@ pkgbase = beast2
 	depends = openjdk-doc
 	depends = openjdk-src
 	source = https://github.com/CompEvol/beast2/releases/download/v2.6.3/BEAST.v2.6.3.Linux.tgz
-	sha256sums = SKIP
+	sha256sums = bc62c6ae0ac0e9ea24e670b4b604455a53ca3134c1ab80b654e618eb2be6224c
 
 pkgname = beast2
 
