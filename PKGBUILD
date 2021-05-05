@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/ddarriba/jmodeltest2"
 license=('GPL-3.0 License')
 source=("https://github.com/ddarriba/jmodeltest2/files/157117/jmodeltest-2.1.10.tar.gz")
-sha256sums=('bc62c6ae0ac0e9ea24e670b4b603355a53ca3134c1ab80b654e618eb2be6ce4c')
+sha256sums=('9039f1a00e730b38e607126703606f8c2ff8309dd82955ce52ccc1ae2889d06d')
 depends=(
 	'jre-openjdk-headless'
 	'jre-openjdk'
