@@ -1,13 +1,13 @@
 pkgbase = antconc
 	pkgdesc = A freeware corpus analysis toolkit for arrying out corpus linguistics research and data-driven learning.
 	pkgver = 3.5.8
-	pkgrel = 2
-	url = http://www.laurenceanthony.net/software/antconc/
+	pkgrel = 3
+	url = https://www.laurenceanthony.net/software/antconc/
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = antconc-3.5.8.tar.gz::http://www.laurenceanthony.net/software/antconc/releases/AntConc358/AntConc_64bit.tar.gz
-	source = license-antconc-3.5.8.pdf::http://www.laurenceanthony.net/software/antconc/releases/AntConc358/license.pdf
+	source = antconc-3.5.8.tar.gz::https://www.laurenceanthony.net/software/antconc/releases/AntConc358/AntConc_64bit.tar.gz
+	source = license-antconc-3.5.8.pdf::https://www.laurenceanthony.net/software/antconc/releases/AntConc358/license.pdf
 	source = antconc.png
 	source = antconc.desktop
 	sha256sums = 379650052362122ec705b84ad3bb24afdda750e4c1277f86f87c5177fa89e5a2
