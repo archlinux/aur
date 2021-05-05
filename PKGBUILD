@@ -13,6 +13,8 @@ depends=(python python-requests python-beautifulsoup4 python-websocket-client py
 makedepends=(python-setuptools)
 source=('git://github.com/python273/vk_api')
 sha256sums=('SKIP')
+provides=(python-vk_api)
+conflicts=(python-vk_api)
 
 pkgver() {
 	cd $_pkgname

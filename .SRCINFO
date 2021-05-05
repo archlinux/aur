@@ -11,6 +11,8 @@ pkgbase = python-vk_api-git
 	depends = python-beautifulsoup4
 	depends = python-websocket-client
 	depends = python-six
+	provides = python-vk_api
+	conflicts = python-vk_api
 	source = git://github.com/python273/vk_api
 	sha256sums = SKIP
 
