@@ -5,6 +5,11 @@ pkgbase = opensurge
 	url = https://github.com/alemart/opensurge
 	arch = i686
 	arch = x86_64
+	arch = pentium4
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = GPL3
 	makedepends = cmake
 	makedepends = surgescript
@@ -13,3 +18,4 @@ pkgbase = opensurge
 	sha256sums = 838b8ba506e45c800091d8ba7bb830d024907934fba35bf369d92fe13feaa3de
 
 pkgname = opensurge
+
