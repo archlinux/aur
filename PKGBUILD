@@ -1,7 +1,7 @@
 # Maintainer: grtcdr <ba.tahaaziz@gmail.com>
 
 pkgname=macchina
-pkgver=0.7.2
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="A system information fetcher, with an emphasis on performance and minimalism."
 
@@ -15,7 +15,7 @@ makedepends=('rust' 'cargo' 'git')
 
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 
-sha256sums=('271d21680487d91c2f2a4036c04f3db3c78c90e419bdbe1072581ad7c8e844f9')
+sha256sums=('66349e2274c48d8eb1ac1a627eb16dca0ee96e62c2fa34f9d9fadbe75a029d9f')
 build() {
 	cd "$pkgname-$pkgver"
 	cargo build --release --locked --target-dir=target
