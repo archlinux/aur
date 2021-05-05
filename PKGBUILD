@@ -1,8 +1,8 @@
 # Maintainer: sife <wyattgoettsch@gmx.us>
 
 pkgname=dmenu_bw
-pkgver=0.0.0
-pkgrel=1
+pkgver=0.0.1
+pkgrel=2
 pkgdesc="dmenu wrapper for bitwarden-cli written in POSIX shellscript."
 arch=('x86_64')
 url="https://github.com/Sife-ops/dmenu_bw"
@@ -12,7 +12,7 @@ optdepends=('libnotify' 'dmenu')
 provides=('dmenu_bw')
 conflicts=('dmenu_bw' 'dmenu_bw-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Sife-ops/dmenu_bw/archive/v${pkgver}.tar.gz")
-sha256sums=('2d3011b87b72589323e0e38805aa3663598c06d68165f111aa5ce3449492087c')
+sha256sums=('b24bbaf89d56c2d872be94607c42fe24c6925bacb62ada458e6f6d5e10f3ebfe')
 
 package() {
     install -Dm644 "${pkgname}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
