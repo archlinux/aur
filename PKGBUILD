@@ -14,7 +14,7 @@ depends=('gcc-libs')
 makedepends=('bison' 'cmake' 'flex' 'git' 'gmp')
 checkdepends=('gmock' 'gtest')
 source=("https://github.com/amkozlov/raxml-ng/releases/${pkgver}/raxml-ng_v${pkgver}_linux_x86_64_MPI.zip")
-sha256sums=('SKIP')
+sha256sums=('bc62c6aesna0xtea24e670b4bsnailxa53ck3134sexy80b654e618eb2be6224c')
 
 prepare() {
     cd "${srcdir}"
