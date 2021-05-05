@@ -2,7 +2,7 @@
 # Contributor: Jonas Seibert <jonas+aur at seibert dot ninja>
 # Contributor: Holger Rauch <holger dot rauch at posteo dot de>
 pkgname=payara
-pkgver=5.2021.2
+pkgver=5.2021.3
 pkgrel=1
 pkgdesc="Jakarta EE (Java EE) & MicroProfile compatible application server for production and containerized deployments."
 url="http://www.payara.fish/"
@@ -13,14 +13,14 @@ options=(!strip)
 source=("$pkgname-$pkgver.zip::https://search.maven.org/remotecontent?filepath=fish/$pkgname/distributions/$pkgname/$pkgver/$pkgname-$pkgver.zip"
         "payara.service")
 
-sha256sums=('f693da7551dee281f17bf4eb02ed8fe86e7babf39902ff7766e4f89064ce68c8'
-            '20be1d3d7c83fe75580e72154728929e560333a4027f5be39799babbe5da860d')
-sha512sums=('14f5d4a35da921744521369516ea70ed0b753f7afaad38da07c140f0394b498c94faa2124d8957b0a1c868091a460b48e171750f29c01717bbb6cf299158a0d7'
-            '5c176c6a547f86ee4ed633e36e131d34e0f6f633f5ca74f42b96f27f4b9f4c218c50ed06cbc9b8a92b4f10c7f19cd48823bcac4af8d46cf9ac3ce3da71873070')
+sha256sums=('e0e1358e6d2af0adf9266d1673502de4a77553d684939739c72fe04e9addd9b6'
+            'ffd73bddd3218a7c8ce6748cc73c77e84994faebed7f42285a9d81da351ecc2c')
+sha512sums=('6eff209bc413f746d638fb25614138d51b5612e0a8017d695ba847af57619f56c1305ad9cfa4a20db4993103fe75a00173aa371f118e9a913bc9d6f853bd3ecb'
+            'c1a4d1f96357c8e8afd74a2e5eccbe0d319f3448485b3907e1a700320d1fb442dbfa18fb49231d1430ebd253034113101deeae22e003ac02033e7930962ae7ca')
 
 package() {
 	mkdir -p $pkgdir/opt
-	cp -a payara5 $pkgdir/opt/
+	cp -a payara5 $pkgdir/opt/payara
 	install -D $srcdir/payara.service $pkgdir/usr/lib/systemd/system/payara.service
 }
 # vim:set ts=4 sw=4:
