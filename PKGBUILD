@@ -18,7 +18,7 @@ provides=('openssl-gost')
 source=(
   'gost-engine::git+https://github.com/gost-engine/engine.git'
   'gost.cnf'
-  "${pkgname}.install"
+  "${pkgname:?}.install"
 )
 
 sha256sums=('SKIP'
@@ -28,15 +28,15 @@ sha512sums=('SKIP'
             '431f810f822a347135d10c99f98ed2516e6afe310def77fc9aa0b41dc0578b05e2684f77e1062ea934961720f6d11f73f27e38548bccfe61709e81f8d53c484e'
             '071f716440e8e54dc46b9205853125591dd857f99d0b6f2614aac0d97e1a44b3048ae58798cc80a70200ce567be2cdbb5eb00b5c2c2f3fa471e39e8ff07e8f65')
 
-install=${pkgname}.install
+install=${pkgname:?}.install
 
 pkgver() {
 
-  cd "${srcdir}/gost-engine" || (
+  cd "${srcdir:?}/gost-engine" || (
     echo -e "\E[1m\E[31mCan't cd to ${srcdir}/gost-engine build directory! PkgVer Failed! \E[0m"
     exit 1
   )
-
+  git checkout openssl_1_1_1 > /dev/null 2>&1
   echo "1.1.1.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 
 }
@@ -58,7 +58,7 @@ prepare() {
     rm -rf build
   fi
 
-  git checkout openssl_1_1_1
+  git checkout openssl_1_1_1 > /dev/null 2>&1
 
   # Fix ==> WARNING: Package contains reference to $srcdir
   # gost.so.1.1 contain path to source files
@@ -96,8 +96,8 @@ package() {
     exit 1
   )
 
-  install -Dm644 "${srcdir}/gost.cnf" "${pkgdir}/etc/ssl/gost.cnf"
-  install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  DESTDIR="${pkgdir}" cmake --install build --config Release
+  install -Dm644 "${srcdir}/gost.cnf" "${pkgdir:?}/etc/ssl/gost.cnf"
+  install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir:?}/usr/share/licenses/${pkgname:?}/LICENSE"
+  DESTDIR="${pkgdir:?}" cmake --install build --config Release
 
 }
