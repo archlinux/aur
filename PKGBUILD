@@ -1,8 +1,8 @@
 # Maintainer: Lucas Melo <luluco250 at gmail dot com>
 
 pkgname=sonic2013-git
-pkgver=r288.c505c71
-pkgrel=1
+pkgver=r310.4c5bcbc
+pkgrel=2
 pkgdesc='A full decompilation of Sonic 1 & 2 (2013).'
 arch=('any')
 url='https://github.com/Rubberduckycooly/Sonic-1-2-2013-Decompilation'
@@ -12,16 +12,12 @@ depends=('sdl2' 'libogg' 'libvorbis')
 provides=(sonic2013)
 source=(
 	"git+${url}.git"
-	'sonic1-launcher'
-	'sonic1.desktop'
-	'sonic2-launcher'
-	'sonic2.desktop')
+	'template-launcher'
+	'template.desktop')
 sha256sums=(
 	'SKIP'
-	'ab7f0a5cd733730b1b6935b3c18b4c99a8d005c140c23296f14a135d1cd1b1f7'
-	'64f8afbdaa62a63fe9b55c2e0fafd419b80c3201f05e927b1381231ad05853e3'
-	'90a8eedbd3ef840185b13be9168f8636bca35ac00c70f3dcf9bb8a5ed4baa15b'
-	'a909f52d6b7b4a0d8f0ec11ab5469da3178f494b48865c82f6219e3a97dc666c')
+	'53ea1912492a15bf54f6dba1859aaf0f9ca0c01615f021faa8a3c67449b1fd55'
+	'55df140227c69094fac5ee7dd1b8a8e8beef9abe4072dee00e1688a0b9966353')
 install=sonic2013.install
 
 pkgver() {
@@ -32,14 +28,21 @@ pkgver() {
 build() {
 	cd "$srcdir/Sonic-1-2-2013-Decompilation"
 	make ${MAKEFLAGS:--j$(nproc)}
+
+	cd "$srcdir"
+	for i in 1 2; do
+		sed "s/GAME/sonic$i/" template-launcher > sonic$i-launcher
+		sed "s/NAME/Sonic $i/;s/EXEC/sonic$i-launcher/" template.desktop > sonic$i.desktop
+	done
 }
 
 package() {
-	install -Dm755 sonic1-launcher "$pkgdir/usr/bin/sonic1-launcher"
-	install -Dm644 sonic1.desktop "$pkgdir/usr/share/applications/sonic1.desktop"
-	install -Dm755 sonic2-launcher "$pkgdir/usr/bin/sonic2-launcher"
-	install -Dm644 sonic2.desktop "$pkgdir/usr/share/applications/sonic2.desktop"
+	for i in 1 2; do
+		install -Dm755 sonic$i-launcher "$pkgdir/usr/bin/sonic$i-launcher"
+		install -Dm644 sonic$i.desktop "$pkgdir/usr/share/applications/sonic$i.desktop"
+	done
+
 	cd "$srcdir/Sonic-1-2-2013-Decompilation/bin"
-	install -Dm755 sonic2013 "$pkgdir/usr/bin/sonic2013"
+	install -Dm755 RSDKv4 "$pkgdir/usr/bin/RSDKv4"
 	install -Dm644 ../LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
