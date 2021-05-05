@@ -1,11 +1,9 @@
 pkgbase = mkbootimg
 	pkgdesc = Tool to create and/or unpack Android boot images
 	pkgver = 31.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nmeum/android-tools
-	arch = armv7h
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = Apache
 	license = MIT
 	depends = python
