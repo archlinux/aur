@@ -1,6 +1,6 @@
 pkgbase = jellyfin-bin
 	pkgdesc = The Free Software Media System
-	pkgver = 10.7.2
+	pkgver = 10.7.5
 	pkgrel = 1
 	url = https://jellyfin.org/
 	arch = x86_64
@@ -10,29 +10,29 @@ pkgbase = jellyfin-bin
 	provides = jellyfin
 	conflicts = jellyfin
 	conflicts = jellyfin-git
-	noextract = jellyfin-10.7.2.deb
-	noextract = jellyfin-web-10.7.2.deb
+	noextract = jellyfin-10.7.5.deb
+	noextract = jellyfin-web-10.7.5.deb
 	options = staticlibs
-	source = jellyfin-web-10.7.2.deb::https://repo.jellyfin.org/releases/server/debian/versions/stable/web/10.7.2/jellyfin-web_10.7.2-1_all.deb
+	source = jellyfin-web-10.7.5.deb::https://repo.jellyfin.org/releases/server/debian/versions/stable/web/10.7.5/jellyfin-web_10.7.5-1_all.deb
 	source = jellyfin.conf
 	source = jellyfin.service
 	source = jellyfin.sysusers
 	source = jellyfin.tmpfiles
-	sha256sums = a2213212e3c6ef0fd87c7414f64e0c2dc991997eef7b8a4a755734c5878c337a
+	sha256sums = 294a00e7a63c1a7f826e4da798663e872d2f2d227061b60253ac9cecd8642301
 	sha256sums = 1ea19635cced6672484937903c27976a5a145d708caff06a687a8defdd23d549
 	sha256sums = 0f8511673816daf528625366b6c27bc7e6182e4ac789191c87474667398376e2
 	sha256sums = 9bc1ddb77c73d46cc4078356b5773e5a776ebf8b47a1c820ad5fb17591ad5228
 	sha256sums = b7faa4b0c756cdb361ef5b04fddfdc416b00f1246bb3a19a34bf4d185a6a7e5a
-	source_x86_64 = jellyfin-10.7.2.deb::https://repo.jellyfin.org/releases/server/debian/versions/stable/server/10.7.2/jellyfin-server_10.7.2-1_amd64.deb
-	sha256sums_x86_64 = 05d7d7afc9ac7bf44d5fef79d88d56afd1c36f98b0f0746c2b8f37e3b881c353
-	source_aarch64 = jellyfin-10.7.2.deb::https://repo.jellyfin.org/releases/server/debian/versions/stable/server/10.7.2/jellyfin-server_10.7.2-1_arm64.deb
-	sha256sums_aarch64 = 608f0e71ce02d551b9329fb7d2632107837b7e3e2bb47e5864efee3d13859fe9
-	source_armv7h = jellyfin-10.7.2.deb::https://repo.jellyfin.org/releases/server/debian/versions/stable/server/10.7.2/jellyfin-server_10.7.2-1_armhf.deb
-	sha256sums_armv7h = 7506687312bc7c407bd6030f555d99f832df15010ef683f7266062d981372eaf
+	source_x86_64 = jellyfin-10.7.5.deb::https://repo.jellyfin.org/releases/server/debian/versions/stable/server/10.7.5/jellyfin-server_10.7.5-1_amd64.deb
+	sha256sums_x86_64 = 5b3c1fe15a1b701311e8b07a9b15f6d7a45e58d4e3b388bdf8e3afe9530483d5
+	source_aarch64 = jellyfin-10.7.5.deb::https://repo.jellyfin.org/releases/server/debian/versions/stable/server/10.7.5/jellyfin-server_10.7.5-1_arm64.deb
+	sha256sums_aarch64 = 01da7e3250c7b32b0090680db0199f86130171b1c7e499557f339827ffce6185
+	source_armv7h = jellyfin-10.7.5.deb::https://repo.jellyfin.org/releases/server/debian/versions/stable/server/10.7.5/jellyfin-server_10.7.5-1_armhf.deb
+	sha256sums_armv7h = 2418ab32fb13217a138229aad8101876bc221375fc9b3194e6c2f2b8b7d998f4
 
 pkgname = jellyfin-bin
-	depends = jellyfin-web-bin=10.7.2
-	depends = jellyfin-server-bin=10.7.2
+	depends = jellyfin-web-bin=10.7.5
+	depends = jellyfin-server-bin=10.7.5
 
 pkgname = jellyfin-web-bin
 	pkgdesc = Jellyfin web client
