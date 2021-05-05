@@ -35,25 +35,20 @@ prepare() {
     sudo ln -sf /usr/lib/python3.9/site-packages/PyQt5/bindings/* /usr/share/sip/PyQt5/.
 
     # Clone the repos
+    rm -rf $srcdir/ros2/src
     mkdir -p $srcdir/ros2/src
     vcs import $srcdir/ros2/src < $srcdir/ros2/ros2.repos
 
     # Fix some issues in the code (TODO: Gradually move to upstream)
     ## mimick_vendor:
-    pushd $srcdir/ros2/src/ros2/mimick_vendor
-    git cherry-pick c4f28e4f806fc3322d310bc3e93977df734ee733 || git cherry-pick --skip
-    popd
-    patch --forward $srcdir/ros2/src/ros2/mimick_vendor/CMakeLists.txt mimick_vendor.patch || true
+    git -C $srcdir/ros2/src/ros2/mimick_vendor cherry-pick c4f28e4f806fc3322d310bc3e93977df734ee733
+    patch --forward $srcdir/ros2/src/ros2/mimick_vendor/CMakeLists.txt mimick_vendor.patch
     ## yaml_cpp_vendor:
-    patch --forward $srcdir/ros2/src/ros2/yaml_cpp_vendor/CMakeLists.txt yaml_cpp_vendor.patch || true
+    patch --forward $srcdir/ros2/src/ros2/yaml_cpp_vendor/CMakeLists.txt yaml_cpp_vendor.patch
     ## rcutils
-    pushd $srcdir/ros2/src/ros2/rcutils
-    git cherry-pick 618a9d94565ab844b9f40e0f5828ddbab2bcdad1 || git cherry-pick --skip
-    popd
+    git -C $srcdir/ros2/src/ros2/rcutils cherry-pick 618a9d94565ab844b9f40e0f5828ddbab2bcdad1
     ## ros1_bridge
-    pushd $srcdir/ros2/src/ros2/ros1_bridge
-    git revert 81b7610568286ec7b390c64cf6207b362d0a6550 --no-edit || true
-    popd
+    git -C $srcdir/ros2/src/ros2/ros1_bridge revert 81b7610568286ec7b390c64cf6207b362d0a6550 --no-edit
 }
 
 build() {
