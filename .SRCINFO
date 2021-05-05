@@ -1,0 +1,36 @@
+pkgbase = obs-virtual-cam-filter
+	pkgdesc = Adds a filter to output a source or scene to the build in virtual camera
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/exeldro/obs-virtual-cam-filter
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = libfdk-aac
+	makedepends = libxcomposite
+	makedepends = x264
+	makedepends = vlc
+	makedepends = swig
+	makedepends = python
+	makedepends = luajit
+	makedepends = ffmpeg
+	makedepends = jansson
+	makedepends = libxinerama
+	makedepends = libxkbcommon-x11
+	makedepends = mbedtls
+	makedepends = qt5-svg
+	makedepends = qt5-x11extras
+	makedepends = curl
+	makedepends = jack
+	makedepends = gtk-update-icon-cache
+	makedepends = git
+	depends = obs-studio
+	source = obs-virtual-cam-filter-0.0.4::git+https://github.com/exeldro/obs-virtual-cam-filter#commit=d14653284f487e5f6d74913902a28ed355ed988a
+	source = obs-studio-26.1.2.tar.gz::https://github.com/obsproject/obs-studio/archive/26.1.2.tar.gz
+	source = fix_python_binary_loading.patch
+	sha256sums = SKIP
+	sha256sums = bc8b4c61ba4aae87b70c589a6a5b8538e4f03121b31e9b98a2071d9f6006b897
+	sha256sums = bdfbd062f080bc925588aec1989bb1df34bf779cc2fc08ac27236679cf612abd
+
+pkgname = obs-virtual-cam-filter
+
