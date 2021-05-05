@@ -7,7 +7,7 @@ pkgname=${_pkgname}-bin
 _gitname=yt-dlp
 pkgver=2021.04.22
 _gitpkgver=$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of youtube-dlc - download videos from youtube.com or other video platforms"
 arch=('any')
 url="https://github.com/yt-dlp/${_gitname}"
@@ -19,7 +19,8 @@ optdepends=('ffmpeg: for video post-processing'
             'aria2: for using aria2 as external downloader'
             'python-pycryptodome: for hlsnative downloader')
 source=("yt-dlp-${_gitpkgver}::${url}/releases/download/${_gitpkgver}/yt-dlp")
-provides=('yt-dlp')
+conflicts=("${_pkgname}")
+provides=('yt-dlp' "${_pkgname}")
 sha256sums=('e00f7acdbb94b82e2c2cc78dfa7dfff7c783c23693d304a68db79672b0b8ea0e')
 
 package() {
