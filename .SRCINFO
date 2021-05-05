@@ -19,7 +19,7 @@ pkgbase = linux-gc
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.12.1.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.12.1.tar.sign
-	source = config::https://raw.githubusercontent.com/archlinux/svntogit-packages/a50fbb19009197f7cde96fb2f86bb8b7e7e1c010/trunk/config
+	source = config::https://raw.githubusercontent.com/archlinux/svntogit-packages/298e21edc0eb3899c600e74812998fd93ac350dd/trunk/config
 	source = prjc_v5.12-r1.patch::https://gitlab.com/alfredchen/projectc/raw/master/5.12/prjc_v5.12-r1.patch
 	source = more-uarches-20210412.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20210412.tar.gz
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=427e6f34f26595c4866919c3afa204c72a783b8d
@@ -27,7 +27,7 @@ pkgbase = linux-gc
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	b2sums = 71db3031f059b4411e542fb17acf15d9d2fcff10c35958f74b190f8a4cc352658f9101b34cd35a306d36f39a3c194cde1c3d5ad7a53a758bbe0a9671b8becdd3
 	b2sums = SKIP
-	b2sums = e4f405e6817b3203802ba2951d463639a12b82a1747ac23f116ca70f9a6f70ea62655e2e3e848c5753a6222c02b18de96393206c209396242a6c7beda4f4486d
+	b2sums = 87016e66e9ff6b92872e7ddb049f770f687eb341d72b0b2dae01ae00cced00df26c14b67664239c80f6f34c9824df31ac353a0e5c7d133ea2ba878f6e8d09624
 	b2sums = 77a1646ffbc67ed88af564b73cf63f0374772bdc1075e771a93ee4fe257b94cb3766a4842898b48f4343458d0b507229182220c7daeb5532df610b964c6640e7
 	b2sums = 72194a32a06c43809d1272bd675890b6d27c6c54353150a366e8e2c50ad6eca6ee23c5d6281822965a228cfedfa07a60fe135d1b4f539e4a62728d4460cc0b0e
 	b2sums = 3458bf2ee0ab2335f912c437f393c2213841dccd8cce387963dd4b049ab9c0c607506b922fff72b48ea6a97c9cc84b434a4a0046d6cd54ef3226b92855d1c27d
