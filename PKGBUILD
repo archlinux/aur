@@ -9,7 +9,7 @@ arch=('x86_64')
 url="http://beast.community/"
 license=('LGPL-2.1 License')
 source=("https://github.com/beast-dev/beast-mcmc/releases/download/v${pkgver}/BEASTv${pkgver}.tgz")
-sha256sums=('bc62c6ae0ac0e9ea14e660b4a603355a53ca3134c1ab80b654e618eb2be6ce4c')
+sha256sums=('be652c4d55953f7c6c7a9d3eb3de203c77dc380e81ad81cfe0492408990c36a8')
 depends=(
 	'jre-openjdk-headless'
 	'jre-openjdk'
