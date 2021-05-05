@@ -1,0 +1,31 @@
+pkgbase = python-oslo-metrics
+	pkgdesc = Oslo Metrics API
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://docs.openstack.org/oslo.metrics/latest/
+	arch = any
+	license = Apache
+	checkdepends = python-hacking
+	checkdepends = python-oslotest
+	checkdepends = python-stestr
+	checkdepends = bandit
+	makedepends = python-setuptools
+	makedepends = python-openstackdocstheme
+	makedepends = python-reno
+	makedepends = python-sphinx
+	makedepends = python-sphinxcontrib-apidoc
+	makedepends = python-oslotest
+	depends = python
+	depends = python-pbr
+	depends = python-oslo-utils
+	depends = python-oslo-log
+	depends = python-oslo-config
+	depends = python-prometheus_client
+	options = !emptydirs
+	source = https://pypi.io/packages/source/o/oslo.metrics/oslo.metrics-0.2.1.tar.gz
+	md5sums = 6e43f355e9cc70bcd35462407c3dec9e
+	sha256sums = 684fa7efabae73e24efac9561bd52ed0792eab548aa2bb185b75a93737108d94
+	sha512sums = 0493683ba72205a365f3795876f63c17fd70dd1f64002c66a28d0aab4e7518a0db66454cfb29767ba625582f75943696b2ce2c2ba4a79f2ae0d2e7321ec2329f
+
+pkgname = python-oslo-metrics
+
