@@ -3,7 +3,7 @@
 
 pkgname=python-vk_api-git
 _pkgname=vk_api
-pkgver=11.9.1.r2.d49c1dc
+pkgver=11.9.3
 pkgrel=1
 pkgdesc='Module for creating scripts for vk.com (vkontakte)'
 arch=('any')
