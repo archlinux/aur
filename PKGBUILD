@@ -5,6 +5,8 @@
 #     Contributor: 謝致邦 <Yeking@Red54.com>
 #     Contributor: Alucryd <alucryd at gmail dot com>
 
+# Maintainer: Denis 'GNUtoo' Carikli <GNUtoo@cyberdimension.org>
+
 pkgname=mkbootimg
 pkgver=31.0.0
 _tag=${pkgver}p1 # https://github.com/nmeum/android-tools carries extra patch version on top of the upstream versioning
