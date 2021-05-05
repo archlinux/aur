@@ -7,7 +7,7 @@ pkgver=beta.21
 pkgrel=1
 pkgdesc="Zotero is a free, easy-to-use tool to help you collect, organize, cite, and share research."
 arch=('x86_64')
-url="https://github.com/retorquere/zotero-deb"
+url="https://www.zotero.org/support/dev_builds"
 license=('AGPL3')
 depends=(
 	'aarch64-linux-gnu-gcc'
