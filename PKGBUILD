@@ -1,7 +1,7 @@
 # Maintainer: David Wu <xdavidwuph@gmail.com>
 
 pkgname=intel-ipsec-mb
-pkgver=0.55
+pkgver=1.0
 pkgrel=1
 pkgdesc='Intel(R) Multi-Buffer Crypto for IPsec Library'
 url='https://github.com/intel/intel-ipsec-mb'
@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('BSD')
 makedepends=('nasm')
 source=("https://github.com/intel/intel-ipsec-mb/archive/v${pkgver}.tar.gz")
-sha512sums=('d98d4688347aed991f6b218f19e1158bfc34baf66ac2198e2e1b953c29afa230c68eb394ea0deecf3f3d7370906e2bac7e787ad2dd7d14aa6538f65e6c4eabeb')
+sha512sums=('a6665f73b6b6507922b6d7e2395cb9756c2d6c238447af29c0054b4e179586ce70004ed20c6b23838cfdd055cb1330d5d97228aae9866adba78e7cfc6554812b')
 
 build() {
 	cd "${pkgname}-${pkgver}"
