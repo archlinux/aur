@@ -1,0 +1,15 @@
+[Unit]
+Description=Listmonk mailing list and newsletter manager
+Wants=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/listmonk --config /etc/listmonk/config.toml
+User=listmonk
+Group=listmonk
+Restart=on-failure
+LimitNOFILE=65536
+TasksMax=infinity
+
+[Install]
+WantedBy=multi-user.target
