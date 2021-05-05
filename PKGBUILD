@@ -44,14 +44,15 @@ prepare() {
     sudo ln -sf /usr/lib/python3.9/site-packages/PyQt5/bindings/* /usr/share/sip/PyQt5/.
 
     # Clone the repos
+    rm -rf $srcdir/ros2/src
     mkdir -p $srcdir/ros2/src
     vcs import $srcdir/ros2/src < $srcdir/ros2/ros2.repos
 
     # Fix some issues in the code (TODO: Gradually move to upstream)
     ## mimick_vendor:
-    patch --forward $srcdir/ros2/src/ros2/mimick_vendor/CMakeLists.txt mimick_vendor.patch || true
+    patch --forward $srcdir/ros2/src/ros2/mimick_vendor/CMakeLists.txt mimick_vendor.patch
     ## yaml_cpp_vendor:
-    patch --forward $srcdir/ros2/src/ros2/yaml_cpp_vendor/CMakeLists.txt yaml_cpp_vendor.patch || true
+    patch --forward $srcdir/ros2/src/ros2/yaml_cpp_vendor/CMakeLists.txt yaml_cpp_vendor.patch
     ## ros1_bridge
     git -C $srcdir/ros2/src/ros2/ros1_bridge revert 81b7610568286ec7b390c64cf6207b362d0a6550 --no-edit
 }
