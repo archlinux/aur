@@ -3,7 +3,7 @@
 
 pkgname=unityhub
 pkgver=2.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="The Unity Hub is a standalone application that streamlines the way you find, download, and manage your Unity Projects and installations."
 url="https://unity.com/"
 arch=('x86_64')
@@ -50,7 +50,7 @@ package() {
 
   install -d "${pkgdir}/usr/bin"
   ln -s "/opt/${pkgname}/unityhub" "${pkgdir}/usr/bin/unityhub"
-  chmod +x "${pkgdir}/opt/${pkgname}/unityhub" "${pkgdir}/opt/${pkgname}/unityhub"
+  chmod +x "${pkgdir}/opt/${pkgname}/unityhub" "${pkgdir}/opt/${pkgname}/unityhub-bin"
   # Fix 7z permissions
   chmod +x "${pkgdir}/opt/${pkgname}/resources" \
            "${pkgdir}/opt/${pkgname}/resources/app.asar.unpacked" \
