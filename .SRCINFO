@@ -1,4 +1,4 @@
-pkgbase = logdna-cli
+pkgbase = logdna-cli-bin
 	pkgdesc = A command line tool for logdna
 	pkgver = 2.0.0
 	pkgrel = 1
@@ -9,5 +9,5 @@ pkgbase = logdna-cli
 	source = logdna-cli-2.0.0-1.deb::https://github.com/logdna/logdna-cli/releases/download/2.0.0/logdna-cli_2.0.0_amd64.deb
 	md5sums = d5ff05d09c5d8b55f2ece7b931e5463f
 
-pkgname = logdna-cli
+pkgname = logdna-cli-bin
 

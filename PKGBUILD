@@ -1,6 +1,6 @@
 # Maintainer: Ulrich Schreiner <ulrich.schreiner@gmail.com>
 
-pkgname=logdna-cli
+pkgname=logdna-cli-bin
 pkgver=2.0.0
 pkgrel=1
 pkgdesc='A command line tool for logdna'
