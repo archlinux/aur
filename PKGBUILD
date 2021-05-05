@@ -33,18 +33,18 @@ sha256sums=('15e9f9d8dc8bd8513f6a5eca990e2aab21fd38724ad57d213b06a6610a951d58'
             '7e53beb5818ceadb765689ad8e1baf55ce1d6afe8a9d6884b6f2bd121083c3f7'
             'a129607acc1ea6a48ee5af073da6bd9318176d07e91e743ce93662065f7288dd'
             '7cfc5ef5f7842d5e0a574938226e54361529b2fb5c68606c0e099352a513f84c')
-options=(strip staticlibs) # Package is 3 Gib smaller with "strip" but it takes a long time and generates many warnings
+options=(!strip staticlibs) # Package is 3 Gib smaller with "strip" but it takes a long time and generates many warnings
 
 # Set options to anything that is not null to enable them.
-_system_compiler=y 	# for the system compiler you'll need to set LINUX_MULTIARCH_ROOT 
+_system_compiler= 	# for the system compiler you'll need to set LINUX_MULTIARCH_ROOT 
 		   	# as an environment to /usr/sbin compile projects after building.
 			# The system compiler should work for everything in engine now.
-_ccache_support=y       # Patches for ccache. More optimizations might be needed.
-_system_mono=y # Uses System mono for unreal.
+_ccache_support=       # Patches for ccache. More optimizations might be needed.
+_system_mono= # Uses System mono for unreal.
 		# must set UE_USE_SYSTEM_MONO
 		# in your environment for it to
 		# work after install
-_processor_multiplier=y  # Allows multiplier on processor count. Allowing the Maximum threads your cpu can handle 
+_processor_multiplier=  # Allows multiplier on processor count. Allowing the Maximum threads your cpu can handle 
 
 prepare() {
   # Check access to the repository
