@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Fazua Toolbox
+StartupWMClass=toolbox.c
+Comment=Toolbox for the Fazua evation drive system
+Exec=/usr/bin/fazua-toolbox
+Icon=fazua-toolbox
+Type=Application
+Keywords=e-bike;ebike;pedelec;motor;
+StartupNotify=true
+Categories=Java;Utility;
+
