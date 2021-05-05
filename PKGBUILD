@@ -4,13 +4,14 @@ _pyname=oslo.versionedobjects
 _pycname=${_pyname/./-}
 pkgname=python-${_pycname}
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Oslo Versioned Objects library"
-arch=('any')
+arch=(any)
 url="https://docs.openstack.org/oslo.versionedobjects/latest/"
-license=('Apache')
+license=(Apache)
 depends=(
 	python
+	python-pbr
 	python-oslo-concurrency
 	python-oslo-config
 	python-oslo-context
@@ -48,17 +49,25 @@ md5sums=('c6f722cd72fadfcb09e6b42278ce553a')
 sha256sums=('f0149e557d962365f53e61b7ce0aa4d7037d2d83a0db4fecba1e964fd4949926')
 sha512sums=('d3ee20fb5b5743005db7fafa655e9129910d1aba838ad8609dc76849b10b7ebce5afc71e385fb95364cd3598673697b13fe398342516e25b577b4cc3e7bbbddf')
 
+export PBR_VERSION=$pkgver
+
 build(){
 	cd $_pyname-$pkgver
+	export PYTHONPATH="$PWD"
 	python setup.py build
+	sphinx-build -b text doc/source doc/build/text
 }
 
 check(){
 	cd $_pyname-$pkgver
-	PYTHONPATH=$PWD stestr run
+	stestr run
 }
 
 package(){
 	cd $_pyname-$pkgver
 	python setup.py install --root="$pkgdir/" --optimize=1
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	mkdir -p "$pkgdir/usr/share/doc"
+	cp -r doc/build/text "$pkgdir/usr/share/doc/$pkgname"
+	rm -r "$pkgdir/usr/share/doc/$pkgname/.doctrees"
 }
