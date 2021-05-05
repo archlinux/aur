@@ -33,7 +33,7 @@ package() {
        install -Dm 755 ./libibusplatforminputcontextplugin.so ${pkgdir}/usr/lib/scrt/plugins/platforminputcontexts/libibusplatforminputcontextplugin.so
        install -Dm 755 ./libcomposeplatforminputcontextplugin.so ${pkgdir}/usr/lib/scrt/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so
        install -Dm 755 ./libqxcb.so ${pkgdir}/usr/lib/scrt/plugins/platforms/libqxcb.so
-       install -Dm 755 ./libCommonUiQt.so ${pkgdir}/usr/lib/scrt/libCommonUiQt .so
+       install -Dm 755 ./libCommonUiQt.so ${pkgdir}/usr/lib/scrt/libCommonUiQt.so
        install -Dm 755 ./libQt5Gui.so.5 ${pkgdir}/usr/lib/scrt/libQt5Gui.so.5
        install -Dm 755 ./libQt5PrintSupport.so.5 ${pkgdir}/usr/lib/scrt/libQt5PrintSupport.so.5
        install -Dm 755 ./libQt5Core.so.5 ${pkgdir}/usr/lib/scrt/libQt5Core.so.5
