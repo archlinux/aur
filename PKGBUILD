@@ -1,26 +1,28 @@
+# Maintainer: Frederik Schwan <freswa at archlinux dot org>
+
 pkgname=libstrophe-git
-pkgver=273.cd92f69
+pkgver=653.2f491e0
 pkgrel=1
-pkgdesc="A simple, lightweight C library for writing XMPP clients"
-arch=('i686' 'x86_64')
-url="http://strophe.im/libstrophe/"
+pkgdesc='A simple, lightweight C library for writing XMPP clients'
+arch=('x86_64')
+url='http://strophe.im/libstrophe/'
 license=('MIT' 'GPL3')
-depends=('expat')
+depends=('expat' 'openssl')
 makedepends=('git' 'doxygen')
 checkdepends=('check')
 provides=('libstrophe')
 conflicts=('libstrophe')
-source=('git://github.com/strophe/libstrophe.git')
-sha256sums=('SKIP')
 options=('staticlibs')
+source=('git://github.com/strophe/libstrophe.git')
+b2sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/libstrophe"
+	cd libstrophe
 	echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
 build() {
-	cd "$srcdir/libstrophe"
+	cd libstrophe
 
 	./bootstrap.sh
 	./configure --prefix=/usr
@@ -29,11 +31,13 @@ build() {
 }
 
 check() {
-	cd "$srcdir/libstrophe"
+	cd libstrophe
 	make check
 }
 
 package() {
-	cd "$srcdir/libstrophe"
+	cd libstrophe
 	make DESTDIR="${pkgdir}" install
+
+	install -Dm644 -t "${pkgdir}"/usr/share/licenses/libstrophe-git/ MIT-LICENSE.txt
 }
