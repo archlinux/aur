@@ -1,6 +1,6 @@
 pkgbase = google-cloud-sdk-app-engine-python
 	pkgdesc = A google-cloud-sdk component that provides the Python runtime for AppEngine.
-	pkgver = 338.0.0
+	pkgver = 339.0.0
 	pkgrel = 1
 	url = https://cloud.google.com/sdk/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = google-cloud-sdk-app-engine-python
 	depends = google-cloud-sdk
 	depends = python2
 	options = !strip
-	source = https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/google-cloud-sdk-app-engine-python_338.0.0.orig.tar.gz
-	sha256sums = bcbe316b6def5dcdb2149da7930a0425b6bb309c9565ff1d7838a96712f23b46
+	source = https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/google-cloud-sdk-app-engine-python_339.0.0.orig.tar.gz
+	sha256sums = 9553e5e65e4c2820da6e6de854b3d7f6429d5f6d29bb73e3a5cfaed306c95f80
 
 pkgname = google-cloud-sdk-app-engine-python
 
