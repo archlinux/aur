@@ -10,6 +10,7 @@ arch=('x86_64')
 provides=('logdna-cli')
 source=("logdna-cli-$pkgver-$pkgrel.deb::https://github.com/logdna/logdna-cli/releases/download/${pkgver}/logdna-cli_${pkgver}_amd64.deb")
 md5sums=('d5ff05d09c5d8b55f2ece7b931e5463f')
+options=("!strip")
 
 package() {
     ar x "$srcdir/logdna-cli-$pkgver-$pkgrel.deb" data.tar.gz
