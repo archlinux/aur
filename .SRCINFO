@@ -1,14 +1,15 @@
 pkgbase = skm
-	pkgdesc = A simple and powerful SSH keys manager.
-	pkgver = 0.5.3
+	pkgdesc = A simple and powerful SSH keys manager
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/TimothyYe/skm
 	arch = x86_64
 	license = MIT
-	source = skm-linux64-0.5.3.tar.gz::https://github.com/TimothyYe/skm/releases/download/V0.5.3/skm-linux64-0.5.3.tar.gz
-	source = LICENSE
-	md5sums = bd602cd9820474ead84ff8a9f3756cf5
-	md5sums = 23f496e588b7f087e293808efbd625af
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = skm
+	source = skm-0.8.3::git+https://github.com/TimothyYe/skm.git#tag=v0.8.3
+	b2sums = SKIP
 
 pkgname = skm
-
