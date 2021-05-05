@@ -1,20 +1,20 @@
-# Maintainer: Erikas Rudinskas <erikmnkl@gmail.com>
+# Maintainer: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
+# Contributor: Erikas Rudinskas <erikmnkl@gmail.com>
 
 pkgname=nbfc
 pkgver=1.6.3
 _pkgver=$(echo $pkgver | sed -r 's/_/-/g')
 _pkgname=nbfc-${_pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform fan control service for notebooks (STABLE & BETA releases)"
-arch=("i686" "x86_64")
 url="https://github.com/hirschmann/nbfc"
+arch=('i686' 'x86_64')
 conflicts=('nbfc-beta' 'nbfc-git')
-license=("GPL3")
+license=('GPL3')
 install=${pkgname}.install
-depends=("mono")
-makedepends=('ncurses<=6.0-4')
+depends=('mono')
+makedepends=('mono-msbuild' 'nuget')
 provides=('nbfc' 'ec-probe')
-makedepends=('nuget')
 source=("https://github.com/hirschmann/nbfc/archive/${_pkgver}.tar.gz"
         "nbfc"
         "ec-probe")
@@ -24,24 +24,27 @@ md5sums=("2b61dde6a98622b57d85448e611dd382"
 
 build() {
 	cd "${srcdir}/${_pkgname}/"
+
 	nuget restore NoteBookFanControl.sln
-	xbuild /t:Build /p:Configuration=ReleaseLinux NoteBookFanControl.sln
+	msbuild -m /t:Build /p:Configuration=ReleaseLinux NoteBookFanControl.sln
 }
 
 package() {
+	cd "${srcdir}/${_pkgname}/"
+
 	# Files installation:
 	mkdir -p "${pkgdir}/opt/nbfc"
-	cp -R "${srcdir}/${_pkgname}/Linux/bin/Release/"* "${pkgdir}/opt/nbfc/"
+	cp -R Linux/bin/Release/* "${pkgdir}/opt/nbfc/"
 
 	# Systemd services:
-	install -D -m644 "${srcdir}/${_pkgname}/Linux/nbfc.service" "${pkgdir}/etc/systemd/system/nbfc.service"
-	install -D -m644 "${srcdir}/${_pkgname}/Linux/nbfc-sleep.service" "${pkgdir}/etc/systemd/system/nbfc-sleep.service"
-	
+	install -D -m644 Linux/nbfc.service "${pkgdir}/etc/systemd/system/nbfc.service"
+	install -D -m644 Linux/nbfc-sleep.service "${pkgdir}/etc/systemd/system/nbfc-sleep.service"
+
 	# Executables:
 	install -Dm755 "${srcdir}/nbfc" "${pkgdir}/usr/bin/nbfc"
 	install -Dm755 "${srcdir}/ec-probe" "${pkgdir}/usr/bin/ec-probe"
 
 	# License:
 	mkdir -p "${pkgdir}/usr/share/licenses/nbfc"
-	install -D -m755 "${srcdir}/${_pkgname}/LICENSE.md" "${pkgdir}/usr/share/licenses/nbfc/LICENSE"
+	install -D -m755 LICENSE.md "${pkgdir}/usr/share/licenses/nbfc/LICENSE"
 }
