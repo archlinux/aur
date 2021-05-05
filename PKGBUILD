@@ -2,7 +2,7 @@
 
 pkgname=listmonk
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Self-hosted newsletter and mailing list manager with a modern dashboard"
 arch=(any)
 url=https://listmonk.app
@@ -31,11 +31,11 @@ build() {
 		-buildmode=pie \
 		-mod=readonly \
 		-modcacherw \
-		-ldflags "-extldflags '$LDFLAGS' -X 'main.buildString=$pkgver' -X 'main.versionString=$pkgver'" \
+		-ldflags "-extldflags '$LDFLAGS' -X 'main.buildString=Arch Linux AUR v$pkgver $pkgrel' -X 'main.versionString=v$pkgver-beta'" \
 		-o $pkgname \
 		cmd/*.go
 	export YARN_CACHE_FOLDER="$srcdir/node_modules"
-	export VUE_APP_VERSION="$pkgver"
+	export VUE_APP_VERSION="v$pkgver-beta"
 	pushd frontend
 	yarn build
 }
