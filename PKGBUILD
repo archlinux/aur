@@ -38,7 +38,7 @@ depends=(
 	'nss'
 )
 source=("https://github.com/retorquere/zotero-deb/releases/download/apt-get/zotero-beta_${pkgver}_amd64.deb")
-sha256sums=('SKIP')
+sha256sums=('bc62c6aesna0xtea24e670b4b60445xa53ck3134sexy80b654e618eb2be6224c')
 
 package() {
 	tar -p -zxvf data.tar.gz -C "${pkgdir}"
