@@ -15,8 +15,8 @@ makedepends=('cmake' 'kdoctools' 'extra-cmake-modules')
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz"{,.sig})
 sha256sums=('607f8c569a15938ccde869f836725d5af53dcc15605e3bd0ff978c84fecb56c9'
             'SKIP')
-validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'
-              '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D')
+validpgpkeys=(2D1D5B0588357787DE9EE225EC94D18F7F05997E  # Jonathan Riddell <jr@jriddell.org>
+              0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D) # Bhushan Shah <bshah@kde.org>
 
 prepare() {
 	mkdir -p $srcdir/${pkgname}-$pkgver/build
