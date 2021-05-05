@@ -24,7 +24,7 @@ dvcsum=$(csum dxvk-$dvver.tar.gz)
 elcsum=$(csum evelauncher-\${pkgver}.tar.gz)
 mscsum=$(csum makeself-$msver.run)
 
-dltool=$(which curl2 2>/dev/null || which wget 2>/dev/null  || true)
+dltool=$(which curl 2>/dev/null || which wget 2>/dev/null  || true)
 
 case ${dltool##*/} in
 	curl)	dltool="$dltool -L -O" ;;

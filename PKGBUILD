@@ -9,6 +9,7 @@ url="https://forums.eveonline.com/t/299030"
 license=('zlib')
 
 depends=('icu'
+         'lsof'
          'openssl'
          'openssl-1.0'
          'p7zip'
@@ -140,7 +141,7 @@ sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
             '609c021ee09ced450b1aeda9c3dd586ebfbc17d2bdccbb4be69de70d661d12c8'
             'c53c6f09a0d2d12a4360bc4283d6259de1f47cfc29f708fdd9b960aab30af4ef'
             '675da37e1a26862914fb7900c974892ecdd8946c53ff96d322c204f5e410d14a'
-            'eae205aeb9078d1e2ebed6d7260e104051650c9f20affa16742c44eb41f5a4c0'
+            '0029ffaccda6e48d1b601ef7fc5f7cb7ce01b4064885caf314e97cfcadad2973'
             'dbe32af6b0925fe110aa91a7d49337083a16010fc0d1c3bad17acec06f7e47f1'
             '6b1d665ba4187f265d04c5b34506d52e72dbb36ba1b9583e7cc30b5757e70f9e'
             '69b98d923c08c6fb035c0c6905ec5e9c73273b694f8f3497777d44597dbe63e3'
