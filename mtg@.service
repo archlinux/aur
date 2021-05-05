@@ -4,8 +4,7 @@ After=network-online.target
 
 [Service]
 DynamicUser=yes
-EnvironmentFile=/etc/mtg/%i.conf
-ExecStart=/usr/bin/mtg run $SECRET $ADTAG
+ExecStart=/usr/bin/mtg run /etc/mtg/%i.toml
 
 [Install]
 WantedBy=multi-user.target

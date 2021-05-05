@@ -1,5 +1,5 @@
 pkgname=mtg
-pkgver=1.0.9
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Bullshit-free MTProto proxy for Telegram'
 arch=('x86_64' 'armv7h' 'aarch64') # possibly others?
@@ -12,12 +12,12 @@ install='mtg.install'
 source=(
     "git+https://github.com/9seconds/mtg#tag=v${pkgver}"
     'mtg@.service'
-    'example.conf'
+    'example.toml'
 )
 sha256sums=(
     'SKIP'
-    '5088e0a229f13f94b2214461661cb94dabd17c9a60bd66329c408f75c9b97bbc'     
-    '271a8765990b46a305b3aebeb08ee1ef63d22d889190ba2c84b50b35b304f6b5'
+    '4409cccf793cf393d53b63646b0ccc30e3d46683edb30352eb7f7e26f3f71afa'     
+    'efbc6956fb3d98080011360265d77fa1cbd9d1b8261670b96f08b3d35d02c51e'
 )
 
 build() {
@@ -28,5 +28,5 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname}/mtg" "${pkgdir}/usr/bin/mtg"
     install -Dm644 "${srcdir}/mtg@.service" "${pkgdir}/usr/lib/systemd/system/mtg@.service"
-    install -Dm644 "${srcdir}/example.conf" "${pkgdir}/etc/mtg/example.conf"
+    install -Dm644 "${srcdir}/example.toml" "${pkgdir}/etc/mtg/example.toml"
 }

@@ -4,4 +4,8 @@ post_install() {
 
 post_upgrade() {
   post_install "$1"
+
+  if [[ "$1" == 2* ]] && [[ "$2" == 1* ]]; then
+      echo "Warning: the configuration format for mtg 2.0 has changed - see /etc/mtg/example.toml for details!"
+  fi
 }
