@@ -4,11 +4,11 @@ _pyname=oslo.reports
 _pycname=${_pyname/./-}
 pkgname=python-${_pycname}
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Oslo Reports library"
-arch=('any')
+arch=(any)
 url="https://docs.openstack.org/oslo.reports/latest/"
-license=('Apache')
+license=(Apache)
 depends=(
 	python
 	python-pbr
@@ -19,7 +19,13 @@ depends=(
 	python-oslo-i18n
 	python-oslo-utils
 )
-makedepends=(python-setuptools)
+makedepends=(
+	python-setuptools
+	python-sphinx
+	python-sphinxcontrib-apidoc
+	python-openstackdocstheme
+	python-reno
+)
 checkdepends=(
 	python-hacking
 	python-oslotest
@@ -40,7 +46,9 @@ export PBR_VERSION=$pkgver
 
 build(){
 	cd $_pyname-$pkgver
+	export PYTHONPATH="$PWD"
 	python setup.py build
+	sphinx-build -b text doc/source doc/build/text
 }
 
 check(){
@@ -51,4 +59,8 @@ check(){
 package(){
 	cd $_pyname-$pkgver
 	python setup.py install --root="$pkgdir/" --optimize=1
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	mkdir -p "$pkgdir/usr/share/doc"
+	cp -r doc/build/text "$pkgdir/usr/share/doc/$pkgname"
+	rm -r "$pkgdir/usr/share/doc/$pkgname/.doctrees"
 }
