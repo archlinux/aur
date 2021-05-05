@@ -1,0 +1,18 @@
+pkgbase = dsb-demodulator-git
+	pkgdesc = Demodulator for the NOAA DSB signal, port of Project-Desert-Tortoise
+	pkgver = r1.200e870
+	pkgrel = 1
+	url = https://github.com/altillimity/DSB-Demodulator
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	provides = dsb-demodulator
+	conflicts = dsb-demodulator
+	source = git+https://github.com/altillimity/DSB-Demodulator
+	md5sums = SKIP
+
+pkgname = dsb-demodulator-git
+
