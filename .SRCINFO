@@ -1,8 +1,8 @@
 pkgbase = foo2zjs-minimal-nightly
-	pkgdesc = foo2zjs printer drivers with the bare minimum compilation options to ensure package stability.
-	pkgver = 20200610
+	pkgdesc = Archived version of foo2zjs printer drivers with the bare minimum compilation options to ensure package stability.
+	pkgver = 20210313
 	pkgrel = 1
-	url = http://foo2zjs.rkkda.com/
+	url = https://github.com/hamzadis/foo2zjs-archive
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -15,8 +15,8 @@ pkgbase = foo2zjs-minimal-nightly
 	depends = ghostscript
 	provides = foo2zjs-nightly
 	conflicts = foo2zjs-nightly
-	source = http://foo2zjs.rkkda.com/foo2zjs.tar.gz
-	md5sums = SKIP
+	source = https://github.com/hamzadis/foo2zjs-archive/releases/download/20210313/foo2zjs.tar.gz
+	md5sums = c6cbaa467a9a73a7c542f5a6c63723de
 
 pkgname = foo2zjs-minimal-nightly
 
