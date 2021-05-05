@@ -1,8 +1,8 @@
 # Maintainer: Helle Vaanzinn <glitsj16 at riseup dot net >
 
 pkgname=fdns
-pkgver=0.9.64.2
-pkgrel=6
+pkgver=0.9.66
+pkgrel=1
 pkgdesc="Firejail DNS-over-HTTPS proxy server"
 arch=(x86_64)
 license=(GPL2)
@@ -13,16 +13,9 @@ optdepends=('apparmor: support for apparmor profiles'
     'firejail: seamless integration support'
     'systemd: run fdns as a systemd service')
 validpgpkeys=('F951164995F5C4006A73411E2CCB36ADFC5849A7')
-source=("https://github.com/netblue30/fdns/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.asc}
-    'resolver.seccomp.patch')
-sha256sums=('1ecfb371748df2654f1ce9d14dde3f2f9266a50a9dbcff51122fb941ccc07236'
-            'SKIP'
-            '850f7a471f92e902e3d810b98c3cd96727e6d7af9882817c0b62167942a1f3cd')
-
-prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    patch -Np1 < ../resolver.seccomp.patch # Update for kernel 5.11
-}
+source=("https://github.com/netblue30/fdns/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.asc})
+sha256sums=('6e080ef0c4e970cfc3c1367513226d18358aec271020f944ded1b6e2ae2f6d9f'
+            'SKIP')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
