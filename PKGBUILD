@@ -10,11 +10,11 @@
 pkgname=mkbootimg
 pkgver=31.0.0
 _tag=${pkgver}p1 # https://github.com/nmeum/android-tools carries extra patch version on top of the upstream versioning
-pkgrel=2
+pkgrel=3
 pkgdesc='Tool to create and/or unpack Android boot images'
 arch=('any')
 url='https://github.com/nmeum/android-tools'
-license=(Apache MIT)
+license=(Apache)
 # python: for mkbootimg & avbtool scripts
 # python2: for unpack_bootimg script
 depends=(python python2)
