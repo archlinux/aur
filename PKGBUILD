@@ -9,7 +9,7 @@ pkgrel=2
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=(x86_64)
 url=https://www.unrealengine.com/
-makedepends=(mono dos2unix git openssh)
+makedepends=(mono mono-msbuild dos2unix git openssh)
 depends=(icu sdl2 python lld xdg-user-dirs)
 optdepends=('qt5-base: qmake build system for projects'
             'cmake: build system for projects'
