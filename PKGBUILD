@@ -23,9 +23,9 @@ _per_gov=y
 _deadline_disable=y
 ### Disable Kyber I/O scheduler
 _kyber_disable=y
-### Running with a 1000 HZ, 750HZ or 500HZ tick rate
-_1k_HZ_ticks=y
-_750_HZ_ticks=
+### Running with a 2000 HZ, 1000HZ or 500HZ tick rate
+_2k_HZ_ticks=y
+_1k_HZ_ticks=
 _500_HZ_ticks=
 ### Tweak kernel options prior to a build via nconfig
 _makenconfig=
@@ -64,7 +64,7 @@ pkgver=${_major}
 #_stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -77,13 +77,12 @@ source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz
         "https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/$_srcname.tar.xz"
         "config"
         "${_patchsource}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_patchsource}/cacule-patches/cacule-5.12.patch"
+        "${_patchsource}/cacule-patches/cacule-5.12-2k.patch"
         "${_patchsource}/cpu-patches/0001-cpu-patches.patch"
         "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/futex2-stable-patches-v2/0001-futex2-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/bfq-patches-v2/0001-bfq-patches.patch"
         "${_patchsource}/block-patches/0001-block-patches.patch"
-        "${_patchsource}/ll-patches/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
         "${_patchsource}/ll-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
         "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
         "${_patchsource}/bbr2-patches-v2/0001-bbr2-5.12-introduce-BBRv2.patch"
@@ -98,15 +97,14 @@ source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz
         "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch")
 
 sha512sums=('9bb9831459557a87ecb822ee5862b27ec1cb0de7df1a0131f534bd57a152b6ea75b710fa319cf533a8f89b8cbaa6b4844bd260c4bd825e83e1d62e7734510240'
-            '1ab27f634f844a096c1c6572349581495fa76555888100028a694abfe5529900ed4ba748be2452f1fcdf97c1fbbf25cd2cb3b8f2e00dff83cb86632988926bd9'
+            '023adf5a1c540f74aeebb47fb9f80988bdce15e8dd4e3d1a82ec1dc7c74a0b495d671fff87f91da3bb77ae46c7c7e803408b417b8c1e486e3ecdad11adb442e2'
             '88f9f1e6ea206068fd029566e4610c16b7c3007f10363c7db37cd922fe75646437d2e4814317bc292d06eff7e9ebd29d8cd1ee82c8abf45ddd1843c1ff55f5c7'
-            '9ae489f10dc259add64967c6f1fa7f1cddbb1026bb3d5af8f3ec8c61aeaa82baba8ffbca27ef0633135442c2fc15aeb7511dd6b1fd8e10169a355e3f00c625cf'
+            '79807de3136a32f9e96f37d7781bfa4db225855573ab44092d1c22c5f9e282b1bc034b8de03c610ecba38b75708144b7a52c92e78dd460493239869cb2ae33fa'
             '15933126feeb56ccc6ace70db9fa7afb64d148900e41a780e42e03ce09faf7bab12413f526675b918aeff55e91dc038ad58884bb7add4a45962aca79d576cb93'
             '449570b8b9a04391cc2cc171cc806b3a132c6e969c7cedf9c4925d24244888e6f2e5afb6c551521fe62fcb7e2bf08cb8d396f9ec785ecfcdd5ea27dd9ffed4ea'
             'a0ba9fd091e4cc30b2a493e23299c0ce242ee26e8af399ea9aa115face3b90a723fb20f8877042c6b311a9eca20513bb932c1fd1c5db262b1df7b37160c0634e'
             'e068418a1519a19901ceedf25a7a1fc2a9570c3c75384f2632ef0c89becc6606cb4cec759da60a18231cc77dce6f6a448f70f0aa05a2176fdec5fdcbf79832cd'
             'daeec34905469d8e3a10eca2bf71e3875423fc72a92ff62bff74aef8f0af90cfc3282d5c67483379feb33b1c518287b6165b5fe42f9a8bcbc6dd3dbfcde38121'
-            '58bdb0b745c8b52cd65e48af41764d4b5c54f054878e3fe9c83d4580fd94e190693c77a2b76990db79ef68e441c21cbd6f475137823c6e02b38e7c38602b7934'
             '47f265716ebd268e4296aaba1efe5098df00736b69ec7d0413cace6dbb5cb162c1c952f7527a2a41b246ed76e6e112514c5349e8dc52f4609def30257e18d7aa'
             '5081a6a3a3db160ef0a23acd0c0db403cc4b3eb2dfd280b1b7ba2ae907d362e4d6a653d546523c870af07009c62f58eec26e7b8174a3f4fcbaa32808d965ad73'
             '28446f518e88ab934330111a01019cb164bfdd21094c69e96cc16c7931440d069ef997ae141154c97c80fcb727e8c4d940b8bf63554e3f4179652523e285c5b4'
@@ -182,17 +180,17 @@ prepare() {
         scripts/config --set-val CONFIG_HZ 1000
 	   fi
 
-  ### Optionally set tickrate to 750HZ
-    if [ -n "$_750_HZ_ticks" ]; then
-      echo "Setting tick rate to 1k..."
+  ### Optionally set tickrate to 2000HZ
+    if [ -n "$_2k_HZ_ticks" ]; then
+      echo "Setting tick rate to 2k..."
       scripts/config --disable CONFIG_HZ_300
-      scripts/config --enable CONFIG_HZ_750
-      scripts/config --set-val CONFIG_HZ 750
+      scripts/config --enable CONFIG_HZ_2000
+      scripts/config --set-val CONFIG_HZ 2000
     fi
 
   ### Optionally set tickrate to 500HZ
     if [ -n "$_500_HZ_ticks" ]; then
-      echo "Setting tick rate to 1k..."
+      echo "Setting tick rate to 500HZ..."
       scripts/config --disable CONFIG_HZ_300
       scripts/config --enable CONFIG_HZ_500
       scripts/config --set-val CONFIG_HZ 500
@@ -228,7 +226,7 @@ prepare() {
   		scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
   		scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
   		echo "Disabling uneeded governors..."
-  		scripts/config --disable CONFIG_CPU_FREQ_GOV_ONDEMAND
+  		scripts/config --enable CONFIG_CPU_FREQ_GOV_ONDEMAND
   		scripts/config --disable CONFIG_CPU_FREQ_GOV_CONSERVATIVE
   		scripts/config --disable CONFIG_CPU_FREQ_GOV_USERSPACE
   		scripts/config --disable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
@@ -282,6 +280,11 @@ prepare() {
       scripts/config --disable CONFIG_SCHEDSTATS
       scripts/config --disable CONFIG_DEBUG_KERNEL
       scripts/config --disable CONFIG_EXPERT
+      ##TEST##
+      scripts/config --enable CONFIG_NO_HZ_FULL
+      scripts/config --enable CONFIG_NO_HZ
+      scripts/config --enable CONFIG_CONTEXT_TRACKING
+      scripts/config --disable CONFIG_CONTEXT_TRACKING_FORCE
       echo "Enabling KBUILD_CFLAGS -O3..."
       scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
       scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
@@ -291,6 +294,9 @@ prepare() {
       scripts/config --enable CONFIG_PREEMPT
       scripts/config --enable CONFIG_PREEMPT_COUNT
       scripts/config --enable CONFIG_PREEMPTION
+#      ##NEW
+#      scripts/config --enable CONFIG_PREEMPT_RCU
+#      scripts/config --enable CONFIG_PREEMPT_NOTIFIERS
   ### Enable NTFS3
       echo "Enable NTFS3"
       scripts/config --module CONFIG_NTFS_FS
