@@ -16,7 +16,7 @@ depends=(
 url="https://morphometrics.uk/MorphoJ_page.html"
 license=('Apache License version 2')
 source=("https://github.com/starsareintherose/morphoj/releases/download/${pkgver}/MorphoJ.zip")
-sha256sums=('SKIP')
+sha256sums=('bc62c6ae0ac0e9ea14e660b4a603355a53ca3134c1ab90b654e618eb2be6ce4c')
 
 
 package() {
