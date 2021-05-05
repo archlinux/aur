@@ -50,6 +50,10 @@ prepare() {
     pushd $srcdir/ros2/src/ros2/rcutils
     git cherry-pick 618a9d94565ab844b9f40e0f5828ddbab2bcdad1 || git cherry-pick --skip
     popd
+    ## ros1_bridge
+    pushd $srcdir/ros2/src/ros2/ros1_bridge
+    git revert 81b7610568286ec7b390c64cf6207b362d0a6550 --no-edit || true
+    popd
 }
 
 build() {
