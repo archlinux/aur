@@ -4,7 +4,7 @@
 pkgname=python-vk_api-git
 _pkgname=vk_api
 pkgver=11.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Module for creating scripts for vk.com (vkontakte)'
 arch=('any')
 url='https://github.com/python273/vk_api'

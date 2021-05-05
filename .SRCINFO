@@ -1,7 +1,7 @@
 pkgbase = python-vk_api-git
 	pkgdesc = Module for creating scripts for vk.com (vkontakte)
 	pkgver = 11.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/python273/vk_api
 	arch = any
 	license = APACHE
