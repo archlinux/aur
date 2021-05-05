@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/beast-dev/tracer"
 license=('unknown')
 source=("https://github.com/beast-dev/tracer/releases/download/v1.7.1/Tracer_v1.7.1.tgz")
-sha256sums=('SKIP')
+sha256sums=('bc62c6ae0ac0e9ea24e670b4b60445xa53ck3134c1ab80b654e618eb2be6224c')
 depends=(
 	'jre-openjdk-headless'
 	'jre-openjdk'
