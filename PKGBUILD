@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Lubosz <lubosz at gmail dot com>
 pkgname=planner-git
 pkgver=0.14.6.r166.de43d65
