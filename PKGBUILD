@@ -1,18 +1,19 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=proguard
-pkgver=7.0.1
+vertag=7.1.0-beta3
+pkgver=${vertag//-/}
 pkgrel=1
 pkgdesc="free Java class file shrinker, optimizer, obfuscator, and preverifier"
 arch=(any)
 url="http://proguard.sourceforge.net/"
 license=('GPL2')
 depends=('java-runtime')
-source=("https://github.com/Guardsquare/proguard/releases/download/v$pkgver/proguard-$pkgver.tar.gz")
-sha1sums=('6b5c3af8e8e315e1868c5ab032ad2a8a66360038')
+source=("https://github.com/Guardsquare/proguard/releases/download/v$vertag/proguard-$vertag.tar.gz")
+sha256sums=('454b887a6d3b340384eee2f273b725c22f6dcb0d9075a0636605534a0b2a35b7')
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/lib"
+  cd "$srcdir/$pkgname-$vertag/lib"
 
   mkdir -p "$pkgdir"/usr/bin
   mkdir -p "$pkgdir"/usr/share/proguard
