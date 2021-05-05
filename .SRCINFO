@@ -1,0 +1,23 @@
+pkgbase = jamulus-git
+	pkgdesc = Internet jam session software (git)
+	pkgver = r4215.192391d0
+	pkgrel = 1
+	url = http://llcon.sourceforge.net/
+	arch = x86_64
+	license = GPL2
+	makedepends = jack
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = qt5-base
+	provides = jamulus
+	conflicts = jamulus
+	source = jamulus-git::git+https://github.com/corrados/jamulus/
+	sha1sums = SKIP
+
+pkgname = jamulus-git
+	depends = glibc
+	depends = gcc-libs
+	depends = qt5-base
+	depends = libjack.so
+
