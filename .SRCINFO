@@ -11,7 +11,7 @@ pkgbase = beast
 	depends = openjdk-doc
 	depends = openjdk-src
 	source = https://github.com/beast-dev/beast-mcmc/releases/download/v1.10.4/BEASTv1.10.4.tgz
-	sha256sums = SKIP
+	sha256sums = bc62c6ae0ac0e9ea14e660b4a603355a53ca3134c1ab80b654e618eb2be6ce4c
 
 pkgname = beast
 
