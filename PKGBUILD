@@ -16,6 +16,12 @@ pkgver() {
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+build() {
+	cd "$srcdir/owofetch-rs"
+	RUSTUP_TOOLCHAIN=stable cargo build --release --locked --all-features --target-dir=target
+}
+
 package() {
-	cargo install --no-track --root="$pkgdir" --path "$srcdir/owofetch-rs" owofetch	
+	cd "$srcdir/owofetch-rs"
+	install -Dm 755 target/release/owofetch -t "${pkgdir}/usr/bin"
 }
