@@ -19,15 +19,15 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 ((DISABLE_USD)) || {
   _CMAKE_FLAGS+=( -DWITH_USD=ON
                 -DUSD_ROOT=/usr )
-  depends+=( usd=19.11 )
+  depends+=( usd19 )
 }
 ((DISABLE_NINJA)) ||  makedepends+=('ninja')
 #shellcheck disable=SC2015
-((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix=7.0'); }
+((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix70'); }
 
 pkgname=blender-${_blenver}-git
 pkgver=2.83.13.r2.gd35974cd870
-pkgrel=1
+pkgrel=2
 pkgdesc="LTS Maintenance version of ${_branch} branch"
 changelog=blender.changelog
 arch=('i686' 'x86_64')
