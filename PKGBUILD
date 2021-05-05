@@ -15,7 +15,7 @@ sha256sums=('27764a82d97b54026c90044fbc31ea4a61f7836568020b869e63376322a155af')
 build() {
   cd $pkgname-$pkgver
 
-  mkdir build && cd build
+  mkdir -p build && cd build
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DGAME_BINDIR=/usr/bin ..
   make
