@@ -1,10 +1,11 @@
 pkgbase = python3-anilistpy
+	pkgdesc = Easy to use python wrapper for anilist apiv2
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anilistpy/anilistpy
 	arch = i686
 	arch = x86_64
-	license = AGPL2
+	license = AGPL3
 	makedepends = python
 	makedepends = rust
 	makedepends = python-pip

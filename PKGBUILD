@@ -2,11 +2,11 @@
 
 pkgname=python3-anilistpy
 pkgver=0.1.0
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc="Easy to use python wrapper for anilist apiv2"
 arch=('i686' 'x86_64')
 url="https://github.com/anilistpy/anilistpy"
-license=('AGPL2')
+license=('AGPL3')
 provides=('python3-anilistpy')
 conflicts=('python3-anilistpy')
 makedepends=('python' 'rust' 'python-pip')
