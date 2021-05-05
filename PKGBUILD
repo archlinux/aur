@@ -1,7 +1,7 @@
 # Maintainer: Giancarlo Grasso <gianniesoft at gmail dot com>
 
 pkgname=whatsdesk-bin
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="unofficial client of whatsapp"
 arch=('x86_64')
