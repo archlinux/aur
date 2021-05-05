@@ -3,33 +3,125 @@
 _pkgname=xemu
 pkgname=$_pkgname-git
 pkgver=0.5.1.r7096.g30042e8091
-pkgrel=1
+pkgrel=2
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
 url="https://xemu.app/"
 license=('GPL2')
-depends=('gtk3' 'libsamplerate' 'sdl2')
-makedepends=('git' 'glu' 'ninja' 'python')
+depends=('gtk3' 'libsamplerate' 'libslirp' 'sdl2')
+makedepends=('git' 'glu' 'meson' 'python')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://github.com/mborgerson/xemu.git")
-md5sums=('SKIP')
+source=('git+https://github.com/mborgerson/xemu.git'
+	'git+https://gitlab.com/qemu-project/keycodemapdb.git'
+	'git+https://github.com/ocornut/imgui.git'
+	'git+https://github.com/epezent/implot.git'
+	'git+https://gitlab.com/qemu-project/berkeley-softfloat-3.git'
+	'git+https://gitlab.com/qemu-project/berkeley-testfloat-3.git'
+	'git+https://github.com/Cyan4973/xxHash.git')
+md5sums=('SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP')
 
 pkgver() {
 	cd $_pkgname
 	git describe --long | sed 's/^xemu-v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+	cd $_pkgname
+	local paths=(ui/keycodemapdb
+		ui/imgui
+		ui/implot
+		tests/fp/berkeley-softfloat-3
+		tests/fp/berkeley-testfloat-3
+		hw/xbox/nv2a/xxHash)
+	git submodule init "${paths[@]}"
+	for name in "${paths[@]}"; do
+		git config "submodule.$name.url" "../${name##*/}"
+	done
+	git submodule update
+}
+
 build() {
 	cd $_pkgname
-	./build.sh
+	./configure --with-git-submodules=ignore \
+		--extra-cflags="-DXBOX=1" \
+		--target-list=i386-softmmu \
+		--enable-trace-backends="nop" \
+		--enable-sdl \
+		--enable-opengl \
+		--disable-curl \
+		--disable-vnc \
+		--disable-vnc-sasl \
+		--disable-docs \
+		--disable-tools \
+		--disable-guest-agent \
+		--disable-tpm \
+		--disable-live-block-migration \
+		--disable-rdma \
+		--disable-replication \
+		--disable-capstone \
+		--disable-fdt \
+		--disable-libiscsi \
+		--disable-spice \
+		--disable-user \
+		--disable-stack-protector \
+		--disable-glusterfs \
+		--disable-gtk \
+		--disable-curses \
+		--disable-gnutls \
+		--disable-nettle \
+		--disable-gcrypt \
+		--disable-crypto-afalg \
+		--disable-virglrenderer \
+		--disable-vhost-net \
+		--disable-vhost-crypto \
+		--disable-vhost-vsock \
+		--disable-vhost-user \
+		--disable-virtfs \
+		--disable-snappy \
+		--disable-bzip2 \
+		--disable-vde \
+		--disable-libxml2 \
+		--disable-seccomp \
+		--disable-numa \
+		--disable-lzo \
+		--disable-smartcard \
+		--disable-usb-redir \
+		--disable-bochs \
+		--disable-cloop \
+		--disable-dmg \
+		--disable-vdi \
+		--disable-vvfat \
+		--disable-qcow1 \
+		--disable-qed \
+		--disable-parallels \
+		--disable-sheepdog \
+		--without-default-devices \
+		--disable-blobs \
+		--disable-kvm \
+		--disable-xen \
+		--disable-hax \
+		--disable-hvf \
+		--disable-whpx \
+		--enable-lto \
+		--disable-werror
+	make qemu-system-i386
 }
 
 package() {
 	cd $_pkgname
 	# shellcheck disable=SC2154
-	install -Dm755 -t "$pkgdir"/usr/bin dist/xemu
-	install -Dm644 -t "$pkgdir"/usr/share/xemu/data dist/data/*
-	install -Dm644 -t "$pkgdir"/usr/share/applications ui/xemu.desktop
-	install -Dm644 -t "$pkgdir"/usr/share/icons/hicolor/scalable/apps ui/icons/xemu.svg
+	install -Dm644 -t "$pkgdir"/usr/share/$_pkgname/data data/*
+	install -Dm755 build/qemu-system-i386 "$pkgdir"/usr/bin/$_pkgname
+	install -Dm644 ui/xemu.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop
+	for size in 24 32 48 256 512; do
+		install -Dm644 ui/icons/xemu_${size}x${size}.png "$pkgdir"/usr/share/icons/hicolor/${size}x${size}/apps/$_pkgname.png
+	done
+	install -Dm644 ui/icons/xemu.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg
 }
