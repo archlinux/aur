@@ -1,6 +1,6 @@
 # Maintainer: Roberto Nobrega <rwnobrega@gmail.com>
 pkgname=natpos-sdr
-pkgver=43
+pkgver=59a
 pkgrel=1
 pkgdesc="A Linux based SDR program similar in operation and features to other programs like Gqrx, HDSDR, and SDR#"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('rtl-sdr' 'alsa-lib' 'glfw-x11')
 makedepends=()
 optdepends=()
 source=("http://www.ecstaticlyrics.com/radio/sdr/natpos/download/natpos-$pkgver.tgz")
-md5sums=('2d4604613ad333a3d21181183630fb21')
+md5sums=('84acbf3239f9461543ba9a4e4d6db23e')
 
 build() {
   cd "natpos-$pkgver"
