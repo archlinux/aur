@@ -1,6 +1,6 @@
 pkgbase = ldapbrowse
 	pkgdesc = An ncurses-based ldapbrowser
-	pkgver = 0.6
+	pkgver = 0.7
 	pkgrel = 1
 	url = http://github.com/david0/ldapbrowse
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = ldapbrowse
 	license = GPL
 	depends = ncurses
 	depends = libldap
-	source = ldapbrowse-0.6.tar.gz::https://github.com/david0/ldapbrowse/archive/v0.6.tar.gz
-	md5sums = 705ef4fba10e8a82fe69a771aa25c9e7
+	source = ldapbrowse-0.7.tar.gz::https://github.com/david0/ldapbrowse/archive/v0.7.tar.gz
+	md5sums = 035bb6f427f6d312a045de360e0695f7
 
 pkgname = ldapbrowse
 
