@@ -11,8 +11,8 @@ url="https://www.mestrelab.com"
 install=mestrenova.install
 license=('custom:mestrelab')
 depends=('libxi' 'glu' 'openssl-1.0')
-source=("https://mestrelab.com/downloads/mnova/linux/Ubuntu/16.04/mestrenova_14.1.2-25024_amd64.deb")
-sha256sums=('6368660fb0d4ec498c2c04462206bc048741652ba65423201c0ed43237b6ffb4')
+source=("https://mestrelab.com/downloads/mnova/linux/Ubuntu/20.04/mestrenova_14.2.0-26256_amd64.deb")
+sha256sums=('2631b8c8839cd1f3b7647d2f71528ea3009c2ef43f652824453c85c4a908d4d0')
 
 options=(!strip) 
 
