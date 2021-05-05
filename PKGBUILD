@@ -68,35 +68,8 @@ package() {
     install -m 755 ${srcdir}/MorphoJ/lib/xml-apis-ext-1.3.04.jar ${pkgdir}/usr/share/MorphoJ/lib/xml-apis-ext-1.3.04.jar
     install -m 755 ${srcdir}/MorphoJ/lib/xmlgraphics-commons-2.2.jar ${pkgdir}/usr/share/MorphoJ/lib/xmlgraphics-commons-2.2.jar
 
-    install -m 755 "${srcdir}/MorphoJ/resources/AngularComp icon.gif" "${pkgdir}/usr/share/MorphoJ/resources/AngularComp icon.gif"
-    install -m 755 "${srcdir}/MorphoJ/resources/Covariance matrix icon.gif" "${pkgdir}/usr/share/MorphoJ/resources/Covariance matrix icon.gif"
-    install -m 755 "${srcdir}/MorphoJ/resources/CVA icon.gif" "${pkgdir}/usr/share/MorphoJ/resources/CVA icon.gif"
-    install -m 755 "${srcdir}/MorphoJ/resources/DataSet icon.gif" "${pkgdir}/usr/share/MorphoJ/resources/DataSet icon.gif"
-    install -m 755 "${srcdir}/MorphoJ/resources/DiscFunc icon.gif" "${pkgdir}/usr/share/MorphoJ/resources/DiscFunc icon.gif"
-    install -m 755 "${srcdir}/MorphoJ/resources/EstSelection icon.gif" "${pkgdir}/usr/share/MorphoJ/resources/EstSelection icon.gif"
-    install -m 755 "${srcdir}/MorphoJ/resources/GPinv icon.gif" "${pkgdir}/usr/share/MorphoJ/resources/GPinv icon.gif"
-    install -m 755 "${srcdir}/MorphoJ/resources/MatrixCorr icon.gif" "${pkgdir}/usr/share/MorphoJ/resources/MatrixCorr icon.gif"
-    install -m 755 "${srcdir}/MorphoJ/resources/MinMaxIcon.gif" "${pkgdir}/usr/share/MorphoJ/resources/MinMaxIcon.gif"
-    install -m 755 "${srcdir}/MorphoJ/resources/ModularityTest icon.gif" "${pkgdir}/usr/share/MorphoJ/resources/ModularityTest icon.gif"
-    install -m 755 "${srcdir}/MorphoJ/resources/MorphoJ_icon_24.gif" "${pkgdir}/usr/share/MorphoJ/resources/MorphoJ_icon_24.gif"
-    install -m 755 "${srcdir}/MorphoJ/resources/MorphoJ_icon_32.gif" "${pkgdir}/usr/share/MorphoJ/resources/MorphoJ_icon_32.gif"
-    install -m 755 "${srcdir}/MorphoJ/resources/Outline icon.gif" "${pkgdir}/usr/share/MorphoJ/resources/Outline icon.gif"
-    install -m 755 "${srcdir}/MorphoJ/resources/PCA icon.gif" "${pkgdir}/usr/share/MorphoJ/resources/PCA icon.gif"
-    install -m 755 "${srcdir}/MorphoJ/resources/PCoAForCovMats icon.gif" "${pkgdir}/usr/share/MorphoJ/resources/PCoAForCovMats icon.gif"
-    install -m 755 "${srcdir}/MorphoJ/resources/Phylogeny icon.gif" "${pkgdir}/usr/share/MorphoJ/resources/Phylogeny icon.gif"
-    install -m 755 "${srcdir}/MorphoJ/resources/PhylogenyTreeSet icon.gif" "${pkgdir}/usr/share/MorphoJ/resources/PhylogenyTreeSet icon.gif"
-    install -m 755 "${srcdir}/MorphoJ/resources/PliableTemplate icon.gif" "${pkgdir}/usr/share/MorphoJ/resources/PliableTemplate icon.gif"
-    install -m 755 "${srcdir}/MorphoJ/resources/PLS icon.gif" "${pkgdir}/usr/share/MorphoJ/resources/PLS icon.gif"
-    install -m 755 "${srcdir}/MorphoJ/resources/ProcAnova icon.gif" "${pkgdir}/usr/share/MorphoJ/resources/ProcAnova icon.gif"
-    install -m 755 "${srcdir}/MorphoJ/resources/Project icon.gif" "${pkgdir}/usr/share/MorphoJ/resources/Project icon.gif"
-    install -m 755 "${srcdir}/MorphoJ/resources/Regression icon.gif" "${pkgdir}/usr/share/MorphoJ/resources/Regression icon.gif"
-    install -m 755 "${srcdir}/MorphoJ/resources/ResidFromOtherRegr icon.gif" "${pkgdir}/usr/share/MorphoJ/resources/ResidFromOtherRegr icon.gif"
-    install -m 755 "${srcdir}/MorphoJ/resources/ScoresFromOthePCA icon.gif" "${pkgdir}/usr/share/MorphoJ/resources/ScoresFromOthePCA icon.gif"
-    install -m 755 "${srcdir}/MorphoJ/resources/SelResp icon.gif" "${pkgdir}/usr/share/MorphoJ/resources/SelResp icon.gif"
-    install -m 755 "${srcdir}/MorphoJ/resources/Wireframes icon.GIF" "${pkgdir}/usr/share/MorphoJ/resources/Wireframes icon.GIF"
-    install -m 755 "${srcdir}/MorphoJ/resources/" "${pkgdir}/usr/share/MorphoJ/resources/"
-    install -m 755 "${srcdir}/MorphoJ/resources/" "${pkgdir}/usr/share/MorphoJ/resources/"
-    install -m 755 "${srcdir}/MorphoJ/resources/" "${pkgdir}/usr/share/MorphoJ/resources/"
+    install -D -m 755 ${srcdir}/MorphoJ/resources/*.gif "${pkgdir}/usr/share/MorphoJ/resources/"
+    install -D -m 755 ${srcdir}/MorphoJ/resources/*.GIF "${pkgdir}/usr/share/MorphoJ/resources/"
     
   mv ~/.cache/yay/morphoj/MorphoJ.desktop ${pkgdir}/usr/share/applications
 }
