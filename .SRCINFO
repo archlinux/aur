@@ -1,0 +1,15 @@
+pkgbase = owofetch-git
+	pkgdesc = Alternative to *fetch, uwuifies all stats.
+	pkgver = 0.1.r4.g8780b1c
+	pkgrel = 1
+	url = https://github.com/netthier/owofetch-rs
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	provides = owofetch
+	source = git+https://github.com/netthier/owofetch-rs
+	sha256sums = SKIP
+
+pkgname = owofetch-git
+
