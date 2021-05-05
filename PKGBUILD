@@ -17,10 +17,50 @@ _makenconfig=
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
 
+# Optionally select a sub architecture by number or leave blank which will
+# require user interaction during the build. Note that the generic (default)
+# option is 32.
+#
+#  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
+#  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
+#  3. AMD 61xx/7x50/PhenomX3/X4/II/K10 (MK10)
+#  4. AMD Barcelona (MBARCELONA)
+#  5. AMD Bobcat (MBOBCAT)
+#  6. AMD Jaguar (MJAGUAR)
+#  7. AMD Bulldozer (MBULLDOZER)
+#  8. AMD Piledriver (MPILEDRIVER)
+#  9. AMD Steamroller (MSTEAMROLLER)
+#  10. AMD Excavator (MEXCAVATOR)
+#  11. AMD Zen (MZEN)
+#  12. AMD Zen 2 (MZEN2)
+#  13. Intel P4 / older Netburst based Xeon (MPSC)
+#  14. Intel Atom (MATOM)
+#  15. Intel Core 2 (MCORE2)
+#  16. Intel Nehalem (MNEHALEM)
+#  17. Intel Westmere (MWESTMERE)
+#  18. Intel Silvermont (MSILVERMONT)
+#  19. Intel Goldmont (MGOLDMONT)
+#  20. Intel Goldmont Plus (MGOLDMONTPLUS)
+#  21. Intel Sandy Bridge (MSANDYBRIDGE)
+#  22. Intel Ivy Bridge (MIVYBRIDGE)
+#  23. Intel Haswell (MHASWELL)
+#  24. Intel Broadwell (MBROADWELL)
+#  25. Intel Skylake (MSKYLAKE)
+#  26. Intel Skylake X (MSKYLAKEX)
+#  27. Intel Cannon Lake (MCANNONLAKE)
+#  28. Intel Ice Lake (MICELAKE)
+#  29. Intel Cascade Lake (MCASCADELAKE)
+#  30. Intel Cooper Lake (MCOOPERLAKE)
+#  31. Intel Tiger Lake (MTIGERLAKE)
+#  32. Generic-x86-64 (GENERIC_CPU)
+#  33. Intel-Native optimizations autodetected by GCC (MNATIVE_INTEL)
+#  34. AMD-Native optimizations autodetected by GCC (MNATIVE_AMD)
+_subarch=
+
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.12
+pkgver=5.12.1
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -34,26 +74,26 @@ makedepends=(
 options=('!strip')
 _srcname=linux-${pkgver}
 _arch_config_commit=a50fbb19009197f7cde96fb2f86bb8b7e7e1c010
-_bmqversion=5.12-r0
+_bmqversion=5.12-r1
 _bmq_patch="prjc_v${_bmqversion}.patch"
-_gcc_more_v=20210402
+_gcc_more_v=20210412
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=1ed48c405ba85328bae25d2f393700ba715a2f81"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=427e6f34f26595c4866919c3afa204c72a783b8d"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('842d921b9a73d2aaade763dbd2ec67bdfe0275baa6d628b775f5c87574ad7dc86f0419afcd48c10c1235f4bffa16084243f2cf4556e6afcd391e975fe8ba530b'
+b2sums=('71db3031f059b4411e542fb17acf15d9d2fcff10c35958f74b190f8a4cc352658f9101b34cd35a306d36f39a3c194cde1c3d5ad7a53a758bbe0a9671b8becdd3'
         'SKIP'
         'e4f405e6817b3203802ba2951d463639a12b82a1747ac23f116ca70f9a6f70ea62655e2e3e848c5753a6222c02b18de96393206c209396242a6c7beda4f4486d'
-        'cc843d32e3cc36cc850fadab2cd6bbde7b04b29e103f81473b6e53f70f678d6f5c82f90f5107296aa6cb54e53545e15487c5a2796498a38c9cfa00c93929f894'
-        'b8c3ba685a7fa34f8b047467a41e2e78702c41e54469934515c7d2f221411b2357a7378b86edaf2ca7ce1a3f9b627878438ab1cfcdae4fc681f47021d9a813d9'
-        'd3a0830d937c5103238c9edb1ef98b8478d00251cc0b83e0e62bd359c38fd5e125b62a80f43e22ed81f7f5024f7b1a1de8402e3e9830858ad5e8b2b8112577b5')
+        '77a1646ffbc67ed88af564b73cf63f0374772bdc1075e771a93ee4fe257b94cb3766a4842898b48f4343458d0b507229182220c7daeb5532df610b964c6640e7'
+        '72194a32a06c43809d1272bd675890b6d27c6c54353150a366e8e2c50ad6eca6ee23c5d6281822965a228cfedfa07a60fe135d1b4f539e4a62728d4460cc0b0e'
+        '3458bf2ee0ab2335f912c437f393c2213841dccd8cce387963dd4b049ab9c0c607506b922fff72b48ea6a97c9cc84b434a4a0046d6cd54ef3226b92855d1c27d')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
@@ -115,7 +155,13 @@ prepare() {
   echo "Patching to enable GCC optimization for other uarchs..."
   patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/more-uarches-for-kernel-5.8+.patch"
 
-  make oldconfig
+  if [ -n "$_subarch" ]; then
+    # user wants a subarch so apply choice defined above interactively via 'yes'
+    yes "$_subarch" | make oldconfig
+  else
+    # no subarch defined so allow user to pick one
+    make oldconfig
+  fi
 
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
@@ -136,6 +182,9 @@ prepare() {
 
   # save configuration for later reuse
   cat .config > "${startdir}/config.last"
+
+  # uncomment if you want to build with distcc
+  ### sed -i '/HAVE_GCC_PLUGINS/d' arch/x86/Kconfig
 }
 
 build() {
