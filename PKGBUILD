@@ -3,10 +3,10 @@
 
 pkgname=aoeui
 pkgver=1.6.98
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight and unobtrusive visual text editor optimized for Dvorak keyboard users."
 arch=('i686' 'x86_64')
-url="http://sites.google.com/site/aoeuiandasdfg/"
+url="https://sites.google.com/site/aoeuiandasdfg/"
 depends=('glibc')
 makedepends=('git')
 license=('GPL2')

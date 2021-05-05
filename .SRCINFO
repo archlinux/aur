@@ -1,8 +1,8 @@
 pkgbase = aoeui
 	pkgdesc = Lightweight and unobtrusive visual text editor optimized for Dvorak keyboard users.
 	pkgver = 1.6.98
-	pkgrel = 1
-	url = http://sites.google.com/site/aoeuiandasdfg/
+	pkgrel = 2
+	url = https://sites.google.com/site/aoeuiandasdfg/
 	arch = i686
 	arch = x86_64
 	license = GPL2
