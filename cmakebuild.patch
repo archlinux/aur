@@ -1,88 +1,12 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-new file mode 100644
-index 0000000..cf64d73
---- /dev/null
+index 58e69bb..c41ac9b 100644
+--- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -0,0 +1,69 @@
-+cmake_minimum_required(VERSION 3.5)
-+
-+project(Tok LANGUAGES CXX)
-+
-+set(CMAKE_INCLUDE_CURRENT_DIR ON)
-+
-+set(CMAKE_AUTOUIC OFF)
-+set(CMAKE_AUTOMOC ON)
-+set(CMAKE_AUTORCC ON)
-+
-+set(CMAKE_CXX_STANDARD 20)
-+set(CMAKE_CXX_STANDARD_REQUIRED ON)
-+
-+include(GNUInstallDirs)
-+
-+set(REQUIRED_QT_VERSION 5.15.0)
-+
-+find_package(Qt5 COMPONENTS Core Quick Widgets Concurrent REQUIRED)
-+find_package(KF5Kirigami2 REQUIRED)
-+find_package(KF5I18n REQUIRED)
-+find_package(KF5Notifications REQUIRED)
-+find_package(Td REQUIRED)
-+find_package(ICU 69.0 COMPONENTS uc REQUIRED)
-+
-+add_executable(org.kde.Tok
-+  src/main.cpp
-+
-+  src/client.cpp
-+  src/client_p.cpp
-+  src/chatsort.cpp
-+  src/userdata.cpp
-+
-+  src/util.cpp
-+
-+  src/setup.cpp
-+
-+  src/utilities.cpp
-+
-+  src/chatsmodel.cpp
-+
-+  src/messagesmodel.cpp
-+  src/messagesstore.cpp
-+  src/chatsstore.cpp
-+
-+  src/extractinator.cpp
-+  src/notificationmanager.cpp
-+
-+  src/tgimageprovider.cpp
-+
-+  data/main.qrc
-+
-+  src/internallib/qabstractrelationalmodel.cpp
-+  src/internallib/qquickrelationallistener.cpp
-+)
-+add_definitions(-Wall -Werror)
-+
-+target_compile_definitions(org.kde.Tok
-+  PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>
-+)
-+target_link_libraries(org.kde.Tok
-+  PRIVATE
-+    Qt5::Core Qt5::Widgets Qt5::Quick Qt5::Concurrent
-+    KF5::Kirigami2 KF5::I18n KF5::Notifications
-+    Td::TdStatic ${ICU_LIBRARIES}
-+)
-+
-+install(TARGETS org.kde.Tok DESTINATION ${CMAKE_INSTALL_BINDIR})
+@@ -67,3 +67,6 @@ target_link_libraries(org.kde.Tok
+ )
+ 
+ install(TARGETS org.kde.Tok DESTINATION ${CMAKE_INSTALL_BINDIR})
 +install(FILES src/org.kde.Tok.notifyrc DESTINATION ${CMAKE_INSTALL_DATADIR}/knotifications5)
 +install(FILES src/org.kde.Tok.desktop DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
-diff --git a/src/messagesmodel.cpp b/src/messagesmodel.cpp
-index ba0eea3..52b37a8 100644
---- a/src/messagesmodel.cpp
-+++ b/src/messagesmodel.cpp
-@@ -139,7 +139,7 @@ void MessagesModel::messageIDChanged(TDApi::int53 oldID, TDApi::int53 newID)
-     if (before > 0) {
-         dataChanged(index(before), index(before), {Roles::PreviousID, Roles::NextID});
-     }
--    if (after < d->messages.size()) {
-+    if (static_cast<uint64_t>(after) < d->messages.size()) {
-         dataChanged(index(after), index(after), {Roles::PreviousID, Roles::NextID});
-     }
-     dataChanged(index(idx), index(idx), {Roles::ID});
++install(FILES org.kde.Tok.svg DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/scalable/apps)
+\ No newline at end of file

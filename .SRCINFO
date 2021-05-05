@@ -1,6 +1,6 @@
 pkgbase = tok-git
 	pkgdesc = Telegram client built using Kirigami
-	pkgver = r86.fe69499
+	pkgver = r94.fa8fcd3
 	pkgrel = 1
 	url = https://invent.kde.org/network/tok
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = tok-git
 	source = git+https://invent.kde.org/network/tok.git
 	source = cmakebuild.patch
 	md5sums = SKIP
-	md5sums = 73e6e4344c2058f1b5bb6900debb5bd4
+	md5sums = 1410a072193b1d0f0339086b367f155c
 
 pkgname = tok-git
 
