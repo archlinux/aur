@@ -10,7 +10,8 @@ depends=('qt5-base' 'qt5-declarative' 'qt5-websockets' 'qt5-multimedia' 'qt5-qui
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/lithapp/lith.git')
+# The project name is "Lith", but I want a lowercase l.
+source=('lith::git+https://github.com/LithApp/Lith.git')
 md5sums=('SKIP')
 
 pkgver() {

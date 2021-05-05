@@ -13,7 +13,7 @@ pkgbase = lith-git
 	depends = qt5-quickcontrols2
 	provides = lith
 	conflicts = lith
-	source = git+https://github.com/lithapp/lith.git
+	source = lith::git+https://github.com/LithApp/Lith.git
 	md5sums = SKIP
 
 pkgname = lith-git
