@@ -1,0 +1,13 @@
+pkgbase = iamroot
+	pkgdesc = Emulating syscall chroot in an unpriviliged process
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/gportay/iamroot
+	arch = x86_64
+	license = GPL
+	makedepends = asciidoctor
+	source = https://github.com/gportay/iamroot/archive/v1.tar.gz
+	sha256sums = 96105f40d8c94b4bdaf8edff0bacd22a5609a6db0388b8dda3c930d38dc60d46
+
+pkgname = iamroot
+
