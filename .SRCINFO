@@ -1,23 +1,26 @@
 pkgbase = 3ncode-git
 	pkgdesc = Graphical video and audio converter for ffmpeg
-	pkgver = r37.2222e41
+	pkgver = r56.acf550a
 	pkgrel = 1
-	url = https://github.com/llelectronics/3ncode
+	url = https://github.com/NeptuneOS/3ncode
 	arch = any
 	license = BSD
 	makedepends = git
 	depends = ffmpeg
-	depends = kdebase-runtime
-	depends = python2-pyqt4
-	optdepends = mkvtoolnix-cli: mkv files
+	depends = kirigami2
+	depends = python-pyqt5
+	optdepends = faac: codec
+	optdepends = faad2: codec
+	optdepends = lame: codec
+	optdepends = mkvtoolnix-cli: for mkv files
+	optdepends = opencore-amr: codec
+	optdepends = opus: codec
+	optdepends = x264: codec
+	optdepends = xvidcore: codec
 	provides = 3ncode
 	conflicts = 3ncode
-	source = 3ncode-git::git+https://github.com/llelectronics/3ncode.git
-	source = 3ncode.sh
-	source = 3ncode.desktop
+	source = 3ncode-git::git+https://github.com/NeptuneOS/3ncode.git#branch=kirigami_app
 	md5sums = SKIP
-	md5sums = a7879368369e806012f0785542370f47
-	md5sums = bdf9a12bcd4780479e867e6a5d1f1d34
 
 pkgname = 3ncode-git
 
