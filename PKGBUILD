@@ -31,8 +31,7 @@ package() {
     install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
 
     # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop"\
-            "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
     # Icon images
     install -dm755 "${pkgdir}/usr/share/"
