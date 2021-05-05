@@ -33,6 +33,7 @@ conflicts=(
 )
 provides=(
   vmware-ovftool
+  vmware-workstation
 )
 depends=(
   dkms

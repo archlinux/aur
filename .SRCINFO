@@ -19,6 +19,7 @@ pkgbase = vmware-workstation-openrc
 	depends = vmware-keymaps
 	optdepends = linux-headers: build modules against Arch kernel
 	provides = vmware-ovftool
+	provides = vmware-workstation
 	conflicts = vmware-modules-dkms
 	conflicts = vmware-ovftool
 	conflicts = vmware-patch
