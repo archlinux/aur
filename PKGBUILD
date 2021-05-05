@@ -8,9 +8,10 @@
 
 pkgname=openclonk-git
 pkgrel=1
-pkgver=r11491.701bcf38c
+pkgver=7.0.r3173.g701bcf38c
 pkgdesc='Multiplayer-action-tactic-skill game'
 arch=('i686' 'x86_64')
+epoch=1
 url='http://openclonk.org'
 license=('custom')
 depends=('freealut' 'miniupnpc' 'sdl2' 'qt5-base' 'hicolor-icon-theme' 'tinyxml' 'libepoxy' 'libvorbis')
@@ -22,7 +23,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
 }
 
 build() {
