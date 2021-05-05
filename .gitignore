@@ -1,0 +1,10 @@
+pkg
+src
+*.tar
+*.gz
+*.xz
+*.zst
+*.zip
+*.lz4
+*.lzo
+*.bz
