@@ -87,29 +87,29 @@ package() {
     
     install -m 755 ${srcdir}/EasyCodeML/Preset/chi2.exe ${pkgdir}/usr/share/EasyCodeML/Preset/chi2.exe
     install -m 755 ${srcdir}/EasyCodeML/Preset/codeml.exe ${pkgdir}/usr/share/EasyCodeML/Preset/codeml.exe
-    install -m 755 ${srcdir}/EasyCodeML/Preset/.DS_Store ${pkgdir}/usr/share/EasyCodeML/Preset/.DS_Store
-    install -m 755 ${srcdir}/EasyCodeML/Preset/BM/.DS_Store ${pkgdir}/usr/share/EasyCodeML/Preset/BM/.DS_Store
-    install -m 755 ${srcdir}/EasyCodeML/Preset/BM/BM/.DS_Store ${pkgdir}/usr/share/EasyCodeML/Preset/BM/BM/.DS_Store
+    # install -m 755 ${srcdir}/EasyCodeML/Preset/.DS_Store ${pkgdir}/usr/share/EasyCodeML/Preset/.DS_Store
+    # install -m 755 ${srcdir}/EasyCodeML/Preset/BM/.DS_Store ${pkgdir}/usr/share/EasyCodeML/Preset/BM/.DS_Store
+    # install -m 755 ${srcdir}/EasyCodeML/Preset/BM/BM/.DS_Store ${pkgdir}/usr/share/EasyCodeML/Preset/BM/BM/.DS_Store
     install -m 755 ${srcdir}/EasyCodeML/Preset/BM/BM/codeml.ctl ${pkgdir}/usr/share/EasyCodeML/Preset/BM/BM/codeml.ctl
-    install -m 755 ${srcdir}/EasyCodeML/Preset/BM/FR/.DS_Store ${pkgdir}/usr/share/EasyCodeML/Preset/BM/FR	/.DS_Store
+    # install -m 755 ${srcdir}/EasyCodeML/Preset/BM/FR/.DS_Store ${pkgdir}/usr/share/EasyCodeML/Preset/BM/FR/.DS_Store
     install -m 755 ${srcdir}/EasyCodeML/Preset/BM/FR/codeml.ctl ${pkgdir}/usr/share/EasyCodeML/Preset/BM/FR/codeml.ctl
-    install -m 755 ${srcdir}/EasyCodeML/Preset/BM/M0/.DS_Store ${pkgdir}/usr/share/EasyCodeML/Preset/BM/M0/.DS_Store
+    # install -m 755 ${srcdir}/EasyCodeML/Preset/BM/M0/.DS_Store ${pkgdir}/usr/share/EasyCodeML/Preset/BM/M0/.DS_Store
     install -m 755 ${srcdir}/EasyCodeML/Preset/BM/M0/codeml.ctl ${pkgdir}/usr/share/EasyCodeML/Preset/BM/M0/codeml.ctl
-    install -m 755 ${srcdir}/EasyCodeML/Preset/BSM/.DS_Store ${pkgdir}/usr/share/EasyCodeML/Preset/BSM/.DS_Store
+    # install -m 755 ${srcdir}/EasyCodeML/Preset/BSM/.DS_Store ${pkgdir}/usr/share/EasyCodeML/Preset/BSM/.DS_Store
     install -m 755 ${srcdir}/EasyCodeML/Preset/BSM//ModelA/codeml.ctl ${pkgdir}/usr/share/EasyCodeML/Preset/BSM/ModelA/codeml.ctl
-    install -m 755 ${srcdir}/EasyCodeML/Preset/BSM/ModelAnull/.DS_Store ${pkgdir}/usr/share/EasyCodeML/Preset/BSM/ModelAnull/.DS_Store
+    # install -m 755 ${srcdir}/EasyCodeML/Preset/BSM/ModelAnull/.DS_Store ${pkgdir}/usr/share/EasyCodeML/Preset/BSM/ModelAnull/.DS_Store
     install -m 755 ${srcdir}/EasyCodeML/Preset/BSM/ModelAnull/codeml.ctl ${pkgdir}/usr/share/EasyCodeML/Preset/BSM/ModelAnull/codeml.ctl
-    install -m 755 ${srcdir}/EasyCodeML/Preset/CM/.DS_Store ${pkgdir}/usr/share/EasyCodeML/Preset/CM/.DS_Store
+    # install -m 755 ${srcdir}/EasyCodeML/Preset/CM/.DS_Store ${pkgdir}/usr/share/EasyCodeML/Preset/CM/.DS_Store
     install -m 755 ${srcdir}/EasyCodeML/Preset/CM/CmC/codeml.ctl ${pkgdir}/usr/share/EasyCodeML/Preset/CM/CmC/codeml.ctl
     install -m 755 ${srcdir}/EasyCodeML/Preset/CM/M22/codeml.ctl ${pkgdir}/usr/share/EasyCodeML/Preset/CM/M22/codeml.ctl
-    install -m 755 ${srcdir}/EasyCodeML/Preset/SM/.DS_Store ${pkgdir}/usr/share/EasyCodeML/Preset/SM/.DS_Store
+    # install -m 755 ${srcdir}/EasyCodeML/Preset/SM/.DS_Store ${pkgdir}/usr/share/EasyCodeML/Preset/SM/.DS_Store
     install -m 755 ${srcdir}/EasyCodeML/Preset/SM/M0/codeml.ctl ${pkgdir}/usr/share/EasyCodeML/Preset/SM/M0/codeml.ctl
     install -m 755 ${srcdir}/EasyCodeML/Preset/SM/M1a/codeml.ctl ${pkgdir}/usr/share/EasyCodeML/Preset/SM/M1a/codeml.ctl
     install -m 755 ${srcdir}/EasyCodeML/Preset/SM/M2a/codeml.ctl ${pkgdir}/usr/share/EasyCodeML/Preset/SM/M2a/codeml.ctl
     install -m 755 ${srcdir}/EasyCodeML/Preset/SM/M3/codeml.ctl ${pkgdir}/usr/share/EasyCodeML/Preset/SM/M3/codeml.ctl
     install -m 755 ${srcdir}/EasyCodeML/Preset/SM/M7/codeml.ctl ${pkgdir}/usr/share/EasyCodeML/Preset/SM/M7/codeml.ctl
     install -m 755 ${srcdir}/EasyCodeML/Preset/SM/M8/codeml.ctl ${pkgdir}/usr/share/EasyCodeML/Preset/SM/M8/codeml.ctl
-    install -m 755 ${srcdir}/EasyCodeML/Preset/SM/M8/.DS_Store ${pkgdir}/usr/share/EasyCodeML/Preset/SM/M8/.DS_Store
+    # install -m 755 ${srcdir}/EasyCodeML/Preset/SM/M8/.DS_Store ${pkgdir}/usr/share/EasyCodeML/Preset/SM/M8/.DS_Store
     install -m 755 ${srcdir}/EasyCodeML/Preset/SM/M8a/codeml.ctl ${pkgdir}/usr/share/EasyCodeML/Preset/SM/M8a/codeml.ctl
     
     cp ~/.cache/yay/easycodeml/EasyCodeML.png ${pkgdir}/usr/share/EasyCodeML/EasyCodeML.png
