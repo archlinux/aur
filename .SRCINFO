@@ -1,21 +1,19 @@
 pkgbase = spotify-adblock-git
 	pkgdesc = Adblocker for Spotify
-	pkgver = r77.0802c42
+	pkgver = r9.b1ac909
 	pkgrel = 1
-	url = https://github.com/abba23/spotify-adblock-linux
-	arch = i686
+	epoch = 1
+	url = https://github.com/abba23/spotify-adblock
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	depends = spotify
 	provides = spotify-adblock
 	conflicts = spotify-adblock
-	noextract = cef_g4fe33a1.tar.bz2
-	source = spotify-adblock::git+https://github.com/abba23/spotify-adblock-linux.git
-	source = cef_g4fe33a1.tar.bz2::https://cef-builds.spotifycdn.com/cef_binary_88.1.6%2Bg4fe33a1%2Bchromium-88.0.4324.96_linux64_minimal.tar.bz2
+	backup = etc/spotify-adblock/config.toml
+	source = spotify-adblock::git+https://github.com/abba23/spotify-adblock.git
 	source = spotify-adblock.desktop
 	sha512sums = SKIP
-	sha512sums = d67ac68a2e8ba32ae6c6d26fc872d62ae81e25c46b9dfc50eaf2790ea661d527404d0a2b187c7fa7fe2a9f9c8ee99dded77fbef0a1718158c06cd0724108d794
 	sha512sums = 69f497a0b869e855b7c6c733c73ee3f285000d56543bf5083382fe1957a9be9a27f8e7eff6e3ef5ccaf5c12ee7750c7e8561bef54e688e5b8b738b320f5cf90a
 
 pkgname = spotify-adblock-git
