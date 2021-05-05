@@ -4,14 +4,16 @@
 # Thanks Nicholas Guriev <guriev-ns@ya.ru> for the initial patches!
 # https://github.com/mymedia2/tdesktop
 pkgname=telegram-desktop-dev
-pkgver=2.6.1
+pkgver=2.7.4
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
 url="https://desktop.telegram.org/"
 license=('GPL3')
+# Although not in order, keeping them in the same order of the standard package
+# for my mental sanity.
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
-         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'gtk3')
+         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'gtk3' 'glibmm' 'webkit2gtk')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'libtg_owt')
 
 provides=(telegram-desktop)
@@ -55,6 +57,7 @@ source=(
     "rlottie::git+https://github.com/desktop-app/rlottie.git"
     "tgcalls::git+https://github.com/TelegramMessenger/tgcalls.git"
     "xxHash::git+https://github.com/Cyan4973/xxHash.git"
+    "https://github.com/archlinux/svntogit-community/raw/packages/telegram-desktop/trunk/fix-webview-includes.patch"
 )
 sha512sums=('SKIP'
             'SKIP'
@@ -86,7 +89,8 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '5492c73f0b984da1e2d1f21c3a36c11c4b9ad511522dccd4d6440681f68d6ebc9e672806a534b1e551f736f080d3ef307c8ddd012e4646bd84d09c5e8fa85a40')
 
 prepare() {
     cd "$srcdir/tdesktop"
@@ -138,7 +142,10 @@ prepare() {
 
     # Official package patches
     cd cmake
+    # force webrtc link to libjpeg
     echo "target_link_libraries(external_webrtc INTERFACE jpeg)" | tee -a external/webrtc/CMakeLists.txt
+    cd ../Telegram/lib_webview
+    patch -Np1 -i "$srcdir"/fix-webview-includes.patch
 }
 
 build() {
