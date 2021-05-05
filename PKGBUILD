@@ -1,8 +1,8 @@
 # Maintainer: Quint Guvernator <quint@guvernator.net>
 
 pkgname=bgb
-pkgver=1.5.8
-pkgrel=5
+pkgver=1.5.9
+pkgrel=1
 pkgdesc='Game Boy emulator with advanced debugger'
 arch=(x86_64)
 url=https://bgb.bircd.org
@@ -11,7 +11,7 @@ makedepends=(unzip)
 source=("$pkgname-$pkgver.zip::https://bgb.bircd.org/$pkgname$(echo "$pkgver" | tr -d .).zip"
         $pkgname)
 noextract=("$pkgname-$pkgver.zip")
-md5sums=('15b8b380c45f8cbe9e598f7224fd341e'
+md5sums=('2c63d9be39923de44478f27baa43d316'
          '616bb455840468ffd7536f5d18d26879')
 
 prepare() {
