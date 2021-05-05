@@ -1,14 +1,14 @@
 # Maintainer: Tom Zander
 
 pkgname=flowee-pay-git
-pkgver=b2d1486
+pkgver=2021.04.0.r5.g4848ac7
 pkgrel=1
 pkgdesc="Flowee Payment solution"
 arch=('x86_64' 'aarch64')
 url="https://flowee.org/"
 license=('GPL3')
-depends=('flowee-libs' 'qt5-base')
-makedepends=('boost' 'cmake')
+depends=('qt5-base')
+makedepends=('boost' 'cmake' 'flowee-libs')
 provides=('flowee-pay')
 source=("git+https://gitlab.com/FloweeTheHub/pay.git#branch=master")
 
