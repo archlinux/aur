@@ -3,7 +3,7 @@
 _pkgname=xemu
 pkgname=$_pkgname-git
 pkgver=0.5.1.r7096.g30042e8091
-pkgrel=2
+pkgrel=3
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
 url="https://xemu.app/"
@@ -49,69 +49,7 @@ prepare() {
 
 build() {
 	cd $_pkgname
-	./configure --with-git-submodules=ignore \
-		--extra-cflags="-DXBOX=1" \
-		--target-list=i386-softmmu \
-		--enable-trace-backends="nop" \
-		--enable-sdl \
-		--enable-opengl \
-		--disable-curl \
-		--disable-vnc \
-		--disable-vnc-sasl \
-		--disable-docs \
-		--disable-tools \
-		--disable-guest-agent \
-		--disable-tpm \
-		--disable-live-block-migration \
-		--disable-rdma \
-		--disable-replication \
-		--disable-capstone \
-		--disable-fdt \
-		--disable-libiscsi \
-		--disable-spice \
-		--disable-user \
-		--disable-stack-protector \
-		--disable-glusterfs \
-		--disable-gtk \
-		--disable-curses \
-		--disable-gnutls \
-		--disable-nettle \
-		--disable-gcrypt \
-		--disable-crypto-afalg \
-		--disable-virglrenderer \
-		--disable-vhost-net \
-		--disable-vhost-crypto \
-		--disable-vhost-vsock \
-		--disable-vhost-user \
-		--disable-virtfs \
-		--disable-snappy \
-		--disable-bzip2 \
-		--disable-vde \
-		--disable-libxml2 \
-		--disable-seccomp \
-		--disable-numa \
-		--disable-lzo \
-		--disable-smartcard \
-		--disable-usb-redir \
-		--disable-bochs \
-		--disable-cloop \
-		--disable-dmg \
-		--disable-vdi \
-		--disable-vvfat \
-		--disable-qcow1 \
-		--disable-qed \
-		--disable-parallels \
-		--disable-sheepdog \
-		--without-default-devices \
-		--disable-blobs \
-		--disable-kvm \
-		--disable-xen \
-		--disable-hax \
-		--disable-hvf \
-		--disable-whpx \
-		--enable-lto \
-		--disable-werror
-	make qemu-system-i386
+	./build.sh --with-git-submodules=ignore --enable-slirp=system
 }
 
 package() {
