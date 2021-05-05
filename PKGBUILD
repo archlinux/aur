@@ -4,7 +4,7 @@ pkgver=1.2
 pkgrel=2
 pkgdesc="A simple GUI frontend for zita-ajbridge"
 arch=('i686' 'x86_64')
-url="https://bitbucket.org/leledumbo/zita-aj-bridge-gui"
+url="https://github.com/leledumbo/zita-aj-bridge-gui"
 license=('GPL')
 depends=()
 source=('zitaajbridgegui.png' 'zitaajbridgegui.desktop')
@@ -20,13 +20,13 @@ then
 
   if [ "$CARCH" == "i686" ]
   then
-    source+=("zitaajbridgegui::https://bitbucket.org/leledumbo/zita-aj-bridge-gui/downloads/zitaajbridgegui-i386-qt")
+    source+=("zitaajbridgegui::https://github.com/leledumbo/zita-aj-bridge-gui/downloads/zitaajbridgegui-i386-qt")
     md5sums+=('09ddecdc7f3ea5288d1b133972c343ab')
   fi
 
   if [ "$CARCH" == "x86_64" ]
   then
-    source+=("zitaajbridgegui::https://bitbucket.org/leledumbo/zita-aj-bridge-gui/downloads/zitaajbridgegui-x86_64-qt")
+    source+=("zitaajbridgegui::https://github.com/leledumbo/zita-aj-bridge-gui/downloads/zitaajbridgegui-x86_64-qt")
     md5sums+=('be92d7c986a96b183979b2e6e4432d8a')
   fi
 else
@@ -34,13 +34,13 @@ else
 
   if [ "$CARCH" == "i686" ]
   then
-    source+=("zitaajbridgegui::https://bitbucket.org/leledumbo/zita-aj-bridge-gui/downloads/zitaajbridgegui-i386-gtk2")
+    source+=("zitaajbridgegui::https://github.com/leledumbo/zita-aj-bridge-gui/downloads/zitaajbridgegui-i386-gtk2")
     md5sums+=('43d9f054f3eaec14be542ca1f8236e16')
   fi
 
   if [ "$CARCH" == "x86_64" ]
   then
-    source+=("zitaajbridgegui::https://bitbucket.org/leledumbo/zita-aj-bridge-gui/downloads/zitaajbridgegui-x86_64-gtk2")
+    source+=("zitaajbridgegui::https://github.com/leledumbo/zita-aj-bridge-gui/downloads/zitaajbridgegui-x86_64-gtk2")
     md5sums+=('7d9aa684878ba42991bb6f1e336ba8f1')
   fi
 fi
