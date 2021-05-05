@@ -7,8 +7,8 @@ pkgdesc='Open Surge is a fun 2D retro platformer inspired by Sonic games, and a 
 arch=('i686' 'x86_64' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/alemart/opensurge"
 license=('GPL3')
-depends=('allegro' 'surgescript' 'allegro-dialog')
-makedepends=('cmake' 'surgescript' 'allegro-dialog-dev')
+depends=('allegro' 'surgescript')
+makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alemart/opensurge/archive/v$pkgver.tar.gz")
 sha256sums=('27764a82d97b54026c90044fbc31ea4a61f7836568020b869e63376322a155af')
 
