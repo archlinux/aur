@@ -21,6 +21,7 @@ pkgbase = clifm-git
 	optdepends = atool: Archives/compression support
 	optdepends = p7zip: ISO 9660 support
 	optdepends = cdrtools: ISO 9660 support
+	provides = clifm
 	source = git+https://github.com/leo-arch/clifm.git
 	sha256sums = SKIP
 
