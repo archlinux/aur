@@ -16,3 +16,4 @@ pkg/
 *.7z
 *.rar
 *.deb
+*.zst

@@ -3,8 +3,8 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=chkrootkit
-pkgver=0.53
-pkgrel=4
+pkgver=0.54
+pkgrel=1
 pkgdesc="Locally checks for signs of a rootkit"
 arch=('x86_64')
 url="http://www.chkrootkit.org/"
@@ -19,7 +19,7 @@ source=("ftp://ftp.pangeia.com.br/pub/seg/pac/${pkgname}-${pkgver}.tar.gz"
 	"${pkgname}.launcher"
         "${pkgname}-${pkgver}.tar.gz.sig"
 	"${pkgname}.launcher.sig")
-sha512sums=('f8de19d0a61ccb6ac184ad6642d78041729cba799eedcc8088cb6d2c5cf4de0574c6083caad364576a601265322e61c183b266304f00667527bf29fdc51359c7'
+sha512sums=('fe8955ac33abaabf304f5580b6f12929f8bf02329ab442380eaa6298440cf1cb0eee2db8e5667ea7d78b89ee2bceb82c10ebb732a71d6bcdda9400569cd587fd'
 	    'c7a28d6313dc48cc17a0850e2816b9b17a8b0bdf435c3f75fbd4deedf740067de8e58b38d488945561bf9c3ad8bb03adc8e4a5a1da63775bce1afdcf49fd83ba'
 	    'SKIP'
             'SKIP')
