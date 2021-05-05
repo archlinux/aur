@@ -1,0 +1,18 @@
+pkgbase = lith-git
+	pkgdesc = A multiplatform WeeChat relay client
+	pkgver = r443.b26c390
+	pkgrel = 1
+	url = https://github.com/LithApp/Lith
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-websockets
+	depends = qt5-multimedia
+	depends = qt5-quickcontrols2
+	source = git+https://github.com/lithapp/lith.git
+	md5sums = SKIP
+
+pkgname = lith-git
+
