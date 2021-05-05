@@ -3,21 +3,30 @@
 
 pkgname=qt5-3d
 _qtver=5.15.2
-pkgver=${_qtver/-/}
+pkgver=5.15.2+kde+r22
 pkgrel=1
+_commit=c23826394c96e1e56cfcb612140a20d500dff315
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='C++ and QML APIs for easy inclusion of 3D graphics'
 depends=('qt5-declarative' 'assimp')
-makedepends=('vulkan-headers')
+makedepends=('git' 'vulkan-headers')
 groups=('qt' 'qt5')
-_pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('03ed6a48c813c75296c19f5d721184ab168280b69d2656cf16f877d3d4c55c1d')
+_pkgfqn=qt3d
+source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $_pkgfqn
+  echo "5.15.2+kde+r"`git rev-list --count origin/5.15.2..$_commit`
+}
 
 prepare() {
   mkdir -p build
+
+  cd $_pkgfqn
+  git revert -n 997ff3ad21b9303aa3321a86e5c5b9cfcfc2f807 # Revert version bump
 }
 
 build() {
