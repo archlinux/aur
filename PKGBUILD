@@ -10,10 +10,10 @@ _apngdis_pkgver=2.9
 _apngasm_pkgver=3.1.6
 _gif2apng_pkgver=1.9
 _apng2gif_pkgver=1.8
-pkgrel=3
+pkgrel=4
 pkgdesc="apngasm for assembling apng files, apngdis for disassembling apng files, and gif2apng/apng2gif for converting."
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/apngdis/"
+url="https://sourceforge.net/projects/apngdis/"
 # apngasm: http://sourceforge.net/projects/apngasm/
 # gif2apng: http://sourceforge.net/projects/gif2apng/
 # apng2gif: http://sourceforge.net/projects/apng2gif/
@@ -21,10 +21,10 @@ provides=('apngasm' 'apngdis' 'gif2apng' 'apng2gif')
 license=('LGPL')
 depends=('libpng' 'gcc-libs')
 makedepends=('cmake' 'boost')
-source=("http://sourceforge.net/projects/apngdis/files/${_apngdis_pkgver}/apngdis-${_apngdis_pkgver}-src.zip"
+source=("https://sourceforge.net/projects/apngdis/files/${_apngdis_pkgver}/apngdis-${_apngdis_pkgver}-src.zip"
         "https://github.com/apngasm/apngasm/archive/${_apngasm_pkgver}.tar.gz"
-        "http://sourceforge.net/projects/gif2apng/files/${_gif2apng_pkgver}/gif2apng-${_gif2apng_pkgver}-src.zip"
-        "http://sourceforge.net/projects/apng2gif/files/${_apng2gif_pkgver}/apng2gif-${_apng2gif_pkgver}-src.zip"
+        "https://sourceforge.net/projects/gif2apng/files/${_gif2apng_pkgver}/gif2apng-${_gif2apng_pkgver}-src.zip"
+        "https://sourceforge.net/projects/apng2gif/files/${_apng2gif_pkgver}/apng2gif-${_apng2gif_pkgver}-src.zip"
 )
 sha512sums=('4bcce5066c37ea5e4db0bfaf2f6a81e4d3ba7f5b6c952f598facff27f84cc1a3af778f4db096119cb9f4aa57c0193c90acf7bed28f283b6930f5b3121dd9cf32'
             'cbc6f0ad119a7ce17079be3434e516265bea619ecb46fe147d652bbaff4652a858698df07a072f5095894961137fe32546f75ad603c7483476be7ffe463cf999'
