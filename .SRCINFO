@@ -17,6 +17,7 @@ pkgbase = plymouth-kcm
 	depends = kcmutils
 	source = https://download.kde.org/stable/plasma/5.21.5/plymouth-kcm-5.21.5.tar.xz
 	source = https://download.kde.org/stable/plasma/5.21.5/plymouth-kcm-5.21.5.tar.xz.sig
+	validpgpkeys = 2D1D5B0588357787DE9EE225EC94D18F7F05997E
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	sha256sums = 607f8c569a15938ccde869f836725d5af53dcc15605e3bd0ff978c84fecb56c9
 	sha256sums = SKIP
