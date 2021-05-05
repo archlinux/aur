@@ -1,7 +1,7 @@
 pkgbase = game-devices-udev
 	pkgdesc = Udev rules for controllers
 	pkgver = 0.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/fabis_cafe/game-devices-udev
 	install = install
 	arch = any

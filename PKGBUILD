@@ -2,7 +2,7 @@
 
 pkgname=game-devices-udev
 pkgver=0.13
-pkgrel=2
+pkgrel=3
 pkgdesc="Udev rules for controllers"
 url='https://gitlab.com/fabis_cafe/game-devices-udev'
 arch=('any')
@@ -17,7 +17,7 @@ sha512sums=('SKIP'
             'a9b069ed121ffeee887e0583d8cb46035ecf1fa90a26a4ecb3aa11ff03178b2b08621f6676db6b2350f290694c04aabcf36f2ce3e0813a76dde9a33555edb112')
 
 pkgver() {
-    cd ${pkgdir}
+    cd ${pkgname}
     git describe --tags | sed 's/-/+/g'
 }
 
