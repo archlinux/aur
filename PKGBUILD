@@ -1,9 +1,9 @@
 # Maintainer: l42 <i at tfwno dot gf>
 pkgname=stretchly-bin
 _pkgname=Stretchly
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
-_rlsver=v1.6.0
+_rlsver=v1.7.0
 pkgdesc="The break time reminder app"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hovancik/stretchly/"
@@ -18,8 +18,8 @@ source_x86_64=("https://github.com/hovancik/stretchly/releases/download/$_rlsver
 source_aarch64=("https://github.com/hovancik/stretchly/releases/download/$_rlsver/$_pkgname-$pkgver-aarch64.pacman")
 
 sha256sums=('d4262f71a6c02b19bdbdf760033803c0c7ca24acf2591ba425633f7e3315790a')
-sha256sums_x86_64=('6df19fe942de7f2ac7007e5b8a99b76088b6781f38344242bd4b7b332dbbde61')
-sha256sums_aarch64=('aa6456ae57258c3e833d1ef71f0a472d3e5c37e9e158393581075cee06b3accb')
+sha256sums_x86_64=('e6c1d803fa93210997d9453a3096b291c0cfd86c796d07dbdfd0a079cfb8511c')
+sha256sums_aarch64=('055023aa188b7be86b537ba819cba61443e4081827237f8a4b65989aebf9e3d3')
 
 package() {
 	# copy binaries to fakeroot
