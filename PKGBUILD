@@ -4,7 +4,7 @@
 
 pkgname='osu'
 pkgver='20210423.2'
-pkgrel=1
+pkgrel=2
 pkgdesc='A free-to-win rhythm game'
 arch=('i686' 'x86_64')
 url='https://osu.ppy.sh'
@@ -19,7 +19,7 @@ source=("${pkgname}-installer-${pkgver}.exe::https://m1.ppy.sh/r/osu!install.exe
         "${pkgname}.xml")
 sha256sums=('58eff9a415b6d8d46fc8b6bd006dbffb81e545fe964c2d11d337b8f1838fb8a9'
             'SKIP'
-            '327ab47237be712e07e2d35ad16dc5c71e23b91d91af0d63e83efd60d977ec68'
+            '5765f6c08e946170806fa89de1a71351b4c48cd8cf61e1779f00ca71c4c7490f'
             '0a2bb920ba3e8ddc9aa6e1bb2321c748b6efb06189294ccdb59fb1977d7a39b5'
             '85a5f5468a22dad75b8e8cfad8bd0754ed5e4ece693a398de0b90ba1934ac4fe')
 

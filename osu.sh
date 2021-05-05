@@ -23,7 +23,7 @@ fi
 
 case "$1" in
 	'kill')
-		wineserver -k
+		wineserver -k "$2"
 		;;
 	'winetricks')
 		shift 1
@@ -33,15 +33,16 @@ case "$1" in
 		shift 1
 		wine "$@"
 		;;
-	'')
-		env vblank_mode=0 __GL_SYNC_TO_VBLANK=0 wine "${OSU_STABLE_DATA_DIRECTORY}/osu!.exe" "$@"
-		wineserver -w
+	'-h'|'--help'|'help')
+		echo 'Usage:'
+		printf '%s [command]\t\t\tRun the game (with optional command)\n' "$(basename "$0")"
+		printf '%s kill [n]\t\t\tKill the game (optinally with signal n)\n' "$(basename "$0")"
+		printf '%s wine [command]\t\tExecute Wine command on the Wine prefix (winecfg, regedit, ...)\n' "$(basename "$0")"
+		printf '%s winetricks [command]\t\tExecute Winetricks command on the Wine prefix\n' "$(basename "$0")"
+		printf '%s {-h --help help}\t\tDisplay this help\n' "$(basename "$0")"
 		;;
 	*)
-		echo 'Usage:'
-		printf '%s\t\t\tRun the game\n' "$(basename "$0")"
-		printf '%s kill\t\t\tKill the game\n' "$(basename "$0")"
-		printf '%s wine [command]\tExecute Wine command on the Wine prefix (winecfg, regedit, ...)\n' "$(basename "$0")"
-		printf '%s winetricks [command]\tExecute Winetricks command on the Wine prefix\n' "$(basename "$0")"
+		env vblank_mode=0 __GL_SYNC_TO_VBLANK=0 wine "${OSU_STABLE_DATA_DIRECTORY}/osu!.exe" "$@"
+		wineserver -w
 		;;
 esac
