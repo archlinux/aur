@@ -1,7 +1,7 @@
 pkgbase = listmonk
 	pkgdesc = Self-hosted newsletter and mailing list manager with a modern dashboard
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://listmonk.app
 	install = listmonk.install
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = listmonk
 	source = listmonk.service
 	sha256sums = 20b89ddacd0a42d8f350ef5a96c7e2d95cff82ad2ddc756ff1581cb2a7dbbcdf
 	sha256sums = 5cfc186438df2408ed88a5bec3a9a4b5f2afb0d3aec41c4cc63b2f5eb810b3cb
-	sha256sums = e55b1c180efe94006dc73b9e82e2142c759a809ba6f78405fc07506a76c86ed1
+	sha256sums = 809ede70c932183889b2fa567b340fb82cce1ada76c7b0a0b9efb82b87c92fa0
 
 pkgname = listmonk
 

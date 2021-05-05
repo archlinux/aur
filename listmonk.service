@@ -4,7 +4,8 @@ Wants=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/listmonk --config /etc/listmonk/config.toml --static-dir /usr/share/listmonk/
+WorkingDirectory=/usr/share/listmonk
+ExecStart=/usr/bin/listmonk --config /etc/listmonk/config.toml
 User=listmonk
 Group=listmonk
 Restart=on-failure

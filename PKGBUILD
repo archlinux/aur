@@ -2,7 +2,7 @@
 
 pkgname=listmonk
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Self-hosted newsletter and mailing list manager with a modern dashboard"
 arch=(any)
 url=https://listmonk.app
@@ -16,13 +16,12 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/knadh/$pkgname/archive/v$pk
         "$pkgname.service")
 sha256sums=('20b89ddacd0a42d8f350ef5a96c7e2d95cff82ad2ddc756ff1581cb2a7dbbcdf'
             '5cfc186438df2408ed88a5bec3a9a4b5f2afb0d3aec41c4cc63b2f5eb810b3cb'
-            'e55b1c180efe94006dc73b9e82e2142c759a809ba6f78405fc07506a76c86ed1')
+            '809ede70c932183889b2fa567b340fb82cce1ada76c7b0a0b9efb82b87c92fa0')
 
 prepare() {
 	cd "$pkgname-$pkgver-beta/frontend"
 	export YARN_CACHE_FOLDER="$srcdir/node_modules"
 	yarn install --frozen-lockfile
-#--ignore-scripts
 }
 
 build() {
