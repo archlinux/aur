@@ -13,8 +13,10 @@ pkgbase = opensurge
 	license = GPL3
 	makedepends = cmake
 	makedepends = surgescript
+	makedepends = allegro-dialog-dev
 	depends = allegro
 	depends = surgescript
+	depends = allegro-dialog
 	source = opensurge-0.5.2.1.tar.gz::https://github.com/alemart/opensurge/archive/v0.5.2.1.tar.gz
 	sha256sums = 27764a82d97b54026c90044fbc31ea4a61f7836568020b869e63376322a155af
 
