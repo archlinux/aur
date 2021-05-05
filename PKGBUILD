@@ -6,7 +6,7 @@ pkgname=gost-engine
 pkgver=1.1.1.r496.9b492b3
 pkgrel=1
 pkgdesc='Russian GOST R 34.10 and GOST R 34.11-2012 crypto algorithms for OpenSSL'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('Apache 2.0')
 url='https://github.com/gost-engine/engine'
 
@@ -49,7 +49,7 @@ prepare() {
     exit 1
   fi
 
-  cd "${srcdir}/gost-engine" || (
+  cd "${srcdir:?}/gost-engine" || (
     echo -e "\E[1m\E[31mCan't cd to ${srcdir}/gost-engine build directory! Prepare Failed! \E[0m"
     exit 1
   )
@@ -65,13 +65,13 @@ prepare() {
   # strings gost.so.1.1 | grep "src\/gost-engine"
   # Show containing strings
   sed -i "$ a\ \nset(CMAKE_C_FLAGS \"\${CMAKE_C_FLAGS} -fdebug-prefix-map=\\\\\"\${CMAKE_SOURCE_DIR}\\\\\"=. -Wno-builtin-macro-redefined -D'__FILE__=\\\\\"\$(subst \$(realpath \${CMAKE_SOURCE_DIR})/,,\$(abspath \$<))\\\\\"'\")" \
-    "${srcdir}/${pkgname}/CMakeLists.txt"
+    "${srcdir:?}/${pkgname:?}/CMakeLists.txt"
 
 }
 
 build() {
 
-  cd "${srcdir}/gost-engine" || (
+  cd "${srcdir:?}/gost-engine" || (
     echo -e "\E[1m\E[31mCan't cd to ${srcdir}/gost-engine build directory! Build Failed! \E[0m"
     exit 1
   )
@@ -91,13 +91,13 @@ build() {
 
 package() {
 
-  cd "${srcdir}/gost-engine" || (
+  cd "${srcdir:?}/gost-engine" || (
     echo -e "\E[1m\E[31mCan't cd to ${srcdir}/gost-engine build directory! Package Failed! \E[0m"
     exit 1
   )
 
-  install -Dm644 "${srcdir}/gost.cnf" "${pkgdir:?}/etc/ssl/gost.cnf"
-  install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir:?}/usr/share/licenses/${pkgname:?}/LICENSE"
+  install -Dm644 "${srcdir:?}/gost.cnf" "${pkgdir:?}/etc/ssl/gost.cnf"
+  install -Dm644 "${srcdir:?}/${pkgname:?}/LICENSE" "${pkgdir:?}/usr/share/licenses/${pkgname:?}/LICENSE"
   DESTDIR="${pkgdir:?}" cmake --install build --config Release
 
 }
