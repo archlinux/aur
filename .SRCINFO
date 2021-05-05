@@ -1,0 +1,24 @@
+pkgbase = duckstation-opt-git
+	pkgdesc = A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (Installed to /opt, git version)
+	pkgver = r4442.d3fea7b5
+	pkgrel = 1
+	url = https://github.com/stenzek/duckstation
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	makedepends = libdrm
+	makedepends = gtk3
+	makedepends = ninja
+	depends = sdl2
+	depends = qt5-base
+	provides = duckstation
+	conflicts = duckstation
+	source = git+https://github.com/stenzek/duckstation.git
+	sha256sums = SKIP
+
+pkgname = duckstation-opt-git
+
