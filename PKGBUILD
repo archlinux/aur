@@ -3,7 +3,7 @@
 pkgname=proguard
 vertag=7.1.0-beta3
 pkgver=${vertag//-/}
-pkgrel=1
+pkgrel=2
 pkgdesc="free Java class file shrinker, optimizer, obfuscator, and preverifier"
 arch=(any)
 url="http://proguard.sourceforge.net/"
@@ -17,7 +17,7 @@ package() {
 
   mkdir -p "$pkgdir"/usr/bin
   mkdir -p "$pkgdir"/usr/share/proguard
-  install -D -m0644 proguardgui.jar proguard.jar retrace.jar "$pkgdir"/usr/share/proguard/
+  install -D -m0644 proguard-ant.jar proguard.jar proguardgui.jar retrace.jar "$pkgdir"/usr/share/proguard/
 
   cat >"$pkgdir"/usr/bin/proguardgui <<EOF
 #!/bin/sh
