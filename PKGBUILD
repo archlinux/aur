@@ -1,6 +1,6 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 pkgname=obs-media-controls
-pkgver=0.3.2
+pkgver=0.3.4
 _obsver=26.1.2
 pkgrel=1
 pkgdesc="Add Media Controls Dock to OBS"
@@ -15,7 +15,7 @@ makedepends=(
   'qt5-svg' 'qt5-x11extras' 'curl' 'jack' 'gtk-update-icon-cache' 'git'
 )
 source=(
-  "$pkgname-$pkgver::git+https://github.com/exeldro/obs-media-controls#commit=8e12f52e70156ac4506cee782d48b13693e9828b"
+  "$pkgname-$pkgver::git+https://github.com/exeldro/obs-media-controls#commit=f2b7b4284ad8798db57a7e2453e9b3f7e2a408cc"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
   "fix_python_binary_loading.patch"
 )
