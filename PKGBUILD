@@ -4,16 +4,19 @@
 _modname="ngx_vod"
 
 pkgname=nginx-mainline-mod-vod-git
-pkgver=r1308.d275df8
+pkgver=r1333.9d787ed
 pkgrel=1
 pkgdesc="NGINX-based MP4 Repackager"
 arch=('i686' 'x86_64')
 depends=(
   'nginx-mainline'
-  'ffmpeg-libfdk_aac'
+  'ffmpeg'
   'openssl'
-  'libxml2'
-  'libiconv'
+)
+optdepends=(
+  'ffmpeg-libfdk_aac: audio filtering support'
+  'libiconv: DFXP captions support'
+  'libxml2: UTF-16 encoded SRT files support'
 )
 makedepends=('git' 'nginx-mainline-src')
 provides=('nginx-mainline-mod-vod')
