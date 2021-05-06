@@ -2,7 +2,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=appgate-sdp
-pkgver=5.3.3
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="Appgate SDP (Software Defined Perimeter) desktop client"
 arch=("x86_64")
@@ -19,7 +19,7 @@ source=(
   "${pkgname}-${pkgname%%-*}driver.service.patch"
 )
 sha256sums=(
-  "48fd0c48fa4da7dfd0ca98a373c06eb8011d397f3740f8917999895c47aaa4a0"
+  "d83cd9e499c518179a1ed0dfec20176ffaafea4548fac60c5b935cdb913778d0"
   "0789aa07d6a7af44187e407696d930e78c50370c19b8399722ebecb0655ffcdb"
 )
 
