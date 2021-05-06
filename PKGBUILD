@@ -4,7 +4,7 @@ _pyname=oslo.metrics
 _pycname=${_pyname/./-}
 pkgname=python-${_pycname}
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Oslo Metrics API"
 arch=(any)
 url="https://docs.openstack.org/oslo.metrics/latest/"
@@ -41,7 +41,7 @@ export PBR_VERSION=$pkgver
 
 build(){
 	cd $_pyname-$pkgver
-	export PYTHONPATH="${PWD}"
+	export PYTHONPATH="$PWD"
 	python setup.py build
 	sphinx-build -b text doc/source doc/build/text
 }
@@ -54,7 +54,8 @@ check(){
 package(){
 	cd $_pyname-$pkgver
 	python setup.py install --root="$pkgdir/" --optimize=1
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 	mkdir -p "$pkgdir/usr/share/doc"
-	cp -r doc/build/text "$pkgdir/usr/share/doc/${pkgname}"
-	rm -r "$pkgdir/usr/share/doc/${pkgname}/.doctrees"
+	cp -r doc/build/text "$pkgdir/usr/share/doc/$pkgname"
+	rm -r "$pkgdir/usr/share/doc/$pkgname/.doctrees"
 }

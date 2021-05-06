@@ -1,7 +1,7 @@
 pkgbase = python-oslo-metrics
 	pkgdesc = Oslo Metrics API
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.openstack.org/oslo.metrics/latest/
 	arch = any
 	license = Apache
