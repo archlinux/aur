@@ -1,7 +1,7 @@
 pkgbase = hunspell-ru
 	pkgdesc = Russian hunspell dictionary
 	pkgver = 20200604
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cgit.freedesktop.org/libreoffice/dictionaries/tree/ru_RU
 	arch = any
 	license = custom

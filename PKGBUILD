@@ -4,7 +4,7 @@
 pkgname=hunspell-ru
 pkgver=20200604
 _commit=12e591abdbc5565e5018ed9b8fbe6d635ade87d7
-pkgrel=2
+pkgrel=3
 pkgdesc="Russian hunspell dictionary"
 arch=('any')
 url='https://cgit.freedesktop.org/libreoffice/dictionaries/tree/ru_RU'
@@ -21,8 +21,8 @@ package() {
   install -Dm644 "${pkgname}-README.txt" "${pkgdir}/usr/share/licenses/${pkgname}/README.txt"
   install -dm755 "${pkgdir}/usr/share/hunspell"
   install -dm755 "${pkgdir}/usr/share/myspell/dicts"
-  for dict in "$pkgname".{aff,dic}; do
-    install -m644 "${dict}" "${pkgdir}/usr/share/hunspell"
-    ln -s "/usr/share/hunspell/${dict}" "${pkgdir}/usr/share/myspell/dicts"
+  for dict in aff dic; do
+    install -Dm644 "${pkgname}.${dict}" "${pkgdir}/usr/share/hunspell/ru_RU.${dict}"
+    ln -Ts "/usr/share/hunspell/ru_RU.${dict}" "${pkgdir}/usr/share/myspell/dicts/ru_RU.${dict}"
   done
 }
