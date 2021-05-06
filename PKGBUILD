@@ -1,6 +1,6 @@
 # Maintainer: Masaki Waga <masakiwaga@gmail.com>
 pkgname=teip
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 makedepends=('rust' 'cargo')
 depends=('gcc-libs')
@@ -9,7 +9,7 @@ pkgdesc="Highly efficient \"Masking tape\" for standard input"
 url="https://github.com/greymd/teip"
 license=('MIT')
 source=("https://github.com/greymd/teip/archive/v${pkgver}.tar.gz")
-sha256sums=('b626ec84ce6bdea965ac1bf13f43443ef51eaef4adc724ca99dd9aa3b8829244')
+sha256sums=('5c09e4a3507c2298df59c3070a11cf0ec1ec71162ff492d915ee6d646771eb0c')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
