@@ -10,7 +10,7 @@ pkgdesc="Tools for creating, running, and deploying Universal Expo and React Nat
 arch=("any") url="https://expo.io"
 license=("MIT")
 depends=("nodejs")
-makedepends=("npm")
+makedepends=("jq" "npm")
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::https://registry.npmjs.org/$_npmid/-/$_npmname-$pkgver.tgz")
 noextract=("${source[@]%%::*}")
@@ -23,13 +23,15 @@ package() {
   # See https://github.com/npm/npm/issues/9359 for details.
   find "${pkgdir}"/usr -type d -execdir chmod 755 {} \+
 
-  # Package contains reference to $srcdir/$pkgdir
-  find "${pkgdir}" -type f -name package.json -execdir sed -i '/_where/d' {} \+
+  # Remove references to pkgdir
+    find "$pkgdir" -type f -name package.json -print0 | xargs -0 sed -i "/_where/d"
 
-  # print first line (the '{' symbol) and lines from the first non-underscored key to the end
-  # (npm internal keys are underscored but we don't need these keys)
-  sed -i -n '1p;/  "[^_].*": {$/,$p' "$pkgdir"/usr/lib/node_modules/"$_npmid"/package.json
-  sed -i "s|$pkgdir||" "$pkgdir"/usr/lib/node_modules/"$_npmid"/node_modules/sshpk/package.json
+  # Remove references to srcdir
+  local tmppackage="$(mktemp)"
+  local pkgjson="$pkgdir/usr/lib/node_modules/$_npmname/package.json"
+  jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
+  mv "$tmppackage" "$pkgjson"
+  chmod 644 "$pkgjson"
 
   # Add license
   install -Dm644 "$pkgdir/usr/lib/node_modules/$_npmid/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
