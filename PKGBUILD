@@ -140,7 +140,7 @@ export NM=llvm-nm
 export OBJCOPY='/usr/bin/llvm-objcopy'
 
 # Branding
-ac_add_options --enable-update-channel=nightly
+ac_add_options --enable-update-channel=release
 ac_add_options --with-app-name=${pkgname}
 ac_add_options --with-app-basename='${_pkgname}'
 ac_add_options --with-branding=browser/branding/firedragon
