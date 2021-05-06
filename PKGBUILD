@@ -8,8 +8,9 @@ pkgdesc="A new user-friendly program integrating RAxML-NG and ModelTest-NG for c
 arch=('x86_64')
 url="https://antonellilab.github.io/raxmlGUI"
 license=('AGPL3')
-source=("https://github.com/AntonelliLab/raxmlGUI/releases/download/v${pkgver}/raxmlGUI-${pkgver}.AppImage")
-sha256sums=('096cb81e8015281e8311f68fce1a730d7b16ba42b78f8aeec2ba840610baf40f')
+source=("https://github.com/AntonelliLab/raxmlGUI/releases/download/v${pkgver}/raxmlGUI-${pkgver}.AppImage" "raxmlgui.desktop")
+sha256sums=('096cb81e8015281e8311f68fce1a730d7b16ba42b78f8aeec2ba840610baf40f'
+            '0925bc8e4ae1d0fb7fbe5a5605cda7c044d8f8bda99b556dd54bd55ba7b3b0c5')
 
 prepare() {
   cd "${srcdir}"
@@ -63,6 +64,5 @@ package() {
     
     install -D -m 755 ${srcdir}/squashfs-root/resources/static/bin/* "${pkgdir}/usr/share/raxmlgui/resources/static/bin"
     
-    ln -s ${pkgdir}/usr/share/raxmlgui/raxmlgui.desktop ${pkgdir}/usr/share/applications/raxmlgui.desktop
-    ln -s ${pkgdir}/usr/share/raxmlgui/raxmlgui ${pkgdir}/usr/bin/raxmlgui
+    install -D -m 755 ${srcdir}/raxmlgui.desktop ${pkgdir}/usr/share/applications/raxmlgui.desktop
 }

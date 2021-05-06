@@ -1,10 +1,18 @@
 [Desktop Entry]
+Categories=
+Encoding=UTF-8
+Exec=/usr/share/raxmlgui/raxmlgui
+GenericName=
+GenericName[zh]=
+Icon=/usr/share/raxmlgui/raxmlgui.png
+MimeType=
 Name=raxmlGUI
-Exec=raxmlgui
+Name[zh]=raxmlGUI
+ServiceTypes=
+SwallowExec=
+SwallowTitle=
 Terminal=false
+TerminalOptions=
 Type=Application
-Icon=raxmlgui
-StartupWMClass=raxmlGUI
-X-AppImage-Version=2.0.3
-Comment=raxmlGUI - A new graphical front-end for RAxML
-Categories=Education;
+X-KDE-SubstituteUID=false
+X-KDE-Username=root%
