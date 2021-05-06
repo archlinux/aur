@@ -2,11 +2,8 @@
 
 _pkgname=fluffychat
 pkgname=fluffychat-web-bin
-_gitname=${_pkgname}
 pkgver=0.30.0
-_artifact=v${pkgver}
-_artifact=3c807ab3b8943e0c84662787250cf324e7f46b79
-pkgrel=1
+pkgrel=2
 pkgdesc="Chat with your friends"
 arch=('any')
 url="https://fluffychat.im/"
@@ -16,18 +13,21 @@ optdepends=()
 provides=("fluffychat-web")
 conflicts=("fluffychat-web")
 source=(
-  "artifact-${pkgver}.zip::https://gitlab.com/famedly/fluffychat/-/jobs/artifacts/${_artifact}/download?job=build_web"
+  "fluffychat-web-${pkgver}.tar.gz::https://gitlab.com/api/v4/projects/16112282/packages/generic/fluffychat/${pkgver}/fluffychat-web.tar.gz"
   "config.sample.json::https://gitlab.com/famedly/fluffychat/-/raw/v${pkgver}/config.sample.json"
 )
-sha256sums=('8641d3cf56b11226dce2cae80b744901e257a7df1188b9987bc6267295341dcc'
+noextract=(
+    "fluffychat-web-${pkgver}.tar.gz"
+)
+sha256sums=('8271ef6cf77719fe7315625c8d99949fea425a38d8e8871372620732020ea05c'
             '8540064556b3a952c898023e48afb29e3c560964d66e51bbc422a0061318bd5e')
 backup=(
     "etc/webapps/${_pkgname}/config.json"
 )
 
 package() {  
-  install -dm755 ${pkgdir}/usr/share/webapps
-  mv build/web ${pkgdir}/usr/share/webapps/${_pkgname}
+  install -dm755 ${pkgdir}/usr/share/webapps/${_pkgname}
+  tar xzf "fluffychat-web-${pkgver}.tar.gz" -C ${pkgdir}/usr/share/webapps/${_pkgname}
   install -Dm644 config.sample.json ${pkgdir}/etc/webapps/${_pkgname}/config.json
   ln -s /etc/webapps/${_pkgname}/config.json ${pkgdir}/usr/share/webapps/${_pkgname}
 }
