@@ -1,6 +1,6 @@
 # Maintainer: Joshua Rubin <me at jawa dot dev>
 pkgname=soapysdrplay3-git
-pkgver=r33.208f95d
+pkgver=r53.e6fdb71
 pkgrel=1
 pkgdesc="Soapy SDR module for SDRPlay"
 arch=('i686' 'x86_64')
