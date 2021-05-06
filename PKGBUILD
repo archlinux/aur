@@ -2,7 +2,7 @@
 
 pkgname=blockbench
 pkgname_orig=Blockbench
-pkgver=3.7.4
+pkgver=3.8.4
 pkgrel=1
 pkgdesc="A free, modern block model editor."
 arch=('x86_64')
