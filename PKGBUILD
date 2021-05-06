@@ -4,7 +4,7 @@
 pkgname=nona
 pkgver=2.0
 pkgrel=1
-pkgdesc="NONA"
+pkgdesc="NONA: Analyzing large data sets in reasonable times: solutions for composite optima"
 arch=('any')
 url="https://github.com/starsareintherose/nona/"
 license=('custom')
