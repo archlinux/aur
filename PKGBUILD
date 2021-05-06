@@ -1,7 +1,7 @@
 # Maintainer: Mads Kjeldgaard <mail@madskjeldgaard.dk>
 pkgname=supercollider-flucoma
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 altver_=TB2-beta01
 pkgdesc="Fluid Corpus Manipulation plugins for Supercollider"
 arch=('x86_64')
@@ -20,7 +20,7 @@ package() {
 	cd "$srcdir/FluidCorpusManipulation"
 	cp -av {AudioFiles,Classes,Examples,HelpSource,plugins} "${pkgdir}/usr/share/SuperCollider/Extensions/FluidCorpusManipulation/"
 	# License
-	install -Dm644 "$srcdir/FluidCorpusManipulation/license.md" "$pkgdir/usr/share/licenses/$pkgname/license.md"
+	install -Dm644 "$srcdir/FluidCorpusManipulation/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 
 	# Docs
 	install -vDm644 "$srcdir/FluidCorpusManipulation/QuickStart.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
