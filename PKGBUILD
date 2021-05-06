@@ -18,6 +18,9 @@ sha256sums=('508f41744162a6e637b6844048e51e5e49c8d689ec4373d2442113d08abe4d52'
             '47d543686903d8226427472e4f0ebe1edfa6bec3a551787bf60013300a29aea3')
 
 package() {
+	mkdir "${pkgdir}/usr/"
+	mkdir "${pkgdir}/usr/share/"
+	mkdir "${pkgdir}/usr/share/nona/"
 	install -D -m 755 ${srcdir}/*.htm "${pkgdir}/usr/share/nona/"
 	install -Dm755 ${srcdir}/nona.exe ${pkgdir}/usr/share/nona/nona.exe
 	install -Dm755 ${srcdir}/nona.desktop ${pkgdir}/usr/share/applications/nona.desktop
