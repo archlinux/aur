@@ -1,6 +1,6 @@
 # Maintainer: Karel Louwagie <aur at karellouwagie dot net>
 pkgname=rainloop
-pkgver=1.15.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="Simple, modern & fast web-based email client"
 arch=("any")
@@ -15,5 +15,5 @@ package() {
   install -D -m0644 $srcdir/index.php $pkgdir/usr/share/webapps/rainloop/index.php
   cp -rf $srcdir/rainloop/. $pkgdir/usr/share/webapps/rainloop/rainloop/
 }
-sha256sums=('d18f4def23bf9eed2518b6f5332098410ee33ec70887c6dc50fb5fc058e941e6')
-sha512sums=('a45549c043a8467695a4634ac0e8070755ae1b68a1b1ec9f678ab2086d688f08e79f720e439f6cf0b549ce0495b0318415f857fdf0231748d829cb5bc1703c98')
+sha256sums=('6980b0a85aa124479a927e11d0c50319c4a9f8ce3b25b6c2adb61a30bf1a792b')
+sha512sums=('86c9c234b96405efb35c5fff17f28a23b75350a1432f701e341fc4f01f5f16e63ed0b6f134b5d90206c2d69c5c81f307c46dd77cadefb5b5cbcd6e7a9c9a44f7')
