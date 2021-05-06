@@ -1,7 +1,7 @@
 pkgbase = parpd
 	pkgdesc = Proxy-ARP daemon
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://roy.marples.name/projects/parpd
 	arch = i686
 	arch = x86_64
