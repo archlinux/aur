@@ -8,8 +8,9 @@ pkgdesc="Posterior summarisation in Bayesian phylogenetics"
 arch=('x86_64')
 url="https://github.com/beast-dev/tracer"
 license=('unknown')
-source=("https://github.com/beast-dev/tracer/releases/download/v1.7.1/Tracer_v1.7.1.tgz")
-sha256sums=('200d7ffa1e48994b71245994e299847ac2be72d3d5c37d9048418557e1d8c12e')
+source=("https://github.com/beast-dev/tracer/releases/download/v1.7.1/Tracer_v1.7.1.tgz" "tracer.desktop")
+sha256sums=('200d7ffa1e48994b71245994e299847ac2be72d3d5c37d9048418557e1d8c12e'
+            '07c099a1d34b4718d46e083b98cf9352e50d81ee6cb7346544cd9d1248f02ea8')
 depends=(
 	'jre-openjdk-headless'
 	'jre-openjdk'
@@ -33,5 +34,5 @@ package() {
     install -m 755 ${srcdir}/Tracer_v${pkgver}/README.txt ${pkgdir}/usr/share/Tracer/README.txt
     ln -s ${pkgdir}/usr/share/Tracer/bin/tracer ${pkgdir}/usr/bin/tracer
     cd "${srcdir}"
-    cp ~/.cache/yay/tracer-bin/tracer.desktop ${pkgdir}/usr/share/applications
+    install -m 755 ${srcdir}/tracer.desktop ${pkgdir}/usr/share/applications/tracer.desktop
 }
