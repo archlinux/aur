@@ -1,13 +1,14 @@
 # Maintainer:  Eric Biggers <ebiggers3 at gmail dot com>
 
 pkgname=ntfs-3g-system-compression-git
-pkgver=1.0.r13.3a474d4
+pkgver=1.0.r14.f27f924
 pkgrel=1
 pkgdesc="NTFS-3G plugin for reading \"system compressed\" files"
 arch=("i686" "x86_64")
 url="https://github.com/ebiggers/ntfs-3g-system-compression"
 license=("GPL2")
 depends=("ntfs-3g")
+makedepends=('git')
 source=('git+https://github.com/ebiggers/ntfs-3g-system-compression.git')
 sha256sums=('SKIP')
 conflicts=('ntfs-3g-system-compression')
