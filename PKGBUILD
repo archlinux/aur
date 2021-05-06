@@ -1,7 +1,7 @@
-# Maintainer: Oliver Jaksch <arch-aur@com-in.de>
+# Maintainer: Oliver Jaksch <arch-aur at com-in dot de>
 
 pkgname=a7800
-pkgver=188_03
+pkgver=4.0
 pkgrel=1
 pkgdesc="A7800 is a fork of the MAME Atari 7800 driver, with several enhancements added (ProSystem)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -9,34 +9,21 @@ url="http://7800.8bitdev.org/index.php/A7800_Emulator"
 license=('custom:MAME License')
 depends=(sdl2_ttf qt5-base lua libutf8proc pugixml portmidi portaudio)
 makedepends=(nasm python glm libxinerama)
-source=("http://7800.8bitdev.org/images/a/aa/${pkgname//a/A}.${pkgver//_/-}.Src.zip"
+source=("https://github.com/7800-devtools/a7800/releases/download/v4.0/a7800-linux-v4.0.tgz"
 	"http://7800.8bitdev.org/resources/assets/78008bitdevlogo.png"
 	"a7800-starter.sh"
 	"a7800.desktop")
-sha256sums=('b1d512d4096956e2bc2a645c715dbbda283b76ece23cdd8b607815a1b1b4fbc5'
+sha256sums=('3dcd9bd3d10c00b31d0e95544e326ade49cca9e36ec86dee64bc0d759bbce4cd'
 	    'b89310a46a5305c41f8dfb63e915aaa1e12ea74209cd6fcf7ec3e4753067ff73'
-	    '0abdcca941d241158ad009958675f6576518cbf6b85cf9fae3386dc146649d0b'
+	    '59e9ca8f0c028f23212dffd778ef3b2be63a716ded5bb66a50a0869700408322'
 	    '06b0773ebd2795fb15c9380449f6464c03414f514c6f5e5aeb25835bed000ddb')
 
-_srcdir=${pkgname//a/A}.0${pkgver//_/-}.src
-
-prepare() {
-  cd ${_srcdir}
-  sed -e 's|\# USE_SYSTEM_LIB|USE_SYSTEM_LIB|g' -i makefile
-}
-
-build() {
-  cd ${_srcdir}
-  make \
-    NOWERROR=1 \
-    OPTIMIZE=2 \
-    TOOLS=1 \
-    ARCHOPTS=-flifetime-dse=1
-}
-
 package() {
-  cd ${_srcdir}
-  install -Dm755 ./mame64 "${pkgdir}/usr/bin/${pkgname}"
+  cd "${srcdir}/${pkgname}-linux"
+  sed -i -e 's/bios;roms/bios;$HOME\/.a7800\/roms/' a7800.ini
+  mkdir -p ${pkgdir}/opt/a7800
+  cp -r * ${pkgdir}/opt/a7800
+
   install -Dm755 ../a7800-starter.sh "${pkgdir}/usr/bin/${pkgname}-starter.sh"
   install -Dm644 ../a7800.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm644 ../78008bitdevlogo.png "${pkgdir}/usr/share/pixmaps//${pkgname}.png"
