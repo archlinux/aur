@@ -4,19 +4,16 @@
 
 
 pkgname=python-pystache-git
-_pkgname="pystache"
+_name=pystache
 
 epoch=1
-pkgver() {
-  cd "$_pkgname"
-  git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
-}
+pkgver() { git -C "$_name" describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'; }
 pkgver=0.5.4.r3.17a5dfd
-pkgrel=4
+pkgrel=5
 
 pkgdesc="The mustache template engine written in python"
 arch=('x86_64')
-url="https://github.com/defunkt/$_pkgname"
+url="https://github.com/defunkt/$_name"
 license=('MIT')
 
 provides=('python-pystache')
@@ -29,8 +26,9 @@ changelog=history
 source=("git+$url#branch=master")
 sha256sums=('SKIP')
 
+
 build() {
-	cd "$_pkgname"
+	cd "$_name"
 	python setup.py build
 }
 
@@ -39,7 +37,7 @@ check() {
 	# So we need to jump through some hoops here
 	rm -rf test_dir
 	mkdir test_dir
-	cd "$_pkgname"
+	cd "$_name"
 	python setup.py install --root=../test_dir
 	_py3ver="$(python -V | sed 's/Python \(3\.[0-9]\+\).*/\1/')"
 	PYTHONPATH="../test_dir/usr/lib/python$_py3ver/site-packages/" \
@@ -47,10 +45,11 @@ check() {
 }
 
 package() {
-	cd "$_pkgname"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-	install -Dm644 LICENSE -t"$pkgdir/usr/share/licenses/$_pkgname/"
-	install -Dm644 {README,HISTORY}.md setup_description.rst -t"$pkgdir/usr/share/doc/$_pkgname/"
+	cd "$_name"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -Dm644 LICENSE -t"$pkgdir/usr/share/licenses/$_name/"
+	install -Dm644 {README,HISTORY}.md setup_description.rst -t"$pkgdir/usr/share/doc/$_name/"
 }
+
 
 # vim: sw=4 ts=4 noet ft=PKGBUILD:
