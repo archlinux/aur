@@ -1,17 +1,17 @@
 # Maintainer: Moritz Luedecke <ritze@skweez.net>
 # Contributor: johnLate
 pkgname=aspectc++-bin
-pkgver=2.2
-pkgrel=2
+pkgver=2.3
+pkgrel=1
 pkgdesc="A set of C++ language extensions to facilitate aspect-oriented programming with C/C++"
 arch=('i686' 'x86_64')
 url="http://aspectc.org/"
 license=('GPL')
 depends=('libxml2' 'gcc-libs')
-source_i686=('https://www.aspectc.org/releases/2.2/ac-bin-linux-x86-2.2.tar.gz')
-source_x86_64=('https://www.aspectc.org/releases/2.2/ac-bin-linux-x86-64bit-2.2.tar.gz')
-sha512sums_i686=('06bbbd67cf4ccd847e563fa04fe36f5dcb75472d1fa06181e1d6ae9afbd80972f014cdd9562d99186f4ed82de4956fcb1c1ca96f3aab6b0eb67978da86a3ba81')
-sha512sums_x86_64=('cfaf36d2b0c9ede5766abb98f09318a75de4befaff71d725b54bf594d053fca1968ea2227af132dca926f3689693ff9fa31f0e6952d35db9f8a0855cc5403f9d')
+source_i686=('https://www.aspectc.org/releases/2.3/ac-bin-linux-x86-2.3.tar.gz')
+source_x86_64=('https://www.aspectc.org/releases/2.3/ac-bin-linux-x86-64bit-2.3.tar.gz')
+sha512sums_i686=('5f7a7c8880f25dd02f915c0dcff5a2ed55d48da0aba3320cc403bfeef413e17a87d6ab4f964a8ea9cb127417d27b137dcd2a2f184e775585ef19d17bfe510a66')
+sha512sums_x86_64=('8c3a7f5bbd658f3ebfd5f7cebc2c04afd15cf34fc65c724b9653af7bf432cdbacfb638bde70ac233c7b9dda33f5c1de3f56601899216f6041b1be84aa1d4f437')
 
 _dirname=aspectc++
 
