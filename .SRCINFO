@@ -5,6 +5,7 @@ pkgbase = expo-cli
 	url = https://expo.io
 	arch = any
 	license = MIT
+	makedepends = jq
 	makedepends = npm
 	depends = nodejs
 	noextract = expo-cli-4.4.3.tar.gz
