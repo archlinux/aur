@@ -3,12 +3,12 @@
 
 pkgname=ffmpeg-normalize
 pkgver=1.22.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Audio normalization using ffmpeg."
 arch=(any)
 url="https://github.com/slhck/ffmpeg-normalize"
 license=(MIT)
-depends=('ffmpeg' 'ffmpeg-progress-yield' 'python-tqdm' 'python-colorama')
+depends=('ffmpeg' 'python-ffmpeg-progress-yield')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 conflicts=("${pkgname}-git")
