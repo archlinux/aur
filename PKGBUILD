@@ -39,6 +39,7 @@ depends=(
         'wofi'
         'nwg-launchers'
         'bemenu-wlroots'
+        'dex'
 		'perl-file-mimeinfo'
 		'xdg-user-dirs-gtk'
 		'xdg-utils'
