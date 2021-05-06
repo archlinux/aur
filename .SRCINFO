@@ -1,13 +1,11 @@
 pkgbase = telepresence
 	pkgdesc = Local development against a remote Kubernetes or OpenShift cluster
-	pkgver = 0.108
+	pkgver = 0.109
 	pkgrel = 1
 	url = https://github.com/telepresenceio/telepresence
 	arch = x86_64
 	license = Apache
-	makedepends = git
 	depends = conntrack-tools
-	depends = fuse2
 	depends = kubectl
 	depends = socat
 	depends = sshfs
@@ -15,8 +13,8 @@ pkgbase = telepresence
 	depends = python
 	depends = python-pip
 	depends = python-setuptools
-	source = telepresence-0.108::https://github.com/telepresenceio/telepresence/archive/0.108.tar.gz
-	sha256sums = afc554a62c56acf5ab6a3ab44b9208ba5f893ed90a4ea4783ca269672a6aeed7
+	source = telepresence-0.109::https://github.com/telepresenceio/telepresence/archive/0.109.tar.gz
+	sha256sums = 5d848e68a423eb7a4ca495c53b85022cc15d69f21d171a82658699c4a4afb6c7
 
 pkgname = telepresence
 
