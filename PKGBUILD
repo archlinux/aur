@@ -9,13 +9,13 @@ pkgver=5.5.2947
 pkgrel=4
 pkgdesc="A web page development workshop and general programming tool"
 arch=('any')
-url="https://www.arachnoid.com/arachnophilia/index.php"
+url="http://www.arachnoid.com/arachnophilia/index.php"
 license=('GPL' 'custom:careware')
 depends=('java-environment' 'bash' 'desktop-file-utils')
 makedepends=('curl')
-source=("$_pkgname-$pkgver.jar::https://www.arachnoid.com/$pkgname/$_pkgname.jar"
-        "https://www.arachnoid.com/lutusp/old_articles/careware.rtf"
-	"https://www.arachnoid.com/arachnophilia/index.php"
+source=("$_pkgname-$pkgver.jar::http://www.arachnoid.com/$pkgname/$_pkgname.jar"
+        "http://www.arachnoid.com/lutusp/old_articles/careware.rtf"
+	"http://www.arachnoid.com/arachnophilia/index.php"
         "${pkgname}.desktop"
         "${pkgname}.sh")
 sha256sums=('e4fccb6fed127a87fce6bd9073e670ef0270684c8a054a8396f27d8f2aa29a39'
