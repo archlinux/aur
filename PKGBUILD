@@ -2,18 +2,42 @@
 # Contributor: Vasco Costa <vasco dot costa at geekslot dot com>
 # Contributor: jaro3
 
+
+# _USE_CCACHE=false
+_USE_CCACHE=true
+
 _pkgname=wwwoffle
 pkgname="${_pkgname}-svn"
 # _pkgver=2.9j
 epoch=1
-pkgver=2.9j+svn2253
+pkgver=2.9j+svn2253.d20191028
 pkgrel=1
 pkgdesc="Simple caching proxy server with special features (request, recursive fetch, subscription, modify HTML, ...) for use with dial-up internet links. Includes startup scripts for OpenRC, System V init, systemd."
-arch=('i686' 'x86_64' 'arm' 'arm64')
+arch=(
+  'arm'
+  'arm64'
+  'i686'
+  'x86_64'
+)
 url="http://www.gedanken.org.uk/software/wwwoffle/"
-license=('GPL')
-depends=('zlib' 'gnutls' 'libgcrypt')
+license=('GPL2')
+depends=(
+  'gnutls' 
+  'libgcrypt'
+  'zlib'
+)
+optdepends=(
+  'openrc: For openrc iniscript.'
+  "systemd: For systemd init'script'."
+  'sysvinit: For system-V-style initscript.'
+  "perl: For 'scripts/README.CONF-html.pl' script which creates an HTML version of 'README.CONF'."
+  "ruby: For 'contrib/eregister/eregister' tool which indexes the cache."
+)
 makedepends=('subversion')
+
+if "${_USE_CCACHE}"; then
+  options+=('ccache')
+fi
 
 provides=(
   "${_pkgname}=${pkgver}"
@@ -22,10 +46,8 @@ provides=(
   "${_pkgname}-systemd=${pkgver}"
 )
 replaces=(
+  # Bugfixes are not really applied in the releases, so we explicitly replace the release.
   "${_pkgname}<=${pkgver}"
-  "${_pkgname}-sysvinit<=${pkgver}"
-  "${_pkgname}-openrc<=${pkgver}"
-  "${_pkgname}-systemd<=${pkgver}"
 )
 conflicts=(
   "${_pkgname}"
@@ -67,65 +89,59 @@ sha256sums=(
 
 _svnlog='svn.log'
 
-_pgmver() {
-  _unpackeddir="${srcdir}/${_pkgname}"
-
-  # # Well, this _is_ useless use of cat, but to make it more clear to see in which order things are going on I do the cat first and then the grep.
-  # _ver="$(cat "${_unpackeddir}/conf/wwwoffle.conf.template" | \
-  #           grep -E '^#.*WWWOFFLE.*[Vv]ersion' | \
-  #           head -n 1 | \
-  #           sed 's|.* \([^ ]*\)$|\1|g' | \
-  #           sed 's|\.$||g'
-  #        )"
-
-  # Well, this _is_ useless use of cat, but to make it more clear to see in which order things are going on I do the cat first and then the grep.
-  _ver="$(cat "${_unpackeddir}/src/version.h" | \
-            grep -E '^[[:space:]]*#define[[:space:]]+WWWOFFLE_VERSION' | \
-            awk '{print $3}' | \
-            tr -d \'\" | \
-            awk -F+ '{print $1}'
-        )"
-
-
-  echo "${_ver}"
-
-  if [ -z "${_ver}" ]; then
-    return 1
-  fi
-}
-
-_svnrelease() {
-  _unpackeddir="${srcdir}/${_pkgname}"
-  _rev="$(svn info "${_unpackeddir}" | grep '^Revision' | cut -d' ' -f2)"
-
-  echo "${_rev}"
-
-  if [ -z "${_rev}" ]; then
-    return 1
-  fi
-}
-
 pkgver() {
-  _unpackeddir="${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
+
+  _pgmver() {
+    cd "${srcdir}/${_pkgname}"
+
+    # # Well, this _is_ useless use of cat, but to make it more clear to see in which order things are going on I do the cat first and then the grep.
+    # _ver="$(cat conf/wwwoffle.conf.template" | \
+    #           grep -E '^#.*WWWOFFLE.*[Vv]ersion' | \
+    #           head -n 1 | \
+    #           sed 's|.* \([^ ]*\)$|\1|g' | \
+    #           sed 's|\.$||g'
+    #        )"
+
+    # Well, this _is_ useless use of cat, but to make it more clear to see in which order things are going on I do the cat first and then the grep.
+    _ver="$(cat "src/version.h" | \
+              grep -E '^[[:space:]]*#define[[:space:]]+WWWOFFLE_VERSION' | \
+              awk '{print $3}' | \
+              tr -d \'\" | \
+              awk -F+ '{print $1}'
+          )"
+
+    if [ -z "${_ver}" ]; then
+      return 1
+    else
+      printf '%s' "${_ver}"
+    fi
+  }
 
   _ver="$(_pgmver)"
-  _rev="$(_svnrelease)"
+  _rev="$(svn info | grep '^Revision' | cut -d' ' -f2)"
+  _date="$(svn info --show-item last-changed-date | awk -FT '{print $1}' | tr -d '-')"
 
   if [ -z "${_ver}" ]; then
-    echo "$0: Error: Could not determine version." > /dev/stderr
-    echo "Aborting." > /dev/stderr
+    printf '%s\n' "$0: Error: Could not determine version." > /dev/stderr
+    printf '%s\n' "Aborting." > /dev/stderr
     false
     return 1
   fi
-
   if [ -z "${_rev}" ]; then
-    echo "$0: Error: Could not determine SVN revision." > /dev/stderr
-    echo "Aborting." > /dev/stderr
+    printf '%s\n' "$0: Error: Could not determine SVN revision." > /dev/stderr
+    printf '%s\n' "Aborting." > /dev/stderr
+    false
+    return 1
+  fi
+  if [ -z "${_date}" ]; then
+    printf '%s\n' "$0: Error: Could not determine latest commit date." > /dev/stderr
+    printf '%s\n' "Aborting." > /dev/stderr
     false
     return 1
   fi
 
-  echo "${_ver}+svn${_rev}"
+  printf '%s' "${_ver}+svn${_rev}.d${_date}"
 }
 
 prepare() {
@@ -134,10 +150,8 @@ prepare() {
   cd "${_unpackeddir}"
 
   ### Update version.h to the actual version + SVNrevision
-  _ver="$(_pgmver)"
-  _rev="$(_svnrelease)"
-  msg2 "Updating version in src/version.h to ${_ver}+svn${_rev} ..."
-  sed -i 's|^\([[:space:]]*#define[[:space:]]*WWWOFFLE_VERSION[[:space:]]*\).*$|/*+ +*/\n/*+ The following line was automatically upgraded by the Arch Linux PKGBUILD (package build script) +*/\n/*+ in order to match the version as in conf/wwwoffle.conf.template and the SVN revision. +*/\n\1"'"${_ver}+svn${_rev}"'"|' \
+  msg2 "Updating version in src/version.h to ${pkgver} ..."
+  sed -i 's|^\([[:space:]]*#define[[:space:]]*WWWOFFLE_VERSION[[:space:]]*\).*$|/*+ +*/\n/*+ The following line was automatically upgraded by the Arch Linux PKGBUILD (package build script) +*/\n/*+ in order to match the version as in conf/wwwoffle.conf.template and the SVN revision. +*/\n\1"'"${pkgver}"'"|' \
    "${_unpackeddir}/src/version.h"
 
   msg2 "Generating svn commit messages file ..."
