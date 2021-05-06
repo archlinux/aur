@@ -1,4 +1,6 @@
 *.tar.gz
 /src
 /pkg
+/go
+/cache
 *.tar.zst
