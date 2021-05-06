@@ -1,0 +1,22 @@
+pkgbase = ros-noetic-nmea-comms
+	pkgdesc = Generalized ROS interface to NMEA-speaking devices.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://wiki.ros.org/nmea_comms
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-roscpp
+	makedepends = ros-noetic-roslint
+	makedepends = ros-noetic-nmea-msgs
+	makedepends = ros-noetic-roslaunch
+	makedepends = ros-noetic-rostest
+	depends = ros-noetic-roscpp
+	depends = ros-noetic-nmea-msgs
+	source = https://github.com/ros-drivers/nmea_comms/archive/refs/tags/1.2.0.tar.gz
+	md5sums = SKIP
+
+pkgname = ros-noetic-nmea-comms
+
