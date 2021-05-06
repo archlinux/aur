@@ -22,5 +22,5 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
-  rm /usr/lib/systemd/user-preset/80-slimpris2.preset
+  rm "$pkgdir"/usr/lib/systemd/user-preset/80-slimpris2.preset
 }
