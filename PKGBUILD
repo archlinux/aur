@@ -3,7 +3,7 @@
 pkgname="deemix-pyweb-git"
 _pkgname="deemix-gui-pyweb"
 pkgver=r465.2204471b8b
-pkgrel=1
+pkgrel=2
 pkgdesc="This is a pyqtwebengine wrapper for deemix-webui"
 arch=('any')
 url="https://gitlab.com/RemixDev/$_pkgname"
@@ -12,28 +12,31 @@ depends=('python>=3.7' 'deemix' 'python-flask' 'python-flask-socketio' 'python-p
 makedepends=('git')
 provides=('deemix-pyweb')
 source=("${_pkgname}::git+https://gitlab.com/RemixDev/$_pkgname"
-        "deemix-webui::git+https://gitlab.com/RemixDev/deemix-webui")
+        "deemix-webui.zip::https://gitlab.com/RemixDev/deemix-webui/-/archive/1.6.0/deemix-webui-1.6.0.zip")
 md5sums=('SKIP' 'SKIP')
 
 pkgver() {
-	cd "${srcdir}/$_pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=10 HEAD)"
+  cd "${srcdir}/$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=10 HEAD)"
 }
 
 package() {
-	cd "${srcdir}"
+  cd "${srcdir}"
 
-	install -dm755 "${pkgdir}/usr/lib/${_pkgname}"
-	cp -dr --no-preserve=ownership ${_pkgname}/* "${pkgdir}/usr/lib/${_pkgname}/"
-	cp -dr --no-preserve=ownership deemix-webui/* "${pkgdir}/usr/lib/${_pkgname}/webui"
+  install -dm755 "${pkgdir}/usr/lib/${_pkgname}"
+  cp -dr --no-preserve=ownership ${_pkgname}/* "${pkgdir}/usr/lib/${_pkgname}/"
+  unzip -o deemix-webui.zip
+  cp -dr --no-preserve=ownership deemix-webui-1.6.0/* "${pkgdir}/usr/lib/${_pkgname}/webui"
 
-	chmod +x "${pkgdir}/usr/lib/${_pkgname}/server.py"
-	chmod +x "${pkgdir}/usr/lib/${_pkgname}/deemix-pyweb.py"
+  chmod +x "${pkgdir}/usr/lib/${_pkgname}/server.py"
+  chmod +x "${pkgdir}/usr/lib/${_pkgname}/deemix-pyweb.py"
 
-	install -dm755 "${pkgdir}/usr/share/applications/"
-	ln -s  "/usr/lib/${_pkgname}/deemix-pyweb.desktop" "${pkgdir}/usr/share/applications/deemix-pyweb.desktop"
+  sed -i "s/deemix-pyweb/${_pkgname}/" "${pkgdir}/usr/lib/${_pkgname}/deemix-pyweb.desktop"
 
-	install -dm755 "${pkgdir}/usr/bin"
-	ln -s "/usr/lib/${_pkgname}/server.py" "${pkgdir}/usr/bin/${_pkgname}-server"
-	ln -s "/usr/lib/${_pkgname}/deemix-pyweb.py" "${pkgdir}/usr/bin/${_pkgname}"
+  install -dm755 "${pkgdir}/usr/share/applications/"
+  ln -s "/usr/lib/${_pkgname}/deemix-pyweb.desktop" "${pkgdir}/usr/share/applications/deemix-pyweb.desktop"
+
+  install -dm755 "${pkgdir}/usr/bin"
+  ln -s "/usr/lib/${_pkgname}/server.py" "${pkgdir}/usr/bin/${_pkgname}-server"
+  ln -s "/usr/lib/${_pkgname}/deemix-pyweb.py" "${pkgdir}/usr/bin/${_pkgname}"
 }
