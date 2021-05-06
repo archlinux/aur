@@ -1,6 +1,6 @@
 # Maintainer: Matt C <matt@xhec.us>
 pkgname=devbook-bin
-pkgver=0.1.15
+pkgver=0.1.18
 pkgrel=1
 pkgdesc="Search engine for developers"
 arch=('x86_64')
