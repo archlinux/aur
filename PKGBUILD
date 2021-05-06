@@ -1,10 +1,13 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: libtool requires rebuilt with each new gcc version
 
+## GCC-PAtches for a better compiling without errors, you can disable or enable them here
+_use_patchese=y
+
 pkgname=(gcc-11 gcc-libs-11 gcc-fortran-11 gcc-objc-11 gcc-ada-11 gcc-go-11 lib32-gcc-libs-11 gcc-d-11)
 pkgver=11.1.0
 _majorver=${pkgver%%.*}
-_islver=0.23
+_islver=0.24
 pkgrel=2
 pkgdesc='The GNU Compiler Collection'
 arch=(x86_64)
@@ -13,15 +16,69 @@ url='https://gcc.gnu.org'
 makedepends=(binutils libmpc gcc-ada doxygen lib32-glibc lib32-gcc-libs python git)
 checkdepends=(dejagnu inetutils)
 options=(!emptydirs)
+_patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/gcc/gcc/11.1.0"
 _libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
-source=(https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz
-        http://isl.gforge.inria.fr/isl-${_islver}.tar.xz
-        c89 c99
+source=("https://sourceware.org/pub/gcc/releases/gcc-11.1.0/gcc-11.1.0.tar.xz"
+        "http://isl.gforge.inria.fr/isl-0.24.tar.xz"
+        "c89"
+        "c99"
+        "${_patchsource}/01_all_default-fortify-source.patch"
+        "${_patchsource}/02_all_default-warn-format-security.patch"
+        "${_patchsource}/03_all_default-warn-trampolines.patch"
+        "${_patchsource}/04_all_nossp-on-nostdlib.patch"
+        "${_patchsource}/05_all_alpha-mieee-default.patch"
+        "${_patchsource}/06_all_ia64_note.GNU-stack.patch"
+        "${_patchsource}/07_all_libiberty-asprintf.patch"
+        "${_patchsource}/08_all_libiberty-pic.patch"
+        "${_patchsource}/09_all_nopie-all-flags.patch"
+        "${_patchsource}/10_all_sh-drop-sysroot-suffix.patch"
+        "${_patchsource}/11_all_ia64-TEXTREL.patch"
+        "${_patchsource}/12_all_disable-systemtap-switch.patch"
+        "${_patchsource}/13_all_m68k-textrel-on-libgcc.patch"
+        "${_patchsource}/14_all_respect-build-cxxflags.patch"
+        "${_patchsource}/15_all_libgomp-Werror.patch"
+        "${_patchsource}/16_all_libitm-Werror.patch"
+        "${_patchsource}/17_all_libatomic-Werror.patch"
+        "${_patchsource}/18_all_libbacktrace-Werror.patch"
+        "${_patchsource}/19_all_libsanitizer-Werror.patch"
+        "${_patchsource}/20_all_libstdcxx-no-vtv.patch"
+        "${_patchsource}/21_all_disable-riscv32-ABIs.patch"
+        "${_patchsource}/22_all_default_ssp-buffer-size.patch"
+        "${_patchsource}/23_all_EXTRA_OPTIONS-z-now.patch"
+        "${_patchsource}/24_all_EXTRA_OPTIONS-fstack-clash-protection.patch"
+        "${_patchsource}/25_all_lto-intl-workaround-PR95194.patch"
+        "${_patchsource}/26_all_plugin-objdump.patch"
 )
 b2sums=('fe617e776b0270d11adea21b5c37d889de90865c19ab82d1c37bbd5c5b9c583a98c174606c4f893ca4950a4233e2a58aae93ad6aa7ad33d4e78a31c72371c1ed'
         '39cbfd18ad05778e3a5a44429261b45e4abc3efe7730ee890674d968890fe5e52c73bc1f8d271c7c3bc72d5754e3f7fcb209bd139e823d19cb9ea4ce1440164d'
         '2c64090b879d6faea7f20095eff1b9bd6a09fe3b15b3890783d3715171678ab62d32c91af683b878746fb14441dbe09768474417840f96a561443415f76afb63'
-        '3cf318835b9833ac7c5d3a6026fff8b4f18b098e18c9649d00e32273688ff06ec3af41f0d0aee9d2261725e0ff08f47a224ccfe5ebb06646aaf318ff8ac9a0d1')
+        '3cf318835b9833ac7c5d3a6026fff8b4f18b098e18c9649d00e32273688ff06ec3af41f0d0aee9d2261725e0ff08f47a224ccfe5ebb06646aaf318ff8ac9a0d1'
+        '587486571e8525765d711195caafef0f42994de1e53c18e4247b229518c660ea16cf6198b26ce48f96fe206125bc89bbd6401220b380f774df4ccfc2cd875904'
+        'f02d654db021e4a647ac2526ec7d487f5c73ba687066b188601e99f46f6053d7a3515da3fb8d6fc73d5c31c676c21d5aba8619630bffb96a0143de16df73ed35'
+        '3773fe7d55a5cb2746324277dc27340fdf316f8b797e7d144c44bfd95b46a72e81bf497398533bb891f4990b4785b8991f03cc33b40cfa6113bc17eb33a3d09a'
+        '72ecf4cfc14d860764c76991d1790f826ae16aa51407b70fb0eb0f4281faa88c73afc3560fda51d6813288195acccb0df732618cdcd7b82d6de2a26daf7a3243'
+        'f32744c6664f4198c7541ed39f97ba19db46df1859e6ab0571886e2579699027a6f5cb38f327e01fe15a4c5715ac93d02216602159b8e75c15ac19eb77568d0a'
+        'cbde514769d9dd861081fae19330e732473974093ada8006dc9ea778cf5ae089abc07faf9c8ae9a5edf49cfe7e85269e563366f10a76e00f64857ced2d1e6f27'
+        '71763a85ba2ccec603e44e895cef4fff1a12f53941b37a9e64b108e66f24de3995c9eba5071053de207a77ac71efa528d8bdf714e3f1a84abbb423994b673552'
+        '284f01e91907506e65d5267d158341e3f439a57086d9f6b2ff59e94047afd2fd7818469a526d13802f45ddeef65d908ca31723a8dbe0bb268be7d200e56c88e9'
+        'd6dc2690c5e379f6b4f7a10eda212b6752888dba4384e14c5c8ea7fde83246a0cea328256a297e227ec50b8948fef8c42086cbceb88e6802d6d3a7701a581452'
+        'da1f3cb6f9601a5e169b7342c529910a5bcdcf44b2669d2d49ae9fc36b7c80f21a3a45b708e9ee793ffd59f3d051160bb8b0c0a986de51c298ae2e3fc844f20b'
+        '1e0cce31f5cbc0d0afc8b0df6afd25b8c2f9e248be96d8b52b2e4fffac3d2ce965c9eb3113cfb13a97e73c66a2fcc12e74e673497398c0b7691882b8c60b3fd9'
+        '67b1fea4c437f48fb222349a7f05a391c7150b001eee80ce9a5b86701b8d1b1793519cc52cc107a79f5a1b9c6972a39b76c64b92be77098569de11604d9282c1'
+        'f9c8834c7aaeb6355df368ddb728f96ba7b0d6a637499b3ed8cf06c2eb571d800f423e6a93adb9e02e67bfa3f5c6558ee528ff907ca42046038fb6d3b8b73fb0'
+        'f1fa9ede75763eb3c9ca6f2eb85e1299d7b640200386a73a8abcb31b1423dd411c669d99093b047bbc7d0667d852c5c97574c013d01bd48fb4a01ea207a2bc65'
+        'bf4f3d585b9b9439a94ce83325f18ca8a1a94a474ee561371466cae5b58a95f5b80ab8382f98b2baf1cecc400c6bead6c68a3e44a5bed0b8d6d0498fbfd41059'
+        'd29dfefdd81f529c9574f5339666ee49876f4d44d87bf7002a5baab348349e0e60b1180904cc4d0b90d0b3229cfb6bb41370fb69e1a2d57f2424503c3df67205'
+        '8bf880b8979f4e03e4401b98e5156beaf6a4127d1ca66331801ce49b957ab60d3726e51ecc55b833981bccaba91c7966b1f14d8b518204aece0fdcfe9df0937e'
+        'fc4e4638755616c59b9a9f9c72d87579dc12f43912f0044ca680be880a82ec91fcd5b60a15ef9780e2a7688ab1fb80198464b7b5e6e5781bad81564706bb366a'
+        '6af53b290ab5630ea73ceccde49f3c6b28f5762b3711ab62f19b87407d2dda11b5a6cadc3d6cfd25c6c64ffa11e3e0a321428b21fa0a064d959aa604c3b91500'
+        '5bad6de56be821dcc1752aa8e0c0ba80f34dc72467c7aa30cb14bb3b63e1f92f7191b1fe5287a7453010ae87428687b2aa79c1c242cd0f3f6c8c8ca16f74eebb'
+        '3fd196fd55ea9aeba406b7dbfa60e4c888e1cce7982f6ca35432161f9d523ec05d676925a33c07b4a140d26f9920677a9f70803c1696d085f61dd58950281876'
+        '1e312d851baab7cb28387b3d2f61a292fb7048fb6df6e38124e252219b5ad33578c14966934828ccd01d88358784ce532796f87328ef2820deba057eaf0cfa34'
+        'c438a7fb9d288ad0b498b8d1d7358f7109da974cfde4415789b2b0b1b185f858434f8fa5ac65dd962d938999509901e15c65c79f5f57dbdd2c3c9215bd7476dc'
+        'b0b241137cbfa921ba6e9b37c47eafb989096278f37a71e5803dc20e6c94b136c0f5f416929c2088bb586627506e120caa4b33117d7017bb7c6a8c37dfc9f1df'
+        'f629ccaa2cb7ce9beb6a207bbb3f959e168979fe496a130acc6072cb130d6487cceb5b2da6b95e137c94ae9cb05f58ffb9a42a842bbcfbbe4017a54f57e5f9cc'
+        '6492b7d3a22cc479a0d180ae0d10335461780719f74b848f9fa323457b1963e4875a51b519f154a07925e727581961c17b2f36b76cfde2dc4f6c3bf9ae9cf494')
 
 prepare() {
   [[ ! -d gcc ]] && ln -s gcc-${pkgver/+/-} gcc
@@ -39,7 +96,20 @@ prepare() {
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
 
-  mkdir -p "$srcdir/gcc-build"
+
+  if [ -n "$_use_patches" ]; then
+    local src
+    for src in "${source[@]}"; do
+        src="${src%%::*}"
+        src="${src##*/}"
+        [[ $src = *.patch ]] || continue
+    echo "Applying patch $src..."
+    patch -Np1 < "../$src"
+    done
+  fi
+
+mkdir -p "$srcdir/gcc-build"
+
 }
 
 build() {
@@ -88,7 +158,7 @@ build() {
   make -C $CHOST/libstdc++-v3/doc doc-man-doxygen
 }
 
-## SKIP FOR FASTER BUILDING ### 
+## SKIP FOR FASTER BUILDING ###
 #check() {
 #  cd gcc-build
 #
