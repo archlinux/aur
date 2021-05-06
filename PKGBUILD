@@ -1,5 +1,5 @@
-# Original: Abhishek Dasgupta <abhidg@gmail.com>
-# Maintainer: Stunts <f.pinamartins@gmail.com>
+# Original: malacology <guoyizhang at malacology.net>
+# Maintainer: malacology <guoyizhang at malacology.net>
 pkgname=mrbayes-desktop
 pkgver=1.0
 pkgrel=1
