@@ -1,6 +1,6 @@
 pkgbase = perl-moosex-getopt
 	pkgdesc = A Moose role for processing command line options
-	pkgver = 0.74
+	pkgver = 0.75
 	pkgrel = 1
 	url = https://metacpan.org/release/MooseX-Getopt
 	arch = any
@@ -24,8 +24,8 @@ pkgbase = perl-moosex-getopt
 	depends = perl-moosex-role-parameterized
 	depends = perl-try-tiny
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Getopt-0.74.tar.gz
-	md5sums = 20eb355de352d8d45ad597a9ad20aaf9
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Getopt-0.75.tar.gz
+	md5sums = 1b9112b9b8723bf2ec225a0fa09285f1
 
 pkgname = perl-moosex-getopt
 
