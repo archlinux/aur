@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=loccount
-pkgver=2.10
+pkgver=2.11
 pkgrel=1
 pkgdesc="Count source lines of code in a project."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://www.catb.org/esr/$pkgname/"
 license=('BSD')
 makedepends=('asciidoc' 'go' 'xmlto')
 source=("https://gitlab.com/esr/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('3ff35468cc320a480da654b32dd882649d08799adab14152a5b64d1a5fd8155e0f0acfdcd5e2ad05bef569f3df3a1b50575509369fc767f80d6c0d2d741857f6')
+b2sums=('151efcf21398f638c4bc9ce33d59e47764573404f80617a843dd138223e8a3be2e05e2031f5dcdeb1827737e119c5a53b056f33af60bc2b16b890e97a31e4867')
 
 prepare() {
   cd "$pkgname-$pkgver"
