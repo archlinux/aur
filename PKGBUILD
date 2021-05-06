@@ -2,9 +2,8 @@
 
 pkgname=spotify-adblock-git
 _pkgname=${pkgname%-*}
-pkgver=r9.b1ac909
+pkgver=1.0.0.r2.g990c0f2
 pkgrel=1
-epoch=1
 license=("GPL3")
 pkgdesc="Adblocker for Spotify"
 depends=("spotify")
@@ -28,7 +27,7 @@ sha512sums=(
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
