@@ -1,2 +1,7 @@
-*
-.*
+# Exclude makepkg generated data
+pkg/
+src/
+
+# Exclude downloaded/generated files
+motrix-bin-*
+Motrix_*

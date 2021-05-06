@@ -1,8 +1,7 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
 pkgname=motrix-bin
-pkgver=v1.5.15
-_pkgver=1.5.15
+pkgver=1.6.8
 pkgrel=1
 pkgdesc="A full-featured download manager (binary version)"
 arch=('x86_64')
@@ -15,12 +14,13 @@ conflicts=(
 depends=(
     'gtk3'
     'libxcb'
+    'nss'
 )
 source=(
-    "https://github.com/agalwood/Motrix/releases/download/${pkgver}/Motrix_${_pkgver}_amd64.deb"
+    "https://github.com/agalwood/Motrix/releases/download/v${pkgver}/Motrix_${pkgver}_amd64.deb"
 )
 sha512sums=(
-    'f20d2c9a22de21e57d4f444f320a76ef1e98ba48caef6ff0634e6f9ea69c29b156760e61030317e875423e52249a87cf1be80803166134a62e5f6856d34970a8'
+    '1c9116b375dffcf551daf0bbde1cea8edc6dedf12eccac288394bd8bcc7272db8f718f4b46184e60b171c93b4444633c36650e887131b50ebfb058bd5076d0df'
 )
 
 package() {
@@ -30,6 +30,6 @@ package() {
     mkdir -p "$pkgdir/usr/bin"
     ln -sf '/opt/Motrix/motrix' "$pkgdir/usr/bin/motrix"
 
-    # SUID chrome-sandbox for Electron 5+
+    # SUID chrome-sandbox for electron 5+ as indicated here: https://github.com/electron/electron/issues/17972#issuecomment-487369441
     chmod 4755 "$pkgdir/opt/Motrix/chrome-sandbox"
 }
