@@ -15,7 +15,7 @@ arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
 url="https://librewolf-community.gitlab.io/"
 depends=(gtk3 libxt mime-types dbus-glib
-         ffmpeg nss ttf-font libpulse
+         ffmpeg nss-hg ttf-font libpulse
          libvpx libjpeg zlib icu libevent pipewire)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
              rust xorg-server-xwayland xorg-server-xvfb
