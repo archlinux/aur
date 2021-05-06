@@ -1,8 +1,9 @@
-# Maintainer: Christian Pinedo <christian (at) chrpinedo (dot) me>
+# Maintainer: Mikael Blomstrand <gmail: chawlindel>
+# Contributor: Christian Pinedo <christian (at) chrpinedo (dot) me>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=solarwallet
 _pkgname="Solar Wallet"
-pkgver=0.25.3
+pkgver=0.26.1
 pkgrel=1
 pkgdesc="Wallet for the Stellar payment network by SatoshiPay."
 arch=('x86_64')
@@ -14,7 +15,7 @@ conflicts=('satoshipay-stellar-wallet')
 replaces=('satoshipay-stellar-wallet')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/satoshipay/solar/archive/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('dd8f22d4913c41e191eba5812892974913af0fc7e27839c7e0dff4c010566429'
+sha256sums=('a47692d5b8b7d6cb7d4045eb0436be39282294ee59a446376c23f7a2fbd62851'
             'b6c574362d009c52ab9f9b0bdb4b2af9f1a8f79f0c8f68b897e9a19df46abc75')
 
 build() {
