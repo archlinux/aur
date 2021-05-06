@@ -11,7 +11,15 @@ pkgbase = beast2
 	depends = openjdk-doc
 	depends = openjdk-src
 	source = https://github.com/CompEvol/beast2/releases/download/v2.6.3/BEAST.v2.6.3.Linux.tgz
+	source = beauti.desktop
+	source = densitree.desktop
+	source = logcombiner.desktop
+	source = treeannotator.desktop
 	sha256sums = 8899277b0d7124ab04dc512444d45f0f1a13505f3ce641e1f117098be3e2e20d
+	sha256sums = 83fba4c776fd29d6852c9c412c31d98bff657e2d2d2763dfe46d4c6174a9495f
+	sha256sums = 40d86086691b6cb91d0af54e5dc53d6693e084242ff3cc77862650ca78667c3d
+	sha256sums = c2057c6ac656e13dcfbdf580a696bc79cb22c3d5270d546eac3e2fb42d620f20
+	sha256sums = 960a2d9030105156e178fe8fd5a8329cf10af1e16141623da47f649f059906b0
 
 pkgname = beast2
 

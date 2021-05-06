@@ -8,8 +8,12 @@ pkgdesc="Bayesian Evolutionary Analysis by Sampling Trees"
 arch=('x86_64')
 url="http://www.beast2.org/"
 license=('LGPL-2.1 License')
-source=("https://github.com/CompEvol/beast2/releases/download/v${pkgver}/BEAST.v${pkgver}.Linux.tgz")
-sha256sums=('8899277b0d7124ab04dc512444d45f0f1a13505f3ce641e1f117098be3e2e20d')
+source=("https://github.com/CompEvol/beast2/releases/download/v${pkgver}/BEAST.v${pkgver}.Linux.tgz" "beauti.desktop" "densitree.desktop" "logcombiner.desktop" "treeannotator.desktop")
+sha256sums=('8899277b0d7124ab04dc512444d45f0f1a13505f3ce641e1f117098be3e2e20d'
+            '83fba4c776fd29d6852c9c412c31d98bff657e2d2d2763dfe46d4c6174a9495f'
+            '40d86086691b6cb91d0af54e5dc53d6693e084242ff3cc77862650ca78667c3d'
+            'c2057c6ac656e13dcfbdf580a696bc79cb22c3d5270d546eac3e2fb42d620f20'
+            '960a2d9030105156e178fe8fd5a8329cf10af1e16141623da47f649f059906b0')
 depends=(
 	'jre-openjdk-headless'
 	'jre-openjdk'
@@ -54,8 +58,8 @@ package() {
     ln -s /usr/share/beast2/bin/treeannotator ${pkgdir}/usr/bin/treeannotator
     ln -s /usr/share/beast2/bin/densitree ${pkgdir}/usr/bin/densitree
     
-    cp ~/.cache/yay/beast2/beauti.desktop ${pkgdir}/usr/share/applications
-    cp ~/.cache/yay/beast2/densitree.desktop ${pkgdir}/usr/share/applications
-    cp ~/.cache/yay/beast2/logcombiner.desktop ${pkgdir}/usr/share/applications
-    cp ~/.cache/yay/beast2/treeannotator.desktop ${pkgdir}/usr/share/applications
+    install -m 755 ${srcdir}/beauti.desktop ${pkgdir}/usr/share/applications/beauti.desktop
+    install -m 755 ${srcdir}/densitree.desktop ${pkgdir}/usr/share/applications/densitree.desktop
+    install -m 755 ${srcdir}/logcombiner.desktop ${pkgdir}/usr/share/applications/logcombiner.desktop
+    install -m 755 ${srcdir}/treeannotator.desktop ${pkgdir}/usr/share/applications/treeannotator.desktop
 }
