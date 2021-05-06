@@ -1,7 +1,7 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=flexbv-unstable-bin
-pkgver=R1150
+pkgver=R1199
 pkgrel=1
 pkgdesc="FlexBV Professional Boardview (unstable version)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('sdl2' 'fontconfig' 'sqlite' 'zlib' 'gtk3' 'libpng')
 makedepends=()
 source=("https://pldaniels.com/flexbv/alpha/FlexBV-$pkgver-linux.tar.gz"
 	"flexbv.sh")
-md5sums=('e22f85af10a13499e8822288840fac3f'
+md5sums=('29d59ac4ab8d46cde7eff1701d86330b'
          '1487cbd7315654d30f9133b210d2d55b')
 
 package() {
