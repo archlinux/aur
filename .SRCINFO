@@ -1,15 +1,15 @@
 pkgbase = spoqa-han-sans
 	pkgdesc = TTF font for korean, english and japanese
-	pkgver = 2.1.2
-	pkgrel = 2
+	pkgver = 3.2.1
+	pkgrel = 1
 	url = http://www.spoqa-han-sans.com/
 	arch = any
 	license = sil
 	makedepends = fontconfig
 	makedepends = xorg-mkfontdir
 	makedepends = xorg-mkfontscale
-	source = https://github.com/spoqa/spoqa-han-sans/releases/download/v2.1.2/SpoqaHanSans_original.zip
-	md5sums = 882bb716e0364a5e50a367ae59fde857
+	source = https://github.com/spoqa/spoqa-han-sans/releases/download/v3.2.1/SpoqaHanSansNeo_TTF_original.zip
+	md5sums = b3f3643558d29552d302941b671ba079
 
 pkgname = spoqa-han-sans
 
