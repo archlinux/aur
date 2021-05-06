@@ -92,7 +92,7 @@ prepare() {
   cd firefox-$pkgver
 
   sed -i 's/\"BrowserApplication\"\, \"firefox\"/\"BrowserApplication\"\, \"firedragon\"/g' $srcdir/firefox-kde-$_patchrevsuse.patch
-  sed -i 's/kmozillahelper/kfiredragonhelper/g' $srcdir/mozilla-kde-$_patchrevsuse
+  sed -i 's/kmozillahelper/kfiredragonhelper/g' $srcdir/mozilla-kde-$_patchrevsuse.patch
   
   # Arch patches
   echo "---- Arch patches"
