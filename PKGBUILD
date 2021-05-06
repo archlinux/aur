@@ -21,7 +21,7 @@ source=("https://github.com/knadh/$_pkgname/releases/download/v$pkgver-beta/${_p
 sha256sums=('1137f572fd93b25034865cb638d169acb1bd9b87d6848c274405bc6108dad62c'
             '5cfc186438df2408ed88a5bec3a9a4b5f2afb0d3aec41c4cc63b2f5eb810b3cb'
             '809ede70c932183889b2fa567b340fb82cce1ada76c7b0a0b9efb82b87c92fa0'
-            '6c72c0adbcd80dabcb5bcde6ddf01e3da9e2f2503eef52362497b0c0e76f8209')
+            'd341df55eb474ea323d22653af8698af70fca08713490cb917ed6ecacb63c41a')
 
 package() {
     install -Dm755 -t "$pkgdir/usr/bin" $_pkgname
