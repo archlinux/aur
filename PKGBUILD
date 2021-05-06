@@ -3,7 +3,7 @@
 # Contributor: Jian Zeng <anonymousknight96@gmail.com>
 # Contributor: Xuanwo <xuanwo@archlinuxcn.org>
 pkgbase=tidb-bin
-_basever=5.0.0
+_basever=5.0.1
 #_relver=-prega
 #pkgver=$_basever.$_relver
 pkgver=$_basever
@@ -16,6 +16,10 @@ license=('APACHE')
 depends=('gcc-libs')
 conflicts=('tidb-bin-nightly' 'tidb' 'tikv' 'tikv-pd')
 options=('strip' 'debug')
+backup=(etc/tidb/tidb.toml
+        etc/tikv/tikv.toml
+        etc/pd/pd.toml
+)
 source=("https://download.pingcap.org/tidb-v$_basever$_relver-linux-amd64.tar.gz"
         pd.service
         tidb.service
@@ -29,7 +33,7 @@ source=("https://download.pingcap.org/tidb-v$_basever$_relver-linux-amd64.tar.gz
         pd.toml
         tidb.toml
         tikv.toml)
-sha256sums=('8c2b8d5e6dd9f51a5950f11401416b71ee32b2bff46ff2906ebecf6ffbe79f59'
+sha256sums=('e7b6568c1ed153863383481fcfe3012ce261b224ff8e772fb04f2af992fbba32'
             'b03d12f2f8d6eb2e9d654d6258ca39000225cdf1418840f7e35081631bc4d924'
             '22318c19bb89ff5a0852df5186cc1496214cd49f2264192413a326d1e8c93dc9'
             '870b8eaf83bc0d22b05b0f3a7890660e483cf77bb1d84bc50ad04fb23068cd8c'
@@ -39,9 +43,9 @@ sha256sums=('8c2b8d5e6dd9f51a5950f11401416b71ee32b2bff46ff2906ebecf6ffbe79f59'
             '30ce83fbec8f102c30e438282bb5b18c026d08480f2386d68f1116c12481bf66'
             '744b252e29099b0099dc41e30bc3badd33b3d661c7126af8044faa4fc2df8927'
             '935291bac6a216c6f880df9bfaec8900266413bb202ac483e79f291e1f28e9f1'
-            '11bc441dfd0327c56218f214a9869da20ccdf7e5265c2f5ffca45089ba8094db'
-            'a34a8ca1f13c965cc0e872fc671f377b64a80cc11225cd6359bf7415b4c86a06'
-            '248790d756d15322ed7af13f30525744c472190ac68a26b486c5eed24427abdf')
+            '10d3fdb40e522c8731e87a7ba2acc6a7866d8f967a6b931247ae8ff97709065a'
+            'f32709894c0d2c105a4398dcaf027f1cbdee359a2a6747f43cac819e9df25517'
+            'be2f8c6830a48da6c356db943aa55ee2f3c9c30b2e9027e7b758cab875fc8520')
 
 _package() {
     provides=("tidb-server=$_basever" "tikv-server=$_basever" "pd-server=$_basever")
