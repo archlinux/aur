@@ -1,0 +1,31 @@
+pkgbase = intel-oneapi-compiler-dpcpp-cpp
+	pkgdesc = Intel® oneAPI DPC++/C++ Compiler
+	pkgver = 2021.2.0
+	pkgrel = 1
+	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
+	arch = x86_64
+	license = custom
+	noextract = intel-oneapi-dpcpp-cpp-2021.2.0-2021.2.0-610_amd64.deb
+	noextract = intel-oneapi-compiler-dpcpp-cpp-common-2021.2.0-2021.2.0-610_all.deb
+	noextract = intel-oneapi-compiler-dpcpp-cpp-runtime-2021.2.0-2021.2.0-610_amd64.deb
+	noextract = intel-oneapi-compiler-dpcpp-eclipse-cfg-2021.2.0-610_all.deb
+	noextract = intel-oneapi-compiler-cpp-eclipse-cfg-2021.2.0-610_all.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dpcpp-cpp-2021.2.0-2021.2.0-610_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-compiler-dpcpp-cpp-common-2021.2.0-2021.2.0-610_all.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-compiler-dpcpp-cpp-runtime-2021.2.0-2021.2.0-610_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-compiler-dpcpp-eclipse-cfg-2021.2.0-610_all.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-compiler-cpp-eclipse-cfg-2021.2.0-610_all.deb
+	sha256sums = 730273ae28c0623fb3720c27c6681e90191bc51d8b3f6ab6713ee5afe6779a5f
+	sha256sums = 3c199045a65b5f382f24424ef983aaa3f4012a961f58a71fa99e68d8a855fa6f
+	sha256sums = 3588eacc7f16181793bc2fe91b7386d6affedc3b501fd830058772f0cc16a65b
+	sha256sums = 9ff1898c0861dca0146094ccb644496c94d13ed61e4d7ce121fc295854ebecf5
+	sha256sums = 21651b1d5d5f24c3bc7ef9ac99cc04f5464ea8e6189611f95a71cae10169e549
+
+pkgname = intel-oneapi-compiler-dpcpp-cpp
+	depends = intel-oneapi-tbb
+	depends = intel-oneapi-libdpstd
+	depends = intel-oneapi-dev-utilities
+	depends = intel-oneapi-compiler-shared
+	depends = intel-oneapi-common-vars
+	depends = intel-oneapi-common-licensing
+
