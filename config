@@ -26,6 +26,3 @@ JAVA_SYS_PROPS="\
   -Djava.util.prefs.userRoot=/var/lib/jitsi-videobridge-nightly\
 "
 
-# JDK15
-# You can try this if you use JDK15
-# VIDEOBRIDGE_GC_TYPE=G1GC
