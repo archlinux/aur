@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+docker run \
+    --rm \
+    -v $(pwd):/srv \
+    --entrypoint /usr/bin/bash \
+    --workdir /srv \
+    docker.io/archlinux -c '\
+        pacman -Syu --noconfirm pacman-contrib pacman git sudo binutils && \
+        git clean -fdx && \
+        chmod a+w PKGBUILD .SRCINFO . && \
+        sudo -u nobody updpkgsums && \
+        sudo -u nobody makepkg --printsrcinfo > .SRCINFO && \
+        sudo -u nobody makepkg \
+        chmod a-w PKGBUILD .SRCINFO . \
+    '
