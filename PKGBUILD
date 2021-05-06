@@ -1,4 +1,5 @@
 # Maintainer: Jason Nader <jason.nader [] protonmail.com>
+# Maintainer: Sian1468 <setthawut DOT a AT protonmail DOT com>
 
 pkgname=python-ffmpeg-progress-yield
 pkgver=0.0.4
@@ -8,6 +9,7 @@ arch=('any')
 url="https://github.com/slhck/ffmpeg-progress-yield"
 license=('MIT')
 depends=('python-colorama' 'python-tqdm')
+conflicts=('ffmpeg-progress-yield')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
 sha512sums=('8e5bc0c4565586a35c8d584b2976701251387574ba95aa9077598b689dda81e68a17b0294e76511cc1536347b1aa8a29ae3fd79b32bb582c8b2c17712549d098')
 
