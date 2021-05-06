@@ -104,7 +104,7 @@ END
 }
 
 package_libgdm-plymouth-prime() {
-  pkgdesc="GDM support library with plymouth support"
+  pkgdesc="GDM support library with plymouth and Prime support for Optimus laptops"
   depends=(systemd glib2 dconf)
   provides=("libgdm")
   conflicts=("libgdm")

@@ -58,7 +58,7 @@ pkgname = gdm-plymouth-prime
 	backup = etc/gdm/PreSession/Default
 
 pkgname = libgdm-plymouth-prime
-	pkgdesc = GDM support library with plymouth support
+	pkgdesc = GDM support library with plymouth and Prime support for Optimus laptops
 	depends = systemd
 	depends = glib2
 	depends = dconf
