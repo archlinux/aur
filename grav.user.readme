@@ -1,0 +1,9 @@
+This directory reflects the contents of the `user` directory as to be
+found in the release archives provided by the makers of *Grav* (aka.
+upstream). It is here only for informational purposes.
+
+The user provided content (including user installed plugins and themes)
+actually served by this installation of *Grav* is located under
+`/var/lib/grav/user`. This is in compliance with Arch Linux' [web
+application package guidelines](https://wiki.archlinux.org/title/Web_application_package_guidelines).
+It will never be touched during installation or upgrade via *pacman*. 

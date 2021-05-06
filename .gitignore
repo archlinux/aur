@@ -1,0 +1,8 @@
+.BUILDINFO
+.INSTALL
+.PKGINFO
+grav-*.pkg.tar.zst
+grav-*.zip
+pkg
+src
+TODO

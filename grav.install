@@ -1,6 +1,91 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer:  Markus Hansmair <archlinux at zendro dot de>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: Nils Czernia <nils at czserver dot de>
 
 post_install() {
-  echo -e "This package assumes you're running your webserver under '\e[32mhttp\e[37m' username"
-  echo -e "If not, modify the script accordingly, by replacing '\e[32mhttp\e[37m' with the username you're running your webserver under."
+  GRAV_ROOT=/usr/share/webapps/grav
+
+  mkdir -p /var/cache/grav/{assets,images,cache,sessions}
+  ln -s /var/cache/grav/assets $GRAV_ROOT/assets
+  ln -s /var/cache/grav/images $GRAV_ROOT/images
+
+  mkdir -p /var/lib/grav/backup
+  cp -r $GRAV_ROOT/user.upstream /var/lib/grav/user
+  rm /var/lib/grav/user/README.md
+  rm -rf /var/lib/grav/user/config
+  ln -s /var/lib/grav/user $GRAV_ROOT/user
+  _fix_permissions /var/lib/grav 644 755
+
+  ln -s /etc/webapps/grav/config /var/lib/grav/user/config
+  _fix_permissions /etc/webapps/grav 640 750
+}
+
+pre_upgrade() {
+  if [ "$(vercmp "$2" '1.7')" -lt 0 ]; then
+    GRAV_ROOT=/usr/share/webapps/grav
+
+    rm -rf "$GRAV_ROOT/vendor"
+
+    mkdir -p /etc/webapps/grav
+    mv "$GRAV_ROOT/user/config" /etc/webapps/grav
+  fi
+}
+
+post_upgrade() {
+  if [ "$(vercmp "$2" '1.7')" -lt 0 ]; then
+    echo "WARNING: Major changes introduced to the package"
+    echo "         The application is now run with its own user (grav)."
+    echo "         Your current installation is now probably broken. See"
+    echo "         https://wiki.archlinux.org/title/Grav how to fix this."
+    
+    GRAV_ROOT=/usr/share/webapps/grav
+
+    for DIR in assets images cache; do
+      _move_or_create "$GRAV_ROOT/$DIR" "/var/cache/grav/$DIR"
+      _fix_permissions "/var/cache/grav/$DIR" 640 750
+    done
+    ln -s /var/cache/grav/assets $GRAV_ROOT/assets
+    ln -s /var/cache/grav/images $GRAV_ROOT/images
+
+    _move_or_create "$GRAV_ROOT/tmp" /var/tmp/grav
+    _fix_permissions /var/tmp/grav 640 750
+
+    _move_or_create "$GRAV_ROOT/logs" /var/log/grav
+    _fix_permissions /var/log/grav 644 755
+
+    rm -rf $GRAV_ROOT/user/config
+    ln -s /etc/webapps/grav/config $GRAV_ROOT/user/config
+    _fix_permissions /etc/webapps/grav 640 750
+
+    mkdir -p /var/lib/grav
+    mv $GRAV_ROOT/user /var/lib/grav
+    ln -s /var/lib/grav/user $GRAV_ROOT/user
+    _move_or_create "$GRAV_ROOT/backup" /var/lib/grav/backup
+    _fix_permissions /var/lib/grav 640 750
+  fi
+}
+
+pre_remove() {
+  rm -rf /usr/share/webapps/grav/{assets,images,user}
+}
+
+post_remove() {
+  # this is not covered by any hook
+  rm -rf /var/log/grav /var/tmp/grav /var/cache/grav
+
+  echo "Grav user content and backups can still be found under /var/lib/grav"
+}
+
+_move_or_create() {
+  if [ -d "$1" ]; then
+    rm -rf "$2"
+    mv "$1" "$2"
+  else
+    mkdir -p "$2"
+  fi
+}
+
+_fix_permissions() {
+  chmod -R "$2" "$1"
+  find "$1" -type d -exec chmod "$3" {} \;
 }

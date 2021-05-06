@@ -1,37 +1,70 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
-# Contributor: Nils Czernia <nils[at]czserver[dot[de>
+# Maintainer:  Markus Hansmair <archlinux at zendro dot de>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: Nils Czernia <nils at czserver dot de>
 
 pkgname=grav
-pkgver=1.6.28
+pkgver=1.7.14
 pkgrel=1
-pkgdesc="Modern, Crazy Fast, Ridiculously Easy and Amazingly Powerful Flat-File CMS (without Admin plugin)"
-arch=("any")
-url="https://getgrav.org"
-license=("MIT")
+pkgdesc='Modern, Crazy Fast, Ridiculously Easy and Amazingly Powerful Flat-File CMS'
+arch=('any')
+url='https://getgrav.org'
+license=('MIT')
 provides=('grav')
-depends=('php>=7.1.3' 'php-gd')
-optdepends=('php-apcu: A userland caching module for PHP' 
-            'xdebug: PHP debugging extension' 
-            'apache: A high performance Unix-based HTTP server' 
-            'nginx: Lightweight HTTP server and IMAP/POP3 proxy server'
+depends=( )
+optdepends=('php-apcu: Userland caching module for PHP' 
+            'php-yaml: YAML de-/serialization using the LibYAML library'
             'php-fpm: FastCGI Process Manager'
-            'php-apache: Apache SAPI for PHP')
+            'apache: High performance Unix-based HTTP server' 
+            'nginx: Lightweight HTTP server and IMAP/POP3 proxy server'
+            'uwsgi: Fast and highly tuneable application server'
+            'uwsgi-plugin-php: uwsgi plugin for PHP'
+            'xdebug: PHP debugging extension' )
 install=grav.install
-source=("${pkgname}-${pkgver}.zip::https://github.com/getgrav/grav/archive/${pkgver}/${pkgname}-v${pkgver}.zip")
-sha256sums=('633ca76365e76c8ff0be7d58ad7ce1db5ab51e3b64ff9d1d5a5659561191489d')
+source=("${pkgname}-${pkgver}.zip::https://github.com/getgrav/grav/releases/download/${pkgver}/${pkgname}-v${pkgver}.zip"
+        "grav.patch"
+        "grav.user.readme"
+        "grav.sysusers.conf"
+        "grav.tmpfiles.conf"
+        "grav.uwsgi.ini"
+        "grav.php-fpm.ini"
+        "grav.php-fpm.d.grav.conf"
+        "grav.php-fpm.service.d.override.conf")
+sha256sums=('fc23513fe6bdbdc74a6e2dcb2ecddd66e42958047450b2064c3110058012f07e'
+            'c93008057d3c3f224ecebc93b5b835c5b46c4b16f0caf821c75fcac4b7c20d4f'
+            '125e08820ed477582d7ae716dac6495bca4eac485fa4d4263b11f2505fc355db'
+            'ced168231a98be4816afc0a1928b54218c4ce4081be7b49acd704e2a9325f9db'
+            'eb4507ec4efbdd605d0f25d4e41e6480e0ce551d7f6d5c3aa52a25242b8adcbb'
+            '494e1fb15cc7ca15f8d543276396f87c9498564a167dc70b6cbe9f91ebbc2f42'
+            '40235242a47c5f4424212ccf657b0716d533ce3f8125af349e2c2ac4d9e0deef'
+            'bdde9deebedd5d53e43b1d5ac2fb2348953903f0c21cfad35a1ebfb78e065385'
+            'd93bf78a9a3d895e7ed4e504a17d0eea7fdb2c49b79bfea9a4ba0548e57d12a6')
+backup=('etc/webapps/grav/config/site.yaml'
+        'etc/webapps/grav/config/system.yaml')
+
+prepare() {
+  cd "${srcdir}/${pkgname}"
+  patch --strip=1 --input="../grav.patch"
+  rm -rf assets backup cache .github images logs .phan tests tmp
+  rm *.md composer.* now.json
+  find . -type f -name '.gitkeep' -exec rm {} \;
+  mv user user.upstream
+}
 
 package() {
-  cd "${pkgdir}"
-  install -dm0755 usr/share/webapps/
-  mv ${srcdir}/${pkgname}-${pkgver} ${pkgdir}/usr/share/webapps/${pkgname}
-  cd ${pkgdir}/usr/share/webapps/${pkgname}
-  chgrp -R http .
-  find . -type f | xargs chmod 664
-  find ./bin -type f | xargs chmod 775
-  find . -type d | xargs chmod 775
-  find . -type d | xargs chmod +s
-  umask 0002
-  rm -Rf *.md composer.json composer.lock .github
-  rm $(find . -type f -name .gitkeep | xargs)
-  install -Dm644 "${pkgdir}/usr/share/webapps/grav/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  depends=('php>=7.3.6' 'php-gd')
+  mkdir -p "${pkgdir}/usr/share/webapps"
+  gravroot="${pkgdir}/usr/share/webapps/${pkgname}"
+  cp -ar "${srcdir}/${pkgname}" "${gravroot}"
+  chmod -R 644 "${gravroot}"
+  chmod -R 755 "${gravroot}/bin"
+  find "${gravroot}" -type d -exec chmod 755 {} \;
+  install -Dm 640 "${gravroot}/user.upstream/config/"{site,system}".yaml" -t "${pkgdir}/etc/webapps/${pkgname}/config"
+  install -Dm 644 "${srcdir}/grav.sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+  install -Dm 644 "${srcdir}/grav.tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+  install -Dm 644 "${srcdir}/grav.uwsgi.ini" "${gravroot}/webserver-configs/uwsgi-${pkgname}.ini"
+  install -Dm 644 "${srcdir}/grav.php-fpm.ini" "${gravroot}/webserver-configs/php-fpm.ini"
+  install -Dm 644 "${srcdir}/grav.php-fpm.d.grav.conf" "${gravroot}/webserver-configs/php-fpm.d/grav.conf"
+  install -Dm 644 "${srcdir}/grav.php-fpm.service.d.override.conf" "${gravroot}/webserver-configs/php-fpm.service.d/override.conf"
+  install -Dm 644 "${gravroot}/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 "${srcdir}/grav.user.readme" "${gravroot}/user.upstream/README.md"
 }
