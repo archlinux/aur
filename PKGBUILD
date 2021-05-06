@@ -2,41 +2,15 @@
 pkgname=deepin-wallpapers-gnome-integration
 pkgver=0.0.1
 pkgrel=1
-epoch=
 pkgdesc="Make deepin-wallpapers show up in GNOME Settings"
-arch=(x86_64)
+arch=('any')
 url="https://github.com/simonwahll/deepin-wallpapers-gnome-integration"
 license=('GPL3')
-groups=()
-depends=(deepin-wallpapers)
-makedepends=(sudo)
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("$pkgname-$pkgver.tar.gz")
-noextract=()
-md5sums=(b55dcf172066c6fbf909d0669534330f)
-validpgpkeys=()
-
-prepare() {
-	echo ""
-}
-
-build() {
-	echo ""
-}
-
-check() {
-	echo ""
-}
+depends=('deepin-wallpapers')
+source=("https://github.com/simonwahll/deepin-wallpapers-gnome-integration/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('40527b09297aa590f69baa47e5b4f51a2b9bb6dc28daef00e457de20a90bd67e')
 
 package() {
 	cd "$pkgname-$pkgver"
-	sudo ./install.sh
+	install -Dm644 usr/share/gnome-background-properties/deepin-backgrounds.xml -t "$pkgdir/usr/share/gnome-background-properties/"
 }
