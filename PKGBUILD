@@ -3,7 +3,7 @@
 # Contributor: regreddit <nik.martin@gmail.com>
 
 pkgname=mixxx_beta-git
-pkgver=r8121
+pkgver=r8168
 pkgrel=1
 pkgdesc="Digital DJ mixing software. 2.3 (beta) branch."
 arch=('i686' 'x86_64')
@@ -31,6 +31,7 @@ depends=(
     'protobuf'
     'qt5-script'
     'qt5-svg'
+    'qt5-translations'
     'qt5-x11extras'
     'qtkeychain'
     'rubberband'

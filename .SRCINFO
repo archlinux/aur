@@ -1,6 +1,6 @@
 pkgbase = mixxx_beta-git
 	pkgdesc = Digital DJ mixing software. 2.3 (beta) branch.
-	pkgver = r8121
+	pkgver = r8168
 	pkgrel = 1
 	url = https://mixxx.org/
 	install = mixxx.install
@@ -32,6 +32,7 @@ pkgbase = mixxx_beta-git
 	depends = protobuf
 	depends = qt5-script
 	depends = qt5-svg
+	depends = qt5-translations
 	depends = qt5-x11extras
 	depends = qtkeychain
 	depends = rubberband
