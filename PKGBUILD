@@ -7,7 +7,6 @@ license=(BSD)
 conflicts=(blesh-git)
 url='https://github.com/akinomyoga/ble.sh'
 depends=(bash)
-makedepends=(bash gawk make)
 arch=(any)
 source=("https://github.com/akinomyoga/ble.sh/releases/download/v0.3.3/ble-${pkgver}.tar.xz")
 sha256sums=('a7e66383bd828584e82133ee08ab0bd8074ef0a739eacb835ff0970c3853f33a')
