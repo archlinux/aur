@@ -6,7 +6,7 @@
 
 _name=lmms
 pkgname=lmms-git
-pkgver=1.2.1.r583.gb2c4f2939
+pkgver=1.3.0.alpha.1.r103.g89f0a98e3
 pkgrel=1
 pkgdesc='The Linux MultiMedia Studio.'
 arch=('x86_64')
