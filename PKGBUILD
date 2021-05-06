@@ -5,7 +5,7 @@ proxy for Ground Control Station."
 url='https://wiki.ros.org/mavros'
 
 pkgname='ros-melodic-mavros'
-pkgver='1.7.1'
+pkgver='1.8.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('GPLv3, LGPLv3, BSD')
@@ -55,7 +55,7 @@ depends=(
 
 _dir="mavros-${pkgver}/mavros"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mavlink/mavros/archive/${pkgver}.tar.gz")
-sha256sums=('3d15c3249c16513e36be6b518a9a77c3f59fd5a500859773fd3fb4183cbff51b')
+sha256sums=('b078a8cdbe5675b93a4e2dc68d71b8f39241942af053722778da1be5d5db3152')
 
 build() {
   # Use ROS environment variables
