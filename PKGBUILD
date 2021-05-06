@@ -1,38 +1,39 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o
-pkgver=2.36.0
+pkgver=2.37.0
 pkgrel=1
 pkgdesc='Quick little editor limited by VT100'
 arch=(x86_64)
 url='https://github.com/xyproto/o'
 license=(BSD)
 makedepends=(git go)
-source=("git+$url#commit=113fa49898e6e476ba12bb88840b02418447914f") # tag: 2.36.0
-optdepends=('cxx: for compiling C++'
+source=("git+$url#commit=b79cbb5d9f6742aace8819a74d77e8165e694de9") # tag: 2.37.0
+optdepends=('asciidoctor: for writing man pages'
+            'astyle: for formatting C#'
+            'autopep8: for formatting Python'
             'brittany: for formatting Haskell'
             'clang: for formatting C++ code with clang-format'
-            'rustup: for compiling and formatting Rust'
-            'zig: for compiling and formatting Zig'
-            'v: for compiling and formatting V'
+            'crystal: for compiling Crystal'
+            'cxx: for compiling C++'
+            'fpc: for compiling Object Pascal'
+            'fstabfmt: for formatting /etc/fstab'
             'ghc: for compiling Haskell'
+            'google-java-format: for formatting Java'
+            'guessica: for updating PKGBUILD files'
+            'java-environment: for compiling Java'
+            'kotlin: for compiling Kotlin'
+            'lua: for compiling Lua'
+            'lua-format: for formatting Lua'
             'ocaml: for compiling and formatting OCaml'
             'odin: for compiling Odin'
-            'autopep8: for formatting Python'
-            'scdoc: for writing man pages'
-            'asciidoctor: for writing man pages'
             'pandoc: for exporting Markdown to PDF'
-            'guessica: for updating PKGBUILD files'
-            'kotlin: for compiling Kotlin'
-            'crystal: for compiling Crystal'
-            'java-environment: for compiling Java'
-            'google-java-format: for formatting Java'
-            'fpc: for compiling Object Pascal'
-            'lua-format: for formatting Lua'
-            'lua: for compiling Lua'
-            'tidy: for formatting HTML'
+            'rustup: for compiling and formatting Rust'
             'scala: for compiling Scala'
-            'fstabfmt: for formatting /etc/fstab')
+            'scdoc: for writing man pages'
+            'tidy: for formatting HTML'
+            'v: for compiling and formatting V'
+            'zig: for compiling and formatting Zig')
 b2sums=('SKIP')
 
 build() {
