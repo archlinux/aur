@@ -2,7 +2,7 @@
 
 pkgname="expo-cli"
 pkgver=4.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for creating, running, and deploying Universal Expo and React Native apps"
 arch=("any")
 url="https://expo.io"

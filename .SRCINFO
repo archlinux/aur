@@ -1,7 +1,7 @@
 pkgbase = expo-cli
 	pkgdesc = Tools for creating, running, and deploying Universal Expo and React Native apps
 	pkgver = 4.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://expo.io
 	arch = any
 	license = MIT
