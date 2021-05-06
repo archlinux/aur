@@ -1,0 +1,14 @@
+pkgbase = onboard-sdk
+	pkgdesc = DJI Onboard SDK
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://github.com/dji-sdk/Onboard-SDK
+	arch = x86_64
+	depends = cmake
+	source = https://github.com/dji-sdk/Onboard-SDK/archive/refs/tags/4.1.0.tar.gz
+	source = https://github.com/dji-sdk/Onboard-SDK/pull/740.patch
+	sha256sums = 9a7c7678837f55d2380bf4e97bdf9bf0554acc36d2878f35fba36969360c16c6
+	sha256sums = SKIP
+
+pkgname = onboard-sdk
+
