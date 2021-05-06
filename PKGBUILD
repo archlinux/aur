@@ -64,7 +64,7 @@ pkgver=${_major}
 #_stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=3
+pkgrel=4
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -78,6 +78,7 @@ source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz
         "config"
         "${_patchsource}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_patchsource}/cacule-patches/cacule-5.12-2k.patch"
+        "${_patchsource}/cacule-patches/interactivity_levels.patch"
         "${_patchsource}/cpu-patches/0001-cpu-patches.patch"
         "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/futex2-stable-patches-v2/0001-futex2-resync-from-gitlab.collabora.com.patch"
@@ -97,9 +98,10 @@ source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz
         "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch")
 
 sha512sums=('9bb9831459557a87ecb822ee5862b27ec1cb0de7df1a0131f534bd57a152b6ea75b710fa319cf533a8f89b8cbaa6b4844bd260c4bd825e83e1d62e7734510240'
-            '023adf5a1c540f74aeebb47fb9f80988bdce15e8dd4e3d1a82ec1dc7c74a0b495d671fff87f91da3bb77ae46c7c7e803408b417b8c1e486e3ecdad11adb442e2'
+            '6f7e6737e52923892f88555258d14a6bbfd9cef39c810dd0c2b28cd714f37d670c7772e54aad8d9392961de0ec64b72eeb0e69045b7e55750b94f38fd2a3261b'
             '88f9f1e6ea206068fd029566e4610c16b7c3007f10363c7db37cd922fe75646437d2e4814317bc292d06eff7e9ebd29d8cd1ee82c8abf45ddd1843c1ff55f5c7'
             '79807de3136a32f9e96f37d7781bfa4db225855573ab44092d1c22c5f9e282b1bc034b8de03c610ecba38b75708144b7a52c92e78dd460493239869cb2ae33fa'
+            'd34fcb437a41ba433be1d7df6fbff692453b117b2515d2b73e39435856fc6e43c44706bf6a6217393e492eac41207ccfb6a6cf4906a4757a2639ae684603539f'
             '15933126feeb56ccc6ace70db9fa7afb64d148900e41a780e42e03ce09faf7bab12413f526675b918aeff55e91dc038ad58884bb7add4a45962aca79d576cb93'
             '449570b8b9a04391cc2cc171cc806b3a132c6e969c7cedf9c4925d24244888e6f2e5afb6c551521fe62fcb7e2bf08cb8d396f9ec785ecfcdd5ea27dd9ffed4ea'
             'a0ba9fd091e4cc30b2a493e23299c0ce242ee26e8af399ea9aa115face3b90a723fb20f8877042c6b311a9eca20513bb932c1fd1c5db262b1df7b37160c0634e'
@@ -246,20 +248,20 @@ prepare() {
 
     ### Enable protect file mappings under memory pressure
 
-		echo "Enabling protect file mappings under memory pressure..."
-		scripts/config --enable CONFIG_UNEVICTABLE_FILE
-		scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
-		scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
+    echo "Enabling protect file mappings under memory pressure..."
+    scripts/config --enable CONFIG_UNEVICTABLE_FILE
+    scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
+    scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
 
     ### Enable multigenerational LRU
 
-		echo "Enabling multigenerational LRU..."
-		scripts/config --enable CONFIG_HAVE_ARCH_PARENT_PMD_YOUNG
-		scripts/config --enable CONFIG_LRU_GEN
-		scripts/config --set-val CONFIG_NR_LRU_GENS 7
-		scripts/config --set-val CONFIG_TIERS_PER_GEN 4
-		scripts/config --enable CONFIG_LRU_GEN_ENABLED
-		scripts/config --disable CONFIG_LRU_GEN_STATS
+    echo "Enabling multigenerational LRU..."
+    scripts/config --enable CONFIG_HAVE_ARCH_PARENT_PMD_YOUNG
+    scripts/config --enable CONFIG_LRU_GEN
+    scripts/config --set-val CONFIG_NR_LRU_GENS 7
+    scripts/config --set-val CONFIG_TIERS_PER_GEN 4
+    scripts/config --enable CONFIG_LRU_GEN_ENABLED
+    scripts/config --disable CONFIG_LRU_GEN_STATS
 
   ### Enabling ZSTD COMPRESSION ##
       echo "Set module compression to ZSTD"
