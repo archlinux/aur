@@ -1,7 +1,7 @@
 # Maintainer: Avery Murray <averylapine@protonmail.com>
 
 pkgname=rfetch
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="No dependancy fetch program written in Rust"
 arch=('x86_64' 'i686' 'pentiumm4' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -9,8 +9,8 @@ url="https://github.com/caverym/rfetch"
 license=('MIT')
 makedepends=('rust' 'gcc')
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/caverym/rfetch/archive/refs/tags/0.3.0.tar.gz")
-sha256sums=('ff8fdb0263ef13137ae22c003b89886751f0853812512d31358f1dbf4d7700d9')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/caverym/rfetch/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('f26ef74a4f5b5c088e47c1c7b810bb3ecf3e00633700499f0bcae4e08ea7fa01')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
