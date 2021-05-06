@@ -3,13 +3,13 @@
 
 pkgname=transcribe
 pkgver=9.00
-pkgrel=1
+pkgrel=2
 pkgdesc="music transcription aid"
 arch=('i686' 'x86_64')
 url="http://www.seventhstring.com/xscribe/overview.html"
 license=('unknown')
 depends=('libsm' 'gtk3' 'gst-plugins-base-libs')
-source_x86_64=('https://www.seventhstring.com/xscribe/xscsetup.tar.gz')
+source_x86_64=("https://www.seventhstring.com/xscribe/downlo/xscsetup-${pkgver}.0.tar.gz")
 md5sums_x86_64=('7d6b92414bfa3324dfa062887328175b')
 
 package() {
