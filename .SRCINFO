@@ -1,14 +1,14 @@
 pkgbase = qt5-webengine-widevine
 	pkgdesc = A browser plugin designed for the viewing of premium video content (E.g. Spotify)
-	pkgver = 88.0.4324.150
+	pkgver = 90.0.4430.93
 	pkgrel = 1
 	url = https://www.widevine.com/
 	arch = x86_64
 	license = custom
 	depends = qt5-webengine
 	options = !strip
-	source = https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_88.0.4324.150-1_amd64.deb
-	sha256sums = 404f13af1288a824898674e83c42bcdffba098178ff96d266525cd7e2fdcd077
+	source = https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_90.0.4430.93-1_amd64.deb
+	sha256sums = 86bedf3e385dcc819fa7863b28445c403090fb20b45a8b0f063199ed72662eee
 
 pkgname = qt5-webengine-widevine
 
