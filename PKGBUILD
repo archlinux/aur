@@ -3,11 +3,11 @@
 
 pkgname=xsv-git
 pkgver=0.13.0.r12.g3de6c04
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast CSV command line toolkit written in Rust"
 arch=('i686' 'x86_64')
 url="https://github.com/BurntSushi/xsv"
-license=('custom')
+license=('custom' 'MIT')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
 provides=('xsv')
@@ -38,5 +38,5 @@ package() {
     --locked \
     --root "$pkgdir/usr" \
     --path "$srcdir/xsv"
-  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/xsv"
+  install -Dm644 {LICENSE-MIT,UNLICENSE} -t "$pkgdir/usr/share/licenses/xsv"
 }
