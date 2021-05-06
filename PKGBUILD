@@ -1,4 +1,5 @@
-# Maintainer: Aliaksiej Homza <aliaksiej.homza@gmail.com>
+# Maintainer: Matt C <matt@xhec.us>
+# Contributor: Aliaksiej Homza <aliaksiej.homza@gmail.com>
 # Contributor: Wesley Moore <wes@wezm.net>
 
 pkgname=buckets-bin
