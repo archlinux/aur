@@ -1,7 +1,7 @@
 pkgbase = vgrive
 	pkgdesc = Google Drive client made in Vala
 	pkgver = 1.6.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/bcedu/VGrive
 	arch = x86_64
 	license = GPL3
@@ -15,7 +15,7 @@ pkgbase = vgrive
 	source = vgrive-1.6.1.tar.gz::https://github.com/bcedu/VGrive/archive/1.6.1.tar.gz
 	source = https://github.com/bcedu/VGrive/pull/116.patch
 	sha256sums = f125ef74ce1d53517cc45d69716bb9668847d5c406096306aedf2a1178b4bfde
-	sha256sums = a8b6fe3161377c1fd3ab4e5c585760c12f3d1a58e8db549cd1b7359841e3e5db
+	sha256sums = 1210228c34d35b3b9464df735464c17124fa9d8bb693ccb708370a0bf8b14735
 
 pkgname = vgrive
 
