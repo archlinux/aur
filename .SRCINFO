@@ -1,0 +1,19 @@
+pkgbase = tnt-gui
+	pkgdesc = Tree analysis using New Technology
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://www.lillo.org.ar/phylogeny/tnt/
+	arch = x86_64
+	license = custom
+	depends = wine
+	depends = wine_gecko
+	depends = wine-mono
+	source = http://www.lillo.org.ar/phylogeny/tnt/tnt-win-no-tax-limit.zip
+	source = tnt.desktop
+	source = tnt.png
+	sha256sums = 2adaad6de1d334817a947dd4b210b9c0908506e865d9625869c13e968b8a5e63
+	sha256sums = fb3843fe28e3083530888e337694fcc2654652647f86223194f241c70342d7a7
+	sha256sums = 292f95bbcb47bea8eae753123df282e19bc1461a0d0f7c0312e3864656b77da3
+
+pkgname = tnt-gui
+
