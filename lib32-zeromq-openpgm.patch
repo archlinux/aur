@@ -1,0 +1,23 @@
+diff '--color=auto' -rupN libzmq.orig/CMakeLists.txt libzmq/CMakeLists.txt
+--- libzmq.orig/CMakeLists.txt	2021-05-06 16:35:11.594304700 +0200
++++ libzmq/CMakeLists.txt	2021-05-06 16:42:05.666080883 +0200
+@@ -793,7 +793,7 @@ else()
+     # message(FATAL_ERROR "WITH_OPENPGM not implemented")
+ 
+     if(NOT OPENPGM_PKGCONFIG_NAME)
+-      set(OPENPGM_PKGCONFIG_NAME "openpgm-5.2")
++      set(OPENPGM_PKGCONFIG_NAME "openpgm-5.3")
+     endif()
+ 
+     set(OPENPGM_PKGCONFIG_NAME
+@@ -1447,6 +1447,10 @@ if(BUILD_SHARED)
+     endif()
+   endif()
+ 
++  if(OPENPGM_FOUND)
++    target_link_libraries(libzmq ${OPENPGM_LIBRARIES})
++  endif()
++
+   if(HAVE_WS2_32)
+     target_link_libraries(libzmq ws2_32)
+   elseif(HAVE_WS2)
