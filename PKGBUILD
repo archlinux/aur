@@ -4,8 +4,8 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=88.0
-pkgrel=5
+pkgver=88.0.1
+pkgrel=1
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -38,7 +38,7 @@ _arch_svn=https://git.archlinux.org/svntogit/packages.git/plain/trunk
 _linux_commit=9e90fb3a9bc38aad9921530ee69ecabf6ac8c7bf
 _settings_commit=1b9cc88ccf64993951fe28cf426cf883e37e1b4d
 _mbrev=2389
-_patchrevsuse=3fdf082cf93d94e4289e552cbd9988601044576a
+_patchrevsuse=aedbca44a8a2958947bed31f28e3083ac0496f4a
 _pfdate=20210420
 _patchurl=https://raw.githubusercontent.com/openSUSE/firefox-maintenance/$_patchrevsuse
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
@@ -51,7 +51,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "mozilla-vpn-ad.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/mozilla-vpn-ad.patch"
         0001-Use-remoting-name-for-GDK-application-names.patch
         firefox-kde-$_patchrevsuse.patch::$_patchurl/firefox/firefox-kde.patch
-        mozilla-kde-plasmafox88.patch
+        mozilla-kde-$_patchrevsuse.patch::$_patchurl/mozilla-kde.patch
         mozilla-nongnome-proxies-$_patchrevsuse.patch::$_patchurl/mozilla-nongnome-proxies.patch
         fix-hidden-buttons-with-csd-menubar.patch
         0004-bmo-847568-Support-system-harfbuzz.patch
@@ -63,7 +63,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
 source_aarch64=("arm.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/arm.patch"
                 https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch)
 
-sha256sums=('6b50dbfb393f843e4401e23965a1d8f7fd44b5a7628d95138294094094eee297'
+sha256sums=('83df1eae0e28fe99661fd5d39d705cdab2e108b4a24ce12c2db6183c632804cc'
             '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
             'SKIP'
             'SKIP'
@@ -73,7 +73,7 @@ sha256sums=('6b50dbfb393f843e4401e23965a1d8f7fd44b5a7628d95138294094094eee297'
             'f3fd29e24207d5cc83f9df6c9ffa960aabdab598ea59a61fec57e9947b1d8bc9'
             '6ca7ff71cb4a7c72eca39769afe8e18ec81cba36d9b570df15fc243867049243'
             '0ae5bce3da13b7f58e37be6d7115bef323256d776195279592f4371179497f8a'
-            '9398b1e00e843776baa6396e1a5ffd3852439efe73e76f80acefb23a617dc3ac'
+            '9843662fd9b766801a70bdef22bb996a1abd9d7c3781f1fb58b7034e575350a1'
             'fbd95cbcbc32673ef549b43b0d2de3ef0ef4fa303b6336e64993f2c8a73264e4'
             '482935782429b30f5e1581347a9a798705068c40f20bf4eee9304a254fd81bc8'
             'e17f631bc9b1873419ff10fef5fad6061e8695b961b6bb90616ec04444834608'
@@ -92,7 +92,7 @@ prepare() {
   cd firefox-$pkgver
 
   sed -i 's/\"BrowserApplication\"\, \"firefox\"/\"BrowserApplication\"\, \"firedragon\"/g' $srcdir/firefox-kde-$_patchrevsuse.patch
-  sed -i 's/kmozillahelper/kfiredragonhelper/g' $srcdir/mozilla-kde-plasmafox88.patch
+  sed -i 's/kmozillahelper/kfiredragonhelper/g' $srcdir/mozilla-kde-$_patchrevsuse
   
   # Arch patches
   echo "---- Arch patches"
@@ -101,7 +101,7 @@ prepare() {
   # KDE patches (W. Rosenauer)
   echo "---- Patching for KDE"
   patch -Np1 -i ../mozilla-nongnome-proxies-$_patchrevsuse.patch
-  patch -Np1 -i ../mozilla-kde-plasmafox88.patch
+  patch -Np1 -i ../mozilla-kde-$_patchrevsuse
   patch -Np1 -i ../firefox-kde-$_patchrevsuse.patch
   
   # Ubuntu patches
