@@ -3,7 +3,7 @@
 pkgbase="python-arxiv"
 pkgname=("python-arxiv")
 _module="arxiv"
-pkgver="0.5.3"
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Python wrapper for the arXiv API: http://arxiv.org/help/api/"
 url="https://github.com/lukasschwab/arxiv.py"
@@ -12,7 +12,7 @@ makedepends=("python-setuptools")
 license=("MIT")
 arch=("any")
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=("9010cf132bcfb67c07bd363c49d519365310f92ac9da1a06509f712798265987")
+sha256sums=("c8ed3595de73203a18c0d6bc6e2b5cce0036a8e1e58ea37cd2a1ab6d3ea1487b")
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
