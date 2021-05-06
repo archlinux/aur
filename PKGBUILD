@@ -6,7 +6,7 @@ _pkgname=newlisp
 pkgver=10.7.6
 pkgrel=5
 pkgdesc="A LISP like, general purpose scripting language. Ongoing development version."
-url="http://www.newlisp.org"
+url="https://www.newlisp.org"
 license=('GPL3')
 arch=('x86_64' 'i686')
 depends=('readline' 'libffi')
@@ -14,7 +14,7 @@ optdepends=('java-environment: for gui server')
 provides=('newlisp')
 conflicts=('newlisp')
 options=('docs' '!makeflags')
-source=("http://www.newlisp.org/downloads/development/inprogress/${_pkgname}-$pkgver.tgz")
+source=("https://www.newlisp.org/downloads/development/inprogress/${_pkgname}-$pkgver.tgz")
 sha256sums=('8f8ee4c1db9825a1bb6498b1a41f226ff9835df20a583cdfc35c91fd939a0684')
 
 prepare() {
