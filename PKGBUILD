@@ -1,8 +1,8 @@
 #Maintainer: weearc <q19981121@163.com>
 pkgname=motrix
 _pkgname=Motrix
-pkgver=v1.5.15
-_pkgver=1.5.15
+pkgver=1.6.8
+_pkgver=1.6.8
 pkgrel=1
 epoch=
 pkgdesc="A full-featured download manager (release version)"
@@ -32,7 +32,7 @@ source=("Motrix.desktop"
 noextract=()
 sha256sums=('1b799d1b1e280a27ff625cceb429b1e00c6691eb0256ded44f6a1a0310a899d4'
 	'c89824e80769b0b19c66da12168f9e91fc15088d1324d6760ddad960eb006cba'
-	'73059db1fd7d9d145155f2ce0aa33a07b356ce042f214b8c0357b985e334289d')
+	'63f850974629c62224e3f3c85761f491531ad1fa7d660da93f112aafc14513e7')
 validpgpkeys=()
 
 prepare() {
