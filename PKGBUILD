@@ -2,7 +2,7 @@
 # Author: Hossein Bakhtiarifar <abakh@tuta.io>
 # Discussion: https://www.reddit.com/r/linux/comments/b8y7rp/i_have_made_a_bunch_of_fancy_terminal_games_more/
 pkgname=nbsdgames-git
-pkgver=3.0.1.alpha.r9.g5ff9955_score_patch
+pkgver=4.1.r0.g0129cb4_score_patch
 pkgrel=1
 pkgdesc="A collection of curses-based console games"
 arch=('x86_64' 'i686')
@@ -58,5 +58,13 @@ package() {
     find . -maxdepth 1 -type f -executable | while read f
     do
         cp "$f" "$pkgdir/usr/bin/nb$(basename "$f")"
+    done
+
+    # Install manpages /usr/share/man/man6/nb*
+    mkdir -p "$pkgdir/usr/share/man/man6"
+    cd man
+    find . -type f | while read f
+    do
+        cp "$f" "$pkgdir/usr/share/man/man6/nb$(basename "$f")"
     done
 }
