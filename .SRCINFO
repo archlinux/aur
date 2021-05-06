@@ -1,6 +1,6 @@
 pkgbase = procmon-git
 	pkgdesc = Trace syscall activity tool
-	pkgver = r19.gf7f9a24
+	pkgver = r21.gb35d4cc
 	pkgrel = 1
 	url = https://github.com/microsoft/ProcMon-for-Linux
 	arch = i686
@@ -9,7 +9,6 @@ pkgbase = procmon-git
 	checkdepends = iperf3
 	checkdepends = netperf
 	makedepends = git
-	makedepends = bcc
 	makedepends = cmake
 	makedepends = llvm
 	makedepends = sqlite

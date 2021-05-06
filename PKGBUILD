@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=procmon-git
-pkgver=r19.gf7f9a24
+pkgver=r21.gb35d4cc
 pkgrel=1
 pkgdesc="Trace syscall activity tool"
 arch=('i686' 'x86_64')
 url="https://github.com/microsoft/ProcMon-for-Linux"
 license=('MIT')
 depends=('glibc' 'clang' 'libedit' 'libelf' 'zlib')
-makedepends=('git' 'bcc' 'cmake' 'llvm' 'sqlite')
+makedepends=('git' 'cmake' 'llvm' 'sqlite')
 checkdepends=('iperf3' 'netperf')
 provides=('procmon')
 conflicts=('procmon')
