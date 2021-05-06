@@ -67,13 +67,13 @@ _use_current=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-_major=5.11
-_minor=16
+_major=5.12
+_minor=1
 _srcname=linux-${_major}
 
 pkgbase=linux-mini
 pkgver=${_major}.${_minor}
-pkgrel=4
+pkgrel=1
 pkgdesc='Linux kernel and modules with minimal configuration'
 
 url="https://www.kernel.org/"
@@ -85,7 +85,7 @@ makedepends=(
   'git'
 )
 options=('!strip')
-_gcc_more_v='20210327'
+_gcc_more_v='20210412'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
@@ -99,11 +99,11 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=(
-  '04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'
-  'b8bc4f6312bdc086c0fecd1cce1ab1ee12b7b4eff63f88239a65461d9ec5e91b'
-  '5c3f42864b2c28393289560376c686a2d75bc8bdac6a9d7f2d00c7bd1441264e'
-  'ac0e44bd089eeb7f52d358e6899005599fff50972f090af9c8e6ee0097d01db6'
-  'bba324c92b62966492f27a02969910be2937668d0b39c7db2bb444e753b642af')
+  '7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
+  '39045607567d69f84424b224e4fa6bf8f97a21a06ac9d6396acab16a18c4bcd3'
+  'd90692a8c4bc8d4ea20a21e30927ba4d01bc772c3ff537059303f01a0bfaa813'
+  'f1f62b6d2cd89d0ab15f8d7311f5bb775dfc97ff39f93bc77f6f733f75fa7558'
+  'bcb8a47c2396af9a2afcd26d1200f9424d2af0fa6f6749d3c09417a919f5c60c')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
