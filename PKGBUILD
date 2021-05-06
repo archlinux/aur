@@ -4,7 +4,7 @@ pkgname=('yaru-colors-gtk-theme-git'
          'yaru-colors-icon-theme-git'
          'yaru-colors-wallpapers-git')
 pkgbase='yaru-colors-gtk-theme-git'
-pkgver=20.04.r0.g7b62f16a
+pkgver=21.04.r5.gf0c98166
 pkgrel=1
 pkgdesc="A fork of Ubuntu's Yaru theme - in different colors"
 arch=('any')
@@ -21,8 +21,12 @@ pkgver() {
 }
 
 package_yaru-colors-gtk-theme-git() {
-	depends=('gtk3' 'gdk-pixbuf2' 'gtk-engine-murrine' 'gnome-themes-extra')
-	optdepends=('yaru-colors-wallpapers' 'yaru-colors-icon-theme' 'yaru-sound-theme')
+	depends=('gtk3' 'gnome-themes-extra')
+	optdepends=('gdk-pixbuf2: GTK2 support'
+	            'gtk-engine-murrine: GTK2 support'
+	            'yaru-colors-wallpapers: Matching wallpapers'
+	            'yaru-colors-icon-theme: Matching icon theme'
+	            'yaru-sound-theme: Matching sound theme')
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
 

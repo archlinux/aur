@@ -1,6 +1,6 @@
 pkgbase = yaru-colors-gtk-theme-git
 	pkgdesc = A fork of Ubuntu's Yaru theme - in different colors
-	pkgver = 20.04.r0.g7b62f16a
+	pkgver = 21.04.r5.gf0c98166
 	pkgrel = 1
 	url = https://github.com/Jannomag/Yaru-Colors
 	arch = any
@@ -12,12 +12,12 @@ pkgbase = yaru-colors-gtk-theme-git
 
 pkgname = yaru-colors-gtk-theme-git
 	depends = gtk3
-	depends = gdk-pixbuf2
-	depends = gtk-engine-murrine
 	depends = gnome-themes-extra
-	optdepends = yaru-colors-wallpapers
-	optdepends = yaru-colors-icon-theme
-	optdepends = yaru-sound-theme
+	optdepends = gdk-pixbuf2: GTK2 support
+	optdepends = gtk-engine-murrine: GTK2 support
+	optdepends = yaru-colors-wallpapers: Matching wallpapers
+	optdepends = yaru-colors-icon-theme: Matching icon theme
+	optdepends = yaru-sound-theme: Matching sound theme
 	provides = yaru-colors-gtk-theme
 	conflicts = yaru-colors-gtk-theme
 
