@@ -101,7 +101,7 @@ prepare() {
   # KDE patches (W. Rosenauer)
   echo "---- Patching for KDE"
   patch -Np1 -i ../mozilla-nongnome-proxies-$_patchrevsuse.patch
-  patch -Np1 -i ../mozilla-kde-$_patchrevsuse
+  patch -Np1 -i ../mozilla-kde-$_patchrevsuse.patch
   patch -Np1 -i ../firefox-kde-$_patchrevsuse.patch
   
   # Ubuntu patches
