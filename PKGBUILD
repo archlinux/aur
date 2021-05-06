@@ -3,7 +3,7 @@ pkgdesc="ROS - Resources used for MoveIt! testing."
 url='https://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-resources'
-pkgver='0.7.2'
+pkgver='0.7.3'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="moveit_resources-${pkgver}/moveit_resources"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit_resources/archive/${pkgver}.tar.gz")
-sha256sums=('afd4e00a30db8896fff3399d7247ce074251c835c1034e2d0264c86c0967108e')
+sha256sums=('cad98a19a93856f5b49bcbff2e9671ab1c27e266af981586e908833cca5d9c86')
 
 build() {
   # Use ROS environment variables
