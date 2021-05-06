@@ -1,0 +1,18 @@
+pkgbase = vim-httplog
+	pkgdesc = Highlight access log of Apache, nginx, etc for vim/neovim
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://www.vim.org/scripts/script.php?script_id=1425
+	arch = any
+	groups = vim-plugins
+	groups = neovim-plugins
+	license = Unknown
+	optdepends = vim: vim support
+	optdepends = neovim: neovim support
+	source = httplog.vim::http://www.vim.org/scripts/download_script.php?src_id=20736
+	source = httplog.ft
+	sha256sums = fe5d759c491e1b249018836dd22b11672a6fb40ec6331dacf2e4ceb5c0bdebce
+	sha256sums = ce0585e33264254977ccc03cea7891bcb7ea6da1abcde1ff62ac2e2908f68696
+
+pkgname = vim-httplog
+
