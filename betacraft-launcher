@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /opt/betacraft-launcher/
+exec java -jar BetaCraft-Launcher-Java.jar $@ >/dev/null 

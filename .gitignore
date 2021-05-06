@@ -1,0 +1,8 @@
+*
+
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+
+!betacraft-launcher
+!betacraft-launcher.desktop
