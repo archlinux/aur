@@ -1,0 +1,21 @@
+pkgbase = ros-noetic-onboard-sdk-ros
+	pkgdesc = ROS interface for the DJI onboard SDK
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://github.com/dji-sdk/Onboard-SDK-ROS
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-nmea-comms
+	depends = onboard-sdk
+	depends = ffmpeg
+	depends = libusb
+	depends = sdl2
+	depends = opencv
+	source = https://github.com/dji-sdk/Onboard-SDK-ROS/archive/refs/tags/4.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = ros-noetic-onboard-sdk-ros
+
