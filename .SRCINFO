@@ -1,6 +1,6 @@
 pkgbase = nautilus-annotations
 	pkgdesc = Annotate files and directories
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/madmurphy/nautilus-annotations
 	install = nautilus-annotations.install
@@ -13,8 +13,8 @@ pkgbase = nautilus-annotations
 	depends = libnautilus-extension
 	conflicts = nautilus-annotations-git
 	conflicts = nautilus-annotations-bin
-	source = https://github.com/madmurphy/nautilus-annotations/releases/download/0.3.1/nautilus-annotations-0.3.1-with-configure.tar.gz
-	sha256sums = 95edfd10c657cf964b50c6701336f64d263ec466f8be7e0306c930c9e22c8cba
+	source = https://github.com/madmurphy/nautilus-annotations/releases/download/0.4.0/nautilus-annotations-0.4.0-with-configure.tar.gz
+	sha256sums = 243a4b28d1c520be21361d653a6841e32aabacf23db0ac08e9bd548e0898ff15
 
 pkgname = nautilus-annotations
 
