@@ -1,0 +1,27 @@
+pkgbase = mini-benchmarker
+	pkgdesc = A simple benchmarking script using stress-ng, perf, blender etc.
+	pkgver = 0.9.r63.g2a49602
+	pkgrel = 1
+	url = https://github.com/torvic9/bash-scripts
+	arch = x86_64
+	depends = gcc
+	depends = make
+	depends = cmake
+	depends = time
+	depends = perf
+	depends = unzip
+	depends = nasm
+	depends = inxi
+	depends = argon2
+	depends = gmp
+	depends = wget
+	depends = blender
+	depends = zlib
+	depends = libdrm
+	depends = git
+	depends = python
+	source = git+https://github.com/torvic9/bash-scripts.git
+	sha512sums = SKIP
+
+pkgname = mini-benchmarker
+
