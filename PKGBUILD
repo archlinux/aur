@@ -2,7 +2,7 @@
 
 pkgname=nodejs-airfile-git
 _name=airfile
-pkgver=2019.01.13
+pkgver=2019.10.23
 pkgrel=1
 pkgdesc="Transfer files from android to your local machine"
 arch=('any')
