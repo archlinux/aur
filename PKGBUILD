@@ -17,7 +17,8 @@ noextract=("${source[@]%%::*}")
 sha512sums=("c126a9d2f38e151820f9252b07840f35d247ec57936405e010876b4086b2a258917be7bfe3ae81ba1d63f6fe60d0213a20d8518d7f80936bbdcf9a552716b831")
 
 package() {
-  npm install -g --user root --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "${source[@]%%::*}"
+  npm install -g --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "${source[@]%%::*}"
+
   # Non-deterministic race in npm gives 777 permissions to random directories.
   # See https://github.com/npm/npm/issues/9359 for details.
   find "${pkgdir}"/usr -type d -execdir chmod 755 {} \+
