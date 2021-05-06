@@ -12,7 +12,7 @@ depends=('git' 'gnupg')
 source=("LICENSE::https://raw.githubusercontent.com/sobolevn/git-secret/v${pkgver}/LICENSE.md"
         "${pkgname}-${pkgver}::https://github.com/sobolevn/git-secret/archive/v${pkgver}.tar.gz")
 sha256sums=('bc950a06cb1ba74afe4815dadb2f9e4639542de2894c6838924676981672d483'
-            '0fe24dbf4fd8571ba42f25df84f9a44d4a8ed575984a37b2f7306ff62415a91f')
+            'ae17bfda88eb77e8f07c5f16d833792a3a14adc9c5d2bbc840f28538c62f08ba')
 
 build() {
     cd "$srcdir/git-secret-${pkgver}"
