@@ -1,0 +1,29 @@
+pkgbase = rxvt-paste-primary
+	pkgdesc = Urxvt no 256 color, no perl, and Ctrl-V pastes from primary
+	pkgver = 9.22
+	pkgrel = 10
+	url = http://software.schmorp.de/pkg/rxvt-unicode.html
+	arch = x86_64
+	license = GPL
+	makedepends = libxft
+	makedepends = libnsl
+	depends = rxvt-unicode-terminfo
+	depends = libxft
+	depends = libnsl
+	provides = rxvt-unicode
+	conflicts = rxvt-unicode
+	source = http://dist.schmorp.de/rxvt-unicode/rxvt-unicode-9.22.tar.bz2
+	source = line-spacing-fix.patch
+	source = 256color.patch
+	source = paste-from-primary.patch
+	source = urxvt.desktop
+	source = urxvtc.desktop
+	sha256sums = e94628e9bcfa0adb1115d83649f898d6edb4baced44f5d5b769c2eeb8b95addd
+	sha256sums = 546a388d0595404a59c71c3eaeba331031032a75f96c57e9a860f27bbd7ebfcc
+	sha256sums = e51a598ee616b5953c991a4135dd1acc13a62f1180a8b842297f5401df55dc69
+	sha256sums = 3ab8752c83b29cd3f55b84ebe9b730a517209f81d19ae8e619c4e0427e59af80
+	sha256sums = 5f9c435d559371216d1c5b49c6ec44bfdb786b12d925d543c286b0764dea0319
+	sha256sums = 91536bb27c6504d6cb0d33775a0c4709a4b439670b900f0c278c25037f19ad66
+
+pkgname = rxvt-paste-primary
+

@@ -1,0 +1,23 @@
+--- src/command.C.orig	2021-05-05 20:25:22.800894373 -0400
++++ src/command.C	2021-05-03 15:59:09.649181072 -0400
+@@ -788,18 +788,9 @@
+             }
+         }
+ 
+-      if (ctrl && meta && (keysym == XK_c || keysym == XK_v))
++      if (ctrl && keysym == XK_v)
+         {
+-          if (keysym == XK_v)
+-            selection_request (ev.time, Sel_Clipboard);
+-          else if (selection.len > 0)
+-            {
+-              free (selection.clip_text);
+-              selection.clip_text = rxvt_wcsdup (selection.text, selection.len);
+-              selection.clip_len = selection.len;
+-              selection_grab (CurrentTime, true);
+-            }
+-
++          selection_request (ev.time, Sel_Primary);
+           return;
+         }
+ 
