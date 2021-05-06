@@ -6,14 +6,14 @@
 
 pkgname=nyxt
 pkgver=2.pre.release.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A keyboard-oriented, infinitely extensible web browser designed for power users"
 arch=('x86_64')
 url="https://github.com/atlas-engineer/nyxt"
 license=('custom:BSD')
 conflicts=('nyxt-browser')
 provides=('nyxt-browser' 'next-browser')
-source=("git+https://github.com/atlas-engineer/nyxt.git#commit=37914e99febff8faad6a1ab595e63165e1dd694c")
+source=("git+https://github.com/atlas-engineer/nyxt.git#tag=${pkgver//./-}")
 sha256sums=('SKIP')
 # If someday Next works with other Lisps, replace 'sbcl' with 'common-lisp'.
 makedepends=('git' 'sbcl' 'cl-asdf')
