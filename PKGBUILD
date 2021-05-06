@@ -1,16 +1,17 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-pkgname='waybackpy'
-pkgver=2.3.0
+pkgname=waybackpy
+pkgver=2.4.3
 pkgrel=1
-pkgdesc='Python package & command-line program that interfaces with the Internet Archives Wayback Machine API'
+pkgdesc='CLI tool that interfaces with the Internet Archives Wayback Machine API'
 arch=('any')
 url='https://github.com/akamhy/waybackpy'
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('929a7c5b979c46de439ef6d4420f840c323111f36185f02d0bd6895b11f8ac45')
+sha256sums=('8a5b12b307270f1b6c6411451f1726dfdd5be267a10b666e89a17eb511547a24')
 
 build() {
   cd "${pkgname}-${pkgver}"
