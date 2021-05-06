@@ -5,7 +5,7 @@
 
 pkgname=libmagick6
 pkgbase=imagemagick6
-_pkgver=6.9.12-10
+_pkgver=6.9.12-11
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="An image viewing/manipulation program (legacy 6.9.12-* series)"
@@ -19,7 +19,7 @@ makedepends=('ghostscript' 'openexr' 'libwmf' 'librsvg' 'libxml2' 'openjpeg2'
 checkdepends=('gsfonts' 'ttf-dejavu')
 source=("ImageMagick6-$_pkgver.tar.gz::https://github.com/ImageMagick/ImageMagick6/archive/refs/tags/$_pkgver.tar.gz"
         'arch-fonts.diff')
-sha256sums=('04e7050dc3c21a2c7d3189fe3b9c822ccacadc88651f26621200ab81775b2509'
+sha256sums=('856ccc2a688e16314c453f6c4cba835ad4e37bcf0444c9db53d2aeddc4095215'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
 
 prepare() {
