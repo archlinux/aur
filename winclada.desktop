@@ -1,7 +1,7 @@
 [Desktop Entry]
 Categories=
 Encoding=UTF-8
-Exec=wine /usr/share/winclada/winclada.exe
+Exec=wine /usr/share/winclada/Winclada.exe
 GenericName=
 GenericName[zh]=
 Icon=/usr/share/winclada/winclada.png

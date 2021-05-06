@@ -15,7 +15,7 @@ depends=(
 )
 source=("http://www.diversityoflife.org/winclada/Winclad.exe" "winclada.desktop" "winclada.png")
 sha256sums=('4c6647c3ca56a57a74ab508feb71755f0ffdf7204b148e326397953ac8d32a6b'
-            '4f34fe26e34394678de2441226a376d0b350fbd905803f7b1cb355fd4cd17153'
+            '09b52775bc0ee2693e586f2603b44977278269fd671be5fac7db1621f4c88a8b'
             '3308a84fdc339350dde47a03ad502ca6d8a6d573bb3e5695c0c964ba72761279')
 
 package() {
