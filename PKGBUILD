@@ -3,7 +3,7 @@
 
 pkgname=couchpotato-git
 pkgver=2.6.1.r1261.g6f36f917
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic Movie Downloading via NZBs & Torrents"
 arch=('any')
 url="https://couchpota.to/"

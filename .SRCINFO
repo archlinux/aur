@@ -1,7 +1,7 @@
 pkgbase = couchpotato-git
 	pkgdesc = Automatic Movie Downloading via NZBs & Torrents
 	pkgver = 2.6.1.r1261.g6f36f917
-	pkgrel = 1
+	pkgrel = 2
 	url = https://couchpota.to/
 	install = couchpotato-git.install
 	arch = any
