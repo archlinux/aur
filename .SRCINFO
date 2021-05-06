@@ -1,0 +1,22 @@
+pkgbase = pyston-bin
+	pkgdesc = A fork of CPython with additional optimizations for performance
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://github.com/pyston/pyston
+	arch = x86_64
+	license = custom
+	makedepends = libarchive
+	depends = glibc
+	depends = db
+	depends = sqlite
+	depends = tcl
+	depends = xz
+	provides = pyston
+	conflicts = pyston
+	source = https://github.com/pyston/pyston/releases/download/pyston_2.2/pyston_2.2_20.04.deb
+	source = LICENSE::https://raw.githubusercontent.com/pyston/pyston/pyston_master/LICENSE
+	sha256sums = 36cfad35153686b144861c835bab0c67e7cdc512dbe46cfc57400be482db17f2
+	sha256sums = SKIP
+
+pkgname = pyston-bin
+
