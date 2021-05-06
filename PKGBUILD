@@ -2,41 +2,15 @@
 pkgname=elementary-wallpapers-gnome-integration
 pkgver=0.0.1
 pkgrel=1
-epoch=
 pkgdesc="Make elementery-wallpapers show up in GNOME Settings"
-arch=(x86_64)
+arch=('any')
 url="https://github.com/simonwahll/elementary-wallpapers-gnome-integration"
 license=('GPL3')
-groups=()
-depends=(elementary-wallpapers)
-makedepends=(sudo)
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("$pkgname-$pkgver.tar.gz")
-noextract=()
-md5sums=(a855af298bf3bed6b5a9c2696cb60d0e)
-validpgpkeys=()
-
-prepare() {
-	echo ""
-}
-
-build() {
-	echo ""
-}
-
-check() {
-	echo ""
-}
+depends=('elementary-wallpapers')
+source=("https://github.com/simonwahll/elementary-wallpapers-gnome-integration/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('06a8b3e4ec6dfe32d5960736dadcecfd807bfcc8e901c98c90f4fb710af751cb')
 
 package() {
 	cd "$pkgname-$pkgver"
-	sudo ./install.sh
+  install -Dm644 usr/share/gnome-background-properties/elementary-backgrounds.xml -t "$pkgdir/usr/share/gnome-background-properties/"
 }
