@@ -1,7 +1,7 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=dokku
-pkgver=0.24.4
+pkgver=0.24.7
 pkgrel=1
 pkgdesc='Docker-powered PaaS that helps build and manage the lifecycle of applications'
 arch=('any')
@@ -16,6 +16,7 @@ depends=(
   'go'
   'gliderlabs-sigil'
   'herokuish'
+  'netrc'
   'net-tools'
   'nginx'
   'openbsd-netcat'
@@ -23,11 +24,12 @@ depends=(
   'procfile-util'
   'rsyslog'
   'sshcommand'
+  'unzip'
 )
 source=("https://github.com/dokku/dokku/archive/v$pkgver.zip"
         "$pkgname.install"
         "LICENSE")
-sha256sums=('5efe5d433a1cbece837dcff1209533e1c691da1477818030e5a0923c54ccee58'
+sha256sums=('0571ea816cae2a8572207eec287c88516bec94672840f6d4020f7394295272a0'
             'dd7ca19339e18f8434ca74faeb994ae8446cb3ccf020e558eaa340ad1f72effe'
             'b1ac2fed5ac269fb7bbf651a3d37ef5fd56d2c33320e17cb6e23a22a93f5c046')
 install="$pkgname.install"
