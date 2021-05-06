@@ -1,0 +1,19 @@
+pkgbase = babi-git
+	pkgdesc = A text editor, eventually...
+	pkgver = v0.0.21.r25.g2c200b9
+	pkgrel = 1
+	url = https://github.com/asottile/babi
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-onigurumacffi
+	depends = babi-grammars
+	depends = python-identify
+	provides = babi
+	conflicts = babi
+	conflicts = babi-git
+	source = babi-git::git+https://github.com/asottile/babi.git
+	sha256sums = SKIP
+
+pkgname = babi-git
+
