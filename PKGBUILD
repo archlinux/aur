@@ -1,8 +1,8 @@
 # Maintainer: David Santiago <demanuel@ymail.com>
 pkgname=comma-ide-community
 _pkgname=comma-ide
-_tarname=comma-community-2021.01
-pkgrel=1
+_tarname=comma-community-2021.04.0
+pkgrel=2
 pkgver=202.6948.81
 provides=(${_pkgname})
 pkgdesc="The Integrated Development Environment for Raku (formerly Perl 6)."
@@ -12,7 +12,7 @@ license=('APACHE')
 depends=('java-runtime')
 optdepends=('rakudo-star' 'rakudo')
 source=("https://commaide.com/download/community/linux")
-sha512sums=('76c43954644f2f1b354889d39797eb0204df46b28c8db82ae31c54458b60ed23f7ee813531b1ca6f6b8a455be0a9036494ce05fd44ea3c08925700325f221800')
+sha512sums=('103f7489d09a50397b9314869d55b4a6ccfb7a475b91a690357b4fed78dc0055b1dbe707ac1de344e272d6bb47961d359bf6943be942303eefc286583364105a')
 install=comma-ide.install
 
 package() {
