@@ -8,8 +8,9 @@ pkgdesc="Phylogenetic Model Averaging, more models, new heuristics and high-perf
 arch=('x86_64')
 url="https://github.com/ddarriba/jmodeltest2"
 license=('GPL-3.0 License')
-source=("https://github.com/ddarriba/jmodeltest2/files/157117/jmodeltest-2.1.10.tar.gz")
-sha256sums=('9039f1a00e730b38e607126703606f8c2ff8309dd82955ce52ccc1ae2889d06d')
+source=("https://github.com/ddarriba/jmodeltest2/files/157117/jmodeltest-2.1.10.tar.gz" "jmodeltest.desktop")
+sha256sums=('9039f1a00e730b38e607126703606f8c2ff8309dd82955ce52ccc1ae2889d06d'
+            'b35c9b5041ca7b9e0e96f29a958da356b9e5149d8ee581ff7c5c83adbcd6706f')
 depends=(
 	'jre-openjdk-headless'
 	'jre-openjdk'
@@ -62,5 +63,5 @@ package() {
     install -m 755 ${srcdir}/jmodeltest-${pkgver}/resources/template/resources/style.css ${pkgdir}/usr/share/jmodeltest/resources/template/resources/style.css
     install -m 755 ${srcdir}/jmodeltest-${pkgver}/resources/template/resources/topIcon.gif ${pkgdir}/usr/share/jmodeltest/resources/template/resources/topIcon.gif
     
-    cp ~/.cache/yay/jmodeltest/jmodeltest.desktop ${pkgdir}/usr/share/applications
+    install -m 755 ${srcdir}/jmodeltest.desktop ${pkgdir}/usr/share/applications/jmodeltest.desktop
 }

@@ -11,7 +11,9 @@ pkgbase = jmodeltest
 	depends = openjdk-doc
 	depends = openjdk-src
 	source = https://github.com/ddarriba/jmodeltest2/files/157117/jmodeltest-2.1.10.tar.gz
+	source = jmodeltest.desktop
 	sha256sums = 9039f1a00e730b38e607126703606f8c2ff8309dd82955ce52ccc1ae2889d06d
+	sha256sums = b35c9b5041ca7b9e0e96f29a958da356b9e5149d8ee581ff7c5c83adbcd6706f
 
 pkgname = jmodeltest
 
