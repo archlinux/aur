@@ -7,7 +7,7 @@ pkgrel=1
 groups=('vim-plugins' 'neovim-plugins')
 pkgdesc="Highlight access log of Apache, nginx, etc for vim/neovim"
 arch=('any')
-url='https://www.vim.org/scripts/script.php?script_id=1425'
+url='https://www.vim.org/scripts/script.php?script_id=3008'
 license=('Unknown')
 #depends=('vim' 'neovim')
 optdepends=('vim: vim support'

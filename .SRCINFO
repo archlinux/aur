@@ -2,7 +2,7 @@ pkgbase = vim-httplog
 	pkgdesc = Highlight access log of Apache, nginx, etc for vim/neovim
 	pkgver = 0.5
 	pkgrel = 1
-	url = https://www.vim.org/scripts/script.php?script_id=1425
+	url = https://www.vim.org/scripts/script.php?script_id=3008
 	arch = any
 	groups = vim-plugins
 	groups = neovim-plugins
