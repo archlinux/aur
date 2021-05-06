@@ -1,4 +1,5 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: Eric Foy <foy.8@wright.edu>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Sébastien Luttringer
 # Contributor: Angel Velasquez <angvp@archlinux.org>
 # Contributor: tobias <tobias@archlinux.org>
