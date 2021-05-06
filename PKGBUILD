@@ -1,13 +1,13 @@
 # Maintainer: Eric Biggers <ebiggers3 at gmail dot com>
 
 pkgname=fscrypt-git
-pkgver=0.2.7.0.g2b160ae
+pkgver=0.3.0.4.g677ae75
 pkgrel=1
 pkgdesc='A tool for managing Linux filesystem encryption'
 arch=('x86_64')
 url='https://github.com/google/fscrypt'
 license=('Apache')
-makedepends=('go-pie' 'git')
+makedepends=('go' 'git')
 depends=('pam')
 conflicts=('fscrypt')
 provides=('fscrypt')
@@ -23,15 +23,13 @@ pkgver() {
 
 build() {
   cd fscrypt
-  make
+  make GO_FLAGS="-buildmode=pie -mod=readonly -modcacherw" \
+       GO_LINK_FLAGS="-s -w -linkmode=external"
 }
 
 package() {
   cd fscrypt
-  make DESTDIR="$pkgdir" PREFIX=/usr install
+  make DESTDIR="$pkgdir" PREFIX=/usr PAM_CONFIG_DIR="" install
   install -Dm644 ../pam_config "${pkgdir}/etc/pam.d/fscrypt"
   install -Dm644 -t "$pkgdir/usr/share/doc/fscrypt/" README.md
-
-  # Remove Ubuntu-specific PAM file
-  rm -rf "$pkgdir"/usr/share/pam-configs/
 }
