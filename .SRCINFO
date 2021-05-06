@@ -2,7 +2,7 @@ pkgbase = trex-bin
 	pkgdesc = Cryptocurrency miner for NVIDIA hardware, supporting a variety of algorithms
 	pkgver = 0.20.3
 	pkgrel = 1
-	url = https://github.com/trexminer/T-Rex
+	url = https://bitcointalk.org/index.php?topic=4432704.0
 	arch = x86_64
 	license = custom
 	depends = nvidia-utils

@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Cryptocurrency miner for NVIDIA hardware, supporting a variety of algorithms"
 arch=('x86_64')
 license=('custom')
-url="https://github.com/trexminer/T-Rex"
+url="https://bitcointalk.org/index.php?topic=4432704.0"
 options=('!strip')
 depends=('nvidia-utils')
 source=("t-rex_${pkgver}.tar.gz"::"https://trex-miner.com/download/t-rex-${pkgver}-linux.tar.gz")
