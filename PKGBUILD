@@ -3,7 +3,7 @@
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=solarwallet
 _pkgname="Solar Wallet"
-pkgver=0.27.2
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="Wallet for the Stellar payment network by SatoshiPay."
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('satoshipay-stellar-wallet')
 replaces=('satoshipay-stellar-wallet')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/satoshipay/solar/archive/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('0783b5617831983cf139db93c7604f67be8df07ceb5b45bc97c927355e08c86e'
+sha256sums=('03af7a5ef24a4fff92d99df096f63e0658cc5cd776b3ee64641c1dd5b8db3334'
             'b6c574362d009c52ab9f9b0bdb4b2af9f1a8f79f0c8f68b897e9a19df46abc75')
 
 build() {
