@@ -11,7 +11,11 @@ pkgbase = easycodeml
 	depends = openjdk-doc
 	depends = openjdk-src
 	source = https://github.com/starsareintherose/easycodeml/releases/download/1.21/EasyCodeML.zip
+	source = easycodeml.desktop
+	source = EasyCodeML.png
 	sha256sums = 45ef18a896818643908dc3ad637da7773f6d984e75f8a6faa61992a7d8e48776
+	sha256sums = e20af3e0e14be4f95d634bf5c34cb35dc37edfada7d97f9c0e9dd10afa7cbf6f
+	sha256sums = 5393db9477bd071511788ea6255c49005274b4aebe792a7631eaa296ada14987
 
 pkgname = easycodeml
 
