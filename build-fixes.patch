@@ -1,5 +1,25 @@
---- src/inputfileffmpeg.cpp_orig	2019-06-20 14:42:36.187742498 +0200
-+++ src/inputfileffmpeg.cpp	2019-06-20 14:43:27.288343432 +0200
+--- a/CMakeLists.txt	2021-05-02 21:38:58.266305435 +0200
++++ b/CMakeLists.txt	2021-05-02 21:40:19.485151388 +0200
+@@ -5,7 +5,7 @@
+ include(files.cmake)
+ 
+ # Get prebuilt ffmpeg folders for windows builds
+-set(ffmpegIncHint "ffmpeg/include")
++set(ffmpegIncHint "/usr/include")
+ 
+ # figure out platform defaults for certain things
+ if (WIN32)
+@@ -34,7 +34,7 @@
+ endif()
+ 
+ 
+-set(ffmpegLibHint "${CMAKE_CURRENT_SOURCE_DIR}/${defFFmpegLibHint}" CACHE PATH "directory with static ffmpeg libs")
++set(ffmpegLibHint "/usr/lib" CACHE PATH "directory with static ffmpeg libs")
+ set(libSuffix ${defLibSuffix} CACHE STRING "output library suffix")
+ set(pluginDir ${defPluginDir} CACHE PATH "TS3 plugin directory (for file copy)")
+ 
+--- a/src/inputfileffmpeg.cpp	2021-05-02 21:46:10.856210178 +0200
++++ b/src/inputfileffmpeg.cpp	2021-05-02 21:46:26.274256126 +0200
 @@ -416,7 +416,7 @@
  
  	if(properFrames == 0)
@@ -9,14 +29,3 @@
  		{
  			// Some codecs will cause frames to be buffered up in the decoding process. If the CODEC_CAP_DELAY flag
  			// is set, there can be buffered up frames that need to be flushed, so we'll do that
---- qt-linux/ts3soundboard_linux.pro_orig	2019-06-20 14:48:44.728813522 +0200
-+++ qt-linux/ts3soundboard_linux.pro	2019-06-20 14:48:51.490788441 +0200
-@@ -36,7 +36,7 @@
- 
- QMAKE_CXXFLAGS += -Wno-unused-parameter
- 
--QMAKE_POST_LINK += "cp $${DESTDIR}/lib$${TARGET}.so $(TS3DIR)/plugins"
-+#QMAKE_POST_LINK += "cp $${DESTDIR}/lib$${TARGET}.so $(TS3DIR)/plugins"
- 
- include(./ts3soundboard.pri)
- 
