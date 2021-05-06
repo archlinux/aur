@@ -11,7 +11,11 @@ pkgbase = open-delta
 	depends = openjdk-doc
 	depends = openjdk-src
 	source = https://github.com/AtlasOfLivingAustralia/open-delta/files/4686516/open-delta-1.02-bin.zip
+	source = delta.desktop
+	source = delta.gif
 	sha256sums = f3e2cd3d6abb572e2e856e624a574b100592da40c7c6639a9dd28abcc5e5c993
+	sha256sums = e075ba953ae1c5de3ba3f38586980a989d70519f31576806cdda2f4826ab5af2
+	sha256sums = 583b2666eb51f488aefe27caf870961478fcdd9272304d667d83631fe62e8e0f
 
 pkgname = open-delta
 

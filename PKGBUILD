@@ -8,8 +8,10 @@ pkgdesc="DEscription Language of TAxonomy"
 arch=('x86_64')
 url="https://github.com/AtlasOfLivingAustralia/open-delta"
 license=('unknown')
-source=("https://github.com/AtlasOfLivingAustralia/open-delta/files/4686516/open-delta-1.02-bin.zip")
-sha256sums=('f3e2cd3d6abb572e2e856e624a574b100592da40c7c6639a9dd28abcc5e5c993')
+source=("https://github.com/AtlasOfLivingAustralia/open-delta/files/4686516/open-delta-1.02-bin.zip" "delta.desktop" "delta.gif")
+sha256sums=('f3e2cd3d6abb572e2e856e624a574b100592da40c7c6639a9dd28abcc5e5c993'
+            'e075ba953ae1c5de3ba3f38586980a989d70519f31576806cdda2f4826ab5af2'
+            '583b2666eb51f488aefe27caf870961478fcdd9272304d667d83631fe62e8e0f')
 depends=(
 	'jre-openjdk-headless'
 	'jre-openjdk'
@@ -46,6 +48,6 @@ package() {
     install -m 755 ${srcdir}/open-delta-${pkgver}/lib/l2fprod-common-shared-6.9.1.jar ${pkgdir}/usr/share/delta/lib/l2fprod-common-shared-6.9.1.jar
     install -m 755 ${srcdir}/open-delta-${pkgver}/lib/miglayout-3.7.4.jar ${pkgdir}/usr/share/delta/lib/miglayout-3.7.4.jar
     
-    cp ~/.cache/yay/open-delta/delta.gif  ${pkgdir}/usr/share/delta/
-    cp ~/.cache/yay/open-delta/delta.desktop ${pkgdir}/usr/share/applications
+    install -m 755 ${srcdir}/delta.gif  ${pkgdir}/usr/share/delta/delta.gif
+    install -m 755 ${srcdir}/delta.desktop ${pkgdir}/usr/share/applications/delta.desktop
 }
