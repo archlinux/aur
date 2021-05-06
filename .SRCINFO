@@ -11,7 +11,9 @@ pkgbase = morphoj
 	depends = openjdk-doc
 	depends = openjdk-src
 	source = https://github.com/starsareintherose/morphoj/releases/download/1.07a/MorphoJ.zip
+	source = MorphoJ.desktop
 	sha256sums = aec7f66e29b0f0171a1e8e585c8720a0b60c4833ffb42066c3cf9e6e0ebf2209
+	sha256sums = 67df0def6fc1832b1fb5ddaa0c9dbfe1ab4d4aac0f1833b6c2bbb51e3f259630
 
 pkgname = morphoj
 

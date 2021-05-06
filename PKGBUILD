@@ -15,8 +15,9 @@ depends=(
 )
 url="https://morphometrics.uk/MorphoJ_page.html"
 license=('Apache License version 2')
-source=("https://github.com/starsareintherose/morphoj/releases/download/${pkgver}/MorphoJ.zip")
-sha256sums=('aec7f66e29b0f0171a1e8e585c8720a0b60c4833ffb42066c3cf9e6e0ebf2209')
+source=("https://github.com/starsareintherose/morphoj/releases/download/${pkgver}/MorphoJ.zip" "MorphoJ.desktop")
+sha256sums=('aec7f66e29b0f0171a1e8e585c8720a0b60c4833ffb42066c3cf9e6e0ebf2209'
+            '67df0def6fc1832b1fb5ddaa0c9dbfe1ab4d4aac0f1833b6c2bbb51e3f259630')
 
 
 package() {
@@ -71,5 +72,5 @@ package() {
     install -D -m 755 ${srcdir}/MorphoJ/resources/*.gif "${pkgdir}/usr/share/MorphoJ/resources/"
     install -D -m 755 ${srcdir}/MorphoJ/resources/*.GIF "${pkgdir}/usr/share/MorphoJ/resources/"
     
-  mv ~/.cache/yay/morphoj/MorphoJ.desktop ${pkgdir}/usr/share/applications
+  install -m 755 ${srcdir}/MorphoJ.desktop ${pkgdir}/usr/share/applications/MorphoJ.desktop
 }
