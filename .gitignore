@@ -1,0 +1,6 @@
+lmms/*
+src/*
+qt5-x11embed/*
+rpmalloc/*
+pkg/*
+*.tar.*
