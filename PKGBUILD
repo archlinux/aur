@@ -4,6 +4,7 @@ pkgname=spotify-adblock-git
 _pkgname=${pkgname%-*}
 pkgver=1.0.0.r2.g990c0f2
 pkgrel=1
+epoch=1
 license=("GPL3")
 pkgdesc="Adblocker for Spotify"
 depends=("spotify")
