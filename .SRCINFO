@@ -1,0 +1,17 @@
+pkgbase = slimpris2
+	pkgdesc = MPRIS remote control of Logitech Media Server (Slimserver)
+	pkgver = 2.1.3
+	pkgrel = 1
+	url = https://github.com/mavit/slimpris2
+	arch = any
+	license = GPL3
+	makedepends = intltool
+	makedepends = pandoc
+	makedepends = perl>=5.8.1
+	makedepends = systemd
+	depends = python>=3.6
+	source = slimpris2-2.1.3.tar.gz::https://github.com/mavit/slimpris2/archive/refs/tags/2.1.3.tar.gz
+	md5sums = c03e29915cef75530844016cfccc3c43
+
+pkgname = slimpris2
+
