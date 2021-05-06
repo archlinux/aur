@@ -1,6 +1,6 @@
 pkgbase = skm
 	pkgdesc = A simple and powerful SSH keys manager
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://github.com/TimothyYe/skm
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = skm
 	makedepends = go
 	depends = glibc
 	provides = skm
-	source = skm-0.8.3::git+https://github.com/TimothyYe/skm.git#tag=v0.8.3
+	source = skm-0.8.4::git+https://github.com/TimothyYe/skm.git#tag=v0.8.4
 	b2sums = SKIP
 
 pkgname = skm

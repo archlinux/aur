@@ -1,6 +1,6 @@
 # Maintainer: axionl <axionl@aosc.io>
 pkgname=skm
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="A simple and powerful SSH keys manager"
 provides=('skm')
