@@ -7,7 +7,7 @@ pkgdesc="Hancom office programs provided by Hancom. Ported to Arch Linux from Ha
 arch=('x86_64')
 url='https://www.hancom.com/'
 license=('custom:hoffice')
-depends=('harfbuzz-icu' 'libcurl-gnutls' )
+depends=('harfbuzz-icu' 'libcurl-gnutls' 'glu')
 source=(
     "https://github.com/DisLogicator/hoffice/releases/download/11.20.0.1520-rc2/hoffice-11.20.0.1520.tar.gz"
     "LICENSE"
@@ -18,14 +18,12 @@ sha256sums=(
 )
 
 package() {
-    msg2 "The installation process will spit out meaningless errors. Please ignore them since it doesn't mean it is failing."
+    msg2 "Please ignore the errors. They don't mean anything."
     mkdir "${pkgdir}/opt"
     mkdir "${pkgdir}/opt/hnc"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/$pkgname" "${srcdir}/LICENSE"
     install -Dm644 -t "${pkgdir}/usr/share/applications" "${srcdir}"/*.desktop
     bsdtar -xf hoffice11.zip -C "${pkgdir}/opt/hnc"
-    sudo mkdir /opt/hnc
-    sudo mkdir /opt/hnc/icons
-    sudo cp "${srcdir}"/*.png /opt/hnc/icons
+    install -Dm644 -t "${pkgdir}/opt/hnc/icons" "${srcdir}"/*.png
 
 }
