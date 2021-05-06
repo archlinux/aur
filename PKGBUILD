@@ -4,7 +4,7 @@
 # Contributor: Shinlun Hsieh <yngwiexx at yahoo dot com dot tw>
 
 pkgname=gxemul
-pkgver=0.6.3.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Instruction-level machine emulator'
 arch=('i686' 'x86_64')
@@ -12,14 +12,11 @@ url='http://gavare.se/gxemul/'
 license=('GPL')
 depends=('libx11' 'sh')
 source=("http://gavare.se/gxemul/src/gxemul-${pkgver}.tar.gz")
-sha256sums=('e9dd60b97c2c148def1c63d7e2a5bc85550fca6f88e323886739ba6166b78761')
+sha256sums=('79c4437c6f8ca904f46d33ac36062a65fdcf4a92a248478e408ab11295cf8e83')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  ./configure \
-    --disable-valgrind \
-    --without-unittests
-
+  CFLAGS="$CFLAGS -std=gnu99 -fgnu89-inline" ./configure
   sed -i 's|$(DESTDIR)$(MANDIR)/man1|$(PREFIX)/share/man/man1|g' Makefile
 
   make
