@@ -1,44 +1,31 @@
+# Maintainer: Vaporeon <vaporeon@vaporeon.io>
+
 pkgname=psximager-git
-pkgver=20161107
+pkgver=2.0.r17.9c32ba2
 pkgrel=1
 pkgdesc='Tools for dumping and mastering PlayStation 1 ("PSX") CD-ROM images'
 url="https://github.com/cebix/psximager"
-arch=('x86_64' 'i686')
-license=('GPLv2')
+arch=('x86_64')
+license=('GPL')
 depends=('boost' 'libcdio' 'vcdimager')
 makedepends=('git')
+source=("git+https://github.com/cebix/${pkgname%-git}.git")
+sha256sums=('SKIP')
 conflicts=('psximager')
 
-_gitroot='https://github.com/cebix/psximager.git'
-_gitname='psximager'
+pkgver() {
+    cd "$srcdir"/${pkgname%-git}
+    printf "%s.r%s.%s" "$(git describe --abbrev=0 --tags | sed -e 's/v//')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  #
-  # BUILD HERE
-  #
+  cd "$srcdir"/${pkgname%-git}
   ./bootstrap
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir"/${pkgname%-git}
   make DESTDIR="$pkgdir" install
 }

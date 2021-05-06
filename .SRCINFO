@@ -1,16 +1,17 @@
 pkgbase = psximager-git
 	pkgdesc = Tools for dumping and mastering PlayStation 1 ("PSX") CD-ROM images
-	pkgver = 20161107
+	pkgver = 2.0.r17.9c32ba2
 	pkgrel = 1
 	url = https://github.com/cebix/psximager
 	arch = x86_64
-	arch = i686
-	license = GPLv2
+	license = GPL
 	makedepends = git
 	depends = boost
 	depends = libcdio
 	depends = vcdimager
 	conflicts = psximager
+	source = git+https://github.com/cebix/psximager.git
+	sha256sums = SKIP
 
 pkgname = psximager-git
 
