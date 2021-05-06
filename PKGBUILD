@@ -1,24 +1,25 @@
 # Maintainer: willemw <willemw12@gmail.com>
 # Contributor: Ben Ruijl <benruyl at gmail>
 
-_giturl=https://github.com/CouchPotato/CouchPotatoServer.git
-
 pkgname=couchpotato-git
 pkgver=2.6.1.r1261.g6f36f917
 pkgrel=1
 pkgdesc="Automatic Movie Downloading via NZBs & Torrents"
 arch=('any')
-url="http://couchpota.to/"
+url="https://couchpota.to/"
 license=('GPL3')
 makedepends=('git')
-# 'python2-pyopenssl' is deprecated
-depends=('python2-lxml')
+#depends=('python2-lxml' 'python2-pyopenssl')
+optdepends=('python2-lxml: for better/faster web scraping' 
+            'python2-pyopenssl: for better requests validation'
+            'unrar: for rar files' 
+            'unzip: for zip files')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=$pkgname.install
 source=('couchpotato.service'
         'couchpotato.sysusers'
-        "$pkgname::git+$_giturl#branch=develop")
+        "$pkgname::git+https://github.com/CouchPotato/CouchPotatoServer.git#branch=develop")
 md5sums=('f03b752e2a46030a9cafa38385f3d0df'
          '1b826a61b26b5ec098b720bac02f4232'
          'SKIP')
@@ -36,7 +37,7 @@ prepare() {
   # Disable updater
   sed -i 's/\(.*\)\(def doUpdate(self):\)/\1\2\n\1    return False/g' couchpotato/core/_base/updater/main.py
   find . -name \*.js | while read FILE; do
-    sed -i 's/No updates available/Updater is not available on a non-master branch/g' "$FILE"
+    sed -i 's/No updates available/The updater is not available on a non-master branch/g' "$FILE"
   done
 }
 
@@ -49,7 +50,7 @@ package() {
   cd $pkgname
 
   # A "source" install does not include the .git folder
-  install 755 -d "$pkgdir/opt/couchpotato/app"
+  install -dm755  "$pkgdir/opt/couchpotato/app"
   cp -a * "$pkgdir/opt/couchpotato/app"
 }
 
