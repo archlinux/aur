@@ -1,6 +1,7 @@
+#Maintainer: max-k <max-k AT post DOT com>
 pkgname=openvpn-update-systemd-resolved
 pkgver=1.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="OpenVPN systemd-resolved Updater"
 arch=("any")
 url="https://github.com/jonathanio/update-systemd-resolved"
