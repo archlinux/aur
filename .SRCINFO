@@ -1,0 +1,18 @@
+pkgbase = st-ashin-git
+	pkgdesc = My custom build of st patched.
+	pkgver = 0.8.4.r2.577280c
+	pkgrel = 1
+	url = https://github.com/ashincoder/st-ashin.git
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	depends = ttf-hack
+	depends = ttf-joypixels
+	provides = st
+	conflicts = st
+	source = git+https://github.com/ashincoder/st-ashin.git
+	md5sums = SKIP
+
+pkgname = st-ashin-git
+
