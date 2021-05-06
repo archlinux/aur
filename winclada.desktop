@@ -1,0 +1,19 @@
+[Desktop Entry]
+Categories=
+Encoding=UTF-8
+Exec=wine /usr/share/winclada/winclada.exe
+GenericName=
+GenericName[zh]=
+Icon=/usr/share/winclada/winclada.png
+MimeType=
+Name=WinClada
+Name[zh]=WinClada
+ServiceTypes=
+SwallowExec=
+SwallowTitle=
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=root
+
