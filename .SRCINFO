@@ -1,0 +1,13 @@
+pkgbase = nature-wallpapers-gnome-integration
+	pkgdesc = Make nature-wallpapers show up in GNOME Settings
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/simonwahll/nature-wallpapers-gnome-integration
+	arch = any
+	license = GPL3
+	depends = nature-wallpapers
+	source = https://github.com/simonwahll/nature-wallpapers-gnome-integration/archive/refs/tags/0.0.1.tar.gz
+	sha256sums = feb9c4f13fa58fdfc6e8e8524d24a3d027ecd801d6cc3bc92e3ac77736d22652
+
+pkgname = nature-wallpapers-gnome-integration
+
