@@ -3,9 +3,9 @@
 
 pkgname='pop-sound-theme-bin'
 pkgver='5.3.3'
-pkgrel=1
-_timestamp=1617911139
-_commit=a04f375
+pkgrel=2
+_timestamp=1619646703
+_commit=6cec78b
 pkgdesc='System76 Pop Sound Theme'
 arch=('any')
 url='https://github.com/pop-os/gtk-theme'
@@ -14,7 +14,7 @@ conflicts=('pop-sound-theme')
 provides=('pop-sound-theme')
 
 source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-sound-theme_${pkgver}~${_timestamp}~21.04~${_commit}_all.deb")
-sha256sums=('b54b14b615004bea7bfc4a341b6861ab31fe99c4911adac735a45070da9a134e')
+sha256sums=('e8ba7e6fdd90c24e18ad51962748ff4f74ea0033c4fce560df29196bf0d29611')
 
 package() {
   cd "${srcdir}"
