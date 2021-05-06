@@ -1,7 +1,7 @@
 pkgbase = babi
 	pkgdesc = A text editor, eventually...
 	pkgver = 0.0.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/asottile/babi
 	arch = any
 	license = MIT
@@ -9,6 +9,9 @@ pkgbase = babi
 	depends = python-onigurumacffi
 	depends = babi-grammars
 	depends = python-identify
+	provides = babi
+	conflicts = babi
+	conflicts = babi-git
 	source = https://github.com/asottile/babi/archive/v0.0.21.tar.gz
 	md5sums = 3e9721bc9a5c89c6e4c2812649eec995
 
