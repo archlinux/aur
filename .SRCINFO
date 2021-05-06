@@ -1,0 +1,24 @@
+pkgbase = opentracker-ipv6
+	pkgdesc = A free and open torrent tracker, compiled as an IPv6-only tracker.
+	pkgver = 2021.04.25
+	pkgrel = 1
+	url = http://erdgeist.org/arts/software/opentracker/
+	install = opentracker-ipv6.install
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = Beerware
+	makedepends = git
+	backup = etc/opentracker/opentracker-ipv6.conf
+	source = git://erdgeist.org/opentracker
+	source = https://www.fefe.de/libowfat/libowfat-0.31.tar.xz
+	source = opentracker-ipv6.service
+	sha256sums = SKIP
+	sha256sums = d1e4ac1cfccbb7dc51d77d96398e6302d229ba7538158826c84cb4254c7e8a12
+	sha256sums = 9766a13f0d5e9dfb4425aee20e77dc7c47500edf50691e4029c96738a78d3767
+
+pkgname = opentracker-ipv6
+

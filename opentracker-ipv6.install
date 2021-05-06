@@ -1,0 +1,16 @@
+post_install() {
+  getent group otracker6 > /dev/null || groupadd -r otracker6
+  getent passwd otracker6 > /dev/null || useradd -r -m -d /var/lib/otracker6 -g otracker6 -s /usr/bin/nologin otracker6
+  usermod -a -G network,storage otracker6
+  mkdir -p /var/lib/otracker6
+  chown -R otracker6:otracker6 /var/lib/otracker6
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  getent passwd otracker6 > /dev/null && userdel otracker6
+}
+
