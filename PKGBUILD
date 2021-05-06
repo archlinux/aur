@@ -55,7 +55,7 @@ package() {
 
     # Install games as /usr/bin/nb* to avoid conflicts
     mkdir -p "$pkgdir/usr/bin"
-    find . -type f -executable | while read f
+    find . -maxdepth 1 -type f -executable | while read f
     do
         cp "$f" "$pkgdir/usr/bin/nb$(basename "$f")"
     done
