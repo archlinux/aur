@@ -2,24 +2,21 @@
 # Contributor: Ibrahim Tunali <ibrahimtunali at gmail dot com>
 
 pkgname=git-secret
-pkgver=0.3.3
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='A bash-tool to store your private data inside a git repository'
 arch=('any')
 url='https://github.com/sobolevn/git-secret/'
 license=('MIT')
 depends=('git' 'gnupg')
-makedepends=('ruby-ronn')
 source=("LICENSE::https://raw.githubusercontent.com/sobolevn/git-secret/v${pkgver}/LICENSE.md"
-        "${pkgname}-${pkgver}::https://github.com/sobolevn/git-secret/archive/v${pkgver}.tar.gz"
-)
+        "${pkgname}-${pkgver}::https://github.com/sobolevn/git-secret/archive/v${pkgver}.tar.gz")
 sha256sums=('bc950a06cb1ba74afe4815dadb2f9e4639542de2894c6838924676981672d483'
-            'd8c19a5cbd174e95484a4233605985dd3b060a8a83d14d41c3bad1d534c6ab39'
-)
+            '0fe24dbf4fd8571ba42f25df84f9a44d4a8ed575984a37b2f7306ff62415a91f')
 
 build() {
     cd "$srcdir/git-secret-${pkgver}"
-    make clean build build-man
+    make clean build
 }
 
 package() {
