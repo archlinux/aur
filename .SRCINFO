@@ -1,15 +1,15 @@
 pkgbase = highway
 	pkgdesc = A C++ library for SIMD (Single Instruction, Multiple Data)
-	pkgver = 0.11.1
-	pkgrel = 2
+	pkgver = 0.12.0
+	pkgrel = 1
 	url = https://github.com/google/highway/
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
 	makedepends = gtest
 	makedepends = gmock
-	source = https://github.com/google/highway/archive/0.11.1/highway-0.11.1.tar.gz
-	sha256sums = 4c4bb9501c02b27a0944afde8923aaab554384690d37e5b2a7f97553426ea641
+	source = https://github.com/google/highway/archive/0.12.0/highway-0.12.0.tar.gz
+	sha256sums = 7013042ec0fd23cc5ae2364022379e1151c5029a11cf91e5295a5933cfc821a3
 
 pkgname = highway
 
