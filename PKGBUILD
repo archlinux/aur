@@ -43,7 +43,12 @@ sha256sums=('53543a561fce67714fec9f2a6bf408c5cc1d061c7dc9d1459458275e8ccbfa79'
 
 # Heuristic to determine version of installed kernel
 # You can modify this if the heuristic fails
-_kernelver=$(ls -dt /usr/lib/modules/* | head -n1 | cut -d/ -f5)
+if uname -r | grep -q lts; then
+  # if you are currently running an lts kernel, only consider lts versions
+  _kernelver=$(ls -dt /usr/lib/modules/*lts* | head -n1 | cut -d/ -f5)
+else
+  _kernelver=$(ls -dt /usr/lib/modules/* | head -n1 | cut -d/ -f5)
+fi
 _extramodules="/usr/lib/modules/${_kernelver}/extramodules"
 
 prepare() {
