@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Gblocks
+MimeType=
+Exec=Gblocks
+Type=Application
+Terminal=true
+Icon=terminal
+Comment=Gblocks
+X-KDE-StartupNotify=false
+Categories=System;
+X-GNOME-UsesNotifications=true
