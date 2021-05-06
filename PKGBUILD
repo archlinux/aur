@@ -1,6 +1,6 @@
 # Maintainer: Stephen Seo <seo.disparate@gmail.com>
 pkgname=mingw-w64-raylib
-pkgver=3.5.0
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="Simple and easy to use game programming library (mingw-w64)"
 arch=(any)
@@ -19,8 +19,8 @@ source=(
 )
 noextract=()
 md5sums=(
-    '2cce7adca17062d8a90bab9aca4aa668'
-    '41f1d54782295383566c5485adc8fae2'
+    '006da62cd93b25b1b02b8e806b9d4342'
+    '63cb5f70a8caf1f896465cab01f0d4fe'
 )
 
 
