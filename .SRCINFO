@@ -1,8 +1,8 @@
 pkgbase = pyston-bin
 	pkgdesc = A fork of CPython with additional optimizations for performance
 	pkgver = 2.2
-	pkgrel = 1
-	url = https://github.com/pyston/pyston
+	pkgrel = 2
+	url = https://blog.pyston.org/
 	arch = x86_64
 	license = custom
 	makedepends = libarchive

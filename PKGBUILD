@@ -2,10 +2,10 @@
 
 pkgname=pyston-bin
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A fork of CPython with additional optimizations for performance"
 arch=('x86_64')
-url="https://github.com/pyston/pyston"
+url="https://blog.pyston.org/"
 license=('custom')
 depends=('glibc' 'db' 'sqlite' 'tcl' 'xz')
 makedepends=('libarchive')
