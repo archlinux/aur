@@ -1,6 +1,6 @@
 pkgbase = python-pysim-git
 	pkgdesc = A python tool to program SIMs / USIMs / ISIMs
-	pkgver = 1.0.r130.gfe1fb03
+	pkgver = 1.0.r169.g4210a70
 	pkgrel = 1
 	url = http://osmocom.org/projects/pysim/wiki
 	arch = any
@@ -11,9 +11,10 @@ pkgbase = python-pysim-git
 	depends = python-pyscard
 	depends = python-pyserial
 	depends = python-pytlv
-	depends = python-cmd2
+	depends = python-cmd2>=1.3.0
 	depends = python-jsonpath-ng
-	depends = python-construct
+	depends = python-construct>=2.9
+	depends = python-bidict
 	provides = python-pysim
 	source = git+https://git.osmocom.org/pysim
 	sha256sums = SKIP
