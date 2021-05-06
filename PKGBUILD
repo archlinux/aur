@@ -16,8 +16,9 @@ pkgdesc="Taxonomy-aware DNA sequence processing toolkit"
 arch=('x86_64')
 url="https://github.com/gaurav/taxondna"
 license=('GPL2')
-source=("https://github.com/gaurav/taxondna/releases/download/v${pkgver}/SequenceMatrix.jar")
-sha256sums=('0e018fa3a737044cde9877946aa8616baeb879429bd05675b743f28927a555c0')
+source=("https://github.com/gaurav/taxondna/releases/download/v${pkgver}/SequenceMatrix.jar" "seqencematrix.desktop")
+sha256sums=('0e018fa3a737044cde9877946aa8616baeb879429bd05675b743f28927a555c0'
+            '391168a6dc8ed31fde009c3f103836c2400bf32c882f28ec21332a915eae7bd0')
 
 package() {
     mkdir "${pkgdir}/usr"
@@ -26,5 +27,5 @@ package() {
     mkdir "${pkgdir}/usr/share/applications"
     install -Dm644 ${srcdir}/SequenceMatrix.jar ${pkgdir}/usr/share/seqencematrix/SeqenceMatrix.jar
     ln -s "/usr/share/seqencematrix/SeqenceMatrix.jar" "${pkgdir}/usr/bin"
-    install -Dm644 ~/.cache/yay/seqencematrix/seqencematrix.desktop "${pkgdir}/usr/share/applications/seqencematrix.desktop"
+    install -Dm644 ${srcdir}/seqencematrix.desktop "${pkgdir}/usr/share/applications/seqencematrix.desktop"
 }
