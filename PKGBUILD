@@ -2,7 +2,7 @@
 # Maintainer: flaviofearn <flavioislima@gmail.com>
 
 pkgname=heroic-games-launcher-appimage
-_pkgver=v1.5.9
+_pkgver=v1.6.0
 pkgver=${_pkgver#v}
 pkgrel=1
 pkgdesc="HGL, a Native alternative Linux Launcher for Epic Games"
@@ -15,7 +15,7 @@ _filename=heroic-${pkgver}.AppImage
 source=("$url/releases/download/${_pkgver}/${_filename}"
         "heroic.desktop.patch"
         "heroicGamesLauncher")
-md5sums=('477665c3bfc9e201724813185a09157f'
+md5sums=('c134296ba8408484295ae01f85b5407e'
          'ca15ab98d434d881c3db27bb8573440d'
          '22f51cb64049525f8510046e69c715b7')
 options=(!strip)
