@@ -1,4 +1,5 @@
-# Maintainer: Jack Chen <redchenjs@live.com>
+# Maintainer: PolpOnline <aur at t0mmy dot anonaddy dot con>
+# Contributor: Jack Chen <redchenjs@live.com>
 
 pkgname=motrix-bin
 pkgver=1.6.8
