@@ -2,7 +2,7 @@
 
 pkgname=listmonk-git
 _pkgname=${pkgname%-git}
-pkgver=0.9.0.beta.r78.g68b80d0
+pkgver=0.9.0.r78.g68b80d0
 pkgrel=1
 pkgdesc='Self-hosted newsletter and mailing list manager with a modern dashboard'
 arch=(x86_64)
@@ -24,11 +24,15 @@ sha256sums=('SKIP'
 pkgver() {
     cd "$pkgname"
     git describe --long --abbrev=7 --tags --match="v*" |
-        sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+        sed 's/-beta//;s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "$pkgname/frontend"
+	cd "$pkgname"
+	sed -i -e 's/^[[:space:]]\+//;s/"db"/"localhost"/;s/0.0.0.0/localhost/' \
+		-e '/password/s/"listmonk"/"<your_password>"/' \
+		config.toml.sample
+	pushd frontend
 	export YARN_CACHE_FOLDER="$srcdir/node_modules"
 	yarn install --frozen-lockfile
 }
@@ -40,11 +44,11 @@ build() {
 		-buildmode=pie \
 		-mod=readonly \
 		-modcacherw \
-		-ldflags "-extldflags '$LDFLAGS' -X 'main.buildString=Arch Linux AUR v$pkgver $pkgrel' -X 'main.versionString=v$pkgver-beta'" \
+		-ldflags "-extldflags '$LDFLAGS' -X 'main.buildString=Arch Linux AUR v$pkgver-$pkgrel' -X 'main.versionString=v$pkgver'" \
 		-o $_pkgname \
 		cmd/*.go
 	export YARN_CACHE_FOLDER="$srcdir/node_modules"
-	export VUE_APP_VERSION="v$pkgver-beta"
+	export VUE_APP_VERSION="v$pkgver"
 	pushd frontend
 	yarn build
 }
@@ -57,7 +61,7 @@ check() {
 package() {
 	cd "$pkgname"
     install -Dm755 -t "$pkgdir/usr/bin" $_pkgname
-    install -Dm644 "config.toml.sample" "$pkgdir/etc/$pkgname/config.toml"
+    install -Dm644 config.toml.sample "$pkgdir/etc/$pkgname/config.toml"
     install -Dm644 -t "$pkgdir/usr/lib/systemd/system/" "../$_pkgname.service"
     install -Dm644 -t "$pkgdir/usr/lib/sysusers.d/" "../$_pkgname.conf"
     install -Dm644 -t "$pkgdir/usr/share/$_pkgname/" \
