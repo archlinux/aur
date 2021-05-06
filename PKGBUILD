@@ -2,7 +2,7 @@
 # NOTE: libtool requires rebuilt with each new gcc version
 
 ## GCC-PAtches for a better compiling without errors, you can disable or enable them here
-_use_patchese=y
+_use_patches=y
 
 pkgname=(gcc-11 gcc-libs-11 gcc-fortran-11 gcc-objc-11 gcc-ada-11 gcc-go-11 lib32-gcc-libs-11 gcc-d-11)
 pkgver=11.1.0
