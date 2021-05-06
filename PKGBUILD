@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=kube-prompt-git
 pkgrel=1
-pkgver=1.0.10.r5.gc654ccb
+pkgver=1.0.11.r1.g8547400
 pkgdesc='An interactive kubernetes client featuring auto-complete using go-prompt.'
 arch=('x86_64' 'i686' 'aarch64')
 url='https://github.com/c-bata/kube-prompt'
@@ -18,11 +18,6 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
-prepare() {
-  cd "$pkgname"
-  go mod download
-}
-
 build() {
   cd "$pkgname"
   export CGO_ENABLED=1
@@ -30,8 +25,8 @@ build() {
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
-  export GOFLAGS='-buildmode=pie -trimpath -modcacherw -mod=readonly'
-  go build -o kube-prompt -ldflags "-X main.version=v${pkgver%%.r*} -X main.revision=${pkgver##*.g}"
+  export GOFLAGS='-buildmode=pie -trimpath -modcacherw'
+  go build -o kube-prompt -ldflags "-linkmode=external -X main.version=v${pkgver%%.r*} -X main.revision=${pkgver##*.g}"
 }
 
 package() {
