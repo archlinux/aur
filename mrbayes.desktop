@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=MrBayes
+MimeType=
+Exec=mb
+Type=Application
+Terminal=true
+Icon=/usr/share/icons/mrbayes.gif
+Comment=MrBayes
+X-KDE-StartupNotify=false
+Categories=System;
+X-GNOME-UsesNotifications=true% 
