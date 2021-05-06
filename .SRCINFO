@@ -1,0 +1,13 @@
+pkgbase = babi-grammars
+	pkgdesc = Grammars for babi text editor
+	pkgver = 0.0.24
+	pkgrel = 1
+	url = https://github.com/asottile/babi-grammars
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	source = https://github.com/asottile/babi-grammars/archive/v0.0.24.tar.gz
+	md5sums = a1db1346669563b471627c2818f3c47e
+
+pkgname = babi-grammars
+
