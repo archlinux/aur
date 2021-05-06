@@ -5,7 +5,7 @@
 # Contributor: David Runge <dvzrv@archlinux.org
 
 pkgname=guitarix-git
-pkgver=0.39.0.r504.g84b744b0
+pkgver=0.42.1.r18.g0789a662
 pkgrel=1
 pkgdesc="virtual guitar amplifier for Jack/Linux"
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('GPL3')
 groups=('ladspa-plugins' 'lv2-plugins' 'pro-audio')
 depends=('jack' 'gtkmm3' 'liblrdf' 'lilv' 'bluez-libs' 'boost-libs' 
 'zita-convolver' 'zita-resampler' 'ttf-roboto' 'libsndfile')
-makedepends=('git' 'boost' 'eigen' 'gperf' 'intltool' 'ladspa' 'lv2' 'waf' 'sassc')
+makedepends=('git' 'boost' 'eigen' 'gperf' 'intltool' 'ladspa' 'lv2' 'waf' 'sassc' 'pkgconfig')
 provides=('guitarix' 'libgxw.so' 'libgxwmm.so')
 conflicts=('guitarix')
 replaces=('guitarix2')
