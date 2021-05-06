@@ -1,0 +1,18 @@
+pkgbase = vim-pac
+	pkgdesc = Syntax description file for PAC file format in vim/neovim
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://www.vim.org/scripts/script.php?script_id=2249
+	arch = any
+	groups = vim-plugins
+	groups = neovim-plugins
+	license = Unknown
+	optdepends = vim: vim support
+	optdepends = neovim: neovim support
+	source = pac.vim::http://www.vim.org/scripts/download_script.php?src_id=8719
+	source = pac.ft
+	sha256sums = da679ccae369b205e565052bdff3c5bf0efc21a07d619946744a1bd03fc6ca8a
+	sha256sums = 341c3c1c41eba8d3f9c1b189cdbbcc49c382f9af6e47699497da6d53a9c5a55e
+
+pkgname = vim-pac
+
