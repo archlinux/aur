@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=MAFFT
+MimeType=
+Exec=mafft
+Type=Application
+Terminal=true
+Icon=terminal
+Comment=MAFFT
+X-KDE-StartupNotify=false
+Categories=System;
+X-GNOME-UsesNotifications=true

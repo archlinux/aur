@@ -1,0 +1,14 @@
+pkgbase = mafft-desktop
+	pkgdesc = Desktop File For MAFFT
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://mafft.cbrc.jp/alignment/software/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = mafft
+	source = mafft.desktop
+	sha256sums = aba7ed898aaac482385a53c0fda11e7a62c836f5f84ba1767ee083f7f0f913e2
+
+pkgname = mafft-desktop
+
