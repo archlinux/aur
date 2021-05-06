@@ -3,7 +3,7 @@
 _pkgbase=ravenna-alsa-lkm
 pkgname="${_pkgbase}-dkms"
 pkgver=r122.154a9e1
-pkgrel=1
+pkgrel=2
 pkgdesc="A kernel module for ALSA RAVENNA/AES67 Driver"
 url="https://bitbucket.org/MergingTechnologies/ravenna-alsa-lkm"
 license=("GPL")
@@ -22,6 +22,10 @@ install=ravenna-dkms.install
 pkgver() {
   cd "$_pkgbase"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"                          
+}
+
+prepare() {
+sed -i '/MODULE_SUPPORTED_DEVICE/d' $srcdir/ravenna-alsa-lkm/driver/module_interface.c
 }
 
 package() {
