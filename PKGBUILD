@@ -1,7 +1,7 @@
 # Maintainer: jzbor <zborof at posteo dot de>
 pkgname=moonwm
 _pkgname=MoonWM
-pkgver=7.0.2
+pkgver=7.0.3
 pkgrel=1
 pkgdesc="My own outstandingly named Window Manager (a dynamic window manager)"
 arch=(x86_64 i686)
@@ -25,7 +25,7 @@ backup=()
 options=()
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
 noextract=()
-md5sums=('b57e38cfbcf5c4271100a3ad82aafb40')
+md5sums=('04bab3c52264a9f929aed722a455d1cb')
 validpgpkeys=()
 
 build() {
