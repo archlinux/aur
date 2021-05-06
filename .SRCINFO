@@ -5,6 +5,7 @@ pkgbase = telepresence
 	url = https://github.com/telepresenceio/telepresence
 	arch = x86_64
 	license = Apache
+	depends = fuse2
 	depends = conntrack-tools
 	depends = kubectl
 	depends = socat

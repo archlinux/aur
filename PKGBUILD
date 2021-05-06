@@ -10,7 +10,7 @@ license=('Apache')
 url='https://github.com/telepresenceio/telepresence'
 source=("$pkgname-$pkgver::https://github.com/telepresenceio/telepresence/archive/${pkgver}.tar.gz")
 sha256sums=('5d848e68a423eb7a4ca495c53b85022cc15d69f21d171a82658699c4a4afb6c7')
-depends=('conntrack-tools' 'kubectl' 'socat' 'sshfs' 'torsocks' 'python' 'python-pip' 'python-setuptools')
+depends=('fuse2' 'conntrack-tools' 'kubectl' 'socat' 'sshfs' 'torsocks' 'python' 'python-pip' 'python-setuptools')
 
 package() {
   cd ${srcdir}/$pkgname-$pkgver
