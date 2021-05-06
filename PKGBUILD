@@ -2,7 +2,7 @@
 
 pkgname=listmonk
 pkgver=0.9.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Self-hosted newsletter and mailing list manager with a modern dashboard'
 arch=(x86_64)
 url=https://listmonk.app
@@ -19,7 +19,11 @@ sha256sums=('20b89ddacd0a42d8f350ef5a96c7e2d95cff82ad2ddc756ff1581cb2a7dbbcdf'
             '809ede70c932183889b2fa567b340fb82cce1ada76c7b0a0b9efb82b87c92fa0')
 
 prepare() {
-	cd "$pkgname-$pkgver-beta/frontend"
+	cd "$pkgname-$pkgver-beta"
+	sed -i -e 's/^[[:space:]]\+//;s/"db"/"localhost"/;s/0.0.0.0/localhost/' \
+		-e '/password/s/"listmonk"/"<your_password>"/' \
+		config.toml.sample
+	pushd frontend
 	export YARN_CACHE_FOLDER="$srcdir/node_modules"
 	yarn install --frozen-lockfile
 }
@@ -31,11 +35,11 @@ build() {
 		-buildmode=pie \
 		-mod=readonly \
 		-modcacherw \
-		-ldflags "-extldflags '$LDFLAGS' -X 'main.buildString=Arch Linux AUR v$pkgver $pkgrel' -X 'main.versionString=v$pkgver-beta'" \
+		-ldflags "-extldflags '$LDFLAGS' -X 'main.buildString=Arch Linux AUR v$pkgver-$pkgrel' -X 'main.versionString=v$pkgver'" \
 		-o $pkgname \
 		cmd/*.go
 	export YARN_CACHE_FOLDER="$srcdir/node_modules"
-	export VUE_APP_VERSION="v$pkgver-beta"
+	export VUE_APP_VERSION="v$pkgver"
 	pushd frontend
 	yarn build
 }
@@ -48,7 +52,7 @@ check() {
 package() {
 	cd "$pkgname-$pkgver-beta"
     install -Dm755 -t "$pkgdir/usr/bin" ${pkgname%-bin}
-    install -Dm644 "config.toml.sample" "$pkgdir/etc/$pkgname/config.toml"
+    install -Dm644 config.toml.sample "$pkgdir/etc/$pkgname/config.toml"
     install -Dm644 -t "$pkgdir/usr/lib/systemd/system/" "../$pkgname.service"
     install -Dm644 -t "$pkgdir/usr/lib/sysusers.d/" "../$pkgname.conf"
     install -Dm644 -t "$pkgdir/usr/share/$pkgname/" \
