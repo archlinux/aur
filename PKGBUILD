@@ -10,7 +10,7 @@ pkgname="${_pkgname}-svn"
 epoch=1
 # _pkgver=2.9j
 pkgver=2.9j+svn2253.d20191028
-pkgrel=4
+pkgrel=5
 pkgdesc="Simple caching proxy server with special features (request, recursive fetch, subscription, modify HTML, ...) for use with dial-up internet links. Includes startup scripts for OpenRC, System V init, systemd."
 arch=(
   'arm'
@@ -77,6 +77,7 @@ source=(
   'initscript_systemd'
   'initscript_sysvinit'
   "${install}"
+  'fix-wwwoffled-loglevel-help.patch::http://ix.io/3lYX'
 )
 
 sha256sums=(
@@ -87,6 +88,7 @@ sha256sums=(
             '03bebce87a0da1b383666ab7a95b9810e15f2a024c0954f09c959d342c5d9c87' # initscript_systemd
             '62139f2b77139cf9c1ce9761e27f6b427c12cadd7a3739f28d854b8328e7c511' # initscript_sysvinit
             '106f4ce3de6d6ea020e8dcd8a4fd4f78ed2ae855e8a953a8783134e4d2cfba12' # ${install}
+            '85f0b786356c0f35b3dedf074757dec1d05256e93aa822b08cdb8530c3dbd072' # fix-wwwoffled-loglevel-help.patch
 )
 
 _svnlog='svn.log'
@@ -150,6 +152,12 @@ prepare() {
   _unpackeddir="${srcdir}/${_pkgname}"
 
   cd "${_unpackeddir}"
+
+  ### Applying patches
+  for _patch in 'fix-wwwoffled-loglevel-help.patch'; do
+    msg2 "Applying patch '${_patch}' ..."
+    patch -N -p1 -i "${srcdir}/fix-wwwoffled-loglevel-help.patch"
+  done
 
   ### Update version.h to the actual version + SVNrevision
   msg2 "Updating version in src/version.h to ${pkgver} ..."
