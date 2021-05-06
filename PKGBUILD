@@ -2,7 +2,7 @@
 
 pkgname=jellyfish
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for fast, memory-efficient counting of k-mers in DNA"
 
 # Note: according to the README, "Support for 32-bits platform has not been
@@ -26,4 +26,4 @@ package() {
     make DESTDIR=${pkgdir} install
 }
 
-sha256sums=('3d5b68bdf741acdb119546bfaf52219834f83cea1f47b0caa135fc649d0d6faf')
+sha256sums=('e195b7cf7ba42a90e5e112c0ed27894cd7ac864476dc5fb45ab169f5b930ea5a')

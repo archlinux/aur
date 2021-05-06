@@ -1,12 +1,12 @@
 pkgbase = jellyfish
 	pkgdesc = A tool for fast, memory-efficient counting of k-mers in DNA
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.genome.umd.edu/jellyfish.html
 	arch = x86_64
 	license = GPL3
 	source = https://github.com/gmarcais/Jellyfish/releases/download/v2.3.0/jellyfish-2.3.0.tar.gz
-	sha256sums = 3d5b68bdf741acdb119546bfaf52219834f83cea1f47b0caa135fc649d0d6faf
+	sha256sums = e195b7cf7ba42a90e5e112c0ed27894cd7ac864476dc5fb45ab169f5b930ea5a
 
 pkgname = jellyfish
 
