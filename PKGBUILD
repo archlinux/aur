@@ -2,7 +2,7 @@
 
 pkgname=stern
 pkgdesc="Multi pod and container log tailing for Kubernetes"
-pkgver=1.15.0
+pkgver=1.16.0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/stern/stern"
@@ -12,7 +12,7 @@ makedepends=('go')
 source=(
   ${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
 )
-sha256sums=('d62bd798d8b801d44c505f89890801424a3d2e1cd3b46c62ad49d250d20d50d8')
+sha256sums=('c71af2141f8793b5be20e6068b6acc5c4ea58dffe0d5bb5a5973359d094ebf9b')
 build() {
   cd "${pkgname}-${pkgver}"
 
@@ -40,4 +40,6 @@ package() {
 
   "${pkgdir}/usr/bin/${pkgname}" --completion=bash | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
   "${pkgdir}/usr/bin/${pkgname}" --completion=zsh | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+
+  install -Dm 644 CONTRIBUTING.md README.md --target-directory "${pkgdir}/usr/share/doc/${pkgname}"
 }
