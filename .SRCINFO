@@ -1,6 +1,6 @@
 pkgbase = pterodactyl-daemon-bin
 	pkgdesc = Open-source server control and management daemon for pterodactyl-panel (wings).
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/pterodactyl/wings
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = pterodactyl-daemon-bin
 	provides = pterodactyl-daemon
 	conflicts = pterodactyl-daemon
 	options = !strip
-	source_x86_64 = wings-1.4.1-x86_64::https://github.com/pterodactyl/wings/releases/download/v1.4.1/wings_linux_amd64
+	source_x86_64 = wings-1.4.2-x86_64::https://github.com/pterodactyl/wings/releases/download/v1.4.2/wings_linux_amd64
 	source_x86_64 = wings.service
-	sha256sums_x86_64 = b8351b81defbf210b26d0a7a52cad77f66cab29722603d5a015880ffe173dc5d
+	sha256sums_x86_64 = bb33bea4ed7153297cf952480993c8490452d049f3e2ce18157236828fbbe909
 	sha256sums_x86_64 = 34429a141df3e257b2396cd56aa6c0df4e3878dc00d42f7651672b4a6bbb0021
-	source_aarch64 = wings-1.4.1-aarch64::https://github.com/pterodactyl/wings/releases/download/v1.4.1/wings_linux_arm64
+	source_aarch64 = wings-1.4.2-aarch64::https://github.com/pterodactyl/wings/releases/download/v1.4.2/wings_linux_arm64
 	source_aarch64 = wings.service
-	sha256sums_aarch64 = 7e91edaa28397b764f4e7f99ef050162ed1666f3bbaf57d1c7ab6c78eb6069fb
+	sha256sums_aarch64 = d015aa6d39f16741713e2de0bb53652d5a39a120824cde8cd82c65b6343b05d9
 	sha256sums_aarch64 = 34429a141df3e257b2396cd56aa6c0df4e3878dc00d42f7651672b4a6bbb0021
 
 pkgname = pterodactyl-daemon-bin
