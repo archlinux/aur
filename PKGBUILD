@@ -4,9 +4,9 @@ pkgdesc="ROS - octovis is visualization tool for the OctoMap library based on Qt
 url='https://octomaphub.io'
 
 pkgname='ros-melodic-octovis'
-pkgver='1.9.0'
+pkgver='1.9.7'
 arch=('any')
-pkgrel=5
+pkgrel=1
 license=('GPLv2')
 
 ros_makedepends=(ros-melodic-octomap)
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="octomap-${pkgver}/octovis"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/OctoMap/octomap/archive/v${pkgver}.tar.gz")
-sha256sums=('5f81c9a8cbc9526b2e725251cd3a829e5222a28201b394314002146d8b9214dd')
+sha256sums=('3e9ac020686ceb4e17e161bffc5a0dafd9cccab33adeb9adee59a61c418ea1c1')
 
 build() {
   # Use ROS environment variables
