@@ -7,7 +7,7 @@ depends=('pacman')
 url="http://wiki.victor3d.com.br"
 license=('GPL')
 source=('pacman-magic')
-md5sums=('d568fb08baccb1b95348a68a4a4e6a15')
+md5sums=('68ae6972b03695df01421fa415bebe38')
 
 package() {
 	cd "${srcdir}/${_pkgname}"
