@@ -1,6 +1,6 @@
 pkgbase = networkmanager-fortisslvpn-git
 	pkgdesc = NetworkManager VPN plugin for fortisslvpn - git checkout
-	pkgver = 1.4.rc1.r37.g2528f20
+	pkgver = 1.4.rc1.r46.g841ea38
 	pkgrel = 1
 	url = https://git.gnome.org/browse/network-manager-fortisslvpn
 	arch = i686
