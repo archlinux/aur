@@ -1,6 +1,6 @@
 pkgbase = goslice
 	pkgdesc = An experimental slicer for 3d printing written in Go.
-	pkgver = 0.3.7
+	pkgver = 0.3.9
 	pkgrel = 1
 	url = https://github.com/aligator/GoSlice
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = goslice
 	arch = aarch64
 	license = AGPL
 	makedepends = go
-	source = goslice-0.3.7.tar.gz::https://github.com/aligator/GoSlice/archive/v0.3.7.tar.gz
-	sha512sums = e9d41bacde15ab1b6e3b05f362ab46bdff387a504555a32909ad0d44fbb45701cd71ff8eda57c07d9af777ea7314df191bb5372b1e107b3f88fb058eaca4b223
+	source = goslice-0.3.9.tar.gz::https://github.com/aligator/GoSlice/archive/v0.3.9.tar.gz
+	sha512sums = d377cf3f31a188fe5ebeaeec4ea70c2178120dc8778cd4ede954c6972ecbc804ae7f03b92b84810ca02ff9cbc12458c2820d4b13bc8c086db47b47d554f86d61
 
 pkgname = goslice
 
