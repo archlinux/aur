@@ -5,7 +5,7 @@ proxy for Ground Control Station."
 url='https://wiki.ros.org/mavros'
 
 pkgname='ros-noetic-mavros'
-pkgver='1.6.0'
+pkgver='1.8.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('GPLv3, LGPLv3, BSD')
@@ -55,7 +55,7 @@ depends=(
 
 _dir="mavros-${pkgver}/mavros"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mavlink/mavros/archive/${pkgver}.tar.gz")
-sha256sums=('8ab5b1cc851b27dbea9abbe67a7da9262afddf057d6316938745772666fa4d3d')
+sha256sums=('b078a8cdbe5675b93a4e2dc68d71b8f39241942af053722778da1be5d5db3152')
 
 build() {
   # Use ROS environment variables
