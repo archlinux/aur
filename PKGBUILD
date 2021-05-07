@@ -3,15 +3,15 @@
 
 pkgname=openeuphoria
 pkgver=4.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast interpreted or compiled general purpose programming language."
-url="http://openeuphoria.org"
+url="https://openeuphoria.org"
 license=('custom:"OpenEuphoria License"')
 conflicts=('euphoria')
 arch=('i686' 'x86_64')
 options=('staticlibs')
-source_x86_64=(http://sourceforge.net/projects/rapideuphoria/files/Euphoria/4.1.0-beta2/euphoria-${pkgver}-Linux-x64-57179171dbed.tar.gz/download)
-source_i686=(http://sourceforge.net/projects/rapideuphoria/files/Euphoria/4.1.0-beta2/euphoria-${pkgver}-Linux-x86-57179171dbed.tar.gz/download)
+source_x86_64=(https://sourceforge.net/projects/rapideuphoria/files/Euphoria/4.1.0-beta2/euphoria-${pkgver}-Linux-x64-57179171dbed.tar.gz/download)
+source_i686=(https://sourceforge.net/projects/rapideuphoria/files/Euphoria/4.1.0-beta2/euphoria-${pkgver}-Linux-x86-57179171dbed.tar.gz/download)
 md5sums_x86_64=('a19ac9fcbe92c4916e4af3499a0af6f8')
 md5sums_i686=('6264506b48d135c19fa85ecc44fb305b')
 
