@@ -1,6 +1,6 @@
 pkgbase = deber-git
 	pkgdesc = Debian packaging with Docker
-	pkgver = 1.1.1.r2.gcf00dd5
+	pkgver = 1.1.1.r4.geba459f
 	pkgrel = 1
 	url = https://github.com/dawidd6/deber
 	arch = x86_64

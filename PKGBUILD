@@ -2,7 +2,7 @@
 
 pkgname=deber-git
 _pkgname=${pkgname%-git}
-pkgver=1.1.1.r2.gcf00dd5
+pkgver=1.1.1.r4.geba459f
 pkgrel=1
 pkgdesc="Debian packaging with Docker"
 arch=('x86_64')
@@ -33,5 +33,3 @@ package() {
 	install -Dm755 ${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
 	install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
-
-
