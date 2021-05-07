@@ -2,10 +2,10 @@
 
 pkgname=gitlab-upgrade-hook
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc='Automatically shut down, run db:migrate, then start services after upgrade'
 arch=('any')
-depends=('pacman-contrib')
+depends=('pacman-contrib' 'gitlab')
 source=('gitlab-pre.hook'
         'gitlab-post.hook'
         'gitlab-post.sh')

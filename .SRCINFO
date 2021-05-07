@@ -1,9 +1,10 @@
 pkgbase = gitlab-upgrade-hook
 	pkgdesc = Automatically shut down, run db:migrate, then start services after upgrade
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	arch = any
 	depends = pacman-contrib
+	depends = gitlab
 	source = gitlab-pre.hook
 	source = gitlab-post.hook
 	source = gitlab-post.sh
