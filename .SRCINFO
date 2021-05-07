@@ -1,0 +1,16 @@
+pkgbase = xjump
+	pkgdesc = A game where you jump up and up while the tower collapses under your feet.
+	pkgver = 2.7.5
+	pkgrel = 1
+	url = https://github.com/hugomg/xjump
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = libxaw
+	depends = xaw3d
+	depends = libxpm
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/x/xjump/xjump_2.7.5.orig.tar.gz
+	md5sums = 3e8d09c6b8162b7e4380f8a77eb595dc
+
+pkgname = xjump
+
