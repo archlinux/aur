@@ -1,7 +1,7 @@
 # Maintainer: pureboys <yuyuud@yuyuud@gmail.com>
 
 pkgname='kikoplay'
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="linux danmaku player"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
    "https://github.com/KikoPlayProject/KikoPlay/archive/refs/tags/$pkgver.zip"
 )
 sha256sums=(
-    "3e2fca4fbfa1f2b9b3160e07729ce169e0ae2aec5b13911650fc5e8f4c855f7c"
+    "5ffab1c412a7eea2c57362450b5fd17bf4df3103eeedd7e674c369a3d06fc6b3"
 )
 
 

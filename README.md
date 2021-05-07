@@ -9,3 +9,7 @@ yay -S qhttpengine
 ```
 yay -S kikoplay
 ```
+3. 更新 .SRCINFO
+```
+makepkg --printsrcinfo > .SRCINFO
+```
