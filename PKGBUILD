@@ -5,7 +5,7 @@
 pkgname=php74-redis
 _name=redis
 _upstream=phpredis
-pkgver=5.3.3
+pkgver=5.3.4
 pkgrel=1
 pkgdesc="An API for communicating with the Redis key-value store"
 arch=('x86_64')
@@ -17,7 +17,7 @@ checkdepends=('lsof' 'redis')
 optdepends=('redis: use a local redis instance')
 backup=("etc/php74/conf.d/${_name}.ini")
 source=("https://pecl.php.net/get/${_name}-${pkgver}.tgz")
-sha512sums=('a04a7d0aa3881b861a00c3f0a889b2f3fd135009293629ac55a74890196c0686e9766438f5255561105e30293f1a6a91ca987fd68e43f3ca436f6cc884e6a5df')
+sha512sums=('c1270235b18544e651411ddfb512d74b7229e3dc241b2dfcdf97f2e26cf60754afb7deaac17bc48202875b5caafae19f31a7b8da980fcba578df51b0c0860a95')
 
 prepare() {
   mv -v "${_name}-${pkgver}" "$pkgname-$pkgver"
