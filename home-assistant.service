@@ -9,6 +9,8 @@ Group=hass
 DynamicUser=true
 LogsDirectory=hass
 StateDirectory=hass
+WorkingDirectory=/var/lib/hass
+Environment=HOME=/var/lib/hass
 
 ExecStart=/usr/bin/hass \
   --config /var/lib/hass/ \

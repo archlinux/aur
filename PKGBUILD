@@ -6,7 +6,7 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=2021.4.6
+pkgver=2021.5.0
 pkgrel=1
 arch=(any)
 url=https://home-assistant.io/
@@ -34,7 +34,7 @@ depends=(
   python-requests
   python-ruamel-yaml
   python-slugify
-  python-sqlalchemy
+  python-sqlalchemy1.3
   python-voluptuous
   python-voluptuous-serialize
   python-yaml
@@ -51,15 +51,13 @@ optdepends=(
   'python-dtlssocket: Ikea Tradfri integration'
   'python-lxml: Meteo France integration'
 )
-_tag=5ee373869a59266142001b62a5067d56c22bfddf
+_tag=ccf92e4721bf7c39c11c0239b81252342a244a35
 source=(
   git+https://github.com/home-assistant/home-assistant.git#tag=${_tag}
   home-assistant.service
-  home-assistant-astral2.2.patch
 )
 b2sums=('SKIP'
-        '0df7bbfdac09e37294ac27567e677855c72d13be3aefbd23e0a8f101cf2148302affbe9b6b586b893f77fc990f665d7b95f4916583680c06abd8f74b5cdf3da9'
-        '4458692cb10e0832c1b321b96d74d7dd7e5e0e9e9b23d420efec9e27e5b0f34ef33f64789b05fbc5ec49337002ad26b026079b939741bbf16869c52c9316ef34')
+        'c56b88e4d8d6d10ea132d22916468109ffaa83c1176a75e0c0ead16b261c34fe4c279cec6dca415b1addfcd873ad35b294f60a3e1ba62cc917a9dbb73cce47d4')
 
 pkgver() {
   cd home-assistant
@@ -68,7 +66,6 @@ pkgver() {
 
 prepare() {
   cd home-assistant
-  patch -Np1 -i ../home-assistant-astral2.2.patch
   # lift hard dep constraints, we'll deal with breaking changes ourselves
   sed 's/==/>=/g' -i requirements.txt setup.py homeassistant/package_constraints.txt
   # allow pip >= 20.3 to be used
