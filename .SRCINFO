@@ -1,0 +1,19 @@
+pkgbase = kplasmafoxhelper
+	pkgdesc = Plasmafox KDE Integration (kmozillahelper fork from openSUSE).
+	pkgver = 5.0.6
+	pkgrel = 1
+	url = https://github.com/openSUSE/kmozillahelper
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = kio
+	depends = knotifications
+	depends = kwindowsystem
+	depends = ki18n
+	source = git+https://github.com/torvic9/kplasmafoxhelper.git#tag=5.0.6
+	md5sums = SKIP
+
+pkgname = kplasmafoxhelper
+
