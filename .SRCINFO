@@ -1,0 +1,14 @@
+pkgbase = nikwi-deluxe-bin
+	pkgdesc = platform game where the goal is to collect candies
+	pkgver = 1
+	pkgrel = 1
+	url = http://runtimeterror.com/games/nikwideluxe
+	arch = x86_64
+	license = GPL
+	depends = sdl
+	depends = sdl_image
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/n/nikwi/nikwi_0.0.20120213-4build1_amd64.deb
+	md5sums = fc20614327cbb40dd3c6f1831016205d
+
+pkgname = nikwi-deluxe-bin
+
