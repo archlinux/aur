@@ -3,7 +3,7 @@
 
 _pkgname=evolution-data-server
 pkgname=$_pkgname-git
-pkgver=3.37.2.r004.g2faecfeeb
+pkgver=3.40.0.r043.g13ba9492c
 pkgrel=1
 pkgdesc="Centralized access to appointments and contacts"
 arch=(i686 x86_64)
@@ -13,7 +13,8 @@ depends=(libgdata
          libphonenumber
          libsignon-glib
          )
-makedepends=(gnome-common
+makedepends=(git
+             gnome-common
              gobject-introspection
              gperf
              gtk-doc
