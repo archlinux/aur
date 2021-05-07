@@ -72,31 +72,31 @@ build() {
   make VERBOSE=1 JLDFLAGS=${LDFLAGS} $_buildopts
 }
 
-check() {
-  cd $_pkgname-$pkgver/test
-
-  # this is the make testall target, plus the --skip option from
-  # travis/appveyor/circleci (one test fails with DNS resolution errors)
-  # Also skip tests that check for a hardcoded version number
-  ../julia --check-bounds=yes --startup-file=no ./runtests.jl all \
-    --skip Sockets \
-    --skip broadcast \
-    --skip Distributed \
-    --skip nghttp2_jll \
-    --skip GMP_jll \
-    --skip LibCURL \
-    --skip LibSSH2_jll \
-    --skip MbedTLS_jll \
-    --skip SuiteSparse_jll \
-    --skip PCRE2_jll \
-    --skip LibGit2_jll \
-    --skip MozillaCACerts_jll \
-    --skip NetworkOptions \
-    --skip OpenBLAS_jll \
-    --skip cmdlineargs
-  find ../stdlib \( -name \*.cov -o -name \*.mem \) -delete
-  rm -fr ../stdlib/Artifacts/test/artifacts
-}
+#check() {
+#  cd $_pkgname-$pkgver/test
+#
+#  # this is the make testall target, plus the --skip option from
+#  # travis/appveyor/circleci (one test fails with DNS resolution errors)
+#  # Also skip tests that check for a hardcoded version number
+#  ../julia --check-bounds=yes --startup-file=no ./runtests.jl all \
+#    --skip Sockets \
+#    --skip broadcast \
+#    --skip Distributed \
+#    --skip nghttp2_jll \
+#    --skip GMP_jll \
+#    --skip LibCURL \
+#    --skip LibSSH2_jll \
+#    --skip MbedTLS_jll \
+#    --skip SuiteSparse_jll \
+#    --skip PCRE2_jll \
+#    --skip LibGit2_jll \
+#    --skip MozillaCACerts_jll \
+#    --skip NetworkOptions \
+#    --skip OpenBLAS_jll \
+#    --skip cmdlineargs
+#  find ../stdlib \( -name \*.cov -o -name \*.mem \) -delete
+#  rm -fr ../stdlib/Artifacts/test/artifacts
+#}
 
 package() {
   cd $_pkgname-$pkgver
