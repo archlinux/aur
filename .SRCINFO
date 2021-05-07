@@ -1,13 +1,14 @@
 pkgbase = stochas
 	pkgdesc = randomization enabled step sequencer
 	pkgver = 1.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://surge-synth-team.org/stochas
 	arch = x86_64
 	groups = pro-audio
 	groups = vst-plugins
 	license = GPL3
 	makedepends = jack
+	makedepends = cmake
 	depends = alsa-lib
 	depends = freetype2
 	depends = harfbuzz
