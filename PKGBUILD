@@ -1,8 +1,9 @@
-# Maintainer: ptr1337 <admin@ptr1337.dev>
 # Contributor: Piotr Gorski <lucjan.lucjanov@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
+# Maintainer: ptr1337 <admin@ptr1337.dev>
+
 
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
@@ -15,15 +16,17 @@ _NUMAdisable=y
 _fsync=y
 #enable futex2
 _futex2=y
+#enable winesync
+_winesync=y
 ### Set performance governor as default
 _per_gov=y
 ### Disable Deadline I/O scheduler
 _deadline_disable=y
 ### Disable Kyber I/O scheduler
 _kyber_disable=y
-### Running with a 1000 HZ, 750HZ or 500HZ tick rate
+### Running with a 2000 HZ, 1000HZ or 500HZ tick rate
+_2k_HZ_ticks=
 _1k_HZ_ticks=y
-_750_HZ_ticks=
 _500_HZ_ticks=
 ### Tweak kernel options prior to a build via nconfig
 _makenconfig=
@@ -53,7 +56,7 @@ _use_current=
 
 pkgbase=linux-cacule-rdb
 # pkgname=('linux-cacule-rdb' linux-cacule-rdb-headers)
-_major=5.12.1
+_major=5.12.2
 #_minor=1
 #_minorc=$((_minor+1))
 #_rcver=rc8
@@ -74,45 +77,49 @@ source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz
         "https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/$_srcname.tar.xz"
         "config"
         "${_patchsource}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_patchsource}/cacule-patches/cacule-5.12.patch"
+        "${_patchsource}/cacule-patches/cacule-5.12-2k.patch"
         "${_patchsource}/cacule-patches/rdb.patch"
         "${_patchsource}/cpu-patches/0001-cpu-patches.patch"
         "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
-        "${_patchsource}/futex2-patches-stable/0001-futex2-resync-from-gitlab.collabora.com.patch"
-        "${_patchsource}/bfq-patches/0001-bfq-patches.patch"
+        "${_patchsource}/futex2-stable-patches-v2/0001-futex2-resync-from-gitlab.collabora.com.patch"
+        "${_patchsource}/wine-esync-patches/0001-v5.12-winesync.patch"
+        "${_patchsource}/zen-patches-v2/0001-zen-patches.patch"
+        "${_patchsource}/bfq-patches-v2/0001-bfq-patches.patch"
         "${_patchsource}/block-patches/0001-block-patches.patch"
-        "${_patchsource}/ll-patches/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
         "${_patchsource}/ll-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
         "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
         "${_patchsource}/bbr2-patches-v2/0001-bbr2-5.12-introduce-BBRv2.patch"
-        "${_patchsource}/btrfs-patches/0001-btrfs-patches.patch"
+        "${_patchsource}/btrfs-patches-v3/0001-btrfs-patches.patch"
         "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
-        "${_patchsource}/pf-patches/0001-genirq-i2c-Provide-and-use-generic_dispatch_irq.patch"
+        "${_patchsource}/pf-patches-v2/0001-pf-patches.patch"
+        "${_patchsource}/lru-patches-v3/0001-lru-patches.patch"
         "${_patchsource}/ntfs3-patches/0001-ntfs3-patches.patch"
-        "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
+        "${_patchsource}/zstd-dev-patches-v3/0001-zstd-dev-patches.patch"
         "${_patchsource}/zstd-ll-patches/0001-zstd-patches.patch"
         "${_patchsource}/clearlinux-patches/0001-clearlinux-patches.patch"
         "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch")
 
-sha512sums=('9bb9831459557a87ecb822ee5862b27ec1cb0de7df1a0131f534bd57a152b6ea75b710fa319cf533a8f89b8cbaa6b4844bd260c4bd825e83e1d62e7734510240'
-            '1ab27f634f844a096c1c6572349581495fa76555888100028a694abfe5529900ed4ba748be2452f1fcdf97c1fbbf25cd2cb3b8f2e00dff83cb86632988926bd9'
+sha512sums=('ddbe371a564d6a12e638794a3833b5aaf605b4fc5adb123cbb6a26e41fe084c043041dd18a988a44d2a27848c1934feb5ff5459d121e8ea726610307289248e9'
+            '9612169a9b29c2796db69c516ec094da02b7c75bff2172e93e9b296c1dcff941ad3a7ef275aa71e751e75b95922ebcc4a2ee40494eabd8d5c2d4b6119560e98e'
             '88f9f1e6ea206068fd029566e4610c16b7c3007f10363c7db37cd922fe75646437d2e4814317bc292d06eff7e9ebd29d8cd1ee82c8abf45ddd1843c1ff55f5c7'
-            '9ae489f10dc259add64967c6f1fa7f1cddbb1026bb3d5af8f3ec8c61aeaa82baba8ffbca27ef0633135442c2fc15aeb7511dd6b1fd8e10169a355e3f00c625cf'
+            '79807de3136a32f9e96f37d7781bfa4db225855573ab44092d1c22c5f9e282b1bc034b8de03c610ecba38b75708144b7a52c92e78dd460493239869cb2ae33fa'
             'af6361e7c6e5a857d346b04b0654b4a00284fe200eeb32cd66f47d8559d2595a1f79f05281764732bf08b8c5135523a0b3a2000882fa3c7e1c1e9b42bb8a696c'
             '15933126feeb56ccc6ace70db9fa7afb64d148900e41a780e42e03ce09faf7bab12413f526675b918aeff55e91dc038ad58884bb7add4a45962aca79d576cb93'
             '449570b8b9a04391cc2cc171cc806b3a132c6e969c7cedf9c4925d24244888e6f2e5afb6c551521fe62fcb7e2bf08cb8d396f9ec785ecfcdd5ea27dd9ffed4ea'
-            '549883e3ec059c284b5858ad6b4e9a03af81ef5efcf74802234c2953462b27fa97ac335c27fe854d62bc37f8fcc49613361563cb6f48b0e23a146a3d6a4522cd'
-            '86da27380a3a8d17b5b6705cab3e0e0258a241fc5e9f07d403e3da13346fb9c426b85243125b94e9d0880fbd29c81451753e977b3b42e5cdf63acedb91c61010'
+            'a0ba9fd091e4cc30b2a493e23299c0ce242ee26e8af399ea9aa115face3b90a723fb20f8877042c6b311a9eca20513bb932c1fd1c5db262b1df7b37160c0634e'
+            '905f97cdff3e096552159a229d069d1b1418f4142b2927134110f504bfe0883309b3f29c2aeeb94c528b63e0eec7d0d69b44c3d498211c610811969cc4d07a56'
+            '1c6cdf40009ce6c62b0a35cc7c2a74818b7169d32e18fb3c2bb8761762c15c579f64cb36f9076c4f78d3f88f077f6246ee75ba93f370cc40dae450d6d71117bb'
+            'e068418a1519a19901ceedf25a7a1fc2a9570c3c75384f2632ef0c89becc6606cb4cec759da60a18231cc77dce6f6a448f70f0aa05a2176fdec5fdcbf79832cd'
             'daeec34905469d8e3a10eca2bf71e3875423fc72a92ff62bff74aef8f0af90cfc3282d5c67483379feb33b1c518287b6165b5fe42f9a8bcbc6dd3dbfcde38121'
-            '58bdb0b745c8b52cd65e48af41764d4b5c54f054878e3fe9c83d4580fd94e190693c77a2b76990db79ef68e441c21cbd6f475137823c6e02b38e7c38602b7934'
             '47f265716ebd268e4296aaba1efe5098df00736b69ec7d0413cace6dbb5cb162c1c952f7527a2a41b246ed76e6e112514c5349e8dc52f4609def30257e18d7aa'
             '5081a6a3a3db160ef0a23acd0c0db403cc4b3eb2dfd280b1b7ba2ae907d362e4d6a653d546523c870af07009c62f58eec26e7b8174a3f4fcbaa32808d965ad73'
             '28446f518e88ab934330111a01019cb164bfdd21094c69e96cc16c7931440d069ef997ae141154c97c80fcb727e8c4d940b8bf63554e3f4179652523e285c5b4'
-            'c9d7d9fc00e46fefd9c947fd75e344ba314f97a764f9e2356817323a7d76efc632e0aac0b62a5f393540d8a0de42209878055a6a3581ca926df3982f2657723c'
+            '2c074e0d747eefc912e94d3109d91d51187e439e85d7cc50c292892c3d1ccdc14d32d4d97a57be8322d3a2ac462b3ec1956c39821639eefd5f72144ebacd0dd2'
             '1b3b48246fe70e8ca7390cacacf560696c1d98604a7716ac32df8f3d7fc7cc2ab733ab24e372fffa63016344f2e4ed078f7d597c3c1261f0ca3ff1c87a13dcb9'
-            '800ce2518d4ff38c2d40399a5b104bb4552ba81c67398cc301adcb1f80035c2531a188f42eb20526f5384028fa0e39578b4b36ebfb9a8c0d70fb0283577f6faf'
+            '076a48767614ec97a84ccefa5795e4f36973f64a7728a9f716d5d9ecb6f6907ffcc74f7fab845e9d9aef3ef5d3d4df4e03f6c5a755c7fdd4bc43751003902e71'
+            'e2a205ff346a3d5b077e8ee70ac60f440335738dba59820abea0ec3f87a516c2a47fec2ddc59f7641bab10df9f34f3fb7d73509791fff9b49fa197028afbd532'
             '6d837eed8014bbb09b580867ed94fa03373a6a063ee68a0337109aff20b0e469c985d42b71704d08f4ea30d359cebd0a4a801a5ef6ec02c21331e40e5be1e602'
-            '5c020b81e4cfd1943d40926e3eaa2b4921144c52c1a16a90d89f113a32bab55f44b5a65bdea3a1550391db4cc6b53ff00459a0b794c96163816446e888bfe268'
+            'db592b1e12651ae494f1414079a3f268175776a067c69148387e05f86b6656308c810eb20cc5c1fe7804030abcb8c37ba5ab7480660c224c591f2718569c2cc9'
             'e9a405643af07f8065c53c24b7ffce89d65716a6c009984c6fcd26fecf345a3a38c2ab0e58a0fac0f48ec9ea6a9cf74e06c04631ea4fcaaae4a4e7c51447a0d6'
             'a441e14f4fa25e771d51e2d0e5cb626a8eddc4dfd0e9e91c6585b35cdf4e238bc56c76ad81aa269f25067cb60eeb6f9d431b710d6f40349867cbae73b434b3bd'
             '21a613ef65497ecf66daf31b43e02022c71195b48082ae7628a9d2ba8619819f69a6702c4c87e39e8718074c7ebfd674694a29a962049a16d47f1e5f748c78c3')
@@ -126,7 +133,6 @@ prepare() {
 
     ### Setting version
         echo "Setting version..."
-        sed -e "/^EXTRAVERSION =/s/=.*/=/" -i Makefile
         scripts/setlocalversion --save-scmversion
         echo "-$pkgrel" > localversion.10-pkgrel
         echo "${pkgbase#linux}" > localversion.20-pkgname
@@ -179,13 +185,13 @@ prepare() {
         scripts/config --set-val CONFIG_HZ 1000
 	   fi
 
-  ### Optionally set tickrate to 750HZ
-    if [ -n "$_750_HZ_ticks" ]; then
-      echo "Setting tick rate to 1k..."
-      scripts/config --disable CONFIG_HZ_300
-      scripts/config --enable CONFIG_HZ_750
-      scripts/config --set-val CONFIG_HZ 750
-    fi
+     ### Optionally set tickrate to 2000HZ
+       if [ -n "$_2k_HZ_ticks" ]; then
+         echo "Setting tick rate to 2k..."
+         scripts/config --disable CONFIG_HZ_300
+         scripts/config --enable CONFIG_HZ_2000
+         scripts/config --set-val CONFIG_HZ 2000
+       fi
 
   ### Optionally set tickrate to 500HZ
     if [ -n "$_500_HZ_ticks" ]; then
@@ -213,10 +219,10 @@ prepare() {
       scripts/config --enable CONFIG_FUTEX2
     fi
 
-#      if [ -n "$_winesync" ]; then
-#          echo "Enable winesync support"
-#        scripts/config --module CONFIG_WINESYNC
-#      fi
+      if [ -n "$_winesync" ]; then
+          echo "Enable winesync support"
+        scripts/config --module CONFIG_WINESYNC
+      fi
 
 
   ### Set performance governor
@@ -250,6 +256,23 @@ prepare() {
       scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
       scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
       scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
+
+      ### Enable protect file mappings under memory pressure
+
+      echo "Enabling protect file mappings under memory pressure..."
+      scripts/config --enable CONFIG_UNEVICTABLE_FILE
+      scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
+      scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
+
+      ### Enable multigenerational LRU
+
+      echo "Enabling multigenerational LRU..."
+      scripts/config --enable CONFIG_HAVE_ARCH_PARENT_PMD_YOUNG
+      scripts/config --enable CONFIG_LRU_GEN
+      scripts/config --set-val CONFIG_NR_LRU_GENS 7
+      scripts/config --set-val CONFIG_TIERS_PER_GEN 4
+      scripts/config --enable CONFIG_LRU_GEN_ENABLED
+      scripts/config --disable CONFIG_LRU_GEN_STATS
 
   ### Enabling Cacule-Config ##
       echo "Enable CacULE CPU scheduler..."
@@ -289,6 +312,16 @@ prepare() {
       scripts/config --enable  CONFIG_ANDROID_BINDER_IPC
       scripts/config --enable  CONFIG_ANDROID_BINDERFS
       scripts/config --set-str CONFIG_ANDROID_BINDER_DEVICES binder,hwbinder,vndbinder
+  ### TCP_CONG_BBR2
+      echo "Disabling TCP_CONG_CUBIC..."
+      scripts/config --module CONFIG_TCP_CONG_CUBIC
+      scripts/config --disable CONFIG_DEFAULT_CUBIC
+      echo "Enabling TCP_CONG_BBR2..."
+      scripts/config --enable CONFIG_TCP_CONG_BBR2
+      scripts/config --enable CONFIG_DEFAULT_BBR2
+      scripts/config --set-str CONFIG_DEFAULT_TCP_CONG bbr2
+      echo "Enable CONFIG_VHBA"
+      scripts/config --module CONFIG_VHBA
 
 
   ### Optionally load needed modules for the make localmodconfig
