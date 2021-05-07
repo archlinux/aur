@@ -1,0 +1,18 @@
+pkgbase = vim-yoink-git
+	pkgdesc = Vim plugin that maintains a yank history to cycle between when pasting
+	pkgver = r91.440d939
+	pkgrel = 1
+	url = https://github.com/svermeulen/vim-yoink
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	optdepends = vim-cutlass
+	provides = vim-yoink
+	conflicts = vim-yoink
+	source = vim-yoink-git::git+https://github.com/svermeulen/vim-yoink
+	sha256sums = SKIP
+
+pkgname = vim-yoink-git
+
