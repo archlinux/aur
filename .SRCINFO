@@ -1,20 +1,13 @@
 pkgbase = python-isit
 	pkgdesc = Python library for discovering environment information (OS, Distribution, Python version)
 	pkgver = 0.3.6
-	pkgrel = 1.1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/isit/
 	arch = any
 	license = AGPLv3
-	makedepends = python
-	makedepends = python2
+	depends = python
 	source = https://pypi.io/packages/source/i/isit/isit-0.3.6.tar.gz
 	md5sums = cee801e13e06ce02463a66d5b8076bee
 
 pkgname = python-isit
-	pkgdesc = Python library for discovering environment information (OS, Distribution, Python version) (Python3.x)
-	depends = python
-
-pkgname = python2-isit
-	pkgdesc = Python library for discovering environment information (OS, Distribution, Python version) (Python2.x)
-	depends = python2
 
