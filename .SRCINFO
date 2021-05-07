@@ -1,16 +1,14 @@
 pkgbase = mrbayes-mpi
-	pkgdesc = Bayesian inference and model choice across a wide range of phylogenetic and evolutionary models
-	pkgver = 3.2.5
+	pkgdesc = MrBayes is a program for Bayesian inference and model choice across a wide range of phylogenetic and evolutionary models
+	pkgver = 3.2.7
 	pkgrel = 2
-	url = http://mrbayes.sourceforge.net/index.php
+	url = nbisweden.github.io/mrbayes/
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL3
 	depends = openmpi
-	provides = mrbayes
-	conflicts = mrbayes
-	source = http://downloads.sourceforge.net/mrbayes/mrbayes-3.2.5.tar.gz
-	md5sums = a85a63e5382bc7ea36b1ce1c2138ee6e
+	source = git+https://github.com/NBISweden/MrBayes.git
+	sha256sums = SKIP
 
 pkgname = mrbayes-mpi
 
