@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=t-rec
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Blazingly fast terminal recorder"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('libx11' 'imagemagick')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('cb2dd0fd65f4365193a3bc686c12e37be64668fc168aa6ce1ffd4fc663faf979b05ce4fbd103196fbd3c0bf53a5cf2754a16c061661eb184d69359eeb87f853a')
+sha512sums=('d952125e1690aaf6812b8bb633aa8cf0a7e4fb261f23e7c00da77a9e82ff9340cc42e8fe3ebbdc0917e0feb49238078b4bb5cac7e2c4ff2a24a4e46fbb8f613c')
 
 build() {
   cd "$pkgname-rs-$pkgver"
