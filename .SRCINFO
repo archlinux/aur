@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-libmavconn
 	pkgdesc = ROS - MAVLink communication library.
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://wiki.ros.org/libmavconn
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = ros-noetic-libmavconn
 	depends = ros-noetic-mavlink
 	depends = boost
 	depends = console-bridge
-	source = ros-noetic-libmavconn-1.6.0.tar.gz::https://github.com/mavlink/mavros/archive/1.6.0.tar.gz
-	sha256sums = 8ab5b1cc851b27dbea9abbe67a7da9262afddf057d6316938745772666fa4d3d
+	source = ros-noetic-libmavconn-1.8.0.tar.gz::https://github.com/mavlink/mavros/archive/1.8.0.tar.gz
+	sha256sums = b078a8cdbe5675b93a4e2dc68d71b8f39241942af053722778da1be5d5db3152
 
 pkgname = ros-noetic-libmavconn
 
