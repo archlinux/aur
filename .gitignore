@@ -1,3 +1,9 @@
+# directories created by makepkg
 /pkg
 /src
-/superbeam-*-any.pkg.tar
+
+# generated package archive
+/superbeam-*-any.pkg.*
+
+# downloaded source file
+/5319
