@@ -1,0 +1,34 @@
+pkgbase = cue2tracks-git
+	pkgdesc = Bash script for splitting audio CD image to tracks with cue sheet info
+	pkgver = 0.2.17.afe350c
+	pkgrel = 1
+	url = https://github.com/ar-lex/cue2tracks
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = bash
+	depends = cuetools
+	depends = shntool
+	depends = file
+	depends = glibc
+	depends = flac
+	optdepends = vorbis-tools: For OGG support
+	optdepends = flake: Alternative FLAC encoder
+	optdepends = mac: For APE support
+	optdepends = wavpack: For WavPack support
+	optdepends = optimfrog: For OptimFROG support
+	optdepends = shorten: For shorten support
+	optdepends = lame: For MP3 support
+	optdepends = musepack-tools: For MusePack support
+	optdepends = ttaenc: For True Audio Codec support
+	optdepends = faac: For AAC in M4A support
+	optdepends = faad2: For AAC in M4A support
+	optdepends = tak: For TAK support
+	optdepends = id3v2: For MP3 tagging support
+	provides = cue2tracks
+	conflicts = cue2tracks
+	source = cue2tracks::git+https://github.com/ar-lex/cue2tracks.git
+	md5sums = SKIP
+
+pkgname = cue2tracks-git
+

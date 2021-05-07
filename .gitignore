@@ -1,0 +1,4 @@
+*.pkg.tar.zst
+cue2tracks
+pkg
+src
