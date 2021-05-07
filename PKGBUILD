@@ -1,42 +1,46 @@
-# Maintainer: Sergey Shatunov <me@prok.pw>
-pkgname=matchbox
-pkgver=0.8.0
-pkgrel=1
-pkgdesc="Network boot and provision Container Linux clusters"
-arch=("x86_64" "i686" "arm" "armv6h" "armv7h" "aarch64")
-url="https://github.com/poseidon/matchbox"
-license=('Apache')
-makedepends=('go' 'git')
-_goname=github.com/poseidon/$pkgname
-_commit=b97328b6ecaf9938ffec77a1a7df61b12517e0e0 # 0.8.0
-source=("git+https://$_goname.git#commit=$_commit"
-        "matchbox.sysusers"
-        "matchbox.tmpfiles")
-sha256sums=('SKIP'
-            'b5a40ff91c6b14fcfc6261a64a1221bc2dd20403ab5727fa8c3719fe4e3a36ea'
-            'd3fc3cd0261959e76c692a5511f7fbb0f297c62e9a2664eb0e9735cb17adc455')
+# Maintainer: Andrea Denisse Gómez-Martínez <aur at denisse dot dev>
+# Contributor: Sergey Shatunov <me@prok.pw>
 
-pkgver() {
-  cd $pkgname
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
+pkgname=matchbox
+pkgdesc='Network boot and provision Fedora CoreOS and Flatcar Linux clusters.'
+arch=(aarch64 arm x86_64)
+url='https://matchbox.psdn.io/'
+_url='https://github.com/poseidon/matchbox'
+pkgver=0.9.0
+pkgrel=1
+license=('APACHE')
+makedepends=(go)
+
+source=("${pkgname}-${pkgver}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('3cb92acacacc7974a9565808ea525d2d13791fac99c6b1a8a4e7c09bd076f91b')
+sha512sums=('9177893feb944d81c29d896d1881e9765b01823fe803755ccf07a65dc2ef23a436f50227edb87a9f685f06fac88978e213bf2c18e84690b63d00b86fa676f366')
+b2sums=('cf2cd53340e4c0ccd58ad8e2578a6c062c7762211aef75ec67903b76bd1c42899aeb0668f9fb6630dcdcb1caae4cf4d69382e7557c4cff3c99fb86b8802a8213')
+provides=($pkgname)
+conflicts=($pkgname)
 
 prepare() {
-  mkdir -p $srcdir/src/github.com/poseidon
-  ln -sf $srcdir/$pkgname $srcdir/src/github.com/poseidon
+  mkdir -p "${pkgname}-${pkgver}/build"
 }
 
 build() {
-  cd $pkgname
-  GOPATH="$srcdir" make bin/matchbox
+  cd "${pkgname}-${pkgver}"
+
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+  go build -o build/ ./cmd/...
+}
+
+check() {
+  cd "${pkgname}-${pkgver}"
+  go test ./...
 }
 
 package() {
-  cd $pkgname
-  install -Dm755 bin/$pkgname "$pkgdir/usr/bin/$pkgname"
-  objcopy --remove-section .note.go.buildid "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 contrib/systemd/$pkgname.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-  install -Dm644 $srcdir/matchbox.sysusers "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-  install -Dm644 $srcdir/matchbox.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
-  install -dm755 "$pkgdir/etc/matchbox"
+  cd "${pkgname}-${pkgver}"
+  install -Dm755 "build/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -1,23 +1,19 @@
 pkgbase = matchbox
-	pkgdesc = Network boot and provision Container Linux clusters
-	pkgver = 0.8.0
+	pkgdesc = Network boot and provision Fedora CoreOS and Flatcar Linux clusters.
+	pkgver = 0.9.0
 	pkgrel = 1
-	url = https://github.com/poseidon/matchbox
-	arch = x86_64
-	arch = i686
-	arch = arm
-	arch = armv6h
-	arch = armv7h
+	url = https://matchbox.psdn.io/
 	arch = aarch64
-	license = Apache
+	arch = arm
+	arch = x86_64
+	license = APACHE
 	makedepends = go
-	makedepends = git
-	source = git+https://github.com/poseidon/matchbox.git#commit=b97328b6ecaf9938ffec77a1a7df61b12517e0e0
-	source = matchbox.sysusers
-	source = matchbox.tmpfiles
-	sha256sums = SKIP
-	sha256sums = b5a40ff91c6b14fcfc6261a64a1221bc2dd20403ab5727fa8c3719fe4e3a36ea
-	sha256sums = d3fc3cd0261959e76c692a5511f7fbb0f297c62e9a2664eb0e9735cb17adc455
+	provides = matchbox
+	conflicts = matchbox
+	source = matchbox-0.9.0.tar.gz::https://github.com/poseidon/matchbox/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = 3cb92acacacc7974a9565808ea525d2d13791fac99c6b1a8a4e7c09bd076f91b
+	sha512sums = 9177893feb944d81c29d896d1881e9765b01823fe803755ccf07a65dc2ef23a436f50227edb87a9f685f06fac88978e213bf2c18e84690b63d00b86fa676f366
+	b2sums = cf2cd53340e4c0ccd58ad8e2578a6c062c7762211aef75ec67903b76bd1c42899aeb0668f9fb6630dcdcb1caae4cf4d69382e7557c4cff3c99fb86b8802a8213
 
 pkgname = matchbox
 
