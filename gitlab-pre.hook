@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = gitlab
+
+[Action]
+Description = Stopping gitlab services
+When = PreTransaction
+Exec = /usr/bin/systemctl stop gitlab-gitaly.service gitlab-mailroom.service gitlab-puma.service gitlab-sidekiq.service gitlab-workhorse.service

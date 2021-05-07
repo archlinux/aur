@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = gitlab
+
+[Action]
+Description = Upgrading gitlab database and restarting services
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/gitlab-post.sh

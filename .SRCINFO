@@ -1,0 +1,15 @@
+pkgbase = gitlab-upgrade-hook
+	pkgdesc = Automatically shut down, run db:migrate, then start services after upgrade
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	depends = pacman-contrib
+	source = gitlab-pre.hook
+	source = gitlab-post.hook
+	source = gitlab-post.sh
+	sha256sums = 6996bb8e24142a050642dfe932907d1d4e6af74ecea392706d9407863458470e
+	sha256sums = aa5f9a9f4af3b190e2ca52ffc567c3a35374877e5e8d39a34dcdb753cde22c7e
+	sha256sums = 00aba3b1cf8d58e400e4dff195b1eba0c1379331b1fec9c11fcb3b6b8b58a749
+
+pkgname = gitlab-upgrade-hook
+
