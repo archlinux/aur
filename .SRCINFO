@@ -1,12 +1,15 @@
 pkgbase = svg2sif-git
 	pkgdesc = An Inkscape extension that converts SVG files to Synfig Animation Studio (.sif) files.
-	pkgver = 20130226
+	pkgver = r56.0221e90
 	pkgrel = 1
 	url = https://github.com/nikitakit/svg2sif
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = inkscape
 	depends = python
+	source = git+https://github.com/nikitakit/svg2sif
+	md5sums = SKIP
 
 pkgname = svg2sif-git
 
