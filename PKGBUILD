@@ -1,10 +1,9 @@
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
-
 pkgdesc="IMU complementary filter based on http://www.mdpi.com/1424-8220/15/8/19302"
 url='https://wiki.ros.org/imu_complementary_filter?distro=noetic'
 
 pkgname='ros-noetic-imu-complementary-filter'
-pkgver='1.2.2'
+pkgver='1.2.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -18,9 +17,10 @@ ros_makedepends=(
   ros-noetic-std-msgs
   ros-noetic-tf
 )
+
 makedepends=(
-  cmake
-  ros-build-tools
+  'cmake'
+  'ros-build-tools'
   ${ros_makedepends[@]}
 )
 
@@ -31,13 +31,15 @@ ros_depends=(
   ros-noetic-std-msgs
   ros-noetic-tf
 )
+
 depends=(
   ${ros_depends[@]}
 )
 
 # Tarball version (faster download)
+_dir="imu_tools-${pkgver}/imu_complementary_filter "
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ccny-ros-pkg/imu_tools/archive/${pkgver}.tar.gz")
-sha256sums=('21a0759cba983595bfe5c09e8c85c5bd597ea8cafea7bb5259638b73e3f1c101')
+sha256sums=('8c5eb01a2bcb8855e6fb5bb66795a0d5b1eb6c4586282bf177f3552f72e357af')
 
 build() {
     # Use ROS environment variables
@@ -49,7 +51,7 @@ build() {
     cd ${srcdir}/build
 
     # Build project
-    cmake ${srcdir}/imu_tools-${pkgver}/imu_complementary_filter \
+    cmake ${srcdir}/${_dir} \
             -DCMAKE_BUILD_TYPE=Release \
             -DCATKIN_BUILD_BINARY_PACKAGE=ON \
             -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
