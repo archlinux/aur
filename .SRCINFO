@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-message-filters
 	pkgdesc = ROS - A set of message filters which take in messages and may output those messages at a later time, based on the conditions that filter needs met.
-	pkgver = 1.15.9
+	pkgver = 1.15.11
 	pkgrel = 1
 	url = https://wiki.ros.org/message_filters
 	arch = i686
@@ -20,8 +20,8 @@ pkgbase = ros-noetic-message-filters
 	depends = ros-noetic-rosconsole
 	depends = ros-noetic-roscpp
 	conflicts = ros-noetic-message-filters-git
-	source = ros-noetic-message-filters-1.15.9.tar.gz::https://github.com/ros/ros_comm/archive/1.15.9.tar.gz
-	sha256sums = ee68c16fe6e2f3bf8fef4cf35552a30160cb3b579dfe18d667c0ba05e69ef90d
+	source = ros-noetic-message-filters-1.15.11.tar.gz::https://github.com/ros/ros_comm/archive/1.15.11.tar.gz
+	sha256sums = 7187dd3ab2783e5041c2ef71079cf2b6f9ed06c88c7e3c6efd7684ca5475b5bd
 
 pkgname = ros-noetic-message-filters
 

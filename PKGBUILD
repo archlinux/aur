@@ -4,7 +4,7 @@ pkgdesc="ROS - A set of message filters which take in messages and may output th
 url='https://wiki.ros.org/message_filters'
 
 pkgname='ros-noetic-message-filters'
-pkgver='1.15.9'
+pkgver='1.15.11'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -39,7 +39,7 @@ conflicts=(
 
 _dir="ros_comm-${pkgver}/utilities/message_filters"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
-sha256sums=('ee68c16fe6e2f3bf8fef4cf35552a30160cb3b579dfe18d667c0ba05e69ef90d')
+sha256sums=('7187dd3ab2783e5041c2ef71079cf2b6f9ed06c88c7e3c6efd7684ca5475b5bd')
 
 build() {
 	# Use ROS environment variables.
