@@ -3,7 +3,7 @@
 pkgname=nodejs-npm-upgrade
 _pkgname=npm-upgrade
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI utility to update outdated NPM dependencies with changelogs inspection'
 arch=('any')
 url='https://github.com/th0r/npm-upgrade'
