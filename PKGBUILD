@@ -2,14 +2,14 @@
 
 pkgname=stochas
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='randomization enabled step sequencer'
 arch=('x86_64')
 url="https://surge-synth-team.org/stochas"
 license=('GPL3')
 groups=('pro-audio' 'vst-plugins')
 depends=('alsa-lib' 'freetype2' 'harfbuzz' 'gcc-libs' 'glibc' 'graphite')
-makedepends=('jack')
+makedepends=('jack' 'cmake')
 replaces=('stochas<1.3.4')
 _juceversion=6.0.5
 #source=("${pkgname}"::"git+https://github.com/surge-synthesizer/stochas.git")
