@@ -4,10 +4,10 @@ pkgdesc="ROS - A Python GUI plugin for introspecting available ROS message types
 url='https://wiki.ros.org/rqt_srv'
 
 pkgname='ros-noetic-rqt-srv'
-pkgver='0.4.8'
+pkgver='0.4.9'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -34,7 +34,7 @@ depends=(
 
 _dir="rqt_srv-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_srv/archive/${pkgver}.tar.gz")
-sha256sums=('3e15e172af2b2d3910090b37d1bbbf87d1e4c248ba4d7e9e2071d73761e52ed9')
+sha256sums=('84ea8e4b8292f5d2236f761dd9ae485b8f0e82fc81c08904d7f53955766f1600')
 
 build() {
 	# Use ROS environment variables.
