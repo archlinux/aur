@@ -23,7 +23,8 @@ _deadline_disable=y
 ### Disable Kyber I/O scheduler
 _kyber_disable=y
 ### Running with a 1000 HZ, 750HZ or 500HZ tick rate
-_1k_HZ_ticks=y
+_2k_HZ_ticks=y
+_1k_HZ_ticks=
 _500_HZ_ticks=
 ### Tweak kernel options prior to a build via nconfig
 _makenconfig=
@@ -63,7 +64,7 @@ pkgver=${_major}.${_minor}
 _stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux XanMod CacULE RT'
 versiontag=5.11.12-rt11-xanmod1
 arch=('x86_64')
@@ -75,12 +76,10 @@ makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
 _patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.11"
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_major.tar.xz"
         "https://github.com/xanmod/linux/releases/download/$versiontag/patch-$versiontag.xz"
-        "${_patchsource}/cacule-patches/cacule-5.11-rt.patch"
-        "${_patchsource}/cacule-patches/0002-cacule-Change-default-preemption-latency-to-2ms-for-.patch")
-sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'
-            '0872bff9cdaf3924c7e6ad7a47cd822fd5239408a315286ea62cc10f6153a02a'
-            'b43d339574ec25e2f97483fe65c3bad30126057379089d7fee1ff0678f7d627e'
-            'cf00507d6881b737a9814d152e27b1db02f45a4d8a8ba3f4c9f542f0964ac697')
+        "${_patchsource}/cacule-patches/cacule-5.11-rt.patch")
+sha512sums=('a567ec133018bb5ec00c60281479b466c26e02137a93a9c690e83997947df02b6fd94e76e8df748f6d70ceb58a19bacc3b1467de10b7a1fad2763db32b3f1330'
+            'c2aae46711064ac47b38bdd499f9957fd4b02d0e8866ae06b19012fed0ae1237db8613f935150982a5583af2e3a80102d2844ea37d9a6a6b96dacccbb61129c5'
+            '8a05218c5e98e0aa08a8e26a75806ac80bbb6dc46819fab24a5139d5efed2c27e4aa044270128fb7ad0f870cfa668533da08a56db5912a249c3c24e00da20ec6')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
@@ -135,6 +134,14 @@ prepare() {
 
   cpu_arch
 
+  ### Optionally set tickrate to 1000
+if [ -n "$_2k_HZ_ticks" ]; then
+  echo "Setting tick rate to 1k..."
+              scripts/config --disable CONFIG_HZ_300
+              scripts/config --enable CONFIG_HZ_2000
+              scripts/config --set-val CONFIG_HZ 2000
+fi
+
     ### Optionally set tickrate to 1000
 	if [ -n "$_1k_HZ_ticks" ]; then
 		echo "Setting tick rate to 1k..."
@@ -142,14 +149,6 @@ prepare() {
                 scripts/config --enable CONFIG_HZ_1000
                 scripts/config --set-val CONFIG_HZ 1000
 	fi
-
-  ### Optionally set tickrate to 750HZ
-  if [ -n "$_750_HZ_ticks" ]; then
-    echo "Setting tick rate to 1k..."
-                scripts/config --disable CONFIG_HZ_300
-                scripts/config --enable CONFIG_HZ_750
-                scripts/config --set-val CONFIG_HZ 750
-  fi
 
   ### Optionally set tickrate to 500HZ
   if [ -n "$_500_HZ_ticks" ]; then
