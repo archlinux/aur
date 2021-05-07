@@ -5,6 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=nikwi-deluxe-bin
+_pkgname='Nikwi Deluxe'
 pkgver=1
 pkgrel=1
 pkgdesc="platform game where the goal is to collect candies"
