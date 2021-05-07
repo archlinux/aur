@@ -1,6 +1,6 @@
 pkgbase = fsleyes
 	pkgdesc = FSLeyes is the FSL image viewer
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes
 	arch = any
@@ -34,9 +34,9 @@ pkgbase = fsleyes
 	optdepends = python-wxnatpy: Enable loading overlay from XNAT
 	optdepends = python-indexed-gzip: Fast random access of gzipped image files
 	optdepends = python-rtree
-	source = https://git.fmrib.ox.ac.uk/fsl/fsleyes/fsleyes/-/archive/1.0.4/fsleyes-1.0.4.tar.gz
+	source = https://git.fmrib.ox.ac.uk/fsl/fsleyes/fsleyes/-/archive/1.0.5/fsleyes-1.0.5.tar.gz
 	source = fsleyes.desktop
-	sha256sums = b797914d9855f34034bf7eae1e9f154c90a0d08034a707018244b9a78689899f
+	sha256sums = 31a0d31941968c5f71315a4d9491fa0f17ae83863a095aa355c33aecf469c156
 	sha256sums = 6e91e88eb74602f8da7cda6575245dbaaf4577022bffe15c0efedb33106139fb
 
 pkgname = fsleyes
