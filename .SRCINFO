@@ -1,0 +1,14 @@
+pkgbase = vim-quickui
+	pkgdesc = Vim plugin that displays a user-configurable menu bar
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/skywind3000/vim-quickui
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	depends = vim-plugin-runtime
+	source = vim-quickui-1.3.2.tar.gz::https://github.com/skywind3000/vim-quickui/archive/refs/tags/1.3.2.tar.gz
+	sha256sums = 247873362e7e2195fede86be7837165124e75074a1b8f4651532119f35a1c3e9
+
+pkgname = vim-quickui
+
