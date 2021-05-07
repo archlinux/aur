@@ -1,7 +1,7 @@
 # Maintainer: HMH <henry@freedesk.net>
 
 pkgname=weylus
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Use your tablet as graphic tablet/touch screen on your computer."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/H-M-H/Weylus"
 license=('AGPL3')
 conflicts=('weylus-bin')
 source=("$pkgname-$pkgver.zip::https://github.com/H-M-H/Weylus/archive/v$pkgver.zip")
-sha256sums=('8f015e86233549d735457b65c568a71194fecdef7348e916a7b37b5fa919ce17')
+sha256sums=('a12f83f82f671d771a40e0dec1cbdf6fc93a4456e9d7b3125c67fdf78f2730a1')
 
 makedepends=(rust typescript gcc libx11 pkg-config git make cmake)
 
