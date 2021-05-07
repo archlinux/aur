@@ -1,14 +1,15 @@
 pkgbase = libperseus-sdr-git
 	pkgdesc = Perseus Software Defined Radio Control Library for Linux
 	pkgver = r94.c2c95da
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Microtelecom/libperseus-sdr
 	arch = x86_64
 	license = LGPL
 	makedepends = git
-	makedepends = gvim
+	makedepends = vim
 	depends = libusb
 	provides = libperseus-sdr
+	provides = libperseus-sdr.so
 	conflicts = libperseus-sdr
 	source = git+https://github.com/Microtelecom/libperseus-sdr.git
 	source = 0001-makefile-install-udev-rules-to-correct-location.patch

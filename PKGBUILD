@@ -2,13 +2,13 @@
 _pkgname=libperseus-sdr
 pkgname=$_pkgname-git
 pkgver=r94.c2c95da
-pkgrel=1
+pkgrel=2
 pkgdesc="Perseus Software Defined Radio Control Library for Linux"
 arch=(x86_64)
 url="https://github.com/Microtelecom/libperseus-sdr"
 license=('LGPL')
 depends=('libusb')
-makedepends=('git' 'gvim')
+makedepends=('git' 'vim')
 provides=("${pkgname%-git}" 'libperseus-sdr.so')
 conflicts=("${pkgname%-git}")
 source=("git+$url.git"
