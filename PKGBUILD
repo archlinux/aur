@@ -2,17 +2,17 @@
 # Contributer: Paul <paul@mrarm.io>
 
 pkgname=mcpelauncher-linux-git
-pkgver=v0.1.beta.2.r128.gd2a20a1
+pkgver=v0.1.beta.2.r135.g8cae128
 pkgrel=1
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-manifest"
 license=('GPL3' 'custom')
 makedepends_x86_64=('git' 'cmake' 'clang')
-depends_x86_64=('curl' 'libx11' 'zlib' 'libpng' 'libevdev' 'systemd' 'libxi' 'libegl')
+depends_x86_64=('curl' 'libx11' 'zlib' 'libpng' 'libevdev' 'systemd' 'libxi' 'libegl' 'qt5-webengine')
 optdepends=('mcpelauncher-msa: Xbox Live support')
-provides=('mcpelauncher-client' 'mcpelauncher-server')
-conflicts=('mcpelauncher-client' 'mcpelauncher-server')
+provides=('mcpelauncher-client')
+conflicts=('mcpelauncher-client')
 
 source=(
   'git+https://github.com/minecraft-linux/mcpelauncher-manifest.git#branch=ng'
@@ -91,64 +91,64 @@ md5sums=(
 )
 
 pkgver() {
-  cd mcpelauncher-manifest
+  cd mcpelauncher-manifest || exit 1
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd mcpelauncher-manifest
+  cd mcpelauncher-manifest || exit 1
   git submodule init
-  git config submodule.android-support-headers.url $srcdir/android-support-headers
-  git config submodule.arg-parser.url $srcdir/arg-parser
-  git config submodule.baron.url $srcdir/baron
-  git config submodule.base64.url $srcdir/base64
-  git config submodule.cll-telemetry.url $srcdir/cll-telemetry
-  git config submodule.daemon-utils.url $srcdir/daemon-utils
-  git config submodule.eglut.url $srcdir/eglut
-  git config submodule.epoll-shim.url $srcdir/epoll-shim
-  git config submodule.fake-jni.url $srcdir/fake-jni
-  git config submodule.file-picker.url $srcdir/file-picker
-  git config submodule.file-util.url $srcdir/file-util
-  git config submodule.game-window.url $srcdir/game-window
-  git config submodule.libc-shim.url $srcdir/libc-shim
-  git config submodule.libjnivm.url $srcdir/libjnivm
-  git config submodule.linux-gamepad.url $srcdir/linux-gamepad
-  git config submodule.logger.url $srcdir/logger
-  git config submodule.mcpelauncher-client.url $srcdir/mcpelauncher-client
-  git config submodule.mcpelauncher-common.url $srcdir/mcpelauncher-common
-  git config submodule.mcpelauncher-core.url $srcdir/mcpelauncher-core
-  git config submodule.mcpelauncher-errorwindow.url $srcdir/mcpelauncher-errorwindow
-  git config submodule.mcpelauncher-linker.url $srcdir/mcpelauncher-linker
-  git config submodule.mcpelauncher-linux-bin.url $srcdir/mcpelauncher-linux-bin
-  git config submodule.mcpelauncher-mac-bin.url $srcdir/mcpelauncher-mac-bin
-  git config submodule.mcpelauncher-webview.url $srcdir/mcpelauncher-webview
-  git config submodule.minecraft-imported-symbols.url $srcdir/minecraft-imported-symbols
-  git config submodule.msa-daemon-client.url $srcdir/msa-daemon-client
-  git config submodule.osx-elf-header.url $srcdir/osx-elf-header
-  git config submodule.properties-parser.url $srcdir/properties-parser
-  git config submodule.simple-ipc.url $srcdir/simple-ipc
+  git config submodule.android-support-headers.url "$srcdir/android-support-headers"
+  git config submodule.arg-parser.url "$srcdir/arg-parser"
+  git config submodule.baron.url "$srcdir/baron"
+  git config submodule.base64.url "$srcdir/base64"
+  git config submodule.cll-telemetry.url "$srcdir/cll-telemetry"
+  git config submodule.daemon-utils.url "$srcdir/daemon-utils"
+  git config submodule.eglut.url "$srcdir/eglut"
+  git config submodule.epoll-shim.url "$srcdir/epoll-shim"
+  git config submodule.fake-jni.url "$srcdir/fake-jni"
+  git config submodule.file-picker.url "$srcdir/file-picker"
+  git config submodule.file-util.url "$srcdir/file-util"
+  git config submodule.game-window.url "$srcdir/game-window"
+  git config submodule.libc-shim.url "$srcdir/libc-shim"
+  git config submodule.libjnivm.url "$srcdir/libjnivm"
+  git config submodule.linux-gamepad.url "$srcdir/linux-gamepad"
+  git config submodule.logger.url "$srcdir/logger"
+  git config submodule.mcpelauncher-client.url "$srcdir/mcpelauncher-client"
+  git config submodule.mcpelauncher-common.url "$srcdir/mcpelauncher-common"
+  git config submodule.mcpelauncher-core.url "$srcdir/mcpelauncher-core"
+  git config submodule.mcpelauncher-errorwindow.url "$srcdir/mcpelauncher-errorwindow"
+  git config submodule.mcpelauncher-linker.url "$srcdir/mcpelauncher-linker"
+  git config submodule.mcpelauncher-linux-bin.url "$srcdir/mcpelauncher-linux-bin"
+  git config submodule.mcpelauncher-mac-bin.url "$srcdir/mcpelauncher-mac-bin"
+  git config submodule.mcpelauncher-webview.url "$srcdir/mcpelauncher-webview"
+  git config submodule.minecraft-imported-symbols.url "$srcdir/minecraft-imported-symbols"
+  git config submodule.msa-daemon-client.url "$srcdir/msa-daemon-client"
+  git config submodule.osx-elf-header.url "$srcdir/osx-elf-header"
+  git config submodule.properties-parser.url "$srcdir/properties-parser"
+  git config submodule.simple-ipc.url "$srcdir/simple-ipc"
   git submodule update --recursive
-  cd fake-jni
-  git config submodule.CX.url $srcdir/CX
-  git config submodule.libffi.url $srcdir/libffi
-  git config submodule.libunwind.url $srcdir/libunwind
+  cd fake-jni || exit 1
+  git config submodule.CX.url "$srcdir/CX"
+  git config submodule.libffi.url "$srcdir/libffi"
+  git config submodule.libunwind.url "$srcdir/libunwind"
   git submodule update --recursive
-  cd ../mcpelauncher-linker
-  git config submodule.bionic.url $srcdir/android_bionic
-  git config submodule.core.url $srcdir/core
+  cd ../mcpelauncher-linker || exit 1
+  git config submodule.bionic.url "$srcdir/android_bionic"
+  git config submodule.core.url "$srcdir/core"
   git submodule update --recursive
 }
 
 build() {
-  cd mcpelauncher-manifest
+  cd mcpelauncher-manifest || exit 1
   mkdir -p build
-  cd build
+  cd build || exit
   CC=clang CXX=clang++ cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo -DENABLE_DEV_PATHS=OFF -Wno-dev ..
   CC=clang CXX=clang++ make
 }
 
 package() {
-  cd mcpelauncher-manifest/build
+  cd mcpelauncher-manifest/build || exit 1
   make DESTDIR="$pkgdir" install
 
   install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

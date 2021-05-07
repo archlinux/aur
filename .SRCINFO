@@ -1,6 +1,6 @@
 pkgbase = mcpelauncher-linux-git
 	pkgdesc = Minecraft: Pocket Edition launcher for Linux
-	pkgver = v0.1.beta.2.r128.gd2a20a1
+	pkgver = v0.1.beta.2.r135.g8cae128
 	pkgrel = 1
 	url = https://github.com/minecraft-linux/mcpelauncher-manifest
 	arch = x86_64
@@ -8,9 +8,7 @@ pkgbase = mcpelauncher-linux-git
 	license = custom
 	optdepends = mcpelauncher-msa: Xbox Live support
 	provides = mcpelauncher-client
-	provides = mcpelauncher-server
 	conflicts = mcpelauncher-client
-	conflicts = mcpelauncher-server
 	source = git+https://github.com/minecraft-linux/mcpelauncher-manifest.git#branch=ng
 	source = git+https://github.com/minecraft-linux/android-support-headers
 	source = git+https://github.com/minecraft-linux/arg-parser
@@ -89,6 +87,7 @@ pkgbase = mcpelauncher-linux-git
 	depends_x86_64 = systemd
 	depends_x86_64 = libxi
 	depends_x86_64 = libegl
+	depends_x86_64 = qt5-webengine
 	makedepends_x86_64 = git
 	makedepends_x86_64 = cmake
 	makedepends_x86_64 = clang
