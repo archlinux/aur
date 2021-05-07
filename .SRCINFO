@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-octomap
 	pkgdesc = ROS - The OctoMap library implements a 3D occupancy grid mapping approach, providing data structures and mapping algorithms in C++.
-	pkgver = 1.9.0
-	pkgrel = 6
+	pkgver = 1.9.7
+	pkgrel = 1
 	url = https://octomaphub.io
 	arch = any
 	license = BSD
@@ -9,8 +9,8 @@ pkgbase = ros-melodic-octomap
 	makedepends = ros-build-tools
 	depends = ros-melodic-catkin
 	options = staticlibs
-	source = ros-melodic-octomap-1.9.0.tar.gz::https://github.com/OctoMap/octomap/archive/v1.9.0.tar.gz
-	sha256sums = 5f81c9a8cbc9526b2e725251cd3a829e5222a28201b394314002146d8b9214dd
+	source = ros-melodic-octomap-1.9.7.tar.gz::https://github.com/OctoMap/octomap/archive/v1.9.7.tar.gz
+	sha256sums = 3e9ac020686ceb4e17e161bffc5a0dafd9cccab33adeb9adee59a61c418ea1c1
 
 pkgname = ros-melodic-octomap
 
