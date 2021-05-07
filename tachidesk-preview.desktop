@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Tachidesk Preview
+Comment=Manga Reader
+Exec=/usr/bin/java -jar /usr/share/java/tachidesk-preview/tachidesk-preview.jar "\\$@"
+Icon=tachidesk-preview
+Terminal=false
+Categories=Network;
