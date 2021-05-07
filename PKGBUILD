@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS Master implementation."
 url='https://wiki.ros.org/rosmaster'
 
 pkgname='ros-noetic-rosmaster'
-pkgver='1.15.9'
+pkgver='1.15.11'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -30,7 +30,7 @@ depends=(
 
 _dir="ros_comm-${pkgver}/tools/rosmaster"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
-sha256sums=('ee68c16fe6e2f3bf8fef4cf35552a30160cb3b579dfe18d667c0ba05e69ef90d')
+sha256sums=('7187dd3ab2783e5041c2ef71079cf2b6f9ed06c88c7e3c6efd7684ca5475b5bd')
 
 build() {
 	# Use ROS environment variables.
