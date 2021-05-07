@@ -1,0 +1,16 @@
+pkgbase = mrbayes-mpi-desktop
+	pkgdesc = Desktop File For MrBayes MPI
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://nbisweden.github.io/MrBayes/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = mrbayes-mpi
+	source = mrbayes.desktop
+	source = mrbayes.gif
+	sha256sums = eafa76be4d993fcc4a33212d042f55637caefd37158232a16ae50332d2465d7c
+	sha256sums = fea0042f09cad5c56236c47ce6fa61268bc7fbd699f1ea17678aecc22438db94
+
+pkgname = mrbayes-mpi-desktop
+
