@@ -2,7 +2,7 @@
 
 pkgbase=scrap_engine-git
 pkgname=('python-scrap_engine-git' 'scrape-git' 'lil_t-git')
-pkgver=174.2a76b58
+pkgver=223.65d48ac
 pkgrel=1
 arch=(any)
 url="https://github.com/lxgr-linux/scrap_engine"
@@ -32,7 +32,7 @@ package_scrape-git() {
   depends=('python' 'python-scrap_engine-git')
   pkgdesc="Snake like game written in python3"
   cd "${srcdir}/$pkgbase"
-  install -Dm0755 -t "$pkgdir/usr/bin" "scrape.py"
+  install -Dm0755 -t "$pkgdir/usr/bin" "examples/scrape.py"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/scrape/LICENSE"
 }
 
@@ -41,6 +41,6 @@ package_lil_t-git() {
   depends=('python' 'python-scrap_engine-git')
   pkgdesc="Experimantal jump and run game written in python3"
   cd "${srcdir}/$pkgbase"
-  install -Dm0755 -t "$pkgdir/usr/bin" "lil_t_endless.py"
+  install -Dm0755 -t "$pkgdir/usr/bin" "examples/lil_t_endless.py"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/lil_t/LICENSE"
 }
