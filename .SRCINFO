@@ -4,6 +4,7 @@ pkgbase = globalprotect-openconnect
 	pkgrel = 1
 	url = https://github.com/yuezk/GlobalProtect-openconnect
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	depends = openconnect>=8.0.0
 	depends = qt5-base
