@@ -1,2 +1,0 @@
-g libvirt - -
-g tss - -

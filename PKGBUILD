@@ -4,152 +4,201 @@
 
 _pkgname=libvirt
 pkgname=libvirt-xen
-pkgver=5.3.0
+pkgver=7.1.0
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
 url="https://libvirt.org/"
-license=('LGPL')
-makedepends=('lvm2' 'linux-api-headers' 'dnsmasq' 'lxc' 'libiscsi' 'open-iscsi'
-             'perl-xml-xpath' 'libxslt' 'qemu' 'parted' 'python')
-depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'avahi'
-         'yajl' 'libpciaccess' 'udev' 'dbus' 'libxau' 'libxdmcp' 'libpcap'
-         'libcap-ng' 'curl' 'libsasl' 'libgcrypt' 'libgpg-error' 'openssl'
-         'libxcb' 'gcc-libs' 'iproute2' 'libnl' 'libx11' 'numactl' 'gettext'
-         'libssh2' 'netcf' 'fuse2' 'glusterfs' 'ceph-libs' 'libiscsi' 'xen')
-optdepends=('ebtables: required for default NAT networking'
-            'dnsmasq: required for default NAT/DHCP for guests'
-            'bridge-utils: for bridged networking'
-            'netcat: for remote management over ssh'
-            'qemu'
-            'radvd'
-            'dmidecode'
-            'parted'
-            'ceph: for ceph support'
-            'qemu-block-gluster: for qemu glusterfs support')
+license=('LGPL' 'GPL3') #libvirt_parthelper links to libparted which is GPL3 only
+makedepends=(
+	'bash-completion'
+	'ceph-libs'
+	'dnsmasq'
+	'glusterfs'
+	'iproute2'
+	'libiscsi'
+	'libxslt'
+	'lvm2'
+	'meson'
+	'open-iscsi'
+	'python-docutils'
+	'qemu-headless'
+	'rpcsvc-proto'
+)
+depends=(
+	'fuse2'
+	'gnutls'
+	'libpciaccess'
+	'libssh'
+	'libxml2'
+	'numactl'
+	'parted'
+	'polkit'
+	'yajl'
+	'xen'
+)
+optdepends=(
+	'libvirt-storage-gluster: Gluster storage backend'
+	'libvirt-storage-iscsi-direct: iSCSI-direct storage backend'
+	'libvirt-storage-rbd: RBD storage backend'
+	'gettext: required for libvirt-guests.service'
+	'openbsd-netcat: for remote management over ssh'
+	'dmidecode: DMI system info support'
+	'dnsmasq: required for default NAT/DHCP for guests'
+	'radvd: IPv6 RAD support'
+	'ebtables: required for default NAT networking'
+	'qemu: QEMU/KVM support'
+	'lvm2: Logical Volume Manager support'
+	'open-iscsi: iSCSI support via iscsiadm'
+)
+
 conflicts=('libvirt')
 provides=('libvirt')
-backup=('etc/conf.d/libvirt-guests'
-  'etc/conf.d/libvirtd'
-  'etc/libvirt/libvirt.conf'
-  'etc/libvirt/virtlogd.conf'
-  'etc/libvirt/libvirtd.conf'
-  'etc/libvirt/lxc.conf'
-  'etc/libvirt/nwfilter/allow-arp.xml'
-  'etc/libvirt/nwfilter/allow-dhcp-server.xml'
-  'etc/libvirt/nwfilter/allow-dhcp.xml'
-  'etc/libvirt/nwfilter/allow-incoming-ipv4.xml'
-  'etc/libvirt/nwfilter/allow-ipv4.xml'
-  'etc/libvirt/nwfilter/clean-traffic.xml'
-  'etc/libvirt/nwfilter/no-arp-ip-spoofing.xml'
-  'etc/libvirt/nwfilter/no-arp-mac-spoofing.xml'
-  'etc/libvirt/nwfilter/no-arp-spoofing.xml'
-  'etc/libvirt/nwfilter/no-ip-multicast.xml'
-  'etc/libvirt/nwfilter/no-ip-spoofing.xml'
-  'etc/libvirt/nwfilter/no-mac-broadcast.xml'
-  'etc/libvirt/nwfilter/no-mac-spoofing.xml'
-  'etc/libvirt/nwfilter/no-other-l2-traffic.xml'
-  'etc/libvirt/nwfilter/no-other-rarp-traffic.xml'
-  'etc/libvirt/nwfilter/qemu-announce-self-rarp.xml'
-  'etc/libvirt/nwfilter/qemu-announce-self.xml'
-  'etc/libvirt/qemu-lockd.conf'
-  'etc/libvirt/qemu.conf'
-  'etc/libvirt/qemu/networks/default.xml'
-  'etc/libvirt/virt-login-shell.conf'
-  'etc/libvirt/virtlockd.conf'
-  'etc/logrotate.d/libvirtd'
-  'etc/logrotate.d/libvirtd.lxc'
-  'etc/logrotate.d/libvirtd.qemu'
-  'etc/logrotate.d/libvirtd.uml'
-  'etc/sasl2/libvirt.conf')
+backup=(
+	'etc/conf.d/libvirtd'
+	'etc/conf.d/libvirt-guests'
+	'etc/conf.d/virtinterfaced'
+	'etc/conf.d/virtlockd'
+	'etc/conf.d/virtlogd'
+	'etc/conf.d/virtlxcd'
+	'etc/conf.d/virtnetworkd'
+	'etc/conf.d/virtnodedevd'
+	'etc/conf.d/virtnwfilterd'
+	'etc/conf.d/virtproxyd'
+	'etc/conf.d/virtqemud'
+	'etc/conf.d/virtsecretd'
+	'etc/conf.d/virtstoraged'
+	'etc/conf.d/virtvboxd'
+	'etc/libvirt/libvirt-admin.conf'
+	'etc/libvirt/libvirt.conf'
+	'etc/libvirt/libvirtd.conf'
+	'etc/libvirt/lxc.conf'
+	'etc/libvirt/nwfilter/allow-arp.xml'
+	'etc/libvirt/nwfilter/allow-dhcp-server.xml'
+	'etc/libvirt/nwfilter/allow-dhcpv6-server.xml'
+	'etc/libvirt/nwfilter/allow-dhcpv6.xml'
+	'etc/libvirt/nwfilter/allow-dhcp.xml'
+	'etc/libvirt/nwfilter/allow-incoming-ipv4.xml'
+	'etc/libvirt/nwfilter/allow-incoming-ipv6.xml'
+	'etc/libvirt/nwfilter/allow-ipv4.xml'
+	'etc/libvirt/nwfilter/allow-ipv6.xml'
+	'etc/libvirt/nwfilter/clean-traffic-gateway.xml'
+	'etc/libvirt/nwfilter/clean-traffic.xml'
+	'etc/libvirt/nwfilter/no-arp-ip-spoofing.xml'
+	'etc/libvirt/nwfilter/no-arp-mac-spoofing.xml'
+	'etc/libvirt/nwfilter/no-arp-spoofing.xml'
+	'etc/libvirt/nwfilter/no-ip-multicast.xml'
+	'etc/libvirt/nwfilter/no-ip-spoofing.xml'
+	'etc/libvirt/nwfilter/no-ipv6-multicast.xml'
+	'etc/libvirt/nwfilter/no-ipv6-spoofing.xml'
+	'etc/libvirt/nwfilter/no-mac-broadcast.xml'
+	'etc/libvirt/nwfilter/no-mac-spoofing.xml'
+	'etc/libvirt/nwfilter/no-other-l2-traffic.xml'
+	'etc/libvirt/nwfilter/no-other-rarp-traffic.xml'
+	'etc/libvirt/nwfilter/qemu-announce-self-rarp.xml'
+	'etc/libvirt/nwfilter/qemu-announce-self.xml'
+	'etc/libvirt/qemu.conf'
+	'etc/libvirt/qemu-lockd.conf'
+	'etc/libvirt/qemu/networks/default.xml'
+	'etc/libvirt/virtinterfaced.conf'
+	'etc/libvirt/virtlockd.conf'
+	'etc/libvirt/virtlogd.conf'
+	'etc/libvirt/virt-login-shell.conf'
+	'etc/libvirt/virtlxcd.conf'
+	'etc/libvirt/virtnetworkd.conf'
+	'etc/libvirt/virtnodedevd.conf'
+	'etc/libvirt/virtnwfilterd.conf'
+	'etc/libvirt/virtproxyd.conf'
+	'etc/libvirt/virtqemud.conf'
+	'etc/libvirt/virtsecretd.conf'
+	'etc/libvirt/virtstoraged.conf'
+	'etc/libvirt/virtvboxd.conf'
+	'etc/logrotate.d/libvirtd'
+	'etc/logrotate.d/libvirtd.lxc'
+	'etc/logrotate.d/libvirtd.qemu'
+	'etc/sasl2/libvirt.conf'
+)
 install="libvirt.install"
 
 options=('emptydirs')
-source=("https://libvirt.org/sources/${_pkgname}-${pkgver}.tar.xz"
-        'libvirtd.conf.d'
-        'libvirtd-guests.conf.d'
-        'libvirt.sysusers.d')
-sha512sums=('de3888d448463ff1d981e8dcf1aaed39c8215c368d133ed03b8cc5d7e05a77d385287d388d9db109df21df9bf348a14e7c654ca509d41addaadaa199d16b162e'
-            'fc0e16e045a2c84d168d42c97d9e14ca32ba0d86025135967f4367cf3fa663882eefb6923ebf04676ae763f4f459e5156d7221b36b47c835f9e531c6b6e0cd9d'
-            'ef221bae994ad0a15ab5186b7469132896156d82bfdc3ef3456447d5cf1af347401ef33e8665d5b2f76451f5457aee7ea01064d7b9223d6691c90c4456763258'
-            '519a9f245bed077137a1b01dec07a178885ac2527b47a1bd883bbb908bf9b4fa0c039525600e09f7db636f8849870fe2ce8ffe5b75532ff9d3fa1a91115875f8')
-
+source=("https://libvirt.org/sources/${_pkgname}-$pkgver.tar.xz"{,.asc}
+	"find_programs.ini")
+sha512sums=('475b212e920bf8587db4a551126d9eb417d4e18a72550f94feb1aec94821fbac8c84d67ffd59cfe4f8289b6b10ae5f6b579ee170c0d72cb0493ec7ec52183cd6'
+            'SKIP'
+            '41d593880a7d53e3253b491164c3055cd13ea2295457db07547ced9e11effef6f1e2c63fa6bb859b143ab3f5ce205f5b7a76170a3d007211ea16c921a4e753e2')
+validpgpkeys=('453B65310595562855471199CA68BE8010084C9C') # Jiří Denemark <jdenemar@redhat.com>
 prepare() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+	cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  #local src
-  #for src in "${source[@]}"; do
-  #  src="${src%%::*}"
-  #  src="${src##*/}"
-  #  [[ $src = *.patch ]] || continue
-  #  msg2 "Applying patch $src..."
-  #  patch -Np1 < "../$src"
-  #done
-
-  autoreconf -vi
-
-  sed -i 's|/sysconfig/|/conf.d/|g' \
-    src/remote/libvirtd.service.in \
-    tools/{libvirt-guests.service,libvirt-guests.sh,virt-pki-validate}.in \
-    src/locking/virtlockd.service.in
-  sed -i 's|@sbindir@|/usr/bin|g' src/locking/virtlockd.service.in
-  sed -i 's|/usr/libexec/qemu-bridge-helper|/usr/lib/qemu/qemu-bridge-helper|g' \
-    src/qemu/qemu{.conf,_conf.c} \
-    src/qemu/test_libvirtd_qemu.aug.in
-
-  sed -i 's|libsystemd-daemon|libsystemd|g' configure
-  sed -i 's/notify/simple/' src/remote/libvirtd.service.in
+	sed -i 's|/sysconfig/|/conf.d/|g' \
+		src/remote/libvirtd.service.in \
+		tools/{libvirt-guests.service,libvirt-guests.sh,virt-pki-validate}.in \
+		src/locking/virtlockd.service.in \
+		src/logging/virtlogd.service.in
+	sed -i 's|/usr/libexec/qemu-bridge-helper|/usr/lib/qemu/qemu-bridge-helper|g' \
+		src/qemu/qemu.conf \
+		src/qemu/test_libvirtd_qemu.aug.in
+	sed -i 's/notify/simple/' src/remote/libvirtd.service.in
+	sed -Ei '/^\s+runutf8,$/,/^\s+\]/{/^\s+runutf8,$/d;s/^(\s+\])/\1 + runutf8/}' tests/meson.build
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+	cd "${_pkgname}-$pkgver"
+	export LDFLAGS=-lX11
+	arch-meson build \
+		--libexecdir=lib/libvirt \
+		--native-file "$srcdir"/find_programs.ini \
+		-Drunstatedir=/run \
+		-Dqemu_user=nobody \
+		-Dqemu_group=kvm \
+		-Dnetcf=enabled \
+		-Dopenwsman=disabled \
+		-Dapparmor=disabled \
+		-Dselinux=disabled \
+		-Dwireshark_dissector=disabled \
+		-Ddriver_bhyve=disabled \
+		-Ddriver_hyperv=disabled \
+		-Ddriver_openvz=disabled \
+		-Ddriver_vbox=disabled \
+		-Ddriver_vmware=disabled \
+		-Ddriver_vz=disabled \
+		-Ddriver_openvz=disabled \
+		-Ddriver_vz=disabled \
+		-Ddriver_esx=disabled \
+		-Dsecdriver_apparmor=disabled \
+		-Dsecdriver_selinux=disabled \
+		-Dstorage_sheepdog=disabled \
+		-Dstorage_vstorage=disabled \
+		-Ddtrace=disabled \
+		-Dnumad=disabled \
+		-Dstorage_zfs=enabled \
+		-Dstorage_rbd=enabled
 
-  export PYTHON=$(command -v python)
-  export LDFLAGS=-lX11
-  export RADVD=/usr/bin/radvd
-  [ -f Makefile ] || ZFS=/usr/bin/zfs ZPOOL=/usr/bin/zpool ./configure \
-    --prefix=/usr \
-    --libexec=/usr/lib/"${_pkgname}" \
-    --sbindir=/usr/bin \
-    --disable-static \
-    --with-init-script=systemd \
-    --with-qemu \
-    --with-qemu-user=nobody \
-    --with-qemu-group=kvm \
-    --without-hal \
-    --with-interface \
-    --with-lxc \
-    --with-netcf \
-    --with-udev \
-    --with-storage-disk \
-    --with-storage-gluster \
-    --with-storage-iscsi \
-    --with-storage-lvm \
-    --with-storage-zfs \
-    --with-xen \
-    --without-wireshark-dissector
-    # --with-audit
-    make
+	ninja -C build
 }
-
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-
-  make DESTDIR="${pkgdir}" install
-
-  install -D -m644 "${srcdir}"/libvirtd.conf.d "${pkgdir}"/etc/conf.d/libvirtd
-  install -D -m644 "${srcdir}"/libvirtd-guests.conf.d "${pkgdir}"/etc/conf.d/libvirt-guests
-  install -D -m644 "${srcdir}"/libvirt.sysusers.d "${pkgdir}"/usr/lib/sysusers.d/libvirt.conf
-
-  chown 0:102 "${pkgdir}"/usr/share/polkit-1/rules.d
-  chmod 0750 "${pkgdir}"/usr/share/polkit-1/rules.d
-
-  rm -rf \
-    "${pkgdir}"/var/run \
-    "${pkgdir}"/var/lib/libvirt/qemu \
-    "${pkgdir}"/var/cache/libvirt/qemu \
-    "${pkgdir}"/etc/sysconfig
-
-  rm -f "${pkgdir}"/etc/libvirt/qemu/networks/autostart/default.xml
+	provides=("libvirt=$pkgver" 'libvirt.so' 'libvirt-admin.so' 'libvirt-lxc.so' 'libvirt-qemu.so')
+	cd "${srcdir}/${_pkgname}-${pkgver}"
+	DESTDIR="$pkgdir" ninja -C build install
+	mv "$pkgdir"/etc/{sysconfig,conf.d}
+	mkdir "$pkgdir"/usr/lib/{sysusers,tmpfiles}.d
+	echo "g libvirt - -" > "$pkgdir/usr/lib/sysusers.d/libvirt.conf"
+	echo "z /var/lib/libvirt/qemu 0751" > "$pkgdir/usr/lib/tmpfiles.d/libvirt.conf"
+	chown 0:102 "$pkgdir/usr/share/polkit-1/rules.d"
+	chmod 0750 "$pkgdir/usr/share/polkit-1/rules.d"
+	chmod 600 "$pkgdir"/etc/libvirt/nwfilter/*.xml \
+		"$pkgdir/etc/libvirt/qemu/networks/default.xml"
+	# Strip auto-generated UUID, so it will be generated per-install. (reproducible builds)
+	sed -i 's|<uuid>.*</uuid>|<uuid></uuid>|' "$pkgdir"/etc/libvirt/qemu/networks/default.xml
+	rm -rf \
+		"$pkgdir/run" \
+		"$pkgdir/var/lib/libvirt/qemu" \
+		"$pkgdir/var/cache/libvirt/qemu" \
+		"$pkgdir/etc/logrotate.d/libvirtd.libxl"
+	rm -f "$pkgdir/etc/libvirt/qemu/networks/autostart/default.xml"
+	# move split modules
+	rm "$pkgdir"/usr/lib/libvirt/storage-backend/libvirt_storage_backend_{rbd,gluster}.so
+	rm "$pkgdir/usr/lib/libvirt/storage-backend/libvirt_storage_backend_iscsi-direct.so"
+	rm "$pkgdir/usr/lib/libvirt/storage-file/libvirt_storage_file_gluster.so"
 }
 
