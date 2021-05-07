@@ -11,5 +11,5 @@ md5sums=('1302ebb68fcaccb5ad4423d9841183b8')
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	install -Dm755 pacman-magic "${pkgdir}/usr/local/bin/pacman-magic"
+	install -Dm755 pacman-magic "${pkgdir}/usr/bin/pacman-magic"
 }
