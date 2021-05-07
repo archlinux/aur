@@ -1,4 +1,4 @@
-# Maintainer: Roger Duran <rogerduran@gmail.com>
+# Maintainer: polylux <polylux@socialnerds.org>
 pkgname=twister-html-git
 pkgver=29.ddf4578
 pkgrel=2
@@ -9,7 +9,7 @@ license=('MIT' 'BSD')
 groups=()
 depends=('twister-core-git')
 makedepends=('git')
-source=("git://github.com/miguelfreitas/twister-html.git" "twister.service" "twister.tmpfiles")
+source=("git+https://github.com/miguelfreitas/twister-html.git" "twister.service" "twister.tmpfiles")
 install="$pkgname.install"
 md5sums=('SKIP'
          '256ba30fe99fbf5d5070e6fa196e1d10'
