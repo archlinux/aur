@@ -1,6 +1,6 @@
 pkgbase = conky-katt
 	pkgdesc = Lightweight system monitor for X (without nvidia, docs and wlan)
-	pkgver = 1.11.6
+	pkgver = 1.12.1
 	pkgrel = 1
 	url = https://github.com/brndnmtthws/conky
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = conky-katt
 	makedepends = cmake
 	makedepends = man-db
 	makedepends = git
+	depends = glibc
 	depends = glib2
 	depends = lua
 	depends = libxdamage
@@ -17,9 +18,17 @@ pkgbase = conky-katt
 	depends = imlib2
 	depends = libxml2
 	depends = libpulse
+	depends = systemd-libs
+	depends = ncurses
+	depends = curl
+	depends = libncursesw.so
+	depends = libsystemd.so
+	depends = libpulse.so
+	depends = libcurl.so
 	provides = conky
 	conflicts = conky
-	source = git+https://github.com/brndnmtthws/conky.git#tag=v1.11.6
+	source = git+https://github.com/brndnmtthws/conky.git#tag=v1.12.1?signed
+	validpgpkeys = EB2E847572A71BE20F59AFBEB49ABB7270D9D4FD
 	sha256sums = SKIP
 
 pkgname = conky-katt
