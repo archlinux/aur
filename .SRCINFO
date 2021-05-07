@@ -1,22 +1,25 @@
 pkgbase = mingw-w64-opencolorio
-	pkgdesc = OpenColorIO (OCIO) is a complete color management solution geared towards motion picture production with an emphasis on visual effects and computer animation (mingw-w64)
-	pkgver = 1.1.1
+	pkgdesc = OpenColorIO (OCIO) is a complete color management solution geared towards motion picture production with an emphasis on visual effects and computer animation. (mingw-w64)
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://opencolorio.org/
 	arch = any
 	license = BSD-3-Clause
 	makedepends = mingw-w64-cmake
+	makedepends = git
 	depends = mingw-w64-crt
 	depends = mingw-w64-yaml-cpp
-	depends = mingw-w64-tinyxml
 	depends = mingw-w64-lcms2
+	depends = mingw-w64-freeglut
+	depends = mingw-w64-glew
+	depends = mingw-w64-openexr
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/v1.1.1.tar.gz
-	source = fix.patch
-	sha256sums = c9b5b9def907e1dafb29e37336b702fff22cc6306d445a13b1621b8a754c14c8
-	sha256sums = f1893a9877d3840ed5aeae6d202c03c90bf146e7f9f9b5822678a9e4aaec627f
+	source = https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/v2.0.1.tar.gz
+	source = opencolorio-openexr3.patch
+	sha256sums = ff1397b4516fdecd75096d5b575d6a23771d0c876bbcfc7beb5a82af37adcdf9
+	sha256sums = 1b857e43fb4e3c048a88a00c379d1fd61c557a24a3f6a7d475daf588af8ea064
 
 pkgname = mingw-w64-opencolorio
 
