@@ -2,7 +2,7 @@
 # Contributor: Thomas Pulzer <t.pulzer@thesecretgamer.de>
 _phpversion=73
 pkgname=php${_phpversion}-apcu
-pkgver=5.1.19
+pkgver=5.1.20
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A userland caching module for PHP'
@@ -12,7 +12,7 @@ provides=("php-apcu")
 license=('PHP')
 source=("https://pecl.php.net/get/apcu-${pkgver}.tgz")
 backup=("etc/php${_phpversion}/conf.d/apcu.ini")
-sha256sums=('837fbc99d5c79efb510fafaf585ef0c06e02baf8310a7d77f93e402c93276ce0')
+sha256sums=('b99d40fafec06f4d132fcee53e7526ddbfc1d041ea6e04e17389dfad28f9c390')
 
 build() {
   cd "${srcdir}/apcu-${pkgver}"
