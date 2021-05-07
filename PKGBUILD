@@ -1,8 +1,8 @@
 # Maintainer: Ben Goldberg <benaaron.dev>
 
 pkgname=license
-pkgver=2.4.0
-pkgrel=3
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="A tool to easily add a license to your project"
 arch=('x86_64' 'i686' 'arm' 'armv7h' 'aarch64')
 url="https://sr.ht/~zethra/license/"
@@ -13,7 +13,7 @@ optdepends=(
     'fzf: required for interactive scripts: set-license, copy-header'
     'xclip: required for interactive scripts: set-license, copy-header'
 )
-sha256sums=("a6534c942a98d7709674508ce6c29cd76d1deec060bcc9b2de219160a042af1e")
+sha256sums=("2031beb0c49ce918c397121b3b5feea7ccfe51427c65fe792b798218fe037a74")
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
