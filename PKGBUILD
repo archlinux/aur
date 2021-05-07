@@ -12,9 +12,10 @@ url="https://github.com/risacher/sunwait"
 license=("GPL3")
 arch=("x86_64")
 
-# Dependencies
+# Package relations
 depends=()
 makedepends=("git")
+conflicts=("sunwait")
 
 # Download information
 source=("${pkgname}::git+${url}.git")

@@ -6,6 +6,7 @@ pkgbase = sunwait-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	conflicts = sunwait
 	source = sunwait-git::git+https://github.com/risacher/sunwait.git
 	sha256sums = SKIP
 
