@@ -1,0 +1,12 @@
+pkgbase = just-js-completion
+	pkgdesc = Shell completion for just-js
+	pkgver = 0.0.22
+	pkgrel = 1
+	url = https://github.com/just-js/just
+	arch = x86_64
+	arch = i686
+	source = https://github.com/just-js/just/archive/refs/tags/0.0.22.zip
+	md5sums = SKIP
+
+pkgname = just-js-completion
+
