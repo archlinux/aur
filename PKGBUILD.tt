@@ -10,25 +10,31 @@ arch=('any')
 url='[% url %]'
 license=('PerlArtistic' 'GPL')
 depends=('perl')
-makedepends=('perl-module-build')
 source=([% source %])
 options=(!emptydirs)
 md5sums=('[% md5sums %]')
 
+sanitize() {
+	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+	export PERL_MM_USE_DEFAULT=1
+}
+
 build() {
 	cd [% distdir %]
-	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT
-	PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null perl Build.PL --installdirs vendor --destdir "$pkgdir"
-	perl Build
+	sanitize
+	perl Makefile.PL INSTALLDIRS=vendor
+	make
 }
 
 check() {
 	cd [% distdir %]
-	perl Build test
+	sanitize
+	make test
 }
 
 package() {
 	cd [% distdir %]
-	perl Build install
+	sanitize
+	make install DESTDIR="$pkgdir"
 	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
