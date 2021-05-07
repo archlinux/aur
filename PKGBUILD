@@ -5,9 +5,9 @@
 # - Mirror: https://github.com/timvisee/ffsend/blob/master/pkg/aur/ffsend-git/PKGBUILD
 
 pkgname=ffsend-git
-pkgver=0.2.64.6a94ea75
+pkgver=0.2.72.e440f4b6
 pkgrel=1
-pkgdesc="Easily and securely share files from the command line. A Firefox Send client."
+pkgdesc="Easily and securely share files from the command line. A Send client."
 url="https://gitlab.com/timvisee/ffsend"
 license=('GPL3')
 source=("ffsend::git+$url.git")
