@@ -1,12 +1,11 @@
 pkgbase = fcitx5-skin-material
 	pkgdesc = A Material Design-like skin for Fcitx5, from fcitx-skin-material.
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hrko99/fcitx-skin-material
 	arch = any
 	license = Apache
 	depends = fcitx5
-	optdepends = fcitx5-git
 	source = https://github.com/hrko99/fcitx-skin-material/archive/be0d0de4fc744fec83276cd67268aef3d81a6fc0/v0.5.tar.gz
 	md5sums = b04ba017ebe5ded7d3644c33b31a504b
 
