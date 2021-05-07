@@ -1,13 +1,13 @@
 pkgbase = emacs-whitespace-mode
 	pkgdesc = Major mode for editing Whitespace (an esoteric programming language).
 	pkgver = 20150609
-	pkgrel = 1
-	url = http://compsoc.dur.ac.uk/whitespace
+	pkgrel = 2
+	url = https://hackage.haskell.org/package/whitespace
 	install = emacs-whitespace-mode.install
 	arch = any
 	license = GPL
 	depends = emacs
-	source = http://compsoc.dur.ac.uk/whitespace/whitespace-mode.el
+	source = https://github.com/haroldl/whitespace-nd/raw/main/emacs/whitespace-mode.el
 	md5sums = 8199a6bd2f6d8a1e619cba6ab7f31ee3
 
 pkgname = emacs-whitespace-mode

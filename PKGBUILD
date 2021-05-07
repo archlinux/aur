@@ -2,14 +2,14 @@
 
 pkgname=emacs-whitespace-mode
 pkgver=20150609
-pkgrel=1
+pkgrel=2
 pkgdesc="Major mode for editing Whitespace (an esoteric programming language)."
 arch=('any')
-url="http://compsoc.dur.ac.uk/whitespace"
+url="https://hackage.haskell.org/package/whitespace"
 license=('GPL')
 depends=('emacs')
 install=$pkgname.install
-source="$url/whitespace-mode.el"
+source=("https://github.com/haroldl/whitespace-nd/raw/main/emacs/whitespace-mode.el")
 md5sums=('8199a6bd2f6d8a1e619cba6ab7f31ee3')
 
 build() {
