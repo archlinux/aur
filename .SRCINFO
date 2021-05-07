@@ -1,13 +1,13 @@
 pkgbase = ttf-google-sans
 	pkgdesc = Google's signature family of fonts
 	pkgver = 1
-	pkgrel = 1
-	url = https://9to5google.com/2018/05/09/google-sans-vs-product-sans/
+	pkgrel = 2
+	url = https://github.com/sahibjotsaggu/Google-Sans-Fonts
 	arch = any
 	license = Apache
-	depends = fontconfig
-	source = Google-Sans-Font.zip::https://ipfs.io/ipfs/QmVtMCggpxEpPPyg8fRUGPgt1ehqSpQpTxyE4HEBhFUMX5
-	sha256sums = 3ab39fff78284a4feb362fa0bc4c38517d4473dc7f4b65e72fdd09878768e526
+	makedepends = git
+	source = git+https://github.com/sahibjotsaggu/Google-Sans-Fonts
+	md5sums = SKIP
 
 pkgname = ttf-google-sans
 
