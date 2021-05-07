@@ -1,15 +1,15 @@
 # Maintainer: Volker Schatz <arch@my-name-without-hyphen.com>
 
 pkgname=crap-clone-git
-pkgver=r291.89513ab
-pkgrel=2
+pkgver=r320.d985bbb
+pkgrel=1
 pkgdesc="CVS to git repository converter supporting incremental conversions"
 arch=(i686 x86_64)
 depends=('zlib' 'libpipeline')
 makedepends=('git')
 license=('GPL3')
 url="https://github.com/rcls/crap"
-source=("git://github.com/rcls/crap"
+source=("git+https://github.com/rcls/crap"
         "fixrelpaths.patch")
 md5sums=('SKIP'
          'ca41efa0d07cfab12eede196ac6ca0fb')
