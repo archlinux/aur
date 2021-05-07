@@ -8,10 +8,8 @@ pkgrel="1"
 pkgdesc='Shell completion for just-js'
 arch=('x86_64' "i686")
 url='https://github.com/just-js/just'
-source=("https://github.com/${_reponame}/${_pkgname}/archive/refs/tags/${pkgver}.zip")
-md5sums=('SKIP')
 
-#depends=("just-js")
+depends=("just-js")
 
 dirname="${_pkgname}-${pkgver}"
 zsh_completions_dir="/usr/share/zsh/site-functions"
