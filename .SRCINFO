@@ -1,10 +1,11 @@
 pkgbase = disfetch
 	pkgdesc = Yet another *nix distro fetching program, but less complex.
 	pkgver = 1.22
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/llathasa-veleth/disfetch
 	arch = any
 	license = MIT
+	makedepends = binutils
 	depends = bash>=4.0.0
 	provides = disfetch
 	source = disfetch-1.22.tar.gz::https://github.com/llathasa-veleth/disfetch/archive/1.22.tar.gz

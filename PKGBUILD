@@ -1,11 +1,12 @@
 # Maintainer: Llathasa Veleth <llathasa at outlook dot com>
 pkgname=disfetch
 pkgver=1.22
-pkgrel=0
+pkgrel=1
 pkgdesc='Yet another *nix distro fetching program, but less complex.'
 arch=('any')
 url="https://github.com/llathasa-veleth/$pkgname"
 license=('MIT')
+makedepends=('binutils')
 depends=('bash>=4.0.0')
 provides=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
