@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Fixes pacman errors on outdated system @ by Victor"
+echo -en "\033[32;1;49mFixes pacman errors on outdated system\033[0m @ by Victor\n"
 read -p "Let the magic begin..."
 
 sudo pacman -Scc --noconfirm
