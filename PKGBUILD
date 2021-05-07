@@ -2,14 +2,13 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=zettlr
-pkgver=1.8.7
-pkgrel=2
+pkgver=1.8.8
+pkgrel=1
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url='https://www.zettlr.com'
 license=('GPL' 'custom') # Noted that the icon and name are copyrighted
-_electron=electron
-depends=($_electron)
+depends=(electron)
 makedepends=(pandoc git yarn)
 optdepends=('pandoc: For exporting to various format'
             'texlive-bin: For Latex support'
@@ -22,7 +21,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Zettlr/Zettlr/archive/v$pkg
         # citation style
         "locales-$pkgrel-$pkgver.zip::https://github.com/citation-style-language/locales/archive/$_csl_locale_commit.zip"
         "chicago-author-date-$pkgver-$pkgrel.csl::https://github.com/citation-style-language/styles/raw/$_csl_style_commit/chicago-author-date.csl")
-sha256sums=('7b0d7dee7a6f95e8e282ad2cf057c0242056d8a02366eb3bb80d5f010a823fe6'
+sha256sums=('cce11cca98358dbe48a7f42bafaa789dba77add711b9e37f155ee8c956085938'
             '24503a6cd5b3651a7003353811ae82d3ed707ec8ff932d341668c2ad377434b6'
             '2b7cd6c1c9be4add8c660fb9c6ca54f1b6c3c4f49d6ed9fa39c9f9b10fcca6f4')
 
@@ -40,7 +39,7 @@ prepare() {
 }
 
 build() {
-    local _electronVersion=$($_electron --version | sed -e 's/^v//')
+    local _electronVersion=$(electron --version | sed -e 's/^v//')
     cd "Zettlr-$pkgver"
     local NODE_ENV=''
     yarn install --cache-folder "$srcdir/cache" \
@@ -86,7 +85,7 @@ package() {
     # Install start script to /usr/bin
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
 #!/bin/sh
-exec $_electron /${_destdir} "\$@"
+exec electron /${_destdir} "\$@"
 END
 
     # install icons of various sizes to hi-color theme
