@@ -3,7 +3,7 @@
 
 pkgname=honk
 pkgver=0.9.6
-pkgrel=3
+pkgrel=4
 epoch=0
 pkgdesc="ActivityPub compatible server with web frontend."
 arch=("x86_64")
@@ -11,7 +11,7 @@ url="https://humungus.tedunangst.com/r/honk"
 license=("custom:ISC")
 makedepends=("gcc-go" "sqlite")
 depends=("gcc-go" "sqlite")
-optdepends=("nginx: reverse proxy with tls support")
+optdepends=("nginx: for TLS and reverse proxying")
 changelog="$pkgname.changelog"
 provides=("${pkgname}")
 conflicts=("${pkgname}")
@@ -27,8 +27,8 @@ build() {
 }
 
 package() {
-   _PKG_HONKDIR="$pkgdir/usr/share/webapps/honk"
-   install -vDm700 "$pkgname-$pkgver/honk" "$_PKG_HONKDIR/honk"
+   _PKG_HONKDIR="$pkgdir/usr/share/webapps/$pkgname"
+   install -vDm700 "$pkgname-$pkgver/$pkgname" "$_PKG_HONKDIR/$pkgname"
    install -vDm644 "$pkgname-$pkgver"/views/* -t "$_PKG_HONKDIR/views/"
    install -vDm644 "$pkgname-$pkgver"/docs/* -t "$_PKG_HONKDIR/docs/"
    install -vDm644 "$pkgname-$pkgver"/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
