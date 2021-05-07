@@ -4,7 +4,7 @@
 # Contributor: dsr <dsr@archlinux.us>
 
 pkgname=aoi
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="A 3D modeling and rendering studio (Art of Illusion)"
 arch=('any')
@@ -14,9 +14,9 @@ depends=('java-environment')
 optdepends=('jmf:  QuickTime animation support'
             'jogl: OpenGL rendering support')
 makedepends=('gendesk')
-source=(https://netcologne.dl.sourceforge.net/project/aoi/ArtOfIllusion/3.1.0/ArtOfIllusion%203.1.0-Linux.zip
+source=(https://netcologne.dl.sourceforge.net/project/aoi/ArtOfIllusion/3.2.0/Art%20of%20Illusion%203.2.0%20no-install.zip
         aoi.sh)
-md5sums=('e96d353033bc0ffd1b1a533ee86ea649'
+md5sums=('9f8c71560203a33fa9ca8e848a0a7550'
          '4453963d13c33bceffe515e172e78679')
 
 build() {
