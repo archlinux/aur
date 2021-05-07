@@ -4,7 +4,7 @@
 # Contributor: Wael Nasreddine <wael.nasreddine@gmail.com>
 
 pkgname=kubetail
-pkgver=1.6.12
+pkgver=1.6.13
 pkgrel=1
 pkgdesc='Tail Kubernetes logs from multiple pods'
 arch=('any')
@@ -12,7 +12,7 @@ url='https://github.com/johanhaleby/kubetail'
 license=('Apache')
 depends=('kubectl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/johanhaleby/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('b5f3229361d520cc2f2de4b24d309ac49582e126e271525c85dc4b0975d57e59')
+sha512sums=('38f23ecb9d4e044698a93a107c757ae8af96e9090595744d5155781e4ef510cb0ce4a83e6af7063198384db07fffca19ad80e736b552e28e100dbdbc39b96f87')
 
 package() {
   cd $pkgname-$pkgver
