@@ -1,6 +1,6 @@
 # Maintainer: Otto Naderer <otto.naderer@openmailbox.org>
 pkgname=twister-core-git
-pkgver=5030.69f90bc
+pkgver=5090.323314eb
 pkgrel=1
 pkgdesc="Twister core - p2p microblogging"
 arch=(i686 x86_64 armv7h armv6h)
@@ -9,7 +9,7 @@ license=('MIT' 'BSD')
 groups=()
 depends=(openssl db boost-libs miniupnpc)
 makedepends=('git' 'boost')
-source=("git://github.com/miguelfreitas/twister-core.git")
+source=("git+https://github.com/miguelfreitas/twister-core.git")
 md5sums=("SKIP")
 
 _gitname=twister-core
