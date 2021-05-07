@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_py_console is a Python GUI plugin providing an interactive Py
 url='https://wiki.ros.org/rqt_py_console'
 
 pkgname='ros-noetic-rqt-py-console'
-pkgver='0.4.9'
+pkgver='0.4.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -36,7 +36,7 @@ depends=(
 
 _dir="rqt_py_console-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_py_console/archive/${pkgver}.tar.gz")
-sha256sums=('6b4733b36942382b9fefd9a78bc9ec6cfecec858cd72c02efefce4cc2f54d15a')
+sha256sums=('2478c0255758c5e45f0b4daf24fa447716d94dacfe05598fcc1a2192df518b95')
 
 build() {
 	# Use ROS environment variables.
