@@ -1,7 +1,7 @@
 # Maintainer: MF Akane <aur at sorairo dot pictures>
 pkgname=mackerel-check-plugins-git
-pkgver=0.33.0
-pkgrel=2
+pkgver=0.39.2
+pkgrel=1
 pkgdesc="Check Plugins for monitoring written in golang"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/mackerelio/go-check-plugins"
@@ -20,17 +20,14 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-
-  for i in `cat "$srcdir/$pkgname/packaging/deb/debian/source/include-binaries"`; do
-    filename=$(basename $i)
-    cd "$srcdir/$pkgname/$filename"
-    go build -ldflags "-s -w" -o "$srcdir/$pkgname/build/$filename"
-  done
+  make build/mackerel-check
 }
 
 package() {
+  install -Dm755 "$srcdir/$pkgname/build/mackerel-check" "$pkgdir/usr/bin/mackerel-check"
+
   for i in `cat "$srcdir/$pkgname/packaging/deb/debian/source/include-binaries"`; do
     filename=$(basename $i)
-    install -Dm755 "$srcdir/$pkgname/build/$filename" "$pkgdir/usr/bin/$filename"
+    ln -s ./mackerel-check "$pkgdir/usr/bin/$filename"
   done
 }
