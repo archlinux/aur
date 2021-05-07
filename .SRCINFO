@@ -1,14 +1,13 @@
 pkgbase = python-flake8-efm
 	pkgdesc = Flake8 plugin for EFM-compatible output.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://git.sr.ht/~whynothugo/flake8-efm
 	arch = any
 	license = ISC
 	depends = flake8
 	depends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/f/flake8-efm/flake8-efm-1.0.0.tar.gz
-	sha512sums = 3936880f8f7651af8e4638e132a3b73c9c7fa582928b21e753d1199acb27df0388fbf45caeca3c79372a53ee88b449e98a4d251d6a69d54d3d8100f63249e433
+	source = https://files.pythonhosted.org/packages/source/f/flake8-efm/flake8-efm-1.0.1.tar.gz
+	sha512sums = c8196f951f22d989405dd2d159c616532c8b1bb33d8d6761362cdbb66a6bbbdbe31ee134dc4883ef04421d37562d501797c5f09dedaf800aa01329a2168e4a55
 
 pkgname = python-flake8-efm
-
