@@ -1,7 +1,7 @@
 # Maintainer: Blair Bonnett <blair.bonnett@gmail.com>
 
 pkgname=python-remi-git
-pkgver=2020.03.10.r80.gefe5f44
+pkgver=2021.03.02.r3.ge6ca627
 pkgrel=1
 pkgdesc="Cross-platform GUI library which renders in a web browser."
 arch=('any')

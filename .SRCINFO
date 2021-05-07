@@ -1,6 +1,6 @@
 pkgbase = python-remi-git
 	pkgdesc = Cross-platform GUI library which renders in a web browser.
-	pkgver = 2020.03.10.r80.gefe5f44
+	pkgver = 2021.03.02.r3.ge6ca627
 	pkgrel = 1
 	url = https://github.com/dddomodossola/remi/
 	arch = any
