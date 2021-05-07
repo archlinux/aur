@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=iputils-git
-pkgver=s20180629.r180.gcab98aa
+pkgver=20210202.r10.gc9beb98
 pkgrel=1
 pkgdesc="Network monitoring tools, including ping"
 arch=('i686' 'x86_64')
@@ -33,6 +33,8 @@ build() {
     --buildtype=plain \
     --prefix="/usr" \
     --sbindir="bin" \
+    -DBUILD_RARPD=true \
+    -DBUILD_TFTPD=true \
     "_build"
   ninja -C "_build"
 }
@@ -48,12 +50,8 @@ package() {
 
   DESTDIR="$pkgdir" meson install -C "_build"
 
-  # workaround
-  mv "$pkgdir/usr/sbin"/* "$pkgdir/usr/bin"
-  rm -r "$pkgdir/usr/sbin"
-
   install -Dm644 "$srcdir/tftp.xinetd" "$pkgdir/etc/xinetd.d/tftp"
 
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/iputils/LICENSE"
-  install -Dm644 "Documentation/LICENSE.BSD3" "$pkgdir/usr/share/licenses/iputils/LICENSE.BSD3"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/iputils"
+  install -Dm644 "Documentation/LICENSE.BSD3" -t "$pkgdir/usr/share/licenses/iputils"
 }
