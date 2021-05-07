@@ -2,7 +2,31 @@
 Description=KMS Emulator Per-Connection
 
 [Service]
-User=nobody
-ExecStart=/usr/bin/vlmcsd
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+SystemCallArchitectures=native
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=true
+NoNewPrivileges=true
+LockPersonality=true
+RestrictRealtime=true
+MemoryDenyWriteExecute=true
+ProtectHome=true
+ProtectSystem=strict
+PrivateDevices=true
+PrivateUsers=true
+ProtectClock=true
+ProtectProc=invisible
+ProcSubset=pid
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+DevicePolicy=closed
+PrivateNetwork=true
+IPAddressDeny=any
+DynamicUser=true
 StandardInput=socket
 StandardOutput=socket
+ExecStart=/usr/bin/vlmcsd
