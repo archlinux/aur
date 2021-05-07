@@ -2,19 +2,19 @@
 
 pkgname=xournal-git
 _gitname=xournal
-pkgver=0.4.8.26.g50184f0
+pkgver=0.4.8.2016.15.gc29e2a4
 pkgrel=1
 pkgdesc="Notetaking and sketching application"
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/xournal/"
+url="https://sourceforge.net/projects/xournal/"
 license=('GPL')
-depends=('libgnomecanvas>=2.30.1' 'shared-mime-info' 'poppler-glib>=0.14.0'
+depends=('libgnomecanvas' 'shared-mime-info' 'poppler-glib'
          'hicolor-icon-theme' 'desktop-file-utils' 'gtk2')
 makedepends=('git' 'gettext')
 optdepends=('ghostscript: import PS/PDF files as bitmap backgrounds')
 provides=('xournal')
 conflicts=('xournal' 'xournal-image-patched' 'xournalpp-svn')
-source=('xournal::git+http://git.code.sf.net/p/xournal/code')
+source=('xournal::git+https://git.code.sf.net/p/xournal/code')
 sha1sums=('SKIP')
 
 pkgver() {
