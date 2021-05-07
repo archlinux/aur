@@ -4,7 +4,7 @@
 pkgname='omada-sdn-controller'
 pkgver=4.2.11
 pkgrel=1
-pkgdesc='Centralized EAP controller software'
+pkgdesc='Centralized Omada SDN controller software'
 arch=('x86_64')
 url='https://www.tp-link.com/us/support/download/omada-software-controller/#Controller_Software'
 license=('custom')
