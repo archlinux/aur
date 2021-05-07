@@ -1,0 +1,17 @@
+pkgbase = vrrtest-git
+	pkgdesc = A very small utility to test variable refresh rate.
+	pkgver = r33.79bd724
+	pkgrel = 1
+	url = https://github.com/Nixola/VRRTest
+	arch = x86_64
+	license = zlib
+	depends = love
+	source = vrrtest_src::git+https://github.com/Nixola/VRRTest.git
+	source = vrrtest
+	source = vrrtest.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vrrtest-git
+
