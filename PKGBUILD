@@ -2,7 +2,7 @@
 
 pkgname=ksa
 pkgver=0.80
-pkgrel=1
+pkgrel=2
 #epoch=0
 pkgdesc="Kanxue Security Access. 看雪安全接入,无需公网IP,远程接入内网"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' )
@@ -14,7 +14,8 @@ depends=('unzip')
 #source_armv7h=("KSA_${pkgver}_linux_arm.zip::KSA_${pkgver}_linux.zip")
 #source_aarch64=("KSA_${pkgver}_linux_arm64.zip::KSA_${pkgver}_linux.zip")
 
-source=("KSA_${pkgver}.zip::https://ksa.kanxue.com/view/img/product/KSA_${pkgver}.zip")
+source=("KSA_${pkgver}.zip::https://ksa.kanxue.com/view/img/product/KSA_${pkgver}.zip"
+    "ksa.service")
 #desktops=("ksa-linux.desktop")
 #source+=(${desktops[@]})
 #sha256sums_i686=('b4cafff1b7ee02ec404ca784d8605d4d61f7fdc4551baebb56cbaa08770359ce')
@@ -22,7 +23,8 @@ source=("KSA_${pkgver}.zip::https://ksa.kanxue.com/view/img/product/KSA_${pkgver
 #sha256sums_armv7h=('b4cafff1b7ee02ec404ca784d8605d4d61f7fdc4551baebb56cbaa08770359ce')
 #sha256sums_aarch64=('b4cafff1b7ee02ec404ca784d8605d4d61f7fdc4551baebb56cbaa08770359ce')
 
-sha256sums=('168fbb25a106f170fa626871c7b1653c72b57a4e3ead082d81f4504f8ed8280f')
+sha256sums=('168fbb25a106f170fa626871c7b1653c72b57a4e3ead082d81f4504f8ed8280f'
+    '44bebc2bfddc4f0b3873f7ae68c7b7d0c4d49edd1a63795062b3a2198c37fb77')
 
 #install=$pkgname.install
 url="https://ksa.kanxue.com/"
@@ -52,8 +54,10 @@ package(){
     install -dm755 "${pkgdir}/opt/KSA" \
             "${pkgdir}/usr/bin/"
 
+    install -Dm644 "${srcdir}/ksa.service" "${pkgdir}/usr/lib/systemd/system/ksa.service"
+
     cd "${srcdir}/KSA_${pkgver}/KSA_linux"
-    cp --preserve=mode -r ksa.conf "${pkgdir}/opt/KSA"
+    install -Dm644 ksa.conf "${pkgdir}/opt/KSA"
 
     # Bulk copy everything
     if [ ${CARCH} = "armv7h" ]; then

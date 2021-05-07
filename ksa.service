@@ -1,0 +1,13 @@
+[Unit]
+Description=KSA Service
+After=network.target
+
+[Service]
+Type=forking
+User=nobody
+Restart=on-failure
+RestartSec=5s
+ExecStart=/usr/bin/ksa --cfg /opt/KSA/ksa.conf
+
+[Install]
+WantedBy=multi-user.target

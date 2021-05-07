@@ -1,7 +1,7 @@
 pkgbase = ksa
 	pkgdesc = Kanxue Security Access. 看雪安全接入,无需公网IP,远程接入内网
 	pkgver = 0.80
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ksa.kanxue.com/
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,9 @@ pkgbase = ksa
 	replaces = ksa
 	options = !strip
 	source = KSA_0.80.zip::https://ksa.kanxue.com/view/img/product/KSA_0.80.zip
+	source = ksa.service
 	sha256sums = 168fbb25a106f170fa626871c7b1653c72b57a4e3ead082d81f4504f8ed8280f
+	sha256sums = 44bebc2bfddc4f0b3873f7ae68c7b7d0c4d49edd1a63795062b3a2198c37fb77
 
 pkgname = ksa
 
