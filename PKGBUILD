@@ -4,7 +4,7 @@ pkgdesc="IMU Madgwick filter"
 url='https://wiki.ros.org/imu_filter_madgwick?distro=noetic'
 
 pkgname='ros-noetic-imu-filter-madgwick'
-pkgver='1.2.2'
+pkgver='1.2.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('GPL')
@@ -46,8 +46,9 @@ depends=(
 )
 
 # Tarball version (faster download)
+_dir="imu_tools-${pkgver}/imu_filter_madgwick "
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ccny-ros-pkg/imu_tools/archive/${pkgver}.tar.gz")
-sha256sums=('21a0759cba983595bfe5c09e8c85c5bd597ea8cafea7bb5259638b73e3f1c101')
+sha256sums=('8c5eb01a2bcb8855e6fb5bb66795a0d5b1eb6c4586282bf177f3552f72e357af')
 
 build() {
     # Use ROS environment variables
@@ -59,7 +60,7 @@ build() {
     cd ${srcdir}/build
 
     # Build project
-    cmake ${srcdir}/imu_tools-${pkgver}/imu_filter_madgwick \
+    cmake ${srcdir}/${_dir}\
             -DCMAKE_BUILD_TYPE=Release \
             -DCATKIN_BUILD_BINARY_PACKAGE=ON \
             -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
