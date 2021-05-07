@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_web is a simple web content viewer for rqt."
 url='https://wiki.ros.org/rqt_web'
 
 pkgname='ros-noetic-rqt-web'
-pkgver='0.4.9'
+pkgver='0.4.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -36,7 +36,7 @@ depends=(
 
 _dir="rqt_web-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_web/archive/${pkgver}.tar.gz")
-sha256sums=('5f652bd74235508b5625dbf654841033b473d8386ebe749166a47b98643c8073')
+sha256sums=('33305fe829b77ad8ce947787e4e8949c3d386b390469383fb55a732709635b5b')
 
 build() {
 	# Use ROS environment variables.

@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-rqt-web
 	pkgdesc = ROS - rqt_web is a simple web content viewer for rqt.
-	pkgver = 0.4.9
+	pkgver = 0.4.10
 	pkgrel = 1
 	url = https://wiki.ros.org/rqt_web
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = ros-noetic-rqt-web
 	depends = ros-noetic-rqt-gui
 	depends = ros-noetic-rospy
 	depends = python-rospkg
-	source = ros-noetic-rqt-web-0.4.9.tar.gz::https://github.com/ros-visualization/rqt_web/archive/0.4.9.tar.gz
-	sha256sums = 5f652bd74235508b5625dbf654841033b473d8386ebe749166a47b98643c8073
+	source = ros-noetic-rqt-web-0.4.10.tar.gz::https://github.com/ros-visualization/rqt_web/archive/0.4.10.tar.gz
+	sha256sums = 33305fe829b77ad8ce947787e4e8949c3d386b390469383fb55a732709635b5b
 
 pkgname = ros-noetic-rqt-web
 
