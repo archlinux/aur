@@ -1,0 +1,12 @@
+[Unit]
+Description="Honk ActivityPub server"
+
+[Service]
+WorkingDirectory=/usr/share/webapps/honk
+ExecStart=/usr/share/webapps/honk/honk
+
+User=honk
+Group=honk
+
+[Install]
+WantedBy=default.target
