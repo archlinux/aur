@@ -1,11 +1,12 @@
 pkgbase = transmission-rss
 	pkgdesc = Adds torrents from rss feeds to transmission web frontend.
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rubygems.org/gems/transmission-rss
 	arch = any
 	license = GPL
 	depends = ruby
+	depends = ruby-rss
 	depends = ruby-open_uri_redirections>=0.2.1
 	depends = ruby-rb-inotify>=0.9.10
 	backup = etc/transmission-rss.conf
