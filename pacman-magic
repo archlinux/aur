@@ -1,15 +1,15 @@
 #!/bin/bash
 
-echo "Fix pacman errors on outdated system @ by Victor"
+echo "Fixes pacman errors on outdated system @ by Victor"
 read -p "Let the magic begin..."
 
-pacman -Scc --noconfirm
-rm -Rf /etc/pacman.d/gnupg
-rm -Rf /root/.gnupg
-pacman-key --init
-pacman-key --populate archlinux
-pacman-key --refresh-keys --keyserver hkp://pool.sks-keyservers.net
-pacman -Syy --noconfirm
-pacman -S archlinux-keyring --noconfirm
-pacman-key --init
-pacman -Syu
+sudo pacman -Scc --noconfirm
+sudo rm -Rf /etc/pacman.d/gnupg
+sudo rm -Rf /root/.gnupg
+sudo pacman-key --init
+sudo pacman-key --populate archlinux
+sudo pacman-key --refresh-keys --keyserver hkp://pool.sks-keyservers.net
+sudo pacman -Syy --noconfirm
+sudo pacman -S archlinux-keyring --noconfirm
+sudo pacman-key --init
+sudo pacman -Syu
