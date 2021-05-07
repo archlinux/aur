@@ -3,7 +3,7 @@
 pkgname=kotatogram-desktop-dynamic-bin
 _pkgname=kotatogram-desktop
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 _pkgrel=1
 pkgdesc="Kotatogram – experimental Telegram Desktop fork - Precompiled package"
 arch=('x86_64')
@@ -23,6 +23,7 @@ depends=(
 	'kwayland'
 	'gtk3'
 	'glibmm'
+	'webkit2gtk'
 )
 conflicts=('kotatogram-desktop' 'kotatogram-desktop-bin')
 provides=('kotatogram-desktop')

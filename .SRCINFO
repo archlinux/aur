@@ -1,7 +1,7 @@
 pkgbase = kotatogram-desktop-dynamic-bin
 	pkgdesc = Kotatogram – experimental Telegram Desktop fork - Precompiled package
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kotatogram.github.io
 	arch = x86_64
 	license = GPL3
@@ -18,6 +18,7 @@ pkgbase = kotatogram-desktop-dynamic-bin
 	depends = kwayland
 	depends = gtk3
 	depends = glibmm
+	depends = webkit2gtk
 	provides = kotatogram-desktop
 	conflicts = kotatogram-desktop
 	conflicts = kotatogram-desktop-bin
