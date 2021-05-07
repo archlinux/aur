@@ -1,0 +1,17 @@
+pkgbase = vim-unicode-git
+	pkgdesc = Vim plugin that provides a completion function for Unicode glyphs
+	pkgver = 20.r143.g090e77e
+	pkgrel = 1
+	url = https://github.com/chrisbra/unicode.vim
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-unicode
+	conflicts = vim-unicode
+	source = vim-unicode-git::git+https://github.com/chrisbra/unicode.vim
+	sha256sums = SKIP
+
+pkgname = vim-unicode-git
+
