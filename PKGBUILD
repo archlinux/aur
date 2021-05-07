@@ -1,7 +1,7 @@
 # Mantainer: Franco Tortoriello
 
 pkgname=dosbox-x-sdl2-git
-pkgver=0.83.13.r21.gc69a361ff
+pkgver=0.83.13.r35.g643d09298
 pkgrel=1
 epoch=1
 pkgdesc="x86 emulator with builtin DOS, with patches with more features - sdl2 git version"
@@ -25,7 +25,7 @@ build() {
   cd "$srcdir/dosbox-x"
   export LDFLAGS="${LDFLAGS//,--as-needed}"
   ./autogen.sh
-  ./configure --enable-core-inline --disable-debug --enable-avcodec --prefix=/usr --enable-sdl2
+  ./configure --enable-core-inline --enable-debug --enable-avcodec --prefix=/usr --enable-sdl2
   make -j$(nproc)  
 }
 
