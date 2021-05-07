@@ -1,12 +1,12 @@
 pkgbase = puppet-bolt
 	pkgdesc = Puppet bolt executes commands remotely over SSH and WinRM
-	pkgver = 3.7.0
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://github.com/puppetlabs/bolt
 	arch = x86_64
 	options = staticlibs
 	options = !strip
-	source = https://apt.puppetlabs.com/pool/bionic/puppet/p/puppet-bolt/puppet-bolt_3.7.0-1bionic_amd64.deb
-	md5sums = 180976c56d388bcaee8830ae74790ec4
+	source = https://apt.puppetlabs.com/pool/bionic/puppet/p/puppet-bolt/puppet-bolt_3.8.0-1bionic_amd64.deb
+	md5sums = c560bfe71336cb79dd3b7a46c46bd0af
 
 pkgname = puppet-bolt
