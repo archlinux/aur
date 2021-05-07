@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-rviz-imu-plugin
 	pkgdesc = IMU rviz plugin
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://wiki.ros.org/rviz_imu_plugin?distro=noetic
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = ros-noetic-rviz-imu-plugin
 	depends = ros-noetic-roscpp
 	depends = ros-noetic-rviz
 	depends = qt5-base
-	source = ros-noetic-rviz-imu-plugin-1.2.2.tar.gz::https://github.com/ccny-ros-pkg/imu_tools/archive/1.2.2.tar.gz
-	sha256sums = 21a0759cba983595bfe5c09e8c85c5bd597ea8cafea7bb5259638b73e3f1c101
+	source = ros-noetic-rviz-imu-plugin-1.2.3.tar.gz::https://github.com/ccny-ros-pkg/imu_tools/archive/1.2.3.tar.gz
+	sha256sums = 8c5eb01a2bcb8855e6fb5bb66795a0d5b1eb6c4586282bf177f3552f72e357af
 
 pkgname = ros-noetic-rviz-imu-plugin
 
