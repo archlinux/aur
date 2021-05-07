@@ -1,7 +1,7 @@
 # Maintainer: grufo <madmurphy333 AT gmail DOT com>
 
 pkgname='nautilus-bluetooth'
-pkgver='1.0.0'
+pkgver='1.0.1'
 pkgrel=1
 pkgdesc="A simple Nautilus extension that adds a \"Send via Bluetooth\" entry to Nautilus' right-click menu"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('intltool')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 source=("https://github.com/madmurphy/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}-with-configure.tar.gz")
 install="${pkgname}.install"
-sha256sums=('14596ea146d471bb91b01057933fe293adcd16490a00ca5d75dc7c83217b59e0')
+sha256sums=('6d89c9ca4dba9f54b566a67abdc6ef13819ce99f7f21657aad92daca8718dd24')
 
 build() {
 
