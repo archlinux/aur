@@ -8,6 +8,7 @@ pkgbase = gazebo
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = doxygen
 	makedepends = ruby-ronn
 	depends = boost

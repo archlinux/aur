@@ -26,7 +26,7 @@ optdepends=('bullet: Bullet support'
             'libusb: USB peripherals support'
             'simbody: Simbody support'
             'urdfdom: Load URDF files')
-makedepends=('cmake' 'doxygen' 'ruby-ronn')
+makedepends=('cmake' 'ninja' 'doxygen' 'ruby-ronn')
 install="${pkgname}.install"
 source=("http://osrf-distributions.s3.amazonaws.com/$pkgname/releases/$pkgname-$pkgver.tar.bz2")
 sha256sums=('c7b378a72278d4b0a750970d13e757064a9dff76fe326b799047e45486b2303d')
@@ -36,13 +36,14 @@ build() {
 
   mkdir -p build && cd build
 
-  cmake .. -DCMAKE_BUILD_TYPE="Release" \
+  cmake .. -GNinja \
+           -DCMAKE_BUILD_TYPE="Release" \
            -DCMAKE_INSTALL_PREFIX="/usr" \
            -DCMAKE_INSTALL_LIBDIR="lib"
-  make
+  ninja
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/build"
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
