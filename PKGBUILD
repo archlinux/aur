@@ -6,7 +6,7 @@ _pkgname=openssl
 _ver=1.1.1k
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (with static libs)'
 arch=('x86_64')
 url='https://www.openssl.org'
@@ -47,7 +47,7 @@ build() {
 }
 
 check() {
-	cd "$srcdir/$pkgbase-$_ver"
+	cd "$srcdir/$_pkgname-$_ver"
 
 	# the test fails due to missing write permissions in /etc/ssl
 	# revert this patch for make test

@@ -1,7 +1,7 @@
 pkgbase = openssl-static
 	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (with static libs)
 	pkgver = 1.1.1.k
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openssl.org
 	arch = x86_64
 	license = custom:BSD
