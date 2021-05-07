@@ -15,7 +15,7 @@ noextract=("$_pkgname-$pkgver.tgz")
 sha256sums=('a15d263a096e0aeacf5d04c1f2e5ec2964470f2dcaf0a6d65901bb1e870880bb')
 
 package() {
-  npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_pkgname-$pkgver.tgz"
+  npm install -g --prefix "$pkgdir/usr" "$srcdir/$_pkgname-$pkgver.tgz"
 
   # Non-deterministic race in npm gives 777 permissions to random directories.
   # See https://github.com/npm/npm/issues/9359 for details.
