@@ -1,5 +1,6 @@
 # Changelog
 
+* [2.4.0](#2-4-0)
 * [2.3.3](#2-3-3)
 * [2.3.2](#2-3-2)
 * [2.3.1](#2-3-1)
@@ -18,6 +19,41 @@
 * [2.1.0](#2-1-0)
 * [2.0.0](#2-0-0)
 * [1.1.7](#1-1-7)
+
+
+## 2.4.0
+
+### Added
+
+* Example program. Very simple bare bones Wayland program that renders
+  a user provided string with user configurable fonts and colors. No
+  proper error checking etc. To build, configure meson with
+  `-Dexamples=true`.
+* `fcft_log_init()`. This function enables, and configures logging in fcft.
+* `fcft_text_run_rasterize()`: new API that uses HarfBuzz to shape a
+  text run (i.e. a whole string). Note that HarfBuzz is (still) an
+  **optional** dependency, see
+  [README](README.md#user-content-building).
+* `fcft_text_run_destroy()`: new API that frees a rasterized text-run.
+* `FCFT_CAPABILITY_TEXT_RUN_SHAPING` added to `fcft_capabilities()`.
+* `antialias` and `subpixel` members to `struct fcft_font`.
+
+
+### Changed
+
+* fcft logging must now be enabled explicitly (see `fcft_log_init()`).
+* Internal logging functions are no longer exported by the shared library.
+* The pixel size passed from FontConfig to FreeType is now rounded
+  instead of truncated (https://codeberg.org/dnkl/foot/issues/456).
+
+
+### Fixed
+
+* Internal logging functions have been renamed, from generic `log_*`
+  names to fcft specific `fcft_log_` names.
+* Apply pixel-size fixup to glyphs’ advance width/height, but **only**
+  if we estimated the fixup ourselves (otherwise the advance
+  width/height is already scaled).
 
 
 ## 2.3.3
