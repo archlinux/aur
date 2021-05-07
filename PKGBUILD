@@ -1,47 +1,38 @@
-# Maintainer: Nick Black <nickblack@linux.com>
-# Contributor: ava1ar <mail@ava1ar.me>
+# Maintainer: ava1ar <mail@ava1ar.me>
 # Contributor: Duong Pham <dthpham@gmail.com>
 # Contributor: Eric Quackenbush <mail@ericquackenbush.com>
 # Contributor: Wei-Ning Huang <aitjcize@gmail.com>
 
 pkgname=intel-opencl-runtime
 epoch=1
-pkgver=20.26.17199
-pkgrel=1
-pkgdesc="OpenCL runtime for Intel processors"
+pkgver=18.1.0.013
+_package=l_opencl_p_${pkgver}
+pkgrel=2
+pkgdesc="OpenCL runtime for Intel Core and Xeon processors"
 arch=('x86_64')
 url="https://software.intel.com/en-us/articles/opencl-drivers#latest_CPU_runtime"
-license=('MIT')
-depends=('numactl' 'intel-tbb' 'zlib' 'ncurses' 'intel-gmmlib')
+license=('custom:intel')
+depends=('numactl' 'intel-tbb' 'zlib' 'ncurses5-compat-libs')
 optdepends=('intel-opencl-sdk: Intel SDK for OpenCL Applications')
-makedepends=('debtap')
 provides=('opencl-intel' 'opencl-driver')
-conflicts=('intel-compute-sdk')
-source=("https://github.com/intel/compute-runtime/releases/download/${pkgver}/intel-opencl_${pkgver}_amd64.deb"
-        "https://github.com/intel/compute-runtime/releases/download/20.26.17199/intel-ocloc_20.26.17199_amd64.deb"
-)
+source=(http://registrationcenter-download.intel.com/akdlm/irc_nas/13793/${_package}.tgz)
+sha256sums=('208806279b0b9219ca6a17c64cbe0e4a3876a8b5d3f172bf296d85c0f1c74126')
 
 package() {
-    cd "${srcdir}"
+    cd "${srcdir}"/${_package}/
 
-    for i in *deb ; do
-      echo "Unpacking $i to $(basename -s deb $i)..."
-      mkdir -p $(basename -s deb $i)
-      pushd $(basename -s deb $i) > /dev/null
-      ar x ../$i
-      tar xJf data.tar.xz -C ${pkgdir}
-      popd > /dev/null
-    done
+    # Copy license
+    install -Dm644 license.txt "${pkgdir}"/usr/share/licenses/intel-opencl-runtime/license
 
-    sed -i -e 's/\/local\//\//g' ${pkgdir}/etc/OpenCL/vendors/intel.icd
-    for i in bin include lib ; do
-      [ ! -e ${pkgdir}/usr/$i ] || { echo "${pkgdir}/usr/$i already exists, aborting" >&2 ; return 1; }
-      mv ${pkgdir}/usr/local/$i ${pkgdir}/usr/$i
-    done
-    ls -lR ${pkgdir}/usr/local/
-    rmdir ${pkgdir}/usr/local/
+    # Unpack RPM
+    rm rpm/intel-openclrt-pset-*.rpm
+    for i in rpm/*.rpm; do bsdtar -xf "$i"; done
+
+    # Register ICD
+    mkdir -p "${pkgdir}/etc/OpenCL/vendors"
+    echo "/opt/intel/opencl-runtime/linux/compiler/lib/intel64_lin/libintelocl.so" > "${pkgdir}/etc/OpenCL/vendors/intel.icd"
+
+    # Install files
+    mkdir -p "${pkgdir}/opt/intel/opencl-runtime"
+    cp -r opt/intel/opencl_*/* "${pkgdir}/opt/intel/opencl-runtime"
 }
-
-sha256sums=('752c08c9e9703c6ab065de10103b0b1c0c2ce29c8038da25e6734f6f72de555b'
-            'b0887fad48d67a4a5b0afa1da98f3b6bef686fbf75d47c5f0f4a1da232dce7a3'
-)
