@@ -5,7 +5,7 @@
 
 pkgname=aoi
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A 3D modeling and rendering studio (Art of Illusion)"
 arch=('any')
 url="http://www.artofillusion.org/"
@@ -17,14 +17,14 @@ makedepends=('gendesk')
 source=(https://netcologne.dl.sourceforge.net/project/aoi/ArtOfIllusion/3.2.0/Art%20of%20Illusion%203.2.0%20no-install.zip
         aoi.sh)
 md5sums=('9f8c71560203a33fa9ca8e848a0a7550'
-         '4453963d13c33bceffe515e172e78679')
+         'b2c2de959cf1112a729da857bc15111c')
 
 build() {
   cd "$srcdir"
   gendesk -f -n --pkgname "$pkgname" \
     --pkgdesc "$pkgdesc" \
     --name='AOI (Art of Illusion)' \
-    --exec='java -Xmx512m -jar /usr/share/java/aoi/aoi-linux-install.jar'
+    --exec='java -Xmx512m -jar /usr/share/java/aoi/ArtOfIllusion.jar'
 }
 
 package() {

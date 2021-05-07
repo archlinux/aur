@@ -1,7 +1,7 @@
 pkgbase = aoi
 	pkgdesc = A 3D modeling and rendering studio (Art of Illusion)
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.artofillusion.org/
 	arch = any
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = aoi
 	source = https://netcologne.dl.sourceforge.net/project/aoi/ArtOfIllusion/3.2.0/Art%20of%20Illusion%203.2.0%20no-install.zip
 	source = aoi.sh
 	md5sums = 9f8c71560203a33fa9ca8e848a0a7550
-	md5sums = 4453963d13c33bceffe515e172e78679
+	md5sums = b2c2de959cf1112a729da857bc15111c
 
 pkgname = aoi
 
