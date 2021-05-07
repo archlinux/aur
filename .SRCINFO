@@ -1,7 +1,7 @@
 pkgbase = goslice
 	pkgdesc = An experimental slicer for 3d printing written in Go.
 	pkgver = 0.3.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aligator/GoSlice
 	arch = i686
 	arch = pentium4

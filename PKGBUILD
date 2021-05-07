@@ -4,7 +4,7 @@ _pkgname=GoSlice
 pkgver=0.3.9
 # Hash of the commit to pass it as BUILD version (as it's not retrievable without git)
 _pkgverhash=d5c7a2e
-pkgrel=1
+pkgrel=2
 pkgdesc="An experimental slicer for 3d printing written in Go."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/aligator/GoSlice"
@@ -20,7 +20,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"  
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"  
 
   cd "$srcdir/$_pkgname-$pkgver"
   make VERSION=$pkgver BUILD=$pkgverhash DESTDIR="$pkgdir" PREFIX="/usr" build
