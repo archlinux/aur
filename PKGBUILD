@@ -42,7 +42,7 @@ _dir="rqt_tf_tree-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_tf_tree/archive/${pkgver}.tar.gz"
         "https://github.com/ros-visualization/rqt_tf_tree/pull/28.patch"
         "https://github.com/ros-visualization/rqt_tf_tree/pull/30.patch")
-sha256sums=('0d5996679310b747ac49d52c39e7869870458065b8ba118ed48b105d9f252604'
+sha256sums=('2167fefc172a02d9ae829e96a8dd3280a41c125d3f8840134247f60dd9f6d505'
         'SKIP'
         'SKIP')
 
