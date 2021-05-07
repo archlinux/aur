@@ -2,7 +2,7 @@
 
 pkgname=7-zip
 pkgver=21.02
-pkgrel=1
+pkgrel=2
 pkgdesc="File archiver with a high compression ratio"
 url="https://www.7-zip.org"
 license=(LGPL)
