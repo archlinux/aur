@@ -1,13 +1,13 @@
---- vdo/kernel/histogram.c	2020-01-21 02:56:37.000000000 +0100
-+++ vdo/kernel/histogram_arch.c	2020-03-12 10:59:26.296614253 +0100
-@@ -596,7 +596,10 @@
-    * milliseconds, and the unit conversion code needs updating.
-    */
-   STATIC_ASSERT(HZ <= MSEC_PER_SEC);
-+  /*
-+  * Make it work on stock arch linux kernel which has "CONFIG_HZ=300" set
-   STATIC_ASSERT((MSEC_PER_SEC % HZ) == 0);
-+  */
-   return makeLogarithmicHistogramWithConversionFactor(parent, name, initLabel,
-                                                       countedItems,
-                                                       metric, "milliseconds",
+--- vdo/histogram.c	2021-05-05 06:17:03.000000000 +0200
++++ vdo/histogram-patched.c	2021-05-07 19:21:08.173999801 +0200
+@@ -798,7 +798,10 @@
+ 	 * number of milliseconds, and the unit conversion code needs updating.
+ 	 */
+ 	STATIC_ASSERT(HZ <= MSEC_PER_SEC);
++	/*
++	 * Make it work on stock arch linux kernel which has "CONFIG_HZ=300" set
+ 	STATIC_ASSERT((MSEC_PER_SEC % HZ) == 0);
++	*/
+ 	return make_logarithmic_histogram_with_conversion_factor(
+ 		parent,
+ 		name,
