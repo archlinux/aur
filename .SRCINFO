@@ -8,6 +8,8 @@ pkgbase = gnome-shell-extension-wintile-git
 	makedepends = git
 	makedepends = zip
 	depends = gnome-shell
+	provides = gnome-shell-extension-wintile
+	conflicts = gnome-shell-extension-wintile
 	source = git+https://github.com/fmstrat/wintile.git
 	sha512sums = SKIP
 
