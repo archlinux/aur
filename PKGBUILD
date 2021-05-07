@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_tf_tree provides a GUI plugin for visualizing the ROS TF fram
 url='https://wiki.ros.org/rqt_tf_tree'
 
 pkgname='ros-noetic-rqt-tf-tree'
-pkgver='0.6.0'
+pkgver='0.6.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
