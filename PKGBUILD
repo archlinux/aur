@@ -3,7 +3,7 @@
 pkgname=gyre
 pkgver=0.1.1
 pkgrel=1
-pkgdesc='GTK Coub downloader'
+pkgdesc='GTK3 downloader for videos from Coub'
 arch=('any')
 url='https://github.com/HelpSeeker/Gyre'
 license=('GPL3')

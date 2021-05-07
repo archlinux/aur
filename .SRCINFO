@@ -1,5 +1,5 @@
 pkgbase = gyre
-	pkgdesc = GTK Coub downloader
+	pkgdesc = GTK3 downloader for videos from Coub
 	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/HelpSeeker/Gyre
