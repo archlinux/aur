@@ -1,6 +1,6 @@
 pkgname=dosbox-x-sdl2
 pkgver=0.83.13
-pkgrel=1
+pkgrel=2
 pkgdesc="x86 emulator with builtin DOS, with patches and more features"
 arch=(i686 x86_64 aarch64)
 url="http://dosbox-x.com"
@@ -16,7 +16,7 @@ build() {
   cd "$srcdir/dosbox-x-dosbox-x-v$pkgver"
   ./autogen.sh
   chmod +x configure
-  ./configure --enable-core-inline --disable-debug --enable-avcodec --prefix=/usr --enable-sdl2
+  ./configure --enable-core-inline --enable-debug --enable-avcodec --prefix=/usr --enable-sdl2
   make -j$(nproc)
 }
 
