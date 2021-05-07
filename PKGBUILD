@@ -5,7 +5,7 @@
 pkgname=lib32-gimp
 _pkgbase=gimp
 pkgver=2.10.24
-pkgrel=1
+pkgrel=2
 pkgdesc='GNU Image Manipulation Program (32-bit)'
 url="https://www.gimp.org/"
 arch=('x86_64')
@@ -45,6 +45,7 @@ build() {
     --libexecdir=/usr/bin \
     --enable-mp \
     --enable-gimp-console \
+    --without-webkit \
     --disable-check-update \
     --disable-python \
     --with-bug-report-url='https://bugs.archlinux.org/?string=gimp' \
