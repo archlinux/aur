@@ -1,17 +1,17 @@
-# Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
+# Maintainer: Shayne Hartford <shayneehartford@gmail.com>
 
 _pkgname=wootility-lekker-beta
 pkgname=${_pkgname}-appimage
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Utility for configuring Wooting keyboards (binary AppImage version)'
 arch=('x86_64')
 url='https://wooting.io/wootility'
 license=('unknown')
 depends=('fuse2')
 makedepends=('p7zip')
-provides=("${_pkgname}" "wootility-appimage")
-conflicts=("${_pkgname}" "wootility-appimage")
+provides=("wootility-appimage")
+conflicts=("wootility-appimage")
 options=(!strip)
 _appimage="${_pkgname}-${pkgver}-beta.AppImage"
 install=$pkgname.install
