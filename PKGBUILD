@@ -1,7 +1,7 @@
 # Maintainer: MF Akane <aur at sorairo dot pictures>
 pkgname=mackerel-agent-plugins-git
-pkgver=0.59.0
-pkgrel=2
+pkgver=0.64.0
+pkgrel=1
 pkgdesc="Plugins for mackerel-agent"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/mackerelio/mackerel-agent-plugins"
@@ -20,12 +20,14 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  make build
+  make build/mackerel-plugin
 }
 
 package() {
+  install -Dm755 "$srcdir/$pkgname/build/mackerel-plugin" "$pkgdir/usr/bin/mackerel-plugin"
+
   for i in `cat "$srcdir/$pkgname/packaging/deb/debian/source/include-binaries"`; do
     filename=$(basename $i)
-    install -Dm755 "`ls $srcdir/$pkgname/build/linux/*/$filename | head -n 1`" "$pkgdir/usr/bin/$filename"
+    ln -s ./mackerel-plugin "$pkgdir/usr/bin/$filename"
   done
 }
