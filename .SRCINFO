@@ -1,6 +1,6 @@
 pkgbase = deepin-wine6-stable
 	pkgdesc = Deepin Wine6 stable
-	pkgver = 6.0.0.6
+	pkgver = 6.0.0.7
 	pkgrel = 1
 	url = http://www.deepin.org
 	arch = i686
@@ -38,7 +38,7 @@ pkgbase = deepin-wine6-stable
 	depends = lib32-libxrandr
 	depends = lib32-libxi
 	depends = lib32-glu
-	source = http://community-store.deepin.com/appstore/apricot/pool/appstore/c/com.qq.weixin.work.deepin/com.qq.weixin.work.deepin_3.1.6.3605deepin3_i386.deb
-	sha256sums = 13fb8400ae9a7983ba065001695161574e79670dcdee3950f31c5068d8814f94
+	source = http://community-store.deepin.com/appstore/apricot/pool/appstore/c/com.qq.weixin.deepin/com.qq.weixin.deepin_3.2.1.154deepin8_i386.deb
+	sha256sums = 889b065178b6dec153e3836c636cfd404b82fed95092f905f922df4c2ffd4c0e
 
 pkgname = deepin-wine6-stable
