@@ -12,6 +12,10 @@ source=("https://github.com/${_reponame}/${_pkgname}/archive/refs/tags/${pkgver}
 md5sums=('SKIP')
 dirname="${_pkgname}-${pkgver}"
 
+optdepends=(
+    "just-js-completion: Shell completion"
+)
+
 build(){
     cd "${srcdir}/${dirname}"
     make runtime-static
