@@ -10,7 +10,7 @@ license=('Apache')
 url="https://github.com/birdayz/kaf"
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/birdayz/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('31dee0163cc5006559148addcf4950e1')
+md5sums=('a66a906469cf27555c88f29876039bc4')
 
 prepare() {
   cd "$pkgname-$pkgver"
