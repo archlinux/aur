@@ -4,7 +4,7 @@
 
 _pkgname=libretro-ppsspp
 pkgname=libretro-ppsspp-rbp
-pkgver=29606
+pkgver=29742
 pkgrel=1
 pkgdesc='Sony PlayStation Portable core (build for Raspberry Pi)'
 arch=(armv7h)
@@ -19,14 +19,16 @@ depends=(
   libretro-core-info
   libzip
   snappy
+  zstd
 )
 makedepends=(
   cmake
   git
   mesa
+  ninja
   python
 )
-_commit=0328a0d550840687b55f45dddcc0838b2c670aeb
+_commit=4462b0c612986cfdd585885eb56098d19c2181ec
 source=(
   libretro-ppsspp::git+https://github.com/hrydgard/ppsspp.git#commit=${_commit}
   git+https://github.com/Kingcom/armips.git
@@ -38,6 +40,7 @@ source=(
   git+https://github.com/KhronosGroup/SPIRV-Cross.git
   armips-tinyformat::git+https://github.com/Kingcom/tinyformat.git
   libretro-ppsspp-assets-path.patch
+  libretro-ppsspp-system-zstd.patch
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -48,7 +51,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '2234ab0c53849ed728889305a68119a365da16094a1b7ac2c4d2a2ababe5c8f5')
+            '2234ab0c53849ed728889305a68119a365da16094a1b7ac2c4d2a2ababe5c8f5'
+            'c65ae3f20976a573b1a74600b02515e3f665513864a49e10db57c2fd170819e7')
 
 pkgver() {
   cd libretro-ppsspp
@@ -60,13 +64,14 @@ prepare() {
   cd libretro-ppsspp
 
   patch -Np1 -i ../libretro-ppsspp-assets-path.patch
+  patch -Np1 -i ../libretro-ppsspp-system-zstd.patch
 
   for submodule in assets/lang ext/glslang ext/miniupnp; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
     git submodule update ${submodule}
   done
-  for submodule in ext/{armips,discord-rpc,rapidjson,SPIRV-Cross}; do
+  for submodule in ext/{armips,rapidjson,SPIRV-Cross}; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../${submodule#*/}
     git submodule update ${submodule}
@@ -82,7 +87,7 @@ prepare() {
 }
 
 build() {
-  cmake -S libretro-ppsspp -B build \
+  cmake -S libretro-ppsspp -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_SKIP_RPATH=ON \
     -DUSING_GLES2=yes \
@@ -93,10 +98,12 @@ build() {
     -DUNITTEST=OFF \
     -DUSE_SYSTEM_LIBZIP=ON \
     -DUSE_SYSTEM_SNAPPY=ON \
+    -DUSE_SYSTEM_ZSTD=ON \
     -DUSING_QT_UI=OFF \
+    -Wno-dev \
     -DUSE_FFMPEG=yes \
     -DUSE_SYSTEM_FFMPEG=yes
-  make -C build
+  cmake --build build
 }
 
 package() {

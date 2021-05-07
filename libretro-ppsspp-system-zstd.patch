@@ -1,0 +1,42 @@
+diff '--color=auto' -rupN libretro-ppsspp.orig/CMakeLists.txt libretro-ppsspp/CMakeLists.txt
+--- libretro-ppsspp.orig/CMakeLists.txt	2021-05-07 09:02:42.107209058 +0200
++++ libretro-ppsspp/CMakeLists.txt	2021-05-07 09:10:24.353248166 +0200
+@@ -135,6 +135,7 @@ option(USE_MINIUPNPC "Build with miniUPn
+ option(USE_SYSTEM_SNAPPY "Dynamically link against system snappy" ${USE_SYSTEM_SNAPPY})
+ option(USE_SYSTEM_FFMPEG "Dynamically link against system FFMPEG" ${USE_SYSTEM_FFMPEG})
+ option(USE_SYSTEM_LIBZIP "Dynamically link against system libzip" ${USE_SYSTEM_LIBZIP})
++option(USE_SYSTEM_ZSTD "Dynamically link against system zstd" ${USE_SYSTEM_ZSTD})
+ option(USE_ASAN "Use address sanitizer" OFF)
+ option(USE_UBSAN "Use undefined behaviour sanitizer" OFF)
+ 
+@@ -1817,8 +1818,20 @@ if(ANDROID)
+ 	endif()
+ endif()
+ 
+-set(CoreExtraLibs ${CoreExtraLibs} armips libzstd_static)
+-include_directories(ext/zstd/lib)
++set(CoreExtraLibs ${CoreExtraLibs} armips)
++
++find_package(PkgConfig)
++if(PKG_CONFIG_FOUND)
++	pkg_check_modules(ZSTD libzstd)
++endif()
++if(ZSTD_FOUND AND USE_SYSTEM_ZSTD)
++	include_directories(${ZSTD_INCLUDE_DIRS})
++	target_link_libraries(${CoreLibName} ${ZSTD_LIBRARIES})
++else()
++	add_subdirectory(ext/zstd/build/cmake EXCLUDE_FROM_ALL)
++	include_directories(ext/zstd/lib)
++	set(CoreExtraLibs ${CoreExtraLibs} libzstd_static)
++endif()
+ 
+ # needed for VK_USE_PLATFORM_XCB_KHR only
+ #if(VULKAN AND NOT WIN32)
+diff '--color=auto' -rupN libretro-ppsspp.orig/ext/CMakeLists.txt libretro-ppsspp/ext/CMakeLists.txt
+--- libretro-ppsspp.orig/ext/CMakeLists.txt	2021-05-07 09:02:41.033776512 +0200
++++ libretro-ppsspp/ext/CMakeLists.txt	2021-05-07 09:11:00.643266519 +0200
+@@ -22,4 +22,3 @@ add_subdirectory(SPIRV-Cross-build)
+ if(USE_DISCORD AND NOT IOS AND NOT LIBRETRO)
+ 	add_subdirectory(discord-rpc-build)
+ endif()
+-add_subdirectory(zstd/build/cmake EXCLUDE_FROM_ALL)
