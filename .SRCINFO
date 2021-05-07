@@ -5,24 +5,11 @@ pkgbase = pyhn
 	url = https://pypi.python.org/pypi/pyhn/
 	arch = any
 	license = AGPL3
-	makedepends = python-urwid
-	makedepends = python-beautifulsoup4
-	makedepends = python-isit
-	makedepends = python2-urwid
-	makedepends = python2-beautifulsoup4
-	makedepends = python2-isit
+	depends = python-urwid
+	depends = python-beautifulsoup4
+	depends = python-isit
 	source = https://pypi.io/packages/source/p/pyhn/pyhn-0.3.11.tar.gz
 	md5sums = e742e4cc9b29bc4fdcccbbd94d83a486
 
 pkgname = pyhn
-	pkgdesc = Hacker News command line client (Python3.x)
-	depends = python-urwid
-	depends = python-beautifulsoup4
-	depends = python-isit
-
-pkgname = pyhn2
-	pkgdesc = Hacker News command line client (Python2.x)
-	depends = python2-urwid
-	depends = python2-beautifulsoup4
-	depends = python2-isit
 
