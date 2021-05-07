@@ -1,16 +1,17 @@
 pkgbase = sis
 	pkgdesc = Legacy Logic Synthesis Software
 	pkgver = 1.4
-    pkgrel = 1
-	url = https://github.com/JackHack96/logic-synthesis/
+	pkgrel = 1
+	url = https://github.com/JackHack96/logic-synthesis
 	arch = i686
-    arch = x86_64
+	arch = x86_64
 	license = BSD
-	depends = readline
 	makedepends = gcc8
-    options = !strip
+	depends = readline
+	options = !strip
 	options = !emptydirs
 	source = https://github.com/JackHack96/logic-synthesis/archive/SIS.tar.gz
 	sha256sums = SKIP
 
 pkgname = sis
+
