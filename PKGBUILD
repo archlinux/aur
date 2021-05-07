@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_publisher provides a GUI plugin for publishing arbitrary mess
 url='https://wiki.ros.org/rqt_publisher'
 
 pkgname='ros-noetic-rqt-publisher'
-pkgver='0.4.9'
+pkgver='0.4.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -37,7 +37,7 @@ depends=(
 
 _dir="rqt_publisher-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_publisher/archive/${pkgver}.tar.gz")
-sha256sums=('c572c50f94c47f52f277575577c6dca789c6e2149176995ebd5de896a4459de7')
+sha256sums=('d2e8a127d6ca0cc5929b62bf333195c4717a49112a133bbc2d9040d242ce23c2')
 
 build() {
 	# Use ROS environment variables.
