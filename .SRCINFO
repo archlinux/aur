@@ -1,0 +1,14 @@
+pkgbase = ffdesktop
+	pkgdesc = Emulate a webcam with V4L2
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Benni3D/ffdesktop
+	arch = x86_64
+	license = MIT
+	depends = ffmpeg
+	depends = v4l2loopback-dkms
+	source = https://github.com/Benni3D/ffdesktop/archive/v1.0.tar.gz
+	md5sums = SKIP
+
+pkgname = ffdesktop
+
