@@ -4,12 +4,13 @@
 
 pkgname=lcov
 pkgver=1.15
-pkgrel=1
+pkgrel=2
 pkgdesc="front-end for GCC's coverage testing tool gcov"
 arch=('any')
 url="https://github.com/linux-test-project/$pkgname"
 license=('GPL')
 depends=('perl')
+backup=(etc/lcovrc)
 source=("https://github.com/linux-test-project/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
         "handle-equals-signs.patch"
         "fix-undef-behaviour.patch")
@@ -25,5 +26,5 @@ prepare () {
 
 package () {
     cd "$pkgname-$pkgver"
-    make PREFIX="/usr" DESTDIR="$pkgdir" install
+    make PREFIX="/usr" CFG_DIR=/etc DESTDIR="$pkgdir" install
 }

@@ -1,11 +1,12 @@
 pkgbase = lcov
 	pkgdesc = front-end for GCC's coverage testing tool gcov
 	pkgver = 1.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linux-test-project/lcov
 	arch = any
 	license = GPL
 	depends = perl
+	backup = etc/lcovrc
 	source = https://github.com/linux-test-project/lcov/releases/download/v1.15/lcov-1.15.tar.gz
 	source = handle-equals-signs.patch
 	source = fix-undef-behaviour.patch
