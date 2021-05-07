@@ -15,9 +15,9 @@ sha256sums=('3d37b3d7b672dba63ca581e80f64eca4c91399be569d551b11ae1b90e0aee82d')
 
 package() {
   mkdir -p $pkgdir/etc
-  cp -a $srcdir/$_pkgname-$pkgver/etc/i3-cheat.conf $pkgdir/etc/bspwm-cheat.conf
+  cp -a $srcdir/$_pkgname-$pkgver/etc/bspwm-cheat.conf $pkgdir/etc/bspwm-cheat.conf
   mkdir -p $pkgdir/usr/bin/
-  cp -a $srcdir/$_pkgname-$pkgver/usr/bin/i3-cheat $pkgdir/usr/bin/bspwm-cheat
+  cp -a $srcdir/$_pkgname-$pkgver/usr/bin/bspwm-cheat $pkgdir/usr/bin/bspwm-cheat
   mkdir -p $pkgdir/usr/lib
   cp -a $srcdir/$_pkgname-$pkgver/usr/lib/wm-cheat $pkgdir/usr/lib/wm-cheat
 }
