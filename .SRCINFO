@@ -1,6 +1,6 @@
 pkgbase = deepin-launcher-git
 	pkgdesc = Deepin desktop-environment - Launcher module
-	pkgver = 5.4.5.r37.gf0ea0ed9
+	pkgver = 5.4.5.r38.g84ceca60
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-launcher
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = deepin-launcher-git
 	makedepends = qt5-x11extras
 	makedepends = qt5-svg
 	makedepends = dtkwidget-git
+	makedepends = gtest
+	makedepends = gmock
 	depends = gsettings-qt
 	depends = qt5-svg
 	depends = qt5-x11extras
