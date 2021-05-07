@@ -61,15 +61,23 @@ pkgver() {
 prepare() {
   cd Nim
 
+  # Upstream "pins" supported commits:
+  local -r hash="$(grep 'Hash' config/build_config.txt | grep -Eio '[0-9a-z]{40}')"
+
   [[ -d ./csources_v1 ]] && rm -rf ./csources_v1
 
   cp -r "${srcdir}/csources_v1" .
 
+  cd csources_v1
+
+  # Checkout the "pinned" commit:
+  git -c advice.detachedHead=false checkout "$hash"
+
   # Remove hardcoded `-O3` from makefile's COMP_FLAGS:
-  patch ./csources_v1/makefile \
-  --strip=1                    \
-  --fuzz 5                     \
-  -N                           \
+  patch makefile \
+  --strip=1      \
+  --fuzz 5       \
+  -N             \
   < "${srcdir}/makepkg-conf.patch"
 }
 
