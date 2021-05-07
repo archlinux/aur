@@ -1,27 +1,34 @@
-pkgbase = yambar
-	pkgdesc = Modular status panel for X11 and Wayland, inspired by polybar
-	pkgver = 1.6.1
+pkgbase = yambar-git
+	pkgdesc = Modular status panel for X11 and Wayland, inspired by polybar (source from git)
+	pkgver = 1.6.1.r60.g18a0920
 	pkgrel = 1
 	url = https://codeberg.org/dnkl/yambar
 	arch = x86_64
+	arch = aarch64
 	license = MIT
-	makedepends = cmake
 	makedepends = git
+	makedepends = cmake
 	makedepends = libmpdclient
 	makedepends = libyaml
 	makedepends = meson
 	makedepends = ninja
 	makedepends = scdoc
-	depends = alsa-lib
-	depends = fontconfig
-	depends = pixman
-	depends = wayland
-	depends = wayland-protocols
 	depends = xcb-util-cursor
+	depends = pixman
 	depends = xcb-util-wm
 	depends = xorgproto
-	provides = yambar
-	source = yambar-1.6.1.tar.gz::https://codeberg.org/dnkl/yambar/archive/1.6.1.tar.gz
-	sha256sums = 9ddf0bd7a708445697b4bf2f1d6d0fe5c29c5c7cd6df6058a739fe89413bd2c7
+	depends = wayland
+	depends = wayland-protocols
+	depends = fontconfig
+	depends = alsa-lib
+	provides = yambar=1.6.1.r60.g18a0920
+	conflicts = yambar
+	source = git+https://codeberg.org/dnkl/yambar.git
+	source = git+https://codeberg.org/dnkl/tllist.git
+	source = git+https://codeberg.org/dnkl/fcft.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
-pkgname = yambar
+pkgname = yambar-git
+

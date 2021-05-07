@@ -1,9 +1,12 @@
-# Maintainer: Moritz Poldrack <moritz at poldrack dot dev>
-pkgname=yambar
-pkgver=1.6.1
+# Maintainer: PedroHLC <root@pedrohlc.com>
+# Contributor: Moritz Poldrack <moritz at poldrack dot dev>
+
+_pkgname=yambar
+pkgname="${_pkgname}-git"
+pkgver=1.6.1.r60.g18a0920
 pkgrel=1
-pkgdesc='Modular status panel for X11 and Wayland, inspired by polybar'
-arch=('x86_64')
+pkgdesc='Modular status panel for X11 and Wayland, inspired by polybar (source from git)'
+arch=('x86_64' 'aarch64')
 url='https://codeberg.org/dnkl/yambar'
 license=('MIT')
 depends=(
@@ -24,31 +27,34 @@ makedepends=(
 	'ninja'
 	'scdoc'
 )
-provides=('yambar')
-source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/dnkl/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('9ddf0bd7a708445697b4bf2f1d6d0fe5c29c5c7cd6df6058a739fe89413bd2c7')
+provides=("${_pkgname}=$pkgver")
+conflicts=("${_pkgname}")
+source=(
+	'git+https://codeberg.org/dnkl/yambar.git'
+	'git+https://codeberg.org/dnkl/tllist.git'
+	'git+https://codeberg.org/dnkl/fcft.git'
+)
+sha256sums=('SKIP' 'SKIP' 'SKIP')
+
+pkgver() {
+	cd yambar
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
-	rm -rf "${srcdir}"
-	mkdir -p "${srcdir}"
-	bsdtar -xf "../${pkgname}-${pkgver}.tar.gz" -C "${srcdir}"
-
 	cd yambar
 
-	mkdir subprojects
 	pushd subprojects
-	git clone https://codeberg.org/dnkl/tllist.git
-	git clone https://codeberg.org/dnkl/fcft.git
+	ln -s ../../tllist ./
+	ln -s ../../fcft ./
 	popd
 
-#	sed -ie 's/false/true/' meson_options.txt
-
 	mkdir -p bld/release && cd bld/release
-	meson --buildtype=release --prefix=${pkgdir}/usr/ ../..
+	meson --buildtype=release --prefix="${pkgdir}/usr/" ../..
 }
 
 build() {
-	cd "${srcdir}/yambar/bld/release"
+	cd yambar/bld/release
 	ninja
 }
 
