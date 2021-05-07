@@ -1,0 +1,28 @@
+From d4fc13a53f9a8bbfaf4f7fdcd5f51b94c63bf1e7 Mon Sep 17 00:00:00 2001
+From: Thomas Nilefalk <thomas.nilefalk@responsive.se>
+Date: Thu, 3 Sep 2020 16:04:34 +0200
+Subject: [PATCH 1/4] Remove use of get_filename_component() if no .git found
+
+Fixes #234
+---
+ CMakeLists.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 350bb89..40241b0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -62,7 +62,9 @@ execute_process(
+   OUTPUT_VARIABLE GITDIR
+   OUTPUT_STRIP_TRAILING_WHITESPACE
+   )
+-get_filename_component(GITDIR "${GITDIR}" ABSOLUTE)
++if (GITDIR)
++  get_filename_component(GITDIR "${GITDIR}" ABSOLUTE)
++endif()
+ 
+ # config.h checks
+ include(ConfigureChecks.cmake)
+-- 
+2.30.1
+
