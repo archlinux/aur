@@ -4,13 +4,13 @@
 
 _pkgname=mousepad
 pkgname=${_pkgname}-git
-pkgver=0.4.2+477+gc63893a
+pkgver=0.5.4+142+gd71a464
 pkgrel=1
 pkgdesc="Simple text editor for Xfce  (git checkout)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="http://www.xfce.org/"
 license=('GPL')
-depends=('gtksourceview3' 'xfconf')
+depends=('gtksourceview4' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('xfce4-dev-tools' 'git' 'intltool')
 provides=("${_pkgname}=${pkgver%.r*}")
 conflicts=("${_pkgname}")
@@ -31,7 +31,8 @@ build() {
 		--sysconfdir=/etc \
 		--libexecdir=/usr/lib/xfce4 \
 		--disable-static \
-		--disable-debug
+		--disable-debug \
+		--enable-gtksourceview4
 	
 	make  
 }
