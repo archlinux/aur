@@ -14,7 +14,7 @@ source=("https://mirror.bettercrewl.ink/pc/latest/BetterCrewlink-Linux.AppImage"
         "https://github.com/OhMyGuus/BetterCrewLink/raw/nightly/logo.png")
 md5sums=('f513aba85c06a5336328fcbc3df8e2dc'
          '617a6fc40e38cb2be31a1541e39fcf96'
-         '9aa2c25d72fa9c16b52dbc04699021e7')
+         '01af2cd3a3ef33e85f267854d35e14c4')
 options=(!strip libtool emptydirs staticlibs)
 
 package() {

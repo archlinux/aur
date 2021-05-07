@@ -17,7 +17,7 @@ pkgbase = bettercrewlink-bin
 	source = https://github.com/OhMyGuus/BetterCrewLink/raw/nightly/logo.png
 	md5sums = f513aba85c06a5336328fcbc3df8e2dc
 	md5sums = 617a6fc40e38cb2be31a1541e39fcf96
-	md5sums = 9aa2c25d72fa9c16b52dbc04699021e7
+	md5sums = 01af2cd3a3ef33e85f267854d35e14c4
 
 pkgname = bettercrewlink-bin
 
