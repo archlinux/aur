@@ -1,6 +1,6 @@
 pkgbase = clojure-lsp-bin
 	pkgdesc = Language Server (LSP) for Clojure
-	pkgver = 2021.04.27_20.17.45
+	pkgver = 2021.05.06_19.44.00
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/clojure-lsp/clojure-lsp
@@ -10,8 +10,8 @@ pkgbase = clojure-lsp-bin
 	depends = zlib
 	provides = clojure-lsp
 	conflicts = clojure-lsp
-	source_x86_64 = clojure-lsp-bin-2021.04.27_20.17.45-native-linux-amd64.zip::https://github.com/clojure-lsp/clojure-lsp/releases/download/2021.04.27-20.17.45/clojure-lsp-native-linux-amd64.zip
-	sha256sums_x86_64 = afa4493f251135f56dd74eb64348a89a413e40528769607cf044b94aa4644295
+	source_x86_64 = clojure-lsp-bin-2021.05.06_19.44.00-native-linux-amd64.zip::https://github.com/clojure-lsp/clojure-lsp/releases/download/2021.05.06-19.44.00/clojure-lsp-native-linux-amd64.zip
+	sha256sums_x86_64 = e95c5fae01864af43200205a910358212599dfa8c7d467e4cb45a36b0702721a
 
 pkgname = clojure-lsp-bin
 
