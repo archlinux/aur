@@ -1,6 +1,6 @@
 # Maintainer:  Travis Collins <erbrecht at pobox dot com>
 pkgname='noisetorch'
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=3
 pkgdesc='Real-time microphone noise suppression on Linux.'
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("${pkgver}-${pkgrel}.tar.gz::https://github.com/lawl/NoiseTorch/archive/
         "${pkgname}.install"
         "main.patch"
         "version.go")
-sha256sums=('f0887a2c8c6cd4c863e4d67da2bcfb2b3900e9f5bfd5b0c1eaef576cc67948c7'
+sha256sums=('72094ec448a19d30865434947f8518cc3510971d27f4f363d4ed22bbf8bb5685'
             '171a4179c7e0f3a018a314893e81e598c02cfee274c90d715a302660af920eba'
             'dd930c1e39e9c4c6595f604178223b606a6fdce39bcc5ef7e36e2d58cbf5aa0c'
             '1f2f114638a818fe87ad10b9c7eab91f75f75f1d4e49c0a69f989f76a0d9d0a2')
