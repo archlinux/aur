@@ -1,8 +1,8 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=python-secure
-_pypiname=secure.py
-pkgver=0.2.1
+_pypiname=secure
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="secure.py is a lightweight package that adds optional security headers and cookie attributes for Python web frameworks."
 url="https://github.com/TypeError/secure.py/releases"
@@ -10,8 +10,8 @@ arch=('any')
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
-source=(${_pypiname}-${pkgver}.tar.gz::"https://github.com/TypeError/secure.py/archive/v${pkgver}.tar.gz")
-sha256sums=('20ccb7a9f55a58e572b14fb68ec49344bbbc8574debf288caa630d0fc8f29b3c')
+source=(${_pypiname}-${pkgver}.tar.gz::"https://github.com/TypeError/secure/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('a9b5a61a78cd53c4b5c186579964025ff9d51ebb66bd66492f027240088e8984')
 
 package() {
   cd ${_pypiname}-${pkgver}
