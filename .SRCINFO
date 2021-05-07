@@ -1,6 +1,6 @@
 pkgbase = openspecfun
 	pkgdesc = collection of special mathematical functions
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/JuliaLang/openspecfun
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = openspecfun
 	makedepends = gcc-fortran
 	depends = gcc-libs
 	options = !emptydirs
-	source = openspecfun-0.5.3.tar.gz::https://github.com/JuliaLang/openspecfun/archive/v0.5.3.tar.gz
-	md5sums = 1cb5297bac37519b47962fb288960125
+	source = openspecfun-0.5.4.tar.gz::https://github.com/JuliaLang/openspecfun/archive/v0.5.4.tar.gz
+	md5sums = d62846109f87ee510b7eac3cc2c9965f
 
 pkgname = openspecfun
 
