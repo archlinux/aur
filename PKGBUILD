@@ -1,12 +1,12 @@
 # Maintainer: netthier <lp@netthier.net>
 pkgname=owofetch-git
 pkgdesc="Alternative to *fetch, uwuifies all stats."
-pkgver=0.1.r4.g8780b1c
+pkgver=0.2.r1.g490161d
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/netthier/owofetch-rs"
 license=('GPL3')
-makedepends=('rust' 'cargo')
+makedepends=('git' 'rust' 'cargo')
 provides=('owofetch')
 source=('git+https://github.com/netthier/owofetch-rs')
 sha256sums=('SKIP')
