@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=xplr-git
-pkgver=0.5.12.r1.gf2eb8fe
+pkgver=0.5.13.r0.g474c17b
 pkgrel=1
 pkgdesc="A hackable, minimal, fast TUI file explorer (git)"
 arch=('x86_64')
