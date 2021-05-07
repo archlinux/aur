@@ -1,0 +1,6 @@
+autocmd BufEnter *.ovpn setlocal filetype=openvpn
+autocmd BufRead,BufNewFile /etc/openvpn/client/*.conf set filetype=openvpn
+autocmd BufRead,BufNewFile /etc/openvpn/server/*.conf set filetype=openvpn
+
+"Additionally for symlink, linking to a file in the server or client folder.
+autocmd BufRead,BufNewFile /etc/openvpn/*.conf set filetype=openvpn

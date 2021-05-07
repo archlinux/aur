@@ -1,0 +1,18 @@
+pkgbase = vim-openvpn
+	pkgdesc = OpenVPN configuration syntax highlighter
+	pkgver = 1.11
+	pkgrel = 1
+	url = https://www.vim.org/scripts/script.php?script_id=1420
+	arch = any
+	groups = vim-plugins
+	groups = neovim-plugins
+	license = Unknown
+	optdepends = vim: vim support
+	optdepends = neovim: neovim support
+	source = openvpn.tar.bz2::http://www.vim.org/scripts/download_script.php?src_id=21998
+	source = openvpn.ft
+	sha256sums = 484f5a338a4c81662a48fd2329a94e3bda10045bcb9f4ae53fbd45f69a8eff53
+	sha256sums = b99200fa35a2137477ade40a140f54af314aede50014829a832249bc0d6fd972
+
+pkgname = vim-openvpn
+
