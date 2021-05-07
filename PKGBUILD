@@ -1,7 +1,7 @@
 # Maintainer: Ben Aaron Golberg <ben@benaaron.dev>
 
 pkgname=geticons
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="CLI tool to get icons on Linux and other Freedesktop systems"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('bash' 'icons-in-terminal')
 url="https://git.sr.ht/~zethra/geticons"
 license=('GPL')
 source=("https://git.sr.ht/~zethra/geticons/archive/${pkgver}.tar.gz")
-sha256sums=('9443c4aa1d0180f0122b6e16f927a958d363ab4eb2e7c28391956f6c0b0798d5')
+sha256sums=('6a099067a138a8e5406d21a28f69554bd99326256576b0280246540419e73ced')
 
 build() {
 	cd "${pkgname}-${pkgver}"
