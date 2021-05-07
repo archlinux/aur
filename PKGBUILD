@@ -3,8 +3,8 @@
 
 pkgname=dsnet
 _pkgname=${pkgname}
-pkgver=0.5
-pkgrel=3
+pkgver=0.6
+pkgrel=1
 pkgdesc="Simple command to manage a centralised wireguard VPN."
 arch=(any)
 url="https://github.com/naggie/dsnet"
@@ -14,7 +14,7 @@ depends=("glibc")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz" "systemd.patch")
-sha256sums=('4f68df3df59ea6ae251ad0b3c491b4ac1f95a6035fc516a04aa2bae5a3451d64'
+sha256sums=('b4206774b08aa0878ecbfc53c8d72f2b6ff52551ac1315566acf7383476571f3'
             'c6df08c39903daf29dc03cda1b0723690ec40c85b75b8f5f9a736ba1189002cd')
 
 prepare() {
