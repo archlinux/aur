@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-rqt-shell
 	pkgdesc = ROS - rqt_shell is a Python GUI plugin providing an interactive shell.
-	pkgver = 0.4.10
+	pkgver = 0.4.11
 	pkgrel = 1
 	url = https://wiki.ros.org/rqt_shell
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = ros-noetic-rqt-shell
 	depends = ros-noetic-python-qt-binding
 	depends = ros-noetic-rqt-gui
 	depends = python-rospkg
-	source = ros-noetic-rqt-shell-0.4.10.tar.gz::https://github.com/ros-visualization/rqt_shell/archive/0.4.10.tar.gz
-	sha256sums = 3810cd16027bfb9c1d2ffe439ee4a0ee37b2ac0526c4bf8eaef47314f8bf4af2
+	source = ros-noetic-rqt-shell-0.4.11.tar.gz::https://github.com/ros-visualization/rqt_shell/archive/0.4.11.tar.gz
+	sha256sums = 9057d677677055a7dd1ef48972386b55f3a3fa0e6d608b8a38ae50c6e0a56768
 
 pkgname = ros-noetic-rqt-shell
 
