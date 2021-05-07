@@ -4,7 +4,7 @@ pkgdesc="ROS - diagnostic_common_diagnostics."
 url='https://wiki.ros.org/diagnostic_common_diagnostics'
 
 pkgname='ros-noetic-diagnostic-common-diagnostics'
-pkgver='1.10.3'
+pkgver='1.10.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -37,7 +37,7 @@ depends=(
 
 _dir="diagnostics-${pkgver}/diagnostic_common_diagnostics"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/diagnostics/archive/${pkgver}.tar.gz")
-sha256sums=('ab9637e43fe742e89e08a1d9389321c89fe1d3dbaa206df9a2e8f96456518068')
+sha256sums=('70935296661d052397deea4a5cb3105ac5cf35843bf2d45b34f1f1a39c3552ec')
 
 build() {
 	# Use ROS environment variables.
