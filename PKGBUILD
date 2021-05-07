@@ -5,7 +5,7 @@
 # Contributor: Thiago Kenji Okada <thiago.mast3r@gmail.com>
 
 pkgname=ppsspp
-pkgver=1.10.3
+pkgver=1.11.3
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
@@ -28,6 +28,7 @@ makedepends=(
   cmake
   git
   libglvnd
+  ninja
   python
   qt5-tools
 )
@@ -43,7 +44,7 @@ replaces=(
   ppsspp-headless
   ppsspp-qt
 )
-_tag=cb8d95cb159c440eb5c677fbab03a01c76daeaf6
+_tag=f7ace3b8ee33e97e156f3b07f416301e885472c5
 source=(
   git+https://github.com/hrydgard/ppsspp.git#tag=${_tag}
   git+https://github.com/Kingcom/armips.git
@@ -51,12 +52,12 @@ source=(
   git+https://github.com/hrydgard/ppsspp-ffmpeg.git
   ppsspp-glslang::git+https://github.com/hrydgard/glslang.git
   git+https://github.com/hrydgard/ppsspp-lang.git
+  ppsspp-miniupnp::git+https://github.com/hrydgard/miniupnp.git
   git+https://github.com/Tencent/rapidjson.git
   git+https://github.com/KhronosGroup/SPIRV-Cross.git
   armips-tinyformat::git+https://github.com/Kingcom/tinyformat.git
   ppsspp-sdl.desktop
   ppsspp-qt.desktop
-  ppsspp-flags.patch
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -67,9 +68,9 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
             '47977bbdc36cd9eebe74b204e69aa8c0eb39b1ec66d89e7b90b1c216e5778d8d'
-            '7df9274e8f404a8009042a529729ca43332c264cff032f32b2ce1bf5adf04042'
-            '6694643d96dae673f01555637139468eb277f3379afbcceccad3f7e0ae670278')
+            '7df9274e8f404a8009042a529729ca43332c264cff032f32b2ce1bf5adf04042')
 
 pkgver() {
   cd ppsspp
@@ -80,9 +81,7 @@ pkgver() {
 prepare() {
   cd ppsspp
 
-  patch -Np1 -i ../ppsspp-flags.patch
-
-  for submodule in assets/lang ext/glslang ffmpeg; do
+  for submodule in assets/lang ext/{glslang,miniupnp} ffmpeg; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
     git submodule update ${submodule}
@@ -106,24 +105,24 @@ prepare() {
 build() {
   export CC=clang
   export CXX=clang++
-  cmake -S ppsspp -B build-sdl \
+  cmake -S ppsspp -B build-sdl -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_SKIP_RPATH=ON \
     -DHEADLESS=ON \
-    -DUSE_SYSTEM_LIBZIP=ON \
     -DOpenGL_GL_PREFERENCE=GLVND \
+    -DUSE_SYSTEM_LIBZIP=ON \
     -DUSE_SYSTEM_SNAPPY=ON \
     -DUSING_QT_UI=OFF
-  make -C build-sdl
-  cmake -S ppsspp -B build-qt \
+  cmake --build build-sdl
+  cmake -S ppsspp -B build-qt -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_SKIP_RPATH=ON \
-    -DOpenGL_GL_PREFERENCE=GLVND \
     -DHEADLESS=OFF \
+    -DOpenGL_GL_PREFERENCE=GLVND \
     -DUSE_SYSTEM_LIBZIP=ON \
     -DUSE_SYSTEM_SNAPPY=ON \
     -DUSING_QT_UI=ON
-  make -C build-qt
+  cmake --build build-qt
 }
 
 package() {
