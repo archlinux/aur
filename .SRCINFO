@@ -1,6 +1,6 @@
 pkgbase = owofetch-git
 	pkgdesc = Alternative to *fetch, uwuifies all stats.
-	pkgver = 0.1.r4.g8780b1c
+	pkgver = 0.2.r1.g490161d
 	pkgrel = 1
 	url = https://github.com/netthier/owofetch-rs
 	arch = x86_64
