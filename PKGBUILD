@@ -4,7 +4,7 @@
 pkgname=cross-mips-elf-gcc
 _pkgname=gcc
 _target="mips-elf"
-pkgver=9.1.0
+pkgver=11.1.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection for the MIPS-elf architecture"
 url="http://www.gnu.org/software/gcc/"
@@ -13,9 +13,9 @@ license=('GPL')
 depends=('libmpc' "cross-${_target}-binutils")
 options=('!ccache' '!distcc' '!emptydirs' '!libtool' '!strip')
 source=("ftp://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/${_pkgname}-${pkgver}.tar.gz"{,.sig})
-md5sums=('21cda7bbe39c95d0e81694433608a7be'
+md5sums=('333068a65c119e74c9d7bfcc75a8eeba'
          'SKIP')
-validpgpkeys=('33C235A34C46AA3FFB293709A328C3A2C3C45C06')
+validpgpkeys=('D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62')
 _sysroot="/usr/lib/cross-${_target}"
 
 prepare() {
