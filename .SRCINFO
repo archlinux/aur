@@ -1,0 +1,13 @@
+pkgbase = pacman-magic
+	pkgdesc = Fix pacman cache and update PGP keys
+	pkgver = 1
+	pkgrel = 1
+	url = http://wiki.victor3d.com.br
+	arch = any
+	license = GPL
+	depends = pacman
+	source = pacman-magic
+	md5sums = d568fb08baccb1b95348a68a4a4e6a15
+
+pkgname = pacman-magic
+
