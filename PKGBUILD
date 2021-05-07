@@ -2,12 +2,12 @@
 
 pkgname=ajour
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='World of Warcraft addon manager written in Rust'
 url='https://www.getajour.com'
 license=(MIT)
 arch=(x86_64)
-depends=(fontconfig freetype2 hicolor-icon-theme libxcb openssl)
+depends=(fontconfig freetype2 hicolor-icon-theme libxcb openssl libx11)
 makedepends=(cargo rust icoutils)
 conflicts=(ajour)
 provides=(ajour)

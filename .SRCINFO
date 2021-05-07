@@ -1,7 +1,7 @@
 pkgbase = ajour
 	pkgdesc = World of Warcraft addon manager written in Rust
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.getajour.com
 	arch = x86_64
 	license = MIT
@@ -13,6 +13,7 @@ pkgbase = ajour
 	depends = hicolor-icon-theme
 	depends = libxcb
 	depends = openssl
+	depends = libx11
 	provides = ajour
 	conflicts = ajour
 	source = https://github.com/casperstorm/ajour/archive/1.1.0.tar.gz
