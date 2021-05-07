@@ -2,7 +2,7 @@ pkgdesc="ROS - rospy is a pure Python client library for ROS."
 url='https://wiki.ros.org/rospy'
 
 pkgname='ros-noetic-rospy'
-pkgver='1.15.9'
+pkgver='1.15.11'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -36,7 +36,7 @@ depends=(
 _dir="ros_comm-${pkgver}/clients/rospy"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz"
     "2092.patch"::"https://github.com/ros/ros_comm/pull/2092.patch")
-sha256sums=('ee68c16fe6e2f3bf8fef4cf35552a30160cb3b579dfe18d667c0ba05e69ef90d'
+sha256sums=('7187dd3ab2783e5041c2ef71079cf2b6f9ed06c88c7e3c6efd7684ca5475b5bd'
     'ad42681c4249a89f4a0188f8202e73286c4090bbc919a470543af7e8f1b198f4')
 
 prepare() {

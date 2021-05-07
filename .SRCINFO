@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-rospy
 	pkgdesc = ROS - rospy is a pure Python client library for ROS.
-	pkgver = 1.15.9
+	pkgver = 1.15.11
 	pkgrel = 1
 	url = https://wiki.ros.org/rospy
 	arch = i686
@@ -21,9 +21,9 @@ pkgbase = ros-noetic-rospy
 	depends = python-yaml
 	depends = python-rospkg
 	depends = python-numpy
-	source = ros-noetic-rospy-1.15.9.tar.gz::https://github.com/ros/ros_comm/archive/1.15.9.tar.gz
+	source = ros-noetic-rospy-1.15.11.tar.gz::https://github.com/ros/ros_comm/archive/1.15.11.tar.gz
 	source = 2092.patch::https://github.com/ros/ros_comm/pull/2092.patch
-	sha256sums = ee68c16fe6e2f3bf8fef4cf35552a30160cb3b579dfe18d667c0ba05e69ef90d
+	sha256sums = 7187dd3ab2783e5041c2ef71079cf2b6f9ed06c88c7e3c6efd7684ca5475b5bd
 	sha256sums = ad42681c4249a89f4a0188f8202e73286c4090bbc919a470543af7e8f1b198f4
 
 pkgname = ros-noetic-rospy
