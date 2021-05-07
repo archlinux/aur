@@ -2,7 +2,7 @@ pkgbase = lite-xl-git
 	pkgdesc = A lightweight text editor written in Lua
 	pkgver = 1.16.9.r0.ge58d760
 	pkgrel = 1
-	url = https://github.com/franko/lite-xl-git
+	url = https://github.com/franko/lite-xl
 	arch = x86_64
 	license = MIT
 	makedepends = meson>=0.58

@@ -7,7 +7,7 @@ pkgver=1.16.9.r0.ge58d760
 pkgrel=1
 pkgdesc='A lightweight text editor written in Lua'
 arch=('x86_64')
-url="https://github.com/franko/$pkgname"
+url="https://github.com/franko/$_pkgname"
 license=('MIT')
 depends=('lua52' 'sdl2' 'freetype2')
 makedepends=('meson>=0.58' 'gendesk')
