@@ -1,6 +1,6 @@
 pkgbase = tsukae-git
 	pkgdesc = Show off your most used shell commands
-	pkgver = 20210308.r16.68556c5
+	pkgver = 20210419.r21.8111ddd
 	pkgrel = 1
 	url = https://github.com/irevenko/tsukae
 	arch = x86_64

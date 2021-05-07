@@ -2,7 +2,7 @@
 # Contributor:  Ilya Revenko <i.revenko at ct-college dot net>
 
 pkgname=tsukae-git
-pkgver=20210308.r16.68556c5
+pkgver=20210419.r21.8111ddd
 pkgrel=1
 provides=('tsukae')
 conflicts=('tsukae')
