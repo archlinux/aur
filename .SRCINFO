@@ -1,6 +1,6 @@
 pkgbase = ultralist
 	pkgdesc = Simple task management for tech folks.
-	pkgver = 1.6.1
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://ultralist.io/
 	arch = i686
@@ -9,12 +9,12 @@ pkgbase = ultralist
 	license = MIT
 	source = LICENSE::https://raw.githubusercontent.com/ultralist/ultralist/master/LICENSE.md
 	sha256sums = 11d9f7debc85882dbabbba5b0a74261010e3be35bf628e3aa841863c95d6c6f1
-	source_i686 = ultralist_1.6.1.tar.gz::https://github.com/ultralist/ultralist/releases/download/1.6.1/ultralistlinux_386.tar.gz
+	source_i686 = ultralist_1.7.0.tar.gz::https://github.com/ultralist/ultralist/releases/download/1.7.0/ultralistlinux_386.tar.gz
 	sha256sums_i686 = c3acaecd13edf1dd5b07a18c10a82be468082b3fce933cb2e40efe396d991835
-	source_x86_64 = ultralist_1.6.1.tar.gz::https://github.com/ultralist/ultralist/releases/download/1.6.1/ultralistlinux_amd64.tar.gz
-	sha256sums_x86_64 = 9dc3c8fa5a73ea7f1b6b9377e57f1fc554a2f021add2e428839c3f15587fd67c
-	source_aarch64 = ultralist_1.6.1.tar.gz::https://github.com/ultralist/ultralist/releases/download/1.6.1/ultralistlinux_arm64.tar.gz
-	sha256sums_aarch64 = e175dfaefbcc586cea53207870f0d125cd495476d78cbedcadecf4c85446e518
+	source_x86_64 = ultralist_1.7.0.tar.gz::https://github.com/ultralist/ultralist/releases/download/1.7.0/ultralistlinux_amd64.tar.gz
+	sha256sums_x86_64 = 73690d537adc0836797c1fb1cc8c661f1c2b8a12e0a56a79630a51a91fb7c281
+	source_aarch64 = ultralist_1.7.0.tar.gz::https://github.com/ultralist/ultralist/releases/download/1.7.0/ultralistlinux_arm64.tar.gz
+	sha256sums_aarch64 = 2f62da19ab925e0528f2a9c524c4f4ec98ad87403e8fafb33910d764e1d442b8
 
 pkgname = ultralist
 
