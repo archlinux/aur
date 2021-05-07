@@ -7,8 +7,8 @@ pkgbase = gnome-shell-extension-wintile
 	license = GPL3
 	makedepends = zip
 	depends = gnome-shell
-	provides = gnome-shell-extension-wintile
-	conflicts = gnome-shell-extension-wintile
+	provides = gnome-shell-extension-wintile-git
+	conflicts = gnome-shell-extension-wintile-git
 	source = gnome-shell-extension-wintile-7.tar.gz::https://github.com/fmstrat/wintile/archive/v7.tar.gz
 	sha512sums = SKIP
 
