@@ -2,7 +2,7 @@ pkgdesc="ROS - Provides a cmake config for the default version of Gazebo for the
 url='https://wiki.ros.org/gazebo_ros_pkgs'
 
 pkgname='ros-noetic-gazebo-dev'
-pkgver='2.9.1'
+pkgver='2.9.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('Apache 2.0')
@@ -17,7 +17,7 @@ depends=(${ros_depends[@]}
 
 _dir="gazebo_ros_pkgs-${pkgver}/gazebo_dev"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-simulation/gazebo_ros_pkgs/archive/${pkgver}.tar.gz")
-sha256sums=('9fac7aa1e9773aae20cfef1ec062353f91e4546ebd638e1df2e3f8b51f1e0773')
+sha256sums=('db937f15e5bf8f804de5d8dc0b67607f8b354aecde35785b6bff2d43387abff4')
 
 build() {
   # Use ROS environment variables
