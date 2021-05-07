@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=freecad-git
-pkgver=0.19.r559.gccc4151b30
+pkgver=0.19.r581.g20e756306d
 pkgrel=1
 epoch=0
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
@@ -119,7 +119,15 @@ package() {
 
   # fix Ext & Mod locations
   mkdir -p "${pkgdir}${_destdir}"/lib/freecad
-  mv "${pkgdir}${_destdir}"/{Ext,Mod} "${pkgdir}${_destdir}"/lib/freecad
+  mv "${pkgdir}${_destdir}"/{Ext,Mod,bin} "${pkgdir}${_destdir}"/lib/freecad
+
+  # links for bin
+  mkdir -p "${pkgdir}${_destdir}"/bin
+  FILES="${pkgdir}${_destdir}"/lib/freecad/bin/*
+  for f in $FILES
+  do
+    ln -s ${_destdir}/lib/freecad/bin/$(basename $f) "${pkgdir}${_destdir}"/bin/$(basename $f)
+  done
 
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 "${pkgdir}${_destdir}"/share/License.txt
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICENSE
