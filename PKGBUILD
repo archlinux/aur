@@ -4,7 +4,7 @@ pkgdesc="ROS - RQT plugin for monitoring ROS processes."
 url='https://wiki.ros.org/rqt_top'
 
 pkgname='ros-noetic-rqt-top'
-pkgver='0.4.9'
+pkgver='0.4.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -34,7 +34,7 @@ depends=(
 
 _dir="rqt_top-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_top/archive/${pkgver}.tar.gz")
-sha256sums=('18a11c1fb970ff5b20528f46590e618330a093393c86a9295404f2afde10df11')
+sha256sums=('e8fd59cd12f68054328b7b5aac108ee35c0d37d44d5aff8812332e5807b01ad7')
 
 build() {
 	# Use ROS environment variables.
