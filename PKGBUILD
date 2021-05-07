@@ -3,7 +3,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-app-cospend
-pkgver=1.3.2
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="Shared budget manager Nextcloud app"
 arch=('any')
@@ -42,3 +42,4 @@ package() {
 }
 
 sha512sums=('996b3e56c0f1d9ebb4eb6f5c08ab357ededefac7245b9b45f71a02e40315ce037f888b23b007d633c6b217d5d4037d7fc555e6cec24b93f0885f01973583b72c')
+sha512sums=('5bdc8e8f6bf9277a9c078d500dd4669963dc27dc85eeaa1744c1da3447c6b943a2e98b411014c4ddc84d2d28b17e17f162e899a0e52e2333b18a421505307747')
