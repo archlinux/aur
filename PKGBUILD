@@ -1,8 +1,8 @@
 # Maintainer: Lan Phan <phan.ngoclan58[at]gmail[dot]com>
 
 pkgname=taskflow-git
-pkgver=r45.d96fc79
-pkgrel=2
+pkgver=r50.51f9156
+pkgrel=3
 pkgdesc="Simple resource-aware task scheduler"
 arch=('x86_64')
 url="https://github.com/lanPN85/taskflow"
@@ -16,7 +16,7 @@ replaces=()
 backup=()
 options=()
 install='install.sh'
-source=('git+https://github.com/lanPN85/taskflow#tag=0.2.0')
+source=('git+https://github.com/lanPN85/taskflow#tag=0.3.0')
 noextract=()
 md5sums=('SKIP')
 
