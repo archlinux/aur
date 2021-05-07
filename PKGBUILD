@@ -15,6 +15,7 @@ prepare() {
   cd "$srcdir/OpenModelica"
   git checkout "tags/v${pkgver}"
   curl -L https://github.com/OpenModelica/OpenModelica/pull/7327.patch | patch -p1
+  curl -L https://github.com/OpenModelica/OpenModelica/pull/7445.patch | patch -p1
   sed -i "s,\.\./,https://github.com/OpenModelica/,g" .gitmodules
   git submodule sync
   git submodule update --init --recursive
