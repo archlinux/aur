@@ -8,7 +8,6 @@ arch=('x86_64')
 url='https://gitlab.com/bit3/whatsappqt'
 license=('MIT')
 depends=('qt5-webengine')
-#makedepends=('qt5-tools')
 source=("https://gitlab.com/bit3/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 sha256sums=('67b108bbdf00b2d4120575a570ce31cc8e03b628c8986bd5f033b90edea089be')
 
