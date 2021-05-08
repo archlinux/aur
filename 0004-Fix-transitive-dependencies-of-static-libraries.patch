@@ -1,23 +1,27 @@
-From c037501e09603ef9ab645b0f9c909acb693ac096 Mon Sep 17 00:00:00 2001
+From 86a27658437d4d79cd010d1dd92f300f48616e45 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 21:59:33 +0100
-Subject: [PATCH 4/7] Fix transitive dependencies (of static libraries)
+Subject: [PATCH 4/8] Fix transitive dependencies (of static libraries)
 
 The dependencies of these libraries are not reliably picked up by their
 corresponding find modules. This change allows adding the required
 dependencies by setting certain variables, e.g. within the toolchain file.
 
-Change-Id: I81dbe9eebf1529116417c5bf5332b3f135e854bd
+This change also disables the upstream hack for OpenSSL's dependencies
+as it is even more hacky to hardcode the library names and the casing
+they use doesn't even work when building on GNU/Linux.
+
+Change-Id: I9afee4f1a1debb482ede63421de86adf1c7c5adc
 ---
- cmake/3rdparty/extra-cmake-modules/find-modules/FindGLIB2.cmake | 2 +-
- cmake/FindMySQL.cmake                                           | 1 +
- cmake/FindWrapDBus1.cmake                                       | 1 +
- cmake/FindWrapOpenSSL.cmake                                     | 2 +-
- cmake/FindWrapSystemFreetype.cmake                              | 2 +-
- cmake/FindWrapSystemHarfbuzz.cmake                              | 2 +-
- cmake/FindWrapSystemPNG.cmake                                   | 2 +-
- src/plugins/sqldrivers/psql/CMakeLists.txt                      | 2 +-
- 8 files changed, 8 insertions(+), 6 deletions(-)
+ .../3rdparty/extra-cmake-modules/find-modules/FindGLIB2.cmake | 2 +-
+ cmake/FindMySQL.cmake                                         | 1 +
+ cmake/FindWrapDBus1.cmake                                     | 1 +
+ cmake/FindWrapOpenSSL.cmake                                   | 4 ++--
+ cmake/FindWrapSystemFreetype.cmake                            | 2 +-
+ cmake/FindWrapSystemHarfbuzz.cmake                            | 2 +-
+ cmake/FindWrapSystemPNG.cmake                                 | 2 +-
+ src/plugins/sqldrivers/psql/CMakeLists.txt                    | 2 +-
+ 8 files changed, 9 insertions(+), 7 deletions(-)
 
 diff --git a/cmake/3rdparty/extra-cmake-modules/find-modules/FindGLIB2.cmake b/cmake/3rdparty/extra-cmake-modules/find-modules/FindGLIB2.cmake
 index 8f873c1b45..831ca8e624 100644
@@ -33,17 +37,17 @@ index 8f873c1b45..831ca8e624 100644
  endif()
  
 diff --git a/cmake/FindMySQL.cmake b/cmake/FindMySQL.cmake
-index f6c77d2be1..c20e7c9fa5 100644
+index a069a5eb12..0fcba2148e 100644
 --- a/cmake/FindMySQL.cmake
 +++ b/cmake/FindMySQL.cmake
-@@ -37,6 +37,7 @@ if(MySQL_FOUND AND NOT TARGET MySQL::MySQL)
+@@ -40,6 +40,7 @@ if(MySQL_FOUND)
      add_library(MySQL::MySQL UNKNOWN IMPORTED)
      set_target_properties(MySQL::MySQL PROPERTIES
                            IMPORTED_LOCATION "${MySQL_LIBRARIES}"
 +                          INTERFACE_LINK_LIBRARIES "${MYSQL_DEPENDENCIES}"
                            INTERFACE_INCLUDE_DIRECTORIES "${MySQL_INCLUDE_DIRS}")
+   endif()
  endif()
- 
 diff --git a/cmake/FindWrapDBus1.cmake b/cmake/FindWrapDBus1.cmake
 index bdbcab9eb3..06e9af49f6 100644
 --- a/cmake/FindWrapDBus1.cmake
@@ -55,10 +59,19 @@ index bdbcab9eb3..06e9af49f6 100644
 +    set_property(TARGET dbus-1 PROPERTY INTERFACE_LINK_LIBRARIES "${DBUS1_DEPENDENCIES}")
  endif()
 diff --git a/cmake/FindWrapOpenSSL.cmake b/cmake/FindWrapOpenSSL.cmake
-index 6e80862258..47bea72aad 100644
+index a09aa99518..ff13e1e931 100644
 --- a/cmake/FindWrapOpenSSL.cmake
 +++ b/cmake/FindWrapOpenSSL.cmake
-@@ -14,7 +14,7 @@ if(OpenSSL_FOUND)
+@@ -11,7 +11,7 @@ set(WrapOpenSSL_FOUND OFF)
+ find_package(WrapOpenSSLHeaders ${WrapOpenSSL_FIND_VERSION})
+ 
+ if(OpenSSL_FOUND)
+-    if(WIN32)
++    if(WIN32 AND NOT MINGW)
+         get_target_property(libType OpenSSL::Crypto TYPE)
+         if(libType STREQUAL "ALIAS")
+             get_target_property(writableLib OpenSSL::Crypto ALIASED_TARGET)
+@@ -26,7 +26,7 @@ if(OpenSSL_FOUND)
      set(WrapOpenSSL_FOUND ON)
  
      add_library(WrapOpenSSL::WrapOpenSSL INTERFACE IMPORTED)
@@ -107,18 +120,18 @@ index 372a064ff4..a363bfd31b 100644
  unset(__png_target_name)
  unset(__png_found)
 diff --git a/src/plugins/sqldrivers/psql/CMakeLists.txt b/src/plugins/sqldrivers/psql/CMakeLists.txt
-index 62e9619d16..939163bde7 100644
+index b151932da7..7e6b38acd1 100644
 --- a/src/plugins/sqldrivers/psql/CMakeLists.txt
 +++ b/src/plugins/sqldrivers/psql/CMakeLists.txt
-@@ -19,7 +19,7 @@ qt_internal_add_plugin(QPSQLDriverPlugin
+@@ -16,7 +16,7 @@ qt_internal_add_plugin(QPSQLDriverPlugin
          QT_NO_CAST_FROM_ASCII
          QT_NO_CAST_TO_ASCII
-     PUBLIC_LIBRARIES
+     LIBRARIES
 -        PostgreSQL::PostgreSQL
 +        PostgreSQL::PostgreSQL ${POSTGRESQL_DEPENDENCIES}
          Qt::Core
          Qt::CorePrivate
          Qt::SqlPrivate
 -- 
-2.30.0
+2.31.1
 

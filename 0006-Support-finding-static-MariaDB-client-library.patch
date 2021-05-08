@@ -1,31 +1,31 @@
-From f209ca4e8726ae7502e06eaea09b5590b9050804 Mon Sep 17 00:00:00 2001
+From c0e504e5d21cbf6b708dbc34d9e52e9bf56f07b3 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 8 Nov 2020 00:33:12 +0100
-Subject: [PATCH 6/7] Support finding static MariaDB client library
+Subject: [PATCH 6/8] Support finding static MariaDB client library
 
 We need to reverse the order to look for mariadb first (and only then
 for mysql) because otherwise it would pick up the static library
 "libmysqlclient.a" (provided by mingw-w64-mariadb-connector-c during
 the shared build (leading to linker errors).
 
-Change-Id: I52f0998a67d4850d6684cdda59fc4523b8549476
+Change-Id: I9559b97540f2f928b4dec990d497bf2911ad5b60
 ---
  cmake/FindMySQL.cmake | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/cmake/FindMySQL.cmake b/cmake/FindMySQL.cmake
-index c20e7c9fa5..9346cd55c6 100644
+index 0fcba2148e..ab4f6fdc9e 100644
 --- a/cmake/FindMySQL.cmake
 +++ b/cmake/FindMySQL.cmake
-@@ -27,7 +27,7 @@ find_path(MySQL_INCLUDE_DIRS
+@@ -27,7 +27,7 @@ find_path(MySQL_INCLUDE_DIR
            PATH_SUFFIXES mysql mariadb)
  
- find_library(MySQL_LIBRARIES
+ find_library(MySQL_LIBRARY
 -             NAMES libmysql mysql mysqlclient libmariadb mariadb
 +             NAMES libmariadb mariadb mariadbclient libmysql mysql mysqlclient
               HINTS ${PC_MySQL_LIBDIR})
  
  include(FindPackageHandleStandardArgs)
 -- 
-2.30.0
+2.31.1
 
