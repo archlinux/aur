@@ -27,14 +27,6 @@ _kyber_disable=y
 _2k_HZ_ticks=
 _1k_HZ_ticks=y
 _500_HZ_ticks=
-### Tweak kernel options prior to a build via nconfig
-_makenconfig=
-### Tweak kernel options prior to a build via menuconfig
-_makemenuconfig=
-### Tweak kernel options prior to a build via xconfig
-_makexconfig=
-### Tweak kernel options prior to a build via gconfig
-_makegconfig=
 # Compile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
 #
@@ -64,7 +56,7 @@ pkgver=${_major}
 #_stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=3
+pkgrel=4
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -77,8 +69,7 @@ source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz
         "https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/$_srcname.tar.xz"
         "config"
         "${_patchsource}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_patchsource}/cacule-patches/cacule-5.12-2k.patch"
-        "${_patchsource}/cacule-patches/interactivity_levels.patch"
+        "${_patchsource}/cacule-patches/cacule-5.12.patch"
         "${_patchsource}/cpu-patches/0001-cpu-patches.patch"
         "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/futex2-stable-patches-v2/0001-futex2-resync-from-gitlab.collabora.com.patch"
@@ -95,15 +86,13 @@ source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz
         "${_patchsource}/lru-patches-v3/0001-lru-patches.patch"
         "${_patchsource}/ntfs3-patches/0001-ntfs3-patches.patch"
         "${_patchsource}/zstd-dev-patches-v3/0001-zstd-dev-patches.patch"
-        "${_patchsource}/zstd-ll-patches/0001-zstd-patches.patch"
         "${_patchsource}/clearlinux-patches/0001-clearlinux-patches.patch"
         "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch")
 
 sha512sums=('ddbe371a564d6a12e638794a3833b5aaf605b4fc5adb123cbb6a26e41fe084c043041dd18a988a44d2a27848c1934feb5ff5459d121e8ea726610307289248e9'
             '9612169a9b29c2796db69c516ec094da02b7c75bff2172e93e9b296c1dcff941ad3a7ef275aa71e751e75b95922ebcc4a2ee40494eabd8d5c2d4b6119560e98e'
             '88f9f1e6ea206068fd029566e4610c16b7c3007f10363c7db37cd922fe75646437d2e4814317bc292d06eff7e9ebd29d8cd1ee82c8abf45ddd1843c1ff55f5c7'
-            '79807de3136a32f9e96f37d7781bfa4db225855573ab44092d1c22c5f9e282b1bc034b8de03c610ecba38b75708144b7a52c92e78dd460493239869cb2ae33fa'
-            'd34fcb437a41ba433be1d7df6fbff692453b117b2515d2b73e39435856fc6e43c44706bf6a6217393e492eac41207ccfb6a6cf4906a4757a2639ae684603539f'
+            '2d5bfac9593aea3f577ce499fea8e4b6a1c022297838b481e6861e66c675813d5d53588ff46c5c0a054c8d2ad05962051f6646980bb9e43b43ff6aed29ac0d90'
             '15933126feeb56ccc6ace70db9fa7afb64d148900e41a780e42e03ce09faf7bab12413f526675b918aeff55e91dc038ad58884bb7add4a45962aca79d576cb93'
             '449570b8b9a04391cc2cc171cc806b3a132c6e969c7cedf9c4925d24244888e6f2e5afb6c551521fe62fcb7e2bf08cb8d396f9ec785ecfcdd5ea27dd9ffed4ea'
             'a0ba9fd091e4cc30b2a493e23299c0ce242ee26e8af399ea9aa115face3b90a723fb20f8877042c6b311a9eca20513bb932c1fd1c5db262b1df7b37160c0634e'
@@ -120,7 +109,6 @@ sha512sums=('ddbe371a564d6a12e638794a3833b5aaf605b4fc5adb123cbb6a26e41fe084c0430
             'e2a205ff346a3d5b077e8ee70ac60f440335738dba59820abea0ec3f87a516c2a47fec2ddc59f7641bab10df9f34f3fb7d73509791fff9b49fa197028afbd532'
             '6d837eed8014bbb09b580867ed94fa03373a6a063ee68a0337109aff20b0e469c985d42b71704d08f4ea30d359cebd0a4a801a5ef6ec02c21331e40e5be1e602'
             'db592b1e12651ae494f1414079a3f268175776a067c69148387e05f86b6656308c810eb20cc5c1fe7804030abcb8c37ba5ab7480660c224c591f2718569c2cc9'
-            'e9a405643af07f8065c53c24b7ffce89d65716a6c009984c6fcd26fecf345a3a38c2ab0e58a0fac0f48ec9ea6a9cf74e06c04631ea4fcaaae4a4e7c51447a0d6'
             'a441e14f4fa25e771d51e2d0e5cb626a8eddc4dfd0e9e91c6585b35cdf4e238bc56c76ad81aa269f25067cb60eeb6f9d431b710d6f40349867cbae73b434b3bd'
             '21a613ef65497ecf66daf31b43e02022c71195b48082ae7628a9d2ba8619819f69a6702c4c87e39e8718074c7ebfd674694a29a962049a16d47f1e5f748c78c3')
 
@@ -177,6 +165,14 @@ prepare() {
 
     cpu_arch
 
+    ### Optionally set tickrate to 2000HZ
+      if [ -n "$_2k_HZ_ticks" ]; then
+        echo "Setting tick rate to 2k..."
+        scripts/config --disable CONFIG_HZ_300
+        scripts/config --enable CONFIG_HZ_2000
+        scripts/config --set-val CONFIG_HZ 2000
+      fi
+
   ### Optionally set tickrate to 1000
 	   if [ -n "$_1k_HZ_ticks" ]; then
 		    echo "Setting tick rate to 1k..."
@@ -184,14 +180,6 @@ prepare() {
         scripts/config --enable CONFIG_HZ_1000
         scripts/config --set-val CONFIG_HZ 1000
 	   fi
-
-  ### Optionally set tickrate to 2000HZ
-    if [ -n "$_2k_HZ_ticks" ]; then
-      echo "Setting tick rate to 2k..."
-      scripts/config --disable CONFIG_HZ_300
-      scripts/config --enable CONFIG_HZ_2000
-      scripts/config --set-val CONFIG_HZ 2000
-    fi
 
   ### Optionally set tickrate to 500HZ
     if [ -n "$_500_HZ_ticks" ]; then
@@ -219,11 +207,10 @@ prepare() {
       scripts/config --enable CONFIG_FUTEX2
     fi
 
-      if [ -n "$_winesync" ]; then
+    if [ -n "$_winesync" ]; then
           echo "Enable winesync support"
         scripts/config --module CONFIG_WINESYNC
-      fi
-
+    fi
 
   ### Set performance governor
     if [ -n "$_per_gov" ]; then
@@ -267,12 +254,12 @@ prepare() {
     scripts/config --disable CONFIG_LRU_GEN_STATS
 
   ### Enabling ZSTD COMPRESSION ##
-      echo "Set module compression to ZSTD"
-      scripts/config --enable CONFIG_MODULE_COMPRESS
-      scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
-      scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
-      scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
-      scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
+#      echo "Set module compression to ZSTD"
+#      scripts/config --enable CONFIG_MODULE_COMPRESS
+#      scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
+#      scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
+#      scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
+#      scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
 
   ### Enabling Cacule-Config ##
       echo "Enable CacULE CPU scheduler..."
@@ -300,9 +287,6 @@ prepare() {
       scripts/config --enable CONFIG_PREEMPT
       scripts/config --enable CONFIG_PREEMPT_COUNT
       scripts/config --enable CONFIG_PREEMPTION
-#      ##NEW
-#      scripts/config --enable CONFIG_PREEMPT_RCU
-#      scripts/config --enable CONFIG_PREEMPT_NOTIFIERS
   ### Enable NTFS3
       echo "Enable NTFS3"
       scripts/config --module CONFIG_NTFS_FS
@@ -342,19 +326,6 @@ prepare() {
           exit
           fi
       fi
-
-
-  ### Running make nconfig
-	   [[ -z "$_makenconfig" ]] ||  make nconfig
-
-  ### Running make menuconfig
-	   [[ -z "$_makemenuconfig" ]] || make menuconfig
-
-  ### Running make xconfig
-	   [[ -z "$_makexconfig" ]] || make xconfig
-
-  ### Running make gconfig
-	   [[ -z "$_makegconfig" ]] || make gconfig
 
   ### Save configuration for later reuse
      echo "Save config for reuse"
