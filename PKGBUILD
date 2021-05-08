@@ -3,7 +3,7 @@
 # Contributor: sinkuu <sinkuupump@gmail.com>
 
 pkgname="clamav-unofficial-sigs"
-pkgver="7.2.2"
+pkgver="7.2.5"
 pkgrel="1"
 pkgdesc="ClamAV Unofficial Signatures Updater maintained by eXtremeSHOK.com"
 url="https://github.com/extremeshok/clamav-unofficial-sigs"
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/extremeshok/clamav-unof
     'clamav-unofficial-sigs.tmpfiles'
     'os.conf'
 )
-sha256sums=('d1449a618bc05d303b5f088d75cea675cd56c6f94986ae604b35ebb0f1793b64'
+sha256sums=('f42f9d68e111f892bfd71393e869e53c806f48966c768d219925de6652960c50'
             '0564ecac9ea02376b627fed158c9ea899c58b528d276d6d962f9e642e060239e'
             'd5441953dbfafb14764ca30b75ad1ae48dbe8a9cace6d3f72ecb9fbe82aa36ca'
             '434000ac8572890913775451e678ec6b23cb6570828aec8ab4c690eb3f603bfb')
