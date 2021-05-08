@@ -1,18 +1,19 @@
 pkgbase = nyxt
 	pkgdesc = A keyboard-oriented, infinitely extensible web browser designed for power users
-	pkgver = 2.pre.release.6
+	pkgver = 2.pre.release.7
 	pkgrel = 2
 	url = https://github.com/atlas-engineer/nyxt
 	arch = x86_64
 	license = custom:BSD
-	makedepends = git
-	makedepends = sbcl
 	makedepends = cl-asdf
-	depends = webkit2gtk
+	makedepends = git
+	makedepends = gobject-introspection-runtime
+	makedepends = sbcl
+	depends = enchant
 	depends = glib-networking
 	depends = gsettings-desktop-schemas
 	depends = libfixposix
-	depends = enchant
+	depends = webkit2gtk
 	optdepends = gstreamer: for HTML5 audio/video
 	optdepends = gst-plugins-base: for HTML5 audio/video
 	optdepends = gst-plugins-good: for HTML5 audio/video
@@ -23,8 +24,10 @@ pkgbase = nyxt
 	conflicts = nyxt-browser
 	options = !strip
 	options = !makeflags
-	source = git+https://github.com/atlas-engineer/nyxt.git#tag=2-pre-release-6
+	source = git+https://github.com/atlas-engineer/nyxt.git#tag=2-pre-release-7
+	source = Makefile.2.pre.release.7.patch
 	sha256sums = SKIP
+	sha256sums = a6c833611d87c08e4c45299f5dda860b41cb3fea79fdde4bfb063cfeee5273e7
 
 pkgname = nyxt
 
