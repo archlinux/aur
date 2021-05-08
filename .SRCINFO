@@ -1,14 +1,14 @@
 pkgbase = gnome-shell-extension-customize-ibus
-	pkgdesc = Customize IBus for orientation, font, ascii mode auto-switch, system tray menu entries, input source indicator; theme and background picture follow GNOME Night Light Mode.
-	pkgver = 37
+	pkgdesc = Customize IBus for orientation, animation, font, ascii mode auto-switch, system tray menu entries, input source indicator; theme and background picture follow GNOME Night Light Mode.
+	pkgver = 40
 	pkgrel = 1
 	epoch = 0
 	url = https://extensions.gnome.org/extension/4112/customize-ibus/
 	arch = any
 	license = GPLv3
-	depends = gnome-shell>=3.38,
+	depends = gnome-shell>=40,
 	depends = gnome-tweaks
-	source = https://github.com/HollowMan6/Customize-IBus/archive/95e7d0be706ae7d4b9e7de16d89493b2c0535a2f/Customize-IBus-95e7d0be706ae7d4b9e7de16d89493b2c0535a2f.tar.gz
+	source = https://github.com/HollowMan6/Customize-IBus/archive/cdbe543a414344e87e47ef8387fdfe589e58ef04/Customize-IBus-cdbe543a414344e87e47ef8387fdfe589e58ef04.tar.gz
 	sha512sums = SKIP
 
 pkgname = gnome-shell-extension-customize-ibus
