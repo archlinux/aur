@@ -1,0 +1,15 @@
+pkgbase = firefox-extension-reddit-enhancement-suite
+	pkgdesc = Suite of modules that enhances your Reddit browsing experience
+	pkgver = 5.22.4
+	pkgrel = 1
+	url = https://github.com/honestbleeps/Reddit-Enhancement-Suite
+	arch = any
+	groups = firefox-addons
+	license = GPL3
+	makedepends = yarn
+	depends = firefox
+	source = Reddit-Enhancement-Suite-5.22.4.tar.gz::https://github.com/honestbleeps/Reddit-Enhancement-Suite/archive/refs/tags/v5.22.4.tar.gz
+	sha256sums = 6091983f1cb4860d87acef7679bfb4edff87af48de99032381f2a5211d553191
+
+pkgname = firefox-extension-reddit-enhancement-suite
+
