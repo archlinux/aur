@@ -1,6 +1,6 @@
 # Maintainer: Ivan Marquesi Lerner <ivanmlerner@protonmail.com>
 pkgname=solana  
-pkgver=1.6.7
+pkgver=1.6.8
 pkgrel=1
 pkgdesc="A fast, secure, and censorship resistant blockchain."
 url="https://www.solana.com"
@@ -11,47 +11,49 @@ makedepends=("rustup")
 conflicts=("solana-bin")
 provides=("solana")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/solana-labs/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('105daf012e3b8c1a4ac1e80532f12140')
+md5sums=('17818f910ef4555c6f7d4b73187343ab')
 
 prepare() {
   rustup update stable
+  BINS=(
+    solana
+    solana-bench-exchange
+    solana-bench-tps
+    solana-faucet
+    solana-gossip
+    solana-install
+    solana-keygen
+    solana-ledger-tool
+    solana-log-analyzer
+    solana-net-shaper
+    solana-sys-tuner
+    solana-validator
+    cargo-build-bpf
+    cargo-test-bpf
+    solana-dos
+    solana-install-init
+    solana-stake-accounts
+    solana-stake-monitor
+    solana-stake-o-matic
+    solana-test-validator
+    solana-tokens
+    solana-watchtower
+    solana-genesis
+  )
 }
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build
-  cargo install --path cli --root .
-  cargo install --path accounts-bench --root .
-  cargo install --path banking-bench --root .
-  cargo install --path bench-exchange --root .
-  cargo install --path bench-streamer --root .
-  cargo install --path bench-tps --root .
-  cargo install --path dos --root .
-  cargo install --path faucet --root .
-  cargo install --path genesis --root .
-  cargo install --path gossip --root .
-  cargo install --path install --root .
-  cargo install --path keygen --root .
-  cargo install --path ledger-tool --root .
-  cargo install --path log-analyzer --root .
-  cargo install --path merkle-root-bench --root .
-  cargo install --path net-shaper --root .
-  cargo install --path net-utils --root .
-  cargo install --path poh-bench --root .
-  cargo install --path ramp-tps --root .
-  cargo install --path remote-wallet --root .
-  cargo install --path scripts --root .
-  cargo install --path stake-accounts --root .
-  cargo install --path stake-monitor --root .
-  cargo install --path stake-o-matic --root .
-  cargo install --path sys-tuner --root .
-  cargo install --path tokens --root .
-  cargo install --path upload-perf --root .
-  cargo install --path validator --root .
-  cargo install --path watchtower --root .
+  binargs=()
+  for bin in "${BINS[@]}"; do
+    binargs+=(--bin "$bin")
+  done
+  cargo build --release "${binargs[@]}"
 }
 
 package() {
   mkdir -p $pkgdir/usr/bin
-  install -Dm755 $srcdir/$pkgname-$pkgver/bin/* $pkgdir/usr/bin
+  for bin in "${BINS[@]}"; do
+     install -Dm755 $srcdir/$pkgname-$pkgver/target/release/$bin $pkgdir/usr/bin
+  done
 }
