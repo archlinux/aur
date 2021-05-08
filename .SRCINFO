@@ -1,0 +1,22 @@
+pkgbase = wxweaver-git
+	pkgdesc = GUI Designer for wxWidgets
+	pkgver = 2236.37fc5e28
+	pkgrel = 1
+	url = https://wxweaver.github.org
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = wxgtk3
+	provides = wxweaver
+	provides = wxformbuilder
+	conflicts = wxweaver
+	conflicts = wxformbuilder
+	conflicts = wxformbuilder-svn
+	source = git://github.com/wxweaver/wxWeaver.git
+	sha512sums = SKIP
+
+pkgname = wxweaver-git
+
