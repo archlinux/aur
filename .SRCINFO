@@ -1,0 +1,19 @@
+pkgbase = markdown-to-standalone-html
+	pkgdesc = Create a standalone HTML file from Markdown with basic CSS, table of contents and source code highlighting
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/EdJoPaTo/markdown-to-standalone-html
+	arch = x86_64
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = cargo
+	optdepends = monolith: inline assets like images or CSS
+	provides = markdown-to-standalone-html
+	conflicts = markdown-to-standalone-html
+	source = markdown-to-standalone-html-0.4.1.tar.gz::https://github.com/EdJoPaTo/markdown-to-standalone-html/archive/v0.4.1.tar.gz
+	sha256sums = e2a3672cbacfef374f84717147b224d18e1fde177ae08085840463aa7f260fef
+
+pkgname = markdown-to-standalone-html
+
