@@ -1,11 +1,12 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
-# Contributor: Grigorii Horos <horosgrisa@gmail.com>
+# Contributor: Grigorii Horos <grigorii dot horos at gmail dot com>
+
 pkgname=zpm-git
-pkgver=r1153.a9c89bc
+pkgver=r1156.0f562f8
 pkgrel=2
 pkgdesc="A plugin manager for zsh"
 arch=('any')
-url="https://github.com/horosgrisa/zpm"
+url="https://github.com/zpm-zsh/zpm"
 license=('LGPL3')
 depends=('zsh')
 optdepends=('parallel: Parallel execution'
