@@ -1,19 +1,21 @@
 pkgbase = mit-scheme
 	pkgdesc = MIT/GNU Scheme
-	pkgver = 9.2
+	pkgver = 11.2
 	pkgrel = 1
-	url = http://www.gnu.org/software/mit-scheme/
-	arch = i686
+	url = https://www.gnu.org/software/mit-scheme/
 	arch = x86_64
 	license = GPL
-	depends = glibc
+	makedepends = ghostscript
 	depends = ncurses
 	depends = zlib
+	depends = libx11
 	optdepends = openssl: support for openssl
-	source_i686 = http://ftp.gnu.org/gnu/mit-scheme/stable.pkg/9.2/mit-scheme-9.2-i386.tar.gz
-	md5sums_i686 = b80458f85b9521bdfb0620edc89e3e61
-	source_x86_64 = http://ftp.gnu.org/gnu/mit-scheme/stable.pkg/9.2/mit-scheme-9.2-x86-64.tar.gz
-	md5sums_x86_64 = 9fcc6c156e53efeb0560996551fa0a57
+	provides = x11-shim.so
+	source = https://ftp.gnu.org/gnu/mit-scheme/stable.pkg/11.2/mit-scheme-11.2-x86-64.tar.gz
+	source = https://ftp.gnu.org/gnu/mit-scheme/stable.pkg/11.2/mit-scheme-11.2-x86-64.tar.gz.sig
+	validpgpkeys = 8F664EF430167B808170D35AC9E40BAAFD0CB132
+	sha256sums = 7ca848cccf29f2058ab489b41c5b3a101fb5c73dc129b1e366fb009f3414029d
+	sha256sums = SKIP
 
 pkgname = mit-scheme
 

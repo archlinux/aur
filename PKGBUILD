@@ -1,30 +1,43 @@
-# Maintainer:  Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
+# Maintainer: Alad Wenter <alad@mailbox.org>
+# Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 # Contributor: peter feigl <peter.feigl@gmail.com>
 
 pkgname=mit-scheme
-pkgver=9.2
+pkgver=11.2
 pkgrel=1
 pkgdesc='MIT/GNU Scheme'
-arch=('i686' 'x86_64')
+url='https://www.gnu.org/software/mit-scheme/'
+arch=('x86_64')
 license=('GPL')
-url='http://www.gnu.org/software/mit-scheme/'
-depends=('glibc' 'ncurses' 'zlib')
+depends=('ncurses' 'zlib' 'libx11')
+makedepends=('ghostscript')
 optdepends=('openssl: support for openssl')
-
-source_i686=(http://ftp.gnu.org/gnu/$pkgname/stable.pkg/$pkgver/$pkgname-$pkgver-i386.tar.gz)
-source_x86_64=(http://ftp.gnu.org/gnu/$pkgname/stable.pkg/$pkgver/$pkgname-$pkgver-x86-64.tar.gz)
-md5sums_i686=('b80458f85b9521bdfb0620edc89e3e61')
-md5sums_x86_64=('9fcc6c156e53efeb0560996551fa0a57')
+provides=('x11-shim.so')
+source=("https://ftp.gnu.org/gnu/mit-scheme/stable.pkg/$pkgver/$pkgname-$pkgver-x86-64.tar.gz"
+        "https://ftp.gnu.org/gnu/mit-scheme/stable.pkg/$pkgver/$pkgname-$pkgver-x86-64.tar.gz.sig")
+validpgpkeys=('8F664EF430167B808170D35AC9E40BAAFD0CB132') # Chris Hanson <cph@chris-hanson.org>
+sha256sums=('7ca848cccf29f2058ab489b41c5b3a101fb5c73dc129b1e366fb009f3414029d'
+            'SKIP')
 
 build() {
-  cd $pkgname-$pkgver/src
-  ./configure --prefix=/usr \
-    --with-x \
-    --enable-native-code
-  make
+    cd "$pkgname-$pkgver"/src
+    ./configure --prefix=/usr \
+        --with-x \
+        --enable-x11 \
+        --enable-native-code
+    make -j1
+    cd ../doc
+    ./configure --prefix=/usr \
+        --disable-pdf \
+        --disable-html
+    make
 }
 
 package() {
-  cd $pkgname-$pkgver/src
-  make DESTDIR="$pkgdir" install
+    cd "$pkgname-$pkgver"
+    install -Dm644 "etc/xscheme.el" "$pkgdir/usr/share/emacs/site-lisp/xscheme.el"
+    cd src
+    make DESTDIR="$pkgdir" install
+    cd ../doc
+    make DESTDIR="$pkgdir" install-info install-man
 }
