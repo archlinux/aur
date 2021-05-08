@@ -1,0 +1,15 @@
+pkgbase = java-jsch
+	pkgdesc = A pure Java implementation of SSH2
+	pkgver = 0.1.55
+	pkgrel = 2
+	url = http://www.jcraft.com/jsch/
+	arch = any
+	license = BSD
+	makedepends = apache-ant
+	makedepends = java-environment=8
+	depends = java-runtime-headless=8
+	source = https://downloads.sourceforge.net/project/jsch/jsch/0.1.55/jsch-0.1.55.zip
+	sha512sums = 334b550594272fe179f13fb6bbfc0a353334586786db2b3279608b85cdab3dd604e6dd04aa2376b5532816d906133e636b5359dda36c449d90173be501c61418
+
+pkgname = java-jsch
+
