@@ -2,7 +2,7 @@ pkgdesc="ROS - The diagnostic_analysis package can convert a log of diagnostics 
 url='https://wiki.ros.org/diagnostic_analysis'
 
 pkgname='ros-noetic-diagnostic-analysis'
-pkgver='1.10.3'
+pkgver='1.10.4'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -33,7 +33,7 @@ depends=(
 
 _dir="diagnostics-${pkgver}/diagnostic_analysis"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/diagnostics/archive/${pkgver}.tar.gz")
-sha256sums=('ab9637e43fe742e89e08a1d9389321c89fe1d3dbaa206df9a2e8f96456518068')
+sha256sums=('70935296661d052397deea4a5cb3105ac5cf35843bf2d45b34f1f1a39c3552ec')
 
 build() {
     # Use ROS environment variables.
