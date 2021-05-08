@@ -1,0 +1,67 @@
+From 58ecfedd3e4868c7ac9bb3402e6b44c5e0a1091f Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Fri, 7 May 2021 16:10:47 +0200
+Subject: [PATCH 2/2] Build tools for the target platform
+
+These tools seem to be not portable so they should not be built for the
+host platform. If they need to be executed on the host they could be
+executed using WINE.
+---
+ src/tools/idc/CMakeLists.txt | 5 +++--
+ tools/dumpcpp/CMakeLists.txt | 3 +--
+ tools/dumpdoc/CMakeLists.txt | 3 +--
+ 3 files changed, 5 insertions(+), 6 deletions(-)
+
+diff --git a/src/tools/idc/CMakeLists.txt b/src/tools/idc/CMakeLists.txt
+index d21b9f0..d401e45 100644
+--- a/src/tools/idc/CMakeLists.txt
++++ b/src/tools/idc/CMakeLists.txt
+@@ -5,12 +5,13 @@
+ #####################################################################
+ 
+ qt_get_tool_target_name(target_name idc)
+-qt_internal_add_tool(${target_name} # special case
++qt_internal_add_app(${target_name} # special case
+ #    BOOTSTRAP # special case
+     TARGET_DESCRIPTION "Active Qt Interface Description Compiler"
+-    TOOLS_TARGET AxContainer # special case
+     SOURCES
+         main.cpp
++    PUBLIC_LIBRARIES
++        Qt::Core
+ )
+ 
+ #### Keys ignored in scope 1:.:.:idc.pro:<TRUE>:
+diff --git a/tools/dumpcpp/CMakeLists.txt b/tools/dumpcpp/CMakeLists.txt
+index 8d8db8f..2c86194 100644
+--- a/tools/dumpcpp/CMakeLists.txt
++++ b/tools/dumpcpp/CMakeLists.txt
+@@ -5,9 +5,8 @@
+ #####################################################################
+ 
+ qt_get_tool_target_name(target_name dumpcpp)
+-qt_internal_add_tool(${target_name} # special case
++qt_internal_add_app(${target_name} # special case
+     TARGET_DESCRIPTION "Active Qt DumpCpp"
+-    TOOLS_TARGET AxContainer # special case
+     SOURCES
+         main.cpp
+         moc.cpp moc.h
+diff --git a/tools/dumpdoc/CMakeLists.txt b/tools/dumpdoc/CMakeLists.txt
+index 073ce62..a646314 100644
+--- a/tools/dumpdoc/CMakeLists.txt
++++ b/tools/dumpdoc/CMakeLists.txt
+@@ -5,9 +5,8 @@
+ #####################################################################
+ 
+ qt_get_tool_target_name(target_name dumpdoc)
+-qt_internal_add_tool(${target_name} # special case
++qt_internal_add_app(${target_name} # special case
+     TARGET_DESCRIPTION "Active Qt DumpDoc"
+-    TOOLS_TARGET AxContainer # special case
+     SOURCES
+         main.cpp
+     PUBLIC_LIBRARIES
+-- 
+2.31.1
+
