@@ -1,10 +1,9 @@
 pkgbase = gost-engine
-	pkgdesc = Russian GOST R 34.10 and GOST R 34.11-2012 crypto algorithms for OpenSSL
+	pkgdesc = Russian GOST R 34.10 and GOST R 34.11-2012 Crypto Algorithms for OpenSSL
 	pkgver = 1.1.1.r496.9b492b3
 	pkgrel = 1
 	url = https://github.com/gost-engine/engine
 	install = gost-engine.install
-	arch = i686
 	arch = x86_64
 	license = Apache 2.0
 	makedepends = cmake
