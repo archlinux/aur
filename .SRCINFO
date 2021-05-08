@@ -8,7 +8,6 @@ pkgbase = sideload-git
 	makedepends = git
 	makedepends = libxml
 	makedepends = meson
-	makedepends = gobject
 	makedepends = gtk3
 	makedepends = vala
 	makedepends = git
