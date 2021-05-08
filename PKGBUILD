@@ -2,17 +2,17 @@
 _perlmod=Device-USB
 _modnamespace=Device
 pkgname=perl-device-usb
-pkgver=0.36
+pkgver=0.38
 pkgrel=1
 pkgdesc="Perl wrapper around the libusb 0.1 library"
 arch=(i686 x86_64 armv7h)
-url="http://search.cpan.org/dist/$_perlmod"
+url="https://search.cpan.org/dist/$_perlmod"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0' 'libusb-compat')
 makedepends=('perl-extutils-makemaker-aur' 'perl-inline-c')
 options=('!emptydirs')
-source=("http://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz")
-md5sums=(aa91bee777f7ed7a18225a84f8795344)
+source=("https://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz")
+sha256sums=(f0c36379db4913406dc9bd546a6cfd4da20d58f7c2cc085893a2fe67a43465dc)
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
