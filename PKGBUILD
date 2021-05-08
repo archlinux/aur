@@ -3,8 +3,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-xml-compile-soap
-pkgver=3.26
-pkgrel=2
+pkgver=3.27
+pkgrel=1
 pkgdesc='Perl package for SOAP implementations'
 arch=('any')
 url='https://metacpan.org/release/XML-Compile-SOAP'
@@ -17,9 +17,9 @@ depends=(
 	'perl-libwww>=6.08'
 	'perl-net-http>=6.16'
 	'perl-file-slurper')
-source=(http://search.cpan.org/CPAN/authors/id/M/MA/MARKOV/XML-Compile-SOAP-3.26.tar.gz)
+source=(http://search.cpan.org/CPAN/authors/id/M/MA/MARKOV/XML-Compile-SOAP-3.27.tar.gz)
 options=(!emptydirs)
-md5sums=('638f534aeffe29521d4b42e6fd2d4ea9')
+md5sums=('9e9868729f76d0a7e27905e469cf943a')
 
 sanitize() {
 	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
@@ -27,20 +27,20 @@ sanitize() {
 }
 
 build() {
-	cd XML-Compile-SOAP-3.26
+	cd XML-Compile-SOAP-3.27
 	sanitize
 	/usr/bin/perl Makefile.PL INSTALLDIRS=vendor
 	make
 }
 
 check() {
-	cd XML-Compile-SOAP-3.26
+	cd XML-Compile-SOAP-3.27
 	sanitize
 	make test
 }
 
 package() {
-	cd XML-Compile-SOAP-3.26
+	cd XML-Compile-SOAP-3.27
 	sanitize
 	make install DESTDIR="$pkgdir"
 	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
