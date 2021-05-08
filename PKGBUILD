@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt6-base-headless
-_qtver=6.0.4
+_qtver=6.1.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -20,11 +20,11 @@ optdepends=('postgresql-libs: PostgreSQL driver'
 groups=(qt6)
 conflicts=(qt6-base)
 provides=(qt6-base)
-_pkgfn="qtbase-everywhere-src-${_qtver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz"
-         qt6-base-cflags.patch
-         qt6-base-nostrip.patch)
-sha256sums=('c42757932d7cb264a043cc2a0eed30774d938f63db67bfff11d8e319c0c8799a'
+_pkgfn="qtbase-everywhere-src-$_qtver"
+source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
+        qt6-base-cflags.patch
+        qt6-base-nostrip.patch)
+sha256sums=('f7af3c87e96051d09b5abce6c88277c33031bef241ebfe1db4106d33ed0814c4'
             'cf707cd970650f8b60f8897692b36708ded9ba116723ec8fcd885576783fe85c'
             '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094')
 
@@ -37,6 +37,8 @@ build() {
   cmake -G Ninja -B build -S "$_pkgfn" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DINSTALL_BINDIR=lib/qt6/bin \
+    -DINSTALL_PUBLICBINDIR=usr/bin \
+    -DINSTALL_LIBEXECDIR=lib/qt6 \
     -DINSTALL_DOCDIR=share/doc/qt6 \
     -DINSTALL_ARCHDATADIR=lib/qt6 \
     -DINSTALL_DATADIR=share/qt6 \
@@ -60,9 +62,10 @@ package() {
 
   install -Dm644 $_pkgfn/LICENSE* -t "$pkgdir"/usr/share/licenses/$pkgbase
 
-  # Symlinks for backwards compatibility
-  mkdir -p "$pkgdir"/usr/bin
-  for _b in $(ls "$pkgdir"/usr/lib/qt6/bin); do
-    ln -rs "$pkgdir"/usr/lib/qt6/bin/$_b "$pkgdir"/usr/bin/$_b-qt6
-  done
+# Install symlinks for user-facing tools
+  cd "$pkgdir"
+  mkdir usr/bin
+  while read _line; do
+    ln -s $_line
+  done < "$srcdir"/build/user_facing_tool_links.txt
 }
