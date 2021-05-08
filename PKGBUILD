@@ -1,21 +1,24 @@
-# Maintainer: John Jenkins twodopeshaggy@gmail.com
-
+# Maintainer: Alad Wenter <alad@archlinux.org>
+# Contributor: John Jenkins twodopeshaggy@gmail.com
 pkgname=rtv
-pkgver=1.24.0
-pkgrel=2
+pkgver=1.27.0
+pkgrel=3
 pkgdesc="Browse Reddit from your terminal"
 arch=('any')
 url="https://github.com/michael-lazar/rtv"
-license=('MIT')
-conflicts=('rtv-git')
+license=('custom:MIT')
 makedepends=('python-setuptools')
 depends=('python-beautifulsoup4' 'python-decorator' 'python-kitchen' 'python-six' 'python-requests')
-source=(https://github.com/michael-lazar/rtv/archive/v$pkgver.tar.gz)
-md5sums=('59bad003b7734192a49de0d9a39eeeb9')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('c57a6cbb2525160b6aaa9180aec0293962b6969675f8ac0f2cfacff3cbd00d7c')
+
+build() {
+    cd "$pkgname-$pkgver"
+    python setup.py build
+}
 
 package() {
-   cd "$srcdir/$pkgname-$pkgver"
-   python setup.py install --root="$pkgdir/" --optimize=1
-   mkdir -p $pkgdir/usr/share/licenses/$pkgname
-   install -m 0644 LICENSE $pkgdir/usr/share/licenses/$pkgname/
+    cd "$pkgname-$pkgver"
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
