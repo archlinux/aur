@@ -1,7 +1,7 @@
 # Maintainer: %s <%s>
 pkgname=spl-token  
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A token program on the Solana blockchain, usable for fungible and non-fungible tokens"
 url="https://github.com/solana-labs/solana-program-library"
 arch=('i686' 'x86_64')
@@ -18,10 +18,9 @@ prepare() {
 
 build() {
   cd "solana-program-library--solana-$pkgname-v$pkgver"
-  cargo build
-  cargo install --path token/cli --root .
+  cargo build --release --bin spl-token
 }
 package() {
   mkdir -p $pkgdir/usr/bin
-  install -Dm755 $srcdir/solana-program-library--solana-$pkgname-v$pkgver/bin/$pkgname $pkgdir/usr/bin
+  install -Dm755 $srcdir/solana-program-library--solana-$pkgname-v$pkgver/target/release/$pkgname $pkgdir/usr/bin
 }
