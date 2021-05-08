@@ -1,23 +1,105 @@
+pre_install() {
+    echo "$1"
+    echo "$0"
+    echo "$2"
+    echo "$3"
+
+    if [ "$1" = "install" ]; then 
+        if ! pacman -Qs yozo-office | grep -qi 'local'; then
+            if [ -f /etc/Yozosoft/Yozo_Office/installinfo.cfg ]; then
+                echo "Yozo Office is exist. Please uninstall Yozo Office, then install this office."
+                exit 1
+            fi
+            if [ -f /etc/Evermore/EIOffice/installinfo.cfg ]; then
+                echo "EIOffice is exist. Please uninstall EIOffice, then install this office."
+                exit 1
+            fi
+        fi
+    fi
+
+    if [ "$1" = "upgrade" ]; then
+        if [ -f /opt/Yozosoft/Yozo_Office/System/doExit ]; then
+            /opt/Yozosoft/Yozo_Office/System/doExit -check
+            if [ $? -ne 0 ]; then
+                echo "Yozo Office is running. Please stop Yozo Office, then upgrade."
+                exit 1
+            fi
+         fi
+    fi
+
+    exit 0
+
+}
 post_install() {
-  cd /usr/lib/jvm/java-8-openjdk/jre/lib
-  for i in *; do
-      if [ "$i" != "ext" ]; then
-          ln -sf /usr/lib/jvm/java-8-openjdk/jre/lib/$i /opt/Yozosoft/Yozo_Office/Jre/lib/$i
-      fi
-  done
-  echo "------------------- 温馨提示 --------------------"
-  echo "如果您刚才看见大量的 can't translate pathname ~"
-  echo "to UTF-8 报告，不用担心，这不影响安装后软件正常使用。"
-  echo "这是由于原包里的中文文件/目录名未采用标准字符，编码无法"
-  echo "正常转换所致。"
-  echo "祝您使用愉快 ～"
-  post_upgrade
+  # cd /usr/lib/jvm/java-8-openjdk/jre/lib
+  # for i in *; do
+  #    if [ "$i" != "ext" ]; then
+  #        ln -sf /usr/lib/jvm/java-8-openjdk/jre/lib/$i /opt/Yozosoft/Yozo_Office/Jre/lib/$i
+  #    fi
+  #done
+  # post_upgrade
+    echo "$0"
+    echo "$1"
+    echo "$2"
+    echo "$3"
+    target=/opt/Yozosoft/Yozo_Office
+    if [ "$1" = "configure" ]; then
+        if [ -z "$2" ]; then
+            echo "Configuring system. Please wait a while."
+            $target/Jre/bin/java -jar $target/System/configure.jar -i
+        fi
+        $target/Jre/bin/deployApplet -default -nogui
+        echo "Congratulations! Installation is complete. Please restart your computer."
+    fi
+    exit 0
 }
 post_upgrade() {
-  xdg-icon-resource forceupdate --theme hicolor &>/dev/null
-  update-mime-database /usr/share/mime &>/dev/null
-  update-desktop-database -q &>/dev/null
+    xdg-icon-resource forceupdate --theme hicolor &>/dev/null
+    update-mime-database /usr/share/mime &>/dev/null
+    update-desktop-database -q &>/dev/null
 }
-post_remove() {
-  post_upgrade
+pre_remove() {
+    echo "$1"
+    echo "$2"
+    echo "$3"
+    echo "$0"
+    target=/opt/Yozosoft/Yozo_Office
+    if [ "$1" = "remove" ]; then
+        $target/System/doExit -check
+        if [ $? -ne 0 ]; then
+            echo "Yozo Office is running. Please stop Yozo Office, then uninstall."
+            exit 1
+        fi
+        echo "Configuring system. Please wait a while."
+
+        if [ -f $target/System/unpatch.ini ]; then
+            while read line
+            do
+                truncate=${line#*=}
+                if [ -f $truncate ]; then
+                    rm -f $truncate
+                fi
+            done < $target/System/unpatch.ini
+        fi
+
+        $target/Jre/bin/java -jar $target/System/configure.jar -u
+        rm /etc/skel/.java/deployment/deployment.properties
+
+        rm -rf $HOME/.Yozo_Office/UserConfig
+        if [ -f $target/patcheio.log ]; then
+            rm -f $target/patcheio.log
+        fi
+        if [ -d $HOME/.Yozo_Office/CustomizedSEImages ]; then
+            rm -rf $HOME/.Yozo_Office/CustomizedSEImages
+        fi
+        #rm -f $target/ScienceEditorImages/logicalData $target/ScienceEditorImages/logicalData_0 $target/#ScienceEditorImages/logicalData_1 $target/ScienceEditorImages/logicalData_2
+        #if [ -d $target/ScienceEditorImages ]; then 
+        #    rm -rf $target/ScienceEditorImages &>/dev/null
+        #fi
+        rm -rf $target/Config/Key.store
+        rm -rf $target/System
+        rm -rf $target/Upgrade/Patch
+        rm -rf $target/Jre/lib
+    fi
+    exit 0
 }
