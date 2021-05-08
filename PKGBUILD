@@ -1,8 +1,8 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail.com>
 pkgname=matrix-commander-git
 pkgver=r64.3e89a5f
-pkgrel=1
-pkgdesc="Simple but convenient CLI-based Matrix client app for sending and receiving"
+pkgrel=2
+pkgdesc="Simple CLI-based Matrix client for sending and receiving"
 arch=('any')
 url="https://github.com/8go/matrix-commander"
 license=('GPL')
@@ -13,7 +13,7 @@ depends=( "python-aiohttp"
 					"python-matrix-nio"
 					"python-notify2"
 					"python-pillow"
-					"python-magic-git")
+					"python-magic-ahupp")
 provides=("matrix-commander")
 conflicts=("matrix-commander")
 source=("${pkgname%-git}::git+https://github.com/8go/matrix-commander.git")
