@@ -4,7 +4,7 @@
 	notifempty
 }
 
-/var/log/snort/alert_fast.txt /var/log/snort/appid_stats.log* /var/log/snort/unified2.log* /var/log/snort/file.log* {
+/var/log/snort/alert_fast.txt /var/log/snort/*.log.* {
 	nocompress
 	nocreate
         olddir /var/log/snort/old
