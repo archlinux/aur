@@ -1,39 +1,90 @@
-# Maintainer: Darren Ng <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
+# Maintainer: Darren Ng <$(base64 --decode <<<VW4xR2ZuQGdtYWlsLmNvbQo=)>
 
-pkgname="uasm"
+# https://github.com/Terraspace/UASM
+pkgname=uasm
+url=http://www.terraspace.co.uk/uasm.html
+# http://www.terraspace.co.uk/uasm.html#p1
+pkgdesc="Continued evolution of JWasm"
+
+# Since v2.51
+# dbgcv.c:*:*: fatal error: direct.h: No such file or directory
+#    * | #include <direct.h>
 pkgver=2.50
-pkgrel=1
-pkgdesc="Continued evolution of JWasm" # http://www.terraspace.co.uk/uasm.html#p1
-arch=('x86_64')
-url="http://www.terraspace.co.uk/uasm.html"
+pkgrel=2
+
+arch=($CARCH)
 license=(
   'custom:JWasm License'
   'custom:Sybase Open Watcom Public License'
 )
+
+# depends=()
+# makedepends=()
+# checkdepends=()
+# optdepends=()
+# provides=()
+# conflicts=()
+# replaces=()
+# backup=()
 # options=(!strip debug)
+
 source=(
-  # 'uasm::git+https://github.com/Terraspace/UASM.git#branch=v5.0'
-  'uasm::git+https://github.com/Terraspace/UASM.git#commit=41002d262d3a9d6ca737d72e86f6f1328d42478d'
-  'uasm-default-nocolor.sh'
-)
-md5sums=(
-  'SKIP'
-  '16ee809dee22b3f4aa39536330b5c117'
+  # https://man.archlinux.org/man/PKGBUILD.5#USING_VCS_SOURCES
+  $pkgname.git::git+https://github.com/Terraspace/UASM.git#branch=v$pkgver
+  uasm-nocolor
 )
 
-build() {
-  cd "$srcdir/$pkgname"
-  make -f gccLinux64.mak
+sha1sums=(
+  SKIP
+  9d695731016a160f108b23092504a81b339d9f2d
+)
+
+prepare() {
+
+  cd "$srcdir/$pkgname.git"
+
+  local HEAD_SHA1
+  case "$pkgver" in
+  2.50) HEAD_SHA1=16a853bd6de807fe2c42569f8375a029684c0f22;;
+  2.51) HEAD_SHA1=c853dbdbd1d1a7a8f23eafec658e7e70f8e7a3c4;;
+  2.52) HEAD_SHA1=c612f83d97a0cb192dfd983676743dabf662ed51;;
+  2.53) HEAD_SHA1=8f8feb76a3fec91c5038bb09dfc304df804f5e16;;
+      *) return 1;;
+  esac
+  [ "$(git rev-parse HEAD)" = "$HEAD_SHA1" ]
+
+  # https://gcc.gnu.org/gcc-10/porting_to.html#common
+  sed -i "s,CC = gcc,CC = gcc -fcommon,g" gccLinux64.mak
+
 }
 
-package() {
-  cd "$srcdir/$pkgname"
+build() {
+  cd "$srcdir/$pkgname.git"
+  # echo "@$CFLAGS@"
+  # return 1
+  # export CFLAGS="$CFLAGS -fcommon"
+  make -f gccLinux64.mak -j$(nproc)
+}
 
-  install -v -Dm755 GccUnixR/uasm "$pkgdir/usr/bin/uasm-color"
-  install -v -Dm755 "$srcdir/uasm-default-nocolor.sh" "$pkgdir/usr/bin/uasm"
+# make: *** No rule to make target 'check'.
+# check() {
+#   make -k check
+# }
+
+package() {
+
+  cd "$srcdir/$pkgname.git"
+
+  install -v -Dm755 {GccUnixR,"$pkgdir/usr/bin"}/uasm
+  # install -v -Dm755 GccUnixR/uasm "$pkgdir/usr/bin/uasm-color"
+  # cp -L "$srcdir/${source[1]}" "$pkgdir/usr/bin/uasm"
+  # chmod -v +x "$_"
+
+  install -v -Dm755 {"$srcdir","$pkgdir/usr/bin/"}/uasm-nocolor
 
   install -v -dDm755 "$pkgdir/usr/share/doc/uasm"
-  install -v -m644 Readme.txt History.txt Doc/* "$pkgdir/usr/share/doc/uasm/"
+  install -v -m644 Readme.txt History.txt Doc/* "$_/"
 
-  install -v -Dm644 License.txt "$pkgdir/usr/share/licenses/$pkgname/License.txt"
+  install -v -Dm644 {,"$pkgdir/usr/share/licenses/$pkgname/"}License.txt
+
 }
