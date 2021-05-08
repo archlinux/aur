@@ -1,0 +1,13 @@
+post_install() {
+	touch /opt/alvr/crash_log.txt
+	chmod 777 /opt/alvr/crash_log.txt
+}
+
+post_upgrade() {
+	touch /opt/alvr/crash_log.txt
+	chmod 777 /opt/alvr/crash_log.txt
+}
+
+post_remove() {
+	rm -r /opt/alvr
+}
