@@ -1,12 +1,12 @@
 pkgbase = gimgview
-	pkgdesc = a simple gtk3 based image viewer
+	pkgdesc = a simple gtk3 based image viewer written in C++
 	pkgver = 1.0.1
 	pkgrel = 1
 	arch = any
 	license = GPL
 	depends = gtk3
 	source = https://gitlab.sokoll.com/moritz/gimgview/-/archive/master/gimgview-master.tar.gz
-	sha256sums = 695cfd1f9cce0250584a23bb1a6a6bcc043b508ea0d30d5b78a9e98ccb07db2b
+	sha256sums = f77bc8e4f4ccd472b3897649282307e47d3e41bdb440edfa0ea86afbdc10eec8
 
 pkgname = gimgview
 
