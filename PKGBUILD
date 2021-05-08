@@ -1,43 +1,49 @@
 # Maintainer: Benoît Zugmeyer <bzugmeyer@gmail.com>
 pkgname=deno-git
-pkgver=0.5.0.r19.g72197878
+pkgver=1.9.2.r89.ga051a7f7b
 pkgrel=1
-pkgdesc="A secure TypeScript runtime on V8"
-arch=('i686' 'x86_64')
-url="https://github.com/denoland/deno"
+pkgdesc="A secure runtime for JavaScript and TypeScript"
+arch=('x86_64')
+url="https://deno.land"
 provides=('deno')
 license=('MIT')
-makedepends=(git python2-virtualenv nodejs cargo ccache)
+depends=('gcc-libs')
+makedepends=('git' 'python' 'cargo' 'nodejs')
 source=("deno-git::git+https://github.com/denoland/deno")
 md5sums=(SKIP)
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1'
+  git describe --long --tags --match 'v*.*.*' 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1'
 }
 
 prepare() {
   cd "$pkgname"
   git submodule update --init --recursive
-  mkdir -p "${srcdir}"/python2-path
-  ln -sf /usr/bin/python2 "${srcdir}/python2-path/python"
-  export PATH="${srcdir}/python2-path:${PATH}"
-  ./tools/setup.py
 }
 
 build() {
   cd "$pkgname"
-  export PATH="${srcdir}/python2-path:${PATH}"
-  DENO_BUILD_MODE=release ./tools/build.py deno
+  RUSTUP_TOOLCHAIN=stable cargo build --release --locked --target-dir=target
 }
 
 check() {
   cd "$pkgname"
-  ./target/release/deno run tests/002_hello.ts
+  # Tests are not passing sometimes
+  # RUSTUP_TOOLCHAIN=stable cargo test --release --locked --target-dir=target
+  ./target/release/deno run ./cli/tests/002_hello.ts
 }
 
 package() {
   cd "$pkgname"
-  install -dm755 "${pkgdir}"/usr/bin
-  install -m755 target/release/deno "${pkgdir}"/usr/bin
+  install -Dm755 target/release/deno "$pkgdir"/usr/bin/deno
+
+  install -dm755 "$pkgdir"/usr/share/bash-completion/completions
+  ./target/release/deno completions bash > "$pkgdir"/usr/share/bash-completion/completions/deno
+  install -dm755 "$pkgdir"/usr/share/zsh/site-functions
+  ./target/release/deno completions zsh > "$pkgdir"/usr/share/zsh/site-functions/_deno
+  install -dm755 "$pkgdir"/usr/share/fish/vendor_functions.d
+  ./target/release/deno completions fish > "$pkgdir"/usr/share/fish/vendor_functions.d/deno.fish
+
+  install -Dm644 LICENSE.md -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
