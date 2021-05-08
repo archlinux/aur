@@ -4,7 +4,7 @@
 
 pkgname=xygrib
 pkgver=1.2.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Grib reader and weather visualization software. Zygrib fork."
 arch=('x86_64' 'aarch64')
 license=("GPL3")
@@ -13,15 +13,17 @@ conflicts=('xygrib-git')
 depends=('libnova' 'qwt' 'proj' 'qt5-base' 'openjpeg2')
 makedepends=('cmake' 'zlib' 'bzip2' 'libpng')
 url="https://opengribs.org/"
-source=("https://github.com/opengribs/XyGrib/archive/v$pkgver.tar.gz" "xygrib.install" "skewt.patch")
+source=("https://github.com/opengribs/XyGrib/archive/v$pkgver.tar.gz" "xygrib.install" "skewt.patch" "CMakelists.txt.patch")
 sha1sums=('8e3431ed6a5ef114d77ac57029129a26a381f696'
           '97eec7e40bd2d4f44986ffbf5096ac4ba37ebbfe'
-          '1fa4cf6b72863c9f33a80946d9f4afe7f855df6a')
+          '1fa4cf6b72863c9f33a80946d9f4afe7f855df6a'
+          '9fc7839f3fa38b7855ee5a165f7148162aba39bf')
 
 
 build() {
   cd $srcdir/XyGrib-$pkgver
   patch --strip=1 -i $srcdir/skewt.patch
+  patch --strip=1 -i $srcdir/CMakelists.txt.patch
   mkdir -p build
   cd build
   cmake ../
