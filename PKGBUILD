@@ -31,7 +31,7 @@ depends=(
 	python
 )
 
-_dir="urdfdom_py-${pkgver}/"
+_dir="urdf_parser_py-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/urdf_parser_py/archive/${pkgver}.tar.gz")
 sha256sums=('be5645c3153fd9c3e3e32b041abcf7ad815d6c0746a37e3b2d1be37b1ff977c3')
 
