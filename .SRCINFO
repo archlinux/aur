@@ -1,0 +1,21 @@
+pkgbase = proselint
+	pkgdesc = Linter for prose
+	pkgver = 0.10.2
+	pkgrel = 6
+	url = https://github.com/amperser/proselint
+	arch = any
+	license = BSD
+	checkdepends = python-mock
+	checkdepends = python-nose
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-click
+	depends = python-future
+	depends = python-six
+	conflicts = python-proselint
+	replaces = python-proselint
+	source = https://files.pythonhosted.org/packages/source/p/proselint/proselint-0.10.2.tar.gz
+	sha512sums = 76200d75a4adfaf4adcb07e2109707ca3cec322170a070d50b80267125d854cb46fb097f9fe7ce3a584aed8afc35b47749842a36b0d3e19286e1709bbf3d94b5
+
+pkgname = proselint
+
