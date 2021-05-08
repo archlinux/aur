@@ -1,0 +1,15 @@
+diff --git a/lib/json-schema/attributes/formats/ip.rb b/lib/json-schema/attributes/formats/ip.rb
+index 04b2e3a..172132d 100644
+--- a/lib/json-schema/attributes/formats/ip.rb
++++ b/lib/json-schema/attributes/formats/ip.rb
+@@ -10,8 +10,8 @@ module JSON
+
+         begin
+           ip = IPAddr.new(data)
+-        rescue ArgumentError => e
+-          raise e unless e.message == 'invalid address'
++        rescue => e
++￼         raise e unless e.message.start_with?("invalid address")
+         end
+
+         family = ip_version == 6 ? Socket::AF_INET6 : Socket::AF_INET

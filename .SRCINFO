@@ -1,16 +1,23 @@
 pkgbase = ruby-json-schema
-	pkgdesc = Ruby JSON Schema Validator
-	pkgver = 2.8.0
-	pkgrel = 1
+	pkgdesc = Interface for validating JSON objects against a JSON schema conforming to JSON Schema Draft 4.
+	pkgver = 2.8.1
+	pkgrel = 3
 	url = https://github.com/ruby-json-schema/json-schema
 	arch = any
 	license = MIT
+	checkdepends = ruby-rake
+	checkdepends = ruby-minitest
+	checkdepends = ruby-test-unit
+	checkdepends = ruby-webmock
+	makedepends = ruby-rdoc
+	makedepends = ruby-bundler
 	depends = ruby
-	depends = ruby-addressable>=2.4
-	noextract = json-schema-2.8.0.gem
+	depends = ruby-addressable
 	options = !emptydirs
-	source = https://rubygems.org/downloads/json-schema-2.8.0.gem
-	sha256sums = bf7a949c1b9629097af506900668d4c463f5321b6eefed80c57599aa3c46b185
+	source = https://github.com/ruby-json-schema/json-schema/archive/v2.8.1/ruby-json-schema-v2.8.1.tar.gz
+	source = fix-broken-ruby26-and-newer-tests.patch
+	sha512sums = 4634fb46e0cf7cbe74def73bcdd1f8bbdf50430477cd5a2bba47c79a17f63b582d68c9064b5aec70c17b0e73db5032ddffb0a036d2f6e34ff571880b325f297b
+	sha512sums = cd2e2fc621edb7e49855eebeaddb098b0c3fbea817201e36b9f2d43df38306f790c2ebc2cc19092bc3084b8a3b1a69e2271f6497845f6defc410082a91971dcc
 
 pkgname = ruby-json-schema
 
