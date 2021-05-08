@@ -1,0 +1,15 @@
+diff -Naur gnokii-0.6.31.orig/common/misc.c gnokii-0.6.31/common/misc.c
+--- gnokii-0.6.31.orig/common/misc.c	2011-12-02 15:53:04.000000000 +0100
++++ gnokii-0.6.31/common/misc.c	2013-08-12 18:38:41.021668458 +0200
+@@ -448,9 +448,9 @@
+ 
+ #define BUFFER_MAX_LENGTH 128
+ #if defined (__svr4__)
+-#  define lock_path "/var/run/LCK.."
++#  define lock_path "/var/run/lockdev/LCK.."
+ #else
+-#  define lock_path "/var/lock/LCK.."
++#  define lock_path "/var/lock/lockdev/LCK.."
+ #endif
+ 
+ /* Lock the device. Return allocated string with a lock name */

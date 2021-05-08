@@ -1,0 +1,36 @@
+pkgbase = gnokii
+	pkgdesc = Tools and user space driver for use with mobile phones
+	pkgver = 0.6.31
+	pkgrel = 19
+	url = https://www.gnokii.org/
+	install = gnokii.install
+	arch = x86_64
+	license = GPL
+	makedepends = gtk2
+	makedepends = mariadb-libs
+	makedepends = postgresql-libs
+	makedepends = intltool
+	depends = libusb-compat
+	depends = libxpm
+	depends = bluez-libs
+	depends = libical
+	depends = sqlite
+	depends = systemd
+	optdepends = dialog: sendsms tool
+	optdepends = gtk2: xgnokii GUI
+	optdepends = mariadb-libs: smsd mysql backend
+	optdepends = postgresql-libs: smsd postgresql backend
+	backup = etc/gnokiirc
+	source = https://www.gnokii.org/download/gnokii/gnokii-0.6.31.tar.bz2
+	source = gnokii-config.patch
+	source = gnokii-lock.patch
+	source = gnokii-gcc5.patch
+	source = gnokii-gcc7.patch
+	sha256sums = 8f5a083b05c1a66a3402ca5cd80084e14c2c0632c991bb53b03c78e9adb02501
+	sha256sums = 4c795f0b80b3703a2813adb32399b42080a01670619c1db63ab094494cb6f329
+	sha256sums = e0584a44268e9055b43f1673d7db828f45294c5108635ebd5f664e12703f108b
+	sha256sums = eafe67990e383e92636a88de27f003674374db81d986ddbb397ab18d82b6556d
+	sha256sums = a5db8684216904bd2a2cd8a557dcc16484831b9bc2ec91a0b102b14c3bfe9245
+
+pkgname = gnokii
+
