@@ -29,14 +29,14 @@ pkgver() {
 }
 
 build() {
-  
-  cd "${srcdir:?}/${pkgname}"  || (
+
+  cd "${srcdir:?}/${pkgname}" || (
     echo -e "\E[1m\E[31mCan't change working directory to ${srcdir}/${pkgname}! Build Failed!\E[0m"
     exit 1
   )
 
   bazel build -c opt //...
-  
+
 }
 
 check() {
@@ -46,7 +46,7 @@ check() {
     exit 1
   )
 
-  bazel test //...
+  bazel test -c opt //...
 
 }
 
@@ -57,8 +57,6 @@ package() {
     exit 1
   )
 
-  install -d "${pkgdir:?}/usr/bin"
-
-  bazel run :install -c opt -- "${pkgdir:?}/usr/bin"
+  bazel run -c opt :install -- "${pkgdir:?}/usr/bin"
 
 }
