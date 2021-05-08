@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Hoàng Văn Khải <hvksmr1996 at gmail dot com>
 pkgname=dialect-git
-pkgver=1.2.0.r17.g19bfda5
+pkgver=1.3.0.r0.g586a4d5
 pkgrel=1
-pkgdesc="A translation app for GTK environments based on Google Translate"
+pkgdesc="A translation app for GNOME."
 arch=('any')
 url="https://github.com/gi-lom/dialect"
 license=('GPL3')
