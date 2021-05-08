@@ -29,8 +29,6 @@ build() {
 
   meson builddir \
         --prefix=/usr \
-        -D VIDEO=yes \
-        -D SPELLCHECK=yes \
         -D consumer_key_base64=YUVNOE14dE5xMVdHRzl2emo5SzNNSlNUeg== \
         -D consumer_secret_base64=c0J0cmc2clNJTFN6bHlSbFNXc2J1MmdvWWk3b0FzTGZHOGI4OG5QRzB3Tmx1Y0ZtOHQ=
   ninja -C builddir
