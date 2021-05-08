@@ -2,7 +2,7 @@
 
 pkgname=ideaseed-git
 pkgver=r330.f740be3
-pkgrel=3
+pkgrel=4
 pkgdesc="Note down your ideas and get them to the right place, without switching away from your terminal (bleeding edge)"
 arch=('any')
 url="https://github.com/ewen-lbh/ideaseed"
@@ -21,7 +21,7 @@ pkgver() {
 
 package() {
   sed -i "s/ideaseed v{version}/ideaseed v{version} (bleeding edge: $pkgver)/" $_gitname/ideaseed/ui.py
-  pip install --prefix=/usr $_gitname
+  pip install --prefix=/usr $_gitname --user
 }
 
 # vim:set ts=2 sw=2 et:
