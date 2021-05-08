@@ -5,10 +5,10 @@ pkgbase = firefox-extension-google-search-link-fix
 	url = https://github.com/palant/searchlinkfix
 	arch = any
 	license = MPL2
+	makedepends = npm
 	depends = firefox
-	noextract = google_search_link_fix-1.6.10-an+fx.xpi
-	source = https://addons.cdn.mozilla.net/user-media/addons/351740/google_search_link_fix-1.6.10-an+fx.xpi
-	sha256sums = c3161b62b8c7fb27a67a7821a4c867ac852c16f47fbd6221be9dbb011c43bdc5
+	source = https://github.com/palant/searchlinkfix/archive/1.6.10/searchlinkfix-1.6.10.tar.gz
+	sha256sums = 3ce17e496703191fa2897390285056911b2669230ee8443b65bc64adb65cf855
 
 pkgname = firefox-extension-google-search-link-fix
 

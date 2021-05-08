@@ -1,25 +1,29 @@
 # Maintainer: Kamil Śliwak <cameel2@gmail.com>
 
-_addon_name=google_search_link_fix
 _addon_version=1.6.10
-_addon_id=351740
-_addon_filename="${_addon_name}-${_addon_version}-an+fx.xpi"
 _gecko_id="jid0-XWJxt5VvCXkKzQK99PhZqAn7Xbg@jetpack"
-
+_name="searchlinkfix"
 pkgname=firefox-extension-google-search-link-fix
 pkgver=${_addon_version}
 pkgrel=1
 pkgdesc="Firefox extension that prevents Google and Yandex search pages from replacing direct URLs with tracking URLs when you click them "
 arch=('any')
-url="https://github.com/palant/searchlinkfix"
+url="https://github.com/palant/${_name}"
 license=('MPL2')
 depends=("firefox")
-source=("https://addons.cdn.mozilla.net/user-media/addons/${_addon_id}/${_addon_filename}")
-noextract=("${_addon_filename}")
-sha256sums=('c3161b62b8c7fb27a67a7821a4c867ac852c16f47fbd6221be9dbb011c43bdc5')
+makedepends=("npm")
+source=("${url}/archive/${pkgver}/${_name}-${pkgver}.tar.gz")
+sha256sums=('3ce17e496703191fa2897390285056911b2669230ee8443b65bc64adb65cf855')
 
+
+build() {
+    cd "${_name}-${pkgver}"
+    npm install
+
+    node_modules/.bin/gulp xpi
+}
 
 package() {
-    cd "${srcdir}"
-    install -Dm644 "${_addon_filename}" "${pkgdir}/usr/lib/firefox/browser/extensions/${_gecko_id}.xpi"
+    cd "${_name}-${pkgver}/"
+    install -D --mode 644 -- "${_name}-${pkgver}.xpi" "${pkgdir}/usr/lib/firefox/browser/extensions/${_gecko_id}.xpi"
 }
