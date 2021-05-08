@@ -1,6 +1,9 @@
 post_install() {
-  mkdir -p /etc/slurm-llnl/plugstack.conf.d
-  ln -s /usr/share/pyxis/pyxis.conf /etc/slurm-llnl/plugstack.conf.d/pyxis.conf
+  if [[ ! -f "/etc/slurm-llnl/plugstack.conf.d/pyxis.conf" ]]
+  then
+    mkdir -p /etc/slurm-llnl/plugstack.conf.d
+    ln -s /usr/share/pyxis/pyxis.conf /etc/slurm-llnl/plugstack.conf.d/pyxis.conf
+  done
 }
 
 post_upgrade() {
