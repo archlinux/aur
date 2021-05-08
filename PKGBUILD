@@ -3,9 +3,9 @@
 _pkgname='webdump'
 pkgname="${_pkgname}-git"
 pkgver=r101.254e833
-pkgrel=1
+pkgrel=2
 pkgdesc='Render HTML to stdout'
-arch=('x86_64')
+arch=('any')
 url='https://www.codemadness.org/git/webdump/file/README.html'
 license=('ISC')
 makedepends=('git')
@@ -20,7 +20,7 @@ pkgver() {
 }
 
 build() {
-  make -C "${_pkgname}"
+  make WEBDUMP_CPPFLAGS="-D_DEFAULT_SOURCE" -C "${_pkgname}"
 }
 
 package() {
