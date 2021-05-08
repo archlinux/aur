@@ -1,7 +1,8 @@
+# Maintainer: Pranay Kanwar <pranay dot kanwar at gmail dot com>
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=socli
-pkgver=6.0
+pkgver=6.4
 pkgrel=1
 pkgdesc="Stack overflow command line client. Search and browse stack overflow without leaving the terminal"
 arch=('any')
@@ -15,7 +16,7 @@ depends=('python-beautifulsoup4'
          'python-urwid')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gautamkrishnar/socli/archive/${pkgver}.tar.gz")
-sha256sums=('947d2938b7ee2bc8a03b15f7c4af4a050f7ce56fc09835a6eaa425503c1c065f')
+sha256sums=('10a20c50c911021362bec5945c9308c1145f38d26393d7147927a116460ea6fa')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
