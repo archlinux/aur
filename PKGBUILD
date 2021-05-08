@@ -1,6 +1,6 @@
 # Maintainer: lmartinez-mirror
 pkgname=httpit
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A rapid HTTP(S) benchmark tool"
 arch=('x86_64' 'i686' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('57c65fb6021c845f69ec653dac08648184a6ff4e344b738f85994c115074f491')
+sha256sums=('6f9b4b28e000b3d07ae02e58345730f7e52d076a6dd417c615a24ae0b719b3de')
 
 build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
