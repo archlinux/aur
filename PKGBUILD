@@ -2,7 +2,7 @@
 
 pkgname=libxlsxwriter
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A C library for creating Excel XLSX files.'
 arch=('i686' 'x86_64')
 url='http://libxlsxwriter.github.io'
@@ -21,9 +21,6 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-RELEASE_$pkgver"
-  mkdir -p "$pkgdir/usr/include"
-  cp -r include/* "$pkgdir/usr/include/"
-  mkdir -p "$pkgdir/usr/lib"
-  cp -r lib/* "$pkgdir/usr/lib/"
+  make install PREFIX=/usr DESTDIR="$pkgdir"
   install -D -m644 License.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
