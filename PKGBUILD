@@ -1,25 +1,27 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=icon  
-pkgver=951
-pkgrel=6
+pkgver=9.5.20i
+pkgrel=1
+epoch=1
 pkgdesc="The Icon programming language"
-url="http://www2.cs.arizona.edu/icon/"
+url="https://github.com/gtownsend/icon"
 arch=('i686' 'x86_64')
 depends=('sh' 'libx11')
 makedepends=('libxt')
 license=('custom')
-source=("http://www2.cs.arizona.edu/icon/ftp/packages/unix/icon-v${pkgver}src.tgz" LICENSE)
-md5sums=('8fdeb7c5408d9d9bf06bc5e7f4f54498'
-         '46e837548bf46e5b0db662322650eb4f')
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz" LICENSE)
+sha256sums=('3ebfcc89f3f3f7acc5afe61402f6b3b168b8cd83f79021c98bbd791e92c4cbe8'
+            '57b2b71129aa652ca63b07d3c23564bc7a45444a274d12e50856b46e4d088e35')
+
 build() {
-  cd $pkgname-v${pkgver}src
+  cd $pkgname-${pkgver}
   make X-Configure name=linux 
   make CFLAGS+=" -D_STDIO_USES_IOSTREAM" -j1
 }
 
 package() {
-  cd $pkgname-v${pkgver}src
+  cd $pkgname-${pkgver}
   install -d "$pkgdir"/usr/share 
   make Install dest="$pkgdir"/usr/share/icon 
   for _i in colrbook colrpick fontpick icont iconx palette vib wevents 

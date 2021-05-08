@@ -1,18 +1,19 @@
 pkgbase = icon
 	pkgdesc = The Icon programming language
-	pkgver = 951
-	pkgrel = 6
-	url = http://www2.cs.arizona.edu/icon/
+	pkgver = 9.5.20i
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/gtownsend/icon
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = libxt
 	depends = sh
 	depends = libx11
-	source = http://www2.cs.arizona.edu/icon/ftp/packages/unix/icon-v951src.tgz
+	source = https://github.com/gtownsend/icon/archive/refs/tags/v9.5.20i.tar.gz
 	source = LICENSE
-	md5sums = 8fdeb7c5408d9d9bf06bc5e7f4f54498
-	md5sums = 46e837548bf46e5b0db662322650eb4f
+	sha256sums = 3ebfcc89f3f3f7acc5afe61402f6b3b168b8cd83f79021c98bbd791e92c4cbe8
+	sha256sums = 57b2b71129aa652ca63b07d3c23564bc7a45444a274d12e50856b46e4d088e35
 
 pkgname = icon
 
