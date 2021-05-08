@@ -1,0 +1,27 @@
+pkgbase = uim
+	pkgdesc = Multilingual input method library
+	pkgver = 1.8.8
+	pkgrel = 5
+	url = https://github.com/uim/uim
+	arch = x86_64
+	license = custom:BSD
+	makedepends = intltool
+	makedepends = gettext
+	makedepends = gtk2
+	makedepends = gtk3
+	makedepends = qt5-x11extras
+	makedepends = anthy
+	makedepends = skk-jisyo
+	depends = libxft
+	depends = libedit
+	depends = m17n-lib
+	optdepends = qt5-x11extras: immodule and helper applications
+	optdepends = gtk2: immodule and helper applications
+	optdepends = gtk3: immodule and helper applications
+	optdepends = skk-jisyo: input method
+	optdepends = anthy: input method
+	source = https://github.com/uim/uim/releases/download/1.8.8/uim-1.8.8.tar.bz2
+	sha256sums = 34599bbcc4e5ab87832370763e38be5100984a64237555e9234a1ea225a0fadc
+
+pkgname = uim
+
