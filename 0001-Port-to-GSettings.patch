@@ -1,0 +1,2124 @@
+From db12bc35b7242be3cb3574aa3cd9de6b20ed040b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Sun, 2 Sep 2018 23:16:18 +0200
+Subject: [PATCH] Port to GSettings
+
+---
+ configure.in                             |   16 +-
+ cut-n-paste/Makefile.am                  |    2 +-
+ cut-n-paste/gconf-bridge/Makefile.am     |   13 -
+ cut-n-paste/gconf-bridge/gconf-bridge.c  | 1259 ----------------------
+ cut-n-paste/gconf-bridge/gconf-bridge.h  |  116 --
+ data/Makefile.am                         |   17 +-
+ data/gnome-phone-manager.schemas.in      |  112 --
+ data/org.gnome.phone-manager.gschema.xml |   39 +
+ gnome-bluetooth/phonemgr.c               |   41 +-
+ libgsm/phonemgr-utils.c                  |    2 +-
+ po/POTFILES.in                           |    1 -
+ src/Makefile.am                          |    8 +-
+ src/app.h                                |    3 +-
+ src/connection.c                         |   21 +-
+ src/main.c                               |    8 +-
+ src/phonemgr-conf.h                      |    4 -
+ src/ui.c                                 |   86 +-
+ 17 files changed, 123 insertions(+), 1625 deletions(-)
+ delete mode 100644 cut-n-paste/gconf-bridge/Makefile.am
+ delete mode 100644 cut-n-paste/gconf-bridge/gconf-bridge.c
+ delete mode 100644 cut-n-paste/gconf-bridge/gconf-bridge.h
+ delete mode 100644 data/gnome-phone-manager.schemas.in
+ create mode 100644 data/org.gnome.phone-manager.gschema.xml
+
+diff --git a/configure.in b/configure.in
+index d11a2c5..b6cd958 100644
+--- a/configure.in
++++ b/configure.in
+@@ -35,8 +35,7 @@ AM_GLIB_GNU_GETTEXT
+ 
+ # ****
+ 
+-AC_PATH_PROG(GCONFTOOL, gconftool-2)
+-AM_GCONF_SOURCE_2
++GLIB_GSETTINGS
+ 
+ dnl Evolution address book
+ PKG_CHECK_MODULES(TMP_EVO, libebook-1.2,
+@@ -46,9 +45,9 @@ PKG_CHECK_MODULES(TMP_EVO, libebook-1.2,
+ PKG_CHECK_MODULES(LIBGSM, glib-2.0 gobject-2.0 $GNOKII_REQS gthread-2.0 bluez $evo_pc_file)
+ 
+ PKG_CHECK_MODULES(PHONEMGR, gtk+-3.0 >= 3.0 glib-2.0 >= 2.31.0
+-	libcanberra-gtk3 gconf-2.0
++	libcanberra-gtk3
+ 	$GNOME_BLUETOOTH_REQS $evo_pc_file libedataserverui-3.0
+-	gmodule-2.0 dbus-glib-1 gnome-icon-theme >= 2.19.1
++	gmodule-2.0 dbus-glib-1
+ )
+ 
+ DBUSLIBDIR="`$PKG_CONFIG dbus-glib-1 --variable=libdir`"
+@@ -96,7 +95,7 @@ AC_ARG_ENABLE(bluetooth-plugin,
+ 	[ENABLE_BLUETOOTH_PLUGIN=yes]) dnl Default value
+ 
+ if test x$ENABLE_BLUETOOTH_PLUGIN = "xyes" ; then
+-	PKG_CHECK_MODULES(BLUETOOTH_PLUGIN, gnome-bluetooth-1.0 >= 2.27.6 gconf-2.0,
++	PKG_CHECK_MODULES(BLUETOOTH_PLUGIN, gnome-bluetooth-1.0 >= 2.27.6,
+ 			[HAVE_BLUETOOTH_PLUGIN=yes], [HAVE_BLUETOOTH_PLUGIN=no])
+ fi
+ if test x$HAVE_BLUETOOTH_PLUGIN = "xyes"; then
+@@ -107,12 +106,6 @@ AM_CONDITIONAL(HAVE_BLUETOOTH_PLUGIN, test x$HAVE_BLUETOOTH_PLUGIN = "xyes")
+ AC_PATH_PROG(GLIB_GENMARSHAL, glib-genmarshal, no)
+ AC_SUBST(GLIB_GENMARSHAL)
+ 
+-AC_PATH_PROG(GCONFTOOL, gconftool-2, no)
+-
+-if test x"$GCONFTOOL" = xno; then
+-  AC_MSG_ERROR([gconftool-2 executable not found in your path - should be installed with GConf])
+-fi
+-
+ dnl ================================================================
+ dnl set up data dir
+ if test "x${datadir}" = 'x${prefix}/share'; then
+@@ -144,7 +137,6 @@ data/icons/24x24/Makefile
+ libgsm/Makefile
+ cut-n-paste/Makefile
+ cut-n-paste/e-contact-entry/Makefile
+-cut-n-paste/gconf-bridge/Makefile
+ src/Makefile
+ gnome-bluetooth/Makefile
+ telepathy/Makefile
+diff --git a/cut-n-paste/Makefile.am b/cut-n-paste/Makefile.am
+index f184896..371725a 100644
+--- a/cut-n-paste/Makefile.am
++++ b/cut-n-paste/Makefile.am
+@@ -1 +1 @@
+-SUBDIRS = e-contact-entry gconf-bridge
++SUBDIRS = e-contact-entry
+diff --git a/cut-n-paste/gconf-bridge/Makefile.am b/cut-n-paste/gconf-bridge/Makefile.am
+deleted file mode 100644
+index 6aecc1f..0000000
+--- a/cut-n-paste/gconf-bridge/Makefile.am
++++ /dev/null
+@@ -1,13 +0,0 @@
+-AM_CPPFLAGS = \
+-	$(PHONEMGR_CFLAGS)
+-
+-noinst_LTLIBRARIES = libgconf-bridge.la
+-
+-libgconf_bridge_la_SOURCES =	\
+-	gconf-bridge.c	\
+-	gconf-bridge.h
+-
+-EGGDIR=$(srcdir)/../../../libgconf-bridge/libgconf-bridge/
+-EGGFILES=gconf-bridge.c gconf-bridge.h
+-regenerate-built-sources:
+-	EGGFILES="$(EGGFILES)" EGGDIR="$(EGGDIR)" $(srcdir)/../update-from-egg.sh || true
+diff --git a/cut-n-paste/gconf-bridge/gconf-bridge.c b/cut-n-paste/gconf-bridge/gconf-bridge.c
+deleted file mode 100644
+index e450425..0000000
+--- a/cut-n-paste/gconf-bridge/gconf-bridge.c
++++ /dev/null
+@@ -1,1259 +0,0 @@
+-/*
+- * (C) 2005 OpenedHand Ltd.
+- *
+- * Author: Jorn Baayen <jorn@openedhand.com>
+- *
+- * This library is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU Library General Public
+- * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
+- *
+- * This library is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+- * Library General Public License for more details.
+- *
+- * You should have received a copy of the GNU Library General Public
+- * License along with this library; if not, write to the
+- * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+- * Boston, MA 02110-1301, USA.
+- */
+-
+-#include <config.h>
+-
+-#include <glib/gi18n-lib.h>
+-#include <gtk/gtk.h>
+-#include <string.h>
+-
+-#include "gconf-bridge.h"
+-
+-struct _GConfBridge {
+-        GConfClient *client;
+-
+-        GHashTable *bindings;
+-};
+-
+-/* The data structures for the different kinds of bindings */
+-typedef enum {
+-        BINDING_PROP,
+-        BINDING_WINDOW,
+-        BINDING_LIST_STORE
+-} BindingType;
+-
+-typedef struct {
+-        BindingType type;
+-        guint id;
+-
+-        gboolean delayed_mode;
+-
+-        char *key;
+-        guint val_notify_id;
+-        GSList *val_changes; /* List of changes made to GConf value,
+-                                that have not received change notification
+-                                yet. */
+-
+-        GObject *object;
+-        GParamSpec *prop;
+-        gulong prop_notify_id;
+-
+-        guint sync_timeout_id; /* Used in delayed mode */
+-} PropBinding;
+-
+-typedef struct {
+-        BindingType type;
+-        guint id;
+-
+-        gboolean bind_size;
+-        gboolean bind_pos;
+-
+-        char *key_prefix;
+-
+-        GtkWindow *window;
+-        gulong configure_event_id;
+-	gulong window_state_event_id;
+-        gulong unmap_id;
+-        guint sync_timeout_id;
+-} WindowBinding;
+-
+-typedef struct {
+-        BindingType type;
+-        guint id;
+-
+-        char *key;
+-        guint val_notify_id;
+-        GSList *val_changes; /* List of changes made to GConf value,
+-                                that have not received change notification
+-                                yet. */
+-
+-        GtkListStore *list_store;
+-        guint row_inserted_id;
+-        guint row_changed_id;
+-        guint row_deleted_id;
+-        guint rows_reordered_id;
+-
+-        guint sync_idle_id;
+-} ListStoreBinding;
+-
+-/* Some trickery to be able to treat the data structures generically */
+-typedef union {
+-        BindingType      type;
+-
+-        PropBinding      prop_binding;
+-        WindowBinding    window_binding;
+-        ListStoreBinding list_store_binding;
+-} Binding;
+-
+-/* Function prototypes */
+-static void
+-unbind (Binding *binding);
+-
+-#if !HAVE_DECL_GCONF_VALUE_COMPARE /* Not in headers in GConf < 2.13 */
+-int gconf_value_compare (const GConfValue *value_a,
+-                         const GConfValue *value_b);
+-#endif
+-
+-static GConfBridge *bridge = NULL; /* Global GConfBridge object */
+-
+-/* Free up all resources allocated by the GConfBridge. Called on exit. */
+-static void
+-destroy_bridge (void)
+-{
+-        g_hash_table_destroy (bridge->bindings);
+-        g_object_unref (bridge->client);
+-
+-        g_free (bridge);
+-}
+-
+-/**
+- * gconf_bridge_get
+- *
+- * Returns the #GConfBridge. This is a singleton object.
+- *
+- * Return value: The #GConfBridge.
+- **/
+-GConfBridge *
+-gconf_bridge_get (void)
+-{
+-        if (bridge)
+-                return bridge;
+-
+-        gconf_bridge_install_default_error_handler ();
+-
+-        bridge = g_new (GConfBridge, 1);
+-
+-        bridge->client = gconf_client_get_default ();
+-        bridge->bindings = g_hash_table_new_full (NULL, NULL, NULL,
+-                                                  (GDestroyNotify) unbind);
+-
+-        g_atexit (destroy_bridge);
+-
+-        return bridge;
+-}
+-
+-/**
+- * gconf_bridge_get_client
+- * @bridge: A #GConfBridge
+- *
+- * Returns the #GConfClient used by @bridge. This is the same #GConfClient
+- * as returned by gconf_client_get_default().
+- *
+- * Return value: A #GConfClient.
+- **/
+-GConfClient *
+-gconf_bridge_get_client (GConfBridge *bridge)
+-{
+-        g_return_val_if_fail (bridge != NULL, NULL);
+-
+-        return bridge->client;
+-}
+-
+-/* Generate an ID for a new binding */
+-static guint
+-new_id (void)
+-{
+-        static guint id_counter = 0;
+-
+-        id_counter++;
+-
+-        return id_counter;
+-}
+-
+-/*
+- * Property bindings
+- */
+-
+-/* Syncs a value from GConf to an object property */
+-static void
+-prop_binding_sync_pref_to_prop (PropBinding *binding,
+-                                GConfValue  *pref_value)
+-{
+-        GValue src_value, value;
+-
+-        /* Make sure we don't enter an infinite synchronizing loop */
+-        g_signal_handler_block (binding->object, binding->prop_notify_id);
+-
+-        memset (&src_value, 0, sizeof (GValue));
+-
+-        /* First, convert GConfValue to GValue */
+-        switch (pref_value->type) {
+-        case GCONF_VALUE_STRING:
+-                g_value_init (&src_value, G_TYPE_STRING);
+-                g_value_set_string (&src_value,
+-                                    gconf_value_get_string (pref_value));
+-                break;
+-        case GCONF_VALUE_INT:
+-                g_value_init (&src_value, G_TYPE_INT);
+-                g_value_set_int (&src_value,
+-                                 gconf_value_get_int (pref_value));
+-                break;
+-        case GCONF_VALUE_BOOL:
+-                g_value_init (&src_value, G_TYPE_BOOLEAN);
+-                g_value_set_boolean (&src_value,
+-                                     gconf_value_get_bool (pref_value));
+-                break;
+-        case GCONF_VALUE_FLOAT:
+-                g_value_init (&src_value, G_TYPE_FLOAT);
+-                g_value_set_float (&src_value,
+-                                   gconf_value_get_float (pref_value));
+-                break;
+-        default:
+-                g_warning ("prop_binding_sync_pref_to_prop: Unhandled value "
+-                           "type '%d'.\n", pref_value->type);
+-
+-                return;
+-        }
+-
+-        /* Then convert to the type expected by the object, if necessary */
+-        memset (&value, 0, sizeof (GValue));
+-        g_value_init (&value,
+-                      G_PARAM_SPEC_VALUE_TYPE (binding->prop));
+-
+-        if (src_value.g_type != value.g_type) {
+-                if (!g_value_transform (&src_value, &value)) {
+-                        g_warning ("prop_binding_sync_pref_to_prop: Failed to "
+-                                   "transform a \"%s\" to a \"%s\".",
+-                                   g_type_name (src_value.g_type),
+-                                   g_type_name (value.g_type));
+-
+-                        goto done;
+-                }
+-
+-                g_object_set_property (binding->object,
+-                                       binding->prop->name, &value);
+-        } else {
+-                g_object_set_property (binding->object,
+-                                       binding->prop->name, &src_value);
+-        }
+-
+-done:
+-        g_value_unset (&src_value);
+-        g_value_unset (&value);
+-
+-        g_signal_handler_unblock (binding->object, binding->prop_notify_id);
+-}
+-
+-/* Syncs an object property to GConf */
+-static void
+-prop_binding_sync_prop_to_pref (PropBinding *binding)
+-{
+-        GValue value;
+-        GConfValue *gconf_value;
+-
+-        memset (&value, 0, sizeof (GValue));
+-
+-        g_value_init (&value,
+-                      G_PARAM_SPEC_VALUE_TYPE (binding->prop));
+-        g_object_get_property (binding->object,
+-                               binding->prop->name,
+-                               &value);
+-
+-        switch (value.g_type) {
+-        case G_TYPE_STRING:
+-                gconf_value = gconf_value_new (GCONF_VALUE_STRING);
+-                gconf_value_set_string (gconf_value,
+-                                        g_value_get_string (&value));
+-                break;
+-        case G_TYPE_INT:
+-                gconf_value = gconf_value_new (GCONF_VALUE_INT);
+-                gconf_value_set_int (gconf_value,
+-                                     g_value_get_int (&value));
+-                break;
+-        case G_TYPE_UINT:
+-                gconf_value = gconf_value_new (GCONF_VALUE_INT);
+-                gconf_value_set_int (gconf_value,
+-                                     g_value_get_uint (&value));
+-                break;
+-        case G_TYPE_LONG:
+-                gconf_value = gconf_value_new (GCONF_VALUE_INT);
+-                gconf_value_set_int (gconf_value,
+-                                     g_value_get_long (&value));
+-                break;
+-        case G_TYPE_ULONG:
+-                gconf_value = gconf_value_new (GCONF_VALUE_INT);
+-                gconf_value_set_int (gconf_value,
+-                                     g_value_get_ulong (&value));
+-                break;
+-        case G_TYPE_INT64:
+-                gconf_value = gconf_value_new (GCONF_VALUE_INT);
+-                gconf_value_set_int (gconf_value,
+-                                     g_value_get_int64 (&value));
+-                break;
+-        case G_TYPE_UINT64:
+-                gconf_value = gconf_value_new (GCONF_VALUE_INT);
+-                gconf_value_set_int (gconf_value,
+-                                     g_value_get_uint64 (&value));
+-                break;
+-        case G_TYPE_CHAR:
+-                gconf_value = gconf_value_new (GCONF_VALUE_INT);
+-                gconf_value_set_int (gconf_value,
+-                                     g_value_get_char (&value));
+-                break;
+-        case G_TYPE_UCHAR:
+-                gconf_value = gconf_value_new (GCONF_VALUE_INT);
+-                gconf_value_set_int (gconf_value,
+-                                     g_value_get_uchar (&value));
+-                break;
+-        case G_TYPE_ENUM:
+-                gconf_value = gconf_value_new (GCONF_VALUE_INT);
+-                gconf_value_set_int (gconf_value,
+-                                     g_value_get_enum (&value));
+-                break;
+-        case G_TYPE_BOOLEAN:
+-                gconf_value = gconf_value_new (GCONF_VALUE_BOOL);
+-                gconf_value_set_bool (gconf_value,
+-                                      g_value_get_boolean (&value));
+-                break;
+-        case G_TYPE_DOUBLE:
+-                gconf_value = gconf_value_new (GCONF_VALUE_FLOAT);
+-#ifdef HAVE_CORBA_GCONF
+-                /* FIXME we cast to a float explicitly as CORBA GConf
+-                 * uses doubles in its API, but treats them as floats
+-                 * when transporting them over CORBA. See #322837 */
+-                gconf_value_set_float (gconf_value,
+-                                       (float) g_value_get_double (&value));
+-#else
+-                gconf_value_set_float (gconf_value,
+-                                       g_value_get_double (&value));
+-#endif
+-                break;
+-        case G_TYPE_FLOAT:
+-                gconf_value = gconf_value_new (GCONF_VALUE_FLOAT);
+-                gconf_value_set_float (gconf_value,
+-                                       g_value_get_float (&value));
+-                break;
+-        default:
+-                if (g_type_is_a (value.g_type, G_TYPE_ENUM)) {
+-                        gconf_value = gconf_value_new (GCONF_VALUE_INT);
+-                        gconf_value_set_int (gconf_value,
+-                                             g_value_get_enum (&value));
+-                } else {
+-                        g_warning ("prop_binding_sync_prop_to_pref: "
+-                                   "Unhandled value type '%s'.\n",
+-                                   g_type_name (value.g_type));
+-
+-                        goto done;
+-                }
+-
+-                break;
+-        }
+-
+-        /* Set to GConf */
+-        gconf_client_set (bridge->client, binding->key, gconf_value, NULL);
+-
+-        /* Store until change notification comes in, so that we are able
+-         * to ignore it */
+-        binding->val_changes = g_slist_append (binding->val_changes,
+-                                               gconf_value);
+-
+-done:
+-        g_value_unset (&value);
+-}
+-
+-/* Called when a GConf value bound to an object property has changed */
+-static void
+-prop_binding_pref_changed (GConfClient *client,
+-                           guint        cnxn_id,
+-                           GConfEntry  *entry,
+-                           gpointer     user_data)
+-{
+-        GConfValue *gconf_value;
+-        PropBinding *binding;
+-        GSList *l;
+-
+-        gconf_value = gconf_entry_get_value (entry);
+-        if (!gconf_value)
+-                return; /* NULL means that the value has been unset */
+-
+-        binding = (PropBinding *) user_data;
+-
+-        /* Check that this notification is not caused by sync_prop_to_pref() */
+-        l = g_slist_find_custom (binding->val_changes,
+-                                 gconf_value,
+-                                 (GCompareFunc) gconf_value_compare);
+-        if (l) {
+-                gconf_value_free (l->data);
+-
+-                binding->val_changes = g_slist_delete_link
+-                        (binding->val_changes, l);
+-
+-                return;
+-        }
+-
+-        prop_binding_sync_pref_to_prop (binding, gconf_value);
+-}
+-
+-/* Performs a scheduled prop-to-pref sync for a prop binding in
+- * delay mode */
+-static gboolean
+-prop_binding_perform_scheduled_sync (PropBinding *binding)
+-{
+-        prop_binding_sync_prop_to_pref (binding);
+-
+-        binding->sync_timeout_id = 0;
+-
+-        g_object_unref (binding->object);
+-
+-        return FALSE;
+-}
+-
+-#define PROP_BINDING_SYNC_DELAY 100 /* Delay for bindings with "delayed"
+-                                       set to TRUE, in ms */
+-
+-/* Called when an object property has changed */
+-static void
+-prop_binding_prop_changed (GObject     *object,
+-                           GParamSpec  *param_spec,
+-                           PropBinding *binding)
+-{
+-        if (binding->delayed_mode) {
+-                /* Just schedule a sync */
+-                if (binding->sync_timeout_id == 0) {
+-                        /* We keep a reference on the object as long as
+-                         * we haven't synced yet to make sure we don't
+-                         * lose any data */
+-                        g_object_ref (binding->object);
+-
+-                        binding->sync_timeout_id =
+-                                g_timeout_add
+-                                        (PROP_BINDING_SYNC_DELAY,
+-                                         (GSourceFunc)
+-                                            prop_binding_perform_scheduled_sync,
+-                                         binding);
+-                }
+-        } else {
+-                /* Directly sync */
+-                prop_binding_sync_prop_to_pref (binding);
+-        }
+-}
+-
+-/* Called when an object is destroyed */
+-static void
+-prop_binding_object_destroyed (gpointer user_data,
+-                               GObject *where_the_object_was)
+-{
+-        PropBinding *binding;
+-
+-        binding = (PropBinding *) user_data;
+-        binding->object = NULL; /* Don't do anything with the object
+-                                   at unbind() */
+-
+-        g_hash_table_remove (bridge->bindings,
+-                             GUINT_TO_POINTER (binding->id));
+-}
+-
+-/**
+- * gconf_bridge_bind_property_full
+- * @bridge: A #GConfBridge
+- * @key: A GConf key to be bound
+- * @object: A #GObject
+- * @prop: The property of @object to be bound
+- * @delayed_sync: TRUE if there should be a delay between property changes
+- * and syncs to GConf. Set to TRUE when binding to a rapidly-changing
+- * property, for example the "value" property on a #GtkAdjustment.
+- *
+- * Binds @key to @prop, causing them to have the same value at all times.
+- *
+- * The types of @key and @prop should be compatible. Floats and doubles, and
+- * ints, uints, longs, unlongs, int64s, uint64s, chars, uchars and enums
+- * can be matched up. Booleans and strings can only be matched to their
+- * respective types.
+- *
+- * On calling this function the current value of @key will be set to @prop.
+- *
+- * Return value: The ID of the new binding.
+- **/
+-guint
+-gconf_bridge_bind_property_full (GConfBridge *bridge,
+-                                 const char  *key,
+-                                 GObject     *object,
+-                                 const char  *prop,
+-                                 gboolean     delayed_sync)
+-{
+-        GParamSpec *pspec;
+-        PropBinding *binding;
+-        char *signal;
+-        GConfValue *val;
+-
+-        g_return_val_if_fail (bridge != NULL, 0);
+-        g_return_val_if_fail (key != NULL, 0);
+-        g_return_val_if_fail (G_IS_OBJECT (object), 0);
+-        g_return_val_if_fail (prop != NULL, 0);
+-
+-        /* First, try to fetch the propertys GParamSpec off the object */
+-        pspec = g_object_class_find_property
+-                                (G_OBJECT_GET_CLASS (object), prop);
+-        if (G_UNLIKELY (pspec == NULL)) {
+-                g_warning ("gconf_bridge_bind_property_full: A property \"%s\" "
+-                           "was not found. Please make sure you are passing "
+-                           "the right property name.", prop);
+-
+-                return 0;
+-        }
+-
+-        /* GParamSpec found: All good, create new binding. */
+-        binding = g_new (PropBinding, 1);
+-
+-        binding->type = BINDING_PROP;
+-        binding->id = new_id ();
+-        binding->delayed_mode = delayed_sync;
+-        binding->val_changes = NULL;
+-        binding->key = g_strdup (key);
+-        binding->object = object;
+-        binding->prop = pspec;
+-        binding->sync_timeout_id = 0;
+-
+-        /* Watch GConf key */
+-        binding->val_notify_id =
+-                gconf_client_notify_add (bridge->client, key,
+-                                         prop_binding_pref_changed,
+-                                         binding, NULL, NULL);
+-
+-        /* Connect to property change notifications */
+-        signal = g_strconcat ("notify::", prop, NULL);
+-        binding->prop_notify_id =
+-                g_signal_connect (object, signal,
+-                                  G_CALLBACK (prop_binding_prop_changed),
+-                                  binding);
+-        g_free (signal);
+-
+-        /* Sync object to value from GConf, if set */
+-        val = gconf_client_get (bridge->client, key, NULL);
+-        if (val) {
+-                prop_binding_sync_pref_to_prop (binding, val);
+-                gconf_value_free (val);
+-        }
+-
+-        /* Handle case where watched object gets destroyed */
+-        g_object_weak_ref (object,
+-                           prop_binding_object_destroyed, binding);
+-
+-        /* Insert binding */
+-        g_hash_table_insert (bridge->bindings,
+-                             GUINT_TO_POINTER (binding->id), binding);
+-
+-        /* Done */
+-        return binding->id;
+-}
+-
+-/* Unbinds a property binding */
+-static void
+-prop_binding_unbind (PropBinding *binding)
+-{
+-        if (binding->delayed_mode && binding->sync_timeout_id > 0) {
+-                /* Perform any scheduled syncs */
+-                g_source_remove (binding->sync_timeout_id);
+-
+-                /* The object will still be around as we have
+-                 * a reference */
+-                prop_binding_perform_scheduled_sync (binding);
+-        }
+-
+-        gconf_client_notify_remove (bridge->client,
+-                                    binding->val_notify_id);
+-        g_free (binding->key);
+-
+-        while (binding->val_changes) {
+-                gconf_value_free (binding->val_changes->data);
+-
+-                binding->val_changes = g_slist_delete_link
+-                        (binding->val_changes, binding->val_changes);
+-        }
+-
+-        /* The object might have been destroyed .. */
+-        if (binding->object) {
+-                g_signal_handler_disconnect (binding->object,
+-                                             binding->prop_notify_id);
+-
+-                g_object_weak_unref (binding->object,
+-                                     prop_binding_object_destroyed, binding);
+-        }
+-}
+-
+-/*
+- * Window bindings
+- */
+-
+-/* Performs a scheduled dimensions-to-prefs sync for a window binding */
+-static gboolean
+-window_binding_perform_scheduled_sync (WindowBinding *binding)
+-{
+-        if (binding->bind_size) {
+-                int width, height;
+-                char *key;
+-                GdkWindowState state;
+-
+-#if GTK_CHECK_VERSION (2,14,0)
+-                state = gdk_window_get_state (gtk_widget_get_window (GTK_WIDGET (binding->window)));
+-#else
+-                state = gdk_window_get_state (GTK_WIDGET (binding->window)->window);
+-#endif
+-
+-                if (state & GDK_WINDOW_STATE_MAXIMIZED) {
+-                        key = g_strconcat (binding->key_prefix, "_maximized", NULL);
+-                        gconf_client_set_bool (bridge->client, key, TRUE, NULL);
+-                        g_free (key);
+-                } else {
+-                        gtk_window_get_size (binding->window, &width, &height);
+-
+-                        key = g_strconcat (binding->key_prefix, "_width", NULL);
+-                        gconf_client_set_int (bridge->client, key, width, NULL);
+-                        g_free (key);
+-
+-                        key = g_strconcat (binding->key_prefix, "_height", NULL);
+-                        gconf_client_set_int (bridge->client, key, height, NULL);
+-                        g_free (key);
+-
+-                        key = g_strconcat (binding->key_prefix, "_maximized", NULL);
+-                        gconf_client_set_bool (bridge->client, key, FALSE, NULL);
+-                        g_free (key);
+-                }
+-        }
+-
+-        if (binding->bind_pos) {
+-                int x, y;
+-                char *key;
+-
+-                gtk_window_get_position (binding->window, &x, &y);
+-
+-                key = g_strconcat (binding->key_prefix, "_x", NULL);
+-                gconf_client_set_int (bridge->client, key, x, NULL);
+-                g_free (key);
+-
+-                key = g_strconcat (binding->key_prefix, "_y", NULL);
+-                gconf_client_set_int (bridge->client, key, y, NULL);
+-                g_free (key);
+-        }
+-
+-        binding->sync_timeout_id = 0;
+-
+-        return FALSE;
+-}
+-
+-#define WINDOW_BINDING_SYNC_DELAY 1000 /* Delay before syncing new window
+-                                          dimensions to GConf, in ms */
+-
+-/* Called when the window han been resized or moved */
+-static gboolean
+-window_binding_configure_event_cb (GtkWindow         *window,
+-                                   GdkEventConfigure *event,
+-                                   WindowBinding     *binding)
+-{
+-	/* Re-postpone by cancel of the previous request */
+-	if (binding->sync_timeout_id > 0)
+-		g_source_remove (binding->sync_timeout_id);
+-
+-        /* Schedule a sync */
+-        binding->sync_timeout_id = g_timeout_add (WINDOW_BINDING_SYNC_DELAY,
+-						  (GSourceFunc)window_binding_perform_scheduled_sync,
+-						  binding);
+-
+-        return FALSE;
+-}
+-
+-/* Called when the window state is being changed */
+-static gboolean
+-window_binding_state_event_cb (GtkWindow           *window,
+-                               GdkEventWindowState *event,
+-                               WindowBinding       *binding)
+-{
+-        if (binding->sync_timeout_id > 0)
+-                g_source_remove (binding->sync_timeout_id);
+-
+-        window_binding_perform_scheduled_sync (binding);
+-
+-        return FALSE;
+-}
+-
+-/* Called when the window is being unmapped */
+-static gboolean
+-window_binding_unmap_cb (GtkWindow     *window,
+-                         WindowBinding *binding)
+-{
+-        /* Force sync */
+-        if (binding->sync_timeout_id > 0)
+-                g_source_remove (binding->sync_timeout_id);
+-
+-        window_binding_perform_scheduled_sync (binding);
+-
+-        return FALSE;
+-}
+-
+-/* Called when a window is destroyed */
+-static void
+-window_binding_window_destroyed (gpointer user_data,
+-                                 GObject *where_the_object_was)
+-{
+-        WindowBinding *binding;
+-
+-        binding = (WindowBinding *) user_data;
+-        binding->window = NULL; /* Don't do anything with the window
+-                                   at unbind() */
+-
+-        if (binding->sync_timeout_id > 0)
+-                g_source_remove (binding->sync_timeout_id);
+-
+-        g_hash_table_remove (bridge->bindings,
+-                             GUINT_TO_POINTER (binding->id));
+-}
+-
+-/**
+- * gconf_bridge_bind_window
+- * @bridge: A #GConfBridge
+- * @key_prefix: The prefix of the GConf keys
+- * @window: A #GtkWindow
+- * @bind_size: TRUE to bind the size of @window
+- * @bind_pos: TRUE to bind the position of @window
+- *
+- * On calling this function @window will be resized to the values
+- * specified by "@key_prefix<!-- -->_width" and "@key_prefix<!-- -->_height"
+- * and maximixed if "@key_prefix<!-- -->_maximized is TRUE if
+- * @bind_size is TRUE, and moved to the values specified by
+- * "@key_prefix<!-- -->_x" and "@key_prefix<!-- -->_y" if @bind_pos is TRUE.
+- * The respective GConf values will be updated when the window is resized
+- * and/or moved.
+- *
+- * Return value: The ID of the new binding.
+- **/
+-guint
+-gconf_bridge_bind_window (GConfBridge *bridge,
+-                          const char  *key_prefix,
+-                          GtkWindow   *window,
+-                          gboolean     bind_size,
+-                          gboolean     bind_pos)
+-{
+-        WindowBinding *binding;
+-
+-        g_return_val_if_fail (bridge != NULL, 0);
+-        g_return_val_if_fail (key_prefix != NULL, 0);
+-        g_return_val_if_fail (GTK_IS_WINDOW (window), 0);
+-
+-        /* Create new binding. */
+-        binding = g_new (WindowBinding, 1);
+-
+-        binding->type = BINDING_WINDOW;
+-        binding->id = new_id ();
+-        binding->bind_size = bind_size;
+-        binding->bind_pos = bind_pos;
+-        binding->key_prefix = g_strdup (key_prefix);
+-        binding->window = window;
+-        binding->sync_timeout_id = 0;
+-
+-        /* Set up GConf keys & sync window to GConf values */
+-        if (bind_size) {
+-                char *key;
+-                GConfValue *width_val, *height_val, *maximized_val;
+-
+-                key = g_strconcat (key_prefix, "_width", NULL);
+-                width_val = gconf_client_get (bridge->client, key, NULL);
+-                g_free (key);
+-
+-                key = g_strconcat (key_prefix, "_height", NULL);
+-                height_val = gconf_client_get (bridge->client, key, NULL);
+-                g_free (key);
+-
+-                key = g_strconcat (key_prefix, "_maximized", NULL);
+-                maximized_val = gconf_client_get (bridge->client, key, NULL);
+-                g_free (key);
+-
+-                if (width_val && height_val) {
+-                        gtk_window_resize (window,
+-                                           gconf_value_get_int (width_val),
+-                                           gconf_value_get_int (height_val));
+-
+-                        gconf_value_free (width_val);
+-                        gconf_value_free (height_val);
+-                } else if (width_val) {
+-                        gconf_value_free (width_val);
+-                } else if (height_val) {
+-                        gconf_value_free (height_val);
+-                }
+-
+-                if (maximized_val) {
+-                        if (gconf_value_get_bool (maximized_val)) {
+-                                gtk_window_maximize (window);
+-                        }
+-                        gconf_value_free (maximized_val);
+-                }
+-        }
+-
+-        if (bind_pos) {
+-                char *key;
+-                GConfValue *x_val, *y_val;
+-
+-                key = g_strconcat (key_prefix, "_x", NULL);
+-                x_val = gconf_client_get (bridge->client, key, NULL);
+-                g_free (key);
+-
+-                key = g_strconcat (key_prefix, "_y", NULL);
+-                y_val = gconf_client_get (bridge->client, key, NULL);
+-                g_free (key);
+-
+-                if (x_val && y_val) {
+-                        gtk_window_move (window,
+-                                         gconf_value_get_int (x_val),
+-                                         gconf_value_get_int (y_val));
+-
+-                        gconf_value_free (x_val);
+-                        gconf_value_free (y_val);
+-                } else if (x_val) {
+-                        gconf_value_free (x_val);
+-                } else if (y_val) {
+-                        gconf_value_free (y_val);
+-                }
+-        }
+-
+-        /* Connect to window size change notifications */
+-        binding->configure_event_id =
+-                g_signal_connect (window,
+-                                  "configure-event",
+-                                  G_CALLBACK
+-                                        (window_binding_configure_event_cb),
+-                                  binding);
+-
+-        binding->window_state_event_id =
+-                g_signal_connect (window,
+-                                  "window_state_event",
+-                                  G_CALLBACK
+-                                        (window_binding_state_event_cb),
+-                                  binding);
+-        binding->unmap_id =
+-                g_signal_connect (window,
+-                                  "unmap",
+-                                  G_CALLBACK (window_binding_unmap_cb),
+-                                  binding);
+-
+-        /* Handle case where window gets destroyed */
+-        g_object_weak_ref (G_OBJECT (window),
+-                           window_binding_window_destroyed, binding);
+-
+-        /* Insert binding */
+-        g_hash_table_insert (bridge->bindings,
+-                             GUINT_TO_POINTER (binding->id), binding);
+-
+-        /* Done */
+-        return binding->id;
+-}
+-
+-/* Unbinds a window binding */
+-static void
+-window_binding_unbind (WindowBinding *binding)
+-{
+-        if (binding->sync_timeout_id > 0)
+-                g_source_remove (binding->sync_timeout_id);
+-
+-        g_free (binding->key_prefix);
+-
+-        /* The window might have been destroyed .. */
+-        if (binding->window) {
+-                g_signal_handler_disconnect (binding->window,
+-                                             binding->configure_event_id);
+-                g_signal_handler_disconnect (binding->window,
+-					     binding->window_state_event_id);
+-                g_signal_handler_disconnect (binding->window,
+-                                             binding->unmap_id);
+-
+-                g_object_weak_unref (G_OBJECT (binding->window),
+-                                     window_binding_window_destroyed, binding);
+-        }
+-}
+-
+-/*
+- * List store bindings
+- */
+-
+-/* Fills a GtkListStore with the string list from @value */
+-static void
+-list_store_binding_sync_pref_to_store (ListStoreBinding *binding,
+-                                       GConfValue       *value)
+-{
+-        GSList *list, *l;
+-        GtkTreeIter iter;
+-
+-        /* Make sure we don't enter an infinite synchronizing loop */
+-        g_signal_handler_block (binding->list_store,
+-                                binding->row_inserted_id);
+-        g_signal_handler_block (binding->list_store,
+-                                binding->row_deleted_id);
+-
+-        gtk_list_store_clear (binding->list_store);
+-
+-        list = gconf_value_get_list (value);
+-        for (l = list; l; l = l->next) {
+-                GConfValue *l_value;
+-                const char *string;
+-
+-                l_value = (GConfValue *) l->data;
+-                string = gconf_value_get_string (l_value);
+-
+-                gtk_list_store_insert_with_values (binding->list_store,
+-                                                   &iter, -1,
+-                                                   0, string,
+-                                                   -1);
+-        }
+-
+-        g_signal_handler_unblock (binding->list_store,
+-                                  binding->row_inserted_id);
+-        g_signal_handler_unblock (binding->list_store,
+-                                  binding->row_deleted_id);
+-}
+-
+-/* Sets a GConf value to the contents of a GtkListStore */
+-static gboolean
+-list_store_binding_sync_store_to_pref (ListStoreBinding *binding)
+-{
+-        GtkTreeModel *tree_model;
+-        GtkTreeIter iter;
+-        GSList *list;
+-        int res;
+-        GConfValue *gconf_value;
+-
+-        tree_model = GTK_TREE_MODEL (binding->list_store);
+-
+-        /* Build list */
+-        list = NULL;
+-        res = gtk_tree_model_get_iter_first (tree_model, &iter);
+-        while (res) {
+-                char *string;
+-                GConfValue *tmp_value;
+-
+-                gtk_tree_model_get (tree_model, &iter,
+-                                    0, &string, -1);
+-
+-                tmp_value = gconf_value_new (GCONF_VALUE_STRING);
+-                gconf_value_set_string (tmp_value, string);
+-
+-                list = g_slist_append (list, tmp_value);
+-
+-                res = gtk_tree_model_iter_next (tree_model, &iter);
+-        }
+-
+-        /* Create value */
+-        gconf_value = gconf_value_new (GCONF_VALUE_LIST);
+-        gconf_value_set_list_type (gconf_value, GCONF_VALUE_STRING);
+-        gconf_value_set_list_nocopy (gconf_value, list);
+-
+-        /* Set */
+-        gconf_client_set (bridge->client, binding->key, gconf_value, NULL);
+-
+-        /* Store until change notification comes in, so that we are able
+-         * to ignore it */
+-        binding->val_changes = g_slist_append (binding->val_changes,
+-                                               gconf_value);
+-
+-        binding->sync_idle_id = 0;
+-
+-        g_object_unref (binding->list_store);
+-
+-        return FALSE;
+-}
+-
+-/* Pref changed: sync */
+-static void
+-list_store_binding_pref_changed (GConfClient *client,
+-                                 guint        cnxn_id,
+-                                 GConfEntry  *entry,
+-                                 gpointer     user_data)
+-{
+-        GConfValue *gconf_value;
+-        ListStoreBinding *binding;
+-        GSList *l;
+-
+-        gconf_value = gconf_entry_get_value (entry);
+-        if (!gconf_value)
+-                return; /* NULL means that the value has been unset */
+-
+-        binding = (ListStoreBinding *) user_data;
+-
+-        /* Check that this notification is not caused by
+-         * sync_store_to_pref() */
+-        l = g_slist_find_custom (binding->val_changes,
+-                                 gconf_value,
+-                                 (GCompareFunc) gconf_value_compare);
+-        if (l) {
+-                gconf_value_free (l->data);
+-
+-                binding->val_changes = g_slist_delete_link
+-                        (binding->val_changes, l);
+-
+-                return;
+-        }
+-
+-        list_store_binding_sync_pref_to_store (binding, gconf_value);
+-}
+-
+-/* Called when an object is destroyed */
+-static void
+-list_store_binding_store_destroyed (gpointer user_data,
+-                                    GObject *where_the_object_was)
+-{
+-        ListStoreBinding *binding;
+-
+-        binding = (ListStoreBinding *) user_data;
+-        binding->list_store = NULL; /* Don't do anything with the store
+-                                       at unbind() */
+-
+-        g_hash_table_remove (bridge->bindings,
+-                             GUINT_TO_POINTER (binding->id));
+-}
+-
+-/* List store changed: Sync */
+-static void
+-list_store_binding_store_changed_cb (ListStoreBinding *binding)
+-{
+-        if (binding->sync_idle_id == 0) {
+-                g_object_ref (binding->list_store);
+-
+-                binding->sync_idle_id = g_idle_add
+-                        ((GSourceFunc) list_store_binding_sync_store_to_pref,
+-                         binding);
+-        }
+-}
+-
+-/**
+- * gconf_bridge_bind_string_list_store
+- * @bridge: A #GConfBridge
+- * @key: A GConf key to be bound
+- * @list_store: A #GtkListStore
+- *
+- * On calling this function single string column #GtkListStore @list_store
+- * will be kept synchronized with the GConf string list value pointed to by
+- * @key. On calling this function @list_store will be populated with the
+- * strings specified by the value of @key.
+- *
+- * Return value: The ID of the new binding.
+- **/
+-guint
+-gconf_bridge_bind_string_list_store (GConfBridge  *bridge,
+-                                     const char   *key,
+-                                     GtkListStore *list_store)
+-{
+-        GtkTreeModel *tree_model;
+-        gboolean have_one_column, is_string_column;
+-        ListStoreBinding *binding;
+-        GConfValue *val;
+-
+-        g_return_val_if_fail (bridge != NULL, 0);
+-        g_return_val_if_fail (key != NULL, 0);
+-        g_return_val_if_fail (GTK_IS_LIST_STORE (list_store), 0);
+-
+-        /* Check list store suitability */
+-        tree_model = GTK_TREE_MODEL (list_store);
+-        have_one_column = (gtk_tree_model_get_n_columns (tree_model) == 1);
+-        is_string_column = (gtk_tree_model_get_column_type
+-                                        (tree_model, 0) == G_TYPE_STRING);
+-        if (G_UNLIKELY (!have_one_column || !is_string_column)) {
+-                g_warning ("gconf_bridge_bind_string_list_store: Only "
+-                           "GtkListStores with exactly one string column are "
+-                           "supported.");
+-
+-                return 0;
+-        }
+-
+-        /* Create new binding. */
+-        binding = g_new (ListStoreBinding, 1);
+-
+-        binding->type = BINDING_LIST_STORE;
+-        binding->id = new_id ();
+-        binding->key = g_strdup (key);
+-        binding->val_changes = NULL;
+-        binding->list_store = list_store;
+-        binding->sync_idle_id = 0;
+-
+-        /* Watch GConf key */
+-        binding->val_notify_id =
+-                gconf_client_notify_add (bridge->client, key,
+-                                         list_store_binding_pref_changed,
+-                                         binding, NULL, NULL);
+-
+-        /* Connect to ListStore change notifications */
+-        binding->row_inserted_id =
+-                g_signal_connect_swapped (list_store, "row-inserted",
+-                                          G_CALLBACK
+-                                          (list_store_binding_store_changed_cb),
+-                                          binding);
+-        binding->row_changed_id =
+-                g_signal_connect_swapped (list_store, "row-changed",
+-                                          G_CALLBACK
+-                                          (list_store_binding_store_changed_cb),
+-                                          binding);
+-        binding->row_deleted_id =
+-                g_signal_connect_swapped (list_store, "row-deleted",
+-                                          G_CALLBACK
+-                                          (list_store_binding_store_changed_cb),
+-                                          binding);
+-        binding->rows_reordered_id =
+-                g_signal_connect_swapped (list_store, "rows-reordered",
+-                                          G_CALLBACK
+-                                          (list_store_binding_store_changed_cb),
+-                                          binding);
+-
+-        /* Sync object to value from GConf, if set */
+-        val = gconf_client_get (bridge->client, key, NULL);
+-        if (val) {
+-                list_store_binding_sync_pref_to_store (binding, val);
+-                gconf_value_free (val);
+-        }
+-
+-        /* Handle case where watched object gets destroyed */
+-        g_object_weak_ref (G_OBJECT (list_store),
+-                           list_store_binding_store_destroyed, binding);
+-
+-        /* Insert binding */
+-        g_hash_table_insert (bridge->bindings,
+-                             GUINT_TO_POINTER (binding->id), binding);
+-
+-        /* Done */
+-        return binding->id;
+-}
+-
+-/* Unbinds a list store binding */
+-static void
+-list_store_binding_unbind (ListStoreBinding *binding)
+-{
+-        /* Perform any scheduled syncs */
+-        if (binding->sync_idle_id > 0) {
+-                g_source_remove (binding->sync_idle_id);
+-
+-                /* The store will still be around as we added a reference */
+-                list_store_binding_sync_store_to_pref (binding);
+-        }
+-
+-        g_free (binding->key);
+-
+-        while (binding->val_changes) {
+-                gconf_value_free (binding->val_changes->data);
+-
+-                binding->val_changes = g_slist_delete_link
+-                        (binding->val_changes, binding->val_changes);
+-        }
+-
+-        /* The store might have been destroyed .. */
+-        if (binding->list_store) {
+-                g_signal_handler_disconnect (binding->list_store,
+-                                             binding->row_inserted_id);
+-                g_signal_handler_disconnect (binding->list_store,
+-                                             binding->row_changed_id);
+-                g_signal_handler_disconnect (binding->list_store,
+-                                             binding->row_deleted_id);
+-                g_signal_handler_disconnect (binding->list_store,
+-                                             binding->rows_reordered_id);
+-
+-                g_object_weak_unref (G_OBJECT (binding->list_store),
+-                                     list_store_binding_store_destroyed,
+-                                     binding);
+-        }
+-}
+-
+-/*
+- * Generic unbinding
+- */
+-
+-/* Unbinds a binding */
+-static void
+-unbind (Binding *binding)
+-{
+-        /* Call specialized unbinding function */
+-        switch (binding->type) {
+-        case BINDING_PROP:
+-                prop_binding_unbind ((PropBinding *) binding);
+-                break;
+-        case BINDING_WINDOW:
+-                window_binding_unbind ((WindowBinding *) binding);
+-                break;
+-        case BINDING_LIST_STORE:
+-                list_store_binding_unbind ((ListStoreBinding *) binding);
+-                break;
+-        default:
+-                g_warning ("Unknown binding type '%d'\n", binding->type);
+-                break;
+-        }
+-
+-        g_free (binding);
+-}
+-
+-/**
+- * gconf_bridge_unbind
+- * @bridge: A #GConfBridge
+- * @binding_id: The ID of the binding to be removed
+- *
+- * Removes the binding with ID @binding_id.
+- **/
+-void
+-gconf_bridge_unbind (GConfBridge *bridge,
+-                     guint        binding_id)
+-{
+-        g_return_if_fail (bridge != NULL);
+-        g_return_if_fail (binding_id > 0);
+-
+-        /* This will trigger the hash tables value destruction
+-         * function, which will take care of further cleanup */
+-        g_hash_table_remove (bridge->bindings,
+-                             GUINT_TO_POINTER (binding_id));
+-}
+-
+-/*
+- * Error handling
+- */
+-
+-/* This is the same dialog as used in eel */
+-static void
+-error_handler (GConfClient *client,
+-               GError      *error)
+-{
+-        static gboolean shown_dialog = FALSE;
+-
+-        g_warning ("GConf error:\n  %s", error->message);
+-
+-        if (!shown_dialog) {
+-                GtkWidget *dlg;
+-
+-                dlg = gtk_message_dialog_new (NULL, 0,
+-                                              GTK_MESSAGE_ERROR,
+-                                              GTK_BUTTONS_OK,
+-                                              _("GConf error: %s"),
+-                                              error->message);
+-
+-                gtk_message_dialog_format_secondary_text
+-                        (GTK_MESSAGE_DIALOG (dlg),
+-                         _("All further errors shown only on terminal."));
+-                gtk_window_set_title (GTK_WINDOW (dlg), "");
+-
+-                gtk_dialog_run (GTK_DIALOG (dlg));
+-
+-                gtk_widget_destroy (dlg);
+-
+-                shown_dialog = TRUE;
+-	}
+-}
+-
+-/**
+- * gconf_bridge_install_default_error_handler
+- *
+- * Sets up the default error handler. Any unhandled GConf errors will
+- * automatically be handled by presenting the user an error dialog.
+- **/
+-void
+-gconf_bridge_install_default_error_handler (void)
+-{
+-        gconf_client_set_global_default_error_handler (error_handler);
+-}
+diff --git a/cut-n-paste/gconf-bridge/gconf-bridge.h b/cut-n-paste/gconf-bridge/gconf-bridge.h
+deleted file mode 100644
+index 6026389..0000000
+--- a/cut-n-paste/gconf-bridge/gconf-bridge.h
++++ /dev/null
+@@ -1,116 +0,0 @@
+-/*
+- * (C) 2005 OpenedHand Ltd.
+- *
+- * Author: Jorn Baayen <jorn@openedhand.com>
+- *
+- * This library is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU Library General Public
+- * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
+- *
+- * This library is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+- * Library General Public License for more details.
+- *
+- * You should have received a copy of the GNU Library General Public
+- * License along with this library; if not, write to the
+- * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+- * Boston, MA 02110-1301, USA.
+- */
+-
+-#ifndef __GCONF_BRIDGE_H__
+-#define __GCONF_BRIDGE_H__
+-
+-#include <gconf/gconf-client.h>
+-#include <gtk/gtk.h>
+-
+-G_BEGIN_DECLS
+-
+-void gconf_bridge_install_default_error_handler (void);
+-
+-typedef struct _GConfBridge GConfBridge;
+-
+-GConfBridge *gconf_bridge_get                    (void);
+-
+-GConfClient *gconf_bridge_get_client             (GConfBridge  *bridge);
+-
+-guint        gconf_bridge_bind_property_full     (GConfBridge  *bridge,
+-                                                  const char   *key,
+-                                                  GObject      *object,
+-                                                  const char   *prop,
+-                                                  gboolean      delayed_sync);
+-
+-/**
+- * gconf_bridge_bind_property
+- * @bridge: A #GConfBridge
+- * @key: A GConf key to be bound
+- * @object: A #GObject
+- * @prop: The property of @object to be bound
+- *
+- * Binds @key to @prop without delays, causing them to have the same value at all times. See
+- * #gconf_bridge_bind_property_full for more details.
+- *
+- **/
+-#define gconf_bridge_bind_property(bridge, key, object, prop) \
+-        gconf_bridge_bind_property_full ((bridge), (key), \
+-                                         (object), (prop), FALSE)
+-
+-/**
+- * gconf_bridge_bind_property_delayed
+- * @bridge: A #GConfBridge
+- * @key: A GConf key to be bound
+- * @object: A #GObject
+- * @prop: The property of @object to be bound
+- *
+- * Binds @key to @prop with a delay, causing them to have the same value at all
+- * times. See #gconf_bridge_bind_property_full for more details.
+- **/
+-#define gconf_bridge_bind_property_delayed(bridge, key, object, prop) \
+-        gconf_bridge_bind_property_full ((bridge), (key), \
+-                                         (object), (prop), TRUE)
+-
+-guint        gconf_bridge_bind_window            (GConfBridge  *bridge,
+-                                                  const char   *key_prefix,
+-                                                  GtkWindow    *window,
+-                                                  gboolean      bind_size,
+-                                                  gboolean      bind_pos);
+-
+-/**
+- * gconf_bridge_bind_window_size
+- * @bridge: A #GConfBridge
+- * @key_prefix: The prefix of the GConf keys
+- * @window: A #GtkWindow
+- *
+- * On calling this function @window will be resized to the values specified by
+- * "@key_prefix<!-- -->_width" and "@key_prefix<!-- -->_height".  The respective
+- * GConf values will be updated when the window is resized. See
+- * #gconf_bridge_bind_window for more details.
+- **/
+-#define gconf_bridge_bind_window_size(bridge, key_prefix, window) \
+-        gconf_bridge_bind_window ((bridge), (key_prefix), (window), TRUE, FALSE)
+-
+-/**
+- * gconf_bridge_bind_window_pos
+- * @bridge: A #GConfBridge
+- * @key_prefix: The prefix of the GConf keys
+- * @window: A #GtkWindow
+- *
+- * On calling this function @window will be moved to the values specified by
+- * "@key_prefix<!-- -->_x" and "@key_prefix<!-- -->_y". The respective GConf
+- * values will be updated when the window is moved. See
+- * #gconf_bridge_bind_window for more details.
+- **/
+-#define gconf_bridge_bind_window_pos(bridge, key_prefix, window) \
+-        gconf_bridge_bind_window ((bridge), (key_prefix), (window), FALSE, TRUE)
+-
+-guint        gconf_bridge_bind_string_list_store (GConfBridge  *bridge,
+-                                                  const char   *key,
+-                                                  GtkListStore *list_store);
+-
+-void         gconf_bridge_unbind                 (GConfBridge  *bridge,
+-                                                  guint         binding_id);
+-
+-G_END_DECLS
+-
+-#endif /* __GCONF_BRIDGE_H__ */
+diff --git a/data/Makefile.am b/data/Makefile.am
+index 87d3043..edf7a00 100644
+--- a/data/Makefile.am
++++ b/data/Makefile.am
+@@ -6,19 +6,8 @@ man_MANS = gnome-phone-manager.1
+ uidir = $(pkgdatadir)
+ ui_DATA = phonemgr.ui
+ 
+-schema_in_files = gnome-phone-manager.schemas.in
+-schemadir = $(GCONF_SCHEMA_FILE_DIR)
+-schema_DATA = $(schema_in_files:.schemas.in=.schemas)
+-@INTLTOOL_SCHEMAS_RULE@
+-
+-install-data-local: $(schema_DATA)
+-if GCONF_SCHEMAS_INSTALL
+-	if test -z "$(DESTDIR)" ; then \
+-	for p in $^ ; do \
+-		GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $$p 2>&1 > /dev/null; \
+-	done \
+-	fi
+-endif
++gsettings_SCHEMAS = org.gnome.phone-manager.gschema.xml
++@GSETTINGS_RULES@
+ 
+ gtk_update_icon_cache = gtk-update-icon-cache -f -t $(datadir)/icons/hicolor
+ 
+@@ -34,5 +23,5 @@ update-icon-cache:
+ 	fi
+ 
+ CLEANFILES = $(schema_DATA)
+-EXTRA_DIST = $(ui_DATA) $(schema_in_files) $(man_MANS)
++EXTRA_DIST = $(ui_DATA) $(gsettings_SCHEMAS) $(man_MANS)
+ 
+diff --git a/data/gnome-phone-manager.schemas.in b/data/gnome-phone-manager.schemas.in
+deleted file mode 100644
+index 7345b7e..0000000
+--- a/data/gnome-phone-manager.schemas.in
++++ /dev/null
+@@ -1,112 +0,0 @@
+-<gconfschemafile>
+-    <schemalist>    
+-
+-      <schema>
+-        <key>/schemas/apps/gnome-phone-manager/connection_type</key>
+-	<applyto>/apps/gnome-phone-manager/connection_type</applyto>
+-	<owner>gnome-phone-manager</owner>
+-	<type>int</type>
+-	<default>0</default>
+-	<locale name="C">
+-	  <short>The connection type used by gnome-phone-manager</short>
+-	  <long>
+-	    The connection type used by gnome-phone-manager:
+-	    Bluetooth is 0
+-	    Serial 1 is 1
+-	    Serial 2 is 2
+-	    IrDa is 3
+-	    Other connection types are 4
+-	  </long>
+-	</locale>
+-      </schema>
+-
+-      <schema>
+-        <key>/schemas/apps/gnome-phone-manager/bluetooth_addr</key>
+-	<applyto>/apps/gnome-phone-manager/bluetooth_addr</applyto>
+-	<owner>gnome-phone-manager</owner>
+-	<type>string</type>
+-	<default></default>
+-	<locale name="C">
+-	  <short>Bluetooth address of the device to connect to</short>
+-	  <long>
+-	    Bluetooth address of the device to connect to. Requires
+-	    connection_type to be 1 to be used.
+-	  </long>
+-	</locale>
+-      </schema>
+-
+-      <schema>
+-        <key>/schemas/apps/gnome-phone-manager/other_serial</key>
+-	<applyto>/apps/gnome-phone-manager/other_serial</applyto>
+-	<owner>gnome-phone-manager</owner>
+-	<type>string</type>
+-	<default></default>
+-	<locale name="C">
+-	  <short>The device node for the serial device to connect to</short>
+-	  <long>
+-	    The device node for the serial device to connect to. Requires
+-	    connection_type to be 4 to be used.
+-	  </long>
+-	</locale>
+-      </schema>
+-
+-      <schema>
+-        <key>/schemas/apps/gnome-phone-manager/auto_retry</key>
+-	<applyto>/apps/gnome-phone-manager/auto_retry</applyto>
+-	<owner>gnome-phone-manager</owner>
+-	<type>bool</type>
+-	<default>true</default>
+-	<locale name="C">
+-	  <short>Whether to retry connecting to the mobile phone</short>
+-	  <long>
+-	    Whether to retry connecting to the mobile phone if the connection
+-	    fails at some point.
+-	  </long>
+-	</locale>
+-      </schema>
+-
+-      <schema>
+-        <key>/schemas/apps/gnome-phone-manager/sync_clock</key>
+-	<applyto>/apps/gnome-phone-manager/sync_clock</applyto>
+-	<owner>gnome-phone-manager</owner>
+-	<type>bool</type>
+-	<default>true</default>
+-	<locale name="C">
+-	  <short>Whether to synchronise the phone clock with the computer's</short>
+-	  <long>
+-	    Whether to synchronise the phone clock with the computer's.
+-	  </long>
+-	</locale>
+-      </schema>
+-
+-      <schema>
+-        <key>/schemas/apps/gnome-phone-manager/popup_messages</key>
+-	<applyto>/apps/gnome-phone-manager/popup_messages</applyto>
+-	<owner>gnome-phone-manager</owner>
+-	<type>bool</type>
+-	<default>false</default>
+-	<locale name="C">
+-	  <short>Whether to popup new messages on the desktop</short>
+-	  <long>
+-	    Whether to popup new messages on the desktop as soon as they're
+-	    received, as opposed to showing them when clicking on the tray icon.
+-	  </long>
+-	</locale>
+-      </schema>
+-
+-      <schema>
+-        <key>/schemas/apps/gnome-phone-manager/sound_alert</key>
+-	<applyto>/apps/gnome-phone-manager/sound_alert</applyto>
+-	<owner>gnome-phone-manager</owner>
+-	<type>bool</type>
+-	<default>true</default>
+-	<locale name="C">
+-	  <short>Whether to play a sound alert when a new message comes in</short>
+-	  <long>
+-	    Whether to play a sound alert when a new message comes in.
+-	  </long>
+-	</locale>
+-      </schema>
+-
+-  </schemalist>
+-</gconfschemafile>
+diff --git a/data/org.gnome.phone-manager.gschema.xml b/data/org.gnome.phone-manager.gschema.xml
+new file mode 100644
+index 0000000..826bd2c
+--- /dev/null
++++ b/data/org.gnome.phone-manager.gschema.xml
+@@ -0,0 +1,39 @@
++<schemalist>
++  <schema id="org.gnome.phone-manager" path="/org/gnome/phone-manager/">
++    <key name="connection-type" type="i">
++      <default>0</default>
++      <summary>The connection type used by gnome-phone-manager</summary>
++      <description>The connection type used by gnome-phone-manager: Bluetooth is 0 Serial 1 is 1 Serial 2 is 2 IrDa is 3 Other connection types are 4</description>
++    </key>
++    <key name="bluetooth-addr" type="s">
++      <default>''</default>
++      <summary>Bluetooth address of the device to connect to</summary>
++      <description>Bluetooth address of the device to connect to. Requires connection_type to be 1 to be used.</description>
++    </key>
++    <key name="other-serial" type="s">
++      <default>''</default>
++      <summary>The device node for the serial device to connect to</summary>
++      <description>The device node for the serial device to connect to. Requires connection_type to be 4 to be used.</description>
++    </key>
++    <key name="auto-retry" type="b">
++      <default>true</default>
++      <summary>Whether to retry connecting to the mobile phone</summary>
++      <description>Whether to retry connecting to the mobile phone if the connection fails at some point.</description>
++    </key>
++    <key name="sync-clock" type="b">
++      <default>true</default>
++      <summary>Whether to synchronise the phone clock with the computer's</summary>
++      <description>Whether to synchronise the phone clock with the computer's.</description>
++    </key>
++    <key name="popup-messages" type="b">
++      <default>false</default>
++      <summary>Whether to popup new messages on the desktop</summary>
++      <description>Whether to popup new messages on the desktop as soon as they're received, as opposed to showing them when clicking on the tray icon.</description>
++    </key>
++    <key name="sound-alert" type="b">
++      <default>true</default>
++      <summary>Whether to play a sound alert when a new message comes in</summary>
++      <description>Whether to play a sound alert when a new message comes in.</description>
++    </key>
++  </schema>
++</schemalist>
+diff --git a/gnome-bluetooth/phonemgr.c b/gnome-bluetooth/phonemgr.c
+index fecc367..5ce4113 100644
+--- a/gnome-bluetooth/phonemgr.c
++++ b/gnome-bluetooth/phonemgr.c
+@@ -27,7 +27,6 @@
+ #endif
+ 
+ #include <glib/gi18n-lib.h>
+-#include <gconf/gconf-client.h>
+ 
+ #include <bluetooth-plugin.h>
+ #include <bluetooth-client.h>
+@@ -101,19 +100,19 @@ static void
+ toggle_button (GtkToggleButton *button, gpointer user_data)
+ {
+ 	gboolean state;
+-	GConfClient *client;
++	GSettings *settings;
+ 	const char *bdaddr;
+ 
+-	client = g_object_get_data (G_OBJECT (button), "client");
++	settings = g_object_get_data (G_OBJECT (button), "settings");
+ 	bdaddr = g_object_get_data (G_OBJECT (button), "bdaddr");
+ 
+ 	state = gtk_toggle_button_get_active (button);
+ 	if (state == FALSE) {
+-		gconf_client_set_string (client, CONFBASE"/bluetooth_addr", "", NULL);
+-		gconf_client_set_int (client, CONFBASE"/connection_type", CONNECTION_NONE, NULL);
++		g_settings_set_string (settings, "bluetooth-addr", "");
++		g_settings_set_int (settings, "connection-type", CONNECTION_NONE);
+ 	} else {
+-		gconf_client_set_string (client, CONFBASE"/bluetooth_addr", bdaddr, NULL);
+-		gconf_client_set_int (client, CONFBASE"/connection_type", CONNECTION_BLUETOOTH, NULL);
++		g_settings_set_string (settings, "bluetooth-addr", bdaddr);
++		g_settings_set_int (settings, "connection-type", CONNECTION_BLUETOOTH);
+ 	}
+ }
+ 
+@@ -121,22 +120,20 @@ static GtkWidget *
+ get_config_widgets (const char *bdaddr, const char **uuids)
+ {
+ 	GtkWidget *button;
+-	GConfClient *client;
++	GSettings *settings;
+ 	char *old_bdaddr;
+ 	int connection_type;
+ 
+-	client = gconf_client_get_default ();
+-	if (client == NULL)
+-		return NULL;
++	settings = g_settings_new("org.gnome.phone-manager");
+ 
+ 	/* Translators: "device" is a phone or a modem */
+ 	button = gtk_check_button_new_with_label (_("Use this device with Phone Manager"));
+ 	g_object_set_data_full (G_OBJECT (button), "bdaddr", g_strdup (bdaddr), g_free);
+-	g_object_set_data_full (G_OBJECT (button), "client", client, g_object_unref);
++	g_object_set_data_full (G_OBJECT (button), "settings", settings, g_object_unref);
+ 
+ 	/* Is it already setup? */
+-	old_bdaddr = gconf_client_get_string (client, CONFBASE"/bluetooth_addr", NULL);
+-	connection_type = gconf_client_get_int (client, CONFBASE"/connection_type", NULL);
++	old_bdaddr = g_settings_get_string (settings, "bluetooth-addr");
++	connection_type = g_settings_get_int (settings, "connection-type");
+ 	if (connection_type == CONNECTION_BLUETOOTH && old_bdaddr && g_strcmp0 (old_bdaddr, bdaddr) == 0) {
+ 		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), TRUE);
+ 		g_object_set_data (G_OBJECT (button), "bdaddr", old_bdaddr);
+@@ -154,24 +151,22 @@ get_config_widgets (const char *bdaddr, const char **uuids)
+ static void
+ device_removed (const char *bdaddr)
+ {
+-	GConfClient *client;
++	GSettings *settings;
+ 	char *str;
+ 
+-	client = gconf_client_get_default ();
+-	if (client == NULL)
+-		return;
++	settings = g_settings_new("org.gnome.phone-manager");
+ 
+-	str = gconf_client_get_string (client, CONFBASE"/bluetooth_addr", NULL);
++	str = g_settings_get_string (settings, "bluetooth-addr");
+ 	if (g_strcmp0 (str, bdaddr) == 0) {
+-		gconf_client_set_string (client, CONFBASE"/bluetooth_addr", "", NULL);
+-		if (gconf_client_get_int (client, CONFBASE"/connection_type", NULL) == CONNECTION_BLUETOOTH) {
+-			gconf_client_set_int (client, CONFBASE"/connection_type", CONNECTION_NONE, NULL);
++		g_settings_set_string (settings, "bluetooth-addr", "");
++		if (g_settings_get_int (settings, "connection-type") == CONNECTION_BLUETOOTH) {
++			g_settings_set_int (settings, "connection-type", CONNECTION_NONE);
+ 		}
+ 		g_debug ("Device '%s' got disabled for use with Phone Manager", bdaddr);
+ 	}
+ 
+ 	g_free (str);
+-	g_object_unref (client);
++	g_object_unref (settings);
+ }
+ 
+ static GbtPluginInfo plugin_info = {
+diff --git a/libgsm/phonemgr-utils.c b/libgsm/phonemgr-utils.c
+index 4e62e10..3ccdcd5 100644
+--- a/libgsm/phonemgr-utils.c
++++ b/libgsm/phonemgr-utils.c
+@@ -331,7 +331,7 @@ phonemgr_utils_driver_for_model (const char *model, const char *device)
+ 	} else {
+ 		driver = g_strdup (driver);
+ 		/* Add it to the list if it's a bluetooth device */
+-		//FIXME this should also go in GConf
++		//FIXME this should also go in GSettings
+ 		if (phonemgr_utils_address_is (device) == PHONEMGR_CONNECTION_BLUETOOTH)
+ 			g_hash_table_insert (driver_device, g_strdup (device), g_strdup (driver));
+ 	}
+diff --git a/po/POTFILES.in b/po/POTFILES.in
+index d8e8c0d..c2e8fd8 100644
+--- a/po/POTFILES.in
++++ b/po/POTFILES.in
+@@ -1,7 +1,6 @@
+ # List of source files containing translatable strings.
+ # Please keep this file sorted alphabetically.
+ cut-n-paste/e-contact-entry/e-contact-entry.c
+-cut-n-paste/gconf-bridge/gconf-bridge.c
+ data/gnome-phone-manager.schemas.in
+ [type: gettext/glade]data/phonemgr.ui
+ gnome-bluetooth/phonemgr.c
+diff --git a/src/Makefile.am b/src/Makefile.am
+index b83e2d2..b4aaab7 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -9,8 +9,6 @@ AM_CPPFLAGS = \
+ 	-I$(builddir)/../libgsm \
+ 	-I$(srcdir)/../cut-n-paste/e-contact-entry      \
+ 	-I$(builddir)/../cut-n-paste/e-contact-entry    \
+-	-I$(srcdir)/../cut-n-paste/gconf-bridge         \
+-	-I$(builddir)/../cut-n-paste/gconf-bridge       \
+ 	-I$(builddir)/src				\
+ 	$(WARN_CFLAGS)
+ 
+@@ -33,8 +31,7 @@ gnome_phone_manager_SOURCES =		\
+ gnome_phone_manager_LDADD = \
+ 	../cut-n-paste/e-contact-entry/libecontact-entry.la	\
+ 	$(PHONEMGR_LIBS) \
+-	../libgsm/libgsmwrap.la		\
+-	../cut-n-paste/gconf-bridge/libgconf-bridge.la
++	../libgsm/libgsmwrap.la
+ 
+ BUILT_SOURCES = phone-manager-interface.h
+ 
+@@ -51,8 +48,7 @@ noinst_PROGRAMS = test-entry
+ test_entry_SOURCES = test-entry.c e-phone-entry.c e-phone-entry.h 
+ test_entry_LDADD = \
+ 		   ../cut-n-paste/e-contact-entry/libecontact-entry.la	\
+-		   $(PHONEMGR_LIBS) \
+-		   ../cut-n-paste/gconf-bridge/libgconf-bridge.la
++		   $(PHONEMGR_LIBS)
+ 
+ BUILT_SOURCES += $(MARSHALFILES)
+ 
+diff --git a/src/app.h b/src/app.h
+index 74a8ebd..422232c 100644
+--- a/src/app.h
++++ b/src/app.h
+@@ -22,7 +22,6 @@
+ #define _APP_H
+ 
+ #include <gtk/gtk.h>
+-#include <gconf/gconf-client.h>
+ 
+ #include "phonemgr-listener.h"
+ #include "phonemgr-object.h"
+@@ -38,7 +37,7 @@ typedef struct _appinfo {
+ 	gboolean flashon;
+ 
+ 	/* auxilliary controllers */
+-	GConfClient *client;
++	GSettings *settings;
+ 	PhonemgrListener    *listener;
+ 	PhonemgrObject      *object;
+ 
+diff --git a/src/connection.c b/src/connection.c
+index 692f1b9..e048ea9 100644
+--- a/src/connection.c
++++ b/src/connection.c
+@@ -32,15 +32,14 @@ set_connection_device (MyApp *app)
+ 	char *dev = NULL;
+ 	gboolean changed;
+ 
+-	ctype = gconf_client_get_int (app->client,
+-				      CONFBASE"/connection_type", NULL);
++	ctype = g_settings_get_int (app->settings,
++				      "connection-type");
+ 	changed = FALSE;
+ 
+ 	switch (ctype) {
+ 		case CONNECTION_BLUETOOTH:
+-			dev = gconf_client_get_string (app->client,
+-						       CONFBASE"/bluetooth_addr",
+-						       NULL);
++			dev = g_settings_get_string (app->settings,
++						       "bluetooth-addr");
+ 			if (!dev || strlen (dev) != 17) {
+ 				g_free (dev);
+ 				dev = NULL;
+@@ -56,8 +55,8 @@ set_connection_device (MyApp *app)
+ 			dev = g_strdup ("/dev/ircomm0");
+ 			break;
+ 		case CONNECTION_OTHER:
+-			dev = gconf_client_get_string (app->client,
+-					CONFBASE"/other_serial", NULL);
++			dev = g_settings_get_string (app->settings,
++					"other-serial");
+ 			break;
+ 	}
+ 
+@@ -81,8 +80,8 @@ set_connection_device (MyApp *app)
+ static gboolean
+ attempt_reconnect (MyApp *app)
+ {
+-	if (gconf_client_get_bool (app->client,
+-				CONFBASE"/auto_retry", NULL) &&
++	if (g_settings_get_boolean (app->settings,
++				"auto-retry") &&
+ 			phonemgr_listener_connected (app->listener) == FALSE &&
+ 			app->connecting == FALSE) {
+ 		g_message ("Auto-retrying the connection");
+@@ -94,8 +93,8 @@ attempt_reconnect (MyApp *app)
+ static gboolean
+ sync_clock (MyApp *app)
+ {
+-	if (gconf_client_get_bool (app->client,
+-				CONFBASE"/sync_clock", NULL)) {
++	if (g_settings_get_boolean (app->settings,
++				"sync-clock")) {
+ 		g_message ("Syncing phone clock");
+ 		phonemgr_listener_set_time (app->listener,
+ 					    time(NULL));
+diff --git a/src/main.c b/src/main.c
+index 8e4c6ae..673d0b6 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -79,16 +79,12 @@ main (int argc, char **argv)
+ 		return 0;
+ 	}
+ 
+-	gconf_init (argc, argv, NULL);
+-
+ 	app = g_new0 (MyApp, 1);
+ 
+ 	/* Setup the D-Bus object */
+ 	app->object = g_object_new (phonemgr_object_get_type (), NULL);
+ 
+-	app->client = gconf_client_get_default ();
+-	gconf_client_add_dir (app->client, CONFBASE,
+-			      GCONF_CLIENT_PRELOAD_ONELEVEL, NULL);
++	app->settings = g_settings_new("org.gnome.phone-manager");
+ 
+ 	/* Setup the listener */
+ 	app->listener = phonemgr_listener_new (debug);
+@@ -106,7 +102,7 @@ main (int argc, char **argv)
+ 	ui_hide (app);
+ 	free_connection (app);
+ 	g_object_unref (app->listener);
+-	g_object_unref (app->client);
++	g_object_unref (app->settings);
+ 	g_object_unref (app->object);
+ 	g_free (app);
+ 
+diff --git a/src/phonemgr-conf.h b/src/phonemgr-conf.h
+index 6417cc3..c4bb92e 100644
+--- a/src/phonemgr-conf.h
++++ b/src/phonemgr-conf.h
+@@ -21,10 +21,6 @@
+ #ifndef _PHONEMGR_CONF_H
+ #define _PHONEMGR_CONF_H
+ 
+-#include <gconf/gconf-client.h>
+-
+-#define CONFBASE "/apps/gnome-phone-manager"
+-
+ enum {
+ 	CONNECTION_BLUETOOTH,
+ 	CONNECTION_SERIAL1,
+diff --git a/src/ui.c b/src/ui.c
+index 6d924a5..928afe2 100644
+--- a/src/ui.c
++++ b/src/ui.c
+@@ -29,7 +29,6 @@
+ 
+ #include "app.h"
+ #include "e-phone-entry.h"
+-#include "gconf-bridge.h"
+ #include "phonemgr-utils.h"
+ 
+ #define MAX_MESSAGE_LENGTH 160
+@@ -101,7 +100,7 @@ get_ui (MyApp *app, char *widget)
+ static gboolean
+ idle_play_alert (MyApp *app)
+ {
+-	if (gconf_client_get_bool (app->client, CONFBASE"/sound_alert", NULL)) {
++	if (g_settings_get_boolean (app->settings, "sound-alert")) {
+ 		ca_context *ctx;
+ 		ctx = ca_gtk_context_get ();
+ 		ca_context_play (ctx, 0,
+@@ -161,9 +160,9 @@ on_conn_port_change (GtkWidget *widget, MyApp *app)
+ 
+ 	widget_set_dependent_sensitive (widget, port, active);
+ 	if (active) {
+-		gconf_client_set_int (app->client,
+-				      CONFBASE"/connection_type",
+-				      port, NULL);
++		g_settings_set_int (app->settings,
++				    "connection-type",
++				    port);
+ 	}
+ }
+ 
+@@ -207,8 +206,8 @@ populate_prefs (MyApp *app)
+ 	char *widgetname;
+ 	int ctype;
+ 
+-	ctype = gconf_client_get_int (app->client,
+-				      CONFBASE"/connection_type", NULL);
++	ctype = g_settings_get_int (app->settings,
++				    "connection-type");
+ 	switch (ctype) {
+ 	case CONNECTION_BLUETOOTH:
+ 		widgetname = "btdevice";
+@@ -384,11 +383,10 @@ create_send_dialog (MyApp *app, GtkDialog *parent, const char *recip)
+ }
+ 
+ static void
+-initialise_dequeuer (GConfClient *client, guint cnxn_id,
+-		GConfEntry *entry, MyApp *app)
++initialise_dequeuer (GSettings *settings, char *key, MyApp *app)
+ {
+-	if (gconf_client_get_bool (app->client,
+-				CONFBASE"/popup_messages", NULL)) {
++	if (g_settings_get_boolean (app->settings,
++				"popup-messages")) {
+ 		app->popup_cb = g_timeout_add (250,
+ 				(GSourceFunc) dequeue_message, (gpointer) app);
+ 	} else if (app->popup_cb) {
+@@ -401,7 +399,6 @@ void
+ ui_init (MyApp *app)
+ {
+ 	GtkWidget *btchooser, *btdevice;
+-	GConfBridge *bridge;
+ 	GtkWidget *ep = e_phone_entry_new ();
+ 
+ 	app->ui = get_ui (app, NULL);
+@@ -439,44 +436,45 @@ ui_init (MyApp *app)
+ 	s_connect (app, "otherport", "otherportentry", CONNECTION_OTHER);
+ 
+ 	/* Connect a few toggle buttons */
+-	bridge = gconf_bridge_get ();
+-
+-	gconf_bridge_bind_property (bridge,
+-				    CONFBASE"/auto_retry",
+-				    G_OBJECT (gtk_builder_get_object (app->ui, "auto_retry")),
+-				    "active");
+-	gconf_bridge_bind_property (bridge,
+-				    CONFBASE"/sync_clock",
+-				    G_OBJECT (gtk_builder_get_object (app->ui, "sync_clock")),
+-				    "active");
+-	gconf_bridge_bind_property (bridge,
+-				    CONFBASE"/popup_messages",
+-				    G_OBJECT (gtk_builder_get_object (app->ui, "prefs_popup")),
+-				    "active");
+-	gconf_bridge_bind_property (bridge,
+-				    CONFBASE"/sound_alert",
+-				    G_OBJECT (gtk_builder_get_object (app->ui, "prefs_sound")),
+-				    "active");
++	g_settings_bind (app->settings,
++			 "auto-retry",
++			 G_OBJECT (gtk_builder_get_object (app->ui, "auto_retry")),
++			 "active",
++			 G_SETTINGS_BIND_DEFAULT);
++	g_settings_bind (app->settings,
++			 "sync-clock",
++			 gtk_builder_get_object (app->ui, "sync_clock"),
++			 "active",
++			 G_SETTINGS_BIND_DEFAULT);
++	g_settings_bind (app->settings,
++			 "popup-messages",
++			 gtk_builder_get_object (app->ui, "prefs_popup"),
++			 "active",
++			 G_SETTINGS_BIND_DEFAULT);
++	g_settings_bind (app->settings,
++			 "sound-alert",
++			 gtk_builder_get_object (app->ui, "prefs_sound"),
++			 "active",
++			 G_SETTINGS_BIND_DEFAULT);
+ 
+ 	/* The other port address */
+-	gconf_bridge_bind_property_delayed (bridge,
+-				    CONFBASE"/other_serial",
+-				    G_OBJECT (gtk_builder_get_object (app->ui, "otherportentry")),
+-				    "text");
++	g_settings_bind (app->settings,
++			 "other-serial",
++			 gtk_builder_get_object (app->ui, "otherportentry"),
++			 "text",
++			 G_SETTINGS_BIND_DEFAULT);
+ 
+ 	/* And the address chooser */
+-	gconf_bridge_bind_property (bridge,
+-				    CONFBASE"/bluetooth_addr",
+-				    G_OBJECT (btchooser),
+-				    "device");
++	g_settings_bind (app->settings,
++			 "bluetooth-addr",
++			 btchooser,
++			 "device",
++			 G_SETTINGS_BIND_DEFAULT);
+ 
+ 	/* set up popup on message */
+-	initialise_dequeuer (NULL, 0, NULL, app);
+-	gconf_client_notify_add (app->client,
+-			CONFBASE"/popup_messages",
+-			(GConfClientNotifyFunc) initialise_dequeuer,
+-			(gpointer) app,
+-			NULL, NULL);
++	initialise_dequeuer (NULL, NULL, app);
++	g_signal_connect (G_OBJECT (app->settings), "changed::popup-messages",
++			  G_CALLBACK (initialise_dequeuer), app);
+ }
+ 
+ void
+-- 
+2.18.0
+

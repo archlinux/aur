@@ -1,0 +1,24 @@
+pkgbase = gnome-phone-manager
+	pkgdesc = Control your mobile phone from your GNOME desktop
+	pkgver = 0.69
+	pkgrel = 16
+	url = https://wiki.gnome.org/Attic/PhoneManager
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = gnome-common
+	makedepends = python
+	depends = evolution-data-server
+	depends = gnokii
+	depends = gnome-bluetooth
+	depends = libcanberra
+	depends = telepathy-glib
+	source = https://download.gnome.org/sources/gnome-phone-manager/0.69/gnome-phone-manager-0.69.tar.xz
+	source = gnome-phone-manager-0.68-eds.patch
+	source = 0001-Port-to-GSettings.patch
+	sha256sums = 35e038ea3afaacdf451046e87af876096cf1520efc04fc3f5b63ea22e0297175
+	sha256sums = 232a72108836ddd46d329993d166c38550e2923f161b4dc814d75af4ed5ccc79
+	sha256sums = 7b0e07af7c534bd888609b2af0c02a913c7bb25d45039cab05e00b9eeb2d22ba
+
+pkgname = gnome-phone-manager
+
