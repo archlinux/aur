@@ -1,24 +1,29 @@
-#Maintainer: Andrew Bibb <ajbibb@myfairpoint.net>
+# Maintainer: Alad Wenter <alad@archlinux.org>
+# Contributor: Andrew Bibb <ajbibb@myfairpoint.net>
 pkgname=cmst
-pkgver=2018.01.06
+pkgver=2020.11.01
 pkgrel=1
-pkgdesc="A QT based GUI front end for the connman connection manager with systemtray icon"
-arch=('i686' 'x86_64')
+pkgdesc="A QT based GUI front end for the connman connection manager"
+arch=('x86_64')
 url="https://github.com/andrew-bibb/cmst"
-license=('MIT (Expat)')
+license=('custom:MIT')
 depends=('qt5-base' 'connman' 'libxkbcommon-x11' 'hicolor-icon-theme')
-source=(https://github.com/andrew-bibb/cmst/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.xz)
+source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
+sha256sums=('b81d56fa363b2e700090bc6901d22d42b6f0a0da9547ab8c6fca7ec93b17c14a')
 
-md5sums=('f2f08754c1e189f6a1643786a4139de1')
+prepare() {
+	cd "$pkgname-$pkgver"
+	sed -i '/^conf.path =/c conf.path = /usr/share/dbus-1/system.d' apps/rootapp/rootapp.pro
+}
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$pkgname-$pkgver"
 	qmake-qt5 DISTRO=arch
 	make 
 }
 
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$pkgname-$pkgver"
 	make INSTALL_ROOT="$pkgdir/" install
 }

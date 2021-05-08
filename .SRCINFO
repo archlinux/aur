@@ -1,17 +1,16 @@
 pkgbase = cmst
-	pkgdesc = A QT based GUI front end for the connman connection manager with systemtray icon
-	pkgver = 2018.01.06
+	pkgdesc = A QT based GUI front end for the connman connection manager
+	pkgver = 2020.11.01
 	pkgrel = 1
 	url = https://github.com/andrew-bibb/cmst
-	arch = i686
 	arch = x86_64
-	license = MIT (Expat)
+	license = custom:MIT
 	depends = qt5-base
 	depends = connman
 	depends = libxkbcommon-x11
 	depends = hicolor-icon-theme
-	source = https://github.com/andrew-bibb/cmst/releases/download/cmst-2018.01.06/cmst-2018.01.06.tar.xz
-	md5sums = f2f08754c1e189f6a1643786a4139de1
+	source = https://github.com/andrew-bibb/cmst/releases/download/2020.11.01/cmst-2020.11.01.tar.xz
+	sha256sums = b81d56fa363b2e700090bc6901d22d42b6f0a0da9547ab8c6fca7ec93b17c14a
 
 pkgname = cmst
 
