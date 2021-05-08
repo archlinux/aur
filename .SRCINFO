@@ -1,0 +1,16 @@
+pkgbase = regexploit
+	pkgdesc = Find regular expressions which are vulnerable to ReDoS
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/doyensec/regexploit
+	arch = any
+	license = APACHE
+	makedepends = python-setuptools
+	makedepends = npm
+	depends = python
+	depends = nodejs
+	source = https://files.pythonhosted.org/packages/source/r/regexploit/regexploit-1.0.0.tar.gz
+	sha256sums = 1abd5f6a92fd0959ddf13c5e84246935d21c5cd173e8d38bcf58c24eb24cd36f
+
+pkgname = regexploit
+
