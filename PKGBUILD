@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Stürz <benni@stuerz.xyz>
 pkgname=ffdesktop
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Redirect the desktop on X11 to a virtual webcam"
 arch=('x86_64')
 url="https://github.com/Benni3D/ffdesktop"

@@ -1,11 +1,12 @@
 pkgbase = ffdesktop
 	pkgdesc = Redirect the desktop on X11 to a virtual webcam
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Benni3D/ffdesktop
 	arch = x86_64
 	license = MIT
-	depends = ffmpeg v4l2loopback-dkms
+	depends = ffmpeg
+	depends = v4l2loopback-dkms
 	source = https://github.com/Benni3D/ffdesktop/archive/v1.1.tar.gz
 	md5sums = b0065331f576b1233d4ce5bff397d123
 
