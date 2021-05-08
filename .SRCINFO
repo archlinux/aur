@@ -1,6 +1,6 @@
 pkgbase = sharenix-git
 	pkgdesc = file uploading tool with ShareX-compatible config
-	pkgver = r146.3ce23df
+	pkgver = r185.8c9e08c
 	pkgrel = 1
 	url = https://github.com/francesco149/sharenix
 	install = sharenix-git.install

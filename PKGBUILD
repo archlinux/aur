@@ -1,8 +1,8 @@
 # Maintainer: Franc[e]sco <lolisamurai@tfwno.gf>
 
 pkgname=sharenix-git
-pkgver=r146.3ce23df
-pkgrel=2
+pkgver=r185.8c9e08c
+pkgrel=1
 pkgdesc="file uploading tool with ShareX-compatible config"
 arch=('i686' 'x86_64')
 url="https://github.com/francesco149/sharenix"
@@ -20,21 +20,13 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd "$srcdir"
-
-  mkdir -p build/src/github.com/Francesco149
-  ln -sf "$srcdir/sharenix" build/src/github.com/Francesco149/
-}
-
 build() {
-  export GOPATH="$srcdir/build"
-  cd "$GOPATH/src/github.com/Francesco149/sharenix"
-  go get ./...
+  cd "$srcdir/sharenix"
+  go build
 }
 
 package() {
-  install -Dm755 "$srcdir/build/bin/sharenix" -t "$pkgdir/usr/bin/"
+  install -Dm755 "$srcdir/sharenix/sharenix" -t "$pkgdir/usr/bin/"
   install -Dm755 "$srcdir/sharenix/sharenix-section" -t "$pkgdir/usr/bin/"
   install -Dm755 "$srcdir/sharenix/sharenix-window" -t "$pkgdir/usr/bin/"
   install -Dm644 "$srcdir/sharenix/sharenix.json" -t "$pkgdir/etc/"
