@@ -1,0 +1,23 @@
+pkgbase = fondo-git
+	pkgdesc = Wallpaper App for Linux
+	pkgver = r275.99e96c3
+	pkgrel = 2
+	url = https://github.com/calo001/fondo
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = gtk3
+	depends = glib2
+	depends = granite
+	depends = libsoup
+	depends = json-glib
+	provides = fondo
+	conflicts = fondo
+	source = git+https://github.com/calo001/fondo.git
+	md5sums = SKIP
+
+pkgname = fondo-git
+
