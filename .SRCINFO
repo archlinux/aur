@@ -1,6 +1,6 @@
 pkgbase = thunar-devel
-	pkgdesc = file manager for xfce
-	pkgver = 4.17.2
+	pkgdesc = File manager for Xfce (development version)
+	pkgver = 4.17.3
 	pkgrel = 1
 	url = https://thunar.xfce.org
 	arch = i686
@@ -29,10 +29,10 @@ pkgbase = thunar-devel
 	optdepends = thunar-volman: manages removable devices
 	optdepends = thunar-archive-plugin: create and deflate archives
 	optdepends = thunar-media-tags-plugin: view/edit id3/ogg tags
-	provides = thunar=4.17.2
+	provides = thunar=4.17.3
 	conflicts = thunar
-	source = https://archive.xfce.org/src/xfce/thunar/4.17/thunar-4.17.2.tar.bz2
-	sha256sums = a1eefa3359e2fceec738cb34d42ec73a29681e2bef548a82e1bf2c513ddd97cf
+	source = https://archive.xfce.org/src/xfce/thunar/4.17/thunar-4.17.3.tar.bz2
+	sha256sums = 4580913d6c88003dbffc7e6d98a843ca0ae0fd1c5fa7b1e49fef565f33c7bea7
 
 pkgname = thunar-devel
 
