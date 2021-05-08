@@ -1,6 +1,6 @@
 pkgbase = anbox-image-nocsd
 	pkgdesc = Android image for running in Anbox, with no-csd patch and Houdini
-	pkgver = r2.65cdb672
+	pkgver = r3.5052c81c
 	pkgrel = 1
 	url = https://anbox.io
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = anbox-image-nocsd
 	makedepends = unzip
 	provides = anbox-image
 	conflicts = anbox-image
-	source = android_amd64.img::https://github.com/thdaemon/anbox/releases/download/latest/android.img
+	source = android_amd64.img::https://github.com/thdaemon/anbox/releases/download/ssd-pr-v1/android.img
 	source = https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_y.sfs
 	source = https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_z.sfs
 	source = media_codecs.xml
