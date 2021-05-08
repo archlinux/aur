@@ -9,7 +9,7 @@ license=("MIT")
 options=(!strip)
 makedepends=("yarn" "nodejs<16.0.0")
 depends=("electron" "nodejs")
-source=("${url}archive/refs/tags/v${pkgver}.zip" "sleek.desktop" "sleek.sh")
+source=("${url}archive/refs/tags/v${pkgver}.zip" "sleek.desktop" "sleek")
 sha512sums=('c1884cc5234378d1fe5038a7952aefb17316d37171c39c1ca3c87b47408f9e2f02e0344e4413c4f46e2caa3adc1b18c97e8fc507e2f3121feb274b7227d98ef7'
             '60777dbda8202e5a265a274d126d30269fb8fba67641d22a83be19b353b4805cbed2a3c80bbc0e6ed7c0fe7ae21c3cde59b784d42d3ba941bb0fdf022c1375e8'
             'ea1d322bd56c7944a9eae97f4968a6a2e937b510eb3c1c21266428450c5b2ddcd8576718d0b66b69fbce5694ba94e80a692d04bda1e8c2b24a8d814a5ed50963')
@@ -37,7 +37,7 @@ package() {
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 
   msg2 "Installing startup script and desktop file"
-  install -Dm755 "../${pkgname}.sh" -t "$pkgdir/usr/bin/"
+  install -Dm755 "../${pkgname}" -t "$pkgdir/usr/local/bin/"
   install -Dm644 "../${pkgname}.desktop" -t "$pkgdir/usr/share/applications/"
 
   msg2 "Installing icons"
