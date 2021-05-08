@@ -39,4 +39,3 @@ pkgname = linux-xanmod-cacule-rt-stable
 pkgname = linux-xanmod-cacule-rt-stable-headers
 	pkgdesc = Headers and scripts for building modules for the Linux XanMod CacULE RT stable Version kernel
 	depends = pahole
-
