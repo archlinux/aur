@@ -34,15 +34,8 @@ depends=(
 )
 
 _dir="ros_comm-${pkgver}/clients/rospy"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz"
-    "2092.patch"::"https://github.com/ros/ros_comm/pull/2092.patch")
-sha256sums=('7187dd3ab2783e5041c2ef71079cf2b6f9ed06c88c7e3c6efd7684ca5475b5bd'
-    'ad42681c4249a89f4a0188f8202e73286c4090bbc919a470543af7e8f1b198f4')
-
-prepare() {
-    cd "ros_comm-${pkgver}"
-    patch -p1 -i "${srcdir}/2092.patch"
-}
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
+sha256sums=('7187dd3ab2783e5041c2ef71079cf2b6f9ed06c88c7e3c6efd7684ca5475b5bd')
 
 build() {
     # Use ROS environment variables.
