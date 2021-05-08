@@ -2,9 +2,9 @@
 # NOTE: libtool requires rebuilt with each new gcc version
 
 pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git gcc-ada-git gcc-go-git lib32-gcc-libs-gitb gcc-d-git)
-pkgver=11.0.1.r183823.99415d0f187
+pkgver=12.0.0.r185046.56103737f17
 _majorver=${pkgver%%.*}
-_islver=0.23
+_islver=0.24
 pkgrel=1
 pkgdesc='The GNU Compiler Collection'
 arch=(x86_64)
@@ -13,13 +13,13 @@ url='https://gcc.gnu.org'
 makedepends=(binutils libmpc gcc-ada doxygen lib32-glibc lib32-gcc-libs python git)
 checkdepends=(dejagnu inetutils)
 options=(!emptydirs)
-_libdir=usr/lib/gcc/$CHOST/11.0.1
-source=(git+https://gcc.gnu.org/git/gcc.git
-        http://isl.gforge.inria.fr/isl-${_islver}.tar.xz
+_libdir=usr/lib/gcc/$CHOST/12.0.0
+source=("git+https://gcc.gnu.org/git/gcc.git"
+        "http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
         c89 c99
 )
 b2sums=('SKIP'
-        'ce026eaa1d6c814f4067c555d97a453bdf01d5fa240aa9b6ccd22c9a0e7f19b0c30cd834f976a29b10a5d57eaa747a3f45cf55717f05d98ae405ec93dd42f27b'
+        '39cbfd18ad05778e3a5a44429261b45e4abc3efe7730ee890674d968890fe5e52c73bc1f8d271c7c3bc72d5754e3f7fcb209bd139e823d19cb9ea4ce1440164d'
         '2c64090b879d6faea7f20095eff1b9bd6a09fe3b15b3890783d3715171678ab62d32c91af683b878746fb14441dbe09768474417840f96a561443415f76afb63'
         '3cf318835b9833ac7c5d3a6026fff8b4f18b098e18c9649d00e32273688ff06ec3af41f0d0aee9d2261725e0ff08f47a224ccfe5ebb06646aaf318ff8ac9a0d1')
 
