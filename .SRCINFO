@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-dash-to-panel-git
 	pkgdesc = Extension for GNOME shell to combine the dash and main panel
-	pkgver = 23.r51.g255b4fa
+	pkgver = 42.r6.ga4224f4
 	pkgrel = 1
 	url = https://github.com/home-sweet-gnome/dash-to-panel
 	install = gnome-shell-extension.install
