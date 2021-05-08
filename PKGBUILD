@@ -24,8 +24,8 @@ _deadline_disable=y
 ### Disable Kyber I/O scheduler
 _kyber_disable=y
 ### Running with a 2000 HZ, 1000HZ or 500HZ tick rate
-_2k_HZ_ticks=y
-_1k_HZ_ticks=
+_2k_HZ_ticks=
+_1k_HZ_ticks=y
 _500_HZ_ticks=
 ### Tweak kernel options prior to a build via nconfig
 _makenconfig=
@@ -64,7 +64,7 @@ pkgver=${_major}
 #_stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -261,8 +261,8 @@ prepare() {
     echo "Enabling multigenerational LRU..."
     scripts/config --enable CONFIG_HAVE_ARCH_PARENT_PMD_YOUNG
     scripts/config --enable CONFIG_LRU_GEN
-    scripts/config --set-val CONFIG_NR_LRU_GENS 7
-    scripts/config --set-val CONFIG_TIERS_PER_GEN 4
+    scripts/config --set-val CONFIG_NR_LRU_GENS 5
+    scripts/config --set-val CONFIG_TIERS_PER_GEN 3
     scripts/config --enable CONFIG_LRU_GEN_ENABLED
     scripts/config --disable CONFIG_LRU_GEN_STATS
 
@@ -279,7 +279,6 @@ prepare() {
       scripts/config --enable CONFIG_CACULE_SCHED
       scripts/config --enable CONFIG_FAIR_GROUP_SCHED
       scripts/config --enable CONFIG_SCHED_AUTOGROUP
-      #scripts/config --set-val CONFIG_NR_CPUS "12"
       scripts/config --disable CONFIG_SCHED_DEBUG
       scripts/config --disable CONFIG_SCHED_INFO
       scripts/config --disable CONFIG_SCHEDSTATS
@@ -288,6 +287,8 @@ prepare() {
       ##TEST##
       scripts/config --enable CONFIG_NO_HZ_FULL
       scripts/config --enable CONFIG_NO_HZ
+      scripts/config --disable CONFIG_NO_HZ_IDLE
+      scripts/config --disable CONFIG_HZ_PERIODIC
       scripts/config --enable CONFIG_CONTEXT_TRACKING
       scripts/config --disable CONFIG_CONTEXT_TRACKING_FORCE
       echo "Enabling KBUILD_CFLAGS -O3..."
