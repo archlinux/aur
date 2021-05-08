@@ -1,17 +1,15 @@
 pkgbase = termtosvg
 	pkgdesc = Record terminal sessions as SVG animations
-	pkgver = 0.7.0
-	pkgrel = 1
+	pkgver = 1.1.0
+	pkgrel = 2
 	url = https://nbedos.github.io/termtosvg/
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python-lxml
 	depends = python-pyte
-	source = https://files.pythonhosted.org/packages/source/t/termtosvg/termtosvg-0.7.0.tar.gz
-	source = https://raw.githubusercontent.com/nbedos/termtosvg/0.7.0/man/termtosvg-templates.man.5
-	sha512sums = 8ff48332b4f579049c53975e06af60a6b0007bda38268188509dc85177c9e0262471d5b7116ecd174e244691200a237f95794104a8727be69daec3580830569a
-	sha512sums = d94b09be05237e4bd09f63a5f946c9db1e510615157d896bf5f782b062f4fe94ba29c86f61e726484a078338cbc85716fd7a49fe2a7822c34821d1a2ad6aabe3
+	source = https://files.pythonhosted.org/packages/source/t/termtosvg/termtosvg-1.1.0.tar.gz
+	sha256sums = ed38f1615d7f873e784761d1b406ac73abbd2bbf0c517362f5c2fdc1919d65ee
 
 pkgname = termtosvg
 
