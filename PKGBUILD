@@ -1,14 +1,14 @@
 # Maintainer: Benjamin Stürz <benni@stuerz.xyz>
 pkgname=ffdesktop
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
-pkgdesc="Emulate a webcam with V4L2"
+pkgdesc="Redirect the desktop on X11 to a virtual webcam"
 arch=('x86_64')
 url="https://github.com/Benni3D/ffdesktop"
 license=('MIT')
 depends=('ffmpeg' 'v4l2loopback-dkms')
 source=("https://github.com/Benni3D/ffdesktop/archive/v${pkgver}.tar.gz")
-md5sums=('526d0244129acc7b88bd7ddc827d61a2')
+md5sums=('b0065331f576b1233d4ce5bff397d123')
 
 package() {
    cd "${srcdir}/${pkgname}-${pkgver}"
