@@ -11,7 +11,7 @@
 
 pkgbase=boost-git
 pkgname=('boost-libs-git' 'boost-git')
-pkgver=1.75.0
+pkgver=1.75.1
 pkgrel=2
 pkgdesc='Free peer-reviewed portable C++ source libraries'
 url='https://www.boost.org/'
@@ -93,7 +93,7 @@ build() {
       runtime-link=shared \
       link=shared,static \
       toolset=gcc \
-      python=3.8 \
+      python=3.9 \
       cflags="${CPPFLAGS} ${CFLAGS} -fPIC -O3" \
       cxxflags="${CPPFLAGS} ${CXXFLAGS} -std=c++14 -fPIC -O3" \
       linkflags="${LDFLAGS}" \
@@ -111,6 +111,7 @@ package_boost-git() {
    optdepends=('python: for python bindings'
                'python2: for python2 bindings')
    provides=('boost')
+   conflicts=('boost')
    options=('staticlibs')
 
    install -dm755 "${pkgdir}"/usr
