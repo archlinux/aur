@@ -1,20 +1,23 @@
 pkgbase = dee
-	pkgdesc = Model to synchronize multiple instances over DBus.
+	pkgdesc = Model to synchronize multiple instances over DBus
 	pkgver = 1.2.7
 	pkgrel = 11
 	url = https://launchpad.net/dee
-	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = gobject-introspection
-	makedepends = python2
+	makedepends = python
 	makedepends = vala
 	depends = glib2
 	depends = icu
 	source = https://launchpad.net/dee/1.0/1.2.7/+download/dee-1.2.7.tar.gz
-	source = https://launchpadlibrarian.net/258481465/fix-misleading-indentation.patch
+	source = dee-1.2.7-gcc6-fixes.patch
+	source = dee-1.2.7-deprecated-g_type_class_add_private.patch
+	source = vapi-skip-properties.patch
 	sha256sums = 1bf0336ce684aa0f48d6eae2469628c1a9b43695a77443bc31a5790aa673bf8a
-	sha256sums = 3bf75bd632d6be88632c0f6113aac5ac5d65e1a01b408c27ea1fd7bb718d6ebd
+	sha256sums = 0a97d52b6c1e63ac070d9870914b1741d0bd2cd69f179c6a8ae69d0482905d38
+	sha256sums = e9be91ded88cbb8256ea71d20a71be6ca8e304bc971902e28ffe9bba0ac1dc05
+	sha256sums = ba0f9f80e3827fc4e1e546e4011982512b5b09e8f66496b213a4bd319bf829f5
 
 pkgname = dee
 
