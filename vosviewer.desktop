@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Exec=vosviewer
+#MimeType=
+Comment=Software tool for constructing and visualizing bibliometric networks
+Icon=/usr/share/pixmaps/vosviewer.png
+Terminal=false
+Name=VOSviewer
+Categories=Science
