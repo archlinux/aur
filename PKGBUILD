@@ -1,9 +1,10 @@
-# Maintainer: Tim Meusel <tim@bastelfreak.de>
+# Maintainer: Christian Rebischke <chris.rebischke@archlinux.org>
+# Contributor: Tim Meusel <tim@bastelfreak.de>
 
 _gemname='rspec-its'
 pkgname="ruby-${_gemname}"
 pkgver=1.3.0
-pkgrel=2
+pkgrel=4
 pkgdesc='RSpec extension gem for attribute matching'
 arch=('any')
 url='https://github.com/rspec/rspec-its'
