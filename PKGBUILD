@@ -20,7 +20,7 @@ sha512sums=('SKIP')
 pkgver() {
 
   cd "${srcdir:?}/${pkgname}" || (
-    echo -e "\E[1m\E[31mCan't cd to ${srcdir}/gost-engine build directory! PkgVer Failed! \E[0m"
+    echo -e "\E[1m\E[31mCan't cd to ${srcdir}/${pkgname} build directory! PkgVer Failed! \E[0m"
     exit 1
   )
 
