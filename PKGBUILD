@@ -2,7 +2,7 @@
 
 pkgname=spiderfoot
 pkgver=3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="SpiderFoot is an open source intelligence automation tool. Its goal is to automate the process of gathering intelligence about a given target."
 arch=('any')
 url="http://www.spiderfoot.net/"
@@ -13,7 +13,7 @@ depends=( 'python' 'python-dnspython' 'python-exifread' 'python-cherrypy'
 	   'python-ipaddress' 'python-phonenumbers' 'python-pypdf2'
 	   'python-stem' 'python-whois' 'python-future' 'python-pyopenssl'
 	   'python-docx' 'python-pptx' 'python-networkx' 'python-cryptography'
-	   'python-secure' 'python-pygexf' 'python-adblockparser'
+	   'python-secure02' 'python-pygexf' 'python-adblockparser'
 	   'python-publicsuffixlist' 'python-cherrypy-cors')
 makedepends=('python')
 install=${pkgname}.install
