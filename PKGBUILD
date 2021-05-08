@@ -2,7 +2,7 @@
 _pkgname=3270-fonts
 _gitname=3270font
 pkgname=$_pkgname
-pkgver=774.ece94f6
+pkgver=853.fd00815
 pkgrel=1
 pkgdesc="A font for the nostalgic from a 3270 series terminal."
 arch=('any')
@@ -17,7 +17,7 @@ install=install
 
 pkgver() {
   cd $_gitname
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  echo $(git rev-list --count main).$(git rev-parse --short main)
 }
 
 build() {
