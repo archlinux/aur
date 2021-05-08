@@ -3,7 +3,7 @@
 # Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 
 pkgname=libdaq-nfqueue
-pkgver=3.0.0
+pkgver=3.0.3
 pkgrel=1
 pkgdesc='Data Acquisition library for packet I/O.'
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ url='https://www.snort.org/'
 license=('GPL')
 depends=('libpcap' 'libnetfilter_queue')
 makedepends=('ca-certificates')
-source=("https://snort.org/downloads/snortplus/libdaq-${pkgver}.tar.gz")
-sha512sums=('227f75f05cde9c5e551b2ca9915cce064e7b08bd6bfffca122ddc37c47cc97b45f6cbfae13f78eef48e7b2a857d54c77ec8c54c086665559d28051e77b5fac6f')
+source=("libdaq-${pkgver}.tar.gz::https://github.com/snort3/libdaq/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('85b88e5dc5befd4076bfcfb08c3efdd3f7d3b3b96730c2baa30ea331320623ebcfbe49d7310f24a57607d54820cdbd6afc89891d793d6a01033b031daabbee0e')
 provides=('libdaq')
 conflicts=('libdaq')
 
