@@ -1,0 +1,17 @@
+pkgbase = com.iqiyi.deepin
+	pkgdesc = Deepin iqiyi on Deepin Wine 5 for Arch Linux
+	pkgver = 7.6.114.1951.8
+	pkgrel = 1
+	url = http://iqiyi.com/
+	arch = i686
+	arch = x86_64
+	license = Proprietary
+	makedepends = tar
+	depends = deepin-wine5
+	depends = deepin-wine-helper
+	noextract = com.iqiyi.deepin_7.6.114.1951deepin8_i386.deb
+	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.iqiyi.deepin/com.iqiyi.deepin_7.6.114.1951deepin8_i386.deb
+	md5sums = 129d9c452123cc0af946317fdbf6f6b5
+
+pkgname = com.iqiyi.deepin
+
