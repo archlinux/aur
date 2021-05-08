@@ -13,7 +13,7 @@
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
 ## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
-## Good option if your package is for one machine: 99 => native
+## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
 if [ -z ${_microarchitecture+x} ]; then
   _microarchitecture=0
 fi
@@ -52,7 +52,7 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-git
-pkgver=5.11.2.xanmod1.r0.g39be9f695492
+pkgver=5.11.11.xanmod1.r0.gfa947bbb2a4c
 xanmod=1
 pkgrel=1
 pkgdesc='Linux Xanmod - git version'
@@ -74,7 +74,7 @@ validpgpkeys=(
 )
 
 sha256sums=('SKIP'
-            '03bb8b234a67b877a34a8212936ba69d8700c54c7877686cbd9742a536c87134')
+            '51742dee57cd15bece152d6527f48af87cb7930f0f6a356d5282f778e7c35b39')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
