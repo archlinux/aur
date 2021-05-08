@@ -30,7 +30,7 @@ validpgpkeys=()
 
 build() {
 	cd gimgview-master
-	make
+	make build
 }
 
 check() {
@@ -43,4 +43,5 @@ package() {
 	mkdir "$pkgdir"/usr
 	mkdir "$pkgdir"/usr/bin
 	make DESTDIR="$pkgdir/usr/bin" install
+	make MANDIR="$pkgdir/usr/local/man" manpage
 }
