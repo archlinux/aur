@@ -3,7 +3,7 @@
 # Contributor: Jens Rudolf <jens.rudolf@gmx.net>
 
 pkgname=librm
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="Router Manager library"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=(meson ninja)
 
 options=('!emptydirs')
 source=("https://gitlab.com/tabos/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('0ebc448769fc067d06ca5edc50a4050d251c797163be772feafa9b7284973e06d8287d64ed83828623d57234d222866c8fc73467f2835820154ecad543771c5f')
+sha512sums=('db7232be83d9a6d98e8d995950c0fdb21557b2e93218823ab9afa39c475a443dd18d5741b9e681cdbe0de8f5cd323419f5ce1ed42c2e8d23752f5574684fd85f')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
