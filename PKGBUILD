@@ -2,7 +2,7 @@
 
 pkgname=impd-git
 pkgver=0.1.r1.g1211089
-pkgrel=2
+pkgrel=3
 pkgdesc="Manage passive immersion and create condensed audio."
 arch=(any)
 url="https://github.com/Ajatt-Tools/impd"
