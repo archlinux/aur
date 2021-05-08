@@ -1,7 +1,7 @@
-From 77ef8904f307f78613f799ad4b9946e23c7910e3 Mon Sep 17 00:00:00 2001
+From e682df25245fd2731bfe0572b2668e47f7ea3e99 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 8 Nov 2020 00:34:09 +0100
-Subject: [PATCH 7/7] Allow overriding CMAKE_FIND_LIBRARY_SUFFIXES to prefer
+Subject: [PATCH 7/8] Allow overriding CMAKE_FIND_LIBRARY_SUFFIXES to prefer
  static libraries
 
 Change-Id: Ic29b64b999ed9b5888a8dc1b0961a76009c5e75c
@@ -10,7 +10,7 @@ Change-Id: Ic29b64b999ed9b5888a8dc1b0961a76009c5e75c
  1 file changed, 5 insertions(+)
 
 diff --git a/cmake/QtBuildInternals/QtBuildInternalsConfig.cmake b/cmake/QtBuildInternals/QtBuildInternalsConfig.cmake
-index 477f5d21e9..fa394cd895 100644
+index 934c34b01c..bada2aff0c 100644
 --- a/cmake/QtBuildInternals/QtBuildInternalsConfig.cmake
 +++ b/cmake/QtBuildInternals/QtBuildInternalsConfig.cmake
 @@ -1,6 +1,10 @@
@@ -24,7 +24,7 @@ index 477f5d21e9..fa394cd895 100644
  ######################################
  #
  #       Macros for building Qt modules
-@@ -268,6 +272,7 @@ macro(qt_prepare_standalone_project)
+@@ -285,6 +289,7 @@ macro(qt_prepare_standalone_project)
  endmacro()
  
  macro(qt_build_repo_begin)
@@ -33,5 +33,5 @@ index 477f5d21e9..fa394cd895 100644
      qt_enable_cmake_languages()
  
 -- 
-2.30.0
+2.31.1
 
