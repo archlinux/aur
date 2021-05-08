@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-qt6-tools
 	pkgdesc = A cross-platform application and UI framework (tools, android)
-	pkgver = 6.0.1
+	pkgver = 6.1.0
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -20,8 +20,8 @@ pkgbase = android-aarch64-qt6-tools
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.0/6.0.1/submodules/qttools-everywhere-src-6.0.1.tar.xz
-	sha256sums = dc354358f7d2ed56d17190f4ad7e3fc3ad88185be1eb74b9132b8b66185c349f
+	source = https://download.qt.io/official_releases/qt/6.1/6.1.0/submodules/qttools-everywhere-src-6.1.0.tar.xz
+	sha256sums = 6263030c1120a30b0541d37b52dc0be0ea04bbb8d1695ec9648f0bd77e421f3e
 
 pkgname = android-aarch64-qt6-tools
 
