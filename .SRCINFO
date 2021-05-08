@@ -1,0 +1,20 @@
+pkgbase = dmenu-twitch-git
+	pkgdesc = check who is live on twitch via dmenu
+	pkgver = 1.164b1e3
+	pkgrel = 1
+	url = https://gitlab.com/neoait/dmenu-twitch
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python3
+	depends = dmenu
+	depends = streamlink
+	optdepends = mpv
+	optdepends = youtube-dl
+	provides = twitch
+	provides = twitch-get
+	source = git+https://gitlab.com/neoait/dmenu-twitch
+	md5sums = SKIP
+
+pkgname = dmenu-twitch-git
+
