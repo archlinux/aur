@@ -1,0 +1,23 @@
+pkgbase = librsvg-og
+	pkgdesc = SVG rendering library old gen
+	pkgver = 2.40.20
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/oaken-source/librsvg-og
+	arch = i486
+	arch = i686
+	arch = pentium4
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = git
+	depends = gdk-pixbuf2
+	depends = pango
+	source = https://github.com/oaken-source/librsvg-og/archive/2.40.20.tar.gz
+	sha256sums = 5bcbd8aa34a81478f990dc62a308ee2a42ff89a4e2bc905c09fd68f525bf5643
+	provides_i486 = librsvg=2.40.20
+	provides_i486 = librsvg-2.so
+	conflicts_i486 = libsrvg
+
+pkgname = librsvg-og
+
