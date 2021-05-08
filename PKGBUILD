@@ -11,7 +11,7 @@ pkgver() {
                 "$(git rev-list --count HEAD)"
 }
 pkgver=0.982.r75
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Scripted local Linux enumeration & privilege escalation checks'
 url="https://github.com/rebootuser/$_name"
@@ -25,6 +25,8 @@ changelog=CHANGELOG.md
 source=("$_name::git+$url.git")
 sha256sums=('SKIP')
 
+
+prepare() { sed -i "s|\(\./\)\?LinEnum\(\.sh\)\?|$_name|" "$_name/LinEnum.sh"; }
 
 package() {
   cd "$_name"

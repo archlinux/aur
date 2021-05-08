@@ -1,7 +1,7 @@
 pkgbase = linenum-git
 	pkgdesc = Scripted local Linux enumeration & privilege escalation checks
 	pkgver = 0.982.r75
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rebootuser/linenum
 	changelog = CHANGELOG.md
 	arch = any
