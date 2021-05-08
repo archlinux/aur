@@ -2,7 +2,7 @@
 
 pkgname=listmonk-git
 _pkgname=${pkgname%-git}
-pkgver=0.9.0.r78.g68b80d0
+pkgver=0.9.0.r83.gf08254d
 pkgrel=1
 pkgdesc='Self-hosted newsletter and mailing list manager with a modern dashboard'
 arch=(x86_64)
@@ -28,11 +28,7 @@ pkgver() {
 }
 
 prepare() {
-	cd "$pkgname"
-	sed -i -e 's/^[[:space:]]\+//;s/"db"/"localhost"/;s/0.0.0.0/localhost/' \
-		-e '/password/s/"listmonk"/"<your_password>"/' \
-		config.toml.sample
-	pushd frontend
+	cd "$pkgname/frontend"
 	export YARN_CACHE_FOLDER="$srcdir/node_modules"
 	yarn install --frozen-lockfile
 }
