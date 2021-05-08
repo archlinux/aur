@@ -1,7 +1,7 @@
 pkgbase = vue-cli
 	pkgdesc = Standard tooling for Vue.js development
-	pkgver = 4.5.12
-	pkgrel = 3
+	pkgver = 4.5.13
+	pkgrel = 1
 	url = https://cli.vuejs.org
 	arch = any
 	license = MIT
@@ -9,9 +9,9 @@ pkgbase = vue-cli
 	depends = nodejs
 	conflicts = nodejs-vue-cli
 	conflicts = vue
-	noextract = vue-cli-4.5.12.tar.gz
-	source = vue-cli-4.5.12.tar.gz::https://registry.npmjs.org/@vue/cli/-/cli-4.5.12.tgz
-	sha256sums = c0014d3cedd6369a7f082b7dacc70cab52bacc3490c415042a54c603c8d4285c
+	noextract = vue-cli-4.5.13.tar.gz
+	source = vue-cli-4.5.13.tar.gz::https://registry.npmjs.org/@vue/cli/-/cli-4.5.13.tgz
+	sha256sums = 540e6931c55f4b73487a5b714fb57a2e697c40aa6796aac7e85a8ec98cdbdd53
 
 pkgname = vue-cli
 
