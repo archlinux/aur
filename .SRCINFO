@@ -1,0 +1,14 @@
+pkgbase = cvsps
+	pkgdesc = Generating 'patchset' information from a CVS repository
+	pkgver = 3.13
+	pkgrel = 3
+	url = http://www.catb.org/esr/cvsps/
+	arch = x86_64
+	license = GPL
+	makedepends = asciidoc
+	depends = zlib
+	source = http://www.catb.org/~esr/cvsps/cvsps-3.13.tar.gz
+	sha512sums = 9fe2be4839c7a6f31a788102fd6ebb1e2e0693f09a4dad2bca5cd5d0788088eb34388d592778f04bcfec9817e3ffffb66d70db9aa47996d3bd1c45cf7cd8464f
+
+pkgname = cvsps
+
