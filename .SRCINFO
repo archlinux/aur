@@ -1,15 +1,15 @@
 pkgbase = amazingmarvin-appimage
 	pkgdesc = Personal productivity app that incorporates principles from behavioral psychology to help you beat procrastination, feel in control and finish your to-do list
-	pkgver = 1.59.0
+	pkgver = 1.59.1
 	pkgrel = 1
 	url = https://amazingmarvin.com/
 	arch = x86_64
 	license = custom:Commercial
 	depends = zlib
 	depends = hicolor-icon-theme
-	noextract = amazingmarvin-appimage-1.59.0.AppImage
+	noextract = amazingmarvin-appimage-1.59.1.AppImage
 	options = !strip
-	source_x86_64 = amazingmarvin-appimage-1.59.0.AppImage::https://amazingmarvin.s3.amazonaws.com/Marvin-1.59.0.AppImage
-	sha256sums_x86_64 = 74ed8e6dfdcec5050168375ce8b9a3fcb7242ee642fb186c34b0984c92da1889
+	source_x86_64 = amazingmarvin-appimage-1.59.1.AppImage::https://amazingmarvin.s3.amazonaws.com/Marvin-1.59.1.AppImage
+	sha256sums_x86_64 = 2696d7066fb6e8b3112fcc34bc682cfb41bc8903039cb46f4d9d84bfacbec364
 
 pkgname = amazingmarvin-appimage
