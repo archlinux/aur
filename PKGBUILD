@@ -1,26 +1,37 @@
-# Maintainer: Aleksander Mietinen <aleksander at mietinen dot net>
+# Maintainer :  Kr1ss  $(tr +- .@ <<<'<kr1ss+x-yandex+com>')
+# Contributor :  Aleksander Mietinen <aleksander at mietinen dot net>
+
 
 pkgname=linenum-git
-_pkgbase=linenum
-pkgver=r75.c47f9b2
-pkgrel=1
-pkgdesc="Scripted Local Linux Enumeration & Privilege Escalation Checks."
-arch=('any')
-url='https://github.com/rebootuser/LinEnum'
-license=('MIT')
-depends=('bash')
-makedepends=('git')
-
-source=("$_pkgbase::git+$url")
-sha256sums=('SKIP')
+_name="${pkgname%-git}"
 
 pkgver() {
-	cd "$srcdir/$_pkgbase" 
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_name"
+  printf %s.r%s "$(grep -m1 ^version= LinEnum.sh | grep -o '[0-9.]\+')" \
+                "$(git rev-list --count HEAD)"
 }
+pkgver=0.982.r75
+pkgrel=1
+
+pkgdesc='Scripted local Linux enumeration & privilege escalation checks'
+url="https://github.com/rebootuser/$_name"
+arch=('any')
+license=('MIT')
+
+makedepends=('git')
+depends=('bash')
+
+changelog=CHANGELOG.md
+source=("$_name::git+$url.git")
+sha256sums=('SKIP')
+
 
 package() {
-	cd "$srcdir/$_pkgbase" 
-	install -Dm755 LinEnum.sh "$pkgdir/usr/share/$_pkgbase/LinEnum.sh"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
+  cd "$_name"
+  install -Dm755 LinEnum.sh "$pkgdir/usr/bin/$_name"
+  install -Dm644 *.md     -t"$pkgdir/usr/share/doc/$_name/"
+  install -Dm644 LICENSE  -t"$pkgdir/usr/share/licenses/$_name/"
 }
+
+
+# vim: ts=2 sw=2 et ft=PKGBUILD:
