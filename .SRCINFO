@@ -6,7 +6,6 @@ pkgbase = sideload-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = libxml
 	makedepends = meson
 	makedepends = gtk3
 	makedepends = vala
