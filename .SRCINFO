@@ -1,0 +1,13 @@
+pkgbase = wooting-rgb-sdk-git
+	pkgdesc = Customize colors on Wooting Keyboard #WootDev
+	pkgver = r102.5da2ac1
+	pkgrel = 1
+	url = https://github.com/WootingKb/wooting-rgb-sdk
+	arch = any
+	license = MPL2
+	provides = wooting-rgb-sdk
+	source = git+https://github.com/WootingKb/wooting-rgb-sdk.git
+	md5sums = SKIP
+
+pkgname = wooting-rgb-sdk-git
+
