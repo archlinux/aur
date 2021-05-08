@@ -25,7 +25,7 @@ install=
 changelog=
 source=("https://gitlab.sokoll.com/moritz/gimgview/-/archive/master/gimgview-master.tar.gz")
 noextract=()
-sha256sums=("b39d62ec9c93984c1c648f3d3beece6741e52f1aa39c9ca9680f1c10cd57a9ca")
+sha256sums=("ba61848b1979c337e8ab9c92c96c05937393368e3afc2a01fc1ea997cfc1f6fa")
 validpgpkeys=()
 
 build() {
@@ -43,5 +43,5 @@ package() {
 	mkdir "$pkgdir"/usr
 	mkdir "$pkgdir"/usr/bin
 	make DESTDIR="$pkgdir/usr/bin" install
-	make MANDIR="$pkgdir/usr/local/man" manpage
+	make MANDIR="$pkgdir/usr/man" manpage
 }
