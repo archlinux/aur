@@ -1,0 +1,12 @@
+pkgbase = sennheiser-gsp670-pulseaudio-profile
+	pkgdesc = PulseAudio profile for the Sennheiser GSP 670 wireless gaming headset
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/szszoke/sennheiser-gsp670-pulseaudio-profile
+	arch = any
+	license = MIT
+	source = https://github.com/szszoke/sennheiser-gsp670-pulseaudio-profile/archive/refs/tags/1.2.tar.gz
+	sha256sums = d69b1f3cb05f70fdc0115930623407a228e8bb9d4ed9fc3cdff69aab502092ae
+
+pkgname = sennheiser-gsp670-pulseaudio-profile
+
