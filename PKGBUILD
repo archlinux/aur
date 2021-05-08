@@ -1,15 +1,15 @@
 # Maintainer: Kamil Śliwak <cameel2@gmail.com>
 
-_addon_version=1.6.10
 _gecko_id="jid0-XWJxt5VvCXkKzQK99PhZqAn7Xbg@jetpack"
 _name="searchlinkfix"
 pkgname=firefox-extension-google-search-link-fix
-pkgver=${_addon_version}
-pkgrel=1
-pkgdesc="Firefox extension that prevents Google and Yandex search pages from replacing direct URLs with tracking URLs when you click them "
+pkgver=1.6.10
+pkgrel=2
+pkgdesc="Prevents Google and Yandex search pages from modifying search result links when you click them"
 arch=('any')
 url="https://github.com/palant/${_name}"
 license=('MPL2')
+groups=("firefox-addons")
 depends=("firefox")
 makedepends=("npm")
 source=("${url}/archive/${pkgver}/${_name}-${pkgver}.tar.gz")
