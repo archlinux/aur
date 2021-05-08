@@ -1,0 +1,33 @@
+pkgbase = youtube-viewer
+	pkgdesc = Command line utility for viewing YouTube videos
+	pkgver = 3.9.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/trizen/youtube-viewer
+	install = youtube-viewer.install
+	arch = any
+	license = GPL3
+	makedepends = perl-module-build
+	depends = perl
+	depends = perl-data-dump
+	depends = perl-file-sharedir
+	depends = perl-json
+	depends = perl-lwp-protocol-https
+	depends = perl-libwww
+	optdepends = mpv: play videos with MPV
+	optdepends = perl-file-sharedir: GTK GUI
+	optdepends = perl-gtk3: GTK3 GUI
+	optdepends = perl-json-xs: faster JSON to HASH conversion
+	optdepends = perl-term-readline-gnu: better STDIN support
+	optdepends = perl-text-charwidth: print results in a fixed-width format
+	optdepends = vlc: play videos with VLC
+	optdepends = wget: download videos with wget
+	optdepends = youtube-dl: play videos with encrypted signatures
+	source = youtube-viewer-3.9.0.tar.gz::https://github.com/trizen/youtube-viewer/archive/3.9.0.tar.gz
+	source = https://github.com/trizen/youtube-viewer/releases/download/3.9.0/youtube-viewer-3.9.0.tar.gz.asc
+	validpgpkeys = ABB8BBAA2E279767774149B7D0A443C703A3A056
+	sha512sums = 7f08823d406a7c97ad1f3daf40d54b8ae282ab9d97df43807e0ad3bf908edcb4e08791e25fc347e949f085e4743b9dcbbfd677ee7a672c2fb498a99626422931
+	sha512sums = SKIP
+
+pkgname = youtube-viewer
+
