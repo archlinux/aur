@@ -1,16 +1,14 @@
 pkgbase = python-kitchen
 	pkgdesc = Useful snippets of python code
-	pkgver = 1.2.5
-	pkgrel = 2
+	pkgver = 1.2.6
+	pkgrel = 5
 	url = https://github.com/fedora-infra/kitchen
 	arch = any
-	license = LGPLv2+
-	makedepends = python
+	license = LGPL
 	makedepends = python-setuptools
 	depends = python
-	conflicts = python3-kitchen
-	source = https://github.com/fedora-infra/kitchen/archive/v1.2.5.tar.gz
-	md5sums = 35490785ed23c91bad1c083c7adbc39e
+	source = python-kitchen-1.2.6.tar.gz::https://github.com/fedora-infra/kitchen/archive/1.2.6.tar.gz
+	sha256sums = 6963dd84819713aafdd55e5314dcce6df5a37430b62fd9c48770e9f1a467b2b0
 
 pkgname = python-kitchen
 
