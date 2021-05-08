@@ -1,0 +1,15 @@
+pkgbase = java-jdepend
+	pkgdesc = Java library for generating design quality metrics
+	pkgver = 2.9.1
+	pkgrel = 4
+	url = https://github.com/clarkware/jdepend
+	arch = any
+	license = BSD
+	checkdepends = apache-ant
+	makedepends = apache-ant
+	depends = java-runtime-headless
+	source = java-jdepend-2.9.1.tar.gz::https://github.com/clarkware/jdepend/archive/2.9.1.tar.gz
+	sha512sums = 05dd4451c3da38469ef65051862d3299a6beac373605b7a65300e3322d32907702c2925bf7225716e6ce8b56b55c159fd673632f47961b0e2e13a2788b5b2d17
+
+pkgname = java-jdepend
+
