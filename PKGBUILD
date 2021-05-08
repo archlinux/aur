@@ -12,7 +12,7 @@ _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _desc="Raspberry Pi 4 with the cacule scheduler"
 pkgver=5.10.35
-pkgrel=1
+pkgrel=2
 pkgdesc="Raspberry Pi 4 lts Kernel with the cacule scheduler, aarch64 and armv7"
 arch=('armv7h' 'aarch64')
 url="http://www.kernel.org/"
@@ -26,6 +26,7 @@ source=("https://github.com/raspberrypi/linux/archive/${_commit}.tar.gz"
         '90-linux.hook'
         '0001-Make-proc-cpuinfo-consistent-on-arm64-and-arm.patch'
         'cacule-5.10.patch'
+        'interactivity_levels.patch'
         )
 source_armv7h=('config' 'config.txt' 'cacule-32bit-converter.patch')
 source_aarch64=('config8' 'config8.txt')
@@ -35,11 +36,12 @@ md5sums=('86644ce5432d4e6f92322ad1c2ae0628'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '441ec084c47cddc53e592fb0cbce4edf'
          'f66a7ea3feb708d398ef57e4da4815e9'
-         '748cc9096fba4fa9f8b1f160c7fddbf3')
+         '3f4e126d082c5cb3fee96a0c7a6b6313'
+         'a621493cad4df968b9b5c140c86d4d93')
 md5sums_armv7h=('869c9f4314d92c14a45128c8af56b663'
                 '9669d916a5929a2eedbd64477f83d99e'
-                '60020b476ade77049c832f55fc0bea1f')
-md5sums_aarch64=('44040b01d35e9a7f89dbfe0870580c59'
+                '4982367e95e393b5937c75f0b30d87e9')
+md5sums_aarch64=('42bd8ecdb82ed46972e8d6c184cb0f45'
                  '9669d916a5929a2eedbd64477f83d99e')
 
 # setup vars
@@ -62,6 +64,7 @@ prepare() {
   patch -Np1 -i ../0001-Make-proc-cpuinfo-consistent-on-arm64-and-arm.patch
   # cacule-scheduler
   patch -Np1 -i ../cacule-5.10.patch
+  patch -Np1 -i ../interactivity_levels.patch
   if [[ $CARCH == "armv7h" ]]; then
   patch -Np1 -i ../cacule-32bit-converter.patch #only needed if building on armv6 or armv7
   fi
