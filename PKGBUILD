@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts-logo
-pkgver=5.10.34
+pkgver=5.10.35
 pkgrel=1
 pkgdesc='LTS Linux with tux logo'
 url="https://www.kernel.org/"
