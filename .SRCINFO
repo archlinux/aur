@@ -6,7 +6,8 @@ pkgbase = tlauncherorg
 	url = https://tlauncher.org
 	arch = any
 	license = GPL3
-	depends = java-runtime>=8
+	depends = jdk8-openjdk
+	depends = java8-openjfx
 	source = launcher.zip::https://tlauncher.org/jar
 	source = tlauncher.desktop
 	source = tlauncher.svg

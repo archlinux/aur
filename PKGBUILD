@@ -10,8 +10,10 @@ pkgdesc="Builds of the TLauncher freeware launcher for Minecraft from tlauncher.
 url="https://tlauncher.org"
 license=("GPL3")
 depends=(
-	"java-runtime>=8"
+	"jdk8-openjdk"
+	"java8-openjfx"
 )
+
 source=(
 	"launcher.zip::$url/jar"
 	"tlauncher.desktop"
