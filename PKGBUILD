@@ -1,40 +1,45 @@
-# Maintainer: xiretza <xiretza+aur@gmail.com>
+# Maintainer: vojket <vojket+aur@protonmail.com>
+# Contributor: xiretza <xiretza+aur@gmail.com>
 pkgname=factorio-init
-pkgver=2.5.0
+pkgver=3.1.0
 pkgrel=1
-pkgdesc="A simple factorio init script for linux"
+pkgdesc="A factorio init script in bash"
 arch=('any')
 url="https://github.com/Bisa/factorio-init"
 license=('MIT')
 depends=('bash'
-	 'factorio-headless')
-backup=("etc/conf.d/factorio-init")
-source=("https://github.com/Bisa/factorio-init/archive/${pkgver}.tar.gz"
-	"factorio-init.service"
-	"factorio-init.conf")
-sha256sums=('a1d90b5b1804a932e258ccf43dfd7cd7ffcd44ae8b83d87203187f0469d17789'
-            '876eba92ba84dfc473fa23915525c4123cebfec474151704c515aae18ae81dfb'
-            '0dd4fd75cf3448451a1b55bdf6bc38a4b9654a8d125cac391b180f70732a62e0')
+		 'curl'
+		 'wget')
+optdepends=('bash-completion: autocompletion support')
+backup=("etc/factorio-init.conf")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Bisa/factorio-init/archive/$pkgver.tar.gz"
+		"factorio-init.conf"
+		"factorio-init.service")
+sha256sums=('32b51b118b0ea21bd883d2afa73db0b2ff5b744edf4951af78cc77213dfd3403'
+            'e79742ae05e027bb00ab2e86a7d005b172a72f593c9cf54dbd00d4f789b464c4'
+            'dfff03f3798c8a6a7d55271483856320d1feb4831679172905d93ed4aed89dd3')
 
 package() {
-	cd "${srcdir}"
+	cd "$srcdir"
 
-	install -Dm644 factorio-init.service -t "${pkgdir}/usr/lib/systemd/system/"
-	install -Dm644 factorio-init.conf "${pkgdir}/etc/conf.d/factorio-init"
+	_instdir="$pkgdir/usr/share/$pkgname"
+	_upstream="$srcdir/$pkgname-$pkgver"
 
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	# Install and symlink bash script
+	install -Dm655 "$_upstream/factorio" "$_instdir/factorio-init"
+	install -d "$pkgdir/usr/bin/"
+	ln -s "/usr/share/factorio-init/factorio-init" "$pkgdir/usr/bin/factorio-init"
 
-	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/factorio-init/"
+	# Install and symlink config file
+	install -Dm644 factorio-init.conf "$pkgdir/etc/factorio-init.conf"
+	ln -s "/etc/factorio-init.conf" "$_instdir/config"
 
-	_pkgdir="${pkgdir}/usr/share/${pkgname}/"
-	install -Dm644 bash_autocomplete -t "${_pkgdir}"
-	install -D factorio "${_pkgdir}/factorio-init"
+	# Install bash autocompletions
+	install -Dm644 "$_upstream/extras/bash_autocomplete" "$pkgdir/usr/share/bash-completion/completions/factorio-init/bash_autocomplete"
 
-	install -d "${pkgdir}/usr/share/bash-completion/completions/"
-	install -d "${pkgdir}/usr/bin/"
+	# Install systemd service
+	install -Dm644 "factorio-init.service" "$pkgdir/usr/lib/systemd/system/factorio-init.service"
 
-	ln -s "/usr/share/${pkgname}/bash_autocomplete" "${pkgdir}/usr/share/bash-completion/completions/factorio-init"
-	ln -s "/usr/share/${pkgname}/factorio-init" "${pkgdir}/usr/bin/factorio-init"
-	ln -s "/etc/conf.d/factorio-init" "${_pkgdir}/config"
-
+	# Install license
+	install -Dm644 "$_upstream/LICENSE" "$pkgdir/usr/share/licenses/factorio-init/LICENSE"
 }
