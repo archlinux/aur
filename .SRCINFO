@@ -1,0 +1,14 @@
+pkgbase = fanyi-git
+	pkgdesc = (Rust ver.)A CN and US translate tool in your command line.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jialanxin/fanyi.git
+	arch = x86_64
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	source = git+https://github.com/jialanxin/fanyi.git#tag=v0.1.0
+	sha1sums = SKIP
+
+pkgname = fanyi-git
+
