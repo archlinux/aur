@@ -1,28 +1,49 @@
-# Maintainer: Ricardo Liang (rliang) <ricardoliang@gmail.com>
-
 pkgname=gnome-desktop-git
-pkgver=3.31.4+1+g4501279a
+_pkgname=gnome-desktop
+pkgver=40.0+17+gbab26981
 pkgrel=1
 epoch=1
 pkgdesc="Library with common API for various GNOME modules"
 url="https://gitlab.gnome.org/GNOME/gnome-desktop"
 arch=(x86_64)
 license=(GPL LGPL)
-provides=(gnome-desktop)
-conflicts=(gnome-desktop)
-depends=(gsettings-desktop-schemas gtk3 libxkbfile xkeyboard-config iso-codes libseccomp bubblewrap)
-makedepends=(gobject-introspection git autoconf-archive gtk-doc yelp-tools)
-source=("git+https://gitlab.gnome.org/GNOME/gnome-desktop.git")
-sha256sums=('SKIP')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+depends=('gsettings-desktop-schemas'
+         'gtk3'
+         'xkeyboard-config'
+         'iso-codes'
+         'libseccomp'
+         'bubblewrap'
+         'systemd-libs'
+         'libxkbcommon')
+makedepends=('gobject-introspection'
+             'git'
+             'meson'
+             'gtk-doc'
+             'yelp-tools')
+checkdepends=(xorg-server-xvfb)
+source=("git+${url}.git")
+b2sums=('SKIP')
 
 pkgver() {
-  cd gnome-desktop
+  cd ${_pkgname}
   git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-  arch-meson gnome-desktop build -D gtk_doc=true
-  ninja -C build
+    arch-meson ${_pkgname} build \
+    -D gnome_distributor="Arch Linux" \
+    -D gtk_doc=true \
+    -D debug_tools=false \
+    -D date_in_gnome_version=false
+  meson compile -C build
+}
+
+check() {
+  dbus-run-session xvfb-run \
+    -s '-screen 0 1920x1080x24 -nolisten local' \
+    meson test -C build --print-errorlogs
 }
 
 package() {

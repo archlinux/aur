@@ -1,28 +1,29 @@
 pkgbase = gnome-desktop-git
 	pkgdesc = Library with common API for various GNOME modules
-	pkgver = 3.31.4+1+g4501279a
+	pkgver = 40.0+17+gbab26981
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-desktop
 	arch = x86_64
 	license = GPL
 	license = LGPL
+	checkdepends = xorg-server-xvfb
 	makedepends = gobject-introspection
 	makedepends = git
-	makedepends = autoconf-archive
+	makedepends = meson
 	makedepends = gtk-doc
 	makedepends = yelp-tools
 	depends = gsettings-desktop-schemas
 	depends = gtk3
-	depends = libxkbfile
 	depends = xkeyboard-config
 	depends = iso-codes
 	depends = libseccomp
 	depends = bubblewrap
+	depends = systemd-libs
+	depends = libxkbcommon
 	provides = gnome-desktop
 	conflicts = gnome-desktop
 	source = git+https://gitlab.gnome.org/GNOME/gnome-desktop.git
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = gnome-desktop-git
-
