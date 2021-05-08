@@ -1,8 +1,7 @@
 post_upgrade() {
-  if (( $(vercmp $2 1.8.4-3) < 0)); then
-    printf 'There are fix for pandoc export command'
-    printf 'In order to use the new command, make sure to "reset" it once under Advanced tab of Preference'
-    printf 'Or, if it contains customizations,'
-    printf 'Replace `--citeproc --bibliography "$bibliography$"` with `$bibliography$`.'
+  if (( $(vercmp $2 1.8.8-2) < 0)); then
+    printf 'In order to adhere upstream, we now ship with bundled pandoc binary'
+    printf "If you want to export documents with Arch's system pandoc"
+    printf 'Please choose NOT to export with built-in pandoc in Preference/Export tab'
   fi
 }
