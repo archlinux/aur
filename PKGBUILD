@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.0.r1225.5639273ce
+pkgver=1.7.0.r1233.2e0baa716
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -36,7 +36,9 @@ provides=(pcsx2)
 conflicts=(pcsx2)
 source=(git+https://github.com/PCSX2/pcsx2.git
 git+https://github.com/fmtlib/fmt.git
-git+https://github.com/jbeder/yaml-cpp.git)
+git+https://github.com/jbeder/yaml-cpp.git
+git+https://github.com/rtissera/libchdr.git
+git+https://github.com/google/googletest.git)
 sha256sums=(SKIP)
 
 pkgver() {
@@ -44,19 +46,20 @@ pkgver() {
   git describe --tags | sed 's/^v//; s/-dev//; s/-/.r/; s/-g/./'
 }
 
+prepare()
+{
+  cd $srcdir/pcsx2/3rdparty
+  git submodule init
+  git config submodule.https://github.com/fmtlib/src/fmt.git.url fmt
+  git config submodule.https://github.com/jbeder/yaml-cpp.git.url yaml-cpp
+  git config submodule.https://github.com/rtissera/libchdr.git.url libchdr
+  git config submodule.https://github.com/google/googletest.git.url gtest
+  git submodule update
 
+}
 
 build() {
   mkdir -p build
-
-  cd $srcdir/pcsx2/3rdparty
-  git submodule init
-  git config submodule.https://github.com/fmtlib/src/fmt.git.url $srcdir/fmt
-  git config submodule.https://github.com/jbeder/yaml-cpp.git.url $srcdir/yaml-cpp
-  git submodule update
-
-  cd ../..
-  
   cd build
 
   cmake ../pcsx2 \
@@ -76,5 +79,7 @@ package() {
 
 # vim: ts=2 sw=2 et:
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP')
