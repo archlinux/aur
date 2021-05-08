@@ -1,6 +1,6 @@
 pkgbase = instamenu-extra
 	pkgdesc = addons for instamenu
-	pkgver = 2021.04.10
+	pkgver = 2021.05.08
 	pkgrel = 1
 	url = https://github.com/The-Repo-Club/instamenu-extra
 	arch = any
@@ -15,9 +15,10 @@ pkgbase = instamenu-extra
 	depends = python>=3.4
 	depends = python-gobject
 	optdepends = cutycapt: Taking screenshots with bm command.
+	optdepends = paru: Using the aur with pacman script.
 	provides = instamenu-extra
-	source = instamenu-extra-2021.04.10.tar.gz::https://github.com/The-Repo-Club/instamenu-extra/archive/2021.04.10.tar.gz
-	sha256sums = 89c4b120fc9c25e5f649a82272cc5e9b914f1986779faba2ed972c631d90038c
+	source = instamenu-extra-2021.05.08.tar.gz::https://github.com/The-Repo-Club/instamenu-extra/archive/2021.05.08.tar.gz
+	sha256sums = bd03dfcf95f20aafbdef5b0531fbfbd5566686b5b295897500e77b669339e1cd
 
 pkgname = instamenu-extra
 
