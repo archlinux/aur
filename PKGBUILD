@@ -2,7 +2,7 @@
 # Contributor: Jack Chen <redchenjs@live.com>
 
 pkgname=motrix-bin
-pkgver=1.6.8
+pkgver=1.6.10
 pkgrel=1
 pkgdesc="A full-featured download manager (binary version)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
     "https://github.com/agalwood/Motrix/releases/download/v${pkgver}/Motrix_${pkgver}_amd64.deb"
 )
 sha512sums=(
-    '1c9116b375dffcf551daf0bbde1cea8edc6dedf12eccac288394bd8bcc7272db8f718f4b46184e60b171c93b4444633c36650e887131b50ebfb058bd5076d0df'
+    '5ad7a3193dcff4a08ccb8a0fdb2d6db4ba6089e487db9b8e373a65770cf01accb3709941b97423c0c2cd3ced2be60970c8d91ba29cce7fc7317a4d28c3f2b853'
 )
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = motrix-bin
 	pkgdesc = A full-featured download manager (binary version)
-	pkgver = v1.6.8
+	pkgver = v1.6.10
 	pkgrel = 1
 	url = https://github.com/agalwood/Motrix
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = motrix-bin
 	depends = nss
 	conflicts = motrix
 	conflicts = motrix-git
-	source = https://github.com/agalwood/Motrix/releases/download/v1.5.15/Motrix_1.5.15_amd64.deb
-	sha512sums = 1c9116b375dffcf551daf0bbde1cea8edc6dedf12eccac288394bd8bcc7272db8f718f4b46184e60b171c93b4444633c36650e887131b50ebfb058bd5076d0df
+	source = https://github.com/agalwood/Motrix/releases/download/v1.6.10/Motrix_1.6.10_amd64.deb
+	sha512sums = 5ad7a3193dcff4a08ccb8a0fdb2d6db4ba6089e487db9b8e373a65770cf01accb3709941b97423c0c2cd3ced2be60970c8d91ba29cce7fc7317a4d28c3f2b853
 
 pkgname = motrix-bin
