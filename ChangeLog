@@ -1,3 +1,14 @@
+4.7.5 (2021-04-29 15:58:48)
+
+    Fixes an issue with dSYM loader.
+
+4.7.4 (2021-04-14 23:02:30)
+
+    Fixes a crash when loading some files from the DYLD cache,
+    Fixes an issue when loading additional binaries,
+    Adds some more information on cross references in the inspector panel,
+    Adds a way to restrict searching text only in user comments.
+
 4.7.3 (2021-03-31 18:50:27)
 
     Improves loading time of big files.
