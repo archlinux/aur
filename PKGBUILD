@@ -2,19 +2,23 @@
 
 _pkgname=pullcord
 pkgname=$_pkgname-git
-pkgver=r134.5209be1
+pkgver=r137.a4456d6
 pkgrel=2
 pkgdesc="Discord archiver - git version"
 arch=('x86_64')
 url="https://github.com/tsudoko/$_pkgname"
-license=('Unlicense')
-makedepends=('git' 'go' 'golang-github-gorilla-websocket' 'golang-golang-x-crypto')
+license=('Unlicense' 'BSD')
+makedepends=('git' 'go')
 provides=('pullcord')
 conflicts=('pullcord')
 source=("git+$url.git"
-        'git+https://github.com/bwmarrin/discordgo.git')
+        'git+https://github.com/bwmarrin/discordgo.git'
+        'LICENSE.websocket::https://raw.githubusercontent.com/gorilla/websocket/v1.4.0/LICENSE'
+        'LICENSE.crypto::https://raw.githubusercontent.com/golang/crypto/4d3f4d9ffa16a13f451c3b2999e9c49e9750bf06/LICENSE')
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            '2be1b548b0387ca8948e1bb9434e709126904d15f622cc2d0d8e7f186e4d122d'
+            '2d36597f7117c38b006835ae7f537487207d8ec407aa9d9980794b2030cbc067')
 
 pkgver() {
   cd "$_pkgname"
@@ -24,27 +28,33 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
+
   git submodule deinit -f --all
   git submodule init
   git config submodule.vendor/github.com/bwmarrin/discordgo.url "$srcdir/discordgo"
   git submodule update
-  cd ..
 
-  mkdir -p gopath/src/
-  mv "$_pkgname"/vendor/* gopath/src/
-  mkdir -p gopath/src/github.com/tsudoko
-  ln -rTsf "$_pkgname" gopath/src/github.com/tsudoko/pullcord
+  go mod init github.com/tsudoko/pullcord
+  go mod edit -replace=github.com/bwmarrin/discordgo=./vendor/github.com/bwmarrin/discordgo
+  go mod tidy
+
+  mkdir build
 }
 
 build() {
-  export GOPATH="$srcdir/gopath:/usr/share/gocode"
-  cd gopath/src/github.com/tsudoko/pullcord
-  go build -v \
-    -trimpath \
-    -ldflags "-extldflags $LDFLAGS" ./cmd/pullcord
+  cd "$_pkgname"
+
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o build ./cmd/...
 }
 
 package() {
-  cd "$_pkgname"
-  install -Dm755 pullcord "$pkgdir/usr/bin/pullcord"
+  install -Dm755 -t "$pkgdir/usr/bin" $_pkgname/build/*
+  install -Dm644 $_pkgname/vendor/github.com/bwmarrin/discordgo/LICENSE "$pkgdir/usr/share/licenses/$pkgname/github.com/bwmarrin/discordgo/LICENSE"
+  install -Dm644 LICENSE.websocket "$pkgdir/usr/share/licenses/$pkgname/github.com/gorilla/websocket/LICENSE"
+  install -Dm644 LICENSE.crypto "$pkgdir/usr/share/licenses/$pkgname/golang.org/x/crypto/LICENSE"
 }

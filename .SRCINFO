@@ -1,20 +1,23 @@
 pkgbase = pullcord-git
 	pkgdesc = Discord archiver - git version
-	pkgver = r134.5209be1
+	pkgver = r137.a4456d6
 	pkgrel = 2
 	url = https://github.com/tsudoko/pullcord
 	arch = x86_64
 	license = Unlicense
+	license = BSD
 	makedepends = git
 	makedepends = go
-	makedepends = golang-github-gorilla-websocket
-	makedepends = golang-golang-x-crypto
 	provides = pullcord
 	conflicts = pullcord
 	source = git+https://github.com/tsudoko/pullcord.git
 	source = git+https://github.com/bwmarrin/discordgo.git
+	source = LICENSE.websocket::https://raw.githubusercontent.com/gorilla/websocket/v1.4.0/LICENSE
+	source = LICENSE.crypto::https://raw.githubusercontent.com/golang/crypto/4d3f4d9ffa16a13f451c3b2999e9c49e9750bf06/LICENSE
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 2be1b548b0387ca8948e1bb9434e709126904d15f622cc2d0d8e7f186e4d122d
+	sha256sums = 2d36597f7117c38b006835ae7f537487207d8ec407aa9d9980794b2030cbc067
 
 pkgname = pullcord-git
 
