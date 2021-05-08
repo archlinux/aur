@@ -1,0 +1,25 @@
+pkgbase = manjaro-mate-theme-git
+	pkgdesc = Yaru MATE Theme for Manjaro/Arch
+	pkgver = 2.0.r1.g38c0553
+	pkgrel = 1
+	url = https://github.com/Tomoghno/Manjaro-MATE-Theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	options = !strip
+	source = git+https://github.com/Tomoghno/Manjaro-MATE-Theme.git
+	sha256sums = SKIP
+
+pkgname = manjaro-mate-theme-git
+	depends = gtk3
+	depends = gnome-themes-extra
+	optdepends = gdk-pixbuf2: GTK2 support
+	optdepends = gtk-engine-murrine: GTK2 support
+	optdepends = manjaro-mate-wallpaper: Matching wallpapers
+	provides = manjaro-mate-theme-git
+	conflicts = manjaro-mate-theme-git
+
+pkgname = manjaro-mate-wallpaper-git
+	provides = manjaro-mate-wallpaper
+	conflicts = manjaro-mate-wallpaper
+
