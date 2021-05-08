@@ -4,7 +4,7 @@
 
 _name=rogerrouter
 pkgname=roger-router
-pkgver=2.4.0
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="Journal, Fax-Software and Call-Monitor for AVM FRITZ!Box or compatible"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ options=('!emptydirs')
 install=roger-router.install
 
 source=("https://gitlab.com/tabos/${_name}/-/archive/${pkgver}/${_name}-${pkgver}.tar.gz")
-sha512sums=('879f7cd3919a015981ecca2649913dd04feec3d86df07ae0551ea4714b12c43406b078e3f9749bdc94225b02ce51bec5dfa604e87f4b160d6704d4a350041774')
+sha512sums=('5fe17dc7edf1830a968f9cbd7844b2a552b9fc8b7755b7d23143c9d03adc7b29dcfb2d98c62c08a3095b1f59c212a0895b3f50ef60a4be788b523fb3aeebc0a2')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
