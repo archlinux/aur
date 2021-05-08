@@ -1,5 +1,5 @@
 pkgbase = verible
-	pkgdesc = Verilog, SystemVerilog Parser, Style-Linter, and Formatter from GOOGLE
+	pkgdesc = SystemVerilog(Verilog) Parser, Style-Linter, and Formatter from Google
 	pkgver = 0.0.r1213.9e5c085b
 	pkgrel = 1
 	url = https://github.com/google/verible
