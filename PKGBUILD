@@ -3,12 +3,13 @@
 
 pkgname=socli
 pkgver=6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Stack overflow command line client. Search and browse stack overflow without leaving the terminal"
 arch=('any')
 url='https://github.com/gautamkrishnar/socli'
 license=('BSD')
-depends=('python-beautifulsoup4'
+depends=('python-argcomplete'
+         'python-beautifulsoup4'
          'python-requests'
          'python-colorama'
          'python-py-stackexchange'

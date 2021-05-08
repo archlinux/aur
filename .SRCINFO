@@ -1,11 +1,12 @@
 pkgbase = socli
 	pkgdesc = Stack overflow command line client. Search and browse stack overflow without leaving the terminal
 	pkgver = 6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gautamkrishnar/socli
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
+	depends = python-argcomplete
 	depends = python-beautifulsoup4
 	depends = python-requests
 	depends = python-colorama
