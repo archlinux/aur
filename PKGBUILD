@@ -1,22 +1,24 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=icon-git
-pkgver=20181004
+pkgver=9.5.20i.r1.gf48c0f5
 pkgrel=1
+epoch=1
 pkgdesc="The Icon programming language"
 arch=('i686' 'x86_64')
-url="http://www.cs.arizona.edu/icon/"
+url="https://github.com/gtownsend/icon"
 license=('custom')
 depends=('sh' 'libx11')
 makedepends=('git' 'libxt')
-provides=('icon=951')
+provides=('icon')
 conflicts=('icon')
-source=("git://github.com/gtownsend/icon.git" LICENSE)
+source=("git+$url.git" LICENSE)
 sha256sums=('SKIP'
             '57b2b71129aa652ca63b07d3c23564bc7a45444a274d12e50856b46e4d088e35')
 
 pkgver() {
   cd ${pkgname%-git}
-    git log -1 --format="%cd" --date=short | tr -d '-'
+  git describe --tags | sed 's+-+.r+' | cut -c2- | tr - .
 }
 
 build() {
