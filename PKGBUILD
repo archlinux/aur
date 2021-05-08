@@ -20,11 +20,13 @@ _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 source=("${_pkg}.run::https://developer.nvidia.com/vulkan-beta-${pkgver//.}-linux"
         'nvidia-drm-outputclass.conf'
         'nvidia-vulkan-utils.sysusers'
-        'kernel-5.11.patch')
+        'kernel-5.11.patch'
+        'kernel-5.12.patch')
 sha512sums=('f8d24f70ea6e8d6078ef366539988022a9ef0ba0fde6c51233bf3cf860731ec2c07d3ac1013d0c0e9e4aa2c642999f58cd43546fa2c2c72325e02af2a75751e1'
             'de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
-            '6409fdc44f441be1bdf30bd78de35f49ed3970a9496e265ac9f45db9760bdcb0736ecb5a7342e97b57c62c0f69b403f52e7ca69b2360e64a559a44fe0a809896')
+            '6409fdc44f441be1bdf30bd78de35f49ed3970a9496e265ac9f45db9760bdcb0736ecb5a7342e97b57c62c0f69b403f52e7ca69b2360e64a559a44fe0a809896'
+            '48cf6c8fed66c0bc075b929a598ebe3457f868c4df264565935cbeed6cc0d5235498143c13044c74c5a435088936afaf5409e9d53765aad042e063032b52baff')
 
 create_links() {
     # create soname links
@@ -42,6 +44,7 @@ prepare() {
     bsdtar -xf nvidia-persistenced-init.tar.bz2
 
     patch -Np1 -i ../kernel-5.11.patch
+    patch -Np1 -i ../kernel-5.12.patch
 
     # Fixing regex pattern for Module.symvers
     sed -i "s/${TAB}vmlinux/${TAB}*vmlinux/g" kernel/conftest.sh
