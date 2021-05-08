@@ -25,7 +25,7 @@ install=
 changelog=
 source=("https://gitlab.sokoll.com/moritz/gimgview/-/archive/master/gimgview-master.tar.gz")
 noextract=()
-sha256sums=("f77bc8e4f4ccd472b3897649282307e47d3e41bdb440edfa0ea86afbdc10eec8")
+sha256sums=("b39d62ec9c93984c1c648f3d3beece6741e52f1aa39c9ca9680f1c10cd57a9ca")
 validpgpkeys=()
 
 build() {
