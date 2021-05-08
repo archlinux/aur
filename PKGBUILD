@@ -3,20 +3,20 @@
 # Contributor: Matthew Sexton <wsdmatty@gmail.com>
 # Contributor: Lorenz Wellmer
 pkgname=clockify-desktop
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.0.2
+pkgrel=1
 pkgdesc="Truly free time tracker for teams, Desktop App"
 arch=('x86_64')
 url="https://clockify.me"
 license=('custom')
 depends=('gtk3' 'libxss' 'nss')
 source=("$pkgname-$pkgver.deb::https://clockify-resources.s3.eu-central-1.amazonaws.com/downloads/Clockify_Setup.deb")
-sha512sums=('cf1dd947e8234b036d4af401f2081026fbf6889ecc4946d1be5bf62db84e05428fc76fb60c39a809a9ac67df8a8c9dbab8fcf28f502dab8d1e0e6347f7e49df9')
+sha512sums=('37246f379b77977e57a29ad2a70a1a07e05c60b1cbe906490eba5faaa13ad433c37def56f966ce883bd9fd7fc52d10ba1a09b164e2a93555e49fb5772757259b')
 
 package() {
-	# Extract package data
-	tar xf data.tar.xz -C "${pkgdir}"
-	install -dm755 "${pkgdir}/usr/bin"
-	ln -sf "/opt/Clockify/clockify" "${pkgdir}/usr/bin/clockify"
-	install -D -m644 "${pkgdir}/opt/Clockify/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    # Extract package data
+    tar xf data.tar.xz -C "${pkgdir}"
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -sf "/opt/Clockify/clockify" "${pkgdir}/usr/bin/clockify"
+    install -D -m644 "${pkgdir}/opt/Clockify/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
