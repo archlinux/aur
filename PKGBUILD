@@ -3,8 +3,8 @@
 # Contributor: somini <dev at somini dot xyz>
 
 pkgname=miniflux
-pkgver=2.0.29
-pkgrel=2
+pkgver=2.0.30
+pkgrel=1
 pkgdesc='Minimalist Feed Reader'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://miniflux.app'
@@ -20,7 +20,7 @@ source=(
   miniflux.sysusers
 )
 _repo="v2"
-sha256sums=('dcce29b07738cd2ffe1da3cf1401d8c49ead421a81e2b2239323f3423c867200'
+sha256sums=('b5328c99e176439c44647cfec48fd6b5557b18060d0c93871bf8cbbac98e9594'
             '1247a3cfe0307f5f1bb070e616f57344d8f16201070ecf7dda243b3fa1fbd8b8'
             'b4ea52858882240256dc583a7766319fcaada4acac185d4def5b02e0d2da532a'
             'd1ce5acf1e633b04b92bf9330bd64d97c19d8f8d39c7bb4b64e11a96be4b73e2')
