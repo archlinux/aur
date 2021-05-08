@@ -1,7 +1,7 @@
 pkgbase = ruby-hashdiff
-	pkgdesc = a ruby library to to compute the smallest difference between two hashes
+	pkgdesc = Library to compute the smallest difference between two hashes
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/liufengyun/hashdiff
 	arch = any
 	license = MIT

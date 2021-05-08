@@ -1,10 +1,11 @@
-# Maintainer: Tim Meusel <tim@bastelfreak.de>
+# Maintainer: Christian Rebischke <chris.rebischke@archlinux.org>
+# Contributor: Tim Meusel <tim@bastelfreak.de>
 
 _gemname='hashdiff'
 pkgname="ruby-${_gemname}"
 pkgver=1.0.0
-pkgrel=1
-pkgdesc='a ruby library to to compute the smallest difference between two hashes'
+pkgrel=3
+pkgdesc='Library to compute the smallest difference between two hashes'
 arch=('any')
 url='https://github.com/liufengyun/hashdiff'
 license=('MIT')
