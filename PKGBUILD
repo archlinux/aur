@@ -13,7 +13,7 @@
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
 ## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
-## Good option if your package is for one machine: 99 => native
+## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
 if [ -z ${_microarchitecture+x} ]; then
   _microarchitecture=0
 fi
@@ -86,7 +86,7 @@ done
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'SKIP'
             'df532315889f495999fad3fa1b892553badc99d85e61e6d2434ccafcf80bd9a8'
-            '03bb8b234a67b877a34a8212936ba69d8700c54c7877686cbd9742a536c87134')
+            '51742dee57cd15bece152d6527f48af87cb7930f0f6a356d5282f778e7c35b39')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
@@ -98,8 +98,8 @@ prepare() {
   # hacky work around for xz not getting extracted
   # https://bbs.archlinux.org/viewtopic.php?id=265115
   if [[ ! -f "$srcdir/patch-${pkgver}-xanmod${xanmod}" ]]; then
-    unlink "$srcdir/patch-${pkgver}-xanmod${xanmod}.xz"
-    xz -dc "$startdir/patch-${pkgver}-xanmod${xanmod}.xz" > "$srcdir/patch-${pkgver}-xanmod${xanmod}"
+    #unlink "$srcdir/patch-${pkgver}-xanmod${xanmod}.xz"
+    xz -dc "$SRCDEST/patch-${pkgver}-xanmod${xanmod}.xz" > "$srcdir/patch-${pkgver}-xanmod${xanmod}"
   fi
 
   # Apply Xanmod patch
