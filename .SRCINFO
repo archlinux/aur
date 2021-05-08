@@ -1,0 +1,17 @@
+pkgbase = java-activation-gnu
+	pkgdesc = JavaBeans Activation Framework (JAF), framework for declaring what beans operate on what MIME type data
+	pkgver = 1.1.2
+	pkgrel = 2
+	url = https://www.gnu.org/s/classpathx/jaf/jaf.html
+	arch = any
+	license = LGPL
+	makedepends = apache-ant
+	depends = java-runtime-headless
+	source = https://ftp.gnu.org/gnu/classpathx/activation-1.1.2.tar.gz
+	source = https://ftp.gnu.org/gnu/classpathx/activation-1.1.2.tar.gz.sig
+	validpgpkeys = 2875BCCCAE65860C6087CA8FE9D9750C4A8782B8
+	sha512sums = 26534f7bb47daddf97b850ab74fc8ef2c5bd62d12cfb96e28e235071af7dcfc7761fa15f2d8f3a2d194f035665cef127812b7476af6cc81f6d6374f1fa725584
+	sha512sums = SKIP
+
+pkgname = java-activation-gnu
+
