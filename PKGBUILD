@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-imageformats-static
-_qtver=6.0.1
+_qtver=6.1.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -19,8 +19,8 @@ makedepends=('mingw-w64-cmake-static' 'qt6-base' 'ninja' 'git')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtimageformats-everywhere-src-${_qtver}"
-source=("https://download.qt.io/official_releases/additional_libraries/qtimageformats/${pkgver%.*}/${_qtver}/${_pkgfqn}.tar.xz")
-sha256sums=('27a9d6e85dcd56ad981ef2aac27844e782f8cce0598f83283e6fbbd2a3810105')
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
+sha256sums=('34e63786d31d0c5dcc13a4b37d31002efb53244e48a8c2f0fafdd81e8d28575a')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
