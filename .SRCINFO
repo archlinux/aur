@@ -1,0 +1,17 @@
+pkgbase = pyxis
+	pkgdesc = Container plugin for Slurm Workload Manager
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/NVIDIA/pyxis
+	install = pyxis.install
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = libtool
+	source = https://github.com/NVIDIA/pyxis/archive/refs/tags/v0.9.1.zip
+	sha256sums = 8e46510d9af976ddb52abcd07f62b3f07d46d39fa537fea0ca16847074c285e2
+
+pkgname = pyxis
+
