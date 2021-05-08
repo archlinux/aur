@@ -1,6 +1,6 @@
 # Maintainer: Marti Raudsepp <marti@juffo.org>
 pkgname=ego
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Alter Ego: run Linux desktop applications under a different local user"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('acl')
 makedepends=('cargo')
 optdepends=('xdg-desktop-portal-gtk: improved desktop integration')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha512sums=('ccb62a3933d10426c11e560268da7d07ed7fc573c147d4a5cfe590b11b426f1efe8e4b17ac9a523b411105a0ff1c3d915dc3c0a4e208444aa5fdc8a19f3c57f7')
+sha512sums=('52e9be2de6158998e3fcc341837250ba9144d8bad078cf9a7f772b52ed56f3b8f23d1caea99e339948502718daa7bff429bb3ad21611030121286880dd1631fb')
 
 build() {
   cd "$pkgname-$pkgver"
