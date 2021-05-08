@@ -1,6 +1,6 @@
 pkgbase = gitlint
 	pkgdesc = Git commit message linter
-	pkgver = 0.15.0
+	pkgver = 0.15.1
 	pkgrel = 1
 	url = https://jorisroovers.github.io/gitlint/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = gitlint
 	depends = python-setuptools
 	depends = python-sh
 	options = !emptydirs
-	source = gitlint-0.15.0.tar.gz::https://codeload.github.com/jorisroovers/gitlint/tar.gz/v0.15.0
-	sha256sums = 9e693af54af527cce539f5555b7e007d90ba587e3d44f5da2fd2e00679f04865
+	source = gitlint-0.15.1.tar.gz::https://github.com/jorisroovers/gitlint/archive/refs/tags/v0.15.1.tar.gz
+	sha256sums = adb8dcc6be95035142f197d599bffecdaba3e56e83547491888d1f2b5827054a
 
 pkgname = gitlint
 
