@@ -1,0 +1,20 @@
+pkgbase = glog-squash-git
+	pkgdesc = Simple LD_PRELOAD shim to shut up GTK/Glib applications
+	pkgver = 1.1bfd52e
+	pkgrel = 1
+	url = https://github.com/sandsmark/glog-squash
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = miniaudio-git>=1865
+	depends = genieutils-git>=709
+	depends = sfml
+	optdepends = ageofconquerors-trial-data: Game data files
+	provides = glog-squash
+	conflicts = glog-squash
+	source = git+https://github.com/sandsmark/glog-squash.git
+	md5sums = SKIP
+
+pkgname = glog-squash-git
+
