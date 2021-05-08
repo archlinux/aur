@@ -1,0 +1,6 @@
+src/
+pkg/
+LICENSE
+*.jar
+*.tar*
+*.png
