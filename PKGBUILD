@@ -3,7 +3,7 @@
 validpgpkeys=('33ED753E14757D79FA17E57DC4C1F715B2B66B95')
 
 pkgname=verible
-pkgver=0.0.r1213.9e5c085b
+pkgver=0.0r1213.g9e5c085
 pkgrel=1
 pkgdesc="SystemVerilog(Verilog) Parser, Style-Linter, and Formatter from Google"
 arch=('x86_64')
@@ -24,11 +24,7 @@ pkgver() {
     exit 1
   )
 
-  _tagver=$(git describe --long --tags HEAD | sed 's/^v//;s/-.*//')
-  _gitrev=$(($(git rev-list --count HEAD) - 1))
-  _githash=$(git rev-parse --short HEAD)
-
-  echo "${_tagver}.r${_gitrev}.${_githash}"
+  git describe --long --tags HEAD | cut -f1-3 -d- | cut -c2- | sed 's/-/r/;s/-/./'
 
 }
 
