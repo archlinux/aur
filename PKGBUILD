@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-pytest-celery
-pkgver=0.0.0a1
-pkgrel=4
+pkgver=0.0.0
+pkgrel=1
 pkgdesc='A shim pytest plugin to enable celery.contrib.pytest'
 arch=('any')
 license=('BSD')
@@ -10,7 +10,7 @@ url='https://github.com/celery/pytest-celery'
 depends=('python-celery')
 makedepends=('python-dephell')
 source=("https://pypi.io/packages/source/p/pytest-celery/pytest-celery-$pkgver.tar.gz")
-sha512sums=('ea8ef26aaa5dd5c04608cb01bedb4946bb6712d08203e5f9b1b9b2b1a9e49e7a550466d7a9dd896fb5d813960cee35eed139099952589cdf21e03dadd7e2a20f')
+sha512sums=('5fc9c52da674ec2fcf55d6ebf278aec166877c5bd7962c786e5432e77d15132247021e4552001aad19bd7827e5b16256062eade43a8fc59c5b52e264d06b1cae')
 
 prepare() {
   cd pytest-celery-$pkgver
