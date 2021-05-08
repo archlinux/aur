@@ -1,7 +1,7 @@
-From e97b19b49e4eaaf696b7a57cfa02ae7b07080917 Mon Sep 17 00:00:00 2001
+From 927935b0f0783760a6bfa20784354bd3b590d9f0 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 21:13:19 +0100
-Subject: [PATCH 3/7] Fix using static PCRE2 and DBus-1
+Subject: [PATCH 3/8] Fix using static PCRE2 and DBus-1
 
 When making a static build of Qt we're using the static version of these
 libraries and must define the corresponding macros.
@@ -13,7 +13,7 @@ Change-Id: I2387b79462b6d183b71f9433dd937f63fc7ef26e
  2 files changed, 9 insertions(+)
 
 diff --git a/src/corelib/text/qregularexpression.cpp b/src/corelib/text/qregularexpression.cpp
-index 6cc9011822..76041849b4 100644
+index 72079c1996..42007502af 100644
 --- a/src/corelib/text/qregularexpression.cpp
 +++ b/src/corelib/text/qregularexpression.cpp
 @@ -53,6 +53,11 @@
@@ -44,5 +44,5 @@ index accaa4f5ed..4b11c74caa 100644
  #  include <dbus/dbus.h>
  #else
 -- 
-2.30.0
+2.31.1
 

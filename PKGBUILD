@@ -11,7 +11,7 @@
 # All patches are managed at https://github.com/Martchus/qtbase
 
 pkgname=mingw-w64-qt6-base-static
-_qtver=6.0.1
+_qtver=6.1.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -37,15 +37,17 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
         '0004-Fix-transitive-dependencies-of-static-libraries.patch'
         '0005-Fix-libjpeg-workaround-for-conflict-with-rpcndr.h.patch'
         '0006-Support-finding-static-MariaDB-client-library.patch'
-        '0007-Allow-overriding-CMAKE_FIND_LIBRARY_SUFFIXES-to-pref.patch')
-sha256sums=('8d2bc1829c1479e539f66c2f51a7e11c38a595c9e8b8e45a3b45f3cb41c6d6aa'
-            '82bfcddb91097e761c5c3cfe66a2153e28446a11e20638c519589dab59bf891b'
-            '06a54156c5f3145783ee41d5e2dec651f23e207faeb113b9c59ed11b8201bb53'
-            'aba65a351d26cfe2536c1115cce6448e4779998f663b71e5c4dc3fa7c3137f5d'
-            '820447581d2beda6f383ce8c7a18299b38273d162e62d5820c88dc24f2568a06'
-            '37af48d96b4265b442eac016928f0be5236f82ed7c5fa8670a389993556ffdee'
-            '074341ec2aebf7c9100022b9fedb919a426ec58c0456515cffd6131b205a11cd'
-            'fa1ae6268c7b9f773dda4950dce834adf8d5a15ebc672f096e47b554192758c2')
+        '0007-Allow-overriding-CMAKE_FIND_LIBRARY_SUFFIXES-to-pref.patch'
+        '0008-Fix-passing-QJniEnvironment-to-ANativeWindow_fromSur.patch')
+sha256sums=('f7af3c87e96051d09b5abce6c88277c33031bef241ebfe1db4106d33ed0814c4'
+            'fe716b7d966cf40fafbed2fd67b663c205bb09e3fc1ad607163be187cb5f83c6'
+            'cb28dfdf82d332fa86e67106cea41ebf7f57ac49a5a7707be25348350b9c0f6e'
+            '11a7e4939d171c3e7e8ecb8374fe0caebab2e55c8fd2a1122763caba56414358'
+            '8081cf89e48a504a39bb18ea4c5cca92869fb0f1df45e6eda1559b2a0b38ba79'
+            'b97e12f46baebeea6d9a36f23e856783c6988b92965946e881dfb5e9749739ae'
+            '9f2f542a7739024615b690fd5c2265c2ab63e5442eeb712b4df63220945a413e'
+            '6990a3d6d8fa771b88092aa02010170d56fd86771e18096f120af16fce0ab691'
+            '6498da7e772895ed58289a836c1b79a73750ffc5288fa0c6a03e4853879f00e7')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -65,6 +67,7 @@ build() {
     $_arch-cmake-static -G Ninja -B build-$_arch -S $_pkgfqn \
       -DCMAKE_INSTALL_PREFIX:PATH="/usr/$_arch/static" \
       -DFEATURE_static_runtime=ON \
+      -DFEATURE_openssl_linked=ON \
       -DFEATURE_pkg_config=ON \
       -DFEATURE_system_pcre2=ON \
       -DFEATURE_system_freetype=ON \
