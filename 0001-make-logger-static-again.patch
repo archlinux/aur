@@ -1,0 +1,65 @@
+From: Torsten Werner <twerner@debian.org>
+Date: Sun, 25 Sep 2011 18:36:30 +0200
+Subject: make logger static again
+
+Revert some changes in upstream version 1.1.2 that breaks other packages.
+---
+ source/gnu/inet/imap/IMAPConnection.java |    2 +-
+ source/gnu/inet/nntp/NNTPConnection.java |    2 +-
+ source/gnu/inet/pop3/POP3Connection.java |    2 +-
+ source/gnu/inet/smtp/SMTPConnection.java |    2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/source/gnu/inet/imap/IMAPConnection.java b/source/gnu/inet/imap/IMAPConnection.java
+index 039644a..42745db 100644
+--- a/source/gnu/inet/imap/IMAPConnection.java
++++ b/source/gnu/inet/imap/IMAPConnection.java
+@@ -120,7 +120,7 @@ public class IMAPConnection
+   /**
+    * The logger used for IMAP protocol traces.
+    */
+-  public final Logger logger = Logger.getLogger("gnu.inet.imap");
++  public static final Logger logger = Logger.getLogger("gnu.inet.imap");
+ 
+   /**
+    * The socket used for communication with the server.
+diff --git a/source/gnu/inet/nntp/NNTPConnection.java b/source/gnu/inet/nntp/NNTPConnection.java
+index 26898d6..172a5cf 100644
+--- a/source/gnu/inet/nntp/NNTPConnection.java
++++ b/source/gnu/inet/nntp/NNTPConnection.java
+@@ -105,7 +105,7 @@ public class NNTPConnection
+   /**
+    * The logger used for NNTP protocol traces.
+    */
+-  public final Logger logger = Logger.getLogger("gnu.inet.nntp");
++  public static final Logger logger = Logger.getLogger("gnu.inet.nntp");
+ 
+   /**
+    * The hostname of the host we are connected to.
+diff --git a/source/gnu/inet/pop3/POP3Connection.java b/source/gnu/inet/pop3/POP3Connection.java
+index 3bdaa48..859083c 100644
+--- a/source/gnu/inet/pop3/POP3Connection.java
++++ b/source/gnu/inet/pop3/POP3Connection.java
+@@ -136,7 +136,7 @@ public class POP3Connection
+   /**
+    * The logger used for POP3 protocol traces.
+    */
+-  public final Logger logger = Logger.getLogger("gnu.inet.pop3");
++  public static final Logger logger = Logger.getLogger("gnu.inet.pop3");
+ 
+   /**
+    * The socket used to communicate with the server.
+diff --git a/source/gnu/inet/smtp/SMTPConnection.java b/source/gnu/inet/smtp/SMTPConnection.java
+index c625f28..f97262d 100644
+--- a/source/gnu/inet/smtp/SMTPConnection.java
++++ b/source/gnu/inet/smtp/SMTPConnection.java
+@@ -124,7 +124,7 @@ public class SMTPConnection
+   /**
+    * The logger used for SMTP protocol traces.
+    */
+-  public final Logger logger = Logger.getLogger("gnu.inet.smtp");
++  public static final Logger logger = Logger.getLogger("gnu.inet.smtp");
+ 
+   /**
+    * The underlying socket used for communicating with the server.
+-- 
