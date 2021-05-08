@@ -1,0 +1,21 @@
+pkgbase = ly-plank-patched
+	pkgdesc = TUI display manager, patched for Plank and other apps.
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/SartoxOnlyGNU/ly
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = custom:WTFPL
+	makedepends = git
+	depends = pam
+	depends = xorg-xauth
+	conflicts = ly
+	conflicts = python-ly-git
+	conflicts = ly-git
+	backup = etc/ly/config.ini
+	source = git+https://github.com/SartoxOnlyGNU/ly.git
+	md5sums = SKIP
+
+pkgname = ly-plank-patched
+
