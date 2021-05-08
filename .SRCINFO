@@ -2,7 +2,7 @@ pkgbase = perl-device-usb
 	pkgdesc = Perl wrapper around the libusb 0.1 library
 	pkgver = 0.38
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Device-USB
+	url = https://search.cpan.org/dist/Device-USB
 	arch = i686
 	arch = x86_64
 	arch = armv7h
@@ -13,8 +13,8 @@ pkgbase = perl-device-usb
 	depends = perl>=5.10.0
 	depends = libusb-compat
 	options = !emptydirs
-	source = http://cpan.perl.org/modules/by-module/Device/Device-USB-0.38.tar.gz
-    sha256sums = f0c36379db4913406dc9bd546a6cfd4da20d58f7c2cc085893a2fe67a43465dc
+	source = https://cpan.perl.org/modules/by-module/Device/Device-USB-0.38.tar.gz
+	sha256sums = f0c36379db4913406dc9bd546a6cfd4da20d58f7c2cc085893a2fe67a43465dc
 
 pkgname = perl-device-usb
 
