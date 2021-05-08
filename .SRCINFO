@@ -1,0 +1,20 @@
+pkgbase = qt-dab
+	pkgdesc = Software DAB decoder for use with various SDR devices
+	pkgver = 3.71
+	pkgrel = 1
+	url = https://www.sdr-j.tk/
+	arch = x86_64
+	license = GPL2
+	makedepends = libiio
+	depends = faad2
+	depends = fftw
+	depends = hicolor-icon-theme
+	depends = libsamplerate
+	depends = libsndfile
+	depends = portaudio
+	depends = qwt
+	source = https://github.com/JvanKatwijk/qt-dab/archive/refs/tags/Qt-DAB3.71.tar.gz
+	sha256sums = 8a5ec68a7b920ee3b397fa8d9bd2e773f5e95ca5bb5a939dc907f4509d3df84f
+
+pkgname = qt-dab
+
