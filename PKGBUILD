@@ -55,32 +55,30 @@ _use_current=
 pkgbase=linux-xanmod-cacule-rt-stable
 # pkgname=('linux-xanmod-cacule-rt-stable' linux-xanmod-cacule-rt-stable)
 _major=5.10
-_minor=27
+_minor=30
 #_minorc=$((_minor+1))
 #_rcver=rc7
-_rt=36
+_rt=38
 pkgver=${_major}.${_minor}
 _stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux XanMod CacULE RT stable Version'
-versiontag=5.10.27-rt36-xanmod1
+versiontag=5.10.30-rt38-xanmod1
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
 license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
-_patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/main/$_major"
+_patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.11"
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_major.tar.xz"
         "https://github.com/xanmod/linux/releases/download/$versiontag/patch-$versiontag.xz"
-        "${_patchsource}/cacule/cacule5.10-rt.patch"
-        "${_patchsource}/cacule/0002-cacule-Change-default-preemption-latency-to-2ms-for-.patch")
+        "${_patchsource}/cacule-patches/cacule-5.11-rt.patch")
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
-            '80b75594f05cb6f318af15b02261255f9cf33da1cb3352b3fa444724cc774953'
-            'bdf093d5ed34b9c6907253fbc0b564363a18fe64fa78cbd106f1b49d6906404a'
-            'cf00507d6881b737a9814d152e27b1db02f45a4d8a8ba3f4c9f542f0964ac697')
+            '84d1ceb8e1007d222cb96ef56c100613298bb0676932850018fdbb70e484ffb9'
+            '116dcdce073dee17e8a57fa0679174c25006b46d80ca9927af5713f6db5b0e34')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
