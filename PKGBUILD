@@ -1,7 +1,7 @@
 # Maintainer: Ewen Le Bihan <hey@ewen.works>
 
 pkgname=ideaseed-git
-pkgver=r7.4f9c279
+pkgver=r330.f740be3a
 pkgrel=1
 pkgdesc="Note down your ideas and get them to the right place, without switching away from your terminal (bleeding edge)"
 arch=('any')
