@@ -1,0 +1,15 @@
+pkgbase = mksh
+	pkgdesc = MirBSD Korn Shell
+	pkgver = 59.c
+	pkgrel = 1
+	url = https://www.mirbsd.org/mksh.htm
+	install = mksh.install
+	arch = x86_64
+	license = custom
+	checkdepends = ed
+	depends = glibc
+	source = https://www.mirbsd.org/MirOS/dist/mir/mksh/mksh-R59c.tgz
+	sha256sums = 77ae1665a337f1c48c61d6b961db3e52119b38e58884d1c89684af31f87bc506
+
+pkgname = mksh
+
