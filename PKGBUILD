@@ -19,7 +19,15 @@ prepare() {
 
 package() {
 	cd "$srcdir/SecLists-$pkgver"
-	find . \( ! -iname "*.md" -a ! -iname ".git*" -a ! -name "LICENSE"  \) -type f -print0 | \
-		xargs -I{} -0 install -Dm644 {} "$pkgdir/usr/share/$pkgname/{}"
+
+	# Install to /usr/share/seclists
+	find . \( ! -iname "*.md" -a ! -iname ".git*" -a ! -name "LICENSE"  \) -type f \
+		-exec install -Dm644 {} "$pkgdir/usr/share/$pkgname/{}" \;
+
+	# Install all *.md files to /usr/share/doc/seclists
+	find . -iname "*.md" -type f \
+		-exec install -Dm644 {} "$pkgdir/usr/share/doc/$pkgname/{}" \;
+
+	# Install LICENSE to /usr/share/licenses/seclists
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
