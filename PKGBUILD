@@ -4,7 +4,7 @@
 
 pkgname=vosviewer
 pkgver=1.6.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Software tool for constructing and visualizing bibliometric networks"
 arch=('any')
 url="https://www.vosviewer.com"

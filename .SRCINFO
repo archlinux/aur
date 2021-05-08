@@ -1,7 +1,7 @@
 pkgbase = vosviewer
 	pkgdesc = Software tool for constructing and visualizing bibliometric networks
 	pkgver = 1.6.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.vosviewer.com
 	arch = any
 	license = GPL
