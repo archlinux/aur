@@ -1,35 +1,38 @@
 # Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
+# Contributor: Ricardo <wiiaboo@gmail.com>
 # Contributor: jkl <jkl@johnluebs.com>
 # Contributor: hdhoang <arch@hdhoang.space>
 
 pkgname=nginx-mainline-mod-fancyindex
 pkgver=0.5.1
-pkgrel=6
+pkgrel=7
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.19.10
 pkgdesc="Fancy indexes module for the nginx web server"
 arch=('x86_64')
-url="https://github.com/aperezdc/ngx-fancyindex"
+url="https://www.nginx.com/resources/wiki/modules/fancy_index/"
 license=('BSD')
-depends=("nginx-mainline>=${_nginxver}")
-source=(https://nginx.org/download/nginx-$_nginxver.tar.gz{,.asc}
-	"${pkgname}-${pkgver}.tar.gz::https://github.com/aperezdc/ngx-$_modname/archive/v$pkgver.tar.gz")
-validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
-sha256sums=('e8d0290ff561986ad7cd6c33307e12e11b137186c4403a6a5ccdb4914c082d88'
-            'SKIP'
-            '238bd5521d6c9b55780e6871339a7ea79508b9a6758ad2fa4451f2dfe26d94c9')
+depends=('nginx-mainline')
+makedepends=('nginx-mainline-src')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aperezdc/ngx-$_modname/archive/v$pkgver.tar.gz")
+sha256sums=('238bd5521d6c9b55780e6871339a7ea79508b9a6758ad2fa4451f2dfe26d94c9')
+
+prepare() {
+  install -d nginx
+  ln -sf /usr/src/nginx/auto nginx/auto
+  ln -sf /usr/src/nginx/src nginx/src
+}
 
 build() {
-  cd "nginx-$_nginxver"
+  cd "${srcdir}/nginx"
   _opts=$(nginx -V 2>&1 | grep 'configure arguments' | sed -r 's/^[^:]+: //')
   IFS=$'\n' _opts=( $(xargs -n1 <<< "$_opts") )
-  ./configure "${_opts[@]}" \
+  /usr/src/nginx/configure "${_opts[@]}" \
 	--add-dynamic-module=../ngx-"$_modname-$pkgver"
   make modules
 }
 
 package() {
-  cd "nginx-$_nginxver/objs"
+  cd "${srcdir}/nginx/objs"
   for _mod in *.so; do
 	install -D $_mod "$pkgdir/usr/lib/nginx/modules/$_mod"
   done
