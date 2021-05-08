@@ -1,0 +1,63 @@
+# --- Arch Linux defaults for jEdit ---
+#
+# Just remove this file (~/.jedit/properties) to use the original jEdit defaults.
+#
+# startup
+firstTime=false
+tip.show=false
+# buffers
+buffer.tabSize=4
+buffer.indentSize=4
+buffer.encoding=UTF-8
+buffer.maxLineLen=99
+# look and feel, fonts and colors
+icon-theme=tango
+lookAndFeel=com.sun.java.swing.plaf.gtk.GTKLookAndFeel
+view.fontsize=14
+view.font=Noto Mono
+view.selectionFg=false
+view.antiAlias=standard
+view.caretColor=\#333333
+view.lineHighlightColor=\#deebfb
+view.thickCaret=false
+view.selectionFgColor=\#000000
+view.extendedState=0
+view.wrapGuideColor=\#dedede
+view.structureHighlightColor=\#3d9bc4
+view.selectionColor=\#cccccc
+view.status.show-caret-virtual=true
+view.status.foreground=\#000000
+view.status.show-caret-linenumber=true
+view.status.show-caret-bufferlength=true
+view.status.background=\#ffffff
+view.status.show-caret-dot=true
+view.status.memory.background=\#66699a
+view.status.show-caret-offset=true
+view.style.invalid=color\:\#ff1e00 bgColor\:\#ffffcc
+view.style.digit=color\:\#330066
+view.style.literal4=color\:\#0182bc
+view.style.literal3=color\:\#0700cc
+view.style.literal2=color\:\#760000
+view.style.literal1=color\:\#90001c
+view.style.comment4=color\:\#a2a2a2
+view.style.label=color\:\#009500
+view.style.comment3=color\:\#868686
+view.style.comment2=color\:\#383838
+view.style.comment1=color\:\#434343
+view.style.keyword4=color\:\#00a228
+view.style.keyword3=color\:\#0b2700
+view.style.keyword2=color\:\#000066
+view.style.keyword1=color\:\#0033cc
+view.style.function=color\:\#006600
+view.style.operator=color\:\#000000
+view.gutter.fontsize=14
+view.gutter.font=Courier 10 Pitch
+view.gutter.highlightColor=\#660000
+view.gutter.selectionAreaBgColor=\#f0f0f0
+view.gutter.highlightInterval=10
+view.gutter.focusBorderColor=\#ececec
+view.gutter.highlightCurrentLine=false
+view.gutter.bgColor=\#f0f0f0
+view.gutter.currentLineColor=\#006699
+view.gutter.fgColor=\#3c3c3c
+view.gutter.selectionAreaWidth=12
