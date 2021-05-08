@@ -7,6 +7,7 @@ pkgbase = dmenu-twitch-git
 	license = GPL3
 	makedepends = git
 	depends = python3
+	depends = python-pyxdg
 	depends = dmenu
 	depends = streamlink
 	optdepends = mpv
