@@ -1,9 +1,9 @@
-# Maintainer: LinusDierheimer <Linus@Dierheimer.de>
+# Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=r210.bd2e1da
+pkgver=r225.eea74b0
 pkgrel=1
-pkgdesc="Like neofetch, but much faster because written in c. Only Linux."
+pkgdesc="Like neofetch, but much faster because written in c"
 arch=("any")
 url="https://github.com/LinusDierheimer/fastfetch"
 license=("MIT")
@@ -20,8 +20,8 @@ optdepends=(
   "libx11: Resolution output"
   "libxrandr: Refresh rate in Resolution output"
   "wayland: Better resolution performance + support for monitors with different refresh rates in wayland sessions"
-  "glib2: Output for values that are only stored in GSettings / DConf"
-  "dconf: Fallback for glib2, usually not needed if glib2 is installed"
+  "glib2: Output for values that are only stored in GSettings"
+  "dconf: Output for values that are only stored in DConf"
 )
 provides=("flashfetch=${pkgver}")
 source=("git+https://github.com/LinusDierheimer/fastfetch.git")
