@@ -1,11 +1,11 @@
-# Maintainer: Tim Meusel <tim@bastelfreak.de>
+# Maintainer: Christian Rebischke <chris.rebischke@archlinux.org>
+# Contributor: Tim Meusel <tim@bastelfreak.de>
 
 _gemname='webmock'
 pkgname="ruby-${_gemname}"
-pkgver=3.8.0
-pkgrel=2
-pkgdesc='Allows stubbing HTTP requests and setting expectations on HTTP requests.
-'
+pkgver=3.11.2
+pkgrel=1
+pkgdesc='Allows stubbing HTTP requests and setting expectations on HTTP requests.'
 arch=('any')
 url='https://github.com/bblimke/webmock'
 license=('MIT')
@@ -15,7 +15,7 @@ depends=('ruby' 'ruby-crack' 'ruby-hashdiff' 'ruby-addressable')
 options=(!emptydirs)
 source=("${url}/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz"
         'disable-unneeded-dependencies.patch')
-sha512sums=('1dc76e9a43c9746d771a53106d02e2a2506be49f9e17ab5628ac6f6afdcc3d4112878f01287fcd97a3fdcb55f4d30e345666a68472e8d451414ca8f41046928f'
+sha512sums=('1ae384128df62cbde7725b110b9951ca58d5c92a7ba82d6a583af82243b8509ecd17a72c6dca27dc0dfb8f4c843a9f8207cf0e1c6bda459501614cc79fc4ed58'
             'd946429e8f4f90ef263e8b28b4b536b2d81a46f48076a64f5a68ea06fa9abb19470c9bd14035d086d8e054b0df9085f5793b1aa38ffda576b5161852ddae64aa')
 
 prepare() {
