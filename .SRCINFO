@@ -1,0 +1,14 @@
+pkgbase = paps
+	pkgdesc = Converts Unicode text to postscript and pdf using pango
+	pkgver = 0.7.1
+	pkgrel = 2
+	url = https://github.com/dov/paps
+	arch = x86_64
+	license = LGPL
+	makedepends = intltool
+	depends = pango
+	source = https://github.com/dov/paps/archive/v0.7.1.tar.gz
+	sha256sums = b8cbd16f8dd5832ecfa9907d31411b35a7f12d81a5ec472a1555d00a8a205e0e
+
+pkgname = paps
+
