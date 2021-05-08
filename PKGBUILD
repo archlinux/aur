@@ -24,7 +24,7 @@ pkgver() {
     exit 1
   )
 
-  git describe --long --tags HEAD | cut -f1-3 -d- | cut -c2- | sed 's/-/r/;s/-/./'
+  git describe --long --tags | cut -f1-3 -d- | cut -c2- | sed 's/-/r/;s/-/./'
 
 }
 
