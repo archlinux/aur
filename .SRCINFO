@@ -1,7 +1,7 @@
 pkgbase = intel-opencl-runtime
 	pkgdesc = OpenCL runtime for Intel Core and Xeon processors
 	pkgver = 18.1.0.015
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://software.intel.com/content/www/us/en/develop/articles/opencl-drivers.html
 	arch = x86_64

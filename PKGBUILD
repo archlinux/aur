@@ -7,7 +7,7 @@ pkgname=intel-opencl-runtime
 epoch=1
 pkgver=18.1.0.015
 _package=l_opencl_p_${pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenCL runtime for Intel Core and Xeon processors"
 arch=('x86_64')
 url="https://software.intel.com/content/www/us/en/develop/articles/opencl-drivers.html"
@@ -30,7 +30,7 @@ package() {
 
     # Register ICD
     mkdir -p "${pkgdir}/etc/OpenCL/vendors"
-    echo "/opt/intel/opencl-runtime/linux/compiler/lib/intel64_lin/libintelocl.so" > "${pkgdir}/etc/OpenCL/vendors/intel.icd"
+    echo "/opt/intel/opencl-runtime/linux/compiler/lib/intel64_lin/libintelocl.so" > "${pkgdir}/etc/OpenCL/vendors/intel-cpu.icd"
 
     # Install files
     mkdir -p "${pkgdir}/opt/intel/opencl-runtime"
