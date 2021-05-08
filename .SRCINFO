@@ -1,0 +1,28 @@
+pkgbase = fvwm
+	pkgdesc = A multiple large virtual desktop window manager originally derived from twm
+	pkgver = 2.6.9
+	pkgrel = 3
+	url = http://www.fvwm.org
+	arch = x86_64
+	license = GPL
+	license = custom
+	makedepends = libxslt
+	depends = fribidi
+	depends = perl
+	depends = libstroke
+	depends = libxpm
+	depends = librsvg
+	depends = libxinerama
+	depends = libxcursor
+	depends = python-xdg
+	optdepends = perl-tk: for ClickToFocus support
+	optdepends = perl-x11-protocol: for ClickToFocus support
+	options = !emptydirs
+	options = !makeflags
+	source = https://github.com/fvwmorg/fvwm/releases/download/2.6.9/fvwm-2.6.9.tar.gz
+	source = fvwm.desktop
+	sha256sums = 1bc64cf3ccd0073008758168327a8265b8059def9b239b451d6b9fab2cc391ae
+	sha256sums = 51d345f995f57c6d881d48bf535f71d75041a9bf1f0fa41dd99e1b22fd66aaf3
+
+pkgname = fvwm
+
