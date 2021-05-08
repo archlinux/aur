@@ -1,5 +1,5 @@
 pkgname=markdown-to-standalone-html
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Create a standalone HTML file from Markdown with basic CSS, table of contents and source code highlighting"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
@@ -12,7 +12,7 @@ provides=("markdown-to-standalone-html")
 conflicts=("markdown-to-standalone-html")
 
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha256sums=('e2a3672cbacfef374f84717147b224d18e1fde177ae08085840463aa7f260fef')
+sha256sums=('b5a40dc5de281f485b3c3b80214023df406e0e98b8ac29e825748c18b9f89fc1')
 
 build() {
   cd $pkgname-$pkgver
