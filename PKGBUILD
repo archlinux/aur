@@ -9,24 +9,24 @@ pkgdesc='Russian GOST R 34.10 and GOST R 34.11-2012 Crypto Algorithms for OpenSS
 arch=('x86_64')
 license=('Apache 2.0')
 url='https://github.com/gost-engine/engine'
-
 depends=('openssl')
 makedepends=('cmake' 'git')
 conflicts=('openssl-gost')
 provides=('openssl-gost')
 
+_gitbranch="openssl_1_1_1"
 source=(
-  'gost-engine::git+https://github.com/gost-engine/engine.git'
+  "gost-engine::git+https://github.com/gost-engine/engine.git#branch=${_gitbranch}"
   'gost.cnf'
   "${pkgname:?}.install"
 )
 
 sha256sums=('SKIP'
-            '04c3483d758e393d9831d2be4cee1eafd806eea15055438be7c7b4caeeccbfe6'
-            'b568af932ea9bbc42b24b487280f480467be399c5e40908f6122f0ed3d6edcd6')
+  '04c3483d758e393d9831d2be4cee1eafd806eea15055438be7c7b4caeeccbfe6'
+  'b568af932ea9bbc42b24b487280f480467be399c5e40908f6122f0ed3d6edcd6')
 sha512sums=('SKIP'
-            '431f810f822a347135d10c99f98ed2516e6afe310def77fc9aa0b41dc0578b05e2684f77e1062ea934961720f6d11f73f27e38548bccfe61709e81f8d53c484e'
-            '071f716440e8e54dc46b9205853125591dd857f99d0b6f2614aac0d97e1a44b3048ae58798cc80a70200ce567be2cdbb5eb00b5c2c2f3fa471e39e8ff07e8f65')
+  '431f810f822a347135d10c99f98ed2516e6afe310def77fc9aa0b41dc0578b05e2684f77e1062ea934961720f6d11f73f27e38548bccfe61709e81f8d53c484e'
+  '071f716440e8e54dc46b9205853125591dd857f99d0b6f2614aac0d97e1a44b3048ae58798cc80a70200ce567be2cdbb5eb00b5c2c2f3fa471e39e8ff07e8f65')
 
 install=${pkgname:?}.install
 
@@ -36,7 +36,7 @@ pkgver() {
     echo -e "\E[1m\E[31mCan't cd to ${srcdir}/gost-engine build directory! PkgVer Failed! \E[0m"
     exit 1
   )
-  git checkout openssl_1_1_1 > /dev/null 2>&1
+
   echo "1.1.1.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 
 }
@@ -57,8 +57,6 @@ prepare() {
   if [ -d build ]; then
     rm -rf build
   fi
-
-  git checkout openssl_1_1_1 > /dev/null 2>&1
 
   # Fix ==> WARNING: Package contains reference to $srcdir
   # gost.so.1.1 contain path to source files

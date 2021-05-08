@@ -11,7 +11,7 @@ pkgbase = gost-engine
 	depends = openssl
 	provides = openssl-gost
 	conflicts = openssl-gost
-	source = gost-engine::git+https://github.com/gost-engine/engine.git
+	source = gost-engine::git+https://github.com/gost-engine/engine.git#branch=openssl_1_1_1
 	source = gost.cnf
 	source = gost-engine.install
 	validpgpkeys = 33ED753E14757D79FA17E57DC4C1F715B2B66B95
