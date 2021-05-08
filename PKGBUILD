@@ -2,7 +2,7 @@
 # thanks to celogeek, sseneca, dr460nf1r3, dr460nf1r3 and AverytheFurry for pointing out multiple things
 
 pkgname=fluffychat
-pkgver=0.30.0
+pkgver=0.30.1
 _flutterversion=2.0.6-stable
 pkgrel=1
 pkgdesc="Chat with your friends"
@@ -20,7 +20,7 @@ source=(
     "flutter-${_flutterversion}.tar.xz::https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_${_flutterversion}.tar.xz"
     "fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v${pkgver}/fluffychat-v${pkgver}.tar.gz")
 sha256sums=('2523bc997fb16cefcf50f88a30d9dd5ce34e24a15e5eeb23a5caddfe5012ba80'
-            '27febe5a9eb98000bf82201c8fab1ce5f563436b43bd5d90ef5d3ddd4e1740ec')
+            'bf223d13360b4661c07a77905df488e9eadbd8387550380b20a8a933b46ab5ef')
 
 prepare() {
   export PATH="${srcdir}/flutter/bin:$PATH"
