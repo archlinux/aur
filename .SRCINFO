@@ -1,0 +1,13 @@
+pkgbase = dnstracer
+	pkgdesc = Determines where a given DNS server gets its information from, and follows the chain of DNS servers
+	pkgver = 1.10
+	pkgrel = 1
+	url = https://www.mavetju.org/unix/dnstracer.php
+	arch = x86_64
+	license = custom:BSD
+	depends = glibc
+	source = https://www.mavetju.org/download/dnstracer-1.10.tar.bz2
+	sha256sums = 64cda0ed15ef598a38ec72a96a356e3d10b7f822fc75928115eae96a65ae2b21
+
+pkgname = dnstracer
+
