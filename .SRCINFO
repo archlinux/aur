@@ -1,0 +1,21 @@
+pkgbase = joe
+	pkgdesc = Joe's own editor
+	pkgver = 4.6
+	pkgrel = 2
+	url = https://joe-editor.sourceforge.io/
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	optdepends = gpm: console mouse support
+	backup = etc/joe/ftyperc
+	backup = etc/joe/jicerc.ru
+	backup = etc/joe/jmacsrc
+	backup = etc/joe/joerc
+	backup = etc/joe/jpicorc
+	backup = etc/joe/jstarrc
+	backup = etc/joe/rjoerc
+	source = https://downloads.sourceforge.net/joe-editor/joe-4.6.tar.gz
+	sha256sums = 495a0a61f26404070fe8a719d80406dc7f337623788e445b92a9f6de512ab9de
+
+pkgname = joe
+
