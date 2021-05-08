@@ -2,7 +2,7 @@ pkgbase = sideload-git
 	pkgdesc = Install apps downloaded from the Internet
 	pkgver = 1
 	pkgrel = 1
-	url = https://github.com/elementary/sideload
+	url = https://github.com/Tomoghno/sideload
 	arch = x86_64
 	license = GPL3
 	makedepends = git
@@ -15,7 +15,7 @@ pkgbase = sideload-git
 	depends = flatpak
 	provides = sideload
 	conflicts = sideload
-	source = git+https://github.com/elementary/sideload.git
+	source = git+https://github.com/Tomoghno/sideload.git
 	md5sums = SKIP
 
 pkgname = sideload-git

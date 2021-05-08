@@ -1,6 +1,6 @@
 # Maintainer: Tomoghno <tomoghno@outlook.com>
 _gitname=sideload
-_author=elementary
+_author=Tomoghno
 pkgname=("${_gitname}-git")
 pkgver=1
 pkgrel=1
@@ -12,7 +12,7 @@ depends=('flatpak' 'granite' 'flatpak')
 makedepends=('git' 'meson' 'gtk3' 'vala' 'git')
 provides=("${_gitname}")
 conflicts=("${_gitname}")
-source=('git+https://github.com/elementary/sideload.git')
+source=('git+https://github.com/Tomoghno/sideload.git')
 md5sums=('SKIP')
 
 pkgver() {
