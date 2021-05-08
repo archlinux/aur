@@ -1,0 +1,19 @@
+pkgbase = liboping
+	pkgdesc = C library to generate ICMP echo requests, better known as "ping packets"
+	pkgver = 1.10.0
+	pkgrel = 8
+	url = https://noping.cc/
+	install = install
+	arch = x86_64
+	license = GPL
+	makedepends = ncurses
+	depends = libcap
+	optdepends = perl: perl bindings
+	optdepends = ncurses: noping CLI tool
+	source = https://noping.cc/files/liboping-1.10.0.tar.bz2
+	source = ncursesw.patch
+	sha256sums = eb38aa93f93e8ab282d97e2582fbaea88b3f889a08cbc9dbf20059c3779d5cd8
+	sha256sums = 64db954250e7cd4f77ed28d0d4f3deb1525ebe4145c6b20caafc2459c8b1c780
+
+pkgname = liboping
+
