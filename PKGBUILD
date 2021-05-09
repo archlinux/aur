@@ -1,8 +1,8 @@
 # Maintainer: Jake McGinty <jake@tonari.no>
 
 pkgname=innernet-git
-pkgver=v1.0.0.r1.a9e59ba
-pkgrel=1
+pkgver=v1.3.0.beta.3.r.9d4eb80
+pkgrel=2
 pkgdesc="A tool to manage WireGuard network topologies."
 #epoch=0
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  local tag=$(git tag --sort=-v:refname | grep '^v[0-9]' | head -1)
+  local tag=$(git tag --sort=-v:refname | grep '^v[0-9]' | head -1 | tr '-' '.')
   local commits_since=$(git rev-list $tag..HEAD --count)
   echo "$tag.r$commits_since.$(git log --pretty=format:'%h' -n 1)"
 }
