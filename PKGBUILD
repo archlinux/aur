@@ -2,8 +2,8 @@
 
 _pkgname=dipy
 pkgname=python-dipy
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="Diffusion MR imaging in Python"
 arch=('x86_64')
 url="https://dipy.org"
@@ -19,7 +19,7 @@ depends=(
 makedepends=('python-setuptools' 'cython')
 checkdepends=('python-pytest')
 source=("https://github.com/nipy/dipy/archive/${pkgver}.tar.gz")
-sha256sums=('30d29820b032a47f304cfd666f325d887074ac392bb0ec4311cab29907ba1e31')
+sha256sums=('56150f27eaa7ba406126d59ef4bf0d48ef6549a068c4c86c53978f326f9d5565')
 
 package() {
     cd "$srcdir/$_pkgname-$pkgver"
