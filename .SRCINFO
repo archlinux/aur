@@ -1,0 +1,17 @@
+pkgbase = python2-pyrenamer
+	pkgdesc = Application for mass renaming files.
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://gitlab.com/patlefort/pyrenamer
+	arch = any
+	license = GPL2
+	depends = python2
+	depends = pygtk
+	depends = python2-gconf
+	provides = pyrenamer
+	conflicts = pyrenamer
+	source = https://gitlab.com/patlefort/pyrenamer/-/archive/v0.6.1/pyrenamer-v0.6.1.tar.gz
+	sha256sums = caaeff1df0e3497ef5bd7c96fd031e5039c8b3afc527bbe53f407440c69dc6db
+
+pkgname = python2-pyrenamer
+
