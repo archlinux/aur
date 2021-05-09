@@ -1,7 +1,7 @@
 pkgbase = web-eid-webextension
 	pkgdesc = Web eID browser extension
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://web-eid.eu/
 	arch = any
 	license = MIT
@@ -15,6 +15,7 @@ pkgbase = web-eid-webextension
 
 pkgname = firefox-extension-web-eid
 	pkgdesc = Web eID Firefox extension
+	depends = web-eid
 	depends = firefox
 
 pkgname = chromium-extension-web-eid
