@@ -1,6 +1,6 @@
 pkgbase = youtubedl-gui-git
 	pkgdesc = Download Youtube videos to local audio or video files
-	pkgver = 2.0.r0.g0bbc2c1
+	pkgver = 2.5.r3.g986b6a1
 	pkgrel = 1
 	url = https://github.com/JaGoLi/ytdl-gui
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = youtubedl-gui-git
 	license = GPL3
 	makedepends = git
 	makedepends = qt5-quickcontrols
+	makedepends = cmake
 	depends = youtube-dl
 	depends = qt5-base
 	depends = ffmpeg

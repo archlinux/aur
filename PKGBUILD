@@ -2,14 +2,14 @@
 # Contributor: Jason Goulet-Lipman <jason.gouletlipman@gmail.com>
 
 pkgname=youtubedl-gui-git
-pkgver=2.0.r0.g0bbc2c1
+pkgver=2.5.r3.g986b6a1
 pkgrel=1
 pkgdesc="Download Youtube videos to local audio or video files"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
 url="https://github.com/JaGoLi/ytdl-gui"
 license=(GPL3)
 depends=(youtube-dl qt5-base ffmpeg)
-makedepends=(git qt5-quickcontrols)
+makedepends=(git qt5-quickcontrols cmake)
 provides=(youtubedl-gui)
 conflicts=(youtubedl-gui)
 source=("${pkgname%-git}::git+https://github.com/JaGoLi/ytdl-gui#branch=beta")
@@ -22,10 +22,11 @@ pkgver(){
 
 build() {
   cd "${pkgname%-git}"
-  make build
+  cmake -B build
+  make -C build
 }
 
 package() {
   cd "${pkgname%-git}"
-  make DESTDIR="${pkgdir}/" install
+  make -C build DESTDIR="${pkgdir}/" install
 }
