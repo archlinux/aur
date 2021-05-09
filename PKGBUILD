@@ -1,6 +1,6 @@
 # Maintainer: Craig Barnes <craigbarnes@protonmail.com>
 pkgname=dte-git
-pkgver=1.9.1+935+gc4bd66fa
+pkgver=1.10+19+g83a13ea0
 pkgrel=1
 pkgdesc='A small, configurable console text editor'
 url='https://craigbarnes.gitlab.io/dte/'
@@ -8,8 +8,9 @@ arch=(x86_64 i686 armv7h aarch64)
 license=(GPL2)
 depends=(glibc)
 optdepends=(
-    'git: for builtin git-grep and git-open aliases'
-    'fzf: for builtin git-open alias'
+    'ctags: for generating "tags" files for the tag command'
+    'git: for the builtin git-grep and git-open aliases'
+    'fzf: for the builtin git-open alias'
 )
 makedepends=(git bash-completion)
 conflicts=(dte)
