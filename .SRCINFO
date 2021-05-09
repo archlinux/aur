@@ -1,7 +1,7 @@
 pkgbase = rocalution
 	pkgdesc = Next generation library for iterative sparse solvers for ROCm platform
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rocalution.readthedocs.io/en/master
 	arch = x86_64
 	license = MIT

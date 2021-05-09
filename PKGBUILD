@@ -2,7 +2,7 @@
 # Contributor: Markus Näther <naetherm@informatik.uni-freiburg.de>
 pkgname=rocalution
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Next generation library for iterative sparse solvers for ROCm platform'
 arch=('x86_64')
 url='https://rocalution.readthedocs.io/en/master'
@@ -15,7 +15,7 @@ sha256sums=('3f61be18a02dff0c152a0ad7eb4779c43dd744b0ba172aa6a4267fc596d582e4')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" ".tar.gz")"
 
 build() {
-  CXX=/opt/rocm/hip/bin/hipcc \
+  CXX=/opt/rocm/bin/hipcc \
   cmake -B build -Wno-dev \
         -S "$_dirname" \
         -DCMAKE_INSTALL_PREFIX=/opt/rocm \
