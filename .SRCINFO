@@ -1,0 +1,24 @@
+pkgbase = basiliskii-kanjitalk755-git
+	pkgdesc = Open Source 68k Macintosh Emulator
+	pkgver = r3205.8a28ad6e
+	pkgrel = 1
+	url = https://github.com/kanjitalk755/macemu
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	depends = gtk2
+	depends = sdl
+	depends = vde2
+	provides = basiliskii
+	conflicts = basiliskii
+	source = kanjitalk755-macemu::git+https://github.com/kanjitalk755/macemu
+	sha256sums = SKIP
+
+pkgname = basiliskii-kanjitalk755-git
+
