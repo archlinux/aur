@@ -38,19 +38,20 @@ depends=(
 	'libxt'
 	'nss'
 )
-source=("https://download.zotero.org/client/beta/${_pkgver}/Zotero-${_pkgver}_linux-x86_64.tar.bz2")
-sha256sums=('6a2ae49782f709ad699536f623d4ebf910033a849209d9b2e01ae4ee07a926bb')
+source=("https://download.zotero.org/client/beta/${_pkgver}/Zotero-${_pkgver}_linux-x86_64.tar.bz2" "zotero.desktop")
+sha256sums=('6a2ae49782f709ad699536f623d4ebf910033a849209d9b2e01ae4ee07a926bb'
+            'e510a97d2493c279cc86de8ccd4fe529a81c3c255e05d43ae528935b6400d2c2')
 
 package() {
   install -dDm755 "$pkgdir"/usr/{bin,share/zotero,share/applications}
   mv "$srcdir"/Zotero_linux-x86_64/* "$pkgdir"/usr/share/zotero
   ln -s "$pkgdir"/usr/share/zotero/zotero "$pkgdir"/usr/bin/zotero
-  ln -s "$pkgdir"/usr/share/zotero/zotero.desktop "$pkgdir"/usr/share/applications/zotero.desktop
+  install -Dm755 "$srcdir"/zotero.desktop "$pkgdir"/usr/share/applications/zotero.desktop
   # Copy zotero icons to a standard location
-  install -Dm644 "$pkgdir"/usr/share/zotero/chrome/icons/default/default16.png "$pkgdir"/usr/share/icons/hicolor/16x16/apps/zotero.png
-  install -Dm644 "$pkgdir"/usr/share/zotero/chrome/icons/default/default32.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/zotero.png
-  install -Dm644 "$pkgdir"/usr/share/zotero/chrome/icons/default/default48.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/zotero.png
-  install -Dm644 "$pkgdir"/usr/share/zotero/chrome/icons/default/default256.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/zotero.png
+  install -Dm755 "$pkgdir"/usr/share/zotero/chrome/icons/default/default16.png "$pkgdir"/usr/share/icons/hicolor/16x16/apps/zotero.png
+  install -Dm755 "$pkgdir"/usr/share/zotero/chrome/icons/default/default32.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/zotero.png
+  install -Dm755 "$pkgdir"/usr/share/zotero/chrome/icons/default/default48.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/zotero.png
+  install -Dm755 "$pkgdir"/usr/share/zotero/chrome/icons/default/default256.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/zotero.png
 
   # No need to keep a shell around when launching Zotero
   sed -i -r 's/^("\$CALLDIR\/zotero-bin" -app "\$CALLDIR\/application.ini" "\$@")/exec \1/' "$pkgdir"/usr/share/zotero/zotero

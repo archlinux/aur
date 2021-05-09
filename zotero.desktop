@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Zotero
+Exec=/usr/bin/zotero --url %u 
+Icon=zotero.ico
+Type=Application
+Terminal=false
+Categories=Office;
+MimeType=text/plain
