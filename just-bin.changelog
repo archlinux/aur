@@ -1,14 +1,41 @@
 Changelog
 =========
 
-[v0.9.0] - 2020-3-28
+[v0.9.2] - 2021-5-02
+--------------------
+
+### Fixed
+- Pass evaluated arguments as positional arguments (#810)
+
+
+[v0.9.1] - 2021-4-24
+--------------------
+
+### Added
+- Change `--eval` to print variable value only (#806)
+- Add `positional-arguments` setting (#804)
+- Allow filtering variables to evaluate (#795)
+
+### Changed
+- Reform and improve string literals (#793)
+- Allow evaluating justfiles with no recipes (#794)
+- Unify string lexing (#790)
+
+### Misc
+- Test multi-line strings in interpolation (#789)
+- Add shell setting examples to README (#787)
+- Disable .env warning for now
+- Warn if `.env` file loaded and `dotenv-load` unset (#784)
+
+
+[v0.9.0] - 2021-3-28
 --------------------
 
 ### Changed
 - Turn `=` deprecation warning into a hard error (#780)
 
 
-[v0.8.7] - 2020-3-28
+[v0.8.7] - 2021-3-28
 --------------------
 
 ### Added
@@ -18,7 +45,7 @@ Changelog
 - Change publish recipe to use stable rust (#777)
 
 
-[v0.8.6] - 2020-3-28
+[v0.8.6] - 2021-3-28
 --------------------
 
 ### Added
@@ -35,7 +62,7 @@ Changelog
 - Fix warnings (#770)
 
 
-[v0.8.5] - 2020-3-24
+[v0.8.5] - 2021-3-24
 --------------------
 
 ### Added
@@ -49,7 +76,7 @@ Changelog
 - Note shebang line splitting inconsistency in readme (#757)
 
 
-[v0.8.4] - 2020-2-9
+[v0.8.4] - 2021-2-9
 -------------------
 
 ### Added

@@ -2,7 +2,7 @@
 # Contributor: mocihan <ly50247@126.com>
 
 pkgname=just-bin
-pkgver=0.9.0
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='A handy way to save and run project-specific commands'
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('just')
 conflicts=('just')
 changelog="$pkgname.changelog"
 source=("https://github.com/casey/just/releases/download/v${pkgver}/just-v${pkgver}-x86_64-unknown-linux-musl.tar.gz")
-b2sums=('d4340574790b9f18dc5f14da7286eafbc1c111e4eed8281b38eaf95401f430929a815bb4ee3c63867080e60ea4cbb4850ce87ba26176329e9db3ee40fd93856a')
+b2sums=('514086c78492843e5dcd216b0886f056b83f5d7b6c5d6a16d12bce153c4fea70400dbd69eaf7b1fea7b69eed77e6784496e53ec0444816847e2535cc1a84c450')
 
 package() {
   cd "$srcdir"

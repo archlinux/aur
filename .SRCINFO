@@ -1,6 +1,6 @@
 pkgbase = just-bin
 	pkgdesc = A handy way to save and run project-specific commands
-	pkgver = 0.9.0
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/casey/just
 	changelog = just-bin.changelog
@@ -8,8 +8,8 @@ pkgbase = just-bin
 	license = custom:CC0
 	provides = just
 	conflicts = just
-	source = https://github.com/casey/just/releases/download/v0.9.0/just-v0.9.0-x86_64-unknown-linux-musl.tar.gz
-	b2sums = d4340574790b9f18dc5f14da7286eafbc1c111e4eed8281b38eaf95401f430929a815bb4ee3c63867080e60ea4cbb4850ce87ba26176329e9db3ee40fd93856a
+	source = https://github.com/casey/just/releases/download/v0.9.2/just-v0.9.2-x86_64-unknown-linux-musl.tar.gz
+	b2sums = 514086c78492843e5dcd216b0886f056b83f5d7b6c5d6a16d12bce153c4fea70400dbd69eaf7b1fea7b69eed77e6784496e53ec0444816847e2535cc1a84c450
 
 pkgname = just-bin
 
