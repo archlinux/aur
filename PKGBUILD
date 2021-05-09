@@ -1,6 +1,6 @@
 # Maintainer: GuiltyCat <guiltycat.icloud AT icloud DOT com
 pkgname=salt-viewer
-pkgver=0.1.9
+pkgver=0.1.9.1
 pkgdesc="Very simple (archived) image viewer"
 pkgrel=1
 arch=("any")
@@ -15,5 +15,5 @@ optdepends=("unarchiver: unrar alternative" "libarchive: unar alternative")
 source=("https://github.com/GuiltyCat/SaltViewer/archive/refs/tags/v${pkgver}.tar.gz")
 package(){
 	cd SaltViewer-"${pkgver}"
-	python setup.py install --verbose --root="${pkgdir}/" --optimize=1 
+	python setup.py install --verbose --prefix=/usr --root="${pkgdir}/" --optimize=1 
 }
