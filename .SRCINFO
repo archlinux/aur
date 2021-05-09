@@ -1,0 +1,18 @@
+pkgbase = rsatool-git
+	pkgdesc = Calculate RSA and RSA-CRT parameters
+	pkgver = 2021.04.17.g2bd92b3
+	pkgrel = 1
+	url = https://github.com/ius/rsatool
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python
+	depends = python-gmpy2
+	depends = python-pyasn1
+	provides = rsatool
+	conflicts = rsatool
+	source = git+https://github.com/ius/rsatool.git
+	sha256sums = SKIP
+
+pkgname = rsatool-git
+
