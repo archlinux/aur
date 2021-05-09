@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Upgrade
+Target = krathalans-apparmor-profiles-git
+
+[Action]
+Description = Reloading AppArmor service...
+When = PostTransaction
+Exec = /usr/bin/systemctl reload apparmor.service
