@@ -1,0 +1,15 @@
+pkgbase = rufetch
+	pkgdesc = RuFetch is a customisable system info fetch written in Rust for Windows, Linux and Mac.
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/SupremeDeity/RuFetch
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	source = git+https://github.com/SupremeDeity/RuFetch
+	sha256sums = SKIP
+
+pkgname = rufetch
+
