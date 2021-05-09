@@ -1,0 +1,15 @@
+pkgbase = tlog
+	pkgdesc = Terminal I/O logger
+	pkgver = 11
+	pkgrel = 1
+	url = http://scribery.github.io/tlog/
+	arch = x86_64
+	license = GPL
+	depends = curl
+	depends = json-c
+	depends = libutempter
+	source = https://github.com/Scribery/tlog/releases/download/v11/tlog-11.tar.gz
+	md5sums = 050e924a605ec9bd2d5b911e1397c63f
+
+pkgname = tlog
+
