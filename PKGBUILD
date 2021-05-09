@@ -2,9 +2,9 @@
 # Maintainer: Brenton Horne <brentonhorne77 at gmail.com>
 # Contributor: Cobalt Space <cobaltspace at protonmail dot com>
 pkgname=fedora-wallpapers
-pkgver=33
+pkgver=34
 pkgrel=1
-pkgdesc="The default Wallpapers for Fedora, from Fedora 8 (Werewolf) to Fedora 33."
+pkgdesc="The default Wallpapers for Fedora, from Fedora 8 (Werewolf) to Fedora ${pkver}."
 arch=("any")
 url="https://fedoraproject.org/wiki/Wallpapers"
 license=("CC-BY-SA")
@@ -23,6 +23,7 @@ depends=("beefy-miracle-backgrounds"
   "f31-backgrounds"
   "f32-backgrounds"
   "f33-backgrounds"
+  "f34-backgrounds"
   "fedorainfinity-backgrounds"
   "goddard-backgrounds"
   "heisenbug-backgrounds"
