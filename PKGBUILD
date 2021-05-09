@@ -2,7 +2,7 @@
 # Contributor: Markus Näther <naether.markus@gmail.com>
 pkgname=rocblas
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Next generation BLAS implementation for ROCm platform'
 arch=('x86_64')
 url='https://rocblas.readthedocs.io/en/latest'
@@ -20,7 +20,7 @@ _dirname="$(basename "$_rocblas")-$(basename "${source[0]}" ".tar.gz")"
 build() {
 
   PATH="/opt/rocm/llvm/bin:${PATH}" \
-  CXX=/opt/rocm/hip/bin/hipcc \
+  CXX=/opt/rocm/bin/hipcc \
   cmake -B build -Wno-dev \
         -S "$_dirname" \
         -DCMAKE_INSTALL_PREFIX=/opt/rocm \
