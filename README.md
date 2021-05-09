@@ -1,7 +1,7 @@
 # Installation
 ## Necessary configuration
 ### MariaDB
-1. Create a user and database.
+1. Create a user and a database.
 
 ### PHP
 1. `sudo nano /etc/php/php.ini` and comment out the following.
@@ -40,10 +40,30 @@ http
         root            /path/to/website/;
         index           index.php;
 
+        location ^~ /.git/
+        {
+            return 404;
+        }
+
+        location ^~ /config/
+        {
+            return 404;
+        }
+
+        location ^~ /lang/en.json
+        {
+            return 404;
+        }
+
+        location ^~ /tmp/
+        {
+            return 404;
+        }
+
         location ~ \.php$
         {
             try_files       $uri =404;
-            
+
             # FastCGI
             include         fastcgi.conf;
             fastcgi_pass    unix:/run/php-fpm/php-fpm.sock;
