@@ -3,7 +3,7 @@
 pkgname=qt-logout
 pkgver=2021.05.06
 pkgrel=1
-pkgdesc='Logout screen for QT using QT6 and pyside6'
+pkgdesc='Logout screen for QT using QT5 and pyside2'
 arch=('any')
 groups=('therepoclub')
 url="https://github.com/The-Repo-Club/$pkgname"
