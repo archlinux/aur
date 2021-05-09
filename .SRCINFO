@@ -1,6 +1,6 @@
 pkgbase = vscode-transparent-insiders
 	pkgdesc = The Open Source build of Visual Studio Code (vscode) editor - with transparency enabled - based on insiders commit
-	pkgver = 1.56.0_insiders
+	pkgver = 1.57.0_insiders
 	pkgrel = 1
 	url = https://github.com/microsoft/vscode
 	install = code-transparent.install
@@ -14,7 +14,7 @@ pkgbase = vscode-transparent-insiders
 	makedepends = python2
 	makedepends = yarn
 	makedepends = nodejs-lts-fermium
-	depends = electron11
+	depends = electron
 	depends = libsecret
 	depends = libx11
 	depends = libxkbfile
@@ -24,7 +24,7 @@ pkgbase = vscode-transparent-insiders
 	optdepends = x11-ssh-askpass: SSH authentication
 	provides = code
 	conflicts = code
-	source = code::git+https://github.com/microsoft/vscode.git#commit=550035808407c15252e581e8abe1b820b9d311ee
+	source = code::git+https://github.com/microsoft/vscode.git#commit=a19565da7dfc739fa26e36aae96113e19fe3806f
 	source = code.js
 	source = code.sh
 	source = transparency.diff
