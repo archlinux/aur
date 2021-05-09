@@ -1,12 +1,11 @@
 pkgbase = micromamba
 	pkgdesc = C++ tiny version of mamba, the fast conda package installer
 	pkgver = 0.12.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mamba-org/mamba
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = gmock
 	makedepends = gtest
 	depends = libarchive
 	depends = cmake
@@ -21,7 +20,7 @@ pkgbase = micromamba
 	depends = cpp-ghc-filesystem
 	provides = micromamba
 	source = micromamba-0.12.2.tar.gz::https://github.com/mamba-org/mamba/archive/refs/tags/0.12.2.tar.gz
-	md5sums = 7a88c3262b91db7875e16c0defddc808
+	md5sums = 197ed18ac1a40edfb0fe25e23aeef1cd
 
 pkgname = micromamba
 
