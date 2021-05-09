@@ -3,10 +3,10 @@
 pkgname=python-pandas_market_calendars
 _pkgname=${pkgname#python-}
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Market and exchange trading calendars for pandas"
 arch=('any')
-depends=('python-pytz' 'python-pandas' 'python-trading_calendars')
+depends=('python-pytz' 'python-pandas' 'python-exchange_calendars')
 makedepends=('python-setuptools')
 url="https://github.com/rsheftel/$_pkgname"
 license=('MIT')
