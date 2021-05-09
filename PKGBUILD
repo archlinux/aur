@@ -1,9 +1,9 @@
 # Maintainer: Yakumo Saki <yakumo at ziomatrix dot org>
 pkgname=lambroll-bin
-pkgver=0.10.0
+pkgver=0.11.3
 pkgrel=1
 epoch=
-pkgdesc="a minimal deployment tool for AWS Lambda."
+pkgdesc="Minimal deployment tool for AWS Lambda."
 arch=("x86_64")
 url="https://github.com/fujiwara/lambroll"
 license=('MIT')
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/fujiwara/lambroll/releases/download/v${pkgver}/lambroll_v${pkgver}_linux_amd64.tar.gz")
 noextract=()
-md5sums=("d5264b79feecf4d3b1d1e440fd2b6558")
+md5sums=("42b2350a3f22f82dcec18d7017ddf02b")
 validpgpkeys=()
 
 package() {
