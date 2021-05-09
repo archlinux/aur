@@ -1,0 +1,18 @@
+pkgbase = geotagging
+	pkgdesc = Photography geotagging tool to synchronize photos with gps track log (GPX)
+	pkgver = 0.5.7
+	pkgrel = 1
+	url = https://github.com/jmlich/geotagging
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = qt5-tools
+	depends = exiv2
+	depends = qt5-webengine
+	source = https://github.com/jmlich/geotagging/archive/0.5.7/geotagging-0.5.7.tar.gz
+	sha256sums = 85c44348f65c60f03d6b9821a14ff58565c46341c5b9538d02da0d63491ea865
+
+pkgname = geotagging
+
