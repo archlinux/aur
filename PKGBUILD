@@ -1,8 +1,8 @@
 # Maintainer: Shuyuan Liu (AUR)
 
 pkgname=aptdec-git
-pkgver=r178.5f91799
-pkgrel=2
+pkgver=r184.794d69c
+pkgrel=1
 pkgdesc='NOAA APT satellite imagery decoder'
 arch=('x86_64' 'arm' 'aarch64')
 url="https://github.com/Xerbo/aptdec"
@@ -11,20 +11,13 @@ depends=('libsndfile' 'libpng')
 makedepends=('git' 'cmake')
 provides=('aptdec')
 conflicts=('aptdec')
-md5sums=('SKIP'
-         'cbbc61ab679d38896a1bd2de1631227c')
+md5sums=('SKIP')
 
-source=('git+https://github.com/Xerbo/aptdec'
-	'install-palettes-to-usr-share.patch')
+source=('git+https://github.com/Xerbo/aptdec')
 
 pkgver() {
 	cd aptdec
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	cd aptdec
-	patch --input="${srcdir}/install-palettes-to-usr-share.patch"
 }
 
 build() {
