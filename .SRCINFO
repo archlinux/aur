@@ -1,0 +1,22 @@
+pkgbase = profile-sync-daemon-user
+	pkgdesc = Symlinks and syncs browser profile dirs to RAM (user fork)
+	pkgver = 6.44
+	pkgrel = 1
+	url = https://github.com/Xervon/profile-sync-daemon
+	install = profile-sync-daemon-user.install
+	arch = any
+	license = MIT
+	depends = bash
+	depends = findutils
+	depends = inetutils
+	depends = procps-ng
+	depends = rsync
+	depends = systemd
+	optdepends = zsh-completions: for completion when using zsh
+	provides = profile-sync-daemon=6.44
+	conflicts = profile-sync-daemon
+	source = profile-sync-daemon-user::git+https://github.com/Xervon/profile-sync-daemon.git#branch=master
+	sha512sums = SKIP
+
+pkgname = profile-sync-daemon-user
+
