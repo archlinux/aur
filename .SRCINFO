@@ -1,0 +1,19 @@
+pkgbase = mopidy-advanced-scrobbler
+	pkgdesc = Mopidy extension for comprehensive management of Last.fm scrobbles
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/djmattyg007/mopidy-advanced-scrobbler
+	arch = any
+	license = Apache
+	depends = mopidy
+	depends = python
+	depends = python-setuptools
+	depends = python-pykka
+	depends = python-pylast
+	depends = python-music-metadata-filter
+	depends = python-dataclasses-json
+	source = https://pypi.io/packages/source/M/Mopidy-Advanced-Scrobbler/Mopidy-Advanced-Scrobbler-1.0.0.tar.gz
+	sha256sums = 3a586945cd1d0b97a46d78386c1749801d267e4c34d109a55467bd9b1fc56d94
+
+pkgname = mopidy-advanced-scrobbler
+
