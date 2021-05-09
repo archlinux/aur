@@ -1,6 +1,6 @@
 pkgbase = benthos
 	pkgdesc = Declarative stream processing for mundane tasks and data engineering.
-	pkgver = 3.44.0
+	pkgver = 3.46.0
 	pkgrel = 1
 	url = https://benthos.dev
 	arch = aarch64
@@ -12,10 +12,10 @@ pkgbase = benthos
 	makedepends = go
 	provides = benthos
 	conflicts = benthos
-	source = benthos-3.44.0.tar.gz::https://github.com/Jeffail/benthos/archive/v3.44.0.tar.gz
-	sha256sums = c7cc44f2361fda9691c2efe74dbea54f577ce49798e4180ba9585173672e6634
-	sha512sums = 659014ff78f92b8858f0c25cb8809ede5b337a157300f4da1153f541f5e697abe1c98827ce1eddaf5565cff4e69173b5394972545bd65e4decbcbf5f55af07ff
-	b2sums = 3c1e1cb245f792e429465b530b1604d52cf2a2c2896fef337206db049b70fdda75bde23ec83faf7ec55757b38dfedec5615a499561138678f12cead35053a92c
+	source = benthos-3.46.0.tar.gz::https://github.com/Jeffail/benthos/archive/v3.46.0.tar.gz
+	sha256sums = 5444fe6f879a8780c983fabef65fbc7432198c4fe45bbc2ae448475045d56b96
+	sha512sums = a4350d85db4d5724129713271a15357f31c3ff8853eab94591bf89024148f61ec32cb52138d19686aa7e8b1ccc994d9da8b6adf4f29ba0520ab2cd0e828ef896
+	b2sums = 58f01e9e4674f17b0a1d1ff314a0c74a3be81933c18599253322b820e52b482cf07ca353624b8f64e7a2294f40bbaecec3a71329ed6c600ac38539c1620727df
 
 pkgname = benthos
 
