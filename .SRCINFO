@@ -1,6 +1,6 @@
 pkgbase = filezilla-unstable-bin
 	pkgdesc = Free, open source FTP, FTPS and SFTP client (Pre-built binary)
-	pkgver = 3.53.0_rc1
+	pkgver = 3.54.0_rc1
 	pkgrel = 1
 	url = https://filezilla-project.org
 	arch = i686
@@ -19,9 +19,9 @@ pkgbase = filezilla-unstable-bin
 	conflicts = filezilla
 	conflicts = filezilla-git
 	conflicts = libfilezilla
-	source_i686 = FileZilla_3.53.0_rc1_i686-linux-gnu.tar.bz2::https://download.filezilla-project.org/client/FileZilla_3.53.0-rc1_i686-linux-gnu.tar.bz2
+	source_i686 = FileZilla_3.54.0_rc1_i686-linux-gnu.tar.bz2::https://download.filezilla-project.org/client/FileZilla_3.54.0-rc1_i686-linux-gnu.tar.bz2
 	sha512sums_i686 = SKIP
-	source_x86_64 = FileZilla_3.53.0_rc1_x86_64-linux-gnu.tar.bz2::https://download.filezilla-project.org/client/FileZilla_3.53.0-rc1_x86_64-linux-gnu.tar.bz2
+	source_x86_64 = FileZilla_3.54.0_rc1_x86_64-linux-gnu.tar.bz2::https://download.filezilla-project.org/client/FileZilla_3.54.0-rc1_x86_64-linux-gnu.tar.bz2
 	sha512sums_x86_64 = SKIP
 
 pkgname = filezilla-unstable-bin

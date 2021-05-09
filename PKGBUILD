@@ -2,7 +2,7 @@
 
 _pkgname=filezilla
 pkgname="${_pkgname}-unstable-bin"
-pkgver=3.53.0_rc1
+pkgver=3.54.0_rc1
 pkgrel=1
 pkgdesc='Free, open source FTP, FTPS and SFTP client (Pre-built binary)'
 arch=('i686' 'x86_64')
