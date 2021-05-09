@@ -1,6 +1,6 @@
 pkgbase = dico
 	pkgdesc = GNU Dictionary Server
-	pkgver = 2.10
+	pkgver = 2.11
 	pkgrel = 1
 	url = http://puszcza.gnu.org.ua/software/dico
 	arch = x86_64
@@ -10,13 +10,12 @@ pkgbase = dico
 	depends = wordnet-common
 	depends = guile
 	depends = pam
-	source = ftp://download.gnu.org.ua/pub/release/dico/dico-2.10.tar.xz
-	source = ftp://download.gnu.org.ua/pub/release/dico/dico-2.10.tar.xz.sig
-	source = Fix-compilation-with-python-38-newer.patch
+	depends = pcre
+	source = https://ftp.gnu.org/gnu/dico/dico-2.11.tar.xz
+	source = https://ftp.gnu.org/gnu/dico/dico-2.11.tar.xz.sig
 	validpgpkeys = 325F650C4C2B6AD58807327A3602B07F55D0C732
-	sha1sums = e1bffaf6c9b913a97cc1f5916d1a6a6fd7b605ee
+	sha1sums = f545452d1ecaf3e07780cf9324082c7a788e4afa
 	sha1sums = SKIP
-	sha1sums = b11709a95d2136f149a263b1ce758b5f6c8490aa
 
 pkgname = dico
 
