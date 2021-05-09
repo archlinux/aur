@@ -1,0 +1,22 @@
+pkgbase = web-eid-webextension
+	pkgdesc = Web eID browser extension
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://web-eid.eu/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = nodejs-lts-fermium
+	makedepends = npm
+	depends = web-eid
+	source = web-eid-webextension::git+https://github.com/web-eid/web-eid-webextension.git#tag=1.0.0
+	validpgpkeys = 1282B0F8809D0DC632C85A3F86B611CE24492160
+	sha256sums = SKIP
+
+pkgname = firefox-extension-web-eid
+	pkgdesc = Web eID Firefox extension
+	depends = firefox
+
+pkgname = chromium-extension-web-eid
+	pkgdesc = Unpacked Web eID Chromium extension
+
