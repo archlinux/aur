@@ -50,6 +50,7 @@ optdepends=(
 'povray: ray tracing support'
 'luxcorerender: ray tracing support'
 'libspnav: 3d mouse support'
+'openscad: OpenSCAD support'
 )
 provides=('freecad')
 conflicts=('freecad' 'freecad-appimage' 'freecad-appimage-git')

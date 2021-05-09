@@ -42,6 +42,7 @@ pkgbase = freecad-git
 	optdepends = povray: ray tracing support
 	optdepends = luxcorerender: ray tracing support
 	optdepends = libspnav: 3d mouse support
+	optdepends = openscad: OpenSCAD support
 	provides = freecad
 	conflicts = freecad
 	conflicts = freecad-appimage
