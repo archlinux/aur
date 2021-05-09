@@ -1,0 +1,29 @@
+From 21e9934ad7d1168d5806d8d8d15c1e31335aec26 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michael=20La=C3=9F?= <bevan@bi-co.net>
+Date: Sun, 9 May 2021 21:06:51 +0200
+Subject: [PATCH 4/4] Fix index computation in SpectrogramData::value
+
+data is of size datawidth*dataheight. The result of x/width and y/height
+may result in [0,1]. We therefore must multiply with (datawidth-1) and
+(dataheight-1) to stay within the bounds of data.
+---
+ includes/scopes-qwt6/spectrogramdata.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/includes/scopes-qwt6/spectrogramdata.h b/includes/scopes-qwt6/spectrogramdata.h
+index 7c153da..c25d2cf 100755
+--- a/includes/scopes-qwt6/spectrogramdata.h
++++ b/includes/scopes-qwt6/spectrogramdata.h
+@@ -75,7 +75,8 @@ QwtInterval Interval (Qt::Axis x)const {
+ double value (double x, double y) const {
+ //fprintf (stderr, "x = %f, y = %f\n", x, y);
+ 	   x = x - left;
+-	   x = x / width * datawidth;
++	   x = x / width  * (datawidth  - 1);
++	   y = y / height * (dataheight - 1);
+ 	   return data [(int)y * datawidth + (int)x];
+ }
+ 
+-- 
+2.31.1
+

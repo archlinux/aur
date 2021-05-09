@@ -1,0 +1,47 @@
+From e88b758f25717d07b25082fd17dc5b067c7682a3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michael=20La=C3=9F?= <bevan@bi-co.net>
+Date: Sun, 9 May 2021 20:33:50 +0200
+Subject: [PATCH 3/4] Leave K loop in reedSolomon::computeLambda in time
+
+So far, the loop ran as long as K <= nroots. In the last iteration, the
+only relevant operation was the update of Lambda. All operations after
+that have no relevance if there is no next iteration. However, that part
+caused an invalid access into syndromes.
+
+Let the loop run only as long K < nroots and do the final Lambda
+calculation afterwards.
+
+Fixes #202
+---
+ src/backend/reed-solomon.cpp | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/src/backend/reed-solomon.cpp b/src/backend/reed-solomon.cpp
+index c4d8f2c..90352d5 100755
+--- a/src/backend/reed-solomon.cpp
++++ b/src/backend/reed-solomon.cpp
+@@ -281,7 +281,7 @@ int16_t	deg_lambda;
+ 	Lambda	[0]	= 1;
+ 	Corrector [1]	= 1;
+ //
+-	while (K <= nroots) {
++	while (K < nroots) {
+ 	   uint8_t oldLambda [nroots];
+ 	   memcpy (oldLambda, Lambda, nroots * sizeof (Lambda [0]));
+ //
+@@ -311,6 +311,12 @@ int16_t	deg_lambda;
+ 	   K += 1;
+  	} // end of Berlekamp loop
+ 
++//	Compute final lambda
++	for (i = 0; i < nroots; i ++)
++	   Lambda [i] = myGalois. add_poly (Lambda [i],
++	                          myGalois. multiply_poly (error,
++	                                                   Corrector [i]));
++
+ 	for (i = 0; i < nroots; i ++) {
+ 	   if (Lambda [i] != 0)
+ 	      deg_lambda = i;
+-- 
+2.31.1
+

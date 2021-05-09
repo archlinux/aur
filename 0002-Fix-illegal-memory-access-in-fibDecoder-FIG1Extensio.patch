@@ -1,0 +1,40 @@
+From eafbd99420c255c3938de35503c7f7fb5c0fb78a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michael=20La=C3=9F?= <bevan@bi-co.net>
+Date: Sun, 9 May 2021 17:14:52 +0200
+Subject: [PATCH 2/4] Fix illegal memory access in fibDecoder::FIG1Extension1
+
+If serviceIndex == -1, then the following does a write to non-allocated
+heap memory:
+
+  ensemble -> services [serviceIndex]. hasName = true;
+
+In that case, it is also unnecessessary to set this value, as it is
+already set by fibDecoder::createService.
+---
+ src/ofdm/fib-decoder.cpp | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/ofdm/fib-decoder.cpp b/src/ofdm/fib-decoder.cpp
+index f5b4f27..28746f3 100755
+--- a/src/ofdm/fib-decoder.cpp
++++ b/src/ofdm/fib-decoder.cpp
+@@ -963,12 +963,12 @@ char		label [17];
+ 	                                  (const char *) label,
+ 	                                  (CharacterSet) charSet);
+ 	serviceIndex	= findService (dataName);
+-	if (serviceIndex == -1) 
++	if (serviceIndex == -1) {
+ 	   createService (dataName, SId, 0);
+-	else
++	} else {
+ 	  ensemble -> services [serviceIndex]. SCIds = 0;
+-
+-	ensemble -> services [serviceIndex]. hasName = true;
++	  ensemble -> services [serviceIndex]. hasName = true;
++	}
+ }
+ 
+ // service component label 8.1.14.3
+-- 
+2.31.1
+

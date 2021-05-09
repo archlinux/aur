@@ -1,7 +1,7 @@
 pkgbase = qt-dab
 	pkgdesc = Software DAB decoder for use with various SDR devices
 	pkgver = 3.71
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.sdr-j.tk/
 	arch = x86_64
 	license = GPL2
@@ -15,11 +15,19 @@ pkgbase = qt-dab
 	optdepends = airspy: Support for Airspy
 	optdepends = hackrf: Support for HackRF
 	optdepends = limesuite: Support for LimeSDR
-	optdepends = libiio: Support for Pluto
+	optdepends = libad9361: Support for Pluto
 	optdepends = rtl-sdr: Support for RTL-SDR
 	optdepends = libsdrplay: Support for SDRplay
 	source = https://github.com/JvanKatwijk/qt-dab/archive/refs/tags/Qt-DAB3.71.tar.gz
+	source = 0001-Remove-liio-from-linker-flags-when-using-CMAKE.patch
+	source = 0002-Fix-illegal-memory-access-in-fibDecoder-FIG1Extensio.patch
+	source = 0003-Leave-K-loop-in-reedSolomon-computeLambda-in-time.patch
+	source = 0004-Fix-index-computation-in-SpectrogramData-value.patch
 	sha256sums = 8a5ec68a7b920ee3b397fa8d9bd2e773f5e95ca5bb5a939dc907f4509d3df84f
+	sha256sums = eecc7813f00586dc37212971a5106a0ba4c106a3970a79e90fe8de1afd13a35a
+	sha256sums = 914eff3d5230d161af38ef1f85e3cecd45f2b150efc9ff8460e4be22f175319c
+	sha256sums = 1e22af5dc6ac8ec4ed512675d3606a8fa68245ba37ecf6a09045cbcf21a1a3c4
+	sha256sums = e2f998ec4495acc1141a9c8afa8a3fcc48de53a9214430443f474b6955c54490
 
 pkgname = qt-dab
 
