@@ -3,8 +3,7 @@
 
 pkgname=zotero-beta
 _pkgname=zotero-beta
-pkgver=5.0.97_beta.23+2Bd27b622f9
-_pkgver=5.0.97-beta.23%2Bd27b622f9
+pkgver=5.0.97_beta
 pkgrel=1
 pkgdesc="Zotero is a free, easy-to-use tool to help you collect, organize, cite, and share research."
 arch=('x86_64')
@@ -38,8 +37,8 @@ depends=(
 	'libxt'
 	'nss'
 )
-source=("https://download.zotero.org/client/beta/${_pkgver}/Zotero-${_pkgver}_linux-x86_64.tar.bz2" "zotero.desktop")
-sha256sums=('6a2ae49782f709ad699536f623d4ebf910033a849209d9b2e01ae4ee07a926bb'
+source=("https://www.zotero.org/download/standalone/dl?platform=linux-x86_64&channel=beta" "zotero.desktop")
+sha256sums=('SKIP'
             '17d1a0892d7a516e4f9d732de21ee595d9168d7554ca34b11cdd255795b22eaa')
 
 package() {
@@ -47,12 +46,11 @@ package() {
   mv "$srcdir"/Zotero_linux-x86_64/* "$pkgdir"/usr/share/zotero
   ln -s "$pkgdir"/usr/share/zotero/zotero "$pkgdir"/usr/bin/zotero
   install -Dm755 "$srcdir"/zotero.desktop "$pkgdir"/usr/share/applications/zotero.desktop
-  # Copy zotero icons to a standard location
+
   install -Dm755 "$pkgdir"/usr/share/zotero/chrome/icons/default/default16.png "$pkgdir"/usr/share/icons/hicolor/16x16/apps/zotero.png
   install -Dm755 "$pkgdir"/usr/share/zotero/chrome/icons/default/default32.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/zotero.png
   install -Dm755 "$pkgdir"/usr/share/zotero/chrome/icons/default/default48.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/zotero.png
   install -Dm755 "$pkgdir"/usr/share/zotero/chrome/icons/default/default256.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/zotero.png
 
-  # No need to keep a shell around when launching Zotero
   sed -i -r 's/^("\$CALLDIR\/zotero-bin" -app "\$CALLDIR\/application.ini" "\$@")/exec \1/' "$pkgdir"/usr/share/zotero/zotero
 }

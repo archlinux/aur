@@ -1,6 +1,6 @@
 pkgbase = zotero-beta
 	pkgdesc = Zotero is a free, easy-to-use tool to help you collect, organize, cite, and share research.
-	pkgver = 5.0.97_beta.23+2Bd27b622f9
+	pkgver = 5.0.97_beta
 	pkgrel = 1
 	url = https://www.zotero.org/support/dev_builds
 	arch = x86_64
@@ -31,9 +31,9 @@ pkgbase = zotero-beta
 	depends = libxrender
 	depends = libxt
 	depends = nss
-	source = https://download.zotero.org/client/beta/5.0.97-beta.23%2Bd27b622f9/Zotero-5.0.97-beta.23%2Bd27b622f9_linux-x86_64.tar.bz2
+	source = https://www.zotero.org/download/standalone/dl?platform=linux-x86_64&channel=beta
 	source = zotero.desktop
-	sha256sums = 6a2ae49782f709ad699536f623d4ebf910033a849209d9b2e01ae4ee07a926bb
+	sha256sums = SKIP
 	sha256sums = 17d1a0892d7a516e4f9d732de21ee595d9168d7554ca34b11cdd255795b22eaa
 
 pkgname = zotero-beta
