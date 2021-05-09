@@ -1,6 +1,6 @@
 pkgbase = cubegui
 	pkgdesc = Performance report explorer for displaying a multi-dimensional performance space.
-	pkgver = 4.5
+	pkgver = 4.6
 	pkgrel = 1
 	url = http://www.scalasca.org/software/cube-4.x/download.html
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = cubegui
 	license = BSD
 	depends = qt5-base
 	depends = cubelib
-	source = http://apps.fz-juelich.de/scalasca/releases/cube/4.5/dist/cubegui-4.5.tar.gz
-	sha256sums = ffe84108adce0adf06dca80820d941b1a60a5580a8bacc8f7c1b6989c8ab1bfa
+	source = http://apps.fz-juelich.de/scalasca/releases/cube/4.6/dist/cubegui-4.6.tar.gz
+	sha256sums = 1871c6736121d94a22314cb5daa8f3cbb978b58bfe54f677c4c9c9693757d0c5
 
 pkgname = cubegui
 

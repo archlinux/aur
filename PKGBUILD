@@ -1,7 +1,7 @@
 # Maintainer: James Spencer <james.s.spencer@gmail.com>
 
 pkgname=cubegui
-_version=4.5
+_version=4.6
 _patch=
 pkgver=${_version}${_patch}
 pkgrel=1
@@ -11,7 +11,7 @@ url="http://www.scalasca.org/software/cube-4.x/download.html"
 license=('BSD')
 depends=('qt5-base' 'cubelib')
 source=(http://apps.fz-juelich.de/scalasca/releases/cube/${_version}/dist/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('ffe84108adce0adf06dca80820d941b1a60a5580a8bacc8f7c1b6989c8ab1bfa')
+sha256sums=('1871c6736121d94a22314cb5daa8f3cbb978b58bfe54f677c4c9c9693757d0c5')
 
 build() {
   cd "$srcdir/${pkgname}-$pkgver"
