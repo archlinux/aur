@@ -1,11 +1,12 @@
 pkgbase = linode-cli
 	pkgdesc = Linode API wrapper
 	pkgver = 5.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linode/linode-cli
 	install = linode-cli.install
 	arch = any
 	license = BSD
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-colorclass
 	depends = python-requests

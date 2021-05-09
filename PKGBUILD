@@ -3,7 +3,7 @@
 
 pkgname=linode-cli
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Linode API wrapper"
 arch=('any')
 url="https://github.com/${pkgname%%-cli}/${pkgname}"
@@ -13,7 +13,8 @@ depends=('python-colorclass'
 	 'python-terminaltables' 
 	 'python-yaml')
 optdepends=('python-boto: Object Storage plugin')
-makedepends=('python-wheel')
+makedepends=('python-setuptools'
+	     'python-wheel')
 replaces=('linode-cli-dev')
 install="${pkgname}".install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname%%-cli}/${pkgname}/archive/${pkgver}.tar.gz"
