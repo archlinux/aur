@@ -8,6 +8,9 @@ pkgbase = tlog
 	depends = curl
 	depends = json-c
 	depends = libutempter
+	backup = etc/tlog/tlog-play.conf
+	backup = etc/tlog/tlog-rec.conf
+	backup = etc/tlog/tlog-rec-session.conf
 	source = https://github.com/Scribery/tlog/releases/download/v11/tlog-11.tar.gz
 	md5sums = 050e924a605ec9bd2d5b911e1397c63f
 
