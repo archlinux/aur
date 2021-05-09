@@ -1,16 +1,16 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry-git
-pkgver=0.9.2.r8.g36e597a0
+pkgver=0.9.3.r32.g31ecdbae
 pkgrel=1
 pkgdesc="A music player aimed at audio enthusiasts and music collectors"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://www.strawberrymusicplayer.org/"
 license=(GPL3)
-depends=(chromaprint protobuf gst-plugins-base gst-plugins-good qt5-base qt5-x11extras
+depends=(chromaprint protobuf gst-plugins-base gst-plugins-good qt6-base
          sqlite3 udisks2 dbus alsa-lib libcdio fftw
          libpulse libimobiledevice libplist libusbmuxd libgpod libmtp)
-makedepends=(git cmake boost qt5-tools gtest)
+makedepends=(git cmake boost qt6-tools gtest gmock)
 optdepends=('gst-libav: additional codecs (i.e. AAC)'
             'gst-plugins-bad: additional codecs (i.e. AAC)'
             'gst-plugins-ugly: additional codecs')
@@ -33,8 +33,10 @@ build() {
   cd "${pkgname%-git}/strawberry-build"
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_WITH_QT6=ON \
     -DENABLE_SPARKLE=OFF \
     -DENABLE_VLC=OFF
+
   make
 }
 
