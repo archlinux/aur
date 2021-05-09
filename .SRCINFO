@@ -1,0 +1,24 @@
+pkgbase = fosstriangulator
+	pkgdesc = Tool for making triangulated illustrations out of photos
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/FOSStriangulator/FOSStriangulator
+	arch = any
+	license = GPL
+	depends = hicolor-icon-theme
+	depends = java-runtime
+	source = https://github.com/FOSStriangulator/FOSStriangulator/releases/download/v2.0.0/FOSStriangulator_jar.zip
+	source = fosstriangulator.sh
+	source = org.enjoyingfoss.FOSStriangulator.desktop
+	source = org.enjoyingfoss.FOSStriangulator.metainfo.xml
+	source = org.enjoyingfoss.FOSStriangulator.svg
+	source = org.enjoyingfoss.FOSStriangulator-symbolic.svg
+	sha256sums = 16f9cd628ef24a08a657ee9dc0d5c11d9db1478d30f745084f1f4c19a14b954c
+	sha256sums = 53b2147d7b64c6d56402da0748aa7a24921b2d56e0cdaf1bd3855700b660eea9
+	sha256sums = 7c260ee99cb191063609eab09b0056fe18728872eec579e88b6c2c44190c58b2
+	sha256sums = a1f3f6016b0d85415cfdfc71cf271661c664655fa691268207d383577d99516d
+	sha256sums = 8fc4da7c418092bc8597cdfabff7340a3086993f482744647e88be5f1032a641
+	sha256sums = 5e537ff2d5013067c906f03f4992bcd9629de92e45d0fab28bd963c3c9125714
+
+pkgname = fosstriangulator
+
