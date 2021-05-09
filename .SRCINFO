@@ -1,0 +1,17 @@
+pkgbase = j0cc-famitracker
+	pkgdesc = Fork of HertzDevil's 0CC-FamiTracker containing various bugfixes and Namco N163 improvements.
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://github.com/nyanpasu64/j0CC-FamiTracker/
+	arch = x86_64
+	license = GPLv2
+	makedepends = p7zip
+	depends = wine
+	noextract = .exe
+	source = https://github.com/nyanpasu64/j0CC-FamiTracker/releases/download/0.6.3/j0CC-Famitracker-0.6.3.exe
+	source = https://raw.githubusercontent.com/Sterophonick/sterophonick.github.io/master/images/0cc-famitracker.png
+	md5sums = b95f72c253232f72fc504748e44f5c96
+	md5sums = f68aef841cc2692f1d6b47dae40da447
+
+pkgname = j0cc-famitracker
+
