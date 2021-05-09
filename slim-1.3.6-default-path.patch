@@ -1,0 +1,11 @@
+diff -uprw slim-1.3.6.orig/slim.conf slim-1.3.6/slim.conf
+--- slim-1.3.6.orig/slim.conf	2017-11-26 09:54:56.774671269 +0200
++++ slim-1.3.6/slim.conf	2017-11-26 10:10:15.520730363 +0200
+@@ -1,6 +1,6 @@
+ # Path, X server and arguments (if needed)
+ # Note: -xauth $authfile is automatically appended
+-default_path        /bin:/usr/bin:/usr/local/bin
++default_path        /usr/local/bin:/usr/local/sbin:/usr/bin
+ default_xserver     /usr/bin/X
+ #xserver_arguments   -dpi 75
+ 
