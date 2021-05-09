@@ -38,7 +38,7 @@ package_yozo-office() {
              'libxtst' 'libxmu' 'libxau' 'libcups' 'libxcb')
     optdepends=('yozo-office-fonts: UI Fonts'
                 'yozo-office-templates: Built-in Document Templates')
-    # install=${pkgname}.install
+    install=${pkgname}.install
     
     # Copy to pkgdir
     cd "${srcdir}"/temp

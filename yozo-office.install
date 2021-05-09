@@ -1,10 +1,6 @@
+#!/bin/sh
 pre_install() {
-    echo "$1"
-    echo "$0"
-    echo "$2"
-    echo "$3"
-
-    if [ "$1" = "install" ]; then 
+    if [ "$1" = "8.0.1331.101ZH.S1-3" ]; then 
         if ! pacman -Qs yozo-office | grep -qi 'local'; then
             if [ -f /etc/Yozosoft/Yozo_Office/installinfo.cfg ]; then
                 echo "Yozo Office is exist. Please uninstall Yozo Office, then install this office."
@@ -17,7 +13,7 @@ pre_install() {
         fi
     fi
 
-    if [ "$1" = "upgrade" ]; then
+    if [ "$1" = "8.0.1331.101ZH.S1-3" ]; then
         if [ -f /opt/Yozosoft/Yozo_Office/System/doExit ]; then
             /opt/Yozosoft/Yozo_Office/System/doExit -check
             if [ $? -ne 0 ]; then
@@ -38,12 +34,9 @@ post_install() {
   #    fi
   #done
   # post_upgrade
-    echo "$0"
-    echo "$1"
-    echo "$2"
-    echo "$3"
+
     target=/opt/Yozosoft/Yozo_Office
-    if [ "$1" = "configure" ]; then
+    if [ "$1" = "8.0.1331.101ZH.S1-3" ]; then
         if [ -z "$2" ]; then
             echo "Configuring system. Please wait a while."
             $target/Jre/bin/java -jar $target/System/configure.jar -i
@@ -59,12 +52,8 @@ post_upgrade() {
     update-desktop-database -q &>/dev/null
 }
 pre_remove() {
-    echo "$1"
-    echo "$2"
-    echo "$3"
-    echo "$0"
     target=/opt/Yozosoft/Yozo_Office
-    if [ "$1" = "remove" ]; then
+    if [ "$1" = "8.0.1331.101ZH.S1-3" ]; then
         $target/System/doExit -check
         if [ $? -ne 0 ]; then
             echo "Yozo Office is running. Please stop Yozo Office, then uninstall."
