@@ -3,35 +3,36 @@
 _name=PyMCTranslate
 _pkgname=python-${_name,,}
 pkgname=$_pkgname-git
-pkgver=r409.edd274e3
+pkgver=1.0.2.r0.gf2bc730e
 pkgrel=1
 pkgdesc='A library of block mappings that can be used to convert from any Minecraft format into any other Minecraft format'
 arch=('any')
 url="https://github.com/gentlegiantJGC/$_name"
 license=('custom')
-depends=('python' 'python-numpy')
-makedepends=('git' 'python-setuptools')
+depends=('python' 'python-amulet-nbt' 'python-numpy')
+makedepends=('git' 'python-pip' 'python-setuptools' 'python-wheel')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-options=(!strip) # strip is extremely slow and there are no ELF files anyway
 source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$_name"
 
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd "$_name"
 
-  python setup.py build
+  # only bdist_wheel minifies and installs json
+  python setup.py bdist_wheel
 }
 
 package() {
   cd "$_name"
 
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps "dist/$_name-$(python -c 'import versioneer; print(versioneer.get_version())')-py3-none-any.whl"
+  python -O -m compileall "$pkgdir"/usr/lib/python*/site-packages/$_name
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
