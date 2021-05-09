@@ -1,7 +1,7 @@
 # Maintainer: aulonsal <aulonsal at gmail dot com>
 pkgname=dbgate-bin
 pkgver=4.1.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Database manager for MySQL, PostgreSQL, SQL Server and MongoDB."
 arch=(x86_64)
 url="https://github.com/${pkgname%-bin}/${pkgname%-bin}"
@@ -35,4 +35,7 @@ package() {
 
 	cd "$srcdir/$pkgname-$pkgver"
 	bsdtar -xf data.tar.xz --directory="$pkgdir"
+
+	# Move icon to the right directory
+	mv "$pkgdir/usr/share/icons/hicolor/0x0" "$pkgdir/usr/share/icons/hicolor/256x256"
 }
