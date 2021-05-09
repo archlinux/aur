@@ -2,12 +2,13 @@
 
 pkgname=bwa-git
 pkgver=v0.7.17.r23.gfbfffc9
-pkgrel=1
+pkgrel=2
 pkgdesc="Burrows-Wheeler Aligner maps low-divergent sequences against a large reference genome"
 arch=('x86_64')
 url="http://bio-bwa.sourceforge.net/"
 license=('GPL3')
 depends=('perl' 'zlib')
+makedepends=('git' 'make')
 source=('git+https://github.com/lh3/bwa.git#branch=master')
 sha256sums=('SKIP')
 
