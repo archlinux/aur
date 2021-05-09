@@ -2,7 +2,7 @@
 
 pkgname=xde-theme-git
 _pkgname=xde-theme
-pkgver=1.4.r2.gda577af
+pkgver=1.5.r1.ga3b2b0c
 pkgrel=1
 pkgdesc="Theme and style setting utilities for the X Desktop Environment (XDE)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ groups=('xde-git')
 license=('GPL3')
 provides=($_pkgname=$pkgver)
 conflicts=($_pkgname)
-depends=('libxinerama' 'gdk-pixbuf2' 'libxrandr' 'libsm' 'imlib2')
+depends=('libxinerama' 'gdk-pixbuf-xlib' 'libxrandr' 'libsm' 'imlib2')
 makedepends=('git')
 optdepends=('xde-styles: for styles that work with xde-style')
 source=("$pkgname::git+https://github.com/bbidulock/$_pkgname.git")
