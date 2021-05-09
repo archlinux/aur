@@ -29,7 +29,7 @@ package() {
 	
   install -Dm644 0cc-famitracker.png $pkgdir/usr/share/pixmaps/j0cc-famitracker.png
   
-  cp -rT $_filename.exe $pkgdir/usr/share/j0cc-famitracker/$_filename.exe
+  cp $_filename.exe $pkgdir/usr/share/j0cc-famitracker/$_filename.exe
   
   printf "[Desktop Entry]\nEncoding=UTF-8\nType=Application\nName=j0CC-FamiTracker\nComment=Fork of HertzDevil's 0CC-FamiTracker containing various bugfixes and Namco N163 improvements.\nExec=j0cc-famitracker\nIcon=j0cc-famitracker\nTerminal=false\nStartupNotify=false\nCategories=Audio;Sequencer;Midi;AudioVideoEditing;Music;AudioVideo;;\n" >> "${pkgdir}/usr/share/applications/j0cc-famitracker.desktop"
   
