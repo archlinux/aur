@@ -1,22 +1,25 @@
+# Maintainer: dreieck
 # Contributor: Joker-jar <joker-jar@yandex.ru>
-
-#TODO: Place sourcecode to somewhere :)
 
 pkgname=deadbeef-plugins-psipublish
 pkgver=1.3
-pkgrel=1
+pkgrel=3
 pkgdesc="Plugin for DeaDBeeF to publish tune in Psi/Psi+"
 arch=('i686' 'x86_64')
 url="http://psi-im.org/wiki/Publish_Tune"
 license=('GPL2')
 depends=('deadbeef')
-makedepends=('deadbeef')
-source=('psipublish.c')
-md5sums=('cfab279f1c90cb0f31e833487e5dbc5b')
+makedepends=()
+source=('psipublish.c::http://ix.io/3mhl')
+sha256sums=('eae145f53719a19e64e2cb15e3c0a298329a8ce3f4be0de292f7e6f2d792420e')
 
 build() {
-  cd $srcdir
-  gcc -I/usr/include/deadbeef -std=c99 -shared -O2 -o psipublish.so psipublish.c -fPIC
-  mkdir -p $pkgdir/usr/lib/deadbeef/
-  cp psipublish.so $pkgdir/usr/lib/deadbeef/
+  cd "${srcdir}"
+  # gcc ${CFLAGS} -fPIC -I/usr/include/deadbeef -std=c99 -shared -o psipublish.so psipublish.c
+  gcc ${CFLAGS} -I/usr/include/deadbeef -shared -o psipublish.so psipublish.c
+}
+
+package() {
+  cd "${srcdir}"
+  install -D -v -m644 'psipublish.so' "${pkgdir}/usr/lib/deadbeef/psipublish.so"
 }
