@@ -1,6 +1,6 @@
 pkgbase = xde-icons
 	pkgdesc = Icons for the X Desktop Environment (XDE)
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
 	url = http://github.com/bbidulock/xde-icons
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = xde-icons
 	depends = hicolor-icon-theme
 	depends = mist-icon-theme
 	conflicts = ayatana-indicator-session
-	source = https://github.com/bbidulock/xde-icons/releases/download/1.5/xde-icons-1.5.tar.lz
-	md5sums = 2635f8ca849fc4846dc7a0089254cb22
+	source = https://github.com/bbidulock/xde-icons/releases/download/1.6/xde-icons-1.6.tar.lz
+	md5sums = b66945db1e8b8705fc07cd86d1a5de06
 
 pkgname = xde-icons
 
