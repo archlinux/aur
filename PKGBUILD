@@ -1,7 +1,7 @@
 # Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=ghdl-llvm-git
-pkgver=2.0.0dev.r6204.gfcd93aa12
+pkgver=2.0.0dev.r6231.g82665d421
 pkgrel=1
 arch=('x86_64' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='VHDL simulator - LLVM back-end'
@@ -73,4 +73,7 @@ package() {
 		ln -s "$_gso" "${pkgdir}/usr/lib/libghdl.so"
 	fi
 
+	# GTKWave has always installed binary ghwdump, now ghdl does it too
+	# While awaiting for the two projects to agree, don't install ghwdump from here
+	rm -f "${pkgdir}/usr/bin/ghwdump"
 }
