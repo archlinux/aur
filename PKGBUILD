@@ -18,14 +18,14 @@
 
 _basename=notekit
 pkgname="${_basename}-clatexmath-git"
-pkgver=r141.7709276
+pkgver=r173.1a16c1e
 pkgrel=1
 pkgdesc="A GTK3 hierarchical markdown notetaking application with tablet support."
 arch=("any")
 url="https://github.com/blackhole89/notekit"
 license=("GPL-3.0")
 depends=("clatexmath" "gtkmm3>=3.2" "gtksourceviewmm>=3.18" "jsoncpp" "zlib")
-makedepends=("meson")
+makedepends=("git" "meson")
 provides=("${_basename}")
 conflicts=("${_basename}" "${_basename}-git")
 source=("${_basename}::git+https://github.com/blackhole89/notekit.git")
