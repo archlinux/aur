@@ -1,29 +1,33 @@
-# Maintainer: Fabio Zanini <fabio.zanini _at_ stanford.edu>
+# Maintainer: PumpkinCheshire <sollyonzou at gmail dot com>
+# Contributor: Fabio Zanini <fabio.zanini _at_ stanford.edu>
+
 pkgname='python-pysam'
-pkgver=0.15.0
-pkgrel=2
+_name='pysam'
+pkgver=0.16.0.1
+pkgrel=1
 pkgdesc="Python interface for the SAM/BAM sequence alignment and mapping format"
 arch=('x86_64')
 url="https://github.com/pysam-developers/pysam"
 license=('MIT')
-groups=()
 depends=('python')
-makedepends=('python-setuptools' 'cython>=0.22')
+makedepends=('python-setuptools' 'cython' 'htslib')
 provides=('python-pysam')
-conflicts=()
-replaces=()
-backup=()
 options=(!emptydirs)
 install=
-source=("https://github.com/pysam-developers/pysam/archive/v${pkgver}.tar.gz")
-md5sums=('80b6cd208a601b06b3778d4af33ddb89')
+source=("https://github.com/pysam-developers/${_name}/archive/v${pkgver}.tar.gz")
+sha256sums=('a61e98e299fa93ba121aab521081282b61bc978bb9052d33b26b38f8fe15573e')
 
-package() {
-  cd "$srcdir/pysam-$pkgver"
-  # Use following line instead to compile with the internal htslib
-  python setup.py install --root="$pkgdir/" --optimize=1
-  # Use the following line to compile against external htslib from AUR (buggy)
-  #HTSLIB_LIBRARY_DIR=/usr/lib HTSLIB_INCLUDE_DIR=/usr/include python setup.py install --root="$pkgdir/" --optimize=1
+build() {
+  cd "$srcdir/$_name-$pkgver"
+
+  export HTSLIB_LIBRARY_DIR=/usr/lib
+  export HTSLIB_INCLUDE_DIR=/usr/include
+
+  python setup.py build
 }
 
-# vim:set ts=2 sw=2 et:
+package() {
+  cd "$srcdir/$_name-$pkgver"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  install -Dm644 "$srcdir/$_name-$pkgver/COPYING" -t "$pkgdir/usr/share/licenses/$pkgname"
+}
