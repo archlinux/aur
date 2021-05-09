@@ -1,13 +1,15 @@
 pkgbase = apostrophe-git
 	pkgdesc = A distraction free Markdown editor for GNU/Linux made with GTK+
-	pkgver = 2.3.r0.g5f28632
+	pkgver = 2.4.r19.g944d798
 	pkgrel = 1
 	url = https://somas.pages.gitlab.gnome.org/apostrophe
 	arch = any
 	license = GPL3
+	checkdepends = appstream-glib
 	makedepends = git
 	makedepends = meson
 	makedepends = gobject-introspection
+	makedepends = sassc
 	depends = webkit2gtk
 	depends = gspell
 	depends = python-pypandoc
