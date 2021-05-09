@@ -2,8 +2,8 @@
 # Contributer: bwrsandman
 
 pkgname=gestures
-pkgver=0.2.5
-pkgrel=2
+pkgver=0.2.6
+pkgrel=1
 pkgdesc='Modern, minimal GUI app for libinput-gestures'
 arch=('any')
 url='https://gitlab.com/cunidev/gestures'
@@ -12,7 +12,7 @@ depends=('dconf' 'hicolor-icon-theme' 'libinput-gestures' 'python' 'python-gobje
 makedepends=('meson' 'ninja' 'gettext')
 optdepends=('xdotool: Simulate keyboard input or mouse activity')
 source=("https://gitlab.com/cunidev/gestures/-/archive/${pkgver}/gestures-${pkgver}.tar.gz")
-sha256sums=('354c6b9f56d8f9f64f9f4d72ad984628bb4cdd32e361d5e452de47c7c81f2a45')
+sha256sums=('283fb84d25cf17978330bf9955d5f49b0da112de49bddaeb326ddcfd473caf26')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
