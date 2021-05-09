@@ -1,6 +1,6 @@
 # Maintainer: ml <>
 pkgname=vt-cli
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 pkgdesc='VirusTotal Command Line Interface'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("https://github.com/VirusTotal/vt-cli/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('97912c4f570fd3e2d5add016be64066ff5e6fb174d0814255f3d7d1dafc36505')
+sha256sums=('468ee45eba6234be1bfdfae9421b0b87bce3768d9cb09c777ca6bc1735d5af67')
 
 build() {
   cd "${pkgname}-${pkgver}"
