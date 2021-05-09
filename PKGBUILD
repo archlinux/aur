@@ -18,14 +18,14 @@
 
 _basename=clatexmath
 pkgname="${_basename}-git"
-pkgver=r211.44ea337
+pkgver=r241.7254b17
 pkgrel=1
 pkgdesc="A dynamic, cross-platform, and embeddable LaTeX rendering library"
-arch=(any)
+arch=("x86_64" "aarch64" "i686" "armv7h" "s390x")
 url="https://github.com/NanoMichael/cLaTeXMath"
 license=('MIT')
 depends=("gtkmm3" "gtksourceviewmm")
-makedepends=("meson")
+makedepends=("git" "meson")
 provides=("${_basename}")
 source=("${_basename}::git+https://github.com/NanoMichael/cLaTeXMath.git")
 sha256sums=("SKIP")
