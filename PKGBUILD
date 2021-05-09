@@ -2,18 +2,21 @@
 # Contributor: Oleg Rakhmanov <oleg [at] archlinuxarm [dot] org>
 
 pkgname=opentracker
-pkgver=2018.05.26
+pkgver=2021.05.09
 pkgrel=1
+_libowfat=0.31
 pkgdesc="A free and open torrent tracker"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://erdgeist.org/arts/software/opentracker/"
 license=('Beerware')
 backup=('etc/opentracker/opentracker.conf')
-makedepends=('git' 'cvs')
+makedepends=('git')
 install="$pkgname.install"
 source=('git://erdgeist.org/opentracker'
+		"https://www.fefe.de/libowfat/libowfat-$_libowfat.tar.xz"
         "opentracker.service")
 md5sums=('SKIP'
+         '120798fab86cfd72dc6b12284d248dd0'
          'a50d9ccbcf820cff15d082e9bc447bf1')
 
 pkgver() {
@@ -22,7 +25,8 @@ pkgver() {
 }
 
 build() {
-	cvs -d :pserver:cvs@cvs.fefe.de:/cvs -z9 co libowfat
+	# We build libowfat ourselves (0.32 does not work yet either), since the libowfat AUR package does not work for this
+	ln -sf libowfat-$_libowfat libowfat
 	cd libowfat
 	make
 	cd ..

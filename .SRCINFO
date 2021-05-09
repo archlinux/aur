@@ -1,6 +1,6 @@
 pkgbase = opentracker
 	pkgdesc = A free and open torrent tracker
-	pkgver = 2018.05.26
+	pkgver = 2021.05.09
 	pkgrel = 1
 	url = http://erdgeist.org/arts/software/opentracker/
 	install = opentracker.install
@@ -12,11 +12,12 @@ pkgbase = opentracker
 	arch = aarch64
 	license = Beerware
 	makedepends = git
-	makedepends = cvs
 	backup = etc/opentracker/opentracker.conf
 	source = git://erdgeist.org/opentracker
+	source = https://www.fefe.de/libowfat/libowfat-0.31.tar.xz
 	source = opentracker.service
 	md5sums = SKIP
+	md5sums = 120798fab86cfd72dc6b12284d248dd0
 	md5sums = a50d9ccbcf820cff15d082e9bc447bf1
 
 pkgname = opentracker
