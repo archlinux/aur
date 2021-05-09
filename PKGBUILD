@@ -28,7 +28,8 @@ build() {
   # Force cmake to use system python (to detect xcbgen)
   # We need to turn off _GLIBCXX_ASSERTIONS because of a bug in polybar:
   # https://github.com/polybar/polybar/issues/2416
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-U_GLIBCXX_ASSERTIONS" -DPYTHON_EXECUTABLE=/usr/bin/python3 ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-U_GLIBCXX_ASSERTIONS" -DPYTHON_EXECUTABLE=/usr/bin/python3 -DSPHINX_FLAGS="-D man_make_section_directory=0" ..
+
   cmake --build .
 }
 
