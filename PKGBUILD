@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=pangolin-desktop-git
 pkgver=210317.r14.gf572b35
-pkgrel=1
+pkgrel=2
 pkgdesc="Preview of Pangolin Desktop UI shell, designed for dahliaOS, written in Flutter."
 arch=('x86_64')
 url="https://github.com/dahlia-os/pangolin-desktop"
@@ -37,7 +37,7 @@ package() {
 	ln -s "/opt/${pkgname%-git}/pangolin_desktop" "$pkgdir/usr/bin/${pkgname%-git}"
 
 	convert \
-		data/flutter_assets/assets/images/logos/dahliaOS/PNG/dahliaOS_logo.png \
+		data/flutter_assets/assets/images/logos/dahliaOS-logo.png \
 		-resize 1024 "$srcdir/dahliaOS_logo-1024.png"
 	install -Dm644 "$srcdir/dahliaOS_logo-1024.png" \
 		"$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
