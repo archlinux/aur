@@ -30,7 +30,7 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-	./configure --prefix=$pkgdir/usr --sysconfdir=$pkgdir/etc --localstatedir=$pkgdir/var
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 	make
 }
 
@@ -41,5 +41,5 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	make install
+	make DESTDIR="$pkgdir/" install
 }
