@@ -34,7 +34,7 @@ pkgbase = zotero-beta
 	source = https://download.zotero.org/client/beta/5.0.97-beta.23%2Bd27b622f9/Zotero-5.0.97-beta.23%2Bd27b622f9_linux-x86_64.tar.bz2
 	source = zotero.desktop
 	sha256sums = 6a2ae49782f709ad699536f623d4ebf910033a849209d9b2e01ae4ee07a926bb
-	sha256sums = e510a97d2493c279cc86de8ccd4fe529a81c3c255e05d43ae528935b6400d2c2
+	sha256sums = 6c1d5636d11ed98ba49cc3be560047c5168beb27a2bf327a980d042b001dc17b
 
 pkgname = zotero-beta
 
