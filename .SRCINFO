@@ -11,8 +11,8 @@ pkgbase = vopono-bin
 	provides = vopono
 	conflicts = vopono
 	noextract = vopono
-	source = vopono::https://github.com/jamesmcm/vopono/releases/download/0.7.1/vopono_0.7.1_linux_x86-64_musl
-	sha256sums = 7c2525118ed6db4a11ef49658359ad5cd89d70b6d2f3c2d14a9e45b54c959721
+	source_x86_64 = vopono::https://github.com/jamesmcm/vopono/releases/download/0.7.1/vopono_0.7.1_linux_x86-64_musl
+	sha256sums_x86_64 = 7c2525118ed6db4a11ef49658359ad5cd89d70b6d2f3c2d14a9e45b54c959721
 
 pkgname = vopono-bin
 
