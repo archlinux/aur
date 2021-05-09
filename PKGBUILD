@@ -78,12 +78,12 @@ package()
 
     # Modify run.sh to state the absolute path of the .csproj.
     echo -e "#!/bin/bash
-dotnet run --no-launch-profile --no-build -c Release -p \"/usr/share/${_pkgname}/NBXplorer/NBXplorer.csproj\" -- \${@}" > "${srcdir}"/"${_pkgname}"/run.sh
+dotnet run --no-launch-profile --no-build -c Release -p \"/usr/share/\"${_pkgname}\"/NBXplorer/NBXplorer.csproj\" -- \"\${@}\"" > "${srcdir}"/"${_pkgname}"/run.sh
 
     # Install the software.
     cp -r "${srcdir}"/"${_pkgname}"/ "${pkgdir}"/usr/share/
 
-    ## Symlinking the scripts.
+    ## Link the scripts.
     ln -sfrT "${pkgdir}"/usr/share/"${_pkgname}"/run.sh "${pkgdir}"/usr/bin/"${_pkgname_lc}"
     chmod 755 "${pkgdir}"/usr/bin/"${_pkgname_lc}"
 
