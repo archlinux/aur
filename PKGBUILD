@@ -4,7 +4,7 @@ _CUDA_ARCH_LIST="6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6"
 _pkgname=mxnet
 pkgname=('mxnet-git' 'mxnet-cuda-git')
 _pkgver=2.0.0
-pkgver=2.0.0.r11562.4552d4f976
+pkgver=2.0.0.r11592.970a2cfbe7
 pkgrel=1
 pkgdesc='A flexible and efficient library for deep learning'
 arch=('x86_64')
@@ -33,6 +33,7 @@ makedepends=(
   'gtk3'
   'nccl'
   'opencv'
+  'python-setuptools'
   'qt5-base'
 )
 provides=(mxnet=${pkgver})

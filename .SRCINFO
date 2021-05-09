@@ -1,6 +1,6 @@
 pkgbase = mxnet-git
 	pkgdesc = A flexible and efficient library for deep learning
-	pkgver = 2.0.0.r11562.4552d4f976
+	pkgver = 2.0.0.r11592.970a2cfbe7
 	pkgrel = 1
 	url = http://mxnet.io/
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = mxnet-git
 	makedepends = gtk3
 	makedepends = nccl
 	makedepends = opencv
+	makedepends = python-setuptools
 	makedepends = qt5-base
 	depends = curl
 	depends = double-conversion
@@ -26,7 +27,7 @@ pkgbase = mxnet-git
 	depends = python-numpy
 	depends = python-requests
 	depends = zeromq
-	provides = mxnet=2.0.0.r11562.4552d4f976
+	provides = mxnet=2.0.0.r11592.970a2cfbe7
 	conflicts = mxnet
 	source = mxnet::git+https://github.com/apache/incubator-mxnet.git
 	sha512sums = SKIP
@@ -62,8 +63,8 @@ pkgname = mxnet-cuda-git
 	depends = cudnn
 	depends = nccl
 	depends = opencv
-	provides = mxnet=2.0.0.r11562.4552d4f976
-	provides = mxnet-cuda=2.0.0.r11562.4552d4f976
+	provides = mxnet=2.0.0.r11592.970a2cfbe7
+	provides = mxnet-cuda=2.0.0.r11592.970a2cfbe7
 	conflicts = mxnet
 	conflicts = mxnet-cuda
 
