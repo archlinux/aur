@@ -1,6 +1,6 @@
 pkgbase = xde-theme
 	pkgdesc = Theme and style setting utilities for the X Desktop Environment (XDE)
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = http://github.com/bbidulock/xde-theme
 	arch = i686
@@ -8,13 +8,13 @@ pkgbase = xde-theme
 	groups = xde
 	license = GPL3
 	depends = libxinerama
-	depends = gdk-pixbuf2
+	depends = gdk-pixbuf-xlib
 	depends = libxrandr
 	depends = libsm
 	depends = imlib2
 	optdepends = xde-styles: for styles that work with xde-style
-	source = https://github.com/bbidulock/xde-theme/releases/download/1.4/xde-theme-1.4.tar.lz
-	sha256sums = 4c4441670ca29d844b5a4edf99742f24f2a891dc92385f927d269ad29b534e4b
+	source = https://github.com/bbidulock/xde-theme/releases/download/1.5/xde-theme-1.5.tar.lz
+	sha256sums = 194d4d9b5d376bd850340c5d44670040c4788b993219c1fb1dda511d2508f6c7
 
 pkgname = xde-theme
 
