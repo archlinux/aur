@@ -1,7 +1,7 @@
 # Maintainer: Matthias Gatto <uso.cosmo.ray at gmail dot com>
 
 pkgname=yirl-git
-pkgver=r1812.ffee57e
+pkgver=r1835.b7a4054
 pkgrel=1
 pkgdesc='Modular Game Engine'
 
@@ -22,11 +22,15 @@ makedepends=(gcc make autoconf)
 depends=(lua json-c sdl2 sdl2_image sdl2_ttf sdl2_mixer glib2)
 
 source=(git://github.com/cosmo-ray/yirl.git)
+
+options=(!buildflags)
+
 sha256sums=("SKIP")
 
 build() {
 	 cd "${srcdir}/yirl"
 	 git submodule update --init --recursive
+	 make sdl-gpu-build
 	 ./configure --clone-sdl-mixer --ndebug --prefix="$pkgdir/usr/"
 	 cd tinycc
 	 ./configure --extra-cflags="-fPIC -O2"
@@ -38,7 +42,6 @@ build() {
 	 make
 	 cd ..
 	 make quickjs-2020-03-16
-	 make sdl-gpu-build
 	 make
 }
 
