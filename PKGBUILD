@@ -1,7 +1,7 @@
 # Maintainer: Andrea Denisse Gómez-Martínez <aur at denisse dot dev>
 
 pkgname=vvgo
-pkgdesc='A disk-backed key-value store.'
+pkgdesc='Virtual Video Game Orchestra.'
 arch=(x86_64)
 url='https://vvgo.org/'
 _url='https://github.com/virtual-vgo/vvgo'
