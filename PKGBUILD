@@ -1,4 +1,4 @@
-pkgname=rust-analyzer-git
+pkgname=rust-analyzer-nightly-bin
 pkgver=rust.analyzer.cf4d4f646.2021.05.09.nightly
 pkgrel=1
 epoch=1
