@@ -1,5 +1,5 @@
 pkgbase = multimonitorlock-gui
-	pkgdesc = GUI for multimonitorlock to set the background using QT6 and pyside6
+	pkgdesc = GUI for multimonitorlock to set the background using QT5 and pyside2
 	pkgver = 2021.04.26
 	pkgrel = 1
 	url = https://github.com/The-Repo-Club/multimonitorlock-gui
