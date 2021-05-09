@@ -1,7 +1,7 @@
 pkgbase = rccl
 	pkgdesc = ROCm Communication Collectives Library
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ROCmSoftwarePlatform/rccl
 	arch = x86_64
 	license = custom
@@ -14,4 +14,3 @@ pkgbase = rccl
 	sha256sums = 88ec9b43c31cb054fe6aa28bcc0f4b510213635268f951939d6980eee5bb3680
 
 pkgname = rccl
-

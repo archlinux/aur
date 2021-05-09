@@ -3,7 +3,7 @@
 
 pkgname=rccl
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ROCm Communication Collectives Library"
 arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/rccl"
@@ -15,7 +15,7 @@ sha256sums=('88ec9b43c31cb054fe6aa28bcc0f4b510213635268f951939d6980eee5bb3680')
 _dirname="$(basename $url)-$(basename ${source[0]} .tar.gz)"
 
 build() {
-  CXX=/opt/rocm/hip/bin/hipcc \
+  CXX=/opt/rocm/bin/hipcc \
   cmake -B build -Wno-dev \
         -S "$_dirname" \
         -DCMAKE_INSTALL_PREFIX=/opt/rocm \
