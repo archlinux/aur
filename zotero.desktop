@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Zotero
 Exec=/usr/share/zotero/zotero --url %u 
-Icon=zotero.ico
+Icon=/usr/share/icons/hicolor/256x256/apps/zotero.png
 Type=Application
 Terminal=false
 Categories=Office;

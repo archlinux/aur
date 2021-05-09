@@ -40,7 +40,7 @@ depends=(
 )
 source=("https://download.zotero.org/client/beta/${_pkgver}/Zotero-${_pkgver}_linux-x86_64.tar.bz2" "zotero.desktop")
 sha256sums=('6a2ae49782f709ad699536f623d4ebf910033a849209d9b2e01ae4ee07a926bb'
-            '6c1d5636d11ed98ba49cc3be560047c5168beb27a2bf327a980d042b001dc17b')
+            '54d2778e134c9cb99be00b36a63214da0c5a1790193bcd568d5e7eef044d1e56')
 
 package() {
   install -dDm755 "$pkgdir"/usr/{bin,share/zotero,share/applications}
