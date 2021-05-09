@@ -6,7 +6,7 @@ pkgver=1.2.a8.r6.g395d894
 pkgrel=1
 pkgdesc="A real-time strategy audio game"
 arch=('any')
-url="https://github.com/soundmud/soundrts"
+url="https://github.com/chrys87/soundrts"
 license=('BSD' 'Unknown')
 depends=('python' 'python-pygame')
 makedepends=('git')
@@ -15,7 +15,7 @@ optdepends=('espeak: TTS support'
             'python2-speechd: For speech-dispatcher to work with SoundRTS.')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+git://github.com/soundmud/soundrts.git"
+source=("$_pkgname::git+https://github.com/chrys87/soundrts.git"
         "$_pkgname.desktop"
         "$_pkgname.sh")
 md5sums=('SKIP'
