@@ -1,14 +1,15 @@
 pkgbase = slabbed-or-not
 	pkgdesc = Detect if your container/VPS is running under a specific hypervisor.
-	pkgver = 0.2.r4.ge98601e
+	pkgver = 0.2
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/kaniini/slabbed-or-not
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	depends = glibc
-	source = git://github.com/kaniini/slabbed-or-not.git
+	source = git://github.com/kaniini/slabbed-or-not.git#tag=0.2
 	md5sums = SKIP
 
 pkgname = slabbed-or-not

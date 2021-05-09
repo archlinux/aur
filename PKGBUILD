@@ -1,21 +1,17 @@
-# Maintainer: Masami Ichikawae <masami256@gmail.com>
-# vim:set ts=2 sw=2 et filetype=sh:
+# Contributor: Masami Ichikawae <masami256@gmail.com>
 pkgname=slabbed-or-not
-pkgver=0.2.r4.ge98601e
+pkgver=0.2
 pkgrel=1
+epoch=1
 pkgdesc="Detect if your container/VPS is running under a specific hypervisor."
 arch=('i686' 'x86_64')
 url="https://github.com/kaniini/slabbed-or-not"
 license=('MIT')
 depends=('glibc')
 makedepends=('git')
-source=('git://github.com/kaniini/slabbed-or-not.git')
+source=('git://github.com/kaniini/slabbed-or-not.git#tag=0.2')
 md5sums=('SKIP') # skip git source checksum
 
-pkgver() {
-    cd "$srcdir/$pkgname"
-    git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
-}
 
 build() {
     cd "$srcdir/$pkgname"
