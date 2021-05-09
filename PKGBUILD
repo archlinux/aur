@@ -1,7 +1,7 @@
 # Maintainer: Oliver Ford <dev.aur@ojford.com>
 # shellcheck disable=SC2034,SC2039,SC2154
 pkgname=terraform-plugin-docs
-pkgver=0.2.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Generate and validate Terraform plugin/provider documentation.'
 url='https://github.com/hashicorp/terraform-plugin-docs'
@@ -14,8 +14,8 @@ arch=(
 [ "$CARCH" = "aarch64" ] && pkgarch=arm64
 source=("$url/releases/download/v$pkgver/tfplugindocs_${pkgver}_linux_${pkgarch}.zip")
 
-[ "$pkgarch" = "amd64" ] && sha256sums=('87bc0337d4a70f7c026a04c534c99c824ef5bf47f3a1b811e686e9e2b1336d80')
-[ "$pkgarch" = "arm64" ] && sha256sums=('ca0019c62a2fe554c8bf90a8deff40666178c1fafae290a494ffd32e62cdecaa')
+[ "$pkgarch" = "amd64" ] && sha256sums=('5b6aac3452d9e9d5670f2d8500ec404e2b748007e34f2421433d029678286f04')
+[ "$pkgarch" = "arm64" ] && sha256sums=('8d18b992b9c89465d4637a37c94f6ed62daa0097e4dbbca4fee8ab6380150a4d')
 
 depends=(
 )
