@@ -1,10 +1,11 @@
-# Maintainer: Alad Wenter <alad@archlinux.org>
+# Maintainer: Jason Papakostas <vithos@gmail.com>
+# Contributor: Alad Wenter <alad@archlinux.org>
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Perttu Luukko <perttu.luukko@iki.fi>
 
 pkgname=xkcdpass
 _pkgname='XKCD-password-generator'
-pkgver=1.17.6
+pkgver=1.19.0
 pkgrel=1
 pkgdesc='Generate secure passphares inspired by XKCD'
 arch=('any')
@@ -16,7 +17,7 @@ checkdepends=('python-nose')
 optdepends=('cracklib: alternative wordlist'
             'words: alternative wordlist')
 source=("$url/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('0e25849d0f5730ab42cb82d4ceeba868348b997e25a052657ae775c253aa06d1')
+sha256sums=('bbf5d85556f2f145e52a55d0bb373fac8dbfcf2f8ea5f95bae6f77fe68be77d6')
 
 build() {
     cd "$_pkgname-$pkgname-$pkgver"
