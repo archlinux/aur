@@ -18,9 +18,9 @@ conflicts=("$_pkgname")
 source=("$_pkgname::git+https://github.com/chrys87/soundrts.git"
         "$_pkgname.desktop"
         "$_pkgname.sh")
-md5sums=('SKIP'
-         'd06721831d47dd0dc5b1c5d19ba55f59'
-         'a2ef4d68f7a926f661c30f487e22e0fa')
+sha512sums=('SKIP'
+            '2341fa4183feb5f571e10aef8b442e5967612c6c842e2b623099e934316498885afdbd7e9aa84339d98f53648fe173a028e0140d1568c4042bfdcefa84904bed'
+            'f4d8bc5df309681f607eb444c097cde74819d8aa2775592acea3a47b876cc3c9c5d0609e43b5bff2f01e5567c1adad2b6e8c9cef1c70efd5f3f7678f7c2990d5')
 
 pkgver() {
   cd "$_pkgname"

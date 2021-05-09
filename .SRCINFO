@@ -17,9 +17,9 @@ pkgbase = soundrts-git
 	source = soundrts::git+https://github.com/chrys87/soundrts.git
 	source = soundrts.desktop
 	source = soundrts.sh
-	md5sums = SKIP
-	md5sums = d06721831d47dd0dc5b1c5d19ba55f59
-	md5sums = a2ef4d68f7a926f661c30f487e22e0fa
+	sha512sums = SKIP
+	sha512sums = 2341fa4183feb5f571e10aef8b442e5967612c6c842e2b623099e934316498885afdbd7e9aa84339d98f53648fe173a028e0140d1568c4042bfdcefa84904bed
+	sha512sums = f4d8bc5df309681f607eb444c097cde74819d8aa2775592acea3a47b876cc3c9c5d0609e43b5bff2f01e5567c1adad2b6e8c9cef1c70efd5f3f7678f7c2990d5
 
 pkgname = soundrts-git
 
