@@ -4,7 +4,7 @@
 
 pkgname=miopen-hip
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD's Machine Intelligence Library (HIP backend)"
 arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/MIOpen"
@@ -13,9 +13,16 @@ depends=('rocblas' 'rocm-clang-ocl' 'hip-rocclr')
 makedepends=('cmake' 'rocm-cmake' 'miopengemm')
 provides=('miopen')
 conflicts=('miopen')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/rocm-$pkgver.tar.gz")
-sha256sums=('068b1bc33f90fe21d3aab5697d2b3b7b930e613c54d6c5ee820768579b2b41ee')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/rocm-$pkgver.tar.gz"
+        'boost-1.72-download.patch')
+sha256sums=('068b1bc33f90fe21d3aab5697d2b3b7b930e613c54d6c5ee820768579b2b41ee'
+            '25fd11b55180801f609f454d0d14c8dd8a3ca65217bcebad7eb8edfbaec67c5d')
 _dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
+
+prepare() {
+    cd "$_dirname"
+    patch -Np1 -i "$srcdir/boost-1.72-download.patch"
+}
 
 build() {
   cd "$_dirname"
