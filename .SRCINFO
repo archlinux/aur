@@ -1,5 +1,5 @@
 pkgbase = krathalans-apparmor-profiles-git
-	pkgdesc = Krathalan's apparmor profiles
+	pkgdesc = Krathalan's apparmor profiles for desktop and server software (Firefox, nginx, postfix, and more)
 	pkgver = r612.26170ff
 	pkgrel = 1
 	url = https://github.com/krathalan/apparmor-profiles

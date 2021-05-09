@@ -7,7 +7,7 @@
 pkgname=krathalans-apparmor-profiles-git
 pkgver=r612.26170ff
 pkgrel=1
-pkgdesc="Krathalan's apparmor profiles"
+pkgdesc="Krathalan's apparmor profiles for desktop and server software (Firefox, nginx, postfix, and more)"
 url="https://github.com/krathalan/apparmor-profiles"
 license=("GPL3")
 arch=("any")
