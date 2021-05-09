@@ -1,7 +1,7 @@
 # Maintainer: James Spencer <james.s.spencer@gmail.com>
 
 pkgname=cubew
-_version=4.5
+_version=4.6
 _patch=
 pkgver=${_version}${_patch}
 pkgrel=1
@@ -11,7 +11,7 @@ url="http://www.scalasca.org/software/cube-4.x/download.html"
 license=('BSD')
 depends=('zlib')
 source=(http://apps.fz-juelich.de/scalasca/releases/cube/${_version}/dist/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('16bd8fd864197a74ca65f7325761ad75d73d555072326e95e1338cff39f28a5c')
+sha256sums=('99fe58ce7ab13061ebfbc360aedaecc28099a30636c5269a42c0cbaf57149aa8')
 
 build() {
   cd "$srcdir/${pkgname}-$pkgver"
