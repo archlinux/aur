@@ -1,0 +1,25 @@
+pkgbase = astronciaiptv
+	pkgdesc = IPTV player
+	pkgver = 0.0.30
+	pkgrel = 1
+	url = https://gitlab.com/astroncia/iptv
+	arch = any
+	license = GPL3
+	depends = python
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-x11extras
+	depends = mpv
+	depends = python-pyqt5
+	depends = python-pillow
+	depends = python-pandas
+	depends = python-gobject
+	depends = python-pydbus
+	depends = python-unidecode
+	depends = python-requests
+	depends = ffmpeg
+	source = astronciaiptv_0.0.30.deb::https://gitlab.com/astroncia/iptv-binaries/-/raw/master/astroncia-iptv.deb
+	sha512sums = SKIP
+
+pkgname = astronciaiptv
+
