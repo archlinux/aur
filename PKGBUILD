@@ -25,6 +25,7 @@ pkgver() {
 
 build() {
     cd "${pkgname}"
+    python setup.py build
 }
 
 
