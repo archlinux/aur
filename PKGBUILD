@@ -1,15 +1,15 @@
 # Maintainer: James Spencer <james.s.spencer@gmail.com>
 
 pkgname=opari2
-pkgver=2.0.5
-pkgrel=2
+pkgver=2.0.6
+pkgrel=1
 pkgdesc="Instrumentation tool for OpenMP and hybrid codes."
 arch=('i686' 'x86_64')
 url="http://www.vi-hps.org/projects/score-p/"
 license=('BSD')
 depends=('gcc-fortran')
-source=(http://www.vi-hps.org/cms/upload/packages/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('9034dd7596ac2176401090fd5ced45d0ab9a9404444ff767f093ccce68114ef5')
+source=(http://perftools.pages.jsc.fz-juelich.de/cicd/$pkgname/tags/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz)
+sha256sums=('55972289ce66080bb48622110c3189a36e88a12917635f049b37685b9d3bbcb0')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
