@@ -6,20 +6,20 @@ url='https://octomaphub.io'
 pkgname='ros-melodic-octovis'
 pkgver='1.9.7'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('GPLv2')
 
 ros_makedepends=(ros-melodic-octomap)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   qt
-  libqglviewer-qt)
+  libqglviewer)
 
 ros_depends=(ros-melodic-catkin
   ros-melodic-octomap)
 depends=(${ros_depends[@]}
   qt
-  libqglviewer-qt)
+  libqglviewer)
 
 # Git version (e.g. for debugging)
 # _tag=release/melodic/octovis/${pkgver}-${_pkgver_patch}
