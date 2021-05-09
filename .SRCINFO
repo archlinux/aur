@@ -1,12 +1,13 @@
 pkgbase = firefox-extension-google-search-link-fix
 	pkgdesc = Prevents Google and Yandex search pages from modifying search result links when you click them
 	pkgver = 1.6.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/palant/searchlinkfix
 	arch = any
 	groups = firefox-addons
 	license = MPL2
 	makedepends = npm
+	makedepends = nodejs>=12
 	depends = firefox
 	source = https://github.com/palant/searchlinkfix/archive/1.6.10/searchlinkfix-1.6.10.tar.gz
 	sha256sums = 3ce17e496703191fa2897390285056911b2669230ee8443b65bc64adb65cf855
