@@ -2,14 +2,14 @@
 # This PKGBUILD is inspired from the package sdcc in Archlinux repos.
 
 pkgname=sdcc-svn
-pkgver=3.6.9.svn10062M
+pkgver=4.1.4.svn12249M
 pkgrel=1
 pkgdesc="Small Device C Compiler suite"
 url="http://sdcc.sourceforge.net/"
 arch=('i686' 'x86_64')
 license=('GPL')
 
-provides=('sdcc')
+provides=("sdcc=$pkgver")
 conflicts=('sdcc')
 depends=('bash' 'gcc-libs' 'boost-libs')
 makedepends=('gputils' 'flex' 'bison' 'patch' 'boost' 'subversion')
@@ -37,12 +37,14 @@ prepare() {
 build() {
 	cd "$srcdir/sdcc/sdcc"
 
+	# Note : Add the following to options to activate non-free targets:
+	# --enable-avr-port --enable-xa51-port
+
 	./configure \
 		--prefix=/usr \
 		--includedir=/usr/include/sdcc \
 		--libdir=/usr/lib/sdcc \
-		--disable-werror \
-		#--enable-avr-port --enable-xa51-port  # Optional: activate non-free targets
+		--disable-werror
 
 	make
 }
