@@ -1,0 +1,26 @@
+pkgbase = basiliskii-emaculation-git
+	pkgdesc = Open Source 68k Macintosh Emulator
+	pkgver = r2893.a306262e
+	pkgrel = 1
+	url = https://github.com/emaculation/macemu
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	depends = gtk2
+	depends = sdl
+	depends = vde2
+	provides = basiliskii
+	conflicts = basiliskii
+	source = emaculation-macemu::git+https://github.com/emaculation/macemu
+	source = https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/basiliskii-emaculation-fix-unnecessary-AM_GNU_GETTEXT-in-configure.ac.patch
+	sha256sums = SKIP
+	sha256sums = 75cd86143f1a7f069c506db7933d3498ef96b2d526701725904b4d24cd07c33e
+
+pkgname = basiliskii-emaculation-git
+
