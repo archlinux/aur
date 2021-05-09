@@ -1,11 +1,10 @@
 pkgbase = qt-dab
 	pkgdesc = Software DAB decoder for use with various SDR devices
 	pkgver = 3.71
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sdr-j.tk/
 	arch = x86_64
 	license = GPL2
-	makedepends = libiio
 	depends = faad2
 	depends = fftw
 	depends = hicolor-icon-theme
@@ -13,6 +12,12 @@ pkgbase = qt-dab
 	depends = libsndfile
 	depends = portaudio
 	depends = qwt
+	optdepends = airspy: Support for Airspy
+	optdepends = hackrf: Support for HackRF
+	optdepends = limesuite: Support for LimeSDR
+	optdepends = libiio: Support for Pluto
+	optdepends = rtl-sdr: Support for RTL-SDR
+	optdepends = libsdrplay: Support for SDRplay
 	source = https://github.com/JvanKatwijk/qt-dab/archive/refs/tags/Qt-DAB3.71.tar.gz
 	sha256sums = 8a5ec68a7b920ee3b397fa8d9bd2e773f5e95ca5bb5a939dc907f4509d3df84f
 
