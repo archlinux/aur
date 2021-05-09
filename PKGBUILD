@@ -1,9 +1,9 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Stas Elensky <stas-at-flexsys-dot-com-dot-ua>
 
 pkgname=mingw-w64-libmodbus
-pkgver=3.1.4
-pkgrel=2
+pkgver=3.1.6
+pkgrel=1
 pkgdesc="A Modbus library for Linux, Mac OS X, FreeBSD, QNX and Win32 (mingw-w64)"
 arch=('any')
 url="https://libmodbus.org/"
@@ -13,7 +13,7 @@ makedepends=('mingw-w64-configure')
 options=(!strip !buildflags staticlibs)
 _pkgfqn="libmodbus-${pkgver}"
 source=("https://libmodbus.org/releases/libmodbus-${pkgver}.tar.gz")
-md5sums=('b1a8fd3a40d2db4de51fb0cbcb201806')
+md5sums=('15c84c1f7fb49502b3efaaa668cfd25e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
