@@ -1,7 +1,7 @@
 # Maintainer: Marcus Hoffmann <bubu@bubu1.eu>
 _pkgname=Weblate
 pkgname=weblate
-pkgver=4.6
+pkgver=4.6.2
 pkgrel=1
 
 pkgdesc="Web based localization tool with tight version control integration"
@@ -43,7 +43,7 @@ depends=('python-bleach'
          'python-siphashc'
          'python-social-auth-core>=4.1.0'
          'python-social-auth-app-django'
-         'translate-toolkit>=3.3.3'
+         'translate-toolkit>=3.3.6'
          'python-translation-finder'
          'python-user-agents'
          'python-weblate_schemas'
@@ -69,7 +69,7 @@ source=("https://github.com/WeblateOrg/weblate/releases/download/weblate-${pkgve
         'celery-weblate.service'
         'logrotate-celery')
 
-sha256sums=('13fde63f55cf2a38d5ef9b1bc2ebf897242b12190346f2dd3c89838bced7444e'
+sha256sums=('0ba9d720c60793b4efdad5f97699c837e4c4e3ffb8ec0643ebb1247a1de8de5b'
             '115c69062ac231d71596ce6b7d4afd0c6ea9b934f50de062c58315b2ef007137'
             '094525f9bf6e40f96c58e089fc596319f557a4a20bd1b23f426352f94fa43dad'
             '065247e8a96f6db16c0d08b919e53cd5e04d71a2be94f2ff949dd726dee06394'
