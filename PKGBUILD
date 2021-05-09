@@ -30,8 +30,8 @@ sha256sums=("SKIP")
 build() {
 	 cd "${srcdir}/yirl"
 	 git submodule update --init --recursive
-	 make sdl-gpu-build
 	 ./configure --clone-sdl-mixer --ndebug --prefix="$pkgdir/usr/"
+	 make sdl-gpu-build
 	 cd tinycc
 	 ./configure --extra-cflags="-fPIC -O2"
 	 make
