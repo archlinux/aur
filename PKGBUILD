@@ -1,14 +1,14 @@
 # Maintainer: Tomasz Paś <t.pas93 at gmail>
 pkgname=alvr-amd-git
 pkgver=r1439.b4a7bce4
-pkgrel=1
-pkgdesc="Experimental linux version of ALVR - Air Light VR. Stream VR games from your PC to your headset via Wi-Fi."
+pkgrel=2
+pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
 license=('MIT')
 groups=()
-depends=('ffmpeg-amd-full' 'rust' 'libunwind' 'steam-native-runtime' 'vulkan-icd-loader' 'vulkan-driver')
-makedepends=('git')
+depends=('ffmpeg-amd-full' 'libunwind' 'steam-native-runtime' 'vulkan-icd-loader' 'vulkan-driver')
+makedepends=('git' 'rust')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('alvr-amd'::'git+https://github.com/alvr-org/ALVR.git')

@@ -1,14 +1,14 @@
 pkgbase = alvr-amd-git
-	pkgdesc = Experimental linux version of ALVR - Air Light VR. Stream VR games from your PC to your headset via Wi-Fi.
+	pkgdesc = Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi.
 	pkgver = r1439.b4a7bce4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alvr-org/ALVR
 	install = post.install
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = rust
 	depends = ffmpeg-amd-full
-	depends = rust
 	depends = libunwind
 	depends = steam-native-runtime
 	depends = vulkan-icd-loader
