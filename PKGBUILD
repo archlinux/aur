@@ -1,7 +1,7 @@
 # Maintainer: Rodolphe Bréard <packages@what.tf>
 pkgname=acmed
 pkgver=0.17.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An ACME (RFC 8555) client daemon"
 arch=('x86_64')
 url="https://github.com/breard-r/acmed/"
@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/breard-r/${pkgname}/arc
         "acmed.tmpfiles")
 sha256sums=('3c6d43afe2dd62b1d5505b5aa002a0a0317646505e3bd677ca2e3b3772a1dbeb'
             'dcc0cc36c3fafcd4bb940fdd2f6bf90a9b1ba95858d908fcaed23851361a3a90'
-            'f43f62263a210a60bea2a6fe684881711fae9107702288c575521ff2246b46d6')
+            '1985cb8fe2cbb38f79879056cb4546a895b56694218f62fde1356147ad79a100')
 
 build() {
   cd "${pkgname}-${pkgver}"
