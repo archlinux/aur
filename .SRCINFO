@@ -1,6 +1,6 @@
 pkgbase = cue2tracks-git
 	pkgdesc = Bash script for splitting audio CD image to tracks with cue sheet info
-	pkgver = 0.2.17.afe350c
+	pkgver = 0.2.17.r30.afe350c
 	pkgrel = 1
 	url = https://github.com/ar-lex/cue2tracks
 	arch = any

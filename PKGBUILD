@@ -1,7 +1,8 @@
 # Maintainer: Aleksey V. Mikhaylov <gmikhalytch@gmail.com>
 _pkgname="cue2tracks"
-_pkgver_base="0.2.17"
-_pkgver="${_pkgver_base}.afe350c"
+_untagged_upstream_version="0.2.17"
+_pkgver_base="${_untagged_upstream_version}"
+_pkgver="${_pkgver_base}.r30.afe350c"
 pkgname="${_pkgname}-git"
 pkgver="${_pkgver}"
 pkgrel=1
@@ -40,25 +41,24 @@ optdepends=(
 source=("${_pkgname}::git+https://github.com/ar-lex/cue2tracks.git")
 md5sums=('SKIP')
 
+# based on best practices being documented here: https://wiki.archlinux.org/title/VCS_package_guidelines#Git
 pkgver() {
     # change dir to cloned upstream sources
   cd "${srcdir}/${_pkgname}"
-    # first we need to check if the upstream still doesn't have tagged versions
-  git_description_result="$(git describe --long --tags 2>/dev/null || true)"
-  if [ x"${git_description_result}" != "x" ]; then
-      # for upstreams with healthy tags (like Carla), there's whole version
-    echo -n "${git_description_result}"
-  else
-      # even if there're no tags, the hash movement can provide some version dynamics
-      # fallback to safer `git describe --always` call
-    git_safe_description_result="$(git describe --long --tags --always 2>/dev/null || true)"
-    if [ x"${git_safe_description_result}" != "x" ]; then
-      echo -n "${_pkgver_base}.${git_safe_description_result}"
-    else
-        # last fallback - return const
-      echo -n "${_pkgver}"
-    fi
-  fi
+
+    # following lines first trying to get the git description on upstream
+    #   (and once upstream have started having tags it will succeed),
+    # then fallbacks to printing something artificial, using
+    #   hardcoded known upstream, VSC revisions amount, and HEAD hash
+
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.r%s.%s" \
+           "$(echo "${_untagged_upstream_version}")" \
+           "$(git rev-list --count HEAD)" \
+           "$(git rev-parse --short HEAD)"
+  )
+
 }
 
 package() {
