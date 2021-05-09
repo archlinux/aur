@@ -2,7 +2,7 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-rocclr
 pkgver=4.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
 url='https://rocmdocs.amd.com/en/latest/Installation_Guide/HIP.html'
@@ -41,7 +41,7 @@ package() {
   install -d "$pkgdir/usr/bin"
   local _fn
   for _fn in hipcc hipconfig; do
-    ln -s "/opt/rocm/hip/bin/$_fn" "$pkgdir/usr/bin/$_fn"
+    ln -s "/opt/rocm/bin/$_fn" "$pkgdir/usr/bin/$_fn"
   done
 
   install -Dm644 /dev/stdin "$pkgdir/etc/ld.so.conf.d/hip.conf" <<EOF
