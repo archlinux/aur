@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=pangolin-desktop-git
-pkgver=r1359.5407801
+pkgver=210317.r14.gf572b35
 pkgrel=1
 pkgdesc="Preview of Pangolin Desktop UI shell, designed for dahliaOS, written in Flutter."
 arch=('x86_64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
