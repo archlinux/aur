@@ -4,7 +4,7 @@
 
 _pkgname=rp-pppoe
 pkgname=${_pkgname}-gui
-pkgver=3.14
+pkgver=3.15
 pkgrel=1
 pkgdesc="GUI for Roaring Penguin's Point-to-Point Protocol over Ethernet client"
 arch=('i686' 'x86_64')
@@ -33,5 +33,5 @@ package() {
   cd ../gui
   make PLUGIN_DIR="/usr/lib/rp-pppoe" DESTDIR="$pkgdir" install
 }
-md5sums=('399ec9f69149f4a42edf0b4f5ac2173c'
+md5sums=('5b6e19e7a31ff228fafd2e62f023e521'
          '8df35e67558b6b4567d1ab24c9202898')
