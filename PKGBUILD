@@ -2,15 +2,15 @@
 # Contributor: Vasco Costa <vasco dot costa at geekslot dot com>
 # Contributor: jaro3
 
-# _USE_CCACHE=false
-_USE_CCACHE=true
+_USE_CCACHE=false
+# _USE_CCACHE=true
 
 _pkgname=wwwoffle
 pkgname="${_pkgname}-svn"
 epoch=1
 # _pkgver=2.9j
 pkgver=2.9j+svn2254.d20210509
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple caching proxy server with special features (request, recursive fetch, subscription, modify HTML, ...) for use with dial-up internet links. Includes startup scripts for OpenRC, System V init, systemd."
 arch=(
   'arm'
