@@ -3,7 +3,7 @@
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 # Contributor: x-demon
 pkgname=nicotine-plus-git
-pkgver=2.3.0.dev1.r4051.e99823dc
+pkgver=3.0.7.dev1.r4749.c646b3ca
 pkgrel=1
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python-gobject' 'gtk3')
 makedepends=('git')
 optdepends=('gspell: for spell checking in chat'
             'libappindicator-gtk3: for tray icon')
-checkdepends=('python-pytest')
+checkdepends=('python-pytest' 'xorg-server-xvfb')
 provides=("${pkgname%-git}" 'nicotine+' 'nicotine')
 conflicts=("${pkgname%-git}" 'nicotine+' 'nicotine')
 source=('git+https://github.com/Nicotine-Plus/nicotine-plus.git')
@@ -21,8 +21,8 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s.r%s.%s" "$(head -n 1 debian/changelog | cut -d'(' -f 2 | cut -d')' -f 1 | \
-		sed 's/-/./')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s.r%s.%s" "$(python setup.py --version)" \
+		"$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -36,8 +36,8 @@ check() {
 	# Basic sanity check
 	./nicotine --version | grep Nicotine+
 
-	# Perform local in-tree unit tests
-	pytest test/unit
+	# Perform integration and unit tests
+	xvfb-run pytest
 }
 
 package() {
