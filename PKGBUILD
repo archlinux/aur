@@ -2,7 +2,7 @@
 pkgdesc="Icons for the X Desktop Environment (XDE)"
 pkgname=xde-icons-git
 _pkgname=xde-icons
-pkgver=1.5.r1.gcdf7695
+pkgver=1.6.r1.g5aa72fa
 pkgrel=1
 arch=('any')
 license=(CCPL:by-sa)
