@@ -6,7 +6,7 @@
 # Contributor: Raphael Proust <raphlalou at gmail dot com>
 
 pkgname=surf
-pkgver=2.0+9+g5c52733
+pkgver=2.1
 pkgrel=1
 pkgdesc='A simple web browser based on WebKit/GTK+.'
 arch=('x86_64')
@@ -19,32 +19,31 @@ optdepends=('dmenu: URL-bar'
             'curl: default download handler')
 makedepends=('git')
 install='surf.install'
-_commit=5c527339842fdd06411eaf25547aef0902f96915
+_commit=d75c3ded0b1ebb8e2778961c5a928f247798686a
 source=("git+git://git.suckless.org/surf#commit=$_commit"
-        'config.h')
+        "config.h")
 sha256sums=('SKIP'
-            '439b6812d6aff2fe9f69f6e2d0b8fa521bc4466ea072510409617d25778b5fba')
+            '02a630a13d800c4baf3dd8eab8712c38de071ee15f8b6820942828cd2b1958a1')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd $pkgname
   git describe --tags | sed 's/-/+/g'
 }
 
+prepare() {
+  cd $pkgname
+  cp "$srcdir/config.h" config.h
+}
+
 build() {
-  cd "${srcdir}/${pkgname}"
-
-  cp "${srcdir}/config.h" config.h
-
-  sed -i 's/CPPFLAGS =/CPPFLAGS +=/g' config.mk
-  sed -i 's/CFLAGS =/CFLAGS +=/g' config.mk
-  sed -i 's/LDFLAGS =/LDFLAGS +=/g' config.mk
-
+  cd $pkgname
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd $pkgname
 
-  make PREFIX=/usr DESTDIR="${pkgdir}" install
-  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  make PREFIX=/usr DESTDIR=$pkgdir install
+  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
