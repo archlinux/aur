@@ -83,12 +83,12 @@ package()
 
     # Modify run.sh to state the absolute path of the .csproj.
     echo -e "#!/bin/bash
-dotnet run --no-launch-profile --no-build -c Release -p \"/usr/share/webapps/${_pkgname}/BTCPayServer/BTCPayServer.csproj\" -- \${@}" > "${srcdir}"/"${_pkgname}"/run.sh
+dotnet run --no-launch-profile --no-build -c Release -p \"/usr/share/webapps/\"${_pkgname}\"/BTCPayServer/BTCPayServer.csproj\" -- \"\${@}\"" > "${srcdir}"/"${_pkgname}"/run.sh
 
     # Install the software.
     cp -r "${srcdir}"/"${_pkgname}"/ "${pkgdir}"/usr/share/webapps/
 
-    ## Symlinking the scripts.
+    ## Link the scripts.
     ln -sfrT "${pkgdir}"/usr/share/webapps/"${_pkgname}"/run.sh "${pkgdir}"/usr/bin/"${_pkgname}"
     chmod 755 "${pkgdir}"/usr/bin/"${_pkgname}"
 
