@@ -2,7 +2,7 @@
 
 pkgname=rocsolver
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Subset of LAPACK functionality on the ROCm platform'
 arch=('x86_64')
 url='https://rocsolver.readthedocs.io/en/latest/userguidedocu.html'
@@ -15,7 +15,7 @@ sha256sums=('da5cc800dabf7367b02b73c93780b2967f112bb45232e4b06e5fd07b4d5b8d88')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" .tar.gz)"
 
 build() {
-    CXX=/opt/rocm/hip/bin/hipcc \
+    CXX=/opt/rocm/bin/hipcc \
     cmake   -B build -Wno-dev \
             -S "$_dirname" \
             -DCMAKE_INSTALL_PREFIX=/opt/rocm \

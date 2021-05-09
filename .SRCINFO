@@ -1,7 +1,7 @@
 pkgbase = rocsolver
 	pkgdesc = Subset of LAPACK functionality on the ROCm platform
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rocsolver.readthedocs.io/en/latest/userguidedocu.html
 	arch = x86_64
 	license = BSD 2-Clause
