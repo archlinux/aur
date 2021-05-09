@@ -64,7 +64,7 @@ pkgver=${_major}.${_minor}
 _stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=3
+pkgrel=4
 pkgdesc='Linux XanMod CacULE RT'
 versiontag=5.11.12-rt11-xanmod1
 arch=('x86_64')
@@ -79,7 +79,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_major.tar.xz"
         "${_patchsource}/cacule-patches/cacule-5.11-rt.patch")
 sha512sums=('a567ec133018bb5ec00c60281479b466c26e02137a93a9c690e83997947df02b6fd94e76e8df748f6d70ceb58a19bacc3b1467de10b7a1fad2763db32b3f1330'
             'c2aae46711064ac47b38bdd499f9957fd4b02d0e8866ae06b19012fed0ae1237db8613f935150982a5583af2e3a80102d2844ea37d9a6a6b96dacccbb61129c5'
-            '8a05218c5e98e0aa08a8e26a75806ac80bbb6dc46819fab24a5139d5efed2c27e4aa044270128fb7ad0f870cfa668533da08a56db5912a249c3c24e00da20ec6')
+            'f86e2adfb382ce0b13c837091ce12a80580f5026772148db5a84c27621c70795dd571eebb58113b621f302aab916b84eb8b8ac32e76b34f21590cd672afff21e')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
