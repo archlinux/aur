@@ -1,0 +1,15 @@
+pkgbase = kyotocabinet-java
+	pkgdesc = Library of routines for managing a database
+	pkgver = 1.24
+	pkgrel = 1
+	url = https://dbmx.net/kyotocabinet
+	arch = x86_64
+	license = GPLv3
+	makedepends = jdk15-openjdk
+	makedepends = autoconf
+	depends = jre
+	source = http://fallabs.com/kyotocabinet/javapkg/kyotocabinet-java-1.24.tar.gz
+	sha256sums = 9c0ddd561dc34e6b45cb37bef69e0d4536cc42040646247f28635b898e477fb0
+
+pkgname = kyotocabinet-java
+
