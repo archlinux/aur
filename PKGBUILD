@@ -36,3 +36,8 @@ package() {
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+info() {
+  echo "Redis and Minio are runtime dependencies for the webapp."
+  echo "If the webapp cannot connect to Redis and Minio at startup, it will complain and exit."
+}
