@@ -1,0 +1,20 @@
+pkgbase = blackmagic-git
+	pkgdesc = In application debugger for ARM Cortex microcontrollers
+	pkgver = 1.7.1.r195.gcfbe9f1
+	pkgrel = 1
+	url = https://github.com/blacksphere/blackmagic
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = hidapi
+	makedepends = python
+	depends = libusb
+	depends = libftdi
+	depends = libhidapi-libusb.so
+	provides = blackmagic
+	conflicts = blackmagic
+	source = git+https://github.com/blacksphere/blackmagic
+	sha512sums = SKIP
+
+pkgname = blackmagic-git
+

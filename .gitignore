@@ -1,0 +1,4 @@
+blackmagic
+src
+pkg
+*.pkg.tar*
