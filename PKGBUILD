@@ -1,12 +1,13 @@
-# Maintainer: Jaroslav Lichtblau <svetlemodry@archlinux.org>
-# Contributor: Martin Wimpress <code@flexion.org>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
+# Contributor: Austin Haedicke (austin.haedicke@gmail.com)
+# Contributor: @RubenKelevra https://github.com/RubenKelevra
 # Contributor: Sauyon Lee <sauyonl@sauyon.com>
-# Contributor: Kevin MacMartin <prurigro@gmail.com>
-# Contributor: korjjj <korjjj+aur@gmail.com>
+# Contributor: Martin Wimpress <code@flexion.org>
 
 pkgbase=syncthing-git
 pkgname=(syncthing-git syncthing-relaysrv-git)
-pkgver=1.12.1.r41.ge6f0ed65b
+pkgver=1.16.1.r22.g3746c899b
 pkgrel=1
 arch=(x86_64)
 url="https://syncthing.net/"
