@@ -3,3 +3,4 @@ pkg/
 FreeCAD/
 *.tar.xz
 *.tar.gz
+*.tar.zst
