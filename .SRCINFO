@@ -1,6 +1,6 @@
 pkgbase = decaf-emu-git
 	pkgdesc = An experimental open-source Nintendo Wii U emulator
-	pkgver = r5067.876e342d
+	pkgver = r5096.0cd56a2f
 	pkgrel = 1
 	url = https://github.com/decaf-emu/decaf-emu
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = decaf-emu-git
 	source = excmd::git+https://github.com/exjam/excmd
 	source = fmt::git+https://github.com/fmtlib/fmt
 	source = glslang::git+https://github.com/KhronosGroup/glslang
-	source = gsl-lite::git+https://github.com/decaf-emu/gsl-lite
+	source = gsl-lite::git+https://github.com/gsl-lite/gsl-lite
 	source = imgui::git+https://github.com/ocornut/imgui
 	source = libbinrec::git+https://github.com/decaf-emu/libbinrec
 	source = ovsocket::git+https://github.com/exjam/ovsocket
