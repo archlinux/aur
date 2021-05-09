@@ -1,7 +1,7 @@
 pkgbase = linux-hardened-cacule
 	pkgdesc = Security-Hardened Linux with the cacule scheduler
 	pkgver = 5.11.19.hardened1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anthraxx/linux-hardened
 	arch = x86_64
 	license = GPL2
@@ -22,6 +22,7 @@ pkgbase = linux-hardened-cacule
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.11.19.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.11.19.tar.sign
 	source = https://github.com/anthraxx/linux-hardened/releases/download/5.11.19-hardened1/linux-hardened-5.11.19-hardened1.patch
+	source = cpu-patches.patch
 	source = cacule-5.11.patch
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
@@ -30,6 +31,7 @@ pkgbase = linux-hardened-cacule
 	sha256sums = 5aee19ad466b5bbbde642077f42bfaafff4e612296bdd7946faa01d917472b4b
 	sha256sums = SKIP
 	sha256sums = 6e8491ffdfb350fa37fa6a3cac31603fc2f3517c8f2ca8d43f54461bc8ab9f99
+	sha256sums = cb22d1ab70ca801e0b8b89bcf98bf4eb911667c5bd93a7914efb5995da96af75
 	sha256sums = 94bc3f303f69863d5cbc9c64e24862b4948a32756d7167f13e261fabd15c0f66
 	sha256sums = b8d0a96303d908269f5b96ba21cc97fbc948f099fd7dd01e6c91fce095f6b861
 
