@@ -1,6 +1,6 @@
 pkgbase = vsce
 	pkgdesc = Visual Studio Code extension manager
-	pkgver = 1.87.1
+	pkgver = 1.88.0
 	pkgrel = 1
 	url = https://github.com/Microsoft/vscode-vsce
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = vsce
 	makedepends = typescript
 	makedepends = yarn
 	depends = nodejs
-	source = https://registry.npmjs.org/vsce/-/vsce-1.87.1.tgz
-	sha256sums = adda55636e548b848df86cb78abb2fd813c13267b59a5ed5c8175a7c19c87ce6
+	source = https://registry.npmjs.org/vsce/-/vsce-1.88.0.tgz
+	sha256sums = 6ac118557fdb182ca8dd9ca9ab126142dd02ace7c45bb098f686311f8917174c
 
 pkgname = vsce
 
