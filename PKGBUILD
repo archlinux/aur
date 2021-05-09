@@ -22,7 +22,7 @@ pkgname=(
   "$pkgbase-common" "$pkgbase-x11" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-pkgver=r57554.267090d82a2
+pkgver=r57584.8cbbb961201
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -64,7 +64,7 @@ _fmt_version="6.1.2"
 _spdlog_version="1.5.0"
 _crossguid_version="8f399e8bd4"
 _fstrcmp_version="0.7.D001"
-_flatbuffers_version="1.11.0"
+_flatbuffers_version="1.12.0"
 _libudfread_version="1.1.0"
 
 source=(
@@ -102,7 +102,7 @@ b2sums=('SKIP'
         '36e7451a8732c62dcbf47e6d287ea582827b6196a468b8648803ea1bc9a37a5f681d87488f748d749183d97783ac7fb47a3f2aeed64fc6a684f9ee85b67ae28d'
         'e6f1f495adf541102e3b5ac11dfd14b770a52e23ef9d613bc6204f6493ff4df4da9ba290ad6c3a7e5c7fcf159cafdf355bfe668a4ddceb4329df934c65966d19'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
-        '69024d77e6e7a5036e24729e337b17680dc3735cb1d209058a88b980989826fe56ff113c1177410106e0f70d827fa82603372277e3bc1aa4d12ffe5bb979af96'
+        '441123be124ad851efa30bda0d828a764ebaf79ba6692a6e5904000b33818e9de78c3a964037ac93ef562890980c58169141e55354dce86857c02bcd917150d6'
         'bac6c6650f8347458dd2dd66f318b43a769b0896d68f6a6f1310754527a69feaa52b2f6f48d67c7e811c2dafa5d3863a9a07c738df8c12abed2718fb06254b28'
         'e7fab72ebecb372c54af77b4907e53f77a5503af66e129bd2083ef7f4209ebfbed163ffd552e32b7181829664fff6ab82a1cdf00c81dc6f3cc6bfc8fa7242f6e'
         '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0'
@@ -180,7 +180,7 @@ package_kodi-git-common() {
     'bluez-libs' 'curl' 'dav1d' 'desktop-file-utils' 'hicolor-icon-theme'
     'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec' 'libmicrohttpd' 'libnfs'
     'libplist' 'libpulse' 'libva' 'libxslt' 'lirc' 'mariadb-libs' 'mesa'
-           'python-pillow' 'python-pycryptodomex' 'python-simplejson'
+    'python-pillow' 'python-pycryptodomex' 'python-simplejson'
     'shairplay' 'smbclient' 'sqlite' 'taglib' 'tinyxml'
   )
   optdepends=(
@@ -200,7 +200,6 @@ package_kodi-git-common() {
   )
 
   cd kodi-build
-  # install eventclients
   for _cmp in ${_components[@]}; do
   DESTDIR="$pkgdir" /usr/bin/cmake \
     -DCMAKE_INSTALL_COMPONENT="$_cmp" \
@@ -218,7 +217,7 @@ package_kodi-git-x11() {
   provides=("kodi=${pkgver}")
   replaces=('kodi')
   depends=(
-    'kodi-git-common' 'libva-vdpau-driver' 'libxrandr'
+    'kodi-git-common' 'libxrandr'
   )
 
   cd kodi-build
@@ -249,7 +248,7 @@ package_kodi-git-gbm() {
   conflicts=('kodi-gbm')
   replaces=('kodi')
   depends=(
-    'kodi-git-common' 'libxkbcommon'
+    'kodi-git-common' 'libxkbcommon' 'libinput'
   )
 
   cd kodi-build
@@ -274,7 +273,6 @@ package_kodi-git-eventclients() {
   )
 
   cd kodi-build
-  # install eventclients
   for _cmp in ${_components[@]}; do
     DESTDIR="$pkgdir" /usr/bin/cmake \
       -DCMAKE_INSTALL_COMPONENT="$_cmp" \
@@ -284,7 +282,6 @@ package_kodi-git-eventclients() {
 
 # kodi-tools-texturepacker
 # components: kodi-tools-texturepacker
-
 package_kodi-git-tools-texturepacker() {
   pkgdesc="Kodi Texturepacker tool (master branch)"
   provides=("kodi-tools-texturepacker=${pkgver}")
@@ -296,7 +293,6 @@ package_kodi-git-tools-texturepacker() {
   )
 
   cd kodi-build
-  # install eventclients
   for _cmp in ${_components[@]}; do
     DESTDIR="$pkgdir" /usr/bin/cmake \
       -DCMAKE_INSTALL_COMPONENT="$_cmp" \
@@ -318,7 +314,6 @@ package_kodi-git-dev() {
   )
 
   cd kodi-build
-  # install eventclients
   for _cmp in ${_components[@]}; do
     DESTDIR="$pkgdir" /usr/bin/cmake \
       -DCMAKE_INSTALL_COMPONENT="$_cmp" \
