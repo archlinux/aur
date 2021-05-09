@@ -1,13 +1,13 @@
 pkgbase = delft-icon-theme
 	pkgdesc = Continuation of Faenza icon theme with up to date app icons
-	pkgver = 1.14
+	pkgver = 1.15
 	pkgrel = 1
 	url = https://www.gnome-look.org/p/1199881/
 	arch = any
 	license = GPL3
 	options = !strip
-	source = delft-icon-theme-1.14.tar.xz::https://github.com/madmaxms/iconpack-delft/releases/download/v1.14/iconpack-delft.tar.xz
-	sha256sums = 1873f97c484a6c35041f324dbb49a341d2bb39314dfc6c27c9cffc8f4d69f2a4
+	source = delft-icon-theme-1.15.tar.xz::https://github.com/madmaxms/iconpack-delft/releases/download/v1.15/delft-iconpack.tar.xz
+	sha256sums = a80471ed4eb2f28f50d05ec90bfb178da6d1080df1db6d37e5abf6c47c0556bd
 
 pkgname = delft-icon-theme
 
