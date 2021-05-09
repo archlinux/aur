@@ -7,6 +7,7 @@ pkgbase = j0cc-famitracker
 	license = GPLv2
 	makedepends = p7zip
 	depends = wine
+	depends = lib32-libpulse
 	noextract = .exe
 	source = https://github.com/nyanpasu64/j0CC-FamiTracker/releases/download/0.6.3/j0CC-Famitracker-0.6.3.exe
 	source = https://raw.githubusercontent.com/Sterophonick/sterophonick.github.io/master/images/0cc-famitracker.png
