@@ -1,6 +1,6 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=gocryptfs-ui
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Encrypted filesystem gocryptfs UI wrapper"
 url="https://github.com/bulletmark/$pkgname"
@@ -8,7 +8,7 @@ license=("GPL3")
 arch=("any")
 depends=("gocryptfs" "fuse2" "zenity" "xdg-utils")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-md5sums=('df4a9e5157fe2402b7891d76c8b73b80')
+md5sums=('6f0a3850f89e5207aa8f28722968905f')
 
 package() {
   cd "$pkgname-$pkgver"

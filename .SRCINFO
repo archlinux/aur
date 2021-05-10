@@ -1,6 +1,6 @@
 pkgbase = gocryptfs-ui
 	pkgdesc = Encrypted filesystem gocryptfs UI wrapper
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/bulletmark/gocryptfs-ui
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = gocryptfs-ui
 	depends = fuse2
 	depends = zenity
 	depends = xdg-utils
-	source = gocryptfs-ui-1.1.tar.gz::https://github.com/bulletmark/gocryptfs-ui/archive/1.1.tar.gz
-	md5sums = df4a9e5157fe2402b7891d76c8b73b80
+	source = gocryptfs-ui-1.2.tar.gz::https://github.com/bulletmark/gocryptfs-ui/archive/1.2.tar.gz
+	md5sums = 6f0a3850f89e5207aa8f28722968905f
 
 pkgname = gocryptfs-ui
 
