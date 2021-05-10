@@ -39,7 +39,7 @@ pkgver() {
 
 build() {
 	cd qtile-config/core
-	python3 qtile-config-installer.py
+	cp -f qtile-config.py /usr/bin/qtile-config
 }
 
 package() {
