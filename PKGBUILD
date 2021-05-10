@@ -2,7 +2,7 @@
 
 pkgname=carvel-tools
 pkgdesc="Set of Carvel (k14s) tools: ytt kbld kapp kwt imgpkg vendir"
-pkgver=20210405
+pkgver=20210510
 pkgrel=1
 url="https://carvel.dev"
 arch=(x86_64)
@@ -11,27 +11,27 @@ provides=(ytt kbld kapp kwt imgpkg vendir)
 conflicts=(ytt kbld kapp kwt imgpkg vendir)
 
 source=(
-ytt-v0.31.0::https://github.com/vmware-tanzu/carvel-ytt/releases/download/v0.31.0/ytt-linux-amd64
+ytt-v0.32.0::https://github.com/vmware-tanzu/carvel-ytt/releases/download/v0.32.0/ytt-linux-amd64
 kbld-v0.29.0::https://github.com/vmware-tanzu/carvel-kbld/releases/download/v0.29.0/kbld-linux-amd64
 kapp-v0.36.0::https://github.com/vmware-tanzu/carvel-kapp/releases/download/v0.36.0/kapp-linux-amd64
 kwt-v0.0.6::https://github.com/vmware-tanzu/carvel-kwt/releases/download/v0.0.6/kwt-linux-amd64
-imgpkg-v0.6.0::https://github.com/vmware-tanzu/carvel-imgpkg/releases/download/v0.6.0/imgpkg-linux-amd64
-vendir-v0.18.0::https://github.com/vmware-tanzu/carvel-vendir/releases/download/v0.18.0/vendir-linux-amd64
+imgpkg-v0.7.0::https://github.com/vmware-tanzu/carvel-imgpkg/releases/download/v0.7.0/imgpkg-linux-amd64
+vendir-v0.19.0::https://github.com/vmware-tanzu/carvel-vendir/releases/download/v0.19.0/vendir-linux-amd64
 )
 sha256sums=(
-32e7cdc38202b49fe673442bd22cb2b130e13f0f05ce724222a06522d7618395
+1a8f30e0b86b9daa649433e6092a4a1c6fc9c88400b6842af357c7380924bbc6
 28492a398854e8fec7dd9537243b07af7f43e6598e1e4557312f5481f6840499
 22fe308f1d9ebbb829a6ea10ca80d9468ff4b9aa911b0c33788fe67d04ccb383
 92a1f18be6a8dca15b7537f4cc666713b556630c20c9246b335931a9379196a0
-b0d29d28a28db5632ce48cd9ea414ae1d3c9da382c96c72abb9961587ffb657f
-d36b6ef34cb43966ebf7404edb83b30d9f819b62ea5bc08b1dadb805fd72ce1a
+bb90881c2c03cad4d50b2f0881d1330d341a37bb55bd8fff50bf228f7cfcf3d2
+7f4634715be0219c779a0620f4aabd79a178a733bf29ef87428e758391aef148
 )
 
 package() {
-install -Dm 755 "${srcdir}/ytt-v0.31.0" "${pkgdir}/usr/bin/ytt"
+install -Dm 755 "${srcdir}/ytt-v0.32.0" "${pkgdir}/usr/bin/ytt"
 install -Dm 755 "${srcdir}/kbld-v0.29.0" "${pkgdir}/usr/bin/kbld"
 install -Dm 755 "${srcdir}/kapp-v0.36.0" "${pkgdir}/usr/bin/kapp"
 install -Dm 755 "${srcdir}/kwt-v0.0.6" "${pkgdir}/usr/bin/kwt"
-install -Dm 755 "${srcdir}/imgpkg-v0.6.0" "${pkgdir}/usr/bin/imgpkg"
-install -Dm 755 "${srcdir}/vendir-v0.18.0" "${pkgdir}/usr/bin/vendir"
+install -Dm 755 "${srcdir}/imgpkg-v0.7.0" "${pkgdir}/usr/bin/imgpkg"
+install -Dm 755 "${srcdir}/vendir-v0.19.0" "${pkgdir}/usr/bin/vendir"
 }
