@@ -1,15 +1,15 @@
 # Maintainer: wowario <wowario at protonmail dot com>
 # Contributor: wowario <wowario at protonmail dot com>
 
-pkgbase='wownero-git'
-pkgname='wownero-git'
-pkgver=v0.9.3.3.e2d2b9a447
+pkgbase=wownero-git
+pkgname=wownero-git
+pkgver=0.9.3.3
 pkgrel=1
 pkgdesc="a fairly launched privacy-centric meme coin with no premine and a finite supply"
-license=('custom:Cryptonote')
+license=('BSD')
 arch=('x86_64')
 url="https://wownero.org/"
-depends=('openssl' 'libpgm' 'unbound' 'libsodium')
+depends=('boost-libs' 'libunwind' 'openssl' 'readline' 'zeromq' 'pcsclite' 'hidapi' 'protobuf' 'libusb' 'libudev.so')
 makedepends=('git' 'cmake' 'boost')
 provides=('wownero-git')
 
