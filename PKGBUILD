@@ -3,12 +3,13 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=rusolver-git
-pkgver=0.2.0.r1.g52808a0
+pkgver=0.3.0.r5.g1a43501
 pkgrel=1
 pkgdesc="Fast and accurate DNS resolver (git)"
 arch=('x86_64')
 url="https://github.com/Edu4rdSHL/rusolver"
 license=('GPL3')
+depends=('gcc-libs')
 makedepends=('rust' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
