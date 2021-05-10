@@ -1,16 +1,16 @@
-# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=timeslottracker
-pkgver=1.3.1
+pkgver=1.3.23
 pkgrel=1
 pkgdesc="Simple and useful time tracker"
 arch=('any')
-url="https://sourceforge.net/projects/timeslottracker/"
+url="https://github.com/TimeSlotTracker/timeslottracker-desktop/"
 license=('GPL2')
 provides=("timeslottracker")
 depends=("java-environment")
-source=("http://downloads.sourceforge.net/project/timeslottracker/TimeSlotTracker/${pkgver}/timeslottracker_${pkgver}_all.deb")
-md5sums=('154c3b0777f2b94049f2d6b9d5dc2581')
+source=("https://github.com/TimeSlotTracker/timeslottracker-desktop/releases/download/v1.3.23/timeslottracker_1.3.23_all.deb")
 
 package() {
   bsdtar xf data.tar.xz
@@ -21,3 +21,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+sha256sums=('124f853ab164060be7de5214deba419005c61ad1fee34f95a7a60f6b8addd3c1')
