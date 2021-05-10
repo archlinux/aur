@@ -12,7 +12,6 @@ depends=(
 	'wine'
 	'wine_gecko'
 	'wine-mono'
-	'nona'
 )
 source=("http://mnh.scu.edu.cn/soft/blog/rasp/RASP_Win_20210121.zip" "rasp.desktop" "rasp.png")
 md5sums=('4f537c9c2dbe2e555fbdc311f32117e0'

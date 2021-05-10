@@ -8,7 +8,6 @@ pkgbase = rasp
 	depends = wine
 	depends = wine_gecko
 	depends = wine-mono
-	depends = nona
 	source = http://mnh.scu.edu.cn/soft/blog/rasp/RASP_Win_20210121.zip
 	source = rasp.desktop
 	source = rasp.png
