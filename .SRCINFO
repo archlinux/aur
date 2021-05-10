@@ -1,9 +1,9 @@
 pkgbase = acmed-polkit-reload
 	pkgdesc = Polkit rule allowing ACMEd to reload services
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/breard-r/acmed/
-	arch = x86_64
+	arch = any
 	license = Apache
 	license = MIT
 	depends = acmed
