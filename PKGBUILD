@@ -2,7 +2,7 @@
 pkgname=apache-ant-cpptasks
 _pkgname=cpptasks
 pkgver=1.0b5
-pkgrel=2
+pkgrel=3
 pkgdesc="C/C++, FORTRAN and MIDL tasks for Apache Ant."
 url="http://ant-contrib.sourceforge.net/cpptasks/index.html"
 arch=('any')
