@@ -6,7 +6,7 @@
 
 pkgname=nyxt
 pkgver=2.pre.release.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A keyboard-oriented, infinitely extensible web browser designed for power users"
 arch=('x86_64')
 url="https://github.com/atlas-engineer/nyxt"
@@ -14,9 +14,11 @@ license=('custom:BSD')
 conflicts=('nyxt-browser')
 provides=('nyxt-browser' 'next-browser')
 source=("git+https://github.com/atlas-engineer/nyxt.git#tag=${pkgver//./-}"
-        "Makefile.2.pre.release.7.patch")
+        "Makefile.2.pre.release.7.patch"
+        "renderer-gi-gtk.lisp.issue.1374.patch")
 sha256sums=('SKIP'
-            'a6c833611d87c08e4c45299f5dda860b41cb3fea79fdde4bfb063cfeee5273e7')
+            'a6c833611d87c08e4c45299f5dda860b41cb3fea79fdde4bfb063cfeee5273e7'
+            '42ca7bf665b2cc4a632f7ec7d8e4f8f8dfb72739ecdce2fdeb607804c838f9d7')
 # If someday Next works with other Lisps, replace 'sbcl' with 'common-lisp'.
 makedepends=('cl-asdf' 'git' 'gobject-introspection-runtime' 'sbcl')
 depends=('enchant' 'glib-networking' 'gsettings-desktop-schemas' 'libfixposix' 'webkit2gtk')
@@ -31,6 +33,7 @@ options=('!strip' '!makeflags')
 prepare() {
     cd "${srcdir}"/"${pkgname}"/
     patch -p1 -i ../Makefile.2.pre.release.7.patch
+    patch -p1 -i ../renderer-gi-gtk.lisp.issue.1374.patch
 }
 
 build() {
