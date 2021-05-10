@@ -23,5 +23,5 @@ md5sums=(SKIP)
 
 package() {
   DESTDIR="$pkgdir"
-  install -Dm644 wimg -t ${DESTDIR}/usr/bin
+  install -Dm755 wimg -t ${DESTDIR}/usr/bin
 }
