@@ -14,6 +14,10 @@
     {
       "fileMatch": ["^PKGBUILD$"],
       "matchStrings": ["pkgver=(?<currentValue>.*) # (?<datasource>.*?)/(?<depName>.*?)\\s"]
+    },
+    {
+      "fileMatch": ["^PKGBUILD$"],
+      "matchStrings": ["sha256sums=(?<currentValue>.*) # (?<datasource>.*?)/(?<depName>.*?)\\s"]
     }
   ]
 }
