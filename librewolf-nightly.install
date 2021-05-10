@@ -1,0 +1,38 @@
+msg() {
+    ALL_OFF="\e[1;0m"
+    BOLD="\e[1;1m"
+    RED="${BOLD}\e[1;31m"
+    local mesg=$1; shift
+    printf "${RED}==>${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}" "$@" >&2
+}
+
+post_upgrade() {
+  msg  "Remember to check for changes in /usr/lib/librewolf/librewolf.cfg.pacnew"
+  echo ""
+  msg  "as those will currently not automatically overwrite your existing librewolf.cfg"
+  echo ""
+  msg  "We would encourage you to migrate your own changes to the new overrides file"
+  echo ""
+  msg  "at ~/.librewolf/librewolf.overrides.cfg instead, so making changes directly"
+  echo ""
+  msg  "in your librewolf.cfg can be deprecated in favour of this solution."
+  echo ""
+  msg  "The automatic backup of the librewolf.cfg will probably dropped in a few releases"
+  echo ""
+  msg  "to ensure everyone receives all upstream cfg changes without any manual intervention"
+  echo ""
+  msg  "like having to check the .pacnew file."
+  echo ""
+  msg  "Check out https://gitlab.com/librewolf-community/settings/-/merge_requests/13"
+  echo ""
+  msg  "for more information on this."
+  echo ""
+  msg  "Included are profiles for Firejail and profile-sync-daemon."
+  echo ""
+  msg  "To use psd add librewolf to ~/.config/psd/psd.conf."
+  echo ""
+}
+
+post_install() {
+  post_upgrade
+}
