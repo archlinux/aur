@@ -11,7 +11,7 @@
 # Contributor: fana-m <geminin@gmx.net>
 
 pkgname=freeorion-git
-pkgver=0.4.10.2214.g996d1e6f6
+pkgver=0.4.10.with.FreeOrionSDK.v12.33.g07537fb96
 pkgrel=1
 pkgdesc="turn-based space empire and galactic conquest (4X) computer game"
 url="http://www.freeorion.org/"
