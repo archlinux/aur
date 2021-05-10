@@ -1,13 +1,12 @@
 pkgbase = prtcl-bin
 	pkgdesc = The new Particle CLI
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/particle-iot/particle-cli
 	arch = x86_64
 	license = Apache
 	optdepends = bash-completion
 	noextract = prtcl.deb
-	options = !strip
 	source = prtcl.deb::http://prtcl.s3-website-us-east-1.amazonaws.com/apt/prtcl_1.1.0-1_amd64.deb
 	sha256sums = 68d35a3a2c9260f7838f9aa9dca2a33d1f042951d1df3d7cd8b31905851febdf
 
