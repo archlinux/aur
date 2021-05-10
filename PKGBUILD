@@ -3,13 +3,13 @@
 pkgname=sqsh
 _srcver=2.5
 pkgver="${_srcver}.16.1"
-pkgrel=3
+pkgrel=4
 pkgdesc="Unix/Linux replacement for Sybase's isql"
-url="http://www.sqsh.org/"
+url="https://sourceforge.net/projects/sqsh/"
 arch=('x86_64' 'i686')
 license=('GPL')
 depends=('freetds-patched-enum' 'readline' 'libxaw')
-source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgname}-${_srcver}/${pkgname}-${pkgver}.tgz)
+source=(https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgname}-${_srcver}/${pkgname}-${pkgver}.tgz)
 md5sums=(8ddbc202f1457a98e9ad74eb54cd668b)
 
 build() {
