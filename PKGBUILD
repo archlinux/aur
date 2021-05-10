@@ -5,8 +5,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-no-extras
-pkgver=90.0.4430.72
-pkgrel=2
+pkgver=90.0.4430.212
+pkgrel=1
 _pkgname=chromium
 _launcher_ver=7
 _gcc_patchset=6
@@ -31,7 +31,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         add-clang-nomerge-attribute-to-CheckError.patch
         chromium-glibc-2.33.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('a5cc88ca8fffac21ec4d1646980f698dfb6f388a225dd7a2c5a3d252a4098943'
+sha256sums=('abe11d0cb1ff21278aad2eec1a1e279d59176b15331804d7df1807446786d59e'
             '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
             '3eb9580ea35a96789e02815270498226fa33726f4210a5ee36f3868af2ffae1f'
             '5e22afcb91b5402bc09e80630c5323d61013c3fccb0bbd9b23d1e79a400b00d0'
