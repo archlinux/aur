@@ -1,16 +1,11 @@
 pkgbase = qtile-config-git
 	pkgdesc = a qtile config
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/luis-07/qtile-config
 	arch = x86_64
 	license = GPL
-	makedepends = qtile-git
-	makedepends = gksu
-	makedepends = xmenu
-	makedepends = picom-jonaburg-git
-	makedepends = tint2
-	makedepends = rofi
+	makedepends = git
 	source = git+https://github.com/luis-07/qtile-config
 	md5sums = SKIP
 

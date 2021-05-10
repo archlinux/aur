@@ -6,7 +6,7 @@
 
 # Maintainer: Luis Braun <luis.braun07@gmail.com>
 pkgname=qtile-config-git
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 epoch=
 pkgdesc="a qtile config"
@@ -15,7 +15,7 @@ url="https://github.com/luis-07/qtile-config"
 license=('GPL')
 groups=()
 depends=()
-makedepends=(qtile-git gksu xmenu picom-jonaburg-git tint2 rofi)
+makedepends=(git)
 checkdepends=()
 optdepends=()
 provides=()
