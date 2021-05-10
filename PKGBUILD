@@ -1,15 +1,16 @@
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Maintainer: Roberto Michán Sánchez (Roboron) <robertoms258 at gmail dot com>
+# Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=tootle-git
 pkgver=1.0.r15.gdc15fd4
 pkgrel=1
 pkgdesc='GTK+ 3 client for Mastodon (git)'
-arch=(i686 x86_64)
+arch=('i686' 'x86_64' 'aarch64')
 url=https://github.com/bleakgrey/tootle
 license=(GPL3)
 depends=(granite libhandy)
-makedepends=(git meson ninja vala gobject-introspection )
+makedepends=(git meson ninja vala gobject-introspection libadwaita)
 provides=(tootle)
 conflicts=(tootle)
 source=(git+$url)
