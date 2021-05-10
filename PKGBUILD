@@ -2,14 +2,14 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=teeworlds-git
-pkgver=0.7.3.4706.65c1d46f5
+pkgver=0.7.5.5677.d8a4c0e2b
 pkgrel=1
-pkgdesc='Multiplayer 2D shooter'
+pkgdesc='Fast-paced multiplayer 2D shooter game'
 arch=('x86_64')
 url="https://teeworlds.com"
-license=('custom')
-depends=('alsa-lib' 'glu' 'mesa' 'gcc-libs' 'sdl2' 'freetype2')
-makedepends=('python' 'git' 'bam' 'imagemagick')
+license=('custom' 'CCPL:by-nc-sa')
+depends=('alsa-lib' 'glu' 'sdl2' 'freetype2' 'pnglite' 'wavpack' 'openssl')
+makedepends=('python' 'git' 'cmake' 'ninja' 'imagemagick' 'gtest')
 provides=('teeworlds')
 conflicts=('teeworlds')
 source=('git+https://github.com/teeworlds/teeworlds.git'
@@ -36,33 +36,30 @@ prepare() {
 }
 
 build() {
-  cd teeworlds
-  bam client server
+  mkdir -p build
+  cd build
+  cmake ../teeworlds \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -GNinja
+  ninja
+}
+
+check() {
+  ninja run_tests -C build
 }
 
 package() {
-  cd teeworlds
+  DESTDIR="$pkgdir" ninja install -C build
   
-  install -dm755 "$pkgdir"/usr/bin \
-                 "$pkgdir"/usr/share/{applications,metainfo} \
-                 "$pkgdir"/usr/share/{licenses/teeworlds,teeworlds/data}
-  
-   # Install data files
-  cp -r datasrc/* "$pkgdir"/usr/share/teeworlds/data
-
-  install -m755 build/$CARCH/debug/teeworlds     "$pkgdir"/usr/bin/
-  install -m755 build/$CARCH/debug/teeworlds_srv "$pkgdir"/usr/bin/
-
-  install -m644 license.txt                   "$pkgdir/usr/share/licenses/teeworlds/"
-  install -m644 other/teeworlds.appdata.xml   "$pkgdir/usr/share/metainfo/"
-  install -m644 other/teeworlds.desktop       "$pkgdir/usr/share/applications/"
+  install -dm755 "$pkgdir/usr/share/"{licenses/$pkgname,metainfo,applications}
+  install -m644 teeworlds/license.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -m644 teeworlds/other/teeworlds.appdata.xml -t "$pkgdir/usr/share/metainfo/"
+  install -m644 teeworlds/other/teeworlds.desktop -t "$pkgdir/usr/share/applications/"
 
    # Install client and server icon files according to the image size
-  for num in 0 1 2 3 4 5; do
-    _s=$(file "$srcdir/teeworlds-$num.png" | cut -d' ' -f5)
-    [[ $_s == ?(-)+([0-9]) ]]  # is it a number?
-    _s=${_s}x${_s}
-    install -Dm644 "$srcdir/teeworlds-$num.png" \
-        "$pkgdir/usr/share/icons/hicolor/$_s/apps/teeworlds.png"
+  for _icon in $(ls -1 "$srcdir"/teeworlds-*.png); do
+    _s=$(identify $_icon | awk '{print $3}')
+    [[ $_s =~ ([0-9])+x([0-9])+ ]] || ( echo "Not a NUMxNUM: '$_s'"; exit 1; )
+    install -Dm644 "$_icon" "$pkgdir/usr/share/icons/hicolor/$_s/apps/teeworlds.png"
   done
 }
