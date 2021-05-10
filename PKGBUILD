@@ -4,9 +4,9 @@
 pkgname=nona
 pkgver=2.0
 pkgrel=1
-pkgdesc="NONA: Analyzing large data sets in reasonable times: solutions for composite optima"
+pkgdesc="NONA: a bastard son of Pee-Wee. Phylogenetic Analysis Software"
 arch=('any')
-url="https://github.com/starsareintherose/nona/"
+url="www.cladistics.com"
 license=('custom')
 depends=(
 	'wine'
