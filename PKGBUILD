@@ -396,7 +396,7 @@ END
   install -Dvm644 browser/branding/${pkgname}/content/about-logo.png \
     "$pkgdir/usr/share/icons/hicolor/192x192/apps/$pkgname.png"
 
-  # arch upstream provides a separate svg for this. we don't have that, so let's re-use 16.png
+  # Arch upstream provides a separate svg for this. we don't have that, so let's re-use 16.png
   install -Dvm644 browser/branding/${pkgname}/default16.png \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$pkgname-symbolic.png"
 
@@ -417,4 +417,9 @@ END
   if [[ -e $nssckbi ]]; then
     ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
   fi
+  
+  # Delete unneeded things from settings repo
+  rm "$pkgdir/usr/lib/firedragon/tabliss.json"
+  rm "$pkgdir/usr/lib/firedragon/*.png"
+  rm "$pkgdir/usr/lib/firedragon/firedragon.psd"
 }
