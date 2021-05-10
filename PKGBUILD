@@ -23,5 +23,4 @@ package() {
   "$pkgdir"/usr/share/phylosuite/PhyloSuite
   install -m 755 "$srcdir"/PhyloSuite.png "$pkgdir"/usr/share/phylosuite/
   install -m 755 "$srcdir"/PhyloSuite.desktop "$pkgdir"/usr/share/applications/
-  sudo chown -R $USER "$pkgdir"/usr/share/phylosuite/
 }
