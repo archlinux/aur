@@ -1,0 +1,13 @@
+pkgbase = deepflow2
+	pkgdesc = Large displacement optical flow with deep matching
+	pkgver = 2
+	pkgrel = 1
+	url = https://thoth.inrialpes.fr/src/deepflow/
+	arch = any
+	license = GPL
+	options = !strip
+	source = http://pascal.inrialpes.fr/data2/deepmatching/files/DeepFlow_release2.0.tar.gz
+	md5sums = f86cfd144e7f729d97878eee069baad9
+
+pkgname = deepflow2
+
