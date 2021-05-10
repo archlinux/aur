@@ -2,7 +2,7 @@
 
 pkgname=bisq-bin
 pkgver=1.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
 arch=('x86_64')
 url="https://bisq.network"
@@ -27,7 +27,7 @@ package() {
   cp -r "$srcdir/opt" "$pkgdir"
 
   # Symlink some files to complete install.
-  ln -s "/opt/$_binname/$_binname" "$pkgdir/usr/bin/bisq"
-  ln -s "/opt/$_binname/${_binname}.desktop" "${pkgdir}/usr/share/applications/bisq.desktop"
-  ln -s "/opt/$_binname/${_binname}.png" "${pkgdir}/usr/share/pixmaps/bisq.png"
+  ln -s "/opt/bisq/bin/$_binname" "$pkgdir/usr/bin/bisq"
+  ln -s "/opt/bisq/${_binname}.desktop" "${pkgdir}/usr/share/applications/bisq.desktop"
+  ln -s "/opt/bisq/${_binname}.png" "${pkgdir}/usr/share/pixmaps/bisq.png"
 }
