@@ -2,7 +2,7 @@
 
 pkgname=rider
 pkgver='2021.1.2'
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='A cross-platform C# IDE by JetBrains.'
 arch=('x86_64')
@@ -19,7 +19,7 @@ _srcfile="JetBrains.Rider-${pkgver}.tar.gz"
 source=("https://download-cf.jetbrains.com/rider/${_srcfile}"
         'rider.desktop')
 sha256sums=('55a911cffe0f948b5f271482e7fc14ee69fcd27376070e3b178b018942bc48a8'
-            '326be4c1dbd1ece054b2f0fdce07632d171d2cd5bdadc32f681b55325071ebfc')
+            '6bb04056a20674c95dc5f103671bb8cd14910c6b7a4b80d9aa636e01d31ebdf1')
 
 package() {
     cd "${srcdir}"
