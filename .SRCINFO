@@ -10,8 +10,7 @@ pkgbase = hoffice
 	depends = glu
 	source = https://github.com/DisLogicator/hoffice/releases/download/11.20.0.1520-rc2/hoffice-11.20.0.1520.tar.gz
 	source = LICENSE
-	sha256sums = 4a683809eff85b460efbf2989219adbf2d7e246d414be52f55823a2e3605605d
-	sha256sums = bd67280ffdf6928abab99f3f7f01ad46b19d85d641bd49286ef6d3e6a258cee3
+	sha256sums = SKIP
 
 pkgname = hoffice
 

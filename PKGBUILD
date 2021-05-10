@@ -13,8 +13,7 @@ source=(
     "LICENSE"
 )
 sha256sums=(
-    '4a683809eff85b460efbf2989219adbf2d7e246d414be52f55823a2e3605605d'
-    'bd67280ffdf6928abab99f3f7f01ad46b19d85d641bd49286ef6d3e6a258cee3'
+    'SKIP'
 )
 
 package() {
