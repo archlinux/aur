@@ -1,0 +1,26 @@
+pkgbase = pixelitor
+	pkgdesc = Tool for making triangulated illustrations out of photos
+	pkgver = 4.2.3
+	pkgrel = 1
+	url = https://github.com/FOSStriangulator/FOSStriangulator
+	arch = any
+	license = GPL
+	depends = hicolor-icon-theme
+	depends = java-runtime
+	source = https://github.com/lbalazscs/Pixelitor/releases/download/v4.2.3/Pixelitor-4.2.3.jar
+	source = https://github.com/lbalazscs/Pixelitor/raw/v4.2.3/src/main/resources/images/pixelitor_icon256.png
+	source = https://github.com/lbalazscs/Pixelitor/raw/v4.2.3/src/main/resources/images/pixelitor_icon48.png
+	source = pixelitor.sh
+	source = io.sourceforge.Pixelitor.metainfo.xml
+	source = io.sourceforge.Pixelitor.mime.xml
+	source = io.sourceforge.Pixelitor.desktop
+	sha256sums = a768831ea4e0fe04b5d1553ccd6ca8e59ee76d3609ede7f390e927af7ffe4eac
+	sha256sums = 1bdace2276459eaffe6e71bdc1cab3ee6ec0c4734ddfd8e488357f247708e95f
+	sha256sums = 672e731fb58e22348ef4891e67c3ab2afed25bc2e319512620b2c51eb1d5bbe0
+	sha256sums = e115a95154386e33e342d8e445b5d157db5bebe9a8f1b5a2d92a351b098b0ad5
+	sha256sums = fc38d53f671fd6ca2727d811bc2bfe55c353684e1827be8a75ccc000f9cf1dd2
+	sha256sums = 11efc90f5ee4a69ccdfb8c5f609b7061a91051d3fac437ef794f8d0b03ef4911
+	sha256sums = d352a976516f5f85198c2b914de9451c9cdb701a867ec1482ad44c4cb18ba2dd
+
+pkgname = pixelitor
+
