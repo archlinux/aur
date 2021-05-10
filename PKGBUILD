@@ -8,10 +8,11 @@ pkgdesc="GUI for multiple sequence alignment and molecular phylogeny"
 arch=('x86_64')
 url="http://doua.prabi.fr/software/seaview"
 license=('GPL3')
-depends=('shared-mime-info' 'fltk')
-optdepends=('clustal-omega: alignment'
-            'muscle: alignment'
-	    'gblocks-bin: select blocks of evolutionarily conserved sites')
+depends=('shared-mime-info')
+optdepends=('clustal-omega'
+            'muscle'
+	    'gblocks-bin'
+	    'phyml')
 source=("http://doua.prabi.fr/software/seaview_data/seaview5-64.tgz"
         'seaview.desktop'
         'seaview.png')
