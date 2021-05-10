@@ -1,14 +1,14 @@
 pkgname='texmaster'
 pkgver='2009.3'
-pkgrel='6'
+pkgrel='7'
 pkgdesc='Texmaster is a tetris clone developed by Report.'
 url='http://tetrisconcept.net/threads/texmaster.2/'
 source=(
-    'http://digitalno.de/public/tetris/texmaster/Texmaster2009-3.7z'
+    'https://tetrisconcept.tv/info/Texmaster2009-3.zip'
     'texmaster-launcher.c.in'
     'texmaster.install'
 )
-md5sums=('afe9c927d145829d3f6c8c47091f7be5'
+md5sums=('666c354fd46ecac948157cfdc0e5288a'
          '2cc37514846c4bdfc8d9d3320ed78353'
          '2cc3ce9cbfe611ee49440a0b0590d90f')
 arch=('i686' 'x86_64')
