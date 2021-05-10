@@ -1,7 +1,7 @@
-diff -ru --color old/usr/bin/ice new/usr/bin/ice
---- old/usr/bin/ice	2020-08-06 16:16:29.766880323 +0200
-+++ new/usr/bin/ice	2020-08-06 16:18:03.276808705 +0200
-@@ -44,8 +44,8 @@
+diff -rpu --color old/usr/bin/ice new/usr/bin/ice
+--- old/usr/bin/ice	2021-05-10 15:47:34.278040167 +0200
++++ new/usr/bin/ice	2021-05-10 15:48:35.098265219 +0200
+@@ -44,8 +44,8 @@ _EPIPHANY_PROFILES_DIR = "{0}/epiphany".
  _ICE_ICON = "/usr/share/pixmaps/ice.png"
  _ICON_DIR = "{0}/icons".format(_ICE_DIR)
  _BRAVE_BIN = "/usr/bin/brave-browser"
@@ -11,8 +11,8 @@ diff -ru --color old/usr/bin/ice new/usr/bin/ice
 +_CHROMIUM_BIN = "/usr/bin/chromium"
  _VIVALDI_BIN = "/usr/bin/vivaldi-stable"
  _FIREFOX_BIN = "/usr/bin/firefox"
- _EPIPHANY_BIN = "/usr/bin/epiphany-browser"
-@@ -703,7 +703,7 @@
+ _EPIPHANY_BIN = "/usr/bin/epiphany"
+@@ -699,7 +699,7 @@ class Ice(Gtk.Window):
          if self.chrome.get_active() is True:
              self.browser = "google-chrome"
          elif self.chromium.get_active() is True:
