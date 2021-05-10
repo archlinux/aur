@@ -1,13 +1,14 @@
 
 _pkgname=mrwriter
 pkgname="${_pkgname}-git"
-pkgver=v0.0.6.r9.ge3edf62
+pkgver=v0.0.7.r2.g9b9ae09
 pkgrel=1
 pkgdesc="Notetaking and blackboard replacement application. Inspired by Xournal. Written in C++/Qt for Linux / Windows / Mac."
 arch=('x86_64')
 url="https://github.com/unruhschuh/MrWriter"
 license=('GPL3')
 depends=('qt5-base')
+makedepends=('cmake')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 epoch=1
@@ -21,12 +22,14 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	qmake
-	make
+	mkdir -p build
+	cd build
+	cmake ..
+	cmake --build .
 }
 
 package() {
 	cd "$srcdir/${_pkgname}"
-	make INSTALL_ROOT="${pkgdir}/" install
+	install -m677 -D "build/bin/MrWriter" "${pkgdir}/usr/bin/${_pkgname}"
 	install -m644 -D "README.adoc" "${pkgdir}/usr/share/doc/${_pkgname}/README.adoc"
 }
