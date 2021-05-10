@@ -2,15 +2,15 @@
 # Contributor:
 
 pkgname=qservicemenuconfig
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="MenuEditor for Dolphin"
 arch=('x86_64')
 url="https://www.opendesktop.org/s/Apps/p/1215612/"
 license=('GPL3')
 depends=('hicolor-icon-theme' 'qt5-base')
-source=("https://download.opensuse.org/repositories/home:/wusel1007/openSUSE_42.1/src/QServiceMenuConfig-$pkgver-69.1.src.rpm")
-sha256sums=('7ecfaa4b713ddaca0991f68bddb801867be161731ebc7365025a87c884f77aa5')
+source=("https://download.opensuse.org/repositories/home:/wusel1007/openSUSE_42.1/src/QServiceMenuConfig-$pkgver-85.1.src.rpm")
+sha256sums=('c292a60c2fb98440aa72be1d7fd222de26af3fed58af8891e11cee03043ece70')
 
 prepare() {
   bsdtar -zxvf "QServiceMenuConfig-$pkgver.tgz"
