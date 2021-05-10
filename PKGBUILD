@@ -22,6 +22,9 @@ build() {
 package() {
 	cd "$_realname-$pkgver"
 	install -Dm755 "target/release/$_realname" "$pkgdir/usr/bin/$_realname"
+  install -Dm644 target/release/build/dantalian-*/out/dantalian.bash "$pkgdir"/usr/share/bash-completion/completions/dantalian
+  install -Dm644 target/release/build/dantalian-*/out/dantalian.fish "$pkgdir"/usr/share/fish/vendor_completions.d/dantalian.fish
+  install -Dm644 target/release/build/dantalian-*/out/_dantalian "$pkgdir"/usr/share/zsh/site-functions/_dantalian
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_realname}"
 }
 
