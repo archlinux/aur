@@ -1,7 +1,7 @@
 # Maintainer: shiro <shiro@usagi.io>
 
 pkgname=map2
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A scripting language that allows complex key remapping on Linux, written in Rust"
 arch=('x86_64' 'i686')

@@ -6,8 +6,6 @@ pkgbase = map2
 	arch = i686
 	license = MIT
 	makedepends = rustup
-	source = git+https://github.com/shiro/map2.git
-	sha256sums = SKIP
 
 pkgname = map2
 
