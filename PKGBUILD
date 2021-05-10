@@ -365,4 +365,9 @@ END
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
   ln -srf "$pkgdir/usr/bin/$__pkgname" \
     "$pkgdir/usr/lib/$__pkgname/$__pkgname-bin"
+
+  # Delete unneeded things from settings repo
+  rm "$pkgdir/usr/lib/firedragon/tabliss.json"
+  rm "$pkgdir/usr/lib/firedragon/*.png"
+  rm "$pkgdir/usr/lib/firedragon/firedragon.psd"
 }
