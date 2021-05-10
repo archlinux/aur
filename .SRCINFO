@@ -1,0 +1,14 @@
+pkgbase = qtile-config-git
+	pkgdesc = a qtile config
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/luis-07/qtile-config
+	arch = x86_64
+	license = GPL
+	makedepends = qtile-git
+	makedepends = gksu
+	source = git+https://github.com/luis-07/qtile-config
+	md5sums = SKIP
+
+pkgname = qtile-config-git
+
