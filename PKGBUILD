@@ -2,19 +2,26 @@
 
 pkgname=intiface-desktop
 pkgver=20.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source, cross-platform application that acts as a hub for sex hardware access"
 depends=('electron')
 makedepends=('npm' 'yarn' 'git' 'trash-cli' 'typescript')
 arch=('i686' 'x86_64')
 url="https://intiface.com/desktop/"
 license=('BSD')
-source=("https://github.com/intiface/intiface-desktop/archive/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/intiface/intiface-desktop/archive/v${pkgver}.tar.gz"
         'intiface-desktop.sh'
-        'intiface-desktop.desktop')
+        'intiface-desktop.desktop'
+        'core_isonline_fix.patch')
 sha256sums=('9402de0e8aa9b969ae90538ef96e7df3b6252dec73f14f0c2105c5381976b6d2'
             '2f7d3350631fda4da8f03938eb06b0b6d3ed571c9975906b7863298f75e4c73f'
-            'ece9fd45978dae583a9c572f3e64f8234350d5e53f9c1ae2da503c53b3ecff64')
+            'ece9fd45978dae583a9c572f3e64f8234350d5e53f9c1ae2da503c53b3ecff64'
+            '0060f45c1036f19955940f843d52c820a50cb9f362e3ad91ab0eb13a8d6e525c')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  patch -p1 -i ../core_isonline_fix.patch
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
