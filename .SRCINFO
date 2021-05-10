@@ -1,0 +1,11 @@
+pkgbase = wlib
+	pkgdesc = WLib
+	pkgver = 0.1
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	source = wlib-0.1.tar.gz
+	md5sums = SKIP
+
+pkgname = wlib
+
