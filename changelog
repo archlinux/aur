@@ -1,3 +1,23 @@
+Proton-6.8-GE-1 Released
+
+HOTFIX 2:
+-Resident Evil Village (8) now works. RE Engine intro logo audio plays static, everything else works fine.
+HOTFIX:
+-Fixed video distortion issue in RE2 videos (was being caused by the nier replicant patch forcing wrong video format type on all videos)
+
+Changelog:
+-Forza Horizon 4 now works
+-Nier Replicant now works (Video Playback included)
+-Fixed various issues surrounding start.exe Such as ShellExecuteEx failures (causing games not to launch).
+-Fixed issue with Borderlands 2 not launching
+-Fixed issue with Borderlands 3 hanging on claptrap loading screen
+-Fixed audio loop issue in Fallout New Vegas
+-Fixed issue with Yu-Gi-Oh Duel Links needing vcrun2019
+-Fixed issue with uplay, origin, and other game clients not installing on new prefixes
+-Fixed issue with Persona 4 Golden not relaunching after first time.
+-Fixed issue with keyboard input not working if a controller is connected.
+
+
 Proton-6.5-GE-2 Released
 
 HOTFIX:
