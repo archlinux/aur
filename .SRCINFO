@@ -1,0 +1,12 @@
+pkgbase = microsoft-edge-beta
+	pkgdesc = Microsoft Edge, converted from .deb package
+	pkgver = 91.0.864.19
+	pkgrel = 1
+	url = https://www.microsoftedgeinsider.com/
+	arch = x86_64
+	license = custom
+	source = https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-beta/microsoft-edge-beta_91.0.864.19-1_amd64.deb
+	sha256sums = 545ff6c1481704dba905722b73c9dbaf9b35e5a5bcb68373e9291addbaead8aa
+
+pkgname = microsoft-edge-beta
+
