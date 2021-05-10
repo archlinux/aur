@@ -4,7 +4,7 @@ validpgpkeys=('33ED753E14757D79FA17E57DC4C1F715B2B66B95')
 
 pkgname=llvm12-git
 pkgdesc="LLVM 12 Toolchain with clang, clang-tools-extra, compiler-rt, openmp, polly, lldb, lld"
-pkgver=12.0.1
+pkgver=12.0.0r32.ga1a197b54ec6
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -29,6 +29,18 @@ md256sums=('SKIP'
 sha512sums=('SKIP'
   '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd')
 options=('staticlibs')
+
+
+pkgver() {
+
+  cd "${srcdir:?}/llvm-project" || (
+    echo -e "\E[1m\E[31mCan't cd to ${srcdir}/llvm-project build directory! PkgVer Failed! \E[0m"
+    exit 1
+  )
+
+  git describe --long --tags | cut -f2-4 -d- | sed 's/-/r/;s/-/./'
+
+}
 
 prepare() {
 
