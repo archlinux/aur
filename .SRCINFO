@@ -1,22 +1,40 @@
 pkgbase = python-drizzlepac
 	pkgdesc = AstroDrizzle for HST images
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = http://www.stsci.edu/scientific-community/software/drizzlepac.html
 	arch = i686
 	arch = x86_64
 	license = BSD
+	checkdepends = python-pytest-remotedata
+	checkdepends = python-matplotlib
+	checkdepends = python-scikit-learn
+	checkdepends = python-scikit-image
+	checkdepends = python-stsci.skypac
+	checkdepends = python-ci_watson
+	checkdepends = python-fitsblender
+	checkdepends = python-nictools
+	checkdepends = python-stsci.image
+	checkdepends = python-stregion
+	checkdepends = python-tweakwcs
+	checkdepends = python-astroquery
+	checkdepends = python-photutils
+	checkdepends = python-pandas
+	checkdepends = python-bokeh
+	checkdepends = python-pypdf2
+	checkdepends = python-crds
 	makedepends = python-setuptools
 	makedepends = python-relic
 	makedepends = python-astropy
-	source = https://files.pythonhosted.org/packages/source/d/drizzlepac/drizzlepac-3.2.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/d/drizzlepac/drizzlepac-3.2.1.tar.gz
+	source = https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/tests/hap/ACSWFC3ListDefault50.csv
 	source = https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/LICENSE.txt
-	md5sums = b0e93c3e3f3c7f90f83e869edf38457e
+	md5sums = d345ec290b6f183c7267d874f8ab7495
+	md5sums = acaf7d8bcf0f6244042bba0df3d03679
 	md5sums = SKIP
 
 pkgname = python-drizzlepac
-	depends = python>=3.6
-	depends = python-nose
+	depends = python>=3.7
 	depends = python-scipy
 	depends = python-matplotlib
 	depends = python-requests

@@ -3,7 +3,7 @@ pkgbase=python-drizzlepac
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="AstroDrizzle for HST images"
 arch=('i686' 'x86_64')
@@ -27,26 +27,28 @@ makedepends=('python-setuptools'
 #            'python-stregion'
 #            'python-fitsblender'
 #            'python-nictools')
-#checkdepends=('python-pytest'
-#              'python-matplotlib'
-#              'python-scikit-learn'
-#              'python-stsci.skypac'
-#              'python-ci_watson'
-#              'python-fitsblender'
-#              'python-nictools'
-#              'python-stsci.image'
-#              'python-stregion'
-#              'python-tweakwcs'
-#              'python-astroquery'
-#              'python-photutils'
-#              'python-pandas'
-#              'python-bokeh'
-#              'python-pypdf2')
+checkdepends=('python-pytest-remotedata'
+              'python-matplotlib'
+              'python-scikit-learn'
+              'python-scikit-image'
+              'python-stsci.skypac'
+              'python-ci_watson'
+              'python-fitsblender'
+              'python-nictools'
+              'python-stsci.image'
+              'python-stregion'
+              'python-tweakwcs'
+              'python-astroquery'
+              'python-photutils'
+              'python-pandas'
+              'python-bokeh'
+              'python-pypdf2'
+              'python-crds')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
-#       "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/tests/hap/ACSWFC3ListDefault50.csv"
+        "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/tests/hap/ACSWFC3ListDefault50.csv"
         "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/LICENSE.txt")
-md5sums=('b0e93c3e3f3c7f90f83e869edf38457e'
-#        'SKIP'
+md5sums=('d345ec290b6f183c7267d874f8ab7495'
+         'acaf7d8bcf0f6244042bba0df3d03679'
          'SKIP')
 
 prepare() {
@@ -64,16 +66,15 @@ build() {
 #   python setup.py build_sphinx
 }
 
-#check() {
-#    cd ${srcdir}/${_pyname}-${pkgver}/build/lib.linux-${CARCH}-${_pyver}
-#
-#    ln -rs ${srcdir}/ACSWFC3ListDefault50.csv tests/hap
-#    pytest || warning "Tests failed"
-#}
+check() {
+    cd ${srcdir}/${_pyname}-${pkgver}/build/lib.linux-${CARCH}-${_pyver}
+
+    ln -rs ${srcdir}/ACSWFC3ListDefault50.csv tests/hap
+    pytest || warning "Tests failed"
+}
 
 package_python-drizzlepac() {
-    depends=('python>=3.6'
-             'python-nose'
+    depends=('python>=3.7'
              'python-scipy'
              'python-matplotlib'
              'python-requests'
