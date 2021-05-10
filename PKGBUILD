@@ -2,7 +2,7 @@
 
 pkgname=betaflight-configurator-nightlies-bin
 _pkgname=betaflight-configurator
-pkgver=v20210413.2497
+pkgver=v20210510.2720
 _pkgver=10.8.0
 pkgrel=2
 pkgdesc="Crossplatform configuration tool for the Betaflight flight control system"
