@@ -4,6 +4,7 @@ pkgname=map2-git
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="A scripting language that allows complex key remapping on Linux, written in Rust"
+url="https://github.com/shiro/map2"
 arch=('x86_64' 'i686')
 license=('MIT')
 provides=("map2")
