@@ -7,16 +7,17 @@ pkgbase = gpicsync
 	arch = any
 	license = GPL2
 	makedepends = git
-	depends = python2
-	depends = python2-pillow
-	depends = python2-unidecode
-	depends = wxpython
-	source = git://github.com/metadirective/GPicSync.git
+	makedepends = imagemagick
+	depends = python
+	depends = python-pillow
+	depends = python-unidecode
+	depends = python-wxpython
+	source = git+https://github.com/FrancoisSchnell/GPicSync.git#commit=667f4db2d7d4373d99f83024b5b1c400f03f089f
 	source = gpicsync
 	source = gpicsync.desktop
 	md5sums = SKIP
-	md5sums = 7bb84135e4b289628d9dd65b8c05d897
-	md5sums = a5d4ffa8df81587674d2f4d2b178086f
+	md5sums = dbc7781c637ce04e652ec40fdc5e0130
+	md5sums = 099f9d4091fd05941bfaa9d87aa4d1b7
 
 pkgname = gpicsync
 

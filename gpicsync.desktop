@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=gpicsync
-GenericName=sync your pictures with gps data
+Comment=Sync your pictures with GPS data
 Exec=gpicsync
 Icon=gpicsync
 Type=Application
