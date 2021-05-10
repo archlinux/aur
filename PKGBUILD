@@ -7,7 +7,7 @@
 
 _pkgbase=vlc
 pkgname=vlc-nox
-pkgver=3.0.12
+pkgver=3.0.13
 pkgrel=1
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (without X support)'
 url='https://www.videolan.org/vlc/'
@@ -96,21 +96,22 @@ replaces=('vlc' 'vlc-plugin' 'vlc-git')
 options=('!emptydirs')
 source=(http://download.videolan.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
         update-vlc-plugin-cache.hook
-        lua53_compat.patch
-        vlc-3.0.11.1-srt_1.4.2.patch)
-sha512sums=('ebec92bf732540be117551e94613747c53514ade7e280167c08400375738df9a01ee0e5d7c7733aca151a4f80f1c7163fd41318f2cc80b04a3201f0ba697e5df'
+        vlc-3.0.11.1-srt_1.4.2.patch
+        vlc-live-media-2021.patch)
+sha512sums=('0badca9d71b682b1dd6f05acab48d77baffe22e6a00be6db2a790644bab74738f9807e889fd0348af72628694b5210896638ac2cd99d0efc0e1c2cef7ab28bff'
             'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3'
-            '33cda373aa1fb3ee19a78748e2687f2b93c8662c9fda62ecd122a2e649df8edaceb54dda3991bc38c80737945a143a9e65baa2743a483bb737bb94cd590dc25f'
-            '090c75878894f89184179f534da503a78234cf4f0f5af602873ea2ba6b68326afed71ef6160d1352bdd5c05e45b36bfcd23b7286d5111a900b7c11829642ae0d')
+            'ac1d33d434aca2a0ad6e70800073deeaefc02b8fd72656b682ca833ee0cffe10dfa19a9355388700cab46ffbf9421c007d00ed04c7fa562698ff81e70db5f283'
+            'ad17d6f4f2cc83841c1c89623c339ec3ee94f6084ea980e2c8cbc3903854c85e5396e31bfd8dc90745b41794670903d854c4d282d8adec263087a9d47b226ccc')
 
 prepare() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   sed -e 's:truetype/ttf-dejavu:TTF:g' -i modules/visualization/projectm.cpp
   sed -e 's|-Werror-implicit-function-declaration||g' -i configure
-  patch -Np1 < "${srcdir}/lua53_compat.patch"
   patch -Np1 < "${srcdir}/vlc-3.0.11.1-srt_1.4.2.patch"
+  patch -Np1 < "${srcdir}/vlc-live-media-2021.patch"
   sed 's|whoami|echo builduser|g' -i configure
   sed 's|hostname -f|echo arch|g' -i configure
+  autoreconf -vf
 }
 
 build() {
