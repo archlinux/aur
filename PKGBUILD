@@ -3,8 +3,8 @@
 
 _gemname=prawn-svg
 pkgname=ruby-$_gemname
-pkgver=0.31.0
-pkgrel=5
+pkgver=0.32.0
+pkgrel=1
 pkgdesc='SVG renderer for Prawn PDF library'
 arch=(any)
 url='http://github.com/mogest/prawn-svg'
@@ -13,12 +13,11 @@ depends=(ruby ruby-prawn ruby-css_parser)
 makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha1sums=('cfdb8da2362c96f3b0fda69d75651c1160aa95f7')
+sha1sums=('82f927a3309c254ad90c4d6bf6913adeea615807')
 noextract=($_gemname-$pkgver.gem)
 
 package() {
   local _gemdir="$(ruby -e 'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
