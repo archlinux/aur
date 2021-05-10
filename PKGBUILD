@@ -9,7 +9,7 @@ pkgrel=1
 arch=('x86_64')
 url="http://wicd.sourceforge.net/"
 license=('GPL2')
-depends=('python2' 'python2-dbus' 'dhcpcd' 'wpa_supplicant' 'wireless_tools' 'pm-utils'
+depends=('python2' 'python-dbus-common' 'dhcpcd' 'wpa_supplicant' 'wireless_tools' 'pm-utils'
          'inetutils' 'net-tools' 'ethtool' 'shared-mime-info' 'python2-urwid' 'python2-gobject2' 'dbus-glib' 'rfkill')
 makedepends=('git' 'python2-babel' 'python2-setuptools' 'gettext' 'pygtk')
 optdepends=('wicd-client-kde: needed if you want to use kde ui')
