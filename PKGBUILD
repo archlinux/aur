@@ -27,7 +27,7 @@ fi
 ##
 
 pkgname=brave
-pkgver=1.23.75
+pkgver=1.24.82
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -142,7 +142,7 @@ prepare() {
   cp -rT "${srcdir}"/chromium src
   cp -rT "${srcdir}"/brave-core src/brave
   cp -r "${srcdir}"/depot_tools src/brave/vendor/
-  cp -rT "${srcdir}"/adblock-rust src/brave/vendor/adblock_rust_ffi
+  cp -rT "${srcdir}"/adblock-rust src/components/adblock_rust_ffi
 
   msg2 "Running \"npm run\""
   if [ -d src/out/Release ]; then
@@ -236,6 +236,10 @@ build() {
   echo 'brave_stats_updater_url = https://laptop-updates.brave.com' >> .npmrc
   echo 'brave_stats_api_key = fe033168-0ff8-4af6-9a7f-95e2cbfc' >> .npmrc
   echo 'brave_sync_endpoint = https://sync-v2.brave.com/v2' >> .npmrc
+  echo "uphold_client_id = 6d8d9473ed20be627f71ed46e207f40c004c5b1a" >> .npmrc
+  echo "uphold_client_secret = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" >> .npmrc
+  echo "uphold_staging_client_id = 4c2b665ca060d912fec5c735c734859a06118cc8" >> .npmrc
+  echo "uphold_staging_client_secret = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" >> .npmrc
 
   npm_args=()
   if [ "$COMPONENT" = "4" ]; then
