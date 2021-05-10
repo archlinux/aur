@@ -2,7 +2,7 @@
 Version=1.4
 Type=Application
 Name=Rider
-Icon=
+Icon=rider
 Exec=
 Comment=
 Categories=Development;IDE;

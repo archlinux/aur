@@ -2,7 +2,7 @@
 
 pkgname=rider
 pkgver='2021.1.2'
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A cross-platform C# IDE by JetBrains.'
 arch=('x86_64')
@@ -33,7 +33,6 @@ package() {
 
     install -d -m755 "$pkgdir"/usr/share/applications
     sed -i "s#Version=#Version=${pkgver}#g" "${pkgname}.desktop"
-    sed -i "s#Icon=#Icon=${_installdir}/${pkgname}/bin/rider.png#g" "${pkgname}.desktop"
     sed -i "s#Exec=#Exec=\"${_installdir}/${pkgname}/bin/rider.sh\" %f#g" "${pkgname}.desktop"
     sed -i "s/Comment=/Comment=${pkgdesc}/g" "${pkgname}.desktop"
     install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications"
