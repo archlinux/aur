@@ -39,7 +39,7 @@ pkgver() {
 
 build() {
 	cd qtile-config/core
-	cp -f qtile-config.py /usr/bin/qtile-config
+	sudo cp -f qtile-config.py /usr/bin/qtile-config
 }
 
 package() {
