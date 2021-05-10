@@ -4,7 +4,7 @@
 
 pkgname=gns3-gui
 pkgver=2.2.20
-pkgrel=1
+pkgrel=2
 pkgdesc='GNS3 network simulator. Graphical user interface package.'
 arch=('any')
 url='https://github.com/GNS3/gns3-gui'
@@ -23,9 +23,9 @@ depends=(
     'qt5-websockets'
 )
 optdepends=(
-    'gns3-server: GNS3 backend. Manages emulators such as Dynamips, VirtualBox or Qemu/KVM.'
-    'xterm: Default terminal emulator for CLI management of virtual instances.'
-    'wireshark-qt: Live packet capture.')
+    'gns3-server: GNS3 backend. Manages emulators such as Dynamips, VirtualBox or Qemu/KVM'
+    'xterm: Default terminal emulator for CLI management of virtual instances'
+    'wireshark-qt: Live packet capture')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GNS3/$pkgname/archive/v$pkgver.tar.gz"
         'gns3.desktop')
 sha256sums=('1a9efa1c0cdf219e9a9ec35d0e39f80587a9a8ee74eabfc63f53fe6e36f123cd'
@@ -36,6 +36,7 @@ prepare() {
     # Arch usually has the latest versions. Patch requirements to allow them.
     sed -i \
         -e 's|^psutil==5\.8\.0$|psutil>=5.8.0|' \
+        -e 's|^sentry-sdk==1\.0\.0$|sentry-sdk>=1.0.0|' \
         -e 's|^distro==1\.5\.0$|distro>=1.5.0|' \
         requirements.txt
 }
