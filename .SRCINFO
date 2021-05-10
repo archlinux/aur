@@ -1,0 +1,13 @@
+pkgbase = wimg
+	pkgdesc = A minimalistic image viewer made with WLib and SDL2
+	pkgver = 0.1
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	depends = sdl
+	depends = wlib
+	source = wimg-0.1.tar.gz
+	md5sums = SKIP
+
+pkgname = wimg
+
