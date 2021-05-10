@@ -12,17 +12,17 @@ groups=()
 makedepends=(pandoc git)
 checkdepends=()
 optdepends=(
-  'emacs: editor for dmconf '
-  'libnotify: used by dmlogout'
-  'maim: used by dmscrot'
+  'emacs: editor for dm-confedit'
+  'libnotify: used by dm-logout'
+  'maim: used by dm-main'
   'mpc: used by dm-music'
   'mpd: used by dm-music'
-  'qutebrowser: used by dmqute'
-  'reddio: used by dmred'
-  'zenity: used by dmred'
-  'slock: used by dmlogout'
-  'sxiv: used by dmwall'
-  'xwallpaper: used by dmwall'
+  'qutebrowser: used by dm-bookman'
+  'reddio: used by dm-reddit'
+  'zenity: used by dm-reddit'
+  'slock: used by dm-logout'
+  'sxiv: used by dm-setbg'
+  'xwallpaper: used by dm-setbg'
   'udisks2: used by dm-usbmount'
   )
 provides=(dmscripts)
