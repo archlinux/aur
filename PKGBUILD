@@ -20,7 +20,7 @@ package() {
   install -dm755 "$pkgdir"/usr/{bin/phylosuite,share/applications}
   mv "$srcdir"/PhyloSuite/* "$pkgdir"/usr/bin/phylosuite
   chmod -R 755  "$pkgdir"/usr/bin/phylosuite
-  "$pkgdir"/usr/share/phylosuite/PhyloSuite
+  "$pkgdir"/usr/bin/phylosuite/PhyloSuite
   install -m 755 "$srcdir"/PhyloSuite.png "$pkgdir"/usr/bin/phylosuite/
   install -m 755 "$srcdir"/PhyloSuite.desktop "$pkgdir"/usr/share/applications/
 }
