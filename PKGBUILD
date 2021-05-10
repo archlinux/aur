@@ -1,8 +1,8 @@
 # Maintainer: sife <wyattgoettsch@gmx.us>
 
 pkgname=dmenu_bw-git
-pkgver=r68.85f26dc
-pkgrel=14
+pkgver=r70.f209a4d
+pkgrel=15
 pkgdesc="dmenu wrapper for bitwarden-cli written in POSIX shellscript."
 arch=('x86_64')
 url="https://github.com/Sife-ops/dmenu_bw"
