@@ -2,7 +2,7 @@
 
 pkgname=gdu-git
 _gitname=gdu
-pkgver=v4.8.1.r3.g9331c57
+pkgver=v4.11.2
 pkgrel=1
 license=('MIT')
 pkgdesc="Fast disk usage analyzer"
@@ -35,7 +35,8 @@ build() {
     -mod=readonly \
     -modcacherw \
     -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" ${_BUILDINFO}" \
-    -o dist/gdu
+    -o dist/gdu \
+    github.com/dundee/gdu/v4/cmd/gdu
   pandoc gdu.1.md -s -t man > dist/gdu.1
 }
 
