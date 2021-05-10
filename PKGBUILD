@@ -2,11 +2,11 @@
 pkgname=annex-git
 _pkgname=annex
 pkgver=r8.ed11171
-pkgrel=2
+pkgrel=3
 license=("GPL2")
 pkgdesc="Simple appstore for gnome shell extensions."
 makedepends=(git meson)
-depends=(gjs hicolor-icon-theme chrome-gnome-shell)
+depends=(gjs hicolor-icon-theme chrome-gnome-shell gtk4 python-gobject libsoup)
 optdepends=()
 arch=("any")
 url="https://github.com/andyholmes/annex"
