@@ -10,7 +10,7 @@ pkgbase='nim-git'
 pkgname=('nim-git' 'nimble-git' 'nimsuggest-git' 'nimpretty-git' 'nim-gdb-git')
 pkgdesc='Nim is a statically typed compiled systems programming language. It combines successful concepts from mature languages like Python, Ada and Modula. Its design focuses on efficiency, expressiveness, and elegance (in that order of priority).'
 epoch=1
-pkgver=1.4.6.r1304.98c29c01e
+pkgver=1.4.6.r1321.a9ae5fe5b
 pkgrel=1
 arch=('x86_64')
 groups=('nim')
@@ -62,7 +62,7 @@ prepare() {
   cd Nim
 
   # Upstream "pins" supported commits:
-  local -r hash="$(grep 'Hash' config/build_config.txt | grep -Eio '[0-9a-z]{40}')"
+  local -r hash="$(grep 'nim_csourcesHash' config/build_config.txt | grep -Eio '[0-9a-z]{40}')"
 
   [[ -d ./csources_v1 ]] && rm -rf ./csources_v1
 
