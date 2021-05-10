@@ -1,11 +1,12 @@
 # Maintainer: Jose Riha < jose 1711 gmail com >
 
 pkgname=qscrabble3d
-pkgver=3.1.0_29
-pkgrel=2
+pkgver=3.1.4
+pkgrel=1
 pkgdesc="Highly customizable Scrabble game (classic, SuperScrabble, 3D games) - Qt version"
 arch=('x86_64')
-url="http://scrabble.game-server.cc/wiki"
+url="https://sourceforge.net/projects/scrabble/"
+conflicts=('scrabble3d')
 license=('GPL')
 md5sums=('d0806eb530f4d93db1302bc8e2c55093')
 depends=('qt4pas')
