@@ -4,7 +4,7 @@
 
 pkgname=ttf-aller
 pkgver=1.0
-pkgrel=7
+pkgrel=8
 pkgdesc="An excellent sans serif font for screen legibility"
 arch=('any')
 url="http://www.daltonmaag.com/"
@@ -12,7 +12,7 @@ license=(custom)
 provides=('ttf-aller')
 depends=()
 conflicts=()
-source=('aller.zip::http://dl.1001fonts.com/aller.zip')
+source=('aller.zip::https://www.1001fonts.com/download/aller.zip')
 sha256sums=('414d2288b9ad72aa0eba9b65b1e949e4f1b0fc655912ae16e4fb2103d83d04cc')
 
 
