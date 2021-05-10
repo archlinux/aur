@@ -1,17 +1,17 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=gespeaker-git
-pkgver=0.8.2.4.g236462d
-pkgrel=2
+pkgver=0.8.6.153.g4f68ada
+pkgrel=1
 pkgdesc="A GTK+ frontend for espeak and mbrola to speech the read text."
 url="http://www.muflone.com/gespeaker/"
 arch=('any')
-license=('GPL2')
-depends=('espeak' 'librsvg' 'pygtk' 'python2-dbus' 'python2-xdg' 'alsa-utils')
+license=('GPL')
+depends=('espeak' 'python-gobject' 'gtk3' 'python-xdg' 'python-psutil'
+         'python-gtts' 'libpulse')
 makedepends=('git')
 optdepends=('mbrola: for enhanced mbrola voices support'
-            'mbrola-voices: at least one mbrola voice'
-            'libpulse: PulseAudio output')
+            'mbrola-voices: at least one mbrola voice')
 provides=('gespeaker')
 conflicts=('gespeaker')
 source=('git+https://github.com/muflone/gespeaker.git')
@@ -22,22 +22,13 @@ pkgver() {
   git describe --always | sed 's|-|.|g'
 }
 
-prepare() {
-  cd "${pkgname%-*}"
-  # Python2 fix
-  for _file in setup.py gespeaker src/gespeaker.py
-  do
-    sed -i 's#env python#env python2#' "${_file}"
-  done
-}
-
 build() {
   cd "${pkgname%-*}"
-  python2 setup.py build
+  python setup.py build
 }
 
 package() {
   cd "${pkgname%-*}"
-  python2 setup.py install --optimize=1 --root "${pkgdir}"
+  python setup.py install --optimize=1 --root "${pkgdir}"
 }
 
