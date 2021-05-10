@@ -1,6 +1,6 @@
 pkgbase = qtile-config-git
 	pkgdesc = a qtile config
-	pkgver = 1.1
+	pkgver = 1.0.r7.ecc93ad
 	pkgrel = 1
 	url = https://github.com/luis-07/qtile-config
 	arch = x86_64

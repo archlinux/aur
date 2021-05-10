@@ -6,7 +6,7 @@
 
 # Maintainer: Luis Braun <luis.braun07@gmail.com>
 pkgname=qtile-config-git
-pkgver=1.0.r6.b4b67b4
+pkgver=1.0.r7.ecc93ad
 pkgrel=1
 epoch=
 pkgdesc="a qtile config"
