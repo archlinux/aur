@@ -1,4 +1,4 @@
 pkg/
 src/
 qstat/
-*.pkg.tar.xz
+*.pkg.tar.zst

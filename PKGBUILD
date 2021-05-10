@@ -1,14 +1,14 @@
 # Maintainer: Slash <demodevil5[at]yahoo[dot]com>
 
 pkgname=qstat-git
-pkgver=r396.a60436f
+pkgver=r467.d249332
 pkgrel=1
 pkgdesc="A command line utility that displays the status of internet game servers"
 url="https://github.com/multiplay/qstat"
 arch=('i686' 'x86_64')
 license=('Artistic2.0')
 depends=('glibc')
-makedepends=('subversion')
+makedepends=('git')
 replaces=('qstat-cvs' 'qstat-svn')
 conflicts=('qstat' 'qstat-cvs' 'qstat-svn')
 provides=('qstat')
