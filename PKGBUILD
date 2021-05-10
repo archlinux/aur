@@ -2,7 +2,7 @@
 
 pkgname=gambit
 pkgver=15.1.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Tools for doing computation in game theory"
 arch=('i686' 'x86_64')
 url="http://www.gambit-project.org"
@@ -25,7 +25,8 @@ build() {
   libtoolize
   automake --add-missing
   autoconf
-  CC=gcc-6 CXX=g++-6 ./configure --prefix=/usr --disable-enumpoly
+  CC=gcc-6 CXX=g++-6 CFLAGS=" -fstack-protector" \
+    CXXFLAGS=" -fstack-protector" ./configure --prefix=/usr --disable-enumpoly
   make
   cd src/python
   python2 setup.py build
