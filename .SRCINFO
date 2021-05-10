@@ -1,6 +1,6 @@
 pkgbase = suru-plus-folders-git
 	pkgdesc = Allows to change the color of folders (git version)
-	pkgver = .1.8.0.0.g419d45a
+	pkgver = .1.8.1.0.g8c88b5c
 	pkgrel = 1
 	url = https://github.com/gusbemacbe/suru-plus-folders
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=suru-plus-folders-git
-pkgver=.1.8.0.0.g419d45a
+pkgver=.1.8.1.0.g8c88b5c
 pkgrel=1
 pkgdesc="Allows to change the color of folders (git version)"
 url="https://github.com/gusbemacbe/suru-plus-folders"
