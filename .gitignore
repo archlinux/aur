@@ -1,0 +1,11 @@
+*.tar.xz
+*.tar.gz
+*.tar.zst
+
+pkg
+src
+
+haste-client-git*
+!haste-client-git.changelog
+haste-client
+haste
