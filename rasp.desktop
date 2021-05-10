@@ -1,0 +1,18 @@
+[Desktop Entry]
+Categories=
+Encoding=UTF-8
+Exec=wine /usr/share/rasp/rasp.exe
+GenericName=
+GenericName[zh]=
+Icon=/usr/share/rasp/rasp.png
+MimeType=
+Name=RASP
+ServiceTypes=
+SwallowExec=
+SwallowTitle=
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=root%
+

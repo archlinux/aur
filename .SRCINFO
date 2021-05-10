@@ -1,0 +1,16 @@
+pkgbase = rasp
+	pkgdesc = Reconstruct Ancestral State in Phylogenies is a tool for inferring ancestral state
+	pkgver = 4.2
+	pkgrel = 1
+	url = http://mnh.scu.edu.cn/soft/blog/rasp/
+	arch = x86_64
+	license = GPL3
+	source = http://mnh.scu.edu.cn/soft/blog/rasp/RASP_Win_20210121.zip
+	source = rasp.desktop
+	source = rasp.png
+	md5sums = 4f537c9c2dbe2e555fbdc311f32117e0
+	md5sums = 4304aead6dcffd521664dbc186997ec8
+	md5sums = 5b403896e05a3da471be404bb9afe053
+
+pkgname = rasp
+
