@@ -13,7 +13,7 @@ pkgdesc="A non-linear video editor. Following latest released branch in git."
 arch=('i686' 'x86_64')
 url="http://www.kdenlive.org/"
 license=('GPL')
-depends=('breeze-icons' 'qt5-quickcontrols' 'qt5-webkit' 'kfilemetadata' 'knewstuff' 'kplotting' 'knotifyconfig' 'mlt' 
+depends=('breeze-icons' 'qt5-quickcontrols' 'qt5-webkit' 'kfilemetadata' 'knewstuff' 'kplotting' 'knotifyconfig' 'mlt6' 
 'hicolor-icon-theme')
 makedepends=('extra-cmake-modules' 'kdoctools' 'git' 'v4l-utils')
 optdepends=('ffmpeg: for FFmpeg plugin'
