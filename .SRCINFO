@@ -11,6 +11,7 @@ pkgbase = hoffice
 	source = https://github.com/DisLogicator/hoffice/releases/download/11.20.0.1520-rc2/hoffice-11.20.0.1520.tar.gz
 	source = LICENSE
 	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = hoffice
 
