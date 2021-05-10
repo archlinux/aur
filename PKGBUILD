@@ -8,7 +8,12 @@ pkgdesc="Reconstruct Ancestral State in Phylogenies is a tool for inferring ance
 arch=('x86_64')
 url="http://mnh.scu.edu.cn/soft/blog/rasp/"
 license=('GPL3')
-
+depends=(
+	'wine'
+	'wine_gecko'
+	'wine-mono'
+	'nona'
+)
 source=("http://mnh.scu.edu.cn/soft/blog/rasp/RASP_Win_20210121.zip" "rasp.desktop" "rasp.png")
 md5sums=('4f537c9c2dbe2e555fbdc311f32117e0'
          '4304aead6dcffd521664dbc186997ec8'
