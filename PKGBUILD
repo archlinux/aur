@@ -2,7 +2,7 @@
 pkgname=python-espnet-git
 pkgver=0.9.9.r11190
 pkgrel=1
-pkgdesc='End-to-End Speech Processing Toolkit Python-Only Package (without venv)'
+pkgdesc='End-to-End Speech Processing Toolkit Python Package'
 arch=('any')
 url='https://github.com/espnet/espnet'
 license=('Apache 2.0')
