@@ -37,9 +37,11 @@ depends=(
 
 source=(
     $pkgname::git://github.com/koide3/hdl_graph_slam.git
-    191.patch::https://github.com/koide3/hdl_graph_slam/pull/191.patch
+    https://github.com/koide3/hdl_graph_slam/pull/191.patch
+    https://github.com/koide3/hdl_graph_slam/pull/192.patch
 )
 sha256sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
 )
@@ -47,6 +49,7 @@ sha256sums=(
 prepare() {
     cd "${srcdir}/${pkgname}"
     patch --forward --strip=1 --input="${srcdir}/191.patch"
+    patch --forward --strip=1 --input="${srcdir}/192.patch"
 }
 
 pkgver() {
@@ -58,26 +61,19 @@ build() {
     # Use ROS environment variables
     [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
-    # Create build directory
-    [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-    cd ${srcdir}/build
-
     # Build project
-    cmake ${srcdir}/${pkgname} \
+    cmake -Wno-dev -B build -S ${pkgname} \
             -DCMAKE_BUILD_TYPE=Release \
             -DCATKIN_ENABLE_TESTING=0 \
             -DCATKIN_BUILD_BINARY_PACKAGE=ON \
             -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
             -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-            -DPYTHON_INCLUDE_DIR=/usr/include/python3.9 \
-            -DPYTHON_LIBRARY=/usr/lib/libpython3.9.so \
-            -DPYTHON_BASENAME=-python3.9 \
             -DSETUPTOOLS_DEB_LAYOUT=OFF \
             -DCMAKE_CXX_STANDARD=17
-    make
+    make -C build
 }
 
 package() {
-    cd "${srcdir}/build"
+    cd build
     make DESTDIR="${pkgdir}/" install
 }

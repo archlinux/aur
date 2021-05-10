@@ -25,7 +25,9 @@ pkgbase = ros-noetic-hdl-graph-slam-git
 	depends = ros-noetic-sensor-msgs
 	depends = ros-noetic-message-generation
 	source = ros-noetic-hdl-graph-slam-git::git://github.com/koide3/hdl_graph_slam.git
-	source = 191.patch::https://github.com/koide3/hdl_graph_slam/pull/191.patch
+	source = https://github.com/koide3/hdl_graph_slam/pull/191.patch
+	source = https://github.com/koide3/hdl_graph_slam/pull/192.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
