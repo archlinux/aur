@@ -6,12 +6,12 @@
 
 pkgname=jedit
 pkgver=5.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Editor for programmers'
 arch=('any')
 url='http://jedit.org/'
 license=('GPL')
-depends=('java-runtime>=8')
+depends=('java-runtime>=11')
 makedepends=('gendesk')
 optdepends=('java-environment: for java development'
             'noto-fonts: a usable font')
