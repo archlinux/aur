@@ -1,7 +1,7 @@
 pkgbase = apmpkg
 	pkgdesc = Un administrador de paquetes universal para linux como modelo: PKGBUILD
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://github.com/Kedap/apmpkg
 	arch = x86_64
 	license = Apache
@@ -14,8 +14,8 @@ pkgbase = apmpkg
 	depends = ruby-bundler
 	depends = rsync
 	conflicts = apmpkg-git
-	source = https://codeload.github.com/Kedap/apmpkg/tar.gz/refs/tags/1.0.1
-	sha256sums = adb63a33cb63e2aa01436e79a714f65f052a4ee2e7617f2c23df4b6324733262
+	source = https://codeload.github.com/Kedap/apmpkg/tar.gz/refs/tags/1.0.2
+	sha256sums = 35ce64a6d6562d3fcae3b32c0232a1fcb028f2aef5854c1261284de9e6534f2a
 
 pkgname = apmpkg
 

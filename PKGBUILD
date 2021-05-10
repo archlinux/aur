@@ -1,8 +1,8 @@
 # Maintainer: kedap <dxhqezk@hi2.in>
 
 pkgname=apmpkg
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="Un administrador de paquetes universal para linux como modelo: PKGBUILD"
 arch=('x86_64')
 url="https://github.com/Kedap/apmpkg"
@@ -11,7 +11,7 @@ depends=('git' 'python-pip' 'python2-pip' 'curl' 'fakeroot' 'ruby-bundler' 'rsyn
 makedepends=('cargo')
 conflicts=('apmpkg-git')
 source=("https://codeload.github.com/Kedap/${pkgname}/tar.gz/refs/tags/${pkgver}")
-sha256sums=('adb63a33cb63e2aa01436e79a714f65f052a4ee2e7617f2c23df4b6324733262')
+sha256sums=('35ce64a6d6562d3fcae3b32c0232a1fcb028f2aef5854c1261284de9e6534f2a')
 
 build() {
 	cd "$pkgname-$pkgver"
