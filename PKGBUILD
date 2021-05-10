@@ -18,5 +18,5 @@ pkgver() {
 }
 
 package() {
-	install -Dm755 $srcdir/GalaxyBuds-BatteryLevel/buds_battery.py $pkgdir/usr/bin/galaxybuds-batterylevel
+	install -D $srcdir/GalaxyBuds-BatteryLevel/buds_battery.py $pkgdir/usr/bin/galaxybuds-batterylevel
 }
