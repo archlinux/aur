@@ -5,6 +5,7 @@ pkgbase = xfdashboard
 	url = http://goodies.xfce.org/projects/applications/xfdashboard/start
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	makedepends = xfce4-dev-tools
 	depends = libwnck3
