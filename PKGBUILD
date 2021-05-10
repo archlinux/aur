@@ -9,7 +9,7 @@ arch=('any')
 url='https://yoworks.blogspot.com.au/2011/02/eau-douce-sans-2008-2011.html'
 license=('custom')
 install=$pkgname.install
-source=("http://www.yoworks.com/eau_douce/$_pkgname.zip")
+source=("https://web.archive.org/web/20180121094813/http://yoworks.com:80/eau_douce/$_pkgname.zip")
 sha256sums=('dccbe80b6db9de4c941e3c257eecf56950373031d52da9b8b6a4771725963a77')
 
 prepare() {
