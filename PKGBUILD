@@ -14,8 +14,8 @@ depends=(anbox-git android-tools)
 install=$pkgname.install
 
 package() {
-    install -d $pkgdir/etc
-    cp -rf $srcdir/$pkgname-$pkgver/etc $pkgdir
+    install -d $pkgdir/usr
+    cp -rf $srcdir/$pkgname-$pkgver/usr $pkgdir
 }
 
 
