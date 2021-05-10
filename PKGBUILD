@@ -26,5 +26,5 @@ package() {
 
   python2 setup.py install --root="$pkgdir" --optimize=1
 
-  install -Dm644 ../LICENSE.txt "$pkgdir"/usr/share/licenses/python2-pathlib2/LICENSE.txt
+  install -Dm644 ../LICENSE.txt "$pkgdir"/usr/share/licenses/python2-securestring/LICENSE.txt
 }
