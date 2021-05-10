@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [2.1.0] - 2021-04-20
 
 ### Added
 - Label and description to commit edit ([#429](https://github.com/MitMaro/git-interactive-rebase-tool/pull/429))
@@ -13,6 +13,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Support for multiple key bindings per configuration ([#437](https://github.com/MitMaro/git-interactive-rebase-tool/pull/437))
 - Open external editor from visual mode ([#442](https://github.com/MitMaro/git-interactive-rebase-tool/pull/442))
 - Delete selected lines from the todo list ([#443](https://github.com/MitMaro/git-interactive-rebase-tool/pull/443))
+- Insert new exec, commit, label, reset or merge line ([#454](https://github.com/MitMaro/git-interactive-rebase-tool/pull/454), [#458](https://github.com/MitMaro/git-interactive-rebase-tool/pull/458))
+- Support home and end in list view ([#455](https://github.com/MitMaro/git-interactive-rebase-tool/pull/455))
 
 ### Fixed
 - Most modifier key combinations could not be used as key bindings ([#435](https://github.com/MitMaro/git-interactive-rebase-tool/pull/435))
@@ -151,7 +153,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Added
 - Initial project release
 
-[Unreleased]: https://github.com/MitMaro/git-interactive-rebase-tool/compare/2.0.0...HEAD
+[Unreleased]: https://github.com/MitMaro/git-interactive-rebase-tool/compare/2.1.0...HEAD
+[2.1.0]: https://github.com/MitMaro/git-interactive-rebase-tool/compare/2.0.0...2.1.0
 [2.0.0]: https://github.com/MitMaro/git-interactive-rebase-tool/compare/1.2.1...2.0.0
 [1.2.1]: https://github.com/MitMaro/git-interactive-rebase-tool/compare/1.2.0...1.2.1
 [1.2.0]: https://github.com/MitMaro/git-interactive-rebase-tool/compare/1.1.0...1.2.0

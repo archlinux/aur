@@ -8,11 +8,11 @@ _name="${_pkgname#git-}"
 
 pkgver() {
   cd "$_pkgname"
-  printf '%s.r%s.%s' \
+  printf %s.r%s.%s \
     "$(git tag -l | grep -P '.+\..+\.\d+' | sed -r 's/([0-9\.]+)(-.+)?/\1/g' | sort -Vr | sed 1q)" \
     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=2.0.0.r569.badf080
+pkgver=2.1.0.r583.a179df6
 pkgrel=1
 
 pkgdesc='An improved sequence editor for interactive git-rebase'
@@ -23,8 +23,8 @@ license=('GPL3')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
-makedepends=('rust')
-depends=('git')
+makedepends=('git' 'rust')
+depends=('libgit2')
 
 options=('zipman')
 
@@ -44,7 +44,12 @@ build() {
   if type -P rustup && ! rustup default &>/dev/null; then
     rustup default stable
   fi
-  cargo build --release
+  cargo build --release --locked
+}
+
+check() {
+  cd "$_pkgname"
+  cargo test --release --locked
 }
 
 package() {
@@ -53,7 +58,7 @@ package() {
   install -Dm644 {,readme/}*.md          -t"$pkgdir/usr/share/doc/$_pkgname/"
   install -Dm644 docs/assets/images/*    -t"$pkgdir/usr/share/doc/$_pkgname/images/"
   install -Dm644 LICENSE                 -t"$pkgdir/usr/share/licenses/$_pkgname/"
-  install -Dm644 src/$_name.1            -t"$pkgdir/usr/share/man/man1/"
+  install -Dm644 "src/$_name.1"          -t"$pkgdir/usr/share/man/man1/"
 }
 
 
