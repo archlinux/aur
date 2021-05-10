@@ -1,7 +1,11 @@
 post_install() {
-  echo "-> You must tell Xorg to use the nvidia driver with kernels >=5.11.0."
-  echo "-> Minimal xorg config example: /usr/share/nvidia-340xx/20-nvidia.conf"
-  echo "-> To place in /etc/X11/xorg.conf.d/"
+  cat <<END
+
+>>> You must tell Xorg to use the nvidia driver with kernels >=5.11.0.
+    Minimal config example provided in /usr/share/nvidia-340xx/20-nvidia.conf
+    which you should manually place in /etc/X11/xorg.conf.d/
+
+END
 }
 
 post_upgrade() {
