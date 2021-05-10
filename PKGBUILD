@@ -1,5 +1,5 @@
 # Maintainer :  Kr1ss $(sed s/\+/./g\;s/\-/@/ <<<\<kr1ss+x-yandex+com\>)
-# Author :      Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
+# Contributor : Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 
 
 pkgname=social-engineer-toolkit
@@ -15,7 +15,7 @@ license=('BSD')
 depends=('python-pexpect' 'python-pycryptodome' 'python-requests'
          'python-pyopenssl' 'python-pefile' 'impacket'
          'python-qrcode' 'python-beautifulsoup4')
-optdepends=('metasploit')
+optdepends=('metasploit' 'java-runtime' 'openssl')
 
 changelog=CHANGELOG
 backup=('etc/setoolkit/set.config')
@@ -23,13 +23,9 @@ source=("$url/archive/$pkgver.tar.gz")
 sha256sums=('ba07e90ac461c3fe5ac1582875699bd3247c7168ea7ee9ae34f2a51199437c08')
 
 
-prepare() {
-    rm -r "$pkgname-$pkgver"/{seupdate,setup.py,requirements.txt,.git{hub,ignore}}
-}
+prepare() { rm -r "$pkgname-$pkgver"/{seupdate,setup.py,requirements.txt,.git{hub,ignore}}; }
 
-build() {
-    python -O -m compileall "$pkgname-$pkgver"
-}
+build() { python -O -m compileall "$pkgname-$pkgver"; }
 
 package() {
     install -Dm644 "$pkgname-$pkgver/src/core/config.baseline" "$pkgdir/etc/setoolkit/set.config"
