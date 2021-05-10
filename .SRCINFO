@@ -1,0 +1,21 @@
+pkgbase = vim-cpp-modern-git
+	pkgdesc = Extended Vim syntax highlighting for C/C++
+	pkgver = r96.1a0d31f
+	pkgrel = 1
+	url = https://github.com/bfrg/vim-cpp-modern
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-cpp-modern
+	provides = vim-cpp-enhanced-highlight
+	conflicts = vim-cpp-modern
+	conflicts = vim-cpp-enhanced-highlight
+	source = vim-cpp-modern-git::git+https://github.com/bfrg/vim-cpp-modern
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = a9a3217805de6a090c34170e53dca6bfd6222e40e0cbed1116d09a94ba42dd22
+
+pkgname = vim-cpp-modern-git
+
