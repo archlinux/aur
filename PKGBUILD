@@ -1,29 +1,28 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=ocaml-objsize
 _pkgname=objsize
-pkgver=0.16
-pkgrel=2
+pkgver=0.18
+pkgrel=1
 pkgdesc="A small OCaml library for computing size of OCaml values."
 arch=('i686' 'x86_64')
-url="http://forge.ocamlcore.org/projects/objsize/"
+url="https://opam.ocaml.org/packages/objsize/"
 license=('GPL')
 depends=('ocaml')
-makedepends=('ocaml-findlib' 'camlp4')
-source=(https://forge.ocamlcore.org/frs/download.php/442/$_pkgname-$pkgver.tar.gz int32_int64_t.patch)
+makedepends=('ocaml-findlib' 'camlp4' 'ocamlbuild')
+source=(https://ygrek.org/p/release/objsize/$_pkgname-$pkgver.tar.bz2)
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  patch -p1 < "$srcdir/int32_int64_t.patch"
-  make lib
+  cd "$srcdir/gds-objsize-2e090c93ff31"
+  make
 }
 
 check() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  make tests
+  cd "$srcdir/gds-objsize-2e090c93ff31"
+  make test
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/gds-objsize-2e090c93ff31"
 
   mkdir -p ${pkgdir}$(ocamlfind printconf destdir) 
   make install \
@@ -33,5 +32,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('086b8be5964f6a02361735fa3a2ae7d3804699eedfeddab7d12196e1396a2a10'
-            'bf56d0f4e4524e40462c239e3ed64a002282d5894acee6e95a6850785ce21fcf')
+sha256sums=('6ea998f820ba3d6e261d0bb28d07c4a7ce832307ee7ef96d11cdafc0cd43caef')
