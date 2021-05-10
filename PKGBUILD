@@ -1,4 +1,4 @@
-# Maintainer :
+# Maintainer: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 
