@@ -14,6 +14,11 @@ md5sums=('7f0f7732acd0c82f7efb228f667ec79a')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
+	sed \
+	    -i \
+	    -e 's#property name="javac\.source" value="1.3"#property name="javac\.source" value="1.6"#' \
+	    -e 's#property name="javac\.target" value="1.1"#property name="javac\.target" value="1.6"#' \
+	    build.xml
 	ant -lib /usr/share/java/xercesImpl.jar
 }
 
