@@ -1,12 +1,13 @@
-# Maintainer: lmartinez-mirror
+# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 # Contributor: Jeremy Ruten <jeremy.ruten@gmail.com>
+
 pkgname=vim-cpp-enhanced-highlight-git
-pkgver=0.1.r93.g27e0ffc
-pkgrel=1
+pkgver=0.1.r94.g4b7314a
+pkgrel=2
 pkgdesc="Additional Vim syntax highlighting for C++"
 arch=('any')
 url="https://github.com/octol/vim-cpp-enhanced-highlight"
-license=('unknown')
+license=('MIT')
 depends=('vim-plugin-runtime')
 makedepends=('git')
 source=("$pkgname::git+$url")
@@ -20,7 +21,8 @@ pkgver() {
 package() {
   cd "$pkgname"
   find after \
-    -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+    -type f -exec install -Dvm 644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
+  install -Dvm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 

@@ -1,10 +1,10 @@
 pkgbase = vim-cpp-enhanced-highlight-git
 	pkgdesc = Additional Vim syntax highlighting for C++
-	pkgver = r45.a8024aa
-	pkgrel = 1
+	pkgver = 0.1.r94.g4b7314a
+	pkgrel = 2
 	url = https://github.com/octol/vim-cpp-enhanced-highlight
 	arch = any
-	license = unknown
+	license = MIT
 	makedepends = git
 	depends = vim-plugin-runtime
 	source = vim-cpp-enhanced-highlight-git::git+https://github.com/octol/vim-cpp-enhanced-highlight
