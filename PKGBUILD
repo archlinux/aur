@@ -2,7 +2,7 @@
 
 validpgpkeys=('33ED753E14757D79FA17E57DC4C1F715B2B66B95')
 
-pkgname=llvm11-fallback
+pkgname=llvm11-libs-bin
 pkgver=11.1.0
 pkgrel=1
 arch=('x86_64')
