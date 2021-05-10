@@ -7,6 +7,10 @@ pkgbase = qtile-config-git
 	license = GPL
 	makedepends = qtile-git
 	makedepends = gksu
+	makedepends = xmenu
+	makedepends = picom-jonaburg-git
+	makedepends = tint2
+	makedepends = rofi
 	source = git+https://github.com/luis-07/qtile-config
 	md5sums = SKIP
 
