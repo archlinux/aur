@@ -1,7 +1,7 @@
 pkgbase = qgis-ltr
 	pkgdesc = Geographic Information System (GIS); Long Term Release
 	pkgver = 3.16.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://qgis.org/
 	arch = x86_64
 	license = GPL
@@ -42,7 +42,9 @@ pkgbase = qgis-ltr
 	provides = qgis=3.16.6
 	conflicts = qgis
 	source = https://qgis.org/downloads/qgis-3.16.6.tar.bz2
+	source = qgis-proj8.patch
 	sha256sums = 496388cfcdb8096d2f43bec1f5a2cca6c8c9152a4854fe2da2f685b9a3a698f3
+	sha256sums = 58f58b5e43cc9f13b55bf2a9742b3c7cb555eee3c4075611980f0496cfd24c89
 
 pkgname = qgis-ltr
 
