@@ -3,7 +3,7 @@
 pkgname=pixelitor
 pkgver=4.2.3
 pkgrel=1
-pkgdesc='Tool for making triangulated illustrations out of photos'
+pkgdesc='Advanced image editor with support for layers, layer masks, text layers, multiple undo, blending modes, cropping, Gaussian blurring, unsharp masking, histograms, etc.'
 arch=('any')
 url='https://pixelitor.sourceforge.io/'
 license=('GPL')

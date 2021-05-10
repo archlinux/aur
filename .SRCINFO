@@ -1,5 +1,5 @@
 pkgbase = pixelitor
-	pkgdesc = Tool for making triangulated illustrations out of photos
+	pkgdesc = Advanced image editor with support for layers, layer masks, text layers, multiple undo, blending modes, cropping, Gaussian blurring, unsharp masking, histograms, etc.
 	pkgver = 4.2.3
 	pkgrel = 1
 	url = https://pixelitor.sourceforge.io/
