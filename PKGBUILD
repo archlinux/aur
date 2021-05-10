@@ -1,7 +1,7 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 pkgname='hevcesbrowser'
-pkgver='1.0.47.100316'
-pkgrel='4'
+pkgver='1.0.80.120121'
+pkgrel='1'
 pkgdesc="a tool for analyzing HEVC (h265) bitstreams"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -9,20 +9,20 @@ options=('!emptydirs')
 depends=('qt5-base' 'boost-libs')
 makedepends=('cmake')
 url='https://github.com/virinext/hevcesbrowser'
-source=("hevcesbrowser.tar.gz::https://github.com/virinext/${pkgname}/archive/head.tar.gz"
+source=("hevcesbrowser-${pkgver}.tar.gz::https://github.com/virinext/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
         "qhexview::git://github.com/virinext/QHexView.git#commit=314300a477976897ae46542a76ef31b8b05b897d")
-sha512sums=('3842d123e06e1f59454db5f92955bac6daadefb2c398bbdd5580f02cbf2059049b36e9337cc351d73b424d7eec16c3cfa0269b6596a9e3fedb1ab14332abceda'
+sha512sums=('d3e41736319c0da710c75e54cf4079d0f26a966267bf6d7e5fc849e43c403becfd95152b0687fea2decf460677ba53913bf1c4b92bc3d6e98162bdbc80b48201'
             'SKIP')
 
 build() {
-  cd "${srcdir}/hevcesbrowser-head/external"
-  rm -rf QHexView
-  ln -s "${srcdir}/qhexview" QHexView
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-  cd "${srcdir}/hevcesbrowser-head"
-  rm -rf project
-  mkdir project
-  cd project
+  rm -rf build external/QHexView
+
+  ln -s "${srcdir}/qhexview" external/QHexView
+  mkdir build
+
+  cd build
   cmake ..
   make
 
@@ -33,7 +33,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/hevcesbrowser-head"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   install -Dm755 build/hevcesbrowser         "${pkgdir}/usr/bin/hevcesbrowser"
   install -Dm755 build/hevcesbrowser_console "${pkgdir}/usr/bin/hevcesbrowser_console"
   install -Dm644 LICENSE                     "${pkgdir}/usr/share/doc/hevcesbrowser/LICENSE"
