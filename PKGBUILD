@@ -2,7 +2,7 @@
 
 pkgname='nautilus-annotations-git'
 _extname='nautilus-annotations'
-pkgver='r7.4ea1b2e'
+pkgver='r8.2ef769c'
 pkgrel=1
 pkgdesc='Annotate files and directories'
 arch=('i686' 'x86_64')
