@@ -1,5 +1,5 @@
-# Maintainer: Sahan Fernando <sahan.h.fernando@gmail.com>
-# Contributor: Christoph Gysin <christoph.gysin@gmail.com>
+# Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
+# Contributor: Sahan Fernando <sahan.h.fernando@gmail.com>
 
 _pkgname=libsoundio
 pkgname=${_pkgname}-git
