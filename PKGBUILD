@@ -1,6 +1,6 @@
 # Maintainer: fatalis <fatalis@fatalis.pw>
 pkgname=ida-free
-pkgver=7.0.191002
+pkgver=7.6.210507
 pkgrel=1
 pkgdesc="Freeware version of the world's smartest and most feature-full disassembler"
 arch=('x86_64')
@@ -8,11 +8,11 @@ url='https://www.hex-rays.com/products/ida/'
 license=('custom')
 makedepends=('fakechroot')
 options=('!strip')
-_originalname='idafree70_linux.run'
+_originalname='idafree76_linux.run'
 _installer="${_originalname}-${pkgver}-${pkgrel}"
 source=("${_installer}::https://out7.hex-rays.com/files/${_originalname}"
         'ida-free.desktop')
-sha256sums=('136e0e1995f16e1ff85244c269450fa91fb5454a565ca7623712f34ac004e245'
+sha256sums=('fe4256e67c07bf66b873fcdf13a4ec3922f312ae646eb62e313e66eab195d599'
             '55f2ed3f165df6efb5f7975b17d8e53bee1d88cad33efb9d4422402213d17440')
 
 package() {
@@ -27,11 +27,13 @@ package() {
     chmod +x "${pkgdir}"/${_installer}
     fakechroot chroot "${pkgdir}" /${_installer} --mode unattended --prefix /opt/${pkgname} --installpassword ""
     rm "${pkgdir}"/${_installer}
-    rm "${pkgdir}"/tmp/bitrock_installer.log
+    rm "${pkgdir}"/tmp/installbuilder_installer.log
     rmdir "${pkgdir}"/tmp
 
     # the installer needlessly makes a lot of files executable
     find "${pkgdir}"/opt/${pkgname} -type f -exec chmod -x {} \;
+    # make dir permissions consistent with the 7.0 installer
+    find "${pkgdir}"/opt/${pkgname} -type d -exec chmod g-w {} \;
     chmod +x "${pkgdir}"/opt/${pkgname}/{ida64,assistant}
 
     rm "${pkgdir}"/opt/${pkgname}/{uninstall*,Uninstall*}
