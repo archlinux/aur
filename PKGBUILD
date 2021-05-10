@@ -1,9 +1,9 @@
 # Contributor: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs-plumed
-pkgver=2020.4
-_gromacsver=2020.4
-_plumedver=2.7.0
+pkgver=2021
+_gromacsver=2021
+_plumedver=2.7.1
 pkgrel=1
 pkgdesc='GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles. (Plumed patched)'
 url='http://www.gromacs.org/'
@@ -16,17 +16,13 @@ optdepends=('cuda: Nvidia GPU support'
 makedepends=('cmake' 'libxml2' 'hwloc')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
-sha256sums=('5519690321b5500c7951aaf53ff624042c3edd1a5f5d6dd1f2d802a3ecdbf4e6')
+sha256sums=('efa78ab8409b0f5bf0fbca174fb8fbcf012815326b5c71a9d7c385cde9a8f87b')
 
 export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #Gromacs will have the ability to read any
                             #trajectory file format that can be read by
                             #VMD installation (e.g. AMBER's DCD format).
 
-
-#For cuda support gcc8 is required, if you do not need cuda support comment the next two lines
-#export CC=gcc-8
-#export CXX=g++-8
 
 #Plumed
 export PLUMED_KERNEL=/usr/lib/libplumedKernel.so
@@ -42,22 +38,23 @@ build() {
   msg2 "Building the gromacs with plumed support (single precision)"
   cd ${srcdir}/single
   cmake ../gromacs-${_gromacsver} \
-        -DCMAKE_INSTALL_PREFIX=/usr/ \
-        -DBUILD_SHARED_LIBS=OFF \
-        -DGMX_PREFER_STATIC_LIBS=ON \
-        -DGMX_BUILD_MDRUN_ONLY=ON
-        #-DGMX_SIMD=AVX2_256 \
-        #-DGMX_SIMD=AVX_256 \
-	#-DREGRESSIONTEST_DOWNLOAD=ON \
+        -DCMAKE_INSTALL_PREFIX=/usr/local/gromacs-plumed \
+        -DGMX_DEFAULT_SUFFIX=OFF -DGMX_BINARY_SUFFIX=_plumed -DGMX_LIBS_SUFFIX=_plumed \
+	-DGMX_BUILD_OWN_FFTW=ON \
+        -DREGRESSIONTEST_DOWNLOAD=ON
+        #GMX_GPU: Framework for GPU acceleration. Pick one of: OFF, CUDA, OpenCL, SYCL
+        #-DGMX_GPU=CUDA
   make
+}
+
+check () {
+  msg2 "Testing single precision compilation with plumed"
+  cd ${srcdir}/single
+#  make check
 }
 
 package() {
   msg2 "Making the single precision mdrun_plumed executable"
   cd ${srcdir}/single
   make DESTDIR=${pkgdir} install
-  rm -rf ${pkgdir}/usr/share
-  rm -rf ${pkgdir}/usr/include
-  rm  ${pkgdir}/usr/bin/gmx-completion-mdrun.bash
-  mv  ${pkgdir}/usr/bin/mdrun ${pkgdir}/usr/bin/mdrun_plumed
 }
