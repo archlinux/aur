@@ -19,11 +19,11 @@ main() {
   if ! command -v updpkgsums &>/dev/null; then
     echo "updpkgsums could not be found."
     echo "This is needed to update the sha256 sums"
-    echo -e "Install with: sudo pacman -S packman-contrib"
+    echo -e "Install with: sudo pacman -S pacman-contrib"
     exit
   fi
-  
-  ls 
+
+  ls
   echo $(grep "pkgver=" PKGBUILD)
   CODE_SERVER_CURRENT_VERSION=$(grep "pkgver=" PKGBUILD | cut -d "=" -f2-)
   # Ask which version we should update to
