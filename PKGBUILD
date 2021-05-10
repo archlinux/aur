@@ -2,11 +2,11 @@
 pkgname=cardboard-git
 _pkgname=cardboard
 pkgver=r305.b54758d
-pkgrel=1
+pkgrel=2
 license=("GPL3")
 pkgdesc="A unique, scrollable tiling Wayland compositor designed with laptops in mind."
 makedepends=(git meson ninja wayland-protocols pandoc)
-depends=(libdrm libinput wayland xcb-util-wm xorg-server-xwayland)
+depends=(libdrm libegl libinput libxkbcommon wayland xcb-util-wm xorg-server-xwayland)
 optdepends=(
 	"dmenu: Application launcher"
 	"grim: Screenshot utility"
