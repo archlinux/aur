@@ -2,7 +2,7 @@
 
 pkgname=teamviewer13
 pkgver=13.2.153830
-pkgrel=3
+pkgrel=5
 pkgdesc='All-In-One Software for Remote Support and Online Meetings'
 arch=('i686' 'x86_64')
 url='http://www.teamviewer.com'
@@ -31,6 +31,8 @@ depends=(
 install=teamviewer.install
 source_x86_64=("https://dl.teamviewer.com/download/linux/version_${pkgver%%.*}x/teamviewer_${pkgver}_amd64.deb")
 source_i686=("https://dl.teamviewer.com/download/linux/version_${pkgver%%.*}x/teamviewer_${pkgver}_i386.deb")
+sha512sums_i686=('6490a465f89d57c6f4b14ac103af057634b877d2fbf9bc549ea3c785fbe2ab3516ae1fdb74883ba6a530a93cab6f6d35217b1985083d3464b32a9cf787b9d339')
+sha512sums_x86_64=('cf5bd71bf17592431533211ccbc8ddd480289c57e8c48b305c72daa2696c03d77943b1e6cbd4e84ce7a6f5a129ef28e005f0652ebc1a90fd56df9a9ee44b2d17')
 
 prepare() {
 	warning "If the install fails, you need to uninstall previous major version of Teamviewer"
