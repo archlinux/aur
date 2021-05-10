@@ -1,7 +1,7 @@
 pkgbase = lua52-jwtjitsi-git
 	pkgdesc = LUA JWT Jitsi
 	pkgver = 2.0.r1.gd0398d9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jitsi/luajwtjitsi
 	arch = any
 	license = MIT

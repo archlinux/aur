@@ -1,10 +1,10 @@
-# Maintainer: Daurnimator <daurnimator@archlinux.org>
+# Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 _pkgname=lua52-jwtjitsi
 pkgname=lua52-jwtjitsi-git
 provide=("$_pkgname")
 pkgver=2.0.r1.gd0398d9
-pkgrel=1
+pkgrel=2
 pkgdesc='LUA JWT Jitsi'
 arch=('any')
 url='https://github.com/jitsi/luajwtjitsi'
