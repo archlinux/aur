@@ -3,9 +3,10 @@
 # Maintainer: Shatur95 <genaloner@gmail.com>
 
 # The source is about 200 MiB, with an extra ~11 GiB of dependencies downloaded in Setup.sh, and may take several hours to compile.
+# If you want to turn on additional patches there are switches below.
 pkgname=unreal-engine
 pkgver=4.26.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=(x86_64)
 url=https://www.unrealengine.com/
@@ -17,7 +18,8 @@ optdepends=('qt5-base: qmake build system for projects'
             'codelite: IDE for projects'
             'kdevelop: IDE for projects'
             'clion: IDE for projects'
-	    'ccache: cache compilations')
+	    'ccache: cache compilations'
+	    'clang: supports system compiler')
 license=(custom:UnrealEngine)
 source=(com.unrealengine.UE4Editor.desktop
 	clang_11.patch
@@ -25,6 +27,7 @@ source=(com.unrealengine.UE4Editor.desktop
 	ccache_executor.patch
 	compile_and_regenerate.patch
 	processor_multiplier.patch
+	stop_mono_clone.patch
 	BuildConfiguration.xml)
 sha256sums=('15e9f9d8dc8bd8513f6a5eca990e2aab21fd38724ad57d213b06a6610a951d58'
             '8042bed3405298b5a4357068dd6b22a5a8a0f19def64b4f61ed0362fb46cb00d'
@@ -32,6 +35,7 @@ sha256sums=('15e9f9d8dc8bd8513f6a5eca990e2aab21fd38724ad57d213b06a6610a951d58'
             '33982486f7fafac35a33dfa37c85cfba8543aa78b5fe13c395d9cccf691ef4b3'
             '7e53beb5818ceadb765689ad8e1baf55ce1d6afe8a9d6884b6f2bd121083c3f7'
             'a129607acc1ea6a48ee5af073da6bd9318176d07e91e743ce93662065f7288dd'
+            'aa9eb83c9f58c539d3cd43e919a4ebd6714c0aa2d32eb9b320049cf04dd01587'
             '7cfc5ef5f7842d5e0a574938226e54361529b2fb5c68606c0e099352a513f84c')
 options=(!strip staticlibs) # Package is 3 Gib smaller with "strip" but it takes a long time and generates many warnings
 
@@ -40,10 +44,8 @@ _system_compiler= 	# for the system compiler you'll need to set LINUX_MULTIARCH_
 		   	# as an environment to /usr/sbin compile projects after building.
 			# The system compiler should work for everything in engine now.
 _ccache_support=       # Patches for ccache. More optimizations might be needed.
-_system_mono= # Uses System mono for unreal.
-		# must set UE_USE_SYSTEM_MONO
-		# in your environment for it to
-		# work after install
+_system_mono= # Uses System mono for unreal. must set UE_USE_SYSTEM_MONO
+		# in your environment for it to work after install
 _processor_multiplier=  # Allows multiplier on processor count. Allowing the Maximum threads your cpu can handle 
 
 prepare() {
@@ -69,6 +71,7 @@ prepare() {
   if [ -n "$_system_mono" ]
   then
     export UE_USE_SYSTEM_MONO=1
+    patch -p1 -i "$srcdir/stop_mono_clone.patch"
   fi
   generateProjectArgs="-makefile"
   if [ -n "$_system_compiler" ]
@@ -140,6 +143,11 @@ package() {
   install -Dm770 LICENSE.md $pkgdir/usr/share/licenses/UnrealEngine/LICENSE.md
   
   # Engine
+  if [ -n "$_system_mono" ]; then
+    rm -r Engine/Binaries/ThirdParty/Mono
+    rm -r Engine/Binaries/ThirdParty/Python
+    rm -r Engine/Binaries/ThirdParty/Python3
+  fi
   install -dm770 "$pkgdir/$dir/Engine"
   mv Engine/Binaries "$pkgdir/$dir/Engine/Binaries"
   mv Engine/Build "$pkgdir/$dir/Engine/Build"

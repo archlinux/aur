@@ -1,0 +1,13 @@
+diff --git a/Engine/Build/BatchFiles/Linux/BuildThirdParty.sh b/Engine/Build/BatchFiles/Linux/BuildThirdParty.sh
+index 0c2002c91e5..a6b2e5b9936 100755
+--- a/Engine/Build/BatchFiles/Linux/BuildThirdParty.sh
++++ b/Engine/Build/BatchFiles/Linux/BuildThirdParty.sh
+@@ -364,7 +364,7 @@ BuildMono()
+   done
+   P4Open $UE_MONO_DIR/lib/mono/4.5/mscorlib.dll
+ 
+-  if [ ! -d mono ]; then
++  if [[ ! -d mono || -z "UE_USE_SYSTEM_MONO" ]]; then
+ 	git clone -b mono-4.0.0-branch https://github.com/mono/mono.git
+   fi
+   cd mono
