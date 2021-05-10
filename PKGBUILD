@@ -12,7 +12,11 @@ source=("${pkgname}-v${pkgver}.tar.gz::https://codeload.github.com/scaredyfish/$
 md5sums=('2336e7dbe56953da21eac5a09ab3cab1')
 
 prepare() {
-	echo -n
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	rm .gitignore
+	rm README.md
+	rm package.sh
+	rm -r img
 }
 
 package() {
