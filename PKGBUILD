@@ -11,7 +11,7 @@ pkgname=(yaru-sound-theme-git
          yaru-metacity-theme-git
          yaru-icon-theme-git
          yaru-session-git)
-pkgver=21.04.1.r14.gb01004d7c
+pkgver=21.04.1.r71.g8528f4725
 pkgrel=1
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
@@ -44,8 +44,8 @@ _delete_all_from_pkgdir_except() {
         rm -r "${pkgdir}"/usr/share/gtksourceview-*
     fi
     if [[ "$1" != "gnome-shell-theme" ]]; then
-        rm "${pkgdir}"/usr/share/themes/Yaru{,-light}/gnome-shell
-        rm -r "${pkgdir}"/usr/share/gnome-shell/theme/Yaru{,-light}
+        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-light}/gnome-shell
+        rm -r "${pkgdir}"/usr/share/gnome-shell/theme/Yaru
     fi
     if [[ "$1" != "unity-theme" ]]; then
         rm -r "${pkgdir}"/usr/share/themes/Yaru/unity
