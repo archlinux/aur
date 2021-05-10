@@ -25,6 +25,11 @@ pkgver() {
   echo "$tag.r$commits_since.$(git log --pretty=format:'%h' -n 1)"
 }
 
+check() {
+  cd "$pkgname"
+  cargo test --release --locked --target-dir=target
+}
+
 package() {
   cd "$pkgname"
   install -Dm 755 target/release/map2 -t "${pkgdir}/usr/bin"
