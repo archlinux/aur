@@ -1,6 +1,6 @@
 pkgbase = seaview
 	pkgdesc = GUI for multiple sequence alignment and molecular phylogeny
-	pkgver = 4.7
+	pkgver = 5.0.4
 	pkgrel = 2
 	url = http://doua.prabi.fr/software/seaview
 	arch = x86_64
@@ -10,12 +10,10 @@ pkgbase = seaview
 	optdepends = clustal-omega: alignment
 	optdepends = muscle: alignment
 	optdepends = gblocks-bin: select blocks of evolutionarily conserved sites
-	source = ftp://pbil.univ-lyon1.fr/pub/mol_phylogeny/seaview/archive/seaview_4.7.tar.gz
+	source = http://doua.prabi.fr/software/seaview_data/seaview5-64.tgz
 	source = seaview.desktop
-	source = seaview.sharedmimeinfo
-	md5sums = 9c1ee28e7f870b76991de17b22d7dfcb
-	md5sums = 94f13509470dd69f053ffc178884e292
-	md5sums = 9592a71ee55fa6edfbaddbce2d5469b9
+	md5sums = c22422d4da24da45a0aa8a3c35e941bf
+	md5sums = 0a7629bd71cda352c7314546c53d2839
 
 pkgname = seaview
 

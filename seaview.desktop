@@ -5,7 +5,7 @@
 Version=1.0
 Terminal=false
 Icon=seaview
-Exec=seaview %f
+Exec=/usr/share/seaview/seaview %f
 Name=SeaView
 GenericName=Multiple sequence alignment editor
 GenericName[en]=Multiple sequence alignment editor

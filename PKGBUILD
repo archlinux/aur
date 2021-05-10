@@ -2,7 +2,7 @@
 # Contributor: Nick B <Shirakawasuna at gmail _dot_com>
 
 pkgname=seaview
-pkgver=4.7
+pkgver=5.0.4
 pkgrel=2
 pkgdesc="GUI for multiple sequence alignment and molecular phylogeny"
 arch=('x86_64')
@@ -11,29 +11,15 @@ license=('GPL3')
 depends=('shared-mime-info' 'fltk')
 optdepends=('clustal-omega: alignment'
             'muscle: alignment'
-			'gblocks-bin: select blocks of evolutionarily conserved sites')
-source=("ftp://pbil.univ-lyon1.fr/pub/mol_phylogeny/$pkgname/archive/${pkgname}_${pkgver}.tar.gz"
-        'seaview.desktop'
-        'seaview.sharedmimeinfo')
-md5sums=('9c1ee28e7f870b76991de17b22d7dfcb'
-         '94f13509470dd69f053ffc178884e292'
-         '9592a71ee55fa6edfbaddbce2d5469b9')
-
-build() {
-  cd seaview
-  make
-}
+	    'gblocks-bin: select blocks of evolutionarily conserved sites')
+source=("http://doua.prabi.fr/software/seaview_data/seaview5-64.tgz"
+        'seaview.desktop')
+md5sums=('c22422d4da24da45a0aa8a3c35e941bf'
+         '0a7629bd71cda352c7314546c53d2839')
 
 package() {
-  install -d "$pkgdir"/usr/{bin,share/{pixmaps,man/man1,applications,icons/hicolor/scalable/apps,mime/packages,doc/seaview}}
-
+  install -d "$pkgdir"/usr/{bin,share/{seaview,applications}}
   install -m644 seaview.desktop "$pkgdir/usr/share/applications/"
-  install -m644 seaview.sharedmimeinfo "$pkgdir/usr/share/mime/packages/seaview.xml"
-
-  cd seaview
-  install -m755 seaview "$pkgdir/usr/bin/"
-  install -m644 seaview.xpm "$pkgdir/usr/share/pixmaps/"
-  install -m644 seaview.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
-  install -m644 seaview.html "$pkgdir/usr/share/doc/seaview/"
-  install -m644 seaview.1 "$pkgdir/usr/share/man/man1/"
+  mv "$srcdir"/seaview/* "$pkgdir"/usr/share/seaview
+  ln -s "$pkgdir"/usr/share/seaview/seaview "$pkgdir"/usr/bin/seaview
 }
