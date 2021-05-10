@@ -1,0 +1,13 @@
+PhyloSuite
+[Desktop Entry]
+Name=PhyloSuite
+MimeType=
+Exec=/usr/share/phylosuite/PhyloSuite
+Type=Application
+Terminal=true
+Icon=/usr/share/phylosuite/PhyloSuite.png
+Comment=PhyloSuite
+X-KDE-StartupNotify=false
+Categories=System;
+X-GNOME-UsesNotifications=true% 
+

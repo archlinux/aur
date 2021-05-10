@@ -1,0 +1,17 @@
+pkgbase = phylosuite
+	pkgdesc = PhyloSuite is an integrated and scalable desktop platform for streamlined molecular sequence data management and evolutionary phylogenetics studies
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/dongzhang0725/PhyloSuite
+	arch = x86_64
+	license = GPL3
+	depends = python>=3.6
+	source = https://github.com/dongzhang0725/PhyloSuite/releases/download/1.2.2/PhyloSuite_v1.2.2_Linux.tar.gz
+	source = PhyloSuite.desktop
+	source = PhyloSuite.png
+	md5sums = 9d43b3b2b9b076071f29f7c8f0689bd5
+	md5sums = 4f07dedd56f9e15909033adf04fcef81
+	md5sums = aca08e388f8d6a180a570b31ccebe764
+
+pkgname = phylosuite
+
