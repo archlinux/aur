@@ -1,0 +1,24 @@
+pkgbase = llvm11-fallback
+	pkgdesc = LLVM 11.1.0 runtime libraries for LLVM >= 12.0.0. It's fallback package for programs like rust, qtcreator which use llvm 11.
+	pkgver = 11.1.0
+	pkgrel = 1
+	url = https://llvm.org/
+	arch = x86_64
+	license = custom:Apache 2.0 with LLVM Exception
+	depends = gcc-libs
+	depends = zlib
+	depends = libffi
+	depends = libedit
+	depends = ncurses
+	depends = libxml2
+	options = staticlibs
+	source = llvm-libs-11.1.0-1-x86_64.pkg.tar.zst::https://archlinux.org/packages/extra/x86_64/llvm-libs/download/
+	source = clang-11.1.0-1-x86_64.pkg.tar.zst::https://archlinux.org/packages/extra/x86_64/clang/download/
+	validpgpkeys = 33ED753E14757D79FA17E57DC4C1F715B2B66B95
+	sha256sums = 978a1fd05f0207772584dee775eb926c3d1dcd7e0b2f8c694bfe2dbb0d20a004
+	sha256sums = 84ba4f67027fbe3ad73e2a9c321390111a8e428665101461f968f55c2097504c
+	sha512sums = b61d89e5199a1e8859689a8ae2e85b30486d4da1ac6bcf4cafa9a3556b0b45fef7fc310327fade1fd42d183d06b5648ffa5ad8922b1282ca016e5468256e5feb
+	sha512sums = 7891dd8de24b2f266dc5e51ffe2a496a284df04ae0ade67b8c8674d72ce80f40a576509bf48c722446aa44cb6469f8a5a0865fa9c68da69124f2b6aa6628d609
+
+pkgname = llvm11-fallback
+
