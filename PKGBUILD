@@ -2,15 +2,15 @@
 
 pkgname=nucleistudioide
 pkgver=202102
-pkgrel=1
-pkgdesc="Nuclei Studio IDE 是基于 MCU Eclipse IDE 开发的一款针对芯来公司处理器核产品的集成开发环境工具，继承了Eclipse IDE 平台的各种优势。"
+pkgrel=2
+pkgdesc="Nuclei Studio IDE 是基于 MCU Eclipse IDE 开发的一款针对芯来公司处理器核产品的集成开发环境工具，用于 RISC-V 开发继承了 Eclipse IDE 平台的各种优势。"
 arch=("x86_64")
 makedepends=('xdg-user-dirs' 'imagemagick')
 depends=('java-runtime' 'jlink-software-and-documentation' 'ncurses5-compat-libs' 'glibc' 'libusb')
 optdepends=()
 conflicts=()
 url="https://www.nucleisys.com/download.php"
-license=('Commercial')
+license=('unknow')
 options=(!strip)
 
 source=("https://www.nucleisys.com/upload/files/nucleistudio/NucleiStudio_IDE_202102-lin64.tgz")
