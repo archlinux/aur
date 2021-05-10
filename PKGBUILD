@@ -3,15 +3,16 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=fhc
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Fast HTTP Checker"
 arch=('x86_64')
 url="https://github.com/Edu4rdSHL/fhc"
 license=('GPL3')
+depends=('gcc-libs')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('2a6e92c5b7dc7921d6a277b0fdbbddc1f6871ea436c2d76660f361e35a223df3a2b06c55f130d54fb9099f7222b381a0a49620fc4b9ea9d49fdc49cee8cbdb9b')
+sha512sums=('467339cf7497c0e4bfbdaafc57393f3541a61066f55d78f8b2b80edf85cb05f371c8bff3108e3a2c7398b5572a9227737ddc128886f4ada58c32f272fc33e3fc')
 
 build() {
   cd "$pkgname-$pkgver"
