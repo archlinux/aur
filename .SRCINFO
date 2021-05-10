@@ -1,0 +1,17 @@
+pkgbase = vim-aurora-git
+	pkgdesc = 24-bit dark theme for (Neo)vim
+	pkgver = r3.1712c3f
+	pkgrel = 1
+	url = https://github.com/ray-x/aurora
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-aurora
+	conflicts = vim-aurora
+	source = vim-aurora-git::git+https://github.com/ray-x/aurora
+	sha256sums = SKIP
+
+pkgname = vim-aurora-git
+
