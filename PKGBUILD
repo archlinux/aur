@@ -2,7 +2,7 @@
 # Maintainer: Icelk <main at icelk.dev>
 
 pkgname=vscodium-bin-marketplace
-pkgver=1.55.2
+pkgver=1.56.0
 pkgrel=1
 pkgdesc='Enable vscode marketplace in vscodium-bin'
 arch=('any')
