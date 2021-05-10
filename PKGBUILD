@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=drizzlepac
 pkgname=python-${_pyname}-doc
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Documentation for DrizzlePac"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ source=("https://github.com/spacetelescope/${_pyname}/archive/${pkgver}.tar.gz"
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
 #        "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/LICENSE.txt"
 #        "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/CHANGELOG.rst")
-md5sums=('645c348dad8e3ff49e62cbf2fd226a0e'
+md5sums=('c90538216734012162f3f6a854a55bdb'
          '248fa756065bb5cf939c1180cb58d1e7')
 
 prepare() {
@@ -33,6 +33,7 @@ prepare() {
 
     mv ${_pyname} _${_pyname}
     patch -Np1 -i "${srcdir}/fix_changelog_title.patch"
+    sed -i 's/stylesheet/css_file/' doc/source/conf.py
 #   ln -rs ${srcdir}/{LICENSE.txt,ANGELOG.rst} .
 }
 
