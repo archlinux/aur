@@ -1,0 +1,15 @@
+pkgbase = deepmatching
+	pkgdesc = Deep Convolutional Matching
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://thoth.inrialpes.fr/src/deepmatching/
+	arch = any
+	license = GPL
+	makedepends = openmp
+	makedepends = cblas
+	options = !strip
+	source = https://thoth.inrialpes.fr/src/deepmatching/code/deepmatching_1.2.2.zip
+	md5sums = 3a1906d9f40c554e5501c61d3d1750a4
+
+pkgname = deepmatching
+
