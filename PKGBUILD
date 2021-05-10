@@ -1,6 +1,6 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python2-corner
-pkgname=('python2-corner' 'python-corner-doc')
+pkgname=('python2-corner' 'python2-corner-doc')
 pkgver=2.0.0
 pkgrel=1
 pkgdesc="Make some beautiful corner plots of samples"
@@ -45,7 +45,7 @@ package_python2-corner() {
     python2 setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
 }
 
-package_python-corner-doc() {
+package_python2-corner-doc() {
     pkgdesc="Documentation for corner.py"
     cd ${srcdir}/corner.py-${pkgver}/docs/_build
 
