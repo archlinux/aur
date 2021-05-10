@@ -63,7 +63,7 @@ build() {
 
 package_wicd-git() {
   pkgdesc="Wired and wireless network manager for Linux"
-  depends=('python2' 'python2-dbus' 'dhcpcd' 'wpa_supplicant' 'wireless_tools'
+  depends=('python2' 'python-dbus-common' 'dhcpcd' 'wpa_supplicant' 'wireless_tools'
            'inetutils' 'net-tools' 'ethtool' 'shared-mime-info' 'python2-urwid' 'python2-gobject2' 'dbus-glib' 'rfkill')
   optdepends=('wicd-gtk: needed if you want the GTK interface')
   provides=("wicd")
