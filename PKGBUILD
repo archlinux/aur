@@ -56,7 +56,7 @@ pkgver=${_major}
 #_stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=5
+pkgrel=6
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -88,12 +88,12 @@ source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz
         "${_patchsource}/ntfs3-patches/0001-ntfs3-patches.patch"
         "${_patchsource}/zstd-dev-patches-v3/0001-zstd-dev-patches.patch"
         "${_patchsource}/clearlinux-patches/0001-clearlinux-patches.patch"
-        "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch")
+        "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch" )
 
 sha512sums=('ddbe371a564d6a12e638794a3833b5aaf605b4fc5adb123cbb6a26e41fe084c043041dd18a988a44d2a27848c1934feb5ff5459d121e8ea726610307289248e9'
             '52f19783cc560a5688f4914db70e1f59d0e549cbf1a057d891e38f6e9436691d51c18a1d78f13173a970d8f4153275c53f9ab093c01b59d283f0375f072930ab'
             '88f9f1e6ea206068fd029566e4610c16b7c3007f10363c7db37cd922fe75646437d2e4814317bc292d06eff7e9ebd29d8cd1ee82c8abf45ddd1843c1ff55f5c7'
-            '1e01152125225ce3c1506892694d1c7266f06069574d48b699532bb96daf71976cbbbbb59d38ed5ac44df88e02732f0be1e388a56b3b62d25f8f9e59157f6672'
+            'a57b95e3c38378f98f29fcf405f0e4ec6c125da95629f59f60722909926131497df460f4938d9d873db584cf567122409407e29345b4545d885547c282be28f5'
             'bafda1ec6114a360bed8a9f8ae6b1e8dc5c22adf15f7545c3455a090f14b491639707f6624d7a891ec66b459842e61df9d62274b070b7a611f0bdbd367219ae5'
             '15933126feeb56ccc6ace70db9fa7afb64d148900e41a780e42e03ce09faf7bab12413f526675b918aeff55e91dc038ad58884bb7add4a45962aca79d576cb93'
             '449570b8b9a04391cc2cc171cc806b3a132c6e969c7cedf9c4925d24244888e6f2e5afb6c551521fe62fcb7e2bf08cb8d396f9ec785ecfcdd5ea27dd9ffed4ea'
@@ -269,7 +269,7 @@ prepare() {
       scripts/config --enable CONFIG_FAIR_GROUP_SCHED
       scripts/config --enable CONFIG_SCHED_AUTOGROUP
       scripts/config --disable CONFIG_SCHED_DEBUG
-      scripts/config --enable CONFIG_SCHED_INFO
+      scripts/config --disable CONFIG_SCHED_INFO
       scripts/config --disable CONFIG_SCHEDSTATS
       scripts/config --disable CONFIG_DEBUG_KERNEL
       scripts/config --disable CONFIG_EXPERT
