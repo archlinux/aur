@@ -12,6 +12,7 @@ depends=(
 	'wine'
 	'wine_gecko'
 	'wine-mono'
+	'nona'
 )
 source=("http://www.diversityoflife.org/winclada/Winclad.exe" "winclada.desktop" "winclada.png")
 sha256sums=('4c6647c3ca56a57a74ab508feb71755f0ffdf7204b148e326397953ac8d32a6b'

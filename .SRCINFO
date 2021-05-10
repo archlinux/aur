@@ -8,6 +8,7 @@ pkgbase = winclada
 	depends = wine
 	depends = wine_gecko
 	depends = wine-mono
+	depends = nona
 	source = http://www.diversityoflife.org/winclada/Winclad.exe
 	source = winclada.desktop
 	source = winclada.png
