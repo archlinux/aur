@@ -1,7 +1,7 @@
 # Maintainer: Evandro Begati <evandroalb at gmail dot com>
 
 pkgname=teamviewer13
-pkgver=13.2.153808
+pkgver=13.2.153830
 pkgrel=1
 pkgdesc='All-In-One Software for Remote Support and Online Meetings'
 arch=('i686' 'x86_64')
