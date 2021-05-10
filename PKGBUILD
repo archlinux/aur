@@ -1,4 +1,6 @@
-# Maintainer:  Sky Xie <skyxie@foxmail.com>
+# Maintainer:  malacology
+# Contributor: malacology
+# Contributor:  Sky Xie <skyxie@foxmail.com>
 
 pkgname=lantern-beta
 pkgver=beta
