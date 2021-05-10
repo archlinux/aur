@@ -1,16 +1,19 @@
 # Maintainer: Eon S. Jeon <esjeon@hyunmu.am>
 
+_referer='Referer: https://www.hancom.com/'
+DLAGENTS=("https::/usr/bin/curl -o %o -H ${_referer// /\\ } %u")
+
 pkgname='hwpviewer'
 pkgver=9.20.0.1573
-pkgrel=2
+pkgrel=3
 pkgdesc='An official HWP viewer for Linux by Hancom'
 arch=('x86_64')
 url='https://www.hancom.com/'
 license=('custom:hwpviewer')
-depends=('gtk3' 'webkitgtk' 'gvfs' 'icu64')
+depends=('gtk3' 'webkitgtk' 'gvfs' 'icu68')
 optdepends=()
 source=(
-	'local://hancomoffice-hwpviewer-Ubuntu-amd64.deb'
+	'https://cdn.hancom.com/pds/hnc/VIE/hancomoffice-hwpviewer-Ubuntu-amd64.deb'
 	'license.txt'
 )
 sha512sums=(
