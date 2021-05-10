@@ -5,16 +5,15 @@ pkgname=nbfc
 pkgver=1.6.3
 _pkgver=$(echo $pkgver | sed -r 's/_/-/g')
 _pkgname=nbfc-${_pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform fan control service for notebooks (STABLE & BETA releases)"
 url="https://github.com/hirschmann/nbfc"
 arch=('i686' 'x86_64')
-conflicts=('nbfc-beta' 'nbfc-git')
 license=('GPL3')
 install=${pkgname}.install
 depends=('mono')
-makedepends=('mono-msbuild' 'nuget')
-provides=('nbfc' 'ec-probe')
+# makedepends=('mono-msbuild' 'nuget')
+makedepends=('nuget')
 source=("https://github.com/hirschmann/nbfc/archive/${_pkgver}.tar.gz"
         "nbfc"
         "ec-probe")
@@ -26,7 +25,8 @@ build() {
 	cd "${srcdir}/${_pkgname}/"
 
 	nuget restore NoteBookFanControl.sln
-	msbuild -m /t:Build /p:Configuration=ReleaseLinux NoteBookFanControl.sln
+	# msbuild -m /t:Build /p:Configuration=ReleaseLinux NoteBookFanControl.sln
+	xbuild /t:Build /p:Configuration=ReleaseLinux NoteBookFanControl.sln
 }
 
 package() {
