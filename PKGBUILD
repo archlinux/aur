@@ -1,5 +1,5 @@
 pkgname=rust-analyzer-nightly-bin
-pkgver=rust.analyzer.cf4d4f646.2021.05.09.nightly
+pkgver=rust.analyzer.fd109fb58.2021.05.10.nightly
 pkgrel=1
 epoch=1
 pkgdesc="An experimental Rust compiler front-end for IDEs (nightly)"
@@ -12,7 +12,7 @@ optdepends=()
 provides=('rust-analyzer')
 conflicts=('rust-analyzer')
 source=(https://github.com/rust-analyzer/rust-analyzer/releases/download/nightly/rust-analyzer-linux.gz)
-sha256sums=('87235e0d1884803404fddac2fbdcc8a21fd2060bf2238105325a76d27df455a3')
+sha256sums=('SKIP')
 
 pkgver() {
     chmod a+x rust-analyzer-linux
