@@ -1,7 +1,7 @@
 # Maintainer: <mumei AT airmail DOT cc>
 
 pkgname=gnustep-gui
-pkgver=0.28.0
+pkgver=0.29.0
 pkgrel=1
 pkgdesc="The GNUstep GUI class library"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('gnustep-gui-svn')
 groups=('gnustep-core')
 options=('!makeflags')
 source=(https://github.com/gnustep/libs-gui/releases/download/gui-${pkgver//./_}/gnustep-gui-$pkgver.tar.gz)
-sha256sums=('1f6d2de60417e8a674280de84077f94f7394ae4edb3fae9e04129743d7449317')
+sha256sums=('7bf12b29b12a2886003d3b251e8076ad284f41780c7322531676fcd54e1d6df5')
 
 prepare() {
   cd "$srcdir"/$pkgname-$pkgver
