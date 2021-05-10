@@ -3,7 +3,7 @@
 pkgname=cdo
 pkgver=1.9.10
 fileID=24638
-pkgrel=0
+pkgrel=1
 pkgdesc="Command line tool manipulate and analyse Climate model Data. Supported data formats are GRIB, netCDF, SERVICE, EXTRA and IEG. There are more than 400 operators available."
 url="https://code.zmaw.de/projects/cdo"
 license=('GPLv2')
@@ -31,10 +31,8 @@ build() {
     --with-eccodes=/usr \
     --with-magics=/usr \
     --with-libxml2=/usr \
-    CFLAGS="-g -O3 -std=gnu99 -Wall -fopenmp -march=native -ftree-vectorize -mavx2" \
-    CXXFLAGS="-g -O3 -std=c++11 -Wall -fopenmp -march=native  -ftree-vectorize -mavx2" \
-    LIBS="-ljasper -lpng -lopenjpeg" \
-    CPPFLAGS="-I/usr/include/magics -I/usr/include/libxml2"
+    CFLAGS="-g -O3 -Wall -fopenmp -march=native -ftree-vectorize -mavx2" \
+    CXXFLAGS="-g -O3 -Wall -fopenmp -march=native  -ftree-vectorize -mavx2"
 
   make -j12 || return
 }
