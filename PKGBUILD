@@ -10,7 +10,8 @@ url="http://www.gnustep.org/experience/$_pkgname.html"
 license=('GPL')
 install=$pkgname.install
 depends=('gnustep-base'
-         'gnustep-gui')
+         'gnustep-gui'
+         'gnustep-back')
 makedepends=('gcc-objc'
              'gnustep-make')
 source=("http://ftpmain.gnustep.org/pub/gnustep/dev-apps/$_pkgname-$pkgver.tar.gz"
