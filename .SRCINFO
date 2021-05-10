@@ -1,6 +1,6 @@
 pkgbase = kotlin-native-bin
 	pkgdesc = Kotlin/Native infrastructure
-	pkgver = 1.4.32
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/JetBrains/kotlin-native
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = kotlin-native-bin
 	options = staticlibs
 	options = libtool
 	options = !strip
-	source = https://github.com/JetBrains/kotlin/releases/download/v1.4.32/kotlin-native-linux-1.4.32.tar.gz
-	sha256sums = 3712fab4c60484fd8b5538dd018a0023033cb3ea38d2a3023c79b342e4e8b24d
+	source = https://github.com/JetBrains/kotlin/releases/download/v1.5.0/kotlin-native-linux-1.5.0.tar.gz
+	sha256sums = 33241c460fab8c496a6b01ca08670ae7f667df23acc56081f8b37c50b021b50f
 
 pkgname = kotlin-native-bin
 
