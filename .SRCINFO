@@ -1,5 +1,5 @@
 pkgbase = wlib
-	pkgdesc = WLib
+	pkgdesc = A collection of free open-source lightweight general-purpose libraries for C language
 	pkgver = 0.1
 	pkgrel = 1
 	arch = x86_64

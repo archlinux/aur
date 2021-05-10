@@ -2,7 +2,7 @@
 pkgname=wlib
 pkgver=0.1
 pkgrel=1
-pkgdesc="WLib"
+pkgdesc="A collection of free open-source lightweight general-purpose libraries for C language"
 arch=(x86_64)
 url=""
 license=('GPL')
