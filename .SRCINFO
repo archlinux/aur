@@ -1,0 +1,17 @@
+pkgbase = passh-agent-git
+	pkgdesc = An ssh-agent implementation to fetch your SSH keys from Pass.
+	pkgver = 0.2.0.5.gb7358d0
+	pkgrel = 1
+	url = https://github.com/MrPixelized/passh-agent
+	arch = any
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = passh-agent
+	conflicts = passh-agent
+	source = git+https://github.com/MrPixelized/passh-agent.git
+	sha256sums = SKIP
+
+pkgname = passh-agent-git
+
