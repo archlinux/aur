@@ -14,7 +14,7 @@ appname="${pkgname%-bin}"
 
 source=("https://github.com/squalou/${appname}/releases/download/${pkgver}-${pkgrel}/${appname}_${pkgver}-${pkgrel}_amd64.deb")
 
-sha512sums=('91695c798f7845069568070f5773c7c158687b3c2c581e45e921469a7a74da8882fe8703e7353f760be431b8b50ec75c17447d7c80ea7133207049a500be13ec')
+sha512sums=('636983b8733c8230112bdec7f4498fd8f1ace77bb103df2043a8414210a9330ab405174aa016751160e04d88f86b09d019e909b1a1c1afce530131264973b27d')
 
 build() {
   ar x "${appname}_${pkgver}-${pkgrel}_amd64.deb"
