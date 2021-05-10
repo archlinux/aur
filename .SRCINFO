@@ -1,0 +1,17 @@
+pkgbase = signal-backup-decode
+	pkgdesc = Decode Signal Backups
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/pajowu/signal-backup-decode
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	makedepends = protobuf
+	depends = openssl
+	depends = sqlite
+	source = signal-backup-decode-0.2.3.tar.gz::https://github.com/pajowu/signal-backup-decode/archive/refs/tags/v0.2.3.tar.gz
+	sha512sums = 8ef0591e87f0fa717795198644f431840f7c479327e2efb67d30493b2b78091895f7cf9426e3b68e9292a2d5ca17a49762b742955748038f589d7979c4889ae3
+
+pkgname = signal-backup-decode
