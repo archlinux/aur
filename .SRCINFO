@@ -1,5 +1,5 @@
 pkgbase = phylosuite
-	pkgdesc = PhyloSuite is an integrated and scalable desktop platform for streamlined molecular sequence data management and evolutionary phylogenetics studies
+	pkgdesc = an integrated and scalable desktop platform for streamlined molecular sequence data management and evolutionary phylogenetics studies
 	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/dongzhang0725/PhyloSuite
@@ -10,7 +10,7 @@ pkgbase = phylosuite
 	source = PhyloSuite.desktop
 	source = PhyloSuite.png
 	md5sums = 9d43b3b2b9b076071f29f7c8f0689bd5
-	md5sums = 4f07dedd56f9e15909033adf04fcef81
+	md5sums = 29b089eb8ab6a37d184f74cdfd21c569
 	md5sums = aca08e388f8d6a180a570b31ccebe764
 
 pkgname = phylosuite

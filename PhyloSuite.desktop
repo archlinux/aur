@@ -2,10 +2,10 @@ PhyloSuite
 [Desktop Entry]
 Name=PhyloSuite
 MimeType=
-Exec=/usr/share/phylosuite/PhyloSuite
+Exec=/usr/bin/phylosuite/PhyloSuite
 Type=Application
 Terminal=true
-Icon=/usr/share/phylosuite/PhyloSuite.png
+Icon=/usr/bin/phylosuite/PhyloSuite.png
 Comment=PhyloSuite
 X-KDE-StartupNotify=false
 Categories=System;
