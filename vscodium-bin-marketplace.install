@@ -1,15 +1,15 @@
 post_install() {
-  patch -Rt /usr/share/vscodium-bin/resources/app/product.json < /usr/share/vscodium-bin/resources/app/product.json.patch
+  /usr/share/vscodium-bin/resources/app/patch.sh
 }
 
 pre_upgrade() {
-  patch -Rt /usr/share/vscodium-bin/resources/app/product.json < /usr/share/vscodium-bin/resources/app/product.json.patch
+  /usr/share/vscodium-bin/resources/app/patch.sh -R
 }
 
 post_upgrade() {
-  patch -Rt /usr/share/vscodium-bin/resources/app/product.json < /usr/share/vscodium-bin/resources/app/product.json.patch
+  /usr/share/vscodium-bin/resources/app/patch.sh
 }
 
 pre_remove() {
-  patch -Rt /usr/share/vscodium-bin/resources/app/product.json < /usr/share/vscodium-bin/resources/app/product.json.patch
+  /usr/share/vscodium-bin/resources/app/patch.sh -R
 }
