@@ -3,8 +3,12 @@ pkgbase = clipman
 	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/yory8/clipman
-	arch = x86_64
 	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = GPL3
 	makedepends = go
 	depends = wl-clipboard>=2.0

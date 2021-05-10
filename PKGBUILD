@@ -9,7 +9,7 @@ depends=("wl-clipboard>=2.0")
 makedepends=("go")
 provides=("clipman")
 license=("GPL3")
-arch=("x86_64" "i686")
+arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 md5sums=("7e643cb93dd671f45414d919bf521625")
 source=("https://github.com/yory8/${pkgname}/archive/v${pkgver}.tar.gz")
 
