@@ -1,7 +1,7 @@
 pkgbase = taskflow-git
 	pkgdesc = Simple resource-aware task scheduler
-	pkgver = r50.51f9156
-	pkgrel = 3
+	pkgver = r53.b21cc7c
+	pkgrel = 4
 	url = https://github.com/lanPN85/taskflow
 	install = install.sh
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = taskflow-git
 	makedepends = python-virtualenv
 	makedepends = binutils
 	depends = zlib
-	source = git+https://github.com/lanPN85/taskflow#tag=0.3.0
+	source = git+https://github.com/lanPN85/taskflow#tag=0.3.1
 	md5sums = SKIP
 
 pkgname = taskflow-git
