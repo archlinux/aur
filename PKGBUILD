@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://ignitionrobotics.org/libs/fuel_tools"
 license=('Apache')
 groups=('development')
-depends=('curl' 'jsoncpp' 'libyaml' 'libzip' 'ignition-common>=3'
+depends=('curl' 'jsoncpp' 'libyaml' 'libzip' 'ignition-common-3'
          'ignition-msgs-5' 'ignition-tools')
 makedepends=('ignition-cmake>=2')
 optdepends=('ruby')

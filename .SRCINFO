@@ -12,7 +12,7 @@ pkgbase = ignition-fuel_tools-4
 	depends = jsoncpp
 	depends = libyaml
 	depends = libzip
-	depends = ignition-common>=3
+	depends = ignition-common-3
 	depends = ignition-msgs-5
 	depends = ignition-tools
 	optdepends = ruby
