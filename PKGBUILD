@@ -39,12 +39,9 @@ pkgver() {
 
 build() {
 	cd qtile-config/core
-	sudo cp -f qtile-config.py /usr/bin/qtile-config
+	sudo cp qtile-config.py /usr/bin/qtile-config
 }
 
 package() {
-    cd qtile-config
 
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 README.org "${pkgdir}/usr/share/doc/${pkgname}/README.org"
 }
