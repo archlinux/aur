@@ -1,6 +1,6 @@
 pkgbase = ruby-loofah
 	pkgdesc = HTML sanitization for Rails applications
-	pkgver = 2.9.0
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = https://github.com/flavorjones/loofah
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = ruby-loofah
 	depends = ruby
 	depends = ruby-crass
 	depends = ruby-nokogiri
-	noextract = loofah-2.9.0.gem
+	noextract = loofah-2.9.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/loofah-2.9.0.gem
-	sha256sums = 93f908512a878ba04fa5e0a0da414cbe8884869e488077c70dfc741a77dffc2f
+	source = https://rubygems.org/downloads/loofah-2.9.1.gem
+	sha256sums = 273e5acaa8c64a948bf6279112b08fdd3cb1d470e24cd23a12b78482625c35f1
 
 pkgname = ruby-loofah
 
