@@ -5,7 +5,7 @@
 
 pkgname=libmagick6
 pkgbase=imagemagick6
-_pkgver=6.9.12-11
+_pkgver=6.9.12-12
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="An image viewing/manipulation program (legacy 6.9.12-* series)"
@@ -19,7 +19,7 @@ makedepends=('ghostscript' 'openexr' 'libwmf' 'librsvg' 'libxml2' 'openjpeg2'
 checkdepends=('gsfonts' 'ttf-dejavu')
 source=("ImageMagick6-$_pkgver.tar.gz::https://github.com/ImageMagick/ImageMagick6/archive/refs/tags/$_pkgver.tar.gz"
         'arch-fonts.diff')
-sha256sums=('856ccc2a688e16314c453f6c4cba835ad4e37bcf0444c9db53d2aeddc4095215'
+sha256sums=('2a5edb741828cacf42e07344a0aa7141dc657bf9dcfad6f6cd3e2774afeea47d'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
 
 prepare() {
@@ -107,7 +107,4 @@ package_libmagick6() {
 
 # Harden security policy https://bugs.archlinux.org/task/62785
   sed -e '/<\/policymap>/i \ \ <policy domain="delegate" rights="none" pattern="gs" \/>' -i "$pkgdir"/etc/ImageMagick-6/policy.xml
-
-# Use correct options for inkscape<1.0
-  sed -e 's|--export-file|--export-png|' -i "$pkgdir"/etc/ImageMagick-6/delegates.xml
 }
