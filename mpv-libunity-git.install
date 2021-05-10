@@ -1,0 +1,56 @@
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+yellow="${bold}$(tput setaf 3)"
+blue="${bold}$(tput setaf 4)"
+green="${bold}$(tput setaf 2)"
+
+_instructions() {
+  printf "${yellow}==>${all_off} ${bold}ATTENTION:${all_off}
+${green}==>${all_off} ${bold}For run this plugin, you can use one of this methods:${all_off}
+
+     ${blue}->${all_off} Or add this line:
+
+     '${bold}script=/usr/share/mpv/scripts/libunity.so${all_off}'
+
+     in one of two this config files:
+
+     User Wide:   '${bold}"$\HOME/".config/mpv/mpv.conf${all_off}'
+     System Wide: '${bold}/etc/mpv/mpv.conf${all_off}'
+
+     ${blue}->${all_off} Or copy (or softlink) the plugin into one of two places:
+
+     User Wide:   '${bold}"$\HOME/".config/mpv/scripts${all_off}'
+     System Wide: '${bold}/etc/mpv/scripts${all_off}'
+
+     for autoload it.\n"
+}
+
+_instructions_remove() {
+  printf "${yellow}==>${all_off} ${bold}ATTENTION:${all_off}
+${green}==>${all_off} ${bold}Don\'t forget:${all_off}
+
+     ${blue}->${all_off} Remove this line:
+
+     '${bold}script=/usr/share/mpv/scripts/libunity.so${all_off}'
+
+     in your config file:
+
+     User Wide:   '${bold}"$\HOME/".config/mpv/mpv.conf${all_off}'
+     System Wide: '${bold}/etc/mpv/mpv.conf${all_off}'
+
+     ${blue}->${all_off} Or remove the plugin (or softlink) into your:
+
+     User Wide:   '${bold}"$\HOME/".config/mpv/scripts${all_off}'
+     System Wide: '${bold}/etc/mpv/scripts${all_off}'
+
+     folder.\n"
+}
+
+post_install() {
+  _instructions
+}
+
+post_remove() {
+   _instructions_remove
+}
