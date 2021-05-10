@@ -12,17 +12,18 @@ source=("git+https://github.com/shiro/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 build() {
+  cd "$pkgname"
   cargo build --release --locked --all-features --target-dir=target
 }
 
 check() {
+  cd "$pkgname"
   cargo test --release --locked --target-dir=target
 }
 
 package() {
+  cd "$pkgname"
   install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
 
-  ls
-
-  install -Dm644 $pkgname/docs/man/map2.1 "$pkgdir/usr/share/man/man1/map2.1"
+  install -Dm644 docs/man/map2.1 "$pkgdir/usr/share/man/man1/map2.1"
 }
