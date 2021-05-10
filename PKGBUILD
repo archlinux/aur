@@ -2,13 +2,13 @@
 
 pkgbase=yoga-usage-mode
 pkgname=(yoga-usage-mode-dkms-git)
-pkgver=r5.af1a495
+pkgver=r8.3ada633
 pkgrel=1
 pkgdesc="Kernel module for Yoga C940 tablet mode detection"
 arch=('x86_64')
 url="https://github.com/lukas-w/yoga-usage-mode"
 license=('MIT')
-makedepends=('git' 'linux-headers')
+makedepends=('git')
 source=('git+https://github.com/lukas-w/yoga-usage-mode.git')
 md5sums=('SKIP')
 
