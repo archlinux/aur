@@ -22,12 +22,12 @@ makedepends=('cmake' 'libffi' 'libedit' 'ncurses' 'libxml2'
 
 _gitbranch="release/12.x"
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git#branch=${_gitbranch}"
-  'local://llvm-config.h')
+  'llvm-config.h')
 
-md256sums=('SKIP'
-  '295c343dcd457dc534662f011d7cff1a')
+sha256sums=('SKIP'
+            '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48')
 sha512sums=('SKIP'
-  '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd')
+            '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd')
 options=('staticlibs')
 
 

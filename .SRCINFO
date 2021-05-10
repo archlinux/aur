@@ -58,8 +58,10 @@ pkgbase = llvm12-git
 	replaces = lldb
 	options = staticlibs
 	source = llvm-project::git+https://github.com/llvm/llvm-project.git#branch=release/12.x
-	source = local://llvm-config.h
+	source = llvm-config.h
 	validpgpkeys = 33ED753E14757D79FA17E57DC4C1F715B2B66B95
+	sha256sums = SKIP
+	sha256sums = 597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48
 	sha512sums = SKIP
 	sha512sums = 75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd
 
