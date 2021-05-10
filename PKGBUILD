@@ -4,7 +4,7 @@
 
 pkgname=gns3-server
 pkgver=2.2.20
-pkgrel=2
+pkgrel=3
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64')
 url='https://github.com/GNS3/gns3-server'
@@ -47,6 +47,7 @@ prepare() {
     sed -i \
         -e 's|^aiohttp==3\.7\.4.*|aiohttp>=3.7.4|' \
         -e 's|^aiofiles==0\.6\.0$|aiofiles>=0.6.0|' \
+        -e 's|^sentry-sdk==1\.0\.0$|sentry-sdk>=1.0.0|' \
         -e 's|^psutil==5\.8\.0$|psutil>=5.8.0|' \
         -e 's|^distro==1\.5\.0$|distro>=1.5.0|' \
         -e 's|^py-cpuinfo==7\.0\.0$|py-cpuinfo>=7.0.0|' \
