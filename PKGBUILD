@@ -2,7 +2,7 @@
 
 pkgname=listmonk-git
 _pkgname=${pkgname%-git}
-pkgver=0.9.0.r83.gf08254d
+pkgver=0.9.0.r92.g20939e8
 pkgrel=1
 pkgdesc='Self-hosted newsletter and mailing list manager with a modern dashboard'
 arch=(x86_64)
@@ -57,7 +57,7 @@ check() {
 package() {
 	cd "$pkgname"
     install -Dm755 -t "$pkgdir/usr/bin" $_pkgname
-    install -Dm644 config.toml.sample "$pkgdir/etc/$pkgname/config.toml"
+    install -Dm644 config.toml.sample "$pkgdir/etc/$_pkgname/config.toml"
     install -Dm644 -t "$pkgdir/usr/lib/systemd/system/" "../$_pkgname.service"
     install -Dm644 -t "$pkgdir/usr/lib/sysusers.d/" "../$_pkgname.conf"
     install -Dm644 -t "$pkgdir/usr/share/$_pkgname/" \
