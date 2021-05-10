@@ -1,11 +1,14 @@
 # Maintainer: Andy Bao <contact at andybao dot me>
-pkgname=firefox-profile-switcher-connector-bin
+_appname=firefox-profile-switcher-connector
+pkgname=${_appname}-bin
 pkgdesc="Native connector software for the 'Profile Switcher for Firefox' extension."
 pkgver=0.0.6
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686')
 url="https://github.com/null-dev/firefox-profile-switcher-connector"
 license=('GPL3')
+provides=("${_appname}")
+conflicts=("${_appname}")
 # depends=('firefox') We don't specify this as not all firefox packages provide firefox currently
 source_x86_64=("$pkgname-$pkgver-x86_64.rpm::$url/releases/download/v$pkgver/linux-x64.rpm")
 source_i686=("$pkgname-$pkgver-i686.rpm::$url/releases/download/v$pkgver/linux-x86.rpm")

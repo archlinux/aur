@@ -1,11 +1,13 @@
 pkgbase = firefox-profile-switcher-connector-bin
 	pkgdesc = Native connector software for the 'Profile Switcher for Firefox' extension.
 	pkgver = 0.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/null-dev/firefox-profile-switcher-connector
 	arch = x86_64
 	arch = i686
 	license = GPL3
+	provides = firefox-profile-switcher-connector
+	conflicts = firefox-profile-switcher-connector
 	source_x86_64 = firefox-profile-switcher-connector-bin-0.0.6-x86_64.rpm::https://github.com/null-dev/firefox-profile-switcher-connector/releases/download/v0.0.6/linux-x64.rpm
 	sha256sums_x86_64 = a6c9cf67a30645464fb607e637966c5771321d1d2167dfd31d240d9c390505fe
 	source_i686 = firefox-profile-switcher-connector-bin-0.0.6-i686.rpm::https://github.com/null-dev/firefox-profile-switcher-connector/releases/download/v0.0.6/linux-x86.rpm
