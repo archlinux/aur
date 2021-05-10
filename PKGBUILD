@@ -6,7 +6,7 @@
 
 # Maintainer: Luis Braun <luis.braun07@gmail.com>
 pkgname=qtile-config-git
-pkgver=1.1
+pkgver=1.0.r6.b4b67b4
 pkgrel=1
 epoch=
 pkgdesc="a qtile config"
@@ -44,9 +44,7 @@ build() {
 
 package() {
     cd qtile-config
-    mkdir -p ${pkgdir}/opt/${pkgname}
-    cp -rf * ${pkgdir}/opt/${pkgname}
-    make PREFIX=/usr DESTDIR="${pkgdir}" install
+
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.org "${pkgdir}/usr/share/doc/${pkgname}/README.org"
 }
