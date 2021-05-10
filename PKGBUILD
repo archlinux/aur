@@ -3,13 +3,15 @@
 
 pkgname=vim-cpp-enhanced-highlight-git
 pkgver=0.1.r94.g4b7314a
-pkgrel=2
+pkgrel=3
 pkgdesc="Additional Vim syntax highlighting for C++"
 arch=('any')
 url="https://github.com/octol/vim-cpp-enhanced-highlight"
 license=('MIT')
 depends=('vim-plugin-runtime')
 makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
