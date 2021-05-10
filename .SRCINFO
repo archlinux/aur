@@ -12,8 +12,10 @@ pkgbase = seaview
 	optdepends = gblocks-bin: select blocks of evolutionarily conserved sites
 	source = http://doua.prabi.fr/software/seaview_data/seaview5-64.tgz
 	source = seaview.desktop
+	source = seaview.png
 	md5sums = c22422d4da24da45a0aa8a3c35e941bf
-	md5sums = 0a7629bd71cda352c7314546c53d2839
+	md5sums = 43fa9e52949a5cd73f202af76e2cab56
+	md5sums = 337583df60b24d724d96e511a3f063ce
 
 pkgname = seaview
 

@@ -13,13 +13,16 @@ optdepends=('clustal-omega: alignment'
             'muscle: alignment'
 	    'gblocks-bin: select blocks of evolutionarily conserved sites')
 source=("http://doua.prabi.fr/software/seaview_data/seaview5-64.tgz"
-        'seaview.desktop')
+        'seaview.desktop'
+        'seaview.png')
 md5sums=('c22422d4da24da45a0aa8a3c35e941bf'
-         '0a7629bd71cda352c7314546c53d2839')
+         '43fa9e52949a5cd73f202af76e2cab56'
+         '337583df60b24d724d96e511a3f063ce')
 
 package() {
   install -d "$pkgdir"/usr/{bin,share/{seaview,applications}}
   install -m644 seaview.desktop "$pkgdir/usr/share/applications/"
   mv "$srcdir"/seaview/* "$pkgdir"/usr/share/seaview
   ln -s "$pkgdir"/usr/share/seaview/seaview "$pkgdir"/usr/bin/seaview
+  install -Dm 755 "$srcdir"/seaview.png "$pkgdir"/usr/share/seaview/seaview.png
 }
