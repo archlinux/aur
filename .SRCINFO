@@ -1,0 +1,18 @@
+pkgbase = wfview-git
+	pkgdesc = Interface for Icom transceivers
+	pkgver = r699.2878223
+	pkgrel = 1
+	url = https://wfview.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt5-serialport
+	depends = qt5-multimedia
+	depends = qcustomplot
+	provides = wfview
+	source = git+https://gitlab.com/eliggett/wfview.git
+	md5sums = SKIP
+
+pkgname = wfview-git
+
