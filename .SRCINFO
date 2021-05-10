@@ -3,15 +3,15 @@
 pkgbase = fortune-mod-bashfr
 	pkgdesc = bashfr.org/DTC (danstonchat.com) fortune file
 	pkgver = 10
-	pkgrel = 5
-	url = http://danstonchat.com
+	pkgrel = 6
+	url = https://danstonchat.com
 	install = fortune-mod-bashfr.install
 	arch = any
 	groups = fortune-mods
 	license = custom
 	depends = fortune-mod
-	source = http://sputnick.fr/scripts/bashfr
-	source = http://sputnick.fr/scripts/bashfr-cron
+	source = https://sputnick.fr/scripts/bashfr
+	source = https://sputnick.fr/scripts/bashfr-cron
 	sha256sums = SKIP
 	sha256sums = af7e9447c3c7072a337d6fbc0bd8d8bc26a4b9a1fe6643bd2ada0164b656c07a
 
