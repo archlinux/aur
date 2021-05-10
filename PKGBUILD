@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname=python-uritools
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="RFC 3986 compliant, Unicode-aware, scheme-agnostic replacement for urlparse"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('python-setuptools')
 depends=('python')
 source=("https://github.com/tkem/uritools/archive/v${pkgver}.tar.gz")
-md5sums=('93d5950d93fc2ef3e3089b5b2f3f5d4e')
+md5sums=('72cd2f4cd625869d4425acd19d62a614')
 
 package() {
     cd "$srcdir/uritools-$pkgver"
