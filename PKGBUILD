@@ -368,6 +368,7 @@ END
 
   # Delete unneeded things from settings repo
   rm "$pkgdir/usr/lib/firedragon/tabliss.json"
-  rm "$pkgdir/usr/lib/firedragon/*.png"
+  rm "$pkgdir/usr/lib/firedragon/home.png"
+  rm "$pkgdir/usr/lib/firedragon/about.png"
   rm "$pkgdir/usr/lib/firedragon/firedragon.psd"
 }
