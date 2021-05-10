@@ -1,6 +1,6 @@
 pkgbase = obs-source-switcher
 	pkgdesc = Plugin for OBS Studio to add a source that switches between a list of sources
-	pkgver = 0.2.8
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/exeldro/obs-source-switcher
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = obs-source-switcher
 	makedepends = gtk-update-icon-cache
 	makedepends = git
 	depends = obs-studio
-	source = obs-source-switcher-0.2.8::git+https://github.com/exeldro/obs-source-switcher#commit=8f3e3e0e5ddec052ebf2536507118b155e4987ad
+	source = obs-source-switcher-0.3.0::git+https://github.com/exeldro/obs-source-switcher#commit=c462f7fe0552760cd8f1b8a8b9fc9f00530002c1
 	source = obs-studio-26.1.2.tar.gz::https://github.com/obsproject/obs-studio/archive/26.1.2.tar.gz
 	source = fix_python_binary_loading.patch
 	sha256sums = SKIP
