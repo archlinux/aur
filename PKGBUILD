@@ -38,7 +38,7 @@ build() {
   msg2 "Building the gromacs with plumed support (single precision)"
   cd ${srcdir}/single
   cmake ../gromacs-${_gromacsver} \
-        -DCMAKE_INSTALL_PREFIX=/usr/local/gromacs-plumed \
+        -DCMAKE_INSTALL_PREFIX=/usr/local/gromacs/gromacs-plumed \
         -DGMX_DEFAULT_SUFFIX=OFF -DGMX_BINARY_SUFFIX=_plumed -DGMX_LIBS_SUFFIX=_plumed \
 	-DGMX_BUILD_OWN_FFTW=ON \
         -DREGRESSIONTEST_DOWNLOAD=ON
