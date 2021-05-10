@@ -8,21 +8,16 @@ arch=('x86_64' 'i686')
 license=('MIT')
 depends=()
 makedepends=(rustup)
-source=("git+https://github.com/shiro/${pkgname%-git}.git")
-sha256sums=('SKIP')
+source=("https://github.com/shiro/$pkgname/archive/$pkgver.tar.gz")
+sha256sums=('b54792808fae803a553de13bc6fa9f681406e75ba229a50fbdbe0ce6b7acfbfd')
 
 build() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   cargo build --release --locked --all-features --target-dir=target
 }
 
-check() {
-  cd "$pkgname"
-  cargo test --release --locked --target-dir=target
-}
-
 package() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
 
   install -Dm644 docs/man/map2.1 "$pkgdir/usr/share/man/man1/map2.1"
