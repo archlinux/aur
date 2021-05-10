@@ -1,7 +1,7 @@
 # Maintainer: Iván Zaera Avellón <izaera at gmx dot es>
 pkgname=joshi
 pkgdesc="JavaScript Oriented Shell Interpreter"
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 arch=('any')
 url="https://github.com/izaera/joshi"
@@ -27,7 +27,7 @@ makedepends=(
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/izaera/joshi/archive/refs/tags/$pkgver.tar.gz"
 )
-sha256sums=("067cc765be7ee0edbed1077e727a0fc95934660f3d85cd867d678e340ecc2619")
+sha256sums=("6a5b380c84171f8a79296a27d04128c0fc624d5c955983c1f881097dabaefea8")
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
