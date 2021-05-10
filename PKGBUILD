@@ -56,18 +56,18 @@ _BATCH_MODE=n # enable batch mode
 ##
 
 _major=5
-_minor=11
+_minor=12
 #_patchlevel=0
 #_subversion=1
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
 pkgbase=linux-pf
-_unpatched_sublevel=16
-_pfrel=8
+_unpatched_sublevel=0
+_pfrel=1
 _kernelname=pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
-_projectcpatchname=prjc_v5.11-r3.patch
+_projectcpatchname=prjc_v5.12-r1.patch
 _CPUSUFFIXES_KBUILD=(
   CORE2 K7 K8 K10 BARCELONA BOBCAT BULLDOZER PILEDRIVER STEAMROLLER MEXCAVATOR ZEN ZEN2 MPSC
   ATOM PENTIUMII PENTIUMIII PENTIUMM PENTIUM4 NEHALEM SANDYBRIDGE
@@ -92,7 +92,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekerne
         "https://gitlab.com/alfredchen/projectc/raw/master/$_major.$_minor/$_projectcpatchname"
         "90-linux.hook"
         "60-linux.hook"
-        '262e6ae7081df304fc625cf368d5c2cbba2bb991.patch'
        )
 # 	'cx23885_move_CI_AC_registration_to_a_separate_function.patch'
 
@@ -104,8 +103,6 @@ prepare() {
   patch -Np1 < ${srcdir}/${_pfpatchname}
   patch -Np1 < ${srcdir}/${_projectcpatchname}
 
-
-  patch -Np1 -R < ${srcdir}/262e6ae7081df304fc625cf368d5c2cbba2bb991.patch
 
   if [ "$CARCH" = "x86_64" ]; then
 	  cat "${startdir}/config.x86_64" >| .config
@@ -658,14 +655,13 @@ eval "package_linux-pf${LCPU+-$LCPU}() {
      }"
 
 
-sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'
-            'eb0994b0a8f270b39ac660d274fe19bf1bc120cac88fe12d3f07497df1662918'
-            '794d4e751569a0dcd304e8dc9c83b6f41600c224dddf823c27f4971ce263b29a'
+sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
+            '6dde032690644a576fd36c4a7d3546d9cec0117dd3fb17cea6dc95e907ef9bef'
+            '7cd37cb8ae45dc4c46c8657c96d89a7a1b62ca7666b2e0d45e3240f86fa0784f'
             '8723eb2d5e3473db978bfa7e8d94c80efeac61d71e7fad2f1214ad55671a33a2'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            'c7fc1d7e713d6fa261170ced0866a90bcd9f795d3904127dc3d94d47efa26f09'
-            '5cd64937e3a517f49f4311c47bd692eb8e117f09d655cd456e03366373ba8060'
+            'f6a18b62ed703014f124c7c6677ab3bc9d1ec96cd795163cf3bcdad8a7513210'
+            '1bb7308e10568cfaad125ea08ed7f311f06d7bfedab40f4b23ff30cfa30ce3fc'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
-            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            '7908288d8549489d8ac1f7e523cb986c41c8306dbe4946cca890c6fc7c2d260b')
+            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21')
 # vim:set ts=2 sw=2 tw=0 et:
