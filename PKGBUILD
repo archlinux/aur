@@ -6,7 +6,8 @@ pkgver=0.0.1
 pkgrel=5
 pkgdesc="Split cue/media files with a graphical shntool based utility"
 arch=('x86_64')
-url="http://www.qt-apps.org/content/show.php/QShnToolSplit?content=110373"
+#url="http://www.qt-apps.org/content/show.php/QShnToolSplit?content=110373"
+url="https://aur.archlinux.org/pkgbase/qshntoolsplit/"
 license=('GPL3')
 depends=('shntool' 'qt4' 'xterm')    # 'cuetools'
 optdepends=('flac: for flac support' 

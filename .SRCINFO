@@ -2,7 +2,7 @@ pkgbase = qshntoolsplit
 	pkgdesc = Split cue/media files with a graphical shntool based utility
 	pkgver = 0.0.1
 	pkgrel = 5
-	url = http://www.qt-apps.org/content/show.php/QShnToolSplit?content=110373
+	url = https://aur.archlinux.org/pkgbase/qshntoolsplit/
 	arch = x86_64
 	license = GPL3
 	depends = shntool
