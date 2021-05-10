@@ -5,7 +5,7 @@ pkgname=dirsearch-git
 _name="${pkgname%-git}"
 
 pkgver() { git -C "$_name" describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g;s/\(alpha\)\([0-9]\+\)/\1_\2/'; }
-pkgver=0.4.1.alpha_2.r0.753c7a1
+pkgver=0.4.1.alpha_2.r81.be2828a
 pkgrel=1
 
 pkgdesc='Web path scanner/fuzzer, written in Python'
@@ -34,7 +34,7 @@ prepare() {
 package() {
   cd "$_name"
   install -dm755 "$pkgdir/usr"/{bin,"lib/$_name"}
-  cp -a --no-preserve=o db lib thirdparty default.conf dirsearch.py "$pkgdir/usr/lib/$_name/"
+  cp -a --no-preserve=o db lib thirdparty default.conf "$_name.py" "$pkgdir/usr/lib/$_name/"
   install -Dm644 *.md -t"$pkgdir/usr/share/doc/$_name/"
   ln -s "/usr/lib/$_name/$_name.py" "$pkgdir/usr/bin/$_name"
 }
