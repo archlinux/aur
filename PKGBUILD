@@ -19,7 +19,7 @@ md5sums=('4f537c9c2dbe2e555fbdc311f32117e0'
          '5b403896e05a3da471be404bb9afe053')
 
 package() {
-  install -d "$pkgdir"/usr/{bin,share/{rasp,applications}}
+  install -dm755 "$pkgdir"/usr/{bin,share/{rasp,applications}}
   mv "$srcdir"/RASP_Win/* "$pkgdir"/usr/share/rasp
   install "$srcdir"/rasp.desktop "$pkgdir"/usr/share/applications/rasp.desktop 
   install "$srcdir"/rasp.png "$pkgdir"/usr/share/rasp/rasp.png
