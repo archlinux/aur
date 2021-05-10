@@ -1,7 +1,7 @@
 # Maintainer: Wesofer Raymond <wesetoferraymond@gmail.com>
 # Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
 pkgname=logseq-desktop-canary
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=('AGPL3')
 provides=("logseq-desktop-canary")
 source=("https://github.com/logseq/logseq/releases/download/${pkgver}/logseq-linux-x64-${pkgver}.zip"
       "${pkgname}.desktop")
-sha256sums=('b7eece1fdc056cb21c2fb745ecc6c3e8e3b970289fb4865d5c3f1b759aa1c54e'
+sha256sums=('5f3932048c6358a1ce1ea561ce41a1d280e0ad2e6120bfb27e17e492cac461a1'
             '9ff8105001989b76a96165b75bf60dd089e9138dcc607d22a10c918efee4f664')
 
 package() {
