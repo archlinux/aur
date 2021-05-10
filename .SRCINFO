@@ -1,28 +1,18 @@
-pkgbase = instamenu
-	pkgdesc = dmenu like menu with the Dracula theme
-	pkgver = 2021.04.18
+pkgbase = instaaur
+	pkgdesc = A bach AUR wrapper
+	pkgver = 2021.05.10
 	pkgrel = 1
-	url = https://github.com/The-Repo-Club/instamenu
+	url = https://github.com/The-Repo-Club/instaaur
 	arch = any
 	groups = therepoclub
 	license = CC BY-NC-SA 4.0
-	depends = sh
-	depends = python>=3.4
-	depends = libxinerama
-	depends = libxft
-	depends = noto-fonts-emoji
-	depends = ttf-joypixels
-	depends = siji
-	depends = cantarell-fonts
-	depends = nerd-fonts-fira-code
-	depends = instamenu-schemas
-	optdepends = instamenu-extra: Extra script that instamenu can use
-	provides = instamenu
-	provides = dmenu
-	conflicts = dmenu
-	replaces = dmenu
-	source = instamenu-2021.04.18.tar.gz::https://github.com/The-Repo-Club/instamenu/archive/2021.04.18.tar.gz
-	sha256sums = c284689218948ed6c3d5526cd56b01b5afe21fbee1818da77f27f1db17875509
+	depends = pacman
+	depends = jshon
+	depends = tar
+	optdepends = git: AUR4 git support
+	provides = instaaur
+	source = instaaur-2021.05.10.tar.gz::https://github.com/The-Repo-Club/instaaur/archive/2021.05.10.tar.gz
+	sha256sums = 54a53d2eccf44934ce304a8660cc4aca1e5e77625780628e667c77844f9209a1
 
-pkgname = instamenu
+pkgname = instaaur
 
