@@ -15,7 +15,7 @@ provides=('llvm' 'llvm-libs' 'llvm-ocaml' 'clang' 'clang=11.1.0' 'clang-analyzer
 replaces=('llvm' 'llvm-libs' 'llvm-ocaml' 'clang' 'clang=11.1.0' 'clang-analyzer' 'clang-tools-extra' 'openmp' 'polly' 'compiler-rt' 'lld' 'lldb')
 conflicts=('llvm' 'llvm-libs' 'llvm-ocaml' 'clang' 'clang=11.1.0' 'clang-analyzer' 'clang-tools-extra' 'openmp' 'polly' 'compiler-rt' 'lld' 'lldb' 'llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
 
-makedepends=('cmake' 'libffi' 'libedit' 'ncurses' 'libxml2'
+makedepends=('git' 'cmake' 'libffi' 'libedit' 'ncurses' 'libxml2'
   "ocaml>=$_ocaml_ver" 'ocaml-ctypes' 'ocaml-findlib'
   'python-setuptools' 'python-psutil' 'python-sphinx'
   'python-recommonmark')
