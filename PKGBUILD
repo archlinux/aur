@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=kalk-git
-pkgver=v0.2.r30.g1b04b29
+pkgver=v0.2.r70.g09f5754
 pkgrel=1
 pkgdesc="Kalk is a powerful cross-platfrom calculator application built with the Kirigami framework"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://invent.kde.org/plasma-mobile/kalk"
 license=('GPL3')
 depends=('ki18n' 'kconfig' 'kcoreaddons' 'knotifications' 'kirigami2' 'kunitconversion'
          'kdbusaddons' 'plasma-framework' 'gmp' 'mpfr' 'qt5-feedback')
-makedepends=('git' 'qt5-tools' 'extra-cmake-modules')
+makedepends=('git' 'qt5-tools' 'qt5-svg' 'extra-cmake-modules')
 provides=('kalk')
 conflicts=('kalk')
 source=("git+${url}.git")
@@ -24,12 +24,10 @@ pkgver() {
 }
 
 build() {
-  cd "${pkgname%-git}"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -B build
-  make -C build
+  cmake -B build -S "${pkgname%-git}" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+  cmake --build build --config Release
 }
 
 package() {
-  cd "${pkgname%-git}"
-  make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
+  DESTDIR="${pkgdir}" cmake --install build --config Release
 }
