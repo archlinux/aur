@@ -1,0 +1,15 @@
+pkgbase = elkirtasse-bin
+	pkgdesc = Free and open source library program to read islamic books in Arabic.
+	pkgver = 3.6.8
+	pkgrel = 1
+	url = https://sourceforge.net/projects/elkirtasse/files/elkirtasse_3.6.8/Ubuntu_13.10/elkirtasse_3.6.8-1_amd64.deb
+	arch = x86_64
+	license = GPL
+	depends = gcc
+	depends = gcc-libs
+	depends = qt4
+	source = https://sourceforge.net/projects/elkirtasse/files/elkirtasse_3.6.8/Ubuntu_13.10/elkirtasse_3.6.8-1_amd64.deb
+	md5sums = SKIP
+
+pkgname = elkirtasse-bin
+
