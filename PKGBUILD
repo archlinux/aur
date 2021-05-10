@@ -3,12 +3,13 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=fhc-git
-pkgver=0.4.0.r4.ga4220fe
+pkgver=0.5.0.r1.g24683bd
 pkgrel=1
 pkgdesc="Fast HTTP Checker (git)"
 arch=('x86_64')
 url="https://github.com/Edu4rdSHL/fhc"
 license=('GPL3')
+depends=('gcc-libs')
 makedepends=('rust' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
