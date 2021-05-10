@@ -1,7 +1,7 @@
 pkgbase = cardboard-git
 	pkgdesc = A unique, scrollable tiling Wayland compositor designed with laptops in mind.
-	pkgver = r300.f2ef2ff
-	pkgrel = 3
+	pkgver = r303.3ac63ac
+	pkgrel = 1
 	url = https://gitlab.com/cardboardwm/cardboard
 	install = cardboard.install
 	arch = i686

@@ -1,8 +1,8 @@
 # Maintainer: Zom <zomaur at eevul dot org>
 pkgname=cardboard-git
 _pkgname=cardboard
-pkgver=r300.f2ef2ff
-pkgrel=3
+pkgver=r303.3ac63ac
+pkgrel=1
 license=("GPL3")
 pkgdesc="A unique, scrollable tiling Wayland compositor designed with laptops in mind."
 makedepends=(git meson ninja wayland-protocols)
@@ -34,7 +34,7 @@ pkgver() {
 
 build() {
         cd "$_pkgname"
-	meson --prefix /usr build
+	meson --prefix /usr build -Dman=false
 	ninja -C build
 }
 
