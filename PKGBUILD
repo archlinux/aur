@@ -9,7 +9,7 @@ arch=('any')
 license=('APACHE')
 depends=('java-runtime' 'apache-ant' 'xerces2-java')
 makedepends=('apache-ant')
-source=("http://sourceforge.net/projects/ant-contrib/files/ant-contrib/${_pkgname}-1.0-beta5/${_pkgname}-${pkgver}.tar.gz")
+source=("https://sourceforge.net/projects/ant-contrib/files/ant-contrib/${_pkgname}-1.0-beta5/${_pkgname}-${pkgver}.tar.gz")
 md5sums=('7f0f7732acd0c82f7efb228f667ec79a')
 
 build() {
