@@ -1,0 +1,16 @@
+pkgbase = python-opentype-feature-freezer
+	pkgdesc = Freeze OpenType features in a font
+	pkgver = 1.32.2
+	pkgrel = 1
+	url = https://github.com/twardoch/fonttools-opentype-feature-freezer
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	depends = python-fonttools
+	source = https://files.pythonhosted.org/packages/py3/o/opentype-feature-freezer/opentype_feature_freezer-1.32.2-py3-none-any.whl
+	source = pyftfeatfreeze
+	sha256sums = e49b98c7ab37c8fe75d838319cbc0f4769a06536ec039633f1cded39b813a055
+	sha256sums = 3cfe8882f768de48c204621fdbf5f36cdb7026fc30c60cc764d3c0fca10521f5
+
+pkgname = python-opentype-feature-freezer
+
