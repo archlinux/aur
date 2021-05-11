@@ -6,14 +6,13 @@ pkgver=v0.1.1.r248.g48aa1e6
 pkgrel=1
 pkgdesc="Pretty printer from GTIRB to assembly code"
 arch=('x86_64')
-# url="https://github.com/grammatech/gtirb-pprinter"
-url="https://git.grammatech.com/rewriting/gtirb-pprinter#print-modules-in-windows"
+url="https://github.com/grammatech/gtirb-pprinter"
 license=('MIT')
 optdepends=('boost: build against system boost')
 depends=()
 makedepends=('git' 'cmake' 'gtirb' 'capstone' 'python' 'doxygen' 'graphviz')
 provides=('gtirb-pprinter')
-source=('git://github.com/grammatech/gtirb-pprinter.git')
+source=('git+https://github.com/grammatech/gtirb-pprinter.git')
 sha512sums=('SKIP')
 
 pkgver() {
