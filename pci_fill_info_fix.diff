@@ -1,0 +1,13 @@
+diff --git a/smictrl.c b/smictrl.c
+index c0dad7a..cba8726 100644
+--- a/smictrl.c
++++ b/smictrl.c
+@@ -157,7 +157,7 @@ int main(int argc, char *argv[])
+     pci_scan_bus(pacc);
+ 
+     for (dev = pacc->devices; dev; dev = dev->next) {
+-        pci_fill_info(dev, PCI_FILL_IDENT | PCI_FILL_BASES);
++        pci_fill_info(dev, PCI_FILL_IDENT | PCI_FILL_BASES | PCI_FILL_CLASS);
+ 
+         if (dev->vendor_id != PCI_VENDOR_ID_INTEL ||
+             dev->device_class != PCI_CLASS_BRIDGE_ISA ||
