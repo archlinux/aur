@@ -1,11 +1,12 @@
 pkgbase = zx
 	pkgdesc = A tool for writing better scripts
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/zx
 	arch = any
 	license = Apache
 	makedepends = npm
+	makedepends = git
 	depends = nodejs
 	source = git+https://github.com/google/zx.git#commit=1508858ae964e49e0e5667860f7075b2a6aa15bf
 	sha256sums = SKIP

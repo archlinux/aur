@@ -3,13 +3,13 @@
 pkgname=zx
 pkgver=1.4.0
 _commit=1508858ae964e49e0e5667860f7075b2a6aa15bf
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for writing better scripts"
 arch=("any")
 url="https://github.com/google/zx"
 license=("Apache")
 depends=("nodejs")
-makedepends=("npm")
+makedepends=("npm" "git")
 source=("git+$url.git#commit=$_commit")
 sha256sums=("SKIP")
 
