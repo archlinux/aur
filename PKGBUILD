@@ -16,19 +16,19 @@ depends=(
 source=("https://github.com/starsareintherose/DNASTAR/releases/download/${pkgver}/DNASTAR.zip" "Editseq.png" "Editseq.desktop" "GeneQuest.png" "GeneQuest.desktop" "Megalign.png" "Megalign.desktop" "PrimerSelect.png" "PrimerSelect.desktop" "Protean.png" "Protean.desktop" "SeqBuilder.png" "SeqBuilder.desktop" "SeqMan.png" "SeqMan.desktop")
 md5sums=('5472de76f406b25e61f4b58ecfe49678'
          '28e564f259eeab7be458527847d68139'
-         '6b920677a10049facdcde33822cdb1e3'
+         '20cf16c0ef7fa8eda9246025aab9c6c3'
          '325d372e1abc9b640c390623413c207e'
-         '5c0c2a762b3ba422c9ddad93c8a2932b'
+         '57df660e83f733b81478123e1cd82444'
          '54a16c1895eb6cd7cb45f46a3b1219dc'
-         '80b9a179638f4caae87229992802ba2e'
+         '3f35142796dec237ffe2184d729af598'
          '6e10ab6b4265b8e182d0ed21f6e9e838'
-         '013575d45298bca28adf30765a0a8a16'
+         'd62b639cff7a76c0582c6eb5fb42821a'
          '04e48add541da69cf663cfcc03018876'
-         '518ac25c9dff4e33f287e304c13003b2'
+         '94d9d61cae2a69069f0b4d28e238b629'
          '18f059e6bccf85ee68f1e80833aca086'
-         '209f980c022584ec742ffd7a3153e391'
+         '4ba2031910170c2ab76b990bb8e8c39e'
          'a6c6d2ecd5cdb6d9fbb88a09a4808b6e'
-         '26ddf398aac1b2a1a5f409341a3a2cf2')
+         '776651e49951bba1afc4dbe7a452bbaa')
 
 package() {
   install -dm755 "$pkgdir"/usr/share/{dnastar,applications}

@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=SeqMan
-Exec=exe /usr/share/dnastar/SeqMan.exe
+Exec=wine /usr/share/dnastar/SeqMan.exe
 Type=Application
 StartupNotify=true
 Icon=/usr/share/dnastar/SeqMan.png

@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Editseq
-Exec=exe /usr/share/dnastar/Editseq.exe
+Exec=wine /usr/share/dnastar/Editseq.exe
 Type=Application
 StartupNotify=true
 Icon=/usr/share/dnastar/Editseq.png

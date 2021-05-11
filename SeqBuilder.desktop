@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=SeqBuilder
-Exec=exe /usr/share/dnastar/SeqBuilder.exe
+Exec=wine /usr/share/dnastar/SeqBuilder.exe
 Type=Application
 StartupNotify=true
 Icon=/usr/share/dnastar/SeqBuilder.png
