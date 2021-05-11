@@ -2,8 +2,8 @@
 
 pkgname=o
 pkgver=2.37.1
-pkgrel=1
-pkgdesc='Quick little editor limited by VT100'
+pkgrel=2
+pkgdesc='Text editor'
 arch=(x86_64)
 url='https://github.com/xyproto/o'
 license=(BSD)

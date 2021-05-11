@@ -1,7 +1,7 @@
 pkgbase = o
-	pkgdesc = Quick little editor limited by VT100
+	pkgdesc = Text editor
 	pkgver = 2.37.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xyproto/o
 	arch = x86_64
 	license = BSD
