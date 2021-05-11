@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc='Module for normalising text'
 arch=('any')
 url='https://github.com/EFord36/normalise'
-license=('Apache 2.0')
+license=('GPL3')
 depends=('python>=3.7' 'python-nltk' 'python-roman' 'python-scikit-learn')
 makedepends=('git' 'python-setuptools')
 provides=('python-normalise')

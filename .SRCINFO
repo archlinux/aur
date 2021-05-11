@@ -4,7 +4,7 @@ pkgbase = python-normalise-git
 	pkgrel = 1
 	url = https://github.com/EFord36/normalise
 	arch = any
-	license = Apache 2.0
+	license = GPL3
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python>=3.7
