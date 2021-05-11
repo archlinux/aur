@@ -8,7 +8,7 @@ pkgbase=qemu-git
 _gitname=qemu
 pkgname=(qemu-git qemu-headless-git qemu-arch-extra-git qemu-headless-arch-extra-git qemu-block-{iscsi-git,rbd-git,gluster-git} qemu-guest-agent-git)
 pkgdesc="A generic and open source machine emulator and virtualizer. Git version."
-pkgver=6.0.0.r186.ge93d8bcf9d
+pkgver=6.0.0.r339.ge4f3ede95c
 pkgrel=1
 epoch=13
 arch=(i686 x86_64)
@@ -33,7 +33,7 @@ esac
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-47 
 }
 
 prepare() {
@@ -72,6 +72,7 @@ _build() (
     --enable-vhost-user \
     --enable-slirp=system \
     --enable-xfsctl \
+    --disable-docs \
     "${@:2}"
 
   ninja
