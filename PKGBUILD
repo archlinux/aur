@@ -53,4 +53,4 @@ if [ -x "`which gtk-update-icon-cache 2>/dev/null`" ] && [ -x /usr/share/icons/g
 
 }
 # MD5 Provido pela propria BricsCAD
-md5sums=('48ece128b1018d559a63e04aa225a64a')
+md5sums=('8c2bf6bdba9607b42bdad039ff95f5b6')
