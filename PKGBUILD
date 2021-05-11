@@ -34,8 +34,8 @@ package () {
       "README.md" "Tests.md"
 
     # # Install Freecad macro
-    # install -Dm644 "step2wrl.FCMacro" \
-    #   "$pkgdir/usr/share/"
+    install -Dm644 -t "$pkgdir/usr/share/freecad" \
+      "step2wrl.FCMacro"
 
     # Install executables
     install -d "$pkgdir/usr/bin"
