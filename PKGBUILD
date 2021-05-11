@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=peruse-git
-pkgver=1.2.r509.g0a0af79
+pkgver=1.80.r6.g25247a1
 pkgrel=1
 pkgdesc="A comic book viewer based on Frameworks 5, for use on multiple form factors."
 url="http://peruse.kde.org/"
@@ -18,7 +18,7 @@ md5sums=("SKIP")
 
 pkgver() {
   cd peruse
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
