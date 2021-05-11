@@ -1,5 +1,5 @@
 pkgname=bricscad-en_us
-pkgver=20.2.11
+pkgver=21.2.04
 pkgrel=1
 pkgdesc="Alternative to CAD number DWG"
 arch=("x86_64")
@@ -58,4 +58,4 @@ if [ -x "`which update-mime-database 2>/dev/null`" ]; then update-mime-database 
 if [ -x "`which gtk-update-icon-cache 2>/dev/null`" ] && [ -x /usr/share/icons/gnome/index.theme ]; then gtk-update-icon-cache --force /usr/share/icons/gnome ; fi
 
 }
-md5sums=('4b245d920e5f21501519c12e9ee7a260')
+md5sums=('48ece128b1018d559a63e04aa225a64a')
