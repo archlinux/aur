@@ -1,0 +1,22 @@
+pkgbase = surf-ashin-git
+	pkgdesc = A suckless browser customized in my own way with bookmarkings and stylesheets.
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/ashincoder/surf-ashin.git
+	arch = x86_64
+	arch = i686
+	license = MIT
+	checkdepends = dmenu-ashin-git
+	makedepends = git
+	makedepends = dmenu-ashin-git
+	depends = webkit2gtk
+	depends = xorg-xprop
+	optdepends = ca-certificates: SSL verification
+	optdepends = curl: default download handler
+	provides = surf
+	conflicts = surf
+	source = git+https://github.com/ashincoder/surf-ashin.git
+	md5sums = SKIP
+
+pkgname = surf-ashin-git
+
