@@ -1,0 +1,20 @@
+pkgbase = python-dtw-python-git
+	pkgdesc = Python port of R's Comprehensive Dynamic Time Warp algorithm package
+	pkgver = 1.1.10.r231
+	pkgrel = 1
+	url = https://github.com/DynamicTimeWarping/dtw-python
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python>=3.6
+	depends = python-numpy
+	depends = python-scipy
+	provides = python-dtw-python
+	conflicts = python-dtw-python
+	conflicts = python-dtw-python-git
+	source = python-dtw-python-git::git+https://github.com/DynamicTimeWarping/dtw-python
+	md5sums = SKIP
+
+pkgname = python-dtw-python-git
+
