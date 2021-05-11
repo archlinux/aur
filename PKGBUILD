@@ -19,7 +19,6 @@ conflicts=('qt' 'qt4')
 replaces=('qt<=4.8.4')
 source=("$url/qt4-$pkgver-$pkgrel-$arch.pkg.tar.zst")
 md5sums=('SKIP')
-validpgpkeys=('SKIP')
 
 package() {
    mv usr "$pkgdir/"
