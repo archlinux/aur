@@ -1,11 +1,11 @@
 pkgbase = khello
 	pkgver = 0.8
-	pkgrel = 1
-	url = kurth4cker.github.com/khello
+	pkgrel = 3
+	url = kurth4cker.github.io/khello
 	arch = x86_64
 	license = GPL
 	depends = glibc
-	source = https://launchpad.net/khello/trunk/0.8/+download/khello-0.8.tar.xz
+	source = http://launchpad.net/khello/trunk/0.8/+download/khello-0.8.tar.xz
 	md5sums = 0cad5de9de71d06d62ef957a168ce375
 
 pkgname = khello
