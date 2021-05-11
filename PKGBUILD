@@ -2,12 +2,12 @@
 
 pkgname=nucleistudioide
 pkgver=202102
-pkgrel=7
+pkgrel=8
 pkgdesc="Nuclei Studio IDE 是基于 MCU Eclipse IDE 开发的一款针对芯来公司处理器核产品的集成开发环境工具，用于 RISC-V 开发继承了 Eclipse IDE 平台的各种优势。"
 arch=("x86_64")
 makedepends=()
-depends=('java-runtime' 'jlink-software-and-documentation')
-optdepends=('nuclei-gcc' 'nuclei-openocd')
+depends=('java-runtime' 'jlink-software-and-documentation' 'nuclei-gcc' 'nuclei-openocd')
+optdepends=()
 conflicts=()
 url="https://www.nucleisys.com/download.php"
 license=('unknow')
@@ -23,6 +23,8 @@ package() {
 	install -d -m755 "${pkgdir}/opt/nuclei"
 	tar zxf "NucleiStudio_IDE_${pkgver}-lin64.tgz"
     rm -rf "NucleiStudio_IDE_${pkgver}/NucleiStudio/jre"
+    rm -rf "NucleiStudio_IDE_${pkgver}/NucleiStudio/toolchain/openocd"
+    rm -rf "NucleiStudio_IDE_${pkgver}/NucleiStudio/toolchain/gcc"
     
 	mv "${srcdir}/NucleiStudio_IDE_${pkgver}/NucleiStudio" "${pkgdir}/opt/nuclei"
 
