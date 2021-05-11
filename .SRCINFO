@@ -1,7 +1,7 @@
 pkgbase = f2-bin
 	pkgdesc = Cross-platform command-line tool for batch renaming files and directories quickly and safely
 	pkgver = 1.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ayoisaiah/f2
 	arch = x86_64
 	arch = i686
@@ -9,7 +9,6 @@ pkgbase = f2-bin
 	license = MIT
 	provides = f2
 	conflicts = f2
-	noextract = f2-bin-x86_64.tar.gz
 	source_x86_64 = f2-bin-1.6.1-x86_64.tar.gz::https://github.com/ayoisaiah/f2/releases/download/v1.6.1/f2_1.6.1_linux_amd64.tar.gz
 	b2sums_x86_64 = bae7ec9bb1784d0a3c368241a1918b4ca4f9c40618e637d850105d9e5a41a3d04db9739d454f7ff4b717b7951f4314228b802aa4f94929a6b507ad8cc95b730d
 	source_i686 = f2-bin-1.6.1-i686.tar.gz::https://github.com/ayoisaiah/f2/releases/download/v1.6.1/f2_1.6.1_linux_i386.tar.gz
