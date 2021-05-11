@@ -2,8 +2,8 @@
 
 _pkgname=radontea
 pkgname=python-${_pkgname}
-pkgver=0.4.8
-pkgrel=2
+pkgver=0.4.9
+pkgrel=1
 pkgdesc="Algorithms to compute the inverse Radon transform (e.g. SART, backprojection, Fourier interpolation)."
 arch=('any')
 url="https://github.com/RI-imaging/radontea"
@@ -16,7 +16,7 @@ depends=(
 	'python-scipy'
 	)
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('b4a7a6705763214463e09f965322ed47f68760ba261545d9d038e47d28e1f65a')
+sha256sums=('bb08e109987ecd95b2c0699b536042314bb495d508fe794aba31146ca067015a')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
