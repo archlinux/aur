@@ -1,21 +1,23 @@
 pkgbase = wxformbuilder
 	pkgdesc = RAD tool for wxWidgets GUI design
 	pkgver = 3.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wxFormBuilder/wxFormBuilder
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL2
 	makedepends = git
 	makedepends = ninja
 	makedepends = meson
-	depends = wxgtk2
+	depends = wxgtk3
 	provides = wxformbuilder
 	conflicts = wxformbuilder
 	conflicts = wxformbuilder-svn
 	conflicts = wxformbuilder-git
 	source = git://github.com/wxFormBuilder/wxFormBuilder.git#tag=v3.9.0
-	md5sums = SKIP
+	source = nativefile.ini
+	sha512sums = SKIP
+	sha512sums = c44a263897bc22e46bbe8d106cb0e4ee4c331fec0d271b4140055c59a891360c251fa7f33ce7b83fa8a3515c954c6cbf9b06eddaff2e3b671709d652fd603836
 
 pkgname = wxformbuilder
 
