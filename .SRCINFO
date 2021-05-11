@@ -5,6 +5,7 @@ pkgbase = steam-tui-bin
 	url = https://github.com/dmadisetti/steam-tui
 	arch = x86_64
 	license = MIT
+	depends = steamcmd
 	conflicts = steam-tui
 	source = https://github.com/dmadisetti/steam-tui/releases/download/0.1.0/steam-tui
 	source = https://raw.githubusercontent.com/dmadisetti/steam-tui/main/LICENSE
