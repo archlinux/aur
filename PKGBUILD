@@ -1,6 +1,6 @@
 # Maintainer: Elio Esteves Duarte <elio.esteves.duarte@gmail.com>
 pkgname=tomate-breakscreen-plugin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Tomate plugin that shows a full screen window which prevents users from using the computer during a break"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python'
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://github.com/eliostvs/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('067df380422e8aa2c284c7a37bb2f3d6')
+md5sums=('7cee5ca05717b61ef773c202ee323bed')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
