@@ -2,7 +2,7 @@
 
 pkgname=apmpkg
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Un administrador de paquetes universal para linux como modelo: PKGBUILD"
 arch=('x86_64')
 url="https://github.com/Kedap/apmpkg"
