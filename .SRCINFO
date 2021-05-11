@@ -1,0 +1,33 @@
+pkgbase = qt4-bin
+	pkgdesc = Prebuilt binary for Qt4. Alternative for faster installing.
+	pkgver = 4.8.7
+	pkgrel = 33
+	url = https://ftp.desolve.ru/ftp/viktor/binpkg/qt4
+	arch = x86_64
+	license = GPL3
+	license = LGPL
+	license = FDL
+	license = custom
+	depends = sqlite
+	depends = ca-certificates
+	depends = fontconfig
+	depends = libgl
+	depends = libxrandr
+	depends = libxv
+	depends = libxi
+	depends = alsa-lib
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	depends = libmng
+	depends = dbus
+	provides = qt4
+	conflicts = qt
+	conflicts = qt4
+	replaces = qt<=4.8.4
+	source = https://ftp.desolve.ru/ftp/viktor/binpkg/qt4/qt4-4.8.7-33-x86_64.pkg.tar.zst
+	validpgpkeys = SKIP
+	md5sums = SKIP
+
+pkgname = qt4-bin
+
