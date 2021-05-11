@@ -4,13 +4,13 @@
 _gemname=cairo
 pkgname=ruby-$_gemname
 pkgver=1.17.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Ruby bindings for cairo'
 arch=('x86_64')
 url='https://cairographics.org/rcairo'
 license=('Ruby')
-depends=('ruby' 'cairo' 'ruby-pkg-config')
-makedepends=('ruby-native-package-installer' 'ruby-rdoc')
+depends=('ruby' 'cairo' 'ruby-pkg-config' 'ruby-native-package-installer' 'ruby-red-colors')
+makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=($_gemname-$pkgver.gem)
