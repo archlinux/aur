@@ -1,0 +1,60 @@
+From 1c00530b30e21fd0f5b316401f6485bee08ce850 Mon Sep 17 00:00:00 2001
+From: Fangrui Song <i@maskray.me>
+Date: Tue, 20 Apr 2021 11:23:10 -0700
+Subject: [PATCH] [ELF] Don't set versionId on undefined weak lazy symbols
+
+An unfetched lazy symbol (undefined weak) should be considered to have its
+original versionId which is VER_NDX_GLOBAL, instead of the lazy symbol's
+versionId. (The original versionId cannot be non-VER_NDX_GLOBAL because a
+undefined versioned symbol is an error.)
+
+The regression was introduced in D77280 when making version scripts work
+with lazy symbols fetched by LTO calls.
+
+Fix PR49915
+
+Differential Revision: https://reviews.llvm.org/D100624
+---
+ lld/ELF/SyntheticSections.cpp      |  4 +++-
+ lld/test/ELF/version-script-weak.s | 13 +++++++++++++
+ 2 files changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/lld/ELF/SyntheticSections.cpp b/lld/ELF/SyntheticSections.cpp
+index 79e47176c8b2..36ed89334758 100644
+--- a/lld/ELF/SyntheticSections.cpp
++++ b/lld/ELF/SyntheticSections.cpp
+@@ -3123,7 +3123,9 @@ size_t VersionTableSection::getSize() const {
+ void VersionTableSection::writeTo(uint8_t *buf) {
+   buf += 2;
+   for (const SymbolTableEntry &s : getPartition().dynSymTab->getSymbols()) {
+-    write16(buf, s.sym->versionId);
++    // Use the original versionId for an unfetched lazy symbol (undefined weak),
++    // which must be VER_NDX_GLOBAL (an undefined versioned symbol is an error).
++    write16(buf, s.sym->isLazy() ? VER_NDX_GLOBAL : s.sym->versionId);
+     buf += 2;
+   }
+ }
+diff --git a/lld/test/ELF/version-script-weak.s b/lld/test/ELF/version-script-weak.s
+index 7c902eb98bf4..cfa2455ee2bd 100644
+--- a/lld/test/ELF/version-script-weak.s
++++ b/lld/test/ELF/version-script-weak.s
+@@ -24,6 +24,19 @@
+ # CHECK-NEXT:   Section: Undefined
+ # CHECK-NEXT: }
+ 
++## The version of an unfetched lazy symbol is VER_NDX_GLOBAL. It is not affected by version scripts.
++# RUN: echo "v1 { *; };" > %t2.script
++# RUN: ld.lld -shared --version-script %t2.script %t.o --start-lib %t1.o --end-lib -o %t2.so
++# RUN: llvm-readelf --dyn-syms %t2.so | FileCheck %s --check-prefix=CHECK2
++
++# CHECK2: NOTYPE WEAK DEFAULT UND foo{{$}}
++
++# RUN: ld.lld -shared --soname=tshared --version-script %t2.script %t1.o -o %tshared.so
++# RUN: ld.lld -shared --version-script %t2.script %t.o --start-lib %t1.o --end-lib %tshared.so -o %t3.so
++# RUN: llvm-readelf --dyn-syms %t3.so | FileCheck %s --check-prefix=CHECK3
++
++# CHECK3: NOTYPE WEAK DEFAULT UND foo@v1
++
+ .text
+  callq foo@PLT
+ .weak foo
