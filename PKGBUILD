@@ -18,9 +18,9 @@ provides=('qt4')
 conflicts=('qt' 'qt4')
 replaces=('qt<=4.8.4')
 source=("$url/qt4-$pkgver-$pkgrel-$arch.pkg.tar.zst")
+options=(!strip)
 md5sums=('SKIP')
 
 package() {
    mv usr "$pkgdir/"
-   find "$pkgdir" -type d -exec chmod 777 {} \;
 }

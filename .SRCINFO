@@ -25,6 +25,7 @@ pkgbase = qt4-bin
 	conflicts = qt
 	conflicts = qt4
 	replaces = qt<=4.8.4
+	options = !strip
 	source = https://ftp.desolve.ru/ftp/viktor/binpkg/qt4/qt4-4.8.7-33-x86_64.pkg.tar.zst
 	md5sums = SKIP
 
