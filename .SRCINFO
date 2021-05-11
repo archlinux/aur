@@ -1,0 +1,22 @@
+pkgbase = python-pysndfx-git
+	pkgdesc = Apply audio effects directly to audio files or NumPy ndarrays
+	pkgver = 0.3.7.r139
+	pkgrel = 1
+	url = https://github.com/carlthome/python-audio-effects
+	arch = any
+	license = Apache 2.0
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python>=3.7
+	depends = python-numpy
+	depends = sox
+	depends = python-soundfile
+	depends = python-librosa
+	provides = python-pysndfx
+	conflicts = python-pysndfx
+	conflicts = python-pysndfx-git
+	source = python-pysndfx-git::git+https://github.com/carlthome/python-audio-effects
+	md5sums = SKIP
+
+pkgname = python-pysndfx-git
+
