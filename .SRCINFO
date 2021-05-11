@@ -1,9 +1,15 @@
 pkgbase = tt
 	pkgdesc = Terminal based typing test
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lemnos/tt
-	arch = any
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = MIT
 	makedepends = go
 	makedepends = git
