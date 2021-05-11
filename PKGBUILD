@@ -2,7 +2,7 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-rocclr
 pkgver=4.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
 url='https://rocmdocs.amd.com/en/latest/Installation_Guide/HIP.html'
@@ -27,7 +27,8 @@ build() {
   CXXFLAGS="$CXXFLAGS -isystem /opt/rocm/include/compiler/lib/include -isystem /opt/rocm/include/elf" \
   cmake -B build -Wno-dev \
         -S "$_dirname" \
-        -DCMAKE_INSTALL_PREFIX=/opt/rocm \
+        -DCMAKE_INSTALL_PREFIX=/opt/rocm/hip \
+        -DCMAKE_PREFIX_PATH=/opt/rocm/lib/cmake \
         -DHIP_COMPILER=clang \
         -DHIP_PLATFORM=rocclr \
         -D__HIP_ENABLE_PCH=OFF
@@ -39,13 +40,22 @@ package() {
 
   # add links (hipconfig is for rocblas with tensile)
   install -d "$pkgdir/usr/bin"
+  install -d "$pkgdir/opt/rocm/bin"
   local _fn
   for _fn in hipcc hipconfig; do
-    ln -s "/opt/rocm/bin/$_fn" "$pkgdir/usr/bin/$_fn"
+    ln -s "/opt/rocm/hip/bin/$_fn" "$pkgdir/usr/bin/$_fn"
+    ln -s "/opt/rocm/hip/bin/$_fn" "$pkgdir/opt/rocm/bin/$_fn"
   done
 
+  # clang from llvm-amdgpu may look for hipVersion in a different directory
+  ln -s '/opt/rocm/hip/bin/.hipVersion' "$pkgdir/opt/rocm/bin/.hipVersion"
+
+  # Some packages search for hip includes in /opt/rocm/include
+  install -d "$pkgdir/opt/rocm/include"
+  ln -s "/opt/rocm/hip/include/hip" "$pkgdir/opt/rocm/include/hip"
+
   install -Dm644 /dev/stdin "$pkgdir/etc/ld.so.conf.d/hip.conf" <<EOF
-/opt/rocm/lib
+/opt/rocm/hip/lib
 EOF
   install -Dm644 "$srcdir/HIP-rocm-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
