@@ -11,7 +11,7 @@ depends=('git' 'python-pip' 'python2-pip' 'curl' 'fakeroot' 'ruby-bundler' 'rsyn
 makedepends=('cargo')
 conflicts=('apmpkg-git')
 source=("https://codeload.github.com/Kedap/${pkgname}/tar.gz/refs/tags/${pkgver}")
-sha256sums=('1be95406377cfae8aaafeed6227ebb9d4eb3b5d695a8f8d524ced8f6979f6d54')
+sha256sums=('521e9fb0b83e740a5ab13c2a40e74a44315ffbff0938ca3cbc2f9fbec4186698')
 
 build() {
 	cd "$pkgname-$pkgver"
