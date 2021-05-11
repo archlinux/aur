@@ -1,6 +1,6 @@
 # Maintainer: zer0def <zer0def@github>
 pkgname=firecracker-bin
-pkgver=0.24.2
+pkgver=0.24.3
 pkgrel=1
 pkgdesc="Secure and fast microVMs for serverless computing"
 url="https://github.com/firecracker-microvm/firecracker"
@@ -11,12 +11,12 @@ source=("https://github.com/firecracker-microvm/firecracker/releases/download/v$
 
 case "${CARCH}" in
   x86_64)
-    sha512sums=(2a574276296685117acf4e1d425ca75ecb8ad06680ae81e183d73853ff57cbca2f4cf4f42cb013d8d88d18146c0d84d2b098829ca5f6e9402213fecdf539a283)
-    b2sums=(d2b81e2b3341317f296c63f14b2699dbf207e2e3a83871e38ef1666c105112788308c773afad61a85f7c6f4009f2373c80f12a52549120d92a42bae54891bf59)
+    sha512sums=(250edc60d116a52f4752434fdaad4cc99c3a662f5d1983bc051c1e4a97edd89123414ee51f377ce97db211bcf20628c06e28021df25ddecf9a57008e6cf59a6b)
+    b2sums=(aa33ce4c9711ce3a515d1b7760dc9ec5a5f08aaba923515bca803bb04aa6493dd39f834673cc6c59a8ceebfd9bf7429cb33b1597a241ae0a9656be9f752be829)
   ;;
   aarch64)
-    sha512sums=(9bd83d278c3f4f294c4391aac1bd82712bde7190ad706e1b84a0ec9ad489c09f5fa77bd448a25a08b932230b38e44b3dbcdcc37b2ccacfd87d37c7ee65e6c1c6)
-    b2sums=(8d5624f6f6f154678ffab945bbb293e3ab53c75fa324273d9cd99366d78230aef1ce0a23c0b8efdca9fd87edabc0e196dda0cacabf7ebb33ec86edf7c46dd92e)
+    sha512sums=(b4b75b7d87d99436abe2f350d6a67c6d057da23cdfdfbdaafacc5a96a551ad4280745573f772191ee3bee442b9cf8982553881038fb58ac838ea5c35fa466aaa)
+    b2sums=(8af0a8b311ee1d45ef8cefc8d48982c5dc9c6b959a7ea9fa5d16a651c2f48f4fb1dd084c46d3bbf653389434623b292180f876db793619115f7374d37495db33)
   ;;
 esac
 
