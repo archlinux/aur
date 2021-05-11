@@ -3,23 +3,21 @@ pkgname=obs-studio-tytan652
 # Use same CEF as obs project PPA
 _cefname=cef_binary_76.1.13+gf19c584+chromium-76.0.3809.132
 pkgver=26.1.2
-pkgrel=6
-pkgdesc="Free and open source software for video recording and live streaming. Built with Browser, VST plugins and my bind interface PR. No FTL"
-# Why no FTL ? Because Mixer is dead
-# Why no Python ? Because it doesn't work out of the box with Python 3.9
+pkgrel=7
+pkgdesc="Free and open source software for video recording and live streaming. Built with Browser, VST plugins, FTL protocol and my bind interface PR."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL2")
 depends=("ffmpeg" "jansson" "libxinerama" "libxkbcommon-x11" "mbedtls"
-         "qt5-svg" "qt5-x11extras" "curl" "jack" "gtk-update-icon-cache")
+         "qt5-svg" "qt5-x11extras" "curl" "jack" "gtk-update-icon-cache" "ftl-sdk")
 makedepends=("cmake" "git" "libfdk-aac" "libxcomposite" "x264"
-             "vlc" "swig" "luajit" 'python')
+             "vlc" "swig" "luajit" "python")
 optdepends=(
             "libfdk-aac: FDK AAC codec support"
             "libxcomposite: XComposite capture support"
             "libva-intel-driver: hardware encoding"
             "libva-mesa-driver: hardware encoding"
-            "vlc: VLC Media Source"
+            "vlc-luajit: fixed VLC Media Source (crash with 'vlc')"
             "swig: Scripting"
             "luajit: Lua scripting"
             "python: scripting support"
@@ -29,8 +27,9 @@ provides=("obs-studio=$pkgver")
 conflicts=("obs-studio" "obs-linuxbrowser")
 source=(
         "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
-        "bind_iface.patch::https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4219.patch"
-        "python_fix.patch::https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3335.patch"
+        "python_fix.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3335.patch
+        "use_system_ftl-sdk.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4018.patch
+        "bind_iface.patch" #https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4219.patch
         "obs-browser::git+https://github.com/obsproject/obs-browser.git"
         "obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8"
 )
@@ -38,8 +37,9 @@ source_x86_64=("https://cef-builds.spotifycdn.com/${_cefname}_linux64_minimal.ta
 source_i686=("https://cef-builds.spotifycdn.com/${_cefname}_linux32_minimal.tar.bz2")
 sha256sums=(
         "SKIP"
-        "SKIP"
-        "SKIP"
+        "430d7d0a7e1006c1f6309ad7d4912033dadd542b641f9d41259a5bad568379c9"
+        "c19c48fa8cc2821281ae452acc19c3003010224ecf2f2080991a5398bac4ec2e"
+        "109ffd8702b7b3973f4167f8821196b304df268205bf19e277281e65a0448182"
         "SKIP"
         "SKIP"
 )
@@ -70,10 +70,13 @@ prepare() {
   cd "$srcdir/obs-studio"
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git submodule update
-  # Add network interface binding for RTMP on Linux (https://github.com/obsproject/obs-studio/pull/4219)
-  patch -Np1 < "$srcdir/bind_iface.patch"
+
   # libobs/util: Fix loading Python binary modules on *nix (https://github.com/obsproject/obs-studio/pull/3335)
   patch -Np1 < "$srcdir/python_fix.patch"
+  # obs-outputs: Use system-wide FTL-SDK if present (https://github.com/obsproject/obs-studio/pull/4018)
+  patch -Np1 < "$srcdir/use_system_ftl-sdk.patch"
+  # Add network interface binding for RTMP on Linux (https://github.com/obsproject/obs-studio/pull/4219)
+  patch -Np1 < "$srcdir/bind_iface.patch"
 
   cd plugins
   # Replace obs-vst submodule by the repo with same last commit. Will be reverted when 27 is out.
