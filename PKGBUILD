@@ -2,7 +2,7 @@
 
 pkgname=i3status-rust-git
 pkgver=0.20.0.r1950.g1efa069
-pkgrel=1
+pkgrel=2
 pkgdesc='Very resourcefriendly and feature-rich replacement for i3status to use with bar programs (like i3bar and swaybar), written in pure Rust'
 arch=('x86_64')
 url='https://github.com/greshake/i3status-rust'
@@ -51,7 +51,7 @@ package() {
     install -Dm644 "$theme" -t "$pkgdir/usr/share/${pkgname%-*}/themes"
   done
 
-  for example_config in example/*.toml; do
+  for example_config in examples/*.toml; do
     install -Dm644 "$example_config" -t "$pkgdir/usr/share/doc/${pkgname%-*}/examples"
   done
 }
