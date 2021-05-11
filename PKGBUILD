@@ -4,7 +4,7 @@
 
 pkgname=libg15render
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A small graphics library optimised for drawing on an LCD"
 arch=('x86_64')
 url="https://gitlab.com/menelkir/libg15render"
