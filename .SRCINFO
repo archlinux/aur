@@ -1,7 +1,7 @@
 pkgbase = altium2kicad-git
 	pkgdesc = Altium to KiCad converter for PCB and schematics
 	pkgver = r238.f9eb66d
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/thesourcerer8/altium2kicad
 	arch = any
 	license = AGPL3
