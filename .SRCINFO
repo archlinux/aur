@@ -1,0 +1,14 @@
+pkgbase = srt-live-server
+	pkgdesc = An open source live streaming server for low latency based on Secure Reliable Tranport(SRT).
+	pkgver = 1.4.8
+	pkgrel = 1
+	url = https://github.com/Edward-Wu/srt-live-server
+	arch = x86_64
+	license = MIT
+	makedepends = srt
+	depends = srt
+	source = https://github.com/Edward-Wu/srt-live-server/archive/refs/tags/V1.4.8.tar.gz
+	md5sums = e03813b3d09ea91b23d96d033f7d1961
+
+pkgname = srt-live-server
+
