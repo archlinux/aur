@@ -6,7 +6,7 @@
 
 pkgbase=cyrus-imapd
 pkgname=(cyrus-imapd cyrus-imapd-docs)
-pkgver=3.2.5
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="An email, contacts and calendar server"
 arch=('x86_64' 'armv6h' 'armv7h')
@@ -18,15 +18,15 @@ makedepends=('libsasl' 'icu' 'jansson' 'libical' 'libxml2' 'krb5' 'sqlite'
              'libchardet' 'python-sphinx' 'python-gitpython'
              'perl-pod-pom-view-restructured')
 source=("https://github.com/cyrusimap/cyrus-imapd/releases/download/${pkgbase}-${pkgver}/${pkgbase}-${pkgver}.tar.gz"{,.sig}
-        "sphinx3.patch"
+        "sphinx4.patch"
         "imapd.conf.patch"
         "cyrus-imapd.service"
         "cyrus-imapd.sysusers.conf"
         "cyrus-imapd.tmpfiles.conf")
 validpgpkeys=('5B55619A9D7040A9DEE2A2CB554F04FEB36378E0')
-sha512sums=('549e0e430b3899f66fec16ae138f299434fc4882a83fbb30139667907c31cf26bf3533295a4dc343794a11f296eb2b4e84c08124ab2301c95e9c3bf7c06ab37b'
+sha512sums=('9fd13e93755aca98215c1bd9c21fa3ef3a3db8b1ff48f71dd6070e614e9c68cb591b1cb411fa1319d46ab1d49ddc971f188a41cc0c9a2e2c9df0cc08299f8bfa'
             'SKIP'
-            '3f4cb6d4383cd41ce168255d5c5123ff2c350d33e293643971e51c4fd04faaab2b08067d77559376cbd60663358f467284097d86bb476eb85312797354bab174'
+            '61ea7c6079ffd32bc99b07911088e772cb0ddb0757b4673f9335b0f00e79934b77af67f6d3bbed68e9446ea4b50c7a07abcca363b2b767331136ccbe34852b6b'
             '0862ffc8c05208efd4d2fb50a6e3719ebc65fc2d72f8e6404235aa32cc44d8227056a17b78f2726e15ff8e38d473795f837c34bfbe89b694b2298c9baab9d5db'
             '738242e80cec2c25ae6a85a889cc8d35d7c2f43b2b4d64d74f99a230b21024f168a885f1e319aec1aab0e0599e41211478b99dc608a4ba036be90f8d7e23fd96'
             '28612e491371515b414ce6d34554f1c2286624f5b80872e6be7037a2cccba1ed5bd2c4bfed27ed978478debdfb5f3d56aaa30d767f50b125f2ad38e76a37702c'
@@ -35,7 +35,7 @@ sha512sums=('549e0e430b3899f66fec16ae138f299434fc4882a83fbb30139667907c31cf26bf3
 prepare() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
-  patch -Np1 < "${srcdir}/sphinx3.patch"
+  patch -Np1 < "${srcdir}/sphinx4.patch"
 }
 
 build() {

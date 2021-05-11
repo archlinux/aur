@@ -1,0 +1,23 @@
+diff -aur package.pristine/docsrc/exts/sphinxlocal/writers/manpage.py package.new/docsrc/exts/sphinxlocal/writers/manpage.py
+--- package.pristine/docsrc/exts/sphinxlocal/writers/manpage.py	2021-05-10 06:34:24.000000000 +0200
++++ package.new/docsrc/exts/sphinxlocal/writers/manpage.py	2021-05-11 03:09:40.483441245 +0200
+@@ -38,7 +38,7 @@
+         self.builder = builder
+ 
+     def translate(self):
+-        visitor = CyrusManualPageTranslator(self.builder, self.document)
++        visitor = CyrusManualPageTranslator(self.document, self.builder)
+         self.visitor = visitor
+         self.document.walkabout(visitor)
+         self.output = visitor.astext()
+@@ -49,8 +49,8 @@
+     Custom translator.
+     """
+ 
+-    def __init__(self, builder, *args, **kwds):
+-        BaseTranslator.__init__(self, builder, *args, **kwds)
++    def __init__(self, document, builder, *args, **kwds):
++        BaseTranslator.__init__(self, document, builder, *args, **kwds)
+         self.builder = builder
+ 
+         self.in_productionlist = 0
