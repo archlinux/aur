@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=whois-git
-pkgver=5.2.18.r0.g5dd942b
-pkgrel=2
+pkgver=5.5.9.r0.g8aabb41
+pkgrel=1
 pkgdesc="The whois client by Marco d'Itri"
 arch=('i686' 'x86_64')
 url="https://github.com/rfc1036/whois"
@@ -25,15 +25,21 @@ pkgver() {
 build() {
   cd "whois"
 
-  make CFLAGS="$CFLAGS $CPPFLAGS" prefix="/usr" \
-    CONFIG_FILE=/etc/whois.conf \
+  make \
+    CFLAGS="$CFLAGS $CPPFLAGS" \
+    prefix="/usr" \
+    CONFIG_FILE="/etc/whois.conf" \
     LOCALEDIR=1 \
-    HAVE_LIBIDN=1 HAVE_ICONV=1
+    HAVE_ICONV=1
 }
 
 package() {
   cd "whois"
 
-  make BASEDIR="$pkgdir" prefix="/usr" install-whois install-pos
-  install -Dm644 "whois.conf" "$pkgdir/etc/whois.conf"
+  make \
+    BASEDIR="$pkgdir" \
+    prefix="/usr" \
+    install-whois \
+    install-pos
+  install -Dm644 "whois.conf" -t "$pkgdir/etc"
 }

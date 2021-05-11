@@ -1,7 +1,7 @@
 pkgbase = whois-git
 	pkgdesc = The whois client by Marco d'Itri
-	pkgver = 5.2.18.r0.g5dd942b
-	pkgrel = 2
+	pkgver = 5.5.9.r0.g8aabb41
+	pkgrel = 1
 	url = https://github.com/rfc1036/whois
 	arch = i686
 	arch = x86_64
