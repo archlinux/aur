@@ -1,7 +1,7 @@
 pkgbase = project-init
 	pkgdesc = Quickly initialize projects from a template.
 	pkgver = 3.1.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vmchale/project-init
 	arch = i686
 	arch = x86_64

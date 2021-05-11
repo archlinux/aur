@@ -2,7 +2,7 @@
 
 pkgname=project-init
 pkgver=3.1.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Quickly initialize projects from a template."
 provides=('project-init')
 conflicts=('project-init')
@@ -18,5 +18,5 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    RUSTUP_TOOLCHAIN=nightly cargo install --no-track --locked --root="$pkgdir"
+    RUSTUP_TOOLCHAIN=nightly cargo install --no-track --locked --root="$pkgdir/usr"
 }
