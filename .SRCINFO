@@ -1,0 +1,12 @@
+pkgbase = cursor-theme-macos-big-sur
+	pkgdesc = Big Sur cursors theme for linux desktops.
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/ful1e5/apple-cursors
+	arch = any
+	license = GPL3
+	makedepends = git
+	source = git+https://github.com/ful1e5/apple-cursors.git
+	sha1sums = 9d88c50ad5b2aaa4d76a1b1a15df2429f4d0661f
+
+pkgname = cursor-theme-macos-big-sur
