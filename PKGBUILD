@@ -4,7 +4,7 @@
 
 pkgname=g15daemon
 pkgver=3.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A daemon that makes it possible to use the G-Buttons and draw on the G15 LCD"
 arch=('x86_64')
 url="https://gitlab.com/menelkir/g15daemon"
