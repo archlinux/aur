@@ -3,13 +3,14 @@
 # Contributor: João Guerra <joca.bt@gmail.com>
 
 pkgname=evopop-gtk-theme-git
-pkgver=1.7.2.r1.gec3f524
+pkgver=2.9.99.r12.g6dce1c5
 pkgrel=1
 pkgdesc="A simple, flat, and bold GTK+ theme for Solus OS and Budgie Desktop"
 arch=('any')
 url="https://github.com/solus-cold-storage/evopop-gtk-theme"
 license=('GPL3')
 depends=('gtk3>=3.18' 'gtk-engine-murrine')
+makedepends=('git')
 provides=('evopop-gtk-theme' 'evopop-light-gtk-theme')
 conflicts=('evopop-gtk-theme')
 source=("${pkgname}::git+${url}")
