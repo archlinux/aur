@@ -1,6 +1,6 @@
 pkgbase = g15composer-openrc
 	pkgdesc = g15composer init script for OpenRC
-	pkgver = 20210223
+	pkgver = 20210510
 	pkgrel = 1
 	url = https://gitlab.com/menelkir/g15composer
 	arch = any

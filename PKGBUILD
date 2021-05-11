@@ -1,6 +1,6 @@
 # Maintainer: Daniel Menelkir <menelkir at itroll dot org>
 pkgname=g15composer-openrc
-pkgver=20210223
+pkgver=20210510
 pkgrel=1
 pkgdesc="g15composer init script for OpenRC"
 arch=('any')
