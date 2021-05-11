@@ -1,6 +1,6 @@
 pkgbase = go-stun-git
 	pkgdesc = A go implementation of the STUN client (RFC 3489 and RFC 5389)
-	pkgver = r125.d587b28
+	pkgver = r127.4e5e57c
 	pkgrel = 1
 	url = https://github.com/ccding/go-stun
 	arch = x86_64
