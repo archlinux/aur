@@ -15,6 +15,7 @@ pkgbase = honk
 	optdepends = nginx: for TLS and reverse proxying.
 	provides = honk
 	conflicts = honk
+	conflicts = honk-hg
 	options = strip
 	options = zipman
 	source = honk-0.9.6.tar.gz::https://humungus.tedunangst.com/r/honk/d/honk-0.9.6.tgz
