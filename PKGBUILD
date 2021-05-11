@@ -1,14 +1,14 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=aget
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='Minimalistic AUR helper'
 arch=(x86_64)
 url='https://github.com/xyproto/aget'
 license=(MIT)
 makedepends=(go git)
-source=("git+https://github.com/xyproto/aget#commit=6d5d83fcb9cb5e652409436fe5588eb9d10ab3e1") # tag: 1.1.0
+source=("git+https://github.com/xyproto/aget#commit=35a6976114013313000b7c1a4c08487936ca7592") # tag: 1.2.0
 b2sums=(SKIP)
 
 build() {
