@@ -2,8 +2,8 @@
 Description="Honk ActivityPub server"
 
 [Service]
-WorkingDirectory=/usr/share/webapps/honk
-ExecStart=/usr/share/webapps/honk/honk
+WorkingDirectory=/usr/share/honk
+ExecStart=/usr/bin/honk
 
 User=honk
 Group=honk

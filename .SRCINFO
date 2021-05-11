@@ -1,21 +1,22 @@
 pkgbase = honk
 	pkgdesc = ActivityPub compatible server with web frontend.
 	pkgver = 0.9.6
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 0
 	url = https://humungus.tedunangst.com/r/honk
 	install = honk.install
 	changelog = honk.changelog
 	arch = x86_64
 	license = custom:ISC
-	makedepends = gcc-go
+	makedepends = go
 	makedepends = sqlite
-	depends = gcc-go
+	depends = go
 	depends = sqlite
-	optdepends = nginx: for TLS and reverse proxying
+	optdepends = nginx: for TLS and reverse proxying.
 	provides = honk
 	conflicts = honk
-	options = !strip
+	options = strip
+	options = zipman
 	source = honk-0.9.6.tar.gz::https://humungus.tedunangst.com/r/honk/d/honk-0.9.6.tgz
 	sha512sums = d946be7796be2ef7dc565710351b0b27da947f4e65a2a8f52ec99624c66fb6fd5e21d3fa58fec691d944b4acfa6256b0ad1090f3f8f5191e6c3714f3eae99b29
 

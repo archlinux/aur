@@ -3,22 +3,21 @@
 
 pkgname=honk
 pkgver=0.9.6
-pkgrel=4
+pkgrel=5
 epoch=0
 pkgdesc="ActivityPub compatible server with web frontend."
 arch=("x86_64")
 url="https://humungus.tedunangst.com/r/honk"
 license=("custom:ISC")
-makedepends=("gcc-go" "sqlite")
-depends=("gcc-go" "sqlite")
-optdepends=("nginx: for TLS and reverse proxying")
+makedepends=("go" "sqlite")
+depends=("go" "sqlite")
+optdepends=("nginx: for TLS and reverse proxying.")
 changelog="$pkgname.changelog"
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("$pkgname-$pkgver.tar.gz::https://humungus.tedunangst.com/r/honk/d/$pkgname-$pkgver.tgz")
 sha512sums=("d946be7796be2ef7dc565710351b0b27da947f4e65a2a8f52ec99624c66fb6fd5e21d3fa58fec691d944b4acfa6256b0ad1090f3f8f5191e6c3714f3eae99b29")
-#backup=("usr/share/webapps/honk/honk.db" "usr/share/webapps/honk/blob.db" "usr/share/webapps/honk/backup.db" "usr/share/webapps/honk/views/*")
-options=(!strip)
+options=(strip zipman)
 install="$pkgname.install"
 
 build() {
@@ -27,10 +26,23 @@ build() {
 }
 
 package() {
-   _PKG_HONKDIR="$pkgdir/usr/share/webapps/$pkgname"
-   install -vDm700 "$pkgname-$pkgver/$pkgname" "$_PKG_HONKDIR/$pkgname"
-   install -vDm644 "$pkgname-$pkgver"/views/* -t "$_PKG_HONKDIR/views/"
-   install -vDm644 "$pkgname-$pkgver"/docs/* -t "$_PKG_HONKDIR/docs/"
-   install -vDm644 "$pkgname-$pkgver"/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-   install -vDm644 ../honk.service -t "$pkgdir/etc/systemd/system"
+   _PKG_HONKDIR="$pkgdir/usr/share/$pkgname"
+   _PKG_DOCDIR="$pkgname-$pkgver/docs"
+   _MANDIR="$pkgdir/usr/share/man/man"
+
+   install -Dm755 "$pkgname-$pkgver/$pkgname" -t "$pkgdir/usr/bin/"
+   install -Dm644 "$pkgname-$pkgver"/views/* -t "$_PKG_HONKDIR/views/"
+   install -Dm644 $_PKG_DOCDIR/* -t "$_PKG_HONKDIR/docs/"
+
+   for i in {1,3,5,8}; do
+       install -Dm644 $_PKG_DOCDIR/honk.$i.gz -t ${_MANDIR}$i/
+   done
+
+   install -Dm644 $_PKG_DOCDIR/activitypub.7.gz ${_MANDIR}7/honk_activitypub.7.gz
+   install -Dm644 $_PKG_DOCDIR/hfcs.1.gz ${_MANDIR}1/honk_hfcs.1.gz
+   install -Dm644 $_PKG_DOCDIR/intro.1.gz ${_MANDIR}1/honk_intro.1.gz
+   install -Dm644 $_PKG_DOCDIR/vim.3.gz ${_MANDIR}3/honk_vim.3.gz
+
+   install -Dm644 "$pkgname-$pkgver"/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+   install -Dm644 ../honk.service -t "$pkgdir/etc/systemd/system/"
 }

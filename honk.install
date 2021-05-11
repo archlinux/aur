@@ -1,13 +1,14 @@
 #!/bin/sh
 _BOLD='\033[01m'
 _STYLE_END='\033[0m'
-_HONKDIR="/usr/share/webapps/honk"
+_HONKDIR="/usr/share/honk"
 
 post_install() {
+    systemctl daemon-reload
+    mandb -q > /dev/null
     useradd -r -m -d $_HONKDIR honk
     chown honk:honk -R "$_HONKDIR"
-    systemctl daemon-reload
-    printf "\n\n${_BOLD}VERY IMPORTANT${_STYLE_END}:\nType:\n\t cd $_HONKDIR && ./honk init\nin a shell to initialize the database, and then you can type 'systemctl start honk' to start the honk server.\n'systemctl status honk' will help you identify problems that might arise.\nThe service launch the binary with the honk user and group.\n\n"
+    printf "\n\n${_BOLD}VERY IMPORTANT${_STYLE_END}:\nType:\n\tsu -l honk -c \"honk init\"\nin a shell to initialize the database, and then you can type 'systemctl start honk' to start the honk server.\n'systemctl status honk' will help you identify problems that might arise.\nThe service launch the binary with the 'honk' user.\n\n"
 }
 
 post_remove() {
