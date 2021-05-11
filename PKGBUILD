@@ -1,7 +1,7 @@
 # Maintainer: DisLogicator <supasecrethacker@gmail.com>
 
 pkgname='hwpviewer2020'
-pkgver=11.20.0.1520
+pkgver=11.20.0.672
 pkgrel=1
 pkgdesc="Newer version of Hancom office viewer provided by Hancom. (Previous version:hwpviewer) Ported to Arch Linux from Hancom Gooroom OS"
 arch=('x86_64')
@@ -13,8 +13,8 @@ source=(
     "LICENSE"
 )
 sha256sums=(
-    '4055fb3d3737e2dc050854a3959c1102fc833f0440353b7fe3e981b17981613a'
-    'bd67280ffdf6928abab99f3f7f01ad46b19d85d641bd49286ef6d3e6a258cee3'
+    'SKIP'
+    'SKIP'
 )
 
 package() {
