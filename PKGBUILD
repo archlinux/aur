@@ -1,9 +1,9 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=gnome-shell-extension-transparent-top-bar-git
-pkgver=r10.31714cf
+pkgver=r16.adcff4f
 pkgrel=1
-pkgdesc="Bring back the transparent top bar when free-floating in GNOME Shell 3.32"
+pkgdesc="Bring back the transparent top bar when free-floating in GNOME Shell 3.32+"
 arch=(any)
 url="https://extensions.gnome.org/extension/1708/transparent-top-bar/"
 license=(GPL)
