@@ -1,4 +1,4 @@
-# Maintainer: Hauke Rehfeld <hauke@haukerehfeld.de>
+# Maintainer: Hauke Rehfeld <aur@haukerehfeld.de>
 pkgname=python-pymesh-git
 pkgver=r2064.384ba882
 pkgrel=1
