@@ -1,6 +1,6 @@
 # Maintainer: Marcel Mehlmann <marcel@mzumquadrat.de>
 pkgname='ttdl'
-pkgver=2.0.1
+pkgver=2.0.3
 pkgrel=1
 pkgdesc='A CLI tool to manage todo lists in todo.txt format.'
 url='https://github.com/VladimirMarkelov/ttdl'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 install='ttdl.install'
-sha512sums=('568b91f839c475e9903c7d1bbd70b1e1a32f9c30f234506f6ab476e8df6e69990f746f0244646d68fa222473ebc681fa07a935a400836e95580ba3368599b0bb')
+sha512sums=('ba3b953ac341b409762368a257bcb870b718145d12df9717098e318327729158b82d5c82c92deee2fa58c2f6b415b10ea90596d5f61f11a613d3c2eee14e9600')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
