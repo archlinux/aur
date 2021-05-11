@@ -15,7 +15,7 @@ depends=(
 )
 source=("https://github.com/starsareintherose/tpsDig/releases/download/${pkgver}/tpsDig.zip" "tpsDig.desktop" "tpsDig.png")
 md5sums=('eb6498c5b35c3c7d5355a15a456221b4'
-         'ac6b8db75d56ed6d16edfb70d994afa5'
+         '05d9ecf87995f9c555bd12eb46606d2a'
          '2e2e7c55e63e7a3892e49aab613aed35')
 
 package() {
