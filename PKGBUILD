@@ -2,7 +2,7 @@
 
 pkgbase=linux-g14
 pkgver=5.12.2.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/"
@@ -15,12 +15,13 @@ makedepends=(
 )
 options=('!strip')
 _srcname=archlinux-linux
+_fedora_kernel_commit_id=50c4293d202534b2773149500aac51f13fd76c9b
 source=(
 	"$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
 	config         # the main kernel config file
 	"sys-kernel_arch-sources-g14_files_6008-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch"
 	"sys-kernel_arch-sources-g14_files-6010-acpi_unused.patch"
-	"https://gitlab.com/asus-linux/fedora-kernel/-/archive/50c4293d202534b2773149500aac51f13fd76c9b/fedora-kernel-50c4293d202534b2773149500aac51f13fd76c9b.zip"
+	"https://gitlab.com/asus-linux/fedora-kernel/-/archive/$_fedora_kernel_commit_id/fedora-kernel-$_fedora_kernel_commit_id.zip"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -55,7 +56,7 @@ prepare() {
     patch -Np1 < "../$src"
   done
 
-  for src in ../fedora-kernel/*.patch; do
+  for src in ../fedora-kernel-$_fedora_kernel_commit_id/*.patch; do
     src="${src%%::*}"
     src="${src##*/}"
     [[ $src = *.patch ]] || continue
@@ -63,7 +64,7 @@ prepare() {
        [ "$src" != "0006-drm-amdgpu-move-s0ix-check-into-amdgpu_device_ip_sus.patch" ] &&
        [ "$src" != "patch-5.11-redhat.patch" ]; then
       echo "Applying patch $src..."
-      OUT="$(patch --forward -Np1 < "../fedora-kernel/$src")"  || echo "${OUT}" | grep "Skipping patch" -q || (echo "$OUT" && false);
+      OUT="$(patch --forward -Np1 < "../fedora-kernel-$_fedora_kernel_commit_id/$src")"  || echo "${OUT}" | grep "Skipping patch" -q || (echo "$OUT" && false);
     fi
   done
 
