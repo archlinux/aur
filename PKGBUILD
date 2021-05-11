@@ -2,17 +2,13 @@
 pkgname='basicanalysis'
 pkgdesc='Framework for automatic extraction of fundamental factors for Paraver traces (from BSC).'
 pkgver='0.3.8.20201027'
-pkgrel='1'
+pkgrel='2'
 arch=('any')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL2.1')
-depends=(python wxparaver dimemas)
-optdepends=('gnuplot: Drawing the generated plots'
-            'python-pandas: Efficiency table plotting'
-            'python-seaborn: Efficiency table plotting'
-            'python-matplotlib: Efficiency table plotting'
-            'python-numpy: Efficiency table plotting, lineal plotting'
-            'python-scipy: Lineal plotting')
+depends=(python wxparaver dimemas
+         python-pandas python-seaborn python-matplotlib python-numpy python-scipy)
+optdepends=('gnuplot: Drawing the generated plots')
 source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-${pkgver%.*}-src.tar.bz2")
 sha512sums=(56a71ff6971780295c133329ee88f1c946399659ce6abc927dacfdbb6c4d068fe937a079d9e249076f036eccca77501cc3a40966d273283f577a3bd1c3e2aba0)
 
