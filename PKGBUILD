@@ -1,7 +1,7 @@
 # Maintainer: Mike Javorski (javmorin) <mike.javorski gmail com>
 pkgname=python-chevron
 _name=${pkgname#python-}
-pkgver=0.13.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='A python implementation of the mustache templating language.'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('f95054a8b303268ebf3efd6bdfc8c1b428d3fc92327913b4e236d062ec61c989')
+sha256sums=('87613aafdf6d77b6a90ff073165a61ae5086e21ad49057aa0e53681601800ebf')
 
 package() {
   cd "$srcdir/$_name-$pkgver"
