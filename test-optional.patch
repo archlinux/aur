@@ -2,7 +2,7 @@ diff --git a/src/sage/doctest/control.py b/src/sage/doctest/control.py
 index 2d93841e50..937e20cd2e 100644
 --- a/src/sage/doctest/control.py
 +++ b/src/sage/doctest/control.py
-@@ -356,20 +356,6 @@ class DocTestController(SageObject):
+@@ -357,20 +357,6 @@ class DocTestController(SageObject):
                  # Special case to run all optional tests
                  options.optional = True
              else:

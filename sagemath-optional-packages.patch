@@ -2,7 +2,7 @@ diff --git a/build/pkgs/sagelib/src/setup.py b/build/pkgs/sagelib/src/setup.py
 index 0d7c29d746..fb34cbfd5e 100755
 --- a/build/pkgs/sagelib/src/setup.py
 +++ b/build/pkgs/sagelib/src/setup.py
-@@ -66,10 +66,9 @@ if sdist:
+@@ -69,10 +69,9 @@ if sdist:
  else:
      distributions = ['']
      optional_packages_with_extensions = ['mcqd', 'bliss', 'tdlib', 'primecount',
