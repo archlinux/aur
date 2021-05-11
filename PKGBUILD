@@ -38,6 +38,7 @@ pkgver() {
 }
 
 package() {
+    sudo rm /usr/bin/qtile-config
 	cd qtile-config/core
     install -Dm755 qtile-config.py "${pkgdir}"/usr/bin/qtile-config
 }
