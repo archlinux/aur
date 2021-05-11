@@ -12,6 +12,7 @@
     "startup_hook": "",
     "post_connect_hook": "",
     "max_total_connections": 0,
+    "max_per_host_connections": 20,
     "defender": {
       "enabled": false,
       "ban_time": 30,
@@ -19,12 +20,30 @@
       "threshold": 15,
       "score_invalid": 2,
       "score_valid": 1,
+      "score_limit_exceeded": 3,
       "observation_time": 30,
       "entries_soft_limit": 100,
       "entries_hard_limit": 150,
       "safelist_file": "",
       "blocklist_file": ""
-    }
+    },
+    "rate_limiters": [
+      {
+        "average": 0,
+        "period": 1000,
+        "burst": 1,
+        "type": 2,
+        "protocols": [
+          "SSH",
+          "FTP",
+          "DAV",
+          "HTTP"
+        ],
+        "generate_defender_events": false,
+        "entries_soft_limit": 100,
+        "entries_hard_limit": 150
+      }
+    ]
   },
   "sftpd": {
     "bindings": [
@@ -88,7 +107,8 @@
         "enable_https": false,
         "client_auth_type": 0,
         "tls_cipher_suites": [],
-        "prefix": ""
+        "prefix": "",
+        "proxy_allowed": []
       }
     ],
     "certificate_file": "",
@@ -143,12 +163,17 @@
     "check_password_hook": "",
     "check_password_scope": 0,
     "password_hashing": {
+      "bcrypt_options": {
+        "cost": 10
+      },
       "argon2_options": {
         "memory": 65536,
         "iterations": 1,
         "parallelism": 2
-      }
+      },
+      "algo": "bcrypt"
     },
+    "password_caching": true,
     "update_mode": 0,
     "skip_natural_keys_validation": false
   },
@@ -156,17 +181,19 @@
     "bindings": [
       {
         "port": 8080,
-        "address": "127.0.0.1",
+        "address": "",
         "enable_web_admin": true,
+        "enable_web_client": true,
         "enable_https": false,
         "client_auth_type": 0,
-        "tls_cipher_suites": []
+        "tls_cipher_suites": [],
+        "proxy_allowed": []
       }
     ],
     "templates_path": "/usr/share/sftpgo/templates",
     "static_files_path": "/usr/share/sftpgo/static",
     "backups_path": "/srv/sftpgo/backups",
-    "web_admin_root": "",
+    "web_root": "",
     "certificate_file": "",
     "certificate_key_file": "",
     "ca_certificates": [],
