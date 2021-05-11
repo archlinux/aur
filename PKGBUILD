@@ -5,7 +5,7 @@
 
 pkgname=anbox-image-nocsd-gapps
 pkgver=r40.307460e5
-pkgrel=1
+pkgrel=2
 pkgdesc="Android image for running in Anbox, with no-csd patch, OpenGApps and Houdini"
 arch=('x86_64')
 url="https://anbox.io"
@@ -23,17 +23,16 @@ _gapps_list=(
 
 _anbox_rel="$(curl --config /dev/null -o /dev/null -Ls https://github.com/thdaemon/anbox/releases/latest -w '%{url_effective}\n'|xargs basename)"
 _gapps_rel="$(curl -s -L https://api.opengapps.org/list | sed -r 's/.*-x86_64-7.1-pico-([0-9]+).zip'\"'.*/\1/')"
-_gapps_src="https://downloads.sourceforge.net/project/opengapps/x86_64/$_gapps_rel/open_gapps-x86_64-7.1-pico-$_gapps_rel.zip"
 _gapps_md5="$(curl -s -L "$_gapps_src.md5" | sed -r 's/^([0-9a-z]+).*/\1/')"
 source=(
   "android_amd64.img::https://github.com/thdaemon/anbox/releases/download/$_anbox_rel/android.img"
-  "https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_y.sfs"
-  "https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_z.sfs"
+  "houdini_y.sfs::https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_y.sfs"
+  "houdini_z.sfs::https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_z.sfs"
   "media_codecs.xml"
   "media_codecs_google_video.xml"
   "media_codecs_google_audio.xml"
   "media_codecs_google_telephony.xml"
-  "$_gapps_src"
+  "open_gapps-x86_64-7.1-pico-$_gapps_rel.zip::https://downloads.sourceforge.net/project/opengapps/x86_64/$_gapps_rel/open_gapps-x86_64-7.1-pico-$_gapps_rel.zip"
 )
 
 md5sums=('6c31bf493856f982da3d7d78b6e23b85'
