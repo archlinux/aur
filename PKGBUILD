@@ -33,4 +33,6 @@ md5sums=('5472de76f406b25e61f4b58ecfe49678'
 package() {
   install -dm755 "$pkgdir"/usr/share/{dnastar,applications}
   mv "$srcdir"/DNASTAR/* "$pkgdir"/usr/share/dnastar
+  install -D -m 755 ${srcdir}/*.png "${pkgdir}/usr/share/dnastar"
+  install -D -m 755 ${srcdir}/*.desktop "${pkgdir}/usr/share/applications"
 }
