@@ -1,0 +1,15 @@
+pkgbase = paup-gui
+	pkgdesc = Phylogenetic Analysis Using PAUP
+	pkgver = 4.0a
+	pkgrel = 1
+	url = http://phylosolutions.com/paup-test/
+	arch = any
+	license = custom
+	depends = wine
+	depends = wine_gecko
+	depends = wine-mono
+	source = http://phylosolutions.com/paup-test/paup4-setup.msi
+	md5sums = SKIP
+
+pkgname = paup-gui
+
