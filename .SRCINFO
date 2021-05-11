@@ -1,0 +1,13 @@
+pkgbase = nuclei-openocd
+	pkgdesc = nuclei-openocd 是 Nuclei Studio IDE 的调试工具。
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://www.nucleisys.com/download.php
+	arch = x86_64
+	license = unknow
+	options = !strip
+	source = https://www.nucleisys.com/upload/files/toochain/openocd/nuclei-openocd-0.10.0-15-linux-x64.tgz
+	sha256sums = 636E48FFBA7AB4B63F28F36DB2549C09FB04CD2F876E450B8C3E39AF4E5B983F
+
+pkgname = nuclei-openocd
+
