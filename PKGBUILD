@@ -1,7 +1,7 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
 # pkg: git
 pkgname=trakt-scrobbler-git
-pkgver=1.2.1.r5.g305651b
+pkgver=1.2.1.r12.gb33f77a
 pkgrel=1
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
