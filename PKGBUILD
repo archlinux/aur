@@ -5,14 +5,15 @@
 # Contributor: Dave Reisner <d@falconindy.com>
 
 pkgname=pyalpm-next-git
-pkgver=0.9.2.r6.g325bbe9
-pkgrel=2
+pkgver=0.9.2.r26.gbf68871
+pkgrel=1
 pkgdesc='Python 3 bindings for libalpm (Git version, compatible with pacman-git)'
 arch=(x86_64)
 url=https://gitlab.archlinux.org/archlinux/pyalpm
 license=(GPL)
 depends=(python pacman-git)
-makedepends=(git python-setuptools python-pytest)
+makedepends=(git python-setuptools python-pkgconfig)
+checkdepends=(python-pytest python-pytest-pacman)
 provides=("${pkgname%-next-git}=$pkgver")
 conflicts=("${pkgname%-next-git}")
 source=(git+"${url}".git#branch=next)
