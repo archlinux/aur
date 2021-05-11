@@ -7,12 +7,15 @@ pkgver=1.1.4
 pkgrel=2
 pkgdesc="Big Sur cursors theme for linux desktops."
 arch=("any")
-depends=("libx11" "libxcursor" "libpng")
-makedepends=("git")
+makedepends=('git' 'libx11' 'libxcursor' 'libpng')
 url="https://github.com/ful1e5/${_gitname}"
 license=("GPL3")
 source=("https://github.com/ful1e5/${_gitname}/releases/download/v${pkgver}/${_cursor_name}.tar.gz")
 sha1sums=("9d88c50ad5b2aaa4d76a1b1a15df2429f4d0661f")
+
+pkgver() {
+  echo $pkgver;
+}
 
 package() {
   ls -la;
