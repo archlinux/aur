@@ -11,7 +11,7 @@ license=('aGPLv3')
 depends=('capstone' 'libehp' 'boost')
 makedepends=('git' 'cmake' 'souffle' 'mcpp' 'lief' 'gtirb' 'gtirb-pprinter')
 provides=('ddisasm')
-source=('git://github.com/grammatech/ddisasm.git')
+source=('git+https://github.com/grammatech/ddisasm.git')
 sha512sums=('SKIP')
 
 pkgver() {

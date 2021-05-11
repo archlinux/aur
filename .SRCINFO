@@ -16,7 +16,7 @@ pkgbase = ddisasm-git
 	depends = libehp
 	depends = boost
 	provides = ddisasm
-	source = git://github.com/grammatech/ddisasm.git
+	source = git+https://github.com/grammatech/ddisasm.git
 	sha512sums = SKIP
 
 pkgname = ddisasm-git
