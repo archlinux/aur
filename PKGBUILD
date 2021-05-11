@@ -3,14 +3,14 @@
 # shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=dhewm3
 pkgname=$_pkgname-git
-pkgver=1.5.1.r0.g441c26e
+pkgver=1.5.1.r40.gb054261
 pkgrel=1
 epoch=1
 pkgdesc="Doom 3 source port"
 arch=('x86_64' 'i686')
 url="https://dhewm3.org/"
 license=('GPL3')
-depends=('curl' 'libjpeg' 'libvorbis' 'openal' 'sdl2')
+depends=('libcurl.so' 'openal' 'sdl2')
 makedepends=('git' 'cmake')
 optdepends=('doom3-data: for game data and icon')
 provides=("$_pkgname")
@@ -27,12 +27,12 @@ pkgver() {
 
 build() {
 	cmake -S $_pkgname/neo -B build \
-		-DCMAKE_CXX_FLAGS_INIT=-DLINUX_DEFAULT_PATH='\"/usr/share/games/doom3\"' \
 		-DCMAKE_BUILD_TYPE=None \
-		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_CXX_FLAGS_INIT=-DLINUX_DEFAULT_PATH='\"/usr/share/games/doom3\"' \
 		-DCMAKE_INSTALL_LIBDIR=lib \
-		-DREPRODUCIBLE_BUILD=1 \
-		-DDEDICATED=1 \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DDEDICATED=ON \
+		-DREPRODUCIBLE_BUILD=ON \
 		-Wno-dev
 	cmake --build build
 }
