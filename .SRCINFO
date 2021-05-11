@@ -5,7 +5,8 @@ pkgbase = cursor-theme-macos-big-sur
 	url = https://github.com/ful1e5/apple_cursor
 	arch = any
 	license = GPL3
-	makedepends = git libx11 libxcursor libpng
+	depends = libx11 libxcursor libpng
+	makedepends = git
 	source = git+https://github.com/ful1e5/apple_cursor.git
 	sha1sums = 9d88c50ad5b2aaa4d76a1b1a15df2429f4d0661f
 
