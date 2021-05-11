@@ -1,0 +1,21 @@
+pkgbase = python-normalise-git
+	pkgdesc = Module for normalising text
+	pkgver = 0.1.9.r327
+	pkgrel = 1
+	url = https://github.com/EFord36/normalise
+	arch = any
+	license = Apache 2.0
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python>=3.7
+	depends = python-nltk
+	depends = python-roman
+	depends = python-scikit-learn
+	provides = python-normalise
+	conflicts = python-normalise
+	conflicts = python-normalise-git
+	source = python-normalise-git::git+https://github.com/EFord36/normalise
+	md5sums = SKIP
+
+pkgname = python-normalise-git
+
