@@ -3,12 +3,12 @@
 pkgdesc="OpenMP boosted NDT and GICP algorithms with CUDA enabled"
 url='https://github.com/SMRT-AIST/fast_gicp'
 
-pkgname='ros-noetic-fast-gicp-cuda-git'
+pkgname='ros-noetic-fast-gicp-git'
 pkgver=r125.e1f0863
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD-3-Clause License')
-provides=(${pkgname::-9})
+provides=(${pkgname::-4})
 cuda=ON #compile with CUDA support
 
 makedepends=(
