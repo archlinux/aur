@@ -1,0 +1,14 @@
+pkgbase = lua52-base64
+	pkgdesc = LUA JWT Jitsi
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://github.com/iskolbin/lbase64
+	arch = any
+	license = MIT
+	makedepends = luarocks
+	makedepends = lua52
+	source = git+https://github.com/iskolbin/lbase64#tag=v1.5.3
+	sha256sums = SKIP
+
+pkgname = lua52-base64
+
