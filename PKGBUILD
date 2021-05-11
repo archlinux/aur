@@ -1,4 +1,5 @@
-# Maintainer: Eivind Eide <xenofil AT gmail Dot com>
+# Maintainer:
+# Contributor: Eivind Eide <xenofil AT gmail DOT com>
 # Contributor: Anatol Pomozov <anatol DOT pomozov AT gmail DOT com>
 
 _gemname=gtk2
