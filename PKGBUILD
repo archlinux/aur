@@ -3,13 +3,13 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=steamtinkerlaunch-git
-pkgver=4.0_next7.r194.145caa2
-pkgrel=2
+pkgver=6.8_rc1.r282.5ea4723
+pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
 url="https://github.com/frostworx/steamtinkerlaunch"
 license=('GPL3')
-depends=('bc' 'bash' 'procps-ng' 'unzip' 'wget' 'which' 'xdotool' 'xorg-xprop' 'xorg-xrandr' 'xorg-xwininfo' 'yad')
+depends=('bash' 'procps-ng' 'unzip' 'wget' 'which' 'xdotool' 'xorg-xprop' 'xorg-xrandr' 'xorg-xwininfo' 'yad')
 makedepends=('git')
 optdepends=(
 	'strace: write a strace log of the launched game'
@@ -51,7 +51,7 @@ package() {
 	install -Dm755 stl -t "$pkgdir/usr/bin"
 
   install -d "$pkgdir/usr/share/stl"
-  cp -r categories lang misc regs reshadepresets tweaks "$pkgdir/usr/share/stl"
+  cp -r categories eval guicfgs lang misc regs reshadepresets "$pkgdir/usr/share/stl"
 
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
