@@ -1,12 +1,12 @@
 pkgbase = rickrollrc
-	pkgdesc = Rick Astley invades your terminal.
-	pkgver = 16.0.05
+	pkgdesc = Rick Astley invades your terminal. Type roll to instantly be never given up.
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://www.github.com/keroserene/rickrollrc
 	arch = any
 	license = WTFPL
 	depends = python
-	source = https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh
+	source = https://raw.githubusercontent.com/DisLogicator/RickAstley/master/roll
 	sha256sums = SKIP
 
 pkgname = rickrollrc
