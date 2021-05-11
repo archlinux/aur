@@ -11,9 +11,8 @@ pkgbase = haruhi-dl
 	optdepends = ffmpeg: for video post-processing
 	optdepends = rtmpdump: for rtmp streams support
 	optdepends = atomicparsley: for embedding thumbnails into m4a files
-	optdepends = phantomjs: for openload support
 	provides = haruhi-dl
-	source = haruhi-dl.tar.gz::https://git.sakamoto.pl/laudompat/haruhi-dl/-/archive/v2021.01.24/haruhi-dl-v2021.01.24.tar.gz
+	source = haruhi-dl.tar.gz::https://git.sakamoto.pl/laudompat/haruhi-dl/-/archive/v2021.04.01/haruhi-dl-v2021.04.01.tar.gz
 	md5sums = SKIP
 
 pkgname = haruhi-dl
