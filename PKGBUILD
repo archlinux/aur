@@ -6,7 +6,7 @@
 
 # Maintainer: Luis Braun <luis.braun07@gmail.com>
 pkgname=qtile-config-git
-_pkgname=qtile-config
+
 pkgver=1.1.0
 pkgrel=1
 epoch=
@@ -34,8 +34,8 @@ validpgpkeys=()
 
 
 package() {
-    cd ${_pkgname}
-    sudo rm /usr/bin/qtile-config
+    cd qtile-config
+    #sudo rm /usr/bin/qtile-config
     install -Dm755 core/qtile-config.py "${pkgdir}"/usr/bin/qtile-config
 
 
