@@ -4,7 +4,7 @@
 
 pkgname=gitlab-pages
 pkgver=1.38.0
-pkgrel=3
+pkgrel=4
 pkgdesc='GitLab Pages daemon used to serve static websites for GitLab users'
 url="https://gitlab.com/gitlab-org/$pkgname"
 license=('MIT')
@@ -30,7 +30,7 @@ build() {
         -ldflags "-extldflags \"$LDFLAGS\" -X main.VERSION=$pkgver" \
         .
 	./$pkgname -help 2>&1 |
-		sed -ne '/=/{s/^  -//;s/\([^:]*\): \(.*\)/# \2\n#\1\n/;p}' |
+		sed -ne '/=/{s/^  -//;s/\([^:]*\): \(.*\)/# \2\n#\1\n/;/config=/d;p}' |
 		sed -e '/daemon-.id=/{s/^#//;s/=0/=105/}' \
 		> config.cfg
 }
