@@ -1,0 +1,16 @@
+pkgbase = scrape-git
+	pkgdesc = Snake like game written in python3
+	pkgver = 2.e7badce
+	pkgrel = 1
+	url = https://github.com/lxgr-linux/scrape
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-scrap_engine-git
+	provides = scrape
+	source = scrape-git::git+https://github.com/lxgr-linux/scrape
+	md5sums = SKIP
+
+pkgname = scrape-git
+
