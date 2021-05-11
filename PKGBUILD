@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="An inter-VM password manager for Qubes OS "
 arch=("x86_64" "i686")
 url="https://github.com/Rudd-O/qubes-pass"
-license=('GPLv3')
+license=('GPL3')
 depends=('sh' 'qubes-vm-core')
 makedepends=(pkg-config make)
 
