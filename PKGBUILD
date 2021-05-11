@@ -4,7 +4,7 @@
 
 pkgname=gitlab-pages
 pkgver=1.38.0
-pkgrel=5
+pkgrel=6
 pkgdesc='GitLab Pages daemon used to serve static websites for GitLab users'
 url="https://gitlab.com/gitlab-org/$pkgname"
 license=('MIT')
@@ -16,7 +16,7 @@ source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.bz2"
 backup=("etc/$pkgname/config.cfg"
 		"etc/$pkgname/service.env")
 sha256sums=('02b6d5329d62282e5caa31751c855af54456f363284dd467550a31ee864dd7bf'
-            'ae62235f0fd66eaed7ad74048daf21b92058aba90e40fc2d3e7a684e9883c32e'
+            'df2bb3607f500daf95ac7c3ddf2470c794a72c66ba0770029753f859f1c53082'
             'fd8f9b60e2247077ad00765904237b6b1c36b11a952cd3b1ad88e74417b82a96')
 
 build() {
@@ -31,7 +31,7 @@ build() {
         -ldflags "-extldflags \"$LDFLAGS\" -X main.VERSION=$pkgver" \
         .
     ./$pkgname -help 2>&1 |
-        sed -ne '/=/{s/^  -//;s/\([^:]*\): \(.*\)/# \2\n#\1\n/;/config=/d;s/=""$/=string/;p}' |
+        sed -ne '/=/{s/^  -//;s/\([^:]*\): \(.*\)/# \2\n#\1\n/;/config=/d;s/=""/=string/;p}' |
         sed -e '/daemon-.id=/{s/^#//;s/=0/=105/}' \
         > config.cfg
 }

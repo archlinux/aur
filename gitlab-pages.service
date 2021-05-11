@@ -15,8 +15,8 @@ ExecStart=/usr/bin/setpriv --inh-caps=-all --clear-groups \
 	/usr/bin/gitlab-pages -config /etc/gitlab-pages/config.cfg
 Restart=always
 RestartSec=120
-StandardOutput=syslog
-StandardError=syslog
+StandardOutput=journal
+StandardError=journal
 SyslogIdentifier=gitlab-pages
 PrivateTmp=true
 ProtectSystem=full
