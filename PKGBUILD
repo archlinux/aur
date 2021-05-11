@@ -7,7 +7,7 @@
 # Maintainer: Luis Braun <luis.braun07@gmail.com>
 pkgname=qtile-config-git
 
-pkgver=1.1.0.2
+pkgver=1.1.0.3
 pkgrel=1
 epoch=
 pkgdesc="qtile config"
@@ -33,20 +33,17 @@ validpgpkeys=()
 
 
 
+pkgver() {
+	cd "${_pkgname}"
+    printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+
+
+
 package() {
     cd qtile-config
-    #sudo rm /usr/bin/qtile-config
+    sudo rm /usr/bin/qtile-config
     install -Dm755 core/qtile-config.py "${pkgdir}"/usr/bin/qtile-config
-
-
-#  rm -rf "${pkgdir}/opt/${pkgname}/qtile-config"
-#  mkdir -p "${pkgdir}/opt/${pkgname}/qtile-config"
-
-
-
-#  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-#  install -Dm644 README.org "${pkgdir}/usr/share/doc/${pkgname}/README.org"
-
-#  install -Dm644 zsh_completion/_colorscript -t "${pkgdir}"/usr/share/zsh/site-functions
 
 }
