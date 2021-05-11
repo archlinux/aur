@@ -1,0 +1,35 @@
+#!/bin/bash
+#
+# USAGE: addmag LINK
+# Opens magnet links with a remote transmission daemon.
+# The remote address is configured in either:
+#   /etc/addmagrc
+#   ${HOME}/.addmagrc
+# These files should contain nothing but the remote address.
+#
+# aetherised 2021 <aetherised@gmail.com>
+#
+
+RCNAME="addmagrc"
+SYSRC="/etc/${RCNAME}"
+USRRC="${HOME}/.${RCNAME}"
+
+LINK="${1}"
+ADDR=
+
+if [[ -z "${LINK}" ]]; then
+  echo "ERROR: no magnet link or torrent file specified"
+  exit 1
+fi
+
+[[ -f "${SYSRC}" ]] && ADDR=$(cat "${SYSRC}")
+[[ -f "${USRRC}" ]] && ADDR=$(cat "${USRRC}")
+if [[ -z "${ADDR}" ]]; then
+  echo "ERROR: no remote address configured"
+  echo "       Place the address of the remote daemon in one of these locations:"
+  echo "         ${SYSRC}"
+  echo "         ${USRRC}"
+  exit 1
+fi
+
+transmission-remote "${ADDR}" -a "${LINK}"

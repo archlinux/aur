@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=addmag
+GenericName=Transmission Daemon Magnet Link Handler
+Comment=Open magnent links with a remote Transmission daemon
+Exec=addmag %U
+Terminal=false
+TryExec=addmag
+Type=Application
+StartupNotify=true
+MimeType=x-scheme-handler/magnet;
+Categories=Network;FileTransfer;P2P;
