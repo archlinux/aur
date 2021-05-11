@@ -1,24 +1,21 @@
 pkgbase = netrunner-bin
 	pkgdesc = NetRunner is a telnet client originally developed in the late 90s in sync with the release of Windows XP.
-	pkgver = 2.0b18
+	pkgver = 2.0b21
 	pkgrel = 1
 	url = http://www.mysticbbs.com/
 	install = netrunner-bin.install
 	arch = i686
 	arch = x86_64
 	license = unknown
-	makedepends = unrar
 	depends = sdl
-	noextract = nr20b18l.rar
-	noextract = nr20b186.rar
 	source = netrunner.sh
 	source = netrunner.desktop
 	sha256sums = 0bb2148b98f647aa7d49ef7ac17cf01817f0c5c322b20c19d736bb4812edc21d
 	sha256sums = 0f570f105afad92b27d31c5a0cd7bc58bc8a7bdaba7f726c4ba06a1591484e99
-	source_i686 = http://www.mysticbbs.com/downloads/nr20b18l.rar
-	sha256sums_i686 = 155e69f98d8f394365cc890d07ddc981be80eaa4a1b171cc133dac21e16b7838
-	source_x86_64 = http://www.mysticbbs.com/downloads/nr20b186.rar
-	sha256sums_x86_64 = a76bd19bfe97f708242985595f17fd1d16d7e3ca19fd4f0ea5f1256f48f97abb
+	source_i686 = http://www.mysticbbs.com/downloads/nr21_l32.zip
+	sha256sums_i686 = e10514d9351bc490195cc8205bad300b4115f9c59c53ad78c7a3a6e76d674226
+	source_x86_64 = http://www.mysticbbs.com/downloads/nr21_l64.zip
+	sha256sums_x86_64 = 751cfc3de23dca673cb6619525b251cbd463751b6c5e250faf30392986de8c86
 
 pkgname = netrunner-bin
 
