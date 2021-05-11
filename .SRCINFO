@@ -1,0 +1,17 @@
+pkgbase = vim-cutlass-git
+	pkgdesc = Vim plugin that adds a 'cut' operation separate from 'delete'
+	pkgver = r38.7afd649
+	pkgrel = 1
+	url = https://github.com/svermeulen/vim-cutlass
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-cutlass
+	conflicts = vim-cutlass
+	source = vim-cutlass-git::git+https://github.com/svermeulen/vim-cutlass
+	sha256sums = SKIP
+
+pkgname = vim-cutlass-git
+
