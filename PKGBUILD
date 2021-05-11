@@ -1,8 +1,8 @@
 pkgname='khello'
 pkgver=0.8
-pkgrel=3
+pkgrel=2
 arch=('x86_64')
-url='kurth4cker.github.io/khello'
+url='https://kurth4cker.github.io/khello'
 source=("http://launchpad.net/khello/trunk/0.8/+download/$pkgname-$pkgver.tar.xz")
 md5sums=("0cad5de9de71d06d62ef957a168ce375")
 description="Test and learning program created by kurth4cker."

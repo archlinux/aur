@@ -1,7 +1,7 @@
 pkgbase = khello
 	pkgver = 0.8
-	pkgrel = 3
-	url = kurth4cker.github.io/khello
+	pkgrel = 2
+	url = https://kurth4cker.github.io/khello
 	arch = x86_64
 	license = GPL
 	depends = glibc
