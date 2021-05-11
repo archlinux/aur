@@ -1,11 +1,12 @@
-# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+# Maintainer: Edoardo Brogiolo <edoardo at brogiolo dot eu>
+# Contributor Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Julius <com dot gmail at julius dot dehner>
 # Contributor: vixfwis <com dot gmail at vixfwis>
 
 _pkgname=youtube-dlp
 pkgname=${_pkgname}-bin
 _gitname=yt-dlp
-pkgver=2021.04.22
+pkgver=2021.05.11
 _gitpkgver=$pkgver
 pkgrel=2
 pkgdesc="Fork of youtube-dlc - download videos from youtube.com or other video platforms"
@@ -21,7 +22,7 @@ optdepends=('ffmpeg: for video post-processing'
 source=("yt-dlp-${_gitpkgver}::${url}/releases/download/${_gitpkgver}/yt-dlp")
 conflicts=("${_pkgname}")
 provides=('yt-dlp' "${_pkgname}")
-sha256sums=('e00f7acdbb94b82e2c2cc78dfa7dfff7c783c23693d304a68db79672b0b8ea0e')
+sha256sums=('23021ea2ba3c29ca5daf640a2d8a818168139bc57b27681055b7d6fc78747bf6')
 
 package() {
   install -Dm755 "yt-dlp-${_gitpkgver}" "${pkgdir}/usr/bin/yt-dlp"
