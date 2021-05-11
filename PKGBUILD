@@ -8,7 +8,7 @@
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
 pkgver=4.4
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=(x86_64)
@@ -66,6 +66,7 @@ depends=(
   sdl2
   speex
   srt
+  svt-av1
   v4l-utils
   vmaf
   xz
@@ -104,10 +105,8 @@ source=(
   git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
   vmaf-model-path.patch
 )
-sha256sums=(
-  SKIP
-  8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d
-)
+sha256sums=('SKIP'
+            '8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d')
 
 pkgver() {
   cd ffmpeg
@@ -117,7 +116,7 @@ pkgver() {
 
 prepare() {
   cd ffmpeg
-
+  git cherry-pick -n 988f2e9eb063db7c1a678729f58aab6eba59a55b # fix nvenc on older gpus
   patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
 }
 
@@ -161,6 +160,7 @@ build() {
     --enable-libspeex \
     --enable-libsrt \
     --enable-libssh \
+    --enable-libsvtav1 \
     --enable-libtheora \
     --enable-libv4l2 \
     --enable-libvidstab \
