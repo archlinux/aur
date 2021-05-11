@@ -1,6 +1,6 @@
 # Maintainer: Daniel Menelkir <menelkir at itroll dot org>
 pkgname=g15daemon-systemd
-pkgver=20210420
+pkgver=20210510
 pkgrel=1
 pkgdesc="g15daemon init script for systemd"
 arch=('any')
