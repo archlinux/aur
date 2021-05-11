@@ -19,5 +19,5 @@ package() {
     mkdir ${pkgdir}/usr
     mkdir ${pkgdir}/usr/bin
     chmod +x roll
-    install -Dm644 -t "${pkgdir}/usr/bin/" "${srcdir}/roll"
+    install -Dm755 -t "${pkgdir}/usr/bin/" "${srcdir}/roll"
 }
