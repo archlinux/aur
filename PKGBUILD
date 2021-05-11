@@ -5,14 +5,14 @@
 # Refactored by Blaž "Speed" Hrastnik <https://github.com/archSeer>
 
 pkgname=elasticsearch-xpack
-pkgver=7.12.0
+pkgver=7.12.1
 pkgrel=1
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('x86_64')
 url="https://www.elastic.co/products/elasticsearch"
 license=('custom:Elastic2')
 depends=('java-runtime-headless' 'systemd')
-provides=('elasticsearch')
+provides=("elasticsearch=$pkgver")
 conflicts=('elasticsearch')
 relpkgname=elasticsearch
 source=(
@@ -27,7 +27,7 @@ source=(
   elasticsearch-tmpfile.conf
   elasticsearch.default
 )
-sha512sums=('4bd76b77aa41f641fdbc1762c07d911e35bd55b402da0a798327ca4e82e8e629166a77e857b294af712983641dcf0cb169936eef4f94a6dec1061136f7bff0ef'
+sha512sums=('0e5373d3738474cdbde22644d63c43fca443f38c4f0dfd4b03a4ccebbc0db0dee4e81c43c283303743ea07a542294161a071d116205da8d411064d71b7d1a61d'
             'SKIP'
             '52556e0709590f0e15039d89b64c08c9bbeb0c61d29e3cd5a4471744968c882eb559081db1c89e846fa33d50b31e2fe9ba46d7e7e2cf5d4a23e78bc97a50c853'
             '8280cfd911c1762a1cba67a72bf01c593dbcec00ab02b5f7ca2ef05dbcbae835f2d0e20f3143b0f601e233708e7a60148a1b2087aaff0e0b239361ca4792409f'
