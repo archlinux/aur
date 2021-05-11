@@ -31,4 +31,6 @@ package() {
 
     mkdir -p $pkgdir/usr
     cargo install --path . --root "$pkgdir/usr"
+    rm $pkgdir/usr/.crates.toml
+    rm $pkgdir/usr/.crates2.json
 }
