@@ -2,8 +2,8 @@
 
 _basename=jitsi
 _pkgname=meet
-_tag=4977
-_version=1.0.4977
+_tag=4998
+_version=1.0.4998
 
 pkgname=${_basename}-${_pkgname}-nightly
 pkgver=${_version}
