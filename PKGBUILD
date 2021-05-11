@@ -1,16 +1,16 @@
-# Maintainer: Darks <l.gatin@protonmail.com>
-
-_target=sh-elf
+# Maintainer: Eldeberen <eldeberen.aur@middleearth.fr>
+_target="sh-elf"
 pkgname=${_target}-binutils-casio
 pkgver=2.36.1
-pkgrel=2
+pkgrel=3
 pkgdesc="GNU binary utilities for the Casio calculators SuperH processors."
-arch=(i686 x86_64)
-options=('!libtool' '!buildflags')
+arch=('i686' 'x86_64')
 url='https://www.gnu.org/software/binutils/'
-license=(GPL)
+license=('GPL')
 depends=('binutils' 'flex' 'zlib')
-source=(https://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2)
+makedepends=('gcc')
+options=('!libtool' '!emptydirs')
+source=("https://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2")
 sha256sums=('5b4bd2e79e30ce8db0abd76dd2c2eae14a94ce212cfc59d3c37d23e24bc6d7a3')
 
 prepare() {
@@ -22,10 +22,6 @@ prepare() {
 }
 
 build() {
-  export CFLAGS="-O2 -pipe -s -fomit-frame-pointer -ffunction-sections -fdata-sections"
-  export CXXFLAGS=$CFLAGS
-  export LDFLAGS="-Wl,--gc-sections"
-
   cd "${srcdir}/binutils-${pkgver}/binutils-build"
   ../configure \
     --prefix=/usr \
@@ -49,7 +45,5 @@ package() {
   rm -rf "${pkgdir}/usr/share/info"
 
   # Remove libraries that conflict with host version
-  rm "$pkgdir"/usr/lib/bfd-plugins/libdep.so
-  rmdir "$pkgdir"/usr/lib/bfd-plugins
-  rmdir "$pkgdir"/usr/lib
+  rm -rf "${pkgdir}/usr/lib"
 }
