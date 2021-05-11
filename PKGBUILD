@@ -4,7 +4,7 @@
 
 _target=riscv64-linux-gnu
 pkgname=$_target-binutils
-pkgver=2.35.1
+pkgver=2.36
 pkgrel=1
 pkgdesc='Assemble and manipulate binary and object files for 32-bit and 64-bit RISC-V'
 arch=(x86_64)
@@ -13,7 +13,7 @@ license=(GPL)
 groups=(risc-v)
 makedepends=(setconf)
 source=("https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz")
-sha512sums=('94ff72708403413b70b247f3af4099ebaa882b6659249869f1ed9941a0f1912e313f08357d470f9fd2359e7f5e5b0eb86285e5eaf883fa8187789d6b1bd304eb')
+sha512sums=('0b89b70d4ad5cfe5bd0011dc7e342ae9de96efdbfc3442a0d6b5f7660e38bbcad36f2c72ba8f074323f02bde022ff1cd723ae99f0ea55cf94ee2dbbc0e4efdb2')
 
 prepare() {
   setconf binutils-$pkgver/libiberty/configure ac_cpp "'\$CPP \$CPPFLAGS -O2'"
@@ -50,6 +50,8 @@ package() {
 
   # Remove info documents that conflict with host version
   rm -r "$pkgdir/usr/share/info"
+
+  rm "$pkgdir"/usr/lib/bfd-plugins/libdep.so
 }
 
 # getver: gnu.org/software/binutils
