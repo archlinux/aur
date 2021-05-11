@@ -1,6 +1,6 @@
 pkgbase = python-git
 	pkgdesc = Next generation of the python high-level scripting language
-	pkgver = 3.10.0a0.r107325.909b5714e13
+	pkgver = 3.10.0a0.r109913.d1b81574edd
 	pkgrel = 1
 	url = https://www.python.org/
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = python-git
 	depends = libffi
 	depends = zlib
 	depends = libnsl
-	source = git+https://github.com/python/cpython#branch=master
+	source = git+https://github.com/python/cpython#branch=main
 	sha512sums = SKIP
 
 pkgname = python-git
