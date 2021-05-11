@@ -1,0 +1,21 @@
+pkgbase = python-normalize-git
+	pkgdesc = Toolkit for wrapping network data in Python objects
+	pkgver = 2.0.3.r436
+	pkgrel = 1
+	url = https://github.com/hearsaycorp/normalize
+	arch = any
+	license = Apache 2.0
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python>=3.7
+	depends = python-six
+	depends = python-future
+	depends = python-richenum-git
+	provides = python-normalize
+	conflicts = python-normalize
+	conflicts = python-normalize-git
+	source = python-normalize-git::git+https://github.com/hearsaycorp/normalize
+	md5sums = SKIP
+
+pkgname = python-normalize-git
+
