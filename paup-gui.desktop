@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=PAUP* GUI
+MimeType=
+Exec=wine /usr/share/paup-gui/paup4.exe
+Type=Application
+Terminal=true
+Icon=/usr/share/paup-gui/paup-gui.png
+Comment=PAUP*
+X-KDE-StartupNotify=false
+Categories=System;
+X-GNOME-UsesNotifications=true
+
