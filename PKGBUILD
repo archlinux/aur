@@ -16,7 +16,7 @@ depends=(
 
 source=("https://github.com/starsareintherose/paup/releases/download/${pkgver}/paup.zip" "paup-gui.desktop" "paup-gui.png")
 md5sums=('f21078fec41433055d35e0a88614003d'
-         '0c5b7049ed5eb556298e5a1acc78dec7'
+         '897dd144e4b643ab7966a11f408a3339'
          'ca6e885973f656d68410831033a00757')
 
 package() {

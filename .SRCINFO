@@ -12,7 +12,7 @@ pkgbase = paup-gui
 	source = paup-gui.desktop
 	source = paup-gui.png
 	md5sums = f21078fec41433055d35e0a88614003d
-	md5sums = 0c5b7049ed5eb556298e5a1acc78dec7
+	md5sums = 897dd144e4b643ab7966a11f408a3339
 	md5sums = ca6e885973f656d68410831033a00757
 
 pkgname = paup-gui
