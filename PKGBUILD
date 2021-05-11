@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=whitesur-gtk-theme-git
-pkgver=2021.04.08.r32.g03a0074
-pkgrel=2
+pkgver=2021.05.05.r14.g19e1366
+pkgrel=1
 pkgdesc="MacOS Big Sur like theme for GNOME desktops"
 arch=('any')
 url="https://github.com/vinceliuice/WhiteSur-gtk-theme"
 license=('GPL')
-makedepends=('dialog' 'git' 'imagemagick' 'libnotify' 'sassc')
+makedepends=('dialog' 'git' 'gtk-engine-murrine' 'imagemagick' 'libnotify' 'sassc')
 optdepends=('gtk-engine-murrine: GTK2 theme support'
             'gtk-engines: GTK2 theme support'
             'whitesur-icon-theme-git: matching icon theme'
@@ -27,7 +27,7 @@ pkgver() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	install -d "$pkgdir/usr/share/themes"
-	./install.sh -t all -d "$pkgdir/usr/share/themes"
+	./install.sh -a all -t all -d "$pkgdir/usr/share/themes"
 
 	install -Dm644 src/other/plank/theme-dark/* -t \
 		"$pkgdir/usr/share/plank/themes/WhiteSur-dark"
