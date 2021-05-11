@@ -2,15 +2,16 @@
 
 pkgname=gtksourceview5
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A text widget adding syntax highlighting and more to GNOME"
 url="https://gitlab.gnome.org/GNOME/gtksourceview"
 license=("LGPL")
-arch=(i686 x86_64 armv7h aarch64)
+arch=(x86_64 aarch64)
 depends=(gtk4)
 makedepends=(
 	git
 	gobject-introspection
+#	gtk-doc
 	meson
 	vala
 )
@@ -19,7 +20,7 @@ source=("git+https://gitlab.gnome.org/GNOME/gtksourceview.git#tag=${pkgver}")
 sha256sums=('SKIP')
 
 build() {
-	arch-meson gtksourceview build -D gtk_doc=true
+	arch-meson gtksourceview build # -D gtk_doc=true
 	meson compile -C build
 }
 
