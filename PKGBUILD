@@ -2,7 +2,7 @@
 
 pkgname=g15message
 pkgver=1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple message/alert tool for g15daemon and the Logitech G15."
 
 arch=('x86_64')
