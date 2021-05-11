@@ -3,7 +3,7 @@
 pkgorg='loco-3d'
 _pkgname='crocoddyl'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="optimal control library for robot control under contact sequence"
 arch=('i686' 'x86_64')
