@@ -1,6 +1,6 @@
 # Maintainer: Daniel Menelkir <menelkir at itroll dot org>
 pkgname=g15stats-systemd
-pkgver=20210510
+pkgver=20210511
 pkgrel=1
 pkgdesc="g15stats init script for systemd"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('g15stats' 'systemd')
 _filename='g15stats.run'
 source=("https://gitlab.com/menelkir/g15stats/-/raw/master/contrib/init/g15stats.service")
-sha512sums=('c74bc8965dd6152088d3c558b0f27580b8c038d3a51e1e5ac8dab4a64d25affa3ee512ecc6075e4852976921407d603f75045773153b502bc58857c133e945d6')
+sha256sums=('2723465ba726a4675d442fdb3068353def37bc70ce84cdab6c65f1c450c1dc4a')
 
 pkgver() {
    date +%Y%m%d
