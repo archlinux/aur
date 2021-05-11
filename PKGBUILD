@@ -4,7 +4,7 @@
 
 pkgbase=bullet-multithreaded
 pkgname=('bullet-multithreaded' 'bullet-multithreaded-docs' 'python-pybullet-multithreaded')
-pkgver=3.09
+pkgver=3.17
 pkgrel=1
 pkgdesc="A 3D Collision Detection and Rigid Body Dynamics Library with multithreading support"
 arch=('x86_64' 'aarch64')
@@ -12,18 +12,14 @@ url="http://www.bulletphysics.com/Bullet/"
 license=('custom:zlib')
 makedepends=('cmake' 'doxygen' 'graphviz' 'ttf-dejavu' 'mesa' 'glu' 'python' 'python-numpy' 'python-setuptools' 'ninja')
 source=("bullet-${pkgver}.tar.gz::https://github.com/bulletphysics/bullet3/archive/${pkgver}.tar.gz"
-                "local://bullet3_examplebrowser.sh"
-                "local://0001-bump-up-version-to-3.09.patch")
-sha512sums=('24a46ce701c5c2e86538f8cd38dbbdfc09fbf1b071d468080bd35db30c9bb9f2ca695561aa2e376979099fee3c38862e63a6e067ffbc3526091daae82fe855dc'
-            '8741ad94b6c46c226d89aebc8ab06d8a11bac3c04d3f0a2bf7a7524792a3375aa7bf7d295410b16fbeb4c348a31057b4570acdebe9bbaea251f44daca8d9fe81'
-            '7645e356930ca07b9bda9bb50689b0469e1513b4f218265cbf204d26bf50e03b329a20cdc205bd7755524835fee392a99057fed4f9aabc97baca4c8a10f4f79e')
+                "local://bullet3_examplebrowser.sh")
+sha512sums=('a5105bf5f1dd365a64a350755c7d2c97942f74897a18dcdb3651e6732fd55cc1030a096f5808cf50575281f05e3ac09aa50a48d271a47b94cd61f5167a72b7cc'
+            '8741ad94b6c46c226d89aebc8ab06d8a11bac3c04d3f0a2bf7a7524792a3375aa7bf7d295410b16fbeb4c348a31057b4570acdebe9bbaea251f44daca8d9fe81')
 
 prepare() {
     cd bullet3-${pkgver}
     # fix soname of pybullet
     sed -i '/SET_TARGET_PROPERTIES(pybullet PROPERTIES PREFIX/d' examples/pybullet/CMakeLists.txt
-    # fix version
-    patch --forward --strip=1 --input="${srcdir}/0001-bump-up-version-to-3.09.patch"
 }
 
 build() {
@@ -42,7 +38,8 @@ build() {
         -D BUILD_OPENGL3_DEMOS=ON \
         -D BULLET2_MULTITHREADING=ON \
         -D USE_DOUBLE_PRECISION=ON \
-        -D CMAKE_BUILD_TYPE=Release
+        -D CMAKE_BUILD_TYPE=Release \
+        -Wno-dev
 
     ninja -C _build
 
