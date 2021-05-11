@@ -5,6 +5,7 @@ pkgbase = wxformbuilder
 	url = https://github.com/wxFormBuilder/wxFormBuilder
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL2
 	makedepends = git
 	makedepends = ninja
