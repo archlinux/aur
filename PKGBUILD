@@ -1,14 +1,14 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o
-pkgver=2.37.0
+pkgver=2.37.1
 pkgrel=1
 pkgdesc='Quick little editor limited by VT100'
 arch=(x86_64)
 url='https://github.com/xyproto/o'
 license=(BSD)
 makedepends=(git go)
-source=("git+$url#commit=b79cbb5d9f6742aace8819a74d77e8165e694de9") # tag: 2.37.0
+source=("git+$url#commit=d24778810ed72d2bcc5ba5cb69535f1efe32ca55") # tag: 2.37.1
 optdepends=('asciidoctor: for writing man pages'
             'astyle: for formatting C#'
             'autopep8: for formatting Python'
