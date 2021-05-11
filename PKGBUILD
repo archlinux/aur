@@ -2,8 +2,8 @@
 
 _pkgbase=ravenna-alsa-lkm
 pkgname="${_pkgbase}-dkms"
-pkgver=r122.154a9e1
-pkgrel=2
+pkgver=r123.2c9fdae
+pkgrel=3
 pkgdesc="A kernel module for ALSA RAVENNA/AES67 Driver"
 url="https://bitbucket.org/MergingTechnologies/ravenna-alsa-lkm"
 license=("GPL")
@@ -16,8 +16,8 @@ optdepends=(
 	'linux-lts-headers: Needed for build the module for LTS Arch kernel'
 	'linux-zen-headers: Needed for build the module for ZEN Arch kernel')
 source=("git+https://github.com/bondagit/ravenna-alsa-lkm.git#branch=aes67-daemon" "dkms.conf")
-sha256sums=('SKIP' 'ecdc8a1f4f3d0b459c0d5afc0a1c47134b50bd61a7eede1337f2cc9b622c0171')
-install=ravenna-dkms.install
+sha256sums=('SKIP' 'SKIP')
+install=$pkgname.install
 
 pkgver() {
   cd "$_pkgbase"
@@ -25,15 +25,11 @@ pkgver() {
 }
 
 prepare() {
-sed -i '/MODULE_SUPPORTED_DEVICE/d' $srcdir/ravenna-alsa-lkm/driver/module_interface.c
+sed -i '/MODULE_SUPPORTED_DEVICE/d' $srcdir/$_pkgbase/driver/module_interface.c
 }
 
 package() {
   install -Dm644 dkms.conf "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
-    # Set name and version
-  sed -e "s/@_PKGBASE@/${_pkgbase}/" \
-      -e "s/@PKGVER@/${pkgver}/" \
-      -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
   sed -i 's/\.\.\/common/common/g' $srcdir/$_pkgbase/driver/*
   cp -r $srcdir/$_pkgbase/driver/* "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
   cp -r $srcdir/$_pkgbase/common "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/common

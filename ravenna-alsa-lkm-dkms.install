@@ -1,5 +1,5 @@
 post_install() {
-  dkms add ravenna/${1%-*}
+  dkms add ravenna-alsa-lkm/${1%-*}
   cat << EOF
 ==> To build and install your modules run: dkms install ravenna/${1%-*}
 ==> To do this automatically at startup run: systemctl enable dkms.service
