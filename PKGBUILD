@@ -1,6 +1,6 @@
 # Maintainer: Christian Bartz <christianbartz@gmail.com>
 pkgname='pyxis'
-pkgver='0.9.1'
+pkgver='0.10.0'
 pkgrel='1'
 pkgdesc='Container plugin for Slurm Workload Manager'
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=(Apache)
 # depends=(enroot slurm-llnl)
 makedepends=(git gcc make libtool)
 source=("https://github.com/NVIDIA/pyxis/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('8e46510d9af976ddb52abcd07f62b3f07d46d39fa537fea0ca16847074c285e2')
+sha256sums=('2ab24114726d09f6c4d62ffc18538891c836d41acea8b60def8f105670ba3804')
 install='pyxis.install'
 
 build() {
