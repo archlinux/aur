@@ -1,7 +1,7 @@
 # Maintainer: Jeff Hughes <jeff.hughes@gmail.com>
 pkgname=shellcaster-bin
 _pkgname=shellcaster
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 
 pkgdesc="ncurses-based TUI podcast manager"
@@ -17,7 +17,7 @@ conflicts=('shellcaster')
 backup=("etc/${_pkgname}/config.toml")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jeff-hughes/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-archlinux-x86_64.tar.gz")
 
-sha256sums=('611e24057b895e1cd930a7cde113398131808886686d4f080369f34f44dc325a')
+sha256sums=('990bcb8b3e395a8c37dda2d631027045f41b72af8111840075800551c88018b2')
 
 package() {
     cd "$srcdir/$_pkgname"
