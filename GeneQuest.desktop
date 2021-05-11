@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=GeneQuest
+Exec=exe /usr/share/dnastar/GeneQuest.exe
+Type=Application
+StartupNotify=true
+Icon=/usr/share/dnastar/GeneQuest.png
