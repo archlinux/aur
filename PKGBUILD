@@ -1,12 +1,12 @@
 # Maintainer: Alexander Menzhinsky <amenzhinsky@gmail.com>
 pkgname=protoc-gen-go
 pkgver=1.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Go support for Google's protocol buffers"
 arch=("any")
 url="https://github.com/protocolbuffers/protobuf-go"
 license=('BSD')
-depends=('protobuf')
+optdepends=('protobuf: protoc generator')
 makedepends=('go')
 source=("https://github.com/protocolbuffers/protobuf-go/archive/v${pkgver}.tar.gz")
 
