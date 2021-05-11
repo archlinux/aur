@@ -6,6 +6,7 @@ pkgbase = qtile-config-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	provides = qtile-config
 	source = git+https://github.com/luis-07/qtile-config
 	md5sums = SKIP
 

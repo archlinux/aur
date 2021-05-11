@@ -6,6 +6,7 @@
 
 # Maintainer: Luis Braun <luis.braun07@gmail.com>
 pkgname=qtile-config-git
+_pkgname=qtile-congih-git
 pkgver=1.0.r7.ecc93ad
 pkgrel=1
 epoch=
@@ -18,7 +19,7 @@ depends=()
 makedepends=(git)
 checkdepends=()
 optdepends=()
-provides=()
+provides=(qtile-config)
 conflicts=()
 replaces=()
 backup=()
@@ -38,7 +39,19 @@ pkgver() {
 }
 
 package() {
-    cd ${_pkgname}/core
+    cd ${_pkgname}
     sudo rm /usr/bin/qtile-config
     install -Dm755 qtile-config.py "${pkgdir}"/usr/bin/qtile-config
+
+  cd ${_pkgname}
+  rm -rf "${pkgdir}/opt/${pkgname}/qtile-config"
+  mkdir -p "${pkgdir}/opt/${pkgname}/qtile-config"
+
+
+
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README.org "${pkgdir}/usr/share/doc/${pkgname}/README.org"
+  install -Dm755 colorscript.sh "${pkgdir}"/usr/bin/qtile-config
+  install -Dm644 zsh_completion/_colorscript -t "${pkgdir}"/usr/share/zsh/site-functions
+
 }
