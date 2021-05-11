@@ -1,0 +1,11 @@
+diff --git a/bazel/setup_clang.sh b/bazel/setup_clang.sh
+index d0e58478d..bcefc0903 100755
+--- a/bazel/setup_clang.sh
++++ b/bazel/setup_clang.sh
+@@ -1,6 +1,6 @@
+ #!/bin/bash
+
+-BAZELRC_FILE="${BAZELRC_FILE:-$(bazel info workspace)/clang.bazelrc}"
++BAZELRC_FILE="${BAZELRC_FILE:-$($BAZELISK info workspace)/clang.bazelrc}"
+
+ LLVM_PREFIX=$1
