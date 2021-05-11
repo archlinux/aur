@@ -15,9 +15,9 @@ optdepends=('openssl: support for openssl')
 provides=('x11-shim.so')
 source=("https://ftp.gnu.org/gnu/mit-scheme/stable.pkg/$pkgver/$pkgname-$pkgver-x86-64.tar.gz"
         "https://ftp.gnu.org/gnu/mit-scheme/stable.pkg/$pkgver/$pkgname-$pkgver-x86-64.tar.gz.sig")
-validpgpkeys=('8F664EF430167B808170D35AC9E40BAAFD0CB132') # Chris Hanson <cph@chris-hanson.org>
 sha256sums=('7ca848cccf29f2058ab489b41c5b3a101fb5c73dc129b1e366fb009f3414029d'
             'SKIP')
+validpgpkeys=('8F664EF430167B808170D35AC9E40BAAFD0CB132') # Chris Hanson <cph@chris-hanson.org>
 
 build() {
     cd "$pkgname-$pkgver"/src
@@ -28,7 +28,7 @@ build() {
     make -j1
     cd ../doc
     ./configure --prefix=/usr \
-        --disable-pdf \
+        --enable-pdf \
         --disable-html
     make
 }
@@ -39,5 +39,5 @@ package() {
     cd src
     make DESTDIR="$pkgdir" install
     cd ../doc
-    make DESTDIR="$pkgdir" install-info install-man
+    make DESTDIR="$pkgdir" install
 }
