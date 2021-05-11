@@ -3,7 +3,7 @@
 _pkgname=smictrl
 pkgname="${_pkgname}-git"
 pkgver=r13.7aa1eae
-pkgrel=1
+pkgrel=2
 pkgdesc="SMI enable register manipulation tool"
 arch=('x86_64')
 url='https://github.com/zultron/smictrl'
@@ -12,10 +12,15 @@ makedepends=('linux-headers')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 license=('GPL2')
+backup=('etc/smictrl.conf')
 source=("git+https://github.com/zultron/smictrl.git"
-        'pci_fill_info_fix.diff')
+        'pci_fill_info_fix.diff'
+        'smictrl.service'
+        'smictrl.conf')
 sha256sums=('SKIP'
-            '322fddbe6f5995f5cf8ef3ebb3307cd89f9015a0f26bf87036307f8e23aa697a')
+            '322fddbe6f5995f5cf8ef3ebb3307cd89f9015a0f26bf87036307f8e23aa697a'
+            '1d3b63efb52b86c663d2e9b7aea46d064a3a3059b95efa4d17edff4f65e1005c'
+            '467da8b4f6a960c80d40babdc224d3edc3f08136ecea02248d507bb8ee21331d')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -36,4 +41,6 @@ build() {
 
 package() {
     install -Dm755 "${srcdir}/${_pkgname}/smictrl" "$pkgdir/usr/bin/smictrl"
+    install -Dm644 "${srcdir}/smictrl.service" "$pkgdir/usr/lib/systemd/system/smictrl.service"
+    install -Dm644 "${srcdir}/smictrl.conf" "$pkgdir/etc/smictrl.conf"
 }
