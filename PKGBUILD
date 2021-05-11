@@ -2,7 +2,7 @@
 
 pkgname=g15utils
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Two utilities to be used with Logitech G15 screens."
 
 arch=('x86_64')
