@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=watchit
-Exec=electron /opt/watchit/app.asar %U
+Exec=watchit
 Terminal=false
 Type=Application
 Icon=watchit
