@@ -1,6 +1,6 @@
 # Maintainer: Ashin Antony <ashinant15@gmail.com>
 pkgname=st-ashin-git
-pkgver=0.8.4.r2.577280c
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="My custom build of st patched."
 arch=(x86_64 i686)
@@ -9,7 +9,7 @@ license=('MIT')
 groups=()
 depends=(nerd-fonts-fira-code ttf-joypixels)
 makedepends=(git)
-checkdepends=(nerd-fonts-fira-code)
+checkdepends=(nerd-fonts-fira-code nerd-font-ubuntu-mono)
 optdepends=()
 provides=(st)
 conflicts=(st)
