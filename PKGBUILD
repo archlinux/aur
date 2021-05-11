@@ -7,12 +7,12 @@
 
 pkgname=surf
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple web browser based on WebKit/GTK+.'
 arch=('x86_64')
 url='https://surf.suckless.org/'
 license=('MIT')
-depends=('webkit2gtk' 'xorg-xprop')
+depends=('webkit2gtk' 'gcr' 'xorg-xprop')
 optdepends=('dmenu: URL-bar'
             'ca-certificates: SSL verification'
             'xterm: default download handler'
@@ -43,7 +43,7 @@ build() {
 package() {
   cd $pkgname
 
-  make PREFIX=/usr DESTDIR=$pkgdir install
+  make PREFIX=/usr DESTDIR="$pkgdir" install
   install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
