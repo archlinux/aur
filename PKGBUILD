@@ -1,7 +1,7 @@
 # Maintainer: SZanko szanko at protonmail dot com
 
 pkgname=python-fsutil
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="file-system utilities for lazy devs."
 arch=('any')
@@ -12,7 +12,7 @@ depends=(
 	'python-requests'
 )
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('ee8d3e55ea0260e9def4a0263302b5c0796fd6a87828ec0775ed96b3c676f776')
+sha256sums=('d18dee00de14cc813777042d271ebd8cdb0d39ab973f29639ecad38eb1bd21be')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
