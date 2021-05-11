@@ -38,7 +38,7 @@ package() {
     sudo rm /usr/bin/qtile-config
     install -Dm755 qtile-config.py "${pkgdir}"/usr/bin/qtile-config
 
-  cd ${_pkgname}
+
   rm -rf "${pkgdir}/opt/${pkgname}/qtile-config"
   mkdir -p "${pkgdir}/opt/${pkgname}/qtile-config"
 
