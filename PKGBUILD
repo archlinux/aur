@@ -1,6 +1,6 @@
 pkgname="plymouth-theme-artix-logo-new"
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Replace the logo from package plymouth-theme-artix-logo"
 arch=('any')
 url="https://gitlab.com/menelkir/plymouth-artix-logo-new"
