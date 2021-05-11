@@ -1,6 +1,6 @@
 pkgbase = fm-git
 	pkgdesc = A terminal based file manager
-	pkgver = r7.b5750bf
+	pkgver = r117.807309c
 	pkgrel = 1
 	url = https://github.com/knipferrc/fm
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = fm-git
 	makedepends = go
 	provides = fm
 	conflicts = fm
-	source = fm::git+https://github.com/knipferrc/fm.git#branch=main
+	source = fm-git::git+https://github.com/knipferrc/fm.git#branch=main
 	sha256sums = SKIP
 
 pkgname = fm-git

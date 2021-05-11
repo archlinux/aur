@@ -6,17 +6,17 @@ pkgdesc='A terminal based file manager'
 arch=(aarch64 armv5h armv6h armv7h x86_64)
 url='https://github.com/knipferrc/fm'
 _branch='main'
-pkgver=r7.b5750bf
+pkgver=r117.807309c
 pkgrel=1
 license=('MIT')
 makedepends=(git go)
-source=("$_pkgname::git+$url.git#branch=$_branch")
+source=("$pkgname::git+$url.git#branch=$_branch")
 sha256sums=('SKIP')
 provides=($_pkgname)
 conflicts=($_pkgname)
 
 pkgver() {
-  cd "$_pkgname"
+  cd "$pkgname"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -24,7 +24,7 @@ pkgver() {
 }
 
 build() {
-  cd $_pkgname
+  cd $pkgname
 
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -32,16 +32,16 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  go build -o "$_pkgname" ./src
+  go build -o "$_pkgname" ./main.go
 }
 
 check() {
-  cd "$_pkgname"
+  cd "$pkgname"
   go test ./...
 }
 
 package() {
-  cd "$_pkgname"
-  install -Dm755 "$_pkgname" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  cd "$pkgname"
+  install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
