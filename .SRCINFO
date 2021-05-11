@@ -1,7 +1,7 @@
 pkgbase = gitlab-pages
 	pkgdesc = GitLab Pages daemon used to serve static websites for GitLab users
 	pkgver = 1.38.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://gitlab.com/gitlab-org/gitlab-pages
 	arch = x86_64
 	arch = i686

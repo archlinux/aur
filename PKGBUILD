@@ -4,7 +4,7 @@
 
 pkgname=gitlab-pages
 pkgver=1.38.0
-pkgrel=6
+pkgrel=7
 pkgdesc='GitLab Pages daemon used to serve static websites for GitLab users'
 url="https://gitlab.com/gitlab-org/$pkgname"
 license=('MIT')
@@ -25,7 +25,7 @@ build() {
     export CGO_ENABLED=0
     go build \
         -trimpath \
-        -buildmode=pie \
+        -buildmode=exe \
         -mod=readonly \
         -modcacherw \
         -ldflags "-extldflags \"$LDFLAGS\" -X main.VERSION=$pkgver" \
