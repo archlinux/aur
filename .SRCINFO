@@ -1,6 +1,6 @@
 pkgbase = python-arch
 	pkgdesc = ARCH models in Python.
-	pkgver = 4.18
+	pkgver = 4.19
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/arch
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = python-arch
 	depends = python-pandas
 	depends = python-scipy
 	depends = python-statsmodels
-	source = python-arch-4.18.tar.gz::https://github.com/bashtage/arch/archive/v4.18.tar.gz
-	sha256sums = f172c8eeb3371393a48c54f55dbd2e49eaf70e64e7e22f9556d82a3206efea3a
+	source = python-arch-4.19.tar.gz::https://github.com/bashtage/arch/archive/v4.19.tar.gz
+	sha256sums = bf3f456df4767cdff69a9c8e5c72ece9dd0fdd7f5728952192f6589fcaa8ee6f
 
 pkgname = python-arch
 
