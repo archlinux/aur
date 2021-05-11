@@ -2,7 +2,7 @@
 
 _pkgname=trader
 pkgname=php-${_pkgname}
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Technical Analysis for traders"
 license=('BSD 2-clause')
@@ -11,8 +11,8 @@ url="http://pecl.php.net/package/${_pkgname}"
 depends=('php>=5.3')
 backup=("etc/php/conf.d/${_pkgname}.ini")
 install=php-${_pkgname}.install
-source=("http://pecl.php.net/get/${_pkgname}-${pkgver}.tgz")
-sha512sums=('782146786f550227a352ab7d1b6775908c984e00c433930476c51af56f3830177f1b1e6d84a38399d5d7808428687733c323e508314e87a05d2916bf564695fa')
+source=("https://pecl.php.net/get/${_pkgname}-${pkgver}.tgz")
+sha512sums=('f96356959759b2cda43367f3892c90b19f15e474821388ca99ecd68b8655cae44f040482671eb9cd035f7fe88ffdd6dabdff611fa95c71c0d67fa3e191ae8dbc')
 
 build() {
 	cd "$srcdir/${_pkgname}-${pkgver}"
