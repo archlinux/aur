@@ -4,12 +4,12 @@
 _gemname=winrm
 pkgname=ruby-$_gemname
 pkgver=2.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Ruby library for Windows Remote Management'
 arch=(any)
 url='https://github.com/WinRb/WinRM'
 license=(Apache-2.0)
-depends=(ruby ruby-builder ruby-erubi ruby-gssapi ruby-gyoku ruby-httpclient ruby-logging ruby-nori ruby-rubyntlm)
+depends=(ruby ruby-builder ruby-erubi ruby-gssapi ruby-gyoku ruby-httpclient ruby-logging ruby-nori ruby-rubyntlm ruby-rexml)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
