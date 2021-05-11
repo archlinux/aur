@@ -12,8 +12,7 @@ depends=('python' 'python-setuptools')
 makedepends=('git')
 optdepends=('ffmpeg: for video post-processing'
             'rtmpdump: for rtmp streams support'
-            'atomicparsley: for embedding thumbnails into m4a files'
-            'phantomjs: for openload support')
+            'atomicparsley: for embedding thumbnails into m4a files')
 provides=("haruhi-dl")
 source=("haruhi-dl.tar.gz::https://git.sakamoto.pl/laudompat/haruhi-dl/-/archive/v$pkgver/$_name.tar.gz")
 md5sums=('SKIP')
