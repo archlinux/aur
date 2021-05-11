@@ -1,18 +1,18 @@
 pkgbase = gint-devel-git
 	pkgdesc = Set of tools and libraries based on gcc, fxsdk and gint to build native programs for Casio calculators
-	pkgver = 2.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
 	license = unkwown
-	makedepends = fxsdk-git
-	depends = sh-elf-gcc-casio
-	depends = fxsdk-git
-	depends = gint-git
-	depends = mkg3a
+	makedepends = fxsdk
+	makedepends = gint
+	depends = gint
 	options = !strip
 	source = libprof::git+https://gitea.planet-casio.com/Lephenixnoir/libprof.git
 	source = libimg::git+https://gitea.planet-casio.com/Lephenixnoir/libimg.git
+	source = justui::git+https://gitea.planet-casio.com/Lephenixnoir/JustUI.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
