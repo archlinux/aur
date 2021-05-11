@@ -3,7 +3,7 @@
 # Contributor: sxe <sxxe@gmx.de>
 
 pkgname=wine-git
-pkgver=6.5.r41.g6ca1a92684f
+pkgver=6.8.r0.g99e47361a37
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (git version)'
 arch=('x86_64')
@@ -168,6 +168,6 @@ package() {
     install -D -m644 "${srcdir}/wine-binfmt.conf" "${pkgdir}/usr/lib/binfmt.d/wine.conf"
     
     # strip native PE libraries
-    i686-w64-mingw32-strip --strip-unneeded "${pkgdir}/usr/lib32/wine"/*.dll
-    "${CARCH}-w64-mingw32-strip" --strip-unneeded "${pkgdir}/usr/lib/wine"/*.dll
+    i686-w64-mingw32-strip --strip-unneeded "${pkgdir}/usr/lib32/wine/i386-windows"/*.dll
+    "${CARCH}-w64-mingw32-strip" --strip-unneeded "${pkgdir}/usr/lib/wine/x86_64-windows"/*.dll
 }
