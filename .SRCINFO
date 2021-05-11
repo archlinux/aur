@@ -1,7 +1,7 @@
 pkgbase = qemu-git
 	pkgdesc = A generic and open source machine emulator and virtualizer. Git version.
 	pkgver = 6.0.0.r339.ge4f3ede95c
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 13
 	url = http://wiki.qemu.org/
 	arch = i686
@@ -47,9 +47,11 @@ pkgbase = qemu-git
 	source = git://git.qemu.org/qemu.git
 	source = qemu-guest-agent.service
 	source = 65-kvm.rules
+	source = sphinx4.patch
 	sha256sums = SKIP
 	sha256sums = 09a720ed48ef8cf0f67770b67874202600c5209973d10e6e2c72ecc9aea23ece
 	sha256sums = 60dcde5002c7c0b983952746e6fb2cf06d6c5b425d64f340f819356e561e7fc7
+	sha256sums = 5c07cc01b152709cb297dc1c3ba1f320c085c9bdf9ebc0de7993eface39b963f
 
 pkgname = qemu-git
 	optdepends = qemu-arch-extra-git: extra architectures support
