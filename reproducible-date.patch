@@ -1,0 +1,11 @@
+--- cclive-0.9.3/configure.ac	2013-11-23 10:46:27.000000000 +0100
++++ cclive-0.9.3.new/configure.ac	2021-05-11 12:10:14.514044723 +0200
+@@ -37,7 +37,7 @@
+ AC_DEFINE_UNQUOTED([CXX], "$CXX", [Define to compiler])
+ 
+ AC_PATH_PROG([DATE], [date], [no])
+-AS_IF([test x"$DATE" != "xno"], [build_time=`$DATE +"%F %T %z"`])
++AS_IF([test x"$DATE" != "xno"], [build_time=`$DATE --utc --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +"%F %T %z"`])
+ AC_DEFINE_UNQUOTED([BUILD_TIME], ["$build_time"], [We have build time])
+ 
+ AC_PATH_PROG([A2X], [a2x], [no])
