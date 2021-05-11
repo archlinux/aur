@@ -1,0 +1,47 @@
+#!/usr/bin/python
+import pickle
+import argparse
+import importlib
+import logging
+import sys
+import itertools
+import fnmatch
+
+parser = argparse.ArgumentParser(description="Show a pickled (and possibly compressed) Matplotlib figure" )
+parser.add_argument("filename",help="the file to open")
+args = parser.parse_args()
+
+openers = {}
+
+for module_name,patterns in {
+    "lzma": ("*.xz","*.lzma"),
+    "bz2": ("*.bz2", "*.bzip2"),
+    "gzip": ("*.gz", "*.gzip"),
+}.items():
+    try:
+        module = importlib.import_module(module_name)
+        try:
+            openers[patterns] = getattr(module,"open")
+        except AttributeError:
+            logging.warning(f"Module '{module_name}' does not have an 'open' function. Ignoring it.")
+    except ImportError:
+        logging.warning(f"No such module '{module_name}'. Ignoring it.")
+
+import matplotlib.pyplot as plt
+
+for patterns, opener in itertools.chain(openers.items(),{("*",):open}.items()):
+    if not any(fnmatch.fnmatch(args.filename,pattern) for pattern in patterns):
+        continue
+    try:
+        with opener(args.filename, "rb") as fh:
+            try:
+                pickle.load(fh)
+            except pickle.UnpicklingError as e:
+                logging.error(f"{type(e).__name__}: {e}")
+                continue
+            plt.show()
+            sys.exit(0)
+
+    except (ValueError,TypeError) as e:
+        logging.error(f"{type(e).__name__}: {e}")
+        continue

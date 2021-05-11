@@ -1,0 +1,16 @@
+[Desktop Entry]
+Version=1.0
+Name=Show Matplotlib Figure
+Name[de]=Matplotlib-Grafik öffnen
+GenericName=Show pickled Matplotlib Figure
+GenericName[de]=Eingelegte Matplotlib-Grafik öffnen
+Comment=Open pickled Matplotlib Figure
+Comment[de]=Eingelegte Matplotlib-Grafik öffnen
+Keywords=Python;Plot;Figure;Pickle
+Exec=/usr/bin/python-matplotlib-pickled-figure-opener %f
+Icon=python
+Terminal=false
+Type=Application
+MimeType=application/x-pickled-matplotlib-figure;application/x-compressed-pickled-matplotlib-figure
+StartupNotify=true
+NoDisplay=true

@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-pickled-matplotlib-figure">
+    <comment>Pickled Matplotlib Figure</comment>
+    <comment xml:lang="de">Eingelegte Matplotlib-Grafik</comment>
+    <glob pattern="*.fig.pickle"/>
+    <icon name="python"/>
+  </mime-type>
+  <mime-type type="application/x-compressed-pickled-matplotlib-figure">
+    <comment>Compressed Pickled Matplotlib Figure</comment>
+    <comment xml:lang="de">Komprimierte eingelegte Matplotlib-Grafik</comment>
+    <glob pattern="*.fig.pickle.xz"/>
+    <glob pattern="*.fig.pickle.zst"/>
+    <glob pattern="*.fig.pickle.gz"/>
+    <glob pattern="*.fig.pickle.bz2"/>
+    <icon name="python"/>
+  </mime-type>
+</mime-info>
+
