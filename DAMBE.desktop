@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=DAMBE
+Exec=wine /usr/share/DAMBE/DAMBE.exe
+Type=Application
+StartupNotify=true
+Icon=/usr/share/DAMBE/DAMBE.png

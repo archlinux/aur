@@ -1,0 +1,19 @@
+pkgbase = dambe
+	pkgdesc = New and improved tools for data analysis in molecular biology and evolution
+	pkgver = 7.2.137
+	pkgrel = 1
+	url = http://dambe.bio.uottawa.ca/DAMBE/dambe.aspx
+	arch = any
+	license = custom
+	depends = wine
+	depends = wine_gecko
+	depends = wine-mono
+	source = https://github.com/starsareintherose/DAMBE/releases/download/7.2.137/DAMBE.zip
+	source = DAMBE.desktop
+	source = DAMBE.png
+	md5sums = 4ed716a3404e1ce59b22808239764d4a
+	md5sums = 26dddd6b47d26046a4477118a89b5453
+	md5sums = 93ff5f21c5e43ed5ba25f83fe0911e20
+
+pkgname = dambe
+
