@@ -9,7 +9,7 @@ pkgname=qtile-config-git
 pkgver=1.0.r7.ecc93ad
 pkgrel=1
 epoch=
-pkgdesc="a qtile config"
+pkgdesc="qtile config"
 arch=(x86_64)
 url="https://github.com/luis-07/qtile-config"
 license=('GPL')
@@ -37,11 +37,7 @@ pkgver() {
     printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-	cd qtile-config/core
-	sudo cp qtile-config.py /usr/bin/qtile-config
-}
-
 package() {
-
+	cd qtile-config/core
+    install -Dm755 qtile-config.py "${pkgdir}"/usr/bin/qtile-config
 }
