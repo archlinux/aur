@@ -7,16 +7,16 @@
 # Maintainer: Luis Braun <luis.braun07@gmail.com>
 pkgname=qtile-config-git
 
-pkgver=1.1.0.1
+pkgver=1.1.0.2
 pkgrel=1
 epoch=
 pkgdesc="qtile config"
-arch=(x86_64)
+arch=(i686 x86_64)
 url="https://github.com/luis-07/qtile-config"
 license=('GPL')
 groups=()
 depends=()
-makedepends=(git)
+makedepends=(git qtile python-rich shc-git)
 checkdepends=()
 optdepends=()
 provides=(qtile-config)
