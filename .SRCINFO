@@ -1,0 +1,16 @@
+pkgbase = nbfc-linux
+	pkgdesc = Lightweight C port of NoteBook FanControl (no Mono required)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/braph/nbfc-linux
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = lm_sensors
+	optdepends = dmidecode: for getting recommended notebook configurations
+	provides = nbfc
+	conflicts = nbfc
+	source = https://github.com/braph/nbfc-linux/archive/refs/tags/0.0.1.tar.gz
+	sha512sums = fb23e610941e7c9a67354d1dcdd6c27c324c9eef87dc389ea05ff1db7be7ba3d89b9cb95677c90de487810e0658f0c798d9821c0ebd2c9c2421ae6db6f612382
+
+pkgname = nbfc-linux
