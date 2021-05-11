@@ -3,7 +3,7 @@
 pkgname='rickrollrc'
 pkgver=16.0.05
 pkgrel=1
-pkgdesc="Rick Astley invades your terminal."
+pkgdesc="Rick Astley invades your terminal. Type roll to instantly be never given up."
 arch=('any')
 url='https://www.github.com/keroserene/rickrollrc'
 license=('WTFPL')
