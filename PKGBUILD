@@ -2,7 +2,7 @@
 # Contributor: Wesley Moore <wes@wezm.net>
 pkgname=mdcat
 pkgver=0.22.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Sophisticated Markdown rendering for the terminal'
 arch=('i686' 'x86_64')
 url="https://github.com/lunaryorn/mdcat"
@@ -47,7 +47,7 @@ package() {
     "$pkgdir/usr/share/fish/vendor_completions.d/mdcat.fish"
 
   MANPAGE="$COMPLETIONS_DIR/../mdcat.1"
-  gzip "$MANPAGE"
+  gzip -n "$MANPAGE"
   install -Dm 644 "$MANPAGE.gz" \
     "$pkgdir/usr/share/man/man1/mdcat.1.gz"
 }
