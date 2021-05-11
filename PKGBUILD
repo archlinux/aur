@@ -1,9 +1,9 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=zx
-pkgver=1.1.1
-_commit=f021edc09a7ff83e613a439bd83365aaf5e0904b
-pkgrel=2
+pkgver=1.2.2
+_commit=30743eba3b3e1407b8780808e201dec7dfdc6834
+pkgrel=1
 pkgdesc="A tool for writing better scripts"
 arch=("any")
 url="https://github.com/google/zx"
