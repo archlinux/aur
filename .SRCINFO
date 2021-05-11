@@ -1,7 +1,7 @@
 pkgbase = honk-hg
 	pkgdesc = ActivityPub compatible server with web frontend. Mercurialtip.
 	pkgver = 1340.0a351daab5d0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://humungus.tedunangst.com/r/honk
 	install = honk.install
@@ -16,7 +16,8 @@ pkgbase = honk-hg
 	provides = honk-hg
 	conflicts = honk-hg
 	conflicts = honk
-	options = !strip
+	options = strip
+	options = zipman
 	source = hg+https://humungus.tedunangst.com/r/honk
 	sha512sums = SKIP
 
