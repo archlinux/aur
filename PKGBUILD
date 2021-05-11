@@ -2,7 +2,7 @@
 
 pkgname=g15composer
 pkgver=3.4
-pkgrel=1
+pkgrel=3
 pkgdesc="A library to render text and shapes into a buffer usable by the Logitech G15"
 
 arch=('x86_64')
@@ -21,7 +21,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
-  install -D -m 644 "${srcdir}/${pkgname}-${pkgver}/contrib/init/g15composer.service" \
-                    "${pkgdir}/usr/lib/systemd/system/g15composer.service"
-
+  echo ""
+  echo "You need to install an init script depending on what you're using it."
+  echo ""
 }
