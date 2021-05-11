@@ -1,13 +1,13 @@
 # Maintainer: Tomás Ralph <tomasralph2000@gmail.com>
 _pkgname=ZeroTier-GUI
 pkgname=zerotier-gui-git
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A Linux front-end for ZeroTier"
 arch=(any)
 url="https://github.com/tralph3/ZeroTier-GUI.git"
 license=('GPL3')
-depends=(tk python polkit)
+depends=('tk' 'python>=3.6' 'polkit')
 makedepends=(git)
 optdepends=('zerotier-one: Provides the backend of the program')
 source=("git+$url")
