@@ -16,7 +16,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=13.0.0_r384858.90af13447333
+pkgver=13.0.0_r388001.dedca78d486e
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -25,7 +25,7 @@ makedepends=(   'git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2' 'py
                             'ocaml' 'ocaml-ctypes' 'ocaml-findlib'
                             'python-sphinx' 'python-recommonmark' 'swig' 'python' 'python-six' 'lua' 'ocl-icd' 'opencl-headers' 'z3' 'jsoncpp')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
-                'local://llvm-config.h')
+        "llvm-config.h")
 
 md5sums=('SKIP'
          '295c343dcd457dc534662f011d7cff1a')
