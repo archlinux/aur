@@ -5,7 +5,7 @@
 
 pkgname=g15stats
 pkgver=3.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A CPU/Mem/Swap/Network monitoring client for G15Daemon."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/menelkir/g15stats"
