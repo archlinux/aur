@@ -1,13 +1,14 @@
 # Maintainer: Vladimir Gorbunov <truedaemon@gmail.com>
 pkgname=python-astor-git
 _gitname=astor
-pkgver=0.7.1.r2.g55dd323
+pkgver=0.8.1.r5.g6ce175b
 pkgrel=1
 pkgdesc="Read/rewrite/write Python ASTs"
 arch=('any')
 url="https://pypi.python.org/pypi/astor"
 license=('BSD')
 depends=('python')
+makedepends=('python-setuptools' 'git')
 options=(!emptydirs)
 conflicts=('python-astor')
 provides=('python-astor')
