@@ -33,11 +33,6 @@ validpgpkeys=()
 
 
 
-pkgver() {
-	cd "${_pkgname}"
-    printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 package() {
     cd ${_pkgname}
     sudo rm /usr/bin/qtile-config
