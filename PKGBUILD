@@ -2,14 +2,14 @@
 
 pkgname=steam-tui
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Rust TUI client for steamcmd"
 arch=('x86_64')
 url="https://github.com/dmadisetti/steam-tui"
 license=('MIT')
 depends=('steamcmd')
 makedepends=('cargo' 'git')
-conflicts=("steam-tui-bin")
+optdepends=('wine: Launch Windows games')
 _commit=369ce3d34ab6b227bb025d59f2fc396502248aeb
 source=("git+https://github.com/dmadisetti/steam-tui#commit=$_commit")
 sha512sums=('SKIP')
