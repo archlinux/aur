@@ -1,7 +1,7 @@
 pkgbase = cemu
 	pkgdesc = Wii U emulator (via wine). Includes the Cemuhook plugin
 	pkgver = 1.22.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cemu.info/
 	install = cemu.install
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = cemu
 	source = https://web.archive.org/web/20180907210517if_/https://files.sshnuke.net/sharedFonts.7z
 	md5sums = cb1dbf192ad3237a087260aa16758e95
 	md5sums = 54d70005a8975812ab54fcfef53f7bde
-	md5sums = dbe733276c99aee4427231139c635e45
-	md5sums = d4a5c20da8f56bc05203fdda66273a1d
+	md5sums = 22e18e9e1f1ed3543b5ae82559fdcd22
+	md5sums = 9b892d22d97872f1d0ffda4a2f92bcc0
 	md5sums = f5f0de02b9df62d5b6018c7a82e6d43b
 	md5sums = 336a0bc0e44eede4ddf613a0eebf3bb9
 
