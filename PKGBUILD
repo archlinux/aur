@@ -1,6 +1,6 @@
 # Maintainer: squitch <clementfoure2005@gmail.com>
 pkgname=tess-git
-pkgver=1.2r65.12944dd
+pkgver=1.2r71.2da1049
 pkgrel=1
 pkgdesc="Tess hackable, simple, rapid and beautiful terminal for the new era"
 arch=(x86_64)
@@ -18,6 +18,9 @@ pkgver() {
 
 package() {
 	cd "Tess"
+
+	mkdir -p "${pkgdir}/usr/share/applications"
+	cp -r -f Tess.desktop "${pkgdir}/usr/share/applications/Tess.desktop"
 
 	npm install
 	npm run build
