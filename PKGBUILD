@@ -3,12 +3,12 @@
 
 pkgname=prtcl-bin
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The new Particle CLI"
-arch=('x86_64')
+arch=("x86_64")
 url="https://github.com/particle-iot/particle-cli"
-license=('Apache')
-source=("prtcl.deb::http://prtcl.s3-website-us-east-1.amazonaws.com/apt/prtcl_$pkgver-1_amd64.deb")
+license=("Apache")
+source=("prtcl.deb::https://prtcl.s3.amazonaws.com/apt/prtcl_$pkgver-1_amd64.deb")
 noextract=("prtcl.deb")
 sha256sums=('68d35a3a2c9260f7838f9aa9dca2a33d1f042951d1df3d7cd8b31905851febdf')
 
@@ -18,6 +18,9 @@ optdepends=("bash-completion")
 package() {
     # Extract .deb    
     bsdtar -O -xf "prtcl.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
+
+    # Correct update instructions
+    sed -i 's/export PRTCL_UPDATE_INSTRUCTIONS=.*$/export PRTCL_UPDATE_INSTRUCTIONS="update with \\"yay -S prtcl-bin\\""/' "$pkgdir/usr/lib/@particle/cli/bin/prtcl"
 
     # Bash completion
     HOME="$srcdir" "$pkgdir/usr/bin/prtcl" autocomplete &> /dev/null
