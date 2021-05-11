@@ -1,6 +1,6 @@
 pkgbase = hound
 	pkgdesc = Extremely fast source code search engine
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/etsy/Hound
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = hound
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = hound-0.3.0.zip::https://github.com/etsy/Hound/archive/v0.3.0.zip
-	sha512sums = 58aa726e6856f940d3e59d006a7aa95b576ccc31d32df0d826c6466a910ae17db2489de5b683a52259f75a57159870f909d85a2d9141c522cd922246056156ac
+	source = hound-0.4.0.zip::https://github.com/hound-search/hound/archive/refs/tags/v0.4.0.tar.gz
+	sha512sums = 5f72d63269f6ed548abe36a9736a72eadaf8e5149f8190648bfe9f64367084252e4f509321622e4f2ceb14baf03872a7db339aab75266c2d5a40577ab1fbd427
 
 pkgname = hound
 
