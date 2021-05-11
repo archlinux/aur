@@ -1,19 +1,19 @@
 pkgbase = basicanalysis
 	pkgdesc = Framework for automatic extraction of fundamental factors for Paraver traces (from BSC).
 	pkgver = 0.3.8.20201027
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools
 	arch = any
 	license = LGPL2.1
 	depends = python
 	depends = wxparaver
 	depends = dimemas
+	depends = python-pandas
+	depends = python-seaborn
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-scipy
 	optdepends = gnuplot: Drawing the generated plots
-	optdepends = python-pandas: Efficiency table plotting
-	optdepends = python-seaborn: Efficiency table plotting
-	optdepends = python-matplotlib: Efficiency table plotting
-	optdepends = python-numpy: Efficiency table plotting, lineal plotting
-	optdepends = python-scipy: Lineal plotting
 	source = https://ftp.tools.bsc.es/basicanalysis/basicanalysis-0.3.8-src.tar.bz2
 	sha512sums = 56a71ff6971780295c133329ee88f1c946399659ce6abc927dacfdbb6c4d068fe937a079d9e249076f036eccca77501cc3a40966d273283f577a3bd1c3e2aba0
 
