@@ -1,7 +1,7 @@
 # Maintainer: uint2048_t
 pkgname=das-keyboard-q
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Software for Das Keyboard 5Q, 5Qs, 4Q."
 arch=('x86_64')
 url=https://www.daskeyboard.io/get-started/software/
@@ -14,7 +14,7 @@ package() {
 	tar xf data.tar.xz -C "${pkgdir}"
 	cd "${pkgdir}"
 	mv usr/local/bin/* usr/bin; rm -rf usr/local/bin
-	sed -i s/local//g etc/systemd/system/das_keyboard_q-service.service
+	sed -i s/\\/local// etc/systemd/system/das_keyboard_q-service.service
 	rm -rf usr/local
 	cd ..
 }
