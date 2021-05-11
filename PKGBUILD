@@ -2,7 +2,7 @@
 
 pkgname=koneko-git
 _pkgname=koneko
-pkgver=17.88e2d6c
+pkgver=r17.88e2d6c
 pkgrel=1
 license=('MIT')
 pkgdesc='Koneko is a TUI Client for nyaa.si'

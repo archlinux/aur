@@ -1,6 +1,6 @@
 pkgbase = koneko-git
 	pkgdesc = Koneko is a TUI Client for nyaa.si
-	pkgver = 17.88e2d6c
+	pkgver = r17.88e2d6c
 	pkgrel = 1
 	url = https://github.com/irevenko/koneko
 	arch = x86_64
