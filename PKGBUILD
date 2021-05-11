@@ -7,7 +7,7 @@
 # Maintainer: Luis Braun <luis.braun07@gmail.com>
 pkgname=qtile-config-git
 
-pkgver=1.1.0.3
+pkgver=1.1.0.4
 pkgrel=1
 epoch=
 pkgdesc="qtile config"
@@ -45,5 +45,11 @@ package() {
     cd qtile-config
     sudo rm /usr/bin/qtile-config
     install -Dm755 core/qtile-config.py "${pkgdir}"/usr/bin/qtile-config
+
+
+    # license
+    msg "Copying license..."
+    install -D -m 644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+
 
 }
