@@ -8,8 +8,8 @@ url='https://github.com/speechbrain/speechbrain'
 license=('Apache 2.0')
 depends=('python>=3.7' 'python-hyperpyyaml-git' 'python-joblib' 'python-numpy' 'python-packaging' 'python-scipy' 'python-sentencepiece' 'python-pytorch' 'python-torchaudio' 'python-tqdm' 'python-huggingface-hub-git')
 makedepends=('git' 'python-setuptools')
-provides=('python-speechbrain-zoo')
-conflicts=("python-speechbrain-zoo" "${pkgname}")
+provides=('python-speechbrain-git')
+conflicts=("python-speechbrain" "${pkgname}")
 source=(
     "${pkgname}::git+${url}")
 md5sums=(
