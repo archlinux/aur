@@ -2,7 +2,7 @@
 # Maintainer: Eric Schulte <eschulte@grammatech.com>
 _srcname=gtirb
 pkgname=gtirb-git
-pkgver=v1.4.7.r0.gb3094954
+pkgver=v1.10.4.r56.g79785d10
 pkgrel=1
 pkgdesc="GrammaTech Intermediate Representation for Binaries"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('protobuf')
 makedepends=('git' 'cmake' 'python' 'doxygen' 'graphviz' 'boost')
 provides=('gtirb')
-source=('git://github.com/grammatech/gtirb.git')
+source=('git+https://github.com/grammatech/gtirb.git')
 sha512sums=('SKIP')
 
 pkgver() {
