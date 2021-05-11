@@ -1,5 +1,7 @@
 # based on https://github.com/archlinux/svntogit-community/tree/packages/profile-sync-daemon/trunk 
-users=$(loginctl --no-legend list-users | awk '{ print $2 }' | sed ':a;N;$!ba;s/\n/ /g')
+# shellcheck disable=SC2016 # don't wish them to expand
+
+users=$(loginctl --no-legend list-users | awk '{ print $2 }' | sed ':a;N;$!ba;s/\n//g')
 
 pre_upgrade() {
     # stop system service now since it will be removed upon updating
