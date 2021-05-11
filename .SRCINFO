@@ -1,0 +1,17 @@
+pkgbase = cpsula-git
+	pkgdesc = A bare-bones Gemini server which serves Lua-generated content
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/lowquark/cpsula
+	arch = x86_64
+	license = MIT
+	depends = libevent
+	depends = openssl
+	depends = lua
+	provides = cpsula
+	backup = etc/cpsula/cpsula.conf
+	source = git+https://github.com/lowquark/cpsula.git
+	sha256sums = SKIP
+
+pkgname = cpsula-git
+
