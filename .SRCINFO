@@ -1,0 +1,14 @@
+pkgbase = azure-kubelogin
+	pkgdesc = A Kubernetes credential (exec) plugin implementing azure authentication
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/Azure/kubelogin
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = git+https://github.com/Azure/kubelogin.git#tag=v0.0.9
+	md5sums = SKIP
+
+pkgname = azure-kubelogin
+
