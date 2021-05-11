@@ -4,7 +4,7 @@
 # Contributor: Christoph 'delmonico' Neuroth <delmonico@gmx.net>
 
 pkgname=snownews
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
 pkgdesc="RSS feed reader for the command-line"
 arch=('x86_64')
@@ -12,7 +12,7 @@ url="https://github.com/msharov/snownews"
 license=('GPL3')
 depends=('curl' 'libxml2')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('42b92add70f397b6a4f804093af4798115d404b81bda05fa4db373cd9d78a0c5')
+sha256sums=('90d2611b3e3a00bc14a8869365d366ad1dab17ea1687857440159fc7137c3bed')
 
 build() {
   cd $pkgname-$pkgver
