@@ -1,7 +1,7 @@
 pkgbase = smictrl-git
 	pkgdesc = SMI enable register manipulation tool
 	pkgver = r13.7aa1eae
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/zultron/smictrl
 	arch = x86_64
 	license = GPL2
@@ -16,7 +16,7 @@ pkgbase = smictrl-git
 	source = smictrl.conf
 	sha256sums = SKIP
 	sha256sums = 322fddbe6f5995f5cf8ef3ebb3307cd89f9015a0f26bf87036307f8e23aa697a
-	sha256sums = 1d3b63efb52b86c663d2e9b7aea46d064a3a3059b95efa4d17edff4f65e1005c
+	sha256sums = dd2b596b82b9412a2261aef4d92b682a24d4402556248dacf48b4f5564186cf4
 	sha256sums = 467da8b4f6a960c80d40babdc224d3edc3f08136ecea02248d507bb8ee21331d
 
 pkgname = smictrl-git

@@ -1,8 +1,6 @@
 [Unit]
 Description=Modify SMI enable register
-Before=basic.target
-After=local-fs.target sysinit.target
-DefaultDependencies=no
+After=multi-user.target
 ConditionPathExists=/etc/smictrl.conf
 
 [Service]
@@ -11,4 +9,4 @@ EnvironmentFile=/etc/smictrl.conf
 ExecStart=/bin/sh -c '[ -z "$$ARGS" ] || exec /usr/bin/smictrl $$ARGS'
 
 [Install]
-WantedBy=basic.target
+WantedBy=multi-user.target
