@@ -1,0 +1,17 @@
+pkgbase = vim-amora-git
+	pkgdesc = A modern colorscheme based on Dracula and Gruvbox Material
+	pkgver = r43.c7a0000
+	pkgrel = 1
+	url = https://github.com/owozsh/amora
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-amora
+	conflicts = vim-amora
+	source = vim-amora-git::git+https://github.com/owozsh/amora
+	sha256sums = SKIP
+
+pkgname = vim-amora-git
+
