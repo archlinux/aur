@@ -2,12 +2,12 @@
 
 pkgname=nucleistudioide
 pkgver=202102
-pkgrel=6
+pkgrel=7
 pkgdesc="Nuclei Studio IDE 是基于 MCU Eclipse IDE 开发的一款针对芯来公司处理器核产品的集成开发环境工具，用于 RISC-V 开发继承了 Eclipse IDE 平台的各种优势。"
 arch=("x86_64")
 makedepends=()
-depends=('jlink-software-and-documentation')
-optdepends=()
+depends=('java-runtime' 'jlink-software-and-documentation')
+optdepends=('nuclei-gcc' 'nuclei-openocd')
 conflicts=()
 url="https://www.nucleisys.com/download.php"
 license=('unknow')
@@ -22,6 +22,8 @@ package() {
 	msg2 'Installing Nuclei Studio IDE'
 	install -d -m755 "${pkgdir}/opt/nuclei"
 	tar zxf "NucleiStudio_IDE_${pkgver}-lin64.tgz"
+    rm -rf "NucleiStudio_IDE_${pkgver}/NucleiStudio/jre"
+    
 	mv "${srcdir}/NucleiStudio_IDE_${pkgver}/NucleiStudio" "${pkgdir}/opt/nuclei"
 
 	msg2 'Instalation of binary file'
@@ -55,8 +57,8 @@ SUBSYSTEM!="usb|tty|hidraw", GOTO="nuclei_rules_end"
 # Please keep this list sorted by VID:PID
 
 # nuclei 
-SUBSYSTEM=="usb", ATTR{idVendor}=="0403",ATTR{idProduct}=="6010", MODE="666", GROUP="plugdev"
-SUBSYSTEM=="tty", ATTRS{idVendor}=="0403",ATTRS{idProduct}=="6010", MODE="666", GROUP="plugdev"
+SUBSYSTEM=="usb", ATTR{idVendor}=="0403", ATTR{idProduct}=="6010", MODE="666", GROUP="plugdev"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6010", MODE="666", GROUP="plugdev"
 
 LABEL="nuclei_rules_end"
 EOF
