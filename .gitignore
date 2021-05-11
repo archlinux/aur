@@ -1,0 +1,9 @@
+*.tar.xz
+*.tar.gz
+*.tar.zst
+
+pkg
+src
+
+x11-emoji-picker-git-*
+x11-emoji-picker
