@@ -21,6 +21,7 @@ md5sums=('4ed716a3404e1ce59b22808239764d4a'
 package() {
   install -dm755 "$pkgdir"/usr/share/{DAMBE,applications}
   mv "$srcdir"/DAMBE/* "$pkgdir"/usr/share/DAMBE
+  chmod -R 755 "$pkgdir"/usr/share/DAMBE
   install -Dm755 ${srcdir}/DAMBE.png ${pkgdir}/usr/share/DAMBE/DAMBE.png
   install -Dm755 ${srcdir}/DAMBE.desktop ${pkgdir}/usr/share/applications/DAMBE.desktop
 }
