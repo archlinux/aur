@@ -2,12 +2,12 @@
 
 pkgname=whois-git
 pkgver=5.5.9.r0.g8aabb41
-pkgrel=1
+pkgrel=2
 pkgdesc="The whois client by Marco d'Itri"
 arch=('i686' 'x86_64')
 url="https://github.com/rfc1036/whois"
 license=('GPL2')
-depends=('glibc' 'libidn2')
+depends=('glibc' 'libidn2' 'libxcrypt')
 makedepends=('git' 'perl')
 provides=('whois')
 conflicts=('whois')
