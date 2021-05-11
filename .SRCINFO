@@ -1,0 +1,19 @@
+pkgbase = tpsutil
+	pkgdesc = tps file utility program
+	pkgver = 1.81
+	pkgrel = 1
+	url = http://sbmorphometrics.org/soft-utility.html
+	arch = any
+	license = custom
+	depends = wine
+	depends = wine_gecko
+	depends = wine-mono
+	source = https://github.com/starsareintherose/tpsUtil/releases/download/1.81/tpsUtil.zip
+	source = tpsUtil.desktop
+	source = tpsUtil.png
+	md5sums = ef07f3ff1dcdb72b253a192f1861c6c9
+	md5sums = 64baf6b610dcecc53a15342218579d18
+	md5sums = 6e52ff5a9df8898532610845c973b23a
+
+pkgname = tpsutil
+

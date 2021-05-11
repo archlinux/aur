@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=tpsUtil
+Exec=wine /usr/share/tpsutil/tpsUtil.exe
+Type=Application
+StartupNotify=true
+Icon=/usr/share/tpsutil/tpsUtil.png
