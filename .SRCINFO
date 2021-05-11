@@ -1,15 +1,15 @@
 pkgbase = interception-space2meta
 	pkgdesc = space2meta: turn space into meta when chorded to another key (on release)
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://gitlab.com/interception/linux/plugins/space2meta
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = gcc
 	depends = interception-tools
-	source = https://gitlab.com/interception/linux/plugins/space2meta/-/archive/v0.1.1/space2meta-v0.1.1.tar.gz
-	sha256sums = 1cbf7957c5f6e271d54ffec77e1760ffc77410c5b0830c6628362b23f1885429
+	source = https://gitlab.com/interception/linux/plugins/space2meta/-/archive/v0.2.0/space2meta-v0.2.0.tar.gz
+	sha256sums = 75712d96a91ca377bb47976725a39e751480f8f61aea902b3372310b04b4487a
 
 pkgname = interception-space2meta
 
