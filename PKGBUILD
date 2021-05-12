@@ -50,4 +50,7 @@ package() {
 
     mkdir -p "$pkgdir/usr/share/mime/packages/"
     install -m0644 "${srcdir}/webex.xml" "${pkgdir}/usr/share/mime/packages/"
+
+    mkdir -p "$pkgdir/usr/bin/"
+    ln -s "/opt/Webex/bin/CiscoCollabHost" "$pkgdir/usr/bin/webex"
 }
