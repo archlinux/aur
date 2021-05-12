@@ -2,10 +2,10 @@
 Type = File
 Operation = Install
 Operation = Upgrade
-Target = usr/lib/tmpfiles.d/*.conf
+Target = usr/bin/burpsuite
 
 [Action]
-Description = Creating temporary files...
+Description = Installing Chinese patch
 When = PostTransaction
 Exec = /bin/sh -c "sed -ie 's/java -jar/java -javaagent:\/usr\/share\/burpsuite\/BurpSuiteCn.jar -jar/g' /usr/bin/burpsuite"
 NeedsTargets
