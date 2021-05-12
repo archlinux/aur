@@ -1,9 +1,9 @@
 # Maintainer: dianlujitao <dianlujitao at gmail dot com>
 pkgname=lang-sh
 pkgdesc="Scripts from RedHat which provide fallback for CJK languages that can't be displayed in console."
-pkgver=2.13.7
+pkgver=2.13.8
 pkgrel=1
-_commit=acc1470539effb926bb170072d75321ff2ec8052
+_commit=a5d609be289ae8788c8a6ca7e82fe90afdc95e83
 arch=('any')
 url="https://pagure.io/setup"
 license=('custom')
