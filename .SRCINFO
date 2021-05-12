@@ -1,0 +1,19 @@
+pkgbase = rtklib-emlid-git
+	pkgdesc = An Open Source Program Package for GNSS Positioning tuned for Emlid Device
+	pkgver = r587.81b5a61
+	pkgrel = 1
+	url = https://github.com/emlid/RTKLIB/tree/reach
+	arch = x86_64
+	groups = GNSS
+	license = GPL
+	makedepends = git
+	makedepends = gcc-fortran
+	makedepends = qt5-base
+	depends = glibc
+	source = RTKLIB::git+https://github.com/emlid/RTKLIB.git#branch=reach
+	source = fix.patch
+	sha256sums = SKIP
+	sha256sums = ec8c224aabd6f8b90fc3c86afe6df20bca457e2884ee61988161d3903e0fae6b
+
+pkgname = rtklib-emlid-git
+
