@@ -1,0 +1,23 @@
+pkgbase = lsidups-git
+	pkgdesc = Find duplicates / similar images from your terminal and export them as list or json
+	pkgver = r96.1c468cd
+	pkgrel = 1
+	url = https://github.com/MahouShoujoMivutilde/lsidups
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = go
+	optdepends = sxiv: visually compare images (lsidups -i dir | sxiv -i)
+	optdepends = imv: visually compare images (lsidups -i dir | imv)
+	optdepends = python-pillow: to make sorting in groups of duplicates smarter, see examples dir
+	optdepends = fd: for lsvdups script, see examples
+	optdepends = ffmpegthumbnailer: for lsvdups script, see examples
+	provides = lsidups
+	conflicts = lsidups
+	source = lsidups-git::git+https://github.com/MahouShoujoMivutilde/lsidups.git
+	sha256sums = SKIP
+
+pkgname = lsidups-git
+
