@@ -3,7 +3,7 @@
 
 _pkgname=Terminal
 pkgname=terminal.app
-pkgrel=3
+pkgrel=4
 pkgver=0.9.9
 pkgdesc='A terminal emulator for GNUstep'
 arch=('i686' 'x86_64' 'armv7h')
@@ -12,8 +12,17 @@ license=('GPL2')
 groups=('gnustep-apps')
 depends=('gnustep-base' 'gnustep-gui' 'gnustep-back')
 makedepends=('gcc-objc')
-source=("https://savannah.nongnu.org/download/gap/Terminal-$pkgver.tar.gz")
-sha256sums=('27f81bbecdbd10cde8c080012cde4973bec20e551c58c29f353733cf03c220e9')
+source=("https://savannah.nongnu.org/download/gap/Terminal-$pkgver.tar.gz"
+	"http://deb.debian.org/debian/pool/main/t/terminal.app/terminal.app_0.9.9-3.debian.tar.xz")
+sha256sums=('27f81bbecdbd10cde8c080012cde4973bec20e551c58c29f353733cf03c220e9'
+	"SKIP")
+
+prepare() {
+  cd "$_pkgname-$pkgver"
+  for patch in ../debian/patches/*.patch; do
+    patch < $patch
+  done
+}
 
 build() {
   cd "$_pkgname-$pkgver"
