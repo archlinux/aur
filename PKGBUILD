@@ -1,14 +1,14 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-compute-runtime-git
-pkgver=21.02.18820.r49.g670013e88
+pkgver=21.18.19737.r86.g085a2af2d
 pkgrel=1
 pkgdesc='Intel(R) Graphics Compute Runtime for oneAPI Level Zero and OpenCL(TM) Driver (git version)'
 arch=('x86_64')
 url='https://01.org/compute-runtime/'
 license=('MIT')
-depends=('intel-gmmlib' 'intel-graphics-compiler')
-makedepends=('git' 'cmake' 'libva' 'level-zero-headers')
+depends=('intel-gmmlib' 'intel-graphics-compiler-git')
+makedepends=('git' 'cmake' 'libva' 'level-zero-headers-git')
 optdepends=('libva: for cl_intel_va_api_media_sharing'
             'libdrm: for cl_intel_va_api_media_sharing')
 provides=('intel-compute-runtime' 'opencl-driver' 'level-zero-driver')
