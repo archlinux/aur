@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-graphics-compiler-git
-pkgver=1.0.5964.r58.g51b88fca
+pkgver=1.0.7181.r237.g708bc5f58
 pkgrel=1
 epoch=1
 pkgdesc='Intel Graphics Compiler for OpenCL (git version)'
@@ -58,7 +58,7 @@ package() {
     cp -dr --no-preserve='ownership' build/IGC/VectorCompiler/spirv-install/include/LLVMSPIRVLib "${pkgdir}/usr/include"
     install -D -m644 build/IGC/VectorCompiler/spirv-install/lib/libSPIRVDLL.so -t "${pkgdir}/usr/lib"
     install -D -m644 build/IGC/VectorCompiler/spirv-install/lib/pkgconfig/*.pc -t "${pkgdir}/usr/lib/pkgconfig"
-    install -D -m644 build/IGC/llvm/src/llvm/projects/opencl-clang/common_clang.h -t "${pkgdir}/usr/include/cclang"
+    install -D -m644 build/IGC/llvm-deps/src/llvm/projects/opencl-clang/common_clang.h -t "${pkgdir}/usr/include/cclang"
     install -D -m644 SPIRV-LLVM-Translator/LICENSE.TXT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-spirv-llvm-translator"
     install -D -m644 opencl-clang/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-opencl-clang"
     sed -i 's|\(prefix=\).*|\1/usr|' "${pkgdir}/usr/lib/pkgconfig/LLVMSPIRVLib.pc"

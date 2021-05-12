@@ -1,6 +1,6 @@
 pkgbase = intel-graphics-compiler-git
 	pkgdesc = Intel Graphics Compiler for OpenCL (git version)
-	pkgver = 1.0.5964.r58.g51b88fca
+	pkgver = 1.0.7181.r237.g708bc5f58
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/intel/intel-graphics-compiler/
