@@ -1,6 +1,6 @@
 _pkgname=st
 pkgname=$_pkgname-dylan-git
-pkgver=0.8.4.r1134.8db77c6
+pkgver=0.8.4.r1134.25b5da9
 pkgrel=1
 pkgdesc="Dylan's build of simple virtual terminal emulator for X"
 url="https://github.com/dylantjb/$_pkgname"
@@ -12,7 +12,7 @@ makedepends=('ncurses' 'libxext' 'git')
 optdepends=('dmenu' 'xclip')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=(git://github.com/dylantjb/st)
+source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
