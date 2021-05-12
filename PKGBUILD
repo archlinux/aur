@@ -1,6 +1,7 @@
 # Maintainer: Achmad Fathoni <fathoniDOTidATgmailDOTcom>
 _pkgname=RTKLIB
 pkgname=rtklib-qt-git
+provides=("rtklib-qt")
 pkgver=r199.ceb8106
 pkgrel=1
 pkgdesc="An Open Source Program Package for GNSS Positioning"

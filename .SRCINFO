@@ -10,6 +10,7 @@ pkgbase = rtklib-qt-git
 	makedepends = gcc-fortran
 	makedepends = qt5-base
 	depends = glibc
+	provides = rtklib-qt
 	source = RTKLIB::git+https://github.com/JensReimann/RTKLIB.git#branch=rtklib_2.4.3
 	sha256sums = SKIP
 
