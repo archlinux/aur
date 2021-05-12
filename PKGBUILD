@@ -41,5 +41,5 @@ prepare() {
 
 package() {
     cd "$pkgname-$pkgver"
-    cp -a opt/ "$pkgdir/"
+    cp -dpr --no-preserve=ownership opt/ "$pkgdir/"
 }
