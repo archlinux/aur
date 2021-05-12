@@ -2,12 +2,12 @@
 
 pkgname=nucleistudioide
 pkgver=202102
-pkgrel=8
+pkgrel=9
 pkgdesc="Nuclei Studio IDE 是基于 MCU Eclipse IDE 开发的一款针对芯来公司处理器核产品的集成开发环境工具，用于 RISC-V 开发继承了 Eclipse IDE 平台的各种优势。"
 arch=("x86_64")
 makedepends=()
-depends=('java-runtime' 'jlink-software-and-documentation' 'nuclei-gcc' 'nuclei-openocd')
-optdepends=()
+depends=('nuclei-gcc' 'nuclei-openocd')
+optdepends=('jlink-software-and-documentation: Segger JLink software & documentation pack for Linux')
 conflicts=()
 url="https://www.nucleisys.com/download.php"
 license=('unknow')
@@ -22,9 +22,8 @@ package() {
 	msg2 'Installing Nuclei Studio IDE'
 	install -d -m755 "${pkgdir}/opt/nuclei"
 	tar zxf "NucleiStudio_IDE_${pkgver}-lin64.tgz"
-    rm -rf "NucleiStudio_IDE_${pkgver}/NucleiStudio/jre"
-    rm -rf "NucleiStudio_IDE_${pkgver}/NucleiStudio/toolchain/openocd"
-    rm -rf "NucleiStudio_IDE_${pkgver}/NucleiStudio/toolchain/gcc"
+	rm -rf "NucleiStudio_IDE_${pkgver}/NucleiStudio/toolchain/openocd"
+	rm -rf "NucleiStudio_IDE_${pkgver}/NucleiStudio/toolchain/gcc"
     
 	mv "${srcdir}/NucleiStudio_IDE_${pkgver}/NucleiStudio" "${pkgdir}/opt/nuclei"
 
@@ -33,7 +32,7 @@ package() {
 #!/bin/sh
 /opt/nuclei/NucleiStudio/NucleiStudio "\$@"
 EOF
-    install -Dm644 /dev/stdin "${pkgdir}/etc/udev/rules.d/99-nuclei.rules" <<EOF
+	install -Dm644 /dev/stdin "${pkgdir}/etc/udev/rules.d/99-nuclei.rules" <<EOF
 # Copy this file to /etc/udev/rules.d/
 # If rules fail to reload automatically, you can refresh udev rules
 # with the command "udevadm control --reload"
