@@ -3,7 +3,7 @@
 # Contributor: Jason Lenz <Jason@Lenzplace.org>
 _pkgname=oscar
 pkgname=oscar-git
-pkgver=..r3245.aaaaef0d
+pkgver=..r3761.aec02b14
 pkgrel=1
 pkgdesc="Open-source, cross platform, sleep tracking software with a focus on monitoring CPAP treatment. Fork of the sleepyhead project."
 arch=('i686' 'x86_64')
@@ -12,6 +12,9 @@ license=('GPL')
 depends=(
   'qt5-tools'
   'qt5-serialport'
+)
+optdepends=(
+  'qt5-wayland'
 )
 makedepends=(
   'git'
@@ -44,17 +47,8 @@ package() {
   install -Dm644 $srcdir/OSCAR-code/oscar/icons/logo-lg.png $pkgdir/usr/share/oscar/icon.png
   install -Dm644 $srcdir/oscar.desktop $pkgdir/usr/share/applications/oscar.desktop
 
-cp -dpr --no-preserve=ownership $srcdir/OSCAR-code/oscar/Html $pkgdir/usr/share/oscar
-cp -dpr --no-preserve=ownership $srcdir/OSCAR-code/oscar/Translations $pkgdir/usr/share/oscar
-
-#  find $srcdir/OSCAR-code/oscar/Html -type d -exec install -d {,$pkgdir/usr/share/oscar/Html/}{} \;
-#  find $srcdir/OSCAR-code/oscar/Html -type f -exec install -D -m 644 {,$pkgdir/usr/share/oscar/Html/}{} \;
-
-#  find $srcdir/OSCAR-code/oscar/Help -type d -exec install -d {,$pkgdir/usr/share/oscar/Help/}{} \;
-#  find $srcdir/OSCAR-code/oscar/Help -type f -exec install -D -m 644 {,$pkgdir/usr/share/oscar/Help/}{} \;
-#
-#  find $srcdir/OSCAR-code/oscar/Translations -type d -exec install -d {,$pkgdir/usr/share/oscar/Translations/}{} \;
-#  find $srcdir/OSCAR-code/oscar/Translations -type f -exec install -D -m 644 {,$pkgdir/usr/share/oscar/Translations/}{} \;
+  cp -dpr --no-preserve=ownership $srcdir/OSCAR-code/oscar/Html $pkgdir/usr/share/oscar
+  cp -dpr --no-preserve=ownership $srcdir/OSCAR-code/oscar/Translations $pkgdir/usr/share/oscar
 }
 
 # vim:set ts=2 sw=2 et:
