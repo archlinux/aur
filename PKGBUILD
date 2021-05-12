@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=cod
-pkgver=0.0.0
-pkgrel=5
+pkgver=0.1.0
+pkgrel=1
 pkgdesc="A completion daemon for bash/zsh"
 arch=('any')
 url="https://github.com/dim-an/cod"
@@ -9,7 +9,7 @@ license=('Apache-2.0')
 makedepends=('go')
 optdepends=('bash-completion')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dim-an/cod/archive/v$pkgver.tar.gz")
-sha256sums=('6f773358f363141dcd1bbdffaaa5dea0a40ae7a84d5fc55fd453302de8493c20')
+sha256sums=('3d8ed6f284afcf4c86a2164e234ab7ff40c50aa6ab0bd892e59f8dc8aef02541')
 
 prepare() {
 	# Prevent creation of a `go` directory in one's home.
