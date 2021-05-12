@@ -14,15 +14,16 @@ source=(git+$url)
 sha512sums=(SKIP)
 
 build() {
-    #  Installs the Rust nightly toolchain to a temporary
-    #  directory. If you already have the toolchain installed,
-    #  e.g. via the script at https://rustup.rs/ or another
-    #  package, you can remove the rust-nightly dependancy and
-    #  comment out the following three commands.
 
-    mkdir -p nightly
-    export RUSTUP_HOME=$(pwd)/nightly
-    rustup toolchain install nightly
+    #  Installs the Rust toolchain to a temporary directory. If you
+    #  already have the toolchain installed, e.g. via the script at
+    #  https://rustup.rs/ or another package, you can remove the
+    #  rust-nightly dependancy and comment out the following three
+    #  commands.
+
+    mkdir -p stable
+    export RUSTUP_HOME=$(pwd)/stable
+    rustup toolchain install stable
 
     # build tiny
     cd tiny
