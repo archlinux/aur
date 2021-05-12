@@ -2,7 +2,7 @@
 # Contributor: Patrick Lloyd <$(base64 --decode <<<'cGF0cmlja0BsbG95ZC5zaAo=')>
 
 pkgname=marp-cli-bin
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A CLI interface for Marp and Marpit based converters"
 arch=('x86_64')
@@ -16,8 +16,8 @@ replaces=('marp')
 # Package
 source=("${url}/releases/download/v${pkgver}/marp-cli-v${pkgver}-linux.tar.gz" "https://raw.githubusercontent.com/marp-team/marp-cli/master/LICENSE")
 
-sha256sums=('aa4496eecdbd4e1fbcb1d550382e97aba2902b213af91b25acd31c71cca1cd76'
-        'f2b31d0b3aa8ec75832e76b5deb842d8889f7121e9419414b4e32ab37327e64b')
+sha256sums=('da39f0adb8931335acbeaea61e64d8a9d7470be095b17fc9bf7da31e046b6098'
+            'f2b31d0b3aa8ec75832e76b5deb842d8889f7121e9419414b4e32ab37327e64b')
 
 package() {
         # There's only a bare binary in the tarball
