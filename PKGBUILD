@@ -15,16 +15,16 @@ source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-	cd $_pkgname
-	printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+    cd $_pkgname
+    printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
-	cd $_pkgname
+    cd $_pkgname
     make
 }
 
 package() {
-	cd $_pkgname
-	make PREFIX="$pkgdir/usr" install
+    cd $_pkgname
+    make PREFIX="$pkgdir/usr" install
 }
