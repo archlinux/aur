@@ -9,7 +9,15 @@ arch=('i686' 'x86_64')
 url="https://work.weixin.qq.com/"
 license=('Proprietary')
 groups=()
-depends=('deepin-wine5' 'deepin-wine-helper')
+depends=(
+        'lib32-alsa-plugins' 'lib32-glib2' 'lib32-glibc' 'libgphoto2'
+        'lib32-gst-plugins-base-libs' 'lib32-lcms2' 'lib32-libldap' 'lib32-mpg123'
+        'lib32-openal' 'lib32-libpcap' 'lib32-libcanberra-pulse' 'lib32-libudev0-shim'
+        'lib32-libusb' 'lib32-vkd3d' 'lib32-libx11' 'lib32-libxext' 'lib32-libxml2'
+        'lib32-ocl-icd' 'deepin-udis86' 'lib32-zlib' 'lib32-ncurses' 'lib32-fontconfig'
+        'lib32-freetype2' 'lib32-gettext' 'lib32-libxcursor' 'lib32-mesa' 'lib32-libjpeg6'
+        'lib32-libxrandr' 'lib32-libxi' 'lib32-glu'
+    )
 makedepends=('tar')
 checkdepends=()
 optdepends=()
