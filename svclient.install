@@ -1,0 +1,22 @@
+pre_install() {
+    systemctl stop svclient
+}
+
+
+post_install() {
+    systemctl start svclient
+    systemctl enable svclient
+}
+
+pre_upgrade() {
+}
+
+post_upgrade() {
+}
+
+pre_remove() {
+    systemctl stop svclient
+    systemctl disable svclient
+}
+pre_remove() {
+}
