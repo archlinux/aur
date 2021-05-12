@@ -1,6 +1,6 @@
 pkgbase = python-optimesh
 	pkgdesc = Mesh optimization, mesh smoothing.
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/nschloe/optimesh
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python-optimesh
 	depends = python-quadpy
 	depends = python-termplotlib
 	optdepends = python-matplotlib
-	source = https://files.pythonhosted.org/packages/source/o/optimesh/optimesh-0.8.1.tar.gz
-	sha256sums = 3a51c9c12528f27bdfcae5436218ac73242d2e65d440671094bd2656159c8095
+	source = https://files.pythonhosted.org/packages/source/o/optimesh/optimesh-0.8.2.tar.gz
+	sha256sums = f0e2e47c77a600f6e57828aff4e45ed0f571c6af533fa17453ab7fc901589a9d
 
 pkgname = python-optimesh
 
