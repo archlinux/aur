@@ -1,6 +1,6 @@
 diff -up src/xrdp-git/instfiles/xrdp.service.in.orig src/xrdp-git/instfiles/xrdp.service.in
---- src/xrdp-git/instfiles/xrdp.service.in.orig	2021-05-02 13:42:58.210000000 -0600
-+++ src/xrdp-git/instfiles/xrdp.service.in	2021-05-02 13:42:59.450000000 -0600
+--- src/xrdp-git/instfiles/xrdp.service.in.orig	2021-05-12 17:14:14.530000000 -0600
++++ src/xrdp-git/instfiles/xrdp.service.in	2021-05-12 17:14:15.300000000 -0600
 @@ -7,10 +7,8 @@ After=network.target xrdp-sesman.service
  [Service]
  Type=forking
@@ -15,8 +15,8 @@ diff -up src/xrdp-git/instfiles/xrdp.service.in.orig src/xrdp-git/instfiles/xrdp
  [Install]
  WantedBy=multi-user.target
 diff -up src/xrdp-git/instfiles/xrdp-sesman.service.in.orig src/xrdp-git/instfiles/xrdp-sesman.service.in
---- src/xrdp-git/instfiles/xrdp-sesman.service.in.orig	2021-05-02 13:42:58.210000000 -0600
-+++ src/xrdp-git/instfiles/xrdp-sesman.service.in	2021-05-02 13:42:59.460000000 -0600
+--- src/xrdp-git/instfiles/xrdp-sesman.service.in.orig	2021-05-12 17:14:14.530000000 -0600
++++ src/xrdp-git/instfiles/xrdp-sesman.service.in	2021-05-12 17:14:15.310000000 -0600
 @@ -8,10 +8,8 @@ BindsTo=xrdp.service
  [Service]
  Type=forking
@@ -30,9 +30,21 @@ diff -up src/xrdp-git/instfiles/xrdp-sesman.service.in.orig src/xrdp-git/instfil
  
  [Install]
  WantedBy=multi-user.target
+diff -up src/xrdp-git/sesman/sesman.ini.in.orig src/xrdp-git/sesman/sesman.ini.in
+--- src/xrdp-git/sesman/sesman.ini.in.orig	2021-05-12 17:14:14.880000000 -0600
++++ src/xrdp-git/sesman/sesman.ini.in	2021-05-12 17:15:56.580000000 -0600
+@@ -94,7 +94,7 @@ EnableSyslog=true
+ ; CentOS 7              :  param=/usr/bin/Xorg or param=Xorg
+ ; CentOS 8              :  param=/usr/libexec/Xorg
+ ;
+-param=Xorg
++param=/usr/lib/Xorg
+ ; Leave the rest paramaters as-is unless you understand what will happen.
+ param=-config
+ param=xrdp/xorg.conf
 diff -up src/xrdp-git/sesman/startwm.sh.orig src/xrdp-git/sesman/startwm.sh
---- src/xrdp-git/sesman/startwm.sh.orig	2021-05-02 13:42:58.410000000 -0600
-+++ src/xrdp-git/sesman/startwm.sh	2021-05-02 13:44:03.660000000 -0600
+--- src/xrdp-git/sesman/startwm.sh.orig	2021-05-12 17:14:14.890000000 -0600
++++ src/xrdp-git/sesman/startwm.sh	2021-05-12 17:14:15.310000000 -0600
 @@ -63,6 +63,21 @@ wm_start()
      export LANG LANGUAGE
    fi

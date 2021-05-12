@@ -3,7 +3,7 @@
 pkgname=xrdp-git
 _pkgname=xrdp
 pkgver=0.9.16.r0.ga4c7ee07
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="An open source remote desktop protocol (RDP) server - GIT version"
 url="https://github.com/neutrinolabs/$_pkgname"
@@ -18,7 +18,7 @@ install="${pkgname}.install"
 source=("$pkgname::git+https://github.com/neutrinolabs/xrdp.git#branch=devel"
         "arch-config.diff")
 md5sums=('SKIP'
-         'c80b752b16ef9d8336149766a89d0889')
+         '68880e5311dd0fbb6d970278f52241f4')
 
 pkgver() {
   cd $pkgname
