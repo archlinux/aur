@@ -3,7 +3,7 @@
 
 # Helper variables for updaurpkg (https://aur.archlinux.org/packages/updaurpkg-git)
 _nextcloud_appname='passwords'
-_upstreamver='2021.4.0-12073'
+_upstreamver='2021.5.0-12123'
 _upstreamver_regex='^[0-9][0-9][0-9][0-9]\.[0-9]+\.[0-9]+-[0-9]+$'
 _source_type='custom'
 _upstreamver_check() {
@@ -34,7 +34,7 @@ makedepends=()
 depends=('nextcloud')
 options=('!strip')
 source=("${_nextcloud_appname}-v${pkgver}.tar.gz::https://git.mdns.eu/nextcloud/passwords/-/jobs/${_jobid}/artifacts/raw/${_nextcloud_appname}.tar.gz")
-sha512sums=('6d4c9b54980f6d8ade0daab6db06ba3da00445fb381ae21893e3383c054e2ebd45bf5ff6f0cf9fc475587f3a2e4d8e1dc3ca77bb2718897cb4be4d4253c287d0')
+sha512sums=('16fd37fad6969beb5839a3691373958cb26acf3d6f795c73a0f10a90536cf0d17ce32745d3201935a162d23b29da2b5b7c0c3ab29acafa7bc81efc2d7269caf1')
 
 package() {
 	install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
