@@ -5,7 +5,7 @@
 
 pkgname=anbox-image-nocsd
 pkgver=r3.5052c81c
-pkgrel=1
+pkgrel=2
 pkgdesc="Android image for running in Anbox, with no-csd patch and Houdini"
 arch=('x86_64')
 url="https://anbox.io"
@@ -17,8 +17,8 @@ conflicts=('anbox-image')
 _anbox_rel="$(curl --config /dev/null -o /dev/null -Ls https://github.com/thdaemon/anbox/releases/latest -w '%{url_effective}\n'|xargs basename)"
 source=(
   "android_amd64.img::https://github.com/thdaemon/anbox/releases/download/$_anbox_rel/android.img"
-  "https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_y.sfs"
-  "https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_z.sfs"
+  "houdini_y.sfs::https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_y.sfs"
+  "houdini_z.sfs::https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_z.sfs"
   "media_codecs.xml"
   "media_codecs_google_video.xml"
   "media_codecs_google_audio.xml"
