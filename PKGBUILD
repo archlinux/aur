@@ -22,4 +22,5 @@ package() {
     cd "${srcdir}/${_gitname}"
 
     install -Dm 644 -t "${pkgdir}/usr/share/libalpm/hooks" nvidia/nvidia-keylase.hook
+    install -Dm 644 -t "${pkgdir}/usr/share/libalpm/hooks" orphans/orphans.hook
 }
