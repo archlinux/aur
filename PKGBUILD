@@ -6,13 +6,13 @@
 # Contributor: orbisvicis <orbisvicis at gmail dot com>
 pkgname=darktable-git
 _gitname=darktable
-pkgver=3.5.0.r693.g2c8b69f01
+pkgver=3.5.0.r2164.g72edb2352
 pkgrel=1
 pkgdesc="A virtual lighttable and darkroom for photographers"
 arch=('i686' 'x86_64')
 url=http://www.darktable.org/
 license=('GPL3')
-depends=('exiv2>=0.18' 'intltool>=0.40' 'lcms2' 'lensfun>=0.2.3' 'libglade' 'dbus-glib'
+depends=('exiv2>=0.18' 'intltool>=0.40' 'lcms2' 'lensfun>=0.2.3' 'dbus-glib'
 	 'curl' 'libgnome-keyring' 'libgphoto2' 'libusb-compat' 'openexr' 'sqlite' 'libxslt'
 	 'libsoup' 'osm-gps-map' 'pugixml' 'colord' 'lua52' 'libsecret' 'colord-gtk'
 	 'sdl' 'openjpeg2' 'graphicsmagick' 'glu' )
