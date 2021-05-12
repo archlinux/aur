@@ -39,8 +39,10 @@ source=(
     $pkgname::git://github.com/koide3/hdl_graph_slam.git
     https://github.com/koide3/hdl_graph_slam/pull/191.patch
     https://github.com/koide3/hdl_graph_slam/pull/192.patch
+    https://github.com/koide3/hdl_graph_slam/pull/198.patch
 )
 sha256sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -50,6 +52,7 @@ prepare() {
     cd "${srcdir}/${pkgname}"
     patch --forward --strip=1 --input="${srcdir}/191.patch"
     patch --forward --strip=1 --input="${srcdir}/192.patch"
+    patch --forward --strip=1 --input="${srcdir}/198.patch"
 }
 
 pkgver() {
