@@ -1,7 +1,7 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=libdatovka
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="ISDS client library"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('LGPL')
 depends=('libxml2' 'openssl' 'curl')
 makedepends=('docbook-xsl')
 source=(https://secure.nic.cz/files/datove_schranky/$pkgname/$pkgname-$pkgver.tar.xz)
-sha256sums=('44087c07a9ba96990d6dab56913686fd95be53d851b3751a81972599f4238d46')
+sha256sums=('da6496abc6a63482ac8163b564457db90547cef7a1e9d126738171daf05cdd31')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver

@@ -1,6 +1,6 @@
 pkgbase = libdatovka
 	pkgdesc = ISDS client library
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://www.datovka.cz/cs/pages/libdatovka.html
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = libdatovka
 	depends = libxml2
 	depends = openssl
 	depends = curl
-	source = https://secure.nic.cz/files/datove_schranky/libdatovka/libdatovka-0.1.1.tar.xz
-	sha256sums = 44087c07a9ba96990d6dab56913686fd95be53d851b3751a81972599f4238d46
+	source = https://secure.nic.cz/files/datove_schranky/libdatovka/libdatovka-0.1.2.tar.xz
+	sha256sums = da6496abc6a63482ac8163b564457db90547cef7a1e9d126738171daf05cdd31
 
 pkgname = libdatovka
 
