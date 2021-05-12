@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Pure Writer
+Name[zh_CN]=纯纯写作
+GenericName=Never loss content editor & Markdown
+Exec=purewriter %U
+Icon=/opt/pure-writer/lib/Pure_Writer.png
+Type=Application
+StartupNotify=true
+Categories=WordProcessor;
+MimeType=
+
