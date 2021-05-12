@@ -1,7 +1,7 @@
 # Maintainer: Mort Yao <soi@mort.ninja>
 
 pkgname=emacs-arduino-mode-git
-pkgver=20150609
+pkgver=20160102
 pkgrel=1
 pkgdesc="Major mode for the Arduino language."
 arch=('any')
@@ -12,26 +12,20 @@ makedepends=('git')
 provides=('emacs-arduino-mode')
 replaces=('emacs-arduino-mode')
 install=$pkgname.install
+source=("${pkgname}::git://github.com/bookest/arduino-mode.git")
+md5sums=('SKIP')
 
-_gitroot="https://github.com/bookest/arduino-mode"
-_gitname="arduino-mode"
+pkgver() {
+  cd "$pkgname"
+  git log -1 --pretty=format:%cd --date=short | sed 's/-//g'
+}
+
 build() {
-  cd $startdir/src
-  msg "Connecting to github.com GIT server...."
-
-  if [ -d $startdir/src/$_gitname ] ; then
-    cd $_gitname && git pull origin
-    msg "The local files are updated."
-  else
-    git clone $_gitroot
-  fi
-
-  msg "GIT checkout done or server timeout"
+  cd "$pkgname"
 }
 
 package() {
-  cd $startdir/src/$_gitname
-
+  cd "$pkgname"
   install -d $pkgdir/usr/share/emacs/site-lisp/
-  install -Dm644 arduino-mode.el $pkgdir/usr/share/emacs/site-lisp/
+  install arduino-mode.el $pkgdir/usr/share/emacs/site-lisp/
 }
