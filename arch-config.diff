@@ -1,6 +1,6 @@
 diff -up src/xrdp-0.9.16/instfiles/xrdp.service.in.orig src/xrdp-0.9.16/instfiles/xrdp.service.in
 --- src/xrdp-0.9.16/instfiles/xrdp.service.in.orig	2020-06-26 05:13:58.000000000 -0600
-+++ src/xrdp-0.9.16/instfiles/xrdp.service.in	2021-05-02 13:34:02.650000000 -0600
++++ src/xrdp-0.9.16/instfiles/xrdp.service.in	2021-05-12 17:06:31.680000000 -0600
 @@ -6,11 +6,9 @@ After=network.target xrdp-sesman.service
  
  [Service]
@@ -18,7 +18,7 @@ diff -up src/xrdp-0.9.16/instfiles/xrdp.service.in.orig src/xrdp-0.9.16/instfile
  WantedBy=multi-user.target
 diff -up src/xrdp-0.9.16/instfiles/xrdp-sesman.service.in.orig src/xrdp-0.9.16/instfiles/xrdp-sesman.service.in
 --- src/xrdp-0.9.16/instfiles/xrdp-sesman.service.in.orig	2020-06-26 05:13:58.000000000 -0600
-+++ src/xrdp-0.9.16/instfiles/xrdp-sesman.service.in	2021-05-02 13:34:02.660000000 -0600
++++ src/xrdp-0.9.16/instfiles/xrdp-sesman.service.in	2021-05-12 17:06:31.690000000 -0600
 @@ -7,11 +7,9 @@ BindsTo=xrdp.service
  
  [Service]
@@ -34,9 +34,21 @@ diff -up src/xrdp-0.9.16/instfiles/xrdp-sesman.service.in.orig src/xrdp-0.9.16/i
  
  [Install]
  WantedBy=multi-user.target
+diff -up src/xrdp-0.9.16/sesman/sesman.ini.orig src/xrdp-0.9.16/sesman/sesman.ini
+--- src/xrdp-0.9.16/sesman/sesman.ini.orig	2021-04-30 06:26:36.000000000 -0600
++++ src/xrdp-0.9.16/sesman/sesman.ini	2021-05-12 17:09:30.930000000 -0600
+@@ -94,7 +94,7 @@ EnableSyslog=true
+ ; CentOS 7              :  param=/usr/bin/Xorg or param=Xorg
+ ; CentOS 8              :  param=/usr/libexec/Xorg
+ ;
+-param=Xorg
++param=/usr/lib/Xorg
+ ; Leave the rest paramaters as-is unless you understand what will happen.
+ param=-config
+ param=xrdp/xorg.conf
 diff -up src/xrdp-0.9.16/sesman/startwm.sh.orig src/xrdp-0.9.16/sesman/startwm.sh
 --- src/xrdp-0.9.16/sesman/startwm.sh.orig	2020-12-28 07:03:43.000000000 -0700
-+++ src/xrdp-0.9.16/sesman/startwm.sh	2021-05-02 13:37:03.440000000 -0600
++++ src/xrdp-0.9.16/sesman/startwm.sh	2021-05-12 17:06:31.690000000 -0600
 @@ -58,11 +58,26 @@ post_start()
  #start the window manager
  wm_start()
