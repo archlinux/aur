@@ -1,0 +1,17 @@
+pkgbase = slock-slock-git
+	pkgdesc = Dylan's build of simple screen locker utility for X
+	pkgver = 1.4.r124.647c91e
+	pkgrel = 1
+	url = https://github.com/dylantjb/slock
+	arch = x86_64
+	arch = i686
+	license = MIT/X Consortium License
+	makedepends = git
+	makedepends = make
+	provides = slock
+	conflicts = slock
+	source = git+https://github.com/dylantjb/slock
+	md5sums = SKIP
+
+pkgname = slock-slock-git
+
