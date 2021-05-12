@@ -6,7 +6,7 @@
 # Contributor: orbisvicis <orbisvicis at gmail dot com>
 pkgname=darktable-git
 _gitname=darktable
-pkgver=3.5.0.r2167.g52b29df0b
+pkgver=3.5.0.r2180.g326b8bbd2
 pkgrel=1
 pkgdesc="A virtual lighttable and darkroom for photographers"
 arch=('i686' 'x86_64')
@@ -41,16 +41,11 @@ md5sums=('SKIP'
 
 pkgver() {
   cd $_gitname
-#  git clean -dfx > /dev/null 2>&1
-#  git reset --hard > /dev/null 2>&1
-#  if you want a specific commit or branch... just put it here
-#  git checkout 441a3b44df770578240c1774b29d373aa4a08bb8 > /dev/null 2>&1
   git describe --long --tags | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  local _gitdir=$srcdir/$_gitname
-  cd $_gitdir
+  cd $_gitname
   git config submodule.src/external/rawspeed.url "$srcdir/rawspeed.git"
   git config submodule.src/external/OpenCL.url "$srcdir/OpenCL-Headers.git"
   git config submodule.src/external/libxcf.url "$srcdir/libxcf.git"
@@ -60,11 +55,9 @@ prepare() {
 }
 
 build() {
-  local _gitdir=$srcdir/$_gitname
-  cd $_gitdir
+  cd $_gitname
   [[ ! -d build ]] && mkdir -p build
-  cd build
-    cmake \
+  cmake -B build \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=/usr/lib \
         -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib \
@@ -76,18 +69,15 @@ build() {
         -DUSE_COLORD=ON \
         -DBUILD_CURVE_TOOLS=ON \
         -DBUILD_NOISE_TOOLS=ON \
-        -DRAWSPEED_ENABLE_LTO=ON \
-      ..
-  make
+        -DRAWSPEED_ENABLE_LTO=ON
+  make -C build
 
-  cd ../tools/basecurve
-  cmake .
-  make
+  cmake -B tools/basecurve
+  make -C tools/basecurve
 }
 
 package() {
-  cd $srcdir/$_gitname/build
-  make DESTDIR=$pkgdir install
+  cd $_gitname
+  make -C build DESTDIR=$pkgdir install
   ln -s darktable/libdarktable.so "${pkgdir}"/usr/lib/libdarktable.so
-  mv "${pkgdir}/usr/share/doc/darktable" "${pkgdir}/usr/share/doc/${pkgname}-${pkgver}"
 }
