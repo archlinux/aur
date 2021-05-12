@@ -1,0 +1,7 @@
+post_install() {
+   sed -ie 's/java -jar/java -javaagent:\/usr\/share\/burpsuite\/BurpSuiteCn.jar -jar/g' /usr/bin/burpsuite
+}
+
+post_remove() {
+   sed -ie 's/java -javaagent:\/usr\/share\/burpsuite\/BurpSuiteCn.jar -jar/java -jar/g' /usr/bin/burpsuite
+}
