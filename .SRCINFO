@@ -14,7 +14,7 @@ pkgbase = dmenu-dylan-git
 	optdepends = libxft-bgra-git: if dmenu crashes when displaying emojis
 	provides = dmenu
 	conflicts = dmenu
-	source = git://github.com/dylantjb/dmenu
+	source = git+https://github.com/dylantjb/dmenu
 	sha256sums = SKIP
 
 pkgname = dmenu-dylan-git

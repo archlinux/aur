@@ -13,7 +13,7 @@ optdepends=(
 makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=(git://github.com/dylantjb/dmenu)
+source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
