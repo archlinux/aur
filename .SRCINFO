@@ -1,13 +1,22 @@
 pkgbase = vim-kotlin-git
 	pkgdesc = Vim plugin for syntax, highlighting, basic indentation, and Syntastic support
 	pkgver = r86.e043f6a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/udalov/kotlin-vim
 	arch = any
 	groups = vim-plugins
 	license = Apache
 	makedepends = git
 	depends = vim-plugin-runtime
+	depends = kotlin
+	provides = vim-kotlin
+	provides = kotlin-vim
+	provides = neovim-kotlin
+	conflicts = vim-kotlin
+	conflicts = kotlin-vim
+	conflicts = neovim-kotlin
+	replaces = kotlin-vim
+	replaces = neovim-kotlin
 	source = vim-kotlin-git::git+https://github.com/udalov/kotlin-vim
 	sha256sums = SKIP
 

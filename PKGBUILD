@@ -7,14 +7,17 @@
 
 pkgname=vim-kotlin-git
 pkgver=r86.e043f6a
-pkgrel=1
+pkgrel=2
 pkgdesc='Vim plugin for syntax, highlighting, basic indentation, and Syntastic support'
 arch=('any')
 license=('Apache')
 url='https://github.com/udalov/kotlin-vim'
 groups=('vim-plugins')
-depends=('vim-plugin-runtime')
+depends=('vim-plugin-runtime' 'kotlin')
 makedepends=('git')
+provides=("${pkgname%-git}" 'kotlin-vim' 'neovim-kotlin')
+conflicts=("${pkgname%-git}" 'kotlin-vim' 'neovim-kotlin')
+replaces=('kotlin-vim' 'neovim-kotlin')
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
