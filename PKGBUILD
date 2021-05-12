@@ -29,7 +29,7 @@ pkgver() {
 
 build() {
     arch-meson yaru build
-    meson configure build -Dubuntu-unity=true
+    meson configure build -Dubuntu-unity=true -Dgnome-shell-gresource=false
     ninja -C build
 }
 
@@ -44,8 +44,8 @@ _delete_all_from_pkgdir_except() {
         rm -r "${pkgdir}"/usr/share/gtksourceview-*
     fi
     if [[ "$1" != "gnome-shell-theme" ]]; then
-        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-light}/gnome-shell
-        rm -r "${pkgdir}"/usr/share/gnome-shell/theme/Yaru
+        rm "${pkgdir}"/usr/share/themes/Yaru{,-light}/gnome-shell
+        rm -r "${pkgdir}"/usr/share/gnome-shell/theme/Yaru{,-light}
     fi
     if [[ "$1" != "unity-theme" ]]; then
         rm -r "${pkgdir}"/usr/share/themes/Yaru/unity
