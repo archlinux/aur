@@ -42,4 +42,7 @@ prepare() {
 package() {
     cd "$pkgname-$pkgver"
     cp -dpr --no-preserve=ownership opt/ "$pkgdir/"
+
+    mkdir -p "$pkgdir/usr/share/applications/"
+    mv "$pkgdir/opt/Webex/bin/webex.desktop" "$pkgdir/usr/share/applications/"
 }
