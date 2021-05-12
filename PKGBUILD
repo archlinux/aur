@@ -3,7 +3,7 @@
 pkgname=python-ufo-extractor
 _pipname=${pkgname#python-}
 _upname=${_pipname#ufo-}
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Tools for extracting data from font binaries into UFO objects'
 url="https://github.com/robotools/$_upname"
@@ -11,8 +11,8 @@ arch=('any')
 license=('MIT')
 depends=('python' 'python-fonttools')
 makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('30df4b5580edcc117ac3fcd877a3d9f2000d41567f9cd787be086057e4b4d476')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('80cdb49691cc7c6ee4c4571d45d7d8430188f9cb4566087de0927d1949d4e937')
 
 build() {
 	cd "$_upname-$pkgver"
