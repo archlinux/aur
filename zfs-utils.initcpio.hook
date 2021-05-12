@@ -29,24 +29,44 @@ zfs_get_bootfs () {
 zfs_decrypt_fs() {
     dataset=$1
 
-    # check if 'zfs load-key' is available
-    zfs 2>&1 | grep load-key > /dev/null || return 0
+    # Make sure dataset is encrypted; get fails if ZFS does not support encryption
+    encryption="$(zfs get -H -o value encryption "${dataset}" 2>/dev/null)" || return 0
+    [ "${encryption}" != "off" ] || return 0
 
-    # check if dataset is encrypted
-    [ "$(zfs get -H -o value encryption "${dataset}")" != "off" ] || return 0
+    # Make sure the dataset is locked
+    keystatus="$(zfs get -H -o value keystatus "${dataset}")" || return 0
+    [ "${keystatus}" != "available" ] || return 0
 
-    # check if key is already loaded
-    [ "$(zfs get -H -o value keystatus "${dataset}")" != "available" ] || return 0
+    # Make sure the encryptionroot is sensible
+    encryptionroot="$(zfs get -H -o value encryptionroot "${dataset}")" || return 0
+    [ "${encryptionroot}" != "-" ] || return 0
 
-    # get the encryption root
-    encryptionroot=$(zfs get -H -o value encryptionroot "${dataset}")
-
-    # export encription root to be used by other hooks (SSH)
+    # Export encryption root to be used by other hooks (SSH)
     echo "${encryptionroot}" > /.encryptionroot
 
-    # loop until we get the correct password or key is unlocked by another vector (SSH for instance)
-    while [ "$(zfs get -H -o value keystatus "${encryptionroot}")" != "available" ] &&
-      ! eval zfs load-key "${encryptionroot}"; do
+    # If key location is a file, determine if it can by overridden by prompt
+    prompt_override=""
+    if keylocation="$(zfs get -H -o value keylocation "${dataset}")"; then
+        if [ "${keylocation}" != "prompt" ]; then
+            if keyformat="$(zfs get -H -o value keyformat "${dataset}")"; then
+                [ "${keyformat}" = "passphrase" ] && prompt_override="yes"
+            fi
+        fi
+    fi
+
+    # Loop until key is loaded here or by another vector (SSH, for instance)
+    while [ "$(zfs get -H -o value keystatus "${encryptionroot}")" != "available" ]; do
+        # Try the default loading mechanism
+        zfs load-key "${encryptionroot}" && break
+
+        # Load failed, try a prompt if the failure was not a prompt
+        if [ -n "${prompt_override}" ]; then
+            echo "Unable to load key ${keylocation}; please type the passphrase"
+            echo "To retry the file, interrupt now or repeatedly input a wrong passphrase"
+            zfs load-key -L prompt "${encryptionroot}" && break
+        fi
+
+        # Throttle retry attempts
         sleep 2
     done
 
