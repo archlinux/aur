@@ -3,7 +3,7 @@
 
 pkgname=saleae-logic2
 pkgver=2.3.27
-pkgrel=1
+pkgrel=2
 pkgdesc="Debug hardware like a pro"
 arch=("x86_64")
 url="https://discuss.saleae.com/c/logic-2-0-software/7"
