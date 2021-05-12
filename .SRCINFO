@@ -1,7 +1,7 @@
 pkgbase = searx
 	pkgdesc = A privacy-respecting, hackable metasearch engine (python(3) based)
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://searx.github.io/searx/
 	arch = any
 	license = AGPL
@@ -26,7 +26,7 @@ pkgbase = searx
 	source = searx.ini
 	source = searx.sysusers
 	sha512sums = 725b585d2aedd6fa08d41d98dcdc62234035b0f07211d678e913fb3c9ef949ca4f1719c02368f09eb4469aaa2af8018bd860c088f7bd934de4a588c19e95db65
-	sha512sums = 6e1e7771e747e2bcb9cbc3e5ec9735461b6d791c0c0412e06e7dd802c18625edd0916de32164bf780c18ef7b6a87f55ed1e917377b3adb2bf53c0344f34b49e8
+	sha512sums = 476a4297c51681a9a92c6db3933359cc5a8ec292e45b229d98608ef2906b80c173868a30df06c329204c6f9371736a5bb322239860199526fd559780b37a2d0a
 	sha512sums = 6856e26451fe053d37c2ce4b9d5f3b35891dd8ec702c5256c02d04415124c57705abc497f12943948a85621bb0238d26c2c1f3a7bf42404a6ff1487c7655909e
 
 pkgname = searx
