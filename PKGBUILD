@@ -27,5 +27,8 @@ build() {
 package() {
     cd $_pkgname
     make PREFIX=/usr DESTDIR="${pkgdir}" install
+    mkdir -p ${pkgdir}/opt/${_pkgname}
+    cp -rf statusbar ${pkgdir}/opt/${_pkgname}
+    chmod 0755 ${pkgdir}/opt/${_pkgname}/statusbar/*
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
