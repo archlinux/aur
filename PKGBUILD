@@ -6,18 +6,21 @@
 # Contributor: orbisvicis <orbisvicis at gmail dot com>
 pkgname=darktable-git
 _gitname=darktable
-pkgver=3.5.0.r2164.g72edb2352
+pkgver=3.5.0.r2167.g52b29df0b
 pkgrel=1
 pkgdesc="A virtual lighttable and darkroom for photographers"
 arch=('i686' 'x86_64')
 url=http://www.darktable.org/
 license=('GPL3')
-depends=('exiv2>=0.18' 'intltool>=0.40' 'lcms2' 'lensfun>=0.2.3' 'dbus-glib'
-	 'curl' 'libgnome-keyring' 'libgphoto2' 'libusb-compat' 'openexr' 'sqlite' 'libxslt'
-	 'libsoup' 'osm-gps-map' 'pugixml' 'colord' 'lua52' 'libsecret' 'colord-gtk'
-	 'sdl' 'openjpeg2' 'graphicsmagick' 'glu' )
-makedepends=(git 'intltool>=0.40' 'cmake' 'librsvg' 'flickcurl' 'perl-pod-parser')
-optdepends=('librsvg' 'flickcurl: flickr upload' 'libavif')
+depends=(pugixml libjpeg-turbo colord-gtk libgphoto2 openexr lensfun iso-codes zlib
+         exiv2 flickcurl openjpeg2 graphicsmagick lua53 osm-gps-map libsecret openmp
+         gmic libavif)
+optdepends=('dcraw: base curve script'
+            'perl-image-exiftool: base curve script'
+            'imagemagick: base curve and noise profile scripts'
+            'ghostscript: noise profile script'
+            'gnuplot: noise profile script')
+makedepends=(git cmake intltool desktop-file-utils llvm clang python-jsonschema libwebp)
 conflicts=(darktable)
 provides=(darktable)
 install=darktable.install
