@@ -1,6 +1,6 @@
 pkgname=mingw-w64-mesa
 pkgver=21.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source implementation of the OpenGL specification (mingw-w64)"
 arch=('any')
 url="https://www.mesa3d.org/"
@@ -22,6 +22,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd "${srcdir}"/mesa-${pkgver}
+  curl -L https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/10276.patch | patch -p1
 }
 
 build() {
