@@ -1,0 +1,19 @@
+pkgbase = dwmblocks-dylan-git
+	pkgdesc = Dylan's build of modular dwmblocks for X
+	pkgver = 1.0.r96.7f54246
+	pkgrel = 1
+	url = https://github.com/dylantjb/dwmblocks
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = make
+	depends = ttf-hack
+	depends = ttf-joypixels
+	depends = libxft-bgra
+	provides = dwmblocks
+	conflicts = dwmblocks
+	source = git+https://github.com/dylantjb/dwmblocks
+	md5sums = SKIP
+
+pkgname = dwmblocks-dylan-git
+
