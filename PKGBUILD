@@ -2,7 +2,7 @@
 # Contributor: ava1ar <mail(at)ava1ar(dot)me>
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-driver
-pkgver=20.04.31
+pkgver=20.04.32
 pkgrel=1
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
@@ -49,7 +49,7 @@ source=(
   'cli.patch'
   'wayland.patch'
   'actions.patch')
-sha256sums=('de35de5514a525dd0110f36f91a1b0085371712a1de504d8f8c6c5a37ebfd6f9'
+sha256sums=('4274764bf78836ea07decd82783fc9010fcbc92ff65b35560cdadae34926ba2f'
             '2ccf53ec0ffdeea00930d218253f5b3db2bdc7d3405e8353caabc36107f3ab26'
             'ef027346c439561dc01f906ae7bd961100aedf9125fd86bb0eb89a87b683fdc3'
             '2ffbd813744c0b99416947a2755767767af434758aa20dcfafefb49fb367d5d3'
@@ -106,7 +106,7 @@ package() {
   # Create /var/lib/system76-driver directory for brightness settings saving
   install -dm755 "$pkgdir/var/lib/$pkgname"
 
-  # Clean up
+  # Remove tests
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  rm -rf $pkgdir$site_packages/system76driver/{__pycache__,tests}
+  rm -rf "$pkgdir$site_packages/system76driver/tests"
 }
