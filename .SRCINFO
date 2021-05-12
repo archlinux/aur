@@ -1,7 +1,7 @@
 pkgbase = openmodelica
 	pkgdesc = Open-source Modelica-based modeling and simulation environment
 	pkgver = 1.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openmodelica.org
 	arch = x86_64
 	license = OSMC-PL

@@ -1,6 +1,6 @@
 pkgname=openmodelica
 pkgver=1.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source Modelica-based modeling and simulation environment"
 url="https://www.openmodelica.org"
 _giturl="https://github.com/OpenModelica/OpenModelica.git"
@@ -33,4 +33,6 @@ build() {
 package() {
         cd "${pkgname}"
         make install DESTDIR=${pkgdir}
+        # Correct ownership of files, otherwise FMU export fails
+        chmod go+rx "${pkgdir}/usr/share/omc/runtime/c/fmi/buildproject/config.*"
 }
