@@ -1,0 +1,12 @@
+pkgbase = ddi-bin
+	pkgdesc = A safer dd
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/tralph3/ddi
+	arch = x86_64
+	license = GPL3
+	source = https://github.com/tralph3/ddi/releases/download/v1.0/ddi-v1.0-x86_64-linux.tar.gz
+	md5sums = SKIP
+
+pkgname = ddi-bin
+
