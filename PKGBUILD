@@ -1,6 +1,6 @@
 pkgname="figma-linux"
 pkgver="0.7.3"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="The collaborative interface design tool. Unofficial Figma desktop client for Linux"
 arch=("x86_64" "aarch64")
 url="https://github.com/Figma-Linux/figma-linux"
@@ -20,21 +20,20 @@ source=("figma-linux.desktop"
 source_x86_64=("https://github.com/Figma-Linux/figma-linux/releases/download/v${pkgver}/figma-linux_${pkgver}_linux_amd64.zip")
 source_aarch64=("https://github.com/Figma-Linux/figma-linux/releases/download/v${pkgver}/figma-linux_${pkgver}_linux_arm64.zip")
 makedepends=("unzip")
-sha256sums=("21def936e0a912743e4f6b5832b7c59ff5437538f93b372ff1f2949d35579dc4"
-            "c94eaaf01a82688ab7951ea1d1085f50c3ebed588993d68c173139db848b21c6"
-            "40b456b40c557395b1d9cedd035c7d14a169f8207d60441177e1f3c0582768da"
-            "72d0c9df5b81a7666a05751a38fe096f629096be73792355f6069024cf7c0412"
-            "780219a3792c5c4160829e7a8023e16f78e12c80.7.3d7217a9db90e43a3f777"
-            "c00c6751c90b394fc7bca51e5c6f139f16843d5f9f425b4ba31627dbaffaf0f9"
-            "8d8f214d2e1f8e3816bbcf1262b273bedd56f1504326a2d54b2a1ba6cede63de"
-            "86f34a8d9ddfdcfad5cc5e170a729cee7bca61102fbe0b10746b7f83b19d45bc"
-            "f31ecf744bcf883a10656568aa3e3d5e9efa5c705d54803a3e58fe768d30006a"
-            "1db635df7d84f73694303eba423acd75da892e084cf35c4e260bd5c6b56fcc1e"
-            "5dc381da3bb02e5bc9d60cdbae3e3c5c8f249a83b4ef606721bb87559d0a122b"
-            "e77bf9e7c699a53e69ba4a025e31ccf2b0a3b4c86acc842f7d0ecf1f8fe71ac2")
-
-sha256sums_x86_64=('737949397550481ea9dccd68972799f006e13bdb3ccb5d674c684d93989a54c3')
-sha256sums_aarch64=('943de408eb87e7245b7a4a5e59ef5c5d80d61cfeda22e896e309389edc86f851')
+sha256sums=('21def936e0a912743e4f6b5832b7c59ff5437538f93b372ff1f2949d35579dc4'
+            'c94eaaf01a82688ab7951ea1d1085f50c3ebed588993d68c173139db848b21c6'
+            '40b456b40c557395b1d9cedd035c7d14a169f8207d60441177e1f3c0582768da'
+            '72d0c9df5b81a7666a05751a38fe096f629096be73792355f6069024cf7c0412'
+            '780219a3792c5c4160829e7a8023e16f78e12c807762d7217a9db90e43a3f777'
+            'c00c6751c90b394fc7bca51e5c6f139f16843d5f9f425b4ba31627dbaffaf0f9'
+            '8d8f214d2e1f8e3816bbcf1262b273bedd56f1504326a2d54b2a1ba6cede63de'
+            '86f34a8d9ddfdcfad5cc5e170a729cee7bca61102fbe0b10746b7f83b19d45bc'
+            'f31ecf744bcf883a10656568aa3e3d5e9efa5c705d54803a3e58fe768d30006a'
+            '1db635df7d84f73694303eba423acd75da892e084cf35c4e260bd5c6b56fcc1e'
+            '5dc381da3bb02e5bc9d60cdbae3e3c5c8f249a83b4ef606721bb87559d0a122b'
+            'e77bf9e7c699a53e69ba4a025e31ccf2b0a3b4c86acc842f7d0ecf1f8fe71ac2')
+sha256sums_x86_64=('fc0de34b42e3b723be41780110b95315c0b4e699cedd120488ca1c40bd1b6dc1')
+sha256sums_aarch64=('3fc7027189db020c7e97e2b090b05d665c51b8659365db0421302494f86ccad9')
 
 package() {
   cd "${srcdir}"
