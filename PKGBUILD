@@ -1,4 +1,5 @@
-# Maintainer: Ding Jing <dingjing[at]live[dot]cn>
+# Maintainer: Unknow 
+# Contributor: Ding Jing <dingjing[at]live[dot]cn>
 # Cloud Server
 _server=cpx51
 pkgbase=svclient
