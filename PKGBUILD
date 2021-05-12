@@ -1,9 +1,9 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
-# Maintainer: dr460nf1r3 <dr460nf1r3@garudalinux.org>
+# Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 
 pkgname=librewolf-ublock-origin
-pkgver=1.35
-_commit=af980c5c062768811497902ff50483288e57fa6a
+pkgver=1.35.2
+_commit=0718d816e1f509f0b36cdb1cf3f490a0045efe99
 pkgrel=1
 pkgdesc='Efficient blocker add-on for various browsers. Fast, potent, and lean'
 arch=('any')

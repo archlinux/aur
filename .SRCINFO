@@ -1,6 +1,6 @@
 pkgbase = librewolf-ublock-origin
 	pkgdesc = Efficient blocker add-on for various browsers. Fast, potent, and lean
-	pkgver = 1.35
+	pkgver = 1.35.2
 	pkgrel = 1
 	url = https://github.com/gorhill/uBlock
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = librewolf-ublock-origin
 	makedepends = git
 	makedepends = python
 	makedepends = zip
-	source = git+https://github.com/gorhill/uBlock.git#commit=af980c5c062768811497902ff50483288e57fa6a?signed
+	source = git+https://github.com/gorhill/uBlock.git#commit=0718d816e1f509f0b36cdb1cf3f490a0045efe99?signed
 	source = git+https://github.com/uBlockOrigin/uAssets.git
 	validpgpkeys = 603B28AA5D6CD687A554347425E1490B761470C2
 	b2sums = SKIP
