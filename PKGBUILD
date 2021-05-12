@@ -1,8 +1,8 @@
 # Maintainer: kusakata <shohei atmark kusakata period com>
 
 pkgname=ttf-sawarabi-mincho
-pkgver=20200615
-_sfver=73169
+pkgver=20210415
+_sfver=74954
 pkgrel=1
 pkgdesc="A mincho font for Japanese"
 url="http://sawarabi-fonts.osdn.jp/"
@@ -19,4 +19,4 @@ package() {
   install -m644 *.ttf "${pkgdir}/usr/share/fonts/TTF"
 }
 
-md5sums=('be082e8e94a1e2bb7625a4b810655b74')
+md5sums=('4d374a093260edfd6f01ca2ff0900060')
