@@ -16,6 +16,5 @@ b2sums_i686=('f8f0f6467cff41e56e8f45a2abefb58193a3afd6416a6c23b87202c2742d545cf3
 b2sums_armv7h=('23162b263317dfefe4391154bd4ea77d87f8588160ded3f68b7174ccb8474ad4f02bdf0864e992cd659bf3ee6fc3dd0872c9ccd382542b99cb9bebdb65e47844')
 
 package() {
-	cd "$srcdir"
 	install -Dm755 "$pkgname-$pkgver-$CARCH" "$pkgdir/usr/bin/${pkgname%-bin}"
 }
