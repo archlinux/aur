@@ -1,21 +1,18 @@
 pkgbase = synology-assistant
-	pkgdesc = It helps you set up and install DSM on your DiskStation
-	pkgver = 6.2.24922
+	pkgdesc = Synology Assistant is a desktop utility that searches for Synology servers within the local area network. It allows you to search and connect to your Synology server or set up Wake on LAN (WOL).
+	pkgver = 7.0.50029
 	pkgrel = 1
-	url = https://www.synology.com/en-global/releaseNote/Assistant
+	url = https://www.synology.com/releaseNote/Assistant
 	install = synology-assistant.install
 	arch = i686
 	arch = x86_64
 	license = unknown
+	depends = qt5-base
 	depends = libpng12
-	depends = libxrender
-	depends = libxt
-	depends = libxext
-	depends = fontconfig
-	source_i686 = https://global.download.synology.com/download/Tools/Assistant/6.2-24922/Ubuntu/i686/synology-assistant_6.2-24922_i386.deb
-	md5sums_i686 = ed1a7baca7c4116908d526207b8a54c0
-	source_x86_64 = https://global.download.synology.com/download/Tools/Assistant/6.2-24922/Ubuntu/x86_64/synology-assistant_6.2-24922_amd64.deb
-	md5sums_x86_64 = e8b970d8b51c3d439f0b2dcb73d4b648
+	source_i686 = https://global.download.synology.com/download/Utility/Assistant/7.0-50029/Ubuntu/i686/synology-assistant_7.0-50029_i386.deb
+	md5sums_i686 = ab67a4f4495db34a748448db7270c898
+	source_x86_64 = https://global.download.synology.com/download/Utility/Assistant/7.0-50029/Ubuntu/x86_64/synology-assistant_7.0-50029_amd64.deb
+	md5sums_x86_64 = b5bbf2f0d7728167fcf165e86d8010a0
 
 pkgname = synology-assistant
 
