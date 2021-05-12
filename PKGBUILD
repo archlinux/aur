@@ -4,7 +4,7 @@
 
 _name=Impactor
 pkgname=cydia-impactor
-pkgver=0.9.53
+pkgver=0.9.54
 pkgrel=1
 pkgdesc='A GUI tool for working with mobile devices'
 arch=('i686' 'x86_64')
@@ -16,9 +16,9 @@ optdepends=('usbmuxd: for connecting to iOS devices')
 source=("https://cache.saurik.com/impactor/mac/${_name}_$pkgver.dmg")
 source_i686=("https://cache.saurik.com/impactor/l32/${_name}32_$pkgver.tgz")
 source_x86_64=("https://cache.saurik.com/impactor/l64/${_name}64_$pkgver.tgz")
-sha256sums=('5c4bc39ed919ec39c8c948afbf26455b5cdf04cce3ece3f56296dd1031da4e8e')
-sha256sums_i686=('4caa7c1110f007d351c18563a888cc64bb598d635a5dcf25835d6c3c933cb68b')
-sha256sums_x86_64=('73b8aeb26b13c0993eedd74f6c6f833c9fb0ef0119c33a69a4efbc3298dc8b5b')
+sha256sums=('39dbe6cf9f6f5f457a2d0e79b8df2e3a197822492c7d8201cf5247819cb3b6a1')
+sha256sums_i686=('64dabb08a8d8bb1d9a88bd8baa4349acf4aa4438c7f7259d37f3a42a32d93ffe')
+sha256sums_x86_64=('65c40cf5ba6dfb9e38006f011d31f8176ffd7399e48f6ffa96e86e288443f0c6')
 
 build() {
   gendesk -f -n --pkgname $_name --pkgdesc "$pkgdesc" --name 'Cydia Impactor' --categories 'Utility'
