@@ -1,8 +1,8 @@
-# Maintainer: Amal Karunarathna <nasashinega@gmail.com>
+# Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 
 _gitname=applet-window-buttons
 pkgname=plasma5-applets-window-buttons-git
-pkgver=0.8.1.r0.g1668c69
+pkgver=0.9.0.r0.g4bfd361
 pkgrel=1
 pkgdesc="Plasma 5 applet in order to show window buttons in your panels"
 arch=(x86_64)
