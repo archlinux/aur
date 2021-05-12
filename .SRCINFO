@@ -1,0 +1,17 @@
+pkgbase = dwl-dylan-git
+	pkgdesc = Dylan's build for hackable dynamic tiling Wayland compositor (dwm for Wayland)
+	pkgver = 0.2.1.r13.c58d8b1
+	pkgrel = 1
+	url = https://github.com/dylantjb/dwl
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = wayland-protocols
+	depends = wlroots
+	provides = dwl
+	conflicts = dwl
+	source = git+https://github.com/dylantjb/dwl
+	md5sums = SKIP
+
+pkgname = dwl-dylan-git
+
