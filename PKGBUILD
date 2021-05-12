@@ -5,7 +5,7 @@ validpgpkeys=('33ED753E14757D79FA17E57DC4C1F715B2B66B95')
 pkgname=llvm12-git
 pkgdesc="LLVM 12 Toolchain with clang, clang-tools-extra, compiler-rt, openmp, polly, lldb, lld"
 pkgver=12.0.1_r44.g877a07bfb3b9
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -26,9 +26,9 @@ source=(
   'llvm-config.h')
 
 sha256sums=('SKIP'
-            '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48')
+  '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48')
 sha512sums=('SKIP'
-            '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd')
+  '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd')
 options=('staticlibs')
 
 _extra_build_flags=""
@@ -77,7 +77,6 @@ build() {
     read -r yn
     case ${yn} in
     [Yy]*)
-      # LLVM_IAS=1 fix libLLVM-12.so: __morestack error https://bugs.llvm.org/show_bug.cgi?id=49915
       export LLVM=1
       export LLVM_IAS=1
       export CC=clang
@@ -102,7 +101,7 @@ build() {
     *) echo -e "\E[1m\E[31mPlease answer Y or N! \E[0m" ;;
     esac
   done
-  
+
   cmake -S llvm -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -183,23 +182,40 @@ package() {
     mv "${pkgdir:?}/usr/include/llvm/Config/llvm-config"{,-64}.h
     cp "${srcdir:?}/llvm-config.h" "${pkgdir:?}/usr/include/llvm/Config/llvm-config.h"
   fi
+  
+  # Symlink LLVMgold.so from /usr/lib/bfd-plugins
+  # https://bugs.archlinux.org/task/28479
+  mkdir -p "${pkgdir:?}/usr/lib/bfd-plugins"
+  ln -s ../LLVMgold.so "${pkgdir:?}/usr/lib/bfd-plugins/LLVMgold.so"
 
   # Clang
   mv "${pkgdir:?}"/usr/libexec/{ccc,c++}-analyzer "${pkgdir:?}/usr/lib/clang/"
   rm -fr "${pkgdir:?}/usr/libexec"
   sed -i 's|libexec|lib/clang|' "${pkgdir:?}/usr/bin/scan-build"
 
+  # Python bindings
   for _py in 2.7 3.9; do
-    install -d "${pkgdir:?}/usr/lib/python$_py/site-packages"
-    cp -a clang/bindings/python/clang "${pkgdir:?}/usr/lib/python$_py/site-packages/"
-    _python${_py%%.*}_optimize "${pkgdir:?}/usr/lib/python$_py"
+    install -d "${pkgdir:?}/usr/lib/python${_py}/site-packages"
+    cp -a llvm/bindings/python/llvm "${pkgdir:?}/usr/lib/python${_py}/site-packages/"
+    cp -a clang/bindings/python/clang "${pkgdir:?}/usr/lib/python${_py}/site-packages/"
+    _python${_py%%.*}_optimize "${pkgdir:?}/usr/lib/python${_py}"
   done
 
   sed -i '1s|/usr/bin/env python$|&2|' \
-    "${pkgdir:?}"/usr/share/clang/run-find-all-symbols.py
-  touch -d @"${SOURCE_DATE_EPOCH}" "${pkgdir:?}"/usr/share/clang/run-find-all-symbols.py
+    "${pkgdir:?}/usr/share/clang/run-find-all-symbols.py"
+  touch -d @"${SOURCE_DATE_EPOCH}" "${pkgdir:?}/usr/share/clang/run-find-all-symbols.py"
 
   _python2_optimize "${pkgdir:?}/usr/share/clang"
   _python3_optimize "${pkgdir:?}/usr/share" -x 'clang-include-fixer|run-find-all-symbols'
+
+  # Licenses
+  install -Dm644 "${srcdir:?}/llvm-project/llvm/LICENSE.TXT" "${pkgdir:?}/usr/share/licenses/${pkgname}/llvm-LICENSE"
+  install -Dm644 "${srcdir:?}/llvm-project/clang/LICENSE.TXT" "${pkgdir:?}usr/share/licenses/${pkgname}/clang-LICENSE"
+  install -Dm644 "${srcdir:?}/llvm-project/clang-tools-extra/LICENSE.TXT" "${pkgdir:?}/usr/share/licenses/${pkgname}/clang-tools-extra-LICENSE"
+  install -Dm644 "${srcdir:?}/llvm-project/compiler-rt/LICENSE.TXT" "${pkgdir:?}/usr/share/licenses/${pkgname}/compiler-rt-LICENSE"
+  install -Dm644 "${srcdir:?}/llvm-project/lld/LICENSE.TXT" "${pkgdir:?}/usr/share/licenses/${pkgname}/lld-LICENSE"
+  install -Dm644 "${srcdir:?}/llvm-project/lldb/LICENSE.TXT" "${pkgdir:?}/usr/share/licenses/${pkgname}/lldb-LICENSE"
+  install -Dm644 "${srcdir:?}/llvm-project/polly/LICENSE.txt" "${pkgdir:?}/usr/share/licenses/${pkgname}/polly-LICENSE"
+  install -Dm644 "${srcdir:?}/llvm-project/openmp/LICENSE.txt" "${pkgdir:?}/usr/share/licenses/${pkgname}/openmp-LICENSE"
 
 }
