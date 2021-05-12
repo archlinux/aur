@@ -1,5 +1,5 @@
 pkgbase = scrap_engine-git
-	pkgver = 249.5569b69
+	pkgver = 254.8b473af
 	pkgrel = 1
 	url = https://github.com/lxgr-linux/scrap_engine
 	arch = any
