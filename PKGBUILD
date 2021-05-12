@@ -11,11 +11,11 @@ pkgname=(
 )
 _pkgname="mailchecker"
 pkgver="4.0.7"
-pkgrel="1"
+pkgrel="2"
 pkgdesc='Definition and optimized evaluation of mathematical expressions on Numpy arrays.'
 arch=('any')
 url='https://github.com/FGRibreau/mailchecker/'
-license=('BSD')
+license=('MIT')
 source=("${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('7ae8908b5bff1c2827058c9925fb4b38539d9c77bcfd902a3edfa4499574e82e')
 makedepends=(
