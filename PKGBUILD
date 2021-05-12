@@ -14,9 +14,9 @@ source=("https://github.com/PureWriter/desktop/releases/download/$pkgver/PureWri
         'purewriter.desktop')
   
 md5sums=('2bf7bbe1f16332d9fc1b721f1dd0e88e'
-         '2c9a437895a327b625ead730ec3ec64e'
+         'b61759ee70b9225f2a5738f724e5c480'
          'ab8d4aef028cd77876b8cf67e4439afb'
-         '07bcca5a34e0dd58b40bb66b32b8dd5c')
+         '43d078956e3f3a981329e6233747a078')
 
 prepare(){
     cd ${srcdir}
