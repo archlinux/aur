@@ -1,3 +1,4 @@
+# Maintainer: Dylan Barker <dthomasbarker@gmail.com>
 _pkgname=dwm
 pkgname=$_pkgname-dylan-git
 pkgver=6.2.r6.8b45601
