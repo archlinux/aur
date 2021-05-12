@@ -1,0 +1,30 @@
+pkgbase = dwm-ashin-git
+	pkgdesc = A heavily-patched and my customized build of dwm.
+	pkgver = 6.2
+	pkgrel = 1
+	url = https://github.com/ashincoder/dwm-ashin
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = make
+	depends = libx11
+	depends = libxinerama
+	depends = nerd-fonts-fira-code
+	depends = ttf-joypixels
+	depends = freetype2
+	depends = st-ashin-git
+	depends = dmenu-ashin-git
+	depends = libxft-bgra-git
+	depends = dwmblocks-ashin-git
+	optdepends = surf-ashin-git: Lightweight browser
+	optdepends = dmenu-ashin-git: For better working of the programs
+	optdepends = st-ashin-git: Terminal ready to use out of the box
+	optdepends = tabbed-ashin-git: for tabs in st and surf
+	optdepends = slock-ashin-git: for locking the session
+	provides = dwm
+	conflicts = dwm
+	source = git+https://github.com/ashincoder/dwm-ashin
+	md5sums = SKIP
+
+pkgname = dwm-ashin-git
+
