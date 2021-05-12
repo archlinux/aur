@@ -1,20 +1,20 @@
 pkgname=sakura-gtk2
 _pkgname=sakura
 pkgver=2.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A terminal emulator based on GTK and VTE with latest GTK2 
 release"
 arch=('i686' 'x86_64')
-url="http://www.pleyades.net/david/projects/sakura"
+url="https://github.com/dabisu/sakura"
 license=('GPL')
-depends=('vte' 'libxft' 'desktop-file-utils')
+depends=('vte-legacy' 'libxft' 'desktop-file-utils' 'vte-common')
 makedepends=('cmake')
 provides=('sakura')
 conflicts=('sakura')
-source=(http://pleyades.net/david/projects/$_pkgname/$_pkgname-$pkgver.tar.bz2)
+source=(https://github.com/dabisu/sakura/archive/refs/tags/SAKURA_2_4_2.tar.gz)
 install=sakura.install
 
-md5sums=('46669519c77f7402b2de24cdefe251bb')
+md5sums=('ce573935677787dac2e01fbf5b9f20b1')
 
 build() {
   cd $srcdir/${_pkgname}-${pkgver}
