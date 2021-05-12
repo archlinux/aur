@@ -3,15 +3,21 @@ pkgbase = phylosuite
 	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/dongzhang0725/PhyloSuite
-	arch = x86_64
-	license = GPL3
-	depends = python>=3.6
-	source = https://github.com/dongzhang0725/PhyloSuite/releases/download/1.2.2/PhyloSuite_v1.2.2_Linux.tar.gz
-	source = PhyloSuite.desktop
+	arch = any
+	license = APL3
+	depends = python36
+	depends = python-biopython
+	depends = python-dateutil
+	depends = python-psutil
+	depends = python-pyqt5
+	depends = python-reportlab
+	depends = python-suds
+	source = https://github.com/dongzhang0725/PhyloSuite/archive/refs/tags/1.2.2.zip
 	source = PhyloSuite.png
-	md5sums = 9d43b3b2b9b076071f29f7c8f0689bd5
-	md5sums = 29b089eb8ab6a37d184f74cdfd21c569
+	source = PhyloSuite.desktop
+	md5sums = 4092120ff4ad732facd96e3904356e6e
 	md5sums = aca08e388f8d6a180a570b31ccebe764
+	md5sums = 523bcd2d9dfc8a73b23edc9501ec310f
 
 pkgname = phylosuite
 
