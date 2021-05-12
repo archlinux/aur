@@ -1,0 +1,21 @@
+pkgbase = dmenu-dylan-git
+	pkgdesc = Dylan's build of dynamic menu for X
+	pkgver = 5.0.r33.dbb6ae1
+	pkgrel = 1
+	url = https://github.com/dylantjb/dmenu
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = sh
+	depends = libxinerama
+	depends = libxft
+	optdepends = libxft-bgra: if dmenu crashes when displaying emojis
+	optdepends = libxft-bgra-git: if dmenu crashes when displaying emojis
+	provides = dmenu
+	conflicts = dmenu
+	source = git://github.com/dylantjb/dmenu
+	sha256sums = SKIP
+
+pkgname = dmenu-dylan-git
+
