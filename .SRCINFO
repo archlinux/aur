@@ -1,7 +1,7 @@
 pkgbase = purescript-language-server
 	pkgdesc = Node-based Language Server Protocol server for PureScript.
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nwolverson/purescript-language-server
 	arch = any
 	license = MIT
