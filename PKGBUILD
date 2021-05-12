@@ -1,3 +1,4 @@
+# Maintainer: Dylan Barker <dthomasbarker@gmail.com>
 _pkgname=dmenu
 pkgname=$_pkgname-dylan-git
 pkgver=5.0.r33.dbb6ae1
