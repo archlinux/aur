@@ -1,3 +1,4 @@
+# Maintainer: Dylan Barker <dthomasbarker@gmail.com>
 _pkgname=st
 pkgname=$_pkgname-dylan-git
 pkgver=0.8.4.r1134.25b5da9
