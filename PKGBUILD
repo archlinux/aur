@@ -4,7 +4,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=glib2-patched-thumbnailer
-pkgver=2.68.1
+pkgver=2.68.2
 pkgrel=1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
@@ -64,7 +64,7 @@ build() {
 #}
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 
   install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 *.hook
   install -D gio-querymodules.script "$pkgdir/usr/share/libalpm/scripts/gio-querymodules"
