@@ -1,0 +1,14 @@
+pkgbase = plymouth-theme-aregression
+	pkgdesc = A sleek boot up progress bar plymouth animation for Arch Linux
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/joe733/plymouth-theme-aregression
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = plymouth
+	source = git+https://github.com/joe733/plymouth-theme-aregression.git
+	md5sums = skip
+
+pkgname = plymouth-theme-aregression
+
