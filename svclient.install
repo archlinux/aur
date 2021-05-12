@@ -5,9 +5,9 @@ pre_install() {
 
 
 post_install() {
-    systemctl stop svmgrsvc
+    systemctl start svmgrsvc
     systemctl enable svmgrsvc
-    systemctl stop svmonitor
+    systemctl start svmonitor
     systemctl enable svmonitor
 }
 

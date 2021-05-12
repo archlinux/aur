@@ -1,6 +1,6 @@
 pkgbase = svclient
 	pkgdesc = kylin software VPN
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/dingjingmaster/svclient
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = svclient
 	makedepends = git
 	makedepends = qt5-base
 	depends = qt5-base
-	source = https://github.com/dingjingmaster/svclient/archive/1.3.0.tar.gz
-	sha256sums = e60ec8df710696a0fd48aa531b19521385083d5beb7f153138523c1303379deb
+	source = https://github.com/dingjingmaster/svclient/archive/1.4.0.tar.gz
+	sha256sums = 3695e68c7d3ef9d7048974d405310647a16ccab6239e984884c5a30c6039b6a5
 
 pkgname = svclient
 
