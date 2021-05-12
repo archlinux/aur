@@ -2,7 +2,7 @@
 
 pkgname=bitwarden-cli-bin
 _pkgname=bitwarden-cli
-pkgver=1.15.1
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='Natively packaged versions of the bitwarden cli'
 arch=(x86_64)
@@ -25,5 +25,5 @@ package() {
   install -Dm644 completion "$pkgdir/usr/share/zsh/vendor-completions/_bw"
 }
 
-sha512sums=('ae122984d368f4fc5af9a709fd4d2201521b9fb30d241a22178e37a0e8e016b7ebf408a27492a982811405af2615e09e94de9eca82cdb0026cc43bc7167e1000')
+sha512sums=('0566809bf302b6030f5a2190b6a2a13772dca052326e1b7f44ca1e801fa1b42538ca90f0f84aa289ac4507994d2ee8b20d621bb579d1f35561e7f28c11a5ade0')
 # vim:set ts=2 sw=2 et:
