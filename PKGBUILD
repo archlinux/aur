@@ -1,7 +1,7 @@
 # Maintainer: Dylan Barker <dthomasbarker@gmail.com>
 _pkgname=dwl
 pkgname=$_pkgname-dylan-git
-pkgver=0.2.1.r13.c58d8b1
+pkgver=0.2.1.r14.7f932e3
 pkgrel=1
 pkgdesc="Dylan's build for hackable dynamic tiling Wayland compositor (dwm for Wayland)"
 arch=('x86_64')
