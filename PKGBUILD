@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=albert-git
-pkgver=v0.16.1.r7.g34c00d7
-pkgrel=2
+pkgver=v0.17.2.r2.g447f957c
+pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher."
 arch=('any')
 url="https://github.com/albertlauncher"

@@ -2,4 +2,4 @@ src
 pkg
 tags
 mirrors
-*pkg.tar.xz
+*.pkg.tar.*
