@@ -5,7 +5,7 @@ pkgname=libreoffice-slim-fixed-git
 _gitname=core
 pkgver=7.2.0.r2009af1c0
 pkgrel=1
-pkgdesc="A slimmed down git version of LibreOffice"
+pkgdesc="A slimmed down git version of LibreOffice with launchers & fixed"
 arch=('x86_64')
 url="https://www.libreoffice.org/community/developers/"
 license=('GPL')
@@ -28,7 +28,9 @@ makedepends=('curl>=7.20.0' 'hunspell>=1.2.8' 'python>=3.7' 'libwpd>=0.9.2' 'lib
 depends=(python)
 source=('git+https://gerrit.libreoffice.org/core.git'
         'git+https://gitlab.com/chaotic-aur-pkgbuilds/libreoffice-slim-git.git')
-
+md5sums=('SKIP'
+        'SKIP')
+        
 pkgver() {
     cd "${srcdir}/${_gitname}"
     printf "7.2.0.r%s" "$(git log --pretty=%h | head -n1)"

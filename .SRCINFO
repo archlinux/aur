@@ -1,5 +1,5 @@
 pkgbase = libreoffice-slim-fixed-git
-	pkgdesc = A slimmed down git version of LibreOffice
+	pkgdesc = A slimmed down git version of LibreOffice with launchers & fixed
 	pkgver = 7.2.0.r2009af1c0
 	pkgrel = 1
 	url = https://www.libreoffice.org/community/developers/
@@ -93,5 +93,7 @@ pkgbase = libreoffice-slim-fixed-git
 	depends = python
 	source = git+https://gerrit.libreoffice.org/core.git
 	source = git+https://gitlab.com/chaotic-aur-pkgbuilds/libreoffice-slim-git.git
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = libreoffice-slim-fixed-git
