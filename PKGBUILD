@@ -35,7 +35,7 @@ package() {
 	rm "${pkgdir}/opt/${pkgname}/version"
 	rm -rf "${pkgdir}/usr/lib/"
 
-	install -Dm644 "${pkgdir}/opt/saleae-logic-alpha/resources/linux/99-SaleaeLogic.rules" "${pkgdir}/etc/udev/rules.d/99-SaleaeLogic.rules"
+	install -Dm644 "${pkgdir}/opt/${pkgname}/resources/linux/99-SaleaeLogic.rules" "${pkgdir}/etc/udev/rules.d/99-SaleaeLogic.rules"
 
 	# Fix permissions (example: 700->755, 640->644)
 	find "${pkgdir}"   -perm "/111" -exec chmod 755 \{\} \;
