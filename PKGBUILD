@@ -2,10 +2,10 @@
 
 pkgname=python-dmsh
 _name=dmsh
-pkgver=0.2.13
+pkgver=0.2.14
 pkgrel=1
 pkgdesc="Simple mesh generator inspired by distmesh."
-arch=('any')
+arch=('x86_64')
 url="https://github.com/nschloe/dmsh"
 license=('GPL')
 optdepends=('python-matplotlib')
@@ -13,7 +13,7 @@ makedepends=('python'
 	'python-setuptools')
 depends=('python-meshplex' 'python-numpy' 'python-scipy')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('2d0f35bc9b53d58276776498b7fa9c05646a0a3641fa552ec4ca73d1f8e8bd9b')
+sha256sums=('6296c514dc7db8dbbedfcbd2b0aadfb8b5a3415241985eaa9f88686a635f6eca')
 
 build() {
 	cd "$srcdir/$_name-$pkgver"
