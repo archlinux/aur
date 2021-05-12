@@ -2,7 +2,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-truecolor-wide-glyphs
 pkgver=9.22
-pkgrel=2
+pkgrel=3
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with true color and enhanced glyphs support'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -16,6 +16,7 @@ source=(http://dist.schmorp.de/rxvt-unicode/$_pkgname-$pkgver.tar.bz2
     'urxvtc.desktop'
     'urxvt-tabbed.desktop'
     'resize-font'
+    'keyboard-select'
     'sgr-mouse-mode.patch'
     '24-bit-color.patch'
     'enable-wide-glyphs.patch'
@@ -27,6 +28,7 @@ sha1sums=('e575b869782fbfed955f84f48b204ec888d91ba1'
           '62c4ffecfce6967def394dd4d418b68652372ea2'
           'cd204d608d114d39c80331efe0af0231ad6b7e18'
           'a61366659c73bd551fa99a8415bb71e033897598'
+          '9883d0c31b45f8521829ea6a2041f2e9eb7abe6a'
           'dfbc8729c545105eff21e20ef3a4a3841a68a192'
           '9f5db305863b17175e72f9e2d4a78d0d7f25fd34'
           'd9f3b52b273d13fbd4089a7869ab2e70bf190bc9'
@@ -98,6 +100,9 @@ package() {
 
     # install perl script resize-font (https://github.com/simmel/urxvt-resize-font)
     install -Dm 644 resize-font "$pkgdir/usr/lib/urxvt/perl/resize-font"
+
+    # install perl script keyboard-select (https://github.com/muennich/urxvt-perls)
+    install -Dm 644 keyboard-select "$pkgdir/usr/lib/urxvt/perl/keyboard-select"
 
     cd $_pkgname-$pkgver
 
