@@ -3,7 +3,7 @@
 
 pkgname=granite-git
 _pkgname=granite
-pkgver=6.0.0.r22.d55a14fa
+pkgver=6.0.0.r34.a59e1284
 pkgrel=1
 pkgdesc='Library that extends GTK with common widgets and utilities'
 arch=(x86_64)
