@@ -3,8 +3,8 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=rusolver-bin
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="Fast and accurate DNS resolver"
 arch=('x86_64')
 url="https://github.com/Edu4rdSHL/rusolver"
@@ -14,9 +14,9 @@ provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver::$url/releases/download/$pkgver/${pkgname%-bin}-linux"
                "$pkgname-$pkgver-README.md::$url/raw/$pkgver/README.md"
                "$pkgname-$pkgver-man.1::$url/raw/$pkgver/${pkgname%-bin}.1")
-sha256sums_x86_64=('176e3d6486cf60797f7132aef78c0d22dc349ea1ae91b60efca81033af6e4317'
-                   '067b297fe6b24e3596a7fd9d697e7292fdb51f814f0c2ee62991c62d6fc43dcf'
-                   'f5f473d0abc8f5387b1a21a0ede827fbc5d961d6641b765b2d6ccbfa44360a32')
+sha256sums_x86_64=('8b932b099eb16f537cc998cf8681947e51269aa14d17325c5832278f8e865378'
+                   '9da7191675073eb69dfd6e8f0c78c590afeed2c7ccfc468171d9746391410a80'
+                   '2468f87072c8f604be5bffe593fda65b99e573954b2835d789a47605940c7333')
 
 package() {
   install -Dm 755 "$pkgname-$pkgver" "${pkgdir}/usr/bin/${pkgname%-bin}"
