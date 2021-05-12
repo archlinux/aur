@@ -13,7 +13,7 @@ optdepends=(
 	'dmenu: program launcher'
 	'st: terminal emulator')
 makedepends=(git)
-source=(git://github.com/dylantjb/dwm)
+source=("git+$url")
 sha256sums=('SKIP')
 provides=($_pkgname)
 conflicts=($_pkgname)

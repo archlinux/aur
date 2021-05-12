@@ -16,7 +16,7 @@ pkgbase = dwm-dylan-git
 	optdepends = st: terminal emulator
 	provides = dwm
 	conflicts = dwm
-	source = git://github.com/dylantjb/dwm
+	source = git+https://github.com/dylantjb/dwm
 	sha256sums = SKIP
 
 pkgname = dwm-dylan-git
