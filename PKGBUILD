@@ -7,15 +7,14 @@ arch=(x86_64 i686)
 url="https://github.com/ashincoder/dwm-ashin"
 license=('MIT')
 groups=()
-depends=(libx11 libxinerama nerd-fonts-fira-code ttf-joypixels freetype2 st-ashin-git dmenu-ashin-git libxft-bgra-git scripts-git)
+depends=(libx11 libxinerama nerd-fonts-fira-code ttf-joypixels freetype2 st-ashin-git dmenu-ashin-git libxft-bgra-git )
 makedepends=(make)
 checkdepends=()
 optdepends=('surf-ashin-git: Lightweight browser' 
             'dmenu-ashin-git: For better working of the programs'
             'st-ashin-git: Terminal ready to use out of the box'
             'tabbed-ashin-git: for tabs in st and surf'
-            'slock-ashin-git: for locking the session'
-            'scripts-git: my scripts for full functionality')
+            'slock-ashin-git: for locking the session')
 provides=(dwm)
 conflicts=(dwm)
 replaces=()
