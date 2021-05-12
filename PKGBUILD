@@ -48,7 +48,7 @@ _use_current=
 
 pkgbase=linux-cacule
 # pkgname=('linux-cacule' linux-cacule-headers)
-_major=5.12.2
+_major=5.12.3
 #_minor=1
 #_minorc=$((_minor+1))
 #_rcver=rc8
@@ -56,7 +56,7 @@ pkgver=${_major}
 #_stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=6
+pkgrel=1
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -84,13 +84,13 @@ source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz
         "${_patchsource}/btrfs-patches-v3/0001-btrfs-patches.patch"
         "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
         "${_patchsource}/pf-patches-v2/0001-pf-patches.patch"
-        "${_patchsource}/lru-patches-v3/0001-lru-patches.patch"
+        "${_patchsource}/lru-patches-v4/0001-lru-patches.patch"
         "${_patchsource}/ntfs3-patches/0001-ntfs3-patches.patch"
         "${_patchsource}/zstd-dev-patches-v3/0001-zstd-dev-patches.patch"
         "${_patchsource}/clearlinux-patches/0001-clearlinux-patches.patch"
         "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch" )
 
-sha512sums=('ddbe371a564d6a12e638794a3833b5aaf605b4fc5adb123cbb6a26e41fe084c043041dd18a988a44d2a27848c1934feb5ff5459d121e8ea726610307289248e9'
+sha512sums=('295a943bb0d2366715c844a6e2ca424d17f4caceab8c9e095250851857928902a5deb8aa51cff5c3c7e982d168f79f4df3a39bdd47ec22b51237c91732dc8af0'
             '52f19783cc560a5688f4914db70e1f59d0e549cbf1a057d891e38f6e9436691d51c18a1d78f13173a970d8f4153275c53f9ab093c01b59d283f0375f072930ab'
             '88f9f1e6ea206068fd029566e4610c16b7c3007f10363c7db37cd922fe75646437d2e4814317bc292d06eff7e9ebd29d8cd1ee82c8abf45ddd1843c1ff55f5c7'
             'a57b95e3c38378f98f29fcf405f0e4ec6c125da95629f59f60722909926131497df460f4938d9d873db584cf567122409407e29345b4545d885547c282be28f5'
@@ -108,7 +108,7 @@ sha512sums=('ddbe371a564d6a12e638794a3833b5aaf605b4fc5adb123cbb6a26e41fe084c0430
             '2c074e0d747eefc912e94d3109d91d51187e439e85d7cc50c292892c3d1ccdc14d32d4d97a57be8322d3a2ac462b3ec1956c39821639eefd5f72144ebacd0dd2'
             '1b3b48246fe70e8ca7390cacacf560696c1d98604a7716ac32df8f3d7fc7cc2ab733ab24e372fffa63016344f2e4ed078f7d597c3c1261f0ca3ff1c87a13dcb9'
             '076a48767614ec97a84ccefa5795e4f36973f64a7728a9f716d5d9ecb6f6907ffcc74f7fab845e9d9aef3ef5d3d4df4e03f6c5a755c7fdd4bc43751003902e71'
-            'e2a205ff346a3d5b077e8ee70ac60f440335738dba59820abea0ec3f87a516c2a47fec2ddc59f7641bab10df9f34f3fb7d73509791fff9b49fa197028afbd532'
+            'd428d3f54634b91e41cac279f7c7b708a174d9cac085b7497802c5a50f77bbfcfdd8799c1db3351ba18e8316685b729d292bb45de0da443762dbd1b87cbc7dad'
             '6d837eed8014bbb09b580867ed94fa03373a6a063ee68a0337109aff20b0e469c985d42b71704d08f4ea30d359cebd0a4a801a5ef6ec02c21331e40e5be1e602'
             'db592b1e12651ae494f1414079a3f268175776a067c69148387e05f86b6656308c810eb20cc5c1fe7804030abcb8c37ba5ab7480660c224c591f2718569c2cc9'
             'a441e14f4fa25e771d51e2d0e5cb626a8eddc4dfd0e9e91c6585b35cdf4e238bc56c76ad81aa269f25067cb60eeb6f9d431b710d6f40349867cbae73b434b3bd'
