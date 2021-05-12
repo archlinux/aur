@@ -1,7 +1,7 @@
 pkgbase = snownews
 	pkgdesc = RSS feed reader for the command-line
 	pkgver = 1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/msharov/snownews
 	arch = x86_64
 	license = GPL3

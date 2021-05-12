@@ -5,7 +5,7 @@
 
 pkgname=snownews
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="RSS feed reader for the command-line"
 arch=('x86_64')
 url="https://github.com/msharov/snownews"
@@ -16,7 +16,7 @@ sha256sums=('90d2611b3e3a00bc14a8869365d366ad1dab17ea1687857440159fc7137c3bed')
 
 build() {
   cd $pkgname-$pkgver
-  ./configure --prefix="$pkgdir/usr"
+  ./configure --prefix="/usr"
   make
 }
 
