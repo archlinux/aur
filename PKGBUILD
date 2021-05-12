@@ -10,7 +10,7 @@ arch=('any')
 url=https://github.com/gorhill/uBlock
 license=('GPL3')
 groups=('librewolf-addons')
-makedepends=('git' 'python' 'zip')
+makedepends=('git' 'python' 'strip-nondeterminism' 'zip')
 source=("git+$url.git#commit=$_commit?signed"
         "git+https://github.com/uBlockOrigin/uAssets.git")
 b2sums=('SKIP' 'SKIP')

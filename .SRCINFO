@@ -8,6 +8,7 @@ pkgbase = librewolf-ublock-origin
 	license = GPL3
 	makedepends = git
 	makedepends = python
+	makedepends = strip-nondeterminism
 	makedepends = zip
 	source = git+https://github.com/gorhill/uBlock.git#commit=0718d816e1f509f0b36cdb1cf3f490a0045efe99?signed
 	source = git+https://github.com/uBlockOrigin/uAssets.git
