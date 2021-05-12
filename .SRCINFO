@@ -1,0 +1,19 @@
+pkgbase = slock-ashin-git
+	pkgdesc = A suckless locker customized in my own way with dwm logo.
+	pkgver = 20170325.35633d4.r3.ae9ee13
+	pkgrel = 1
+	url = https://github.com/ashincoder/slock-ashin.git
+	arch = x86_64
+	arch = i686
+	license = MIT
+	checkdepends = dmenu-ashin-git
+	makedepends = git
+	makedepends = dmenu-ashin-git
+	depends = libxrandr
+	provides = slock
+	conflicts = slock
+	source = git+https://github.com/ashincoder/slock-ashin.git
+	md5sums = SKIP
+
+pkgname = slock-ashin-git
+
