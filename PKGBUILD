@@ -24,17 +24,12 @@ noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
-build() {
-  cd fetchy
-  make
-
-}
 
 package() {
   cd fetchy
   mkdir -p ${pkgdir}/opt/${pkgname}
   cp -rf * ${pkgdir}/opt/${pkgname}
-  make install
+  sudo make install
   
 }
 
