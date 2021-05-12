@@ -4,7 +4,7 @@ _fname=reem-kufi
 _pname=ReemKufi
 pkgbase=$_fname-font
 pkgname=(otf-$_fname ttf-$_fname)
-pkgver=0.9
+pkgver=1.0
 pkgrel=1
 pkgdesc='A Kufic typeface based on early Kific modeles retrofitted to the Fatimid Kufic grid'
 arch=('any')
@@ -14,7 +14,7 @@ provides=("$pkgbase")
 makedepends=('fontforge')
 provides=("$pkgbase")
 source=("$url/releases/download/v$pkgver/$_pname-$pkgver.zip")
-sha256sums=('f671d46e6898e0f575385f5c09341e0e974352fdd911feb6a31816675befbb01')
+sha256sums=('3b6ff7c96e3488640a7e73a3750c95a491fb07f7ffe3f050f0aab61af3bd084e')
 
 package_otf-reem-kufi() {
   cd "$_pname-$pkgver"
