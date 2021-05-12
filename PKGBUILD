@@ -2,7 +2,7 @@
 
 pkgname=papermc
 _pkgver=1.16.5
-_build=558
+_build=662
 _license_commit=4a7962c
 pkgver="${_pkgver}+b${_build}"
 pkgrel=1
@@ -26,7 +26,7 @@ source=("papermc.${pkgver}.jar"::"https://papermc.io/api/v1/paper/${_pkgver}/${_
 	"papermc.sysusers"
 	"LICENSE_${pkgver}.md"::"https://raw.githubusercontent.com/PaperMC/Paper/${_license_commit}/LICENSE.md")
 noextract=("papermc.${pkgver}.jar")
-sha512sums=('128382cf9dcd0b7871ef2922986adf8074fa3138d56ae9fd4009b22c81f6de47111ad1f6f04f1a380ad0bf96feb8371dbd6617b9b71e2b82689999e6424cca66'
+sha512sums=('ac3ff826442f8f35a16d7fe198dd67a51452be5566081d00556a9b2afff5a56037738780469654f85d25c58dc41a98b126ba361c673aed46587546844195ae1e'
             'a4fcc9f28436c0163e9414f2793fcbd4f6ea74772230cdff4a628246eae2a8008688b3dfb94d433f8f0887cd7eea3fe43ce25f9d5812d46e62179ff315b62895'
             '51c5345155e8640d4f1eaef0c8cfb890ae46063f2d4e7a0fe181ad4c8ff7b96fea88b0f9fc74031d589dfd61602f37b440f183ca1859835930fe69d37508cd42'
             'f29c4044d9e3cc5ab137c21f7e62399b36d7e1f777d5558a39f7b4a01de75bdf2de0b8678e424accc03934ca7db9ebb6a22c78c8c4497759287dd55e1c3eb456'
