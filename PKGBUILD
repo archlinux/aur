@@ -3,12 +3,12 @@
 
 pkgname=fmodstudio
 pkgver=2.02.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop application for adaptive audio content creation"
 arch=('x86_64')
 url="https://fmod.com"
 license=('custom')
-depends=('alsa-lib' 'libxcursor' 'libxcomposite' 'freetype2' 'nss' 'qt5-declarative' 'hicolor-icon-theme' 'libxtst')
+depends=('alsa-lib' 'libxcursor' 'libxcomposite' 'freetype2' 'nss' 'hicolor-icon-theme' 'libxtst')
 source=('LICENSE.html')
 sha256sums=('f828e794ce468d1aa47f1a4436af9fbf2e95eac0e3051c1eefa44ab1a7c9eab8')
 makedepends=('jq')

@@ -1,7 +1,7 @@
 pkgbase = fmodstudio
 	pkgdesc = Desktop application for adaptive audio content creation
 	pkgver = 2.02.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fmod.com
 	arch = x86_64
 	license = custom
@@ -11,7 +11,6 @@ pkgbase = fmodstudio
 	depends = libxcomposite
 	depends = freetype2
 	depends = nss
-	depends = qt5-declarative
 	depends = hicolor-icon-theme
 	depends = libxtst
 	source = LICENSE.html
