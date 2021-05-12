@@ -2,8 +2,8 @@
 
 _pkgname=busylight-for-humans
 pkgname=busylight
-pkgver=0.7.6
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc='Control USB connected presence lights from multiple vendors'
 arch=('i686' 'x86_64')
 url='https://github.com/JnyJny/busylight'
@@ -14,7 +14,7 @@ depends=(
   'python-typer' 'python-webcolors' 'uvicorn' 'python-fastapi'
 )
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('68168c0347820e8ae139baa29819388584a6fa8e4de45077efd3baeea58c46e1')
+sha256sums=('deb2a22b394c384dae5d3a0ad1307cf821f37b647a582fd7fa06567c5b6cc4c4')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}/${pkgname}"
