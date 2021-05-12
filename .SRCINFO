@@ -6,10 +6,10 @@ pkgbase = tiny-irc-client-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = rust-nightly
 	depends = openssl
 	depends = dbus
-	provides = tiny
+	provides = tiny-irc-client
+	conflicts = tiny-irc-client
 	source = git+https://github.com/osa1/tiny
 	sha512sums = SKIP
 
