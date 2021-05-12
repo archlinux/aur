@@ -15,7 +15,7 @@ source=("https://github.com/PureWriter/desktop/releases/download/$pkgver/PureWri
   
 md5sums=('2bf7bbe1f16332d9fc1b721f1dd0e88e'
          'b61759ee70b9225f2a5738f724e5c480'
-         'ab8d4aef028cd77876b8cf67e4439afb'
+         'd24432d9cbba30b03c9f372405166ed9'
          '43d078956e3f3a981329e6233747a078')
 
 prepare(){
