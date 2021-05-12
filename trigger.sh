@@ -13,7 +13,7 @@ git push
   cd home:nicman23/thunderbird-appmenu-bin/
   osc commit -m $ver_msg
 )
-exit
+
 [ -e thunderbird-appmenu-bin ] || git clone ssh://aur@aur.archlinux.org/thunderbird-appmenu-bin.git
 cd thunderbird-appmenu-bin
 sed "s/^pkgver=.*/pkgver=${ver}/g" -i PKGBUILD
