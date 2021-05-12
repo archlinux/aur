@@ -18,9 +18,7 @@ source_armv7h=("$pkgname-$pkgver-armv7h::$url/releases/download/v$pkgver/tt-linu
 source_aarch64=("$pkgname-$pkgver-aarch64::$url/releases/download/v$pkgver/tt-linux_arm64")
 
 noextract=(
-	"$pkgname-$pkgver-$CARCH"
 	"tt.1.gz"
-	"$pkgname-$pkgver-LICENSE"
 )
 
 b2sums=('e71a997ee62c49cf86dd5080faa035b4806bb1c0a8ea280e46f75540347c441f9b127fa41f2ee2d11e9af50ceac10e01e7e8570561c0bf4c5ea748244fae5073'
@@ -31,8 +29,6 @@ b2sums_armv7h=('6e9092db38e6f2f7b97bc0ca6cba1e8eb2eaf0490ea6aece40b2e02bcbc00435
 b2sums_aarch64=('b8852c900c4ea97ceeb7123f87c63b7269a25bcb4cd347df8105a9375652a49b377c903bcde4e531429b77a0eb699b0a9f78661911df3de887b7d394333d8b87')
 
 package() {
-	cd "$srcdir"
-
 	install -Dm755 "$pkgname-$pkgver-$CARCH" "$pkgdir/usr/bin/${pkgname%-bin}"
 	install -Dm644 "tt.1.gz" -t "$pkgdir/usr/share/man/man1"
 	install -Dm644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-bin}/LICENSE"
