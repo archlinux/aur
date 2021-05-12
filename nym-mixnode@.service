@@ -10,8 +10,7 @@ ExecStart=/usr/bin/nym-mixnode run --id %i
 KillSignal=SIGINT
 Restart=on-failure
 RestartSec=30
-StartLimitInterval=350
-StartLimitBurst=10
+LimitNOFILE=65536
 
 [Install]
 WantedBy=multi-user.target
