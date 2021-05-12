@@ -1,35 +1,24 @@
 # Maintainer: Dylan <dylan@psilly.com>
 
 _pkgbase=dogecoin
-pkgname=('dogecoin-daemon') # 'dogecoin-cli' 'dogecoin-tx')
-pkgver=1.14.2
-pkgrel=2
+pkgname=('dogecoin-daemon' 'dogecoin-cli' 'dogecoin-tx')
+pkgver=1.14.3
+pkgrel=1
 arch=('x86_64')
 url='https://dogecoin.com/'
 makedepends=('boost' 'libevent' 'zeromq')
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$_pkgbase/$_pkgbase/archive/v$pkgver.tar.gz"
-        "dogecoin.sysusers"
-        "dogecoin.tmpfiles"
-        "boost.patch"
-        "deque.patch"
-        "qpainterpath.patch")
-sha256sums=('416581d0af2df05ededb400b9434765eeaeb1396c9f3ef80a7b59a88c74a90cc'
+        'dogecoin.sysusers'
+        'dogecoin.tmpfiles')
+sha256sums=('01039ad91adf7d2815ab07b45f751426e1c8e230f868dc878d4f5ff8aefeee47'
             'eae13ea082a6431bb9552b5bddd8d1a5100ba883540c1e520685272d4307ca7f'
-            'eaf022a60cb3297a31148b047bd473eef5bb08ec011f6ed29869061a03342d94'
-            '7a9129b8a99ed6c93d409188a9111aeaa5ef556aabc194b10a0f0516693a6074'
-            'f5464a8082741adb0f72767a701ac6c43972f1d47da0c96ad20e268a4899baa7'
-            '80dfca2c5b354423aab4e88677d8b97a21bd9f2089d96a39fb3962944fb81b78')
-
+            'eaf022a60cb3297a31148b047bd473eef5bb08ec011f6ed29869061a03342d94')
 validpgpkeys=('1DDC450B45DB5ADCCF5DDA7F8E4217C6D47D946D')
 
 prepare() {
   cd "$_pkgbase-$pkgver"
   autoreconf -fi
-
-  patch -p2 <$srcdir/deque.patch
-  patch -p1 <$srcdir/qpainterpath.patch
-  patch -p2 <$srcdir/boost.patch
 }
 
 build() {
