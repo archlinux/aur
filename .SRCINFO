@@ -1,6 +1,6 @@
 pkgbase = pacman-hooks-strykar
 	pkgdesc = Various personal Pacman hooks
-	pkgver = 0.11sfg
+	pkgver = 0.12xfr
 	pkgrel = 1
 	url = https://github.com/strykar/pacman-hooks
 	arch = x86_64
