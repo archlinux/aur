@@ -8,7 +8,7 @@ pkgbase = plymouth-theme-aregression
 	makedepends = git
 	depends = plymouth
 	source = git+https://github.com/joe733/plymouth-theme-aregression.git
-	md5sums = skip
+	md5sums = SKIP
 
 pkgname = plymouth-theme-aregression
 
