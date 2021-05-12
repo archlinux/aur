@@ -2,7 +2,7 @@
 # Contributor: Tau Tsao <realturner at gmail.com>
 pkgname=xrdp-devel-git
 _pkgname=xrdp
-pkgver=0.9.13.r0.g0a669c5b
+pkgver=0.9.16.r0.ga4c7ee07
 pkgrel=1
 pkgdesc="An open source remote desktop protocol (RDP) server - GIT version"
 url="https://github.com/neutrinolabs/$_pkgname"
@@ -17,16 +17,16 @@ install="${pkgname}.install"
 source=("$pkgname::git+https://github.com/neutrinolabs/xrdp.git#branch=devel"
         "arch-config.diff")
 md5sums=('SKIP'
-         '5b0c7390d6380cc05cb76980426af9fc')
+         '68880e5311dd0fbb6d970278f52241f4')
 
 pkgver() {
   cd $pkgname
-  printf "0.9.13.r%s.g%s" "$(git rev-list --count v0.9.13..HEAD)" "$(git rev-parse --short HEAD)"
+  printf "0.9.16.r%s.g%s" "$(git rev-list --count v0.9.16..HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd $pkgname
-  patch -Np2 -b -z .orig < ../arch-config.diff
+  patch -Np2 -b -z .orig <../arch-config.diff
   ./bootstrap
 }
 
