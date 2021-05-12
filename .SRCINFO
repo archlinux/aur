@@ -1,5 +1,5 @@
 pkgbase = dwm-dylan-git
-	pkgdesc = Dylan's build of dynamic window manager for X, inspired by Luke Smith
+	pkgdesc = Dylan's build of dynamic window manager for X
 	pkgver = 6.2.r6.8b45601
 	pkgrel = 1
 	url = https://github.com/dylantjb/dwm
