@@ -1,7 +1,7 @@
 # Maintainer: luosoy <249799588@qq.com>
 
 pkgname=com.dingtalk.deepin
-pkgver=5.0.15deepin7
+pkgver=5.1.28.12deepin11
 pkgrel=1
 epoch=
 pkgdesc="Deepin Wine dingtalk"
@@ -20,9 +20,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/${pkgname}/${pkgname}_${pkgver}_i386.deb")
+source=("https://community-store-packages.deepin.com/appstore/pool/appstore/c/${pkgname}/${pkgname}_${pkgver}_i386.deb")
 noextract=("${pkgname}_${pkgver}_i386.deb")
-md5sums=('b4d7f7304cfb5b6b72a671f95f4064f1')
+md5sums=('2dddfc8f1e09648d83d9e344ef1d70a9')
 validpgpkeys=()
 
 prepare() {
