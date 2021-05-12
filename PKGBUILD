@@ -2,8 +2,8 @@
 
 # General package information
 pkgname=wtwitch
-pkgver=2.2.1
-pkgrel=2
+pkgver=2.2.2
+pkgrel=1
 pkgdesc="Terminal user interface for Twitch"
 url="https://github.com/krathalan/wtwitch"
 license=("GPL3")
@@ -17,9 +17,9 @@ optdepends=('mpv: for watching streams'
             'vlc: for watching streams')
 
 # Download information
-source=("${url}/archive/refs/tags/${pkgver}.tar.gz" "${url}/releases/download/${pkgver}/${pkgver}.tar.gz.asc")
-validpgpkeys=("B46B326273E4A1D21AAA3F6F529AC10050BD24EF")
-sha256sums=("aefaec7fc251355a60cc2a8272ada6e59000e5ea70bb5cabf287552b60dc625e" "129b1e796f28f5c5c4c8c52bb79e8fb982f35ccf2db49dc014c1beab208e604d")
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz" "${url}/releases/download/${pkgver}/${pkgver}.tar.gz.sig")
+validpgpkeys=("0C6B73F391FA26F0EBCD1F75C0F9AEE56E47D174")
+sha256sums=("0f649398814b6d2c61d4e5abf5d293ca998728afb24ac842db63f7a1c2bdd3e4" "2542c555665e3aab3e50d434d6b87154486330664412b0ea04491fa704d03237")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}/src"
