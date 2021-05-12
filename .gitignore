@@ -1,4 +1,4 @@
-synology-note-station-*
-src/
-pkg/
-.idea/
+/*
+!/PKGBUILD
+!/.SRCINFO
+
