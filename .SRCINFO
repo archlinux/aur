@@ -7,7 +7,6 @@ pkgbase = pyroscope-bin
 	license = APACHE
 	provides = pyroscope
 	conflicts = pyroscope
-	noextract = pyroscope-bin-0.0.30.tar.gz
 	backup = etc/pyroscope/server.yml
 	backup = etc/default/pyroscope
 	source = pyroscope-bin-0.0.30.tar.gz::https://dl.pyroscope.io/release/pyroscope-0.0.30-linux-amd64.tar.gz
