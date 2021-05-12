@@ -3,7 +3,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=fhc-git
-pkgver=0.5.0.r1.g24683bd
+pkgver=0.5.1.r0.ge37dedf
 pkgrel=1
 pkgdesc="Fast HTTP Checker (git)"
 arch=('x86_64')
