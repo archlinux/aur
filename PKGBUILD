@@ -8,7 +8,7 @@ arch=('x86_64')
 _gitname='pacman-hooks'
 url="https://github.com/strykar/${_gitname}"
 license=('GPL')
-depends=('pacman-contrib' 'nvidia-keylase-patch')
+depends=('pacman-contrib' 'nvidia-keylase-patch' 'pug' 'pacman-cleanup-hook' 'informant' 'overdue' 'kernel-modules-hook')
 makedepends=('git')
 source=("git+https://github.com/strykar/${_gitname}")
 md5sums=('SKIP')
@@ -23,4 +23,5 @@ package() {
 
     install -Dm 644 -t "${pkgdir}/usr/share/libalpm/hooks" nvidia/nvidia-keylase.hook
     install -Dm 644 -t "${pkgdir}/usr/share/libalpm/hooks" orphans/orphans.hook
+    install -Dm 644 -t "${pkgdir}/usr/share/libalpm/hooks" arch-audit/arch-audit.hook
 }

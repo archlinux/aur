@@ -8,6 +8,11 @@ pkgbase = pacman-hooks-strykar
 	makedepends = git
 	depends = pacman-contrib
 	depends = nvidia-keylase-patch
+	depends = pug
+	depends = pacman-cleanup-hook
+	depends = informant
+	depends = overdue
+	depends = kernel-modules-hook
 	source = git+https://github.com/strykar/pacman-hooks
 	md5sums = SKIP
 
