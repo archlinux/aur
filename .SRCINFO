@@ -1,0 +1,36 @@
+pkgbase = webex-bin
+	pkgdesc = Webex for Linux
+	pkgver = 41.5.0.18815
+	pkgrel = 1
+	url = https://www.webex.com/
+	arch = x86_64
+	license = custom
+	depends = binutils
+	depends = xdg-utils
+	depends = mesa
+	depends = nss
+	depends = nspr
+	depends = libcups
+	depends = upower
+	depends = libnotify
+	depends = libsecret
+	depends = wayland
+	depends = atk
+	depends = at-spi2-atk
+	depends = pango
+	depends = at-spi2-core
+	depends = krb5
+	depends = alsa-lib
+	depends = systemd-libs
+	depends = libpulse
+	depends = libxcb
+	depends = xcb-util-renderutil
+	depends = xcb-util-keysyms
+	depends = xcb-util-image
+	depends = xcb-util-wm
+	depends = libxkbcommon-x11
+	source = webex-bin-41.5.0.18815.deb::https://binaries.webex.com/WebexDesktop-Ubuntu-Official-Package/Webex.deb
+	sha256sums = 9aae10d54026f93da034baf2b5f1167a1e6f80d7b9f6ffcd1b1b9db66e1ff274
+
+pkgname = webex-bin
+
