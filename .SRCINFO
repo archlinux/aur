@@ -1,0 +1,22 @@
+pkgbase = st-dylan-git
+	pkgdesc = Dylan's build of simple virtual terminal emulator for X
+	pkgver = 0.8.4.r1134.8db77c6
+	pkgrel = 1
+	url = https://github.com/dylantjb/st
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ncurses
+	makedepends = libxext
+	makedepends = git
+	depends = libxft
+	optdepends = dmenu
+	optdepends = xclip
+	provides = st
+	conflicts = st
+	options = zipman
+	source = git://github.com/dylantjb/st
+	sha256sums = SKIP
+
+pkgname = st-dylan-git
+
