@@ -7,7 +7,6 @@ pkgbase = nvidia-keylase-patch
 	license = GPL
 	makedepends = git
 	depends = nvidia
-	depends = nvidia-dkms
 	source = git+https://github.com/keylase/nvidia-patch
 	md5sums = SKIP
 
