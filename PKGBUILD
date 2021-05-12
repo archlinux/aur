@@ -1,7 +1,7 @@
 # Maintainer: Wayback Archiver <wabarc@tuta.io>
 
 pkgname=wayback
-pkgver=0.10.3
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A toolkit for snapshot webpage to Internet Archive, archive.today, IPFS and beyond"
 arch=('x86_64')
@@ -28,7 +28,8 @@ build() {
 
 check() {
     cd "${srcdir}/${pkgname}"
-    go test -v ./...
+    sha256sum "build/binary/${pkgname}"
+    bash -c "build/binary/${pkgname}"
 }
 
 package() {
