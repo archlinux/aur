@@ -1,6 +1,6 @@
 # Maintainer: Dylan Barker <dthomasbarker@gmail.com>
 _pkgname=slock
-pkgname=$_pkgname-slock-git
+pkgname=$_pkgname-dylan-git
 pkgver=1.4.r124.647c91e
 pkgrel=1
 pkgdesc="Dylan's build of simple screen locker utility for X"
