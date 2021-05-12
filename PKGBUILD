@@ -19,10 +19,11 @@ validpgpkeys=('603B28AA5D6CD687A554347425E1490B761470C2') # Raymond Hill <rhill@
 build() {
   cd uBlock
   ./tools/make-firefox.sh all
+  strip-nondeterminism -t zip dist/build/uBlock0.firefox.xpi
 }
 
 package() {
   cd uBlock/dist/build
-  install -Dm644 ublock0.firefox.signed.xpi \
+  install -Dm644 uBlock0.firefox.xpi \
     "$pkgdir"/usr/lib/librewolf/browser/extensions/uBlock0@raymondhill.net.xpi
 }
