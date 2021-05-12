@@ -1,18 +1,19 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=soupsieve
 pkgname=python-${_pyname}-doc
-pkgver=2.1
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Documentation for SoupSieve"
 arch=('i686' 'x86_64')
 url="https://facelessuser.github.io/soupsieve"
 license=('MIT')
-makedepends=("python-${_pyname}=${pkgver}.0"
+makedepends=("python-${_pyname}=${pkgver}"
+             'python-smmap'
              'mkdocs-pymdownx-material-extras'
              'python-mkdocs-material-extensions'
              'python-mkdocs-git-revision-date-localized-plugin')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('0194a795d6073b4336e7b95e42e5292f')
+md5sums=('73ff6ce22ba973fe2d47197834e0f728')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
