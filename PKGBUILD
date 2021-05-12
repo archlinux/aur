@@ -32,6 +32,7 @@ depends=('binutils'
          'libxkbcommon-x11')
 source=("$pkgname-$pkgver.deb::https://binaries.webex.com/WebexDesktop-Ubuntu-Official-Package/Webex.deb")
 sha256sums=('9aae10d54026f93da034baf2b5f1167a1e6f80d7b9f6ffcd1b1b9db66e1ff274')
+options=('!strip')
 
 prepare() {
     mkdir -p "$pkgname-$pkgver"
