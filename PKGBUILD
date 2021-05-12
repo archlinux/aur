@@ -1,3 +1,4 @@
+# Maintainer: Dylan Barker <dthomasbarker@gmail.com>
 _pkgname=dwmblocks
 pkgname=$_pkgname-dylan-git
 pkgver=1.0.r96.7f54246
