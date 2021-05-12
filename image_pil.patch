@@ -1,0 +1,24 @@
+diff -aur src.orig/happycamel-v1-beta3/build/lib/HappyCamel/photohandler.py src/happycamel-v1-beta3/build/lib/HappyCamel/photohandler.py
+--- src.orig/happycamel-v1-beta3/build/lib/HappyCamel/photohandler.py	2021-05-12 23:27:36.545733597 +0200
++++ src/happycamel-v1-beta3/build/lib/HappyCamel/photohandler.py	2021-05-12 23:28:14.535765520 +0200
+@@ -47,7 +47,7 @@
+ 
+ # Try to import the Pyton Imaging Library
+ try:
+-  import Image
++  from PIL import Image
+ except ImportError:
+   CAN_RESIZE_PHOTOS = False
+ else:
+diff -aur src.orig/happycamel-v1-beta3/HappyCamel/photohandler.py src/happycamel-v1-beta3/HappyCamel/photohandler.py
+--- src.orig/happycamel-v1-beta3/HappyCamel/photohandler.py	2021-05-12 23:27:36.545733597 +0200
++++ src/happycamel-v1-beta3/HappyCamel/photohandler.py	2021-05-12 23:27:48.889077237 +0200
+@@ -47,7 +47,7 @@
+ 
+ # Try to import the Pyton Imaging Library
+ try:
+-  import Image
++  from PIL import Image
+ except ImportError:
+   CAN_RESIZE_PHOTOS = False
+ else:
