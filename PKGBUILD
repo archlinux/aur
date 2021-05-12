@@ -2,7 +2,7 @@
 _uuid="bluetooth-quick-connect@bjarosze.gmail.com"
 _repo="gnome-bluetooth-quick-connect"
 pkgname=gnome-shell-extension-bluetooth-quick-connect
-pkgver=19
+pkgver=20
 pkgrel=1
 pkgdesc="Allow to connect bluetooth paired devices from gnome control panel."
 arch=("any")
@@ -11,7 +11,7 @@ license=("GPL")
 depends=("gnome-shell" "bluez-utils")
 conflicts=("$pkgname-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=("730f093f6f29d1b9a2757767357200b4")
+md5sums=("c828a10942a536c475983a43ffba75e4")
 
 package() {
   glib-compile-schemas "$srcdir/$_repo-$pkgver/schemas"
