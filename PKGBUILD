@@ -1,8 +1,9 @@
-# Maintainer: Simon Lipp <sloonz+aur@gmail.com>
+# Maintainer: Prem Saraswat <prmsrswt@gmail.com>
+# Contributor: Simon Lipp <sloonz+aur@gmail.com>
 
 pkgname='dex-idp'
 pkgdesc='OpenID Connect Identity (OIDC) and OAuth 2.0 Provider with Pluggable Connectors'
-pkgver='2.16.0'
+pkgver='2.28.1'
 pkgrel='1'
 url="https://github.com/dexidp/dex"
 license=('Apache')
@@ -30,7 +31,7 @@ build () {
 package () {
   cd "$PACKAGE_ROOT"
   install -Dm755 bin/dex "${pkgdir}/usr/bin/dex" &&
-  install -Dm644 examples/config-dev.yaml "${pkgdir}/etc/dex.yaml" &&
+  install -Dm644 config.yaml.dist "${pkgdir}/etc/dex.yaml" &&
   install -Dm644 "${srcdir}/dex.sysusers" "${pkgdir}/usr/lib/sysusers.d/dex.conf" &&
   install -Dm644 "${srcdir}/dex.service" "${pkgdir}/usr/lib/systemd/system/dex.service" &&
   install -dm755 "${pkgdir}/usr/share/dex" &&
