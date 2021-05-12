@@ -12,7 +12,7 @@ pkgbase = purewriter-desktop-bin
 	source = purewriter.desktop
 	md5sums = 2bf7bbe1f16332d9fc1b721f1dd0e88e
 	md5sums = b61759ee70b9225f2a5738f724e5c480
-	md5sums = ab8d4aef028cd77876b8cf67e4439afb
+	md5sums = d24432d9cbba30b03c9f372405166ed9
 	md5sums = 43d078956e3f3a981329e6233747a078
 
 pkgname = purewriter-desktop-bin
