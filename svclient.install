@@ -1,11 +1,14 @@
 pre_install() {
-    systemctl stop svclient
+    systemctl stop svmgrsvc
+    systemctl stop svmonitor
 }
 
 
 post_install() {
-    systemctl start svclient
-    systemctl enable svclient
+    systemctl stop svmgrsvc
+    systemctl enable svmgrsvc
+    systemctl stop svmonitor
+    systemctl enable svmonitor
 }
 
 pre_upgrade() {
@@ -15,8 +18,10 @@ post_upgrade() {
 }
 
 pre_remove() {
-    systemctl stop svclient
-    systemctl disable svclient
+    systemctl stop svmgrsvc
+    systemctl disable svmgrsvc
+    systemctl stop svmonitor
+    systemctl disable svmonitor
 }
-pre_remove() {
+post_remove() {
 }
