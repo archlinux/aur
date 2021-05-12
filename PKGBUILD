@@ -78,18 +78,18 @@ DLAGENTS=("http::/usr/bin/curl --basic -u teamspeak5:LFZ6Z^kvGrnX~an,\$L#4gxL3'a
 package() {
   install -d "${pkgdir}/usr/bin/"
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -d "${pkgdir}/opt/${pkgname}"
+  install -d "${pkgdir}/usr/lib/${pkgname}"
 
   # Recursively installing all top-level regular files and directories from srcdir
   #   Files supplied to makepkg as sources are present in srcdir using symbolic links
   #   That way we can only copy files extracted from source archives
-  find "${srcdir}" -mindepth 1 -maxdepth 1 -type d,f -exec cp -r {} "${pkgdir}/opt/${pkgname}/" \;
+  find "${srcdir}" -mindepth 1 -maxdepth 1 -type d,f -exec cp -r {} "${pkgdir}/usr/lib/${pkgname}/" \;
 
-  chmod 755 "${pkgdir}/opt/${pkgname}/TeamSpeak"
+  chmod 755 "${pkgdir}/usr/lib/${pkgname}/TeamSpeak"
 
   install -Dm644 "${srcdir}/teamspeak.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm644 "${srcdir}/teamspeak.svg" "${pkgdir}/usr/share/pixmaps/teamspeak.svg"
 
-  ln -s /opt/${pkgname}/TeamSpeak/licenses/en/la.html "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  ln -s /opt/${pkgname}/TeamSpeak "${pkgdir}/usr/bin/teamspeak"
+  ln -s /usr/lib/${pkgname}/licenses/en/la.html "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  ln -s /usr/lib/${pkgname}/TeamSpeak "${pkgdir}/usr/bin/teamspeak"
 }
