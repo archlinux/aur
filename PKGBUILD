@@ -2,7 +2,7 @@
 
 _pkgname=flycast
 pkgname=$_pkgname-git
-pkgver=r4192.17274132
+pkgver=r4418.d7ec3bec
 pkgrel=1
 pkgdesc='A multi-platform Sega Dreamcast, Naomi and Atomiswave emulator'
 arch=('x86_64' 'i686')
@@ -27,7 +27,7 @@ build() {
 
 package() {
 	cd $_pkgname/shell/linux
-	install -Dm755 nosym-reicast.elf "$pkgdir"/usr/bin/$_pkgname
+	install -Dm755 nosym-$_pkgname.elf "$pkgdir"/usr/bin/$_pkgname
 	install -Dm644 $_pkgname.png "$pkgdir"/usr/share/pixmaps/$_pkgname.png
 	install -Dm644 $_pkgname.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop
 }
