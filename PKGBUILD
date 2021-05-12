@@ -1,7 +1,7 @@
 # Maintainer: Strykar <2946372+Strykar@users.noreply.github.com>
 
 pkgname=pacman-hooks-strykar
-pkgver=r13.1443fec
+pkgver=0.11sfg
 pkgrel=1
 pkgdesc='Various personal Pacman hooks'
 arch=('x86_64')
