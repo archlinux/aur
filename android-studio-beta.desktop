@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=Android Studio (Beta)
+Name=Android Studio (Beta branch)
 Exec=android-studio-beta %f
 Icon=android-studio-beta
 Comment=The Official Android IDE (Beta branch)

@@ -1,12 +1,13 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 # Based on aur/android-studio: Kordian Bruck <k@bruck.me>
+# Based on aur/android-studio-canary: tilal6991 <lalitmaganti@gmail.com>, vanpra <pranavmaganti@gmail.com>
 # Contributor: Tad Fisher <tadfisher at gmail dot com>
 
 _pkgname=android-studio
 pkgname="${_pkgname}-beta"
-pkgver=4.2.0.22
+pkgver=4.2.0.24
 pkgrel=1
-_build=202.7188722
+_build=202.7322048
 pkgdesc='The Official Android IDE (Beta branch)'
 arch=('i686' 'x86_64')
 url='https://developer.android.com/studio/preview'
@@ -17,9 +18,11 @@ optdepends=('gtk2: GTK+ look and feel'
             'libgl: emulator support')
 options=('!strip')
 source=("https://redirector.gvt1.com/edgedl/android/studio/ide-zips/${pkgver}/${_pkgname}-ide-${_build}-linux.tar.gz"
-        "${pkgname}.desktop")
-sha256sums=('ab67c136edad5ae269da4d06bc685ddc0436626481b5f33e272974cd429ffc57'
-            '368b5287efcfd2b421bdd10e1bdd39a8bffeb84500745c4a88729609c841bcf7')
+        "${pkgname}.desktop"
+        "license.html")
+sha256sums=('9f3132d181bfe4d46aca667fddf2557f3c428b6c6c726e0ac5be9f5d91fb21c6'
+            'c4a15624eb258acbe119567b044f4a54be4ebb41f05e6f6cb4d941d130dc714f'
+            '9a7563f7fb88c9a83df6cee9731660dc73a039ab594747e9e774916275b2e23e')
 
 if [ "${CARCH}" = "i686" ]; then
     depends+=('java-environment')
@@ -28,7 +31,7 @@ fi
 build() {
   cd "${_pkgname}"
 
-  # Change the product name to produce a unique WM_CLASS attribute.
+  # Change the product name to produce a unique WM_CLASS attribute
   mkdir -p idea
   unzip -p lib/resources.jar idea/AndroidStudioApplicationInfo.xml \
       | sed "s/\"Studio\"/\"Studio Beta\"/" > idea/AndroidStudioApplicationInfo.xml
@@ -37,14 +40,20 @@ build() {
 }
 
 package() {
-  # Install the application.
+  cd "${_pkgname}"
+
+  # Install the application
   install -d "${pkgdir}"/{opt/"${pkgname}",usr/bin}
-  cp -a "${_pkgname}"/* "${pkgdir}/opt/${pkgname}/"
+  cp -a * "${pkgdir}/opt/${pkgname}/"
   ln -s "/opt/${pkgname}/bin/studio.sh" "${pkgdir}/usr/bin/${pkgname}"
 
+  # Copy licenses
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+  install -Dm644 "${srcdir}"/license.html "${pkgdir}/usr/share/licenses/${pkgname}/license.html"
+
   # Add the icon and desktop file.
-  install -Dm644 "${_pkgname}"/bin/studio.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  install -Dm644 "${pkgname}".desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 bin/studio.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -Dm644 "${srcdir}/${pkgname}".desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   chmod -R ugo+rX "${pkgdir}/opt"
 }
