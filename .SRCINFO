@@ -1,6 +1,6 @@
 pkgbase = burpsuite-cnpatch
 	pkgdesc = Chinese patch for burpsuite community version
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = UNKNOWN
 	install = burpsuite-cnpatch.install
@@ -13,7 +13,7 @@ pkgbase = burpsuite-cnpatch
 	source = burp-cn.hook
 	source = burpsuite-cnpatch.install
 	md5sums = df282917e650c4c2cd1f49e262e6f30f
-	md5sums = d8f33e210b220333a91a02b1dc9dabe3
+	md5sums = 56436d4f91f49a1930a00d0c517e187a
 	md5sums = 62d9b205ec48d5bb0003a9fd3d084f97
 
 pkgname = burpsuite-cnpatch
