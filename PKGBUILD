@@ -8,7 +8,7 @@ url="http://kaitai.io/"
 license=('GPL3')
 depends=("java-runtime")
 optdepends=()
-source=("$pkgname-$pkgver.zip::https://bintray.com/kaitai-io/universal/download_file?file_path=$pkgver%2F$pkgname-$pkgver.zip"
+source=("https://github.com/kaitai-io/kaitai_struct_compiler/releases/download/$pkgver/$pkgname-$pkgver.zip"
         "01-fix_lib_dir.patch")
 sha256sums=('3038243334fb65bbb264f33b82986facfe1fbad2de1978766899855b40212215'
             '11a49eae3903511c83fd43759d21ac4f430024fe7b6dba5d4ebef6f0ba3f05c6')
