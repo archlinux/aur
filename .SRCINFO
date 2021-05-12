@@ -1,0 +1,11 @@
+pkgbase = mingw-w64-amf-headers
+	pkgdesc = Header files for AMD Advanced Media Framework (mingw-w64)
+	pkgver = 1.4.18
+	pkgrel = 1
+	url = https://github.com/GPUOpen-LibrariesAndSDKs/AMF/
+	arch = any
+	license = MIT
+	depends = amf-headers
+
+pkgname = mingw-w64-amf-headers
+
