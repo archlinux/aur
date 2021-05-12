@@ -1,9 +1,9 @@
-# Maintainer: Amal Karunarathna <nasashinega@gmail.com>
+# Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 
 _gitname=applet-window-title
 pkgname=plasma5-applets-window-title-git
 pkgver=0.6.0.r0.g2b1d16f
-pkgrel=2
+pkgrel=1
 pkgdesc="Plasma 5 applet that shows the application title and icon for active window"
 arch=(x86_64)
 url="https://github.com/psifidotos/${_gitname}"
