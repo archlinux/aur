@@ -2,17 +2,21 @@
 
 pkgname=purewriter-desktop-bin
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Never loss content editor & Markdown"
 arch=('x86_64')
 url="https://writer.drakeet.com/desktop"
 license=('Custom')
-depends=('xdg-utils' 'zlib')
+depends=('libxtst' 'freetype2' 'libxrender' 'java-runtime>=11' 'libnet' 'alsa-lib' 'zlib')
 source=("https://github.com/PureWriter/desktop/releases/download/$pkgver/PureWriter-$pkgver-Linux-amd64.deb"
-        "purewriter.desktop")
+        'purewriter'
+        'purewriter.png'
+        'purewriter.desktop')
   
 md5sums=('2bf7bbe1f16332d9fc1b721f1dd0e88e'
-         '286912b83356bc634b9d5d4ce4a6031d')
+         '2c9a437895a327b625ead730ec3ec64e'
+         'ab8d4aef028cd77876b8cf67e4439afb'
+         '07bcca5a34e0dd58b40bb66b32b8dd5c')
 
 prepare(){
     cd ${srcdir}
@@ -20,13 +24,9 @@ prepare(){
 }
 
 package() {
-    cd $srcdir
-    rm -r opt/pure-writer/share
-    mv opt/pure-writer/bin/Pure\ Writer opt/pure-writer/bin/purewriter
-    rm opt/pure-writer/lib/pure-writer-Pure_Writer.desktop
-    mkdir $pkgdir/opt
-    mv opt/* $pkgdir/opt/
+    mkdir -p $pkgdir/usr/share/java/purewriter
+    mv $srcdir/opt/pure-writer/lib/app/app.so $pkgdir/usr/share/java/purewriter/
+    install -Dm755 purewriter $pkgdir/usr/bin/purewriter
+    install -Dm644 purewriter.png "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/purewriter.png
     install -Dm644 purewriter.desktop $pkgdir/usr/share/applications/purewriter.desktop
-    mkdir $pkgdir/usr/bin
-    ln -s /opt/pure-writer/bin/purewriter ${pkgdir}/usr/bin/purewriter
 }
