@@ -24,6 +24,7 @@ md5sums=('e5ac5a043ce1b1982f9e75a88b2cb697')
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
     sed -i "s/git describe --tags --always/echo ${pkgver}/" configure.ac
+    sed -i '/AC_CONFIG_MACRO_DIR(/d' configure.ac
     sh ./bootstrap
     ./configure --prefix=/usr
     # When necessary, fixup deprecated form in src/parser.yy and rebuild.
