@@ -1,14 +1,13 @@
 # Maintainer: Eldeberen <eldeberen.aur@middleearth.fr>
 pkgname=gint
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Tools to program for the Casio fx9860 calculators'
 arch=('i686' 'x86_64')
 url="https://gitea.planet-casio.com/Lephenixnoir/gint"
 licence=('unkwown')
-depends=('fxsdk')
+depends=('fxsdk' 'openlibm-casio')
 makedepends=('fxsdk' 'openlibm-casio')
-optdepends=('openlibm-casio: mathematical functions')
 conflicts=('gint-git')
 options=('!buildflags' '!strip')
 source=("$pkgname-$pkgver.tar.gz::https://gitea.planet-casio.com/Lephenixnoir/${pkgname}/archive/${pkgver}.tar.gz")
