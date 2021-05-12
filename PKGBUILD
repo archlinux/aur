@@ -34,5 +34,5 @@ package() {
         cd "${pkgname}"
         make install DESTDIR=${pkgdir}
         # Correct ownership of files, otherwise FMU export fails
-        chmod go+rx "${pkgdir}/usr/share/omc/runtime/c/fmi/buildproject/config.*"
+        chmod go+rx "${pkgdir}"/usr/share/omc/runtime/c/fmi/buildproject/config.*
 }
