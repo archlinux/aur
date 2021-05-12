@@ -1,0 +1,15 @@
+pkgbase = python-apksigcopier
+	pkgdesc = tool for copying APK signatures from a signed APK to an unsigned one
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://pypi.org/project/apksigcopier/
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-setuptools
+	depends = python-click
+	source = https://files.pythonhosted.org/packages/source/a/apksigcopier/apksigcopier-0.5.0.tar.gz
+	sha256sums = 47f4f626f1c9b68837634cb792eedb251b6c2fcd7d5a789f30dd045919d4ce73
+
+pkgname = python-apksigcopier
+
