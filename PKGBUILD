@@ -2,7 +2,7 @@
 
 pkgname='hpuld'
 pkgver='1.00.39.12_00.15'
-pkgrel=2
+pkgrel=3
 pkgdesc='HP Unified Linux Driver'
 arch=('i686' 'x86_64')
 url='https://support.hp.com/'
