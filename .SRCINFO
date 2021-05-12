@@ -1,0 +1,32 @@
+pkgbase = python-jupyter-cache
+	pkgdesc = A defined interface for working with a cache of jupyter notebooks
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://jupyter-cache.readthedocs.io
+	arch = i686
+	arch = x86_64
+	license = MIT
+	checkdepends = jupyter-notebook
+	checkdepends = python-requests
+	checkdepends = python-nbdime
+	checkdepends = jupyter-nbclient
+	checkdepends = python-sqlalchemy
+	checkdepends = python-jinja
+	checkdepends = python-click-completion
+	checkdepends = python-click-log
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/j/jupyter-cache/jupyter-cache-0.4.2.tar.gz
+	md5sums = a1f1a9846e4462ce79a81a5b2cee6270
+
+pkgname = python-jupyter-cache
+	depends = python-nbdime
+	depends = jupyter-nbclient
+	depends = python-sqlalchemy
+	optdepends = python-click-completion: cli
+	optdepends = python-click-log: cli
+	optdepends = python-tabulate: cli
+	optdepends = python-yaml: cli
+	optdepends = flake8: code_style
+	optdepends = python-black: code_style
+	optdepends = python-pre-commit: code_style
+
