@@ -19,18 +19,18 @@ source=("$pkgname-$pkgver::git+$url/#commit=$_gitcommit")
 b2sums=('SKIP')
 
 build() {
-	export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
-	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	export local CGO_CPPFLAGS="${CPPFLAGS}"
+	export local CGO_CFLAGS="${CFLAGS}"
+	export local CGO_CXXFLAGS="${CXXFLAGS}"
+	export local CGO_LDFLAGS="${LDFLAGS}"
+	export local GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$pkgname-$pkgver"
 	make all
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$pkgname-$pkgver"
 
 	install -Dm755 bin/tt -t "$pkgdir/usr/bin"
 	install -Dm644 tt.1.gz -t "$pkgdir/usr/share/man/man1"
