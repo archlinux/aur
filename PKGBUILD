@@ -4,7 +4,7 @@ validpgpkeys=('33ED753E14757D79FA17E57DC4C1F715B2B66B95')
 
 pkgname=llvm12-git
 pkgdesc="LLVM 12 Toolchain with clang, clang-tools-extra, compiler-rt, openmp, polly, lldb, lld"
-pkgver=12.0.1_r37.gb89942c336a4
+pkgver=12.0.1_r44.g877a07bfb3b9
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -23,15 +23,12 @@ makedepends=('git' 'ninja' 'cmake' 'libffi' 'libedit' 'ncurses' 'libxml2'
 _gitbranch="release/12.x"
 source=(
   "llvm-project::git+https://github.com/llvm/llvm-project.git#branch=${_gitbranch}"
-  'llvm-config.h'
-  '001-libLLVM__morestack.patch')
+  'llvm-config.h')
 
 sha256sums=('SKIP'
-  '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48'
-  '5a6a6a2f4b214c730474566925444f8ccddfd2b7c432263036738ffd4fe4394c')
+            '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48')
 sha512sums=('SKIP'
-  '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd'
-  '6777514795f808b00502ead0a50c2b90344dc9759e774ad95bb8c89dccfb03489c71ac3dc761a820e518fc1c0c8a75666b51b249a433020e43df2850a8643a6b')
+            '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd')
 options=('staticlibs')
 
 _extra_build_flags=""
@@ -61,10 +58,6 @@ prepare() {
     echo -e "\E[1m\E[31mCan't cd to ${srcdir}/llvm-project build directory! Prepare Failed! \E[0m"
     exit 1
   )
-
-  # Fix libLLVM-12.so: __morestack error https://bugs.llvm.org/show_bug.cgi?id=49915
-  # https://github.com/llvm/llvm-project/commit/1c00530b30e21fd0f5b316401f6485bee08ce850
-  patch --forward --strip=1 --input="${srcdir}/001-libLLVM__morestack.patch"
 
   #if [ -d build ]; then
   #  rm -rf build
