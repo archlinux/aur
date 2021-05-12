@@ -1,5 +1,5 @@
 # Maintainer: strykar
-pkgname=pacman-hooks-strykar-git
+pkgname=pacman-hooks-strykar
 pkgver=r44.580de45
 pkgrel=1
 pkgdesc='Various personal Pacman hooks'

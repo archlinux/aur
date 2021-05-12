@@ -1,4 +1,4 @@
-pkgbase = pacman-hooks-strykar-git
+pkgbase = pacman-hooks-strykar
 	pkgdesc = Various personal Pacman hooks
 	pkgver = r44.580de45
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = pacman-hooks-strykar-git
 	source = git+https://github.com/strykar/pacman-hooks
 	md5sums = SKIP
 
-pkgname = pacman-hooks-strykar-git
+pkgname = pacman-hooks-strykar
 
