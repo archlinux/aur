@@ -2,7 +2,7 @@
 # Contributor: Sergei Kolesnikov <youremail@domain.com>
 
 pkgname=gnome-shell-extension-runcat
-pkgver=11
+pkgver=12
 pkgrel=1
 pkgdesc="The cat tells you the CPU usage by running speed"
 arch=('any')
