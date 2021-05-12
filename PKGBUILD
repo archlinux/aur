@@ -14,8 +14,8 @@ source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-	cd $_pkgname
-	printf "1.4.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd $_pkgname
+    printf "1.4.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
