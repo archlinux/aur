@@ -1,7 +1,7 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=screenshot-bash
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Screenshot script, that uploads screenshot to a predefined server."
 arch=("any")
@@ -14,7 +14,7 @@ optdepends=("spectacle: use default screenshot program"
             "xsel: use alternative clipboard tool")
 provides=("upload-bash")
 source=("https://gitlab.com/Scrumplex/screenshot-bash/-/archive/${pkgver}/screenshot-bash-${pkgver}.tar.gz")
-sha512sums=('e9a5579b189b44e1b61a4c5025db26f909507aea8a15c7e3291e613ac2c6818fc7ca29e1c5f0738c8d80a7d7ee73a463d457f60afbe8829addc868e7db1276b9')
+sha512sums=('4fd9bd8c26512f46920d833410e4065951134dabe7abbe170375f63098ebf7c3dc5d221c65796f9f222d10a1f166d54fdd882a4b37dc59522fec930ed63e0f73')
 
 
 
