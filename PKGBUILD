@@ -3,16 +3,16 @@
 # Contributor: Maxime Morel <maxime@mmorel.eu>
 
 pkgname=opentrack
-pkgver=2.3.12
+pkgver=2.3.13
 pkgrel=1
 pkgdesc="Head tracking software"
 arch=('x86_64')
 url="https://github.com/opentrack/opentrack/"
 license=('GPL3')
 depends=('qt5-base' 'opencv')
-makedepends=('cmake' 'xplane-sdk-devel' 'wine' 'ninja')
+makedepends=('cmake' 'xplane-sdk-devel' 'wine' 'ninja' 'qt5-tools')
 source=("https://github.com/opentrack/opentrack/archive/opentrack-$pkgver.tar.gz" "opentrack.desktop")
-sha256sums=('c56db8a07b2381a2eb777dab66c6fbba7cae4c7a66be730ad7a73367fb49006e'
+sha256sums=('b071faa512ca0ec37a0c7e40516789ebb79e8cecf8a4fda59092790f2230a697'
             '96b4a633d40f399b927d159353cfaa679d2148156a3f04b5ea23b8d4b8e4bd3f')
 
 build() {
@@ -31,7 +31,7 @@ build() {
       -GNinja \
       -DCMAKE_BUILD_TYPE=Release \
       -DSDK_XPLANE=xplane_sdk \
-      -DSDK_WINE_PREFIX=/ \
+      -DSDK_WINE=ON \
       -DCMAKE_INSTALL_PREFIX=/usr
   ninja
 }
