@@ -1,8 +1,8 @@
-# Maintainer: Serene-Arch <https://aur.archlinux.org/account/serene-arc>
+# Maintainer: Serene-Arc <https://aur.archlinux.org/account/serene-arc>
 
 _pkgname="bulk-downloader-for-reddit"
 pkgname=python-bdfr-git
-pkgver=2.0.0.r37.g1419515
+pkgver=2.1.0.r0.g6c086e7
 pkgrel=1
 pkgdesc="Bulk downloader for Reddit from development branch"
 conflicts=('python-bdfr')
