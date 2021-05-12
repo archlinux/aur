@@ -32,6 +32,8 @@ sha512sums=('SKIP'
 options=('staticlibs')
 
 _extra_build_flags=""
+_build_documentation=0
+_build_tests=0
 
 pkgver() {
 
@@ -72,6 +74,7 @@ build() {
     exit 1
   )
 
+  local yn=0
   while true; do
     echo -e "\n\E[1m\E[33mBuild with clang and llvm toolchain (Y/N)? \E[0m"
     read -r yn
@@ -102,31 +105,68 @@ build() {
     esac
   done
 
+  yn=0
+  while true; do
+    echo -e "\n\E[1m\E[33mSkip build tests (Y/N)? \E[0m"
+    read -r yn
+    case ${yn} in
+    [Yy]*)
+      _build_tests=0
+      _extra_build_flags="${_extra_build_flags} -DLLVM_BUILD_TESTS=OFF"
+      break
+      ;;
+    [Nn]*)
+      _build_tests=1
+      _extra_build_flags="${_extra_build_flags} -DLLVM_BUILD_TESTS=ON"
+      break
+      ;;
+    *) echo -e "\E[1m\E[31mPlease answer Y or N! \E[0m" ;;
+    esac
+  done
+
+  yn=0
+  while true; do
+    echo -e "\n\E[1m\E[33mSkip build documentation (Y/N)? \E[0m"
+    read -r yn
+    case ${yn} in
+    [Yy]*)
+      _build_documentation=0
+      _extra_build_flags="${_extra_build_flags} -DLLVM_BUILD_DOCS=OFF"
+      break
+      ;;
+    [Nn]*)
+      _build_documentation=1
+      _extra_build_flags="${_extra_build_flags} -DLLVM_BUILD_DOCS=ON"
+      "-DLLVM_ENABLE_SPHINX=ON -DLLVM_ENABLE_DOXYGEN=OFF -DSPHINX_WARNINGS_AS_ERRORS=OFF"
+      break
+      ;;
+    *) echo -e "\E[1m\E[31mPlease answer Y or N! \E[0m" ;;
+    esac
+  done
+
   cmake -S llvm -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLLVM_BINUTILS_INCDIR=/usr/include \
-    ${_extra_build_flags} \
     -DLLVM_HOST_TRIPLE="${CHOST}" \
     -DLLVM_BUILD_LLVM_DYLIB=ON \
     -DLLVM_LINK_LLVM_DYLIB=ON \
     -DLLVM_INSTALL_UTILS=ON \
     -DLLVM_ENABLE_RTTI=ON \
     -DLLVM_ENABLE_FFI=ON \
-    -DLLVM_BUILD_TESTS=ON \
-    -DLLVM_BUILD_DOCS=ON \
-    -DLLVM_ENABLE_SPHINX=ON \
-    -DLLVM_ENABLE_DOXYGEN=OFF \
-    -DSPHINX_WARNINGS_AS_ERRORS=OFF \
     -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;compiler-rt;polly;lldb;lld;openmp" \
     -DCLANG_LINK_CLANG_DYLIB=ON \
     -DLLDB_USE_SYSTEM_SIX=1 \
     -DLIBOMP_INSTALL_ALIASES=OFF \
     -DPOLLY_ENABLE_GPGPU_CODEGEN=ON \
+    "${_extra_build_flags}" \
     -Wno-dev
 
   ninja -C build "${NINJAFLAGS}"
-  ninja -C build "${NINJAFLAGS}" ocaml_doc
+
+  if [[ _build_documentation -eq 1 ]]; then
+    ninja -C build "${NINJAFLAGS}" ocaml_doc
+  fi
 
 }
 
@@ -137,13 +177,15 @@ check() {
     exit 1
   )
 
-  #ninja -C build "${NINJAFLAGS}" check-llvm
-  #ninja -C build "${NINJAFLAGS}" check-clang
-  #ninja -C build "${NINJAFLAGS}" check-clang-tools
-  #ninja -C build "${NINJAFLAGS}" check-openmp
-  #ninja -C build "${NINJAFLAGS}" check-polly
-  #ninja -C build "${NINJAFLAGS}" check-lldb
-  #ninja -C build "${NINJAFLAGS}" check-lld
+  if [[ _build_tests -eq 1 ]]; then
+    ninja -C build "${NINJAFLAGS}" check-llvm
+    ninja -C build "${NINJAFLAGS}" check-clang
+    ninja -C build "${NINJAFLAGS}" check-clang-tools
+    ninja -C build "${NINJAFLAGS}" check-openmp
+    ninja -C build "${NINJAFLAGS}" check-polly
+    ninja -C build "${NINJAFLAGS}" check-lldb
+    ninja -C build "${NINJAFLAGS}" check-lld
+  fi
 
 }
 
@@ -165,8 +207,12 @@ package() {
     exit 1
   )
 
-  DESTDIR="${pkgdir:?}" ninja -C build "${NINJAFLAGS}" install
+  if [[ _build_documentation -eq 0 ]]; then
+    mkdir -p "${srcdir:?}/llvm-project/build/docs/ocamldoc/html/"
+  fi
 
+  DESTDIR="${pkgdir:?}" ninja -C build "${NINJAFLAGS}" install
+  
   pushd llvm/utils/lit || (
     echo -e "\E[1m\E[31mpushd utils/lit - Package Failed! \E[0m"
     exit 1
@@ -182,7 +228,7 @@ package() {
     mv "${pkgdir:?}/usr/include/llvm/Config/llvm-config"{,-64}.h
     cp "${srcdir:?}/llvm-config.h" "${pkgdir:?}/usr/include/llvm/Config/llvm-config.h"
   fi
-  
+
   # Symlink LLVMgold.so from /usr/lib/bfd-plugins
   # https://bugs.archlinux.org/task/28479
   mkdir -p "${pkgdir:?}/usr/lib/bfd-plugins"
@@ -208,9 +254,14 @@ package() {
   _python2_optimize "${pkgdir:?}/usr/share/clang"
   _python3_optimize "${pkgdir:?}/usr/share" -x 'clang-include-fixer|run-find-all-symbols'
 
+  # Remove html documentation
+  if [[ _build_documentation -eq 0 ]]; then
+    rm -fr "${pkgdir:?}/usr/share/doc"
+  fi
+
   # Licenses
   install -Dm644 "${srcdir:?}/llvm-project/llvm/LICENSE.TXT" "${pkgdir:?}/usr/share/licenses/${pkgname}/llvm-LICENSE"
-  install -Dm644 "${srcdir:?}/llvm-project/clang/LICENSE.TXT" "${pkgdir:?}usr/share/licenses/${pkgname}/clang-LICENSE"
+  install -Dm644 "${srcdir:?}/llvm-project/clang/LICENSE.TXT" "${pkgdir:?}/usr/share/licenses/${pkgname}/clang-LICENSE"
   install -Dm644 "${srcdir:?}/llvm-project/clang-tools-extra/LICENSE.TXT" "${pkgdir:?}/usr/share/licenses/${pkgname}/clang-tools-extra-LICENSE"
   install -Dm644 "${srcdir:?}/llvm-project/compiler-rt/LICENSE.TXT" "${pkgdir:?}/usr/share/licenses/${pkgname}/compiler-rt-LICENSE"
   install -Dm644 "${srcdir:?}/llvm-project/lld/LICENSE.TXT" "${pkgdir:?}/usr/share/licenses/${pkgname}/lld-LICENSE"
