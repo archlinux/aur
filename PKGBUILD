@@ -1,7 +1,7 @@
 # Maintainer: Dylan Barker <dthomasbarker@gmail.com>
 _pkgname=slock
 pkgname=$_pkgname-dylan-git
-pkgver=1.4.r124.647c91e
+pkgver=1.4.r125.6d24ea1
 pkgrel=1
 pkgdesc="Dylan's build of simple screen locker utility for X"
 arch=('x86_64' 'i686')
@@ -20,6 +20,7 @@ pkgver(){
 
 build() {
     cd $_pkgname
+    sed "/user  =/s/nobody/$USER/" -i config.h
     make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
