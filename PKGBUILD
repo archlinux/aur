@@ -7,7 +7,7 @@ pkgdesc="Never loss content editor & Markdown"
 arch=('x86_64')
 url="https://writer.drakeet.com/desktop"
 license=('Custom')
-depends=('libxtst' 'freetype2' 'libxrender' 'java-runtime>=11' 'libnet' 'alsa-lib' 'zlib')
+depends=('java-runtime>=11')
 source=("https://github.com/PureWriter/desktop/releases/download/$pkgver/PureWriter-$pkgver-Linux-amd64.deb"
         'purewriter'
         'purewriter.png'
