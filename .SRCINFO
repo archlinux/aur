@@ -1,6 +1,6 @@
 pkgbase = darktable-git
 	pkgdesc = A virtual lighttable and darkroom for photographers
-	pkgver = 3.5.0.r693.g2c8b69f01
+	pkgver = 3.5.0.r2164.g72edb2352
 	pkgrel = 1
 	url = http://www.darktable.org/
 	install = darktable.install
@@ -17,7 +17,6 @@ pkgbase = darktable-git
 	depends = intltool>=0.40
 	depends = lcms2
 	depends = lensfun>=0.2.3
-	depends = libglade
 	depends = dbus-glib
 	depends = curl
 	depends = libgnome-keyring
