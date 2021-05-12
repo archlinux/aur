@@ -77,7 +77,7 @@ DLAGENTS=("http::/usr/bin/curl --basic -u teamspeak5:LFZ6Z^kvGrnX~an,\$L#4gxL3'a
 
 package() {
   install -d "${pkgdir}/usr/bin/"
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "${pkgdir}/usr/share/licenses/"
   install -d "${pkgdir}/usr/lib/${pkgname}"
 
   # Recursively installing all top-level regular files and directories from srcdir
@@ -90,6 +90,7 @@ package() {
   install -Dm644 "${srcdir}/teamspeak.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm644 "${srcdir}/teamspeak.svg" "${pkgdir}/usr/share/pixmaps/teamspeak.svg"
 
-  ln -s /usr/lib/${pkgname}/licenses/en/la.html "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  ln -s /usr/lib/${pkgname}/licenses "${pkgdir}/usr/share/licenses/${pkgname}"
+
   ln -s /usr/lib/${pkgname}/TeamSpeak "${pkgdir}/usr/bin/teamspeak"
 }
