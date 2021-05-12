@@ -3,7 +3,7 @@
 
 pkgname=ttyper-git
 _pkgname=ttyper
-pkgver=v0.2.0.r3.gc4c6b81
+pkgver=0.2.0.r3.gc4c6b81
 pkgrel=1
 pkgdesc="Terminal-based typing test."
 url="https://github.com/max-niederman/ttyper"
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd $srcdir/$_pkgname
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
