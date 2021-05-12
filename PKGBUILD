@@ -13,14 +13,18 @@ conflicts=($_pkgname)
 source=("git+$url")
 md5sums=('SKIP')
 
-pkgver(){
+pkgver() {
 	cd $_pkgname
 	printf "1.4.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
+prepare() {
     cd $_pkgname
     sed "/user  =/s/nobody/$USER/" -i config.h
+}
+
+build() {
+    cd $_pkgname
     make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
