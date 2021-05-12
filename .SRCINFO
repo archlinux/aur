@@ -1,0 +1,33 @@
+pkgbase = intel-compute-runtime-bin
+	pkgdesc = Intel Graphics Compute Runtime for oneAPI Level Zero and OpenCL Driver (pre-compiled binaries)
+	pkgver = 21.18.19737
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/intel/compute-runtime/
+	arch = x86_64
+	license = MIT
+	depends = intel-graphics-compiler-bin
+	provides = intel-compute-runtime
+	provides = level-zero-driver
+	provides = opencl-driver
+	conflicts = intel-compute-runtime
+	conflicts = intel-gmmlib
+	noextract = intel-opencl_21.18.19737_amd64.deb
+	noextract = intel-ocloc_21.18.19737_amd64.deb
+	noextract = intel-level-zero-gpu_1.1.19737_amd64.deb
+	noextract = intel-gmmlib_21.1.2_amd64.deb
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/intel/compute-runtime/releases/download/21.18.19737/intel-opencl_21.18.19737_amd64.deb
+	source = https://github.com/intel/compute-runtime/releases/download/21.18.19737/intel-ocloc_21.18.19737_amd64.deb
+	source = https://github.com/intel/compute-runtime/releases/download/21.18.19737/intel-level-zero-gpu_1.1.19737_amd64.deb
+	source = https://github.com/intel/compute-runtime/releases/download/21.18.19737/intel-gmmlib_21.1.2_amd64.deb
+	source = LICENSE
+	sha256sums = a17a4f7f4e2e59096a58e131235c508eb49f9086db5bef3ddb47c5ae482e2bac
+	sha256sums = 35a851d44b54f4c948e06edf709c4cd509b17029a03bf58b7ae614062880e352
+	sha256sums = 4bb17c8a23d7a188b6c1194f181d403ef98ea6c0eabf75298feb1fa24c8458f2
+	sha256sums = 793ea78b09474baa775b5158fd83a24d58f0ace37d6801bb54d082a118bd855a
+	sha256sums = 73783f7cd3b35aa7d23fa64e400c8c6a6cf6256b62b35e4827094719a9acb172
+
+pkgname = intel-compute-runtime-bin
+
