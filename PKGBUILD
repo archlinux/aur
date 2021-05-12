@@ -1,13 +1,14 @@
-# Maintainer: strykar
+# Maintainer: Strykar <2946372+Strykar@users.noreply.github.com>
+
 pkgname=pacman-hooks-strykar
-pkgver=r44.580de45
+pkgver=r13.1443fec
 pkgrel=1
 pkgdesc='Various personal Pacman hooks'
 arch=('x86_64')
 _gitname='pacman-hooks'
 url="https://github.com/strykar/${_gitname}"
 license=('GPL')
-depends=('pacman-contrib' 'reflector')
+depends=('pacman-contrib')
 makedepends=('git')
 source=("git+https://github.com/strykar/${_gitname}")
 md5sums=('SKIP')

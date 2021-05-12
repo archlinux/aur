@@ -1,13 +1,12 @@
 pkgbase = pacman-hooks-strykar
 	pkgdesc = Various personal Pacman hooks
-	pkgver = r44.580de45
+	pkgver = r13.1443fec
 	pkgrel = 1
 	url = https://github.com/strykar/pacman-hooks
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = pacman-contrib
-	depends = reflector
 	source = git+https://github.com/strykar/pacman-hooks
 	md5sums = SKIP
 
