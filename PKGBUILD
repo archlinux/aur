@@ -3,7 +3,6 @@
 pkgname=intel-compute-runtime-bin
 pkgver=21.18.19737
 pkgrel=1
-epoch=1
 pkgdesc='Intel Graphics Compute Runtime for oneAPI Level Zero and OpenCL Driver (pre-compiled binaries)'
 arch=('x86_64')
 url='https://github.com/intel/compute-runtime/'
