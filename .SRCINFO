@@ -1,0 +1,16 @@
+pkgbase = diskgraph-git
+	pkgdesc = Monitor for disk IO
+	pkgver = r23.a832afd
+	pkgrel = 1
+	url = https://github.com/stolk/diskgraph
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	provides = diskgraph
+	conflicts = diskgraph
+	source = diskgraph-git::git+https://github.com/stolk/diskgraph
+	sha256sums = SKIP
+
+pkgname = diskgraph-git
+
