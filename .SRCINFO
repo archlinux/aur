@@ -10,6 +10,7 @@ pkgbase = rtklib-emlid-git
 	makedepends = gcc-fortran
 	makedepends = qt5-base
 	depends = glibc
+	provides = rtklib-qt
 	source = RTKLIB::git+https://github.com/emlid/RTKLIB.git#branch=reach
 	source = fix.patch
 	sha256sums = SKIP

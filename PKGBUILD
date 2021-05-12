@@ -1,6 +1,7 @@
 # Maintainer: Achmad Fathoni <fathoniDOTidATgmailDOTcom>
 _pkgname=RTKLIB
 pkgname=rtklib-emlid-git
+provides=("rtklib-qt")
 pkgver=r587.81b5a61
 pkgrel=1
 pkgdesc="An Open Source Program Package for GNSS Positioning tuned for Emlid Device"
