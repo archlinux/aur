@@ -3,12 +3,14 @@
 
 pkgname=saleae-logic2
 pkgver=2.3.27
-pkgrel=2
+pkgrel=3
 pkgdesc="Debug hardware like a pro"
 arch=("x86_64")
 url="https://discuss.saleae.com/c/logic-2-0-software/7"
 license=("unknown")
 source=("https://downloads.saleae.com/logic2/Logic-${pkgver}-master.AppImage")
+conflicts=("saleae-logic" "saleae-logic-alpha" "saleae-logic-beta")
+provides=("saleae-logic" "saleae-logic-alpha" "saleae-logic-beta")
 sha256sums=("01edb27ea97d2f9e3f0e1e0ba1f356b33f20be892f8099e775ad146386b4b709")
 
 build() {
