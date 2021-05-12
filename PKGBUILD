@@ -1,14 +1,14 @@
 # Maintainer: solsTiCe d'Hiver <solstice.dhiver@gmail.com>
 pkgname=piavpn-bin
-pkgver=2.8.1_06335
+pkgver=2.9.0_06393
 _pkgver=${pkgver/_/-}
 _pkgver=${_pkgver/.0/}
-pkgrel=2
+pkgrel=1
 pkgdesc="Private Internet Access client"
 arch=(x86_64)
 url="https://privateinternetaccess.com/"
 license=('custom')
-depends=(net-tools libxkbcommon-x11 libnl)
+depends=(libxkbcommon-x11 libnl)
 optdepends=('WIREGUARD-MODULE: to use the wireguard kernel module instead')
 makedepends=(libcap)
 provides=(piavpn)
@@ -16,7 +16,7 @@ conflicts=(pia-launch pia-manager pia-tools private-internet-access-vpn)
 install=piavpn-bin.install
 source=("https://installers.privateinternetaccess.com/download/pia-linux-${_pkgver}.run")
 options=(!strip)
-sha256sums=('d2a9b5f02a24dcc5f39579d1d1ee145b9d91422831cf80c6145bfde93637620a')
+sha256sums=('442969379445a42fdb3a9fa30cb82e77228b53a3967acd0880e9174dc49e97a0')
 
 prepare() {
 	env -i /bin/sh pia-linux-${_pkgver}.run --noexec --target "${srcdir}/$pkgname-${_pkgver}"
