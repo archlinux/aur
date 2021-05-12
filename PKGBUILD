@@ -2,7 +2,7 @@
 
 pkgname=cicada-shell
 _pkgname=cicada
-pkgver=0.9.17
+pkgver=0.9.18
 pkgrel=1
 pkgdesc="A bash-like Unix shell written in Rust"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('gcc-libs')
 makedepends=('rust')
 provides=('cicada')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ed4fe063354ff163d8595e88b975245bfddb1df1a57ce62f987ccff77d8e933e')
+sha256sums=('508f0b0c0cd688d59e2fe3327c42d9bf4f2b4a849747a82dced6a9d7a0b73edc')
 
 build() {
     cd $_pkgname-$pkgver
