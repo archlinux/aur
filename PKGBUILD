@@ -3,7 +3,7 @@ pkgbase=python-sphinx-tabs
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=2.1.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Tabbed views for Sphinx"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 #'python-sphinx')
 checkdepends=('python-sphinx' 'python-pygments')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('64e981b5f9daee44679af5becbf90d26')
+md5sums=('41d56de08670ee07b4b56bb35eb02f6e')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -31,7 +31,7 @@ check() {
 }
 
 package_python-sphinx-tabs() {
-    depends=('python-sphinx<4' 'python-pygments')
+    depends=('python-sphinx<5' 'python-pygments')
     optdepends=('python-pre-commit: code_style')
     cd ${srcdir}/${_pyname}-${pkgver}
 
