@@ -2,7 +2,7 @@
 
 pkgname=python-optimesh
 _name=optimesh
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Mesh optimization, mesh smoothing."
 arch=('any')
@@ -13,7 +13,12 @@ makedepends=('python'
 	'python-setuptools')
 depends=('python-meshio' 'python-meshplex' 'python-numpy' 'python-quadpy' 'python-termplotlib')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('3a51c9c12528f27bdfcae5436218ac73242d2e65d440671094bd2656159c8095')
+sha256sums=('f0e2e47c77a600f6e57828aff4e45ed0f571c6af533fa17453ab7fc901589a9d')
+
+# prepare() {
+# 	cd "$srcdir/$_name-$pkgver"
+#     dephell deps convert --from pyproject.toml --to setup.py
+# }
 
 build() {
 	cd "$srcdir/$_name-$pkgver"
