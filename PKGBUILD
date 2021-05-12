@@ -2,8 +2,8 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='kclock'
-pkgver=0.4.0
-pkgrel=3
+pkgver=21.05
+pkgrel=1
 pkgdesc='Convergent clock application for Plasma'
 arch=('x86_64' 'aarch64')
 url='https://invent.kde.org/plasma-mobile/kclock'
@@ -13,7 +13,7 @@ makedepends=('extra-cmake-modules')
 provides=('kclockd')  # as well as kclock (pkgname)
 conflicts=('kclock' 'kclockd')
 source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('11f2e11499357e9adf13d2e07b0ba77661e29bea245facd2afc0738920b814bc')
+sha256sums=('391b7ac21110eae61d12cbfb5200a8c63d74d7df4df5eb8fb298019bbf23f95e')
 
 build() {
   cmake -B 'build' -S "${pkgname}-v${pkgver}" \
