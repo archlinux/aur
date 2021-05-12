@@ -7,6 +7,5 @@
 !.SRCINFO
 !actions.patch
 !cli.patch
-!galu1.patch
 !wayland.patch
 !system76-driver.install
