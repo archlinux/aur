@@ -1,0 +1,28 @@
+pkgbase = hurrican-git
+	pkgdesc = Freeware jump and shoot game based on the Turrican game series (development version)
+	pkgver = v1.0.9.3.r0.g3808399
+	pkgrel = 1
+	url = http://hurrican.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = custom: MIT
+	makedepends = git
+	makedepends = mesa
+	makedepends = cmake
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = libmodplug
+	depends = libgl
+	depends = libepoxy
+	conflicts = hurrican
+	source = hurrican::git+https://github.com/thrimbor/hurrican.git
+	source = glm::git+https://github.com/g-truc/glm.git
+	source = hurrican.desktop
+	source = hurrican.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 11f6a06115d543b9dfb74781c4db79224fceec2f6c0ceecd9c2cd15081d96174
+	sha256sums = be6b84adf5bd89430f2e087d9fe51e9e769cf1a17fb89f4288e8d4551ecf0b84
+
+pkgname = hurrican-git
+
