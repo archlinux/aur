@@ -9,6 +9,7 @@ pkgbase = dmenu-ashin-git
 	makedepends = git
 	depends = nerd-fonts-fira-code
 	depends = ttf-joypixels
+	depends = libx11
 	provides = dmenu
 	conflicts = dmenu
 	source = git+https://www.github.com/ashincoder/dmenu-ashin.git
