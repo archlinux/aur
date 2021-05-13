@@ -3,7 +3,7 @@
 # Contributor: FzerorubigD <Fzerorubigd {AT} GMail {DOT} com>
 pkgname=obfs4-git
 _gitname=obfs4
-pkgver=180.c357dd5
+pkgver=182.40245c4
 pkgrel=1
 pkgdesc='The obfourscator - a pluggable transport proxy written in Go'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver()	{
   cd $_gitname
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  echo $(git rev-list --count main).$(git rev-parse --short main)
 }
 
 build()	{
