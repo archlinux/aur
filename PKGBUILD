@@ -1,10 +1,14 @@
 # Maintainer: Markus Sommer <markus@splork.de>
 #
+# Unfortunately, the devs don't make the server binary directly available; you have to use steam to get it (even though you don't need t to authenticate).
+# Also, I haven't been able to get steam to download a specific version.
+# So, right now, no matter what the package's version number says, you will always get the newest version when installing.
+#
 # I created a macro for ufw, because that's what I use, if you have a macro for a different firewall, feel free to email me a patch.
 
 pkgname=valheim-server
-pkgver=0.150.3
-pkgrel=2
+pkgver=0.153.2
+pkgrel=1
 pkgdesc="Dedicated server for the Valheim PC game"
 arch=('x86_64')
 url='https://www.valheimgame.com/'
