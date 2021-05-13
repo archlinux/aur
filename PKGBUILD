@@ -34,3 +34,4 @@ package() {
 	make PREFIX=/usr X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 DESTDIR="${pkgdir}" install
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+# vim:set ts=4 sw=4 noet:
