@@ -1,4 +1,4 @@
-pkgbase = pkgbase
+pkgbase = keyboard-configurator
 	pkgdesc = Configures keymap and backlight of System76 keyboards.
 	pkgver = 0.2.4
 	pkgrel = 1
