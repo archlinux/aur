@@ -2,19 +2,20 @@
 
 pkgver=1.21
 pkgname=(hledger-bin hledger-ui-bin hledger-web-bin)
-pkgrel=2
+pkgrel=3
 pkgdesc="Easy-to-use command-line/curses/web plaintext accounting tool"
 arch=(x86_64)
 url="http://hledger.org"
 license=('GPL')
 depends=('gmp' 'ncurses5-compat-libs')
+makedepends=('coreutils')
 source=(
     hledger-${pkgver}.zip::https://github.com/simonmichael/hledger/releases/download/${pkgver}/hledger-ubuntu.zip
     patch-ncurses5.sh
 )
 sha256sums=(
     259affe4245789f754b82ecce5a72c0908fcdb655fb42f5a6496d6967993d992
-    cd231baac24e4b51764b3929b3a5aaab5992df0ebfdf5aeace15e2e46b1d2870
+    84d25d9f2946349cdd2327a375625b587837880578eb3251754d0d92f139a0cb
 )
 
 prepare() {

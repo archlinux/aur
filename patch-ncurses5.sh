@@ -8,6 +8,13 @@ hex () {
     printf "0x%X" "$1"
 }
 
+# cat_word file offset
+# cat Elfxx_Word (int32) from file at offset
+cat_word () {
+    echo -n 0x
+    od -j "$2" -N4 -An -tx4 "$1" | tr -d ' \n'
+}
+
 echo "Patch $BINARY"
 
 section_dynstr_offset=0x$(readelf -S "$BINARY" | grep ".dynstr" | awk '{print $6}')
@@ -22,7 +29,7 @@ section_version_r_offset=0x$(readelf -S "$BINARY" | grep ".gnu.version_r" | awk 
 # } Elfxx_Verneed;
 ncurses_verneed_offset=$(hex $(("$section_version_r_offset" + "$(readelf -V "$BINARY" | sed -n 's/^ *\(0x[0-9a-f]*\): .*File: libtinfo.so.[56].*$/\1/p')")))
 # Elfxx_Verneed.vn_file
-ncurses_file_offset=$(hex $(("$section_dynstr_offset" + "0x$(xxd -s $(("$ncurses_verneed_offset" + 4)) -l 4 -e "$BINARY" | awk '{print $2}')")))
+ncurses_file_offset=$(hex $(("$section_dynstr_offset" + "$(cat_word "$BINARY" $(("$ncurses_verneed_offset" + 4)))")))
 
 # typedef struct {
 #     Elfxx_Word    vna_hash;
@@ -33,7 +40,7 @@ ncurses_file_offset=$(hex $(("$section_dynstr_offset" + "0x$(xxd -s $(("$ncurses
 # } Elfxx_Vernaux;
 ncurses_verdaux_offset=$(hex $(("$section_version_r_offset" + "$(readelf -V "$BINARY" | sed -n 's/^ *\(0x[0-9a-f]*\): *Name: NCURSES6\{0,1\}_TINFO_5.0.19991023.*$/\1/p')")))
 # Elfxx_Vernaux.vn_name
-ncurses_name_offset=$(hex $(("$section_dynstr_offset" + "0x$(xxd -s $(("$ncurses_verdaux_offset" + 8)) -l 4 -e "$BINARY" | awk '{print $2}')")))
+ncurses_name_offset=$(hex $(("$section_dynstr_offset" + "$(cat_word "$BINARY" $(("$ncurses_verdaux_offset" + 8)))")))
 
 printf 'libtinfo.so.5\x00' | dd conv=notrunc of="$BINARY" bs=1 seek=$(("$ncurses_file_offset")) 2> /dev/null
 
