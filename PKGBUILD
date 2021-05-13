@@ -1,6 +1,7 @@
 # Maintainer: Michael Schönitzer <michael@schoenitzer.de>
 pkgname=getrid-git
-pkgrel=3
+pkgver=0.2.1.r0.g13a0f7c
+pkgrel=1
 pkgdesc="Terminal user interface to decide which packages to keep and which to get rid of"
 arch=('any')
 url="https://github.com/Nudin/getrid"
