@@ -1,35 +1,37 @@
 # Maintainer: Sam L. Yes <samlukeyes123@gmail.com>
 
 pkgname=libcamera-clang-git
-pkgver=r2468.8634c386
+pkgver=r2570.0906ddb2
 pkgrel=1
 pkgdesc='A complex camera support library for Linux, Android, and ChromeOS (built with clang)'
 arch=('x86_64' 'i686')
 url='https://libcamera.org/'
-provides=('libcamera' 'libcamera-git')
-conflicts=('libcamera' 'libcamera-git')
+provides=('libcamera' 'libcamera-clang' 'libcamera-git')
+conflicts=('libcamera')
 makedepends=(
   "meson>=0.55" "python-yaml" 'python-ply' 'python-jinja' 'pkgconf' 'gnutls' 'openssl' 'git'
   'udev'        # for device hotplug enumeration
   'gstreamer'   # for gstreamer support
-  'libevent'    # for 'cam' command
   'qt5-tools'   # for 'qcam' tool
   'clang>=5.0'
 )
 depends=(
-  'libc++'
+  'libc++' 'libevent'
   'gst-plugins-base-libs'   # for gstreamer support
   #'lttng-ust'              # for tracing with LTTng
 )
 optdepends=(
-  'libevent: for cam'
   'qt5-base: for qcam' 
 )
 license=('LGPL' 'GPL' 'Apache' 'BSD' 'MIT' 'custom')
-#options=('!buildflags')
+options=('!docs')
 source=('git://linuxtv.org/libcamera.git/')
 md5sums=('SKIP')
 _licensedir=/usr/share/licenses/${pkgname}
+
+prepare() {
+  sed -i 's|py_compile=True,||' ${srcdir}/libcamera/utils/ipc/mojo/public/tools/mojom/mojom/generate/template_expander.py
+}
 
 pkgver() {
   cd libcamera
@@ -40,6 +42,7 @@ build() {
     cd "${srcdir}/libcamera"
     CC=clang CXX=clang++ arch-meson build \
         -Dwerror=false \
+        -Dv4l2=true \
         -Dpipelines=ipu3,rkisp1,simple,uvcvideo,vimc \
         -Ddocumentation=disabled \
         -Dtracing=disabled  # comment this line to enable LTTng support
@@ -57,7 +60,6 @@ check() {
 package() {
     cd "$srcdir/libcamera"
     DESTDIR="${pkgdir}" ninja -C build install
-    rm -rf "$pkgdir/usr/share/doc/"
 
     # Install licenses
     install -d ${pkgdir}/${_licensedir}/LICENSES
