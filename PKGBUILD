@@ -23,7 +23,7 @@ build() {
     cd "$srcdir/x11-emoji-picker"
     mkdir -p build
     cd build
-    cmake -DCMAKE_BUILD_TYPE=Release ..
+    cmake -DCMAKE_BUILD_TYPE=None ..
     make
 }
 
