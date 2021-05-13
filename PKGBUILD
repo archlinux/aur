@@ -5,10 +5,10 @@ pkgver=0.12
 pkgrel=3
 pkgdesc="EV event loop for Net-SNMP"
 arch=('any')
-url='http://search.cpan.org/perldoc?Net::SNMP::EV'
+url='https://metacpan.org/release/Net-SNMP-EV'
 license=('GPL' 'PerlArtistic')
 options=('!emptydirs')
-source=("http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/Net-SNMP-EV-0.12.tar.gz")
+source=("https://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/Net-SNMP-EV-0.12.tar.gz")
 depends=('perl-net-snmp' 'perl-ev')
 md5sums=('74d887e49914a5ab48fa1f07094b08ac')
 
