@@ -8,7 +8,7 @@ pkgdesc='A Matrix-Telegram hybrid puppeting/relaybot bridge'
 arch=('any')
 license=('AGPL-3.0')
 depends=(python-sqlalchemy python-alembic python-ruamel-yaml python-magic-git python-commonmark
-  python-aiohttp python-mautrix-git python-telethon python-telethon-session-sqlalchemy python-cryptg
+  python-aiohttp python-mautrix python-telethon python-telethon-session-sqlalchemy python-cryptg
   python-cchardet python-aiodns python-brotli python-pillow python-moviepy python-asyncpg python-olm
   python-pycryptodome python-unpaddedbase64)
 makedepends=('git')
