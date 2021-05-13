@@ -1,0 +1,30 @@
+pkgbase = synapse-git
+	pkgdesc = A semantic file launcher
+	pkgver = 0.2.99.4.r2.g61f8fb8
+	pkgrel = 1
+	url = https://launchpad.net/synapse-project
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = intltool
+	makedepends = vala
+	depends = libkeybinder3
+	depends = libappindicator-gtk3
+	depends = libgee
+	depends = libnotify
+	depends = zeitgeist
+	optdepends = banshee: banshee plugin
+	optdepends = bc: calculator plugin
+	optdepends = devhelp: documentation plugin
+	optdepends = gnome-screensaver: screensaver plugin
+	optdepends = gnome-dictionary: dictionary plugin
+	optdepends = openssh: ssh plugin
+	optdepends = pastebinit: pastebin plugin
+	optdepends = rhythmbox: rhythmbox plugin
+	optdepends = xnoise: xnoise plugin
+	conflicts = synapse
+	source = synapse::git://git.launchpad.net/synapse-project
+	sha256sums = SKIP
+
+pkgname = synapse-git
+
