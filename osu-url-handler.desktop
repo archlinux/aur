@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=osu!
+MimeType=x-scheme-handler/osu;
+Exec=/usr/lib/osu-handler/osu-handler-wine 'C:\\windows\\system32\\start.exe' /ProgIDOpen osu %u
+NoDisplay=true
+StartupNotify=true
+Icon=osu!

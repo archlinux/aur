@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!osu-file-extensions-handler.desktop
+!osu-url-handler.desktop
+!osu-handler-git.install
