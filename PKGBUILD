@@ -2,7 +2,7 @@
 pkgname=xorg-xfindproxy
 _pkgname=xfindproxy
 pkgdesc="Locate X proxy services"
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 arch=('x86_64' 'i686')
 url="http://www.x.org/"
@@ -10,7 +10,7 @@ license=('custom')
 depends=('libxt')
 makedepends=('xproxymngproto' 'xorg-util-macros' 'xorgproto')
 source=("http://xorg.freedesktop.org/releases/individual/app/$_pkgname-$pkgver.tar.bz2")
-md5sums=('88bf1e959865a3c5f31ea8efc9fe9e37')
+md5sums=('e20e8ea211ce90b38db30745f4645f4d')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
