@@ -6,7 +6,7 @@
 
 pkgname=allusion-appimage
 pkgver=1.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Allusion is a tool built for artists, aimed to help you organize your Visual Library – A single place that contains your entire collection of references, inspiration and any other kinds of images."
 arch=('x86_64')
 url='https://allusion-app.github.io'
@@ -16,15 +16,15 @@ depends=('glibc' 'zlib')
 options=(!strip)
 gittag=$(curl -s https://github.com/allusion-app/Allusion/releases | sed -n -e "s/^.*releases\/download\/v${pkgver}\(.*\)\/.*.AppImage\".*/\1/p" | head -n1)
 gitver="${pkgver}${gittag}"
-source_x86_64=("Allusion-${pkgver}.AppImage::https://github.com/allusion-app/Allusion/releases/download/v${gitver}/Allusion-${gitver}.AppImage")
-noextract=("Allusion-${pkgver}.AppImage")
+source_x86_64=("Allusion-${gitver}.AppImage::https://github.com/allusion-app/Allusion/releases/download/v${gitver}/Allusion-${gitver}.AppImage")
+noextract=("Allusion-${gitver}.AppImage")
 sha256sums_x86_64=('9c2de8b375ffca13c3cb874cd1d13bc3964a3c97cc290d8547bd367a8a1e1066')
 
 package() {
     # Install AppImage
-    install -Dm755 "${srcdir}/Allusion-${pkgver}.AppImage" "${pkgdir}/opt/${pkgname}/Allusion.AppImage"
+    install -Dm755 "${srcdir}/Allusion-${gitver}.AppImage" "${pkgdir}/opt/${pkgname}/Allusion-${pkgver}.AppImage"
 
     # Symlink executable
     mkdir -p "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/Allusion.AppImage" "${pkgdir}/usr/bin/allusion"
+    ln -s "/opt/${pkgname}/Allusion-${pkgver}.AppImage" "${pkgdir}/usr/bin/allusion"
 }
