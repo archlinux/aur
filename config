@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.11.18-hardened1 Kernel Configuration
+# Linux/x86 5.11.20-hardened1 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 10.2.0"
 CONFIG_CC_IS_GCC=y
@@ -369,8 +369,7 @@ CONFIG_ACRN_GUEST=y
 # CONFIG_MPSC is not set
 # CONFIG_MCORE2 is not set
 # CONFIG_MATOM is not set
-# CONFIG_GENERIC_CPU
-CONFIG_MZEN2=y
+CONFIG_GENERIC_CPU=y
 CONFIG_X86_INTERNODE_CACHE_SHIFT=6
 CONFIG_X86_L1_CACHE_SHIFT=6
 CONFIG_X86_TSC=y
