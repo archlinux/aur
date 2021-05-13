@@ -134,6 +134,7 @@ get_dxvk() {
 }
 
 check_req() {
+	dltool=$(which curl 2>/dev/null || which wget 2>/dev/null  || true)
 	case ${dltool##*/} in
 		curl)	dltool="$dltool -L -O" ;;
 		wget)	dltool="$dltool -nc" ;;
@@ -147,12 +148,6 @@ check_req() {
 	fi
 	if [ ! -x "$(which lsof 2>/dev/null)" ] ;then
 		req="${req}lsof\n"
-	fi
-	if [ ! -x "$(which wine 2>/dev/null)" ] ;then
-		req="${req}wine\n"
-	fi
-	if [ ! -r "$(find /usr/lib -type f -name 'libxcb-xinerama*' 2>/dev/null)" ] ;then
-		req="${req}libxcb-xinerama\n"
 	fi
 	if [ "x$req" != "x" ] ;then
 		printf "\nError: Following requirements are missing:\n"
@@ -178,11 +173,8 @@ dvcsum=""
 rcsum=""
 key=""
 
-dltool=$(which curl 2>/dev/null || which wget 2>/dev/null  || true)
-
 if [ $(id -u) -ne 0 ] ;then
-	printf "\nEVE Online Launcher Setup need root permissions."
-	printf "\nLeaving.\n\n"
+	printf "\nEVE Online Launcher Setup need root permissions.\n\n"
 	exit 0
 fi
 

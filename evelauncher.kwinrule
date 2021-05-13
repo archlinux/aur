@@ -1,12 +1,10 @@
-[Rule for EVE Launcher]
+[Rules for EVE Launcher]
 Description=Rules for EVE Launcher
-clientmachine=localhost
-clientmachinematch=0
 ignoregeometry=true
 ignoregeometryrule=3
 noborder=true
 noborderrule=3
-placement=Centered
+placement=6
 placementrule=2
 size=1280,720
 sizerule=3

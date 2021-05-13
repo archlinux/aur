@@ -1,2 +1,3 @@
-In PKGBUILD lsof as dependency added.
-Typo in build script fixed.
+Attempt to add a package based dependency solution for lite installer.
+Wine dependency are now optional to use other sources if desired.
+Minor changes in evelauncher.kwinrule and evelauncher.lua

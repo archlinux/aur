@@ -9,12 +9,14 @@ bootstrap_install() {
 	install -dv "$docdir"
 	install -d "$prefix/bin/"
 	install -d "$prefix/share/applications/"
+	if [ -f "./packages.list" ] ;then
+		install -m 0644 "./packages.list" "$libdir"
+	fi
 	if [ -f "./dxvk-$dvver.tar.gz" ] ;then
 		install -d "$libdir/dxvk/"
 		echo "$dvver" >"$libdir/dxvk/version"
 		chmod 0644 "$libdir/dxvk/version"
-		tar xf ./dxvk-$dvver.tar.gz -C $libdir/dxvk/ --no-same-owner \
-			--strip-components=1 dxvk-$dvver/x32 dxvk-$dvver/x64
+		tar xf ./dxvk-$dvver.tar.gz -C $libdir/dxvk/ --no-same-owner --strip-components=1 dxvk-$dvver/x32 dxvk-$dvver/x64
 	fi
 	install -m 0644 "./evesetup.shlib" "$libdir"
 	install -m 0644 "./evelauncher-${elver}.tar.gz" "$libdir"
@@ -66,33 +68,72 @@ bootstrap_remove() {
 	rm -rf "$destdir"
 }
 
+pkg_install() {
+	set +e
+	until [ -z "$req" ];do
+		i=${req%% *}
+		[ $($qrycmd $i >/dev/null; echo $?) -ne 0 ] && mreq="$mreq$i "
+		req=${req#* }
+	done
+	set -e
+	if [ ! -z "$mreq" ] ;then
+		printf "$distro\n$mreq\n" >packages.list
+		printf "\n"
+		$inscmd $mreq
+	fi
+}
+
 check_req() {
-	if [ ! -x "$(which 7z 2>/dev/null)" ] ;then
-		req="${req}7z\n"
-	fi
-	if [ ! -x "$(which lsof 2>/dev/null)" ] ;then
-		req="${req}lsof\n"
-	fi
-	if [ ! -x "$(which wine 2>/dev/null)" ] ;then
-		req="${req}wine\n"
-	fi
-	if [ ! -r "$(find /usr/lib -type f -name 'libxcb-xinerama*' 2>/dev/null)" ] ;then
-		req="${req}libxcb-xinerama\n"
-	fi
-	tar xf evelauncher-$elver.tar.gz
-	cd evelauncher/
-	req="${req}$(LD_LIBRARY_PATH=$(pwd) ldd ./evelauncher | grep -i not | sed 's,\t,,;s,.so.*,,')\n"
-	cd ../
-	rm -rf evelauncher/
-	if [ "x$req" != "x" ] ;then
-		printf "\nError: Following requirements are missing:\n"
-		printf "\n$req\n"
-		read -p 'Install anyway? (y/N) ' key
-		if [ "x$(echo $key | tr [:upper:] [:lower:])" != "xy" ] ;then
-			printf "\nLeaving.\n\n"
-			exit 0
-		fi
-	fi
+	printf "\nChecking requirements...\n\n"
+	case $distro in
+		"Arch Linux"|"Manjaro Linux")
+			qrycmd="pacman -Q"
+			inscmd="pacman -S"
+			req="lsof openssl p7zip qt5-translations qt5-webengine qt5-websockets vulkan-icd-loader "
+			pkg_install
+			;;
+		"Fedora")
+			qrycmd="rpm -q"
+			inscmd="dnf install"
+			req="lsof openssl-libs p7zip qt5-qttranslations qt5-qtwebengine qt5-qtwebsockets vulkan-loader "
+			pkg_install
+			;;
+		*"buntu"|"Linux Mint"|"Pop!_OS"|"KDE neon"|"elementary OS"|"Zorin OS")
+			qrycmd="dpkg-query -W -f='\${Status}'"
+			inscmd="apt install"
+			req="lsof openssl p7zip-full qttranslations5-l10n libqt5concurrent5 libqt5webengine5 libqt5webenginewidgets5 libqt5websockets5 vulkan-icd "
+			pkg_install
+			;;
+		"openSUSE Leap"|"openSUSE Tumbleweed")
+			qrycmd="rpm -q"
+			inscmd="zypper install"
+			req="lsof libopenssl1_1 p7zip-full libqt5-qttranslations libqt5-qtwebengine libQt5Concurrent5 libQt5WebSockets5 libvulkan1 "
+			pkg_install
+			;;
+		*)
+			req="\n"
+			if [ ! -x "$(which 7z 2>/dev/null)" ] ;then
+				req="${req}7z\n"
+			fi
+			if [ ! -x "$(which lsof 2>/dev/null)" ] ;then
+				req="${req}lsof\n"
+			fi
+			tar xf evelauncher-$elver.tar.gz
+			cd evelauncher/
+			req="${req}$(LD_LIBRARY_PATH=$(pwd) ldd ./evelauncher | grep -i not | sed 's,\t,,;s,.so.*,,')\n"
+			cd ../
+			rm -rf evelauncher/
+			if [ "$req" != "\n" ] ;then
+				printf "\nFollowing requirements are missing:\n"
+				printf "$req\n"
+				read -p 'Install anyway? (y/N) ' key
+				if [ "x$(echo $key | tr [:upper:] [:lower:])" != "xy" ] ;then
+					printf "\nLeaving.\n\n"
+					exit 0
+				fi
+			fi
+			;;
+	esac
 }
 
 prefix="/usr"
@@ -105,10 +146,11 @@ dvver=""
 key=""
 
 if [ $(id -u) -ne 0 ] ;then
-	printf "\nEVE Online Launcher Setup need root permissions."
-	printf "\nLeaving.\n\n"
+	printf "\nEVE Online Launcher Setup need root permissions.\n\n"
 	exit 0
 fi
+
+distro=$(sed -rn 's,^NAME=(.+),\1,p' /etc/os-release 2>/dev/null | tr -d \") #'
 
 if [ -d "$destdir" ] ;then
 	printf "\n"

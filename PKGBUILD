@@ -1,29 +1,23 @@
 #Maintainer: Jernuh Zakalwe <jzakalwe1st@gmail.com>
 pkgname=evesetup
 pkgver=1747682
-pkgrel=9
+pkgrel=10
 pkgdesc="An inofficial EVE Online Launcher Setup Tool."
 changelog=$pkgname.changelog
 arch=(x86_64)
 url="https://forums.eveonline.com/t/299030"
 license=('zlib')
 
-depends=('icu'
-         'lsof'
+depends=('lsof'
          'openssl'
          'openssl-1.0'
          'p7zip'
-         'qt5-base'
-         'qt5-declarative'
          'qt5-translations'
-         'qt5-location'
-         'qt5-webchannel'
          'qt5-webengine'
          'qt5-websockets'
-         'vulkan-icd-loader'
-         'wine')
+         'vulkan-icd-loader')
 
-optdepends=('libnotify' 'winetricks')
+optdepends=('libnotify' 'wine' 'winetricks')
 
 conflicts=('evelauncher' 'evesetup_dev' 'evesetup-beta')
 
@@ -103,8 +97,8 @@ package() {
         echo "1.8.1" >${pkgdir}/opt/${pkgname}/lib/dxvk/version
         cp -r ${srcdir}/icons ${pkgdir}/usr/share/
         rm -rf ${srcdir}/evelauncher/resources/ ${srcdir}/evelauncher/plugins/
-        rm -f ${srcdir}/evelauncher/*[Qq]t* ${srcdir}/evelauncher/libcrypto*
-        rm -f ${srcdir}/evelauncher/libicu* ${srcdir}/evelauncher/libssl*
+        rm -f ${srcdir}/evelauncher/*[Qq]t* ${srcdir}/evelauncher/libicu*
+        rm -f ${srcdir}/evelauncher/libcrypto* ${srcdir}/evelauncher/libssl*
         rm -f ${srcdir}/evelauncher/libpng* ${srcdir}/evelauncher/libxcb*
         rm -f ${srcdir}/evelauncher/roots.pem
         cp -f ${srcdir}/evelauncher.sh.real ${srcdir}/evelauncher/evelauncher.sh
@@ -138,12 +132,12 @@ sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
             '30b6440b842c19df64892cc560c274a7cc4f5de910a9f81e12dd0d76da561474'
             'ebdeaa2a143b8d247d94b4a57a45065c299253c074f5d741870a78dd384c29f0'
             '261da84107168979d241c60cd7adbfee0f6675464675faaefd5f6140009d54d8'
-            '609c021ee09ced450b1aeda9c3dd586ebfbc17d2bdccbb4be69de70d661d12c8'
-            'c53c6f09a0d2d12a4360bc4283d6259de1f47cfc29f708fdd9b960aab30af4ef'
+            'd5822f8c1234c3b9a4c83994ae84d4d234ca7083a7a7e193ef749117155d68f7'
+            'd4610df883778f91e0ea5feba84720dfe814af0b9960677e3861809d70de24b2'
             '675da37e1a26862914fb7900c974892ecdd8946c53ff96d322c204f5e410d14a'
             '0029ffaccda6e48d1b601ef7fc5f7cb7ce01b4064885caf314e97cfcadad2973'
-            'dbe32af6b0925fe110aa91a7d49337083a16010fc0d1c3bad17acec06f7e47f1'
-            '6b1d665ba4187f265d04c5b34506d52e72dbb36ba1b9583e7cc30b5757e70f9e'
+            'b546c00ad2329f9be557ebb17214170b4eb820986179da8217f286f63f149804'
+            '3c77f28d282a2319eb049967a92565fcb77c49ca847027425b7f035bdd7e894d'
             '69b98d923c08c6fb035c0c6905ec5e9c73273b694f8f3497777d44597dbe63e3'
             '762db1df07dfcf526fe634b4b589a08e8affefb2f79f02cff2624c70e0820422'
             '980d68abd6f4a662b69efd19145112e88f349044fa1ed5cb6d0a840a92cb42e4'
