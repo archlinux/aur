@@ -1,0 +1,20 @@
+pkgbase = dwmblocks-ashin-git
+	pkgdesc = My build of dwmblocks for use with my build of dwm.
+	pkgver = 1.0.
+	pkgrel = 1
+	url = https://github.com/ashin/dwmblocks-ashin.git
+	arch = x86_64
+	arch = i686
+	license = ISC
+	checkdepends = nerd-fonts-fira-code
+	makedepends = make
+	depends = nerd-fonts-fira-code
+	depends = dwm-ashin-git
+	depends = libxft-bgra-git
+	provides = dwmblocks
+	conflicts = dwmblocks
+	source = git+https://github.com/ashin/dwmblocks-ashin.git
+	md5sums = SKIP
+
+pkgname = dwmblocks-ashin-git
+
