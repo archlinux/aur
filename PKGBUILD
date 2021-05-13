@@ -22,7 +22,7 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-  cd "${_pkgname}"
+  cd dwmblocks-ashin
   printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
