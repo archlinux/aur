@@ -7,7 +7,7 @@ pkgver=1.00
 pkgrel=4
 pkgdesc="Pinball game that was originally made by LostBoys for the Dutch brewery Dommelsch"
 arch=('i686' 'x86_64')
-url='http://happypenguin.altervista.org/gameshow.php?t=Roll%20%27m%20Up'
+url='https://happypenguin.altervista.org/index.php?st=Roll%20%27m%20Up'
 license=('custom: freeware')
 install=rollemup.install
 depends=('sh' 'libxext')
@@ -19,8 +19,8 @@ fi
 #old source files (in case pro-linux.de deletes them):
 #source=("ftp://ftp.tw.freebsd.org/pub/ports/distfiles/Rollemup.tar.gz"
 #        "http://archive.fedoraproject.org/pub/archive/fedora/linux/core/3/i386/os/Fedora/RPMS/compat-libstdc++-8-3.3.4.2.i386.rpm"
-source=("http://www.pro-linux.de/files/rollemup/Rollemup.tar.gz"
-        "http://www.pro-linux.de/files/rollemup/libstdc++.so.2.8"
+source=("https://www.pro-linux.de/files/rollemup/Rollemup.tar.gz"
+        "https://www.pro-linux.de/files/rollemup/libstdc++.so.2.8"
         "$pkgname.sh"
         "$pkgname.png"
         "$pkgname.desktop")

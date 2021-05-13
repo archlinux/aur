@@ -2,7 +2,7 @@ pkgbase = rollemup
 	pkgdesc = Pinball game that was originally made by LostBoys for the Dutch brewery Dommelsch
 	pkgver = 1.00
 	pkgrel = 4
-	url = http://happypenguin.altervista.org/gameshow.php?t=Roll%20%27m%20Up
+	url = https://happypenguin.altervista.org/index.php?st=Roll%20%27m%20Up
 	install = rollemup.install
 	arch = i686
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = rollemup
 	depends = sh
 	depends = libxext
 	optdepends = alsa-oss: oss emulation for alsa audio output
-	source = http://www.pro-linux.de/files/rollemup/Rollemup.tar.gz
-	source = http://www.pro-linux.de/files/rollemup/libstdc++.so.2.8
+	source = https://www.pro-linux.de/files/rollemup/Rollemup.tar.gz
+	source = https://www.pro-linux.de/files/rollemup/libstdc++.so.2.8
 	source = rollemup.sh
 	source = rollemup.png
 	source = rollemup.desktop
