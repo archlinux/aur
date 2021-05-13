@@ -4,7 +4,8 @@ _projectname='slippi-online'
 _mainpkgname="$_projectname"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase")
-pkgver='v2.3.0'
+_tagname='v2.3.0'
+pkgver="v2.3.0.r0.g47329a99d"
 pkgrel='0'
 pkgdesc='Super Smash Bros. Melee rollback netcode'
 _pkgdescappend=' - git version'
@@ -20,7 +21,7 @@ depends=(
 )
 makedepends=('cmake' 'git' 'qt5-base')
 optdepends=('pulseaudio: PulseAudio backend')
-source=("$pkgname::git+https://github.com/project-slippi/Ishiiruka.git")
+source=("$pkgname::git+https://github.com/project-slippi/Ishiiruka.git#tag=$_tagname")
 sha256sums=('SKIP')
 
 _sourcedirectory="$pkgbase"
@@ -28,20 +29,12 @@ _dolphinemu="dolphin-emu"
 
 pkgver() {
 	cd "$_sourcedirectory/"
-	git describe --tags --abbrev=0
+	git checkout --quiet "$(git rev-list -n 1 $(git describe --tags --abbrev=0))"
+	git describe --long --tags | sed -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g'
 }
-
-#prepare() {
-#	cd "$_sourcedirectory/"
-#	if [ -d 'build/' ]; then rm -rf 'build/'; fi
-#	mkdir 'build/'
-#}
 
 build() {
 	cd "$_sourcedirectory/"
-
-	# Go to the latest release's commit
-	git checkout "$(git rev-list -n 1 $pkgver)"
 
 	CMAKE_FLAGS='-DLINUX_LOCAL_DEV=true'
 
