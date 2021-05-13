@@ -3,7 +3,7 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl
-pkgver=20.11.6.1
+pkgver=20.11.7.1
 # Hyphens (-) are prohibited however they are used by the package author
 # therefore it is necessary to invoke ${pkgver} like ${pkgver//./-}
 # this will substitute any full stops (.) with hyphens
@@ -38,7 +38,7 @@ source=("slurm-llnl.sysusers"
 sha512sums=('40aa91b02d8839ee94ae106de1ea675b0a79ba533f218afc87e909b5bbd38ce1135f54716094bf9384edc51409bfaeb0b7904cb387cbcbc8ad16befdafb8a5ab'
             '0f1c477be4a06fd6050afd7e4fd7d3524ce4dc9bec4e3f9bbfb0087660a29f76442139b659bc906029757646ac107e521a6b2ba120b5b2db49bc815f501fb581'
             'f74dacaaffa35fa11a62bb9efa492bb4ef9b197748f28c15210f362382da27ec1dd88a57a48fc6807029c93c9033c82e11545ea36622c683ae7bd09970ef8710'
-            '5ab6e20e5e9048acb7a01a9bf44f8e8c2bca90eb864cc6a42c1d1bf4c78bb2f4ca2c6999d28d7e9801045e6a86be0a36fe0bd79123c7ff8f5823c1bc7b23be90')
+            '7518362b54eefc5de22ea24ce2a9dbfe905e7ad60a5ccff32996adc646b821132f756f113fea23b4afbda990a1c1dbf027d84d7e83a8247434a3ef2d23d9842a')
 
 
 build() {
