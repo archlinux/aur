@@ -1,0 +1,5 @@
+pkg/
+slippi-online-git/
+src/
+*pkg.tar
+*.svg
