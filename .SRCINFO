@@ -1,0 +1,18 @@
+pkgbase = vala-bootstrap
+	pkgdesc = Bootstrapping Compiler for the GObject type system
+	pkgver = 0.16.1
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/Vala
+	arch = i486
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	provides = vala
+	conflicts = vala
+	source = git+https://gitlab.gnome.org/Archive/vala-bootstrap.git#commit=b2beeacc
+	sha256sums = SKIP
+
+pkgname = vala-bootstrap
+
