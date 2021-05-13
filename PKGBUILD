@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=startdde-git
-pkgver=5.8.7.r25.g60dbb34
+pkgver=5.8.7.r26.g7378ddc
 pkgrel=1
 pkgdesc="starter of deepin desktop environment"
 arch=('x86_64')
@@ -34,7 +34,7 @@ prepare() {
   go get -v github.com/godbus/dbus
   go get -v github.com/godbus/dbus/introspect
   go get -v github.com/godbus/dbus/prop
-
+  go get -v gopkg.in/yaml.v3
   sed -i 's/sbin/bin/' $pkgname/Makefile
 }
 
