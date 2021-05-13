@@ -3,7 +3,7 @@
 # Contributor: Roman Kupriyanov <mr.eshua@gmail.com>
 
 pkgname=jitsi-meet-desktop
-pkgver=2.8.5
+pkgver=2.8.6
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -28,8 +28,23 @@ makedepends=('coreutils'
 options=(!strip)
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v${pkgver}.tar.gz"
         'jitsi-meet-desktop.desktop')
-sha256sums=('5c5fb8ff95b820fd891bf71806589bd9973b7ea67e94d1583561dff661276e84'
+sha256sums=('957654aa5aeca6c201e42a0f8c2c72adbd89adc7546a974f08cc878215f79e8c'
             '36a30a15613d53b2a01626a5551315c6970889ce3c2688bce71e26c3333081a4')
+
+case "$CARCH" in
+        armv7h)
+                _electronbuilderarch='armv7l'
+                _dist_path="linux-${_electronbuilderarch}-unpacked"
+        ;;
+        aarch64)
+                _electronbuilderarch='arm64'
+                _dist_path="linux-${_electronbuilderarch}-unpacked"
+        ;;
+        *)
+                _electronbuilderarch='x64'
+                _dist_path="linux-unpacked"
+        ;;
+esac
 
 prepare() {
   export npm_config_cache="$srcdir/npm_cache"
@@ -40,7 +55,9 @@ prepare() {
 
   cd jitsi-meet-electron-${pkgver}/
 
-  sed -r 's#("electron": ").*"#\1'$(cat /usr/lib/electron/version)'"#' -i package.json
+  _electron_dist=/usr/lib/electron
+  _electron_ver=$(cat ${_electron_dist}/version)
+  sed -r 's#("electron": ").*"#\1'${_electron_ver}'"#' -i package.json
 
   export npm_config_cache="${srcdir}/npm_cache"
   npm install
@@ -50,7 +67,7 @@ prepare() {
 build() {
   cd jitsi-meet-electron-${pkgver}/
   npm run build
-  npx electron-builder --dir
+  npx electron-builder --linux --${_electronbuilderrarch} --dir $dist -c.electronDist=${_electron_dist} -c.electronVersion=${_electron_ver}
   npm config set prefix ${_npm_prefix}
   nvm unalias default
 }
@@ -58,17 +75,9 @@ build() {
 package() {
   cd jitsi-meet-electron-${pkgver}/
 
-  if [[ ${CARCH} == "aarch64" ]]; then
-    _dist_path=${srcdir}/jitsi-meet-electron-${pkgver}/dist/linux-arm64-unpacked
-  elif [[ ${CARCH} == "armv7h" ]]; then
-    _dist_path=${srcdir}/jitsi-meet-electron-${pkgver}/dist/linux-armv7l-unpacked
-  elif [[ ${CARCH} == "x86_64" ]]; then
-    _dist_path=${srcdir}/jitsi-meet-electron-${pkgver}/dist/linux-unpacked
-  fi
-
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/opt/${pkgname}"
-  cp -r "${_dist_path}"/resources/* "${pkgdir}/opt/${pkgname}"
+  cp -r "${srcdir}/jitsi-meet-electron-${pkgver}/dist/${_dist_path}"/resources/* "${pkgdir}/opt/${pkgname}"
 
   install -Dm644 -- resources/icon.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
