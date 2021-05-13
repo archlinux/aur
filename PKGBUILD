@@ -1,32 +1,21 @@
 # Maintainer: Oscar Garcia Amor <ogarcia@connectical.com>
 
 _pkgname=py-trello
-pkgbase=python-py-trello
-pkgname=('python-py-trello' 'python2-py-trello')
-pkgver=0.17.1
+pkgname=python-py-trello
+pkgver=0.18.0
 pkgrel=1
 pkgdesc='Python API wrapper around Trello API'
 arch=('any')
 url='https://github.com/sarumont/py-trello'
 license=('BSD')
-makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://github.com/sarumont/py-trello/archive/${pkgver}.tar.gz")
-sha256sums=('51a32be052122327e586d358c93801d53592c900e4fc8f3eb654b563cba6dbd1')
+depends=('python-dateutil' 'python-requests' 'python-requests-oauthlib' 'python-pytz')
+makedepends=('python-setuptools')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sarumont/py-trello/archive/${pkgver}.tar.gz")
+sha256sums=('c50fbf48f9486ed4f959738b35f3d0aec872c2a63a6ad3036b582052dc475691')
 
-package_python-py-trello() {
-  depends=('python-dateutil' 'python-requests' 'python-requests-oauthlib' 'python-pytz')
-
+package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize='1'
-  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  cp LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"
-}
-
-package_python2-py-trello() {
-  depends=('python2-dateutil' 'python2-requests' 'python2-requests-oauthlib' 'python2-pytz')
-
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  python2 setup.py install --root="${pkgdir}" --optimize='1'
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   cp LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
