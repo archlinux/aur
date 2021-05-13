@@ -1,3 +1,5 @@
+# Maintainer: Cassio Almeida <jcassiocosta@gmail.com>
+
 pkgname=serpro-signer
 pkgver=2.7.1
 pkgrel=1
