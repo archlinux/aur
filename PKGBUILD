@@ -1,7 +1,7 @@
 # Maintainer: Ckat <ckat@teknik.io>
 
 pkgname=otb-unifont
-pkgver=13.0.05
+pkgver=13.0.06
 pkgrel=1
 pkgdesc="A free bitmap font with wide Unicode support (OTB version)"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('fontforge')
 conflicts=('bdf-unifont' 'pcf-unifont' 'ttf-unifont-csur' 'hex-unifont')
 source=("https://ftp.gnu.org/gnu/unifont/unifont-${pkgver}/unifont-${pkgver}.bdf.gz"{,.sig} 'otbconvert.pe')
 validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy
-md5sums=('fc5090ee1bef30f7fb0a401fe8c30c98'
+md5sums=('db39d7824d533b793007bde59bceae69'
          'SKIP'
          '8b6d81ad1956b2d7eb5dbead68dacdf4')
 
