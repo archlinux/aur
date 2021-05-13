@@ -30,4 +30,5 @@ build() {
 package() {
     cd "$srcdir/x11-emoji-picker"
     install -Dm 755 "build/emoji-picker" "$pkgdir/usr/bin/emoji-picker"
+    install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/x11-emoji-picker"
 }
