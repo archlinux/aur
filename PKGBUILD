@@ -1,8 +1,8 @@
-# Maintainer: Saren <saren@wtako.net>
+# Maintainer: chaozhi_l <chaozhi_l@foxmail.com>
 
 pkgname=gnome-shell-extension-lunar-calendar
 pkgver=26
-pkgrel=1
+pkgrel=2
 pkgdesc="Display Chinese Lunar Calendar in panel"
 arch=('any')
 url="https://extensions.gnome.org/extension/675/lunar-calendar/"

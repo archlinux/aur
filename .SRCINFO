@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-lunar-calendar
 	pkgdesc = Display Chinese Lunar Calendar in panel
 	pkgver = 26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://extensions.gnome.org/extension/675/lunar-calendar/
 	arch = any
 	license = GPL3
