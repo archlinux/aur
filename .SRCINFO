@@ -1,7 +1,7 @@
 pkgbase = ocaml-cairo-git
 	pkgdesc = OCaml bindings for cairo
 	pkgver = 20150609
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cairographics.org/cairo-ocaml/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ocaml-cairo-git
 	depends = lablgtk2
 	depends = libsvg-cairo
 	provides = ocaml-cairo
-	source = META
+	source = git://anongit.freedesktop.org/cairo-ocaml.git
 	md5sums = dbd5aeb38b883d7e0d95f2c9fe108eb9
 
 pkgname = ocaml-cairo-git
