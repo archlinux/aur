@@ -1,4 +1,4 @@
-# Maintainer: Ben Breslauer <crushedtortilla at gmail dot com>
+# Maintainer: Ben <crushedtortilla at gmail dot com>
 pkgname=skanpage-git
 pkgver=r113.05cb87e
 pkgrel=1
