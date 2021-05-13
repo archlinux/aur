@@ -10,7 +10,7 @@ pkgbase = perl-sys-run
 	depends = perl-moose
 	depends = perl-namespace-autoclean
 	options = !emptydirs
-	source = http://cpan.metacpan.org/authors/id/T/TE/TEX/Sys-Run-0.16.tar.gz
+	source = https://cpan.metacpan.org/authors/id/T/TE/TEX/Sys-Run-0.16.tar.gz
 	md5sums = d2cf5133e6d12ab99ef3151498d4b2b3
 
 pkgname = perl-sys-run
