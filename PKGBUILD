@@ -95,5 +95,5 @@ package() {
   cp -r ${srcdir}/${_gitname}/workdir/installation/LibreOffice/archive/install/en-US/LibreOffice*/* ${pkgdir}/opt/libreoffice
 
   install -d -m755 ${pkgdir}/usr/share/applications
-  cp ${srcdir}/libreoffice-slim-fixed-git/* ${pkgdir}/usr/share/applications
+  cp ${srcdir}/pkgbuild-libreoffice-slim-git/* ${pkgdir}/usr/share/applications
 }
