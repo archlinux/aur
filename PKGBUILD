@@ -9,14 +9,14 @@ pkgrel=2
 epoch=1
 pkgdesc="Get out of my way, Window Manager!"
 arch=('i686' 'x86_64')
-url="http://github.com/seanpringle/goomwwm"
+url="https://github.com/seanpringle/goomwwm"
 license=('MIT')
 depends=('libxft' 'libxinerama')
 optdepends=('dmenu')
 makedepends=('git')
 conflicts=($_pkgname)
 provides=($_pkgname)
-source=("$pkgname::git://github.com/seanpringle/goomwwm.git")
+source=("$pkgname::git+https://github.com/seanpringle/goomwwm.git")
 md5sums=('SKIP')
 
 pkgver() {

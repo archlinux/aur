@@ -3,7 +3,7 @@ pkgbase = goomwwm-git
 	pkgver = 1.0.0.73.g25c9a12
 	pkgrel = 2
 	epoch = 1
-	url = http://github.com/seanpringle/goomwwm
+	url = https://github.com/seanpringle/goomwwm
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = goomwwm-git
 	optdepends = dmenu
 	provides = goomwwm
 	conflicts = goomwwm
-	source = goomwwm-git::git://github.com/seanpringle/goomwwm.git
+	source = goomwwm-git::git+https://github.com/seanpringle/goomwwm.git
 	md5sums = SKIP
 
 pkgname = goomwwm-git
