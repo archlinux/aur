@@ -12,7 +12,7 @@ makedepends=('cmake')
 provides=('zlib=1.2.11' 'zlib-ng')
 conflicts=('zlib' 'zlib-ng' 'zlib-ng-git')
 source=("https://github.com/zlib-ng/zlib-ng/archive/${pkgver//_/-}.zip")
-sha256sums=("58a86813746ac1e2354244b1e01f22d8b4814c69e7a8fca14c657d13f67bb5bc")
+sha256sums=("235232f622d17cb4070f67ebeb06b0df8cf0894f9045ea6c51782479318841d2")
 
 build() {
     cmake \
