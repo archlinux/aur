@@ -1,20 +1,20 @@
 pkgbase = roctracer
 	pkgdesc = ROCm Tracer Callback/Activity Library for Performance tracing AMD GPU's
-	pkgver = 4.1.0
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://rocmdocs.amd.com/en/latest/ROCm_Tools/ROCm-Tools.html#amd-rocm-roctracer
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = git
-	makedepends = python
 	makedepends = python-argparse
 	makedepends = python-cppheaderparser
 	makedepends = python-ply
 	depends = hip-rocclr
+	depends = rocprofiler
 	options = !staticlibs
 	options = strip
-	source = roctracer-rocm-4.1.0.tar.gz::https://github.com/ROCm-Developer-Tools/roctracer/archive/rocm-4.1.0.tar.gz
-	sha256sums = 5d93de4e92895b6eb5f9d098f5dbd182d33923bd9b2ab69cf5a1abbf91d70695
+	source = roctracer-rocm-4.2.0.tar.gz::https://github.com/ROCm-Developer-Tools/roctracer/archive/rocm-4.2.0.tar.gz
+	sha256sums = 62a9c0cb1ba50b1c39a0636c886ac86e75a1a71cbf5fec05801517ceb0e67a37
 
 pkgname = roctracer
