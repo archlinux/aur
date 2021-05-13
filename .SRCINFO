@@ -1,0 +1,20 @@
+pkgbase = rottexpr-shareware-git
+	pkgdesc = Source port for the original Rise of the Triad (Shareware Version)
+	pkgver = v0.01
+	pkgrel = 1
+	url = https://github.com/LTCHIPS/rottexpr
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = sdl2
+	depends = sdl2_mixer
+	provides = rottexpr-shareware
+	conflicts = rottexpr-shareware
+	source = git+https://github.com/LTCHIPS/rottexpr
+	source = https://archive.org/download/rott_shareware/ROTT.zip
+	md5sums = SKIP
+	md5sums = 6fe2c27966f47644492d6cbacb2614c6
+
+pkgname = rottexpr-shareware-git
+
