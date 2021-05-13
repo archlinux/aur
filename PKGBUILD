@@ -4,7 +4,7 @@
 pkgname=dnastar7activated
 pkgver=7.1.0
 pkgrel=1
-pkgdesc="leader in the field of bioinformatics software, pioneering innovative software solutions since 1984"
+pkgdesc="leader in the field of bioinformatics software, including SeqMan Editseq GeneQuest Megalign PrimerSelect Protean SeqBuilder"
 arch=('any')
 url="https://github.com/starsareintherose/dnastar"
 license=('custom')

@@ -1,5 +1,5 @@
 pkgbase = dnastar7activated
-	pkgdesc = leader in the field of bioinformatics software, pioneering innovative software solutions since 1984
+	pkgdesc = leader in the field of bioinformatics software, including SeqMan Editseq GeneQuest Megalign PrimerSelect Protean SeqBuilder
 	pkgver = 7.1.0
 	pkgrel = 1
 	url = https://github.com/starsareintherose/dnastar
