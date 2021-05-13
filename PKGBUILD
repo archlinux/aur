@@ -2,7 +2,7 @@
 # Contributor: Swift Geek <swiftgeek+aur@gmail.com>
 
 pkgname=wee-slack
-pkgver=2.7.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='A WeeChat plugin for Slack.com'
 url='https://github.com/wee-slack/wee-slack/'
@@ -12,7 +12,7 @@ depends=('weechat' 'python-websocket-client')
 conflicts=('wee-slack-git')
 install=$pkgname.install
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/wee-slack/wee-slack/archive/v${pkgver}.tar.gz")
-sha512sums=('82d4801aea48c6d52b1610078f6f99d1e193942a0368953f15de3942143a3aa0cfdf43d580eb8c51d76046971d91e3f837de9b544cab5370647dcd6e5e5a4337')
+sha512sums=('96e778e51c87ca0f51ea60a2b09c3ef3fc8abde563e203b7d1af576ec0bd508e5dc10f93a36172ccbd4abc539a0591a1f71aaeb565105127ee64a832100985ae')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
