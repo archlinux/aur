@@ -11,12 +11,12 @@
 pkgbase=networkmanager-iwd
 pkgname=(networkmanager-iwd libnm-iwd nm-iwd-cloud-setup)
 pkgver=1.30.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Network connection manager and user applications; using iwd backend instead of wpa_supplicant"
 url="https://wiki.gnome.org/Projects/NetworkManager"
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
-_pppver=2.4.8
+_pppver=2.4.9
 makedepends=(intltool dhclient iptables gobject-introspection gtk-doc "ppp=$_pppver" modemmanager
              iproute2 nss polkit wpa_supplicant curl systemd libmm-glib
              libnewt libndp libteam vala perl-yaml python-gobject git vala jansson bluez-libs
@@ -34,6 +34,9 @@ pkgver() {
 
 prepare() {
   cd NetworkManager
+
+  # https://bugs.archlinux.org/task/70710
+  git cherry-pick -n 8acad5a20cc61081438294efc634c0e245452e35
 }
 
 build() {
@@ -63,9 +66,6 @@ build() {
     # handlers for resolv.conf
     -D netconfig=no
     -D config_dns_rc_manager_default=symlink
-
-    # dhcp clients
-    -D dhcpcd=no
 
     # miscellaneous
     -D vapi=true
@@ -103,6 +103,7 @@ package_networkmanager-iwd() {
               'ppp: dialup connection support'
               'modemmanager: cellular network support'
               'dhclient: alternative DHCP client'
+              'dhcpcd: alternative DHCP client'
               'openresolv: alternative resolv.conf manager'
               'firewalld: Firewall support')
   backup=(etc/NetworkManager/NetworkManager.conf)

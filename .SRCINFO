@@ -1,7 +1,7 @@
 pkgbase = networkmanager-iwd
 	pkgdesc = Network connection manager and user applications; using iwd backend instead of wpa_supplicant
 	pkgver = 1.30.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/NetworkManager
 	arch = x86_64
 	license = GPL2
@@ -13,7 +13,7 @@ pkgbase = networkmanager-iwd
 	makedepends = iptables
 	makedepends = gobject-introspection
 	makedepends = gtk-doc
-	makedepends = ppp=2.4.8
+	makedepends = ppp=2.4.9
 	makedepends = modemmanager
 	makedepends = iproute2
 	makedepends = nss
@@ -65,6 +65,7 @@ pkgname = networkmanager-iwd
 	optdepends = ppp: dialup connection support
 	optdepends = modemmanager: cellular network support
 	optdepends = dhclient: alternative DHCP client
+	optdepends = dhcpcd: alternative DHCP client
 	optdepends = openresolv: alternative resolv.conf manager
 	optdepends = firewalld: Firewall support
 	provides = networkmanager
