@@ -1,13 +1,13 @@
 # Maintainer: YTG123 <54103478+YTG1234@users.noreply.github.com>
 pkgname=fabricversions
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Fetch FabricMC versions"
 arch=("x86_64")
 url=https://github.com/YTG1234/fabricversions
 license=('GPL3')
-depends=('curl' 'libxml2' 'gcc-libs')
-makedepends=('swift-language' 'git' 'libedit')
+depends=('curl' 'libxml2' 'gcc-libs' 'swift-language')
+makedepends=('git' 'libedit')
 options=('zipman')
 changelog=CHANGELOG
 source=("git+https://github.com/YTG1234/$pkgname?signed#tag=v$pkgver")
