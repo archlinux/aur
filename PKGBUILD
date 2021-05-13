@@ -3,8 +3,8 @@
 # an on Hurrican PKGBUILD by Stefan Schmidt <thrimbor gmail com>
 
 pkgname=hurrican-git
-pkgver=v1.0.9.3.r0.g3808399
-pkgrel=1
+pkgver=1.0.9.3.r0.g3808399
+pkgrel=2
 pkgdesc="Freeware jump and shoot game based on the Turrican game series (development version)"
 arch=('i686' 'x86_64')
 url="http://hurrican.sourceforge.net"
@@ -23,7 +23,7 @@ sha256sums=('SKIP'
             
 pkgver() {
   cd hurrican
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' cut -c2-48
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
 }
 prepare() {
     cd "${srcdir}"/hurrican
