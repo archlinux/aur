@@ -1,6 +1,7 @@
-# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
+# Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=rocm-bandwidth-test
-pkgver=4.0.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Bandwidth test for ROCm"
 arch=('x86_64')
@@ -10,26 +11,16 @@ depends=('hsa-rocr')
 makedepends=('cmake')
 options=(!staticlibs strip)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RadeonOpenCompute/rocm_bandwidth_test/archive/rocm-$pkgver.tar.gz")
-sha256sums=('bde2aa743979eac195dd13ec8d0fcb7da183fff489da32c28b872eed7f6681b3')
+sha256sums=('d268365e3bb8031c1201c05e705074d1fd794d236843f80064855cf31e4412f5')
+_dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
 
 build() {
-  mkdir -p "$srcdir/build"
-  cd "$srcdir/build"
-
-  cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm/rocm_bandwidth_test \
-        "$srcdir/rocm_bandwidth_test-rocm-$pkgver"
-  make
+  cmake -Wno-dev -B build \
+        -S "$_dirname" \
+        -DCMAKE_INSTALL_PREFIX=/opt/rocm
+  make -C build
 }
 
 package() {
-  cd "$srcdir/build"
-
-  make DESTDIR="$pkgdir" install
-
-  # add links
-  install -d "$pkgdir/usr/bin"
-  local _fn
-  for _fn in rocm-bandwidth-test; do
-    ln -s "/opt/rocm/rocm_bandwidth_test/bin/$_fn" "$pkgdir/usr/bin/$_fn"
-  done
+  DESTDIR="$pkgdir" make -C build install
 }
