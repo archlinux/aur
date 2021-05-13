@@ -6,10 +6,10 @@ pkgver=1.5
 pkgrel=3
 pkgdesc="Docker is a docking application (WindowMaker dock app) which acts as a system tray for KDE and GNOME2."
 arch=('i686' 'x86_64')
-url="http://icculus.org/openbox/2/docker/"
+url="https://icculus.org/openbox/2/docker/"
 license=('GPL')
 depends=('glibc' 'glib2' 'libx11')
-source=("http://icculus.org/openbox/2/docker/docker-$pkgver.tar.gz")
+source=("https://icculus.org/openbox/2/docker/docker-$pkgver.tar.gz")
 md5sums=('349320bebd43babb8b43e11c7aae0293')
 
 build() {
