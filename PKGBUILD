@@ -1,7 +1,7 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=fsleyes
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="FSLeyes is the FSL image viewer"
 arch=('any')
 url="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes"
@@ -23,7 +23,8 @@ sha256sums=('31a0d31941968c5f71315a4d9491fa0f17ae83863a095aa355c33aecf469c156'
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  
+  # Workaround for jinja 3.x
+  sed -i '/jinja2==2\.\*/d' requirements.txt
   python setup.py install --root="${pkgdir}/" --optimize=1
   
   install -Dm644 ./fsleyes/assets/icons/app_icon/fsleyes.iconset/icon_512x512.png "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/${pkgname}.png
