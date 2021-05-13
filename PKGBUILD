@@ -1,7 +1,7 @@
 # Maintainer: Lucas Melo <luluco250 at gmail dot com>
 
 pkgname=soniccd-git
-pkgver=r245.e1ffe4f
+pkgver=r263.4edf2f9
 pkgrel=1
 pkgdesc='A full decompilation of Sonic CD 2011, based on the PC remake with
 improvements & tweaks from the mobile remakes.'
