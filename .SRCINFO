@@ -1,7 +1,7 @@
 pkgbase = annex-git
 	pkgdesc = Simple appstore for gnome shell extensions.
-	pkgver = r8.ed11171
-	pkgrel = 3
+	pkgver = r13.4482dd2
+	pkgrel = 1
 	url = https://github.com/andyholmes/annex
 	arch = any
 	license = GPL2
@@ -9,7 +9,6 @@ pkgbase = annex-git
 	makedepends = meson
 	depends = gjs
 	depends = hicolor-icon-theme
-	depends = chrome-gnome-shell
 	depends = gtk4
 	depends = python-gobject
 	depends = libsoup

@@ -1,12 +1,12 @@
 # Maintainer: Zom <zomaur at eevul dot org>
 pkgname=annex-git
 _pkgname=annex
-pkgver=r8.ed11171
-pkgrel=3
+pkgver=r13.4482dd2
+pkgrel=1
 license=("GPL2")
 pkgdesc="Simple appstore for gnome shell extensions."
 makedepends=(git meson)
-depends=(gjs hicolor-icon-theme chrome-gnome-shell gtk4 python-gobject libsoup)
+depends=(gjs hicolor-icon-theme gtk4 python-gobject libsoup)
 optdepends=()
 arch=("any")
 url="https://github.com/andyholmes/annex"
