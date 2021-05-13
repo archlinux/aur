@@ -1,0 +1,13 @@
+pkgbase = aseprite-deb
+	pkgdesc = Create animated sprites and pixel art
+	pkgver = 1.2.27
+	pkgrel = 1
+	url = http://www.aseprite.org/
+	arch = x86_64
+	license = custom
+	conflicts = aseprite
+	conflicts = aseprite-git
+	conflicts = aseprite-gpl
+
+pkgname = aseprite-deb
+
