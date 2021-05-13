@@ -18,8 +18,7 @@ source=(https://deb.debian.org/debian/pool/main/n/${pkgname}/${pkgname}_${_debve
         netkit-telnet-ssl.sysusers
         netkit-telnet-ssl.tmpfiles
         netkit-telnetd{,-ssl}.socket
-        netkit-telnetd{,-ssl}@.service
-        netkit-telnetd-ssl.certbot.sh)
+        netkit-telnetd{,-ssl}@.service)
 sha256sums=('9c80d5c7838361a328fb6b60016d503def9ce53ad3c589f3b08ff71a2bb88e00'
             '3f8b155bc5085e37a0d836867af330f2911953055010e30f30ca46698559a0aa'
             '339308000345e294f0188c232bdb6cf4a22225db2efe188064f14caabd915ed4'
@@ -28,8 +27,7 @@ sha256sums=('9c80d5c7838361a328fb6b60016d503def9ce53ad3c589f3b08ff71a2bb88e00'
             '25a9cd6c6fd3dd50a20038c05d755c519be1081e42bcb148f71e7a8f182e91a2'
             'a9a14476c43d65a57d50eec7e7d773ff1031cf1c13c12e84a9de5eaa14279434'
             '6e45cfed7968af48b59f172523934db421964e58fdb624872a831160e2848284'
-            'b4220954373f5431b127509b4344dad32d5c692871c536106507fa8b052ef40a'
-            '53b9c11502995ee5bc80a6a970c8b0ba27f39cca460bf00e38c7cb1eaa9d7228')
+            'b4220954373f5431b127509b4344dad32d5c692871c536106507fa8b052ef40a')
 
 prepare() {
   cd netkit-telnet-0.17
@@ -72,9 +70,6 @@ package() {
     install -D -m 644 "$srcdir"/"$unit" \
                       "$pkgdir"/usr/lib/systemd/system/"$unit"
   done
-
-  install -D -m 755 "$srcdir"/netkit-telnetd-ssl.certbot.sh \
-                    "$pkgdir"/etc/letsencrypt/renewal-hooks/deploy/netkit-telnetd-ssl
 }
 
 # cleanbuild: required
