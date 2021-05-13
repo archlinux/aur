@@ -1,7 +1,7 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
 pkgname=bsp-tinkerboard
-pkgver=21.05.1
+pkgver=21.02.3
 _pkgver=21.05.1
 _ubuntu=focal
 pkgrel=1
