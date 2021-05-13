@@ -2,7 +2,7 @@
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 
 pkgname=xorg-xwayland-hidpi-git
-pkgver=1.20.0.r933.g012350e3d
+pkgver=21.1.1.r0.gd4cc2e2db
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -30,7 +30,9 @@ replaces=('xorg-server-xwayland-hidpi-git')
 
 pkgver() {
   cd xserver
-  git describe --tags | sed 's/^xorg.server.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  { git stash; git checkout xwayland-21.1; } > /dev/null
+  git describe --long | sed 's/^xwayland.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  { git checkout master; git stash apply; } > /dev/null
 }
 
 prepare() {
