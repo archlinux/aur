@@ -1,7 +1,6 @@
 pkgname=rust-analyzer-nightly-bin
-pkgver=rust.analyzer.fd109fb58.2021.05.10.nightly
+pkgver=20210513
 pkgrel=1
-epoch=1
 pkgdesc="An experimental Rust compiler front-end for IDEs (nightly)"
 arch=('x86_64' 'i686')
 url="https://github.com/rust-analyzer/rust-analyzer"
@@ -16,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     chmod a+x rust-analyzer-linux
-    ./rust-analyzer-linux --version | sed 's/[ -]/./g'
+    ./rust-analyzer-linux --version | cut -d' ' -f3 | sed 's/-//g'
 }
 
 package() {
