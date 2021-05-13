@@ -3,7 +3,7 @@
 # Maintainer: Ariel Popper <a@arielp.com>
 
 pkgname=postgresql-lts-old-upgrade
-pkgver=10.16
+pkgver=10.17
 _majorver=${pkgver%.*}
 pkgrel=1
 pkgdesc='PostgreSQL build for migrating between major versions with pg_upgrade'
@@ -13,7 +13,7 @@ license=('custom:PostgreSQL')
 depends=("postgresql-lts-libs>=${_majorver}" 'libxml2' 'openssl>=1.0.0' 'pam' 'zlib' 'icu' 'systemd-libs' 'libldap')
 makedepends=('krb5' 'python' 'python2' 'perl' 'tcl>=8.6.0' 'systemd')
 source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2)
-sha256sums=('a35c718b1b6690e01c69626d467edb933784f8d1d6741e21fe6cce0738467bb3')
+sha256sums=('5af28071606c9cd82212c19ba584657a9d240e1c4c2da28fc1f3998a2754b26c')
 
 build() {
   cd postgresql-${pkgver}
