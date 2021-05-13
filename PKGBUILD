@@ -55,6 +55,10 @@ build() {
   CFLAGS=${CFLAGS/-pipe/}
   CXXFLAGS=${CXXFLAGS/-pipe/}
 
+  # Force this for now, doesn't seem to be picked up via patch from https://bugs.archlinux.org/task/70701
+  CFLAGS+=" -Wno-format -Wno-format-security"
+  CXXFLAGS+=" -Wno-format -Wno-format-security"
+
   "$srcdir/gcc/configure" --prefix=/usr \
       --libdir=/usr/lib \
       --libexecdir=/usr/lib \
