@@ -2,7 +2,7 @@
 pkgbase=python-asdf
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.7.4
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="A Python tool for reading and writing Advanced Scientific Data Format (ASDF) files"
 arch=('i686' 'x86_64')
@@ -16,10 +16,11 @@ makedepends=('python>=3.6'
              'python-semantic-version>=2.8'
              'python-astropy'
              'python-sphinx-astropy'
-             'graphviz')
+             'graphviz'
+             'python-jmespath>=0.6.2')
 checkdepends=('python-pytest-doctestplus' 'python-pytest-remotedata' 'python-pytest-openfiles' 'python-lz4')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('3583ac09a9ef79429a04e6efda1f1615')
+md5sums=('a7de6c796dadc758d9fc1a694f420d55')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -36,7 +37,7 @@ check() {
 }
 
 package_python-asdf() {
-    depends=('python>=3.6' 'python-numpy>=1.10' 'python-jsonschema<4' 'python-yaml>=3.10' 'python-semantic-version>=2.8' 'python-jmespath')
+    depends=('python>=3.6' 'python-numpy>=1.10' 'python-jsonschema<4' 'python-yaml>=3.10' 'python-semantic-version>=2.8' 'python-jmespath>=0.6.2')
     optdepends=('python-astropy>=3.0: Support for units, time, transform, wcs, or running the tests'
                 'python-lz4>=0.10: Support for lz4 compression'
                 'python-asdf-doc: Documentation for Python-ASDF'
