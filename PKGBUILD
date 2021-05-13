@@ -1,7 +1,7 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=rocm-dev
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="ROCm Dev - Metapackage for the ROCm Development Stack"
 arch=('x86_64')
