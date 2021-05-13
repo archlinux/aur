@@ -1,7 +1,7 @@
 # Maintainer: shiro <shiro@usagi.io>
 
 pkgname=map2
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="A scripting language that allows complex key remapping on Linux, written in Rust"
 url="https://github.com/shiro/map2"
