@@ -56,7 +56,7 @@ pkgver=${_major}
 #_stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -76,7 +76,7 @@ source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz
         "${_patchsource}/futex2-stable-patches-v2/0001-futex2-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/wine-esync-patches/0001-v5.12-winesync.patch"
         "${_patchsource}/zen-patches-v2/0001-zen-patches.patch"
-        "${_patchsource}/bfq-patches-v2/0001-bfq-patches.patch"
+        "${_patchsource}/bfq-patches-v3/0001-bfq-patches.patch"
         "${_patchsource}/block-patches/0001-block-patches.patch"
         "${_patchsource}/ll-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
         "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
@@ -92,7 +92,7 @@ source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz
 
 sha512sums=('295a943bb0d2366715c844a6e2ca424d17f4caceab8c9e095250851857928902a5deb8aa51cff5c3c7e982d168f79f4df3a39bdd47ec22b51237c91732dc8af0'
             '52f19783cc560a5688f4914db70e1f59d0e549cbf1a057d891e38f6e9436691d51c18a1d78f13173a970d8f4153275c53f9ab093c01b59d283f0375f072930ab'
-            '88f9f1e6ea206068fd029566e4610c16b7c3007f10363c7db37cd922fe75646437d2e4814317bc292d06eff7e9ebd29d8cd1ee82c8abf45ddd1843c1ff55f5c7'
+            'aed7844c51ec705ef1ef5d9f1adf27939073c99d4fcc97051bed2fba1ec161fdde4c57cbe039209fb86c72918493bea55ed26189c1dda3dbea3a3a7019363818'
             'a57b95e3c38378f98f29fcf405f0e4ec6c125da95629f59f60722909926131497df460f4938d9d873db584cf567122409407e29345b4545d885547c282be28f5'
             'bafda1ec6114a360bed8a9f8ae6b1e8dc5c22adf15f7545c3455a090f14b491639707f6624d7a891ec66b459842e61df9d62274b070b7a611f0bdbd367219ae5'
             '15933126feeb56ccc6ace70db9fa7afb64d148900e41a780e42e03ce09faf7bab12413f526675b918aeff55e91dc038ad58884bb7add4a45962aca79d576cb93'
@@ -100,7 +100,7 @@ sha512sums=('295a943bb0d2366715c844a6e2ca424d17f4caceab8c9e095250851857928902a5d
             'a0ba9fd091e4cc30b2a493e23299c0ce242ee26e8af399ea9aa115face3b90a723fb20f8877042c6b311a9eca20513bb932c1fd1c5db262b1df7b37160c0634e'
             '905f97cdff3e096552159a229d069d1b1418f4142b2927134110f504bfe0883309b3f29c2aeeb94c528b63e0eec7d0d69b44c3d498211c610811969cc4d07a56'
             '1c6cdf40009ce6c62b0a35cc7c2a74818b7169d32e18fb3c2bb8761762c15c579f64cb36f9076c4f78d3f88f077f6246ee75ba93f370cc40dae450d6d71117bb'
-            '6bd42edf939abe92c862001ef200f4ac88791e13757ea305539b4316693f15361cb6ee018d56368d486457beaa9ec97beff5cf6ee5c6647ecbbb240b85614d50'
+            '77764b42ae1c6c93e4a2d7ee2f9f1c08844281768b9d1c8ba6ee1c63938634c40fa4b4e6c076db99bbc14248c5001c1b5bfba48fed887620a0b75bee605ae73b'
             'daeec34905469d8e3a10eca2bf71e3875423fc72a92ff62bff74aef8f0af90cfc3282d5c67483379feb33b1c518287b6165b5fe42f9a8bcbc6dd3dbfcde38121'
             '47f265716ebd268e4296aaba1efe5098df00736b69ec7d0413cace6dbb5cb162c1c952f7527a2a41b246ed76e6e112514c5349e8dc52f4609def30257e18d7aa'
             '5081a6a3a3db160ef0a23acd0c0db403cc4b3eb2dfd280b1b7ba2ae907d362e4d6a653d546523c870af07009c62f58eec26e7b8174a3f4fcbaa32808d965ad73'
@@ -309,8 +309,16 @@ prepare() {
       scripts/config --set-str CONFIG_DEFAULT_TCP_CONG bbr2
       echo "Enable CONFIG_VHBA"
       scripts/config --module CONFIG_VHBA
-      echo "Disable BPF preloading"
+      # disable CONFIG_DEBUG_INFO at build time otherwise memory usage blows up and
+      # can easily overwhelm a system with 32 GB of memory using a tmpfs build.
+      # introduced by FS#66260, see:
+      # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/linux&id=663b08666b269eeeeaafbafaee07fd03389ac8d7
+      scripts/config --disable CONFIG_DEBUG_INFO
+      scripts/config --disable CONFIG_CGROUP_BPF
+      scripts/config --disable CONFIG_BPF_LSM
       scripts/config --disable CONFIG_BPF_PRELOAD
+      scripts/config --disable CONFIG_BPF_LIRC_MODE2
+      scripts/config --disable CONFIG_BPF_KPROBE_OVERRIDE
 
 
   ### Optionally load needed modules for the make localmodconfig
