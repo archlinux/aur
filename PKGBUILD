@@ -61,7 +61,7 @@ _subarch=
 
 pkgbase=linux-gc
 pkgver=5.12.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
 arch=(x86_64)
@@ -73,7 +73,7 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=64ceee73cd980e468157001605838b87e701ce05
+_arch_config_commit=4d9c8cbfaea9f8fd2a6d0ad8f889ca4b9b76d494
 _bmqversion=5.12-r1
 _bmq_patch="prjc_v${_bmqversion}.patch"
 _gcc_more_v=20210412

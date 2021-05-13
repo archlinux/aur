@@ -1,7 +1,7 @@
 pkgbase = linux-gc
 	pkgdesc = Linux
 	pkgver = 5.12.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cchalpha.blogspot.co.uk/
 	arch = x86_64
 	license = GPL2
@@ -19,7 +19,7 @@ pkgbase = linux-gc
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.12.3.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.12.3.tar.sign
-	source = config::https://raw.githubusercontent.com/archlinux/svntogit-packages/64ceee73cd980e468157001605838b87e701ce05/trunk/config
+	source = config::https://raw.githubusercontent.com/archlinux/svntogit-packages/4d9c8cbfaea9f8fd2a6d0ad8f889ca4b9b76d494/trunk/config
 	source = prjc_v5.12-r1.patch::https://gitlab.com/alfredchen/projectc/raw/master/5.12/prjc_v5.12-r1.patch
 	source = more-uarches-20210412.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20210412.tar.gz
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=e7aa791810607833c30e50d9fac60bb5b1fb1f27
