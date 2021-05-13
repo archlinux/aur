@@ -4,8 +4,8 @@ _projectname='slippi-online'
 _mainpkgname="$_projectname"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase")
-pkgver='v2.3.0.r7.g7b058c8c7'
-pkgrel='2'
+pkgver='v2.3.0'
+pkgrel='0'
 pkgdesc='Super Smash Bros. Melee rollback netcode'
 _pkgdescappend=' - git version'
 arch=('x86_64')
@@ -28,7 +28,7 @@ _dolphinemu="dolphin-emu"
 
 pkgver() {
 	cd "$_sourcedirectory/"
-	git describe --long --tags | sed -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g'
+	git describe --tags --abbrev=0
 }
 
 #prepare() {
@@ -39,14 +39,17 @@ pkgver() {
 
 build() {
 	cd "$_sourcedirectory/"
+
+	# Go to the latest release's commit
+	git checkout "$(git rev-list -n 1 $pkgver)"
+
 	CMAKE_FLAGS='-DLINUX_LOCAL_DEV=true'
 
 	# Move into the build directory, run CMake, and compile the project
 	mkdir -p build
-	pushd build
+	cd build
 	cmake ${CMAKE_FLAGS} ../
 	make -j$(nproc)
-	popd
 }
 
 package() {
