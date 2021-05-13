@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-libgcrypt
-pkgver=1.8.5
+pkgver=1.9.3
 pkgrel=1
 pkgdesc="General purpose cryptographic library based on the code from GnuPG (mingw-w64)"
 arch=("any")
@@ -13,12 +13,11 @@ options=(staticlibs !buildflags !strip !emptydirs)
 source=("https://gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-${pkgver}.tar.bz2"{,.sig}
         "libgcrypt-use-correct-def-file.patch"
         "Smarter-fig2dev-detection.all.patch")
-sha1sums=('2d8781e92f88706707a1e76fb628b499ad538a30'
+sha1sums=('6b18f453fee677078586279d96fb88e5df7b3f35'
           'SKIP'
           '0f03d59dee4b967dfa80621ef4b1efea61772c16'
           '3613a5454aeaef8d264011f2bc9f2303248fb933')
-validpgpkeys=('031EC2536E580D8EA286A9F22071B08A33BD3F06' # "NIIBE Yutaka (GnuPG Release Key) <gniibe@fsij.org>"
-              'D8692123C4065DEA5E0F3AB5249B39D24F25E3B6') # Werner Koch
+validpgpkeys=('6DAA6E64A76D2840571B4902528897B826403ADA') # Werner Koch
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
