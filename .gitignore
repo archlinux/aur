@@ -4,3 +4,4 @@ pkg
 *.asar
 *.deb
 .directory
+*.xz
