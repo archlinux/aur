@@ -1,4 +1,9 @@
-# <p align="center">kernel-modules-hook</p>
+# <p align="center">kernel-modules-hook<b>-reflink</b></p>
+
+**-reflink** is forked from [the original hook](https://github.com/saber-nyan/kernel-modules-hook).
+It uses `cp --reflink` to copy modules, saving time and space for Btrfs.
+
+---
 
 Tired of missing modules when updating the kernel?<br/>
 Annoyed by `modprobe: FATAL: Module smth not found in directory /lib/modules/new-kernel`?<br/>
@@ -20,11 +25,11 @@ Do not worry, backups are automatically cleaned.
 ## Installation
 [AUR link](https://aur.archlinux.org/packages/kernel-modules-hook/)
 ```bash
-$ ${your_aur_helper} -S kernel-modules-hook
+$ ${your_aur_helper} -S kernel-modules-hook-reflink
 
 # Or from git:
 
-$ git clone https://github.com/saber-nyan/kernel-modules-hook.git kmh
+$ git clone https://github.com/lideming/kernel-modules-hook.git kmh
 $ cd kmh
 $ makepkg -sci
 $ sudo systemctl daemon-reload
