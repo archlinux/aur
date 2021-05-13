@@ -8,7 +8,7 @@ pkgbase = gkrellm-bluez
 	license = GPL
 	depends = gkrellm
 	depends = bluez-libs
-	source = http://downloads.sourceforge.net/sourceforge/gkrellm-bluez/gkrellm-bluez-0.2.tar.gz
+	source = https://downloads.sourceforge.net/sourceforge/gkrellm-bluez/gkrellm-bluez-0.2.tar.gz
 	md5sums = e5dbdb540450bfa21d8d1fa02086d770
 
 pkgname = gkrellm-bluez

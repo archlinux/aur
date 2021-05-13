@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://gkrellm-bluez.sourceforge.net/"
 license=('GPL')
 depends=('gkrellm' 'bluez-libs')
-source=("http://downloads.sourceforge.net/sourceforge/gkrellm-bluez/gkrellm-bluez-${pkgver}.tar.gz")
+source=("https://downloads.sourceforge.net/sourceforge/gkrellm-bluez/gkrellm-bluez-${pkgver}.tar.gz")
 md5sums=('e5dbdb540450bfa21d8d1fa02086d770')
 
 build() {
