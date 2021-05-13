@@ -4,7 +4,7 @@
 
 pkgname=flirc-bin
 _pkgname=flirc
-_pkgver=3.22.4
+_pkgver=3.25.3
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc="CLI and GUI application to program your Flirc device"
@@ -16,7 +16,7 @@ provides=('flirc')
 conflicts=('flirc')
 replaces=('flirc')
 source=(https://apt.fury.io/flirc/${_pkgname}-${_pkgver}-amd64)
-md5sums=('913dfcd407308f8f71775f9125b20f6d')
+md5sums=('5759c5894e2ff7d9c194f9330697194f')
 
 package() {
   tar -xf data.tar.gz -C "$pkgdir"
