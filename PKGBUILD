@@ -1,17 +1,17 @@
 # Maintainer: Łukasz Dywicki <luke@code-house.org>
 
 pkgname=terraform-provider-keycloak
-pkgver=2.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Terraform provider to configure Keycloak using it's API."
 url="https://github.com/mrparkers/terraform-provider-keycloak"
 arch=("x86_64")
-license=("MPL")
+license=("MIT")
 makedepends=("go" "git")
 source=(
-	"$pkgname-$pkgver.tar.gz::https://github.com/mrparkers/terraform-provider-keycloak/archive/v$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::https://github.com/mrparkers/terraform-provider-keycloak/archive/v$pkgver.tar.gz"
 )
-sha512sums=('c8fc78a62b4502decb39aa04474def128fb0ad5c29ea23a6452053945e5092e2328aa6bc11f8196a7dca1f09e661eeb7a5bc53f5ac363e41eb8228b7e8c76171')
+sha512sums=('7fdd457dada5d64d5f530fae13e9fe0adcfe35ea4c3d9cc8a55bbcbb0e34c1f12d220b67a2c9cff766a514c4ffa7043b008f9f722ef36872939d140fe39bfde9')
 
 build() {
   export CGO_LDFLAGS="${LDFLAGS}"
