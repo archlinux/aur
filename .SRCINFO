@@ -1,13 +1,12 @@
 pkgbase = keyboard-configurator
 	pkgdesc = Configures keymap and backlight of System76 keyboards.
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pop-os/keyboard-configurator
 	arch = x86_64
 	license = GPL3
-	depends = ca-certificates
-	depends = openssl
-	depends = xz
+	depends = 'atk' 'at-spi2-atk' 'at-spi2-core' 'bzip2' 'cairo' 'dbus' 'expat' 'fontconfig' 'freetype2' 'fribidi' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'graphite' 'gtk3' 'harfbuzz' 'hidapi' 'libcap' 'libcloudproviders' 'libdatrie' 'libepoxy' 'libffi' 'libgcrypt' 'libgpg-error' 'libjpeg-error' 'libping' 'librender' 'libthai' 'libtiff' 'libx11' 'libxau' 'libxcb' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxdmcp' 'libxext' 'libxfixes' 'libxi' 'libxinerama' 'libxkbcommon' 'libxrandr' 'lz4' 'pango' 'pcre' 'pixman' 'rust' 'systemd-libs' 'util-linux-libs' 'wayland' 'xz' 'zlib' 'zstd')
+
 
 pkgname = keyboard-configurator
 
