@@ -1,0 +1,17 @@
+pkgbase = nincat-git
+	pkgdesc = This a simple script that loads an ASCII art centered in your terminal.
+	pkgver = 2.0.r64.474e248.r64.474e248
+	pkgrel = 1
+	url = https://github.com/BeyondMagic/nincat
+	arch = any
+	license = GPL3
+	checkdepends = coreutils
+	makedepends = git
+	optdepends = c-lolcat
+	provides = nincat
+	conflicts = nincat
+	source = nincat-git::git+https://github.com/BeyondMagic/nincat
+	md5sums = SKIP
+
+pkgname = nincat-git
+
