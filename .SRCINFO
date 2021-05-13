@@ -1,6 +1,6 @@
 pkgbase = wapiti
 	pkgdesc = A comprehensive web app vulnerability scanner written in Python
-	pkgver = 3.0.4
+	pkgver = 3.0.5
 	pkgrel = 1
 	url = http://wapiti.sourceforge.net
 	changelog = ChangeLog
@@ -14,12 +14,15 @@ pkgbase = wapiti
 	depends = python-tld
 	depends = python-yaswfp
 	depends = python-mako
-	depends = python-pysocks
+	depends = python-python_socks
+	depends = python-browser-cookie3
+	depends = python-httpx
+	depends = python-httpx-socks
 	optdepends = python-requests-kerberos: Kerberos authentication
 	optdepends = python-requests-ntlm: NTLM authentication
 	options = zipman
-	source = http://downloads.sourceforge.net/sourceforge/wapiti/wapiti/wapiti-3.0.4/wapiti3-3.0.4.tar.gz
-	sha256sums = 8b696753a37506f0c3e8f542cb60e9f8198bb1bafd1a1dc97fbb9592becf31f3
+	source = http://downloads.sourceforge.net/sourceforge/wapiti/wapiti/wapiti-3.0.5/wapiti3-3.0.5.tar.gz
+	sha256sums = e039a593d033f58d7293173c2d4c4565b38fbb7c63fda3278a9dcb978e399d49
 
 pkgname = wapiti
 

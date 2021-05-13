@@ -4,7 +4,7 @@
 
 pkgname=wapiti
 
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=1
 
 pkgdesc='A comprehensive web app vulnerability scanner written in Python'
@@ -13,8 +13,8 @@ url="http://$pkgname.sourceforge.net"
 license=('GPL')
 
 makedepends=('python-setuptools' 'python-pip')
-depends=('python-requests' 'python-beautifulsoup4' 'python-lxml' 'python-tld'
-         'python-yaswfp' 'python-mako' 'python-pysocks')
+depends=('python-requests' 'python-beautifulsoup4' 'python-lxml' 'python-tld' 'python-yaswfp'
+         'python-mako' 'python-python_socks' 'python-browser-cookie3' 'python-httpx' 'python-httpx-socks')
 optdepends=('python-requests-kerberos: Kerberos authentication'
             'python-requests-ntlm: NTLM authentication')
 
@@ -22,7 +22,7 @@ options=('zipman')
 
 changelog=ChangeLog
 source=("http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname/$pkgname-$pkgver/$pkgname${pkgver:0:1}-$pkgver.tar.gz")
-sha256sums=('8b696753a37506f0c3e8f542cb60e9f8198bb1bafd1a1dc97fbb9592becf31f3')
+sha256sums=('e039a593d033f58d7293173c2d4c4565b38fbb7c63fda3278a9dcb978e399d49')
 
 
 prepare() {
@@ -36,7 +36,7 @@ build() {
 
 package() {
     cd "$pkgname${pkgver:0:1}-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
 
