@@ -10,6 +10,7 @@ pkgbase = st-ashin-git
 	makedepends = git
 	depends = nerd-fonts-fira-code
 	depends = ttf-joypixels
+	depends = libx11
 	provides = st
 	conflicts = st
 	source = git+https://github.com/ashincoder/st-ashin.git
