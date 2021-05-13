@@ -1,7 +1,7 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 pkgname=jitsi-videobridge-git
-pkgver=2.1+481+g114f91856
+pkgver=2.1+497+g9f27e9877
 pkgrel=1
 pkgdesc="Jitsi Meet Videobridge git build"
 arch=('any')
@@ -70,7 +70,7 @@ package() {
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/$pkgname.conf"
 }
 sha256sums=('SKIP'
-            'e60e7002db2d73da87b0399eb39973a91ea43d99ce6d8c20b75e5ed1090f5a5f'
+            '30fbf232643b963ed790f03167f125514251c728bc5f36e17fe5b280ce471724'
             'cc9fbf77497bce3c9673b2d144928f11cdd0c0823940c2b60c8369a2f086b9b7'
             'f9fcbe1e297afb4bad27e2a9dc0fff60d16dd1d232086d793246ee5c2d9fed68'
             '998cbc64def56ab98080ff7150dd0913a5e10325cd2b038cf3db14baf8cb19fc'

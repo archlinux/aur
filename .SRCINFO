@@ -1,6 +1,6 @@
 pkgbase = jitsi-videobridge-git
 	pkgdesc = Jitsi Meet Videobridge git build
-	pkgver = 2.1+481+g114f91856
+	pkgver = 2.1+497+g9f27e9877
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	install = install
@@ -25,7 +25,7 @@ pkgbase = jitsi-videobridge-git
 	source = sysusers.conf
 	source = tmpfiles.conf
 	sha256sums = SKIP
-	sha256sums = e60e7002db2d73da87b0399eb39973a91ea43d99ce6d8c20b75e5ed1090f5a5f
+	sha256sums = 30fbf232643b963ed790f03167f125514251c728bc5f36e17fe5b280ce471724
 	sha256sums = cc9fbf77497bce3c9673b2d144928f11cdd0c0823940c2b60c8369a2f086b9b7
 	sha256sums = f9fcbe1e297afb4bad27e2a9dc0fff60d16dd1d232086d793246ee5c2d9fed68
 	sha256sums = 998cbc64def56ab98080ff7150dd0913a5e10325cd2b038cf3db14baf8cb19fc
