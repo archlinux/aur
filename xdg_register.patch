@@ -1,0 +1,11 @@
+--- src/camunda-modeler-4.8.1-linux-x64/support/xdg_register.sh	2021-05-12 17:39:59.000000000 +0600
++++ xdg_register.sh	2021-05-13 05:59:16.805066860 +0600
+@@ -38,7 +38,7 @@
+ Terminal=false
+ StartupNotify=true
+ Path=$CAMUNDA_MODELER_BIN
+-Exec="$CAMUNDA_MODELER_BIN/camunda-modeler" %F
++Exec="$CAMUNDA_MODELER_BIN/camunda-modeler.sh" %F
+ MimeType=application/bpmn;application/cmmn;application/dmn;application/camunda-form
+ Icon=$ICON_NAME.png
+ X-Ayatana-Desktop-Shortcuts=NewWindow;RepositoryBrowser
