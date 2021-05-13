@@ -1,0 +1,18 @@
+pkgbase = agda-bin-git
+	pkgdesc = A dependently typed functional programming language and proof assistant: development version
+	pkgver = 2.6.2.98d4eb0
+	pkgrel = 1
+	url = http://wiki.portal.chalmers.se/agda/
+	arch = x86_64
+	license = custom
+	makedepends = tar
+	makedepends = sed
+	provides = agda
+	conflicts = agda
+	source = https://github.com/agda/agda/releases/download/nightly/Agda-nightly-linux.tar.xz
+	source = https://github.com/agda/agda/blob/nightly/LICENSE
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = agda-bin-git
+
