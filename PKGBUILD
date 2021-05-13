@@ -2,9 +2,9 @@
 
 _basename=jitsi
 _pkgname=meet
-_version=1.0.4998
-_url=https://download.jitsi.org/unstable/jitsi-meet-web_1.0.4998-1_all.deb
-_url_config=https://download.jitsi.org/unstable/jitsi-meet-web-config_1.0.4998-1_all.deb
+_version=1.0.5001
+_url=https://download.jitsi.org/unstable/jitsi-meet-web_1.0.5001-1_all.deb
+_url_config=https://download.jitsi.org/unstable/jitsi-meet-web-config_1.0.5001-1_all.deb
 
 _pkgbase=${_basename}-${_pkgname}-nightly
 _debname=${_basename}-${_pkgname}-web
@@ -67,5 +67,5 @@ package() {
 
         chown -R root:root "${pkgdir}"
 }
-sha256sums=('ab50fa70862db660e184ef4de3ca9d35f92bcfb04eedab3bd9611cff90318057'
-            '0a384911742179289abe1085ed23b5269c3082eafc6c475a8f8c632f4f57d851')
+sha256sums=('708a03e65a3e1f188b4d14bab8118f30cfe7aab92c532c57d9ea3c845a651551'
+            'a01625fa3aa416beb3a170a2a034e214f044089e35db5a3fbc441fdb4ba48d5d')
