@@ -3,13 +3,12 @@
 pkgname=tabbed-ashin-git
 pkgver=0.6.r2.d9708cb
 pkgrel=1
-pkgdesc='A utility that tabs.'
+pkgdesc='A suckless utility that adds tabs.'
 arch=(x86_64 i686)
 url='https://github.com/ashincoder/tabbed-ashin.git'
 license=('MIT')
 depends=(libx11)
-optdepends=('surf-ashin-git: SSL verification'
-            'st-ashin-git: default download handler')
+optdepends=()
 makedepends=(git)
 checkdepends=()
 provides=(tabbed)

@@ -1,5 +1,5 @@
 pkgbase = tabbed-ashin-git
-	pkgdesc = A utility that tabs.
+	pkgdesc = A suckless utility that adds tabs.
 	pkgver = 0.6.r2.d9708cb
 	pkgrel = 1
 	url = https://github.com/ashincoder/tabbed-ashin.git
@@ -8,8 +8,6 @@ pkgbase = tabbed-ashin-git
 	license = MIT
 	makedepends = git
 	depends = libx11
-	optdepends = surf-ashin-git: SSL verification
-	optdepends = st-ashin-git: default download handler
 	provides = tabbed
 	conflicts = tabbed
 	source = git+https://github.com/ashincoder/tabbed-ashin.git
