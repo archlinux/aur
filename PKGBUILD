@@ -3,7 +3,7 @@
 
 pkgname=vim-misc-xolox
 pkgver=1.17.6
-pkgrel=1
+pkgrel=2
 _src_id=23300
 pkgdesc='Miscellaneous auto-load Vim scripts'
 arch=('any')
