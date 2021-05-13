@@ -7,8 +7,7 @@ pkgdesc="Keeps your system fully functional after a kernel upgrade"
 arch=('any')
 url="https://github.com/saber-nyan/kernel-modules-hook"
 license=('UNLICENSE')
-depends=('rsync')
-install="${pkgname}.install"
+depends=('coreutils')
 source=("linux-modules-cleanup.conf"
 		"linux-modules-cleanup.service"
 		"10-linux-modules-post.hook"
@@ -16,8 +15,8 @@ source=("linux-modules-cleanup.conf"
 		"UNLICENSE")
 sha256sums=('4169b44c297ddb7aad2220c6eba7c7942e3396f92528c59617955ab5560cb4cf'
             '5d947290ef8c94b33c79c531e5615f4c9bea38e7649092d34af3bf0af5b1ca24'
-            'cb66af26a2a25706135029c4f259222796698d9eb7a4271fb1d72fe58fa04dbf'
-            '33384d6502093d5469288aba079d0a7a85a1bf6cdb5da8cfe598b1196e061cc4'
+            'e44b69b11886c7f091c196e4e303e6a77b94a0830cae4139b0750a5b12d6349f'
+            '6819bb35bce6d4fe722865f58b819cf001097c83d99f23d35020d288379d3099'
             '7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c')
 
 package() {

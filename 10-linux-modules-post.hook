@@ -8,5 +8,4 @@ Target = usr/lib/modules/*/vmlinuz
 Description = Restoring Linux kernel modules...
 When = PostTransaction
 Depends = coreutils
-Depends = rsync
 Exec = /bin/sh -xc 'KVER="${KVER:-$(uname -r)}"; if test -e "/usr/lib/modules/backup/${KVER}"; then cp -an --reflink "/usr/lib/modules/backup/${KVER}" /usr/lib/modules/; fi; rm -rf /usr/lib/modules/backup'
