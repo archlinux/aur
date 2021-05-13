@@ -1,3 +1,5 @@
+# Maintainer: Dasith Gunawardhana <dasith@dg10a.com>
+
 _pkgname=waylock
 pkgname=${_pkgname}-git
 pkgver=0.3.3.r2.gd4f4308
