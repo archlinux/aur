@@ -5,7 +5,7 @@ _filename_=Quamachi
 pkgver=0.8.0
 pkgrel=1
 pkgdesc="A Hamachi GUI for Linux"
-url="http://${_filename_}.Xavion.name"
+url="https://${_filename_}.Xavion.name"
 arch=("any")
 license=("LGPL3")
 depends=("python-pyqt5" "logmein-hamachi>=2.1")
@@ -15,7 +15,7 @@ optdepends=("mtr: A ping GUI"
 			"terminal: A shell GUI"
 			"vinagre: A VNC client GUI")
 install="${_filename_}.install"
-source=(http://prdownloads.sourceforge.net/${pkgname}/${_filename_}-${pkgver}.tar.bz2)
+source=(https://prdownloads.sourceforge.net/${pkgname}/${_filename_}-${pkgver}.tar.bz2)
 
 build() {
 	cd "${srcdir}"/${_filename_}/Build
