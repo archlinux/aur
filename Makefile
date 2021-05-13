@@ -8,7 +8,7 @@
 
 LIBDIR = -L/usr/X11R6/lib
 LIBS   = -lXpm -lXext -lX11 -lm
-FLAGS = $(CFLAGS)
+FLAGS = $(CFLAGS) -fcommon
 OBJS =	 \
 		wmgeneral.o \
 

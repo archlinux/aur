@@ -2,16 +2,16 @@
 # Contributor: Christian von Essen <christian@mvonessen.de>
 pkgname=wmwave
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="dockapp to display statistical information about a current wifi connection"
 arch=('x86_64' 'i686')
 url="http://wmwave.sourceforge.net"
 license=('GPL')
 depends=('libxpm')
-source=("http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-0-4.tgz"
+source=("https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-0-4.tgz"
         'Makefile')
 md5sums=('8728507eccb01a9749336f53ac4182c5'
-         '2f22597ee8fb3bc91d00f352acbbafae')
+         '42eb9b6dbbe9d3edb12637384cba02ca')
 build() {
   cp "$srcdir/Makefile" "$srcdir/$pkgname/"
   cd "$srcdir/$pkgname"
