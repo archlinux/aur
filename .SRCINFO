@@ -2,7 +2,7 @@ pkgbase = dmenu-edersonferreira
 	pkgdesc = My personal Dmenu build with my configs.
 	pkgver = 1.1.r.
 	pkgrel = 1
-	url = https://github.com/edersonferreira/dmenu
+	url = https://github.com/edersonferreira/dmenu-edersonferreira
 	arch = x86_64
 	arch = i686
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = dmenu-edersonferreira
 	depends = ttf-fira-code
 	provides = dmenu
 	conflicts = dmenu
-	source = git+https://github.com/edersonferreira/dmenu
+	source = git+https://github.com/edersonferreira/dmenu-edersonferreira
 	md5sums = SKIP
 
 pkgname = dmenu-edersonferreira
