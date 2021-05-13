@@ -2,7 +2,7 @@
 
 pkgname=seadrive-gui
 pkgver=2.0.13
-pkgrel=0
+pkgrel=1
 pkgdesc="GUI part of seadrive"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/haiwen/${pkgname}"
@@ -11,7 +11,7 @@ depends=('qt5-webengine' 'qt5-tools'
          'seadrive-daemon')
 makedepends=("cmake")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('22238978ff589d19455662fa50f2ec147ecc094a01c9648d13522db9cdf4fbdf')
+sha256sums=('6991156213b8cf030d9ef00d5184c727889c0cb85b891d6809e4a9ed03a5a62d')
 
 
 prepare() {
@@ -19,6 +19,9 @@ prepare() {
 
   rm -rf build
   mkdir -p build
+
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  sed -i '1iadd_definitions(-DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_26)' CMakeLists.txt
 }
 
 build () {
