@@ -7,10 +7,13 @@ Please execute
   $ sudo systemctl enable linux-modules-cleanup
 
 Report any issues to:
-https://github.com/saber-nyan/kernel-modules-hook/issues
+https://github.com/lideming/kernel-modules-hook/issues
+
+This package is forked from:
+https://github.com/saber-nyan/kernel-modules-hook
 
 
-										~desu
+										~arigatou
 
 EOF
 }

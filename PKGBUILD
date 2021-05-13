@@ -1,13 +1,15 @@
-# Maintainer: Artoria Pendragon <saber-nyan@ya.ru>
+# Maintainer: Deming Li <me@yuuza.net>
 # Hooks: https://www.reddit.com/r/archlinux/comments/4zrsc3/keep_your_system_fully_functional_after_a_kernel/d6yin0r/
-pkgname=kernel-modules-hook
+pkgname=kernel-modules-hook-reflink
 pkgver=0.1.7
 pkgrel=1
-pkgdesc="Keeps your system fully functional after a kernel upgrade"
+pkgdesc="Keeps your system fully functional after a kernel upgrade (fork using cp --reflink, which is maybe better for btrfs)"
 arch=('any')
-url="https://github.com/saber-nyan/kernel-modules-hook"
+url="https://github.com/lideming/kernel-modules-hook"
 license=('UNLICENSE')
 depends=('coreutils')
+conflicts=('kernel-modules-hook')
+install="kernel-modules-hook.install"
 source=("linux-modules-cleanup.conf"
 		"linux-modules-cleanup.service"
 		"10-linux-modules-post.hook"

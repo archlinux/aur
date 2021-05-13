@@ -1,12 +1,13 @@
-pkgbase = kernel-modules-hook
-	pkgdesc = Keeps your system fully functional after a kernel upgrade
+pkgbase = kernel-modules-hook-reflink
+	pkgdesc = Keeps your system fully functional after a kernel upgrade (fork using cp --reflink, which is maybe better for btrfs)
 	pkgver = 0.1.7
 	pkgrel = 1
-	url = https://github.com/saber-nyan/kernel-modules-hook
+	url = https://github.com/lideming/kernel-modules-hook
 	install = kernel-modules-hook.install
 	arch = any
 	license = UNLICENSE
 	depends = coreutils
+	conflicts = kernel-modules-hook
 	source = linux-modules-cleanup.conf
 	source = linux-modules-cleanup.service
 	source = 10-linux-modules-post.hook
@@ -18,5 +19,5 @@ pkgbase = kernel-modules-hook
 	sha256sums = 6819bb35bce6d4fe722865f58b819cf001097c83d99f23d35020d288379d3099
 	sha256sums = 7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c
 
-pkgname = kernel-modules-hook
+pkgname = kernel-modules-hook-reflink
 
