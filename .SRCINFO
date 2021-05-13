@@ -1,4 +1,4 @@
-pkgbase = plasmavideowallpaper
+pkgbase = plasmavideowallpaper-git
 	pkgdesc = A KDE Plasma 5 wallpaper plugin which can let you using a video as the wallpaper
 	pkgver = 1.1
 	pkgrel = 1
@@ -17,5 +17,5 @@ pkgbase = plasmavideowallpaper
 	source = git+https://github.com/WuSiYu/PlasmaVideoWallpaper.git
 	md5sums = SKIP
 
-pkgname = plasmavideowallpaper
+pkgname = plasmavideowallpaper-git
 
