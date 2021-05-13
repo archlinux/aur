@@ -1,7 +1,7 @@
 # Maintainer: SetBoolean <setboolean@icloud.com>
 
 pkgname=gerbera-mysql
-pkgver=1.8.0
+pkgver=1.8.1
 _pkgbase=gerbera
 pkgrel=1
 pkgdesc="UPnP Media Server (Based on MediaTomb) with MySQL backend"
@@ -19,7 +19,7 @@ options=('emptydirs')
 source=("$_pkgbase-$pkgver.tar.gz::https://github.com/gerbera/gerbera/archive/v$pkgver.tar.gz"
 	gerbera.sysusers
 	gerbera.tmpfiles)
-sha256sums=('02044abd1363c5f5604c5830e560b102ac456179afbf3be60e65847f47f4c599'
+sha256sums=('66f49ee30e53c36e08ce56a724f84bde8350001d3b9309f8e62a34f38446b619'
             '0b55a4e1886f7aad0528446658433327815fd3f4d06e260518423f86dbe32dcc'
             '452f5d4b5661e0262cb4a48d62a54f5f26d53c6d3aebf502cde072214a8b30d8')
 
