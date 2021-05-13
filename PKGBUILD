@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-daemon-git
-pkgver=5.13.10.r38.g1a7f92e1
+pkgver=5.13.10.r45.g4a823757
 pkgrel=1
 pkgdesc='Daemon handling the DDE session settings'
 arch=('x86_64')
