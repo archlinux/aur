@@ -23,7 +23,7 @@ index c99fc326ec24..71c27133c53c 100644
 @@ -602,6 +604,7 @@ calc_interactivity(u64 now, struct cacule_node *se)
  {
  	u64 l_se, vr_se, sleep_se = 1ULL, u64_factor_m, _2m;
- 	unsigned int score_se, fake_interactivity;
+ 	unsigned int score_se;
 +	u32 r_se_rem;
  
  	/*
@@ -48,8 +48,8 @@ index c99fc326ec24..71c27133c53c 100644
 +				), &r_se_rem)
 +			);
  
- 	fake_interactivity = is_fake_interactive(se);
- 	if (fake_interactivity)
+ 	return score_se;
+ }
 @@ -1041,6 +1054,7 @@ static void normalize_lifetime(u64 now, struct sched_entity *se)
  	struct cacule_node *cn;
  	u64 max_life_ns, life_time;
