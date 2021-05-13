@@ -27,7 +27,7 @@ makedepends=('curl>=7.20.0' 'hunspell>=1.2.8' 'python>=3.7' 'libwpd>=0.9.2' 'lib
 	'libffi' 'box2d' 'git')
 depends=(python)
 source=('git+https://gerrit.libreoffice.org/core.git'
-        'git+https://gitlab.com/chaotic-aur-pkgbuilds/libreoffice-slim-git.git')
+        'git+https://github.com/chaotic-aur/pkgbuild-libreoffice-slim-git.git')
 md5sums=('SKIP'
         'SKIP')
         
@@ -95,5 +95,5 @@ package() {
   cp -r ${srcdir}/${_gitname}/workdir/installation/LibreOffice/archive/install/en-US/LibreOffice*/* ${pkgdir}/opt/libreoffice
 
   install -d -m755 ${pkgdir}/usr/share/applications
-  cp ${srcdir}/libreoffice-slim-git/starters/* ${pkgdir}/usr/share/applications
+  cp ${srcdir}/libreoffice-slim-fixed-git/* ${pkgdir}/usr/share/applications
 }
