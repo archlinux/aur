@@ -1,0 +1,15 @@
+pkgbase = ghosts
+	pkgdesc = Tool to evaluate, compare & format host files
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/StevenBlack/ghosts
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	noextract = ghosts-0.2.2.tar.gz
+	source = ghosts-0.2.2.tar.gz::https://github.com/StevenBlack/ghosts/archive/v0.2.2.tar.gz
+	b2sums = 21ec1aebc679a17e52c65ea77ca68ceb94429ae18e6734682525e958ecbd66d72a3777816989d3e5616355e59b5e920eb734235723085024423c4b4017a60bfa
+
+pkgname = ghosts
+
