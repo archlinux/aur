@@ -1,6 +1,4 @@
-pkg/
-slippi-online-git/
-src/
-Ishiiruka/
-*.sh
-*.pkg.tar
+/*
+/*/
+!PKGBUILD
+!.SRCINFO
