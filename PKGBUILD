@@ -1,8 +1,8 @@
 # Maintainer: Lucas Melo <luluco250 at gmail dot com>
 
 pkgname=sonic3air-bin
-pkgver=v20.11.07.0
-pkgrel=4
+pkgver=v21.05.08.0
+pkgrel=1
 pkgdesc='A fan-made widescreen remaster of Sonic 3 & Knuckles.'
 arch=('x86_64')
 url='https://sonic3air.org/'
@@ -14,7 +14,7 @@ provides=(sonic3air)
 # Downloading from Google Drive like this guide:
 # https://gist.github.com/tanaikech/f0f2d122e05bf5f971611258c22c110f
 
-_fileId='1Dla-2cFgHFsf5H3bdQaXE6WuXohIr6ld'
+_fileId='1RECLmg_kziM0EuHgMc7f3rS_5uaU2N0k'
 _cookie="./google_drive.cookie"
 _srcCurl=`curl \
 	-c ${_cookie} \
@@ -26,14 +26,14 @@ _srcCurl=`curl \
 DLAGENTS=("https::/usr/bin/curl -Lb ${_cookie} %u -o %o")
 
 source=(
-	"sonic3air.tar.gz::${_srcCurl}"
+	"sonic3air_${pkgver}.tar.gz::${_srcCurl}"
 	'sonic3air.desktop'
 	'sonic3air.sh'
 	'LICENSE.md'
 )
 
 sha256sums=(
-	'83aaceb2696215d800066d2311a292628ac99572c883c962d31767edd0e33b3d'
+	'cb3dbfb5eaa51b5f6b5c52cbdf3d97027a43428777e64fb68fa7fcc0bdd9c5ff'
 	'7c5568d01131935c189b3060ea0319cc0047c8a76c9152bf5d461e70f676eebd'
 	'0ac3f4ea42157e6956f85e1e68e7bd456104fd264d10dd2be43e4c38421b3426'
 	'4bff643c05c2396b7e2987721c2f77cd3921434a0a2511f4a3bf31fc53fd7d76'
