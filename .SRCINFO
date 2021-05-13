@@ -1,0 +1,20 @@
+pkgbase = qmlkonsole
+	pkgdesc = Terminal app for Plasma Mobile
+	pkgver = 21.05
+	pkgrel = 1
+	url = https://invent.kde.org/plasma-mobile/qmlkonsole
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = qt5-tools
+	makedepends = qt5-svg
+	makedepends = extra-cmake-modules
+	depends = ki18n
+	depends = kconfig
+	depends = kirigami2
+	depends = qmltermwidget
+	source = http://download.kde.org/stable/plasma-mobile/21.05/qmlkonsole-21.05.tar.xz
+	sha256sums = 56c121a43fadd698aff3b6f7608693afc038a632a28ab97771fbd19f804544bd
+
+pkgname = qmlkonsole
+
