@@ -10,7 +10,7 @@ url="https://metacpan.org/release/$_cpanname"
 license=(PerlArtistic)
 options=('!emptydirs')
 depends=(perl-moose perl-namespace-autoclean)
-source=("http://cpan.metacpan.org/authors/id/T/TE/TEX/$_cpanname-$pkgver.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/T/TE/TEX/$_cpanname-$pkgver.tar.gz")
 md5sums=('d0ec6733d2a2f2f57cc1c920f10c7dc6')
 
 build() {
