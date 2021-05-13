@@ -1,5 +1,5 @@
 diff --git a/hw/xwayland/Makefile.am b/hw/xwayland/Makefile.am
-index d3dd54364..bcbf98371 100644
+index 088ec5e66..7e679bf56 100644
 --- a/hw/xwayland/Makefile.am
 +++ b/hw/xwayland/Makefile.am
 @@ -20,6 +20,8 @@ Xwayland_SOURCES =				\
@@ -12,7 +12,7 @@ index d3dd54364..bcbf98371 100644
  	xwayland-glx.h				\
  	xwayland-pixmap.c			\
 diff --git a/hw/xwayland/meson.build b/hw/xwayland/meson.build
-index 74895bbec..c5cf38333 100644
+index 1dea64bff..7b3d3a4f7 100644
 --- a/hw/xwayland/meson.build
 +++ b/hw/xwayland/meson.build
 @@ -4,6 +4,8 @@ srcs = [
@@ -25,19 +25,19 @@ index 74895bbec..c5cf38333 100644
      'xwayland-glx.h',
      'xwayland-pixmap.c',
 diff --git a/hw/xwayland/xwayland-cursor.c b/hw/xwayland/xwayland-cursor.c
-index 91cc18464..739e4bf86 100644
+index c4457cc2a..da4bcea02 100644
 --- a/hw/xwayland/xwayland-cursor.c
 +++ b/hw/xwayland/xwayland-cursor.c
-@@ -162,6 +162,8 @@ xwl_cursor_attach_pixmap(struct xwl_seat *xwl_seat,
- {
-     wl_surface_attach(xwl_cursor->surface,
-                       xwl_shm_pixmap_get_wl_buffer(pixmap), 0, 0);
+@@ -171,6 +171,8 @@ xwl_cursor_attach_pixmap(struct xwl_seat *xwl_seat,
+     }
+ 
+     wl_surface_attach(xwl_cursor->surface, buffer, 0, 0);
 +    wl_surface_set_buffer_scale(xwl_cursor->surface,
 +                                xwl_seat->xwl_screen->global_output_scale);
      xwl_surface_damage(xwl_seat->xwl_screen, xwl_cursor->surface, 0, 0,
                         xwl_seat->x_cursor->bits->width,
                         xwl_seat->x_cursor->bits->height);
-@@ -181,6 +183,7 @@ xwl_cursor_attach_pixmap(struct xwl_seat *xwl_seat,
+@@ -190,6 +192,7 @@ xwl_cursor_attach_pixmap(struct xwl_seat *xwl_seat,
  void
  xwl_seat_set_cursor(struct xwl_seat *xwl_seat)
  {
@@ -45,7 +45,7 @@ index 91cc18464..739e4bf86 100644
      struct xwl_cursor *xwl_cursor = &xwl_seat->cursor;
      PixmapPtr pixmap;
      CursorPtr cursor;
-@@ -211,8 +214,8 @@ xwl_seat_set_cursor(struct xwl_seat *xwl_seat)
+@@ -220,8 +223,8 @@ xwl_seat_set_cursor(struct xwl_seat *xwl_seat)
      wl_pointer_set_cursor(xwl_seat->wl_pointer,
                            xwl_seat->pointer_enter_serial,
                            xwl_cursor->surface,
@@ -56,7 +56,7 @@ index 91cc18464..739e4bf86 100644
  
      xwl_cursor_attach_pixmap(xwl_seat, xwl_cursor, pixmap);
  }
-@@ -221,6 +224,7 @@ void
+@@ -230,6 +233,7 @@ void
  xwl_tablet_tool_set_cursor(struct xwl_tablet_tool *xwl_tablet_tool)
  {
      struct xwl_seat *xwl_seat = xwl_tablet_tool->seat;
@@ -64,7 +64,7 @@ index 91cc18464..739e4bf86 100644
      struct xwl_cursor *xwl_cursor = &xwl_tablet_tool->cursor;
      PixmapPtr pixmap;
      CursorPtr cursor;
-@@ -249,8 +253,8 @@ xwl_tablet_tool_set_cursor(struct xwl_tablet_tool *xwl_tablet_tool)
+@@ -258,8 +262,8 @@ xwl_tablet_tool_set_cursor(struct xwl_tablet_tool *xwl_tablet_tool)
      zwp_tablet_tool_v2_set_cursor(xwl_tablet_tool->tool,
                                    xwl_tablet_tool->proximity_in_serial,
                                    xwl_cursor->surface,
@@ -298,11 +298,11 @@ index 000000000..be8fb39d9
 +
 +#endif /* XWAYLAND_EXT_H */
 diff --git a/hw/xwayland/xwayland-input.c b/hw/xwayland/xwayland-input.c
-index 12efbe169..c3330d1f6 100644
+index 26b3630c7..86711e685 100644
 --- a/hw/xwayland/xwayland-input.c
 +++ b/hw/xwayland/xwayland-input.c
-@@ -390,8 +390,8 @@ pointer_handle_enter(void *data, struct wl_pointer *pointer,
-     DeviceIntPtr dev = xwl_seat->pointer;
+@@ -412,8 +412,8 @@ pointer_handle_enter(void *data, struct wl_pointer *pointer,
+     DeviceIntPtr dev = get_pointer_device(xwl_seat);
      DeviceIntPtr master;
      int i;
 -    int sx = wl_fixed_to_int(sx_w);
@@ -312,7 +312,7 @@ index 12efbe169..c3330d1f6 100644
      int dx, dy;
      ScreenPtr pScreen = xwl_seat->xwl_screen->screen;
      ValuatorMask mask;
-@@ -544,13 +544,14 @@ pointer_handle_motion(void *data, struct wl_pointer *pointer,
+@@ -592,13 +592,14 @@ pointer_handle_motion(void *data, struct wl_pointer *pointer,
                        uint32_t time, wl_fixed_t sx_w, wl_fixed_t sy_w)
  {
      struct xwl_seat *xwl_seat = data;
@@ -329,7 +329,7 @@ index 12efbe169..c3330d1f6 100644
  
      if (wl_proxy_get_version((struct wl_proxy *) xwl_seat->wl_pointer) < 5)
          dispatch_pointer_motion_event(xwl_seat);
-@@ -624,7 +625,8 @@ pointer_handle_axis(void *data, struct wl_pointer *pointer,
+@@ -672,7 +673,8 @@ pointer_handle_axis(void *data, struct wl_pointer *pointer,
          xorg_list_del(&pending->l);
          free(pending);
      } else {
@@ -337,9 +337,9 @@ index 12efbe169..c3330d1f6 100644
 +        double scaled_value = wl_fixed_to_double(value);
 +        valuator_mask_set_double(&mask, index, scaled_value / divisor);
      }
-     QueuePointerEvents(xwl_seat->pointer, MotionNotify, 0, POINTER_RELATIVE, &mask);
- }
-@@ -690,12 +692,13 @@ relative_pointer_handle_relative_motion(void *data,
+ 
+     QueuePointerEvents(get_pointer_device(xwl_seat),
+@@ -740,12 +742,13 @@ relative_pointer_handle_relative_motion(void *data,
                                          wl_fixed_t dy_unaccelf)
  {
      struct xwl_seat *xwl_seat = data;
@@ -357,7 +357,7 @@ index 12efbe169..c3330d1f6 100644
  
      if (!xwl_seat->focus_window)
          return;
-@@ -1007,8 +1010,8 @@ touch_handle_down(void *data, struct wl_touch *wl_touch,
+@@ -1057,8 +1060,8 @@ touch_handle_down(void *data, struct wl_touch *wl_touch,
  
      xwl_touch->window = wl_surface_get_user_data(surface);
      xwl_touch->id = id;
@@ -368,7 +368,7 @@ index 12efbe169..c3330d1f6 100644
      xorg_list_add(&xwl_touch->link_touch, &xwl_seat->touches);
  
      xwl_touch_send_event(xwl_touch, xwl_seat, XI_TouchBegin);
-@@ -1044,8 +1047,8 @@ touch_handle_motion(void *data, struct wl_touch *wl_touch,
+@@ -1094,8 +1097,8 @@ touch_handle_motion(void *data, struct wl_touch *wl_touch,
      if (!xwl_touch)
          return;
  
@@ -379,7 +379,7 @@ index 12efbe169..c3330d1f6 100644
      xwl_touch_send_event(xwl_touch, xwl_seat, XI_TouchUpdate);
  }
  
-@@ -1650,8 +1653,8 @@ tablet_tool_motion(void *data, struct zwp_tablet_tool_v2 *tool,
+@@ -1726,8 +1729,8 @@ tablet_tool_motion(void *data, struct zwp_tablet_tool_v2 *tool,
      struct xwl_tablet_tool *xwl_tablet_tool = data;
      struct xwl_seat *xwl_seat = xwl_tablet_tool->seat;
      int32_t dx, dy;
@@ -390,7 +390,7 @@ index 12efbe169..c3330d1f6 100644
  
      if (!xwl_seat->tablet_focus_window)
          return;
-@@ -2638,6 +2641,7 @@ xwl_pointer_warp_emulator_set_fake_pos(struct xwl_pointer_warp_emulator *warp_em
+@@ -2714,6 +2717,7 @@ xwl_pointer_warp_emulator_set_fake_pos(struct xwl_pointer_warp_emulator *warp_em
                                         int x,
                                         int y)
  {
@@ -398,7 +398,7 @@ index 12efbe169..c3330d1f6 100644
      struct zwp_locked_pointer_v1 *locked_pointer =
          warp_emulator->locked_pointer;
      WindowPtr window;
-@@ -2649,6 +2653,7 @@ xwl_pointer_warp_emulator_set_fake_pos(struct xwl_pointer_warp_emulator *warp_em
+@@ -2725,6 +2729,7 @@ xwl_pointer_warp_emulator_set_fake_pos(struct xwl_pointer_warp_emulator *warp_em
      if (!warp_emulator->xwl_seat->focus_window)
          return;
  
@@ -406,7 +406,7 @@ index 12efbe169..c3330d1f6 100644
      window = warp_emulator->xwl_seat->focus_window->window;
      if (x >= window->drawable.x ||
          y >= window->drawable.y ||
-@@ -2657,8 +2662,8 @@ xwl_pointer_warp_emulator_set_fake_pos(struct xwl_pointer_warp_emulator *warp_em
+@@ -2733,8 +2738,8 @@ xwl_pointer_warp_emulator_set_fake_pos(struct xwl_pointer_warp_emulator *warp_em
          sx = x - window->drawable.x;
          sy = y - window->drawable.y;
          zwp_locked_pointer_v1_set_cursor_position_hint(locked_pointer,
@@ -512,10 +512,10 @@ index 02b983108..ec089757f 100644
  
  #endif /* XWAYLAND_OUTPUT_H */
 diff --git a/hw/xwayland/xwayland-present.c b/hw/xwayland/xwayland-present.c
-index d36b47149..db62982df 100644
+index 83d67517a..f73080ac2 100644
 --- a/hw/xwayland/xwayland-present.c
 +++ b/hw/xwayland/xwayland-present.c
-@@ -467,6 +467,7 @@ xwl_present_flip(WindowPtr present_window,
+@@ -475,6 +475,7 @@ xwl_present_flip(WindowPtr present_window,
  
      /* We can flip directly to the main surface (full screen window without clips) */
      wl_surface_attach(xwl_window->surface, buffer, 0, 0);
@@ -584,7 +584,7 @@ index c18e2fbb5..3be3674f5 100644
      for (i = 1; i < argc; i++) {
          if (strcmp(argv[i], "-rootless") == 0) {
 diff --git a/hw/xwayland/xwayland-screen.h b/hw/xwayland/xwayland-screen.h
-index 8d0b12705..85e0a4fd7 100644
+index 5fe4712bd..c0862528b 100644
 --- a/hw/xwayland/xwayland-screen.h
 +++ b/hw/xwayland/xwayland-screen.h
 @@ -72,6 +72,8 @@ struct xwl_screen {
@@ -596,7 +596,7 @@ index 8d0b12705..85e0a4fd7 100644
      int wayland_fd;
      struct wl_display *display;
      struct wl_registry *registry;
-@@ -130,5 +132,7 @@ void xwl_screen_roundtrip (struct xwl_screen *xwl_screen);
+@@ -131,5 +133,7 @@ void xwl_screen_roundtrip (struct xwl_screen *xwl_screen);
  void xwl_surface_damage(struct xwl_screen *xwl_screen,
                          struct wl_surface *surface,
                          int32_t x, int32_t y, int32_t width, int32_t height);
@@ -605,7 +605,7 @@ index 8d0b12705..85e0a4fd7 100644
  
  #endif /* XWAYLAND_SCREEN_H */
 diff --git a/hw/xwayland/xwayland-window.c b/hw/xwayland/xwayland-window.c
-index 00a81848a..65e0cb338 100644
+index 00f161eda..ed3903853 100644
 --- a/hw/xwayland/xwayland-window.c
 +++ b/hw/xwayland/xwayland-window.c
 @@ -470,7 +470,8 @@ ensure_surface_for_window(WindowPtr window)
@@ -618,7 +618,7 @@ index 00a81848a..65e0cb338 100644
          wl_surface_set_opaque_region(xwl_window->surface, region);
          wl_region_destroy(region);
      }
-@@ -812,6 +813,7 @@ xwl_window_post_damage(struct xwl_window *xwl_window)
+@@ -820,6 +821,7 @@ xwl_window_post_damage(struct xwl_window *xwl_window)
  #endif
  
      wl_surface_attach(xwl_window->surface, buffer, 0, 0);
@@ -627,7 +627,7 @@ index 00a81848a..65e0cb338 100644
      /* Arbitrary limit to try to avoid flooding the Wayland
       * connection. If we flood it too much anyway, this could
 diff --git a/hw/xwayland/xwayland.c b/hw/xwayland/xwayland.c
-index 9fc3db976..ad197637e 100644
+index 27fbdf28e..149593c60 100644
 --- a/hw/xwayland/xwayland.c
 +++ b/hw/xwayland/xwayland.c
 @@ -41,12 +41,15 @@
@@ -646,7 +646,7 @@ index 9fc3db976..ad197637e 100644
  void
  ddxGiveUp(enum ExitCode error)
  {
-@@ -224,6 +227,7 @@ xwl_log_handler(const char *format, va_list args)
+@@ -241,6 +244,7 @@ xwl_log_handler(const char *format, va_list args)
  static const ExtensionModule xwayland_extensions[] = {
  #ifdef XF86VIDMODE
      { xwlVidModeExtensionInit, XF86VIDMODENAME, &noXFree86VidModeExtension },
