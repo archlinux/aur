@@ -1,0 +1,42 @@
+pkgbase = zfs-linux-ck-zen
+	pkgver = 2.0.4_5.12.3.1
+	pkgrel = 1
+	url = https://zfsonlinux.org/
+	arch = x86_64
+	license = CDDL
+	makedepends = linux-ck-zen-headers=5.12.3-1
+	depends = kmod
+	depends = zfs-utils=2.0.4
+	depends = linux-ck-zen=5.12.3-1
+	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-2.0.4/zfs-2.0.4.tar.gz
+	source = linux-5.12-compat.patch
+	sha256sums = 7d1344c5433b91823f02c2e40b33d181fa6faf286bea5591f4b1965f23d45f6c
+	sha256sums = 9c601804dc473766d85da2198aa3769707e051d3659dc82dd1302edd5e91a8cf
+
+pkgname = zfs-linux-ck-zen
+	pkgdesc = Kernel modules for the Zettabyte File System.
+	install = zfs.install
+	groups = archzfs-linux-ck
+	provides = zfs
+	provides = spl
+	conflicts = zfs-dkms
+	conflicts = zfs-dkms-git
+	conflicts = zfs-dkms-rc
+	conflicts = spl-dkms
+	conflicts = spl-dkms-git
+	conflicts = zfs-linux-ck-git
+	conflicts = spl-linux-ck
+	replaces = spl-linux-ck
+
+pkgname = zfs-linux-ck-zen-headers
+	pkgdesc = Kernel headers for the Zettabyte File System.
+	provides = zfs-headers
+	provides = spl-headers
+	conflicts = zfs-headers
+	conflicts = zfs-dkms
+	conflicts = zfs-dkms-git
+	conflicts = zfs-dkms-rc
+	conflicts = spl-dkms
+	conflicts = spl-dkms-git
+	conflicts = spl-headers
+
