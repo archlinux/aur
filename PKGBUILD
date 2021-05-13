@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-shell-extension-dynamic-panel-transparency-git
 _gitname=dynamic-panel-transparency
-pkgver=25.r41.g0800c0a
-pkgrel=2
+pkgver=35.r333.f9e720e
+pkgrel=1
 pkgdesc="Adds Transparency To The Gnome Shell Panel"
 arch=('any')
 url="https://ewlsh.github.io/dynamic-panel-transparency"
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_gitname"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	printf "35.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
