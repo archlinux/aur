@@ -3,29 +3,22 @@
 # Contributor: Mario Blättermann <mariobl@gnome.org>
 
 pkgname=wmcliphist
-pkgver=1.0
-pkgrel=3
+pkgver=2.1
+pkgrel=1 
 pkgdesc="A clipboard history dockable application for Window Maker"
 arch=('i686' 'x86_64')
-url="http://linux.nawebu.cz/wmcliphist/"
+url="https://www.dockapps.net/wmcliphist"
 license=('GPL')
-depends=('gtk2')
+depends=('gtk3')
 install=wmcliphist.install
-source=(http://linux.nawebu.cz/$pkgname/$pkgname-$pkgver.tar.gz
-	gtk2.patch)
-md5sums=('81c9627c2955949669d2afa547415a10'
-         'c91efc33caad564242fa923ac5ad04eb')
-
-prepare() {
-  cd "$srcdir/$pkgname"
-  patch -Np2 -b -z .orig -i ../gtk2.patch
-}
+source=(https://www.dockapps.net/download/wmcliphist-$pkgver.tar.gz)
+md5sums=('a608fc3f9c9a9269e640dfac38500e6f')
 build()  {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/dockapps"
   make
 }
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/dockapps"
   install -D -m 644 wmcliphistrc $pkgdir/etc/wmcliphistrc.sample
   install -D -m 755 wmcliphist $pkgdir/usr/bin/wmcliphist
 }
