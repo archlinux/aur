@@ -3,46 +3,52 @@
 _pkgname=wootility-lekker-beta
 pkgname=${_pkgname}-appimage
 pkgver=4.0.2
-pkgrel=4
-pkgdesc='Utility for configuring Wooting keyboards (binary AppImage version)'
+pkgrel=5
+pkgdesc="Utility for configuring Wooting keyboards (binary AppImage version)"
 arch=('x86_64')
-url='https://wooting.io/wootility'
+url="https://wooting.io/wootility"
 license=('unknown')
 depends=('fuse2')
-makedepends=('p7zip')
-provides=("wootility")
-conflicts=("wootility")
+provides=('wootility')
+conflicts=('wootility')
 options=(!strip)
 _appimage="${_pkgname}-${pkgver}-beta.AppImage"
-install=$pkgname.install
-source=("https://s3.eu-west-2.amazonaws.com/wooting-update/wootility-lekker-linux-beta/${_appimage}"
-        '70-wooting.rules'
-        'wooting-lekker-xinput@.service'
-        'wooting-xinput@.service')
-noextract=("${_appimage}")
-b2sums=('589f4294db3f69e2907ff2b7817a68f5edc9446e6cb432ce949f665f5eac1c3de4d0bee4c2b89511b9d042195144429d8bc3477d212b685d489ab5c694e97a46'
-        '0b42256dae0ffd71ba7fb521581c485d4e11eeeba049de59c7cc0aa6daa1119b33a2d65d0674e46ec826fc14768cc9494d2ebd0efafc4aa8840373436a1531b7'
-        '2126e811c54bb7b40e5f5f50f52a5e01633fa7e08c72cc2a18f2fc7b3de83a96196cab0bdd2605ab9a82efb71f64909640f7fcff70d5c0f79abe50a64bbce5d2'
-        '7dbac8d655d65bbd5fa496dfe3085e5a2c2164f0738442d64f00c76b0308589bd659a6a17962955b4026b93ef23edcca01f9a0fe7136232f50098dd312e8cd1f')
+source=(
+    "https://s3.eu-west-2.amazonaws.com/wooting-update/wootility-lekker-linux-beta/${_appimage}"
+    "70-wooting.rules"
+    "wooting-xinput@.service"
+    "wooting-lekker-xinput@.service"
+)
+sha512sums=(
+    "2ab58acd16d9fa2f56bbbb125b82a1626bfaefa433271b6777041b7390e6f99c473a10264605cbe4b55d21b27eb0a9e10cf6d73b6e9809f792834ef926162c5f"
+    "06c3c400d814003aea35762c907df012c116cf31271873d522b8b70e60e089662aa433676ab3e75891aa0cc2a79fd14f458cd119ba0d1c9570ea4a948a633eb0"
+    "144506d0ba6d4ddad451274a99493458ebf3136c1b5a37dfcea8e5bededa355184bf7b760854342acb5e34182ef2520cccc1cd4b61a0e1cc539004f397236972"
+    "b9327e2565592804a88e58c4f87fb58417327d0ed37628d6f6797b643afe0d9070966c9fcea13857c7fcfb04642b46ac694694a1978381778539fd8e3e6ed456"
+)
 
 prepare() {
-	7z x "${_appimage}" 'wootility-lekker-beta.desktop' 'usr/share/icons' > /dev/null
+    chmod +x ${_appimage}
+    ./${_appimage} --appimage-extract ${_pkgname}.desktop
+    ./${_appimage} --appimage-extract ${_pkgname}.png
+    ./${_appimage} --appimage-extract usr/share/icons
 }
 
 build() {
-	sed -i -E "s|Exec=AppRun|Exec=${_pkgname}|" wootility-lekker-beta.desktop
-	# Fix permissions; .AppImage permissions are 700 for all directories
-	chmod -R a-x+rX usr
+    sed -i -E "s|Exec=AppRun|Exec=${_pkgname}|" squashfs-root/${_pkgname}.desktop # Modify Exec to $_pkgname
+    sed -i -E "s|Name=${_pkgname}|Name=Wootility|" squashfs-root/${_pkgname}.desktop # Modify Name to Wootility
 }
 
 package() {
-	install -Dpm755 "${_appimage}" "${pkgdir}/opt/${_pkgname}/${_appimage}"
-	install -d "${pkgdir}/usr/bin"
-	ln -s "../../opt/${_pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_pkgname}"
-	install -Dpm644 'wootility-lekker-beta.desktop' "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-	install -d "${pkgdir}/usr/share/icons"
-	cp -a usr/share/icons/hicolor "${pkgdir}/usr/share/icons/hicolor"
-	install -Dpm644 '70-wooting.rules' "${pkgdir}/usr/lib/udev/rules.d/70-wooting.rules"
-	install -Dpm644 'wooting-lekker-xinput@.service' "${pkgdir}/etc/systemd/system/wooting-lekker-xinput@.service"
-	install -Dpm644 'wooting-xinput@.service' "${pkgdir}/etc/systemd/system/wooting-xinput@.service"
+    install -Dpm755 "${_appimage}" "${pkgdir}/opt/${_pkgname}/${_appimage}" # Install $_appimage to /opt/$_pkgname/$_appimage
+    install -d "${pkgdir}/usr/bin" # Install /usr/bin
+    ln -s "${pkgdir}/opt/${_pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_pkgname}" # Link /opt/$_pkgname/$_appimage to /usr/bin/$_pkgname
+
+    # Install desktop entry and icon
+    install -Dpm644 "squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dpm644 "squashfs-root/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
+
+    # Install udev rules and systemd services
+    install -Dpm644 "70-wooting.rules" "${pkgdir}/usr/lib/udev/rules.d/70-wooting.rules"
+    install -Dpm644 "wooting-xinput@.service" "${pkgdir}/etc/systemd/system/wooting-xinput@.service"
+    install -Dpm644 "wooting-lekker-xinput@.service" "${pkgdir}/etc/systemd/system/wooting-lekker-xinput@.service"
 }
