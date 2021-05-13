@@ -5,7 +5,7 @@ _filename_=J7Z
 pkgver=1.4.2
 pkgrel=1
 pkgdesc="An alternative 7-Zip GUI"
-url="http://${_filename_}.Xavion.name"
+url="https://${_filename_}.Xavion.name"
 arch=("any")
 license=("LGPL3")
 depends=("java-runtime>=8" "p7zip")
@@ -19,8 +19,8 @@ optdepends=("oxygen-gtk2: Native 'Oxygen' style"
 conflicts=("q7z" "k7z")
 replaces=("q7z" "k7z")
 install="${_filename_}.install"
-#source=(http://prdownloads.sourceforge.net/k7z/${_filename_}-${pkgver}-src.tar.bz2)
-source=(http://prdownloads.sourceforge.net/k7z/${_filename_}-${pkgver}-bin.tar.bz2)
+#source=(https://prdownloads.sourceforge.net/k7z/${_filename_}-${pkgver}-src.tar.bz2)
+source=(https://prdownloads.sourceforge.net/k7z/${_filename_}-${pkgver}-bin.tar.bz2)
 
 build() {
 	cd "${srcdir}"/${_filename_}/Linux/Build
