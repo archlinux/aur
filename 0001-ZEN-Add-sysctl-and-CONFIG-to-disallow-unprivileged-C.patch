@@ -14,10 +14,10 @@ Our default behavior continues to match the vanilla kernel.
  5 files changed, 53 insertions(+)
 
 diff --git a/include/linux/user_namespace.h b/include/linux/user_namespace.h
-index 6ef1c7109fc4..2140091b0b8d 100644
+index 7616c7bf4b24..bdbfcfe5df1e 100644
 --- a/include/linux/user_namespace.h
 +++ b/include/linux/user_namespace.h
-@@ -106,6 +106,8 @@ void dec_ucount(struct ucounts *ucounts, enum ucount_type type);
+@@ -109,6 +109,8 @@ void dec_ucount(struct ucounts *ucounts, enum ucount_type type);
  
  #ifdef CONFIG_USER_NS
  
@@ -26,7 +26,7 @@ index 6ef1c7109fc4..2140091b0b8d 100644
  static inline struct user_namespace *get_user_ns(struct user_namespace *ns)
  {
  	if (ns)
-@@ -139,6 +141,8 @@ extern bool current_in_userns(const struct user_namespace *target_ns);
+@@ -142,6 +144,8 @@ extern bool current_in_userns(const struct user_namespace *target_ns);
  struct ns_common *ns_get_owner(struct ns_common *ns);
  #else
  
@@ -36,10 +36,10 @@ index 6ef1c7109fc4..2140091b0b8d 100644
  {
  	return &init_user_ns;
 diff --git a/init/Kconfig b/init/Kconfig
-index d559abf38c90..f7558fa7a155 100644
+index fc4c9f416fad..3707cc8b4d7b 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
-@@ -1173,6 +1173,22 @@ config USER_NS
+@@ -1172,6 +1172,22 @@ config USER_NS
  
  	  If unsure, say N.
  
@@ -63,7 +63,7 @@ index d559abf38c90..f7558fa7a155 100644
  	bool "PID Namespaces"
  	default y
 diff --git a/kernel/fork.c b/kernel/fork.c
-index c675fdbd3dce..9266039e28e4 100644
+index 7c044d377926..3c70b2fe5946 100644
 --- a/kernel/fork.c
 +++ b/kernel/fork.c
 @@ -97,6 +97,10 @@
@@ -77,7 +77,7 @@ index c675fdbd3dce..9266039e28e4 100644
  #include <asm/pgalloc.h>
  #include <linux/uaccess.h>
  #include <asm/mmu_context.h>
-@@ -1863,6 +1867,10 @@ static __latent_entropy struct task_struct *copy_process(
+@@ -1871,6 +1875,10 @@ static __latent_entropy struct task_struct *copy_process(
  	if ((clone_flags & (CLONE_NEWUSER|CLONE_FS)) == (CLONE_NEWUSER|CLONE_FS))
  		return ERR_PTR(-EINVAL);
  
@@ -88,7 +88,7 @@ index c675fdbd3dce..9266039e28e4 100644
  	/*
  	 * Thread groups must share signals as well, and detached threads
  	 * can only be started up within the thread group.
-@@ -2928,6 +2936,12 @@ int ksys_unshare(unsigned long unshare_flags)
+@@ -2936,6 +2944,12 @@ int ksys_unshare(unsigned long unshare_flags)
  	if (unshare_flags & CLONE_NEWNS)
  		unshare_flags |= CLONE_FS;
  
@@ -102,7 +102,7 @@ index c675fdbd3dce..9266039e28e4 100644
  	if (err)
  		goto bad_unshare_out;
 diff --git a/kernel/sysctl.c b/kernel/sysctl.c
-index afad085960b8..a94828fb31c2 100644
+index b9306d2bb426..891b250db88e 100644
 --- a/kernel/sysctl.c
 +++ b/kernel/sysctl.c
 @@ -103,6 +103,9 @@
@@ -132,7 +132,7 @@ index afad085960b8..a94828fb31c2 100644
  	{
  		.procname	= "tainted",
 diff --git a/kernel/user_namespace.c b/kernel/user_namespace.c
-index e703d5d9cbe8..5758274feaee 100644
+index ce396ea4de60..c3a6ef1f10ed 100644
 --- a/kernel/user_namespace.c
 +++ b/kernel/user_namespace.c
 @@ -21,6 +21,13 @@
