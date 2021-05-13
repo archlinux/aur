@@ -4,7 +4,7 @@
 # Thanks Nicholas Guriev <guriev-ns@ya.ru> for the initial patches!
 # https://github.com/mymedia2/tdesktop
 pkgname=telegram-desktop-dev
-pkgver=2.7.4
+pkgver=2.7.5
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -57,7 +57,6 @@ source=(
     "rlottie::git+https://github.com/desktop-app/rlottie.git"
     "tgcalls::git+https://github.com/TelegramMessenger/tgcalls.git"
     "xxHash::git+https://github.com/Cyan4973/xxHash.git"
-    "https://github.com/archlinux/svntogit-community/raw/packages/telegram-desktop/trunk/fix-webview-includes.patch"
 )
 sha512sums=('SKIP'
             'SKIP'
@@ -89,8 +88,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '5492c73f0b984da1e2d1f21c3a36c11c4b9ad511522dccd4d6440681f68d6ebc9e672806a534b1e551f736f080d3ef307c8ddd012e4646bd84d09c5e8fa85a40')
+            'SKIP')
 
 prepare() {
     cd "$srcdir/tdesktop"
@@ -144,8 +142,6 @@ prepare() {
     cd cmake
     # force webrtc link to libjpeg
     echo "target_link_libraries(external_webrtc INTERFACE jpeg)" | tee -a external/webrtc/CMakeLists.txt
-    cd ../Telegram/lib_webview
-    patch -Np1 -i "$srcdir"/fix-webview-includes.patch
 }
 
 build() {
