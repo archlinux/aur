@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python2-numpy')
 optdepends=('python2-tqdm: For progress bars'
             'python2-h5py: For HDF5 backend')
-makedepends=('python2-setuptools')
+makedepends=('python2-setuptools-scm')
 #checkdepends=('python2-pytest' 'python2-scipy' 'python2-h5py')
 source=("https://files.pythonhosted.org/packages/source/e/emcee/emcee-${pkgver}.tar.gz")
 md5sums=('24b3bea970457d3cd14d37c406df68d7')
