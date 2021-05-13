@@ -20,7 +20,7 @@ build() {
 
 package_keyboard-configurator() {
 	pkgdesc="System76 GUI for managing keyboards"
-	depends=('ca-certificates' 'openssl' 'xz')
+	depends=('xz' 'hidapi' 'libudev0-shim')
 
 	cd "$pkgbase-$pkgver-beta"
 	#make prefix="$pkgdir/usr/bin/" install
