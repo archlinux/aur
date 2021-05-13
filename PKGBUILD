@@ -3,10 +3,10 @@
 
 pkgname=play.it
 pkgver=2.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy way to install games on Linux"
 arch=('any')
-url="https://wiki.dotslashplay.it"
+url="https://www.dotslashplay.it"
 license=('BSD')
 depends=('bash')
 makedepends=('pandoc')
