@@ -30,7 +30,7 @@ validpgpkeys=()
 
 prepare() {
 	cd "$pkgname"
-	git switch aur
+	git switch pkgbuild
 	mkdir build && cd build
 	cmake ..
 }
