@@ -1,16 +1,15 @@
 pkgbase = java-p7zip-binding
 	pkgdesc = Java wrapper for 7-Zip C++ library.
-	pkgver = 9.20_2.00beta
-	pkgrel = 3
+	pkgver = 16.02
+	pkgrel = 1
 	url = https://github.com/borisbrodski/sevenzipjbinding
-	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = cmake
-	makedepends = jdk7-openjdk
-	depends = java-runtime
-	source = https://github.com/borisbrodski/sevenzipjbinding/archive/Release-9.20-2.00beta.tar.gz
-	md5sums = 9a755e13f67eb83de978d200c0918c82
+	makedepends = jdk8-openjdk
+	depends = java-runtime>8
+	source = https://github.com/borisbrodski/sevenzipjbinding/archive/Release-16.02-2.01.tar.gz
+	md5sums = 310ce9e5d70ac42cd9390251cbfed9f1
 
 pkgname = java-p7zip-binding
 

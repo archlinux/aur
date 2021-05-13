@@ -3,37 +3,27 @@
 # Contributor: Milos Kaurin <milos dot kaurin gmail>
 
 pkgname=java-p7zip-binding
-pkgver=9.20_2.00beta
-_pkgver=9.20-2.00beta
-pkgrel=3
+pkgver=16.02
+_pkgver=16.02-2.01
+pkgrel=1
 pkgdesc="Java wrapper for 7-Zip C++ library."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/borisbrodski/sevenzipjbinding"
 license=('LGPL')
-depends=('java-runtime')
-makedepends=('cmake' 'jdk7-openjdk')
+depends=('java-runtime>8')
+makedepends=('cmake' 'jdk8-openjdk')
 source=(https://github.com/borisbrodski/sevenzipjbinding/archive/Release-$_pkgver.tar.gz)
-md5sums=('9a755e13f67eb83de978d200c0918c82')
+md5sums=('310ce9e5d70ac42cd9390251cbfed9f1')
 
 build() {
   cd "$srcdir"/sevenzipjbinding-Release-$_pkgver
-  cmake -DJAVA_JDK=/usr/lib/jvm/java-7-openjdk/ . 
-  make 7-Zip-JBinding
-  make sevenzipjbinding-jar
-  make sevenzipjbinding-lib-jar
+  cmake -DJAVA_JDK=/usr/lib/jvm/java-8-openjdk .
+  make
 }
 
 package() {
   cd "$srcdir"/sevenzipjbinding-Release-$_pkgver
-  if [ "$CARCH" = "i686" ]; then
-    install -Dm755 Linux-i386/lib7-Zip-JBinding.so "$pkgdir/usr/lib/lib7-Zip-JBinding.so"
-    install -Dm644 sevenzipjbinding-Linux-i386.jar "$pkgdir/usr/share/java/sevenzipjbinding-Linux-i386.jar"
-  elif [ "$CARCH" = "x86_64" ]; then
-    install -Dm755 Linux-amd64/lib7-Zip-JBinding.so "$pkgdir/usr/lib/lib7-Zip-JBinding.so"
-    install -Dm644 sevenzipjbinding-Linux-amd64.jar "$pkgdir/usr/share/java/sevenzipjbinding-Linux-amd64.jar"
-  else
-    echo "Wrong architecture type. Check your PKGBUILD"
-  return 1
-  fi
+  install -Dm755 Linux-amd64/lib7-Zip-JBinding.so "$pkgdir/usr/lib/lib7-Zip-JBinding.so"
+  install -Dm644 sevenzipjbinding-Linux-amd64.jar "$pkgdir/usr/share/java/sevenzipjbinding-Linux-amd64.jar"
 }
 
