@@ -70,6 +70,14 @@ package() {
     install -D -m 644 "$srcdir"/"$unit" \
                       "$pkgdir"/usr/lib/systemd/system/"$unit"
   done
+
+  install -D -m 644 /dev/stdin \
+                    "$pkgdir"/etc/telnetd-ssl/README <<EOF
+The TLS certificate and private key must both be installed to:
+"/etc/telnetd-ssl/telnetd.pem"
+
+This file must be accessible by the '_telnet' user.
+EOF
 }
 
 # cleanbuild: required
