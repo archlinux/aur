@@ -1,29 +1,20 @@
 # Maintainer: arch AT nnamuab DOT de
 pkgname=phreeqc
-pkgver=3.6.2
-_pkgsvn=15100
+pkgver=3.7.0
+_pkgsvn=15749
 pkgrel=1
 pkgdesc="A Computer Program for Speciation, Batch-Reaction, One-Dimensional Transport, and Inverse Geochemical Calculations"
 arch=('x86_64')
 url="http://wwwbrr.cr.usgs.gov/projects/GWC_coupled/phreeqc/"
 license=('custom:CC0')
-groups=()
 depends=('gmp')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
 backup=()
-options=()
 install="install.sh"
-changelog=
 source=("http://water.usgs.gov/water-resources/software/PHREEQC/${pkgname}-${pkgver}-${_pkgsvn}.tar.gz"
         install.sh
         phreeqc.el
         "https://raw.githubusercontent.com/jaalto/project-emacs--folding-mode/master/folding.el")
-md5sums=('e820ea246adaa9ad23842d3470c5dde1'
+md5sums=('219c679627c28462d65fb40bbcad5e21'
          '8facd6e784cd1985b2c57c092b753002'
          '914dcb4f5e6e148d8c580346dacf97db'
          '17b0ad8422172efda2051eefac4a33a9')
