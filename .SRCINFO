@@ -11,8 +11,8 @@ pkgbase = allusion-appimage
 	depends = zlib
 	noextract = Allusion-1.0.0-rc3.AppImage
 	options = !strip
-	source_x86_64 = Allusion-1.0.0-rc3.AppImage::https://github.com/allusion-app/Allusion/releases/download/v1.0.0-rc3/Allusion-1.0.0-rc3.AppImage
-	sha256sums_x86_64 = 394e85d980e8e6fedf3ec885cd6b680b3fd740aaadedeb61b3b198c514688b15
+	source_x86_64 = Allusion-1.0.0.AppImage::https://github.com/allusion-app/Allusion/releases/download/v1.0.0-rc4/Allusion-1.0.0-rc4.AppImage
+	sha256sums_x86_64 = 9c2de8b375ffca13c3cb874cd1d13bc3964a3c97cc290d8547bd367a8a1e1066
 
 pkgname = allusion-appimage
 
