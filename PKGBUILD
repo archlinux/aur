@@ -44,7 +44,7 @@ _commit=6f977da94d6096f05dee781d19a4f88b75ecdbe4
 
 pkgname=zoneminder
 pkgver=1.35.28+g$_commit
-pkgrel=1
+pkgrel=2
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('any')
 url='https://www.zoneminder.com/'

@@ -31,6 +31,15 @@ post_install() {
 
 post_upgrade() {
     echo
+    echo "********************************************************************************************"
+    echo "* IMPORTANT NOTICE: Due to ZoneMinder 1.35.xx being a development branch, it may become    *"
+    echo "* necessary at some point in the future to return your setup back to the 1.34.xx branch.   *"
+    echo "*                                                                                          *"
+    echo "* For this reason, PLEASE MAKE SURE TO BACKUP YOUR DATABASE before using the following     *"
+    echo "* commands to upgrade the database from the 1.34.xx scheme to the 1.35.xx one. Failure to  *"
+    echo "* do so will make it impossible for you to return to 1.34.xx if something goes wrong.      *"
+    echo "********************************************************************************************"
+    echo
     echo "ZoneMinder's database needs to be updated. As the root user, run the following:"
     echo
     echo "/usr/bin/zmupdate.pl --nointeractive"
