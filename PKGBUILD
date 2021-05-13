@@ -1,5 +1,5 @@
-# Maintainer: zlsun <zlsun1995 at gmail dot com>
-# Contributor: yetist <yetist@gmail.com>
+# Maintainer: chaozhi_l <chaozhi_l@foxmail.com>
+# Contributor: yetist <yetist@gmail.com>; zlsun <zlsun1995@gmail.com>
 
 pkgname=lunar-date
 pkgver=2.9.3
