@@ -2,17 +2,17 @@
 # Contributor: Daenyth <Daenyth+Arch AT gmail DOT com>
 pkgname=perlconsole
 pkgver=0.4
-pkgrel=4
+pkgrel=5
 pkgdesc="A lightweight perl REPL using Term::Readline"
 arch=(any)
-url="http://www.sukria.net/perlconsole.html"
+url="https://metacpan.org/release/perlconsole"
 license=(GPL2)
-depends=(perl-term-readline perl-module-refresh perl-lexical-persistence perl-b-keywords)
+depends=(perl-module-refresh perl-lexical-persistence perl-b-keywords)
 optdepends=("perl-term-readline-gnu: tab completion, arrow keys")
 backup=()
 options=(!emptydirs)
 install=
-source=(http://search.cpan.org/CPAN/authors/id/S/SU/SUKRIA/$pkgname-$pkgver.tar.gz)
+source=(https://search.cpan.org/CPAN/authors/id/S/SU/SUKRIA/$pkgname-$pkgver.tar.gz)
 md5sums=('4a31b5f720b3c05f1a5564ce78459f22')
 
 build() {
