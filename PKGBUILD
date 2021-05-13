@@ -2,7 +2,7 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-rocclr
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
 url='https://rocmdocs.amd.com/en/latest/Installation_Guide/HIP.html'
@@ -20,7 +20,7 @@ _dirname="$(basename "$_git")-$(basename "${source[0]}" ".tar.gz")"
 
 prepare() {
     cd "$_dirname"
-    # patch -Np1 -i "$srcdir/amdgpu-targets.patch"
+    patch -Np1 -i "$srcdir/amdgpu-targets.patch"
 }
 
 build() {
