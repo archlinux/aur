@@ -1,7 +1,7 @@
 # Maintainer: Matt C <matt@xhec.us>
 pkgname=nofetch-git
 _pkgname=nofetch
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="the simple man's fetch tool"
 arch=('any')
