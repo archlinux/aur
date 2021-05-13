@@ -14,7 +14,7 @@ optdepends=('python-tqdm: For progress bars'
             'python-h5py: For HDF5 backend'
             'python-emcee-doc: Documentations for emcee')
 license=('MIT')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools-scm')
 checkdepends=('python-pytest' 'python-scipy' 'python-h5py')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('24b3bea970457d3cd14d37c406df68d7')
