@@ -1,11 +1,12 @@
 pkgbase = w_scan_cpp
 	pkgdesc = A dtv channel scanner based on VDR. Successor of w_scan
 	pkgver = 20210512
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gen2vdr.de/wirbel/w_scan_cpp/index2.html
 	arch = i686
 	arch = x86_64
 	arch = armv6h
+	arch = armv7h
 	license = GPL
 	makedepends = sed
 	makedepends = make

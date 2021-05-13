@@ -2,9 +2,9 @@
 
 pkgname=w_scan_cpp
 pkgver=20210512
-pkgrel=1
+pkgrel=2
 pkgdesc="A dtv channel scanner based on VDR. Successor of w_scan"
-arch=('i686' 'x86_64' 'armv6h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://www.gen2vdr.de/wirbel/w_scan_cpp/index2.html"
 replaces=('w_scan')
 license=('GPL')
