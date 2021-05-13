@@ -1,6 +1,6 @@
 pkgbase = jitsi-meet-git
 	pkgdesc = Jitsi Meet Web git build
-	pkgver = 1.0.4917+0+g67ac48cac
+	pkgver = 1.0.5001+3+g7396db71f
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	install = install
