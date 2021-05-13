@@ -1,16 +1,17 @@
-# Maintainer: Spyros Stathopoulos <foucault.online@gmail.com>
+# Maintainer: Spyros Stathopoulos <spystath@gmail.com>
 
 pkgname=python2-boltons
 _pkgname=boltons
-pkgver=19.1.0
+pkgver=20.0.0
 pkgrel=1
 pkgdesc="Constructs/recipes/snippets that would be handy in the python standard library"
 arch=('any')
 url="https://github.com/mahmoud/boltons"
 license=('BSD')
-depends=('python')
+depends=('python2')
+makedepends=('python2-setuptools')
 source=("https://github.com/mahmoud/${_pkgname}/archive/${pkgver}.tar.gz")
-sha1sums=('feb8a695b83cd8da9f74695b83795b5b58ea2418')
+sha1sums=('007de7cd9b1f11fc70089f494e683be7b266927d')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
