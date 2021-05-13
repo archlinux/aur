@@ -23,7 +23,7 @@ Losing uptime after reboots due to kernel update?
 Do not worry, backups are automatically cleaned.
 
 ## Installation
-[AUR link](https://aur.archlinux.org/packages/kernel-modules-hook/)
+[AUR link](https://aur.archlinux.org/packages/kernel-modules-hook-reflink/)
 ```bash
 $ ${your_aur_helper} -S kernel-modules-hook-reflink
 
