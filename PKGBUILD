@@ -1,21 +1,33 @@
-#Maintainer: alecromski alecromski@gmail.com
-
+# Maintainer: alecromski <alecromski@gmail.com>
 pkgname=pomodoro.py
 pkgver=1.0
 pkgrel=1
-pkgdesc="Pomodoro notify with polybar output"
+epoch=
+pkgdesc="Pomodoro manager"
 arch=('any')
 url="https://github.com/kawaegle/Pomodoro"
 license=('GPL')
-depends=('python>=3.8' 'libnotify>=0.7.5' 'dunst')
-provides=('pomodoro.py')
-optdepends=('ttf-font-awesome: show beautifull icon')
-conflics=('pomodoro')
-source=("https://github.com/kawaegle/Pomodoro/")
-md5sums=('SKIP')
-package(){
-	cd Pomodoro
+groups=()
+depends=('python>=3.8')
+makedepends=()
+checkdepends=()
+optdepends=('ttf-font-awesome: manage some glyph')
+provides=(pomodoro.py)
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("$url""/releases/download/"$pkgver"/"$pkgname"_1.0.zip")
+noextract=($source)
+md5sums=(SKIP)
+validpgpkeys=()
+
+prepare() {
 	printf "$(pwd)"
-	cp pomodoro.py $HOME/.local/bin.
-	printf "Install finished"
+}
+
+package() {
+	./install.sh
 }
