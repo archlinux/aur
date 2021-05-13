@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-network-utils-git
-pkgver=5.4.5.r2.g3fb082a
+pkgver=5.4.5.r3.gc8c4c46
 pkgrel=1
 pkgdesc='DDE network utils'
 arch=('x86_64')
