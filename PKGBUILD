@@ -12,7 +12,7 @@ makedepends=('cmake' 'git')
 provides=('x11-emoji-picker')
 conflicts=('x11-emoji-picker')
 source=('x11-emoji-picker::git+https://github.com/GaZaTu/x11-emoji-picker')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/x11-emoji-picker"

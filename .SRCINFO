@@ -13,7 +13,7 @@ pkgbase = x11-emoji-picker-git
 	provides = x11-emoji-picker
 	conflicts = x11-emoji-picker
 	source = x11-emoji-picker::git+https://github.com/GaZaTu/x11-emoji-picker
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = x11-emoji-picker-git
 
