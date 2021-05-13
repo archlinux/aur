@@ -61,7 +61,7 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-cacule-uksm-cjktty
-pkgver=5.12.2
+pkgver=5.12.3
 _major=5.12
 _branch=5.x
 xanmod=1
