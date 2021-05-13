@@ -1,0 +1,24 @@
+pkgbase = python-k2-git
+	pkgdesc = FSA/FST algorithms, differentiable, with PyTorch compatibility
+	pkgver = 0.3.4.dev20210513_cuda11.3.r643
+	pkgrel = 1
+	url = https://github.com/k2-fsa/k2
+	arch = any
+	license = Apache 2.0
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = cmake
+	makedepends = chrpath
+	depends = python>=3.7
+	depends = python-pytorch
+	depends = python-graphviz
+	depends = cuda
+	optdepends = hip: build with HIP
+	provides = python-k2
+	conflicts = python-k2
+	conflicts = python-k2-git
+	source = python-k2-git::git+https://github.com/k2-fsa/k2
+	md5sums = SKIP
+
+pkgname = python-k2-git
+
