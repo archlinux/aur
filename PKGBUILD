@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-polkit-agent-ext-gnomekeyring-git
-pkgver=5.0.4.r1.g157fc21
+pkgver=5.0.5.r0.g5187a0d
 pkgrel=1
 pkgdesc="GNOME keyring extension for dde-polkit-agent"
 arch=('x86_64')
