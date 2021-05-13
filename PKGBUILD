@@ -2,8 +2,8 @@
 # PGP ID: 97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161
 
 pkgname=arduino-builder
-pkgver=1.5.4
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="A command line tool for compiling Arduino sketches"
 arch=('x86_64')
 url="https://github.com/arduino/arduino-builder"
@@ -13,7 +13,7 @@ makedepends=('go' 'git' 'unzip')
 optdepends=('arduino-avr-core: AVR core with upstream avr-gcc and avrdude')
 source=("${pkgname}-${pkgver}.tar.xz::https://github.com/arduino/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz"
 		"${pkgname}-${pkgver}.tar.xz.asc::https://github.com/arduino/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz.asc")
-sha512sums=('21f7ba1594f35faafcc7004c2e8caed645b3500bc677518fff1b814d9fad77e806142a2ea96fbd7b63cf3311f9899da6470f36f4549ba49cdcb7fa46ae226124'
+sha512sums=('716eae14256f34fc21e974f3804e084ab6730b1ea419e696ea485a62baa7bfbc8bf57b7dbb910bd9f62068ce08b974048d5725f80de6eef2cb7a8bdc2808f917'
             'SKIP')
 validpgpkeys=('326567C1C6B288DF32CB061A95FA6F43E21188C4') # Arduino Packages <support@arduino.cc>
 
@@ -23,7 +23,7 @@ build()
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	go build
