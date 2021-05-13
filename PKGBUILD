@@ -1,7 +1,7 @@
 # Maintainer: Łukasz Dywicki <luke@code-house.org>
 
 pkgname=terraform-provider-nexus
-pkgver=1.10.2
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Terraform provider to configure Sonatype Nexus using it's API."
 url="https://github.com/datadrivers/terraform-provider-nexus"
@@ -11,7 +11,7 @@ makedepends=("go" "git")
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/datadrivers/terraform-provider-nexus/archive/v$pkgver.tar.gz"
 )
-sha512sums=('19fa5fc2c1792aa23be92067c20004ed42f58024d51f10071deec0ca62a2d1342f28f9bfbc563ee8b669d60a26ef024de5b07dfb27ed6b5a4c4ded2445308726')
+sha512sums=('09e40237db735e6c9eeea7bc1ac168a3902bab0d416f168f9535fd7de4cee5d9ca0ac1e2a5afa4e23cd28ae1839185199694b5b3a79d74bae90c256c8aa52867')
 
 build() {
   export CGO_LDFLAGS="${LDFLAGS}"
@@ -21,7 +21,8 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
   cd $pkgname-$pkgver
-  go build .
+  go mod tidy
+  go build -v .
 }
 
 package() {
