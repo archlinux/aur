@@ -1,6 +1,6 @@
 pkgbase = vis-toggler-git
 	pkgdesc = Improved versions of <C-a>, <C-x>, ~, g~, gu, and gU.
-	pkgver = r1.9542323
+	pkgver = r2.16da718
 	pkgrel = 1
 	url = https://repo.or.cz/vis-toggler.git
 	arch = any
