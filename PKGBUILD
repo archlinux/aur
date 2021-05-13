@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-file-manager-git
-pkgver=5.2.18.r10.g6319e5eff
+pkgver=5.2.18.r38.g9399b7f2d
 pkgrel=1
 pkgdesc='Deepin File Manager'
 arch=('x86_64')
