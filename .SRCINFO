@@ -1,19 +1,18 @@
 pkgbase = ocaml-cairo-git
-	pkgdesc = OCaml bindings for cairo
-	pkgver = 20150609
-	pkgrel = 2
-	url = http://cairographics.org/cairo-ocaml/
-	arch = i686
+	pkgdesc = OCaml binding to Cairo, a 2D Vector Graphics Library
+	pkgver = 20201125
+	pkgrel = 1
+	url = https://github.com/Chris00/ocaml-cairo
 	arch = x86_64
-	license = LGPL2
-	makedepends = git
-	depends = ocaml
+	license = LGPL3
+	makedepends = ocaml-findlib
+	makedepends = dune
+	depends = ocaml>=4.11.1
 	depends = cairo
 	depends = lablgtk2
-	depends = libsvg-cairo
 	provides = ocaml-cairo
-	source = git://anongit.freedesktop.org/cairo-ocaml.git
-	md5sums = dbd5aeb38b883d7e0d95f2c9fe108eb9
+	source = git://github.com/Chris00/ocaml-cairo.git
+	md5sums = SKIP
 
 pkgname = ocaml-cairo-git
 
