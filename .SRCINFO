@@ -1,6 +1,6 @@
 pkgbase = btspk
 	pkgdesc = Commandline utility to easily connect bluetooth audio devices.
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://gitlab.com/teegre/btspk
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = btspk
 	depends = pulseaudio
 	optdepends = pulseaudio-equalizer
 	optdepends = pulseaudio-equalizer-ladspa
-	source = https://gitlab.com/teegre/btspk/-/archive/1.2.3/btspk-1.2.3.tar.gz
-	sha256sums = 65f5368427ec276217d94a34ae47e9941187dfbe877b35645fc033890e8f2819
+	source = https://gitlab.com/teegre/btspk/-/archive/1.2.4/btspk-1.2.4.tar.gz
+	sha256sums = 3ff9c5d4258482c3936f8e94a3d942fed0b706bd89cea268cf86462d9619071a
 
 pkgname = btspk
 
