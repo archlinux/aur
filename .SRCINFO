@@ -1,7 +1,7 @@
 pkgbase = hip-rocclr
 	pkgdesc = Heterogeneous Interface for Portability ROCm
-	pkgver = 4.1.1
-	pkgrel = 3
+	pkgver = 4.2.0
+	pkgrel = 1
 	url = https://rocmdocs.amd.com/en/latest/Installation_Guide/HIP.html
 	arch = x86_64
 	license = MIT
@@ -13,9 +13,9 @@ pkgbase = hip-rocclr
 	depends = libelf
 	provides = hip
 	conflicts = hip
-	source = hip-rocclr-4.1.1.tar.gz::https://github.com/ROCm-Developer-Tools/HIP/archive/rocm-4.1.1.tar.gz
+	source = hip-rocclr-4.2.0.tar.gz::https://github.com/ROCm-Developer-Tools/HIP/archive/rocm-4.2.0.tar.gz
 	source = amdgpu-targets.patch
-	sha256sums = 4dbdbcd79e8803387790cba7ea94f28fd312a60e6704361f43b3241d2afe0f45
-	sha256sums = c6358b4dfac658c0a27a3425ace455d951cd26be827dd7751c28cb83dc84b67d
+	sha256sums = ecb929e0fc2eaaf7bbd16a1446a876a15baf72419c723734f456ee62e70b4c24
+	sha256sums = c1ccea2c6ca3e0e2a5f6449dccab7081386cb224db8c95391b27d8ac6f1d5754
 
 pkgname = hip-rocclr

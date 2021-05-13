@@ -1,8 +1,8 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-rocclr
-pkgver=4.1.1
-pkgrel=3
+pkgver=4.2.0
+pkgrel=1
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
 url='https://rocmdocs.amd.com/en/latest/Installation_Guide/HIP.html'
@@ -14,13 +14,13 @@ conflicts=('hip')
 _git='https://github.com/ROCm-Developer-Tools/HIP'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz"
         'amdgpu-targets.patch')
-sha256sums=('4dbdbcd79e8803387790cba7ea94f28fd312a60e6704361f43b3241d2afe0f45'
-            'c6358b4dfac658c0a27a3425ace455d951cd26be827dd7751c28cb83dc84b67d')
+sha256sums=('ecb929e0fc2eaaf7bbd16a1446a876a15baf72419c723734f456ee62e70b4c24'
+            'c1ccea2c6ca3e0e2a5f6449dccab7081386cb224db8c95391b27d8ac6f1d5754')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" ".tar.gz")"
 
 prepare() {
     cd "$_dirname"
-    patch -Np1 -i "$srcdir/amdgpu-targets.patch"
+    # patch -Np1 -i "$srcdir/amdgpu-targets.patch"
 }
 
 build() {
