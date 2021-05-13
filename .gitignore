@@ -1,4 +1,6 @@
 pkg/
 slippi-online-git/
 src/
-*pkg.tar
+Ishiiruka/
+*.sh
+*.pkg.tar
