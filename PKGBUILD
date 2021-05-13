@@ -2,20 +2,21 @@
 pkgname=xorg-xfwp
 _pkgname=xfwp
 pkgdesc="X firewall proxy"
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 arch=('x86_64' 'i686')
 url="http://www.x.org/"
 license=('custom')
 depends=('libice')
-makedepends=('xproxymngproto')
+makedepends=('xproxymngproto' 'xorg-util-macros' 'xorgproto')
 source=("http://xorg.freedesktop.org/releases/individual/app/$_pkgname-$pkgver.tar.bz2")
-md5sums=('eeb558aad30a8b2bc1f1f0e919ea6f38')
+md5sums=('73512e16b04ed156d45124d4c75fa533')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
   ./configure --prefix=/usr --sysconfdir=/etc \
-	--mandir=/usr/share/man
+	--mandir=/usr/share/man \
+	--disable-selective-werror
   make
 }
 
