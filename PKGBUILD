@@ -2,8 +2,8 @@
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 
 pkgname=xorg-xwayland-git
-pkgver=1.20.0.r804.g5e3900904
-pkgrel=2
+pkgver=21.1.1.r0.gd4cc2e2db
+pkgrel=1
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
@@ -28,7 +28,9 @@ replaces=('xorg-server-xwayland-git')
 
 pkgver() {
   cd xserver
-  git describe --tags | sed 's/^xorg.server.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  { git checkout xwayland-21.1; } > /dev/null
+  git describe --long | sed 's/^xwayland.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  { git checkout master; } > /dev/null
 }
 
 build() {
