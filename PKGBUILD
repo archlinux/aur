@@ -53,7 +53,7 @@ package() {
 	cd "$_sourcedirectory/"
 	make DESTDIR="$pkgdir" -C 'build/' install
 
-	# rename the binary to not be mistaken with Dolphin
+	# Rename the binary to not be mistaken with Dolphin
 	mv "$pkgdir/usr/local/bin/$_dolphinemu" "$pkgdir/usr/local/bin/$_mainpkgname"
 
 	cp -r "Data/Sys/" "$pkgdir/usr/local/bin/"
