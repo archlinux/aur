@@ -3,7 +3,7 @@ _pkgorg=camunda
 _pkgname=$_pkgorg-modeler
 pkgname=$_pkgname-bin
 pkgver=4.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An integrated modeling solution for BPMN, DMN and Forms based on bpmn.io"
 arch=('x86_64')
 url="https://github.com/$_pkgorg/$_pkgname"
@@ -29,5 +29,5 @@ package() {
 	cp -R $srcdir/$_pkgname-$pkgver-linux-x64/* $pkgdir/opt/$_pkgname
 	install -Dm755 "$srcdir/$_pkgname.sh" "$pkgdir/opt/$_pkgname/$_pkgname.sh"
 	install -dm755 "$pkgdir/usr/bin"
-	ln -s "$pkgdir/opt/$_pkgname/$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
+	ln -s "/opt/$_pkgname/$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
 }
