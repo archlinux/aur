@@ -2,20 +2,20 @@
 
 pkgbase=dotnet-core-2.1
 pkgname=('dotnet-runtime-2.1' 'dotnet-sdk-2.1')
-pkgver=2.1.26.sdk814
-_runtimever=2.1.26
-_sdkver=2.1.814
+pkgver=2.1.28.sdk816
+_runtimever=2.1.28
+_sdkver=2.1.816
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
 options=('staticlibs')
-source_armv7h=('https://download.visualstudio.microsoft.com/download/pr/e71188f5-730b-4452-b897-2f16a25cb35a/0240714ac64452802baf7a8f5c6750c6/dotnet-sdk-2.1.814-linux-arm.tar.gz')
-source_aarch64=('https://download.visualstudio.microsoft.com/download/pr/3d49abc4-f6c7-4a34-86bc-5d715b2a9b9b/4b9644bf81dc9b569e282b767379e190/dotnet-sdk-2.1.814-linux-arm64.tar.gz')
-source_x86_64=('https://download.visualstudio.microsoft.com/download/pr/b44d40e6-fa23-4f2d-a0a9-4199731f0b1e/5e62077a9e8014d8d4c74aee5406e0c7/dotnet-sdk-2.1.814-linux-x64.tar.gz')
-sha512sums_armv7h=('a4e12b9b1febe4ba6a5319894543bf2fb61d2311354b0eda3f664a4d8aefea0b8edc867ff13de87e84f3285925911e94c050033993038f37253a0626687136a5')
-sha512sums_aarch64=('2c4a74d6b238ab316e0e60caff77eaeafe5de8fa44fc3b0d828cf81de97d99b065a6260f1e6209f4021be0bc1c9f082a9648c341d65cd36fe3dce1b6eb86ae96')
-sha512sums_x86_64=('79408996f53650d0c3ac39348fa102537d14190ba5dcc4b9152cdb8fc72566608ad7430f196731eeb62dcfacdb0f2fa37577b5d51e165afd9dd9ae15f9d2aabc')
+source_armv7h=('https://download.visualstudio.microsoft.com/download/pr/ea408766-09d2-4380-87c4-06648783d0f3/eacfa729764eb187057c864bf2d0099d/dotnet-sdk-2.1.816-linux-arm.tar.gz')
+source_aarch64=('https://download.visualstudio.microsoft.com/download/pr/364c342f-4bdb-446a-acb2-849d15521857/6924364bd7d88c64201d6afff0a28821/dotnet-sdk-2.1.816-linux-arm64.tar.gz')
+source_x86_64=('https://download.visualstudio.microsoft.com/download/pr/745ce65b-e1b7-442d-aebf-8fe18c4fceba/73d02f94e66602d4b6531b0b2003c798/dotnet-sdk-2.1.816-linux-x64.tar.gz')
+sha512sums_armv7h=('1358c17e2f8dc8e3bb754618fb80b4a6104ea1c1fa85177676320af194b8adb0e115b5709b8d409989cea2bda28d5a23d275f9457032a13052d97942fe94f00e')
+sha512sums_aarch64=('32e72e26062444405f8d94918948ebd3a6eb4c4fa5d5c144fab35e23d2c44c9e4ab0d2f12e70c249b2972d5fef32bcbd2551f7920cd0fe778a38457368d477af')
+sha512sums_x86_64=('58f0bc1f67de034ffd0dafb9c0fdb082786fc5057e89396ff574428d57331cd8d5b3e944e103918e05f7b66e354d56cdb242350a6ef932906c9c3d4b08d177e9')
 
 # Versioning details for dependencies
 # https://docs.microsoft.com/en-us/dotnet/core/versions/#versioning-details
