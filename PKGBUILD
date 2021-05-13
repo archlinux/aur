@@ -3,28 +3,28 @@
 
 pkgname=vis-fzf-open-git
 _pkgname=${pkgname%-git}
-pkgver=r7.ef104ea
-pkgrel=2
+pkgver=r17.b1666a3
+pkgrel=1
 pkgdesc='Use fzf to open files in vis.'
 arch=('any')
-url='https://github.com/guillaumecherel/vis-fzf-open'
+url='https://git.sr.ht/~mcepl/vis-fzf-open'
 license=('AGPL3')
 depends=('vis' 'fzf')
 provides=('vis-fzf-open')
 conflicts=('vis-fzf-open')
-source=("git+https://github.com/guillaumecherel/vis-fzf-open.git")
+source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/$_pkgname"
+	printf 'r%s.%s' "$(git rev-list --count HEAD)" \
+		"$(git rev-parse --short HEAD)"
 }
 
 package() {
-    vispath="$pkgdir/usr/share/vis/plugins"
-    licenses="$pkgdir/usr/share/licenses/$_pkgname"
+	cd "$srcdir/$_pkgname"
 
-    cd "$srcdir/$_pkgname"
-    install -Dm644 fzf-open.lua "$vispath/fzf-open.lua"
-    install -Dm644 LICENCE "$licenses/LICENSE"
+	install -Dm644 init.lua -t "$pkgdir/usr/share/vis/plugins/fzf-open"
+	install -Dm644 LICENCE -t "$pkgdir/usr/share/licenses/$_pkgname"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
 }

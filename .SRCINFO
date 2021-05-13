@@ -1,15 +1,15 @@
 pkgbase = vis-fzf-open-git
 	pkgdesc = Use fzf to open files in vis.
-	pkgver = r7.ef104ea
-	pkgrel = 2
-	url = https://github.com/guillaumecherel/vis-fzf-open
+	pkgver = r17.b1666a3
+	pkgrel = 1
+	url = https://git.sr.ht/~mcepl/vis-fzf-open
 	arch = any
 	license = AGPL3
 	depends = vis
 	depends = fzf
 	provides = vis-fzf-open
 	conflicts = vis-fzf-open
-	source = git+https://github.com/guillaumecherel/vis-fzf-open.git
+	source = git+https://git.sr.ht/~mcepl/vis-fzf-open
 	sha256sums = SKIP
 
 pkgname = vis-fzf-open-git
