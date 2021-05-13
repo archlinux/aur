@@ -1,7 +1,7 @@
 # Maintainer: Strykar <2946372+Strykar@users.noreply.github.com>
 
 pkgname=nvidia-keylase-patch
-pkgver=r721.7c26bc5
+pkgver=7c26bc5
 pkgrel=1
 pkgdesc='NVENC and NvFBC patches for Nvidia drivers'
 arch=('x86_64')
@@ -22,6 +22,6 @@ package() {
     cd "${srcdir}/${_gitname}"
 
     install -Dm 644 -t "${pkgdir}/usr/share/nvidia-keylase" drivers.json
-    install -Dm 644 -t "${pkgdir}/usr/bin" patch-fbc.sh
-    install -Dm 644 -t "${pkgdir}/usr/bin" patch.sh
+    install -Dm 644 -t "${pkgdir}/usr/share/nvidia-keylase" patch-fbc.sh
+    install -Dm 644 -t "${pkgdir}/usr/share/nvidia-keylase" patch.sh
 }

@@ -1,6 +1,6 @@
 pkgbase = nvidia-keylase-patch
 	pkgdesc = NVENC and NvFBC patches for Nvidia drivers
-	pkgver = r721.7c26bc5
+	pkgver = 7c26bc5
 	pkgrel = 1
 	url = https://github.com/keylase/nvidia-patch
 	arch = x86_64
