@@ -2,15 +2,16 @@
 pkgbase=python-novas
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python2-${_pyname}")
-pkgver=3.1.1.4
+pkgver=3.1.1.5
 pkgrel=1
 pkgdesc="The United States Naval Observatory NOVAS astronomy library"
 arch=('i686' 'x86_64')
 url="https://www.usno.navy.mil/USNO/astronomical-applications/software-products/novas"
 license=('custom')
+makedepends=('python' 'python2')
 #checkdepends=('python-pytest' 'python2-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('13b07878f9e0404e33a044fc2d6840a0')
+md5sums=('a3ffa0b167611068f9027a28c4457ce2')
 
 prepare() {
     cp -a ${srcdir}/${_pyname}-${pkgver}{,-py2}
