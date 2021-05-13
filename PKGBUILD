@@ -1,7 +1,7 @@
 # Maintainer: 1Conan <me@1conan.com>
 
 pkgname=checkra1n-cli
-pkgver=0.12.3
+pkgver=0.12.4
 pkgrel=1
 pkgdesc="checkra1n is a semi-tethered jailbreak, developed primarily by Luca Todesco (qwertyoruiop). It's based on the checkm8 bootrom exploit released by axi0mx. checkra1n supports iOS 12.0 and newer."
 license=('unknown')
@@ -9,10 +9,10 @@ url="https://checkra.in"
 conflicts=('checkra1n')
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 
-sha256sums_x86_64=('845bd19fb857e5546ba312e768ab42e8aeab7a34470b07f60a9892e92fe8273e')
+sha256sums_x86_64=('dac9968939ea6e6bfbdedeb41d7e2579c4711dc2c5083f91dced66ca397dc51d')
 source_x86_64=("https://assets.checkra.in/downloads/linux/cli/x86_64/${sha256sums_x86_64[0]}/checkra1n")
 
-sha256sums_arm=('b62b07ac9ed2ed6208066b396772d6073f4462057828d4fe6c777f3544d58778')
+sha256sums_arm=('ff05dfb32834c03b88346509aec5ca9916db98de3019adf4201a2a6efe31e9f5')
 source_arm=("https://assets.checkra.in/downloads/linux/cli/arm/${sha256sums_arm[0]}/checkra1n")
 
 sha256sums_armv6h=($sha256sums_arm)
@@ -21,10 +21,10 @@ source_armv6h=($source_arm)
 sha256sums_armv7h=($sha256sums_arm)
 source_armv7h=($source_arm)
 
-sha256sums_aarch64=('74c1e85fa3de91a89db95c6d39b65553ed542c7827a4d0ae5078717175bc70f8')
+sha256sums_aarch64=('43019a573ab1c866fe88edb1f2dd5bb38b0caf135533ee0d6e3ed720256b89d0')
 source_aarch64=("https://assets.checkra.in/downloads/linux/cli/arm64/${sha256sums_aarch64[0]}/checkra1n")
 
-sha256sums_i686=('9f497cbb9ecffec91f5c534c53911c433a8cfee71e6e577aaa4a640f0ddb7cd4')
+sha256sums_i686=('77779d897bf06021824de50f08497a76878c6d9e35db7a9c82545506ceae217e')
 source_i686=("https://assets.checkra.in/downloads/linux/cli/i486/${sha256sums_i686[0]}/checkra1n")
 
 package() {
