@@ -11,7 +11,7 @@ url="http://fbxkb.sourceforge.net/"
 depends=('gtk2' 'libxmu')
 depends_x86_64=('gdk-pixbuf-xlib')
 license=('GPL')
-source=(http://download.sourceforge.net/fbxkb/${pkgname}-${pkgver}.tgz
+source=(https://download.sourceforge.net/fbxkb/${pkgname}-${pkgver}.tgz
 	fbxkb.patch)
 md5sums=('fa768bbb07aac8a4ae590633499cce15'
          '33171c56c308eb68cb5035762fbb8aa0')
