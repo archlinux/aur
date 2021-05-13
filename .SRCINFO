@@ -6,16 +6,11 @@ pkgbase = python-pybigwig
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
+	depends = curl
+	depends = python-numpy
 	options = !emptydirs
 	source = pyBigWig-0.3.18.tar.gz::https://github.com/deeptools/pyBigWig/archive/0.3.18.tar.gz
 	sha256sums = 552564d8ce8720a8ae70ed5e5534617fb0cab306b666468d1c61b6d389b8a10c
 
 pkgname = python-pybigwig
-	depends = curl
-	depends = python-numpy
-
-pkgname = python2-pybigwig
-	depends = curl
-	depends = python2-numpy
 
