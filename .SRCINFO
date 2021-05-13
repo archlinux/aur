@@ -1,0 +1,18 @@
+pkgbase = python-jupyter_sphinx
+	pkgdesc = Sphinx extension for rendering of Jupyter interactive widgets
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://jupyter-sphinx.readthedocs.io
+	arch = any
+	license = BSD
+	checkdepends = python-sphinx
+	checkdepends = jupyter-nbconvert
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/j/jupyter_sphinx/jupyter_sphinx-0.3.2.tar.gz
+	md5sums = e7ab370d9793be5b20bce5447ccbd45b
+
+pkgname = python-jupyter_sphinx
+	depends = python-sphinx>2
+	depends = python-ipywidgets
+	depends = jupyter-nbconvert>=5.5
+
