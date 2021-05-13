@@ -3,7 +3,7 @@
 pkgname=kernel-modules-hook-reflink
 pkgver=0.1.7
 pkgrel=1
-pkgdesc="Keeps your system fully functional after a kernel upgrade (fork using cp --reflink, which is maybe better for btrfs)"
+pkgdesc="Keeps your system fully functional after a kernel upgrade (forked version using \`cp --reflink\`, maybe better for btrfs)"
 arch=('any')
 url="https://github.com/lideming/kernel-modules-hook"
 license=('UNLICENSE')
