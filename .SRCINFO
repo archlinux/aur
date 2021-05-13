@@ -1,7 +1,7 @@
 pkgbase = scidavis-qt5
 	pkgdesc = Application for Scientific Data Analysis and Visualization, fork of QtiPlot. Qt5 port
-	pkgver = 2.3.0
-	pkgrel = 3
+	pkgver = 2.4.0
+	pkgrel = 1
 	url = http://scidavis.sourceforge.net/
 	arch = x86_64
 	license = GPL
@@ -11,7 +11,6 @@ pkgbase = scidavis-qt5
 	makedepends = sip4
 	makedepends = python-sip4
 	makedepends = qwt5-qt5>=5.2.3.1-2
-	makedepends = qwtplot3d-qt5>=0.2.7-3
 	depends = gsl
 	depends = glu
 	depends = mesa
@@ -25,10 +24,12 @@ pkgbase = scidavis-qt5
 	depends = python
 	depends = python-scipy
 	conflicts = scidavis
-	source = scidavis-2.3.0.zip::https://github.com/highperformancecoder/scidavis/archive/2.3.0.zip
-	source = patch-linking
-	sha512sums = 090393e393f02b36219582751c0276ba8c2bea5cd80de2e5080b3eff546516ce64769e0d72ff82a873ef3d976ba5b1456873a0330e7cf213a7a90ccd46ae8cdc
-	sha512sums = 69f04800343935141ad224510a915a8cbdbd0e07401a61530a52e18ea5d02b85f7e579f70b6bb32b37e085c07f61a8ce3f9c83f7b7b9cfe0553624b8ff9ff5db
+	source = scidavis-2.4.0.zip::https://github.com/highperformancecoder/scidavis/archive/2.4.0.zip
+	source = liborigin-4788f5bf674f93dab26c01bed84813e53f259c86.zip::https://github.com/SciDAVis/liborigin/archive/4788f5bf674f93dab26c01bed84813e53f259c86.zip
+	source = qwtplot3d-fce8eb0034827f0e0f86a36c075ef648343ac7cf.zip::https://github.com/SciDAVis/qwtplot3d/archive/fce8eb0034827f0e0f86a36c075ef648343ac7cf.zip
+	sha512sums = a77733b397ed3d26f872f6dac4d6bf73df55499da797266337a1f894be2b72d6a6568ed38308ee04b02e0c18fcdfc68b9b1aebe808fb2878b6492615047ec242
+	sha512sums = aab71ea6100df3c81194e7304a07cf51f2c1fbb4d8f6292a2aff003d704fe14fc9ab8fd63d46b8403adf4f818297c2db852acf8e6431166d2055cda928e2a9eb
+	sha512sums = 83462b94c8063e7dbd9251a181ff4dc7862dd274268fcd7ea79e7888befdd820b159486c3e884fa172ffd12a31b537bb13fe605d14ea019d8977368baaf89850
 
 pkgname = scidavis-qt5
 

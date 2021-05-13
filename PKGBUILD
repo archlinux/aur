@@ -9,9 +9,11 @@
 
 _pkgname=scidavis
 pkgname=scidavis-qt5
-pkgver=2.3.0
+pkgver=2.4.0
 _commit=${pkgver}
-pkgrel=3
+_commit_liborigin=4788f5bf674f93dab26c01bed84813e53f259c86
+_commit_qwtplot3d=fce8eb0034827f0e0f86a36c075ef648343ac7cf
+pkgrel=1
 pkgdesc="Application for Scientific Data Analysis and Visualization, fork of QtiPlot. Qt5 port"
 arch=('x86_64')
 url="http://scidavis.sourceforge.net/"
@@ -19,7 +21,6 @@ license=('GPL')
 makedepends=('boost' 'cmake' 'qt5-tools'
 'sip4' 'python-sip4'
 'qwt5-qt5>=5.2.3.1-2'
-'qwtplot3d-qt5>=0.2.7-3'
 )
 depends=('gsl' 'glu' 'mesa' 'muparser>=2.3.2' 'shared-mime-info'
 'desktop-file-utils' 'hicolor-icon-theme'
@@ -28,42 +29,34 @@ depends=('gsl' 'glu' 'mesa' 'muparser>=2.3.2' 'shared-mime-info'
 'qt5-svg'
 'python' 'python-scipy')
 conflicts=('scidavis')
-source=("${_pkgname}-${pkgver}.zip::https://github.com/highperformancecoder/scidavis/archive/${_commit}.zip"
-'patch-linking'
+source=(
+   "${_pkgname}-${pkgver}.zip::https://github.com/highperformancecoder/scidavis/archive/${_commit}.zip"
+   "liborigin-${_commit_liborigin}.zip::https://github.com/SciDAVis/liborigin/archive/${_commit_liborigin}.zip"
+   "qwtplot3d-${_commit_qwtplot3d}.zip::https://github.com/SciDAVis/qwtplot3d/archive/${_commit_qwtplot3d}.zip"
 )
-sha512sums=('090393e393f02b36219582751c0276ba8c2bea5cd80de2e5080b3eff546516ce64769e0d72ff82a873ef3d976ba5b1456873a0330e7cf213a7a90ccd46ae8cdc'
-            '69f04800343935141ad224510a915a8cbdbd0e07401a61530a52e18ea5d02b85f7e579f70b6bb32b37e085c07f61a8ce3f9c83f7b7b9cfe0553624b8ff9ff5db')
+sha512sums=('a77733b397ed3d26f872f6dac4d6bf73df55499da797266337a1f894be2b72d6a6568ed38308ee04b02e0c18fcdfc68b9b1aebe808fb2878b6492615047ec242'
+            'aab71ea6100df3c81194e7304a07cf51f2c1fbb4d8f6292a2aff003d704fe14fc9ab8fd63d46b8403adf4f818297c2db852acf8e6431166d2055cda928e2a9eb'
+            '83462b94c8063e7dbd9251a181ff4dc7862dd274268fcd7ea79e7888befdd820b159486c3e884fa172ffd12a31b537bb13fe605d14ea019d8977368baaf89850')
 
 prepare() {
   cd "${_pkgname}-${_commit}"
-  patch --forward --strip=1 --input="${srcdir}/patch-linking"
+  rm -rf 3rdparty/liborigin
+  mv ../liborigin-${_commit_liborigin} 3rdparty/liborigin
+  rm -rf 3rdparty/qwtplot3d 
+  mv ../qwtplot3d-${_commit_qwtplot3d} 3rdparty/qwtplot3d
+  mkdir -p build
 }
 
 build() {
   cd "${_pkgname}-${_commit}"
-  qmake-qt5 \
-	CONFIG+="liborigin python" \
-	INCLUDEPATH+="/usr/include/qt/qwt5-qt5" \
-	INCLUDEPATH+="/usr/include/qt/qwtplot3d-qt5" \
-	LIBS+="-lqwt5-qt5 -lqwtplot3d-qt5" \
-	QMAKE_CXXFLAGS="-Wno-deprecated-copy -Wno-deprecated-declarations -fpermissive"
-  make qmake
+  cd build
+  cmake ..  -DSEARCH_FOR_UPDATES=OFF -DDOWNLOAD_LINKS=OFF -DORIGIN_IMPORT=ON -DSCRIPTING_PYTHON=ON \
+            -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
   cd "${_pkgname}-${_commit}"
+  cd build
   make INSTALL_ROOT="${pkgdir}" DESTDIR="${pkgdir}" install
-
-  python -m py_compile "${pkgdir}/etc/scidavisrc.py"
-  mv ${pkgdir}/etc/__pycache__/scidavisrc*.pyc "${pkgdir}/etc/scidavisrc.pyc"
-  rm -rf ${pkgdir}/etc/__pycache__
-
-  # remove liborigin files since it uses static library
-  rm -rf "${pkgdir}/usr/local"
-
-  # install translations (it looks like it does not provide target to do it)
-  install -dm755 "${pkgdir}/usr/share/scidavis/translations/"
-  find "scidavis/translations/" -name '*.qm' -type f -exec \
-      install -Dm644 {} "${pkgdir}/usr/share/scidavis/translations/" \;
 }
