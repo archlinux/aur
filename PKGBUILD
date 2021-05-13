@@ -50,7 +50,7 @@ pkgbase=linux-bfq-dev
 _major=5.12
 _minor=3
 pkgver=${_major}.${_minor}
-pkgrel=3
+pkgrel=4
 _srcname=linux-${pkgver}
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
@@ -81,7 +81,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0002-drm-i915-dp-Use-slow-and-wide-link-training-for-ever.patch"
          # the main kernel config files
         'config')
 
@@ -329,7 +330,8 @@ sha512sums=('295a943bb0d2366715c844a6e2ca424d17f4caceab8c9e095250851857928902a5d
             'SKIP'
             'de3a6af9245132ba2f61472063f75332d7d97131889006cad4de083539ba26a64ac55f7ad7c276f3f99a9543cb149e7b36d4309bb4df8971ff9e3abdcfdd19de'
             'c4a2ed0bbd9d348893e802079ab684518b28f163ad242af1b74dd71c7e7e0f5d2db68ace1733879f4bd575103b365e90d6af5d2d849c6e6d2dda41ac73f822a7'
-            '88f9f1e6ea206068fd029566e4610c16b7c3007f10363c7db37cd922fe75646437d2e4814317bc292d06eff7e9ebd29d8cd1ee82c8abf45ddd1843c1ff55f5c7'
+            'ce617dbc7520a750624027e71ab12242f0fc8787697e78d6f632b88d216d695618ccea935ff23392cdd0fc992203fc5f30e57e6487132ef125d5ba2d87094ff1'
+            '02f5e392bee5341b193d719b591788a0ef0ab654a76a2ae032b19a2328e79b9fc10297dfa6ec412b20c37c851594c55e42c9d5dbf8067467a19aa1ff13e7de98'
             '2236511f3ab94f7d3849eb718c89b0ce3e068278c60deff324102ae225aee66b7840c8867102fea2b361da996300d2b0fa3a2f29002246eabfcac28c0b24c4ef')
 
 validpgpkeys=(
