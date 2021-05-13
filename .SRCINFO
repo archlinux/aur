@@ -1,0 +1,17 @@
+pkgbase = pomodoro.py
+	pkgdesc = Pomodoro notify with polybar output
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/kawaegle/Pomodoro
+	arch = any
+	license = GPL
+	depends = python>=3.8
+	depends = libnotify>=0.7.5
+	depends = dunst
+	optdepends = ttf-font-awesome: show beautifull icon
+	provides = pomodoro.py
+	source = https://github.com/kawaegle/Pomodoro/
+	md5sums = SKIP
+
+pkgname = pomodoro.py
+
