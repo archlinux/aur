@@ -6,7 +6,7 @@
 # Maintainer: Abir-Tx <abirtx@yandex.com>
 pkgname=ffmpeg-coder
 pkgver=2.0.0
-pkgrel=1
+pkgrel=1.1
 epoch=
 pkgdesc="A small cross platform CLI tool which will help in producing different types video converting codes quickly for new ffmpeg CLI users"
 arch=(x86_64 i686)

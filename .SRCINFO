@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-coder
 	pkgdesc = A small cross platform CLI tool which will help in producing different types video converting codes quickly for new ffmpeg CLI users
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 1.1
 	url = https://github.com/Abir-Tx/ffmpeg-coder.git
 	arch = x86_64
 	arch = i686
