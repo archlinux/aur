@@ -1,7 +1,7 @@
 # Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=r225.eea74b0
+pkgver=r268.0940064
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c"
 arch=("any")
@@ -22,6 +22,7 @@ optdepends=(
   "wayland: Better resolution performance + support for monitors with different refresh rates in wayland sessions"
   "glib2: Output for values that are only stored in GSettings"
   "dconf: Output for values that are only stored in DConf"
+  "xfconf: XFWM theme + xfce-terminal font"
 )
 provides=("flashfetch=${pkgver}")
 source=("git+https://github.com/LinusDierheimer/fastfetch.git")

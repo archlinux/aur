@@ -16,6 +16,7 @@ pkgbase = fastfetch-git
 	optdepends = wayland: Better resolution performance + support for monitors with different refresh rates in wayland sessions
 	optdepends = glib2: Output for values that are only stored in GSettings
 	optdepends = dconf: Output for values that are only stored in DConf
+	optdepends = xfconf: XFWM theme + xfce-terminal font
 	provides = flashfetch=r225.eea74b0
 	source = git+https://github.com/LinusDierheimer/fastfetch.git
 	sha256sums = SKIP
