@@ -1,7 +1,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=snowflake-pt-server-git
 _gitname=snowflake
-pkgver=186.7e9066a
+pkgver=754.0054cb2
 pkgrel=1
 pkgdesc="Snowflake is a pluggable transport that proxies traffic through temporary proxies using WebRTC"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_gitname
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  echo $(git rev-list --count main).$(git rev-parse --short main)
 }
 
 build() {
