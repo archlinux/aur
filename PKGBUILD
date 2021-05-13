@@ -4,7 +4,7 @@
 # Contributor: John Proctor <jproctor@prium.net>
 
 pkgname=libxml2
-pkgver=2.9.11
+pkgver=2.9.12
 pkgrel=1
 pkgdesc='XML parsing library, version 2'
 url='http://www.xmlsoft.org/'
@@ -12,7 +12,7 @@ arch=(x86_64)
 license=(MIT)
 depends=(zlib readline ncurses xz icu)
 makedepends=(python2 python git)
-_commit=e1bcffea180d6cc0651757bb64284a763e0e2239  # tags/v2.9.11^0
+_commit=b48e77cf4f6fa0792c5f4b639707a2b0675e461b  # tags/v2.9.12^0
 source=("git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=$_commit"
         libxml2-2.9.8-python3-unicode-errors.patch
         https://www.w3.org/XML/Test/xmlts20130923.tar.gz)
