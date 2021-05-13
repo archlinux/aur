@@ -11,7 +11,7 @@ pkgname=(yaru-sound-theme-git
          yaru-metacity-theme-git
          yaru-icon-theme-git
          yaru-session-git)
-pkgver=21.04.1.r71.g8528f4725
+pkgver=21.04.1.r76.g31e57c8a7
 pkgrel=1
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
@@ -29,7 +29,7 @@ pkgver() {
 
 build() {
     arch-meson yaru build
-    meson configure build -Dubuntu-unity=true -Dgnome-shell-gresource=false
+    meson configure build -Dubuntu-unity=true
     ninja -C build
 }
 
