@@ -68,7 +68,7 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.12
-_minor=2
+_minor=3
 _srcname=linux-${_major}
 
 pkgbase=linux-mini
@@ -101,7 +101,7 @@ validpgpkeys=(
 sha256sums=(
   '7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
   '39045607567d69f84424b224e4fa6bf8f97a21a06ac9d6396acab16a18c4bcd3'
-  'd77076db69357a0b4c4868273f21f987f0c88c194865f43b17e21edd78add561'
+  '80ee356fafb443bee6e5363e906a11074bc88c49ac495b969b9e9515659b88ff'
   'f1f62b6d2cd89d0ab15f8d7311f5bb775dfc97ff39f93bc77f6f733f75fa7558'
   '6dde032690644a576fd36c4a7d3546d9cec0117dd3fb17cea6dc95e907ef9bef')
 
