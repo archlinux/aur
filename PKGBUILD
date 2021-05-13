@@ -61,7 +61,7 @@ _subarch=
 
 pkgbase=linux-ck
 pkgver=5.12.3
-pkgrel=1
+pkgrel=2
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -78,6 +78,7 @@ source=(
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "http://ck.kolivas.org/patches/5.0/5.12/5.12-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-drm-i915-dp-Use-slow-and-wide-link-training-for-ever.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -88,7 +89,8 @@ b2sums=('5bea5556a81fabc4b6c5d2b58d7d30ff7f38a42ad6bd7f4ab9f4d2a07e3f9b88639e68c
         '01c6f85fa90e4809dcd93f7234571eefe780f2fbffe7f585914f96c5ac0df3511f816e9ad549b25ec93d06bd51709e9cdecd452f42405f72a2b1ca893a8c5ee0'
         '72194a32a06c43809d1272bd675890b6d27c6c54353150a366e8e2c50ad6eca6ee23c5d6281822965a228cfedfa07a60fe135d1b4f539e4a62728d4460cc0b0e'
         'c9f729ba1efe6f04e7b2c57d3999bc9675b577596dccb2f227e5b6e444285e1fdd270bf67c0fcf9f5808a4c3a4b1c7a5c13a76f754ad9b9447243ccbaf2ce6a3'
-        'f44d66eed6a4a0a1e78d2d9b7fedc9739a181311b77ba813078554b70b8b78151c7cb903ff5b9d08b9137a392588446a2e385cfe6cc735945ca1d36c125cdcff')
+        '7e1ee91f7b0d7e62bf3683295236c9e7f647e97cbe6d6d8d262296ede83c306fa3097ce9952b85f87ee796623505116349219b2b4c0f480a88c703bf6123d0ee'
+        'f2716cda084e23e7e77cf1ffdff49fe9d87a91626109f4d6c06eb7b66e32f9b59d8b5ff9d67b3e8ccd2c6a604b91339736e493f1a3a3c82b51214c6ae3ede116')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
