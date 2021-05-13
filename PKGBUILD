@@ -5,14 +5,14 @@ _filename_=FcronQ
 pkgver=0.5.0
 pkgrel=1
 pkgdesc="An Fcron GUI"
-url="http://${_filename_}.Xavion.name"
+url="https://${_filename_}.Xavion.name"
 arch=("any")
 license=("GPL3")
 depends=("python-pyqt5" "fcron>=3.1")
 optdepends=("gksu: A SU(do) GUI"
 			"terminal: A shell GUI")
 install="${_filename_}.install"
-source=(http://prdownloads.sourceforge.net/${pkgname}/${_filename_}-${pkgver}.tar.bz2)
+source=(https://prdownloads.sourceforge.net/${pkgname}/${_filename_}-${pkgver}.tar.bz2)
 
 build() {
 	cd "${srcdir}"/${_filename_}/Build
