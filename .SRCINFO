@@ -1,8 +1,8 @@
 pkgbase = haruna-git
 	pkgdesc = A Qt/QML video player built on top of libmpv
-	pkgver = 0.6.0.r0.g8a52529
+	pkgver = 0.6.3.r18.g6843f53
 	pkgrel = 1
-	url = https://github.com/g-fb/haruna
+	url = https://invent.kde.org/multimedia/haruna
 	arch = x86_64
 	license = GPL3
 	makedepends = extra-cmake-modules
@@ -15,7 +15,7 @@ pkgbase = haruna-git
 	depends = youtube-dl
 	provides = haruna
 	conflicts = haruna
-	source = haruna::git+https://github.com/g-fb/haruna.git
+	source = haruna::git+https://invent.kde.org/multimedia/haruna.git
 	sha256sums = SKIP
 
 pkgname = haruna-git
