@@ -4,7 +4,7 @@
 pkgname=lib32-suitesparse
 _pkgbase=suitesparse
 pkgver=5.9.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A collection of sparse matrix libraries (32-bit)"
 url="http://faculty.cse.tamu.edu/davis/suitesparse.html"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=($_pkgbase-$pkgver.tar.gz::"https://github.com/DrTimothyAldenDavis/SuiteS
         "flags.patch")
 sha512sums=('d0b7de23d769b4537a9deac7a7c42408f29ddaa66e2c4be2c4b6465a6e8b60f7705db8b2a8de89808208a2fdd8e6ac8e25e54a0429952b16a1b22ce2e4469475'
             '6ae782d64e01096adecef7e2ae3eee78c5a93e31493705c1a22851159c8b8560dd58acb489f5b02d8312d4488688675b3748c6c27101b9b6777928570e6e4cea'
-            'e9a8b181b35546c9c4048896e1b1ff329296b6505ed15a7a5645c538d284b87fbdfd359d7fbec6dd7f1d0c092bc2b658458638acdc64aea453a8b750abf02919')
+            'cdcc06fb7b92174379f426e1bb05edc9b66029384049ea9287ef4bd304bc9a81a53c6e7995d262644dc32df03a525a928e27798c3a83cc7abd0ad106a351382c')
 
 prepare() {
   cd "${srcdir}/SuiteSparse-$pkgver"

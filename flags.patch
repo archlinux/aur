@@ -1,6 +1,6 @@
-diff -ruN SuiteSparse-5.9.0/Mongoose/CMakeLists.txt SuiteSparse-5.9.0.new/Mongoose/CMakeLists.txt
---- SuiteSparse-5.9.0/Mongoose/CMakeLists.txt	2021-03-04 01:34:33.000000000 +0330
-+++ SuiteSparse-5.9.0.new/Mongoose/CMakeLists.txt	2021-04-30 18:06:24.312588249 +0430
+diff -ruN SuiteSparse-5.9.0.orig/Mongoose/CMakeLists.txt SuiteSparse-5.9.0/Mongoose/CMakeLists.txt
+--- SuiteSparse-5.9.0.orig/Mongoose/CMakeLists.txt	2021-03-04 01:34:33.000000000 +0330
++++ SuiteSparse-5.9.0/Mongoose/CMakeLists.txt	2021-05-13 11:20:57.620348766 +0430
 @@ -328,7 +328,7 @@
      SET(CMAKE_EXE_LINKER_FLAGS_DEBUG "--coverage -g")
  elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
@@ -10,9 +10,9 @@ diff -ruN SuiteSparse-5.9.0/Mongoose/CMakeLists.txt SuiteSparse-5.9.0.new/Mongoo
      # Debug flags for GCC
      if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS "4.6")
          set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
-diff -ruN SuiteSparse-5.9.0/SuiteSparse_config/SuiteSparse_config.mk SuiteSparse-5.9.0.new/SuiteSparse_config/SuiteSparse_config.mk
---- SuiteSparse-5.9.0/SuiteSparse_config/SuiteSparse_config.mk	2021-03-04 01:34:33.000000000 +0330
-+++ SuiteSparse-5.9.0.new/SuiteSparse_config/SuiteSparse_config.mk	2021-04-30 18:01:37.603417101 +0430
+diff -ruN SuiteSparse-5.9.0.orig/SuiteSparse_config/SuiteSparse_config.mk SuiteSparse-5.9.0/SuiteSparse_config/SuiteSparse_config.mk
+--- SuiteSparse-5.9.0.orig/SuiteSparse_config/SuiteSparse_config.mk	2021-03-04 01:34:33.000000000 +0330
++++ SuiteSparse-5.9.0/SuiteSparse_config/SuiteSparse_config.mk	2021-05-13 11:22:13.751009370 +0430
 @@ -146,7 +146,7 @@
          endif
      endif
@@ -22,6 +22,17 @@ diff -ruN SuiteSparse-5.9.0/SuiteSparse_config/SuiteSparse_config.mk SuiteSparse
  
      #---------------------------------------------------------------------------
      # CFLAGS for the C/C++ compiler
+@@ -224,8 +224,8 @@
+     #---------------------------------------------------------------------------
+ 
+     # CUDA is detected automatically, and used if found.  To disable CUDA,
+-    # use CUDA=no
+-    CUDA = auto
++    CUDA=no
++    # CUDA = auto
+ 
+     ifneq ($(CUDA),no)
+         CUDA_PATH = $(shell which nvcc 2>/dev/null | sed "s/\/bin\/nvcc//")
 @@ -259,7 +259,6 @@
                  MAGMA_LIB     = -L/opt/magma-2.4.0/lib/ -lmagma
          NVCC          = $(CUDA_PATH)/bin/nvcc
