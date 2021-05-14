@@ -5,10 +5,10 @@ pkgdesc="Proxy manager headers"
 pkgver=1.0.3
 pkgrel=1
 arch=('any')
-url="http://www.x.org"
+url="https://www.x.org/wiki/"
 license=('custom')
 depends=()
-source=("http://xorg.freedesktop.org/releases/individual/proto/$_pkgname-$pkgver.tar.bz2")
+source=("https://xorg.freedesktop.org/releases/individual/proto/$_pkgname-$pkgver.tar.bz2")
 md5sums=('9de22ca1522008c28fb03dfc41ba2d30')
 
 build() {
