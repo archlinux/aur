@@ -1,7 +1,7 @@
 # Maintainer: Ashin Antony <ashinant15@gmail.com>
 
 pkgname=slock-ashin-git
-pkgver=20170325.35633d4.r4.c8dc5d7
+pkgver=2.5
 pkgrel=1
 pkgdesc='A suckless locker customized in my own way with dwm logo.'
 arch=(x86_64 i686)
