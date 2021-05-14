@@ -4,14 +4,14 @@
 
 pkgname=python-gmpy
 pkgver=1.17
-pkgrel=2
+pkgrel=3
 pkgdesc="Python extension that wraps GMP to provide fast multiprecision arithmetic. Last of the 1.x series, see gmpy2 for new developments."
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/gmpy/"
 license=('LGPL2.1')
 depends=('python' 'gmp')
 options=(!emptydirs)
-source=("http://gmpy.googlecode.com/files/gmpy-${pkgver}.zip")
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/gmpy/gmpy-${pkgver}.zip")
 md5sums=('2bf419076b06e107167e219f60ac6d27')
 
 
