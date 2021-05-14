@@ -90,9 +90,20 @@ provides=('libavcodec.so=58' 'libavdevice.so=58' 'libavfilter.so=7'
           'libavformat.so=58' 'libavutil.so=56'
           'libpostproc.so=55' 'libswresample.so=3' 'libswscale.so=5')
 
-source=("http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz")
+source=(
+  http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz
+  vmaf-model-path.patch
+)
 
-sha256sums=('06b10a183ce5371f915c6bb15b7b1fffbe046e8275099c96affc29e17645d909')
+sha256sums=(
+'06b10a183ce5371f915c6bb15b7b1fffbe046e8275099c96affc29e17645d909'
+'8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d'
+)
+
+prepare() {
+  cd ffmpeg-4.4
+  patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
+}
 
 build() {
   cd ffmpeg-${pkgver}
