@@ -1,0 +1,21 @@
+pkgbase = meowgram-git
+	pkgdesc = Telegram client written in GTK & Python
+	pkgver = r344.0785a79
+	pkgrel = 1
+	url = https://github.com/ExposedCat/Meowgram
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = python
+	depends = python-gobject
+	depends = python-telethon
+	depends = python-bleach
+	depends = gtk4
+	depends = libadwaita
+	source = git+https://github.com/ExposedCat/Meowgram.git
+	sha512sums = SKIP
+
+pkgname = meowgram-git
+
