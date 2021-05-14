@@ -6,7 +6,7 @@ _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=6.1.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution"
 arch=(x86_64)
@@ -193,10 +193,13 @@ build() {
         --no-steam-runtime \
         --build-name="${pkgname}"
 
-    # Export CFLAGS used by upstream if building for redistribution
+    # Export CFLAGS used by upstream
     # -O2 is adjusted to -O3 since AVX is disabled
-#    export CFLAGS="-O3 -march=nocona -mtune=core-avx2"
-#    export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2"
+    # This overrides CFLAGS from makepkg.conf, if you comment these you are on your own
+    # If you want the "best" possbile optimizations for your system you can use
+    # `-march=native` and remove the `-mtune=core-avx2` option.
+    export CFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
+    export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
 
     # If using -march=native and the CPU supports AVX, launching a d3d9
     # game can cause an Unhandled exception. The cause seems to be the
