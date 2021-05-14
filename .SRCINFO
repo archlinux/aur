@@ -1,25 +1,29 @@
 pkgbase = ant19
 	pkgdesc = Java based build tool
 	pkgver = 1.9.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ant.apache.org/
 	arch = any
 	license = APACHE
 	makedepends = bash
-	makedepends = java-environment=7
+	makedepends = bin32-jdk6
 	makedepends = junit
 	makedepends = java-hamcrest
 	source = https://www.apache.org/dist/ant/source/apache-ant-1.9.15-src.tar.bz2
 	source = https://www.apache.org/dist/ant/source/apache-ant-1.9.15-src.tar.bz2.asc
 	source = ant.conf
+	source = apache-ant-1.9.15-https-and-repo-urls.patch
+	source = NetRexx.zip::ftp://ftp.software.ibm.com/software/awdtools/netrexx/NetRexx.zip
 	validpgpkeys = CE8075A251547BEE249BC151A2115AE15F6B8B72
 	validpgpkeys = 8DA70C00DF7AF1B0D2F9DC74DDBCC1270A29D081
 	sha256sums = 7f7251009dc53e60afac47d0df6bd7e7d3cdba9fa7fec67b7a95412e8becdc8b
 	sha256sums = SKIP
 	sha256sums = 23bbef577b56d48adb1985dbd9795e5533146646f1e8bb879dd061a4014ffcf2
+	sha256sums = fc8ed0be9586293a8a7f6cf8d245d1db56c43598b6a155ee27f7a4eeb59cafec
+	sha256sums = 1f99f054e9b1e412d29823088f3fa7cfce90a7af25d907a60a6d7908a6b97ea4
 
 pkgname = ant19
-	depends = java-environment=7
+	depends = bin32-jdk6
 	depends = bash
 	optdepends = junit: junit tasks
 	optdepends = java-hamcrest: junit tasks
