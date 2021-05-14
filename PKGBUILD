@@ -10,7 +10,7 @@ license=('MIT')
 depends=()
 makedepends=(rustup)
 source=("https://github.com/shiro/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('0f132725284ceab1c6bd4afdc5ecd107907aa68a41d3370e0b44b2d69a3c2dd6')
+sha256sums=('ad5261c071f12133fec689d7c18149448e76ed0924eafd4ba171adc2dd37b867')
 
 build() {
   cd "$pkgname-$pkgver"
