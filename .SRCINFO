@@ -1,0 +1,19 @@
+pkgbase = bazel3-bin
+	pkgdesc = Build and test software of any size, quickly and reliably.
+	pkgver = 3.7.2
+	pkgrel = 1
+	url = https://bazel.build
+	arch = x86_64
+	license = Apache
+	depends = java-environment=11
+	provides = bazel3
+	provides = bazel=3.7.2
+	conflicts = bazel3
+	conflicts = bazel
+	noextract = bazel_nojdk-3.7.2-linux-x86_64
+	options = !strip
+	source = https://github.com/bazelbuild/bazel/releases/download/3.7.2/bazel_nojdk-3.7.2-linux-x86_64
+	sha256sums = dbf43bf909d2dbdd428820a6794d668404edcf1e15f20475837e568c83c9cd7b
+
+pkgname = bazel3-bin
+
