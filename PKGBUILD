@@ -1,48 +1,37 @@
-# Maintainer: Tajidin Abd <tajidinabd at archlinux dot us>
+# Maintainer: katt <magunasu.b97@gmail.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=konsole-git
-pkgver=r7247.91204ff0
+pkgver=19.12.3.r783.g110d705f
 pkgrel=1
+arch=(x86_64)
+url=https://kde.org/applications/system/konsole
 pkgdesc="KDE's terminal emulator"
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/kde/applications/konsole'
-license=('GPL' 'LGPL' 'FDL')
-depends=('kbookmarks' 'kcompletion' 'kconfig' 'kconfigwidgets' 'kcoreaddons' 'kcrash' 'kguiaddons' 'kdbusaddons' 'ki18n' 'kiconthemes' 'kinit' 'kio' 'knewstuff' 'knotifications' 'knotifyconfig' 'kparts' 'kpty' 'kservice' 'ktextwidgets' 'kwidgetsaddons' 'kwindowsystem' 'kxmlgui' 'kglobalaccel')
-makedepends=('extra-cmake-modules' 'git' 'kdoctools' 'python')
-provides=('konsole')
-conflicts=('konsole' 'kdebase-konsole')
-source=('git+https://invent.kde.org/utilities/konsole.git')
-md5sums=('SKIP')
+license=(GPL LGPL FDL)
+groups=(kde-applications kde-utilities)
+depends=(knotifyconfig kpty kparts kinit knewstuff)
+makedepends=(extra-cmake-modules kdoctools git)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+optdepends=('keditbookmarks: to manage bookmarks')
+source=(git+https://invent.kde.org/utilities/konsole.git)
+sha256sums=('SKIP')
+validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7 # Albert Astals Cid <aacid@kde.org>
+    F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87           # Christoph Feck <cfeck@kde.org>
+    D81C0CB38EB725EF6691C385BB463350D6EF31EF)          # Heiko Becker <heiko.becker@kde.org>
 
 pkgver() {
-  cd konsole
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+    git -C "${pkgname%-git}" describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd build
-  BUILD_TYPE=Release
-  if [[ " ${OPTIONS[@]} " =~ " debug " ]]; then
-    BUILD_TYPE=RelDebug
-  elif [[ " ${OPTIONS[@]} " =~ " !strip " ]]; then
-    BUILD_TYPE=RelDebug
-  fi
-  echo "${BUILD_TYPE}"
-
-  cmake ../konsole \
-    -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DBUILD_TESTING=OFF
-  make
+    cmake -B build -S "${pkgname%-git}" \
+        -DBUILD_TESTING=OFF
+    cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="${pkgdir}" install
+    DESTDIR="$pkgdir" cmake --install build
 }
