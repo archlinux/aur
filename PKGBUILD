@@ -1,7 +1,7 @@
 # Maintainer: Naglis Jonaitis <naglis@mailbox.org>
 
 pkgname=thorium-bin
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="A cross platform desktop reading app, based on the Readium Desktop toolkit"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
   ${url}/raw/v${pkgver}/LICENSE
 )
 sha512sums=(
-  ac1a60fe6153f5efbaba9a84742688fa4f6ed35b727721c6a1d07e41a166193c6bc0848ecf50a43c7be401a2a563d0a67a43e57b2957f978046074772e692c7a
+  c1d637a8b59522ca16e53c9553c67f0c549b05132cf6a311130a3593d5629747205347360fc6373009741d12eb39e7ff22f5fc48fb28399d38c79724e6cba4d9
   SKIP
 )
 
