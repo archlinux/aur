@@ -3,7 +3,7 @@
 pkgname=slock-ashin-git
 pkgver=2.5
 pkgrel=1
-pkgdesc='A suckless locker customized in my own way with dwm logo.'
+pkgdesc='A suckless locker customized with dwm logo.'
 arch=(x86_64 i686)
 url='https://github.com/ashincoder/slock-ashin.git'
 license=('MIT')

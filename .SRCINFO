@@ -1,5 +1,5 @@
 pkgbase = slock-ashin-git
-	pkgdesc = A suckless locker customized in my own way with dwm logo.
+	pkgdesc = A suckless locker customized with dwm logo.
 	pkgver = 2.5
 	pkgrel = 1
 	url = https://github.com/ashincoder/slock-ashin.git
