@@ -1,5 +1,5 @@
 pkgname=mingw-w64-paraview
-pkgver=5.9.0
+pkgver=5.9.1
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
@@ -11,7 +11,7 @@ options=('!buildflags' '!strip' 'staticlibs')
 source=("${url}/files/v${pkgver:0:3}/ParaView-v${pkgver}.tar.xz"
         https://gitlab.kitware.com/vtk/vtk/-/merge_requests/7038.patch
         https://gitlab.kitware.com/paraview/catalyst/-/merge_requests/7.patch)
-sha256sums=('b03258b7cddb77f0ee142e3e77b377e5b1f503bcabc02bfa578298c99a06980d' SKIP SKIP)
+sha256sums=('0d486cb6fbf55e428845c9650486f87466efcb3155e40489182a7ea85dfd4c8d' SKIP SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
