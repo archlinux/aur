@@ -1,0 +1,18 @@
+pkgbase = neovim-numb-git
+	pkgdesc = A Neovim plugin that peeks lines of the buffer in a non-obtrusive way
+	pkgver = r40.03abec7
+	pkgrel = 1
+	url = https://github.com/nacro90/numb.nvim
+	install = neovim-numb-git.install
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	makedepends = git
+	depends = neovim
+	provides = neovim-numb
+	conflicts = neovim-numb
+	source = neovim-numb-git::git+https://github.com/nacro90/numb.nvim
+	sha256sums = SKIP
+
+pkgname = neovim-numb-git
+

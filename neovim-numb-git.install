@@ -1,0 +1,12 @@
+post_install()  {
+  printf "
+  If you are using an init.vim, you must activate the plugin by adding ':lua require('numb').setup()' to it.
+  Otherwise, use 'require('numb').setup()' if you are using an init.lua.
+\n"
+}
+
+post_remove() {
+  printf "
+  Don't forget to remove numb.nvim's setup from your init!
+\n"
+}
