@@ -1,4 +1,5 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Amy Wilson <awils_1 at xsmail dot com
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Julien Deswaef <juego@requiem4tv.com>
 
 # otfinfo --info *.ttf
