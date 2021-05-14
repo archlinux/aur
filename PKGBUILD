@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-ndi
 pkgver=4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video with NDI restored and enabled'
 arch=(x86_64)
 url=https://ffmpeg.org/
@@ -58,6 +58,7 @@ depends=(
   sdl2
   speex
   srt
+  svt-av1
   v4l-utils
   vmaf
   xz
@@ -122,6 +123,8 @@ pkgver() {
 prepare() {
   cd ffmpeg
 
+  git cherry-pick -n 988f2e9eb063db7c1a678729f58aab6eba59a55b # fix nvenc on older gpus
+
   patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
   patch -Np1 -i "${srcdir}"/Revert-lavd-Remove-libndi_newtek.patch
 
@@ -170,6 +173,7 @@ build() {
     --enable-libspeex \
     --enable-libsrt \
     --enable-libssh \
+    --enable-libsvtav1 \
     --enable-libtheora \
     --enable-libv4l2 \
     --enable-libvidstab \
