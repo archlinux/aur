@@ -1,0 +1,17 @@
+pkgbase = compton-old-git
+	pkgdesc = Old version of compton, before the picom fork, avoids some regressions
+	pkgver = r436.316eac0
+	pkgrel = 1
+	url = https://github.com/chjj/compton
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = git
+	makedepends = asciidoc
+	provides = compton
+	conflicts = compton
+	source = git+https://github.com/chjj/compton.git
+	md5sums = SKIP
+
+pkgname = compton-old-git
+
