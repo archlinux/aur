@@ -11,7 +11,7 @@ depends=('python2' 'openexr' 'openal' 'libjpeg'
 makedepends=('cmake' 'dos2unix')
 license=('GPL')
 
-source=('https://download.blender.org/source/blender-2.49b.tar.gz' \
+source=('https://download.blender.org/source/blender-2.49b.tar.gz'
         'blender249py27_gcc9_all.patch')
 sha256sums=('23554db4aa10b00e0e760a8bf9c4a9f749670d815c8bc874a04746adc4752488'
             '6282cb81967862eca928babbe1446126070591c71111d3178d0e3ff31fb455cd')
@@ -35,6 +35,7 @@ build() {
     cd ${srcdir}/blender-${pkgver}/build
 
     # 06-2020: added -fcommon to override default gcc10 behaviour
+    # 05-2021: remove OpenEXR, broken after release of OpenEXR 3.x
     #
     cmake \
         -GNinja \
@@ -47,6 +48,7 @@ build() {
         -DOpenGL_GL_PREFERENCE:STRING="GLVND" \
         -DWITH_OPENMP:BOOL=ON \
         -DWITH_OPENJPEG:BOOL=ON \
+        -DWITH_OPENEXR:BOOL=OFF \
         -DWITH_PLAYER:BOOL=ON \
         ../
 
