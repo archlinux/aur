@@ -1,4 +1,3 @@
-# Maintainer: Zachery Gyurkovitz <zgyurkovitz@gmail.com>
 # Maintainer: Mado <madoushi@tutanota.com>
 
 pkgname=etterna
@@ -18,14 +17,18 @@ changelog=
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/etternagame/${pkgname}/archive/v${pkgver}.tar.gz"
     "${pkgname}.desktop"
+    "cmake_warn_fix.patch"
 )
-sha256sums=('SKIP'
+sha256sums=('c5ac4ceb6eb872ed3bbcc25ccd11b0e784d454f588df409c7c42ee79d8d32dae'
             '652b94614a6371c227ccf5a034e7ea98e937a0f350723f50ea40d03724c799a4'
+            'c19f63ab90cdd0cc1c9be17a3994bf8fe61e142bff1c644945f6290bc41c8db4'
 )
 
 prepare() {
     cd "$srcdir/${pkgname}-${pkgver}"
     sed -i CMakeLists.txt -e 's/\(set(OPENSSL_USE_STATIC_LIBS\) ON/\1 OFF/'
+    cd "$srcdir"
+    patch --forward --strip=1 --input="${srcdir}/cmake_warn_fix.patch"
 }
 
 build() {

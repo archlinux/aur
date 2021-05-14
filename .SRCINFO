@@ -17,8 +17,10 @@ pkgbase = etterna
 	conflicts = etterna-git
 	source = etterna-0.70.4.tar.gz::https://github.com/etternagame/etterna/archive/v0.70.4.tar.gz
 	source = etterna.desktop
-	sha256sums = SKIP
+	source = cmake_warn_fix.patch
+	sha256sums = c5ac4ceb6eb872ed3bbcc25ccd11b0e784d454f588df409c7c42ee79d8d32dae
 	sha256sums = 652b94614a6371c227ccf5a034e7ea98e937a0f350723f50ea40d03724c799a4
+	sha256sums = c19f63ab90cdd0cc1c9be17a3994bf8fe61e142bff1c644945f6290bc41c8db4
 
 pkgname = etterna
 
