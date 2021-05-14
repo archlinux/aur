@@ -1,7 +1,7 @@
 # Maintainer: archibald869 <archibald869 at web dot de>
 
 pkgname=cling
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 pkgdesc="Interactive C++ interpreter, built on the top of LLVM and Clang libraries"
 arch=("i686" "x86_64")
@@ -16,9 +16,9 @@ optdepends=(
     "perl: support for scan-build, ccc-analyzer and c++-analyzer"
 )
 source=(
-    "llvm::git+http://root.cern.ch/git/llvm.git#branch=cling-patches"
-    "clang::git+http://root.cern.ch/git/clang.git#branch=cling-patches"
-    "cling::git+http://root.cern.ch/git/cling.git#tag=v$pkgver"
+    "llvm::git+http://root.cern/git/llvm.git#branch=cling-patches"
+    "clang::git+http://root.cern/git/clang.git#branch=cling-patches"
+    "cling::git+http://root.cern/git/cling.git#tag=v$pkgver"
 )
 sha256sums=(
     "SKIP"
