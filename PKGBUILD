@@ -3,20 +3,20 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=flyspray
-pkgver=1.0rc9
-pkgrel=5
+pkgver=1.0rc10
+pkgrel=1
 pkgdesc='Lightweight, web-based bug tracking system written in PHP'
 url="https://www.flyspray.org/"
 arch=('any')
 license=('LGPL2.1')
-depends=('php7' 'php7-gd')
+depends=('php' 'php-gd')
 makedepends=('composer' 'unzip')
 optdepends=('graphviz: plot task dependency graphs'
             'mariadb: use local MariaDB database'
-            'php7-fpm: run with FastCGI process manager'
-            'php7-pgsql: use PostgreSQL database'
+            'php-fpm: run with FastCGI process manager'
+            'php-pgsql: use PostgreSQL database'
             'postgresql: use local PostgreSQL database'
-            'uwsgi-plugin-php7: run in application container')
+            'uwsgi-plugin-php: run in application container')
 backup=("etc/webapps/${pkgname}/.htaccess"
         "etc/webapps/${pkgname}/${pkgname}.conf.php")
 install="${pkgname}.install"
@@ -24,11 +24,11 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/a
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "${pkgname}.uwsgi")
-sha512sums=('30b297c6c993936db2e10eeea75a049b8bf42a9bd4090bbba2465de946eb04a5cde9d4b8ec88065c12f2f2dce99b9bf3d0fcdf30334fd1b77030813b8393c070'
+sha512sums=('b6d4d786a013141940a9c9f6047a85f39d7a56978a5882c53f101457f6fca2635e1a3727f2c95c7ddbb44527c12a408873640e6cbb832d09eef27183fb4d10e3'
             'ee23df991c6a42bfb139caabad861a3f945ea18d81061fdb90ace8430d4225e7db322802de4fdf36aa8191cbedab3cafd025c76f08806b7fcdb88f6eb185519e'
             '65d333b98a93cc320300bacc8d142f7150e31f4a65da96f09ab0c88e6556a120a5cab8d2c871840753eb4eec6a281d0731b1ab5524834f1281f2d073ba4983f0'
             'a236f32e46b1ef9574fde8201c18f09edcd72ad2a53fc5c88f1b8da7540ac55a936da69e3af096b1c73155882cdfe3343dd2f0242de9b6b7ca6713752a1a3343')
-b2sums=('136d0d83b69052c1b6952735ac9052f5c6568379b2b970777e93dfa570b68210224a1614c08df9a422117ef45f8b9e2ce848f7a7000a03aacc5c6bfa5854b1e5'
+b2sums=('ede853846d898c41c42d7bdec720ede685fd4ed285c5ab014425f7e1d0b2fb2b3122ac598b653acac0e92e7dfa7dd87b4fd9cdd0e42e313653ae336983453f27'
         '93ab7184cceaa6148dcf4161fe6a680cae105859697373021b9f027d85bbad0f0c7ee02b7800305df26858c1b39e70dd4dadf2f539f6659215d159ac6a3151c5'
         'f2c6b9137747aca24875d113251011b1759402372d25de3771ce5d11461fdc530ca000c3490f8b76d567302c8abf3ba95d5a0f831d34164225a99516745f38f3'
         '075ca6cc87246491d5981414ff3e0cd84ce466034fc8afe025fc9d272f295a13d6e19496c8abe3c8db8fbd9a9c1b579c78230f06797527722bae7817255f4e47')
@@ -40,13 +40,11 @@ prepare() {
   # removing forced redirect, if setup/index.php is accessible.
   # access to it should be denied via the webserver settings
   sed -e '45,82d' -i header.php
-  # removing unused perl script
-  rm -v setup/composerit.pl
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
-  php7 -d 'extension=gd' /usr/bin/composer install --no-dev
+  php -d 'extension=gd' /usr/bin/composer install --no-dev
 }
 
 package() {
