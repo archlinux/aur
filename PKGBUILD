@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=whatsapp-nativefier
-pkgver=2.2045.15
+pkgver=2.2117.5
 pkgrel=1
 pkgdesc="WhatsApp desktop built with nativefier (electron)"
 arch=("armv7l" "i686" "x86_64")
@@ -34,7 +34,6 @@ build() {
     --verbose \
     --single-instance \
     --tray \
-    --electron-version 9.0.2 \
     "${url}"
 }
 
