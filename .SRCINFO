@@ -1,6 +1,6 @@
 pkgbase = ugene-bin
 	pkgdesc = A free cross-platform genome analysis suite (binary release)
-	pkgver = 33.0
+	pkgver = 38.1
 	pkgrel = 1
 	url = http://ugene.net
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = ugene-bin
 	depends = python
 	provides = ugene
 	conflicts = ugene
-	source = http://ugene.unipro.ru/downloads/ugene-33.0-x86-64.tar.gz
-	sha256sums = 7f902a6812ba5c888726d0fdc3abafed4f53079d02ce3d125010db0400647d83
+	source = https://github.com/ugeneunipro/ugene/releases/download/38.1/ugene-38.1-linux-x86-64.tar.gz
+	sha256sums = ee8509a3edea8675f3aed6a537d38f64c97e20026ab923d5a656a1029b4be3a1
 
 pkgname = ugene-bin
 

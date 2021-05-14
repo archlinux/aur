@@ -2,7 +2,7 @@
 #Previous Maintainer Jens Staal <staal1978@gmail.com>
 
 pkgname=ugene-bin
-pkgver=33.0
+pkgver=38.1
 pkgrel=1
 pkgdesc="A free cross-platform genome analysis suite (binary release)"
 arch=('x86_64')
@@ -11,26 +11,15 @@ license=('GPL')
 depends=('qt5-script' 'qt5-svg' 'qt5-webkit' 'glu' 'procps-ng' 'python')
 provides=('ugene')
 conflicts=('ugene')
-source=("http://ugene.unipro.ru/downloads/ugene-$pkgver-x86-64.tar.gz")
-sha256sums=('7f902a6812ba5c888726d0fdc3abafed4f53079d02ce3d125010db0400647d83')
+source=("https://github.com/ugeneunipro/ugene/releases/download/${pkgver}/ugene-${pkgver}-linux-x86-64.tar.gz")
+sha256sums=('ee8509a3edea8675f3aed6a537d38f64c97e20026ab923d5a656a1029b4be3a1')
 
 package() {
     cd "$srcdir/ugene-$pkgver"
-    
-    mkdir -p "${pkgdir}/usr/"{bin,lib/ugene,share/{applications,icons,licenses,man,ugene,mime,pixmaps}}
-    
-    #move stuff to the correct locations
-    mv ugene.desktop $pkgdir/usr/share/applications
-    mv LICENSE $pkgdir/usr/share/licenses/ugene
-    mv man1 $pkgdir/usr/share/man/man1
-    mv application-x-ugene.xml $pkgdir/usr/share/mime/
-    mv ugene.png $pkgdir/usr/share/pixmaps/
+    mkdir -p "${pkgdir}/usr/"{bin,share/{applications,icons,ugene}}
     tar -xf icons.tar.gz -C $pkgdir/usr/share/icons
-    
-    mv * $pkgdir/usr/lib/ugene/
-    
-    cd $pkgdir/usr/bin
-    ln -s /usr/lib/ugene/ugene ugene
-    
+    mv * $pkgdir/usr/share/ugene
+    ln -s /usr/share/ugene/ugene "$pkgdir"/usr/bin/ugene
+    ln -s /usr/share/ugene/ugene.desktop "$pkgdir"/usr/share/applications/ugene.desktop
 }
 
