@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=mauikit-texteditor-git
-pkgver=r10.3eee5a8
+pkgver=v1.2.2.r1.gd4cb7f2
 pkgrel=1
 pkgdesc="MauiKit Text Editor components"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -23,10 +23,10 @@ pkgver() {
 }
 
 build() {
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -B build -S "${pkgname%-git}"
-  make -C build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo -B build -S "${pkgname%-git}"
+  cmake --build build --config RelWithDebInfo
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
+  DESTDIR="${pkgdir}" cmake --install build --config RelWithDebInfo
 }
