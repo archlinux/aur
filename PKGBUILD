@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=clipto-bin
-pkgver=5.0.3
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="Effortless, super fast and flexible notes taking app and clipboard manager."
 arch=('x86_64')
 url="https://clipto.pro"
 license=('custom')
-depends=('electron11')
+depends=('electron')
 optdepends=('libnotify: for desktop notifications'
             'libappindicator-gtk3: for tray icon')
 provides=("${pkgname%-bin}")
@@ -14,8 +14,8 @@ conflicts=("${pkgname%-bin}" "${pkgname%-bin}.pro")
 replaces=("${pkgname%-bin}.pro")
 source=("https://github.com/clipto-pro/Desktop/releases/download/v$pkgver/${pkgname%-bin}-$pkgver.AppImage"
         "${pkgname%-bin}")
-sha256sums=('f9c5adad4f2cc05c828199124f8071d2f43a62c303722b6c6c5efedba86a8434'
-            '3adf08e3c2b3a6a41c60b66e53d610d4b6ca616e560fae1843c07c530e8c03fd')
+sha256sums=('c0c33c32362adddf876b055e964a771479d31aae0055accf49f53b62525cc383'
+            '9a741f1a1760de706698cb1576e3bb08846876c359aedd5d8854e69d913f0635')
 
 prepare() {
 	chmod +x "${pkgname%-bin}-$pkgver.AppImage"
