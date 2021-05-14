@@ -9,15 +9,15 @@ pkgname=(pipewire-full-git pipewire-full-docs-git pipewire-full-alsa-git
          gst-plugin-pipewire-full-git
          pipewire-full-jack-client-git
          pipewire-full-vulkan-git pipewire-full-ffmpeg-git)
-pkgver=0.3.27.r82.ga6c0e35b
+pkgver=0.3.27.r94.g7065a450
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
-license=(MIT LGPL)
+license=(MIT)
 arch=(x86_64)
 makedepends=(git meson doxygen graphviz xmltoman
              ncurses libsndfile alsa-lib dbus rtkit
-             libpulse sdl2 gst-plugins-base-libs
+             libpulse avahi sdl2 gst-plugins-base-libs
              bluez-libs sbc libldac libopenaptx libfdk-aac
              jack2 vulkan-headers vulkan-icd-loader ffmpeg)
 source=("git+https://gitlab.freedesktop.org/pipewire/pipewire.git")
@@ -62,8 +62,10 @@ _pick() {
 _ver=${pkgver:0:3}
 
 package_pipewire-full-git() {
+  license=(MIT LGPL)
   depends=(rtkit libdbus-1.so libncursesw.so libsndfile.so
            libudev.so libasound.so libsystemd.so libpulse.so
+           libavahi-common.so libavahi-client.so
            libbluetooth.so libsbc.so libldacBT_enc.so
            libopenaptx.so libfdk-aac.so)
   optdepends=('pipewire-full-docs-git: Documentation'
@@ -127,6 +129,7 @@ package_pipewire-full-alsa-git() {
 }
 
 package_pipewire-full-jack-git() {
+  license=(MIT GPL)
   pkgdesc+=" - JACK support"
   depends=(pipewire-full-git libpipewire-$_ver.so bash)
   provides=(pipewire-jack)
