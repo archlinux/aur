@@ -3,12 +3,13 @@
 
 pkgname=prey-node-client
 pkgver=1.9.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Remote tracking and monitoring application for laptops, smartphones, and other electronic devices"
 url="https://preyproject.com/"
 arch=('x86_64' 'i686')
 license=('GPL3')
 depends=('nodejs' 'mpg123' 'xawtv' 'scrot' 'openssh' 'wireless_tools' 'lsb-release' 'python2' 'networkmanager' 'npm')
+optdepends=('gtk3')
 replaces=('prey-tracker')
 # Should be used as soon as the bash client is renamed
 #provides=('prey-tracker')
