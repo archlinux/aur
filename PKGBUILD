@@ -9,12 +9,11 @@ license=('GPL3')
 depends=('pulseaudio' 'webkit2gtk' 'libwnck3' 'libappindicator-gtk3' 'lsb-release')
 optdepends=('youtube-dl: downloader integration' 'ffmpeg: downloader integration')
 makedepends=('git' 'cmake' 'ninja')
-source=("git+https://github.com/Soundux/Soundux#tag=$pkgver")
-sha256sums=('SKIP')
+source=("https://github.com/Soundux/Soundux/releases/download/$pkgver/soundux-$pkgver.tar.gz")
+sha256sums=('76c08786da00ad951a96c6f547a952bd0aa1fbaeac2a5f991bc6873355735777')
 
 build() {
   cd "${srcdir}/Soundux"
-  git submodule update --init --recursive
   mkdir -p build
   cd build
   cmake -GNinja -DCMAKE_BUILD_TYPE=Release ..

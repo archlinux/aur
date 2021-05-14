@@ -15,8 +15,8 @@ pkgbase = soundux
 	depends = lsb-release
 	optdepends = youtube-dl: downloader integration
 	optdepends = ffmpeg: downloader integration
-	source = git+https://github.com/Soundux/Soundux#tag=0.2.2_b3
-	sha256sums = SKIP
+	source = https://github.com/Soundux/Soundux/releases/download/0.2.2_b3/soundux-0.2.2_b3.tar.gz
+	sha256sums = 76c08786da00ad951a96c6f547a952bd0aa1fbaeac2a5f991bc6873355735777
 
 pkgname = soundux
 
