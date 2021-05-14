@@ -58,13 +58,13 @@ index f4cb7ca..4efac13 100644
  [includes]
  # non-central apps might want to use %(topsrcdir)s here, or other vars
 diff --git a/browser/locales/l10n.toml b/browser/locales/l10n.toml
-index b9b18fe..af7c583 100644
+index d44e3ccd07..7ab8c78e97 100644
 --- a/browser/locales/l10n.toml
 +++ b/browser/locales/l10n.toml
-@@ -133,10 +133,6 @@ locales = [
+@@ -135,10 +135,6 @@ locales = [
      reference = "browser/extensions/fxmonitor/locales/en-US/**"
      l10n = "{l}browser/extensions/fxmonitor/**"
- 
+
 -[[paths]]
 -    reference = "browser/extensions/report-site-issue/locales/en-US/**"
 -    l10n = "{l}browser/extensions/report-site-issue/**"

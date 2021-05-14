@@ -1,5 +1,5 @@
-# Maintainer: dr460nf1r3 <dr460nf1r3@garudalinux.org>
-# Maintainer: vnepogodin
+# Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
+# Contributor: Vladislav Nepogodin (vnepogodin) <nepogodin.vlad@gmail.com>
 # Contributor: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Maxwell Anselm <silverhammermba+aur@gmail.com>
@@ -10,7 +10,7 @@
 pkgname=firedragon-hg
 _pkgname=FireDragon
 __pkgname=firedragon
-pkgver=90.0a1.r646429
+pkgver=90.0a1.r647896
 pkgrel=1
 pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled."
 arch=(x86_64 aarch64)
@@ -57,9 +57,9 @@ sha512sums=('SKIP'
             '1688d8696f0a4451bc1211707362ca79d302ae0e8153be8326392b5617cb3944344e9d8fe17d0b1d5fe7df6d38fd44d4d33e3eb84e7b8763c37aeab4b2c26290'
             'SKIP'
             'SKIP'
-            '861e692daf2be7239eb6b61435688a7abed2bef198067f5b3a9c1a44d8316d1e547c06e1bfb45be402c4c38b1bf13018ba594d433c1b70da6296bd5b90b0fbe3'
-            '5f7da8d54065c009f94c60eb9aa99d4d44d75b27800bcad5e9f2a365e0c853cb234c871c54855522598b1fe26669bd42a302705ac385d536c90f4ec199cf1df6'
-            '43d008c63a6b90a3710c4e1bf6ccebcb0987316213fa993fd1bd4b47d9a5d553f51471467c9d9ab454911b9d6fb575e3035cd7a3f9e61dbb72fe3b0a3b20a066'
+            'd4bc43a7922a2391d9f2a2d0654e4c3cb6ec08aeead5249e933dec28bbd5d4a945591e03db54e91298f41a4bc50acb4f7bc2a0df4094e458be33f146b6186879'
+            '29677a878286464e9bdd8d605515ef6105e0d409c54ce4e100f2474d090728869953b5a16e5c872325c71a94b83d35e86a8ca45d089ea14454713ff8dceff6f2'
+            '1d1e6e2675750e9b09533ff891ee253418fa0ae2d2b86d448b35fbbd712d3b43353babcda5c80273c897ef3ee1aec50e3bc8f80b5d2d1e18f2176556cf792286'
             '25c9fa51d0ebfeea9ad88c83325dae1d0643499253946278ffeaf04b7d1aad61a76e24a5b0e1689877fa6fd5ca67135006dd8edecb54418012c826f94ca22555')
 sha512sums_aarch64=('7c2f0c792eb5744eaf0f2ee7c0887a74118796d691029e824451b063d5ba9e65626617ad343f69837297b2002446e02ac1d5ab3bc470419ae092424abf08293f'
                     '6d464cce32cb2e440fb137666aeefec1240bcbdfdef0e8633e0fbe22e2214446b2c992ee2c8716c682a42fcd1d66d9fdf1d6d5b40f8ec3b0eeec5ca9e3f1aa35')
