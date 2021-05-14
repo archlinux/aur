@@ -2,20 +2,25 @@
 
 pkgname=quickddit
 _pkgname=Quickddit
-pkgver=1.1
-pkgrel=5
+pkgver=1.2
+pkgrel=0
 pkgdesc="Unofficial reddit client"
 arch=('x86_64' 'armv7' 'aarch64')
 url="https://github.com/accumulator/Quickddit.git"
 license=('GPL3')
-depends=(qt5-base qt5-declarative qt5-quickcontrols2 qt5-webengine youtube-dl qqc2-suru-style python-pyotherside qt5-graphicaleffects)
+depends=(qt5-base qt5-declarative qt5-quickcontrols2 qt5-webengine youtube-dl python-pyotherside qt5-graphicaleffects)
 makedepends=('git')
-source=('git+https://github.com/dano6/Quickddit.git#branch=flavors')
+source=('git+https://github.com/dano6/Quickddit.git#branch=5.12')
 md5sums=('SKIP')
+
+optdepends=('qqc2-suru-style-git: Suru style'
+            'qqc2-breeze-style: Breeze style'
+            'qqc2-desktop-style: KDE desktop style'
+)
 
 prepare() {
   cd ${_pkgname}
-  git submodule update --init
+  git submodule update --init qt-json
   
 }
 
