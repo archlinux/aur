@@ -6,7 +6,7 @@ _commit=127506bf93884da534aeac290f8fc0bd8e935f7f
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
 _monover=5.1.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 arch=(x86_64)
@@ -195,10 +195,13 @@ prepare() {
     patch -p1 -i "$srcdir"/proton-disable_lock.patch
     patch -p1 -i "$srcdir"/proton-user_compat_data.patch
 
-    # Export CFLAGS used by upstream if building for redistribution
+    # Export CFLAGS used by upstream
     # -O2 is adjusted to -O3 since AVX is disabled
-#    export CFLAGS="-O3 -march=nocona -mtune=core-avx2"
-#    export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2"
+    # This overrides CFLAGS from makepkg.conf, if you comment these you are on your own
+    # If you want the "best" possbile optimizations for your system you can use
+    # `-march=native` and remove the `-mtune=core-avx2` option.
+    export CFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
+    export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
 
     # Uncomment to enable extra optimizations
     # Patch crossfiles with extra optimizations from makepkg.conf
