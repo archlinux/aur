@@ -1,12 +1,14 @@
 pkgbase = python-pytorch-piqa-git
 	pkgdesc = PyTorch Image Quality Assessment
-	pkgver = 1.1.0+3+g5994e34
+	pkgver = 1.1.3+3+g2205651
 	pkgrel = 1
 	url = https://github.com/francois-rozet/piqa
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-pytorch
+	provides = python-pytorch-piqa
+	conflicts = python-pytorch-piqa
 	source = git+https://github.com/francois-rozet/piqa.git
 	sha256sums = SKIP
 

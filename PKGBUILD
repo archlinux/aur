@@ -2,7 +2,9 @@
 
 _name="piqa"
 pkgname=python-pytorch-${_name}-git
-pkgver=1.1.0+3+g5994e34
+provides=("python-pytorch-${_name}")
+conflicts=("python-pytorch-${_name}")
+pkgver=1.1.3+3+g2205651
 pkgrel=1
 pkgdesc="PyTorch Image Quality Assessment"
 url="https://github.com/francois-rozet/${_name}"
