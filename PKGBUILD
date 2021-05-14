@@ -80,7 +80,6 @@ _package() {
     'linux-firmware: Additional firmware blobs'
   )
   provides=(WIREGUARD-MODULE)
-  replaces=(wireguard-dkms)
   __kernelname=linux-nitrous
   backup=("etc/mkinitcpio.d/linux-nitrous.preset")
   install=${pkgbase}.install
