@@ -3,7 +3,7 @@
 
 pkgname=firejail-noapparmor-git
 _pkgname=firejail
-pkgver=r7283.23ea15fd7
+pkgver=0.9.64.r836.gc9e7fe8ab
 pkgrel=1
 pkgdesc="Linux namespaces sandbox program (GIT version without apparmor)"
 arch=(i686 x86_64)
@@ -21,8 +21,8 @@ backup=('etc/firejail/login.users'
         'etc/firejail/firejail.config')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" | sed 's/^v//;s/-/./g'
+  cd "$_pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

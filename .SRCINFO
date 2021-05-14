@@ -1,6 +1,6 @@
 pkgbase = firejail-noapparmor-git
 	pkgdesc = Linux namespaces sandbox program (GIT version without apparmor)
-	pkgver = r7283.23ea15fd7
+	pkgver = 0.9.64.r836.gc9e7fe8ab
 	pkgrel = 1
 	url = https://github.com/netblue30/firejail
 	install = firejail.install
