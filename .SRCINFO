@@ -1,6 +1,6 @@
 pkgbase = qucs-qt5-git
 	pkgdesc = An integrated circuit simulator with a graphical user interface - modular branch
-	pkgver = r4538.deef90e5f
+	pkgver = r4548.b4b88f164
 	pkgrel = 1
 	url = http://qucs.sourceforge.net
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = qucs-qt5-git
 	depends = qt5-script
 	depends = qt5-svg
 	depends = hicolor-icon-theme
+	depends = qcustomplot
 	optdepends = freehdl: digital circuit simulation
 	optdepends = qucsator: circuit simulation
 	optdepends = perl

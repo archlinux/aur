@@ -3,13 +3,13 @@
 # Contributor: Víctor Martínez Romanos <vmromanos@gmail.com>
 
 pkgname=qucs-qt5-git
-pkgver=r4538.deef90e5f
+pkgver=r4548.b4b88f164
 pkgrel=1
 pkgdesc="An integrated circuit simulator with a graphical user interface - modular branch"
 arch=('x86_64')
 url="http://qucs.sourceforge.net"
 license=('GPL3')
-depends=('gcc-libs' 'qt5-base' 'qt5-script' 'qt5-svg' 'hicolor-icon-theme')
+depends=('gcc-libs' 'qt5-base' 'qt5-script' 'qt5-svg' 'hicolor-icon-theme' 'qcustomplot')
 makedepends=('git' 'gperf')
 optdepends=(
     'freehdl: digital circuit simulation'
