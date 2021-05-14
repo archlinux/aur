@@ -1,6 +1,6 @@
 pkgbase = blanket-bin
 	pkgdesc = Improve focus and increase your productivity by listening to different sounds
-	pkgver = 0.3.1
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/rafaelmardojai/blanket
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = blanket-bin
 	depends = python-gobject
 	provides = blanket
 	conflicts = blanket
-	source = http://ppa.launchpad.net/apandada1/blanket/ubuntu/pool/main/b/blanket/blanket_0.3.1-1~ubuntu20.10.1_all.deb
-	sha256sums = e3380972b82adc0636cdc6919afbd00e5696e293443682c60d605062c506c6f1
+	source = http://ppa.launchpad.net/apandada1/blanket/ubuntu/pool/main/b/blanket/blanket_0.4.1~ubuntu20.10.1_all.deb
+	sha256sums = 2907d2eedb5bc58775a4846c2976e9c34f7ed95cebbd9bc11a3f412f892366da
 
 pkgname = blanket-bin
 
