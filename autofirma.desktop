@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=AutoFirma
+Comment=Cliente @firma
+Icon=autofirma
+Exec=autofirma %U
+Categories=Utility;Java;
+StartupNotify=true
+StartupWMClass=autofirma
+MimeType=x-scheme-handler/afirma;
