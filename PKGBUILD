@@ -40,11 +40,11 @@
 #   Bug reports and packaging suggestions are always welcome at https://aur.archlinux.org/packages/zoneminder/
 
 
-_commit=6f977da94d6096f05dee781d19a4f88b75ecdbe4
+
 
 pkgname=zoneminder
-pkgver=1.35.28+g$_commit
-pkgrel=2
+pkgver=1.36.0
+pkgrel=1
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('any')
 url='https://www.zoneminder.com/'
@@ -78,7 +78,7 @@ backup=("etc/nginx/sites-available/$pkgname.conf"
         "etc/httpd/conf/extra/$pkgname.conf"
         "etc/php/conf.d/$pkgname.ini")
 install=$pkgname.install
-source=("$pkgname-git::git+https://github.com/ZoneMinder/zoneminder.git#commit=$_commit"
+source=("$pkgname-git::git+https://github.com/ZoneMinder/zoneminder.git#tag=$pkgver"
         "zoneminder-nginx.conf"
         "zoneminder-httpd.conf"
         "zoneminder-php.ini"
