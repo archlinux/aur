@@ -1,4 +1,7 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
+
+# NOTE: If the CEF version (for the browser source) is not available in your architecture, OBS will be built without it.
+
 pkgname=obs-studio-tytan652
 # Use same CEF as obs project PPA
 _cefname=cef_binary_76.1.13+gf19c584+chromium-76.0.3809.132
@@ -29,12 +32,13 @@ source=(
         "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
         "python_fix.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3335.patch
         "use_system_ftl-sdk.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4018.patch
-        "bind_iface.patch" #https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4219.patch
+        "bind_iface.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4219.patch
         "obs-browser::git+https://github.com/obsproject/obs-browser.git"
         "obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8"
 )
 source_x86_64=("https://cef-builds.spotifycdn.com/${_cefname}_linux64_minimal.tar.bz2")
 source_i686=("https://cef-builds.spotifycdn.com/${_cefname}_linux32_minimal.tar.bz2")
+#source_aarch64=("https://cef-builds.spotifycdn.com/${_cefname}_linuxarm64_minimal.tar.bz2") will be available for OBS 27
 sha256sums=(
         "SKIP"
         "430d7d0a7e1006c1f6309ad7d4912033dadd542b641f9d41259a5bad568379c9"
@@ -45,18 +49,22 @@ sha256sums=(
 )
 sha256sums_x86_64=("6b0dfa8ddafcec822fcd20018cf081959ffa6d0565be3793da1f596ac0733c38")
 sha256sums_i686=("baa0624e2d6b86a60d18117cb65e125f882ef66cf413cd7ac63a480d904004f0")
+#sha256sums_aarch64=("")
+
+if [[ $CARCH == 'x86_64' ]]; then
+  CEF=ON
+  CEF_ARCH=64
+elif [[ $CARCH == 'i686' ]]; then
+  CEF=ON
+  CEF_ARCH=32
+#elif [[ $CARCH == 'aarch64' ]]; then
+#  CEF=ON
+#  CEF_ARCH=arm64
+else
+  CEF=OFF
+fi
 
 prepare() {
-  if [[ $CARCH == 'x86_64' ]]; then
-    export CEF=ON
-    export CEF_ARCH=64
-  elif [[ $CARCH == 'i686' ]]; then
-    export CEF=ON
-    export CEF_ARCH=32
-  else
-    export CEF=OFF
-  fi
-
   # Build CEF wrapper
   cd "$srcdir/${_cefname}_linux${CEF_ARCH}_minimal"
 
