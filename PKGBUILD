@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=golangci-lint
 pkgdesc="Linters Runner for Go. 5x faster than gometalinter."
-pkgver=1.40.0
+pkgver=1.40.1
 pkgrel=1
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url='https://github.com/golangci/golangci-lint'
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('glibc')
 makedepends=('git' 'go')
 source=("https://github.com/golangci/golangci-lint/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('15454b587e6836325e9446ed2799bde39ae766aeae24efe362f661a3e85c84ec')
+sha256sums=('e399d085319d7d2ef1f2db3f5d854101585ad652fbf22286e892bdc57a87c2a1')
 
 build() {
   local _commit _flags
@@ -30,16 +30,7 @@ build() {
   go build -o "$pkgname" -ldflags="${_flags[*]}" ./cmd/"$pkgname"
 }
 
-# breaks for yay users
-#check() {
-#  cd "${pkgname}-${pkgver}"
-#  # some tests build the binary and overwrite our build
-#  chmod 555 "$pkgname" # canary
-#  # CGO_CFLAGS break tests when run inside ~/.cache (yay).
-#  # TODO investigate
-#  unset CGO_CFLAGS CGO
-#  GL_TEST_RUN=1 GOLANGCI_LINT_INSTALLED=true go test ./...
-#}
+# @TODO check()
 
 package() {
   cd "${pkgname}-${pkgver}"
