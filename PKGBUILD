@@ -1,8 +1,8 @@
 # Maintainer: Arturo Penen <apenen@gmail.com>
 
 pkgname=kops
-pkgver=1.20.0
-pkgrel=0
+pkgver=1.20.1
+pkgrel=1
 pkgdesc='Kubernetes Operations - Production Grade K8s Installation, Upgrades, and Management (build from src)'
 arch=('x86_64')
 url='https://github.com/kubernetes/kops'
