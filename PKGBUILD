@@ -2,7 +2,7 @@
 # Contributor: Wyatt J. Brown <sushidudeteam at gmail dot com>
 # shellcheck disable=SC2034,SC2148,SC2154
 pkgname=all-repository-fonts
-pkgver=20201228
+pkgver=20210514
 pkgrel=1
 pkgdesc='Meta package for all fonts in the official repositories.'
 arch=('any')
@@ -25,11 +25,11 @@ depends=('adobe-source-code-pro-fonts'
 	'bdf-unifont'
 	'cantarell-fonts'
 	'dina-font'
-	'font-bh-ttf'
 	'gentium-plus-font'
 	'gnu-free-fonts'
 	'gsfonts'
 	'inter-font'
+	'libertinus-font'
 	'noto-fonts'
 	'noto-fonts-cjk'
 	'noto-fonts-emoji'
@@ -82,8 +82,6 @@ depends=('adobe-source-code-pro-fonts'
 	'ttf-khmer'
 	'ttf-lato'
 	'ttf-liberation'
-	'ttf-linux-libertine'
-	'ttf-linux-libertine-g'
 	'ttf-monofur'
 	'ttf-nerd-fonts-symbols'
 	# 'ttf-nerd-fonts-symbols-mono'
