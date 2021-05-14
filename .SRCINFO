@@ -1,0 +1,17 @@
+pkgbase = aseprite-bin
+	pkgdesc = Create animated sprites and pixel art
+	pkgver = 1.2.27.1
+	pkgrel = 1
+	url = https://www.aseprite.org/
+	arch = x86_64
+	license = custom: aseprite EULA
+	depends = libglvnd
+	depends = fontconfig
+	depends = libxcursor
+	provides = aseprite
+	conflicts = aseprite
+	source = local://Aseprite_1.2.27-1_amd64.deb
+	md5sums = 070a5cdf64f666c8a6e03739f4a06213
+
+pkgname = aseprite-bin
+
