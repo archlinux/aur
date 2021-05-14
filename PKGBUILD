@@ -1,6 +1,6 @@
 # Maintainer: squitch <clementfoure2005@gmail.com>
 pkgname=tess-git
-pkgver=1.2r72.705f46d
+pkgver=1.2r74.977c3c8
 pkgrel=1
 pkgdesc="Tess hackable, simple, rapid and beautiful terminal for the new era"
 arch=(x86_64)
