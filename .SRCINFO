@@ -1,0 +1,19 @@
+pkgbase = szyszka-bin
+	pkgdesc = A simple but powerful batch file rename program
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/qarmin/szyszka
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	provides = szyszka
+	conflicts = szyszka
+	source = szyszka-bin-1.0.0::https://github.com/qarmin/szyszka/releases/download/1.0.0/linux_szyszka
+	source = https://raw.githubusercontent.com/qarmin/szyszka/1.0.0/LICENSE
+	source = https://raw.githubusercontent.com/qarmin/szyszka/1.0.0/README.md
+	sha256sums = b4928b75917dfb1eed7b0f1651e4bbd70168f1d640af44ab3af3c9ebc1a531aa
+	sha256sums = c5613b61c143e5fc1fde6661b6808effc80e1eebf2bd954e17eb2382ef72400b
+	sha256sums = 7421d0ef8abff98f650ed5e94713aad4fa176b7a627e0866177ed134e4469c7d
+
+pkgname = szyszka-bin
+
