@@ -1,16 +1,16 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=pix-maui-git
-pkgver=v1.2.1.r34.geb52869
-pkgrel=2
+pkgver=v1.2.2.r1.ga2c28da
+pkgrel=1
 pkgdesc="Image gallery application"
-arch=('x86_64')
+arch=(x86_64 i686 arm armv6h armv7h aarch64)
 groups=('maui-apps')
 url="https://invent.kde.org/maui/pix"
 license=('GPL3')
-depends=('ki18n' 'qt5-location' 'mauikit-git' 'kio' 'syntax-highlighting'
-         'attica' 'exiv2' 'kquickimageeditor' 'mauikit-filebrowsing-git' 'mauikit-imagetools-git')
-makedepends=('git' 'extra-cmake-modules')
+depends=('ki18n' 'qt5-location' 'mauikit-git' 'kio' 'syntax-highlighting' 'kquickimageeditor'
+         'attica' 'exiv2' 'mauikit-git' 'mauikit-filebrowsing-git' 'mauikit-imagetools-git')
+makedepends=('git' 'extra-cmake-modules' 'qt5-svg' 'qt5-tools')
 provides=('pix-maui' 'maui-pix')
 conflicts=('pix-maui' 'maui-pix')
 source=("git+$url.git")
@@ -25,10 +25,10 @@ pkgver() {
 }
 
 build() {
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -B build -S pix
-  make -C build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo -B build -S pix
+  cmake --build build --config RelWithDebInfo
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
+  DESTDIR="${pkgdir}" cmake --install build --config RelWithDebInfo
 }
