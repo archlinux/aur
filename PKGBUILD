@@ -1,8 +1,8 @@
 # Maintainer Torsten Keßler <t dot kessler at posteo dot de>
 
 pkgname=rocsolver
-pkgver=4.1.0
-pkgrel=2
+pkgver=4.2.0
+pkgrel=1
 pkgdesc='Subset of LAPACK functionality on the ROCm platform'
 arch=('x86_64')
 url='https://rocsolver.readthedocs.io/en/latest/userguidedocu.html'
@@ -11,11 +11,14 @@ depends=('hip-rocclr' 'rocblas')
 makedepends=('cmake' 'python' 'python-pyaml' 'rocm-cmake')
 _git='https://github.com/ROCmSoftwarePlatform/rocSOLVER'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
-sha256sums=('da5cc800dabf7367b02b73c93780b2967f112bb45232e4b06e5fd07b4d5b8d88')
+sha256sums=('e9ef72d7c29e7c36bf02be63a64ca23b444e1ca71751749f7d66647873d9fdea')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" .tar.gz)"
 
 build() {
+    # -fcf-protection is not supported by HIP, see
+    # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-4.2.x/docs/markdown/clang_options.md
     CXX=/opt/rocm/bin/hipcc \
+    CXXFLAGS="${CXXFLAGS} -fcf-protection=none" \
     cmake   -B build -Wno-dev \
             -S "$_dirname" \
             -DCMAKE_INSTALL_PREFIX=/opt/rocm \
