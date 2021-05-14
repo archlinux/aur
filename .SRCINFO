@@ -1,0 +1,14 @@
+pkgbase = sync-pacman-hook-git
+	pkgdesc = Pacman hook to sync filesystem
+	pkgver = r45.647f466
+	pkgrel = 1
+	url = https://github.com/desbma/pacman-hooks
+	arch = any
+	license = GPL
+	makedepends = git
+	conflicts = pacman-hooks-desbma-git
+	source = git+https://github.com/desbma/pacman-hooks
+	md5sums = SKIP
+
+pkgname = sync-pacman-hook-git
+
