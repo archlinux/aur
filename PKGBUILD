@@ -6,7 +6,7 @@
 # Contributor: orbisvicis <orbisvicis at gmail dot com>
 pkgname=darktable-git
 _gitname=darktable
-pkgver=3.5.0.r2180.g326b8bbd2
+pkgver=3.5.0.r2218.g48ced17083
 pkgrel=1
 pkgdesc="A virtual lighttable and darkroom for photographers"
 arch=('i686' 'x86_64')
@@ -72,8 +72,6 @@ build() {
         -DRAWSPEED_ENABLE_LTO=ON
   make -C build
 
-  cmake -B tools/basecurve
-  make -C tools/basecurve
 }
 
 package() {
