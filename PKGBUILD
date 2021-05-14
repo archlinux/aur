@@ -1,7 +1,7 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Hokuto <abrahamhokuto@outlook.com>
 
-pkgver=3.1.r0.gb390440
+pkgver=3.1.r20.g9e14435
 pkgrel=1
 epoch=1
 pkgname=windows-xp-themes-git

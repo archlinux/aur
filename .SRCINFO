@@ -1,6 +1,6 @@
 pkgbase = windows-xp-themes-git
 	pkgdesc = All 7 of Windows XP themes available for Linux
-	pkgver = 3.1.r0.gb390440
+	pkgver = 3.1.r20.g9e14435
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/B00merang-Project/WinXP-themes
