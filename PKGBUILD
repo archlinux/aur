@@ -1,7 +1,7 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=gog-space-haven
-pkgver=0.11.2
+pkgver=0.12.0
 _pkgtag=$pkgver
 pkgrel=1
 pkgdesc="Embark on a space voyage with your ragtag crew of civilians in search of a new home."
@@ -13,7 +13,7 @@ depends=('java-runtime' 'bash')
 source=("space_haven_english_${pkgver//./_}.sh::gogdownloader://1589675197/en3installer0"
         "Space Haven.desktop"
         "start-spaceheaven.sh")
-sha512sums=('37df9b644de29088b67e92508de970852b88e1dabc69494cc8d5344b976b09b800217b6d13d0e30a79b960d513cbb5084fdaed93d733714e24f259a035ebfa6e'
+sha512sums=('2ab886fc0057e5de5e099e3717953bae68f267055efcd1d2b6af24ebae5f70527d6f19e1ce00b55b675087b6038d42fb3d5cf765a76d8eb13006aae1746c5573'
             'caecccc1cc3a125b468a6359bbfc921721939d2ac1f78b806e3c1b76c399ee256a59daf49236746923893a5969818ad0da2f9aadb098278cfd314d1ab177ed16'
             'd97a6507c9cf051dbca53124665410d363ab9e343a0c1957701a19ccc4c6a3fe0abf54143020c5e58b2fe91e66f6be510ef3c34256f25a6e67521b52f41754a0')
 
