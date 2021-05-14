@@ -8,6 +8,8 @@ pkgdesc='TCP relay & SOCKS5/HTTP proxy tool optimized for poor network environme
 arch=('x86_64')
 url='https://github.com/HyNetwork/hysteria'
 license=('MIT')
+provides=('hysteria')
+conflicts=('hysteria')
 source=("$_pkgbase::https://github.com/HyNetwork/$_pkgbase/releases/download/v$pkgver/hysteria-linux-amd64"
         'hysteria@.service'
         'hysteria-server@.service'
