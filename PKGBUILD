@@ -1,14 +1,14 @@
 # Maintainer Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=koko-git
-pkgver=r612.0b82195
+pkgver=v21.05.r8.g3f9411a
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Image gallery application designed for desktop and touch devices"
 url="https://invent.kde.org/graphics/koko"
 license=('LGPL2.1')
 depends=('kirigami2' 'kcoreaddons' 'kguiaddons' 'kconfig' 'knotifications' 'exiv2')
-makedepends=('extra-cmake-modules' 'qt5-tools')
+makedepends=('extra-cmake-modules' 'qt5-svg' 'qt5-tools')
 source=("git+${url}.git")
 md5sums=('SKIP')
 
@@ -21,10 +21,10 @@ pkgver() {
 }
 
 build() {
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -B build -S ${pkgname%-git}
-  make -C build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo -B build -S "${pkgname%-git}"
+  cmake --build build --config RelWithDebInfo
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
+  DESTDIR="${pkgdir}" cmake --install build --config RelWithDebInfo
 }
