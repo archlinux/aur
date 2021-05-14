@@ -61,7 +61,7 @@ _subarch=
 
 pkgbase=linux-gc
 pkgver=5.12.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
 arch=(x86_64)
@@ -73,7 +73,7 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=4d9c8cbfaea9f8fd2a6d0ad8f889ca4b9b76d494
+_arch_config_commit=895a65252e52c0b4e9a6b10dc6d20a064fe46d2e
 _bmqversion=5.12-r1
 _bmq_patch="prjc_v${_bmqversion}.patch"
 _gcc_more_v=20210412
@@ -83,6 +83,7 @@ source=(
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=e7aa791810607833c30e50d9fac60bb5b1fb1f27"
+  "0002-drm-i915-dp-Use-slow-and-wide-link-training-for-ever.patch::https://git.archlinux.org/linux.git/patch/?id=d290a24cb45e73e4f8d2700d5f47c2132d066fe2"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -93,7 +94,8 @@ b2sums=('5bea5556a81fabc4b6c5d2b58d7d30ff7f38a42ad6bd7f4ab9f4d2a07e3f9b88639e68c
         '01c6f85fa90e4809dcd93f7234571eefe780f2fbffe7f585914f96c5ac0df3511f816e9ad549b25ec93d06bd51709e9cdecd452f42405f72a2b1ca893a8c5ee0'
         '77a1646ffbc67ed88af564b73cf63f0374772bdc1075e771a93ee4fe257b94cb3766a4842898b48f4343458d0b507229182220c7daeb5532df610b964c6640e7'
         '72194a32a06c43809d1272bd675890b6d27c6c54353150a366e8e2c50ad6eca6ee23c5d6281822965a228cfedfa07a60fe135d1b4f539e4a62728d4460cc0b0e'
-        'be16976b1fa122d587bde2c7702daaface52dddc7aa2dbdd4397f2a93b7d96de104d7bc42727579895bb5dad52b44805ce265165afd30120b9b5130fbfe19937')
+        'be16976b1fa122d587bde2c7702daaface52dddc7aa2dbdd4397f2a93b7d96de104d7bc42727579895bb5dad52b44805ce265165afd30120b9b5130fbfe19937'
+        'af00ac636a9107252e3be195d61862287e3fbe75c495b2ee625d2063f8a4f06fa53cec891038ec1b3be0b95e6b104801dde1038f5bd4cc6cddc247a219b5a38c')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
