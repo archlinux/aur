@@ -1,0 +1,26 @@
+pkgbase = koko
+	pkgdesc = Image gallery application designed for desktop and touch devices
+	pkgver = 21.05
+	pkgrel = 1
+	url = https://invent.kde.org/graphics/koko
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = LGPL2.1
+	makedepends = extra-cmake-modules
+	makedepends = qt5-svg
+	makedepends = qt5-tools
+	depends = kirigami2
+	depends = kcoreaddons
+	depends = kguiaddons
+	depends = kconfig
+	depends = knotifications
+	depends = exiv2
+	source = https://download.kde.org/stable/plasma-mobile/21.05/koko-21.05.tar.xz
+	md5sums = 4d1b7b49b3ac5466c2070adcddebcc9f
+
+pkgname = koko
+
