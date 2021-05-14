@@ -1,5 +1,5 @@
 pkgbase = dwm-ashin-git
-	pkgdesc = A heavily-patched and my customized build of dwm.
+	pkgdesc = A heavily-patched and customized build of dwm with rainbow tags,customized bar and all.
 	pkgver = 6.2
 	pkgrel = 1
 	url = https://github.com/ashincoder/dwm-ashin

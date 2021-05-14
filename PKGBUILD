@@ -2,7 +2,7 @@
 pkgname=dwm-ashin-git
 pkgver=6.2
 pkgrel=1
-pkgdesc="A heavily-patched and my customized build of dwm."
+pkgdesc="A heavily-patched and customized build of dwm with rainbow tags,customized bar and all."
 arch=(x86_64 i686)
 url="https://github.com/ashincoder/dwm-ashin"
 license=('MIT')
