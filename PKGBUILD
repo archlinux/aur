@@ -2,8 +2,8 @@
 
 _pkgname=wootility-lekker-beta
 pkgname=${_pkgname}-appimage
-pkgver=4.0.2
-pkgrel=5
+pkgver=4.1.1
+pkgrel=1
 pkgdesc="Utility for configuring Wooting keyboards (binary AppImage version)"
 arch=('x86_64')
 url="https://wooting.io/wootility"
@@ -20,7 +20,7 @@ source=(
     "wooting-lekker-xinput@.service"
 )
 sha512sums=(
-    "2ab58acd16d9fa2f56bbbb125b82a1626bfaefa433271b6777041b7390e6f99c473a10264605cbe4b55d21b27eb0a9e10cf6d73b6e9809f792834ef926162c5f"
+    "c3035ae816403a6aaaaa1dacdf66b68ee31ad14d61c78045ba957e148a6dc120d465a973ac3133d5e5eccdb3eaf88ce142ddd0d391e0462a4309331176320c39"
     "06c3c400d814003aea35762c907df012c116cf31271873d522b8b70e60e089662aa433676ab3e75891aa0cc2a79fd14f458cd119ba0d1c9570ea4a948a633eb0"
     "144506d0ba6d4ddad451274a99493458ebf3136c1b5a37dfcea8e5bededa355184bf7b760854342acb5e34182ef2520cccc1cd4b61a0e1cc539004f397236972"
     "b9327e2565592804a88e58c4f87fb58417327d0ed37628d6f6797b643afe0d9070966c9fcea13857c7fcfb04642b46ac694694a1978381778539fd8e3e6ed456"
