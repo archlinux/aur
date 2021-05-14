@@ -1,13 +1,13 @@
 # Maintainer: Chris Trotman <chris@trotman.io>
 pkgname=hid_listen
 pkgver=1.01
-pkgrel=1
+pkgrel=2
 pkgdesc="prints out debugging information from usb hid devices."
-url="http://www.pjrc.com/teensy/hid_listen.html"
+url="https://www.pjrc.com/teensy/hid_listen.html"
 arch=('x86_64' 'i686')
 license=('GPL3')
 
-source=("http://www.pjrc.com/teensy/${pkgname}_${pkgver}.zip")
+source=("https://www.pjrc.com/teensy/${pkgname}_${pkgver}.zip")
 md5sums=('fcc94f8248f5642f1fc9747e0f280569')
 
 build() {
