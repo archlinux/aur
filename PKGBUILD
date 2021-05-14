@@ -3,7 +3,7 @@
 pkgname=koko-git
 pkgver=v21.05.r8.g3f9411a
 pkgrel=1
-arch=('x86_64')
+arch=(x86_64 i686 arm armv6h armv7h aarch64)
 pkgdesc="Image gallery application designed for desktop and touch devices"
 url="https://invent.kde.org/graphics/koko"
 license=('LGPL2.1')
