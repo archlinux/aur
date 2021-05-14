@@ -2,7 +2,7 @@
 
 _pkgname=vim-ember-hbs
 pkgname=$_pkgname-git
-pkgver=r26.05adc50
+pkgver=r36.c47e195
 pkgrel=1
 pkgdesc="Ember Handlebars/HTMLBars plugin for Vim with indentation support"
 arch=('any')
