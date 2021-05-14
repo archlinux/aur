@@ -9,8 +9,8 @@ zmqpubrawblock=tcp://127.0.0.1:28332
 zmqpubrawtx=tcp://127.0.0.1:28333
 ```
 
-### lnd
-1. Start lnd as a private key needs to be generated.
+### LND
+1. Start LND as a private key needs to be generated.
 2. `lncli create` and create your necessary wallet.
 
 ### NBXplorer
@@ -21,8 +21,8 @@ zmqpubrawtx=tcp://127.0.0.1:28333
 2. `nano ~/.btcpayserver/Main/settings.config` and append the output of `openssl x509 -noout -fingerprint -sha256 -inform pem -in ~/.lnd/tls.cert` to the file line "BTC.lightning=type=lnd-rest;server=https://127.0.0.1:8080/;macaroonfilepath=/home/USERNAME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon;certthumbprint=".
 
 ### Nginx
-1. You can use any HTTP server which supports reverse proxying. Instructions are given for nginx.
-2. `sudo nano /etc/nginx/nginx.conf` and configure your nginx server as a reverse HTTP proxy to the btcpayserver HTTP server. Additional headers are needed as otherwise the website will show an error that HTTPS is not used. You also need to create SSL keys.
+1. You can use any HTTP server which supports reverse proxying. Instructions are given for Nginx.
+2. `sudo nano /etc/nginx/nginx.conf` and configure your Nginx server as a reverse HTTP proxy to the BTCPayServer HTTP server. Additional headers are needed as otherwise the website will show an error that HTTPS is not used. You also need to create SSL keys.
 ```
 http
 {
@@ -71,6 +71,7 @@ http
 1. bitcoind.service
 
 ## Usage
+* Finally, all software needs to be run. `lnd` requires some options. Alternatively, a config file can be created for it. The following shows how to run the software and its dependencies with `tmux`.
 * Start:
 ```
 tmux new-session -s lnd -d "lnd --externalip=EXTERNAL_IP_ADDRESS --bitcoin.active --bitcoin.mainnet --bitcoin.node=bitcoind --bitcoind.rpcuser=USERNAME --bitcoind.rpcpass=PASSWORD --bitcoind.zmqpubrawblock=tcp://127.0.0.1:28332 --bitcoind.zmqpubrawtx=tcp://127.0.0.1:28333;bash -i"
@@ -85,5 +86,5 @@ tmux kill-session -t nbxplorer
 tmux kill-session -t btcpayserver
 ```
 
-### Usage of a dynamic IP address
+### Usage with a dynamic IP address
 Give the option "--externalip" your DynDNS domain name.
