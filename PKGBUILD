@@ -1,8 +1,8 @@
 # Maintainer: shiro <shiro@usagi.io>
 
 pkgname=map2
-pkgver=1.0.4
-pkgrel=3
+pkgver=1.0.5
+pkgrel=1
 pkgdesc="A scripting language that allows complex key remapping on Linux, written in Rust"
 url="https://github.com/shiro/map2"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=()
 makedepends=(rustup)
 source=("https://github.com/shiro/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('4f8108743e68385eb4447b863682e61e5288d83524f94317e7f2b260983cfd7e')
+sha256sums=('257da761876ce2f138b340ba2e48092be6a36206820334118c6e225b870ef8da')
 
 build() {
   cd "$pkgname-$pkgver"
