@@ -3,9 +3,9 @@
 
 pkgname=insync-dolphin
 pkgver=3.3.10.40961
-pkgrel=1
+pkgrel=2
 pkgdesc="This package contains the service menu for integrating Insync with Dolphin"
-url="https://www.insynchq.com/downloads"
+url="https://www.insynchq.com"
 license=('custom')
 arch=('x86_64')
 options=('!strip' '!emptydirs')

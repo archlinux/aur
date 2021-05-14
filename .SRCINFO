@@ -1,8 +1,8 @@
 pkgbase = insync-dolphin
 	pkgdesc = This package contains the service menu for integrating Insync with Dolphin
 	pkgver = 3.3.10.40961
-	pkgrel = 1
-	url = https://www.insynchq.com/downloads
+	pkgrel = 2
+	url = https://www.insynchq.com
 	arch = x86_64
 	license = custom
 	depends = insync
