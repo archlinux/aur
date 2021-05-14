@@ -2,7 +2,7 @@
 # Maintainer (core/linux): Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-x32
-pkgver=5.12.2.arch1
+pkgver=5.12.4.arch1
 pkgrel=1
 pkgdesc='Linux with x32 ABI'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -18,6 +18,7 @@ _srcname=archlinux-linux
 source=(
   "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
   config         # the main kernel config file
+  x32.config     # additional config fragment for linux-x32
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -25,7 +26,8 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'a276050b3b8084a202407821dd40d39ac8dd32a236834b2fc7a203a64f9ec318')
+            '6dde032690644a576fd36c4a7d3546d9cec0117dd3fb17cea6dc95e907ef9bef'
+            'ef2be62540e48cc1d2343c619b9c8b7791db5e2f966e1a0bb8c86f5c7de74562')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -51,6 +53,10 @@ prepare() {
   echo "Setting config..."
   cp ../config .config
   make olddefconfig
+
+  echo "Applying additional config fragment..."
+  cp ../x32.config kernel/configs/x32.config
+  make x32.config
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
