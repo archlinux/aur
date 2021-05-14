@@ -9,7 +9,7 @@ arch=('x86_64')
 url="http://doua.prabi.fr/software/seaview"
 license=('GPL3')
 optdepends=('clustal-omega'
-            'muscle'
+      'muscle'
 	    'gblocks-bin'
 	    'phyml')
 source=("http://doua.prabi.fr/software/seaview_data/seaview5-64.tgz"
@@ -23,6 +23,6 @@ package() {
   install -d "$pkgdir"/usr/{bin,share/{seaview,applications}}
   install -m644 seaview.desktop "$pkgdir/usr/share/applications/"
   mv "$srcdir"/seaview/* "$pkgdir"/usr/share/seaview
-  ln -s "$pkgdir"/usr/share/seaview/seaview "$pkgdir"/usr/bin/seaview
+  ln -s /usr/share/seaview/seaview "$pkgdir"/usr/bin/seaview
   install -Dm 755 "$srcdir"/seaview.png "$pkgdir"/usr/share/seaview/seaview.png
 }
