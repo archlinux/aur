@@ -1,0 +1,14 @@
+pkgbase = nvidia-keylase-patch-git
+	pkgdesc = NVENC and NvFBC patches for Nvidia drivers by keylase
+	pkgver = 7c26bc5
+	pkgrel = 1
+	url = https://github.com/keylase/nvidia-patch
+	arch = x86_64
+	license = Unknown
+	makedepends = git
+	depends = NVIDIA-MODULE
+	source = git+https://github.com/keylase/nvidia-patch
+	md5sums = SKIP
+
+pkgname = nvidia-keylase-patch-git
+
