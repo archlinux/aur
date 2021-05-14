@@ -2,7 +2,7 @@
 # Contributor: acxz <akashpatel at yahoo dot com>
 
 pkgname=miopen-opencl
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="AMD's Machine Intelligence Library (OpenCL backend)"
 arch=('x86_64')
@@ -12,12 +12,26 @@ depends=('ocl-icd' 'rocblas' 'llvm-amdgpu')
 makedepends=('opencl-headers' 'rocm-cmake' 'cmake' 'miopengemm')
 provides=('miopen')
 conflicts=('miopen')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ROCmSoftwarePlatform/MIOpen/archive/rocm-$pkgver.tar.gz")
-sha256sums=('068b1bc33f90fe21d3aab5697d2b3b7b930e613c54d6c5ee820768579b2b41ee')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/rocm-$pkgver.tar.gz"
+        'boost-1.72-download.patch')
+sha256sums=('8ab02e784c8b3471159794766ed6303c333b33c69dc5186c0930e56504373b7c'
+            '25fd11b55180801f609f454d0d14c8dd8a3ca65217bcebad7eb8edfbaec67c5d')
 _dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
+
+prepare() {
+    cd "$_dirname"
+    patch -Np1 -i "$srcdir/boost-1.72-download.patch"
+}
 
 build() {
   cd "$_dirname"
+
+  # -fcf-protection is not supported by HIP, see
+  # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-4.2.x/docs/markdown/clang_options.md
+  # -fPIC fixes linking errors with boost.
+  export CXX=/opt/rocm/llvm/bin/clang++
+  export CXXFLAGS="${CXXFLAGS} -fcf-protection=none -fPIC"
+
   cmake -P install_deps.cmake \
         --minimum --prefix "$srcdir/deps"
 
