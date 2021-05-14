@@ -1,7 +1,7 @@
 # Maintainer: Thibaut Sautereau (thithib) <thibaut at sautereau dot fr>
 
 pkgname=hardened_malloc
-pkgver=7
+pkgver=8
 pkgrel=1
 pkgdesc="Hardened allocator designed for modern systems"
 arch=('x86_64')
