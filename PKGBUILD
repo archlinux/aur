@@ -7,26 +7,26 @@
 
 pkgname=doomsday
 pkgver=2.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced Doom engine that supports DOOM, Heretic and Hexen."
 url="http://dengine.net/"
 arch=('i686' 'x86_64')
 license=('GPL2')
 conflicts=('doomsday-bin')
 provides=('assimp')
-depends=('hicolor-icon-theme' 'qt5-x11extras' 'sdl2_mixer' 'lib32-fluidsynth' 'openal' 'libxrandr' 'minizip')
+depends=('hicolor-icon-theme' 'qt5-x11extras' 'sdl2_mixer' 'fluidsynth' 'openal' 'libxrandr' 'minizip')
 makedepends=('imagemagick' 'cmake' 'xorg-server-devel' 'assimp' 'python')
 optdepends=('doom1-wad: Doom shareware', 
             'heretic1-wad: Heretic shareware', 
             'hexen1-wad: Hexen shareware'
-		    'soundfont-fluid')
+            'soundfont-fluid')
 source=("http://files.dengine.net/archive/doomsday-$pkgver.tar.gz")
 sha256sums=('feffcb792cf0f4e17f5bf9532f29e5963d6dd8b2872fc9bae10f53044548da04')
 
 build() {
         
     # Enter build directory
-    cd $srcdir/$pkgname-$pkgver/$pkgname
+    cd "$srcdir"/$pkgname-$pkgver/$pkgname
 
     # Generate makefiles using qmake
     mkdir -p build
@@ -37,11 +37,11 @@ build() {
 }
 
 package() {
-    cd $srcdir/$pkgname-$pkgver/$pkgname/build
-    make install DESTDIR="$pkgdir"
+    cd "$srcdir"/$pkgname-$pkgver/$pkgname/build
+    make install DESTDIR=""$pkgdir""
 
     # Delete the contents of /usr/include/assimp as this package already provides it
-    rm -r $pkgdir/usr/include/assimp
+    rm -r "$pkgdir"/usr/include/assimp
 
     # Look for WADs in /usr/share/games/doom by default
     mkdir -p "${pkgdir}/etc/doomsday"
