@@ -7,7 +7,7 @@
 
 _pkgbase=vlc
 pkgname=vlc-nox
-pkgver=3.0.13
+pkgver=3.0.14
 pkgrel=1
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (without X support)'
 url='https://www.videolan.org/vlc/'
@@ -98,9 +98,9 @@ source=(http://download.videolan.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}
         update-vlc-plugin-cache.hook
         vlc-3.0.11.1-srt_1.4.2.patch
         vlc-live-media-2021.patch)
-sha512sums=('0badca9d71b682b1dd6f05acab48d77baffe22e6a00be6db2a790644bab74738f9807e889fd0348af72628694b5210896638ac2cd99d0efc0e1c2cef7ab28bff'
+sha512sums=('d809ec062d5c1ce15cd0ce3bc4777b6451fe8bea372678eac84b7ea1777a9a8891de31d81e26ac651cc9ce02b99b514f1672de829410fc1ddc81cccfd41db47a'
             'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3'
-            'ac1d33d434aca2a0ad6e70800073deeaefc02b8fd72656b682ca833ee0cffe10dfa19a9355388700cab46ffbf9421c007d00ed04c7fa562698ff81e70db5f283'
+            '7d776bdcb566ab6eb0b4aeefa5e7ba09505588ae19b6292e4df9aeeda52af66e67e77f968ee219b0987530c6f25ce2551d8216c1eeb53addea82a8e514d7e5ab'
             'ad17d6f4f2cc83841c1c89623c339ec3ee94f6084ea980e2c8cbc3903854c85e5396e31bfd8dc90745b41794670903d854c4d282d8adec263087a9d47b226ccc')
 
 prepare() {
