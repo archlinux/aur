@@ -1,0 +1,29 @@
+pkgbase = vorta-git
+	pkgdesc = A GUI for BorgBackup (git)
+	pkgver = r543.be6a39b
+	pkgrel = 1
+	url = https://github.com/borgbase/vorta
+	arch = any
+	license = GPL
+	makedepends = qt5-tools
+	makedepends = python-pip
+	makedepends = git
+	depends = borg
+	depends = python-appdirs
+	depends = python-apscheduler
+	depends = python-pyqt5
+	depends = python-peewee
+	depends = python-paramiko
+	depends = python-dateutil
+	depends = python-secretstorage
+	depends = python-psutil
+	depends = python-llfuse
+	depends = python-setuptools
+	provides = vorta
+	conflicts = vorta
+	options = !emptydirs
+	source = vorta-git::git+https://github.com/borgbase/vorta
+	sha256sums = SKIP
+
+pkgname = vorta-git
+
