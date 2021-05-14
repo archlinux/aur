@@ -1,6 +1,6 @@
 _pkgname=unity-version-manager
 pkgname=${_pkgname}-git
-pkgver=uvm.install2.v0.4.1.r0.gb52fc66
+pkgver=2.4.1.r0.g1a3af8a
 pkgrel=1
 pkgdesc='cli utility to install and manager unity versions'
 arch=(x86_64)

@@ -1,6 +1,6 @@
 pkgbase = unity-version-manager-git
 	pkgdesc = cli utility to install and manager unity versions
-	pkgver = uvm.install2.v0.4.1.r0.gb52fc66
+	pkgver = 2.4.1.r0.g1a3af8a
 	pkgrel = 1
 	url = https://github.com/Larusso/unity-version-manager
 	arch = x86_64
