@@ -1,13 +1,15 @@
 pkgbase = quickddit
 	pkgdesc = Unofficial reddit client
 	pkgver = 1.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/accumulator/Quickddit.git
 	arch = x86_64
 	arch = armv7
 	arch = aarch64
 	license = GPL3
 	makedepends = git
+	depends = qqc2-suru-style-git
+	depends = yaru-icon-theme
 	depends = qt5-base
 	depends = qt5-declarative
 	depends = qt5-quickcontrols2
@@ -15,9 +17,9 @@ pkgbase = quickddit
 	depends = youtube-dl
 	depends = python-pyotherside
 	depends = qt5-graphicaleffects
-	optdepends = qqc2-suru-style-git: Suru style
 	optdepends = qqc2-breeze-style: Breeze style
 	optdepends = qqc2-desktop-style: KDE desktop style
+	optdepends = breeze-icons: Breeze icons
 	source = git+https://github.com/dano6/Quickddit.git#branch=5.12
 	md5sums = SKIP
 
