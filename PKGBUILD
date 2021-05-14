@@ -2,7 +2,7 @@
 # Maintainer: Patrick Wicki <patrick.wicki96@gmail.com>
 
 pkgname=gnome-meta
-pkgver=3.38.0
+pkgver=40
 pkgrel=1
 pkgdesc='Meta package for installing the gnome group'
 arch=(any)
@@ -29,7 +29,6 @@ depends=(
   gnome-disk-utility
   gnome-documents
   gnome-font-viewer
-  gnome-getting-started-docs
   gnome-keyring
   gnome-logs
   gnome-maps

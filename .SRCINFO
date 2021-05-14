@@ -1,6 +1,6 @@
 pkgbase = gnome-meta
 	pkgdesc = Meta package for installing the gnome group
-	pkgver = 3.38.0
+	pkgver = 40
 	pkgrel = 1
 	url = https://www.archlinux.org/
 	arch = any
@@ -25,7 +25,6 @@ pkgbase = gnome-meta
 	depends = gnome-disk-utility
 	depends = gnome-documents
 	depends = gnome-font-viewer
-	depends = gnome-getting-started-docs
 	depends = gnome-keyring
 	depends = gnome-logs
 	depends = gnome-maps
