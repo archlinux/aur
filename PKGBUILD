@@ -8,13 +8,13 @@ epoch=1
 pkgrel=1
 pkgdesc="Provides a friendly interface to monitor configuration and includes controls for video mode, rotation and monitor position."
 arch=('i686' 'x86_64')
-url="http://cgit.freedesktop.org/xorg/app/grandr"
+url="https://cgit.freedesktop.org/xorg/app/grandr"
 license=('MIT')
 depends=("gtk2" "gconf" "libx11")
 conflicts=('xorg-grandr')
 provides=('xorg-grandr')
 makedepends=('git')
-source=('git://anongit.freedesktop.org/git/xorg/app/grandr.git'
+source=('git+https://anongit.freedesktop.org/git/xorg/app/grandr.git'
         'xlib_dep.patch')
 md5sums=('SKIP'
          '0a272a3f108a1c646838178610ef998b')
