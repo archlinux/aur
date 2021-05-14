@@ -1,7 +1,7 @@
 # Maintainer: Cassio Almeida <jcassiocosta@gmail.com>
 
 pkgname=serpro-signer
-pkgver=2.7.1
+pkgver=2.7.0
 pkgrel=1
 pkgdesc='Assinador SERPRO'
 arch=('i686' 'x86_64')
