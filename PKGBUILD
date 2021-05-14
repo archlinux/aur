@@ -7,8 +7,8 @@
 # Contributor: jht <stefano@inventati.org>
 
 pkgname=wxglade
-pkgver=1.0.1
-pkgrel=4
+pkgver=1.0.2
+pkgrel=1
 pkgdesc='wxGlade is a GUI builder written in Python for the GUI toolkit wxWidgets/wxPython'
 arch=('any')
 license=('MIT')
@@ -17,7 +17,7 @@ depends=('python' 'python-wxpython' 'desktop-file-utils' 'hicolor-icon-theme' 's
 makedepends=(icoutils gendesk)
 source=("https://github.com/wxGlade/wxGlade/archive/v$pkgver.tar.gz"
         application-x-wxg.xml)
-sha256sums=('a92585df4254eae88db457b0505cd58374385898e94206bf190111a041a20cd4'
+sha256sums=('dcf1e3bc3e141480ea9fc059739e823f2d7553931fd51ab130b2ef6a8b699ea1'
             'f651ff097678077eac865c64a655107c9a4aa4fd0bf65e233713a5ed916608c0')
 
 prepare() {
