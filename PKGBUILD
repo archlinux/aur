@@ -15,9 +15,9 @@ _suffix=${_branch}
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || makedepends+=('cuda')
 
 pkgname=blender-${_suffix}-git
-pkgver=2.79.r70678.g233ad61cb8d
+pkgver=2.79.r70679.g32fef3040fe
 _blenver=${pkgver:0:4}
-pkgrel=2
+pkgrel=1
 pkgdesc="Development version of Blenders ${_branch} branch"
 arch=('i686' 'x86_64')
 url="https://blender.org/"
@@ -53,6 +53,7 @@ source=("git://git.blender.org/blender.git${_fragment}"
         'python3.9_2.patch' # ::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/5edba9b42f684bf8b99894bb6988e7f46180e12c
         openvdb7.patch
         openvdb8.patch # ::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/37889011070ff2ec52159690f652238d2b325185
+        openexr3.patch
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -73,7 +74,8 @@ sha256sums=('SKIP'
             'd106248d55045f5ef913bf6243ad74a76f6282264d9ee4c9b87ec4a3d2e2064b'
             'b2a2bc5de8d3b730e49d1f50cb025c1dfdbcb66c58ead573322585b6a887d3a7'
             'c4079c4c142516d9cd476f5a3cafddf4068f0950c3c11ea4da9cf999c5ccc1f9'
-            'edfd784f8497417660c0b9fdc97893fd0d77764d0bc10f4cb92a9082f41bae75')
+            'edfd784f8497417660c0b9fdc97893fd0d77764d0bc10f4cb92a9082f41bae75'
+            '8e28b28679c67ce589558468d5d912321b345dbbe46c80b359a1a38417ba2ed2')
 
 pkgver() {
   blender_version=$(grep -Po "BLENDER_VERSION\s+\K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
@@ -94,7 +96,7 @@ prepare() {
   if [[ -v _suffix ]]; then
     git apply -v <(sed "s/@@_suffix@@/${_suffix}/g" "${srcdir}/addon_path.patch")
   fi
-  git -C "$srcdir/blender" apply -v "${srcdir}"/{gcc{8,9},ffmpeg,openvdb{,7,8},collada1668,oiio-2.0,Cleanup-use-PyImport_GetModuleDict}.patch
+  git -C "$srcdir/blender" apply -v "${srcdir}"/{gcc{8,9},ffmpeg,openvdb{,7,8},collada1668,oiio-2.0,Cleanup-use-PyImport_GetModuleDict,openexr3}.patch
   git -C "$srcdir/blender" apply -v "${srcdir}"/python3.{8,9,9_2}.patch
 }
 
