@@ -3,13 +3,12 @@
 
 pkgname=bazelisk
 pkgver=1.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A user-friendly launcher for Bazel.'
 arch=('x86_64')
 license=('Apache')
 url='https://github.com/bazelbuild/bazelisk'
-makedepends=(
-  'bazel' 'git')
+makedepends=('git')
 conflicts=('bazel')
 provides=('bazel')
 source=(
