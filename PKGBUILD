@@ -7,11 +7,12 @@ pkgdesc='A suckless browser customized in my own way with bookmarkings and style
 arch=(x86_64 i686)
 url='https://github.com/ashincoder/surf-ashin.git'
 license=('MIT')
-depends=(webkit2gtk xorg-xprop)
+depends=(webkit2gtk xorg-xprop dmenu)
 optdepends=('ca-certificates: SSL verification'
-            'curl: default download handler')
-makedepends=(git dmenu-ashin-git)
-checkdepends=(dmenu-ashin-git)
+            'curl: default download handler'
+            'dmenu-ashin-git: more beautiful and functional')
+makedepends=(git )
+checkdepends=()
 provides=(surf)
 conflicts=(surf)
 replaces=()
