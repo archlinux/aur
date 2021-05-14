@@ -6,7 +6,7 @@
 
 pkgname=ffmpeg-compat-58
 pkgver=4.4
-pkgrel=4
+pkgrel=1
 pkgdesc="Compatibility package for ffmpeg to provide versions 58 of libavcodec, libavdevice and libavformat, not anymore provided by ffmpeg-git"
 arch=('i686' 'x86_64')
 url="http://ffmpeg.org/"
