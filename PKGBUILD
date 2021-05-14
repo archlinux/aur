@@ -5,7 +5,7 @@
 
 pkgbase=ddccontrol
 pkgname=(ddccontrol gddccontrol)
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Control your monitor by software using the DDC/CI protocol"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=('pciutils' 'ddccontrol-db-git' 'perl-xml-parser' 'libxml2' 'icu' 'glib2
 makedepends=('gtk2' 'autoconf' 'intltool' 'python')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/ddccontrol/ddccontrol/archive/${pkgver}.tar.gz")
 options=('!libtool')
-sha512sums=('2973a06a0c75080ff34d0239b5011506a52b875acfc4664a484fe9860c2f9863701384ec611562f4b55fd333e2298ba49c9e3acfe24026d4fa9ac72933af85a0')
+sha512sums=('909284f4c52d378f248d11fa949c1db01d60f2cf7bd8bec9faac8bd9844650760f728f7559fe5aef10487569f88ef9af29070a394ee7ee026c6d7d4989f6c0b0')
 
 prepare() {
 	cd "${srcdir}"/${pkgbase}-${pkgver}
