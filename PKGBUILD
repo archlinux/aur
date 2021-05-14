@@ -19,14 +19,12 @@ pkgver() {
 
 prepare() {
 	cd "$_pkgname"
-	sed -i -e "s|/local||" -e "s/sudo //g" -e "s|/u|\$(DESTDIR)/u|g" Makefile
+	sed -i -e "s|/local||" Makefile
 }
 
 package() {
 	cd "$_pkgname"
 	export DESTDIR="$pkgdir"
-	mkdir -p "$pkgdir/usr/bin"
-	mkdir -p "$pkgdir/usr/share/bash-completion/completions"
 	make install
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENCE"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
