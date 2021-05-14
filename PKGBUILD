@@ -24,7 +24,7 @@ sha256sums=('0a7c931dae09f947c513865095ee4195d76bc91831533aee8cdcc4dea58b6b41'
             '062cf72219e592e06218e47ea2a212d6517be66f0d4c58dcd03ef18d5c39300b'
             '428c5b7300dde7158a1a0918c8d2e8188f042dbc143d991c03f51d1c8a40efa4'
             'f7e525586103db08a2a38ccefdef93cc02407728de8b214e53ae3dc0631bab75'
-            'aca6223a4e13f5470a575f6efe83b784127a8f2373cbe407938b45543daf2995')
+            'db78284b0be3db018205c8d1c8449c461275cb3b8b82dfec3f75e9a19d346542')
 build() {
   cd "${_pkgname}-${pkgver}"
   export PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH"
