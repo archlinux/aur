@@ -1,5 +1,17 @@
 Changelog for AirVPN Suite
 
+Version 1.1.0 RC 4 - 14 May 2021
+
+- [ProMIND] optionparser.cpp: added proper message errors in case of invalid argument and allocation
+            memory error
+- [ProMIND] netfilter.cpp: systemBackupExists() now evaluate every firewall mode backup file name
+- [ProMIND] netfilter.cpp: restore() now check for every firewall mode backup and restore it accordingly
+- [ProMIND] netfilter.cpp: IPv6 rules are now allowed or added only in case IPv6 is available in the system
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
 Version 1.1.0 RC 3 - 16 April 2021
 
 - [ProMIND] Updated to OpenVPN 3.7 AirVPN

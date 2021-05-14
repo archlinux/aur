@@ -11,6 +11,10 @@ pre_upgrade() {
     systemctl stop bluetit.service
 }
 
+post_upgrade() {
+    chown -R airvpn:airvpn /etc/airvpn
+}
+
 pre_remove() {
     systemctl stop bluetit.service
     systemctl disable bluetit.service
