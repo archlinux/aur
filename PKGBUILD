@@ -9,7 +9,7 @@ url="https://metacpan.org/module/JMAY/$_realname-$pkgver/Queue.pod"
 license=('PerlArtistic')
 depends=('perl' 'perl-spread')
 options=('!emptydirs')
-source=("http://cpan.metacpan.org/authors/id/J/JM/JMAY/$_realname-$pkgver.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/J/JM/JMAY/$_realname-$pkgver.tar.gz")
 md5sums=('82b60345fc05e8c2ced86b229154482b')
 
 build() {
