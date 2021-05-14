@@ -3,12 +3,12 @@
 
 pkgname=chbg
 pkgver=1.5
-pkgrel=6
+pkgrel=7
 pkgdesc="Periodically change background image in X11. Can be a slideshow screensaver too"
 arch=('i686' 'x86_64')
 url="http://chbg.sourceforge.net/about.html"
 license=('GPL')
-depends=('gtk2' 'imlib2')
+depends=('gtk2' 'imlib2' 'libpng12')
 source=(http://downloads.sourceforge.net/chbg/$pkgname-$pkgver.tgz
 	gtk2.patch)
 md5sums=('3ee8b01a7e089570f66d89dac353cc2c'
