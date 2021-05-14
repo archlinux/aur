@@ -7,7 +7,7 @@
     {
       "matchDatasources": ["github-releases"],
       "matchPackageNames": ["DeFiCh/app"],
-      "automerge": false
+      "automerge": true
     }
   ],
   "regexManagers": [
