@@ -1,5 +1,5 @@
 pkgbase = linux-amd-raven
-	pkgver = 5.4.v.118
+	pkgver = 5.4.v.119
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = linux-amd-raven
 	makedepends = libelf
 	makedepends = lzop
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v5.4.118
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v5.4.119
 	source = config.x86_64
 	source = linux-amd-raven.preset
 	source = linux.install
