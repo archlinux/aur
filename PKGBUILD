@@ -2,7 +2,7 @@
 
 pkgname=gitlab-glab
 _realpkgname=glab
-pkgver=1.16.0
+pkgver=1.17.0
 pkgrel=1
 pkgdesc='Gitlab Cli tool written in Go to help work seamlessly with Gitlab from the command line.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('go')
 depends=('glibc')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('eac7ac0dae3b709aea7c7eaa578d09b8f101e590f1c2d83c66926afa233993b0')
+sha256sums=('9f29c6a124c7b514ffe55e8b1458a1714eb4c9e8943ce2680589f3ef89841554')
 
 prepare(){
   cd "${_realpkgname}-${pkgver}"
