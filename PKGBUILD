@@ -7,11 +7,11 @@
 
 pkgname=swift-language
 #pkgname=(swift swift-lldb)
-_swiftver=swift-5.4-DEVELOPMENT-SNAPSHOT-2021-04-23-a
+_swiftver=swift-5.4-RELEASE
 pkgver=5.4
 pkgrel=1
-swiftargumentparserversion=0.4.1
-swiftformatversion=swift-5.3.2-RELEASE
+swiftargumentparserversion=0.4.3
+swiftformatversion=swift-5.4-RELEASE
 tensorflowswiftapisversion=v0.2
 yamsver=3.0.1
 
@@ -63,7 +63,7 @@ md5sums=(
     'SKIP'
     'SKIP'
     'SKIP'
-    'SKIP'
+    '07526bd1b9167f9dfbfb9ab9c8c5948e'
     'SKIP'
     'SKIP'
     'SKIP'
