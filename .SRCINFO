@@ -1,13 +1,14 @@
 pkgbase = gkrellm2-multiping
 	pkgdesc = Pings several machines and shows the current round-trip and status.
 	pkgver = 2.0.15
-	pkgrel = 2
+	pkgrel = 3
 	url = http://members.dslextreme.com/users/billw/gkrellm/Plugins.html
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = git
 	depends = gkrellm
+	source = gkrellm2-multiping-2.0.15::https://github.com/jmakovicka/gkrellm-multiping/archive/refs/tags/2.0.15.tar.gz
+	md5sums = 593052491ef2c3c3bc8ca7f326b9fdc2
 
 pkgname = gkrellm2-multiping
 
