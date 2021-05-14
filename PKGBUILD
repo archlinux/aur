@@ -1,7 +1,7 @@
 # Maintainer: Lev Levitsky <levlev@mail.ru>
 pkgname=msgfplus
 pkgver=2021.03.22
-pkgrel=1
+pkgrel=2
 pkgdesc="MS/MS database search tool"
 arch=('any')
 url="https://github.com/MSGFPlus/msgfplus"
@@ -12,12 +12,19 @@ source=("https://github.com/MSGFPlus/msgfplus/archive/refs/tags/v${pkgver}.zip"
 		"msgf+"
 		"mzid2tsv"
         "scoringParamGen"
+        "pom.patch"
         "https://raw.githubusercontent.com/sangtaekim/msgfplus/master/LICENSE.txt")
 md5sums=('6dcc5986255536361665ed9a65f712ab'
          'c43c6581b373266171c3930c3718eb9c'
          'c860b9c30b74dae43de2d3933a405ac1'
          '315d84069d6333a83599aa93b782eb5c'
+         'f6bd212470d26a69c8998fef9ad73703'
          '88b22e0922010401ea88bcf03e3bb5d2')
+
+prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    patch -p1 < ../pom.patch
+}
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"

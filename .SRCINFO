@@ -1,7 +1,7 @@
 pkgbase = msgfplus
 	pkgdesc = MS/MS database search tool
 	pkgver = 2021.03.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MSGFPlus/msgfplus
 	arch = any
 	license = custom
@@ -11,11 +11,13 @@ pkgbase = msgfplus
 	source = msgf+
 	source = mzid2tsv
 	source = scoringParamGen
+	source = pom.patch
 	source = https://raw.githubusercontent.com/sangtaekim/msgfplus/master/LICENSE.txt
 	md5sums = 6dcc5986255536361665ed9a65f712ab
 	md5sums = c43c6581b373266171c3930c3718eb9c
 	md5sums = c860b9c30b74dae43de2d3933a405ac1
 	md5sums = 315d84069d6333a83599aa93b782eb5c
+	md5sums = f6bd212470d26a69c8998fef9ad73703
 	md5sums = 88b22e0922010401ea88bcf03e3bb5d2
 
 pkgname = msgfplus
