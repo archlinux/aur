@@ -1,11 +1,11 @@
-# Maintainer: Ian MacKay <immackay0@gmail.com>
-# Prior Maintainer: Mikel Pintado <mikelaitornube2010@gmail.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Ian MacKay <immackay0@gmail.com>
+# Contributor: Mikel Pintado <mikelaitornube2010@gmail.com>
 # Contributor: Jiawen Geng
 
-_pkgname='github-desktop'
-pkgname="$_pkgname"
-pkgver=2.6.2
-_pkgver="$pkgver-linux1"
+pkgname=github-desktop
+pkgver=2.8.1
+_pkgver="$pkgver-linux2"
 gitname="release-$_pkgver"
 pkgrel=2
 pkgdesc='GUI for managing Git and GitHub'
@@ -17,7 +17,7 @@ optdepends=('github-cli: CLI interface for GitHub' 'hub: CLI interface for GitHu
 makedepends=('nodejs>=10.16.0' 'npm' 'python2' 'unzip' 'yarn' 'xorg-server-xvfb')
 DLAGENTS=("http::/usr/bin/git clone --branch $gitname --single-branch %u")
 source=("git+https://github.com/shiftkey/desktop.git#tag=$gitname"
-        "$_pkgname.desktop")
+        "$pkgname.desktop")
 sha256sums=('SKIP'
             '932e4c456e8c6db03d27172cf0daa37806bf025bb560d8b3d758c0997d1a618c')
 
@@ -31,11 +31,11 @@ build() {
 
 package() {
     cd desktop
-    install -d "$pkgdir/opt/$_pkgname"
-    cp -r --preserve=mode dist/github-desktop-linux-x64/* "$pkgdir/opt/$_pkgname/"
-    install -Dm644 "../$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
-    install -Dm644 "app/static/logos/1024x1024.png" "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/$_pkgname.png"
-    install -Dm644 "app/static/logos/512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
-    install -Dm644 "app/static/logos/256x256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
-    printf "#!/bin/sh\n\n/opt/$_pkgname/github-desktop \"\$@\"\n" | install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname"
+    install -d "$pkgdir/opt/$pkgname"
+    cp -r --preserve=mode dist/github-desktop-linux-x64/* "$pkgdir/opt/$pkgname/"
+    install -Dm644 "../$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+    install -Dm644 "app/static/logos/1024x1024.png" "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/$pkgname.png"
+    install -Dm644 "app/static/logos/512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
+    install -Dm644 "app/static/logos/256x256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+    printf "#!/bin/sh\n\n/opt/$pkgname/github-desktop \"\$@\"\n" | install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname"
 }
