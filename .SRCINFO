@@ -1,7 +1,7 @@
 pkgbase = prey-node-client
 	pkgdesc = Remote tracking and monitoring application for laptops, smartphones, and other electronic devices
 	pkgver = 1.9.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://preyproject.com/
 	install = prey-node-client.install
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = prey-node-client
 	depends = wireless_tools
 	depends = lsb-release
 	depends = python2
-	depends = pygtk
 	depends = networkmanager
 	depends = npm
 	replaces = prey-tracker
