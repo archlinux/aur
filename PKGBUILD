@@ -2,8 +2,8 @@
 
 pkgname=python-justbases
 _pkgname=justbases
-pkgver=0.14
-pkgrel=3
+pkgver=0.15
+pkgrel=1
 pkgdesc="conversion of ints and rationals to any base"
 url="https://github.com/mulkieran/justbases"
 depends=('python')
@@ -11,8 +11,8 @@ makedepends=('python-setuptools')
 checkdepends=('python-nose' 'python-hypothesis')
 license=('GPL')
 arch=('any')
-source=("https://github.com/mulkieran/${_pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('017a793c53fc7e2f6ad1d614e19e23e7')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mulkieran/${_pkgname}/archive/v${pkgver}.tar.gz")
+md5sums=('2527651c3783b374e59fc137e653715e')
 
 check() {
     cd "$srcdir/${_pkgname}-$pkgver"
