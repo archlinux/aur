@@ -12,7 +12,7 @@ pkgdesc="A small easy-to-use paint program for the GNOME Desktop"
 arch=('x86_64' 'i686')
 license=('GPL')
 depends=('libglade' 'gdk-pixbuf2')
-url="http://savannah.gnu.org/projects/gpaint/"
+url="https://savannah.gnu.org/projects/gpaint/"
 source=("ftp://alpha.gnu.org/gnu/$pkgname/$pkgname-2-$pkgver.tar.gz"
         'fill.patch::https://savannah.gnu.org/patch/download.php?file_id=19341' 
         "$pkgname.desktop")
