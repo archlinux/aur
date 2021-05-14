@@ -1,6 +1,6 @@
 pkgbase = mauikit-imagetools-git
 	pkgdesc = MauiKit Image Tools Components
-	pkgver = r6.6073ba0
+	pkgver = v1.2.2.r1.g950db5e
 	pkgrel = 1
 	url = https://invent.kde.org/maui/mauikit-imagetools
 	arch = x86_64
