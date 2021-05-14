@@ -162,5 +162,5 @@ check() (
 
 package() {
   depends+=(libmutter-8.so)
-  meson install -C build --destdir "pkgdir"
+  meson install -C build --destdir "$pkgdir"
 }
