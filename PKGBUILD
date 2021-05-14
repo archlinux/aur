@@ -2,7 +2,7 @@
 # Mainintainer : Lucas Rooyakkers <lucas dot rooyakkers at queensu at ca>
 
 pkgname=rmatrix-git
-pkgver=3738314
+pkgver=0.2.r63
 pkgrel=1
 pkgdesc="Rust port of a curses-based 'Matrix'-like screen"
 arch=('any')
@@ -21,7 +21,7 @@ build() {
 
 pkgver() {
   cd "$pkgname"
-  echo r$(git describe --always | sed 's/-/./g')
+  printf "0.2.r%s" "$(git rev-list --count HEAD)"
 }
 
 package() {
