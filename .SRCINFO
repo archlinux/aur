@@ -1,0 +1,15 @@
+pkgbase = python-sphinx-copybutton-doc
+	pkgdesc = Documentation for Sphinx-Copybutton extension
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://sphinx-copybutton.readthedocs.io
+	arch = any
+	license = MIT
+	makedepends = python-sphinx-copybutton=0.3.1
+	makedepends = ipython
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-copybutton/sphinx-copybutton-0.3.1.tar.gz
+	md5sums = 52b3a51953ac19fef56e15f2a6be1b90
+
+pkgname = python-sphinx-copybutton-doc
+	pkgdesc = Documentation for Sphinx-Copybutton extension
+
