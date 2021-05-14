@@ -1,10 +1,12 @@
 pkgbase = fractalus
 	pkgdesc = A fan remake of Rescue on Fractalus, a classic game developed by Lucasfilm Games originally released on Atari, Commodore 64 and other platforms in 1984.
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.lsdwa.com/projects/fractalus/
 	arch = x86_64
 	license = unknown
+	depends = bash
+	depends = zlib
 	source = http://downloads.lsdwa.com/projects/fractalus/fractalus-1.0.0-linux.tgz
 	source = fractalus.desktop
 	source = fractalus
