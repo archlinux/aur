@@ -1,4 +1,5 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Amy Wilson <awils_1 at xsmail dot com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=fopnu
 pkgver=1.53
