@@ -1,7 +1,7 @@
 # Maintainer: Ehsan Ghorbannezad <ehsangn@protonmail.ch>
 _pkgname='xkblayout-subscribe'
 pkgname="${_pkgname}-git"
-pkgver=r7.3c6aaf7
+pkgver=r1.bc13b72
 pkgrel=1
 pkgdesc='Subscribe to X keyboard layout events. useful for updating statusbars.'
 arch=('x86_64')
