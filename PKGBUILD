@@ -1,8 +1,8 @@
-# Maintainer: Gerome Matilla <gerome.matilla07@gmail.com | gmail>
+# Maintainer: Neeraj <neeraj.a4353@gmail.com | gmail>
 
 pkgname=lightdm-webkit2-theme-reactive
 pkgver=0.1.4
-pkgrel=3
+pkgrel=1
 pkgdesc="Reactive, A Simple and fast lightdm webkit2 theme for linux"
 arch=('any')
 url="https://github.com/gitneeraj/$pkgname"
