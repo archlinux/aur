@@ -1,7 +1,7 @@
 # Maintainer: Henil <henil2911 + aur at gmail <.> com>
 pkgname=zellij-git
 _pkgname=zellij
-pkgver=r785.2cd433d
+pkgver=r833.f1bff23
 _pkgver=0.1
 pkgrel=1
 epoch=
@@ -25,9 +25,9 @@ build() {
     cargo install --force cargo-make
     cargo make install ./zellij
     mkdir -p assets/completions
-    ./zellij generate-completion bash > assets/completions/zellij.bash
-    ./zellij generate-completion fish > assets/completions/zellij.fish
-    ./zellij generate-completion zsh > assets/completions/_zellij
+    ./zellij setup --generate-completion bash > assets/completions/zellij.bash
+    ./zellij setup --generate-completion fish > assets/completions/zellij.fish
+    ./zellij setup --generate-completion zsh > assets/completions/_zellij
 }
 
 package() {
