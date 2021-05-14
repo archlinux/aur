@@ -1,13 +1,13 @@
 # Maintainer: lmartinez-mirror
 pkgname=hilbish-git
 _pkgname=${pkgname%-git}
-pkgver=0.1.2.r3.g795a7d7
+pkgver=0.4.0.r21.gda6a4aa
 pkgrel=2
 pkgdesc="A shell written in Go and extended with Lua"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hilbis/hilbish"
 license=('MIT')
-depends=('readline')
+depends=('readline' 'lua51-lunacolors-git')
 makedepends=('git' 'go>=1.16')
 optdepends=('lua')
 provides=("$_pkgname")
@@ -34,7 +34,7 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   cd "$pkgname"
-  make build
+  make build-dev
 }
 
 package() {

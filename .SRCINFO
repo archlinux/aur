@@ -1,6 +1,6 @@
 pkgbase = hilbish-git
 	pkgdesc = A shell written in Go and extended with Lua
-	pkgver = 0.1.2.r3.g795a7d7
+	pkgver = 0.4.0.r21.gda6a4aa
 	pkgrel = 2
 	url = https://github.com/hilbis/hilbish
 	install = hilbish-git.install
@@ -10,6 +10,7 @@ pkgbase = hilbish-git
 	makedepends = git
 	makedepends = go>=1.16
 	depends = readline
+	depends = lua51-lunacolors-git
 	optdepends = lua
 	provides = hilbish
 	conflicts = hilbish
