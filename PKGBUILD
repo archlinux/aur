@@ -1,23 +1,26 @@
-# Maintainer: lmartinez-mirror <lmartinez-mirror at noreply dot github dot com>
+# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+
 pkgname=baru
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc='A system monitor written in Rust and C'
 arch=('x86_64')
 url='https://github.com/doums/baru'
 license=('MPL2')
 depends=('libpulse')
-makedepends=('git' 'rust' 'cmake')
+makedepends=('git' 'cargo' 'cmake')
+install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('1afb3f72510640778c4b2980e45aebac091cbee3884f74ca017416393541880bd71d6309f42a820edef1f011eb8a6f64e61d000b92fe97f1db3ba477e60ee5fb')
+sha512sums=('0e2eb766919b8151c54684c977e20a064046800142052e6d3a41cbff46baf0ee7734506b203cff779fa1cd624eb4f5c4836af1bda0260bae47bf4d721054216f')
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --locked
+  cargo build --release --locked --all-features --target-dir=target
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
+  install -Dvm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
+  install -Dvm 644 baru.yaml -t "$pkgdir/usr/share/$pkgname/"
 }
 

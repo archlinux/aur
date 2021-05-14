@@ -1,0 +1,4 @@
+post_install()  {
+  printf ":: baru requires a config file to run.\n"
+  printf ":: An example config has been installed to /usr/share/baru/baru.yaml for your use.\n"
+}
