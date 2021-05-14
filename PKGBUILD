@@ -3,7 +3,7 @@
 pkgname=castblock-git
 _pkgname=castblock
 _branch=main
-pkgver=19.47fd386
+pkgver=20.03c2c51
 pkgrel=1
 pkgdesc="CastBlock skips integrated youtube sponsors on all chromecasts on the network."
 arch=('any')
