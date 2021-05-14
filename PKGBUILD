@@ -10,7 +10,7 @@ arch=('x86_64')
 license=('custom')
 url='http://www.roomarranger.com'
 depends=('hicolor-icon-theme' 'openssl')
-source=("https://s3.eu-central-1.amazonaws.com/$_pkgname/$_pkgname${pkgver//./}-linux64.tar.gz"
+source=("https://f000.backblazeb2.com/file/rooarr/rooarr${pkgver//./}-linux64.tar.gz"
         "${_pkgname}_run.sh"
         "${pkgname//-/}.desktop")
 sha1sums=('cf20ab4af9229f6fe8b6af9217d4da1a8751e57f'
