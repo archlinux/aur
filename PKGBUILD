@@ -3,8 +3,8 @@
 _pkgname=dvtm
 _owner=martanne
 pkgname=dvtm-git
-pkgver=0.15.37.gb45828d
-pkgrel=2
+pkgver=0.15.52.g7bcf43f
+pkgrel=1
 pkgdesc='Dynamic virtual terminal manager'
 arch=('i686' 'x86_64')
 url="https://github.com/$_owner/$_pkgname"
