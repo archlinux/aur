@@ -1,12 +1,13 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=ghost-deps-meta
-pkgver=20210319
+pkgver=20210514
 pkgrel=1
 pkgdesc="Metapkg for cleaning the AUR, provide no longer existing packages for finding pkgbuilds that need a fix"
 arch=(any)
 url=""
 license=(GPL)
+optdepends=(dmenu dwm st slock surf sxiv)
 provides=(tui dbus-core mono-stable msbuild-stable gtk3-print-backends libudev.so.0
           oculus-rift-sdk-jherico-git oculus-rift-sdk libusbx mesa-hybris
           xorg-server1.12 xorg-server1.19-git catalist-utils
@@ -21,8 +22,9 @@ provides=(tui dbus-core mono-stable msbuild-stable gtk3-print-backends libudev.s
           dri3proto presentproto
           llvm-libs-pypy-stm clang-pypy-stm llvm-pypy-stm nodejs-grunt-cli node-webkit
           perl-data-pond perl-perl6-junction
+          systemd-tools docbook2x
 )
 # go-pie gcc-multilib
-# Renamed: geoclue2 libsystemd gnu-efi-libs mime-types libwebkit
+# Renamed: geoclue2 libsystemd gnu-efi-libs mime-types libwebkit python-distribute heirloom-mailx
 #
-# Not to provide: udev initramfs
+# Not to provide: udev initramfs opengl-driver
