@@ -2,14 +2,14 @@
 pkgname=rnp
 pkgdesc='High performance C++ OpenPGP library derived from NetPGP'
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 url=https://github.com/rnpgp/rnp
 license=(custom:BSD)
 arch=(i686 x86_64)
 makedepends=(cmake pkgconf asciidoctor)
 depends=(botan zlib bzip2 json-c)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('54c4aa844344597419c2b7189a752690c5984887341639dd70e561e78147903ea216a6d2f131a3edcec48faef6a66769a5465302360bbaa461ef3206de36ddcb')
+sha512sums=('3102bdf80909c4026dd3787ffce446d4ad59bfb797b4a7f407f503f534c34f3bbd3fe44c237a6c4178c456d812c80e0c6d51d34b65de4ef7733a5a2912d33694')
 
 build ()
 {
