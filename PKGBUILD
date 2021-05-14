@@ -3,7 +3,7 @@
 pkgname=surf-ashin-git
 pkgver=2.1
 pkgrel=1
-pkgdesc='A suckless browser customized in my own way with bookmarkings and stylesheets.'
+pkgdesc='A suckless browser customized with bookmarkings and stylesheets.'
 arch=(x86_64 i686)
 url='https://github.com/ashincoder/surf-ashin.git'
 license=('MIT')

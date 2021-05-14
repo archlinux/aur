@@ -1,5 +1,5 @@
 pkgbase = surf-ashin-git
-	pkgdesc = A suckless browser customized in my own way with bookmarkings and stylesheets.
+	pkgdesc = A suckless browser customized with bookmarkings and stylesheets.
 	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/ashincoder/surf-ashin.git
