@@ -1,0 +1,11 @@
+pkgbase = makedeb-db
+	pkgdesc = Dependency database for makedeb
+	pkgver = 1.0.2
+	pkgrel = 2
+	arch = any
+	license = GPL3
+	source = https://repo.hunterwittenborn.com/debian/makedeb/pool/m/makedeb-db/makedeb-db_1.0.2-2_all.deb
+	sha256sums = SKIP
+
+pkgname = makedeb-db
+
