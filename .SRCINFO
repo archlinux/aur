@@ -8,6 +8,7 @@ pkgbase = tabbed-ashin-git
 	license = MIT
 	makedepends = git
 	depends = libx11
+	depends = ttf-hack
 	provides = tabbed
 	conflicts = tabbed
 	source = git+https://github.com/ashincoder/tabbed-ashin.git
