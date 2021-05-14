@@ -1,7 +1,7 @@
 pkgname=arduino-ide
 pkgver=2.0.0
-pkgrel=5
-_betaver=beta.5
+pkgrel=6
+_betaver=beta.6
 pkgdesc="Arduino IDE 2.0"
 arch=('x86_64')
 options=("!strip")
@@ -9,18 +9,18 @@ depends=('libxkbfile' 'libxss' 'nss')
 makedepends=('gendesk')
 url="https://github.com/arduino/$pkgname"
 license=('AGPL3')
-install="$pkgname.install"
+install=$pkgname.install
 source=(
-	"https://downloads.arduino.cc/$pkgname/${pkgname}_${pkgver}-${_betaver}_Linux_64bit.zip"
-	"https://www.arduino.cc/en/uploads/Trademark/ArduinoCommunityLogo.png"
+       "https://downloads.arduino.cc/$pkgname/${pkgname}_${pkgver}-${_betaver}_Linux_64bit.zip"
+       "https://www.arduino.cc/en/uploads/Trademark/ArduinoCommunityLogo.png"
 )
 sha256sums=(
-	'ca7d432639055f410d2610212692d510c92090a9273e501433add41359d355f1'
-	'd0e1a18d4553df38ffc34c0699369500e8a8129647207c65d36e615870d7fe3c'
+       '349e071cc4968b0867b5c899d2695df3fdeb6432194cf9e5502c560df8e661f7'
+       'd0e1a18d4553df38ffc34c0699369500e8a8129647207c65d36e615870d7fe3c'
 )
 
 prepare() {
-	gendesk -f --pkgname "$pkgname" --name "Arduino IDE" --pkgdesc "$pkgdesc"
+	gendesk -f --pkgname $pkgname --name 'Arduino IDE' --pkgdesc $pkgdesc
 }
 
 package() {
