@@ -1,6 +1,6 @@
 pkgbase = mauikit-filebrowsing-git
 	pkgdesc = MauiKit File Browsing utilities and controls
-	pkgver = r27.c699485
+	pkgver = v1.2.2.r4.gd6f463e
 	pkgrel = 1
 	url = https://invent.kde.org/maui/mauikit-filebrowsing
 	arch = x86_64

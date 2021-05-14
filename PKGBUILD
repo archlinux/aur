@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=mauikit-filebrowsing-git
-pkgver=r27.c699485
+pkgver=v1.2.2.r4.gd6f463e
 pkgrel=1
 pkgdesc="MauiKit File Browsing utilities and controls"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -23,10 +23,10 @@ pkgver() {
 }
 
 build() {
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -B build -S "${pkgname%-git}"
-  make -C build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo -B build -S "${pkgname%-git}"
+  cmake --build build --config RelWithDebInfo
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
+  DESTDIR="${pkgdir}" cmake --install build --config RelWithDebInfo
 }
