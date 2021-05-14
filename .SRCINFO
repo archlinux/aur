@@ -1,0 +1,14 @@
+pkgbase = nginx_minimal
+	pkgdesc = Nginx with less features to be more minimal as never,just with SSL for security. Compiled with native support.
+	pkgver = 1.20
+	pkgrel = 1
+	url = https://nginx.org
+	arch = any
+	license = BSD3
+	provides = nginx
+	conflicts = nginx
+	source = git+https://github.com/nginx/nginx.git
+	md5sums = SKIP
+
+pkgname = nginx_minimal
+
