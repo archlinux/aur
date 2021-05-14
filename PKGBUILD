@@ -8,7 +8,7 @@ pkgname=${_name}-${_channel}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
 _version=90.0a1
-pkgver=90.0a1.20210420
+pkgver=90.0a1.20210513214800+h940a3ad12e3d
 pkgrel=1
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -22,7 +22,7 @@ optdepends=('pulseaudio: audio support'
             'speech-dispatcher: text-to-speech')
 _url="https://download-installer.cdn.mozilla.net/pub/${_name}/nightly/latest-mozilla-central"
 _src="${_name}-${_version}.${_lang}.linux"
-_filename="$(date +%Y%m%d)-${_src}"
+_filename="$(date -u +%Y%m%d)-${_src}"
 source=("${pkgname}.desktop" 'policies.json')
 source_i686=("${_filename}-i686.tar.bz2"::"${_url}/${_src}-i686.tar.bz2"
              "${_filename}-i686.tar.bz2.asc"::"${_url}/${_src}-i686.tar.bz2.asc"
@@ -37,7 +37,7 @@ sha512sums_x86_64=(SKIP SKIP SKIP)
 validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla’s GnuPG release key
 
 pkgver() {
-  echo "${_version}.$(head -n1 ${_filename}-${CARCH}.txt | cut -c-8)"
+  echo "${_version}.$(head -n1 ${_filename}-${CARCH}.txt)+h$(tail -n1 ${_filename}-${CARCH}.txt | cut -c 44-55)"
 }
 
 package() {
