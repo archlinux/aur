@@ -1,6 +1,6 @@
 pkgbase = tabbed-ashin-git
-	pkgdesc = A suckless utility that adds tabs.
-	pkgver = 0.6.r2.d9708cb
+	pkgdesc = A suckless utility that adds tabs with icons for surf and st.
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://github.com/ashincoder/tabbed-ashin.git
 	arch = x86_64

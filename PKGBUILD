@@ -1,9 +1,9 @@
 # Maintainer: Ashin Antony <ashinant15@gmail.com>
 
 pkgname=tabbed-ashin-git
-pkgver=0.6.r2.d9708cb
+pkgver=0.6
 pkgrel=1
-pkgdesc='A suckless utility that adds tabs.'
+pkgdesc='A suckless utility that adds tabs with icons for surf and st.'
 arch=(x86_64 i686)
 url='https://github.com/ashincoder/tabbed-ashin.git'
 license=('MIT')
