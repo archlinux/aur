@@ -10,7 +10,7 @@ license=('GPL')
 depends=('bash' 'libnautilus-extension')
 conflicts=("${pkgname}-git")
 source=("https://gitlab.gnome.org/madmurphy/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('3a4fe8404929316c021274e64b5dfcddb2596bb362e43e7f2e4ca50957326046')
+sha256sums=('fd2ef0eb644a2f51958c3f4ebcea7f326553e0a6a7fe251844c11439c9aee913')
 
 prepare() {
 
