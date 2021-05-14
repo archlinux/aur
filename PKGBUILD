@@ -1,9 +1,9 @@
 # Maintainer: Guillaume ALAUX <guillaume@archlinux.org>
 pkgname=swt
 # http://download.eclipse.org/eclipse/downloads/drops4
-pkgver=4.6.3
-pkgrel=2
-_date=201703010400
+pkgver=4.20M1
+pkgrel=1
+_date=202104071800
 pkgdesc='An open source widget toolkit for Java'
 arch=('x86_64')
 url='https://www.eclipse.org/swt/'
@@ -13,9 +13,9 @@ makedepends=('jdk8-openjdk' 'glu' 'unzip' 'pkgconfig' 'gtk2' 'gtk3' 'ant')
 optdepends=('glu' 'gtk2' 'gtk3')
 
 # Source isn't distributed separately from the binaries; we're not using the latter
-source=(https://archive.eclipse.org/eclipse/downloads/drops4/R-${pkgver}-${_date}/swt-${pkgver}-gtk-linux-x86_64.zip
+source=(https://download.eclipse.org/eclipse/downloads/drops4/S-${pkgver}-${_date}/swt-${pkgver}-gtk-linux-x86_64.zip
         build-swt.xml)
-sha256sums=('005dd6bfb20919f9fe7c681864d3f30a5b3eae112da8bdab2bf418978bbbd7aa'
+sha256sums=('df2a21425659bef510e99a26e212ce4782a85f507f5a304d838d31ae35a8be8a'
             '3d30fbde25a6a6d260d04cb1782b7618c2a0a926440935a9eea516146eb0e1e1')
 
 # These examples don't even run anymore (Try Tux Guitar instead)!
