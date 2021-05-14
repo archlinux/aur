@@ -1,6 +1,6 @@
 pkgbase = unity-version-manager
 	pkgdesc = cli utility to install and manager unity versions
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/Larusso/unity-version-manager
 	arch = x86_64
@@ -8,9 +8,8 @@ pkgbase = unity-version-manager
 	makedepends = cargo
 	makedepends = git
 	depends = p7zip
-	depends = gconf
-	source = unity-version-manager-2.4.0.tar.gz::https://github.com/Larusso/unity-version-manager/archive/refs/tags/v2.4.0.tar.gz
-	sha256sums = 6df35730ad0649ca2699b6a4f93ee601df8eac89e86bad3028d20b8720ae6dbf
+	source = unity-version-manager-2.4.1.tar.gz::https://github.com/Larusso/unity-version-manager/archive/refs/tags/v2.4.1.tar.gz
+	sha256sums = 86e3e06375ceb977673c6348358b971d3208e7e88513d9ab5ca6ad7cdfb0d0a6
 
 pkgname = unity-version-manager
 
