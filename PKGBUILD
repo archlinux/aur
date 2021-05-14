@@ -2,12 +2,12 @@
 
 pkgname=plasma-angelfish
 pkgver=21.05
-pkgrel=1
+pkgrel=2
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 pkgdesc="Web browser for Plasma Mobile"
 url="https://invent.kde.org/plasma-mobile/angelfish"
 license=('GPL2')
-depends=('qt5-webengine' 'purpose' 'kirigami2' 'ki18n' 'kconfig'
+depends=('qt5-webengine' 'qt5-feedback' 'purpose' 'kirigami2' 'ki18n' 'kconfig'
          'kcoreaddons' 'kdbusaddons' 'kwindowsystem' 'knotifications')
 makedepends=('extra-cmake-modules' 'corrosion-git' 'qt5-svg' 'qt5-tools')
 source=("https://download.kde.org/stable/plasma-mobile/${pkgver}/angelfish-${pkgver}.tar.xz")
