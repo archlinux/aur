@@ -7,7 +7,7 @@
 
 pkgname=ent
 pkgver=1.2
-debianver="${pkgver}debian-1"
+debianver="${pkgver}debian-3"
 pkgrel=1
 pkgdesc="Pseudorandom number sequence test"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=("http://ftp.de.debian.org/debian/pool/main/e/${pkgname}/${pkgname}_${pkg
 	"http://ftp.de.debian.org/debian/pool/main/e/${pkgname}/${pkgname}_${debianver}.debian.tar.xz"
 	"LICENSE")
 sha256sums=('2df63722b30d309f373416bfce69adaadb5f7a82294fb0d661c5f258dcc7d049'
-            '8f5a6db3f060f4694711bed828b23c037da38d6b7f4226c1095b9294d5ba5180'
+            '4996f4b4f1980804a5cad167f0b25efc79d350b70d6abdc8888da99cb0fffd2d'
             '4ebee40438cb4df5dadbe3028002fdc17f07daee751cb79d53d7f55fbc37ce36')
 
 prepare() {
@@ -31,7 +31,7 @@ prepare() {
 	done
 
 	# fix for docbook2man binary name
-	sed -i 's/docbook2x-man/docbook2man/g' Makefile
+	sed -i 's/docbook2x-man/db2x_docbook2man/g' Makefile
 }
 
 build() {
