@@ -12,7 +12,7 @@ pkgveri686=2.7.0
 source_x86_64=("https://www.assinadorserpro.estaleiro.serpro.gov.br/repository/stable/assinador-serpro_${pkgver}_amd64.deb")
 source_i686=("https://www.assinadorserpro.estaleiro.serpro.gov.br/repository/stable/assinador-serpro-i386_${pkgveri686}_i386.deb")
 sha256sums_i686=('7ec54364cd5ad1887dad9702ef1de663d3beac3d4ddcac5adb38fc32c8921683')
-sha256sums_x86_64=('ea45748f97f383fd54ae3e24fd3c526d0ba186ea623c94c0d5cb5d1b19798683')
+sha256sums_x86_64=('857297e6d087103152e5e601d6fa46feb855a328bae530a8891e1384d099ba9a')
 
 prepare() {
 	[ -d data ] && rm -rf data
