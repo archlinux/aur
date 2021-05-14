@@ -3,7 +3,7 @@
 # Contributor: Davi da Silva Böger <dsboger at gmail dot com>
 pkgname=tilix-git
 pkgver=1.9.4.r34.1355052c
-pkgrel=1
+pkgrel=2
 pkgdesc="A tiling terminal emulator for Linux using GTK+ 3"
 arch=('x86_64')
 url="https://gnunn1.github.io/tilix-web"
@@ -11,7 +11,8 @@ license=('MPL')
 depends=('libx11' 'gtkd' 'vte3' 'dconf' 'gsettings-desktop-schemas')
 makedepends=('git' 'ldc' 'po4a' 'meson' 'appstream')
 optdepends=('python-nautilus: for "Open Tilix Here" support in nautilus'
-            'libsecret: for the password manager')
+            'libsecret: for the password manager'
+            'vte3-notification: for desktop notifications support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/gnunn1/tilix.git')
