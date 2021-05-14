@@ -8,7 +8,7 @@ arch=(x86_64 i686)
 url="https://www.github.com/ashincoder/dmenu-ashin.git"
 license=('MIT')
 groups=()
-depends=(nerd-fonts-fira-code ttf-joypixels libx11)
+depends=(ttf-hack ttf-joypixels libx11)
 makedepends=(git)
 checkdepends=()
 optdepends=()
@@ -25,7 +25,7 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-	cd "${_pkgname}"
+	cd dmenu-ashin
     printf "5.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
