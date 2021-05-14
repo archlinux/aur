@@ -3,7 +3,7 @@
 pkgname=qarma-git
 _gitname=qarma
 pkgver=44
-pkgrel=2
+pkgrel=3
 pkgdesc="A drop-in replacement clone for zenity, written in Qt4/5, Qt5 build"
 arch=('i686' 'x86_64')
 url="https://github.com/luebking/qarma"
@@ -12,7 +12,7 @@ depends=('qt5-base' 'qt5-x11extras')
 makedepends=('git')
 provides=('qarma' 'zenity')
 conflicts=('zenity' 'qarma')
-source=("pkgname::git+https://github.com/luebking/qarma")
+source=("git+https://github.com/luebking/qarma")
 md5sums=("SKIP")
 
 pkgver() {
