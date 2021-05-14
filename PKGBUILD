@@ -2,13 +2,13 @@
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=check-broken-packages-pacman-hook-git
 pkgver=r45.647f466
-pkgrel=1
+pkgrel=2
 pkgdesc='Pacman hook to check for broken packages'
 arch=('x86_64')
 _gitname='pacman-hooks'
 url="https://github.com/desbma/${_gitname}"
 license=('GPL')
-makedepends=('rust')
+makedepends=('git' 'rust')
 conflicts=('pacman-hooks-desbma-git')
 source=("git+https://github.com/desbma/${_gitname}")
 md5sums=('SKIP')
