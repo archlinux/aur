@@ -3,7 +3,7 @@
 
 pkgname=tiny-irc-client
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Console IRC client written in Rust'
 arch=(i686 x86_64 aarch64)
 url=https://github.com/osa1/tiny
@@ -15,12 +15,12 @@ md5sums=('e4a523edfa7735a51eded64eee5689de')
 
 build() {
   cd "${srcdir}/tiny-${pkgver}"
-  cargo build --no-default-features --features=tls-native,desktop-notifications --release
+  cargo install --path crates/tiny --no-default-features --features=tls-native,desktop-notifications
 }
 
 check() {
   cd "${srcdir}/tiny-${pkgver}"
-  cargo test --no-default-features --features=tls-native,desktop-notifications --release --locked
+  cargo test --no-default-features --features=tls-native,desktop-notifications --release
 }
 
 package() {
