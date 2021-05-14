@@ -1,6 +1,6 @@
 pkgbase = deepin-daemon-git
 	pkgdesc = Daemon handling the DDE session settings
-	pkgver = 5.13.10.r45.g4a823757
+	pkgver = 5.13.10.r47.g7bde0633
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-daemon
 	install = deepin-daemon-git.install
