@@ -1,0 +1,17 @@
+pkgbase = gnome-c-utils
+	pkgdesc = Utilities when programming for GNOME, for the C language.
+	pkgver = 3.38.0
+	pkgrel = 1
+	url = https://github.com/swilmet/gnome-c-utils
+	arch = any
+	license = GPL3
+	makedepends = meson
+	depends = glib2
+	optdepends = tepl: required for building extra tools. ex gcu-lineup-substitution
+	optdepends = gtk3: required for building extra tools. ex gcu-lineup-substitution
+	optdepends = gtksourceview3: required for building extra tools. ex gcu-lineup-substitution
+	source = gnome-c-utils-3.38.0.tar.gz::https://github.com/swilmet/gnome-c-utils/archive/refs/tags/3.38.0.tar.gz
+	sha256sums = d75336c3b65c6a55389d778b829c42e8b8a11a28222038bf75b83c7507565b97
+
+pkgname = gnome-c-utils
+
