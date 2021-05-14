@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-onboard-sdk-ros
 	pkgdesc = ROS interface for the DJI onboard SDK
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dji-sdk/Onboard-SDK-ROS
 	arch = x86_64
 	license = MIT
@@ -15,6 +15,8 @@ pkgbase = ros-noetic-onboard-sdk-ros
 	depends = sdl2
 	depends = opencv
 	source = https://github.com/dji-sdk/Onboard-SDK-ROS/archive/refs/tags/4.1.0.tar.gz
+	source = https://github.com/dji-sdk/Onboard-SDK-ROS/pull/464.patch
+	sha256sums = 83bb5a30c70c7887a74f0e858e3b6563091ed7a5e58b8f462ea9ec2a9b2639ea
 	sha256sums = SKIP
 
 pkgname = ros-noetic-onboard-sdk-ros

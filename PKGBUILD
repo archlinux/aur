@@ -6,7 +6,7 @@ pkgname='ros-noetic-onboard-sdk-ros'
 pkgver='4.1.0'
 arch=('x86_64')
 license=('MIT')
-pkgrel=1
+pkgrel=2
 
 ros_makedepends=(ros-noetic-catkin)
 makedepends=(
@@ -25,9 +25,15 @@ depends=(
   opencv
 )
 
-_dir="Onboard-SDK-ROS"
-source=("https://github.com/dji-sdk/Onboard-SDK-ROS/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('SKIP') 
+_dir="Onboard-SDK-ROS-${pkgver}"
+source=("https://github.com/dji-sdk/Onboard-SDK-ROS/archive/refs/tags/${pkgver}.tar.gz"
+        "https://github.com/dji-sdk/Onboard-SDK-ROS/pull/464.patch")
+sha256sums=('83bb5a30c70c7887a74f0e858e3b6563091ed7a5e58b8f462ea9ec2a9b2639ea' 'SKIP') 
+
+prepare() {
+    cd "${_dir}"
+    patch --forward --strip=1 --input="${srcdir}/464.patch"
+}
 
 build() {
     # Use ROS environment variables
@@ -35,7 +41,7 @@ build() {
     [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
     # Build project
-    cmake -B build -S ${_dir}-${pkgver} \
+    cmake -B build -S ${_dir} \
             -DCMAKE_BUILD_TYPE=Release \
             -DCATKIN_ENABLE_TESTING=0 \
             -DCATKIN_BUILD_BINARY_PACKAGE=ON \
