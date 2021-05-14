@@ -2,17 +2,17 @@
 # Contributor: rabyte <rabyte__gmail>
 
 pkgname=alephone-eternalx
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A free scenario for Aleph One that continues the story of the Marathon trilogy"
 arch=('any')
 url="http://eternal.bungie.org/"
 license=('unknown')
 depends=('alephone')
-source=("http://eternal.bungie.org/files/_releases/EternalXv${pkgver//./}Full.zip"
+source=("http://eternal.bungie.org/files/_releases/EternalXv${pkgver//./}.zip"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('74810c7bbc2442e9a953440f4b090507cbf1552bd64812a2edb2aa438c6bdf92'
+sha256sums=('9371761b625cf9786f86276ab17dfd52a1427e93e8fb72effa88f57435e83be3'
             '367eac6d3652cb0aaa2d66c74770190d0e8eccfb8e46acf7fc991d652bfc70d0'
             '57dfa56c798a325f4a673d608c71dd5dda73c06270229b6bdf2379a06b9a1df0')
 
