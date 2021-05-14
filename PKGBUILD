@@ -2,7 +2,7 @@
 #
 pkgname=blender249
 pkgver=2.49b
-pkgrel=1
+pkgrel=2
 pkgdesc='A fully integrated 3D graphics creation suite (version 2.49b)'
 arch=('x86_64')
 url='http://blender.org'
