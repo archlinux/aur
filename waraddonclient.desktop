@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=WARAddonClient
+Comment=Updating Warhammer Return of Reckoning Addons.
+Exec=java -jar "/opt/WARAddonClient/WARAddonClient.jar"
+Icon=waraddonclient.png
+Terminal=false
+Type=Application
+Categories=Game;

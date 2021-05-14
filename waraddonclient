@@ -1,0 +1,45 @@
+i#!/bin/bash
+# by xpander
+ 
+# WARAddonClient CLI options
+
+# WARAddonClient path
+addon_path="/opt/WARAddonClient/WARAddonClient.jar"
+
+# Work starts here:
+
+if [[ $# -eq 1 ]]; then
+case $1 in 
+	"-u")
+		java -jar $addon_path --updateonly;;
+	"-s")
+		echo "Type your RoR directory Path:"
+		read path1
+		java -jar $addon_path --setlocation $path1;;
+	"-su")
+		echo "Type your RoR directory Path:"
+		read path1
+		java -jar $addon_path --updateonly --setlocation $path1;;
+	"--updateonly")
+		java -jar $addon_path --updateonly;;
+	"--setlocation")
+		echo "Type your RoR directory Path:"
+		read path1
+		java -jar $addon_path --setlocation $path1;;
+	"-v")
+		java -jar $addon_path --version;;
+	"--version")
+		java -jar $addon_path --version;;
+	"--help")
+		echo "Usage: waraddonclient <command>"
+		echo "Available commands:" 
+		echo "-u --updateonly                  Updates addons" 
+		echo "-s --setlocation                 To set your RoR folder location"
+		echo "-su                              Run both, addon update and folder location setting"
+		echo "-v --version                     Check the WARAddonClient version"
+		echo "--help                           This help page";;
+	*)
+		echo "Wrong option, try --help";;
+	esac
+fi
+
