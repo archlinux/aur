@@ -6,8 +6,8 @@ pkgbase = clusterctl-bin
 	arch = x86_64
 	license = Apache
 	optdepends = kubectl: to manage the cluster
-	provides = clusterctl=0.3.16
-	source = https://github.com/kubernetes-sigs/cluster-api/releases/download/v0.3.16/clusterctl-linux-amd64
+	provides = clusterctl
+	source = clusterctl-linux-amd64-v0.3.16::https://github.com/kubernetes-sigs/cluster-api/releases/download/v0.3.16/clusterctl-linux-amd64
 	sha256sums = ae45da8b66a0c8150b91edf88015ff45eb7d21e48f95f006dddd366add6c8441
 
 pkgname = clusterctl-bin
