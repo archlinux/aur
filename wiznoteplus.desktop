@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=WizNotePlus
+Comment=Yet Another Wiznote Client
+Exec=/opt/wiznoteplus/wiznoteplus.AppImage
+Terminal=false
+Type=Application
+StartupNotify=true
+Icon=wiznoteplus
+Categories=Application;Utility;Network;
