@@ -2,7 +2,7 @@
 # Based on the brscan4 PKGBUILD by Harey
 
 pkgname=brscan5
-pkgver=1.2.3_0
+pkgver=1.2.6_0
 pkgrel=1
 pkgdesc='SANE drivers from Brother for brscan5 compatible models'
 arch=('i686' 'x86_64')
@@ -20,11 +20,10 @@ md5sums=(
   'ca07cab058b704b7b12ba076d00be2f0'
   '90bf4aa2e87b68ba2ea1aa7e43b019d9'
 )
-
-source_x86_64=("https://download.brother.com/welcome/dlf105160/${pkgname}-${pkgver/_/-}.x86_64.rpm")
-md5sums_x86_64=('70a89e2c142fc318d66b6046e0b38320')
-source_i686=("https://download.brother.com/welcome/dlf105159/${pkgname}-${pkgver/_/-}.i386.rpm")
-md5sums_i686=('b753b6a67aa5e787639ba8cc2c452e77')
+source_x86_64=("https://download.brother.com/welcome/dlf104036/${pkgname}-${pkgver/_/-}.x86_64.rpm")
+md5sums_x86_64=('015e3c48c3820554bae1fc3ed3c5ab2a')
+source_i686=("https://download.brother.com/welcome/dlf104035/${pkgname}-${pkgver/_/-}.i386.rpm")
+md5sums_i686=('e8d17dbf5b32563182316315dce8dd44')
 install="brscan5.install"
 
 build() {
