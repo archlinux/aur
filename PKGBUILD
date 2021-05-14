@@ -1,24 +1,27 @@
 # Maintainer: 4679 <4679 at pm dot me>
 
 pkgname=hysteria-bin
-_pkgname=hysteria
-pkgver=0.4.0
+_pkgbase=hysteria
+pkgver=0.8.1
 pkgrel=1
-pkgdesc='Hysteria is a set of relay & proxy utilities that are specifically optimized for harsh network environments'
+pkgdesc='TCP relay & SOCKS5/HTTP proxy tool optimized for poor network environments (binary release)'
 arch=('x86_64')
-url='https://github.com/tobyxdd/hysteria'
+url='https://github.com/HyNetwork/hysteria'
 license=('MIT')
-install=${_pkgname}.install
-source=("$_pkgname::https://github.com/tobyxdd/$_pkgname/releases/download/v$pkgver/hysteria-linux-amd64"
+source=("$_pkgbase::https://github.com/HyNetwork/$_pkgbase/releases/download/v$pkgver/hysteria-linux-amd64"
         'hysteria@.service'
-        'hysteria-server@.service')
+        'hysteria-server@.service'
+        'sysusers.conf')
 
-sha512sums=('2caae6587581984c0c084b53fea328f204ee62568ab760657ee93c474e2e15150eeeea2c7ef25230c158d63dea20bef41253b6d2ada9a90f182e011fc1bf4ebd'
-            'a4004c2dd9adc28cdcdb0eaee95d40707a458c39dce72f64562079c9230bd7b48154593faa0fa03558d3efc661b16f10f745b30ac09be6d6ee78c4f6730b460f'
-            '87aba35ac7592fdd370ffe8bbd90b0e0ee9b42c4f3ae8d3a5ced321eba6dbe3d0ef067b144e5173e3f72c73caf5ac97a6380d023400bd4a022c7a61afbb4637d')
+sha512sums=('47e34fb6713a02167e925cce570105a42a38197774f14ab7e22b081c6f0cdfb355417b14625e1c7c9a4ecce0ffca1a392a8dd7521831d17c0111bcb6db90730d'
+            'd1d13fc53943dd3caadec1b2882188457eef914e5b54cf5f532e04f94119f2227737a24a751dbcd7aa65c5fd051bbe1ba2c79983c6e5ae189df0f541130e68de'
+            'c43f7de39624a6e7e7910280d16d5675660f2a49e430b050ebbb8415f8d3bed491f959126917e096aa9de180f9c5ffd62c8c74c9c0ac944dc3c0eba39e9c48f4'
+            '5a3927c7ae9d9dea619bd073eb666d52a454ed8a2af5d5cc95f0dd54a69d56731543b54c493bfd53e2d11a2395996df688f1126ddede977b4aa9ed4ee91011c5')
 
 package() {
-  install -Dm755 "$srcdir/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 "$srcdir/${_pkgbase}" "${pkgdir}/usr/bin/${_pkgbase}"
+  install -Dm644 "$srcdir/sysusers.conf" "$pkgdir/usr/lib/sysusers.d/hysteria.conf"
   install -Dm644 "$srcdir/hysteria@.service" "$pkgdir/usr/lib/systemd/system/hysteria@.service"
   install -Dm644 "$srcdir/hysteria-server@.service" "$pkgdir/usr/lib/systemd/system/hysteria-server@.service"
+  install -dm755 "$pkgdir/etc/hysteria"
 }

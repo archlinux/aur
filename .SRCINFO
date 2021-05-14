@@ -1,17 +1,18 @@
 pkgbase = hysteria-bin
-	pkgdesc = Hysteria is a set of relay & proxy utilities that are specifically optimized for harsh network environments
-	pkgver = 0.4.0
+	pkgdesc = TCP relay & SOCKS5/HTTP proxy tool optimized for poor network environments (binary release)
+	pkgver = 0.8.1
 	pkgrel = 1
-	url = https://github.com/tobyxdd/hysteria
-	install = hysteria.install
+	url = https://github.com/HyNetwork/hysteria
 	arch = x86_64
 	license = MIT
-	source = hysteria::https://github.com/tobyxdd/hysteria/releases/download/v0.4.0/hysteria-linux-amd64
+	source = hysteria::https://github.com/HyNetwork/hysteria/releases/download/v0.8.1/hysteria-linux-amd64
 	source = hysteria@.service
 	source = hysteria-server@.service
-	sha512sums = 2caae6587581984c0c084b53fea328f204ee62568ab760657ee93c474e2e15150eeeea2c7ef25230c158d63dea20bef41253b6d2ada9a90f182e011fc1bf4ebd
-	sha512sums = a4004c2dd9adc28cdcdb0eaee95d40707a458c39dce72f64562079c9230bd7b48154593faa0fa03558d3efc661b16f10f745b30ac09be6d6ee78c4f6730b460f
-	sha512sums = 87aba35ac7592fdd370ffe8bbd90b0e0ee9b42c4f3ae8d3a5ced321eba6dbe3d0ef067b144e5173e3f72c73caf5ac97a6380d023400bd4a022c7a61afbb4637d
+	source = sysusers.conf
+	sha512sums = 47e34fb6713a02167e925cce570105a42a38197774f14ab7e22b081c6f0cdfb355417b14625e1c7c9a4ecce0ffca1a392a8dd7521831d17c0111bcb6db90730d
+	sha512sums = d1d13fc53943dd3caadec1b2882188457eef914e5b54cf5f532e04f94119f2227737a24a751dbcd7aa65c5fd051bbe1ba2c79983c6e5ae189df0f541130e68de
+	sha512sums = c43f7de39624a6e7e7910280d16d5675660f2a49e430b050ebbb8415f8d3bed491f959126917e096aa9de180f9c5ffd62c8c74c9c0ac944dc3c0eba39e9c48f4
+	sha512sums = 5a3927c7ae9d9dea619bd073eb666d52a454ed8a2af5d5cc95f0dd54a69d56731543b54c493bfd53e2d11a2395996df688f1126ddede977b4aa9ed4ee91011c5
 
 pkgname = hysteria-bin
 
