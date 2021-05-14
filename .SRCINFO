@@ -1,11 +1,12 @@
 pkgbase = fluidd-git
 	pkgdesc = Klipper web frontend
-	pkgver = r788.b955bfd
+	pkgver = r813.a81c1b7
 	pkgrel = 1
 	url = https://github.com/cadriel/fluidd
 	arch = any
 	license = GPLv3
 	makedepends = npm
+	makedepends = nodejs-lts-fermium
 	optdepends = nginx: serve via HTTP
 	optdepends = ustreamer: webcam streaming support
 	provides = fluidd
