@@ -1,42 +1,42 @@
-# $Id$
-# Maintainer: Jens Staal <staal1978@gmail.com>
-# adapted from "newsboat" package:
-# Maintainer: Jaroslav Lichtblau <svetlemodry@archlinux.org>
+# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
+# Contributor: Jens Staal <staal1978@gmail.com>
+# Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: Sven Pfleiderer <pfleidi@roothausen.de>
 
 pkgname=newsboat-git
-pkgver=r2.20.1.r341.ge0e76c34
+pkgver=2.23.r191.gf570c8ac
 pkgrel=1
 pkgdesc="An RSS/Atom feed reader for text terminals"
 arch=('x86_64')
 url="https://newsboat.org/"
-license=('custom: MIT')
-depends=('curl' 'json-c' 'libxml2' 'sqlite' 'stfl')
-makedepends=('swig' 'gettext' 'asciidoctor' 'rust')
+license=('MIT')
+depends=('curl' 'hicolor-icon-theme' 'json-c' 'libxml2' 'sqlite' 'stfl')
+makedepends=('asciidoctor' 'git' 'rust' 'swig')
+optdepends=('perl: for pinboard.pl'
+            'python: for exportOPMLWithTags.py'
+            'ruby: for feedgrabber.rb, heise.rb, and slashdot.rb')
 provides=('newsboat')
 conflicts=('newsboat')
 replaces=('newsbeuter')
-options=('!emptydirs')
-source=($pkgname::git+https://github.com/newsboat/newsboat.git)
+source=('git+https://github.com/newsboat/newsboat.git')
 sha256sums=('SKIP')
 
-
 pkgver() {
-  cd "${srcdir}"/$pkgname
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/; s/-/./g'
+  cd newsboat
+
+  git describe --long | sed 's/^r//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}"/$pkgname
+  cd newsboat
 
   make prefix=/usr
   make doc
 }
 
 package() {
-  cd "${srcdir}"/$pkgname
+  cd newsboat
 
-  make prefix=/usr DESTDIR="${pkgdir}" install
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
+  make prefix=/usr DESTDIR="$pkgdir" install
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
 }
-
