@@ -7,7 +7,7 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8-r
-pkgver=9.2.172
+pkgver=9.2.220
 pkgrel=1
 pkgdesc="Google's open source JavaScript and WebAssembly engine"
 arch=('x86_64')
@@ -15,8 +15,8 @@ url="https://v8.dev"
 license=('BSD')
 depends=('icu')
 optional=('rlwrap')
-makedepends=('python2' 'python3' 'git')
-conflicts=('v8' 'v8-3.14' 'v8-3.15' 'v8-3.20' 'v8-static-gyp' 'v8-static-gyp-5.4')
+makedepends=('git' 'lld' 'python2' 'python3')
+conflicts=('v8' 'v8-3.14' 'v8.3.14-bin' 'v8-6.7-static' 'v8-static-gyp' 'v8-static-gyp-5.4')
 provides=('v8')
 source=("depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
         "v8.pc"
@@ -69,7 +69,7 @@ prepare() {
     -vv --fail-on-unused-args \
     --args='is_clang=false
             is_asan=false
-            use_gold=true
+            use_lld=true
             is_component_build=true
             is_debug=false
             is_official_build=false
