@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://chbg.sourceforge.net/about.html"
 license=('GPL')
 depends=('gtk2' 'imlib2' 'libpng12')
-source=(http://downloads.sourceforge.net/chbg/$pkgname-$pkgver.tgz
+source=(https://downloads.sourceforge.net/chbg/$pkgname-$pkgver.tgz
 	gtk2.patch)
 md5sums=('3ee8b01a7e089570f66d89dac353cc2c'
          '60fa92b11a575041c3a5d1a36c11f4e7')
