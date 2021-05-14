@@ -2,7 +2,7 @@
 pkgname=st-ashin-git
 pkgver=0.8.4
 pkgrel=1
-pkgdesc="My custom build of st patched."
+pkgdesc="My custom build of st patched with ligatures and mouse support."
 arch=(x86_64 i686)
 url="https://github.com/ashincoder/st-ashin.git"
 license=('MIT')
