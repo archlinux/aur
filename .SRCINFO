@@ -9,7 +9,6 @@ pkgbase = st-ashin-git
 	checkdepends = nerd-fonts-fira-code
 	makedepends = git
 	depends = nerd-fonts-fira-code
-	depends = ttf-joypixels
 	depends = libx11
 	provides = st
 	conflicts = st
