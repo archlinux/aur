@@ -1,14 +1,14 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=pikasso-git
-pkgver=r18.45e8709
-pkgrel=2
+pkgver=r42.ab39a72
+pkgrel=1
 pkgdesc="Simple drawing programs using Kirigami for the UI and Rust for the rendering"
-arch=('x86_64')
+arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://invent.kde.org/graphics/pikasso"
 license=('GPL3')
 depends=('ki18n' 'kconfig' 'kirigami2')
-makedepends=('git' 'extra-cmake-modules' 'corrosion-git')
+makedepends=('git' 'extra-cmake-modules' 'corrosion-git' 'qt5-svg' 'qt5-tools')
 provides=('pikasso')
 conflicts=('pikasso')
 source=("git+${url}.git")
@@ -23,12 +23,10 @@ pkgver() {
 }
 
 build() {
-  cd "${pkgname%-git}"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -B build
-  make -C build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo -B build -S "${pkgname%-git}"
+  cmake --build build --config RelWithDebInfo
 }
 
 package() {
-  cd "${pkgname%-git}"
-  make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
+  DESTDIR="${pkgdir}" cmake --install build --config RelWithDebInfo
 }
