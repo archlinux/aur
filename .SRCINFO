@@ -1,9 +1,9 @@
 pkgbase = pacdiff-pacman-hook-git
 	pkgdesc = Pacman hook to run pacdiff automatically
 	pkgver = r45.647f466
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/desbma/pacman-hooks
-	arch = x86_64
+	arch = any
 	license = GPL
 	depends = git
 	depends = pacman-contrib

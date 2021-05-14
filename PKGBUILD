@@ -2,9 +2,9 @@
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=pacdiff-pacman-hook-git
 pkgver=r45.647f466
-pkgrel=1
+pkgrel=2
 pkgdesc='Pacman hook to run pacdiff automatically'
-arch=('x86_64')
+arch=('any')
 _gitname='pacman-hooks'
 url="https://github.com/desbma/${_gitname}"
 license=('GPL')
