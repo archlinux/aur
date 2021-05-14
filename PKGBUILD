@@ -1,6 +1,6 @@
 # Maintainer: ShyanJMC
 
-pkgname=nginx_minimal
+pkgname=nginx-minimal
 pkgver=1.20
 pkgrel=1
 arch=('any')
