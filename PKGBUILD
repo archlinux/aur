@@ -1,7 +1,7 @@
 # Maintainer Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=plasma-angelfish-git
-pkgver=v1.8.0.r43.g14ecc30
+pkgver=v21.05.r6.g3e11c22
 pkgrel=1
 arch=('x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 pkgdesc="Web browser for Plasma Mobile"
@@ -24,10 +24,10 @@ pkgver() {
 }
 
 build() {
-  cmake -B build -S angelfish -DCMAKE_INSTALL_PREFIX=/usr
-  cmake --build build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo -B build -S angelfish
+  cmake --build build --config RelWithDebInfo
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install build
+  DESTDIR="${pkgdir}" cmake --install build --config RelWithDebInfo
 }
