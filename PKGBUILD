@@ -7,13 +7,18 @@ pkgrel=1
 pkgdesc="A simple mixer applet for the system tray"
 arch=('i686' 'x86_64')
 #url="http://sandbox.ltmnet.com/page/projects/fbmix"
-url="http://sandbox.ltmnet.com/"
+url="http://ltmnet.com/"
 license=('GPL')
 depends=('alsa-lib' 'vte')
 #source=("http://sandbox.ltmnet.com/downloads/${pkgname}-${pkgver}.tar.bz2")
 source=("${pkgname}-${pkgver}.tar.bz2")
 #md5sums=('12d3571658b6fa5b5f3bbb3dad9493d1')
 md5sums=('3aee7ddc68facc966f0146d1a8f7e6c8')
+
+prepare() {
+  cd "$srcdir/$pkgname"
+  sed -e '/^CFLAGS=/s,$, -fcommon,' -i Makefile
+}
 
 build() {
   #cd "$srcdir/$pkgname-$pkgver"
