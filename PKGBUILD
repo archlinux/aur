@@ -7,15 +7,15 @@ pkgbase=pipewire-common-git
 pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-alsa-git
          pipewire-common-jack-git pipewire-common-pulse-git
          gst-plugin-pipewire-common-git)
-pkgver=0.3.27.r82.ga6c0e35b
+pkgver=0.3.27.r94.g7065a450
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
-license=(MIT LGPL)
+license=(MIT)
 arch=(x86_64)
 makedepends=(git meson doxygen graphviz xmltoman
              ncurses libsndfile alsa-lib dbus rtkit
-             libpulse sdl2 gst-plugins-base-libs
+             libpulse avahi sdl2 gst-plugins-base-libs
              bluez-libs sbc libldac libopenaptx libfdk-aac)
 source=("git+https://gitlab.freedesktop.org/pipewire/pipewire.git")
 sha256sums=('SKIP')
@@ -59,8 +59,10 @@ _pick() {
 _ver=${pkgver:0:3}
 
 package_pipewire-common-git() {
+  license=(MIT LGPL)
   depends=(rtkit libdbus-1.so libncursesw.so libsndfile.so
            libudev.so libasound.so libsystemd.so libpulse.so
+           libavahi-common.so libavahi-client.so
            libbluetooth.so libsbc.so libldacBT_enc.so
            libopenaptx.so libfdk-aac.so)
   optdepends=('pipewire-common-docs-git: Documentation'
@@ -118,6 +120,7 @@ package_pipewire-common-alsa-git() {
 
 package_pipewire-common-jack-git() {
   pkgdesc+=" - JACK support"
+  license=(MIT GPL)
   depends=(pipewire-common-git libpipewire-$_ver.so bash)
   provides=(pipewire-jack)
   conflicts=(pipewire-jack)
