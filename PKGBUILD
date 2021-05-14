@@ -3,14 +3,14 @@
 # Previous Contributor: Felix Serrano Blanco <felixseblanc@gmail.com>
 
 pkgname=libtd-git
-pkgver=1.7.0.r747.gb342ec33
+pkgver=1.7.0.r760.g445183e5
 pkgrel=1
 pkgdesc='TDLib (Telegram Database library) is a cross-platform library for building Telegram clients (Git)'
 arch=('x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url='https://core.telegram.org/tdlib'
 license=('Boost')
 depends=('openssl' 'zlib')
-makedepends=('git' 'gcc' 'make' 'cmake' 'gperf' 'php')
+makedepends=('git' 'gcc' 'make' 'cmake' 'gperf')
 provides=('libtd')
 conflicts=('telegram-tdlib' 'libtd')
 source=("${pkgname%-git}::git+https://github.com/tdlib/td.git")
@@ -22,10 +22,10 @@ pkgver() {
 }
 
 build() {
-  cmake -B build -S "${pkgname%-git}" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
-  cmake --build build --config Release
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo -B build -S "${pkgname%-git}"
+  cmake --build build --config RelWithDebInfo
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install build --config Release
+  DESTDIR="${pkgdir}" cmake --install build --config RelWithDebInfo
 }
