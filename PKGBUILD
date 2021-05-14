@@ -21,6 +21,6 @@ package() {
     tar -xf icons.tar.gz -C $pkgdir/usr/share/icons
     mv * $pkgdir/usr/share/ugene
     ln -s /usr/share/ugene/ugene "$pkgdir"/usr/bin/ugene
-    install -dm 755 ${srcdir}/ugene.desktop "$pkgdir"/usr/share/applications/ugene.desktop
+    install -D -m 755 ${srcdir}/*.desktop "${pkgdir}/usr/share/applications"
 }
 
