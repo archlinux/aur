@@ -36,7 +36,6 @@ prepare() {
 
 build() {
     cd ${_pkgname}-${pkgver}
-    sed -i "s|get_option('html_manual')|get_option('html_manual') and not get_option('manpages')|" doc/meson.build
     _opts=('-Ddocumentation=enabled'
            '-Dhtml_manual=false'
            '-Dmanpages=true'
