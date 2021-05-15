@@ -7,7 +7,7 @@ pkgdesc="free population genetics software"
 arch=('x86_64')
 url="http://popart.otago.ac.nz/index.shtml"
 license=('custom')
-dependence=(marble lpsolve qt5-base)
+dependence=('marble' 'lpsolve' 'qt5-base')
 source=("git+https://github.com/jessicawleigh/popart-current.git" "popart.desktop")
 md5sums=('SKIP'
          'e18832e646727e00df1b21bb1fedacff')
