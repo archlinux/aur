@@ -16,7 +16,7 @@ arch=('x86_64')
 url="https://katacontainers.io/"
 license=('Apache')
 makedepends=(
-  'go'
+  'go1.15'
   #'yq2-bin'
 )
 _gh_org="github.com/kata-containers"
@@ -43,8 +43,10 @@ b2sums=(
 )
 
 prepare(){
-  #install -dm0755 "${srcdir}/bin"
+  install -dm0755 "${srcdir}/bin"
   #ln -sf "$(command -v yq)" "${srcdir}/bin/yq"
+  ln -sf "$(command -v go1.15)" "${srcdir}/bin/go"
+  export PATH="${srcdir}/bin${PATH:+:${PATH}}"
 
   install -dm0755 "${srcdir}/src/${_gh_org}"
   for i in ksm-throttler proxy runtime shim; do
