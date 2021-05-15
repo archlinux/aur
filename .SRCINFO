@@ -1,4 +1,4 @@
-pkgbase = aliview
+pkgbase = aliview-bin
 	pkgdesc = Software for aligning viewing and editing dna/aminoacid sequences.
 	pkgver = 1.27
 	pkgrel = 1
@@ -9,5 +9,5 @@ pkgbase = aliview
 	source = http://www.ormbunkar.se/aliview/downloads/linux/linux-version-1.27/aliview.tgz
 	sha256sums = c1ae05b949673540cf23cb6ebbcdc16689ae9c00ab528975f0665503440bdcd5
 
-pkgname = aliview
+pkgname = aliview-bin
 
