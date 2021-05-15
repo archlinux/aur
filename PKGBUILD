@@ -1,23 +1,23 @@
 # Maintainer: Klaus-Dieter Schmatz <tucuxir at sapo dot pt>
 pkgname=st-tucuxi-git
-pkgver=0.8.2.r75.g23e49e0
-pkgrel=2
+pkgver=0.8.2.r76.g8956136
+pkgrel=1
 pkgdesc="A customized ST build"
-arch=('x86_64')
+arch=("x86_64")
 url="https://gitlab.com/tuxaua/st"
-license=('MIT')
+license=("MIT")
 groups=()
-depends=('libx11' 'libxft')
-makedepends=('ncurses' 'libxext' 'git')
+depends=("libx11" "libxft")
+makedepends=("ncurses" "libxext" "git")
 optdepends=()
-provides=('st')
-conflicts=('st')
+provides=("st")
+conflicts=("st")
 replaces=()
 backup=()
 options=()
 install=
 source=("${pkgname%-git}::git+https://gitlab.com/tuxaua/st.git")
-md5sums=('SKIP')
+md5sums=("SKIP")
 
 pkgver() {
   cd "${pkgname%-git}"
