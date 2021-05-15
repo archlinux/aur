@@ -1,0 +1,18 @@
+pkgbase = python-debmutate
+	pkgdesc = Format-preserving manipulation of Debian control files in Python
+	pkgver = 0.34
+	pkgrel = 1
+	url = https://salsa.debian.org/jelmer/debmutate
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	depends = python-debian
+	depends = python-merge3
+	depends = python-tr
+	optdepends = python-semver
+	optdepends = python-tomlkit
+	source = https://salsa.debian.org/jelmer/debmutate/-/archive/0.34/debmutate-0.34.tar.gz
+	sha256sums = af0fdf739753b7943399d86851a7343b26d957a95f09fa0cbf15234826e69e72
+
+pkgname = python-debmutate
+
