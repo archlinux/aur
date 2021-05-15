@@ -1,5 +1,5 @@
 pkgbase = blesh-git
-	pkgdesc = A replacement for bash's line editor with advanced features
+	pkgdesc = Custom bash line editor with enhanced features
 	pkgver = 0.4.0_devel3.r1508.0bc2660
 	pkgrel = 1
 	url = https://github.com/akinomyoga/ble.sh
