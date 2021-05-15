@@ -1,7 +1,7 @@
 pkgbase = ucollage
 	pkgdesc = An extensible command line image viewer inspired by vim
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ckardaris/ucollage
 	arch = any
 	license = GPL3
