@@ -1,7 +1,7 @@
 # Maintainer: numToStr <sudo@vikasraj.dev>
 
 pkgname=snm
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Smol Node Manager written in Rust"
 arch=('x86_64' 'aarch64' 'armv7')
