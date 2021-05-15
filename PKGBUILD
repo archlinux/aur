@@ -31,4 +31,8 @@ package() {
     # Fix "no icon" issue (see also https://github.com/edrlab/thorium-reader/issues/1241)
     mv ${pkgdir}/usr/share/icons/hicolor/0x0 ${pkgdir}/usr/share/icons/hicolor/1024x1024
     install -Dm 644 "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/thorium.png" "${pkgdir}/usr/share/pixmaps/thorium.png"
+
+    # Do not change the icon of *.zip files to `x-office-document`.
+    # See also: https://github.com/edrlab/thorium-reader/issues/1468
+    patch -d "${pkgdir}" --strip=1 < ../no_zip_mime.patch
 }
