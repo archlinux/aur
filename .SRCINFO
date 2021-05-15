@@ -1,6 +1,6 @@
 pkgbase = yaru-git
 	pkgdesc = Yaru default ubuntu theme
-	pkgver = 21.04.1.r76.g31e57c8a7
+	pkgver = 21.04.1.r55.g1b607eefa
 	pkgrel = 1
 	url = https://github.com/ubuntu/yaru
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = yaru-git
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://github.com/ubuntu/yaru#branch=gnome-shell-40
+	source = git+https://github.com/ubuntu/yaru
 	sha256sums = SKIP
 
 pkgname = yaru-sound-theme-git
