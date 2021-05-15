@@ -1,7 +1,7 @@
 pkgbase = garbage
 	pkgdesc = Command-line interface to the FreeDesktop Trash can
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sr.ht/~iptq/garbage
 	arch = any
 	license = GPL3
