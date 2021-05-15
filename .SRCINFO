@@ -1,7 +1,7 @@
 pkgbase = netscripts-atzlinux-git
 	pkgdesc = some simple network scripts no need any parameter
 	pkgver = 9d3542c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.atzlinux.com
 	install = netscripts-atzlinux-git.install
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = netscripts-atzlinux-git
 	source = git+https://gitee.com/atzlinux/netscripts-atzlinux.git
 	source = netscripts-atzlinux-git.install
 	sha256sums = SKIP
-	sha256sums = e656428849ba60442d2bb501d4f4055eab0962f3e9ede8a5f39f9ffa8c546bc0
+	sha256sums = 8ff2344442fce863896e9dddac43f5547010c367a5a8ff6d4a789621f01ab753
 
 pkgname = netscripts-atzlinux-git
 
