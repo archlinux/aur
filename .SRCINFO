@@ -1,0 +1,17 @@
+pkgbase = miller-bin
+	pkgdesc = awk, sed, cut, join, and sort for data formats such as CSV, TSV, tabular JSON and positionally-indexed
+	pkgver = 5.10.2
+	pkgrel = 1
+	url = https://miller.readthedocs.io
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	provides = miller
+	conflicts = miller
+	source = LICENSE.txt::https://raw.githubusercontent.com/johnkerl/miller/main/LICENSE.txt
+	sha256sums = SKIP
+	source_x86_64 = https://github.com/johnkerl/miller/releases/download/v5.10.2/mlr.linux.x86_64
+	sha256sums_x86_64 = 777dffb636ea1570672bdf05182020cff51ea25c31108417118186ea7bfac4a7
+
+pkgname = miller-bin
+
