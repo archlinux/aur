@@ -13,9 +13,9 @@ pkgbase = extra-cmake-modules-git
 	provides = extra-cmake-modules
 	conflicts = extra-cmake-modules
 	source = git+https://invent.kde.org/frameworks/extra-cmake-modules.git
-	source = https://gitweb.gentoo.org/repo/gentoo.git/plain/kde-frameworks/extra-cmake-modules/files/extra-cmake-modules-5.82.0-sphinx-4.patch
+	source = https://invent.kde.org/frameworks/extra-cmake-modules/-/merge_requests/121.patch
 	sha256sums = SKIP
-	sha256sums = 5c3bb91ff092c9bc671d01eb9af4bbbd8f5a84178a12a7311a1efb5711253f01
+	sha256sums = 8a2af94ca2a84e812b8dc30ccb73863b1e9683946990908c1095fe4f1d18a3eb
 
 pkgname = extra-cmake-modules-git
 
