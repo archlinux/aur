@@ -1,54 +1,71 @@
 pkgbase = arcan
 	pkgdesc = Game Engine meets a Display Server meets a Multimedia Framework
-	pkgver = 0.5.5
-	pkgrel = 2
+	pkgver = 0.6.1pre1
+	pkgrel = 1
 	url = https://arcan-fe.com
 	arch = x86_64
 	license = GPL
 	license = LGPL
 	license = BSD
 	makedepends = cmake
-	makedepends = fuse3
-	makedepends = libvncserver
-	makedepends = lua51
+	makedepends = meson
 	makedepends = ruby
-	source = arcan-0.5.5.tar.gz::https://github.com/letoram/arcan/archive/0.5.5.tar.gz
-	sha256sums = 578ed860a99a02cf1cf963efac830eb8af08093e4322832b2be6554d8c922ff2
-
-pkgname = arcan
-	depends = apr
-	depends = harfbuzz-icu
+	makedepends = fuse3
+	makedepends = openhmd
+	depends = espeak-ng
+	depends = freetype2
+	depends = harfbuzz
+	depends = leptonica
+	depends = libseccomp
+	depends = libuvc
 	depends = libvncserver
 	depends = lua51
+	depends = mesa
 	depends = openal
 	depends = sdl
+	depends = sqlite
+	depends = tesseract
+	depends = wayland
 	depends = vlc
+	source = arcan-0.6.1pre1.tar.gz::https://github.com/letoram/arcan/archive/0.6.1pre1.tar.gz
+	sha256sums = 23fc768f006e6a19e1088451aaf95ca1e7d2b5c8e78d8e3954002ef7eba32613
+
+pkgname = arcan
 
 pkgname = arcan-acfgfs
 	pkgdesc = Arcan virtual filesystem for working with the format that durden (and others) provide over a domain socket
+	depends = arcan
 	depends = fuse3
 
 pkgname = arcan-aclip
 	pkgdesc = Arcan clipboard integration, similarly to how "xclip" works for Xorg
 	depends = arcan
 
+pkgname = arcan-adbgcapture
+	pkgdesc = debugging tool that uses arcan-tui as a frontend to launch a debugger or otherwise interactively control what to do with a process that has crashed
+	depends = arcan
+	optdepends = gdb
+	optdepends = lldb
+
+pkgname = arcan-adbginject
+	pkgdesc = a trivial dynamic interposition library for providing some arcan UI interfacing
+	depends = arcan
+
 pkgname = arcan-aloadimage
 	pkgdesc = Arcan sandboxed image loader, supporting multi-process privilege separation, playlists and so on - similar to xloadimage
 	depends = arcan
-
-pkgname = arcan-leddec
-	pkgdesc = A simple skeleton that can be used for interfacing with custom LED controllers using Arcan
-	depends = arcan
-
-pkgname = arcan-ltui
-	pkgdesc = A patched version of the Lua interactive CLI that loads in the shmif-tui (text-user interfaces)
-	depends = arcan
+	depends = libseccomp
 
 pkgname = arcan-shmmon
 	pkgdesc = Simple shmif- debugging aid for Arcan
 	depends = arcan
 
+pkgname = arcan-trayicon
+	pkgdesc = a simple tool that connects to arcan as an ICON
+	depends = arcan
+
 pkgname = arcan-vrbridge
 	pkgdesc = Aggregates samples from VR related SDKs and binds into a single avatar in a way that integrates with the core engine VR path
 	depends = arcan
+	depends = openhmd
 

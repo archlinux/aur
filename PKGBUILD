@@ -7,25 +7,41 @@
 pkgname=('arcan'
          'arcan-acfgfs'
          'arcan-aclip'
+         'arcan-adbgcapture'
+         'arcan-adbginject'
          'arcan-aloadimage'
-         'arcan-leddec'
-         'arcan-ltui'
          'arcan-shmmon'
+         'arcan-trayicon'
          'arcan-vrbridge')
-pkgver=0.5.5
-pkgrel=2
+pkgver=0.6.1pre1
+pkgrel=1
 pkgdesc='Game Engine meets a Display Server meets a Multimedia Framework'
 arch=('x86_64')
 url='https://arcan-fe.com'
 license=('GPL' 'LGPL' 'BSD')
+depends=('espeak-ng'
+         'freetype2'
+         'harfbuzz'
+         'leptonica'
+         'libseccomp'
+         'libuvc'
+         'libvncserver'
+         'lua51' # Doesn't compile against LuaJIT 2.1 due to deprecated ref API usage
+         'mesa'
+         'openal'
+         'sdl'
+         'sqlite'
+         'tesseract'
+         'wayland'
+         'vlc')
 makedepends=('cmake'
+             'meson'
+             'ruby'
+             # Dependencies for tools
              'fuse3'
-             'libvncserver'
-             'lua51' # Doesn't compile against LuaJIT 2.1 due to deprecated ref API usage
-             # TODO: vrbridge wants openhmd
-             'ruby')
+             'openhmd')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/letoram/arcan/archive/$pkgver.tar.gz")
-sha256sums=('578ed860a99a02cf1cf963efac830eb8af08093e4322832b2be6554d8c922ff2')
+sha256sums=('23fc768f006e6a19e1088451aaf95ca1e7d2b5c8e78d8e3954002ef7eba32613')
 
 build() {
   cd "$pkgbase-$pkgver"
@@ -35,45 +51,39 @@ build() {
   ruby -C doc -Ku docgen.rb mangen
 
   # Build main library/application
-  mkdir -p build
-  env -C build cmake \
+  cmake -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DDISABLE_JIT=ON \
-    -DLUA_INCLUDE_DIR=/usr/include/lua5.1 \
     -DDISTR_TAG=arch \
-    -DENGINE_BUILDTAG="$pkgver" \
-    -DDISABLE_HIJACK=OFF \
-    -DVIDEO_PLATFORM=sdl \
-    ../src
+    -DENGINE_BUILDTAG="$pkgver-$pkgrel" \
+    -DLUA_INCLUDE_DIR=/usr/include/lua5.1 \
+    -DHYBRID_HEADLESS=ON \
+    -DHYBRID_SDL=ON \
+    -DSTATIC_LIBUVC=OFF \
+    src
   make -C build
 
   # Build misc utils
-  ## waybridge is disabled on VIDEO_PLATFORM=sdl
-  ## leddec and ltui are missing install rules, so build with install RPATH
-  for tool in acfgfs aclip aloadimage leddec ltui shmmon vrbridge; do
-    mkdir -p "build-$tool"
-    env -C "build-$tool" cmake \
+  for tool in adbgcapture adbginject trayicon; do
+    arch-meson "src/tools/$tool" "build-$tool"
+    meson compile -C "build-$tool"
+  done
+  for tool in acfgfs aclip aloadimage shmmon vrbridge; do
+    cmake -B "build-$tool" \
       -DCMAKE_INSTALL_PREFIX=/usr \
-      -DARCAN_SHMIF_INCLUDE_DIR=../src/shmif \
-      -DARCAN_SHMIF_LIBRARY=../build/shmif/libarcan_shmif.so \
-      -DARCAN_SHMIF_EXT_LIBRARY=../build/shmif/libarcan_shmif_ext.so \
-      -DARCAN_TUI_INCLUDE_DIR=../src/shmif \
-      -DARCAN_TUI_LIBRARY=../build/shmif/libarcan_tui.so \
+      -DARCAN_SHMIF_INCLUDE_DIR=src/shmif \
+      -DARCAN_SHMIF_LIBRARY=build/shmif/libarcan_shmif.so \
+      -DARCAN_SHMIF_EXT_LIBRARY=build/shmif/libarcan_shmif_ext.so \
+      -DARCAN_TUI_INCLUDE_DIR=src/shmif \
+      -DARCAN_TUI_LIBRARY=build/shmif/libarcan_tui.so \
       -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
-      "../src/tools/$tool"
+      -Wno-dev \
+      "src/tools/$tool"
     make -C "build-$tool"
   done
 }
 
 package_arcan() {
-  depends=('apr'
-           'harfbuzz-icu'
-           'libvncserver'
-           'lua51'
-           'openal'
-           'sdl'
-           'vlc')
-
   cd "$pkgbase-$pkgver"
 
   make -C build DESTDIR="$pkgdir" install
@@ -82,7 +92,8 @@ package_arcan() {
 
 package_arcan-acfgfs() {
   pkgdesc='Arcan virtual filesystem for working with the format that durden (and others) provide over a domain socket'
-  depends=('fuse3')
+  depends=('arcan'
+           'fuse3')
 
   cd "$pkgbase-$pkgver"
 
@@ -98,9 +109,30 @@ package_arcan-aclip() {
   make -C build-aclip DESTDIR="$pkgdir" install
 }
 
+package_arcan-adbgcapture() {
+  pkgdesc='debugging tool that uses arcan-tui as a frontend to launch a debugger or otherwise interactively control what to do with a process that has crashed'
+  depends=('arcan')
+  optdepends=('gdb'
+              'lldb')
+
+  cd "$pkgbase-$pkgver"
+
+  DESTDIR="$pkgdir" meson install -C build-adbgcapture
+}
+
+package_arcan-adbginject() {
+  pkgdesc='a trivial dynamic interposition library for providing some arcan UI interfacing'
+  depends=('arcan')
+
+  cd "$pkgbase-$pkgver"
+
+  DESTDIR="$pkgdir" meson install -C build-adbginject
+}
+
 package_arcan-aloadimage() {
   pkgdesc='Arcan sandboxed image loader, supporting multi-process privilege separation, playlists and so on - similar to xloadimage'
-  depends=('arcan')
+  depends=('arcan'
+           'libseccomp')
 
   cd "$pkgbase-$pkgver"
 
@@ -116,29 +148,21 @@ package_arcan-shmmon() {
   make -C build-shmmon DESTDIR="$pkgdir" install
 }
 
+package_arcan-trayicon() {
+  pkgdesc='a simple tool that connects to arcan as an ICON'
+  depends=('arcan')
+
+  cd "$pkgbase-$pkgver"
+
+  DESTDIR="$pkgdir" meson install -C build-trayicon
+}
+
 package_arcan-vrbridge() {
   pkgdesc='Aggregates samples from VR related SDKs and binds into a single avatar in a way that integrates with the core engine VR path'
-  depends=('arcan')
+  depends=('arcan'
+           'openhmd')
 
   cd "$pkgbase-$pkgver"
 
   make -C build-vrbridge DESTDIR="$pkgdir" install
-}
-
-package_arcan-leddec() {
-  pkgdesc='A simple skeleton that can be used for interfacing with custom LED controllers using Arcan'
-  depends=('arcan')
-
-  cd "$pkgbase-$pkgver"
-
-  install -Dm755 build-leddec/leddec "$pkgdir/usr/bin/arcan_leddec"
-}
-
-package_arcan-ltui() {
-  pkgdesc='A patched version of the Lua interactive CLI that loads in the shmif-tui (text-user interfaces)'
-  depends=('arcan')
-
-  cd "$pkgbase-$pkgver"
-
-  install -Dm755 build-ltui/ltui "$pkgdir/usr/bin/arcan_ltui"
 }
