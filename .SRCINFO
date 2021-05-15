@@ -1,18 +1,16 @@
 pkgbase = gnome-text-editor
 	pkgdesc = Simple text editor that focuses on session management
-	pkgver = 3.39.92
+	pkgver = 40.0
 	pkgrel = 1
-	url = https://gitlab.gnome.org/chergert/gnome-text-editor
-	arch = i686
+	url = https://gitlab.gnome.org/GNOME/gnome-text-editor
 	arch = x86_64
-	arch = armv7h
 	arch = aarch64
 	license = GPL3
 	makedepends = meson
 	depends = gtksourceview5
 	depends = libadwaita
-	source = https://gitlab.gnome.org/chergert/gnome-text-editor/-/archive/3.39.92/gnome-text-editor-3.39.92.tar.gz
-	sha256sums = d36adbf0e2c6d74380986d64aaaa8ad0aa39ffabb304648a94acfa0b2f9771b4
+	source = https://gitlab.gnome.org/GNOME/gnome-text-editor/-/archive/0e72a3a1535821301f9675566154586d53f2ea8d/gnome-text-editor-0e72a3a1535821301f9675566154586d53f2ea8d.tar.gz
+	sha256sums = 54faa47758b8fb0be25ff5dc0c54d768a35d18d4a0d2b94c3ef48dbefd073ff3
 
 pkgname = gnome-text-editor
 

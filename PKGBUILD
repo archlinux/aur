@@ -1,19 +1,20 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=gnome-text-editor
-pkgver=3.39.92
+pkgver=40.0
 pkgrel=1
-pkgdesc="Simple text editor that focuses on session management"
-url="https://gitlab.gnome.org/chergert/gnome-text-editor"
-license=("GPL3")
-arch=(i686 x86_64 armv7h aarch64)
+pkgdesc='Simple text editor that focuses on session management'
+url='https://gitlab.gnome.org/GNOME/gnome-text-editor'
+license=('GPL3')
+arch=(x86_64 aarch64)
 depends=(gtksourceview5 libadwaita)
 makedepends=(meson)
-source=("${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('d36adbf0e2c6d74380986d64aaaa8ad0aa39ffabb304648a94acfa0b2f9771b4')
+_commit='0e72a3a1535821301f9675566154586d53f2ea8d' # 40.0
+source=("${url}/-/archive/${_commit}/${pkgname}-${_commit}.tar.gz")
+sha256sums=('54faa47758b8fb0be25ff5dc0c54d768a35d18d4a0d2b94c3ef48dbefd073ff3')
 
 build() {
-	arch-meson ${pkgname}-${pkgver} build
+	arch-meson ${pkgname}-${_commit} build
 	meson compile -C build
 }
 
