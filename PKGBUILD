@@ -2,7 +2,7 @@
 
 pkgname=python-embit-git
 pkgver=r76.6047319
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal bitcoin library for MicroPython and Python3 with a focus on embedded systems."
 arch=('any')
 url="https://github.com/diybitcoinhardware/embit"
