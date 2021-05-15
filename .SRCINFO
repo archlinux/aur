@@ -1,11 +1,12 @@
 pkgbase = midi-trigger.lv2-git
 	pkgdesc = LV2 plugin which generates MIDI notes from detected audio signal peaks.
 	pkgver = v0.0.3.r2.g83c4ad6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/metachronica/audio-dsp-midi-trigger
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = lv2
 	depends = glibc
 	provides = midi-trigger.lv2
 	conflicts = midi-trigger.lv2
