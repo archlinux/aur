@@ -7,7 +7,7 @@ ENABLE_APPINDICATOR=1
 ENABLE_GNOME=0
 
 pkgname=pamac-all
-pkgver=10.1.1
+pkgver=10.1.2
 pkgrel=1
 _pkgfixver=$pkgver
 
@@ -26,7 +26,7 @@ provides=("pamac" "pamac-aur" "pamac-aur-git")
 options=(!emptydirs)
 install=pamac.install
 source=("pamac-$pkgver.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.gz") 
-sha256sums=('7477130baee00a1622e4f10964a36dea44b8cacd36263de470b97dc121c95ec2')
+sha256sums=('0a71762b12cb5c8b713da3773d7a0efc6f2e91f4b453609373e570b22a2009cf')
 define_meson=''
 if [ "${ENABLE_FLATPAK}" = 1 ]; then
   depends+=('flatpak')
