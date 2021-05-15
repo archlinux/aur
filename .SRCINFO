@@ -1,0 +1,14 @@
+pkgbase = popart
+	pkgdesc = free population genetics software
+	pkgver = 1.7
+	pkgrel = 1
+	url = http://popart.otago.ac.nz/index.shtml
+	arch = x86_64
+	license = custom
+	source = git+https://github.com/jessicawleigh/popart-current.git
+	source = popart.desktop
+	md5sums = SKIP
+	md5sums = 9e8d5341ab796a37b8c0bb553a6656a7
+
+pkgname = popart
+
