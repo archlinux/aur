@@ -19,7 +19,7 @@ pkgbase = blesh-git
 	source = blesh-update.sh
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = c454a07ba7b4912b0f1bfa91f015b379
+	md5sums = 3cf758a103b08cc3f95278cc6954d83b
 
 pkgname = blesh-git
 
