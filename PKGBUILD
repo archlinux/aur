@@ -7,12 +7,13 @@ url='https://github.com/Dyalog/ride'
 arch=('x86_64')
 license=('MIT')
 depends=(
-    'npm'
     'nodejs'
+    'dyalog-bin'
 )
-optdepends=(
+makedepends=(
+    'npm'
+    'git'
 )
-makedepends=('git')
 source=(
     'git+https://github.com/dyalog/ride'
     'ride.sh'
