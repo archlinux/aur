@@ -1,7 +1,7 @@
-
-# Maintainer: Morten Linderud <morten@linderud.pw> 
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Morten Linderud <morten@linderud.pw> 
 pkgname=nerd-fonts-git
-pkgver=r549.c89aeaa7
+pkgver=2.1.0.r139.gbc4416e1
 pkgrel=1
 pkgdesc="Iconic font aggregator, collection, and patcher: 34 patched fonts (77k+ variations). Includes popular glyph collections such as Font Awesome & fonts such as Hack"
 arch=('any')
@@ -11,11 +11,11 @@ makedepends=('git')
 conflicts=('nerd-fonts')
 provides=('nerd-fonts')
 source=('git+https://github.com/ryanoasis/nerd-fonts.git')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd nerd-fonts
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
 }
 
 package() {
