@@ -1,11 +1,11 @@
 # Maintainer: zer0def <zer0def@github>
 # Contributor: Kaushal M <kshlmster cat gmail dog com>
 # Contributor: Stefan Zwanenburg <stefan cat zwanenburg dog info>
-pkgbase=kata-containers-guest
+pkgbase=kata1-containers-guest
 pkgname=(
-  kata-agent
-  kata-linux-container
-  kata-containers-image
+  kata1-agent
+  kata1-linux-container
+  kata1-containers-image
 )
 pkgver=1.12.1
 _pkgver=${pkgver/\~/-}
@@ -147,12 +147,12 @@ build(){
   _kata_image_build
 }
 
-package_kata-agent(){
+package_kata1-agent(){
   cd "${srcdir}/src/${_gh_org}/agent"
   GOPATH="${srcdir}" make install DESTDIR="${pkgdir}" BINDIR="/usr/bin" PKGLIBEXECDIR="/usr/lib/kata-containers" LIBEXECDIR="/usr/lib"
 }
 
-package_kata-containers-image(){
+package_kata1-containers-image(){
   install=kata-containers-guest.install
   local -r _img_filename="kata-containers-${_pkgver%%~*}-arch-systemd-image.img" _initrd_filename="kata-containers-${_pkgver%%~*}-arch-agent-initrd.img"
   install -Dm 0644 "${srcdir}/osbuilder-${_pkgver}/image-builder/kata-containers.img" "${pkgdir}/usr/share/kata-containers/${_img_filename}"
@@ -163,7 +163,7 @@ package_kata-containers-image(){
   popd
 }
 
-package_kata-linux-container(){
+package_kata1-linux-container(){
   install -D -m 0644 "${srcdir}/linux-${_kata_kernel_ver}/vmlinux" "${pkgdir}/usr/share/kata-containers/vmlinux-${_kata_kernel_ver}.container"
   pushd "${pkgdir}/usr/share/kata-containers"
   ln -sf "vmlinux-${_kata_kernel_ver}.container" vmlinux.container
