@@ -2,7 +2,7 @@
 
 _pkgname=econnman
 pkgname=$_pkgname-git
-pkgver=1.1.0.r19.g5959946
+pkgver=1.1.0.r25.g18e7be6
 pkgrel=1
 pkgdesc="Enlightenment ConnMan user interface - Development version"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-efl' 'connman')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("git://git.enlightenment.org/apps/$_pkgname.git")
+source=("git+https://git.enlightenment.org/apps/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
