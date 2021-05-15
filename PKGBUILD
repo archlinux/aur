@@ -3,14 +3,14 @@
 
 pkgname=transmission-gtk-git
 _pkgname=transmission
-pkgver=3.00.r145.gfaafc9e02
+pkgver=3.00.r149.g8dd292897
 pkgrel=1
 epoch=2
 pkgdesc="Fast, easy, and free BitTorrent client (GTK+ GUI)(Git version from github repository)"
 arch=('i686' 'x86_64')
 url="http://www.transmissionbt.com/"
 license=('MIT')
-depends=('curl' 'libevent' 'libappindicator-gtk3')
+depends=('curl' 'libevent' 'libappindicator-gtk3' 'libnatpmp')
 makedepends=('intltool' 'git' 'cmake')
 optdepends=('notification-daemon: Desktop notification support'
   	    'transmission-cli: daemon and web support')
@@ -31,8 +31,6 @@ prepare() {
 
 build() {
   cd $srcdir/$_pkgname
-  # working around this bug : https://github.com/transmission/transmission/issues/66
-  #rm m4/glib-gettext.m4
   # cmake part added thanks to glitsj16.
   mkdir -p build
   cd build
