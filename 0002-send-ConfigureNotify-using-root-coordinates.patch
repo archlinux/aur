@@ -1,0 +1,57 @@
+From 6346368b58e054174075f615a836ff3bd9c9f823 Mon Sep 17 00:00:00 2001
+From: foobar0815 <atalanta.bergamo@gmail.com>
+Date: Sun, 1 Mar 2015 20:04:10 +0100
+Subject: [PATCH] send ConfigureNotify using root coordinates
+
+---
+ src/SystemTray.cc | 28 +++++++++++++++++++++++++++-
+ 1 file changed, 27 insertions(+), 1 deletion(-)
+
+diff --git a/src/SystemTray.cc b/src/SystemTray.cc
+index 98115087..c908f3e7 100644
+--- a/src/SystemTray.cc
++++ b/src/SystemTray.cc
+@@ -45,6 +45,30 @@ using std::endl;
+ using std::hex;
+ using std::dec;
+ 
++void getScreenCoordinates(Window win, int x, int y, int &screen_x, int &screen_y) {
++    XWindowAttributes attr;
++    if (XGetWindowAttributes(FbTk::App::instance()->display(), win, &attr) == 0) {
++        return;
++    }
++
++    Window child_win; // not used
++    Window parent_win; // not used
++    Window root_win = 0; 
++    Window* child_windows; // not used
++    unsigned int num_child_windows; // not used
++    XQueryTree(FbTk::App::instance()->display(), win,
++               &root_win,
++               &parent_win,
++               &child_windows, &num_child_windows);
++    if (child_windows != 0) {
++        XFree(child_windows);
++    }
++    XTranslateCoordinates(FbTk::App::instance()->display(),
++                          parent_win, root_win,
++                          x, y,
++                          &screen_x, &screen_y, &child_win);
++}
++
+ /// helper class for tray windows, so we dont call XDestroyWindow
+ class TrayWindow: public FbTk::FbWindow {
+ public:
+@@ -470,9 +494,11 @@ void SystemTray::rearrangeClients() {
+         next_x += h_rot0+bw;
+         translateCoords(orientation(), x, y, w_rot0, h_rot0);
+         translatePosition(orientation(), x, y, h_rot0, h_rot0, 0);
++        int screen_x = 0, screen_y = 0;
++        getScreenCoordinates((*client_it)->window(), (*client_it)->x(), (*client_it)->y(), screen_x, screen_y);
+ 
+         (*client_it)->moveResize(x, y, h_rot0, h_rot0);
+-        (*client_it)->sendConfigureNotify(x, y, h_rot0, h_rot0);
++        (*client_it)->sendConfigureNotify(screen_x, screen_y, h_rot0, h_rot0);
+     }
+ }
+ 

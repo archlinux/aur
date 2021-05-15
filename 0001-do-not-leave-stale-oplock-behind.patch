@@ -1,0 +1,29 @@
+From a5f3eb0d9987d4c0120da3431b73fb523ac0ecba Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Thomas=20L=C3=BCbking?= <thomas.luebking@gmail.com>
+Date: Thu, 30 Jun 2016 15:20:51 +0200
+Subject: [PATCH] do not leave stale oplock behind
+
+deiconify'ing a client on a different workspace left an oplock by a
+shortcut return, turning the client semi- to inaccessible
+
+BUG: 1010
+---
+ src/Window.cc | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/Window.cc b/src/Window.cc
+index 51f5d441..0aa4ec62 100644
+--- a/src/Window.cc
++++ b/src/Window.cc
+@@ -1430,8 +1430,10 @@ void FluxboxWindow::deiconify(bool do_raise) {
+         }
+     }
+ 
+-    if (m_workspace_number != screen().currentWorkspaceID())
++    if (m_workspace_number != screen().currentWorkspaceID()) {
++        oplock = false;
+         return;
++    }
+ 
+     show();
+ 
