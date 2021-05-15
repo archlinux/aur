@@ -12,7 +12,7 @@ install=chroma-extras.install
 source=("http://www.level7.org.uk/chroma/download/${pkgname}.tar.bz2")
 md5sums=('2b36afa56f9447b3a0e2e01f9ce2e060')
 
-build() {
+package() {
     install -d ${pkgdir}/usr/share/chroma/
     mv ${srcdir}/{levels,graphics} ${pkgdir}/usr/share/chroma
 }
