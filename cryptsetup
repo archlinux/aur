@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# sourcing our current rc.conf requires this to be a bash script
+. /usr/lib/rc/functions
+
+case "$1" in
+    start)
+        if [ -e /etc/crypttab ]; then
+             stat_busy "Activating encrypted devices"
+	     awk -f /etc/runit/crypt.awk /etc/crypttab || stat_die cryptsetup
+        fi
+        add_daemon cryptsetup
+        stat_done cryptsetup
+        ;;
+    stop)
+        stat_busy "Stopping encrypted devices"
+        rc=$?
+        read_crypttab do_lock
+        (( rc || $? )) && stat_die
+        rm_daemon cryptsetup
+        stat_done
+        ;;
+
+    *)
+        echo "usage: $0 {start}"
+        exit 1
+        ;;
+esac
