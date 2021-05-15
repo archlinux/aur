@@ -1,3 +1,4 @@
-.PHONY: update-srcinfo
-update-srcinfo:
+update:
+	updpkgsums
 	makepkg --printsrcinfo > .SRCINFO
+.PHONY: update
