@@ -1,45 +1,33 @@
 # Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
+# Merged with official ABS ksnip PKGBUILD by João, 2021/05/15 (all respective contributors apply herein)
+# Contributor: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=ksnip-git
-_gitname=ksnip
-pkgver=continuous.r0.gff73c81
+pkgver=1.9.0_r2028.gff73c81
 pkgrel=1
-pkgdesc='Screenshot tool inspired by Windows Snipping Tool and made with Qt for Linux'
-arch=('i686' 'x86_64')
+pkgdesc='Qt-based screenshot tool that provides many annotation features'
+arch=($CARCH)
 url='https://github.com/DamirPorobic/ksnip'
-license=('GPL')
-depends=(qt5-x11extras
-        kimageannotator
-        kcolorpicker
-        kimageannotator)
-makedepends=(git
-        cmake
-        extra-cmake-modules
-        qt5-tools)
-provides=(ksnip)
-conflicts=(ksnip)
-source=("git+$url")
-md5sums=(SKIP)
-
-prepare(){
-  cd "$srcdir/$_gitname"
-  test -d build || mkdir build
-}
+license=(GPL2)
+depends=(hicolor-icon-theme kimageannotator-git qt5-x11extras)
+makedepends=(git cmake extra-cmake-modules-git  ninja qt5-tools)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'project(ksnip' CMakeLists.txt | sed 's/.* //g' | tr - .)"
+  echo "${_ver%)}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
-build(){
-  cd "$srcdir/$_gitname/build"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-  make
+build() {
+  cmake -S ${pkgname%-git} -B build -G Ninja -DCMAKE_INSTALL_PREFIX='/usr'
+  cmake --build build
 }
 
-package(){
-  cd "$srcdir"/$_gitname/build
-  make DESTDIR="$pkgdir" install
+package() {
+  DESTDIR="$pkgdir" cmake --install build
 }
-
