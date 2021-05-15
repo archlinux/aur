@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Streamdeck Editor
+Comment=Editor for the Elgato Streamdeck Linux Driver Streamdeckd
+Exec=/usr/bin/streamdeckui
+Icon=/usr/local/share/icons/hicolor/256x256/apps/streamdeckui.png
+Terminal=False
