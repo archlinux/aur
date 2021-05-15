@@ -3,7 +3,7 @@
 _pkgname=wootility-lekker-beta
 pkgname=${_pkgname}-appimage
 pkgver=4.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Utility for configuring Wooting keyboards (binary AppImage version)"
 arch=('x86_64')
 url="https://wooting.io/wootility"
@@ -41,7 +41,7 @@ build() {
 package() {
     install -Dpm755 "${_appimage}" "${pkgdir}/opt/${_pkgname}/${_appimage}" # Install $_appimage to /opt/$_pkgname/$_appimage
     install -d "${pkgdir}/usr/bin" # Install /usr/bin
-    ln -s "${pkgdir}/opt/${_pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_pkgname}" # Link /opt/$_pkgname/$_appimage to /usr/bin/$_pkgname
+    ln -s "/opt/${_pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_pkgname}" # Link /opt/$_pkgname/$_appimage to /usr/bin/$_pkgname
 
     # Install desktop entry and icon
     install -Dpm644 "squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"

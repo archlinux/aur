@@ -1,7 +1,7 @@
 pkgbase = wootility-lekker-beta-appimage
 	pkgdesc = Utility for configuring Wooting keyboards (binary AppImage version)
 	pkgver = 4.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wooting.io/wootility
 	arch = x86_64
 	license = unknown
