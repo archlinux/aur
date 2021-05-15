@@ -1,6 +1,6 @@
 pkgbase = chroma-extras
 	pkgdesc = Additional levels for chroma (XOR and enigma sets)
-	pkgver = 1.13
+	pkgver = 1.18
 	pkgrel = 1
 	url = http://www.level7.org.uk/chroma/
 	install = chroma-extras.install
@@ -8,7 +8,7 @@ pkgbase = chroma-extras
 	license = unknown
 	depends = chroma
 	source = http://www.level7.org.uk/chroma/download/chroma-extras.tar.bz2
-	md5sums = e17d71f1fc4b9873b4152d7f3c42a504
+	md5sums = 2b36afa56f9447b3a0e2e01f9ce2e060
 
 pkgname = chroma-extras
 
