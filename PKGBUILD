@@ -1,8 +1,8 @@
 # Maintainer: desbma
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=check-broken-packages-pacman-hook-git
-pkgver=r45.647f466
-pkgrel=2
+pkgver=r55.64d990d
+pkgrel=1
 pkgdesc='Pacman hook to check for broken packages'
 arch=('x86_64')
 _gitname='pacman-hooks'
