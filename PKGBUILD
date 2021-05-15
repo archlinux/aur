@@ -11,7 +11,7 @@ pkgname=(yaru-sound-theme-git
          yaru-metacity-theme-git
          yaru-icon-theme-git
          yaru-session-git)
-pkgver=21.04.1.r76.g31e57c8a7
+pkgver=21.04.1.r55.g1b607eefa
 pkgrel=1
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
@@ -19,7 +19,7 @@ url="https://github.com/ubuntu/yaru"
 license=('GPL3')
 makedepends=(meson sassc git)
 options=('!strip' '!buildflags' 'staticlibs')
-source=("git+https://github.com/ubuntu/yaru#branch=gnome-shell-40")
+source=("git+https://github.com/ubuntu/yaru")
 sha256sums=('SKIP')
 
 pkgver() {
