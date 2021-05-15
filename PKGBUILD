@@ -2,7 +2,7 @@
 # CoMaintainer: Frederic Bezies < fredbezies at gmail dot com>
 
 pkgname=ne-git
-pkgver=3.3.0.r33.g596e422
+pkgver=3.3.0.r41.gfc8d71e
 pkgrel=1
 pkgdesc="A nice developer editor, highly recommended by Epitech 
 (aka Episteak) French 
@@ -23,11 +23,11 @@ pkgver() {
 }
 
 build() {
-cd "$srcdir/ne"
+  cd "$srcdir/ne"
 make 
 }
 
 package() {
-cd "$srcdir/ne"
-make install PREFIX=$pkgdir/usr
+  cd "$srcdir/ne"
+  make install PREFIX=$pkgdir/usr
 }
