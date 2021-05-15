@@ -1,0 +1,6 @@
+pkg/
+src/
+txr/
+
+#
+txr-git-*.tar.???
