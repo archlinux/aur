@@ -3,10 +3,10 @@ pkgver=2.2.8
 pkgrel=1
 pkgdesc="Small Footprint CIM Client Library"
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/sblim/"
+url="https://sourceforge.net/projects/sblim/"
 license=('EPL')
 depends=('curl')
-source=("http://downloads.sourceforge.net/project/sblim/$pkgname/$pkgname-$pkgver.tar.bz2")
+source=("https://downloads.sourceforge.net/project/sblim/$pkgname/$pkgname-$pkgver.tar.bz2")
 md5sums=('0bac0dec19f17ec065b6c332a56d7bae')
 
 build() {
@@ -19,5 +19,3 @@ package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 }
-
-# vim: set ft=sh ts=4 sw=4 noet:
