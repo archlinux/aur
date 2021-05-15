@@ -1,0 +1,14 @@
+pkgbase = gitwrk-bin
+	pkgdesc = Command line interface to manage clipboard
+	pkgver = 1.0.11
+	pkgrel = 1
+	url = https://github.com/unravela/gitwrk
+	arch = x86_64
+	license = Apache
+	provides = gitwrk
+	conflicts = gitwrk-git
+	source_x86_64 = https://github.com/unravela/gitwrk/releases/download/v1.0.11/gitwrk_1.0.11_Linux_x86_64.tar.gz
+	sha512sums_x86_64 = d7195b1109e81c510daa5812497db790388d95db6ed124c6cb6c55cd8d4aec39cc538d1de83ab1ee0625560ab357e8176bc5c06156fe3c8b45b268f2c2a7b837
+
+pkgname = gitwrk-bin
+
