@@ -1,0 +1,15 @@
+pkgbase = dyalog-bin
+	pkgdesc = Dyalog APL interpreter
+	pkgver = 18.0.39712
+	pkgrel = 1
+	url = https://www.dyalog.com/download-zone.htm
+	arch = x86_64
+	license = non-free
+	makedepends = binutils
+	makedepends = tar
+	depends = ncurses5-compat-libs
+	source = dyalog-bin-18.0.39712.deb::https://www.dyalog.com/uploads/php/download.dyalog.com/download.php?file=18.0/linux_64_18.0.39712_unicode.x86_64.deb
+	sha256sums = e2a0fcc2fbdf676226dd6e3a3eee6b0129499ab8f8650ff2d5d45125206061a7
+
+pkgname = dyalog-bin
+
