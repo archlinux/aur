@@ -1,0 +1,21 @@
+diff -r -u orig/src/tools/gen_code/gen_code.c new/src/tools/gen_code/gen_code.c
+--- orig/src/tools/gen_code/gen_code.c	2007-09-15 05:41:58.000000000 +0200
++++ new/src/tools/gen_code/gen_code.c	2021-05-14 19:52:00.184391481 +0200
+@@ -3453,7 +3453,7 @@
+    int first;
+ 
+    fprintf( out, "%sTA_%s - %s\n", prefix, funcInfo->name, funcInfo->hint );
+-   fprintf( out, prefix );
++   fprintf( out, "%s", prefix );
+ 
+    fprintf( out, "\n" );
+    fprintf( out, "%sInput  = ", prefix );
+@@ -3477,7 +3477,7 @@
+             if( inputParamInfo->flags & TA_IN_PRICE_##upperParam ) \
+             { \
+                if( !first ) fprintf( out, ", " ); \
+-               fprintf( out, lowerParam ); \
++               fprintf( out, "%s", lowerParam ); \
+                first = 0; \
+             } \
+          }
