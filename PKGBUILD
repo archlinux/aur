@@ -1,7 +1,7 @@
 # Maintainer: Zhuoyun Wei <wzyboy@wzyboy.org>
 
 pkgname=telegram-purple
-pkgver=1.4.6
+pkgver=1.4.7
 pkgrel=1
 pkgdesc="Adds support for Telegram to Pidgin, Adium, Finch and other Libpurple based messengers."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=("git")
 depends=('glib2' 'libgcrypt>=1.6.0' 'libpurple' 'zlib' 'libwebp')
 conflicts=('telegram-purple-git')
 source=("https://github.com/majn/${pkgname}/releases/download/v${pkgver}/telegram-purple_${pkgver}.orig.tar.gz")
-sha256sums=('68f97a170611f0030b426f9772c382eb4cee9381d24ca32ab254efd0b7970d1b')
+sha256sums=('daf826471cebaab88e7f1f586ee1ab9db664b6c02867998fe339144ccbc7c769')
 
 build() {
   cd "${srcdir}/${pkgname}"
