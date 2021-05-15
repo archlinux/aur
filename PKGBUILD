@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=pika-backup
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Simple backups based on borg"
 arch=('x86_64' 'aarch64')
@@ -8,9 +8,11 @@ url="https://gitlab.gnome.org/World/pika-backup"
 license=('GPL')
 depends=('borg' 'gtk3' 'libhandy' 'python-llfuse')
 makedepends=('git' 'meson' 'rust')
-_commit=0284db7fa31ee15d1e738af6fae53d05b8c96de1 # tag=v0.2.3^0
-source=("git+https://gitlab.gnome.org/World/pika-backup.git#commit=$_commit")
-sha256sums=('SKIP')
+_commit=02cb5d753f861951c98e141f6db90de367f4f9f8 # tag=v0.3.0^0
+source=("git+https://gitlab.gnome.org/World/pika-backup.git#commit=$_commit"
+        'remove-install_script.patch')
+sha256sums=('SKIP'
+            '92f89123e206a02f614faab838ca5bc4524f72283275630c07c8fa9f3aa4f3f6')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
@@ -20,12 +22,11 @@ pkgver() {
 prepare() {
 	cd "$srcdir/$pkgname"
 
-	# Remove single process limit
+	# Remove single process limit for tests
 #	sed -i '/codegen-units/d' Cargo.toml
 
 	# Disable update-desktop-database & gtk-update-icon-cache
-	sed -i '20,24d' data/meson.build
-	sed -i '44,49d' data/meson.build
+	patch --strip=1 data/meson.build $srcdir/remove-install_script.patch
 }
 
 build() {

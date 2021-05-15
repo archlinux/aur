@@ -1,0 +1,17 @@
+--- meson.a.build	2021-05-15 16:05:22.844398824 -0600
++++ meson.b.build	2021-05-15 16:21:51.510645528 -0600
+@@ -53,14 +53,3 @@
+     rename: '@0@.svg'.format(application_id),
+     install_dir: usrdir / 'icons' / 'hicolor' / 'scalable' / 'apps'
+ )
+-
+-meson.add_install_script(
+-    find_program('update-desktop-database').path(),
+-    usrdir / 'applications'
+-)
+-
+-meson.add_install_script(
+-    find_program('gtk-update-icon-cache').path(),
+-    '-qtf',
+-    usrdir / 'icons' / 'hicolor'
+-)
