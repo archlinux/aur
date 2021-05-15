@@ -1,0 +1,14 @@
+pkgbase = python-lsp-jsonrpc
+	pkgdesc = Fork of the python-jsonrpc-server project, maintained by the Spyder IDE team and the community
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/python-lsp/python-lsp-jsonrpc
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-ujson
+	source = https://github.com/python-lsp/python-lsp-jsonrpc/archive/v1.0.0.tar.gz
+	sha256sums = 058f21fa9e5c49fbb978c3f92c4b0ed84f3a859dc6568632cb69ddec2bcb38c0
+
+pkgname = python-lsp-jsonrpc
+
