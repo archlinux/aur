@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=irtt-git
-pkgver=0.9.0.r56.g440389f
-pkgrel=2
+pkgver=0.9.1.r0.g02cd26d
+pkgrel=1
 pkgdesc="Isochronous round-trip tester"
 arch=('i686' 'x86_64')
 url="https://github.com/heistp/irtt"
-license=('GPL3')
+license=('BSD')
 depends=('glibc')
 makedepends=('git' 'go')
 provides=('irtt')
@@ -47,4 +47,5 @@ package() {
   install -Dm755 "irtt" -t "$pkgdir/usr/bin"
   install -Dm644 "doc"/irtt.{html,md} -t "$pkgdir/usr/share/doc/irtt"
   install -Dm644 "doc/irtt.1" -t "$pkgdir/usr/share/man/man1"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/irtt"
 }
