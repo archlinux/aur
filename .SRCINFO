@@ -1,0 +1,21 @@
+pkgbase = freeciv-sdl2
+	pkgdesc = A multiuser clone of the famous Microprose game of Civilization - SDL2 Client
+	pkgver = 2.6.4
+	pkgrel = 1
+	url = http://freeciv.org
+	install = freeciv.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = hicolor-icon-theme
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = sdl2_gfx
+	depends = sdl2_ttf
+	conflicts = freeciv
+	options = !libtool
+	source = http://files.freeciv.org/stable/freeciv-2.6.4.tar.bz2
+	sha256sums = 40db957766acbd49c5af15afd1711da996b6681be7abee3352c5f2539c10c1ce
+
+pkgname = freeciv-sdl2
+
