@@ -1,8 +1,8 @@
 # Maintainer: Alexandre Pujol <alexandre@pujol.io>
 
 pkgname='pass-tomb'
-pkgver=1.2
-pkgrel=2
+pkgver=1.3
+pkgrel=1
 pkgdesc='A pass extension that helps you to keep the whole tree of password encrypted inside a tomb.'
 arch=('any')
 url='https://github.com/roddhjav/pass-tomb'
@@ -13,8 +13,8 @@ depends=(
 )
 source=(https://github.com/roddhjav/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz
         https://github.com/roddhjav/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc)
-sha512sums=('818c034a5214d1712f59927f806df09e697a76010bbaf03eb6133a3443e17f41fba6bbe88a5a542209186502f64e985276112c562f917eef232a2fc3cacd79d8'
-            'ebd8688da9b6b070830cf3a469e27c4d9776e61735e2140e7b6615fff5933b51b22d9048d597cfecada90f54f2cd9e3e9d1098489bf7166ad32248707fd0266f')
+sha512sums=('8b57ce193e0fcc6861d963dd468acad6e92e8695e4a0f15128ea94acb2a029158b82e467acdef09821aa530c97f738d6a042af03b81798ea45b3d2c9780b6702'
+            '7f1d4b25cf3a5b1710491c3883cc1db332f4a72152c19830c9ddbacf28a06f9d37d1ce3e6d2869e12ae5c85d4afc7602f951028c4aea06da4f2bfb52ef22a827')
 
 # The public key is found at https://pujol.io/keys
 # gpg --recv-keys 06A26D531D56C42D66805049C5469996F0DF68EC
