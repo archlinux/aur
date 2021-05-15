@@ -3,7 +3,7 @@
 _pyname=confluent-kafka
 pkgbase=python-$_pyname
 pkgname=(python{,2}-$_pyname)
-pkgver=1.6.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Confluent's Python client for Apache Kafka"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -29,9 +29,9 @@ makedepends=(
 	python2-setuptools
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('810bd441c5a21a7fa8f0a8cbcaca45e9')
-sha256sums=('800f9cf5ec421dab82c01355bfa9ed819b70d70b01ca1e41c0f8526e5f340ddf')
-sha512sums=('fe8b900381dbc5a178518205e1d18db5ccec1eeb17ccc59e6072fb8381418ffae097cd353d28fddd69ca939482ecaddc43310e74f1da3533f92701855c7372f5')
+md5sums=('6690aa4605764d6a7c3f102f125a684a')
+sha256sums=('80e01b4791513c27eded8517af847530dfdf04c43d99ff132ed9c3085933b75b')
+sha512sums=('242736ba1538bef2b9627554e107ec0b435ff78dba321efd3b6feaafea786d6d35641753ea473962962dc0eefca204612483796b68e166f5016618f04c5fd705')
 
 prepare(){
 	cp -a $_pyname-$pkgver{,-py2}
