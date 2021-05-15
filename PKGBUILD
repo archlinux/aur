@@ -5,8 +5,8 @@
 pkgname=('pamac-aur-git')
 _pkgname=pamac
 pkgver=10.1.2.r0.gbd6b8e8
-_pkgver=10.1.1
-pkgrel=1
+_pkgver=10.1.2
+pkgrel=2
 pkgdesc="A Gtk3 frontend for libalpm - git version"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
@@ -18,7 +18,7 @@ makedepends=('gettext' 'itstool' 'vala' 'meson' 'ninja' 'gobject-introspection' 
 options=(!emptydirs)
 # Only for Manjaro users who should not use it...
 provides=('pamac')
-conflicts=('pamac')
+conflicts=('pamac' 'pamac-all' 'pamac-aur' 'pamac-all-git')
 # End of Manjaro users section
 source=(git+https://gitlab.manjaro.org/applications/$_pkgname.git)
 sha256sums=('SKIP')
