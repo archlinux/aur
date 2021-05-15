@@ -1,7 +1,7 @@
 pkgbase = yubihsm2-sdk
 	pkgdesc = YubiHSM2 SDK
 	pkgver = 2021.04
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developers.yubico.com/YubiHSM2/Releases/
 	arch = x86_64
 	license = Apache

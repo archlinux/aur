@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 pkgname=yubihsm2-sdk
 pkgver=2021.04
-pkgrel=1
+pkgrel=2
 pkgdesc="YubiHSM2 SDK"
 url="https://developers.yubico.com/YubiHSM2/Releases/"
 arch=(x86_64)
@@ -65,6 +65,8 @@ package() {
   install -Dt "$pkgdir/usr/lib" yubihsm-shell/usr/lib64/libyubihsm_http.so.2.2.0
   cp -d yubihsm-shell/usr/lib64/libyubihsm.so.2 "$pkgdir/usr/lib"
   install -Dt "$pkgdir/usr/lib" yubihsm-shell/usr/lib64/libyubihsm.so.2.2.0
+  cp -d yubihsm-shell/usr/lib64/libykhsmauth.so.2 "$pkgdir/usr/lib"
+  install -Dt "$pkgdir/usr/lib" yubihsm-shell/usr/lib64/libykhsmauth.so.2.2.0
   cp -d yubihsm-shell/usr/lib64/libyubihsm_usb.so.2 "$pkgdir/usr/lib"
   install -Dt "$pkgdir/usr/lib" yubihsm-shell/usr/lib64/libyubihsm_usb.so.2.2.0
   install -Dt "$pkgdir/usr/lib/pkcs11" yubihsm-shell/usr/lib64/pkcs11/yubihsm_pkcs11.so
