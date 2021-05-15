@@ -4,13 +4,14 @@
 _branch=master
 _pkgname=acme.sh
 pkgname=${_pkgname}-git
-pkgver=2.8.9.r0.gd0a16b0e
+pkgver=2.8.9.r9.g7f2699c6
 pkgrel=1
 pkgdesc='A pure Unix shell script implementing ACME client protocol'
 arch=(any)
 url='https://github.com/acmesh-official/acme.sh'
 license=('GPL3')
 makedepends=('git')
+depends=('bash')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("${_pkgname}::git+https://github.com/acmesh-official/acme.sh.git#branch=${_branch}")
