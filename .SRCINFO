@@ -1,7 +1,7 @@
 pkgbase = grisbi
 	pkgdesc = Shared files for the finance management program Grisbi.
 	pkgver = 2.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.grisbi.org
 	arch = x86_64
 	license = GPL
@@ -9,7 +9,6 @@ pkgbase = grisbi
 	makedepends = intltool
 	makedepends = imagemagick
 	depends = gtk3
-	depends = libgsf
 	optdepends = libofx: for OFX support
 	provides = grisbi
 	conflicts = grisbi-git
