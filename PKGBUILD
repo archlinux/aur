@@ -1,14 +1,14 @@
 # Maintainer: Daurnimator <daurnimator@archlinux.org>
 
 pkgname="river-git"
-pkgver=r577.3c1f1df
+pkgver=r610.c8b1017
 pkgrel=1
 pkgdesc='A dynamic tiling wayland compositor.'
 arch=('x86_64')
 url='https://github.com/ifreund/river'
 license=('GPL3')
-depends=('libevdev' 'libxkbcommon' 'pixman' 'wlroots')
-makedepends=('git' 'scdoc' 'wayland-protocols' 'zig')
+depends=('libevdev' 'libxkbcommon' 'pixman' 'wayland' 'wlroots')
+makedepends=('git' 'pkg-config' 'scdoc' 'wayland-protocols' 'zig')
 provides=('river')
 conflicts=('river')
 source=('git+https://github.com/ifreund/river.git'
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'c3e9c81dd61a7b9e333791dd368b7bd9ec7270a0415c04a2adf578c95ed853e2')
+            '8f17827bca6c320a9f4c722af4d56d77884a8965999629c050baee19136df38e')
 
 pkgver() {
   cd river
