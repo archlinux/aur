@@ -5,8 +5,8 @@
 _pkgname=archlinux-appstream-data
 pkgname=archlinux-appstream-data-pamac
 pkgver=20210423
-pkgrel=1
-pkgdesc="Arch Linux application database for AppStream-based software centers (Fixed for pamac)"
+pkgrel=2
+pkgdesc="Arch Linux application database for AppStream-based software centers (Fixed for pamac-aur and pamac-all packages)"
 arch=("any")
 url="https://www.archlinux.org"
 license=("GPL")
