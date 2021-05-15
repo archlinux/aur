@@ -4,7 +4,7 @@ pkgname=opentabletdriver-git
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
-pkgver=v0.5.2.1.r0.g0d9ec6f
+pkgver=v0.5.3.1.r188.gf2ec9fd4
 pkgrel=2
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
@@ -41,6 +41,10 @@ prepare() {
     cd "$srcdir/$_pkgname-udev/.modules"
     rmdir "$_pkgname"
     ln -s "$srcdir/$_pkgname" "$_pkgname"
+
+    cd "$srcdir/$_pkgname"
+    sed -i 's/2.5.10/2.5.11/' "$_pkgname.UX/$_pkgname.UX.csproj"
+    sed -i 's/2.5.10/2.5.11/' "$_pkgname.UX.Gtk/$_pkgname.UX.Gtk.csproj"
 }
 
 build() {
