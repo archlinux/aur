@@ -1,13 +1,13 @@
 pkgbase = unvanquished
 	pkgdesc = A team-based, fast-paced, fps/rts hybrid game which pits aliens against humans.
-	pkgver = 0.51.2
+	pkgver = 0.52.0
 	pkgrel = 1
-	url = http://www.unvanquished.net
+	url = https://www.unvanquished.net
 	install = unvanquished.install
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
-	depends = unvanquished-data>=0.51.2
+	depends = unvanquished-data>=0.52.0
 	depends = zlib
 	depends = gmp
 	depends = nettle
@@ -38,19 +38,19 @@ pkgbase = unvanquished
 	backup = etc/unvanquished/server.cfg
 	backup = etc/unvanquished/maprotation.cfg
 	source = unvanquished.install
-	source = unvanquished_0.51.2.tar.gz::https://github.com/Unvanquished/Unvanquished/archive/archlinux/0.51.2-1.tar.gz
-	source = daemon_0.51.2.tar.gz::https://github.com/DaemonEngine/Daemon/archive/v0.51.1.tar.gz
-	source = breakpad_15fbc760aa1e4db2a3b36493ff3b4cf49e3df282.tar.gz::https://github.com/DaemonEngine/breakpad/archive/15fbc760aa1e4db2a3b36493ff3b4cf49e3df282.tar.gz
-	source = crunch_559a1b045b50b5f716294b47325c0170c8236dbc.tar.gz::https://github.com/DaemonEngine/crunch/archive/559a1b045b50b5f716294b47325c0170c8236dbc.tar.gz
-	source = recast_6b68934d6d2715501e01b1e115413cefaa0aa7d3.tar.gz::https://github.com/DaemonEngine/recastnavigation/archive/6b68934d6d2715501e01b1e115413cefaa0aa7d3.tar.gz
-	source = naclsdk_linux64-4.tar.bz2::https://dl.unvanquished.net/deps/linux64-4.tar.bz2
+	source = unvanquished_0.52.0.tar.gz::https://github.com/Unvanquished/Unvanquished/archive/refs/tags/unvanquished/0.52.0.tar.gz
+	source = daemon_0.52.0.tar.gz::https://github.com/DaemonEngine/Daemon/archive/refs/tags/unvanquished/0.52.0.tar.gz
+	source = breakpad_0.52.0.tar.gz::https://github.com/DaemonEngine/breakpad/archive/refs/tags/unvanquished/0.52.0.tar.gz
+	source = crunch_0.52.0.tar.gz::https://github.com/DaemonEngine/crunch/archive/refs/tags/unvanquished/0.52.0.tar.gz
+	source = recastnavigation_0.52.0.tar.gz::https://github.com/DaemonEngine/recastnavigation/archive/refs/tags/unvanquished/0.52.0.tar.gz
+	source = naclsdk_linux64-5.tar.bz2::https://dl.unvanquished.net/deps/linux64-5.tar.bz2
 	md5sums = 6d9430b5b06b93a43a1cb79e14637f0b
-	md5sums = 15a63c77160500de3ed3d69a471d458e
-	md5sums = 589523f6028bcd3869505b6a3968c411
-	md5sums = 256f388e18018f638958a47f53f2a8d9
-	md5sums = 356bbda9890f48dca1db3b80001d40c0
-	md5sums = 2b1989f17e3ae0cab77cae8d397deafb
-	md5sums = 2ba12c71625919ddc282172b74fa4887
+	md5sums = 1821ecc4185d15145d78296249c7e612
+	md5sums = 049b3aea1db9bfbc5664d035c7ae8ee9
+	md5sums = 1610e084189b435a2e0614a07f8871d2
+	md5sums = 733baa91bb57497be69b3912bd4f40f5
+	md5sums = 37d95bd19b051238b03cfb30f1f27609
+	md5sums = 3c2cceeb5c653c4e53543fc892377f38
 
 pkgname = unvanquished
 
