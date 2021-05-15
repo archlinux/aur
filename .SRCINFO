@@ -1,7 +1,7 @@
 pkgbase = ditaa-eps
 	pkgdesc = Same as ditaa, but converts output to scalable EPS graphics. Great in LaTeX ;-)
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ditaa-addons.sourceforge.net/
 	arch = any
 	groups = office
@@ -11,7 +11,7 @@ pkgbase = ditaa-eps
 	provides = ditaa-eps
 	conflicts = ditaa-eps
 	source = ditaa-eps
-	source = http://downloads.sourceforge.net/ditaa-addons/DitaaEps-0_2.zip
+	source = https://downloads.sourceforge.net/ditaa-addons/DitaaEps-0_2.zip
 	md5sums = 3730b3b7300f4d16dd77be9605c25c4d
 	md5sums = 5eeff234aadf31728f96f6c56cbba0a8
 
