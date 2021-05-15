@@ -1,4 +1,4 @@
-pkgbase = proton-communtiy-updater
+pkgbase = proton-community-updater
 	pkgdesc = Star Citizen's Linux Users Group Helper Script
 	pkgver = 1.0
 	pkgrel = 1

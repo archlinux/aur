@@ -1,6 +1,6 @@
 # Maintainer: termuellinator
 
-pkgname=proton-communtiy-updater
+pkgname=proton-community-updater
 pkgver=1.0
 pkgrel=1
 pkgdesc="Star Citizen's Linux Users Group Helper Script"
@@ -26,3 +26,4 @@ package() {
     install -Dm755 "${srcdir}/proton-community-updater.desktop" "$pkgdir/usr/share/applications/proton-community-updater.desktop"
 }
  
+
