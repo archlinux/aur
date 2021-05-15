@@ -8,10 +8,7 @@ arch=('x86_64')
 url="https://github.com/Kethku/neovide"
 license=('MIT')
 provides=('neovide')
-depends=('neovim' 'fontconfig' 'freetype2' 'libglvnd' 'sndio')
-optdepends=(
-    'vulkan-intel: Vulkan support for Intel GPUs'
-    'vulkan-radeon: Vulkan support for AMD Radeon GPUs')
+depends=('neovim' 'fontconfig' 'freetype2' 'libglvnd' 'sndio' 'vulkan-driver')
 conflicts=('neovide' 'neovide-git')
 binname=${pkgname_orig}-${pkgver}-${pkgrel}
 source_x86_64=("${binname}::${url}/releases/download/${pkgver}/${pkgname_orig}")
