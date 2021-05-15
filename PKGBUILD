@@ -41,7 +41,7 @@ CHECK=            # Run tests. May fail, this is developement after all.
 CLANG=            # Use clang.
 LTO="YES"         # Enable link-time optimization. Not that experimental anymore.
                   # Seems fixed in GCC, so I've reenabled binutils support, please
-		  # report any bug, to make it use clang by default again.
+		              # report any bug, to make it use clang by default again.
 CLI=              # CLI only binary.
 NOTKIT=           # Use no toolkit widgets. Like B&W Twm (001d sk00l).
 LUCID=            # Use the lucid, a.k.a athena, toolkit. Like XEmacs, sorta.
@@ -89,7 +89,7 @@ makedepends=('git')
 provides=('emacs' 'emacs-seq')
 conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-git' 'emacs-seq')
 replaces=('emacs26-git' 'emacs27-git' 'emacs-git' 'emacs-seq')
-source=("emacs-git::git://github.com/flatwhatson/emacs.git#branch=pgtk-nativecomp")
+source=("emacs-git::git://github.com/flatwhatson/emacs.git#branch=pgtk-nativecomp-dev")
 md5sums=('SKIP')
 ################################################################################
 
