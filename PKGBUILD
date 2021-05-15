@@ -42,6 +42,8 @@ source=(
 
   # https://lkml.org/lkml/2021/1/23/75
   "0001-config-preemption.diff"
+
+  "btrfs.kconfig"
 )
 sha512sums=(
   "ccfc712168738fce1f26b14fbe4a0dcecd9d1f3a0698c06487d98091173951be141c06b4314712ea9b67cda93d2efa8701c3b9afc8770458147defa5adbabf1a"
@@ -57,6 +59,8 @@ sha512sums=(
   "b599a62d07f4451f52747eaf185142fbe8eeb9aced211369fc83d88c43483ef1008f87615fcfcf30d74a557569b89d5fcb4a61326ffc8cb0559ec51807d808ca"
 
   "76c27fe0e2b84a9ae0d4b0e2a96ef0c07777811991b4aae21c88494b91fa2837fb67be335cebf4874e5e3235b5ba4641ec4544f9e055765e2dcf399d9d875e8c"
+
+  "ed3011a9fee8dd2fb16a004305b23e6b79158afcfe6d88ccdf471b177a8fbe4a9da92924e437284de83a69cebdf5cca2312b614906c404c0d22692aeca491510"
 )
 b2sums=(
   "ee14536ba48ece1beba2409082446b18b80450233335bf2b9644604cf3d97404caa9f58a0ca1de69da50cd900e0b7ee5f9b046e206b9235ed77b9deccb2399d6"
@@ -72,6 +76,8 @@ b2sums=(
   "60bb47bec6e35ccc460ac066d7205d084ab8bdc7d1749918ce0497983a6e7eb770ca9fd996f44b05dbdbfc35390bf2d02b7e8abc619fa6d9df298988d5f19053"
 
   "919319ddcaac3f7c5b1c1998fced9920f3e7e9d4660c83e380495fc3a14d5f4e82736ac9435fdb78512576f1d90f80b1ad017529f2b42e013b844ed3ec4bc99f"
+
+  "803eb3483722e7eab50102b8d0f9dc1ea7f38781d1f61e5998137469e019cb49d944a30c97f465c5b03916322955fcf29629af27ac47f2e19210bee3d63c488e"
 )
 validpgpkeys=(
   647F28654894E3BD457199BE38DBBDC86092693E  # kernel
@@ -86,25 +92,27 @@ esac
 
 _kernel_prepare(){
   # kata2-linux-container prep (ref: https://github.com/kata-containers/packaging/tree/master/kernel )
-  cd "${srcdir}/linux-${_kata_kernel_ver}"
-  #for p in $(find "${srcdir}/${pkgbase}-${_pkgver}/tools/packaging/kernel/patches" -type f -name "*.patch"); do
-  #  patch -p1 <"${p}"
-  #done
+  for i in vanilla btrfs; do
+    cp -a "${srcdir}/linux-${_kata_kernel_ver}" "${srcdir}/linux-${_kata_kernel_ver}-${i}"
+    pushd "${srcdir}/linux-${_kata_kernel_ver}-${i}"
+    #for p in $(find "${srcdir}/${pkgbase}-${_pkgver}/tools/packaging/kernel/patches" -type f -name "*.patch"); do
+    #  patch -p1 <"${p}"
+    #done
 
-  # 5.4.71
-  #patch -p1 <"${srcdir}/0001-config-preemption.diff"
+    # kernel config prep from upstream ("${srcdir}/${pkgbase}-${_pkgver}/tools/packaging/obs-packaging/linux-container/kata-linux-container.spec-template")
+    make -s mrproper
+    rm -f .config
 
-  # kernel config prep from upstream ("${srcdir}/${pkgbase}-${_pkgver}/tools/packaging/obs-packaging/linux-container/kata-linux-container.spec-template")
-  make -s mrproper
-  rm -f .config
-
-  local -r _KCONFIG="$(find "${srcdir}/${pkgbase}-${_pkgver}/tools/packaging/kernel/configs" -type f -name "${_KARCH}_kata_kvm_${_kata_kernel_ver%.*}.x")"
-  if [ -z "${_KCONFIG}" ]; then
-    KCONFIG_CONFIG=.config ARCH=${_KARCH} scripts/kconfig/merge_config.sh -r -n "${srcdir}/${pkgbase}-${_pkgver}/tools/packaging/kernel/configs/fragments/common/"*.conf "${srcdir}/${pkgbase}-${_pkgver}/tools/packaging/kernel/configs/fragments/${_KARCH}/"*.conf
-  else
-    install -Dm 0644 "${_KCONFIG}" .config
-  fi
-  make -s ARCH="${_KARCH}" oldconfig
+    local _KCONFIG="$(find "${srcdir}/${pkgbase}-${_pkgver}/tools/packaging/kernel/configs" -type f -name "${_KARCH}_kata_kvm_${_kata_kernel_ver%.*}.x")"
+    if [ -z "${_KCONFIG}" ]; then
+      KCONFIG_CONFIG=.config ARCH=${_KARCH} scripts/kconfig/merge_config.sh -r -n "${srcdir}/${pkgbase}-${_pkgver}/tools/packaging/kernel/configs/fragments/common/"*.conf "${srcdir}/${pkgbase}-${_pkgver}/tools/packaging/kernel/configs/fragments/${_KARCH}/"*.conf
+    else
+      install -Dm 0644 "${_KCONFIG}" .config
+    fi
+    [ "${i}" = "btrfs" ] && cat "${srcdir}/btrfs.kconfig" >> .config
+    make -s ARCH="${_KARCH}" oldconfig
+    popd
+  done
 }
 
 prepare(){
@@ -150,14 +158,18 @@ _kata_image_build() {
 }
 
 build(){
+  local i
   cd "${srcdir}/${pkgbase}-${_pkgver}"
   GOPATH="${srcdir}" make BINDIR="/usr/bin" PKGLIBEXECDIR="/usr/lib/kata-containers" LIBEXECDIR="/usr/lib" LIBC=gnu
 
   # kernel build
-  cd "${srcdir}/linux-${_kata_kernel_ver}"
-  make -s ARCH="${_KARCH}"
+  for i in vanilla btrfs; do
+    pushd "${srcdir}/linux-${_kata_kernel_ver}-${i}"
+    make -s ARCH="${_KARCH}"
+    popd
+  done
 
-  mkinitcpio -c "${srcdir}/mkinitcpio-agent.conf" -g "${srcdir}/initrd-arch-agent.img" -D "${srcdir}/initcpio-agent"
+  #mkinitcpio -c "${srcdir}/mkinitcpio-agent.conf" -g "${srcdir}/initrd-arch-agent.img" -D "${srcdir}/initcpio-agent"
   #mkinitcpio -c "${srcdir}/mkinitcpio-systemd.conf" -g "${srcdir}/initrd-arch-systemd.img" -D "${srcdir}/initcpio-systemd"
   #_kata_image_build
 }
@@ -184,18 +196,23 @@ package_kata-containers-image(){
 }
 
 package_kata-linux-container(){
-  install -Dm 0644 "${srcdir}/linux-${_kata_kernel_ver}/arch/${_KARCH}/boot/bzImage" "${pkgdir}/usr/share/kata-containers/vmlinux-${_kata_kernel_ver}.container"
-  #install -Dm 0644 "${srcdir}/linux-${_kata_kernel_ver}/vmlinux" "${pkgdir}/usr/share/kata-containers/vmlinux-${_kata_kernel_ver}.container"
+  local i suffix
+  install -dm0755 "${pkgdir}/usr/share/kata-containers"
   pushd "${pkgdir}/usr/share/kata-containers"
-  ln -sf "vmlinux-${_kata_kernel_ver}.container" vmlinux.container
-  if [ "${_KARCH}" = "powerpc" ]; then
-    ln -sf "vmlinux-${_kata_kernel_ver}.container" "vmlinuz-${_kata_kernel_ver}.container"
-    ln -sf "vmlinuz-${_kata_kernel_ver}.container" vmlinuz.container
-  else
-    # param out bzImage for other archs?
-    install -Dm 0644 "${srcdir}/linux-${_kata_kernel_ver}/arch/${_KARCH}/boot/bzImage" "${pkgdir}/usr/share/kata-containers/vmlinuz-${_kata_kernel_ver}.container"
-    ln -sf "vmlinuz-${_kata_kernel_ver}.container" vmlinuz.container
-  fi
+  for i in vanilla btrfs; do
+    [ "${i}" = "vanilla" ] && suffix="" || suffix="-${i}"
+    install -Dm 0644 "${srcdir}/linux-${_kata_kernel_ver}-${i}/arch/${_KARCH}/boot/bzImage" "${pkgdir}/usr/share/kata-containers/vmlinux-${_kata_kernel_ver}${suffix}.container"
+    #install -Dm 0644 "${srcdir}/linux-${_kata_kernel_ver}/vmlinux" "${pkgdir}/usr/share/kata-containers/vmlinux-${_kata_kernel_ver}.container"
+    ln -sf "vmlinux-${_kata_kernel_ver}${suffix}.container" "vmlinux${suffix}.container"
+    if [ "${_KARCH}" = "powerpc" ]; then
+      ln -sf "vmlinux-${_kata_kernel_ver}${suffix}.container" "vmlinuz-${_kata_kernel_ver}${suffix}.container"
+      ln -sf "vmlinuz-${_kata_kernel_ver}${suffix}.container" "vmlinuz${suffix}.container"
+    else
+      # param out bzImage for other archs?
+      install -Dm 0644 "${srcdir}/linux-${_kata_kernel_ver}-${i}/arch/${_KARCH}/boot/bzImage" "${pkgdir}/usr/share/kata-containers/vmlinuz-${_kata_kernel_ver}${suffix}.container"
+      ln -sf "vmlinuz-${_kata_kernel_ver}${suffix}.container" "vmlinuz${suffix}.container"
+    fi
+  done
   popd
 }
 
