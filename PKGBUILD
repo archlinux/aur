@@ -17,13 +17,13 @@ _commit=$(printf ${pkgver} | cut -d'.' -f4)
 _jar=Tachidesk-${_semver}-${_commit}.jar
 
 source=("${_jar}::${url}/raw/preview/Tachidesk-latest.jar" 
-        "${pkgname}.desktop"
-        "${pkgname}.png"
-        "${pkgname}.sh")
+        "tachidesk.desktop"
+        "tachidesk.png"
+        "tachidesk.sh")
 md5sums=('SKIP'
-         '56416e12cee7b01efa1bc01cb513b900'
+         'd5a18adf71fa79c06f142e07682b627e'
          '520cdde66717d1701fb40dfbcdab59a2'
-         'eb4cfc5adf0cb6ff2a6a7c2fcbfa3be7')
+         '196d4e69879d3b01f73672c812c0f20c')
 noextract=("${source[@]%%::*}")
 
 package() {
@@ -32,8 +32,8 @@ package() {
     install -d "${pkgdir}/usr/share/pixmaps" 
     install -d "${pkgdir}/usr/bin"
     
-    desktop-file-install --dir="${pkgdir}/usr/share/applications" "${srcdir}/${pkgname}.desktop"
-    install -Dm755 "${srcdir}/${_jar}"          "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
-    install -Dm755 "${srcdir}/${pkgname}.png"   "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm755 "${srcdir}/${pkgname}.sh"    "${pkgdir}/usr/bin/${pkgname}"
+    desktop-file-install --dir="${pkgdir}/usr/share/applications" "${srcdir}/tachidesk.desktop"
+    install -Dm755 "${srcdir}/${_jar}"          "${pkgdir}/usr/share/java/tachidesk/tachidesk.jar"
+    install -Dm755 "${srcdir}/tachidesk.png"   "${pkgdir}/usr/share/pixmaps/tachidesk.png"
+    install -Dm755 "${srcdir}/tachidesk.sh"    "${pkgdir}/usr/bin/tachidesk-preview"
 }
