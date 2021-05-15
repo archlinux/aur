@@ -3,8 +3,8 @@
 # Contributor: Stefan Zwanenburg <stefan cat zwanenburg dog info>
 pkgbase=kata-containers-guest
 pkgname=(
-  kata-agent
-  kata-linux-container
+  #kata-agent
+  #kata-linux-container
   kata-containers-image
 )
 pkgver=1.12.1

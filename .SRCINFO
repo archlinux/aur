@@ -38,10 +38,6 @@ pkgbase = kata-containers-guest
 	b2sums = 1745aa5d5df0af2452381de163e3964511172e045c13736a062bb2c932e3306250d24992b2bdbc534ced188b35d3b1f4958a5680c99356afd3097d11c84aee31
 	b2sums = c9d90683b134dcbf656adcb5bebad02a9a02ec68a1497bbab16cdec7d626ab020f56a40f00bfddf06000452e20d5a58d53ed59d0be49451daf9019fe1f203a58
 
-pkgname = kata-agent
-
-pkgname = kata-linux-container
-
 pkgname = kata-containers-image
 	install = kata-containers-guest.install
 
