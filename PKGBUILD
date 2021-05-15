@@ -9,16 +9,16 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("rusync-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('cd4d86a7e2c05c7a89835ebd0ba09d1e')
+sha256sums=('79bb60b5d33f4ab30826ba3de2bcbadbf51bd9a6d7c927a5f26ab1839de9ec77')
 
 build() {
   cd rusync-$pkgver
-  cargo build --release
+  RUSTUP_TOOLCHAIN=stable cargo build --release --locked --all-features --target-dir=target
 }
 
 check() {
   cd rusync-$pkgver
-  cargo test --release
+  RUSTUP_TOOLCHAIN=stable cargo test --release --locked --all-features --target-dir=target
 }
 
 package() {
