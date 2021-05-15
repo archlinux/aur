@@ -19,7 +19,6 @@ validpgpkeys=(0392335A78083894A4301C43236E8A58C6DB4512) # Max Kellermann <max@mu
 
 build() {
     cd ${_pkgname}-${pkgver}
-    sed -i "s|get_option('html_manual')|get_option('html_manual') and not get_option('manpages')|" doc/meson.build
     _opts=('-Ddocumentation=enabled'
            '-Dhtml_manual=false'
            '-Dmanpages=true'
