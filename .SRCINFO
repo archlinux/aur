@@ -1,7 +1,7 @@
 pkgbase = mgcb-editor-git
 	pkgdesc = The MonoGame Content Pipeline tool
 	pkgver = 3.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.monogame.net/
 	arch = x86_64
 	license = custom
