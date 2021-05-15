@@ -2,8 +2,8 @@
 # Contributor: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname='omada-sdn-controller'
-pkgver=4.2.11
-pkgrel=2
+pkgver=4.3.5
+pkgrel=1
 pkgdesc='Centralized Omada SDN controller software'
 arch=('x86_64')
 url='https://www.tp-link.com/us/support/download/omada-software-controller/#Controller_Software'
@@ -12,10 +12,10 @@ depends=('jre8-openjdk' 'java-jsvc' 'curl' 'mongodb>=3.0' 'mongodb<4')
 provides=('sdn-controller')
 conflicts=('eap-controller')
 source=(
-    "https://static.tp-link.com/2021/202102/20210209/Omada_SDN_Controller_v${pkgver}_linux_x64.tar.gz"
+    "https://static.tp-link.com/2021/202105/20210507/Omada_SDN_Controller_v${pkgver}_linux_x64.tar.gz"
     "git://github.com/tlonic/omada-sdn-controller-scripts.git#commit=8123f2aad2cda365c5a19d7e386d2de6e79402d9" 
 )
-sha256sums=('22245035b9ff9684d571a6c75b63171a5fc1a777515f1264ee187d8b8abd5199'
+sha256sums=('c805cb0ff031b01c7af646a279cd6bb3df4617afbae5fa5eee9afcf6f9d2dd46'
             'SKIP')
 
 
