@@ -2,7 +2,7 @@
 
 pkgname=thorium-bin
 pkgver=1.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross platform desktop reading app, based on the Readium Desktop toolkit"
 arch=('x86_64')
 license=('BSD3')
