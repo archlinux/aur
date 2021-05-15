@@ -5,7 +5,7 @@ update:
 
 install:
 	makepkg -si
-.PHONY: update
+.PHONY: install
 
 compare-versions:
 	# https://github.com/erdii/toolbox/blob/main/cmd/aur-compare-oc-versions/main.go
