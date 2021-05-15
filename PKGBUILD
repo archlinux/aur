@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://katacontainers.io/"
 license=('Apache')
 makedepends=(
-  'go'  # thanks Intel, love you big time: https://github.com/kata-containers/runtime/issues/2982
+  'go1.15'  # thanks Intel, love you big time: https://github.com/kata-containers/runtime/issues/2982
   #'yq2-bin'  # quietly pulled by Kata's codebase to read versions.yaml from repo
   'bc'
   'git'
@@ -105,8 +105,10 @@ _kernel_prepare(){
 prepare(){
   _kernel_prepare
 
-  #install -dm0755 "${srcdir}/bin"
+  install -dm0755 "${srcdir}/bin"
   #ln -sf "$(command -v yq)" "${srcdir}/bin/yq"
+  ln -sf "$(command -v go1.15)" "${srcdir}/bin/go"
+  export PATH="${srcdir}/bin${PATH:+:${PATH}}"
 
   install -dm0755 "${srcdir}/src/${_gh_org}"
   mv "${srcdir}/agent" "${srcdir}/src/${_gh_org}/agent"
