@@ -8,7 +8,8 @@ pkgdesc="Set up your own Teaspeak Server for the Teaspeak Client."
 arch=('x86_64')
 url='https://teaspeak.de/gb'
 license=("custom:${pkgname}")
-depends=('nss')
+depends=('nss'
+	 'ffmpeg')
 source=("https://repo.teaspeak.de/server/linux/amd64_stable/TeaSpeak-1.4.22.tar.gz")
 sha256sums=('6214f0b16282a383e422082350e72affb92f71abef6e19ad8ba4f8dc29eb3aa9')
 
