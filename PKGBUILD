@@ -13,6 +13,7 @@ pkgname=(yaru-sound-theme-git
          yaru-session-git)
 pkgver=21.04.1.r55.g1b607eefa
 pkgrel=1
+epoch=1
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
 url="https://github.com/ubuntu/yaru"
