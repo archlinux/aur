@@ -3,12 +3,12 @@
 
 pkgname=vice-svn
 pkgver=r40032
-pkgrel=1
+pkgrel=2
 pkgdesc="The Versatile Commodore Emulator 8-bits (PET/C64/C128/Plus4/Vic20) - Development version"
 arch=('i686' 'x86_64')
 url="http://vice-emu.sourceforge.net"
 license=('GPL')
-depends=(giflib glew libjpeg-turbo libpulse gtk3 portaudio pciutils)
+depends=(glew libpulse gtk3 portaudio pciutils)
 makedepends=(dos2unix ffmpeg libpcap libxaw texlive-bin texlive-core xa xorg-bdftopcf xorg-mkfontdir python)
 provides=('vice')
 replaces=('vice')
