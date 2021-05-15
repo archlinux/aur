@@ -3,14 +3,13 @@
 pkgname=kotatogram-dev-git
 _pkgname=kotatogram-desktop
 pkgver=k1.4.12.g40df43998
-pkgrel=1
+pkgrel=2
 pkgdesc="Kotatogram – experimental Telegram Desktop fork - Dev branch"
 arch=(x86_64)
 url="https://github.com/kotatogram/kotatogram-desktop"
 license=(GPL3)
 depends=(
 	qt5-imageformats
-  gtk3
 	ffmpeg
 	openal
   glibmm
@@ -33,6 +32,7 @@ makedepends=(
 )
 optdepends=(
 	'ttf-opensans: default Open Sans font family'
+  'gtk3: GTK integration'
 )
 conflicts=('kotatogram-desktop')
 provides=('kotatogram-desktop')

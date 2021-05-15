@@ -1,7 +1,7 @@
 pkgbase = kotatogram-dev-git
 	pkgdesc = Kotatogram – experimental Telegram Desktop fork - Dev branch
 	pkgver = k1.4.12.g40df43998
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kotatogram/kotatogram-desktop
 	arch = x86_64
 	license = GPL3
@@ -14,7 +14,6 @@ pkgbase = kotatogram-dev-git
 	makedepends = microsoft-gsl
 	makedepends = libtg_owt
 	depends = qt5-imageformats
-	depends = gtk3
 	depends = ffmpeg
 	depends = openal
 	depends = glibmm
@@ -25,6 +24,7 @@ pkgbase = kotatogram-dev-git
 	depends = libdbusmenu-qt5
 	depends = hunspell
 	optdepends = ttf-opensans: default Open Sans font family
+	optdepends = gtk3: GTK integration
 	provides = kotatogram-desktop
 	conflicts = kotatogram-desktop
 	source = kotatogram-desktop::git+https://github.com/kotatogram/kotatogram-desktop.git#branch=test
