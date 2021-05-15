@@ -2,7 +2,7 @@
 
 pkgname=breeze-plymouth
 pkgver=5.21.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Breeze theme for plymouth"
 arch=(any)
 url='https://projects.kde.org/breeze-plymouth'
