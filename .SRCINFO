@@ -1,5 +1,5 @@
 pkgbase = neovide-bin
-	pkgdesc = A simple GUI for Neovim (prebuilt)
+	pkgdesc = No Nonsense Neovim Client in Rust (prebuilt)
 	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/Kethku/neovide
