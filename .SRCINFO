@@ -1,0 +1,24 @@
+pkgbase = python-sphinx-panels
+	pkgdesc = A sphinx extension for creating panels in a grid layout
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://sphinx-panels.readthedocs.io
+	arch = any
+	license = MIT
+	checkdepends = python-sphinx
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-panels/sphinx-panels-0.5.2.tar.gz
+	md5sums = d44fbb7c8ec3659fc34b4276580e769c
+
+pkgname = python-sphinx-panels
+	depends = python-sphinx
+	depends = python-importlib_resources
+	optdepends = python-sphinx_rtd_theme: themes
+	optdepends = python-pydata-sphinx-theme: themes
+	optdepends = python-sphinx-book-theme: themes
+	optdepends = python-myst-parser: themes
+	optdepends = python-pre-commit: code_style
+	optdepends = python-sphinx-autobuild: live-dev
+	optdepends = python-web-compile: live-dev
+	optdepends = python-sphinx-panels-doc: Documentation
+
