@@ -1,38 +1,57 @@
 pkgbase = kata-containers
-	pkgdesc = Lightweight virtual machines for containers
-	pkgver = 1.12.1
+	pkgdesc = Lightweight virtual machines for containers, version 2
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://katacontainers.io/
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	source = ksm-throttler-1.12.1.tar.gz::https://github.com/kata-containers/ksm-throttler/archive/1.12.1.tar.gz
-	source = proxy-1.12.1.tar.gz::https://github.com/kata-containers/proxy/archive/1.12.1.tar.gz
-	source = runtime-1.12.1.tar.gz::https://github.com/kata-containers/runtime/archive/1.12.1.tar.gz
-	source = shim-1.12.1.tar.gz::https://github.com/kata-containers/shim/archive/1.12.1.tar.gz
-	sha512sums = 5653a4110e57f3145041b0aef1b9f4b8be67d8d0c04144dfbb3b613362bdb6ce67199e9f34d1224cbf08255efe6d191a6e03ba40c35d4d0650004e2582774de4
-	sha512sums = 9bd64016374354364d45522239a81b12a7cd3436b0842793e2964bc5b8bc79f6c8be57d71b7384985c416889293688f8c65dffacba23dbf653d9a0ba916263d9
-	sha512sums = c831eaa3d0fcddbb5dca0e18f3dfb4e616d45edb42031532c8ea52243a73e685d8f888671a27665f09d0aed41e27ac2035c78ff491f836a044a036d05f922dd7
-	sha512sums = acc1592a91f56057a5dc3380824811d436cd82a17e41e028289eb8837aa5fbbb8b811cec51844789f7611b7c009b2050f07bd8c69f7ab28842e4f5fe7accc0b3
-	b2sums = c930d082e0a9faa4a90751b3d67e91868bda12dea4ee6f3f565a24c1d074e7b4ed09a93ba14f9696e0891452e2d69a685ec837e7183bc9ff86b479034ed40fc9
-	b2sums = 206bfe0e7d8be050f934ffbd7516543dfc3aca7339e83b318db8acd6323d4c3e68e8bb4f1dfa3530b7b5404960b27867a79396154d0fc61ec3445a5f0e70a78f
-	b2sums = 72d9995a45997c2d407f411f9a177207e23f382b40c08c1930c07029d76bcb3b703d3e80a209e98dc7646d6b1736cab4a1047974a2fb917419a4a6d94e796dd5
-	b2sums = a73a3ce69ff54e7d172ef30e73678d4aaf12ab725798fe6e057f0ca163a95d7ce43c599fec9e7767259b4b793543febd1b7478678400e7f01204a1df89af9556
+	makedepends = bc
+	makedepends = rust
+	makedepends = mkinitcpio
+	makedepends = pacman
+	makedepends = udisks2
+	source = kata-containers-2.1.0.tar.gz::https://github.com/kata-containers/kata-containers/archive/2.1.0.tar.gz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.25.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.25.tar.sign
+	source = mkinitcpio-agent.conf
+	source = install_kata-agent.tpl
+	source = image_builder.sh
+	source = install_sd-kata-agent.tpl
+	source = kata-agent.service.in
+	source = kata-containers.target
+	source = 0001-config-preemption.diff
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha512sums = ccfc712168738fce1f26b14fbe4a0dcecd9d1f3a0698c06487d98091173951be141c06b4314712ea9b67cda93d2efa8701c3b9afc8770458147defa5adbabf1a
+	sha512sums = 20d81a5930f4877e4a67930c8fc52406767bc1c1ca65a78037e4f42738bae54009a59d1a21e3bfde773f67af608a763e67a8829564b3665cae937dbc19947c13
+	sha512sums = SKIP
+	sha512sums = 182a249aecbab33b8704e9567e96d33b535ee59e6d2f52f0c30fbc3d12813f60192886539cc745933caaf59268925d78db9e0b6b427321e2bac932ebde77d62e
+	sha512sums = 0250e52251986f36cfb9e378d848f755caaf5253daa8ff7d87172f2622754c1eb4180b338a497e3fbeb880e232eef19d5e512f5a8e610e7a6eb468f210849a08
+	sha512sums = 6f476297d9001eef9a0665689f752cf5124907522cfc87240df16488379a5c7c9820a6e33a576dbf7f75c4fdfa7cab7a0e395b05c9339069dedbdaac42fb6c04
+	sha512sums = 60e2dee0afcfc52b6075309b4eeb55c75dc4a8f063274f2cd481a0056fae0e78e414f0422af26acddff93edb43a23cb52c26aefd92677160fd8eb6a685b6a6d6
+	sha512sums = 8f927f482d54a762ae5c952883034355a76c5547993ed4245a434a74014aa96e6c5182e3ece0a431e075c1d2f86e99ed0d0d8d839586821c5a7cdf053ec6963d
+	sha512sums = b599a62d07f4451f52747eaf185142fbe8eeb9aced211369fc83d88c43483ef1008f87615fcfcf30d74a557569b89d5fcb4a61326ffc8cb0559ec51807d808ca
+	sha512sums = 76c27fe0e2b84a9ae0d4b0e2a96ef0c07777811991b4aae21c88494b91fa2837fb67be335cebf4874e5e3235b5ba4641ec4544f9e055765e2dcf399d9d875e8c
+	b2sums = ee14536ba48ece1beba2409082446b18b80450233335bf2b9644604cf3d97404caa9f58a0ca1de69da50cd900e0b7ee5f9b046e206b9235ed77b9deccb2399d6
+	b2sums = 1aa774dcd894f4f5a24cc26375dac4dfe0b8d1c37e58c6878dd81c2f6466a8fbb635b46e881bec75b00c041c6d0c73c545bd10ff25afde6a5bca1e63e165e51c
+	b2sums = SKIP
+	b2sums = 43c81141a65fd14b60ae72c5b98168bec531990903cc7c8b224b416c71d1d05c1cf3f73891954604e0b0c6f48c52a3a41a8e9e78874a79e72b14282373108e8b
+	b2sums = 9abf2208af353019ba177d8a48ba613401742cd21258a79c5d9cb8518a51f4f22a41dc386b71f2d6521d03f6ff65d8710dc59d1ca9c7c1dc5f94061c7374286c
+	b2sums = 1745aa5d5df0af2452381de163e3964511172e045c13736a062bb2c932e3306250d24992b2bdbc534ced188b35d3b1f4958a5680c99356afd3097d11c84aee31
+	b2sums = 1ce51ec8cfac8149e3d421d58ec4cb5df2119f4c4d6371da3406297f87a35b6453a9a91bfce9b3b6ac81945b9c8c8237d5818b7321198635614148a8001e3da7
+	b2sums = 8b5371fe7b1858dc61dcf4153b58f9c7a5ba564299d657c2bc4eac2328801346e9ca3f6f441dcca710e89495e5b7f9d35b002a8e031eb3cbd4a4fa850566309a
+	b2sums = 60bb47bec6e35ccc460ac066d7205d084ab8bdc7d1749918ce0497983a6e7eb770ca9fd996f44b05dbdbfc35390bf2d02b7e8abc619fa6d9df298988d5f19053
+	b2sums = 919319ddcaac3f7c5b1c1998fced9920f3e7e9d4660c83e380495fc3a14d5f4e82736ac9435fdb78512576f1d90f80b1ad017529f2b42e013b844ed3ec4bc99f
 
-pkgname = kata-ksm-throttler
+pkgname = kata-agent
 
 pkgname = kata-runtime
-	install = kata-runtime.install
+	install = kata2-runtime.install
 	depends = qemu-headless
-	depends = kata-proxy=1.12.1
-	depends = kata-shim=1.12.1
 	depends = kata-linux-container
 	depends = kata-containers-image
-	optdepends = kata-ksm-throttler=1.12.1
-	optdepends = firecracker<0.22.0
-	optdepends = cloud-hypervisor<0.9.0
+	optdepends = firecracker<0.24.0
+	optdepends = cloud-hypervisor<16.0
 
-pkgname = kata-proxy
-
-pkgname = kata-shim
+pkgname = kata-linux-container
 

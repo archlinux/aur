@@ -1,0 +1,11 @@
+post_install() {
+  cat <<EOF
+
+Due to Docker hard-codied usage of OCI runtime shim v1, the closest replacement
+is to call containerd CLI, for example as follows:
+
+  ctr image pull docker.io/library/alpine:edge
+  ctr run --rm -t --runtime io.containerd.kata.v2 docker.io/library/alpine:edge example-container-name date
+
+EOF
+}
