@@ -12,10 +12,12 @@ _filename=EDRLab.ThoriumReader_${pkgver}_amd64.deb
 source=(
   ${url}/releases/download/v${pkgver}/${_filename}
   ${url}/raw/v${pkgver}/LICENSE
+  no_zip_mime.patch
 )
 sha512sums=(
   c1d637a8b59522ca16e53c9553c67f0c549b05132cf6a311130a3593d5629747205347360fc6373009741d12eb39e7ff22f5fc48fb28399d38c79724e6cba4d9
   SKIP
+  e0308f1bd718014d12c5fb930ad154ef5f79a55e312e5d59dbcaf72bfecd63c57376f3decb6aecf8d51af1058a4b4139d280d3ff0a547877368b3cbc94653238
 )
 
 package() {
