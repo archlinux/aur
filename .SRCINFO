@@ -1,16 +1,17 @@
 pkgbase = meteor-decode-git
 	pkgdesc = Meteor-M2 LRPT decoder
-	pkgver = r28.607c0ad
+	pkgver = r50.d1e317c
 	pkgrel = 1
 	url = https://github.com/dbdexter-dev/meteor_decode
 	arch = any
-	license = GPL
+	license = MIT
 	makedepends = git
+	makedepends = cmake
 	depends = libpng
 	provides = meteor-decode
 	conflicts = meteor-decode
 	source = meteor-decode-git::git+https://github.com/dbdexter-dev/meteor_decode.git
-	sha1sums = SKIP
+	sha256sums = SKIP
 
 pkgname = meteor-decode-git
 
