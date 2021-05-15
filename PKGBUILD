@@ -1,9 +1,9 @@
-pkgbase=kata-containers-git
+pkgbase=kata1-containers-git
 pkgname=(
-  kata-ksm-throttler-git
-  kata-runtime-git
-  kata-proxy-git
-  kata-shim-git
+  kata1-ksm-throttler-git
+  kata1-runtime-git
+  kata1-proxy-git
+  kata1-shim-git
 )
 pkgver=1.13.0~alpha0~runtime.r0.cd63aacc
 pkgrel=1
@@ -56,27 +56,27 @@ build(){
   done
 }
 
-package_kata-ksm-throttler-git(){
-  conflicts=('kata-ksm-throttler')
-  provides=('kata-ksm-throttler')
+package_kata1-ksm-throttler-git(){
+  conflicts=('kata1-ksm-throttler')
+  provides=('kata1-ksm-throttler')
   cd "${srcdir}/src/${_gh_org}/ksm-throttler"
   GOPATH="${srcdir}" make install DESTDIR="${pkgdir}" BINDIR="/usr/bin" PKGLIBEXECDIR="/usr/lib/kata-containers" LIBEXECDIR="/usr/lib"
   install -d -m 0755 "${pkgdir}/var/lib/vc/{firecracker,sbs,uuid}"
 }
 
-package_kata-proxy-git(){
-  conflicts=('kata-proxy')
-  provides=('kata-proxy')
+package_kata1-proxy-git(){
+  conflicts=('kata1-proxy')
+  provides=('kata1-proxy')
   cd "${srcdir}/src/${_gh_org}/proxy"
   GOPATH="${srcdir}" make install DESTDIR="${pkgdir}" BINDIR="/usr/bin" PKGLIBEXECDIR="/usr/lib/kata-containers" LIBEXECDIR="/usr/lib"
 }
 
-package_kata-runtime-git(){
-  conflicts=('kata-runtime')
-  provides=('kata-runtime')
-  depends=('qemu-headless' "kata-proxy" "kata-shim" "kata-linux-container" "kata-containers-image")
+package_kata1-runtime-git(){
+  conflicts=('kata1-runtime')
+  provides=('kata1-runtime')
+  depends=('qemu-headless' "kata1-proxy" "kata1-shim" "kata1-linux-container" "kata1-containers-image")
   optdepends=(
-    'kata-ksm-throttler'
+    'kata1-ksm-throttler'
     'firecracker'
     'cloud-hypervisor'
     #'acrn'
@@ -86,9 +86,9 @@ package_kata-runtime-git(){
   GOPATH="${srcdir}" make install DESTDIR="${pkgdir}" BINDIR="/usr/bin" PKGLIBEXECDIR="/usr/lib/kata-containers" LIBEXECDIR="/usr/lib"
 }
 
-package_kata-shim-git(){
-  conflicts=('kata-shim')
-  provides=('kata-shim')
+package_kata1-shim-git(){
+  conflicts=('kata1-shim')
+  provides=('kata1-shim')
   cd "${srcdir}/src/${_gh_org}/shim"
   GOPATH="${srcdir}" make install DESTDIR="${pkgdir}" BINDIR="/usr/bin" PKGLIBEXECDIR="/usr/lib/kata-containers" LIBEXECDIR="/usr/lib"
 }
