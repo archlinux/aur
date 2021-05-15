@@ -55,6 +55,7 @@ makedepends+=('ninja' 'boost' 'eigen' 'freetype2' 'gflags' 'doxygen' 'python-sph
 source+=("${pkgname}::git+https://github.com/alicevision/AliceVision.git${_fragment}"
         "geogram::git+https://github.com/alicevision/geogram.git"
         "cmake_cxx_std_14.patch"
+        "openexr3.patch"
         )
 sha256sums+=('SKIP'
             'SKIP'
@@ -75,7 +76,7 @@ prepare() {
 #  git config submodule.src/dependencies/osi_clp.url
 # fix doc build
   sed -i '/^ *install.*doc/s/doc/htmlDoc/' src/CMakeLists.txt
-  git apply -v "${srcdir}"/cmake_cxx_std_14.patch
+  git apply -v "${srcdir}"/{cmake_cxx_std_14,openexr3}.patch
 }
 
 
@@ -126,4 +127,5 @@ package() {
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'caf2bf06bd7c6a2387f01f312d94b649ef3e4363b18fcdf95986cd71a0d6c275')
+            'caf2bf06bd7c6a2387f01f312d94b649ef3e4363b18fcdf95986cd71a0d6c275'
+            'e7a89d510788ff0320415d00e9871220e602e046ffc0fb65d60d465d6bed93a7')

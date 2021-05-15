@@ -42,10 +42,12 @@ pkgbase = alice-vision-git
 	source = alice-vision-git::git+https://github.com/alicevision/AliceVision.git#branch=develop
 	source = geogram::git+https://github.com/alicevision/geogram.git
 	source = cmake_cxx_std_14.patch
+	source = openexr3.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = caf2bf06bd7c6a2387f01f312d94b649ef3e4363b18fcdf95986cd71a0d6c275
+	sha256sums = e7a89d510788ff0320415d00e9871220e602e046ffc0fb65d60d465d6bed93a7
 
 pkgname = alice-vision-git
 
