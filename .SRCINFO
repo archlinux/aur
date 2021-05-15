@@ -1,13 +1,13 @@
 pkgbase = unvanquished-data
 	pkgdesc = Game assets for Unvanquished.
-	pkgver = 0.51.2
+	pkgver = 0.52.0
 	pkgrel = 1
-	url = http://www.unvanquished.net
+	url = https://www.unvanquished.net
 	arch = any
 	license = GPL3
 	makedepends = aria2>=1.18.7-2
-	source = https://github.com/Unvanquished/Unvanquished/raw/archlinux/0.51.2-1/download-dpk-torrent.sh
-	md5sums = a53bcb79af17ca7b7050a62bd023f814
+	source = https://raw.githubusercontent.com/Unvanquished/Unvanquished/v0.52.0/download-paks
+	md5sums = 6b0bce3c6cefac4c92a922afc9e47a11
 
 pkgname = unvanquished-data
 

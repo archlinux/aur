@@ -1,51 +1,31 @@
 # Maintainer: Viech <viech unvanquished net>
 
+# NOTE: For 0.52.0 only, we do not copy old assets from the system because:
+#       1. The new script does not allow seeding the download like this yet.
+#       2. A full redownload is necessary for this release anyway.
+
 pkgname=unvanquished-data
-pkgver=0.51.2
+pkgver=0.52.0
 pkgrel=1
-
-_gitver="archlinux/${pkgver}-${pkgrel}"
-
 pkgdesc='Game assets for Unvanquished.'
 arch=('any')
-url='http://www.unvanquished.net'
+url='https://www.unvanquished.net'
 license=('GPL3')
-
 makedepends=('aria2>=1.18.7-2')
-source=("https://github.com/Unvanquished/Unvanquished/raw/${_gitver}/download-dpk-torrent.sh")
+source=("https://raw.githubusercontent.com/Unvanquished/Unvanquished/v${pkgver}/download-paks")
+md5sums=('6b0bce3c6cefac4c92a922afc9e47a11')
 
-# disable package compression since assets are already compressed
+# Disable package compression since assets are already compressed.
 PKGEXT='.pkg.tar'
 
-build() {
-	cd "${srcdir}"
-
-	chmod +x download-dpk-torrent.sh
+prepare() {
+	chmod +x "${srcdir}/download-paks"
 }
 
 package() {
-	# create installation directory
+	# Create installation directory.
 	install -dm755 "${pkgdir}/usr/share/unvanquished/pkg/"
 
-	# use package source directory as the cache for the download script
-	if [ ! -d "${srcdir}/cache" ]; then
-		mkdir "${srcdir}/cache"
-	fi
-
-	# attempt to copy existing assets from the system, so they aren't redownloaded
-	if [ -d /usr/share/unvanquished/pkg ]; then
-		echo "Copying existing assets from the system..."
-		cp -r /usr/share/unvanquished/pkg/*.dpk "${pkgdir}/usr/share/unvanquished/pkg/" || true
-	fi
-
-	# make the download script aware of copied assets, so it will remove unneeded ones
-	ls -c1 "${pkgdir}/usr/share/unvanquished/pkg/" > "${srcdir}/cache/last-assets.txt"
-
-	# remove old aria2 progress files in case the torrent itself was updated
-	rm -f "${srcdir}/cache/"*".aria2"
-
-	# download new or modified assets
-	./download-dpk-torrent.sh "${pkgdir}/usr/share/unvanquished/pkg/" "${srcdir}/cache" "${pkgver}"
+	# Download assets.
+	./download-paks "${pkgdir}/usr/share/unvanquished/pkg/" "${srcdir}"
 }
-
-md5sums=('a53bcb79af17ca7b7050a62bd023f814')
