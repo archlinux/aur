@@ -2,14 +2,17 @@
 # Contributor: Auteiy <dmitry@auteiy.me>
 pkgname=kotatogram-desktop
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Kotatogram – experimental Telegram Desktop fork'
 arch=('x86_64')
 url="https://kotatogram.github.io"
 license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
-         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'gtk3' 'glibmm' 'webkit2gtk')
-makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'libtg_owt')
+         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'glibmm')
+makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'libtg_owt'
+            'gtk3' 'webkit2gtk')
+optdepends=('gtk3: GTK integration'
+            'webkit2gtk: Web-related features')
 conflicts=('kotatogram-desktop-bin' 'kotatogram-desktop-dynamic-bin')
 source=("${pkgname}::git+https://github.com/kotatogram/${pkgname}.git#tag=k${pkgver}"
         "${pkgname}-libtgvoip::git+https://github.com/telegramdesktop/libtgvoip"
@@ -30,7 +33,8 @@ source=("${pkgname}::git+https://github.com/kotatogram/${pkgname}.git#tag=k${pkg
         "${pkgname}-lib_webrtc::git+https://github.com/desktop-app/lib_webrtc.git"
         "${pkgname}-tgcalls::git+https://github.com/TelegramMessenger/tgcalls.git"
         "${pkgname}-lib_webview::git+https://github.com/kotatogram/lib_webview.git"
-        "0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch")
+        "0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch"
+        "dlopen-gtk.patch")
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -50,7 +54,8 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '13357d081fb658c735bb2575360f5d48214e1cf5002719ba410405a2fe05c7c3d2379588c2ca3c2ca6a5e6ff64e01e6d1ff3aecdaee8f3dd0519a64f6ee94182')
+            '13357d081fb658c735bb2575360f5d48214e1cf5002719ba410405a2fe05c7c3d2379588c2ca3c2ca6a5e6ff64e01e6d1ff3aecdaee8f3dd0519a64f6ee94182'
+            '3a2cf87836153d2a184b18e8ede4a279e5b55c6c8023e2ac5234482c510c4a7aff58fade8f6fcb4d52fb76601afda11b676694d4eaf3029836101aeeee0007e7')
 
 prepare() {
     cd "${srcdir}/${pkgname}"
@@ -81,6 +86,7 @@ prepare() {
     popd
 
     patch -p1 < ${srcdir}/0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch
+    patch -p1 < ${srcdir}/dlopen-gtk.patch
 }
 
 build() {
