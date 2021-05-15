@@ -1,10 +1,10 @@
 # Maintainer: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig,de>
 
-# CLI script to download BBB recordings … and some other things.
+# Script to download BBB recordings.
 
 pkgname="bbb-recorder-git"
 pkgver=0.0.0+81
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool to download recordings from Big Blue Button"
 arch=("any")
 url="git+https://github.com/jibon57/bbb-recorder"
@@ -56,8 +56,10 @@ depends+=('chromium')
 optdepends+=('ffmpeg: converting webm to mp4')
 makedepends=('git' 'npm')
 install=bbb-recorder.install
-source=("git+https://github.com/jibon57/bbb-recorder.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/jibon57/bbb-recorder.git"
+        "BigBlueButton-2.3.patch::https://github.com/hooktstudios/bbb-recorder/commit/62c989d304a04fdf7aed565e729ac12f6d14848e.patch")
+sha256sums=('SKIP'
+            'f30a3949ffc46b7a02014352b0ec41c0ef08eecf6cc9e5ac53ca3639f0daeb5d')
 
 pkgver() {
     cd "$srcdir"/bbb-recorder
@@ -66,6 +68,22 @@ pkgver() {
 }
 
 prepare() {
+    cd "$srcdir"/bbb-recorder
+
+    echo ""
+    echo ""
+    echo "THIS PATCH SUPPORTS BBB 2.3, BUT NOT ANYMORE BBB 2.0!"
+    echo "if needed, build again without the patch."
+    echo "Also, might fail some day after development of this software continued."
+    #     (worked with commit f2520ca)
+    echo ""
+    echo ""
+
+    patch -p1 < "$srcdir"/BigBlueButton-2.3.patch
+
+    cd "$srcdir"
+
+
     # Avoiding to install the node modules globally.
     # Using wrappers, to call the scripts from anywhere.
     # Let the wrappers have the same arguments like the js files,
@@ -113,8 +131,8 @@ EOF
 
 build() {
     cd "$srcdir"/bbb-recorder
-    npm install --ignore-scripts --silent --no-package-lock
-    npm install --ignore-scripts --silent --no-package-lock examples
+    npm install --ignore-scripts --silent --no-package-lock --no-update-notifier
+    npm install --ignore-scripts --silent --no-package-lock --no-update-notifier examples
     find -name package.json -exec sed -i '/_where/d' {} +
 }
 

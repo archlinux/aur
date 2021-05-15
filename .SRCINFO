@@ -1,7 +1,7 @@
 pkgbase = bbb-recorder-git
 	pkgdesc = Tool to download recordings from Big Blue Button
 	pkgver = 0.0.0+81
-	pkgrel = 2
+	pkgrel = 3
 	url = git+https://github.com/jibon57/bbb-recorder
 	install = bbb-recorder.install
 	arch = any
@@ -13,7 +13,9 @@ pkgbase = bbb-recorder-git
 	depends = chromium
 	optdepends = ffmpeg: converting webm to mp4
 	source = git+https://github.com/jibon57/bbb-recorder.git
+	source = BigBlueButton-2.3.patch::https://github.com/hooktstudios/bbb-recorder/commit/62c989d304a04fdf7aed565e729ac12f6d14848e.patch
 	sha256sums = SKIP
+	sha256sums = f30a3949ffc46b7a02014352b0ec41c0ef08eecf6cc9e5ac53ca3639f0daeb5d
 
 pkgname = bbb-recorder-git
 
