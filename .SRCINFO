@@ -1,4 +1,4 @@
-pkgbase = kata-containers
+pkgbase = kata1-containers
 	pkgdesc = Lightweight virtual machines for containers
 	pkgver = 1.12.1
 	pkgrel = 1
@@ -19,20 +19,20 @@ pkgbase = kata-containers
 	b2sums = 72d9995a45997c2d407f411f9a177207e23f382b40c08c1930c07029d76bcb3b703d3e80a209e98dc7646d6b1736cab4a1047974a2fb917419a4a6d94e796dd5
 	b2sums = a73a3ce69ff54e7d172ef30e73678d4aaf12ab725798fe6e057f0ca163a95d7ce43c599fec9e7767259b4b793543febd1b7478678400e7f01204a1df89af9556
 
-pkgname = kata-ksm-throttler
+pkgname = kata1-ksm-throttler
 
-pkgname = kata-runtime
+pkgname = kata1-runtime
 	install = kata-runtime.install
 	depends = qemu-headless
-	depends = kata-proxy=1.12.1
-	depends = kata-shim=1.12.1
-	depends = kata-linux-container
-	depends = kata-containers-image
-	optdepends = kata-ksm-throttler=1.12.1
+	depends = kata1-proxy=1.12.1
+	depends = kata1-shim=1.12.1
+	depends = kata1-linux-container
+	depends = kata1-containers-image
+	optdepends = kata1-ksm-throttler=1.12.1
 	optdepends = firecracker<0.22.0
 	optdepends = cloud-hypervisor<0.9.0
 
-pkgname = kata-proxy
+pkgname = kata1-proxy
 
-pkgname = kata-shim
+pkgname = kata1-shim
 

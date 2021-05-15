@@ -1,12 +1,12 @@
 # Maintainer: zer0def <zer0def@github>
 # Contributor: Kaushal M <kshlmster cat gmail dog com>
 # Contributor: Stefan Zwanenburg <stefan cat zwanenburg dog info>
-pkgbase=kata-containers
+pkgbase=kata1-containers
 pkgname=(
-  kata-ksm-throttler
-  kata-runtime
-  kata-proxy
-  kata-shim
+  kata1-ksm-throttler
+  kata1-runtime
+  kata1-proxy
+  kata1-shim
 )
 pkgver=1.12.1
 _pkgver=${pkgver/\~/-}
@@ -62,21 +62,21 @@ build(){
   done
 }
 
-package_kata-ksm-throttler(){
+package_kata1-ksm-throttler(){
   cd "${srcdir}/src/${_gh_org}/ksm-throttler"
   GOPATH="${srcdir}" make install DESTDIR="${pkgdir}" BINDIR="/usr/bin" PKGLIBEXECDIR="/usr/lib/kata-containers" LIBEXECDIR="/usr/lib"
   install -d -m 0755 "${pkgdir}/var/lib/vc/{firecracker,sbs,uuid}"
 }
 
-package_kata-proxy(){
+package_kata1-proxy(){
   cd "${srcdir}/src/${_gh_org}/proxy"
   GOPATH="${srcdir}" make install DESTDIR="${pkgdir}" BINDIR="/usr/bin" PKGLIBEXECDIR="/usr/lib/kata-containers" LIBEXECDIR="/usr/lib"
 }
 
-package_kata-runtime(){
-  depends=('qemu-headless' "kata-proxy=${pkgver}" "kata-shim=${pkgver}" "kata-linux-container" "kata-containers-image")
+package_kata1-runtime(){
+  depends=('qemu-headless' "kata1-proxy=${pkgver}" "kata1-shim=${pkgver}" "kata1-linux-container" "kata1-containers-image")
   optdepends=(
-    "kata-ksm-throttler=${pkgver}"
+    "kata1-ksm-throttler=${pkgver}"
     'firecracker<0.22.0'
     'cloud-hypervisor<0.9.0'
   )
@@ -85,7 +85,7 @@ package_kata-runtime(){
   GOPATH="${srcdir}" make install DESTDIR="${pkgdir}" BINDIR="/usr/bin" PKGLIBEXECDIR="/usr/lib/kata-containers" LIBEXECDIR="/usr/lib"
 }
 
-package_kata-shim(){
+package_kata1-shim(){
   cd "${srcdir}/src/${_gh_org}/shim"
   GOPATH="${srcdir}" make install DESTDIR="${pkgdir}" BINDIR="/usr/bin" PKGLIBEXECDIR="/usr/lib/kata-containers" LIBEXECDIR="/usr/lib"
 }
