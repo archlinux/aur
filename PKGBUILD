@@ -3,7 +3,7 @@
 
 pkgname=dotter-rs-git
 _pkgname=dotter
-pkgver=0.12.2.r0.g106c2ea
+pkgver=0.12.3.r5.gfa016c9
 pkgrel=1
 pkgdesc="A dotfile manager and templater written in Rust (git)"
 arch=('x86_64')
@@ -23,12 +23,12 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  cargo build --release --locked
+  cargo build --release --locked --features handlebars_misc_helpers
 }
 
 check() {
   cd "$_pkgname"
-  cargo test --release --locked
+  cargo test --release --locked --features handlebars_misc_helpers
 }
 
 package() {
