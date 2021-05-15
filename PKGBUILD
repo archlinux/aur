@@ -6,7 +6,7 @@ pkgname=("python-pytorch" "python-pytorch-opt" "python-pytorch-cuda" "python-pyt
 _pkgname="pytorch"
 pkgver=1.8.1
 _pkgver=1.8.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -150,6 +150,9 @@ prepare() {
 
   # remove local nccl
   rm -rf third_party/nccl/nccl
+
+  # fix build with google-glog 0.5 https://github.com/pytorch/pytorch/issues/58054
+  sed -e '/namespace glog_internal_namespace_/d' -e 's|::glog_internal_namespace_||' -i c10/util/Logging.cpp
 
   cd ..
 
