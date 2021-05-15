@@ -1,0 +1,11 @@
+[Unit]
+Description=A Linux Driver for the Elgato Streamdeck
+
+[Service]
+ExecStart=/usr/bin/streamdeckd
+Environment="DISPLAY=:0.0"
+Environment="DEBUG=true"
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
