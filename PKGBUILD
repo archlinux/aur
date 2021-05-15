@@ -2,7 +2,7 @@
 
 pkgname=hisat2-bin
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and sensitive alignment program for mapping sequencing reads"
 arch=('x86_64')
 url="https://daehwankimlab.github.io/hisat2/"
@@ -11,8 +11,8 @@ depends=('glibc')
 optdepends=('perl' 'python')
 provides=('hisat2')
 conflicts=('hisat2')
-source=("https://cloud.biohpc.swmed.edu/index.php/s/4pMgDq4oAF9QCfA/download")
-sha256sums=('37a8731bdaecbc378b6cadd1c220641c47f5ff4f00f9d089308706cb47e1b3fa')
+source_x86_64=("https://cloud.biohpc.swmed.edu/index.php/s/oTtGWbWjaxsQ2Ho/download")
+sha256sums_x86_64=('ae53af930729787a126944f7db34d4065c06f589c4fb05f4cfa9a348cacd5cb4')
 
 
 package() {
