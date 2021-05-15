@@ -1,0 +1,16 @@
+pkgbase = idok-bin
+	pkgdesc = A simple command line tool to stream media to kodi
+	pkgver = 20140910
+	pkgrel = 1
+	url = https://metal3d.github.io/idok/
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = gzip
+	source = https://github.com/metal3d/idok/releases/download/20140910-1/idok-x86_64.gz
+	source = https://raw.githubusercontent.com/metal3d/idok/master/LICENSE
+	sha256sums = 5b602c8d1e5407d7796c806af5c9cc3f0b9bd6b16b5264a2c722e7960802a1b7
+	sha256sums = 359c126730888651fb2e29791f5cd8f45976dfdd042bb3fa3be1d66aad60d5f1
+
+pkgname = idok-bin
+
