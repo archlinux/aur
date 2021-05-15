@@ -1,14 +1,14 @@
 pkgbase = controllermap
 	pkgdesc = Game controller mapping generator
-	pkgver = 2.0.12
+	pkgver = 2.0.14
 	pkgrel = 1
 	url = http://www.libsdl.org
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = sdl2
-	source = http://www.libsdl.org/release/SDL2-2.0.12.tar.gz
-	md5sums = 783b6f2df8ff02b19bb5ce492b99c8ff
+	source = http://www.libsdl.org/release/SDL2-2.0.14.tar.gz
+	md5sums = 76ed4e6da9c07bd168b2acd9bfefab1b
 
 pkgname = controllermap
 
