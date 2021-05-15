@@ -2,25 +2,25 @@
 
 _pkgname=phylobayes
 pkgname=$_pkgname-mpi
-pkgver=1.5a
+pkgver=1.8c
 pkgrel=1
 pkgdesc="phylogenetic reconstruction using infinite mixtures"
 arch=('i686' 'x86_64')
-url="http://megasun.bch.umontreal.ca/People/lartillot/www/index.htm"
-license=('GPL3')
+url="https://github.com/bayesiancook/pbmpi"
+license=('GPL2')
 conflicts=('phylobayes')
 depends=('openmpi')
-source=("http://megasun.bch.umontreal.ca/People/lartillot/www/pb_mpi$pkgver.tar.gz")
-md5sums=('bbb2b9193329a7b2253160b817f9fc87')
+source=("https://codeload.github.com/bayesiancook/pbmpi/tar.gz/refs/tags/v${pkgver}")
+md5sums=('9ee847859fafcdcf203eddc458c25e8a')
 
 build() {
-  cd $srcdir/pb_mpi$pkgver/sources
+  cd $srcdir/pbmpi-$pkgver/sources
 
   make
 }
 
 package() {
-  cd $srcdir/pb_mpi$pkgver/data
+  cd $srcdir/pbmpi-$pkgver/data
 
   mkdir -p $pkgdir/usr/bin
 

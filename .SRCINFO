@@ -1,15 +1,15 @@
 pkgbase = phylobayes-mpi
 	pkgdesc = phylogenetic reconstruction using infinite mixtures
-	pkgver = 1.5a
+	pkgver = 1.8c
 	pkgrel = 1
-	url = http://megasun.bch.umontreal.ca/People/lartillot/www/index.htm
+	url = https://github.com/bayesiancook/pbmpi
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL2
 	depends = openmpi
 	conflicts = phylobayes
-	source = http://megasun.bch.umontreal.ca/People/lartillot/www/pb_mpi1.5a.tar.gz
-	md5sums = bbb2b9193329a7b2253160b817f9fc87
+	source = https://codeload.github.com/bayesiancook/pbmpi/tar.gz/refs/tags/v1.8c
+	md5sums = 9ee847859fafcdcf203eddc458c25e8a
 
 pkgname = phylobayes-mpi
 
