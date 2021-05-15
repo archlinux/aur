@@ -2,14 +2,14 @@
 # Contributer: Steven Honeyman <stevenhoneyman at gmail com>
 
 pkgname=geeqie-git
-pkgver=20210130
+pkgver=20210512
 pkgrel=1
 pkgdesc='Lightweight image viewer'
 arch=('x86_64')
 url="http://www.geeqie.org/"
 license=('GPL2')
 depends=('exiv2' 'gtk3' 'ffmpegthumbnailer'
-         'libdjvu' 'libheif' 'libchamplain'
+         'djvulibre' 'libheif' 'libchamplain'
          'poppler-glib')
 makedepends=('git'
              'intltool' 'python' 'librsvg'
