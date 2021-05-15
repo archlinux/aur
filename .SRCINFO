@@ -1,7 +1,7 @@
 pkgbase = openshift-client-bin
 	pkgdesc = Client tools for OpenShift, binary release
 	pkgver = 4.7.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openshift/oc
 	arch = x86_64
 	license = Apache

@@ -1,7 +1,7 @@
 # Maintainer: Josh Gwosdz <jgwosdz at redhat dot com>
 pkgname=openshift-client-bin
 pkgver=4.7.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Client tools for OpenShift, binary release"
 arch=("x86_64")
 provides=("oc")
@@ -23,5 +23,5 @@ prepare() {
 package() {
   install -Dm644 $srcdir/bash-completions $pkgdir/usr/share/bash-completion/completions/oc
   install -Dm644 $srcdir/zsh-completions $pkgdir/usr/share/zsh/site-functions/_oc
-  install -Dm755 "${srcdir}/oc" "${pkgdir}/usr/local/bin/oc"
+  install -Dm755 "${srcdir}/oc" "${pkgdir}/usr/bin/oc"
 }
