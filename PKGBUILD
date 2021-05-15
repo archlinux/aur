@@ -1,23 +1,22 @@
 # Maintainer: Charalampos Kardaris <ckardaris at outlook dot com>
 
 pkgname=ucollage
-pkgver=0.1.0
-pkgrel=2
-pkgdesc="A command line image viewer based on Überzug."
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="An extensible command line image viewer inspired by vim"
 arch=('any')
 url="https://github.com/ckardaris/ucollage"
 license=('GPL3')
-depends=('bash>=4.2.0' 'ueberzug' 'file')
+depends=('bash>=4.2.0' 'ueberzug' 'file' 'bc' 'coreutils' 'sed' 'grep')
 optdepends=(
   'imagemagick: Image rotation'
   'ffmpeg: Thumbnail creation'
+  'xclip: Clipboard pasting'
 )
-source=("https://github.com/ckardaris/ucollage/archive/v${pkgver}.tar.gz")
-sha256sums=('5fab56577e3429bd28f36e26138d6ecd3c2f91833a94da9cc35de75710588f7b')
+source=("https://github.com/ckardaris/ucollage/releases/download/v${pkgver}/ucollage-${pkgver}.tar.gz")
+sha256sums=('36f912097a65a15bf261f2a74aecee442fc7ff2d6cb0d74f4fd60b5356125c38')
 
 package() {
     cd "${pkgname}-${pkgver}"
-    install -Dm755 ucollage -t "${pkgdir}/usr/bin"
-    install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-    install -Dm644 ucollage.1 -t "${pkgdir}/usr/share/man/man1"
+    make PREFIX="${pkgdir}" install
 }
