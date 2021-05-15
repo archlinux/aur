@@ -5,7 +5,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 _pkgname='flow'
 pkgname="$_pkgname-git"
-pkgver='0.146.0.r11528.g37ed2655e'
+pkgver='0.151.1.r11937.g0efa1f6c2'
 pkgrel='1'
 pkgdesc='A static type checker for JavaScript - git version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
