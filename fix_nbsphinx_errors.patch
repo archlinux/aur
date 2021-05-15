@@ -1,0 +1,13 @@
+diff --color -ura a/docs/source/conf.py b/docs/source/conf.py
+--- a/docs/source/conf.py	2021-05-15 04:18:33.000000000 +0800
++++ b/docs/source/conf.py	2021-05-15 13:26:22.140935987 +0800
+@@ -155,6 +155,9 @@
+ else:
+     nbsphinx_execute = 'always'
+ 
++nbsphinx_allow_errors = True
++nbsphinx_timeout = -1
++
+ # -- Options for HTML output ----------------------------------------------
+ 
+ html_theme = "sphinx_rtd_theme"
