@@ -1,41 +1,30 @@
-pkgbase = kata1-containers-bin
-	pkgdesc = Lightweight virtual machines for containers (binary version)
-	pkgver = 1.12.1
+pkgbase = kata-containers-bin
+	pkgdesc = Lightweight virtual machines for containers (version 2, binary packaging)
+	pkgver = 2.1.0
 	pkgrel = 1
-	epoch = 1
 	url = https://katacontainers.io
 	arch = x86_64
 	license = Apache
-	source = https://github.com/kata-containers/runtime/releases/download/1.12.1/kata-static-1.12.1-x86_64.tar.xz
-	sha512sums = 4c81be66e2b310ef767f0c90b548f85f89f5521be9fd53c50a95e81750dfbff666595ef48ba9cece2cccc33c7fafb74db0589b4a10069abf2f8d172bda8516ae
-	b2sums = 902dd17f7bd4d955155c7d0f377905e15d1e2e02b358acb511dbccd83f950e91989f3dbb36cb30866a950ed57127d50e8fa2da21ffefd7f95a9f98e3fc7e4da4
+	source = https://github.com/kata-containers/kata-containers/releases/download/2.1.0/kata-static-2.1.0-x86_64.tar.xz
+	sha512sums = 47a5f9cf267194f1ea1a934b67c4dc7624aae36526c8494ead6c4c61df52b4718783fad6851283ecb38236cd89527cd4883dba348199316b017659777d1d3b20
+	b2sums = 65946f09728c65bff47d102fac54263834477f6a2582f95deea9ab7b35ecce8de4035ab0b9097ba6f1ed95e02b0f2385ae5361eb35a624fae30a607064d13a32
 
-pkgname = kata1-runtime-bin
-	install = kata-runtime.install
+pkgname = kata-runtime-bin
+	install = kata2-runtime.install
 	depends = qemu-headless
-	depends = kata1-proxy
-	depends = kata1-shim
-	depends = kata1-containers-image
-	depends = kata1-linux-container
-	optdepends = kata1-ksm-throttler
-	optdepends = cloud-hypervisor<0.11.0
-	optdepends = firecracker<0.22.0
-	provides = kata1-runtime
-	conflicts = kata1-runtime
+	depends = kata-containers-image
+	depends = kata-linux-container
+	optdepends = cloud-hypervisor<16.0
+	optdepends = firecracker<0.24.0
+	provides = kata-runtime
+	conflicts = kata-runtime
+	conflicts = kata-runtime
 
-pkgname = kata1-proxy-bin
-	provides = kata1-proxy
-	conflicts = kata1-proxy
+pkgname = kata-containers-image-bin
+	provides = kata-containers-image
+	conflicts = kata-containers-image
 
-pkgname = kata1-shim-bin
-	provides = kata1-shim
-	conflicts = kata1-shim
-
-pkgname = kata1-containers-image-bin
-	provides = kata1-containers-image
-	conflicts = kata1-containers-image
-
-pkgname = kata1-linux-container-bin
-	provides = kata1-linux-container
-	conflicts = kata1-linux-container
+pkgname = kata-linux-container-bin
+	provides = kata-linux-container
+	conflicts = kata-linux-container
 
