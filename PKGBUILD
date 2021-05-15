@@ -1,4 +1,4 @@
-# Maintainer: Stefan J. Betz <info@stefan-betz.net>
+# Contributor: Stefan J. Betz <info@stefan-betz.net>
 pkgname=commander-zod
 _version=2011_09_06
 pkgver=0.$_version
@@ -8,7 +8,7 @@ depends=("sdl" "sdl_mixer" "sdl_ttf" "sdl_image" "libmariadbclient" "wxgtk2.8")
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://zod.sourceforge.net/"
-source=("http://sourceforge.net/projects/zod/files/linux_releases/zod_linux-${_version//_/-}.tar.gz"
+source=("https://sourceforge.net/projects/zod/files/linux_releases/zod_linux-${_version//_/-}.tar.gz"
 	"commander-zod.desktop"
 	"commander-zod"
 	"zod_launcher_wxgtk2.8.patch")
