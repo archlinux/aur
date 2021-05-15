@@ -1,7 +1,7 @@
 #Maintainer: CubeTheThird <cubethethird@gmail.com>
 
 pkgname=brogue-ce-git
-pkgver=1.9.4.r19.dev.5e87eb6
+pkgver=1.9.4.r106.dev.0ca1176
 pkgrel=1
 pkgdesc="Brogue Community Edition: A 26-level dungeon crawl to the Amulet of Yendor."
 arch=('i686' 'x86_64')
@@ -13,10 +13,11 @@ md5sums=('SKIP')
 
 pkgver() {
 cd "$srcdir/$pkgname"
-VER=$(grep "BROGUE_VERSION_STRING" src/brogue/Rogue.h | grep -o '[0-9.]\{1,\}')
+VER=$(grep "BROGUE_DUNGEON_VERSION_STRING" src/brogue/Rogue.h | grep -o '[0-9.]\{1,\}')
+PAT=$(grep "BROGUE_PATCH" src/brogue/Rogue.h | grep -o '[0-9]\{1,\}')
 REV="$(git rev-list $(git describe --abbrev=0)..HEAD --count)"
 EXT="dev.$(git log -1 --format='%h')"
-echo ${VER}.r${REV}.${EXT}
+echo ${VER}.${PAT}.r${REV}.${EXT}
 }
 
 build() {
