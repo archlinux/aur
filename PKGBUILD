@@ -1,12 +1,12 @@
-# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
-# Original Maintainer: Jan de Groot <jgc@archlinux.org>
+# Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Thayer Williams <thayer@archlinux.org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=pm-utils-debian
-_debian_rel=15
+_debian_rel=19
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Utilities and scripts for suspend and hibernate power management"
 arch=(any)
@@ -19,7 +19,7 @@ conflicts=("${pkgname%-*}")
 source=("http://pm-utils.freedesktop.org/releases/${pkgname%-*}-${pkgver}.tar.gz"
         "http://ftp.de.debian.org/debian/pool/main/${pkgname:0:1}/${pkgname%-*}/${pkgname%-*}_${pkgver}-${_debian_rel}.debian.tar.xz")
 sha512sums=('5bc9479fe75f120aee136befeb24c8d7d85f61410b551177ed61fd1b4ea9cce7989796b067e357ea93b44b4ae9f66311687066f188236c5efdfd3750695a8017'
-            'cfac0d6482003f5c3375816749590dd1653c55bd0579e10f0a8d28163d1b87e72f5cbd7685b71478b5ce7f0fe4e7cd3c232d56d49ef839e1062665cc3c422db7')
+            '5164c17da166a916a521a0d983715164d2b8be5e3c9e05fbf79223130bef6f53bd734ff7aa32889feb6df084dad8d31f65aa6bc20cb3b07fa90fa4c068d3ae41')
 
 build() {
   cd "${pkgname%-*}-${pkgver}"
