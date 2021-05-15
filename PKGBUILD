@@ -1,17 +1,18 @@
-# $Id: PKGBUILD 250667 2015-11-11 08:40:44Z andyrtr $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer:
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=xf86-input-acecad
 pkgver=1.5.0
-pkgrel=9
+pkgrel=10
 pkgdesc="X.Org acecad tablet input driver"
 arch=(i686 x86_64)
-url="http://xorg.freedesktop.org/"
+url="https://xorg.freedesktop.org/wiki/"
 license=('custom')
-depends=('sysfsutils')
-makedepends=('xorg-server-devel' 'X-ABI-XINPUT_VERSION=22.1' 'resourceproto' 'scrnsaverproto')
-conflicts=('xorg-server<1.16' 'X-ABI-XINPUT_VERSION<22.1' 'X-ABI-XINPUT_VERSION>=23')
-source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2
+depends=(sysfsutils)
+makedepends=(xorgproto xorg-server-devel xorg-server 'X-ABI-XINPUT_VERSION=24.1')
+conflicts=('X-ABI-XINPUT_VERSION<24.1' 'X-ABI-XINPUT_VERSION>=25')
+source=("https://xorg.freedesktop.org/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2"
         assign-local-private-after-allocating.patch)
 sha1sums=('410cee68e4435dc95774fb389fcefae1b2ffe3d1'
           '9301020b0ef3c6f2081e957481a88d2e187a7973')
