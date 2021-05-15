@@ -10,14 +10,11 @@ pkgbase = arcan
 	makedepends = cmake
 	makedepends = meson
 	makedepends = ruby
-	makedepends = fuse3
-	makedepends = openhmd
 	depends = espeak-ng
 	depends = freetype2
 	depends = harfbuzz
 	depends = leptonica
 	depends = libseccomp
-	depends = libuvc
 	depends = libvncserver
 	depends = lua51
 	depends = mesa
@@ -31,41 +28,4 @@ pkgbase = arcan
 	sha256sums = 23fc768f006e6a19e1088451aaf95ca1e7d2b5c8e78d8e3954002ef7eba32613
 
 pkgname = arcan
-
-pkgname = arcan-acfgfs
-	pkgdesc = Arcan virtual filesystem for working with the format that durden (and others) provide over a domain socket
-	depends = arcan
-	depends = fuse3
-
-pkgname = arcan-aclip
-	pkgdesc = Arcan clipboard integration, similarly to how "xclip" works for Xorg
-	depends = arcan
-
-pkgname = arcan-adbgcapture
-	pkgdesc = debugging tool that uses arcan-tui as a frontend to launch a debugger or otherwise interactively control what to do with a process that has crashed
-	depends = arcan
-	optdepends = gdb
-	optdepends = lldb
-
-pkgname = arcan-adbginject
-	pkgdesc = a trivial dynamic interposition library for providing some arcan UI interfacing
-	depends = arcan
-
-pkgname = arcan-aloadimage
-	pkgdesc = Arcan sandboxed image loader, supporting multi-process privilege separation, playlists and so on - similar to xloadimage
-	depends = arcan
-	depends = libseccomp
-
-pkgname = arcan-shmmon
-	pkgdesc = Simple shmif- debugging aid for Arcan
-	depends = arcan
-
-pkgname = arcan-trayicon
-	pkgdesc = a simple tool that connects to arcan as an ICON
-	depends = arcan
-
-pkgname = arcan-vrbridge
-	pkgdesc = Aggregates samples from VR related SDKs and binds into a single avatar in a way that integrates with the core engine VR path
-	depends = arcan
-	depends = openhmd
 
