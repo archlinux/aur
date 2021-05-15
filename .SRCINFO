@@ -1,0 +1,15 @@
+pkgbase = givemelyrics
+	pkgdesc = See the lyrics of the song that is playing, from any application
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/muriloventuroso/givemelyrics
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = vala
+	depends = granite
+	source = https://github.com/muriloventuroso/givemelyrics/archive/0.5.0/givemelyrics-0.5.0.tar.gz
+	sha256sums = 574fdd887715cffeed814b53b2c745bd69260ca584712376ec2b10d3b5af8563
+
+pkgname = givemelyrics
+
