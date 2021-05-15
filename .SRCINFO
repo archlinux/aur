@@ -30,5 +30,3 @@ pkgname = kata2-linux-container-bin
 	conflicts = kata2-linux-container
 	conflicts = kata-linux-container
 
-pkgname = kata2-containers-static
-
