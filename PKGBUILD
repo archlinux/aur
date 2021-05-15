@@ -14,7 +14,7 @@ conflicts=('cryptsetup-runit')
 source=("git+https://github.com/void-linux/void-runit"
         "cryptsetup")
 sha256sums=('SKIP'
-'e58cac4e8e8b7de0f71827b4a011337be1869330097d2829f9ea8bbe3568f1cc'
+'b23600d4218e91546f65d284f6bbbbd8ea966516ea9813180ab4cafa2a0bdf7a'
 )
 
 pkgver() {
