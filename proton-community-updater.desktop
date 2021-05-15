@@ -1,6 +1,6 @@
 [Desktop Entry]
 Exec=/usr/bin/proton-community-updater
-Icon=/usr/share/pixmaps/proton-community-updater-logo.png
+Icon=/usr/share/pixmaps/proton-community-updater-icon.png
 Name=Proton Community Updater
 StartupNotify=true
 Terminal=false
