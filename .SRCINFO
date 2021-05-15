@@ -20,11 +20,10 @@ pkgbase = flow-git
 	makedepends = ocaml-dtoa>=0.3.1
 	makedepends = ocaml-lwt>=4.5.0
 	makedepends = ocaml-lwt_log>=1.1.0
-	makedepends = ocaml-migrate-parsetree
 	makedepends = ocaml-ppx_deriving
 	makedepends = ocaml-ppx_gen_rec
 	makedepends = ocaml-ppx_let>=0.11.0
-	makedepends = ocaml-ppx_tools_versioned
+	makedepends = ocaml-ppxlib
 	makedepends = ocaml-sedlex>=2.1
 	makedepends = ocaml-visitors
 	makedepends = ocaml-wtf8
