@@ -2,7 +2,7 @@
 
 _gitname=spicetify-cli
 pkgname="${_gitname}-git"
-pkgver=1.2.1.r21.ge6a9ab9
+pkgver=2.1.0.r0.g294ba11
 pkgrel=2
 pkgdesc='Command-line tool to customize Spotify client - Git master branch'
 arch=('x86_64' 'i686')
@@ -17,7 +17,7 @@ conflicts=("${_gitname}")
 pkgver() {
 	cd "$srcdir/${_gitname}"
 
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -25,7 +25,6 @@ build() {
 
   export GOPATH="$srcdir"
   go build -o spicetify
-  go clean -modcache
 }
 
 check() {
@@ -40,10 +39,10 @@ package() {
   install -Dm755 ./spicetify "$pkgdir"/usr/share/${_gitname}/spicetify
   cp -r ./Themes ./Extensions ./CustomApps ./jsHelper ./globals.d.ts "$pkgdir"/usr/share/${_gitname}
 
-  rm -f ./wrapper
+  rm -f ./shortcut
   echo "#!/bin/sh
-/usr/share/${_gitname}/spicetify \"\$@\"" >> ./wrapper
-  install -Dm755 ./wrapper "$pkgdir"/usr/bin/spicetify
+/usr/share/${_gitname}/spicetify \"\$@\"" >> ./shortcut
+  install -Dm755 ./shortcut "$pkgdir"/usr/bin/spicetify
 
   # Clean up deps
   go clean -modcache
