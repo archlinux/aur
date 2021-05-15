@@ -2,18 +2,18 @@
 
 pkgname=novelwriter-git
 _pkgname=novelWriter
-pkgver=v1.3.r0.gc4e87435
+pkgver=v1.3.1.r0.g486676ba
 pkgrel=1
 epoch=1
 pkgdesc="Markdown-like text editor designed for writing novels and larger projects of many smaller plain text documents"
 arch=(any)
 url="https://github.com/vkbo/novelWriter"
 license=(GPL3)
-depends=('python-lxml' 'python-pyqt5' 'python-pypandoc' 'python-latexcodec')
+makedepends=('python-lxml' 'python-pyqt5' 'python-pypandoc' 'python-latexcodec' 'git')
+depends=('python')
 optdepends=('python-pyenchant')
-makedepends=('git')
 source=('git+https://github.com/vkbo/novelWriter.git')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd ${_pkgname}
@@ -30,8 +30,8 @@ package() {
 	python setup.py install --root=${pkgdir}/ --optimize=1
 
 	mkdir -p ${pkgdir}/usr/share/pixmaps
-	/bin/install -m0644 nw/assets/icons/novelwriter.svg ${pkgdir}/usr/share/pixmaps/novelwriter.svg
+	install -m0644 nw/assets/icons/novelwriter.svg ${pkgdir}/usr/share/pixmaps/novelwriter.svg
 
 	mkdir -p ${pkgdir}/usr/share/applications
-	/bin/install -m0644 ${startdir}/novelwriter.desktop ${pkgdir}/usr/share/applications/novelwriter.desktop
+	install -m0644 ${startdir}/novelwriter.desktop ${pkgdir}/usr/share/applications/novelwriter.desktop
 }
