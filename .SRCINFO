@@ -1,7 +1,7 @@
 pkgbase = thermald-git
 	pkgdesc = The Linux Thermal Daemon program from 01.org
-	pkgver = v2.4.4.r0.gd6f89c9
-	pkgrel = 2
+	pkgver = 2.4.4.r0.gd6f89c9
+	pkgrel = 3
 	url = https://github.com/intel/thermal_daemon
 	arch = i686
 	arch = x86_64
