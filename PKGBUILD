@@ -2,8 +2,8 @@
 
 pkgname=proton-community-updater
 pkgver=1.0
-pkgrel=1
-pkgdesc="Star Citizen's Linux Users Group Helper Script"
+pkgrel=2
+pkgdesc="Script to download and manage Community Proton builds"
 arch=('any')
 depends=('bash' 'coreutils' 'curl' 'xz')
 optdepends=('zenity')

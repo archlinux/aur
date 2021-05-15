@@ -1,7 +1,7 @@
 pkgbase = proton-community-updater
-	pkgdesc = Star Citizen's Linux Users Group Helper Script
+	pkgdesc = Script to download and manage Community Proton builds
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Termuellinator/Proton-Community-Updater
 	arch = any
 	license = GPL3
