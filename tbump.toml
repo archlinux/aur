@@ -1,11 +1,13 @@
 [version]
-current = "0.4.0"
+current = "0.4.0-1"
 regex = '''
   (?P<major>\d+)
   \.
   (?P<minor>\d+)
   \.
   (?P<patch>\d+)
+  -
+  (?P<pkgrel>\d+)
 '''
 
 [git]
@@ -15,15 +17,21 @@ message_template = "Bump to {new_version}"
 [[file]]
 src = "PKGBUILD"
 search = 'pkgver="{current_version}"'
+version_template = "{major}.{minor}.{patch}"
 
-[[hook]]
-name = "Update source md5sum"
+[[file]]
+src = "PKGBUILD"
+search = 'pkgrel={current_version}'
+version_template = "{pkgrel}"
+
+[[before_commit]]
+name = "Update integrity checksums"
 cmd = "updpkgsums"
 
-[[hook]]
-name = "Check package build"
+[[before_commit]]
+name = "Check build"
 cmd = "extra-x86_64-build"
 
-[[hook]]
+[[before_commit]]
 name = "Generate .SRCINFO"
 cmd = "makepkg --printsrcinfo > .SRCINFO"
