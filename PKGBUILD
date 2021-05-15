@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="http://cccc.sourceforge.net/"
 depends=('gcc-libs')
 license=('GPL')
-source=(http://downloads.sourceforge.net/sourceforge/cccc/$pkgname-$pkgver.tar.gz
+source=(https://downloads.sourceforge.net/sourceforge/cccc/$pkgname-$pkgver.tar.gz
 gcc47.patch)
 md5sums=('7bd3ad868913a0beab2fde931737f928'
          'e1d2cb39fcac3f3c14eaff4f1e8f2825')
@@ -17,12 +17,12 @@ build() {
 
   sed -e 's/su root -c "make -f install.mak"/make -f install.mak/' \
       -e 's/all : pccts cccc test install/all : pccts cccc test/' \
-    -i makefile || return 1
+    -i makefile
   sed -e 's:/usr/local/bin:'$pkgdir'/usr/bin:' \
-    -e 's/\$(MKDIR)/\$(MKDIR) -p/' -i install/install.mak || return 1
+    -e 's/\$(MKDIR)/\$(MKDIR) -p/' -i install/install.mak
   patch -p1 < ../gcc47.patch
 
-  make -j 1 || return 1
+  make -j 1
 }
 
 package() {
