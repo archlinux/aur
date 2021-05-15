@@ -52,7 +52,7 @@ package() {
     mkdir -p "$pkgdir/usr/share/deezer"
     mkdir -p "$pkgdir/usr/share/applications"
     mkdir -p "$pkgdir/usr/bin/"
-    for size in 16 32 48 64 128 256 512; do
+    for size in 16 32 48 64 128 256; do
         mkdir -p "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/"
     done
 
