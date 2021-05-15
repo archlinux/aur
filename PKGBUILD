@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=extra-cmake-modules-git
-pkgver=5.75.0.r3194.693781d
+pkgver=5.83.0.r3296.4d307aaf
 pkgrel=1
 pkgdesc='Extra modules and scripts for CMake'
 arch=('any')
@@ -17,8 +17,11 @@ makedepends=('git'
              )
 conflicts=('extra-cmake-modules')
 provides=('extra-cmake-modules')
-source=('git+https://invent.kde.org/frameworks/extra-cmake-modules.git')
-sha1sums=('SKIP')
+source=('git+https://invent.kde.org/frameworks/extra-cmake-modules.git'
+        'https://gitweb.gentoo.org/repo/gentoo.git/plain/kde-frameworks/extra-cmake-modules/files/extra-cmake-modules-5.82.0-sphinx-4.patch')
+sha256sums=('SKIP'
+            '5c3bb91ff092c9bc671d01eb9af4bbbd8f5a84178a12a7311a1efb5711253f01'
+            )
 
 pkgver() {
   cd extra-cmake-modules
@@ -28,6 +31,8 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  patch -d extra-cmake-modules -p1 -i "${srcdir}/extra-cmake-modules-5.82.0-sphinx-4.patch"
 }
 
 build() {
