@@ -2,7 +2,7 @@
 # Maintainer: Mahor Foruzesh <mahorforuzesh at protonmail dot com>
 
 pkgname=tachidesk
-pkgver=0.3.0.r430
+pkgver=0.3.1_r475
 pkgrel=1
 pkgdesc="A free and open source manga reader that runs extensions built for Tachiyomi"
 arch=("any")
@@ -11,15 +11,15 @@ license=("MPL2")
 depends=("java-runtime")
 provides=("tachidesk")
 conflicts=("tachidesk-preview")
-_semver=$(printf v${pkgver} | cut -d'.' -f4 --complement)
-_commit=$(printf ${pkgver} | cut -d'.' -f4)
+_semver=$(printf v${pkgver} | cut -d'_' -f1)
+_commit=$(printf ${pkgver} | cut -d'.' -f2)
 _jar=Tachidesk-${_semver}-${_commit}.jar
 
 source=("${url}/releases/download/${_semver}/${_jar}" 
         "${pkgname}.desktop"
         "${pkgname}.png"
         "${pkgname}.sh")
-md5sums=('2d656e0e17704f174bad6d98df528c2e'
+md5sums=('20bc6d1635c45fe6f1ae6c8fa497bd13'
          '728182fd92daa4e50b98c0d62bb65c5e'
          '520cdde66717d1701fb40dfbcdab59a2'
          '196d4e69879d3b01f73672c812c0f20c')
