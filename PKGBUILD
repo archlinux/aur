@@ -3,7 +3,7 @@
 # Contributor: xsmile <sascha_r gmx de>
 pkgname=ta-lib
 pkgver=0.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A library providing common functions for the technical analysis of financial market data'
 url='http://ta-lib.org'
 license=('BSD')
