@@ -39,6 +39,9 @@ source=(
 
   # mknitpcio-systemd
   "install_sd-kata-agent.tpl"
+
+  # https://lkml.org/lkml/2021/1/23/75
+  "0001-config-preemption.diff"
 )
 sha512sums=(
   "1a9b84d5f0a5228a6660c88af01e28c608923156cbed55dea78263ecf243a79c3ee383aa0feaa26f83ef9255ebab1f01c2b61c1d027f7101a0ae2d820463586c"
@@ -53,6 +56,8 @@ sha512sums=(
   "6f476297d9001eef9a0665689f752cf5124907522cfc87240df16488379a5c7c9820a6e33a576dbf7f75c4fdfa7cab7a0e395b05c9339069dedbdaac42fb6c04"
 
   "65d368df7fe4546d5c825e30c5c831cb4b4f759fb1352b7715d40b750968b3ba54139f64cd1133a3b599d179d88d8181bd61eb34b1f5868b5606e53de6552c41"
+
+  "76c27fe0e2b84a9ae0d4b0e2a96ef0c07777811991b4aae21c88494b91fa2837fb67be335cebf4874e5e3235b5ba4641ec4544f9e055765e2dcf399d9d875e8c"
 )
 b2sums=(
   "0d72ce69d0c9de920f3b11d3180627b2e65a1760d6830cfd4812339f7b6d16452f33506996f2ef67cdeffe1269f297b0f22a49a36c5b7078f31849f6b9cd2e37"
@@ -67,6 +72,8 @@ b2sums=(
   "1745aa5d5df0af2452381de163e3964511172e045c13736a062bb2c932e3306250d24992b2bdbc534ced188b35d3b1f4958a5680c99356afd3097d11c84aee31"
 
   "c9d90683b134dcbf656adcb5bebad02a9a02ec68a1497bbab16cdec7d626ab020f56a40f00bfddf06000452e20d5a58d53ed59d0be49451daf9019fe1f203a58"
+
+  "919319ddcaac3f7c5b1c1998fced9920f3e7e9d4660c83e380495fc3a14d5f4e82736ac9435fdb78512576f1d90f80b1ad017529f2b42e013b844ed3ec4bc99f"
 )
 validpgpkeys=(
   647F28654894E3BD457199BE38DBBDC86092693E  # kernel
@@ -85,6 +92,8 @@ _kernel_prepare(){
   #for p in $(find "${srcdir}/packaging-${_pkgver}/obs-packaging/linux-container/patches" -type f -name "*.patch"); do
   #  patch -p1 <"${p}"
   #done
+
+  patch -p1 <"${srcdir}/0001-config-preemption.diff"
 
   # kernel config prep from upstream ("${srcdir}/packaging-${_pkgver}/obs-packaging/linux-container/kata-linux-container.spec-template")
   make -s mrproper
