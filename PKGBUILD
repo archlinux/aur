@@ -24,7 +24,7 @@ depends=('espeak-ng'
          'harfbuzz'
          'leptonica'
          'libseccomp'
-         'libuvc'
+         #'libuvc' # TODO: using vendored copy until moved to community
          'libvncserver'
          'lua51' # Doesn't compile against LuaJIT 2.1 due to deprecated ref API usage
          'mesa'
@@ -59,7 +59,6 @@ build() {
     -DLUA_INCLUDE_DIR=/usr/include/lua5.1 \
     -DHYBRID_HEADLESS=ON \
     -DHYBRID_SDL=ON \
-    -DSTATIC_LIBUVC=OFF \
     src
   make -C build
 
