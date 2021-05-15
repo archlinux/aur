@@ -1,4 +1,4 @@
-i#!/bin/bash
+#!/bin/bash
 # by xpander
  
 # WARAddonClient CLI options
@@ -16,30 +16,26 @@ case $1 in
 		echo "Type your RoR directory Path:"
 		read path1
 		java -jar $addon_path --setlocation $path1;;
-	"-su")
-		echo "Type your RoR directory Path:"
-		read path1
-		java -jar $addon_path --updateonly --setlocation $path1;;
-	"--updateonly")
-		java -jar $addon_path --updateonly;;
-	"--setlocation")
-		echo "Type your RoR directory Path:"
-		read path1
-		java -jar $addon_path --setlocation $path1;;
+		"-i")
+		echo "Type Addon name you want to install:"
+		read name1
+		java -jar $addon_path --install $name1;;
+		"-r")
+		echo "Type Addon name you want to remove:"
+		read name1
+		java -jar $addon_path --remove $name1;;
 	"-v")
-		java -jar $addon_path --version;;
-	"--version")
-		java -jar $addon_path --version;;
-	"--help")
+	 java -jar $addon_path --version;;
+	"-h")
 		echo "Usage: waraddonclient <command>"
 		echo "Available commands:" 
-		echo "-u --updateonly                  Updates addons" 
-		echo "-s --setlocation                 To set your RoR folder location"
-		echo "-su                              Run both, addon update and folder location setting"
-		echo "-v --version                     Check the WARAddonClient version"
-		echo "--help                           This help page";;
+		echo "-u                     Updates addons" 
+		echo "-s                     To set your RoR folder location"
+		echo "-v                     Check the WARAddonClient version"
+		echo "-i                     Lets you install Addons"
+		echo "-r                     Lets you remove Addons"
+		echo "-h                     This help page";;
 	*)
-		echo "Wrong option, try --help";;
+		echo "Wrong option, try -h";;
 	esac
 fi
-
