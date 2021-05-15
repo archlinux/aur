@@ -1,7 +1,7 @@
 pkgbase = 2048term-git
 	pkgdesc = Console version of the game "2048"
 	pkgver = 20190609.8453a88
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alewmoose/2048-in-terminal.git
 	arch = i686
 	arch = x86_64
