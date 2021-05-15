@@ -2,8 +2,8 @@
 
 _npmname=yaml-language-server
 pkgname=yaml-language-server-bin
-pkgver=0.18.0
-pkgrel=4
+pkgver=0.19.0
+pkgrel=1
 pkgdesc="Language server implementation for YAML files and optional schema support"
 arch=('any')
 url="https://github.com/redhat-developer/yaml-language-server"
@@ -14,7 +14,7 @@ replaces=('yaml-language-server')
 provides=('yaml-language-server')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
 noextract=("${_npmname}-${pkgver}.tgz")
-sha1sums=('c2a57a8ab9a1002c8022fcbfe64582a56d0599ca')
+sha1sums=('fe213b88f9de5fb47dc5ae50cc85f3c4d308e720')
 
 package() {
     cd "${srcdir}"
