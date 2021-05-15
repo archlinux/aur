@@ -1,0 +1,14 @@
+pkgbase = pulseeffects-presets
+	pkgdesc = Control PulseAudio from the polybar status bar
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/marioortizmanero/polybar-pulseeffects-presets
+	arch = any
+	license = custom:MIT
+	depends = bash
+	depends = pulseeffects
+	source = https://github.com/marioortizmanero/polybar-pulseeffects-presets/archive/v0.2.1.tar.gz
+	md5sums = e9442386844149553773db654221af76
+
+pkgname = pulseeffects-presets
+
