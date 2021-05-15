@@ -1,28 +1,34 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='ppx_gen_rec'
 pkgname="ocaml-$_projectname"
-pkgver='1.1.0'
-pkgrel='5'
+pkgver='2.0.0'
+pkgrel='1'
 pkgdesc='A ppx rewriter that transforms a recursive module expression into a `struct`'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/flowtype/$pkgname"
 license=('MIT')
-depends=('ocaml' 'ocaml-migrate-parsetree>=1.1.0')
+depends=('ocaml' 'ocaml-ppxlib>=0.18.0')
 makedepends=('dune')
+checkdepends=('ocaml-ppx_deriving')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3aa36a8875d02a81406681fa4f38cd51be4c0f8539345bfdf052844ec982fa0e')
+sha256sums=('7c598fe30555153972cd3741441c69508f1d5c7eebfdd0ca863d21c74ac4f8c4')
 
 _sourcedirectory="$pkgname-$pkgver"
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	dune build -p "$_projectname" --verbose
+	dune build --release --verbose
+}
+
+check() {
+	cd "$srcdir/$_sourcedirectory/"
+	dune runtest --release --verbose
 }
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml' --release --verbose
 
 	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
 	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
