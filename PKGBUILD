@@ -7,8 +7,8 @@
 # This was originally written by Daniel Bermond in blackmagic-decklink-sdk pkgbuild
 # It is sufficient to just replace _downloadid to correspond new release version
 # It can be obtained from chromium -> Developer Tools -> Network -> XHR -> click latest-version and copy downloadId
-_downloadid='6c68f757d62342e2a9fd295d854a8c44'
-_referid='900d8178f70548e995aecec2a239722d'
+_downloadid='7cb792771ce34cf798ac4d5940cba080'
+_referid='0431af121c6242c3b3a08f8846d16eac'
 _siteurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
@@ -62,7 +62,7 @@ DLAGENTS=("https::/usr/bin/curl \
 pkgname=davinci-resolve
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
-pkgver=17.1.1
+pkgver=17.2
 pkgrel=1
 arch=('any')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
@@ -78,13 +78,13 @@ if [ ${pkgname} == "davinci-resolve-studio" ]; then
 # Variables for STUDIO edition
 	pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
 	_archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
-	sha256sums=('22a1b294565d60933577c241a6c89b9d2826c4aa3da9897ca16937ee96958a4e')
+	sha256sums=('5a2a447c6c4cea957d5166d565b683f516492cd4c571a0f143cbb9ab827da9ba')
 	conflicts=('davinci-resolve-beta' 'davinci-resolve' 'davinci-resolve-studio-beta')
 else
 # Variables for FREE edition
 	pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 	_archive_name=DaVinci_Resolve_${pkgver}_Linux
-	sha256sums=('7c1ef07b669f8d785a41fb2cfb530b2f43749424cf35b21e6df229445b2dcd7c')
+	sha256sums=('b7b56292b6f5b73b94d343b4775a891409206d5efa4b34de916df75551d5d5ef')
 	conflicts=('davinci-resolve-studio' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
 fi
 
@@ -100,35 +100,35 @@ prepare()
                find /opt/resolve/configs -name log-conf.xml -o -name config.dat 2> /dev/null | awk -F/ '{print $NF}'
                )
 	if [ "${confiles}" ]; then
-		msg2 "The file(s) $(echo ${confiles} | xargs | sed 's/ /, /g') already exist in your filesystem."
-		msg2 "This can lead to a conflict and the installation will fail."
-		msg2 "Please restart the installation with the --overwrite option."
+		echo -e "\033[1m==> The file(s) $(echo ${confiles} | xargs | sed 's/ /, /g') already exist in your filesystem.\033[0m"
+		echo -e "\033[1m==> This can lead to a conflict and the installation will fail.\033[0m"
+		echo -e "\033[1m==> Please restart the installation with the --overwrite option.\033[0m"
 	fi
 }
 
 package()
 {
-	msg2 "Creating missing folders..."
+	echo -e "\033[1m==> Creating missing folders...\033[0m"
 	mkdir -p -m 0775 "${pkgdir}/opt/${_pkgname}/"{configs,DolbyVision,easyDCP,Fairlight,GPUCache,logs,Media,"Resolve Disk Database",.crashreport,.license,.LUT}
 	mkdir -p "${pkgdir}/usr/share/"{applications,desktop-directories,icons/hicolor,mime/packages}
 #	mkdir -p "${pkgdir}/tmp/${_pkgname}/"{logs,GPUCache}
 	mkdir -p "${pkgdir}/usr/lib/udev/rules.d"
 	mkdir -p "${pkgdir}/etc/xdg/menus"
 
-	msg2 "Extracting from bundle..."
-	msg "Please wait, this take a while..."
+	echo -e "\033[1m==> Extracting from bundle...\033[0m"
+	echo -e "\033[1mPlease wait, this take a while...\033[0m"
 	cd "${srcdir}" || exit
 	./${_installer_binary} --appimage-extract
 	rm -rf ${_installer_binary}
 	cd squashfs-root
 	./installer -i -y -n -a -C "${pkgdir}/opt/${_pkgname}" "$PWD"
 
-	msg2 "Add lib symlinks..."
+	echo -e "\033[1m==> Add lib symlinks...\033[0m"
 	cd "${pkgdir}/opt/${_pkgname}/" || exit
 	ln -s /usr/lib/libcrypto.so.1.0.0 libs/libcrypto.so.10
 	ln -s /usr/lib/libssl.so.1.0.0 libs/libssl.so.10
 
-	msg2 "Install launchers and configs..."
+	echo -e "\033[1m==> Install launchers and configs...\033[0m"
 	cd "${pkgdir}/opt/${_pkgname}/" || exit
 	install -Dm666 share/default-config.dat "${pkgdir}/opt/${_pkgname}/configs/config.dat"
 	install -Dm666 share/log-conf.xml "${pkgdir}/opt/${_pkgname}/configs/log-conf.xml"
@@ -150,17 +150,17 @@ package()
 	# This will help adding the app to favorites and prevent glitches on many desktops.
 	echo "StartupWMClass=resolve" >> "${pkgdir}/usr/share/applications/${resolve_app_name}.desktop"
 
-	msg2 "Creating and installing udev rules..."
+	echo -e "\033[1m==> Creating and installing udev rules...\033[0m"
 	echo 'SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="096e", MODE="0666"' > "${pkgdir}/usr/lib/udev/rules.d/75-davincipanel.rules"
 	echo 'SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="1edb", MODE="0666"' > "${pkgdir}/usr/lib/udev/rules.d/75-sdx.rules"
 	chmod 644 "${pkgdir}/usr/lib/udev/rules.d/"{75-davincipanel.rules,75-sdx.rules}
 
 #	Not sure we need it
-#	msg2 "Any final tweaks..."
+#	echo -e "\033[1m==> Any final tweaks...\033[0m"
 #	ln -s "/tmp/${_pkgname}/logs" "${pkgdir}/opt/${_pkgname}/logs"
 #	ln -s "/tmp/${_pkgname}/GPUCache" "${pkgdir}/opt/${_pkgname}/GPUCache"
 
-	msg2 "Installing Application icons..."
+	echo -e "\033[1m==> Installing Application icons...\033[0m"
 	# Obviously not working without root rights.
 #	XDG_DATA_DIRS="${pkgdir}/usr/share/icons/hicolor" xdg-icon-resource install --size 64 "${pkgdir}/opt/${_pkgname}/graphics/DV_Resolve.png" DaVinci-Resolve 2>&1 >> /dev/null
 #	XDG_DATA_DIRS="${pkgdir}/usr/share/icons/hicolor" xdg-icon-resource install --size 64 "${pkgdir}/opt/${_pkgname}/graphics/DV_ResolveProj.png" DaVinci-ResolveProj 2>&1 >> /dev/null
@@ -171,7 +171,7 @@ package()
 
 	install -D -m644 share/resolve.xml "${pkgdir}/usr/share/mime/packages/resolve.xml"
 	
-	msg2 "Setting the right permissions..."
+	echo -e "\033[1m==> Setting the right permissions...\033[0m"
 
 	if [ ! "$(logname 2>&1 >/dev/null)" ]; then
 		_user=$(logname)
@@ -184,7 +184,7 @@ package()
 	chown -R ${_user}:${_group} "${pkgdir}/opt/${_pkgname}/"{*,.*}
 	chown -R ${_user}:root "${pkgdir}/opt/${_pkgname}/"{configs,DolbyVision,easyDCP,Fairlight,logs,Media,'Resolve Disk Database',.crashreport,.license,.LUT}
 
-	msg2 "Done!"
+	echo -e "\033[1m==> Done!\033[0m"
 }
 
 # vim: fileencoding=utf-8 sts=4 sw=4 noet
