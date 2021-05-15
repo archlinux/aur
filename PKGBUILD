@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-k2-git
-pkgver=0.3.4.dev20210513_cuda11.3.r643
+pkgver=0.3.4.dev20210515+cuda11.3.torch1.8.1.r644
 pkgrel=1
 pkgdesc='FSA/FST algorithms, differentiable, with PyTorch compatibility'
 arch=('any')
@@ -25,11 +25,12 @@ pkgver() {
 
 build() {
     cd "${pkgname}"
-    mkdir -p build ; cd build
-    cmake -DCMAKE_BUILD_TYPE=Release ..
-    make _k2
-    cd ..
-    chrpath -r '$ORIGIN' build/lib/*.so
+    # 
+#    mkdir -p cbuild ; cd cbuild
+#    cmake -DCMAKE_BUILD_TYPE=Release ..
+#    make _k2
+#    cd ..
+#    chrpath -r '$ORIGIN' cbuild/lib/*.so
     python setup.py build
 }
 
@@ -43,6 +44,7 @@ package() {
 
 check(){
     cd "${pkgname}"
+    # k2 requires the compiled binaries; therefore any check() would only work after package()
     # python -c "import k2; s = '0 1 10 0.1\n0 2 20 0.2\n\n  1 2 30 0.3\n  1 3 -1 0.4\n  2 3 -1 0.5\n  3\n'; fsa = k2.Fsa.from_str(s)"
 }
 
