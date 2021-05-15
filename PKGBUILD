@@ -1,18 +1,16 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=irtt
-pkgver=0.9.0
-pkgrel=6
+pkgver=0.9.1
+pkgrel=1
 pkgdesc="Isochronous round-trip tester"
 arch=('i686' 'x86_64')
 url="https://github.com/heistp/irtt"
-license=('GPL3')
+license=('BSD')
 depends=('glibc')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/heistp/irtt/archive/v$pkgver.tar.gz"
-        "$pkgname-$pkgver.tar.gz.asc::https://github.com/heistp/irtt/releases/download/v$pkgver/v$pkgver.tar.gz.asc")
-sha256sums=('f9767fa9259db1932d011ed0a9f9528c70411878668ba0db6451264557ddd800'
-            'SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/heistp/irtt/archive/v$pkgver.tar.gz")
+sha256sums=('086178b0695c29a8b887cd4582dceb2d65f9d8735fd23e027f1dffdba891ffe6')
 validpgpkeys=('35C296FC733AA777B03DB9A8CAEC8F418885D165')  # Pete Heist <pete@eventide.io>
 
 
@@ -25,9 +23,8 @@ export GOFLAGS="-buildmode=pie -ldflags=-linkmode=external -trimpath -modcacherw
 build() {
   cd "$pkgname-$pkgver"
 
-  go mod init "github.com/heistp/irtt"
   go build \
-    "github.com/heistp/irtt/cmd/irtt"
+    ./cmd/...
 }
 
 check() {
@@ -43,4 +40,5 @@ package() {
   install -Dm755 "irtt" -t "$pkgdir/usr/bin"
   install -Dm644 "doc"/irtt.{html,md} -t "$pkgdir/usr/share/doc/irtt"
   install -Dm644 "doc/irtt.1" -t "$pkgdir/usr/share/man/man1"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/irtt"
 }

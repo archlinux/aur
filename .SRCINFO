@@ -1,18 +1,16 @@
 pkgbase = irtt
 	pkgdesc = Isochronous round-trip tester
-	pkgver = 0.9.0
-	pkgrel = 6
+	pkgver = 0.9.1
+	pkgrel = 1
 	url = https://github.com/heistp/irtt
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = BSD
 	makedepends = go
 	depends = glibc
-	source = irtt-0.9.0.tar.gz::https://github.com/heistp/irtt/archive/v0.9.0.tar.gz
-	source = irtt-0.9.0.tar.gz.asc::https://github.com/heistp/irtt/releases/download/v0.9.0/v0.9.0.tar.gz.asc
+	source = irtt-0.9.1.tar.gz::https://github.com/heistp/irtt/archive/v0.9.1.tar.gz
 	validpgpkeys = 35C296FC733AA777B03DB9A8CAEC8F418885D165
-	sha256sums = f9767fa9259db1932d011ed0a9f9528c70411878668ba0db6451264557ddd800
-	sha256sums = SKIP
+	sha256sums = 086178b0695c29a8b887cd4582dceb2d65f9d8735fd23e027f1dffdba891ffe6
 
 pkgname = irtt
 
