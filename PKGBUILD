@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/jjk-jacky/auto-rsync-backups"
 license=('GPL3')
 depends=('bash' 'rsync')
-source=(http://jjacky.com/$pkgname/$pkgname-$pkgver.tar.gz)
+source=(https://jjacky.com/$pkgname/$pkgname-$pkgver.tar.gz)
 sha1sums=('2f72124fd20cd20967ea3053b6c3c2fc2e3f914d')
 
 package() {
