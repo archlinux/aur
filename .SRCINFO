@@ -1,4 +1,4 @@
-pkgbase = kata-containers-bin
+pkgbase = kata1-containers-bin
 	pkgdesc = Lightweight virtual machines for containers (binary version)
 	pkgver = 1.12.1
 	pkgrel = 1
@@ -10,32 +10,32 @@ pkgbase = kata-containers-bin
 	sha512sums = 4c81be66e2b310ef767f0c90b548f85f89f5521be9fd53c50a95e81750dfbff666595ef48ba9cece2cccc33c7fafb74db0589b4a10069abf2f8d172bda8516ae
 	b2sums = 902dd17f7bd4d955155c7d0f377905e15d1e2e02b358acb511dbccd83f950e91989f3dbb36cb30866a950ed57127d50e8fa2da21ffefd7f95a9f98e3fc7e4da4
 
-pkgname = kata-runtime-bin
+pkgname = kata1-runtime-bin
 	install = kata-runtime.install
 	depends = qemu-headless
-	depends = kata-proxy
-	depends = kata-shim
-	depends = kata-containers-image
-	depends = kata-linux-container
-	optdepends = kata-ksm-throttler
+	depends = kata1-proxy
+	depends = kata1-shim
+	depends = kata1-containers-image
+	depends = kata1-linux-container
+	optdepends = kata1-ksm-throttler
 	optdepends = cloud-hypervisor<0.11.0
 	optdepends = firecracker<0.22.0
-	provides = kata-runtime
-	conflicts = kata-runtime
+	provides = kata1-runtime
+	conflicts = kata1-runtime
 
-pkgname = kata-proxy-bin
-	provides = kata-proxy
-	conflicts = kata-proxy
+pkgname = kata1-proxy-bin
+	provides = kata1-proxy
+	conflicts = kata1-proxy
 
-pkgname = kata-shim-bin
-	provides = kata-shim
-	conflicts = kata-shim
+pkgname = kata1-shim-bin
+	provides = kata1-shim
+	conflicts = kata1-shim
 
-pkgname = kata-containers-image-bin
-	provides = kata-containers-image
-	conflicts = kata-containers-image
+pkgname = kata1-containers-image-bin
+	provides = kata1-containers-image
+	conflicts = kata1-containers-image
 
-pkgname = kata-linux-container-bin
-	provides = kata-linux-container
-	conflicts = kata-linux-container
+pkgname = kata1-linux-container-bin
+	provides = kata1-linux-container
+	conflicts = kata1-linux-container
 
