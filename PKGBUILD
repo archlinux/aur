@@ -56,7 +56,7 @@ _use_current=
 
 pkgbase=linux-cacule-rdb
 # pkgname=('linux-cacule-rdb' linux-cacule-rdb-headers)
-_major=5.12.2
+_major=5.12.4
 #_minor=1
 #_minorc=$((_minor+1))
 #_rcver=rc8
@@ -76,52 +76,50 @@ _patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/
 source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz"
         "https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/$_srcname.tar.xz"
         "config"
-        "${_patchsource}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_patchsource}/cacule-patches/cacule-5.12-2k.patch"
+        "${_patchsource}/arch-patches-v2/0001-arch-patches.patch"
+        "${_patchsource}/cacule-patches/cacule-5.12.patch"
         "${_patchsource}/cacule-patches/rdb.patch"
         "${_patchsource}/cpu-patches/0001-cpu-patches.patch"
         "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/futex2-stable-patches-v2/0001-futex2-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/wine-esync-patches/0001-v5.12-winesync.patch"
         "${_patchsource}/zen-patches-v2/0001-zen-patches.patch"
-        "${_patchsource}/bfq-patches-v2/0001-bfq-patches.patch"
+        "${_patchsource}/bfq-patches-v4/0001-bfq-patches.patch"
         "${_patchsource}/block-patches/0001-block-patches.patch"
         "${_patchsource}/ll-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
         "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
         "${_patchsource}/bbr2-patches-v2/0001-bbr2-5.12-introduce-BBRv2.patch"
-        "${_patchsource}/btrfs-patches-v3/0001-btrfs-patches.patch"
+        "${_patchsource}/btrfs-patches-v4/0001-btrfs-patches.patch"
         "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
         "${_patchsource}/pf-patches-v2/0001-pf-patches.patch"
-        "${_patchsource}/lru-patches-v3/0001-lru-patches.patch"
+        "${_patchsource}/lru-patches-v4/0001-lru-patches.patch"
         "${_patchsource}/ntfs3-patches/0001-ntfs3-patches.patch"
         "${_patchsource}/zstd-dev-patches-v3/0001-zstd-dev-patches.patch"
-        "${_patchsource}/zstd-ll-patches/0001-zstd-patches.patch"
-        "${_patchsource}/clearlinux-patches/0001-clearlinux-patches.patch"
+        "${_patchsource}/clearlinux-patches-v2/0001-clearlinux-patches.patch"
         "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch")
 
-sha512sums=('ddbe371a564d6a12e638794a3833b5aaf605b4fc5adb123cbb6a26e41fe084c043041dd18a988a44d2a27848c1934feb5ff5459d121e8ea726610307289248e9'
+sha512sums=('db6dd1746ffbf2e702336e444ddf31d2f50d62998566663ed07ec696dd2af860255cc6636ace639b696240212e7b757be5b65885f8b3a0812931aec892be2752'
             '9612169a9b29c2796db69c516ec094da02b7c75bff2172e93e9b296c1dcff941ad3a7ef275aa71e751e75b95922ebcc4a2ee40494eabd8d5c2d4b6119560e98e'
-            '88f9f1e6ea206068fd029566e4610c16b7c3007f10363c7db37cd922fe75646437d2e4814317bc292d06eff7e9ebd29d8cd1ee82c8abf45ddd1843c1ff55f5c7'
-            '79807de3136a32f9e96f37d7781bfa4db225855573ab44092d1c22c5f9e282b1bc034b8de03c610ecba38b75708144b7a52c92e78dd460493239869cb2ae33fa'
-            'af6361e7c6e5a857d346b04b0654b4a00284fe200eeb32cd66f47d8559d2595a1f79f05281764732bf08b8c5135523a0b3a2000882fa3c7e1c1e9b42bb8a696c'
+            'd7015f3886a66d1a0d6f919566417e754a5f94d5ddb323c459424b6acf04bf6af942e9c3dc1c81962adb14803e1de8585c703a96bb665484941e91c57e92724b'
+            '97e661d3fbd75a6e9edeb79a694f42c49174f317bd35ae25dd13d71797d29fca630e88e1440415faca05fb46935591965fae0dcc4365c80e3cefa3d8b615c3b8'
+            'b14ddaa4c85d94f00779f9d83d8681bd05cc3dfb0fe5b24b528dc4b1d380e9b176651977d584c9f6fce0a16980c713f33e5059c096873e68238ec3b53d260e14'
             '15933126feeb56ccc6ace70db9fa7afb64d148900e41a780e42e03ce09faf7bab12413f526675b918aeff55e91dc038ad58884bb7add4a45962aca79d576cb93'
             '449570b8b9a04391cc2cc171cc806b3a132c6e969c7cedf9c4925d24244888e6f2e5afb6c551521fe62fcb7e2bf08cb8d396f9ec785ecfcdd5ea27dd9ffed4ea'
             'a0ba9fd091e4cc30b2a493e23299c0ce242ee26e8af399ea9aa115face3b90a723fb20f8877042c6b311a9eca20513bb932c1fd1c5db262b1df7b37160c0634e'
             '905f97cdff3e096552159a229d069d1b1418f4142b2927134110f504bfe0883309b3f29c2aeeb94c528b63e0eec7d0d69b44c3d498211c610811969cc4d07a56'
             '1c6cdf40009ce6c62b0a35cc7c2a74818b7169d32e18fb3c2bb8761762c15c579f64cb36f9076c4f78d3f88f077f6246ee75ba93f370cc40dae450d6d71117bb'
-            'e068418a1519a19901ceedf25a7a1fc2a9570c3c75384f2632ef0c89becc6606cb4cec759da60a18231cc77dce6f6a448f70f0aa05a2176fdec5fdcbf79832cd'
+            'bd90ea2c83488c2dda03d0bab544e4d749de96d39f004de4bfe71a1432e637f8efa1663c5e34cadf328aeaee139661e7cdcd8d6e32cff47667351ed8395d3d05'
             'daeec34905469d8e3a10eca2bf71e3875423fc72a92ff62bff74aef8f0af90cfc3282d5c67483379feb33b1c518287b6165b5fe42f9a8bcbc6dd3dbfcde38121'
             '47f265716ebd268e4296aaba1efe5098df00736b69ec7d0413cace6dbb5cb162c1c952f7527a2a41b246ed76e6e112514c5349e8dc52f4609def30257e18d7aa'
             '5081a6a3a3db160ef0a23acd0c0db403cc4b3eb2dfd280b1b7ba2ae907d362e4d6a653d546523c870af07009c62f58eec26e7b8174a3f4fcbaa32808d965ad73'
             '28446f518e88ab934330111a01019cb164bfdd21094c69e96cc16c7931440d069ef997ae141154c97c80fcb727e8c4d940b8bf63554e3f4179652523e285c5b4'
-            '2c074e0d747eefc912e94d3109d91d51187e439e85d7cc50c292892c3d1ccdc14d32d4d97a57be8322d3a2ac462b3ec1956c39821639eefd5f72144ebacd0dd2'
+            'b765ef2b4b783f490fff9071727ace1215b9b588666c9518765323b9ada9207b3cfb9918a16b3f7eeb3cf5784d4c5919d7f3cde41236712c210dd9a733ff8320'
             '1b3b48246fe70e8ca7390cacacf560696c1d98604a7716ac32df8f3d7fc7cc2ab733ab24e372fffa63016344f2e4ed078f7d597c3c1261f0ca3ff1c87a13dcb9'
             '076a48767614ec97a84ccefa5795e4f36973f64a7728a9f716d5d9ecb6f6907ffcc74f7fab845e9d9aef3ef5d3d4df4e03f6c5a755c7fdd4bc43751003902e71'
-            'e2a205ff346a3d5b077e8ee70ac60f440335738dba59820abea0ec3f87a516c2a47fec2ddc59f7641bab10df9f34f3fb7d73509791fff9b49fa197028afbd532'
+            'd428d3f54634b91e41cac279f7c7b708a174d9cac085b7497802c5a50f77bbfcfdd8799c1db3351ba18e8316685b729d292bb45de0da443762dbd1b87cbc7dad'
             '6d837eed8014bbb09b580867ed94fa03373a6a063ee68a0337109aff20b0e469c985d42b71704d08f4ea30d359cebd0a4a801a5ef6ec02c21331e40e5be1e602'
             'db592b1e12651ae494f1414079a3f268175776a067c69148387e05f86b6656308c810eb20cc5c1fe7804030abcb8c37ba5ab7480660c224c591f2718569c2cc9'
-            'e9a405643af07f8065c53c24b7ffce89d65716a6c009984c6fcd26fecf345a3a38c2ab0e58a0fac0f48ec9ea6a9cf74e06c04631ea4fcaaae4a4e7c51447a0d6'
-            'a441e14f4fa25e771d51e2d0e5cb626a8eddc4dfd0e9e91c6585b35cdf4e238bc56c76ad81aa269f25067cb60eeb6f9d431b710d6f40349867cbae73b434b3bd'
+            'cfc3af4eeab5e17a37a336211ea979a76e235228fd51a7dea8a722935747aa1048ab42ddade7100b07a53fc924fd6adb0929ee00025ae8a6417e6178fa725ea6'
             '21a613ef65497ecf66daf31b43e02022c71195b48082ae7628a9d2ba8619819f69a6702c4c87e39e8718074c7ebfd674694a29a962049a16d47f1e5f748c78c3')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -177,6 +175,15 @@ prepare() {
 
     cpu_arch
 
+    ### Optionally set tickrate to 2000HZ
+      if [ -n "$_2k_HZ_ticks" ]; then
+        echo "Setting tick rate to 2k..."
+        scripts/config --disable CONFIG_HZ_300
+        scripts/config --enable CONFIG_HZ_2000
+        scripts/config --set-val CONFIG_HZ 2000
+      fi
+
+
   ### Optionally set tickrate to 1000
 	   if [ -n "$_1k_HZ_ticks" ]; then
 		    echo "Setting tick rate to 1k..."
@@ -184,14 +191,6 @@ prepare() {
         scripts/config --enable CONFIG_HZ_1000
         scripts/config --set-val CONFIG_HZ 1000
 	   fi
-
-     ### Optionally set tickrate to 2000HZ
-       if [ -n "$_2k_HZ_ticks" ]; then
-         echo "Setting tick rate to 2k..."
-         scripts/config --disable CONFIG_HZ_300
-         scripts/config --enable CONFIG_HZ_2000
-         scripts/config --set-val CONFIG_HZ 2000
-       fi
 
   ### Optionally set tickrate to 500HZ
     if [ -n "$_500_HZ_ticks" ]; then
@@ -231,7 +230,7 @@ prepare() {
   		scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
   		scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
   		echo "Disabling uneeded governors..."
-  		scripts/config --disable CONFIG_CPU_FREQ_GOV_ONDEMAND
+  		scripts/config --enable CONFIG_CPU_FREQ_GOV_ONDEMAND
   		scripts/config --disable CONFIG_CPU_FREQ_GOV_CONSERVATIVE
   		scripts/config --disable CONFIG_CPU_FREQ_GOV_USERSPACE
   		scripts/config --disable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
@@ -280,7 +279,6 @@ prepare() {
       scripts/config --enable CONFIG_CACULE_RDB
       scripts/config --enable CONFIG_FAIR_GROUP_SCHED
       scripts/config --enable CONFIG_SCHED_AUTOGROUP
-      #scripts/config --set-val CONFIG_NR_CPUS "12"
       scripts/config --disable CONFIG_SCHED_DEBUG
       scripts/config --disable CONFIG_SCHED_INFO
       scripts/config --disable CONFIG_SCHEDSTATS
@@ -322,7 +320,7 @@ prepare() {
       scripts/config --set-str CONFIG_DEFAULT_TCP_CONG bbr2
       echo "Enable CONFIG_VHBA"
       scripts/config --module CONFIG_VHBA
-
+      scripts/config --disable CONFIG_RCU_BOOST
 
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
