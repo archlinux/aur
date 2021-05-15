@@ -4,17 +4,17 @@
 # Contributor: Gordin <9ordin @t gmail>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 pkgname='flow'
-pkgver='0.150.1'
+pkgver='0.151.0'
 pkgrel='1'
 pkgdesc='A static type checker for JavaScript'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://$pkgname.org"
 license=('MIT')
 optdepends=('bash-completion: Bash completion')
-makedepends=('ocaml>=4.09.1' 'dune' 'ocamlbuild' 'ocaml-findlib' 'ocaml-base>=0.12.2' 'ocaml-dtoa>=0.3.1' 'ocaml-lwt>=4.5.0' 'ocaml-lwt_log>=1.1.0' 'ocaml-migrate-parsetree' 'ocaml-ppx_deriving' 'ocaml-ppx_gen_rec' 'ocaml-ppx_let>=0.11.0' 'ocaml-ppx_tools_versioned' 'ocaml-sedlex>=2.1' 'ocaml-visitors' 'ocaml-wtf8')
+makedepends=('ocaml>=4.09.1' 'dune' 'ocamlbuild' 'ocaml-findlib' 'ocaml-base>=0.12.2' 'ocaml-dtoa>=0.3.1' 'ocaml-lwt>=4.5.0' 'ocaml-lwt_log>=1.1.0' 'ocaml-ppx_deriving' 'ocaml-ppx_gen_rec' 'ocaml-ppx_let>=0.11.0' 'ocaml-ppxlib' 'ocaml-sedlex>=2.1' 'ocaml-visitors' 'ocaml-wtf8')
 checkdepends=('ocaml-ounit')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/facebook/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('8666c4fa300dafe18c27e3932c3f07204a3d4e61b96d54550a0ddbdb4998b9c8')
+sha256sums=('127df81d3d79e18ef616aceceb6d05d78c8c00b13c89b895f7fae891e4910bcd')
 
 _sourcedirectory="$pkgname-$pkgver"
 
