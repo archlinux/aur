@@ -14,7 +14,7 @@ source=("http://download.kde.org/stable/plasma/${pkgver}/${pkgname}-${pkgver}.ta
 				'breeze-plymouth.cpiohook')
 sha256sums=('f3ad283298c6818a660ab69487695f726ed6582adeb7f4c70195f867eb5e4b66'
             'SKIP'
-            '91a6557231d8832dcb3b6ae056742bb88467f245d22fc57fa7a5b732ee780e4c')
+            'e87418d5694514b6227a0fa81fbc71dfa05d50092a90082a4a4467f4d2d08385')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson
