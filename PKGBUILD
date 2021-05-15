@@ -1,16 +1,14 @@
 # Maintainer: PopeRigby <poperigby at tuta dot io>
 
 pkgname=daemon-engine
-pkgver=0.51.1
+pkgver=0.52.0
 pkgrel=1
 pkgdesc="The standalone engine that powers the multiplayer first person shooter Unvanquished."
 arch=('x86_64' 'i686')
 url='http://unvanquished.net'
 license=('BSD' 'GPL3')
 makedepends=('cmake')
-depends=('zlib' 'gmp' 'nettle' 'geoip' 'curl' 'sdl2' 'glew' 'libpng'
-         'libjpeg>=8.0.0' 'libwebp>=0.2.0' 'freetype2' 'openal' 'libogg'
-         'libvorbis' 'libtheora' 'opusfile' 'ncurses')
+depends=('nettle' 'geoip' 'curl' 'sdl2' 'glew' 'libwebp>=0.2.0' 'freetype2' 'openal' 'libvorbis' 'opusfile')
 
 # Daemon is the game's engine.
 _daemonver="v${pkgver}"
@@ -48,7 +46,6 @@ prepare() {
 	# From Daemon: Remove empty submodule directories.
 	rmdir --ignore-fail-on-non-empty "${_daemondir}/libs/breakpad"
 	rmdir --ignore-fail-on-non-empty "${_daemondir}/libs/crunch"
-	rmdir --ignore-fail-on-non-empty "${_daemondir}/libs/recastnavigation"
 
 	# Link the NaCL SDK in the Dæmon source tree.
     	ln -sfr "${_naclsdkdir}"         "${_daemondir}/external_deps/${_naclsdkdir}"
@@ -92,7 +89,7 @@ package() {
 	install -m 755 nacl_loader             "${pkgdir}/usr/lib/daemon-engine/"
 }
 
-md5sums=('589523f6028bcd3869505b6a3968c411'
+md5sums=('7d0422b8185b190a4b67466d9854b647'
          '256f388e18018f638958a47f53f2a8d9'
          '356bbda9890f48dca1db3b80001d40c0'
          '2b1989f17e3ae0cab77cae8d397deafb'
