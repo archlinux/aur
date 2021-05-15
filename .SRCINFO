@@ -1,0 +1,24 @@
+pkgbase = tic-80-lovebyte-git
+	pkgdesc = TIC-80 tiny computer emulator
+	pkgver = r1532.8da8d42
+	pkgrel = 1
+	url = https://tic.computer/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = gtk3
+	depends = glu
+	depends = freeglut>=3.0.0
+	depends = libglvnd
+	depends = lua-sdl2
+	provides = tic-80
+	source = git+https://github.com/nesbox/TIC-80.git#branch=lovebyte
+	source = tic80showdown.desktop
+	source = tic80showdown.png
+	sha256sums = SKIP
+	sha256sums = 29c04770b132150c15df080fbc8201a94a1e13f010f30d9f127b8beb90ef5876
+	sha256sums = 471d7e10dc26d08afa90b14e2dbdd4cb123e9b31c1dd73a7503aff71f97252c6
+
+pkgname = tic-80-lovebyte-git
+

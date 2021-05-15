@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=TIC-80 lovebyte
+Comment=LoveByte Bytebattle competition version of the fantasy computer for making, playing and sharing tiny games.
+Exec=tic80lovebyte %U
+Icon=tic80lovebyte
+Terminal=false
+Type=Application
+Categories=Development;Demoscene;Graphics;Utility;
+MimeType=application/x-tic80-item;
+GenericName=TIC-80 Lovebyte
