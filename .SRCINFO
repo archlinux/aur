@@ -1,0 +1,20 @@
+pkgbase = ognibuild
+	pkgdesc = Detect and invoke build systems
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/jelmer/ognibuild
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	depends = breezy
+	depends = dpkg
+	depends = python-apt
+	depends = python-buildlog-consultant
+	depends = python-debian
+	depends = python-requirements-parser
+	optdepends = python-debmutate
+	source = https://pypi.org/packages/source/o/ognibuild/ognibuild-0.0.4.tar.gz
+	sha256sums = 1f724c10dbcbcc84fe039d79bd18e44906fa2d6cc22b3db229cb5981f4473cad
+
+pkgname = ognibuild
+
