@@ -12,22 +12,24 @@ pkgdesc="A multiuser clone of the famous Microprose game of Civilization - SDL2 
 arch=('i686' 'x86_64')
 url="http://freeciv.org"
 license=('GPL')
-depends=('hicolor-icon-theme' 'sdl2_image' 'sdl2_mixer' 'sdl2_gfx' 'sdl2_ttf')
+depends=('sdl2_image' 'sdl2_mixer' 'sdl2_gfx' 'sdl2_ttf' 'lua53' 'gtk3' 'qt5-base' 'imagemagick')
 conflicts=('freeciv')
 options=('!libtool')
-install=$_pkgname.install
 source=(http://files.freeciv.org/stable/$_pkgname-$pkgver.tar.bz2)
 sha256sums=('40db957766acbd49c5af15afd1711da996b6681be7abee3352c5f2539c10c1ce')
 
 build() {
   cd "$srcdir"/$_pkgname-$pkgver
-  ./configure --prefix=/usr --enable-client=sdl2 --enable-shared --without-ggz-client
+  ./configure --prefix=/usr --enable-client=sdl2 --enable-shared 
   make
 }
 
 package() {
   cd "$srcdir"/$_pkgname-$pkgver
   make DESTDIR="$pkgdir" install
+  mkdir -p $pkgdir/etc/freeciv
+  mv $pkgdir/usr/etc/freeciv/database.lua $pkgdir/etc/freeciv/database.lua
+  rm -rf $pkgdir/usr/etc/
   install -m644 client/org.freeciv.sdl2.desktop "$pkgdir"/usr/share/applications/org.freeciv.sdl2.desktop
 }
 
