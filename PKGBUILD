@@ -2,7 +2,7 @@
 # Contributor: andmars <andreas.marschall @ unitybox.de>
 # Contributor: SaThaRiel <sathariel74[at] gmail[dot]com>
 pkgname=angband-git
-pkgver=4.2.2.r86.gd2610fb91
+pkgver=4.2.2.r97.g7e3a5e3d4
 pkgrel=1
 pkgdesc="A roguelike dungeon-exploration game based on Tolkien's books"
 arch=('i686' 'x86_64')
@@ -45,6 +45,6 @@ package() {
   cd "$srcdir/$pkgname"
   make DESTDIR="$pkgdir" install
   rm -f "$pkgdir"/usr/share/angband/*/delete.me
-  #install -Dm644 copying.txt "$pkgdir"/usr/share/licenses/$pkgname/COPYING
+  install -Dm644 $srcdir/$pkgname/docs/copying.rst "$pkgdir"/usr/share/licenses/$pkgname/COPYING
   install -d "$pkgdir"/usr/bin
 }
