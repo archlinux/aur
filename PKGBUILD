@@ -10,7 +10,7 @@ license=('custom')
 dependence=(marble lpsolve qt5-base)
 source=("git+https://github.com/jessicawleigh/popart-current.git" "popart.desktop")
 md5sums=('SKIP'
-         '9e8d5341ab796a37b8c0bb553a6656a7')
+         'e18832e646727e00df1b21bb1fedacff')
 
 
 package() {
