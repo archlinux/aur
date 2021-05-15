@@ -173,6 +173,13 @@ then
             	cp /tmp/koffe/aurbg/$depend/*.pkg.tar.zst /usr/share/archiso/configs/releng/airootfs/root/pkg
 				fi
         	done
+			declare -a bbm
+        	bbm=$(cat /tmp/koffe/aurbg/$app/.SRCINFO | grep makedepends | cut -f 2 -d '=' | cut -f 1 -d '>' | cut -f 1 -d ':')
+        	for depend in $bbm
+        	do
+				pacman -S $depend --noconfirm
+			done
+
 		fi
     done
     repo-add /usr/share/archiso/configs/releng/airootfs/root/pkg/koffe.db.tar.gz /usr/share/archiso/configs/releng/airootfs/root/pkg/*
