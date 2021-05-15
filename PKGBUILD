@@ -2,8 +2,8 @@
 #              M0Rf30
 # Mantainer: XenGi
 pkgname=unrealtournament
-pkgver=469a
-pkgrel=4
+pkgver=469b
+pkgrel=1
 pkgdesc="The classic Unreal Tournament from 1999 (Retail CD or DVD required)"
 arch=('i686' 'x86_64')
 url="http://www.unrealtournament.com/"
@@ -31,7 +31,7 @@ sha256sums=('8c0f0e266744ed18b14f6f6777d9ce8ed3ece120ccc37e7bbffa92e5a92ad2a8'
             '674ae459b3ff6d442cce0e4b115244f3db5384923e6b848626aa67b370b7148b'
             'b985a79323bee32ad24cce30afbfe63c47dcd43e3e06fa226b3ea42bbc4b0c0e'
             '31a07fb289841ceba36ca707fafd8180f48e462a53a62a2b34d5bc0f61c2481d'
-            'd521a8339b80a4c86019c3648fb55cfc29edffeec73047ceb72784b159cc84f1'
+            '99b0832dfa5e8122b79c05b0d3cd22a277e36b865a1079941ee62c986cd92c1f'
             '9aac034bbfe75afc1bbcc1f280025d6c36d77d4e00e68a3b11a2e3855f37756e'
             'e31d9c7b91254128214dfa606058b78ece25a5a10fe2a2b8fd19575a9c7b2dbb'
             'a079373b4a79c147e2a636593bb7490f656fc7f36ed4caa3cc1ba52ced4f32ff'
