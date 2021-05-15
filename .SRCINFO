@@ -1,6 +1,6 @@
 pkgbase = raveloxmidi
 	pkgdesc = A simple proxy to send and receive RTP midi data through network
-	pkgver = 0.9.1
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = https://github.com/ravelox/pimidi
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = raveloxmidi
 	makedepends = automake
 	makedepends = autoconf
 	depends = avahi
-	source = https://github.com/ravelox/pimidi/archive/v0.9.1.tar.gz
+	source = https://github.com/ravelox/pimidi/archive/v0.10.3.tar.gz
 	sha256sums = 07710b5fbad7c4628c95d0c27053a9b95741e06780d185476799708d402d6d8c
 
 pkgname = raveloxmidi
