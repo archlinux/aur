@@ -11,10 +11,10 @@ pkgbase = proton-community-updater
 	depends = xz
 	optdepends = zenity
 	provides = proton-community-updater
-	source = proton-communtiy-updater-1.0.tar.gz::https://github.com/Termuellinator/Proton-Community-Updater/archive/v1.0.tar.gz
+	source = proton-community-updater-1.0.tar.gz::https://github.com/Termuellinator/Proton-Community-Updater/archive/v1.0.tar.gz
 	source = proton-community-updater.desktop
 	sha256sums = 8d923a42e097c2d7769664a1a0f5a3f8a70719d1badc6993926ebcba06111a48
 	sha256sums = e3a186dd8cd65ddfa599c4da39d5d28e9dedc8984a4c84782d939680cb3b6f71
 
-pkgname = proton-communtiy-updater
+pkgname = proton-community-updater
 
