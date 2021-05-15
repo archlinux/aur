@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Peter Hatina <phatina AT gmail.com>
 pkgname=glm-git
-pkgver=r1920.477e803f
+pkgver=0.9.9.8.r174.g70f67cb4
 pkgrel=1
 pkgdesc="C++ mathematics library for 3D software based on the OpenGL Shading Language (GLSL) specification"
 arch=('any')
@@ -14,7 +14,7 @@ source=("git+https://github.com/g-truc/glm.git")
 sha512sums=('SKIP')
 pkgver() {
     cd "${srcdir}/glm"
-    printf "r%s.%s" "$(git rev-list HEAD --count --first-parent)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 package() {
     cd "${srcdir}/glm"
@@ -34,5 +34,5 @@ package() {
 
     find $pkgdir -type f -exec chmod 644 {} \;
     find $pkgdir -type d -exec chmod 755 {} \;
-
+    install -Dm644 $srcdir/glm/copying.txt "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 }
