@@ -1,7 +1,7 @@
 pkgbase = quickddit
 	pkgdesc = Unofficial reddit client
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/accumulator/Quickddit.git
 	arch = x86_64
 	arch = armv7
@@ -9,7 +9,7 @@ pkgbase = quickddit
 	license = GPL3
 	makedepends = git
 	depends = qqc2-suru-style-git
-	depends = yaru-icon-theme
+	depends = yaru-icon-theme-git
 	depends = qt5-base
 	depends = qt5-declarative
 	depends = qt5-quickcontrols2
