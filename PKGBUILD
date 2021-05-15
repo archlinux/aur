@@ -1,32 +1,29 @@
-# Maintainer: hexchain <i@hexchain.org>
-
-_pypiname=requirements-parser
-pkgbase=python-$_pypiname
-pkgname=(python-$_pypiname python2-$_pypiname)
-pkgdesc="A Pip requirements file parser"
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: hexchain <i@hexchain.org>
+pkgname=python-requirements-parser
+_name=${pkgname#python-}
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
+pkgdesc="A Pip requirements file parser."
+arch=('any')
+url="https://github.com/davidfischer/requirements-parser"
 license=('BSD')
-makedepends=(python-setuptools python2-setuptools)
-source=("https://files.pythonhosted.org/packages/source/r/$_pypiname/$_pypiname-$pkgver.tar.gz")
-arch=(any)
+depends=('python')
+makedepends=('python-setuptools')
+source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz"{,.asc})
+sha256sums=('5963ee895c2d05ae9f58d3fc641082fb38021618979d6a152b6b1398bd7d4ed4'
+            'SKIP')
+validpgpkeys=('301078D634936CEB7FCDF13BF0C9B0ADA737AB60') # David Fischer <djfische@gmail.com>
 
 build() {
-    cd "$srcdir"
-    cp -r "$_pypiname-$pkgver" "$_pypiname-$pkgver-py2"
+	cd "$_name-$pkgver"
+	python setup.py build
 }
 
-package_python-requirements-parser() {
-    depends=("python")
-    cd "$srcdir/$_pypiname-$pkgver"
-    python setup.py install --prefix="/usr" --root="$pkgdir" -O1
-    install -Dm644 LICENSE.rst -t "$pkgdir/usr/share/licenses/$pkgname"
-}
+package() {
+	cd "$_name-$pkgver"
+	export PYTHONHASHSEED=0
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
-package_python2-requirements-parser() {
-    depends=("python2")
-    cd "$srcdir/$_pypiname-$pkgver-py2"
-    python2 setup.py install --prefix="/usr" --root="$pkgdir" -O1
-    install -Dm644 LICENSE.rst -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm644 LICENSE.rst -t "$pkgdir/usr/share/licenses/$pkgname"
 }
-sha256sums=('5963ee895c2d05ae9f58d3fc641082fb38021618979d6a152b6b1398bd7d4ed4')
