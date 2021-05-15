@@ -1,15 +1,15 @@
 pkgbase = phylobayes
 	pkgdesc = phylogenetic reconstruction using infinite mixtures
-	pkgver = 4.1b
+	pkgver = 4.1e
 	pkgrel = 1
-	url = http://megasun.bch.umontreal.ca/People/lartillot/www/index.htm
+	url = https://github.com/bayesiancook/phylobayes
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = gcc-libs
 	conflicts = phylobayes-mpi
-	source = http://megasun.bch.umontreal.ca/People/lartillot/www/phylobayes4.1b.tar.gz
-	md5sums = 49b7195ee6e68c5cf36b5c95382f08ad
+	source = https://codeload.github.com/bayesiancook/phylobayes/tar.gz/refs/tags/v4.1e
+	md5sums = b7e915ecc83f3991142218d09aefd8c8
 
 pkgname = phylobayes
 
