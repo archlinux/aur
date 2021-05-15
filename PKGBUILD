@@ -10,8 +10,8 @@ epoch=0
 pkgdesc="Customize IBus for orientation, animation, font, ascii mode auto-switch, reposition, system tray menu entries, input source indicator; theme and background picture follow GNOME Night Light Mode."
 arch=('any')
 url="https://extensions.gnome.org/extension/4112/customize-ibus/"
-license=('GPLv3')
-depends=('gnome-shell>=3.38,', 'gnome-tweaks')
+license=('GPL-3.0+')
+makedepends=('gettext' 'glib2' 'make')
 source=("https://github.com/HollowMan6/Customize-IBus/archive/${_commit}/${_pkgname}-${_commit}.tar.gz")
 sha512sums=('SKIP')
 package() {
