@@ -3,12 +3,12 @@
 
 pkgname=4pane
 pkgver=7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-pane, detailed-list file manager."
 arch=('i686' 'x86_64')
 url="http://www.4pane.co.uk/index.html"
 license=('GPL3')
-depends=('wxgtk-common')
+depends=('wxgtk2')
 source=(http://downloads.sourceforge.net/project/fourpane/${pkgver}/${pkgname}-${pkgver}.tar.gz)
 md5sums=('21d0a32400aa5fb48b1e5f8c5c344c42')
 

@@ -1,12 +1,12 @@
 pkgbase = 4pane
 	pkgdesc = A multi-pane, detailed-list file manager.
 	pkgver = 7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.4pane.co.uk/index.html
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = wxgtk-common
+	depends = wxgtk2
 	source = http://downloads.sourceforge.net/project/fourpane/7.0/4pane-7.0.tar.gz
 	md5sums = 21d0a32400aa5fb48b1e5f8c5c344c42
 
