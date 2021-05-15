@@ -1,17 +1,22 @@
 pkgbase = ucollage
-	pkgdesc = A command line image viewer based on Überzug.
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgdesc = An extensible command line image viewer inspired by vim
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/ckardaris/ucollage
 	arch = any
 	license = GPL3
 	depends = bash>=4.2.0
 	depends = ueberzug
 	depends = file
+	depends = bc
+	depends = coreutils
+	depends = sed
+	depends = grep
 	optdepends = imagemagick: Image rotation
 	optdepends = ffmpeg: Thumbnail creation
-	source = https://github.com/ckardaris/ucollage/archive/v0.1.0.tar.gz
-	sha256sums = 5fab56577e3429bd28f36e26138d6ecd3c2f91833a94da9cc35de75710588f7b
+	optdepends = xclip: Clipboard pasting
+	source = https://github.com/ckardaris/ucollage/releases/download/v1.0.0/ucollage-1.0.0.tar.gz
+	sha256sums = 36f912097a65a15bf261f2a74aecee442fc7ff2d6cb0d74f4fd60b5356125c38
 
 pkgname = ucollage
 
