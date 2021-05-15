@@ -1,0 +1,15 @@
+pkgbase = deskx-git
+	pkgdesc = A very small program to remotely control a computer in a local network (X11-only).
+	pkgver = r20.b16ae8a
+	pkgrel = 1
+	url = https://github.com/DeskX11/DeskX
+	arch = x86_64
+	license = apache
+	makedepends = libx11
+	makedepends = libxtst
+	makedepends = openssl
+	source = deskx::git+https://github.com/DeskX11/DeskX.git
+	sha256sums = SKIP
+
+pkgname = deskx-git
+
