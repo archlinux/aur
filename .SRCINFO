@@ -1,0 +1,18 @@
+pkgbase = autofs-openrc
+	pkgdesc = OpenRC autofs init script
+	pkgver = 20210506
+	pkgrel = 2
+	url = https://code.obermui.de/6543/autofs-openrc
+	arch = any
+	license = GPL2
+	depends = openrc
+	depends = autofs
+	provides = init-autofs
+	conflicts = init-autofs
+	source = autofs.confd
+	source = autofs.initd
+	sha256sums = d95fc4b88c02dafcd771e35f7422f4f03642687187a17613d3f2b0fb48caaad4
+	sha256sums = 517faf155ff348df8df4437d6c5352538f0b686d22b646d816b9efe91e4eebd2
+
+pkgname = autofs-openrc
+
