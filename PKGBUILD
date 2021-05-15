@@ -9,7 +9,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=sudo-selinux
-_sudover=1.9.6p1
+_sudover=1.9.7
 pkgrel=1
 pkgver=${_sudover/p/.p}
 pkgdesc="Give certain users the ability to run some commands as root - SELinux support"
@@ -17,7 +17,7 @@ arch=('x86_64')
 url="https://www.sudo.ws/sudo/"
 license=('custom')
 groups=('selinux')
-depends=('glibc' 'libgcrypt' 'pam-selinux' 'libldap' 'zlib' 'libselinux')
+depends=('glibc' 'openssl' 'pam-selinux' 'libldap' 'zlib' 'libselinux')
 conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
@@ -29,7 +29,7 @@ install=${pkgname/-selinux}.install
 source=(https://www.sudo.ws/sudo/dist/${pkgname/-selinux}-$_sudover.tar.gz{,.sig}
         sudo_logsrvd.service
         sudo.pam)
-sha256sums=('a9e9cdc058fafeb9cd3ebfb864c81755e524d98aa022152763f25bce8ca3ca90'
+sha256sums=('2bbe7c2d6699b84d950ef9a43f09d4d967b8bc244b73bc095c4202068ddbe549'
             'SKIP'
             '8b91733b73171827c360a3e01f4692772b78e62ceca0cf0fd4b770aba35081a1'
             'd1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2')
@@ -49,7 +49,6 @@ build() {
     --with-rundir=/run/sudo \
     --with-vardir=/var/db/sudo \
     --with-logfac=auth \
-    --enable-gcrypt \
     --enable-tmpfiles.d \
     --with-pam \
     --with-sssd \
