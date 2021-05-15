@@ -1,0 +1,13 @@
+[Unit]
+Description=Specter Desktop Service
+After=multi-user.target
+Conflicts=getty@tty1.service
+
+[Service]
+User=myusername
+Type=simple
+ExecStart=python -m cryptoadvance.specter server
+StandardInput=tty-force
+
+[Install]
+WantedBy=multi-user.target
