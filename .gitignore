@@ -1,0 +1,9 @@
+src
+pkg
+netscripts-atzlinux
+*.deb
+*.rpm
+*.zip
+*.pkg.tar.xz
+*.pkg.tar.zst
+*.log
