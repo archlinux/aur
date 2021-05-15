@@ -1,8 +1,8 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=5.12.2.arch1
-pkgrel=2
+pkgver=5.12.4.arch1
+pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/"
@@ -15,13 +15,14 @@ makedepends=(
 )
 options=('!strip')
 _srcname=archlinux-linux
-_fedora_kernel_commit_id=50c4293d202534b2773149500aac51f13fd76c9b
+_fedora_kernel_commit_id=29f433a6b9ba268b0202ac8200cf2ce38d6071b7
 source=(
 	"$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
 	config         # the main kernel config file
 	"sys-kernel_arch-sources-g14_files_6008-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch"
 	"sys-kernel_arch-sources-g14_files-6010-acpi_unused.patch"
 	"https://gitlab.com/asus-linux/fedora-kernel/-/archive/$_fedora_kernel_commit_id/fedora-kernel-$_fedora_kernel_commit_id.zip"
+	"5.12.4--Add-jack-toggle-support-for-headphones-on-Asus-ROG-Z.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -33,11 +34,37 @@ sha256sums=('SKIP'
             'bcb8a47c2396af9a2afcd26d1200f9424d2af0fa6f6749d3c09417a919f5c60c'
             'd9f5742fed4406396698897aa042d4d5fdbfd7c51add7483a777f9ab41901aac'
             'c384049787c8f0008accf9c4d053eb407b76242fe522e1aed1fe8a9c59f9d996'
-            '9554d5c1939ec7b8da344f29ae09ea56345316856cfe821bf4415048e6c70192')
+            'ce2a5e79ed29c701529f0aa2d854bab79d9f5cbdd173e13774f6e1f4e8ae585f'
+            'f52aadc1ebcdc118bb50769e4f5a4c036521c09ffecba48cb34392e1a687ac0a')
+
+_fedora_kernel_patch_skip_list=(
+  # fedora kernel patches to skip
+  # use plain file names or bash glob syntax, ** don't quote globs **
+
+  # multi-select and ranges examples
+  #00{03,05,08}-drm-amdgpu*.patch
+  #00{01..12}-drm-amdgpu*.patch
+  
+  "linux-kernel-test.patch"           # test patch, please ignore
+  patch-*-redhat.patch                # wildcard match any redhat patch version
+  00{01..12}-drm-amdgpu*.patch        # upstreamed in 5.12
+
+  # upstreamed
+  "0001-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch"
+  "0001-ALSA-hda-realtek-GA503-use-same-quirks-as-GA401.patch"
+
+  # patch broken in 5.12.4, updated and included in package sources
+  "0001-Add-jack-toggle-support-for-headphones-on-Asus-ROG-Z.patch"
+)
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
+
+_fedora_patch_in_skip_list() {
+  for p in "${_fedora_kernel_patch_skip_list[@]}"; do [[ "$1" == $p ]] && return 0; done
+  return 1
+}
 
 prepare() {
   cd $_srcname
@@ -56,17 +83,33 @@ prepare() {
     patch -Np1 < "../$src"
   done
 
-  for src in ../fedora-kernel-$_fedora_kernel_commit_id/*.patch; do
-    src="${src%%::*}"
+  msg2 "Applying asus-linux patches..."
+  local p_err=()
+  local p_meh=()
+
+  # this will apply only enabled patches from the fedora-linux kernel.spec
+  # this stops us from applying broken or in-progress patches that are in git but aren't actually in use
+
+  local _fkernel_path="../fedora-kernel-${_fedora_kernel_commit_id}"
+  for src in $(awk -F ' ' '/^ApplyOptionalPatch.*patch$/{print $2}' "${_fkernel_path}/kernel.spec"); do
     src="${src##*/}"
-    [[ $src = *.patch ]] || continue
-    if [ "$src" != "0001-drm-amdgpu-use-runpm-flag-rather-than-fbcon-for-kfd-.patch" ] && 
-       [ "$src" != "0006-drm-amdgpu-move-s0ix-check-into-amdgpu_device_ip_sus.patch" ] &&
-       [ "$src" != "patch-5.11-redhat.patch" ]; then
-      echo "Applying patch $src..."
-      OUT="$(patch --forward -Np1 < "../fedora-kernel-$_fedora_kernel_commit_id/$src")"  || echo "${OUT}" | grep "Skipping patch" -q || (echo "$OUT" && false);
+    _fedora_patch_in_skip_list "$src" && continue
+    echo "Applying patch $src..."
+    if OUT="$(patch --forward -Np1 < "${_fkernel_path}/$src")"; then
+      : #plain "Applied patch $src..."
+    else
+      # if you want to ignore a specific patch failure for some reason do it right here, then 'continue'
+      if { echo "$OUT" | grep -qiE 'hunk(|s) FAILED'; }; then
+        error "Patch failed $src" && echo "$OUT" && p_err+=("$src") && _throw=y
+      else
+        warning "Duplicate patch $src" && p_meh+=("$src")
+      fi
     fi
   done
+  (( ${#p_err[@]} > 0 )) && error "Failed patches:" && for p in ${p_err[@]}; do plain "$p"; done
+  (( ${#p_meh[@]} > 0 )) && warning "Duplicate patches:" && for p in ${p_meh[@]}; do plain "$p"; done
+  # if throw is defined we had a hard patch failure, propagate it and stop so we can address
+  [[ -z "$_throw" ]]
 
   echo "Setting config..."
   cp ../config .config
