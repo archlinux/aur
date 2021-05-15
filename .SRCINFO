@@ -1,6 +1,6 @@
 pkgbase = alice-vision-git
 	pkgdesc = Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms
-	pkgver = 2.4.0.r10.g6ac5c4e96
+	pkgver = 2.4.0.r62.g2f2768071
 	pkgrel = 1
 	url = https://alicevision.github.io/
 	arch = i686
@@ -43,11 +43,17 @@ pkgbase = alice-vision-git
 	source = geogram::git+https://github.com/alicevision/geogram.git
 	source = cmake_cxx_std_14.patch
 	source = openexr3.patch
+	source = osi_clp::git+https://github.com/alicevision/osi_clp
+	source = MeshSDFilter::git+https://github.com/alicevision/MeshSDFilter
+	source = nanoflann::git+https://github.com/alicevision/nanoflann
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = caf2bf06bd7c6a2387f01f312d94b649ef3e4363b18fcdf95986cd71a0d6c275
 	sha256sums = e7a89d510788ff0320415d00e9871220e602e046ffc0fb65d60d465d6bed93a7
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = alice-vision-git
 

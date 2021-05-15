@@ -40,7 +40,7 @@ _name=alice-vision
 _fragment="#branch=develop"
 
 pkgname=${_name}-git
-pkgver=2.4.0.r10.g6ac5c4e96
+pkgver=2.4.0.r62.g2f2768071
 pkgrel=1
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('i686' 'x86_64')
@@ -69,8 +69,8 @@ pkgver() {
 
 
 prepare() {
+  prepare_submodule
   cd "${srcdir}/${pkgname}"
-  git submodule update --init
 #  git config submodule.src/dependencies/MeshSDFilter.url ${srcdir}/MeshSDFilter
 #  git config submodule.src/dependencies/nanoflann.url
 #  git config submodule.src/dependencies/osi_clp.url
@@ -128,4 +128,22 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'caf2bf06bd7c6a2387f01f312d94b649ef3e4363b18fcdf95986cd71a0d6c275'
-            'e7a89d510788ff0320415d00e9871220e602e046ffc0fb65d60d465d6bed93a7')
+            'e7a89d510788ff0320415d00e9871220e602e046ffc0fb65d60d465d6bed93a7'
+            'SKIP'
+            'SKIP'
+            'SKIP')
+
+# Generated with git_submodule_PKGBUILD_conf.sh ( https://gist.github.com/bartoszek/41a3bfb707f1b258de061f75b109042b )
+# Call prepare_submodule in prepare() function
+
+prepare_submodule() {
+  git -C "$srcdir/alice-vision-git" config submodule.src/dependencies/osi_clp.url "$srcdir/osi_clp"
+  git -C "$srcdir/alice-vision-git" config submodule.src/dependencies/MeshSDFilter.url "$srcdir/MeshSDFilter"
+  git -C "$srcdir/alice-vision-git" config submodule.src/dependencies/nanoflann.url "$srcdir/nanoflann"
+  git -C "$srcdir/alice-vision-git" submodule update --init --recursive
+}
+source+=(
+  "osi_clp::git+https://github.com/alicevision/osi_clp"
+  "MeshSDFilter::git+https://github.com/alicevision/MeshSDFilter"
+  "nanoflann::git+https://github.com/alicevision/nanoflann"
+)
