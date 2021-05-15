@@ -1,7 +1,7 @@
 # Maintainer: Dimitri Merejkowsky <d.merej at gmail>
 pkgname=rusync
 pkgver="0.7.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Ergonomic replacement for rsync"
 url="https://git.sr.ht/~dmerej/rusync"
 arch=('x86_64')
