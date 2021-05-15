@@ -1,0 +1,31 @@
+pkgbase = kasts-git
+	pkgdesc = Kirigami-based podcast player
+	pkgver = r542.eab5d08
+	pkgrel = 1
+	url = https://invent.kde.org/plasma-mobile/kasts
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL2
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = qt5-svg
+	makedepends = qt5-tools
+	depends = qt5-multimedia
+	depends = qt5-quickcontrols2
+	depends = purpose
+	depends = kirigami2
+	depends = ki18n
+	depends = kconfig
+	depends = kcoreaddons
+	depends = ki18n
+	depends = syndication
+	provides = kasts
+	conflicts = kasts
+	source = git+https://invent.kde.org/plasma-mobile/kasts.git
+	sha256sums = SKIP
+
+pkgname = kasts-git
+
