@@ -1,7 +1,7 @@
 # Maintainer: erdii <me at erdii dot engineering>
 pkgname=import
 pkgver=e8314f6c6136a6be6bb5cbb2a4a83d5a1ec1efa9
-pkgrel=1
+pkgrel=4
 pkgdesc="import is a simple and fast module system for Bash and other Unix shells."
 arch=('any')
 url="https://github.com/importpw/import"
