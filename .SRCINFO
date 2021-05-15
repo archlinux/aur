@@ -1,6 +1,6 @@
 pkgbase = python-castellan
 	pkgdesc = Generic Key Manager interface for OpenStack
-	pkgver = 3.7.1
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://opendev.org/openstack/castellan
 	arch = any
@@ -32,10 +32,10 @@ pkgbase = python-castellan
 	depends = python-stevedore
 	depends = python-keystoneauth1
 	depends = python-requests
-	source = https://pypi.io/packages/source/c/castellan/castellan-3.7.1.tar.gz
-	md5sums = 1d5f21a1d503a2213559aca139c282fc
-	sha256sums = c6ea28b41e4c75fbb1945145b2516f6f9750f8405d2b01efc7c5681286137447
-	sha512sums = f218a55e1e536a22722bbaa66c50eb80efdb39be728d7852d03b6c30cc6587de055fb68cc2add10f68afa950658f03fe8495f792fd37e5d29caa2687e0753f3d
+	source = https://pypi.io/packages/source/c/castellan/castellan-3.8.0.tar.gz
+	md5sums = 13cacafd236ac68567e1cc401fb94b4e
+	sha256sums = 5ef32b23a65c8d7487db5ce2c272383b4656a77da736ea41a28b00ce28d225e4
+	sha512sums = 9048633b8cbc4d4beb8bf842a0cdb0f47ea35efcd97df95f0b7fa5beed97fc3b4ee07fae1b2769b372b4df3e900336b6728b689dedae4ade584c76fa566a21ee
 
 pkgname = python-castellan
 
