@@ -1,0 +1,20 @@
+pkgbase = python-web-compile
+	pkgdesc = A CLI to compile/minify SCSS & JS, and associated pre-commit hook
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/executablebooks/web-compile
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/w/web-compile/web-compile-0.2.1.tar.gz
+	md5sums = 11eb06c747431fdb7c9becba04bc023c
+
+pkgname = python-web-compile
+	depends = python-click
+	depends = python-jinja
+	depends = python-libsass
+	depends = python-gitpython
+	depends = python-yaml
+	depends = python-rjsmin
+	depends = python-toml
+
