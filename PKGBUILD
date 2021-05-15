@@ -1,7 +1,7 @@
 # Maintainer: Stanislav Nikitin <pztrn at pztrn dot name>
 
 pkgname=('alfis')
-pkgver=0.5.2
+pkgver=0.5.5
 pkgrel=1
 pkgdesc='Alternative Free Identity System using blockchain'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('AGPL3')
 depends=('webkit2gtk' 'gtk3')
 makedepends=('cargo' 'rust' 'atk' 'pango')
 source=("https://github.com/Revertron/Alfis/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('99edb083fc7729f8f174aac84e8ec3a4f6918a5c8dfb6ea36a1448622459cb1e')
+sha256sums=('c36f64256a8ecb20fb82eea17b3f8ce7e44f443b6437b5f492332f732040a476')
 
 _dirname="Alfis-${pkgver}"
 
