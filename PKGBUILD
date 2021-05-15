@@ -7,13 +7,13 @@
 
 _pkgbase='rxvt-unicode'
 pkgname='rxvt-unicode-fontspacing-noinc-vteclear-secondarywheel'
-pkgver=9.22
+pkgver=9.26
 pkgrel=1
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with fixed font spacing, no increment resizing, clear patched to behave like VTEs (keep all lines) and secondaryWheel.'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
 license=('GPL')
-depends=('rxvt-unicode-terminfo' 'libxft' 'perl' 'startup-notification')
+depends=('rxvt-unicode-terminfo' 'libxft' 'libxt' 'perl' 'startup-notification' 'libnsl')
 optdepends=('gtk2-perl: to use the urxvt-tabbed')
 source=(
   "http://dist.schmorp.de/rxvt-unicode/$_pkgbase-$pkgver.tar.bz2"
@@ -94,7 +94,7 @@ package() {
   install -Dm 755 doc/rxvt-tabbed "$pkgdir/usr/bin/urxvt-tabbed"
 }
 
-md5sums=('93782dec27494eb079467dacf6e48185'
+md5sums=('18dd0b15e7f67478bf0a88b0fc5e8cd4'
          'fec94dc986fa37ec380079d81de3e0b2'
          'fac55f0a8404c86dad3e702146762332'
          '8a5599197568c63720e282b9722a7990'
