@@ -1,4 +1,4 @@
-pkgbase = kata-containers-guest-git
+pkgbase = kata1-containers-guest-git
 	pkgdesc = Lightweight virtual machines for containers (guest components, Git version)
 	pkgver = 1.13.0~alpha0~agent.r0.27b90c2
 	pkgrel = 1
@@ -40,16 +40,16 @@ pkgbase = kata-containers-guest-git
 	b2sums = 1745aa5d5df0af2452381de163e3964511172e045c13736a062bb2c932e3306250d24992b2bdbc534ced188b35d3b1f4958a5680c99356afd3097d11c84aee31
 	b2sums = c9d90683b134dcbf656adcb5bebad02a9a02ec68a1497bbab16cdec7d626ab020f56a40f00bfddf06000452e20d5a58d53ed59d0be49451daf9019fe1f203a58
 
-pkgname = kata-agent-git
-	provides = kata-agent
-	conflicts = kata-agent
+pkgname = kata1-agent-git
+	provides = kata1-agent
+	conflicts = kata1-agent
 
-pkgname = kata-linux-container-git
-	provides = kata-linux-container
-	conflicts = kata-linux-container
+pkgname = kata1-linux-container-git
+	provides = kata1-linux-container
+	conflicts = kata1-linux-container
 
-pkgname = kata-containers-image-git
+pkgname = kata1-containers-image-git
 	install = kata-containers-guest.install
-	provides = kata-containers-image
-	conflicts = kata-containers-image
+	provides = kata1-containers-image
+	conflicts = kata1-containers-image
 

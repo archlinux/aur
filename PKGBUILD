@@ -1,8 +1,8 @@
-pkgbase=kata-containers-guest-git
+pkgbase=kata1-containers-guest-git
 pkgname=(
-  kata-agent-git
-  kata-linux-container-git
-  kata-containers-image-git
+  kata1-agent-git
+  kata1-linux-container-git
+  kata1-containers-image-git
 )
 pkgver=1.13.0~alpha0~agent.r0.27b90c2
 pkgrel=1
@@ -151,16 +151,16 @@ build(){
   _kata_image_build
 }
 
-package_kata-agent-git(){
-  conflicts=('kata-agent')
-  provides=('kata-agent')
+package_kata1-agent-git(){
+  conflicts=('kata1-agent')
+  provides=('kata1-agent')
   cd "${srcdir}/src/${_gh_org}/agent"
   GOPATH="${srcdir}" make install DESTDIR="${pkgdir}" BINDIR="/usr/bin" PKGLIBEXECDIR="/usr/lib/kata-containers" LIBEXECDIR="/usr/lib"
 }
 
-package_kata-containers-image-git(){
-  conflicts=('kata-containers-image')
-  provides=('kata-containers-image')
+package_kata1-containers-image-git(){
+  conflicts=('kata1-containers-image')
+  provides=('kata1-containers-image')
   install=kata-containers-guest.install
   local -r _img_filename="kata-containers-${pkgver%%~*}-arch-systemd-image.img" _initrd_filename="kata-containers-${pkgver%%~*}-arch-agent-initrd.img"
   install -Dm 0644 "${srcdir}/osbuilder/image-builder/kata-containers.img" "${pkgdir}/usr/share/kata-containers/${_img_filename}"
@@ -171,9 +171,9 @@ package_kata-containers-image-git(){
   popd
 }
 
-package_kata-linux-container-git(){
-  conflicts=('kata-linux-container')
-  provides=('kata-linux-container')
+package_kata1-linux-container-git(){
+  conflicts=('kata1-linux-container')
+  provides=('kata1-linux-container')
   install -D -m 0644 "${srcdir}/linux-${_kata_kernel_ver}/vmlinux" "${pkgdir}/usr/share/kata-containers/vmlinux-${_kata_kernel_ver}.container"
   cd "${pkgdir}/usr/share/kata-containers"
   ln -sf "vmlinux-${_kata_kernel_ver}.container" vmlinux.container
