@@ -12,8 +12,12 @@ pkgbase = koffe
 	depends = libnewt
 	depends = wget
 	depends = git
-	source = koffe.tar.gz
-	md5sums = 792944180ce500acd738e00c7ec08ba3
+	source = koffe
+	source = pi.is
+	source = install
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = koffe
 

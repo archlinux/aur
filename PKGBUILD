@@ -19,13 +19,12 @@ backup=()
 options=()
 install=
 changelog=
-source=('koffe.tar.gz')
+source=('koffe' 'pi.is' 'install')
 noextract=()
-md5sums=('792944180ce500acd738e00c7ec08ba3')
+md5sums=('SKIP' 'SKIP' 'SKIP')
 validpgpkeys=()
 
 package() {
-	tar xzf $srcdir/koffe.tar.gz -C $srcdir/
 	mkdir $pkgdir/usr/
 	mkdir $pkgdir/usr/bin/
 	mkdir $pkgdir/usr/share/
