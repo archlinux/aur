@@ -3,7 +3,7 @@
 # Contributor: heavysink <winstonwu91 at gmail>
 
 pkgname=proton
-_pkgver=6.3-3
+_pkgver=6.3-4
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
@@ -22,7 +22,7 @@ source=(
 	"wined3d-interop.h"
 )
 sha512sums=(
-	'ef62405c8ea79bb8f9511b13412534b657e13bf1b011d635ca87c528dae106641ea05e16ba3204ac09a7bbac51c561b26048e5e07d7fa66959d413c38ed196ab'
+	'b11c0e499bb0816b6fc10e1281773f86fd6f9062c210337ab338192475f4888ae80df93b4ef37ecf7d61e24b540f6ec69cf447cad8a3b5b1bbe5a3674347327c'
 	'f2caacca6bd55030331de7d017d85772b09e5ad9e5fdbfc6343f303ac5447595660fd3f83ba2a177ef321d9b54335245bac548ca804e6e3e9346690f29d55ad0'
 )
 
