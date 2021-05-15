@@ -20,9 +20,7 @@ pkgver() {
 build() {
     cd "$srcdir/Meowgram"
     meson builddir \
-        --prefix=/usr \
-        -Dapi_id=611335 \
-        -Dapi_hash=d524b414d21f4d37f08684c1df41ac9c
+        --prefix=/usr
     ninja -C builddir
 }
 
