@@ -2,7 +2,7 @@
 # Contributor: Alexandros Theodotou <alex@zrythm.org>
 _pkgname=zrythm
 pkgname=$_pkgname-git
-pkgver=1.0.0.alpha.16.0.12.r.gfb1260b23
+pkgver=1.0.0.alpha.16.1.1.r.gd35c6dd55
 pkgrel=1
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
@@ -17,7 +17,7 @@ optdepends=('portaudio: portaudio backend'
             'qt5-base: for embedding qt5 plugin UIs')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
-source=("$_pkgname::git+https://git.zrythm.org/git/$_pkgname.git")
+source=("zrythm::git+https://git.zrythm.org/zrythm/zrythm.git")
 md5sums=('SKIP')
 
 pkgver() {
