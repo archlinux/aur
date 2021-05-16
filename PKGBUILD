@@ -1,7 +1,8 @@
 # Maintainer: Heavysink <winstonwu91 at gmail>
 pkgname=libnn-git
-pkgver=20191024.ea3e390
+pkgver=1.85.0.r29.ga132637
 pkgrel=1
+epoch=1
 pkgdesc="a C code for Natural Neighbours interpolation of 2D scattered data"
 arch=(i686 x86_64)
 url="https://github.com/sakov/nn-c"
@@ -12,8 +13,7 @@ source=($pkgname::"git://github.com/sakov/nn-c.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname/"
-    (git log -1 --format='%cd.%h' --date=short | tr -d -)
+  git -C "${srcdir}/${pkgname}" describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
