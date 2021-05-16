@@ -2,14 +2,14 @@
 # Maintainer: Paul-Louis Ageneau <paul-louis at ageneau dot org>
 
 pkgname=libdatachannel
-pkgver=v0.12.1
+pkgver=v0.13.0
 pkgrel=1
 pkgdesc="C/C++ WebRTC Data Channels and Media Transport standalone library"
 arch=('x86_64')
 url="https://github.com/paullouisageneau/$pkgname"
 license=('LGPL')
 makedepends=('git' 'cmake')
-depends=('openssl' 'libsrtp' 'plog')
+depends=('openssl' 'libsrtp')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("git+https://github.com/paullouisageneau/$pkgname.git#tag=$pkgver")
