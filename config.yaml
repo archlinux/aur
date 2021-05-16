@@ -29,20 +29,20 @@ plugin:
             - query_is_ad_domain # 已知的广告域名
           exec:
             - _block_with_nxdomain # 屏蔽
-          goto: _end
+            - _end
 
         - if:
             - query_is_local_domain # 已知的本地域名
             - "!_query_is_common" # 和不常见的请求类型
           exec:
             - forward_local # 用本地服务器
-          goto: _end
+            - _end
 
         - if:
             - query_is_non_local_domain # 已知的非本地域名
           exec:
             - forward_remote # 用远程服务器
-          goto: _end
+            - _end
 
           # 剩下的域名用 IP 分流。
           # 有两种方案："顺序分流"或"并发分流"。
@@ -51,7 +51,7 @@ plugin:
         - forward_local # 先请求转发至本地服务器
         - if:
             - response_has_local_ip # 如果应答包含本地 IP
-          goto: _end # 就直接采用结果
+            - _end # 就直接采用结果
         - forward_remote # 否则用远程服务器的结果
 
         # 如果想用类似 ChinaDNS 的"并发分流"逻辑。将上面的配置注释掉，然后用下面的配置。
