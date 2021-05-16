@@ -1,6 +1,6 @@
 pkgbase = rage-git
 	pkgdesc = Video Player based on EFL - Development version
-	pkgver = 0.3.1.r247.ecaccef
+	pkgver = 0.3.1.r250.db95c4c
 	pkgrel = 1
 	url = https://www.enlightenment.org/p.php?p=about/rage
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = rage-git
 	makedepends = binutils
 	makedepends = fakeroot
 	depends = efl
-	provides = rage=0.3.1.r247.ecaccef
+	provides = rage=0.3.1.r250.db95c4c
 	conflicts = rage
 	options = debug
 	source = git+https://git.enlightenment.org/apps/rage.git
