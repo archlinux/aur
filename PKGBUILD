@@ -25,7 +25,7 @@ depends=(
 	"wlroots-git"
 )
 optdepends=(
-	"alacritty: Terminal emulator used by the default config"
+	"foot: Terminal emulator used by the default config"
 	"dmenu: Application launcher"
 	"grim: Screenshot utility"
 	"i3status: Status line"
