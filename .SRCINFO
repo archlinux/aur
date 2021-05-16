@@ -1,0 +1,14 @@
+pkgbase = term-sudoku
+	pkgdesc = Play sudoku in yor terminal.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/theeyeofcthulhu/term-sudoku
+	arch = any
+	license = GPL
+	makedepends = ncurses
+	makedepends = git
+	source = git://github.com/theeyeofcthulhu/term-sudoku
+	sha1sums = SKIP
+
+pkgname = term-sudoku
+
