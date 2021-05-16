@@ -32,9 +32,10 @@ check() {
 
 package() {
 	cd "$_pkgname"
+    git checkout develop
 	install -Dm 755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin"
 	mkdir -p ${pkgdir}/etc/apmpkg/iiabc
 	cp -r src/iiabc/ ${pkgdir}/etc/apmpkg/
 	mkdir -p ${pkgdir}/etc/apmpkg/paquetes
-  install -Dm 644 "${pkgname}.1" -t ${pkgdir}/usr/share/man/man1
+    install -Dm 644 "${pkgname}.1" -t ${pkgdir}/usr/share/man/man1
 }
