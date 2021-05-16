@@ -1,7 +1,7 @@
 # Maintainer: Patrick Rogers <patrick@thewebzone.net>
 pkgname='linux-air-combat'
 pkgver=08p47
-pkgrel=1
+pkgrel=2
 pkgdesc="Free open source combat flight simulator"
 arch=('any')
 url="https://askmisterwizard.com/2019/LinuxAirCombat/IntroducingLinuxAirCombat.htm"
@@ -29,6 +29,7 @@ package() {
     mkdir -p "$pkgdir/${_resource_dir}/sounds"
     mkdir -p "$pkgdir/${_resource_dir}/models"
     mkdir -p "$pkgdir/${_resource_dir}/textures"
+    mkdir -p "$pkgdir/usr/share/applications"
     # Copying main executable file...
     cp bin/Release/Lac${pkgver} $pkgdir/usr/bin/
     mv $pkgdir/usr/bin/Lac${pkgver} $pkgdir/usr/bin/lac
@@ -51,4 +52,7 @@ package() {
     
     cp bin/textures/* $pkgdir/${_resource_dir}/textures
     chmod +r $pkgdir/${_resource_dir}/textures/*
+    
+    cp lac.desktop $pkgdir/usr/share/applications/
+    chmod +r $pkgdir/usr/share/applications/lac.desktop
 }
