@@ -16,9 +16,13 @@ pkgver() {
   git -C "${srcdir}/${pkgname}" describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cat >> "${srcdir}/${pkgname}"/nn/CUSTOMISE <<<'CFLAGS_TRIANGLE+=" -fPIC"'
+}
+
 build() {
   cd "$srcdir/$pkgname/nn"
-  export CFLAGS+=" -fPIC"
+  export CFLAGS+=" -fPIC -Wall -pedantic -D_GNU_SOURCE -std=c99"
   ./configure \
     --prefix=$pkgdir/usr
   make
