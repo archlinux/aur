@@ -3,7 +3,7 @@
 
 pkgname=powerline-go
 pkgver=1.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful, useful and fast prompt for your shell"
 arch=('x86_64')
 url="https://github.com/justjanne/powerline-go"
@@ -18,6 +18,7 @@ build() {
     cd "$pkgname-$pkgver"
     go build \
     -trimpath \
+    -modcacherw \
     -ldflags "-extldflags ${LDFLAGS}" \
     .
 }
