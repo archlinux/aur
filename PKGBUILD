@@ -20,5 +20,5 @@ package() {
   install -d "$pkgdir"/usr/{bin,share/{popart,applications}}
   mv "$srcdir"/popart-current/* "$pkgdir"/usr/share/popart
   ln -s /usr/share/popart/popart "$pkgdir"/usr/bin/popart
-  install -m 755v"$src"/popart.desktop "$pkgdir"/usr/share/applications/
+  install -m 755 "$src"/popart.desktop "$pkgdir"/usr/share/applications/
 }
