@@ -2,7 +2,7 @@
 
 _pyname=tooz
 pkgname=python-$_pyname
-pkgver=2.8.0
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Coordination library for distributed systems."
 arch=(any)
@@ -47,9 +47,9 @@ checkdepends=(
 	python-pre-commit
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('7f28b5830f76ca52a80603e6397e87c3')
-sha256sums=('3567a42097c6292c52634ae3888501756d81a6031eac2cc136a95a6a09a4681e')
-sha512sums=('59aca01ffea677dbaa7df20c88c3eeba9b1621d5ac4e86b406d5718304504494724d588b923028cb09b16d15c8a9b3d548f8e9c7e66a29bb4691189eb7d216e4')
+md5sums=('4e9ef713ad9cd5f85fab97e34ea10dcf')
+sha256sums=('834faf28ca15cbee45073125ccbfcd11675083c68cd3882b602fa3a79b8de11f')
+sha512sums=('56d4d74dc9decee1944b1f5fcc482e3243da5dacdbfaddc33eb408c1362705519a64db8289350ecfca2565c0aa184f9b20a0bdd50da5605c4f8b2dee50e94210')
 
 export PBR_VERSION=$pkgver
 
