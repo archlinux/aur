@@ -3,7 +3,7 @@
 
 pkgname=makedeb-db
 pkgver=2.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Dependency conversion tool for makedeb"
 arch=("any")
 license=("GPL3")
