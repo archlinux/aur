@@ -1,16 +1,17 @@
 pkgbase = ngtcp2-git
 	pkgdesc = An effort to implement IETF QUIC protocol
-	pkgver = r1524.e1e398c
+	pkgver = r2657.d9524643
 	pkgrel = 1
 	url = https://github.com/ngtcp2/ngtcp2
 	arch = x86_64
 	license = MIT
 	checkdepends = cunit
 	makedepends = git
+	depends = gnutls
 	provides = ngtcp2
 	provides = libngtcp2.so
 	conflicts = ngtcp2
-	source = git+https://github.com/ngtcp2/ngtcp2#branch=draft-22
+	source = git+https://github.com/ngtcp2/ngtcp2
 	md5sums = SKIP
 
 pkgname = ngtcp2-git
