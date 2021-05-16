@@ -1,10 +1,10 @@
---- main.go	2021-01-31 01:57:33.000000000 -0500
-+++ main.go.1	2021-02-01 09:09:20.817150966 -0500
+--- main.go     2021-05-16 15:53:15.287331017 -0400
++++ src/NoiseTorch-0.10.1/main.go       2021-05-16 15:53:21.954164782 -0400
 @@ -25,7 +25,6 @@
- 
- //go:generate go run scripts/embedbinary.go c/ladspa/rnnoise_ladspa.so librnnoise.go libRNNoise
- //go:generate go run scripts/embedbinary.go assets/patreon.png patreon.go patreonPNG
+        "github.com/aarzilli/nucular/style"
+ )
+
 -//go:generate go run scripts/embedversion.go
  //go:generate go run scripts/embedlicenses.go
- 
- type device struct {
+
+ //go:embed c/ladspa/rnnoise_ladspa.so
