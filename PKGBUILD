@@ -1,7 +1,8 @@
 # Maintainer: Robert Falkenberg <robert.falkenberg@tu-dortmund.de>
 
 pkgname=python-pysim-git
-_pyname=pysim
+_pyname=${pkgname#python-}
+_pyname=${_pyname%-git}
 pkgver=1.0.r175.gb07a3e9
 pkgrel=1
 pkgdesc='A python tool to program SIMs / USIMs / ISIMs'
