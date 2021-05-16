@@ -5,6 +5,7 @@ pkgbase = apmpkg-git-dev
 	url = https://github.com/Kedap/apmpkg
 	arch = x86_64
 	license = Apache
+	makedepends = git
 	makedepends = cargo
 	depends = git
 	depends = python-pip
@@ -13,7 +14,7 @@ pkgbase = apmpkg-git-dev
 	depends = fakeroot
 	depends = ruby-bundler
 	depends = rsync
-	conflicts = apmpkg-git
+	conflicts = apmpkg
 	source = git+https://github.com/kedap/apmpkg
 	sha256sums = SKIP
 

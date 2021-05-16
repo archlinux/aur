@@ -9,8 +9,8 @@ arch=('x86_64')
 url="https://github.com/Kedap/apmpkg"
 license=('Apache')
 depends=('git' 'python-pip' 'python2-pip' 'curl' 'fakeroot' 'ruby-bundler' 'rsync')
-makedepends=('cargo')
-conflicts=('apmpkg-git')
+makedepends=('git' 'cargo')
+conflicts=('apmpkg')
 source=("git+https://github.com/kedap/${_pkgname}")
 sha256sums=('SKIP')
 
