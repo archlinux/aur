@@ -4,23 +4,22 @@
 # Contributor: Ben <ben@benmazer.net>
 
 pkgname=ne
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc='The nice editor, a fast small powerful and simple to use editor'
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url='http://ne.di.unimi.it'
-license=('GPL3')
-depends=('ncurses' 'texinfo')
+license=(GPL3)
+depends=(ncurses texinfo)
 source=("https://github.com/vigna/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('2bdaf7aa30f0d997cc4e21ad79cd3aafaf4a7df450ffc1ee8129f76450875ed1140c6601ef0b568e1bbc0ee4f40c05305a83d9e303a97fb2ce02d01a56a46a05')
+sha512sums=('277fe1779015b232fb638cc83901996f512687d838d03826f9f1033eca897283d052bf3d7a963cab4c27e040ca33fe166142bf49734b77a56053f54e46912147')
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  export MAKEFLAGS="-j1"
+  cd ${pkgname}-${pkgver}
   make PREFIX=/usr LIBS="-lcurses -ltinfo"
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd ${pkgname}-${pkgver}
   make PREFIX=/usr DESTDIR="${pkgdir}" LIBS="-lcurses -ltinfo" install
 }
