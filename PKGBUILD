@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Karolak <nicolas at karolak dot fr>
 
 pkgname="resume-pycli"
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="CLI tool to easily setup a new resume"
 arch=(any)
@@ -11,8 +11,8 @@ depends=("python-click" "python-jinja" "python-pdfkit" "python-jsonschema")
 makedepends=("python-pytest" "python-setuptools")
 provides=("resume-pycli="$pkgver)
 conflicts=("resume-pycli")
-source=("https://files.pythonhosted.org/packages/d7/8b/9ba540964394ff6e5fd77f5fb37247eeb93ad97371dc7abb465e95172a88/resume-pycli-1.1.2.tar.gz")
-sha256sums=("b541b698038c127816619a3824f09f0c0b87403250ae8faee1d35cd7c7e1289f")
+source=("https://files.pythonhosted.org/packages/29/26/929468ccf3952335f3c8eb19ca0b365b7c9656d51064e5484cc6eb82f18f/resume-pycli-1.1.3.tar.gz")
+sha256sums=("e7ddb25fb0369af865786cf5db031959a537512f032b9a1b735cfda0c28d82c0")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
