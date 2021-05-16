@@ -2,7 +2,7 @@
 
 pkgname=lokalise2
 pkgrel=2
-pkgver=2.6.3
+pkgver=2.6.4
 pkgdesc="Lokalise CLI v2 for lokalise.com."
 url="https://lokalise.com"
 arch=('x86_64')
