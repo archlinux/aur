@@ -2,7 +2,7 @@
 
 pkgname=polyorb
 pkgver=20210516
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides the Distributed Systems Annex (DSA) to build distributed applications with Ada."
 
 arch=('i686' 'x86_64')
