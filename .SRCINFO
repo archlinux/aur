@@ -1,10 +1,11 @@
 pkgbase = inky
 	pkgdesc = Editor for ink: inkle's narrative scripting language
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.inklestudios.com/ink
 	arch = x86_64
 	license = MIT
+	options = !strip
 	source = inky-0.12.0.zip::https://github.com/inkle/inky/releases/download/0.12.0/Inky_linux.zip
 	source = inky-0.12.0.png::https://github.com/inkle/inky/raw/0.12.0/resources/Icon1024.png
 	source = inky.desktop
