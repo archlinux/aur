@@ -27,10 +27,10 @@ package() {
 	cd "$_name-v_$pkgver"
 	export PYTHONHASHSEED=0
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 check() {
-  cd "$srcdir/$_name-v_$pkgver"
-  python setup.py pytest --addopts "-k 'not GitTests'"
+	cd "$srcdir/$_name-v_$pkgver"
+	python setup.py pytest --addopts "-k 'not GitTests'"
 }
