@@ -1,0 +1,18 @@
+pkgbase = rates
+	pkgdesc = Currency exchange rates in your terminal
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/lunush/rates
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = rust
+	provides = rates
+	conflicts = rates
+	conflicts = rates-bin
+	conflicts = rates-git
+	source = https://github.com/lunush/rates/archive/refs/tags/0.2.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = rates
+
