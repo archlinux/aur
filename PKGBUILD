@@ -3,8 +3,8 @@
 _pyname=oslo.vmware
 _pycname=${_pyname/./-}
 pkgname=python-${_pycname}
-pkgver=3.8.0
-pkgrel=2
+pkgver=3.9.0
+pkgrel=1
 pkgdesc="Oslo VMware library"
 arch=(any)
 url="https://docs.openstack.org/oslo.vmware/latest/"
@@ -46,9 +46,9 @@ checkdepends=(
 )
 options=('!emptydirs')
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('78525783e4c670adc93bd8d2ff3d23b1')
-sha256sums=('07e6942db859bd40a0eec36fd36a23d01f1681a9b984acc912005a2cc4afee3e')
-sha512sums=('64c5c2807dbde1f5dc5994295d92af11174bc98bb3fd85bbd0a3daf7270b307d42467cd7e72332c77b00297130c8c2bfceb4ada1e54c154f6c5fb5838f29cd98')
+md5sums=('ab4890841718ff1a1bb3bc877a1aebfb')
+sha256sums=('d029f39bb9e4bb7fbb0f9b095d2e32eccd8e4917b6224bae98a2f8ce94ce26e7')
+sha512sums=('8fd4dae06da7eb569bd157d67908c724f87e3c836929e74b38d8964050aaa1492f59ee2348df48ccacaeb24ff283598a6ac66003c4756924fa5d1f04c029b350')
 
 export PBR_VERSION=$pkgver
 
