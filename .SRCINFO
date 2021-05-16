@@ -1,0 +1,18 @@
+pkgbase = cisco-anyconnect-runit
+	pkgdesc = runit service script for cisco-anyconnect
+	pkgver = 4.9.05042
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/cisco-anyconnect-runit
+	arch = any
+	license = Apache
+	depends = runit
+	depends = elogind-runit
+	depends = cisco-anyconnect
+	replaces = cisco-anyconnect-runit
+	source = vpnagentd.run
+	source = vpnagentd.log.run
+	sha256sums = 9cc8483cc6fde8db0a7d21354f65f14fd179bda8434199b26866cdc6db2af7ba
+	sha256sums = 70eeb7eb8a14d32b686657b5117f06ae04926dedf0794744ed06da13403cb697
+
+pkgname = cisco-anyconnect-runit
+
