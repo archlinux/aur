@@ -5,7 +5,7 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 _pkgname='ferdi'
 pkgname="$_pkgname-git"
-pkgver='5.6.0.beta.5.r150.g0aaaaeb1'
+pkgver='5.6.0.beta.5.r222.gb88d312c'
 pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -20,13 +20,11 @@ source=(
 	"$pkgname-recipes::git+https://github.com/get$_pkgname/recipes"
 	"$pkgname-internal-server::git+https://github.com/get$_pkgname/internal-server"
 	'fix-autostart-path.diff'
-	'remove-mac-screen-capture-permissions.diff'
 )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            '7eb846fe8242c78afcdef9c8e1fbce6fdcf100f59da85fee83a99690a57f60ea'
-            '306321dfaa62710bff49fb289d192fea24b369f1d34845cc8db9d626b4b9b68f')
+            '7eb846fe8242c78afcdef9c8e1fbce6fdcf100f59da85fee83a99690a57f60ea')
 
 _sourcedirectory="$pkgname"
 _homedirectory="$pkgname-home"
@@ -64,7 +62,6 @@ prepare() {
 
 	# Specify path for autostart file
 	patch --forward -p1 < '../fix-autostart-path.diff'
-	patch --forward -p1 < '../remove-mac-screen-capture-permissions.diff'
 
 	# Build recipe archives
 	cd "$srcdir/$_sourcedirectory/recipes/"
