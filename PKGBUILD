@@ -31,8 +31,5 @@ build() {
 
 package() {
     cd "$pkgname"
-    install -m755 -d "$pkgdir"/usr/include/"$pkgname"
-    install -m644 include/rtc/*.{hpp,h} "$pkgdir"/usr/include/"$pkgname"
-    install -m755 -d "$pkgdir"/usr/lib
-    install -m755 build/"$pkgname".so "$pkgdir"/usr/lib
+    make install
 }
