@@ -14,7 +14,13 @@ pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with fixed font sp
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
 license=('GPL')
-depends=('libxft' 'perl' 'startup-notification' 'rxvt-unicode-terminfo')
+depends=(
+  'libxft'
+  'libxt'
+  'perl'
+  'rxvt-unicode-terminfo'
+  'startup-notification'
+)
 makedepends=('cvs')
 optdepends=('gtk2-perl: to use the urxvt-tabbed')
 provides=(rxvt-unicode)
