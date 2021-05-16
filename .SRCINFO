@@ -1,6 +1,6 @@
 pkgbase = gfold
 	pkgdesc = CLI tool to help keep track of Git repositories
-	pkgver = 1.0.4
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/nickgerace/gfold
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = gfold
 	makedepends = rust
 	depends = zlib
 	depends = gcc-libs
-	depends = openssl
-	source = gfold-1.0.4.tar.gz::https://github.com/nickgerace/gfold/archive/1.0.4.tar.gz
-	sha512sums = f4f81c3fc473e6fa4c98edaf63dd92d7fd6131170e4b1836070115889c13d9d9653ceb26043b020c232dc4bc45a04eafe9144a960a97f891c5282e177b3dc22e
+	source = gfold-1.1.1.tar.gz::https://github.com/nickgerace/gfold/archive/1.1.1.tar.gz
+	sha512sums = ce10cf23f182e1a0ac3a22ed9e628a2853e3407e3fa198ec2c16b520bfbeddb199e2a63fff199039e36cf2770ce4c1d3872e1abbf4cfdb9a8e6cb62f5e272326
 
 pkgname = gfold
