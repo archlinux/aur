@@ -1,5 +1,5 @@
 # Maintainer: Ariel Lieberman <rellieberman at gmail dot com>
-
+# Contributer: Jay Berry
 #This package conflicts with culmus because it contains all culmus fonts as well.
 
 #If you find other conflicts you can remove those fonts from this PKGBUILD,
@@ -38,22 +38,22 @@ prepare() {
 
 
 package() {
-  cd $srcdir
+  cd "${srcdir}"
 
-  mkdir $pkgdir/usr/
-  mkdir $pkgdir/usr/share/
-  mkdir $pkgdir/usr/share/fonts/
-  mkdir $pkgdir/usr/share/fonts/TTF/
-  mkdir $pkgdir/usr/share/fonts/OTF/  
+  mkdir "${pkgdir}/usr/"
+  mkdir "${pkgdir}/usr/share/"
+  mkdir "${pkgdir}/usr/share/fonts/"
+  mkdir "${pkgdir}/usr/share/fonts/TTF/"
+  mkdir "${pkgdir}/usr/share/fonts/OTF/"  
 
-  find "${srcdir}" -type f  -name "*.ttf" -exec cp "{}" $pkgdir/usr/share/fonts/TTF/ ";"
-  find "${srcdir}" -type f  -name "*.otf" -exec cp "{}" $pkgdir/usr/share/fonts/OTF/ ";"
+  find "${srcdir}" -type f  -name "*.ttf" -exec cp "{}" "${pkgdir}/usr/share/fonts/TTF/" ";"
+  find "${srcdir}" -type f  -name "*.otf" -exec cp "{}" "${pkgdir}/usr/share/fonts/OTF/" ";"
    
  #remove Liberation to prevent conflict
   find "${pkgdir}" -type f -name "Liberation*" -exec rm "{}" ";"
   
  #install custom licences
-  install -Dm644 "${srcdir}/fonts-${_sha}/LICENSES.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "${srcdir}/fonts-${_sha}/LICENSES.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
  #remove other font families buy running:
  # find "${pkgdir}" -type f -name "<font-family>*" -exec rm "{}" ";"
