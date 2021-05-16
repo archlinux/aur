@@ -2,7 +2,7 @@
 # Contributor: Jason Nader <jason d0t nader pr0t0nmail.c0m>
 
 pkgname=cargo-cache
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Display info and prune cargo cache"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/matthiaskrgr/cargo-cache"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/matthiaskrgr/cargo-cache/archive/$pkgver.tar.gz")
 license=('MIT' 'Apache')
 depends=('cargo')
-sha256sums=('782b225909505cdd7277bb460f97d2d059782a26b472850ada0401e1e1dd9c79')
+sha256sums=('b0d28a95646c867e977ff2e5636afec5559bbafa2809b8a47914db9877aab7b6')
 
 build() {
 	cd "$pkgname-$pkgver"
