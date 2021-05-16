@@ -1,5 +1,5 @@
 pkgname="autorestic-bin"
-pkgver=1.0.9
+pkgver=1.1.0
 _pkgid="${pkgname%-bin}-${pkgver}"
 pkgrel=1
 pkgdesc="High level CLI utility for restic"
@@ -15,10 +15,10 @@ _arch_x86_64="amd64"
 _arch_aarch32="arm"
 _arch_aarch64="arm64"
 
-sha256sums_i686=('095a6744f9492ce8e130e690c5e94137e3cddb861e06fb869e4ad6d533caacb6')
-sha256sums_x86_64=('76c4023af2174259cc474f1d7d2e0db6923013776360fb5a4f8c8cf9384fa814')
-sha256sums_aarch64=('8a050060ae723526ddff945e7572111885391467c2cf4235811fd2389874ceb4')
-sha256sums_aarch32=('a3ea114cd56f4e297bdb5da3543592cf8860786a309e9a26b63698b992ccc828')
+sha256sums_i686=('ac3a477784972fb51a7f0357fb423f17d675a49b0e744d5ad44602c668bf91fb')
+sha256sums_x86_64=('4fe431ed75ac03aa12a4e85b3b6c144bafcc0a43ead8695d19bbec61aa35e7eb')
+sha256sums_aarch64=('782b99beb7649fddb70a6235fd60362928d2192146f3827519725e0c2f100faa')
+sha256sums_aarch32=('0c6f15804f739504f31e6adf389df3a54ceb99e7d9afc3a829909084e7e3a419')
 
 source_i686=("${pkgname%-bin}-$pkgver.bz2"::"${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_${_arch_i686}.bz2")
 source_x86_64=("${pkgname%-bin}-$pkgver.bz2"::"${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_${_arch_x86_64}.bz2")
