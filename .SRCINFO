@@ -1,0 +1,17 @@
+pkgbase = hetzner_ddns
+	pkgdesc = Dynamic DNS daemon for Hetzner DNS
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/filiparag/hetzner_ddns
+	arch = any
+	license = BSD
+	makedepends = make
+	depends = awk
+	depends = curl
+	depends = jq
+	backup = etc/hetzner_ddns.conf
+	source = hetzner_ddns-0.1.1.tar.gz::https://github.com/filiparag/hetzner_ddns/archive/0.1.1.tar.gz
+	sha256sums = e20f2650e70f21861687ef14b042a512ab119c5df0f87cdb216e19389a931cc4
+
+pkgname = hetzner_ddns
+
