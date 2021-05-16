@@ -31,5 +31,6 @@ build() {
 
 package() {
     cd "$pkgname"
+    cd build
     make install
 }
