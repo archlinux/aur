@@ -8,7 +8,7 @@
 # Based on community/morituri and aur/morituri-git PKGBUILDs
 
 pkgname=whipper-git
-pkgver=0.9.1.dev135+gb6338b2
+pkgver=0.9.1.dev138+g731453e
 pkgrel=1
 pkgdesc='A Unix CD ripper aiming for accuracy over speed -- forked from morituri'
 arch=('any')
@@ -29,7 +29,7 @@ depends=(
     'sox'                           # for track peak detection'
     )
 makedepends=(
-    'git'
+    'git' 'make'
     'python-setuptools-scm'        # for VCS(/SCM) versioning
     'python-docutils'              # for building man pages
     )
@@ -52,6 +52,8 @@ pkgver() {
 build() {
     cd "$srcdir/${pkgname%-git}"
     python3 setup.py build
+    cd man
+    make
 }
 
 check() {
@@ -66,4 +68,5 @@ check() {
 package() {
     cd "$srcdir/${pkgname%-git}"
     python3 setup.py install --skip-build --root="${pkgdir}"/ --optimize=1
+    install -Dt "${pkgdir}"/usr/share/man/man1/ man/*.1
 }

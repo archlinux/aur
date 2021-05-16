@@ -1,12 +1,13 @@
 pkgbase = whipper-git
 	pkgdesc = A Unix CD ripper aiming for accuracy over speed -- forked from morituri
-	pkgver = 0.9.1.dev135+gb6338b2
+	pkgver = 0.9.1.dev138+g731453e
 	pkgrel = 1
 	url = https://github.com/whipper-team/whipper
 	arch = any
 	license = GPL3
 	checkdepends = python-twisted
 	makedepends = git
+	makedepends = make
 	makedepends = python-setuptools-scm
 	makedepends = python-docutils
 	depends = cdrdao
