@@ -4,7 +4,7 @@
 pkgname=waraddonclient
 _pkgname=WARAddonClient
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Warhammer Return of Reckoning Addon Client"
 arch=('x86_64')
 url="https://github.com/Idrinth/WARAddonClient"
@@ -27,5 +27,5 @@ package() {
 	install -Dm755 "$pkgname.desktop" -t "$pkgdir/usr/share/applications"
 
 	touch /var/log/waraddonclient.log
-    chmod 777 /var/log/waraddonclient.log
+	chmod 777 /var/log/waraddonclient.log
 }
