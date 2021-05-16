@@ -1,7 +1,7 @@
 pkgbase = linux-x32
 	pkgdesc = Linux with x32 ABI
 	pkgver = 5.12.4.arch1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.archlinux.org/linux.git/log/?h=v5.12.4-arch1
 	arch = x86_64
 	license = GPL2
@@ -22,7 +22,7 @@ pkgbase = linux-x32
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
-	sha256sums = 6dde032690644a576fd36c4a7d3546d9cec0117dd3fb17cea6dc95e907ef9bef
+	sha256sums = 55c4cb76754b1db234a0994806106d8481c171d4e3fead12793f0083a48511d4
 	sha256sums = ef2be62540e48cc1d2343c619b9c8b7791db5e2f966e1a0bb8c86f5c7de74562
 
 pkgname = linux-x32

@@ -3,7 +3,7 @@
 
 pkgbase=linux-x32
 pkgver=5.12.4.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux with x32 ABI'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
@@ -26,7 +26,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '6dde032690644a576fd36c4a7d3546d9cec0117dd3fb17cea6dc95e907ef9bef'
+            '55c4cb76754b1db234a0994806106d8481c171d4e3fead12793f0083a48511d4'
             'ef2be62540e48cc1d2343c619b9c8b7791db5e2f966e1a0bb8c86f5c7de74562')
 
 export KBUILD_BUILD_HOST=archlinux
