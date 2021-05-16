@@ -6,6 +6,7 @@ pkgbase = cisco-anyconnect-runit
 	arch = any
 	license = Apache
 	depends = runit
+	depends = elogind
 	depends = elogind-runit
 	optdepends = cisco-anyconnect: Otherwise, you can install it using the script provided by Cisco. Refer to https://www.cisco.com/c/en/us/support/security/anyconnect-secure-mobility-client-v4-x/model.html to download it.
 	replaces = cisco-anyconnect-runit
