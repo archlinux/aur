@@ -1,12 +1,12 @@
 pkgbase = xcursor-neutral++-white
-	pkgdesc = Icon set based on Neutral and jaguarx themes (white version)
+	pkgdesc = Cursor theme based on neutral and jaguarx themes (white version)
 	pkgver = 1.1.1
-	pkgrel = 2
-	url = http://gnome-look.org/content/show.php/Neutral%2B%2B+White?content=108143
+	pkgrel = 3
+	url = https://www.gnome-look.org/p/999806
 	arch = any
 	license = Artistic2.0
-	source = https://dl.opendesktop.org/api/files/downloadfile/id/1460734982/s/904ddc5bf06f7fd6ab7d1e02e46940f8/t/1513036428/108143-Neutral++_White-1.1.1.tar.xz
-	md5sums = acf67334d7c6ea30e8a6008f07c4f94c
+	source = xcursor-neutral++-white-1.1.1.tar.xz
+	sha512sums = 0027dd2823c605c810904d86fd25d021cde14c24c4b1cb507dd5829ac0cd6763fa96296db76422a1b2667b7e2a4b4ca397bfc26823f5b2656753a507cb71f0a2
 
 pkgname = xcursor-neutral++-white
 
