@@ -1,0 +1,90 @@
+--- maszyna-git/uilayer.cpp.orig	2021-05-16 12:34:23.252270339 +0200
++++ maszyna-git/uilayer.cpp	2021-05-16 12:35:13.731806238 +0200
+@@ -25,6 +25,12 @@
+ #include "imgui/imgui_impl_opengl3.h"
+ #endif
+ 
++#if defined(__clang__)
++#pragma clang diagnostic ignored "-Wformat-security"            // warning : warning: format string is not a string literal
++#elif defined(__GNUC__)
++#pragma GCC diagnostic ignored "-Wformat-security"              // warning : format string is not a string literal (potentially insecure)
++#endif
++
+ GLFWwindow *ui_layer::m_window{nullptr};
+ ImGuiIO *ui_layer::m_imguiio{nullptr};
+ GLint ui_layer::m_textureunit { GL_TEXTURE0 };
+--- maszyna-git/application.cpp.orig	2021-05-16 12:37:55.990633115 +0200
++++ maszyna-git/application.cpp	2021-05-16 12:38:27.260144689 +0200
+@@ -43,6 +43,12 @@
+ #include <sys/stat.h>
+ #endif
+ 
++#if defined(__clang__)
++#pragma clang diagnostic ignored "-Wformat-security"            // warning : warning: format string is not a string literal
++#elif defined(__GNUC__)
++#pragma GCC diagnostic ignored "-Wformat-security"              // warning : format string is not a string literal (potentially insecure)
++#endif
++
+ eu07_application Application;
+ screenshot_manager screenshot_man;
+ 
+--- maszyna-git/driveruipanels.cpp.orig	2021-05-16 12:38:52.009808832 +0200
++++ maszyna-git/driveruipanels.cpp	2021-05-16 12:39:06.919624454 +0200
+@@ -31,6 +31,12 @@
+ #include "Logs.h"
+ #include "widgets/vehicleparams.h"
+ 
++#if defined(__clang__)
++#pragma clang diagnostic ignored "-Wformat-security"            // warning : warning: format string is not a string literal
++#elif defined(__GNUC__)
++#pragma GCC diagnostic ignored "-Wformat-security"              // warning : format string is not a string literal (potentially insecure)
++#endif
++
+ void
+ drivingaid_panel::update() {
+ 
+--- maszyna-git/editoruipanels.cpp.orig	2021-05-16 12:39:29.799363787 +0200
++++ maszyna-git/editoruipanels.cpp	2021-05-16 12:39:42.159232809 +0200
+@@ -20,6 +20,12 @@
+ #include "renderer.h"
+ #include "utilities.h"
+ 
++#if defined(__clang__)
++#pragma clang diagnostic ignored "-Wformat-security"            // warning : warning: format string is not a string literal
++#elif defined(__GNUC__)
++#pragma GCC diagnostic ignored "-Wformat-security"              // warning : format string is not a string literal (potentially insecure)
++#endif
++
+ void
+ itemproperties_panel::update( scene::basic_node const *Node ) {
+ 	m_node = Node;
+--- maszyna-git/launcher/scenery_list.cpp.orig	2021-05-16 12:42:08.918017518 +0200
++++ maszyna-git/launcher/scenery_list.cpp	2021-05-16 12:42:21.287933461 +0200
+@@ -8,6 +8,12 @@
+ #include "Logs.h"
+ #include <filesystem>
+ 
++#if defined(__clang__)
++#pragma clang diagnostic ignored "-Wformat-security"            // warning : warning: format string is not a string literal
++#elif defined(__GNUC__)
++#pragma GCC diagnostic ignored "-Wformat-security"              // warning : format string is not a string literal (potentially insecure)
++#endif
++
+ ui::scenerylist_panel::scenerylist_panel(scenery_scanner &scanner)
+     : ui_panel(STR("Scenario list"), false), scanner(scanner), placeholder_mini("textures/mini/other")
+ {
+--- maszyna-git/launcher/keymapper.cpp.orig	2021-05-16 12:42:48.597753852 +0200
++++ maszyna-git/launcher/keymapper.cpp	2021-05-16 12:42:59.147686394 +0200
+@@ -2,6 +2,12 @@
+ #include "keymapper.h"
+ #include "simulation.h"
+ 
++#if defined(__clang__)
++#pragma clang diagnostic ignored "-Wformat-security"            // warning : warning: format string is not a string literal
++#elif defined(__GNUC__)
++#pragma GCC diagnostic ignored "-Wformat-security"              // warning : format string is not a string literal (potentially insecure)
++#endif
++
+ ui::keymapper_panel::keymapper_panel()
+     : ui_panel(STR("Keymapper"), false)
+ {

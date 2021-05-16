@@ -1,6 +1,6 @@
 # Maintainer: Michał Lisowski <lisu@riseup.net>
 
-_assets_ver=2009
+_assets_ver=2104
 
 pkgname=maszyna-git
 pkgver=r2131.2376aa6f
@@ -15,14 +15,16 @@ source=("$pkgname"::'git+https://github.com/eu07/maszyna.git'
         "http://stuff.eu07.pl/MaSzyna${_assets_ver}.zip"
         "http://stuff.eu07.pl/${_assets_ver}HF.zip"
         "https://eu07.pl/theme/Maszyna/dokumentacja/inne/readme_pliki/licencja.html"
-        "maszyna.sh")
+        "maszyna.sh"
+        "format.patch")
 noextract=("MaSzyna${_assets_ver}.zip"
            "${_assets_ver}HF.zip")
 md5sums=('SKIP'
-         '009a039e320592cf30f11ee07c8237e9'
-         'c77ac9dea108545ec5dea76d896f083a'
+         '125b037d69729ab67091cf757040b277'
+         '1362073d9fc81b83e9970f02c38b0257'
          'fdbde83abd66899b540800c3d4b5f0a2'
-         'a24521953418278dc07571bf3ee75b89')
+         'a24521953418278dc07571bf3ee75b89'
+         'd33171fc3bc9a9ddc3e2b63ab208055a')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -31,6 +33,8 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
+
+  patch -p1 -i "${srcdir}/format.patch"
 }
 
 build() {
