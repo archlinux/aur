@@ -3,8 +3,8 @@
 
 
 # Things that need to be updated on new build
-pkgver=1.20.2
-sha256sums_x86_64=(a3685a92f395f8d5a1601ec705b764b337418029a2cba9f79960cbade1343ad3)
+pkgver=1.21.0
+sha256sums_x86_64=(75d1aefd93d9b6eea9627d20c1a8b65307e10396b7c28d440308bb351ca041bb)
 pkgrel=1
 
 # Things that will stay the same
@@ -20,7 +20,7 @@ conflicts=(crio crio-bin crio-git cri-o cri-o-git)
 
 # Using source and source_x86_64 is just a dumb hack so I can put the single sha hash up above
 source=("https://raw.githubusercontent.com/cri-o/cri-o/580db0719d68b3ff3bb30f60397c3892be383eb5/LICENSE")
-source_x86_64=("https://storage.googleapis.com/k8s-conform-cri-o/artifacts/crio-v${pkgver}.tar.gz")
+source_x86_64=("https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v${pkgver}.tar.gz")
 sha256sums=(b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1)
 
 backup=("etc/crio/crio.conf"
