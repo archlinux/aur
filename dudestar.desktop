@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=DUDE-Star
+Comment=Connect to DMR Amateur Radio Networks over the internet
+Exec=dudestar
+Icon=dudestar
+Terminal=false
+Type=Application
+Categories=Network;HamRadio;
+
