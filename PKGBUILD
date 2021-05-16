@@ -1,7 +1,7 @@
 # Maintainer: Robert Falkenberg <robert.falkenberg@tu-dortmund.de>
 
 pkgname=python-gsm0338
-_pyname=gsm0338
+_pyname=${pkgname#python-}
 pkgver=1.0.0
 pkgrel=1
 pkgdesc='Python codec for GSM 03.38'
