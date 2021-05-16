@@ -61,7 +61,7 @@ _subarch=
 
 pkgbase=linux-ck
 pkgver=5.12.4
-pkgrel=1
+pkgrel=2
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
