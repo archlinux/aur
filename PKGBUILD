@@ -3,8 +3,8 @@
 pkgname=komikku
 _author=valos
 _gitname=Komikku
-pkgver=0.27.0
-pkgrel=3
+pkgver=0.28.1
+pkgrel=1
 pkgdesc='Online/offline Manga reader for GNOME, built for the Librem 5'
 arch=(any)
 url=https://gitlab.com/valos/Komikku
@@ -34,18 +34,8 @@ makedepends=(
   meson
 )
 optdepends=('org.freedesktop.secrets: store passwords safely')
-source=(
-  "https://gitlab.com/$_author/$_gitname/-/archive/v$pkgver/$_gitname-v$pkgver.tar.gz"
-  "keyring.patch"
-)
-sha256sums=('d4ecd12d7fc3a6a3e5fde3ed03608ff48045c2e7425b66ef0fadf04941643da2'
-            '43ac878f5c1f0f42e3958b0470a1af062def0715c08f661b38a996c06aff32b5')
-
-prepare() {
-  cd $_gitname-v$pkgver
-  patch --forward --strip=1 --input="${srcdir}/keyring.patch"
-  cd ..
-}
+source=("https://gitlab.com/$_author/$_gitname/-/archive/v$pkgver/$_gitname-v$pkgver.tar.gz")
+sha256sums=('03d0d438257d12ce770e237b77ddc8a7f68c91cd08ad4a6f690910f3ec563b1e')
 
 build() {
   arch-meson $_gitname-v$pkgver build
