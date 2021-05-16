@@ -1,4 +1,4 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Pierre Dommerc <dommerc.pierre@gmail.com>
 
 pkgname=baru
 pkgver=0.2.8
@@ -8,14 +8,13 @@ arch=('x86_64')
 url='https://github.com/doums/baru'
 license=('MPL2')
 depends=('libpulse')
-makedepends=('git' 'cargo' 'cmake')
-install="$pkgname.install"
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+makedepends=('rust' 'cmake')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha512sums=('0e2eb766919b8151c54684c977e20a064046800142052e6d3a41cbff46baf0ee7734506b203cff779fa1cd624eb4f5c4836af1bda0260bae47bf4d721054216f')
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --locked --all-features --target-dir=target
+  cargo build --release --locked
 }
 
 package() {

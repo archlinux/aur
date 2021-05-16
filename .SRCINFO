@@ -3,14 +3,12 @@ pkgbase = baru
 	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://github.com/doums/baru
-	install = baru.install
 	arch = x86_64
 	license = MPL2
-	makedepends = git
-	makedepends = cargo
+	makedepends = rust
 	makedepends = cmake
 	depends = libpulse
-	source = baru-0.2.8.tar.gz::https://github.com/doums/baru/archive/v0.2.8.tar.gz
+	source = baru-0.2.8.tar.gz::https://github.com/doums/baru/archive/refs/tags/v0.2.8.tar.gz
 	sha512sums = 0e2eb766919b8151c54684c977e20a064046800142052e6d3a41cbff46baf0ee7734506b203cff779fa1cd624eb4f5c4836af1bda0260bae47bf4d721054216f
 
 pkgname = baru
