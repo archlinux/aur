@@ -1,7 +1,7 @@
 # Maintainer: Dennis Fink <dennis.fink@c3l.lu>
 
 pkgname=yaah
-pkgver=2.0.2
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Yet another AUR helper"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('pacman' 'jshon' 'tar')
 optdepends=('git: AUR4 git support')
 source=("https://download.metalgamer.eu/yaah/$pkgname-$pkgver.tar.gz")
-sha512sums=('7f7de775b31a3480405bc0ad040ae16a44d7214ed0086b36b75f4e8ea8b76228be94afeea01bfb55351eaebbba40e86ce6fa9cf0d1919ee3187e10a1322f85ba')
+sha512sums=('8aff58ca023ff9b20f23a93b248078c2c8fc7d3a826d8b5ae8b4884ba28fe9ca25bd196520258800afe4e09fb01c9f2f843c1342fe3a37f03401ccaf717dcf24')
 
 package() {
   cd $srcdir/$pkgname-$pkgver
