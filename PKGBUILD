@@ -7,12 +7,12 @@
 
 pkgname='alacritty-colorscheme'
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Change colorscheme of alacritty with ease"
 arch=('any')
 url="https://github.com/toggle-corp/alacritty-colorscheme/"
 license=('Apache')
-depends=('python-ruamel-yaml')
+depends=('python-ruamel-yaml' 'python-typed-argument-parser' 'python-pynvim')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 noextract=()
