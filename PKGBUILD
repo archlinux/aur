@@ -2,10 +2,10 @@
 # Maintainer: Rod Kay <charlie5 on #ada at freenode.net>
 
 pkgname=gnatcoll-postgres
-pkgver=2020
+epoch=1
+pkgver=21.0.0
 pkgrel=1
 _repo_name=gnatcoll-db
-_upstream_ver=20.2
 
 pkgdesc='GNAT Components Collection - Postgres database support'
 url='https://github.com/AdaCore/gnatcoll-db/'
@@ -15,12 +15,12 @@ license=('GPL')
 depends=('gnatcoll-core' 'gnatcoll-sql' 'postgresql')
 makedepends=('gprbuild')
 
-source=("${_repo_name}-${_upstream_ver}.tar.gz::https://github.com/AdaCore/${_repo_name}/archive/${_upstream_ver}.tar.gz")
-sha1sums=('cd8e0f62f1fa9bc38f36a9493d20fe46159ce575')
+source=("$_repo_name-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('380abb79f49510b2bea461fbe3af1966cf82c3ad738791bcb870dc575583a136')
 
 build()
 {
-    cd "$srcdir/$_repo_name-$_upstream_ver/postgres"
+    cd "$srcdir/$_repo_name-$pkgver/postgres"
 
     make setup BUILD=PROD prefix=/usr
     make -j1 GPRBUILD_OPTIONS="-R -cargs $CFLAGS -largs $LDFLAGS -gargs"
@@ -28,7 +28,7 @@ build()
 
 package()
 {
-    cd "$srcdir/$_repo_name-$_upstream_ver/postgres"
+    cd "$srcdir/$_repo_name-$pkgver/postgres"
 
     # Make one install at a time to avoid GPRinstall reading/writing to
     # the same installed project files at the same time.
