@@ -1,8 +1,8 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=streamlink-git
-pkgver=2.1.1.r14.g28844859
-pkgrel=1
+pkgver=2.1.1.r16.g034173da
+pkgrel=2
 pkgdesc='CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)'
 arch=('any')
 url='https://streamlink.github.io/'
@@ -36,7 +36,7 @@ check() {
 package() {
   cd "${pkgname%-*}"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 build/sphinx/man/1/streamlink.1 \
+  install -Dm644 build/sphinx/man/streamlink.1 \
     "$pkgdir/usr/share/man/man1/streamlink.1"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
