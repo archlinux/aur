@@ -1,6 +1,6 @@
 # Maintainer: Alex DeLorenzo <alex at alexdelorenzo dot dev>
 pkgname=chromecast_mpris
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Control Chromecasts from Linux and D-Bus"
 arch=('any')
