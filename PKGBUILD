@@ -2,7 +2,7 @@
 
 _pkgname="bulk-downloader-for-reddit"
 pkgname=python-bdfr-git
-pkgver=2.1.0.r0.g6c086e7
+pkgver=v2.1.0.r9.g739f97e
 pkgrel=1
 pkgdesc="Bulk downloader for Reddit from development branch"
 conflicts=('python-bdfr')
