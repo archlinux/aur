@@ -1,5 +1,5 @@
 # Maintainer: Ariel Lieberman <rellieberman at gmail dot com>
-# Contributer: Jay Berry
+# Contributor: Jay Berry
 #This package conflicts with culmus because it contains all culmus fonts as well.
 
 #If you find other conflicts you can remove those fonts from this PKGBUILD,
