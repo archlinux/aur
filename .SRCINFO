@@ -1,11 +1,11 @@
 pkgbase = sshmnt
 	pkgdesc = A utility for managing multiple sshfs profiles from the commandline
 	pkgver = 1.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/prurigro/sshmnt
 	arch = any
 	license = GPL3
-	depends = fuse
+	depends = fuse2
 	depends = sshfs
 	depends = openssh
 	depends = bc
