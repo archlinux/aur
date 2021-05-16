@@ -1,8 +1,8 @@
 # Maintainer: Stefan Schmidt <thrimbor gmail com>
 
 pkgname=hurrican
-pkgver=1.0.9.2
-pkgrel=2
+pkgver=1.0.9.3
+pkgrel=1
 pkgdesc="Freeware jump and shoot game created by Poke53280"
 arch=('i686' 'x86_64')
 url="https://github.com/thrimbor/Hurrican.git"
