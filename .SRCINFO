@@ -1,0 +1,15 @@
+pkgbase = dotdropx
+	pkgdesc = Addon script for dotdrop
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/jtyers/dotdropx
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = dotdrop
+	depends = yq
+	source = git+https://github.com/jtyers/dotdropx.git#tag=v0.0.1
+	md5sums = SKIP
+
+pkgname = dotdropx
+

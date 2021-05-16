@@ -1,0 +1,196 @@
+#!/bin/bash
+
+# Provides extra dotdrop commands to ease usage.
+
+# MIT License
+# 
+# Copyright (c) 2021 Jonny Tyers
+# 
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+# 
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+usage="$(basename $0) [--compare|--difftool <file>|--difftool-all|--find <file>]"
+
+set -eu
+
+die() {
+  echo "$@" >&2
+  exit 1
+}
+
+# usage: askYN <question>
+askYN() {
+  echo -n "$@ [Y/n] " >&2
+  read ans
+
+  if [ "${ans:0:1}" == "y" ] || [ -z "$ans" ]; then
+    return 0
+
+  else
+    return 1
+  fi
+}
+
+# findFile reads config.yaml and spits out JSON for the matching
+# key/src/dst. JSON is like { key: <key>, src: <src>, dst: <dst> }
+findFile() {
+  input="$1"
+
+  /usr/bin/yq \
+    --arg "search" "${input//$HOME/\~}" \
+    -r \
+    '
+      .dotfiles
+      | if has($search) then
+          .[$search]
+          | . * { key: $search }
+        else
+          to_entries
+          | map(
+            select(.value.src == $search or .value.dst == $search)
+          )
+          | .[0]
+          | if length == 0 then
+              # will exit with errcode 5
+              error("could not find $search")
+            else
+              .
+            end
+          | .value * {key}
+        end
+      ' config.yaml \
+    || die "could not find $input"
+}
+
+findFileOrParent() {
+  target="$1"
+
+  result=$(findFile "$target" 2>/dev/null || true)
+
+  if [ -n "$result" ]; then
+    echo "$result"
+    return
+  fi
+
+  targetParent=$(dirname "$target")
+  result=$(findFile "$targetParent" 2>/dev/null | jq -re '. * { parent: true }')
+
+  if [ -n "$result" ]; then
+    echo "$result"
+    return
+  fi
+
+  return 1  # failed
+}
+
+editFiles() {
+  ff=$(findFileOrParent "$1" || die "file $1 not in dotdrop")
+  
+  src=$(jq -r .src <<<"$ff")
+  dst=$(jq -r .dst <<<"$ff")
+  dst="${dst/\~/$HOME}"
+
+  parent=$(jq -r .parent <<<"$ff")
+
+  if [ "$parent" == "true" ]; then
+    src="dotfiles/$src/$(basename $1)"
+    dst="$dst/$(basename $1)"
+  else
+    src="dotfiles/$src"
+  fi
+
+  nvim +":windo diffthis" -o "$src" "$dst"
+
+}
+
+
+do_compare=0
+do_difftool=""
+do_difftool_all=0
+do_print_src=""
+do_find=""
+
+[ $# -ge 1 ] || die "$usage"
+
+O=`getopt -n dotdropx \
+    -l compare,difftool:,difftool-all,find:,src: \
+    -- cd:Df:s: "$@"` \
+    || die "$usage"
+eval set -- "$O"
+while true; do
+    case "$1" in
+        -c|--compare)	      do_compare=1;           shift ;;
+        -d|--difftool)	    do_difftool="$2";       shift; shift ;;
+        -D|--difftool-all)	do_difftool_all=1;      shift ;;
+        -f|--find)	        do_find="$2";           shift; shift ;;
+        -s|--src)	          do_print_src="$2";      shift; shift ;;
+        --)			                                    shift; break ;;
+        *)			            die "$usage" ;;
+    esac
+done
+
+[ $# -eq 0 ] || die "$usage"
+
+if [ "$do_compare" -eq 1 ]; then
+    dotdrop compare "$@" 2>&1 | grep -Ev '^=> compare '
+
+elif [ -n "$do_difftool" ]; then
+  editFiles "$do_difftool"
+
+elif [ "$do_difftool_all" -eq 1 ]; then
+  any=0
+  for f in $(dotdrop compare 2>&1 | awk '/^\-\-\-/{ print $2 }'); do
+    any=1
+    editFiles "$f"
+  done
+
+  [ $any -eq 0 ] && echo "no files differ"
+
+  if [ -n "$(git status --porcelain)" ]; then
+    if askYN "commit changes?"; then
+      git commit -av
+
+      if [ -n "$(git remote)" ] && askYN "push?"; then
+        git push
+      fi
+    fi
+  fi
+
+elif [ -n "$do_print_src" ]; then
+  # since we're always dealing with full paths, convert ~ to $HOME
+  ff=$(findFile "$do_print_src")
+  src=$(jq -r .src <<<"$ff")
+  src=${src/\~/$HOME}
+  dst=$(jq -r .dst <<<"$ff")
+  dst=${dst/\~/$HOME}
+  key=$(jq -r .key <<<"$ff")
+
+  case "$do_print_src" in
+    "$src") echo $(readlink -f "$dst") ;;
+    "$dst") echo $(readlink -f "dotfiles/$src") ;;
+    "$key") echo $(readlink -f "dotfiles/$src") ;;
+    *) die "?!" ;;
+  esac
+
+elif [ -n "$do_find" ]; then
+  findFileOrParent "$do_find"
+
+else
+    die "$usage"
+
+fi
