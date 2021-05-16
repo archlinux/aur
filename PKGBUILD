@@ -9,7 +9,8 @@ license=('MIT')
 depends=('python>=3.6' 'python-numpy' 'python-pandas' 'python-pillow' 'python-crcmod' 'python-openpyxl')
 makedepends=('python-setuptools')
 provides=('prjapicula')
-source=("apicula-$pkgver.tar.gz::https://files.pythonhosted.org/packages/e4/be/e319ff6825b09719abeab8037aa41d4b10bc5435b99c2f7cd2f1db87f9f5/Apycula-0.0.1a8.tar.gz"
+_name=Apycula
+source=("apicula-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
         'version.patch')
 sha256sums=('5e9da9ca03e78a49e7cac74409ac16b243cafa1fd5d9bf980af9033071f30cd0'
             '0bd1f08552e3daa5729abaa81d40d01cca3e47ea49797c23b82d0e7a8103187a')
