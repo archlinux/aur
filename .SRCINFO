@@ -1,7 +1,7 @@
 pkgbase = proton-community-updater
 	pkgdesc = Script to download and manage Community Proton builds
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Termuellinator/Proton-Community-Updater
 	arch = any
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = proton-community-updater
 	source = proton-community-updater-1.0.tar.gz::https://github.com/Termuellinator/Proton-Community-Updater/archive/v1.0.tar.gz
 	source = proton-community-updater.desktop
 	sha256sums = 8d923a42e097c2d7769664a1a0f5a3f8a70719d1badc6993926ebcba06111a48
-	sha256sums = e3a186dd8cd65ddfa599c4da39d5d28e9dedc8984a4c84782d939680cb3b6f71
+	sha256sums = 07fcec5276fd0ad227fdedf5ea8dab3b054beb8a094ccda60b2c80ed4ea8411d
 
 pkgname = proton-community-updater
 
