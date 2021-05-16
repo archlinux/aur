@@ -1,0 +1,17 @@
+pkgbase = vim-off-git
+	pkgdesc = A no-color scheme for Vim
+	pkgver = r18.b06aa1b
+	pkgrel = 1
+	url = https://github.com/pbrisbin/vim-colors-off
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-off
+	conflicts = vim-off
+	source = vim-off-git::git+https://github.com/pbrisbin/vim-colors-off
+	sha256sums = SKIP
+
+pkgname = vim-off-git
+
