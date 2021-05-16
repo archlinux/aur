@@ -1,15 +1,16 @@
-# Maintainer: awh
+# Maintainer: 
+# Contributor: awh
 
 pkgname=mediaextract-git
 _gitname="mediaextract"
-pkgver=r110.ceb8c01
+pkgver=r142.e0c69a5
 pkgrel=1
 pkgdesc="Extracts media files (AVI, Ogg, Wave, PNG, ...) that are embedded within other files."
 arch=('i686' 'x86_64')
-url="http://panzi.github.com/mediaextract/"
+url="https://github.com/panzi/mediaextract"
 license=('MIT')
 depends=('glibc')
-makedepends=('git')
+makedepends=('git' 'help2man')
 source=('git://github.com/panzi/mediaextract.git')
 md5sums=('SKIP')
 
@@ -27,5 +28,5 @@ build() {
 package() {
 	cd "$srcdir/$_gitname"
 	make PREFIX="$pkgdir/usr" install
-	install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
+	install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
