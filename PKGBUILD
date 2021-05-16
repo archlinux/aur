@@ -12,5 +12,5 @@ md5sums=("13c7893e3e8b34479c42795d8f9e1ad3")
 
 package() {
     install -m755 -d "${pkgdir}/usr/share/libalpm/hooks"
-    install -m644 "${srcdir}/systemd-boot.hook" "${pkgdir}/usr/share/libalpm/hooks/systemd-boot.hook"
+    install -m644 "${srcdir}/systemd-boot.hook" "${pkgdir}/usr/share/libalpm/hooks/95-systemd-boot.hook"
 }
