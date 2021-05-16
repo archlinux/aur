@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env sh
 
 # Inspiration: https://www.reddit.com/r/unixporn/comments/f1oied/awesome_global_nightday_switch_for_gtk_vim/
 
@@ -8,14 +8,14 @@
 # qt5ct: for Qt5 switching 
 # adwaita-qt: as Qt5 theme
 # sed: for switching multiple things by editing config files
+# grep: for regex matching in conditionals
 # jq: for switching code by editing JSON
 # moreutils: providing sponge for in-place editing code config file
 # feh: for setting wallpaper under Xorg
 # sway: for setting wallpaper in sway
 
 # enable "strict mode"
-set -euo pipefail
-IFS=$'\n\t'
+set -eu
 
 # intialize all variables
 SWAYSOCK=${SWAYSOCK:-}
@@ -23,32 +23,33 @@ XDG_SESSION_TYPE=${XDG_SESSION_TYPE:-}
 
 CURRENT=$(gsettings get org.gnome.desktop.interface gtk-theme)
 
-if [[ $1 == "dark" ]]; then
+if [ "$1" = "dark" ]; then
   UI_THEME_GTK="Adwaita-dark"
   UI_THEME_QT="Adwaita-Dark"
   UI_VSCODE="Default Dark+"
   UI_ALACRITTY="dark"
   BG_X11="-B black ${HOME}/.wallpaper/light.png"
   BG_SWAY="--color #000000 --image ${HOME}/.wallpaper/light.png"
-elif [[ $1 == "light" ]]; then
+elif [ "$1" = "light" ]; then
   UI_THEME_GTK="Adwaita"
   UI_THEME_QT="Adwaita"
   UI_VSCODE="Default Light+"
   UI_ALACRITTY="light"
   BG_X11="-B white ${HOME}/.wallpaper/dark.png"
   BG_SWAY="--color #ffffff --image ${HOME}/.wallpaper/dark.png"
-elif [[ $1 == "toggle" ]]; then
-  [[ "$CURRENT" == *"dark"* ]] && exec $0 light || exec $0 dark
-elif [[ $1 == "reapply" ]]; then
-  [[ "$CURRENT" == *"dark"* ]] && exec $0 dark || exec $0 light
+elif [ "$1" = "toggle" ]; then
+  echo "$CURRENT" | grep -q "dark" && exec $0 light || exec $0 dark
+elif [ "$1" = "reapply" ]; then
+  echo "$CURRENT" | grep -q "dark" && exec $0 dark || exec $0 light
 else
+  echo "Command $1 not valid."
   exit 1
 fi
 
 
 # set GTK theme
-if [[ "$XDG_SESSION_TYPE" == "x11" ]]; then
-  # Start xfsettingsd - alreday running xfsettingd ignores this
+if [ "$XDG_SESSION_TYPE" = "x11" ]; then
+  # start xfsettingsd - alreday running xfsettingd ignores this
   xfsettingsd --daemon
   # set GTK theme xia xsettings
   xfconf-query -c xsettings -p /Net/ThemeName -s "$UI_THEME_GTK"
@@ -59,28 +60,27 @@ gsettings set org.gnome.desktop.interface gtk-theme "$UI_THEME_GTK"
 
 # set Qt theme
 f="$HOME/.config/qt5ct/qt5ct.conf"
-if [[ -w "$f" ]]; then
+if [ -w "$f" ]; then
   sed -i -E "s@^style=.*@style=${UI_THEME_QT}@" "$f"
 fi
 
 # set alacritty theme
 f="$HOME/.config/alacritty/alacritty.yml"
-if [[ -w "$f" ]]; then
+if [ -w "$f" ]; then
   sed -i -E "s/^colors: \*.*$/colors: *$UI_ALACRITTY/" "$f"
 fi
 
 # set vscode theme
 f="$HOME/.config/Code - OSS/User/settings.json"
-if [[ -w "$f" ]]; then
+if [ -w "$f" ]; then
   jq ".[\"workbench.colorTheme\"]=\"${UI_VSCODE}\"" "$f" | sponge "$f"
 fi
 
 # set background
 # properly supply arguments separated by spaces
-IFS=$' \n\t'
-if [[ "$XDG_SESSION_TYPE" == "x11" ]]; then
+if [ "$XDG_SESSION_TYPE" = "x11" ]; then
   feh --no-fehbg --bg-center ${BG_X11}
-elif [[ -n "$SWAYSOCK" ]]; then
+elif [ -n "$SWAYSOCK" ]; then
   killall -q swaybg || true
   swaybg --mode center $BG_SWAY &
 else

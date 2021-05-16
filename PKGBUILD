@@ -1,13 +1,19 @@
 # Maintainer: mynacol <paul àt dismail _ de>
 
 pkgname=theme-switcher-git
-pkgver=0.1.2
+pkgver=0.2
 pkgrel=1
 pkgdesc="Switching between light and dark themes made easy"
 arch=('any')
 url="https://aur.archlinux.org/packages/${pkgname}/"
 license=('GPL')
-depends=('bash' 'glib2' 'sed' 'jq' 'moreutils')
+depends=('sh'  # script interpreter
+	'glib2'  # provides gsettings
+	'grep'  # regex matching in conditionals
+	'sed'  # editing config files
+	'jq'  # editing JSON config files
+	'moreutils'  # provides sponge
+)
 optdepends=(
 	'xfce4-settings: for GTK switching under Xorg'
 	'qt5ct: for Qt5 switching. Additional setup required.'
