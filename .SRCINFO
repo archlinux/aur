@@ -1,0 +1,19 @@
+pkgbase = fuck-totoro
+	pkgdesc = Complete totoro-school running task automatically
+	pkgver = 20200516
+	pkgrel = 1
+	url = https://git.lwqwq.com/xtotoro/fuck-totoro-ui-react
+	arch = any
+	license = MIT
+	depends = electron11
+	source = app.asar::https://files.catbox.moe/998cpw.asar
+	source = icon.png
+	source = fuck-totoro.desktop
+	source = fuck-totoro
+	md5sums = 60f191d7a2ca0e827bd5563435006105
+	md5sums = 8dd054326fd3c9c0df4269fc9f15d7e3
+	md5sums = fe2eb0d2277b8856ef99b7cdcb8f2ce3
+	md5sums = 231e02d181232d8bfd1cbcaa68dff880
+
+pkgname = fuck-totoro
+

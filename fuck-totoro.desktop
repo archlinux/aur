@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Utilities;
+Exec=fuck-totoro %u
+Icon=fuck-totoro.png
+Name=艹猫日记
+Comment=Complete totoro-school running task automatically
+Terminal=false
+Type=Application
