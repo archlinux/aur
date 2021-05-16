@@ -10,7 +10,7 @@ url="https://github.com/doums/bato"
 license=('MPL2')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 depends=('libnotify')
-makedepends=('rust')
+makedepends=('rust' 'cmake')
 sha256sums=('eff35fb2e51e41fb91cced7b9ca2c2a092bbd43fa102a157c8c148e538f25fd4')
 
 build() {
