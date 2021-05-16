@@ -38,9 +38,17 @@ elif [ "$1" = "light" ]; then
   BG_X11="-B white ${HOME}/.wallpaper/dark.png"
   BG_SWAY="--color #ffffff --image ${HOME}/.wallpaper/dark.png"
 elif [ "$1" = "toggle" ]; then
-  echo "$CURRENT" | grep -q "dark" && exec $0 light || exec $0 dark
+  if echo "$CURRENT" | grep -q "dark"; then
+    exec $0 light
+  else
+    exec $0 dark
+  fi
 elif [ "$1" = "reapply" ]; then
-  echo "$CURRENT" | grep -q "dark" && exec $0 dark || exec $0 light
+  if echo "$CURRENT" | grep -q "dark"; then
+    exec $0 dark
+  else
+    exec $0 light
+  fi
 else
   echo "Command $1 not valid."
   exit 1
