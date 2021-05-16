@@ -1,6 +1,6 @@
 # Maintainer: Adrian Schmitz <zetabite.horzion@gmail.com>
 pkgname=irony-mod-manager-bin
-pkgver=1.16.17
+pkgver=1.16.25
 pkgrel=1
 pkgdesc="A mod manager and launcher for paradox interactive games"
 arch=('x86_64')
