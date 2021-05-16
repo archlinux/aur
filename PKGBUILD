@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=commit
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Commit message editor."
 arch=('x86_64')
 url="https://github.com/sonnyp/Commit"
@@ -13,7 +13,7 @@ optdepends=('git: git support'
             'mercurial: mercurial support'
             'gspell: spell checking support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('25878bf684f90e67bafa10e27da36df84959376ede3636f81eb03a56c1328a8c')
+sha256sums=('9b6c9bc427229d2d0a539ab4dae27fe444a10c0db686e40af1b51a038bd2174f')
 
 build() {
 	arch-meson Commit-$pkgver build
