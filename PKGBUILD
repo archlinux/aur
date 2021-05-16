@@ -40,8 +40,7 @@ build()
               --with-appli-perso="corba dsa moma"                       \
               --with-proto-perso="giop soap"                            \
               --with-corba-services="event ir naming notification time" \
-              --with-openssl                                            \
-              --enable-shared
+              --with-openssl
   make -j1 all
   make -j1 examples
   make -j1 docs
