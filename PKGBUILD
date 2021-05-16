@@ -1,6 +1,6 @@
 # Maintainer: Mads Kjeldgaard <mail@madskjeldgaard.dk>
 pkgname=supercollider-mkplugins
-pkgver=0.2.0
+pkgver=0.2.3
 pkgrel=4
 pkgdesc="Mads Kjeldgaard's plugins for SuperCollider"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 groups=('pro-audio')
 depends=('supercollider')
 source=("$pkgname-$pkgver.zip::$url/releases/download/v${pkgver}/MKPlugins-Linux.zip")
-md5sums=('a4989cbbbbe86c56955e8369878a1464')
+md5sums=('b9b64102b135fa6dbc4fb06f34b00176')
 
 package() {
  	DESTINATION_="usr/share/SuperCollider/Extensions/"
