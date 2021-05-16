@@ -2,7 +2,7 @@
 
 pkgname=prettier-plugin-php
 pkgver=0.16.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Prettier PHP Plugin"
 arch=("any")
 url="https://github.com/prettier/plugin-php"
@@ -14,9 +14,11 @@ noextract=("${pkgname#*-}-$pkgver.tgz")
 sha256sums=('8285086f8efb88512ba3548635e791ab2933762995341258381f1aa97a0d6881')
 
 package() {
-    npm install -g --prefix "$pkgdir/usr" "$srcdir/${pkgname#*-}-$pkgver.tgz"
+    npm install -g --prefix "$pkgdir/usr" --no-bin-links \
+        "$srcdir/${pkgname#*-}-$pkgver.tgz"
     install -d "$pkgdir/usr/share/licenses/$pkgname"
-    ln -s "../../../lib/node_modules/@${pkgname%%-*}/${pkgname#*-}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+    ln -s "../../../lib/node_modules/@${pkgname%%-*}/${pkgname#*-}/LICENSE" \
+        "$pkgdir/usr/share/licenses/$pkgname/"
 
     # `local json tempjson` is unnecessary because commands in pipelines are
     # executed in their own subshells
