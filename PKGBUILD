@@ -2,12 +2,12 @@
 pkgname=python-lookatme
 _pkgname=lookatme
 pkgver=2.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc='An interactive, extensible, terminal-based markdown presentation tool.'
 arch=('any')
 url="https://github.com/d0c-s4vage/lookatme"
 license=('MIT')
-depends=('python-pygments' 'python-urwid' 'python-yaml' 'python-mistune' 'python-marshmallow' 'python-click')
+depends=()
 makedepends=('python-setuptools')
 optdepends=('python-lookatme-ueberzug: renders images with the image_ueberzug extension' 'python-lookatme-render: render code blocks of supported languages into images' 'python-lookatme-qrcode: embeds qrcodes in the presentation')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/d0c-s4vage/${_pkgname}/archive/v${pkgver}.tar.gz")
