@@ -3,7 +3,7 @@
 pkgname=apmpkg-git-dev
 _pkgname=apmpkg
 pkgver=61.4727c20
-pkgrel=1
+pkgrel=2
 pkgdesc="Un administrador de paquetes universal para linux como modelo: PKGBUILD de la rama develop"
 arch=('x86_64')
 url="https://github.com/Kedap/apmpkg"
@@ -16,11 +16,11 @@ sha256sums=('SKIP')
 
 pkgver(){
     cd "$_pkgname"
-    git checkout -b develop
     echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
+    git checkout -b develop
 	cd "$_pkgname"
 	cargo build --release --locked
 }
