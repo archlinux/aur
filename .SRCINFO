@@ -1,0 +1,12 @@
+pkgbase = ttf-courier-code
+	pkgdesc = Bold like the typewiter original, adapted for code.
+	pkgver = 1
+	pkgrel = 1
+	url = https://fontain.org/courier-code/
+	arch = any
+	license = custom:Bitstream Vera
+	source = https://fontain.org/courier-code/export/ttf/courier-code.ttf.zip
+	sha256sums = 4e08b8c5e9a703230e31c3e15c1b17a668f7e3788320b545bfca91b23bd9f593
+
+pkgname = ttf-courier-code
+
