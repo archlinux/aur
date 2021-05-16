@@ -1,6 +1,6 @@
 # Maintainer: Graham Edgecombe <gpe@grahamedgecombe.com>
 pkgname=nextpnr-git
-pkgver=r3404.3fd1ee77
+pkgver=r3528.179ae683
 pkgrel=1
 pkgdesc='Portable FPGA place and route tool'
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/YosysHQ/nextpnr'
 license=('custom:ISC')
 depends=('boost-libs' 'python' 'qt5-base')
 makedepends=('boost' 'cmake' 'eigen' 'git' 'icestorm' 'prjtrellis'
-             'prjtrellis-db' 'prjoxide')
+             'prjtrellis-db' 'prjoxide' 'prjapicula')
 provides=('nextpnr')
 conflicts=('nextpnr')
 source=('nextpnr::git+https://github.com/YosysHQ/nextpnr.git')
@@ -26,10 +26,11 @@ build() {
   cd build
 
   cmake \
-    -DARCH=generic\;ice40\;ecp5\;nexus \
+    -DARCH=generic\;ice40\;ecp5\;nexus\;gowin \
     -DICESTORM_INSTALL_PREFIX=/usr \
     -DTRELLIS_INSTALL_PREFIX=/usr \
     -DOXIDE_INSTALL_PREFIX=/usr \
+    -DGOWIN_BBA_EXECUTABLE=/usr/bin/gowin_bba \
     -DBUILD_TESTS=ON \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
