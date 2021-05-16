@@ -1,0 +1,11 @@
+post_upgrade() {
+	echo "Replace zfs in your HOOKS=() in your /etc/mkinitcpio.conf with zfsmultimount, then run mkinitcpio -P"
+}
+
+post_install() {
+	echo "Replace zfs in your HOOKS=() in your /etc/mkinitcpio.conf with zfsmultimount, then run mkinitcpio -P"
+}
+
+post_remove() {
+	echo "Remove zfsmultimount from the HOOKS=() section in your /etc/mkinitcpio.conf, replace it with zfs, then run mkinitcpio -P"
+}
