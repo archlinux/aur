@@ -1,0 +1,29 @@
+pkgbase = homebridge-config-ui-x
+	pkgdesc = Web-based management tool for Homebridge
+	pkgver = 4.41.1
+	pkgrel = 1
+	url = https://github.com/oznu/homebridge-config-ui-x
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = npm
+	makedepends = python
+	makedepends = node-gyp
+	depends = nodejs
+	depends = avahi
+	depends = homebridge
+	options = !emptydirs
+	options = !strip
+	source = homebridge-config-ui-x-4.41.1.tar.gz::https://github.com/oznu/homebridge-config-ui-x/archive/4.41.1.tar.gz
+	source = systemd.service
+	source = environment.conf
+	source = tmpfiles.conf
+	source = sysusers.conf
+	b2sums = 30e27e383e08af0fa1c6525531143280c0c54e081378001abde17bcf038874c7c6a2654b2c37b82fbe85cb75ccdd6ed42890eaef0c940ac4547aec8c75348e25
+	b2sums = 4cba429db47cc84567b08bbeb5a7e3238870df66cfbca241ece4b98354c4af0180688e3de6528b1fcc0cf6f3e19a645c08bf6457ee5c69d3f1609102363b2039
+	b2sums = 178bf94ccaac2dbcbb908c98e724da60656766eb6058583e644ea6cd7014f928cb5ad018ebc37c17429ad0a3daf09d3903b51c0da3a40282163a3ff4fa78e5a0
+	b2sums = c60e965907e85b4a6dac12b60419b5446085794bdbdba0221c41e7557ff520c3688ff79b1219e17ac982d585f2cf616140717b44f8ad2a5e5a72fd360617be65
+	b2sums = 87e6a3ddcd70bd926d17ec33b007dea4108b7386714404a12647508766189c7bf863ab47515396d2ea149da791053beacb6854fa0b57fc409c09cc6aeaffd7e5
+
+pkgname = homebridge-config-ui-x
+
