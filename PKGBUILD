@@ -9,7 +9,7 @@ pkgdesc='a free Wownero desktop wallet'
 license=('BSD')
 arch=('x86_64')
 url="https://git.wownero.com/wowlet/wowlet"
-depends=('boost-libs' 'libunwind' 'openssl' 'readline' 'zeromq' 'pcsclite' 'hidapi' 'protobuf' 'libusb' 'libudev.so' 'miniupnpc' 'libgcrypt' 'qrencode' 'libsodium' 'libpgm' 'expat' 'qt5-base' 'qt5-websockets' 'qt5-svg' 'tor')
+depends=('boost-libs' 'libunwind' 'openssl' 'readline' 'zeromq' 'pcsclite' 'hidapi' 'protobuf' 'libusb' 'libudev.so' 'miniupnpc' 'libgcrypt' 'qrencode' 'libsodium' 'libpgm' 'expat' 'qt5-base' 'qt5-websockets' 'qt5-svg' 'tor' 'qt5-multimedia')
 makedepends=('git' 'cmake' 'boost')
 
 source=("${pkgname}"::"git+https://git.wownero.com/wowlet/wowlet")

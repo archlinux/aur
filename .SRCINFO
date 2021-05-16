@@ -28,6 +28,7 @@ pkgbase = wowlet-git
 	depends = qt5-websockets
 	depends = qt5-svg
 	depends = tor
+        depends = qt5-multimedia
 	source = wowlet-git::git+https://git.wownero.com/wowlet/wowlet
 	sha256sums = SKIP
 
