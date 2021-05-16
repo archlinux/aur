@@ -10,6 +10,7 @@ pkgbase = neovim-pears-git
 	depends = neovim
 	provides = neovim-pears
 	conflicts = neovim-pears
+	conflicts = vim-auto-pairs
 	source = neovim-pears-git::git+https://github.com/steelsojka/pears.nvim
 	sha256sums = SKIP
 

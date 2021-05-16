@@ -7,11 +7,11 @@ pkgdesc="Auto pair plugin for Neovim"
 arch=('any')
 url="https://github.com/steelsojka/pears.nvim"
 license=('unknown')
-groups=(neovim-plugins)
+groups=('neovim-plugins')
 depends=('neovim')
 makedepends=('git')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+conflicts=("${pkgname%-git}" 'vim-auto-pairs')
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
