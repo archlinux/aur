@@ -1,0 +1,17 @@
+pkgbase = chia-blockchain-gui
+	pkgdesc = Chia is a peer-to-peer network based digital currency based on proof-of-space - Electron GUI and CLI client
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://www.chia.net/
+	arch = x86_64
+	license = Apache
+	depends = electron11
+	provides = chia
+	provides = chia-gui
+	conflicts = chia
+	options = !strip
+	source = https://github.com/Chia-Network/chia-blockchain/releases/download/1.1.5/chia-blockchain_1.1.5_amd64.deb
+	sha256sums = 92c2a3eff148d6285c6f0816b932023fd321e2e659980aa6da819fbbe0630941
+
+pkgname = chia-blockchain-gui
+
