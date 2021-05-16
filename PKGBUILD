@@ -2,24 +2,24 @@
 
 pkgname=mqttx-bin
 _pkgname=${pkgname%-bin}
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="A cross-platform MQTT 5.0 client tool open sourced by EMQ"
 arch=('x86_64')
 url="https://github.com/emqx/MQTTX"
 license=('Apache')
 depends=('electron5')
-source=(${_pkgname^^}-${pkgver}.snap::"https://github.com/emqx/MQTTX/releases/download/v1.5.3/${_pkgname^^}_${pkgver}_amd64.snap"
+source=(${_pkgname^^}-${pkgver}.snap::"https://github.com/emqx/MQTTX/releases/download/v${pkgver}/${_pkgname^^}_${pkgver}_amd64.snap"
         "${_pkgname}.sh")
-sha256sums=('0b341b2a93d4e978176c55b8491959139f64f99b0ecdf443a67b5247e221a002'
+sha256sums=('c30e2cadecf8707340e7b6949ec718c259bd1b649248e9ca21ef8ca79bacf0d3'
             '8712e2ac7ea0b3c8fd7ec7664516cf03a6e61a51377f32aba0cbf750af4f6b0d')
-
 
 prepare() {
   unsquashfs -f ${_pkgname^^}-${pkgver}.snap /resources/app.asar \
                                            /meta/gui/icon.png \
                                            /meta/gui/${_pkgname}.desktop
 }
+
 package() {
   # app.asar
   install -Dm644 squashfs-root/resources/app.asar -t ${pkgdir}/usr/share/${_pkgname}
