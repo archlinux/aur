@@ -2,8 +2,8 @@
 
 pkgname=remmina-plugin-folder
 pkgver=1.3.0.0
-pkgrel=1
-_builderver=1.3.0.0
+pkgrel=2
+_builderver=1.4.0.0
 pkgdesc="A protocol plugin for Remmina to open a folder."
 arch=('x86_64')
 url="http://www.muflone.com/${pkgname}/"
@@ -17,7 +17,7 @@ optdepends=('xdg-utils: for Automatically detected option'
             'dolphin: for Dolphin Browser option')
 source=("remmina-plugin-builder_${_builderver}.tar.gz::https://github.com/muflone/remmina-plugin-builder/archive/${_builderver}.tar.gz"
         "${pkgname}_${pkgver}.tar.gz::https://github.com/muflone/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('0e4e2d6a79dc569444016a5479b437016386985d96a958da7505c15b1695f98c'
+sha256sums=('c640edecf6606d6c5740f7812dc8dabce2b4a813cd48440e8703fe7b5a0488aa'
             'a6f2ec482ae0a164090fa10564eea17bdcd8c16f42b28af902c127f3050954a2')
 
 build() {
