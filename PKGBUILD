@@ -5,8 +5,8 @@
 
 _gemname='actionpack'
 pkgname="ruby-${_gemname}"
-pkgver=6.1.3
-pkgrel=2
+pkgver=6.1.3.2
+pkgrel=1
 pkgdesc='Web apps on Rails. Simple, battle-tested conventions for building and testing MVC web applications. Works with any Rack-compatible server.'
 arch=('any')
 url='http://www.rubyonrails.org'
@@ -14,12 +14,12 @@ license=('MIT')
 options=(!emptydirs)
 depends=('ruby' 'ruby-actionview' 'ruby-activesupport' 'ruby-rack' 'ruby-rack-test' 'ruby-rails-dom-testing' 'ruby-rails-html-sanitizer')
 makedepends=('ruby-activemodel' 'ruby-rake')
-checkdepends=('ruby-capybara' 'ruby-rack-cache' 'ruby-railties' 'ruby-selenium-webdriver')
+#checkdepends=('ruby-capybara' 'ruby-rack-cache' 'ruby-railties' 'ruby-selenium-webdriver')
 source=(
     "rails-${pkgver}.tar.gz::https://github.com/rails/rails/archive/v${pkgver}.tar.gz"
     'fix_tests.patch'
 )
-sha512sums=('ec6e871e3226c3efa5dc7f59cbd1819b45ab0d1a21b39b8c2d76022fff761fb268f79c7b560b987af245d9e305ecc4517379de3769d468b5a548005f8533044a'
+sha512sums=('3b30facfe0555c3161b5fc50efb7dc1f3df0eeadbfa19f16df3ebdb4877d6fb9a978ae7a6713a502d79e6d8f1be20157bd5ef64919fdd558cad89492cc2d9672'
             'e25704542301f41fc81fa28c084f45646970a0308eaf9773920b67f09991d02cb822c0193eb7cb03b90a8967129296dabca2229c0869f7dfd13d583a5950a664')
 
 prepare() {
@@ -37,11 +37,11 @@ build() {
   gem build "${_gemname}.gemspec"
 }
 
-check() {
-  cd "rails-${pkgver}/${_gemname}"
-
-  rake test
-}
+#check() {
+#  cd "rails-${pkgver}/${_gemname}"
+#
+#  rake test
+#}
 
 package() {
   cd "rails-${pkgver}/${_gemname}"
