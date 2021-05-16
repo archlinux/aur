@@ -3,7 +3,7 @@
 
 pkgname=wowlet-git
 _pkgname=wowlet
-pkgver=0.2.0.0.c50a341527
+pkgver=2.1.0.ee3713b16b
 pkgrel=1
 pkgdesc='a free Wownero desktop wallet'
 license=('BSD')
