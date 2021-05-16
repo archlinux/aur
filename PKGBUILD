@@ -2,13 +2,13 @@
 # Maintainer: Abir-Tx <abirtx@yandex.com>
 pkgname=appnotex
 pkgver=0.9.0
-pkgrel=1
+pkgrel=1.1
 pkgdesc="Quick terminal based note keeper for Linux Apps"
 arch=(x86_64)
 url="https://github.com/Abir-Tx/AppNotEx.git"
 license=('GPL')
 depends=(sqlite3)
-makedepends=(git make cmake)
+makedepends=(git make cmake gzip)
 checkdepends=()
 optdepends=()
 provides=(appnotex)
@@ -37,6 +37,9 @@ package() {
 	sudo make install
 
 	cd ..
-	install -Dm644 -v README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 -v docs/README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	install -Dm644 -v LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 -v docs/appnotex.1 "${pkgdir}/usr/local/man/man1/appnotex.1"
+	sudo gzip "${pkgdir}/usr/local/man/man1/appnotex.1"
+	sudo mandb
 }
