@@ -4,50 +4,54 @@
 # Contributor: Earnestly <zibeon AT googlemail.com>
 
 pkgname=gprbuild-bootstrap
-_gprbuild_ver=2020-20200429-19BD2
-_xmlada_ver=2020-20200429-19A99
-pkgver=2020
-pkgrel=2
+epoch=1
+pkgver=21.0.0
+pkgrel=1
 pkgdesc="Static GPRbuild to bootstrap XML/Ada and GPRbuild itself"
 arch=('i686' 'x86_64')
 url='https://github.com/AdaCore/gprbuild/'
 license=('GPL3')
 depends=('gcc-ada')
 
-_gprbuild_checksum=408ec35c3bb86bd227db3da55d3e1e0c572a56e3
-_xmlada_checksum=c799502295baf074ad17b48c50f621879c392c57
-source=("gprbuild-$_gprbuild_ver-src.tar.gz::https://community.download.adacore.com/v1/${_gprbuild_checksum}?filename=gprbuild-$_gprbuild_ver-src.tar.gz"
-        "xmlada-$_xmlada_ver-src.tar.gz::https://community.download.adacore.com/v1/${_xmlada_checksum}?filename=xmlada-$_xmlada_ver-src.tar.gz")
-sha1sums=("$_gprbuild_checksum"
-          "$_xmlada_checksum")
+source=(
+	"gprbuild-$pkgver.tar.gz::https://github.com/AdaCore/gprbuild/archive/v$pkgver.tar.gz"
+	"xmlada-$pkgver.tar.gz::https://github.com/AdaCore/xmlada/archive/v$pkgver.tar.gz"
+	"gprconfig_kb-$pkgver.tar.gz::https://github.com/AdaCore/gprconfig_kb/archive/v$pkgver.tar.gz"
+)
+sha256sums=('54b7d1a3298160109aaee4d8c263c1ab3ab4abae75d354f3e90a4c51639167a2'
+            '923024931f0c57451aa52cb9a3333874646102cb75957f27e3689670f90edc1e'
+            '2aec26afad5bb1a4685d9c041c9c797ff5beda211a5e81f2a97452d2ceabc557')
 
 prepare() {
-    cd "$srcdir/gprbuild-${_gprbuild_ver}-src"
+    cd "$srcdir/gprbuild-$pkgver"
 
     # GPRbuild hard-codes references to /usr/libexec, but ArchLinux packages
     # must use /usr/lib instead.
     sed -i 's/libexec/lib/g' doinstall gprbuild.gpr \
-        share/gprconfig/compilers.xml \
-        share/gprconfig/linker.xml \
-        share/gprconfig/gnat.xml
-
-    # bootstrap.sh is in fact not POSIX compliant
-    sed -i 's|^#!/bin/sh|#!/bin/bash|' bootstrap.sh
+        "$srcdir/gprconfig_kb-$pkgver/db/compilers.xml" \
+        "$srcdir/gprconfig_kb-$pkgver/db/linker.xml" \
+        "$srcdir/gprconfig_kb-$pkgver/db/gnat.xml"
 }
 
 build() {
-    cd "$srcdir/gprbuild-$_gprbuild_ver-src"
+    cd "$srcdir/gprbuild-$pkgver"
 
-    export GNATMAKEFLAGS="-j$(nproc)"
-    export DESTDIR="$srcdir/bootstrap"
+    export GNATMAKEFLAGS="$MAKEFLAGS"
 
     ./bootstrap.sh \
-        --prefix=/usr \
-        --libexecdir=/lib \
-        --with-xmlada="$srcdir/xmlada-$_xmlada_ver-src"
+        --with-xmlada="$srcdir/xmlada-$pkgver" \
+        --with-kb="$srcdir/gprconfig_kb-$pkgver" \
+        --build
 }
 
 package() {
-    cd "$srcdir/bootstrap"
-    cp -a --no-preserve=ownership -- "$srcdir/bootstrap/usr" "$pkgdir"
+    cd "$srcdir/gprbuild-$pkgver"
+
+    env DESTDIR="$pkgdir" ./bootstrap.sh \
+        --with-kb="$srcdir/gprconfig_kb-$pkgver" \
+        --prefix=/usr \
+        --libexecdir=/lib \
+        --install
 }
+
+# vim: set et ts=4:
