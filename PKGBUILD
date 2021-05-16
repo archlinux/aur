@@ -40,10 +40,10 @@ prepare() {
 
 package() {
     install -Dm755 "${srcdir}/libresprite" "${pkgdir}/usr/bin/libresprite"
-    install -Dm644 "${srcdir}/16x16.png" "${pkgdir}/usr/share/icons/16x16/apps/libresprite.png"
-    install -Dm644 "${srcdir}/32x32.png" "${pkgdir}/usr/share/icons/32x32/apps/libresprite.png"
-    install -Dm644 "${srcdir}/48x48.png" "${pkgdir}/usr/share/icons/48x48/apps/libresprite.png"
-    install -Dm644 "${srcdir}/64x64.png" "${pkgdir}/usr/share/icons/64x64/apps/libresprite.png"
-    install -Dm644 "${srcdir}/256x256.png" "${pkgdir}/usr/share/icons/256x256/apps/libresprite.png"
+    install -Dm644 "${srcdir}/16x16.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/libresprite.png"
+    install -Dm644 "${srcdir}/32x32.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/libresprite.png"
+    install -Dm644 "${srcdir}/48x48.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/libresprite.png"
+    install -Dm644 "${srcdir}/64x64.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/libresprite.png"
+    install -Dm644 "${srcdir}/256x256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/libresprite.png"
     install -Dm755 "${srcdir}/libresprite.desktop" "${pkgdir}/usr/share/applications/libresprite.desktop"
 }
