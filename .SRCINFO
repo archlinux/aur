@@ -6,6 +6,7 @@ pkgbase = milcheck
 	arch = x86_64
 	license = MPL2
 	makedepends = rust
+	makedepends = cmake
 	depends = openssl
 	depends = gcc-libs
 	source = milcheck-0.2.4.tar.gz::https://github.com/doums/milcheck/archive/refs/tags/v0.2.4.tar.gz
