@@ -8,7 +8,7 @@
 # Based on community/morituri and aur/morituri-git PKGBUILDs
 
 pkgname=whipper-git
-pkgver=0.9.1.dev105+ge598727
+pkgver=0.9.1.dev135+gb6338b2
 pkgrel=1
 pkgdesc='A Unix CD ripper aiming for accuracy over speed -- forked from morituri'
 arch=('any')
@@ -19,7 +19,7 @@ depends=(
     'flac'                          # for reading flac files
     'libcdio-paranoia'              # for the actual ripping
     'libsndfile'                    # for reading wav files
-    'python-discid'                 # for calculating Musicbrainz disc id
+    'python-discid'                 # for calculating MusicBrainz Disc IDs
     'python-mutagen'                # for metadata handling
     'python-musicbrainzngs'         # for metadata lookup
     'python-gobject'
@@ -31,6 +31,10 @@ depends=(
 makedepends=(
     'git'
     'python-setuptools-scm'        # for VCS(/SCM) versioning
+    'python-docutils'              # for building man pages
+    )
+optdepends=(
+    'python-pillow: for complete cover art support'
     )
 checkdepends=(
     'python-twisted'
