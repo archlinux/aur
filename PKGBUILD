@@ -9,21 +9,25 @@ url="https://github.com/LibreSprite/LibreSprite"
 license=('GPL2')
 source_x86_64=(
 "libresprite::${url}/releases/download/continuous/LibreSprite-$(echo ${_commit}|cut -b 1-7)-x86_64.AppImage"
+)
+source=(
 "16x16.png::${url}/raw/${_commit}/desktop/icons/hicolor/16x16/libresprite.png"
 "32x32.png::${url}/raw/${_commit}/desktop/icons/hicolor/32x32/libresprite.png"
 "48x48.png::${url}/raw/${_commit}/desktop/icons/hicolor/48x48/libresprite.png"
 "64x64.png::${url}/raw/${_commit}/desktop/icons/hicolor/64x64/libresprite.png"
 "256x256.png::${url}/raw/${_commit}/desktop/icons/hicolor/256x256/apps/libresprite.png"
-"${url}/raw/${_commit}/desktop/libresprite.desktop"
+"libresprite.desktop::${url}/raw/${_commit}/desktop/libresprite.desktop"
 )
-noextract=('libresprite')
 sha256sums_x86_64=(
 '7e677e0b3a4148e158b2b518af8ca5e6b636450d0c2ff1a688981c6f2142689f'
+)
+sha256sums=(
 'b444bf24719ecf0af475856a742ccdacd1ed13181c7a589d882ae881579e0f28'
 '124dd7417dd1367caa086e992be3c7f4cc8fa14b03918b244702a33f1f1826ac'
 '50541083b35d16a50a998b675c37b8f7db318a0bd3f103202115eacaad277edf'
 '8148be0319c8a501703df96fa4f79f46cecdddc3443f7fdb5d6499c69703cec4'
 'c056ba818a7ed7731edecbbca52bb861857b81e5db58ba6ec078e88d6ff36bfa'
+'aa78be3e501988a0cf24a1a5464d7e7a1d211d0a18ee18e4e1d201251169845c'
 )
 
 provides=('libresprite')
