@@ -1,13 +1,13 @@
 # Maintainer: Jonathan Lestrelin <jonathan.lestrelin@gmail.com>
 pkgname=nautilus-search-by-image-git
 _pkgname=nautilus-search-by-image
-pkgver=r1.e60fa62
-pkgrel=1
-pkgdesc="Nautilus extension to do a reverse image search in Google from a local file (beware that this uploads images to transfer.sh and Google so use only if no privacy concerns)."
+pkgver=r4.2dcb126
+pkgrel=2
+pkgdesc="Nautilus extension to do a reverse image search in Google/Yandex from a local file context-menu."
 arch=('any')
 url="https://github.com/jle64/nautilus-search-by-image"
 license=('GPL')
-depends=('python2-nautilus' 'python2-requests')
+depends=('python-nautilus' 'python-requests')
 makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -22,5 +22,5 @@ pkgver() {
 package() {
         cd "$srcdir/$_pkgname"
 	mkdir -p $pkgdir/usr/share/nautilus-python/extensions
-        cp google-image.py $pkgdir/usr/share/nautilus-python/extensions
+        cp search-by-image.py $pkgdir/usr/share/nautilus-python/extensions
 }
