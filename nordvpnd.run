@@ -1,0 +1,2 @@
+#!/bin/sh
+exec nordvpnd >/dev/null 2>&1
