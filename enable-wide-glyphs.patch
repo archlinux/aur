@@ -1,7 +1,5 @@
-diff --git a/config.h.in b/config.h.in
-index 914d6062..2e2e03f3 100644
---- a/config.h.in
-+++ b/config.h.in
+--- config.h.in
++++ config.h.in
 @@ -18,6 +18,9 @@
  /* Define if you want your background to use the parent window background */
  #undef ENABLE_TRANSPARENCY
@@ -12,11 +10,9 @@ index 914d6062..2e2e03f3 100644
  /* Define if you want european extended codesets */
  #undef ENCODING_EU
  
-diff --git a/configure b/configure
-index 3e3f78bd..b8b1591d 100755
---- a/configure
-+++ b/configure
-@@ -717,6 +717,7 @@ enable_unicode3
+--- configure
++++ configure
+@@ -745,6 +745,7 @@
  enable_combining
  enable_xft
  enable_font_styles
@@ -24,7 +20,7 @@ index 3e3f78bd..b8b1591d 100755
  enable_pixbuf
  enable_startup_notification
  enable_transparency
-@@ -1390,6 +1391,7 @@ Optional Features:
+@@ -1427,6 +1428,7 @@
    --enable-combining      enable composition of base and combining characters
    --enable-xft            enable xft support on systems that have it
    --enable-font-styles    enable bold and italic support
@@ -32,7 +28,7 @@ index 3e3f78bd..b8b1591d 100755
    --enable-pixbuf         enable integration with gdk-pixbuf for background images
    --enable-startup-notification  enable freedesktop startup notification support
    --enable-transparency   enable transparent backgrounds
-@@ -4780,6 +4782,7 @@ if test "${enable_everything+set}" = set; then :
+@@ -5184,6 +5186,7 @@
         support_8bitctrls=no
         support_iso14755=no
         support_styles=no
@@ -40,7 +36,7 @@ index 3e3f78bd..b8b1591d 100755
         support_perl=no
         codesets=
      fi
-@@ -4808,6 +4811,7 @@ if test "${enable_everything+set}" = set; then :
+@@ -5212,6 +5215,7 @@
         #support_8bitctrls=yes
         support_iso14755=yes
         support_styles=yes
@@ -48,7 +44,7 @@ index 3e3f78bd..b8b1591d 100755
         support_perl=yes
         codesets=all
      fi
-@@ -4909,6 +4913,14 @@ if test "${enable_font_styles+set}" = set; then :
+@@ -5336,6 +5340,14 @@
  fi
  
  
@@ -61,25 +57,23 @@ index 3e3f78bd..b8b1591d 100755
 +
 +
  # Check whether --enable-pixbuf was given.
- if test "${enable_pixbuf+set}" = set; then :
-   enableval=$enable_pixbuf; if test x$enableval = xyes -o x$enableval = xno; then
-@@ -7733,6 +7745,11 @@ if test x$support_styles = xyes; then
+ if test ${enable_pixbuf+y}
+ then :
+@@ -8164,6 +8176,11 @@
+   printf "%s\n" "#define HAVE_POSIX_OPENPT 1" >>confdefs.h
  
- $as_echo "#define ENABLE_STYLES 1" >>confdefs.h
- 
-+fi
+ fi
 +if test x$support_wide_glyphs = xyes; then
 +
 +$as_echo "#define ENABLE_WIDE_GLYPHS 1" >>confdefs.h
 +
- fi
- if test x$support_iso14755 = xyes; then
- 
-diff --git a/configure.ac b/configure.ac
-index 0da3b596..52ab8e4c 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -132,6 +132,7 @@ AC_ARG_ENABLE(everything,
++fi
+ ac_fn_cxx_check_func "$LINENO" "isastream" "ac_cv_func_isastream"
+ if test "x$ac_cv_func_isastream" = xyes
+ then :
+--- configure.ac
++++ configure.ac
+@@ -134,6 +134,7 @@
         support_8bitctrls=no
         support_iso14755=no
         support_styles=no
@@ -87,7 +81,7 @@ index 0da3b596..52ab8e4c 100644
         support_perl=no
         codesets=
      fi
-@@ -160,6 +161,7 @@ AC_ARG_ENABLE(everything,
+@@ -162,6 +163,7 @@
         #support_8bitctrls=yes
         support_iso14755=yes
         support_styles=yes
@@ -95,7 +89,7 @@ index 0da3b596..52ab8e4c 100644
         support_perl=yes
         codesets=all
      fi
-@@ -225,6 +227,12 @@ AC_ARG_ENABLE(font-styles,
+@@ -237,6 +239,12 @@
      support_styles=$enableval
    fi])
  
@@ -108,7 +102,7 @@ index 0da3b596..52ab8e4c 100644
  AC_ARG_ENABLE(pixbuf,
    [  --enable-pixbuf         enable integration with gdk-pixbuf for background images],
    [if test x$enableval = xyes -o x$enableval = xno; then
-@@ -648,6 +656,9 @@ fi
+@@ -660,6 +668,9 @@
  if test x$support_styles = xyes; then
    AC_DEFINE(ENABLE_STYLES, 1, Define if you want bold and italic support)
  fi
@@ -118,11 +112,9 @@ index 0da3b596..52ab8e4c 100644
  if test x$support_iso14755 = xyes; then
    AC_DEFINE(ISO_14755, 1, Define if you want ISO 14755 extended support)
  fi
-diff --git a/src/command.C b/src/command.C
-index 19e4fccf..75853d75 100644
---- a/src/command.C
-+++ b/src/command.C
-@@ -237,7 +237,9 @@ rxvt_term::iso14755_51 (unicode_t ch, rend_t r, int x, int y, int y2)
+--- src/command.C
++++ src/command.C
+@@ -237,7 +237,9 @@
  # endif
        scr_overlay_set (11, y + 1, ch, r);
  
@@ -132,11 +124,9 @@ index 19e4fccf..75853d75 100644
          scr_overlay_set (12, y + 1, NOCHAR, r);
      }
  
-diff --git a/src/rxvtfont.C b/src/rxvtfont.C
-index c56921c8..9d75541a 100644
---- a/src/rxvtfont.C
-+++ b/src/rxvtfont.C
-@@ -471,6 +471,7 @@ rxvt_font_default::draw (rxvt_drawable &d, int x, int y,
+--- src/rxvtfont.C
++++ src/rxvtfont.C
+@@ -471,6 +471,7 @@
        else
          switch (t)
            {
@@ -144,7 +134,7 @@ index c56921c8..9d75541a 100644
              case '\t':
              case ZERO_WIDTH_CHAR:
              case NOCHAR:
-@@ -1026,8 +1027,10 @@ rxvt_font_x11::has_char (unicode_t unicode, const rxvt_fontprop *prop, bool &car
+@@ -1026,8 +1027,10 @@
  
    careful = xcs->lbearing < 0 || xcs->rbearing > prop->width * wcw;
  
@@ -155,7 +145,7 @@ index c56921c8..9d75541a 100644
  
    return true;
  }
-@@ -1345,12 +1348,14 @@ rxvt_font_xft::has_char (unicode_t unicode, const rxvt_fontprop *prop, bool &car
+@@ -1345,12 +1348,14 @@
  
    careful = g.x > 0 || w > prop->width * wcw;
  
@@ -170,7 +160,7 @@ index c56921c8..9d75541a 100644
  
    return true;
  }
-@@ -1395,6 +1400,10 @@ rxvt_font_xft::draw (rxvt_drawable &d, int x, int y,
+@@ -1395,6 +1400,10 @@
  
            ep->glyph = glyph;
            ep->x = x_ + (cwidth - extents.xOff >> 1);
@@ -181,11 +171,9 @@ index c56921c8..9d75541a 100644
            ep->y = y_ + ascent;
  
            if (extents.xOff == 0)
-diff --git a/src/screen.C b/src/screen.C
-index 115afbf2..61681b84 100644
---- a/src/screen.C
-+++ b/src/screen.C
-@@ -936,7 +936,61 @@ rxvt_term::scr_add_lines (const wchar_t *str, int len, int minlines) NOTHROW
+--- src/screen.C
++++ src/screen.C
+@@ -975,7 +975,61 @@
  # endif
  #endif
  
@@ -248,7 +236,7 @@ index 115afbf2..61681b84 100644
  
            // if the character doesn't fit into the remaining columns...
            if (ecb_unlikely (screen.cur.col > ncol - width && ncol >= width))
-@@ -2387,7 +2441,12 @@ rxvt_term::scr_refresh () NOTHROW
+@@ -2434,7 +2488,12 @@
                  text--, count++, xpixel -= fwidth;
  
                // force redraw after "careful" characters to avoid pixel droppings
@@ -262,11 +250,9 @@ index 115afbf2..61681b84 100644
                  drp[col + i + 1] = srp[col + i + 1] ^ RS_redraw;
  
                // force redraw before "careful" characters to avoid pixel droppings
-diff --git a/src/xdefaults.C b/src/xdefaults.C
-index 9b47bf2c..add21eec 100644
---- a/src/xdefaults.C
-+++ b/src/xdefaults.C
-@@ -294,6 +294,9 @@ static const char optionsstring[] = "options: "
+--- src/xdefaults.C
++++ src/xdefaults.C
+@@ -294,6 +294,9 @@
  #if ENABLE_STYLES
                                      "styles,"
  #endif
