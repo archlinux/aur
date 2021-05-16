@@ -7,6 +7,7 @@ _commit=8a77f5a55213202a346e70088c4548b07afd5ed6
 arch=('x86_64')
 url="https://github.com/LibreSprite/LibreSprite"
 license=('GPL2')
+options=(!strip)
 source_x86_64=(
 "libresprite::${url}/releases/download/continuous/LibreSprite-$(echo ${_commit}|cut -b 1-7)-x86_64.AppImage"
 )
