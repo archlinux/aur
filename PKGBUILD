@@ -1,8 +1,9 @@
+# Maintainer: xiretza <xiretza+aur@gmail.com>
 # Maintainer: Rod Kay <charlie5 on #ada at freenode.net>
 
 pkgname=gnatcoll-core
-pkgver=2020
-_upstream_ver=2020-20200429-19B7C
+epoch=1
+pkgver=21.0.0
 pkgrel=1
 
 pkgdesc='Gnat components collection - Core packages.'
@@ -16,21 +17,20 @@ makedepends=('gprbuild')
 provides=('gnatcoll-core')
 conflicts=('gnatcoll' 'gnatcoll-core-git')
 
-_checksum=c94f2ac914cb305f6bef174329fa0b5003d84935
-source=("${pkgname}-${_upstream_ver}-src.tar.gz::https://community.download.adacore.com/v1/${_checksum}?filename=${pkgname}-${_upstream_ver}-src.tar.gz")
-sha1sums=("$_checksum")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('daa9b3d5fc5d90b015ece1b48d54192bd06a71fec64bdfc242066f2598c30ff5')
 
 build()
 {
-    cd "$srcdir/$pkgname-$_upstream_ver-src"
+    cd "$srcdir/$pkgname-$pkgver"
 
     make setup BUILD=PROD prefix=/usr
-    make -j1 GPRBUILD_OPTIONS=-R
+    make -j1 GPRBUILD_OPTIONS="-R -cargs $CFLAGS -largs $LDFLAGS -gargs"
 }
 
 package()
 {
-    cd "$srcdir/$pkgname-$_upstream_ver-src"
+    cd "$srcdir/$pkgname-$pkgver"
 
     # Make one install at a time to avoid GPRinstall reading/writing to
     # the same installed project files at the same time.

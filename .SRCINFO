@@ -1,7 +1,8 @@
 pkgbase = gnatcoll-core
 	pkgdesc = Gnat components collection - Core packages.
-	pkgver = 2020
+	pkgver = 21.0.0
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/AdaCore/gnatcoll-core/
 	arch = i686
 	arch = x86_64
@@ -11,8 +12,8 @@ pkgbase = gnatcoll-core
 	provides = gnatcoll-core
 	conflicts = gnatcoll
 	conflicts = gnatcoll-core-git
-	source = gnatcoll-core-2020-20200429-19B7C-src.tar.gz::https://community.download.adacore.com/v1/c94f2ac914cb305f6bef174329fa0b5003d84935?filename=gnatcoll-core-2020-20200429-19B7C-src.tar.gz
-	sha1sums = c94f2ac914cb305f6bef174329fa0b5003d84935
+	source = gnatcoll-core-21.0.0.tar.gz::https://github.com/AdaCore/gnatcoll-core//archive/v21.0.0.tar.gz
+	sha256sums = daa9b3d5fc5d90b015ece1b48d54192bd06a71fec64bdfc242066f2598c30ff5
 
 pkgname = gnatcoll-core
 
