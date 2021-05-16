@@ -12,15 +12,19 @@ depends=(
 	'wine'
 	'wine_gecko'
 	'wine-mono'
+  'wget'
+  'unzip'
 )
-source=("http://www.cmpg.unibe.ch/software/arlequin35/win/WinArl35.zip" "arlequin.desktop" "arlequin.png")
-md5sums=('545409c0e59e5be6687b6c7f122e58b4'
-         '0973863b9050f2702d6ab443bc276aab'
+source=("arlequin.desktop" "arlequin.png")
+md5sums=('36d85969ba4fe3e59b15087cf091e91b'
          '230b156c7c8398218177a31b3db3cb12')
 
 package() {
   install -dm755 "$pkgdir"/usr/share/{arlequin,applications}
-  mv "$srcdir"/WinArl35/* "$pkgdir"/usr/share/arlequin
+  cd "$pkgdir"/usr/share/arlequin
+  wget http://www.cmpg.unibe.ch/software/arlequin35/win/WinArl35.zip
+  unzip WinArl35.zip
+  rm WinArl35.zip
   install -Dm755 ${srcdir}/arlequin.png ${pkgdir}/usr/share/arlequin/arlequin.png
   install -Dm755 ${srcdir}/arlequin.desktop ${pkgdir}/usr/share/applications/arlequin.desktop
 }

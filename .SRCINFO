@@ -8,11 +8,11 @@ pkgbase = arlequin
 	depends = wine
 	depends = wine_gecko
 	depends = wine-mono
-	source = http://www.cmpg.unibe.ch/software/arlequin35/win/WinArl35.zip
+	depends = wget
+	depends = unzip
 	source = arlequin.desktop
 	source = arlequin.png
-	md5sums = 545409c0e59e5be6687b6c7f122e58b4
-	md5sums = 0973863b9050f2702d6ab443bc276aab
+	md5sums = 36d85969ba4fe3e59b15087cf091e91b
 	md5sums = 230b156c7c8398218177a31b3db3cb12
 
 pkgname = arlequin
