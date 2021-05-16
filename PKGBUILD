@@ -12,7 +12,8 @@ arch=('any')
 url='https://aur.archlinux.org/packages/cisco-anyconnect-runit'
 license=('Apache')
 groups=()
-depends=('runit' 'elogind-runit' 'cisco-anyconnect')
+depends=('runit' 'elogind-runit')
+optdepends=('cisco-anyconnect: Otherwise, you can install it using the script provided by Cisco. Refer to https://www.cisco.com/c/en/us/support/security/anyconnect-secure-mobility-client-v4-x/model.html to download it.')
 source=('vpnagentd.run' 'vpnagentd.log.run')
 sha256sums=(
 	"9cc8483cc6fde8db0a7d21354f65f14fd179bda8434199b26866cdc6db2af7ba"
