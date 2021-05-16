@@ -1,6 +1,6 @@
 pkgbase = papirus-nord
 	pkgdesc = Custom colors for folder icons for Papirus Icon Theme!
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	epoch = 1
 	url = https://www.pling.com/p/1360398
@@ -9,8 +9,8 @@ pkgbase = papirus-nord
 	depends = papirus-icon-theme
 	optdepends = papirus-linux-universe: change folder colors
 	options = !strip
-	source = papirus-nord-3.0.0.tar.gz::https://github.com/Adapta-Projects/Papirus-Nord/archive/refs/tags/3.0.0.tar.gz
-	sha256sums = c5e6cc1baa05857fe9f209226ee86fb121cf84182f6b74bbb4e4f100b4db2067
+	source = papirus-nord-3.1.0.tar.gz::https://github.com/Adapta-Projects/Papirus-Nord/archive/refs/tags/3.1.0.tar.gz
+	sha256sums = e0b902f84c951df16265be0322b3c5b391f5c52e3a566e9eb1b347a68067377a
 
 pkgname = papirus-nord
 
