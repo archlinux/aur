@@ -12,7 +12,7 @@ pkgver() {
     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 pkgver=6.16.r490.bd8cce9
-pkgrel=1
+pkgrel=2
 
 pkgdesc='POP3 mail retriever with reliable Maildir and command delivery; Python 3 port'
 arch=('any')
@@ -22,7 +22,7 @@ license=('GPL2')
 provides=("getmail=$pkgver" "${pkgname%-git}")
 conflicts=('getmail')
 
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 depends=('python-chardet')
 optdepends=('python-keyring: secure password store'
             'python-keyrings-alt: alternative backends')
