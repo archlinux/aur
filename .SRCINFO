@@ -1,7 +1,7 @@
 pkgbase = f2-bin
 	pkgdesc = Cross-platform command-line tool for batch renaming files and directories quickly and safely
-	pkgver = 1.6.1
-	pkgrel = 3
+	pkgver = 1.6.2
+	pkgrel = 1
 	url = https://github.com/ayoisaiah/f2
 	arch = x86_64
 	arch = i686
@@ -9,12 +9,12 @@ pkgbase = f2-bin
 	license = MIT
 	provides = f2
 	conflicts = f2
-	source_x86_64 = f2-bin-1.6.1-x86_64.tar.gz::https://github.com/ayoisaiah/f2/releases/download/v1.6.1/f2_1.6.1_linux_amd64.tar.gz
-	b2sums_x86_64 = bae7ec9bb1784d0a3c368241a1918b4ca4f9c40618e637d850105d9e5a41a3d04db9739d454f7ff4b717b7951f4314228b802aa4f94929a6b507ad8cc95b730d
-	source_i686 = f2-bin-1.6.1-i686.tar.gz::https://github.com/ayoisaiah/f2/releases/download/v1.6.1/f2_1.6.1_linux_i386.tar.gz
-	b2sums_i686 = d0fb460e3d57c54e97fa749dc312222e775e5f8f3db0c3763f705ea9f5bdcef4220ab6cba862152fff581ea6709876d5776fab1e66e083eb5c93c0ef4e3d917e
-	source_aarch64 = f2-bin-1.6.1-aarch64.tar.gz::https://github.com/ayoisaiah/f2/releases/download/v1.6.1/f2_1.6.1_linux_arm64.tar.gz
-	b2sums_aarch64 = 17a3a98bbf51d6544aec3f12abfa1eed7363bddc40633b4352f33691dca660f4bdeb5d2cf63b23408e216b5f007aa6343e389c935d4f8c1aec917f73fa65814f
+	source_x86_64 = f2-bin-1.6.2-x86_64.tar.gz::https://github.com/ayoisaiah/f2/releases/download/v1.6.2/f2_1.6.2_linux_amd64.tar.gz
+	b2sums_x86_64 = 90be98c727907be99e6afd292d3162204df9bfc0850b1be681ed28e5bd2d7b796e1ed70575fb05538dec3ada94ce49c3dd89223977c4fa961faa2464003d614f
+	source_i686 = f2-bin-1.6.2-i686.tar.gz::https://github.com/ayoisaiah/f2/releases/download/v1.6.2/f2_1.6.2_linux_i386.tar.gz
+	b2sums_i686 = 2c318c290955381de150eec510a8e6b98744c08ae4c6efc66c4f4db98204a064efb9ea2ce9353def68806ae41e2952478938dd61f359d2ecb2876b215090904a
+	source_aarch64 = f2-bin-1.6.2-aarch64.tar.gz::https://github.com/ayoisaiah/f2/releases/download/v1.6.2/f2_1.6.2_linux_arm64.tar.gz
+	b2sums_aarch64 = 0b7f5c568ec342c68a165b2e62ea10c0c8dfb341d2de7945d5b7eaec3e3c29ebbda861e239eefeb7cb82421d737f225751902fcbe5aeeebfc81c7b4a55e919ef
 
 pkgname = f2-bin
 
