@@ -17,6 +17,10 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+# intialize all variables
+SWAYSOCK=${SWAYSOCK:-}
+XDG_SESSION_TYPE=${XDG_SESSION_TYPE:-}
+
 CURRENT=$(gsettings get org.gnome.desktop.interface gtk-theme)
 
 if [[ $1 == "dark" ]]; then
