@@ -13,7 +13,7 @@ pkgbase = apmpkg
 	depends = fakeroot
 	depends = ruby-bundler
 	depends = rsync
-	conflicts = apmpkg-git
+	conflicts = apmpkg-git-dev
 	source = https://codeload.github.com/Kedap/apmpkg/tar.gz/refs/tags/1.0.2
 	sha256sums = 521e9fb0b83e740a5ab13c2a40e74a44315ffbff0938ca3cbc2f9fbec4186698
 

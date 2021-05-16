@@ -9,7 +9,7 @@ url="https://github.com/Kedap/apmpkg"
 license=('Apache')
 depends=('git' 'python-pip' 'python2-pip' 'curl' 'fakeroot' 'ruby-bundler' 'rsync')
 makedepends=('cargo')
-conflicts=('apmpkg-git')
+conflicts=('apmpkg-git-dev')
 source=("https://codeload.github.com/Kedap/${pkgname}/tar.gz/refs/tags/${pkgver}")
 sha256sums=('521e9fb0b83e740a5ab13c2a40e74a44315ffbff0938ca3cbc2f9fbec4186698')
 
