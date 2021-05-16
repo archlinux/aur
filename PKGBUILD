@@ -20,7 +20,7 @@ _fragment=${FRAGMENT:-#branch=master}
 
 _name="luxcorerender"
 pkgname=${_name}-git
-pkgver=2.5.r77.g6642342f6
+pkgver=2.5.r105.g575dcd2f4
 epoch=2
 pkgrel=1
 pkgdesc="Physically correct, unbiased rendering engine."
@@ -37,15 +37,18 @@ source=("${_name}::git+https://github.com/LuxCoreRender/LuxCore.git${_fragment}"
         "python.patch"
         "glfw.patch"
         "boost107400.patch::https://github.com/LuxCoreRender/LuxCore/pull/483.patch"
+        "openexr3.patch"
         )
 sha256sums=('SKIP'
             '2fcf39c621370c5609c06474279230c55c716dbb05d823d5703e662deede1ce8'
             '4e04c3eb653f00d2389aff8e7fda2d244e258cbca3a22e32c13388a3984e4bb1'
-            'f5fc0bbeb09c95750da6ca668ea2f26b84998c57c9abb8ac0a3d96131017f66d')
+            'f5fc0bbeb09c95750da6ca668ea2f26b84998c57c9abb8ac0a3d96131017f66d'
+            '7d43dc0de3e4e2714b9cbf4d6bf66f35628ee32a3ddf14d2bc674e5d7e1cd6cc')
 b2sums=('SKIP'
         'a70524f4c417c22f4ca8725ee4fe3501488d7e56be85e55bd70338daedd23224de795660e44bded4a9bb6bf00bb4f96c0b66302e85b0f4109ca9af4fa1b75259'
         '2903992389c61fc4720cde8a011d0b637de647a7c9e701609968c01a8ab904277dfb27a90179d4cfcf98382973542e59d1384580236c25f6568aaa7b6ba90528'
-        '3057084619ac9067883b820d6ca4cb896155b587a09b689aa2a0dd1139478577164cfe90d5165d84cb88850b35fc5721ad76568764f555bd5c05b8e394c95b48')
+        '3057084619ac9067883b820d6ca4cb896155b587a09b689aa2a0dd1139478577164cfe90d5165d84cb88850b35fc5721ad76568764f555bd5c05b8e394c95b48'
+        '6d4d8eb5e30642f40c42adc35e0f92854cd61fd1d694e6526733eb75474e4d8d659ccb8d4b9574ce5f9a4ef0b11ac3f1b7c625a8671c1cd83f7faae6f2c534c6')
 
 pkgver() {
 # shellcheck disable=SC2164
