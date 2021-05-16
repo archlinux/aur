@@ -1,8 +1,8 @@
 # Maintainer: Alexandre Pujol <alexandre@pujol.io>
 
 pkgname='pass-import'
-pkgver=3.1
-pkgrel=2
+pkgver=3.2
+pkgrel=1
 pkgdesc='A pass extension for importing data from most of the existing password manager.'
 arch=('any')
 url='https://github.com/roddhjav/pass-import'
@@ -22,8 +22,8 @@ optdepends=(
 )
 source=(https://github.com/roddhjav/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz
         https://github.com/roddhjav/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc)
-sha512sums=('5673de22fd24b7676ef0c223bb39b8f70f1b35762195ca0f02f26bfeed849084f1c1ec982c447a2a763c06a0410612a8e708f0d29f082f4cf1a7d4263751a130'
-            'b818ea2243602fa1b3bec1367348af94a4691bd0f622b8be5c7f2f8c308cf20b996c0c0f569b91eb68dfea82099ee2fd1a1c11ad722cd0a0d8a2003ed6008214')
+sha512sums=('2414382060dd87a88023760c795f2fc1f71121fafd11349e64994dddecc8ca1d3c2ef732df3699c550ac0aa8800a6c0ab85fc15236f1b71397c53ae3b94d20d9'
+            '741dd37d905e786e6de05bdc4334ef654d05b15d524a5cfad31d1277878eba422fa26be95dc2938032bee36b934b2169e64bd4933c753acfd89ce31fdef3aa60')
 
 # The public key is found at https://pujol.io/keys
 # gpg --recv-keys 06A26D531D56C42D66805049C5469996F0DF68EC
@@ -31,10 +31,10 @@ validpgpkeys=('06A26D531D56C42D66805049C5469996F0DF68EC')
 
 build() {
   cd "$pkgname-$pkgver"
-  make
+  python setup.py build
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" FORCE_ALL=1 install
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
