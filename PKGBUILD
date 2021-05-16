@@ -45,6 +45,10 @@ pkgver() {
 build() {
 	cd "${srcdir}/ghdl"
 
+	# 2021-05-16 Comment by xiretza : LLVM can't handle -fvar-tracking-assignments from DEBUG_C(XX)FLAGS
+	CFLAGS=${CFLAGS/-fvar-tracking-assignments}
+	CXXFLAGS=${CXXFLAGS/-fvar-tracking-assignments}
+
 	./configure \
 		--prefix=/usr/ \
 		--with-llvm-config \
