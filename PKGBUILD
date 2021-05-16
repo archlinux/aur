@@ -36,15 +36,15 @@ build(){
 	popd
 }
 
-## Test was broken
-#check(){
-#	pushd $_pyname-$pkgver
-#	python -m pytest
-#	popd
-#	pushd $_pyname-$pkgver-py2
-#	python2 -m pytest
-#	popd
-#}
+## Test for python2 was broken
+check(){
+	pushd $_pyname-$pkgver
+	python -m pytest
+	popd
+	#pushd $_pyname-$pkgver-py2
+	#python2 -m pytest
+	#popd
+}
 
 _package_python(){
 	depends=(
