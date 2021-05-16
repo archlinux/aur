@@ -1,12 +1,12 @@
 pkgbase = kops-bin
-	pkgdesc = Kubernetes Operations (kops) - Production Grade K8s Installation, Upgrades, and Management
-	pkgver = v1.20.0
+	pkgdesc = Kubernetes Operations (kOps) - Production Grade K8s Installation, Upgrades, and Management
+	pkgver = v1.20.1
 	pkgrel = 1
 	url = https://github.com/kubernetes/kops
 	arch = x86_64
 	license = apache
-	source_x86_64 = kops-bin-v1.20.0::https://github.com/kubernetes/kops/releases/download/v1.20.0/kops-linux-amd64
-	sha256sums_x86_64 = b7ac85782b8ff6d26b8deaa1d4bbce66e5afe67d2172456005a2995e928af6d3
+	source_x86_64 = kops-bin-v1.20.1::https://github.com/kubernetes/kops/releases/download/v1.20.1/kops-linux-amd64
+	sha256sums_x86_64 = 72acac518ccddfe323ab95b1f59067036fc90eb67b9fb44d899486a5431a2657
 
 pkgname = kops-bin
 
