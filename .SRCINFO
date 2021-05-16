@@ -1,6 +1,6 @@
 pkgbase = bitlbee-facebook
 	pkgdesc = Facebook protocol plugin for BitlBee
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/bitlbee/bitlbee-facebook
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = bitlbee-facebook
 	license = GPL
 	depends = bitlbee
 	depends = json-glib
-	source = bitlbee-facebook-1.2.1.tar.gz::https://github.com/bitlbee/bitlbee-facebook/archive/v1.2.1.tar.gz
-	sha512sums = 6424931a93695c41816304177f13d3c02c1e7e352f8548a18a1245cc90b151123d31d354147851d56f6b42946c30c43eaefb6d2f296a8078067eb5c65c0da1d5
+	source = bitlbee-facebook-1.2.2.tar.gz::https://github.com/bitlbee/bitlbee-facebook/archive/v1.2.2.tar.gz
+	sha512sums = 534e7e704e7ddd296c810819171b9c4770747dde109a9bbdfb41fc05602b1d9ad9bfd2ec6c7a62ffb0c85ec61252b1597217cdee7ccffd191da897a7d40085cc
 
 pkgname = bitlbee-facebook
 
