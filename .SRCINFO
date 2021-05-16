@@ -6,6 +6,7 @@ pkgbase = libresprite-appimage
 	arch = x86_64
 	license = GPL2
 	provides = libresprite
+	noextract = libresprite
 	source = 16x16.png::https://github.com/LibreSprite/LibreSprite/raw/8a77f5a55213202a346e70088c4548b07afd5ed6/desktop/icons/hicolor/16x16/libresprite.png
 	source = 32x32.png::https://github.com/LibreSprite/LibreSprite/raw/8a77f5a55213202a346e70088c4548b07afd5ed6/desktop/icons/hicolor/32x32/libresprite.png
 	source = 48x48.png::https://github.com/LibreSprite/LibreSprite/raw/8a77f5a55213202a346e70088c4548b07afd5ed6/desktop/icons/hicolor/48x48/libresprite.png

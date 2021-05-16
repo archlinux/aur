@@ -18,6 +18,7 @@ source=(
 "256x256.png::${url}/raw/${_commit}/desktop/icons/hicolor/256x256/apps/libresprite.png"
 "libresprite.desktop::${url}/raw/${_commit}/desktop/libresprite.desktop"
 )
+noextract=('libresprite')
 sha256sums_x86_64=(
 '7e677e0b3a4148e158b2b518af8ca5e6b636450d0c2ff1a688981c6f2142689f'
 )
