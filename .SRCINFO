@@ -1,0 +1,19 @@
+pkgbase = arlequin
+	pkgdesc = An Integrated Software for Population Genetics Data Analysis
+	pkgver = 3.5.2.2
+	pkgrel = 1
+	url = http://www.cmpg.unibe.ch/software/arlequin35/
+	arch = any
+	license = custom
+	depends = wine
+	depends = wine_gecko
+	depends = wine-mono
+	source = http://www.cmpg.unibe.ch/software/arlequin35/win/WinArl35.zip
+	source = arlequin.desktop
+	source = arlequin.png
+	md5sums = 545409c0e59e5be6687b6c7f122e58b4
+	md5sums = 0973863b9050f2702d6ab443bc276aab
+	md5sums = 230b156c7c8398218177a31b3db3cb12
+
+pkgname = arlequin
+
