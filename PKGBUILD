@@ -3,7 +3,7 @@
 pkgname=apmpkg-git-dev
 _pkgname=apmpkg
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Un administrador de paquetes universal para linux como modelo: PKGBUILD de la rama develop"
 arch=('x86_64')
 url="https://github.com/Kedap/apmpkg"
@@ -33,9 +33,9 @@ check() {
 package() {
 	cd "$_pkgname"
     git checkout develop
-	install -Dm 755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin"
+	install -Dm 755 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin"
 	mkdir -p ${pkgdir}/etc/apmpkg/iiabc
 	cp -r src/iiabc/ ${pkgdir}/etc/apmpkg/
 	mkdir -p ${pkgdir}/etc/apmpkg/paquetes
-    install -Dm 644 "${pkgname}.1" -t ${pkgdir}/usr/share/man/man1
+    install -Dm 644 "${_pkgname}.1" -t ${pkgdir}/usr/share/man/man1
 }
