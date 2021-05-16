@@ -1,16 +1,15 @@
 pkgbase = devilutionx-git
 	pkgdesc = Diablo devolved for linux (git version)
-	pkgver = 1.1.0.r1241.gae22644d
-	pkgrel = 2
+	pkgver = 1.2.1.r711.g7fbcfeb3
+	pkgrel = 1
 	url = https://github.com/diasurgical/devilutionX
 	arch = x86_64
 	license = custom:unlicense
 	makedepends = git
 	makedepends = cmake
-	depends = sdl2_mixer
 	depends = sdl2_ttf
 	depends = libsodium
-	provides = devilutionx=1.1.0.r1241.gae22644d
+	provides = devilutionx=1.2.1.r711.g7fbcfeb3
 	source = devilutionx::git+https://github.com/diasurgical/devilutionX.git
 	sha256sums = SKIP
 

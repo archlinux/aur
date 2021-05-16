@@ -1,13 +1,13 @@
 # Maintainer: LIN Rs <LinRs[d]users.noreply.github.com>
 
 pkgname=devilutionx-git
-pkgver=1.1.0.r1241.gae22644d
-pkgrel=2
+pkgver=1.2.1.r711.g7fbcfeb3
+pkgrel=1
 pkgdesc="Diablo devolved for linux (git version)"
 arch=('x86_64')
 url="https://github.com/diasurgical/devilutionX"
 license=('custom:unlicense')
-depends=('sdl2_mixer' 'sdl2_ttf' 'libsodium')
+depends=('sdl2_ttf' 'libsodium')
 makedepends=('git' 'cmake')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}"="${pkgver}")
