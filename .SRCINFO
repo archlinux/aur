@@ -1,7 +1,7 @@
 pkgbase = tpm_futurepcr
 	pkgdesc = Calculate future TPM PCRs after a kernel upgrade
-	pkgver = 1.2.1
-	pkgrel = 2
+	pkgver = 1.3.1
+	pkgrel = 1
 	url = https://github.com/grawity/tpm_futurepcr
 	arch = any
 	license = MIT
@@ -10,8 +10,8 @@ pkgbase = tpm_futurepcr
 	depends = python-signify
 	depends = python-pyasn1-modules
 	depends = tpm2-tools
-	source = https://github.com/grawity/tpm_futurepcr/archive/v1.2.1.tar.gz
-	sha256sums = 0050e2c6b25d6725c3ff5e7f1f7c8bbd8b9197ca5f3b46e8c691eb4344191be4
+	source = https://github.com/grawity/tpm_futurepcr/archive/v1.3.1.tar.gz
+	sha256sums = 2ef3e6888c20acc9e44c3144a8832b1d03d1c48a2e3429061f64afe024283bd8
 
 pkgname = tpm_futurepcr
 
