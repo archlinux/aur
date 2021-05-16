@@ -2,7 +2,7 @@
 pkgname=ttf-courier-code
 pkgver=1
 pkgrel=1
-pkgdesc="Bold like the typewiter original, adapted for code."
+pkgdesc="Bold like the typewriter original, adapted for code."
 arch=('any')
 url="https://fontain.org/courier-code/"
 license=('custom:Bitstream Vera')
