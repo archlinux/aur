@@ -6,7 +6,7 @@
 
 pkgname=dolphin-root
 _pkgname=dolphin
-pkgver=21.04.0
+pkgver=21.04.1
 pkgrel=1
 pkgdesc='KDE File Manager'
 arch=(x86_64)
@@ -29,6 +29,7 @@ provides=('dolphin')
 conflicts=('dolphin')
 
 prepare() {
+  sed -i "s/dolphin[^/]*/dolphin-$pkgver/g" root.patch
   patch -p1 < root.patch
 }
 
