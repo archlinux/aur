@@ -3,8 +3,8 @@
 pkgbase='python-london-unified-prayer-times'
 pkgname=('python-london-unified-prayer-times')
 _module='london_unified_prayer_times'
-pkgver='1.2.0'
-pkgrel=2
+pkgver='1.2.1'
+pkgrel=1
 pkgdesc="A library for retrieving data from The London Unified Prayer Timetable."
 url="https://github.com/sshaikh/london_unified_prayer_times"
 depends=('python' 'python-click' 'python-click-default-group' 'python-jsonschema'
