@@ -3,11 +3,12 @@
 pkgname=tiny-irc-client-bin
 _pkgname=tiny
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='tiny is an IRC client written in Rust.'
 arch=('x86_64')
 license=('MIT')
-conflicts=('tiny-irc-client' 'tiny-irc-client-git')
+provides=('tiny-irc-client')
+conflicts=('tiny-irc-client')
 url="https://github.com/osa1/$_pkgname"
 source=(
   "${url}/releases/download/v${pkgver}/tiny-ubuntu-20.04-libssl-dbus.tar.gz"

@@ -1,12 +1,12 @@
 pkgbase = tiny-irc-client-bin
 	pkgdesc = tiny is an IRC client written in Rust.
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/osa1/tiny
 	arch = x86_64
 	license = MIT
+	provides = tiny-irc-client
 	conflicts = tiny-irc-client
-	conflicts = tiny-irc-client-git
 	source = https://github.com/osa1/tiny/releases/download/v0.9.0/tiny-ubuntu-20.04-libssl-dbus.tar.gz
 	source = https://github.com/osa1/tiny/archive/v0.9.0.tar.gz
 	sha256sums = caebb955d508abcfb9e8ce0d5df7ec17cbed0c1af53b8ec7b2fbaa74335bd3b7
