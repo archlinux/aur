@@ -1,7 +1,7 @@
 # Maintainer: The-Repo-Club <The-Repo-Club@github.com>
 # Contributor: The-Repo-Club <The-Repo-Club@github.com>
 pkgname=instaaur
-pkgver=2021.05.10
+pkgver=2021.05.16
 pkgrel=1
 pkgdesc="A bach AUR wrapper"
 url="https://github.com/The-Repo-Club/$pkgname"
@@ -12,7 +12,7 @@ depends=('pacman' 'jshon' 'tar')
 optdepends=('git: AUR4 git support')
 provides=($pkgname)
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('54a53d2eccf44934ce304a8660cc4aca1e5e77625780628e667c77844f9209a1')
+sha256sums=('a750cd78b8e787cf37dc0ada683770c8d29503f78d20c0065c2d27fab6c5ad60')
 
 package() {
   cd $srcdir/$pkgname-$pkgver
