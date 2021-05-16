@@ -1,8 +1,9 @@
-# Maintainer: Tobias Hübner <dasNeutrum@gmx.de>
+# Maintainer: Richard Neumann <mail at richard dash neumann period de>
+# Former maintainer: Tobias Hübner <dasNeutrum@gmx.de>
 
 _pkgname=sonarqube
 pkgname=${_pkgname}
-pkgver=8.8.0.42792
+pkgver=8.9.0.43852
 pkgrel=1
 pkgdesc="An open source platform for continuous inspection of code quality"
 arch=('x86_64')
@@ -29,7 +30,7 @@ source=("https://binaries.sonarsource.com/Distribution/${_pkgname}/${_pkgname}-$
         "${_pkgname}-user.conf"
         "99-${_pkgname}.conf")
 
-sha256sums=('c60bb7d7e79d24af90e0a9d778e51008ab49607854bba33ccd9df69d9dd7fbf8'
+sha256sums=('6facb9d373b0ba32b188704883ecb792135474681cb2d05ce027918a41d04623'
             'cbea7066125c5e1b1ca093b73ccfaa4a477dc8a8431c4619de356bd36a6a44a9'
             '2d908a2965df90a74feb0e734dabb27543f5a375ce94ce2a26b4682f462e3ea5'
             '43ff10bbb495827e952225dce79da79bb800627eaa6f1d933f8f7fb408aafe6d'
