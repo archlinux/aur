@@ -3,36 +3,35 @@
 
 pkgbase=gnatcoll-bindings
 pkgname=(gnatcoll-python2 gnatcoll-readline gnatcoll-iconv gnatcoll-gmp)
-_upstream_ver=20.0-20191009-1B2EA
-pkgver=2020
-pkgrel=3
+epoch=1
+pkgver=21.0.0
+pkgrel=1
 
 pkgdesc='GNAT Components Collection - Language and library bindings'
 url='https://github.com/AdaCore/gnatcoll-bindings/'
 arch=('i686' 'x86_64')
 license=('GPL')
 
-makedepends=('python2' 'gprbuild' 'gnatcoll-core')
+makedepends=('python2' 'readline' 'libiconv' 'gmp' 'gprbuild' 'gnatcoll-core')
 
-_checksum=3c54db553121bf88877e2f56ac4fca36765186eb
-source=("${pkgbase}-${_upstream_ver}-src.tar.gz::https://community.download.adacore.com/v1/${_checksum}?filename=${pkgbase}-${_upstream_ver}-src.tar.gz")
-sha1sums=("$_checksum")
+source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('53965f54647ea9c8b59856c7a00079ff5d5a473f549f2d4c9a517dffc6ee7c8f')
 
 build()
 {
     _gpr_opts="-R -cargs $CFLAGS -largs $LDFLAGS"
 
-    cd "$srcdir/$pkgbase-$_upstream_ver-src/python"
+    cd "$srcdir/$pkgbase-$pkgver/python"
     # --gpr-opts reads all remaining arguments, so no quotes
     python2 setup.py build --prefix=/usr --gpr-opts $_gpr_opts
 
-    cd "$srcdir/$pkgbase-$_upstream_ver-src/readline"
+    cd "$srcdir/$pkgbase-$pkgver/readline"
     python2 setup.py build --prefix=/usr --accept-gpl --gpr-opts $_gpr_opts
 
-    cd "$srcdir/$pkgbase-$_upstream_ver-src/iconv"
+    cd "$srcdir/$pkgbase-$pkgver/iconv"
     python2 setup.py build --prefix=/usr --gpr-opts $_gpr_opts
 
-    cd "$srcdir/$pkgbase-$_upstream_ver-src/gmp"
+    cd "$srcdir/$pkgbase-$pkgver/gmp"
     python2 setup.py build --prefix=/usr --gpr-opts $_gpr_opts
 }
 
@@ -43,7 +42,7 @@ package_gnatcoll-python2()
     provides=('gnatcoll-python')
     replaces=('gnatcoll-python')
 
-    cd "$srcdir/$pkgbase-$_upstream_ver-src/python"
+    cd "$srcdir/$pkgbase-$pkgver/python"
     python2 setup.py install --prefix="$pkgdir/usr"
 }
 
@@ -52,7 +51,7 @@ package_gnatcoll-readline()
     pkgdesc='GNAT Components Collection - Bindings to readline'
     depends=('readline' 'gnatcoll-core')
 
-    cd "$srcdir/$pkgbase-$_upstream_ver-src/readline"
+    cd "$srcdir/$pkgbase-$pkgver/readline"
     python2 setup.py install --prefix="$pkgdir/usr"
 }
 
@@ -61,7 +60,7 @@ package_gnatcoll-iconv()
     pkgdesc='GNAT Components Collection - Bindings to Libiconv'
     depends=('libiconv' 'gnatcoll-core')
 
-    cd "$srcdir/$pkgbase-$_upstream_ver-src/iconv"
+    cd "$srcdir/$pkgbase-$pkgver/iconv"
     python2 setup.py install --prefix="$pkgdir/usr"
 }
 
@@ -70,6 +69,6 @@ package_gnatcoll-gmp()
     pkgdesc='GNAT Components Collection - Bindings to GMP'
     depends=('gmp' 'gnatcoll-core')
 
-    cd "$srcdir/$pkgbase-$_upstream_ver-src/gmp"
+    cd "$srcdir/$pkgbase-$pkgver/gmp"
     python2 setup.py install --prefix="$pkgdir/usr"
 }
