@@ -1,6 +1,6 @@
 pkgbase = python-botoy
 	pkgdesc = OPQ/IOTQQ/IOTBot的一个Python开发助手
-	pkgver = 2.0
+	pkgver = 4.3
 	pkgrel = 1
 	url = https://github.com/xiyaowong/botoy
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-botoy
 	depends = python-loguru
 	depends = python-click
 	depends = python-aiohttp
-	source = python-botoy-2.0.tar.gz::https://github.com/xiyaowong/botoy/archive/v2.0.tar.gz
-	sha256sums = ec06a3d16290515b5d68932124397e639f57b4e8e8d48e97905af72970c732c5
+	source = python-botoy-4.3.tar.gz::https://github.com/xiyaowong/botoy/archive/v4.3.tar.gz
+	sha256sums = 2b751447ad9ed31ba1a8bed82db69e676d807afe02b264b62285275a20e8cbbb
 
 pkgname = python-botoy
 
