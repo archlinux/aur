@@ -14,7 +14,7 @@ pkgbase = code-features-insiders
 	source = code-features-insiders.hook
 	source = patch.sh
 	md5sums = 6ff3e599956e45e9d1a78ac3c88c0454
-	md5sums = 37ea059fdd096df4ebb71477936d1e34
+	md5sums = 8b64cdc2b6a897b506cf4e45eea72b04
 
 pkgname = code-features-insiders
 
