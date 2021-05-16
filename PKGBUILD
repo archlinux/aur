@@ -1,4 +1,4 @@
-# Maintainer: Steven Guikal <aur-void@fluix.dev>
+# Maintainer: Steven Guikal <aur-void@fluix.one>
 
 pkgname=sway-borders-git
 _pkgname=sway-borders
