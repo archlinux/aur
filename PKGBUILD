@@ -2,7 +2,7 @@
 
 pkgname=zramd
 pkgver=0.8.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Automatically setup swap on zram ✨"
 arch=('any')
 url="https://github.com/maximumadmin/zramd"
