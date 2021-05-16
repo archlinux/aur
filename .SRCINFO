@@ -1,7 +1,7 @@
 pkgbase = dudestar-git
 	pkgdesc = Software to RX/TX D-STAR, DMR, Fusion YSF/FCS, NXDN, P25, M17, and IAX (AllStar client) over UDP
 	pkgver = r185.b5e239e
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nostar/dudestar
 	arch = x86_64
 	license = GPL2 GPL3
@@ -13,6 +13,7 @@ pkgbase = dudestar-git
 	depends = make
 	depends = pulseaudio
 	depends = libvorbis
+	depends = dina-font
 	provides = dudestar
 	conflicts = dudestar
 	source = dudestar-git::git+https://github.com/nostar/dudestar

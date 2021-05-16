@@ -2,12 +2,12 @@
 
 pkgname=dudestar-git
 pkgver=r185.b5e239e
-pkgrel=2
+pkgrel=3
 pkgdesc="Software to RX/TX D-STAR, DMR, Fusion YSF/FCS, NXDN, P25, M17, and IAX (AllStar client) over UDP"
 arch=('x86_64')
 url="https://github.com/nostar/dudestar"
 license=('GPL2 GPL3')
-depends=('qt5-multimedia' 'qt5-serialport' 'qt5-base' 'make' 'pulseaudio' 'libvorbis')
+depends=('qt5-multimedia' 'qt5-serialport' 'qt5-base' 'make' 'pulseaudio' 'libvorbis' 'dina-font')
 makedepends=('gcc' 'git')
 conflicts=('dudestar')
 provides=('dudestar')
