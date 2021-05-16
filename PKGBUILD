@@ -2,8 +2,8 @@
 # Maintainer: Rod Kay <charlie5 on #ada at freenode.net>
 
 pkgname=gtkada
-_upstream_ver=2020-20200429-19B96
-pkgver=2020
+epoch=1
+pkgver=21.0.0
 pkgrel=1
 
 pkgdesc='Ada bindings for the Gtk+ library.'
@@ -14,13 +14,12 @@ license=('GPL')
 depends=('gcc-ada' 'gtk3')
 makedepends=('gprbuild')
 
-_checksum=96f85c875c161c36e7d0edb19aa4dbddf41ea671
-source=("${pkgname}-${_upstream_ver}-src.tar.gz::https://community.download.adacore.com/v1/${_checksum}?filename=${pkgname}-${_upstream_ver}-src.tar.gz")
-sha1sums=("$_checksum")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+md5sums=('f69c974e8067a651bd62a4f3fcc1b127')
 
 build()
 {
-    cd "$srcdir/$pkgname-$_upstream_ver-src"
+    cd "$srcdir/$pkgname-$pkgver"
 
     export LIBRARY_TYPE=relocatable
 
@@ -37,7 +36,7 @@ build()
 
 package()
 {
-    cd "$srcdir/$pkgname-$_upstream_ver-src"
+    cd "$srcdir/$pkgname-$pkgver"
 
     make -j1 PROCESSORS=1 DESTDIR="$pkgdir" install
 }
