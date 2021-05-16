@@ -1,9 +1,9 @@
 # Maintainer: SeeLook <seelook@gmail.com>
 pkgname=nootka
-pkgver=1.9.0.rc1
-_pkgver=1.9.0-rc1
-pkgrel=2
-pkgdesc="A cross-platform tool for learning classical score notation. Sight reding and ear training."
+pkgver=1.9.1.rc2
+_pkgver=1.9.1-rc2
+pkgrel=1
+pkgdesc="A cross-platform tool for learning classical score notation. Sight reading and ear training."
 arch=('x86_64' 'i686')
 url="https://nootka.sourceforge.io/"
 license=('GPL3')
@@ -17,7 +17,7 @@ optdepends=(
 conflicts=('nootka-hg' 'nootka-git')
 makedepends=('cmake' 'qt5-base' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'fftw' 'libvorbis' 'soundtouch' 'alsa-lib')
 source=("https://sourceforge.net/projects/nootka/files/Nootka-$_pkgver/nootka-$_pkgver-source.tar.bz2")
-md5sums=('e046c168a0f9219c6033bd1a139f1fe4')
+md5sums=('01ae95ca9a1ed42edbbda947d0fc6399')
 
 build() {
   cd "$srcdir/nootka-$_pkgver-source"
