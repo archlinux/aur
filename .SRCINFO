@@ -1,7 +1,7 @@
 pkgbase = linux-air-combat
 	pkgdesc = Free open source combat flight simulator
 	pkgver = 08p47
-	pkgrel = 1
+	pkgrel = 2
 	url = https://askmisterwizard.com/2019/LinuxAirCombat/IntroducingLinuxAirCombat.htm
 	arch = any
 	license = unknown
