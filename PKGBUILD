@@ -14,7 +14,7 @@ pkgname=(
 epoch=1
 pkgver="1.12.1"
 _pkgver=${pkgver/\~/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight virtual machines for containers (binary version)"
 arch=(x86_64)
 url="https://katacontainers.io"
@@ -68,7 +68,7 @@ package_kata1-runtime-bin() {
   depends=(qemu-headless kata1-proxy kata1-shim kata1-containers-image kata1-linux-container)
   optdepends=(
     kata1-ksm-throttler
-    'cloud-hypervisor<0.11.0'
+    'cloud-hypervisor'  # testing with 15.0 worked, current qemu works, too
     'firecracker<0.22.0'
   )
   conflicts=('kata1-runtime')

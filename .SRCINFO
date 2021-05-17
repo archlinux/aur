@@ -1,7 +1,7 @@
 pkgbase = kata1-containers-bin
 	pkgdesc = Lightweight virtual machines for containers (binary version)
 	pkgver = 1.12.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://katacontainers.io
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgname = kata1-runtime-bin
 	depends = kata1-containers-image
 	depends = kata1-linux-container
 	optdepends = kata1-ksm-throttler
-	optdepends = cloud-hypervisor<0.11.0
+	optdepends = cloud-hypervisor
 	optdepends = firecracker<0.22.0
 	provides = kata1-runtime
 	conflicts = kata1-runtime
