@@ -1,0 +1,16 @@
+pkgbase = stillalive
+	pkgdesc = Log into GLaDOS to see the "still alive" message int realtime!
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.ffmpeg.org/
+	arch = x86_64
+	license = GPL3
+	depends = mplayer
+	depends = youtube-dl
+	depends = bash
+	provides = stillalive.sh
+	source = stillalive.sh
+	sha256sums = ea98b0e4554f4ddc384845db60c53332b95b3f87ddd678236138b99f400c7e41
+
+pkgname = stillalive
+
