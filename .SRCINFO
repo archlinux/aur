@@ -8,6 +8,7 @@ pkgbase = fenrir-git
 	license = LGPL
 	makedepends = git
 	makedepends = python-setuptools
+	depends = espeak-ng
 	depends = python
 	depends = python-pyudev
 	depends = python-daemonize

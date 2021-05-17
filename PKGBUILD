@@ -10,7 +10,7 @@ pkgdesc='A user space console screen reader written in python3'
 arch=('any')
 url="https://linux-a11y.org/index.php?page=fenrir-screenreader"
 license=('LGPL')
-depends=('python' 'python-pyudev' 'python-daemonize' 'python-evdev' 'python-dbus' 'python-pyte')
+depends=('espeak-ng' 'python' 'python-pyudev' 'python-daemonize' 'python-evdev' 'python-dbus' 'python-pyte')
 optdepends=('brltty: For Braille support'
 'gstreamer: for soundicons via gstreamer'
 'socat: Control running Fenrir screenreader'
