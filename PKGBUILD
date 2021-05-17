@@ -1,7 +1,7 @@
 # Maintainer: Ashley Chiara <PersonaVinny@protonmail.com>
 pkgname=yafetch-git
 pkgver=1.r4.7214383
-pkgrel=1
+pkgrel=2
 pkgdesc='yet another fetch, written in C++'
 arch=('x86_64')
 url='https://gitlab.com/cyberkitty/yafetch'
