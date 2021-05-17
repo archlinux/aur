@@ -21,4 +21,4 @@ export GOOGLE_DEFAULT_CLIENT_ID=413772536636.apps.googleusercontent.com
 export GOOGLE_DEFAULT_CLIENT_SECRET=0ZChLK6AxeA3Isu96MkwqDR4
 
 # Launch
-exec /opt/chromium-snapshot/chrome $CHROMIUM_USER_FLAGS $@
+exec /opt/chromium-snapshot/chrome $CHROMIUM_USER_FLAGS "$@"
