@@ -2,8 +2,8 @@
 
 _target="msp430-elf"
 pkgname=${_target}-gcc
-pkgver=10.3.0
-_islver=0.23
+pkgver=11.1.0
+_islver=0.24
 pkgrel=1
 pkgdesc="The GNU Compiler Collection for the ${_target} target."
 arch=(i686 x86_64)
@@ -17,8 +17,8 @@ provides=("${_target}-gcc-stage1")
 optdepends=("${_target}-libstdc++: C++ standard library support")
 source=(http://isl.gforge.inria.fr/isl-${_islver}.tar.xz
         ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz)
-sha256sums=('5efc53efaef151301f4e7dde3856b66812d8153dede24fab17673f801c8698f2'
-            '64f404c1a650f27fc33da242e1f2df54952e3963a49e06e73f6940f3223ac344')
+sha256sums=('043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad'
+            '4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf')
 
 
 prepare() {
