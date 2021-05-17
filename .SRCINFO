@@ -1,0 +1,15 @@
+pkgbase = banano-vanity
+	pkgdesc = A vanity address generator for banano cryptocurrency
+	pkgver = 1.41
+	pkgrel = 1
+	url = https://github.com/flammenderdrache/banano-vanity
+	arch = x86_64
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	makedepends = ocl-icd
+	source = git+https://github.com/flammenderdrache/banano-vanity.git
+	sha512sums = SKIP
+
+pkgname = banano-vanity
+
