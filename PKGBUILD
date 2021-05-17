@@ -3,12 +3,12 @@
 pkgname=apmpkg-git-dev
 _pkgname=apmpkg
 pkgver=1.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Un administrador de paquetes universal para linux como modelo: PKGBUILD de la rama develop"
 arch=('x86_64')
 url="https://github.com/Kedap/apmpkg"
 license=('Apache')
-depends=('git' 'python-pip' 'python2-pip' 'curl' 'fakeroot' 'ruby-bundler' 'rsync')
+depends=('git' 'python-pip' 'python2-pip' 'wget' 'fakeroot' 'ruby-bundler' 'rsync')
 makedepends=('git' 'cargo')
 conflicts=('apmpkg')
 source=("git+https://github.com/kedap/${_pkgname}")
