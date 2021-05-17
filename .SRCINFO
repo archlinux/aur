@@ -7,9 +7,9 @@ pkgbase = ttf-bitstream-charter
 	license = custom
 	depends = fontconfig
 	conflicts = otf-bitstream-charter
-	source = https://practicaltypography.com/fonts/Charter%20200512.zip
+	source = https://practicaltypography.com/fonts/Charter%20210112.zip
 	source = 82-charter.conf
-	sha256sums = 39d1615e8b9c71f6e339c4d66f9cd1c6c5e85a63e201cb880f7691fa2d26d3a3
+	sha256sums = b40297f1a615f94594bdad0995848eb2223fb53ccb4ea197cabf24439bd811c9
 	sha256sums = 0de8093ecf7053865596d39fd1059f049abec480cf7488de366f1db6dc637cc8
 
 pkgname = ttf-bitstream-charter

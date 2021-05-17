@@ -10,16 +10,16 @@ depends=("fontconfig")
 conflicts=("otf-bitstream-charter")
 url="https://practicaltypography.com/charter.html"
 license=("custom")
-source=("https://practicaltypography.com/fonts/Charter%20200512.zip" "${_conffile}")
-sha256sums=('39d1615e8b9c71f6e339c4d66f9cd1c6c5e85a63e201cb880f7691fa2d26d3a3'
+source=("https://practicaltypography.com/fonts/Charter%20210112.zip" "${_conffile}")
+sha256sums=('b40297f1a615f94594bdad0995848eb2223fb53ccb4ea197cabf24439bd811c9'
             '0de8093ecf7053865596d39fd1059f049abec480cf7488de366f1db6dc637cc8')
 
 package() {
   install -d "${pkgdir}"/usr/share/fonts/TTF
   install -d "${pkgdir}"/usr/share/fonts/OTF
-  install -Dm644 "${srcdir}/Charter/Charter/OpenType TT/"*.ttf "${pkgdir}"/usr/share/fonts/TTF
-  install -Dm644 "${srcdir}"/Charter/Charter/OpenType/*.otf "${pkgdir}"/usr/share/fonts/OTF
-  install -Dm644 "${srcdir}/Charter/Charter license.txt" "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  install -Dm644 "${srcdir}/Charter 210112/TTF format (best for Windows)/Charter/"*.ttf "${pkgdir}"/usr/share/fonts/TTF
+  install -Dm644 "${srcdir}/Charter 210112/OTF format (best for Mac OS)/Charter/"*.otf "${pkgdir}"/usr/share/fonts/OTF
+  install -Dm644 "${srcdir}/Charter 210112/Charter license.txt" "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 
   # Install fontconfig file
   install -d "$pkgdir"/etc/fonts/conf.avail
