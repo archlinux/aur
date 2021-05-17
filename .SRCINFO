@@ -1,0 +1,22 @@
+pkgbase = firefox-awesome-rss
+	pkgdesc = Puts an RSS/Atom subscribe button back in URL bar
+	pkgver = 1.3.5
+	pkgrel = 1
+	url = https://github.com/shgysk8zer0/awesome-rss
+	arch = any
+	groups = firefox-addons
+	license = GPL
+	makedepends = git
+	makedepends = jq
+	makedepends = npm
+	source = firefox-awesome-rss-1.3.5.tar.gz::https://github.com/shgysk8zer0/awesome-rss/archive/refs/tags/v1.3.5.tar.gz
+	source = git+https://github.com/shgysk8zer0/adwaita-icons.git#commit=c88c9aad4ee20d6712d44ac9a7e39d585e59e83d
+	source = git+https://github.com/shgysk8zer0/logos.git#commit=33af350009a44b7b56f878635d0b88b2ecacc454
+	source = git+https://github.com/primer/octicons.git#commit=7b5d10a4f3af617084b6bd6bc33700b8e04c2470
+	sha512sums = d1c2506685233965761ad8ccdf2c393d9829a3ff3944ac4305381caa2a4157060c4be326e729f25b0a4f900acd668af22f25232b0df670714a255ece1901954a
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = firefox-awesome-rss
+
