@@ -1,7 +1,8 @@
-# Maintainer: Sorin-Mihai Vârgolici <sorin-mihai@vargolici.com>
+# Maintainer: Jacob <jacob *at* jacobwinski *dot* com>
+# Contributor: Sorin-Mihai Vârgolici <sorin-mihai@vargolici.com>
 _pkgname=vcprompt
 pkgname=$_pkgname-git
-pkgver=20170225.gbe91a3b
+pkgver=20201228.g850bf44
 pkgrel=1
 pkgdesc="Version control information in your prompt"
 arch=(x86_64)
