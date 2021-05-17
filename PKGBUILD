@@ -4,7 +4,7 @@ _group_name="swcdb"
 _sub_name="fsbroker"
 
 pkgname=${_group_name}-${_sub_name}
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="The SWC-DB FsBroker Application"
 arch=("x86_64")
@@ -19,6 +19,7 @@ license=('GPLv3')
 
 
 depends=(
+  'swcdb-lib'
   'swcdb-lib-fs'
 )
 makedepends=(
@@ -27,6 +28,7 @@ makedepends=(
   'make'
   'gcc'
   'asio'
+  'swcdb-lib'
   'swcdb-lib-fs'
 )
 optdepends=(
