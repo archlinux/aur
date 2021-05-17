@@ -2,7 +2,7 @@
 
 _pkgname=WowUp
 pkgname=${_pkgname,,}
-_pkgver=2.2.1
+_pkgver=2.2.2
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc='WowUp the World of Warcraft addon updater'
@@ -18,17 +18,17 @@ source=(
     run_wowup.sh
     package-lock.json.xz
 )
-sha256sums=('8344baeee23a8591e9519fdf34d99a8dca28df68697478c9e75c4a130e027ea4'
+sha256sums=('ac64565958fbfcbfc983d161dee8cbf5715f90228a2c53379699d683d0b92307'
             'f8e0bbe6c138997f1dc1d9dfb83773cc6a8c4f6af254a73194a8874e078746b9'
             '154da83623df19a3224f9777db0375f386ea1b9c108ba0fe84213be1cef56493'
-            '863ebba3c7d23ebb63f5be4d658d5b7bea0d699ed124f0c813064a71fb1584dd')
+            '5f9b0e6fb8886d23b2782e947e714e14cf7c9a7ec69ac515b26fd215c6c8f010')
 
 prepare() {
     # set legacy peer deps in .npmrc file to dependency conflict since npm 7
     echo "legacy-peer-deps=true" >>"$_pkgname-$_pkgver/wowup-electron/.npmrc"
 
     # upgrade `electron-builder` to resolve issue since Node.js 16.0
-    sed -i '/"electron-builder":/ { s/22.10.5/22.11.3/ }' $_pkgname-$_pkgver/wowup-electron/package.json
+    sed -i '/"electron-builder":/ { s/22.10.5/22.11.4/ }' $_pkgname-$_pkgver/wowup-electron/package.json
     # and use an updated `package-lock.json`
     cp package-lock.json $_pkgname-$_pkgver/wowup-electron/package-lock.json
 }
