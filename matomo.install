@@ -95,4 +95,9 @@ post_upgrade() {
 
   # /var/lib/webapps/matomo: owner was set correctly in post_install or pre_upgrade,
   # and we don’t install any files to that directory, so no need to fiddle with it here.
+
+  # introduction of split packages
+  if [ "$(vercmp "$2" "4.3.0")" -le 0 ]; then
+    echo 'WARNING: Config.ini.php now has some new options, see https://developer.matomo.org/changelog'
+  fi
 }
