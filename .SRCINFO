@@ -16,7 +16,9 @@ pkgbase = wslay
 	makedepends = pkg-config
 	makedepends = python-sphinx
 	source = wslay-1.1.1.tar.gz::https://codeload.github.com/tatsuhiro-t/wslay/tar.gz/release-1.1.1
+	source = sphinx-4.patch
 	sha256sums = 7b9f4b9df09adaa6e07ec309b68ab376c0db2cfd916613023b52a47adfda224a
+	sha256sums = 6c267a29790d6f19c4c86106299ea2a247d52e56f95bd42aceb62dff7ef5a4f5
 
 pkgname = wslay
 

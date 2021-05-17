@@ -1,0 +1,29 @@
+initial patch by deep_thought, changes by Cebtenzzre
+diff -Naurp a/doc/sphinx/conf.py.in b/doc/sphinx/conf.py.in
+--- a/doc/sphinx/conf.py.in	2020-06-20 02:51:51.000000000 -0400
++++ b/doc/sphinx/conf.py.in	2021-05-17 17:12:54.764224521 -0400
+@@ -123,6 +123,8 @@ html_theme_options = {'bodyfont':'roboto
+ # so a file named "default.css" will overwrite the builtin "default.css".
+ html_static_path = ['_static/default2.css']
+ 
++html_css_files = ['default2.css']
++
+ # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
+ # using the given strftime format.
+ #html_last_updated_fmt = '%b %d, %Y'
+@@ -209,6 +211,9 @@ latex_documents = [
+ 
+ # -- Options for manual page output --------------------------------------------
+ 
++# If true, make a section directory on build man page. Default is True.
++man_make_section_directory = False
++
+ # One entry per manual page. List of tuples
+ # (source start file, name, description, authors, manual section).
+ man_pages = [
+@@ -302,4 +307,4 @@ man_pages = [
+     ]
+ 
+ def setup(app):
+-    app.add_stylesheet('default2.css')
++    pass

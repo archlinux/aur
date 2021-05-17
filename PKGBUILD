@@ -10,8 +10,15 @@ makedepends=('autoconf' 'automake' 'git' 'libtool' 'make' 'pkg-config' 'python-s
 checkdepends=('cunit' 'nettle')
 url="https://github.com/tatsuhiro-t/wslay"
 license=('MIT')
-source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/tatsuhiro-t/$pkgname/tar.gz/release-$pkgver)
-sha256sums=('7b9f4b9df09adaa6e07ec309b68ab376c0db2cfd916613023b52a47adfda224a')
+source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/tatsuhiro-t/$pkgname/tar.gz/release-$pkgver"
+        'sphinx-4.patch')
+sha256sums=('7b9f4b9df09adaa6e07ec309b68ab376c0db2cfd916613023b52a47adfda224a'
+            '6c267a29790d6f19c4c86106299ea2a247d52e56f95bd42aceb62dff7ef5a4f5')
+
+prepare() {
+  cd "$srcdir/$pkgname-release-$pkgver"
+  patch -Np1 <../sphinx-4.patch
+}
 
 build() {
   cd "$srcdir/$pkgname-release-$pkgver"
