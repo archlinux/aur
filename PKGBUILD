@@ -72,7 +72,6 @@ package()
     # Assure that the directories exist.
     # shellcheck disable=SC2154
     mkdir -p "${pkgdir}"/usr/bin/
-    mkdir -p "${pkgdir}"/usr/share/
     mkdir -p "${pkgdir}"/usr/share/doc/"${_pkgname}"/
     mkdir -p "${pkgdir}"/usr/share/licenses/"${_pkgname}"/
 
