@@ -6,3 +6,5 @@ A Sudoku has 81 Fields and in the program it is represented as a linear string o
 This repo includes the example.sudoku file which looks like this:
 
 `000260701680070090190004500820100040004602900050003028009300074040050036703018000`
+
+![Example](https://raw.githubusercontent.com/theeyeofcthulhu/term-sudoku/master/example.png)
