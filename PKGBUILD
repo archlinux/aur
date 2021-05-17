@@ -2,8 +2,8 @@
 pkgname="bee-git"
 _pkgname="bee"
 _branch="chrysalis-pt-2"
-_pkgver="0.1.1"
-pkgver=0.1.1.r0.gec55a66e
+_pkgver="0.1.2"
+pkgver=0.1.2.r0.gb7d9824f
 pkgrel=1
 pkgdesc="A framework for IOTA nodes, clients and applications in Rust"
 arch=('x86_64')
