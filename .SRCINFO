@@ -1,6 +1,6 @@
 pkgbase = digimend-kernel-drivers-dkms-git
 	pkgdesc = Linux kernel modules (DKMS) for non-Wacom USB graphics tablets. Git version.
-	pkgver = 8.r37.gea507e2
+	pkgver = 10.r0.gec5c16d
 	pkgrel = 2
 	url = https://digimend.github.io
 	arch = any
