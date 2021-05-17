@@ -1,0 +1,13 @@
+pkgbase = osfetch-rs
+	pkgdesc = A fetch utility written in rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/cyberknight777/osfetch-rs
+	arch = any
+	license = MIT
+	depends = rust
+	source = git+https://gitlab.com/cyberknight777/osfetch-rs
+	sha512sums = SKIP
+
+pkgname = osfetch-rs
+
