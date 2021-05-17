@@ -14,6 +14,7 @@ makedepends=('intltool'
 	'python2-xdg')
 depends=('python2'
 	'python2-twisted-git'
+	'python2-incremental-git'
 	'desktop-file-utils'
 	'hicolor-icon-theme')
 optdepends=('python2-service-identity'

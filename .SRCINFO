@@ -12,6 +12,7 @@ pkgbase = deluge1
 	makedepends = python2-xdg
 	depends = python2
 	depends = python2-twisted-git
+	depends = python2-incremental-git
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
 	optdepends = python2-service-identity
