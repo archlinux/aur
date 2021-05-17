@@ -1,6 +1,51 @@
 Version history
 ===============
 
+0.9.37
+------
+
+2021-05-17
+
+Added new maps from the multiplayer level contest. Thanks,
+Dominator_101, Dullstar, Flopsy, geoo, IchoTolot, WillLem!
+Includes Dominator_101's Rescue Rangers Double Team.
+
+Fixed flickering mouse cursor in the dialog that aborts a networking game.
+Before, when you hovered over a lix in the background of the dialog, the
+cursor would osciallte between open and closed. Now, the cursor stays closed
+because you can't assign to lix during the dialog.
+
+Partly address #234: When you resize the map in the editor, the editor will
+zoom out as far as it can to show you the entire map. It's still disorienting
+to resize maps with large empty areas.
+
+Fix: When you verified a directory containing 0 replays in the GUI verifier,
+the GUI verifier didn't print the line that you can now click to exit. Now
+it prints that line.
+
+In the main menu, below the version number, print name of operating system and
+32/64-bit for which the running version is built.
+
+The debugging build's user options defaults show the phyus/FPS. This only
+matters when you run a debugging build without a user option file
+user/options.sdl. The normal release build defaults to not showing phyus/FPS
+until you enable it in the options menu.
+
+In dub.json, removed obsolete architecture restriction for Windows builds
+with LDC.
+
+The Windows 64-bit build notes point to LDC's multilib release instead of to
+the pure 64-bit release. You can use LDC's installer or LDC's 7z download. The
+main difference is that LDC's lib/ dir is now called lib64/. Updated
+http://www.lixgame.com/dow/lix-dlls-libs-win64.zip with the new directory name
+lib64/ instead of lib/.
+
+Documented the level format in doc/formats/level.txt. Documented in the
+Windows build notes doc/build/win*.txt where to get Allegro binaries from
+NuGet.
+
+
+
 0.9.36
 ------
 
@@ -34,6 +79,7 @@ In the doc/formats/ directory, document replay pointing, terrain lines in
 levels, groups in levels.
 
 
+
 0.9.35
 ------
 
@@ -59,6 +105,8 @@ Fixed compilation errors that appeared with DMD 2.094.2.
 
 Added build notes for a 64-bit Windows build with DMD. I encourage to use LDC
 instead of DMD for release builds, but it's good to have more options.
+
+
 
 0.9.34
 ------
@@ -91,6 +139,8 @@ Remove doc/oldwish.txt, it has become outdated. The text is preserved at:
 https://www.lemmingsforums.net/index.php?topic=5132.0
 Let's file issues on github instead.
 
+
+
 0.9.33
 ------
 
@@ -107,6 +157,8 @@ always hid the assignments that came last in the replay. Now, the tweaker
 hides assignments that are far away from the current physics update. Now, to
 view early assignments, rewind the game. To see late assignments, forward the
 game.
+
+
 
 0.9.32
 ------
@@ -140,6 +192,8 @@ data/language/*.txt doesn't warn on loading a language.
 Code: Fix deprecations according to DMD 2.093: Annotate ref-returning
 functions with return
 
+
+
 0.9.31
 ------
 
@@ -163,6 +217,8 @@ New order: abstract/, beach/, bricks/, carnival/, construction/, ..., forest/,
 ..., occult/, ..., irrespective of the unshown author's name.
 
 Fixed a backroute in Ifo Island. The building at the bottom takes longer now.
+
+
 
 0.9.30
 ------
@@ -190,6 +246,8 @@ changes to physics.
 Multiplayer maps: Added Down with Frogs by Flopsy.
 Added remake of Humps (2-player map from 2010) using Lix's earth terrain.
 Removed endless falls at the side of Honeypots.
+
+
 
 0.9.29
 ------
