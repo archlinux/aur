@@ -9,7 +9,7 @@ license=('GPL')
 arch=('x86_64')
 depends=('xdg-utils')
 makedepends=('autoconf' 'automake')
-source=("http://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/${pkgname}-${pkgver}.tar.gz"
+source=("https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/${pkgname}-${pkgver}.tar.gz"
         "$pkgname.desktop"
         "$pkgname.png")
 md5sums=('d60e4768b3c065d52a19658d295e8fe8'
