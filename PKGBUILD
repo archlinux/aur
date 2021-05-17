@@ -4,8 +4,8 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwin-unredirect
-pkgver=5.21.3
-pkgrel=2
+pkgver=5.21.5
+pkgrel=1
 pkgdesc='KWin compositor with unredirect patch from Sporif'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -20,7 +20,7 @@ groups=(plasma)
 source=("https://download.kde.org/stable/plasma/$pkgver/kwin-$pkgver.tar.xz"
         'unredirect.patch')
 install=$pkgname.install
-sha256sums=('7c38049930f63875719c4405991c13ab436d2a2d2ad401b006e94250dd8d205a'
+sha256sums=('a286edfaa13bf73565514ee3edb092cfbccac2307c48058a7302a4676c808331'
             'aec3616247dccfc488f01c63af1e3d9bc846b1e22cb29b8698311e3efc74ce48')
 
 prepare() {
