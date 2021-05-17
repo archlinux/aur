@@ -3,7 +3,7 @@
 
 pkgname=freeplane
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Java mindmapping tool"
 arch=('any')
 url="http://freeplane.sourceforge.net"
@@ -58,6 +58,7 @@ package() {
   install -Dm644 ${srcdir}/${pkgname}-${pkgver}/resources/xslt/* ${pkgdir}/usr/share/freeplane/resources/xslt/
   install -Dm644 ${srcdir}/${pkgname}-${pkgver}/resources/xml/* ${pkgdir}/usr/share/freeplane/resources/xml/
   install -Dm644 ${srcdir}/${pkgname}-${pkgver}/resources/gitinfo.properties ${pkgdir}/usr/share/freeplane/resources/gitinfo.properties
+  install -Dm644 ${srcdir}/${pkgname}-${pkgver}/resources/linkDecoration.ini ${pkgdir}/usr/share/freeplane/resources/linkDecoration.ini
   # Copy scripts
   install -Dm644 ${srcdir}/${pkgname}-${pkgver}/scripts/* ${pkgdir}/usr/share/freeplane/scripts/
   
