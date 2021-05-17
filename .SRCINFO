@@ -27,8 +27,8 @@ pkgbase = linux-logo
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
-	sha256sums = 6dde032690644a576fd36c4a7d3546d9cec0117dd3fb17cea6dc95e907ef9bef
-	sha256sums = 444aa84cbbee17ee3156e3406ec13f9bf642bc5a626f734e05dda0773e8dbbae
+	sha256sums = 55c4cb76754b1db234a0994806106d8481c171d4e3fead12793f0083a48511d4
+	sha256sums = 6f5680ab4cde68dd000a269deb243918d2468737bd0fef828bd54f7864a047fe
 
 pkgname = linux-logo
 	pkgdesc = The Linux with tux logo kernel and modules
