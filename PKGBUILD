@@ -1,7 +1,7 @@
 # Maintainer: Joe Bashe <joe@bashe.joe>
 
 _name=incremental
-pkgname=python2-incremental
+pkgname=python2-incremental-git
 pkgver=21.3.0
 pkgrel=1
 pkgdesc='A small library that versions your Python projects.'
