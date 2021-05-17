@@ -11,7 +11,7 @@ license=('GPL-2.0')
 url="https://alltomp3.org/"
 pkgdesc="Download YouTube videos in MP3 with tags and lyrics"
 depends=('chromaprint' 'giflib' 'hicolor-icon-theme' 'lcms2' 'libappindicator-gtk3'
-         'libcroco' 'libnotify' 'libvips' 'libxss' 'nss' 'orc' 'python2-pathlib')
+         'libcroco' 'libnotify' 'libvips' 'libxss' 'nss' 'orc' 'python2-pathlib2')
 conflicts=("${_pkgname}")
 source=("${_pkgname}_${_LOver}-${_pkgver}_amd64.deb::https://packagecloud.io/AllToMP3/alltomp3/packages/ubuntu/yakkety/${_pkgname}_${_LOver}-${_pkgver}_amd64.deb/download.deb")
 sha256sums=('62cfd5a4ca0b8fc9ad8e18c3cda3d6b05ce1957d0c58de20d98067e40f3f09a2')
