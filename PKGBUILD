@@ -1,10 +1,10 @@
 # Maintainer: ThatOneCalculator (Kainoa Kanter) <kainoakanter@gmail.com>
 pkgname="nerdfetch"
 pkgver=3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A POSIX fetch using NerdFonts"
 arch=('any')
-optdepends=('bc: memory percent')
+depends=('bc')
 url="https://github.com/ThatOneCalculator/NerdFetch"
 license=('GPL')
 makedepends=('git')
