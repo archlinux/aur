@@ -2,7 +2,7 @@
 
 pkgname=vvenc
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Fraunhofer Versatile Video Encoder (VVenC)"
 arch=('x86_64')
 url='https://github.com/fraunhoferhhi/vvenc'
@@ -16,8 +16,6 @@ sha256sums=('1f81fffff2e83ca5072ca3a652134a693d03897f4f49f5a3843cc575dccc2c4e')
 
 build() {
 	cd "${srcdir}/vvenc-${pkgver}"
-	export CFLAGS+=" ${CPPFLAGS}"
-	export CXXFLAGS+=" ${CPPFLAGS}"
 	make install-release-shared
 }
 
