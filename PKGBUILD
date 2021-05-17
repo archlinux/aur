@@ -33,5 +33,5 @@ package() {
 	mkdir -p ../pkg/$pkgbase/var/cache/stillalive/
 	chmod 777 ../pkg/$pkgbase/var/cache/stillalive/
 	cp usr/bin/stillalive.sh ../pkg/$pkgbase/usr/bin/
-	chmod 755 ../pkg/$pkgbase/usr/bin/
+	chmod 755 ../pkg/$pkgbase/usr/bin/stillalive.sh
 }
