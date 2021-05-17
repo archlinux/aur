@@ -2,7 +2,7 @@
 
 pkgname=textimg
 pkgver=3.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Command to convert from color text (ANSI or 256) to image.'
 arch=('x86_64')
 url='https://github.com/jiro4989/textimg'
@@ -14,7 +14,7 @@ source=("${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('ab7ad2965a826cc576ba23f3e75e0e973e0bfcd675a6183d674badb17ba6812c')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   go build
 }
 
