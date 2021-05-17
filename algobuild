@@ -1,0 +1,8 @@
+#!/bin/sh
+
+LAF=com.sun.java.swing.plaf.gtk.GTKLookAndFeel
+
+JAVA_OPTS="$JAVA_OPTS -Dswing.defaultlaf=$LAF"
+
+exec /usr/lib/jvm/java-8-openjdk/jre/bin/java $JAVA_OPTS -jar /usr/share/java/algobuild/algobuild.jar "$@"
+exit $?

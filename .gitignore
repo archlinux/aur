@@ -1,0 +1,10 @@
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!algobuild
+!algobuild.install
+!algobuild.desktop
+!algobuild.jar
+!algobuild.png
+!LICENSE.txt

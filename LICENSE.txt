@@ -1,0 +1,36 @@
+# This license has been copied from the website https://algobuild.com/en/license.html on packaging time.
+# Please refer to that page to make sure this file is, in fact, updated.
+
+User license (Licenza d'uso)
+AVAILABLE ONLY IN ITALIAN
+
+Contratto di licenza d'uso del software AlgoBuild
+
+Il presente contratto di Licenza intercorre tra l'utente finale (di seguito "Utente") e gli autori del programma (di seguito Autori) per il prodotto software AlgoBuild sopra indicato (di seguito "SOFTWARE") , che include il software per computer e può includere supporti di memorizzazione a esso associati, materiale stampato, documentazione disponibile on line o elettronica.
+Gli autori sono riportati nella finestra "Aiuto->Informazioni" del programma.
+
+INSTALLANDO, COPIANDO O ALTRIMENTI UTILIZZANDO IL PRODOTTO, L'UTENTE ACCETTA DI ESSERE VINCOLATO DALLE CONDIZIONI DEL PRESENTE CONTRATTO. QUALORA L'UTENTE NON ACCETTI I TERMINI E LE CONDIZIONI DEL PRESENTE CONTRATTO, ALLORA NON POTRÀ INSTALLARE, COPIARE O UTILIZZARE IL PRODOTTO E DOVRÀ DISINSTALLARLO E RESTITUIRE GLI EVENTUALI SUPPORTI.
+
+1. CONCESSIONE DI LICENZA. L'utente ha il diritto di usare il SOFTWARE su un numero non limitato di dispositivi. L'utente potrà installare il SOFTWARE in un network e usarlo in più di un elaboratore elettronico anche nello stesso tempo.
+
+2. COPYRIGHT. Il SOFTWARE è di proprietà degli Autori ed è tutelato dalle leggi sul copyright, dalle disposizioni dei trattati internazionali e da tutte le altre leggi nazionali applicabili. Gli Autori sono proprietari del nome, del copyright e di altri diritti sulla proprietà intellettuale inerenti al SOFTWARE. Il SOFTWARE viene concesso in licenza. L'utente è tenuto a trattare il SOFTWARE come ogni altro materiale coperto da copyright (per es. libri o un disco di musica). Operazioni di manipolazione, alterazione, conversione, decodificazione, decompilazione, disassemblaggio o comunque creazione di prodotti derivati o basati sul programma SOFTWARE o su parti di esso sono illegali.
+
+3. REGISTRAZIONE. L'utilizzo di alcune versioni del software sono subordinate alla sua registrazione. Ciò implica la memorizzazione sul computer dell'Utente di un numero seriale univoco per ogni installazione del software. La registrazione del numero seriale implica la memorizzazione dell'indirizzo IP del comuper su cui viene effettuata la registrazione. Tale memorizzazione ha solo scopo statistico e non viene utilizzata per scopi di profilazione né viene ceduta a terzi per nessuno scopo. Qualora l'utente non accordasse la registrazione dell'indirizzo IP non deve installare né utilizzare il Software.
+
+4. SCADENZA. La licenza d'uso ha validità fino ad una eventuale revoca o successiva modifica da parte degli Autori. Nel caso di cessazione dell'attività del sito algobuild.com anche la licenza d'uso cessa così come l'autorizzazione all'uso del Software da parte degli Utenti.
+
+5. RINNOVI. La licenza d'uso non prevede né necessita di rinnovi a scadenze prefissate. La licenza si ritiene valida fino a che non sia esplicitamente revocata o fino a che non cessi l'attività del sito algobuild.com.
+
+6. ASSISTENZA TELEFONICA. Non è previsto nessun tipo di supporto telefonico.
+
+7. ASSISTENZA ON-LINE. L'assistenza on-line non è garantita ed è fornita, a discrezione degli Autori o dei Gestori del sito algobuild.com, tramite contatto di posta elettronica o contatto su spazi opportuni tramite social network.
+
+8. AGGIORNAMENTI. Gli eventuali aggiornamenti del software sono disponibili e scaricabili direttamente dal sito internet algobuild.com.
+
+9. RISOLUZIONE. Gli Autori possono risolvere il presente Contratto, senza per questo pregiudicare altri loro diritti, se l'Utente non si attiene alle condizioni e alle clausole del presente Contratto. In tal caso, l'Utente è tenuto a distruggere tutte le copie del SOFTWARE in suo possesso e tutte le sue parti componenti.
+
+10. LIMITI DI GARANZIA. La Garanzia Limitata prevista di seguito è l'unica garanzia espressa concessa all'Utente. Fatta eccezione per i limiti di garanzia e nei limiti in cui ciò sia consentito dalle leggi applicabili, gli Autori forniscono i SOFTWARE "COSÌ COME SONO" E CON I POSSIBILI DIFETTI e non riconoscono alcuna garanzia, espressa o implicita, comprese, in via esemplificativa, eventuali garanzie o condizioni implicite relativamente a commerciabilità, idoneità per uno scopo specifico, affidabilità o disponibilità, accuratezza o esaustività, risultati, assenza di virus, e mancanza di negligenza o di perizia in riferimento al SOFTWARE. È INOLTRE DA ESCLUDERSI QUALSIVOGLIA GARANZIA DI TITOLARITÀ, GODIMENTO O POSSESSO PACIFICO, CORRISPONDENZA A DESCRIZIONE O NON VIOLAZIONE DI DIRITTI ALTRUI RELATIVAMENTE AL PRODOTTO.
+
+11. ESCLUSIONE DI RESPONSABILITÀ PER DANNI INCIDENTALI, INDIRETTI E DI ALTRO TIPO. NELLA MISURA MASSIMA CONSENTITA DALLA LEGGE IN VIGORE, IN NESSUN CASO GLI AUTORI E I GESTORI DEL SITO ALGOBUILD.COM SARANNO RESPONSABILI PER DANNI SPECIALI, ACCIDENTALI, MORALI, INDIRETTI O CONSEQUENZIALI O ALTRI DANNI DI QUALSIASI TIPO IVI INCLUSI, SENZA LIMITAZIONI, DANNI PER PERDITA O MANCATO GUADAGNO, PERDITA DI INFORMAZIONI CONFIDENZIALI O DI ALTRO TIPO, INTERRUZIONE DELL'ATTIVITÀ, DANNI FISICI, PERDITA DI PRIVACY, OMISSIONE DI RISPETTO DI OBBLIGHI INCLUSO QUELLO DI COMPORTARSI IN BUONA FEDE O CON RAGIONEVOLE DILIGENZA, NEGLIGENZA O ALTRA PERDITA ECONOMICA O DI ALTRO TIPO, DERIVANTI DALL'UTILIZZO O DALL'INCAPACITÀ DI UTILIZZARE IL PRODOTTO ALTRI O COMUNQUE IN COMBINAZIONE CON QUALSIVOGLIA DISPOSIZIONE DEL PRESENTE CONTRATTO, ANCHE IN CASO DI ERRORE, TORTO (IVI INCLUSA LA NEGLIGENZA), RESPONSABILITÀ ASSOLUTA, VIOLAZIONE DEL CONTRATTO O DELLA GARANZIA DEGLI AUTORI DEL SOFTWARE E DEI GESTORI DEL SITO ANCHE NEL CASO IN CUI GLI AUTORI SIANO STATI AVVERTITI DELLA POSSIBILITÀ DEL VERIFICARSI DI TALI DANNI.
+
+12. FORO COMPETENTE. Questo contratto è disciplinato dalle leggi italiane e competente a decidere su qualsiasi controversia che dovesse insorgere sull'interpretazione e gestione della presente licenza d'uso è il Foro di Padova.

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Comment=Create flow charts.
+Exec=algobuild
+Icon="/usr/share/icons/hicolor/128x128/apps/algobuild.png"
+Keywords=flowchart;
+Name=Algobuild
+Terminal=false
+TryExec=algobuild
+Type=Application
+X-Deepin-Vendor=user-custom
+X-Purism-FormFactor=Workstation;Mobile;
