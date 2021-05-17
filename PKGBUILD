@@ -1,5 +1,5 @@
 #!/bin/bash
-# Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protomail.com>
+# Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protonmail.com>
 
 _pkgname=NBXplorer
 _pkgname_lc=$(echo "${_pkgname}" | tr "[:upper:]" "[:lower:]")
