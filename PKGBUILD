@@ -1,7 +1,7 @@
 pkgname=banano-vanity
 _pkgname=banano-vanity
 pkgver=1.41
-pkgrel=1
+pkgrel=2
 pkgdesc="A vanity address generator for banano cryptocurrency"
 arch=('x86_64')
 source=("git+https://github.com/flammenderdrache/banano-vanity.git")
