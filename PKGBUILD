@@ -15,7 +15,7 @@ arch=('x86_64')
 pkgdesc="High-level device independent layer for speech synthesis interface (development version)"
 license=('GPL2' 'FDL')
 url="http://www.freebsoft.org/speechd"
-makedepends=('intltool' 'espeak' 'libltdl' 'python-xdg' 'dotconf' 'libpulse' 'libao' 'git')
+makedepends=('intltool' 'espeak-ng' 'libltdl' 'python-xdg' 'dotconf' 'libpulse' 'libao' 'git')
 source=(${pkgname}::'git+https://github.com/brailcom/speechd.git')
 sha512sums=('SKIP')
 
@@ -32,7 +32,7 @@ build() {
 		--localstatedir=/var \
 		--localedir=/usr/share/speech-dispatcher/locale \
 		--with-systemdsystemunitdir=/usr/lib/systemd/system \
-		--with-espeak        
+		--with-espeak-ng
 	make
 }
 
@@ -40,7 +40,6 @@ package_speech-dispatcher-git() {
 	depends=("libspeechd-git=$pkgver-$pkgrel" 'libltdl' 'python-xdg' 'dotconf' 'libpulse' 'libao')
 	optdepends=('festival: Speech output using Festival'
 		'espeak: Speech output using ESpeak'
-  'espeak-ng-git: Speech output using espeak-ng compatible with espeak (may require rebuild)'
 		'pulseaudio: PulseAudio support')  
 	provides=("speech-dispatcher")
 	conflicts=("speech-dispatcher")
