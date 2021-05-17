@@ -1,5 +1,5 @@
 pkgname=kfiredragonhelper
-pkgver=5.0.5
+pkgver=5.0.6
 pkgrel=1
 #epoch=1
 pkgdesc="FireDragon Integration (kmozillahelper from openSUSE)."
