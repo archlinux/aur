@@ -5,7 +5,7 @@ pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
 pkgver=0.5.2
 pkgrel=1
-pkgdesc=" A sphinx extension for creating panels in a grid layout"
+pkgdesc="A sphinx extension for creating panels in a grid layout"
 arch=('any')
 url="https://sphinx-panels.readthedocs.io"
 license=('MIT')
@@ -13,13 +13,6 @@ makedepends=('python-setuptools')
 checkdepends=('python-sphinx')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('d44fbb7c8ec3659fc34b4276580e769c')
-
-#prepare() {
-#    cd ${srcdir}/${_pyname}-${pkgver}/doc
-#
-##   sed -i "/^exclude/s/\"\]/\",\ \"\*\*\.ipynb_checkpoints\"\]/" conf.py
-#    sed -i "/^extensions/s/directive\"\]/directive\",\ \'IPython\.sphinxext\.ipython_console_highlighting\'\]/" conf.py
-#}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
