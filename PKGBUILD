@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='python-ufonormalizer'
 _pkgname='ufonormalizer'
-pkgver='0.5.3'
+pkgver='0.5.4'
 pkgrel=1
 pkgdesc="A tool that will normalize XML and other data inside of a UFO"
 url="https://github.com/unified-font-object/ufoNormalizer"
@@ -12,7 +12,7 @@ optdepends=()
 license=('BSD')
 arch=('any')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.zip")
-sha256sums=('7165d7ff4b58a17e498aba8e809ba5dd67e5ed2e6e411b64722ea76d4f324c46')
+sha256sums=('eb8accf564c9c1f09e89d2d21b407bf2e58d26a3859651e35707db71cb218886')
 
 prepare() {
     cd "$srcdir/$_pkgname-$pkgver"
