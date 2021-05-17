@@ -1,6 +1,6 @@
 pkgbase = yacreader
 	pkgdesc = Comic reader for cross-platform reading and managing your digital comic collection.
-	pkgver = 9.7.1
+	pkgver = 9.8.0
 	pkgrel = 1
 	url = http://www.yacreader.com
 	install = yacreader.install
@@ -9,20 +9,18 @@ pkgbase = yacreader
 	license = GPL3
 	depends = qt5-base
 	depends = qt5-multimedia
-	depends = qt5-script
 	depends = qt5-quickcontrols
 	depends = qt5-graphicaleffects
 	depends = hicolor-icon-theme
 	depends = libunarr
 	depends = libpdfium
-	depends = desktop-file-utils
 	optdepends = qt5-imageformats: Support for extra image formats
 	optdepends = qrencode: YACReaderLibrary server info qr codes
 	conflicts = yacreader-bin
 	conflicts = yacreaderlibraryserver-standalone
 	conflicts = yacreader-git
-	source = https://github.com/YACReader/yacreader/releases/download/9.7.1/yacreader-9.7.1.2009123-src.tar.xz
-	sha256sums = ec84aee881f16afa17b499efb870727f1b0cd043ec503dff5c4e08238655f7d8
+	source = https://github.com/YACReader/yacreader/releases/download/9.8.0/yacreader-9.8.0.2105165-src.tar.xz
+	sha256sums = 3c4ce0e3d92024ff6db4556896171d36ea72ad8198cf8b4cad5763d00c651532
 
 pkgname = yacreader
 
