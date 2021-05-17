@@ -14,7 +14,7 @@ md5sums=('SKIP')
 build() {
 	mkdir -p build
 	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release ../${pkgname}
+	cmake -G 'Unix Makefiles' -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release ../${pkgname}
 	make
 }
 
