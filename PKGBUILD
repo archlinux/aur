@@ -1,8 +1,8 @@
-# Maintainer: dummyx <dummyxa@gmail.com>
+# Maintainer: dummyx <dummyxa at gmail dot com>
 
 pkgname=vvenc
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fraunhofer Versatile Video Encoder (VVenC)"
 arch=('x86_64')
 url='https://github.com/fraunhoferhhi/vvenc'
