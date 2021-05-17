@@ -1,4 +1,5 @@
 pkgname=banano-vanity
+_pkgname=banano-vanity
 pkgver=1.41
 pkgrel=1
 pkgdesc="A vanity address generator for banano cryptocurrency"
