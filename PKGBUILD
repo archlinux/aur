@@ -1,8 +1,8 @@
 # Maintainer: maximumadmin <mxmadm at protonmail dot com>
 
 pkgname=zramd
-pkgver=0.8.8
-pkgrel=3
+pkgver=0.8.9
+pkgrel=1
 pkgdesc="Automatically setup swap on zram ✨"
 arch=('any')
 url="https://github.com/maximumadmin/zramd"
@@ -16,7 +16,7 @@ conflicts=('systemd-swap'
            'zram-generator-git')
 backup=('etc/default/zramd')
 source=("https://github.com/maximumadmin/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('b0464e4b33b0e9365c45d1f608d620f13879d464eac259a9e0e37eb1402f2654')
+sha256sums=('2b91f02ae4e957d0cc49af8a31a1592a47fd310ce6779b8cad31cf85dadb594a')
 
 build() {
   cd "$pkgname-$pkgver"
