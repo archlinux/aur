@@ -20,7 +20,7 @@ pkgbase = python2-corner
 pkgname = python2-corner
 	depends = python2
 	depends = python2-matplotlib
-	optdepends = python-corner-doc: Documentation for corner.py
+	optdepends = python2-corner-doc: Documentation for corner.py
 
 pkgname = python2-corner-doc
 	pkgdesc = Documentation for corner.py

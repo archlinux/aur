@@ -37,7 +37,7 @@ check(){
 
 package_python2-corner() {
     depends=('python2' 'python2-matplotlib')
-    optdepends=('python-corner-doc: Documentation for corner.py')
+    optdepends=('python2-corner-doc: Documentation for corner.py')
     cd ${srcdir}/corner.py-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
@@ -49,6 +49,6 @@ package_python2-corner-doc() {
     pkgdesc="Documentation for corner.py"
     cd ${srcdir}/corner.py-${pkgver}/docs/_build
 
-    install -d -m755 "${pkgdir}/usr/share/doc/python-corner"
-    cp -a html "${pkgdir}/usr/share/doc/python-corner"
+    install -d -m755 "${pkgdir}/usr/share/doc/python2-corner"
+    cp -a html "${pkgdir}/usr/share/doc/python2-corner"
 }
