@@ -16,7 +16,6 @@ source=("https://sejda-cdn.com/downloads/sejda-desktop_${pkgver}_amd64.deb")
 md5sums=('7d0705209657685a9814965d6ffade4c')
 sha512sums=('b7022583199a3f6b04d841d8a56c7497118ce3faebd011483057f1382eeaad8d3bd2254717d76f332d191bc7f43bab640e3fef6fc0dd666d402e1f33e9ecd69e')
 options=('!strip')
-PKGEXT='.tar.gz'
 
 prepare() {
   bsdtar -xf 'control.tar.gz'
