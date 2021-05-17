@@ -1,5 +1,5 @@
 #!/bin/bash
-# Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protomail.com>
+# Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protonmail.com>
 
 pkgname=keysmith
 pkgver=0.2
