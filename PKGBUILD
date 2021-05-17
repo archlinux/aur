@@ -1,7 +1,7 @@
 # Maintainer: Lev Babiev <harley at hosers dot org>
 
 pkgname=sfwbar
-pkgver=0.9.7
+pkgver=0.9.8
 pkgrel=1
 
 pkgdesc='Sway Floating Window taskBar'
@@ -19,7 +19,7 @@ makedepends=(
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 
-sha256sums=('f00f31b624af78597f0e6a93bbbeb5b88c6d9c4a604afceed7362f03437e6a38')
+sha256sums=('f62d577757d3099b90bcbb750d991b27fe9b6ba5226d919e80e6c104a6b4edba')
 
 build() {
     cd "$pkgname-$pkgver"
