@@ -7,7 +7,7 @@
 pkgname=dolphin-root
 _pkgname=dolphin
 pkgver=21.04.1
-pkgrel=1
+pkgrel=2
 pkgdesc='KDE File Manager'
 arch=(x86_64)
 url='https://apps.kde.org/dolphin/'
@@ -19,7 +19,7 @@ optdepends=('kde-cli-tools: for editing file type options' 'ffmpegthumbs: video 
 groups=(kde-applications kde-system)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz{,.sig}
         'root.patch')
-sha256sums=('4988e59d4e3edfd58c2d0857745398fc1840c87ec03ea13b0d73254874cfbdbe'
+sha256sums=('292377aca0454189186d4046ed69785d7fda672270362c3b538a001c9daa826e'
             'SKIP'
             'b09c01217fe63cad2698f0421c7466b3c8145403a7bbc3feba681708d36ff528')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
