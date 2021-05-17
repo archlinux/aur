@@ -1,6 +1,6 @@
 pkgbase = radium
 	pkgdesc = A graphical music editor. A next generation tracker.
-	pkgver = 6.7.68
+	pkgver = 6.9.72
 	pkgrel = 1
 	url = https://users.notam02.no/~kjetism/radium
 	arch = x86_64
@@ -39,10 +39,14 @@ pkgbase = radium
 	optdepends = ladspa-plugins: package group for plugins normally included in binary releases
 	optdepends = vst-plugins: more plugins
 	options = !strip
-	source = radium-6.7.68.tar.gz::https://github.com/kmatheussen/radium/archive/6.7.68.tar.gz
+	source = radium-6.9.72.tar.gz::https://github.com/kmatheussen/radium/archive/6.9.72.tar.gz
 	source = add-vstsdk-location-var.patch
-	sha256sums = 3fe78046cdbae38269b8ccd872b7e2900eac59bcdda0f5f1a2ceb8b0202bb552
-	sha256sums = 5094f3e9b5cec48f7f71f7291132269dbe34f2e96622c1ebf5257e9f4f2dcd56
+	source = faust_add_include.patch
+	source = faust-buildfix.patch
+	sha256sums = 8e07f83ef89ea16a5ea131c67f8559293a38353bbd71f26f9510c1c01e2b2b44
+	sha256sums = 8d66045d1a927df67670d2ce0855b246614f2969105bd6c4b78a1fcfd971cc9c
+	sha256sums = 69b762b908d30ce78f0e289b39b77c0d56888d000f440169ab86e63bc0a15430
+	sha256sums = 857c06b9163a42f38364aa54acbdb12a2d3419e5a200eb31e08db84fc6a342b7
 
 pkgname = radium
 

@@ -3,7 +3,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=radium
-pkgver=6.7.68
+pkgver=6.9.72
 pkgrel=1
 pkgdesc='A graphical music editor. A next generation tracker.'
 arch=(x86_64)
@@ -51,15 +51,22 @@ optdepends=(
 options=(!strip)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kmatheussen/radium/archive/$pkgver.tar.gz"
         add-vstsdk-location-var.patch
+        faust_add_include.patch faust-buildfix.patch
 )
-sha256sums=('3fe78046cdbae38269b8ccd872b7e2900eac59bcdda0f5f1a2ceb8b0202bb552'
-            '5094f3e9b5cec48f7f71f7291132269dbe34f2e96622c1ebf5257e9f4f2dcd56')
+sha256sums=('8e07f83ef89ea16a5ea131c67f8559293a38353bbd71f26f9510c1c01e2b2b44'
+            '8d66045d1a927df67670d2ce0855b246614f2969105bd6c4b78a1fcfd971cc9c'
+            '69b762b908d30ce78f0e289b39b77c0d56888d000f440169ab86e63bc0a15430'
+            '857c06b9163a42f38364aa54acbdb12a2d3419e5a200eb31e08db84fc6a342b7')
 
 prepare() {
   cd radium-$pkgver
 
   # Add VST2SDK env var so we can use VST2 headers from steinberg-vst36 in AUR
   patch -p1 < "$srcdir/add-vstsdk-location-var.patch"
+
+  # https://github.com/kmatheussen/radium/pull/1343
+  cp "$srcdir/faust_add_include.patch" bin/packages
+  patch -p1 < "$srcdir/faust-buildfix.patch"
 
   # This tweak edits new file template and demo songs to be compatible with chorus plugin from calf-ladspa package
   # !! NOTE TO LMMS USERS !!
