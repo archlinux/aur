@@ -7,11 +7,11 @@ pkgbase=kata-containers-bin
 pkgname=(
   kata-runtime-bin
   kata-containers-image-bin
-  kata-linux-container-bin
+  linux-kata-bin
 )
 pkgver="2.1.0"
 _pkgver=${pkgver/\~/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight virtual machines for containers (version 2, binary packaging)"
 arch=(x86_64)
 url="https://katacontainers.io"
@@ -58,13 +58,13 @@ else
 fi
 
 package_kata-runtime-bin() {
-  depends=(qemu-headless kata-containers-image kata-linux-container)
+  depends=(qemu-headless kata-containers-image linux-kata)
   optdepends=(
     'cloud-hypervisor<16.0'
     'firecracker<0.24.0'
   )
-  conflicts=('kata-runtime' 'kata-runtime')
-  provides=('kata-runtime')
+  conflicts=('kata-runtime' 'kata1-runtime' 'kata2-runtime')
+  provides=('kata-runtime' 'kata2-runtime')
   install=kata2-runtime.install
 
   install -D -m 0755 -t ${pkgdir}/usr/bin \
@@ -80,8 +80,8 @@ package_kata-runtime-bin() {
 }
 
 package_kata-containers-image-bin(){
-  conflicts=('kata-containers-image')
-  provides=('kata-containers-image')
+  conflicts=('kata2-containers-image')
+  provides=('kata-containers-image' 'kata2-containers-image')
   install -Dm644 -t "${pkgdir}/usr/share/kata-containers/" \
     ${srcdir}${_bin_pkg_root}/share/kata-containers/kata-containers-image_clearlinux_${_pkgver}_agent_*.img \
     ${srcdir}${_bin_pkg_root}/share/kata-containers/kata-containers-initrd_alpine_${_pkgver}_agent_*.initrd
@@ -90,9 +90,9 @@ package_kata-containers-image-bin(){
   ln -s kata-containers-initrd_alpine_${_pkgver}_agent_*.initrd kata-containers-initrd.img
 }
 
-package_kata-linux-container-bin(){
-  conflicts=('kata-linux-container')
-  provides=('kata-linux-container')
+package_linux-kata-bin(){
+  provides=('linux-kata' 'kata-linux-container' 'kata2-linux-container')
+  conflicts=('linux-kata' 'kata-linux-container' 'kata2-linux-container' 'linux-kata1' 'kata1-linux-container')
   install -Dm644 -t "${pkgdir}/usr/share/kata-containers/" \
     ${srcdir}${_bin_pkg_root}/share/kata-containers/vmlinux-* \
     ${srcdir}${_bin_pkg_root}/share/kata-containers/vmlinuz-*

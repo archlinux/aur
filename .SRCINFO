@@ -1,7 +1,7 @@
 pkgbase = kata-containers-bin
 	pkgdesc = Lightweight virtual machines for containers (version 2, binary packaging)
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://katacontainers.io
 	arch = x86_64
 	license = Apache
@@ -13,18 +13,27 @@ pkgname = kata-runtime-bin
 	install = kata2-runtime.install
 	depends = qemu-headless
 	depends = kata-containers-image
-	depends = kata-linux-container
+	depends = linux-kata
 	optdepends = cloud-hypervisor<16.0
 	optdepends = firecracker<0.24.0
 	provides = kata-runtime
+	provides = kata2-runtime
 	conflicts = kata-runtime
-	conflicts = kata-runtime
+	conflicts = kata1-runtime
+	conflicts = kata2-runtime
 
 pkgname = kata-containers-image-bin
 	provides = kata-containers-image
-	conflicts = kata-containers-image
+	provides = kata2-containers-image
+	conflicts = kata2-containers-image
 
-pkgname = kata-linux-container-bin
+pkgname = linux-kata-bin
+	provides = linux-kata
 	provides = kata-linux-container
+	provides = kata2-linux-container
+	conflicts = linux-kata
 	conflicts = kata-linux-container
+	conflicts = kata2-linux-container
+	conflicts = linux-kata1
+	conflicts = kata1-linux-container
 
