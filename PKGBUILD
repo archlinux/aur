@@ -1,10 +1,10 @@
 # Maintainer: Ben Westover <kwestover.kw@gmail.com>
 
 pkgname='chia-git'
-pkgver=1.1.1.r14.ge7304c59
+pkgver=1.1.5.r41.g1c808b6c3
 pkgrel=1
 pkgdesc="A new blockchain and smart transaction platform that is easier to use, more efficient, and secure."
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+arch=('x86_64' 'aarch64')
 url="https://www.chia.net/"
 license=('Apache')
 install=chia-git.install
@@ -26,11 +26,13 @@ build() {
 	python3 -m venv venv
 	ln -s venv/bin/activate .
 	. ./activate
-	pip install https://download-chia-net.s3-us-west-2.amazonaws.com/simple/miniupnpc/miniupnpc-2.1.tar.gz
-	pip install -e .
+	pip install --extra-index-url https://pypi.chia.net/simple/ miniupnpc==2.1
+	pip install -e . --extra-index-url https://pypi.chia.net/simple/
 }
 
 package() {
-	mkdir -p "$pkgdir"/opt
-	mv chia-blockchain "$pkgdir"/opt
+	mkdir -p "$pkgdir/opt"
+	mv chia-blockchain "$pkgdir/opt"
+	find "$pkgdir/opt/chia-blockchain" -type f -exec sed -i "s|${srcdir}|/opt|g" {} \; # replace references to srcdir with final install location
+	find "$pkgdir/opt/chia-blockchain" -name '*.pyc' -delete # remove compiled python modules because they contain references to srcdir
 }
