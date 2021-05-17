@@ -2,7 +2,7 @@
 
 _appname=user_saml
 pkgname=nextcloud-app-${_appname/_/-}
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="App for authenticating Nextcloud users using SAML"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(AGPL3)
 depends=(nextcloud)
 makedepends=(composer)
 source=("$_appname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c36e136995e3598fc274b4685e1bac681634d29c1995a762ccce7cda4360ee90')
+sha256sums=('a2bb674d5e24ae925ab90b8138e5da8c539da43f6373975bd4b919a3b61037cc')
 
 prepare() {
 	cd "$_appname-$pkgver"
