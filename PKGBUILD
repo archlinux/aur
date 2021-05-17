@@ -1,6 +1,6 @@
 pkgname=photon-rss-git
 _pkgname=photon
-pkgver=0.1.0-10-g6741c6f
+pkgver=0.1.0.10
 pkgrel=1
 pkgdesc="Fast RSS reader as light as a photon"
 arch=("i686" "pentium4" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
