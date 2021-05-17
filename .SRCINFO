@@ -1,0 +1,16 @@
+pkgbase = jetbrains-nautilus-git
+	pkgdesc = Nautilus extension for JetBrains Toolbox products
+	pkgver = r2.6c901ae
+	pkgrel = 1
+	url = https://github.com/encounter/jetbrains-nautilus
+	install = nautilus-reminder.install
+	arch = any
+	license = custom
+	makedepends = git
+	depends = python-nautilus
+	optdepends = jetbrains-toolbox: For JetBrains product installation
+	source = jetbrains-nautilus-git::git+https://github.com/encounter/jetbrains-nautilus.git
+	sha512sums = SKIP
+
+pkgname = jetbrains-nautilus-git
+
