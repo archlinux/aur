@@ -1,29 +1,28 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-requests-unixsocket
-pkgver=0.1.5
-pkgrel=2
+_name="${pkgname#python-}"
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Use requests to talk HTTP via a UNIX domain socket"
 arch=('any')
 depends=('python' 'python-requests' 'python-urllib3')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-pip')
 url="https://github.com/msabramo/requests-unixsocket"
 license=('Apache')
 options=('!emptydirs')
-source=(https://pypi.python.org/packages/f3/94/67d781fb32afbee0fffa0ad9e16ad0491f1a9c303e14790ae4e18f11be19/requests-unixsocket-0.1.5.tar.gz)
-md5sums=('08453c8ef7dc03863ff4a30b901e7c20')
-sha256sums=('a91bc0138f61fb3396de6358fa81e2cd069a150ade5111f869df01d8bc9d294c')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+b2sums=('cda02b5d963b00fb06cf86819bcbf552ecc21e30064198da338f502f47547a1f93184fd06052047c6cb8a6181f0a2f7b7a7cc53183b18dc22165a41dc14144b5')
 
 build() {
-  cd "$srcdir/${pkgname#python-}-$pkgver"
+  cd "$_name-$pkgver"
 
-  msg2 'Building...'
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/${pkgname#python-}-$pkgver"
+  cd "$_name-$pkgver"
 
-  msg2 'Installing...'
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
