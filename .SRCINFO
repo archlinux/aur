@@ -1,6 +1,6 @@
 pkgbase = wine-wl-git
-	pkgdesc = A compatibility layer for running Windows programs (wayland version from gitlab.collabora.com/alf/wine/ wayland branch)
-	pkgver = 6.0.rc1.r2311.g684614924d6
+	pkgdesc = A compatibility layer for running Windows programs (wayland version from gitlab.collabora.com/alf/wine/ wip branch)
+	pkgver = wine.6.0.rc1.r3235.g63919e4d631
 	pkgrel = 1
 	url = http://www.winehq.com
 	install = wine.install
@@ -141,12 +141,12 @@ pkgbase = wine-wl-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=6.0.rc1.r2311.g684614924d6
-	provides = wine64=6.0.rc1.r2311.g684614924d6
+	provides = wine=wine.6.0.rc1.r3235.g63919e4d631
+	provides = wine64=wine.6.0.rc1.r3235.g63919e4d631
 	conflicts = wine
 	conflicts = wine64
 	options = staticlibs
-	source = https://gitlab.collabora.com/alf/wine/-/archive/wayland/wine-wayland.tar.gz
+	source = git+https://gitlab.collabora.com/alf/wine.git/#branch=wip
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
 	sha512sums = SKIP

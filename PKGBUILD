@@ -1,17 +1,17 @@
 # Maintainer: sem.z <sem.z@protonmail.com>
 
 pkgname=wine-wl-git
-pkgver=6.0.rc1.r2311.g684614924d6
+pkgver=wine.6.0.rc1.r3235.g63919e4d631
 pkgrel=1
 
-source=(https://gitlab.collabora.com/alf/wine/-/archive/wayland/wine-wayland.tar.gz
+source=(git+https://gitlab.collabora.com/alf/wine.git/#branch=wip
         30-win32-aliases.conf
         wine-binfmt.conf)
 sha512sums=('SKIP'
         '6200d75042a5993294ee58583fa9d145e46a36bcc2a38ddae92482366aaf67423b160556f748cd85d3ee1c521c497488810bdc0b79e192742f83ae49e7f55938'
         '0ae5202b0ec9b4b1437f8c19f6e5f9c8ed32ef5d112f87c2bebdad62dcc60cdc0016fb9fbf911773bfab0701bc7481e686a06d2a25c9127895b7bc2dde2f2035')
 
-pkgdesc="A compatibility layer for running Windows programs (wayland version from gitlab.collabora.com/alf/wine/ wayland branch)"
+pkgdesc="A compatibility layer for running Windows programs (wayland version from gitlab.collabora.com/alf/wine/ wip branch)"
 url="http://www.winehq.com"
 arch=(x86_64)
 options=(staticlibs)
@@ -98,9 +98,12 @@ optdepends=(
 provides=("wine=${pkgver}" "wine64=${pkgver}")
 conflicts=('wine' 'wine64')
 
+pkgver() {
+  cd wine
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
-  # Allow ccache to work
-  mv wine-wayland wine
 
   for patch in *.patch; do
     if [ ! -f "$patch" ]; then
@@ -172,6 +175,6 @@ package() {
      "$pkgdir/usr/share/wine/binfmt/wine.conf"
 
    # strip native PE libraries
-  i686-w64-mingw32-strip --strip-unneeded "${pkgdir}/usr/lib32/wine"/*.dll
-  "${CARCH}-w64-mingw32-strip" --strip-unneeded "${pkgdir}/usr/lib/wine"/*.dll
+  i686-w64-mingw32-strip --strip-unneeded "${pkgdir}/usr/lib32/wine/i386-windows"/*.dll
+  "${CARCH}-w64-mingw32-strip" --strip-unneeded "${pkgdir}/usr/lib/wine/x86_64-windows"/*.dll
 }
