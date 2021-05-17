@@ -1,11 +1,9 @@
-# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
-
 pkgname=kimageannotator-git
-pkgver=r471.8e2998d
-pkgrel=2
+pkgver=r987.6ebffb1
+pkgrel=1
 pkgdesc='Tool for annotating images'
 arch=('i686' 'x86_64')
-url='https://github.com/DamirPorobic/kImageAnnotator'
+url='https://github.com/DamirPorobic/kimageannotator'
 license=('GPL')
 depends=(
   qt5-base
@@ -18,37 +16,29 @@ makedepends=(
   qt5-tools
   kcolorpicker-git
 )
-provides=(
-  kimageannotator
-)
-conflicts=(
-  kimageannotator
-)
-source=('git+https://github.com/DamirPorobic/kImageAnnotator.git')
-_gitname='kImageAnnotator'
-md5sums=(SKIP)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 prepare(){
-  cd "$srcdir/$_gitname"
-#   git submodule update --init --recursive
+  cd ${pkgname%-git}
   test -d build || mkdir build
   sed 's@^add_subdirectory.*kColorPicker@#&@' -i CMakeLists.txt
 }
 pkgver(){
-  if [ -d "$srcdir"/$_gitname ]; then
-    cd "$srcdir"/$_gitname
-    ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
-  fi
+  cd ${pkgname%-git}
+  set -o pipefail
+  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 build(){
-  cd "$srcdir/$_gitname/build"
+  cd ${pkgname%-git}/build
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS=ON ..
   make
 }
 package(){
-  cd "$srcdir"/$_gitname/build
+  cd ${pkgname%-git}/build
   make DESTDIR="$pkgdir" install
   cd "$pkgdir"/usr
   install -dm755 bin
