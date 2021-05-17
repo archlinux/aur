@@ -20,5 +20,4 @@ pkgname = python-sphinx-panels
 	optdepends = python-pre-commit: code_style
 	optdepends = python-sphinx-autobuild: live-dev
 	optdepends = python-web-compile: live-dev
-	optdepends = python-sphinx-panels-doc: Documentation
 

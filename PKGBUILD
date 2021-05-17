@@ -37,8 +37,8 @@ package_python-sphinx-panels() {
                 'python-myst-parser: themes'
                 'python-pre-commit: code_style'
                 'python-sphinx-autobuild: live-dev'
-                'python-web-compile: live-dev'
-                'python-sphinx-panels-doc: Documentation')
+                'python-web-compile: live-dev')
+#               'python-sphinx-panels-doc: Documentation')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
