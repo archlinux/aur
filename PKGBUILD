@@ -1,12 +1,13 @@
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
-# Previous Maintainer: Beej <beej@beej.us>
-# Previous Maintainer: Michael Smith <michael at diglumi dot com>
-# Previous Maintainer: Marcin Skory <armitage at q84fh dot net>
+# Maintainer: autumnontape <autumnontape at tutanota dot com>
+# Contributor: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Beej <beej@beej.us>
+# Contributor: Michael Smith <michael at diglumi dot com>
+# Contributor: Marcin Skory <armitage at q84fh dot net>
 # Contributor: Eric Forgeot < http://ifiction.free.fr >
 
 pkgname=gargoyle
 pkgver=2019.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Interactive Fiction multi-interpreter that supports all major IF formats."
 arch=('i686' 'x86_64' 'armv6h' 'aarch64')
 url="http://ccxvii.net/gargoyle/"
