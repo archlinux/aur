@@ -1,8 +1,8 @@
 # Maintainer: PumpkinCheshire <sollyonzou@gmail.com>
 
 pkgname=rife-ncnn-vulkan
-pkgver=20210227
-pkgrel=2
+pkgver=20210516
+pkgrel=1
 pkgdesc="RIFE, Real-Time Intermediate Flow Estimation for Video Frame Interpolation implemented with ncnn library."
 arch=('x86_64')
 url="https://github.com/nihui/rife-ncnn-vulkan"
@@ -12,7 +12,7 @@ makedepends=('git' 'cmake' 'glslang-git' 'vulkan-headers' 'ncnn')
 provides=("rife-ncnn-vulkan")
 conflicts=("rife-ncnn-vulkan-git" "rife-ncnn-vulkan-bin")
 source=("https://github.com/nihui/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('0328e4b2cef04b8791071eb0b232f183c1175f130b04bbaf48a8f6651b0d4de8')
+sha256sums=('1cff111892ca8a93977e254940761938de1184e57b10c46d8070f71401a4f804')
 
 prepare() {
     sed -i 's|path_t model = PATHSTR("rife-HD")|path_t model = PATHSTR("/usr/share/rife-ncnn-vulkan/rife-HD")|' "${pkgname}-${pkgver}"/src/main.cpp
