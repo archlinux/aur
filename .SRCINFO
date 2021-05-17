@@ -1,0 +1,24 @@
+pkgbase = hypseus-singe-git
+	pkgdesc = A drop-in replacement for daphne.
+	pkgver = 283.3a1188f
+	pkgrel = 1
+	url = https://github.com/DirtBagXon/hypseus-singe
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = git
+	makedepends = cmake
+	makedepends = autoconf
+	makedepends = fakeroot
+	depends = zlib
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_ttf
+	depends = libvorbis
+	provides = hypseus-singe
+	conflicts = hypseus-singe
+	source = hypseus-singe::git+https://github.com/DirtBagXon/hypseus-singe.git
+	md5sums = SKIP
+
+pkgname = hypseus-singe-git
+
