@@ -1,0 +1,15 @@
+pkgbase = pyqtenumconverter
+	pkgdesc = Converts enums from PyQt5 to PyQt6
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/JakobDev/PyQtEnumConverter
+	arch = any
+	license = GPL3
+	depends = python-pyqt6
+	depends = python-setuptools
+	optdepends = python-qscintilla-qt6: Convert enums from QScintilla
+	source = pyqtenumconverter-1.0.tar.gz::https://gitlab.com/JakobDev/PyQtEnumConverter/-/archive/1.0/PyQtEnumConverter-1.0.tar.gz
+	sha256sums = d20d47b16280145056f5caff553feb13db2cbb487a7f79a416329002dd8e1f58
+
+pkgname = pyqtenumconverter
+
