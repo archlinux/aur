@@ -1,0 +1,23 @@
+pkgbase = libqofono-git
+	pkgdesc = A library for accessing the ofono daemon, and a declarative plugin for it.
+	pkgver = 0.103.r0.g047b667
+	pkgrel = 1
+	url = https://git.sailfishos.org/mer-core/libqofono
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = LGPLv2.1
+	makedepends = qt5-tools
+	depends = qt5-declarative
+	depends = qt5-xmlpatterns
+	provides = libqofono
+	provides = qofono
+	conflicts = libqofono
+	conflicts = qofono
+	source = git+https://git.sailfishos.org/mer-core/libqofono.git
+	sha512sums = SKIP
+
+pkgname = libqofono-git
+
