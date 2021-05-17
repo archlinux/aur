@@ -51,7 +51,8 @@ package() {
 		install -Dm644 "${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_${res}_beta.png" \
 			"${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${_pkgname}.png"
 	done
-
+       # User flag aware launcher
+       install -m755 microsoft-edge-dev.sh "${pkgdir}/usr/bin/microsoft-edge-dev"
 	
 
 	# License
