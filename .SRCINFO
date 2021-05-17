@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-floatingdock-git
+	pkgdesc = Move dock anywhere on the desktop
+	pkgver = r97.5906027
+	pkgrel = 1
+	url = https://github.com/sunwxg/gnome-shell-extension-floatingDock
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = gnome-shell
+	source = gnome-shell-extension-floatingdock-git::git+https://github.com/sunwxg/gnome-shell-extension-floatingDock.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-floatingdock-git
+
