@@ -2,10 +2,10 @@
 pkgname=corevantage-x230
 _pkgname=corevantage
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('GPL3')
-pkgdesc="Graphical user interface to configure coreboot settings for: ThinkPad X220"
+pkgdesc="Graphical user interface to configure coreboot settings for: ThinkPad X230"
 source=("https://github.com/JaGoLi/$_pkgname/archive/$pkgver.tar.gz")
 sha256sums=('b8444ae61d98113568aded5f4d85dfa44c93e97a5356ce6acdc26721835da269')
 provides=("corevantage")

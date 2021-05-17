@@ -1,7 +1,7 @@
 pkgbase = corevantage-x230
-	pkgdesc = Graphical user interface to configure coreboot settings for: ThinkPad X220
+	pkgdesc = Graphical user interface to configure coreboot settings for: ThinkPad X230
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = GPL3
 	makedepends = qt5-quickcontrols
