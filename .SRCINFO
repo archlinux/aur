@@ -1,6 +1,6 @@
 pkgbase = yafetch-git
 	pkgdesc = yet another fetch, written in C++
-	pkgver = 1.r4.7214383
+	pkgver = 1
 	pkgrel = 2
 	url = https://gitlab.com/cyberkitty/yafetch
 	arch = x86_64
