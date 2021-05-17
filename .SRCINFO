@@ -1,14 +1,14 @@
 pkgbase = django-docs
 	pkgdesc = Docs for Django's release
-	pkgver = 3.1
+	pkgver = 3.2
 	pkgrel = 1
 	url = https://docs.djangoproject.com/en/
 	arch = any
 	license = GPL
 	makedepends = unzip
-	noextract = django-docs-3.1-en.zip
-	source = https://media.djangoproject.com/docs/django-docs-3.1-en.zip
-	sha256sums = SKIP
+	noextract = django-docs-3.2-en.zip
+	source = https://media.djangoproject.com/docs/django-docs-3.2-en.zip
+	sha256sums = 64fb3531c13e96419681e93884187ac25f2989564deee1872c9b2303d02487eb
 
 pkgname = django-docs
 
