@@ -1,7 +1,7 @@
 # Maintainer: Dominik Schrempf <dominik.schrempf@gmail.com>
 pkgname=nextcloud-systemd-timers
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Systemd services and timers for Nextcloud background jobs (see Nextcloud Arch Wiki entry)."
 arch=('any')
@@ -59,8 +59,6 @@ package() {
   install -D -t $pkgdir/usr/lib/systemd/system -m 644 \
           nextcloud-app-update-all.service \
           nextcloud-app-update-all.timer \
-          nextcloud-cron.service \
-          nextcloud-cron.timer \
           nextcloud-files-scan-all.service \
           nextcloud-files-scan-all.timer \
           nextcloud-preview-generate-all.service \
