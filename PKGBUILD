@@ -4,13 +4,13 @@
 pkgname=mpd-rich-presence-discord-git
 _pkgname=mpd-rich-presence-discord
 pkgver=r50.ced628d
-pkgrel=1
+pkgrel=2
 pkgdesc=" Broadcast your MPD state using discord rich presence!"
 arch=('x86_64')
-url='https://github.com/justas-d'
+url='https://github.com/justas-d/mpd-rich-presence-discord'
 license=('MIT')
 depends=('libmpdclient' 'gcc-libs' 'discord-rpc-api-git')
-makedepends=('git' 'cmake' 'discord-rpc-api-git')
+makedepends=('git' 'cmake' 'discord-rpc-api')
 source=("git+https://github.com/justas-d/$_pkgname.git")
 md5sums=('SKIP')
 
