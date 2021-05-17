@@ -10,9 +10,8 @@
 
 struct cursor;
 
-void init();
 void finish(int sig);
-void finish_with_msg(char* msg);
+void finish_with_err_msg(char* msg);
 void read_sudoku(char* sudoku);
 void move_cursor(struct cursor cursor);
 void draw_sudokus(char* user_nums, char* sudoku_str);
