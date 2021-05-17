@@ -8,11 +8,8 @@ pkgdesc="A real-time strategy audio game"
 arch=('any')
 url="https://github.com/chrys87/soundrts"
 license=('BSD' 'Unknown')
-depends=('python' 'python-pygame')
+depends=('python' 'python-pygame' 'simpleorcapluginsystem')
 makedepends=('git')
-optdepends=('espeak: TTS support'
-            'speech-dispatcher: TTS support'
-            'python2-speechd: For speech-dispatcher to work with SoundRTS.')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+https://github.com/chrys87/soundrts.git"
