@@ -1,5 +1,5 @@
 pkgname=piwigo
-pkgver=11.4.0
+pkgver=11.5.0
 pkgrel=1
 pkgdesc="Piwigo is a photo gallery software for the web that comes with powerful features to publish and manage your collection of pictures."
 arch=(any)
