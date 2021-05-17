@@ -1,3 +1,18 @@
+Proton-6.8-GE-2 Released
+
+-Mass Effect Legendary Edition Launcher and ME1 fixes added. All 3 games should be playable.
+-DOOM Eternal should no longer hang and resolution change should work again
+-Forza Horizon 4 frequency patch added, however this does not seem to improve the crashing :/
+-RE8 REENGINE Logo audio is fixed and no longer plays static (game is still crashy)
+-RE8 Display menu fixes ported from proton experimental
+-Nioh 2 hang fixed (videos still don't play)
+-Fallout: New Vegas audio looping fixed
+-2k Launcher fixes ported from proton experimental (fixes mafia, mafia II, and others)
+-Yakuza 0 - fsync disabled (thanks tgurr!)
+-Yakuza Kiwami - fsync disabled (thanks tgurr!)
+-LEGO The Lord of the Rings d3dx9_41 override added (thanks alkazar and FigoFrago!)
+
+
 Proton-6.8-GE-1 Released
 
 HOTFIX 2:
