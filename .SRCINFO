@@ -1,7 +1,7 @@
 pkgbase = sway9
 	pkgdesc = Tiling Wayland compositor and replacement for the i3 window manager (personal build)
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/9ary/sway9
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = sway9
 	provides = sway
 	conflicts = sway
 	backup = etc/sway/config
-	source = git+https://github.com/9ary/sway9.git#commit=6c2f00d6be62c6215baac0c70779fb2ad0307dc4
+	source = git+https://github.com/9ary/sway9.git#commit=7ed4f05d418e7bf80f633a83b79de9b3b9df2f61
 	source = 50-systemd-user.conf
 	sha512sums = SKIP
 	sha512sums = 57590bc0d14c87289a4a9cd67991c6a841e54244d2a6186b5da5a08e633de2e8631959fa8c77ede211b0a5f315d920f2c1350951a53d6f2e9e81859056cb3c9e
