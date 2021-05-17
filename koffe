@@ -150,8 +150,6 @@ then
         	git clone https://aur.archlinux.org/$app /tmp/koffe/aurbg/$app
         	chown -hR nobody /tmp/koffe/
         	cd /tmp/koffe/aurbg/$app
-        	sudo -u nobody makepkg --noconfirm --skippgpcheck
-        	cp /tmp/koffe/aurbg/$app/*.pkg.tar.zst /usr/share/archiso/configs/releng/airootfs/root/pkg
         	echo $app >> /usr/share/archiso/configs/releng/airootfs/root/install.list
         	declare -a bb
         	bb=$(cat /tmp/koffe/aurbg/$app/.SRCINFO | grep depends | cut -f 2 -d '=' | cut -f 1 -d '>' | cut -f 1 -d ':')
@@ -179,7 +177,8 @@ then
         	do
 				pacman -S $depend --noconfirm
 			done
-
+			sudo -u nobody makepkg --noconfirm --skippgpcheck
+        	cp /tmp/koffe/aurbg/$app/*.pkg.tar.zst /usr/share/archiso/configs/releng/airootfs/root/pkg
 		fi
     done
     repo-add /usr/share/archiso/configs/releng/airootfs/root/pkg/koffe.db.tar.gz /usr/share/archiso/configs/releng/airootfs/root/pkg/*
