@@ -1,36 +1,44 @@
 #include "main.h"
+#include <curses.h>
 
 struct cursor{
 	int y;
 	int x;
 };
 
+char* filename;
+char* user_nums;
+char* sudoku_str;
+struct cursor cursor;
+char* statusbar;
+
 int main(int argc, char **argv){
 	//--- USER INIT LOGIC ---
+	filename = argv[1];
 
 	//Read Sudoku from given file
 	FILE* input_file = fopen(argv[1], "r");
 	if(input_file == NULL)
 		finish_with_err_msg("Error accessing file\n");
-	char* sudoku_str = malloc((SUDOKU_LEN) * sizeof(char));
-	fscanf(input_file, "%s", sudoku_str);
+
+	sudoku_str = malloc((SUDOKU_LEN) * sizeof(char));
+	user_nums = malloc((SUDOKU_LEN) * sizeof(char));
+
+	fscanf(input_file, "%s\n%s", sudoku_str, user_nums);
 	fclose(input_file);
 
 	//Abort if Sudoku is wrong length
-	if(strlen(sudoku_str) != SUDOKU_LEN)
+	if((strlen(sudoku_str) + strlen(user_nums)) != (SUDOKU_LEN * 2))
 		finish_with_err_msg("Wrong length in Sudoku file\n");
 
-	char* user_nums = malloc((SUDOKU_LEN) * sizeof(char));
-	for(int i = 0; i < SUDOKU_LEN; i++)
-		user_nums[i] = '0';
-
-	struct cursor cursor;
 	cursor.x = 0;
 	cursor.y = 0;
 
+	statusbar = "File opened";
+
 	//--- CURSES INIT LOGIC ---
 
-    //on interrupt (Ctrl+c) exit (call finish)
+    //on interrupt and segfault (Ctrl+c) exit (call finish)
 	signal(SIGINT, finish);
 	signal(SIGSEGV, finish);
 
@@ -41,7 +49,7 @@ int main(int argc, char **argv){
 	nonl();
 
     //cursor
-	curs_set(2);
+	curs_set(1);
 
     //allows Ctrl+c to quit the program
 	cbreak();
@@ -55,14 +63,11 @@ int main(int argc, char **argv){
     //color support
 	if(!has_colors())
 		finish_with_err_msg("Your terminal doesn't support color\n");
-
 	start_color();
 	init_pair(1, COLOR_WHITE, COLOR_BLACK);
 	init_pair(2, COLOR_BLUE, COLOR_BLACK);
 
-	draw_sudokus(user_nums, sudoku_str);
-	
-	move_cursor(cursor);
+	draw();
 
 	//Main loop: wait for keypress, then process it
 	while(true){
@@ -82,27 +87,57 @@ int main(int argc, char **argv){
 			case 'l':
 				cursor.x = cursor.x + 1 >= LINE_LEN ? cursor.x : cursor.x + 1 ;
 				break;
-			//delete a character
-			case 'x':
-			case '0':
-				user_nums[cursor.y * LINE_LEN + cursor.x] = '0';
+			case 's':
+				savestate();
+				statusbar = "Saved";
 				break;
 			case 'q':
 				finish(0);
 			//Input numbers into the user sudoku field
 			default:
-				//Check if the key is a number (not zero) in aasci chars
-				if(key_press >= 0x31 && key_press <= 0x39)
-					user_nums[cursor.y * LINE_LEN + cursor.x] = key_press;
+				//Check if the key is a number (not zero) in aasci chars or 'x' and if the cursor is not an a field filled by the puzzle
+
+				//Check if the field is empty in the puzzle
+				if(sudoku_str[cursor.y * LINE_LEN + cursor.x] == '0'){
+					//check for numbers
+					if(key_press >= 0x30 && key_press <= 0x39 && user_nums[cursor.y * LINE_LEN + cursor.x] != key_press){ 
+						user_nums[cursor.y * LINE_LEN + cursor.x] = key_press;
+						statusbar = "*Not saved";
+					}
+					//check for x
+					else if(key_press == 'x' && user_nums[cursor.y * LINE_LEN + cursor.x] != '0'){
+						user_nums[cursor.y * LINE_LEN + cursor.x] = '0';
+						statusbar = "*Not saved";
+					}
+				}
 				break;
 		}
 
-		erase();
-
-		draw_sudokus(user_nums, sudoku_str);
+		draw();
 
 		move_cursor(cursor);
 	}
+}
+
+void draw(){
+	erase();
+	draw_sudokus(user_nums, sudoku_str);
+	mvaddstr(LINE_LEN + 4, 0, statusbar);
+	move_cursor(cursor);
+}
+
+//Write changed values back to file
+int savestate(){
+	FILE* savestate = fopen(filename, "w");
+
+	if(savestate == NULL){
+		finish_with_err_msg("Error accessing file\n");
+		return 1;
+	}
+
+	fprintf(savestate, "%s\n%s", sudoku_str, user_nums);
+	fclose(savestate);
+	return 0;
 }
 
 void finish(int sig){
@@ -128,9 +163,8 @@ void read_sudoku(char* sudoku){
 		//On every third vertical line, add seperator
 		if(y % 3 == 0){
 			//Add 4 horizontal seperators 
-			for(int i = 0; i < LINE_LEN + 4; i++){
+			for(int i = 0; i < LINE_LEN + 4; i++)
 				mvaddch(y + yoff, i, '-');
-			}	
 			//Increment offset
 			yoff++;
 		}
@@ -139,13 +173,13 @@ void read_sudoku(char* sudoku){
 		for(int x = 0; x < LINE_LEN; x++){
 			//On every third character, add a pipe
 			if(x % 3 == 0){
-				//Move and increment
+				//Move, print and increment
 				mvaddch(y + yoff, x + xoff++, '|');
 			}
 			move(y + yoff, x + xoff);
 			//Get digit from input string
 			char current_digit = sudoku[y * LINE_LEN + x];
-			//Draw zeros empty
+			//Draw everything except zeros
 			if(current_digit != '0')
 				addch(current_digit);
 		}
@@ -159,13 +193,13 @@ void read_sudoku(char* sudoku){
 }
 
 //Move cursor but don't get into the seperators
-void move_cursor(struct cursor cursor){
+void move_cursor(){
 	move(cursor.y + (cursor.y / 3) + 1, cursor.x + (cursor.x / 3) + 1);
 }
 
 //Draw user numbers and the given sudoku in different colors
 //Draw the user numbers under the given sudoku so the latter can't be overwritten
-void draw_sudokus(char* user_nums, char* sudoku_str){
+void draw_sudokus(){
 	attron(COLOR_PAIR(2));
 	read_sudoku(user_nums);
 
