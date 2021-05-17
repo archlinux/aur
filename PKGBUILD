@@ -3,12 +3,12 @@
 pkgname=taiwins
 _pkgname=taiwins
 pkgrel=1
-pkgver=0.3
+pkgver=0.3.1
 pkgdesc="Tiling and floating wayland window manager focused on speed and size"
 url="https://taiwins.org"
 license=('GPL2')
 source=("https://github.com/taiwins/taiwins/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz"{,.sig})
-md5sums=('1f55d0ee7cacb6cc18905c2df17a343a' 'SKIP')
+md5sums=('e28ec8ec3fce49e40a1f04a70685eed4' 'SKIP')
 arch=('x86_64')
 provides=('taiwins')
 conflicts=('taiwins' 'taiwins-git')

@@ -1,6 +1,6 @@
 pkgbase = taiwins
 	pkgdesc = Tiling and floating wayland window manager focused on speed and size
-	pkgver = 0.3
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://taiwins.org
 	arch = x86_64
@@ -30,10 +30,10 @@ pkgbase = taiwins
 	provides = taiwins
 	conflicts = taiwins
 	conflicts = taiwins-git
-	source = https://github.com/taiwins/taiwins/releases/download/v0.3/taiwins-0.3.tar.gz
-	source = https://github.com/taiwins/taiwins/releases/download/v0.3/taiwins-0.3.tar.gz.sig
+	source = https://github.com/taiwins/taiwins/releases/download/v0.3.1/taiwins-0.3.1.tar.gz
+	source = https://github.com/taiwins/taiwins/releases/download/v0.3.1/taiwins-0.3.1.tar.gz.sig
 	validpgpkeys = A9C874AAE5654786A694114A041BB7CB35A212C3
-	md5sums = 1f55d0ee7cacb6cc18905c2df17a343a
+	md5sums = e28ec8ec3fce49e40a1f04a70685eed4
 	md5sums = SKIP
 
 pkgname = taiwins
