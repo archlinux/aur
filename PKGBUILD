@@ -23,6 +23,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
+  autoreconf -fi
   autoconf
   ./configure
   make
