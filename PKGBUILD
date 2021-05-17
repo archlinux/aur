@@ -1,6 +1,6 @@
 # Maintainer: Anthony Vitacco <breaker1@pm.me>
 pkgname=container-structure-test
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Validate the structure of your container images"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=(
 )
 optdepends=('docker: run tests with the docker driver')
 source=("${pkgname}::https://storage.googleapis.com/${pkgname}/v${pkgver}/${pkgname}-linux-amd64")
-sha256sums=('9ddc0791491dc8139af5af4d894e48db4eeaca4b2cb9196293efd615bdb79122')
+sha256sums=('72deeea26c990274725a325cf14acd20b8404251c4fcfc4d34b7527aac6c28bc')
 package() {
   install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
