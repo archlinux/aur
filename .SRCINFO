@@ -1,23 +1,25 @@
 pkgbase = libgccjit
 	pkgdesc = Just-In-Time Compilation using GCC.
-	pkgver = 10.2.0
-	pkgrel = 2
+	pkgver = 11.1.0
+	pkgrel = 1
 	url = https://gcc.gnu.org/wiki/JIT
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	checkdepends = dejagnu
 	makedepends = binutils
-	makedepends = libmpc>=0.8.1
-	makedepends = gmp>=4.3.2
-	makedepends = mpfr>=2.4.2
+	makedepends = libmpc
 	depends = glibc
 	depends = libmpc
-	depends = zlib
-	depends = gcc-libs=10.2.0
+	depends = gcc-libs=11.1.0
 	options = !emptydirs
-	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-10.2.0/gcc-10.2.0.tar.xz
-	sha512sums = 42ae38928bd2e8183af445da34220964eb690b675b1892bbeb7cd5bb62be499011ec9a93397dba5e2fb681afadfc6f2767d03b9035b44ba9be807187ae6dc65e
+	source = https://sourceware.org/pub/gcc/releases/gcc-11.1.0/gcc-11.1.0.tar.xz
+	source = https://sourceware.org/pub/gcc/releases/gcc-11.1.0/gcc-11.1.0.tar.xz.sig
+	validpgpkeys = F3691687D867B81B51CE07D9BBE43771487328A9
+	validpgpkeys = 86CFFCA918CF3AF47147588051E8B148A9999C34
+	validpgpkeys = 13975A70E63C361C73AE69EF6EEB81F8981C74C7
+	validpgpkeys = D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62
+	sha256sums = 4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf
+	sha256sums = SKIP
 
 pkgname = libgccjit
 

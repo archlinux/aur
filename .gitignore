@@ -1,4 +1,4 @@
-/*
-!/PKGBUILD
-!/.gitignore
-!/.SRCINFO
+/src
+/pkg
+/gcc-*.tar.*
+/libgccjit-*.pkg.*
