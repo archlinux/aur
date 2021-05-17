@@ -4,12 +4,11 @@
 pkgbase=kata1-containers-guest
 pkgname=(
   kata1-agent
-  kata1-linux-container
-  kata1-containers-image
+  #kata1-containers-image
 )
 pkgver=1.12.1
 _pkgver=${pkgver/\~/-}
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight virtual machines for containers (guest components)"
 arch=('x86_64')
 url="https://katacontainers.io/"
@@ -22,15 +21,10 @@ makedepends=(
 )
 
 _gh_org="github.com/kata-containers"
-_kata_kernel_ver="${KATA_KERNEL_VER:-5.10.37}"
 
 source=(
   "agent-${_pkgver}.tar.gz::https://${_gh_org}/agent/archive/${_pkgver}.tar.gz"
   "osbuilder-${_pkgver}.tar.gz::https://${_gh_org}/osbuilder/archive/${_pkgver}.tar.gz"
-  "packaging-${_pkgver}.tar.gz::https://${_gh_org}/packaging/archive/${_pkgver}.tar.gz"
-
-  "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_kata_kernel_ver}.tar.xz"
-  "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_kata_kernel_ver}.tar.sign"
 
   # mknitcpio-busybox
   "mkinitcpio-agent.conf"
@@ -39,89 +33,29 @@ source=(
 
   # mknitpcio-systemd
   "install_sd-kata-agent.tpl"
-
-  # https://lkml.org/lkml/2021/1/23/75
-  "0001-config-preemption.diff"  # 5.4
-
-  "btrfs.config"
 )
 sha512sums=(
   "1a9b84d5f0a5228a6660c88af01e28c608923156cbed55dea78263ecf243a79c3ee383aa0feaa26f83ef9255ebab1f01c2b61c1d027f7101a0ae2d820463586c"
   "c596150773be53e1a9796086d39912c407954a05d3b05d60d74f9c2cc3be61c99c43065e2a818aca0045b37bee332efd0c92f7a00354845154095c61c934ec95"
-  "5cad6504b78b08f5bd8ad8e5d0099c288c8e6d21ed32e70176bf4c5bfe55092716d3915b9da7f104ab9d63f81f363a90b853fc3b745c909252174cc90435bc3f"
-
-  "${KATA_KERNEL_SUM_SHA512:-8df1383c0a2e4f92ca4b2c075df305db955be3c2fae1c3c97744d37bfd62c50313265c8b86c446548b41b116fdc1e6dc007c501b3836bc8e9456137db858f147}"
-  "SKIP"
 
   "182a249aecbab33b8704e9567e96d33b535ee59e6d2f52f0c30fbc3d12813f60192886539cc745933caaf59268925d78db9e0b6b427321e2bac932ebde77d62e"
   "0250e52251986f36cfb9e378d848f755caaf5253daa8ff7d87172f2622754c1eb4180b338a497e3fbeb880e232eef19d5e512f5a8e610e7a6eb468f210849a08"
   "6f476297d9001eef9a0665689f752cf5124907522cfc87240df16488379a5c7c9820a6e33a576dbf7f75c4fdfa7cab7a0e395b05c9339069dedbdaac42fb6c04"
 
   "65d368df7fe4546d5c825e30c5c831cb4b4f759fb1352b7715d40b750968b3ba54139f64cd1133a3b599d179d88d8181bd61eb34b1f5868b5606e53de6552c41"
-
-  "76c27fe0e2b84a9ae0d4b0e2a96ef0c07777811991b4aae21c88494b91fa2837fb67be335cebf4874e5e3235b5ba4641ec4544f9e055765e2dcf399d9d875e8c"
-
-  "ed3011a9fee8dd2fb16a004305b23e6b79158afcfe6d88ccdf471b177a8fbe4a9da92924e437284de83a69cebdf5cca2312b614906c404c0d22692aeca491510"
 )
 b2sums=(
   "0d72ce69d0c9de920f3b11d3180627b2e65a1760d6830cfd4812339f7b6d16452f33506996f2ef67cdeffe1269f297b0f22a49a36c5b7078f31849f6b9cd2e37"
   "40af9fb14a5b42a88378be0c04b693876f508710e84d9f0e043c0fcd8cff66ff64a82f1202a2b9df65047175f0824b7950a491a7e3ad33077f364c1688a07f4c"
-  "2ca8e265eb38bb3c3095e7317637ca6db8ebac2a9174c9a56eb531eae960345ca82b58327a83f8ffbdd84dd8c6ec159cb391d216cd3e26f726f8b822ad021d6a"
-
-  "${KATA_KERNEL_SUM_B2:-74ad5bf6102af7ce8ea575200131c1db9e7e0b044496659896205b9da7239f0c8d9e3fb9400a4b001952a5fc34842069ba71aadad30c1a18855b94371c89fe00}"
-  "SKIP"
 
   "43c81141a65fd14b60ae72c5b98168bec531990903cc7c8b224b416c71d1d05c1cf3f73891954604e0b0c6f48c52a3a41a8e9e78874a79e72b14282373108e8b"
   "9abf2208af353019ba177d8a48ba613401742cd21258a79c5d9cb8518a51f4f22a41dc386b71f2d6521d03f6ff65d8710dc59d1ca9c7c1dc5f94061c7374286c"
   "1745aa5d5df0af2452381de163e3964511172e045c13736a062bb2c932e3306250d24992b2bdbc534ced188b35d3b1f4958a5680c99356afd3097d11c84aee31"
 
   "c9d90683b134dcbf656adcb5bebad02a9a02ec68a1497bbab16cdec7d626ab020f56a40f00bfddf06000452e20d5a58d53ed59d0be49451daf9019fe1f203a58"
-
-  "919319ddcaac3f7c5b1c1998fced9920f3e7e9d4660c83e380495fc3a14d5f4e82736ac9435fdb78512576f1d90f80b1ad017529f2b42e013b844ed3ec4bc99f"
-
-  "803eb3483722e7eab50102b8d0f9dc1ea7f38781d1f61e5998137469e019cb49d944a30c97f465c5b03916322955fcf29629af27ac47f2e19210bee3d63c488e"
 )
-validpgpkeys=(
-  647F28654894E3BD457199BE38DBBDC86092693E  # kernel
-)
-
-case "${CARCH}" in
-  x86_64)     _KARCH=x86_64;;
-  aarch64)    _KARCH=arm64;;
-  s390|s390x) _KARCH=s390;;
-  ppc64le)    _KARCH=powerpc;;
-esac
-
-_kernel_prepare(){
-  # kata-linux-container prep (ref: https://github.com/kata-containers/packaging/tree/master/kernel )
-  for i in vanilla btrfs; do
-    cp -a "${srcdir}/linux-${_kata_kernel_ver}" "${srcdir}/linux-${_kata_kernel_ver}-${i}"
-    pushd "${srcdir}/linux-${_kata_kernel_ver}-${i}"
-    #for p in $(find "${srcdir}/packaging-${_pkgver}/obs-packaging/linux-container/patches" -type f -name "*.patch"); do
-    #  patch -p1 <"${p}"
-    #done
-
-    #patch -p1 <"${srcdir}/0001-config-preemption.diff"
-
-    # kernel config prep from upstream ("${srcdir}/packaging-${_pkgver}/obs-packaging/linux-container/kata-linux-container.spec-template")
-    make -s mrproper
-    rm -f .config
-
-    local _KCONFIG="$(find "${srcdir}/packaging-${_pkgver}/kernel/configs" -type f -name "${_KARCH}_kata_kvm_${_kata_kernel_ver%.*}.x")"
-    if [ -z "${_KCONFIG}" ]; then
-      KCONFIG_CONFIG=.config ARCH=${_KARCH} scripts/kconfig/merge_config.sh -r -n "${srcdir}/packaging-${_pkgver}/kernel/configs/fragments/common/"*.conf "${srcdir}/packaging-${_pkgver}/kernel/configs/fragments/${_KARCH}/"*.conf
-    else
-      install -D -m 0644 "${_KCONFIG}" .config
-    fi
-    [ "${i}" = "btrfs" ] && cat "${srcdir}/btrfs.config" >> .config
-    make -s ARCH="${_KARCH}" oldconfig
-    popd
-  done
-}
 
 prepare(){
-  _kernel_prepare
-
   install -dm0755 "${srcdir}/bin"
   #ln -sf "$(command -v yq)" "${srcdir}/bin/yq"
   ln -sf "$(command -v go1.15)" "${srcdir}/bin/go"
@@ -162,12 +96,6 @@ build(){
   cd "${srcdir}/src/${_gh_org}/agent"
   GOPATH="${srcdir}" LDFLAGS="" make
 
-  for i in vanilla btrfs; do
-    pushd "${srcdir}/linux-${_kata_kernel_ver}-${i}"
-    make -s ARCH="${_KARCH}"
-    popd
-  done
-
   mkinitcpio -c "${srcdir}/mkinitcpio-agent.conf" -g "${srcdir}/initrd-arch-agent.img" -D "${srcdir}/initcpio-agent"
   #mkinitcpio -c "${srcdir}/mkinitcpio-systemd.conf" -g "${srcdir}/initrd-arch-systemd.img" -D "${srcdir}/initcpio-systemd"
   _kata_image_build
@@ -186,26 +114,5 @@ package_kata1-containers-image(){
   pushd "${pkgdir}/usr/share/kata-containers"
   ln -sf "${_img_filename}" "kata-containers-arch.img"
   ln -sf "${_initrd_filename}" "kata-containers-arch-initrd.img"
-  popd
-}
-
-package_kata1-linux-container(){
-  local i suffix
-  install -dm0755 "${pkgdir}/usr/share/kata-containers"
-  pushd "${pkgdir}/usr/share/kata-containers"
-  for i in vanilla btrfs; do
-    [ "${i}" = "vanilla" ] && suffix="" || suffix="-${i}"
-    install -D -m 0644 "${srcdir}/linux-${_kata_kernel_ver}-${i}/arch/${_KARCH}/boot/bzImage" "${pkgdir}/usr/share/kata-containers/vmlinux-${_kata_kernel_ver}${suffix}.container"
-    #install -D -m 0644 "${srcdir}/linux-${_kata_kernel_ver}-${i}/vmlinux" "${pkgdir}/usr/share/kata-containers/vmlinux-${_kata_kernel_ver}${suffix}.container"
-    ln -sf "vmlinux-${_kata_kernel_ver}${suffix}.container" "vmlinux${suffix}.container"
-    if [ "${_KARCH}" = "powerpc" ]; then
-      ln -sf "vmlinux-${_kata_kernel_ver}${suffix}.container" "vmlinuz-${_kata_kernel_ver}${suffix}.container"
-      ln -sf "vmlinuz-${_kata_kernel_ver}${suffix}.container" "vmlinuz${suffix}.container"
-    else
-      # param out bzImage for other archs?
-      install -D -m 0644 "${srcdir}/linux-${_kata_kernel_ver}-${i}/arch/${_KARCH}/boot/bzImage" "${pkgdir}/usr/share/kata-containers/vmlinuz-${_kata_kernel_ver}${suffix}.container"
-      ln -sf "vmlinuz-${_kata_kernel_ver}${suffix}.container" "vmlinuz${suffix}.container"
-    fi
-  done
   popd
 }
