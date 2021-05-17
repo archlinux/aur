@@ -1,5 +1,4 @@
 pkgname=banano-vanity
-_pkgname=banano-vanity
 pkgver=1.41
 pkgrel=2
 pkgdesc="A vanity address generator for banano cryptocurrency"
@@ -15,17 +14,17 @@ makedepends=(
 )
 
 build() {
-    cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}/${pkgname}"
     cargo build --release --locked
 }
 
 check() {
-    cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}/${pkgname}"
     cargo test --release --features gpu --locked
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}/${pkgname}"
     install -Dm 755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
 
