@@ -7,7 +7,7 @@
 pkgname=proj6
 _pkgname=proj
 pkgver=6.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Cartographic Projections library (version 6)'
 arch=('x86_64')
 url="https://trac.osgeo.org/proj/"
@@ -16,13 +16,16 @@ depends=('sqlite')
 makedepends=('cmake' 'gmock' 'gtest')
 source=(https://github.com/OSGeo/PROJ/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz
         https://download.osgeo.org/proj/proj-datumgrid-1.8.zip
+        gie_self_test.patch
         add_suffix.patch)
 sha256sums=('cb776a70f40c35579ae4ba04fb4a388c1d1ce025a1df6171350dc19f25b80311'
             'b9838ae7e5f27ee732fb0bfed618f85b36e8bb56d7afb287d506338e9f33861e'
+            'a0ec0f1fd7c91972d005f60685f68c573c9742a6c030670e17b8989be109c3e5'
             'ff22b6684c72e0a24d6b214487f09d74c80b1d0520d90297afbac5ce9163e59f')
 
 prepare() {
   cd "${srcdir}"/$_pkgname-$pkgver
+  patch -p1 -i "${srcdir}"/gie_self_test.patch
   patch -p0 -i "${srcdir}"/add_suffix.patch
 }
 

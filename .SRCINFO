@@ -1,7 +1,7 @@
 pkgbase = proj6
 	pkgdesc = Cartographic Projections library (version 6)
 	pkgver = 6.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://trac.osgeo.org/proj/
 	arch = x86_64
 	license = MIT
@@ -11,9 +11,11 @@ pkgbase = proj6
 	depends = sqlite
 	source = https://github.com/OSGeo/PROJ/releases/download/6.3.2/proj-6.3.2.tar.gz
 	source = https://download.osgeo.org/proj/proj-datumgrid-1.8.zip
+	source = gie_self_test.patch
 	source = add_suffix.patch
 	sha256sums = cb776a70f40c35579ae4ba04fb4a388c1d1ce025a1df6171350dc19f25b80311
 	sha256sums = b9838ae7e5f27ee732fb0bfed618f85b36e8bb56d7afb287d506338e9f33861e
+	sha256sums = a0ec0f1fd7c91972d005f60685f68c573c9742a6c030670e17b8989be109c3e5
 	sha256sums = ff22b6684c72e0a24d6b214487f09d74c80b1d0520d90297afbac5ce9163e59f
 
 pkgname = proj6
