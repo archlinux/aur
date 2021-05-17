@@ -19,7 +19,7 @@ source=("${url}/releases/download/${_semver}/${_jar}"
         "${pkgname}.desktop"
         "${pkgname}.png"
         "${pkgname}.sh")
-md5sums=('88d608c7bf6d79ed7cbfdf98865c751b'
+md5sums=('bd9f73d40f91a0f58ed1903599344b64'
          '728182fd92daa4e50b98c0d62bb65c5e'
          '520cdde66717d1701fb40dfbcdab59a2'
          '196d4e69879d3b01f73672c812c0f20c')
