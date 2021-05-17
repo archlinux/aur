@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Python module for deprecation documentation"
 arch=('any')
 url=$_repourl
-license=('MIT')
+license=('BSD')
 depends=('python>=3.6')
 provides=("python-$_pkgname")
 conflicts=("python-$_pkgname")
