@@ -2,7 +2,7 @@
 
 pkgname=glimpse-editor
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of the GNU Image Manipulation Program"
 arch=(i686 x86_64)
 url="https://glimpse-editor.org/"
@@ -47,18 +47,18 @@ build() {
   cd "Glimpse-${pkgver}"
 
   ./configure \
-  	--prefix=/usr \
-  	--sysconfdir=/etc \
-  	--libexecdir=/usr/bin \
-  	--enable-mp \
-  	--enable-gimp-console \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --libexecdir=/usr/bin \
+    --enable-mp \
+    --enable-gimp-console \
     --disable-check-update \
-  	--enable-gtk-doc \
+    --enable-gtk-doc \
     --disable-python \
-	--without-webkit \
-	--with-xmc \
-    --with-bug-report-url=https://aur.archlinux.org/packages/glimpse-editor-git/ \
-  	--with-openexr
+    --without-webkit \
+    --with-xmc \
+    --with-bug-report-url=https://aur.archlinux.org/packages/glimpse-editor/ \
+    --with-openexr
 
   make
 }
