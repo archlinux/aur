@@ -24,6 +24,7 @@ depends=(
 	'python-setuptools'
 	'python-tqdm'
 	'python-watchdog'
+	'python-networkx'
 	# Aur dependencies
 	'python-cloup'
 	'python-glcontext'
@@ -31,7 +32,6 @@ depends=(
 	'python-mapbox-earcut'
 	'python-moderngl-git'
 	'python-moderngl-window'
-	'python-networkx-git'
 	'python-pydub'
 )
 makedepends=(
@@ -49,7 +49,7 @@ prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
 	sed -i 's/rich>=6.0,<7.0/rich/' setup.py
 	sed -i 's/decorator<5.0.0/decorator/' setup.py
-	sed -i 's/Requires-Dist: decorator (<5.0.0)/Requires-Dist: decorator (>=5.0.7)/' PKG-INFO
+	sed -i 's/click>=7.1,<8.0/click/' setup.py
 }
 
 build() {
