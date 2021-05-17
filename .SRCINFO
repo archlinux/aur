@@ -1,0 +1,38 @@
+pkgbase = linux-kata
+	pkgdesc = Kata Containers container kernel image
+	pkgver = 5.10.37
+	pkgrel = 1
+	url = https://katacontainers.io/
+	arch = x86_64
+	license = GPL2
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.37.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.37.tar.sign
+	source = kata-containers-2.1.0.tar.gz::https://github.com/kata-containers/kata-containers/archive/2.1.0.tar.gz
+	source = btrfs.config
+	source = 0001-config-preemption.diff
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha512sums = 8df1383c0a2e4f92ca4b2c075df305db955be3c2fae1c3c97744d37bfd62c50313265c8b86c446548b41b116fdc1e6dc007c501b3836bc8e9456137db858f147
+	sha512sums = SKIP
+	sha512sums = ccfc712168738fce1f26b14fbe4a0dcecd9d1f3a0698c06487d98091173951be141c06b4314712ea9b67cda93d2efa8701c3b9afc8770458147defa5adbabf1a
+	sha512sums = ed3011a9fee8dd2fb16a004305b23e6b79158afcfe6d88ccdf471b177a8fbe4a9da92924e437284de83a69cebdf5cca2312b614906c404c0d22692aeca491510
+	sha512sums = 76c27fe0e2b84a9ae0d4b0e2a96ef0c07777811991b4aae21c88494b91fa2837fb67be335cebf4874e5e3235b5ba4641ec4544f9e055765e2dcf399d9d875e8c
+	b2sums = 74ad5bf6102af7ce8ea575200131c1db9e7e0b044496659896205b9da7239f0c8d9e3fb9400a4b001952a5fc34842069ba71aadad30c1a18855b94371c89fe00
+	b2sums = SKIP
+	b2sums = ee14536ba48ece1beba2409082446b18b80450233335bf2b9644604cf3d97404caa9f58a0ca1de69da50cd900e0b7ee5f9b046e206b9235ed77b9deccb2399d6
+	b2sums = 803eb3483722e7eab50102b8d0f9dc1ea7f38781d1f61e5998137469e019cb49d944a30c97f465c5b03916322955fcf29629af27ac47f2e19210bee3d63c488e
+	b2sums = 919319ddcaac3f7c5b1c1998fced9920f3e7e9d4660c83e380495fc3a14d5f4e82736ac9435fdb78512576f1d90f80b1ad017529f2b42e013b844ed3ec4bc99f
+
+pkgname = linux-kata
+	provides = kata1-linux-container
+	provides = kata2-linux-container
+	provides = kata-linux-container
+	conflicts = kata1-linux-container
+	conflicts = kata2-linux-container
+	conflicts = kata-linux-container
+
+pkgname = linux-kata-btrfs
+	provides = linux-kata
+	provides = kata1-linux-container
+	provides = kata2-linux-container
+	provides = kata-linux-container
+

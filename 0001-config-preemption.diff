@@ -1,0 +1,65 @@
+diff -rupN linux-5.4.71-bak/arch/x86/entry/Makefile linux-5.4.71/arch/x86/entry/Makefile
+--- linux-5.4.71-bak/arch/x86/entry/Makefile	2021-03-31 07:37:51.209894751 +0200
++++ linux-5.4.71/arch/x86/entry/Makefile	2021-03-31 07:40:01.031657854 +0200
+@@ -7,11 +7,12 @@ OBJECT_FILES_NON_STANDARD_entry_64_compa
+ 
+ CFLAGS_syscall_64.o		+= $(call cc-option,-Wno-override-init,)
+ CFLAGS_syscall_32.o		+= $(call cc-option,-Wno-override-init,)
+-obj-y				:= entry_$(BITS).o thunk_$(BITS).o syscall_$(BITS).o
++obj-y				:= entry_$(BITS).o syscall_$(BITS).o
+ obj-y				+= common.o
+ 
+ obj-y				+= vdso/
+ obj-y				+= vsyscall/
+ 
+ obj-$(CONFIG_IA32_EMULATION)	+= entry_64_compat.o syscall_32.o
++obj-$(CONFIG_PREEMPTION)		+= thunk_$(BITS).o
+ 
+diff -rupN linux-5.4.71-bak/arch/x86/entry/thunk_32.S linux-5.4.71/arch/x86/entry/thunk_32.S
+--- linux-5.4.71-bak/arch/x86/entry/thunk_32.S	2021-03-31 07:37:51.209894751 +0200
++++ linux-5.4.71/arch/x86/entry/thunk_32.S	2021-03-31 07:41:12.507459778 +0200
+@@ -34,10 +34,8 @@
+ 	THUNK trace_hardirqs_off_thunk,trace_hardirqs_off_caller,1
+ #endif
+ 
+-#ifdef CONFIG_PREEMPTION
+ 	THUNK ___preempt_schedule, preempt_schedule
+ 	THUNK ___preempt_schedule_notrace, preempt_schedule_notrace
+ 	EXPORT_SYMBOL(___preempt_schedule)
+ 	EXPORT_SYMBOL(___preempt_schedule_notrace)
+-#endif
+ 
+diff -rupN linux-5.4.71-bak/arch/x86/entry/thunk_64.S linux-5.4.71/arch/x86/entry/thunk_64.S
+--- linux-5.4.71-bak/arch/x86/entry/thunk_64.S	2021-03-31 07:37:51.209894751 +0200
++++ linux-5.4.71/arch/x86/entry/thunk_64.S	2021-03-31 07:41:09.934157585 +0200
+@@ -46,16 +46,13 @@
+ 	THUNK lockdep_sys_exit_thunk,lockdep_sys_exit
+ #endif
+ 
+-#ifdef CONFIG_PREEMPTION
+ 	THUNK ___preempt_schedule, preempt_schedule
+ 	THUNK ___preempt_schedule_notrace, preempt_schedule_notrace
+ 	EXPORT_SYMBOL(___preempt_schedule)
+ 	EXPORT_SYMBOL(___preempt_schedule_notrace)
+-#endif
+ 
+ #if defined(CONFIG_TRACE_IRQFLAGS) \
+- || defined(CONFIG_DEBUG_LOCK_ALLOC) \
+- || defined(CONFIG_PREEMPTION)
++ || defined(CONFIG_DEBUG_LOCK_ALLOC)
+ .L_restore:
+ 	popq %r11
+ 	popq %r10
+diff -rupN linux-5.4.71-bak/arch/x86/um/Makefile linux-5.4.71/arch/x86/um/Makefile
+--- linux-5.4.71-bak/arch/x86/um/Makefile	2021-03-31 07:37:51.226561216 +0200
++++ linux-5.4.71/arch/x86/um/Makefile	2021-03-31 07:38:34.422705542 +0200
+@@ -26,7 +26,8 @@ else
+ 
+ obj-y += syscalls_64.o vdso/
+ 
+-subarch-y = ../lib/csum-partial_64.o ../lib/memcpy_64.o ../entry/thunk_64.o
++subarch-y = ../lib/csum-partial_64.o ../lib/memcpy_64.o
++subarch-$(CONFIG_PREEMPTION) += ../entry/thunk_64.o
+ 
+ endif
+ 
