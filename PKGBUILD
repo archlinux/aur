@@ -1,9 +1,14 @@
 # Maintainer: DelightedCat <bottledlactose@gmail.com>
 
-# This PKGBUILD is meant for those who have a purchased license for Aseprite.
-# In order to use this script, place the downloaded .deb file next to this PKGBUILD file.
 #
-# Then go ahead and build your package as usual with makepkg!
+# !! IMPORTANT NOTE !!
+#
+# This package will NOT build straight out of the box.
+# First off, you need to download the PURCHASED .deb file provided by the Aseprite developers.
+#
+# Place the downloaded .deb file next to this PKGBUILD and run makepkg.
+# If it still not work, please ensure the .deb file has the right name.
+#
 
 pkgname=aseprite-bin
 _pkgver=1.2.27-1
