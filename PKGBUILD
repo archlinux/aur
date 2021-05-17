@@ -14,5 +14,5 @@ source=("https://github.com/fdw/rofi-rbw/releases/download/${pkgver}/rofi_rbw-${
 sha256sums=('fa66a726ec225a1026466fa855a477eb471ef85c40b2cb87cdbfad947543aae7')
 
 package() {
-	pip install --root=$pkgdir rofi_rbw-${pkgver}-py3-none-any.whl 
+	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.whl
 }
