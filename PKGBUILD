@@ -6,7 +6,7 @@
 # This patch removes restriction on maximum number of simultaneous NVENC video encoding sessions imposed by Nvidia to consumer-grade GPUs.
 # You can read more about it here: https://github.com/keylase/nvidia-patch 
 #
-# WARNING: In extreme cases, this can damage the NVENC and FBC libraries.
+# WARNING: In extreme cases, this can damage the NVENC and NvFBC libraries.
 _nvidia_patch=
 
 # This parameter sets the default configuration of NVIDIA PowerMizer (schema).
@@ -32,7 +32,7 @@ _nvidia_patch=
 # Now that we've worked out how it works, you can choose the power scheme you want:
 #
 # Available power schemes:
-# №                                            AC power source | Battery 
+# Value                                        AC power source | Battery 
 # -------------------------------------------------------------|-------------------------------------------------------------
 # 1 - Static clock frequency, Maximum performance              | Adaptive clock frequency, preferably powersaving
 # 2 - Static clock frequency, Maximum performance              | Static strategy, maximum powersavings
@@ -49,10 +49,9 @@ _nvidia_patch=
 _powermizer_scheme=
 
 pkgbase=nvidia-dkms-performance
-pkgname=(nvidia-dkms-performance nvidia-utils-performance opencl-nvidia-performance lib32-nvidia-utils-performance lib32-opencl-nvidia-performance)
+pkgname=(nvidia-dkms-performance nvidia-settings-performance nvidia-utils-performance opencl-nvidia-performance lib32-nvidia-utils-performance lib32-opencl-nvidia-performance)
 pkgver=465.27
-pkgrel=2
-makedepends=(xdelta3)
+pkgrel=3
 arch=('x86_64')
 url='https://www.nvidia.com/'
 license=('custom')
@@ -65,8 +64,7 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
         '0002-linux-rt.patch'
         '0003-nvidia-drm-modeset.patch'
         '0004-NVreg-Improvements.patch'
-        'nvidia-fbc.vcdiff'
-        'nvidia-nvenc.vcdiff')
+        '0005-nvidia-settings-paths.patch')
 
 create_links() {
     # create soname links
@@ -97,17 +95,11 @@ prepare() {
     patch -Np1 < "../$src"
     done
 
-    if [ -n $_nvidia_patch ]; then 
-        local fbc_path="${srcdir}/${_pkg}/libnvidia-fbc.so.${pkgver}"
-        local nvenc_path="${srcdir}/${_pkg}/libnvidia-encode.so.${pkgver}"
-
-        mv -vf "${fbc_path}" "${fbc_path}.bak" 
-        mv -vf "${nvenc_path}" "${nvenc_path}.bak"
-
-        # FBC
-        xdelta3 -vds "${fbc_path}.bak" "${srcdir}/nvidia-fbc.vcdiff" "${fbc_path}"
-        # NVENC
-        xdelta3 -vds "${nvenc_path}.bak" "${srcdir}/nvidia-nvenc.vcdiff" "${nvenc_path}"
+    if [ -n $_nvidia_patch ]; then
+	    # NVENC 
+	    sed -i 's/\xe8\xc5\x20\xff\xff\x85\xc0\x41\x89\xc4/\xe8\xc5\x20\xff\xff\x29\xc0\x41\x89\xc4/g' "${srcdir}/${_pkg}/libnvidia-encode.so.${pkgver}"
+	    # NvFBC
+	    sed -i 's/\x83\xfe\x01\x73\x08\x48/\x83\xfe\x00\x72\x08\x48/' "${srcdir}/${_pkg}/libnvidia-fbc.so.${pkgver}"
     fi
 
     if [ -n $_powermizer_scheme ]; then 
@@ -408,5 +400,4 @@ sha256sums=('7e69ffa85bdee6aaaa6b6ea7e1db283b0199f9ab21e41a27dc9048f249dc3171'
             'af21158f4210f7a220c79a9bd32fbaf1604124916b4159a1106f9120e1d6ecb9'
             '7d9392f36374ab609417abe4b5493bbb9d868a2ee29cdb877d4be8b098eb527b'
             '898fe80847fb2974e1d16b380c16569ddb3ab24c6974bbeb72d68e8e13902311'
-            '263b922268b06ca4a20561afd76d9924eeeb8ead9b96435bf9171eea64c109bb'
-            'f9294edacd1228847287a6e0286a9257ab267f97614a86541df7500867627263')
+            '6bb5456f14435ad329d750147c749d7c50fb8ae11778c7fcc9e6e3cd256c4017')
