@@ -51,7 +51,7 @@ _major=5.12
 _minor=4
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
@@ -314,7 +314,7 @@ sha512sums=('db6dd1746ffbf2e702336e444ddf31d2f50d62998566663ed07ec696dd2af860255
             'c4a2ed0bbd9d348893e802079ab684518b28f163ad242af1b74dd71c7e7e0f5d2db68ace1733879f4bd575103b365e90d6af5d2d849c6e6d2dda41ac73f822a7'
             'ce617dbc7520a750624027e71ab12242f0fc8787697e78d6f632b88d216d695618ccea935ff23392cdd0fc992203fc5f30e57e6487132ef125d5ba2d87094ff1'
             '02f5e392bee5341b193d719b591788a0ef0ab654a76a2ae032b19a2328e79b9fc10297dfa6ec412b20c37c851594c55e42c9d5dbf8067467a19aa1ff13e7de98'
-            '5ca7205c1a6672a5b46b80b4797560a7ad15c692dfa3b4dd818ffe9af367a6dc46ccfee84d69d977752eec3733ec8614d7cc93d5377da284fe634f90e4c1fa95')
+            '4abfa6632201d13254874c86d98452460e2136d267bc81de10f3c5d960f54e50978b1ec04f34be9d9d360e8154d8db9f15c814ea6abf57d066120fdac9cc2fc3')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
