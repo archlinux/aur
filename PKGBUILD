@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=extra-cmake-modules-git
-pkgver=5.83.0.r3296.4d307aaf
+pkgver=5.83.0.r3302.001f901e
 pkgrel=1
 pkgdesc='Extra modules and scripts for CMake'
 arch=('any')
@@ -17,11 +17,8 @@ makedepends=('git'
              )
 conflicts=('extra-cmake-modules')
 provides=('extra-cmake-modules')
-source=('git+https://invent.kde.org/frameworks/extra-cmake-modules.git'
-        'https://invent.kde.org/frameworks/extra-cmake-modules/-/merge_requests/121.patch')
-sha256sums=('SKIP'
-            '8a2af94ca2a84e812b8dc30ccb73863b1e9683946990908c1095fe4f1d18a3eb'
-            )
+source=('git+https://invent.kde.org/frameworks/extra-cmake-modules.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd extra-cmake-modules
@@ -31,8 +28,6 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  patch -d extra-cmake-modules -p1 -i "${srcdir}/121.patch"
 }
 
 build() {

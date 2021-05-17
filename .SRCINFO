@@ -1,6 +1,6 @@
 pkgbase = extra-cmake-modules-git
 	pkgdesc = Extra modules and scripts for CMake
-	pkgver = 5.83.0.r3296.4d307aaf
+	pkgver = 5.83.0.r3302.001f901e
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kdesupport/extra-cmake-modules
 	arch = any
@@ -13,9 +13,7 @@ pkgbase = extra-cmake-modules-git
 	provides = extra-cmake-modules
 	conflicts = extra-cmake-modules
 	source = git+https://invent.kde.org/frameworks/extra-cmake-modules.git
-	source = https://invent.kde.org/frameworks/extra-cmake-modules/-/merge_requests/121.patch
 	sha256sums = SKIP
-	sha256sums = 8a2af94ca2a84e812b8dc30ccb73863b1e9683946990908c1095fe4f1d18a3eb
 
 pkgname = extra-cmake-modules-git
 
