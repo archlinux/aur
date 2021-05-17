@@ -1,0 +1,26 @@
+pkgbase = wayfarer-git
+	pkgdesc = Screen recorder for GNOME / Wayland / Pipewire
+	pkgver = r4.5cf9ec6
+	pkgrel = 1
+	url = https://github.com/stronnag/wayfarer.git
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = pentium4
+	license = GPLv3
+	makedepends = git
+	makedepends = vala
+	makedepends = meson
+	depends = gtk3
+	depends = gstreamer
+	depends = libappindicator-gtk3
+	optdepends = ffmpeg: Faster muxing
+	provides = wayfarer
+	conflicts = wayfarer
+	source = wayfarer::git+https://github.com/stronnag/wayfarer.git
+	sha512sums = SKIP
+
+pkgname = wayfarer-git
+
