@@ -2,7 +2,7 @@
 
 pkgname="embedded-studio-risc-v"
 pkgver=5.44
-pkgrel=1
+pkgrel=2
 pkgdesc="Segger Embedded Studio for RISC-V"
 arch=('x86_64' 'aarch64')
 makedepends=()
@@ -38,6 +38,7 @@ package() {
 
 	msg2 'Instalation of binary file'
 	ln -s /opt/SEGGER/Embedded-Studio-RISC-V/bin/emStudio "${pkgdir}/usr/bin/emStudio-RISC-V"
+        ln -s /opt/SEGGER/Embedded-Studio-RISC-V/bin/emBuild "${pkgdir}/usr/bin/emBuild-RISC-V"
 
 	msg2 'Installing desktop shortcut and icon'
 	install -Dm 644 "${pkgdir}/opt/SEGGER/Embedded-Studio-RISC-V/bin/StudioIcon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
