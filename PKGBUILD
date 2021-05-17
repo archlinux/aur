@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=listmonk
-pkgver=0.9.0
-pkgrel=5
+pkgver=1.0.0
+pkgrel=1
 pkgdesc='Self-hosted newsletter and mailing list manager with a modern dashboard'
 arch=(x86_64)
 url=https://listmonk.app
@@ -11,25 +11,21 @@ depends=(postgresql)
 makedepends=(go node-gyp nodejs-lts-fermium yarn)
 backup=(etc/listmonk/config.toml)
 install=$pkgname.install
-source=("$pkgname-$pkgver.tar.gz::https://github.com/knadh/$pkgname/archive/v$pkgver-beta.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/knadh/$pkgname/archive/v$pkgver.tar.gz"
         "$pkgname.conf"
         "$pkgname.service")
-sha256sums=('20b89ddacd0a42d8f350ef5a96c7e2d95cff82ad2ddc756ff1581cb2a7dbbcdf'
+sha256sums=('c0b6f74b1df966a91d29ff2d6d6030eca405d80181505b7966273d8bd7954185'
             '5cfc186438df2408ed88a5bec3a9a4b5f2afb0d3aec41c4cc63b2f5eb810b3cb'
             '809ede70c932183889b2fa567b340fb82cce1ada76c7b0a0b9efb82b87c92fa0')
 
 prepare() {
-	cd "$pkgname-$pkgver-beta"
-	sed -i -e 's/^[[:space:]]\+//;s/"db"/"localhost"/;s/0.0.0.0/localhost/' \
-		-e '/password/s/"listmonk"/"<your_password>"/' \
-		config.toml.sample
-	pushd frontend
+	cd "$pkgname-$pkgver/frontend"
 	export YARN_CACHE_FOLDER="$srcdir/node_modules"
 	yarn install --frozen-lockfile
 }
 
 build() {
-	cd "$pkgname-$pkgver-beta"
+	cd "$pkgname-$pkgver"
 	go build \
 		-trimpath \
 		-buildmode=pie \
@@ -45,13 +41,13 @@ build() {
 }
 
 check() {
-	cd "$pkgname-$pkgver-beta"
+	cd "$pkgname-$pkgver"
 	go test ./...
 }
 
 package() {
-	cd "$pkgname-$pkgver-beta"
-    install -Dm755 -t "$pkgdir/usr/bin" ${pkgname%-bin}
+	cd "$pkgname-$pkgver"
+    install -Dm755 -t "$pkgdir/usr/bin" $pkgname
     install -Dm644 config.toml.sample "$pkgdir/etc/$pkgname/config.toml"
     install -Dm644 -t "$pkgdir/usr/lib/systemd/system/" "../$pkgname.service"
     install -Dm644 -t "$pkgdir/usr/lib/sysusers.d/" "../$pkgname.conf"
