@@ -10,7 +10,7 @@ pkgname=(
 )
 pkgver=1.12.1
 _pkgver=${pkgver/\~/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight virtual machines for containers"
 arch=('x86_64')
 url="https://katacontainers.io/"
@@ -80,7 +80,7 @@ package_kata1-runtime(){
   optdepends=(
     "kata1-ksm-throttler=${pkgver}"
     'firecracker<0.22.0'
-    'cloud-hypervisor<0.9.0'
+    'cloud-hypervisor'  # 15.0 seems to work just fine, so does qemu
   )
   install=kata-runtime.install
   cd "${srcdir}/src/${_gh_org}/runtime"
