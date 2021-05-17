@@ -1,6 +1,6 @@
 pkgbase = appnotex
 	pkgdesc = Quick terminal based note keeper for Linux Apps
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1.1
 	url = https://github.com/Abir-Tx/AppNotEx.git
 	arch = x86_64
