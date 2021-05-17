@@ -7,7 +7,7 @@ arch=('x86_64')
 _gourl="github.com/doronbehar/pistol"
 url="https://$_gourl"
 license=('MIT')
-makedepends=('go' 'git')
+makedepends=('go' 'git' 'asciidoctor')
 depends=('file')
 optdepends=('ranger: file browser to preview files in' 'lf: file browser to preview files in')
 source=("$pkgname::git+$url#branch=master")
@@ -26,10 +26,12 @@ build() {
   GOPATH="$srcdir" go get -v "$_gourl/cmd/pistol"
   strip -x "$srcdir/bin/pistol"
   chmod -R u+wX "$srcdir"
+  asciidoctor -b manpage -d manpage README.adoc
 }
 
 package() {
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$srcdir/$pkgname/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/man/man1" "$srcdir/$pkgname/pistol.1"
   install -Dm755 "$srcdir/bin/pistol" "$pkgdir/usr/bin/pistol"
 }
 

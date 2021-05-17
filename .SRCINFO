@@ -7,6 +7,7 @@ pkgbase = pistol-git
 	license = MIT
 	makedepends = go
 	makedepends = git
+	makedepends = asciidoctor
 	depends = file
 	optdepends = ranger: file browser to preview files in
 	optdepends = lf: file browser to preview files in
