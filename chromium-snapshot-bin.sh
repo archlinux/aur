@@ -2,13 +2,13 @@
 
 # Allow users to override command-line options
 if [[ -f ~/.config/chromium-flags.conf ]]; then
-   CHROMIUM_USER_FLAGS="$(cat ~/.config/chromium-flags.conf)"
+   CHROMIUM_USER_FLAGS="$(grep -v '^#' ~/.config/chromium-flags.conf)"
 fi
 
 # Detect Pepper Flash
 if [[ -f /usr/lib/PepperFlash/libpepflashplayer.so ]]; then
   PepperVer="$(grep 'version' /usr/lib/PepperFlash/manifest.json | cut -d '"' -f4)"
-  CHROMIUM_USER_FLAGS+=" --ppapi-flash-path=/usr/lib/PepperFlash/libpepflashplayer.so --ppapi-flash-version=$PepperVer"
+  PEPPERFLASH_FLAGS="--ppapi-flash-path=/usr/lib/PepperFlash/libpepflashplayer.so --ppapi-flash-version=$PepperVer"
 fi
 
 # Let the wrapped binary know that it has been run through the wrapper.
@@ -21,4 +21,4 @@ export GOOGLE_DEFAULT_CLIENT_ID=413772536636.apps.googleusercontent.com
 export GOOGLE_DEFAULT_CLIENT_SECRET=0ZChLK6AxeA3Isu96MkwqDR4
 
 # Launch
-exec /opt/chromium-snapshot/chrome $CHROMIUM_USER_FLAGS "$@"
+exec /opt/chromium-snapshot/chrome $PEPPERFLASH_FLAGS "$CHROMIUM_USER_FLAGS" "$@"

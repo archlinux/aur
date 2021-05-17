@@ -2,7 +2,7 @@
 # Contributors: Det, Ner0, alexwizard, thotypous, jdhore, xduugu, randypenguin, bdheeman, AlK
 
 pkgname=chromium-snapshot-bin
-pkgver=92.0.4511.0.r883389
+pkgver=92.0.4511.0.r883428
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Latest Snapshot)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=("chrome-linux-r$_build.zip::https://commondatastorage.googleapis.com/chr
         "$pkgname"_{16,22,24,32,48,64,128,256}.png
         'LICENSE')
 sha1sums=('SKIP'
-          'a5a3e5e646d4cc22bd738c580609f2ad681b2ede'
+          '12c3b365d3765ab8d049b517c3f598563ef0c45b'
           'e64637c07b921f197fc1d7fd031c8a73ea3a55f8'
           '1cbdde48d193a648723f948370eff9b7b2fbf3f9'
           '97b440a273fd58543f62db639bdebc4d7a8029a5'
