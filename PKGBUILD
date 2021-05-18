@@ -13,7 +13,8 @@ optdepends=('gtk-engines-murrine: for gtk2 themes'
 makedepends=('git')
 source=('git+https://github.com/vinceliuice/vimix-gtk-themes.git')
 sha256sums=('SKIP')
-
+provides=("vimix-gtk-themes=${pkgver}")
+conflicts=('vimix-gtk-themes')
 _gitname=vimix-gtk-themes
 
 pkgver() {
