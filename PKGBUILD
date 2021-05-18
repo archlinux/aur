@@ -7,7 +7,7 @@ pkgbase=pipewire-common-git
 pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-alsa-git
          pipewire-common-jack-git pipewire-common-pulse-git
          gst-plugin-pipewire-common-git)
-pkgver=0.3.27.r94.g7065a450
+pkgver=0.3.27.r132.gcdfd50e1
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -74,9 +74,12 @@ package_pipewire-common-git() {
               'hsphfpd: hsphfpd HSP/HFP support')
   provides=(pipewire pipewire-media-session alsa-card-profiles libpipewire-$_ver.so)
   conflicts=(pipewire pipewire-media-session alsa-card-profiles)
-  backup=(etc/pipewire/{pipewire{,-pulse},client{,-rt}}.conf
-          etc/pipewire/media-session.d/media-session.conf
-          etc/pipewire/media-session.d/{alsa,bluez,v4l2}-monitor.conf)
+  backup=(usr/share/pipewire/{pipewire{,-pulse},client{,-rt}}.conf
+          usr/share/pipewire/filter-chain/demonic.conf
+          usr/share/pipewire/filter-chain/sink-{dolby-surround,eq6,matrix-spatialiser}.conf
+          usr/share/pipewire/filter-chain/source-rnnoise.conf
+          usr/share/pipewire/media-session.d/media-session.conf
+          usr/share/pipewire/media-session.d/{alsa,bluez,v4l2}-monitor.conf)
   install=pipewire.install
 
   DESTDIR="$pkgdir" meson install -C build
@@ -88,11 +91,11 @@ package_pipewire-common-git() {
 
   _pick docs usr/share/doc
 
-  _pick jack etc/pipewire/{jack.conf,media-session.d/with-jack}
+  _pick jack usr/share/pipewire/{jack.conf,media-session.d/with-jack}
   _pick jack usr/bin/pw-jack usr/lib/pipewire-$_ver/jack
   _pick jack usr/share/man/man1/pw-jack.1
 
-  _pick pulse etc/pipewire/media-session.d/with-pulseaudio
+  _pick pulse usr/share/pipewire/media-session.d/with-pulseaudio
 
   _pick gst usr/lib/gstreamer-1.0
 }
@@ -115,7 +118,7 @@ package_pipewire-common-alsa-git() {
   mkdir -p "$pkgdir/etc/alsa/conf.d"
   ln -st "$pkgdir/etc/alsa/conf.d" \
     /usr/share/alsa/alsa.conf.d/{50-pipewire,99-pipewire-default}.conf
-  install -Dm644 /dev/null "$pkgdir/etc/pipewire/media-session.d/with-alsa"
+  install -Dm644 /dev/null "$pkgdir/usr/share/pipewire/media-session.d/with-alsa"
 }
 
 package_pipewire-common-jack-git() {
@@ -124,7 +127,7 @@ package_pipewire-common-jack-git() {
   depends=(pipewire-common-git libpipewire-$_ver.so bash)
   provides=(pipewire-jack)
   conflicts=(pipewire-jack)
-  backup=(etc/pipewire/jack.conf)
+  backup=(usr/share/pipewire/jack.conf)
   mv jack/* "$pkgdir"
 }
 
