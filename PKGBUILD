@@ -2,12 +2,13 @@
 
 pkgname=sddm-theme-gracilis-git
 pkgver=latest
-pkgrel=2
+pkgrel=3
 pkgdesc="Gracilis Theme for SDDM by mikkeloscar"
 arch=('any')
 url="https://github.com/mikkeloscar/sddm-gracilis-theme"
 license=('CCPL:cc-by-sa')
 depends=('sddm')
+makedepends=('git')
 _theme_name='gracilis'
 _repo_name='sddm-gracilis-theme'
 source=("git+https://github.com/mikkeloscar/sddm-gracilis-theme.git")
