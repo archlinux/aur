@@ -2,13 +2,13 @@
 
 pkgname="postybirb"
 pkgver=2.3.30
-pkgrel=1
+pkgrel=2
 pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly."
 url="https://www.postybirb.com"
 arch=('x86_64')
 license=('BSD')
 depends=('electron7')
-makedepends=('npm')
+makedepends=('npm' 'nvm')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/mvdicarlo/postybirb//archive/v${pkgver}.tar.gz"
         "${pkgname%}.desktop"
         "${pkgname%}.sh"
@@ -20,12 +20,14 @@ sha512sums=('d998f332db9fb2689427d9179e7ec2b6318b9c626e07ce916398101b29ed7bd99b4
 
 prepare() {
     cd "$srcdir/${pkgname}-${pkgver}"
+    source /usr/share/nvm/init-nvm.sh && nvm install 15.14.0
     patch --strip=1 < ../buildOptimizer.patch
 }
 
 build() {
 	cd "$srcdir/${pkgname}-${pkgver}"
-	HOME="$srcdir/.node-gyp" npm install
+	source /usr/share/nvm/init-nvm.sh && nvm use --delete-prefix v15.14.0 --silent
+	HOME="$srcdir/.node-gyp" npm ci
 	sed -i "s|${srcdir}/${pkgname}-${pkgver}/node_modules/sshpk|.|g" node_modules/sshpk/package.json
 	HOME="$srcdir/.node-gyp" npm run prod
 	
@@ -42,7 +44,7 @@ build() {
     export npm_config_runtime=electron
     export npm_config_build_from_source=true
     sed -i '/"electron":/d' package.json
-    HOME="$srcdir/.node-gyp" npm install
+    HOME="$srcdir/.node-gyp" npm ci
     sed -i "s|${srcdir}/${pkgname}-${pkgver}/electron/node_modules/sshpk|.|g" node_modules/sshpk/package.json
     ./node_modules/.bin/electron-builder --linux --x64 --dir=release -c.electronDist=$electronDist \
          -c.electronVersion=$electronVer

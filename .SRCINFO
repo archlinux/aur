@@ -1,11 +1,12 @@
 pkgbase = postybirb
 	pkgdesc = An application that helps artists post art and other multimedia to multiple websites more quickly.
 	pkgver = 2.3.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.postybirb.com
 	arch = x86_64
 	license = BSD
 	makedepends = npm
+	makedepends = nvm
 	depends = electron7
 	source = postybirb-v2.3.30.tar.gz::https://github.com/mvdicarlo/postybirb//archive/v2.3.30.tar.gz
 	source = postybirb.desktop
