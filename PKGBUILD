@@ -4,7 +4,7 @@
 # Contributor: Joan Rieu <toto_pirate@hotmail.fr>
 
 pkgname=roxterm-git
-pkgver=3.10.3
+pkgver=3.11.1
 pkgrel=1
 pkgdesc="Tabbed, VTE-based terminal emulator"
 epoch=1
@@ -13,7 +13,7 @@ url="https://github.com/realh/roxterm"
 license=('GPL3')
 depends=('dbus-glib' 'vte3')
 makedepends=('cmake' 'git' 'docbook-xsl' 'xmlto' 'po4a' 'imagemagick' \
-  'librsvg' 'itstool' 'sed')
+  'librsvg' 'itstool' 'sed' 'pkgconf')
 provides=('roxterm')
 conflicts=('roxterm')
 source=("$pkgname::git+https://github.com/realh/roxterm.git")
