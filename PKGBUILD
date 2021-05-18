@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=libnuml
 _pkgname=NuML
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Numerical Markup Language (NuML) for exchange and archiving of numerical results"
 url="https://github.com/NuML/NuML"
@@ -9,7 +9,7 @@ license=('LGPL')
 arch=('i686' 'x86_64')
 depends=('libsbml')
 source=($_pkgname-$pkgver.tar.gz::https://github.com/NuML/NuML/archive/v$pkgver.tar.gz)
-sha256sums=('5cb1153a7e4dee0ded4e033597d9801ea1fe6e98f3f24f86b0961fb1de222ffc')
+sha256sums=('18e8f6d9b0c261f34123bc2e1bd601730993d63fb53f7434b5901b1059aa9109')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
