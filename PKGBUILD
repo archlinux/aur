@@ -14,7 +14,7 @@ url="https://www.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
 depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'alsa-lib'
          'startup-notification')
-makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm'
+makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm' 'gcc9'
              'libpulse')
 optdepends=('libpulse: PulseAudio audio driver'
             'ffmpeg: various video and audio support')
@@ -23,7 +23,7 @@ source=(git+"https://repo.palemoon.org/MoonchildProductions/${_repo}?signed#comm
         mozconfig.in)
 sha1sums=('SKIP'
           'SKIP'
-          '8db1453bbcca0a81ae12b8e0af1e19429c51e136')
+          '55fb900b920fdd73b204b591ac7edd417aa4fcb8')
 validpgpkeys=('3059E09144F56804F0FBF4E126B40624BDBFD9F3'
               '3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC')
 

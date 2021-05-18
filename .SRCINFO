@@ -14,6 +14,7 @@ pkgbase = palemoon
 	makedepends = unzip
 	makedepends = zip
 	makedepends = yasm
+	makedepends = gcc9
 	makedepends = libpulse
 	depends = gtk2
 	depends = dbus-glib
@@ -31,7 +32,7 @@ pkgbase = palemoon
 	validpgpkeys = 3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC
 	sha1sums = SKIP
 	sha1sums = SKIP
-	sha1sums = 8db1453bbcca0a81ae12b8e0af1e19429c51e136
+	sha1sums = 55fb900b920fdd73b204b591ac7edd417aa4fcb8
 
 pkgname = palemoon
 
