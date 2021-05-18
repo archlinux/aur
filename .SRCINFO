@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-rav1e
 	pkgdesc = An AV1 encoder focused on speed and safety (mingw-w64)
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xiph/rav1e/
 	arch = any
 	license = BSD
@@ -10,6 +10,7 @@ pkgbase = mingw-w64-rav1e
 	makedepends = nasm
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-rust
+	makedepends = mingw-w64-wine
 	depends = mingw-w64-crt
 	options = !strip
 	options = !buildflags

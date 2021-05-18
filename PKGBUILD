@@ -5,7 +5,7 @@
 
 pkgname=mingw-w64-rav1e
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An AV1 encoder focused on speed and safety (mingw-w64)'
 arch=(any)
 url=https://github.com/xiph/rav1e/
@@ -20,6 +20,7 @@ makedepends=(
   nasm
   mingw-w64-gcc
   mingw-w64-rust
+  mingw-w64-wine
 )
 _tag=29a9c604879bc27d319edc03e2c97ba9e9628c86
 source=(git+https://github.com/xiph/rav1e.git#tag=${_tag})
