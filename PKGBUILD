@@ -3,7 +3,7 @@
 
 pkgbase=linux-lts-logo
 pkgver=5.10.37
-pkgrel=1
+pkgrel=2
 pkgdesc='LTS Linux with tux logo'
 url="https://www.kernel.org/"
 arch=(x86_64)
@@ -29,7 +29,7 @@ sha256sums=('a8d5e3309dafc484eb70f94747a6efffa29a79bae651ae126333e913c00be077'
             'SKIP'
             'cd62ea9a06d89bda2dce45cc0ccbdb5a2ee9f588a04fa3acb02776a790668be9'
             '6992aed5d5398f9442f0ce94d5d5b6503bf492df0ebe719ed6e0fc1dc2ee1929'
-            'c47fe1004bd5694e5896eb13bd36ed0059fa720bef9e105771da78e55926ba55')
+            'd9cb472c90db636cc2ba835467a26308d57e0dce2beb87767abad5003d6c8f86')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
