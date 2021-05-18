@@ -1,4 +1,4 @@
-# Maintainer: 
+# Maintainer: Carsten Haitzler <raster@rasterman.com>
 # Contributor: Doug Newgard <scimmia22 at outlook dot com>
 
 _pkgname=ecrire
