@@ -1,6 +1,6 @@
 pkgbase = mop
 	pkgdesc = Stock market tracker for hackers
-	pkgver = 2020.06.19
+	pkgver = 2021.05.18
 	pkgrel = 1
 	url = https://github.com/mop-tracker/mop
 	arch = i686
@@ -11,11 +11,11 @@ pkgbase = mop
 	license = MIT
 	makedepends = git
 	makedepends = go
+	depends = glibc
 	conflicts = mop-git
-	options = !strip
 	options = !emptydirs
-	source = mop-2020.06.19.tar.gz::https://github.com/mop-tracker/mop/archive/570a5d67aef955d817ffc06437ac40b57b554e71.tar.gz
-	sha256sums = 8562858582e2edc1bb9e513b89fc47d1ae573afd405e57a11f4bd650eeb256d7
+	source = mop-2021.05.18.tar.gz::https://github.com/mop-tracker/mop/archive/7c1fae596cdbd0a99513ba641cdeaf687224bc21.tar.gz
+	sha256sums = 0e744348da956e083048f394121f18ebe43fb911020998cf3a9e8d45b5a561f2
 
 pkgname = mop
 
