@@ -9,7 +9,6 @@ pkgbase = autofirma
 	makedepends = jdk11-openjdk
 	makedepends = maven
 	depends = java-runtime
-	depends = nss
 	conflicts = autofirma-bin
 	source = autofirma-1.6.5.tar.gz::https://github.com/ctt-gob-es/clienteafirma/archive/v1.6.5.tar.gz
 	source = autofirma
