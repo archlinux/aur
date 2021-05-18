@@ -3,7 +3,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=unimap
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Scan only once by IP address and reduce scan times with Nmap for large amounts of data"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('nmap')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('018e0e14858b24a787cea233e066f1142fe7ee057ca759854974435a732e5f45ba2e383d6b27223081bff27f6a38c54ffe99f14ae4d83b8e29f5580863ced6de')
+sha512sums=('da28c4bb23f078a7df33d6451b6a20c6544834efd38d6ffac78bf0247cad0bde862aa21619fa3f78c8350afce4057e0c7acdc00760cde9857ff2e60e07b7964b')
 
 build() {
   cd "$pkgname-$pkgver"
