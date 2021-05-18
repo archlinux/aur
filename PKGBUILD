@@ -2,12 +2,13 @@
 
 pkgname=sddm-theme-abstractdark-git
 pkgver=latest
-pkgrel=2
+pkgrel=3
 pkgdesc="Abstract Dark theme for SDDM by 3ximus"
 arch=('any')
 url="https://github.com/3ximus/abstractdark-sddm-theme"
 license=('CCPL:cc-by-sa')
 depends=('sddm')
+makedepends=('git')
 _theme_name='abstractdark'
 _repo_name='abstractdark-sddm-theme'
 source=("git+https://github.com/3ximus/abstractdark-sddm-theme.git")
