@@ -22,9 +22,14 @@ provides=(tui dbus-core mono-stable msbuild-stable gtk3-print-backends libudev.s
           dri3proto presentproto
           llvm-libs-pypy-stm clang-pypy-stm llvm-pypy-stm nodejs-grunt-cli node-webkit
           perl-data-pond perl-perl6-junction
-          systemd-tools docbook2x
+          systemd-tools docbook2x jade markdown asp.net-bin yaourt
+          python-sphinx-2 mutagen
 )
-# go-pie gcc-multilib
+# systemd-tools -> replaced by systemd
+# jade          -> replaced by openjade
+# markdown      -> replaced by discount
+#
+# go-pie gcc-multilib markdown
 # Renamed: geoclue2 libsystemd gnu-efi-libs mime-types libwebkit python-distribute heirloom-mailx
 #
-# Not to provide: udev initramfs opengl-driver
+# Not to provide: udev initramfs opengl-driver smtp-forwarder cron

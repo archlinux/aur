@@ -74,6 +74,12 @@ pkgbase = ghost-deps-meta
 	provides = perl-perl6-junction
 	provides = systemd-tools
 	provides = docbook2x
+	provides = jade
+	provides = markdown
+	provides = asp.net-bin
+	provides = yaourt
+	provides = python-sphinx-2
+	provides = mutagen
 
 pkgname = ghost-deps-meta
 
