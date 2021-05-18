@@ -4,7 +4,7 @@ pkgver=1.0.0
 pkgrel=4
 pkgdesc="An Automated Motif Discovery Tool Using Stepwise Refinement of Gapped Consensuses"
 arch=('i686' 'x86_64')
-url="http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0024576"
+url="https://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0024576"
 license=('custom')
 makedepends=("unrar")
 source=("journal.pone.0024576.s004.rar::https://www.plosone.org/article/fetchSingleRepresentation.action?uri=info:doi/10.1371/journal.pone.0024576.s004")
