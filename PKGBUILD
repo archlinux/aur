@@ -6,10 +6,10 @@ pkgver=0.1.2
 pkgrel=1
 pkgdesc="PHP extension that allows changing the current process' name"
 arch=('i686' 'x86_64')
-url="http://pecl.php.net/package/proctitle"
+url="https://pecl.php.net/package/proctitle"
 license=('PHP')
 depends=('php')
-source=("http://pecl.php.net/get/proctitle-$pkgver.tgz" proctitle.ini)
+source=("https://pecl.php.net/get/proctitle-$pkgver.tgz" proctitle.ini)
 backup=(etc/php/conf.d/proctitle.ini)
 
 build() {
