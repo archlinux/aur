@@ -11,6 +11,7 @@
 struct cursor;
 
 void draw();
+void check_validity();
 int savestate();
 void finish(int sig);
 void finish_with_err_msg(char* msg);

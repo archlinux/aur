@@ -1,5 +1,6 @@
 #include "main.h"
 #include <curses.h>
+#include <string.h>
 
 struct cursor{
 	int y;
@@ -11,9 +12,11 @@ char* user_nums;
 char* sudoku_str;
 struct cursor cursor;
 char* statusbar;
+char* controls;
 
 int main(int argc, char **argv){
 	//--- USER INIT LOGIC ---
+	
 	filename = argv[1];
 
 	//Read Sudoku from given file
@@ -34,32 +37,33 @@ int main(int argc, char **argv){
 	cursor.x = 0;
 	cursor.y = 0;
 
-	statusbar = "File opened";
+	statusbar = malloc(30 * sizeof(char));
+	sprintf(statusbar, "%s", "File opened");
+
+	controls =	"move - h, j, k and l\n"
+				"1-9 - insert numbers\n"
+				"x or 0 - delete numbers\n"
+				"save - s\n"
+				"check for errors - c\n"
+				"quit - q";
 
 	//--- CURSES INIT LOGIC ---
 
     //on interrupt and segfault (Ctrl+c) exit (call finish)
 	signal(SIGINT, finish);
 	signal(SIGSEGV, finish);
-
     //init
 	initscr();
-
     //return key doesn't become newline
 	nonl();
-
     //cursor
 	curs_set(1);
-
     //allows Ctrl+c to quit the program
 	cbreak();
-
     //don't echo the the getch() chars onto the screen
 	noecho();
-
     //enable keypad (for arrow keys)
 	keypad(stdscr, true);
-
     //color support
 	if(!has_colors())
 		finish_with_err_msg("Your terminal doesn't support color\n");
@@ -88,8 +92,15 @@ int main(int argc, char **argv){
 				cursor.x = cursor.x + 1 >= LINE_LEN ? cursor.x : cursor.x + 1 ;
 				break;
 			case 's':
-				savestate();
-				statusbar = "Saved";
+				//Save file and handle errors
+				if(!savestate())
+					finish_with_err_msg("Error accessing file\n");
+				else
+					sprintf(statusbar, "%s", "Saved");
+				break;
+			case 'c':
+				//Check for errors (writes to statusbar directly)
+				check_validity();
 				break;
 			case 'q':
 				finish(0);
@@ -102,12 +113,12 @@ int main(int argc, char **argv){
 					//check for numbers
 					if(key_press >= 0x30 && key_press <= 0x39 && user_nums[cursor.y * LINE_LEN + cursor.x] != key_press){ 
 						user_nums[cursor.y * LINE_LEN + cursor.x] = key_press;
-						statusbar = "*Not saved";
+						sprintf(statusbar, "%s", "*Not saved");
 					}
 					//check for x
 					else if(key_press == 'x' && user_nums[cursor.y * LINE_LEN + cursor.x] != '0'){
 						user_nums[cursor.y * LINE_LEN + cursor.x] = '0';
-						statusbar = "*Not saved";
+						sprintf(statusbar, "%s", "*Not saved");
 					}
 				}
 				break;
@@ -123,6 +134,7 @@ void draw(){
 	erase();
 	draw_sudokus(user_nums, sudoku_str);
 	mvaddstr(LINE_LEN + 4, 0, statusbar);
+	mvaddstr(LINE_LEN + 6, 0, controls);
 	move_cursor(cursor);
 }
 
@@ -130,14 +142,52 @@ void draw(){
 int savestate(){
 	FILE* savestate = fopen(filename, "w");
 
-	if(savestate == NULL){
-		finish_with_err_msg("Error accessing file\n");
-		return 1;
-	}
+	if(savestate == NULL)
+		return 0;
 
 	fprintf(savestate, "%s\n%s", sudoku_str, user_nums);
 	fclose(savestate);
-	return 0;
+
+	return 1;
+}
+
+//Check for errors in the sudoku and write to statusbar
+void check_validity(){
+	//Combine user_nums and sudoku_str by replacing the 0s in sudoku_str with the user_nums
+	char* combined_solution = malloc((SUDOKU_LEN) * sizeof(char));
+	for(int i = 0; i < SUDOKU_LEN; i++){
+		combined_solution[i] = sudoku_str[i] == '0' ? user_nums[i] : sudoku_str[i];
+		if(combined_solution[i] == '0'){
+			sprintf(statusbar, "%s", "Not filled out");
+			free(combined_solution);
+			return;
+		}
+	}
+
+	//Check for errors in vertical lines
+	for(int i = 0; i < LINE_LEN; i++){
+		char* vert_line = malloc(LINE_LEN * sizeof(char));
+		//Copy the line from the combined string to vert_line
+		memcpy(vert_line, combined_solution + (LINE_LEN * i), LINE_LEN * sizeof(char));
+
+		//Check each digit against the others
+		for(int j = 0; j < LINE_LEN; j++){
+			char current_digit = vert_line[j];
+			for(int k = 0; k < LINE_LEN; k++){
+				if(vert_line[k] == vert_line[j] && k != j){
+					free(combined_solution);
+					free(vert_line);
+					sprintf(statusbar, "%s%d", "Error on line ", i + 1);
+					return;
+				}	
+			}
+		}
+		free(vert_line);
+	}
+	free(combined_solution);
+
+	sprintf(statusbar, "%s", "Looks good");
+	return;
 }
 
 void finish(int sig){

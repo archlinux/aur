@@ -39,3 +39,5 @@ it's going to look like this:
 
 White numbers are those set by the puzzle; blue numbers are your own which you set by moving the cursor with hjkl and typing a number.
 To delete type 0 or x, to quit type q or Ctrl-c. To safe the file press s.
+
+When you are done with the sudoku, type c and the program will tell you if you have an error and then in which line if so.
