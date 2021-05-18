@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-dock-git
-pkgver=5.4.7.r53.gbea20335f
+pkgver=5.4.10.r46.g8ce063e3a
 pkgrel=1
 pkgdesc='Deepin desktop-environment - dock module'
 arch=('x86_64')
