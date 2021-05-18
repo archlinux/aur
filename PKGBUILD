@@ -4,7 +4,7 @@
 
 _pkgname=betterlockscreen
 pkgname=${_pkgname}-git
-pkgver=r113.9a8294b
+pkgver=r122.ee1a643
 pkgrel=1
 pkgdesc="A simple lock script for i3lock-color"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('i3lock-color' 'imagemagick' 'xorg-xrandr' 'xorg-xdpyinfo' 'bc')
 optdepends=('feh: Allows setting wallpaper')
 conflicts=("betterlockscreen")
 source=("${_pkgname}::git+${url}.git")
-md5sums=("SKIP")
+md5sums=('SKIP')
 install=${_pkgname}.install
 
 pkgver() {
