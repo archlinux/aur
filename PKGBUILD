@@ -2,7 +2,7 @@
 
 pkgname=xde-menu-git
 _pkgname=xde-menu
-pkgver=0.12.r2.gbcd6b62
+pkgver=0.13.r1.ge567b46
 pkgrel=1
 pkgdesc="XDG compliant menu generator"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ groups=('xde-git')
 license=('GPL')
 provides=($_pkgname=$pkgver)
 conflicts=($_pkgname)
-depends=('libwnck+-git' 'libsm' 'gnome-menus')
+depends=('libwnck+-git' 'libsm' 'gnome-menus' 'gdk-pixbuf-xlib')
 makedepends=('git')
 optdepends=('xdg-launch-git: for LW WM launch notification'
 	    'xde-theme: for LW WM style and theme change support')
