@@ -8,7 +8,7 @@ pkgname=('pipewire-git'
          'pipewire-media-session-git'
          'alsa-card-profiles-git'
          )
-pkgver=0.3.26.13.g962d3b91
+pkgver=0.3.27.132.gcdfd50e1
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -116,7 +116,9 @@ package_pipewire-git() {
             "libpipewire-${pkgver:0:3}.so"
             )
   conflicts=('pipewire')
-  backup=(etc/pipewire/{pipewire{,-pulse},client{,-rt}}.conf)
+  backup=(etc/pipewire/{pipewire{,-pulse},client{,-rt}}.conf
+          usr/share/pipewire/{pipewire{,-pulse},client{,-rt}}.conf
+          )
   install=pipewire-git.install
 
   DESTDIR="${pkgdir}" meson install -C build
@@ -128,16 +130,16 @@ package_pipewire-git() {
 
   _pick docs usr/share/doc
 
-  _pick pms etc/pipewire/media-session.d/*.conf
   _pick pms usr/bin/pipewire-media-session
   _pick pms usr/lib/systemd/user/pipewire-media-session.service
+  _pick pms usr/share/pipewire/media-session.d/*.conf
 
-  _pick jack etc/pipewire/{jack.conf,media-session.d/with-jack}
   _pick jack usr/bin/pw-jack usr/lib/libjack* usr/lib/pkgconfig/jack.pc
   _pick jack usr/include/jack
+  _pick jack usr/share/pipewire/{jack.conf,media-session.d/with-jack}
   _pick jack usr/share/man/man1/pw-jack.1
 
-  _pick pulse etc/pipewire/media-session.d/with-pulseaudio
+  _pick pulse usr/share/pipewire/media-session.d/with-pulseaudio
 
   _pick ffmpeg usr/lib/spa-0.2/ffmpeg/libspa-ffmpeg.so
 
@@ -202,7 +204,7 @@ package_pipewire-alsa-git() {
   ln -st "${pkgdir}/etc/alsa/conf.d" \
     /usr/share/alsa/alsa.conf.d/{50-pipewire,99-pipewire-default}.conf
 
-  install -Dm644 /dev/null "${pkgdir}/etc/pipewire/media-session.d/with-alsa"
+  install -Dm644 /dev/null "${pkgdir}/usr/share/pipewire/media-session.d/with-alsa"
 }
 
 package_pipewire-ffmpeg-git() {
@@ -226,6 +228,8 @@ package_pipewire-media-session-git() {
   conflicts=('pipewire-media-session')
   backup=('etc/pipewire/media-session.d/media-session.conf'
           etc/pipewire/media-session.d/{alsa,bluez,v4l2}-monitor.conf
+          'usr/share/pipewire/media-session.d/media-session.conf'
+          usr/share/pipewire/media-session.d/{alsa,bluez,v4l2}-monitor.conf
           )
   install=pipewire-media-session.install
 

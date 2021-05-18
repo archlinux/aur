@@ -1,6 +1,6 @@
 pkgbase = pipewire-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version)
-	pkgver = 0.3.26.13.g962d3b91
+	pkgver = 0.3.27.132.gcdfd50e1
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -61,6 +61,10 @@ pkgname = pipewire-git
 	backup = etc/pipewire/pipewire-pulse.conf
 	backup = etc/pipewire/client.conf
 	backup = etc/pipewire/client-rt.conf
+	backup = usr/share/pipewire/pipewire.conf
+	backup = usr/share/pipewire/pipewire-pulse.conf
+	backup = usr/share/pipewire/client.conf
+	backup = usr/share/pipewire/client-rt.conf
 
 pkgname = pipewire-docs-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - documentation (GIT Version)
@@ -120,6 +124,10 @@ pkgname = pipewire-media-session-git
 	backup = etc/pipewire/media-session.d/alsa-monitor.conf
 	backup = etc/pipewire/media-session.d/bluez-monitor.conf
 	backup = etc/pipewire/media-session.d/v4l2-monitor.conf
+	backup = usr/share/pipewire/media-session.d/media-session.conf
+	backup = usr/share/pipewire/media-session.d/alsa-monitor.conf
+	backup = usr/share/pipewire/media-session.d/bluez-monitor.conf
+	backup = usr/share/pipewire/media-session.d/v4l2-monitor.conf
 
 pkgname = alsa-card-profiles-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - ALSA card profiles (GIT version)
