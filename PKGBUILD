@@ -2,11 +2,11 @@
 
 pkgname=linchat
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="simple chat program for local Unix users"
 arch=('i686' 'x86_64')
 license=('GPL')
-url="http://www.butschek.de/2009/04/linchat/"
+url="https://www.butschek.de/oldblog/2009/04/29/linchat/"
 depends=('ncurses' 'gcc-libs')
 source=("http://www.butschek.de/files/stuff/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "linchat-1.0-cpp_fixes.patch")

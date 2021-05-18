@@ -1,8 +1,8 @@
 pkgbase = linchat
 	pkgdesc = simple chat program for local Unix users
 	pkgver = 1.0
-	pkgrel = 3
-	url = http://www.butschek.de/2009/04/linchat/
+	pkgrel = 4
+	url = https://www.butschek.de/oldblog/2009/04/29/linchat/
 	arch = i686
 	arch = x86_64
 	license = GPL
