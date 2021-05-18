@@ -2,7 +2,7 @@
 
 pkgbase=linux-x570-vfio-openrgb-sm2262+sm2263
 pkgver=5.12.4.arch1
-pkgrel=3
+pkgrel=4
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
@@ -28,7 +28,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '031e49dd2dede50af9d754e568878b4591ed73575ed96d30b2bf969a0980ab09'
+            '635d06ae764d466cdfc0019bc1773932c0fcccb5ebde8bfbb5b2c4271a939f61'
             '37f306146b1bdf9233c544e87d0e392a8152aab679d0e4145d14f425c0438e23'
             'e7d724ac15daf428aa1e6a03737e5c1d040892d55fda8a66897fcac9323f285c'
 	    '96febff9e2177ef85b253217bb0927a11169e4a11e66ab139e48f2e7ccd50c1f')
