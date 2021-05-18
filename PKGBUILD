@@ -12,7 +12,7 @@ _fragment=${FRAGMENT:-#branch=master}
   optdepends+=("opencl-driver: for gpu acceleration")
 }
 # shellcheck disable=SC2015
-((DISABLE_CUDA||DISABLE_OPENCL)) && {
+((DISABLE_CUDA)) && {
   CMAKE_FLAGS+=("-DLUXRAYS_DISABLE_CUDA=ON")
 } || {
   makedepends+=(cuda)
