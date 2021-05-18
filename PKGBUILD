@@ -8,7 +8,7 @@ url='https://github.com/vinceliuice/vimix-gtk-themes'
 arch=('any')
 license=('GPL3')
 depends=('gtk3')
-optdepends=('gtk-engines-murrine: for gtk2 themes'
+optdepends=('gtk-engine-murrine: for gtk2 themes'
             'gtk-engines: for gtk2 themes')
 makedepends=('git')
 source=('git+https://github.com/vinceliuice/vimix-gtk-themes.git')
