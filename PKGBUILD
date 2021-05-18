@@ -9,7 +9,7 @@ license=('MIT')
 source=("${pkgname}::git+https://github.com/lighttiger2505/sqls.git")
 arch=('x86_64')
 sha256sums=('SKIP')
-depends=('git' 'go')
+depends=('go')
 conflicts=('sqls-bin')
 
 pkgver() {
