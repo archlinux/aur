@@ -7,7 +7,7 @@ pkgdesc="Command line client for LibreSpeed"
 arch=('i686' 'x86_64')
 url="https://github.com/librespeed/speedtest-cli"
 license=(LGPL3)
-makedepends=(go)
+makedepends=(git go)
 source=("${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}")
 sha512sums=('SKIP')
 
