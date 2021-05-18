@@ -1,12 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=6.5-GE-2
-_commit=127506bf93884da534aeac290f8fc0bd8e935f7f
+_srctag=6.8-GE-2
+_commit=0a4553f6e07c2667f55831d2d0641cd7dc460081
 pkgver=${_srctag//-/.}
-_geckover=2.47.1
-_monover=5.1.1
-pkgrel=3
+_geckover=2.47.2
+_monover=6.1.2
+pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 arch=(x86_64)
@@ -28,6 +28,7 @@ depends=(
   libsm           lib32-libsm
   gcc-libs        lib32-gcc-libs
   libpcap         lib32-libpcap
+  lzo             lib32-lzo
   desktop-file-utils
   python
   steam-native-runtime
@@ -66,6 +67,7 @@ makedepends=(autoconf ncurses bison perl fontforge flex mingw-w64-gcc
   samba
   opencl-headers
   git
+  rsync
   cmake
   python-virtualenv
   python-pip
@@ -107,7 +109,7 @@ source=(
     dxvk::git+https://github.com/doitsujin/dxvk.git
     openvr::git+https://github.com/ValveSoftware/openvr.git
     OpenXR-SDK::git+https://github.com/KhronosGroup/OpenXR-SDK.git
-    ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git
+    ffmpeg-meson::git+https://gitlab.freedesktop.org/gstreamer/meson-ports/ffmpeg.git
     liberation-fonts::git+https://github.com/liberationfonts/liberation-fonts.git
     SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
     Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
@@ -123,16 +125,15 @@ source=(
     gst-plugins-bad::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git
     gst-plugins-ugly::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-ugly.git
     gst-libav::git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git
-    https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.bz2
+    https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     proton-unfuck_makefile.patch
     proton-disable_lock.patch
     proton-user_compat_data.patch
-    dxvk-extraopts.patch
-    vkd3d-extraopts.patch
+    proton-default_pfx.patch
 )
 noextract=(
-    wine-gecko-${_geckover}-{x86,x86_64}.tar.bz2
+    wine-gecko-${_geckover}-{x86,x86_64}.tar.xz
     wine-mono-${_monover}-x86.tar.xz
 )
 
@@ -140,23 +141,26 @@ prepare() {
     # I know this is fugly and it should NOT be done
     # but the afdko package from AUR breaks regularly.
     # Install it from pip in a virtualenv
-    virtualenv --app-data "$srcdir"/afdko/cache --no-wheel afdko
-    source afdko/bin/activate
-    pip install --no-cache-dir afdko
+    virtualenv --app-data "$srcdir"/afdko/cache --no-wheel build_venv
+    source build_venv/bin/activate
+    pip install --no-cache-dir afdko pefile
 
     [ ! -d gecko ] && mkdir gecko
-    mv wine-gecko-${_geckover}-x86{,_64}.tar.bz2 gecko/
+    mv wine-gecko-${_geckover}-x86{,_64}.tar.xz gecko/
 
     [ ! -d mono ] && mkdir mono
     mv wine-mono-${_monover}-x86.tar.xz mono/
 
     [ ! -d build ] && mkdir build
     cd proton-ge-custom
-    for submodule in ffmpeg openvr OpenXR-SDK fonts/liberation-fonts FAudio vkd3d-proton; do
+    for submodule in openvr OpenXR-SDK fonts/liberation-fonts FAudio vkd3d-proton; do
         git submodule init "${submodule}"
         git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
         git submodule update "${submodule}"
     done
+    git submodule init ffmpeg
+    git config submodule.ffmpeg.url "$srcdir"/ffmpeg-meson
+    git submodule update ffmpeg
 
     for submodule in wine wine-staging dxvk; do
         git submodule init "${submodule}"
@@ -194,6 +198,15 @@ prepare() {
     patch -p1 -i "$srcdir"/proton-unfuck_makefile.patch
     patch -p1 -i "$srcdir"/proton-disable_lock.patch
     patch -p1 -i "$srcdir"/proton-user_compat_data.patch
+    patch -p1 -i "$srcdir"/proton-default_pfx.patch
+}
+
+build() {
+    cd build
+    ../proton-ge-custom/configure.sh \
+        --steam-runtime=native \
+        --no-steam-runtime \
+        --build-name="${pkgname}"
 
     # Export CFLAGS used by upstream
     # -O2 is adjusted to -O3 since AVX is disabled
@@ -203,22 +216,6 @@ prepare() {
     export CFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
     export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
 
-    # Uncomment to enable extra optimizations
-    # Patch crossfiles with extra optimizations from makepkg.conf
-    patch -p1 -i "$srcdir"/dxvk-extraopts.patch
-    patch -p1 -i "$srcdir"/vkd3d-extraopts.patch
-    local dxvk_cflags="$CFLAGS"
-    local dxvk_ldflags="$LDFLAGS"
-    # Filter known bad flags before applying optimizations
-    # Filter fstack-protector{ ,-all,-strong} flag for MingW.
-    # https://github.com/Joshua-Ashton/d9vk/issues/476
-    dxvk_cflags="${dxvk_cflags// -fstack-protector*([\-all|\-strong])/}"
-    # Doesn't compile with these flags in MingW so remove them.
-    # They are also filtered in Wine PKGBUILDs so remove them
-    # for winelib versions too.
-    dxvk_cflags="${dxvk_cflags/ -fno-plt/}"
-    dxvk_ldflags="${dxvk_ldflags/,-z,now/}"
-    dxvk_ldflags="${dxvk_ldflags/,-z,relro/}"
     # If using -march=native and the CPU supports AVX, launching a d3d9
     # game can cause an Unhandled exception. The cause seems to be the
     # combination of AVX instructions and tree vectorization (implied by O3),
@@ -231,37 +228,19 @@ prepare() {
     # Relevant Wine issues
     # https://bugs.winehq.org/show_bug.cgi?id=45289
     # https://bugs.winehq.org/show_bug.cgi?id=43516
-    dxvk64_cflags="$dxvk_cflags -mno-avx"
-    dxvk32_cflags="$dxvk_cflags -mno-avx"
-
-    sed -i dxvk/build-win64.txt \
-        -e "s|@CARGS@|\'${dxvk64_cflags// /\',\'}\'|g" \
-        -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
-    sed -i dxvk/build-win32.txt \
-        -e "s|@CARGS@|\'${dxvk32_cflags// /\',\'}\'|g" \
-        -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
-    sed -i vkd3d-proton/build-win64.txt \
-        -e "s|@CARGS@|\'${dxvk64_cflags// /\',\'}\'|g" \
-        -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
-    sed -i vkd3d-proton/build-win32.txt \
-        -e "s|@CARGS@|\'${dxvk32_cflags// /\',\'}\'|g" \
-        -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
-}
-
-build() {
-    cd build
-    ../proton-ge-custom/configure.sh \
-        --steam-runtime=native \
-        --no-steam-runtime \
-        --with-ffmpeg \
-        --build-name="${pkgname}"
-
-    # Use -mno-avx for wine too
-    # https://bugs.winehq.org/show_bug.cgi?id=45289
-    # https://bugs.winehq.org/show_bug.cgi?id=43516
     export CFLAGS+=" -mno-avx"
     export CXXFLAGS+=" -mno-avx"
+    # Filter known bad flags before applying optimizations
+    # Filter fstack-protector{ ,-all,-strong} flag for MingW.
+    # https://github.com/Joshua-Ashton/d9vk/issues/476
+    #export CFLAGS+=" -fno-stack-protector"
+    export CFLAGS="${CFLAGS// -fstack-protector*([\-all|\-strong])/}"
+    #export CXXFLAGS+=" -fno-stack-protector"
+    export CXXFLAGS="${CXXFLAGS// -fstack-protector*([\-all|\-strong])/}"
     # From wine-staging PKGBUILD
+    # Doesn't compile with these flags in MingW so remove them.
+    # They are also filtered in Wine PKGBUILDs so remove them
+    # for winelib versions too.
     # Doesn't compile without remove these flags as of 4.10
     export CFLAGS="${CFLAGS/ -fno-plt/}"
     export CXXFLAGS="${CXXFLAGS/ -fno-plt/}"
@@ -271,10 +250,7 @@ build() {
 
     export WINEESYNC=0
     export WINEFSYNC=0
-    export CARGO_HOME="$srcdir/build/cargo"
-    SUBMAKE_JOBS="${MAKEFLAGS/-j/}" \
-        SYSTEM_GECKO=0 \
-        SYSTEM_MONO=0 \
+    SUBJOBS="${MAKEFLAGS/-j/}" \
         make -j1 dist
 }
 
@@ -289,11 +265,11 @@ package() {
     mv "$_compatdir/${pkgname}"/LICENSE{,.OFL} \
         "$pkgdir/usr/share/licenses/${pkgname}"
 
-    cd "$_compatdir/${pkgname}/dist"
+    cd "$_compatdir/${pkgname}/files"
     i686-w64-mingw32-strip --strip-unneeded \
-        $(find lib/wine -iname "*.dll" -or -iname "*.exe")
+        $(find lib/wine \( -iname fakedlls -or -iname i386-windows \) -prune -false -or -iname "*.dll" -or -iname "*.exe")
     x86_64-w64-mingw32-strip --strip-unneeded \
-        $(find lib64/wine -iname "*.dll" -or -iname "*.exe")
+        $(find lib64/wine \( -iname fakedlls -or -iname x86_64-windows \) -prune -false -or -iname "*.dll" -or -iname "*.exe")
 
     local _geckodir="share/wine/gecko/wine-gecko-${_geckover}"
     i686-w64-mingw32-strip --strip-unneeded \
@@ -335,12 +311,11 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '06a00cedf391ee07bbca0b3282e5c8ad9d950446d50648d2ff417716816fd1ab'
-            'ea5246e4c91d1aa1226658e1749b6e5d0e9353b52b14df79c4b93b6e61a3c59e'
-            'b17ac815afbf5eef768c4e8d50800be02af75c8b230d668e239bad99616caa82'
-            '1f376915e7c47107ae21479e4f56017a2324558ed22f2a7a9b9dd63c0062a1c1'
-            '8263a3ffb7f8e7a5d81bfbffe1843d6f84502d3443fe40f065bcae02b36ba954'
+            '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
+            'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
+            '463efcae9aec82e2ae51adbafe542f2a0674e1a1d0899d732077211f5c62d182'
+            '6fc5bd437b2161777f90416fa92760e73bff39c6cf507b612bc020d87909f812'
+            '02f189cc8149eaa2547a4b1cf736e71dea139379544bf9efbb3690f6d70b8b61'
             '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
-            '23cba1756adc4a76de963414994ffc964047ab1d6f1949fe8133135a91ac0473'
-            '7c5f9c20e41c0cd7d0d18867950a776608cef43e0ab9ebad2addb61e613fe17a'
+            '32652720f3b62dc2a1f56510739579ce7367a80083a76540c87e315813be3c3c'
 )

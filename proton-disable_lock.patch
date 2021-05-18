@@ -1,8 +1,8 @@
 diff --git a/proton b/proton
-index 8183820..7acc32a 100755
+index 9965fa2..df1461e 100755
 --- a/proton
 +++ b/proton
-@@ -102,7 +102,6 @@ class Proton:
+@@ -160,53 +160,22 @@ class Proton:
          self.user_settings_file = self.path("user_settings.py")
          self.wine_bin = self.bin_dir + "wine"
          self.wineserver_bin = self.bin_dir + "wineserver"
@@ -10,25 +10,36 @@ index 8183820..7acc32a 100755
  
      def path(self, d):
          return self.base_dir + d
-@@ -114,35 +113,14 @@ class Proton:
-             not filecmp.cmp(self.version_file, self.path("dist/version"))
  
-     def extract_tarball(self):
--        with self.dist_lock:
--            if self.need_tarball_extraction():
--                if os.path.exists(self.dist_dir):
--                    shutil.rmtree(self.dist_dir)
--                tar = None
--                for sf in ["", ".xz", ".bz2", ".gz"]:
--                    if os.path.exists(self.path("proton_dist.tar" + sf)):
--                        tar = tarfile.open(self.path("proton_dist.tar" + sf), mode="r:*")
--                        break
--                if not tar:
--                    log("No proton_dist tarball??")
--                    sys.exit(1)
--                tar.extractall(path=self.dist_dir)
--                tar.close()
--                try_copy(self.version_file, self.dist_dir)
+     def cleanup_legacy_dist(self):
+-        old_dist_dir = self.path("dist/")
+-        if os.path.exists(old_dist_dir):
+-            with self.dist_lock:
+-                if os.path.exists(old_dist_dir):
+-                    shutil.rmtree(old_dist_dir)
++        return True
+ 
+     def do_steampipe_fixups(self):
+-        fixups_json = self.path("steampipe_fixups.json")
+-        fixups_mtime = self.path("files/steampipe_fixups_mtime")
+-
+-        if os.path.exists(fixups_json):
+-            with self.dist_lock:
+-                import steampipe_fixups
+-
+-                current_fixup_mtime = None
+-                if os.path.exists(fixups_mtime):
+-                    with open(fixups_mtime, "r") as f:
+-                        current_fixup_mtime = f.readline().strip()
+-
+-                new_fixup_mtime = getmtimestr(fixups_json)
+-
+-                if current_fixup_mtime != new_fixup_mtime:
+-                    result_code = steampipe_fixups.do_restore(self.base_dir, fixups_json)
+-
+-                    if result_code == 0:
+-                        with open(fixups_mtime, "w") as f:
+-                            f.write(new_fixup_mtime + "\n")
 +        return True
  
      def missing_default_prefix(self):
