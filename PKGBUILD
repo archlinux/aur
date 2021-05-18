@@ -2,7 +2,7 @@
 
 _pkgname='raytracinginvulkan'
 pkgname="${_pkgname}-git"
-pkgver='6.r17.gec71f48'
+pkgver='6.r18.gefb71ef'
 pkgrel=1
 pkgdesc="Implementation of Peter Shirley's Ray Tracing In One Weekend book"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 
 source=("${_pkgname}::git+${url}.git")
-depends=('boost-libs' 'glfw-x11' 'glm' 'imgui' 'tinyobjloader' 'vulkan-icd-loader' 'glslang')
+depends=('boost-libs' 'glfw-x11' 'glm' 'imgui' 'tinyobjloader' 'vulkan-icd-loader' 'glslang' 'freetype2')
 makedepends=('cmake' 'boost' 'vulkan-headers' 'stb')
 sha256sums=('SKIP')
 
@@ -25,7 +25,8 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_pkgname}"
 
-  sed -i'' 's/glm::glm/glm/' src/CMakeLists.txt
+  sed -i'' 's/find_package(freetype CONFIG/find_package(Freetype/' CMakeLists.txt
+  sed -i'' 's/glm::glm/glm/;s/\${Boost_LIBRARIES} freetype/\${Boost_LIBRARIES} Freetype::Freetype/g' src/CMakeLists.txt
   mkdir -p build
 }
 
