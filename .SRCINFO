@@ -1,4 +1,4 @@
-pkgbase = autofirma
+pkgbase = autofirma-git
 	pkgdesc = Cliente de firma electrónica ofrecido por la Administración Pública
 	pkgver = r6335.f01033006
 	pkgrel = 1
@@ -25,5 +25,5 @@ pkgbase = autofirma
 	sha256sums = f7e525586103db08a2a38ccefdef93cc02407728de8b214e53ae3dc0631bab75
 	sha256sums = db78284b0be3db018205c8d1c8449c461275cb3b8b82dfec3f75e9a19d346542
 
-pkgname = autofirma
+pkgname = autofirma-git
 

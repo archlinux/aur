@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 _pkgname=clienteafirma
-pkgname=autofirma
+pkgname=autofirma-git
 pkgver=r6335.f01033006
 pkgrel=1
 pkgdesc='Cliente de firma electrónica ofrecido por la Administración Pública'
