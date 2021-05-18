@@ -3,7 +3,7 @@
 pkgname=go-chroma
 _binname=chroma
 _pkgname=chroma
-pkgver=0.8.2
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Chroma — A general purpose syntax highlighter in pure Go"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -13,7 +13,7 @@ depends=('glibc')
 makedepends=('go')
 options=('!strip' '!emptydirs')
 source=("${url}/archive/v$pkgver.tar.gz")
-sha256sums=('b7b9bd2ff49a18127dd00cee0d8e1d262b861b0641f711cbf9c615431f2b9499')
+sha256sums=('0a5b7aa765473fc37fd1d9ff431e8f250315690bc2e8a06a40c260e485f91c77')
 
 
 build() {
