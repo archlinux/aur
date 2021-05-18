@@ -3,24 +3,30 @@
 
 pkgname=helvum
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='GTK-based patchbay for pipewire, inspired by the JACK tool catia'
 arch=('x86_64')
 url='https://gitlab.freedesktop.org/ryuukyu/helvum'
 license=('GPL3')
 depends=('gtk4' 'pipewire')
 makedepends=('rust' 'clang')
-provides=('helvum')
+provides=("${pkgname}")
 conflicts=('helvum-git')
-source=("https://gitlab.freedesktop.org/ryuukyu/helvum/-/archive/${pkgver}/helvum-${pkgver}.tar.gz")
-sha512sums=('990a420ea837c13b216abe1cbbd7ba738a5b0b4d5793c9f2d7f55a6ad1369c2ff6ff67a176df0036d27e1e85577a9e915ad0ded2238d82cf83d1d584b7cb62da')
+source=("https://gitlab.freedesktop.org/ryuukyu/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+    "${pkgname}.desktop")
+sha512sums=('990a420ea837c13b216abe1cbbd7ba738a5b0b4d5793c9f2d7f55a6ad1369c2ff6ff67a176df0036d27e1e85577a9e915ad0ded2238d82cf83d1d584b7cb62da'
+    '0a76aa3b7c98d08ded9d4c7a2254faa0b83a2f2339db81b995819b0f0e4721cf79df17473ca22a4d8aab161b162e70f7e63b728e603c6b9cb09f2f361aa8e537')
 
 build() {
-  cd "helvum-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   RUSTUP_TOOLCHAIN=stable cargo build --release --locked --all-features --target-dir=target
 }
 
 package() {
-  cd "helvum-${pkgver}"
+  install -dm755 "${pkgdir}/usr/share/applications"
+  install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  cd "${pkgname}-${pkgver}"
   install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
 }
+
+# vim:set ts=2 sw=2 et:
