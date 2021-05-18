@@ -1,33 +1,23 @@
 # Maintainer: Brodi <me@brodi.space>
 pkgname=obs-rtspserver-bin
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="RTSP server plugin for obs-studio"
 arch=("x86_64")
 url="https://github.com/iamscottxu/obs-rtspserver"
 license=('GPL')
 depends=('obs-studio>=24.0.0')
+conflicts=("obs-rtspserver")
 source=("https://github.com/iamscottxu/obs-rtspserver/releases/download/v${pkgver}/obs-rtspserver-v${pkgver}-linux.tar.gz"
 	"https://raw.githubusercontent.com/iamscottxu/obs-rtspserver/master/LICENSE")
-md5sums=('828c9b7ca402b19d5f0a06dda40a31ef'
+sha512sums=('ca9f11410c02a9b2d4dcc0afa140f45aeb8f8b4e16bfd7baba0614a5a2c961c8b59e69b6b0b428177e758c8a05191c448ffffef69f4396aa13ba7f8a1a8885e3'
 	 'SKIP')
 
-build() {
-	if [ -d "$HOME/.config/obs-studio/plugins/" ]; then
-    		echo "[+] The OBS-Studio plugin folder exists. ($HOME/.config/obs-studio/plugins/)"
-		echo "[*] Creating the OBS-Studio plugin folder.... ($HOME/.config/obs-studio/plugins/)"
-		mkdir -p "$HOME/.config/obs-studio/plugins/obs-rtspserver/bin/64bit/"
-                mkdir -p "$HOME/.config/obs-studio/plugins/obs-rtspserver/data/locale/"
-
-	else
-		echo "[-] The OBS-Studio plugin folder DOES NOT exist!"
-		echo "[*] Creating the OBS-Studio plugin folder.... ($HOME/.config/obs-studio/plugins/)"
-		mkdir -p "$HOME/.config/obs-studio/plugins/obs-rtspserver/bin/64bit/"
-		mkdir -p "$HOME/.config/obs-studio/plugins/obs-rtspserver/data/locale/"
-	fi
-}
-
 package() {
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"	
-	cp -r obs-rtspserver $HOME/.config/obs-studio/plugins/
+	cd ${srcdir}/obs-rtspserver
+	install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/{$pkgname}/LICENSE"	
+	install -d ${pkgdir}/usr/lib/obs-plugins/
+	install -d ${pkgdir}/usr/share/obs/obs-plugins/obs-rtspserver/
+	install -Dm755 ./bin/64bit/* ${pkgdir}/usr/lib/obs-plugins/
+	cp -R ./data/* ${pkgdir}/usr/share/obs/obs-plugins/obs-rtspserver/
 }
