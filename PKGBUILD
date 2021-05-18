@@ -4,33 +4,33 @@
 # requires that you already have a full copy of this font
 
 pkgname=ttf-pragmatapro
-pkgver=0.828
-pkgrel=2
+pkgver=0.829
+pkgrel=1
 pkgdesc="PragmataPro by Fabrizio Schiavi"
 arch=('any')
 url="http://www.fsd.it/shop/fonts/pragmatapro/"
 license=('http://www.fsd.it/fonts/eula.htm')
 source=("LICENSE")
-sha256sums=('8067e67a5d2153a8990ffc866de319a01d21f6021789812dd1a38219062e1475')
+sha256sums=('71a14f207ca21d1ce2b168ce974341e54792e99036599af4582530b1277441f6')
 
 package() {
   files=(
-    "PragmataProB_0828.ttf"
-    "PragmataProB_liga_0828.ttf"
-    "PragmataProI_0828.ttf"
-    "PragmataProI_liga_0828.ttf"
-    "PragmataPro_Mono_B_0828.ttf"
-    "PragmataPro_Mono_B_liga_0828.ttf"
-    "PragmataPro_Mono_I_0828.ttf"
-    "PragmataPro_Mono_I_liga_0828.ttf"
-    "PragmataPro_Mono_R_0828.ttf"
-    "PragmataPro_Mono_R_liga_0828.ttf"
-    "PragmataPro_Mono_Z_0828.ttf"
-    "PragmataPro_Mono_Z_liga_0828.ttf"
-    "PragmataProR_0828.ttf"
-    "PragmataProR_liga_0828.ttf"
-    "PragmataProZ_0828.ttf"
-    "PragmataProZ_liga_0828.ttf"
+    "PragmataPro_Mono_B_0829.ttf"
+    "PragmataPro_Mono_B_liga_0829.ttf"
+    "PragmataPro_Mono_I_0829.ttf"
+    "PragmataPro_Mono_I_liga_0829.ttf"
+    "PragmataPro_Mono_R_0829.ttf"
+    "PragmataPro_Mono_R_liga_0829.ttf"
+    "PragmataPro_Mono_Z_0829.ttf"
+    "PragmataPro_Mono_Z_liga_0829.ttf"
+    "PragmataProB_0829.ttf"
+    "PragmataProB_liga_0829.ttf"
+    "PragmataProI_0829.ttf"
+    "PragmataProI_liga_0829.ttf"
+    "PragmataProR_0829.ttf"
+    "PragmataProR_liga_0829.ttf"
+    "PragmataProZ_0829.ttf"
+    "PragmataProZ_liga_0829.ttf"
   )
 
   for i in "${files[@]}"
