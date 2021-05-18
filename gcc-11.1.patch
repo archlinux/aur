@@ -1,0 +1,77 @@
+diff -aur a/host/lib/include/uhdlib/utils/rpc.hpp b/host/lib/include/uhdlib/utils/rpc.hpp
+--- a/host/lib/include/uhdlib/utils/rpc.hpp	2020-01-01 05:21:49.000000000 +0100
++++ b/host/lib/include/uhdlib/utils/rpc.hpp	2021-05-18 16:56:28.286400818 +0200
+@@ -13,6 +13,7 @@
+ #include <uhd/exception.hpp>
+ #include <boost/format.hpp>
+ #include <memory>
++#include <thread>
+ 
+ namespace {
+ 
+diff -aur a/host/lib/usrp/dboard/e3xx/e31x_radio_ctrl_impl.cpp b/host/lib/usrp/dboard/e3xx/e31x_radio_ctrl_impl.cpp
+--- a/host/lib/usrp/dboard/e3xx/e31x_radio_ctrl_impl.cpp	2020-01-01 05:21:49.000000000 +0100
++++ b/host/lib/usrp/dboard/e3xx/e31x_radio_ctrl_impl.cpp	2021-05-18 16:57:35.646401641 +0200
+@@ -6,6 +6,7 @@
+ 
+ #include "e31x_radio_ctrl_impl.hpp"
+ #include "e31x_regs.hpp"
++#include <thread>
+ 
+ using namespace uhd;
+ using namespace uhd::usrp;
+diff -aur a/host/lib/usrp/dboard/e3xx/e320_radio_ctrl_impl.cpp b/host/lib/usrp/dboard/e3xx/e320_radio_ctrl_impl.cpp
+--- a/host/lib/usrp/dboard/e3xx/e320_radio_ctrl_impl.cpp	2020-01-01 05:21:49.000000000 +0100
++++ b/host/lib/usrp/dboard/e3xx/e320_radio_ctrl_impl.cpp	2021-05-18 16:57:53.206401860 +0200
+@@ -6,6 +6,7 @@
+ 
+ #include "e320_radio_ctrl_impl.hpp"
+ #include "e320_regs.hpp"
++#include <thread>
+ 
+ using namespace uhd;
+ using namespace uhd::usrp;
+diff -aur a/host/lib/usrp/dboard/e3xx/e3xx_radio_ctrl_impl.cpp b/host/lib/usrp/dboard/e3xx/e3xx_radio_ctrl_impl.cpp
+--- a/host/lib/usrp/dboard/e3xx/e3xx_radio_ctrl_impl.cpp	2020-01-01 05:21:49.000000000 +0100
++++ b/host/lib/usrp/dboard/e3xx/e3xx_radio_ctrl_impl.cpp	2021-05-18 16:58:17.036402155 +0200
+@@ -19,6 +19,7 @@
+ #include <cmath>
+ #include <cstdlib>
+ #include <sstream>
++#include <thread>
+ 
+ using namespace uhd;
+ using namespace uhd::usrp;
+diff -aur a/host/lib/usrp/dboard/eiscat/eiscat_radio_ctrl_impl.cpp b/host/lib/usrp/dboard/eiscat/eiscat_radio_ctrl_impl.cpp
+--- a/host/lib/usrp/dboard/eiscat/eiscat_radio_ctrl_impl.cpp	2021-05-18 20:35:37.423229999 +0200
++++ b/host/lib/usrp/dboard/eiscat/eiscat_radio_ctrl_impl.cpp	2021-05-18 16:58:47.929735864 +0200
+@@ -15,6 +15,7 @@
+ #include <boost/make_shared.hpp>
+ #include <boost/date_time/posix_time/posix_time_io.hpp>
+ #include <boost/format.hpp>
++#include <thread>
+ 
+ using namespace uhd;
+ using namespace uhd::usrp;
+diff -aur a/host/lib/usrp/dboard/magnesium/magnesium_radio_ctrl_cpld.cpp b/host/lib/usrp/dboard/magnesium/magnesium_radio_ctrl_cpld.cpp
+--- a/host/lib/usrp/dboard/magnesium/magnesium_radio_ctrl_cpld.cpp	2020-01-01 05:21:49.000000000 +0100
++++ b/host/lib/usrp/dboard/magnesium/magnesium_radio_ctrl_cpld.cpp	2021-05-18 16:59:04.483069400 +0200
+@@ -8,6 +8,7 @@
+ #include "magnesium_cpld_ctrl.hpp"
+ #include "magnesium_radio_ctrl_impl.hpp"
+ #include <uhd/utils/log.hpp>
++#include <thread>
+ 
+ using namespace uhd;
+ using namespace uhd::usrp;
+diff -aur a/host/lib/usrp/dboard/rhodium/rhodium_radio_ctrl_impl.cpp b/host/lib/usrp/dboard/rhodium/rhodium_radio_ctrl_impl.cpp
+--- a/host/lib/usrp/dboard/rhodium/rhodium_radio_ctrl_impl.cpp	2020-01-01 05:21:49.000000000 +0100
++++ b/host/lib/usrp/dboard/rhodium/rhodium_radio_ctrl_impl.cpp	2021-05-18 16:59:22.166402953 +0200
+@@ -22,6 +22,7 @@
+ #include <sstream>
+ #include <cmath>
+ #include <cstdlib>
++#include <thread>
+ 
+ using namespace uhd;
+ using namespace uhd::usrp;

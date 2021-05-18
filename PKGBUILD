@@ -4,7 +4,7 @@
 
 pkgname=libuhd3
 pkgver=3.15.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal Software Radio Peripheral (USRP) userspace driver"
 arch=('x86_64')
 url="https://files.ettus.com/manual/"
@@ -17,38 +17,47 @@ provides=('libuhd=3.15.0.0')
 conflicts=('libuhd>3.15.0.0' 'libuhd-firmware>3.15.0.0')
 
 source=("libuhd-$pkgver.tar.gz::https://github.com/EttusResearch/uhd/archive/v$pkgver.tar.gz"
-        boost-1.73.patch)
+        "boost-1.73.patch"
+        "gcc-11.1.patch")
 sha256sums=('eed4a77d75faafff56be78985950039f8d9d1eb9fcbd58b8862e481dd49825cd'
-            '10c2f221dee97418f92d10606f9b9fea1436e3bd0d7120e7b24fc90a95a07fc1')
+            '10c2f221dee97418f92d10606f9b9fea1436e3bd0d7120e7b24fc90a95a07fc1'
+            'ccac8a77ffe3c9421076aa3c94ffc1aa92bb4f60de4eec3aec6431446e01db9e')
 
 prepare() {
-  cd "$srcdir/uhd-$pkgver/host"
-  mkdir build
+  cd "$srcdir/uhd-$pkgver"
 
   # https://github.com/EttusResearch/uhd/issues/347
-  patch -Np2 -i ../../boost-1.73.patch
+  patch --forward --strip=1 --input "$srcdir/boost-1.73.patch"
+
+  # Add missing "#include <thread>" due to
+  # header dependency changes since GCC 11.1
+  # See https://gcc.gnu.org/gcc-11/porting_to.html
+  patch --forward --strip=1 --input "$srcdir/gcc-11.1.patch"
+
+  cd "$srcdir/uhd-$pkgver/host"
+  mkdir build
 }
 
 build() {
-  cd "$srcdir/uhd-$pkgver/host/build"
-
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr/ \
+  cd "$srcdir/uhd-$pkgver/host"
+  cmake -B "build" \
+           -DCMAKE_INSTALL_PREFIX=/usr/ \
            -DPYTHON_EXECUTABLE=/usr/bin/python3 \
            -DENABLE_EXAMPLES=OFF \
            -DENABLE_UTILS=ON \
            -DENABLE_TESTS=OFF \
            -DENABLE_E100=ON \
            -DENABLE_E300=ON
-  make
+  make -C "build"
 }
 
 check() {
-  cd "$srcdir/uhd-$pkgver/host/build"
-  make test
+  cd "$srcdir/uhd-$pkgver/host"
+  make -C "build" test
 }
 
 package() {
-  cd "$srcdir/uhd-$pkgver/host/build"
-  make DESTDIR="$pkgdir" install
-  install -Dm644 "../utils/uhd-usrp.rules" "$pkgdir/usr/lib/udev/rules.d/10-uhd-usrp.rules"
+  cd "$srcdir/uhd-$pkgver/host"
+  make -C "build" DESTDIR="$pkgdir" install
+  install -Dm644 "utils/uhd-usrp.rules" "$pkgdir/usr/lib/udev/rules.d/10-uhd-usrp.rules"
 } 
