@@ -1,7 +1,7 @@
 pkgbase = flatpak-xdg-utils
 	pkgdesc = Utilities for containerized apps to launch programs outside the container
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flatpak/flatpak-xdg-utils
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,10 @@ pkgbase = flatpak-xdg-utils
 	license = GPL
 	makedepends = ninja
 	makedepends = meson
+	optdepends = flatpak: interface support
+	optdepends = flatpak: interface support for building flatpaks
 	source = flatpak-xdg-utils-1.0.4.tar.xz::https://github.com/flatpak/flatpak-xdg-utils/releases/download/1.0.4/flatpak-xdg-utils-1.0.4.tar.xz
 	sha256sums = 3ae9278ec0ef301b80032fcb95415ea95d5f439fbde1373e06ba41668dbae9e1
 
 pkgname = flatpak-xdg-utils
+
