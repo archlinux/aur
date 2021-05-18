@@ -5,13 +5,13 @@
 
 pkgname=colormake
 pkgver=0.9.20140503
-pkgrel=1
+pkgrel=2
 pkgdesc="Colorize the output of make"
 arch=('any')
 url="https://bre.klaki.net/programs/colormake/"
 license=('GPL2')
 depends=('perl' 'bash')
-source=("https://github.com/pagekite/Colormake/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pagekite/Colormake/archive/$pkgver.tar.gz")
 sha256sums=('a3f9fae9a455ac96be1cce0371b28bda33a9af73b06fa8e4329aa2f693d68d22')
 
 
@@ -26,20 +26,14 @@ package() {
   cd "Colormake-$pkgver"
 
   # executables
-  install -dm755 "$pkgdir/usr/bin"
-  cp -r {clmake,clmake-short,colormake,colormake-short} "$pkgdir/usr/bin"
+  install -Dm755 "colormake" -t "$pkgdir/usr/bin"
+  cp -r {clmake,clmake-short,colormake-short} "$pkgdir/usr/bin"
 
-  install -Dm755 "colormake.pl" "$pkgdir/usr/share/colormake/colormake.pl"
+  install -Dm755 "colormake.pl" -t "$pkgdir/usr/share/colormake"
 
   # man page
-  install -Dm644 "colormake.1" "$pkgdir/usr/share/man/man1/colormake.1"
+  install -Dm644 "colormake.1" -t "$pkgdir/usr/share/man/man1"
 
   # documentation
-  install -dm755 "$pkgdir/usr/share/doc/colormake"
-  install -m644 \
-    AUTHORS \
-    BUGS \
-    ChangeLog \
-    README \
-    "$pkgdir/usr/share/doc/colormake"
+  install -Dm644 {AUTHORS,BUGS,ChangeLog,README} -t "$pkgdir/usr/share/doc/colormake"
 }
