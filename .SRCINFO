@@ -8,6 +8,7 @@ pkgbase = autofirma-bin
 	license = custom:EUPL
 	depends = java-runtime
 	conflicts = autofirma
+	conflicts = autofirma-git
 	source = autofirma-bin-1.6.5.zip::https://sede.xunta.gal/ficheiros/autofirma/AutoFirma_Linux.zip
 	source = autofirma
 	source = autofirma.desktop

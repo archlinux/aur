@@ -8,7 +8,7 @@ arch=('any')
 url='https://firmaelectronica.gob.es/'
 license=('GPL' 'custom:EUPL')
 depends=('java-runtime')
-conflicts=('autofirma')
+conflicts=('autofirma' 'autofirma-git')
 source=("${pkgname}-${pkgver}.zip::https://sede.xunta.gal/ficheiros/autofirma/AutoFirma_Linux.zip"
         "autofirma"
         "autofirma.desktop"
