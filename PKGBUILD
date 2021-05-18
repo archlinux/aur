@@ -11,12 +11,16 @@ depends=(boost-libs curl glew intel-tbb nlopt wxgtk3 qhull openvdb cgal)
 makedepends=(cmake boost cereal eigen expat gtest libpng systemd)
 replaces=(slic3r-prusa3d)
 source=(${url}/archive/version_${pkgver}/${pkgname}-${pkgver}.tar.gz
+        prusa-slicer-gcc11.patch
         prusa-slicer-openexr3.patch)
 sha256sums=('c1315826d07f428dfe4b9aa6325727beb1257aa6f711d1659a2760f8e213cd51'
+            '1d394b12e0b8f597e5c19c3531621a7ccfd70216d997a77de24891c92a524170'
             '1ef7c22f641b7c18de212202c21f14f6533834a36d7fe0c2b322bc9a13804c6b')
 
 prepare() {
-  patch -d PrusaSlicer-version_${pkgver} -p1 < prusa-slicer-openexr3.patch # Fix build with openEXR 3
+  cd PrusaSlicer-version_${pkgver}
+  patch -p1 < ../prusa-slicer-gcc11.patch # Add missing include for GCC 11
+  patch -p1 < ../prusa-slicer-openexr3.patch # Fix build with openEXR 3
 }
 
 build() {
