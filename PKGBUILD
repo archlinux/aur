@@ -1,7 +1,7 @@
 # Maintainer: aulonsal <aulonsal at gmail dot com>
 pkgname=dbgate-bin
-pkgver=4.1.12
-pkgrel=3
+pkgver=4.2.0
+pkgrel=1
 pkgdesc="Database manager for MySQL, PostgreSQL, SQL Server and MongoDB."
 arch=(x86_64)
 url="https://github.com/${pkgname%-bin}/${pkgname%-bin}"
@@ -17,10 +17,8 @@ source=(
 	"$pkgname-$pkgver-LICENSE::${url/github/raw.githubusercontent}/master/LICENSE"
 )
 
-b2sums=(
-	'e17a6b588291bc5be4855c775bc7129a3caafd7ec95eb5b8bba1efb178edb5e6f7c4eacdeaf23336600cfd1452dd6b7c47aa93a0ad945b146739834d6944ba0c'
-        '9cc4e2813f0978862b0960aa0c8d5b0bc75ae299f10b793ae152202f2e6f43127381c9153c6f51ca1bc83ab633d198dac5d817105a8e7b43e1aad401e0b6eb2f'
-)
+b2sums=('0144d11bd28daf602cc08d37a4f8dc21a5404dbbdda07aad519f8ffe4f408358325fb55f503d84989664be62aa5814073b0e749b86fb45282f77357d589e0159'
+        '9cc4e2813f0978862b0960aa0c8d5b0bc75ae299f10b793ae152202f2e6f43127381c9153c6f51ca1bc83ab633d198dac5d817105a8e7b43e1aad401e0b6eb2f')
 
 package() {
 	bsdtar -xf data.tar.xz --directory="$pkgdir"
