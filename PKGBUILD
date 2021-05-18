@@ -5,7 +5,7 @@
 ################################################################
 
 pkgname=digital-git
-pkgver=.3814
+pkgver=.4284
 pkgrel=1
 pkgdesc="A digital logic designer and circuit simulator. Git development version"
 arch=('x86_64')
@@ -32,15 +32,21 @@ pkgver() {
 }
 
 prepare() {
-   
     echo -e "[Desktop Entry]\nType=Application\nVersion=1.0\nName=Digital\nComment=A digital logic designer and circuit simulator.\nExec=digital\nTerminal=false\nCategories=Education;Java;" > "$srcdir/$executable_name.desktop"
-	echo -e "#!/usr/bin/env bash\njava -jar /usr/share/java/$pkgname/$jar_name \$@" > "$srcdir/$executable_name.sh"
+
+	echo -e "#!/usr/bin/env bash\njava -jar /usr/share/java/$pkgname/$pkgname.jar \$@" > "$srcdir/$pkgname.sh"
+    # don't use imagemagick to convert, use the icons provided by the developer
+	# for SIZE in 16 32 48 128 256 512
+	# do
+	    # convert "$srcdir/Digital/icon.svg" -resize ${SIZE}x${SIZE} "$srcdir/digital_${SIZE}x${SIZE}.png"
+	# done
 }
 
-build(){
+build() {
     cd "$srcdir/digital-git"
     mvn install
 }
+
 
 package() {
     TARGET_DIR="$srcdir/digital-git/target"
@@ -49,8 +55,17 @@ package() {
 	install -vDm644 "$TARGET_DIR/docu/Documentation_en.pdf" "$pkgdir/usr/share/doc/$pkgname/documentation_en.pdf"
 	install -vDm644 "$TARGET_DIR/docu/Documentation_de.pdf" "$pkgdir/usr/share/doc/$pkgname/documentation_de.pdf"
 	install -vDm644 "$TARGET_DIR/docu/Documentation_pt.pdf" "$pkgdir/usr/share/doc/$pkgname/documentation_pt.pdf"
-	# install -vDm644 "$TARGET_DIR/ReleaseNotes.txt" "$pkgdir/usr/share/doc/$pkgname/changelog.txt"
+    install -vDm644 "$TARGET_DIR/docu/Documentation_zh.pdf" "$pkgdir/usr/share/doc/$pkgname/documentation_zh.pdf"
+    install -vDm644 "$TARGET_DIR/docu/Documentation_es.pdf" "$pkgdir/usr/share/doc/$pkgname/documentation_es.pdf"
+    install -vDm644 "$TARGET_DIR/docu/Documentation_fr.pdf" "$pkgdir/usr/share/doc/$pkgname/documentation_fr.pdf"
 	install -vDm644 "$TARGET_DIR/$jar_name" "$pkgdir/usr/share/java/$pkgname/$jar_name"
+    cp -dr --no-preserve=ownership "$srcdir/digital-git/src/main/dig/lib" "$pkgdir/usr/share/java/$pkgname/lib/"
+	# cp -dr --no-preserve=ownership "$srcdir/Digital/examples/" "$pkgdir/usr/share/java/$pkgname/examples/"
 	install -vDm644 "$srcdir/$executable_name.desktop" "$pkgdir/usr/share/applications/$pkgname/$executable_name.desktop"
+    install -vDm644 "$srcdir/digital-git/distribution/ReleaseNotes.txt" "$pkgdir/usr/share/doc/$pkgname/changelog.txt"
 	install -vDm755 "$srcdir/$executable_name.sh" "$pkgdir/usr/bin/digital"
+	for SIZE in 32 48 64 128
+	do
+	    install -vDm644 "$srcdir/digital-git/src/main/resources/icons/icon${SIZE}.png" "$pkgdir/usr/share/icons/hicolor/${SIZE}x${SIZE}/digital.png"
+	done
 }
