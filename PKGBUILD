@@ -2,7 +2,7 @@
 
 pkgname=flatpak-xdg-utils
 pkgver=1.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Utilities for containerized apps to launch programs outside the container"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/flatpak/flatpak-xdg-utils"
