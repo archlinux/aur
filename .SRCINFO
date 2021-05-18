@@ -1,6 +1,6 @@
 pkgbase = pueue-git
 	pkgdesc = A task manager and scheduler for shell commands
-	pkgver = v0.12.0.r1.g9d09462
+	pkgver = v0.12.2.r32.g8bba8bb
 	pkgrel = 1
 	url = https://github.com/nukesor/pueue
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = pueue-git
 	provides = pueue
 	conflicts = pueue
 	conflicts = pueue-bin
-	source = pueue-git::git://github.com/nukesor/pueue.git
+	source = pueue-git::git://github.com/nukesor/pueue.git#branch=v0.13
 	sha256sums = SKIP
 
 pkgname = pueue-git
