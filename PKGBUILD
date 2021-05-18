@@ -1,7 +1,8 @@
-# Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
+# Contributor: Luis Martinez <luis dot martinez at tuta dot io>
+# Contributor: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=cpp-coveralls-git
-pkgver=20181011
+pkgver=0.4.2.r4.g800231f
 pkgrel=1
 pkgdesc='Upload gcov results to coveralls.io'
 arch=('x86_64')
@@ -14,6 +15,11 @@ depends=('python' 'python-requests' 'python-future' 'python-certifi'
 makedepends=('python-setuptools' 'git')
 source=('git+https://github.com/eddyxu/cpp-coveralls.git')
 sha256sums=('SKIP')
+
+pkgver()        {
+        cd "${srcdir}/cpp-coveralls"
+        git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+}
 
 build() {
         cd "${srcdir}/cpp-coveralls"

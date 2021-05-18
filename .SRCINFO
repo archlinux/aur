@@ -1,6 +1,6 @@
 pkgbase = cpp-coveralls-git
 	pkgdesc = Upload gcov results to coveralls.io
-	pkgver = 20181011
+	pkgver = 0.4.2.r4.g800231f
 	pkgrel = 1
 	url = https://github.com/eddyxu/cpp-coveralls
 	arch = x86_64
