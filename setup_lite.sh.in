@@ -86,12 +86,12 @@ pkg_install() {
 check_req() {
 	printf "\nChecking requirements...\n\n"
 	case $distro in
-		"Arch Linux"|"Manjaro Linux")
-			qrycmd="pacman -Q"
-			inscmd="pacman -S"
-			req="lsof openssl p7zip qt5-translations qt5-webengine qt5-websockets vulkan-icd-loader "
-			pkg_install
-			;;
+#		"Arch Linux"|"Manjaro Linux")
+#			qrycmd="pacman -Q"
+#			inscmd="pacman -S"
+#			req="lsof openssl p7zip qt5-translations qt5-webengine qt5-websockets vulkan-icd-loader "
+#			pkg_install
+#			;;
 		"Fedora")
 			qrycmd="rpm -q"
 			inscmd="dnf install"
@@ -111,21 +111,20 @@ check_req() {
 			pkg_install
 			;;
 		*)
-			req="\n"
-			if [ ! -x "$(which 7z 2>/dev/null)" ] ;then
-				req="${req}7z\n"
-			fi
-			if [ ! -x "$(which lsof 2>/dev/null)" ] ;then
-				req="${req}lsof\n"
-			fi
+			req="7z lsof "
+			until [ -z "$req" ];do
+				i=${req%% *}
+				[ $(which $i &>/dev/null; echo $?) -ne 0 ] && mreq="$mreq$i\n"
+				req=${req#* }
+			done
 			tar xf evelauncher-$elver.tar.gz
 			cd evelauncher/
-			req="${req}$(LD_LIBRARY_PATH=$(pwd) ldd ./evelauncher | grep -i not | sed 's,\t,,;s,.so.*,,')\n"
+			mreq="${mreq}$(LD_LIBRARY_PATH=$(pwd) ldd ./evelauncher | grep -i not | sed 's,\t,,;s,.so.*,,')\n"
 			cd ../
 			rm -rf evelauncher/
-			if [ "$req" != "\n" ] ;then
+			if [ "$mreq" != "\n" ] ;then
 				printf "\nFollowing requirements are missing:\n"
-				printf "$req\n"
+				printf "\n$mreq\n"
 				read -p 'Install anyway? (y/N) ' key
 				if [ "x$(echo $key | tr [:upper:] [:lower:])" != "xy" ] ;then
 					printf "\nLeaving.\n\n"
