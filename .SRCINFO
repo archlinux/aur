@@ -1,7 +1,7 @@
 pkgbase = rpcs3
 	pkgdesc = Open-source Sony PlayStation 3 Emulator
 	pkgver = 0.0.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rpcs3.net
 	arch = x86_64
 	license = GPL2
@@ -10,6 +10,7 @@ pkgbase = rpcs3
 	makedepends = libglvnd
 	makedepends = python
 	makedepends = vulkan-validation-layers
+	makedepends = gcc10
 	depends = alsa-lib
 	depends = glew
 	depends = glu
@@ -67,4 +68,3 @@ pkgbase = rpcs3
 	md5sums = SKIP
 
 pkgname = rpcs3
-

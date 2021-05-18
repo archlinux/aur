@@ -3,13 +3,13 @@
 # Contributor: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=rpcs3
 pkgver=0.0.16
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source Sony PlayStation 3 Emulator'
 arch=(x86_64)
 url=https://rpcs3.net
 license=(GPL2)
 depends=(alsa-lib glew glu libavcodec.so libavutil.so libevdev libgl libice libncursesw.so libpng libpulse libsm libswscale.so libx11 libxext openal qt5-base qt5-declarative sdl2 vulkan-icd-loader zlib curl)
-makedepends=(cmake git libglvnd python vulkan-validation-layers)
+makedepends=(cmake git libglvnd python vulkan-validation-layers gcc10)
 options=(!emptydirs)
 source=(
     git+https://github.com/RPCS3/rpcs3.git#tag=v${pkgver}
@@ -69,6 +69,10 @@ prepare() {
 }
 
 build() {
+    # https://github.com/RPCS3/rpcs3/issues/10291
+    export CC=gcc-10
+    export CXX=g++-10
+
     cmake -S "$pkgname" -B build \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
