@@ -10,6 +10,7 @@ pkgbase = autofirma
 	makedepends = maven
 	depends = java-runtime
 	conflicts = autofirma-bin
+	conflicts = autofirma-git
 	source = autofirma-1.6.5.tar.gz::https://github.com/ctt-gob-es/clienteafirma/archive/v1.6.5.tar.gz
 	source = autofirma
 	source = autofirma.desktop

@@ -12,7 +12,7 @@ url='https://firmaelectronica.gob.es/'
 license=('GPL' 'custom:EUPL')
 depends=('java-runtime')
 makedepends=('jdk11-openjdk' 'maven')
-conflicts=('autofirma-bin')
+conflicts=('autofirma-bin' 'autofirma-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ctt-gob-es/${_pkgname}/archive/v${pkgver}.tar.gz"
         "autofirma"
         "autofirma.desktop"
