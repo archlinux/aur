@@ -6,6 +6,7 @@ pkgbase = cpp-coveralls-git
 	arch = x86_64
 	license = Apache
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python
 	depends = python-requests
 	depends = python-future

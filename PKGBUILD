@@ -11,7 +11,7 @@ provides=('cpp-coveralls')
 conflicts=('cpp-coveralls')
 depends=('python' 'python-requests' 'python-future' 'python-certifi'
          'python-cryptography' 'python-pyopenssl' 'python-ipaddress')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'git')
 source=('git+https://github.com/eddyxu/cpp-coveralls.git')
 sha256sums=('SKIP')
 
