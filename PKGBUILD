@@ -15,6 +15,7 @@ makedepends=('git' 'meson')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 install=$_pkgname.install
+options=('debug')
 source=("git+https://git.enlightenment.org/apps/$_pkgname.git")
 sha256sums=('SKIP')
 

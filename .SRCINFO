@@ -13,6 +13,7 @@ pkgbase = ecrire-git
 	depends = efl
 	provides = ecrire=r173.ca78be3
 	conflicts = ecrire
+	options = debug
 	source = git+https://git.enlightenment.org/apps/ecrire.git
 	sha256sums = SKIP
 
