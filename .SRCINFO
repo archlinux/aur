@@ -1,6 +1,6 @@
 pkgbase = unexicon-sound-theme
 	pkgdesc = XDG sound theme for the unexicon distribution
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/bbidulock/
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = unexicon-sound-theme
 	depends = sound-theme-freedesktop
 	depends = sound-theme-smooth
 	depends = linux-a11y-sound-theme
-	source = https://github.com/bbidulock/unexicon-sound-theme/releases/download/1.0/unexicon-sound-theme-1.0.tar.lz
-	sha256sums = 0d9d3f72dd27e2da7a2cf47ddf4f100882102e0aeb55bfce16b132de4814c115
+	source = https://github.com/bbidulock/unexicon-sound-theme/releases/download/1.1/unexicon-sound-theme-1.1.tar.lz
+	sha256sums = 5994ff1c2af4903d3ac31f5926ea931f2a129126af6e94cd0e613c8b22bc5af4
 
 pkgname = unexicon-sound-theme
 
