@@ -1,12 +1,18 @@
 pkgbase = go-jira
-	pkgdesc = Simple command line client for Atlassian's Jira service written in Go
-	pkgver = 1.0.26
+	pkgdesc = simple jira command line client in Go
+	pkgver = 1.0.27
 	pkgrel = 1
-	url = https://github.com/Netflix-Skunkworks/go-jira
+	url = https://github.com/go-jira/jira
 	arch = x86_64
-	license = APACHE
-	source = jira-1.0.26::https://github.com/Netflix-Skunkworks/go-jira/releases/download/v1.0.26/jira-linux-amd64
-	sha256sums = 27a1bb92e763ebdb4ba4204a1d7874d3d5e9094f6d6b15299c6e41f6a3546e83
+	license = Apache
+	makedepends = go
+	optdepends = bash-completion: support auto completion for bash
+	source = go-jira-1.0.27.tar.gz::https://github.com/go-jira/jira/archive/refs/tags/v1.0.27.tar.gz
+	source = jira
+	source = _jira
+	sha256sums = c5bcf7b61300b67a8f4e42ab60e462204130c352050e8551b1c23ab2ecafefc7
+	sha256sums = 737b5bcf05a0121bf5db7baec080446a3c85c9bcdeaf53867d2cba3b86049e48
+	sha256sums = 0ddd0422eb74510bd71b8d370ef8e6b698126fd66abebbb18a00ede45cc9facf
 
 pkgname = go-jira
 

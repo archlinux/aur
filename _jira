@@ -1,0 +1,14 @@
+#compdef jira
+
+_jira() {
+   local matches=($(${words[1]} --completion-bash "${(@)words[1,$CURRENT]}"))
+    compadd -a matches
+    if [[ $compstate[nmatches] -eq 0 && $words[$CURRENT] != -* ]]; then
+        _files
+    fi
+}
+
+# don't run the completion function when being source-ed or eval-ed
+if [ "$funcstack[1]" = "_jira" ]; then
+	_jira
+fi
