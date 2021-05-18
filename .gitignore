@@ -1,2 +1,6 @@
-*.pkg.tar.zst
-*.deb
+*
+!.SRCINFO
+!PKGBUILD
+!microsoft-edge-beta.sh
+!Microsoft Standard Application License Terms - Standalone (free) Use Terms.pdf
+
