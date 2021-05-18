@@ -2,7 +2,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=icdiff
-pkgver=1.9.5
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Improved colored diff"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python')
 url="https://github.com/jeffkaufman/icdiff"
 license=('PSF')
 source=($pkgname-$pkgver.tar.gz::https://github.com/jeffkaufman/icdiff/archive/release-$pkgver.tar.gz)
-sha256sums=('f2e3df30e93df92224538ef3c62a73891af92de4caf94e8117582835e1040fc7')
+sha256sums=('bce07ff4995aafe9de274ca0a322e56275dc264948b125457d2cc73dd7e9eee2')
 
 prepare() {
   cd $pkgname-release-$pkgver
