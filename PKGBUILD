@@ -11,7 +11,7 @@ license=('LicenseRef-1Password-Proprietary')
 depends=('hicolor-icon-theme')
 options=(!strip)
 install="${pkgname}.install"
-source=(https://downloads.1password.com/linux/tar/beta/x86_64/${_tar}{,.sig})
+source=(https://downloads.1password.com/linux/tar/stable/x86_64/${_tar}{,.sig})
 sha256sums=('b0f2e0e31a9d6ae3ce2a2ba97736876b13083bc14bdf6eef515bbf5d760ae156'
             '6f9e0001fd6c53f1eda4d5399a39c756c5d134aeeb686d0b563d12dad0300681'
 )
