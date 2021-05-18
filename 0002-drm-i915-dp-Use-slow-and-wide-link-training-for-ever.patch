@@ -1,7 +1,7 @@
-From d290a24cb45e73e4f8d2700d5f47c2132d066fe2 Mon Sep 17 00:00:00 2001
+From a832c8fcc477b77ed614d7697ca05b50a910b4e2 Mon Sep 17 00:00:00 2001
 From: Kai-Heng Feng <kai.heng.feng@canonical.com>
 Date: Wed, 21 Apr 2021 13:20:31 +0800
-Subject: [PATCH 2/3] drm/i915/dp: Use slow and wide link training for
+Subject: [PATCH 2/4] drm/i915/dp: Use slow and wide link training for
  everything
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
