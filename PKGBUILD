@@ -4,7 +4,7 @@ pkgbase=linux-amd-znver2
 _srcname=linux
 gitver=v5.12.4
 pkgver=5.12.v.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -19,17 +19,17 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
         # linux package install directives for pacman
         'linux.install'
 	# patch from our gentoo overlords
-	'5013_enable-cpu-optimizations-for-gcc10.patch'
+	'5010_enable-cpu-optimizations-universal.patch'
 )
 sha256sums=('SKIP'
             #config.x86_64
-            'ee35b665abf82d0ae75d7cf733b1bbc79f25530c6b311f49767a34eb06b47c08'
+            '590eb94b9eedffa3a49f2f6ed3c2518b4be3a79184ec5db5d4c600134f4ef704'
             #.preset file
             '60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c'
             #linux install file
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             #gentoopatch
-            '0384ddcf6be0901c3996fb90885f100657eff584b0f64b0a05c25bd81a37b1bb'
+            '9083b94bf9f547cceeed9fe2f37fb201e42d5b00734a86e4ea528447a59d4b9a'
 )
 
 _kernelname=${pkgbase#linux}
