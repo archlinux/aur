@@ -7,7 +7,6 @@ pkgbase = autofirma-bin
 	license = GPL
 	license = custom:EUPL
 	depends = java-runtime
-	depends = nss
 	conflicts = autofirma
 	source = autofirma-bin-1.6.5.zip::https://sede.xunta.gal/ficheiros/autofirma/AutoFirma_Linux.zip
 	source = autofirma

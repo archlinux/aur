@@ -7,7 +7,7 @@ pkgdesc='Cliente de firma electrónica ofrecido por la Administración Pública'
 arch=('any')
 url='https://firmaelectronica.gob.es/'
 license=('GPL' 'custom:EUPL')
-depends=('java-runtime' 'nss')
+depends=('java-runtime')
 conflicts=('autofirma')
 source=("${pkgname}-${pkgver}.zip::https://sede.xunta.gal/ficheiros/autofirma/AutoFirma_Linux.zip"
         "autofirma"
