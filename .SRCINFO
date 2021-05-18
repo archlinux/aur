@@ -27,7 +27,7 @@ pkgbase = khal-git
 	provides = khal
 	conflicts = khal
 	options = !emptydirs
-	source = khal::git+https://github.com/geier/khal.git
+	source = khal::git+https://github.com/pimutils/khal.git
 	sha256sums = SKIP
 
 pkgname = khal-git
