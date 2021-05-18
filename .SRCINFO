@@ -1,6 +1,6 @@
 pkgbase = linux-amd-raven
 	pkgver = 5.4.v.119
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -17,12 +17,12 @@ pkgbase = linux-amd-raven
 	source = config.x86_64
 	source = linux-amd-raven.preset
 	source = linux.install
-	source = 5013_enable-cpu-optimizations-for-gcc10.patch
+	source = 5010_enable-cpu-optimizations-universal.patch
 	sha256sums = SKIP
-	sha256sums = b00ad0d6ada00fe7b60da9bccb2002044e1d2c77330229ca8ce40388be4cb4ab
+	sha256sums = 79587331087ac838e18e15f8157005745a337b76148e6a32a07f213535050fba
 	sha256sums = fd220b9f47a86162247b042f06311848678f9acb64b92f716572972f3aeb3d18
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
-	sha256sums = af80efde6c90a2fafdb0809017edf41a955898f923fb5777dfd2d82ff5f01154
+	sha256sums = 63eb599f217729e42dbb0840247412b16b2bd5365725d2488a0256295f71ccda
 
 pkgname = linux-amd-raven
 	pkgdesc = Linux kernel with working amdgpu for Raven Ridge hardware

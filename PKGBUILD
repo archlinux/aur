@@ -4,7 +4,7 @@ pkgbase=linux-amd-raven
 _srcname=linux
 gitver=v5.4.119
 pkgver=5.4.v.119
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -19,17 +19,17 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
         # linux package install directives for pacman
         'linux.install'
 	# patch from our gentoo overlords
-	'5013_enable-cpu-optimizations-for-gcc10.patch'
+	'5010_enable-cpu-optimizations-universal.patch'
 )
 sha256sums=('SKIP'
             #config.x86_64
-            'b00ad0d6ada00fe7b60da9bccb2002044e1d2c77330229ca8ce40388be4cb4ab'
+            '79587331087ac838e18e15f8157005745a337b76148e6a32a07f213535050fba'
             #.preset file
             'fd220b9f47a86162247b042f06311848678f9acb64b92f716572972f3aeb3d18'
             #linux install file
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             #gentoopatch file
-            'af80efde6c90a2fafdb0809017edf41a955898f923fb5777dfd2d82ff5f01154'
+            '63eb599f217729e42dbb0840247412b16b2bd5365725d2488a0256295f71ccda'
 )
 
 _kernelname=${pkgbase#linux}
