@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: eolianoe <eolianoe [at] googlemail [dot] com>
 # Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
@@ -8,7 +8,7 @@
 
 pkgname=khal-git
 _pkgname=khal
-pkgver=0.10.2.dev55+ga401ef2
+pkgver=0.10.4.dev6+g4e9fb7c
 pkgrel=1
 pkgdesc='CLI calendar application build around CalDAV (Git)'
 arch=('any')
