@@ -2,7 +2,7 @@
 pkgname=moonwm
 _pkgname=MoonWM
 pkgver=7.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="My own outstandingly named Window Manager (a dynamic window manager)"
 arch=(x86_64 i686)
 url="https://github.com/jzbor/moonwm"
