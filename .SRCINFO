@@ -1,7 +1,7 @@
 pkgbase = efistubmgr-git
 	pkgdesc = Script for managing Linux EFISTUB boot entries
 	pkgver = 1.0.0.r1.gcf8aa14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openglfreak/efistubmgr
 	arch = any
 	license = MPL2
@@ -12,5 +12,5 @@ pkgbase = efistubmgr-git
 	sha256sums = SKIP
 
 pkgname = efistubmgr-git
-	depends = bash
+	depends = sh
 	depends = efibootmgr
