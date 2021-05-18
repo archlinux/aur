@@ -1,6 +1,6 @@
 pkgbase = xde-ctools-git
 	pkgdesc = X Desktop Environment C-language tools
-	pkgver = 1.13.r1.gd2d6d87
+	pkgver = 1.14.r1.g63f0fea
 	pkgrel = 1
 	url = https://github.com/bbidulock/xde-ctools
 	arch = i686
@@ -16,6 +16,7 @@ pkgbase = xde-ctools-git
 	depends = libwnck+-git
 	depends = libcanberra
 	depends = libnotify
+	depends = gdk-pixbuf-xlib
 	optdepends = xdg-launch-git: launch with recent update and launch notification
 	provides = xde-ctools
 	conflicts = xde-ctools
