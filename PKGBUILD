@@ -2,7 +2,7 @@
 
 pkgname=libindi_ardust4
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="INDI driver for an Arduino USB/ST-4 Interface"
 url="https://github.com/tliff/indi_ardust4"
 license=(GPL2)
