@@ -14,6 +14,7 @@ optdepends=('nautilus-sendto: automatically upload an email with a file attachme
 makedepends=('intltool')
 conflicts=('gnome-gmail')
 provides=('gnome-gmail')
+replaces=('gnome-gmail')
 source=(https://github.com/davesteele/$pkgname/archive/master/$pkgver.tar.gz)
 md5sums=('5a687eca75dea304f83636bc00531cad')
 install=$pkgname.install
