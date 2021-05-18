@@ -2,7 +2,7 @@
 
 pkgbase=linux-x570-vfio-openrgb-sm2262+sm2263
 pkgver=5.12.4.arch1
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
