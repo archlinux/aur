@@ -1,19 +1,19 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xde-menu
-pkgver=0.12
+pkgver=0.13
 pkgrel=1
 pkgdesc="XDG compliant menu generator"
 arch=('i686' 'x86_64')
 url="https://github.com/bbidulock/xde-menu"
 groups=('xde')
 license=('GPL')
-depends=('libwnck' 'libsm' 'gnome-menus')
+depends=('libwnck' 'libsm' 'gnome-menus' 'gdk-pixbuf-xlib')
 optdepends=('libwnck+-git: for enhanced functionality'
 	    'xdg-launch: for LW WM launch notification'
 	    'xde-theme: for LW WM style and theme change support')
 source=("https://github.com/bbidulock/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.lz")
-sha256sums=('706bc20f38cebd49bdd0618182781ae47f303cbacf02d407bf3d53d0b41feee9')
+sha256sums=('08760902c4cad01192bce1440ab93171008d4f02d8e7e22a5d387ffeb896e3c2')
 
 build() {
   cd $pkgname-$pkgver
