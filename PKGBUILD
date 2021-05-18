@@ -41,7 +41,7 @@ checkdepends=(
     )
 provides=("${pkgname%-git}" 'accuraterip-checksum')
 conflicts=("${pkgname%-git}" 'accuraterip-checksum')
-source=("git+${url}.git#branch=develop")
+source=("git+$url.git#branch=develop")
 md5sums=('SKIP')
 
 pkgver() {
@@ -67,6 +67,6 @@ check() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    python3 setup.py install --skip-build --root="${pkgdir}"/ --optimize=1
-    install -Dt "${pkgdir}"/usr/share/man/man1/ man/*.1
+    python3 setup.py install --skip-build --root="$pkgdir"/ --optimize=1
+    install -Dt "$pkgdir"/usr/share/man/man1/ man/*.1
 }
