@@ -1,7 +1,7 @@
 pkgbase = ttf-rubik
 	pkgdesc = Rubik Typeface
 	pkgver = 1.0
-	pkgrel = 0
+	pkgrel = 1
 	url = http://hubertfischer.com/work/type-rubik
 	arch = any
 	license = custom:OFL

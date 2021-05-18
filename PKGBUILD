@@ -2,7 +2,7 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=ttf-rubik
 pkgver=1.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Rubik Typeface"
 arch=("any")
 url="http://hubertfischer.com/work/type-rubik"
