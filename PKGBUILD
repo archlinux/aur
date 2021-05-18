@@ -4,12 +4,11 @@
 
 pkgname=binance
 pkgver=1.16.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Binance desktop application"
 arch=('x86_64')
 url="https://www.binance.com/en/download"
 license=('unknown')
-depends=('electron')
 checkdepends=('curl' 'coreutils')
 source=('https://ftp.binance.com/electron-desktop/linux/production/binance-amd64-linux.deb')
 source=("${pkgname}-${pkgver}.deb::https://ftp.binance.com/electron-desktop/linux/production/binance-amd64-linux.deb")
