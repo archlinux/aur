@@ -5,8 +5,8 @@
 # Contributor: Alexander Fehr <pizzapunk AT gmail DOT com>
 
 pkgname=rubyripper
-pkgver=0.8.0rc2
-pkgrel=2
+pkgver=0.8.0rc3
+pkgrel=1
 pkgdesc='Secure audiodisc ripper'
 arch=('any')
 url='http://code.google.com/p/rubyripper/'
@@ -29,7 +29,7 @@ optdepends=('ruby-gtk3: GTK+ GUI'
             'opus-tools: Opus encoding support'
             'neroaacenc-bin: Nero AAC encoding support')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bleskodev/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('5caf6e26427ae22ccc863789068bec807a964bfaa50c565562fad02a5ccfde0e')
+sha256sums=('f109ed5455f5a616cbd392c2a71efd59ffa2d207c3c3c3ad41873e20430b80c0')
 
 build() {
   cd "${pkgname}-${pkgver}"
