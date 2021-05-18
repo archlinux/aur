@@ -7,8 +7,8 @@ pkgver() {
   cd "JanD"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r17.b44ca47
-pkgrel=1
+pkgver=r31.8dde61a
+pkgrel=2
 pkgbase=jand-git
 replaces=()
 arch=('x86_64')
@@ -21,9 +21,9 @@ source=('git+https://github.com/Jan0660/JanD.git')
 sha256sums=('SKIP')
 
 package() {
-  cd "${srcdir}/JanD"
-  dotnet publish -r linux-x64 -c release
-  mv JanD/bin/Release/net5.0/linux-x64/publish/JanD JanD/bin/Release/net5.0/linux-x64/publish/jand
-  install -Dm 755 JanD/bin/Release/net5.0/linux-x64/publish/jand -t "${pkgdir}/usr/bin/"
+  cd "${srcdir}/JanD/JanD"
+  dotnet publish -r linux-x64 -c release -o ./bin/release/aur-build
+  mv ./bin/release/aur-build/JanD ./bin/release/aur-build/jand
+  install -Dm 755 ./bin/release/aur-build/jand -t "${pkgdir}/usr/bin/"
 }
 

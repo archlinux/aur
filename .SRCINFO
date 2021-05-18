@@ -1,6 +1,6 @@
 pkgbase = jand-git
 	pkgdesc = The Jan process manager
-	pkgver = r17.b44ca47
+	pkgver = r31.8dde61a
 	pkgrel = 1
 	url = https://github.com/Jan0660/JanD
 	arch = x86_64
