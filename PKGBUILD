@@ -1,6 +1,6 @@
 # Maintainer: Alexander Bocken <alexander@bocken.org>
 pkgname=bibel-git
-pkgver=r51.878e6a1
+pkgver=r52.e26d2a6
 pkgrel=1
 pkgdesc="Read the the German Catholic Einheitsübersetzung, with annotations, from your terminal"
 arch=(any)
