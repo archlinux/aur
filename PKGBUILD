@@ -2,7 +2,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-early-access
-pkgver=1666
+pkgver=1694
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger (mainline GIT version)"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ provides=('yuzu' 'yuzu-canary-git' 'yuzu-cmd' 'yuzu-mainline' 'yuzu-canary')
 conflicts=('yuzu-canary-git' 'yuzu-master-git')
 replaces=('yuzu-canary-git')
 source=("https://github.com/pineappleEA/pineapple-src/archive/EA-${pkgver}.tar.gz")
-md5sums=('cfe8708ca58e805aab98e1f54516d85b')
+md5sums=('0249b154b1a0a4d591d247758cc19a45')
 
 prepare() {
   cd "$srcdir/pineapple-src-EA-${pkgver}"
@@ -23,7 +23,7 @@ prepare() {
     patch -p1 < $i
   done
   find . -name "CMakeLists.txt" -exec sed -i 's/^.*-Werror$/-W/g' {} +
-  find . -name "CMakeLists.txt" -exec sed -i 's/^.*-Werror=.*)$/ )/g' {} +
+#  find . -name "CMakeLists.txt" -exec sed -i 's/^.*-Werror=.*)$/ )/g' {} +
   find . -name "CMakeLists.txt" -exec sed -i 's/^.*-Werror=.*$/ /g' {} +
   find . -name "CMakeLists.txt" -exec sed -i 's/-Werror/-W/g' {} +
 }
