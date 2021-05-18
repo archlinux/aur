@@ -1,21 +1,19 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 
 pkgname=zsa-wally-cli
-pkgver=2.0.0
-pkgrel=5
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="Wally: Flash your ZSA Keyboard the EZ way."
 arch=('i686' 'x86_64')
 url="https://github.com/zsa/wally-cli"
-# See https://github.com/zsa/wally-cli/issues/6
-#license=('MIT')
-license=('unknown')
+license=('MIT')
 depends=('libusb')
 makedepends=('go')
 conflicts=('zsa-wally-cli-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver-linux.tar.gz"
     '50-wally-cli.rules'
 )
-sha256sums=('2641c7deededeeba1aecf6b3ae3e87050a0cfd81c8b41323b2304ebe21e61745'
+sha256sums=('071b1bd10e9160c441e833be3bea211ccf835c4f1792b0c6c7fc86f7aa0695d1'
             'fb0486730617d8ef8524229fda63d256a61097ab2503e865edf5c7116d57df7d')
 
 build() {
@@ -34,6 +32,5 @@ package() {
     cd "wally-cli-$pkgver-linux"
 
     install -Dm755 wally-cli "$pkgdir/usr/bin/wally-cli"
-    # Not present yet, see https://github.com/zsa/wally-cli/issues/6
-    #install -Dm644 license.md "$pkgdir/usr/share/licenses/$pkgname/license.md"
+    install -Dm644 license.md "$pkgdir/usr/share/licenses/$pkgname/license.md"
 }
