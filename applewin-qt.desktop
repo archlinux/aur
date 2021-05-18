@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=AppleWin - QT
+Comment=
+Exec=qapple
+Icon=/usr/share/applewin/common/apple-logo.svg
+Terminal=False
+Categories=Game;Emulator

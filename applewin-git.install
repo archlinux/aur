@@ -1,0 +1,8 @@
+post_install() {
+  cat <<EOF
+If you want to use uthernet, you must enter in a command line:
+sudo setcap cap_net_raw=ep ./sa2
+
+"Best" version is SDL2 one. QT version is slower.
+
+EOF

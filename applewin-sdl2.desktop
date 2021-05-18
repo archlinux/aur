@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=AppleWin - SDL2
+Comment=
+Exec=sa2 --imgui
+Icon=/usr/share/applewin/common/apple-logo.svg
+Terminal=False
+Categories=Game;Emulator
