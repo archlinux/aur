@@ -1,14 +1,14 @@
 pkgbase = lua-pam-git
 	pkgdesc = A module for lua to use PAM
 	pkgver = r12.4820711
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RMTT/lua-pam
 	install = lua-pam-git.install
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	depends = pam
-	depends = lua
+	depends = lua53
 	provides = lua-pam
 	source = git+https://github.com/RMTT/lua-pam.git
 	sha256sums = SKIP
