@@ -7,7 +7,7 @@ pkgver=0.3.1.r250.db95c4c
 pkgrel=1
 pkgdesc="Video Player based on EFL - Development version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="https://www.enlightenment.org/p.php?p=about/rage"
+url="https://www.enlightenment.org/about-rage"
 license=('BSD')
 depends=('efl')
 makedepends=('git' 'meson' 'ninja' 'pkgconf' 'gcc' 'binutils' 'fakeroot')
