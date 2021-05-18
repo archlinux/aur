@@ -10,7 +10,7 @@ license=('custom:OFL')
 depends=()
 makedepends=()
 source=("$pkgname-$pkgver"::'https://fonts.google.com/download?family=Rubik')
-sha256sums=('a423f17a4ed912074de62b9f62688e204d3412511c1fb05dd4ef5a95cd7e5ddf')
+sha256sums=('SKIP')
 
 package() {
 	mkdir -p "$pkgdir/usr/share/fonts/TTF/"
