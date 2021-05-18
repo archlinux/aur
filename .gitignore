@@ -1,0 +1,7 @@
+# Tars
+mathics-pygments*.tar.gz
+mathics-pygments*.pkg.tar.zst
+
+# makepkg
+src
+pkg
