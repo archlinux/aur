@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark wagie <mark dot wagie at tutanota dot com>
 
 pkgname=gnome-shell-extension-gtile-git
-pkgver=43.r0.ga6ae01f
+pkgver=44.r1.gb0ae671
 pkgrel=1
 pkgdesc="A window tiling extension for GNOME"
 arch=('any')
@@ -22,7 +22,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  bazel build :install-extension
+  export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
+  bazel --output_user_root="$srcdir/bazel-cache" build :install-extension
 }
 
 package() {
