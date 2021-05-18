@@ -7,8 +7,10 @@ pkgbase = vimix-gtk-themes-git
 	license = GPL3
 	makedepends = git
 	depends = gtk3
-	depends = gtk-engine-murrine
-	depends = gtk-engines
+	optdepends = gtk-engines-murrine: for gtk2 themes
+	optdepends = gtk-engines: for gtk2 themes
+	provides = vimix-gtk-themes=r358.8b76023
+	conflicts = vimix-gtk-themes
 	source = git+https://github.com/vinceliuice/vimix-gtk-themes.git
 	sha256sums = SKIP
 
