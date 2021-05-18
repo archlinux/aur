@@ -2,14 +2,14 @@
 
 pkgname='python-lsp-server'
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of the python-language-server project, maintained by the Spyder IDE team and the community"
 arch=("any")
 url="https://github.com/python-lsp/python-lsp-server"
 license=("MIT")
 depends=(
     "python-jedi"
-    "python-jsonrpc-server"
+    "python-lsp-jsonrpc"
     "python-pluggy"
     "python-ujson"
 )
