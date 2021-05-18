@@ -3,7 +3,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=rusolver-git
-pkgver=0.5.0.r0.g42c8f16
+pkgver=0.5.1.r1.g8cbcb2d
 pkgrel=1
 pkgdesc="Fast and accurate DNS resolver (git)"
 arch=('x86_64')
