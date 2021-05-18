@@ -1,9 +1,10 @@
 # Maintainer: Frank Seifferth <frankseifferth@posteo.net>
+# Maintainer: MithicSpirit <rpc01234 at gmail dot com>
 # Contributor: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 
 pkgname=sc-im-git
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc='A spreadsheet program based on SC'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/andmarti1424/sc-im'
@@ -15,8 +16,7 @@ conflicts=('scim-spreadsheet' 'sc-im')
 source=('git://github.com/andmarti1424/sc-im'
         'arch.patch')
 md5sums=('SKIP'
-         '51e2712b355accd9771ccbaf24b0ac8a')
-MAKEFLAGS='-j1'
+         '1fbfee20dfb2f3150bd9b20748a9cca1')
 
 prepare() {
   cd "$srcdir/sc-im/src"
@@ -31,7 +31,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/sc-im/src"
-  make CC='gcc -fcommon'
+  CFLAGS+=' -fcommon '
+  make
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = sc-im-git
 	pkgdesc = A spreadsheet program based on SC
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/andmarti1424/sc-im
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = sc-im-git
 	source = git://github.com/andmarti1424/sc-im
 	source = arch.patch
 	md5sums = SKIP
-	md5sums = 51e2712b355accd9771ccbaf24b0ac8a
+	md5sums = 1fbfee20dfb2f3150bd9b20748a9cca1
 
 pkgname = sc-im-git
 
