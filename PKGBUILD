@@ -1,24 +1,27 @@
 # Maintainer: Tobias Heider <me@tobhe.de>
+
 pkgname=openiked
 pkgver=6.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free implementation of the IKEv2 protocol"
 arch=('x86_64')
 url="https://www.openiked.org"
 license=('ISC')
 depends=('glibc' 'libevent' 'openssl')
-makedepends=('linux-headers' 'bison' 'cmake' 'git')
+makedepends=('linux-headers' 'bison' 'cmake')
 provides=('iked' 'ikectl')
 conflicts=('iked' 'ikectl')
-source=("https://github.com/openiked/openiked-portable/archive/refs/tags/v${pkgver}.tar.gz"
+source=("https://cdn.openbsd.org/pub/OpenBSD/OpenIKED/openiked-${pkgver}.tar.gz"{,.asc}
         'openiked.service'
         'sysusers.conf')
-sha256sums=('091fb7bb3a1f708b8d620cb11dd5509091c0326293fb38f020a7b6c8909d19af'
+sha256sums=('f8a9a376c27a53b9d22a948a8245aa296f0c24fe5a40933d77b752b5e98ffa5d'
+            'SKIP'
             '692eca0595a26e33b3d305909a4b70b2b62913118386117e91c81c2f85c3e612'
             '0b9806bc8e75fdc473db71d12b9096b6016cc0023835c84f83e36316e594847b')
+validpgpkeys=('8E3FC7EC8089D4892BF3DBAAFBC5853596D16718')
 
 build() {
-	cd openiked-portable-${pkgver}
+	cd openiked-${pkgver}
 	mkdir build
 	cd build
 	cmake -DCMAKE_BUILD_TYPE=Release ..
@@ -26,12 +29,12 @@ build() {
 }
 
 check() {
-	cd openiked-portable-${pkgver}/build/regress/dh
+	cd openiked-${pkgver}/build/regress/dh
 	./dhtest
 }
 
 package() {
-	cd openiked-portable-${pkgver}
+	cd openiked-${pkgver}
 	mkdir -p /var/empty
 	install -Dm644 ../openiked.service -t "${pkgdir}"/usr/lib/systemd/system/
 	install -Dm644 ../sysusers.conf "${pkgdir}"/usr/lib/sysusers.d/openiked.conf
