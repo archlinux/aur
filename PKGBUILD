@@ -88,7 +88,7 @@ dotnet run --no-launch-profile --no-build -c Release -p \"/usr/share/webapps/\"$
     # Install the software.
     cp -r "${srcdir}"/"${_pkgname}"/ "${pkgdir}"/usr/share/webapps/
 
-    ## Link the scripts.
+    ## Create an executable.
     ln -sfrT "${pkgdir}"/usr/share/webapps/"${_pkgname}"/run.sh "${pkgdir}"/usr/bin/"${_pkgname}"
     chmod 755 "${pkgdir}"/usr/bin/"${_pkgname}"
 
