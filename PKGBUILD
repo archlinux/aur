@@ -2,7 +2,7 @@
 # Maintainer: Nat Lasseter <aur at 4574 dot co dot uk>
 
 pkgname="k40whisperer"
-pkgver="0.56"
+pkgver="0.58"
 pkgrel="1"
 pkgdesc="Control software for the stock K40 Laser controller"
 arch=("any")
@@ -20,7 +20,7 @@ source=(
   "${pkgname}.install"
 )
 sha256sums=(
-  "7646a7610e99f2f9cb7e086c6a6813d1a5171cb0ea3e20d1f7c981bd513a3706"
+  "ae4a3cc67eeb3514355a62fac92d4b3dc77ec883d9fa18e99d298ed31cf72bd3"
   "19b490100927a74a4db8c6332b8a995eb1d1dc24c31467c03e3d8ac62759b508"
   "5d32866a044ce3239881eacd01720b95285031a003a79056644d30e728fcee19"
 )
@@ -30,7 +30,6 @@ install="${pkgname}.install"
 build() {
   cd ${_pkgfile}
   dos2unix k40_whisperer.py
-  sed -ri 's|Image.open\("(.+\.png)"\)|Image.open("/usr/lib/k40whisperer/\1")|' k40_whisperer.py
   chmod +x k40_whisperer.py
 }
 
