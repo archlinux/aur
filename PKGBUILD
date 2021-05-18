@@ -3,7 +3,7 @@
 
 _pkgname='istio'
 pkgname="${_pkgname}-bin"
-pkgver=1.9.4
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='An open platform to connect, manage, and secure microservices'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -13,9 +13,9 @@ depends=('bash' 'glibc')
 conflicts=("${_pkgname}")
 
 case "${CARCH}" in
-  x86_64)  _CARCH=amd64 && sha256sums=('9bbd5c5c3c5a2f08507020b47fd70480a23e6b5cb6c8226a8140ea22d0595063');;
-  aarch64) _CARCH=arm64 && sha256sums=('5a8b19cc8b72d174b282211197917a48db6ea2efe92570a042c197e739220bca');;
-  armv7h)  _CARCH=armv7 && sha256sums=('18bb97f455ba28f49c71e744882c6434eb1fa03f6cb8d6dc9775d6d23d25d0ed');;
+  x86_64)  _CARCH=amd64 && sha256sums=('1d00a2ea0cb7608ce2266fc65572ac9316978b01c0c2c8dd8c65efcb63f5fe97');;
+  aarch64) _CARCH=arm64 && sha256sums=('9c9b4e8780f50b14c9482528f5176a48274906e4f46435ff2251148ebf108de7');;
+  armv7h)  _CARCH=armv7 && sha256sums=('87aec26e3a341e068b485783b233cd79b6e6f8bd5421422c27d27bbc21fff9ec');;
 esac
 
 source=("https://github.com/istio/istio/releases/download/${pkgver}/istio-${pkgver}-linux-${_CARCH}.tar.gz")
