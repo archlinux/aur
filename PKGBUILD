@@ -1,7 +1,7 @@
 # Maintainer: Kazuya Yokogawa <mapk0y at gmail.com>
 
 pkgname='cfn-guard'
-pkgver=1.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='A set of tools to check AWS CloudFormation templates for policy compliance using a simple, policy-as-code, declarative syntax'
 url='https://github.com/aws-cloudformation/cloudformation-guard'
@@ -9,13 +9,10 @@ license=('Apache')
 arch=('x86_64')
 depends=('gcc-libs')
 conflicts=("cfn-guard-git")
-source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${pkgname}-linux-${pkgver}.tar.gz")
-sha256sums=('e8b9e503257baaefdabb74311813b6d44eac64e05f10b9157569e5828d14370e')
+source=("${pkgname}.tar.gz::${url}/releases/download/${pkgver}/${pkgname}-v2-ubuntu-latest.tar.gz")
+sha256sums=('7f7b4f694d4ec1bcc26b8964981277b01c6580987be1e069db393eb3f3b2e3b1')
 
 package() {
-  install -Dm755 ${srcdir}/cfn-guard-linux/cfn-guard "$pkgdir/usr/bin/cfn-guard"
-  install -Dm644 ${srcdir}/cfn-guard-linux/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 ${srcdir}/cfn-guard-linux/README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 ${srcdir}/cfn-guard-linux/ATTRIBUTION "$pkgdir/usr/share/doc/${pkgname}/ATTRIBUTION"
-  install -Dm644 ${srcdir}/cfn-guard-linux/NOTICE "$pkgdir/usr/share/doc/${pkgname}/NOTICE"
+  install -Dm755 ${srcdir}/cfn-guard-v2-ubuntu-latest/cfn-guard "$pkgdir/usr/bin/cfn-guard"
+  install -Dm644 ${srcdir}/cfn-guard-v2-ubuntu-latest/README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
 }
