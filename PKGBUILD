@@ -1,18 +1,18 @@
 # Maintainer: Matteo Bonora <bonora.matteo@gmail.com>
 pkgname=kmonad-bin
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced keyboard manager - static binary version"
 arch=('x86_64')
-url="https://github.com/david-janssen/kmonad"
+url="https://github.com/kmonad/kmonad"
 license=('MIT')
 groups=()
 depends=()
 makedepends=()
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-source=("https://github.com/david-janssen/${pkgname%-bin}/releases/download/$pkgver/${pkgname%-bin}-$pkgver-linux"
-	"https://github.com/david-janssen/${pkgname%-bin}/archive/$pkgver.tar.gz")
+source=("https://github.com/kmonad/${pkgname%-bin}/releases/download/$pkgver/${pkgname%-bin}-$pkgver-linux"
+	"https://github.com/kmonad/${pkgname%-bin}/archive/$pkgver.tar.gz")
 md5sums=('SKIP'
 	 'SKIP')
 
