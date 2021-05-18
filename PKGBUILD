@@ -2,7 +2,7 @@
 
 _pkgname='raytracinginvulkan'
 pkgname="${_pkgname}-git"
-pkgver='6.r15.ga0d6f87'
+pkgver='6.r17.gec71f48'
 pkgrel=1
 pkgdesc="Implementation of Peter Shirley's Ray Tracing In One Weekend book"
 arch=('x86_64')
@@ -25,6 +25,7 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_pkgname}"
 
+  sed -i'' 's/glm::glm/glm/' src/CMakeLists.txt
   mkdir -p build
 }
 
