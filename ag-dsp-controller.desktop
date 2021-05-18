@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=AG DSP Controller
+Comment=Yamaha AG06/AG03 DSP Controller software.
+Exec=ag-dsp-controller
+Icon=ag-dsp-controller
+Terminal=false
+Categories=Settings;HardwareSettings;Audio;AudioVideo;
