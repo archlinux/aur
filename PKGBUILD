@@ -1,6 +1,6 @@
-# Maintainer: ml <ml@visu.li>
+# Maintainer: ml <>
 pkgname=kind
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Kubernetes IN Docker - local clusters for testing Kubernetes'
 arch=('x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
@@ -9,13 +9,14 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go' 'git')
 optdepends=(
-  'kubectl: for managing Kubernetes clusters'
   'docker: container engine'
   'podman: container engine'
+
   'bazel: building node images with bazel'
+  'kubectl: for managing Kubernetes clusters'
 )
 source=("https://github.com/kubernetes-sigs/kind/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('9ede2b77b451417e36a208cc5183a21f0420f7b6a6230146ba7d76ab34b99bc7')
+sha256sums=('c78bed3a39afd2e523b38256b7f16445d0ad4b8b25f18b5766005e095af772cd')
 
 build() {
   local _commit
