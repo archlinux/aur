@@ -52,7 +52,7 @@ package() {
 			"${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${_pkgname}.png"
 	done
        # User flag aware launcher
-       install -m755 microsoft-edge-dev.sh "${pkgdir}/usr/bin/microsoft-edge-dev"
+       install -m755 microsoft-edge-beta.sh "${pkgdir}/usr/bin/microsoft-edge-beta"
 	
 
 	# License
