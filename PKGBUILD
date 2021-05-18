@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=pacana
-pkgver=0.10
+pkgver=0.11
 pkgrel=1
 pkgdesc="Pacman repository analysis tool"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/bbidulock/pacana"
 license=('GPL')
 depends=('pacman')
 source=("https://github.com/bbidulock/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.lz")
-md5sums=('cb8a1e5198fe70ca4fdacd64888c9d32')
+md5sums=('636f716d53bfba14f4fda4e40f13d5e7')
 
 build() {
   cd $pkgname-$pkgver
