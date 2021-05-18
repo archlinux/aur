@@ -1,7 +1,7 @@
 # vim: set tabstop=2 set shiftwidth=2 set expandtab
 # Maintainer: Mariusz Jakoniuk (jarmuszz at tuta dot io)
 pkgname=per
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=0
 url="https://github.com/jarmuszz/per"
 pkgdesc="Simple unix permission viewer and converter"
