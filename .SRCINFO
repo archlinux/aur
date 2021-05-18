@@ -1,11 +1,12 @@
 pkgbase = dell-g5se-fanctl
 	pkgdesc = Script to automatically set fan speed according to cpu and gpu thermals on Dell G5SE laptops.
 	pkgver = 3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DavidLapous/DellG5SE-Fan-Linux
 	install = install.install
 	arch = x86_64
 	license = MIT
+	backup = etc/dell-g5se-fanctl.conf
 	source = https://github.com/DavidLapous/DellG5SE-Fan-Linux/archive/refs/tags/v3.2.tar.gz
 	source = dell-smm-hwmon-module.conf
 	source = dell-smm-hwmon-modprobe.conf
