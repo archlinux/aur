@@ -1,5 +1,5 @@
 pkgname=libdnf
-pkgver=0.62.0
+pkgver=0.63.0
 pkgrel=1
 pkgdesc="Library providing simplified C and Python API to libsolv"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ provides=( 'hawkey')
 conflicts=('hawkey')
 replaces=( 'hawkey')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('55e59492ccfabe70ad73008e3f3e0429')
+md5sums=('65f3e4eb46f9d1bf7796e21c65e2d9bf')
 
 prepare() {
 	cd "$pkgname-$pkgver"
