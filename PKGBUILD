@@ -2,7 +2,7 @@
 
 pkgname=lightdm-webkit2-theme-reactive
 pkgver=0.3.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Reactive, A Simple and fast lightdm webkit2 theme for linux"
 arch=('x86_64')
 url="https://github.com/gitneeraj/$pkgname"
@@ -11,17 +11,10 @@ depends=('lightdm-webkit2-greeter')
 source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
 sha512sums=('fb7df70c9fcb231b527804248bab1df5ea5b3f9b44b5d4c3ce4c46b2e263b3050222eb31aab58f81c50a2fd2e3f4e9c5b768331ebbd3bfb303cadd013f5d61f4')
 
-# package() {
-# 	rm "$srcdir/$pkgname-${pkgver}.tar.gz"
-# 	rm -rf "$srcdir/usr/share/lightdm-webkit/themes/reactive"
-# 	install -dm755 "$pkgdir/usr/share/lightdm-webkit/themes/reactive"
-# 	cp -r "$srcdir"/* "$pkgdir/usr/share/lightdm-webkit/themes/reactive/"
-# }
-
 package() {
 	cd "$pkgdir"
 	rm -rf usr/share/lightdm-webkit/themes/reactive
 	mkdir -p usr/share/lightdm-webkit/themes/
 	cd usr/share/lightdm-webkit/themes/
-	cp -r "$srcdir/src" "reactive"
+	cp -r "$srcdir" "reactive"
 }
