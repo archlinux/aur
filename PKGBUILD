@@ -2,19 +2,20 @@
 
 pkgname=linchat
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="simple chat program for local Unix users"
-arch=('i686')
+arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.butschek.de/2009/04/linchat/"
 depends=('ncurses' 'gcc-libs')
-source=("http://www.butschek.de/files/stuff/${pkgname}/${pkgname}-${pkgver}.tar.gz" "http://www.butschek.de/files/stuff/${pkgname}/${pkgname}-${pkgver}-cpp_fixes.patch")
+source=("http://www.butschek.de/files/stuff/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+        "linchat-1.0-cpp_fixes.patch")
 md5sums=('9022b988c4c32b073da291eb888ec688'
-         'f3b11840091a6b16db22b83a29509b08')
+         'baf8f7b725172c4ef61b04006dd2f690')
 
 build() {
     cd $srcdir/$pkgname-$pkgver
-    patch < ../${pkgname}-${pkgver}-cpp_fixes.patch
+    patch -i ../${pkgname}-${pkgver}-cpp_fixes.patch
     make
 }
 

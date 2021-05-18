@@ -1,0 +1,94 @@
+sh0's cpp_fixes.patch -> http://devel.sh0.org/linchat/
+
+diff -Nurd linchat-1.0/common.h linchat-1.0-sh0/common.h
+--- linchat-1.0/common.h	2003-12-29 22:42:54.000000000 +0100
++++ linchat-1.0-sh0/common.h	2009-04-14 13:46:43.479655589 +0200
+@@ -24,11 +24,11 @@
+
+ struct MyException
+ {
+-	MyException(char *s) {
+-		excuse = s;
++	MyException(const char *s) {
++		excuse = *s;
+ 		errnum = errno;
+ 	}
+-	char *excuse;
++	char excuse;
+ 	int errnum;
+ };
+
+diff -Nurd linchat-1.0/Makefile linchat-1.0-sh0/Makefile
+--- linchat-1.0/Makefile	2003-12-29 22:42:54.000000000 +0100
++++ linchat-1.0-sh0/Makefile	2009-04-14 13:37:20.867106234 +0200
+@@ -27,7 +27,7 @@
+ # STRIPFLAGS=
+ # Production build
+ CCPLUS=g++
+-CFLAGS=-O -Wall -Werror
++CFLAGS=-O2 -Wno-error=stringop-truncation
+ STRIPFLAGS=-Wl,-s
+ #
+ LDFLAGS=-lcurses
+diff -Nurd linchat-1.0/ui.cpp linchat-1.0-sh0/ui.cpp
+--- linchat-1.0/ui.cpp	2003-12-29 22:42:54.000000000 +0100
++++ linchat-1.0-sh0/ui.cpp	2009-04-14 15:25:00.662803804 +0200
+@@ -53,8 +53,9 @@
+ 	string message;
+ } MessageLine;
+
+-static list<MessageLine> messages;
++static list<MessageLine> messages2;
+ typedef list<MessageLine>::const_iterator MessagesIterator;
++
+ const unsigned int MaxMessages = 50;
+ static void RefreshMainWindow();
+
+@@ -326,7 +327,7 @@
+ {
+ 	wclear(mainwin);
+ 	wmove(mainwin,mainwinh-1,0);
+-	for (MessagesIterator i = messages.begin(); i != messages.end(); i++)
++	for (MessagesIterator i = messages2.begin(); i != messages2.end(); i++)
+ 	{
+ 		MessageLine ml = *i;
+ 		ShowMessageLine(ml);
+@@ -340,10 +341,10 @@
+ 	msgline.message = msg;
+ 	ShowMessageLine( msgline);
+ 	// Add it to our buffer.
+-	messages.push_back(msgline);
+-	if (messages.size() > MaxMessages)
++	messages2.push_back(msgline);
++	if (messages2.size() > MaxMessages)
+ 	{
+-		messages.pop_front();
++		messages2.pop_front();
+ 	}
+ }
+
+diff -Nurd linchat-1.0/userstruct.h linchat-1.0-sh0/userstruct.h
+--- linchat-1.0/userstruct.h	2003-12-29 22:42:54.000000000 +0100
++++ linchat-1.0-sh0/userstruct.h	2009-04-14 13:37:05.507042162 +0200
+@@ -38,17 +38,17 @@
+ } UserStatus;
+ extern UserStatus myStatus;
+
+-typedef struct UserData {
++typedef struct {
+ 	bool connected;
+ 	UserStatus status;
+ 	int pid; // So we can check etc
+ 	char name[MaxUsername];
+-};
++} UserData;
+
+ const int MaxMessageSize = 900;
+
+-typedef struct ChatPacket {
++typedef struct {
+ 	int slotnum; // Sender
+ 	ChatCommand cmd;
+ 	char message[MaxMessageSize];
+-};
++} ChatPacket;
