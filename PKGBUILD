@@ -1,7 +1,7 @@
 # Maintainer: Laurent Jourden <laurent85@enarel.fr>
 
 pkgname=archuseriso
-pkgver=0.6.5
+pkgver=0.6.6
 pkgrel=1
 pkgdesc="Build desktop iso images, create live usb drives, install on usb drives."
 arch=('any')
@@ -12,14 +12,15 @@ optdepends=('devtools: for building ZFS packages'
             'edk2-ovmf: for emulating UEFI with aui-run'
             'erofs-utils: for experimental EROFS support in aui-mkiso'
             'f2fs-tools: for F2FS file system option'
+            'openssl: for codesigning support when building netboot artifacts'
             'pacman-contrib: for building ZFS packages'
             'qemu: virtual machine for aui-run')
 conflicts=('archuseriso')
 source=("http://dl.gnutux.fr/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "http://dl.gnutux.fr/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz.sig")
-sha256sums=('5745c7abc0243914de6efebd63e15fac6fb2cc7587bbd0d321c302bac0834063'
+sha256sums=('27812958971e01467ad1578107cd573646a15ab1b6ba1c87a688510a9642e52e'
             'SKIP')
-b2sums=('2b0ce8b9b6ffc1a19b2beca8e0b19796488efb3887777cd3282a16e759e63fb342348ab4804b75ecfeddd48e690f27221940cdcdf3b8a0da48d9646826d47b73'
+b2sums=('3a19e213880df6883a0f6abfb4fbc85746b5d941ec5b405d4fcf9885c4900d63c3064c07149f7c9cfd1e614534611fc4c657b9b4c761fc273d7387acae7043a8'
         'SKIP')
 validpgpkeys=('A5143BB56952B3189F49A175FAC4560863BEEC34') # Laurent Jourden
 
