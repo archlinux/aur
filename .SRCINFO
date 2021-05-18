@@ -7,6 +7,7 @@ pkgbase = postybirb
 	license = BSD
 	makedepends = npm
 	makedepends = nvm
+	makedepends = python2
 	depends = electron7
 	source = postybirb-v2.3.30.tar.gz::https://github.com/mvdicarlo/postybirb//archive/v2.3.30.tar.gz
 	source = postybirb.desktop

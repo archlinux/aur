@@ -8,7 +8,7 @@ url="https://www.postybirb.com"
 arch=('x86_64')
 license=('BSD')
 depends=('electron7')
-makedepends=('npm' 'nvm')
+makedepends=('npm' 'nvm' 'python2')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/mvdicarlo/postybirb//archive/v${pkgver}.tar.gz"
         "${pkgname%}.desktop"
         "${pkgname%}.sh"
@@ -27,6 +27,7 @@ prepare() {
 build() {
 	cd "$srcdir/${pkgname}-${pkgver}"
 	source /usr/share/nvm/init-nvm.sh && nvm use --delete-prefix v15.14.0 --silent
+	
 	HOME="$srcdir/.node-gyp" npm ci
 	sed -i "s|${srcdir}/${pkgname}-${pkgver}/node_modules/sshpk|.|g" node_modules/sshpk/package.json
 	HOME="$srcdir/.node-gyp" npm run prod
