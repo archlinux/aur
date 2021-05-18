@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xde-applets
-pkgver=0.10
+pkgver=0.11
 pkgrel=1
 pkgdesc="X Desktop Environment System Tray Icons and Dock Apps"
 groups=('xde')
@@ -9,11 +9,11 @@ arch=('i686' 'x86_64')
 url="https://github.com/bbidulock/xde-applets"
 license=('GPL')
 depends=('libsm' 'libwnck+-git' 'libcanberra' 'libnotify' 'lm_sensors'
-		'libpackagekit-glib' 'cpupower' 'upower')
+		'libpackagekit-glib' 'cpupower' 'upower' 'gdk-pixbuf-xlib')
 makedepends=('dbus-glib' 'libunique' 'xorgproto')
 optdepends=('xdg-launch-git: launch with recent update and launch notification')
 source=("https://github.com/bbidulock/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.lz")
-md5sums=('454689ac1831143fd7dad3e698e272b4')
+md5sums=('1c850b9efd1854229c5d0a0f60db67f5')
 
 build() {
   cd $pkgname-$pkgver
