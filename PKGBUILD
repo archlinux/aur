@@ -1,16 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=('firmware-manager-git' 'libfirmware-manager-git')
 pkgbase=firmware-manager-git
-pkgver=0.1.2.r2.g44cc265
-pkgrel=2
+pkgver=0.1.2.r16.g947516b
+pkgrel=1
 pkgdesc="Generic framework and GTK UI for firmware updates from system76-firmware and fwupd"
 arch=('x86_64')
 url="https://github.com/pop-os/firmware-manager"
 license=('GPL3')
 depends=('dbus' 'gtk3' 'openssl' 'libgudev')
 makedepends=('git' 'rust')
-provides=("${pkgbase%-git}")
-conflicts=("${pkgbase%-git}")
 source=('git+https://github.com/pop-os/firmware-manager.git'
         'com.system76.FirmwareManager.policy'
         "${pkgbase%-git}.sh")
@@ -36,9 +34,7 @@ package_firmware-manager-git() {
 	install="${pkgname%-git}.install"
 
 	cd "$srcdir/${pkgbase%-git}"
-	make DESTDIR="$pkgdir/" install-bin prefix=/usr
-	make DESTDIR="$pkgdir/" install-notify prefix=/usr
-	make DESTDIR="$pkgdir/" install-icons prefix=/usr
+	make DESTDIR="$pkgdir/" install-{bin,notify,icons} prefix=/usr
 
 	install -Dm644 "$srcdir/com.system76.FirmwareManager.policy" -t \
 		"$pkgdir/usr/share/polkit-1/actions"
@@ -49,7 +45,7 @@ package_firmware-manager-git() {
 package_libfirmware-manager-git() {
 	pkgdesc="Shared library for C which provides the firmware manager as a GTK widget."
 	optdepends=('fwupd' 'system76-firmware-daemon')
-	provides=("${pkgname%-git}" 'libfirmware_manager.so')
+	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
 
 	cd "$srcdir/${pkgbase%-git}"
