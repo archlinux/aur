@@ -1,4 +1,4 @@
-# Maintainer: Stephan Springer <buzo+arch (at) Lini (dot) de>
+# Maintainer : Barfin
 # Contributor: Kostis Karantias <kkarantias [at] gmail [dot] com>
 # Contributor: Pieter Goetschalckx <3.14.e.ter [at] gmail [dot] com>
 # Contributor: Bastien Traverse <firstname at lastname dot email>
@@ -12,11 +12,12 @@
 # Contributor: Giulio Fidente <gfidente [at] gmail [dot] com>
 # Contributor: xantares <xantares09 [at] hotmail [dot] com>
 # Contributor: petterk <stifler3k [at] hotmail [dot] com>
+# Contributor: Stephan Springer <buzo+arch (at) Lini (dot) de>
 
 pkgname=popcorntime-bin
 _pkgname=popcorntime
-pkgver=0.4.4
-pkgrel=3
+pkgver=0.4.5
+pkgrel=1
 pkgdesc="Stream free movies and TV shows from torrents"
 arch=('x86_64')
 url="https://github.com/popcorn-official/popcorn-desktop"
@@ -29,7 +30,7 @@ options=('!strip')
 _zipfile="Popcorn-Time-${pkgver}-linux64.zip"
 source=("https://github.com/popcorn-official/popcorn-desktop/releases/download/v${pkgver}/$_zipfile"
         "${_pkgname}.desktop" )
-sha256sums=('fdfabf8800c385bafec4bf162dd26f7df6d8c4c24671dce0aa23997716c5a314'
+sha256sums=('2c88cd9b9455f52d90bb4f1d868a7c9cfb8093ea0d3cd7b338f8ce5a8ede01fa'
             '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
 
 package() {
