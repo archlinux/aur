@@ -1,21 +1,21 @@
 # Maintainer: Márcio Sousa Rocha <marciosr10@gmail.com>
  
 pkgname=irpf
-pkgver=2021.1.4
-pkgrel=1
+pkgver=2021.1.5
+pkgrel=2
 license=('custom')
  
 arch=(any)
 pkgdesc='Programa Oficial da Receita para elaboração do IRPF'
 url='https://www.receita.fazenda.gov.br'
  
-source=(https://downloadirpf.receita.fazenda.gov.br/irpf/2021/irpf/arquivos/IRPF2021-1.4.zip
+source=(https://downloadirpf.receita.fazenda.gov.br/irpf/2021/irpf/arquivos/IRPF2021-1.5.zip
 	Copyright
 	$pkgname.png
 	$pkgname.desktop
 	$pkgname)
  
-md5sums=('762263f6bc5591bb558e0a8fa5851bf3'
+md5sums=('843d9e83e5c421a00b349f2a4e191a04'
          '0b81ed3a0a6200d2706caf541756d55d'
          '43d8c9617118578f03b2c4eeb1c72c57'
          '5c3f364ed6e30e8aac69ad4394deabba'
