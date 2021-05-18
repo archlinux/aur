@@ -3,7 +3,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=unimap-git
-pkgver=0.5.0.r0.g9845fc4
+pkgver=0.5.1.r1.g89e3004
 pkgrel=1
 pkgdesc="Scan only once by IP address and reduce scan times with Nmap for large amounts of data (git)"
 arch=('x86_64')
