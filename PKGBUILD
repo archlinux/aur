@@ -16,7 +16,6 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/andmarti1424/$pkgname/archi
         'arch.0.8.0.patch')
 sha256sums=('7f00c98601e7f7709431fb4cbb83707c87016a3b015d48e5a7c2f018eff4b7f7'
             '191c8537f75decb0bf8d00db9543b07985684bf10308ff63c6648de70b7ff6e5')
-MAKEFLAGS='-j1'
 
 prepare() {
   cd "$pkgname-$pkgver/src"
@@ -26,7 +25,8 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver/src"
-  make CC='gcc -fcommon'
+  CFLAGS+=' -fcommon '
+  make
 }
 
 package() {
