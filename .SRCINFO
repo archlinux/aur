@@ -12,6 +12,7 @@ pkgbase = linux-amd-znver2
 	makedepends = git
 	makedepends = libelf
 	makedepends = lzop
+	makedepends = gcc>=9.1
 	options = !strip
 	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v5.12.4
 	source = config.x86_64
