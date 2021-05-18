@@ -1,7 +1,7 @@
 # Maintainer: Lucas H. Gabrielli <heitzmann@gmail.com>
 
 pkgname=petsc-git
-pkgver=20210204
+pkgver=20210515
 pkgrel=1
 _config=linux-c-opt
 pkgdesc="Portable, extensible toolkit for scientific computation (external downloads enabled)"
@@ -19,10 +19,8 @@ optdepends=("opencl: GPU computing"
             "libyaml: YAML configuration support"
             "libx11: GUI tools")
 install=petsc.install
-source=(petsc::git+https://gitlab.com/petsc/petsc.git#branch=release
-        petsc4py.patch)
-sha256sums=('SKIP'
-            'b0f4a9d33e9c3ba3f51b81808f04ec66091b0a29cf99cac6392e97232edec768')
+source=(petsc::git+https://gitlab.com/petsc/petsc.git#branch=release)
+sha256sums=('SKIP')
 
 _petsc_arch="arch-${_config}"
 _petsc_dir='/usr/local/petsc'
@@ -52,7 +50,6 @@ pkgver() {
 prepare() {
     cd "${srcdir}/petsc"
     sed -i 's-\(self.publicInstall[^=]*=[[:space:]]\)[^#]*-\10 -g' config/BuildSystem/config/package.py
-    patch -p1 < ../petsc4py.patch
 }
 
 
@@ -96,7 +93,6 @@ build() {
       --download-mumps=1
       --download-scalapack=1
       --download-hypre=1
-      --download-petsc4py=1
     )
 
     CONFOPTS=( "${CONFOPTS[@]}" )
@@ -135,10 +131,10 @@ build() {
     export PETSC_ARCH="${_petsc_arch}"
 
     python ./configure LDFLAGS="$LDFLAGS" \
-           --prefix="${_petsc_dir}/${_config}" \
+           --prefix="${_install_dir}" \
            --MAKEFLAGS="$MAKEFLAGS" \
            $(for (( i=1; i<=${#CONFOPTS[@]}; i++)); do echo "${CONFOPTS[$i]}"; done)
-    make clean
+
     make all
 }
 
@@ -152,19 +148,24 @@ package() {
 
     make DESTDIR="${pkgdir}" install
 
-    # Fix petsc4py runpath
-    chrpath -r "${_install_dir}/lib:/usr/lib/openmpi" ${_build_dir}/${_petsc_arch}/lib/petsc4py/lib/${_petsc_arch}/PETSc.cpython-39-x86_64-linux-gnu.so
+    # petsc4py
+    pushd ${_build_dir}/src/binding/petsc4py
+    CFLAGS="$(echo "${CFLAGS}" | sed 's%-D[^[:space:]]*%%g')" python setup.py install --root="${pkgdir}"
+    popd
 
     # install license
     install -Dm 644 ${_build_dir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 
     mkdir -p "${pkgdir}/etc/profile.d"
-    echo "export PETSC_DIR=${_install_dir}" > "${pkgdir}/etc/profile.d/petsc.sh"
+    printf "export PETSC_DIR=${_install_dir}" > "${pkgdir}/etc/profile.d/petsc.sh"
     chmod +x "${pkgdir}/etc/profile.d/petsc.sh"
 
     # show where the shared libraries are
     install -dm 755 "${pkgdir}/etc/ld.so.conf.d/"
-    echo "${_install_dir}/lib" > "${pkgdir}/etc/ld.so.conf.d/petsc.conf"
+    printf "${_install_dir}/lib" > "${pkgdir}/etc/ld.so.conf.d/petsc.conf"
+
+    printf "PETSC_DIR  = ${_petsc_dir}\nPETSC_ARCH = ${_petsc_arch}" \
+        > "${pkgdir}/usr/lib/python3.9/site-packages/petsc4py/lib/petsc.cfg"
 
     _rem_dir="${_build_dir}/${_petsc_arch}"
 
@@ -175,29 +176,4 @@ package() {
     sed -i "s#${_rem_dir}#${_install_dir}#g" "${pkgdir}${_install_dir}/lib/petsc/conf/pkg.conf.hypre"
     sed -i "s#${_rem_dir}#${_install_dir}#g" "${pkgdir}${_install_dir}/lib/petsc/conf/petscvariables"
     sed -i "s#${_rem_dir}#${_install_dir}#g" "${pkgdir}${_install_dir}/lib/petsc/conf/petscrules"
-    sed -i "s#${_build_dir}#${_petsc_dir}#g" "${_rem_dir}/lib/petsc4py/lib/petsc.cfg"
-
-    # install petsc4py
-    _python_package="${pkgdir}/usr/lib/python3.9/site-packages"
-    install -Dm 644 "${_rem_dir}/lib/petsc4py-3.14.1-py3.9.egg-info/PKG-INFO"                          "${_python_package}/petsc4py-3.14.1-py3.9.egg-info/PKG-INFO"
-    install -Dm 644 "${_rem_dir}/lib/petsc4py-3.14.1-py3.9.egg-info/SOURCES.txt"                       "${_python_package}/petsc4py-3.14.1-py3.9.egg-info/SOURCES.txt"
-    install -Dm 644 "${_rem_dir}/lib/petsc4py-3.14.1-py3.9.egg-info/dependency_links.txt"              "${_python_package}/petsc4py-3.14.1-py3.9.egg-info/dependency_links.txt"
-    install -Dm 644 "${_rem_dir}/lib/petsc4py-3.14.1-py3.9.egg-info/not-zip-safe"                      "${_python_package}/petsc4py-3.14.1-py3.9.egg-info/not-zip-safe"
-    install -Dm 644 "${_rem_dir}/lib/petsc4py-3.14.1-py3.9.egg-info/requires.txt"                      "${_python_package}/petsc4py-3.14.1-py3.9.egg-info/requires.txt"
-    install -Dm 644 "${_rem_dir}/lib/petsc4py-3.14.1-py3.9.egg-info/top_level.txt"                     "${_python_package}/petsc4py-3.14.1-py3.9.egg-info/top_level.txt"
-    install -Dm 644 "${_rem_dir}/lib/petsc4py/__init__.py"                                             "${_python_package}/petsc4py/__init__.py"
-    install -Dm 644 "${_rem_dir}/lib/petsc4py/__main__.py"                                             "${_python_package}/petsc4py/__main__.py"
-    install -Dm 644 "${_rem_dir}/lib/petsc4py/PETSc.pxd"                                               "${_python_package}/petsc4py/PETSc.pxd"
-    install -Dm 644 "${_rem_dir}/lib/petsc4py/PETSc.py"                                                "${_python_package}/petsc4py/PETSc.py"
-    install -Dm 644 "${_rem_dir}/lib/petsc4py/include/petsc4py/__init__.pxd"                           "${_python_package}/petsc4py/include/petsc4py/__init__.pxd"
-    install -Dm 644 "${_rem_dir}/lib/petsc4py/include/petsc4py/__init__.pyx"                           "${_python_package}/petsc4py/include/petsc4py/__init__.pyx"
-    install -Dm 644 "${_rem_dir}/lib/petsc4py/include/petsc4py/numpy.h"                                "${_python_package}/petsc4py/include/petsc4py/numpy.h"
-    install -Dm 644 "${_rem_dir}/lib/petsc4py/include/petsc4py/petsc4py.h"                             "${_python_package}/petsc4py/include/petsc4py/petsc4py.h"
-    install -Dm 644 "${_rem_dir}/lib/petsc4py/include/petsc4py/petsc4py.i"                             "${_python_package}/petsc4py/include/petsc4py/petsc4py.i"
-    install -Dm 644 "${_rem_dir}/lib/petsc4py/include/petsc4py/petsc4py.PETSc_api.h"                   "${_python_package}/petsc4py/include/petsc4py/petsc4py.PETSc_api.h"
-    install -Dm 644 "${_rem_dir}/lib/petsc4py/include/petsc4py/petsc4py.PETSc.h"                       "${_python_package}/petsc4py/include/petsc4py/petsc4py.PETSc.h"
-    install -Dm 644 "${_rem_dir}/lib/petsc4py/include/petsc4py/PETSc.pxd"                              "${_python_package}/petsc4py/include/petsc4py/PETSc.pxd"
-    install -Dm 644 "${_rem_dir}/lib/petsc4py/lib/__init__.py"                                         "${_python_package}/petsc4py/lib/__init__.py"
-    install -Dm 644 "${_rem_dir}/lib/petsc4py/lib/petsc.cfg"                                           "${_python_package}/petsc4py/lib/petsc.cfg"
-    install -Dm 755 "${_rem_dir}/lib/petsc4py/lib/${_petsc_arch}/PETSc.cpython-39-x86_64-linux-gnu.so" "${_python_package}/petsc4py/lib/PETSc.cpython-39-x86_64-linux-gnu.so"
 }

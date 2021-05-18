@@ -1,6 +1,6 @@
 pkgbase = petsc-git
 	pkgdesc = Portable, extensible toolkit for scientific computation (external downloads enabled)
-	pkgver = 20210204
+	pkgver = 20210515
 	pkgrel = 1
 	url = https://gitlab.com/petsc/petsc
 	install = petsc.install
@@ -35,9 +35,7 @@ pkgbase = petsc-git
 	provides = petsc
 	conflicts = petsc
 	source = petsc::git+https://gitlab.com/petsc/petsc.git#branch=release
-	source = petsc4py.patch
 	sha256sums = SKIP
-	sha256sums = b0f4a9d33e9c3ba3f51b81808f04ec66091b0a29cf99cac6392e97232edec768
 
 pkgname = petsc-git
 
