@@ -15,7 +15,7 @@ arch=('x86_64')
 pkgdesc="High-level device independent layer for speech synthesis interface (development version)"
 license=('GPL2' 'FDL')
 url="http://www.freebsoft.org/speechd"
-makedepends=('intltool' 'espeak-ng' 'libltdl' 'python-xdg' 'dotconf' 'libpulse' 'libao' 'git')
+makedepends=('autoconf' 'intltool' 'espeak-ng' 'libltdl' 'python-xdg' 'dotconf' 'libpulse' 'libao' 'git')
 source=(${pkgname}::'git+https://github.com/brailcom/speechd.git')
 sha512sums=('SKIP')
 

@@ -6,6 +6,7 @@ pkgbase = speech-dispatcher-git
 	arch = x86_64
 	license = GPL2
 	license = FDL
+	makedepends = autoconf
 	makedepends = intltool
 	makedepends = espeak-ng
 	makedepends = libltdl
