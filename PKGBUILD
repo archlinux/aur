@@ -14,7 +14,7 @@
 #  place it into same DIR as this file
 
 pkgname="renoise"
-pkgver="3.3.0"
+pkgver="3.3.2"
 pkgrel="1"
 pkgdesc="A music composition program"
 arch=("x86_64")
