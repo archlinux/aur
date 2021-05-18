@@ -2,7 +2,7 @@
 
 pkgbase=linux-g14
 pkgver=5.12.4.arch1
-pkgrel=2
+pkgrel=4
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/"
@@ -12,6 +12,7 @@ makedepends=(
   bc kmod libelf pahole cpio tar xz
   xmlto
   git
+  "gcc>=11.0"
 )
 options=('!strip')
 _srcname=archlinux-linux
@@ -19,10 +20,12 @@ _fedora_kernel_commit_id=29f433a6b9ba268b0202ac8200cf2ce38d6071b7
 source=(
 	"$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
 	config         # the main kernel config file
+        "choose-gcc-optimization.sh"
 	"sys-kernel_arch-sources-g14_files_6008-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch"
 	"sys-kernel_arch-sources-g14_files-6010-acpi_unused.patch"
 	"https://gitlab.com/asus-linux/fedora-kernel/-/archive/$_fedora_kernel_commit_id/fedora-kernel-$_fedora_kernel_commit_id.zip"
 	"5.12.4--Add-jack-toggle-support-for-headphones-on-Asus-ROG-Z.patch"
+	"5.8+--more-uarches-for-kernel.patch"::"https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/more-uarches-for-kernel-5.8%2B.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -32,10 +35,24 @@ validpgpkeys=(
 
 sha256sums=('SKIP'
             'bcb8a47c2396af9a2afcd26d1200f9424d2af0fa6f6749d3c09417a919f5c60c'
+            '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
             'd9f5742fed4406396698897aa042d4d5fdbfd7c51add7483a777f9ab41901aac'
             'c384049787c8f0008accf9c4d053eb407b76242fe522e1aed1fe8a9c59f9d996'
             'ce2a5e79ed29c701529f0aa2d854bab79d9f5cbdd173e13774f6e1f4e8ae585f'
-            'f52aadc1ebcdc118bb50769e4f5a4c036521c09ffecba48cb34392e1a687ac0a')
+            'f52aadc1ebcdc118bb50769e4f5a4c036521c09ffecba48cb34392e1a687ac0a'
+            '9083b94bf9f547cceeed9fe2f37fb201e42d5b00734a86e4ea528447a59d4b9a')
+
+# notable microarch levels:
+#
+# 14, Zen2
+# 15, Zen3
+# 38, Skylake (Comet Lake laptops)
+# 93, x86-64-v3 (package default)
+# 98, Intel Native
+# 99, AMD Native
+if [ -z ${_microarchitecture+x} ]; then
+  _microarchitecture=93
+fi
 
 _fedora_kernel_patch_skip_list=(
   # fedora kernel patches to skip
@@ -71,7 +88,7 @@ prepare() {
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
-  echo "-$pkgrel" > localversion.10-pkgrel
+  echo "-$pkgrel" > localversion.99-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
   local src
@@ -113,6 +130,10 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
+
+  # let user choose microarchitecture optimization in GCC
+  sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
+
   make olddefconfig
 
   make -s kernelrelease > version
