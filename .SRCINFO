@@ -1,13 +1,14 @@
 pkgbase = rubyripper
 	pkgdesc = Secure audiodisc ripper
 	pkgver = 0.8.0rc2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://code.google.com/p/rubyripper/
 	arch = any
 	license = GPL3
 	depends = cdparanoia
 	depends = gtk3
 	depends = ruby-iconv
+	depends = ruby-rexml
 	optdepends = ruby-gtk3: GTK+ GUI
 	optdepends = ruby-gettext: Translations
 	optdepends = cd-discid: Gnudb support
