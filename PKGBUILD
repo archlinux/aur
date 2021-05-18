@@ -3,7 +3,7 @@
 
 _pkgname='php-humbug-box'
 pkgname="${_pkgname}-bin"
-pkgver=3.12.3
+pkgver=3.13.0
 pkgrel=1
 pkgdesc='Fast, zero config application bundler with PHARs.'
 arch=('any')
