@@ -6,7 +6,7 @@ _commit=0a4553f6e07c2667f55831d2d0641cd7dc460081
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=6.1.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 arch=(x86_64)
@@ -143,7 +143,8 @@ prepare() {
     # Install it from pip in a virtualenv
     virtualenv --app-data "$srcdir"/afdko/cache --no-wheel build_venv
     source build_venv/bin/activate
-    pip install --no-cache-dir afdko pefile
+    pip install --no-cache-dir afdko
+    pip install --no-cache-dir pefile
 
     [ ! -d gecko ] && mkdir gecko
     mv wine-gecko-${_geckover}-x86{,_64}.tar.xz gecko/
@@ -317,5 +318,5 @@ sha256sums=('SKIP'
             '6fc5bd437b2161777f90416fa92760e73bff39c6cf507b612bc020d87909f812'
             '02f189cc8149eaa2547a4b1cf736e71dea139379544bf9efbb3690f6d70b8b61'
             '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
-            '32652720f3b62dc2a1f56510739579ce7367a80083a76540c87e315813be3c3c'
+            '437c78abd5402c1a5494b1c1fabf4f32b98e579790a0752972bfe2e15ea78d4a'
 )
