@@ -7,11 +7,11 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="A portable, open-source, coherent noise-generating library for C++"
 arch=('i686' 'x86_64')
-url="http://libnoise.sourceforge.net/"
+url="https://libnoise.sourceforge.net/"
 license=('LGPL')
 depends=('lib32-gcc-libs')
 makedepends=('cmake' 'unzip')
-source=("http://prdownloads.sourceforge.net/libnoise/libnoisesrc-${pkgver}.zip"
+source=("https://prdownloads.sourceforge.net/libnoise/libnoisesrc-${pkgver}.zip"
         'CMakeLists.txt'
 	'COPYING')
 md5sums=('fc0d9b4f6477397568c3a9d5294b3b8c'
