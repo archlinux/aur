@@ -1,6 +1,6 @@
 # Maintainer: Elijah Gregg <lovetocode999@ctrl-c.club>
 pkgname=heb12-cli-git
-pkgver=0.1.2.r12.gee269fd
+pkgver=0.1.2.r16.g49d742c
 pkgrel=1
 pkgdesc="Bible command line interface reader."
 arch=("x86_64")
@@ -28,7 +28,7 @@ prepare() {
 build() {
     cd "$srcdir/cli"
 
-    make
+    make CC=gcc
 }
 
 package() {
