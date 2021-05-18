@@ -1,15 +1,16 @@
 pkgbase = lib32-muparser
 	pkgdesc = Fast math parser library (32 bit)
-	pkgver = 2.2.6.1
-	pkgrel = 1
+	pkgver = 2.3.2
+	pkgrel = 2
 	url = http://muparser.beltoforion.de/
 	arch = x86_64
 	license = MIT
 	makedepends = gcc-multilib
+	makedepends = cmake
 	depends = muparser
 	depends = lib32-gcc-libs
-	source = muparser-2.2.6.1.tar.gz::https://github.com/beltoforion/muparser/archive/v2.2.6.1.tar.gz
-	sha256sums = d2562853d972b6ddb07af47ce8a1cdeeb8bb3fa9e8da308746de391db67897b3
+	source = muparser-2.3.2.tar.gz::https://github.com/beltoforion/muparser/archive/v2.3.2.tar.gz
+	sha512sums = 8ef5c8b3834da3995a782b7364a4eb4197fb706bee4cadabe5511d2a9cf2912c3db6de422a91eff7f9690f8c9c355b9900335e940749d5c243cb732ac1992aef
 
 pkgname = lib32-muparser
 
