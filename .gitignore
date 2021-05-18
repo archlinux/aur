@@ -1,0 +1,4 @@
+/src
+/pkg
+/nojail-*.pkg.tar.*
+/*.tar.gz
