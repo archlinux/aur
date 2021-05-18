@@ -1,0 +1,22 @@
+pkgbase = python-mtcnn
+	pkgdesc = Implementation of the MTCNN face detector for Keras. Written from scratch, using as a reference the implementation of MTCNN from David Sandberg (FaceNet’s MTCNN) in Facenet. Based on the paper Zhang, K et al. (2016)
+	pkgver = 0.1.0
+	pkgrel = 1
+	epoch = 0
+	url = http://github.com/ipazc/mtcnn
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python>=3.4
+	depends = python-keras
+	depends = python-opencv
+	depends = python-tensorflow>=2.2
+	provides = python3-mtcnn=0.1.0
+	conflicts = python3-mtcnn
+	source = python-mtcnn-0.1.0.tar.gz::https://pypi.debian.net/mtcnn/mtcnn-0.1.0.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/ipazc/mtcnn/master/LICENSE
+	sha256sums = 56624f08e088e5cf062de8005df09696cdbc0f4c2fc3578483b19e0fb3984252
+	sha256sums = fd9642bdf0c3ae1231a961b5b471f01559608d7530bcd7c669eb7dcf17c57940
+
+pkgname = python-mtcnn
+
