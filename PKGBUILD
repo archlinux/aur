@@ -4,16 +4,18 @@
 
 pkgname=pulseeffects-legacy
 pkgver=4.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Audio Effects for Pulseaudio Applications, without pipewire"
 arch=($CARCH)
 url='https://github.com/wwmm/pulseeffects'
 license=(GPL3)
-depends=(gtk3 gtkmm3 glibmm libpulse gstreamer gst-plugin-gtk gst-plugins-bad
-         lilv boost-libs libsigc++ libsndfile libsamplerate zita-convolver libebur128
-         calf lsp-plugins rubberband rnnoise)
-makedepends=(meson boost itstool appstream-glib zam-plugins)
-optdepends=('zam-plugins: maximizer'
+depends=(boost-libs glibmm gst-plugin-gtk gst-plugins-bad gstreamer gtk3 gtkmm3 libebur128 libpulse libsamplerate libsigc++ libsndfile lilv zita-convolver)
+makedepends=(appstream-glib boost calf itstool meson rnnoise rubberband zam-plugins)
+optdepends=('calf: bass enhancer, deesser, exciter, filter, gates, limiter, multiband compressor, reverb, stereo tools'
+            'lsp-plugins: equalizer, delay'
+            'rnnoise: noise reduction'
+            'rubberband: pitch'
+            'zam-plugins: maximizer'
             'yelp: help documentation')
 conflicts=(pulseeffects)
 provides=(pulseeffects)
