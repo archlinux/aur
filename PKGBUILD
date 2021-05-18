@@ -82,7 +82,7 @@ dotnet run --no-launch-profile --no-build -c Release -p \"/usr/share/\"${_pkgnam
     # Install the software.
     cp -r "${srcdir}"/"${_pkgname}"/ "${pkgdir}"/usr/share/
 
-    ## Link the scripts.
+    ## Create an executable.
     ln -sfrT "${pkgdir}"/usr/share/"${_pkgname}"/run.sh "${pkgdir}"/usr/bin/"${_pkgname_lc}"
     chmod 755 "${pkgdir}"/usr/bin/"${_pkgname_lc}"
 
