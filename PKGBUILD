@@ -2,7 +2,7 @@
 pkgname=('keyboard-configurator')
 pkgbase=keyboard-configurator
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Configures keymap and backlight of System76 keyboards."
 arch=('x86_64')
 url="https://github.com/pop-os/keyboard-configurator"
@@ -22,9 +22,9 @@ package_keyboard-configurator() {
 	depends=('xz' 'hidapi')
 
 	cd "$pkgbase-$pkgver-beta"
-	#make prefix="$pkgdir/usr/bin/" install
 	install -Dm755 target/release/system76-keyboard-configurator "$pkgdir"/usr/bin/system76-keyboard-configurator
 	install -Dm644 linux/com.system76.keyboardconfigurator.desktop "$pkgdir"/usr/share/applications/com.system76.keyboardconfigurator.desktop
+	install -Dm644 linux/com.system76.keyboardconfigurator.appdata.xml "$pkgdir"/usr/share/metainfo/com.system76.keyboardconfigurator.appdata.xml
 	install -Dm644 data/icons/scalable/apps/com.system76.keyboardconfigurator.svg "$pkgdir"/usr/share/icons/com.system76.keyboardconfigurator.svg
 }
 
