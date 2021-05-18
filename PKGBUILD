@@ -29,9 +29,7 @@ package_firmware-manager() {
 	install="$pkgname.install"
 
 	cd "$pkgbase-$pkgver"
-	make DESTDIR="$pkgdir/" install-bin prefix=/usr
-	make DESTDIR="$pkgdir/" install-notify prefix=/usr
-	make DESTDIR="$pkgdir/" install-icons prefix=/usr
+	make DESTDIR="$pkgdir/" install-{bin,notify,icons} prefix=/usr
 
 	install -Dm644 "$srcdir/com.system76.FirmwareManager.policy" -t \
 		"$pkgdir/usr/share/polkit-1/actions"
@@ -42,7 +40,6 @@ package_firmware-manager() {
 package_libfirmware-manager() {
 	pkgdesc="Shared library for C which provides the firmware manager as a GTK widget."
 	optdepends=('fwupd' 'system76-firmware-daemon')
-	provides=('libfirmware_manager.so')
 
 	cd "$pkgbase-$pkgver"
 	make DESTDIR="$pkgdir/" install-ffi prefix=/usr

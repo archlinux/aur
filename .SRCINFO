@@ -32,5 +32,4 @@ pkgname = libfirmware-manager
 	pkgdesc = Shared library for C which provides the firmware manager as a GTK widget.
 	optdepends = fwupd
 	optdepends = system76-firmware-daemon
-	provides = libfirmware_manager.so
 
