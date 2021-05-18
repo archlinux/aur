@@ -1,7 +1,7 @@
 pkgbase = linux-x570-vfio-openrgb-sm2262+sm2263
-	pkgdesc = Linux; includes vfio setup, openrgb kernel patches, and vfio support for SM2262/SM2263 PCIE NVME controllers
+	pkgdesc = Linux
 	pkgver = 5.12.4.arch1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.archlinux.org/linux.git/log/?h=v5.12.4-arch1
 	arch = x86_64
 	license = GPL2
@@ -31,7 +31,7 @@ pkgbase = linux-x570-vfio-openrgb-sm2262+sm2263
 	sha256sums = 96febff9e2177ef85b253217bb0927a11169e4a11e66ab139e48f2e7ccd50c1f
 
 pkgname = linux-x570-vfio-openrgb-sm2262+sm2263
-	pkgdesc = The Linux; includes vfio setup, openrgb kernel patches, and vfio support for SM2262/SM2263 PCIE NVME controllers kernel and modules
+	pkgdesc = The Linux kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -43,8 +43,8 @@ pkgname = linux-x570-vfio-openrgb-sm2262+sm2263
 	replaces = wireguard-arch
 
 pkgname = linux-x570-vfio-openrgb-sm2262+sm2263-headers
-	pkgdesc = Headers and scripts for building modules for the Linux; includes vfio setup, openrgb kernel patches, and vfio support for SM2262/SM2263 PCIE NVME controllers kernel
+	pkgdesc = Headers and scripts for building modules for the Linux kernel
 
 pkgname = linux-x570-vfio-openrgb-sm2262+sm2263-docs
-	pkgdesc = Documentation for the Linux; includes vfio setup, openrgb kernel patches, and vfio support for SM2262/SM2263 PCIE NVME controllers kernel
+	pkgdesc = Documentation for the Linux kernel
 

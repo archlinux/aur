@@ -2,8 +2,8 @@
 
 pkgbase=linux-x570-vfio-openrgb-sm2262+sm2263
 pkgver=5.12.4.arch1
-pkgrel=1
-pkgdesc='Linux; includes vfio setup, openrgb kernel patches, and vfio support for SM2262/SM2263 PCIE NVME controllers'
+pkgrel=2
+pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
 arch=(x86_64)
