@@ -2,14 +2,14 @@
 # Maintainer: Mariusz Jakoniuk (jarmuszz at tuta dot io)
 pkgname=per
 pkgver=1.0.2
-pkgrel=0
+pkgrel=1
 url="https://github.com/jarmuszz/per"
 pkgdesc="Simple unix permission viewer and converter"
 license=("GPL3")
 makedepends=("make" "gzip")
 arch=("any")
 source=("https://github.com/jarmuszz/per/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=("3a3a44f7aa6e841ea123445233fd289434fc7ed7e10fe644860f1ce85e4aba67")
+sha256sums=("8bf61a2e13fe351047e438f859fbacd0e88e513ae3d5c32d6b20214fc63c358a")
 
 build() {
   cd "${pkgname}-${pkgver}"
