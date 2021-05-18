@@ -1,6 +1,6 @@
 pkgbase = golang-github-linuxdeepin-go-dbus-factory-git
 	pkgdesc = GO DBus factory for DDE
-	pkgver = 1.9.3.r21.g40b8c5d
+	pkgver = 1.9.6.r14.g40b8c5d
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/go-dbus-factory
 	arch = any
