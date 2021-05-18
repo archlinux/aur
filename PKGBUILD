@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-launcher-git
-pkgver=5.4.5.r46.g3782079e
+pkgver=5.4.11.r30.g6570c818
 pkgrel=1
 pkgdesc='Deepin desktop-environment - Launcher module'
 arch=('x86_64')
