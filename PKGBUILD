@@ -3,7 +3,7 @@
 pkgname=clifm-git
 _pkgname=clifm
 pkgver=1.0.r148.g05714e7
-pkgrel=1
+pkgrel=2
 pkgdesc="The KISS file manager: cli-based, ultra-lightweight, and lightning fast (development version)"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'aarch64' 'armv7h')
 url="https://github.com/leo-arch/clifm"
@@ -43,6 +43,7 @@ package() {
   install -g 0 -o 0 -Dm644 completions.zsh "$pkgdir/usr/share/zsh/site-functions/_${_pkgname}"
   install -g 0 -o 0 -Dm644 "translations/spanish/${_pkgname}.mo" "$pkgdir/usr/share/locale/es/LC_MESSAGES/${_pkgname}.mo"
   mkdir -p "$pkgdir/usr/share/$_pkgname"
+  install -g 0 -o 0 -Dm644 misc/mimelist.cfm "$pkgdir/usr/share/$_pkgname/mimelist.cfm"
   cp -r plugins "$pkgdir/usr/share/$_pkgname"
   cp -r functions "$pkgdir/usr/share/$_pkgname"
 }
