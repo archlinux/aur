@@ -5,19 +5,20 @@
 
 pkgname=ardentryst
 pkgver=1.71
-pkgrel=3
-pkgdesc="An action/RPG sidescoller with a focus on story and character development"
+pkgrel=4
+pkgdesc="An action/RPG sidescroller with a focus on story and character development"
 arch=('any')
-url="http://jordan.trudgett.com/"
+url="https://github.com/ardentryst/ardentryst"
 license=('GPL3' 'CCPL')
-depends=('python2-pygame')
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname$pkgver.tar.gz
+makedepends=(python2-pygame)
+depends=(python2)
+source=(https://github.com/ardentryst/ardentryst/archive/refs/tags/$pkgver.tar.gz
         $pkgname.sh)
-md5sums=('eccdea0817ebb5996535834b842a5046'
+md5sums=('037a901922e269f25d8b9b8a4bc46243'
          'f4d92279de96f55e200c0133d3bd5361')
 
 package() {
-  cd "$srcdir"/$pkgname$pkgver
+  cd "$srcdir"/$pkgname-$pkgver
 
   # install data
   install -m755 -d "$pkgdir"/usr/share/$pkgname
