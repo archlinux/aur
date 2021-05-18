@@ -1,6 +1,6 @@
 # Maintainer: nomisge <nomisge @ live . de>
 pkgname=microblocks
-pkgver=1.0.11
+pkgver=1.0.14
 pkgrel=1
 pkgdesc="MicroBlocks is a blocks pogramming language for physical computing inspired by Scratch. It runs on microcontrollers such as the micro:bit, Calliope mini, AdaFruit Circuit Playground Express, and many others."
 arch=('x86_64')
@@ -10,7 +10,7 @@ groups=('')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://microblocks.fun/downloads/v$pkgver/packages/ublocks-amd64.deb")
-sha512sums=('aaf4ed9bb515e5edfb0f72d5b1c9a2b0a98333406617a32dd4141e3a4bcaaa15498e3cc0c391e3f7263f2e7b5f976d370a808047b3df12c7e792a0b15a0024a8')
+sha512sums=('9ed526fa278319efa0ee3841d5a4dcf0a4dc9547f2ec22511c371f6f82bbadc8416f535f2c74d8b2530f7bfa7a9e57b97eb73a3de45169d25f2d835d6c889375')
 
 package(){
 
