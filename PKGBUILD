@@ -1,7 +1,7 @@
 # Maintainer: Kazuya Yokogawa <mapk0y at gmail.com>
 
 pkgname='cfn-guard-git'
-pkgver=1.0.0.r40.g245d7b1
+pkgver=2.0.1.r0.gf560098
 pkgrel=1
 pkgdesc='A set of tools to check AWS CloudFormation templates for policy compliance using a simple, policy-as-code, declarative syntax'
 url='https://github.com/aws-cloudformation/cloudformation-guard'
@@ -9,6 +9,7 @@ depends=('gcc-libs')
 makedepends=('rust')
 license=('Apache')
 arch=('x86_64')
+conflicts=("cfn-guard")
 source=('git+https://github.com/aws-cloudformation/cloudformation-guard')
 md5sums=('SKIP')
 
@@ -19,12 +20,12 @@ pkgver() {
 
 build() {
   cd "$srcdir"/cloudformation-guard
-  make cfn-guard
+  cargo build --release
 }
 
 package() {
   cd "$srcdir"/cloudformation-guard
-  install -Dm755 bin/cfn-guard "$pkgdir/usr/bin/cfn-guard"
+  install -Dm755 target/release/cfn-guard "$pkgdir/usr/bin/cfn-guard"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname%-*}/README.md"
 }
