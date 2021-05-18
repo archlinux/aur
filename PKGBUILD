@@ -1,11 +1,11 @@
 pkgname=libosp-bin
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="HemiStereo sensor libraries"
 arch=('x86_64')
 url="https://3dvisionlabs.com/"
 license=('unknown')
-depends=('boost' 'grpc' 'protobuf')
+depends=('boost' 'grpc' 'openssl-1.0' 'protobuf')
 optdepends=('opencv')
 
 source=("https://files.3dvisionlabs.com/hemistereo/lnx-x86_64/HemiStereo-$pkgver-Linux.tar.gz")
