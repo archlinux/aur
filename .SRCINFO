@@ -1,13 +1,13 @@
 pkgbase = qiniu-qshell-bin
 	pkgdesc = CLI tool for Qiniu
-	pkgver = 2.5.1
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/qiniu/qshell
 	arch = x86_64
 	license = MIT
 	provides = qshell
-	source = https://github.com/qiniu/qshell/releases/download/v2.5.1/qshell-v2.5.1-linux-amd64.tar.gz
-	sha256sums = 37a4f91eb19eefabad6f37a0f8738e82d32a657dd81989a801ac37cb97543e8f
+	source = https://github.com/qiniu/qshell/releases/download/v2.6.0/qshell-v2.6.0-linux-amd64.tar.gz
+	sha256sums = 6a9a71c9fbb5ab8bf46d7ed426f4b8fbd02231fb2981a7946267e216da2dbac1
 
 pkgname = qiniu-qshell-bin
 
