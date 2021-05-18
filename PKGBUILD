@@ -5,7 +5,7 @@
 _pkgname=betterlockscreen
 pkgname=${_pkgname}-git
 pkgver=r122.ee1a643
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple lock script for i3lock-color"
 arch=('any')
 url="https://github.com/pavanjadhaw/${_pkgname}"
@@ -28,6 +28,7 @@ package() {
 	if [[ $(pidof systemd) ]]; then
 		_serviceloc="$pkgdir/usr/lib/systemd/system"
 		_servicename="$_pkgname@.service"
+        sed -i 's,usr/local,usr,' "$_srcdir/system/$_servicename"
 		install -Dm 644 "$_srcdir/system/$_servicename" "$_serviceloc/$_servicename"
 	fi
 	install -Dm 644 "$_srcdir/examples/${_pkgname}rc" "$pkgdir/usr/share/doc/$_pkgname/examples/${_pkgname}rc"
