@@ -1,6 +1,6 @@
 pkgbase = cxx
 	pkgdesc = Easily compile a main.cpp file written in C++20
-	pkgver = 3.2.6
+	pkgver = 3.2.8
 	pkgrel = 1
 	url = https://github.com/xyproto/cxx
 	arch = any
@@ -8,16 +8,16 @@ pkgbase = cxx
 	makedepends = git
 	depends = scons
 	optdepends = ccache: For faster builds
-	optdepends = lldb: For debugging
 	optdepends = clang: For clang-format and for clang++
-	optdepends = mingw-w64-gcc: For compiling 64-bit Windows executables
-	optdepends = wine: For running 64-bit Windows exectuables
-	optdepends = valgrind: For tracing calls and profiling
-	optdepends = gprof2dot: For visualizing profiling information
 	optdepends = graphviz: For visualizing profiling information
+	optdepends = gprof2dot: For visualizing profiling information
 	optdepends = kcachegrind: For visualizing profiling information
-	source = git+https://github.com/xyproto/cxx#commit=415a6afa440b1cec6fb7f068a3369e6ae0a0e9de
-	sha256sums = SKIP
+	optdepends = lldb: For debugging
+	optdepends = mingw-w64-gcc: For compiling 64-bit Windows executables
+	optdepends = valgrind: For tracing calls and profiling
+	optdepends = wine: For running 64-bit Windows exectuables
+	source = git+https://github.com/xyproto/cxx#commit=dcb95022c4deb4d70ca1ca4d9050eff535a54eb1
+	b2sums = SKIP
 
 pkgname = cxx
 
