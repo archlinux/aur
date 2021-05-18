@@ -26,6 +26,8 @@ case $1 in
 		java -jar $addon_path --remove $name1;;
 	"-v")
 	 java -jar $addon_path --version;;
+	 "-g")
+	 java -jar $addon_path;;
 	"-h")
 		echo "Usage: waraddonclient <command>"
 		echo "Available commands:" 
@@ -34,6 +36,7 @@ case $1 in
 		echo "-v                     Check the WARAddonClient version"
 		echo "-i                     Lets you install Addons"
 		echo "-r                     Lets you remove Addons"
+		echo "-g                     Open with Graphical User Interface"
 		echo "-h                     This help page";;
 	*)
 		echo "Wrong option, try -h";;
