@@ -7,7 +7,7 @@ pkgdesc="Simple LightDM greeter that does not need X11"
 arch=("any")
 url="https://github.com/max-moser/lightdm-elephant-greeter"
 license=("MIT")
-depends=("lightdm" "python>=3.8" "cage")
+depends=("lightdm" "python>=3.8" "cage" "python-gobject")
 makedepends=("git")
 optdepends=()
 provides=("lightdm-elephant-greeter")
