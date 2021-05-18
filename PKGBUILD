@@ -2,12 +2,13 @@
 
 pkgname=sddm-theme-deepin-git
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="Deepin Theme for SDDM by Match-Yang"
 arch=('any')
 url="https://github.com/Match-Yang/sddm-deepin"
 license=('CCPL:cc-by-sa')
 depends=('sddm' 'qt5-graphicaleffects')
+makedepends=('git')
 _theme_name='deepin'
 _repo_name='sddm-deepin'
 source=("git+https://github.com/Match-Yang/${_repo_name}.git#branch=master")
