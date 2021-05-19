@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-ois
 	pkgdesc = Object Oriented Input System (mingw-w64)
-	pkgver = 1.5
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/wgois/OIS
 	arch = any
@@ -12,14 +12,12 @@ pkgbase = mingw-w64-ois
 	options = !buildflags
 	options = !libtool
 	options = staticlibs
-	source = https://github.com/wgois/OIS/archive/v1.5.tar.gz
+	source = https://github.com/wgois/OIS/archive/v1.5.1.tar.gz
 	source = dxsdk.patch
 	source = cmake.patch
-	source = xinput.patch
-	sha512sums = 5ab1dda7c25c1959ccbbb758ea3fda36bd62ad65f46e2c6b418317a5eb39e0bace52a44ae079dfb69fc58c90df54f8e50d589daae1100ec615325363c9d77513
-	sha512sums = f9cbaa72acf16982533ce9687efd9c1321b7f38dfeeb5401cc75eaa2ab094927217be87bafcf574120a4a486b46be47a6cd06eeafdfa858693cce661e1585a1a
+	sha512sums = 20598aef999a70900cb7f75ffaf62059acf8e811822971cb21986b5d25d28dacb79e4b4cf4770c70e00d3c55cdd01ef3e68a77c2dd148677784fc4df38891340
+	sha512sums = 216fc356ee90926a6e7633e44f486e43bd16ac9467f2987f45461d89f24f8c58ef583e567faa605d2277b2b45e5116f5229c793217d13ff4c3d52620527f3f96
 	sha512sums = 057f65d3ea564daf5661f91c323554ed356830242ce0597eaa562b229fb70be983ba4443003eec9164da3ed7a4a17ecdf312da4e54e78fb93474562db86e1531
-	sha512sums = 37e9a63e9de1ee71fef8331c3fedf84f4a22827c90b62150d57c1780a30cbda6c41a5470a017acf68bb9977c14c00cea315214544d812044e28ff5825a386a76
 
 pkgname = mingw-w64-ois
 

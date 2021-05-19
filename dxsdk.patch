@@ -1,21 +1,11 @@
-diff -ruN OIS-1.5/CMakeLists.txt patched/CMakeLists.txt
---- OIS-1.5/CMakeLists.txt	2020-04-17 22:39:07.023332015 +0200
-+++ patched/CMakeLists.txt	2020-04-17 22:44:07.306665344 +0200
-@@ -95,7 +95,7 @@
-         add_definitions(-DOIS_WIN32_XINPUT_SUPPORT)
+--- OIS-1.5/CMakeLists.txt	2021-05-19 17:15:01.306668095 +0200
++++ patched/CMakeLists.txt	2021-05-19 17:15:37.593334759 +0200
+@@ -103,7 +103,7 @@
+             MESSAGE(STATUS "Found DirectX SDK at ${OIS_WIN32_DXSDK_DIR}")
+         endif()
+ 
+-        include_directories("${OIS_WIN32_DXSDK_DIR}/Include")
++        include_directories("${OIS_WIN32_DXSDK_DIR}/include")
      endif()
  
--    include_directories("${OIS_WIN32_DXSDK_DIR}/Include")
-+    include_directories("${OIS_WIN32_DXSDK_DIR}/include")
- 
-     set(ois_source
-         ${ois_source}
-@@ -161,6 +161,8 @@
- 
-     if (WINDOWSSDK_FOUND)
-         target_link_libraries(OIS "dinput8.lib" "dxguid.lib")
-+    elseif(MINGW)
-+        target_link_libraries(OIS "${DXSDK_DIR}/lib/libdinput8.a" "${DXSDK_DIR}/lib/libdxguid.a")
-     else()
-         target_link_libraries(OIS "${DXSDK_DIR}/Lib/${DIRECTX_ARCH}/dinput8.lib" "${DXSDK_DIR}/Lib/${DIRECTX_ARCH}/dxguid.lib")
-     endif()
+     if(BUILD_SHARED_LIBS)

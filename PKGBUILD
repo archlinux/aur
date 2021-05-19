@@ -1,6 +1,6 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-ois
-pkgver=1.5
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Object Oriented Input System (mingw-w64)"
 arch=('any')
@@ -11,12 +11,10 @@ options=(!strip !buildflags !libtool staticlibs)
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake')
 source=("https://github.com/wgois/OIS/archive/v${pkgver}.tar.gz"
         "dxsdk.patch"
-        "cmake.patch"
-        "xinput.patch")
-sha512sums=('5ab1dda7c25c1959ccbbb758ea3fda36bd62ad65f46e2c6b418317a5eb39e0bace52a44ae079dfb69fc58c90df54f8e50d589daae1100ec615325363c9d77513'
-            'f9cbaa72acf16982533ce9687efd9c1321b7f38dfeeb5401cc75eaa2ab094927217be87bafcf574120a4a486b46be47a6cd06eeafdfa858693cce661e1585a1a'
-            '057f65d3ea564daf5661f91c323554ed356830242ce0597eaa562b229fb70be983ba4443003eec9164da3ed7a4a17ecdf312da4e54e78fb93474562db86e1531'
-	    '37e9a63e9de1ee71fef8331c3fedf84f4a22827c90b62150d57c1780a30cbda6c41a5470a017acf68bb9977c14c00cea315214544d812044e28ff5825a386a76')
+	"cmake.patch")
+sha512sums=('20598aef999a70900cb7f75ffaf62059acf8e811822971cb21986b5d25d28dacb79e4b4cf4770c70e00d3c55cdd01ef3e68a77c2dd148677784fc4df38891340'
+            '216fc356ee90926a6e7633e44f486e43bd16ac9467f2987f45461d89f24f8c58ef583e567faa605d2277b2b45e5116f5229c793217d13ff4c3d52620527f3f96'
+	    '057f65d3ea564daf5661f91c323554ed356830242ce0597eaa562b229fb70be983ba4443003eec9164da3ed7a4a17ecdf312da4e54e78fb93474562db86e1531')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
@@ -24,7 +22,6 @@ prepare() {
 
   patch -Np1 < ${srcdir}/dxsdk.patch
   patch -Np1 < ${srcdir}/cmake.patch
-  patch -Np1 < ${srcdir}/xinput.patch
 }
 
 build() {
@@ -33,7 +30,7 @@ build() {
     cd ${srcdir}/OIS-*
     mkdir -p build-static-${_arch} && cd build-static-${_arch}
     export DXSDK_DIR="/usr/${_arch}/"
-    ${_arch}-cmake -DOIS_BUILD_DEMOS="OFF" -DOIS_BUILD_SHARED_LIBS="OFF" -DDXSDK_DIR="/usr/${_arch}/" ..
+    ${_arch}-cmake -DOIS_BUILD_DEMOS="OFF" -DOIS_BUILD_SHARED_LIBS="OFF" ..
     make
   done
 
@@ -41,7 +38,7 @@ build() {
     cd ${srcdir}/OIS-*
     mkdir -p build-${_arch} && cd build-${_arch}
     export DXSDK_DIR="/usr/${_arch}/"
-    ${_arch}-cmake -DOIS_BUILD_DEMOS="OFF" -DDXSDK_DIR="/usr/${_arch}/" ..
+    ${_arch}-cmake -DOIS_BUILD_DEMOS="OFF" ..
     make
   done
 }
