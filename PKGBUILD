@@ -4,9 +4,12 @@
 # Contributor: Richard Hoffman <coverslide@gmail.com>
 # Contributor: Max <fuzymonkey@gmail.com>
 
+# For ISSUES, REQUESTS, and QUESTIONS:
+# https://github.com/sudoforge/pkgbuilds
+
 pkgname=google-appengine-go
 pkgver=1.9.48
-pkgrel=1
+pkgrel=2
 pkgdesc='Google App Engine SDK for Go'
 arch=('x86_64' 'i686')
 depends=('python2')
@@ -58,5 +61,3 @@ package() {
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   ln -s "/opt/$pkgname/goapp" "$pkgdir/usr/bin/goapp"
 }
-
-# vim:set ts=2 sw=2 et:

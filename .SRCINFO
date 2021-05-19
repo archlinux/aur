@@ -1,7 +1,7 @@
 pkgbase = google-appengine-go
 	pkgdesc = Google App Engine SDK for Go
 	pkgver = 1.9.48
-	pkgrel = 1
+	pkgrel = 2
 	url = http://code.google.com/appengine/downloads.html#Google_App_Engine_SDK_for_Go
 	arch = x86_64
 	arch = i686
