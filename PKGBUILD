@@ -3,7 +3,7 @@
 pkgname=btrfs-compress
 # compress is too generic a name!!! Also the script is unmaintained upstream but still works.
 _pkgname=compress
-pkgver=20170807.r1
+pkgver=20190221.r11
 pkgrel=1
 pkgdesc="btrfs tool that makes it possible to change +c flags recursively on existing files"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="https://github.com/benapetr/compress"
 # The script is too useful not to post it to AUR, though.
 license=('custom:unkown') 
 depends=('python')
-source=("git+https://github.com/benapetr/$_pkgname.git#commit=6d16b86364f9239aae293608c2c43b5fb68ce26a")
+source=("git+https://github.com/benapetr/$_pkgname.git#commit=5b5afb8cdfa0fbe94a1535dcd682816fc3672e1b")
 md5sums=('SKIP')
 
 pkgver() {
