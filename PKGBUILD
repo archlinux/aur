@@ -8,7 +8,7 @@ pkgver() {
 }
 pkgrel=1
 arch=('x86_64')
-pkgdesc='Append, copy, link, and move files using patterns.'
+pkgdesc='Manipulate files en masse using patterns.'
 url='https://github.com/olson-sean-k/nym'
 license=('MIT')
 makedepends=('rust')
