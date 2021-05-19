@@ -1,6 +1,6 @@
 pkgbase = moonraker-git
 	pkgdesc = HTTP frontend for Klipper 3D printer firmware
-	pkgver = r592.40d4daa
+	pkgver = r669.7465de3
 	pkgrel = 1
 	url = https://github.com/Arksine/moonraker
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = moonraker-git
 	depends = python-lmdb
 	depends = python-streaming-form-data
 	depends = python-distro
+	depends = python-inotify-simple
 	depends = libgpiod
 	provides = moonraker
 	conflicts = moonraker
