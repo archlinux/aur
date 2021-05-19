@@ -1,13 +1,13 @@
 pkgbase = homebridge-config-ui-x
 	pkgdesc = Web-based management tool for Homebridge
 	pkgver = 4.41.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/oznu/homebridge-config-ui-x
 	install = homebridge-config-ui-x.install
 	arch = any
 	license = MIT
-	makedepends = npm
 	depends = homebridge
+	depends = npm
 	options = !emptydirs
 	options = !strip
 	source = homebridge-config-ui-x-4.41.1.tar.gz::https://github.com/oznu/homebridge-config-ui-x/archive/4.41.1.tar.gz

@@ -2,13 +2,12 @@
 
 pkgname=homebridge-config-ui-x
 pkgver=4.41.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Web-based management tool for Homebridge"
 arch=('any')
 url="https://github.com/oznu/homebridge-config-ui-x"
 license=('MIT')
-depends=('homebridge')
-makedepends=('npm')
+depends=('homebridge' 'npm')
 options=('!emptydirs' '!strip')
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
