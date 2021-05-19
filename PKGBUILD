@@ -2,13 +2,13 @@
 # Co-Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=steamtinkerlaunch
-pkgver=4.0
+pkgver=6.8
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
 url="https://github.com/frostworx/steamtinkerlaunch"
 license=('GPL3')
-depends=('bc' 'bash' 'git' 'procps-ng' 'unzip' 'wget' 'which' 'xdotool' 'xorg-xprop' 'xorg-xrandr' 'xorg-xwininfo' 'yad')
+depends=('bash' 'git' 'procps-ng' 'unzip' 'wget' 'which' 'xdotool' 'xorg-xprop' 'xorg-xrandr' 'xorg-xwininfo' 'yad')
 optdepends=(
     'strace: write a strace log of the launched game'
     'gamemode: for using GameMode per game'
@@ -34,14 +34,14 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b88cd2425f123657ca6f3a716929d50208bc351e31fdb2ce9a4ce3a78ad12df5')
+sha256sums=('45179feaeb67dd2f0a44fb03e4e7bbaac0e7ec67cdb9dc9a36d592786e56360e')
 
 package() {
     cd "$srcdir/$pkgname-${pkgver}"
     install -Dm755 stl -t "$pkgdir/usr/bin"
 
     install -d "$pkgdir/usr/share/stl"
-    cp -r categories lang misc regs reshadepresets tweaks "$pkgdir/usr/share/stl"
+    cp -r categories eval guicfgs lang misc regs reshadepresets "$pkgdir/usr/share/stl"
 
     install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
