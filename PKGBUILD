@@ -2,23 +2,29 @@
 # Contributor: Alex S. shantanna_at_hotmail_dot_com>
 
 pkgname=gnome-shell-extension-no-title-bar
-_gitname=no-title-bar
-pkgver=9
+_upname=no-title-bar
+pkgver=11
 pkgrel=1
-pkgdesc='Removes the title bar, moves the window title and buttons to the top panel'
+_fork=poehlerj
+pkgdesc="Integrate maximized windows with the top panel ($_fork fork)"
 arch=('any')
-url="https://github.com/franglais125/$_gitname"
-license=('GPL2')
-depends=('gnome-shell' 'xorg-xprop')
-conflicts=('gnome-shell-extension-pixel-saver' 'gnome-shell-extension-pixel-saver-git')
+url="https://github.com/poehlerj/$_upname"
+license=(GPL2)
+depends=(gnome-shell xorg-xprop)
+conflicts=(gnome-shell-extension-pixel-saver gnome-shell-extension-pixel-saver-git)
 install=$pkgname.install
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0315efce450e2ac22aa9dd36e134d2d2a9a51acf6e870b7679bf9092c9742dc9')
+_prefix=V_
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$_prefix$pkgver.tar.gz")
+sha256sums=('7eb2383d0f2efce028b25f05330db2d4f6f1f28c71a35753a28974f473115cd7')
+
+build() {
+  cd "$_upname-$_prefix$pkgver"
+  make _build
+}
 
 package() {
-  _extid="no-title-bar@franglais125.gmail.com"
-  cd "$_gitname-$pkgver"
-  make _build
+  cd "$_upname-$_prefix$pkgver"
+  _extid="$_upname@$_fork.github.com"
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" COPYING
   install -d "$pkgdir/usr/share/gnome-shell/extensions"
   cp -af _build "$pkgdir/usr/share/gnome-shell/extensions/$_extid"
