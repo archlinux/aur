@@ -1,4 +1,5 @@
-# Maintainer: Simon Perry <aur [at] sanxion [dot] net>
+# Maintainer: Tomas S. <me+aur at wereii.cz>
+# Contributor: Simon Perry <aur [at] sanxion [dot] net>
 
 pkgname=python-diskcache
 pkgver=4.1.0
