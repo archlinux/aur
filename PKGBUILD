@@ -17,14 +17,16 @@ pkgver() {
 }
 
 build() {
+	cd "${_pkgname}"
 	RUSTUP_TOOLCHAIN=stable cargo build --release --locked --all-features --target-dir=target
-
 }
 
 check() {
+	cd "${_pkgname}"
 	RUSTUP_TOOLCHAIN=stable cargo test --release --locked --target-dir=target
 }
 
 package() {
+	cd "${_pkgname}"
 	install -Dm 755 target/release/${_pkgname} -t "${pkgdir}/usr/bin"
 }
