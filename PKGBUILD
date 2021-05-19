@@ -3,7 +3,7 @@
 
 _pkgname=ecrire
 pkgname=$_pkgname-git
-pkgver=r174.ec46b1f
+pkgver=r175.ea7c024
 pkgrel=1
 epoch=1
 pkgdesc="Simple text editor based on EFL"
