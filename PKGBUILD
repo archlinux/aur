@@ -2,9 +2,12 @@
 # Contributor: Raphaël Doursenaud <rdoursenaud@free.fr>
 # Contributor: crasm <crasm@firebase-tools.aur.yooz4sio.vczf.io>
 
+# For ISSUES, REQUESTS, and QUESTIONS:
+# https://github.com/sudoforge/pkgbuilds
+
 pkgname=firebase-tools
 pkgver=9.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Firebase Command Line Tools"
 arch=('any')
 url="https://github.com/firebase/firebase-tools"
