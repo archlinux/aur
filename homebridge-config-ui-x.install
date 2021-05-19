@@ -1,0 +1,32 @@
+post_install() {
+	cat <<-EOF
+
+	Start homebridge + ui with systemd:
+
+	$ systemctl enable --now homebridge
+
+	Caveats:
+
+	1) /usr/bin/hb-service places files all over the system, and it will
+	also modify /etc/sudoers. It is also capable of installing an
+	alternative binary of Node.js. It is recommended to *never* use it.
+
+	2) Installing or upgrading plugins from the web ui invokes npm install
+	globally, which is terrible opsec. It is recommended to instead package
+	any plugins and make them available on the AUR.
+
+	3) To give permissions to the web ui to poweroff/reboot the machine,
+	create a drop-in file in /etc/sudoers.d similar to:
+
+	homebridge ALL=(ALL) NOPASSWD:SETENV: /usr/bin/shutdown
+
+	4) The web ui runs commands with sudo in various places.
+
+	You have been warned.
+
+	EOF
+}
+
+post_upgrade() {
+	post_install
+}
