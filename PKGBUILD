@@ -1,5 +1,5 @@
 pkgname=rust-analyzer-nightly-bin
-pkgver=20210518
+pkgver=20210519
 pkgrel=1
 pkgdesc="An experimental Rust compiler front-end for IDEs (nightly)"
 arch=('x86_64' 'i686')
