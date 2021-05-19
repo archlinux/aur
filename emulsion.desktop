@@ -6,4 +6,4 @@ Terminal=false
 Icon=emulsion
 Type=Application
 Categories=Graphics;Viewer;Photography;
-MimeType=image/jpeg;image/jpg;image/pjpeg;image/png;image/apng;image/gif;image/webp;image/tiff;image/bmp;image/avif;image/x-png;image/x-tga;image/x-targa;image/x-bmp;image/x-icon;image/vnd.radiance;image/x‑portable‑bitmap;image/x‑portable‑graymap;image/x‑portable‑pixmap;image/x‑portable‑anymap;
+MimeType=image/jpeg;image/jpg;image/pjpeg;image/png;image/apng;image/gif;image/webp;image/tiff;image/bmp;image/avif;image/svg+xml;image/svg;image/x-png;image/x-tga;image/x-targa;image/x-bmp;image/x-icon;image/vnd.microsoft.icon;image/vnd.radiance;image/x‑portable‑bitmap;image/x‑portable‑graymap;image/x‑portable‑pixmap;image/x‑portable‑anymap;
