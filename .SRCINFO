@@ -1,6 +1,6 @@
 pkgbase = cq
 	pkgdesc = CQ -- CCFG Command Line Inteface (Cyan Configurations)
-	pkgver = 1.0.0.A15
+	pkgver = 1.0.0.A16
 	pkgrel = 3
 	arch = any
 	license = GPL

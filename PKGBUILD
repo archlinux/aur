@@ -1,6 +1,6 @@
 # Maintainer: Stefan Eekhof <stefaneekhof@gmail.com>
 pkgname=cq
-pkgver=1.0.0.A15
+pkgver=1.0.0.A16
 
 _cyanversion=1.0.0.A13 # Needed to find the right version ZIP
 _aosutilverion=0.0.0.13 # Needed for CCFG
