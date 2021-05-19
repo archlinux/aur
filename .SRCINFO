@@ -1,6 +1,6 @@
 pkgbase = linux-amd-raven
 	pkgver = 5.4.v.120
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -20,7 +20,7 @@ pkgbase = linux-amd-raven
 	source = linux.install
 	source = 5010_enable-cpu-optimizations-universal.patch
 	sha256sums = SKIP
-	sha256sums = 95a413c6e110c93f9294b0c1b261925711faae74bcca843502a22f635dc3ed72
+	sha256sums = 322179435727c813b641bbff1f33d7835053271cff51e22ab4f2d396c807c197
 	sha256sums = fd220b9f47a86162247b042f06311848678f9acb64b92f716572972f3aeb3d18
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = 63eb599f217729e42dbb0840247412b16b2bd5365725d2488a0256295f71ccda
