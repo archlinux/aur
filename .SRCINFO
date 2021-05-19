@@ -5,6 +5,7 @@ pkgbase = gmad-git
 	url = https://github.com/garrynewman/gmad
 	arch = x86_64
 	makedepends = premake
+	makedepends = git
 	provides = gmad
 	source = gmad::git+https://github.com/Facepunch/gmad.git#branch=master
 	source = bootil::git+https://github.com/garrynewman/bootil.git#branch=master
