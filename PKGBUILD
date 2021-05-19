@@ -8,7 +8,7 @@
 #Credits: Jamie Quigley <jamie at quigley dot xyz>
 
 pkgname=robin-hood-hashing-git
-pkgver=3.11.1.2021_03_30.838.f7aa87e
+pkgver=3.11.1.2021_05_19.840.f2cae2e
 pkgrel=1
 # Grab git version : take a look a the top of the src/include/robin_hood.h
 pkgdesc='Fast & memory efficient hashtable based on robin hood hashing for C++11/14/17/20'
