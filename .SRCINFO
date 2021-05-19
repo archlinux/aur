@@ -7,7 +7,7 @@ pkgbase = ctc
 	makedepends = gradle>=6.7
 	depends = java-environment
 	source = https://aerialworks.ddns.net/maven/org/asf/cyan/CyanLoader-Sources/1.0.0.A13/CyanLoader-Sources-1.0.0.A13-full.zip
-	md5sums = baead3b99370c8ce8db24ad5fcfca309
+	md5sums = 1d17fc7cc8373f5e7166810c116b1c31
 
 pkgname = ctc
 
