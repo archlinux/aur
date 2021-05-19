@@ -143,15 +143,15 @@ check_req() {
 			printf "\nLeaving.\n\n"
 			exit 0 ;;
 	esac
-	if [ ! -x "$(which 7z 2>/dev/null)" ] ;then
-		req="${req}7z\n"
-	fi
-	if [ ! -x "$(which lsof 2>/dev/null)" ] ;then
-		req="${req}lsof\n"
-	fi
-	if [ "x$req" != "x" ] ;then
+	req="7z lsof "
+	until [ -z "$req" ];do
+		i=${req%% *}
+		[ $(which $i &>/dev/null; echo $?) -ne 0 ] && mreq="$mreq$i\n"
+		req=${req#* }
+	done
+	if [ ! -z $mreq ] ;then
 		printf "\nError: Following requirements are missing:\n"
-		printf "\n$req\n"
+		printf "\n$mreq\n"
 		read -p 'Install anyway? (y/N) ' key
 		if [ "x$(echo $key | tr [:upper:] [:lower:])" != "xy" ] ;then
 			printf "\nLeaving.\n\n"
