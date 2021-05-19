@@ -9,7 +9,7 @@ license=('custom')
 depends=('mingw-w64-zstd' 'mingw-w64-bzip2' 'mingw-w64-libbacktrace-git')
 makedepends=('mingw-w64-gcc' 'mingw-w64-wine')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("https://dl.bintray.com/boostorg/release/${pkgver}/source/boost_${_boostver}.tar.bz2"
+source=("https://boostorg.jfrog.io/artifactory/main/release/${pkgver}/source/boost_${_boostver}.tar.bz2"
         "context-cross.patch" "stacktrace-cross.patch")
 sha256sums=('953db31e016db7bb207f11432bef7df100516eeb746843fa0486a222e3fd49cb'
             '844e163845ea6e7ae1f8d26cb52f72c6e4645cdade1be081bc1d2cff5db0a918'
