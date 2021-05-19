@@ -4,7 +4,7 @@
 
 _pkgname=terminology
 pkgname=$_pkgname-git
-pkgver=1.9.99.r3185.4924a083
+pkgver=1.9.99.r3186.09b5c4e2
 pkgrel=1
 pkgdesc="EFL based terminal emulator - Development version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
