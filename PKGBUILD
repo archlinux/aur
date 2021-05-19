@@ -48,9 +48,9 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq-dev
 # pkgname=('linux-bfq-dev' 'linux-bfq-dev-headers' 'linux-bfq-dev-docs')
 _major=5.12
-_minor=4
+_minor=5
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=1
 _srcname=linux-${pkgver}
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
@@ -71,7 +71,7 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 #_bfq_rel="r2K210223"
 #_bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
 _bfq_path="bfq-lucjan"
-_bfq_rel="r2K210513"
+_bfq_rel="r2K210517"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_rel}.patch"
 _gcc_path="cpu-patches-sep"
 _gcc_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
@@ -81,8 +81,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v2-sep/0002-drm-i915-dp-Use-slow-and-wide-link-training-for-ever.patch"
+        "${_lucjanpath}/arch-patches-v3/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
         'config')
 
@@ -326,12 +325,11 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('db6dd1746ffbf2e702336e444ddf31d2f50d62998566663ed07ec696dd2af860255cc6636ace639b696240212e7b757be5b65885f8b3a0812931aec892be2752'
+sha512sums=('6e00f85451a2d0c7381bf68bbe202706e1e28af5b1962c9c482c1e35f2c3b48a3b9ea94726f78d996f01528c9a80c8d058a4833e8ec6dc84360e8347ac5bc1dd'
             'SKIP'
-            'de3a6af9245132ba2f61472063f75332d7d97131889006cad4de083539ba26a64ac55f7ad7c276f3f99a9543cb149e7b36d4309bb4df8971ff9e3abdcfdd19de'
+            '9480862845ceac800b6f658f641b854f3ab740de2b6885a5e108d979903fe1c8417e42db4bcb16a1f09b641d62a82d22bae009de659406b8bfaf2a0a54299619'
             'c4a2ed0bbd9d348893e802079ab684518b28f163ad242af1b74dd71c7e7e0f5d2db68ace1733879f4bd575103b365e90d6af5d2d849c6e6d2dda41ac73f822a7'
-            'ce617dbc7520a750624027e71ab12242f0fc8787697e78d6f632b88d216d695618ccea935ff23392cdd0fc992203fc5f30e57e6487132ef125d5ba2d87094ff1'
-            '02f5e392bee5341b193d719b591788a0ef0ab654a76a2ae032b19a2328e79b9fc10297dfa6ec412b20c37c851594c55e42c9d5dbf8067467a19aa1ff13e7de98'
+            'f07743a59c992f7a48cd1604a0ed30663fe043f5bc93dfe54780da88421c920e7daf801fa345b475ab551f7855360a72774cd2b117e41d5a4ac35005250e3c2f'
             '7fbd56b2f74463ae84f0ff2cc060ed52fd4576cebd5c14309427db5e662cdd75c7ff7e47b1c4423eb420238906335fd99721809f27bf7c1185318c43c2cce669')
 
 validpgpkeys=(
