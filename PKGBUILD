@@ -1,8 +1,8 @@
-# Maintainer: PumpkinCheshire <sollyonzou at gmail dot com>
+# Maintainer: PumpkinCheshire <$(base64 --decode <<<'c29sbHlvbnpvdUBnbWFpbC5jb20=')>
 # Contributor: Kyle Laker <kyle+aur at laker dot email>
 
 pkgname=marp-cli
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A CLI interface for Marp and Marpit based converters"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("https://registry.npmjs.org/@marp-team/$pkgname/-/$pkgname-$pkgver.tgz")
 # I may need to extract it for installing license.
 #noextract=("${pkgname}-${pkgver}.tgz")
 
-sha256sums=('eca6d0e430bbcf88219903095df8775a4170034b8dba59cd2238339ce86c266e')
+sha256sums=('62711d9298f96a9634020d31a05561ad076e59e06749b0be643a20ccb8533770')
 
 package() {
     npm install -g --user root --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
