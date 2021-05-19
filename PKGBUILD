@@ -38,3 +38,5 @@ package() {
   done
   ln -sf "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
+md5sums=('c2dcc7b0c905804716ea350797158e71'
+         '4be822765214b2093185b72422c41587')
