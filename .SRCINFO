@@ -1,6 +1,6 @@
 pkgbase = robin-hood-hashing-git
 	pkgdesc = Fast & memory efficient hashtable based on robin hood hashing for C++11/14/17/20
-	pkgver = 3.11.1.2021_05_19.840.f2cae2e
+	pkgver = 3.11.2.2021_05_19.840.f2cae2e
 	pkgrel = 1
 	url = https://github.com/martinus/robin-hood-hashing
 	arch = any
