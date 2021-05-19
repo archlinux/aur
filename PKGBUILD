@@ -2,8 +2,8 @@
 # Maintainer: Hunter Wittenborn <hunter@hunterwittenborn.com>
 
 pkgname=makedeb-db
-pkgver=2.0.0
-pkgrel=6
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="Dependency conversion tool for makedeb"
 arch=("any")
 license=("GPL3")
