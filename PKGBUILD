@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-flask-restful
-pkgver=0.3.8
-pkgrel=3
+pkgver=0.3.9
+pkgrel=1
 pkgdesc="Simple framework for creating REST APIs"
 url="https://github.com/flask-restful/flask-restful"
 license=('BSD')
@@ -10,8 +10,8 @@ arch=('any')
 depends=('python-six' 'python-flask' 'python-aniso8601' 'python-pytz')
 makedepends=('python-setuptools')
 checkdepends=('python-nose' 'python-mock' 'python-blinker' 'python-pycryptodome')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/flask-restful/flask-restful/archive/$pkgver.tar.gz")
-sha512sums=('15172114fcedc2f4286cf5f583d95e42c8c8ce6553f9a44e57124f2b1417bf9f094dcb5154a6933ebebc8022f39d4d7969d29d38576111f9d5b45f630b36a66c')
+source=("https://github.com/flask-restful/flask-restful/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha512sums=('34bea8ed6e9de3ad1c2ca63e7af67ed2a175f84c433b08ff643f91d88feda0e3c1c3967deb2fe5ad308b05f373b10c08245edf65ed97a7c5a3683aa900e9edf2')
 
 build() {
   cd flask-restful-$pkgver
