@@ -1,6 +1,6 @@
 # Maintainer: Kasimir Wansing <kasimir at wansing dot org>
 pkgname=litestream
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc='Streaming S3 replication for SQLite.'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('go')
 optdepends=('sqlite')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('3546921d42262e57a72b25a39000ee5d157a7570267c798c1b307ce54952aa1a')
+sha256sums=('fbbfccc70f2627fd71bd2f01eb343d887bd834141ee2d48847f6121fae8964a6')
 
 prepare(){
   cd "$pkgname-$pkgver"
