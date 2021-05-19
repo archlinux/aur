@@ -7,12 +7,12 @@
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
-# Compile ONLY used modules to VASTLYreduce the number of modules built
-# and the build time.
+# Only compile active modules to VASTLY reduce the number of modules built and
+# the build time.
 #
 # To keep track of which modules are needed for your specific system/hardware,
-# give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
-# This PKGBUILD read the database kept if it exists
+# give module_db a try: https://aur.archlinux.org/packages/modprobed-db
+# This PKGBUILD reads the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
@@ -68,7 +68,7 @@ _subarch=
 
 pkgbase=linux-gc
 pkgver=5.12.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
 arch=(x86_64)
@@ -80,7 +80,7 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=729d9f7ffb58f19f341e2f317b76080fc4cfbbf5
+_arch_config_commit=053934c7eeeacc4fbcd2b539686709b4c034a53c
 _bmqversion=5.12-r1
 _bmq_patch="prjc_v${_bmqversion}.patch"
 _gcc_more_v=20210412
@@ -91,6 +91,7 @@ source=(
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=6fe92facfd70f98899343cae2c4eacfe4225b387"
   "0002-drm-i915-dp-Use-slow-and-wide-link-training-for-ever.patch::https://git.archlinux.org/linux.git/patch/?id=a832c8fcc477b77ed614d7697ca05b50a910b4e2"
+  "0003-Revert-bus-mhi-core-Process-execution-environment-ch.patch::https://git.archlinux.org/linux.git/patch/?id=676bfe06a676d970e6b8cc28b7cd18ac1db994c4"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -102,7 +103,8 @@ b2sums=('cb6413d9046bfbe68e7444aafd5353a3cf03a78aca38624dc91a313a8944c6da5d66f3f
         '77a1646ffbc67ed88af564b73cf63f0374772bdc1075e771a93ee4fe257b94cb3766a4842898b48f4343458d0b507229182220c7daeb5532df610b964c6640e7'
         '72194a32a06c43809d1272bd675890b6d27c6c54353150a366e8e2c50ad6eca6ee23c5d6281822965a228cfedfa07a60fe135d1b4f539e4a62728d4460cc0b0e'
         '25e10e6b2a32d5364c7e7e43d0b2b850d3c167a7d6a0a2b574c67ffd89c3bee25ba236353f4927b528a6cb3c9696a73de30ed61ca735ab1bb81daf17fc3bd492'
-        'fe2cc5fea597e3a661244102a3dec9270237429ed5d1b02bf57e2cf599faa0e42b7a239ae939f9549f95356a4f9d9a61ca0604515807f7879da8b46913c6dcfa')
+        'fe2cc5fea597e3a661244102a3dec9270237429ed5d1b02bf57e2cf599faa0e42b7a239ae939f9549f95356a4f9d9a61ca0604515807f7879da8b46913c6dcfa'
+        '266e90caf3b4efe40d84732d67f2599e8f34e348bc07abb0cb9390945196b6b750657f9dfd0d2656a523fb0767fe0ed67c95311c91455fb75cbc30ce9f9e65ac')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}

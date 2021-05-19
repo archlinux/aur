@@ -1,7 +1,7 @@
 pkgbase = linux-gc
 	pkgdesc = Linux
 	pkgver = 5.12.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cchalpha.blogspot.co.uk/
 	arch = x86_64
 	license = GPL2
@@ -19,11 +19,12 @@ pkgbase = linux-gc
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.12.4.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.12.4.tar.sign
-	source = config::https://raw.githubusercontent.com/archlinux/svntogit-packages/729d9f7ffb58f19f341e2f317b76080fc4cfbbf5/trunk/config
+	source = config::https://raw.githubusercontent.com/archlinux/svntogit-packages/053934c7eeeacc4fbcd2b539686709b4c034a53c/trunk/config
 	source = prjc_v5.12-r1.patch::https://gitlab.com/alfredchen/projectc/raw/master/5.12/prjc_v5.12-r1.patch
 	source = more-uarches-20210412.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20210412.tar.gz
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=6fe92facfd70f98899343cae2c4eacfe4225b387
 	source = 0002-drm-i915-dp-Use-slow-and-wide-link-training-for-ever.patch::https://git.archlinux.org/linux.git/patch/?id=a832c8fcc477b77ed614d7697ca05b50a910b4e2
+	source = 0003-Revert-bus-mhi-core-Process-execution-environment-ch.patch::https://git.archlinux.org/linux.git/patch/?id=676bfe06a676d970e6b8cc28b7cd18ac1db994c4
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	b2sums = cb6413d9046bfbe68e7444aafd5353a3cf03a78aca38624dc91a313a8944c6da5d66f3fd7cc8dc47fc058287942d28c3e9d9eaa5da42a3a17d3d20e287968b03
@@ -33,6 +34,7 @@ pkgbase = linux-gc
 	b2sums = 72194a32a06c43809d1272bd675890b6d27c6c54353150a366e8e2c50ad6eca6ee23c5d6281822965a228cfedfa07a60fe135d1b4f539e4a62728d4460cc0b0e
 	b2sums = 25e10e6b2a32d5364c7e7e43d0b2b850d3c167a7d6a0a2b574c67ffd89c3bee25ba236353f4927b528a6cb3c9696a73de30ed61ca735ab1bb81daf17fc3bd492
 	b2sums = fe2cc5fea597e3a661244102a3dec9270237429ed5d1b02bf57e2cf599faa0e42b7a239ae939f9549f95356a4f9d9a61ca0604515807f7879da8b46913c6dcfa
+	b2sums = 266e90caf3b4efe40d84732d67f2599e8f34e348bc07abb0cb9390945196b6b750657f9dfd0d2656a523fb0767fe0ed67c95311c91455fb75cbc30ce9f9e65ac
 
 pkgname = linux-gc
 	pkgdesc = The Linux-gc kernel and modules with the Project C scheduler
