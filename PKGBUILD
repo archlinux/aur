@@ -1,9 +1,12 @@
 # Maintainer: Benjamin Denhartog <ben@sudoforge.com>
 # Contributor: Greg Darke <darke+arch@google.com>
 
+# For ISSUES, REQUESTS, and QUESTIONS:
+# https://github.com/sudoforge/pkgbuilds
+
 pkgname=google-cloud-sdk-datastore-emulator
 pkgver=340.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A google-cloud-sdk component that provides local emulation of a Datastore environment."
 url="https://cloud.google.com/sdk/"
 license=("Apache")
