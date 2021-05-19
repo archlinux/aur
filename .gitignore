@@ -1,6 +1,6 @@
 # package archives, downloaded sources
 *.tar.zst
-LICENSE
+LICENSE-*
 buildozer-*
 
 # subfolders, e.g. source and build package trees
