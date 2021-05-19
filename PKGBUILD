@@ -2,7 +2,7 @@
 # Maintainer: Bence Hornák <hornak.bence@gmail.com>
 
 pkgname=anyk
-pkgver=3.3.0
+pkgver=3.5.0
 subver=0.1
 pkgrel=1
 pkgdesc='Form fill program of the Hungarian tax office (Általános Nyomtatványkitöltő (ÁNYK))'
@@ -12,13 +12,13 @@ license=('proprietary')
 depends=('java8-openjfx')
 makedepends=('unzip')
 provides=('abevjava')
-source=("https://www.nav.gov.hu/data/cms557324/abevjava_install-${pkgver}-${subver}.noarch.rpm"
+source=("https://www.nav.gov.hu/data/cms564002/abevjava_install-${pkgver}-${subver}.noarch.rpm"
         'abevjava'
         'abevjavapath.cfg'
         'anyk.desktop'
         'setenv'
         'anyk.sysusers')
-md5sums=('bcf80614bccf1799e8523f620f9dc345'
+md5sums=('886d73e23e06fc77e13acb407a285b41'
          '14e676f715c1008dda83ffd7c3a127ec'
          '5dae655a84d5dd76401011f5629d8f0f'
          '86e4d78220da7d2d7a9015067d48ab9f'
