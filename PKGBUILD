@@ -1,9 +1,12 @@
 # Maintainer: Benjamin Denhartog <ben@sudoforge.com>
 # Contributor: Tim Brown <stimut@gmail.com>
 
+# For ISSUES, REQUESTS, and QUESTIONS:
+# https://github.com/sudoforge/pkgbuilds
+
 pkgname=google-cloud-sdk-app-engine-python
 pkgver=340.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A google-cloud-sdk component that provides the Python runtime for AppEngine."
 url="https://cloud.google.com/sdk/"
 license=("Apache")
