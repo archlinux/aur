@@ -1,8 +1,9 @@
 pkgbase = nvidia-container-toolkit
 	pkgdesc = NVIDIA container runtime toolkit
-	pkgver = 1.4.2
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/NVIDIA/nvidia-container-toolkit
+	install = nvidia-container-toolkit.install
 	arch = x86_64
 	license = Apache
 	makedepends = go
@@ -10,7 +11,9 @@ pkgbase = nvidia-container-toolkit
 	conflicts = nvidia-container-runtime-hook
 	conflicts = nvidia-container-runtime<2.0.0
 	replaces = nvidia-container-runtime-hook
-	source = v1.4.2-1.tar.gz::https://github.com/NVIDIA/nvidia-container-toolkit/archive/v1.4.2.tar.gz
-	sha256sums = 8c3ff8dd96812dcc2c09b203d2749fcba51941e33387aba1bca4da2f87065a0c
+	source = fix_cgroup.patch
+	source = v1.5.0-1.tar.gz::https://github.com/NVIDIA/nvidia-container-toolkit/archive/v1.5.0.tar.gz
+	sha256sums = 48a36a4b01ab64739d55c4a696bbe72f2b90a9e5abc0b9d1c4090a3016d9a1fb
+	sha256sums = a233de640a69fa3ff1c0e5b929b6c37922b040471a02eb98b6cf209a0dcac107
 
 pkgname = nvidia-container-toolkit
