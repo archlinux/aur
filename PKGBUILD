@@ -16,6 +16,7 @@ libharu
 libjpeg-turbo
 libogg
 libpng
+liblas
 libtheora
 libtiff
 libxml2
@@ -68,35 +69,59 @@ prepare() {
   # https://gitlab.kitware.com/vtk/vtk/-/issues/18130
   curl https://gitlab.kitware.com/vtk/vtk/-/commit/29bfddf455fb909ce32ede0b8cddcb55e0bb794d.patch | patch -p1
   curl https://gitlab.kitware.com/vtk/vtk/-/commit/0325638832e35c8c8c6fc96e2c1d887aeea3dd43.patch | patch -p1
+
+  # https://gitlab.kitware.com/vtk/vtk/-/issues/18194
+  curl https://src.fedoraproject.org/rpms/vtk/raw/rawhide/f/vtk-limits.patch | patch -p1
+  #sed 's,#include <vector>,#include <vector>\n#include <limits>,g' -i Common/Core/vtkGenericDataArrayLookupHelper.h
+  #sed 's,#include <vector>,#include <vector>\n#include <limits>,g' -i Common/DataModel/vtkPiecewiseFunction.cxx
+  #sed 's,#include <cmath>,#include <cmath>\n#include <limits>,g' -i Filters/HyperTree/vtkHyperTreeGridThreshold.cxx
+  #sed 's,#include <vector>,#include <vector>\n#include <limits>,g' -i Rendering/Core/vtkColorTransferFunction.cxx
+  #curl https://gitlab.kitware.com/vtk/vtk/-/commit/c7d6a8d81367a4ed92163c059aa3181386eabc24.patch | patch -p1
+
+  # try new ospray version
+  sed 's,VERSION 1.8,VERSION 2.5.0,g' -i Rendering/RayTracing/CMakeLists.txt
 }
 
-# -D VTK_BUILD_ALL_MODULES=ON
 build() {
   export JAVA_HOME=/usr/lib/jvm/default
   local _tkver=$(echo 'puts $tcl_version' | tclsh)
-  cmake -B build_dir -S vtk-v${pkgver} \
-  -W no-dev \
-  -G Ninja \
-  -D CMAKE_BUILD_TYPE=Release \
+
+  cmake -B build_dir -S vtk-v${pkgver} -W no-dev -G Ninja \
+  -D CMAKE_CXX_FLAGS="-D__STDC_CONSTANT_MACROS" \
+  -D CMAKE_BUILD_TYPE=None \
+  -D CMAKE_SKIP_RPATH=ON \
   -D CMAKE_INSTALL_PREFIX=/usr \
   -D CMAKE_INSTALL_LIBDIR=lib \
-  -D CMAKE_INSTALL_LICENSEDIR:PATH=share/licenses/vtk \
   -D BUILD_SHARED_LIBS=ON \
+  -D CMAKE_INSTALL_LICENSEDIR:PATH=share/licenses/vtk \
+  -D BUILD_DOCUMENTATION=OFF \
+  -D BUILD_EXAMPLES=ON \
+  -D XDMF_STATIC_AND_SHARED=OFF \
   -D VTK_USE_FFMPEG_ENCODER=ON \
+  -D VTK_BUILD_ALL_MODULES=OFF \
+  -D VTK_ENABLE_REMOTE_MODULES=OFF \
+  -D Module_vtkIOPDAL=ON \
+  -D VTK_USE_LARGE_DATA=ON \
+  -D VTK_WRAP_JAVA=ON \
+  -D VTK_WRAP_PYTHON=ON \
+  -D VTK_PYTHON_VERSION=3 \
+  -D VTK_WRAP_TCL=ON \
   -D VTK_CUSTOM_LIBRARY_SUFFIX="" \
   -D VTK_INSTALL_INCLUDE_DIR=include/vtk \
   -D VTK_INSTALL_PACKAGE_DIR=lib/cmake/vtk \
   -D VTK_VERSIONED_INSTALL=OFF \
-  -D VTK_PYTHON_VERSION=3 \
-  -D VTK_WRAP_PYTHON=ON \
   -D VTK_MODULE_USE_EXTERNAL_VTK_pegtl=OFF \
   -D VTK_GROUP_ENABLE_Imaging=YES \
   -D VTK_GROUP_ENABLE_Qt=YES \
+  -D VTK_QT_VERSION="5" \
   -D VTK_GROUP_ENABLE_Rendering=YES \
   -D VTK_GROUP_ENABLE_StandAlone=YES \
   -D VTK_GROUP_ENABLE_Views=YES \
   -D VTK_GROUP_ENABLE_Web=YES \
+  -D VTK_MODULE_ENABLE_VTK_IOADIOS2=NO \
   -D VTK_MODULE_USE_EXTERNAL_VTK_libharu=NO \
+  -D VTK_MODULE_ENABLE_VTK_RenderingOpenVR=NO \
+  -D VTK_MODULE_ENABLE_VTK_MomentInvariants=NO \
   -D VTK_MODULE_ENABLE_VTK_CommonArchive=YES \
   -D VTK_MODULE_ENABLE_VTK_DomainsMicroscopy=NO \
   -D VTK_MODULE_ENABLE_VTK_GeovisGDAL=YES \
