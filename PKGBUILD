@@ -1,10 +1,11 @@
 # Maintainer: Benjamin Denhartog <ben@sudoforge.com>
 
-# This PKGBUILD is managed at https://github.com/sudoforge/pkgbuilds
+# For ISSUES, REQUESTS, and QUESTIONS:
+# https://github.com/sudoforge/pkgbuilds
 
 pkgname=git-cleanup
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily remove merged and deleted branches from local and remote repositories."
 arch=('any')
 url="https://github.com/sudoforge/${pkgname}"
