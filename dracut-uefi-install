@@ -31,6 +31,6 @@ for kernel in "${kernels[@]}"; do
 	version=$(basename "${path%/pkgbase}")
     read -r pkgbase < "$path"
 
-	echo ":: Building linux image $kernel ($version)"
+	echo "==> Building linux image $kernel ($version)"
 	dracut -q -f --uefi --kver "${version}"
 done
