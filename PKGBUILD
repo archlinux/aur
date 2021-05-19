@@ -1,4 +1,4 @@
-# Maintainer: Robert Brzozowski <robson75@linux.pll>
+# Maintainer: Robert Brzozowski <robson75@linux.pl>
 # Maintainer: Charles Bos <charlesbos1 AT gmail>
 # Contributor: Rob McCathie <archaur at rmcc dot com dot au
 # Contributor: /dev/rs0 <rs0@secretco.de.com>
