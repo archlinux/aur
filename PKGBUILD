@@ -1,7 +1,7 @@
 # Maintainer: Astroncia <kestraly+gmail+com>
 
 pkgname=astronciaiptv
-pkgver=0.0.33
+pkgver=0.0.34
 pkgrel=1
 pkgdesc="IPTV player"
 arch=('any')
