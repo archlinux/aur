@@ -5,10 +5,10 @@
 _pkgname=nullfsvfs
 pkgname=nullfsvfs-dkms
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="nullfsvfs is a null filesystem that acts like /dev/null but can be mounted"
 arch=(any)
-license=('GPL2')
+license=('GPL3')
 depends=('dkms')
 conflicts=('nullfs-dkms')
 source=("https://github.com/abbbi/nullfsvfs/archive/"$pkgver".tar.gz")
