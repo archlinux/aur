@@ -3,7 +3,7 @@
 
 pkgname=usb-creator
 pkgver=0.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Create bootable USB from a LiveCD or disc image of Ubuntu"
 arch=('any')
 url="https://launchpad.net/usb-creator"
