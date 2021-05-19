@@ -1,0 +1,14 @@
+pkgbase = go-ssb-room-git
+	pkgdesc = The Secure-Scuttlebutt Room v2 server, written in Go
+	pkgver = r531.d8da4ae
+	pkgrel = 1
+	url = https://github.com/ssb-ngi-pointer/go-ssb-room
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = gcc
+	source = go-ssb-room::git+https://github.com/ssb-ngi-pointer/go-ssb-room.git
+	sha256sums = SKIP
+
+pkgname = go-ssb-room-git
+
