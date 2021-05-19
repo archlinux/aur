@@ -3,7 +3,7 @@
 
 pkgname=bazelisk
 pkgver=1.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A user-friendly launcher for Bazel.'
 arch=('x86_64')
 license=('Apache')
@@ -25,6 +25,7 @@ prepare() {
 build() {
   cd "bazelisk-${pkgver}"
   "${srcdir}/${source[1]%%::*}" build //:bazelisk
+  "${srcdir}/${source[1]%%::*}" shutdown
 }
 
 package() {
