@@ -6,14 +6,14 @@
 # Maintainer: Thomas Hartmann <thomas@th-ht.de>
 pkgname=htcondor
 pkgver=9.0.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Distributed workload management system"
 arch=("x86_64")
 url="https://research.cs.wisc.edu/htcondor/"
 license=('apache')
 groups=()
-depends=("boost" "munge" "libxss" "curl" "gawk" "java-runtime" "libcgroup" "pcre" "sqlite" "python" "boost-python2")
+depends=("boost" "munge" "libxss" "curl" "gawk" "java-runtime" "libcgroup" "pcre" "sqlite" "python" "boost-python2" "python2-setuptools" "python-setuptools")
 makedepends=("cmake")
 checkdepends=()
 optdepends=()

@@ -1,7 +1,7 @@
 pkgbase = htcondor
 	pkgdesc = Distributed workload management system
 	pkgver = 9.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://research.cs.wisc.edu/htcondor/
 	arch = x86_64
 	license = apache
@@ -17,6 +17,8 @@ pkgbase = htcondor
 	depends = sqlite
 	depends = python
 	depends = boost-python2
+	depends = python2-setuptools
+	depends = python-setuptools
 	provides = htcondor
 	conflicts = htcondor
 	source = htcondor-9.0.1.tar.gz::https://github.com/htcondor/htcondor/archive/V9_0_1.tar.gz
