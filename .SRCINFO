@@ -1,7 +1,7 @@
 pkgbase = dogehouse-bin
 	pkgdesc = Taking voice conversations to the moon (binary release)
 	pkgver = 1.0.69
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dogehouse.tv
 	arch = x86_64
 	license = MIT
@@ -12,9 +12,13 @@ pkgbase = dogehouse-bin
 	provides = dogehouse
 	conflicts = dogehouse
 	source = dogehouse-bin-1.0.69.tar.gz::https://github.com/benawad/dogehouse/releases/download/v1.0.69/dogehouse-1.0.69.tar.gz
+	source = dogehouse.desktop
+	source = dogehouse.png::https://raw.githubusercontent.com/benawad/dogehouse/v1.0.69/baklava/icons/icon.png
 	source = https://raw.githubusercontent.com/benawad/dogehouse/v1.0.69/LICENSE
 	source = https://raw.githubusercontent.com/benawad/dogehouse/v1.0.69/README.md
 	sha256sums = 8fd5198c6c741ffbabf9c085a211b44a69e264d141a92ec7e593436caaec2cb7
+	sha256sums = 7b9177d64ff1c9bc0c5e7f0b6c20caa9dab17e87ee7b65b67a059730952d098a
+	sha256sums = c21c0cc98cfae54072a69a908cc453169d07fd40fb6d56e5b5be3849a19db0eb
 	sha256sums = ea2731f9f2147ff697285ed456f1b8ee5c79d592ce6db48c4d1673591210c7ce
 	sha256sums = 13fe9e347643956984b99540f3165230ce7a635b225fc865d4015a0603258b38
 
