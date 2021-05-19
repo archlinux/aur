@@ -50,7 +50,7 @@ pkgbase=linux-bfq-dev
 _major=5.12
 _minor=5
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 _srcname=linux-${pkgver}
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
@@ -81,7 +81,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v3/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v4-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v4-sep/0002-Revert-bus-mhi-core-Process-execution-environment-ch.patch"
          # the main kernel config files
         'config')
 
@@ -329,7 +330,8 @@ sha512sums=('6e00f85451a2d0c7381bf68bbe202706e1e28af5b1962c9c482c1e35f2c3b48a3b9
             'SKIP'
             '9480862845ceac800b6f658f641b854f3ab740de2b6885a5e108d979903fe1c8417e42db4bcb16a1f09b641d62a82d22bae009de659406b8bfaf2a0a54299619'
             'c4a2ed0bbd9d348893e802079ab684518b28f163ad242af1b74dd71c7e7e0f5d2db68ace1733879f4bd575103b365e90d6af5d2d849c6e6d2dda41ac73f822a7'
-            'f07743a59c992f7a48cd1604a0ed30663fe043f5bc93dfe54780da88421c920e7daf801fa345b475ab551f7855360a72774cd2b117e41d5a4ac35005250e3c2f'
+            '89e21d47189d1ffd979d99ee905f32c1b163c78a06e595c034716acef348dc1c0677012dbdf5e54e646fbc737408523674ba4b94a2a79ac6a6fff3965783b08e'
+            '2aada50a1d69f0a0b01b975ed22f3de00ee5b45de088cc016373827696313d75416ba867c06b79205a0c968a4c2528f4a1a45597acce0f3d7901def92cc2767c'
             '7fbd56b2f74463ae84f0ff2cc060ed52fd4576cebd5c14309427db5e662cdd75c7ff7e47b1c4423eb420238906335fd99721809f27bf7c1185318c43c2cce669')
 
 validpgpkeys=(
