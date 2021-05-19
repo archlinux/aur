@@ -1,9 +1,12 @@
 # Maintainer: Benjamin Denhartog <ben@sudoforge.com>
 # Contributor: Swift Geek <swiftgeek+aur@gmail.com>
 
+# For ISSUES, REQUESTS, and QUESTIONS:
+# https://github.com/sudoforge/pkgbuilds
+
 pkgname=wee-slack
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A WeeChat plugin for Slack.com'
 url='https://github.com/wee-slack/wee-slack/'
 arch=('any')
@@ -26,5 +29,3 @@ package() {
   # Install the plugin license
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
