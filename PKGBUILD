@@ -21,7 +21,7 @@ fi
 
 pkgname=lib32-spirv-tools-git
 pkgdesc='API and commands for processing SPIR-V modules. (32-bit) (git version)'
-pkgver=2020.7.2021_04_20.3019.dc72924cb
+pkgver=2021.2_dev.2021_05_19.3037.f0d110e30
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://github.com/KhronosGroup/SPIRV-Tools.git'
@@ -35,7 +35,7 @@ md5sums=('SKIP')
 
 pkgver(){
   cd SPIRV-Tools
-  echo 2020.7.$(date -I | sed 's/-/_/' | sed 's/-/_/').$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  echo 2021.2_dev.$(date -I | sed 's/-/_/' | sed 's/-/_/').$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare(){
