@@ -2,7 +2,7 @@
 # Submitter: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.16.12199.b8477a470
+pkgver=0.0.16.12281.1dc00cced
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64)
@@ -31,6 +31,9 @@ depends=(
   vulkan-icd-loader
   zlib
   curl
+  wolfssl
+  flatbuffers
+  pugixml
 )
 makedepends=(
   cmake
@@ -69,7 +72,7 @@ prepare() {
   git config submodule.glslang.url ../glslang
   git config submodule.llvm.url ../rpcs3-llvm
   
-  SUBMODULES=$(git config --file .gitmodules --get-regexp path | awk '!/ffmpeg/ && !/libpng/ && !/zlib/ && !/curl/ && !/llvm/ && !/glslang/ { print $2 }')
+  SUBMODULES=$(git config --file .gitmodules --get-regexp path | awk '!/ffmpeg/ && !/libpng/ && !/zlib/ && !/curl/ && !/llvm/ && !/glslang/ && !/wolfss/ && !/pugixml/ && !/flatbuffers/ { print $2 }')
   
   git submodule update --init --depth=1 $SUBMODULES
   
@@ -85,7 +88,11 @@ build() {
     -DUSE_SYSTEM_FFMPEG=ON \
     -DUSE_SYSTEM_LIBPNG=ON \
     -DUSE_SYSTEM_ZLIB=ON \
-    -DUSE_SYSTEM_CURL=ON
+    -DUSE_SYSTEM_CURL=ON \
+    -DUSE_SYSTEM_WOLFSSL=ON \
+    -DUSE_SYSTEM_FLATBUFFERS=ON \
+    -DUSE_SYSTEM_PUGIXML=ON
+  
   make -C build
 }
 
