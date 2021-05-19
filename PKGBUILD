@@ -3,7 +3,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=steamtinkerlaunch-git
-pkgver=6.8_rc1.r282.5ea4723
+pkgver=6.8_r293.a9f49c3
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
