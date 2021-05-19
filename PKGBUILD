@@ -4,8 +4,8 @@
 
 _ctan=erewhon
 pkgname=(otf-$_ctan otf-$_ctan-infinality)
-pkgver=1.102
-pkgrel=5
+pkgver=1.115
+pkgrel=1
 pkgdesc="A font family based on Heuristica, which is based in turn on Utopia"
 arch=('any')
 url="http://www.ctan.org/tex-archive/fonts/$_ctan"
@@ -13,7 +13,7 @@ license=('OFL')
 source=("$pkgname-$pkgver.zip::http://mirrors.ctan.org/fonts/$_ctan.zip"
         "45-$_ctan.conf"
         "90-non-tt-$_ctan.conf")
-sha256sums=('c5785f1729593185b3eed46d8ff8a8c4f3b2145df76926d2d1e324fa15a7e66a'
+sha256sums=('a517b83af921e3c8a0145f8111083502e41566631eb91408128a52bd89340d61'
             'a122f645314ed9e69f55ec77aef6956e4471418baa098f232165d2fbf130aa75'
             '74a318013024001702310420fa07e06f9cbf4d4db936a76d1be981c98662c1ca')
 
