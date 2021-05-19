@@ -1,6 +1,6 @@
 # Maintainer: Makima0 <kekelanact@gmail.com>
 pkgname=postman-bin-zh
-pkgver=8.3.0
+pkgver=8.4.0
 pkgrel=1
 pkgdesc="Build, test, and document your APIs faster"
 arch=('x86_64')
@@ -13,8 +13,8 @@ source=(
 	"postman.desktop"
 )
 depends=(libxss nss gtk3)
-sha256sums=('6398dc4862663a546234824b137babbb8047268ea49ad7c9dbbee2ee6c588c76'
-	    '9095b934e86a5fadf39dc9cb6943d16336b066a627cf9233b0ba42e6cde41fe6'
+sha256sums=('7c8f702cd88f048e8a69a4ec92f6f95ab5e6fb081fe1cd41cdb25254cd031410'
+	    'd57b7c8faac22e82a70014df88be4ff03350cf03d74a7ee2271f18f6f11988b8'
             '74b2d8570658e207e31f729e7f4768952252383aee7c695218d077bd0ef13245')
 package() {
 	rm -rf Postman/app/resources/app/
