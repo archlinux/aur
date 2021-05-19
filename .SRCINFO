@@ -1,13 +1,15 @@
 pkgbase = osdlyrics-git
 	pkgdesc = Standalone lyrics fetcher/displayer (windowed and OSD mode). Supports MPRIS1/2 players, and MPD.
-	pkgver = 0.5.5.rc2.r0.g818bac8
+	pkgver = 0.5.5.r0.g0a7bf9d
 	pkgrel = 1
 	url = https://github.com/osdlyrics/osdlyrics
 	install = osdlyrics.install
 	arch = i686
 	arch = x86_64
+	arch = arm64
 	license = GPL3
 	makedepends = intltool
+	makedepends = git
 	depends = dbus-glib
 	depends = desktop-file-utils
 	depends = gtk2
