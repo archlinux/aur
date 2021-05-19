@@ -1,10 +1,11 @@
 # Maintainer: Benjamin Denhartog <ben@sudoforge.com>
 
-# This PKGBUILD is managed at https://github.com/sudoforge/pkgbuilds
+# For ISSUES, REQUESTS, and QUESTIONS:
+# https://github.com/sudoforge/pkgbuilds
 
 pkgname=wee-slack-git
 pkgver=2.8.0.r0.gf3f08dd
-pkgrel=1
+pkgrel=2
 pkgdesc="A WeeChat plugin for slack"
 arch=('any')
 url="https://github.com/wee-slack/${pkgname%-git}"
