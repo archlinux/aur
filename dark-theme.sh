@@ -58,7 +58,7 @@ fi
 # set GTK theme
 if [ "$XDG_SESSION_TYPE" = "x11" ]; then
   # start xfsettingsd - alreday running xfsettingd ignores this
-  xfsettingsd --daemon
+  xfsettingsd --daemon --sm-client-disable --disable-wm-check
   # set GTK theme xia xsettings
   xfconf-query -c xsettings -p /Net/ThemeName -s "$UI_THEME_GTK"
   #xfconf-query -c xsettings -p /Net/IconThemeName -s "$UI_ICONS"
