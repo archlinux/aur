@@ -1,10 +1,13 @@
-# Maintainer: Nikoloz Shvelidze <captain@pirrate.me>
-# Contributor: Benjamin Denhartog <ben@sudoforge.com>
+# Maintainer: Benjamin Denhartog <ben@sudoforge.com>
+# Contributor: Nikoloz Shvelidze <captain@pirrate.me>
 # Contributor: Tim Brown <stimut@gmail.com>
+
+# For ISSUES, REQUESTS, and QUESTIONS:
+# https://github.com/sudoforge/pkgbuilds
 
 pkgname=google-cloud-sdk-app-engine-java
 pkgver=340.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A google-cloud-sdk component that provides the Java runtime for AppEngine."
 url="https://cloud.google.com/sdk/"
 license=("Apache")
