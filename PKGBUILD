@@ -63,7 +63,7 @@ pkgname=davinci-resolve
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
 pkgver=17.2
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
 license=('Commercial')
@@ -118,10 +118,9 @@ package()
 	echo -e "\033[1m==> Extracting from bundle...\033[0m"
 	echo -e "\033[1mPlease wait, this take a while...\033[0m"
 	cd "${srcdir}" || exit
-	./${_installer_binary} --appimage-extract
+	chmod u+x ./${_installer_binary}
+	./${_installer_binary} -i -y -n -a -C "${pkgdir}/opt/${_pkgname}"
 	rm -rf ${_installer_binary}
-	cd squashfs-root
-	./installer -i -y -n -a -C "${pkgdir}/opt/${_pkgname}" "$PWD"
 
 	echo -e "\033[1m==> Add lib symlinks...\033[0m"
 	cd "${pkgdir}/opt/${_pkgname}/" || exit
