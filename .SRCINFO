@@ -1,7 +1,7 @@
 pkgbase = languageclient-neovim-bin
 	pkgdesc = Language Server Protocol (LSP) support for Vim and NeoVim.
 	pkgver = 0.1.161
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/autozimu/LanguageClient-neovim
 	arch = x86_64
 	license = MIT

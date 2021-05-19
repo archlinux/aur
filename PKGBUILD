@@ -1,9 +1,12 @@
 # Maintainer: Benjamin Denhartog <ben@sudoforge.com>
 
+# For ISSUES, REQUESTS, and QUESTIONS:
+# https://github.com/sudoforge/pkgbuilds
+
 _pkgname=LanguageClient-neovim
 pkgname=languageclient-neovim-bin
 pkgver=0.1.161
-pkgrel=1
+pkgrel=2
 pkgdesc="Language Server Protocol (LSP) support for Vim and NeoVim."
 url="https://github.com/autozimu/LanguageClient-neovim"
 provides=('languageclient-neovim')
