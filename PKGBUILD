@@ -2,7 +2,7 @@
 # Contributor: Atte Virtanen <aten.email@gmail.com>
 pkgname=vrk-mpollux-digisign-client
 pkgver=4.1.4_7851
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Client program for Finnish chip ID cards"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://dvv.fi/linux-versiot"
 license=('custom')
 depends=('pcsclite' 'qt5-base')
 
-_eevertti_id='54044368'
+_eevertti_id='54044386'
 source_x86_64=("https://dvv.fi/documents/16079645/$_eevertti_id/Ubuntu_18.04.4_LTS_mpollux-digisign-client-for-dvv_${pkgver//_/-}_amd64.deb")
 
 sha256sums_x86_64=('df37df0ca8cbf972f85e2b5a894784f76ffb84f0ac1d9638a90568a12bb776e7')
