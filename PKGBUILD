@@ -1,7 +1,7 @@
 # Maintainer: hazelnot <scrabcrab@gmail.com>
 _pkgbase=re3
 pkgname=re3-git
-pkgver=1.0.40.g9a7fa478
+pkgver=r2913.9a7fa478
 pkgrel=1
 pkgdesc="An open-source project reverse-engineering Grand Theft Auto III"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'premake')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 source=(
-    "git+https://git.rip/DMCA_FUCKER/re3.git"
+    "git+https://github.com/halpz/re3.git"
     "git+https://github.com/aap/librw.git"
     "git+https://github.com/xiph/ogg.git"
     "git+https://github.com/xiph/opus.git"
@@ -32,7 +32,7 @@ sha256sums=(
 
 pkgver() {
   cd "$srcdir/$_pkgbase"
-  git describe --tags | sed -n '/^re3_v\([0-9.]\+\)-\([0-9]\+\)-\([0-9a-z]\+\)$/{s//\1.\2.\3/;s/-/./g;p;Q0};Q1'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
