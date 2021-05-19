@@ -1,0 +1,19 @@
+pkgbase = python-configargparse-git
+	pkgdesc = A drop-in replacement for argparse that allows options to also be set via config files and/or environment variables
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/bw2/ConfigArgParse
+	arch = any
+	license = MIT
+	checkdepends = python-tests
+	checkdepends = python-yaml
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-yaml: for YAML support
+	provides = python-configargparse
+	conflicts = python-configargparse
+	source = git+https://github.com/bw2/ConfigArgParse.git
+	sha512sums = SKIP
+
+pkgname = python-configargparse-git
+
