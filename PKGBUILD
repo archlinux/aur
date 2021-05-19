@@ -16,7 +16,7 @@ depends=('java-runtime-common>=3' 'java-environment-common>=3'
 conflicts=('zulu-embedded-jdk11')
 replaces=('zulu-embedded-jdk11')
 
-CARCH=armv7h
+#CARCH=armv7h
 
 case "$CARCH" in
     armv?h) _arch='aarch32hf'
