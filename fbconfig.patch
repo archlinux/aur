@@ -1,0 +1,36 @@
+--- a/src/fbconfig.cpp	2010-10-18 11:20:11.000000000 +0300
++++ b/src/fbconfig.cpp	2021-05-19 14:17:36.510535281 +0300
+@@ -38,16 +38,12 @@
+ 	mConfigBuf = 0;
+ 	mConfigEntrys = 0;
+
+-	const s8 *home = getenv("HOME");
+-	if (!home) {
+-		if (getuid()) return;
+-		home = "/root";
+-	}
++	const s8 *home = getenv("XDG_CONFIG_HOME");
++	if (!home)
++		return;
+
+ 	s8 name[64];
+-	snprintf(name, sizeof(name), "%s/%s", home, ".fbtermrc");
+-
+-	checkConfigFile(name);
++	snprintf(name, sizeof(name), "%s/%s", home, "fbtermrc");
+
+ 	struct stat cstat;
+ 	if (stat(name, &cstat) == -1) return;
+
+--- a/doc/fbterm.1.in	2021-05-19 14:20:03.100094341 +0300
++++ b/doc/fbterm.1.in	2021-05-19 14:19:21.990217395 +0300
+@@ -22,8 +22,7 @@
+ file. If that is not set, /bin/sh will be used. You should use the \fI--\fR argument to separate FbTerm's options from
+ the arguments supplied to the \fIcommand\fR.
+
+-FbTerm first uses option value specified in command line arguments, then in the configure file \fI$HOME/.fbtermrc\fR.
+-If that file doesn't exist, FbTerm will create it with default options on startup.
++FbTerm first uses option value specified in command line arguments, then in the configure file \fI$XDG_CONFIG_HOME/fbtermrc\fR.
+ .TP
+ \fB-h, --help\fR
+ display the help and exit

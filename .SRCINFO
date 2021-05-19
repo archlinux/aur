@@ -1,0 +1,32 @@
+pkgbase = fbterm
+	pkgdesc = Framebuffer terminal emulator
+	pkgver = 1.7_5
+	pkgrel = 1
+	url = https://salsa.debian.org/debian/fbterm
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	makedepends = pkgconf
+	depends = freetype2
+	depends = fontconfig
+	depends = gpm
+	depends = pkgconf
+	provides = fbterm
+	conflicts = fbterm
+	source = http://deb.debian.org/debian/pool/main/f/fbterm/fbterm_1.7.orig.tar.gz
+	source = fbconfig.patch
+	source = fbterm.patch
+	source = 0001-Fix-build-with-gcc-6.patch
+	source = fix_ftbfs_crosscompile.patch
+	source = fix_ftbfs_epoll.patch
+	source = fbtermrc
+	sha256sums = b98d487e84618503887e3996162354c482e24884bad8bf2219b6776372f306ad
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = fbterm
+
