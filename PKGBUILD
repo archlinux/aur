@@ -5,7 +5,7 @@ pkgver=13.0.4
 pkgrel=1
 pkgdesc='Zulu Embedded is a certified build of OpenJDK for Armv8/v7/v6 devices.'
 arch=('armv6h' 'armv7h' 'armv8h' 'aarch64' 'i686' 'x86_64')
-url='https://www.azul.com/downloads/zulu-community'
+url='https://www.azul.com/downloads/#download-openjdk'
 license=('custom')
 install=jdk.install
 options=(!strip)
@@ -16,32 +16,32 @@ depends=('java-runtime-common>=3' 'java-environment-common>=3'
 conflicts=('zulu-embedded-jdk11')
 replaces=('zulu-embedded-jdk11')
 
-#CARCH=armv7h
+CARCH=armv7h
 
 case "$CARCH" in
     armv?h) _arch='aarch32hf'
         _build=13.33.38
-        sha256sums=('9B8BFB5B60BD93A1C724834A805C2E81897BB58B54C89CE0F45712940444E720')
+        sha256sums=('9b8bfb5b60bd93a1c724834a805c2e81897bb58b54c89ce0f45712940444e720')
         source=("https://cdn.azul.com/zulu-embedded/bin/zulu${_build}-ca-jdk${pkgver}-c2-linux_${_arch}.tar.gz")
         ;;
     aarch64) _arch='aarch64'
-        _build=16.28.11
-        pkgver=16.0.0
-        sha256sums=('9814FDCDDA61F11F0055D4E08A79FC9E1BB44EAE1D98EBCAB034EC0B20742681')
+        _build=16.30.15
+        pkgver=16.0.1
+        sha256sums=('c19df0f8cd665a14d26b7a2d92d0319ed91d2e4f0e71a70e6e80289e08b9f291')
         source=("https://cdn.azul.com/zulu-embedded/bin/zulu${_build}-ca-jdk${pkgver}-linux_${_arch}.tar.gz")
         provides=("java-environment=15" "java-runtime=15")
         ;;
     i686) _arch='i686'
-        _build=16.28.11
-        pkgver=16.0.0
-        sha256sums=('59388921A64B61BBD065782626B8C4F64150DC59B0E2F09263D2FE42F39085F4')
+        _build=16.30.15
+        pkgver=16.0.1
+        sha256sums=('f36c9fef25022ddc6736815d79ddd5a5e7d0b00652cbbba0bcea912ed72ad5d0')
         source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_${_arch}.tar.gz")
         provides=("java-environment=15" "java-runtime=15")
         ;;
     x86_64) _arch='x64'
-        _build=16.28.11
-        pkgver=16.0.0
-        sha256sums=('236B5EA97AFF3CB312E743848D7EFA77FAF305170E41371A732CA93C1B797665')
+        _build=16.30.15
+        pkgver=16.0.1
+        sha256sums=('90c534d2544dc1d183f364e3520c1067724476a68dcd326d91a9579de59627b3')
         source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_${_arch}.tar.gz")
         provides=("java-environment=15" "java-runtime=15")
         ;;
