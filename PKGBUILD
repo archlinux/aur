@@ -12,10 +12,10 @@
 # https://github.com/SuzukiHonoka/s905d-kernel-precompiled/tree/master/patch
 
 pkgbase=linux-phicomm-n1
-_srcname=linux-5.11
+_srcname=linux-5.12
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for Phicomm N1"
-pkgver=5.11.16
+pkgver=5.12.6
 pkgrel=1
 arch=('aarch64')
 url="https://www.kernel.org/"
@@ -36,16 +36,16 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 [[ ${pkgver##*.} != 0 ]] && \
 source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
 
-md5sums=('d2985a3f16ef1ea3405c04c406e29dcc'
+md5sums=('8c7420990de85f6754db287337da08b4'
          'e21d126e18d32bd49bca6a27efdece0e'
          'b5c494212ef9c09cac5bcc68e2af7a14'
          '30130b4dcd8ad4364ddbfd56c3058d5e'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '0d0435888ecad675870ecda4045a9d45'
          'e25f537f53ffe2850318ed541f0b3460'
-         'd891085afff175033cd2cfc3c8241759'
+         'a06bce5c657bf9e509e1126ef56bbaa3'
          '7a18066683f3351b2bbd2653db783f80'
-         'e5cce287ce3a6418c768cef207e97339')
+         'c8b04ee6bbc9e58dae1863c91b64231d')
 
 prepare() {
   cd ${_srcname}
