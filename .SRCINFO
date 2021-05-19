@@ -5,6 +5,7 @@ pkgbase = docker-rootless-extras
 	url = https://docs.docker.com/engine/security/rootless/
 	install = docker-rootless-extras.install
 	arch = x86_64
+	arch = aarch64
 	license = Apache
 	depends = docker
 	depends = rootlesskit
