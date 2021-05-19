@@ -6,7 +6,7 @@
 
 pkgname='sejda-desktop'
 pkgver='7.2.1'
-pkgrel='1'
+pkgrel='2'
 license=('custom:EULA')
 pkgdesc='PDF editor'
 arch=('x86_64')
