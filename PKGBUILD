@@ -5,7 +5,7 @@
 
 pkgname=wolfssl
 pkgver=4.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='small, fast, portable implementation of TLS/SSL for embedded devices to the cloud (formerly CyaSSL)'
 arch=(i686 x86_64)
 license=(GPL)
@@ -32,9 +32,29 @@ build() {
     -DWOLFSSL_FAST_MATH=OFF \
     -DWOLFSSL_CRYPT_TESTS=OFF
   make
+    
+  # Run make using Makefiles so that we also provide the regular pkg-config files
+  cd ../$pkgname-$pkgver-stable
+  ./autogen.sh
+  ./configure --prefix=/usr --sysconfdir=/etc --disable-fastmath \
+              --disable-fasthugemath \
+              --disable-bump \
+              --enable-opensslextra \
+              --enable-fortress \
+              --enable-keygen \
+              --enable-certgen \
+              --disable-debug \
+              --disable-ntru \
+              --disable-examples \
+              --enable-distro \
+              --enable-reproducible-build
+  make
 }
 
 package() {
   make -C build install DESTDIR="$pkgdir"
-  install -Dm644 $pkgname-$pkgver-stable/COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
+  cd $pkgname-$pkgver-stable
+  make install DESTDIR="$pkgdir"
+  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
+  libtool --finish /usr/lib
 }
