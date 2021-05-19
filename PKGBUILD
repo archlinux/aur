@@ -1,6 +1,7 @@
-# Maintainer: Christoph Bayer <chrbayer@criby.de>
+# Maintainer: Marc Plano-Lesay <kernald@enoent.fr>
+# Contributor: Christoph Bayer <chrbayer@criby.de>
 
-_rev=r03
+_rev=r06
 _sdkver=6.0
 _sdkint=23
 pkgname=android-armv7a-eabi-system-image-${_sdkint}
@@ -12,8 +13,8 @@ url="http://developer.android.com/sdk/index.html"
 license=('custom')
 depends=("android-platform-${_sdkint}")
 options=('!strip')
-source=("http://dl.google.com/android/repository/sys-img/android/sysimg_arm-${_sdkint}_${_rev}.zip")
-sha1sums=('7bb8768ec4333500192fd9627d4234f505fa98dc')
+source=("https://dl-ssl.google.com/android/repository/sys-img/android/armeabi-v7a-${_sdkint}_${_rev}.zip")
+sha256sums=('93b1bf35cecc3dee3a8ff21982f231e725f4a957681b2023898715adc851a04e')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/system-images/android-${_sdkint}/default"
