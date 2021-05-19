@@ -1,4 +1,5 @@
-# Maintainer: Simon Perry <aur [at] sanxion [dot] net>
+# Maintainer: Tomas S. <me+aur at wereii.cz>
+# Contributor: Simon Perry <aur [at] sanxion [dot] net>
 # Contributor: Kochetkov Andrey <gornet@gmail.com>
 # Contributor: Fabian Schoelzel <myfirstname.mylastname@googlemail.com>
 
