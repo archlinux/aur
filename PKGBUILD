@@ -5,9 +5,12 @@
 # Contributor: Sebastien Bariteau <numkem@numkem.org>
 # Contributor: Justin Dray <justin@dray.be>
 
+# For ISSUES, REQUESTS, and QUESTIONS:
+# https://github.com/sudoforge/pkgbuilds
+
 pkgname="google-cloud-sdk"
 pkgver=340.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
 url="https://cloud.google.com/sdk/"
 license=("Apache")
