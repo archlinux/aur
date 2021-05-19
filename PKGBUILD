@@ -3,8 +3,8 @@
 
 pkgname=nvidia-container-runtime
 
-pkgver=3.4.2
-pkgrel=2
+pkgver=3.5.0
+pkgrel=1
 
 pkgdesc='NVIDIA opencontainer runtime fork to expose GPU devices to containers.'
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('go')
 depends=('libseccomp' 'nvidia-container-toolkit>=1.4.2')
 
 source=("https://github.com/NVIDIA/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('30e8a871b4cd8e1577d9439ae4f17fa9208f8f7c026ad69c8e41e3e3d103a38b')
+sha256sums=('4985efe4488e441d0e4910cc7eb2046176db063e5bbe2e0542a7c08d5c5e7d34')
 
 _srcdir="${pkgname}-${pkgver}"
 
@@ -25,16 +25,17 @@ prepare() {
 }
 
 build() {
-  cd "${_srcdir}/src"
+  cd "${_srcdir}"
   pwd
-  go build \
-      -buildmode=pie \
-      -gcflags "all=-trimpath=${PWD}" \
-      -asmflags "all=-trimpath=${PWD}" \
-      -ldflags "-extldflags ${LDFLAGS}"
+  make build
+  #go build \
+  #    -buildmode=pie \
+  #    -gcflags "all=-trimpath=${PWD}" \
+  #    -asmflags "all=-trimpath=${PWD}" \
+  #    -ldflags "-extldflags ${LDFLAGS}"
 }
 
 package() {
-  install -D -m755 "${srcdir}/${_srcdir}/src/container-runtime" "${pkgdir}/usr/bin/${pkgname}"
+  install -D -m755 "${srcdir}/${_srcdir}/nvidia-container-runtime" "${pkgdir}/usr/bin/nvidia-container-runtime"
   install -D -m644 "${srcdir}/${_srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
