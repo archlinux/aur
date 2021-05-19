@@ -1,0 +1,17 @@
+pkgbase = fawkes-bin
+	pkgdesc = Image cloaking tool for personal privacy
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://sandlab.cs.uchicago.edu/fawkes/
+	arch = x86_64
+	license = BSD
+	depends = zlib
+	provides = fawkes
+	conflicts = fawkes
+	source = LICENSE::https://raw.githubusercontent.com/Shawn-Shan/fawkes/master/LICENSE
+	sha256sums = SKIP
+	source_x86_64 = https://mirror.cs.uchicago.edu/fawkes/files/1.0/fawkes_binary_linux-v1.0.zip
+	sha256sums_x86_64 = ff74e9fa671b0d3e0fe2a749d2aed9a5cb86298a2546915b5a199669fc5e88b7
+
+pkgname = fawkes-bin
+
