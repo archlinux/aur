@@ -19,7 +19,7 @@ _localmodcfg=
 
 # Optionally select a sub architecture by number or leave blank which will
 # require user interaction during the build. Note that the generic (default)
-# option is 32.
+# option is 36.
 #
 #  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
 #  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
@@ -33,29 +33,36 @@ _localmodcfg=
 #  10. AMD Excavator (MEXCAVATOR)
 #  11. AMD Zen (MZEN)
 #  12. AMD Zen 2 (MZEN2)
-#  13. Intel P4 / older Netburst based Xeon (MPSC)
-#  14. Intel Atom (MATOM)
+#  13. AMD Zen 3 (MZEN3)
+#  14. Intel P4 / older Netburst based Xeon (MPSC)
 #  15. Intel Core 2 (MCORE2)
-#  16. Intel Nehalem (MNEHALEM)
-#  17. Intel Westmere (MWESTMERE)
-#  18. Intel Silvermont (MSILVERMONT)
-#  19. Intel Goldmont (MGOLDMONT)
-#  20. Intel Goldmont Plus (MGOLDMONTPLUS)
-#  21. Intel Sandy Bridge (MSANDYBRIDGE)
-#  22. Intel Ivy Bridge (MIVYBRIDGE)
-#  23. Intel Haswell (MHASWELL)
-#  24. Intel Broadwell (MBROADWELL)
-#  25. Intel Skylake (MSKYLAKE)
-#  26. Intel Skylake X (MSKYLAKEX)
-#  27. Intel Cannon Lake (MCANNONLAKE)
-#  28. Intel Ice Lake (MICELAKE)
-#  29. Intel Cascade Lake (MCASCADELAKE)
-#  30. Intel Cooper Lake (MCOOPERLAKE)
-#  31. Intel Tiger Lake (MTIGERLAKE)
-#  32. Generic-x86-64 (GENERIC_CPU)
-#  33. Intel-Native optimizations autodetected by GCC (MNATIVE_INTEL)
-#  34. AMD-Native optimizations autodetected by GCC (MNATIVE_AMD)
-_subarch=33
+#  16. Intel Atom (MATOM)
+#  17. Intel Nehalem (MNEHALEM)
+#  18. Intel Westmere (MWESTMERE)
+#  19. Intel Silvermont (MSILVERMONT)
+#  20. Intel Goldmont (MGOLDMONT)
+#  21. Intel Goldmont Plus (MGOLDMONTPLUS)
+#  22. Intel Sandy Bridge (MSANDYBRIDGE)
+#  23. Intel Ivy Bridge (MIVYBRIDGE)
+#  24. Intel Haswell (MHASWELL)
+#  25. Intel Broadwell (MBROADWELL)
+#  26. Intel Skylake (MSKYLAKE)
+#  27. Intel Skylake X (MSKYLAKEX)
+#  28. Intel Cannon Lake (MCANNONLAKE)
+#  29. Intel Ice Lake (MICELAKE)
+#  30. Intel Cascade Lake (MCASCADELAKE)
+#  31. Intel Cooper Lake (MCOOPERLAKE)
+#  32. Intel Tiger Lake (MTIGERLAKE)
+#  33. Intel Sapphire Rapids (MSAPPHIRERAPIDS)
+#  34. Intel Rocket Lake (MROCKETLAKE)
+#  35. Intel Alder Lake (MALDERLAKE)
+#  36. Generic-x86-64 (GENERIC_CPU)
+#  37. Generic-x86-64-v2 (GENERIC_CPU2)
+#  38. Generic-x86-64-v3 (GENERIC_CPU3)
+#  39. Generic-x86-64-v4 (GENERIC_CPU4)
+#  40. Intel-Native optimizations autodetected by GCC (MNATIVE_INTEL)
+#  41. AMD-Native optimizations autodetected by GCC (MNATIVE_AMD)
+_subarch=
 
 # Use the current kernel's .config file
 # Enabling this option will use the .config of the RUNNING kernel rather than
@@ -67,9 +74,9 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.12
-_minor=3
+_minor=4
 _srcname=linux-${_major}
-_clr=${_major}.2-1038
+_clr=${_major}.4-1040
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -108,7 +115,7 @@ prepare() {
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-    for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch0112|^Patch0118|^Patch0121' | sed -n 's/.*: //p'); do
+    for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/clearlinux/${i}"
     done
@@ -345,7 +352,7 @@ done
 
 sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
             'SKIP'
-            '80ee356fafb443bee6e5363e906a11074bc88c49ac495b969b9e9515659b88ff'
+            '115306305ab793f87793884d36a8f7c69acba9f06f4947ef8002bb611b14d770'
             'SKIP'
             'f1f62b6d2cd89d0ab15f8d7311f5bb775dfc97ff39f93bc77f6f733f75fa7558'
             '2c98de0814366b041aeee4cbf82b82620c7834bc33752d50f089e8bd7ea5cf5e'
