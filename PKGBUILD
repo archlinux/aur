@@ -6,14 +6,14 @@ _pkgbase=pipewire
 pkgbase=pipewire-common-git
 pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-alsa-git
          pipewire-common-jack-git pipewire-common-pulse-git
-         gst-plugin-pipewire-common-git)
-pkgver=0.3.27.r132.gcdfd50e1
+         pipewire-common-zeroconf-git gst-plugin-pipewire-common-git)
+pkgver=0.3.28.r0.gfb55cc47
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 license=(MIT)
 arch=(x86_64)
-makedepends=(git meson doxygen graphviz xmltoman
+makedepends=(git meson doxygen xmltoman
              ncurses libsndfile alsa-lib dbus rtkit
              libpulse avahi sdl2 gst-plugins-base-libs
              bluez-libs sbc libldac libopenaptx libfdk-aac)
@@ -59,43 +59,38 @@ _pick() {
 _ver=${pkgver:0:3}
 
 package_pipewire-common-git() {
-  license=(MIT LGPL)
+  license+=(LGPL)
   depends=(rtkit libdbus-1.so libncursesw.so libsndfile.so
            libudev.so libasound.so libsystemd.so libpulse.so
-           libavahi-common.so libavahi-client.so
-           libbluetooth.so libsbc.so libldacBT_enc.so
+           libbluetooth.so libsbc.so libldacBT_{enc,abr}.so
            libopenaptx.so libfdk-aac.so)
   optdepends=('pipewire-common-docs-git: Documentation'
               'pipewire-common-alsa-git: ALSA configuration'
               'pipewire-common-jack-git: JACK support'
               'pipewire-common-pulse-git: PulseAudio replacement'
+              'pipewire-common-zeroconf-git: Zeroconf support'
               'gst-plugin-pipewire-common-git: GStreamer support'
               'ofono: ofono HFP support'
               'hsphfpd: hsphfpd HSP/HFP support')
   provides=(pipewire pipewire-media-session alsa-card-profiles libpipewire-$_ver.so)
   conflicts=(pipewire pipewire-media-session alsa-card-profiles)
-  backup=(usr/share/pipewire/{pipewire{,-pulse},client{,-rt}}.conf
-          usr/share/pipewire/filter-chain/demonic.conf
-          usr/share/pipewire/filter-chain/sink-{dolby-surround,eq6,matrix-spatialiser}.conf
-          usr/share/pipewire/filter-chain/source-rnnoise.conf
-          usr/share/pipewire/media-session.d/media-session.conf
-          usr/share/pipewire/media-session.d/{alsa,bluez,v4l2}-monitor.conf)
   install=pipewire.install
 
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 
-  install -Dm644 "$_pkgbase/LICENSE" "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
-  install -Dm644 "$_pkgbase/COPYING" "$pkgdir/usr/share/licenses/$_pkgbase/COPYING"
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $_pkgbase/COPYING
 
   cd "$pkgdir"
 
   _pick docs usr/share/doc
 
-  _pick jack usr/share/pipewire/{jack.conf,media-session.d/with-jack}
   _pick jack usr/bin/pw-jack usr/lib/pipewire-$_ver/jack
   _pick jack usr/share/man/man1/pw-jack.1
+  _pick jack usr/share/pipewire/{jack.conf,media-session.d/with-jack}
 
   _pick pulse usr/share/pipewire/media-session.d/with-pulseaudio
+
+  _pick zeroconf usr/lib/pipewire-$_ver/libpipewire-module-zeroconf-discover.so
 
   _pick gst usr/lib/gstreamer-1.0
 }
@@ -106,7 +101,11 @@ package_pipewire-common-docs-git() {
   provides=(pipewire-docs)
   conflicts=(pipewire-docs)
   pkgdesc+=" - documentation"
+
   mv docs/* "$pkgdir"
+
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $_pkgbase/COPYING
+
 }
 
 package_pipewire-common-alsa-git() {
@@ -119,16 +118,20 @@ package_pipewire-common-alsa-git() {
   ln -st "$pkgdir/etc/alsa/conf.d" \
     /usr/share/alsa/alsa.conf.d/{50-pipewire,99-pipewire-default}.conf
   install -Dm644 /dev/null "$pkgdir/usr/share/pipewire/media-session.d/with-alsa"
+
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $_pkgbase/COPYING
 }
 
 package_pipewire-common-jack-git() {
   pkgdesc+=" - JACK support"
-  license=(MIT GPL)
+  license+=(GPL2)
   depends=(pipewire-common-git libpipewire-$_ver.so bash)
   provides=(pipewire-jack)
   conflicts=(pipewire-jack)
-  backup=(usr/share/pipewire/jack.conf)
+
   mv jack/* "$pkgdir"
+
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $_pkgbase/COPYING
 }
 
 package_pipewire-common-pulse-git() {
@@ -137,7 +140,22 @@ package_pipewire-common-pulse-git() {
   provides=(pipewire-pulse pulseaudio pulseaudio-bluetooth)
   conflicts=(pipewire-pulse pulseaudio pulseaudio-bluetooth)
   install=pipewire-pulse.install
+
   mv pulse/* "$pkgdir"
+
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $_pkgbase/COPYING
+}
+
+package_pipewire-common-zeroconf-git() {
+  pkgdesc+=" - Zeroconf support"
+  depends=(pipewire-common-git libpipewire-$_ver.so
+           libavahi-{client,common}.so)
+  provides=(pipewire-zeroconf)
+  conflicts=(pipewire-zeroconf)
+
+  mv zeroconf/* "$pkgdir"
+
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $_pkgbase/COPYING
 }
 
 package_gst-plugin-pipewire-common-git() {
@@ -145,5 +163,8 @@ package_gst-plugin-pipewire-common-git() {
   depends=(pipewire-common-git libpipewire-$_ver.so gst-plugins-base-libs)
   provides=(gst-plugin-pipewire)
   conflicts=(gst-plugin-pipewire)
+
   mv gst/* "$pkgdir"
+
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $_pkgbase/COPYING
 }
