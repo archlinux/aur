@@ -1,10 +1,11 @@
 # Maintainer: Benjamin Denhartog <ben@sudoforge.com>
 
-# This PKGBUILD is managed at https://github.com/sudoforge/pkgbuilds
+# For ISSUES, REQUESTS, and QUESTIONS:
+# https://github.com/sudoforge/pkgbuilds
 
 pkgname=git-shelf
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Store work-in-progress commits on the remote without cluttering the commit history"
 arch=('any')
 url="https://github.com/sudoforge/${pkgname}"

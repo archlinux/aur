@@ -1,7 +1,7 @@
 pkgbase = git-shelf
 	pkgdesc = Store work-in-progress commits on the remote without cluttering the commit history
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sudoforge/git-shelf
 	arch = any
 	license = MIT
