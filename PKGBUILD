@@ -7,7 +7,7 @@
 # you should probably just stick with the aur/lcov package.
 #
 pkgname=lcov-git
-pkgver=r325.75fbae1
+pkgver=r346.b9d6727
 pkgrel=1
 pkgdesc="Latest snapshot of lcov, a front-end for GCC's coverage testing tool gcov"
 arch=('any')
@@ -15,9 +15,8 @@ url="http://ltp.sourceforge.net/coverage/lcov.php"
 license=('GPL')
 depends=(
   'perl'
-  'perl-json'
-  'perl-perlio-gzip'
 )
+makedepends=('git')
 conflicts=('lcov')
 provides=('lcov')
 source=('git://github.com/linux-test-project/lcov.git')
