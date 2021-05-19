@@ -1,7 +1,7 @@
 # Maintainer: Marco R. <thomasschmidt45@gmx.net>
 pkgname=friendiqa
 pkgver=0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Client for social network Friendica"
 arch=('any')
 url="https://git.friendi.ca/lubuwest/Friendiqa"
@@ -20,10 +20,10 @@ build() {
 }
 
 package() {
-  cd build
-  make INSTALL_ROOT="$pkgdir" install
-  install -Dm644 "$srcdir"/images/de.ma-nic.Friendiqa.desktop "$pkgdir"/usr/share/applications/de.ma-nic.Friendiqa.desktop
-  install -Dm644 "$srcdir"/images/Friendiqa.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/Friendiqa.svg
+  install -Dm755 build/friendiqa "$pkgdir"/usr/bin/friendiqa
+  install -Dm644 "$srcdir"/friendiqa/source-linux/images/de.ma-nic.Friendiqa.desktop "$pkgdir"/usr/share/applications/de.ma-nic.Friendiqa.desktop
+  install -Dm644 "$srcdir"/friendiqa/source-linux/images/Friendiqa.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/Friendiqa.svg
 }
+
 
 # vim:set ts=2 sw=2 et:
