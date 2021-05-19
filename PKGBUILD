@@ -18,7 +18,7 @@ conflicts=('chatterino')
 options=(!strip)
 install=$pkgname.install
 source=("https://github.com/Chatterino/chatterino2/releases/download/v$pkgver/$_appimage")
-md5sums=('6f4489c8ce93c2a0cf7564b973906d77')
+md5sums=('9190d35827074ac52309f9b7e3bc36a9')
 
 prepare () {
     cd "$srcdir"
