@@ -1,23 +1,26 @@
 # Maintainer: Benjamin Denhartog <ben@sudoforge.com>
 
+# For ISSUES, REQUESTS, and QUESTIONS:
+# https://github.com/sudoforge/pkgbuilds
+
 _pkgname=buildtools
 pkgname=buildozer
 pkgver=4.0.1
-pkgrel=2
-pkgdesc="A command line tool to rewrite Bazel BUILD files using standard conventions"
+pkgrel=3
+pkgdesc='A command line tool to rewrite Bazel BUILD files using standard conventions'
 arch=('x86_64')
 license=('Apache')
-url="https://github.com/bazelbuild/buildtools"
-makedepends=(
-  'bazel'
-  'git'
-)
+url='https://github.com/bazelbuild/buildtools'
+makedepends=('git')
+_bazelisk_pkgver=1.8.1
 source=(
+  "bazelisk-bin-${_bazelisk_pkgver}::https://github.com/bazelbuild/bazelisk/releases/download/v${_bazelisk_pkgver}/bazelisk-linux-amd64"
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
   "0001-copy-buildozer-target-output.patch"
 )
-md5sums=('36b64ea6b3da3c8e16ecb2feb9bf467f'
-         '478c43739dbc4e5bd882fb7879b990ae')
+sha256sums=('4a7652ffe904ccb064aaa7db41c456e742e507e574f58a602edbbc32920ed79b'
+            'c28eef4d30ba1a195c6837acf6c75a4034981f5b4002dda3c5aa6e48ce023cf1'
+            '68ae2f6ec82afb45baf89c264438c86db35031368b061d8c92036c341f6eb3b1')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -32,12 +35,14 @@ prepare() {
       ) \
     )
   done
-}
 
+  chmod +x "${srcdir}/${source[0]%%::*}"
+}
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  bazel build "//${pkgname}:${pkgname}-linux"
+  "${srcdir}/${source[0]%%::*}" build "//${pkgname}:${pkgname}-linux"
+  "${srcdir}/${source[0]%%::*}" shutdown
 }
 
 package() {
