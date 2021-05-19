@@ -6,7 +6,7 @@ pkgdesc="Garry's Mod Addon Creator and Extractor"
 arch=( "x86_64" )
 url="https://github.com/garrynewman/gmad"
 
-makedepends=( "premake" )
+makedepends=( "premake" "git" )
 provides=( "gmad" )
 
 source=("gmad::git+https://github.com/Facepunch/gmad.git#branch=master"
