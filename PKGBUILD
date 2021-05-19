@@ -4,7 +4,7 @@ pkgdesc="OpenMP boosted NDT and GICP algorithms with CUDA enabled"
 url='https://github.com/SMRT-AIST/fast_gicp'
 
 pkgname='ros-noetic-fast-gicp-git'
-pkgver=r125.e1f0863
+pkgver=r127.77a9ac4
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD-3-Clause License')
@@ -64,7 +64,9 @@ build() {
             -DPYTHON_EXECUTABLE=/usr/bin/python3 \
             -DSETUPTOOLS_DEB_LAYOUT=OFF \
             -DBUILD_VGICP_CUDA=$cuda \
-            -DCMAKE_CXX_STANDARD=17
+            -DCMAKE_CXX_STANDARD=17 \
+            -DCMAKE_C_COMPILER=gcc-10 \
+            -DCMAKE_CXX_COMPILER=g++-10
 }
 
 package() {
