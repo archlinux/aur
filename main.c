@@ -1,6 +1,4 @@
 #include "main.h"
-#include <curses.h>
-#include <string.h>
 
 struct cursor{
 	int y;
@@ -13,8 +11,14 @@ char* sudoku_str;
 struct cursor cursor;
 char* statusbar;
 char* controls;
+char* sudoku;
 
 int main(int argc, char **argv){
+	time_t t;
+	srand((unsigned) time(&t));
+
+	generate_sudoku();
+
 	//--- USER INIT LOGIC ---
 	
 	filename = argv[1];
@@ -33,6 +37,8 @@ int main(int argc, char **argv){
 	//Abort if Sudoku is wrong length
 	if((strlen(sudoku_str) + strlen(user_nums)) != (SUDOKU_LEN * 2))
 		finish_with_err_msg("Wrong length in Sudoku file\n");
+
+	sudoku_str = sudoku;
 
 	cursor.x = 0;
 	cursor.y = 0;
@@ -77,6 +83,8 @@ int main(int argc, char **argv){
 	while(true){
 		char key_press = getch();
 
+		char* combined_solution;
+
 		//Move on vim keys and bind to field size
 		switch(key_press){
 			case 'h':
@@ -100,8 +108,17 @@ int main(int argc, char **argv){
 				break;
 			case 'c':
 				//Check for errors (writes to statusbar directly)
-				check_validity();
+				combined_solution = malloc((SUDOKU_LEN) * sizeof(char));
+				for(int i = 0; i < SUDOKU_LEN; i++)
+					combined_solution[i] = sudoku_str[i] == '0' ? user_nums[i] : sudoku_str[i];
+
+				if(check_validity(combined_solution))
+					sprintf(statusbar, "%s", "Valid");
+				else
+					sprintf(statusbar, "%s", "Invalid or not filled out");
 				break;
+
+				free(combined_solution);
 			case 'q':
 				finish(0);
 			//Input numbers into the user sudoku field
@@ -126,7 +143,98 @@ int main(int argc, char **argv){
 
 		draw();
 
-		move_cursor(cursor);
+		move_cursor();
+	}
+}
+
+//Generate a random sudoku
+//This function generates the diagonal blocks from left to right and then calls fill_remaining()
+void generate_sudoku(){
+	sudoku = malloc(SUDOKU_LEN * sizeof(char));
+	for(int i = 0; i < SUDOKU_LEN; i++)
+		sudoku[i] = '0';
+
+	//Fill each diagonal block with the values 1-9
+	for(int i = 0; i < 3; i++){
+		for(int j = 0; j < LINE_LEN; j++){
+			int duplicate = 1;
+			while(duplicate){	
+				duplicate = 0;
+				char* current_digit = &sudoku[(i * 3) * LINE_LEN + (i * 3) + (LINE_LEN * (j / 3)) + (j % 3)];
+				*current_digit = 0x31 + rand() % 9;
+				for(int k = 0; k < j; k++){
+					if(*current_digit == sudoku[(i * 3) * LINE_LEN + (i * 3) + (LINE_LEN * (k / 3)) + (k % 3)])
+						duplicate = 1;
+				}
+			}
+		
+		}
+	}
+
+	fill_remaining(0);
+	remove_nums();
+}
+
+//Fill the cells recursively
+int fill_remaining(int start){
+	//Check if we are finished
+	if(start >= SUDOKU_LEN)
+		return true;
+
+	//If start is in a diagonal block, go to next i
+	if(((start % LINE_LEN) / 3) == ((start / LINE_LEN) / 3))
+		return fill_remaining(start + 1);
+
+	//Get the fields associated with the value at start
+	
+	char* vert_line = malloc(LINE_LEN * sizeof(char));
+	memcpy(vert_line, sudoku + (LINE_LEN * (start / LINE_LEN)), LINE_LEN * sizeof(char));
+
+	char* hor_line = malloc(LINE_LEN * sizeof(char));
+	for(int y = 0; y < LINE_LEN; y++){
+		hor_line[y] = sudoku [y * LINE_LEN + (start % LINE_LEN)];
+	}
+
+	char* block = malloc(LINE_LEN * sizeof(char));
+	for(int j = 0; j < LINE_LEN; j++){
+		block[j] = sudoku [(((start / LINE_LEN) / 3) * 3) * LINE_LEN + (((start % LINE_LEN) / 3) * 3) + (LINE_LEN * (j / 3)) + (j % 3)];
+	}
+
+	//Try to assign a value to the cell at start
+	for(int j = 0x31; j <= 0x39; j++){
+		int used = 0;
+		for(int k = 0; k < LINE_LEN; k++){
+			//Check if the value is valid
+			if(vert_line[k] == j || hor_line[k] == j || block[k] == j)
+				used = 1;
+		}
+		if(!used){
+			sudoku[start] = j;
+			//Check the whole path
+			if(fill_remaining(start + 1)){
+				free(vert_line);
+				free(hor_line);
+				free(block);
+				return true;
+			}
+
+			//Otherwise, go back to 0
+			sudoku[start] = '0';
+		}
+	}
+
+	free(vert_line);
+	free(hor_line);
+	free(block);
+	return false;
+}
+
+void remove_nums(){
+	for(int i = 0; i < 40; i++){
+		int number_to_rm = rand() % SUDOKU_LEN;
+		if(sudoku[number_to_rm] != '0'){
+			sudoku[number_to_rm] = '0';
+		}
 	}
 }
 
@@ -152,18 +260,14 @@ int savestate(){
 }
 
 //Check for errors in the sudoku and write to statusbar
-void check_validity(){
+int check_validity(char* combined_solution){
 	//Combine user_nums and sudoku_str by replacing the 0s in sudoku_str with the user_nums
-	char* combined_solution = malloc((SUDOKU_LEN) * sizeof(char));
-	for(int i = 0; i < SUDOKU_LEN; i++){
-		combined_solution[i] = sudoku_str[i] == '0' ? user_nums[i] : sudoku_str[i];
+	for(int i = 0; i < SUDOKU_LEN; i ++){
 		if(combined_solution[i] == '0'){
-			sprintf(statusbar, "%s", "Not filled out");
-			free(combined_solution);
-			return;
+			return 0;
 		}
 	}
-
+	
 	//Check for errors in vertical lines
 	for(int i = 0; i < LINE_LEN; i++){
 		char* vert_line = malloc(LINE_LEN * sizeof(char));
@@ -172,22 +276,61 @@ void check_validity(){
 
 		//Check each digit against the others
 		for(int j = 0; j < LINE_LEN; j++){
-			char current_digit = vert_line[j];
 			for(int k = 0; k < LINE_LEN; k++){
 				if(vert_line[k] == vert_line[j] && k != j){
-					free(combined_solution);
 					free(vert_line);
-					sprintf(statusbar, "%s%d", "Error on line ", i + 1);
-					return;
+					return 0;
 				}	
 			}
 		}
 		free(vert_line);
 	}
-	free(combined_solution);
+	
+	//Check for errors in horizontal lines
+	for(int x = 0; x < LINE_LEN; x++){
+		char* hor_line = malloc(LINE_LEN * sizeof(char));
 
-	sprintf(statusbar, "%s", "Looks good");
-	return;
+		for(int y = 0; y < LINE_LEN; y++){
+			hor_line[y] = combined_solution[y * LINE_LEN + x];
+		}
+
+		//Check each digit against the others
+		for(int i = 0; i < LINE_LEN; i++){
+			char current_digit = hor_line[i];
+			for(int j = 0; j < LINE_LEN; j++){
+				if(hor_line[j] == hor_line[i] && j != i){
+					free(hor_line);
+					return 0;
+				}	
+			}
+		}
+		free(hor_line);
+	}
+
+	//Check for errors in blocks
+	for(int x = 0; x < LINE_LEN / 3; x++){
+		for(int y = 0; y < LINE_LEN / 3; y++){
+			char* block = malloc(LINE_LEN * sizeof(char));
+			for(int i = 0; i < LINE_LEN; i++){
+				block[i] = combined_solution[(y * 3) * LINE_LEN + (x * 3) + (LINE_LEN * (i / 3)) + (i % 3)];
+			}
+
+			//Check each digit against the others
+			for(int i = 0; i < LINE_LEN; i++){
+				char current_digit = block[i];
+				for(int j = 0; j < LINE_LEN; j++){
+					if(block[j] == block[i] && j != i){
+						free(block);
+						return 0;
+					}	
+				}
+			}
+
+			free(block);
+		}
+	}
+
+	return 1;
 }
 
 void finish(int sig){
