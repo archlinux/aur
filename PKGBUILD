@@ -1,10 +1,11 @@
 # Maintainer: Benjamin Denhartog <ben@sudoforge.com>
 
-# This PKGBUILD is managed at https://github.com/sudoforge/pkgbuilds
+# For ISSUES, REQUESTS, and QUESTIONS:
+# https://github.com/sudoforge/pkgbuilds
 
 pkgname=git-rename
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Easily rename a branch, locally and on the remote"
 arch=('any')
 url="https://github.com/sudoforge/${pkgname}"
