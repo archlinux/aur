@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=glimpse-editor-git
-pkgver=r44061.b2f1d331f9
+pkgver=r44063.fbd21e5eb4
 pkgrel=1
 pkgdesc="Fork of the GNU Image Manipulation Program"
 arch=(i686 x86_64)
@@ -27,10 +27,8 @@ optdepends=('gutenprint: for sophisticated printing only as glimpse has built-in
             )
 provides=(glimpse-editor gimp)
 conflicts=(glimpse-editor gimp)
-source=("git+https://github.com/glimpse-editor/Glimpse#branch=dev-g210"
-        "https://github.com/tastytea/Glimpse/commit/de1f34c9441e90b24ba7dd2a7642d0c67fff1e06.patch")
-sha512sums=('SKIP'
-            'e5f14fdb45540d85a35b702381849c3ca97b9249f924168dcf2537f0dae40da37d5e9dae49fb3987ffb43a5dbeb88bae90de58ca22fea1df4ce62278fbd3e90a')
+source=("git+https://github.com/glimpse-editor/Glimpse#branch=dev-g210")
+sha512sums=('SKIP')
 
 pkgver() {
   cd Glimpse
@@ -40,8 +38,6 @@ pkgver() {
 
 prepare() {
   cd Glimpse
-
-  patch -Np1 < ../de1f34c9441e90b24ba7dd2a7642d0c67fff1e06.patch
 
   _mypaintver=$(echo /usr/lib/libmypaint-*.so | grep -o -E '\-[0-9]+(\.[0-9]+)*' | head -1)
   sed -i "s|\\(libmypaint\\)\\( >= libmypaint_required_version\\)|\\1${_mypaintver}\\2|g" configure.ac
