@@ -12,19 +12,19 @@ _referid='2e107aba152744e0aa77ad3fb9d25986'
 _siteurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
-                        AppleWebKit/537.36 (KHTML, like Gecko) \
-                        Chrome/77.0.3865.75 \
-                        Safari/537.36"
+						AppleWebKit/537.36 (KHTML, like Gecko) \
+						Chrome/77.0.3865.75 \
+						Safari/537.36"
 
 _reqjson="{ \
-    \"firstname\": \"Arch\", \
-    \"lastname\": \"Linux\", \
-    \"email\": \"someone@archlinux.org\", \
-    \"phone\": \"202-555-0194\", \
-    \"country\": \"us\", \
-    \"state\": \"New York\", \
-    \"city\": \"AUR\", \
-    \"product\": \"DaVinci Resolve Studio\" \
+	\"firstname\": \"Arch\", \
+	\"lastname\": \"Linux\", \
+	\"email\": \"someone@archlinux.org\", \
+	\"phone\": \"202-555-0194\", \
+	\"country\": \"us\", \
+	\"state\": \"New York\", \
+	\"city\": \"AUR\", \
+	\"product\": \"DaVinci Resolve Studio\" \
 }"
 
 _reqjson="$(  printf '%s' "$_reqjson"   | sed 's/[[:space:]]\+/ /g')"
@@ -32,43 +32,43 @@ _useragent="$(printf '%s' "$_useragent" | sed 's/[[:space:]]\+/ /g')"
 _useragent_escaped="${_useragent// /\\ }"
 
 _srcurl="$(curl \
-            -s \
-            -H 'Host: www.blackmagicdesign.com' \
-            -H 'Accept: application/json, text/plain, */*' \
-            -H 'Origin: https://www.blackmagicdesign.com' \
-            -H "$_useragent" \
-            -H 'Content-Type: application/json;charset=UTF-8' \
-            -H "Referer: https://www.blackmagicdesign.com/support/download/${_referid}/Linux" \
-            -H 'Accept-Encoding: gzip, deflate, br' \
-            -H 'Accept-Language: en-US,en;q=0.9' \
-            -H 'Authority: www.blackmagicdesign.com' \
-            -H 'Cookie: _ga=GA1.2.1849503966.1518103294; _gid=GA1.2.953840595.1518103294' \
-            --data-ascii "$_reqjson" \
-            --compressed \
-            "$_siteurl")"
+			-s \
+			-H 'Host: www.blackmagicdesign.com' \
+			-H 'Accept: application/json, text/plain, */*' \
+			-H 'Origin: https://www.blackmagicdesign.com' \
+			-H "$_useragent" \
+			-H 'Content-Type: application/json;charset=UTF-8' \
+			-H "Referer: https://www.blackmagicdesign.com/support/download/${_referid}/Linux" \
+			-H 'Accept-Encoding: gzip, deflate, br' \
+			-H 'Accept-Language: en-US,en;q=0.9' \
+			-H 'Authority: www.blackmagicdesign.com' \
+			-H 'Cookie: _ga=GA1.2.1849503966.1518103294; _gid=GA1.2.953840595.1518103294' \
+			--data-ascii "$_reqjson" \
+			--compressed \
+			"$_siteurl")"
 
 DLAGENTS=("https::/usr/bin/curl \
-              -gqb '' -C - --retry 3 --retry-delay 3 \
-              -H Host:\ sw.blackmagicdesign.com \
-              -H Upgrade-Insecure-Requests:\ 1 \
-              -H ${_useragent_escaped} \
-              -H Accept:\ text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8 \
-              -H Accept-Language:\ en-US,en;q=0.9 \
-              -o %o \
-              --compressed \
-              %u")
+			-gqb '' -C - --retry 3 --retry-delay 3 \
+			-H Host:\ sw.blackmagicdesign.com \
+			-H Upgrade-Insecure-Requests:\ 1 \
+			-H ${_useragent_escaped} \
+			-H Accept:\ text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8 \
+			-H Accept-Language:\ en-US,en;q=0.9 \
+			-o %o \
+			--compressed \
+			%u")
 
 
 pkgname=davinci-resolve-studio
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
 pkgver=17.2
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
 license=('Commercial')
 depends=('glu' 'gtk2' 'gstreamer' 'libpng12' 'lib32-libpng12' 'ocl-icd' 'openssl-1.0' 'fuse2'
-         'opencl-driver' 'qt5-base' 'qt5-svg' 'qt5-webkit' 'qt5-webengine' 'qt5-websockets')
+			'opencl-driver' 'qt5-base' 'qt5-svg' 'qt5-webkit' 'qt5-webengine' 'qt5-websockets')
 makedepends=('libarchive' 'xdg-user-dirs')
 options=('!strip')
 provides=('davinci-resolve')
@@ -97,8 +97,7 @@ prepare()
 {
 	# Remove udev rules (The official installer does not remove these files. This leads to the conflict "exists in the file system".)
 	confiles=$(find /usr/lib/udev/rules.d -name 75-davincipanel.rules -o -name 75-sdx.rules 2> /dev/null | awk -F/ '{print $NF}'
-               find /opt/resolve/configs -name log-conf.xml -o -name config.dat 2> /dev/null | awk -F/ '{print $NF}'
-               )
+				find /opt/resolve/configs -name log-conf.xml -o -name config.dat 2> /dev/null | awk -F/ '{print $NF}')
 	if [ "${confiles}" ]; then
 		echo -e "\033[1m==> The file(s) $(echo ${confiles} | xargs | sed 's/ /, /g') already exist in your filesystem.\033[0m"
 		echo -e "\033[1m==> This can lead to a conflict and the installation will fail.\033[0m"
@@ -118,10 +117,9 @@ package()
 	echo -e "\033[1m==> Extracting from bundle...\033[0m"
 	echo -e "\033[1mPlease wait, this take a while...\033[0m"
 	cd "${srcdir}" || exit
-	./${_installer_binary} --appimage-extract
+	chmod u+x ./${_installer_binary}
+	./${_installer_binary} -i -y -n -a -C "${pkgdir}/opt/${_pkgname}"
 	rm -rf ${_installer_binary}
-	cd squashfs-root
-	./installer -i -y -n -a -C "${pkgdir}/opt/${_pkgname}" "$PWD"
 
 	echo -e "\033[1m==> Add lib symlinks...\033[0m"
 	cd "${pkgdir}/opt/${_pkgname}/" || exit
