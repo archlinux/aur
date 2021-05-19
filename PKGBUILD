@@ -1,9 +1,10 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: Barfin
+# Previous Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributors: Jekyll Wu, Jacco Koning, qwak, twa022
 
 pkgname=usb-creator
 pkgver=0.3.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Create bootable USB from a LiveCD or disc image of Ubuntu"
 arch=('any')
 url="https://launchpad.net/usb-creator"
@@ -24,7 +25,7 @@ sha256sums=('583de0edd663cb93ccff679535e4fd868004da4cbef0b84087429a836bb31a4b'
 #}
 
 package() {
-  cd $pkgname-0.3.10
+  cd ${srcdir}/trunk
 
   python3 setup.py install --root="$pkgdir/" --optimize=1
 
