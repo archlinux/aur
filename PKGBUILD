@@ -1,8 +1,8 @@
-# Maintainer: Carlo Cabanilla <carlo.cabanilla@gmail.com>
+# Contributor: Carlo Cabanilla <carlo.cabanilla@gmail.com>
 
 _npmname=jsfmt
 pkgname=nodejs-$_npmname
-pkgver=0.4.1
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="gofmt for javascript"
 arch=(any)
@@ -11,7 +11,7 @@ license=(Apache)
 depends=('nodejs' 'npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('3643eeb4c6318d9b2ca74b609ff2727955826d4379aef8af38725b3fe8b802b0')
+sha256sums=('ce2cc70648bd96c1552d3ba7fd10cba16bbf4d3004fb42ecf17a3eba75a1b33c')
 
 package() {
   cd "$srcdir"
