@@ -2,9 +2,8 @@
 # Maintainer: Justin Dray <justin@dray.be>
 
 _gemname=hiera-eyaml
-_commit='d4c3e16bf678a70a38d657ecca5239872958558c'
 pkgname=ruby-$_gemname
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc='OpenSSL Encryption backend for Hiera'
 arch=(any)
@@ -13,7 +12,7 @@ license=(MIT)
 depends=(ruby ruby-optimist ruby-highline)
 makedepends=(git ruby-rdoc)
 options=(!emptydirs)
-source=(${_gemname}-${pkgver}::git+https://github.com/voxpupuli/hiera-eyaml?signed#commit=${_commit})
+source=(${_gemname}-${pkgver}::git+https://github.com/voxpupuli/hiera-eyaml?signed#tag=v${pkgver})
 noextract=($_gemname-$pkgver.gem)
 validpgpkeys=('C10B6298A584A5632E254DA304D659E6BF1C4CC0')
 sha256sums=('SKIP')
