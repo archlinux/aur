@@ -1,14 +1,16 @@
 pkgbase = btrfs-compress
 	pkgdesc = btrfs tool that makes it possible to change +c flags recursively on existing files
 	pkgver = 20190221.r11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/benapetr/compress
 	arch = i686
 	arch = x86_64
-	license = custom:unkown
+	license = BSD
 	depends = python
 	source = git+https://github.com/benapetr/compress.git#commit=5b5afb8cdfa0fbe94a1535dcd682816fc3672e1b
-	md5sums = SKIP
+	source = subprocess.check_output.patch
+	b2sums = SKIP
+	b2sums = 578ad8a209d7f80eacf006de338e5a9235f7b3d9f4dced084046bc8cd45feeaf39131fad86d93ed95310baa4500ae736411ce39916fb2ebe6222a4a384de2d45
 
 pkgname = btrfs-compress
 
