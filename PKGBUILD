@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=fawkes-git
-pkgver=r74.g3775bba
-pkgrel=2
+pkgver=r125.g65743ef
+pkgrel=1
 pkgdesc="Image cloaking tool for personal privacy"
 arch=('any')
 url="https://sandlab.cs.uchicago.edu/fawkes/"
 license=('BSD')
-depends=('python' 'python-bleach' 'python-keras' 'python-numpy' 'python-pillow' 'python-scikit-image' 'python-tensorflow')
+depends=('python' 'python-bleach' 'python-keras' 'python-mtcnn' 'python-numpy' 'python-pillow' 'python-scikit-image' 'python-tensorflow')
 makedepends=('git' 'python-setuptools')
 provides=('fawkes')
 conflicts=('fawkes')
