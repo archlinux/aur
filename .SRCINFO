@@ -1,0 +1,26 @@
+pkgbase = freetz-ng-tools-git
+	pkgdesc = Development tools of the Freetz-NG project
+	pkgver = r17445.bbc243477
+	pkgrel = 1
+	url = https://freetz-ng.github.io/freetz-ng/
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = python
+	makedepends = svn
+	makedepends = unzip
+	makedepends = wget
+	makedepends = lib32-glibc
+	makedepends = lib32-gcc-libs
+	depends = sed
+	provides = freetz-ng-tools
+	provides = freetz-tools
+	conflicts = freetz-ng-tools
+	conflicts = freetz-tools
+	conflicts = freetz-tools-git
+	replaces = freetz-tools-git
+	source = freetz-ng-tools::git+https://github.com/Freetz-NG/freetz-ng.git
+	sha384sums = SKIP
+
+pkgname = freetz-ng-tools-git
+
