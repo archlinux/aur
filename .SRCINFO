@@ -1,18 +1,19 @@
 pkgbase = copybara-git
 	pkgdesc = A tool for transforming and moving code between repositories
-	pkgver = 0.0.0.r1946.g9953379e
+	pkgver = 0.0.0.r2390.g44ca710c
 	pkgrel = 1
 	url = https://github.com/google/copybara
 	arch = x86_64
 	license = Apache
-	makedepends = bazel
 	makedepends = git
 	depends = java-environment
 	depends = git
 	provides = copybara
 	conflicts = copybara
+	source = bazelisk-bin-1.8.1::https://github.com/bazelbuild/bazelisk/releases/download/v1.8.1/bazelisk-linux-amd64
 	source = git+https://github.com/google/copybara.git
 	source = copybara.sh
+	sha256sums = 4a7652ffe904ccb064aaa7db41c456e742e507e574f58a602edbbc32920ed79b
 	sha256sums = SKIP
 	sha256sums = 53d9cd732ecf7267c883a5f5e304429548b6aa8ce8d1038966c5cf83929d52d1
 
