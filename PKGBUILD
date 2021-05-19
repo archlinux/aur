@@ -1,4 +1,5 @@
-# Maintainer: Simon Perry <aur [at] sanxion [dot] net>
+# Maintainer: Tomas S. <me+aur at wereii.cz>
+# Contributor: Simon Perry <aur [at] sanxion [dot] net>
 # Contributor: Aaron DeVore <aaron.devore@gmail.com>
 
 pkgname=python-roman
