@@ -4,7 +4,7 @@ _pkgname=AirVPN-Suite
 pkgver=1.1.0
 _rc=RC4
 _pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="AirVPN client software collection including Bluetit, Goldcrest and Hummingbird – prebuilt beta"
 arch=('x86_64' 'i686' 'armv7l' 'aarch64')
 url="https://gitlab.com/AirVPN/$_pkgname"
@@ -33,9 +33,7 @@ package() {
     install -Dm755 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 
     # place configuration
-    for file in etc/airvpn/*; do
-        install -Dm600 "$file" "$pkgdir/etc/airvpn/$file"
-    done
+    install -Dm600 -t "$pkgdir/etc/airvpn/" etc/airvpn/*
 
     # place D-Bus config
     install -Dm644 etc/dbus-1/system.d/org.airvpn.client.conf "$pkgdir/etc/dbus-1/system.d/org.airvpn.client.conf"
