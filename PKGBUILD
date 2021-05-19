@@ -1,20 +1,21 @@
-# Maintainer: Félix "passcod" Saparelli <felix @ passcod . name>
+# Maintainer: Daniil "danogentili" Gentili <daniil@daniil.it>
+# Contributor: Félix "passcod" Saparelli <felix @ passcod . name>
 # Contributor: Alex "grevus" Lobtsov <alex@lobtsov.com>
 pkgname=php-gearman
-pkgver=2.0.5
-pkgrel=4
+pkgver=2.1.0
+pkgrel=5
 pkgdesc="PHP wrapper to libgearman"
-url="https://github.com/wcgallego/pecl-gearman"
+url="https://github.com/php/pecl-networking-gearman"
 arch=('x86_64' 'i686')
 license=('PHP')
 depends=('php' 'gearman')
 backup=('etc/php/conf.d/gearman.ini')
 
-source=("https://github.com/wcgallego/pecl-gearman/archive/gearman-${pkgver}.tar.gz")
-sha512sums=('f8b8f8291423a37263a0d3bf7a702d0bb9c8f3d18922388af71ac710db7dcd1755c9d143364c1427b584a3852dfccba254468c9df9cadbc1249c9c7e52510353')
+source=("https://github.com/php/pecl-networking-gearman/archive/refs/tags/gearman-${pkgver}.tar.gz")
+sha512sums=('99545525095ebe5073617e2748c652ee75cfacd5d166ac65f9e69998dea8cd7fbc06542b78779ba5b0ce1f9e5d57de5be653cf90c387c825c24798559b038397')
 
 build() {
-  cd "${srcdir}/pecl-gearman-gearman-${pkgver}"
+  cd "${srcdir}/pecl-networking-gearman-gearman-${pkgver}"
 
   phpize
   ./configure --prefix=/usr
@@ -22,7 +23,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/pecl-gearman-gearman-${pkgver}"
+  cd "${srcdir}/pecl-networking-gearman-gearman-${pkgver}"
 
   make INSTALL_ROOT="${pkgdir}" install
   echo 'extension=gearman.so' > gearman.ini
