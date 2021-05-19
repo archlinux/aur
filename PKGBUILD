@@ -2,20 +2,19 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-early-access
-pkgver=1694
+pkgver=1696
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger (mainline GIT version)"
 arch=('i686' 'x86_64')
 url="https://yuzu-emu.org/"
 license=('GPL2')
 depends=('boost-libs' 'shared-mime-info' 'hicolor-icon-theme' 'sdl2' 'qt5-base' 'qt5-multimedia' 'qt5-webengine' 'libxkbcommon-x11' 'ffmpeg' 'fmt' 'libzip' 'opus' 'libfdk-aac' 'lz4' 'mbedtls' 'openssl' 'zstd')
-makedepends=('git' 'glslang' 'cmake' 'ninja' 'python2' 'graphviz' 'doxygen' 'clang' 'boost' 'catch2' 'nlohmann-json' 'rapidjson' 'qt5-tools' 'desktop-file-utils')
+makedepends=('gcc10' 'git' 'glslang' 'cmake' 'ninja' 'python2' 'graphviz' 'doxygen' 'clang' 'boost' 'catch2' 'nlohmann-json' 'rapidjson' 'qt5-tools' 'desktop-file-utils')
 optdepends=('qt5-wayland: for Wayland support')
-provides=('yuzu' 'yuzu-canary-git' 'yuzu-cmd' 'yuzu-mainline' 'yuzu-canary')
-conflicts=('yuzu-canary-git' 'yuzu-master-git')
-replaces=('yuzu-canary-git')
+provides=('yuzu')
+conflicts=('yuzu')
 source=("https://github.com/pineappleEA/pineapple-src/archive/EA-${pkgver}.tar.gz")
-md5sums=('0249b154b1a0a4d591d247758cc19a45')
+md5sums=('7ac2ea34c90c3058702284e03aafa5ec')
 
 prepare() {
   cd "$srcdir/pineapple-src-EA-${pkgver}"
@@ -23,13 +22,15 @@ prepare() {
     patch -p1 < $i
   done
   find . -name "CMakeLists.txt" -exec sed -i 's/^.*-Werror$/-W/g' {} +
-#  find . -name "CMakeLists.txt" -exec sed -i 's/^.*-Werror=.*)$/ )/g' {} +
+  #find . -name "CMakeLists.txt" -exec sed -i 's/^.*-Werror=.*)$/ )/g' {} +
   find . -name "CMakeLists.txt" -exec sed -i 's/^.*-Werror=.*$/ /g' {} +
   find . -name "CMakeLists.txt" -exec sed -i 's/-Werror/-W/g' {} +
 }
 build() {
   cd "$srcdir/pineapple-src-EA-${pkgver}"
 	mkdir -p build && cd build
+  export CC=gcc-10
+  export CXX=g++-10
   cmake .. -GNinja \
     -DTITLE_BAR_FORMAT_IDLE="yuzu Early Access $pkgver" \
     -DTITLE_BAR_FORMAT_RUNNING="yuzu Early Access $pkgver | {3}" \
