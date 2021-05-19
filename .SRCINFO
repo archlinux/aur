@@ -1,7 +1,7 @@
 pkgbase = friendiqa
 	pkgdesc = Client for social network Friendica
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.friendi.ca/lubuwest/Friendiqa
 	arch = any
 	license = GPL3

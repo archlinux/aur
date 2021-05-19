@@ -1,7 +1,7 @@
 # Maintainer: Marco R. <thomasschmidt45@gmx.net>
 pkgname=friendiqa
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Client for social network Friendica"
 arch=('any')
 url="https://git.friendi.ca/lubuwest/Friendiqa"
@@ -12,15 +12,15 @@ source=("$pkgname-$pkgver.tar.gz::https://git.friendi.ca/lubuwest/Friendiqa/arch
 md5sums=('ab310a7b9b4256afb99e30697f2dfe0e') #generate with 'makepkg -g'
 
 build() {
-  cd "$pkgname/source-linux"
   cmake -B build -S "friendiqa\source-linux" \
         -DCMAKE_BUILD_TYPE='None' \
-        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DCMAKE_INSTALL_PREFIX='/usr'
+  cd build
   make
 }
 
 package() {
-  cd "$pkgname/source-linux"
+  cd build
   make INSTALL_ROOT="$pkgdir" install
   install -Dm644 "$srcdir"/images/de.ma-nic.Friendiqa.desktop "$pkgdir"/usr/share/applications/de.ma-nic.Friendiqa.desktop
   install -Dm644 "$srcdir"/images/Friendiqa.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/Friendiqa.svg
