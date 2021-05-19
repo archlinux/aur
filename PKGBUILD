@@ -1,43 +1,34 @@
 # Maintainer: Cyano Hao <c@cyano.cn>
 
 pkgname=qemu-guest-kernel
+pkgver=5.10.38
+pkgrel=1
 pkgdesc="Linux kernels for QEMU/KVM guests (direct kernel boot)"
 url="https://github.com/guest-kernel/qemu"
-
-_srcmajor=5
-_srcminor=10
-_srcpatch=37
-_srcbase=$_srcmajor.$_srcminor
-_srcname=linux-$_srcbase
-
-pkgver=$_srcbase.$_srcpatch
-pkgrel=1
 arch=(any)
 license=(GPL2)
 makedepends=(
 	bc kmod libelf pahole cpio perl tar xz
+	git
 	clang lld llvm
 )
 options=('!strip')
 install=archpkg.install
 
+_srcname=stable-linux
 source=(
-	"https://cdn.kernel.org/pub/linux/kernel/v$_srcmajor.x/linux-$_srcbase".tar.{xz,sign}
-	"https://cdn.kernel.org/pub/linux/kernel/v$_srcmajor.x/patch-$pkgver".xz
+	$_srcname::"git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git?signed#tag=v$pkgver"
 	config.x86
 )
 validpgpkeys=(
 	"ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
 	"647F28654894E3BD457199BE38DBBDC86092693E"  # Greg Kroah-Hartman
 )
-sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
-            'SKIP'
-            '1e86da1a877f1dd3485c52fc97282351cc5c98ec5e66aa9c626142ada78fab38'
+sha256sums=('SKIP'
             '98a6c9a50221685ff9bd510c1a413caeddcbb6ecc4b2855bc82d3b5ea3979311')
 
 prepare() {
 	cd "$srcdir/$_srcname"
-	patch -Np1 -i "$srcdir/patch-$pkgver"
 	for _arch in x86
 	do
 		cp "$srcdir/config.$_arch" arch/$_arch/configs/qemu_extra.config

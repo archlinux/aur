@@ -6,9 +6,7 @@ linux-*.tar.xz
 vmlinuz.*
 
 # makepkg and production
-linux-*.tar.xz
-linux-*.tar.sign
-patch-*.xz
+stable-linux
 src/
 pkg/
 qemu-guest-kernel-*.pkg.tar*
