@@ -24,7 +24,7 @@ sha256sums=('583de0edd663cb93ccff679535e4fd868004da4cbef0b84087429a836bb31a4b'
 #}
 
 package() {
-  cd $pkgname-0.3.5
+  cd $pkgname-0.3.10
 
   python3 setup.py install --root="$pkgdir/" --optimize=1
 
