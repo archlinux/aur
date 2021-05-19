@@ -5,8 +5,8 @@
 
 pkgname=(libvirt libvirt-storage-gluster libvirt-storage-iscsi-direct libvirt-storage-rbd)
 epoch=1
-pkgver=7.1.0
-pkgrel=3
+pkgver=7.3.0
+pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
 url="https://libvirt.org/"
@@ -15,7 +15,6 @@ install=libvirt.install
 depends=('libpciaccess' 'yajl' 'fuse2' 'gnutls' 'parted' 'libssh' 'libxml2' 'numactl' 'polkit')
 makedepends=('meson' 'libxslt' 'python-docutils' 'lvm2' 'open-iscsi' 'libiscsi' 'ceph-libs' 'glusterfs'
              'bash-completion' 'rpcsvc-proto' 'dnsmasq' 'iproute2' 'qemu-headless')
-checkdepends=('ebtables')
 optdepends=('libvirt-storage-gluster: Gluster storage backend'
             'libvirt-storage-iscsi-direct: iSCSI-direct storage backend'
             'libvirt-storage-rbd: RBD storage backend'
@@ -94,7 +93,7 @@ backup=(
 )
 source=("https://libvirt.org/sources/$pkgname-$pkgver.tar.xz"{,.asc}
         "find_programs.ini")
-sha256sums=('870f180d80256411c5afc39bc5aac4f8acca04a4e0725c576ad24053dc64a06c'
+sha256sums=('27bdbb85c0301475ab1f2ecd185c629ea0bfd5512bef3f6f1817b6c55d1dc1be'
             'SKIP'
             '735ac805fbf06021418f82297845babf481d5681bd939a6994fbdf36fe1661e4')
 validpgpkeys=('453B65310595562855471199CA68BE8010084C9C') # Jiří Denemark <jdenemar@redhat.com>
