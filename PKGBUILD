@@ -85,8 +85,7 @@ source=(
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "http://ck.kolivas.org/patches/5.0/5.12/5.12-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-drm-i915-dp-Use-slow-and-wide-link-training-for-ever.patch
-  0003-Revert-bus-mhi-core-Process-execution-environment-ch.patch
+  0002-Revert-bus-mhi-core-Process-execution-environment-ch.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -97,9 +96,8 @@ b2sums=('cb6413d9046bfbe68e7444aafd5353a3cf03a78aca38624dc91a313a8944c6da5d66f3f
         'ccb7779df282b54d9acf59682eaa93a39f27276798d61d4c8be8a3b31e582a377c9d3278a500744a3ed089a337807f95a2d23ef821af2f4a7eec24540092b746'
         '72194a32a06c43809d1272bd675890b6d27c6c54353150a366e8e2c50ad6eca6ee23c5d6281822965a228cfedfa07a60fe135d1b4f539e4a62728d4460cc0b0e'
         'c9f729ba1efe6f04e7b2c57d3999bc9675b577596dccb2f227e5b6e444285e1fdd270bf67c0fcf9f5808a4c3a4b1c7a5c13a76f754ad9b9447243ccbaf2ce6a3'
-        '213557da5172046b073aa4fe513f6bf50036bf462b08f6e26dc540ecc42d0caed531a23730e94a178526e8a6d501be6c7043aaf00a1cf293fa9ba7b47101b2e4'
-        'b25bea0a96767e766dde01c9c8f1c50673a6dd9d57b3255f474b7c04bb638b9ca7e6cddcc8bb7cf7b0fe7f2cd4d2c454737750128e7284d97558c167ab46c710'
-        '17c8818b268fdbe798fe9594b39753a40e06d4f94932ec33a0ba8cbfd8414c6fa3342190ea00094dfdf3499215d811a98414150025ad8dd2a150d1bea81eadba')
+        '009468b6fb9c859b5cfff12af1fd0ff8be60362c161af2c24a0d1bda5a7827c770cac0e3a7faf985d59419f693fba181c846390a25c6f07c769a652bcaeeaa32'
+        'c3a333eea69c74444d8dc0a10ba112fb7bb7faa173140df829cb27afbf5d97c7ade2ae9d88bbd315a51438ca01f88f1f9b06d4bf8a52a2e29c1f5fa9370773ca')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

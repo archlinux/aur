@@ -1,7 +1,7 @@
-From 676bfe06a676d970e6b8cc28b7cd18ac1db994c4 Mon Sep 17 00:00:00 2001
+From e3f30700184dbcf2378428ac3fac8a6fd889d8c2 Mon Sep 17 00:00:00 2001
 From: Steven Barrett <steven@liquorix.net>
 Date: Tue, 18 May 2021 11:35:29 -0500
-Subject: [PATCH 3/4] Revert "bus: mhi: core: Process execution environment
+Subject: [PATCH 2/3] Revert "bus: mhi: core: Process execution environment
  changes serially"
 
 Fix ath11k / QCA6390 initialization:
