@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='Framebuffer terminal emulator'
 arch=('x86_64' 'armv7h')
 url='https://salsa.debian.org/debian/fbterm'
-license=('MIT')
+license=('GPL2')
 depends=(freetype2 fontconfig)
 provides=(fbterm)
 conflicts=(fbterm)
@@ -42,9 +42,6 @@ build() {
 package() {
   cd $srcdir/$_gitname-$_majorver
   make DESTDIR="$pkgdir/" install
-
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-  cp COPYING "$pkgdir/usr/share/licenses/$pkgname/"
 
   mkdir -p "$pkgdir/usr/share/terminfo"
   cp -r tic/f "$pkgdir/usr/share/terminfo/"
