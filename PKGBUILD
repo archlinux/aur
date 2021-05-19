@@ -3,7 +3,7 @@
 
 pkgname=vtk9-java
 pkgver=9.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization. version 9 with java bindings'
 arch=('x86_64')
 url="http://vtk.org"
@@ -16,7 +16,6 @@ libharu
 libjpeg-turbo
 libogg
 libpng
-liblas
 libtheora
 libtiff
 libxml2
@@ -89,7 +88,8 @@ build() {
   cmake -B build_dir -S vtk-v${pkgver} -W no-dev -G Ninja \
   -D CMAKE_CXX_FLAGS="-D__STDC_CONSTANT_MACROS" \
   -D CMAKE_BUILD_TYPE=None \
-  -D CMAKE_SKIP_RPATH=ON \
+  -D CMAKE_SKIP_RPATH=OFF \
+  -D CMAKE_SKIP_INSTALL_RPATH=ON \
   -D CMAKE_INSTALL_PREFIX=/usr \
   -D CMAKE_INSTALL_LIBDIR=lib \
   -D BUILD_SHARED_LIBS=ON \
@@ -132,8 +132,7 @@ build() {
   -D VTK_USE_EXTERNAL=ON \
   -D VTK_USE_TK=ON \
   -D VTK_USE_OGGTHEORA_ENCODER=ON \
-  -D VTK_INSTALL_TCL_DIR=/usr/lib/tcl${_tkver}/vtk/ \
-  -D VTK_WRAP_JAVA=ON
+  -D VTK_INSTALL_TCL_DIR=/usr/lib/tcl${_tkver}/vtk/
 
   cmake --build build_dir
 }
