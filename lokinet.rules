@@ -1,0 +1,8 @@
+/* Allow lokinet to set DNS settings */
+polkit.addRule(function(action, subject) {
+    if ((action.id == "org.freedesktop.resolve1.set-dns-servers" ||
+         action.id == "org.freedesktop.resolve1.set-domains") &&
+        subject.user == "lokinet") {
+        return polkit.Result.YES;
+    }
+});

@@ -1,7 +1,7 @@
 # Maintainer: nekgem2 <nekgem2@firemail.cc>
 pkgname=lokinet
-pkgver=0.9.0
-pkgrel=3
+pkgver=0.9.2
+pkgrel=1
 pkgdesc="Anonymous, decentralized and IP based overlay network for the internet."
 arch=('x86_64' 'aarch64')
 url="https://lokinet.org"
@@ -18,8 +18,10 @@ source=("https://github.com/loki-project/loki-network/releases/download/v$pkgver
         'lokinet-default-config.service'
         'lokinet-resume.service'
         'lokinet.sysusers'
-        'lokinet.tmpfiles')
-sha256sums=('7e64229560a22b42f80809cf91184d77f59cbb31fc777b4042be6c2de5934b23'
+        'lokinet.tmpfiles'
+        'lokinet.pkla'
+        'lokinet.rules')
+sha256sums=('334149d949e3508bf07816336ec4e9f7e2af553747f8e42bef4dc564d10a08a9'
             'SKIP'
             'ff5e7db4e65463e50978da0185487bd4a7f213f04bdb6256e221089f833c6ab6'
             '41f02f6ca693cd596165a7431795f36a2559504361857063278d31f833b3b7b1'
@@ -28,7 +30,9 @@ sha256sums=('7e64229560a22b42f80809cf91184d77f59cbb31fc777b4042be6c2de5934b23'
             '6ef779170b72856bbb8df40c34a808acffddd156684bdb66a55e71d50cf95841'
             'bcf4bd7b38d2f054e25cc243353d3c9a56d1948b42ad07ee5c0260de06e8dd6c'
             '137cf7eeebc8737d62f3ccfad2398fb1c442a91cb9db7d650429b218dd949a00'
-            '53837c9cfc90b93d55558045108a5d1d7a8b8a75a266af264d7f9101363d043f')
+            '53837c9cfc90b93d55558045108a5d1d7a8b8a75a266af264d7f9101363d043f'
+            'e37178d0edaca5b764ed2381e4c670cb4a8c3565c6ab59533f2a783155fe1efc'
+            '6ea4d917ce2e46b2c31af31b8c8c28054c5f977bab5b050c44e2029ab3248713')
 validpgpkeys=('67EF6BA68E7B0B0D6EB4F7D4F357B3B42F6F9B05') # Jeff Becker (probably not evil) <jeff@i2p.rocks>
 
 build() {
@@ -59,7 +63,6 @@ build() {
 package() {
 	cd "lokinet-v$pkgver"
 	install -D -m 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -D -m 644 contrib/systemd-resolved/lokinet.conf "$pkgdir/usr/lib/systemd/resolved.conf.d/00-lokinet.conf"
 	cd build
 	make DESTDIR="$pkgdir" install
 
@@ -71,4 +74,7 @@ package() {
 	install -D -m 644 "$srcdir/lokinet-resume.service"         "$pkgdir/usr/lib/systemd/system/lokinet-resume.service"
 	install -D -m 644 "$srcdir/lokinet.sysusers"               "$pkgdir/usr/lib/sysusers.d/lokinet.conf"
 	install -D -m 644 "$srcdir/lokinet.tmpfiles"               "$pkgdir/usr/lib/tmpfiles.d/lokinet.conf"
+	install -D -m 644 "$srcdir/lokinet.pkla"                   "$pkgdir/var/lib/polkit-1/localauthority/10-vendor.d/lokinet.pkla"
+	install -D -m 750 -d "$pkgdir/usr/share/polkit-1/rules.d"
+	install -D -m 644 "$srcdir/lokinet.rules"                  "$pkgdir/usr/share/polkit-1/rules.d/lokinet.rules"
 }
