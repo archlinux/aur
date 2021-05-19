@@ -1,5 +1,5 @@
 pkgbase = nym-git
-	pkgdesc = Append, copy, link, and move files using patterns.
+	pkgdesc = Manipulate files en masse using patterns.
 	pkgver = 0
 	pkgrel = 1
 	url = https://github.com/olson-sean-k/nym
