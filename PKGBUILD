@@ -1,24 +1,29 @@
-# Contributor: Kevin Brubeck Unhammer <unhammer@gmail.com>
-# Maintainer: Kevin Brubeck Unhammer <unhammer@gmail.com>
+# Maintainer: Marius Lindvall <(firstname) {cat} varden {dog} info>
+# Contributor: Kevin Brubeck Unhammer <unhammer@fsfe.org>
 pkgname=apertium-br-fr
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
-pkgdesc="Apertium language data for the Breton-French translator."
-url="http://apertium.org"
-license=('GPL')
-makedepends=('pkgconfig')
-depends=('lttoolbox>=3.2' 'apertium>=3.2' 'vislcg3>=0.9.7.7823')
+pkgdesc="Apertium translation pair for Breton and French"
+url="https://github.com/apertium/${pkgname}"
+license=('GPL2')
+makedepends=('pkgconf')
+depends=('apertium>=3.4.2' 'apertium-lex-tools>=0.2.5' 'vislcg3>=1.3.0')
 arch=('i686' 'x86_64')
-source=("http://downloads.sourceforge.net/sourceforge/apertium/${pkgname}-${pkgver}.tar.gz")
-md5sums=('65992f979f243e1f6a0f0b850b5a8a10')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/apertium/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('5a2ce4138985f9d6d7332fcf3de70b4d7ed53337c958436ef0d5372a67e0e593')
 
 build() {
-  mkdir -p "$pkgdir/usr/share/apertium/modes"
+    cd "$srcdir/$pkgname-$pkgver"
+    ./autogen.sh --prefix=/usr
+    make
+}
 
-  cd "$srcdir/$pkgname-$pkgver"
+check() {
+    cd "$srcdir/$pkgname-$pkgver"
+    make check
+}
 
-  export PATH="/usr/bin:${PATH}" # override /usr/local/bin
-  ./configure --prefix=/usr
-  make || return 1
-  make DESTDIR="$pkgdir/" install || return 1
+package() {
+    cd "$srcdir/$pkgname-$pkgver"
+    make DESTDIR="$pkgdir/" install
 }
