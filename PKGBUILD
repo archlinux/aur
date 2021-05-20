@@ -1,7 +1,7 @@
 # Maintainer: ml <>
 pkgname=kind
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Kubernetes IN Docker - local clusters for testing Kubernetes'
 arch=('x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
 url='https://kind.sigs.k8s.io/'
@@ -12,9 +12,9 @@ optdepends=(
   'docker: container engine'
   'podman: container engine'
 
-  'bazel: building node images with bazel'
   'kubectl: for managing Kubernetes clusters'
 )
+install=kind.install
 source=("https://github.com/kubernetes-sigs/kind/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('c78bed3a39afd2e523b38256b7f16445d0ad4b8b25f18b5766005e095af772cd')
 
@@ -27,13 +27,18 @@ build() {
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
-  export GOFLAGS='-buildmode=pie -mod=readonly -modcacherw -trimpath'
-  go build -o "$pkgname" -ldflags "-linkmode=external -X sigs.k8s.io/kind/pkg/cmd/kind/version.GitCommit=$_commit"
+  export GOFLAGS='-buildmode=pie -modcacherw -trimpath'
+
+  go build -o "$pkgname" -ldflags="-linkmode=external \
+    -X sigs.k8s.io/kind/pkg/cmd/kind/version.GitCommit=$_commit"
+
+  ./"$pkgname" completion bash >completion.bash
+  ./"$pkgname" completion zsh >completion.zsh
 }
 
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
-  ./"$pkgname" completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-  ./"$pkgname" completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+  install -Dm644 completion.bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+  install -Dm644 completion.zsh "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }

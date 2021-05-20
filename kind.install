@@ -1,0 +1,8 @@
+# vim: ft=bash
+post_install() {
+  echo "\
+    Rootless docker/podman (with cgroups v2) is supported starting >=0.11.0
+      Checkout the guide: https://kind.sigs.k8s.io/docs/user/rootless/"
+}
+
+post_upgrade() { post_install; }
