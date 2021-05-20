@@ -1,0 +1,16 @@
+pkgbase = apertium-afr
+	pkgdesc = Apertium linguistic data for Afrikaans
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-afr
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = pkgconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	source = apertium-afr-0.2.0.tar.gz::https://github.com/apertium/apertium-afr/releases/download/v0.2.0/apertium-afr-0.2.0.tar.gz
+	sha256sums = df1d903203f4dfa30d5338ce084c1485c9e21675558b4918edaf63f2b2e03d16
+
+pkgname = apertium-afr
+
