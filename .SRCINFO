@@ -1,7 +1,7 @@
 pkgbase = ungoogled-chromium
 	pkgdesc = A lightweight approach to removing Google web service dependency
 	pkgver = 90.0.4430.212
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Eloston/ungoogled-chromium
 	arch = x86_64
 	license = BSD
@@ -61,6 +61,7 @@ pkgbase = ungoogled-chromium
 	source = chromium-glibc-2.33.patch
 	source = wayland-egl.patch
 	source = use-oauth2-client-switches-as-default.patch
+	source = sql-make-virtualcursor-standard-layout-type.patch
 	sha256sums = abe11d0cb1ff21278aad2eec1a1e279d59176b15331804d7df1807446786d59e
 	sha256sums = b49f989e756bdaa66785905a59779005e9f168c39a235f605bd45df301c44788
 	sha256sums = 86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f
@@ -70,6 +71,7 @@ pkgbase = ungoogled-chromium
 	sha256sums = 2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b
 	sha256sums = 34d08ea93cb4762cb33c7cffe931358008af32265fc720f2762f0179c3973574
 	sha256sums = e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711
+	sha256sums = 23d6b14530acb66762c5d8b895c100203a824549e0d9aa815958dfd2513e6a7a
 
 pkgname = ungoogled-chromium
 
