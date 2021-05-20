@@ -5,7 +5,7 @@ pkgver=1.0.0.A16
 _cyanversion=1.0.0.A13 # Needed to find the right version ZIP
 _aosutilverion=0.0.0.13 # Needed for CCFG
 
-pkgrel=7
+pkgrel=8
 pkgdesc="CQ -- CCFG Command Line Inteface (Cyan Configurations)"
 arch=( 'any' )
 url=""
@@ -23,7 +23,7 @@ install=
 changelog=
 source=("https://aerialworks.ddns.net/maven/org/asf/cyan/CyanLoader-Sources/$_cyanversion/CyanLoader-Sources-$_cyanversion-full.zip" "https://aerialworks.ddns.net/maven/org/asf/aos/util/service/aosutil-service-SLIB-UTIL/$_aosutilverion/aosutil-service-SLIB-UTIL-$_aosutilverion.jar")
 noextract=()
-md5sums=( "90a0f35c37dcea97015d07c0af23d9b3" "c725e9bee57d6a63ce27b829cfa1a03e" )
+md5sums=( "8064e2a0b9b1aaf4ef880694e4ae1709" "c725e9bee57d6a63ce27b829cfa1a03e" )
 
 build() {
     cd CCFG
