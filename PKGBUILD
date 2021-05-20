@@ -3,7 +3,7 @@
 pkgname=mingw-w64-openimageio
 pkgver=2.2.14.0
 pkgrel=1
-pkgdesc="A library for reading and writing images. (mingw-w64)"
+pkgdesc="A library for reading and writing images, including classes, utilities, and applications (mingw-w64)"
 url="http://www.openimageio.org/"
 license=("BSD-3-Clause")
 depends=(
