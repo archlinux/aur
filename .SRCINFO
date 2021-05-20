@@ -1,6 +1,6 @@
 pkgbase = noisetorch-git
 	pkgdesc = Real-time microphone noise suppression on Linux.
-	pkgver = 0.9.0.r5.ge7072b2
+	pkgver = 0.11.1.r0.ga57cc20
 	pkgrel = 1
 	url = https://github.com/lawl/NoiseTorch
 	install = noisetorch-git.install
@@ -9,8 +9,9 @@ pkgbase = noisetorch-git
 	makedepends = git
 	makedepends = go
 	makedepends = cmake
-	depends = pulseaudio
 	depends = polkit
+	optdepends = pulseaudio
+	optdepends = pipewire>=0.3.28
 	provides = noisetorch
 	conflicts = noisetorch-bin
 	conflicts = noisetorch

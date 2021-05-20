@@ -1,13 +1,14 @@
 # Maintainer alx365
 # Maintainer:  Travis Collins <erbrecht at pobox dot com>
 pkgname='noisetorch-git'
-pkgver=0.9.0.r5.ge7072b2
+pkgver=0.11.1.r0.ga57cc20
 pkgrel=1
 pkgdesc='Real-time microphone noise suppression on Linux.'
 arch=('x86_64')
 url=https://github.com/lawl/NoiseTorch
 license=('GPL3')
-depends=('pulseaudio' 'polkit')
+depends=('polkit')
+optdepends=('pulseaudio' 'pipewire>=0.3.28')
 makedepends=('git' 'go' 'cmake')
 provides=('noisetorch')
 conflicts=("noisetorch-bin" "noisetorch")
@@ -44,7 +45,8 @@ build() {
 	echo "go flags    $GOFLAGS"
 	mkdir -p bin/
 	go generate
-	go build -o bin/noisetorch
+	vendor_flags="-X main.version=${pkgver} -X main.distribution=archlinux"
+	go build -ldflags "$vendor_flags -linkmode=external" -o bin/noisetorch
 	go clean -modcache
 }
 
