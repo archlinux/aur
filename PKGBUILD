@@ -3,13 +3,13 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=knewstuff-git
-pkgver=5.79.0_r1030.ga3943fed
+pkgver=5.83.0_r1098.gda89aa1f
 pkgrel=1
 pkgdesc='Support for downloading application assets from the network'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(kio-git kpackage-git)
+depends=(karchive-git kio-git kpackage-git)
 makedepends=(git extra-cmake-modules-git doxygen qt5-tools qt5-doc qt5-declarative)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
