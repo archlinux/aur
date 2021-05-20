@@ -68,7 +68,7 @@ DOCS_PDF=         # Generate and install pdf documentation.
 MAGICK=           # ImageMagick 7 support. Deprecated (read the logs).
                   # ImageMagick, like flash, is a bug ridden pest that 
 		              # won't die;  yet it is useful if you know what you 
-		              #are doing.
+		              # are doing.
                   # -->>If you just *believe* you need it, you don't.<<--
 NOGZ="YES"        # Don't compress .el files.
 FAST_BOOT=        # Only native-compile the bare minimum. Intended for use with
@@ -78,7 +78,7 @@ PROFILING=        # Enable gprof profiling support.
 
 ################################################################################
 pkgname="emacs-native-comp-git-enhanced"
-pkgver=28.0.50.148605
+pkgver=28.0.50.148556
 pkgrel=1
 pkgdesc="GNU Emacs. Development native-comp branch and pgtk branch combined."
 arch=('x86_64' )
