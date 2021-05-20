@@ -6,8 +6,8 @@
 # https://lists.archlinux.org/pipermail/aur-general/2021-May/036230.html
 
 pkgname=noisetorch
-pkgver=0.10.1
-pkgrel=5
+pkgver=0.11.1
+pkgrel=1
 pkgdesc='Real-time microphone noise suppression on Linux.'
 arch=('x86_64')
 url=https://github.com/lawl/NoiseTorch
@@ -18,8 +18,8 @@ provides=('noisetorch')
 install="${pkgname}.install"
 source=("git+${url}#tag=${pkgver}"
         "${pkgname}.install")
-sha256sums=('SKIP'
-            '171a4179c7e0f3a018a314893e81e598c02cfee274c90d715a302660af920eba')
+md5sums=('SKIP'
+         'efe2d4667047aab863f7dd6716cd46b4')
 
 build() {
 	export GOPATH="$srcdir/go"
