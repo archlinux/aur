@@ -1,6 +1,6 @@
 pkgbase = zdkimfilter
 	pkgdesc = zDKIM filter for Courier-MTA using the OpenDKIM Project's library.
-	pkgver = 3.3
+	pkgver = 3.4
 	pkgrel = 1
 	url = https://www.tana.it/sw/zdkimfilter/
 	arch = i686
@@ -20,10 +20,10 @@ pkgbase = zdkimfilter
 	options = debug
 	options = !strip
 	backup = etc/courier/filters/zdkimfilter.conf
-	source = http://www.tana.it/sw/zdkimfilter/zdkimfilter-3.3.tar.gz
-	source = http://www.tana.it/sw/zdkimfilter/zdkimfilter-3.3.tar.gz.asc
+	source = http://www.tana.it/sw/zdkimfilter/zdkimfilter-3.4.tar.gz
+	source = http://www.tana.it/sw/zdkimfilter/zdkimfilter-3.4.tar.gz.asc
 	validpgpkeys = 0A5B4BB141A53F7F55FC8CBCB6ACF44490D17C00
-	sha512sums = b407b8c274a5af4d5dd2d3390cfe996c1b8540c0be6a5a2975e8650cbc3458f3206ac9223aea43cba91f921838c06a3ed33537f292e1fe15710af3e3c0978152
+	sha512sums = a282764863efe0c09e05e7b58bc86f9637e81f1c6556589a77ee10d7d4c5192c0aa75446ffa3ffe931ce287c9ce9600a28dc12982be4874dd43c66dc86d4cd78
 	sha512sums = SKIP
 
 pkgname = zdkimfilter

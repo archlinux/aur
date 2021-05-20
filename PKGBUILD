@@ -1,6 +1,6 @@
 # Maintainer: Erich Eckner <arch at eckner dot net>
 pkgname=zdkimfilter
-pkgver=3.3
+pkgver=3.4
 pkgrel=1
 pkgdesc="zDKIM filter for Courier-MTA using the OpenDKIM Project's library."
 arch=('i686' 'pentium4' 'x86_64')
@@ -22,7 +22,7 @@ backup=('etc/courier/filters/zdkimfilter.conf')
 source=(
   "http://www.tana.it/sw/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.asc}
 )
-sha512sums=('b407b8c274a5af4d5dd2d3390cfe996c1b8540c0be6a5a2975e8650cbc3458f3206ac9223aea43cba91f921838c06a3ed33537f292e1fe15710af3e3c0978152'
+sha512sums=('a282764863efe0c09e05e7b58bc86f9637e81f1c6556589a77ee10d7d4c5192c0aa75446ffa3ffe931ce287c9ce9600a28dc12982be4874dd43c66dc86d4cd78'
             'SKIP')
 validpgpkeys=('0A5B4BB141A53F7F55FC8CBCB6ACF44490D17C00')
 options=('debug' '!strip')
