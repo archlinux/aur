@@ -6,7 +6,7 @@ pkgbase = ant19
 	arch = any
 	license = APACHE
 	makedepends = bash
-	makedepends = bin32-jdk6
+	makedepends = bin32-jdk7
 	makedepends = junit
 	makedepends = java-hamcrest
 	source = https://www.apache.org/dist/ant/source/apache-ant-1.9.15-src.tar.bz2
@@ -23,7 +23,7 @@ pkgbase = ant19
 	sha256sums = 1f99f054e9b1e412d29823088f3fa7cfce90a7af25d907a60a6d7908a6b97ea4
 
 pkgname = ant19
-	depends = bin32-jdk6
+	depends = bin32-jdk7
 	depends = bash
 	optdepends = junit: junit tasks
 	optdepends = java-hamcrest: junit tasks

@@ -7,12 +7,12 @@ pkgbase=ant19
 _pkgbase=ant
 pkgname=('ant19' 'ant19-doc')
 pkgver=1.9.15
-pkgrel=2
+pkgrel=3
 pkgdesc='Java based build tool'
 url='https://ant.apache.org/'
 arch=('any')
 license=('APACHE')
-makedepends=('bash' 'bin32-jdk6' 'junit' 'java-hamcrest')
+makedepends=('bash' 'bin32-jdk7' 'junit' 'java-hamcrest')
 source=(https://www.apache.org/dist/ant/source/apache-${_pkgbase}-${pkgver}-src.tar.bz2{,.asc}
         ant.conf
         apache-ant-1.9.15-https-and-repo-urls.patch
@@ -44,7 +44,7 @@ prepare() {
 
 build() {
   cd apache-${_pkgbase}-${pkgver}
-  export JAVA_HOME=/usr/lib32/jvm/java-6-jdk
+  export JAVA_HOME=/usr/lib/jvm/java-7-jdk
   ./bootstrap.sh
   bootstrap/bin/ant -Ddest=optional -f fetch.xml
   _replace_lib /usr/share/java/junit.jar lib/optional/junit-4.12.jar
@@ -54,7 +54,7 @@ build() {
 }
 
 package_ant19() {
-  depends=('bin32-jdk6' 'bash')
+  depends=('bin32-jdk7' 'bash')
   optdepends=('junit: junit tasks'
               'java-hamcrest: junit tasks')
   conflicts=('ant')
@@ -88,3 +88,15 @@ package_ant19-doc() {
 }
 
 # vim: ts=2 sw=2 et:
+
+# i486-specific
+if [ "${CARCH}" = "i486" ]; then
+  _JARCH=i386
+  _DOC_ARCH=x86
+fi
+
+# pentium4-specific
+if [ "${CARCH}" = "pentium4" ]; then
+  _JARCH=i386
+  _DOC_ARCH=x86
+fi
