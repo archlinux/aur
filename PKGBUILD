@@ -21,7 +21,7 @@ optdepends=('libxml2: import of SPML and APE DAX data files'
             'cfitsio: import of Flexible Image Transport System (FITS) files'
 #            'openexr: import and export of OpenEXR HDR images'
             'hdf5: import of Ergo data files')
-source=(http://downloads.sourceforge.net/sourceforge/gwyddion/$pkgname-$pkgver.tar.xz gwyddion-2.58-disable-openexr.patch)
+source=(https://downloads.sourceforge.net/sourceforge/gwyddion/$pkgname-$pkgver.tar.xz gwyddion-2.58-disable-openexr.patch)
 sha256sums=('d31367cd892e5b79c4b0eda8fb458403e67bd575a8aba1585e6df8d8e58ef52c'
             '5096afc6030ef2c39635ce33dec2af1c25b62865710a1aa91006d11ac1607bc4')
 
