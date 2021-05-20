@@ -1,13 +1,13 @@
 # Maintainer: Stanisław Jasiewicz <stjasiewicz@gmail.com>
 pkgname=nssnippets-bin
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A command-line tool for generating NWScript VSC snippets (binary version)"
 arch=('any')
 url="https://gitlab.com/Taro94/nwscript-snippets"
 license=('GPL')
-source=("https://gitlab.com/Taro94/nwscript-snippets/uploads/2f2269eb51567c585d612a7dbb51f86c/nssnippets.tar.7z")
-md5sums=('c1e5d3c5dc3412f5a2f32f8faddee300')
+source=("https://gitlab.com/Taro94/nwscript-snippets/uploads/74b6a4ba2bcc4308ad57b6b47952e74a/nssnippets.tar.7z")
+md5sums=('890fd62d9c100a354cea9bed114f1b53')
 options=(!strip)
 
 package() {
