@@ -1,7 +1,7 @@
 pkgbase = pulumictl
-	pkgdesc = Modern Infrastructure as Code
+	pkgdesc = A swiss army knife for Pulumi development
 	pkgver = 0.0.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pulumi/pulumictl
 	arch = x86_64
 	license = Apache-2.0
