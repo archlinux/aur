@@ -1,0 +1,16 @@
+pkgbase = apertium-dan
+	pkgdesc = Apertium linguistic data for Danish
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-dan
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = pkgconf
+	depends = apertium>=3.6.1
+	depends = vislcg3>=1.3.1
+	source = apertium-dan-0.6.1.tar.gz::https://github.com/apertium/apertium-dan/releases/download/v0.6.1/apertium-dan-0.6.1.tar.gz
+	sha256sums = cfc397f594c10a7e88143ab6f0e5ef98b5131159b4829a2bba3582eda7d27256
+
+pkgname = apertium-dan
+
