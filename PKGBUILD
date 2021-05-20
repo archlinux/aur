@@ -1,10 +1,10 @@
 # Maintainer: Kien Dang <mail at kien dot ai>
-# Maintainer: Joel Shapiro <jshapiro at nvidia dot com>
+# Maintainer: Julie Shapiro <jshapiro at nvidia dot com>
 
 pkgname=libnvidia-container-bin
 _pkgname=libnvidia-container
 
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 
 pkgdesc='NVIDIA container runtime library'
@@ -18,8 +18,8 @@ conflicts=('libnvidia-container')
 
 source=("https://nvidia.github.io/libnvidia-container/centos7/$CARCH/${_pkgname}1-${pkgver}-1.$CARCH.rpm"
         "https://nvidia.github.io/libnvidia-container/centos7/$CARCH/${_pkgname}-devel-${pkgver}-1.$CARCH.rpm")
-sha256sums=('a56a2cc2d506bb43e57e58c41e37c5873c4151f6c2513bc499f28569393220a2'
-            '4c5dea24ee16a0d9e9f2081004acb9a800f0de84f3b42574f740e664b6ff99e1')
+sha256sums=('60ff0a44a5f44c97fdcc99cb6759f3cf00bd08eee954321a255503681880d380'
+            '40ab7e7bafb1b235d7ceaf905e0ad0e67e8007ee7c6f9f4b12f9c60cbd3f342a')
 
 package() {
   cd "$srcdir"
