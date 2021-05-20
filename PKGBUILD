@@ -3,7 +3,7 @@
 
 _pkgname=exa
 pkgname=${_pkgname}-git
-pkgver=0.10.1.r0.g293372a
+pkgver=0.10.1.r19.ga6754f3
 pkgrel=1
 pkgdesc='Replacement for ls written in Rust'
 arch=('i686' 'x86_64')
@@ -33,12 +33,12 @@ package() {
     cd $_pkgname
     install -Dm755 "target/release/$_pkgname" \
         -t "$pkgdir/usr/bin"
-    install -Dm644 completions/completions.bash \
-        "$pkgdir/etc/bash_completion.d/$_pkgname"
-    install -Dm644 completions/completions.zsh \
-        "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
-    install -Dm644 completions/completions.fish \
-        "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
+    install -Dm644 completions/bash/$_pkgname \
+        -t "$pkgdir/etc/bash_completion.d"
+    install -Dm644 completions/zsh/_$_pkgname \
+        -t "$pkgdir/usr/share/zsh/site-functions"
+    install -Dm644 completions/fish/$_pkgname.fish \
+        -t "$pkgdir/usr/share/fish/vendor_completions.d"
     install -Dm644 LICEN?E \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 "target/release/man/$_pkgname.1" \
