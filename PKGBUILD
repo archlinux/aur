@@ -7,14 +7,14 @@
 pkgbase=kate-root
 _pkgbase=kate
 pkgname=(kwrite-root kate-root)
-pkgver=21.04.0
+pkgver=21.04.1
 pkgrel=1
 arch=(x86_64 i686 armv7h)
 license=(GPL LGPL FDL)
 makedepends=(extra-cmake-modules kdoctools plasma-framework knewstuff kitemmodels ktexteditor kactivities kuserfeedback)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgbase-$pkgver.tar.xz{,.sig}
         0001-Defuse-root-block.patch)
-sha256sums=('3780cc0de0cf078add7901e255a6524c34f093a4aff2a2d032ed88c20a7421d4'
+sha256sums=('6264b6c9775caf2e9f7dabdbd7e60d641629e0e8c0ef5abb04dd8bb31ef5a255'
             'SKIP'
             '2fbd6b482fcb4a56050f393ceb292e9bf72f796aeaba37ed4cadfb37c4fc90f1')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
