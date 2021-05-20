@@ -1,9 +1,9 @@
 # Maintainer: Johannes Graën <johannes SPIRALGALAXY selfnet FULLSTOP de>
 
 pkgname=jabref-latest
-pkgver=20210113
+pkgver=20210515
 pkgrel=1
-pkgdesc="GUI frontend for BibTeX, written in Java; latest master version from git"
+pkgdesc="GUI frontend for BibTeX, written in Java; latest main (master) version from git"
 arch=('x86_64')
 url="https://www.jabref.org/"
 license=('MIT')
@@ -17,8 +17,8 @@ depends=('glibc'
          'alsa-lib'
          'python3')
 optdepends=('gsettings-desktop-schemas: For web search support')
-source=(Jabref-${pkgver}.tgz::https://builds.jabref.org/master/JabRef-5.3-portable_linux.tar.gz
-        https://raw.githubusercontent.com/JabRef/jabref/master/LICENSE.md
+source=(Jabref-${pkgver}.tgz::https://builds.jabref.org/main/JabRef-5.3-portable_linux.tar.gz
+        https://raw.githubusercontent.com/JabRef/jabref/main/LICENSE.md
         jabref.sh
         JabRef.desktop
         JabRef.svg)
@@ -30,7 +30,7 @@ sha256sums=('SKIP'
 
 
 pkgver() {
-  curl --silent --head https://builds.jabref.org/master/JabRef-5.3-portable_linux.tar.gz \
+  curl --silent --head https://builds.jabref.org/main/JabRef-5.3-portable_linux.tar.gz \
     | grep -i "last-modified" | cut -d' ' -f2- | date -f - +%Y%m%d
 }
 
