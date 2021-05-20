@@ -2,7 +2,7 @@
 
 pkgname=xiaomitool-v2
 pkgver=20.7.28
-pkgrel=1
+pkgrel=2
 pkgdesc='Modding of Xiaomi devices made easy for everyone'
 arch=(any)
 license=(custom)
@@ -23,7 +23,7 @@ sha256sums=('be7b235376c06d158c2485eebc22ba299ee784639bee52dc50e210cda206afc6'
 
 package() {
   cd $srcdir
-  sh "XMT2_Linux_$pkgver.run" --noexec --keep
+  sh "XMT2_Linux_$pkgver.run" --noexec --keep --nox11
 
   mkdir "$pkgdir/opt"
   mv XiaoMiTool-V2 "$pkgdir/opt"
