@@ -17,12 +17,12 @@ WARAddonClient should appear in your Menus, Under the Games Category
 
 Command line tool is called waraddonclient *install and remove will start working with next(1.12.0?) WARAddonClient release*
 ```$ waraddonclient --help
-Usage: waraddonclient <command>
-Available commands:
--u                     Updates addons
--s                     To set your RoR folder location
--v                     Check the WARAddonClient version
--i                     Lets you install Addons
--r                     Lets you remove Addons
--h                     This help page
+usage: waraddonclient [-h] [-i <arg>] [-p] [-r <arg>] [-s <arg>] [-u] [-v]
+ -h,--help             This output.
+ -i,--install <arg>    Install/Update given addon.
+ -p,--verbose          Print more messages to screen.
+ -r,--remove <arg>     Remove given addon.
+ -s,--location <arg>   Set the location of the WAR-Folder.
+ -u,--update-all       Update all avaible Addons to the latest version.
+ -v,--version          Get the version of the WARAddonClient.
 ```
