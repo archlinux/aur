@@ -1,0 +1,21 @@
+pkgbase = linux-el
+	pkgdesc = The Enterprise Linux kernel, modules and headers (Rocky Linux binary)
+	pkgver = 240.22.1
+	pkgrel = 1
+	epoch = 8
+	url = https://www.kernel.org/
+	arch = x86_64
+	license = GPL2
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	options = !strip
+	source = https://download.rockylinux.org/pub/rocky/8/BaseOS/x86_64/os/Packages/kernel-core-4.18.0-240.22.1.el8.x86_64.rpm
+	source = https://download.rockylinux.org/pub/rocky/8/BaseOS/x86_64/os/Packages/kernel-modules-4.18.0-240.22.1.el8.x86_64.rpm
+	source = https://download.rockylinux.org/pub/rocky/8/BaseOS/x86_64/os/Packages/kernel-devel-4.18.0-240.22.1.el8.x86_64.rpm
+	sha256sums = bba3049faaee909ba055f495012a49cb885db357048e967a41d79aa1d5822465
+	sha256sums = 6360d8c98d127b00b2b7b6bc28b14f5b738642f699909a5e660161066a437f23
+	sha256sums = 8791ee1dc248f4ec347f2b254bf1c39e7e8a71c4a61b3996dd0c989c3acbe098
+
+pkgname = linux-el
+
