@@ -3,7 +3,7 @@
 pkgname=mingw-w64-libraw
 pkgver=0.20.0
 pkgrel=3
-pkgdesc="LibRaw is a library for reading RAW files obtained from digital photo cameras (CRW/CR2, NEF, RAF, DNG, and others) (mingw-w64)"
+pkgdesc="A library for reading RAW files obtained from digital photo cameras (CRW/CR2, NEF, RAF, DNG, and others) (mingw-w64)"
 url="https://www.libraw.org/"
 license=("LGPL")
 depends=(
