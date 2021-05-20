@@ -1,0 +1,16 @@
+pkgbase = apertium-fra
+	pkgdesc = Apertium linguistic data for French
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-fra
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	source = apertium-fra-1.10.0.tar.gz::https://github.com/apertium/apertium-fra/archive/refs/tags/v1.10.0.tar.gz
+	sha256sums = 38a7465a0872500956f2a0a30184436c6d75eb94c93713e9f603682f833f75bd
+
+pkgname = apertium-fra
+
