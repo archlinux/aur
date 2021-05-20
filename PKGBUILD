@@ -2,7 +2,7 @@
 
 _pkgname=youtube-viewer
 pkgname=youtube-viewer-git
-pkgver=3.9.0.r0.ga0469d4
+pkgver=3.9.1.r0.gcb6878e
 pkgrel=1
 pkgdesc="A lightweight YouTube client for Linux"
 arch=('any')
