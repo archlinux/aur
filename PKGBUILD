@@ -3,7 +3,7 @@
 
 pkgname=gromacs
 pkgver=2021.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=("LGPL")
@@ -40,7 +40,6 @@ build() {
         -DGMX_DOUBLE=ON \
         -DGMX_BUILD_OWN_FFTW=ON \
         -DREGRESSIONTEST_DOWNLOAD=ON
-        #-DGMX_SIMD=AVX2_256 \
   make
 
   msg2 "Building the single precision files"
@@ -49,8 +48,9 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr/ \
         -DCMAKE_INSTALL_LIBDIR=lib\
         -DGMX_BUILD_OWN_FFTW=ON \
+	-DGMX_GPU=CUDA \
         -DREGRESSIONTEST_DOWNLOAD=ON
-        #-DGMX_SIMD=AVX2_256 \
+  #GMX_GPU: Framework for GPU acceleration. Pick one of: OFF, CUDA, OpenCL, SYCL
   make
 }
 
