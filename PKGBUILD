@@ -8,7 +8,7 @@ pkgdesc='mission planner for iNav and MSP'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'pentium4')
 url='https://github.com/stronnag/mwptools.git'
 license=('GPLv3')
-makedepends=('git' 'vala')
+makedepends=('git' 'vala' 'meson')
 depends=('gtk3' 'gdl' 'libchamplain' 'clutter' 'bluez' 'espeak' 'libgudev' 'gstreamer' 'cairo' 'pango' 'libxml2' 'vte3' 'mosquitto')
 optdepends=('blackbox-tools-git: Replay Blackbox files (AUR)'
  'gnuplot: Mission Elevation plots'
@@ -28,11 +28,12 @@ pkgver() {
 
 build() {
   cd $_pkgname
-  make -j1
+  meson build --prefix=/usr --buildtype=release --strip
+  meson compile -C build
 }
 
 package() {
   # executable
   cd $_pkgname
-  make -j1 DESTDIR="$pkgdir"  NOSCHEMAS=1 install
+  DESTDIR="$pkgdir" meson install -C build
 }

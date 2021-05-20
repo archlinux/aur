@@ -12,6 +12,7 @@ pkgbase = mwptools-git
 	license = GPLv3
 	makedepends = git
 	makedepends = vala
+	makedepends = meson
 	depends = gtk3
 	depends = gdl
 	depends = libchamplain
