@@ -2,7 +2,7 @@
 
 pkgname=python-hvac
 name=hvac
-pkgver=0.10.11
+pkgver=0.10.12
 pkgrel=1
 pkgdesc="Python 2.7/3.X client for HashiCorp Vault"
 url="https://python-hvac.org/"
@@ -11,7 +11,7 @@ arch=('any')
 depends=('python')
 makedepends=('python-setuptools')
 source=("$name-$pkgver.tar.gz::https://github.com/$name/$name/archive/v$pkgver.tar.gz")
-sha512sums=('6b68bd19d5621758637ec257992e03da6b1746e5ac1d1b8d63098b6c0c1dc0c0f92fb6bd653b5458e8c55060a48619eb4d09ec4d0529cc2b3f4b91745bd2095c')
+sha512sums=('a52791bee2eedf488fabb488971f84f357e94812b14de36b45360690d3d018c9162dba9b8a54a719f1fe45b5f526fb729c08c8ece4f3c093f8a8f50a37731260')
 
 build() {
   cd "$srcdir/$name-$pkgver"
