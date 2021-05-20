@@ -4,7 +4,7 @@ pkgver=1.0.0.A4
 
 _cyanversion=1.0.0.A13 # Needed to find the right version ZIP
 
-pkgrel=6
+pkgrel=7
 pkgdesc="CTC -- Cyan Trust Container CLI, frontend for creating CTC trust containers"
 arch=( 'any' )
 url=""
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://aerialworks.ddns.net/maven/org/asf/cyan/CyanLoader-Sources/$_cyanversion/CyanLoader-Sources-$_cyanversion-full.zip")
 noextract=()
-md5sums=( "90a0f35c37dcea97015d07c0af23d9b3" )
+md5sums=( "8064e2a0b9b1aaf4ef880694e4ae1709" )
 
 build() {
     cd CyanComponents
