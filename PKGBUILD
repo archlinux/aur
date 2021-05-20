@@ -3,9 +3,9 @@
 _target=rockchip
 pkgbase="linux-$_target"
 pkgname=("$pkgbase" "$pkgbase-headers")
-pkgver=5.10.37
+pkgver=5.10.38
 _armbver=21.08.0
-_armbrel=25
+_armbrel=27
 _kernver="$pkgver-$_target"
 pkgrel=1
 arch=('armv7h')
