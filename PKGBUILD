@@ -2,11 +2,11 @@
 # Contributor: Kevin Brubeck Unhammer <unhammer@fsfe.org>
 pkgname=vislcg3-svn
 pkgver=1.3.2.r16864
-pkgrel=1
+pkgrel=2
 pkgdesc="Compiler and parser for Constraint Grammar (CG), a paradigm for robust, rule-based Natural Language Parsing."
 url="https://visl.sdu.dk/cg3.html"
 license=('GPL3')
-makedepends=('boost' 'gperftools' 'cmake')
+makedepends=('boost' 'gperftools' 'cmake' 'subversion')
 depends=('icu')
 provides=('vislcg3')
 conflicts=('vislcg3')
