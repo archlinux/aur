@@ -2,7 +2,7 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-rocclr
 pkgver=4.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
 url='https://rocmdocs.amd.com/en/latest/Installation_Guide/HIP.html'
@@ -53,6 +53,9 @@ package() {
   # Some packages search for hip includes in /opt/rocm/include
   install -d "$pkgdir/opt/rocm/include"
   ln -s "/opt/rocm/hip/include/hip" "$pkgdir/opt/rocm/include/hip"
+  # Same holds for the HIP library
+  install -d "$pkgdir/opt/rocm/lib"
+  ln -s "/opt/rocm/hip/lib/libamdhip64.so" "$pkgdir/opt/rocm/lib/libamdhip64.so"
 
   install -Dm644 /dev/stdin "$pkgdir/etc/ld.so.conf.d/hip.conf" <<EOF
 /opt/rocm/hip/lib
