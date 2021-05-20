@@ -1,26 +1,25 @@
-# Contributor: Kevin Brubeck Unhammer <unhammer@fsfe.org>
+# Maintainer: Marius Lindvall <(firstname) {cat} varden {dog} info>
 # Maintainer: Kevin Brubeck Unhammer <unhammer@fsfe.org>
+# Contributor: Kevin Brubeck Unhammer <unhammer@fsfe.org>
 pkgname=lttoolbox
-pkgver=3.3.3
+pkgver=3.5.3
 pkgrel=1
-pkgdesc="Handles lexical processing, morphological analysis and generation of words in natural languages using fast finite state transducers."
-url="http://wiki.apertium.org/wiki/Lttoolbox"
-license=('GPL')
-makedepends=('pkgconfig')
-depends=('libxml2' 'gcc-libs')
-options=('!libtool')
+pkgdesc="Finite state compiler, processor and helper tools used by apertium"
+url="https://wiki.apertium.org/wiki/Lttoolbox"
+license=('GPL2')
+makedepends=('pkgconf' 'gcc' 'make')
+depends=('libxml2>=2.6.17' 'gcc-libs')
 arch=('i686' 'x86_64')
-source=(http://downloads.sourceforge.net/sourceforge/apertium/lttoolbox-${pkgver}.tar.gz)
-md5sums=('0bfac9f5ae0f8769a75b18c3fdff827f')
-sha256sums=('5ccfc98bd71e1c9cbb952f3b01a6f615cf580f39ce74cdcb7221fc9b48f40617')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/apertium/lttoolbox/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('d9ea85b32ea5867326ede276f3b52936205f82c42f285bf7b7fe169522d2ff05')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr
-  make
+	cd "$srcdir/$pkgname-$pkgver"
+	./autogen.sh --prefix=/usr
+	make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
+	cd "$srcdir/$pkgname-$pkgver"
+	make DESTDIR="$pkgdir/" install
 }
