@@ -1,6 +1,6 @@
 pkgbase = golang-golang-x-tour-git
 	pkgdesc = A tour of Go - an introduction to the Go programming language
-	pkgver = 398.0044035
+	pkgver = 404.a278aee
 	pkgrel = 1
 	url = https://tour.golang.org/
 	arch = i686

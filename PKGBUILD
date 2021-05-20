@@ -2,7 +2,7 @@
 # Contributor: Iru Cai <https://vimacs.wehack.space>
 
 pkgname=golang-golang-x-tour-git
-pkgver=398.0044035
+pkgver=404.a278aee
 pkgrel=1
 pkgdesc='A tour of Go - an introduction to the Go programming language'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -23,7 +23,7 @@ build() {
 	mv "$srcdir/tour" "$GOSRC"
 	cd "$GOSRC/tour"
 	rm -f go.mod go.sum
-	GOPATH="$srcdir/build:/usr/share/gocode" go build -v
+	GO111MODULE=off GOPATH="$srcdir/build:/usr/share/gocode" go build -v
 }
 
 package() {
@@ -31,7 +31,7 @@ package() {
 	install -D -m755 "$GOSRC/tour/tour" "$pkgdir/usr/bin/_golang-tour"
 	cat > "$pkgdir/usr/bin/golang-tour" << EOF
 #!/bin/sh
-GOPATH=/usr/share/gocode _golang-tour
+GO111MODULE=off GOPATH=/usr/share/gocode _golang-tour
 EOF
 	chmod +x "$pkgdir/usr/bin/golang-tour"
 	cd "$GOSRC/tour"
