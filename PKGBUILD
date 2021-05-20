@@ -7,8 +7,8 @@
 # https://lists.archlinux.org/pipermail/aur-general/2021-May/036230.html
 
 pkgname=noisetorch
-pkgver=0.11.1
-pkgrel=2
+pkgver=0.11.2
+pkgrel=1
 pkgdesc='Real-time microphone noise suppression on Linux.'
 arch=('x86_64')
 url=https://github.com/lawl/NoiseTorch
