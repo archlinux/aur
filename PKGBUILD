@@ -1,15 +1,15 @@
 # Maintainer: lmartinez-mirror
 pkgname=neovim-registers
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Neovim plugin to preview the contents of the registers"
 arch=('any')
 url="https://github.com/tversteeg/registers.nvim"
 license=('GPL3')
 groups=('vim-plugins')
-depends=('neovim-git')
+depends=('neovim>=0.4.4')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8eef3aee9d5705078f8870b71972055a3bc5c619d620668a9b2bbf41b1467c98')
+sha256sums=('baa0697cd0206e52836889c2f43848caf13448386499d576d3b6ce9fe377ff4b')
 
 package() {
   cd "registers.nvim-$pkgver"
