@@ -1,0 +1,22 @@
+pkgbase = exiv2-git
+	pkgdesc = Exif, Iptc and XMP metadata manipulation library and tools
+	pkgver = 0.27.4.RC2.r247.gc7a41230f
+	pkgrel = 1
+	url = https://github.com/Exiv2/exiv2
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = gtest
+	depends = gcc-libs
+	depends = zlib
+	depends = expat
+	depends = gettext
+	depends = curl
+	provides = libexiv2.so
+	conflicts = exiv2
+	source = exiv2-git::git+https://github.com/Exiv2/exiv2.git
+	md5sums = SKIP
+
+pkgname = exiv2-git
+
