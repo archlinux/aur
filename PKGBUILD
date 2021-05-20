@@ -25,8 +25,8 @@ _deadline_disable=y
 _kyber_disable=y
 ### Running with a 2000 HZ, 1000HZ or 500HZ tick rate
 _2k_HZ_ticks=
-_1k_HZ_ticks=y
-_500_HZ_ticks=
+_1k_HZ_ticks=
+_500_HZ_ticks=y
 # Compile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
 #
@@ -56,7 +56,7 @@ pkgver=${_major}
 #_stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -67,7 +67,7 @@ makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
 _patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.12"
 source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/$_srcname.tar.xz"
         "config"
-	"${_patchsource}/arch-patches-v3/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_patchsource}/arch-patches-v3/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_patchsource}/cacule-patches/cacule-5.12.patch"
         "${_patchsource}/cacule-patches/rdb.patch"
         "${_patchsource}/cpu-patches-v2/0001-cpu-patches.patch"
@@ -76,11 +76,11 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/$_srcname.tar.xz"
         "${_patchsource}/wine-esync-patches/0001-v5.12-winesync.patch"
         "${_patchsource}/zen-patches-v2/0001-zen-patches.patch"
         "${_patchsource}/lqx-patches-v2/0001-lqx-patches.patch"
-        "${_patchsource}/bfq-patches-v4/0001-bfq-patches.patch"
+        "${_patchsource}/bfq-patches-v5/0001-bfq-patches.patch"
         "${_patchsource}/block-patches-v2/0001-block-patches.patch"
         "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
         "${_patchsource}/bbr2-patches-v2/0001-bbr2-5.12-introduce-BBRv2.patch"
-        "${_patchsource}/btrfs-patches-v4/0001-btrfs-patches.patch"
+        "${_patchsource}/btrfs-patches-v5/0001-btrfs-patches.patch"
         "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
         "${_patchsource}/pf-patches-v2/0001-pf-patches.patch"
         "${_patchsource}/lru-patches-v4/0001-lru-patches.patch"
@@ -100,11 +100,11 @@ sha512sums=('6e00f85451a2d0c7381bf68bbe202706e1e28af5b1962c9c482c1e35f2c3b48a3b9
             '905f97cdff3e096552159a229d069d1b1418f4142b2927134110f504bfe0883309b3f29c2aeeb94c528b63e0eec7d0d69b44c3d498211c610811969cc4d07a56'
             '1c6cdf40009ce6c62b0a35cc7c2a74818b7169d32e18fb3c2bb8761762c15c579f64cb36f9076c4f78d3f88f077f6246ee75ba93f370cc40dae450d6d71117bb'
             '5a326d0bb0c79cacad8b787c237ab43c649d429209d5eb2f5d8b5c98a7bcf5af2e48e31344aa353a93a023f885a1e0710592ae5531a54c09ecb51b3f01b196a7'
-            'bd90ea2c83488c2dda03d0bab544e4d749de96d39f004de4bfe71a1432e637f8efa1663c5e34cadf328aeaee139661e7cdcd8d6e32cff47667351ed8395d3d05'
+            '79a1b3535ea3db42e6fbf06b90df45f8595d177fd8eebfaf09fb78eb7c987eeade156445d0aaf4855550eaa426e12fccd2b00f6c351244c6d883dfb23411c386'
             '37e10b0c53bd1947541be0551fa02b269886079d8d29032776b1a36cdf570773d4cb02da2ee57d4d16454cac916b5fd4361541b4be316d39b86ac4e050aa37f1'
             '5081a6a3a3db160ef0a23acd0c0db403cc4b3eb2dfd280b1b7ba2ae907d362e4d6a653d546523c870af07009c62f58eec26e7b8174a3f4fcbaa32808d965ad73'
             '28446f518e88ab934330111a01019cb164bfdd21094c69e96cc16c7931440d069ef997ae141154c97c80fcb727e8c4d940b8bf63554e3f4179652523e285c5b4'
-            'b765ef2b4b783f490fff9071727ace1215b9b588666c9518765323b9ada9207b3cfb9918a16b3f7eeb3cf5784d4c5919d7f3cde41236712c210dd9a733ff8320'
+            'ecb6779de9cf941b0d7dbb6b52f7025b307c0bc93449a84e49aba4f02565bdc052afea6732e97b55cacd7f82e17823d22065f1826fe88ae7185964238e57864c'
             '1b3b48246fe70e8ca7390cacacf560696c1d98604a7716ac32df8f3d7fc7cc2ab733ab24e372fffa63016344f2e4ed078f7d597c3c1261f0ca3ff1c87a13dcb9'
             '076a48767614ec97a84ccefa5795e4f36973f64a7728a9f716d5d9ecb6f6907ffcc74f7fab845e9d9aef3ef5d3d4df4e03f6c5a755c7fdd4bc43751003902e71'
             'd428d3f54634b91e41cac279f7c7b708a174d9cac085b7497802c5a50f77bbfcfdd8799c1db3351ba18e8316685b729d292bb45de0da443762dbd1b87cbc7dad'
@@ -262,12 +262,11 @@ prepare() {
       scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
 #     scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
 
-  ### Enabling Cacule-Config ##
       echo "Enable CacULE CPU scheduler..."
       scripts/config --enable CONFIG_CACULE_SCHED
       scripts/config --enable CONFIG_CACULE_RDB
-      scripts/config --set-val CONFIG_RDB_INTERVAL 4
-      scripts/config --enable  CONFIG_RDB_TASKS_GROUP
+      scripts/config --set-val CONFIG_RDB_INTERVAL 0
+      scripts/config --disable  CONFIG_RDB_TASKS_GROUP
       scripts/config --disable CONFIG_EXPERT
       scripts/config --disable CONFIG_FAIR_GROUP_SCHED
       scripts/config --disable CONFIG_SCHED_AUTOGROUP
@@ -279,8 +278,8 @@ prepare() {
       scripts/config --disable CONFIG_NO_HZ_IDLE
       scripts/config --enable CONFIG_NO_HZ
       scripts/config --enable CONFIG_NO_HZ_COMMON
-      scripts/config --enable CONFIG_NO_HZ_FULL
-      scripts/config --enable CONFIG_CONTEXT_TRACKING_FORCE
+#      scripts/config --enable CONFIG_NO_HZ_FULL
+#      scripts/config --enable CONFIG_CONTEXT_TRACKING_FORCE
       echo "Enabling KBUILD_CFLAGS -O3..."
       scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
       scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
@@ -298,7 +297,6 @@ prepare() {
       scripts/config --enable CONFIG_NTFS3_64BIT_CLUSTER
       scripts/config --enable CONFIG_NTFS3_LZX_XPRESS
       scripts/config --enable CONFIG_NTFS3_FS_POSIX_ACL
-  ### Enable ANBOX
       echo "Enable Anbox"
       scripts/config --module  CONFIG_ASHMEM
       scripts/config --enable  CONFIG_ANDROID_BINDER_IPC_SELFTEST
