@@ -3,7 +3,7 @@
 pkgname=mingw-w64-libheif
 pkgver=1.12.0
 pkgrel=3
-pkgdesc="HEIF file format decoder and encoder. (mingw-w64)"
+pkgdesc="HEIF file format decoder and encoder (mingw-w64)"
 url="https://github.com/strukturag/libheif"
 license=("LGPL")
 depends=(
