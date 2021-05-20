@@ -1,5 +1,6 @@
 # Maintainer: Vasiliy Stelmachenok <cabopust@yandex.ru>
 # Contributor: Pavel Priluckiy <gerallitluis2@gmail.com>
+# Contributor: Avinash Reddy <cassilasreddythemostwanted3108@gmail.com>
 
 # Integration of the nvidia-patch from keylase.
 #
@@ -48,10 +49,27 @@ _nvidia_patch=
 # Read more about NVIDIA PowerMizer settings here: https://wins911.blogspot.com/2012/06/etcx11xorg.html 
 _powermizer_scheme=
 
+# Enforces applying a certain performance level
+# (see description of _powermizer_scheme option above for details),
+# while activating some GPU overclocking possibilities, such as:
+# controlling GPU fan speed via nvidia-settings.
+#
+# Possible values:
+# 1 - Force maximum powersaving
+# 2 - Force a balance between performance and powersaving
+# 3 - Force Max Performnace (recommended)
+#
+# These settings apply to all power sources,
+# and cannot be configured for each one individually
+# as _powermizer_scheme does.
+#
+# WARNING: WORKS ONLY FOR LAPTOPS (NVIDIA PRIME)!
+_override_max_perf=
+
 pkgbase=nvidia-dkms-performance
 pkgname=(nvidia-dkms-performance nvidia-settings-performance nvidia-utils-performance opencl-nvidia-performance lib32-nvidia-utils-performance lib32-opencl-nvidia-performance)
 pkgver=465.31
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.nvidia.com/'
 license=('custom')
@@ -102,7 +120,7 @@ prepare() {
 	    sed -i 's/\x83\xfe\x01\x73\x08\x48/\x83\xfe\x00\x72\x08\x48/' "${srcdir}/${_pkg}/libnvidia-fbc.so.${pkgver}"
     fi
 
-    if [ -n $_powermizer_scheme ]; then 
+    if [ -n $_powermizer_scheme ] && [ -z $_override_max_perf ]; then
         echo "You have chosen a PowerMizer scheme: $_powermizer_scheme"
         if [ "$_powermizer_scheme" = "1" ]; then
             sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x3322;PowerMizerDefault0x3;PowerMizerDefaultAC=0x1"/' kernel/nvidia/nv-reg.h
@@ -120,6 +138,19 @@ prepare() {
             sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x3322"/' kernel/nvidia/nv-reg.h
         else 
             echo "An incorrect PowerMizer scheme has been selected."
+        fi
+    fi
+
+    if [ -n $_override_max_perf ] && [ -z $_powermizer_scheme ]; then
+        echo "You have chosen a Override Max Perf level: $_override_max_perf"
+        if [ "$_override_max_perf" = "1" ]; then
+            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "OverrideMaxPerf=0x1"/' kernel/nvidia/nv-reg.h
+        elif [ "$_override_max_perf" = "2" ]; then
+            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "OverrideMaxPerf=0x2"/' kernel/nvidia/nv-reg.h
+        elif [ "$_override_max_perf" = "3" ]; then
+            sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "OverrideMaxPerf=0x3"/' kernel/nvidia/nv-reg.h
+        else
+            echo "An incorrect Override Max Perf level has been selected."
         fi
     fi
 }
@@ -151,7 +182,6 @@ package_nvidia-dkms-performance() {
     # LICENSE
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
 
 package_nvidia-settings-performance() {
     pkgdesc='Tool for configuring the NVIDIA graphics driver'
