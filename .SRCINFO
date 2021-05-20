@@ -1,0 +1,17 @@
+pkgbase = apertium-fin
+	pkgdesc = Finnish monolingual data and morphological analyser-generator for apertium
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-fin
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	depends = hfst
+	source = apertium-fin-0.0.2.tar.gz::https://github.com/apertium/apertium-fin/archive/refs/tags/v0.0.2.tar.gz
+	sha256sums = 865fb5f258b1ab9417c2fe9473340e86e21673c236b31b2909dfa6f8b9a56892
+
+pkgname = apertium-fin
+
