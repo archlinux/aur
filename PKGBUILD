@@ -1,7 +1,7 @@
 # Maintainer: fward <howard Dot main At outlook Dot com>
 pkgname=kangaroo-bin
 _pkgname=kangaroo
-pkgver=0.99.3.200921
+pkgver=1.8.1.210430
 pkgrel=1
 pkgdesc="Kangaroo is a SQL client and admin tool for popular databases"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
     "https://github.com/dbkangaroo/kangaroo/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arch.tar.gz"
 )
 sha256sums=(
-	"87717e82be4f08540f68e79a25738229073e600a139765ef022325241421e0ef"
+	"7340222fdd5cc61f7c697b10b6b296458ad3bb4797e048f934cc43fcd6d234c7"
 )
 
 prepare() {
@@ -28,7 +28,10 @@ prepare() {
 }
 
 package() {
-	mkdir "${pkgdir}/usr" -p
-	cp -rp "${srcdir}/kangaroo/." "${pkgdir}/usr"
-	rm "${pkgdir}/usr/share/applications/mimeinfo.cache"
+	cp -rp "${srcdir}/kangaroo/." "${pkgdir}/."
+    rm "${pkgdir}/.BUILDINFO"
+    rm "${pkgdir}/.PKGINFO"
+    rm "${pkgdir}/.MTREE"
+    rm "${pkgdir}/usr/lib/libhandy-1.so"
+    rm "${pkgdir}/usr/lib/libhandy-1.so.0"
 }
