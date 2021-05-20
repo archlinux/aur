@@ -2,7 +2,7 @@
 pkgbase=manimce
 pkgname=manim
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Animation engine for explanatory math videos (community edition)."
 arch=('any')
 url="https://www.manim.community/"
@@ -50,6 +50,7 @@ prepare() {
 	sed -i 's/rich>=6.0,<7.0/rich/' setup.py
 	sed -i 's/decorator<5.0.0/decorator/' setup.py
 	sed -i 's/click>=7.1,<8.0/click/' setup.py
+	sed -i 's/cloup>=0.7.0,<0.8.0/cloup>=0.8.0/' setup.py
 }
 
 build() {
