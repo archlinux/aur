@@ -3,7 +3,7 @@
 pkgname=mingw-w64-fmt
 pkgver=7.1.3
 pkgrel=5
-pkgdesc="{fmt} is an open-source formatting library for C++. It can be used as a safe and fast alternative to (s)printf and iostreams. (mingw-w64)"
+pkgdesc="Open-source formatting library for C++ (mingw-w64)"
 url="https://fmt.dev/"
 license=("MIT")
 depends=("mingw-w64-crt")
