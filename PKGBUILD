@@ -1,5 +1,6 @@
 # Maintainer:  Travis Collins <erbrecht at pobox dot com>
 # Contributor: Justin Kromlinger <hashworks@archlinux.org>
+# Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 
 # Note: The upstream maintainer does not allow ANY modifications
 # to the source code. Please refrain from doing so.
@@ -7,7 +8,7 @@
 
 pkgname=noisetorch
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Real-time microphone noise suppression on Linux.'
 arch=('x86_64')
 url=https://github.com/lawl/NoiseTorch
