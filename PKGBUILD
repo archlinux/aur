@@ -4,7 +4,7 @@
 # Contributor: N30N <archlinux@alunamation.com>
 
 pkgname=lightzone
-pkgver=4.2.2
+pkgver=4.2.3
 pkgrel=1
 pkgdesc="Open-source professional-level digital darkroom software"
 url="http://lightzoneproject.org/"
@@ -12,7 +12,7 @@ license=("custom:BSD-3-Clause")
 arch=("x86_64")
 conflicts=('lightzone-git')
 provides=('lightzone')
-depends=('java-runtime=11'
+depends=('java-runtime=15'
     'java-openjfx'
     'javahelp2'
     'lcms2'
@@ -20,7 +20,7 @@ depends=('java-runtime=11'
     'libjpeg-turbo'
     'libtiff'
     'libxml2')
-makedepends=('java-environment=11'
+makedepends=('java-environment=15'
     'ant'
     'autoconf'
     'gcc'
@@ -35,13 +35,13 @@ makedepends=('java-environment=11'
     'libtiff')
 
 source=("https://github.com/ktgw0316/LightZone/archive/${pkgver}.zip")
-md5sums=('c453e23b49eceafc6611b2ae0fc9b82b')
+md5sums=('fde0d532e943cb08bc69640e82de8a65')
 
 build() {
-  if [ -d /usr/lib/jvm/java-11-jdk ]; then
-    export JAVA_HOME=/usr/lib/jvm/java-11-jdk
-  elif [ -d /usr/lib/jvm/java-11-openjdk ]; then
-    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+  if [ -d /usr/lib/jvm/java-15-jdk ]; then
+    export JAVA_HOME=/usr/lib/jvm/java-15-jdk
+  elif [ -d /usr/lib/jvm/java-15-openjdk ]; then
+    export JAVA_HOME=/usr/lib/jvm/java-15-openjdk
   else
     export JAVA_HOME=/usr/lib/jvm/default
   fi
