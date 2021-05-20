@@ -1,0 +1,16 @@
+pkgbase = apertium-hin
+	pkgdesc = Apertium linguistic data for Hindi
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-hin
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	source = apertium-hin-0.1.0.tar.gz::https://github.com/apertium/apertium-hin/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 6385fe2785fc1179d3fab94778a99b543d7f50c4f1749c10e86af8723ce56d75
+
+pkgname = apertium-hin
+
