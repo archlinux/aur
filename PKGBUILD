@@ -12,6 +12,7 @@ arch=(x86_64)
 license=(GPL2)
 depends=(coreutils kmod initramfs)
 options=('!strip')
+install=linux-el.install
 
 # corresponding packages (rhel -> archlinux)
 #   kernel               -> N/A (meta package)

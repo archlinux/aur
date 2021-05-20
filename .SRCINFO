@@ -4,6 +4,7 @@ pkgbase = linux-el
 	pkgrel = 1
 	epoch = 8
 	url = https://www.kernel.org/
+	install = linux-el.install
 	arch = x86_64
 	license = GPL2
 	depends = coreutils
