@@ -1,0 +1,16 @@
+pkgbase = apertium-eng
+	pkgdesc = Apertium linguistic data for English
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-eng
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	source = apertium-eng-0.1.0.tar.gz::https://github.com/apertium/apertium-eng/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 59d4f13c756e55ba0614ff16cfd54c9c89e9c896e872c1ca82a8202b2840c451
+
+pkgname = apertium-eng
+
