@@ -1,13 +1,14 @@
-# Maintainer: lmartinez-mirror
+# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+
 pkgname=neovim-registers-git
-pkgver=0.2.4.r5.g29771d7
-pkgrel=1
+pkgver=0.2.6.r0.g250297a
+pkgrel=2
 pkgdesc="Neovim plugin to preview the contents of the registers"
 arch=('any')
 url="https://github.com/tversteeg/registers.nvim"
 license=('GPL3')
 groups=('vim-plugins')
-depends=('neovim-git')
+depends=('neovim')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
