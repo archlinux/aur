@@ -3,12 +3,12 @@
 
 pkgname=gromacs
 pkgver=2021.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=("LGPL")
 arch=('x86_64')
-depends=('lapack' 'zlib' 'hwloc')
+depends=('lapack' 'zlib' 'hwloc' 'gcc10')
 optdepends=('cuda: Nvidia GPU support'
             'vmd: Accesibility to other trajectory formats (ONLY WHEN COMPILING)'
             'perl: needed for demux.pl and xplor2gmx.pl'
@@ -24,9 +24,9 @@ export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #trajectory file format that can be read by
                             #VMD installation (e.g. AMBER's DCD format).
 
-#For cuda support gccXXX is required, if you do not need cuda support comment the next two lines
-#export CC=gcc-XXX
-#export CXX=g++-XXX 
+#For cuda support gcc10 is required, if you do not need cuda support comment the next two lines
+#export CC=gcc-10
+#export CXX=g++-10 
 
 build() {
   mkdir -p ${srcdir}/{single,double}
@@ -48,9 +48,9 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr/ \
         -DCMAKE_INSTALL_LIBDIR=lib\
         -DGMX_BUILD_OWN_FFTW=ON \
-	-DGMX_GPU=CUDA \
         -DREGRESSIONTEST_DOWNLOAD=ON
   #GMX_GPU: Framework for GPU acceleration. Pick one of: OFF, CUDA, OpenCL, SYCL
+  # -DGMX_GPU=CUDA \
   make
 }
 
