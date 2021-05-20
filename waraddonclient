@@ -7,5 +7,5 @@
 addon_path="/opt/WARAddonClient/WARAddonClient.jar"
 
 # Start
-java -jar $addon_path
+java -jar $addon_path $@
 
