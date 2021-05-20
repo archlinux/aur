@@ -7,7 +7,7 @@ pkgbase = rozb3-pac
 	license = GPL
 	depends = bieaz>=0.2.10
 	source = https://gitlab.com/m_zhou/rozb3-pac/-/archive/0.3.3/rozb3-pac-0.3.3.tar.gz
-	md5sums = e1e3177529b0ffea65064cb8e974fb3b
+	md5sums = b8fb611c96d46d12684e5debe849027a
 
 pkgname = rozb3-pac
 
