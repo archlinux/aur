@@ -8,6 +8,12 @@ _fragment=${FRAGMENT:-#branch=${_branch}}
 # shellcheck disable=SC2206
 [[ -v CUDA_ARCH ]] && _cuda_capability=(${CUDA_ARCH})
 
+# fix gcc:11 regression: https://bugs.archlinux.org/task/70930
+makedepends+=('gcc10')
+_CMAKE_FLAGS+=( -DCMAKE_C_COMPILER=gcc-10
+                -DCMAKE_CXX_COMPILER=g++-10
+)
+
 # opencolorio=2 fix (add LD_LIBRRY_PATH or rpath to blender-2.93)
 _CMAKE_FLAGS+=( -DOSL_ROOT_DIR=/opt/osl
                 -DOPENIMAGEIO_ROOT_DIR=/opt/oiio
@@ -28,7 +34,7 @@ _CMAKE_FLAGS+=( -DOSL_ROOT_DIR=/opt/osl
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
 
 pkgname=blender-${_suffix}-git
-pkgver=3.0.r105865.g43789b764d9
+pkgver=3.0.r106561.g5025757b12e
 _blenver=${pkgver%.r*}
 pkgrel=1
 pkgdesc="Development version of Blender (non-conflicting version)"
