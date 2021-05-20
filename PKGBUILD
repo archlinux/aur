@@ -6,7 +6,7 @@
 _pkgname=youtube-dlp
 pkgname=${_pkgname}-bin
 _gitname=yt-dlp
-pkgver=2021.05.11
+pkgver=2021.05.20
 _gitpkgver=$pkgver
 pkgrel=2
 pkgdesc="Fork of youtube-dlc - download videos from youtube.com or other video platforms"
