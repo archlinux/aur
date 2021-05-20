@@ -1,8 +1,8 @@
-# Maintainer: Adel Khial <adel.khial@gmail.com>
+# Maintainer: Aron de Jong <adj00@protonmail.com>
 
 pkgname=unciv-bin
 _pkgname=Unciv
-pkgver=3.14.8
+pkgver=3.14.9_patch1
 pkgrel=1
 pkgdesc="Open-source remake of Civilization V"
 url="https://github.com/yairm210/Unciv"
@@ -12,12 +12,12 @@ provides=('unciv')
 conflicts=('unciv')
 arch=('any')
 source=(
-  "$_pkgname.jar::https://github.com/yairm210/Unciv/releases/download/$pkgver/Unciv.jar"
-  "unciv.png::https://raw.githubusercontent.com/yairm210/Unciv/$pkgver/extraImages/Unciv%20icon%20v4.png"
+  "$_pkgname.jar::https://github.com/yairm210/Unciv/releases/download/${pkgver//_/-}/Unciv.jar"
+  "unciv.png::https://raw.githubusercontent.com/yairm210/Unciv/${pkgver//_/-}/extraImages/Unciv%20icon%20v4.png"
   "$_pkgname.sh"
   "$_pkgname.desktop"
 )
-md5sums=('4896b2885f6908d5336dd9d6a767eb27'
+md5sums=('26fde8cf09a3531be0416ee302767ce4'
          '5aca7fc33f121fcf901fef14f784731a'
          'f8eab098f20681b8db232cc5709713d3'
          '42d5f7ea8ee48d2d643d070786f039ba')
