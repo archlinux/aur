@@ -3,7 +3,7 @@
 
 pkgname=tfsec
 pkgver=0.39.35
-pkgrel=2
+pkgrel=3
 pkgdesc="Static analysis powered security scanner for your terraform code"
 depends=('glibc')
 makedepends=('go')
