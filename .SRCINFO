@@ -1,0 +1,20 @@
+pkgbase = remmina-plugin-kwallet
+	pkgdesc = A remote desktop client written in GTK+ - built-in kwallet plugin
+	pkgver = 1.4.16
+	pkgrel = 1
+	url = http://www.remmina.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkg-config
+	makedepends = cmake
+	makedepends = git
+	depends = remmina
+	depends = kwallet
+	source = builder::git+https://github.com/muflone/remmina-plugin-builder.git
+	source = remmina::git+https://github.com/FreeRDP/Remmina.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = remmina-plugin-kwallet
+
