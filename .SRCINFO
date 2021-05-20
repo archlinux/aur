@@ -1,8 +1,8 @@
 pkgbase = linux-x570-vfio-openrgb-sm2262+sm2263
 	pkgdesc = Linux
-	pkgver = 5.12.4.arch1
+	pkgver = 5.12.5.arch1
 	pkgrel = 4
-	url = https://git.archlinux.org/linux.git/log/?h=v5.12.4-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.12.5-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -16,7 +16,7 @@ pkgbase = linux-x570-vfio-openrgb-sm2262+sm2263
 	makedepends = git
 	makedepends = initramfs
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.12.4-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.12.5-arch1
 	source = config
 	source = amd-noflr.patch
 	source = openrgb.patch

@@ -1,7 +1,7 @@
 # Maintainer: Devin Pohl <pohl.devin@gmail.com>
 
 pkgbase=linux-x570-vfio-openrgb-sm2262+sm2263
-pkgver=5.12.4.arch1
+pkgver=5.12.5.arch1
 pkgrel=4
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
