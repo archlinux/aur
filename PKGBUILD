@@ -7,7 +7,7 @@ pkgname=('holland' 'holland-common' 'holland-lvm' 'holland-mysql'
          'holland-mysqldump' 'holland-mysqllvm' 'holland-pgdump'
          'holland-xtrabackup' 'holland-mariabackup' 'holland-mongodump')
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="http://hollandbackup.org"
 license=('BSD' 'GPL2')
@@ -99,7 +99,7 @@ package_holland() {
     "${pkgdir}/etc/logrotate.d/holland"
 
   cd "${srcdir}/${pkgbase}-backup.github.io-${pkgver}"
-  install -Dm0644 _build/1/holland.1 "${pkgdir}/usr/share/man/man1/holland.1"
+  install -Dm0644 _build/holland.1 "${pkgdir}/usr/share/man/man1/holland.1"
 }
 
 package_holland-common() {

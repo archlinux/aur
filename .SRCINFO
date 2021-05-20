@@ -1,6 +1,6 @@
 pkgbase = holland
 	pkgver = 1.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hollandbackup.org
 	arch = any
 	license = BSD
@@ -11,8 +11,8 @@ pkgbase = holland
 	source = holland-1.2.6.tar.gz::https://github.com/holland-backup/holland/archive/v1.2.6.tar.gz
 	source = holland-backup.github.io-1.2.6.tar.gz::https://github.com/holland-backup/holland-backup.github.com/archive/v1.2.6.tar.gz
 	source = holland.logrotate
-	sha256sums = b8fec6ae97c1d0c0769f36510cc460392f064327a81e8857e596d9984bb994da
-	sha256sums = d40e255154a16b7c963ccbc0ceb198f963e99a92651e9ab68f22ca37ed2c5b64
+	sha256sums = 214c38ba7d01de029a071223bfc31000a4cb6486ff430e84bbaf92d93f27234b
+	sha256sums = c21f90fe1a9c58f933adbd30a92a54fb4887094ba737fe878ee42c5189edfa88
 	sha256sums = 6b0240375e5cafe24a4e0c6fd078e42eaff4f5b2030f7fba4202d052d9a54995
 
 pkgname = holland
