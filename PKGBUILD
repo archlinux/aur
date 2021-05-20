@@ -3,7 +3,7 @@
 pkgbase='python-b4'
 pkgname=('python-b4')
 _module='b4'
-pkgver='0.6.0'
+pkgver='0.6.2'
 pkgrel=1
 pkgdesc="A tool to work with public-inbox and patch archives"
 url="https://git.kernel.org/pub/scm/utils/b4/b4.git"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python-docutils')
 license=('GPL2')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('a8b93ee2e990836986e59211963151ef226fa4d3f2e9bef733555bf1f5589fb8')
+sha256sums=('1f99c91a5688975243962bcac1abe6d83656304a843d2b6641b473967c2320c9')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
