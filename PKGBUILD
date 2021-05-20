@@ -28,7 +28,7 @@ depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2' 'libhar
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage-qfix' 'libtiff' 'libpng')
 optdepends=('cuda: CUDA support in Cycles'
             'optix=7.1.0: OptiX support in Cycles'
-            'usd=21.02: USD export Scene'
+            'usd=21.05: USD export Scene'
             'openimagedenoise: Intel Open Image Denoise support in compositing')
 makedepends=('git' 'cmake' 'boost' 'mesa' 'ninja' 'llvm')
 provides=('blender')

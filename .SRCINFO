@@ -36,7 +36,7 @@ pkgbase = blender-git
 	depends = libpng
 	optdepends = cuda: CUDA support in Cycles
 	optdepends = optix=7.1.0: OptiX support in Cycles
-	optdepends = usd=21.02: USD export Scene
+	optdepends = usd=21.05: USD export Scene
 	optdepends = openimagedenoise: Intel Open Image Denoise support in compositing
 	provides = blender
 	conflicts = blender
