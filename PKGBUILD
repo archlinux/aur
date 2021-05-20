@@ -35,6 +35,10 @@ prepare() {
     if [ ! -h "$srcdir/llvm/tools/cling" ]; then
         ln -s "$srcdir/cling" "$srcdir/llvm/tools/cling"
     fi
+
+    # patch missing header file
+    sed -i '/^#include <vector>$/i #include <limits>' \
+        "$srcdir/llvm/utils/benchmark/src/benchmark_register.h"
 }
 
 build() {
