@@ -1,0 +1,16 @@
+pkgbase = apertium-swe
+	pkgdesc = Apertium linguistic data for Swedish
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-swe
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = pkgconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	source = apertium-swe-0.8.1.tar.gz::https://github.com/apertium/apertium-swe/releases/download/v0.8.1/apertium-swe-0.8.1.tar.gz
+	sha256sums = e120938d64dab49057a8f745219fc4b129f8c9895e84ad2415aa26ae15133b77
+
+pkgname = apertium-swe
+
