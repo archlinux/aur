@@ -8,6 +8,7 @@ pkgbase = lx-music
 	makedepends = jq
 	makedepends = moreutils
 	makedepends = npm
+	makedepends = nodejs>=14
 	depends = electron9
 	source = lx-music-1.10.0.tar.gz::https://github.com/lyswhut/lx-music-desktop/archive/v1.10.0.tar.gz
 	sha256sums = 4a2fcf3eb1d30e3bbe879c1c795eee883e986f381334117d5b585ef4eb70db75

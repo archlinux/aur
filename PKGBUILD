@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://github.com/lyswhut/lx-music-desktop'
 license=('Apache 2.0')
 depends=('electron9')
-makedepends=('jq' 'moreutils' 'npm')
+makedepends=('jq' 'moreutils' 'npm' 'nodejs>=14')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lyswhut/lx-music-desktop/archive/v$pkgver.tar.gz")
 sha256sums=('4a2fcf3eb1d30e3bbe879c1c795eee883e986f381334117d5b585ef4eb70db75')
 
