@@ -1,0 +1,24 @@
+pkgbase = vim-spaceduck-git
+	pkgdesc = An intergalatic space theme for Vim
+	pkgver = r22.0d06e20
+	pkgrel = 1
+	url = https://github.com/pineapplegiant/spaceduck
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	optdepends = vim-polyglot
+	provides = vim-spaceduck
+	provides = vim-airline-spaceduck
+	provides = vim-lightline-spaceduck
+	provides = neovim-lualine-spaceduck
+	conflicts = vim-spaceduck
+	conflicts = vim-airline-spaceduck
+	conflicts = vim-lightline-spaceduck
+	conflicts = neovim-lualine-spaceduck
+	source = vim-spaceduck-git::git+https://github.com/pineapplegiant/spaceduck
+	sha256sums = SKIP
+
+pkgname = vim-spaceduck-git
+
