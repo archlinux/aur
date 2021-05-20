@@ -1,7 +1,7 @@
 # Maintainer: MrDogeBro <MrDogeBro@users.noreply.github.com>
 
 pkgname=quicknav
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A way to quickly navigate your filesystem from the command line."
 url="https://github.com/MrDogeBro/quicknav"
@@ -9,7 +9,7 @@ license=("MIT")
 arch=("x86_64")
 makedepends=("cargo")
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/MrDogeBro/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=("a8996a6bd2b20ecfc45773f80883f18ae9aaf31fd9a36104ed1b4afa24244721")
+sha256sums=("dd2bfdb47997a9e5609d69fbecbaea51eee605527fcba1ad27546df2ffa15342")
 
 build() {
   cd "$pkgname-$pkgver"
