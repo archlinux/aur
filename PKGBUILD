@@ -2,7 +2,7 @@
 # Contributor: Agorgianitis Loukas <agorglouk@gmail.com>
 
 pkgname=tailwindcss-intellisense
-pkgver=0.6.5
+pkgver=0.6.6
 pkgrel=1
 pkgdesc='Intelligent Tailwind CSS tooling (language server)'
 url=https://github.com/tailwindlabs/tailwindcss-intellisense
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('96d220876cd4ef7a7484447e3e7975e8b2bd3220872b2b734eafe3aba102b73c7bbffbf362b38613c0b8118841838fb3cba61c8f464590afd85019aafc0f5630')
+b2sums=('d6d427b5101a6b159997092083e7c1e294a099d4679c34e313f01f77e94110e1b02309754acdde7a655c0a2a10f543e8a29bfe48eb741e85aea19c08b5697d04')
 
 build() {
   cd $pkgname-$pkgver
