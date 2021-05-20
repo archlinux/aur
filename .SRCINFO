@@ -1,7 +1,7 @@
 pkgbase = mozlz4
 	pkgdesc = Decompress / compress mozlz4 files
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jusw85/mozlz4
 	arch = x86_64
 	license = MIT

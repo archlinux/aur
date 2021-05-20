@@ -1,0 +1,32 @@
+commit a727b42ffcd1cc46b72c1df06bbf7270ef2a746f
+Author: mnussbaum <michaelnussbaum08@gmail.com>
+Date:   Thu May 20 14:36:21 2021 -0700
+
+    Fix pointers on ARM
+
+diff --git a/src/main.rs b/src/main.rs
+index 157a332..2b17978 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -119,8 +119,8 @@ fn decompress(ibuffer: Vec<u8>) -> Result<(Vec<u8>)> {
+ 
+     unsafe {
+         let bytes_decompressed = LZ4_decompress_safe(
+-            block.as_ptr() as *const i8,
+-            obuffer.as_mut_ptr() as *mut i8,
++            block.as_ptr() as *const _,
++            obuffer.as_mut_ptr() as *mut _,
+             block.len() as i32,
+             decompressed_size as i32,
+         );
+@@ -145,8 +145,8 @@ fn compress(ibuffer: Vec<u8>) -> Result<(Vec<u8>)> {
+ 
+     unsafe {
+         let bytes_compressed = LZ4_compress_default(
+-            ibuffer.as_ptr() as *const i8,
+-            obuffer[(magic_number_len + 4)..].as_mut_ptr() as *mut i8,
++            ibuffer.as_ptr() as *const _,
++            obuffer[(magic_number_len + 4)..].as_mut_ptr() as *mut _,
+             uncompressed_size as i32,
+             compress_bound as i32,
+         );
