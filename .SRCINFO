@@ -1,6 +1,6 @@
 pkgbase = rusolver-git
 	pkgdesc = Fast and accurate DNS resolver (git)
-	pkgver = 0.5.1.r1.g8cbcb2d
+	pkgver = 0.6.0.r0.gd1bb538
 	pkgrel = 1
 	url = https://github.com/Edu4rdSHL/rusolver
 	arch = x86_64
@@ -14,3 +14,4 @@ pkgbase = rusolver-git
 	sha512sums = SKIP
 
 pkgname = rusolver-git
+
