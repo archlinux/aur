@@ -3,7 +3,7 @@
 
 pkgname=zotero-beta
 _pkgname=zotero-beta
-pkgver=5.0.97beta.25%2B146e1af18
+pkgver=5.0.97beta.26%c5757afec
 pkgrel=1
 pkgdesc="Zotero is a free, easy-to-use tool to help you collect, organize, cite, and share research."
 arch=('x86_64')
