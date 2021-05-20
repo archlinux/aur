@@ -1,4 +1,5 @@
-# Maintainer: Simon Perry <aur [at] sanxion [dot] net>
+# Maintainer: Tomas S. <me+aur at wereii.cz>
+# Contributor: Simon Perry <aur [at] sanxion [dot] net>
 
 pkgname=python-esipy
 pkgver=1.2.0
