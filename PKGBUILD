@@ -8,6 +8,12 @@ _fragment=${FRAGMENT:-#branch=master}
 [[ -v CUDA_ARCH ]] && _CUDA_ARCH=(${CUDA_ARCH})
 ((TRAVIS)) && _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75)
 
+# fix gcc:11 regression: https://bugs.archlinux.org/task/70930
+makedepends+=('gcc10')
+_CMAKE_FLAGS+=( -DCMAKE_C_COMPILER=gcc-10
+                -DCMAKE_CXX_COMPILER=g++-10
+)
+
 # opencolorio=2 fix (add LD_LIBRRY_PATH or rpath to blender-2.93)
 _CMAKE_FLAGS+=( -DOSL_ROOT_DIR=/opt/osl
                 -DOPENIMAGEIO_ROOT_DIR=/opt/oiio
@@ -18,7 +24,7 @@ _CMAKE_FLAGS+=( -DOSL_ROOT_DIR=/opt/osl
 _CMAKE_FLAGS+=( -DWITH_CYCLES_NETWORK=OFF )
 
 pkgname=blender-git
-pkgver=3.0.r105723.gd540a858d8e
+pkgver=3.0.r106155.gf41a753e751
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
@@ -30,7 +36,7 @@ optdepends=('cuda: CUDA support in Cycles'
             'optix=7.1.0: OptiX support in Cycles'
             'usd=21.05: USD export Scene'
             'openimagedenoise: Intel Open Image Denoise support in compositing')
-makedepends=('git' 'cmake' 'boost' 'mesa' 'ninja' 'llvm')
+makedepends+=('git' 'cmake' 'boost' 'mesa' 'ninja' 'llvm')
 provides=('blender')
 conflicts=('blender')
 license=('GPL')
