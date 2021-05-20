@@ -1,0 +1,12 @@
+pkgbase = timetrace-bin
+	pkgdesc = A simple CLI for tracking your working time.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/dominikbraun/timetrace
+	arch = x86_64
+	license = Apache
+	source = https://github.com/dominikbraun/timetrace/releases/download/v0.3.1/timetrace-linux-amd64.tar.gz
+	sha256sums = 5fa37e7d5e5e7fa3ad9e94f10151aaec850fdb0ac3a63c92485f974c4e5ae9cc
+
+pkgname = timetrace-bin
+
