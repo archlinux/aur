@@ -89,7 +89,9 @@ makedepends=('git')
 provides=('emacs' 'emacs-seq')
 conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-git' 'emacs-seq')
 replaces=('emacs26-git' 'emacs27-git' 'emacs-git' 'emacs-seq')
-source=("emacs-git::git://github.com/flatwhatson/emacs.git#branch=pgtk-nativecomp")
+## use github repo if you have network issues
+## source=("emacs-git::git://github.com/emacs-mirror/emacs.git#branch=feature/pgtk")
+source=("emacs-git::git://git.sv.gnu.org/emacs.git#branch=feature/pgtk")
 md5sums=('SKIP')
 ################################################################################
 

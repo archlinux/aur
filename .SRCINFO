@@ -31,7 +31,7 @@ pkgbase = emacs-native-comp-git-enhanced
 	replaces = emacs27-git
 	replaces = emacs-git
 	replaces = emacs-seq
-	source = emacs-git::git://github.com/flatwhatson/emacs.git#branch=pgtk-nativecomp
+	source = emacs-git::git://git.sv.gnu.org/emacs.git#branch=feature/pgtk
 	md5sums = SKIP
 
 pkgname = emacs-native-comp-git-enhanced
