@@ -4,7 +4,7 @@
 
 pkgname=pass-parcellite
 pkgver=1.7.3
-pkgrel=5
+pkgrel=6
 pkgdesc='Stores, retrieves, generates, and synchronizes passwords securely (Parcellite support)'
 arch=('any')
 url="https://www.passwordstore.org/"
@@ -18,6 +18,8 @@ optdepends=('dmenu: for passmenu'
 	    'git: for Git support'
 	    'parcellite-git: for Parcellite support [AUR]'
 	    'qrencode: for QR code support'
+	    'vim-plugin-runtime: for redact_pass.vim'
+            'wl-clipboard: for clipboard support on Wayland'
 	    'xdotool: for typing support')
 replaces=('passmenu')
 provides=('passmenu'
@@ -45,6 +47,7 @@ package() {
   cd "${srcdir}/password-store-$pkgver/"
   make DESTDIR="${pkgdir}" WITH_ALLCOMP=yes install
 
-  cd contrib/dmenu
-  install -D passmenu "${pkgdir}/usr/bin/passmenu"
+  install -Dm0755 -t "${pkgdir}/usr/bin" contrib/dmenu/passmenu
+  install -Dm0644 -t "${pkgdir}/usr/share/vim/vimfiles/plugin" \
+    contrib/vim/redact_pass.vim
 }
