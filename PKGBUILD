@@ -2,14 +2,14 @@
 
 pkgname=exiv2-git
 pkgver=0.27.4.RC2.r247.gc7a41230f
-pkgrel=1
+pkgrel=2
 pkgdesc="Exif, Iptc and XMP metadata manipulation library and tools"
 url="https://github.com/Exiv2/exiv2"
 arch=('x86_64')
 license=('GPL2')
 depends=('gcc-libs' 'zlib' 'expat' 'gettext' 'curl')
 makedepends=('git' 'cmake' 'gtest')
-provides=('libexiv2.so')
+provides=('exiv2' 'libexiv2.so')
 conflicts=('exiv2')
 source=("$pkgname::git+${url}.git")
 md5sums=('SKIP')
