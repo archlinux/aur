@@ -1,8 +1,9 @@
 # Contributor: Pedro H Lara Campos <root@pedrohlc.com>
 _pkgname=haxm
 pkgname=haxm-dkms-git
-pkgver=356.3cc634d
-pkgrel=1
+epoch=1
+pkgver=377.4c247c8
+pkgrel=2
 pkgdesc="Intel® Hardware Accelerated Execution Manager - a hardware-assisted virtualization engine (DKMS git version)"
 arch=('x86_64' 'i686')
 url="https://software.intel.com/en-us/android/articles/intel-hardware-accelerated-execution-manager"
