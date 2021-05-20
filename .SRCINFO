@@ -1,5 +1,5 @@
 pkgbase = etherlab-ethercat
-	pkgver = 1.5.r151
+	pkgver = 1.5.r168
 	pkgrel = 1
 	url = https://etherlab.org/en/ethercat/
 	arch = i686
