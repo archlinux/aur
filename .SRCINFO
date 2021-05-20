@@ -1,0 +1,21 @@
+pkgbase = sonobus-git
+	pkgdesc = An easy to use application for streaming high-quality, low-latency peer-to-peer audio, Git version
+	pkgver = 1.4.5.r0.g52cb09f
+	pkgrel = 1
+	url = https://sonobus.net
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = opus
+	depends = freetype2
+	depends = libxrandr
+	depends = libxinerama
+	depends = libxcursor
+	depends = libasound.so=2-64
+	depends = libjack.so=0-64
+	source = git+https://github.com/sonosaurus/sonobus.git
+	sha512sums = SKIP
+
+pkgname = sonobus-git
+
