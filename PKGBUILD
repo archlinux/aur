@@ -26,13 +26,16 @@ build() {
 	cd NoiseTorch/c/ladspa
 	make
 	cd ${srcdir}/NoiseTorch
+
+	vendor_flags="-X main.version=${pkgver} -X main.distribution=archlinux"
+
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 	go generate
-	go build -o bin/noisetorch
+	go build -ldflags "$vendor_flags -linkmode=external" -o bin/noisetorch
 	go clean -modcache
 }
 
