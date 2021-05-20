@@ -56,7 +56,7 @@ pkgver=${_major}
 #_stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -76,12 +76,12 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/$_srcname.tar.xz"
         "${_patchsource}/wine-esync-patches/0001-v5.12-winesync.patch"
         "${_patchsource}/zen-patches-v2/0001-zen-patches.patch"
         "${_patchsource}/lqx-patches-v2/0001-lqx-patches.patch"
-        "${_patchsource}/bfq-patches-v4/0001-bfq-patches.patch"
-        "${_patchsource}/block-patches-v2/0001-block-patches.patch"
+        "${_patchsource}/bfq-patches-v6/0001-bfq-patches.patch"
+        "${_patchsource}/block-patches-v3/0001-block-patches.patch"
         "${_patchsource}/ll-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
         "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
         "${_patchsource}/bbr2-patches-v2/0001-bbr2-5.12-introduce-BBRv2.patch"
-        "${_patchsource}/btrfs-patches-v4/0001-btrfs-patches.patch"
+        "${_patchsource}/btrfs-patches-v6/0001-btrfs-patches.patch"
         "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
         "${_patchsource}/pf-patches-v2/0001-pf-patches.patch"
         "${_patchsource}/lru-patches-v4/0001-lru-patches.patch"
@@ -91,7 +91,7 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/$_srcname.tar.xz"
         "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch" )
 
 sha512sums=('6e00f85451a2d0c7381bf68bbe202706e1e28af5b1962c9c482c1e35f2c3b48a3b9ea94726f78d996f01528c9a80c8d058a4833e8ec6dc84360e8347ac5bc1dd'
-            'f919957f5deafe3b3a0c1c0068a553dc2602dd3d15553ddb15945130ba9ca3defb2d81309396f31bea2b8901bfb1a95f85e033bd9c6e501092345bb85c25812f'
+            'bb748a4f5e31a2e949ceb21d4ae7d4fac4ce30a47de5f2b4fe7df38e29c6702d5a196fa17fcc61baf94201dd87548bb299d2f8f3cdfec7938ff3bb9d37ea85d5'
             'f07743a59c992f7a48cd1604a0ed30663fe043f5bc93dfe54780da88421c920e7daf801fa345b475ab551f7855360a72774cd2b117e41d5a4ac35005250e3c2f'
             '97e661d3fbd75a6e9edeb79a694f42c49174f317bd35ae25dd13d71797d29fca630e88e1440415faca05fb46935591965fae0dcc4365c80e3cefa3d8b615c3b8'
             'bafda1ec6114a360bed8a9f8ae6b1e8dc5c22adf15f7545c3455a090f14b491639707f6624d7a891ec66b459842e61df9d62274b070b7a611f0bdbd367219ae5'
@@ -101,12 +101,12 @@ sha512sums=('6e00f85451a2d0c7381bf68bbe202706e1e28af5b1962c9c482c1e35f2c3b48a3b9
             '905f97cdff3e096552159a229d069d1b1418f4142b2927134110f504bfe0883309b3f29c2aeeb94c528b63e0eec7d0d69b44c3d498211c610811969cc4d07a56'
             '1c6cdf40009ce6c62b0a35cc7c2a74818b7169d32e18fb3c2bb8761762c15c579f64cb36f9076c4f78d3f88f077f6246ee75ba93f370cc40dae450d6d71117bb'
             '5a326d0bb0c79cacad8b787c237ab43c649d429209d5eb2f5d8b5c98a7bcf5af2e48e31344aa353a93a023f885a1e0710592ae5531a54c09ecb51b3f01b196a7'
-            'bd90ea2c83488c2dda03d0bab544e4d749de96d39f004de4bfe71a1432e637f8efa1663c5e34cadf328aeaee139661e7cdcd8d6e32cff47667351ed8395d3d05'
-            '37e10b0c53bd1947541be0551fa02b269886079d8d29032776b1a36cdf570773d4cb02da2ee57d4d16454cac916b5fd4361541b4be316d39b86ac4e050aa37f1'
+            '8ac848c198e47564f49e89f9804b53fdc5ab326e9801658bddbb93331cab6237c329152c4ec91b5b0a978b90ab0f8160d19a716b5bb9e477adc3b27b81785866'
+            'b6997128403100c0f08cf898b215409efe137183c66a0faf2b8f5c82c185ac7224ef0f694f6920956d963ad002b6b7bdb33438d269f96a90097e0b1e12093e76'
             '47f265716ebd268e4296aaba1efe5098df00736b69ec7d0413cace6dbb5cb162c1c952f7527a2a41b246ed76e6e112514c5349e8dc52f4609def30257e18d7aa'
             '5081a6a3a3db160ef0a23acd0c0db403cc4b3eb2dfd280b1b7ba2ae907d362e4d6a653d546523c870af07009c62f58eec26e7b8174a3f4fcbaa32808d965ad73'
             '28446f518e88ab934330111a01019cb164bfdd21094c69e96cc16c7931440d069ef997ae141154c97c80fcb727e8c4d940b8bf63554e3f4179652523e285c5b4'
-            'b765ef2b4b783f490fff9071727ace1215b9b588666c9518765323b9ada9207b3cfb9918a16b3f7eeb3cf5784d4c5919d7f3cde41236712c210dd9a733ff8320'
+            '0e9d6fb268a58887e1eff77279987130c3013528231ac103e53f2b3b67b0795a20e8a3af6cab78e1f8d4d2f8a7381f3ff0bd4618d6b5a7c2ce8f8f37eab8bcc7'
             '1b3b48246fe70e8ca7390cacacf560696c1d98604a7716ac32df8f3d7fc7cc2ab733ab24e372fffa63016344f2e4ed078f7d597c3c1261f0ca3ff1c87a13dcb9'
             '076a48767614ec97a84ccefa5795e4f36973f64a7728a9f716d5d9ecb6f6907ffcc74f7fab845e9d9aef3ef5d3d4df4e03f6c5a755c7fdd4bc43751003902e71'
             'd428d3f54634b91e41cac279f7c7b708a174d9cac085b7497802c5a50f77bbfcfdd8799c1db3351ba18e8316685b729d292bb45de0da443762dbd1b87cbc7dad'
@@ -257,12 +257,12 @@ prepare() {
     scripts/config --disable CONFIG_LRU_GEN_STATS
 
   ### Enabling ZSTD COMPRESSION ##
-#      echo "Set module compression to ZSTD"
-#      scripts/config --enable CONFIG_MODULE_COMPRESS
-#      scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
-#      scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
-#      scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
-#      scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
+      echo "Set module compression to ZSTD"
+      scripts/config --enable CONFIG_MODULE_COMPRESS
+      scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
+      scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
+      scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
+      scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
 
   ### Enabling Cacule-Config ##
       echo "Enable CacULE CPU scheduler..."
