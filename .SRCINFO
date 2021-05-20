@@ -1,6 +1,6 @@
-pkgbase = photon-rss-git
+pkgbase = photon-rss-x11-git
 	pkgdesc = Fast RSS reader as light as a photon
-	pkgver = 0.1.0.10
+	pkgver = 0.1.0.11
 	pkgrel = 1
 	url = https://gitlab.com/microo8/photon
 	arch = i686
@@ -19,5 +19,5 @@ pkgbase = photon-rss-git
 	source = photon::git+https://gitlab.com/microo8/photon.git
 	sha256sums = SKIP
 
-pkgname = photon-rss-git
+pkgname = photon-rss-x11-git
 
