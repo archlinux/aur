@@ -2,7 +2,7 @@
 
 pkgname=xmrig-cuda
 pkgver=6.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA CUDA plugin for XMRig miner.'
 arch=('x86_64')
 url='https://github.com/xmrig/xmrig-cuda'
@@ -24,7 +24,7 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}/build"
 
-  cmake ..
+  cmake -DCMAKE_C_COMPILER=/opt/cuda/bin/gcc -DCMAKE_CXX_COMPILER=/opt/cuda/bin/g++ ..
   make
 }
 

@@ -1,7 +1,7 @@
 pkgbase = xmrig-cuda
 	pkgdesc = NVIDIA CUDA plugin for XMRig miner.
 	pkgver = 6.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xmrig/xmrig-cuda
 	arch = x86_64
 	license = GPL
