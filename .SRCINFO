@@ -1,0 +1,16 @@
+pkgbase = apertium-nld
+	pkgdesc = Apertium linguistic data for Dutch
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-nld
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	source = apertium-nld-0.2.0.tar.gz::https://github.com/apertium/apertium-nld/releases/download/v0.2.0/apertium-nld-0.2.0.tar.gz
+	sha256sums = e65634bbca676c92ae245a3e52e451ab23cf13ef037b2b3322936b078083b0de
+
+pkgname = apertium-nld
+
