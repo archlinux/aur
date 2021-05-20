@@ -6,7 +6,7 @@ pkgbase=holland
 pkgname=('holland' 'holland-common' 'holland-lvm' 'holland-mysql' 
          'holland-mysqldump' 'holland-mysqllvm' 'holland-pgdump'
          'holland-xtrabackup' 'holland-mariabackup' 'holland-mongodump')
-pkgver=1.2.5
+pkgver=1.2.6
 pkgrel=1
 arch=('any')
 url="http://hollandbackup.org"
@@ -16,8 +16,8 @@ makedepends=('python-setuptools' 'python-sphinx')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/holland-backup/holland/archive/v${pkgver}.tar.gz"
         "${pkgbase}-backup.github.io-${pkgver}.tar.gz::https://github.com/holland-backup/holland-backup.github.com/archive/v${pkgver}.tar.gz"
         "holland.logrotate")
-sha256sums=('b8fec6ae97c1d0c0769f36510cc460392f064327a81e8857e596d9984bb994da'
-            'd40e255154a16b7c963ccbc0ceb198f963e99a92651e9ab68f22ca37ed2c5b64'
+sha256sums=('214c38ba7d01de029a071223bfc31000a4cb6486ff430e84bbaf92d93f27234b'
+            'c21f90fe1a9c58f933adbd30a92a54fb4887094ba737fe878ee42c5189edfa88'
             '6b0240375e5cafe24a4e0c6fd078e42eaff4f5b2030f7fba4202d052d9a54995')
 
 prepare() {
@@ -99,7 +99,7 @@ package_holland() {
     "${pkgdir}/etc/logrotate.d/holland"
 
   cd "${srcdir}/${pkgbase}-backup.github.io-${pkgver}"
-  install -Dm0644 _build/holland.1 "${pkgdir}/usr/share/man/man1/holland.1"
+  install -Dm0644 _build/1/holland.1 "${pkgdir}/usr/share/man/man1/holland.1"
 }
 
 package_holland-common() {
