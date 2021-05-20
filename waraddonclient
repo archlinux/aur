@@ -1,44 +1,11 @@
 #!/bin/bash
 # by xpander
  
-# WARAddonClient CLI options
+# WARAddonClient wrapper
 
 # WARAddonClient path
 addon_path="/opt/WARAddonClient/WARAddonClient.jar"
 
-# Work starts here:
+# Start
+java -jar $addon_path
 
-if [[ $# -eq 1 ]]; then
-case $1 in 
-	"-u")
-		java -jar $addon_path --updateonly;;
-	"-s")
-		echo "Type your RoR directory Path:"
-		read path1
-		java -jar $addon_path --setlocation $path1;;
-		"-i")
-		echo "Type Addon name you want to install:"
-		read name1
-		java -jar $addon_path --install $name1;;
-		"-r")
-		echo "Type Addon name you want to remove:"
-		read name1
-		java -jar $addon_path --remove $name1;;
-	"-v")
-	 java -jar $addon_path --version;;
-	 "-g")
-	 java -jar $addon_path;;
-	"-h")
-		echo "Usage: waraddonclient <command>"
-		echo "Available commands:" 
-		echo "-u                     Updates addons" 
-		echo "-s                     To set your RoR folder location"
-		echo "-v                     Check the WARAddonClient version"
-		echo "-i                     Lets you install Addons"
-		echo "-r                     Lets you remove Addons"
-		echo "-g                     Open with Graphical User Interface"
-		echo "-h                     This help page";;
-	*)
-		echo "Wrong option, try -h";;
-	esac
-fi
