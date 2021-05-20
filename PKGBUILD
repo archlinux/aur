@@ -1,4 +1,4 @@
-pkgname=photon-rss-git
+pkgname=photon-rss-x11-git
 _pkgname=photon
 pkgver=0.1.0.11
 pkgrel=1
