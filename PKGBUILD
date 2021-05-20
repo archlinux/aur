@@ -1,28 +1,29 @@
-# Maintainer: Kibouo <csonka.mihaly@hotmail.com>
+# Maintainer: Francois Menning <f.menning at pm me>
+# Contributor: Kibouo <csonka.mihaly@hotmail.com>
+
 pkgname=matcha-gtk-theme-git
-pkgver=r249.7f76285
+pkgver=2021.05.20.r0.gd622941
 pkgrel=1
 pkgdesc='A flat design theme for GTK3, GTK2, and Gnome-Shell.'
 arch=('any')
 url='https://vinceliuice.github.io/theme-matcha'
 license=('GPL3')
-depends=('gtk-engine-murrine' 'gtk-engines' 'gtk3')
+depends=('gtk-engine-murrine' 'gtk-engines')
 makedepends=('git')
-provides=("${pkgname}")
-conflicts=("${pkgname}" 'matcha-gtk-theme')
-source=("${pkgname}::git+https://github.com/vinceliuice/matcha.git")
+provides=('matcha-gtk-theme')
+conflicts=('matcha-gtk-theme')
+source=("$pkgname::git+https://github.com/vinceliuice/Matcha-gtk-theme.git")
 md5sums=('SKIP')
+
 pkgver() {
-	cd "${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
+
 package() {
-  mkdir "${pkgdir}"/usr
-  mkdir "${pkgdir}"/usr/share
-  mkdir "${pkgdir}"/usr/share/themes
-  cd "${pkgname}"
-  _ORIGINAL_MATCHA_INSTALL_DIR=/usr/share/themes
-  _NEW_MATCHA_INSTALL_DIR="${pkgdir}"/usr/share/themes
-  sed -i 's|'${_ORIGINAL_MATCHA_INSTALL_DIR}'|'${_NEW_MATCHA_INSTALL_DIR}'|g' ./install.sh
-	./install.sh
+  cd "$pkgname"
+
+  mkdir -p "${pkgdir}/usr/share/themes"
+  ./install.sh \
+    --dest "${pkgdir}/usr/share/themes"
 }
