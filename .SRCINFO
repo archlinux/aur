@@ -1,6 +1,6 @@
 pkgbase = discord-development-electron-bin
 	pkgdesc = Discord Development (popular voice + video app) using the system provided electron for increased security and performance
-	pkgver = 0.0.145
+	pkgver = 0.0.146
 	pkgrel = 1
 	url = https://discordapp.com
 	arch = x86_64
@@ -23,10 +23,10 @@ pkgbase = discord-development-electron-bin
 	optdepends = noto-fonts-cjk: Font for special characters such as /shrug face.
 	provides = discord-development
 	conflicts = discord-development
-	source = https://dl-development.discordapp.net/apps/linux/0.0.145/discord-development-0.0.145.tar.gz
+	source = https://dl-development.discordapp.net/apps/linux/0.0.146/discord-development-0.0.146.tar.gz
 	source = LICENSE.html::https://discordapp.com/terms
 	source = OSS-LICENSES.html::https://discordapp.com/licenses
-	b2sums = 037c9e47763565d30548c2e5dadb2d20f3d68eea1287e5ffc803ed299002516dd7a9a8bc5822c772824ae5d3727e778bc62b657d838b3facade69259a193ad7d
+	b2sums = c5f15e98915831d14150df8d29dba48b7f727baacc515419bd872f98cfc4772b9a186c7de08e276525aa6f713aab6332a1c2f9d3073996643a2a68094a5774ab
 	b2sums = SKIP
 	b2sums = SKIP
 
