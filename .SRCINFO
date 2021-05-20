@@ -1,0 +1,16 @@
+pkgbase = apertium-bel
+	pkgdesc = Apertium linguistic data for Belarusian
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-bel
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	source = apertium-bel-0.1.1.tar.gz::https://github.com/apertium/apertium-bel/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = bb9337351137d4a09d94b64deca3a1a42c591c142af9da14b2d5d5c44ee15bac
+
+pkgname = apertium-bel
+
