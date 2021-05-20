@@ -1,7 +1,7 @@
 # Maintainer: Gareth Dunstone <gareth.dunstone at anu dot edu dot au>
 
 pkgname=kapacitor-bin
-pkgver=1.4.1
+pkgver=1.5.9
 pkgrel=1
 pkgdesc="An open source agent for collecting metrics and data on the system; Binary release"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -13,13 +13,13 @@ backup=('etc/kapacitor/kapacitor.conf')
 install=kapacitor.install
 
 source_i686=(kapacitor.tar.gz::"https://dl.influxdata.com/kapacitor/releases/kapacitor-${pkgver}_linux_i386.tar.gz")
-sha256sums_i686=('29bf5e2c27988029065b93f900b498919f2ad90cc51bfdab67c033697cd7f524')
+sha256sums_i686=('1f8178f197c839c8d5da296cd93a927176e1f6934696866815e97ac46818fa31')
 source_x86_64=(kapacitor.tar.gz::"https://dl.influxdata.com/kapacitor/releases/kapacitor-${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('3fab8a4cdf58d180320f39eac090d90f99d6c4b76f993c7ec0c494f2a6a934c7')
+sha256sums_x86_64=('f9cbbed21d7e43a19be44df7e1f84ce90625dc825670297ba4785fb3fee2355d')
 source_armv6h=(kapacitor.tar.gz::"https://dl.influxdata.com/kapacitor/releases/kapacitor-${pkgver}_linux_armhf.tar.gz")
-sha256sums_armv6h=('3e3481267b54284017bc3e6bdfc89519cabdb971477a55fc6353c99caec5ba44')
+sha256sums_armv6h=('94dbb589527daafe8239d1c9bdf9a134e05aa44a235e19199f395828d0377a2e')
 source_armv7h=(kapacitor.tar.gz::"https://dl.influxdata.com/kapacitor/releases/kapacitor-${pkgver}_linux_armhf.tar.gz")
-sha256sums_armv7h=('3e3481267b54284017bc3e6bdfc89519cabdb971477a55fc6353c99caec5ba44')
+sha256sums_armv7h=('94dbb589527daafe8239d1c9bdf9a134e05aa44a235e19199f395828d0377a2e')
 source=('kapacitor.sysusers' 'kapacitor.tmpfiles' 'LICENSE')
 sha256sums=('94aa16ca0b89b1773abb2333d03233921effccc9461ca1491eba42688a1505bd'
 'ae8da72ee9e077e60f897b2e3920add44b0c4853a6c1bb6cf70767d6caeb4763'
