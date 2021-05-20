@@ -10,10 +10,10 @@ pkgbase = noisetorch-git
 	makedepends = go
 	makedepends = cmake
 	depends = polkit
+	depends = hicolor-icon-theme
 	optdepends = pulseaudio
 	optdepends = pipewire>=0.3.28
 	provides = noisetorch
-	conflicts = noisetorch-bin
 	conflicts = noisetorch
 	source = git+https://github.com/lawl/NoiseTorch.git
 	source = noisetorch-git.install
