@@ -3,7 +3,7 @@
 pkgname=mingw-w64-robin-map
 pkgver=0.6.3
 pkgrel=2
-pkgdesc="A C++ implementation of a fast hash map and hash set using robin hood hashing (mingw-w64)"
+pkgdesc="C++ implementation of a fast hash map and hash set using robin hood hashing (mingw-w64)"
 url="https://github.com/Tessil/robin-map"
 license=("MIT")
 depends=(

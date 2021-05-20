@@ -1,5 +1,5 @@
 pkgbase = mingw-w64-robin-map
-	pkgdesc = A C++ implementation of a fast hash map and hash set using robin hood hashing (mingw-w64)
+	pkgdesc = C++ implementation of a fast hash map and hash set using robin hood hashing (mingw-w64)
 	pkgver = 0.6.3
 	pkgrel = 2
 	url = https://github.com/Tessil/robin-map
