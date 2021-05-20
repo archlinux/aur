@@ -1,0 +1,16 @@
+pkgbase = ats-acc
+	pkgdesc = Pretty-print error messages of the ATS Compiler
+	pkgver = r23.2d49f4e
+	pkgrel = 1
+	url = https://github.com/sparverius/ats-acc
+	arch = i686
+	arch = x86_64
+	license = NONE
+	depends = ats2-postiats
+	provides = ats-acc
+	conflicts = ats-acc
+	source = ats-acc-git::git+https://github.com/sparverius/ats-acc.git
+	sha256sums = SKIP
+
+pkgname = ats-acc-git
+
