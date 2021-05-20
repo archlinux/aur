@@ -1,30 +1,30 @@
-# Contributor: Kevin Brubeck Unhammer <unhammer@fsfe.org>
+# Maintainer: Marius Lindvall <(firstname) {cat} varden {dog} info>
 # Maintainer: Kevin Brubeck Unhammer <unhammer@fsfe.org>
+# Contributor: Kevin Brubeck Unhammer <unhammer@fsfe.org>
 pkgname=apertium-nob
-pkgver=0.9.0
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="Apertium language data for Norwegian Bokmål"
-url="http://wiki.apertium.org/wiki/Norwegian_Nynorsk_and_Norwegian_Bokmål"
-license=('GPL')
-makedepends=('pkgconfig')
-depends=('apertium>=3.4.2' 'vislcg3>=0.9.7.6010')
+pkgdesc="Apertium linguistic data for Norwegian Bokmål"
+url="https://github.com/apertium/${pkgname}"
+license=('GPL2')
+makedepends=('pkgconf')
+depends=('apertium>=3.4.2' 'vislcg3')
 arch=('i686' 'x86_64')
-source=("http://downloads.sourceforge.net/sourceforge/apertium/${pkgname}-${pkgver}.tar.gz")
-md5sums=('9f3d8636111f9b79ed62461200758085')
-sha256sums=('07277e50f0d0f0ce1356455673a6075dd3b496488d12514d1fabce9a80c3dca9')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/apertium/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('d9d5f686aa942f457e9c46fd01ace942cede35205715673921382b228da2d516')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr
-  make
+    cd "$srcdir/$pkgname-$pkgver"
+    ./autogen.sh --prefix=/usr
+    make
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make check
+    cd "$srcdir/$pkgname-$pkgver"
+    make check
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
+    cd "$srcdir/$pkgname-$pkgver"
+    make DESTDIR="$pkgdir/" install
 }
