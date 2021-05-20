@@ -1,7 +1,7 @@
 # Maintainer: bilabila <bilabila@qq.com>
 _src=LuaFormatter
 _pkg=lua-format
-_pkgver=1.3.5
+_pkgver=1.3.6
 _lib=args
 _libver=6.2.2
 _patch=lib.patch
@@ -20,7 +20,7 @@ source=($_pkg-$pkgver::https://github.com/Koihik/$_src/archive/$_pkgver.tar.gz
   $_lib-$_libver::https://github.com/Taywee/$_lib/archive/$_libver.tar.gz
   $_patch
 )
-sha512sums=(927bd53f453c028d276b94d96bc28953b4a81a8be9ac026781b38f17f4c8c28171f4073b8fe7b70482997ae994b4e6605ddf0ec6cce8961d59c7422729115e66
+sha512sums=(d0e855d3fe27471a74a8e5da2a789221e6d13a295de30a41a437a6eb49f575d06454d3046d39cb293761a6813cbcc4fa59f9ee633b9646ec3d1c6f7db17d1bcc
   29b0f53316fe35f65ab92c807180c1e6cc6084dfed9f635aa2e3e848137ee8e5d24ec6831cf19189c6432335f73d1466564e0bc9bc259c98f3f0de264637f971
   0c75d3df60ecb77c08eb86cf6a16e69d12286652ec454e237ad8ac76afce110302bd023bde76d2a53a71d681081023fb3cf3e1bd5c72d23a74a3c5a135f869d3
 )
