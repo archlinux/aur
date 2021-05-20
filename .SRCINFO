@@ -1,0 +1,17 @@
+pkgbase = apertium-crh
+	pkgdesc = Apertium linguistic data for Crimean Tatar
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-crh
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	depends = hfst
+	source = apertium-crh-0.2.0.tar.gz::https://github.com/apertium/apertium-crh/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 60cf80de5db0dfc9889b2618aeaf8352aff18219dc836d5d47d20e3496ca1207
+
+pkgname = apertium-crh
+
