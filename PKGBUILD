@@ -2,7 +2,7 @@
 # Contributor: Magnus Bjerke Vik <mbvett@gmail.com>
 pkgname=docker-credential-pass
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="program to use pass to keep Docker credentials safe"
 arch=(x86_64)
 url="https://github.com/docker/docker-credential-helpers"
@@ -22,8 +22,8 @@ prepare() {
 
 build() {
   cd "$srcdir/src/$_gourl"
-  GOPATH="$srcdir" go install -v -x ./credentials
-  GOPATH="$srcdir" make pass
+  GO111MODULE=off GOPATH="$srcdir" go install -v -x ./credentials
+  GO111MODULE=off GOPATH="$srcdir" make pass
 }
 
 package() {
