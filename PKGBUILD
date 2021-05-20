@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=python-ocp-git
-pkgver=7.5.RC1.r13.ge1df346
+pkgver=7.5.RC2.r0.gb59edab
 pkgrel=1
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
@@ -51,8 +51,9 @@ prepare(){
   
   # don't use the opencascade headers packaged here
   # instead use the ones from the installed opencascade package
-  #rm -rf opencascade
-  #ln -s /usr/include/opencascade .
+
+  rm -rf opencascade
+  ln -s /usr/include/opencascade .
 
 }
 
@@ -72,19 +73,23 @@ build() {
   ls -lh *.dat
   rm -rf ${_structure_needed}
   find -maxdepth 1 -name '*.dat' -exec ln -sf ../{} pywrap/{} \;
-
+  
+  msg2 "Running bindgen..."
   CONDA_PREFIX=/usr PYTHONPATH=pywrap python -m bindgen \
     --clean \
     --libclang "$(ldconfig -p | grep 'libclang.so$' | head -1 | awk '{print $NF}')" \
     --include "$(clang -print-resource-dir)"/include \
     --include "/usr/include/vtk" \
     all ocp.toml
+  msg2 "bindgen done." 
 
+  msg2 "Building OCP..."
   cmake -B build_dir -S OCP -W no-dev -G Ninja \
     -D OPENCASCADE_INCLUDE_DIR=opencascade \
     -D CMAKE_BUILD_TYPE=None
 
   cmake --build build_dir
+  msg2 "OCP build done."
 }
 
 check() {
