@@ -12,8 +12,8 @@ pkgbase = eovpn
 	depends = python-gobject
 	depends = python-psutil
 	depends = python-requests
-	source = https://github.com/jkotra/eOVPN/archive/0.27/eovpn-0.27.tar.gz
-	sha256sums = 8059fecebe4bc902433da59fe477f40465c86e24ace0872447e9e95a72a8459a
+	source = https://github.com/jkotra/eOVPN/archive/0.30/eovpn-0.30.tar.gz
+	sha256sums = 1609a35dcfa9ae80e030602e5a0670d49cbc75accb6d177b0585bed2c8a55fde
 
 pkgname = eovpn
 
