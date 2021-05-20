@@ -15,7 +15,7 @@ https://github.com/Idrinth/WARAddonClient
 WARAddonClient should appear in your Menus, Under the Games Category
 ![ss_14052021_15 42 44](https://user-images.githubusercontent.com/1345116/118272367-2d853f00-b4cb-11eb-948b-f29488d42827.png)
 
-Command line tool is called waraddonclient *install and remove will start working with next(1.12.0?) WARAddonClient release*
+Command line options for waraddonclient
 ```$ waraddonclient --help
 usage: waraddonclient [-h] [-i <arg>] [-p] [-r <arg>] [-s <arg>] [-u] [-v]
  -h,--help             This output.
