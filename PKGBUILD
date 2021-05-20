@@ -4,7 +4,7 @@ validpgpkeys=('33ED753E14757D79FA17E57DC4C1F715B2B66B95')
 
 pkgname=llvm12-git
 pkgdesc="LLVM 12 Toolchain with clang, clang-tools-extra, compiler-rt, openmp, polly, lldb, lld"
-pkgver=12.0.1_r46.gde579bae6eab
+pkgver=12.0.1_r47.g4973ce53ca8a
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
