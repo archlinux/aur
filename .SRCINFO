@@ -1,12 +1,12 @@
 pkgbase = kubebuilder
 	pkgdesc = SDK for building Kubernetes APIs
-	pkgver = 2.3.1
-	pkgrel = 3
+	pkgver = 3.0.0
+	pkgrel = 1
 	url = https://github.com/kubernetes-sigs/kubebuilder
 	arch = x86_64
 	license = APACHE
-	source = https://github.com/kubernetes-sigs/kubebuilder/releases/download/v2.3.1/kubebuilder_2.3.1_linux_amd64.tar.gz
-	sha256sums = ff496970f209706763f2aba2bdcefc2de8d00085b3b972b5790117b59ea4ed10
+	source = https://github.com/kubernetes-sigs/kubebuilder/releases/download/v3.0.0/kubebuilder_linux_amd64
+	sha256sums = d762c5cd954f9eb8620c64d27fc413e383e8100108d9edaee2211457165d2dff
 
 pkgname = kubebuilder
 
