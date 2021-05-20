@@ -22,7 +22,7 @@ optdepends=('ffmpeg: for video post-processing'
 source=("yt-dlp-${_gitpkgver}::${url}/releases/download/${_gitpkgver}/yt-dlp")
 conflicts=("${_pkgname}")
 provides=('yt-dlp' "${_pkgname}")
-sha256sums=('23021ea2ba3c29ca5daf640a2d8a818168139bc57b27681055b7d6fc78747bf6')
+sha256sums=('c32d8d82f330225dfcfe4ad28814f37bff57de63c59b82b6c82178e4ed76e263')
 
 package() {
   install -Dm755 "yt-dlp-${_gitpkgver}" "${pkgdir}/usr/bin/yt-dlp"
