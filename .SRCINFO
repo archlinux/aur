@@ -1,0 +1,27 @@
+pkgbase = quick-lint-js-git
+	pkgdesc = Find bugs in JavaScript programs
+	pkgver = 0.2.0.r309.g0486214b
+	pkgrel = 1
+	url = https://quick-lint-js.com/
+	arch = aarch64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = Apache
+	license = Boost
+	license = GPL3
+	checkdepends = icu
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = gcc-libs
+	provides = quick-lint-js
+	conflicts = quick-lint-js
+	source = quick-lint-js::git+https://github.com/quick-lint/quick-lint-js.git
+	sha256sums = SKIP
+
+pkgname = quick-lint-js-git
+
