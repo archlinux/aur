@@ -4,7 +4,7 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seahub
-pkgver=8.0.4
+pkgver=8.0.5
 pkgrel=1
 pkgdesc='The web frontend for seafile server'
 arch=('any')
@@ -15,7 +15,6 @@ depends=(
     'python-future'
     'python-django-statici18n'
     'python-django-post-office'
-    'python-django-webpack-loader'
     'gunicorn'
     'python-mysqlclient'
     'python-openpyxl'
@@ -40,20 +39,23 @@ _thirdpart=(
     'django-2.2.14'
     'django-picklefield-2.1.1'
     'django-rest-framework-3.11.1'
+    'django-webpack-loader-0.7.0'
 )
 source=(
     "$pkgname-$pkgver-server.tar.gz::$url/archive/v$pkgver-server.tar.gz"
     "${_thirdpart[0],,}.tar.gz::https://github.com/django/${_thirdpart[0]%-*}/archive/${_thirdpart[0]##*-}.tar.gz"
     "${_thirdpart[1],,}.tar.gz::https://github.com/gintas/${_thirdpart[1]%-*}/archive/v${_thirdpart[1]##*-}.tar.gz"
     "${_thirdpart[2],,}.tar.gz::https://github.com/encode/${_thirdpart[2]%-*}/archive/${_thirdpart[2]##*-}.tar.gz"
+    "${_thirdpart[3],,}.tar.gz::https://github.com/django-webpack/${_thirdpart[3]%-*}/archive/${_thirdpart[3]##*-}.tar.gz"
     'seahub@.service'
     'nginx.example.conf'
 )
 sha256sums=(
-    '1dd247fc70803c0a06ff8ce2a2e1e4c5daaef91b4a2ecff61cd4d311f2da8006'
+    '0a54deefdfce61d268d5d6b6240d06e2bd61878d56e04168d2983f64b46dc29f'
     '52590ea1a39713cb87cc1f93588867049a84d1985b215ed3884695bae01469ec'
     '5985205ec990ad1319e6d238616284b342f018d41a30dc089b76349fb17b15ae'
     '513c0da69619e76715a4ac9149d7715751b9c4820a29476cb143f2bb6b5a3d11'
+    'fef6b13bbd61d682e12f3bd73bb7ac1c398dd0dea22ef2cf34309c6d1078b0d1'
     '67bb375871ce908b48bef53277284c9d8f80ee2e733efc89cb66d987647195e4'
     '461591ba500d012523d6fdecbcc230461f6fd8d708b92eefdedc8b93b1542171'
 )
