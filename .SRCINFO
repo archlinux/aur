@@ -1,0 +1,16 @@
+pkgbase = apertium-deu
+	pkgdesc = Apertium linguistic data for German
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-deu
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	source = apertium-deu-0.1.0.tar.gz::https://github.com/apertium/apertium-deu/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 5176b5e9e4a565050f0d9a3c894405ccd61a9db905c793abac81f1efdbe9ce7e
+
+pkgname = apertium-deu
+
