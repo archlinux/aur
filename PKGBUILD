@@ -2,7 +2,7 @@
 
 pkgname=ghidra-dev
 pkgbranch=debugger
-pkgver=9.2.4.r782.293c00bfc+debugger
+pkgver=9.2.4.r980.95aa62288+debugger
 pkgrel=1
 pkgdesc='Software reverse engineering framework (git, current branch: debugger)'
 arch=('x86_64')
@@ -22,7 +22,7 @@ depends=(
 )
 makedepends=(
   'git'
-  'gradle6' # gradle>=7 is currently not supported
+  'gradle'
   'java-environment=11'
   'unzip'
 )
@@ -31,16 +31,14 @@ source=(
   'ghidra.desktop'
   'ghidra-root.desktop'
   'ghidra.policy'
-  '2735-attaching_with_gdb_doesnt_work.patch'
-  '0000-uninitialized_attributes.patch'
+  '0000-GP-793-corrected-missing-IP-info.patch'
 )
 sha512sums=(
   'SKIP'
   '23a112f25f0ac7c58c0e47ef269dcfbaf08e44a1543b3fa7202ac62479b7ef9301cef9ffe30a625ac68334ec22452654e14c0be2d30ba0ad06197cb2ddc5d5ef'
   'c717029cf31860e27b5563c3ff4b2740d4b1997bc50481214e24c38f12d9acbfa9ca2cbfe594d43071fbf8420ac8f022119c2c23ddef0c717d96860e22eb35c3'
   '0a35f58b1820ac65ce37d09b0a6904ab7018c773c73ecd29bcfda37cbd27f34af868585084b5cd408b1066b7956df043cb1573a1e3d890e173be737d2de51401'
-  '0cd25c7ce6ce5c26da438f9d802cbe6665cba1579ca98ff04d5092e7226c07364ba7b311ab38ec9cbdd90f195a857122aed3c006ff140ef7e268f6e861f0f850'
-  '928992568031abf5102070cc14036613fcacd27c1fab6e394095b9b43736244dd3c02b49bcaec451bfe8b03829825b14d8efa770d03c988780a7ed2390688750'
+  '0f8bf711eedf674fd05e22a7c683673de7b25f16e14ef001cdd608800589a633e460cfe89fae051f3b6f2bc4c62dc70360447491038c092bc2eefb46ab971f34'
 )
 pkgname2="${pkgname/-dev/}"
 stop='\e[m'
@@ -58,6 +56,10 @@ pkgver() {
 prepare() {
   cd "$pkgname2" || return
 
+  # PATCH - GP-793 corrected missing IP info - https://github.com/NationalSecurityAgency/ghidra/commit/70675fce99a4c6e6e650729e5dda6ccbbbbbd40d
+  echo -e "${prefix}[PATCH] - GP-793 corrected missing IP info (https://github.com/NationalSecurityAgency/ghidra/commit/70675fce99a4c6e6e650729e5dda6ccbbbbbd40d)"
+  patch --no-backup-if-mismatch --forward --strip=2 --input="${srcdir}/0000-GP-793-corrected-missing-IP-info.patch"
+
   # DEPRECATED PATCH - Attaching with GDB doesn't work - https://github.com/NationalSecurityAgency/ghidra/issues/2735
 #  echo -e "${prefix}[PATCH] - Attaching with GDB doesn't work (https://github.com/NationalSecurityAgency/ghidra/issues/2735)"
 #  patch --no-backup-if-mismatch --forward --strip=2 --input="${srcdir}/2735-attaching_with_gdb_doesnt_work.patch"
@@ -67,7 +69,7 @@ prepare() {
 #  patch --no-backup-if-mismatch --forward --strip=2 --input="${srcdir}/0000-uninitialized_attributes.patch"
 
   echo -e "${prefix}Setting up the build dependencies"
-  gradle6 --parallel --init-script gradle/support/fetchDependencies.gradle init
+  gradle --parallel --init-script gradle/support/fetchDependencies.gradle init
 
   ##
   ## FOR GHIDRA DEVELOPERS
@@ -76,22 +78,22 @@ prepare() {
   ##
 
 #  echo -e "${prefix}Setting up the developers environment"
-#  gradle6 --parallel prepDev
+#  gradle --parallel prepDev
 #
 #  echo -e "${prefix}Setting up the eclipse configurations"
-#  gradle6 --parallel eclipse
+#  gradle --parallel eclipse
 #
 #  echo -e "${prefix}Compiling the linux64 native binaries"
-#  gradle6 --parallel buildNatives_linux64
+#  gradle --parallel buildNatives_linux64
 #
 #  echo -e "${prefix}Compiling the precompile language modules"
-#  gradle6 --parallel sleighCompile
+#  gradle --parallel sleighCompile
 }
 
 build() {
   cd "$pkgname2" || return
   echo -e "${prefix}Building Ghidra"
-  gradle6 --parallel buildGhidra
+  gradle --parallel buildGhidra
 }
 
 package() {

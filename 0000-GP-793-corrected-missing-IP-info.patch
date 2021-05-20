@@ -1,0 +1,11 @@
+diff -rwu src.a/ghidra/Ghidra/Framework/Graph/Module.manifest src.b/ghidra/Ghidra/Framework/Graph/Module.manifest
+--- src.a/ghidra/Ghidra/Framework/Graph/Module.manifest	2021-05-20 21:26:57.282036428 +0200
++++ src.b/ghidra/Ghidra/Framework/Graph/Module.manifest	2021-05-20 21:42:40.716698210 +0200
+@@ -2,5 +2,5 @@
+ MODULE FILE LICENSE: lib/jung-algorithms-2.1.1.jar BSD
+ MODULE FILE LICENSE: lib/jung-api-2.1.1.jar BSD
+ MODULE FILE LICENSE: lib/jung-graph-impl-2.1.1.jar BSD
+-MODULE FILE LICENSE: lib/jgrapht-core-1.5.0.jar LGPL 2.1
+-MODULE FILE LICENSE: lib/jgrapht-io-1.5.0.jar LGPL 2.1
++MODULE FILE LICENSE: lib/jgrapht-core-1.5.1.jar LGPL 2.1
++MODULE FILE LICENSE: lib/jgrapht-io-1.5.1.jar LGPL 2.1
