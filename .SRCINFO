@@ -1,0 +1,15 @@
+pkgbase = ufostroker-git
+	pkgdesc = Add path effects to open glyphs in a UFO file
+	pkgver = 0.0.0.r4.g20df06b
+	pkgrel = 1
+	url = https://github.com/simoncozens/ufostroker
+	arch = x86_64
+	license = Apache
+	makedepends = cargo-nightly
+	makedepends = git
+	makedepends = rust-nightly
+	source = ufostroker-git::git+https://github.com/simoncozens/ufostroker.git
+	sha256sums = SKIP
+
+pkgname = ufostroker-git
+
