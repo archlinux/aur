@@ -4,7 +4,7 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=1.4.1103.r229
+pkgver=1.4.1103.r898
 _gwtver=2.8.2
 _ginver=2.1.2
 _nodever=10.19.0
@@ -21,8 +21,8 @@ optdepends=('git: for git support'
 provides=('rstudio-desktop')
 conflicts=('rstudio-desktop' 'rstudio-desktop-bin' 'rstudio-desktop-preview')
 source=("git+https://github.com/rstudio/rstudio.git"
-        "https://s3.amazonaws.com/rstudio-buildtools/gin-${_ginver}.zip"
-        "https://s3.amazonaws.com/rstudio-buildtools/gwt-${_gwtver}.zip"
+        "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/google-gin/gin-${_ginver}.zip"
+        "https://storage.googleapis.com/gwt-releases/gwt-${_gwtver}.zip"
 	"https://nodejs.org/dist/v${_nodever}/node-v${_nodever}-linux-x64.tar.gz"
 	"qt.conf"
 	"cran_multithread.patch")
@@ -66,6 +66,12 @@ prepare() {
     cd "${srcdir}/${_gitname}/src/gwt/panmirror/src/editor"
     yarn config set ignore-engines true
     yarn install
+
+    # Fix links for src/cpp/session/CMakeLists.txt
+    cd "${srcdir}/${_gitname}/dependencies"
+    ln -sfT common/dictionaries dictionaries
+    ln -sfT common/mathjax-27 mathjax-27
+    ln -sfT common/pandoc pandoc
 }
 
 build() {
