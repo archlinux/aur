@@ -3,7 +3,7 @@
 
 pkgname=makedeb-alpha
 pkgver=2.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Create Debian archives from PKGBUILDs (alpha release)"
 arch=('any')
 depends=('pacman' 'dpkg')
