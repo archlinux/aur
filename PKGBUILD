@@ -2,7 +2,7 @@
 
 pkgname=keeper-password-manager
 pkgver=16.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Keeper is the world's #1 most downloaded password keeper and secure digital 
  vault for protecting and managing your passwords and other secret information."
 arch=('x86_64')
