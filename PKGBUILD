@@ -2,7 +2,7 @@
 # Credit to graysky for shamelessly copying PKGBUILD from linux-ck
 
 ### BUILD OPTIONS
-# Set these variables to ANYTHING that is not null to enable them
+# Set the next two variables to ANYTHING that is not null to enable them
 
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
@@ -67,8 +67,8 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.12.4
-pkgrel=2
+pkgver=5.12.5
+pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
 arch=(x86_64)
@@ -80,7 +80,7 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=053934c7eeeacc4fbcd2b539686709b4c034a53c
+_arch_config_commit=e68270a57b4060c236d8e081c10c3542e71c81e1
 _bmqversion=5.12-r1
 _bmq_patch="prjc_v${_bmqversion}.patch"
 _gcc_more_v=20210412
@@ -89,22 +89,20 @@ source=(
   "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=6fe92facfd70f98899343cae2c4eacfe4225b387"
-  "0002-drm-i915-dp-Use-slow-and-wide-link-training-for-ever.patch::https://git.archlinux.org/linux.git/patch/?id=a832c8fcc477b77ed614d7697ca05b50a910b4e2"
-  "0003-Revert-bus-mhi-core-Process-execution-environment-ch.patch::https://git.archlinux.org/linux.git/patch/?id=676bfe06a676d970e6b8cc28b7cd18ac1db994c4"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=ee5cf8733ed55ade590e32453b390090d40f7876"
+  "0002-Revert-bus-mhi-core-Process-execution-environment-ch.patch::https://git.archlinux.org/linux.git/patch/?id=e3f30700184dbcf2378428ac3fac8a6fd889d8c2"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('cb6413d9046bfbe68e7444aafd5353a3cf03a78aca38624dc91a313a8944c6da5d66f3fd7cc8dc47fc058287942d28c3e9d9eaa5da42a3a17d3d20e287968b03'
+b2sums=('aa9209e38ad16160982c02d79bba9d9fbe64b2266959c5438e54a43598b110ef6b4a0f80c7605d950e8f8d250cda04fa964edf8e6aced8d0daa2a960ef495cd6'
         'SKIP'
         'ccb7779df282b54d9acf59682eaa93a39f27276798d61d4c8be8a3b31e582a377c9d3278a500744a3ed089a337807f95a2d23ef821af2f4a7eec24540092b746'
         '77a1646ffbc67ed88af564b73cf63f0374772bdc1075e771a93ee4fe257b94cb3766a4842898b48f4343458d0b507229182220c7daeb5532df610b964c6640e7'
         '72194a32a06c43809d1272bd675890b6d27c6c54353150a366e8e2c50ad6eca6ee23c5d6281822965a228cfedfa07a60fe135d1b4f539e4a62728d4460cc0b0e'
-        '25e10e6b2a32d5364c7e7e43d0b2b850d3c167a7d6a0a2b574c67ffd89c3bee25ba236353f4927b528a6cb3c9696a73de30ed61ca735ab1bb81daf17fc3bd492'
-        'fe2cc5fea597e3a661244102a3dec9270237429ed5d1b02bf57e2cf599faa0e42b7a239ae939f9549f95356a4f9d9a61ca0604515807f7879da8b46913c6dcfa'
-        '266e90caf3b4efe40d84732d67f2599e8f34e348bc07abb0cb9390945196b6b750657f9dfd0d2656a523fb0767fe0ed67c95311c91455fb75cbc30ce9f9e65ac')
+        '6d33d4da2ae41ac641a9934a96cb7abd0ac98326df07f155e6e8c25eb08f7e58bd194a66ce693b99895807d8f25896ff6876d2d2b215b62d23bf38ec5e5a3fb6'
+        'd1b3608add87d54d4b4c785c671d9610a4f1810bbb4d26f61880af7d185a1bbfd04c4a857b5eaf07bfc9c0c6e734c42c36cb6e3859bad22cb9c9a9ee6991b815')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
