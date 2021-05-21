@@ -1,0 +1,17 @@
+pkgbase = apertium-ukr
+	pkgdesc = Apertium linguistic data for Ukrainian
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-ukr
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	makedepends = autoconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	source = apertium-ukr-0.1.1.tar.gz::https://github.com/apertium/apertium-ukr/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 01275cd32d3d74538b2fb217ff5bdc8a7426a31dc8f5aa91848be2f7cf30c00b
+
+pkgname = apertium-ukr
+
