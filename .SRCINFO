@@ -1,4 +1,4 @@
-pkgbase = calima-app
+pkgbase = calima-app-aur
 	pkgdesc = Access application for Calima ERP Contábil.
 	pkgver = 2.0.8
 	pkgrel = 1
