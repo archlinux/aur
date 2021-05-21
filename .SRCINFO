@@ -1,7 +1,7 @@
 pkgbase = monk
 	pkgdesc = monk is a cli and daemon combo that manages articles that you want store and save for a later date.
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/fisherdarling/monk
 	arch = i686
 	arch = x86_64
