@@ -12,7 +12,7 @@ IDIR = /usr/local/bin
 build: $(EXE)
 
 run: $(EXE)
-	bin/term-sudoku example.sudoku
+	bin/term-sudoku
 
 uninstall:
 	@rm $(IDIR)/term-sudoku

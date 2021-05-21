@@ -223,6 +223,7 @@ void generate_sudoku(){
 	remove_nums();
 }
 
+//Try and remove numbers until the solution is not unique
 void remove_nums(){
 	while(attempts > 0){
 		int cell;
@@ -311,7 +312,7 @@ int solve(char* sudoku_to_solve, int start){
 
 //Count the solutions to a puzzle
 //Go through the puzzle recursively and increase count everytime you find a solution
-int solve_count(char* sudoku_to_solve, int* count){
+void solve_count(char* sudoku_to_solve, int* count){
 	//Draw the process of filling out the sudoku visually on the screen if that option is set via '-v'
 	if(gen_visual){
 		erase();
@@ -351,6 +352,7 @@ int solve_count(char* sudoku_to_solve, int* count){
 					//If assigning this value solved the grid, increase the count
 					if(check_validity(sudoku_to_solve)){
 						*count += 1;
+						sudoku_to_solve[i] = '0';
 						break;
 					}
 					//If not solved recursively call
@@ -371,7 +373,7 @@ int solve_count(char* sudoku_to_solve, int* count){
 		}
 	}
 
-	return false;
+	return;
 }
 void draw(){
 	erase();

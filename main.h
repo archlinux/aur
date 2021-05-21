@@ -18,7 +18,7 @@ int fill_remaining(int start);
 void remove_nums();
 void write_log(char* to_log);
 int solve(char* sudoku_str, int start);
-int solve_count(char* sudoku_to_solve, int* count);
+void solve_count(char* sudoku_to_solve, int* count);
 void draw();
 int check_validity(char* combined_solution);
 int savestate();
