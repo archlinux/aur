@@ -1,30 +1,29 @@
-# Contributor: Kevin Brubeck Unhammer <unhammer@gmail.com>
-# Maintainer: Kevin Brubeck Unhammer <unhammer@gmail.com>
+# Maintainer: Marius Lindvall <(firstname) {cat} varden {dog} info>
+# Contributor: Kevin Brubeck Unhammer <unhammer@fsfe.org>
 pkgname=apertium-fr-es
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
-pkgdesc="Apertium language data for the French-Spanish translator."
-url="http://apertium.org"
-license=('GPL')
-makedepends=('pkgconfig' 'autoconf')
-depends=('lttoolbox>=3.2.0' 'apertium>=3.2.0')
+pkgdesc="Apertium translation pair for French and Spanish"
+url="https://github.com/apertium/${pkgname}"
+license=('GPL2')
+makedepends=('pkgconf' 'autoconf')
+depends=('apertium>=3.4.2' 'apertium-lex-tools')
 arch=('i686' 'x86_64')
-source=("http://downloads.sourceforge.net/sourceforge/apertium/${pkgname}-${pkgver}.tar.gz"
-        "Makefile.am.patch")
-md5sums=('0b04ee8f1694f95adafb2589c802829e'
-         '0020317ca43e1b16f6584d7365351df0')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/apertium/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('5d335181b39b3def92ed559d443a4ce1c7996da31d2206a5bfe83e88d53dddc7')
 
 build() {
-  patch -p0 < Makefile.am.patch
+    cd "$srcdir/$pkgname-$pkgver"
+    ./autogen.sh --prefix=/usr
+    make
+}
 
-  mkdir -p "$pkgdir/usr/share/apertium/modes"
+check() {
+    cd "$srcdir/$pkgname-$pkgver"
+    make check
+}
 
-  cd "$srcdir/$pkgname-$pkgver"
-
-  autoreconf -i	      # or we could patch the huge configure script...
-
-  export PATH="/usr/bin:${PATH}" # override /usr/local/bin
-  ./configure --prefix=/usr
-  make || return 1
-  make DESTDIR="$pkgdir/" install || return 1
+package() {
+    cd "$srcdir/$pkgname-$pkgver"
+    make DESTDIR="$pkgdir/" install
 }
