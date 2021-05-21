@@ -1,0 +1,18 @@
+pkgbase = apertium-tat
+	pkgdesc = Apertium linguistic data for Tatar
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-tat
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	makedepends = autoconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	depends = hfst
+	source = apertium-tat-0.1.0.tar.gz::https://github.com/apertium/apertium-tat/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 7ed2778d698d894ef7e2a234a6f1ddd6349671096b6ea4cb971d9ebce649f07c
+
+pkgname = apertium-tat
+
