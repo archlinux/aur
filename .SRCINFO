@@ -1,6 +1,6 @@
 pkgbase = openttd-jgrpp
 	pkgdesc = OpenTTD with JGR's patch pack.
-	pkgver = 0.41.1
+	pkgver = 0.41.2
 	pkgrel = 1
 	url = http://www.tt-forums.net/viewtopic.php?f=33&t=73469
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = openttd-jgrpp
 	depends = lzo
 	depends = sdl2
 	depends = xz
-	source = https://github.com/JGRennison/OpenTTD-patches/archive/jgrpp-0.41.1.tar.gz
-	sha256sums = 6bb293d84bf820c18ad03ea8a02099d20526c16d12b0c2ceb2f6e58f81f5b1e6
+	source = https://github.com/JGRennison/OpenTTD-patches/archive/jgrpp-0.41.2.tar.gz
+	sha256sums = a2ff8a5b4d3d6211a61b0ea70912a8a0e6b57fb580a43548639f997247bdf868
 
 pkgname = openttd-jgrpp
 
