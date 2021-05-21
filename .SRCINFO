@@ -10,6 +10,7 @@ pkgbase = avp
 	makedepends = cmake
 	makedepends = glu
 	makedepends = mesa
+	makedepends = gcc10
 	depends = sdl
 	depends = libgl
 	depends = openal

@@ -9,7 +9,7 @@ arch=(i686 x86_64)
 url="https://www.icculus.org/avp"
 license=('custom')
 depends=('sdl' 'libgl' 'openal')
-makedepends=('cmake' 'glu' 'mesa')
+makedepends=('cmake' 'glu' 'mesa' 'gcc10')
 optdepends=('avp-data')
 install='avp.install'
 source=("${url}/files/${pkgname}-${pkgver/_/-}.tar.gz"
@@ -27,6 +27,9 @@ prepare() {
 
 build() {
   cd ${pkgname}-${_dirname}/build
+
+  export CC="/usr/bin/gcc-10"
+  export CXX="/usr/bin/g++-10"
 
   cmake -DCMAKE_BUILD_TYPE="Release" -DOpenGL_GL_PREFERENCE="GLVND" -DSDL_TYPE="SDL" ..
   make
