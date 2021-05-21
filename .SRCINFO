@@ -1,0 +1,30 @@
+pkgbase = prboom-plus-um-git
+	pkgdesc = An advanced, Vanilla-compatible Doom engine based on PrBoom. Includes support for UMAPINFO
+	pkgver = 2.6um.r99.ge08e728b
+	pkgrel = 1
+	url = https://github.com/coelckers/prboom-plus
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = sdl2
+	optdepends = fluidsynth: Midi support
+	optdepends = portmidi: Midi support
+	optdepends = libmad: MP3 support
+	optdepends = libvorbis: Ogg support
+	optdepends = dumb: Tracker support
+	optdepends = sdl2_mixer: Midi support
+	optdepends = sdl2_net: Network play
+	optdepends = sdl2_image: High-res textures and PNG screenshots
+	optdepends = glu: OpenGL rendering
+	optdepends = pcre: Demo file name pattern matching
+	provides = prboom-plus
+	conflicts = prboom-plus-svn
+	conflicts = prboom-plus
+	conflicts = prboom-plus-um
+	source = git+https://github.com/coelckers/prboom-plus.git
+	sha1sums = SKIP
+
+pkgname = prboom-plus-um-git
+
