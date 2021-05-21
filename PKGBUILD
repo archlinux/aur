@@ -1,6 +1,6 @@
 # Maintainer: 9r0k <tanyawei1991@gmail.com>
 pkgname=com.qq.tim.spark
-pkgver=3.2.0.21856spark0
+pkgver=3.3.5.22018spark0
 pkgrel=1
 epoch=
 pkgdesc="Tencent TIM Client on Deepin Wine 5 (from Spark Store)"
@@ -19,9 +19,9 @@ backup=()
 options=()
 install=tim.install
 changelog=
-source=("https://cdn.jerrywang.top/store/chat/${pkgname}/${pkgname}_${pkgver}_i386.deb"
+source=("https://store.deepinos.org.cn/store/chat/${pkgname}/${pkgname}_${pkgver}_i386.deb"
     "reg.patch")
-sha512sums=('957d7ccd97561ee8c490d3aea6924cb164569fb76fc11875f3f56b0fbefda8a5a521eb554915a7500a1c19d8b78fb05175e4a55b43ef6709799b89e7a3227e84'
+sha512sums=('2ebcebdfea35ff6468f5a8acb4ca8dbbd8c4b3cb0e15d57318d97bb9a98753ec9a6595037f142e9866643c6e9ef927abf3124c6ae6381539d880e516d29a5ee8'
     '5730066dc9bf3689e3db1c08ba83b516efc0bcc7fe6ff47198b43dd352718a6942d01190da87fe010816bf1e9e0e453a09fd15314e4004c309e7f52725b32528')
 validpgpkeys=()
 
