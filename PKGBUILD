@@ -37,7 +37,7 @@ _neovim="$NEOVIM_YOUCOMPLETEME"
 
 pkgname=vim-youcompleteme-git
 pkgver=r2812.ab73ca25
-pkgrel=2
+pkgrel=1
 pkgdesc='A code-completion engine for Vim'
 arch=('x86_64')
 url='https://ycm-core.github.io/YouCompleteMe/'
@@ -152,7 +152,7 @@ package() {
     cp -dr --no-preserve=ownership "${srcdir}"/lib "${pkg_ycmd_dir}/third_party/clangd/output/"
     install -Ddm755 "${pkg_ycmd_dir}/third_party/clang/lib/"
     cp -dr --no-preserve=ownership "${srcdir}"/YouCompleteMe/third_party/ycmd/third_party/clang/lib/clang "${pkg_ycmd_dir}/third_party/clang/lib/clang"
-    ln -s "${pkg_ycmd_dir}/third_party/clang/lib/libclang.so" "${pkg_ycmd_dir}/third_party/clang/lib/libclang.so"
+    ln -sr "${pkg_ycmd_dir}"/third_party/clangd/output/lib/libclang.so "${pkg_ycmd_dir}/third_party/clang/lib/libclang.so"
   fi
 
   if [[ "$_java" == "y" ]]; then
