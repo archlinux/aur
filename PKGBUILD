@@ -1,9 +1,9 @@
 # Maintainer: muttleyxd <mateusz [at] szychowski.it>
-_gittag=master-6fce707f
+_gittag=master-a37b22cd
 pkgname=clang-format-static-bin
-pkgver=5.6fce707f
+pkgver=6.a37b22cd
 pkgrel=1
-pkgdesc="clang-format x86_64 static binaries (3.9, 4, 5, 6, 7, 8, 9, 10)"
+pkgdesc="clang-format x86_64 static binaries (3.9, 4, 5, 6, 7, 8, 9, 10, 11, 12)"
 arch=('x86_64')
 url="https://github.com/muttleyxd/clang-format-static-binaries"
 license=('Unlicense')
