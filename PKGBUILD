@@ -4,7 +4,7 @@
 
 pkgname=protonmail-bridge
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
 url="https://protonmail.com/bridge"
@@ -37,6 +37,7 @@ prepare() {
 }
 
 build(){
+    export PATH=$PATH:$(go env GOPATH)/bin/
     cd ${srcdir}/proton-bridge/
     make build
 }
