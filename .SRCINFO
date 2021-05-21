@@ -1,0 +1,18 @@
+pkgbase = corevantage-t430
+	pkgdesc = Graphical user interface to configure coreboot settings for: ThinkPad T430
+	pkgver = 1.5
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-quickcontrols
+	makedepends = cmake
+	depends = nvramtool-corevantage-git
+	depends = qt5-base
+	depends = hicolor-icon-theme
+	provides = corevantage
+	conflicts = corevantage
+	source = https://github.com/JaGoLi/corevantage/archive/1.5.tar.gz
+	sha256sums = 42c448d1732981818142b87f248f2410c60320804f3c9591cc43effa5ab92f9c
+
+pkgname = corevantage-t430
+
