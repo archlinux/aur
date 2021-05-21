@@ -1,0 +1,18 @@
+pkgbase = apertium-mkd-bul
+	pkgdesc = Apertium translation pair for Macedonian and Bulgarian
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-mkd-bul
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	makedepends = autoconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	replaces = apertium-mk-bg
+	source = apertium-mkd-bul-0.2.1.tar.gz::https://github.com/apertium/apertium-mkd-bul/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = e050cfad0da8186b455dacdeecc1be031601e65b3702b69b596f9700739f6a0e
+
+pkgname = apertium-mkd-bul
+
