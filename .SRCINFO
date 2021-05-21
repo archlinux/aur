@@ -1,0 +1,15 @@
+pkgbase = python-aioblescan-git
+	pkgdesc = A Python asyncio library to listen for BLE advertized packets
+	pkgver = 0.2.4.r41.g84ef42a
+	pkgrel = 1
+	url = https://github.com/frawau/aioblescan
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	source = git+https://github.com/frawau/aioblescan
+	sha256sums = SKIP
+
+pkgname = python-aioblescan-git
+
