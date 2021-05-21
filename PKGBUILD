@@ -2,7 +2,7 @@
 
 pkgname=ezra-bible-app
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A user-friendly Bible study tool focussing on topical study based on keywords/tags'
 arch=('x86_64')
 url="https://github.com/$pkgname/$pkgname"
@@ -17,9 +17,9 @@ makedepends=('jq'
              'moreutils'
              'node-gyp'
              'node-prune'
-             'nodejs-addon-api' # run time dep but gets baked into electron asar
+             'nodejs-addon-api>=3.2.0-2' # run time dep but gets baked into electron asar
              'nodejs-pug-cli'
-             'nodejs-sword-interface>=0.222.0' # run time dep but gets baked into electron asar
+             'nodejs-sword-interface>=0.225.0' # run time dep but gets baked into electron asar
              'npm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "$pkgname.sh")

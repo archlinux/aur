@@ -1,7 +1,7 @@
 pkgbase = ezra-bible-app
 	pkgdesc = A user-friendly Bible study tool focussing on topical study based on keywords/tags
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ezra-bible-app/ezra-bible-app
 	arch = x86_64
 	license = GPL3
@@ -9,9 +9,9 @@ pkgbase = ezra-bible-app
 	makedepends = moreutils
 	makedepends = node-gyp
 	makedepends = node-prune
-	makedepends = nodejs-addon-api
+	makedepends = nodejs-addon-api>=3.2.0-2
 	makedepends = nodejs-pug-cli
-	makedepends = nodejs-sword-interface>=0.222.0
+	makedepends = nodejs-sword-interface>=0.225.0
 	makedepends = npm
 	depends = electron
 	depends = icu
