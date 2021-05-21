@@ -1,0 +1,21 @@
+pkgbase = avr-binutils-220
+	pkgdesc = A set of programs to assemble and manipulate binary and object files for the avr architecture
+	pkgver = 2.20.1a
+	pkgrel = 2
+	url = http://www.gnu.org/software/binutils/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc>=2.12-5
+	depends = zlib
+	provides = binutils-avr=2.20.1a
+	provides = avr-binutils=2.20.1a
+	conflicts = avr-binutils
+	options = !libtool
+	options = !distcc
+	options = !ccache
+	source = http://ftp.gnu.org/gnu/binutils/binutils-2.20.1a.tar.bz2
+	md5sums = 2b9dc8f2b7dbd5ec5992c6e29de0b764
+
+pkgname = avr-binutils-220
+
