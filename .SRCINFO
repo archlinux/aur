@@ -1,0 +1,16 @@
+pkgbase = core-srht-git
+	pkgdesc = Sourcehut core python modules
+	pkgver = 20210518
+	pkgrel = 1
+	url = https://git.sr.ht/~sircmpwn/core.sr.ht
+	arch = any
+	license = BSD3
+	makedepends = git
+	depends = python3
+	provides = core-srht
+	conflicts = core-srht
+	source = git+https://git.sr.ht/~sircmpwn/core.sr.ht
+	md5sums = SKIP
+
+pkgname = core-srht-git
+

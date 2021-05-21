@@ -1,0 +1,5 @@
+pkg
+src
+core.sr.ht
+*.tar.xz*
+*.tar.gz*
