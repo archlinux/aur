@@ -1,0 +1,18 @@
+pkgbase = apertium-tur
+	pkgdesc = Apertium linguistic data for Turkish
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-tur
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	makedepends = autoconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	depends = hfst
+	source = apertium-tur-0.2.0.tar.gz::https://github.com/apertium/apertium-tur/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = ff154fca38e1604c0acbc40023b6d28a0352e087b387756186b96fd072efd8c6
+
+pkgname = apertium-tur
+
