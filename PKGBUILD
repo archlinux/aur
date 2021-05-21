@@ -4,7 +4,7 @@ pkgver=1.4.1
 pkgrel=1
 pkgdesc="Apertium translation pair for Danish and Norwegian"
 url="https://github.com/apertium/${pkgname}"
-license=('GPL3')
+license=('GPL2')
 makedepends=('pkgconf' 'autoconf')
 depends=('apertium>=3.4.2' 'apertium-lex-tools' 'vislcg3' 'apertium-dan' 'apertium-nno' 'apertium-nob')
 arch=('i686' 'x86_64')

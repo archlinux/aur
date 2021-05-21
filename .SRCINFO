@@ -5,7 +5,7 @@ pkgbase = apertium-dan-nor
 	url = https://github.com/apertium/apertium-dan-nor
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL2
 	makedepends = pkgconf
 	makedepends = autoconf
 	depends = apertium>=3.4.2
