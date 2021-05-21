@@ -3,13 +3,13 @@
 
 pkgname=helvum
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='GTK-based patchbay for pipewire, inspired by the JACK tool catia'
 arch=('x86_64')
 url='https://gitlab.freedesktop.org/ryuukyu/helvum'
 license=('GPL3')
 depends=('gtk4' 'pipewire')
-makedepends=('rust' 'clang')
+makedepends=('rust>=1.51' 'clang')
 provides=("${pkgname}")
 conflicts=('helvum-git')
 source=("https://gitlab.freedesktop.org/ryuukyu/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
@@ -23,9 +23,18 @@ build() {
 }
 
 package() {
+  # Installs desktop entry
   install -dm755 "${pkgdir}/usr/share/applications"
   install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
+  # Changes path
   cd "${pkgname}-${pkgver}"
+
+  # Installs license
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # Installs binary
   install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
 }
 
