@@ -1,18 +1,16 @@
 pkgbase = apertium-eo-fr
-	pkgdesc = Apertium language data for the Esperanto-French translator.
-	pkgver = 0.9.0
+	pkgdesc = Apertium translation pair for Esperanto and French
+	pkgver = 0.9.1
 	pkgrel = 1
-	url = http://apertium.org
+	url = https://github.com/apertium/apertium-eo-fr
 	arch = i686
 	arch = x86_64
-	license = GPL
-	makedepends = pkgconfig
-	depends = lttoolbox>=3.0
-	depends = apertium>=3.0
-	source = http://downloads.sourceforge.net/sourceforge/apertium/apertium-eo-fr-0.9.0.tar.gz
-	source = Makefile.am.patch
-	md5sums = c3c4efa6e8faa990ae213a1707a1bd63
-	md5sums = 74b0b10ddcc8bf3f64613dca3f2c34b0
+	license = GPL2
+	makedepends = pkgconf
+	makedepends = autoconf
+	depends = apertium>=3.4.2
+	source = apertium-eo-fr-0.9.1.tar.gz::https://github.com/apertium/apertium-eo-fr/archive/refs/tags/v0.9.1.tar.gz
+	sha256sums = 9d63805935a69ee010276ce23bdcf86dbca2f06c981cb715957ceb3789a42a02
 
 pkgname = apertium-eo-fr
 
