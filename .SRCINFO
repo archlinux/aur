@@ -1,0 +1,22 @@
+pkgbase = avr-binutils-219
+	pkgdesc = A set of programs to assemble and manipulate binary and object files for the avr architecture
+	pkgver = 2.19.1a
+	pkgrel = 1
+	url = http://www.gnu.org/software/binutils/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc>=2.12-5
+	depends = zlib
+	provides = binutils-avr=2.19.1a
+	provides = avr-binutils=2.19.1a
+	conflicts = avr-binutils
+	conflicts = binutils-avr
+	options = !libtool
+	options = !distcc
+	options = !ccache
+	source = http://ftp.gnu.org/gnu/binutils/binutils-2.19.1a.tar.bz2
+	md5sums = 023222f392e9546bcbb0b4c0960729be
+
+pkgname = avr-binutils-219
+
