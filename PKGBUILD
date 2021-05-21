@@ -1,8 +1,9 @@
 # Maintainer: Evandro Begati <evandroalb at gmail dot com>
 # Check for new Linux releases in: https://calimaerp.com/app
+# Generate version: makepkg --printsrcinfo > .SRCINFO
 
 pkgname=calima-app
-pkgver=2.0.7
+pkgver=2.0.8
 pkgrel=1
 pkgdesc="Access application for Calima ERP Contábil."
 arch=('x86_64')
@@ -20,7 +21,7 @@ optdepends=(
 )
 options=('!emptydirs' '!strip')
 source=("https://objectstorage.sa-saopaulo-1.oraclecloud.com/n/id3qvymhlwic/b/downloads/o/calima-app/calima-app-${pkgver}.deb")
-sha512sums=('3a71f2bf9dbca611f760f9409ee74ef7dcb3e4de83b50ed7c55bb3c1affbdcda98ec2f2c40d3dd4146a1c33f9c21edee2e54af15fd23ad0171a7b7b435afa724')
+sha512sums=('c42184b78312d98b33bbc968d5193463679787f601da79d4cf6b9ac1843600068812113a60627c150a203ef0845c3a07df156a7d070e9506420122668221bd20')
 
 package() {
 	msg2 "Extracting the data.tar.xz..."
