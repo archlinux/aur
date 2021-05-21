@@ -1,14 +1,14 @@
 pkgbase = logseq-desktop-canary
 	pkgdesc = A privacy-first, open-source platform for knowledge sharing and management.
-	pkgver = 0.0.2
-	pkgrel = 2
+	pkgver = 0.0.4
+	pkgrel = 1
 	url = https://github.com/logseq/logseq
 	arch = x86_64
 	license = AGPL3
 	provides = logseq-desktop-canary
-	source = https://github.com/logseq/logseq/releases/download/0.0.2/logseq-linux-x64-0.0.2.zip
+	source = https://github.com/logseq/logseq/releases/download/0.0.4/logseq-linux-x64-0.0.4.zip
 	source = logseq-desktop-canary.desktop
-	sha256sums = dd5ee5a53e03ead7ee6ea331b34ab54c70ee2ea2b4cec5e820074b218a39b0ed
+	sha256sums = 6cefae30c5e923c51a8257892a2d60a13bfd1b414f4febc1a68df50ceb9b7a16
 	sha256sums = 9ff8105001989b76a96165b75bf60dd089e9138dcc607d22a10c918efee4f664
 
 pkgname = logseq-desktop-canary
