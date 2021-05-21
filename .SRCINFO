@@ -22,7 +22,7 @@ pkgbase = maestral
 	depends = python-setuptools
 	depends = python-survey>=3.2.2
 	depends = python-survey<4.0
-	depends = python-watchdog>=2.0.1
+	depends = python-watchdog
 	depends = python-systemd
 	depends = python-wheel
 	optdepends = maestral-qt: Qt interface for the maestral daemon
@@ -30,7 +30,7 @@ pkgbase = maestral
 	conflicts = maestral-git
 	source = https://github.com/SamSchott/maestral/archive/v1.4.3.tar.gz
 	source = maestral@.service
-	md5sums = b358fbd8a7eaed48951bcf7564c417ae
+	md5sums = 75883c2d356df51087e6e2f5be935480
 	md5sums = 25d1041b158c1b1ea42d7290c9c0f91d
 
 pkgname = maestral

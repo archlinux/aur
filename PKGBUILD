@@ -32,7 +32,7 @@ depends=(
     'python-sdnotify>=0.3.2'
     'python-setuptools'
     'python-survey>=3.2.2'          'python-survey<4.0'
-    'python-watchdog>=2.0.1'
+    'python-watchdog'
     'python-systemd'
     'python-wheel')
 optdepends=('maestral-qt: Qt interface for the maestral daemon')
