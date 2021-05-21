@@ -1,7 +1,7 @@
 # Maintainer: Yorick Peterse <aur AT yorickpeterse DOT com>
 
 pkgname=inko
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A statically-typed object-oriented language for writing concurrent programs"
 url="https://inko-lang.org"
@@ -13,7 +13,7 @@ provides=(inko)
 conflicts=(inko-git)
 options=(strip !docs !libtool !staticlibs)
 source=("https://releases.inko-lang.org/${pkgver}.tar.gz")
-sha256sums=('02201fd6203d45e0920c849b91aae0adc459d654a27fb3405d181da275365ef5')
+sha256sums=('311f6e675e6f7ca488a71022b62edbbc16946f907d7e1695f3f96747ece2051f')
 
 build() {
     # Enable the libffi-system feature so the system libffy is used, instead of
