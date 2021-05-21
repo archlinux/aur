@@ -7,8 +7,8 @@
 pkgname=electrum-dash
 _pkgname=Dash-Electrum
 pkgdesc="Lightweight Bitcoin wallet, fork for DASH"
-pkgver=3.3.8.7
-pkgrel=2
+pkgver=4.1.2.0
+pkgrel=0
 url="https://electrum-dash.org"
 arch=('any')
 license=('MIT')
@@ -27,7 +27,7 @@ optdepends=('python-btchip: BTChip hardware wallet support'
 makedepends=('python-setuptools')
 
 source=("https://github.com/akhavr/electrum-dash/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('b5c2ad070864041b194da9dbbb0d112fa2296d2386abafd2672546d68e9d13d0')
+sha256sums=('8bd9b40a9188f6298003aa150803d07fcf0cb207eff1274f313d68cdc8fbbc0c')
 
 build() {
 	cd ${_pkgname}-${pkgver}

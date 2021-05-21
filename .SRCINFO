@@ -1,7 +1,7 @@
 pkgbase = electrum-dash
 	pkgdesc = Lightweight Bitcoin wallet, fork for DASH
-	pkgver = 3.3.8.7
-	pkgrel = 2
+	pkgver = 4.1.2.0
+	pkgrel = 0
 	url = https://electrum-dash.org
 	arch = any
 	license = MIT
@@ -31,8 +31,8 @@ pkgbase = electrum-dash
 	optdepends = python-rpyc: send commands to Electrum Python console from an external script
 	optdepends = python-qdarkstyle: optional dark theme in graphical mode
 	optdepends = python-pycryptodomex: use PyCryptodome AES implementation instead of pyaes
-	source = https://github.com/akhavr/electrum-dash/releases/download/3.3.8.7/Dash-Electrum-3.3.8.7.tar.gz
-	sha256sums = b5c2ad070864041b194da9dbbb0d112fa2296d2386abafd2672546d68e9d13d0
+	source = https://github.com/akhavr/electrum-dash/releases/download/4.1.2.0/Dash-Electrum-4.1.2.0.tar.gz
+	sha256sums = 8bd9b40a9188f6298003aa150803d07fcf0cb207eff1274f313d68cdc8fbbc0c
 
 pkgname = electrum-dash
 
