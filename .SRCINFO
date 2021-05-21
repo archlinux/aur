@@ -1,6 +1,6 @@
 pkgbase = maestral-git
 	pkgdesc = A light-weight and open-source Dropbox client.
-	pkgver = 1.3.2
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://github.com/SamSchott/maestral-dropbox
 	arch = any
@@ -12,12 +12,10 @@ pkgbase = maestral-git
 	depends = python>=3.9
 	depends = python-alembic>=1.3
 	depends = python-alembic<1.6
-	depends = python-click>=7.1.1
-	depends = python-click<8.0
-	depends = python-desktop-notifier
+	depends = python-click>=8.0.0
+	depends = python-desktop-notifier>=3.2.2
 	depends = python-dropbox>=10.9.0
 	depends = python-dropbox<12.0
-	depends = python-dbus-next>=0.1.4
 	depends = python-fasteners>=0.15
 	depends = python-keyring>=22
 	depends = python-keyrings-alt>=3.1.0
@@ -26,17 +24,15 @@ pkgbase = maestral-git
 	depends = python-pyro5>=5.10
 	depends = python-requests>=2.16.2
 	depends = python-sdnotify>=0.3.2
-	depends = python-sqlalchemy>=1.3
-	depends = python-sqlalchemy<1.4
-	depends = python-survey>=3.2.2
+	depends = python-survey>=3.4.3
 	depends = python-survey<4.0
-	depends = python-watchdog>=0.10.0
+	depends = python-watchdog
 	depends = python-wheel
 	depends = python-systemd
 	optdepends = maestral-qt: QT frontend for maestral
 	provides = maestral
 	conflicts = maestral
-	source = git+https://github.com/SamSchott/maestral-dropbox#branch=develop
+	source = git+https://github.com/SamSchott/maestral-dropbox#branch=master
 	source = maestral@.service
 	md5sums = SKIP
 	md5sums = 841d7d34ae18d512e3d2fbe453702744
