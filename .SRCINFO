@@ -1,0 +1,17 @@
+pkgbase = apertium-ita
+	pkgdesc = Apertium linguistic data for Italian
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-ita
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = pkgconf
+	makedepends = autoconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	source = apertium-ita-1.1.1.tar.gz::https://github.com/apertium/apertium-ita/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = c50f3eeac42094a5461cbd7dcc63f4b9d0c46c6cc0e6729cb0f59e471a751722
+
+pkgname = apertium-ita
+
