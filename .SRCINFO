@@ -1,13 +1,13 @@
 pkgbase = makedeb-alpha
 	pkgdesc = Create Debian archives from PKGBUILDs (alpha release)
-	pkgver = 2.4.4
+	pkgver = 2.4.5
 	pkgrel = 1
 	url = https://github.com/hwittenborn/makedeb
 	arch = any
 	license = GPL3
 	depends = pacman
 	depends = dpkg
-	source = https://repo.hunterwittenborn.com/debian/makedeb/pool/m/makedeb-alpha/makedeb-alpha_2.4.4-1_all.deb
+	source = https://repo.hunterwittenborn.com/debian/makedeb/pool/m/makedeb-alpha/makedeb-alpha_2.4.5-1_all.deb
 	sha256sums = SKIP
 
 pkgname = makedeb-alpha
