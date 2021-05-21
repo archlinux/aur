@@ -1,0 +1,20 @@
+pkgbase = apertium-ind-zlm
+	pkgdesc = Apertium translation pair for Indonesian and Malay
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-ind-zlm
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	makedepends = autoconf
+	depends = apertium>=3.4.2
+	depends = apertium-lex-tools
+	depends = vislcg3
+	depends = apertium-ind
+	depends = apertium-zlm
+	source = apertium-ind-zlm-0.1.2.tar.gz::https://github.com/apertium/apertium-ind-zlm/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 1d15267afe192a4053b52b5173d765faff4d2fd8f9d381a6b8e12886b83891e9
+
+pkgname = apertium-ind-zlm
+
