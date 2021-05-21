@@ -1,0 +1,14 @@
+pkgbase = nrm-git
+	pkgdesc = NPM registry manager, fast switch between different registries: npm, cnpm, nj, taobao
+	pkgver = 1.2.2_b3ba7aa
+	pkgrel = 1
+	url = https://github.com/Pana/nrm
+	arch = any
+	makedepends = yarn
+	makedepends = jq
+	depends = nodejs
+	source = git+https://github.com/Pana/nrm
+	sha256sums = SKIP
+
+pkgname = nrm-git
+
