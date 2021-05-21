@@ -1,0 +1,17 @@
+pkgbase = avr-libc-16
+	pkgdesc = The C runtime library for the AVR family of microcontrollers
+	pkgver = 1.6.7
+	pkgrel = 1
+	url = http://savannah.nongnu.org/projects/avr-libc/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = avr-gcc
+	provides = avr-libc=1.6.7
+	conflicts = avr-libc
+	options = !strip
+	source = http://savannah.nongnu.org/download/avr-libc/old-releases/avr-libc-1.6.7.tar.bz2
+	md5sums = 1ccf8078e583d527392f079082f816b0
+
+pkgname = avr-libc-16
+
