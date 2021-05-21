@@ -1,0 +1,16 @@
+pkgbase = onhub_desktop_client-git
+	pkgdesc = A desktop client for Google Onhub routers
+	pkgver = 5fd6fdc
+	pkgrel = 1
+	url = https://github.com/AngeloD2022/OnHubDesktop
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt5-webengine
+	depends = qt5-charts
+	provides = OnHubDesktopClient
+	source = onhub_desktop_client-git::git+https://github.com/AngeloD2022/OnHubDesktop.git
+	sha256sums = SKIP
+
+pkgname = onhub_desktop_client-git
+
