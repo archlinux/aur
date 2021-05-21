@@ -33,11 +33,6 @@ package() {
                    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     echo -ne "********************************************************************************\n\n"\
                 >> "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    cat "${srcdir}/${_fontname}/NOTICE.txt"\
-                >> "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-    echo -ne "********************************************************************************\n\n"\
-                >> "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     cat "${srcdir}/${_fontname}/RomandeNo2-Std/TTF/COPYING"\
                 >> "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     sed -e "s/\r//g" -i "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
