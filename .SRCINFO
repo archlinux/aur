@@ -16,7 +16,7 @@ pkgbase = blobsaver-bin
 	optdepends = libirecovery: Utility to talk to iBoot/iBSS via USB
 	provides = blobsaver
 	source = blobsaver-bin-2.5.5.tar.gz::https://github.com/airsquared/blobsaver/releases/download/v2.5.5/blobsaver-linux.tar.gz
-	sha256sums = c9da14626c5bcc6b20c03fea9793622c18428ac5a2078744a8c5359420a716e0
+	sha256sums = 8937da15c27d24c6df30afaadd39201cde406f3c3647cb4cb310d864d299fe76
 
 pkgname = blobsaver-bin
 
