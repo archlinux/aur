@@ -1,6 +1,7 @@
 pkgbase = com.pvz.spark
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
+	url = https://www.ea.com/ea-studios/popcap/plants-vs-zombies
 	install = pvz.install
 	arch = i686
 	arch = x86_64

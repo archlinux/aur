@@ -1,11 +1,11 @@
 # Maintainer: 9r0k <tanyawei1991@gmail.com>
 pkgname=com.pvz.spark
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc=""
 arch=('i686' 'x86_64')
-url=""
+url="https://www.ea.com/ea-studios/popcap/plants-vs-zombies"
 license=('')
 groups=()
 depends=('deepin-wine5' 'deepin-wine5-i386' )
