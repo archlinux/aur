@@ -1,14 +1,14 @@
 pkgbase = zxpy
 	pkgdesc = Shell scripts made simple
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/tusharsadhwani/zxpy
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = zxpy-1.2.3.tar.gz::https://github.com/tusharsadhwani/zxpy/archive/1.2.3.tar.gz
-	sha512sums = db002d28f5eb503e63fe3e652a7702f3a602001fe7b3b58097c38641fa4ba42d039bdb2427af42812852aa43205117d1ad403abaaab771dbd38c474ba113503e
+	source = zxpy-1.2.4.tar.gz::https://github.com/tusharsadhwani/zxpy/archive/1.2.4.tar.gz
+	sha512sums = 6127c2443096724481f4620fce88081b6dc93a431a35d5c171e8a922cdfa810c048a6e3e6de9a7472d1fe6756a3398f6d6a5c5c99ec306bec71703ca18724fe0
 
 pkgname = zxpy
 
