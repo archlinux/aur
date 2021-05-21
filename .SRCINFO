@@ -1,0 +1,15 @@
+pkgbase = grdl-git-get-git
+	pkgdesc = A better way to clone, organize and manage multiple git repositories
+	pkgver = v0.4.0.r0.f678f4f
+	pkgrel = 1
+	url = https://github.com/grdl/git-get
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	provides = grdl-git-get
+	conflicts = grdl-git-get
+	source = grdl-git-get::git+https://github.com/grdl/git-get
+	md5sums = SKIP
+
+pkgname = grdl-git-get-git
+
