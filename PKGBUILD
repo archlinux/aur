@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=talosctl
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 pkgdesc='CLI for Talos - A modern OS for Kubernetes'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/talos-systems/talos'
 license=('MPL2')
 makedepends=('go')
 source=("https://github.com/talos-systems/talos/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-b2sums=('2c9411e9d95d729b663757a55e0ebb291b699edb36f443967279649f5d26da275ddd1df2630802417fc7c5b345e117ef47481575366d3e3fea1c3aeb6f236c52')
+b2sums=('1152041622732dee1195f939d82ea11fa57a28653ae09e5980df82290cb45e8f9aa7dda1fa937bba0a9addbfedeef7bb47db8d9f8318760f411ef1061860eceb')
 
 build() {
   cd ${pkgname%ctl}-${pkgver}/cmd/talosctl
