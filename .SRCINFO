@@ -1,14 +1,14 @@
 pkgbase = hunspell-cs
 	pkgdesc = Czech dictionary for Hunspell
-	pkgver = 20061030
-	pkgrel = 3
-	url = http://extensions.services.openoffice.org/en/project/czech-dictionary-pack-ceske-slovniky-cs-cz
+	pkgver = 20210301
+	pkgrel = 1
+	url = http://www.translatoblog.cz/hunspell/
 	arch = any
 	license = GPL2
 	license = custom
 	depends = hunspell
-	source = http://download.services.openoffice.org/contrib/dictionaries/cs_CZ-pack.zip
-	md5sums = a778a2a0df6abf505fd8b20a503414e0
+	source = http://www.translatoblog.cz/wp-content/uploads/2021/03/hunspell_cs.zip
+	md5sums = e65ea8e0180ace22e7a633d91275c167
 
 pkgname = hunspell-cs
 
