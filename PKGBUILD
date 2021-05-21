@@ -2,7 +2,7 @@
 
 pkgname=keeper-password-manager
 pkgver=16.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Keeper is the world's #1 most downloaded password keeper and secure digital 
  vault for protecting and managing your passwords and other secret information."
 arch=('x86_64')
@@ -19,11 +19,10 @@ package() {
 
   echo "Setting needed '4755' mode to file: chrome-sandbox."
   chmod 4755 "$pkgdir"/usr/lib/keeperpasswordmanager/chrome-sandbox
-  echo "Setting needed '755' mode on directories: resources/*, locales, swiftshader"
-  find "$pkgdir"/usr/lib/keeperpasswordmanager/resources -type d -print0 | xargs -0 chmod 755
-  chmod 755 "$pkgdir"/usr/lib/keeperpasswordmanager/locales/
-  chmod 755 "$pkgdir"/usr/lib/keeperpasswordmanager/swiftshader/
-
+  echo "If you are updating from 16.0.0 to a newer version, you will need to set '755' mode on directories: resources/*, locales, swiftshader - commands are below, USE AT YOUR OWN RISK:"
+  echo 'find /usr/lib/keeperpasswordmanager/resources -type d -print0 | xargs -0 chmod 755'
+  echo 'chmod 755 /usr/lib/keeperpasswordmanager/locales/'
+  echo 'chmod 755 /usr/lib/keeperpasswordmanager/swiftshader/'
 
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
   install -Dm644 "$pkgdir"/usr/lib/keeperpasswordmanager/LICENSES.chromium.html "$pkgdir"/usr/share/licenses/chromium/LICENSES.chromium.html

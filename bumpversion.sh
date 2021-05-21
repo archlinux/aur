@@ -14,4 +14,5 @@ sed -i "s|^pkgver=.*$|pkgver=${keeperversion}|" PKGBUILD
 sed -i "s|^sha512sums=('.*'$|sha512sums=('${keepersha512sum}'|" PKGBUILD
 # .SRCINFO
 sed -i "s|\tpkgver = .*$|\tpkgver = ${keeperversion}|" .SRCINFO
+sed -i "s|\tsource = .*$|\tsource = ${keeperurl}|" .SRCINFO
 sed -i "0,/sha512sums/s|\tsha512sums = .*$|\tsha512sums = ${keepersha512sum}|" .SRCINFO
