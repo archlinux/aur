@@ -1,5 +1,5 @@
 # Derived from official Arch Linux grub package
-# Maintainer : Angel Perez <near1297@nauta.cu>
+# Maintainer : Angel Perez <drlorente97@gmail.com>
 # Maintainer : Martin Villagra <possum@archlinux.org>
 # Contributor: Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
 # Maintainer : Christian Hesse <mail@eworm.de>
@@ -24,7 +24,7 @@ _GRUB_EXTRAS_COMMIT="8a245d5c1800627af4cefa99162a89c7a46d8842"
 pkgname="grub-silent"
 pkgdesc="GNU GRand Unified Bootloader (2) [without welcome and kernel messages]"
 pkgver=2.04
-pkgrel=4
+pkgrel=5
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64' 'i686')
 license=('GPL3')
@@ -55,12 +55,13 @@ fi
 source=("https://ftp.gnu.org/gnu/${pkgname%-*}/${pkgname%-*}-${pkgver}.tar.xz"
         "https://git.savannah.nongnu.org/cgit/grub-extras.git/snapshot/grub-extras-${_GRUB_EXTRAS_COMMIT}.tar.gz"
         '01-intel-ucode.patch'
-        '02-10_linux-detect-archlinux-initramfs.patch'
+        '02-linux-detect-archlinux-initramfs.patch'
         '03-add-GRUB_COLOR_variables.patch'
         '04-gettext_quiet.patch'
         '05-sleep_shift.patch'
         '06-maybe_quiet.patch'
         '07-quick_boot.patch'
+		'08-fix_wrong_image_size.patch'
         'grub.silent')
 
 sha256sums=('e5292496995ad42dabe843a0192cf2a2c502e7ffcc7479398232b10a472df77d'
@@ -71,7 +72,8 @@ sha256sums=('e5292496995ad42dabe843a0192cf2a2c502e7ffcc7479398232b10a472df77d'
             '39d7843dfe1e10ead912a81be370813b8621794a7967b3cc5e4d4188b5bf7264'
             '4b189e00a8c97ec09903e9588e02fc78b4bb114ee4822fcce13811aca00c8884'
             'b7489c7facc4fb3dad4426c9c00079b64908640a2bec2409e22194daa3f72af4'
-            '057f076ddca241d92a094bc05828e3eb18d3439bf4d2f3d8ca8fa1c51b5b1b2b'
+            '1723340737b91a5bf503829bbe66b1c56683ef0e533f20d18b7098840aecb3a2'
+            '13053d6f36456234a5ed7dc4d4006459f6f9d2c9a19e6febfa4dc17cb5982bd3'
             '4f2e9d585b7b0ef8ce0d09e88391d1397b50883c7cb1516dc99785934abe15a2')
 
 prepare() {
@@ -82,7 +84,7 @@ prepare() {
 	echo
 
 	msg "Patch to detect of Arch Linux initramfs images by grub-mkconfig"
-	patch -Np1 -i "${srcdir}/02-10_linux-detect-archlinux-initramfs.patch"
+	patch -Np1 -i "${srcdir}/02-linux-detect-archlinux-initramfs.patch"
 	echo
 
 	msg "Patch to enable GRUB_COLOR_* variables in grub-mkconfig"
@@ -99,11 +101,15 @@ prepare() {
 	msg "Fix OS naming FS#33393"
 	sed 's|GNU/Linux|Linux|' -i "util/grub.d/10_linux.in"
 
-	msg "Appling Ubuntu patches for making GRUB silent"
+	msg "Applying Ubuntu patches for making GRUB silent"
 	patch -Np1 -i "${srcdir}/04-gettext_quiet.patch"
 	patch -Np1 -i "${srcdir}/05-sleep_shift.patch"
 	patch -Np1 -i "${srcdir}/06-maybe_quiet.patch"
 	patch -Np1 -i "${srcdir}/07-quick_boot.patch"
+	echo
+
+	msg "Appliying patch to fix wrong image size on some rare cases"
+	patch -Np1 -i "${srcdir}/08-fix_wrong_image_size.patch"
 	echo
 
 	msg "Pull in latest language files"
