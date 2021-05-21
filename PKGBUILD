@@ -4,7 +4,7 @@ pkgname=apertium-separable
 pkgver=0.3.6
 pkgrel=1
 pkgdesc="Module for reordering separable/discontiguous multiwords."
-url="https://apertium.org"
+url="https://wiki.apertium.org/wiki/Apertium_separable"
 license=('GPL3')
 makedepends=('pkgconf' 'autoconf' 'gcc')
 depends=('apertium>=3.4.2' 'zlib')
