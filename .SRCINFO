@@ -1,0 +1,17 @@
+pkgbase = apertium-rus
+	pkgdesc = Apertium linguistic data for Russian
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-rus
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	makedepends = autoconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	source = apertium-rus-0.2.1.tar.gz::https://github.com/apertium/apertium-rus/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 4c5482e9e7577d9968eaa5ce9b4c63c72168ca123062f6cf1525272d02fe85da
+
+pkgname = apertium-rus
+
