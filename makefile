@@ -15,7 +15,7 @@ run: $(EXE)
 	bin/term-sudoku example.sudoku
 
 uninstall:
-	@sudo rm $(IDIR)/term-sudoku
+	@rm $(IDIR)/term-sudoku
 	@echo "removing term-sudoku bin from $(IDIR)"
 
 clean:
@@ -33,4 +33,4 @@ $(EXE): $(OBJ)
 
 install: $(EXE)
 	@echo "copying term-sudoku bin to $(IDIR)"
-	@sudo cp $(ODIR)/term-sudoku $(IDIR)/term-sudoku
+	@cp $(ODIR)/term-sudoku $(IDIR)/term-sudoku
