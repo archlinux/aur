@@ -1,0 +1,17 @@
+pkgbase = com.pvz.spark
+	pkgver = 1.0
+	pkgrel = 1
+	install = pvz.install
+	arch = i686
+	arch = x86_64
+	license = 
+	depends = deepin-wine5
+	depends = deepin-wine5-i386
+	provides = spark
+	conflicts = spark
+	replaces = spark
+	source = http://dcstore.spark-app.store/store/games/plantsvszombies/plantsvszombies_deepin.deb
+	md5sums = 10d8727eb8f7686d928a20f27781fbac
+
+pkgname = com.pvz.spark
+
