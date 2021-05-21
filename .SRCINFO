@@ -1,0 +1,19 @@
+pkgbase = apertium-hbs-slv
+	pkgdesc = Apertium translation pair for Serbo-Croatian and Slovenian
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-hbs-slv
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = pkgconf
+	makedepends = autoconf
+	depends = apertium>=3.4.2
+	depends = apertium-lex-tools
+	depends = vislcg3
+	depends = apertium-hbs
+	source = apertium-hbs-slv-0.5.1.tar.gz::https://github.com/apertium/apertium-hbs-slv/archive/refs/tags/v0.5.1.tar.gz
+	sha256sums = 58e3451acb8d0675cd00fe8a7fdb75974da86d3dfbccba9253bca4e5608c83c8
+
+pkgname = apertium-hbs-slv
+
