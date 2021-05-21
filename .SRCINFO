@@ -1,0 +1,17 @@
+pkgbase = apertium-urd
+	pkgdesc = Apertium linguistic data for Urdu
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-urd
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	makedepends = autoconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	source = apertium-urd-0.1.1.tar.gz::https://github.com/apertium/apertium-urd/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 06a3f3a171e4bcb83e9a131dfd45d267b4acd6787d5e0c08e355f5aa62a3c285
+
+pkgname = apertium-urd
+
