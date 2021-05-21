@@ -2,7 +2,7 @@
 
 pkgname=kubecm-git
 _pkgname=kubecm
-pkgver=v0.13.1
+pkgver=v0.15.3
 pkgrel=1
 pkgdesc="Manage your kubeconfig more easily."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --tags
+  git describe --abbrev=0
 }
 
 build() {
