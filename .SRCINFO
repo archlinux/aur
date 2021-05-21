@@ -1,0 +1,22 @@
+pkgbase = apertium-fra-cat
+	pkgdesc = Apertium translation pair for French and Catalan
+	pkgver = 1.9.0
+	pkgrel = 2
+	url = https://github.com/apertium/apertium-fra-cat
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = pkgconf
+	makedepends = autoconf
+	depends = apertium>=3.4.2
+	depends = apertium-lex-tools
+	depends = apertium-separable
+	depends = vislcg3
+	depends = apertium-fra
+	depends = apertium-cat
+	replaces = apertium-fr-ca
+	source = apertium-fra-cat-1.9.0.tar.gz::https://github.com/apertium/apertium-fra-cat/archive/refs/tags/v1.9.0.tar.gz
+	sha256sums = 3fe00ab3e6a8be14f043e36f8024a4840886d18988dd6819e8cd4f78ac8fc4d6
+
+pkgname = apertium-fra-cat
+
