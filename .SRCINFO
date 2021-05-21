@@ -21,6 +21,7 @@ pkgbase = python-ocp-git
 	makedepends = rapidjson
 	makedepends = python-jinja
 	makedepends = python-toml
+	makedepends = python-cymbal
 	makedepends = lief
 	depends = python
 	depends = opencascade-rc

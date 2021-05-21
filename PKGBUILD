@@ -29,6 +29,7 @@ python-schema
 rapidjson
 python-jinja
 python-toml
+python-cymbal
 lief
 )
 conflicts=(python-ocp)
