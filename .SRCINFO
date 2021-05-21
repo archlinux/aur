@@ -12,7 +12,7 @@ pkgbase = gog-ftl
 	depends = lib32-libglvnd
 	depends = lib32-alsa-lib
 	provides = ftl=1.6.12
-	source = ftl_advanced_edition.sh_1.6.12.sh::gogdownloader://1207659102/en3installer0
+	source = ftl_advanced_edition_1_6_12.sh::gogdownloader://1207659102/en3installer0
 	source = ftl.desktop
 	sha256sums = aac8bdcbbf47b823f77889e27be77d52dfde041c4977ec375176a2a52063e0c9
 	sha256sums = 34d225685c9b06ba2f70a08ab5f341a271c1b98c8ff7e3b593432a45c79b8dec

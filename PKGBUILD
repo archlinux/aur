@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 makedepends=('lgogdownloader' 'sed')
 provides=("ftl=$pkgver")
 depends=('lib32-libglvnd' 'lib32-alsa-lib' )
-source=("ftl_advanced_edition.sh_${pkgver}.sh::gogdownloader://1207659102/en3installer0"
+source=("ftl_advanced_edition_${pkgver//./_}.sh::gogdownloader://1207659102/en3installer0"
         "ftl.desktop")
 sha256sums=('aac8bdcbbf47b823f77889e27be77d52dfde041c4977ec375176a2a52063e0c9'
             '34d225685c9b06ba2f70a08ab5f341a271c1b98c8ff7e3b593432a45c79b8dec')
