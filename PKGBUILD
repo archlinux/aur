@@ -74,7 +74,7 @@ validpgpkeys=(
 )
 
 sha256sums=('SKIP'
-            '51742dee57cd15bece152d6527f48af87cb7930f0f6a356d5282f778e7c35b39')
+            '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
