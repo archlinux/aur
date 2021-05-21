@@ -11,7 +11,7 @@ pkgname=(
 )
 pkgver="2.1.0"
 _pkgver=${pkgver/\~/-}
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight virtual machines for containers (version 2, binary packaging)"
 arch=(x86_64)
 url="https://katacontainers.io"
