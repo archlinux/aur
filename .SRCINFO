@@ -1,0 +1,17 @@
+pkgbase = apertium-pol
+	pkgdesc = Apertium linguistic data for Polish
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-pol
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	makedepends = autoconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	source = apertium-pol-0.1.1.tar.gz::https://github.com/apertium/apertium-pol/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 2af501ed5054d9f27c15aa3ffc50175d695933cbf407d34bfa733fcf9f5cab9c
+
+pkgname = apertium-pol
+
