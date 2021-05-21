@@ -124,11 +124,6 @@ build() {
 
   cd "$srcdir/$pkgname-$pkgver"
 
-  if check_buildoption ccache y; then
-    # Avoid falling back to preprocessor mode when sources contain time macros
-    export CCACHE_SLOPPINESS=time_macros
-  fi
-
   export CC=clang
   export CXX=clang++
   export AR=ar
