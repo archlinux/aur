@@ -4,7 +4,7 @@
 
 _pkgname=pyenv
 pkgname=$_pkgname-git
-pkgver=1.2.24.1.r10.g32ba5d5e
+pkgver=2.0.0.rc1.r0.g4ce52bd3
 pkgrel=1
 pkgdesc="Easily switch between multiple versions of Python (Git)"
 arch=('any')
@@ -18,7 +18,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd $srcdir/$_pkgname
-  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
