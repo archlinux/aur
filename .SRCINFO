@@ -1,0 +1,17 @@
+pkgbase = apertium-ind
+	pkgdesc = Apertium linguistic data for Indonesian
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-ind
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	makedepends = autoconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	source = apertium-ind-0.2.0.tar.gz::https://github.com/apertium/apertium-ind/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = bbddad0507a8158835a8d980453fcd8e4dd88f1c9074f35c8cc390c256938891
+
+pkgname = apertium-ind
+
