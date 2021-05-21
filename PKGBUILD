@@ -1,14 +1,14 @@
 # Maintainer: Samuel "scrufulufugus" Monson <smonson at irbash dot net>
 # Original PKGBUILD Contributor: "PedroHLC"
 pkgname="gamescope"
-pkgver=3.7.1
+pkgver=3.8.1
 pkgrel=0
 pkgdesc="The micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
 url="https://github.com/Plagman/gamescope"
 license=('BSD' 'custom:BSD 2-Clause "Simplified" License')
 
-depends=(wayland opengl-driver xorg-server-xwayland libdrm libinput libxkbcommon libxcomposite libcap libxcb libpng glslang libxrender libxtst vulkan-icd-loader sdl2)
+depends=(wayland opengl-driver xorg-server-xwayland libdrm libinput libxkbcommon libxcomposite libcap libxcb libpng glslang libxrender libxtst libxres vulkan-icd-loader sdl2)
 makedepends=('meson' 'ninja' 'cmake' 'pixman' 'pkgconf' 'vulkan-headers' 'wayland-protocols>=1.17') # makepkg -si
 
 provides=('steamcompmgr' 'libliftoff=0.0.0')
@@ -16,16 +16,16 @@ conflicts=('gamescope-git' 'libliftoff')
 replaces=('steamcompmgr')
 
 source=("${url}/archive/${pkgver}.tar.gz"
-        'https://github.com/emersion/libliftoff/archive/24abeb923f52176808461e664776b56d52960d3e.tar.gz'
-        'https://github.com/swaywm/wlroots/archive/238d1c078fb03338e9f271d98f7bf6b1fc399285.tar.gz')
-sha256sums=('044f7969b796e678415ca7762fb21c04ecb331660b442b4fdcc389410ef36c6f'
-            'eccaafc0a007e61189e6cc5c0f2b6455aadc80a0dd81a79b73be4ba8f5149ab8'
-            'fa2282ccf49bea061b11927bbe908b2c80806d9318f6f5e4eb3e3008e7f6410a')
+        'https://github.com/emersion/libliftoff/archive/b08bbaa5e6331ed273c4bbd867143bf776c18207.tar.gz'
+        'https://github.com/swaywm/wlroots/archive/69c71dbc8afecc5da5c800cdc1475185064b4ac4.tar.gz')
+sha256sums=('07e7f2a8aa4cb5b6053e7d2963688bf1fbce3ba270a7447fcd533e829e6d4cfc'
+            '46415b8470913e3fe746867f396c45e59628cfd5918c0467aef27c86b9f5ecd6'
+            'd2feb19cd2dcf1ea1ef3559a22ec49d916e6fc266bd80a5e32ab1564a5c93589')
 
 prepare() {
-    mkdir -p '_build'
-    cp -r wlroots-238d1c078fb03338e9f271d98f7bf6b1fc399285/* "${pkgname}-${pkgver}/subprojects/wlroots/"
-	cp -r libliftoff-24abeb923f52176808461e664776b56d52960d3e/* "${pkgname}-${pkgver}/subprojects/libliftoff/"
+  mkdir -p '_build'
+	cp -r libliftoff-b08bbaa5e6331ed273c4bbd867143bf776c18207/* "${pkgname}-${pkgver}/subprojects/libliftoff/"
+  cp -r wlroots-69c71dbc8afecc5da5c800cdc1475185064b4ac4/* "${pkgname}-${pkgver}/subprojects/wlroots/"
 }
 
 build() {

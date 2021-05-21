@@ -1,6 +1,6 @@
 pkgbase = gamescope
 	pkgdesc = The micro-compositor formerly known as steamcompmgr
-	pkgver = 3.7.1
+	pkgver = 3.8.1
 	pkgrel = 0
 	url = https://github.com/Plagman/gamescope
 	arch = x86_64
@@ -26,6 +26,7 @@ pkgbase = gamescope
 	depends = glslang
 	depends = libxrender
 	depends = libxtst
+	depends = libxres
 	depends = vulkan-icd-loader
 	depends = sdl2
 	provides = steamcompmgr
@@ -33,12 +34,12 @@ pkgbase = gamescope
 	conflicts = gamescope-git
 	conflicts = libliftoff
 	replaces = steamcompmgr
-	source = https://github.com/Plagman/gamescope/archive/3.7.1.tar.gz
-	source = https://github.com/emersion/libliftoff/archive/24abeb923f52176808461e664776b56d52960d3e.tar.gz
-	source = https://github.com/swaywm/wlroots/archive/238d1c078fb03338e9f271d98f7bf6b1fc399285.tar.gz
-	sha256sums = 044f7969b796e678415ca7762fb21c04ecb331660b442b4fdcc389410ef36c6f
-	sha256sums = eccaafc0a007e61189e6cc5c0f2b6455aadc80a0dd81a79b73be4ba8f5149ab8
-	sha256sums = fa2282ccf49bea061b11927bbe908b2c80806d9318f6f5e4eb3e3008e7f6410a
+	source = https://github.com/Plagman/gamescope/archive/3.8.1.tar.gz
+	source = https://github.com/emersion/libliftoff/archive/b08bbaa5e6331ed273c4bbd867143bf776c18207.tar.gz
+	source = https://github.com/swaywm/wlroots/archive/69c71dbc8afecc5da5c800cdc1475185064b4ac4.tar.gz
+	sha256sums = 07e7f2a8aa4cb5b6053e7d2963688bf1fbce3ba270a7447fcd533e829e6d4cfc
+	sha256sums = 46415b8470913e3fe746867f396c45e59628cfd5918c0467aef27c86b9f5ecd6
+	sha256sums = d2feb19cd2dcf1ea1ef3559a22ec49d916e6fc266bd80a5e32ab1564a5c93589
 
 pkgname = gamescope
 
