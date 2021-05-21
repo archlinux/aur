@@ -1,8 +1,8 @@
 # Maintainer: Mingkai Dong <mingkaidong@gmail.com>
 
 pkgname=gf-complete-git
-pkgver=20141003
-pkgrel=2
+pkgver=a6862d1
+pkgrel=1
 pkgdesc="A library implements every Galois Field multiplication technique applicable to erasure coding for storage"
 arch=('i686' 'x86_64')
 url="https://github.com/ceph/gf-complete"
@@ -12,37 +12,30 @@ makedepends=('git' 'make' 'gcc')
 source=()
 md5sums=()
 
-_gitroot='https://github.com/ceph/gf-complete.git'
-_gitbranch=master
+source=('git+https://github.com/ceph/gf-complete.git#branch=master')
+_pkgname=gf-complete
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+  git rev-parse --short HEAD
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
+  cd $_pkgname
 
-  if [ -d $_gitbranch ] ; then
-    cd $_gitbranch && git pull origin
-    msg "The local files are updated."
-  else
-    git clone $_gitroot $_gitbranch
-  fi
-
-  msg "GIT checkout done or server timeout"
   msg "Starting automake..."
 
-  cd "$srcdir/$_gitbranch"
   ./autogen.sh
   ./configure
 
   msg "Starting make..."
-
-  #
-  # BUILD HERE
-  #
   make
 }
 
 package() {
-  cd "$srcdir/$_gitbranch"
+  cd $_pkgname
   make DESTDIR="$pkgdir/" install
-  rm -rf "$srcdir/$_gitbranch"
+  # msg "Moving libgf_complete.la..."
+  # install ./src/libgf_complete.la $pkgdir/usr/local/lib/libgf_complete.la
 }

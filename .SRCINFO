@@ -1,7 +1,7 @@
 pkgbase = gf-complete-git
 	pkgdesc = A library implements every Galois Field multiplication technique applicable to erasure coding for storage
-	pkgver = 20141003
-	pkgrel = 2
+	pkgver = a6862d1
+	pkgrel = 1
 	url = https://github.com/ceph/gf-complete
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = gf-complete-git
 	makedepends = git
 	makedepends = make
 	makedepends = gcc
+	source = git+https://github.com/ceph/gf-complete.git#branch=master
+	sha256sums = SKIP
 
 pkgname = gf-complete-git
 
