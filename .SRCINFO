@@ -1,0 +1,21 @@
+pkgbase = apertium-kaz-tat
+	pkgdesc = Apertium translation pair for Kazakh and Tatar
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-kaz-tat
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	makedepends = autoconf
+	depends = apertium>=3.4.2
+	depends = apertium-lex-tools
+	depends = vislcg3
+	depends = hfst
+	depends = apertium-kaz
+	depends = apertium-tat
+	source = apertium-kaz-tat-0.2.1.tar.gz::https://github.com/apertium/apertium-kaz-tat/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 58f76085a42f1bacef197948f89275fe38ddbd5702253f7bb22f61e38833f9c0
+
+pkgname = apertium-kaz-tat
+
