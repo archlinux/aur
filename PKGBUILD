@@ -1,8 +1,8 @@
 # Maintainer: Juacrumar <juacrumar at lairen dot eu>
 
 pkgname=pineappl
-pkgver=0.3.0
-pkgrel=3
+pkgver=0.4.1
+pkgrel=1
 pkgdesc='PineAPPL is not an extension of APPLgrid'
 arch=('any')
 url="https://n3pdf.github.io/pineappl/"
@@ -18,7 +18,7 @@ optdepends=()
 provides=("pineappl")
 changelog=
 source=("https://github.com/N3PDF/pineappl/archive/v${pkgver}.tar.gz")
-md5sums=("ca5d7a4b39ed49a5d62c015d9fe75591")
+md5sums=("756e186f88caaf5ddf1883ae74f397ac")
 
 prepare() {
 	cd "$pkgname-$pkgver"
