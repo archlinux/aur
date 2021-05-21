@@ -1,0 +1,9 @@
+kernel-core-*.rpm
+kernel-modules-*.rpm
+kernel-devel-*.rpm
+kernel-doc-*.rpm
+
+linux-el-*.pkg.tar*
+
+src/
+pkg/
