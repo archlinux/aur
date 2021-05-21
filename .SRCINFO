@@ -1,0 +1,20 @@
+pkgbase = apertium-cat-srd
+	pkgdesc = Apertium translation pair for Catalan and Sardinian
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-cat-srd
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	makedepends = autoconf
+	depends = apertium>=3.4.2
+	depends = apertium-lex-tools
+	depends = vislcg3
+	depends = apertium-cat
+	depends = apertium-srd
+	source = apertium-cat-srd-1.1.0.tar.gz::https://github.com/apertium/apertium-cat-srd/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = e296bcd5c7d2975435ef385013bec5be6197cf0a9f5f8eeee118465f7ac662cb
+
+pkgname = apertium-cat-srd
+
