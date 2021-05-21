@@ -1,7 +1,7 @@
 pkgbase = ecal
 	pkgdesc = enhanced Communication Abstraction Layer
 	pkgver = 5.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/continental/ecal
 	arch = x86_64
 	arch = armv7h
@@ -17,7 +17,11 @@ pkgbase = ecal
 	backup = etc/ecal/ecal.ini
 	backup = etc/ecal/ecaltime.ini
 	source = git+https://github.com/continental/ecal.git
+	source = Support_GCC_11.patch
+	source = Support_Protobuf_3_15_6.patch
 	sha256sums = SKIP
+	sha256sums = 794f88435e6251b25664f9b1eda0928394d8265983eadc3dbc9106d316a7895f
+	sha256sums = 6346bafc67654da0714a93c72e09530959fd7fc83716ba5d7a638dbd82d75b38
 
 pkgname = ecal
 
