@@ -1,14 +1,14 @@
 pkgbase = lib32-nss-mdns
 	pkgdesc = glibc plugin providing host name resolution via mDNS
-	pkgver = 0.14.1
+	pkgver = 0.15
 	pkgrel = 1
-	url = http://0pointer.de/lennart/projects/nss-mdns/
+	url = https://github.com/lathiat/nss-mdns
 	arch = x86_64
 	license = LGPL
 	makedepends = lib32-gcc-libs
 	depends = lib32-glibc
-	source = https://github.com/lathiat/nss-mdns/releases/download/v0.14.1/nss-mdns-0.14.1.tar.gz
-	sha256sums = a2094101b735cade45048764ea594bdae2bfa9399837f3c852a5b264416e9c8c
+	source = https://github.com/lathiat/nss-mdns/releases/download/v0.15/nss-mdns-0.15.tar.gz
+	sha256sums = a1814ed139bb0aa47b299c35b6ff8fc03a209464f55b8bfb4ef95ac1af65f507
 
 pkgname = lib32-nss-mdns
 
