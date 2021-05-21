@@ -1,6 +1,6 @@
 pkgbase = jlink-software-and-documentation
 	pkgdesc = Segger JLink software & documentation pack for Linux
-	pkgver = 7.20a
+	pkgver = 7.20b
 	pkgrel = 0
 	epoch = 37
 	url = https://www.segger.com/jlink-software.html
@@ -60,14 +60,14 @@ pkgbase = jlink-software-and-documentation
 	md5sums = 74cb2486441a6e571dcc3327204cd8da
 	md5sums = 8fa15c29a78bf1c98af5941607ff5a2a
 	md5sums = dd0923b84488e5f1cca5192324904201
-	source_i686 = JLink_Linux_720a_i686.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V720a_i386.tgz
-	md5sums_i686 = 102811b2350722031e7ee191a90431ff
-	source_x86_64 = JLink_Linux_720a_x86_64.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V720a_x86_64.tgz
-	md5sums_x86_64 = c1a368333ede64f383f2251fda3bd8f0
-	source_armv7h = JLink_Linux_720a_arm.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V720a_arm.tgz
-	md5sums_armv7h = 1a5453802ef6e61fb11c2bdcdf75a22b
-	source_aarch64 = JLink_Linux_720a_arm64.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V720a_arm64.tgz
-	md5sums_aarch64 = df6de79e518dbe73ff46131435726c54
+	source_i686 = JLink_Linux_720b_i686.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V720b_i386.tgz
+	md5sums_i686 = 8e3908a65dfd4fdf40a39dbb3852408c
+	source_x86_64 = JLink_Linux_720b_x86_64.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V720b_x86_64.tgz
+	md5sums_x86_64 = d8723e80831f4331a3b4542a3ec251f8
+	source_armv7h = JLink_Linux_720b_arm.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V720b_arm.tgz
+	md5sums_armv7h = 93e88c5caee10db4c1e4407801cbf104
+	source_aarch64 = JLink_Linux_720b_arm64.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V720b_arm64.tgz
+	md5sums_aarch64 = 4552105daf0ca444e0e6a5c6d24740a2
 
 pkgname = jlink-software-and-documentation
 
