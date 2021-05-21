@@ -5,14 +5,14 @@
 pkgname=libmesh-petsc
 realname=libmesh
 pkgrel=1
-pkgver=cpp03_final.r5833.ge7c7a2246
+pkgver=cpp03_final.r6039.g857a62705
 pkgdesc="A C++ Finite Element Library"
 arch=("x86_64")
 url="http://libmesh.github.io/"
 license=('LGPL')
 provides=($realname "metaphysicl" "timpi")
 conflicts=($realname)
-depends=('eigen' 'hdf5' 'boost-libs' 'intel-tbb' 'vtk' 'glpk' 'netcdf' 'nlopt' "petsc" "hypre" "openmpi" "metis")
+depends=('eigen' 'hdf5' 'boost-libs' 'intel-tbb' 'vtk' 'glpk' 'netcdf' 'nlopt' "petsc" "hypre=2.18.2" "openmpi" "metis")
 makedepends=('bison' 'coreutils')
 # From tar.bz2
 # source=("https://github.com/libMesh/libmesh/releases/download/v${pkgver}/libmesh-${pkgver}.tar.bz2")
@@ -25,45 +25,79 @@ sha256sums=('SKIP'
             'b6b2d10d1f423b9a088e6b55d9368d8f1ac7291646da34864c5f58124f5e3880')
 
 # Find the location of the header files of PETSc
-petsc_h=$(pacman -Ql petsc | grep -m 1 petsc.h | sed 's-^[[:alpha:]-]* --g')
 # Get the PETSc directory
-petsc_dir=$(dirname "$petsc_h")
-export PETSC_DIR=${petsc_dir%%/include}
+petsc_incl=$(pkgconf --cflags-only-I PETSc)
+export PETSC_DIR=${petsc_incl##-I}
 
-#####################################################################
-# From UPC: Building And Using Static And Shared "C" Libraries.html #
-# #+begin_QUOTE                                                     #
-# we need that all jump calls ("goto", in assembly speak)           #
-# and subroutine calls will use relative addresses, and not         #
-# absolute addresses. Thus, we need to use ... ~-fPIC~ or           #
-# ~-fpic~                                                           #
-# #+end_QUOTE                                                       #
-#####################################################################
-###############################################################################
-#  From makepkg.conf                                                          #
-# -march (or -mcpu) builds exclusively for an architecture                    #
-# -mtune optimizes for an architecture, but builds for whole processor family #
-###############################################################################
-
-# I used these for PETSc (from MOOSE)
+#  From UPC: Building And Using Static And Shared "C"
+#  Libraries.html
+# #+begin_QUOTE
+# we need that all jump calls ("goto", in assembly speak)
+# and subroutine calls will use relative addresses, and not
+# absolute addresses. Thus, we need to use ... ~-fPIC~ or
+# ~-fpic~
+# #+end_QUOTE
+#
+#  From makepkg.conf
+# -march (or -mcpu) builds exclusively for an architecture
+# -mtune optimizes for an architecture, but builds for
+#  whole processor family
+#
 # -O3 optimises
-generic_flags="-fPIC -fopenmp -O3 -march=x86-64 -mtune=generic"
-export   COPTFLAGS=-O3
-export CPPOPTFLAGS=-O3
-export CXXOPTFLAGS=-O3
-export      CFLAGS="$generic_flags"
-# Fortify is optional
-export    CPPFLAGS="$generic_flags -O2 -D_FORTIFY_SOURCE=2"
-export    CXXFLAGS="$generic_flags -O2 -D_FORTIFY_SOURCE=2"
-export      FFLAGS="$generic_flags"
-export     FCFLAGS="$generic_flags"
-export    F90FLAGS="$generic_flags"
-export    F77FLAGS="$generic_flags"
+#
+# -D-FORTIFY-SOURCE=2
+# | https://stackoverflow.com/a/16604146
+# |- man 7 feature_test_macros
+# checks to be performed to detect some buffer overflow
+# errors when employing various string and memory
+# manipulation functions ... some  conforming programs
+# might fail
+#
+# -fcf-protection
+# | Info pages for gcc (gnu compiler collection)
+# intended to protect against such threats as
+# Return-oriented Programming (ROP), and similarly
+# call/jmp-oriented programming (COP/JOP)
+#
+# -pipe
+# | Info pages for gcc (controlling the kind of output)
+# Use pipes rather than temporary files for communication
+# between the various stages of compilation
+#
+# -fno-plt
+# | Info pages for gcc (code generation conventions)
+# leads to more efficient code by eliminating PLT stubs and
+# exposing GOT loads to optimizations
+#
+# -fopenmp
+# | Info pages for gcc (controlling c dialect)
+# Enable handling of OpenMP directives
 
 # I used these for PETSc (from MOOSE)
+# safe_flags="-D-FORTIFY-SOURCE=2 -fcf-protection -fno-plt -fstack-clash-protection -Wformat -Werror=format-security"
+safe_flags="-Wp,-D_FORTIFY_SOURCE=2,-D_GLIBCXX_ASSERTIONS -fcf-protection -fno-plt -fstack-clash-protection -Wformat -Werror=format-security"
+generic_flags="-pipe -fno-plt -fPIC -fopenmp -march=amdfam10 -mtune=native ${safe_flags}"
+opt_flags="${generic_flags} -O3"
+generic_flags="${generic_flags} -O2"
+
+export COPTFLAGS="${opt_flags}"
+export CXXOPTFLAGS="$COPTFLAGS"
+export FOPTFLAGS="$COPTFLAGS"
+export CPPFLAGS="$generic_flags"
+export CXXFLAGS="$CPPFLAGS"
+export CFLAGS="$generic_flags"
+export FFLAGS="$generic_flags"
+export FCFLAGS="$generic_flags"
+export F90FLAGS="$generic_flags"
+export F77FLAGS="$generic_flags"
+# I used these (from MOOSE)
 # export METHODS="opt oprof dbg"
 export METHODS="opt dbg"
 
+export CC=mpicc CXX=mpicxx FC=mpifort
+export PETSC_DIR=/usr/Local/petsc
+
+# Use English, metres, dates like the rest of us
 export LANG=en_IE.UTF-8 LANGUAGE=en_IE.UTF-8 LC_ALL=en_IE.UTF-8
 
 pkgver() {
@@ -90,22 +124,6 @@ prepare() {
   autoconf
   [[ -f /usr/include/netcdf.h ]] && \
     sed -i "s-\(ac_subdirs_all='\)contrib/netcdf/v4-\1-g; s-\(subdirs=\"\$subdirs\) contrib/netcdf/v4-\1-g" configure
-
-  # # Force NLOpt
-
-  ##############################################################
-  # # I keep getting a very annoying error with an             #
-  # # out-of-source build, saying that I need to run ~make     #
-  # # distclean~, but if I do that, some make rules are not    #
-  # # found. With this, I recreate whatever is needed for the  #
-  # # out-of-source ~make distclean~                           #
-  # ./configure \                                              #
-  #   --prefix=/usr \                                          #
-  #   $(for (( i=1; i<=${#CONFOPTS[@]}; i++)); do              #
-  #       echo "${CONFOPTS[$i]}";                              #
-  #     done)                                                  #
-  # make distclean                                             #
-  ##############################################################
 }
 
 build() {
@@ -153,7 +171,8 @@ build() {
     --enable-mpi
     # METIS
     # use PETSCs' metis
-    --with-metis=PETSc
+    --with-metis=/usr/lib/
+    --with-metis-include=/usr/include/
     # MUMPS
     --enable-mumps
     --with-mumps=/usr/include
@@ -178,7 +197,12 @@ build() {
 
   # Configure
   local config_file="${srcdir}/${realname}"/configure
-  $config_file $(for (( i=1; i<=${#CONFOPTS[@]}; i++)); do
+  CC=mpicc \
+    CXX=mpicxx \
+    FC=mpifort \
+    PETSC_DIR=/usr/local/petsc/linux-c-opt \
+    OMPI_MCA_opal_warn_on_missing_libcuda=0 \
+    $config_file $(for (( i=1; i<=${#CONFOPTS[@]}; i++)); do
                    echo "${CONFOPTS[$i]}";
                  done)
 
@@ -193,34 +217,43 @@ check() {
 }
 
 package() {
-  buildir="${srcdir}"/build
-  cd "${buildir}"
-  # # TODO: this does not place the files in the right path (only in /usr/exmaples)
-  make DESTDIR="${pkgdir}"/usr/share/doc/libmesh doc
-  make DESTDIR="${pkgdir}"/usr/share/doc/libmesh/examples examples_doc
-  # Remove calls to analytics and prying eyes
-  find "${pkgdir}"/usr/share/doc/libmesh/examples\
-       -type f -exec\
-       sed -i 's_google_google-removed_g' \{\} +
+  export OMPI_MCA_opal_warn_on_missing_libcuda=0
+  _buildir="${srcdir}"/build
 
+  cd "${_buildir}"
+  # Is there a way to directly install de documentation in
+  # the right place?
+  make doc
+  make examples_doc
   make DESTDIR="${pkgdir}" install
 
+  _docdir="${pkgdir}"/usr/share/doc/libmesh/
+  install -d "${_docdir}"
+  install -d "${_docdir}"/examples
+
   # Move libtool (and contrib) to usr/share/libmesh
-  install -d "${pkgdir}/usr/share/libmesh/"
   mv "${pkgdir}/usr/contrib" "${pkgdir}/usr/share/libmesh/"
   # Set right path for libtool from libMesh
-  sed -i 's-/usr/contrib/bin-/usr/share/libmesh/contrib/bin-g' "${pkgdir}"/{etc/libmesh,usr/lib/pkgconfig}/Make.common
+  sed -i 's-\(/usr/share/libmesh\)/bin/contrib-\1/contrib/bin-g' "${pkgdir}"/{etc/libmesh,usr/lib/pkgconfig}/Make.common
 
   # Place examples and documentation in the right directory
   install -d "${pkgdir}"/usr/share/doc/
-  cp -a "${buildir}"/doc "${pkgdir}"/usr/share/doc/libmesh
+  cp -a "${_buildir}"/doc/html "${_docdir}"
   mv "${pkgdir}"/usr/examples "${pkgdir}"/usr/share/doc/libmesh/
   # Make local links to the source of the examples
-  find "${pkgdir}"/usr/share/doc/libmesh/html/examples -type f -name '*.html' -exec sed -i 's-https://github.com/libMesh/libmesh/tree/master/examples/\([^/]*\)/\1_\(ex\)-/usr/share/doc/libmesh/examples/\1/\2-g' \{\} +
+  find "${_docdir}"/html/examples -type f -name '*.html' \
+       -exec sed -i 's-https://github.com/libMesh/libmesh/tree/master/examples/\([^/]*\)/\1_\(ex\)-/usr/share/doc/libmesh/examples/\1/\2-g' \{\} +
+  # Remove calls to analytics and prying eyes
+  find "${_docdir}" -type f -exec \
+       sed -i 's_google_google-removed_g' \{\} +
 
   # Set right path for Make.common
-  find "${pkgdir}"/usr/share/doc/libmesh/examples -type f -name Makefile -exec sed -i 's-\(LIBMESH_DIR[^=]*=\).*-\1 /etc/libmesh/-g' \{\} +
+  find "${_docdir}"/examples -type f -name Makefile \
+       -exec sed -i 's-\(LIBMESH_DIR[^=]*=\).*-\1 /etc/libmesh/-g' \{\} +
+  # Set right path for run_common.sh
+  find "${_docdir}"/examples -type f -name 'run.sh' \
+       -exec sed -i 's-source LIBMESH_DIR/examples/.*-source /usr/share/doc/libmesh/examples/-g' \{\} +
 
-  # Get rid of /usr/Make.common (should be in /etc/libmesh)
-  rm "${pkgdir}"/usr/Make.common || echo "removed"
+  # Remove /usr/Make.common (already in /etc/libmesh)
+  rm -f "${pkgdir}"/usr/Make.common || echo "removed"
 }
