@@ -1,0 +1,17 @@
+pkgbase = apertium-isl
+	pkgdesc = Apertium linguistic data for Icelandic
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-isl
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	makedepends = autoconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	source = apertium-isl-0.1.1.tar.gz::https://github.com/apertium/apertium-isl/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 237d7e840609e4d4c6dd35980b5aeca8ab3e52491f98e55fc07db554d1f7b48b
+
+pkgname = apertium-isl
+
