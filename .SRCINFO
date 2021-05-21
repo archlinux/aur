@@ -1,0 +1,16 @@
+pkgbase = apertium-eu-en
+	pkgdesc = Apertium translation pair for Basque and English
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-eu-en
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = pkgconf
+	makedepends = autoconf
+	depends = apertium>=3.4.2
+	source = apertium-eu-en-0.3.2.tar.gz::https://github.com/apertium/apertium-eu-en/archive/refs/tags/v0.3.2.tar.gz
+	sha256sums = b5bdf2814861ce5deb782e19bf55076cff251d832049d7344ab889b57368c718
+
+pkgname = apertium-eu-en
+
