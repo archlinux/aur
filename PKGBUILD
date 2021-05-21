@@ -3,7 +3,7 @@
 
 pkgname=ttf-romande
 _fontname=Romande-Collection
-pkgver=1.006
+pkgver=1.010
 pkgrel=1
 pkgdesc="A serif font"
 arch=('any')
