@@ -1,13 +1,13 @@
 # Maintainer: Jason Goulet-Lipman <jason.gouletlipman@gmail.com>
 pkgname=corevantage-x220
 _pkgname=corevantage
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 arch=('x86_64')
 license=('GPL3')
 pkgdesc="Graphical user interface to configure coreboot settings for: ThinkPad X220"
 source=("https://github.com/JaGoLi/$_pkgname/archive/$pkgver.tar.gz")
-sha256sums=('b8444ae61d98113568aded5f4d85dfa44c93e97a5356ce6acdc26721835da269')
+sha256sums=('42c448d1732981818142b87f248f2410c60320804f3c9591cc43effa5ab92f9c')
 provides=("corevantage")
 conflicts=("corevantage")
 makedepends=("qt5-quickcontrols"

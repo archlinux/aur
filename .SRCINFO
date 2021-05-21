@@ -1,6 +1,6 @@
 pkgbase = corevantage-x220
 	pkgdesc = Graphical user interface to configure coreboot settings for: ThinkPad X220
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	arch = x86_64
 	license = GPL3
@@ -11,8 +11,8 @@ pkgbase = corevantage-x220
 	depends = hicolor-icon-theme
 	provides = corevantage
 	conflicts = corevantage
-	source = https://github.com/JaGoLi/corevantage/archive/1.4.tar.gz
-	sha256sums = b8444ae61d98113568aded5f4d85dfa44c93e97a5356ce6acdc26721835da269
+	source = https://github.com/JaGoLi/corevantage/archive/1.5.tar.gz
+	sha256sums = 42c448d1732981818142b87f248f2410c60320804f3c9591cc43effa5ab92f9c
 
 pkgname = corevantage-x220
 
