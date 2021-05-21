@@ -10,6 +10,7 @@ pkgbase = macaulay2
 	makedepends = unzip
 	makedepends = emacs
 	makedepends = texinfo
+	makedepends = gcc10
 	depends = gcc-fortran
 	depends = readline
 	depends = gdbm

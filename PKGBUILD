@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://www.math.uiuc.edu/Macaulay2/"
 license=('GPL')
 depends=('gcc-fortran' 'readline' 'gdbm' 'gc' 'mpir' 'mpfr' 'mpsolve-git' 'boost' 'lapack' 'cblas' 'eigen' 'ntl' 'scscp' 'singular-factory' 'frobby' 'flint' 'cddlib' 'glpk' 'gfan' 'gtest')
-makedepends=('git' 'unzip' 'emacs' 'texinfo')
+makedepends=('git' 'unzip' 'emacs' 'texinfo' 'gcc10')
 source=('git+https://github.com/Macaulay2/M2')
 
 pkgver() {
