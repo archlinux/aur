@@ -28,10 +28,10 @@ source=("git+https://git.archlinux.org/pacman.git"
         "pacman.conf.arm"
         "makepkg.conf")
 sha256sums=('SKIP'
-            '07b4e78745b9c9ecd93b703649b24b05803941f02ac2142ef62d50e36cb865a7'
-            '4f349704aee808873bef4759a56d92e7985c3f9bffdd7b00bfaa988110124208'
-            '6185dc65b18d1d085f65281c6bd1ce556466a64bf883d1f27c89b7e620570334'
-            '806b40ba78eacedd96d733c1fa1eeae4b1f7398992976e22cf72e22563ab9c7a')
+            '0e09eb240512da85f7eaa314a5a98fe7d4c4e7ed5eebde7e3e937c0ae4ee7054'
+            '7ff75a61a07eabbc1718a7171b897b6504a6370f2f59a14caf42bbf0dce26ea6'
+            '3fa640a4a2138b8d07b6e6366ff0743206ecb32fc3b7f53490a614388c492cf3'
+            '0c1ecbb8c57e8ef2c600b41d4458269095fc4ddb6778d0000d4a9a067f68fe2d')
 
 pkgver() {
   cd pacman
