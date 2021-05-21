@@ -1,6 +1,6 @@
 pkgbase = ttf-romande
 	pkgdesc = A serif font
-	pkgver = 1.006
+	pkgver = 1.010
 	pkgrel = 1
 	url = http://arkandis.tuxfamily.org/adffonts.html
 	arch = any
