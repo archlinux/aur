@@ -1,0 +1,21 @@
+pkgbase = apertium-crh-tur
+	pkgdesc = Apertium translation pair for Crimean Tatar and Turkish
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-crh-tur
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	makedepends = autoconf
+	depends = apertium>=3.4.2
+	depends = apertium-lex-tools
+	depends = vislcg3
+	depends = hfst
+	depends = apertium-crh
+	depends = apertium-tur
+	source = apertium-crh-tur-0.3.0.tar.gz::https://github.com/apertium/apertium-crh-tur/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 95f41fb0839c38097ef45fa51d69dd39e226dcd01ccbb774b4b3351c765a76f8
+
+pkgname = apertium-crh-tur
+
