@@ -1,18 +1,18 @@
 pkgbase = moodle
 	pkgdesc = An open-source software learning management system
-	pkgver = 3.10.3
+	pkgver = 3.11
 	pkgrel = 1
 	url = https://moodle.org/
 	arch = any
 	license = GPLv3
-	depends = php7>=7.2.0
-	depends = php-intl>=7.2.0
-	depends = php-gd>=7.2.0
+	depends = php7>=7.3.0
+	depends = php7-intl>=7.3.0
+	depends = php7-gd>=7.3.0
 	depends = mariadb>=10.2.29
 	conflicts = moodle-plus
 	options = !strip
-	source = https://download.moodle.org/stable310/moodle-3.10.3.tgz
-	sha256sums = 53baef0225de231c6746b630871afcf39d333bbaabe858621c4195101830241c
+	source = https://download.moodle.org/stable311/moodle-3.11.tgz
+	sha256sums = ad9298dba64fbee6d2afa9d9f8a82e8f5b8aa0425b177a4420a8e387ac1ec98a
 
 pkgname = moodle
 

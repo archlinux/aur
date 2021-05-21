@@ -5,18 +5,18 @@
 # Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=moodle
-pkgver=3.10.3
-_pkgver="stable310"
+pkgver=3.11
+_pkgver="stable311"
 pkgrel=1
 pkgdesc='An open-source software learning management system'
 arch=('any')
 url='https://moodle.org/'
 license=('GPLv3')
-depends=('php7>=7.2.0' 'php-intl>=7.2.0' 'php-gd>=7.2.0' 'mariadb>=10.2.29')
+depends=('php7>=7.3.0' 'php7-intl>=7.3.0' 'php7-gd>=7.3.0' 'mariadb>=10.2.29')
 conflicts=('moodle-plus')
 options=('!strip')
 source=("https://download.moodle.org/${_pkgver}/${pkgname}-${pkgver}.tgz")
-sha256sums=('53baef0225de231c6746b630871afcf39d333bbaabe858621c4195101830241c')
+sha256sums=('ad9298dba64fbee6d2afa9d9f8a82e8f5b8aa0425b177a4420a8e387ac1ec98a')
 
 
 package() {
