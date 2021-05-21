@@ -1,0 +1,17 @@
+pkgbase = apertium-spa
+	pkgdesc = Apertium linguistic data for Spanish
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-spa
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	makedepends = autoconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	source = apertium-spa-1.2.2.tar.gz::https://github.com/apertium/apertium-spa/archive/refs/tags/v1.2.2.tar.gz
+	sha256sums = de1fcc44703e238f782b71b90741a96fe4a7bd40e434cf7f4e1795a2dc58d1bb
+
+pkgname = apertium-spa
+
