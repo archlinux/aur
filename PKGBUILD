@@ -12,7 +12,7 @@ makedepends=(python python-pip)
 conflicts=(whoogle-git)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/benbusby/whoogle-search/archive/refs/tags/v$pkgver.tar.gz"
         whoogle.service)
-sha256sums=('5ce0c312c3e662eacb01b9e96352d7233afcdf069cd98b0a7543f440468d124a'
+sha256sums=('4a61f15c21ee35e188246371bf61c8bc650bf40bb2b0c621d1b8d02bab696b5b'
             'b8474f3024d310b67454b8b59977fd26b66dba3930f31604058b773e13905e49')
 install=whoogle.install
 
