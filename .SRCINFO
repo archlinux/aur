@@ -1,0 +1,23 @@
+pkgbase = mirage-python3
+	pkgdesc = A fast and simple GTK+ Image Viewer (Python3 port)
+	pkgver = 0.11.1
+	pkgrel = 1
+	url = https://gitlab.com/thomasross/mirage
+	arch = any
+	license = GPL3
+	depends = python
+	depends = gtk3
+	depends = python-gobject
+	depends = python-cairo
+	depends = libgexiv2
+	provides = mirage
+	conflicts = mirage
+	source = mirage-python3-0.11.1.tar.bz2::https://gitlab.com/thomasross/mirage/-/archive/0.11.1/mirage-0.11.1.tar.bz2
+	source = mirage-python3-0.11.1.debian.tar.xz::https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/mirage/0.11.1-1build2/mirage_0.11.1-1build2.debian.tar.xz
+	source = mirage-python3.patch
+	sha256sums = 2932f7e9e6a1da7785cae2664669eff6f12ca26163afb3d1a3c8e1cc3255e5ec
+	sha256sums = 48b5cf3ff7d50d602ea673a424ffd659ab8813ce7dd1837b574cf39eb732c50a
+	sha256sums = 3e569cfaf6d2061a3692e33a2c85693d531cdaf1abf74ca0ea0e94a4823178b9
+
+pkgname = mirage-python3
+

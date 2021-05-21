@@ -1,0 +1,103 @@
+diff --unified --recursive --text mirage-0.11.1.orig/setup.py mirage-0.11.1/setup.py
+--- mirage-0.11.1.orig/setup.py	2020-06-07 05:01:58.000000000 +0300
++++ mirage-0.11.1/setup.py	2021-05-21 10:43:25.456902888 +0300
+@@ -1,71 +1,8 @@
+ #!/usr/bin/env python3
+ 
+-import os
+-import subprocess
+-
+ from distutils.core import setup, Extension
+ 
+ 
+-def removeall(path):
+-    if not os.path.isdir(path):
+-        return
+-
+-    files = os.listdir(path)
+-
+-    for x in files:
+-        fullpath = os.path.join(path, x)
+-        if os.path.isfile(fullpath):
+-            f = os.remove
+-            rmgeneric(fullpath, f)
+-        elif os.path.isdir(fullpath):
+-            removeall(fullpath)
+-            f = os.rmdir
+-            rmgeneric(fullpath, f)
+-
+-
+-def rmgeneric(path, __func__):
+-    try:
+-        __func__(path)
+-    except OSError:
+-        pass
+-
+-
+-# Create mo files:
+-if not os.path.exists("mo/"):
+-    os.mkdir("mo/")
+-for lang in (
+-    "it",
+-    "de",
+-    "pl",
+-    "es",
+-    "fr",
+-    "ru",
+-    "hu",
+-    "cs",
+-    "pt_BR",
+-    "zh_CN",
+-    "nl",
+-    "uk",
+-    "sv",
+-):
+-    pofile = "po/" + lang + ".po"
+-    mofile = "mo/" + lang + "/mirage.mo"
+-    if not os.path.exists("mo/" + lang + "/"):
+-        os.mkdir("mo/" + lang + "/")
+-    print("generating", mofile)
+-    os.system("msgfmt %s -o %s" % (pofile, mofile))
+-
+-
+-print("Generating gresources bundle")
+-subprocess.call(
+-    [
+-        "glib-compile-resources",
+-        "--sourcedir=resources",
+-        "--target=io.thomasross.mirage.gresource",
+-        "resources/mirage.gresource.xml",
+-    ]
+-)
+-
+ setup(
+     name="Mirage",
+     version="0.11.1",
+@@ -120,27 +57,3 @@
+         ("share/locale/sv/LC_MESSAGES", ["mo/sv/mirage.mo"]),
+     ],
+ )
+-
+-# Cleanup (remove /build, /mo, and *.pyc files:
+-print("Cleaning up...")
+-try:
+-    removeall("build/")
+-    os.rmdir("build/")
+-except:
+-    pass
+-try:
+-    removeall("mo/")
+-    os.rmdir("mo/")
+-except:
+-    pass
+-try:
+-    os.remove("io.thomasross.mirage.gresource")
+-except:
+-    pass
+-try:
+-    for f in os.listdir("."):
+-        if os.path.isfile(f):
+-            if os.path.splitext(os.path.basename(f))[1] == ".pyc":
+-                os.remove(f)
+-except:
+-    pass

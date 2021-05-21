@@ -1,0 +1,5 @@
+/src/
+/pkg/
+/mirage-python3-*.pkg.tar.*
+
+/mirage-python3-*.tar.*
