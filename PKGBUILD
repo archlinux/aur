@@ -2,7 +2,7 @@
 # Maintainer: Hunter Wittenborn <hunter@hunterwittenborn.com>
 
 pkgname=makedeb-db
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Dependency conversion tool for makedeb"
 arch=("any")
