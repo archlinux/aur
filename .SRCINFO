@@ -1,6 +1,6 @@
 pkgbase = kubecm-git
 	pkgdesc = Manage your kubeconfig more easily.
-	pkgver = v0.13.1
+	pkgver = v0.15.3
 	pkgrel = 1
 	url = https://github.com/sunny0826/kubecm
 	arch = i686
