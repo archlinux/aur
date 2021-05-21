@@ -1,0 +1,20 @@
+pkgbase = hearts
+	pkgdesc = An implementation of the 'Hearts' card game
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://github.com/Rescator7/Hearts
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = allegro
+	source = https://github.com/Rescator7/Hearts/archive/refs/tags/v1.6.tar.gz
+	source = hearts.desktop
+	md5sums = 8b4ff188b7b490f1d19fe4caae32090e
+	md5sums = 59b0cbdacbde0ac4346a047bca9f0832
+
+pkgname = hearts
+

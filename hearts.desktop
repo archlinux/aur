@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Hearts
+Name[nl]=Hartenjagen
+Exec=/usr/bin/hearts
+Type=Application
+Icon=/usr/share/pixmaps/hearts.png
+Categories=Game;CardGame
+
