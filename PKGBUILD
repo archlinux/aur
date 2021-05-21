@@ -2,8 +2,8 @@
 # Co-Maintainer: amo <https://aur.archlinux.org/account/amo>
 
 pkgname="paperless-ng"
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.4.4
+pkgrel=1
 pkgdesc="A supercharged version of paperless: scan, index and archive all your physical documents"
 url="https://github.com/jonaswinkler/paperless-ng"
 license=("GPL3")
@@ -31,7 +31,7 @@ source=("$url/releases/download/ng-$pkgver/$pkgname-$pkgver.tar.xz"
         "paperless-consumer.service"
         "paperless-scheduler.service"
         "paperless-webserver.service")
-sha256sums=('4739e453a788faa80ab64feedcae5792accba1fe0af6955967b8e6ce7ec05feb'
+sha256sums=('b808f184e875dcfc15b40068ce34dcb6d703185e10070e1168f20d3e52e6138b'
             '5496fb7258fe070450586180437d62eac51189228ae7ac75411630a9253336c5'
             'a002bd55b8e5b1ef89a10b907483c56df99d52d03951d464472d8c375e9835d6'
             '3971deb5721eb4e01c2cc0348546cc22a861a1e84458061fce4fbd2cf01b2a1e'
