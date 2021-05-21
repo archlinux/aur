@@ -6,7 +6,7 @@
 
 _name=sxiv
 pkgname="${_name}-photoorg-git"
-pkgver=0.r755.4772390
+pkgver=0.r768.2a3c329
 pkgrel=1
 pkgdesc="Simple X Image Viewer, photo organiser version"
 arch=('i686' 'x86_64')

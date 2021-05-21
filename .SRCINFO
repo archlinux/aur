@@ -1,6 +1,6 @@
 pkgbase = sxiv-photoorg-git
 	pkgdesc = Simple X Image Viewer, photo organiser version
-	pkgver = 0.r755.4772390
+	pkgver = 0.r768.2a3c329
 	pkgrel = 1
 	url = https://github.com/cdown/sxiv
 	arch = i686
