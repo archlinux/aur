@@ -1,5 +1,5 @@
+# Maintainer: Marius Lindvall <(firstname) {cat} varden {dog} info>
 # Contributor: Kevin Brubeck Unhammer <unhammer@fsfe.org>
-# Maintainer: Kevin Brubeck Unhammer <unhammer@fsfe.org>
 pkgname=apertium-separable
 pkgver=0.3.6
 pkgrel=1
