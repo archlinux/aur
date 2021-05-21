@@ -1,4 +1,5 @@
 pkgbase = com.pvz.spark
+	pkgdesc = pvz from spark store
 	pkgver = 1.0
 	pkgrel = 2
 	url = https://www.ea.com/ea-studios/popcap/plants-vs-zombies
