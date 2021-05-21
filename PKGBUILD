@@ -3,7 +3,7 @@
 pkgname=nodejs-addon-api
 _npmname=${pkgname/js}
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Node.js API (N-API)'
 arch=('any')
 url="https://github.com/nodejs/$_npmname"
@@ -35,5 +35,12 @@ package() {
         --cache "$srcdir/npm-cache" \
         --prefix "$pkgdir/usr" \
         $_npmname-$pkgver.tgz
+
+    # Non-deterministic race in npm gives 777 permissions to random directories.
+    # See https://github.com/npm/npm/issues/9359 for details.
+    chmod -R u=rwX,go=rX "$pkgdir"
+
+    # npm installs package.json owned by build user
+    # https://bugs.archlinux.org/task/63396
     chown -R root:root "$pkgdir"
 }

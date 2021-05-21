@@ -1,7 +1,7 @@
 pkgbase = nodejs-addon-api
 	pkgdesc = Node.js API (N-API)
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nodejs/node-addon-api
 	arch = any
 	license = MIT
