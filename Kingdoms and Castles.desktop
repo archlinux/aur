@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Kingdoms and Castles
+Exec=kingdoms-and-castles
+Comment=Kingdoms and Castles is a game about growing a kingdom from a tiny hamlet to a sprawling city and imposing castle
+Terminal=false
+Icon=gog-kingdoms-and-castles.png
+Type=Application
+Categories=Game;

@@ -1,0 +1,22 @@
+pkgbase = gog-kingdoms-and-castles
+	pkgdesc = Kingdoms and Castles is a game about growing a kingdom from a tiny hamlet to a sprawling city and imposing castle
+	pkgver = 117r7
+	pkgrel = 1
+	url = https://www.gog.com/game/kingdoms_castles
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = lgogdownloader
+	depends = bash
+	depends = gtk2
+	depends = gtk3
+	depends = lib32-gdk-pixbuf2
+	source = kingdoms_and_castles_117r7.sh::gogdownloader://2067763543/en3installer0
+	source = start-kingdoms-and-castles.sh
+	source = Kingdoms and Castles.desktop
+	sha512sums = 5e2bd652f119501b82525a82a089e35e0f13d6cf2ef68402e2e9e6612bca6912da7eccb8a971b9a4396b4aa90b3345f78cd409fcfc256ce59cd1d1efcb34bad1
+	sha512sums = a928e02a78abab18fbe49e600ba5fb1d19b577df109fe3d9d5800c92210263a9e11b0bf1a8abac8ed1b773d57a4595f7f711344cfefa575f525d58c8d25277ba
+	sha512sums = 3f8c7438f09b670e8a34ff4efb5f3c6c5031c78492eff05a0ccadf6e60252b540ae8fd4682f84cc51a49b3db9389e0690a6ff6d6c9d01502f5f16683eb487247
+
+pkgname = gog-kingdoms-and-castles
+
