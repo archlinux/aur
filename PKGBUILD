@@ -1,30 +1,29 @@
-# Contributor: Kevin Brubeck Unhammer <unhammer@gmail.com>
-# Maintainer: Kevin Brubeck Unhammer <unhammer@gmail.com>
+# Maintainer: Marius Lindvall <(firstname) {cat} varden {dog} info>
+# Contributor: Kevin Brubeck Unhammer <unhammer@fsfe.org>
 pkgname=apertium-eo-en
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="Apertium language data for the Esperanto-English translator."
-url="http://apertium.org"
-license=('GPL')
-makedepends=('pkgconfig')
-depends=('lttoolbox>=3.0' 'apertium>=3.0')
+pkgdesc="Apertium translation pair for Esperanto and English"
+url="https://github.com/apertium/${pkgname}"
+license=('GPL2')
+makedepends=('pkgconf' 'autoconf')
+depends=('apertium>=3.4.2' 'apertium-lex-tools' 'vislcg3')
 arch=('i686' 'x86_64')
-source=("http://downloads.sourceforge.net/sourceforge/apertium/${pkgname}-${pkgver}.tar.gz"
-        "Makefile.am.patch"
-        "Makefile.in.patch")
-md5sums=('df00059573f4a87d90dc56394daf6793'
-         '31dfb82e3412a1159786ce65a2748910'
-         '6145fc4ec2ceddd7270fa2111d11bb73')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/apertium/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('978a1b7697a26e7fc26b75bbcac6684fa8bfe77b497ca955edda30c36f31ef3a')
 
 build() {
-  patch -p0 < Makefile.am.patch
-  patch -p0 < Makefile.in.patch
+    cd "$srcdir/$pkgname-$pkgver"
+    ./autogen.sh --prefix=/usr
+    make
+}
 
-  mkdir -p "$pkgdir/usr/share/apertium/modes"
+check() {
+    cd "$srcdir/$pkgname-$pkgver"
+    make check
+}
 
-  cd "$srcdir/$pkgname-$pkgver"
-
-  ./configure --prefix=/usr
-  make || return 1
-  make DESTDIR="$pkgdir/" install || return 1
+package() {
+    cd "$srcdir/$pkgname-$pkgver"
+    make DESTDIR="$pkgdir/" install
 }
