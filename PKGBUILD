@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=clipto-bin
-pkgver=5.1.1
+pkgver=5.1.2
 pkgrel=1
 pkgdesc="Effortless, super fast and flexible notes taking app and clipboard manager."
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-bin}" "${pkgname%-bin}.pro")
 replaces=("${pkgname%-bin}.pro")
 source=("https://github.com/clipto-pro/Desktop/releases/download/v$pkgver/${pkgname%-bin}-$pkgver.AppImage"
         "${pkgname%-bin}")
-sha256sums=('c0c33c32362adddf876b055e964a771479d31aae0055accf49f53b62525cc383'
+sha256sums=('a89aab8504bbe55a581bac943ef9461fb95fb403356a5021cfd5756e6da698f4'
             '9a741f1a1760de706698cb1576e3bb08846876c359aedd5d8854e69d913f0635')
 
 prepare() {
