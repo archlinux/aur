@@ -1,6 +1,6 @@
 # Maintainer: aulonsal <aulonsal at gmail dot com>
 pkgname=f2-bin
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="Cross-platform command-line tool for batch renaming files and directories quickly and safely"
 arch=(x86_64 i686 aarch64)
@@ -12,12 +12,12 @@ source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/
 source_i686=("$pkgname-$pkgver-i686.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_i386.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_arm64.tar.gz")
 
-b2sums_x86_64=('90be98c727907be99e6afd292d3162204df9bfc0850b1be681ed28e5bd2d7b796e1ed70575fb05538dec3ada94ce49c3dd89223977c4fa961faa2464003d614f')
-b2sums_i686=('2c318c290955381de150eec510a8e6b98744c08ae4c6efc66c4f4db98204a064efb9ea2ce9353def68806ae41e2952478938dd61f359d2ecb2876b215090904a')
-b2sums_aarch64=('0b7f5c568ec342c68a165b2e62ea10c0c8dfb341d2de7945d5b7eaec3e3c29ebbda861e239eefeb7cb82421d737f225751902fcbe5aeeebfc81c7b4a55e919ef')
+b2sums_x86_64=('9dda70989acc82cd6fa1e8b147c4ae70d8557fb0b6183c9c4bc485d0a6a980da11d643872c6b3d5df8feb52f9b863d17cc37302588fd7a37b8751407becb0c55')
+b2sums_i686=('4378a03f95208537e05ad3590afcdd5835e061e443a0581d9a175a37fea1af0860a070b1d539ea5cb9c02c69dd04ec9f33f0567f94e924044f3df0de635d9cee')
+b2sums_aarch64=('ad0a11188e1755b675fc845326f3ff5b556241fd0887bf638b228085ef6341784bbf03fd8cedfae007618ccf0b4a628a57aa6f309d0ec1e90751cce2a27088f0')
 
 package() {
 	install -Dm755 "${pkgname%-bin}" -t "$pkgdir/usr/bin"
-	install -Dm644 LICENCE -t "$pkgdir/usr/share/licenses/$pkgname"
-	install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/$pkgname"
+	install -Dm644 LICENCE -t "$pkgdir/usr/share/licenses/${pkgname%-bin}"
+	install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/${pkgname%-bin}"
 }
