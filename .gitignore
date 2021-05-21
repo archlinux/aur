@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!brightness-controller.desktop
+!brightness-controller.sh
+!brightness-reset.sh

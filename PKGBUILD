@@ -1,61 +1,54 @@
-# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
-
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 pkgname=brightness-controller-git
-_pkgname=brightness-controller
-pkgver=2.3.1
-pkgrel=3
-pkgdesc='Control Brightness of your Primary and Secondary Display in Linux'
-arch=(x86_64)
-url='https://github.com/LordAmit/Brightness'
+pkgver=2.3.4.r286.ea7434a
+pkgrel=1
+pkgdesc="Control Brightness of your Primary and Secondary Display in Linux"
+arch=('x86_64')
+url="https://github.com/LordAmit/Brightness"
 license=('GPL')
-depends=(
-  pyside2
-  xorg-xrandr
-  python-cx_freeze
-  qt5-charts
-  qt5-xmlpatterns
-  qt5-speech
-  qt5-x11extras
-  qt5-tools
-  qt5-svg
-  qt5-sensors
-  qt5-remoteobjects
-  qt5-websockets
-  qt5-datavis3d
-  qt5-3d
-  qt5-script
-  qt5-webengine
-)
-makedepends=(git)
-source=(
-  'git+https://github.com/LordAmit/Brightness.git'
-  brightness-controller.desktop
-)
+depends=('python-qtpy' 'xorg-xrandr')
+makedepends=('git' 'python-cx-freeze' 'python-setuptools')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname%-git}::git+https://github.com/LordAmit/Brightness.git"
+        "$url/raw/releases/usr/share/man/man1/${pkgname%-git}.1.gz"
+        "${pkgname%-git}.desktop"
+        "${pkgname%-git}.sh"
+        'brightness-reset.sh')
 sha256sums=('SKIP'
-            '5d8cd9b4d10159c95eae52174dbfb43db4e963f458c20f8fa80c9cec7f1bc9e7')
-_gitname='Brightness'
+            '7a01713032d8a44e828c4d7fe4d7445501ebbec6071ee8041faaafa5bac77a91'
+            'b717c81ee4f996b18c74931c9ee9a3dc5c7cb571aade25a5be52905b7afc8860'
+            'cc7c78f60ed1b3606411c6a0569e3a13b7dbbbf4dd4fdeb11d0939f9f357ff78'
+            'e6a777ca8aca3577754c53efceaa1010b521aaaafd826339baf4bbd109c71d84')
 
-pkgver(){
-  if [ -d "$srcdir"/$_gitname ]; then
-    cd "$srcdir"/$_gitname
-    ( set -o pipefail
-    python src/setup.py -V )
-#     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-#     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
-  fi
+pkgver() {
+  cd "$srcdir/${pkgname%-git}/src"
+  printf "$(python setup.py --version).r%s.%s" \
+    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build(){
-  cd "$srcdir/$_gitname"/src
-  python setup.py build
-}
+#build() {
+#  cd "$srcdir/${pkgname%-git}/src"
+#  python setup.py build
+#}
 
-package(){
-  cd "$srcdir/$_gitname"/src
-  python setup.py install --skip-build -O1 --root="$pkgdir"
+package() {
+  cd "$srcdir/${pkgname%-git}/src"
+#  export PYTHONHASHSEED=0
+#  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
-  install -Dm644 "$srcdir"/brightness-controller.desktop "$pkgdir/usr/share/applications/brightness-controller.desktop"
-  install -dm755 "$pkgdir/usr/share/pixmaps"
-  cd "$pkgdir/usr/share/pixmaps"
-  ln -s /usr/lib/Brightness-${pkgver}/icons/brightness-controller.svg
+  install -Dm644 brightness-reset init.py -t "$pkgdir/usr/share/${pkgname%-git}"
+  cp -r ui util "$pkgdir/usr/share/${pkgname%-git}"
+  rm "$pkgdir/usr/share/${pkgname%-git}/util/debian_install"
+
+  install -Dm644 "icons/${pkgname%-git}.svg" -t "$pkgdir/usr/share/${pkgname%-git}/icons"
+  install -d "$pkgdir/usr/share/icons/hicolor/scalable/apps"
+  ln -s "/usr/share/${pkgname%-git}/icons/${pkgname%-git}.svg" \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps"
+
+  install -Dm755 "$srcdir/${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
+  install -Dm755 "$srcdir/brightness-reset.sh" "$pkgdir/usr/bin/brightness-reset"
+  install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm644 "$srcdir/${pkgname%-git}.1" -t "$pkgdir/usr/share/man/man1"
 }
