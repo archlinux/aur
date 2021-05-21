@@ -1,0 +1,17 @@
+pkgbase = apertium-zlm
+	pkgdesc = Apertium linguistic data for Malay (individual language)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-zlm
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	makedepends = autoconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	source = apertium-zlm-0.2.0.tar.gz::https://github.com/apertium/apertium-zlm/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = dc21a459705953f6a2114d1a602917a91b339efa69e6730011cd2dbd040bc528
+
+pkgname = apertium-zlm
+
