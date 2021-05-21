@@ -5,7 +5,7 @@ _name=maestral-qt
 pkgname="${_name}-git"
 provides=("${_name}")
 conflicts=("${_name}")
-pkgver=1.3.2.dev0.r0.gddb1dd5
+pkgver=1.4.4
 pkgrel=1
 pkgdesc='A Qt interface for the Maestral daemon'
 arch=('any')
@@ -14,8 +14,9 @@ license=('MIT')
 source=("git+${url}#branch=develop")
 makedepends=('git' 'python' 'python-setuptools' 'python-wheel')
 depends=(
+    'python-click>=7.1.1'
     'python'
-    'maestral'
+    'maestral>=1.4.3'
     'python-click>=7.1.1'
     'python-markdown2'
     'python-packaging'
