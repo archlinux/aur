@@ -1,6 +1,6 @@
 pkgbase = gdb-multiarch
 	pkgdesc = The GNU Debugger for all gdb supported architectures (i386/arm/mips...)
-	pkgver = 10.1
+	pkgver = 10.2
 	pkgrel = 1
 	url = http://www.gnu.org/software/gdb/
 	arch = i686
@@ -13,10 +13,10 @@ pkgbase = gdb-multiarch
 	depends = guile2.0
 	depends = gdb-common
 	options = !emptydirs
-	source = https://ftp.gnu.org/gnu/gdb/gdb-10.1.tar.xz
-	source = https://ftp.gnu.org/gnu/gdb/gdb-10.1.tar.xz.sig
+	source = https://ftp.gnu.org/gnu/gdb/gdb-10.2.tar.xz
+	source = https://ftp.gnu.org/gnu/gdb/gdb-10.2.tar.xz.sig
 	validpgpkeys = F40ADB902B24264AA42E50BF92EDB04BFF325CF3
-	sha256sums = f82f1eceeec14a3afa2de8d9b0d3c91d5a3820e23e0a01bbb70ef9f0276b62c0
+	sha256sums = aaa1223d534c9b700a8bec952d9748ee1977513f178727e1bee520ee000b4f29
 	sha256sums = SKIP
 
 pkgname = gdb-multiarch
