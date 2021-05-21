@@ -1,6 +1,6 @@
 pkgbase = re
 	pkgdesc = Portable library for real-time communications
-	pkgver = 1.1.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/baresip/re
 	arch = i686
@@ -9,9 +9,9 @@ pkgbase = re
 	license = BSD
 	depends = openssl
 	depends = zlib
-	source = re-1.1.0.tar.gz::https://github.com/baresip/re/archive/v1.1.0.tar.gz
+	source = re-2.0.1.tar.gz::https://github.com/baresip/re/archive/v2.0.1.tar.gz
 	source = re-flags.patch
-	sha256sums = 82afc903a6b1e436b357f05eb11560ec681712291dd9c83c408465c895f28b5d
+	sha256sums = 43aa439b96aff75fe5768b9f9d49dea97042e42e7647df47b345465763e2f7ed
 	sha256sums = fb1c3db52d49953dbc689b105b3bf90c86ddbde44fbe2cfcf2f271c02e48d36b
 
 pkgname = re
