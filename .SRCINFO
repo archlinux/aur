@@ -1,0 +1,17 @@
+pkgbase = apertium-srd
+	pkgdesc = Apertium linguistic data for Sardinian
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-srd
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	makedepends = autoconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	source = apertium-srd-1.3.1.tar.gz::https://github.com/apertium/apertium-srd/archive/refs/tags/v1.3.1.tar.gz
+	sha256sums = 2e27d278164a7c3836a6601fc4bd2db580d95bea3dbb58230738782289076a51
+
+pkgname = apertium-srd
+
