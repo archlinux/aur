@@ -1,7 +1,7 @@
 # Maintainer: S Stewart <tda@null.net>
 # Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
 pkgname="gdlauncher"
-pkgver="1.1.5"
+pkgver="1.1.7"
 pkgrel=1
 commitsha="8c3569a63f240da3abb1ea4aba4f4597b1805bd4"
 arch=('x86_64')
