@@ -1,0 +1,33 @@
+pkgbase = doxygen-clang
+	pkgdesc = Documentation system for C++, C, Java, IDL and PHP (built with clang parser)
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = http://www.doxygen.nl
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = gcc-libs
+	makedepends = flex
+	makedepends = qt5-base
+	makedepends = texlive-core
+	makedepends = ghostscript
+	makedepends = texlive-latexextra
+	makedepends = graphviz
+	makedepends = python
+	makedepends = git
+	makedepends = llvm
+	depends = gcc-libs
+	depends = clang
+	optdepends = graphviz: for caller/callee graph generation
+	optdepends = qt5-base: for doxywizard
+	provides = doxygen
+	provides = doxygen-docs
+	conflicts = doxygen
+	conflicts = doxygen-docs
+	source = doxygen-1.9.1.tar.gz::https://github.com/doxygen/doxygen/archive/Release_1_9_1.tar.gz
+	sha256sums = 96db0b69cd62be1a06b0efe16b6408310e5bd4cd5cb5495b77f29c84c7ccf7d7
+	sha512sums = 1b835701f3d76a968442ac3912842c7ee3e24bbce89517bef9c81ff54c4866f35bf693ad6dd235519adffdb5f0bfe418956ddc096edddc1c53c0d3030a86c1e7
+	b2sums = 811d6a53765abd26e0d00c15b986abdbf559723cb5399bbdfb292f6d822590579d7ca5c9869ce383eb99d2dcd1efefb954da1e190e4e4b0aa9752fadc4903474
+
+pkgname = doxygen-clang
+
