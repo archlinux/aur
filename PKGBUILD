@@ -2,7 +2,7 @@
 # Contributor: particle-iot (https://github.com/particle-iot)
 
 pkgname=prtcl-bin
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="The new Particle CLI"
 arch=("x86_64")
@@ -10,7 +10,7 @@ url="https://github.com/particle-iot/particle-cli"
 license=("Apache")
 source=("prtcl.deb::https://prtcl.s3.amazonaws.com/apt/prtcl_$pkgver-1_amd64.deb")
 noextract=("prtcl.deb")
-sha256sums=('7b4186d3905dc58fe64237b92dc7590c5b228f8baa7164f5fdf498fafd5198b0')
+sha256sums=('68d35a3a2c9260f7838f9aa9dca2a33d1f042951d1df3d7cd8b31905851febdf')
 
 depends=()
 optdepends=("bash-completion")
