@@ -2,7 +2,7 @@
 
 _pipname=plum
 pkgname=python-${_pipname,,}
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Pack/Unpack Memory'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://gitlab.com/dangass/$_pipname/-/archive/$pkgver/$_pipname-$pkgver.tar.bz2")
-sha256sums=('81abe267a49fe95f20368725c27a43122e4db981e9ae3b3e94139e924940a54a')
+sha256sums=('1a21067b45929e6ff738c294d108ade94877920e88180bc6814cc0807fb8655e')
 
 build() {
     cd "$_pipname-$pkgver"
