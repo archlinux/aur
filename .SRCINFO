@@ -1,0 +1,17 @@
+pkgbase = apertium-isl-swe
+	pkgdesc = Apertium translation pair for Icelandic and Swedish
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-isl-swe
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = pkgconf
+	makedepends = autoconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	source = apertium-isl-swe-0.1.1.tar.gz::https://github.com/apertium/apertium-isl-swe/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 7f13489cfeb524dc12d9b346089814acca280ee2b54236c7afe2aaf389b4a195
+
+pkgname = apertium-isl-swe
+
