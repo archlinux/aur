@@ -1,6 +1,6 @@
 pkgbase = chatterino2-nightly-appimage
 	pkgdesc = Second installment of the Twitch chat client series "Chatterino", nightly appimage
-	pkgver = 2021.05.16
+	pkgver = 2021.05.21
 	pkgrel = 1
 	url = https://chatterino.com
 	install = chatterino2-nightly-appimage.install
