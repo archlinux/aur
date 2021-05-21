@@ -1,0 +1,20 @@
+pkgbase = gyro-bin
+	pkgdesc = A Zig package manager with an index, build runner, and build dependencies
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/mattnite/gyro
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = MIT
+	provides = gyro
+	source = LICENSE
+	sha256sums = e8b7547024443b2fae2609708ffd1680a8f1973214f1523419fe91bd52aa8552
+	source_aarch64 = gyro-bin-0.2.3.tar.gz::https://github.com/mattnite/gyro/releases/download/0.2.3/gyro-0.2.3-linux-aarch64.tar.gz
+	sha256sums_aarch64 = a1cdcfa43bf558ddd4296a61d2f29948cd5c26865d5e24082b15702e10a8e8bb
+	source_i686 = gyro-bin-0.2.3.tar.gz::https://github.com/mattnite/gyro/releases/download/0.2.3/gyro-0.2.3-linux-i386.tar.gz
+	sha256sums_i686 = d34589466b657965c1384f4264b311015bcedff26b5deb926f39472ac7e35bd8
+	source_x86_64 = gyro-bin-0.2.3.tar.gz::https://github.com/mattnite/gyro/releases/download/0.2.3/gyro-0.2.3-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 87fb8e9a769a6486c42ff69e8977daeb7c20f9f97f7e47fe81fb8de1113e26ac
+
+pkgname = gyro-bin
