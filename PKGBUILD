@@ -33,7 +33,11 @@ build() {
 
 check() {
     cd "$srcdir/${pkgname%-git}"
-    EMAIL=build-user@example.com GIT_CONFIG_NOSYSTEM=1 HOME=$PWD go test ./...
+    # The tests runs actual git commands, so setting EMAIL to avoid commit
+    # failures, and fiddling with HOME to avoid user specific .gitconfig
+    # impacting the tests. The default GOPATH is relative to HOME so make sure
+    # to set this explicitly to the expanded default so we can reuse the cache.
+    GOPATH=${GOPATH:-$HOME/go} EMAIL=build-user@example.com GIT_CONFIG_NOSYSTEM=1 HOME="$srcdir" XDG_CONFIG_HOME="$srcdir" go test ./...
 }
 
 package() {
