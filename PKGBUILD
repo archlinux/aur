@@ -1,7 +1,7 @@
 # Maintainer: dr460nf1r3 <dr460nf1r3@garudalinux.org>
 
 pkgname=whoogle-git
-pkgver=0.4.0_r282.g0baba58
+pkgver=0.5.0_r317.g75e7410
 pkgrel=1
 pkgdesc='A self-hosted, ad-free, privacy-respecting metasearch engine'
 arch=(x86_64 aarch64)
