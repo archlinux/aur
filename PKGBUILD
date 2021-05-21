@@ -4,7 +4,7 @@
 pkgname=hypnotix-wayland
 pkgver=1.6
 pkgrel=1
-pkgdesc="An IPTV streaming application. It's the package from the linux mint repositories modified to work with wayland as it's whrite on the hypnotix's github repository. It should work if you're using x11 anyway"
+pkgdesc="An IPTV streaming application. It's the package from the linux mint repositories modified to work with wayland as it's whrite on the hypnotix's github repository. It should work anyway if you're using x11"
 arch=(any)
 url="https://github.com/linuxmint/hypnotix"
 license=(GPL3)
