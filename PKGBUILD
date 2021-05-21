@@ -31,11 +31,6 @@ package() {
                    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     echo -ne "********************************************************************************\n\n"\
                 >> "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    cat "${srcdir}/${_fontname}/NOTICE.txt"\
-                >> "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-    echo -ne "********************************************************************************\n\n"\
-                >> "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     cat "${srcdir}/${_fontname}/TTC/COPYING"\
                 >> "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
