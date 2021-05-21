@@ -6,6 +6,8 @@
 # shellcheck disable=SC2206
 [[ -v CUDA_ARCH ]] && _cuda_capability=(${CUDA_ARCH})
 
+_CMAKE_FLAGS+=( -DCMAKE_C_COMPILER=gcc-10 -DCMAKE_CXX_COMPILER=g++-10 )
+
 # opencolorio=2 fix (add LD_LIBRAY_PATH or rpath to blender-2.93)
 _CMAKE_FLAGS+=( -DOSL_ROOT_DIR=/opt/osl
         -DOPENIMAGEIO_ROOT_DIR=/opt/oiio
@@ -26,7 +28,7 @@ _CMAKE_FLAGS+=( -DOSL_ROOT_DIR=/opt/osl
 ((DISABLE_CUDA)) && optdepends+=("cuda: CUDA support in Cycles") || { makedepends+=("cuda") ; ((DISABLE_OPTIX)) || makedepends+=("optix>=7.0"); }
 
 pkgname=upbge-git
-pkgver=110046.86bb8657741
+pkgver=110538.740c1695091
 pkgrel=1
 pkgdesc="Uchronia Project Blender Game Engine fork of Blender Game Engine"
 arch=("i686" "x86_64")
@@ -34,7 +36,7 @@ url="https://upbge.org/"
 depends=("alembic" "embree" "libgl" "python" "python-numpy" "openjpeg2" "libharu" "potrace" "openxr"
          "ffmpeg" "fftw" "openal" "freetype2" "libxi" "openimageio-qfix" "opencolorio-qfix"
          "openvdb" "opencollada" "opensubdiv" "openshadinglanguage-qfix" "libtiff" "libpng" "openimagedenoise")
-makedepends=("git" "cmake" "boost" "mesa" "llvm")
+makedepends=("git" "cmake" "boost" "mesa" "llvm" "gcc10" "gcc10-libs")
 provides=("blender")
 conflicts=("blender")
 license=("GPL")
