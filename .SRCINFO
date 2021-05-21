@@ -1,0 +1,17 @@
+pkgbase = apertium-ron
+	pkgdesc = Apertium linguistic data for Romanian
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-ron
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	makedepends = autoconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	source = apertium-ron-1.0.0.tar.gz::https://github.com/apertium/apertium-ron/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 71c427f7ce8e9045db689650efd8c5673cc94944fc768c897b253481e9313d1a
+
+pkgname = apertium-ron
+
