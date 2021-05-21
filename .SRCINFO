@@ -1,0 +1,18 @@
+pkgbase = apertium-separable
+	pkgdesc = Module for reordering separable/discontiguous multiwords.
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://apertium.org
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	makedepends = autoconf
+	makedepends = gcc
+	depends = apertium>=3.4.2
+	depends = zlib
+	source = apertium-separable-0.3.6.tar.gz::https://github.com/apertium/apertium-separable/archive/refs/tags/v0.3.6.tar.gz
+	sha256sums = 1da08205427e96ac7b812e66daa60a9f57fac2dbcec7a382fb074f74d268c9c4
+
+pkgname = apertium-separable
+
