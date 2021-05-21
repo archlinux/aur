@@ -3,7 +3,7 @@
 _pkgname=pgadmin4
 pkgname=${_pkgname}-last
 pkgver=5.2
-pkgrel=4
+pkgrel=5
 pkgdesc='Comprehensive design and management interface for PostgreSQL'
 url='https://www.pgadmin.org/'
 arch=('x86_64')
@@ -37,7 +37,7 @@ sha512sums=('ad68c41d91ce37ca3e2c959eab814ebf6e58947abef8afae5556de39026638f52f9
 prepare() {
   cd ${_pkgname}-${pkgver}
 
-  patch -Np1 < ../../pgAdmin4.py.patch
+  patch -Np1 < ../../arch_patches.patch
 
   local PYTHONVERSION="$(python -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')"
 
@@ -87,18 +87,14 @@ build() {
 
   cd ${_pkgname}-${pkgver}
   # override doctree directory
-#  make docs SPHINXOPTS='-d /tmp/'
-
-   cd runtime
-#   yarn install
+  make docs SPHINXOPTS='-d /tmp/'
 }
 
 package() {
   cd ${_pkgname}-${pkgver}
 
   install -dm 755 "${pkgdir}/usr/lib/pgadmin4"
-#  cp -a docs web runtime "${pkgdir}/usr/lib/pgadmin4"
-  cp -a web runtime "${pkgdir}/usr/lib/pgadmin4"
+  cp -a docs web runtime "${pkgdir}/usr/lib/pgadmin4"
   install -Dm 644 "${srcdir}"/config_{distro,local}.py -t "${pkgdir}/usr/lib/pgadmin4/web"
   install -Dm 644 "${srcdir}"/arch_additions.py -t "${pkgdir}/usr/lib/pgadmin4/web"
 
@@ -109,11 +105,6 @@ package() {
   convert runtime/assets/pgAdmin4.png -resize 16x16 "${pkgdir}/usr/share/icons/hicolor/16x16/apps/pgAdmin4.png"
   install -Dm 644 "${srcdir}/pgAdmin4.desktop" -t "${pkgdir}/usr/share/applications"
 
-#  install -D /dev/stdin "${pkgdir}/usr/bin/pgadmin4" <<END
-#!/bin/sh
-#cd /usr/lib/pgadmin4
-#exec runtime/pgAdmin4 "\$@"
-#END
   install -D /dev/stdin "${pkgdir}/usr/bin/pgadmin4" <<END
 #!/bin/sh
 cd /usr/lib/pgadmin4

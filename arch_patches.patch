@@ -1,0 +1,83 @@
+--- a/web/pgAdmin4.py
++++ b/web/pgAdmin4.py
+
+@@ -140,7 +140,10 @@
+ ##########################################################################
+ # The entry point
+ ##########################################################################
++import threading
++from arch_additions import setupTrayIcon, checkRunning
+ def main():
++    checkRunning();
+     # Set null device file path to stdout, stdin, stderr if they are None
+     for _name in ('stdin', 'stdout', 'stderr'):
+         if getattr(sys, _name) is None:
+@@ -214,8 +217,11 @@
+                 server_name=config.APP_NAME)
+             try:
+                 print("Using production server...")
+-                prod_server.start()
+-            except KeyboardInterrupt:
++                prod_server.prepare()
++                threading.Thread(target=prod_server.serve).start()
++
++                setupTrayIcon("http://{}:{}".format(config.DEFAULT_SERVER, config.EFFECTIVE_SERVER_PORT))
++            finally:
+                 prod_server.stop()
+ 
+     except IOError:
+
+--- a/web/pgadmin/browser/__init__.py
++++ b/web/pgadmin/browser/__init__.py
+
+@@ -31,8 +31,8 @@ from flask_security.recoverable import reset_password_token_status, \
+     generate_reset_password_token, update_password
+ from flask_security.signals import reset_password_instructions_sent
+ from flask_security.utils import config_value, do_flash, get_url, \
+-    get_message, slash_url_suffix, login_user, send_mail, logout_user
+-from flask_security.views import _security, _commit, _ctx
++    get_message, slash_url_suffix, login_user, send_mail, view_commit, logout_user
++from flask_security.views import _security, _ctx
+ from werkzeug.datastructures import MultiDict
+ 
+ import config
+@@ -1130,7 +1130,7 @@ if hasattr(config, 'SECURITY_CHANGEABLE') and config.SECURITY_CHANGEABLE:
+                 has_error = True
+ 
+             if request.json is None and not has_error:
+-                after_this_request(_commit)
++                after_this_request(view_commit)
+                 do_flash(*get_message('PASSWORD_CHANGE'))
+ 
+                 old_key = get_crypt_key()[1]
+@@ -1296,7 +1296,7 @@ if hasattr(config, 'SECURITY_RECOVERABLE') and config.SECURITY_RECOVERABLE:
+                 has_error = True
+ 
+             if not has_error:
+-                after_this_request(_commit)
++                after_this_request(view_commit)
+                 do_flash(*get_message('PASSWORD_RESET'))
+                 login_user(user)
+                 return redirect(get_url(_security.post_reset_view) or
+
+--- a/web/pgadmin/browser/utils.py
++++ b/web/pgadmin/browser/utils.py
+
+@@ -13,7 +13,7 @@ from abc import abstractmethod
+ 
+ import flask
+ from flask import render_template, current_app
+-from flask.views import View, MethodViewType, with_metaclass
++from flask.views import MethodView
+ from flask_babelex import gettext
+ 
+ from config import PG_DEFAULT_DRIVER
+@@ -142,7 +142,7 @@ class PGChildModule(object):
+         pass
+ 
+ 
+-class NodeView(with_metaclass(MethodViewType, View)):
++class NodeView(MethodView):
+     """
+     A PostgreSQL Object has so many operaions/functions apart from CRUD
+     (Create, Read, Update, Delete):
