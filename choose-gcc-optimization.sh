@@ -59,6 +59,10 @@ cat << EOF
    46) Intel Rocket Lake
    47) Intel Alder Lake
 
+   92) Generic-x86-64-v2 (Nehalem and newer)
+   93) Generic-x86-64-v3 (Haswell and newer)
+   94) Generic-x86-64-v4 (AVX512 CPUs)
+
    98) Intel-Native optimizations autodetected by GCC
    99) AMD-Native optimizations autodetected by GCC
 
@@ -117,6 +121,9 @@ case $answer in
    45) Microarchitecture=CONFIG_MSAPPHIRERAPIDS ;;
    46) Microarchitecture=CONFIG_MROCKETLAKE ;;
    47) Microarchitecture=CONFIG_MALDERLAKE ;;
+   92) Microarchitecture=CONFIG_GENERIC_CPU2 ;;
+   93) Microarchitecture=CONFIG_GENERIC_CPU3 ;;
+   94) Microarchitecture=CONFIG_GENERIC_CPU4 ;;
    98) Microarchitecture=CONFIG_MNATIVE_INTEL ;;
    99) Microarchitecture=CONFIG_MNATIVE_AMD ;;
     *) default=CONFIG_GENERIC_CPU ;;
