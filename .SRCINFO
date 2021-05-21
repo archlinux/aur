@@ -1,6 +1,6 @@
 pkgbase = calls
 	pkgdesc = Phone dialer and call handler
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://source.puri.sm/Librem5/calls
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = calls
 	depends = libpeas
 	depends = modemmanager
 	depends = sofia-sip
-	source = https://source.puri.sm/Librem5/calls/-/archive/v0.3.2/calls-v0.3.2.tar.gz
-	sha256sums = febdb70a0d6a4985971465818252f42b99dded20ded2fdb07f8981624f1510fa
+	source = https://source.puri.sm/Librem5/calls/-/archive/v0.3.3/calls-v0.3.3.tar.gz
+	sha256sums = e7daf320ad1dfb373e7fd92004bee57aec3e4fd2cf22eb3f14c98128efa04db9
 
 pkgname = calls
 
