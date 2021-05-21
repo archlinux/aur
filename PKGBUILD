@@ -1,14 +1,14 @@
-# Maintainer: apaugh (andrew [dot] paugh [at] gmail [dot] com
+# Maintainer: apaugh (andrew [at] paugh [dot] ca)
 
 pkgname="brother-hl-l2380dw"
 pkgver="3.2.0"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Brother HL-L2380DW CUPS driver"
 url="http://www.brother.com"
 license=('GPL')
 #install="brother-hl-l2380dw.install"
 arch=('i686' 'x86_64')
-depends_x86_64=('lib32-glibc') 
+depends_x86_64=('lib32-glibc' 'ghostscript') 
 
 sha256sums=('a4e51f131e4cb7e9337af161e4be275c1a2628c75be04addff0569ff262185ee'
             'c93037bdcc1ce5d63451ed701637aa0476898ed88a9eb5f6fbef735ccb1d83fc'
