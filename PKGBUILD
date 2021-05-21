@@ -2,30 +2,34 @@
 # shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=xemu
 pkgname=$_pkgname-git
-pkgver=0.5.1.r7096.g30042e8091
-pkgrel=3
+pkgver=0.5.2.r14.g6fbd393ee4
+pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
 url="https://xemu.app/"
 license=('GPL2')
-depends=('gtk3' 'libsamplerate' 'libslirp' 'sdl2')
-makedepends=('git' 'glu' 'meson' 'python')
+depends=('libslirp' 'sdl2')
+makedepends=('git' 'glib2' 'glu' 'gtk3' 'libsamplerate' 'meson' 'python')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=('git+https://github.com/mborgerson/xemu.git'
-	'git+https://gitlab.com/qemu-project/keycodemapdb.git'
-	'git+https://github.com/ocornut/imgui.git'
+source=(
+	'git+https://github.com/Cyan4973/xxHash.git'
 	'git+https://github.com/epezent/implot.git'
+	'git+https://github.com/mborgerson/xemu.git'
+	'git+https://github.com/ocornut/imgui.git'
 	'git+https://gitlab.com/qemu-project/berkeley-softfloat-3.git'
 	'git+https://gitlab.com/qemu-project/berkeley-testfloat-3.git'
-	'git+https://github.com/Cyan4973/xxHash.git')
-md5sums=('SKIP'
+	'git+https://gitlab.com/qemu-project/keycodemapdb.git'
+)
+md5sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
-	'SKIP')
+	'SKIP'
+	'SKIP'
+)
 
 pkgver() {
 	cd $_pkgname
@@ -34,25 +38,29 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
-	local paths=(ui/keycodemapdb
-		ui/imgui
-		ui/implot
-		tests/fp/berkeley-softfloat-3
-		tests/fp/berkeley-testfloat-3
-		hw/xbox/nv2a/xxHash)
-	git submodule init "${paths[@]}"
-	for name in "${paths[@]}"; do
-		git config "submodule.$name.url" "../${name##*/}"
-	done
+	git submodule init hw/xbox/nv2a/xxHash tests/fp/berkeley-softfloat-3 tests/fp/berkeley-testfloat-3 ui/imgui ui/implot ui/keycodemapdb
+	git config submodule.hw/xbox/nv2a/xxHash.url ../xxHash
+	git config submodule.tests/fp/berkeley-softfloat-3.url ../berkeley-softfloat-3
+	git config submodule.tests/fp/berkeley-testfloat-3.url ../berkeley-testfloat-3
+	git config submodule.ui/imgui.url ../imgui
+	git config submodule.ui/implot.url ../implot
+	git config submodule.ui/keycodemapdb.url ../keycodemapdb
 	git submodule update
 }
 
 build() {
 	cd $_pkgname
-	./build.sh --with-git-submodules=ignore --enable-slirp=system
+	./configure \
+		--enable-slirp=system \
+		--extra-cflags="$CFLAGS -DXBOX=1 -I$PWD/ui/imgui" \
+		--extra-ldflags="$LDFLAGS" \
+		--target-list=i386-softmmu \
+		--with-git-submodules=ignore
+	make qemu-system-i386
 }
 
 package() {
+	depends+=('libgdk-3.so' 'libglib-2.0.so' 'libgobject-2.0.so' 'libgtk-3.so' 'libsamplerate.so')
 	cd $_pkgname
 	# shellcheck disable=SC2154
 	install -Dm644 -t "$pkgdir"/usr/share/$_pkgname/data data/*
