@@ -25,7 +25,6 @@ cmake
 python-logzero
 python-tqdm
 python-toposort
-python-cymbal
 python-schema
 rapidjson
 python-jinja
@@ -88,7 +87,7 @@ build() {
     -D OPENCASCADE_INCLUDE_DIR=opencascade \
     -D CMAKE_BUILD_TYPE=None
 
-  cmake --build build_dir
+  cmake --build build_dir -- -j4
   msg2 "OCP build done."
 }
 

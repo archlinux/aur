@@ -17,7 +17,6 @@ pkgbase = python-ocp-git
 	makedepends = python-logzero
 	makedepends = python-tqdm
 	makedepends = python-toposort
-	makedepends = python-cymbal
 	makedepends = python-schema
 	makedepends = rapidjson
 	makedepends = python-jinja
