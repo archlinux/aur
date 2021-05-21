@@ -1,0 +1,15 @@
+pkgbase = avr-crosspack-20120217
+	pkgdesc = Close enough Versions of AVR GCC Toolchain to Crosspack Releases
+	pkgver = 20120217
+	pkgrel = 1
+	url = https://www.archlinux.org
+	arch = any
+	license = GPL
+	depends = avr-binutils-220
+	depends = avr-gcc-45
+	depends = avr-libc-18
+	provides = avr-crosspack=20120217
+	conflicts = avr-crosspack
+
+pkgname = avr-crosspack-20120217
+
