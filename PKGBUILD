@@ -2,14 +2,14 @@
 
 pkgname=apkast
 pkgver=2.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Parse and analyse APK files"
 url="https://gitlab.com/brn1337/apkast"
 license=('GPLv3')
 arch=('any')
 depends=('jq' 'bc' 'unzip' 'jadx')
 makedepends=('make')
-source=("https://gitlab.com/brn1337/apkast/-/archive/1.0/apkast-1.0.tar.gz")
+source=("https://gitlab.com/brn1337/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=("SKIP")
 
 package() {
