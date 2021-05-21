@@ -1,6 +1,6 @@
-# Maintainer:  Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Simon Legner <Simon.Legner@gmail.com>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Jeremy Asuncion <jeremyasuncion808@gmail.com>
-# Contributor: Simon Legner <Simon.Legner@gmail.com>
 
 _pkgname=lab
 pkgname=$_pkgname-bin
