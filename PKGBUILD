@@ -1,6 +1,6 @@
 # Maintainer: Јован Ђокић-Шумарац <sumarac@protonmail.com>
 pkgname=fetchy-git
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 epoch=
 pkgdesc="Cli system info tool written in C. "
