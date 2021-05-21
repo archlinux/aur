@@ -1,0 +1,17 @@
+pkgbase = avr-libc-18
+	pkgdesc = The C runtime library for the AVR family of microcontrollers
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = http://savannah.nongnu.org/projects/avr-libc/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = avr-gcc
+	provides = avr-libc=1.8.1
+	conflicts = avr-libc
+	options = !strip
+	source = http://savannah.nongnu.org/download/avr-libc/avr-libc-1.8.1.tar.bz2
+	md5sums = 0caccead59eaaa61ac3f060ca3a803ef
+
+pkgname = avr-libc-18
+
