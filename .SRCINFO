@@ -21,7 +21,7 @@ pkgbase = linux-xanmod-lts
 	sha256sums = dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43
 	sha256sums = SKIP
 	sha256sums = 3db498cea4f1c298e8034ea9ff8155bcbe641cc2cc29ca72bc2e550735543510
-	sha256sums = 51742dee57cd15bece152d6527f48af87cb7930f0f6a356d5282f778e7c35b39
+	sha256sums = 1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee
 
 pkgname = linux-xanmod-lts
 	pkgdesc = The Linux kernel and modules with Xanmod patches
