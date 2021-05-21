@@ -3,6 +3,7 @@ pkgname=nrm-git
 pkgver=1.2.2_b3ba7aa
 pkgrel=1
 pkgdesc='NPM registry manager, fast switch between different registries: npm, cnpm, nj, taobao'
+provides=(nrm)
 url=https://github.com/Pana/nrm
 licence=('MIT')
 source=(git+https://github.com/Pana/nrm)
