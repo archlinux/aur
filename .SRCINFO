@@ -1,6 +1,6 @@
 pkgbase = kubectl-preflight-bin
 	pkgdesc = Kubectl plugin for pre-installation cluster conformance testing and validation (preflight checks)
-	pkgver = 0.10.22
+	pkgver = 0.10.24
 	pkgrel = 1
 	url = https://troubleshoot.sh
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = kubectl-preflight-bin
 	depends = kubectl
 	provides = kubectl-preflight
 	conflicts = kubectl-preflight
-	source = preflight_0.10.22_linux_amd64.tar.gz::https://github.com/replicatedhq/troubleshoot/releases/download/v0.10.22/preflight_linux_amd64.tar.gz
-	sha256sums = 571024c1767a3f89cb70bb83d30d94f8ee8d426f5aef4cb8135cc578f8ac15f1
+	source = preflight_0.10.24_linux_amd64.tar.gz::https://github.com/replicatedhq/troubleshoot/releases/download/v0.10.24/preflight_linux_amd64.tar.gz
+	sha256sums = 189cf134f5d32e88b382c7e47e7d327082227e46668d60b8ff40ce752e9afcf5
 
 pkgname = kubectl-preflight-bin
 
