@@ -5,7 +5,7 @@
 name=desktop-notifier
 pkgname="python-${name}"
 provides=("${pkgname}")
-pkgver=3.2.2
+pkgver=3.2.3
 pkgrel=1
 pkgdesc='Python library for cross-platform desktop notifications'
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
     'python-dbus-next'
     'python-packaging'
     'python-wheel')
-md5sums=('7391be4aeb4b97bdeaac7a2904153357')
+md5sums=('a7713fed3bf275d47cf335a34370fec8')
 
 build() {
     cd "${srcdir}/${name}-${pkgver}"
