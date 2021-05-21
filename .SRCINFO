@@ -1,7 +1,7 @@
 pkgbase = apertium-eng-cat
 	pkgdesc = Apertium translation pair for English and Catalan
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/apertium/apertium-eng-cat
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = apertium-eng-cat
 	depends = vislcg3
 	depends = apertium-eng
 	depends = apertium-cat
+	replaces = apertium-en-ca
 	source = apertium-eng-cat-1.0.1.tar.gz::https://github.com/apertium/apertium-eng-cat/archive/refs/tags/v1.0.1.tar.gz
 	sha256sums = 5cf72219db1fb8ac43649e3c90b545ee1acbee96620c778d7084fb3bec743dc6
 
