@@ -1,20 +1,18 @@
-# Maintainer : n34r1297 <near1297@nauta.cu>
-# Derived from udev-media-automount by Ferk
-# EasyArch Project
+# Maintainer : Angel Perez <drlorente97@gmail.com>
 
 pkgname="ntfs-automount"
 pkgdesc="Automount NTFS drives using an udev rule"
 pkgver=0.4
-pkgrel=1
-url='https://github.com/n34r1297/easyarch/aur/ntfs-automount/'
+pkgrel=2
+url='https://github.com/drlorente97/ntfs-automount'
 license=('GPL3')
 arch=('any')
 depends=('udev' 'ntfs-3g')
-source=(https://github.com/n34r1297/aur-repo/raw/master/ntfs-automount/Releases/$pkgname-$pkgver.tar.gz)
-md5sums=('d9da8359a4318b892e35407a6ab88dae')
+source=(https://github.com/drlorente97/ntfs-automount/releases/download/$pkgver/$pkgname-$pkgver.tar.gz)
+md5sums=('329034c4523b2d73933e6ce59332347b')
 MAKEFLAGS="--quiet"
 		  
 package() {
-  cd "${srcdir}/${pkgname}-$pkgver"
+  cd "${srcdir}/${pkgname}"
   make DESTDIR="${pkgdir}/" install
 }
