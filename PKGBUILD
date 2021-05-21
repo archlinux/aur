@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Apertium linguistic data for Aragonese"
 url="https://github.com/apertium/${pkgname}"
 license=('GPL3')
-makedepends=('pkgconf')
+makedepends=('pkgconf' 'autoconf')
 depends=('apertium>=3.4.2' 'vislcg3')
 arch=('i686' 'x86_64')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/apertium/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
