@@ -1,20 +1,17 @@
 pkgbase = apertium-eo-es
-	pkgdesc = Apertium language data for the Esperanto-Spanish translator.
-	pkgver = 1.0.0
-	pkgrel = 2
-	url = http://apertium.org
+	pkgdesc = Apertium translation pair for Esperanto and Spanish
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-eo-es
 	arch = i686
 	arch = x86_64
-	license = GPL
-	makedepends = pkgconfig
-	depends = lttoolbox>=3.0
-	depends = apertium>=3.0
-	source = http://downloads.sourceforge.net/sourceforge/apertium/apertium-eo-es-1.0.0.tar.gz
-	source = Makefile.am.patch
-	source = configure.ac.patch
-	md5sums = 92db1e1e1cae12b93f300dbb1f1138c0
-	md5sums = d543d8d7c17fedd791b38a1694defdb3
-	md5sums = d9c2eeea53f85b61b8a225310cca9cd7
+	license = GPL2
+	makedepends = pkgconf
+	makedepends = autoconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	source = apertium-eo-es-0.9.2.tar.gz::https://github.com/apertium/apertium-eo-es/archive/refs/tags/v0.9.2.tar.gz
+	sha256sums = 24de8b61f8ed288a3384dedfe5c1914275e5c30f28f53354b0e2d627502dc0ca
 
 pkgname = apertium-eo-es
 
