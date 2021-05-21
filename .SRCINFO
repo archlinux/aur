@@ -1,14 +1,14 @@
 pkgbase = per
 	pkgdesc = Simple unix permission viewer and converter
-	pkgver = 1.0.2
-	pkgrel = 1
+	pkgver = 1.0.3
+	pkgrel = 0
 	url = https://github.com/jarmuszz/per
 	arch = any
 	license = GPL3
 	makedepends = make
 	makedepends = gzip
-	source = https://github.com/jarmuszz/per/releases/download/v1.0.2/per-1.0.2.tar.gz
-	sha256sums = 8bf61a2e13fe351047e438f859fbacd0e88e513ae3d5c32d6b20214fc63c358a
+	source = https://github.com/jarmuszz/per/releases/download/v1.0.3/per-1.0.3.tar.gz
+	sha256sums = 130e5496786d1003e2570332140588108e838eb2ec24e910637ea81b6ad3b580
 
 pkgname = per
 
