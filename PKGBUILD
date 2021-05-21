@@ -1,8 +1,8 @@
 # Maintainer: Tobias Borgert <tobias.borgert@gmail.com>
 
 pkgname=ecal
-pkgver=5.8.7
-pkgrel=2
+pkgver=5.8.8
+pkgrel=1
 pkgdesc="enhanced Communication Abstraction Layer"
 arch=('x86_64' 'armv7h')
 url="https://github.com/continental/ecal"
@@ -19,19 +19,21 @@ prepare() {
     git checkout v"${pkgver}"
     git submodule init
     git submodule update
+    patch --forward --strip=1 --input="../../Support_GCC_11.patch"
+    patch --forward --strip=1 --input="../../Support_Protobuf_3_15_6.patch"
 }
 
 build() {
-	cd "${pkgname}"
-	mkdir -p _build
-	cd _build
-	cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
-		     -DCMAKE_BUILD_TYPE=Release \
-		     -DECAL_THIRDPARTY_BUILD_PROTOBUF=OFF \
-		     -DECAL_THIRDPARTY_BUILD_CURL=OFF \
-		     -DECAL_THIRDPARTY_BUILD_HDF5=OFF \
+    cd "${pkgname}"
+    mkdir -p _build
+    cd _build
+    cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
+             -DCMAKE_BUILD_TYPE=Release \
+             -DECAL_THIRDPARTY_BUILD_PROTOBUF=OFF \
+             -DECAL_THIRDPARTY_BUILD_CURL=OFF \
+             -DECAL_THIRDPARTY_BUILD_HDF5=OFF \
              -DCMAKE_INSTALL_SYSCONFDIR=/etc
-	make
+    make
 }
 
 package() {
@@ -49,7 +51,7 @@ package() {
     install -D -m644 "${srcdir}"/"${pkgname}"/licenses/spdlog/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/thirdparty/spdlog/LICENSE
     install -D -m644 "${srcdir}"/"${pkgname}"/licenses/tclap/COPYING "${pkgdir}"/usr/share/licenses/"${pkgname}"/thirdparty/tclap/COPYING
     install -D -m644 "${srcdir}"/"${pkgname}"/licenses/termcolor/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/thirdparty/termcolor/LICENSE
-	cd "${pkgname}"
-	cd _build
-	DESTDIR="$pkgdir" make install
+    cd "${pkgname}"
+    cd _build
+    DESTDIR="$pkgdir" make install
 }

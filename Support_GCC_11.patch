@@ -1,0 +1,32 @@
+Index: samples/cpp/multiple/multiple_snd/src/multiple_snd.cpp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/samples/cpp/multiple/multiple_snd/src/multiple_snd.cpp b/samples/cpp/multiple/multiple_snd/src/multiple_snd.cpp
+--- a/samples/cpp/multiple/multiple_snd/src/multiple_snd.cpp	(revision b160392e47800319a498b2ff30c85cb418bb794c)
++++ b/samples/cpp/multiple/multiple_snd/src/multiple_snd.cpp	(date 1621537793427)
+@@ -25,6 +25,7 @@
+ #include <atomic>
+ #include <chrono>
+ #include <thread>
++#include <memory>
+ 
+ #define PAYLOAD_SIZE      1024
+ #define PRINT_LOG            0
+Index: app/rec/rec_addon_core/src/time_limited_queue.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/rec/rec_addon_core/src/time_limited_queue.h b/app/rec/rec_addon_core/src/time_limited_queue.h
+--- a/app/rec/rec_addon_core/src/time_limited_queue.h	(revision b160392e47800319a498b2ff30c85cb418bb794c)
++++ b/app/rec/rec_addon_core/src/time_limited_queue.h	(date 1621537489591)
+@@ -25,6 +25,7 @@
+ #include <chrono>
+ #include <thread>
+ #include <functional>
++#include <condition_variable>
+ 
+ template <class T>
+ class TimeLimtedQueue : public std::enable_shared_from_this<TimeLimtedQueue<T>>
