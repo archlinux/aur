@@ -3,7 +3,7 @@
 _pkgname=mirage
 pkgname="${_pkgname}-python3"
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 _debian_pkgrel=1build2
 pkgdesc="A fast and simple GTK+ Image Viewer (Python3 port)"
 arch=('any')
@@ -17,7 +17,7 @@ source=("${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/thomasross/${_pkgname}
         "${pkgname}.patch")
 sha256sums=('2932f7e9e6a1da7785cae2664669eff6f12ca26163afb3d1a3c8e1cc3255e5ec'
             '48b5cf3ff7d50d602ea673a424ffd659ab8813ce7dd1837b574cf39eb732c50a'
-            '3e569cfaf6d2061a3692e33a2c85693d531cdaf1abf74ca0ea0e94a4823178b9')
+            '2de9c32689e1b0d2c559ea68b5eca4f0b37a53ddd8687b7a9c36b51c11ffee6b')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
@@ -26,6 +26,8 @@ prepare() {
 
 build() {
   cd "${_pkgname}-${pkgver}"
+
+  cp "${srcdir}/debian/${_pkgname}.1" .
 
   local po_file; for po_file in po/*.po; do
     local po_file_lang="$(basename "$po_file" .po)"
@@ -46,5 +48,4 @@ build() {
 package() {
   cd "${_pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -TDm644 "${srcdir}/debian/${_pkgname}.1" "${pkgdir}/usr/share/man/man1"
 }

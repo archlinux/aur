@@ -1,6 +1,6 @@
 diff --unified --recursive --text mirage-0.11.1.orig/setup.py mirage-0.11.1/setup.py
 --- mirage-0.11.1.orig/setup.py	2020-06-07 05:01:58.000000000 +0300
-+++ mirage-0.11.1/setup.py	2021-05-21 10:43:25.456902888 +0300
++++ mirage-0.11.1/setup.py	2021-05-21 12:59:55.050126183 +0300
 @@ -1,71 +1,8 @@
  #!/usr/bin/env python3
  
@@ -73,7 +73,15 @@ diff --unified --recursive --text mirage-0.11.1.orig/setup.py mirage-0.11.1/setu
  setup(
      name="Mirage",
      version="0.11.1",
-@@ -120,27 +57,3 @@
+@@ -105,6 +42,7 @@
+         ),
+         ("share/applications", ["mirage.desktop"]),
+         ("share/pixmaps", ["mirage.png"]),
++        ("share/man/man1", ["mirage.1"]),
+         ("share/locale/ru/LC_MESSAGES", ["mo/ru/mirage.mo"]),
+         ("share/locale/pl/LC_MESSAGES", ["mo/pl/mirage.mo"]),
+         ("share/locale/fr/LC_MESSAGES", ["mo/fr/mirage.mo"]),
+@@ -120,27 +58,3 @@
          ("share/locale/sv/LC_MESSAGES", ["mo/sv/mirage.mo"]),
      ],
  )
