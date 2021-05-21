@@ -29,7 +29,7 @@ _typescript="y" # If you enable both typescript and tern it will defaul to types
 _tern="n"       # Tern seems abandoned - consider moving to TSserver above (see project page)
 _java="y"
 
-_use_system_clang="ON"
+_use_system_clang="OFF"
 _use_system_abseil="OFF"
 _neovim="$NEOVIM_YOUCOMPLETEME"
 
@@ -75,7 +75,9 @@ prepare() {
   git submodule update third_party/ycmd
 
   rm -rf "${srcdir}"/YouCompleteMe/third_party/ycmd/cpp/pybind11 || exit
-  rm -rf "${srcdir}"/YouCompleteMe/third_party/ycmd/cpp/llvm || exit
+  if [[ ${_use_system_clang} == "ON" ]]; then
+    rm -rf "${srcdir}"/YouCompleteMe/third_party/ycmd/cpp/llvm || exit
+  fi
 
   if [[ "$_gocode" == "y" ]]; then
     sed -e 's|\(gopls_binary_path":\).*$|\1 "/usr/bin/gopls",|' \
@@ -97,8 +99,12 @@ prepare() {
         -i "${srcdir}"/YouCompleteMe/plugin/youcompleteme.vim
   fi
 
-  sed -e 's|\(clangd_binary_path":\).*$|\1 "/usr/bin/clangd",|' \
-      -e 's|\(rust_toolchain_root":\).*$|\1 "/usr",|' \
+  if [[ ${_use_system_clang} == "ON" ]]; then
+    sed -e 's|\(clangd_binary_path":\).*$|\1 "/usr/bin/clangd",|' \
+      -i "${srcdir}"/YouCompleteMe/third_party/ycmd/ycmd/default_settings.json
+  fi
+
+  sed -e 's|\(rust_toolchain_root":\).*$|\1 "/usr",|' \
       -e 's|\(roslyn_binary_path":\).*$|\1 "/opt/omnisharp-roslyn/OmniSharp.exe",|' \
       -e 's|\(mono_binary_path":\).*$|\1 "/usr/bin/mono",|' \
       -i "${srcdir}"/YouCompleteMe/third_party/ycmd/ycmd/default_settings.json
@@ -130,6 +136,10 @@ package() {
     install -Ddm755 "${pkg_ycmd_dir}/third_party/clang/lib/"
     ln -s /usr/lib/libclang.so "${pkg_ycmd_dir}/third_party/clang/lib/libclang.so"
     ln -s /usr/lib/clang "${pkg_ycmd_dir}/third_party/clang/lib/clang"
+  else
+    install -Ddm755 "${pkg_ycmd_dir}/third_party/clang/lib/"
+    cp -dr --no-preserve=ownership "${srcdir}"/YouCompleteMe/third_party/ycmd/third_party/clang/lib/clang "${pkg_ycmd_dir}/third_party/clang/lib/clang"
+    cp -dr --no-preserve=ownership "${srcdir}"/lib/libclang.so* "${pkg_ycmd_dir}/third_party/clang/lib/"
   fi
 
   if [[ "$_java" == "y" ]]; then
