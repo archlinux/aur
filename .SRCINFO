@@ -1,6 +1,6 @@
 pkgbase = gdlauncher-bin
 	pkgdesc = GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience
-	pkgver = 1.1.5
+	pkgver = 1.1.7
 	pkgrel = 1
 	url = https://gdevs.io
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = gdlauncher-bin
 	conflicts = gdlauncher-appimage
 	conflicts = gdlauncher
 	conflicts = gdlauncher-git
-	source_x86_64 = GDLauncher-1.1.5.zip::https://github.com/gorilla-devs/GDLauncher/releases/download/v1.1.5/GDLauncher-linux-setup.zip
+	source_x86_64 = GDLauncher-1.1.7.zip::https://github.com/gorilla-devs/GDLauncher/releases/download/v1.1.7/GDLauncher-linux-setup.zip
 	md5sums_x86_64 = SKIP
 
 pkgname = gdlauncher-bin
