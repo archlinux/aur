@@ -1,0 +1,18 @@
+pkgbase = apertium-kaz
+	pkgdesc = Apertium linguistic data for Kazakh
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-kaz
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	makedepends = autoconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	depends = hfst
+	source = apertium-kaz-0.1.0.tar.gz::https://github.com/apertium/apertium-kaz/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = ca9e43f08e9f85a2af11318f79b2b533b1d0fe6cafe626947560813d8bc399d9
+
+pkgname = apertium-kaz
+
