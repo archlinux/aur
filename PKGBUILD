@@ -3,7 +3,7 @@
 _pkgname=pgadmin4
 pkgname=${_pkgname}-last
 pkgver=5.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Comprehensive design and management interface for PostgreSQL'
 url='https://www.pgadmin.org/'
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=('postgresql-libs' 'hicolor-icon-theme' 'python' 'python-cheroot'
          'python-dateutil' 'python-sqlalchemy' 'python-flask-security-too'
          'python-bcrypt' 'python-cryptography' 'python-sshtunnel' 'python-ldap3'
          'python-flask-babelex' 'python-gssapi' 'python-pyqt5')
-makedepends=('imagemagick' 'python-html5lib' 'python-sphinx' 'python-testtools')
+makedepends=('imagemagick' 'python-html5lib' 'python-sphinx' 'python-testtools' 'python-email-validator')
 source=(https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v${pkgver}/source/${_pkgname}-${pkgver}.tar.gz{,.asc}
         pgAdmin4.desktop
         config_distro.py
@@ -87,7 +87,7 @@ build() {
 
   cd ${_pkgname}-${pkgver}
   # override doctree directory
-  make docs SPHINXOPTS='-d /tmp/'
+#  make docs SPHINXOPTS='-d /tmp/'
 
    cd runtime
 #   yarn install
@@ -97,7 +97,8 @@ package() {
   cd ${_pkgname}-${pkgver}
 
   install -dm 755 "${pkgdir}/usr/lib/pgadmin4"
-  cp -a docs web runtime "${pkgdir}/usr/lib/pgadmin4"
+#  cp -a docs web runtime "${pkgdir}/usr/lib/pgadmin4"
+  cp -a web runtime "${pkgdir}/usr/lib/pgadmin4"
   install -Dm 644 "${srcdir}"/config_{distro,local}.py -t "${pkgdir}/usr/lib/pgadmin4/web"
   install -Dm 644 "${srcdir}"/arch_additions.py -t "${pkgdir}/usr/lib/pgadmin4/web"
 
