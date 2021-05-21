@@ -17,7 +17,7 @@ char* controls = "move - h, j, k and l\n"
 				 "check for errors - c\n"
 				 "quit - q\n";
 char* gen_sudoku;
-int attempts = 50;
+int attempts = ATTEMPTS_DEFAULT;
 
 int gen_visual = 0;
 int from_file = 0;
@@ -34,9 +34,9 @@ int main(int argc, char **argv){
 				"-h: display this information\n"
 				"-v: generate the sudoku visually\n"
 				"-f: FILE: use a file as the sudoku\n"
-				"-n: NUMBER: numbers to try and remove (default: 50)\n\n"
+				"-n: NUMBER: numbers to try and remove (default: %d)\n\n"
 				"controls:\n"
-				"%s", controls);
+				"%s", ATTEMPTS_DEFAULT, controls);
 		return 0;
 	case 'v':
 		gen_visual = 1;
@@ -88,7 +88,7 @@ int main(int argc, char **argv){
 	user_nums = malloc((SUDOKU_LEN) * sizeof(char));
 	
 	if(from_file){
-		sudoku_str = malloc((SUDOKU_LEN) * sizeof(char));
+		sudoku_str = malloc((SUDOKU_LEN + 1) * sizeof(char));
 		//Read Sudoku from given file
 		FILE* input_file = fopen(filename, "r");
 		if(input_file == NULL)
@@ -101,6 +101,11 @@ int main(int argc, char **argv){
 		if((strlen(sudoku_str) + strlen(user_nums)) != (SUDOKU_LEN * 2))
 			finish_with_err_msg("Wrong length in Sudoku file\n");
 	}else{
+		time_t t = time(NULL);
+		struct tm tm = *localtime(&t);
+		filename = malloc(64 * sizeof(char));
+		sprintf(filename, "%d%d%d%d%d%d%s", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec, ".sudoku");
+
 		generate_sudoku();
 		sudoku_str = gen_sudoku;
 		for(int i = 0; i < SUDOKU_LEN; i++)
@@ -186,7 +191,8 @@ int main(int argc, char **argv){
 //Generate a random sudoku
 //This function generates the diagonal blocks from left to right and then calls fill_remaining()
 void generate_sudoku(){
-	gen_sudoku = malloc(SUDOKU_LEN * sizeof(char));
+	gen_sudoku = malloc((SUDOKU_LEN + 1) * sizeof(char));
+	gen_sudoku[SUDOKU_LEN] = '\0';
 	for(int i = 0; i < SUDOKU_LEN; i++)
 		gen_sudoku[i] = '0';
 
@@ -208,7 +214,7 @@ void generate_sudoku(){
 				erase();
 				read_sudoku(gen_sudoku);
 				refresh();
-				usleep(20000);
+				usleep(VISUAL_SLEEP);
 			}
 		}
 	}
@@ -218,8 +224,8 @@ void generate_sudoku(){
 }
 
 void remove_nums(){
-	int cell;
 	while(attempts > 0){
+		int cell;
 		int found_non_empty = 0;
 		while(!found_non_empty){
 			cell = rand() % SUDOKU_LEN;
@@ -227,9 +233,17 @@ void remove_nums(){
 				found_non_empty = 1;
 		}
 
-		gen_sudoku[cell] = '0';
+		char* sudoku_cpy = malloc(SUDOKU_LEN * sizeof(char));
+		strcpy(sudoku_cpy, gen_sudoku);
+		sudoku_cpy[cell] = '0';
+		int count = 0;
+		solve_count(sudoku_cpy, &count);
+		free(sudoku_cpy);
 
-		attempts--;
+		if(count == 1)
+			gen_sudoku[cell] = '0';
+		else
+			attempts--;
 	}
 }
 
@@ -248,7 +262,7 @@ int solve(char* sudoku_to_solve, int start){
 		erase();
 		read_sudoku(sudoku_to_solve);
 		refresh();
-		usleep(20000);
+		usleep(VISUAL_SLEEP);
 	}
 
 	//Get the fields associated with the value at start
@@ -295,6 +309,70 @@ int solve(char* sudoku_to_solve, int start){
 	return false;
 }
 
+//Count the solutions to a puzzle
+//Go through the puzzle recursively and increase count everytime you find a solution
+int solve_count(char* sudoku_to_solve, int* count){
+	//Draw the process of filling out the sudoku visually on the screen if that option is set via '-v'
+	if(gen_visual){
+		erase();
+		read_sudoku(sudoku_to_solve);
+		refresh();
+		usleep(VISUAL_SLEEP);
+	}
+
+	//find empty cell
+	for(int i = 0; i < SUDOKU_LEN; i++){
+		if(sudoku_to_solve[i] == '0'){
+			//Get the fields associated with the value at i
+			
+			char* vert_line = malloc(LINE_LEN * sizeof(char));
+			memcpy(vert_line, sudoku_to_solve + (LINE_LEN * (i / LINE_LEN)), LINE_LEN * sizeof(char));
+
+			char* hor_line = malloc(LINE_LEN * sizeof(char));
+			for(int y = 0; y < LINE_LEN; y++){
+				hor_line[y] = sudoku_to_solve[y * LINE_LEN + (i % LINE_LEN)];
+			}
+
+			char* block = malloc(LINE_LEN * sizeof(char));
+			for(int j = 0; j < LINE_LEN; j++){
+				block[j] = sudoku_to_solve[(((i / LINE_LEN) / 3) * 3) * LINE_LEN + (((i % LINE_LEN) / 3) * 3) + (LINE_LEN * (j / 3)) + (j % 3)];
+			}
+
+			//Try to assign a value to the cell at i
+			for(int j = 0x31; j <= 0x39; j++){
+				int used = 0;
+				for(int k = 0; k < LINE_LEN; k++){
+					//Check if the value is valid
+					if(vert_line[k] == j || hor_line[k] == j || block[k] == j)
+						used = 1;
+				}
+				if(!used){
+					sudoku_to_solve [i] = j;
+					//If assigning this value solved the grid, increase the count
+					if(check_validity(sudoku_to_solve)){
+						*count += 1;
+						break;
+					}
+					//If not solved recursively call
+					else{
+						//Check the whole path
+						solve_count(sudoku_to_solve, count);
+					}
+
+					//Otherwise, go back to 0
+					sudoku_to_solve[i] = '0';
+				}
+			}
+
+			free(vert_line);
+			free(hor_line);
+			free(block);
+			break;
+		}
+	}
+
+	return false;
+}
 void draw(){
 	erase();
 	draw_sudokus(user_nums, sudoku_str);

@@ -8,15 +8,17 @@
 
 #define LINE_LEN 9
 #define SUDOKU_LEN 81
-#define ATTEMPTS_DEFAULT 50
+#define ATTEMPTS_DEFAULT 5
+#define VISUAL_SLEEP 10000
 
 struct cursor;
 
 void generate_sudoku();
 int fill_remaining(int start);
 void remove_nums();
+void write_log(char* to_log);
 int solve(char* sudoku_str, int start);
-int count_solves(char* sudoku_str, int* count, int start);
+int solve_count(char* sudoku_to_solve, int* count);
 void draw();
 int check_validity(char* combined_solution);
 int savestate();
