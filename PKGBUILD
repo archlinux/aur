@@ -2,7 +2,7 @@
 
 pkgname=zapier-platform-cli
 _pkgname="${pkgname%-platform-cli}"
-pkgver=10.2.0
+pkgver=11.0.0
 pkgrel=1
 pkgdesc='Gateway to creating custom applications on the Zapier platform'
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=('bash-completion: for tab completion')
 provides=("$_pkgname")
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=(ac2cb3f10e49739e0a24bba648790fb4b236b8376568928b000cce50f3fd76fd)
+sha256sums=(d597140dbffa1ac4c577d1ed607b632e4af94978590faef67e7c7fd68b7acbc0)
 
 package() {
 	npm install --cache "$srcdir"/npm-cache -g --user root --prefix "$pkgdir"/usr "$srcdir"/$noextract
@@ -29,7 +29,7 @@ package() {
 	# Remove references to $srcdir/$pkgdir
 	find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
 
-	# npm gives ownership of ALL FILES to build user 
+	# npm gives ownership of ALL FILES to build user
 	# https://bugs.archlinux.org/task/63396
 	chown -R root:root "$pkgdir"
 
@@ -46,7 +46,4 @@ package() {
 
 	install -Dm 644 ~/.cache/"$pkgname"/autocomplete/functions/bash/"$_pkgname".bash "$pkgdir"/usr/share/bash-completion/completions/"$_pkgname"
 	install -Dm 644 ~/.cache/"$pkgname"/autocomplete/functions/zsh/_"$_pkgname" "$pkgdir"/usr/share/zsh/site-functions/_"$_pkgname"
-
-	# Prefer not to do this, but necessary due to non-standard completion implementation
-	rm --recursive ~/.cache/"$pkgname"
 }
