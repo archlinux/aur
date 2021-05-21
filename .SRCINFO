@@ -1,0 +1,23 @@
+pkgbase = avr-gcc-43
+	pkgdesc = The GNU AVR Compiler Collection
+	pkgver = 4.3.3
+	pkgrel = 1
+	url = http://gcc.gnu.org/
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	license = custom
+	depends = avr-binutils
+	depends = gcc-libs
+	depends = libmpc
+	optdepends = avr-libc: Standard C library for Atmel AVR development
+	provides = avr-gcc=4.3.3
+	conflicts = avr-gcc
+	options = !emptydirs
+	options = !strip
+	source = https://ftp.gnu.org/gnu/gcc/gcc-4.3.3/gcc-4.3.3.tar.gz
+	sha256sums = 5f181ef99539024b6870af80bcfbfd19d1df16a567c7f1808ae088df3593fc34
+
+pkgname = avr-gcc-43
+
