@@ -1,7 +1,7 @@
 # Maintainer: dr460nf1r3 <dr460nf1r3@garudalinux.org>
 
 pkgname=whoogle
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='A self-hosted, ad-free, privacy-respecting metasearch engine'
 arch=(x86_64 aarch64)
