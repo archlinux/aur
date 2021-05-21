@@ -37,7 +37,7 @@ _neovim="$NEOVIM_YOUCOMPLETEME"
 
 pkgname=vim-youcompleteme-git
 pkgver=r2812.ab73ca25
-pkgrel=1
+pkgrel=2
 pkgdesc='A code-completion engine for Vim'
 arch=('x86_64')
 url='https://ycm-core.github.io/YouCompleteMe/'
@@ -57,12 +57,17 @@ optdepends=(
   'java-environment>=11: Java semantic completion'
   'jdtls: Java semantic completion'
   'abseil-cpp: if setting _use_system_abseil ON')
-source=(git+https://github.com/ycm-core/YouCompleteMe.git
-        clangd-12.0.0.tar.bz2::https://github.com/ycm-core/llvm/releases/download/12.0.0/clangd-12.0.0-x86_64-unknown-linux-gnu.tar.bz2
-        libclang-12.0.0.tar.bz2::https://github.com/ycm-core/llvm/releases/download/12.0.0/libclang-12.0.0-x86_64-unknown-linux-gnu.tar.bz2)
-sha256sums=('SKIP'
-            '0bb712b8d2a2d6861ea28b11167fc01c21336e5bce8682caab60257e32d9bba1'
-            'dc7b08d63fcf504fdbcfc5b96c446beee8ee79dc96e8d315666b20030c41e29a')
+if [[ ${_use_system_clang} == "ON" ]]; then
+  source=(git+https://github.com/ycm-core/YouCompleteMe.git)
+  sha256sums=('SKIP')
+else
+  source=(git+https://github.com/ycm-core/YouCompleteMe.git
+          clangd-12.0.0.tar.bz2::https://github.com/ycm-core/llvm/releases/download/12.0.0/clangd-12.0.0-x86_64-unknown-linux-gnu.tar.bz2
+          libclang-12.0.0.tar.bz2::https://github.com/ycm-core/llvm/releases/download/12.0.0/libclang-12.0.0-x86_64-unknown-linux-gnu.tar.bz2)
+  sha256sums=('SKIP'
+              '0bb712b8d2a2d6861ea28b11167fc01c21336e5bce8682caab60257e32d9bba1'
+              'dc7b08d63fcf504fdbcfc5b96c446beee8ee79dc96e8d315666b20030c41e29a')
+fi
 
 pkgver() {
   cd "${srcdir}"/YouCompleteMe || exit
@@ -102,6 +107,10 @@ prepare() {
   if [[ ${_use_system_clang} == "ON" ]]; then
     sed -e 's|\(clangd_binary_path":\).*$|\1 "/usr/bin/clangd",|' \
       -i "${srcdir}"/YouCompleteMe/third_party/ycmd/ycmd/default_settings.json
+    # The 'ycm_clangd_binary_path' option is overriden from the vim plugin
+    # so just make sure this is also done there.
+    sed -e "s|\(ycm_clangd_binary_path',\).*\$|\1 '/usr/bin/clangd' )|" \
+      -i "${srcdir}"/YouCompleteMe/plugin/youcompleteme.vim
   fi
 
   sed -e 's|\(rust_toolchain_root":\).*$|\1 "/usr",|' \
@@ -137,9 +146,13 @@ package() {
     ln -s /usr/lib/libclang.so "${pkg_ycmd_dir}/third_party/clang/lib/libclang.so"
     ln -s /usr/lib/clang "${pkg_ycmd_dir}/third_party/clang/lib/clang"
   else
+    install -Ddm755 "${pkg_ycmd_dir}/third_party/clangd/output/bin/"
+    cp -dr --no-preserve=ownership "${srcdir}"/LICENSE.TXT "${pkg_ycmd_dir}/third_party/clangd/output"
+    cp -dr --no-preserve=ownership "${srcdir}"/bin "${pkg_ycmd_dir}/third_party/clangd/output/"
+    cp -dr --no-preserve=ownership "${srcdir}"/lib "${pkg_ycmd_dir}/third_party/clangd/output/"
     install -Ddm755 "${pkg_ycmd_dir}/third_party/clang/lib/"
     cp -dr --no-preserve=ownership "${srcdir}"/YouCompleteMe/third_party/ycmd/third_party/clang/lib/clang "${pkg_ycmd_dir}/third_party/clang/lib/clang"
-    cp -dr --no-preserve=ownership "${srcdir}"/lib/libclang.so* "${pkg_ycmd_dir}/third_party/clang/lib/"
+    ln -s "${pkg_ycmd_dir}/third_party/clang/lib/libclang.so" "${pkg_ycmd_dir}/third_party/clang/lib/libclang.so"
   fi
 
   if [[ "$_java" == "y" ]]; then
@@ -156,9 +169,4 @@ package() {
 
   python -m compileall -d /usr/share/vim/vimfiles "${pkgdir}/usr/share/vim/vimfiles"
   python -O -m compileall -d /usr/share/vim/vimfiles "${pkgdir}/usr/share/vim/vimfiles"
-
-  install -Ddm755 "${pkg_ycmd_dir}/third_party/clangd/output/bin/"
-  cp -dr --no-preserve=ownership "${srcdir}"/LICENSE.TXT "${pkg_ycmd_dir}/third_party/clangd/output"
-  cp -dr --no-preserve=ownership "${srcdir}"/bin "${pkg_ycmd_dir}/third_party/clangd/output/"
-  cp -dr --no-preserve=ownership "${srcdir}"/lib "${pkg_ycmd_dir}/third_party/clangd/output/"
 }
