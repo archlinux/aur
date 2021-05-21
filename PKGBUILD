@@ -1,13 +1,13 @@
 # Maintainer: Karel Louwagie <aur at karellouwagie dot net>
 pkgname=rainloop
 pkgver=1.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple, modern & fast web-based email client"
 arch=("any")
 url="https://www.rainloop.net"
-license=("AGPL")
+license=("AGPL3")
 depends=("php")
-source=(https://github.com/RainLoop/rainloop-webmail/releases/download/v${pkgver}/rainloop-${pkgver}.zip)
+source=(https://github.com/RainLoop/rainloop-webmail/releases/download/v${pkgver}/rainloop-community-${pkgver}.zip)
 
 package() {
   install -d -m0750 $pkgdir/usr/share/webapps/rainloop/data
@@ -15,5 +15,5 @@ package() {
   install -D -m0644 $srcdir/index.php $pkgdir/usr/share/webapps/rainloop/index.php
   cp -rf $srcdir/rainloop/. $pkgdir/usr/share/webapps/rainloop/rainloop/
 }
-sha256sums=('6980b0a85aa124479a927e11d0c50319c4a9f8ce3b25b6c2adb61a30bf1a792b')
-sha512sums=('86c9c234b96405efb35c5fff17f28a23b75350a1432f701e341fc4f01f5f16e63ed0b6f134b5d90206c2d69c5c81f307c46dd77cadefb5b5cbcd6e7a9c9a44f7')
+sha256sums=('db949c4363b048a02eaa0f06a26a8386979b8734198c2939ee1e8cc54362ca67')
+sha512sums=('1ec03bff24536328aeaca8fdc53d65f7b7a154ee674658135d6bcc0019e375d027e31b82eeb0e1e600ddeba00329775ae1b92cd9fabb5f7c14427994800acf8a')
