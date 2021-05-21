@@ -2,7 +2,7 @@
 pkgbase=python-sphinx-notfound-page
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python2-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.6
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Sphinx extension to build a 404 page with absolute URLs"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ makedepends=('python-setuptools'
              'python-sphinx_rtd_theme')
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('40b6448e145a9241afca7ce65ca5a58d')
+md5sums=('4e13e48c449d80f929b7aaf62ec2b3db')
 
 prepare() {
     cp -a ${srcdir}/${_pyname}-${pkgver}{,-py2}
@@ -66,7 +66,7 @@ package_python-sphinx-notfound-page() {
 }
 
 package_python-sphinx-notfound-page-doc() {
-    pkgdesc="Documentation for Sphinx-Gallery extension"
+    pkgdesc="Documentation for sphinx-notfound-page"
     cd ${srcdir}/${_pyname}-${pkgver}/build/sphinx
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE
