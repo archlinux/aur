@@ -1,4 +1,4 @@
-# Maintainer: Ron B.S <ronthecookie0101 on gmail --OR-- me AT ronthecookie DOT me >
+# Maintainer: Tim Schumacher <timschumi@gmx.de>
 
 pkgname=python-pytube
 pkgver=10.8.2
