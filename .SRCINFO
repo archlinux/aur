@@ -1,14 +1,14 @@
 pkgbase = libfixposix
 	pkgdesc = Thin wrapper over POSIX syscalls
-	pkgver = 0.4.3
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/sionescu/libfixposix
 	arch = i686
 	arch = x86_64
 	license = Boost
 	depends = glibc
-	source = libfixposix-0.4.3.tar.gz::https://github.com/sionescu/libfixposix/archive/v0.4.3.tar.gz
-	sha256sums = 78fe8bcebf496520ac29b5b65049f5ec1977c6bd956640bdc6d1da6ea04d8504
+	source = libfixposix::git+https://github.com/sionescu/libfixposix#commit=b6bfd4a3ba9a9d2761cbf78d3a04a2d71482284e
+	sha256sums = SKIP
 
 pkgname = libfixposix
 
