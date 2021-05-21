@@ -2,7 +2,7 @@
 
 # General package information
 pkgname=wtwitch
-pkgver=2.2.2
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="Terminal user interface for Twitch"
 url="https://github.com/krathalan/wtwitch"
@@ -19,7 +19,7 @@ optdepends=('mpv: for watching streams'
 # Download information
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz" "${url}/releases/download/${pkgver}/${pkgver}.tar.gz.sig")
 validpgpkeys=("0C6B73F391FA26F0EBCD1F75C0F9AEE56E47D174")
-sha256sums=("0f649398814b6d2c61d4e5abf5d293ca998728afb24ac842db63f7a1c2bdd3e4" "2542c555665e3aab3e50d434d6b87154486330664412b0ea04491fa704d03237")
+sha256sums=("549d991d023b0bc61acbafa9805bf95a131637e33e4c8db085ef1480c7566fa0" "96c8fd3de256a8c730c93d841323990ec021d1e40d04d8f4e024850a8ccf25f6")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}/src"
