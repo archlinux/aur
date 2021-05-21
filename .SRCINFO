@@ -1,0 +1,17 @@
+pkgbase = apertium-oci
+	pkgdesc = Apertium linguistic data for Occitan
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-oci
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	makedepends = autoconf
+	depends = apertium>=3.4.2
+	depends = vislcg3
+	source = apertium-oci-0.2.0.tar.gz::https://github.com/apertium/apertium-oci/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = b7a88650df4179f61aba2c2ed70c13bdefd73f67d415f5744f6b293d9b35c081
+
+pkgname = apertium-oci
+
