@@ -39,9 +39,9 @@ optdepends=('maestral-qt: Qt interface for the maestral daemon')
 md5sums=('75883c2d356df51087e6e2f5be935480'
          '25d1041b158c1b1ea42d7290c9c0f91d')
 
-# prepare() {
-#    sed -i 's|watchdog>=0\.10\.0,<=0\.10\.3|watchdog>=0.10.0|' "${pkgname}-${pkgver}/setup.py"
-#}
+prepare() {
+    sed -i 's|watchdog>=2\.0\.1|watchdog|' "${pkgname}-${pkgver}/setup.py"
+}
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
