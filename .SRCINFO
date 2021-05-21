@@ -1,13 +1,11 @@
 pkgbase = brightness-controller-git
 	pkgdesc = Control Brightness of your Primary and Secondary Display in Linux
 	pkgver = 2.3.4.r286.ea7434a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LordAmit/Brightness
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = python-cx-freeze
-	makedepends = python-setuptools
 	depends = python-qtpy
 	depends = xorg-xrandr
 	provides = brightness-controller

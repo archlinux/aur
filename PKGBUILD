@@ -2,13 +2,13 @@
 # Contributor: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 pkgname=brightness-controller-git
 pkgver=2.3.4.r286.ea7434a
-pkgrel=1
+pkgrel=2
 pkgdesc="Control Brightness of your Primary and Secondary Display in Linux"
 arch=('x86_64')
 url="https://github.com/LordAmit/Brightness"
 license=('GPL')
 depends=('python-qtpy' 'xorg-xrandr')
-makedepends=('git' 'python-cx-freeze' 'python-setuptools')
+makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/LordAmit/Brightness.git"
@@ -23,8 +23,11 @@ sha256sums=('SKIP'
             'e6a777ca8aca3577754c53efceaa1010b521aaaafd826339baf4bbd109c71d84')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}/src"
-  printf "$(python setup.py --version).r%s.%s" \
+#  cd "$srcdir/${pkgname%-git}/src"
+#  printf "$(python setup.py --version).r%s.%s" \
+#    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/${pkgname%-git}"
+  printf "2.3.4.r%s.%s" \
     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
