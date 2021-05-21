@@ -3,7 +3,7 @@
 pkgname=nodejs-sword-interface
 _npmname=${pkgname/js}
 pkgver=0.225.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Javascript (N-API) interface to SWORD library'
 arch=('x86_64')
 url="https://github.com/tobias-klein/$_npmname"
@@ -16,7 +16,7 @@ sha256sums=('4f3c4a376abfe033d55a5e9852adc8c4623bcea287cf5618c29d31be8225efe4')
 prepare() {
     cd "$_npmname-$pkgver"
     # Suppress install or link against this package triggering a build!
-    jq 'del(.scripts[]) | .gypfile=false' package.json | sponge package.json
+    jq 'del(.scripts[])' package.json | sponge package.json
 }
 
 build() {
@@ -36,14 +36,13 @@ package() {
         --cache "$srcdir/npm-cache" \
         --prefix "$pkgdir/usr" \
         $_npmname-$pkgver.tgz
-    rm -rf "$pkgdir/usr/lib/node_modules/$_npmname/"{node_modules,sword_build,*.tgz,build/{node_modules,sword_build}}
+    rm -rf "$pkgdir/usr/lib/node_modules/$_npmname/"{node_modules,src,patch,scripts,sword_build,*.tgz,*.sh,*.txt,*.md,.git*,COPYING}
 
     # Use system provided deps
     pushd "$pkgdir/usr/lib/node_modules/$_npmname/" && ln -sf /usr/lib/node_modules
-    pushd ../build && ln -sf /usr/lib/node_modules
 
     find "$pkgdir" -type f -name package.json \
-        -execdir sh -c "jq '. |= with_entries(select(.key | test(\"_.+\") | not))' {} | sponge {}" \;
+        -execdir sh -c "jq '.gypfile = false' {} | sponge {}" \;
 
     # Non-deterministic race in npm gives 777 permissions to random directories.
     # See https://github.com/npm/npm/issues/9359 for details.
