@@ -1,7 +1,7 @@
 # Maintainer: theferdi265 at gmail dot com
 
 pkgname=gtk-theme-numix-solarized
-pkgver=20200910
+pkgver=20210522
 pkgrel=1
 pkgdesc="Solarized versions of Numix GTK2 and GTK3 theme, compatible with GTK 3.20"
 arch=('any')

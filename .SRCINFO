@@ -1,12 +1,12 @@
 pkgbase = gtk-theme-numix-solarized
 	pkgdesc = Solarized versions of Numix GTK2 and GTK3 theme, compatible with GTK 3.20
-	pkgver = 20200910
+	pkgver = 20210522
 	pkgrel = 1
 	url = https://github.com/Ferdi265/numix-solarized-gtk-theme
 	arch = any
 	license = GPL3
 	depends = gtk-engine-murrine
-	source = https://github.com/Ferdi265/numix-solarized-gtk-theme/releases/download/20200910/NumixSolarized-20200910.tar.gz
+	source = https://github.com/Ferdi265/numix-solarized-gtk-theme/releases/download/20210522/NumixSolarized-20210522.tar.gz
 	sha256sums = eac9abd269008056235d08b1422a7979e0df58a9aa61bf7ea970107eb0357312
 
 pkgname = gtk-theme-numix-solarized
