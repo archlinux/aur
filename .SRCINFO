@@ -1,0 +1,20 @@
+pkgbase = oatpp-git
+	pkgdesc = Oat++ is an open-source C++ web framework for highly scalable and resource-efficient web applications.
+	pkgver = 1.2.5.r29.g37cab34
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/oatpp/oatpp
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	provides = oatpp
+	conflicts = oatpp
+	source = oatpp::git+https://github.com/oatpp/oatpp.git
+	source = module-install.cmake.patch
+	source = module-config.cmake.in.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = oatpp-git
+
