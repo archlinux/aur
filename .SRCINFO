@@ -1,6 +1,6 @@
 pkgbase = r-matrixgenerics
 	pkgdesc = S4 Generic Summary Statistic Functions that Operate on Matrix-Like Objects
-	pkgver = 1.2.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/MatrixGenerics.html
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = r-matrixgenerics
 	optdepends = r-delayedmatrixstats
 	optdepends = r-summarizedexperiment
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MatrixGenerics_1.2.1.tar.gz
-	sha256sums = 2bcffc10cbc49f647f61dfd4fd70022b3dd6140cb637c91e1ac06c36c6076e98
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MatrixGenerics_1.4.0.tar.gz
+	sha256sums = ba88596471c750d3ec07f0f4ab359dc60dfcbb5e2d8f60a175bc88a0695203f7
 
 pkgname = r-matrixgenerics
 
