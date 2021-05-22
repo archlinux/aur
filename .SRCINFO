@@ -1,0 +1,14 @@
+pkgbase = otf-romande
+	pkgdesc = A serif font
+	pkgver = 1.010
+	pkgrel = 1
+	url = http://arkandis.tuxfamily.org/adffonts.html
+	arch = any
+	groups = otf-adf-fonts
+	license = custom:GPL with font exception
+	conflicts = otf-adf
+	source = http://arkandis.tuxfamily.org/fonts/Romande-Collection-20110730.zip
+	sha256sums = 724a625e30f4317af5dc7b3e99a5de8128c23e025f83bd48977fa4dcb03ad35c
+
+pkgname = otf-romande
+
