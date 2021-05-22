@@ -1,0 +1,12 @@
+pkgbase = immudb
+	pkgdesc = immudb - world’s fastest immutable database
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/vaticle/immudb
+	arch = x86_64
+	license = Apache-2.0
+	source = https://github.com/codenotary/immudb/releases/download/v1.0.0/immudb-v1.0.0-linux-amd64
+	sha256sums = 2e37ba099e3fe634d689d31636481293095d50cd0becbc0e99e7584415b3c194
+
+pkgname = immudb
+
