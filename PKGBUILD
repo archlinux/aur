@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-k2-git
-pkgver=0.3.4.dev20210519+cuda11.3.torch1.8.1.r646
+pkgver=0.3.4.dev20210522+cuda11.3.torch1.8.1.r646
 pkgrel=1
 pkgdesc='FSA/FST algorithms, differentiable, with PyTorch compatibility'
 arch=('any')
