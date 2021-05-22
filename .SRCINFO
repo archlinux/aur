@@ -1,6 +1,6 @@
 pkgbase = quickmedia-git
 	pkgdesc = A dmenu-inspired native client for web services. Supports youtube, spotify (podcasts), soundcloud, nyaa.si, 4chan, matrix and several manga sites.
-	pkgver = r740.31b99be
+	pkgver = r741.ebd068c
 	pkgrel = 1
 	url = https://git.dec05eba.com/QuickMedia
 	arch = x86_64
@@ -25,8 +25,8 @@ pkgbase = quickmedia-git
 	optdepends = noto-fonts-cjk: To display chinese, japanese and korean characters
 	provides = quickmedia
 	conflicts = quickmedia
-	source = quickmedia-git-r740.31b99be.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r740.31b99be.tar.gz
-	sha512sums = 821a956429fcb1202fb5e1c1001ad29c93b06ec8de50d6803258690d872a212bc2fb27f77ba16c8616159b465bdfda638f80321569823e04be87bfc4764b9e06
+	source = quickmedia-git-r741.ebd068c.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r741.ebd068c.tar.gz
+	sha512sums = 49e014d9b374c8eac31309a9c8805d7ff7d3340f4ee911840471ca1471e82eaa9d62369022625b935b0cc4777f1bf3c216b447fa837fc941fcda7adad9960eb9
 
 pkgname = quickmedia-git
 
