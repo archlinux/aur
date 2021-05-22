@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=Rsamtools
-_bcver=2.6.0
+_bcver=2.8.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -14,7 +14,7 @@ depends=(r 'r-genomeinfodb>=1.1.3' 'r-genomicranges>=1.31.8' 'r-biostrings>=2.47
 makedepends=(make)
 optdepends=(r-genomicalignments r-shortread r-genomicfeatures r-txdb.dmelanogaster.ucsc.dm3.ensgene r-kegg.db r-txdb.hsapiens.ucsc.hg18.knowngene r-rnaseqdata.hnrnpc.bam.chr14 r-bsgenome.hsapiens.ucsc.hg19 r-runit r-biocstyle)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=('a4144f71022410410ed57b4f4f711c1b48651beb87590c92e786d1c7e77b1710')
+sha256sums=('05ab1ef36e9f5d3b4583929d5c461bc863aed9674fea0267edf58ebe5681302b')
 
 build() {
   cd "${srcdir}"
