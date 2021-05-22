@@ -3,11 +3,7 @@
 _pkgname=neovim
 _pkgver=0.5.0
 pkgname=neovim-nightly-latest
-pkgver=0.5.0+dev+1345+g6dd04ed5f
-pkgver() {
-  ver=$(curl "https://api.github.com/repos/neovim/neovim/releases" | tr '\n' ' ' | grep -oP '(?<="NVIM )[^"]+dev[^"]+(?=",)' | sed "s/-/+/g")
-  echo $ver
-}
+pkgver=v0.5.0+dev+1345+g6dd04ed5f
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs - Nightly Builds'
 arch=('x86_64')
@@ -32,8 +28,8 @@ check() {
 }
 
 pkgver() {
-  cd "${srcdir}/nvim-linux64"
-  ./bin/nvim --version | sed -n 's/^NVIM v//g;1s/-/+/gp;'
+  ver=$(curl "https://api.github.com/repos/neovim/neovim/releases" | tr '\n' ' ' | grep -oP '(?<="NVIM )[^"]+dev[^"]+(?=",)' | sed "s/-/+/g")
+  echo $ver
 }
 
 package() {
