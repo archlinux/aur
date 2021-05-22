@@ -1,7 +1,7 @@
 # Maintainer: Henil <henil2911 + aur at gmail <.> com>
 pkgname=zellij-git
 _pkgname=zellij
-pkgver=r833.f1bff23
+pkgver=r877.810a01c
 _pkgver=0.1
 pkgrel=1
 epoch=
@@ -32,14 +32,14 @@ build() {
 
 package() {
     cd "$srcdir/$_pkgname"
-    mkdir -p "${pkgdir}/usr/local/share/doc/zellij"
-    install -Dm755 ./zellij "${pkgdir}/usr/local/bin/zellij"
-    install -Dm644 GOVERNANCE.md "${pkgdir}/usr/local/share/doc/zellij/GOVERNANCE.md"
-    install -Dm644 README.md "${pkgdir}/usr/local/share/doc/zellij/README.md"
-    install -Dm644 assets/man/zellij.1 "${pkgdir}/usr/local/man/man1/zellij.1"
-    install -Dm644 assets/completions/zellij.bash "${pkgdir}/usr/local/share/bash-completion/completions/zellij"
-    install -Dm644 assets/completions/zellij.fish "${pkgdir}/usr/local/share/fish/completions/zellij.fish"
-    install -Dm644 assets/completions/_zellij "${pkgdir}/usr/local/share/zsh/site-functions/_zellij"
+    mkdir -p "${pkgdir}/usr/share/doc/zellij"
+    install -Dm755 ./zellij "${pkgdir}/usr/bin/zellij"
+    install -Dm644 GOVERNANCE.md "${pkgdir}/usr/share/doc/zellij/GOVERNANCE.md"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/zellij/README.md"
+    install -Dm644 assets/man/zellij.1 "${pkgdir}/usr/man/man1/zellij.1"
+    install -Dm644 assets/completions/zellij.bash "${pkgdir}/usr/share/bash-completion/completions/zellij"
+    install -Dm644 assets/completions/zellij.fish "${pkgdir}/usr/share/fish/completions/zellij.fish"
+    install -Dm644 assets/completions/_zellij "${pkgdir}/usr/share/zsh/site-functions/_zellij"
 }
 
 pkgver() {
