@@ -1,7 +1,7 @@
 pkgbase = kata1-containers
 	pkgdesc = Lightweight virtual machines for containers
 	pkgver = 1.12.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://katacontainers.io/
 	arch = x86_64
 	license = Apache
@@ -23,14 +23,14 @@ pkgname = kata1-ksm-throttler
 
 pkgname = kata1-runtime
 	install = kata-runtime.install
-	depends = qemu-headless
 	depends = kata1-proxy=1.12.1
 	depends = kata1-shim=1.12.1
-	depends = linux-kata
-	depends = kata1-containers-image
 	optdepends = kata1-ksm-throttler=1.12.1
-	optdepends = firecracker<0.22.0
-	optdepends = cloud-hypervisor
+	optdepends = kata1-containers-image: Disk and initrd images for booting Kata VMs
+	optdepends = linux-kata: Kernel images for booting Kata VMs
+	optdepends = qemu-headless: QEMU-hypervised Kata VMs
+	optdepends = cloud-hypervisor: Cloud-Hypervisor-based Kata VMs
+	optdepends = firecracker<0.22.0: Firecracker-based Kata VMs
 
 pkgname = kata1-proxy
 

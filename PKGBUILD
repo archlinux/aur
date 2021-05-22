@@ -10,7 +10,7 @@ pkgname=(
 )
 pkgver=1.12.1
 _pkgver=${pkgver/\~/-}
-pkgrel=3
+pkgrel=4
 pkgdesc="Lightweight virtual machines for containers"
 arch=('x86_64')
 url="https://katacontainers.io/"
@@ -72,11 +72,14 @@ package_kata1-proxy(){
 }
 
 package_kata1-runtime(){
-  depends=('qemu-headless' "kata1-proxy=${pkgver}" "kata1-shim=${pkgver}" "linux-kata" "kata1-containers-image")
+  depends=("kata1-proxy=${pkgver}" "kata1-shim=${pkgver}")
   optdepends=(
     "kata1-ksm-throttler=${pkgver}"
-    'firecracker<0.22.0'
-    'cloud-hypervisor'  # 15.0 seems to work just fine, so does qemu
+    'kata1-containers-image: Disk and initrd images for booting Kata VMs'
+    'linux-kata: Kernel images for booting Kata VMs'
+    'qemu-headless: QEMU-hypervised Kata VMs'
+    'cloud-hypervisor: Cloud-Hypervisor-based Kata VMs'
+    'firecracker<0.22.0: Firecracker-based Kata VMs'
   )
   install=kata-runtime.install
   cd "${srcdir}/src/${_gh_org}/runtime"
