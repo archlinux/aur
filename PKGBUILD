@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=BiocGenerics
-_bcver=0.36.1
+_bcver=0.38.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(Artistic-2.0)
 depends=('r>=4.0.0')
 optdepends=(r-biobase r-s4vectors r-iranges r-genomicranges r-delayedarray r-biostrings r-rsamtools r-annotationdbi r-affy r-affyplm r-deseq2 r-flowclust r-msnbase r-annotate r-runit)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=('e5d3e2d02905a93782657888c86a58198968701c00d0d2784a3a7b1533a50c75')
+sha256sums=('a692fe68256578fc1beb60630cfd45ffc3b003ad36801dce8970c4e9eba767cf')
 
 build() {
   cd "${srcdir}"
