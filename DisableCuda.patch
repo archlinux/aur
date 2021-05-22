@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a59e9ea..84337ef 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -133,7 +133,7 @@ add_library (cuda_build_configuration INTERFACE)
+ 
+ include (CheckLanguage)
+ 
+-check_language(CUDA)
++#check_language(CUDA)
+ 
+ if (CMAKE_CUDA_COMPILER)
+     find_package (CUDA REQUIRED)
