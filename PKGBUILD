@@ -2,7 +2,7 @@
 
 
 # Helper variables for updaurpkg (https://aur.archlinux.org/packages/updaurpkg-git)
-_upstreamver='0.7.1'
+_upstreamver='0.8.0'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='github-tags'
 _repo='zulip/python-zulip-api'
@@ -10,7 +10,7 @@ _repo='zulip/python-zulip-api'
 
 pkgname='python-zulip-api'
 pkgver="${_upstreamver}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Pyhton bindings for Zulip API."
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/${_repo}"
@@ -24,7 +24,7 @@ optdepends=(
     'python-matrix-client-git: For zulip matrix bridge')
 makedepends=('cython' 'python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('72c4825ed03f19f1e9640748e69f2d08f68ae447d093a5e614d97dd95f7419f1')
+sha256sums=('a28a65ea1d1e0871050437f544925c431f16ab191dc4539fdc8447db24a45951')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}/zulip"
