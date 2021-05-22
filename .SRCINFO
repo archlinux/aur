@@ -1,4 +1,4 @@
-pkgbase = neovim-nightly-bin
+pkgbase = neovim-nightly-latest
 	pkgdesc = Fork of Vim aiming to improve user experience, plugins, and GUIs - Nightly Builds
 	pkgver = 0.5.0+dev+1345+g6dd04ed5f
 	pkgrel = 1
