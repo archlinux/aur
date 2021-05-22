@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=GenomeInfoDbData
-_bcver=1.2.4
+_bcver=1.2.6
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ url="https://bioconductor.org/packages/release/data/annotation/html/${_bcname}.h
 license=(Artistic-2.0)
 depends=('r>=3.5.0')
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=('9a9ecee1d03b7a859bd00640c952862781398a1f06bd63667c1cb9c746172972')
+sha256sums=('09209adea5f0ea69535b27710b191f2679f83ccc0bd4342a4d91a9dcf0f91f31')
 
 build() {
   cd "${srcdir}"
