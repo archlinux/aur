@@ -1,7 +1,7 @@
 # Maintainer: Kyle Bronsdon <kyle at silksow dot com>
 # Contributor: Mads Kjeldgaard <mail@madskjeldgaard.dk>
 pkgname=linvst-bin
-pkgver=4.2
+pkgver=4.5
 pkgrel=1
 pkgdesc="Linux Windows vst wrapper/bridge"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('linvst')
 optdepends=('jack')
 suffix="Manjaro"
 source=( "$url/releases/download/$pkgver/LinVst-$pkgver-$suffix.zip") 
-md5sums=('22e132e1c3529979a5a5ca0a77cc2e50')
+md5sums=('61288fcee325f2a04be8c1f5311b985c')
 
 package() {
 	# Shared library
