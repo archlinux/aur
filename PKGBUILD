@@ -9,7 +9,7 @@ pkgname=(
 )
 pkgver=2.1.0
 _pkgver=${pkgver/\~/-}
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight virtual machines for containers, version 2"
 arch=('x86_64')
 url="https://katacontainers.io/"
@@ -138,10 +138,12 @@ package_kata-containers-image(){
 }
 
 package_kata-runtime(){
-  depends=('qemu-headless' "linux-kata" "kata-containers-image")
   optdepends=(
-    'firecracker<0.24.0'
-    'cloud-hypervisor<16.0'
+    'kata-containers-image: Disk and initrd images for booting Kata VMs'
+    'linux-kata: Kernel images for booting Kata VMs'
+    'qemu-headless: QEMU-hypervised Kata VMs'
+    'cloud-hypervisor<16.0: Cloud-Hypervisor-based Kata VMs'
+    'firecracker<0.24.0: Firecracker-based Kata VMs'
   )
   install=kata2-runtime.install
   cd "${srcdir}/${pkgbase}-${_pkgver}/src/runtime"
