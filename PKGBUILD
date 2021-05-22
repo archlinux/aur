@@ -2,28 +2,11 @@
 
 pkgbase=frotz-git
 pkgname=(frotz-dumb-git frotz-ncurses-git frotz-sdl-git)
-pkgver=2.52.r89.g898860f
+pkgver=2.53.r58.g3e4044b
 pkgrel=1
 pkgdesc='Z-machine interpreter for interactive fiction games'
-
-makedepends=(
-		git
-
-		libao
-		libmodplug
-		libsamplerate
-		libsndfile
-		libvorbis
-
-		ncurses
-
-		freetype2
-		libjpeg-turbo
-		libpng
-		sdl2
-		sdl2_mixer
-		zlib
-)
+makedepends=('git' 'libao' 'libmodplug' 'libsamplerate' 'libsndfile' 'libvorbis' 'ncurses'
+     	'freetype2' 'libjpeg-turbo' 'libpng' 'sdl2' 'sdl2_mixer' 'zlib')
 
 arch=(x86_64)
 url='https://gitlab.com/DavidGriffith/frotz'
@@ -43,8 +26,9 @@ build() {
 
 package_frotz-dumb-git() {
 	pkgdesc='Z-machine interpreter for interactive fiction games, for dumb terminals or scripting'
-	provides=(dfrotz frotz-dumb)
-	conflicts=(frotz-dumb)
+	depends=('glibc')
+	provides=('dfrotz' 'frotz-dumb')
+	conflicts=('frotz-dumb')
 
 	cd frotz
 	make DESTDIR="$pkgdir" PREFIX=/usr install_dumb
@@ -52,17 +36,9 @@ package_frotz-dumb-git() {
 
 package_frotz-ncurses-git() {
 	pkgdesc='ncurses-based Z-machine interpreter for interactive fiction games'
-	provides=(frotz frotz-ncurses)
-	conflicts=(frotz-ncurses)
-	depends=(
-		libao
-		libmodplug
-		libsamplerate
-		libsndfile
-		libvorbis
-
-		ncurses
-	)
+	provides=('frotz' 'frotz-ncurses')
+	conflicts=('frotz-ncurses')
+	depends=('libao' 'libmodplug' 'libsamplerate' 'libsndfile' 'ncurses')
 
 	cd frotz
 	make DESTDIR="$pkgdir" PREFIX=/usr install_frotz
@@ -70,22 +46,9 @@ package_frotz-ncurses-git() {
 
 package_frotz-sdl-git() {
 	pkgdesc='Graphical Z-machine interpreter for interactive fiction games'
-	provides=(sfrotz frotz-sdl)
-	conflicts=(frotz-sdl)
-	depends=(
-		libao
-		libmodplug
-		libsamplerate
-		libsndfile
-		libvorbis
-
-		freetype2
-		libjpeg-turbo
-		libpng
-		sdl2
-		sdl2_mixer
-		zlib
-	)
+	provides=('sfrotz' 'frotz-sdl')
+	conflicts=('frotz-sdl')
+	depends=('freetype2' 'libjpeg-turbo' 'sdl2_mixer')
 
 	cd frotz
 	make DESTDIR="$pkgdir" PREFIX=/usr install_sdl
