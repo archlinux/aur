@@ -1,0 +1,12 @@
+pkgbase = immuclient
+	pkgdesc = immudb - world’s fastest immutable database
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/vaticle/immudb
+	arch = x86_64
+	license = Apache-2.0
+	source = https://github.com/codenotary/immudb/releases/download/v1.0.0/immuclient-v1.0.0-linux-amd64
+	sha256sums = 1c7d6e5a8358abf2e53b939c7b7afb00097fd2cde43b36b8f9fcc2f55af508eb
+
+pkgname = immuclient
+
