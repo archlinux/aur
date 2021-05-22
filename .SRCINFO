@@ -1,7 +1,7 @@
 pkgbase = prisma-studio-appimage
 	pkgdesc = Description of my project
 	pkgver = 0.394.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.prisma.io/studio
 	arch = x86_64
 	license = Apache

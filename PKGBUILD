@@ -4,7 +4,7 @@ _pkgname=prisma-studio
 
 pkgname="${_pkgname}"-appimage
 pkgver=0.394.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Description of my project"
 arch=('x86_64')
 url="https://www.prisma.io/studio"
@@ -32,7 +32,6 @@ build() {
 package() {
     # AppImage
     install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
-    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/opt/${pkgname}/LICENSE"
 
     # Desktop file
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop"\
@@ -48,5 +47,4 @@ package() {
 
     # Symlink license
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
-    ln -s "/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
