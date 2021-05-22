@@ -1,6 +1,6 @@
 # Maintainer: Anchorman <soulanchor at protonmail dot com>
 pkgname=soulanchor
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="X11 Bible tool"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/Anchorm/SoulAnchor"
 license=('GPL3')
 depends=(qt5-base qt5-multimedia)
 source=("https://github.com/Anchorm/SoulAnchor/archive/${pkgname}-${pkgver}.tar.gz")
-sha256sums=("098b62542766bb16f0403b09a724934e23065f7da5ae4f0e34e4cdc2b37e6692")
+sha256sums=("1eafc319b4331cbcdd0f96fe3f62756e5e87aa5932f67081fbf1b3abccfd7f39")
 
 build() {
     cd "SoulAnchor-${pkgname}-${pkgver}"
