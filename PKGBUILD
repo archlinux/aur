@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=stremio
-pkgver=4.4.135
+pkgver=4.4.137
 pkgrel=1
 pkgdesc='A one-stop hub for video content aggregation (Movies, TV shows, series, live television or web channels)'
 arch=('x86_64')
@@ -21,8 +21,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '1560580101ec49d577f1840bc4215a584d01ee04a254826194b87f727f73bdc5'
-            '03173f78f1de32522c3cad4f3db3e315b7d4f409795e30347aa13c617321ce39'
+            '7a722fc1315f03f43179070f0ad5a63e4f4b99b677537b72e92c15a5b277f988'
+            'c3f86982bff1e359be8c815adf1728fa6b12adb0194fcec68dd774227bf21db5'
             'd1702ebfa92b55c26331e26ff50b5240c8bf69b0edfd6b7b78ef2da257a864d4')
 
 prepare() {
