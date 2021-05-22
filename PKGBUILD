@@ -3,7 +3,7 @@
 pkgname="dahdi-tools"
 pkgdesc="DAHDI tools for Asterisk (Digium, OpenVox, Allo and Yeastar cards)"
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 arch=("i686" "x86_64")
 url="http://www.asterisk.org/"
 license=("LGPLv2")
@@ -15,10 +15,12 @@ backup=(
 source=(
   "https://downloads.asterisk.org/pub/telephony/dahdi-tools/dahdi-tools-3.1.0.tar.gz"
   "patch-xpp_mpptalk.c"
+  "patch-hotplug_dahdi_span_config"
 )
 sha256sums=(
   "ea852ebd274ee1cc90ff5e4ac84261b0b787b1a74e8b76ad659bc9ec4f77e67e"
   "0e965748c679f99c21123338e3371a5d88737d4a128349bdfea3c278ab15de79"
+  "ba3f5d9cc323b6d3544283b9c54b52aaa42b15a7946f0894292c5ed5425ce079"
 )
 
 build() {

@@ -1,0 +1,13 @@
+--- hotplug/dahdi_span_config~	2021-05-22 11:01:45.508398483 +0900
++++ hotplug/dahdi_span_config	2021-05-22 11:02:48.925075308 +0900
+@@ -86,6 +86,10 @@
+ 	# Background run -- don't block udev
+ 	run_parts 2>&1 < /dev/null | $LOGGER &
+ 	;;
++bind)
++	echo "$ACTION: $DEVPATH" | $LOGGER
++	/sbin/dahdi_cfg -v | $LOGGER
++	;;
+ remove|online|offline)
+ 	# Nothing to do yet...
+ 	echo "$ACTION: $DEVPATH" | $LOGGER
