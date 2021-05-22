@@ -1,13 +1,13 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=chipon
-pkgname=($pkgbase{-jre,-ide32,-program32,-cc32,-driver,-usart-async2,-librxtx,-rxtx-2})
+pkgname=($pkgbase{,-jre,-ide32,-program32,-cc32,-driver,-usart-async2,-librxtx,-rxtx-2})
 pkgver=1.0.17
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url='https://www.chipon-ic.com/'
 license=('unknow')
-#groups=('chipon')
+groups=('chipon')
 #provides=()
 #conflicts=()
 depends=()
@@ -27,6 +27,11 @@ prepare() {
     unar -e GB18030 "${srcdir}/I04 USART_Async2.zip"
     unar -e GB18030 "${srcdir}/I04 librxtx-linux-x64.zip"
     unar -e GB18030 "${srcdir}/I04 rxtx-2.2pre2.zip"
+}
+
+package_chipon() {
+    pkgdesc="KungFu32 系列 32 位 MCU 设计的 IDE（集成开发环境)，内置编译器、汇编器，支持调试。KungFu32 产品上位机编程软件，支持查空、读取、编程、在线编程、脱机编程、自增编程等；支持加载并查看修改 HEX 文件等操作。"
+    depends=($pkgbase{-jre,-ide32,-program32,-cc32,-driver,-usart-async2,-librxtx,-rxtx-2})
 }
 
 package_chipon-jre() {
