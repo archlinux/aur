@@ -1,0 +1,15 @@
+pkgbase = perl-goocanvas2-cairotypes
+	pkgdesc = Bridge between GooCanvas2 and Cairo types
+	pkgver = 0.001
+	pkgrel = 1
+	url = https://metacpan.org/release/GooCanvas2-CairoTypes
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-gtk3
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/A/AS/ASOKOLOV/GooCanvas2-CairoTypes-0.001.tar.gz
+	sha256sums = ba806736ebcc9de3d8141a763a682bdeabb1cb8702bde299adfd574ace875052
+
+pkgname = perl-goocanvas2-cairotypes
+
