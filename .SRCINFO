@@ -1,7 +1,7 @@
 pkgbase = ca-certificates-dnie
 	pkgdesc = Spanish DNIE root certificates
-	pkgver = 20201212
-	pkgrel = 2
+	pkgver = 20210522
+	pkgrel = 1
 	url = http://www.dnielectronico.es
 	arch = any
 	license = unknown
@@ -26,7 +26,7 @@ pkgbase = ca-certificates-dnie
 	sha256sums = 7571df00556f41af9b552982f102529c20adb597fafe0865ccee89f735193458
 	sha256sums = 948ca3f851a4fd11483af67761c4d0603036231ec0611fe06d0e93212ac4d172
 	sha256sums = 25588e7328336f999a2650f60041f5fc107f1709960636b4a14b84cd8b866d54
-	sha256sums = c84abb9059b350c083b5849a47ffcf79c6cb7369dba1797d9e582df1eba51431
+	sha256sums = 6902f4ff7223cfb4ea3464d6c3a793cac6c371e7945580682d267595f4c31926
 	sha256sums = 171f5c664bb2ccfd0cf130d782c18205d17cae08aa86bffa772bdc0d4897a3ad
 
 pkgname = ca-certificates-dnie
