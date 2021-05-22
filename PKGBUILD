@@ -45,6 +45,7 @@ function prepare() {
 
 function build() {
     cd "${srcdir}/${pkgbase}/build"
+    find ../ -name "CMakeLists.txt" -exec sed -i 's/-Werror//g' {} \;
     cmake .. \
           -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
           -DBUILD_SHARED_LIBS=ON \
