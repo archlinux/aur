@@ -11,6 +11,7 @@ pkgbase = r-fields
 	depends = r>=3.0
 	depends = r-spam
 	depends = r-maps
+	depends = r-viridis
 	source = https://cran.r-project.org/src/contrib/fields_12.3.tar.gz
 	sha256sums = d97e052e9893e4ed4be80054107065b5c98ceadcc36cd635be4c2ea16bb4ba9d
 
