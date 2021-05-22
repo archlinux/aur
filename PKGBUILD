@@ -9,7 +9,7 @@ pkgdesc="A font designed by Hirwen Harendal and released by Arkandis Digital Fou
 arch=('any')
 url="http://arkandis.tuxfamily.org/adffonts.html"
 license=('custom:"OFL 1.1"')
-groups=('adf-fonts')
+groups=('otf-adf-fonts')
 source=("http://arkandis.tuxfamily.org/fonts/${_fontname}-${_date}.zip")
 
 sha256sums=('338f6e5f3660e393c534e214c2654f93aa1d83587e230f7d0186068612aef871')
