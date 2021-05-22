@@ -1,11 +1,11 @@
 pkgbase = makedeb-db
 	pkgdesc = Dependency conversion tool for makedeb
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/hwittenborn/makedeb-db
 	arch = any
 	license = GPL3
-	source = https://repo.hunterwittenborn.com/debian/makedeb/pool/m/makedeb-db/makedeb-db_2.3.0-1_all.deb
+	source = https://repo.hunterwittenborn.com/debian/makedeb/pool/m/makedeb-db/makedeb-db_2.4.0-1_all.deb
 	sha256sums = SKIP
 
 pkgname = makedeb-db
