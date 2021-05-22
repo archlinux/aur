@@ -1,6 +1,6 @@
 pkgbase = wallabag-client
 	pkgdesc = Command line client for the self hosted read-it-later app Wallabag
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://github.com/artur-shaik/wallabag-client
 	arch = any
@@ -24,8 +24,8 @@ pkgbase = wallabag-client
 	depends = python-packaging
 	depends = python-babel
 	options = !emptydirs
-	source = https://pypi.io/packages/source/w/wallabag-client/wallabag-client-1.7.0.tar.gz
-	sha512sums = 13d47cf2e2f827b380dddeedf0c1d837038fd3b9ce7852f72025774ec496eecd484465e5a3ca9cd2306ec18ac817cef66d2e0c020bb1ae7e2494de47bb382667
+	source = https://pypi.io/packages/source/w/wallabag-client/wallabag-client-1.7.1.tar.gz
+	sha512sums = cf98a8c751d1e4290d06c53d25e3a7c88241e58bce530718d2938d85a3636bc68ef15dc7ce1d1f1bb042939df2c2345565b0144b331a6eeabc1d5acfd34877fe
 
 pkgname = wallabag-client
 
