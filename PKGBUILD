@@ -5,7 +5,7 @@
 
 pkgname=subliminal-git
 pkgver=2.1.0.r22.g160ea63
-pkgrel=3
+pkgrel=4
 pkgdesc="Python library and CLI tool for searching and downloading subtitles."
 arch=('any')
 url="https://github.com/Diaoul/subliminal"
@@ -37,10 +37,6 @@ build() {
 
     cd "$srcdir/${pkgname%-git}/docs"
     make man
-
-    # Fix man page location with newer Sphinx
-    mkdir -p "_build/man/${pkgname%-git}"
-    cp -f "_build/man/1/${pkgname%-git}.1" "_build/man/${pkgname%-git}.1"
 }
 
 package() {
