@@ -1,0 +1,16 @@
+pkgbase = prisma-studio-appimage
+	pkgdesc = Description of my project
+	pkgver = 0.394.0
+	pkgrel = 1
+	url = https://www.prisma.io/studio
+	arch = x86_64
+	license = Apache
+	depends = zlib
+	depends = hicolor-icon-theme
+	noextract = prisma-studio-appimage-0.394.0.AppImage
+	options = !strip
+	source_x86_64 = prisma-studio-appimage-0.394.0.AppImage::https://github.com/prisma/studio/releases/download/v0.394.0/Prisma-Studio.AppImage
+	sha256sums_x86_64 = b6f818461ddd77426414bd79829a501c096c0bb9c2b5225e717471ebb48fcb77
+
+pkgname = prisma-studio-appimage
+
