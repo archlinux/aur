@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts54
-pkgver=5.4.120
+pkgver=5.4.121
 pkgrel=1
 pkgdesc='LTS 5.4 Linux'
 url="https://www.kernel.org/"
@@ -27,7 +27,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('38d0373c69d001a66c4b8c1b8df453d193eb38b46b6fa0d02560262ab0c10860'
+sha256sums=('9d9327fca397e114bcc59d69fa5ae1ac8bac76b170ed811d1b1645df7456375f'
             'SKIP'
             '81c7cfdd5bf655f749538fb874dea76aa98c00fa4b67f72936ca22959aa034e9'
             'b439f57b84bc98730c0265695abb92385ee4dcd35a5c00d4cb3d3155c75fb491'
