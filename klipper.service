@@ -1,5 +1,6 @@
 [Unit]
 Description=3D printer firmware with motion planning on the host
+After=network.target
 
 [Install]
 WantedBy=multi-user.target
