@@ -1,0 +1,14 @@
+pkgbase = otf-aurelis
+	pkgdesc = A serif font
+	pkgver = 1.008
+	pkgrel = 1
+	url = http://arkandis.tuxfamily.org/adffonts.html
+	arch = any
+	groups = otf-adf-fonts
+	license = custom:GPL with font exception
+	conflicts = otf-adf
+	source = http://arkandis.tuxfamily.org/fonts/AurelisNo2-Std-20110311.zip
+	sha256sums = 2fc8476894e7a443960f90d0e50b2f26f4b211b95de53f07874ca6cf7b5eb1ec
+
+pkgname = otf-aurelis
+
