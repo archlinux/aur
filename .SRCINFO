@@ -1,0 +1,34 @@
+pkgbase = chipon
+	pkgver = 1.0.17
+	pkgrel = 1
+	url = https://www.chipon-ic.com/
+	arch = x86_64
+	license = unknow
+	makedepends = unarchiver
+	source = chipon.zip::https://www.chipon-ic.com/upload/file/20210413/67c90ef0-da85-4f9c-aacd-4e1056f0d1c8.zip
+	sha256sums = c0a4469b78618712c75802a33a06f64f8f01bec1b6629af75a85095f8f8ecbc1
+
+pkgname = chipon-jre
+	pkgdesc = KungFu32 产品上位机编程软件， JRE 运行环境
+
+pkgname = chipon-ide-32
+	pkgdesc = KungFu32 系列 32 位 MCU 设计的 IDE（集成开发环境)，内置编译器、汇编器，支持调试
+
+pkgname = chipon-program32
+	pkgdesc = KungFu32 产品上位机编程软件，支持查空、读取、编程、在线编程、脱机编程、自增编程等；支持加载并查看修改 HEX 文件等操作。
+
+pkgname = chipon-cc32
+	pkgdesc = KungFu32 系列 32 位 MCU 设计的 IDE（集成开发环境)的编译器、汇编器，支持调试
+
+pkgname = chipon-driver
+	pkgdesc = KungFu32 产品上位机编程软件的驱动（udev rules）
+
+pkgname = chipon-usart-async2
+	pkgdesc = KungFu32 USART Demo
+
+pkgname = chipon-librxtx
+	pkgdesc = KungFu32 产品上位机编程软件，RXTX 操作库: IDE 和 PRO 软件使用编程调试器或串口实现和芯片的数据交换
+
+pkgname = chipon-rxtx-2
+	pkgdesc = KungFu32 产品上位机编程软件，RXTX jar 操作库: IDE 和 PRO 软件使用编程调试器或串口实现和芯片的数据交换
+
