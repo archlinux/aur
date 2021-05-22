@@ -4,9 +4,9 @@
 # Contributor: brent s. <bts at square-r00t dot net>
 # Contributor: Wes Brown <wesbrown18 at gmail dot com>
 
-_pkgname='dpkt'
+_pkgname=dpkt
 pkgname="python-${_pkgname}"
-pkgver=1.9.5
+pkgver=1.9.6
 pkgrel=1
 pkgdesc='Fast, simple packet creation / parsing, with definitions for the basic TCP/IP protocols'
 arch=('any')
@@ -16,7 +16,7 @@ license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('141cab4defcb4ead83e664765ebb045f55dbe73e17d617acafd6eaf368d7c55e')
+sha256sums=('b5737010fd420d142e02ed04fa616edd1fc05e414980baef594f72287c875eef')
 
 build() {
   cd "${_pkgname}-${pkgver}"
