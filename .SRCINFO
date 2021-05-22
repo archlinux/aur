@@ -1,7 +1,7 @@
 pkgbase = carapace
 	pkgdesc = multi-shell multi-command argument completer
 	pkgver = 0.4.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rsteube/carapace-bin
 	arch = x86_64
 	license = MIT
