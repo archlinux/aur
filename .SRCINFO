@@ -1,6 +1,6 @@
 pkgbase = chipon
 	pkgver = 1.0.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.chipon-ic.com/
 	arch = x86_64
 	license = unknow
@@ -11,7 +11,7 @@ pkgbase = chipon
 pkgname = chipon-jre
 	pkgdesc = KungFu32 产品上位机编程软件， JRE 运行环境
 
-pkgname = chipon-ide-32
+pkgname = chipon-ide32
 	pkgdesc = KungFu32 系列 32 位 MCU 设计的 IDE（集成开发环境)，内置编译器、汇编器，支持调试
 
 pkgname = chipon-program32

@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=chipon
-pkgname=($pkgbase{-jre,-ide-32,-program32,-cc32,-driver,-usart-async2,-librxtx,-rxtx-2})
+pkgname=($pkgbase{-jre,-ide32,-program32,-cc32,-driver,-usart-async2,-librxtx,-rxtx-2})
 pkgver=1.0.17
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://www.chipon-ic.com/'
 license=('unknow')
@@ -43,7 +43,7 @@ package_chipon-jre() {
     ln -sf "/opt/${pkgbase}/${_pkgname}" "${pkgdir}/opt/${pkgbase}/chiponprogram32/jre"
 }
 
-package_chipon-ide-32() {
+package_chipon-ide32() {
     export LC_CTYPE="zh_CN.UTF-8"
     pkgdesc="KungFu32 系列 32 位 MCU 设计的 IDE（集成开发环境)，内置编译器、汇编器，支持调试"
     _pkgname="chiponide32"
