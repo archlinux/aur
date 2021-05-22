@@ -1,5 +1,5 @@
 pkgbase = otf-mintspirit
-	pkgdesc = A font designed by Hirwen Harendal and released by Arkandis Digital Foundry
+	pkgdesc = A sans-serif font
 	pkgver = 1.005
 	pkgrel = 3
 	url = http://arkandis.tuxfamily.org/adffonts.html
