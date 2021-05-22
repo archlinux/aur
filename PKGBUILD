@@ -3,7 +3,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=rusolver
-pkgver=0.5.1
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Fast and accurate DNS resolver"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('d656097366c9bba3a1f2b64de10e29c82c4ea93535fbe1ba4649b2b8c94bbc03e53635a7c16032a3f90e09b119c0f42dc0f50159cf6fd8bd4dad65c719e31069')
+sha512sums=('9946b961d28bc159c3ec73555c48e4aa2af8c8bae04a8a39a0ba53465f388e0b60f1acf202dd75941aae3ae597aa9693336b2f4462ba815bf5681ce663c33c9f')
 
 build() {
   cd "$pkgname-$pkgver"
