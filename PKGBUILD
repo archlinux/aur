@@ -4,7 +4,7 @@
 # Contributor: portix <portix at gmx.net>
 
 pkgname=srandrd-git
-pkgver=v0.6.0.r6.g6288a36
+pkgver=v0.6.0.r10.g4e4b754
 pkgrel=1
 pkgdesc="Simple randr daemon that reacts to monitor hotplug events" 
 arch=('i686' 'x86_64')
