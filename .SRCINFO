@@ -14,5 +14,5 @@ pkgbase = thoptv
 	sha256sums_x86_64 = a0066f7b0a845f7802f09afd668d77d3c68ec17c7ec69954ea946006078e4e93
 	sha256sums_x86_64 = 6b0382b16279f26ff69014300541967a356a666eb0b91b422f6862f6b7dad17e
 
-pkgname = thoptv
+pkgname = thoptv-appimage
 
