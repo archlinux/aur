@@ -11,11 +11,11 @@ pkgbase = kata-containers-bin
 
 pkgname = kata-runtime-bin
 	install = kata2-runtime.install
-	depends = qemu-headless
-	depends = kata-containers-image-bin
-	depends = linux-kata-bin
-	optdepends = cloud-hypervisor<16.0
-	optdepends = firecracker<0.24.0
+	optdepends = kata-containers-image: Disk and initrd images for booting Kata VMs
+	optdepends = linux-kata: Kernel images for booting Kata VMs
+	optdepends = qemu-headless: QEMU-hypervised Kata VMs
+	optdepends = cloud-hypervisor<16.0: Cloud-Hypervisor-based Kata VMs
+	optdepends = firecracker<0.24.0: Firecracker-based Kata VMs
 	provides = kata-runtime
 	provides = kata2-runtime
 	conflicts = kata-runtime

@@ -58,14 +58,12 @@ else
 fi
 
 package_kata-runtime-bin() {
-  depends=(
-    qemu-headless
-    kata-containers-image-bin
-    linux-kata-bin
-  )
   optdepends=(
-    'cloud-hypervisor<16.0'
-    'firecracker<0.24.0'
+    'kata-containers-image: Disk and initrd images for booting Kata VMs'
+    'linux-kata: Kernel images for booting Kata VMs'
+    'qemu-headless: QEMU-hypervised Kata VMs'
+    'cloud-hypervisor<16.0: Cloud-Hypervisor-based Kata VMs'
+    'firecracker<0.24.0: Firecracker-based Kata VMs'
   )
   conflicts=('kata-runtime' 'kata1-runtime' 'kata2-runtime')
   provides=('kata-runtime' 'kata2-runtime')
