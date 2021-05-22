@@ -3,9 +3,9 @@
 
 pkgname=cppcms
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="CppCMS is the web development framework written in C++, that is aimed on development of high performance web application."
-arch=('i686' 'x86_64')
+arch=('i486' 'i686' 'pentium4' 'x86_64')
 url="http://cppcms.sourceforge.net/"
 license=('LGPL')
 depends=('pcre' 'zlib')
