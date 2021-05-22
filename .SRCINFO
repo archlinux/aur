@@ -1,0 +1,14 @@
+pkgbase = minetest-whynot
+	pkgdesc = Aims to get all existing high quality mods working together
+	pkgver = 2021.02.12
+	pkgrel = 1
+	url = https://content.minetest.net/packages/bell07/whynot_game/
+	arch = any
+	license = GPLv3
+	depends = minetest-common
+	options = !strip
+	source = whynot-6511.zip::https://content.minetest.net/packages/bell07/whynot_game/releases/6511/download/
+	sha256sums = e7fcd73aeae0d7becc43869d0b5555c3981ec5f79847390dd3eb5727deb7634d
+
+pkgname = minetest-whynot
+
