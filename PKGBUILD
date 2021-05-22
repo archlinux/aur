@@ -4,7 +4,7 @@ _pkgname=prisma-studio
 
 pkgname="${_pkgname}"-appimage
 pkgver=0.394.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Description of my project"
 arch=('x86_64')
 url="https://www.prisma.io/studio"
@@ -12,9 +12,14 @@ license=('Apache')
 depends=('zlib' 'hicolor-icon-theme')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
-source_x86_64=("${_appimage}::https://github.com/prisma/studio/releases/download/v${pkgver}/Prisma-Studio.AppImage")
+source_x86_64=(
+"${_appimage}::https://github.com/prisma/studio/releases/download/v${pkgver}/Prisma-Studio.AppImage"
+"https://raw.githubusercontent.com/prisma/prisma/master/LICENSE"
+)
 noextract=("${_appimage}")
-sha256sums_x86_64=('b6f818461ddd77426414bd79829a501c096c0bb9c2b5225e717471ebb48fcb77')
+sha256sums_x86_64=('b6f818461ddd77426414bd79829a501c096c0bb9c2b5225e717471ebb48fcb77'
+                   'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
+
 
 prepare() {
     chmod +x "${_appimage}"
@@ -32,6 +37,7 @@ build() {
 package() {
     # AppImage
     install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/opt/${pkgname}/LICENSE"
 
     # Desktop file
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop"\
@@ -47,4 +53,5 @@ package() {
 
     # Symlink license
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
+    ln -s "/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }

@@ -1,7 +1,7 @@
 pkgbase = prisma-studio-appimage
 	pkgdesc = Description of my project
 	pkgver = 0.394.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.prisma.io/studio
 	arch = x86_64
 	license = Apache
@@ -10,7 +10,9 @@ pkgbase = prisma-studio-appimage
 	noextract = prisma-studio-appimage-0.394.0.AppImage
 	options = !strip
 	source_x86_64 = prisma-studio-appimage-0.394.0.AppImage::https://github.com/prisma/studio/releases/download/v0.394.0/Prisma-Studio.AppImage
+	source_x86_64 = https://raw.githubusercontent.com/prisma/prisma/master/LICENSE
 	sha256sums_x86_64 = b6f818461ddd77426414bd79829a501c096c0bb9c2b5225e717471ebb48fcb77
+	sha256sums_x86_64 = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
 
 pkgname = prisma-studio-appimage
 
