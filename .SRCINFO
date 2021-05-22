@@ -1,16 +1,16 @@
 pkgbase = intel-ucode-clear
 	pkgdesc = Intel cpu microcode and i915 firmware used by Clear Linux
-	pkgver = 34290
+	pkgver = 34380
 	pkgrel = 1
 	url = https://clearlinux.org/
 	arch = x86_64
 	provides = intel-ucode
-	source = 34290-Manifest.linux-firmware::https://cdn.download.clearlinux.org/update/34290/Manifest.linux-firmware
-	source = 34290-00-intel-ucode.cpio.tar::https://cdn.download.clearlinux.org/update/34290/files/96391cf5f23299b89ac547f3bbdb81fbf06dc2af84242f63817e55a7aea3f42a.tar
-	source = 34290-i915-firmware.cpio.xz.tar::https://cdn.download.clearlinux.org/update/34290/files/123835484741737919af1bbf2f43aea348d192007b6dbb54aa6c6c14b39fddc4.tar
-	sha256sums = 27caa5d6eb3a0d3b6131a848c0251fb5454ee782d50ca34573c066acce0dc1b9
-	sha256sums = 637a66d0a329b51ae38bb77323078883a4125d2e782b424d29fb1c8854ef1f3b
-	sha256sums = 57b15ffd04554babc3f85f5c30b0a7fa770612d1d429562d921ea00346a3121d
+	source = 34380-Manifest.linux-firmware::https://cdn.download.clearlinux.org/update/34380/Manifest.linux-firmware
+	source = 34380-00-intel-ucode.cpio.tar::https://cdn.download.clearlinux.org/update/34380/files/973f1b665837a5d9bdf4daf7def4ffbaf3e89a96fea9bbb6be6a864730243deb.tar
+	source = 34380-i915-firmware.cpio.xz.tar::https://cdn.download.clearlinux.org/update/34380/files/3bdcf116862f61ce1bfbe1c7cfac17516b80533d34a5b28b751378d031f89a03.tar
+	sha256sums = 65e7509640432d585cbd9038f2b882f1b0b9eedee56c26180e400633334c280e
+	sha256sums = 5943d82fa1d152d920afd3712273bf1c7efbe5e9380020d467d3c4d741510af9
+	sha256sums = 08899af0d6676c47c3fbc67aa7722486498e1df97805792d3cbb1f9ba445252c
 
 pkgname = intel-ucode-clear
 
