@@ -2,7 +2,7 @@
 
 pkgname=arpack++
 pkgver=1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="an object-oriented version of the ARPACK package"
 arch=('any')
 url="http://www.ime.unicamp.br/~chico/arpack++/"
@@ -20,7 +20,10 @@ build()
   # patch required for gcc > 4
   #mv $startdir/download?f=arpack%2B%2B1.2.patch.diff ../${pkgname}${pkgver}.patch.diff || return 1
   patch -Np1 -i ../arpackpp${pkgver}.patch.diff || return 1
+}
 
+package() {
+   cd ${srcdir}/${pkgname}
   # install headers
   install -d ${pkgdir}/usr/include/arpack++
   install include/*.h ${pkgdir}/usr/include/arpack++

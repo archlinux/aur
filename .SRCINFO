@@ -1,7 +1,7 @@
 pkgbase = arpack++
 	pkgdesc = an object-oriented version of the ARPACK package
 	pkgver = 1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.ime.unicamp.br/~chico/arpack++/
 	arch = any
 	license = BSD
