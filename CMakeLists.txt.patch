@@ -1,0 +1,19 @@
+*** oatpp-sqlite/src/CMakeLists.txt	2021-05-22 17:46:41.528316778 +0100
+--- oatpp-sqlite/src/CMakeLists.txt	2021-05-22 17:53:05.238316072 +0100
+***************
+*** 12,18 ****
+      if(OATPP_INSTALL)
+          include(GNUInstallDirs)
+          target_include_directories(sqlite
+!                 PUBLIC $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/oatpp-${OATPP_THIS_MODULE_VERSION}/${OATPP_THIS_MODULE_NAME}/sqlite>
+          )
+      endif()
+  
+--- 12,18 ----
+      if(OATPP_INSTALL)
+          include(GNUInstallDirs)
+          target_include_directories(sqlite
+!                 PUBLIC $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/sqlite>
+          )
+      endif()
+  
