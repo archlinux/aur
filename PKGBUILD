@@ -75,15 +75,12 @@ package()
     mkdir -p "${pkgdir}"/usr/share/doc/"${_pkgname}"/
     mkdir -p "${pkgdir}"/usr/share/licenses/"${_pkgname}"/
 
-    # Modify run.sh to state the absolute path of the .csproj.
-    echo -e "#!/bin/bash
-dotnet run --no-launch-profile --no-build -c Release -p \"/usr/share/\"${_pkgname}\"/NBXplorer/NBXplorer.csproj\" -- \"\${@}\"" > "${srcdir}"/"${_pkgname}"/run.sh
-
     # Install the software.
     cp -r "${srcdir}"/"${_pkgname}"/ "${pkgdir}"/usr/share/
 
     ## Create an executable.
-    ln -sfrT "${pkgdir}"/usr/share/"${_pkgname}"/run.sh "${pkgdir}"/usr/bin/"${_pkgname_lc}"
+    echo -e "#!/bin/bash
+dotnet run --no-launch-profile --no-build -c Release -p \"/usr/share/\"${_pkgname}\"/NBXplorer/NBXplorer.csproj\" -- \"\${@}\"" > "${pkgdir}"/usr/bin/"${_pkgname_lc}"
     chmod 755 "${pkgdir}"/usr/bin/"${_pkgname_lc}"
 
     # Install the documentation.
