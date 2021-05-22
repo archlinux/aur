@@ -1,18 +1,18 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Morteza NourelahiAlamdari <m@0t1.me>
+# Contributer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 _pkgname='oyaml'
-pkgname="python-${_pkgname}"
-pkgver=1.0
-pkgrel=2
-pkgdesc='Ordered YAML: drop-in replacement for PyYAML which preserves dict ordering'
-arch=('any')
-url='https://github.com/wimglenn/oyaml'
-_url_pypi='https://pypi.org/project/oyaml'
-license=('MIT')
-depends=('python-pyaml')
+pkgname="python-oyaml"
+pkgver="1.0"
+pkgrel=3
+pkgdesc="Ordered YAML: drop-in replacement for PyYAML which preserves dict ordering"
+arch=("any")
+url="https://github.com/wimglenn/${_pkgname}"
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=("9b49953ab13e1db45126b82264941a4b1630d2bf5c3c56c8b9d12bff2708dac1")
+license=("MIT")
+depends=("python-yaml")
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('ed8fc096811f4763e1907dce29c35895d6d5936c4d0400fe843a91133d4744ed')
 
 build() {
   cd "${_pkgname}-${pkgver}"
@@ -25,5 +25,3 @@ package() {
   install -Dvm644 'README.rst' -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-# vim: ts=2 sw=2 et:

@@ -1,14 +1,14 @@
 pkgbase = python-oyaml
 	pkgdesc = Ordered YAML: drop-in replacement for PyYAML which preserves dict ordering
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/wimglenn/oyaml
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python-pyaml
-	source = https://files.pythonhosted.org/packages/source/o/oyaml/oyaml-1.0.tar.gz
-	sha256sums = ed8fc096811f4763e1907dce29c35895d6d5936c4d0400fe843a91133d4744ed
+	depends = python-yaml
+	source = https://github.com/wimglenn/oyaml/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 9b49953ab13e1db45126b82264941a4b1630d2bf5c3c56c8b9d12bff2708dac1
 
 pkgname = python-oyaml
 
