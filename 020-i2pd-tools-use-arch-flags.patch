@@ -20,7 +20,7 @@
  LIBS = -li2pd -lboost_system$(BOOST_SUFFIX) -lboost_date_time$(BOOST_SUFFIX) -lboost_filesystem$(BOOST_SUFFIX) -lboost_program_options$(BOOST_SUFFIX) -lssl -lcrypto -lz
  
  ifeq ($(UNAME),Linux)
-@@ -83,7 +83,7 @@ $(I2PD_LIB):
+@@ -89,7 +89,7 @@ $(I2PD_LIB):
  	$(MAKE) -C $(I2PD_PATH) mk_obj_dir $(I2PD_LIB)
  
  %.o: %.cpp

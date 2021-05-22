@@ -13,12 +13,12 @@
  
  ifeq ($(UNAME),Linux)
  	LIBS += -lrt -lpthread
-@@ -41,39 +41,39 @@ else
+@@ -41,45 +41,45 @@ else
  	LDFLAGS += -s -Wl,-Bstatic -static-libgcc -static-libstdc++
  endif
  
--all: $(I2PD_LIB) keygen keyinfo famtool routerinfo regaddr regaddr_3ld vain i2pbase64 offlinekeys b33address regaddralias
-+all: keygen keyinfo famtool routerinfo regaddr regaddr_3ld vain i2pbase64 offlinekeys b33address regaddralias
+-all: $(I2PD_LIB) keygen keyinfo famtool routerinfo regaddr regaddr_3ld vain i2pbase64 offlinekeys b33address regaddralias x25519 verifyhost
++all: keygen keyinfo famtool routerinfo regaddr regaddr_3ld vain i2pbase64 offlinekeys b33address regaddralias x25519 verifyhost
  
 -routerinfo: routerinfo.o $(I2PD_LIB)
 +routerinfo: routerinfo.o
@@ -63,9 +63,17 @@
 -regaddralias: regaddralias.o $(I2PD_LIB)
 +regaddralias: regaddralias.o
  	$(CXX) -o regaddralias regaddralias.o $(LDFLAGS) $(LIBS)
+ 	
+-x25519: x25519.o $(I2PD_LIB)
++x25519: x25519.o
+ 	$(CXX) -o x25519 x25519.o $(LDFLAGS) $(LIBS)
+ 
+-verifyhost: verifyhost.o $(I2PD_LIB)
++verifyhost: verifyhost.o
+ 	$(CXX) -o verifyhost verifyhost.o $(LDFLAGS) $(LIBS)
  
  .SUFFIXES:
-@@ -82,7 +82,7 @@ regaddralias: regaddralias.o $(I2PD_LIB)
+@@ -88,7 +88,7 @@ verifyhost: verifyhost.o $(I2PD_LIB)
  $(I2PD_LIB):
  	$(MAKE) -C $(I2PD_PATH) mk_obj_dir $(I2PD_LIB)
  
@@ -74,9 +82,9 @@
  	$(CXX) -o $@ -c $(CXXFLAGS) $(INCFLAGS) $<
  
  count:
-@@ -97,7 +97,7 @@ clean-obj:
+@@ -103,7 +103,7 @@ clean-obj:
  clean-bin:
- 	rm -f b33address famtool i2pbase64 keygen keyinfo offlinekeys regaddr regaddr_3ld regaddralias routerinfo vain
+ 	rm -f b33address famtool i2pbase64 keygen keyinfo offlinekeys regaddr regaddr_3ld regaddralias routerinfo vain x25519 verifyhost
  
 -clean: clean-i2pd clean-obj clean-bin
 +clean: clean-obj clean-bin
