@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 pkgname=perl-chemistry-mol
-pkgver=0.37
+pkgver=0.38
 pkgrel=1
 pkgdesc="Molecule object toolkit"
 _dist="Chemistry-Mol"
@@ -10,8 +10,8 @@ url="https://metacpan.org/pod/Chemistry::Mol"
 license=(GPL PerlArtistic)
 depends=(perl 'perl-math-vectorreal>=1.0' 'perl-scalar-util>=1.01' perl-test-simple perl-text-balanced)
 options=(purge !emptydirs)
-source=("https://cpan.metacpan.org/authors/id/I/IT/ITUB/${_dist}-${pkgver}.tar.gz")
-md5sums=('b3826c67e866a99169f3cfec1205642a')
+source=("https://cpan.metacpan.org/authors/id/M/ME/MERKYS/${_dist}-${pkgver}.tar.gz")
+sha256sums=('8d529a1b3ea5100d8ab13406c69b81d83d8ce6ff21745e94eadbafb9e3e8bc73')
 
 build() {
     cd "${srcdir}/${_dist}-${pkgver}"

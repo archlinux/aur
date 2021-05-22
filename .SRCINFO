@@ -1,6 +1,6 @@
 pkgbase = perl-chemistry-mol
 	pkgdesc = Molecule object toolkit
-	pkgver = 0.37
+	pkgver = 0.38
 	pkgrel = 1
 	url = https://metacpan.org/pod/Chemistry::Mol
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = perl-chemistry-mol
 	depends = perl-text-balanced
 	options = purge
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/I/IT/ITUB/Chemistry-Mol-0.37.tar.gz
-	md5sums = b3826c67e866a99169f3cfec1205642a
+	source = https://cpan.metacpan.org/authors/id/M/ME/MERKYS/Chemistry-Mol-0.38.tar.gz
+	sha256sums = 8d529a1b3ea5100d8ab13406c69b81d83d8ce6ff21745e94eadbafb9e3e8bc73
 
 pkgname = perl-chemistry-mol
 
