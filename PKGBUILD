@@ -81,15 +81,12 @@ package()
     mkdir -p "${pkgdir}"/usr/share/licenses/"${_pkgname}"/
     mkdir -p "${pkgdir}"/usr/share/webapps/
 
-    # Modify run.sh to state the absolute path of the .csproj.
-    echo -e "#!/bin/bash
-dotnet run --no-launch-profile --no-build -c Release -p \"/usr/share/webapps/\"${_pkgname}\"/BTCPayServer/BTCPayServer.csproj\" -- \"\${@}\"" > "${srcdir}"/"${_pkgname}"/run.sh
-
     # Install the software.
     cp -r "${srcdir}"/"${_pkgname}"/ "${pkgdir}"/usr/share/webapps/
 
     ## Create an executable.
-    ln -sfrT "${pkgdir}"/usr/share/webapps/"${_pkgname}"/run.sh "${pkgdir}"/usr/bin/"${_pkgname}"
+    echo -e "#!/bin/bash
+dotnet run --no-launch-profile --no-build -c Release -p \"/usr/share/webapps/\"${_pkgname}\"/BTCPayServer/BTCPayServer.csproj\" -- \"\${@}\"" > "${pkgdir}"/usr/bin/"${_pkgname}"
     chmod 755 "${pkgdir}"/usr/bin/"${_pkgname}"
 
     # Install the documentation.
