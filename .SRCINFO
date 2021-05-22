@@ -1,6 +1,6 @@
 pkgbase = autobright
 	pkgdesc = Bash script to adjust screen brightness based on ambient lighting
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/AquaUseful/autobright
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = autobright
 	depends = ffmpeg
 	depends = bash
 	depends = bc
-	source = autobright-2.1.0-1.tar.gz::https://github.com/AquaUseful/autobright/archive/refs/tags/2.1.0.tar.gz
-	sha256sums = 7c3d28fae140f24c0878d0775fa3ca10481de25ff031b19e913d290d8b3de012
+	source = autobright-2.2.0-1.tar.gz::https://github.com/AquaUseful/autobright/archive/refs/tags/2.2.0.tar.gz
+	sha256sums = f34953e665d5087c6ec75119fa186f995ab444d23edc7ab22905baeb2cbf7837
 
 pkgname = autobright
 
