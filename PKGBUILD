@@ -3,9 +3,9 @@
 
 pkgname=cppdb
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="CppDB is an SQL connectivity library that is designed to provide platform and Database independent connectivity API."
-arch=('i686' 'x86_64')
+arch=('i486' 'i686' 'pentium4' 'x86_64')
 url="http://cppcms.com/sql/cppdb/"
 license=('custom:Boost Software License' 'MIT')
 depends=()
