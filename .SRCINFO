@@ -1,0 +1,20 @@
+pkgbase = python-benchit
+	pkgdesc = Benchmarking tools for Python
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/droyed/benchit
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pandas
+	depends = python-numpy
+	depends = python-py-cpuinfo
+	depends = python-tqdm
+	depends = python-psutil
+	depends = python-matplotlib
+	source = https://github.com/droyed/benchit/archive/refs/tags/0.0.5.tar.gz
+	sha256sums = d8f6ad119b1c106b24957e440ddd87e1f8bdb2a09d817d6b4eca2bfc962c618a
+
+pkgname = python-benchit
+
