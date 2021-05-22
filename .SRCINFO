@@ -1,0 +1,14 @@
+pkgbase = otf-accanthis
+	pkgdesc = A serif font
+	pkgver = 1.008
+	pkgrel = 1
+	url = http://arkandis.tuxfamily.org/adffonts.html
+	arch = any
+	groups = otf-adf-fonts
+	license = custom:GPL with font exception
+	conflicts = otf-adf
+	source = http://arkandis.tuxfamily.org/fonts/Accanthis-Std-20101124.zip
+	sha256sums = 49ba4bfe704187169c5782b0f309865d1fe63b1328090326e70f11ff3f25821d
+
+pkgname = otf-accanthis
+
