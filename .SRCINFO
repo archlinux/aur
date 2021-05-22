@@ -1,0 +1,14 @@
+pkgbase = otf-solothurn
+	pkgdesc = A modern sans-serif font
+	pkgver = 1.004
+	pkgrel = 1
+	url = http://arkandis.tuxfamily.org/adffonts.html
+	arch = any
+	groups = otf-adf-fonts
+	license = custom:GPL with font exception
+	conflicts = otf-adf
+	source = http://arkandis.tuxfamily.org/fonts/Solothurn-Std-20111228.zip
+	sha256sums = 10bd7c07d78b9f37f4ef43f703541b9383fe0acfd636a763e9c20c0c559bbb4f
+
+pkgname = otf-solothurn
+
