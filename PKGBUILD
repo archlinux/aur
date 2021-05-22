@@ -2,13 +2,13 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=rdfm-git
-pkgver=0.1.1.r2.g0ee4334
+pkgver=0.1.3.r1.g7b2a29f
 pkgrel=1
 pkgdesc="The Rusty DotFiles Manager (git)"
 arch=('x86_64')
 url="https://github.com/Wafelack/rdfm"
 license=('AGPL3')
-depends=('gcc-libs' 'zlib' 'openssl')
+depends=('gcc-libs')
 makedepends=('rust' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
