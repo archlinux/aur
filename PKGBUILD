@@ -1,6 +1,6 @@
 # Maintainer: aulonsal <aulonsal at gmail dot com>
 pkgname=pyroscope-bin
-pkgver=0.0.31
+pkgver=0.0.32
 pkgrel=1
 pkgdesc="Continuous profiling platform"
 arch=(x86_64)
@@ -16,7 +16,7 @@ source=(
 	"${pkgname%-bin}.sysusers"
 	"${pkgname%-bin}.tmpfiles"
 )
-b2sums=('443f8cf49800742c94632abd4b5a45709fb3b23c98f3eb5453f4a83cf7f22297aae8d42865c851911c2e34360a7c75792da1229ecf382d5c62c83cc141c29692'
+b2sums=('259d7b6639cf9f49aae942eae1fd251366299e9e6aaa4707fe2eeb3c4442e1299a6e3801fde325ebee144010c5aca05d5eb01cf44e14212f06c5ba3632da83da'
         '5ec13ef7bc1e15b9487b036214176fb7c3f7d38134f47b312946e35aa4fdff4acd2a8d3b07abbc6d8809413ef86b5504fd2cbcfaf7e2a346203e4f739ace106a'
         '6814b0d17b0e28903297ea09220f27125d6b9d185ba51d09042621526728c2794ca88dafc02dd42101cf461dd71c993f7c6145a70dbe7bd770ffae0dca017e7f'
         '948dc828f1b2e1068b45d298a073b4c0df4bb18138832c4d0cbcbd33d2f0b995fd37fa0b4ab5f057f30ea01f7b8c16652fc4c469e9262e9e1fde7c30ead62671'
