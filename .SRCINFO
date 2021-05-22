@@ -1,0 +1,14 @@
+pkgbase = otf-irianis
+	pkgdesc = A serif font
+	pkgver = 1.006
+	pkgrel = 1
+	url = http://arkandis.tuxfamily.org/adffonts.html
+	arch = any
+	groups = otf-adf-fonts
+	license = custom:GPL with font exception
+	conflicts = otf-adf
+	source = http://arkandis.tuxfamily.org/fonts/Irianis-Std-20100729.zip
+	sha256sums = 5a252bf7fbfca67aa421798f2fbe48c2f5d46208330633499553b308ef6d3bf2
+
+pkgname = otf-irianis
+
