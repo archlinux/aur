@@ -8,11 +8,11 @@ pkgver=v0.6.0.r6.g6288a36
 pkgrel=1
 pkgdesc="Simple randr daemon that reacts to monitor hotplug events" 
 arch=('i686' 'x86_64')
-url="https://github.com/jceb/srandrd/"
+url="https://github.com/jceb/srandrd"
 license=('custom:MIT/X')
 depends=('libxrandr')
 provides=('srandrd')
-source=("${pkgname%-git}::git+${url}#branch=master")
+source=("${pkgname%-git}::git+${url}.git#branch=master")
 md5sums=('SKIP')
 
 pkgver() {
