@@ -1,17 +1,24 @@
-# Maintainer: Miguel de Val-Borro <miguel dot deval at gmail dot com>
+# Creator: Miguel de Val-Borro <miguel dot deval at gmail dot com>
+# Maintainer: Médéric boquien <mboquien@free.fr>
 
 pkgname=python-astroquery
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Set of tools for querying astronomical web forms and databases"
 arch=('x86_64')
 url="http://astroquery.readthedocs.org/en/latest/"
 license=('BSD')
-depends=('python>=3.4' 'python-numpy>=1.9' 'python-astropy>=1.0' 'python-requests' 'python-keyring' 'python-beautifulsoup4' 'python-html5lib')
+depends=('python>=3.6' 'python-numpy>=1.14' 'python-astropy>=3.1.2' 'python-requests' 'python-keyring' 'python-beautifulsoup4' 'python-html5lib')
+optdepends=('python-aplpy: required for the full functionality of the alma module'
+            'python-astropy-healpix: required for the full functionality of the cds module'
+            'python-pyregion: required for the full functionality of the alma module'
+            'python-regions: required for the full functionality of the cds module'
+            'python-boto3: required for the full functionality of the mast module'
+)
 conflicts=()
 makedepends=('cython')
 source=("https://files.pythonhosted.org/packages/source/a/astroquery/astroquery-${pkgver}.tar.gz")
-md5sums=('838d4ae08b19fb0d8d408fbb65d8d505')
+sha512sums=('2e9ff23d4b21e8b5c8bc6fb089a76834b4d45d13114b4760ccd9eb4c9a0a8e2098b92dcb59b48a2fdb21e7cb7ea8a558e34f9cc72bef1e181a0feca8f828d7c2')
 
 build() {
   cd ${srcdir}/astroquery-${pkgver}
