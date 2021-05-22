@@ -1,13 +1,13 @@
 # Maintainer: Alban Fichet <alban.fichet@gmx.fr>
 pkgname=openexr-viewer
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple viewer for OpenEXR files with detailed metadata display"
 arch=('any')
 url="https://github.com/afichet/openexr-viewer"
 license=('BSD')
 groups=()
-depends=('openexr>3.0.1' 'imath>3.0.1' 'qt5-base' 'qt5-svg')
+depends=('openexr>3.0.1' 'qt5-base' 'qt5-svg')
 makedepends=('git' 'cmake')
 checkdepends=()
 provides=($pkgname=$pkgver)
