@@ -1,13 +1,13 @@
 pkgbase = r-genomicalignments
 	pkgdesc = Representation and manipulation of short genomic alignments
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/GenomicAlignments.html
 	arch = i686
 	arch = x86_64
 	license = Artistic-2.0
-	depends = r>=3.5.0
-	depends = r-biocgenerics>=0.15.3
+	depends = r>=4.0.0
+	depends = r-biocgenerics>=0.37.0
 	depends = r-s4vectors>=0.27.12
 	depends = r-iranges>=2.23.9
 	depends = r-genomeinfodb>=1.13.1
@@ -30,8 +30,8 @@ pkgbase = r-genomicalignments
 	optdepends = r-edger
 	optdepends = r-runit
 	optdepends = r-biocstyle
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomicAlignments_1.26.0.tar.gz
-	sha256sums = 794180a9b935cd4c01c61c1cc7232d9767daeeffa5a4ae4857da6aa34dbf25e1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomicAlignments_1.28.0.tar.gz
+	sha256sums = e242de78aab5ba1d8f1d4f72801b5915cdaef544f017305fb709c12941083803
 
 pkgname = r-genomicalignments
 
