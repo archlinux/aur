@@ -1,0 +1,14 @@
+pkgbase = otf-baskervald
+	pkgdesc = A serif font
+	pkgver = 1.020
+	pkgrel = 1
+	url = http://arkandis.tuxfamily.org/adffonts.html
+	arch = any
+	groups = otf-adf-fonts
+	license = custom:GPL with font exception
+	conflicts = otf-adf
+	source = http://arkandis.tuxfamily.org/fonts/Baskervald-Std-20150322.zip
+	sha256sums = 5396f25cce3ea36b5ed2e3252a58858da95624361a4ba1fe53876a5f531a4724
+
+pkgname = otf-baskervald
+
