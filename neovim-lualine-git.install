@@ -1,0 +1,12 @@
+post_install()  {
+  printf "
+  :: This plugin must be initialized using either 'require('lualine').setup()'
+     or 'lua require('lualine').setup()' if you use an init.vim
+\n"
+}
+
+post_remove() {
+  printf "
+  :: Please remember to remove your Lualine setup to prevent any errors
+\n"
+}

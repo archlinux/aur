@@ -2,7 +2,7 @@
 
 pkgname=neovim-lualine-git
 pkgver=r212.0411f1c
-pkgrel=1
+pkgrel=2
 pkgdesc="A blazing fast and easy to configure neovim statusline plugin"
 arch=('any')
 url="https://github.com/hoob3rt/lualine.nvim"
@@ -13,6 +13,7 @@ makedepends=('git')
 # checkdepends=('luacheck')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'vim-airline' 'vim-lightline')
+install="$pkgname.install"
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
