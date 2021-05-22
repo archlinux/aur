@@ -9,9 +9,9 @@ url="http://slirp.sourceforge.net/"
 license=('custom')
 options=(!strip)
 source=("${pkgname}-${pkgver}::https://deb.debian.org/debian/pool/main/s/slirp/slirp_1.0.17.orig.tar.gz"
-        "debian::https://deb.debian.org/debian/pool/main/s/slirp/slirp_1.0.17-10.debian.tar.xz")
+        "debian::https://deb.debian.org/debian/pool/main/s/slirp/slirp_1.0.17-11.debian.tar.xz")
 sha256sums=('afe59cd298075aa1b9eba5a5f7cf720597372b8b81657de529b2cd35a2a2bc2e'
-            'b48acd79fed656e67890318014ac9867b741c4927fe32be3bf4bcd7997046abc')
+            '87cdecb2d9f77ac9ac851df1cab4a03abf370db730128072d321052d286620a7')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
