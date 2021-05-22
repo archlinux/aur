@@ -10,7 +10,7 @@ license=("LGPL3")
 depends=("python-cryptography" "python-six" "python-deprecated")
 makedepends=("python-setuptools")
 source=("https://github.com/latchset/jwcrypto/releases/download/v0.8.0/jwcrypto-0.8.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('b7fee2635bbefdf145399392f5be26ad54161c8271c66b5fe107b4b452f06c24')
 
 build() {
     cd "jwcrypto-0.8"
