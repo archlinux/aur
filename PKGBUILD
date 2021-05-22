@@ -2,7 +2,7 @@
 
 _pkgname=termgraph
 pkgname="$_pkgname-git"
-pkgver=0.2.0.r4.gc40b864
+pkgver=0.4.2.r15.gb10150d
 pkgrel=1
 pkgdesc="A python command-line tool which draws basic graphs in the terminal."
 arch=('x86_64')
