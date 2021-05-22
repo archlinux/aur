@@ -1,0 +1,31 @@
+pkgbase = r-viridis
+	pkgdesc = Tools for Spatial Data
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=viridis
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = r>=2.10
+	depends = r-viridislite>=0.4.0
+	depends = r-ggplot2>=1.0.1
+	depends = r-gridextra
+	optdepends = r-hexbin
+	optdepends = r-scales
+	optdepends = r-knitr
+	optdepends = r-dichromat
+	optdepends = r-colorspace
+	optdepends = r-rastervis
+	optdepends = r-httr
+	optdepends = r-mapproj
+	optdepends = r-vdiffr
+	optdepends = r-svglite
+	optdepends = r-testthat
+	optdepends = r-covr
+	optdepends = r-rmarkdown
+	optdepends = r-rgdal
+	source = https://cran.r-project.org/src/contrib/viridis_0.6.1.tar.gz
+	sha256sums = 48044c8aa7f24a349a10a853f2dc1e60e363f0456567d82dbb3e4ae6cde8cabb
+
+pkgname = r-viridis
+
