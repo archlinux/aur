@@ -13,11 +13,20 @@ arch=('x86_64')
 url='https://flavio.tordini.org/musique'
 _giturl='https://github.com/flaviotordini'
 license=('GPL3')
-depends=('qt5-base' 'taglib' 'mpv')
+depends=('qt5-declarative' 'taglib' 'mpv')
+makedepends=('git' 'qt5-tools')
 optdepends=('finetune')
-makedepends=('git' 'qt5-tools' 'qt5-declarative')
-source=("git+${_giturl}/musique.git#tag=${pkgver}" "git+${_giturl}/http.git" "git+${_giturl}/idle.git" "git+${_giturl}/media.git")
+source=("git+${_giturl}/musique.git#tag=${pkgver}"
+        "git+${_giturl}/http.git"
+        "git+${_giturl}/idle.git"
+        "git+${_giturl}/media.git"
+        "git+${_giturl}/updater.git"
+        "git+${_giturl}/js.git"
+        "git+${_giturl}/sharedcache.git")
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -28,6 +37,9 @@ prepare() {
   git config submodule.lib/http.url "$srcdir/http"
   git config submodule.lib/idle.url "$srcdir/idle"
   git config submodule.lib/media.url "$srcdir/media"
+  git config submodule.lib/updater.url "$srcdir/updater"
+  git config submodule.lib/js.url "$srcdir/js"
+  git config submodule.lib/sharedcache.url "$srcdir/sharedcache"
   git submodule update
 }
 
