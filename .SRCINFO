@@ -1,0 +1,14 @@
+pkgbase = otf-neogothis
+	pkgdesc = A serif font
+	pkgver = 1.006
+	pkgrel = 1
+	url = http://arkandis.tuxfamily.org/adffonts.html
+	arch = any
+	groups = otf-adf-fonts
+	license = custom:GPL with font exception
+	conflicts = otf-adf
+	source = http://arkandis.tuxfamily.org/fonts/NeoGothis-Std-20150405.tar.gz
+	sha256sums = 5d34da283bf348862fc8094871097789287244b20b5d673553a659a0a84ca81e
+
+pkgname = otf-neogothis
+
