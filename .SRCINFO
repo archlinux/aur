@@ -1,20 +1,23 @@
 pkgbase = python-hid
 	pkgdesc = Python hidapi bindings in ctypes (aka pyhidapi)
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/apmorton/pyhidapi
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
+	depends = hidapi
 	source = https://files.pythonhosted.org/packages/source/h/hid/hid-1.0.4.tar.gz
 	md5sums = d02bce9b9eee3fbece8b9f4cafd34973
 
 pkgname = python-hid
+	depends = hidapi
 	depends = python
 	conflicts = python-hidapi
 
 pkgname = python2-hid
+	depends = hidapi
 	depends = python2
 	conflicts = python2-hidapi
 

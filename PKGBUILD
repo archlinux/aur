@@ -4,11 +4,12 @@ pkgbase=python-hid
 pkgname=(python-hid python2-hid)
 _name=${pkgbase#python-}
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Python hidapi bindings in ctypes (aka pyhidapi)"
 arch=(any)
 url="https://github.com/apmorton/pyhidapi"
 license=(MIT)
+depends=(hidapi)
 makedepends=(python-setuptools python2-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 md5sums=('d02bce9b9eee3fbece8b9f4cafd34973')
@@ -27,7 +28,7 @@ build() {
 }
 
 package_python-hid() {
-  depends=(python)
+  depends+=(python)
   conflicts=(python-hidapi)
 
   cd "$srcdir"/$_name-$pkgver
@@ -35,7 +36,7 @@ package_python-hid() {
 }
 
 package_python2-hid() {
-  depends=(python2)
+  depends+=(python2)
   conflicts=(python2-hidapi)
 
   cd "$srcdir"/$_name-$pkgver-py2
