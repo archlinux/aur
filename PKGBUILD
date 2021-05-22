@@ -10,7 +10,7 @@ arch=('any')
 conflicts=('ttf-adf')
 url="http://arkandis.tuxfamily.org/adffonts.html"
 license=('custom:GPL with font exception')
-groups=('adf-fonts')
+groups=('ttf-adf-fonts')
 source=(
 http://arkandis.tuxfamily.org/fonts/${_fontname}.zip
 )
