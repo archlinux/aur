@@ -1,8 +1,8 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 _basename=jicofo
-_version=1.0+751
-_url=https://download.jitsi.org/unstable/jicofo_1.0-751-1_all.deb
+_version=1.0+754
+_url=https://download.jitsi.org/unstable/jicofo_1.0-754-1_all.deb
 
 _pkgbase=${_basename}-nightly
 pkgname=${_pkgbase}-bin
@@ -65,7 +65,7 @@ package() {
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
-sha256sums=('a695cb3fa54719ef0afe0f4bdda631fcfc97ca56d04b9dc7a30b210fbb57e165'
+sha256sums=('99a0f73043690b7767f56388ac5a5fa941c0a0a4541a1da443200991c03a311f'
             '63fa0d23ce6b2ef388832419a3eda0d172f5869e1845ad25d5874bf5607981b6'
             'f295f5f8ee13edd019defc037c60e04c6ea2d30e69cc4a896c010b8570f5efab'
             '8de1e1ac3b20795a69e5932f52108e187769cc6e2c19833b4baf55518c3b9933'
