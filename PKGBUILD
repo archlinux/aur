@@ -14,7 +14,7 @@ pkgname=(
 epoch=2
 pkgver="1.12.1"
 _pkgver=${pkgver/\~/-}
-pkgrel=3
+pkgrel=4
 pkgdesc="Lightweight virtual machines for containers (binary version)"
 arch=(x86_64)
 url="https://katacontainers.io"
@@ -29,7 +29,7 @@ package_kata1-runtime-bin() {
   depends=(
     qemu-headless
     kata1-proxy-bin kata1-shim-bin
-    kata1-containers-image-bin linux-kata1-bin
+    kata1-containers-image-bin linux-kata-bin
   )
   optdepends=(
     kata1-ksm-throttler
