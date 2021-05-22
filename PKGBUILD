@@ -21,7 +21,7 @@ options=('!strip' '!emptydirs')
 replaces=('screen-desktop-bin')
 conflicts=('screen-desktop-bin')
 source=("https://download.pop.com/desktop-app/linux/${pkgver}/pop_${pkgver}_amd64.deb")
-sha512sums=('1bfd5f53bc00257cc42234bfeae9b8ee3dcd2694c100287d66ca3b8f4e5b5cc4f5c6418d7b35c8a404aaf5fe33efd53bfb0760a8e98af6abd72016ed1a657513')
+sha512sums=('87304df933fa6f529e0e8e1457c022ffda8642c9262f81d995be2036b8c767ac1bb29a76d548f9a76e0e54ea83c9be1c42dcc42c30e6ad5e729961c0a5294589')
 
 package(){
     mkdir -p "${pkgdir}/opt/${pkgname}"
