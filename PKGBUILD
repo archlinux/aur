@@ -2,26 +2,26 @@
 
 pkgname=shutter-git
 _pkgname=shutter
-pkgver=r1449.9c086723
-pkgrel=2
+pkgver=r1548.85dc91e8
+pkgrel=1
 pkgdesc="A featureful screenshot tool, git version without gnome-perl dependency"
 arch=('any')
 url="https://shutter-project.org/"
 license=('GPL3')
 conflicts=('shutter')
-depends=(xdg-utils imagemagick procps librsvg gtk2-perl desktop-file-utils gnomecanvas-perl
-         perl-{glib-object-introspection,gnome2-wnck,gtk2-{imageview,unique},number-bytes-human,x11-protocol}
+depends=(xdg-utils imagemagick procps librsvg desktop-file-utils
+         perl-{glib-object-introspection,number-bytes-human,x11-protocol}
          perl-{proc-{simple,processtable},net-dbus}
          perl-{sort-naturally,json,json-maybexs,xml-simple,www-mechanize,locale-gettext}
-         perl-{file-{which,basedir,copy-recursive},xml-simple})
+         perl-{file-{which,basedir,copy-recursive},xml-simple}
+	 perl-carp-always perl-gtk3 perl-gtk3-imageview-shutter perl-readonly perl-goocanvas2
+	 perl-goocanvas2-cairotypes libwnck3)
 optdepends=('gnome-web-photo: web screenshot support'
 		'perl-image-exiftool: read and write EXIF data'
 		'nautilus-sendto: send screenshots via mail'
-		'perl-goo-canvas: editing screenshots'
-		'perl-gtk2-appindicator: AppIndicators support'
-		'perl-path-class: Imgur and Dropbox upload support'
-		'perl-lwp-protocol-https: Imgur and Dropbox upload support'
-		'perl-net-oauth: Imgur and Dropbox upload support'
+		'perl-path-class: Imgur upload support'
+		'perl-lwp-protocol-https: Imgur upload support'
+		'perl-net-oauth: Imgur upload support'
 		'bc: 3D Rotate and 3D Reflection plugins support'
 		'perl-webservice-gyazo-b: Gyazo upload support')
 source=('shutter::git+https://github.com/shutter-project/shutter.git')
