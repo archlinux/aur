@@ -1,0 +1,16 @@
+pkgbase = minetest-minecraftnt-git
+	pkgdesc = An attempt to recreate Minecraft inf-20100630-2, retroactively referred to as Alpha 1.0.0, in Minetest.
+	pkgver = 100.b07d8e4
+	pkgrel = 1
+	url = https://github.com/minecraftnt-minetest/minecraftnt
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = python
+	makedepends = python-requests
+	options = !strip
+	source = minecraftnt::git+https://github.com/minecraftnt-minetest/minecraftnt
+	md5sums = SKIP
+
+pkgname = minetest-minecraftnt-git
+
