@@ -1,15 +1,15 @@
 pkgbase = dotter-rs
 	pkgdesc = A dotfile manager and templater written in Rust
-	pkgver = 0.12.3
+	pkgver = 0.12.4
 	pkgrel = 1
 	url = https://github.com/SuperCuber/dotter
 	arch = x86_64
 	license = Unlicense
 	makedepends = rust
 	depends = gcc-libs
-	depends = openssl
 	conflicts = dotter
-	source = dotter-rs-0.12.3.tar.gz::https://github.com/SuperCuber/dotter/archive/v0.12.3.tar.gz
-	sha512sums = 5b6d03415ac20fc832ae35681a3a890df57bd908765f3b4ec70946216655ac0edc411d7d14f31f003e932aeb7cdedd7d756c307e91c119c8c95412d2f6af37e6
+	source = dotter-rs-0.12.4.tar.gz::https://github.com/SuperCuber/dotter/archive/v0.12.4.tar.gz
+	sha512sums = 7907e4ccdb43e592739b0e270cab2421b6a53afe2836905e112c6bc200371d85a8f65c96502890c858507d029a31b06a5fc535ebcd1ad498b1a53f9cb944c087
 
 pkgname = dotter-rs
+
