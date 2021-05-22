@@ -1,7 +1,7 @@
 pkgbase = python-cocotb
 	pkgdesc = Coroutine based cosimulation library for writing VHDL and Verilog testbenches in Python
 	pkgver = 1.5
-	pkgrel = 0
+	pkgrel = 2
 	url = http://github.com/cocotb/cocotb/
 	arch = any
 	license = BSD
@@ -17,4 +17,3 @@ pkgbase = python-cocotb
 	md5sums = SKIP
 
 pkgname = python-cocotb
-
