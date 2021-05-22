@@ -14,7 +14,7 @@ pkgname=(
 epoch=2
 pkgver="1.12.1"
 _pkgver=${pkgver/\~/-}
-pkgrel=5
+pkgrel=6
 pkgdesc="Lightweight virtual machines for containers (binary version)"
 arch=(x86_64)
 url="https://katacontainers.io"
@@ -26,15 +26,14 @@ sha512sums=(4c81be66e2b310ef767f0c90b548f85f89f5521be9fd53c50a95e81750dfbff66659
 b2sums=(902dd17f7bd4d955155c7d0f377905e15d1e2e02b358acb511dbccd83f950e91989f3dbb36cb30866a950ed57127d50e8fa2da21ffefd7f95a9f98e3fc7e4da4)
 
 package_kata1-runtime-bin() {
-  depends=(
-    qemu-headless
-    kata1-proxy-bin kata1-shim-bin
-  )
+  depends=(kata1-proxy-bin kata1-shim-bin)
   optdepends=(
-    kata1-containers-image linux-kata
-    kata1-ksm-throttler
-    'cloud-hypervisor'  # testing with 15.0 worked, current qemu works, too
-    'firecracker<0.22.0'
+    'kata1-containers-image: Disk and initrd images for booting Kata VMs'
+    'kata1-ksm-throttler'
+    'linux-kata: Kernel images for booting Kata VMs'
+    'qemu-headless: QEMU-hypervised Kata VMs'
+    'cloud-hypervisor: Cloud-Hypervisor-based Kata VMs'  # testing with 15.0 worked, current qemu works, too
+    'firecracker<0.22.0: Firecracker-based Kata VMs'
   )
   conflicts=('kata1-runtime' 'kata2-runtime' 'kata-runtime')
   provides=('kata1-runtime' 'kata-runtime')
