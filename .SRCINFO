@@ -1,7 +1,7 @@
 pkgbase = quickmedia-git
 	pkgdesc = A dmenu-inspired native client for web services. Supports youtube, spotify (podcasts), soundcloud, nyaa.si, 4chan, matrix and several manga sites.
 	pkgver = r739.58f8ddf
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.dec05eba.com/QuickMedia
 	arch = x86_64
 	license = GPL3
@@ -16,7 +16,6 @@ pkgbase = quickmedia-git
 	depends = libglvnd
 	depends = libxrandr
 	depends = noto-fonts
-	depends = noto-fonts-cjk
 	optdepends = libnotify: For showing notifications
 	optdepends = automedia: For automatically downloading new chapters of tracked manga
 	optdepends = waifu2x-ncnn-vulkan: For upscaling manga pages when using the --upscale-images option
