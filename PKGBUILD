@@ -24,7 +24,7 @@ check() {
 package() {
   cd $pkgname-$pkgver
   install -Dm755 ./spicetify "$pkgdir"/usr/share/$pkgname/spicetify
-  cp -r ./Themes ./Extensions ./CustomApps ./jsHelper ./globals.d.ts "$pkgdir"/usr/share/$pkgname
+  cp -r ./Themes ./Extensions ./CustomApps ./jsHelper ./globals.d.ts ./css-map.json "$pkgdir"/usr/share/$pkgname
 
   rm -f ./shortcut
   echo "#!/bin/sh
