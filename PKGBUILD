@@ -3,7 +3,7 @@
 
 pkgname=dotter-rs-git
 _pkgname=dotter
-pkgver=0.12.3.r5.gfa016c9
+pkgver=0.12.4.r0.g2965269
 pkgrel=1
 pkgdesc="A dotfile manager and templater written in Rust (git)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/SuperCuber/dotter"
 license=('Unlicense')
 makedepends=('rust' 'git')
 conflicts=("$_pkgname" "${pkgname%-git}")
-depends=('gcc-libs' 'openssl')
+depends=('gcc-libs')
 provides=("${pkgname%-git}")
 source=("git+${url}")
 sha512sums=('SKIP')
@@ -23,12 +23,12 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  cargo build --release --locked --features handlebars_misc_helpers
+  cargo build --release --locked
 }
 
 check() {
   cd "$_pkgname"
-  cargo test --release --locked --features handlebars_misc_helpers
+  cargo test --release --locked
 }
 
 package() {
