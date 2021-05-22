@@ -1,0 +1,25 @@
+pkgbase = yarock
+	pkgdesc = Modern looking music player designed to provide an easy and pretty music browser based on cover art
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://seb-apps.github.io/yarock/
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = mpv
+	makedepends = ninja
+	makedepends = phonon-qt5
+	makedepends = qt5-tools
+	makedepends = vlc
+	depends = hicolor-icon-theme
+	depends = htmlcxx
+	depends = taglib
+	depends = qt5-base
+	optdepends = mpv: Audio backend
+	optdepends = phonon-qt5: Audio backend
+	optdepends = vlc: Audio backend
+	source = https://launchpad.net/yarock/1.x/1.4.0/+download/Yarock_1.4.0_Sources.tar.gz
+	sha256sums = fa55369a4d33d8d30828b6c4deb00e3bef15c9fdf52ed43e93d41f2297ee53f9
+
+pkgname = yarock
+
