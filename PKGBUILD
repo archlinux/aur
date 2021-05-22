@@ -1,7 +1,7 @@
 pkgname=youtube-git
 _pkgname=Youtube-git
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Unnofficial Youtube desktop application"
 arch=('any')
 url="https://gitlab.com/youtube-desktop/application"
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/application"
-    npm --cache "$srcdir/npm-cache" i electron@12.0.6 electroin-context-menu@2.5.2 electron-packager
+    npm --cache "$srcdir/npm-cache" i electron@12.0.9 electron-context-menu@3.1.0 electron-packager
     ./node_modules/.bin/electron-packager .
     for dir in Youtube-linux-*/ ; do mv "${dir}" "Youtube" ;done
 }
