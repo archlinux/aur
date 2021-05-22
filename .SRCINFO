@@ -15,9 +15,9 @@ pkgbase = yarock
 	depends = htmlcxx
 	depends = taglib
 	depends = qt5-base
-	optdepends = mpv: Audio backend
-	optdepends = phonon-qt5: Audio backend
-	optdepends = vlc: Audio backend
+	optdepends = mpv: Alternative audio backend
+	optdepends = phonon-qt5: Default audio backend
+	optdepends = vlc: Alternative audio backend
 	source = https://launchpad.net/yarock/1.x/1.4.0/+download/Yarock_1.4.0_Sources.tar.gz
 	sha256sums = fa55369a4d33d8d30828b6c4deb00e3bef15c9fdf52ed43e93d41f2297ee53f9
 

@@ -10,9 +10,9 @@ url='http://seb-apps.github.io/yarock/'
 license=('GPL3')
 depends=('hicolor-icon-theme' 'htmlcxx' 'taglib' 'qt5-base')
 makedepends=('cmake' 'mpv' 'ninja' 'phonon-qt5' 'qt5-tools' 'vlc')
-optdepends=('mpv: Audio backend'
-            'phonon-qt5: Audio backend'
-            'vlc: Audio backend')
+optdepends=('mpv: Alternative audio backend'
+            'phonon-qt5: Default audio backend'
+            'vlc: Alternative audio backend')
 source=("https://launchpad.net/yarock/1.x/${pkgver}/+download/Yarock_${pkgver}_Sources.tar.gz")
 sha256sums=('fa55369a4d33d8d30828b6c4deb00e3bef15c9fdf52ed43e93d41f2297ee53f9')
 
