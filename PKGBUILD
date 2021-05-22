@@ -2,7 +2,7 @@
 # Maintainer: Eric Anderson <ejona86@gmail.com>
 
 pkgname=printrun
-pkgver=2.0.0rc7
+pkgver=2.0.0rc8
 pkgrel=1
 epoch=1
 _projectname='Printrun'
@@ -19,9 +19,9 @@ optdepends=(
   'python-cairosvg: to use Projector feature'
   'python-dbus: to inhibit sleep when printing'
   'python-psutil: to increase process priority when printing')
-makedepends=('cython')
+makedepends=('cython' 'python-setuptools')
 source=("https://github.com/kliment/${_projectname}/archive/${_gittag}.tar.gz")
-sha256sums=('28df9e4427ff265dd534414d8ff08029471c58c4a94082d022e3c9336fca527b')
+sha256sums=('0f62b88ca6745aeb0d72197a767785cee963a321ea92275620d679b03d040196')
 
 build() {
   cd "${srcdir}/${_projectname}-${_gittag}"

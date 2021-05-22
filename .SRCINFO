@@ -1,6 +1,6 @@
 pkgbase = printrun
 	pkgdesc = Pronterface, Pronsole, and Printcore - Pure Python 3D printing host software and GUI
-	pkgver = 2.0.0rc7
+	pkgver = 2.0.0rc8
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/kliment/Printrun
@@ -8,6 +8,7 @@ pkgbase = printrun
 	arch = x86_64
 	license = GPL
 	makedepends = cython
+	makedepends = python-setuptools
 	depends = python-pyserial
 	depends = python-wxpython
 	depends = python-pyglet
@@ -19,8 +20,8 @@ pkgbase = printrun
 	optdepends = python-psutil: to increase process priority when printing
 	provides = printrun-git
 	conflicts = printrun-git
-	source = https://github.com/kliment/Printrun/archive/printrun-2.0.0rc7.tar.gz
-	sha256sums = 28df9e4427ff265dd534414d8ff08029471c58c4a94082d022e3c9336fca527b
+	source = https://github.com/kliment/Printrun/archive/printrun-2.0.0rc8.tar.gz
+	sha256sums = 0f62b88ca6745aeb0d72197a767785cee963a321ea92275620d679b03d040196
 
 pkgname = printrun
 
