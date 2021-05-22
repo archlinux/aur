@@ -1,6 +1,6 @@
 pkgbase = python-imagecodecs
 	pkgdesc = Image transformation, compression, and decompression codecs
-	pkgver = 2021.4.28
+	pkgver = 2021.5.20
 	pkgrel = 1
 	url = https://github.com/cgohlke/imagecodecs
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = python-imagecodecs
 	depends = blosc
 	depends = brotli
 	depends = brunsli
+	depends = cfitsio
 	depends = charls
 	depends = jxrlib
 	depends = lcms2
@@ -28,8 +29,8 @@ pkgbase = python-imagecodecs
 	depends = snappy
 	depends = zfp
 	depends = zopfli
-	source = imagecodecs-2021.4.28.tar.gz::https://github.com/cgohlke/imagecodecs/archive/v2021.4.28.tar.gz
-	sha256sums = c948aebfae459ad5c9e2e6b5dbf1996cb9630f5ebfd1f9dd81ef07a6bb7bbbad
+	source = imagecodecs-2021.5.20.tar.gz::https://github.com/cgohlke/imagecodecs/archive/v2021.5.20.tar.gz
+	sha256sums = 2fd34251a28602ec75ae605ee7b0ecb85a4340584bfd12ce668f84b96cf057d1
 
 pkgname = python-imagecodecs
 
