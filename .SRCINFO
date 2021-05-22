@@ -1,0 +1,26 @@
+pkgbase = perl-gtk3-imageview-shutter
+	pkgdesc = Image viewer widget for Gtk3, recent version with fixes required for Shutter
+	pkgver = 9
+	pkgrel = 1
+	url = https://metacpan.org/release/Gtk3-ImageView
+	arch = any
+	license = LGPL
+	checkdepends = perl-test-exception
+	checkdepends = perl-test-deep
+	checkdepends = perl-test-memory-cycle
+	checkdepends = perl-try-tiny
+	checkdepends = perl-readonly
+	checkdepends = perl-test-mockobject
+	checkdepends = perl-test-differences
+	checkdepends = perl-carp-always
+	checkdepends = xorg-server-xvfb
+	depends = perl-gtk3
+	depends = imagemagick
+	provides = perl-gtk3-imageview
+	conflicts = perl-gtk3-imageview
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/A/AS/ASOKOLOV/Gtk3-ImageView-9.tar.gz
+	sha512sums = 1a52c53a03b6f9dd6abc69dbb03a8dd80df77e266eb972cb2438bd25d49765b203a70e2dfee1ae3cfdd27b4d987f9573eef3e47968c80550771dd3edbcf831cc
+
+pkgname = perl-gtk3-imageview-shutter
+
