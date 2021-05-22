@@ -11,6 +11,7 @@ arch=('x86_64')
 url="https://katacontainers.io/"
 license=('GPL2')
 validpgpkeys=('647F28654894E3BD457199BE38DBBDC86092693E')
+makedepends=('bc')
 
 _kata_version="2.1.0"
 source=(

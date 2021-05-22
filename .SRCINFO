@@ -5,6 +5,7 @@ pkgbase = linux-kata
 	url = https://katacontainers.io/
 	arch = x86_64
 	license = GPL2
+	makedepends = bc
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.37.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.37.tar.sign
 	source = kata-containers-2.1.0.tar.gz::https://github.com/kata-containers/kata-containers/archive/2.1.0.tar.gz
