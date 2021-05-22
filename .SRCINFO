@@ -1,7 +1,7 @@
 pkgbase = eccodes
 	pkgdesc = ECMWF decoding library for GRIB, BUFR and GTS
-	pkgver = 2.21.0
-	pkgrel = 2
+	pkgver = 2.22.0
+	pkgrel = 1
 	url = https://software.ecmwf.int/wiki/display/ECC/ecCodes+Home
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = eccodes
 	depends = netcdf
 	conflicts = grib_api
 	conflicts = libbufr-ecmwf
-	source = http://software.ecmwf.int/wiki/download/attachments/45757960/eccodes-2.21.0-Source.tar.gz
-	sha512sums = f2ba8361b99800646a92f5f5beb7ec2facf2ee3b8a3f7985d9681a23b2faae778004c8c688ebe4b3a8492e99c76422c66ecc8943d12d3342d5bc1d38362ccf06
+	source = http://software.ecmwf.int/wiki/download/attachments/45757960/eccodes-2.22.0-Source.tar.gz
+	sha512sums = 488ff560cd9969c2d5c0dd0ce3e6b4433954893758ae1a2bd9177536d8b08a89f37aac4f6a175c271f528d5c838fd4ec7b090dfb1f691df5cfceb67508bdc470
 
 pkgname = eccodes
 
