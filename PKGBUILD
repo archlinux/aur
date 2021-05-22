@@ -2,7 +2,7 @@
 
 pkgname=quickmedia-git
 pkgver=r739.58f8ddf
-pkgrel=1
+pkgrel=2
 pkgdesc='A dmenu-inspired native client for web services. Supports youtube, spotify (podcasts), soundcloud, nyaa.si, 4chan, matrix and several manga sites.'
 arch=('x86_64')
 url="https://git.dec05eba.com/QuickMedia"
@@ -16,6 +16,7 @@ optdepends=(
     'xdg-utils: For downloading torrents when using nyaa.si plugin or opening remote links'
     'ffmpeg: For sending video metadata and thumbnail with /upload in matrix'
     'youtube-dl: To play youtube videos'
+    'noto-fonts-cjk: To display chinese, japanese and korean characters'
 )
 provides=('quickmedia')
 conflicts=('quickmedia')
