@@ -1,21 +1,21 @@
 pkgbase = r-hms
 	pkgdesc = Pretty Time of Day
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=hms
 	arch = any
 	license = GPL3
 	depends = r
-	depends = r-ellipsis
+	depends = r-ellipsis>=0.3.2
 	depends = r-pkgconfig
 	depends = r-rlang
-	depends = r-vctrs>=0.2.1
+	depends = r-vctrs>=0.3.8
 	optdepends = r-crayon
 	optdepends = r-lubridate
 	optdepends = r-pillar
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/hms_1.0.0.tar.gz
-	sha256sums = 9704e903d724f0911d46e5ad18b469a7ed419c5b1f388bd064fd663cefa6c962
+	source = https://cran.r-project.org/src/contrib/hms_1.1.0.tar.gz
+	sha256sums = e8599af260c3e8963ef183a98ca334b3f102a4595dde38e7c3c930a161e1b4ce
 
 pkgname = r-hms
 
