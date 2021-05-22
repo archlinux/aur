@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] - 2021-05-22
+
+### Added
+* Add record key to `list records` output (#44)
+* Add `--project` filter to `list records` (#62)
+
+### Changed
+* Make command syntax and help sensible to `use12hours` in `config.yaml` (#44, #54)
+
+### Fixed
+* Fix Docker image labels (#35)
+
+## [0.4.0] - 2021-05-20
+
+### Added
+* Add support for Bash autocompletion (#25)
+* Add support for Snap (#31)
+* Add filter for billable records (#33)
+
+### Changed
+* Use non-error output for `timetrace version` (#45)
+* Colorize and stylize tables (#26, #48, #49)
+
 ## [0.3.1] - 2021-05-18
 
 ### Changed
