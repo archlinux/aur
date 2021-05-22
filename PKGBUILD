@@ -3,11 +3,11 @@
 
 pkgname=whysynth
 pkgver=20170701
-pkgrel=1
+pkgrel=2
 pkgdesc="A versatile softsynth plugin for the DSSI Soft Synth Interface"
 url="http://www.smbolton.com/whysynth.html"
 depends=('alsa-lib' 'liblo' 'gtk2' 'fftw')
-makedepends=('dssi')
+makedepends=('dssi' 'ladspa')
 conflicts=('whysynth-git')
 license=('GPL')
 source=(http://www.smbolton.com/whysynth/${pkgname}-${pkgver}.tar.bz2)
