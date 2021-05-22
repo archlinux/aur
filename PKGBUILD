@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=dada2
-_bcver=1.18.0
+_bcver=1.20.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -14,7 +14,7 @@ depends=('r>=3.4.0' 'r-rcpp>=0.12.0' 'r-biostrings>=2.42.1' 'r-ggplot2>=2.1.0' '
 makedepends=(make)
 optdepends=(r-biocstyle r-knitr r-rmarkdown)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=('400160de67e6afbe5cc806acfb072b6efc7d08cc13301415c4e04c7009e00453')
+sha256sums=('85242fcf2c2f273d72a08869128f2e85d388c709531c1523c241ece8bb9d69f1')
 
 build() {
   cd "${srcdir}"
