@@ -11,7 +11,7 @@ pkgname=(
 )
 pkgver="2.1.0"
 _pkgver=${pkgver/\~/-}
-pkgrel=3
+pkgrel=4
 pkgdesc="Lightweight virtual machines for containers (version 2, binary packaging)"
 arch=(x86_64)
 url="https://katacontainers.io"
@@ -58,7 +58,11 @@ else
 fi
 
 package_kata-runtime-bin() {
-  depends=(qemu-headless kata-containers-image linux-kata)
+  depends=(
+    qemu-headless
+    kata-containers-image-bin
+    linux-kata-bin
+  )
   optdepends=(
     'cloud-hypervisor<16.0'
     'firecracker<0.24.0'
