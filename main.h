@@ -34,7 +34,6 @@ struct cursor;
 void generate_sudoku();
 int fill_remaining(int start);
 void remove_nums();
-void write_log(char* to_log);
 int solve(char* sudoku_str, int start);
 void solve_count(char* sudoku_to_solve, int* count);
 void draw();

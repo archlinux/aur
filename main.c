@@ -47,7 +47,7 @@ int main(int argc, char **argv){
 	{
 	case 'h':
 		printf(	"term-sudoku Copyright (C) 2021 eyeofcthulhu\n\n"
-				"usage: term-sudoku [-hv] [-f FILE]\n\n"
+				"usage: term-sudoku [-hv] [-f FILE] [-n NUMBER]\n\n"
 				"flags:\n"
 				"-h: display this information\n"
 				"-v: generate the sudoku visually\n"
@@ -100,10 +100,12 @@ int main(int argc, char **argv){
 
 	//--- USER INIT LOGIC ---
 	
-	time_t t;
+	time_t t = time(NULL);
 	srand((unsigned) time(&t));
+	struct tm tm = *localtime(&t);
 
-	user_nums = malloc((SUDOKU_LEN) * sizeof(char));
+	user_nums = malloc((SUDOKU_LEN + 1) * sizeof(char));
+	user_nums[SUDOKU_LEN] = '\0';
 	
 	if(from_file){
 		sudoku_str = malloc((SUDOKU_LEN + 1) * sizeof(char));
@@ -119,10 +121,11 @@ int main(int argc, char **argv){
 		if((strlen(sudoku_str) + strlen(user_nums)) != (SUDOKU_LEN * 2))
 			finish_with_err_msg("Wrong length in Sudoku file\n");
 	}else{
-		time_t t = time(NULL);
-		struct tm tm = *localtime(&t);
 		filename = malloc(64 * sizeof(char));
 		sprintf(filename, "%d%d%d%d%d%d%s", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec, ".sudoku");
+
+		gen_sudoku = malloc((SUDOKU_LEN + 1) * sizeof(char));
+		gen_sudoku[SUDOKU_LEN] = '\0';
 
 		generate_sudoku();
 		sudoku_str = gen_sudoku;
@@ -209,8 +212,6 @@ int main(int argc, char **argv){
 //Generate a random sudoku
 //This function generates the diagonal blocks from left to right and then calls fill_remaining()
 void generate_sudoku(){
-	gen_sudoku = malloc((SUDOKU_LEN + 1) * sizeof(char));
-	gen_sudoku[SUDOKU_LEN] = '\0';
 	for(int i = 0; i < SUDOKU_LEN; i++)
 		gen_sudoku[i] = '0';
 
@@ -290,14 +291,12 @@ int solve(char* sudoku_to_solve, int start){
 	memcpy(vert_line, sudoku_to_solve + (LINE_LEN * (start / LINE_LEN)), LINE_LEN * sizeof(char));
 
 	char* hor_line = malloc(LINE_LEN * sizeof(char));
-	for(int y = 0; y < LINE_LEN; y++){
+	for(int y = 0; y < LINE_LEN; y++)
 		hor_line[y] = sudoku_to_solve[y * LINE_LEN + (start % LINE_LEN)];
-	}
 
 	char* block = malloc(LINE_LEN * sizeof(char));
-	for(int j = 0; j < LINE_LEN; j++){
+	for(int j = 0; j < LINE_LEN; j++)
 		block[j] = sudoku_to_solve[(((start / LINE_LEN) / 3) * 3) * LINE_LEN + (((start % LINE_LEN) / 3) * 3) + (LINE_LEN * (j / 3)) + (j % 3)];
-	}
 
 	//Try to assign a value to the cell at start
 	for(int j = 0x31; j <= 0x39; j++){
@@ -308,7 +307,7 @@ int solve(char* sudoku_to_solve, int start){
 				used = 1;
 		}
 		if(!used){
-			sudoku_to_solve [start] = j;
+			sudoku_to_solve[start] = j;
 			//Check the whole path
 			if(solve(sudoku_to_solve, start + 1)){
 				free(vert_line);
@@ -348,14 +347,12 @@ void solve_count(char* sudoku_to_solve, int* count){
 			memcpy(vert_line, sudoku_to_solve + (LINE_LEN * (i / LINE_LEN)), LINE_LEN * sizeof(char));
 
 			char* hor_line = malloc(LINE_LEN * sizeof(char));
-			for(int y = 0; y < LINE_LEN; y++){
+			for(int y = 0; y < LINE_LEN; y++)
 				hor_line[y] = sudoku_to_solve[y * LINE_LEN + (i % LINE_LEN)];
-			}
 
 			char* block = malloc(LINE_LEN * sizeof(char));
-			for(int j = 0; j < LINE_LEN; j++){
+			for(int j = 0; j < LINE_LEN; j++)
 				block[j] = sudoku_to_solve[(((i / LINE_LEN) / 3) * 3) * LINE_LEN + (((i % LINE_LEN) / 3) * 3) + (LINE_LEN * (j / 3)) + (j % 3)];
-			}
 
 			//Try to assign a value to the cell at i
 			for(int j = 0x31; j <= 0x39; j++){
@@ -445,9 +442,8 @@ int check_validity(char* combined_solution){
 	for(int x = 0; x < LINE_LEN; x++){
 		char* hor_line = malloc(LINE_LEN * sizeof(char));
 
-		for(int y = 0; y < LINE_LEN; y++){
+		for(int y = 0; y < LINE_LEN; y++)
 			hor_line[y] = combined_solution[y * LINE_LEN + x];
-		}
 
 		//Check each digit against the others
 		for(int i = 0; i < LINE_LEN; i++){
@@ -466,9 +462,9 @@ int check_validity(char* combined_solution){
 	for(int x = 0; x < LINE_LEN / 3; x++){
 		for(int y = 0; y < LINE_LEN / 3; y++){
 			char* block = malloc(LINE_LEN * sizeof(char));
-			for(int i = 0; i < LINE_LEN; i++){
+			for(int i = 0; i < LINE_LEN; i++)
 				block[i] = combined_solution[(y * 3) * LINE_LEN + (x * 3) + (LINE_LEN * (i / 3)) + (i % 3)];
-			}
+		
 
 			//Check each digit against the others
 			for(int i = 0; i < LINE_LEN; i++){
