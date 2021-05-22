@@ -1,0 +1,14 @@
+pkgbase = otf-berenis
+	pkgdesc = A serif font
+	pkgver = 1.006
+	pkgrel = 1
+	url = http://arkandis.tuxfamily.org/adffonts.html
+	arch = any
+	groups = otf-adf-fonts
+	license = custom:GPL with font exception
+	conflicts = otf-adf
+	source = http://arkandis.tuxfamily.org/fonts/Berenis-Pro-20150322.zip
+	sha256sums = f82cbb563b616385a5d922462663f308b3dc4dfd280a670ab2221b7b940620aa
+
+pkgname = otf-berenis
+
