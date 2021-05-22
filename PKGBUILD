@@ -3,39 +3,40 @@
 
 _pkgname=ImHex
 pkgname=${_pkgname,,}
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://github.com/WerWolv/ImHex'
 license=('GPL2')
 arch=('x86_64')
-depends=('glfw' 'capstone' 'llvm-libs' 'mbedtls' 'python' 'freetype2' 'file' 'hicolor-icon-theme')
-makedepends=('cmake' 'glm' 'llvm' 'nlohmann-json')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+depends=('glfw' 'capstone' 'mbedtls' 'python' 'freetype2' 'file' 'gtk3' 'hicolor-icon-theme')
+makedepends=('git' 'cmake' 'glm' 'llvm' 'nlohmann-json' 'librsvg')
+source=("${pkgname}::git+https://github.com/WerWolv/ImHex.git#tag=v${pkgver}"
         imhex.desktop
         0001-Arch-Linux-customisations.patch)
-sha256sums=('891c9268dda958922698c6fdfcba34ec7b20853f3764fe9d58c4a932a6b0d3d8'
+cksums=('SKIP'
+        '4178124713'
+        '2359030413')
+sha256sums=('SKIP'
             '72525512a241589cecd6141f32ad36cbe1b5b6f2629dd8ead0e37812321bdde6'
-            '8b73bc50fd0dd8c94c78a02361a974b7e3d813afe2c0a69ad1ecc22e70217206')
-b2sums=('cd725290af8afdf83d08c78399e52420d983bd4cb3d91cbbd10d871fba2ee240286eae0de1495a63425f22ddd0c1d95ca8fe4cbcaf6164b3e13e6efb5875218e'
+            '143067b3ab97f29436cd354e27b446cce8e176f61d8012f8a2980a3027fdec30')
+b2sums=('SKIP'
         '7b2d029de385fdc2536f57a4364add9752b9a5dc31df501e07bff1fd69fdd1de2afa19a5ac5a4c87fbf21c5d87cc96d3fe30d58825c050f5a7d25f6d85d08efc'
-        '17d04544f0170716d68bb2e7d186302e29b094c3f416abe9b65f7e73b90ec03bf4234c42afbfc63c9adbb53585094e4dc443d1b44a77df639a1f344337c9235f')
+        'bcc4d5d61ede3fa1f45fcc0d43cb06f7b97397847295509941c484352421e8c5a1973c368e8e22ffb9c3af174d9ebc669e86fdc06498bec20d4a54dd289aba04')
 
 prepare() {
-  cd "${_pkgname}-${pkgver}"
+  git -C "${pkgname}" submodule update --init --recursive
 
-  for f in "${srcdir}"/*.patch; do
-    patch -Np1 -i $f
-  done
+  git -C "${pkgname}" apply ${srcdir}/*.patch
 }
 
 build() {
-  cmake -B build -S "${_pkgname}-${pkgver}" \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DPROJECT_VERSION="${pkgver}" \
-    -Wno-dev
-  make -C build
+  cmake -B build -S "${pkgname}" \
+    -Wno-dev \
+    -D CMAKE_BUILD_TYPE=RelWithDebInfo \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D PROJECT_VERSION="${pkgver}"
+  cmake --build build
 }
 
 package() {
@@ -46,35 +47,28 @@ package() {
   install -Dm0755 -t "${pkgdir}/usr/lib" build/plugins/libimhex/libimhex.so
 
   for plugin in builtin; do
-    install -Dm0755 -t "${pkgdir}/usr/lib/imhex/plugins" "build/plugins/$plugin/$plugin.hexplug"
+    install -Dm0755 -t "${pkgdir}/usr/share/imhex/plugins" "build/plugins/$plugin/$plugin.hexplug"
   done
 
   # Desktop file(s)
   install -Dm0644 -t "${pkgdir}/usr/share/applications" imhex.desktop
-  install -Dm0644 "${_pkgname}-${pkgver}/res/icon.png" "${pkgdir}/usr/share/icons/hicolor/72x72/apps/imhex.png"
+  install -Dm0644 "${pkgname}/res/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/imhex.svg"
+  for size in 32 48 64 128 256; do
+    install -dm0755 "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
+    rsvg-convert -a -f png -w $size -o "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/imhex.png" \
+      "${pkgname}/res/icon.svg"
+  done
+
+  install -Dm0644 "${pkgname}/res/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/imhex.svg"
 
   # Misc files
-  install -Dm0644 -t "${pkgdir}/usr/share/imhex" \
-    build/magic_dbs.mgc
+  install -Dm0644 build/magic_dbs.mgc "${pkgdir}/usr/share/imhex/magic/imhex.mgc"
+  install -Dm0644 -t "${pkgdir}/usr/share/imhex/resources" "${pkgname}/res/resources"/*
 
   # License
-  install -Dm0644 "${_pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm0644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-
-  # binary
-  install -Dm0755 -t "$pkgdir/usr/bin" "build/$pkgname"
-
-  # license
-  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
-    "$_pkgname-$pkgver/LICENSE"
-
-  # documentation
-  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
-    "$_pkgname-$pkgver/README.md"
-
-  # desktop file(s)
-  install -Dm0644 -t "$pkgdir/usr/share/applications" \
-    "$pkgname.desktop"
-  install -Dm0644 "$_pkgname-$pkgver/res/icon.png" \
-    "$pkgdir/usr/share/icons/hicolor/72x72/apps/$pkgname.png"
+  # Documentation
+  install -Dm0644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
+    "${pkgname}/README.md"
 }
