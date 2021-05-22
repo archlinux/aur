@@ -1,0 +1,14 @@
+pkgbase = jolie
+	pkgdesc = The Jolie programming language
+	pkgver = 1.10.1
+	pkgrel = 1
+	url = https://www.jolie-lang.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL-2.1
+	depends = jre-openjdk
+	source = https://github.com/jolie/jolie/releases/download/v1.10.1/jolie-1.10.1.jar
+	sha256sums = e47f3b4d81694752fce64e5ca4f4895909b6e5346e35e8dd65e59b798929140f
+
+pkgname = jolie
+
