@@ -27,28 +27,12 @@ _kyber_disable=y
 _2k_HZ_ticks=
 _1k_HZ_ticks=y
 _500_HZ_ticks=
-# Compile ONLY used modules to VASTLYreduce the number of modules built
-# and the build time.
-#
-# To keep track of which modules are needed for your specific system/hardware,
-# give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
-# This PKGBUILD read the database kept if it exists
-#
-# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=
-
-# Use the current kernel's .config file
-# Enabling this option will use the .config of the RUNNING kernel rather than
-# the ARCH defaults. Useful when the package gets updated and you already went
-# through the trouble of customizing your config options.  NOT recommended when
-# a new kernel is released, but again, convenient for package bumps.
-_use_current=
 
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-cacule
 # pkgname=('linux-cacule' linux-cacule-headers)
-_major=5.12.5
+_major=5.12.6
 #_minor=1
 #_minorc=$((_minor+1))
 #_rcver=rc8
@@ -56,7 +40,7 @@ pkgver=${_major}
 #_stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -69,7 +53,6 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/$_srcname.tar.xz"
         "config"
         "${_patchsource}/arch-patches-v3/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_patchsource}/cacule-patches/cacule-5.12.patch"
-        "${_patchsource}/cacule-patches/0002-cacule-Change-default-preemption-latency-to-2ms-for-.patch"
         "${_patchsource}/cpu-patches-v2/0001-cpu-patches.patch"
         "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/futex2-stable-patches-v3/0001-futex2-resync-from-gitlab.collabora.com.patch"
@@ -90,11 +73,10 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/$_srcname.tar.xz"
         "${_patchsource}/clearlinux-patches-v3/0001-clearlinux-patches.patch"
         "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch" )
 
-sha512sums=('6e00f85451a2d0c7381bf68bbe202706e1e28af5b1962c9c482c1e35f2c3b48a3b9ea94726f78d996f01528c9a80c8d058a4833e8ec6dc84360e8347ac5bc1dd'
+sha512sums=('94ed56538c0dde46f25e213ad9ba37df7af68a6d040307d4d61496a91902942b830afac04c48d8bc28b8b782365326d20c88278731e60a80736ea923f4272fac'
             'bb748a4f5e31a2e949ceb21d4ae7d4fac4ce30a47de5f2b4fe7df38e29c6702d5a196fa17fcc61baf94201dd87548bb299d2f8f3cdfec7938ff3bb9d37ea85d5'
             'f07743a59c992f7a48cd1604a0ed30663fe043f5bc93dfe54780da88421c920e7daf801fa345b475ab551f7855360a72774cd2b117e41d5a4ac35005250e3c2f'
             '97e661d3fbd75a6e9edeb79a694f42c49174f317bd35ae25dd13d71797d29fca630e88e1440415faca05fb46935591965fae0dcc4365c80e3cefa3d8b615c3b8'
-            'bafda1ec6114a360bed8a9f8ae6b1e8dc5c22adf15f7545c3455a090f14b491639707f6624d7a891ec66b459842e61df9d62274b070b7a611f0bdbd367219ae5'
             '60bda2070739a52af4f81816ebda8f3520a8d75ea5e00f65a903a3416ae31edba56fe151f6a9e02dc90ec3be7854e9a62e10e72120d7148fd3838806d8b9e986'
             '449570b8b9a04391cc2cc171cc806b3a132c6e969c7cedf9c4925d24244888e6f2e5afb6c551521fe62fcb7e2bf08cb8d396f9ec785ecfcdd5ea27dd9ffed4ea'
             'f0ae3cd8cc8237c620f2a069a48d1e156589c42ee6cb13b7fa54b7004cf9c940d4363c05706df3c231ff405bfb0488d9121c610c6583ae94ab732ecb11942b5b'
@@ -148,21 +130,6 @@ prepare() {
         make -s kernelrelease > version
         echo "Prepared $pkgbase version $(<version)"
 
-    ### Optionally use running kernel's config
-	# code originally by nous; http://aur.archlinux.org/packages.php?#ID=40191
-	if [ -n "$_use_current" ]; then
-		if [[ -s /proc/config.gz ]]; then
-			echo "Extracting config from /proc/config.gz..."
-			# modprobe configs
-			zcat /proc/config.gz > ./.config
-		else
-			warning "Your kernel was not compiled with IKCONFIG_PROC!"
-			warning "You cannot read the current config!"
-			warning "Aborting!"
-			exit
-		fi
- fi
-
   ### CPU_ARCH SCRIPT ##
     source "${startdir}"/configure
 
@@ -176,93 +143,93 @@ prepare() {
         scripts/config --set-val CONFIG_HZ 2000
       fi
 
-  ### Optionally set tickrate to 1000
-	   if [ -n "$_1k_HZ_ticks" ]; then
+    ### Optionally set tickrate to 1000
+	     if [ -n "$_1k_HZ_ticks" ]; then
 		    echo "Setting tick rate to 1k..."
         scripts/config --disable CONFIG_HZ_300
         scripts/config --enable CONFIG_HZ_1000
         scripts/config --set-val CONFIG_HZ 1000
-	   fi
+	     fi
 
-  ### Optionally set tickrate to 500HZ
-    if [ -n "$_500_HZ_ticks" ]; then
-      echo "Setting tick rate to 500HZ..."
-      scripts/config --disable CONFIG_HZ_300
-      scripts/config --enable CONFIG_HZ_500
-      scripts/config --set-val CONFIG_HZ 500
-    fi
+    ### Optionally set tickrate to 500HZ
+      if [ -n "$_500_HZ_ticks" ]; then
+        echo "Setting tick rate to 500HZ..."
+        scripts/config --disable CONFIG_HZ_300
+        scripts/config --enable CONFIG_HZ_500
+        scripts/config --set-val CONFIG_HZ 500
+      fi
 
   ### Optionally disable NUMA for 64-bit kernels only
     # (x86 kernels do not support NUMA)
-    if [ -n "$_NUMAdisable" ]; then
-      echo "Disabling NUMA from kernel config..."
-      scripts/config --disable CONFIG_NUMA
-    fi
+      if [ -n "$_NUMAdisable" ]; then
+        echo "Disabling NUMA from kernel config..."
+        scripts/config --disable CONFIG_NUMA
+      fi
 
-    if [ -n "$_fsync" ]; then
-      echo "Enable Fsync support"
-      scripts/config --enable CONFIG_FUTEX
-      scripts/config --enable CONFIG_FUTEX_PI
-    fi
+      if [ -n "$_fsync" ]; then
+        echo "Enable Fsync support"
+        scripts/config --enable CONFIG_FUTEX
+        scripts/config --enable CONFIG_FUTEX_PI
+      fi
 
-    if [ -n "$_futex2" ]; then
-      echo "Enable Futex2 support"
-      scripts/config --enable CONFIG_FUTEX2
-    fi
+      if [ -n "$_futex2" ]; then
+        echo "Enable Futex2 support"
+        scripts/config --enable CONFIG_FUTEX2
+      fi
 
-    if [ -n "$_winesync" ]; then
-          echo "Enable winesync support"
+      if [ -n "$_winesync" ]; then
+        echo "Enable winesync support"
         scripts/config --module CONFIG_WINESYNC
-    fi
+      fi
 
   ### Set performance governor
-    if [ -n "$_per_gov" ]; then
-      echo "Setting performance governor..."
-  		scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
-  		scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
-  		echo "Disabling uneeded governors..."
-  		scripts/config --enable CONFIG_CPU_FREQ_GOV_ONDEMAND
-  		scripts/config --disable CONFIG_CPU_FREQ_GOV_CONSERVATIVE
-  		scripts/config --disable CONFIG_CPU_FREQ_GOV_USERSPACE
-  		scripts/config --disable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
-    fi
+      if [ -n "$_per_gov" ]; then
+        echo "Setting performance governor..."
+  		  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+  		  scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
+  		  echo "Disabling uneeded governors..."
+  		  scripts/config --enable CONFIG_CPU_FREQ_GOV_ONDEMAND
+  		  scripts/config --disable CONFIG_CPU_FREQ_GOV_CONSERVATIVE
+  		  scripts/config --disable CONFIG_CPU_FREQ_GOV_USERSPACE
+  		  scripts/config --disable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
+      fi
 
   ### Disable Deadline I/O scheduler
-  	if [ -n "$_deadline_disable" ]; then
-  		echo "Disabling Deadline I/O scheduler..."
-  		scripts/config --disable CONFIG_MQ_IOSCHED_DEADLINE
-  	fi
+  	   if [ -n "$_deadline_disable" ]; then
+  		   echo "Disabling Deadline I/O scheduler..."
+  		   scripts/config --disable CONFIG_MQ_IOSCHED_DEADLINE
+  	   fi
 
   ### Disable Kyber I/O scheduler
-  	if [ -n "$_kyber_disable" ]; then
-  		echo "Disabling Kyber I/O scheduler..."
-  		scripts/config --disable CONFIG_MQ_IOSCHED_KYBER
-  	fi
+  	   if [ -n "$_kyber_disable" ]; then
+  		    echo "Disabling Kyber I/O scheduler..."
+  		    scripts/config --disable CONFIG_MQ_IOSCHED_KYBER
+  	    fi
 
     ### Enable protect file mappings under memory pressure
 
-    echo "Enabling protect file mappings under memory pressure..."
-    scripts/config --enable CONFIG_UNEVICTABLE_FILE
-    scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
-    scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
+        echo "Enabling protect file mappings under memory pressure..."
+        scripts/config --enable CONFIG_UNEVICTABLE_FILE
+        scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
+        scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
 
     ### Enable multigenerational LRU
 
-    echo "Enabling multigenerational LRU..."
-    scripts/config --enable CONFIG_HAVE_ARCH_PARENT_PMD_YOUNG
-    scripts/config --enable CONFIG_LRU_GEN
-    scripts/config --set-val CONFIG_NR_LRU_GENS 5
-    scripts/config --set-val CONFIG_TIERS_PER_GEN 3
-    scripts/config --enable CONFIG_LRU_GEN_ENABLED
-    scripts/config --disable CONFIG_LRU_GEN_STATS
+        echo "Enabling multigenerational LRU..."
+        scripts/config --enable CONFIG_HAVE_ARCH_PARENT_PMD_YOUNG
+        scripts/config --enable CONFIG_LRU_GEN
+        scripts/config --set-val CONFIG_NR_LRU_GENS 5
+        scripts/config --set-val CONFIG_TIERS_PER_GEN 3
+        scripts/config --enable CONFIG_LRU_GEN_ENABLED
+        scripts/config --disable CONFIG_LRU_GEN_STATS
 
   ### Enabling ZSTD COMPRESSION ##
-      echo "Set module compression to ZSTD"
-      scripts/config --enable CONFIG_MODULE_COMPRESS
-      scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
-      scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
-      scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
-      scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
+        echo "Set module compression to ZSTD"
+        scripts/config --enable CONFIG_MODULE_COMPRESS
+        scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
+        scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
+        scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
+        scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
 
   ### Enabling Cacule-Config ##
       echo "Enable CacULE CPU scheduler..."
@@ -311,20 +278,6 @@ prepare() {
       echo "Enable CONFIG_VHBA"
       scripts/config --module CONFIG_VHBA
       scripts/config --disable CONFIG_BPF_PRELOAD
-
-
-
-  ### Optionally load needed modules for the make localmodconfig
-  # See https://aur.archlinux.org/packages/modprobed-db
-      if [ -n "$_localmodcfg" ]; then
-          if [ -f $HOME/.config/modprobed.db ]; then
-          echo "Running Steven Rostedt's make localmodconfig now"
-          make LSMOD=$HOME/.config/modprobed.db localmodconfig
-      else
-          echo "No modprobed.db data found"
-          exit
-          fi
-      fi
 
   ### Save configuration for later reuse
      echo "Save config for reuse"
