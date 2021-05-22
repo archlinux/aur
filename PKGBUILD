@@ -1,6 +1,6 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=gnucash-asx-fetch
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="Utility to fetch and add current ASX prices to one or more gnucash XML files"
 url="https://github.com/bulletmark/$pkgname"
@@ -9,7 +9,7 @@ arch=("any")
 depends=("python>=3.6")
 makedepends=("python-pip" "python-wheel")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha1sums=('147a8029df15604efe3e4c9650426e9b33e9ca49')
+sha1sums=('8db2ae38705ffc6935382006eb3c383493bd5492')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"

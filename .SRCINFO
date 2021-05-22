@@ -1,6 +1,6 @@
 pkgbase = gnucash-asx-fetch
 	pkgdesc = Utility to fetch and add current ASX prices to one or more gnucash XML files
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/bulletmark/gnucash-asx-fetch
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = gnucash-asx-fetch
 	makedepends = python-pip
 	makedepends = python-wheel
 	depends = python>=3.6
-	source = gnucash-asx-fetch-1.4.tar.gz::https://github.com/bulletmark/gnucash-asx-fetch/archive/1.4.tar.gz
-	sha1sums = 147a8029df15604efe3e4c9650426e9b33e9ca49
+	source = gnucash-asx-fetch-1.5.tar.gz::https://github.com/bulletmark/gnucash-asx-fetch/archive/1.5.tar.gz
+	sha1sums = 8db2ae38705ffc6935382006eb3c383493bd5492
 
 pkgname = gnucash-asx-fetch
 
