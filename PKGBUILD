@@ -3,7 +3,7 @@
 
 pkgname=guacamole-server
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Guacamole proxy daemon"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://guacamole.sourceforge.net/"
@@ -34,7 +34,10 @@ prepare() {
 
 build() {
 	cd "$srcdir"/$pkgname-$pkgver
-	./configure --prefix=/usr --sbindir=/usr/bin --with-systemd-dir=/usr/lib/systemd/system CPPFLAGS="-Wno-error=pedantic"
+
+    # guacenc doesn't work since ffmpeg 4.4 (av_init_packet() is deprecated) that's why we have to build it with --disable-guacenc
+    # Reference: https://issues.apache.org/jira/browse/GUACAMOLE-1330
+	./configure --prefix=/usr --sbindir=/usr/bin --with-systemd-dir=/usr/lib/systemd/system --disable-guacenc CPPFLAGS="-Wno-error=pedantic"
 	make
 }
  
