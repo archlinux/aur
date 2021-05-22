@@ -28,7 +28,7 @@ check() {
 }
 
 pkgver() {
-  ver=$(curl "https://api.github.com/repos/neovim/neovim/releases" | tr '\n' ' ' | grep -oP '(?<="NVIM )[^"]+dev[^"]+(?=",)' | sed "s/-/+/g")
+  ver=$(curl "https://api.github.com/repos/neovim/neovim/releases" | grep -oP '(?<="NVIM )[^"]+dev[^"]+(?=",)' | sed "s/-/+/g")
   echo $ver
 }
 
