@@ -19,7 +19,7 @@
  
  ## Logging configuration section
  ## By default logs go to stdout with level 'info' and higher
-@@ -27,7 +29,7 @@
+@@ -28,7 +30,7 @@
  ##  * syslog - use syslog, see man 3 syslog
  # log = file
  ## Path to logfile (default - autodetect)
