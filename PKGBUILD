@@ -1,8 +1,8 @@
 # Maintainer: Blair Bonnett <blair dot bonnett at gmail dot com>
 
 pkgname=python-panwid
-pkgver=0.2.5
-pkgrel=2
+pkgver=0.3.3
+pkgrel=1
 pkgdesc="A collection of widgets for urwid"
 url="https://github.com/tonycpsu/panwid"
 arch=('any')
@@ -13,11 +13,18 @@ depends=(
 )
 makedepends=('python-setuptools')
 source=(
-  "https://github.com/tonycpsu/panwid/archive/v$pkgver.tar.gz"
+  "panwid-$pkgver.tar.gz::https://github.com/tonycpsu/panwid/archive/v$pkgver.tar.gz"
+  "exclude_tests.patch"
 )
 sha256sums=(
-  '1646404886f158682eef5f76daa43e47513813d6f0349e6b54b0b9dc3f4b1ebf'
+  'e7932b92a87acc17d5e41690e0215b0bc07a94b97757974063ddb9d2a4adaf81'
+  'fa5bcff2ffbf73a214c52be6d2e31f1e6528a69a54478fdadded4038ecac7e22'
 )
+
+prepare() {
+    cd "panwid-$pkgver"
+    patch -p0 -i "$srcdir/exclude_tests.patch"
+}
 
 build() {
     cd "panwid-$pkgver"
@@ -30,28 +37,8 @@ check() {
 }
 
 package() {
-    # Do the initial install. Skip compiling bytecode here since we are going
-    # to move some things later which would invalidate the paths to the source
-    # files stored in the bytecode.
     cd "panwid-$pkgver"
-    python setup.py install --root="$pkgdir/" --prefix=/usr --no-compile --skip-build
-
-    # Figure out the paths to the site-packages and dist-info directories in $pkgdir.
-    PYVER=$(python -c 'import sys; print("{}.{}".format(*sys.version_info[:2]))')
-    SITEPKGS="$pkgdir/usr/lib/python$PYVER/site-packages"
-    EGGINFO="$SITEPKGS/panwid-$pkgver-py$PYVER.egg-info"
-
-    # Move the tests into the package directory so its not polluting
-    # the main site-packages directory.
-    mv "$SITEPKGS/test" "$SITEPKGS/panwid"
-
-    # Update the egg-info metadata to reflect our move of tests/.
-    sed -i -e '/^test$/d' "$EGGINFO/top_level.txt"
-    sed -i -e 's/^test/panwid\/test/' "$EGGINFO/SOURCES.txt"
-
-    # Compile the modules to optimized bytecode. The -d option is used to specify
-    # the location of the file in the final system so that any tracebacks etc.
-    # refer to the correct file.
-    cd "$SITEPKGS"
-    python -O -m compileall -d "/usr/lib/python$PYVER/site-packages/panwid" "panwid"
+    python setup.py install --root="$pkgdir/" --prefix=/usr --skip-build --optimize=1
+    mv "$pkgdir/usr/share/doc/panwid" "$pkgdir/usr/share/doc/python-panwid"
+    rm "$pkgdir/usr/share/doc/python-panwid/LICENSE"
 }

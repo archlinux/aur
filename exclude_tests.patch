@@ -1,0 +1,12 @@
+--- setup.py
++++ setup.py
+
+@@ -19,7 +19,7 @@
+           'License :: OSI Approved :: GNU General Public License v2 (GPLv2)',
+           'Intended Audience :: Developers'
+       ],
+-      packages=find_packages(),
++      packages=find_packages(exclude=['test']),
+       data_files=[('share/doc/%s' % name, ['LICENSE','README.md']),
+               ],
+       install_requires = [
