@@ -1,0 +1,23 @@
+pkgbase = oatpp-swagger-git
+	pkgdesc = OpenApi 3.0.0 docs + Swagger UI for oatpp services
+	pkgver = 1.2.5.r0.geffa263
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/oatpp/oatpp-swagger
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	depends = oatpp
+	provides = oatpp-swagger
+	conflicts = oatpp-swagger
+	source = oatpp-swagger::git+https://github.com/oatpp/oatpp-swagger.git
+	source = module-config.cmake.in.patch
+	source = module-install.cmake.patch
+	source = CMakeLists.txt.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = oatpp-swagger-git
+

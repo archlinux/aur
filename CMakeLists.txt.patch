@@ -1,0 +1,27 @@
+*** oatpp-swagger/src/CMakeLists.txt	2021-05-22 17:39:11.158317607 +0100
+--- oatpp-swagger/src/CMakeLists.txt	2021-05-22 17:43:41.528317109 +0100
+***************
+*** 38,48 ****
+  
+      ## install swagger-ui files
+      install(DIRECTORY ../res
+!             DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/oatpp-${OATPP_MODULE_VERSION}/bin/${OATPP_MODULE_NAME}"
+              FILES_MATCHING PATTERN "*.*"
+      )
+  
+      ## set environment variable to point to swagger-ui res files
+!     set(ENV{OATPP_SWAGGER_RES_PATH} "${CMAKE_INSTALL_INCLUDEDIR}/oatpp-${OATPP_MODULE_VERSION}/bin/${OATPP_MODULE_NAME}/res")
+  
+  endif()
+--- 38,48 ----
+  
+      ## install swagger-ui files
+      install(DIRECTORY ../res
+!             DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/${OATPP_MODULE_NAME}/bin"
+              FILES_MATCHING PATTERN "*.*"
+      )
+  
+      ## set environment variable to point to swagger-ui res files
+!     set(ENV{OATPP_SWAGGER_RES_PATH} "${CMAKE_INSTALL_INCLUDEDIR}/${OATPP_THIS_MODULE_NAME}/bin/res")
+  
+  endif()
