@@ -32,8 +32,8 @@ pkgver() {
 prepare() {
     if [ ! -v _cuda_capability ] && grep -q nvidia <(lsmod); then
       git -C "$srcdir/$pkgname" apply -v "${srcdir}"/SelectCudaComputeArch.patch
-      git -C "$srcdir/$pkgname" apply -v "${srcdir}"/OpenEXR3.patch
     fi
+    git -C "$srcdir/$pkgname" apply -v "${srcdir}"/OpenEXR3.patch
 }
 
 build() {
