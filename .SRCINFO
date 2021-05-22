@@ -1,0 +1,21 @@
+pkgbase = python-cocotb-bus-git
+	pkgdesc = Coroutine based cosimulation library for writing VHDL and Verilog testbenches in Python
+	pkgver = r3101.a3e22f78
+	pkgrel = 1
+	url = https://github.com/cocotb/cocotb-bus
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	optdepends = iverilog: for simulating verilog designs
+	optdepends = ghdl: for simulating VHDL designs
+	optdepends = gtkwave: for visualizing waveforms
+	provides = python-cocotb-bus
+	conflicts = python-cocotb-bus
+	options = !emptydirs
+	source = git+https://github.com/cocotb/cocotb-bus
+	md5sums = SKIP
+
+pkgname = python-cocotb-bus-git
+
