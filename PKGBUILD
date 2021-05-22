@@ -5,7 +5,7 @@
 pkgname=hostapd-noscan
 _pkgname="hostapd"
 pkgver=2.9
-pkgrel=4
+pkgrel=5
 pkgdesc="IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator (with \"noscan\" patch)"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url="https://w1.fi/hostapd/"
@@ -18,6 +18,7 @@ source=("https://w1.fi/releases/$_pkgname-$pkgver.tar.gz"
         "https://w1.fi/security/2020-1/0001-WPS-UPnP-Do-not-allow-event-subscriptions-with-URLs-.patch"
         "https://w1.fi/security/2020-1/0002-WPS-UPnP-Fix-event-message-generation-using-a-long-U.patch"
         "https://w1.fi/security/2020-1/0003-WPS-UPnP-Handle-HTTP-initiation-failures-for-events-.patch"
+        "hostapd-2.9-CVE-2021-30004.patch::https://w1.fi/cgit/hostap/patch/?id=a0541334a6394f8237a4393b7372693cd7e96f15"
         "config"
         "hostapd.service"
         "hostapd-noscan.patch")
@@ -25,6 +26,7 @@ sha256sums=('881d7d6a90b2428479288d64233151448f8990ab4958e0ecaca7eeb3c9db2bd7'
             '2d9a5b9d616f1b4aa4a22b967cee866e2f69b798b0b46803a7928c8559842bd7'
             '49feb35a5276279b465f6836d6fa2c6b34d94dc979e8b840d1918865c04260de'
             'a8212a2d89a5bab2824d22b6047e7740553df163114fcec94832bfa9c5c5d78a'
+            'a726eec646a4c6bbff380fbc4a4797d9b2d0f1e45fb79411bbc26859e3213557'
             '87445203a518864e704b85fa970d90940e9a5d9b401ceb802d11caab6c07a495'
             '989bc6855f44c0b360e3d4cd4a146c35b7c12f8a0ced627b4b033f58edcade8e'
             'f2a57f118d5884bdc5eaba3828545742775e763eade4837668f8cd3dec8bb812')
@@ -57,6 +59,7 @@ prepare() {
   patch -Np1 -i "$srcdir/0001-WPS-UPnP-Do-not-allow-event-subscriptions-with-URLs-.patch"
   patch -Np1 -i "$srcdir/0002-WPS-UPnP-Fix-event-message-generation-using-a-long-U.patch"
   patch -Np1 -i "$srcdir/0003-WPS-UPnP-Handle-HTTP-initiation-failures-for-events-.patch"
+  patch -Np1 -i "$srcdir/hostapd-2.9-CVE-2021-30004.patch"
 }
 
 build() {
