@@ -1,0 +1,15 @@
+pkgbase = python-bench-it
+	pkgdesc = Quick and easy python benchmarking
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/scuml/benchit
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	conflicts = python-benchit
+	source = https://files.pythonhosted.org/packages/e3/c4/7f91020f875a0e7f1ca880b5ac7c047e021366408f608e106c60799670e8/bench_it-1.0.1-py2.py3-none-any.whl
+	sha256sums = d7f588f99de025735f00e24c8bc56b32da0a86f2e9fa6fe97befaa878cca2a46
+
+pkgname = python-bench-it
+
