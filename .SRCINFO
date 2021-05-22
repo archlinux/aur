@@ -6,7 +6,6 @@ pkgbase = python-jwcrypto
 	arch = any
 	license = LGPL3
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	depends = python-cryptography
 	depends = python-six
 	depends = python-deprecated

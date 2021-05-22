@@ -8,7 +8,7 @@ arch=("any")
 url="https://github.com/latchset/jwcrypto"
 license=("LGPL3")
 depends=("python-cryptography" "python-six" "python-deprecated")
-makedepends=("python-setuptools" "python2-setuptools")
+makedepends=("python-setuptools")
 source=("https://github.com/latchset/jwcrypto/releases/download/v0.8.0/jwcrypto-0.8.tar.gz")
 sha256sums=('SKIP')
 
