@@ -12,7 +12,7 @@ url='https://github.com/impegoraro/tagtool'
 license=('GPL')
 arch=('i686' 'x86_64' 'armv7h')
 makedepends=('intltool')
-depends=('glade' 'id3lib' 'libvorbis')
+depends=('gtk3' 'id3lib' 'libvorbis')
 source=("${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('c2b2c2a9a20a0173e618534e0c787e02860ff0de728e0ceea27d445397fc51c3')
 
