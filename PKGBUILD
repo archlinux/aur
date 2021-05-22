@@ -11,7 +11,7 @@ pkgname=(
   kata1-containers-image-bin
   linux-kata1-bin
 )
-epoch=1
+epoch=2
 pkgver="1.12.1"
 _pkgver=${pkgver/\~/-}
 pkgrel=3
@@ -26,7 +26,11 @@ sha512sums=(4c81be66e2b310ef767f0c90b548f85f89f5521be9fd53c50a95e81750dfbff66659
 b2sums=(902dd17f7bd4d955155c7d0f377905e15d1e2e02b358acb511dbccd83f950e91989f3dbb36cb30866a950ed57127d50e8fa2da21ffefd7f95a9f98e3fc7e4da4)
 
 package_kata1-runtime-bin() {
-  depends=(qemu-headless kata1-proxy kata1-shim kata1-containers-image linux-kata)
+  depends=(
+    qemu-headless
+    kata1-proxy-bin kata1-shim-bin
+    kata1-containers-image-bin linux-kata1-bin
+  )
   optdepends=(
     kata1-ksm-throttler
     'cloud-hypervisor'  # testing with 15.0 worked, current qemu works, too
