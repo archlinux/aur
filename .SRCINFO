@@ -6,6 +6,7 @@ pkgbase = wimg
 	license = GPL3
 	depends = sdl2
 	depends = wlib
+	depends = sdl2_image
 	source = wimg-0.1.tar.gz
 	md5sums = SKIP
 

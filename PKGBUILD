@@ -1,13 +1,13 @@
 # Maintainer: Wispy <wspvlv@gmail.com>
 pkgname=wimg
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalistic image viewer made with WLib and SDL2"
 arch=(x86_64)
 url=""
 license=('GPL3')
 groups=()
-depends=( sdl2 wlib )
+depends=( sdl2 wlib sdl2_image )
 makedepends=()
 optdepends=()
 provides=()
