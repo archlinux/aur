@@ -2,7 +2,7 @@
 # Contributor: Tim Rakowski <tim.rakowski@gmail.com>
 
 pkgname=ignition-cmake
-pkgver=2.6.2
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Provides modules that are used to find dependencies of ignition projects and generate cmake targets for consumers of ignition projects to link against."
 arch=('any')
@@ -13,7 +13,7 @@ depends=('cmake' 'pkg-config' 'ruby-ronn' 'doxygen')
 optdepends=()
 conflicts=()
 source=("https://github.com/ignitionrobotics/ign-cmake/archive/${pkgname}2_${pkgver}.tar.gz")
-sha256sums=('9b336a4c83584973864e786daa3a4a222c9e452689f3c174f8adfcae90122ba3')
+sha256sums=('afb430b06adff0ee16616e4e308847eb3e4b10d1eb2c30148bdbb93fe8e82783')
 
 _dir="ign-cmake-${pkgname}2_${pkgver}"
 
@@ -24,7 +24,8 @@ build() {
   cd build
 
   # Configure build
-  cmake .. -DCMAKE_BUILD_TYPE="Release" \
+  cmake .. -Wno-dev \
+           -DCMAKE_BUILD_TYPE="Release" \
            -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
            -DCMAKE_INSTALL_LIBDIR="lib" \
            -DBUILD_TESTING=OFF
