@@ -2,7 +2,7 @@
 # Co-maintainer: Leonidas Spyropoulos <artafinde at gmail dot com>
 
 pkgname=gdu
-pkgver=4.11.2
+pkgver=5.0.0
 pkgrel=2
 license=('MIT')
 pkgdesc="Fast disk usage analyzer"
@@ -12,7 +12,7 @@ makedepends=('go' 'pandoc')
 arch=('x86_64')
 url="https://github.com/dundee/gdu"
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/dundee/gdu/archive/v${pkgver}.tar.gz")
-sha256sums=('e192aad836a67bf810358c548897bd9723a6831ad1a33b255ef4a27e6ad4a8ae')
+sha256sums=('62312ff82192ffd593af0f40ebe729d9e18b63e4a034a61f2574ec9e96d3f04f')
 
 prepare(){
   cd "$pkgname-$pkgver"
@@ -21,9 +21,9 @@ prepare(){
 
 build() {
   cd "$pkgname-$pkgver"
-  local _BUILDINFO="-X 'github.com/dundee/gdu/v4/build.Version=${pkgver}' \
-                    -X 'github.com/dundee/gdu/v4/build.User=${PACKAGER}' \
-                    -X 'github.com/dundee/gdu/v4/build.Time=$(date)'"
+  local _BUILDINFO="-X 'github.com/dundee/gdu/v5/build.Version=${pkgver}' \
+                    -X 'github.com/dundee/gdu/v5/build.User=${PACKAGER}' \
+                    -X 'github.com/dundee/gdu/v5/build.Time=$(date)'"
   go build \
     -trimpath \
     -buildmode=pie \
@@ -31,7 +31,7 @@ build() {
     -modcacherw \
     -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" ${_BUILDINFO}" \
     -o dist/gdu \
-    github.com/dundee/gdu/v4/cmd/gdu
+    github.com/dundee/gdu/v5/cmd/gdu
   pandoc gdu.1.md -s -t man > dist/gdu.1
 }
 
