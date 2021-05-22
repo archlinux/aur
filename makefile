@@ -1,36 +1,27 @@
 CC = gcc
-CFLAGS = -I.
 LIBS = -lncurses
 
 SRC = main.c
-DEPS = main.h
 EXE = $(ODIR)/term-sudoku
-OBJ = $(addprefix $(ODIR)/,$(SRC:.c=.o))
 ODIR = bin
 IDIR = /usr/local/bin
 
-build: $(EXE)
+term-sudoku: $(EXE)
 
 run: $(EXE)
 	bin/term-sudoku
 
+install: $(EXE)
+	cp $(ODIR)/term-sudoku $(IDIR)/term-sudoku
+
 uninstall:
-	@rm $(IDIR)/term-sudoku
-	@echo "removing term-sudoku bin from $(IDIR)"
+	rm $(IDIR)/term-sudoku
 
 clean:
-	@rm -rf $(ODIR)
-	@echo "removing local bin directory"
+	rm -rf $(ODIR)
 
 $(ODIR):
 	mkdir -p $@
 
-$(ODIR)/%.o: %.c $(DEPS) | $(ODIR)
-	$(CC) -c -o $@ $< $(LIBS) $(CFLAGS)
-
-$(EXE): $(OBJ)
-	$(CC) -o $@ $^ $(LIBS) $(CFLAGS)
-
-install: $(EXE)
-	@echo "copying term-sudoku bin to $(IDIR)"
-	@cp $(ODIR)/term-sudoku $(IDIR)/term-sudoku
+$(EXE): $(SRC) | $(ODIR)
+	$(CC) -o $@ $^ $(LIBS)
