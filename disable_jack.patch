@@ -1,0 +1,19 @@
+--- CMakeLists.txt	2021-05-22 11:30:27.958294663 +0200
++++ CMakeLists.txt.new	2021-05-22 11:29:17.120943327 +0200
+@@ -14,6 +14,8 @@
+ 
+ option(EXT_DYLIB "build extempore as a dynamic library" OFF)
+ 
++option(JACK "use the Jack Portaudio backend" ON)
++
+ ## this is useful because we can group targets together (e.g. all the AOT libs)
+ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+ 
+@@ -186,6 +188,7 @@
+   -DPA_BUILD_STATIC=ON
+   -DPA_BUILD_SHARED=OFF
+   -DPA_LIBNAME_ADD_SUFFIX=OFF
++  -DPA_USE_JACK=${JACK}
+   -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+   -DCMAKE_C_FLAGS=${EXT_DEPS_C_FLAGS}
+   -DCMAKE_CXX_FLAGS=${EXT_DEPS_CXX_FLAGS}

@@ -1,8 +1,8 @@
 # Maintainer: Abdó Roig-Maranges <abdo.roig@gmail.com>
 
 pkgname=extempore-git
-pkgver=0.8.7.r35.g78c44413
-pkgrel=2
+pkgver=v0.8.9.r0.g0368489b
+pkgrel=1
 pkgdesc="A cyber-physical programming environment for live coding"
 arch=('i686' 'x86_64')
 url="http://extempore.moso.com.au"
@@ -19,16 +19,23 @@ pkgver() {
   git --git-dir="${srcdir}/extempore/.git" describe --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
+prepare() {
+  # I was unable to compile portaudio with jack backend
+  cd "${srcdir}/extempore"
+  patch -p0 < ../../disable_jack.patch
+}
+
+build() {  
   mkdir -p "${srcdir}/build"
   cd "${srcdir}/build"
 
   # NOTE: set ASSETS to OFF you you don't want to download ~500MB of assets
+  # NOTE: building with debug symbols for easy reporting of bugs
   cmake -DCMAKE_INSTALL_PREFIX=/opt/${pkgname} \
-        -DJACK=ON                   	       \
         -DBUILD_DEPS=ON             	       \
         -DPACKAGE=ON                	       \
-        -DASSETS=ON		    	       \
+        -DJACK=OFF                           \
+        -DCMAKE_BUILD_TYPE=Debug   \
         ../extempore
 
   make
