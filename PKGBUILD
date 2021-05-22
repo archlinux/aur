@@ -27,28 +27,12 @@ _kyber_disable=y
 _2k_HZ_ticks=
 _1k_HZ_ticks=
 _500_HZ_ticks=y
-# Compile ONLY used modules to VASTLYreduce the number of modules built
-# and the build time.
-#
-# To keep track of which modules are needed for your specific system/hardware,
-# give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
-# This PKGBUILD read the database kept if it exists
-#
-# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=
-
-# Use the current kernel's .config file
-# Enabling this option will use the .config of the RUNNING kernel rather than
-# the ARCH defaults. Useful when the package gets updated and you already went
-# through the trouble of customizing your config options.  NOT recommended when
-# a new kernel is released, but again, convenient for package bumps.
-_use_current=
 
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-cacule-rdb
 # pkgname=('linux-cacule' linux-cacule-headers)
-_major=5.12.5
+_major=5.12.6
 #_minor=1
 #_minorc=$((_minor+1))
 #_rcver=rc8
@@ -56,7 +40,7 @@ pkgver=${_major}
 #_stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=4
+pkgrel=1
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -89,7 +73,7 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/$_srcname.tar.xz"
         "${_patchsource}/clearlinux-patches-v3/0001-clearlinux-patches.patch"
         "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch" )
 
-sha512sums=('6e00f85451a2d0c7381bf68bbe202706e1e28af5b1962c9c482c1e35f2c3b48a3b9ea94726f78d996f01528c9a80c8d058a4833e8ec6dc84360e8347ac5bc1dd'
+sha512sums=('94ed56538c0dde46f25e213ad9ba37df7af68a6d040307d4d61496a91902942b830afac04c48d8bc28b8b782365326d20c88278731e60a80736ea923f4272fac'
             'bb748a4f5e31a2e949ceb21d4ae7d4fac4ce30a47de5f2b4fe7df38e29c6702d5a196fa17fcc61baf94201dd87548bb299d2f8f3cdfec7938ff3bb9d37ea85d5'
             'f07743a59c992f7a48cd1604a0ed30663fe043f5bc93dfe54780da88421c920e7daf801fa345b475ab551f7855360a72774cd2b117e41d5a4ac35005250e3c2f'
             '97e661d3fbd75a6e9edeb79a694f42c49174f317bd35ae25dd13d71797d29fca630e88e1440415faca05fb46935591965fae0dcc4365c80e3cefa3d8b615c3b8'
@@ -145,21 +129,6 @@ prepare() {
   ### Prepared version
         make -s kernelrelease > version
         echo "Prepared $pkgbase version $(<version)"
-
-    ### Optionally use running kernel's config
-	# code originally by nous; http://aur.archlinux.org/packages.php?#ID=40191
-	if [ -n "$_use_current" ]; then
-		if [[ -s /proc/config.gz ]]; then
-			echo "Extracting config from /proc/config.gz..."
-			# modprobe configs
-			zcat /proc/config.gz > ./.config
-		else
-			warning "Your kernel was not compiled with IKCONFIG_PROC!"
-			warning "You cannot read the current config!"
-			warning "Aborting!"
-			exit
-		fi
- fi
 
   ### CPU_ARCH SCRIPT ##
     source "${startdir}"/configure
@@ -266,7 +235,7 @@ prepare() {
       scripts/config --enable CONFIG_CACULE_SCHED
       scripts/config --enable CONFIG_CACULE_RDB
       scripts/config --set-val CONFIG_RDB_INTERVAL 0
-      scripts/config --disable  CONFIG_RDB_TASKS_GROUP
+      scripts/config --disable CONFIG_RDB_TASKS_GROUP
       scripts/config --disable CONFIG_EXPERT
       scripts/config --disable CONFIG_FAIR_GROUP_SCHED
       scripts/config --disable CONFIG_SCHED_AUTOGROUP
@@ -314,20 +283,6 @@ prepare() {
       echo "Enable CONFIG_VHBA"
       scripts/config --module CONFIG_VHBA
       scripts/config --disable CONFIG_BPF_PRELOAD
-
-
-
-  ### Optionally load needed modules for the make localmodconfig
-  # See https://aur.archlinux.org/packages/modprobed-db
-      if [ -n "$_localmodcfg" ]; then
-          if [ -f $HOME/.config/modprobed.db ]; then
-          echo "Running Steven Rostedt's make localmodconfig now"
-          make LSMOD=$HOME/.config/modprobed.db localmodconfig
-      else
-          echo "No modprobed.db data found"
-          exit
-          fi
-      fi
 
   ### Save configuration for later reuse
      echo "Save config for reuse"
