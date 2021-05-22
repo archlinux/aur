@@ -3,8 +3,8 @@
 pkgname=gtk-theme-plano
 _pkgname=plano-theme
 _pkgauthor=lassekongo83
-pkgver=3.36.2
-pkgrel=2
+pkgver=3.38.1
+pkgrel=1
 pkgdesc='flat GTK+ theme'
 arch=('any')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -14,18 +14,18 @@ makedepends=('meson' 'ninja' 'sassc')
 optdepends=('ttf-roboto: for the GNOME shell theme'
             'gtk-engine-murrine: for the GTK2 theme')
 conflicts=('gtk-theme-plano-git')
-source=(${_pkgname}-${pkgver}.tar.gz::https://github.com/lassekongo83/${_pkgname}/archive/v${pkgver/%.2/-2}.tar.gz)
-sha256sums=('16653048f733c1067020bc337f54b2dccb31b7aab823aac3b473d0f29ac2ffe5')
+source=(${_pkgname}-${pkgver}.tar.gz::https://github.com/lassekongo83/${_pkgname}/archive/v${pkgver/%.1/-1}.tar.gz)
+sha256sums=('0f315c8beb53723ea0f669f004ade986ef8ac20c6d25d988b7aa2c6caa98eba4')
 
 
 build() {
-    cd "${_pkgname}-${pkgver/%.2/-2}"
+    cd "${_pkgname}-${pkgver/%.1/-1}"
     meson build --prefix=/usr
     cd build
     ninja
 }
 
 package() {
-    cd "${_pkgname}-${pkgver/%.2/-2}/build"
+    cd "${_pkgname}-${pkgver/%.1/-1}/build"
     DESTDIR="${pkgdir}" ninja install
 }
