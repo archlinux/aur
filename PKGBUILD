@@ -7,13 +7,13 @@
 
 pkgname=pycam-git
 pkgver=r2178.4687f2f6
-pkgrel=1
+pkgrel=2
 pkgdesc='Toolpath generator for 3-axis CNC machining, written in Python.'
 arch=('i686' 'x86_64')
 url='https://github.com/SebKuzminsky/pycam'
 license=('GPL3')
 makedepends=('git')
-depends=('python-opengl' 'python-svg.path' 'python-yaml')
+depends=('python-gobject' 'python-opengl' 'python-svg.path' 'python-yaml')
 
 conflicts=('pycam')
 source=('git+https://github.com/SebKuzminsky/pycam.git'

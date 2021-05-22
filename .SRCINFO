@@ -1,12 +1,13 @@
 pkgbase = pycam-git
 	pkgdesc = Toolpath generator for 3-axis CNC machining, written in Python.
 	pkgver = r2178.4687f2f6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SebKuzminsky/pycam
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	depends = python-gobject
 	depends = python-opengl
 	depends = python-svg.path
 	depends = python-yaml
