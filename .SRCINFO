@@ -1,17 +1,18 @@
 pkgbase = emulsion-bin
-	pkgdesc = A fast and minimalistic image viewer
+	pkgdesc = A fast and minimalistic image viewer (binary release)
 	pkgver = 9.0
-	pkgrel = 1
-	url = https://arturkovacs.github.io/emulsion-website/
+	pkgrel = 2
+	url = https://arturkovacs.github.io/emulsion-website
 	arch = x86_64
 	license = MIT
-	makedepends = coreutils
-	makedepends = tar
-	optdepends = hicolor-icon-theme: hicolor theme hierarchy
+	makedepends = dpkg
+	depends = gcc-libs
+	optdepends = hicolor-icon-theme
 	provides = emulsion
 	conflicts = emulsion
-	source = https://github.com/ArturKovacs/emulsion/releases/download/v9.0/Emulsion-Linux.deb-v9.0.deb
-	md5sums = fde7100a3764cf25eca0fbd0f30c860d
+	options = !emptydirs
+	source = emulsion-9.0.deb::https://github.com/arturkovacs/emulsion/releases/download/v9.0/Emulsion-Linux.deb-v9.0.deb
+	sha256sums = f66ab3b655af4da6e4c3fb60540c241cc9e7055ab70a0638aedd8af484d90427
 
 pkgname = emulsion-bin
 
