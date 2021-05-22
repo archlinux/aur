@@ -2,16 +2,16 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=rdfm
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="The Rusty DotFiles Manager"
 arch=('x86_64')
 url="https://github.com/Wafelack/rdfm"
 license=('AGPL3')
-depends=('gcc-libs' 'zlib' 'openssl')
+depends=('gcc-libs')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('22491b5d8ad6ab7020f2c1bd5dfd63e09276ff431b38bc14c5c8fdfdb76e4039b9af65659c26acdb0baf5f299830c3df0ab699cd6f94e30135ef326f577845ab')
+sha512sums=('472d2a4a6da0e102a27747332ef3f08aef40953655d6deefbe3d87c68ad2b05cf2239b89b15a91a6fe217eae156644c427693f7a56d942b1f6cc80cd8c7efe12')
 
 build() {
   cd "$pkgname-$pkgver"
