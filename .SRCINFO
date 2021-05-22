@@ -14,13 +14,14 @@ pkgbase = kaudiocreator-git
 	depends = knotifyconfig
 	depends = kcmutils
 	depends = libdiscid
-	depends = libkcddb
 	depends = libkcompactdisc
 	depends = taglib
-	depends = hicolor-icon-theme
+	depends = libmusicbrainz5
 	provides = kaudiocreator
 	conflicts = kaudiocreator
 	source = git+https://invent.kde.org/unmaintained/kaudiocreator.git
+	source = git+https://invent.kde.org/multimedia/libkcddb.git#branch=release/20.04
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = kaudiocreator-git
