@@ -1,6 +1,6 @@
 pkgbase = r-biobase
 	pkgdesc = Biobase: Base functions for Bioconductor
-	pkgver = 2.50.0
+	pkgver = 2.52.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/Biobase.html
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = r-biobase
 	optdepends = r-all
 	optdepends = r-runit
 	optdepends = r-golubesets
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Biobase_2.50.0.tar.gz
-	sha256sums = a441d8442c6734b6ac7585cd4d040b69eb89282a650083421c95724f1d616f86
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Biobase_2.52.0.tar.gz
+	sha256sums = 79abe91af6c5c133582fd08d2035f65034ad90eae5b81b74fa147e6010e2e8e9
 
 pkgname = r-biobase
 
