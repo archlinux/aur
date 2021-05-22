@@ -7,29 +7,29 @@
 # Contributor: TDY <tdy@gmx.com>
 
 pkgname=shutter
-pkgver=0.95
-pkgrel=2
+pkgver=0.96
+pkgrel=1
 pkgdesc="A featureful screenshot tool (formerly gscrot)"
 arch=('any')
 url="https://shutter-project.org/"
 license=('GPL3')
-depends=(xdg-utils imagemagick procps librsvg gtk2-perl desktop-file-utils gnomecanvas-perl
-         perl-{glib-object-introspection,gnome2-wnck,gtk2-{imageview,unique},number-bytes-human,x11-protocol}
+depends=(xdg-utils imagemagick procps librsvg desktop-file-utils
+         perl-{glib-object-introspection,number-bytes-human,x11-protocol}
          perl-{proc-{simple,processtable},net-dbus}
          perl-{sort-naturally,json,json-maybexs,xml-simple,www-mechanize,locale-gettext}
-         perl-{file-{which,basedir,copy-recursive},xml-simple})
+         perl-{file-{which,basedir,copy-recursive},xml-simple}
+	 perl-carp-always perl-gtk3 perl-gtk3-imageview-shutter perl-readonly perl-goocanvas2
+	 perl-goocanvas2-cairotypes libwnck3)
 optdepends=('gnome-web-photo: web screenshot support'
 		'perl-image-exiftool: read and write EXIF data'
 		'nautilus-sendto: send screenshots via mail'
-		'perl-goo-canvas: editing screenshots'
-		'perl-gtk2-appindicator: AppIndicators support'
-		'perl-path-class: Imgur and Dropbox upload support'
-		'perl-lwp-protocol-https: Imgur and Dropbox upload support'
-		'perl-net-oauth: Imgur and Dropbox upload support'
+		'perl-path-class: Imgur upload support'
+		'perl-lwp-protocol-https: Imgur upload support'
+		'perl-net-oauth: Imgur upload support'
 		'bc: 3D Rotate and 3D Reflection plugins support'
 		'perl-webservice-gyazo-b: Gyazo upload support')
 source=("https://github.com/shutter-project/shutter/archive/v$pkgver.tar.gz")
-sha512sums=('77df43b952c10e6280b12170de997c12e0e13d5868f80f1ab22ad9a062b4b67eb93dfc540d4ed0f5db2e950eaae8a258f3d01d9ddf6043d26f8f16f0ce93e75a')
+sha512sums=('0c7d13950bed216571278cec730a4986aae87effbf385d39805c0f0206c9fda30ec0cba4fe7cb36eebd9cd228c4ada35e21fd5170c9c442eee6934dac41c0c0f')
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
