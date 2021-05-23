@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.github.QJournalctl</id>
+  <launchable type="desktop-id">qjournalctl.desktop</launchable>
+  <name>QJournalctl</name>
+  <summary>Graphical User Interface for systemd's journalctl</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0</project_license>
+  <description>
+    <p>systemd provides journalctl to display and analyze its journal. Think of the journal as a giant log file for the whole system. Different programs (like e.g. different software/services on your system, but also the kernel) write their log entries into systemd's journal. journalctl supports a few flags/parameters to specify what should be displayed. QJournalctl is just a graphical user interface which displays the journal and lets the user simply change the parameters to check the log quickly for specific reports or errors.</p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://user-images.githubusercontent.com/3193006/69094424-9d3e7900-0a50-11ea-94e3-5165b25d93cb.png</image>
+      <caption>Use the ssh feature to connect to remote hosts and read their logs; Save frequently used connections and benefit from password or (encrypted) keyfile support</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://user-images.githubusercontent.com/3193006/36170961-3fbc1ed0-1101-11e8-9123-ceda9a1b6c8c.gif</image>
+      <caption>Use the filter option and regular expressions to find what you are looking for</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://user-images.githubusercontent.com/3193006/36171008-5f55351a-1101-11e8-8885-f17723944868.gif</image>
+      <caption>Finally found the interesting log entries? Directly export your selection!</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://camo.githubusercontent.com/0867468e9394a31645b93c0450e2be71a953bc9811cdfbe701b688816df05235/68747470733a2f2f696d6167652e70726e747363722e636f6d2f696d6167652f6c577757644a5632516b5f6e4c4f4b78566c353478672e706e67</image>
+      <caption>Search the journal while it keeps itself up-to-date</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://camo.githubusercontent.com/6f5c13294726205dc8b2b74d3db6dd1d5e6baa88f07ee4cc41dce87588330619/687474703a2f2f696d6167652e70726e747363722e636f6d2f696d6167652f33643762613562346436383434383964623431383462356364393737343363392e706e67</image>
+      <caption>The current boot is not enough? Search the entire (!) journal of all boots or select a previous boot</caption>
+    </screenshot>
+  </screenshots>
+  <url type="bugtracker">https://github.com/pentix/qjournalctl/issues</url>
+  <url type="homepage">https://github.com/pentix/qjournalctl</url>
+  <developer_name>Patrick Eigensatz</developer_name>
+  <update_contact>patrick.eigensatz@gmail.com</update_contact>
+</component>
