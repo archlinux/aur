@@ -1,7 +1,7 @@
 # Maintainer: Evgeniy K. <genues@mail.ru>
 # Original work by: Igor Moura <imp2@cin.ufpe.br>
 pkgname=freecad-appimage-git
-pkgver=0.20_24894
+pkgver=0.20_24910
 pkgrel=1
 pkgdesc="A general purpose 3D CAD modeler"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('freecad')
 conflicts=('freecad')
 options=('!strip')
 noextract=("freecad-${pkgver}.AppImage")
-source=("freecad-0.20_24894.AppImage::https://github.com//FreeCAD/FreeCAD-Bundle/releases/download/weekly-builds/FreeCAD_weekly-builds-24894-Linux-Conda_glibc2.12-x86_64.AppImage"
+source=("freecad-0.20_24910.AppImage::https://github.com//FreeCAD/FreeCAD-Bundle/releases/download/weekly-builds/FreeCAD_weekly-builds-24910-Linux-Conda_glibc2.12-x86_64.AppImage"
   "freecad.sh"
   "freecad_conda.desktop.patch")
 
