@@ -32,9 +32,6 @@ prepare() {
 
 build() {
   cd FreeDoko_$pkgver
-
-  export CXXFLAGS+=' -std=c++17'
-
   make compile
   make documentation
 }
