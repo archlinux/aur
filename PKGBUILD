@@ -1,21 +1,21 @@
 # Maintainer: capezotte (carana2099 ob gmail at com)
-# Contributor: Seto (Github: huresche)
-# Contributor: Koichi Murase (Github: akinomyoga)
+# Contributor: Seto (huresche at GitHub)
+# Contributor: Koichi Murase (akinomyoga at GitHub)
 
 pkgname=blesh-git
 _pkgname=ble.sh
 pkgdesc="Custom bash line editor with enhanced features"
-pkgver=0.4.0_devel3.r1508.0bc2660
+pkgver=0.4.0_devel3.r1523.9372670
 pkgrel=1
 license=(BSD)
 url='https://github.com/akinomyoga/ble.sh'
 depends=(bash awk sed)
-makedepends=(bash awk sed make git)
+makedepends=(bash gawk sed make git)
 arch=(any)
 source=("git+$url" "git+${url/%.sh/sh-contrib}" 'blesh-update.sh')
 md5sums=('SKIP'
          'SKIP'
-         '3cf758a103b08cc3f95278cc6954d83b')
+         'd34e38593c8b79ba8ad7e0edc5935f24')
 install=blesh.install
 
 pkgver() {
