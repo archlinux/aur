@@ -77,6 +77,8 @@ function ble/base/package:AUR/update {
 			mkdir -p "$LOCALR" && builtin cd "$LOCALR"
 			git clone "$AURREPO" || [ "$(builtin cd "$PKGNAME" && git remote get-url origin)" = "$AURREPO" ]
 			builtin cd "$PKGNAME"
+			# Discard changes made by makepkg
+			git reset --hard HEAD
 			git pull
 			exec makepkg -fsi
 		)
