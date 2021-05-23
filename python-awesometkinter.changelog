@@ -1,3 +1,13 @@
+2021.5.23:
+- limit bidi support to linux, since windows handle bidi in os level.
+- fixed selected text deletion with delete and bkspace keys in bidi supported entry.
+
+2021.5.10:
+- fix bidi import and fix move_cursor_to_left function.
+
+2021.5.9:
+- Added support to bidi language e.g. Arabic to be shown properly in tkinter widgets.
+
 2021.4.2:
 - revert for unnecessary fix in commit 063e6010 it turned out the problem happen when binding right click to right click menu itself
 
