@@ -2,13 +2,13 @@
 
 pkgname=pje-office
 pkgver=1.0.21
-pkgrel=1
+pkgrel=2
 pkgdesc="PJeOffice is a software made available by CNJ for electronic signing PJe system's documents"
 arch=('any')
 url='http://www.cnj.jus.br/wiki/index.php/PJeOffice'
 license=('custom')
 depends=('java-runtime' 'bash')
-source=(https://cnj-pje-programs.s3-sa-east-1.amazonaws.com/${pkgname}/${pkgname}_amd64.deb)
+source=(${pkgname}-${pkgver}.deb::https://cnj-pje-programs.s3-sa-east-1.amazonaws.com/${pkgname}/${pkgname}_amd64.deb)
 install=${pkgname}.install
 md5sums=('8f7a04f962cce2097303f7676c55ddec')
 
