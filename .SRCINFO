@@ -1,0 +1,41 @@
+pkgbase = mutter-oldstable
+	pkgdesc = A window manager for GNOME
+	pkgver = 3.38.4
+	pkgrel = 2
+	url = https://gitlab.gnome.org/GNOME/mutter
+	install = mutter.install
+	arch = x86_64
+	groups = gnome-oldstable
+	license = GPL
+	checkdepends = xorg-server-xvfb
+	checkdepends = pipewire-media-session
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = egl-wayland
+	makedepends = meson
+	makedepends = xorg-server
+	depends = dconf
+	depends = gobject-introspection-runtime
+	depends = gsettings-desktop-schemas-oldstable
+	depends = libcanberra
+	depends = startup-notification
+	depends = zenity
+	depends = libsm
+	depends = gnome-desktop
+	depends = upower
+	depends = libxkbcommon-x11
+	depends = gnome-settings-daemon-oldstable
+	depends = libgudev
+	depends = libinput
+	depends = pipewire
+	depends = xorg-xwayland
+	depends = graphene
+	depends = libxkbfile
+	provides = libmutter-7.so
+	conflicts = mutter
+	replaces = mutter
+	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=ffd8b25c986bce4d7707bee099a72f3cf54d93e2
+	sha256sums = SKIP
+
+pkgname = mutter-oldstable
+
