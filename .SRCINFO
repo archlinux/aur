@@ -1,6 +1,6 @@
 pkgbase = k3b-git
 	pkgdesc = Feature-rich and easy to handle CD burning application. (Git version)
-	pkgver = 20.07.70.r6511.d4e28c3c1
+	pkgver = 21.07.70.r6606.fcc14a6e7
 	pkgrel = 1
 	url = https://kde.org/applications/en/multimedia/org.kde.k3b
 	arch = x86_64

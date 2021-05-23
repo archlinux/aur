@@ -2,7 +2,7 @@
 # Contributor: Dan Vratil <vratil@progdansoft.com>
 
 pkgname=k3b-git
-pkgver=20.07.70.r6511.d4e28c3c1
+pkgver=21.07.70.r6606.fcc14a6e7
 pkgrel=1
 pkgdesc="Feature-rich and easy to handle CD burning application. (Git version)"
 arch=('x86_64')
@@ -47,16 +47,22 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  sed -e 's|Sndfile|SndFile|g' \
+      -i k3b/cmake/modules/FindSndfile.cmake \
+      -i k3b/CMakeLists.txt
+
+  sed 's|MUSE |Muse |g' -i k3b/cmake/modules/FindMuse.cmake
 }
 
 build() {
   cd build
   cmake ../k3b \
-    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_LIBEXECDIR=/usr/lib/k3b \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
 
   make
 }
