@@ -14,10 +14,10 @@ backup=()
 options=()
 install=
 changelog=
-sha256sums_x86_64=('5d82c0a9efa6a5e9ac014ef5168a32ffa9ee13d1febdaa3f07aff0bc0d848abc')
-sha256sums_aarch64=('8b796655ffc170b670e7ae35a0cb8690bb05823016c8f18446eb576fef3299ac')
-sha256sums_armv6h=('8c0c73f825f57e5b8852bdcb2bd9df3b95a6e185561709baa892f5b237a910c6')
-sha256sums_armv7h=('8c0c73f825f57e5b8852bdcb2bd9df3b95a6e185561709baa892f5b237a910c6')
+sha256sums_x86_64=('8c830b50efa21222cb6205659393648602e60fdb735a4e0058913516b7ccba81')
+sha256sums_aarch64=('d61658b59c6d708cde18471f00cebbb016e0ec6e098844e2ee8b6de62947754d')
+sha256sums_armv6h=('acde44e446fb9913cdaf1d72ee615ba1435d4f3f3b2ad7963e8342cc736760cc')
+sha256sums_armv7h=('acde44e446fb9913cdaf1d72ee615ba1435d4f3f3b2ad7963e8342cc736760cc')
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_x86_64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_arm64.tar.gz")
