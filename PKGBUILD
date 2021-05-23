@@ -3,7 +3,7 @@
 
 pkgname=tbs-firmware
 pkgver=1.0
-pkgrel=5
+pkgrel=6
 pkgdesc='TBS proprietary firmware'
 arch=('any')
 url='http://www.tbsdtv.com'
@@ -11,7 +11,7 @@ license=('custom:firmware')
 makedepends=('linux-firmware')
 depends=()
 source=("http://www.tbsdtv.com/download/document/linux/tbs-tuner-firmwares_v${pkgver}.tar.bz2")
-sha256sums=('bceb70bc3e8b982f4d3c18c146e3ccca9790724c4f132eb0a42a13fdb701e3ea')
+sha256sums=('be47e87a9f9887536ff8f4e97054f36fd1a0891e8cfba1d840c1ca9619143f0e')
 
 package() {
     # Install firmware
