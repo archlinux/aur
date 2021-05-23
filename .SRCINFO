@@ -1,0 +1,22 @@
+pkgbase = ninjacoin-wallet
+	pkgdesc = Ninjacoin wallet based on React, React Router, Webpack, and React Hot Loader
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/ninjacoin-master/ninja-wallet-pro#readme
+	install = ninjacoin-wallet.install
+	arch = x86_64
+	license = GPL3
+	depends = gtk3
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = util-linux-libs
+	depends = xdg-utils
+	depends = libsecret
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/NinjaCoin-Master/ninja-wallet-pro/releases/download/v2.2.1/Ninjacoin.Wallet.Linux.2.2.1.deb
+	sha512sums = a745579d278512e37dfefe14acf5c70b15d03f02e1528a744d3bdaab87a70017d3038cf82babcd15edaa8719c5a6ecd4cd46bbe66026c635a7025513e5ef3dc6
+
+pkgname = ninjacoin-wallet
+
