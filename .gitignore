@@ -3,4 +3,5 @@ particle-cli-completion
 pkg
 src
 *tar.xz
+*tar.zst
 release.sh
