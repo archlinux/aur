@@ -42,9 +42,8 @@ pkgbase = gimp-brush-max-512
 	optdepends = alsa-lib: for MIDI event controller module
 	optdepends = curl: for URI support
 	optdepends = ghostscript: for postscript support
+	provides = gimp=2.10.24
 	conflicts = gimp
-	conflicts = gimp-plugin-wavelet-decompose
-	replaces = gimp
 	replaces = gimp-plugin-wavelet-decompose
 	source = https://download.gimp.org/pub/gimp/v2.10/gimp-2.10.24.tar.bz2
 	source = 0001-no-check-update.patch

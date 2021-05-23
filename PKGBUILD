@@ -19,8 +19,9 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
             'alsa-lib: for MIDI event controller module'
             'curl: for URI support'
             'ghostscript: for postscript support')
-conflicts=('gimp' 'gimp-plugin-wavelet-decompose')
-replaces=('gimp' 'gimp-plugin-wavelet-decompose')
+conflicts=('gimp')
+provides=("${_pkgname}=${pkgver}")
+replaces=('gimp-plugin-wavelet-decompose')
 install=gimp.install
 source=(https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2
         0001-no-check-update.patch
