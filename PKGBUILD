@@ -1,6 +1,6 @@
 # Maintainer: BeyondMagic <koetemagie@gmail.com>
 pkgname=nincat-git
-pkgver=2.0.r64.474e248.r64.474e248.r66.d588171.r66.d588171.r74.a57fcb1.r74.a57fcb1.r74.a57fcb1.r75.510f189.r79.635a60f
+pkgver=2.4.r79.635a60f
 pkgrel=1
 pkgdesc="This a simple script that loads an ASCII art centered in your terminal."
 arch=(any)
