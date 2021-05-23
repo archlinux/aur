@@ -1,0 +1,14 @@
+pkgbase = jubler-bin
+	pkgdesc = A tool to edit text-based subtitles.
+	pkgver = 7.0.3
+	pkgrel = 1
+	url = https://www.jubler.org/index.html
+	arch = x86_64
+	license = GPL2
+	depends = hicolor-icon-theme
+	options = !strip
+	source = jubler-bin-7.0.3-1.AppImage::https://github.com/teras/Jubler/releases/download/v7.0.3/Jubler-7.0.3.x86_64.appimage
+	sha256sums = 8a82d6123f8f9b5d13640bcbf6296da1af31c359e69fa4717d2450c433ba2c04
+
+pkgname = jubler-bin
+
