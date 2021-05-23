@@ -1,13 +1,14 @@
 # Maintainer: Henri van de Munt <(firstname) @ gmail.com>
+# Contributor: j.r <j.r@jugendhacker.de>
 pkgname=gnome-shell-extension-material-shell-git
-pkgver=12.r12.a216007
+pkgver=12.r21.2985acf
 pkgrel=1
 pkgdesc="GNOME Shell Extension Material Shell"
 arch=('any')
 url="https://github.com/PapyElGringo/material-shell"
 license=('GPL')
 depends=('gnome-shell')
-makedepends=('git' 'npm' 'python2')
+makedepends=('git' 'npm')
 optdepends=('plata-theme: gtk and shell theme'
             'tela-icon-theme-git: icon theme'
             'ttf-roboto: font')

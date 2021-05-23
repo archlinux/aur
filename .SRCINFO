@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-material-shell-git
 	pkgdesc = GNOME Shell Extension Material Shell
-	pkgver = 12.r5.63c2655
+	pkgver = 12.r21.2985acf
 	pkgrel = 1
 	url = https://github.com/PapyElGringo/material-shell
 	arch = any
@@ -8,7 +8,6 @@ pkgbase = gnome-shell-extension-material-shell-git
 	license = GPL
 	makedepends = git
 	makedepends = npm
-	makedepends = python2
 	depends = gnome-shell
 	optdepends = plata-theme: gtk and shell theme
 	optdepends = tela-icon-theme-git: icon theme
