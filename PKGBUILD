@@ -1,32 +1,27 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=checkmake
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.0.47
+pkgrel=1
 pkgdesc="Experimental linter/analyzer for makefiles"
 arch=('any')
 url="https://github.com/mrtazz/checkmake"
 license=('MIT')
-makedepends=('go-pie')
+makedepends=('git' 'go')
 conflicts=('checkmake-git')
-source=("https://github.com/mrtazz/checkmake/archive/${pkgver}.tar.gz")
-sha256sums=('e3a04e6bf4bbeb9730368c488db9c7f3cfec2d52d3f82bac5c8f9aa51b985f5e')
-
-prepare(){
-	mkdir -p gopath/src/github.com/mrtazz
-	ln -rTsf "${pkgname}-${pkgver}" gopath/src/github.com/mrtazz/checkmake
-}
+source=("git+https://github.com/mrtazz/checkmake.git#commit=575315c")
+sha256sums=('SKIP')
 
 build(){
-	cd "gopath/src/github.com/mrtazz/checkmake"
-	export GOPATH="${srcdir}/gopath"
-	go install \
-		-gcflags "all=-trimpath=${GOPATH}" \
-		-asmflags "all=-trimpath=${GOPATH}" \
-		./cmd/...
+    cd "${srcdir}/${pkgname}"
+    export CGO_LDFLAGS="$LDFLAGS"
+    export CGO_CFLAGS="$CFLAGS"
+    export CGO_CXXFLAGS="$CXXFLAGS"
+    export CGO_CPPFLAGS="$CPPFLAGS"
+    make EXT_LDFLAGS="-linkmode external" GOFLAGS="-buildmode=pie -trimpath"
 }
 
 package() {
-	install -Dm755 gopath/bin/checkmake "${pkgdir}/usr/bin/checkmake"
-	cd "${pkgname}-${pkgver}"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd "${srcdir}/${pkgname}"
+    install -Dm755 checkmake "${pkgdir}/usr/bin/checkmake"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
