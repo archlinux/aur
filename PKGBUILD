@@ -1,12 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=6.8-GE-2
-_commit=0a4553f6e07c2667f55831d2d0641cd7dc460081
+_srctag=6.9-GE-1
+_commit=856ebac794297ae304236fc69a18e21bc78ceedb
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=6.1.2
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 arch=(x86_64)
@@ -130,7 +130,7 @@ source=(
     proton-unfuck_makefile.patch
     proton-disable_lock.patch
     proton-user_compat_data.patch
-    proton-default_pfx.patch
+    patches-remove_broken.patch
 )
 noextract=(
     wine-gecko-${_geckover}-{x86,x86_64}.tar.xz
@@ -194,12 +194,13 @@ prepare() {
         git submodule update "${submodule}"
     done
 
+    patch -p1 -i "$srcdir"/patches-remove_broken.patch
+
     ./patches/protonprep.sh
 
     patch -p1 -i "$srcdir"/proton-unfuck_makefile.patch
     patch -p1 -i "$srcdir"/proton-disable_lock.patch
     patch -p1 -i "$srcdir"/proton-user_compat_data.patch
-    patch -p1 -i "$srcdir"/proton-default_pfx.patch
 }
 
 build() {
@@ -318,5 +319,5 @@ sha256sums=('SKIP'
             '6fc5bd437b2161777f90416fa92760e73bff39c6cf507b612bc020d87909f812'
             '02f189cc8149eaa2547a4b1cf736e71dea139379544bf9efbb3690f6d70b8b61'
             '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
-            '437c78abd5402c1a5494b1c1fabf4f32b98e579790a0752972bfe2e15ea78d4a'
+            '429de61522db02c4c87d31221a59b504eac1fb8b7b5c1a3f61aed3f21350eeb5'
 )

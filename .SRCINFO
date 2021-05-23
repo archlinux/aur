@@ -1,7 +1,7 @@
 pkgbase = proton-ge-custom
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build
-	pkgver = 6.8.GE.2
-	pkgrel = 2
+	pkgver = 6.9.GE.1
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/GloriousEggroll/proton-ge-custom
 	arch = x86_64
@@ -190,7 +190,7 @@ pkgbase = proton-ge-custom
 	noextract = wine-gecko-2.47.2-x86.tar.xz
 	noextract = wine-gecko-2.47.2-x86_64.tar.xz
 	noextract = wine-mono-6.1.2-x86.tar.xz
-	source = proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#commit=0a4553f6e07c2667f55831d2d0641cd7dc460081
+	source = proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#commit=856ebac794297ae304236fc69a18e21bc78ceedb
 	source = wine::git://source.winehq.org/git/wine.git
 	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git
 	source = vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
@@ -219,7 +219,7 @@ pkgbase = proton-ge-custom
 	source = proton-unfuck_makefile.patch
 	source = proton-disable_lock.patch
 	source = proton-user_compat_data.patch
-	source = proton-default_pfx.patch
+	source = patches-remove_broken.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -249,7 +249,7 @@ pkgbase = proton-ge-custom
 	sha256sums = 6fc5bd437b2161777f90416fa92760e73bff39c6cf507b612bc020d87909f812
 	sha256sums = 02f189cc8149eaa2547a4b1cf736e71dea139379544bf9efbb3690f6d70b8b61
 	sha256sums = 20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3
-	sha256sums = 437c78abd5402c1a5494b1c1fabf4f32b98e579790a0752972bfe2e15ea78d4a
+	sha256sums = 429de61522db02c4c87d31221a59b504eac1fb8b7b5c1a3f61aed3f21350eeb5
 
 pkgname = proton-ge-custom
 
