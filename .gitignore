@@ -1,6 +1,4 @@
 *.tar.*
-mini.c/
 pacutils-git/
 pkg/
 src/
-tap.c/
