@@ -12,7 +12,7 @@ pkgbase = instaaur
 	optdepends = git: AUR4 git support
 	provides = instaaur
 	source = instaaur-2021.05.23.tar.gz::https://github.com/The-Repo-Club/instaaur/archive/2021.05.23.tar.gz
-	sha256sums = SKIP
+	sha256sums = 2864fd23c4af821435f55dd32dcf0aff86327120d9531c1fa43036c86c89c24e
 
 pkgname = instaaur
 
