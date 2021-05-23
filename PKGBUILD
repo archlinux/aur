@@ -8,15 +8,15 @@
 
 
 ## Helpful internal stuff
-_commit=b03ab3ff544130d6220a587a781c5ef7d5e07380
-_mozcver=2.26.4346.102
-_utdicver=20210421
+_commit=027238dd0f7be51dcb4fbd63a79e81562daf58a8
+_mozcver=2.26.4381.102
+_utdicver=20210524
 _fcitx5patchver=20210329
 _fcitx5patchuserlink=28
 _fcitx5patchlink=28063
-_fcitx5iconver=20201229
-_fcitx5iconuserlink=27
-_fcitx5iconlink=27009
+_fcitx5iconver=20210520
+_fcitx5iconuserlink=30
+_fcitx5iconlink=30476
 _buildtype=Release
 
 pkgname='fcitx5-mozc-ut'
@@ -37,12 +37,16 @@ source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit
         "https://osdn.net/downloads/users/${_fcitx5iconuserlink}/${_fcitx5iconlink}/fcitx5-mozc-icons-${_fcitx5iconver}.tar.gz")
 sha256sums=('SKIP'
             '1b8fe2f0cb1422c34602921f2cd0a85c4daa0b0ad473d1228f754d2a1505e77d'
-            'b3c69ef3e960266fd9e36e9c4039f9b68ec843a0f598aed9f20535af008ce7df')
+            '4ebaf2d3ef8029a0fb40fce600471876d4bcd6492f99c083e5aa5b221614e4e4')
 
 prepare() {
     cd ${pkgname}-git
 
     git submodule update --init --recursive
+
+    # Fix for GCC11 compatibility
+    # Based on original patch found at https://yanqiyu.fedorapeople.org/fcitx5-mozc/fix-build-gcc11.patch
+    sed -i -e 's/#include <array>/#include <array>\n#include <limits>/' src/third_party/abseil-cpp/absl/synchronization/internal/graphcycles.cc
 
     # Avoid build errors (don't use libc++)
     # These should probably be included as options in GYP_DEFINES
@@ -86,28 +90,31 @@ package() {
     msgfmt --xml -d unix/fcitx5/po/ --template unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in -o unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml
     install -Dm644 unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml ${pkgdir}/usr/share/metainfo/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml
 
-    cd ${srcdir}/fcitx5-mozc-icons-${_fcitx5iconver}/
+    cd ${srcdir}/fcitx5-mozc-icons-${_fcitx5iconver}/hicolor/
 
-    install -Dm644 product_icon_32bpp-128.png                       ${pkgdir}/usr/share/icons/hicolor/128x128/apps/org.fcitx.Fcitx5.fcitx-mozc.png
-    install -Dm644 ime_product_icon_opensource-32.png               ${pkgdir}/usr/share/icons/hicolor/32x32/apps/org.fcitx.Fcitx5.fcitx-mozc.png
-    install -Dm644 ui-alpha_full.png                                ${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-alpha-full.png
-    install -Dm644 ui-alpha_half.png                                ${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-alpha-half.png
-    install -Dm644 ui-direct.png                                    ${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-direct.png
-    install -Dm644 ui-hiragana.png                                  ${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-hiragana.png
-    install -Dm644 ui-katakana_full.png                             ${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-katakana-full.png
-    install -Dm644 ui-katakana_half.png                             ${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-katakana-half.png
-    install -Dm644 ui-dictionary.png                                ${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-dictionary.png
-    install -Dm644 ui-properties.png                                ${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-properties.png
-    install -Dm644 ui-tool.png                                      ${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-tool.png
+    install -Dm644 128x128/apps/fcitx-mozc.png                                 ${pkgdir}/usr/share/icons/hicolor/128x128/apps/fcitx-mozc.png
+    install -Dm644 128x128/apps/org.fcitx.Fcitx5.fcitx-mozc.png                ${pkgdir}/usr/share/icons/hicolor/128x128/apps/org.fcitx.Fcitx5.fcitx-mozc.png
 
-    ln -sf org.fcitx.Fcitx5.fcitx-mozc.png                          ${pkgdir}/usr/share/icons/hicolor/128x128/apps/fcitx-mozc.png
-    ln -sf org.fcitx.Fcitx5.fcitx-mozc-alpha-full.png               ${pkgdir}/usr/share/icons/hicolor/32x32/apps/fcitx-mozc-alpha-full.png
-    ln -sf org.fcitx.Fcitx5.fcitx-mozc-alpha-half.png               ${pkgdir}/usr/share/icons/hicolor/48x48/apps/fcitx-mozc-alpha-half.png
-    ln -sf org.fcitx.Fcitx5.fcitx-mozc-direct.png                   ${pkgdir}/usr/share/icons/hicolor/48x48/apps/fcitx-mozc-direct.png
-    ln -sf org.fcitx.Fcitx5.fcitx-mozc-hiragana.png                 ${pkgdir}/usr/share/icons/hicolor/48x48/apps/fcitx-mozc-hiragana.png
-    ln -sf org.fcitx.Fcitx5.fcitx-mozc-katakana-full.png            ${pkgdir}/usr/share/icons/hicolor/48x48/apps/fcitx-mozc-katakana-full.png
-    ln -sf org.fcitx.Fcitx5.fcitx-mozc-katakana-half.png            ${pkgdir}/usr/share/icons/hicolor/48x48/apps/fcitx-mozc-katakana-half.png
-    ln -sf org.fcitx.Fcitx5.fcitx-mozc-dictionary.png               ${pkgdir}/usr/share/icons/hicolor/48x48/apps/fcitx-mozc-dictionary.png
-    ln -sf org.fcitx.Fcitx5.fcitx-mozc-properties.png               ${pkgdir}/usr/share/icons/hicolor/48x48/apps/fcitx-mozc-properties.png
-    ln -sf org.fcitx.Fcitx5.fcitx-mozc-tool.png                     ${pkgdir}/usr/share/icons/hicolor/48x48/apps/fcitx-mozc-tool.png
+    install -Dm644 32x32/apps/fcitx-mozc.png                                   ${pkgdir}/usr/share/icons/hicolor/32x32/apps/fcitx-mozc.png
+    install -Dm644 32x32/apps/org.fcitx.Fcitx5.fcitx-mozc.png                  ${pkgdir}/usr/share/icons/hicolor/32x32/apps/org.fcitx.Fcitx5.fcitx-mozc.png
+
+    install -Dm644 48x48/apps/fcitx-mozc-alpha-full.png                        ${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-alpha-full.png
+    install -Dm644 48x48/apps/fcitx-mozc-alpha-half.png                        ${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-alpha-half.png
+    install -Dm644 48x48/apps/fcitx-mozc-dictionary.png                        ${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-dictionary.png
+    install -Dm644 48x48/apps/fcitx-mozc-direct.png                            ${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-direct.png
+    install -Dm644 48x48/apps/fcitx-mozc-hiragana.png                          ${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-hiragana.png
+    install -Dm644 48x48/apps/fcitx-mozc-katakana-full.png                     ${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-katakana-full.png
+    install -Dm644 48x48/apps/fcitx-mozc-katakana-half.png                     ${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-katakana-half.png
+    install -Dm644 48x48/apps/fcitx-mozc-properties.png                        ${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-properties.png
+    install -Dm644 48x48/apps/fcitx-mozc-tool.png                              ${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-tool.png
+
+    install -Dm644 48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-alpha-full.png       ${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-alpha-full.png
+    install -Dm644 48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-alpha-half.png       ${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-alpha-half.png
+    install -Dm644 48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-dictionary.png       ${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-dictionary.png
+    install -Dm644 48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-direct.png           ${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-direct.png
+    install -Dm644 48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-hiragana.png         ${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-hiragana.png
+    install -Dm644 48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-katakana-full.png    ${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-katakana-full.png
+    install -Dm644 48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-katakana-half.png    ${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-katakana-half.png
+    install -Dm644 48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-properties.png       ${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-properties.png
+    install -Dm644 48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-tool.png             ${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-tool.png
 }

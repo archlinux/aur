@@ -1,6 +1,6 @@
 pkgbase = fcitx5-mozc-ut
 	pkgdesc = Mozc module for Fcitx5 bundled with the UT dictionary
-	pkgver = 2.26.4346.102.20210421
+	pkgver = 2.26.4381.102.20210524
 	pkgrel = 1
 	url = https://github.com/fcitx/mozc
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = fcitx5-mozc-ut
 	depends = fcitx5
 	depends = mozc-ut-common
 	optdepends = fcitx5-configtool
-	provides = fcitx5-mozc=2.26.4346.102
+	provides = fcitx5-mozc=2.26.4381.102
 	conflicts = fcitx-mozc
 	conflicts = fcitx-mozc-ut2
 	conflicts = fcitx-mozc-neologd-ut
@@ -27,12 +27,12 @@ pkgbase = fcitx5-mozc-ut
 	conflicts = fcitx-mozc-ut
 	conflicts = fcitx5-mozc
 	conflicts = fcitx5-mozc-git
-	source = fcitx5-mozc-ut-git::git+https://github.com/google/mozc.git#commit=b03ab3ff544130d6220a587a781c5ef7d5e07380
+	source = fcitx5-mozc-ut-git::git+https://github.com/google/mozc.git#commit=027238dd0f7be51dcb4fbd63a79e81562daf58a8
 	source = https://osdn.net/downloads/users/28/28063/fcitx5-mozc-20210329.patch
-	source = https://osdn.net/downloads/users/27/27009/fcitx5-mozc-icons-20201229.tar.gz
+	source = https://osdn.net/downloads/users/30/30476/fcitx5-mozc-icons-20210520.tar.gz
 	sha256sums = SKIP
 	sha256sums = 1b8fe2f0cb1422c34602921f2cd0a85c4daa0b0ad473d1228f754d2a1505e77d
-	sha256sums = b3c69ef3e960266fd9e36e9c4039f9b68ec843a0f598aed9f20535af008ce7df
+	sha256sums = 4ebaf2d3ef8029a0fb40fce600471876d4bcd6492f99c083e5aa5b221614e4e4
 
 pkgname = fcitx5-mozc-ut
 
