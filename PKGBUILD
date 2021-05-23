@@ -1,18 +1,17 @@
-# Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 # Maintainer: Kevin Meagher <kmeagher at icecube dot wisc dot edu>
 pkgname=healpix
 pkgver='3.70'
 _pkgdate='2020Jul23'
-pkgrel=1
+pkgrel=2
 pkgdesc="Software for pixelization, hierarchical indexation, synthesis, analysis, and visualization of data on the sphere."
 arch=('x86_64')
 url="https://healpix.jpl.nasa.gov/"
 license=('GPL2')
 groups=()
-depends=(cfitsio libsharp)
+depends=(cfitsio)
 makedepends=()
 provides=()
-conflicts=()
+conflicts=(libsharp)
 replaces=()
 backup=()
 options=(!emptydirs)
@@ -27,8 +26,14 @@ build() {
     ./configure --prefix=/usr
     make -j
 
+    cd "${srcdir}/Healpix_${pkgver}/src/common_libraries/libsharp"
+    ./configure --prefix=/usr
+    make -j
+
     cd "${srcdir}/Healpix_${pkgver}/src/cxx"
     autoreconf --install
+    export SHARP_CFLAGS="-I${srcdir}/Healpix_${pkgver}/src/common_libraries/libsharp/"
+    export SHARP_LIBS="-L${srcdir}/Healpix_${pkgver}/src/common_libraries/libsharp/.libs -lsharp"
     ./configure --prefix=/usr
     make -j
 }
@@ -36,6 +41,10 @@ build() {
 package() {
     cd "${srcdir}/Healpix_${pkgver}/src/C/autotools"
     make DESTDIR=${pkgdir} install
+
+    cd "${srcdir}/Healpix_${pkgver}/src/common_libraries/libsharp"
+    make DESTDIR=${pkgdir} install
+
     cd "${srcdir}/Healpix_${pkgver}/src/cxx"
     make DESTDIR=${pkgdir} install
 }
