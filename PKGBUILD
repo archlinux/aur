@@ -2,7 +2,7 @@
 
 pkgname=lokinet-bin
 _pkgname=lokinet
-pkgver=0.9.0
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='Anonymous, decentralized and IP based overlay network for the internet. [LOKI, OXEN]'
 url='https://github.com/oxen-io/loki-network'
@@ -21,7 +21,7 @@ source=("${_pkgname}-$pkgver.tar.xz::$url/releases/download/v$pkgver/${_pkgname}
         'lokinet.sysusers'
         'lokinet.tmpfiles'
         "https://raw.githubusercontent.com/oxen-io/loki-network/dev/LICENSE.txt")
-sha256sums=('5e65425afac6325252e068a1f45c52fc73cf2eabefa5a6a50fe1b44f9451c536'
+sha256sums=('85c7a5642b19bd9ac6674ae77e54b13c5de8b15b89a9ba4d615f3be156704eb2'
             'SKIP'
             '41f02f6ca693cd596165a7431795f36a2559504361857063278d31f833b3b7b1'
             'cb31c1783998ec11d3d6eb4e5e4e138a8d423ee1aeb0ae2ebe66a52b0f87b642'
