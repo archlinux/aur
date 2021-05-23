@@ -1,7 +1,7 @@
 pkgbase = sugar-datastore-git
 	pkgdesc = Sugar datastore service
 	pkgver = v0.118
-	pkgrel = 3
+	pkgrel = 1
 	url = https://sugarlabs.org/
 	arch = x86_64
 	license = GPL
