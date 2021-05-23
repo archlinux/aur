@@ -11,8 +11,8 @@ license=("custom")
 provides=("neopo")
 source=("git+https://github.com/nrobinson2000/neopo.git"
         "git+https://github.com/nrobinson2000/particle-cli-completion")
-md5sums=("SKIP"
-         "SKIP")
+md5sums=('SKIP'
+         'SKIP')
 makedepends=("python-setuptools")
 depends=("python" "vim" "git" "perl-archive-zip" "libusb" "jq")
 

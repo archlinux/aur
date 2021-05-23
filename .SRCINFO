@@ -1,6 +1,6 @@
 pkgbase = neopo-git
 	pkgdesc = A lightweight solution for local Particle development.
-	pkgver = r326.9a9b1d1
+	pkgver = r334.970c5fd
 	pkgrel = 1
 	url = https://github.com/nrobinson2000/neopo
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = neopo-git
 	depends = libusb
 	depends = jq
 	optdepends = visual-studio-code-bin: Particle Workbench IDE
-	optdepends = bash-completion: Bash completion (neopo/particle)
+	optdepends = bash-completion: Bash completion
 	provides = neopo
 	source = git+https://github.com/nrobinson2000/neopo.git
 	source = git+https://github.com/nrobinson2000/particle-cli-completion
