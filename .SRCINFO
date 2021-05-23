@@ -1,7 +1,7 @@
 pkgbase = swaylock-effects
 	pkgdesc = A fancier screen locker for Wayland.
 	pkgver = 1.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mortie/swaylock-effects
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = swaylock-effects
 	makedepends = meson
 	makedepends = ninja
 	makedepends = scdoc
+	makedepends = wayland
+	makedepends = wayland-protocols
 	depends = libxkbcommon
 	depends = cairo
 	depends = gdk-pixbuf2
