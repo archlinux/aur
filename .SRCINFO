@@ -1,12 +1,13 @@
 pkgbase = kvirc-git
 	pkgdesc = Qt5 based IRC-Client, compiled with kde5 support - Git Version
-	pkgver = 5.0.0.r51.gd8a3ee002
+	pkgver = 5.0.0.r90.g6d6d54752
 	pkgrel = 1
 	url = http://www.kvirc.net
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = python2
+	makedepends = python
+	makedepends = ninja
 	makedepends = gettext
 	makedepends = doxygen
 	makedepends = extra-cmake-modules
@@ -31,6 +32,8 @@ pkgbase = kvirc-git
 	depends = kwindowsystem
 	depends = knotifications
 	depends = kservice
+	depends = audiofile
+	depends = libxss
 	provides = kvirc
 	conflicts = kvirc4
 	conflicts = kvirc
@@ -38,4 +41,3 @@ pkgbase = kvirc-git
 	sha256sums = SKIP
 
 pkgname = kvirc-git
-
