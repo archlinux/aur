@@ -1,6 +1,6 @@
 _pkgname=yap-frontend-cli
 pkgname=yap-frontend-cli
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A TUI for the yap planner written in rust"
 arch=('x86_64')
