@@ -1,7 +1,7 @@
 pkgbase = crossftp-client
-	pkgdesc = Java based free FTP, Amazon S3, Amazon Glacier, and Google Storage client.
+	pkgdesc = Java based free platform-independent FTP, SFTP, WebDav, Amazon S3, Amazon Glacier, Microsoft Azure, Google storage, and OpenStack Swift client.
 	pkgver = 1.99.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.crossftp.com
 	install = .INSTALL
 	arch = any
