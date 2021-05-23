@@ -6,12 +6,13 @@ _I18N_EREGEX='.*'
 _pkgname=collabora-online-server-nodocker
 
 # taking version of loolwsd:
-pkgver=6.4.2
+pkgver=6.4.8
 pkgrel=1
 arch=('x86_64')
 url="https://www.collaboraoffice.com/code/"
 license=('MPL')
-makedepends=(bzip2 coreutils curl fontconfig gawk grep gzip libcap sed systemd tar util-linux xz)
+makedepends=(curl fontconfig libcap)
+# ↑ excluding base (bzip2 coreutils gawk grep gzip sed systemd tar util-linux xz)
 
 optdepends=(
   'hunspell: Use with language-specific hunspell dictionaries for LibreOffice spell-check'
@@ -30,7 +31,7 @@ source=(
 )
 sha1sums=(
   'SKIP'
-  '9e8f1829283200e3a0b0c548d39a8373846b4cae'
+  '876319e04146b36bd53b06e14917c86cb8ec6acc'
   '3fe2db88f4f7ee203520c59760582103d3e41210'
   '2d271f9493ea14c675af1bfa76f6b654569dd51f'
   'f9c102a06b2582548f13121e78790237e2cb38e1'
