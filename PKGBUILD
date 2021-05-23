@@ -8,14 +8,14 @@
 
 
 ## Helpful internal stuff
-_commit=b03ab3ff544130d6220a587a781c5ef7d5e07380
-_mozcver=2.26.4346.102
-_utdicver=20210421
+_commit=027238dd0f7be51dcb4fbd63a79e81562daf58a8
+_mozcver=2.26.4381.102
+_utdicver=20210524
 _utdicrel=1
 _utuserlink=30
-_utdiclink=30220
-_kenver=202103
-_jugyosyover=202103
+_utdiclink=30474
+_kenver=202104
+_jugyosyover=202104
 _buildtype=Release
 
 pkgname='mozc-ut-common'
@@ -34,14 +34,18 @@ source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit
         "https://osdn.net/projects/ponsfoot-aur/storage/mozc/ken_all-${_kenver}.zip"
         "https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-${_jugyosyover}.zip")
 sha256sums=('SKIP'
-            '690237f82e6eda05c9dd8cf303dfe6cd94358b2518e92f36a029afd524efe9b1'
-            '39d7079e539a665e9ec89fad0592dc994c187d4dbfb261eca8b722aebb41f047'
-            '820e312700c796e413d1b90b3d5d9f1eeb309a3cb911bc2bd9c5714f6fadfdd0')
+            '32563ddc71a50716f907452bed600caa236db7271a7f3966a42df1be6d10a4ae'
+            '20d0e16deebb2f70754f46a74d9eac697cd250df538c3a8bbba482069671ade8'
+            '9924bdb746b23a6f0ddd0279439c31fff8ec4aeb0d79e40267533e2d11f93bc7')
 
 prepare() {
     cd ${pkgname}-git
 
     git submodule update --init --recursive
+
+    # Fix for GCC11 compatibility
+    # Based on original patch found at https://yanqiyu.fedorapeople.org/fcitx5-mozc/fix-build-gcc11.patch
+    sed -i -e 's/#include <array>/#include <array>\n#include <limits>/' src/third_party/abseil-cpp/absl/synchronization/internal/graphcycles.cc
 
     # Avoid build errors (don't use libc++)
     # These should probably be included as options in GYP_DEFINES

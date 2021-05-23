@@ -1,6 +1,6 @@
 pkgbase = mozc-ut-common
 	pkgdesc = The Open Source edition of Google Japanese Input bundled with the UT dictionary
-	pkgver = 2.26.4346.102.20210421
+	pkgver = 2.26.4381.102.20210524
 	pkgrel = 1
 	url = https://github.com/google/mozc
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = mozc-ut-common
 	makedepends = python
 	makedepends = python-six
 	depends = qt5-base
-	provides = mozc=2.26.4346.102
-	provides = mozc-ut=2.26.4346.102.20210421
+	provides = mozc=2.26.4381.102
+	provides = mozc-ut=2.26.4381.102.20210524
 	conflicts = mozc
 	conflicts = mozc-ut
 	conflicts = mozc-ut2
@@ -23,14 +23,14 @@ pkgbase = mozc-ut-common
 	conflicts = mozc-neologd-ut+ut2
 	conflicts = mozc-ut-unified
 	conflicts = mozc-ut-united
-	source = mozc-ut-common-git::git+https://github.com/google/mozc.git#commit=b03ab3ff544130d6220a587a781c5ef7d5e07380
-	source = https://osdn.net/downloads/users/30/30220/mozcdic-ut-20210421.1.tar.bz2
-	source = https://osdn.net/projects/ponsfoot-aur/storage/mozc/ken_all-202103.zip
-	source = https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-202103.zip
+	source = mozc-ut-common-git::git+https://github.com/google/mozc.git#commit=027238dd0f7be51dcb4fbd63a79e81562daf58a8
+	source = https://osdn.net/downloads/users/30/30474/mozcdic-ut-20210524.1.tar.bz2
+	source = https://osdn.net/projects/ponsfoot-aur/storage/mozc/ken_all-202104.zip
+	source = https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-202104.zip
 	sha256sums = SKIP
-	sha256sums = 690237f82e6eda05c9dd8cf303dfe6cd94358b2518e92f36a029afd524efe9b1
-	sha256sums = 39d7079e539a665e9ec89fad0592dc994c187d4dbfb261eca8b722aebb41f047
-	sha256sums = 820e312700c796e413d1b90b3d5d9f1eeb309a3cb911bc2bd9c5714f6fadfdd0
+	sha256sums = 32563ddc71a50716f907452bed600caa236db7271a7f3966a42df1be6d10a4ae
+	sha256sums = 20d0e16deebb2f70754f46a74d9eac697cd250df538c3a8bbba482069671ade8
+	sha256sums = 9924bdb746b23a6f0ddd0279439c31fff8ec4aeb0d79e40267533e2d11f93bc7
 
 pkgname = mozc-ut-common
 
