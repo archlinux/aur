@@ -4,7 +4,7 @@
 
 pkgname=lib32-libcaca
 pkgver=0.99.beta19
-pkgrel=4
+pkgrel=5
 pkgdesc="Color AsCii Art library (32-bit)"
 url="http://caca.zoy.org/wiki/libcaca"
 arch=(x86_64)
@@ -12,8 +12,10 @@ license=(custom:WTFPL)
 depends=(lib32-imlib2 libcaca)
 makedepends=(git)
 _commit=caae67dce5d72ceceac79468bed47b58ea8e4a29  # tags/v0.99.beta19
-source=("git+https://github.com/cacalabs/libcaca#commit=$_commit")
-sha256sums=('SKIP')
+source=("git+https://github.com/cacalabs/libcaca#commit=$_commit"
+        57.patch)
+sha256sums=('SKIP'
+            'ece7dc2cf7e0252a88ff943ec0851c19aeeab5d20b26396984810524347ea38a')
 
 pkgver() {
   cd libcaca
@@ -26,6 +28,10 @@ prepare() {
   # CVE-2021-3410
   # https://bugs.archlinux.org/task/70053
   git cherry-pick -n 46b4ea7c e4968ba6
+
+  # CVE-2021-30498 CVE-2021-30499
+  # https://bugs.archlinux.org/task/70520
+  git apply -3 ../57.patch
 
   # Fix up version
   sed -i '/^AC_INIT/s/beta19pre/beta19/;/^LT_MICRO=/s/18/19/' configure.ac
@@ -67,4 +73,4 @@ package() {
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 COPYING
 }
 
-# vim:set sw=2 noet:
+# vim:set sw=2 et:
