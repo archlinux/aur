@@ -1,4 +1,6 @@
 # Maintainer: Groctel <aur@taxorubio.com>
+# Maintainer: Naveen M K <naveen@syrusdark.website>
+
 pkgbase=manimce
 pkgname=manim
 pkgver=0.6.0
