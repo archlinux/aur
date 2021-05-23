@@ -1,0 +1,19 @@
+pkgbase = python-sqlbag
+	pkgdesc = various snippets of SQL-related boilerplate
+	pkgver = 0.1.1617247075
+	pkgrel = 1
+	url = https://github.com/djrobstep/sqlbag
+	arch = any
+	license = unknown
+	makedepends = python-setuptools
+	depends = python
+	depends = python-sqlalchemy
+	depends = python-greenlet
+	source = https://files.pythonhosted.org/packages/source/s/sqlbag/sqlbag-0.1.1617247075.tar.gz
+	sha256sums = b9d7862c3b2030356d796ca872907962fd54704066978d7ae89383f5123366ed
+
+pkgname = python-sqlbag
+	depends = python
+	depends = python-sqlalchemy
+	depends = python-greenlet
+
