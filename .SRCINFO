@@ -1,0 +1,24 @@
+pkgbase = exiv2-pre
+	pkgdesc = Exif, Iptc and XMP metadata manipulation library and tools (prerelease)
+	pkgver = 0.27.4_RC3
+	pkgrel = 1
+	url = https://github.com/Exiv2/exiv2
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = gtest
+	depends = gcc-libs
+	depends = zlib
+	depends = expat
+	depends = gettext
+	depends = curl
+	provides = exiv2
+	provides = libexiv2.so
+	conflicts = exiv2
+	source = https://github.com/Exiv2/exiv2/archive/v0.27.4-RC3/exiv2-pre-0.27.4-RC3.tar.gz
+	md5sums = f40776ceaf4c665c9aca43c00a8f8d2a
+	sha256sums = 8d209bb645d8fb4dae2d880326d00afa6b0e37ae353d47e8d4344c01a2031780
+
+pkgname = exiv2-pre
+
