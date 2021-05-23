@@ -40,11 +40,11 @@ pegtl
 gl2ps
 ffmpeg
 libtheora
-java-runtime
+'java-runtime-openjdk=8'
 )
 
 makedepends=(
-'java-runtime-openjdk=8'
+'java-environment-openjdk=8'
 cmake
 ninja
 )
