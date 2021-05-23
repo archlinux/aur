@@ -4,7 +4,7 @@
 
 pkgname=synce-core
 pkgver=0.17
-pkgrel=4
+pkgrel=5
 pkgdesc="provide a means of communication with a Windows CE device - libraries"
 arch=('x86_64')
 url="http://synce.sourceforge.net/"

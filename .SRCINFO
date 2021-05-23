@@ -1,12 +1,12 @@
 pkgbase = synce-core
 	pkgdesc = provide a means of communication with a Windows CE device - libraries
 	pkgver = 0.17
-	pkgrel = 4
+	pkgrel = 5
 	url = http://synce.sourceforge.net/
 	arch = x86_64
 	license = GPL
 	makedepends = dhclient
-	makedepends = pyrex
+	makedepends = python2-pyrex
 	depends = dbus-glib
 	depends = udev
 	depends = python2
