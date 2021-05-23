@@ -19,7 +19,7 @@ backup=('etc/openhab2/services/addons.cfg'
 
 install="${pkgname}.install"
 
-source=("openhab-${pkgver}.tar.gz::https://bintray.com/openhab/mvn/download_file?file_path=org%2Fopenhab%2Fdistro%2Fopenhab%2F${pkgver}%2Fopenhab-${pkgver}.tar.gz"
+source=("openhab-${pkgver}.tar.gz::https://openhab.jfrog.io/artifactory/libs-release-local/org/openhab/distro/openhab/${pkgver}/openhab-${pkgver}.tar.gz"
         "openhab2.service"
 	"openhab2.default"
 	"openhab2.install"

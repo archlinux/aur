@@ -18,7 +18,7 @@ pkgbase = openhab2
 	backup = var/lib/openhab2/etc/keystore
 	backup = var/lib/openhab2/etc/users.properties
 	backup = var/lib/openhab2/etc/keys.properties
-	source = openhab-2.5.12.tar.gz::https://bintray.com/openhab/mvn/download_file?file_path=org%2Fopenhab%2Fdistro%2Fopenhab%2F2.5.12%2Fopenhab-2.5.12.tar.gz
+	source = openhab-2.5.12.tar.gz::https://openhab.jfrog.io/artifactory/libs-release-local/org/openhab/distro/openhab/2.5.12/openhab-2.5.12.tar.gz
 	source = openhab2.service
 	source = openhab2.default
 	source = openhab2.install
