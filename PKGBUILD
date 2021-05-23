@@ -4,9 +4,9 @@
 
 pkgname=kicad-i18n-git
 pkgver=r1879.e89d9a8
-pkgrel=2
+pkgrel=3
 pkgdesc="Translations for KiCad source code."
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://kicad-pcb.org/"
 license=('GPL')
 depends=('kicad')
