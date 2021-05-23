@@ -1,0 +1,19 @@
+pkgbase = icecream-cpp-git
+	pkgdesc = Single header library for print debugging in C++11 and forward
+	pkgver = 0.3.1.r13.g0f77e26
+	pkgrel = 1
+	url = https://github.com/renatogarcia/icecream-cpp
+	arch = x86_64
+	license = MIT
+	checkdepends = cmake>=3.16
+	makedepends = cmake>=3.16
+	makedepends = git
+	makedepends = boost>=1.71.0
+	provides = icecream-cpp
+	provides = icecream-debugging
+	conflicts = icecream-cpp
+	source = icecream-cpp-git::git+https://github.com/renatogarcia/icecream-cpp
+	sha256sums = SKIP
+
+pkgname = icecream-cpp-git
+
