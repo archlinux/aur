@@ -23,8 +23,8 @@ _pkgname=(
 
 pkgname=(${_pkgname[@]})
 _reponame="fascode-live-tools"
-pkgver="1.7"
-pkgrel="2"
+pkgver="1.8"
+pkgrel="1"
 pkgdesc="Scripts required for live environment"
 arch=('any')
 url="https://github.com/FascodeNet/${_reponame}"
@@ -33,7 +33,7 @@ depends=(
     "xdg-user-dirs"
     "bash"
 )
-md5sums=("0469ff8bf02665457ab196d5533a444d")
+md5sums=("2af82a135a095d86aad039ad5c5e6228")
 source=("${url}/archive/v${pkgver}.zip")
 
 extracted="${_reponame}-${pkgver}"
