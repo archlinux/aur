@@ -2,10 +2,10 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: foalsrock <foalsrock at gmail dot-com>
 # Contributor: jebaum <jebaum at ucla dot edu>
-# Maitainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=fzf-git
-pkgver=0.21.1.r24.g4ec144c
+pkgver=0.27.1
 pkgrel=1
 epoch=1
 pkgdesc="Command-line fuzzy finder"
