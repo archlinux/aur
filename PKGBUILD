@@ -27,6 +27,16 @@ _kyber_disable=y
 _2k_HZ_ticks=
 _1k_HZ_ticks=y
 _500_HZ_ticks=
+# Compile ONLY used modules to VASTLYreduce the number of modules built
+# and the build time.
+#
+# To keep track of which modules are needed for your specific system/hardware,
+# give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
+# This PKGBUILD read the database kept if it exists
+#
+# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
+_localmodcfg=
+
 
 ### Do not edit below this line unless you know what you're doing
 
@@ -40,7 +50,7 @@ pkgver=${_major}
 #_stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -278,6 +288,18 @@ prepare() {
       echo "Enable CONFIG_VHBA"
       scripts/config --module CONFIG_VHBA
       scripts/config --disable CONFIG_BPF_PRELOAD
+
+      ### Optionally load needed modules for the make localmodconfig
+       # See https://aur.archlinux.org/packages/modprobed-db
+           if [ -n "$_localmodcfg" ]; then
+               if [ -f $HOME/.config/modprobed.db ]; then
+               echo "Running Steven Rostedt's make localmodconfig now"
+               make LSMOD=$HOME/.config/modprobed.db localmodconfig
+           else
+               echo "No modprobed.db data found"
+               exit
+               fi
+           fi
 
   ### Save configuration for later reuse
      echo "Save config for reuse"
