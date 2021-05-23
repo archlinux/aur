@@ -1,6 +1,6 @@
 # Maintainer: BeyondMagic <koetemagie@gmail.com>
 pkgname=nincat-git
-pkgver=2.4.r79.635a60f
+pkgver=2.7.r79.635a60f.r79.635a60f
 pkgrel=1
 pkgdesc="This a simple script that loads an ASCII art centered in your terminal."
 arch=(any)
@@ -22,7 +22,7 @@ pkgver() {
 
 package() {
   cd "$srcdir/$pkgname"
-  make PREFIX=/usr DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" install
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
