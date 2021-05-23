@@ -1,0 +1,19 @@
+pkgbase = python-migra
+	pkgdesc = Like but for PostgreSQL schemas
+	pkgver = 3.0.1621480950
+	pkgrel = 1
+	url = https://databaseci.com/docs/migra
+	arch = any
+	license = Unlicense
+	makedepends = python-setuptools
+	depends = python
+	depends = python-schemainspect
+	depends = python-sqlbag
+	source = https://files.pythonhosted.org/packages/source/m/migra/migra-3.0.1621480950.tar.gz
+	sha256sums = 5fdce56fe7de79b17b7875250c1e90c645117cc8d358c5a43b38b815390a4445
+
+pkgname = python-migra
+	depends = python
+	depends = python-schemainspect
+	depends = python-sqlbag
+
