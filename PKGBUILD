@@ -1,7 +1,7 @@
 # Maintainer: Angelo Theodorou <encelo@gmail.com>
 
 pkgname=nctracer-git
-pkgver=r22.c58324a
+pkgver=r29.804e689
 pkgrel=1
 pkgdesc="An ImGui front-end to the pmTracer library made with the nCine"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ pkgver() {
 }
 
 prepare() {
-  git clone https://github.com/nCine/nCine --branch develop || git -C nCine pull
+  git clone https://github.com/nCine/nCine || git -C nCine pull
   git clone https://github.com/nCine/nCine-data || git -C nCine-data pull
   git clone https://github.com/encelo/pmTracer || git -C pmTracer pull
   git clone https://github.com/encelo/ncTracer-data || git -C ncTracer-data pull
