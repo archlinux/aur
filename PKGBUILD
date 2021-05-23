@@ -1,8 +1,8 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=dell-g5se-fanctl
-pkgver=3.2
-pkgrel=2
+pkgver=3.3
+pkgrel=1
 pkgdesc="Script to automatically set fan speed according to cpu and gpu thermals on Dell G5SE laptops."
 url="https://github.com/DavidLapous/DellG5SE-Fan-Linux"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
 	"dell-g5se-fanctl.service"
 )
 sha256sums=(
-	'cc8d6944848de83c54a220de2b5537b6d5928ecca21fec3b95af02d8616fc6b3'
+	'3c039673901db3d465e5f63e4c04b73eb6c2de91a7e4e02f0cf978820c7f22cd'
 	'a068a92ff638389f04c90f34cfdbb9941a69617950ddb93da2dd65504b855f82'
 	'fd87577fda66330c86073bf8841dae915f2f2054a42f5e9a66ff6fad06dd9416'
 	'173110bac7b9c571fba6dd0dc446fbe79978663e49348cb729e87bbe9d982997'
