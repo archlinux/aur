@@ -1,0 +1,23 @@
+pkgbase = amusiz
+	pkgdesc = A GTK Amazon Music client for Linux
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/mirkobrombin/Amusiz
+	arch = any
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = hicolor-icon-theme
+	depends = dconf
+	depends = python
+	depends = libhandy
+	depends = gtk3
+	depends = python-gobject
+	depends = wine
+	depends = webkit2gtk
+	source = amusiz-1.2.0.tar.gz::https://github.com/mirkobrombin/Amusiz/archive/2.1.0.tar.gz
+	sha256sums = 0fc483073ffd0a983a0ba3ceda6ecd8d9c9785f8ce254125be78dd48babcc07b
+
+pkgname = amusiz
+
+
