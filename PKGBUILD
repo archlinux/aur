@@ -12,7 +12,7 @@ depends=('pacman' 'jshon' 'tar')
 optdepends=('git: AUR4 git support')
 provides=($pkgname)
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('2864fd23c4af821435f55dd32dcf0aff86327120d9531c1fa43036c86c89c24e')
+sha256sums=('26db190bca7f3560a802931e45cf87339a9e4b1f1e3933995a79845ba67c460d')
 
 package() {
   cd "$pkgname-$pkgver"
