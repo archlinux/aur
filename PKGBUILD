@@ -1,7 +1,7 @@
 # Maintainer: Alban Fichet <alban.fichet@gmx.fr>
 pkgname=openexr-viewer
-pkgver=0.2
-pkgrel=2
+pkgver=0.3
+pkgrel=3
 pkgdesc="Simple viewer for OpenEXR files with detailed metadata display"
 arch=('any')
 url="https://github.com/afichet/openexr-viewer"

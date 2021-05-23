@@ -1,7 +1,7 @@
 pkgbase = openexr-viewer
 	pkgdesc = Simple viewer for OpenEXR files with detailed metadata display
-	pkgver = 0.2
-	pkgrel = 2
+	pkgver = 0.3
+	pkgrel = 3
 	url = https://github.com/afichet/openexr-viewer
 	arch = any
 	license = BSD
@@ -10,8 +10,8 @@ pkgbase = openexr-viewer
 	depends = openexr>3.0.1
 	depends = qt5-base
 	depends = qt5-svg
-	provides = openexr-viewer=0.2
-	source = openexr-viewer-0.2::git+https://github.com/afichet/openexr-viewer.git#tag=v0.2
+	provides = openexr-viewer=0.3
+	source = openexr-viewer-0.3::git+https://github.com/afichet/openexr-viewer.git#tag=v0.3
 	md5sums = SKIP
 
 pkgname = openexr-viewer
