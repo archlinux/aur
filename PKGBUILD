@@ -1,6 +1,6 @@
 # Maintainer: Alexander Pohl <alex at ahpohl dot com>
 pkgname=smartmeter
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 epoch=
 pkgdesc="Read energy utility meter with IR dongle"
