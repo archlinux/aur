@@ -9,8 +9,8 @@ sed -i 's/pkgver=.*$/pkgver='$VERSION'/' PKGBUILD
 # Update sums
 updpkgsums
 
-# Generate .SRCINFO
-makepkg --printsrcinfo > .SRCINFO
-
 # Test makepkg
 makepkg -f
+
+# Generate .SRCINFO
+makepkg --printsrcinfo > .SRCINFO
