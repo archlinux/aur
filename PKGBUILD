@@ -3,9 +3,9 @@
 
 pkgname=hstr
 pkgver=2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Bash and Zsh shell history suggest box - easily view, navigate, search and manage your command history."
-arch=('any')
+arch=('x86_64')
 url="https://github.com/dvorka/hstr"
 license=('Apache')
 makedepends=('readline' 'ncurses')
