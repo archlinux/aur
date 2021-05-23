@@ -1,7 +1,7 @@
 # Maintainer: Patrick Ziegler <p.ziegler96@gmail.com>
 _pkgname=polybar
 pkgname="${_pkgname}-git"
-pkgver=3.5.5
+pkgver=3.5.6
 pkgrel=1
 pkgdesc="A fast and easy-to-use status bar"
 arch=("i686" "x86_64")
@@ -32,7 +32,7 @@ prepare() {
 build() {
   cd "${_pkgname}/build" || exit 1
   # Force cmake to use system python (to detect xcbgen)
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=/usr/bin/python3 -DSPHINX_FLAGS="-D man_make_section_directory=0" ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=/usr/bin/python3 ..
   cmake --build .
 }
 
