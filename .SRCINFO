@@ -1,6 +1,6 @@
 pkgbase = network-manager-applet-git
 	pkgdesc = Applet for managing network connections
-	pkgver = 1.19.0.dev.r45.gda47a6d1
+	pkgver = 1.21.0.dev.r12.g60f8b4a1
 	pkgrel = 1
 	url = http://www.gnome.org/projects/NetworkManager/
 	arch = i686
@@ -26,7 +26,6 @@ pkgbase = network-manager-applet-git
 	depends = libnma
 	depends = libappindicator-gtk3
 	depends = libmm-glib
-	depends = libselinux
 	depends = libayatana-appindicator
 	options = emptydirs
 	source = git+https://gitlab.gnome.org/GNOME/network-manager-applet.git
