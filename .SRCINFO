@@ -1,6 +1,6 @@
 pkgbase = python-monkeytype
 	pkgdesc = Generating type annotations from sampled production types
-	pkgver = 20.5.0
+	pkgver = 21.5.0
 	pkgrel = 1
 	url = https://github.com/instagram/MonkeyType
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-monkeytype
 	depends = python
 	depends = python-retype
 	depends = python-typed-ast
-	source = https://files.pythonhosted.org/packages/source/M/MonkeyType/MonkeyType-20.5.0.tar.gz
-	sha256sums = fe596bebc5e1b6a64eae71a40b880688de433e4f70507a31ada48510195251dd
+	source = https://files.pythonhosted.org/packages/source/M/MonkeyType/MonkeyType-21.5.0.tar.gz
+	sha256sums = e47089f032e65f9bc7b4146725285837b75136f28e3025b434d494f6d1b3cb87
 
 pkgname = python-monkeytype
 	depends = python
