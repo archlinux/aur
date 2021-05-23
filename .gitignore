@@ -1,0 +1,6 @@
+pkg/
+src/
+
+#
+lmgrep*
+lucene-grep-*.tar.???
