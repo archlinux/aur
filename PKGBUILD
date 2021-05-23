@@ -1,7 +1,7 @@
 # Maintainer: Aleksy Grabowski <hurufu+arch@gmail.com>
 
 pkgname=python-asn1tools
-pkgver=0.155.3
+pkgver=0.156.0
 pkgrel=1
 pkgdesc='A Python package for ASN.1 parsing, encoding and decoding'
 arch=(any)
@@ -16,8 +16,8 @@ depends=(
 makedepends=(python-pip)
 checkdepends=(python-pytest python-trio)
 source=(asn1tools-$pkgver.tar.gz::https://github.com/eerimoq/asn1tools/archive/$pkgver.tar.gz)
-md5sums=(e1538bd40946ef3045e1766f6142729e)
-sha1sums=(c442cbdb7df189d36523eb408f138910dc66ea64)
+md5sums=(a42fb735d3d290bd85e63ce5de58f449)
+sha1sums=(ab39f16eec574d229f58bd49dc079348e3df27c7)
 
 build() {
     cd asn1tools-$pkgver
