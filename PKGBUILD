@@ -4,8 +4,8 @@
 _bundle_pandoc=true
 
 pkgname=zettlr
-pkgver=1.8.8
-pkgrel=2
+pkgver=1.8.9
+pkgrel=1
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url='https://www.zettlr.com'
@@ -24,7 +24,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Zettlr/Zettlr/archive/v
         # citation style
         "locales-${pkgver}-${pkgrel}.zip::https://github.com/citation-style-language/locales/archive/${_csl_locale_commit}.zip"
         "chicago-author-date-${pkgver}-${pkgrel}.csl::https://github.com/citation-style-language/styles/raw/${_csl_style_commit}/chicago-author-date.csl")
-sha256sums=('cce11cca98358dbe48a7f42bafaa789dba77add711b9e37f155ee8c956085938'
+sha256sums=('351b579c2c42f2f1836e9882a27e0497c862857a826231b5067c1204d9b846b4'
             '8ebd67f265760cdcd450237ff109ee7334abaaf61eb26a2dfe917a5bd1f3c59d'
             '2b7cd6c1c9be4add8c660fb9c6ca54f1b6c3c4f49d6ed9fa39c9f9b10fcca6f4')
 if ${_bundle_pandoc} ; then
