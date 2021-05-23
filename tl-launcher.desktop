@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.120.2
+Name=TL
+GenericName=TL
+Comment=One of the best simple Minecraft launchers
+Exec=java -jar /usr/lib/tl-launcher/tl-launcher.jar
+Icon=tl-launcher
+Terminal=false
+Categories=Game;
