@@ -3,7 +3,7 @@
 pkgname=lokinet-bin
 _pkgname=lokinet
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Anonymous, decentralized and IP based overlay network for the internet. [LOKI, OXEN]'
 url='https://github.com/oxen-io/loki-network'
 arch=('x86_64')
