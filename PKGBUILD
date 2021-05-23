@@ -1,7 +1,7 @@
 pkgname=mingw-w64-cgns
 _PKGNAME=CGNS
 pkgver=4.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Standard for recording and recovering computer data associated with the numerical solution of fluid dynamics equations (mingw-w64)'
 arch=('any')
 url='http://www.cgns.org'
@@ -33,7 +33,7 @@ build() {
     -DCGNS_BUILD_CGNSTOOLS:BOOL=OFF \
     -DCGNS_ENABLE_64BIT:BOOL=${_64bits} \
     -DCGNS_ENABLE_FORTRAN:BOOL=OFF \
-    -DCGNS_ENABLE_HDF5:BOOL=OFF \
+    -DCGNS_ENABLE_HDF5:BOOL=ON \
     -DCGNS_ENABLE_LEGACY:BOOL=ON \
     -DCGNS_ENABLE_SCOPING:BOOL=OFF \
     -DCGNS_ENABLE_TESTS:BOOL=OFF \
