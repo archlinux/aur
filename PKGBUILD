@@ -2,7 +2,7 @@
 
 pkgname=mon2cam-git
 _pkgname=Mon2Cam
-pkgver=r83.fb6f333
+pkgver=r84.e3f26c7
 pkgrel=1
 pkgdesc="Workaround for multi-monitor Discord screensharing"
 arch=("any")
@@ -12,13 +12,13 @@ depends=(
     "deno"
     "xorg-xrandr"
     "ffmpeg"
-    "v4l2loopback-dkms"
 )
 makedepends=(
     "git"
     "deno"
 )
 optdepends=(
+    "v4l2loopback-dkms: virtual webcam driver"
     "wf-recorder: wlroots compositor (wayland) support"
 )
 provides=("mon2cam")
