@@ -3,7 +3,7 @@
 
 pkgname=fvwm3-git
 _pkgname=fvwm3
-pkgver=1.0.0.r139.g25768a8e
+pkgver=1.0.2.r132.g5f1cf518
 pkgrel=1
 pkgdesc="A powerful ICCCM2 compliant multiple virtual desktop window manager for X11"
 arch=('i686' 'x86_64')
