@@ -15,36 +15,9 @@
 
 
 
-### Important notes for version 1.34.x ###
-#
-#   1) From now on, this package will only install ZoneMinder itself. In other words, this means that after the setup is complete, ZoneMinder
-#   will NOT be fully deployed and thus will NOT be able to function properly without manual intervention.
-#
-#   As a bare minimum, on a fresh install you will also need to at least install and configure a MySQL-compatible server and a web server, as well
-#   as perform some other small tweaks needed to finalize the setup (e.g. you will need to refresh systemd's tmpfiles and, if you'll be using Nginx,
-#   you will also need to install and configure fcgiwrap, spawn-fcgi and multiwatch).
-#
-#   For more detailed info on how to configure ZoneMinder, you should check the following links:
-#
-#   * https://wiki.archlinux.org/index.php/ZoneMinder
-#   * https://zoneminder.readthedocs.io/en/latest/
-#
-#   Also, a separate script (zmsetup.sh) is now provided to help with automating the above procedure, if so desired.
-#
-#   2) As an extension to the above, there is now no hard dependency on either Apache, Nginx or MariaDB.
-#
-#   3) ZoneMinder's webroot has been relocated from /srv/zoneminder to /usr/share/webapps/zoneminder. The default configuration files have
-#   been adjusted for this change, but if you've ever manually edited your local copies then they will not be automatically overwritten with the new
-#   versions, which means updating to 1.34 will probably break your existing setup. Do look for any rogue .pacsave files in /etc after you update!
-#
-#   Bug reports and packaging suggestions are always welcome at https://aur.archlinux.org/packages/zoneminder/
-
-
-
-
 pkgname=zoneminder
-pkgver=1.36.0
-pkgrel=3
+pkgver=1.36.1
+pkgrel=1
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('any')
 url='https://www.zoneminder.com/'
@@ -55,7 +28,7 @@ depends=('polkit' 'ffmpeg'
          'perl-image-info' 'perl-libwww' 'perl-mime-lite' 'perl-mime-tools' 'perl-net-sftp-foreign' 'perl-number-bytes-human' 'perl-php-serialization'
          'perl-sys-cpu' 'perl-sys-meminfo' 'perl-sys-mmap' 'perl-uri-encode'
          # Needed for ONVIF support
-         'perl-class-load' 'perl-data-uuid' 'perl-io-socket-multicast' 'perl-soap-wsdl' 'perl-xml-parser'
+         'perl-data-uuid' 'perl-io-socket-multicast' 'perl-soap-wsdl' 'perl-xml-parser'
          # Needed for SSL support
          'perl-lwp-protocol-https'
          # Needed for Telemetry support
@@ -98,13 +71,6 @@ sha256sums=('SKIP'
 prepare () {
     cd $pkgname-git
     
-    # Temporary fix for GCC11 compatibility
-    # Relevant commit: https://github.com/ZoneMinder/zoneminder/commit/a335e740f3b8abcd3085afaa06820074e4f20e95
-    #
-    # A fix for the fix: added the '--no-commit' argument to prevent build errors on systems where a git identity
-    # is not configured (e.g. in Docker or chroot environments) as suggested by @wuestengecko on AUR
-    git cherry-pick a335e740f3b8abcd3085afaa06820074e4f20e95 --no-commit
-
     # Download and move extra PHP plugins into place
     git submodule update --init --recursive
     
