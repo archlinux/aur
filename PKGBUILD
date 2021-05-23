@@ -1,6 +1,6 @@
 pkgname=ttf-neodgm-pro
 pkgver=1.011
-pkgrel=0
+pkgrel=1
 pkgdesc='Proportional Korean TrueType font based on NeoDunggeunmo.'
 arch=('any')
 url='https://neodgm.dalgona.dev/neodgm_pro.html'
