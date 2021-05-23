@@ -11,16 +11,14 @@
 pkgbase=networkmanager-git
 _gitname=NetworkManager
 pkgname=(networkmanager-git libnm-git)
-pkgver=1.31.2.r28078.gaf360238be
+pkgver=1.31.5.r28376.g0448d3b931
 pkgrel=1
 pkgdesc="Network Management daemon"
 arch=(i686 x86_64)
 url=http://www.gnome.org/projects/$_gitname
 license=(GPL2 LGPL2.1)
-depends=(dbus-glib libmm-glib libndp libnewt libnl libsoup libteam libutil-linux
-    nss polkit wpa_supplicant)
 checkdepends=(libx11 python-dbus)
-_pppver=2.4.8
+_pppver=2.4.9
 makedepends=(dnsmasq mobile-broadband-provider-info  meson ninja intltool dhclient openresolv iptables gobject-introspection gtk-doc "ppp=$_pppver" modemmanager
               iproute2 nss polkit wpa_supplicant libsoup systemd libgudev
              libnewt libndp libteam vala perl-yaml python-gobject git vala jansson bluez-libs
@@ -118,7 +116,7 @@ _pick() {
 }
 
 package_networkmanager-git() {
-   depends=(iproute2 mobile-broadband-provider-info polkit wpa_supplicant libsoup openresolv libnewt libndp libteam curl bluez-libs libpsl audit)
+   depends=(iproute2 mobile-broadband-provider-info polkit wpa_supplicant libsoup openresolv libnewt libndp libteam curl bluez-libs libpsl audit libnm-git)
     optdepends=('dnsmasq: connection sharing'
     'bluez: Bluetooth support'
     'openresolv: resolvconf support'
@@ -151,7 +149,7 @@ package_networkmanager-git() {
   pkgdesc="NetworkManager client library"
   provides=(libnm)
   conflicts=(libnm)
-  depends=(glib2 libgudev nss libutil-linux jansson systemd-libs)
+  depends=(glib2 nss libutil-linux systemd-libs)
   mv libnm/* "$pkgdir"
 }
 
