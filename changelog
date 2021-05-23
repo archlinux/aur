@@ -1,3 +1,16 @@
+Proton-6.9-GE-1 Released
+
+-Removed patch that was causing a lot of the RE8 crashes. Stability should be a lot better now. You may still occasionally get crashes when first opening the game, or during loading, or while changing screen resolution. Apart from that I was able to get through all of the intro cutscenes up to the playable 'van' area (trying not to spoil the game here) at the beginning on both AMD and Nvidia . Nvidia still takes a while to load the game, but it should at least be playable now.
+-vcrun2019_ge checksum has been disabled. It's downloaded from Microsoft and changes too often, resulting in regular breakage. Removing the checksum allows it to download and install regardless of if the sha sum has changed. If people are worried about it they can check the sha sum themselves in ~/.cache/winetricks/vcrun2019_ge
+-Days Gone is playable now (it takes a while to load, just a warning)
+-Marvel's Avengers is playable now
+-Mortal Kombat X story mode audio fixed/playable now
+-Halo:MCC should no longer force windowed mode (issue it was required for has since been fixed)
+-DXVK updated to latest git
+-FAudio updated to latest git
+-vkd3d updated to latest git
+-wine/staging updated to 6.9
+
 Proton-6.8-GE-2 Released
 
 -Mass Effect Legendary Edition Launcher and ME1 fixes added. All 3 games should be playable.

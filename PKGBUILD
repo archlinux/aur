@@ -5,7 +5,7 @@
 ## pkginfo
 pkgdesc="A fancy custom distribution of Valves Proton with various patches"
 pkgname=proton-ge-custom-bin
-pkgver=6.8_GE_2
+pkgver=6.9_GE_1
 pkgrel=1
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
@@ -49,7 +49,7 @@ backup=("${_protoncfg}")
 url='https://github.com/GloriousEggroll/proton-ge-custom'
 source=(${_pkgname}-${_pkgver}_${pkgrel}.tar.gz::"${url}/releases/download/${_pkgver}/${_srcdir}.tar.gz"
         "supplementary.tar.zst")
-sha512sums=('2c7bf51f7ee07cfae9b77b8beac2025ac249ba06728972b6886808759ca302d43cd2bb30fe7af5fc4e162cafff663f3174e1b23c6c7b0b349c7032793c5787fe'
+sha512sums=('6d0139441ef094410c863d9c96c2b453b631f3cc61b4373d221062d798d7b8179fe4eed39b31257c1fd64baf8e62ed105419751769f6037f4764bcd793129254'
             '9925a9972a9bed9b9e71c2aa169db03eeb72307336c3ed004434397deb379b55eb13b249ca9c0b28f48dd5ea728a1ad32685b84e2dcab881ba428c2acb7bc58d')
 
 build() {
