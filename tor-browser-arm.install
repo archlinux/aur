@@ -1,0 +1,24 @@
+post_install() {
+	echo
+	echo "==> tor-browser will be extracted to ~/.tor-browser"
+	echo "==> the first time you run tor-browser as your normal user!"
+	echo "==> Just start it and have fun."
+	echo
+}
+
+post_upgrade() {
+	echo
+	echo "==> The tor-browser copy in your home directory will be upgraded at the"
+	echo "==> first time you run it as your normal user!"
+	echo "==> Just start and have fun."
+	echo
+}
+
+post_remove() {
+	echo
+	echo "==> You have to remove the tor-brower directory in your home"
+	echo "==> directory by hand: As your normal user, do:"
+	echo "==> "
+	echo "==> rm -rf ~/.tor-browser"
+	echo
+}
