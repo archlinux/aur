@@ -25,8 +25,17 @@ _deadline_disable=y
 _kyber_disable=y
 ### Running with a 2000 HZ, 1000HZ or 500HZ tick rate
 _2k_HZ_ticks=
-_1k_HZ_ticks=
-_500_HZ_ticks=y
+_1k_HZ_ticks=y
+_500_HZ_ticks=
+# Compile ONLY used modules to VASTLYreduce the number of modules built
+# and the build time.
+#
+# To keep track of which modules are needed for your specific system/hardware,
+# give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
+# This PKGBUILD read the database kept if it exists
+#
+# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
+_localmodcfg=
 
 ### Do not edit below this line unless you know what you're doing
 
@@ -40,7 +49,7 @@ pkgver=${_major}
 #_stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -53,7 +62,7 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/$_srcname.tar.xz"
         "config"
         "${_patchsource}/arch-patches-v3/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_patchsource}/cacule-patches/cacule-5.12.patch"
-        "${_patchsource}/cacule-patches/rdb.patch"
+        "${_patchsource}/cacule-patches/rdb-autogroup-testing.patch"
         "${_patchsource}/cpu-patches-v2/0001-cpu-patches.patch"
         "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/futex2-stable-patches-v3/0001-futex2-resync-from-gitlab.collabora.com.patch"
@@ -77,7 +86,7 @@ sha512sums=('94ed56538c0dde46f25e213ad9ba37df7af68a6d040307d4d61496a91902942b830
             'bb748a4f5e31a2e949ceb21d4ae7d4fac4ce30a47de5f2b4fe7df38e29c6702d5a196fa17fcc61baf94201dd87548bb299d2f8f3cdfec7938ff3bb9d37ea85d5'
             'f07743a59c992f7a48cd1604a0ed30663fe043f5bc93dfe54780da88421c920e7daf801fa345b475ab551f7855360a72774cd2b117e41d5a4ac35005250e3c2f'
             '97e661d3fbd75a6e9edeb79a694f42c49174f317bd35ae25dd13d71797d29fca630e88e1440415faca05fb46935591965fae0dcc4365c80e3cefa3d8b615c3b8'
-            '91a2a9173870637786cb1379ede303c5c923695069e5d3bc74d5221d45d529f9230c29e910e80eb9d8118633296f9e746fedf16ec5a3f22bd90b6d6010dd13d7'
+            '07456f1a8d2cdbccf5e3669140810c9ab17414f479d9f5b3c26369a1f18cbfc0c72b1bcc10dbab7ee5eee3988c9ade77075f49149df08a87191bbd8e2db6d16b'
             '60bda2070739a52af4f81816ebda8f3520a8d75ea5e00f65a903a3416ae31edba56fe151f6a9e02dc90ec3be7854e9a62e10e72120d7148fd3838806d8b9e986'
             '449570b8b9a04391cc2cc171cc806b3a132c6e969c7cedf9c4925d24244888e6f2e5afb6c551521fe62fcb7e2bf08cb8d396f9ec785ecfcdd5ea27dd9ffed4ea'
             'f0ae3cd8cc8237c620f2a069a48d1e156589c42ee6cb13b7fa54b7004cf9c940d4363c05706df3c231ff405bfb0488d9121c610c6583ae94ab732ecb11942b5b'
@@ -234,11 +243,11 @@ prepare() {
       echo "Enable CacULE CPU scheduler..."
       scripts/config --enable CONFIG_CACULE_SCHED
       scripts/config --enable CONFIG_CACULE_RDB
-      scripts/config --set-val CONFIG_RDB_INTERVAL 0
+      scripts/config --set-val CONFIG_RDB_INTERVAL 19
       scripts/config --disable CONFIG_RDB_TASKS_GROUP
       scripts/config --disable CONFIG_EXPERT
-      scripts/config --disable CONFIG_FAIR_GROUP_SCHED
-      scripts/config --disable CONFIG_SCHED_AUTOGROUP
+      scripts/config --enable CONFIG_FAIR_GROUP_SCHED
+      scripts/config --enable  CONFIG_SCHED_AUTOGROUP
       scripts/config --disable CONFIG_SCHED_DEBUG
       scripts/config --disable CONFIG_SCHED_INFO
       scripts/config --disable CONFIG_SCHEDSTATS
@@ -283,6 +292,18 @@ prepare() {
       echo "Enable CONFIG_VHBA"
       scripts/config --module CONFIG_VHBA
       scripts/config --disable CONFIG_BPF_PRELOAD
+
+      ### Optionally load needed modules for the make localmodconfig
+       # See https://aur.archlinux.org/packages/modprobed-db
+           if [ -n "$_localmodcfg" ]; then
+               if [ -f $HOME/.config/modprobed.db ]; then
+               echo "Running Steven Rostedt's make localmodconfig now"
+               make LSMOD=$HOME/.config/modprobed.db localmodconfig
+           else
+               echo "No modprobed.db data found"
+               exit
+               fi
+           fi
 
   ### Save configuration for later reuse
      echo "Save config for reuse"
