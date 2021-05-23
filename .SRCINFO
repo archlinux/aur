@@ -1,6 +1,6 @@
 pkgbase = vokey-git
 	pkgdesc = Vokey is a voice-based hotkey application.
-	pkgver = 0.3.0.r0.g97a486b
+	pkgver = 0.3.1.r0.gef3eea9
 	pkgrel = 1
 	url = https://github.com/nalquas/vokey
 	arch = any

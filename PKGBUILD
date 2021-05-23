@@ -1,7 +1,7 @@
 # Maintainer: nalquas <nalquas.dev@gmail.com>
 
 pkgname=vokey-git
-pkgver=0.3.0.r0.g97a486b
+pkgver=0.3.1.r0.gef3eea9
 pkgrel=1
 pkgdesc="Vokey is a voice-based hotkey application."
 arch=('any')
@@ -24,10 +24,13 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_gitname"
+	mkdir build
+	cd build
+	cmake ..
 	make
 }
 
 package() {
-	cd "$srcdir/$_gitname"
+	cd "$srcdir/$_gitname/build"
 	make DESTDIR="${pkgdir}" install
 }
