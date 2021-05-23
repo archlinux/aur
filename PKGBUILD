@@ -7,25 +7,25 @@
 # Maintainer: Pu Anlai
 pkgname=albion-sr-gog
 _pkgname=Albion-Linux
-pkgver=1.6.1
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Linux port of the role-playing game Albion using the GOG version"
 arch=("x86_64")
 url="https://github.com/M-HT/SR"
 license=("GPL" "custom")
-depends=("lib32-glibc" "lib32-sdl_mixer" "lib32-sdl" "lib32-libglvnd")
+depends=("lib32-glibc" "lib32-sdl2_mixer" "lib32-sdl2" "lib32-libpulse")
 makedepends=("innoextract" "bchunk" "p7zip" "icoutils")
 backup=("opt/ALBION/Albion.cfg")
 install="albion-sr-gog.install"
 source=("setup_albion.exe::gog://setup_albion.exe"
-        "${pkgname}-${pkgver}.tar.gz::https://github.com/M-HT/SR/releases/download/albion_v1.6.1/${_pkgname}-x86-v${pkgver}.tar.gz"
+        "${pkgname}-${pkgver}.tar.gz::https://github.com/M-HT/SR/releases/download/albion_v${pkgver}/${_pkgname}-x86-v${pkgver}-sdl2.tar.gz"
         "albion.desktop")
 noextract=("${pkgname}-${pkgver}.tar.gz"
            "setup_albion.exe")
 # don't download anything automatically to accomodate different language versions
 DLAGENTS+=("gog::/usr/bin/perl -E print\(\"${RED}\"\ .\ substr\(\"%u\",\ 6\)\ .\ \"\ not\ found.\ \ Check\ the\ PKGBUILD\ for\ further\ information.${ALL_OFF}\\\\n\"\)\;\ exit\ 1")
 sha1sums=(SKIP
-          '0156acf6313c84c6e842af7e31ac7fbb732576d0'
+          '6ebfc6f8895eb2685698a24430495b585f09b2a3'
           'b307af4b606f2510e1664ce96765cdc7f652bb06')
 
 prepare() {
@@ -55,18 +55,18 @@ package() {
     mkdir -p $pkgdir/opt/ALBION
 
     # copy files
-    cp $srcdir/gog-src/{ALBI*,DOS4GW.EXE,INSTALL.*,MAIN.EXE,Readme.txt,SETUP.*,SYSTEXTS} $pkgdir/opt/ALBION/
+    cp $srcdir/gog-src/{ALBI*,DOS4GW.EXE,INSTALL.*,MAIN.EXE,Readme.txt,SETUP.*} $pkgdir/opt/ALBION/
     # copy folders
     cp -r $srcdir/gog-src/{DRIVERS,XLDLIBS} $pkgdir/opt/ALBION/
 
     # copy SR files
     cp -r $srcdir/${pkgname}-${pkgver}/* -t $pkgdir/opt/ALBION/
 
-    # give universal access for everything but the CD files
-    chmod -R 777 $pkgdir/opt/ALBION
-
     # copy contents of cd
     cp -r $srcdir/gog-cd/ALBION $pkgdir/opt/ALBION/ALBIONCD
+
+    # give universal access for everything
+    chmod -R 777 $pkgdir/opt/ALBION
 
     # install desktop file
     install -Dm 644 $srcdir/albion.desktop -t $pkgdir/usr/share/applications
