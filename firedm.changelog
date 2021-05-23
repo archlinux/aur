@@ -1,3 +1,13 @@
+2021.5.22:
+- [gui] option for Showing new download items at the top of downloads tab.
+- Add bidi support and fix Arabic language editing in tkinter, issue #88.
+- Add ability to change default file extension.
+- Animate buttons on mouse hover, issue #240.
+- use one button to resume/pause download instead of 2 buttons, issue #240.
+- Add Resume all and stop all button, issue #240.
+- remove the need to write "delete" keyword when deleting multiple items in downloads tab, issue #240.
+- increase progressbar size and percentage font size, issue #240
+
 2021.4.8:
 - [video] Fix hls extractor, issue #233
 - [gui] bind some keyboard keys to downloads tab and popup window, e.g. Enter, Delete, and Escape keys.

@@ -1,7 +1,7 @@
 pkgbase = firedm
 	pkgdesc = Python open source alternative to IDM (Internet Download Manager)
-	pkgver = 2021.4.8
-	pkgrel = 2
+	pkgver = 2021.5.22
+	pkgrel = 1
 	url = https://github.com/firedm/FireDM
 	changelog = firedm.changelog
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = firedm
 	makedepends = python-setuptools
 	depends = ffmpeg
 	depends = python>=3.6
-	depends = python-awesometkinter>=2021.4.2
+	depends = python-awesometkinter>=2021.5.23
 	depends = python-certifi
 	depends = python-packaging
 	depends = python-pillow>=6.0.0
@@ -19,8 +19,8 @@ pkgbase = firedm
 	depends = youtube-dl
 	depends = youtube-dlp
 	replaces = pyidm
-	source = firedm-2021.4.8.tar.gz::https://github.com/firedm/FireDM/archive/2021.4.8.tar.gz
-	b2sums = 91960718ece68811a0aa7c8713472eaa80f6520165a0ef5fe46ee04e655ba63748f298dead2afe4ac3e81307096f1b7e41c7a377a63c91b962123442a3be6ea1
+	source = firedm-2021.5.22.tar.gz::https://github.com/firedm/FireDM/archive/2021.5.22.tar.gz
+	b2sums = 0300143e5659f257f3705f39bef64f7aae2c2bed4cc4c5e8146e7175c6886dfe5c4014e19bb63cc79de72423fd74ee2493b9755f9bc5c4e8fb11b3e6147f131d
 
 pkgname = firedm
 
