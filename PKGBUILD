@@ -1,7 +1,7 @@
-# Maintainer: Vyacheslav Konovalov <crabvk@protonmail.com>
+# Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=swarm-bee-bin
-pkgver=0.5.3
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Swarm client implemented in Go, basic building block for Swarm Network'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
     'https://raw.githubusercontent.com/ethersphere/bee/master/LICENSE'
 )
 sha512sums=(
-    '10bfdc7adeb555236787087292f2a56c74b6dafb0ffb954a73c205a2239029f0b98e5c0ebb513f26a6902be6105fdd82e64df44c037d8d794e8c8417135dd2de'
+    '38b014754c04fb2e419e1275b2b30d1bd911ada3a3ccaec2ed471a9c45c08d6a41b46f09ecadbd958104ef91ccddb5f202a1b8dbab01fafff904a35718649b0b'
     '63cb4eacde7f6f664dc42f07fd2b46dab7c72a621b57ef60481f0f3484445073c8c11310c38a6b85c801be64bc38a6e4c38186ffe0b2abd188d2a6ec6e03a9ab'
 )
 install='bee.install'
