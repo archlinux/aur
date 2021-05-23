@@ -2,7 +2,7 @@
 # Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
 # Contributor: Librewish <librewish@gmail.com>
 pkgname=ofono
-pkgver=1.31
+pkgver=1.32
 pkgrel=3
 pkgdesc="Infrastructure for building mobile telephony (GSM/UMTS) applications"
 url="https://01.org/ofono"
@@ -14,9 +14,7 @@ source=(
 	"https://www.kernel.org/pub/linux/network/ofono/$pkgname-$pkgver.tar.xz"
 #	"https://www.kernel.org/pub/linux/network/ofono/$pkgname-$pkgver.tar.sign"
 )
-sha256sums=('a15c5d28096c10eb30e47a68b6dc2e7c4a5a99d7f4cfedf0b69624f33d859e9b'
-#            'SKIP'
-            )
+sha256sums=("f7d775887b7b80cf3b82e3f0a6c2696c6d01963d222ca2217919d21b9e803042")
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
