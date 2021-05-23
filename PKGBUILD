@@ -2,7 +2,7 @@
 
 pkgname=pacana-git
 _pkgname=pacana
-pkgver=0.11.r1.g7c89e6b
+pkgver=0.12.r1.g8b34a59
 pkgrel=1
 pkgdesc="Pacman repository analysis tool"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/bbidulock/pacana"
 license=('GPL')
 provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
 conflicts=("${_pkgname}")
-depends=('pacman')
+depends=('pacman' 'json-c')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/bbidulock/${_pkgname}.git")
 md5sums=('SKIP')
