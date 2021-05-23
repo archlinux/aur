@@ -3,7 +3,7 @@
 
 pkgname=hstr
 pkgver=2.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Bash and Zsh shell history suggest box - easily view, navigate, search and manage your command history."
 arch=('x86_64')
 url="https://github.com/dvorka/hstr"
@@ -12,7 +12,6 @@ makedepends=('readline' 'ncurses')
 depends=('readline')
 source=("https://github.com/dvorka/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('c7e7408671757b3f4be9c5a59b4e2d56e7a7b601ace2a94eb6b2b61f20ee890b')
-conflicts=('hstr-git');
 
 
 build() {
