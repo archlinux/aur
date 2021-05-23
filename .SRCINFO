@@ -1,0 +1,19 @@
+pkgbase = python-schemainspect
+	pkgdesc = Schema inspection for PostgreSQL (and possibly others)
+	pkgver = 3.0.1616029793
+	pkgrel = 1
+	url = https://github.com/djrobstep/schemainspect
+	arch = any
+	license = Unlicense
+	makedepends = python-setuptools
+	depends = python
+	depends = python-sqlalchemy
+	depends = python-greenlet
+	source = https://files.pythonhosted.org/packages/source/s/schemainspect/schemainspect-3.0.1616029793.tar.gz
+	sha256sums = b81f0482e0df338032eda30ee6e41f69df7d15a21b03688fd1128cdbcb409e6c
+
+pkgname = python-schemainspect
+	depends = python
+	depends = python-sqlalchemy
+	depends = python-greenlet
+
