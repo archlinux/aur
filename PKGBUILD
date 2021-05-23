@@ -1,14 +1,14 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=tok-git
-pkgver=r113.87f9df0
+pkgver=r124.4337f9e
 pkgrel=1
 pkgdesc="Telegram client built using Kirigami"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://invent.kde.org/network/tok"
 license=('GPL3')
 depends=('kirigami2' 'knotifications' 'libtd-git' 'ki18n' 'icu')
-makedepends=('git' 'extra-cmake-modules' 'qt5-tools' 'qt5-svg')
+makedepends=('git' 'qt5-tools' 'qt5-svg')
 provides=('tok')
 conflicts=('tok')
 source=("git+${url}.git")
@@ -23,13 +23,11 @@ pkgver() {
 }
 
 build() {
-  cmake -B build -S "${pkgname%-git}" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo
-  cmake --build build --config RelWithDebInfo
+  cd "${pkgname%-git}"
+  qbs build --no-install
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install build --config RelWithDebInfo
-  install -Dm644 "${pkgname%-git}"/app\ data/icons/48/org.kde.Tok.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/org.kde.Tok.svg
-  install -Dm644 "${pkgname%-git}"/app\ data/org.kde.Tok.desktop "${pkgdir}"/usr/share/applications/org.kde.Tok.desktop
-  install -Dm644 "${pkgname%-git}"/app\ data/org.kde.Tok.notifyrc "${pkgdir}"/usr/share/knotifications5/org.kde.Tok.notifyrc
+  cd "${pkgname%-git}"
+  qbs install --no-build --install-root "${pkgdir}"
 }
