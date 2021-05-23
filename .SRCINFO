@@ -1,6 +1,6 @@
 pkgbase = cheat-bin
 	pkgdesc = cheat allows you to create and view interactive cheatsheets on the command-line
-	pkgver = 4.2.0
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = https://github.com/cheat/cheat
 	arch = i686
@@ -11,14 +11,14 @@ pkgbase = cheat-bin
 	license = MIT
 	provides = cheat
 	conflicts = cheat
-	source_i686 = cheat-bin-4.2.0.gz::https://github.com/cheat/cheat/releases/download/4.2.0/cheat-linux-386.gz
-	sha256sums_i686 = 3f775672f876bc9dc2e1c70d5bc69fdfac616e3706471f379bb297f099700d89
-	source_x86_64 = cheat-bin-4.2.0.gz::https://github.com/cheat/cheat/releases/download/4.2.0/cheat-linux-amd64.gz
-	sha256sums_x86_64 = 25d64ac3565c6976d3bb8508fb2a3434d7f7a696762735d3103e5bf039338338
-	source_armv6h = cheat-bin-4.2.0.gz::https://github.com/cheat/cheat/releases/download/4.2.0/cheat-linux-arm6.gz
-	sha256sums_armv6h = a0c9be660db4efdb18d504807900359e6796f5171aeb2bf0dc070f309a417fd4
-	source_armv7h = cheat-bin-4.2.0.gz::https://github.com/cheat/cheat/releases/download/4.2.0/cheat-linux-arm7.gz
-	sha256sums_armv7h = 9b1d5605b90bd4a7b62744ce4203beb1fc2c8e3eb16bbb7dd6417746413281f9
+	source_i686 = cheat-bin-4.2.1.gz::https://github.com/cheat/cheat/releases/download/4.2.1/cheat-linux-386.gz
+	sha256sums_i686 = 7fc9e7bf62fa55b35c3e81596a827fde50f4416521a0a758f7c087af6860fd5a
+	source_x86_64 = cheat-bin-4.2.1.gz::https://github.com/cheat/cheat/releases/download/4.2.1/cheat-linux-amd64.gz
+	sha256sums_x86_64 = 4965c41eee4e9022b543157317bdb41913782e8bc014ccac7b2c1e5f87450d98
+	source_armv6h = cheat-bin-4.2.1.gz::https://github.com/cheat/cheat/releases/download/4.2.1/cheat-linux-arm6.gz
+	sha256sums_armv6h = d8604fd172b3fb77c606ecd8a0b5c89918fe832e6fdad3c0ca2ae6b69fdb57f0
+	source_armv7h = cheat-bin-4.2.1.gz::https://github.com/cheat/cheat/releases/download/4.2.1/cheat-linux-arm7.gz
+	sha256sums_armv7h = b2c9819c7dcee251bdc30f1bc7a27354c1badbd4e14744d358ee8a3026a0f3c8
 
 pkgname = cheat-bin
 
