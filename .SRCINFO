@@ -1,0 +1,16 @@
+pkgbase = mt32-pi-control
+	pkgdesc = A control program for the mt32-pi MIDI synthesizer
+	pkgver = 1.0.0a
+	pkgrel = 1
+	url = https://github.com/gmcn42/mt32-pi-control
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	depends = alsa-lib
+	source = https://github.com/gmcn42/mt32-pi-control/archive/v1.0.0a.tar.gz
+	sha256sums = ff86af3b29d814452831b066cde2e47271d658a447e213e56bb4e992f0434a1e
+
+pkgname = mt32-pi-control
+
