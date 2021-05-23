@@ -1,6 +1,6 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 pkgname=youplay
-pkgver=0.29
+pkgver=0.30
 pkgrel=1
 pkgdesc="Search, download and play music from YouTube."
 arch=(any)
@@ -10,7 +10,7 @@ depends=(mpv ffmpeg python-mpv youtube-dl python-gobject)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
 	"0001-Change-paths-for-packaging.patch"
 	"0002-Rename-Internet-catergorie-because-it-does-not-exist.patch")
-md5sums=('27c0e494f517469673ef862c6618b84a'
+md5sums=('9df677ba5bf354272848114228602138'
          '45141b5634cde06c6805fc9b9a589e64'
          'bacb881be40e69da218f01cf1d9df541')
 
