@@ -1,7 +1,7 @@
 # Maintainer: Alexander Pohl <alex at ahpohl dot com>
 pkgname=smartmeter
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Read energy utility meter with IR dongle"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ groups=()
 depends=('mosquitto')
 makedepends=()
 checkdepends=()
-optdepends=('nodejs-node-red' 'influxdb' 'grafana-bin')
+optdepends=('nodejs-node-red' 'postgresql' 'timescaledb' 'pg_cron' 'grafana-bin')
 provides=()
 conflicts=()
 replaces=()
@@ -34,6 +34,7 @@ package() {
 	make DESTDIR="$pkgdir/" PREFIX="/usr" install
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
   install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
+  install -Dm644 CHANGELOG.md "$pkgdir"/usr/share/doc/$pkgname/CHANGELOG.md
   install -Dm644 resources/smartmeter.service "$pkgdir"/usr/lib/systemd/system/smartmeter.service
   install -Dm644 resources/smartmeter.conf "$pkgdir"/etc/smartmeter.conf
 }
