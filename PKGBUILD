@@ -10,7 +10,7 @@ arch=('x86_64')
 url="http://synce.sourceforge.net/"
 license=('GPL')
 depends=('dbus-glib' 'udev' 'python2' 'libgudev')
-makedepends=('dhclient' 'pyrex')
+makedepends=('dhclient' 'python2-pyrex')
 source=(http://downloads.sourceforge.net/sourceforge/synce/SynCE/synce-core/synce-core-$pkgver.tar.gz)
 md5sums=('ee0b9369b6fea5e2d1b970503dd7cb0e')
 
