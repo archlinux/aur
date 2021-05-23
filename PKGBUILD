@@ -2,7 +2,7 @@
 # Contributor: particle-iot (https://github.com/particle-iot)
 
 pkgname=prtcl-bin
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="The new Particle CLI"
 arch=("x86_64")
