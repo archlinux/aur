@@ -1,16 +1,16 @@
-# Maintainer: Vyacheslav Konovalov <f4f7l1hvr@relay.firefox.com>
+# Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=myip-rs
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
-pkgdesc='A command-line tool to get your external IP address'
+pkgdesc='A command-line tool to show your external IP address'
 arch=('x86_64')
 url='https://github.com/crabvk/myip'
 license=('MIT')
 makedepends=('cargo')
 optdepends=('geoipupdate: download/update local GeoIP2 database from MaxMind')
 source=("https://github.com/crabvk/myip/archive/$pkgver.tar.gz")
-sha512sums=('e9ea34abd8a380da5a188fcfa0352a938367e38bd731bc1356b112cff534a5934e1866eef8f83c40404f4e677c0d3c09fe06f520ffa9f0cbba96938f773e3298')
+sha512sums=('ba1f62e5accf2d34f27c0404797255c1131e81e7f64fb8a7a7d12e4d1134a6b117e84cd59edf86f4b95252ea8e4b69aad4c3957b02981dc5e081e1c81a7f6bb6')
 
 build() {
     cd myip-$pkgver
