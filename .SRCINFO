@@ -1,0 +1,14 @@
+pkgbase = nspawn
+	pkgdesc = A wrapper around machinectl for easy-deployment of nspawn.org containers
+	pkgver = master
+	pkgrel = 1
+	url = https://github.com/nspawn/nspawn
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = systemd
+	source = git+https://github.com/nspawn/nspawn.git#branch=master
+	md5sums = SKIP
+
+pkgname = nspawn
+
