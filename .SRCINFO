@@ -1,13 +1,15 @@
 pkgbase = chipon
 	pkgver = 1.0.17
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.chipon-ic.com/
 	arch = x86_64
 	groups = chipon
 	license = unknow
 	makedepends = unarchiver
 	source = chipon.zip::https://www.chipon-ic.com/upload/file/20210413/67c90ef0-da85-4f9c-aacd-4e1056f0d1c8.zip
+	source = chipon.png::https://www.chipon-ic.com/images/logo.png
 	sha256sums = c0a4469b78618712c75802a33a06f64f8f01bec1b6629af75a85095f8f8ecbc1
+	sha256sums = 2879a8063a7037ca8658ffcb96c8611274decc3c0fe2a97a5918f896451b7dbd
 
 pkgname = chipon
 	pkgdesc = KungFu32 系列 32 位 MCU 设计的 IDE（集成开发环境)，内置编译器、汇编器，支持调试。KungFu32 产品上位机编程软件，支持查空、读取、编程、在线编程、脱机编程、自增编程等；支持加载并查看修改 HEX 文件等操作。

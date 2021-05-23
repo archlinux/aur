@@ -3,7 +3,7 @@
 pkgbase=chipon
 pkgname=($pkgbase{,-jre,-ide32,-program32,-cc32,-driver,-usart-async2,-librxtx,-rxtx-2})
 pkgver=1.0.17
-pkgrel=3
+pkgrel=4
 arch=(x86_64)
 url='https://www.chipon-ic.com/'
 license=('unknow')
@@ -13,20 +13,22 @@ groups=('chipon')
 depends=()
 makedepends=('unarchiver')
 
-source=("${pkgbase}.zip"'::https://www.chipon-ic.com/upload/file/20210413/67c90ef0-da85-4f9c-aacd-4e1056f0d1c8.zip')
+source=("${pkgbase}.zip"'::https://www.chipon-ic.com/upload/file/20210413/67c90ef0-da85-4f9c-aacd-4e1056f0d1c8.zip'
+        "${pkgbase}.png"'::https://www.chipon-ic.com/images/logo.png')
 
-sha256sums=('c0a4469b78618712c75802a33a06f64f8f01bec1b6629af75a85095f8f8ecbc1')
+sha256sums=('c0a4469b78618712c75802a33a06f64f8f01bec1b6629af75a85095f8f8ecbc1'
+            '2879a8063a7037ca8658ffcb96c8611274decc3c0fe2a97a5918f896451b7dbd')
 
 prepare() {
-    unar -e GB18030 "${srcdir}/${pkgbase}.zip"
-    unar -e GB18030 "${srcdir}/I01 jre1.7u80_rxtx.zip"
-    unar -e GB18030 "${srcdir}/I02 ChipONCC32_1.0.17.zip"
-    unar -e GB18030 "${srcdir}/I02 chiponide32_1.0.17.zip"
-    unar -e GB18030 "${srcdir}/I03 chiponprogram32_1.0.17.zip"
-    unar -e GB18030 "${srcdir}/I04 Driver.zip"
-    unar -e GB18030 "${srcdir}/I04 USART_Async2.zip"
-    unar -e GB18030 "${srcdir}/I04 librxtx-linux-x64.zip"
-    unar -e GB18030 "${srcdir}/I04 rxtx-2.2pre2.zip"
+    unar -e GBK "${srcdir}/${pkgbase}.zip"
+    unar -e GBK "${srcdir}/I01 jre1.7u80_rxtx.zip"
+    unar -e GBK "${srcdir}/I02 ChipONCC32_1.0.17.zip"
+    unar -e GBK "${srcdir}/I02 chiponide32_1.0.17.zip"
+    unar -e GBK "${srcdir}/I03 chiponprogram32_1.0.17.zip"
+    unar -e GBK "${srcdir}/I04 Driver.zip"
+    unar -e GBK "${srcdir}/I04 USART_Async2.zip"
+    unar -e GBK "${srcdir}/I04 librxtx-linux-x64.zip"
+    unar -e GBK "${srcdir}/I04 rxtx-2.2pre2.zip"
 }
 
 package_chipon() {
@@ -59,6 +61,8 @@ package_chipon-ide32() {
     cp -r "${srcdir}/${pkgbase}/ChipON KF32 Linux系统免IDE工具使用说明文档V1.2.pdf" "${pkgdir}/opt/${pkgbase}/ChipON KF32 Linux系统免IDE工具使用说明文档V1.2.pdf"
     cp -r "${srcdir}/${_pkgname}" "${pkgdir}/opt/${pkgbase}"
 
+    install -Dm644 "${srcdir}/${pkgbase}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_pkgname}" << EOF
 #!/bin/env bash
 export JAVA_HOME=/opt/${pkgbase}/${_pkgname}/jre
@@ -74,7 +78,7 @@ Name=${_pkgname}
 Comment=${_pkgname}
 GenericName=${_pkgname}
 Exec=env GDK_BACKEND=x11 ${_pkgname} %F
-Icon=
+Icon=${_pkgname}.png
 Path=/opt/${pkgbase}/${_pkgname}
 Terminal=false
 StartupNotify=true
@@ -94,6 +98,8 @@ package_chipon-program32() {
 
     cp -r "${srcdir}/${_pkgname}" "${pkgdir}/opt/${pkgbase}"
 
+    install -Dm644 "${srcdir}/${pkgbase}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_pkgname}" << EOF
 #!/bin/env bash
 export JAVA_HOME=/opt/${pkgbase}/${_pkgname}/jre
@@ -109,7 +115,7 @@ Name=${_pkgname}
 Comment=${_pkgname}
 GenericName=${_pkgname}
 Exec=env GDK_BACKEND=x11 ${_pkgname} %F
-Icon=
+Icon=${_pkgname}.png
 Path=/opt/${pkgbase}/${_pkgname}
 Terminal=false
 StartupNotify=true
@@ -137,7 +143,10 @@ package_chipon-driver() {
     msg2="If rules fail to reload automatically, you can refresh udev rules with the command \"sudo udevadm control --reload\""
     msg2="如果规则无法自动重新加载，您可以使用以下命令刷新 udev 规则 \"sudo udevadm control --reload\""
 
-    install -Dm644 "${srcdir}/${_pkgname}/49-kungfu32_udev.rules" "${pkgdir}/etc/udev/rules.d/49-kungfu32_udev.rules"
+    install -Dm644 "${srcdir}/${_pkgname}/49-kungfu32_udev.rules" "${pkgdir}/usr/lib/udev/rules.d/49-kungfu32_udev.rules"
+
+    install -dm755 "${pkgdir}/etc/udev/rules.d/"
+    ln -sf "/usr/lib/udev/rules.d/49-kungfu32_udev.rules" "${pkgdir}/etc/udev/rules.d/49-kungfu32_udev.rules"
 }
 
 package_chipon-usart-async2() {
@@ -176,5 +185,3 @@ package_chipon-rxtx-2() {
     cp -r "${srcdir}/${_pkgname}" "${pkgdir}/opt/${pkgbase}"
     ln -sf "/opt/${pkgbase}/${_pkgname}/RXTXcomm.jar" "${pkgdir}/opt/${pkgbase}/jre/lib/RXTXcomm.jar"
 }
-
-# vim: ts=4 sw=4 et
