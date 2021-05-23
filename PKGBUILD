@@ -1,7 +1,7 @@
 # Maintainer: grufo <madmurphy333 AT gmail DOT com>
 
 pkgname='nautilus-annotations'
-pkgver='0.7.0'
+pkgver='0.7.1'
 pkgrel=1
 pkgdesc='Annotate files and directories'
 arch=('i686' 'x86_64')
@@ -12,11 +12,11 @@ makedepends=('intltool')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 source=("https://github.com/madmurphy/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}-with-configure.tar.gz")
 install="${pkgname}.install"
-sha256sums=('7bc5471c3dd40387b7736af581edbc871f64a4d09cfccf6cf348ecbf2af329b2')
+sha256sums=('7f6295a558e0f028977a5311e9a8189713f5760dc8b46a97513838802554d028')
 
 build() {
 
-	cd "${srcdir}/${pkgname}-${pkgver}-with-configure"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	./configure --prefix=/usr
 	make
 
@@ -24,7 +24,7 @@ build() {
 
 package() {
 
-	cd "${srcdir}/${pkgname}-${pkgver}-with-configure"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
 
 }
