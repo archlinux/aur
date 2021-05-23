@@ -1,6 +1,6 @@
 pkgbase = spread-sheet-widget
 	pkgdesc = Library for Gtk+ which provides a widget for viewing and manipulating 2 dimensional tabular data
-	pkgver = 0.7
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://www.gnu.org/software/ssw/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = spread-sheet-widget
 	license = GPL3
 	makedepends = python
 	depends = gtk3
-	source = https://alpha.gnu.org/gnu/ssw/spread-sheet-widget-0.7.tar.gz
-	md5sums = 2d26336029fc6656dabcc4fb97454fec
+	source = https://alpha.gnu.org/gnu/ssw/spread-sheet-widget-0.8.tar.gz
+	md5sums = 429ab7326a95f237c680d770c226a7c0
 
 pkgname = spread-sheet-widget
 
