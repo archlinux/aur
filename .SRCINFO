@@ -1,0 +1,57 @@
+pkgbase = gnome-control-center-oldstable
+	pkgdesc = GNOME's main interface to configure various aspects of the desktop
+	pkgver = 3.38.6
+	pkgrel = 2
+	url = https://gitlab.gnome.org/GNOME/gnome-control-center
+	arch = x86_64
+	groups = gnome-oldstable
+	license = GPL2
+	checkdepends = python-dbusmock
+	checkdepends = python-gobject
+	checkdepends = xorg-server-xvfb
+	makedepends = docbook-xsl
+	makedepends = modemmanager
+	makedepends = git
+	makedepends = python
+	makedepends = meson
+	depends = accountsservice
+	depends = cups-pk-helper
+	depends = gnome-bluetooth
+	depends = gnome-desktop
+	depends = gnome-online-accounts
+	depends = gnome-settings-daemon-oldstable
+	depends = gsettings-desktop-schemas-oldstable
+	depends = gtk3
+	depends = libgtop
+	depends = nm-connection-editor
+	depends = sound-theme-freedesktop
+	depends = upower
+	depends = libpwquality
+	depends = gnome-color-manager
+	depends = smbclient
+	depends = libmm-glib
+	depends = libgnomekbd
+	depends = grilo
+	depends = libibus
+	depends = cheese
+	depends = libgudev
+	depends = bolt
+	depends = udisks2
+	depends = libhandy
+	depends = gsound
+	depends = colord-gtk
+	optdepends = system-config-printer: Printer settings
+	optdepends = gnome-user-share: WebDAV file sharing
+	optdepends = gnome-remote-desktop: screen sharing
+	optdepends = rygel: media sharing
+	optdepends = openssh: remote login
+	provides = gnome-control-center=3.38.6
+	conflicts = gnome-control-center
+	replaces = gnome-control-center
+	source = git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=54eb734eaaa95807dd805fbe4e4ad0dceb787736
+	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = gnome-control-center-oldstable
+
