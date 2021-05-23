@@ -8,9 +8,9 @@
 
 
 ## Helpful internal stuff
-_commit=b03ab3ff544130d6220a587a781c5ef7d5e07380
-_mozcver=2.26.4346.102
-_utdicver=20210421
+_commit=027238dd0f7be51dcb4fbd63a79e81562daf58a8
+_mozcver=2.26.4381.102
+_utdicver=20210524
 _buildtype=Release
 
 pkgname='emacs-mozc-ut'
@@ -31,6 +31,10 @@ prepare() {
     cd ${pkgname}-git
 
     git submodule update --init --recursive
+
+    # Fix for GCC11 compatibility
+    # Based on original patch found at https://yanqiyu.fedorapeople.org/fcitx5-mozc/fix-build-gcc11.patch
+    sed -i -e 's/#include <array>/#include <array>\n#include <limits>/' src/third_party/abseil-cpp/absl/synchronization/internal/graphcycles.cc
 
     # Avoid build errors (don't use libc++)
     # These should probably be included as options in GYP_DEFINES
