@@ -1,6 +1,6 @@
 # Maintainer: diced <pranaco2@gmail.com>
 pkgname='dvm-git'
-pkgver=0.1.2
+pkgver=1.1.2
 pkgrel=1
 makedepends=('rust' 'cargo')
 conflicts=('discord' 'discord-canary' 'discord-ptb' 'discord-development')
