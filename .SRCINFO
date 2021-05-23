@@ -1,7 +1,7 @@
 pkgbase = bard
 	pkgdesc = Creates PDF and HTML songbooks out of easy-to-write Markdown sources.
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vojtechkral/bard
 	arch = x86_64
 	license = Apache-2.0

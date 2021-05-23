@@ -2,7 +2,7 @@
 
 pkgname=bard
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Creates PDF and HTML songbooks out of easy-to-write Markdown sources."
 arch=('x86_64')
 url="https://github.com/vojtechkral/bard"
@@ -18,10 +18,12 @@ build() {
   cargo build --release --locked
 }
 
-check() {
-  cd "$pkgname-$pkgver"
-  cargo test --release --locked
-}
+# Not using check as that would require xelatex and tectonic
+# to build the default and example projects...
+# check() {
+#   cd "$pkgname-$pkgver"
+#   cargo test --release --locked
+# }
 
 package() {
 	cd "$pkgname-$pkgver"
