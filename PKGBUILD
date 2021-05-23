@@ -7,7 +7,7 @@ pkgbase=lib32-pipewire
 _pkgbase=pipewire
 pkgname=(lib32-pipewire lib32-pipewire-jack lib32-gst-plugin-pipewire)
 pkgver=0.3.28
-pkgrel=1
+pkgrel=2
 pkgdesc="Low-latency audio/video router and processor (32-bit client libraries)"
 url="https://pipewire.org"
 license=(LGPL2.1)
@@ -15,7 +15,7 @@ arch=(x86_64)
 makedepends=(git meson valgrind lib32-jack2 libpulse lib32-libpulse
              alsa-lib lib32-alsa-lib gstreamer lib32-gstreamer
              gst-plugins-base lib32-gst-plugins-base rtkit 
-             lib32-dbus libsndfile lib32-libsndfile lib32-avahi)
+             lib32-dbus libsndfile lib32-libsndfile)
 _commit=fb55cc4786ce5e78b0987248dd44e54daec77f80  # tags/0.3.28
 source=("git+https://github.com/PipeWire/pipewire#commit=$_commit")
 sha256sums=('SKIP')
@@ -52,8 +52,8 @@ build() {
     -D videotestsrc=disabled \
     -D volume=disabled \
     -D vulkan=disabled \
-    -D udevrulesdir=/usr/lib/udev/rules.d
-#    patch $srcdir/build/build.ninja < $srcdir/lib32.patch 
+    -D udevrulesdir=/usr/lib/udev/rules.d \
+    -D avahi=disabled
   meson compile -C build
 }
 
@@ -76,7 +76,7 @@ _spaver="0.2"
 
 package_lib32-pipewire() {
   depends=(rtkit alsa-card-profiles lib32-dbus lib32-libsndfile
-           lib32-libudev0-shim lib32-alsa-lib lib32-systemd lib32-glib2 lib32-avahi)
+           lib32-libudev0-shim lib32-alsa-lib lib32-systemd lib32-glib2)
   optdepends=('lib32-pipewire-jack: JACK support')
 
   DESTDIR="$srcdir/install" meson install -C build
