@@ -3,7 +3,7 @@
 pkgname=listmonk-git
 _pkgname=${pkgname%-git}
 pkgver=1.0.0.r12.g25f5f9b
-pkgrel=1
+pkgrel=2
 pkgdesc='Self-hosted newsletter and mailing list manager with a modern dashboard'
 arch=(x86_64)
 url=https://listmonk.app
@@ -11,7 +11,7 @@ license=(AGPL3)
 depends=(postgresql)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-makedepends=(git go node-gyp nodejs yarn)
+makedepends=(git go node-gyp nodejs-lts-fermium yarn)
 backup=(etc/listmonk/config.toml)
 install=$_pkgname.install
 source=("$pkgname::git+https://github.com/knadh/$_pkgname.git"
@@ -28,34 +28,34 @@ pkgver() {
 }
 
 prepare() {
-	cd "$pkgname/frontend"
-	export YARN_CACHE_FOLDER="$srcdir/node_modules"
-	yarn install --frozen-lockfile
+    cd "$pkgname/frontend"
+    export YARN_CACHE_FOLDER="$srcdir/node_modules"
+    yarn install --prefer-offline --frozen-lockfile
 }
 
 build() {
-	cd "$pkgname"
-	go build \
-		-trimpath \
-		-buildmode=pie \
-		-mod=readonly \
-		-modcacherw \
-		-ldflags "-extldflags '$LDFLAGS' -X 'main.buildString=Arch Linux AUR v$pkgver-$pkgrel' -X 'main.versionString=v$pkgver'" \
-		-o $_pkgname \
-		cmd/*.go
-	export YARN_CACHE_FOLDER="$srcdir/node_modules"
-	export VUE_APP_VERSION="v$pkgver"
-	pushd frontend
-	yarn build
+    cd "$pkgname"
+    go build \
+        -trimpath \
+        -buildmode=pie \
+        -mod=readonly \
+        -modcacherw \
+        -ldflags "-extldflags '$LDFLAGS' -X 'main.buildString=Arch Linux AUR v$pkgver-$pkgrel' -X 'main.versionString=v$pkgver'" \
+        -o $_pkgname \
+        cmd/*.go
+    export YARN_CACHE_FOLDER="$srcdir/node_modules"
+    export VUE_APP_VERSION="v$pkgver"
+    pushd frontend
+    yarn build --production --offline --frozen-lockfile
 }
 
 check() {
-	cd "$pkgname"
-	go test ./...
+    cd "$pkgname"
+    go test ./...
 }
 
 package() {
-	cd "$pkgname"
+    cd "$pkgname"
     install -Dm755 -t "$pkgdir/usr/bin" $_pkgname
     install -Dm644 config.toml.sample "$pkgdir/etc/$_pkgname/config.toml"
     install -Dm644 -t "$pkgdir/usr/lib/systemd/system/" "../$_pkgname.service"
@@ -66,7 +66,7 @@ package() {
         queries.sql
     install -Dm644 -t "$pkgdir/usr/share/$_pkgname/frontend/dist/" \
         frontend/dist/favicon.png
-	cp -a frontend/dist/frontend "$pkgdir/usr/share/$_pkgname/frontend/dist/"
-	cp -a static "$pkgdir/usr/share/$_pkgname/"
-	cp -a i18n "$pkgdir/usr/share/$_pkgname/"
+    cp -a frontend/dist/frontend "$pkgdir/usr/share/$_pkgname/frontend/dist/"
+    cp -a static "$pkgdir/usr/share/$_pkgname/"
+    cp -a i18n "$pkgdir/usr/share/$_pkgname/"
 }
