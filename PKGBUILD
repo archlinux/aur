@@ -2,7 +2,7 @@
 # Contributor: Eric Belanger <eric@archlinux.org>
 
 pkgname=pingus-git
-pkgver=0.7.6.r326.gfa980e4
+pkgver=0.7.6.r421.gad462706e
 pkgrel=1
 pkgdesc="A Lemmings clone, i.e. a level-based puzzle game (development version)"
 arch=('i686' 'x86_64')
@@ -45,6 +45,7 @@ prepare() {
   git config submodule.external/uitest.url "$srcdir"/uitest
   git config submodule.external/sexp-cpp.url "$srcdir"/sexp-cpp
   git submodule update
+  sed '/find_package(Boost/s@ signals@@' -i CMakeLists.txt || die 
 }
 
 build() {
