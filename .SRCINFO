@@ -1,6 +1,6 @@
 pkgbase = instaaur
 	pkgdesc = A bach AUR wrapper
-	pkgver = 2021.05.16
+	pkgver = 2021.05.23
 	pkgrel = 1
 	url = https://github.com/The-Repo-Club/instaaur
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = instaaur
 	depends = tar
 	optdepends = git: AUR4 git support
 	provides = instaaur
-	source = instaaur-2021.05.16.tar.gz::https://github.com/The-Repo-Club/instaaur/archive/2021.05.16.tar.gz
-	sha256sums = a750cd78b8e787cf37dc0ada683770c8d29503f78d20c0065c2d27fab6c5ad60
+	source = instaaur-2021.05.23.tar.gz::https://github.com/The-Repo-Club/instaaur/archive/2021.05.23.tar.gz
+	sha256sums = SKIP
 
 pkgname = instaaur
 
