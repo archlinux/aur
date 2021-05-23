@@ -1,0 +1,30 @@
+post_install() {
+  mkdir -p /var/lib/owntone
+  getent group owntone &>/dev/null || groupadd -r owntone >/dev/null
+  getent passwd owntone &>/dev/null || useradd -r -g owntone -d /var/lib/owntone -s /bin/false -c owntone owntone >/dev/null
+  mkdir -p $pkgdir/var/cache/owntone
+  chown owntone:owntone $pkgdir/var/cache/owntone
+
+  cat <<EOF
+==> owntone can be started via systemctl:
+==> systemctl start owntone
+
+==> owntone can be autostart via systemctl:
+==> systemctl enable owntone
+
+==> owntone.service has been added to your /etc/avahi/services
+
+==> Please edit /etc/owntone.conf to suit your needs
+==> (point it to your music library)
+EOF
+}
+
+pre_remove() {
+  systemctl stop owntone || true
+  systemctl disable owntone || true
+}
+
+post_remove() {
+  getent passwd owntone &>/dev/null && userdel owntone >/dev/null
+  getent group owntone &>/dev/null && groupdel owntone >/dev/null
+}
