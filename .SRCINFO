@@ -9,8 +9,10 @@ pkgbase = gdm-tools-git
 	depends = dconf
 	depends = glib2
 	depends = gdm
+	provides = gdm-tools
 	provides = set-gdm-theme
 	provides = gnomeconf2gdm
+	conflicts = gdm-tools
 	source = gdm-tools-git::git+https://github.com/realmazharhussain/gdm-tools.git
 	md5sums = SKIP
 

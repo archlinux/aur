@@ -1,3 +1,4 @@
+# Maintainer: Mazhar Hussain <mmazharhussainkgb1145@gmail.com>
 pkgname=gdm-tools-git
 pkgver=42.ad62c99
 pkgrel=1
@@ -7,7 +8,8 @@ url="https://github.com/realmazharhussain/gdm-tools"
 license=('GPL v3')
 depends=('bash' 'dconf' 'glib2' 'gdm')
 makedepends=()
-provides=('set-gdm-theme' 'gnomeconf2gdm')
+provides=('gdm-tools' 'set-gdm-theme' 'gnomeconf2gdm')
+conflicts=('gdm-tools')
 source=("$pkgname"::'git+https://github.com/realmazharhussain/gdm-tools.git')
 md5sums=('SKIP')
 
