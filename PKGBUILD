@@ -7,7 +7,7 @@
 pkgname=tllocalmgr-git
 _pkgname='texlive-localmanager'
 pkgver=v0.7.r3.gbbd8488
-pkgrel=6
+pkgrel=7
 pkgdesc='A shell and command-line utility to manage TeXLive on Arch Linux'
 arch=('any')
 url='https://git.archlinux.org/users/remy/texlive-localmanager.git/'
@@ -15,8 +15,8 @@ license=('GPL')
 provides=("texlive-localmanager=$pkgver")
 conflicts=('texlive-localmanager'
            'texlive-localmanager-git')
-depends=('texlive-core>=2011'
-         'texlive-core<2021'
+depends=('texlive-core>=2016'
+         'texlive-core<2022'
          'perl-libwww'
          'perl-term-shellui'
          'perl-term-readline-gnu'
@@ -25,12 +25,12 @@ depends=('texlive-core>=2011'
 makedepends=('git')
 
 source=("${_pkgname}::git+http://git.archlinux.org/users/remy/texlive-localmanager.git"
-        'tllocalmgr-2020.patch'
+        'tllocalmgr-2021.patch'
         'tllocalmgr-enhance.patch'
         'tllocalmgr-fix-texlive-local-match.patch'
         'tllocalmgr-pkgs-nicer-error.patch')
 sha256sums=('SKIP'
-            'cdd88b9d8b87fcd6117a3ef6c9dd69ac1103a15beb966d64f2ad1996b574a1f1'
+            'cd12f1927fa9d950855aab91b30039d0cbb328a8c7899382286d3ace16bb6a3b'
             '22222ff329919ee6a16ffd489b0213b14f8169d9daf6ef1a82aa5ab37538c236'
             'a7698d0076f4e1a7ef401899c174ed9a290674a7e89e9c818ba078e17548c6e7'
             '1538426adada826f8faeed826e9be5f5610ade23ce0437535e39662294e6e108')
@@ -43,8 +43,8 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
 
-  # update to handle texlive-2020 releases
-  patch -p1 < "$srcdir/tllocalmgr-2020.patch"
+  # update to handle texlive-2021 releases
+  patch -p1 < "$srcdir/tllocalmgr-2021.patch"
 
   # enhances the tllocalmgr script a bit
   # thanks: @sharethewisdom and @cobaltspace

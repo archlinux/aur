@@ -1,13 +1,13 @@
 pkgbase = tllocalmgr-git
 	pkgdesc = A shell and command-line utility to manage TeXLive on Arch Linux
 	pkgver = v0.7.r3.gbbd8488
-	pkgrel = 6
+	pkgrel = 7
 	url = https://git.archlinux.org/users/remy/texlive-localmanager.git/
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = texlive-core>=2011
-	depends = texlive-core<2021
+	depends = texlive-core>=2016
+	depends = texlive-core<2022
 	depends = perl-libwww
 	depends = perl-term-shellui
 	depends = perl-term-readline-gnu
@@ -17,12 +17,12 @@ pkgbase = tllocalmgr-git
 	conflicts = texlive-localmanager
 	conflicts = texlive-localmanager-git
 	source = texlive-localmanager::git+http://git.archlinux.org/users/remy/texlive-localmanager.git
-	source = tllocalmgr-2020.patch
+	source = tllocalmgr-2021.patch
 	source = tllocalmgr-enhance.patch
 	source = tllocalmgr-fix-texlive-local-match.patch
 	source = tllocalmgr-pkgs-nicer-error.patch
 	sha256sums = SKIP
-	sha256sums = cdd88b9d8b87fcd6117a3ef6c9dd69ac1103a15beb966d64f2ad1996b574a1f1
+	sha256sums = cd12f1927fa9d950855aab91b30039d0cbb328a8c7899382286d3ace16bb6a3b
 	sha256sums = 22222ff329919ee6a16ffd489b0213b14f8169d9daf6ef1a82aa5ab37538c236
 	sha256sums = a7698d0076f4e1a7ef401899c174ed9a290674a7e89e9c818ba078e17548c6e7
 	sha256sums = 1538426adada826f8faeed826e9be5f5610ade23ce0437535e39662294e6e108
