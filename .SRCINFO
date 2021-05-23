@@ -14,6 +14,7 @@ pkgbase = meowgram-git
 	depends = python-bleach
 	depends = gtk4
 	depends = libadwaita
+	depends = gnome-keyring
 	source = git+https://github.com/ExposedCat/Meowgram.git
 	sha512sums = SKIP
 
