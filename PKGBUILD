@@ -4,13 +4,14 @@ _rockname=colors
 pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=8.05.26
 _rockrel=1
-pkgrel=4
+pkgrel=5
 pkgdesc='HSL Color Theory Computation in Lua'
 arch=('i686' 'x86_64')
 url="http://sputnik.freewisdom.org/lib/$_rockname/"
 license=('MIT')
 makedepends=('lua' 'lua53' 'lua52' 'lua51' 'luarocks')
-source=("$_rockname-$pkgver.tar.gz::http://sputnik.freewisdom.org/files/$_rockname-$pkgver.tar.gz")
+_archive='https://web.archive.org/web/20200627071925'
+source=("$_rockname-$pkgver.tar.gz::$_archive/http://sputnik.freewisdom.org/files/$_rockname-$pkgver.tar.gz")
 sha256sums=('64ec89fb6938cfdadca5ba1dc9c549dc61c62a585bb8ff5ac593b33b709f814b')
 
 _package_helper() {
