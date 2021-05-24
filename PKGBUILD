@@ -3,23 +3,23 @@
 
 pkgname=sac-stdlib-weekly
 _version=1.3
-_changes=98
-_commit=g93af
-_sac_version="1.3.3-390-1"
+_changes=115
+_commit=g540a
+_sac_version="1.3.3-659-1"
 pkgver="${_version}.${_changes}"
 pkgrel=2
 pkgdesc='The standard library for the Single-Assignment C programming language (weekly build)'
 arch=('x86_64')
 url='http://www.sac-home.org/'
 license=('custom:SAC')
-depends=('sac-compiler-weekly>=1.3.3.390' hwloc cuda)
+depends=('sac-compiler-weekly>=1.3.3.659' hwloc cuda)
 provides=('sac-stdlib')
 replaces=('sac-stdlib')
 conflicts=('sac-stdlib' 'sac-stdlib-weekly-basic')
-source=("https://gitlab.science.ru.nl/sac-group/sac-packages/-/raw/master/packages/weekly/Linux/${_sac_version}/full/sac-stdlib-${_version}-${_changes}-${_commit}.tar.gz"
+source=("https://gitlab.sac-home.org/sac-group/sac-packages/-/raw/master/packages/weekly/Linux/${_sac_version}/full/sac-stdlib-${_version}-${_changes}-${_commit}.tar.gz"
         'LICENSE.txt')
-sha256sums=('6648c56297208ed687291f466a6252715256ea131cf56c6220ac9ff1829793a2'
-            '70a44340820b0515f1d29e663342f0ed8efb3a29fa5619f18461cbaf7cdf27c3')
+sha256sums=('5fc51980584813769df2515f2451c6e978e56c8a7b1d438cdfc890fa5725a0eb'
+            'cb641cc7eb118bbf08dadffc35c57eb7a1ab4d542c3e73c79f5c4f7c1560bf22')
 
 package() {
 	cd "$srcdir/sac-stdlib-${_version}-${_changes}-${_commit}"
