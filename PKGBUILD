@@ -60,7 +60,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.12.4.arch1
+pkgver=5.12.6.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -98,7 +98,7 @@ source=(
     "${_reponame}::git+${_repo_url}#tag=$_srcver_tag"
     "git+${_repo_url_gcc_patch}"
     config # kernel config file
-    0009-prjc_v5.12-r0.patch
+    0009-prjc_v5.12-r1.patch
     0005-glitched-pds.patch
 )
 validpgpkeys=(
@@ -108,8 +108,8 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '02cba7139c46a84dd3c9ed0bdacc27ebce8f7ef0124ab3a5111bd8137cc2e4b488e6ecda51021195bd53d61ec4de016f19f26ec8443e3fadaa5292368e3a72c6'
-            '7d96b7e9e1caa6681f5c662e58777c26f0c579ffa49ae08f92b72a609c582dc7d2a3514c3d2d8e708af7fd9b1d387991ae065db798c85cac7d139291d86f7c21'
+            '5616735b3e725978558f58aee2c1cc312af810d3185e45982780ac9eeed3e09c7a6c7a8f6a900b0b30052b63bc5a5494c1a3e82fe17033c52668ace9841037b7'
+            '3500160e35ffb16771f9ae556f0c8260e616833898f05b3c03e6197b47b20fe3a25f717117ca8257852734c1764e407fbfe70aac077c482e9f9fca97cdd938ee'
             '889f0a49f326de3f119290256393b09a9e9241c2a297ca0b7967a2884e4e35d71388d2a559e4c206f55f67228b65e8f2013a1ec61f6ff8f1de3b6a725fd5fa57')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -126,7 +126,7 @@ prepare() {
 
     PatchesArray=(
         $_reponame_gcc_patch/$_gcc_patch_name
-        0009-prjc_v5.12-r0.patch
+        0009-prjc_v5.12-r1.patch
         0005-glitched-pds.patch
     )
 
