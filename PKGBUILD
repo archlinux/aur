@@ -9,7 +9,7 @@ url="https://github.com/Ferdi265/numix-solarized-gtk-theme"
 license=('GPL3')
 depends=('gtk-engine-murrine')
 source=("https://github.com/Ferdi265/numix-solarized-gtk-theme/releases/download/$pkgver/NumixSolarized-$pkgver.tar.gz")
-sha256sums=('eac9abd269008056235d08b1422a7979e0df58a9aa61bf7ea970107eb0357312')
+sha256sums=('62080ce53df3c38633c15804b99a5dbde533beac0fef83ef17a609bba6348195')
 
 package() {
 	mkdir -p $pkgdir/usr/share/themes
