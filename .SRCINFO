@@ -1,15 +1,15 @@
 pkgbase = agate
 	pkgdesc = Simple static file server for the Gemini network protocol, written in Rust
-	pkgver = 3.0.1
-	pkgrel = 2
+	pkgver = 3.0.3
+	pkgrel = 1
 	url = https://github.com/mbrubeck/agate
 	arch = x86_64
 	license = APACHE
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = agate-3.0.1.tar.gz::https://github.com/mbrubeck/agate/archive/v3.0.1.tar.gz
-	md5sums = 87016ad7cafd44b82f7cc576d4f1f090
+	source = agate-3.0.3.tar.gz::https://github.com/mbrubeck/agate/archive/v3.0.3.tar.gz
+	md5sums = c9eb30a918689730043e3027fd9a6436
 
 pkgname = agate
 
