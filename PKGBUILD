@@ -4,7 +4,7 @@
 
 pkgname=unvanquished
 pkgver=0.52.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A team-based, fast-paced, fps/rts hybrid game which pits aliens against humans.'
 arch=('x86_64')
 url='https://www.unvanquished.net'
