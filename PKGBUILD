@@ -34,6 +34,13 @@ prepare() {
     cd ParaView-v${pkgver/R/-R}
     # We have a patched libharu
     sed -i "s|2.4.0|2.3.0|" VTK/ThirdParty/libharu/CMakeLists.txt
+    # fix build against gcc:11 https://gcc.gnu.org/gcc-11/porting_to.html#header-dep-changes
+    files_to_patch=(  VTK/Common/Core/vtkGenericDataArrayLookupHelper.h
+                      VTK/Common/Core/vtkDataArrayPrivate.txx
+                      VTK/Common/DataModel/vtkPiecewiseFunction.cxx
+                      VTK/Filters/HyperTree/vtkHyperTreeGridThreshold.cxx
+                      VTK/Rendering/Core/vtkColorTransferFunction.cxx)
+    sed -i '1 i\#include <limits>' -i "${files_to_patch[@]}"
 }
 
 build() {
