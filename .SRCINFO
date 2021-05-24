@@ -1,11 +1,10 @@
 pkgbase = emulsion-bin
 	pkgdesc = A fast and minimalistic image viewer (binary release)
 	pkgver = 9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://arturkovacs.github.io/emulsion-website
 	arch = x86_64
 	license = MIT
-	makedepends = dpkg
 	depends = gcc-libs
 	optdepends = hicolor-icon-theme
 	provides = emulsion

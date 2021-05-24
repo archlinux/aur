@@ -4,13 +4,12 @@
 pkgname=emulsion-bin
 _name="${pkgname%-bin}"
 pkgver=9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast and minimalistic image viewer (binary release)"
 arch=('x86_64')
 url="https://arturkovacs.github.io/emulsion-website"
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('dpkg')
 optdepends=('hicolor-icon-theme')
 provides=("$_name")
 conflicts=("$_name")
@@ -19,7 +18,7 @@ source=("$_name-$pkgver.deb::https://github.com/arturkovacs/emulsion/releases/do
 sha256sums=('f66ab3b655af4da6e4c3fb60540c241cc9e7055ab70a0638aedd8af484d90427')
 
 package() {
-  dpkg-deb --extract "$_name-$pkgver.deb" "$pkgdir/"
+  tar -C "${pkgdir}" -xf data.tar.gz
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
   mv "$pkgdir/usr/lib/$_name/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/"
   chown -R root:root "$pkgdir/"
