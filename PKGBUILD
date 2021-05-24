@@ -9,20 +9,23 @@
 # TODO: Build and package praat-nogui and sendpraat, as in Debian.
 
 pkgname=praat
-pkgver=6.1.43
+pkgver=6.1.47
 pkgrel=1
-pkgdesc='Doing Phonetics by computer (speech analysis)'
+pkgdesc='A speech analysis tool used for doing phonetics by computer'
 arch=('x86_64' 'i686')
-url='https://www.praat.org/'
+url='https://www.praat.org'
 license=('GPL')
 depends=('alsa-lib' 'gtk3' 'jack' 'libpulse' 'ttf-charis-sil' 'ttf-sil-doulos')
 optdepends=('ttf-sil-fonts')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz"
+_url="https://github.com/$pkgname/$pkgname"
+source=("$pkgname-$pkgver.tar.gz::$_url/archive/v$pkgver.tar.gz"
+        "$pkgname-$pkgver-$pkgrel-gcc.patch::$_url/commit/e4aca10.patch"
         "$pkgname.1"
         "$pkgname.desktop"
         "$pkgname.svg"
         "$pkgname.xpm")
-sha256sums=('bfdcdaa2caeb107e30b6bf7c1a227e7b6cdd634a589e164bf938c4c837372348'
+sha256sums=('0adc0187911e0acaf8672aedf3ee70bfda4c4123300e75bfddbcd45242618359'
+            '4cff8173be94c6b9f8a4745d12da73565a6333fb74296759140ca4aaf128e50f'
             '21ee03cae45be634c57c167c2dfbdfd9d9b7feadb98e0124413d9426c199e81c'
             '94720aedc8e9c9e9d53b3230d79ccaae551b5bc5e6986528664311d55f3cce5a'
             'db6c7568f6e13b4ce7c37bd9fcf289832867f79ba7d7fc48c4f13f0045ad98f1'
@@ -31,6 +34,7 @@ sha256sums=('bfdcdaa2caeb107e30b6bf7c1a227e7b6cdd634a589e164bf938c4c837372348'
 prepare() {
     cd "$pkgname-$pkgver"
     cp makefiles/makefile.defs.linux.pulse makefile.defs
+    patch -p1 < "../$pkgname-$pkgver-$pkgrel-gcc.patch"
 }
 
 build() {
