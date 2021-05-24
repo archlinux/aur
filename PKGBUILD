@@ -1,11 +1,12 @@
 # Maintainer: 1Conan <me@1conan.com>
 pkgname=python-ctypescrypto-git
-pkgver=0.0.0.r104.33c3290
+pkgver=0.0.0.r106.90b32fd
 pkgrel=1
 pkgdesc="Python interface to some openssl function based on ctypes module"
 arch=('any')
 url="https://github.com/vbwagner/ctypescrypto"
 license=('MIT')
+makedepends=('git')
 depends=('openssl' 'python')
 source=("$pkgname::git+https://github.com/vbwagner/ctypescrypto#branch=master")
 sha512sums=("SKIP")
