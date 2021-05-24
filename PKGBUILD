@@ -1,7 +1,7 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=superslicer-prerelease 
-pkgver=2.3.55.5
+pkgver=2.3.56.0
 _pkgtag=$pkgver
 pkgrel=3
 epoch=1
@@ -18,7 +18,7 @@ source=("https://github.com/supermerill//SuperSlicer/archive/$_pkgtag.tar.gz"
         "start-superslicer.sh"
         "0001-wxgtk3-is-broken-on-wayland.patch"
         "https://raw.githubusercontent.com/archlinux/svntogit-community/1dea61c0b581ff5001d073689f68b0323740be93/trunk/prusa-slicer-openexr3.patch")
-sha512sums=('eeaabea0754220b3f9845cadc0f33cc9bb322ccf1e74ae7f94b855c23dfd9b08a083210aca16338eee7c652ab6bb5bae01b0a216f6d0a664af7c7db866298214'
+sha512sums=('a2d3776d91c53d5718c6e3b64f2785af3d36f519d8b1b4219b127374033ee95d21b3ccc0d69b524e22167ae95214d07f77918215803584327e41a7f47f8bc03b'
             '9a91e374b606447889ac517061fe559d7cbc7c6b2a79d521d46205b6ffdb8264e6fbcc09f62a6c6e462c1172b0ed08b1d4ddf839a3cc448ae1717888f1df287e'
             'acf35ebe467e9fb30f1b77d15348f1a7b82dcf45a5b829e375e972b5d6b49968603b3fa090c4d1f56e8b5148e2b820e79afa269da60ace70de1ceadcf6e820c5'
             'c33c2414746bc9d7dceb5af59ecb4aed2189211fc3c8b144d712a39d3677ba4d366eb9b4dd05fbc3811954d69cd1273d714dc4536489fe153ac1aee2919e5c98')
