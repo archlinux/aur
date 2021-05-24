@@ -6,16 +6,15 @@
 pkgname=librewolf
 _pkgname=LibreWolf
 pkgver=88.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
 url="https://librewolf-community.gitlab.io/"
 depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
-             rust
-             autoconf2.13 clang llvm jack gtk2 nodejs cbindgen nasm
-             python-setuptools python-psutil python-zstandard git binutils lld)
+             autoconf2.13 rust clang llvm jack gtk2 nodejs cbindgen nasm
+             python-setuptools python-psutil python-zstandard git binutils lld dump_syms)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -25,35 +24,25 @@ backup=('usr/lib/librewolf/librewolf.cfg'
         'usr/lib/librewolf/distribution/policies.json')
 options=(!emptydirs !makeflags !strip)
 _arch_svn=https://git.archlinux.org/svntogit/packages.git/plain/trunk
-_linux_commit=95feca84f5c83a27418cf4822a83537606a21a53
-_settings_commit=f8785f18f60aacd28dbe99549a13cc64e06ef4e4
+_common_commit=5bce5285fa7046e6987ec3e5a8931ac17ca6c7c0
+_settings_commit=c78c50fbefe2fcf830611e21dcc0fe79180d1e01
 install='librewolf.install'
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
                $pkgname.desktop
-               "git+https://gitlab.com/${pkgname}-community/browser/common.git"
-               "git+https://gitlab.com/${pkgname}-community/settings.git#commit=${_settings_commit}"
-               "${pkgver}-${pkgrel}_megabar.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/megabar.patch"
-               "${pkgver}-${pkgrel}_remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
-               "${pkgver}-${pkgrel}_context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
-               "${pkgver}-${pkgrel}_unity-menubar.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/unity-menubar.patch"
-               "${pkgver}-${pkgrel}_mozilla-vpn-ad.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/mozilla-vpn-ad.patch")
-source_aarch64=("${pkgver}-${pkgrel}_arm.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/arm.patch"
-                "${pkgver}-${pkgrel}_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch")
+               "git+https://gitlab.com/${pkgname}-community/browser/common.git#commit=${_common_commit}"
+               "git+https://gitlab.com/${pkgname}-community/settings.git#commit=${_settings_commit}")
+source_aarch64=("${pkgver}-${pkgrel}_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch")
 sha256sums=('83df1eae0e28fe99661fd5d39d705cdab2e108b4a24ce12c2db6183c632804cc'
             '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
             'SKIP'
-            'SKIP'
-            '4487f78173793b9fab2b5b26879d468d2ace2837fb938f74809d961e14da0a65'
-            'af9d9341917cf3c5844fc46597ad2d842642c937c9be574bfacfe5c242b1114c'
-            '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
-            '860e49ab14ce2c9416a479d313a2da799e023db58e93b81ca4cb869c5afb39a7'
-            'f3fd29e24207d5cc83f9df6c9ffa960aabdab598ea59a61fec57e9947b1d8bc9')
-sha256sums_aarch64=('6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7'
-                    '2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9')
+            'SKIP')
+sha256sums_aarch64=('2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9')
 
 prepare() {
   mkdir -p mozbuild
   cd firefox-$pkgver
+
+  local _patches_dir="${srcdir}/common/patches"
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
@@ -79,6 +68,10 @@ ac_add_options --with-distribution-id=io.gitlab.${pkgname}-community
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZ_REQUIRE_SIGNING=0
+
+# System libraries
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
 
 # Features
 ac_add_options --enable-alsa
@@ -115,8 +108,8 @@ END
   # we should have more than enough RAM on the CI spot instances.
   # ...or maybe not?
   export LDFLAGS+=" -Wl,--no-keep-memory"
-  patch -p1 -i ../${pkgver}-${pkgrel}_arm.patch
-  patch -p1 -i ../${pkgver}-${pkgrel}_build-arm-libopus.patch
+  patch -Np1 -i ${_patches_dir}/arm.patch
+  patch -Np1 -i ../${pkgver}-${pkgrel}_build-arm-libopus.patch
 
 else
 
@@ -127,44 +120,35 @@ END
 fi
 
   # Remove some pre-installed addons that might be questionable
-  patch -p1 -i ../${pkgver}-${pkgrel}_remove_addons.patch
+  patch -Np1 -i ${_patches_dir}/remove_addons.patch
 
   # Disable (some) megabar functionality
   # Adapted from https://github.com/WesleyBranton/userChrome.css-Customizations
-  patch -p1 -i ../${pkgver}-${pkgrel}_megabar.patch
+  patch -Np1 -i ${_patches_dir}/megabar.patch
 
   # Debian patch to enable global menubar
   # disabled for the default build, as it seems to cause issues in some configurations
-  # patch -p1 -i ../unity-menubar.patch
+  # patch -Np1 -i ../{_patches_dir}/unity-menubar.patch
 
   # Disabling Pocket
-  sed -i 's/"pocket"/# "pocket"/g' browser/components/moz.build
-
-  patch -p1 -i ../${pkgver}-${pkgrel}_context-menu.patch
+  patch -Np1 -i ${_patches_dir}/sed-patches/disable-pocket.patch
 
   # remove mozilla vpn ads
-  patch -p1 -i ../${pkgver}-${pkgrel}_mozilla-vpn-ad.patch
-
-  # this one only to remove an annoying error message:
-  sed -i 's#SaveToPocket.init();#// SaveToPocket.init();#g' browser/components/BrowserGlue.jsm
+  patch -Np1 -i ${_patches_dir}/mozilla-vpn-ad.patch
 
   # Remove Internal Plugin Certificates
-  _cert_sed='s#if (aCert.organizationalUnit == "Mozilla [[:alpha:]]\+") {\n'
-  _cert_sed+='[[:blank:]]\+return AddonManager\.SIGNEDSTATE_[[:upper:]]\+;\n'
-  _cert_sed+='[[:blank:]]\+}#'
-  _cert_sed+='// NOTE: removed#g'
-  sed -z "$_cert_sed" -i toolkit/mozapps/extensions/internal/XPIInstall.jsm
+  patch -Np1 -i ${_patches_dir}/sed-patches/remove-internal-plugin-certs.patch
 
   # allow SearchEngines option in non-ESR builds
-  sed -i 's#"enterprise_only": true,#"enterprise_only": false,#g' browser/components/enterprisepolicies/schemas/policies-schema.json
-
-  _settings_services_sed='s#firefox.settings.services.mozilla.com#f.s.s.m.c.qjz9zk#g'
+  patch -Np1 -i ${_patches_dir}/sed-patches/allow-searchengines-non-esr.patch
 
   # stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)
-  sed "$_settings_services_sed" -i browser/components/newtab/data/content/activity-stream.bundle.js
-  sed "$_settings_services_sed" -i modules/libpref/init/all.js
-  sed "$_settings_services_sed" -i services/settings/Utils.jsm
-  sed "$_settings_services_sed" -i toolkit/components/search/SearchUtils.jsm
+  patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
+
+  # Assorted patches
+  patch -Np1 -i ${_patches_dir}/context-menu.patch
+  patch -Np1 -i ${_patches_dir}/browser-confvars.patch
+  patch -Np1 -i ${_patches_dir}/urlbarprovider-interventions.patch
 
   rm -f ${srcdir}/common/source_files/mozconfig
   cp -r ${srcdir}/common/source_files/* ./
@@ -212,15 +196,11 @@ fi
     xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
     ./mach python build/pgo/profileserver.py
 
-  if [[ ! -s merged.profdata ]]; then
-    echo "No profile data produced."
-    return 1
-  fi
+  stat -c "Profile data found (%s bytes)" merged.profdata
+  test -s merged.profdata
 
-  if [[ ! -s jarlog ]]; then
-    echo "No jar log produced."
-    return 1
-  fi
+  stat -c "Jar log found (%s bytes)" jarlog
+  test -s jarlog
 
   echo "Removing instrumented browser..."
   ./mach clobber

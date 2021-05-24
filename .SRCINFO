@@ -1,7 +1,7 @@
 pkgbase = librewolf
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
 	pkgver = 88.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://librewolf-community.gitlab.io/
 	install = librewolf.install
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = librewolf
 	makedepends = imake
 	makedepends = inetutils
 	makedepends = xorg-server-xvfb
-	makedepends = rust
 	makedepends = autoconf2.13
+	makedepends = rust
 	makedepends = clang
 	makedepends = llvm
 	makedepends = jack
@@ -32,6 +32,7 @@ pkgbase = librewolf
 	makedepends = git
 	makedepends = binutils
 	makedepends = lld
+	makedepends = dump_syms
 	depends = gtk3
 	depends = libxt
 	depends = mime-types
@@ -52,25 +53,13 @@ pkgbase = librewolf
 	backup = usr/lib/librewolf/distribution/policies.json
 	source = https://archive.mozilla.org/pub/firefox/releases/88.0.1/source/firefox-88.0.1.source.tar.xz
 	source = librewolf.desktop
-	source = git+https://gitlab.com/librewolf-community/browser/common.git
-	source = git+https://gitlab.com/librewolf-community/settings.git#commit=f8785f18f60aacd28dbe99549a13cc64e06ef4e4
-	source = 88.0.1-1_megabar.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/95feca84f5c83a27418cf4822a83537606a21a53/megabar.patch
-	source = 88.0.1-1_remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/95feca84f5c83a27418cf4822a83537606a21a53/remove_addons.patch
-	source = 88.0.1-1_context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/95feca84f5c83a27418cf4822a83537606a21a53/context-menu.patch
-	source = 88.0.1-1_unity-menubar.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/95feca84f5c83a27418cf4822a83537606a21a53/unity-menubar.patch
-	source = 88.0.1-1_mozilla-vpn-ad.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/95feca84f5c83a27418cf4822a83537606a21a53/mozilla-vpn-ad.patch
+	source = git+https://gitlab.com/librewolf-community/browser/common.git#commit=5bce5285fa7046e6987ec3e5a8931ac17ca6c7c0
+	source = git+https://gitlab.com/librewolf-community/settings.git#commit=c78c50fbefe2fcf830611e21dcc0fe79180d1e01
 	sha256sums = 83df1eae0e28fe99661fd5d39d705cdab2e108b4a24ce12c2db6183c632804cc
 	sha256sums = 0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 4487f78173793b9fab2b5b26879d468d2ace2837fb938f74809d961e14da0a65
-	sha256sums = af9d9341917cf3c5844fc46597ad2d842642c937c9be574bfacfe5c242b1114c
-	sha256sums = 3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd
-	sha256sums = 860e49ab14ce2c9416a479d313a2da799e023db58e93b81ca4cb869c5afb39a7
-	sha256sums = f3fd29e24207d5cc83f9df6c9ffa960aabdab598ea59a61fec57e9947b1d8bc9
-	source_aarch64 = 88.0.1-1_arm.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/95feca84f5c83a27418cf4822a83537606a21a53/arm.patch
-	source_aarch64 = 88.0.1-1_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch
-	sha256sums_aarch64 = 6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7
+	source_aarch64 = 88.0.1-2_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch
 	sha256sums_aarch64 = 2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9
 
 pkgname = librewolf
