@@ -1,0 +1,22 @@
+pkgbase = mangareader
+	pkgdesc = Manga Reader for local files
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://gitlab.com/g-fb/mangareader
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = ninja
+	depends = hicolor-icon-theme
+	depends = kconfig
+	depends = kcoreaddons
+	depends = ki18n
+	depends = kxmlgui
+	depends = libarchive
+	source = https://gitlab.com/g-fb/mangareader/-/archive/1.5.0/mangareader-1.5.0.tar.gz
+	sha256sums = 34b6dc38a5b0e8c4c343e4099ce6c525b0992622dd6c841486d8a020074fb0e6
+
+pkgname = mangareader
+
