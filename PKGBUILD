@@ -1,32 +1,21 @@
-# Maintainer: Benjamin Goodger <ben at goodger dot nl>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Benjamin Goodger <ben at goodger dot nl>
 # Contributor: Marcos Heredia <chelqo at gmail dot com>
 
-pkgname=otf-allerta
-
+_pkgname=allerta
+pkgname=otf-$_pkgname
 pkgver=1.001
-pkgrel=2
-
+pkgrel=3
 pkgdesc="Open-source signage typeface"
 arch=('any')
-url="https://pixelspread.com/allerta/"
+url='https://pixelspread.com/$_pkgname/'
 license=('OFL')
-_screenshot="http://pixelspread.com/allerta/large/allerta.jpg"
-
-conflicts=('ttf-allerta')
-
-source=("https://pixelspread.com/allerta/allerta.zip")
-
-md5sums=('944ee51768a80bdbe822c2c2f0b8d6a1')
+source=("$url/$_pkgname.zip")
+sha256sums=('668cf2188bda44999d60931dded94af5d08b60ce1b9a951bd93b658fe000e099')
 
 package() {
-  cd ${srcdir}/Allerta
-
-  install -dm755 "${pkgdir}/usr/share/fonts/OTF/allerta"
-  install -Dpm644 *.otf "${pkgdir}/usr/share/fonts/OTF/allerta/"
-
-  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dpm644 "Open Font License.txt" "${pkgdir}/usr/share/licenses/${pkgname}/"
-
-  install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
-  install -Dpm644 *.pdf "${pkgdir}/usr/share/doc/${pkgname}/"
+  cd ${_pkgname^}
+  install -Dpm644 -t "$pkgdir/usr/share/fonts/OTF/$pkgname/" *.otf
+  install -Dpm644 -t "$pkgdir/usr/share/licenses/$pkgname/" "Open Font License.txt"
+  # install -Dpm644 -t "$pkgdir/usr/share/doc/$pkgname/" *.pdf
 }
