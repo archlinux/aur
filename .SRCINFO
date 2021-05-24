@@ -1,6 +1,6 @@
 pkgbase = gzip-git
 	pkgdesc = A data compression program
-	pkgver = 1.8.r21.ge360d37
+	pkgver = 1.10.r32.g23a870d
 	pkgrel = 1
 	url = https://www.gnu.org/software/gzip/
 	arch = i686

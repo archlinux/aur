@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=gzip-git
-pkgver=1.8.r21.ge360d37
+pkgver=1.10.r32.g23a870d
 pkgrel=1
 pkgdesc="A data compression program"
 arch=('i686' 'x86_64')
@@ -25,7 +25,9 @@ build() {
   cd "gzip"
 
   ./bootstrap
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr" \
+    --disable-gcc-warnings
   make
 }
 
