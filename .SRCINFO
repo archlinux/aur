@@ -1,13 +1,13 @@
 pkgbase = fprettify
 	pkgdesc = An auto-formatter for modern Fortran code that imposes strict whitespace formatting, written in Python.
-	pkgver = 0.3.6
+	pkgver = 0.3.7
 	pkgrel = 1
-	arch = x86_64
-	arch = i686
+	url = https://github.com/pseewald/fprettify
+	arch = ('x86_64' 'i686')
 	license = GPLv3
 	depends = python
 	depends = python-future
-	source = https://github.com/pseewald/fprettify/archive/v0.3.6.tar.gz
+	source = https://github.com/pseewald/fprettify/archive/refs/tags/v0.3.7.tar.gz
 	sha256sums = 71932effcc2dc5d3ce55cc5333fd88fb251ebf6fdb8f60e3ed8a78d748697bcc
 
 pkgname = fprettify
