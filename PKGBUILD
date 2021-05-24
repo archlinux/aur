@@ -65,8 +65,8 @@ package() {
     install -Dm755 dist/arsse "$pkgdir/usr/bin/arsse"
     install -Dm640 dist/arch/config.php "$pkgdir/etc/webapps/arsse"
     # patch generic configuration files to use Arch-specific paths and identifiers
-    sed -i -se 's/\/\(etc\|usr\/share\)\/arsse\//\/\1\/webapps\/arsse\//' "$pkgdir/etc/webapps/arsse/nginx/"* "$pkgdir/etc/webapps/arsse/apache/"* "$pkgdir/usr/lib/tmpfiles.d/arsse.conf" "$pkgdir/usr/lib/systemd/system/"* "$pkgdir/usr/bin/"*
-    sed -i -se 's/\/var\/run\/php\//\/run\/php-fpm\//' "$pkgdir/etc/webapps/arsse/nginx/"* "$pkgdir/etc/webapps/arsse/apache/"* "$pkgdir/etc/php/php-fpm.d/arsse.conf"
-    sed -i -se 's/www-data/http/' "$pkgdir/etc/php/php-fpm.d/arsse.conf"
-    sed -i -e 's/^WorkingDirectory=.*$/WorkingDirectory=\/usr\/share\/webapps\/arsse/' -e 's/^ConfigurationDirectory=.*$/ConfigurationDirectory=webapps\/arsse/' "$pkgdir/usr/lib/systemd/system/arsse-fetch.service"
+    sed -i -se 's/\/\(etc\|usr\/share\)\/arsse\//\/\1\/webapps\/arsse\//g' "$pkgdir/etc/webapps/arsse/nginx/"* "$pkgdir/etc/webapps/arsse/apache/"* "$pkgdir/usr/lib/tmpfiles.d/arsse.conf" "$pkgdir/usr/lib/systemd/system/"* "$pkgdir/usr/bin/"*
+    sed -i -se 's/\/var\/run\/php\//\/run\/php-fpm\//g' "$pkgdir/etc/webapps/arsse/nginx/"* "$pkgdir/etc/webapps/arsse/apache/"* "$pkgdir/etc/php/php-fpm.d/arsse.conf"
+    sed -i -se 's/www-data/http/g' "$pkgdir/etc/php/php-fpm.d/arsse.conf"
+    sed -i -e 's/^WorkingDirectory=.*$/WorkingDirectory=\/usr\/share\/webapps\/arsse/g' -e 's/^ConfigurationDirectory=.*$/ConfigurationDirectory=webapps\/arsse/g' "$pkgdir/usr/lib/systemd/system/arsse-fetch.service"
 }
