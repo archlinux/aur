@@ -3,12 +3,12 @@
 pkgname=perl-goocanvas2-cairotypes
 _perl_module=GooCanvas2-CairoTypes
 pkgver=0.001
-pkgrel=2
+pkgrel=3
 pkgdesc="Bridge between GooCanvas2 and Cairo types"
 arch=('any')
 url="https://metacpan.org/release/${_perl_module}"
 license=('PerlArtistic' 'GPL')
-depends=('perl-gtk3')
+depends=('goocanvas' 'perl-gtk3')
 makedepends=('perl-extutils-depends' 'perl-extutils-pkgconfig')
 source=("https://cpan.metacpan.org/authors/id/A/AS/ASOKOLOV/${_perl_module}-${pkgver}.tar.gz")
 sha256sums=('ba806736ebcc9de3d8141a763a682bdeabb1cb8702bde299adfd574ace875052')
