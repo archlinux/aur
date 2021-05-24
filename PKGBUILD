@@ -1,5 +1,5 @@
 # Maintainer:  PeterB <peter at pblackman dot plus dot co.uk>
-# Contributor: ShadowKyogre <shadowkyogre.public@gmail.com>
+# Contributor: ShadowKyogre <shadowkyogre dot public at gmail.com>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Nick B <Shirakawasuna at gmail _dot_com>
 # Contributor: mar77i <mysatyre at gmail dot com>
