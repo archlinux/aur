@@ -1,0 +1,21 @@
+pkgbase = python-specklepy-git
+	pkgdesc = This is the start of the Python client for Speckle 2.0. It is currently quite nebulous and may be trashed and rebuilt at any moment! It is compatible with Python 3.6+.
+	pkgver = 2.1.0.r8.g46437e7
+	pkgrel = 1
+	url = https://github.com/specklesystems/speckle-py
+	arch = x86_64
+	arch = i686
+	license = Apache
+	depends = python
+	depends = python-pydantic
+	depends = python-gql
+	depends = python-aiohttp
+	depends = python-appdirs
+	depends = python-requests
+	depends = python-websockets
+	provides = python-specklepy
+	source = git+https://github.com/specklesystems/speckle-py.git
+	md5sums = SKIP
+
+pkgname = python-specklepy-git
+
