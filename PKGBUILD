@@ -1,11 +1,11 @@
 pkgname=diesel_cli_git
-pkgver=1.4.1.r6.gd4eb2c1f
+pkgver=1.4.1.r1239.g0aa0da794
 pkgrel=1
 pkgdesc='CLI for the Diesel crate'
 arch=(i686 x86_64)
 url='http://diesel.rs/'
 license=(MIT Apache)
-depends=(sqlite postgresql-libs libmariadbclient)
+depends=(openssl sqlite postgresql-libs libmariadbclient)
 makedepends=(cargo)
 source=("git+https://github.com/diesel-rs/diesel.git")
 sha256sums=('SKIP')
