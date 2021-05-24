@@ -23,9 +23,9 @@ package() {
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
 	# Put the installation path on the script
-	sed -r "31s;.*;INSTALL_PATH=${pkgdir}/opt/${_pkgname}/;" -i pokemonsay.sh
+	sed -r "31s;.*;INSTALL_PATH=${pkgdir}/opt/${_pkgname};" -i pokemonsay.sh
 
-	# Install the scripts
+	# Install the scripts	
   	install -Dm755 pokemonsay.sh "${pkgdir}"/usr/bin/pokemonsay
   	install -Dm755 pokemonthink.sh "${pkgdir}"/usr/bin/pokemonthink
 }
