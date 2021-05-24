@@ -1,0 +1,15 @@
+pkgbase = python-deid
+	pkgdesc = Best effort anonymization for medical images using python
+	pkgver = 0.1.16
+	pkgrel = 1
+	url = https://github.com/pydicom/deid
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-matplotlib
+	depends = python-pydicom
+	source = python-deid-0.1.16.tar.gz::https://github.com/pydicom/deid/archive/refs/tags/0.1.16.tar.gz
+	sha512sums = 3d19af8b2e921cdf7618f26562ff30f464944eb939a6bc6cf9fbbd9d7780a23a08155266b731d3ee1ecd10ee576819110b89f83238d2013c9d5d55c8645132cf
+
+pkgname = python-deid
+
