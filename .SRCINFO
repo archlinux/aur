@@ -1,16 +1,16 @@
 pkgbase = ruby-serverengine
 	pkgdesc = A framework to implement robust multiprocess servers
-	pkgver = 2.2.3
-	pkgrel = 2
+	pkgver = 2.2.4
+	pkgrel = 1
 	url = https://github.com/treasure-data/serverengine
-	arch = x86_64
+	arch = any
 	license = Apache
 	depends = ruby
 	depends = ruby-sigdump
-	noextract = serverengine-2.2.3.gem
+	noextract = serverengine-2.2.4.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/serverengine-2.2.3.gem
-	b2sums = 20f36d60b3f9a01c3768c490db89b8adaade75fc16c1ba738135d24bb858f44c10ab5ff1d0b31f0a287b2ddb3a69f958eaa155e7a54a26bbe5b6a480e52c4325
+	source = https://rubygems.org/downloads/serverengine-2.2.4.gem
+	b2sums = 66e3b10c4396b4613b734d3d2764293de2935b0e99bc33c9ba0e79f69c2af6fbb53dee8e356ab351d65195124e139ec4b0aa7976594387432b88a3875e985ef9
 
 pkgname = ruby-serverengine
 
