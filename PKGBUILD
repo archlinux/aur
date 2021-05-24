@@ -1,6 +1,6 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=soundux
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="A cross-platform soundboard - stable version"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('pulseaudio' 'webkit2gtk' 'libwnck3' 'libappindicator-gtk3' 'lsb-releas
 optdepends=('youtube-dl: downloader integration' 'ffmpeg: downloader integration' 'pipewire: pipewire backend')
 makedepends=('git' 'cmake' 'ninja' 'pipewire')
 source=("https://github.com/Soundux/Soundux/releases/download/$pkgver/soundux-$pkgver.tar.gz")
-sha256sums=('e48f2482eb951e528cc6089fe41491c70284a6c3f24f4ba08ab740021fd17905')
+sha256sums=('e84b8dc3f21d8db0bd27735ac15504794692bfd3882947686239eae887937458')
 
 build() {
   cd "${srcdir}/Soundux"
