@@ -1,7 +1,7 @@
 pkgbase = mocu-xcursor
 	pkgdesc = A modest xcursor theme, inspired by DMZ and cz-Viator.
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sevmeyer/mocu-xcursor
 	arch = any
 	license = CC0
