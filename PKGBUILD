@@ -6,7 +6,7 @@ pkgver=0.4.1+4+ge9c96fa
 pkgrel=1
 pkgdesc='LaTeX editor written in Python with Gtk'
 arch=('any')
-url='https://github.com/cvfosammmm/Setzer'
+url='https://www.cvfosammmm.org/setzer/'
 license=('GPL3')
 depends=('gspell' 'gtk3' 'gtksourceview4' 'poppler-glib' 'python-cairo' 'python-gobject'
          'python-pdfminer' 'python-pyxdg' 'texlive-core' 'webkit2gtk' 'xdg-utils')
