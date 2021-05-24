@@ -1,5 +1,5 @@
 pkgname=princeprocessor-git
-pkgver=v0.21.r2.g7847043
+pkgver=v0.22.r0.gbffda8c
 pkgrel=1
 pkgdesc="Standalone password candidate generator using the PRINCE algorithm."
 arch=('i686' 'x86_64')
