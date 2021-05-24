@@ -11,6 +11,8 @@ license=('GPL3')
 depends=('gspell' 'gtk3' 'gtksourceview4' 'poppler-glib' 'python-cairo' 'python-gobject'
          'python-pdfminer' 'python-pyxdg' 'texlive-core' 'webkit2gtk' 'xdg-utils')
 makedepends=('appstream' 'git' 'meson')
+provides=('setzer')
+conflicts=('setzer')
 source=('git+https://github.com/cvfosammmm/Setzer.git')
 sha256sums=('SKIP')
 
