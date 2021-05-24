@@ -4,7 +4,7 @@
 # Contributor: Earnestly <zibeon AT googlemail.com>
 pkgbase=gprbuild-git
 pkgname=(libgpr-git gprbuild-git)
-pkgver=r3723.815226d6
+pkgver=r3779.5e603a95
 pkgrel=1
 pkgdesc="Builder for multi-language systems"
 arch=('i686' 'x86_64')
@@ -14,13 +14,11 @@ makedepends=('git' 'gprbuild-bootstrap' 'xmlada')
 
 source=('git+https://github.com/AdaCore/gprbuild.git'
         'git+https://github.com/AdaCore/gprconfig_kb.git'
-        'gnat2020.patch'
         'relocatable-build.patch'
         'always-use-host-gprinstall.patch'
         'expose-cargs-and-largs-makefile.patch')
 sha1sums=('SKIP'
           'SKIP'
-          '683f8a6b5e7da3ba5bef3f7f40bcf6054527696b'
           '91b20bde99cf02410cdb2b74aa1adb014458a9b3'
           '66792ebc73aff76a368bd902adc6a6f181d1d878'
           '85c3e5facda8ce8316955a501ef56086f1c41bc0')
@@ -36,10 +34,6 @@ prepare() {
     cd "$srcdir/${pkgbase%-git}"
     patch -Np1 -i "$srcdir/expose-cargs-and-largs-makefile.patch"
     patch -Np1 -i "$srcdir/relocatable-build.patch"
-
-    # Do not pass the "-gnat2020" flag. This is necessary with GCC 10, which
-    # has buggy support for Ada 2020. TODO: remove this once GCC 11 is out.
-    patch -Np1 -i "$srcdir/gnat2020.patch"
 
     # By default, it tries to use the freshly-built gprinstall to install
     # gprbuild, but that requires libgpr, which can't be installed yet. Simply
