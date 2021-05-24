@@ -1,0 +1,6 @@
+pokemonsay-newgenerations/
+*.pkg.tar.*
+src/
+srcdir/
+pkg/
+pkgdir/
