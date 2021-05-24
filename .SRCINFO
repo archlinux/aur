@@ -1,0 +1,16 @@
+pkgbase = pygmy-go-git
+	pkgdesc = Amazee.io's local docker development tool
+	pkgver = main
+	pkgrel = 1
+	url = https://github.com/fubarhouse/pygmy-go
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go-pie
+	provides = pygmy-go
+	conflicts = pygmy-go-bin
+	source = git://github.com/fubarhouse/pygmy-go.git
+	sha512sums = SKIP
+
+pkgname = pygmy-go-git
+
