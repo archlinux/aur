@@ -1,5 +1,5 @@
-/pkg
-/src
-/Unvanquished
-/naclsdk_*.tar.bz2
+/pkg/
+/src/
+/Unvanquished/
+/*.tar.bz2
 /*.pkg.tar.xz

@@ -4,13 +4,13 @@
 # Contributor: Martin F. Schumann
 
 pkgname=unvanquished-git
-pkgver=0.51.1.r108.g33ba53888
+pkgver=0.52.0.r3.ga27cbc884
 pkgrel=1
 pkgdesc='A team-based, fast-paced, fps/rts hybrid game which pits aliens against humans. Git version.'
 arch=('x86_64')
 url='https://www.unvanquished.net'
 license=('GPL3')
-makedepends=('cmake' 'git' 'python2' 'python2-yaml' 'python2-jinja')
+makedepends=('cmake' 'git')
 depends=('unvanquished-data'
          'zlib' 'gmp' 'nettle' 'geoip' 'curl' 'sdl2' 'glew' 'libpng'
          'libjpeg-turbo' 'libwebp>=0.2.0' 'freetype2' 'openal' 'libogg'
@@ -31,83 +31,92 @@ _type='branch'
 _checkout='master'
 
 # set this to share more text with the non-git version
-_unvdir="Unvanquished"
+_unvanquished="Unvanquished"
 
 # NaCL SDK is a buildtime dependency of Dæmon.
-# Note that due to enormous compile times, we use a binary distribution.
-_naclsdkbasever="4"
-_naclsdkver="linux64-${_naclsdkbasever}"
+# NOTE: Due to enormous compile times, we use a binary distribution.
+_naclsdk_base_ver=5
+_naclsdk_ver="linux64-${_naclsdk_base_ver}"
+_naclsdk="${_naclsdk_ver}"
 
-source=("git+https://github.com/Unvanquished/Unvanquished.git#${_type}=${_checkout}"
-        "naclsdk_${_naclsdkver}.tar.bz2::https://dl.unvanquished.net/deps/${_naclsdkver}.tar.bz2"
-        'unvanquished.install')
-md5sums=('SKIP'
-         '2ba12c71625919ddc282172b74fa4887'
-         '6d9430b5b06b93a43a1cb79e14637f0b')
+source=("unvanquished.install"
+        "${_unvanquished}::git+https://github.com/Unvanquished/Unvanquished.git#${_type}=${_checkout}"
+        "naclsdk_${_naclsdk_ver}.tar.bz2::https://dl.unvanquished.net/deps/${_naclsdk_ver}.tar.bz2")
+
+md5sums=('6d9430b5b06b93a43a1cb79e14637f0b'
+         'SKIP'
+         '3c2cceeb5c653c4e53543fc892377f38')
 
 pkgver() {
-	cd "${srcdir}/${_unvdir}"
-	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "${srcdir}/${_unvanquished}"
+	git describe --match 'v*' --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "${srcdir}/${_unvdir}"
+	cd "${srcdir}/${_unvanquished}"
 
 	git submodule update --init --recursive
 
 	cd "${srcdir}"
 
-	ln -sfr "${_naclsdkver}" "${_unvdir}/daemon/external_deps/${_naclsdkver}"
+	ln -sfr "${_naclsdk}" "${_unvanquished}/daemon/external_deps/${_naclsdk}"
 }
 
 build() {
-	cd "${srcdir}/${_unvdir}"
+	cd "${srcdir}/${_unvanquished}"
 
 	mkdir -p build
 	cd build
 
-	cmake -D BUILD_CGAME=OFF -D BUILD_SGAME=OFF ..
+	cmake \
+		-D BUILD_CGAME=OFF \
+		-D BUILD_SGAME=OFF \
+		-D USE_BREAKPAD=ON \
+		..
 	make
 }
 
 package() {
-	# create installation directories
 	cd "${pkgdir}"
 
-	install -dm755 \
+	# Create installation directories.
+	install -d -m 755 \
 		etc/conf.d \
 		etc/unvanquished \
 		usr/bin \
 		usr/lib/systemd/system \
 		usr/lib/unvanquished \
 		usr/share/applications \
-		usr/share/icons/hicolor/{32x32,64x64,128x128,256x256,512x512}/apps \
 		usr/share/licenses/unvanquished \
 		usr/share/unvanquished/pkg \
 		var/lib/unvanquished-server/config \
 		var/lib/unvanquished-server/game
 
-	# install content
-	cd "${srcdir}/${_unvdir}"
+	# Install content.
+	cd "${srcdir}/${_unvanquished}"
 
-	for size in 32x32 64x64 128x128 256x256 512x512; do
-		install -m 644 "dist/icons/${size}/unvanquished.png" \
-			"${pkgdir}/usr/share/icons/hicolor/${size}/apps/"
+	for resolution in $(ls -c1 dist/icons/); do
+		icondir="${pkgdir}/usr/share/icons/hicolor/${resolution}/apps"
+		install -d -m 755 "${icondir}"
+		install -m 644 "dist/icons/${resolution}/unvanquished.png" "${icondir}"
 	done
 
 	install -m 644 COPYING.txt             "${pkgdir}/usr/share/licenses/unvanquished/"
 
-	cd "${srcdir}/${_unvdir}/build"
+	cd "${srcdir}/${_unvanquished}/build"
 
 	install -m 755 daemon                  "${pkgdir}/usr/lib/unvanquished/"
 	install -m 755 daemonded               "${pkgdir}/usr/lib/unvanquished/"
 	install -m 755 daemon-tty              "${pkgdir}/usr/lib/unvanquished/"
+	install -m 755 crash_server            "${pkgdir}/usr/lib/unvanquished/"
 	install -m 755 irt_core-x86*.nexe      "${pkgdir}/usr/lib/unvanquished/"
 	install -m 755 nacl_helper_bootstrap   "${pkgdir}/usr/lib/unvanquished/"
 	install -m 755 nacl_loader             "${pkgdir}/usr/lib/unvanquished/"
 
 	# install starters and dedicated server config
-	cd "${srcdir}/${_unvdir}/archlinux"
+	# TODO: Use the distro-independent distribution files as much as possible,
+	#       ship all archlinux-specific files with the AUR package.
+	cd "${srcdir}/${_unvanquished}/archlinux"
 
 	install -m 755 unvanquished.sh         "${pkgdir}/usr/bin/unvanquished"
 	install -m 755 unvanquished-tty.sh     "${pkgdir}/usr/bin/unvanquished-tty"
