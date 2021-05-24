@@ -12,7 +12,7 @@
 _pkgname=qgis
 pkgname="$_pkgname"-ltr
 pkgver=3.16.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Geographic Information System (GIS); Long Term Release'
 url='https://qgis.org/'
 license=(GPL)

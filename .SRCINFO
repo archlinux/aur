@@ -1,7 +1,7 @@
 pkgbase = qgis-ltr
 	pkgdesc = Geographic Information System (GIS); Long Term Release
 	pkgver = 3.16.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://qgis.org/
 	arch = x86_64
 	license = GPL
