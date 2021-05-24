@@ -1,26 +1,34 @@
 # Maintainer: Ícar N. S. <icar dot nin at pm dot me>
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=setzer-git
-_gitname=Setzer
-pkgver=v0.4.1
-pkgrel=2
-pkgdesc="LaTeX editor written in Python with Gtk"
+pkgver=0.4.1+4+ge9c96fa
+pkgrel=1
+pkgdesc='LaTeX editor written in Python with Gtk'
 arch=('any')
-url="https://github.com/cvfosammmm/Setzer"
+url='https://github.com/cvfosammmm/Setzer'
 license=('GPL3')
-depends=('gtk3' 'gtksourceview4' 'poppler-glib' 'texlive-core' 'gspell' 'python-pyxdg' 'python-pdfminer' 'python-gobject' 'pango' 'webkit2gtk' 'gettext' 'xdg-utils' 'python-cairo')
-makedepends=('git' 'meson')
-source=("https://github.com/cvfosammmm/Setzer/archive/${pkgver}.tar.gz")
-md5sums=('768b02949d35b83007a5388d8e8ae8af')
+depends=('gspell' 'gtk3' 'gtksourceview4' 'poppler-glib' 'python-cairo' 'python-gobject'
+         'python-pdfminer' 'python-pyxdg' 'texlive-core' 'webkit2gtk' 'xdg-utils')
+makedepends=('appstream' 'git' 'meson')
+source=('git+https://github.com/cvfosammmm/Setzer.git')
+sha256sums=('SKIP')
+
+pkgver() {
+  cd Setzer
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
 
 build() {
-    cd "${srcdir}/${_gitname}-${pkgver:1}"
-	arch-meson . _build --prefix=/usr
-	ninja -C _build
+  arch-meson Setzer build
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-    cd "${srcdir}/${_gitname}-${pkgver:1}"
-    DESTDIR="${pkgdir}" ninja -C _build install
-    install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  DESTDIR="$pkgdir" meson install -C build
 }
+
