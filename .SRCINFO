@@ -1,0 +1,16 @@
+pkgbase = plymouth-theme-softwaves-manjaro-git
+	pkgdesc = Debian's Softwaves Plymouth theme with Manjaro branding
+	pkgver = 42.ad62c99
+	pkgrel = 1
+	url = https://github.com/realmazharhussain/plymouth-theme-softwaves-manjaro
+	arch = any
+	license = GPL v3
+	makedepends = bash
+	depends = plymouth
+	provides = plymouth-theme-softwaves-manjaro
+	conflicts = plymouth-theme-softwaves-manjaro
+	source = plymouth-theme-softwaves-manjaro-git::git+https://github.com/realmazharhussain/plymouth-theme-softwaves-manjaro.git
+	md5sums = SKIP
+
+pkgname = plymouth-theme-softwaves-manjaro-git
+
