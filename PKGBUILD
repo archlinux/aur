@@ -1,7 +1,7 @@
 # Maintainer: Steffen Hansen <steffengrundsoe@gmail.com>
 pkgname=mocu-xcursor
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A modest xcursor theme, inspired by DMZ and cz-Viator.'
 arch=(any)
 url='https://github.com/sevmeyer/mocu-xcursor'
@@ -20,5 +20,5 @@ build() {
 package() {
 	mkdir -p "$pkgdir"/usr/share/icons
 	cp -R "$srcdir/$pkgname-$pkgver"/dist/* \
-	           "$pkgdir"/usr/share/icons
+				"$pkgdir"/usr/share/icons
 }
