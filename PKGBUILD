@@ -1,6 +1,6 @@
 # Maintainer: Renato Caldas <renato dat calgera ot com>
 pkgname=python-cfonts
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Python port of cfonts"
 arch=('any')
@@ -9,8 +9,9 @@ license=('MIT')
 depends=('python-pdm-pep517' 'python-colorama')
 makedepends=('python-build' 'python-pip')
 checkdepends=('python-pytest')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/frostming/python-cfonts/archive/refs/tags/v1.4.0.zip")
-sha512sums=('31af803243d20cdb3da25b8082c35bb0df9e25f4cb0cb82481aa31ac5910580414fcb0bdef8fb0e3186d736c13750d5544ca6ca5fdd2593af0e837f477997226')
+#source=("$pkgname-$pkgver.tar.gz::https://github.com/frostming/python-cfonts/archive/refs/tags/v1.4.0.zip")
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
+sha512sums=('2e5232dde6fd3706e8bd2618bde015828b4f906aa1b08c23eea5f01818eabd472df818e2ded116a394de847cb9fbbda95c896c4bc9f6badb2585527bdc754321')
 
 build() {
     cd $pkgname-$pkgver
@@ -31,7 +32,7 @@ package() {
         --no-deps \
         --no-compile \
         --no-warn-script-location \
-        dist/${pkgname//-/_}-$pkgver-py2.py3-none-any.whl
+        dist/${pkgname//-/_}-$pkgver-py3-none-any.whl
     python -O -m compileall "${pkgdir}/$pkgname"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
