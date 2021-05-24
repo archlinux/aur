@@ -1,19 +1,21 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer: John <graysky@archlinux.us>
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=distcc-git
 _pkgname=distcc
-pkgver=v3.3.3.r33.g10addba
-pkgrel=2
-pkgdesc='Distributed C, C++ and Objective-C compiler, git version'
-arch=('x86_64')
-url='http://distcc.org'
+pkgver=v3.4.r0.g50d821e
+pkgrel=1
+_gccver=11.1.0 # Current GCC version, used for symlinks. See FS#69044
+pkgdesc='Distributed compilation service for C, C++ and Objective-C'
+arch=(x86_64)
+url='https://github.com/distcc/distcc'
 license=(GPL)
 depends=(avahi popt python)
-makedepends=(git gtk2 setconf)
-optdepends=('gtk2: for distccmon-gnome')
+makedepends=(git gtk3)
+optdepends=("gcc=$_gccver")
 conflicts=(distcc)
 provides=(distcc)
 backup=(etc/conf.d/distccd
@@ -33,23 +35,21 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-
-  export CFLAGS+=' -fcommon'
   ./autogen.sh
-  setconf gnome/distccmon-gnome.desktop Name 'DistCC Monitor'
   sed -i 's/ install-gnome-data//g' Makefile.in
-
   # FS#66418, support Python 3.9
-  find . -name "*.py" -type f -exec sed -i 's/time.clock()/time.perf_counter()/g' {} \;
+  find . -name '*.py' -type f -exec sed -i 's,e.clock(,e.perf_counter(,g' {} \;
+  # Remove debug print, ref. https://github.com/distcc/distcc/commit/2df787cc0c02743254d5e6c04a38da82f1e3d9f6
+  sed -i '/fisk state/d' src/mon-gnome.c
 }
 
 build() {
   cd "$_pkgname"
-
+  export CFLAGS+=' -fcommon'
   ./configure \
-    --prefix=/usr \
     --enable-rfc2553 \
     --mandir=/usr/share/man \
+    --prefix=/usr \
     --sbindir=/usr/bin \
     --sysconfdir=/etc \
     --with-gtk
@@ -62,31 +62,22 @@ package() {
     INCLUDESERVER_PYTHON=/usr/bin/python \
     install
 
-  # Configuration
   install -Dm644 distccd.conf.d "$pkgdir/etc/conf.d/distccd"
   install -Dm644 distccd.service \
     "$pkgdir/usr/lib/systemd/system/distccd.service"
 
-  # Desktop shortcut
-  install -Dm644 "$srcdir/distcc/gnome/distccmon-gnome.png" \
-    "$pkgdir/usr/share/pixmaps/distccmon-gnome-icon.png"
-  install -Dm644 "$srcdir/distcc/gnome/distccmon-gnome.desktop" \
-    "$pkgdir/usr/share/applications/distccmon-gnome.desktop"
-
-  # Symlinks
-  _targets=(c++ c89 c99 cc clang clang++ cpp g++ gcc x86_64-pc-linux-gnu-g++
-            x86_64-pc-linux-gnu-gcc x86_64-pc-linux-gnu-gcc-10.1.0)
-  install -d "$pkgdir/usr/lib/$_pkgname/bin"
+  # Package symlinks
+  _targets=(c++ c89 c99 cc clang clang++ cpp g++ gcc $CARCH-pc-linux-gnu-g++
+            $CARCH-pc-linux-gnu-gcc $CARCH-pc-linux-gnu-gcc-$_gccver)
+  install -d "$pkgdir/usr/lib/$pkgname/bin"
   for bin in "${_targets[@]}"; do
     # For whitelist since version 3.3, see FS#57978
-    ln -sf "../../bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$bin"
+    ln -sf ../../bin/$pkgname "$pkgdir/usr/lib/$pkgname/$bin"
     # Needed for makepkg to work
-    ln -sf "../../../bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/bin/$bin"
+    ln -sf ../../../bin/$pkgname "$pkgdir/usr/lib/$pkgname/bin/$bin"
   done
 
- # FS#67629
- install -Dm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/distccd.conf"
+  # FS#67629
+  install -Dm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/distccd.conf"
 }
-
-# getver: distcc.org
 # vim: ts=2 sw=2 et:

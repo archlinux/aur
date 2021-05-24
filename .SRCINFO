@@ -1,17 +1,16 @@
 pkgbase = distcc-git
-	pkgdesc = Distributed C, C++ and Objective-C compiler, git version
-	pkgver = v3.3.3.r33.g10addba
-	pkgrel = 2
-	url = http://distcc.org
+	pkgdesc = Distributed compilation service for C, C++ and Objective-C
+	pkgver = v3.4.r0.g50d821e
+	pkgrel = 1
+	url = https://github.com/distcc/distcc
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = gtk2
-	makedepends = setconf
+	makedepends = gtk3
 	depends = avahi
 	depends = popt
 	depends = python
-	optdepends = gtk2: for distccmon-gnome
+	optdepends = gcc=11.1.0
 	provides = distcc
 	conflicts = distcc
 	backup = etc/conf.d/distccd
