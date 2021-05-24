@@ -1,7 +1,7 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=zx
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="A tool for writing better scripts"
 arch=("any")
@@ -10,7 +10,7 @@ license=("Apache")
 depends=("nodejs")
 makedepends=("npm" "git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=("64fd274ca57884b89c9b5b657db69def5d02a2bbe96c2f00a14f8d6b957e9ca902a774981dbda7a0aa4872e6f65d2f69ad8b1cfb8b526c0a7a4055ad8e34f5e3")
+sha512sums=("4037f2bd19801bf6cf146de7b903f410e37dbcf33e22493120c3b60791e94e5f8038c44341bb43c9caa06e3dfa5ff1c09b709d320ae26e8d65f71a836ad3be5d")
 
 build() {
 	cd "$pkgname-$pkgver"
