@@ -1,0 +1,18 @@
+pkgbase = kicad-library3d-git
+	pkgdesc = https://gitlab.com/kicad/libraries/kicad-packages3D
+	pkgver = 5.1.6.r26.gd8b7e8c5
+	pkgrel = 1
+	url = https://gitlab.com/kicad/libraries/kicad-packages3D
+	arch = any
+	license = CC-BY-SA 4.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	provides = kicad-library3d
+	conflicts = kicad-library3d
+	options = !strip
+	source = git+https://gitlab.com/kicad/libraries/kicad-packages3D.git
+	sha256sums = SKIP
+
+pkgname = kicad-library3d-git
+
