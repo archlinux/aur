@@ -5,7 +5,7 @@ pkgdesc='Open-source streaming video service with sub-second latency'
 arch=('x86_64')
 url='https://ovenmediaengine.com'
 license=('GPL2')
-makedepends=('jemalloc' 'bc')
+makedepends=('bc' 'jemalloc')
 source=("git+https://github.com/AirenSoft/OvenMediaEngine")
 sha512sums=('SKIP')
 
