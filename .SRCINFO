@@ -1,7 +1,7 @@
 pkgbase = shutter-git
 	pkgdesc = A featureful screenshot tool, git version without gnome-perl dependency
 	pkgver = r1548.85dc91e8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://shutter-project.org/
 	arch = any
 	license = GPL3
@@ -33,6 +33,7 @@ pkgbase = shutter-git
 	depends = perl-goocanvas2
 	depends = perl-goocanvas2-cairotypes
 	depends = libwnck3
+	depends = pango-perl
 	optdepends = gnome-web-photo: web screenshot support
 	optdepends = perl-image-exiftool: read and write EXIF data
 	optdepends = nautilus-sendto: send screenshots via mail
