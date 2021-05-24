@@ -1,9 +1,9 @@
 # Maintainer: SanskritFritz (gmail)
 
-pkgname=(pzl_common pzl_ajs pzl_akari pzl_arrowsudoku pzl_binary pzl_boggle pzl_bridges pzl_codeword pzl_fillomino pzl_follow_123 pzl_futoshiki pzl_gol pzl_hidato pzl_hitori pzl_jigsaw pzl_jigsawsudoku pzl_kakuro pzl_marupeke pzl_masyu pzl_minesweeper pzl_numberlink pzl_nurikabe pzl_scrabbler pzl_othello pzl_ripple pzl_shikaku pzl_sokoban pzl_sudoku pzl_suguru pzl_sumpuzzle pzl_targets pzl_tetrofit pzl_wordwheel pzl_wordladder)
+pkgname=(pzl_common pzl_ajs pzl_akari pzl_arrowsudoku pzl_binary pzl_boggle pzl_bridges pzl_codeword pzl_fillomino pzl_follow_123 pzl_futoshiki pzl_gol pzl_hidato pzl_hitori pzl_jigsaw pzl_jigsawsudoku pzl_kakuro pzl_marupeke pzl_masyu pzl_minesweeper pzl_numberlink pzl_nurikabe pzl_scrabbler pzl_skyscrapers pzl_othello pzl_ripple pzl_shikaku pzl_sokoban pzl_sudoku pzl_suguru pzl_sumpuzzle pzl_targets pzl_tetrofit pzl_wordwheel pzl_wordladder)
 pkgbase="pzl_games"
-pkgver=26.0
-_pkgver=26_0
+pkgver=27.0
+_pkgver=27_0
 pkgrel=1
 pkgdesc="Collection of puzzle games."
 arch=('any')
@@ -32,6 +32,7 @@ source=("http://pzl.org.uk/pzl3_$_pkgver.zip"
         "pzl_numberlink.desktop"
         "pzl_nurikabe.desktop"
         "pzl_scrabbler.desktop"
+        "pzl_skyscrapers.desktop"
         "pzl_othello.desktop"
         "pzl_ripple.desktop"
         "pzl_shikaku.desktop"
@@ -44,7 +45,7 @@ source=("http://pzl.org.uk/pzl3_$_pkgver.zip"
         "pzl_wordwheel.desktop"
         "pzl_wordladder.desktop")
 
-md5sums=('3b6367171785549aab90cb78c401184d'
+md5sums=('7399dc833388312a9efd56bdae684239'
          '6f5058e263976d69a2eb356ca2c2a6b5'
          '37af6d1fa020f7fa532a69a0e07b32ad'
          'a1e25c7621e92598bcdb8d442133031a'
@@ -67,6 +68,7 @@ md5sums=('3b6367171785549aab90cb78c401184d'
          'ab1d907a83c8b7e359eff308ee89d9d9'
          '08f441dcf7ec24f4148d9a952738d7f4'
          'bdcdc0250d61c33f85289e7e436546a6'
+         'ff0b346ce08dc773cdd7f96d8f640ab8'
          'b56963fa4b72c8b93e799ed25055a3b4'
          'd1eea30878b0028a5a5e36a0b0158b81'
          '38dc1f1869c03d4cc8e2724e6060fc65'
@@ -316,6 +318,17 @@ package_pzl_scrabbler() {
 	install -m644 pzl3_download/scrabbler.pyw "$pkgdir/usr/share/pzl_games"
 	install -m644 pzl3_download/scrabbler_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
 	install -m644 pzl_scrabbler.desktop "$pkgdir/usr/share/applications"
+}
+
+package_pzl_skyscrapers() {
+	pkgdesc="Logic game which like Sudoku is based around Latin squares."
+	url="http://pzl.org.uk/skyscrapers.html"
+	depends=('pzl_common')
+	install -dm755 "$pkgdir"/usr/share/{applications,pixmaps/pzl_games,pzl_games}
+	install -m644 pzl3_download/skyscrapers.pyw "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/skyscrapers_data.py "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/skyscrapers_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
+	install -m644 pzl_skyscrapers.desktop "$pkgdir/usr/share/applications"
 }
 
 package_pzl_sumpuzzle() {

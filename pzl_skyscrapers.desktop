@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=pzl games Skyscrapers
+Comment=Skyscrapers (pzl games)
+Categories=Game;LogicGame
+Exec=python /usr/share/pzl_games/skyscrapers.pyw
+Terminal=false
+Icon=/usr/share/pixmaps/pzl_games/skyscrapers_icon.png
+Type=Application
