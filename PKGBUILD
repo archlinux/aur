@@ -3,13 +3,13 @@
 
 pkgname='notejot-git'
 _appname='notejot'
-pkgver='r288.812c678'
+pkgver='r493.e980553'
 pkgrel=1
 pkgdesc='A stupidly-simple sticky notes application for any type of short term notes or ideas'
 arch=('i686' 'x86_64')
 url='https://github.com/lainsce/notejot'
 license=('GPL')
-depends=('granite' 'gtk3' 'gtksourceview3' 'json-glib' 'libgee')
+depends=('gtk3' 'gtksourceview3' 'json-glib' 'libgee' 'libadwaita')
 makedepends=('meson' 'vala')
 provides=('notejot')
 conflicts=('notejot-git')
