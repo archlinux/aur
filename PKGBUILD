@@ -1,3 +1,4 @@
+# Maintainer: Andrew Whatson <whatson@gmail.com>
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: tantalum <tantalum at online dot de>
 pkgname=guile-lib
@@ -11,14 +12,13 @@ url="http://www.nongnu.org/guile-lib/"
 source=("http://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('e52648afc567f202352e07e0ab732d79')
 
-build(){
+build() {
   cd ${pkgname}-${pkgver}
-  ./configure --prefix=/usr
+  GUILE=/usr/bin/guile ./configure --prefix=/usr --with-guile-site
   make
 }
 
 package() {
   cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
-  rm -f "${pkgdir}/usr/share/info/dir"
 }
