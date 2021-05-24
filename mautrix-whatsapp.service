@@ -13,6 +13,7 @@ Restart=on-failure
 RestartSec=30s
 
 ReadWritePaths=/var/lib/mautrix-whatsapp
+ReadWritePaths=/var/log/mautrix-whatsapp
 NoNewPrivileges=yes
 MemoryDenyWriteExecute=true
 PrivateDevices=yes
