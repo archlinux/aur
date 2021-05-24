@@ -15,9 +15,9 @@ md5sums=('SKIP')
 package() {
 	cd ${_pkgname}
 	# Copy pokemon cowfiles
-	rm -rf "${pkgdir}/opt/${_pkgname}/pokemons"
-	mkdir -p "${pkgdir}/opt/${_pkgname}/pokemons"
-  	cp ./pokemons/* "${pkgdir}/opt/${_pkgname}/pokemons/"
+	rm -rf "/opt/${_pkgname}/pokemons"
+	mkdir -p "/opt/${_pkgname}/pokemons"
+  	cp ./pokemons/* "/opt/${_pkgname}/pokemons/"
 
 	# Install the README
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
