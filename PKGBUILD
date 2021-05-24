@@ -1,7 +1,7 @@
 # Maintainer: Renato Caldas <renato@calgera.com>
 _pkgname=pdm
 pkgname=python-pdm
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="A modern Python package manager with PEP 582 support."
 arch=('any')
@@ -25,7 +25,7 @@ depends=(
 )
 makedepends=('python-build' 'python-pip')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('e9cc62a2782fa79e36ea738a7ef8afbdb52ecb432f3cff68779a492606dc6ebf3f664afc356033a34baaf6c5747e46eebe43d29f67b4740b5ca59f1c0051c3da')
+sha512sums=('e61f0e187b29532a56e8d95dc9f066f84ab06f843df6cd10082cf779b993b42b8e185d219e4389a35aa83089cd9ebab550e0af085957af12a59c727b5c5c15a9')
 
 prepare() {
     cd $_pkgname-$pkgver
