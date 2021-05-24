@@ -1,0 +1,20 @@
+pkgbase = editinteractivesvg
+	pkgdesc = Create interactive SVG illustrations
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://mothsart.github.io/editeur-svg-interactif.html
+	arch = x86_64
+	arch = i686
+	arch = armv7
+	arch = aarch64
+	arch = riscv32
+	arch = riscv64
+	license = BSD
+	makedepends = make
+	makedepends = semver
+	depends = semver
+	source = editInteractiveSVG-1.2.0.tar.gz::https://github.com/mothsART/editInteractiveSVG/archive/refs/tags/1.2.0.tar.gz
+	sha256sums = 5d25156cfd81ccf52e090b4680efe0ea75da2917e4324a8a83fe4064b1acee46
+
+pkgname = editinteractivesvg
+
