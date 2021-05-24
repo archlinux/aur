@@ -3,7 +3,7 @@
 
 pkgname=mautrix-whatsapp
 pkgver=0.1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A Matrix-WhatsApp puppeting bridge"
 arch=('any')
 license=('AGPL')
@@ -20,9 +20,9 @@ source=("${url}/archive/v${pkgver}.tar.gz"
         log-path.diff)
 backup=("etc/${pkgname}/mautrix-whatsapp.yaml")
 sha256sums=('0d95fefffecde04facb3d9e90f36b313bb7e7e951c930758bcabd70aa77f9d13'
-            '4b7c57d474305138504f3cc651efb33b8861952dc2a8340148531cdac1eae3d9'
-            '0f4265ae93df6bb6e791cf698aacddc6b9eae833113225a6c477e5abd1261ff5'
-            'ed3c5f0ce46e217b21dc549c583a4055287c37f6d1a225aff34fd3599e9019f3'
+            '409e8fb3e35de1bd1ceebefa0ac275ad62ec66680117648058bcc177ddd2f9a1'
+            '38c236650de46cf60a550afff79635f777335812531a67f4094a73186295f53c'
+            '34e8d00c613aa1eca0c4981060342191f27c533f96bcdd202657e5898751cd72'
             'e27eea84a3df3380e26cfa485d383b19bb8b7cc8e0fd273e79df501b504160e4')
 
 build() {
