@@ -3,7 +3,7 @@
 pkgbase=chipon
 pkgname=($pkgbase{,-jre,-ide32,-program32,-cc32,-driver,-usart-async2,-librxtx,-rxtx-2})
 pkgver=1.0.17
-pkgrel=4
+pkgrel=5
 arch=(x86_64)
 url='https://www.chipon-ic.com/'
 license=('unknow')
@@ -14,17 +14,21 @@ depends=()
 makedepends=('unarchiver')
 
 source=("${pkgbase}.zip"'::https://www.chipon-ic.com/upload/file/20210413/67c90ef0-da85-4f9c-aacd-4e1056f0d1c8.zip'
-        "${pkgbase}.png"'::https://www.chipon-ic.com/images/logo.png')
+        "${pkgbase}.png"'::https://www.chipon-ic.com/images/logo.png'
+        "chipon-program32.install"
+        "chipon-driver.install")
 
 sha256sums=('c0a4469b78618712c75802a33a06f64f8f01bec1b6629af75a85095f8f8ecbc1'
-            '2879a8063a7037ca8658ffcb96c8611274decc3c0fe2a97a5918f896451b7dbd')
+            '2879a8063a7037ca8658ffcb96c8611274decc3c0fe2a97a5918f896451b7dbd'
+            '1986c80f76f0f6d17f736f6b67f673348c2f22b13ca33ee38587e7c7994cd116'
+            'e7ab8cea2aacbda3122e15da4c9d0833784f2c84f9b93333705e24b6056e8d34')
 
 prepare() {
     unar -e GBK "${srcdir}/${pkgbase}.zip"
     unar -e GBK "${srcdir}/I01 jre1.7u80_rxtx.zip"
-    unar -e GBK "${srcdir}/I02 ChipONCC32_1.0.17.zip"
-    unar -e GBK "${srcdir}/I02 chiponide32_1.0.17.zip"
-    unar -e GBK "${srcdir}/I03 chiponprogram32_1.0.17.zip"
+    unar -e GBK "${srcdir}/I02 ChipONCC32_${pkgver}.zip"
+    unar -e GBK "${srcdir}/I02 chiponide32_${pkgver}.zip"
+    unar -e GBK "${srcdir}/I03 chiponprogram32_${pkgver}.zip"
     unar -e GBK "${srcdir}/I04 Driver.zip"
     unar -e GBK "${srcdir}/I04 USART_Async2.zip"
     unar -e GBK "${srcdir}/I04 librxtx-linux-x64.zip"
@@ -90,7 +94,8 @@ EOF
 
 package_chipon-program32() {
     pkgdesc="KungFu32 产品上位机编程软件，支持查空、读取、编程、在线编程、脱机编程、自增编程等；支持加载并查看修改 HEX 文件等操作。"
-
+    depends=("uucp")
+    install=chipon-program32.install
     _pkgname="chiponprogram32"
 
     install -dm755 "${pkgdir}/opt/${pkgbase}"
@@ -137,11 +142,9 @@ package_chipon-cc32() {
 
 package_chipon-driver() {
     pkgdesc="KungFu32 产品上位机编程软件的驱动（udev rules）"
+    install=chipon-driver.install
 
     _pkgname="Driver"
-
-    msg2="If rules fail to reload automatically, you can refresh udev rules with the command \"sudo udevadm control --reload\""
-    msg2="如果规则无法自动重新加载，您可以使用以下命令刷新 udev 规则 \"sudo udevadm control --reload\""
 
     install -Dm644 "${srcdir}/${_pkgname}/49-kungfu32_udev.rules" "${pkgdir}/usr/lib/udev/rules.d/49-kungfu32_udev.rules"
 
