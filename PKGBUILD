@@ -2,14 +2,14 @@
 
 pkgname=phoc
 pkgver=0.7.0
-pkgrel=1
-pkgdesc="Wlroots based Phone compositor"
-url="https://source.puri.sm/Librem5/phoc"
-license=("GPL3")
-arch=(i686 x86_64 armv7h aarch64)
+pkgrel=2
+pkgdesc='Wlroots based Phone compositor'
+url='https://source.puri.sm/Librem5/phoc'
+license=('GPL3')
+arch=(x86_64 aarch64)
 depends=(
 	mutter
-	wlroots
+	'wlroots>=0.10' 'wlroots<0.11'
 )
 makedepends=(
 	ctags
