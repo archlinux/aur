@@ -1,13 +1,13 @@
 pkgbase = slirp
 	pkgdesc = SLIP/PPP emulator using a dial up shell account
 	pkgver = 1.0.17
-	pkgrel = 3
+	pkgrel = 4
 	url = http://slirp.sourceforge.net/
 	arch = x86_64
 	license = custom
 	options = !strip
 	source = slirp-1.0.17::https://deb.debian.org/debian/pool/main/s/slirp/slirp_1.0.17.orig.tar.gz
-	source = debian_1.0.17-11::https://deb.debian.org/debian/pool/main/s/slirp/slirp_1.0.17-11.debian.tar.xz
+	source = debian_1.0.17-11.tar.xz::https://deb.debian.org/debian/pool/main/s/slirp/slirp_1.0.17-11.debian.tar.xz
 	sha256sums = afe59cd298075aa1b9eba5a5f7cf720597372b8b81657de529b2cd35a2a2bc2e
 	sha256sums = 87cdecb2d9f77ac9ac851df1cab4a03abf370db730128072d321052d286620a7
 

@@ -2,7 +2,7 @@
 
 pkgname=slirp
 pkgver=1.0.17
-pkgrel=3
+pkgrel=4
 pkgdesc="SLIP/PPP emulator using a dial up shell account"
 arch=('x86_64')
 url="http://slirp.sourceforge.net/"
@@ -10,7 +10,7 @@ license=('custom')
 options=(!strip)
 _debianver="${pkgver}-11"
 source=("${pkgname}-${pkgver}::https://deb.debian.org/debian/pool/main/s/slirp/slirp_${pkgver}.orig.tar.gz"
-        "debian_${_debianver}::https://deb.debian.org/debian/pool/main/s/slirp/slirp_${_debianver}.debian.tar.xz")
+        "debian_${_debianver}.tar.xz::https://deb.debian.org/debian/pool/main/s/slirp/slirp_${_debianver}.debian.tar.xz")
 sha256sums=('afe59cd298075aa1b9eba5a5f7cf720597372b8b81657de529b2cd35a2a2bc2e'
             '87cdecb2d9f77ac9ac851df1cab4a03abf370db730128072d321052d286620a7')
 
