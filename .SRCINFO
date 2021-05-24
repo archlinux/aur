@@ -1,7 +1,7 @@
 pkgbase = betterdiscordctl-git
 	pkgdesc = A utility for managing BetterDiscord on Linux
-	pkgver = 1.7.0.r0.g785ad01
-	pkgrel = 2
+	pkgver = 2.0.0.r0.g57f483a
+	pkgrel = 1
 	url = https://github.com/bb010g/betterdiscordctl
 	arch = any
 	license = MIT
