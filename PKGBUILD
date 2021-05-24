@@ -7,6 +7,7 @@ pkgdesc='Ghidra plugin to export information from ghidra to dwarf sections insid
 arch=('any')
 url='https://github.com/cesena/ghidra2dwarf'
 license=('MIT')
+depends=('python' 'ghidra')
 makedepends=()
 source=("$pkgname.zip::$url/releases/download/latest/ghidra2dwarf.zip")
 sha512sums=('71c4c3d47dde92b66d4990f59ec975d32368e6eb673a97c1827645858d6f7c12045d72b26871b31db9efe8277f07ceab227596d028d75e8a8ab6e155dc5d8af3')
