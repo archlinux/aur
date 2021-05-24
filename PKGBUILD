@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=xemu
 pkgname=$_pkgname-git
-pkgver=0.5.2.r14.g6fbd393ee4
+pkgver=0.5.2.r16.g68f7e11978
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
@@ -63,7 +63,6 @@ package() {
 	depends+=('libgdk-3.so' 'libglib-2.0.so' 'libgobject-2.0.so' 'libgtk-3.so' 'libsamplerate.so')
 	cd $_pkgname
 	# shellcheck disable=SC2154
-	install -Dm644 -t "$pkgdir"/usr/share/$_pkgname/data data/*
 	install -Dm755 build/qemu-system-i386 "$pkgdir"/usr/bin/$_pkgname
 	install -Dm644 ui/xemu.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop
 	for size in 24 32 48 256 512; do
