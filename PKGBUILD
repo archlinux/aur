@@ -1,6 +1,6 @@
 # Maintainer: ThatOneCalculator (Kainoa Kanter) <kainoakanter@gmail.com>
 pkgname="nerdfetch"
-pkgver=4
+pkgver=4.1
 pkgrel=1
 pkgdesc="A POSIX fetch using NerdFonts"
 arch=('any')
@@ -11,6 +11,11 @@ makedepends=('git')
 source=("git+https://github.com/ThatOneCalculator/NerdFetch")
 noextract=()
 md5sums=('SKIP')
+
+# pkgver() {
+#	cd NerdFetch
+#	git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+# }
 
 prepare() {
 	if ! which dc &> /dev/null; then
