@@ -26,7 +26,7 @@ package() {
 	sed -r "31s;.*;INSTALL_PATH=/opt/${_pkgname};" -i pokemonsay.sh
 
 	# Change the pokemonthink to use the pokemonsay in the path
-	sed -r "7s;.*;pokemonsay --think $@;" -i pokemonthink.sh
+	sed -r "7s;.*;pokemonsay --think \$@;" -i pokemonthink.sh
 
 	# Install the scripts	
   	install -Dm755 pokemonsay.sh "${pkgdir}"/usr/bin/pokemonsay
