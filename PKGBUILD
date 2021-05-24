@@ -3,12 +3,12 @@
 
 pkgname=betterdiscordctl-git
 pkgver=2.0.0.r0.g57f483a
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility for managing BetterDiscord on Linux"
 arch=('any')
 url="https://github.com/bb010g/betterdiscordctl"
 license=('MIT')
-depends=('git')
+depends=('curl')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 prepare() {
   cd "$srcdir/${pkgname%-git}"
-  sed -i 's/^\(DISABLE_SELF_UPGRADE=\)$/\1yes/' betterdiscordctl
+  sed -i 's/^DISABLE_SELF_UPGRADE=$/&yes/' betterdiscordctl
 }
 
 pkgver() {
