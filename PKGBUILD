@@ -2,7 +2,7 @@
 
 pkgname='nautilus-hide-git'
 _extname='nautilus-hide'
-pkgver='r5.5ce84cd'
+pkgver='r6.1d3bf00'
 pkgrel=1
 pkgdesc='A simple Nautilus extension that adds "Hide" and "Unhide" to Nautilus right-click menu'
 arch=('i686' 'x86_64')
@@ -17,31 +17,23 @@ install="${pkgname}.install"
 sha256sums=('SKIP')
 
 pkgver() {
-
 	cd "${_extname}"
 	printf "'r%s.%s'" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-
 }
 
 prepare() {
-
 	cd "${srcdir}/${_extname}"
 	./bootstrap --noconfigure
-
 }
 
 build() {
-
 	cd "${srcdir}/${_extname}"
 	./configure --prefix=/usr
 	make
-
 }
 
 package() {
-
 	cd "${srcdir}/${_extname}"
 	make DESTDIR="${pkgdir}" install
-
 }
 
