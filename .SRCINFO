@@ -1,0 +1,25 @@
+pkgbase = peruse
+	pkgdesc = Comic book viewer and creator based on KDE Frameworks 5
+	pkgver = 1.80
+	pkgrel = 1
+	url = https://peruse.kde.org/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	depends = kconfig
+	depends = kdeclarative
+	depends = kfilemetadata
+	depends = ki18n
+	depends = kiconthemes
+	depends = kio
+	depends = kirigami2
+	depends = knewstuff
+	optdepends = baloo: find books on the system
+	optdepends = okular: support for various document formats
+	source = https://download.kde.org/stable/peruse/peruse-1.80.tar.xz
+	sha256sums = c674959ca176d236f1568156e35036d8d65655952bcbf17b1be4ece4d2ba3351
+
+pkgname = peruse
+
