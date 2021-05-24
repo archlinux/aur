@@ -1,23 +1,22 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=python-fontmake-git
-pkgver=2.3.0.r0.g8705253
+pkgver=2.4.0.r4.gf9190f1
 pkgrel=1
 pkgdesc='Compile fonts from sources (UFO, Glyphs) to binary (OpenType, TrueType)'
-url="https://github.com/googlefonts/fontmake"
+url='https://github.com/googlefonts/fontmake'
 license=('MIT')
 arch=('x86_64')
-checkdepends=('python-pytest')
 _py_depends=('cu2qu'
              'defcon'
-             'fonttools>=4.18.1'
+             'fonttools'
              'fontmath'
              'glyphslib'
              'mutatormath'
              'ufolib2'
-             'ufo2ft>=2.19.1')
+             'ufo2ft')
 depends+=("${_py_deps[@]/#/python-}")
-makedepends=('python-setuptools-scm')
+makedepends=('git' 'python-setuptools-scm')
 provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
@@ -34,14 +33,9 @@ build() {
     python setup.py build
 }
 
-check() {
-    cd "$pkgname"
-    PYTHONPATH=Lib pytest tests
-}
-
 package() {
     cd "$pkgname"
     python setup.py install --skip-build --root="$pkgdir" --optimize=1
-    install -D -m755 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    install -Dm755 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
 
