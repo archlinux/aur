@@ -7,12 +7,12 @@ _srcname=linux-5.12
 _major=5.12
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=5
+_minor=6
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
 #_fullver=$_major
-_rcver=2
+_rcver=1
 _rcpatch=patch-${_major}.${_minorc}-rc${_rcver}
 pkgver=${_major}.${_minorc}rc${_rcver}
 arch=(x86_64)
@@ -30,19 +30,17 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-Revert-bus-mhi-core-Process-execution-environment-ch.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('22b06d9d8eb6e90e2e6e9d60b4585ec0a567ef36e2fc8628b5f3de1c76627bc5e658a27d1dcfc5dd45071a392898cb046fa182a14568bf39bcd25a0ddbc4b8d7'
+b2sums=('86a039ff9734b5ba37af03690c6b599b7708dac2cd548c2a483ad4fa692d8e4a4c14548756bc08711b76b280a53e700b66bf160b6791f6de7b9db77e591030c1'
         'SKIP'
-        'aa9209e38ad16160982c02d79bba9d9fbe64b2266959c5438e54a43598b110ef6b4a0f80c7605d950e8f8d250cda04fa964edf8e6aced8d0daa2a960ef495cd6'
+        '94a6f2b620a33fa52fabfce5781a7e0cd57ee03e65e823e5f25fc0d0bcaec019f9e955bc78c7799f258273c7e36cc277035d07afe4d4b3036bbe2ff526ce9b85'
         'SKIP'
         'ccb7779df282b54d9acf59682eaa93a39f27276798d61d4c8be8a3b31e582a377c9d3278a500744a3ed089a337807f95a2d23ef821af2f4a7eec24540092b746'
-        '009468b6fb9c859b5cfff12af1fd0ff8be60362c161af2c24a0d1bda5a7827c770cac0e3a7faf985d59419f693fba181c846390a25c6f07c769a652bcaeeaa32'
-        'c3a333eea69c74444d8dc0a10ba112fb7bb7faa173140df829cb27afbf5d97c7ade2ae9d88bbd315a51438ca01f88f1f9b06d4bf8a52a2e29c1f5fa9370773ca')
+        'e43852e13fad5cdf3ce47ed698579bf019ea5c4f2f63191f417e226733b70b984c892bf2fd64bdca89aaa44dfd6b06e01f169bc784d7bf61e6189427e24c8b0a')
 
 
 export KBUILD_BUILD_HOST=archlinux
