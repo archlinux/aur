@@ -17,7 +17,7 @@ pkgbase = kicad-rc
 	makedepends = boost
 	makedepends = swig
 	depends = glew
-	depends = wxgtk3>=3.1.5
+	depends = wxgtk3-dev
 	depends = desktop-file-utils
 	depends = boost-libs
 	depends = python

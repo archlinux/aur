@@ -10,7 +10,7 @@ url="http://kicad.org/"
 license=(GPL3 AGPL3 BOOST ISC MIT CC-BY-SA)
 depends=(
   glew
-  'wxgtk3>=3.1.5'
+  wxgtk3-dev
   desktop-file-utils
   boost-libs
   python
