@@ -1,0 +1,33 @@
+diff -aur qosmic-1.6.0/src/paletteeditor.h qosmic-1.6.0.patched/src/paletteeditor.h
+--- qosmic-1.6.0/src/paletteeditor.h	2017-01-28 13:53:46.000000000 -0800
++++ qosmic-1.6.0.patched/src/paletteeditor.h	2018-06-02 18:38:19.191138633 -0700
+@@ -25,6 +25,7 @@
+ #include <QCloseEvent>
+ #include <QFileInfoList>
+ #include <QGradientStops>
++#include <QButtonGroup>
+ 
+ #include "ui_paletteeditor.h"
+ #include "gradientlistmodel.h"
+diff -aur qosmic-1.6.0/src/trianglecoordswidget.h qosmic-1.6.0.patched/src/trianglecoordswidget.h
+--- qosmic-1.6.0/src/trianglecoordswidget.h	2017-01-28 13:53:46.000000000 -0800
++++ qosmic-1.6.0.patched/src/trianglecoordswidget.h	2018-06-02 18:38:19.191138633 -0700
+@@ -20,6 +20,7 @@
+ #define TRIANGLECOORDSWIDGET_H
+
+ #include <QWidget>
++#include <QButtonGroup>
+
+ #include "ui_trianglecoordswidget.h"
+
+diff -aur qosmic-1.6.0/src/triangledensitywidget.h qosmic-1.6.0.patched/src/triangledensitywidget.h
+--- qosmic-1.6.0/src/triangledensitywidget.h	2017-01-28 13:53:46.000000000 -0800
++++ qosmic-1.6.0.patched/src/triangledensitywidget.h	2018-06-02 18:38:19.191138633 -0700
+@@ -21,6 +21,7 @@
+ #include <QSlider>
+ #include <QLabel>
+ #include <QMouseEvent>
++#include <QButtonGroup>
+ 
+ #include "ui_triangledensitywidget.h"
+ #include "qosmicwidget.h"
