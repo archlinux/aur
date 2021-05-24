@@ -1,6 +1,5 @@
-diff -Naurp a/install_media.sh b/install_media.sh
---- a/install_media.sh	2019-07-09 15:14:08.000000000 +0000
-+++ b/install_media.sh	2020-06-07 12:51:16.920145955 +0000
+--- a/install_media.sh
++++ b/install_media.sh
 @@ -21,6 +21,8 @@
  # this notice or any other notice embedded in Materials by Intel or Intel's
  # suppliers or licensors in any way.
