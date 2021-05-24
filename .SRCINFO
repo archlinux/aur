@@ -1,6 +1,6 @@
 pkgbase = gnatcoll-core-git
 	pkgdesc = GNAT Components Collection - Core packages
-	pkgver = r3121.78b9de8c
+	pkgver = r3146.6ea9064e
 	pkgrel = 1
 	url = https://github.com/AdaCore/gnatcoll-core/
 	arch = i686
@@ -14,9 +14,7 @@ pkgbase = gnatcoll-core-git
 	conflicts = gnatcoll-core
 	conflicts = gnatcoll
 	source = git+https://github.com/AdaCore/gnatcoll-core.git
-	source = remove-os.patch
 	sha1sums = SKIP
-	sha1sums = 5e22130f6cb04bfdffb930c29e0abbda7be53514
 
 pkgname = gnatcoll-core-git
 
