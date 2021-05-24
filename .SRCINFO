@@ -1,7 +1,7 @@
 pkgbase = neverball
 	pkgdesc = 3D game similar to Super Monkey Ball or Marble Madness
 	pkgver = 1.6.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://neverball.org/
 	arch = x86_64
 	license = GPL
@@ -16,8 +16,10 @@ pkgbase = neverball
 	depends = xdg-utils
 	source = http://neverball.org/neverball-1.6.0.tar.gz
 	source = neverball-filesystem.patch::https://github.com/Neverball/neverball/commit/27279856.patch
+	source = neverball-gcc10.patch::https://github.com/Neverball/neverball/commit/a42492b8db06934c7a794630db92e3ff6ebaadaa.patch
 	sha256sums = 73fe63cca4f96e2d355480d03bc0b2904e83a0abdf65fe8c52db5cc3cca88fa0
 	sha256sums = b93f17315766a8f1a70f46716cd99260981f4797ec1589b26f03bfca201a8e0d
+	sha256sums = 6bc37c97b9fbbdbcb890344d08a958b038b0333bc74230147b93d9be9341d89e
 
 pkgname = neverball
 
