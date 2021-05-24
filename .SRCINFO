@@ -1,10 +1,12 @@
 pkgbase = python-fleep-git
 	pkgdesc = File format determination library for Python
 	pkgver = 0.0.0.r21.994bc2c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/floyernick/fleep-py
 	arch = any
 	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	source = python-fleep-git::git+https://github.com/floyernick/fleep-py.git#branch=master
 	sha512sums = SKIP
