@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Minosoft
+Comment=Open source minecraft client, written from scratch in java.
+Exec=minosoft
+Icon=minosoft
+Terminal=false
+Categories=Game;
