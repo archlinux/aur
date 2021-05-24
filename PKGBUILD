@@ -1,6 +1,5 @@
-# Maintainer: squitch <clementfoure2005@gmail.com>
 pkgname=tess-git
-pkgver=1.2r75.0d5ae89
+pkgver=1.2r77.a4f6e59
 pkgrel=1
 pkgdesc="Tess hackable, simple, rapid and beautiful terminal for the new era"
 arch=(x86_64)
@@ -25,6 +24,8 @@ package() {
 	mkdir -p "${pkgdir}/opt/tess-cli"
 	mkdir -p "${pkgdir}/usr/bin"
 
+    cp "./src/img/Tess.png" "${pkgdir}/usr/bin/Tess.png"
+
 	cd "cli"
 	g++ main.cpp Class/*.cpp Utils/*.cpp Lib/*.cpp Lib/external/cpr/cpr/*.cpp -lpthread -lcurl -std=c++17 -o tess-cli
 
@@ -34,7 +35,6 @@ package() {
 	cd ../
 
 	mkdir -p "${pkgdir}/opt/tess"
-
 
 	npm install
 	npm run build
