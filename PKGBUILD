@@ -1,30 +1,22 @@
-# Maintainer: Benjamin Goodger <ben at goodger dot nl>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Benjamin Goodger <ben at goodger dot nl>
 # Contributor: Marcos Heredia <chelqo at gmail dot com>
 
-pkgname=ttf-impallari-encode-sans
-
-pkgver=2.0
-pkgrel=2
-
-pkgdesc="Professional font optimized for web use"
+_pkgname=Encode-Sans
+pkgname=ttf-impallari-${_pkgname,,}
+pkgver=2.000
+pkgrel=4
+pkgdesc='Professional font optimized for web use'
 arch=('any')
-url="https://github.com/impallari/Encode-Sans"
+url="https://github.com/impallari/$_pkgname"
 license=('OFL')
-groups=('impallari-fonts')
-
-source=("https://github.com/impallari/Encode-Sans/archive/370cdccdb22daf862c6fca0636aad64b6835decd.zip")
-
-md5sums=('28feb5d966eea66326b57c23f1fcf53b')
+_sha=370cdccdb22daf862c6fca0636aad64b6835decd
+source=("$pkgname-$pkgver-$pkgrel.zip::$url/archive/$_sha.zip")
+sha256sums=('70638ff0992812a96526024b23d6869fe16762670d62a43e03a6da8e71c2e375')
 
 package() {
-  cd ${srcdir}/Encode-Sans*/
-
-  install -dm755 "${pkgdir}/usr/share/fonts/TTF/impallari/encode-sans"
-  install -Dpm644 fonts/*.ttf "${pkgdir}/usr/share/fonts/TTF/impallari/encode-sans/"
-
-  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dpm644 OFL.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
-
-  install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dpm644 AUTHORS.txt CONTRIBUTORS.txt README.md "${pkgdir}/usr/share/doc/${pkgname}/"
+    cd "$_pkgname-$_sha"
+    install -Dpm644 -t "$pkgdir/usr/share/fonts/TTF/$pkgname/" fonts/*.ttf
+    install -Dpm644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.txt AUTHORS.txt CONTRIBUTORS.txt
+    # install -Dpm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 }

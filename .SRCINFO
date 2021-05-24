@@ -1,13 +1,12 @@
 pkgbase = ttf-impallari-encode-sans
 	pkgdesc = Professional font optimized for web use
-	pkgver = 2.0
-	pkgrel = 2
+	pkgver = 2.000
+	pkgrel = 4
 	url = https://github.com/impallari/Encode-Sans
 	arch = any
-	groups = impallari-fonts
 	license = OFL
-	source = https://github.com/impallari/Encode-Sans/archive/370cdccdb22daf862c6fca0636aad64b6835decd.zip
-	md5sums = 28feb5d966eea66326b57c23f1fcf53b
+	source = ttf-impallari-encode-sans-2.000-4.zip::https://github.com/impallari/Encode-Sans/archive/370cdccdb22daf862c6fca0636aad64b6835decd.zip
+	sha256sums = 70638ff0992812a96526024b23d6869fe16762670d62a43e03a6da8e71c2e375
 
 pkgname = ttf-impallari-encode-sans
 
