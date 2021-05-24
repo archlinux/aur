@@ -1,9 +1,10 @@
-# Maintainer: Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-opencl-clang-git
-pkgver=8.0.0.r0.gdaf5e4d
+pkgver=11.0.0.r16.g65d5b66
+_llvmver=11.1.0
 pkgrel=1
-pkgdesc='A wrapper library around clang that can compile OpenCL C kernels to SPIR-V modules (git version)'
+pkgdesc='Wrapper library around clang that can compile OpenCL C kernels to SPIR-V modules (git version)'
 arch=('x86_64')
 url='https://github.com/intel/opencl-clang/'
 license=('custom')
@@ -12,42 +13,25 @@ makedepends=('git' 'cmake' 'llvm' 'spirv-llvm-translator')
 provides=('intel-opencl-clang' 'opencl-clang-git')
 conflicts=('intel-opencl-clang' 'opencl-clang-git')
 replaces=('opencl-clang-git')
-source=('git+https://github.com/intel/opencl-clang.git#branch=ocl-open-80')
+source=("git+https://github.com/intel/opencl-clang.git#branch=ocl-open-${_llvmver%%.*}0")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd opencl-clang
-    
-    # git, tags available
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    git -C opencl-clang describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd opencl-clang
-    
-    cmake \
+    cmake -B build -S opencl-clang \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DLLVMSPIRV_INCLUDED_IN_LLVM='OFF' \
         -DSPIRV_TRANSLATOR_DIR='/usr' \
         -DLLVM_NO_DEAD_STRIP='ON' \
-        -Wno-dev \
-        .
-        
-    make
+        -DPREFERRED_LLVM_VERSION="$_llvmver" \
+        -Wno-dev
+    make -C build
 }
 
 package() {
-    cd opencl-clang
-    
-    make DESTDIR="$pkgdir" install
-    
-    # provide libopencl_clang.so
-    local _sover
-    _sover="$(find -L "$pkgdir" -type f -name 'libcommon_clang.so.*' | head -n1)"
-    _sover="${_sover##*/}"
-    _sover="${_sover##*.}"
-    ln -s libcommon_clang.so "${pkgdir}/usr/lib/libopencl_clang.so"
-    ln -s "libcommon_clang.so.${_sover}" "${pkgdir}/usr/lib/libopencl_clang.so.${_sover}"
-    
-    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    make -C build DESTDIR="$pkgdir" install
+    install -D -m644 opencl-clang/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
