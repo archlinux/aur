@@ -15,8 +15,8 @@ pkgbase = varicad-view
 	depends = gtk2
 	depends = hicolor-icon-theme
 	provides = varicad-view
-	source = https://www.varicad.com/userdata/files/release/en/VariCAD_View_2021-en-1.02-1.x86_64.rpm
-	md5sums = 3111dbf2bdbe7356a90ce82076ee701a
+	source = https://www.varicad.com/userdata/files/release/en/VariCAD_View_2021-en-2.01-1.x86_64.rpm
+	md5sums = 10241fd6cc3fd9eecb1988cc626fd1c3
 
 pkgname = varicad-view
 

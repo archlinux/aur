@@ -10,9 +10,9 @@ license=(custom)
 makedepends=()
 depends=(libx11 libxcomposite libxdamage libxext libxfixes libxrender mime-types gtk2 hicolor-icon-theme)
 provides=(varicad-view)
-source=("https://www.varicad.com/userdata/files/release/en/VariCAD_View_2021-en-1.02-1.$CARCH.rpm")
+source=("https://www.varicad.com/userdata/files/release/en/VariCAD_View_2021-en-2.01-1.$CARCH.rpm")
 url="https://www.varicad.com/"
-md5sums=('3111dbf2bdbe7356a90ce82076ee701a')
+md5sums=('10241fd6cc3fd9eecb1988cc626fd1c3')
 
 package() {
   # Contents of this function are inspired by the install script located at:
