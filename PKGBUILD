@@ -6,6 +6,9 @@ pkgdesc="OpenDrop: an Open Source AirDrop Implementation"
 arch=('any')
 url="https://github.com/seemoo-lab/opendrop"
 license=('GPL3')
+makedepends=(
+  'git'
+)
 depends=(
   'owlink-git'
   'python'
@@ -15,6 +18,7 @@ depends=(
   'python-netifaces'
   'python-requests'
   'python-ifaddr'
+  'python-zeroconf'
 
   'python-ctypescrypto-git'
   'python-fleep-git'
