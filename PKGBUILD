@@ -1,11 +1,10 @@
-# Maintainer: Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-gmmlib-git
-_srcname=gmmlib
-pkgver=18.3.r12.g10ad15a
+pkgver=21.1.3.r0.g915cfec
 pkgrel=1
 pkgdesc='Intel Graphics Memory Management Library (git version)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/intel/gmmlib/'
 license=('MIT')
 depends=('gcc-libs')
@@ -18,39 +17,20 @@ source=('git+https://github.com/intel/gmmlib.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_srcname"
-    
-    # git, tags available
-    git describe --long --tags | sed 's/^intel-gmmlib-//;s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    git -C gmmlib describe --long --tags | sed 's/^intel-gmmlib-//;s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd "$_srcname"
-    
-    mkdir -p build
-    cd build
-    
-    [ "$CARCH" = 'i686'   ] && local _arch='32'
-    [ "$CARCH" = 'x86_64' ] && local _arch='64'
-    
-    cmake \
+    cmake -B build -S gmmlib \
+        -DBUILD_TYPE='None' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
-        -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DRUN_TEST_SUITE:BOOL='ON' \
-        -DARCH="$_arch" \
-        -Wno-dev \
-        ..
-    
-    make
+        -Wno-dev
+    make -C build
 }
 
 package() {
-    cd "${_srcname}/build"
-    
-    make DESTDIR="$pkgdir" install
-    
-    # license
-    cd "${srcdir}/${_srcname}"
-    install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    make -C build DESTDIR="$pkgdir" install
+    install -D -m644 gmmlib/LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
