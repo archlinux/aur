@@ -1,6 +1,6 @@
 pkgbase = soundux
 	pkgdesc = A cross-platform soundboard - stable version
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/Soundux/Soundux
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = soundux
 	optdepends = youtube-dl: downloader integration
 	optdepends = ffmpeg: downloader integration
 	optdepends = pipewire: pipewire backend
-	source = https://github.com/Soundux/Soundux/releases/download/0.2.5/soundux-0.2.5.tar.gz
-	sha256sums = e84b8dc3f21d8db0bd27735ac15504794692bfd3882947686239eae887937458
+	source = https://github.com/Soundux/Soundux/releases/download/0.2.6/soundux-0.2.6.tar.gz
+	sha256sums = 0cffff520b3d1e69ccbb10599ff1ff3c911d74eb01a4af8dc3d5132fa5535c63
 
 pkgname = soundux
 
