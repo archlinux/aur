@@ -2,7 +2,7 @@
 
 _pkgname=penguin-subtitle-player
 pkgname=${_pkgname}-git
-pkgver=v1.0.0.r7.1f61e87
+pkgver=v1.4.0.r7.822f34e
 pkgrel=1
 pkgdesc="An open-source, cross-platform standalone subtitle player"
 arch=('i686' 'x86_64')
@@ -24,6 +24,9 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname}"
+	
+	# required for uchardet git submodule
+	git submodule update --init --recursive
 
 	# build using Qt Creator project file
 	qmake-qt5 "PenguinSubtitlePlayer.pro"

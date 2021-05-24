@@ -1,6 +1,6 @@
 pkgbase = penguin-subtitle-player-git
 	pkgdesc = An open-source, cross-platform standalone subtitle player
-	pkgver = v1.0.0.r7.1f61e87
+	pkgver = v1.4.0.r8.822f34e
 	pkgrel = 1
 	url = https://github.com/carsonip/Penguin-Subtitle-Player/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = penguin-subtitle-player-git
 	depends = qt5-base
 	depends = libxkbcommon-x11
 	depends = libsm
-	provides = penguin-subtitle-player=v1.0.0.r7.1f61e87
+	provides = penguin-subtitle-player=v1.4.0.r8.822f34e
 	conflicts = penguin-subtitle-player
 	conflicts = penguin-subtitle-player-git
 	source = penguin-subtitle-player-git::git+https://github.com/carsonip/Penguin-Subtitle-Player.git
