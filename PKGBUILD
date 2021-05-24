@@ -51,7 +51,7 @@ _major=5.12
 _minor=6
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
@@ -71,8 +71,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_aufs_path}/${_aufs_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v4-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v4-sep/0002-Revert-bus-mhi-core-Process-execution-environment-ch.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0002-drm-i915-gt-Disable-HiZ-Raw-Stall-Optimization-on-br.patch"
          # the main kernel config files
         'config')
 
@@ -312,8 +312,8 @@ sha512sums=('94ed56538c0dde46f25e213ad9ba37df7af68a6d040307d4d61496a91902942b830
             'SKIP'
             'bf0e8fffff709d60d020c14bbff1666d1065e9b934094c9d7642f471dba7d831293fea89fb0068d98685a2c6da4b4b8a852283ed03434f157ad1f45d109529e9'
             'c4a2ed0bbd9d348893e802079ab684518b28f163ad242af1b74dd71c7e7e0f5d2db68ace1733879f4bd575103b365e90d6af5d2d849c6e6d2dda41ac73f822a7'
-            '89e21d47189d1ffd979d99ee905f32c1b163c78a06e595c034716acef348dc1c0677012dbdf5e54e646fbc737408523674ba4b94a2a79ac6a6fff3965783b08e'
-            '2aada50a1d69f0a0b01b975ed22f3de00ee5b45de088cc016373827696313d75416ba867c06b79205a0c968a4c2528f4a1a45597acce0f3d7901def92cc2767c'
+            'bc67c4af1b3e6060468e302d9ff681710b9df176660d4f6d1314c5778330048ae385d0148db6426c1905ad35a7be5197b143833b3622432cec2283b36a3642b8'
+            'caec30582052e00383baedbed9a1d6ddd27429cce510d718088c2ee91d0aba64adef892eb146a909e8338176b9200ad564cdd3a1d0dec82ec21e4b0733cc0c73'
             '4abfa6632201d13254874c86d98452460e2136d267bc81de10f3c5d960f54e50978b1ec04f34be9d9d360e8154d8db9f15c814ea6abf57d066120fdac9cc2fc3')
 
 validpgpkeys=(
