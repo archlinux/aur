@@ -1,0 +1,22 @@
+pkgbase = classpath
+	pkgdesc = A free replacement for Sun's proprietary core Java class libraries.
+	pkgver = 0.99
+	pkgrel = 4
+	url = http://www.gnu.org/software/classpath/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = java-environment
+	makedepends = antlr2
+	depends = file
+	depends = gtk2
+	depends = libsm
+	depends = libxtst
+	options = !emptydirs
+	source = https://ftp.gnu.org/gnu/classpath/classpath-0.99.tar.gz
+	source = freetype2_include.patch
+	md5sums = 0ae1571249172acd82488724a3b8acb4
+	md5sums = 55dafc301c5f2e497696d01e9c1dab9c
+
+pkgname = classpath
+
