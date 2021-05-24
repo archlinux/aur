@@ -1,6 +1,6 @@
 # Maintainer: J. King <jking@jkingweb.ca>
 pkgname="arsse-git"
-pkgver=0.9.1.r46.g2ccfb1f
+pkgver=0.9.2
 pkgrel=1
 epoch=
 pkgdesc="Multi-protocol RSS/Atom newsfeed synchronization server, bugfix-testing version"
@@ -9,14 +9,14 @@ url="https://thearsse.com/"
 license=("MIT")
 provides=("arsse")
 conflicts=("arsse")
-depends=("php" "php-intl" "php-sqlite")
+depends=("php>=7.1" "php-intl>=7.1" "php-sqlite>=7.1")
 makedepends=("composer")
 checkdepends=()
 optdepends=("nginx: HTTP server"
-            "apache: HTTP server"
+            "apache>=2.4: HTTP server"
             "percona-server: Alternate database"
-            "postgresql: Alternate database"
-            "php-pgsql: PostgreSQL database support")
+            "postgresql>=10: Alternate database"
+            "php-pgsql>=7.1: PostgreSQL database support")
 backup=("etc/webapps/arsse/config.php"
         "etc/php/php-fpm.d/arsse.conf"
         "etc/webapps/arsse/nginx/example.conf"
@@ -45,7 +45,7 @@ build() {
 
 package() {
     # define runtime dependencies
-    depends=("php" "php-intl" "php-sqlite" "php-fpm")
+    depends=("php>=7.1" "php-intl>=7.1" "php-sqlite>=7.1" "php-fpm>=7.1")
     # create most directories necessary for the final package
     cd "$pkgdir"
     mkdir -p "usr/share/webapps/arsse" "usr/share/doc/arsse" "usr/share/licenses/arsse" "usr/lib/systemd/system" "usr/lib/sysusers.d" "usr/lib/tmpfiles.d" "etc/php/php-fpm.d/" "etc/webapps/arsse" "etc/webapps/arsse/nginx"
