@@ -1,3 +1,8 @@
+4.7.6 (2021-05-10 16:16:58)
+
+    Fixes an infinite loop on some Windows executables,
+    Fixes a rare crash when using Hopper inside a virtual machine.
+
 4.7.5 (2021-04-29 15:58:48)
 
     Fixes an issue with dSYM loader.
