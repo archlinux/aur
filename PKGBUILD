@@ -4,7 +4,7 @@
 
 pkgname=libcgroup-git
 _pkgname=libcgroup
-pkgver=0.42.2.r81.g11a38f7
+pkgver=2.0.r3.g85c61fc
 pkgrel=1
 pkgdesc='Library that abstracts the control group file system in Linux'
 arch=('i686' 'x86_64')
@@ -56,8 +56,7 @@ package() {
 	install -D -m0644 ${srcdir}/cgconfig.service "${pkgdir}/usr/lib/systemd/system/cgconfig.service"
 	install -D -m0644 ${srcdir}/cgrules.service "${pkgdir}/usr/lib/systemd/system/cgrules.service"
 
-	rm -f ${pkgdir}/usr/lib/security/pam_cgroup.{la,so,so.0}
-	mv ${pkgdir}/usr/lib/security/pam_cgroup.so.0.0.0 ${pkgdir}/usr/lib/security/pam_cgroup.so
+	rm -f ${pkgdir}/usr/lib/security/pam_cgroup.{a,la}
 
 	# Make cgexec setgid cgred
 	chown root:160 ${pkgdir}/usr/bin/cgexec
