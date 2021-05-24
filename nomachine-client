@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+/opt/NX/bin/nxclient --monitor

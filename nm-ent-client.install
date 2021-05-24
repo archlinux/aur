@@ -1,29 +1,25 @@
-post_install()
+_check_remove_old_prefix()
 {
-    echo "creating file /etc/fedora-release (temporarily)..."
-    touch /etc/fedora-release
-    echo "Running NX post_install script..."
-    /usr/NX/nxclient --install fedora
-    echo "deleting file /etc/fedora-release..."
-    rm /etc/fedora-release
+    if [ -d /usr/NX ]; then
+        echo "Old installation (/usr) found, removing"
+
+        if [ -x /usr/NX/scripts/setup/nxclient ]; then
+            NX_INSTALL_PREFIX=/usr /usr/NX/scripts/setup/nxclient --uninstall fedora
+        fi
+
+        rm -rf /usr/NX
+    fi
 }
 
 pre_remove()
 {
     echo "Running NX pre_remove script..."
-    /usr/NX/scripts/setup/nxclient --uninstall fedora
+    NX_INSTALL_PREFIX=/opt /opt/NX/scripts/setup/nxclient --uninstall arch
+    rm -rf /opt/NX
 }
 
-post_remove()
+
+pre_upgrade()
 {
-    echo "Removing /usr/NX..."
-    rm -rf /usr/NX
-}
-
-pre_upgrade() {
-    pre_remove
-}
-
-post_upgrade() {
-    post_install
+    _check_remove_old_prefix
 }

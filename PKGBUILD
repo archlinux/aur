@@ -1,32 +1,39 @@
-# Maintainer: FD <fxd@seznam.cz>
+# Maintainer: wereii <me+aur at wereii.cz>
+# Contributor: FD <fxd@seznam.cz>
 
 pkgname=nomachine-enterprise-client
-pkgver=7.4.1
+pkgver=7.6.2
+_x64_rel=4
+_i686_rel=1
 pkgrel=1
-x64_rel=1
-i386_rel=1
 pkgdesc="Remote desktop application"
+groups=('network')
 url="http://www.nomachine.com"
-license=('custom:"Copyright 2002-2020 NoMachine S.a r.l."')
+license=('custom:"NoMachine EULA"')
 arch=('x86_64' 'i686')
 options=('!strip')
 conflicts=(nomachine nxmanager nxwebplayer nxserver nxnode nxclient)
 install=nm-ent-client.install
+backup=(etc/NX/player/localhost/{player,client}.cfg)
 
-if [ "${CARCH}" = "x86_64" ]; then
-  sha256sums=("ecfc67141c56cdaf8831583c1883254c925b6bdfdfee79065f4c4e6dc4d8254e")
-  _carch=_x86_64
-  source=("http://download.nomachine.com/download/7.4/Linux/${pkgname}_${pkgver}_${x64_rel}${_carch}.tar.gz")
-elif [ "${CARCH}" = "i686" ]; then
-  sha256sums=("ca0ea984ff7c5f969c5a3d695105c1e492df5b10761bb70337f7773fb606b836")
-  _carch=_i686
-  source=("http://download.nomachine.com/download/7.4/Linux/${pkgname}_${pkgver}_${i386_rel}${_carch}.tar.gz")
-fi
+source=(player.cfg client.cfg nomachine-client)
+sha256sums=(SKIP SKIP SKIP)
+
+source_x86_64=("http://download.nomachine.com/download/${pkgver%*.*}/Linux/${pkgname}_${pkgver}_${_x64_rel}_x86_64.tar.gz")
+source_i686=("http://download.nomachine.com/download/${pkgver%*.*}/Linux/${pkgname}_${pkgver}_${_i686_rel}_i686.tar.gz")
+
+sha256sums_x86_64=('399f1ab3ddcd28519ded95d46f64a222743224cb6aa5cb8af637e2260c3093e0')
+sha256sums_i686=('db9be126898bf9d2052db12596abf236d05d41698cc9249ae68a645b2d474a88')
 
 package()
 {
-  cd "${srcdir}"
-  install -d "${pkgdir}/usr/"
-  cp -a NX "${pkgdir}/usr/NX"
-}
+  install -Dm644 player.cfg client.cfg -t "${pkgdir}/etc/NX/player/localhost"
 
+  install -Dm755 nomachine-client -t "${pkgdir}/usr/bin"
+
+  mkdir -p "${pkgdir}/opt"
+  cd "${pkgdir}/opt"
+  tar -xzf "${srcdir}/NX/etc/NX/player/packages/nxclient.tar.gz"
+  tar -xzf "${srcdir}/NX/etc/NX/player/packages/nxplayer.tar.gz"
+
+}
