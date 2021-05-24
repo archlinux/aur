@@ -3,7 +3,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.28
 
 pkgname='perl-net-curl'
-pkgver='0.47'
+pkgver='0.49'
 pkgrel='1'
 pkgdesc="Perl interface for libcurl"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('curl>=7.37.0' 'perl')
 makedepends=('gcc')
 url='http://search.mcpan.org/dist/Net-Curl'
 source=("http://search.mcpan.org/CPAN/authors/id/S/SY/SYP/Net-Curl-${pkgver}.tar.gz")
-sha256sums=('51a4d7c14d36c0ccb66a37a04292220081d84fdf4434c65472d4940a26346387')
+sha256sums=('53b5a367db278adfc8fc83d393064e3d5f3de5682186829ddac0683c07b4a199')
 _distdir="Net-Curl-${pkgver}"
 
 build() {
