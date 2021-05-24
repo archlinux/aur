@@ -1,0 +1,18 @@
+pkgbase = jar-thumbnailer-git
+	pkgdesc = J2ME jar files thumbnailer for file-managers like nautilus, nemo, etc
+	pkgver = 5.a5e6ae0
+	pkgrel = 1
+	url = https://github.com/realmazharhussain/jar-thumbnailer
+	arch = any
+	license = GPL v3
+	depends = bash
+	depends = unzip
+	depends = coreutils
+	depends = sed
+	provides = jar-thumbnailer
+	conflicts = jar-thumbnailer
+	source = jar-thumbnailer-git::git+https://github.com/realmazharhussain/jar-thumbnailer.git
+	md5sums = SKIP
+
+pkgname = jar-thumbnailer-git
+
