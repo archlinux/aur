@@ -1,7 +1,7 @@
 pkgbase = baresip
 	pkgdesc = portable and modular SIP User-Agent with audio and video support
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = http://www.creytiv.com/baresip.html
 	arch = i686
 	arch = x86_64
@@ -46,10 +46,10 @@ pkgbase = baresip
 	optdepends = spandsp: (g722, g726,plc modules)
 	optdepends = speexdsp: (speex_aec, speex_pp modules)
 	optdepends = v4l-utils: (v4l2 module)
-	source = baresip-1.0.0.tar.gz::https://github.com/alfredh/baresip/archive/v1.0.0.tar.gz
+	source = baresip-1.1.0.tar.gz::https://github.com/baresip/baresip/archive/v1.1.0.tar.gz
 	source = baresip-flags.patch
-	sha256sums = 7b008c0a5b4fccfa0a4003f86dc4aaafeaabbdd259ece4757898e9cb5f04fdcf
-	sha256sums = 60b43559bfc00a23f023b80dbc8c7a0600f607e45bc8ba8ef6a786e583cc5d08
+	sha256sums = f9230b27c4a62f31223847bc485c51f3d960f8a09f36998dedb73358e1784b4e
+	sha256sums = 43835240d0cffd2754b7dc36f62340b2fccf5966a3e4b81f0a179428f607b914
 
 pkgname = baresip
 

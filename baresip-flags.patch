@@ -1,6 +1,8 @@
---- a/Makefile	2019-12-01 08:11:12.544634301 -0500
-+++ b/Makefile	2019-12-01 08:15:27.660902785 -0500
-@@ -192,7 +192,7 @@
+diff --git a/Makefile b/Makefile
+index 0a14121e..b2e4491c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -230,7 +230,7 @@ Makefile:	mk/*.mk $(MOD_MK) $(LIBRE_MK)
  
  $(SHARED): $(LIB_OBJS)
  	@echo "  LD      $@"
@@ -9,7 +11,7 @@
  
  $(STATICLIB): $(LIB_OBJS)
  	@echo "  AR      $@"
-@@ -217,7 +217,7 @@
+@@ -255,7 +255,7 @@ libbaresip.pc:
  
  $(BIN):	$(APP_OBJS)
  	@echo "  LD      $@"
@@ -18,7 +20,7 @@
  		-L$(LIBRE_SO) -lre $(LIBS) -o $@
  
  
-@@ -236,7 +236,7 @@
+@@ -274,7 +274,7 @@ test:	$(TEST_BIN)
  
  $(TEST_BIN):	$(STATICLIB) $(TEST_OBJS) $(TEST_MODULES)
  	@echo "  LD      $@"
@@ -27,9 +29,11 @@
  		-L$(LIBRE_SO) -L. \
  		-l$(PROJECT) -lre $(LIBS) $(TEST_LIBS) -o $@
  
---- a/mk/mod.mk	2019-12-01 08:11:12.547967675 -0500
-+++ b/mk/mod.mk	2019-12-01 08:12:51.572484780 -0500
-@@ -33,7 +33,7 @@
+diff --git a/mk/mod.mk b/mk/mod.mk
+index 5408031b..f85fd23b 100644
+--- a/mk/mod.mk
++++ b/mk/mod.mk
+@@ -38,7 +38,7 @@ ifeq ($(STATIC),)
  
  $(MOD)$(MOD_SUFFIX): $($(MOD)_OBJS)
  	@echo "  LD [M]  $@"

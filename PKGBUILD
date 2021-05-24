@@ -2,8 +2,8 @@
 # Contributor: Dmitrij D. Czarkoff <czarkoff at gmail dot com>
 
 pkgname=baresip
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="portable and modular SIP User-Agent with audio and video support"
 arch=('i686' 'x86_64' 'armv6h')
 url="http://www.creytiv.com/baresip.html"
@@ -30,10 +30,10 @@ optdepends=('alsa-lib: (alsa module)'
             'speexdsp: (speex_aec, speex_pp modules)'
             'v4l-utils: (v4l2 module)')
 makedepends=(${optdepends[@]/%:*/})
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/alfredh/baresip/archive/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/baresip/baresip/archive/v${pkgver}.tar.gz"
         "baresip-flags.patch")
-sha256sums=('7b008c0a5b4fccfa0a4003f86dc4aaafeaabbdd259ece4757898e9cb5f04fdcf'
-            '60b43559bfc00a23f023b80dbc8c7a0600f607e45bc8ba8ef6a786e583cc5d08')
+sha256sums=('f9230b27c4a62f31223847bc485c51f3d960f8a09f36998dedb73358e1784b4e'
+            '43835240d0cffd2754b7dc36f62340b2fccf5966a3e4b81f0a179428f607b914')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
