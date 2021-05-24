@@ -1,7 +1,7 @@
 # Maintainer: HRKings <hrkings@***.com>
 pkgname=pokemonsay-newgenerations-git
 _pkgname=pokemonsay-newgenerations
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Brings pokemon to the terminal using the power of cowsay."
 arch=(any)
@@ -23,7 +23,7 @@ package() {
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
 	# Put the installation path on the script
-	sed -r "31s;.*;INSTALL_PATH=${pkgdir}/opt/${_pkgname};" -i pokemonsay.sh
+	sed -r "31s;.*;INSTALL_PATH=/opt/${_pkgname};" -i pokemonsay.sh
 
 	# Install the scripts	
   	install -Dm755 pokemonsay.sh "${pkgdir}"/usr/bin/pokemonsay
