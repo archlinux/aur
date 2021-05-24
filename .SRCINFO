@@ -1,7 +1,7 @@
 pkgbase = fcitx5-mozc-ut
 	pkgdesc = Mozc module for Fcitx5 bundled with the UT dictionary
 	pkgver = 2.26.4381.102.20210524
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fcitx/mozc
 	arch = i686
 	arch = x86_64
