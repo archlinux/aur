@@ -1,16 +1,16 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=loqui
-pkgver=0.6.4
+pkgver=0.7.0
 pkgrel=1
-pkgdesc="IRC client for the Gtk+-2.0 environment"
+pkgdesc="IRC/Chat client for a Gtk environment"
 arch=('x86_64')
-url="https://launchpad.net/loqui"
+url="https://loqui.sunnyone.org/"
 license=('GPL2')
-depends=('gtk2')
+depends=('gtk3')
 makedepends=('python')
-source=(http://launchpad.net/$pkgname/0.6/$pkgver/+download/$pkgname-$pkgver.tar.gz)
-md5sums=('5130fb5b280bed07dbfbbd5cfc82b6c8')
+source=(https://github.com/sunnyone/loqui/releases/download/$pkgver/$pkgname-$pkgver.tar.gz)
+sha256sums=('c593211d6bb477d5477ec9b81143e3faf96e859ad2edaf527fbc370333e5e0e7')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
