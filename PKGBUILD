@@ -11,6 +11,7 @@ url="http://www.gnu.org/software/classpath/"
 license=('GPL')
 depends=('file' 'gtk2' 'libsm' 'libxtst')
 makedepends=('java-environment' 'antlr2')
+makedepends=('jdk7-openjdk' 'antlr2')
 options=('!emptydirs')
 source=(https://ftp.gnu.org/gnu/classpath/$pkgname-$pkgver.tar.gz
 	freetype2_include.patch)
