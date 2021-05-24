@@ -1,6 +1,6 @@
 pkgbase = jfrog-cli-bin
 	pkgdesc = Simple interface to Artifactory, Bintray and Mission Control
-	pkgver = 1.47.3
+	pkgver = 1.48.0
 	pkgrel = 1
 	url = https://github.com/jfrog/jfrog-cli
 	arch = x86_64
@@ -12,14 +12,14 @@ pkgbase = jfrog-cli-bin
 	provides = jfrog-cli
 	conflicts = jfrog-cli
 	conflicts = jfrog-cli-go
-	noextract = jfrog-cli-bin-1.47.3-1.jfrog
-	source_x86_64 = jfrog-cli-bin-1.47.3-1.jfrog::https://releases.jfrog.io/artifactory/jfrog-cli/v1/1.47.3/jfrog-cli-linux-amd64/jfrog
-	sha512sums_x86_64 = 801e7613e60829d627b5153b7bf05fb25f02b70ae6a1fb649e3d60373f48a163edfacabd96f01f9ee39a1051f7888d07bc059b2896445dd888a1da7849219255
-	source_i686 = jfrog-cli-bin-1.47.3-1.jfrog::https://releases.jfrog.io/artifactory/jfrog-cli/v1/1.47.3/jfrog-cli-linux-386/jfrog
-	source_armv7h = jfrog-cli-bin-1.47.3-1.jfrog::https://releases.jfrog.io/artifactory/jfrog-cli/v1/1.47.3/jfrog-cli-linux-arm/jfrog
-	sha512sums_armv7h = 6206416a299df07703ee3449c222116e933d5e8fcc26ac49716af51481a66367ab267402686ebc292aafb662270a8dcb8e235baf722d0189e113580a1378baf8
-	source_aarch64 = jfrog-cli-bin-1.47.3-1.jfrog::https://releases.jfrog.io/artifactory/jfrog-cli/v1/1.47.3/jfrog-cli-linux-arm64/jfrog
-	sha512sums_aarch64 = a66cb5a80e1c02df36d88f3a02a1c9d46f183fa0754630ea06c07e07f45bf74b86e1942c1f13c559d4083ff4f8ce37be1afc4fe7ca9f919b2c8a5d0a73a541a2
+	noextract = jfrog-cli-bin-1.48.0-1.jfrog
+	source_x86_64 = jfrog-cli-bin-1.48.0-1.jfrog::https://releases.jfrog.io/artifactory/jfrog-cli/v1/1.48.0/jfrog-cli-linux-amd64/jfrog
+	sha512sums_x86_64 = ab92af67cafb22576fe66e0830a18ebaf554b20e45836b03083e9a1a87d68ee14edafda073f65d8f84d0afd157061bb2c772defd87cd6918a394a3276a79b516
+	source_i686 = jfrog-cli-bin-1.48.0-1.jfrog::https://releases.jfrog.io/artifactory/jfrog-cli/v1/1.48.0/jfrog-cli-linux-386/jfrog
+	source_armv7h = jfrog-cli-bin-1.48.0-1.jfrog::https://releases.jfrog.io/artifactory/jfrog-cli/v1/1.48.0/jfrog-cli-linux-arm/jfrog
+	sha512sums_armv7h = e82e0b16e77158ed90f06ca6a8564c704cbe4d40d7e5d34f8bcbfffde4c2719fa76a7be16c0fa610de7f2a67a96cf0bf09a7c21e7731f0f4fdf88381e577a6aa
+	source_aarch64 = jfrog-cli-bin-1.48.0-1.jfrog::https://releases.jfrog.io/artifactory/jfrog-cli/v1/1.48.0/jfrog-cli-linux-arm64/jfrog
+	sha512sums_aarch64 = d92ce80f506fa67484748a16698a8788fe88ed9f243da75526dc0bffc62f9dcc69be7c56df89f413bef235c3d2fe59ed9b2a4d5ff63a033bee33cfd7bf6d8abe
 
 pkgname = jfrog-cli-bin
 
