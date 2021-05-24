@@ -1,31 +1,30 @@
-# Maintainer: Akhil Jalagam <akhiljalagams@gmail.com>
+# Maintainer: Akhil J <akhil.j@outlook.in>
 
-_pkgname=ondir
-pkgname=$_pkgname-git
-pkgver=r14.017b4c6
+pkgname=ondir-git
+pkgver=r13.55279f0
 pkgrel=1
 pkgdesc="a small program to automate tasks specific to certain directories"
 arch=('i686' 'x86_64')
-url="https://github.com/4khi1/ondir"
+url="https://github.com/alecthomas/ondir.git"
 license=('GPL2')
 makedepends=('git')
 depends=('glibc')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("git://github.com/4khi1/ondir.git")
+provides=("$pkgname")
+conflicts=("$pkgname")
+source=("$pkgname::git://github.com/alecthomas/ondir.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$pkgname"
   make CFLAGS="$CFLAGS "'-DVERSION=\"$(VERSION)\" -DGLOBAL_CONF=\"$(CONF)\"' LDFLAGS="$LDFLAGS"
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  make DESTDIR="$pkgdir/" install
+  cd "$pkgname"
+  make DESTDIR="$pkgdir" install
 }
