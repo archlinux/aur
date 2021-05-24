@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/*.torrent
+/*.pkg.tar

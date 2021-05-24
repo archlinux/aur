@@ -2,7 +2,7 @@
 
 pkgname=unvanquished-data
 pkgver=0.52.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Game assets for Unvanquished.'
 arch=('any')
 url='https://www.unvanquished.net'
