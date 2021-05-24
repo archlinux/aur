@@ -38,10 +38,9 @@ package_clickhouse-client-bin() {
 package_clickhouse-common-static-bin() {
 	# options and directives overrides
 	pkgdesc="ClickHouse compiled binary files."
-	backup=('etc/security/limits.d/clickhouse.conf')
 
 	cd "clickhouse-common-static-$pkgver"
-	cp -a etc usr $pkgdir
+	cp -a usr $pkgdir
 }
 
 package_clickhouse-server-bin() {

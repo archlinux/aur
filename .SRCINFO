@@ -25,7 +25,6 @@ pkgname = clickhouse-server-bin
 
 pkgname = clickhouse-common-static-bin
 	pkgdesc = ClickHouse compiled binary files.
-	backup = etc/security/limits.d/clickhouse.conf
 
 pkgname = clickhouse-client-bin
 	pkgdesc = ClickHouse client and other client-related tools.
