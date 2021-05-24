@@ -1,0 +1,15 @@
+pkgbase = julian-git
+	pkgdesc = A simple POSIX compliant shell script to convert dates between calendars
+	pkgver = 1.0.r0.g42e1ae6
+	pkgrel = 1
+	url = https://gitlab.com/cmmescher/julian.git
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = julian
+	conflicts = julian
+	source = git+https://gitlab.com/cmmescher/julian.git
+	md5sums = SKIP
+
+pkgname = julian-git
+
