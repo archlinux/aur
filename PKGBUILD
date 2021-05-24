@@ -4,7 +4,7 @@
 # Contributor: Holger Rauch < holger dot rauch at posteo dot de >
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=roxterm
-pkgver=3.10.4
+pkgver=3.11.1
 pkgrel=1
 pkgdesc='Tabbed, VTE-based terminal emulator'
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('docbook-xsl' 'xmlto' 'po4a' 'cmake' 'libsm'
              'imagemagick' 'librsvg' 'itstool')
 optdepend=('vte3-kinetic: Kinetic Scrolling in Terminal')
 source=("https://github.com/realh/roxterm/archive/${pkgver}.tar.gz")
-sha512sums=('ac2e14d96f9d2bf7f4529aeeb580a9e389dc2505d6c3b8ae37222922ac8c8566ce418f05266a66c74ec7926acadc4bfbab359c13e713406ebf988d206a7b1c12')
+sha512sums=('44521733bdaa5dc4c20e2d1af18b3260b72b203ffc93789f04c23ea68d040bfc84d65341c9632019b8c05409271d0cc2926458375f081e08ff5f8a33496893e0')
 
 build() {
   cd "${srcdir}/roxterm-${pkgver}"
@@ -28,7 +28,7 @@ build() {
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
-    -DCMAKE_SKIP_RPATH='TRUE' 
+    -DCMAKE_SKIP_RPATH='TRUE'
   make
 
 
