@@ -8,7 +8,7 @@
 
 pkgname=shutter
 pkgver=0.96
-pkgrel=1
+pkgrel=2
 pkgdesc="A featureful screenshot tool (formerly gscrot)"
 arch=('any')
 url="https://shutter-project.org/"
@@ -19,7 +19,7 @@ depends=(xdg-utils imagemagick procps librsvg desktop-file-utils
          perl-{sort-naturally,json,json-maybexs,xml-simple,www-mechanize,locale-gettext}
          perl-{file-{which,basedir,copy-recursive},xml-simple}
 	 perl-carp-always perl-gtk3 perl-gtk3-imageview-shutter perl-readonly perl-goocanvas2
-	 perl-goocanvas2-cairotypes libwnck3)
+	 perl-goocanvas2-cairotypes libwnck3 pango-perl)
 optdepends=('gnome-web-photo: web screenshot support'
 		'perl-image-exiftool: read and write EXIF data'
 		'nautilus-sendto: send screenshots via mail'
