@@ -2,7 +2,7 @@
 
 pkgname=lbry-sync-ytdl
 _author=gardenappl
-pkgver=1.4
+pkgver=1.6
 pkgrel=1
 pkgdesc='Sync content to LBRY using youtube-dl'
 arch=('any')
@@ -14,5 +14,5 @@ source=("https://gitlab.com/$_author/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgv
 package() {
    install -Dm755 "${srcdir}/$pkgname-v$pkgver"/lbry-sync-ytdl -t "${pkgdir}/usr/bin/"
 }
-sha256sums=('1b7ea8239c2aa545a1ae4881d7508be12f82e2f1925d97425c635296289dc900')
-b2sums=('657306cffa545ad923aaeeb663836af51698e4df4c7b6c69e9de5af9f82a3001ba696f6d0142732525a857e03a6345ef84de9afa46eda88380b2bd5b5e811ca3')
+sha256sums=('c7a177416e47cc2e2614b9a2e91bbca3c224b8dbbe6e1637a6cce045d2d04018')
+b2sums=('8d7507e64f1136759b81f86f6749a0c1d2a1fbc245c4e7fea6b128084ddaae5e47b1c422a2e785f3f40e87d3c63fab424862b046b1623a9ea7ac54a136a9bb03')
