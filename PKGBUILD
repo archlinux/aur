@@ -10,7 +10,7 @@ url="https://github.com/fanout/zurl"
 license=('GPL3')
 depends=("curl" "qt5-base" "zeromq")
 makedepends=("qt5-base" "zeromq")
-source=("https://dl.bintray.com/fanout/source/$pkgname-$pkgver.tar.bz2")
+source=("https://github.com/fanout/zurl/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.bz2")
 sha512sums=('099c6056d24c7b72722f0ca281c2308ea52caddc8a7ea1357290ba450a6fed338ac8ca16d4c38775064a1fe4861a7b3cad9a09c38abe1e20674fc4fad960e77b')
 
 build() {
