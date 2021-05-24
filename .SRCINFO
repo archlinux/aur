@@ -1,6 +1,6 @@
 pkgbase = website-stalker
 	pkgdesc = Track changes on websites via git
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/EdJoPaTo/website-stalker
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = website-stalker
 	license = LGPL-2.1-or-later
 	makedepends = cargo
 	depends = git
-	source = website-stalker-0.1.0.tar.gz::https://github.com/EdJoPaTo/website-stalker/archive/v0.1.0.tar.gz
-	sha256sums = 4a5e3103efbe05cbcf2acc262ed55c0face70904f19d5d8e98e26eaacc9c10e4
+	source = website-stalker-0.2.0.tar.gz::https://github.com/EdJoPaTo/website-stalker/archive/v0.2.0.tar.gz
+	sha256sums = 9eb888123bcac7470e1f95fa71f595835f5f022217d8547311d48063b938392e
 
 pkgname = website-stalker
 
