@@ -2,7 +2,7 @@
 
 pkgname=phosh
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A pure Wayland shell prototype for GNOME on mobile devices"
 url="https://source.puri.sm/Librem5/phosh"
 license=("GPL3")
@@ -11,7 +11,7 @@ depends=(
 	feedbackd
 	libhandy
 	phoc
-	libwlroots.so=7
+	'wlroots>=0.10' 'wlroots<0.11'
 )
 makedepends=(
 	ctags
@@ -23,9 +23,8 @@ checkdepends=(xorg-server-xvfb)
 source=(
 	"git+${url}.git#tag=v${pkgver}"
 	"git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
-	"file://wlroots.patch"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP')
 
 prepare() {
 	cd phosh
@@ -33,8 +32,6 @@ prepare() {
 	git submodule init
 	git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
 	git submodule update
-
-	patch src/home.c ../wlroots.patch
 }
 
 build() {
