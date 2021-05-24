@@ -3,8 +3,8 @@
 pkgname=shutter-git
 _pkgname=shutter
 pkgver=r1548.85dc91e8
-pkgrel=2
-pkgdesc="A featureful screenshot tool, git version without gnome-perl dependency"
+pkgrel=3
+pkgdesc="A featureful screenshot tool, git version"
 arch=('any')
 url="https://shutter-project.org/"
 license=('GPL3')

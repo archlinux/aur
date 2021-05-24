@@ -1,7 +1,7 @@
 pkgbase = shutter-git
-	pkgdesc = A featureful screenshot tool, git version without gnome-perl dependency
+	pkgdesc = A featureful screenshot tool, git version
 	pkgver = r1548.85dc91e8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://shutter-project.org/
 	arch = any
 	license = GPL3
