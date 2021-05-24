@@ -1,11 +1,12 @@
 pkgbase = ocserv-git
 	pkgdesc = OpenConnect VPN Server
-	pkgver = 0.11.6.r22.gb6a2e26
+	pkgver = 1.1.2.r73.g750a4bfb
 	pkgrel = 1
 	url = https://gitlab.com/ocserv/ocserv
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	makedepends = freeradius
 	makedepends = gperf
 	makedepends = autogen
