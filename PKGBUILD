@@ -1,8 +1,8 @@
 # Maintainer: Thomas Andres <thomas at andres dot in>
 pkgname=openhantek6022
 _gitname=OpenHantek6022
-pkgver=3.2.2
-pkgrel=2
+pkgver=3.2.3
+pkgrel=1
 pkgdesc="A DSO software for Hantek USB digital signal oscilloscopes 6022BE/BL."
 arch=('i686' 'x86_64')
 url="https://github.com/OpenHantek/OpenHantek6022"
