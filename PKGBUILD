@@ -2,8 +2,8 @@
 
 pkgname=listmonk-git
 _pkgname=${pkgname%-git}
-pkgver=1.0.0.r12.g25f5f9b
-pkgrel=2
+pkgver=1.0.0.r21.g44adcd4
+pkgrel=1
 pkgdesc='Self-hosted newsletter and mailing list manager with a modern dashboard'
 arch=(x86_64)
 url=https://listmonk.app
@@ -11,7 +11,7 @@ license=(AGPL3)
 depends=(postgresql)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-makedepends=(git go node-gyp nodejs-lts-fermium yarn)
+makedepends=(git go node-gyp nodejs yarn)
 backup=(etc/listmonk/config.toml)
 install=$_pkgname.install
 source=("$pkgname::git+https://github.com/knadh/$_pkgname.git"
