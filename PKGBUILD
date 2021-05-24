@@ -2,8 +2,8 @@
 # Maintainer: winlu <derwinlu@gmail.com>
 
 pkgname=rebar3-zsh
-pkgver=3.14.4
-pkgrel=3
+pkgver=3.16.1
+pkgrel=1
 pkgdesc="ZSH completion for rebar3."
 arch=('any')
 url="https://github.com/erlang/rebar3"
