@@ -2,8 +2,8 @@
 
 pipname=folderpreview
 pkgname=$pipname
-pkgver=0.4.2
-pkgrel=2
+pkgver=0.4.3
+pkgrel=1
 pkgdesc="Generates folder thumbs using child files thumbs"
 arch=(any)
 url="https://gitlab.com/hxss-linux/folderpreview"
