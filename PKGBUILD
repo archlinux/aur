@@ -1,7 +1,7 @@
 # Maintainer: kedap <dxhqezk@hi2.in>
 
 pkgname=apmpkg
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Un administrador de paquetes universal para linux como modelo: PKGBUILD"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('git' 'python-pip' 'python2-pip' 'wget' 'fakeroot' 'ruby-bundler' 'rsyn
 makedepends=('cargo')
 conflicts=('apmpkg-git-dev')
 source=("https://github.com/Kedap/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('f4838b70145bedfdaaf554c8c18003d871696ea6d52b8946227855b6d6cd2ec8')
+sha256sums=('ae689376d172ac1bed329f6392ddc286bcf9fb34d42824ee42c136878fea976f')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -29,5 +29,5 @@ package() {
 	mkdir -p ${pkgdir}/etc/apmpkg/iiabc
 	cp -r src/iiabc/ ${pkgdir}/etc/apmpkg/
 	mkdir -p ${pkgdir}/etc/apmpkg/paquetes
-  install -Dm 644 "${pkgname}.1" -t ${pkgdir}/usr/share/man/man1
+    install -Dm 644 "${pkgname}.1" -t ${pkgdir}/usr/share/man/man1
 }
