@@ -19,6 +19,11 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd "$pkgname"
+  sed -i '/USE_ONENTERLEAVE/c#define USE_ONENTERLEAVE' conf.h
+}
+
 build() {
   cd "$pkgname"
   make CFLAGS="$CFLAGS "'-DVERSION=\"$(VERSION)\" -DGLOBAL_CONF=\"$(CONF)\"' LDFLAGS="$LDFLAGS"
