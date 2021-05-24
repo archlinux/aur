@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=kicad-rc
-_pkgver="5.1.9"
+_pkgver="5.1.10"
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc="Official KiCad release candidates and dev snapshots"
@@ -10,7 +10,7 @@ url="http://kicad.org/"
 license=(GPL3 AGPL3 BOOST ISC MIT CC-BY-SA)
 depends=(
   glew
-  wxgtk3
+  'wxgtk3>=3.1.5'
   desktop-file-utils
   boost-libs
   python
@@ -31,15 +31,13 @@ makedepends=(
   swig
 )
 optdepends=(
-  kicad-symbols
-  kicad-packages3d
-  kicad-footprints
-  kicad-templates
+  kicad-library
+  kicad-library3d
 )
 conflicts=('kicad' 'kicad-git' 'kicad-scripting-git' 'kicad-bzr')
 provides=('kicad')
 source=("${pkgname}:${pkgver}.tar.gz::https://gitlab.com/kicad/code/kicad/-/archive/${_pkgver}/kicad-${_pkgver}.tar.gz")
-sha256sums=('841be864b9dc5c761193c3ee9cbdbed6729952d7b38451aa8e1977bdfdb6081b')
+sha256sums=('296341f30ada2c7f4a1c54720eab425835a93349527d4bf08f73f280d19695ed')
 
 prepare() {
   cd kicad-${_pkgver}
