@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/osavul/
+/*.pkg.tar.xz

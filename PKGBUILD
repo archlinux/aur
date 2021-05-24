@@ -1,47 +1,43 @@
 # Maintainer: Viech
 
 pkgname=osavul-git
-pkgver=0.20130506
+pkgver=1.1.1.r5.g9628f8e
 pkgrel=1
 pkgdesc="A standalone server browser for Unvanquished."
-arch=('x86_64' 'i686')
-url="http://www.unvanquished.net"
+arch=('x86_64')
+url="https://www.unvanquished.net"
 license=('GPL3')
 depends=('qt4>=4.7')
 makedepends=('git' 'make')
+source=("osavul::git+https://github.com/Unvanquished/Osavul.git")
+md5sums=('SKIP')
 
-_gitroot="https://github.com/Unvanquished/Osavul.git"
-_gitname="osavul"
+pkgver() {
+	cd "${srcdir}/osavul"
+
+	git describe --match 'v*' --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-	cd $srcdir
+	cd "${srcdir}/osavul"
 
-	msg "Connecting to GIT server..."
-
-	if [[ -d $_gitname ]]; then
-		msg "Updating local files..."
-		cd $_gitname
-		git pull
-	else
-		msg "Cloning repository..."
-		git clone $_gitroot $_gitname
-	fi
-
-	msg "The local files are up to date."
-	msg "Starting build..."
-
-	cd $srcdir/$_gitname
-
-	qmake-qt4 && make
+	qmake-qt4
+	make
 }
 
 package() {
-	# create directories
-	install -d $pkgdir/usr/bin $pkgdir/usr/share/applications
+	# Create installation directories.
+	install -d -m 755 \
+		"${pkgdir}/usr/bin" \
+		"${pkgdir}/usr/share/applications" \
+		"${pkgdir}/usr/share/licenses/osavul"
 
-	# install binary
-	install $srcdir/$_gitname/$_gitname $pkgdir/usr/bin/
+	cd "${srcdir}/osavul"
 
-	# install desktop file (currently uses the icon of unvanquished)
-	install -m 644 $srcdir/$_gitname/debian/$_gitname.desktop $pkgdir/usr/share/applications/
+	# Install binaries.
+	install -m 755 osavul "${pkgdir}/usr/bin/"
+
+	# Install text files.
+	install -m 644 debian/osavul.desktop "${pkgdir}/usr/share/applications/"
+	install -m 644 LICENSE "${pkgdir}/usr/share/licenses/osavul/"
 }
