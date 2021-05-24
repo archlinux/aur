@@ -16,7 +16,7 @@ _libstdcppmanver=4.5.2		# Note: check source directory name when updating this
 pkgdesc="The GNU Compiler Collection for multilib (4.5.x)"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'custom')
-url="http://gcc.gnu.org"
+url="https://gcc.gnu.org"
 makedepends=('binutils>=2.21' 'libmpc' 'cloog' 'elfutils' 'dejagnu' 'glibc>=2.11.1-2' 'lib32-glibc>=2.12.1')
 conflicts=('gcc45') # Package from AUR
 provides=('gcc45')
