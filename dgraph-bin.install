@@ -1,0 +1,70 @@
+_prepare_for_upstream_systemd_services() {
+  # ensure "new" data directories don't already exist before we create
+  # them in order to avoid overwriting data
+  if [ ! -e /var/lib/dgraph/p ] && \
+     [ ! -e /var/lib/dgraph/w ] && \
+     [ ! -e /var/lib/dgraph/zw ]; then
+    # check for existence of "old" data directories from before the
+    # upstream systemd service files were used
+    # (package version <= 20.11.2-1)
+    if [ ! -e /var/lib/dgraph/data/p ] && \
+       [ ! -e /var/lib/dgraph/data/w ] && \
+       [ ! -e /var/lib/dgraph/data/zw ]; then
+      echo ">> Filesystem matches expected CLEAN state, running " \
+           "script to prepare for upstream systemd services"
+      usr/share/dgraph/add_dgraph_account.sh
+    elif [ -d /var/lib/dgraph/data/p ] && \
+         [ -d /var/lib/dgraph/data/w ] && \
+         [ -d /var/lib/dgraph/data/zw ]; then
+      echo ">> Filesystem matches expected OLD state, running script " \
+           "to prepare for upstream systemd services AND moving" \
+           "existing data"
+      usr/share/dgraph/add_dgraph_account.sh
+      mv /var/lib/dgraph/data/{p,w,zw} /var/lib/dgraph/
+      # this will error if other items remain in /var/lib/dgraph/data/
+      rmdir /var/lib/dgraph/data
+    else
+      # at least one of /var/lib/dgraph/data/{p,w,zw} exists but isn't a
+      # directory
+      echo ">> Existing OLD data directories don't match " \
+           "expectations, quitting!"
+      exit 1
+    fi
+  # ensure filesystem matches expectations so binaries can run properly
+  elif [ -d /var/lib/dgraph/p ] && \
+       [ -d /var/lib/dgraph/w ] && \
+       [ -d /var/lib/dgraph/zw ] && \
+       [[ $(stat -c '%U' /var/lib/dgraph/p) == "dgraph" ]] && \
+       [[ $(stat -c '%U' /var/lib/dgraph/w) == "dgraph" ]] && \
+       [[ $(stat -c '%U' /var/lib/dgraph/zw) == "dgraph" ]] && \
+       [[ $(stat -c '%G' /var/lib/dgraph/p) == "dgraph" ]] && \
+       [[ $(stat -c '%G' /var/lib/dgraph/w) == "dgraph" ]] && \
+       [[ $(stat -c '%G' /var/lib/dgraph/zw) == "dgraph" ]]; then
+    echo ">> Filesystem matches expected NEW state, no need to run" \
+         "script to transition to upstream systemd services"
+  else
+    # at least one of /var/lib/dgraph/{p,w,zw} exists but isn't a
+    # directory owned by dgraph:dgraph
+    echo ">> Existing NEW data directories don't match expectations," \
+         "quitting!"
+    exit 2
+  fi
+}
+
+## arg 1:  the new package version
+post_install() {
+  _prepare_for_upstream_systemd_services
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  _prepare_for_upstream_systemd_services
+}
+
+post_remove() {
+  echo ">> There are still files related to dgraph-bin at " \
+       "/var/{lib,log}/dgraph, plus a dgraph user and group"
+}
+
+# vim:set ts=2 sw=2 et:
