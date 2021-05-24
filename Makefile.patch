@@ -1,0 +1,12 @@
+--- Makefile.orig	2021-05-24 19:13:11.690356144 +0200
++++ Makefile	2021-05-24 20:12:51.515333523 +0200
+@@ -22,8 +22,8 @@
+ 	$(CC) $(CFLAGS) $(LIB_OPTION) -o src/$(DES56_LIBNAME) $(DES56_OBJS) $(COMPAT52_OBJS)
+ 
+ install: src/$(MD5_LIBNAME) src/$(DES56_LIBNAME)
+-	cp src/$(DES56_LIBNAME) $(LUA_LIBDIR)
+ 	mkdir -p $(LUA_LIBDIR)/md5
++	cp src/$(DES56_LIBNAME) $(LUA_LIBDIR)
+ 	cp src/$(MD5_LIBNAME) $(LUA_LIBDIR)/md5/
+ 	mkdir -p $(LUA_DIR)
+ 	cp $(MD5_LUAS) $(LUA_DIR)
