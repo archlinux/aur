@@ -1,3 +1,4 @@
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: tardo <tardo@nagi-fanboi.net>
 # Contributor: Sean Gillespie <Sean.D.Gillespie@gmail.com>
@@ -10,8 +11,8 @@ arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/classpath/"
 license=('GPL')
 depends=('file' 'gtk2' 'libsm' 'libxtst')
-makedepends=('java-environment' 'antlr2')
 makedepends=('jdk7-openjdk' 'antlr2')
+makedepends=('java-environment' 'antlr2')
 options=('!emptydirs')
 source=(https://ftp.gnu.org/gnu/classpath/$pkgname-$pkgver.tar.gz
 	freetype2_include.patch)
