@@ -1,20 +1,40 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>
 # Contributor: Gabriel Moura <g@srmoura.com.br>
 
 pkgname=('webp-thumbnailer')
-pkgver='0.0.2'
-pkgrel=7
+pkgver='r4.d6f4d89'
+pkgrel=1
 pkgdesc='Creates thumbnails for .webp files'
 arch=('any')
 url='https://github.com/gabrielmoura/webp-thumbnailer'
 license=('GPL3')
 depends=('bash')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/master.tar.gz")
-sha256sums=('0b4e3c247dd5896d3b7c4e72a120d7fa2d010c57990d5c3cbf563c2b898ef53b')
+makedepends=('git')
+source=(
+  "git+${url}#commit=d6f4d8937129f8d1d9b1964e743777c9665f842a"
+  "fixpath.patch::${url}/pull/2.patch"
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
+
+pkgver() {
+  cd "$pkgname"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
+
+prepare() {
+  cd "${pkgname}"
+  patch -p1 -i "../fixpath.patch"
+}
 
 package() {
-  install -Dm755 "${srcdir}/${pkgname}-master/usr/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "${srcdir}/${pkgname}-master/usr/share/thumbnailers/webp.thumbnailer" "${pkgdir}/usr/share/thumbnailers/webp.thumbnailer"
+  install -Dm755 "${srcdir}/${pkgname}/usr/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 "${srcdir}/${pkgname}/usr/share/thumbnailers/webp.thumbnailer" "${pkgdir}/usr/share/thumbnailers/webp.thumbnailer"
 }
-# vim:set ts=2 sw=2 et:
