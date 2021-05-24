@@ -1,6 +1,6 @@
 pkgbase = linux-manjaro-xanmod
 	pkgdesc = Linux Xanmod
-	pkgver = 5.12.0
+	pkgver = 5.12.6
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -19,17 +19,17 @@ pkgbase = linux-manjaro-xanmod
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.12.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.12.tar.sign
-	source = https://github.com/xanmod/linux/releases/download/5.12.0-xanmod1/patch-5.12.0-xanmod1.xz
+	source = https://github.com/xanmod/linux/releases/download/5.12.6-xanmod1/patch-5.12.6-xanmod1.xz
 	source = choose-gcc-optimization.sh
-	source = https://gitlab.manjaro.org/packages/core/linux512/-/archive/3153154c3de2123c20231c0a259cbc3a0c1f70e7/linux512-3153154c3de2123c20231c0a259cbc3a0c1f70e7.tar.gz
+	source = https://gitlab.manjaro.org/packages/core/linux512/-/archive/5e97ee4d5ba960c3bfd5d79a4b2fb509041f3440/linux512-5e97ee4d5ba960c3bfd5d79a4b2fb509041f3440.tar.gz
 	source = sphinx-workaround.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/sphinx-workaround.patch?h=packages/linux&id=be7d4710850020de55bce930c83fa80347c02fc3
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366
 	sha256sums = SKIP
-	sha256sums = 690bd1fe99a57db8d6c3b94cdaf30d5f1a879e5cd879c1186a9919908a1c30e9
-	sha256sums = 51742dee57cd15bece152d6527f48af87cb7930f0f6a356d5282f778e7c35b39
-	sha256sums = 957d1338c9fda1e0fe7c282ad5fbca8bdaa91eb876d0a4c26ff93dd2c8b0bfe8
+	sha256sums = 2bb72c4ac95cfd63abd2890d23fc12a946874114ca1c48c5a75143866821953c
+	sha256sums = 1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee
+	sha256sums = b9c5aea1781f9caba4d3e0aa37155756c20a98676e4f1d146d3f9fae92b16f3e
 	sha256sums = 52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb
 
 pkgname = linux-manjaro-xanmod

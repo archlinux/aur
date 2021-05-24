@@ -23,7 +23,7 @@
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
 ## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
-## Good option if your package is for one machine: 99 => native
+## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
 if [ -z ${_microarchitecture+x} ]; then
   _microarchitecture=0
 fi
@@ -65,7 +65,7 @@ _makenconfig=
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 _major=5.12
-pkgver=${_major}.0
+pkgver=${_major}.6
 _branch=5.x
 xanmod=1
 pkgrel=1
@@ -73,7 +73,7 @@ pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="3153154c3de2123c20231c0a259cbc3a0c1f70e7" # 5.12.0-1
+__commit="5e97ee4d5ba960c3bfd5d79a4b2fb509041f3440" # 5.12.6-1
 
 license=(GPL2)
 makedepends=(
@@ -97,9 +97,9 @@ done
         
 sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'  # kernel tar.xz
             'SKIP'                                                              #        tar.sign
-            '690bd1fe99a57db8d6c3b94cdaf30d5f1a879e5cd879c1186a9919908a1c30e9'  # xanmod
-            '51742dee57cd15bece152d6527f48af87cb7930f0f6a356d5282f778e7c35b39'  # choose-gcc-optimization.sh
-            '957d1338c9fda1e0fe7c282ad5fbca8bdaa91eb876d0a4c26ff93dd2c8b0bfe8'  # manjaro
+            '2bb72c4ac95cfd63abd2890d23fc12a946874114ca1c48c5a75143866821953c'  # xanmod
+            '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'  # choose-gcc-optimization.sh
+            'b9c5aea1781f9caba4d3e0aa37155756c20a98676e4f1d146d3f9fae92b16f3e'  # manjaro
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
