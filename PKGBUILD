@@ -1,18 +1,18 @@
 # Maintainer: Zach Hoffman <zrhoffman@apche.org>
 pkgname=f5fpc
-pkgver=7198.2021.0120.1
-pkgrel=1
+pkgver=7211.2021.0107.1
+pkgrel=2
 pkgdesc='Command-line VPN client using FastPPP to connect to F5Networks BIG-IP APM 13.0'
 arch=(x86_64 armv7h)
 source=('LICENSE')
 sha256sums=(a8f4b5d965dc0279dd5173109892251ce5d107d9912836e6d83a9b6896eb19a1)
-b2sums=(7a5866d947d40a1c993795f96f87ba94cdefa572fc5524848316792b602bdfd1ad50c639f33b1e72dd97e739c7f7312a8f2efd086aab9be4b5fe4f0790ba37a5)
-source_x86_64=("linux_f5cli-${pkgver}.x86_64.deb::https://dept-huskyonnet-ns.uw.edu/public/download/linux_f5cli.x86_64.deb")
-sha256sums_x86_64=(1efa35d8f5faa7dbb95e620851618e5bae121c0f2e16ff7eade8e66620d1109d)
-b2sums_x86_64=(00f51a67348bcdad79690577861ec4b45b2047446ad4558e82ebb6e40f4d24e56874ccb4c3211fc356187d375b7d9492f9d6701df2bc4e12f8ed22cbcc483f51)
+md5sums=(2508fc5e24d46163844dba9534fe7924)
+source_x86_64=("linux_f5cli-${pkgver}.x86_64.deb::https://connect.healthsystem.virginia.edu/public/download/linux_f5cli.x86_64.deb")
+sha256sums_x86_64=(5825d955a56a908e9187ba0e9a4edd3eac450e7721c12293b7eda6a007e30b87)
+md5sums_x86_64=(e6cb6fed4f32fd56044f99f6cbc14eff)
 source_armv7h=("linux_f5cli-${pkgver}.armhf.deb::https://vpn.brown.edu/public/download/linux_f5cli.armhf.deb")
-sha256sums_armv7h=(7ace6147948b31d93e4fc93f1a559a02f2c3c138d8ae14bd5970dd0b9fe9fc14)
-b2sums_armv7h=(7d5f5bc802a55a74f421c0402a39ff0f77fdcc45c71ab2bba8f88f33ea8b8c314fc0f65504103a570e04943e72214ce5aa89170f03f62b0fcf380a57dd28a998)
+sha256sums_armv7h=(afc2253844a0b906d401a1c53e991f3d1bb3d8c7cc2846723bed42f10affced1)
+md5sums_armv7h=(5d86b106d826f56908eddc8fd83eb12e)
 depends=(openssl)
 makedepends=(tar)
 url='https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-client-configuration-11-4-0/4.html'
