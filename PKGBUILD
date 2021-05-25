@@ -1,14 +1,17 @@
+# Maintainer: mrxx <mrxx at cyberhome dot at>
+# Contributor: ShadowKyogre <shadowkyogre.public+aur@gmail.com>
 # Contributor: Peter Garceau <rockychimp@gmail.com>
 pkgname=metamorphose2
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Batch Rename Utility"
 arch=(i686 x86_64)
 license=('GPL')
 url="http://file-folder-ren.sourceforge.net"
-depends=('python2' 'wxpython2.8' 'exif-py')
+depends=('python2' 'wxpython2.8' 'python2-wxpython3' 'exif-py')
 optdepends=('python2-imaging: Required for previewing images' 'python2-mutagen: ID3 Tag renaming')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/metamorphose/${pkgname}/archive/v2.${pkgver}.tar.gz")
+sha1sums=('1850f86f45b9adeeb3f663d724d6fb4ca943624a')
 
 prepare() {
   cd "$srcdir/metamorphose2-2.$pkgver"
@@ -29,4 +32,3 @@ package() {
 
   make DESTDIR="$pkgdir" all
 }
-md5sums=('70ebefc021ba382ca99c66e1cc0ca006')
