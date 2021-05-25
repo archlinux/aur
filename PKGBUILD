@@ -3,7 +3,6 @@
 # Contributor: Nathan Dyer <https://github.com/nathandyer>
 
 pkgname=vocal
-_id=com.github.needleandthread.vocal
 pkgver=2.4.2
 pkgrel=4
 pkgdesc='Powerful, beautiful and simple podcast client for Pantheon'
@@ -25,9 +24,6 @@ prepare() {
 
   # Remove unused webkit2gtk dependency
   sed -i 's/webkit2gtk-4.0//' CMakeLists.txt
-
-  # Fix metainfo file
-  sed -i "/<id>/a <launchable type=\"desktop-id\">$_id.desktop</launchable>" data/$_id.appdata.xml
 }
 
 build() {
@@ -37,5 +33,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  ln -s $_id "$pkgdir/usr/bin/$pkgname"
+  ln -s com.github.needleandthread.vocal "$pkgdir/usr/bin/$pkgname"
 }
