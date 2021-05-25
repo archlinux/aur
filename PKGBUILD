@@ -1,7 +1,7 @@
 # Maintainer: René Wagner <rwagner at rw-net dot de>
 pkgname=art-rawconverter
 pkgver=1.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Raw image Converter forked from RawTherapee with ease of use in mind (including blackfoxx-theme)'
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/agriggio/art/wiki/Home"
@@ -10,8 +10,13 @@ depends=('lensfun' 'exiv2' 'fftw' 'gtk3' 'glibmm' 'gtkmm3' 'lcms2' 'libcanberra'
 optdepends=('perl-image-exiftool: metadata support for CR3 images' )
 makedepends=('pkgconf' 'cmake' 'git' 'gcc' 'hicolor-icon-theme' 'fakeroot')
 conflicts=('art-rawconverter-git')
-source=("${pkgname}_${pkgver}::git+https://bitbucket.org/agriggio/art.git#tag=${pkgver}" "bft_20.zip::https://discuss.pixls.us/uploads/short-url/fG7iCaIWBWBem30O67V15EfO521.zip")
-sha256sums=('SKIP' '7381c57e48b1437bec6b775029370f99f6fc14eced53678972e9f0b7e02a4346')
+source=("${pkgname}_${pkgver}::git+https://bitbucket.org/agriggio/art.git#tag=${pkgver}" "bft_20.zip::https://discuss.pixls.us/uploads/short-url/fG7iCaIWBWBem30O67V15EfO521.zip" "cmakelists.patch")
+sha256sums=('SKIP' '7381c57e48b1437bec6b775029370f99f6fc14eced53678972e9f0b7e02a4346' 'afa653b141bcc74bd2d67041d14f73cd2d7d87614be9adea455461aacf77956d')
+
+prepare() {
+  cd "$srcdir/${pkgname}_${pkgver}"
+  patch --forward --strip=1 --input="${srcdir}/cmakelists.patch"
+}
 
 build() {
   cp "$srcdir/blackfoxx-GTK3-20_.css" "$srcdir/${pkgname}_${pkgver}/rtdata/themes"

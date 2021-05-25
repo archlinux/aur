@@ -1,7 +1,7 @@
 pkgbase = art-rawconverter
 	pkgdesc = Raw image Converter forked from RawTherapee with ease of use in mind (including blackfoxx-theme)
 	pkgver = 1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/agriggio/art/wiki/Home
 	arch = i686
 	arch = x86_64
@@ -26,8 +26,10 @@ pkgbase = art-rawconverter
 	conflicts = art-rawconverter-git
 	source = art-rawconverter_1.9::git+https://bitbucket.org/agriggio/art.git#tag=1.9
 	source = bft_20.zip::https://discuss.pixls.us/uploads/short-url/fG7iCaIWBWBem30O67V15EfO521.zip
+	source = cmakelists.patch
 	sha256sums = SKIP
 	sha256sums = 7381c57e48b1437bec6b775029370f99f6fc14eced53678972e9f0b7e02a4346
+	sha256sums = afa653b141bcc74bd2d67041d14f73cd2d7d87614be9adea455461aacf77956d
 
 pkgname = art-rawconverter
 
