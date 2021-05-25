@@ -17,7 +17,7 @@ pkgbase = perl-test-cleannamespaces
 	depends = perl-sub-identify
 	depends = perl-test-deep
 	depends = perl-test-requires
-	depends = perl-test-tester
+	depends = perl-test-simple
 	depends = perl-test-warnings>=0.009
 	depends = perl-namespace-clean
 	options = !emptydirs
