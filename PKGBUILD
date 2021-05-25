@@ -2,7 +2,7 @@
 
 pkgbase=linux-zen-g14
 _pkgbase=linux-zen
-pkgver=5.12.zen1
+pkgver=5.12.6.zen1
 pkgrel=1
 pkgdesc='Linux ZEN with patches for Zephyrus G14'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -18,11 +18,11 @@ options=('!strip')
 _srcname=zen-kernel
 source=(
   "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
-  "config-$pkgver::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-zen&id=022f90b53c16a50700238de85e082a8168f756cf"
+  "config-$pkgver::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-zen&id=b0c3fd603e4a51d0850f536fe4250608ad7d152c"
   "https://github.com/dolohow/uksm/raw/master/v5.x/uksm-5.12.patch"
   "https://lab.retarded.farm/zappel/zGentoo/-/raw/master/sys-kernel/gentoo-sources-g14/files/0001-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch"
   "https://lab.retarded.farm/zappel/zGentoo/-/raw/master/sys-kernel/gentoo-sources-g14/files/0002-HID-ASUS-Add-support-for-ASUS-N-Key-keyboard_fanmode.patch"
-  "https://lab.retarded.farm/zappel/zGentoo/-/raw/master/sys-kernel/gentoo-sources-g14/files/0001-WMI-asus-Reduce-G14-and-G15-match-to-min-product-nam.patch"
+  "add-jack-toggle-support.patch::https://aur.archlinux.org/cgit/aur.git/plain/5.12.4--Add-jack-toggle-support-for-headphones-on-Asus-ROG-Z.patch?h=linux-g14"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -30,11 +30,11 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '4bb160cc5d889128f7e0f58b279673cdcccbb9cee2cf0be6027aed4b2e9890a9'
+            'd7c42480e4c4f7a2d2895f666b42bd4aa9d490944933e07444aba54e0d76ae4d'
             '8b2e476ae108255ae5dc6da43cda57620021a8e68da0e3c568eb44afd3d3254a'
             'd9f5742fed4406396698897aa042d4d5fdbfd7c51add7483a777f9ab41901aac'
             '9a8ff7948b16c1ad2ab23f390fd9a2cad4c765821bae7a2a1e4a61b79ffee522'
-            'eec1d016c5f53f1d808701b6c038db2e73a61310713f859d99bf97b9c793cefe')
+            'f52aadc1ebcdc118bb50769e4f5a4c036521c09ffecba48cb34392e1a687ac0a')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
