@@ -1,13 +1,14 @@
 pkgbase = python-xdelta3
+	pkgdesc = Fast delta encoding using xdelta3
 	pkgver = 0.0.5
-	pkgrel = 2
+	pkgrel = 1
+	url = https://github.com/samuelcolvin/xdelta3-python
 	arch = any
-	license = Apache
+	license = APACHE
+	makedepends = python-setuptools
 	depends = python
-	depends = xdelta3
-	depends = python-pip
-	source = git+https://github.com/samuelcolvin/xdelta3-python/
-	md5sums = SKIP
+	source = https://files.pythonhosted.org/packages/9a/2e/18a4011d94e3a557be8b632f7d73b6d5e06998638f90c45c131bdf8edeb2/xdelta3-0.0.5.tar.gz
+	md5sums = a7602b42b1772c052d64017c8944191f
 
 pkgname = python-xdelta3
 

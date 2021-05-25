@@ -1,29 +1,28 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
+# Maintainer: Václav Valíček <vaclav@valicek.name>
 
-# See http://wiki.archlinux.org/index.php/Python_Package_Guidelines for more
-# information on Python packaging.
-
-# Maintainer: Your Name <youremail@domain.com>
-pkgname=python-xdelta3
+_pkgname=xdelta3
+pkgname="python-$_pkgname"
 pkgver=0.0.5
-pkgrel=2
-pkgdesc=""
-arch=(any)
-url=""
-license=('Apache')
-groups=()
-depends=('python' 'xdelta3' 'python-pip')
-source=(git+https://github.com/samuelcolvin/xdelta3-python/)
-md5sums=(SKIP)
+pkgrel=1
+pkgdesc='Fast delta encoding using xdelta3'
+arch=('any')
+url="https://github.com/samuelcolvin/xdelta3-python"
+license=('APACHE')
+depends=('python')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/9a/2e/18a4011d94e3a557be8b632f7d73b6d5e06998638f90c45c131bdf8edeb2/xdelta3-${pkgver}.tar.gz")
+md5sums=('a7602b42b1772c052d64017c8944191f')
 
-package() {
-  cd "$srcdir/xdelta3-python/"
-  git submodule update --init --recursive 
-  ln -s "$srcdir/xdelta3-python/xdelta/xdelta3/" "$srcdir/xdelta3-python/xdelta3/lib" 
-  python setup.py install --root="$pkgdir/"
+
+build() {
+    cd $srcdir/$_pkgname-$pkgver
+    python setup.py build
 }
 
-# vim:set ts=2 sw=2 et:
+
+package() {
+    cd $srcdir/$_pkgname-$pkgver
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+}
+
+
