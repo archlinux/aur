@@ -1,10 +1,11 @@
 pkgname=ovenmediaengine
-pkgver=v0.12.0.r4.gaf99ce43
+pkgver=v0.12.0.r13.ge1b2ac3d
 pkgrel=1
 pkgdesc='Open-source streaming video service with sub-second latency'
 arch=('x86_64')
 url='https://ovenmediaengine.com'
 license=('GPL2')
+depends=('openssl' 'libsrtp' 'srt' 'opus' 'x265' 'libvpx' 'fdkaac' 'nasm' 'ffmpeg' 'pcre2' 'intel-gmmlib' 'intel-media-driver' 'intel-media-sdk')
 makedepends=('bc' 'jemalloc')
 source=("git+https://github.com/AirenSoft/OvenMediaEngine")
 sha512sums=('SKIP')
