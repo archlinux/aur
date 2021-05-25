@@ -1,6 +1,6 @@
 # Maintainer: Eldeberen <eldeberen.aur@middleearth.fr>
 pkgname=fxsdk
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='Tools to program for the Casio fx9860 calculators'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ provides=('fxconv' 'fxg1a' 'fxlink')
 conflicts=('fxsdk-git')
 options=('!buildflags')
 source=("$pkgname-$pkgver.tar.gz::https://gitea.planet-casio.com/Lephenixnoir/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('8e66b4d508c937218efd5d5e02d935759d2dc19d3c080f4aa526553aeae63efe')
+sha256sums=('0965ece421a8aff77a330cc625433efd7fd9afaa6d5a16ce6aa586f0dd49766c')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
