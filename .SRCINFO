@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-customize-ibus
 	pkgdesc = Full customization of appearance, behavior, system tray and input source indicator for IBus.
-	pkgver = 49
+	pkgver = 51
 	pkgrel = 1
 	epoch = 0
 	url = https://extensions.gnome.org/extension/4112/customize-ibus/
@@ -9,7 +9,7 @@ pkgbase = gnome-shell-extension-customize-ibus
 	makedepends = gettext
 	makedepends = glib2
 	makedepends = make
-	source = https://github.com/HollowMan6/Customize-IBus/archive/ebd8a8896ff200007d18dc2b0918089fffad7e56/Customize-IBus-ebd8a8896ff200007d18dc2b0918089fffad7e56.tar.gz
+	source = https://github.com/HollowMan6/Customize-IBus/archive/1d9f51d00de0d1f0b6a2fb7c02849108de495336/Customize-IBus-1d9f51d00de0d1f0b6a2fb7c02849108de495336.tar.gz
 	sha512sums = SKIP
 
 pkgname = gnome-shell-extension-customize-ibus
