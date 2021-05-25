@@ -1,6 +1,6 @@
 pkgbase = acme.sh-git
 	pkgdesc = A pure Unix shell script implementing ACME client protocol
-	pkgver = 2.8.9.r9.g7f2699c6
+	pkgver = 2.8.9.r19.g130e8dbd
 	pkgrel = 1
 	url = https://github.com/acmesh-official/acme.sh
 	arch = any
