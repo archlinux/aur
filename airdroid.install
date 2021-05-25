@@ -1,0 +1,3 @@
+post_install() {
+	sudo chmod +x /opt/Airdroid/Airdroid
+}

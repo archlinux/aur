@@ -1,0 +1,16 @@
+pkgbase = airdroid-nativefier
+	pkgdesc = An Airdroid client build with nativefier
+	pkgver = 1
+	pkgrel = 1
+	url = https://web.airdroid.com/
+	install = airdroid.install
+	arch = any
+	license = GPL3
+	makedepends = nodejs-nativefier
+	source = airdroid-nativefier.desktop
+	source = https://icons.iconarchive.com/icons/martz90/hex/512/airdroid-icon.png
+	sha256sums = 889a3a3b222b5fe5972a1f94952ff8166c7da2e49735da9e45595a4657af65d8
+	sha256sums = 7553963eefedbdc88c9d973c0ffe8922a25b0cc2a13284b2b1b7ebb25af7bc10
+
+pkgname = airdroid-nativefier
+

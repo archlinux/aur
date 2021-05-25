@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Airdroid
+Comment=Airdroid Web built with nativefier (electron)
+Exec=airdroid
+Icon=airdroid-icon
+Encoding=UTF-8
+StartupWMClass=whatsapp-nativefier-d40211
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Network;
