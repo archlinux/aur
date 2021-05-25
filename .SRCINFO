@@ -1,6 +1,6 @@
 pkgbase = ruby-websocket-driver
 	pkgdesc = WebSocket protocol handler with pluggable I/O
-	pkgver = 0.7.3
+	pkgver = 0.7.4
 	pkgrel = 1
 	url = https://github.com/faye/websocket-driver-ruby
 	arch = i686
@@ -9,10 +9,10 @@ pkgbase = ruby-websocket-driver
 	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-websocket-extensions
-	noextract = websocket-driver-0.7.3.gem
+	noextract = websocket-driver-0.7.4.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/websocket-driver-0.7.3.gem
-	sha1sums = 6c5bd5f6921d55a0b25b37bc7317a110a724b88d
+	source = https://rubygems.org/downloads/websocket-driver-0.7.4.gem
+	sha1sums = e9c0700c889e26864a7701a64a871ad30f28b3cf
 
 pkgname = ruby-websocket-driver
 
