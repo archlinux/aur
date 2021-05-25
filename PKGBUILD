@@ -1,33 +1,23 @@
-# Maintainer: Radu Bîrzu <radu@webative.net>
+# Maintainer: The-Repo-Club <The-Repo-Club@github.com>
+# Contributor: The-Repo-Club <The-Repo-Club@github.com>
 
 pkgname=dracula-gtk-theme
 _pkgname=Dracula
-pkgver=v2.0
+pkgver=2021.05.25
 pkgrel=1
 pkgdesc="This theme provides support for GTK-3 and GTK-2 based desktop environments like Gnome, Unity, Budgie, Pantheon, XFCE, Mate, etc. Also provides support for KDE plasma."
 arch=("any")
-url="https://github.com/dracula/gtk"
+url="https://github.com/The-Repo-Club/Dracula"
 license=('GPL')
-optdepends=('ttf-roboto: primary font face defined'
-	'ttf-ubuntu-font-family: secondary font face defined'
-	'cantarell-fonts: tertiary font face defined')
-source=("${pkgname}-$pkgver.tar.gz::${url}/releases/download/$pkgver/${_pkgname}.tar.xz")
-sha256sums=('SKIP')
-
-build() {
-	cd "${srcdir}/${_pkgname}"
-
-	msg2 "To activate the theme in Gnome, run the following commands in Terminal:"
-	msg2 ""
-	msg2 "gsettings set org.gnome.desktop.interface gtk-theme \"Dracula\""
-	msg2 "gsettings set org.gnome.desktop.wm.preferences theme \"Dracula\""
-	msg2 ""
-	msg2 "or Change via distribution specific tweak tool."
-}
+source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
+sha256sums=('28bdc1394f21320b79adf6702ba0a913a67814705544c9bb5d6a6d1091320e79')
 
 package() {
-	cd "${srcdir}/${_pkgname}"
+    cd "$_pkgname-$pkgver"
 
-	mkdir -p "${pkgdir}/usr/share/themes/${_pkgname}"
-	cp -a "${srcdir}/${_pkgname}/"* "${pkgdir}/usr/share/themes/${_pkgname}/"
+    mkdir -p "${pkgdir}/usr/share/themes/"
+    cp -a ".themes/"* "${pkgdir}/usr/share/themes/"
+
+    mkdir -p "${pkgdir}/usr/share/icons/"
+    cp -a ".icons/"* "${pkgdir}/usr/share/icons/"
 }
