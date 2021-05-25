@@ -1,7 +1,7 @@
 pkgbase = dgraph-bin
 	pkgdesc = Fast, transactional, distributed graph database
 	pkgver = 20.11.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/dgraph-io/dgraph
 	install = dgraph-bin.install
 	arch = x86_64
