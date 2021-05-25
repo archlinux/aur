@@ -4,7 +4,7 @@ validpgpkeys=('33ED753E14757D79FA17E57DC4C1F715B2B66B95')
 
 pkgname=llvm12-git
 pkgdesc="LLVM 12 Toolchain with clang, clang-tools-extra, compiler-rt, openmp, polly, lldb, lld"
-pkgver=12.0.1_r47.g4973ce53ca8a
+pkgver=12.0.1_r48.g328a6ec95532
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -76,46 +76,54 @@ build() {
 
   local yn=0
   while true; do
-    echo -e "\n\E[1m\E[33mBuild with clang and llvm toolchain (Y/N)? \E[0m"
+    echo -ne "\n\E[1m\E[33mBuild with clang and llvm toolchain? [Y/n] \E[0m"
     read -r yn
     case ${yn} in
-    [Yy]*)
-      export LLVM=1
-      export LLVM_IAS=1
-      export CC=clang
-      export CXX=clang++
-      export LD=ld.lld
-      export AR=llvm-ar
-      export NM=llvm-nm
-      export STRIP=llvm-strip
-      export OBJCOPY=llvm-objcopy
-      export OBJDUMP=llvm-objdump
-      export READELF=llvm-readelf
-      export HOSTCC=clang
-      export HOSTCXX=clang++
-      export HOSTAR=llvm-ar
-      export HOSTLD=ld.lld
-      export DEBUG_CFLAGS="-g"
-      export DEBUG_CXXFLAGS="${DEBUG_CFLAGS}"
-      _extra_build_flags="-DLLVM_USE_LINKER=lld"
+    [Yy]|"")
+      if clang --version 2>/dev/null | grep -iq "clang\s*version\s*[0-9]" ; then
+        export LLVM=1
+        export LLVM_IAS=1
+        export CC=clang
+        export CXX=clang++
+        export AR=llvm-ar
+        export NM=llvm-nm
+        export STRIP=llvm-strip
+        export OBJCOPY=llvm-objcopy
+        export OBJDUMP=llvm-objdump
+        export READELF=llvm-readelf
+        export HOSTCC=clang
+        export HOSTCXX=clang++
+        export HOSTAR=llvm-ar
+        export DEBUG_CFLAGS="-g"
+        export DEBUG_CXXFLAGS="${DEBUG_CFLAGS}"
+      else
+        echo -e "\E[1m\E[31mClang not found. Will use default system compiler! \E[0m"
+      fi
+
+      if ld.lld --version 2>/dev/null | grep -iq "LLD\s*[0-9]" ; then
+        export LD=ld.lld
+        export HOSTLD=ld.lld
+        _extra_build_flags="-DLLVM_USE_LINKER=lld"
+      fi
+
       break
       ;;
-    [Nn]*) break ;;
+    [Nn]) break ;;
     *) echo -e "\E[1m\E[31mPlease answer Y or N! \E[0m" ;;
     esac
   done
 
   yn=0
   while true; do
-    echo -e "\n\E[1m\E[33mSkip build tests (Y/N)? \E[0m"
+    echo -ne "\n\E[1m\E[33mSkip build tests? [Y/n] \E[0m"
     read -r yn
     case ${yn} in
-    [Yy]*)
+    [Yy]|"")
       _build_tests=0
       _extra_build_flags="${_extra_build_flags} -DLLVM_BUILD_TESTS=OFF"
       break
       ;;
-    [Nn]*)
+    [Nn])
       _build_tests=1
       _extra_build_flags="${_extra_build_flags} -DLLVM_BUILD_TESTS=ON"
       break
@@ -126,15 +134,15 @@ build() {
 
   yn=0
   while true; do
-    echo -e "\n\E[1m\E[33mSkip build documentation (Y/N)? \E[0m"
+    echo -ne "\n\E[1m\E[33mSkip build documentation? [Y/n] \E[0m"
     read -r yn
     case ${yn} in
-    [Yy]*)
+    [Yy]|"")
       _build_documentation=0
       _extra_build_flags="${_extra_build_flags} -DLLVM_BUILD_DOCS=OFF"
       break
       ;;
-    [Nn]*)
+    [Nn])
       _build_documentation=1
       _extra_build_flags="${_extra_build_flags} -DLLVM_BUILD_DOCS=ON"
       "-DLLVM_ENABLE_SPHINX=ON -DLLVM_ENABLE_DOXYGEN=OFF -DSPHINX_WARNINGS_AS_ERRORS=OFF"

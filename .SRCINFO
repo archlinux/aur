@@ -1,6 +1,6 @@
 pkgbase = llvm12-git
 	pkgdesc = LLVM 12 Toolchain with clang, clang-tools-extra, compiler-rt, openmp, polly, lldb, lld
-	pkgver = 12.0.1_r47.g4973ce53ca8a
+	pkgver = 12.0.1_r48.g328a6ec95532
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
