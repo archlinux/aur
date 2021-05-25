@@ -1,16 +1,18 @@
 pkgbase = sipp
-	pkgdesc = A free Open Source test tool / traffic generator for the SIP protocol.
-	pkgver = 3.5.2
-	pkgrel = 1
-	url = http://sipp.sourceforge.net/
+	pkgdesc = A free open source test tool and traffic generator for the SIP protocol
+	pkgver = 3.6.1
+	pkgrel = 2
+	url = http://github.com/sipp
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL2
+	makedepends = cmake
 	depends = openssl
 	depends = libpcap
+	depends = gsl
 	depends = lksctp-tools
-	source = https://github.com/SIPp/sipp/releases/download/v3.5.2/sipp-3.5.2.tar.gz
-	sha256sums = 875fc2dc2e46064aa8af576a26166b45e8a0ae22ec2ae0481baf197931c59609
+	source = https://github.com/SIPp/sipp/releases/download/v3.6.1/sipp-3.6.1.tar.gz
+	sha256sums = 6a560e83aff982f331ddbcadfb3bd530c5896cd5b757dd6eb682133cc860ecb1
 
 pkgname = sipp
 

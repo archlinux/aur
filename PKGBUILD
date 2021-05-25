@@ -1,26 +1,30 @@
-# Maintainer: Xavier Devlamynck <magicrhesus@ouranos.be>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Xavier Devlamynck <magicrhesus@ouranos.be>
 # Contributor: Aleshus <aleshusi@gmail.com>
 
 pkgname=sipp
-pkgver=3.5.2
-pkgrel=1
-pkgdesc="A free Open Source test tool / traffic generator for the SIP protocol."
+pkgver=3.6.1
+pkgrel=2
+pkgdesc="A free open source test tool and traffic generator for the SIP protocol"
 arch=('i686' 'x86_64')
-url="http://sipp.sourceforge.net/"
-license=('GPL')
-depends=('openssl' 'libpcap' 'lksctp-tools')
+url="http://github.com/sipp"
+license=('GPL2')
+depends=('openssl' 'libpcap' 'gsl' 'lksctp-tools')
+makedepends=('cmake')
 source=(https://github.com/SIPp/${pkgname}/releases/download/v${pkgver}/sipp-${pkgver}.tar.gz)
-sha256sums=('875fc2dc2e46064aa8af576a26166b45e8a0ae22ec2ae0481baf197931c59609')
+sha256sums=('6a560e83aff982f331ddbcadfb3bd530c5896cd5b757dd6eb682133cc860ecb1')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  sed -i 's/SSL_library_init/SSL_CTX_new/' configure.ac
-  sed -i 's/CRYPTO_num_locks/CRYPTO_free/' configure.ac
-  sed -i 's/TLSv1_method/TLS_method/' src/socket.cpp
-  ./build.sh --with-pcap --with-sctp --with-openssl
+  cd ${pkgname}-${pkgver}
+  cmake -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DUSE_SSL=ON \
+    -DUSE_PCAP=ON \
+    -DUSE_SCTP=ON \
+    .
+  make sipp
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd ${pkgname}-${pkgver}
   make DESTDIR="$pkgdir" install
 }
