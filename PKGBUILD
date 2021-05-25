@@ -1,6 +1,6 @@
 # Maintainer: xXR01I1Xx <xxr01i1xx@tuta.io>
 pkgname=session-desktop
-pkgver=1.6.0
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="Private messaging from your desktop"
 arch=(x86_64)
@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 prepare() {
   cd $srcdir/session-desktop
   git checkout $(git describe --tags)
-  source /usr/share/nvm/init-nvm.sh && nvm install 10.13.0
+  source /usr/share/nvm/init-nvm.sh && nvm install 10.19.0
 }
 
 build() {
