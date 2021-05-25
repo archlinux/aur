@@ -1,7 +1,7 @@
 pkgbase = solana
 	pkgdesc = A fast, secure, and censorship resistant blockchain.
-	pkgver = 1.6.9
-	pkgrel = 2
+	pkgver = 1.6.10
+	pkgrel = 1
 	url = https://www.solana.com
 	arch = i686
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = solana
 	makedepends = rustup
 	provides = solana
 	conflicts = solana-bin
-	source = solana-1.6.9.tar.gz::https://github.com/solana-labs/solana/archive/v1.6.9.tar.gz
+	source = solana-1.6.10.tar.gz::https://github.com/solana-labs/solana/archive/v1.6.10.tar.gz
 	source = spl-token-0.1.3.tar.gz::https://github.com/solana-labs/solana-program-library/archive/refs/tags/@solana/spl-token@v0.1.3.tar.gz
-	md5sums = 97d90c0e30b785f87776944503462708
+	md5sums = d05cd12af9b9c0cd466ef3d9b679970a
 	md5sums = a04a251d13e50e68bb31fe8e4c07fce2
 
 pkgname = solana
