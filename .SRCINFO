@@ -1,5 +1,5 @@
 pkgbase = ttf-asap
-	pkgdesc = A contemporary sans-serif typeface family from Omnibus-Type.
+	pkgdesc = Contemporary sans-serif typeface family from Omnibus-Type.
 	pkgver = 3.000
 	pkgrel = 1
 	url = https://www.omnibus-type.com/fonts/asap/

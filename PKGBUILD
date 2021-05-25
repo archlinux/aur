@@ -2,7 +2,7 @@
 pkgname=ttf-asap
 pkgver=3.000
 pkgrel=1
-pkgdesc='A contemporary sans-serif typeface family from Omnibus-Type.'
+pkgdesc='Contemporary sans-serif typeface family from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/asap/'
 license=('OFL')
