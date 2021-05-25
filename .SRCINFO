@@ -1,6 +1,6 @@
 pkgbase = ne-git
 	pkgdesc = A nice developer editor, highly recommended by Epitech (aka Episteak) French School - git version
-	pkgver = 3.3.0.r41.gfc8d71e
+	pkgver = 3.3.1.r1.gb226193
 	pkgrel = 1
 	url = http://ne.di.unimi.it/
 	arch = i686
