@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ZY Player
+Exec=/usr/bin/zy-player
+Terminal=false
+Type=Application
+Icon=zy-player
+Comment=跨平台视频资源播放器, 简洁免费无广告
+StartupWMClass=zy
+X-AppImage-Version=2.8.4
+Categories=AudioVideo;Player;

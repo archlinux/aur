@@ -1,16 +1,19 @@
 pkgbase = zy-player-appimage
 	pkgdesc = 跨平台视频资源播放器, 简洁免费无广告
 	pkgver = 2.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://zyplayer.fun/
 	arch = x86_64
 	license = MIT
+	depends = electron11
 	provides = zy-player
 	options = !strip
 	source = https://github.com/Hunlongyu/ZY-Player/releases/download/v2.8.4/ZY-Player-2.8.4.AppImage
-	source = zy-player.sh
-	sha256sums = 54a720730413c14d3514a53ccf6207d6c32ef3d7394499338a8d45125b0fbe9a
-	sha256sums = 3626ced8de95c110129ed9dff1f8ea34243b2430b0b91c737dd7d166658bc1f2
+	source = zy-player
+	source = zy-player.desktop
+	md5sums = SKIP
+	md5sums = 00d32292a0f02465b83182ebe35a1f3f
+	md5sums = 8490019ad48ac40a5cde99ae5ba6baff
 
 pkgname = zy-player-appimage
 
