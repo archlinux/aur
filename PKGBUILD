@@ -10,7 +10,7 @@ pkgname=librewolf-hg
 _pkgname=librewolf-nightly
 __pkgname="Librewolf Nightly"
 pkgver=r648231.f1a61b8e8e7c
-pkgrel=1
+pkgrel=2
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom. (nightly edition)"
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
@@ -21,7 +21,7 @@ depends=(gtk3 libxt mime-types dbus-glib
 makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
              rust xorg-server-xwayland xorg-server-xvfb
              autoconf2.13 mercurial clang llvm jack gtk2 nodejs cbindgen nasm
-             python-setuptools python-psutil python-zstandard git binutils lld)
+             python-setuptools python-psutil python-zstandard git binutils lld dump_syms)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -38,25 +38,11 @@ install=librewolf-nightly.install
 source=("hg+$_repo#revision=autoland"
         $_pkgname.desktop
         "git+https://gitlab.com/vnepogodin/librewolf-common.git"
-        "git+https://gitlab.com/vnepogodin/librewolf-settings.git"
-        remove_addons.patch
-        context-menu.patch
-        mozilla-vpn-ad.patch
-        builtin_js.patch)
-source_aarch64=(arm.patch
-                build-arm-libopus.patch)
+        "git+https://gitlab.com/vnepogodin/librewolf-settings.git")
 sha512sums=('SKIP'
             '0d1d64832ae34a0c7bbb9e37eac48b9b3830481a0e0aa4c20321a1408a4a20b2b2045d24d8ae0d002895291c6f7d988cce16b1607ee73778a62d7f7d9143a248'
             'SKIP'
-            'SKIP'
-            'd4bc43a7922a2391d9f2a2d0654e4c3cb6ec08aeead5249e933dec28bbd5d4a945591e03db54e91298f41a4bc50acb4f7bc2a0df4094e458be33f146b6186879'
-            '29677a878286464e9bdd8d605515ef6105e0d409c54ce4e100f2474d090728869953b5a16e5c872325c71a94b83d35e86a8ca45d089ea14454713ff8dceff6f2'
-            '1d1e6e2675750e9b09533ff891ee253418fa0ae2d2b86d448b35fbbd712d3b43353babcda5c80273c897ef3ee1aec50e3bc8f80b5d2d1e18f2176556cf792286'
-            '25c9fa51d0ebfeea9ad88c83325dae1d0643499253946278ffeaf04b7d1aad61a76e24a5b0e1689877fa6fd5ca67135006dd8edecb54418012c826f94ca22555')
-sha512sums_aarch64=('7c2f0c792eb5744eaf0f2ee7c0887a74118796d691029e824451b063d5ba9e65626617ad343f69837297b2002446e02ac1d5ab3bc470419ae092424abf08293f'
-                    '6d464cce32cb2e440fb137666aeefec1240bcbdfdef0e8633e0fbe22e2214446b2c992ee2c8716c682a42fcd1d66d9fdf1d6d5b40f8ec3b0eeec5ca9e3f1aa35'
-                    '43d008c63a6b90a3710c4e1bf6ccebcb0987316213fa993fd1bd4b47d9a5d553f51471467c9d9ab454911b9d6fb575e3035cd7a3f9e61dbb72fe3b0a3b20a066'
-                    '25c9fa51d0ebfeea9ad88c83325dae1d0643499253946278ffeaf04b7d1aad61a76e24a5b0e1689877fa6fd5ca67135006dd8edecb54418012c826f94ca22555')
+            'SKIP')
 
 pkgver() {
   cd mozilla-unified
@@ -66,6 +52,8 @@ pkgver() {
 prepare() {
   mkdir -p mozbuild
   cd mozilla-unified
+
+  local _patches_dir="${srcdir}/librewolf-common/patches"
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
@@ -152,8 +140,8 @@ END
   # we should have more than enough RAM on the CI spot instances.
   # ...or maybe not?
   export LDFLAGS+=" -Wl,--no-keep-memory"
-  patch -Np1 -i ../arm.patch
-  patch -Np1 -i ../build-arm-libopus.patch
+  patch -Np1 -i ${_patches_dir}/arm.patch
+  patch -Np1 -i ${_patches_dir}/build-arm-libopus.patch
 
 else
 
@@ -164,43 +152,30 @@ END
 fi
 
   # Fix build-time error
-  patch -Np1 -i ../builtin_js.patch
+  patch -Np1 -i ${_patches_dir}/builtin_js.patch
 
   # Remove some pre-installed addons that might be questionable
-  patch -Np1 -i ../remove_addons.patch
-
-  # To enable global menubar
-  # Set these to true
-  # browser.proton.appmenu.enabled
+  patch -Np1 -i ${_patches_dir}/remove_addons.patch
 
   # Disabling Pocket
-  sed -i 's/"pocket"/# "pocket"/g' browser/components/moz.build
-
-  patch -Np1 -i ../context-menu.patch
+  patch -Np1 -i ${_patches_dir}/sed-patches/disable-pocket.patch
 
   # remove mozilla vpn ads
-  patch -Np1 -i ../mozilla-vpn-ad.patch
-
-  # this one only to remove an annoying error message:
-  sed -i 's#SaveToPocket.init();#// SaveToPocket.init();#g' browser/components/BrowserGlue.jsm
+  patch -Np1 -i ${_patches_dir}/mozilla-vpn-ad.patch
 
   # Remove Internal Plugin Certificates
-  _cert_sed='s#if (aCert.organizationalUnit == "Mozilla [[:alpha:]]\+") {\n'
-  _cert_sed+='[[:blank:]]\+return AddonManager\.SIGNEDSTATE_[[:upper:]]\+;\n'
-  _cert_sed+='[[:blank:]]\+}#'
-  _cert_sed+='// NOTE: removed#g'
-  sed -z "$_cert_sed" -i toolkit/mozapps/extensions/internal/XPIInstall.jsm
+  patch -Np1 -i ${_patches_dir}/sed-patches/remove-internal-plugin-certs.patch
 
   # allow SearchEngines option in non-ESR builds
-  sed -i 's#"enterprise_only": true,#"enterprise_only": false,#g' browser/components/enterprisepolicies/schemas/policies-schema.json
-
-  _settings_services_sed='s#firefox.settings.services.mozilla.com#f.s.s.m.c.qjz9zk#g'
+  patch -Np1 -i ${_patches_dir}/sed-patches/allow-searchengines-non-esr.patch
 
   # stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)
-  sed "$_settings_services_sed" -i browser/components/newtab/data/content/activity-stream.bundle.js
-  sed "$_settings_services_sed" -i modules/libpref/init/all.js
-  sed "$_settings_services_sed" -i services/settings/Utils.jsm
-  sed "$_settings_services_sed" -i toolkit/components/search/SearchUtils.jsm
+  patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
+
+  # Assorted patches
+  patch -Np1 -i ${_patches_dir}/context-menu.patch
+  patch -Np1 -i ${_patches_dir}/browser-confvars.patch
+  patch -Np1 -i ${_patches_dir}/urlbarprovider-interventions.patch
 
   rm -f ${srcdir}/librewolf-common/source_files/mozconfig
   cp -r ${srcdir}/librewolf-common/source_files/* ./
@@ -248,15 +223,11 @@ fi
     xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
     ./mach python build/pgo/profileserver.py
 
-  if [[ ! -s merged.profdata ]]; then
-    echo "No profile data produced."
-    return 1
-  fi
+  stat -c "Profile data found (%s bytes)" merged.profdata
+  test -s merged.profdata
 
-  if [[ ! -s jarlog ]]; then
-    echo "No jar log produced."
-    return 1
-  fi
+  stat -c "Jar log found (%s bytes)" jarlog
+  test -s jarlog
 
   echo "Removing instrumented browser..."
   ./mach clobber
