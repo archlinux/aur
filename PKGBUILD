@@ -2,7 +2,7 @@
 
 pkgname=python-adafruit-circuitpython-ssd1306
 _pypi_pkgname=adafruit-circuitpython-ssd1306
-pkgver=2.11.3
+pkgver=2.11.4
 pkgrel=0
 pkgdesc="CircuitPython library for SSD1306 OLED displays"
 arch=('armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python-pip')
 depends=('python' 'python-adafruit-circuitpython-busdevice' 'python-adafruit-circuitpython-framebuf')
 optdepends=('python-raspberry-gpio')
 source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('919794677d5ef10338a689d74f48656373e193d600338f8725d2a4b092149afc')
+sha256sums=('f46c60427a4dbc0d1b574669a07eb8ea24bbfad94a1e6289ce1aa58dbeaf301e')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
