@@ -1,17 +1,20 @@
 pkgbase = teleport-client
-	pkgdesc = Modern SSH server for teams managing distributed infrastructure client only
-	pkgver = 5.1.0
+	pkgdesc = Client-only (tsh, tctl) package for teleport
+	pkgver = 6.2.0
 	pkgrel = 1
-	url = https://gravitational.com/teleport
+	url = https://github.com/gravitational/teleport
+	arch = i386
 	arch = x86_64
-	arch = arm
+	arch = armv7h
+	arch = aarch64
 	license = Apache
-	depends = glibc
-	options = !strip
-	source_x86_64 = https://get.gravitational.com/teleport-v5.1.0-linux-amd64-bin.tar.gz
-	sha256sums_x86_64 = 9b27eb994c94897fac776e7b8cee54038dc6b33f8126603a459e2d47eaa55dfb
-	source_arm = https://get.gravitational.com/teleport-v5.1.0-linux-arm-bin.tar.gz
-	sha256sums_arm = e9053afd6ea0f4a57e99501f464235859d7701046f941c92e238e6ef9e4ef8ae
+	makedepends = go>=1.14.0
+	provides = tctl
+	provides = tsh
+	source = teleport-client-6.2.0.tar.gz::https://github.com/gravitational/teleport/archive/refs/tags/v6.2.0.tar.gz
+	source = teleport-client-webassets-8c2812c169fa6bd5f31c13160bd93ef8b317bbc9.tar.gz::https://github.com/gravitational/webassets/archive/8c2812c169fa6bd5f31c13160bd93ef8b317bbc9.tar.gz
+	sha256sums = bf479d580dc0f9187493645b6e3aa7e5458e46ff4c632169fc688946a6265ba2
+	sha256sums = 14445b0864d759347c1f53dc144a346b1974b8ded49031d7f0b7227f5d49d407
 
 pkgname = teleport-client
 
