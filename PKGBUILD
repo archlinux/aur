@@ -2,7 +2,7 @@
 
 pkgname=gambit-git
 pkgver=16.0.1.r11.ge311dbed
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for doing computation in game theory - git version"
 arch=('i686' 'x86_64')
 url="http://www.gambit-project.org"
@@ -27,10 +27,10 @@ build() {
   automake --add-missing
   autoconf
   
-  CXXFLAGS+=" -std=c++11" ./configure --prefix=/usr --enable-enumpoly
+  CXXFLAGS+=" -std=c++11 -fpermissive" ./configure --prefix=/usr --enable-enumpoly
   make
   cd src/python
-  python2 setup.py build
+  CFLAGS+=" -std=c++11 -fpermissive" python2 setup.py build
 }
 
 package() {
