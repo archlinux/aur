@@ -1,13 +1,16 @@
 pkgbase = gbt-git
 	pkgdesc = Highly configurable prompt builder for Bash and ZSH written in Go
-	pkgver = r243.8045396
-	pkgrel = 3
+	pkgver = r306.fd9fbf3
+	pkgrel = 1
 	url = https://github.com/jtyr/gbt
 	arch = any
 	license = MIT
 	makedepends = go
+	depends = git
 	optdepends = nerd-fonts-complete
 	conflicts = gbt
+	source = gbt::git+https://github.com/jtyr/gbt.git
+	sha256sums = SKIP
 
 pkgname = gbt-git
 
