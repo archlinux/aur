@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail.com>
 _pkgname=DemonEditor
 pkgname=demoneditor-bin
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Enigma2 channel and satellite list editor."
 url="https://dyefremov.github.io/DemonEditor/"
@@ -12,7 +12,7 @@ source=(
 	"https://github.com/DYefremov/$_pkgname/releases/download/$pkgver-b$pkgrel/$_pkgname-$pkgver-Beta.deb"
   "https://raw.githubusercontent.com/DYefremov/DemonEditor/master/LICENSE"
 )
-sha256sums=('bd763748ff7dfddb8396c3c416d4ab4320a68bcac0f1950bc5a0f4f8436ff8eb'
+sha256sums=('9f14daf76c704a42cf983782d472a1591c17833be2b41c11a4c1b2846a6217a6'
             '04d9540a8d545d279f7857fa54f90c5f79f3ff3db261410e9aa8329447b81500')
 
 prepare() {
