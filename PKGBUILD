@@ -20,6 +20,9 @@ package() {
   install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
   npm install --cache ../cache --user root -g --production --prefix "${pkgdir}/usr" "../v${pkgver}.tar.gz"
 
+  # Cleanup (module already installed by the peerflix dependency)
+  rm -rf "$pkgdir/usr/lib/node_modules/root"
+
   # npm makes some directories world writable
   find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
 }
