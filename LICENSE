@@ -1,0 +1,220 @@
+Wavebox EULA
+
+End user licence agreement
+
+Please read this EULA carefully, as it sets out the basis upon which we license the Software for use.
+
+Before you download the Software from our website, we will ask you to give your express agreement to the provisions of this EULA.
+
+By agreeing to be bound by this EULA, you further agree that your employees or any person you authorise to use the Software will comply with the provision of this EULA.
+
+1. Definitions
+
+1.1 In this EULA:
+
+“EULA” means this end user licence agreement, including any amendments to this end user licence agreement from time to time;
+
+“Force Majeure Event” means an event, or a series of related events, that is outside the reasonable control of the party affected (including failures of the internet or any public telecommunications network, hacker attacks, denial of service attacks, virus or other malicious software attacks or infections, power failures, industrial disputes affecting any third party, changes to the law, disasters, explosions, fires, floods, riots, terrorist attacks and wars);
+
+“Intellectual Property Rights” means all intellectual property rights wherever in the world, whether registrable or unregistrable, registered or unregistered, including any application or right of application for such rights (and these “intellectual property rights” include copyright and related rights, database rights, confidential information, trade secrets, know-how, business names, trade names, trade marks, service marks, passing off rights, unfair competition rights, patents, petty patents, utility models, semi-conductor topography rights and rights in designs);
+
+“Licensor” means Bookry Ltd, a company incorporated in England and Wales (registration number 06294173) having its office at Intec, Parc Menai, Bangor, Gwynedd, LL57 4FG, UK;
+
+“Software” means the Wavebox desktop browser for Windows, Linux or macOS;
+
+“Source Code” means the Software code in human-readable form or any part of the Software code in human-readable form, including code compiled to create the Software or decompiled from the Software;
+
+“User” means [the person to whom the Licensor grants a right to use the Software under this EULA];
+
+2. Term
+
+2.1 This EULA shall come into force upon the Effective Date.
+
+2.2 This EULA shall continue in force indefinitely, subject to termination in accordance with Clause 10 or any other provision of this EULA.
+
+3. Licence
+
+4.1 The Licensor hereby grants to the User from the date of supply of the Software to the User a worldwide, non-exclusive licence to:
+
+(a) install the Software;
+
+(b) use the Software; and
+
+(c) create, store and maintain back-up copies of the Software,
+
+subject to the limitations and prohibitions set out and referred to in this Clause 4.
+
+4.2 The User may not sub-license and must not purport to sub-license any rights granted under Clause 4.1 without the prior written consent of the Licensor.
+
+4.3 Save to the extent expressly permitted by this EULA or required by applicable law on a non-excludable basis, any licence granted under this Clause 4 shall be subject to the following prohibitions:
+
+(a) the User must not sell, resell, rent, lease, loan, supply, publish, distribute or redistribute the Software;
+
+(b) the User must not alter, edit or adapt the Software; and
+
+(c) the User must not decompile, de-obfuscate or reverse engineer, or attempt to decompile, de-obfuscate or reverse engineer, the Software.
+
+4.4 The User shall be responsible for the security of copies of the Software supplied to the User under this EULA and shall use all reasonable endeavours (including all reasonable security measures) to ensure that access to such copies is restricted to persons authorised to use them under this EULA.
+
+5. Source Code
+
+5.1 The Software makes use of the Chromium Project. The separate licenses for the Chromium framework and its components can be found in Appendix A below and at chrome://credits within the Software.
+
+5.2 Other than in 5.1, nothing in this EULA shall give to the User or any other person any right to access or use the Source Code or constitute any licence of the Source Code.
+
+6. No assignment of Intellectual Property Rights
+
+6.1 Nothing in this EULA shall operate to assign or transfer any Intellectual Property Rights from the Licensor to the User, or from the User to the Licensor.
+
+7. Warranties
+
+7.1 The Licensor warrants to the User that it has the legal right and authority to enter into this EULA and to perform its obligations under this EULA.
+
+7.2 The User warrants to the Licensor that it has the legal right and authority to enter into this EULA and to perform its obligations under this EULA.
+
+7.3 All of the parties’ warranties and representations in respect of the subject matter of this EULA are expressly set out in this EULA. To the maximum extent permitted by applicable law, no other warranties or representations concerning the subject matter of this EULA will be implied into this EULA or any related contract.
+
+8. Acknowledgements and warranty limitations
+
+8.1 The User acknowledges that complex software is never wholly free from defects, errors and bugs; and subject to the other provisions of this EULA, the Licensor gives no warranty or representation that the Software will be wholly free from defects, errors and bugs.
+
+8.2 The User acknowledges that complex software is never entirely free from security vulnerabilities; and subject to the other provisions of this EULA, the Licensor gives no warranty or representation that the Software will be entirely secure.
+
+8.3 The User acknowledges that the Licensor, except to the extent expressly provided otherwise in this EULA, does not warrant or represent that the Software or the use of the Software by the User will not give rise to any legal liability on the part of the User or any other person.
+
+9. Limitations and exclusions of liability
+
+9.1 Nothing in this EULA will:
+
+(a) limit or exclude any liability for death or personal injury resulting from negligence;
+
+(b) limit or exclude any liability for fraud or fraudulent misrepresentation;
+
+(c) limit any liabilities in any way that is not permitted under applicable law; or
+
+(d) exclude any liabilities that may not be excluded under applicable law,
+
+and, if a party is a consumer, that party’s statutory rights will not be excluded or limited by this EULA, except to the extent permitted by law.
+
+9.2 The limitations and exclusions of liability set out in this Clause 9 and elsewhere in this EULA:
+
+(a) are subject to Clause 9.1; and
+
+(b) govern all liabilities arising under this EULA or relating to the subject matter of this EULA, including liabilities arising in contract, in tort (including negligence) and for breach of statutory duty, except to the extent expressly provided otherwise in this EULA.
+
+9.3 The Licensor will not be liable to the User in respect of any losses arising out of a Force Majeure Event.
+
+9.4 The Licensor will not be liable to the User in respect of any loss of profits or anticipated savings.
+
+9.5 The Licensor will not be liable to the User in respect of any loss of revenue or income.
+
+9.6 The Licensor will not be liable to the User in respect of any loss of business, contracts or opportunities.
+
+9.7 The Licensor will not be liable to the User in respect of any loss or corruption of any data, database or software.
+
+9.8 The Licensor will not be liable to the User in respect of any special, indirect or consequential loss or damage.
+
+9.9 The liability of the Licensor to the User under this EULA in respect of any event or series of related events shall not exceed the total amount paid and payable by the User to the Licensor in the 12 month period preceding the commencement of the event or events.
+
+10. Termination
+
+10.1 The User may terminate this EULA by giving to the Licensor not less than 30 days’ written notice of termination.
+
+10.2 Either party may terminate this EULA immediately by giving written notice of termination to the other party if:
+
+(a) the other party commits any material breach of this EULA;
+
+(b) the other party persistently breaches this EULA (irrespective of whether such breaches collectively constitute a material breach).
+
+10.3 Either party may terminate this EULA immediately by giving written notice of termination to the other party if:
+
+(a) the other party:
+
+(i) is dissolved;
+
+(ii) ceases to conduct all (or substantially all) of its business;
+
+(iii) is or becomes unable to pay its debts as they fall due;
+
+(iv) is or becomes insolvent or is declared insolvent; or
+
+(v) convenes a meeting or makes or proposes to make any arrangement or composition with its creditors;
+
+(b) an administrator, administrative receiver, liquidator, receiver, trustee, manager or similar is appointed over any of the assets of the other party;
+
+(c) an order is made for the winding up of the other party, or the other party passes a resolution for its winding up[ (other than for the purpose of a solvent company reorganisation where the resulting entity will assume all the obligations of the other party under this EULA)]; or
+
+(d) [if that other party is an individual:
+
+(i) that other party dies;
+
+(ii) as a result of illness or incapacity, that other party becomes incapable of managing his or her own affairs; or
+
+(iii) that other party is the subject of a bankruptcy petition or order.]
+
+10.4 The Licensor may terminate this EULA immediately by giving written notice to the User if:
+
+(a) any amount due to be paid by the User to the Licensor is unpaid by the due date and remains unpaid upon the date that that written notice of termination is given; and
+
+(b) the Licensor has given to the User at least 30 days’ written notice, following the failure to pay, of its intention to terminate this EULA in accordance with this Clause 10.4.
+
+11. General
+
+11.1 No breach of any provision of this EULA shall be waived except with the express written consent of the party not in breach.
+
+11.2 If any provision of this EULA is determined by any court or other competent authority to be unlawful and/or unenforceable, the other provisions of this EULA will continue in effect. If any unlawful and/or unenforceable provision would be lawful or enforceable if part of it were deleted, that part will be deemed to be deleted, and the rest of the provision will continue in effect (unless that would contradict the clear intention of the parties, in which case the entirety of the relevant provision will be deemed to be deleted).
+
+11.3 This EULA may not be varied except by a written document signed by or on behalf of each of the parties.
+
+11.4 The User hereby agrees that the Licensor may assign the Licensor’s contractual rights and obligations under this EULA to any successor to all or a substantial part of the business of the Licensor from time to time. Save to the extent expressly permitted by applicable law, the User must not without the prior written consent of the Licensor assign, transfer or otherwise deal with any of the User’s contractual rights or obligations under this EULA.
+
+11.5 This EULA is made for the benefit of the parties, and is not intended to benefit any third party or be enforceable by any third party. The rights of the parties to terminate, rescind, or agree any amendment, waiver, variation or settlement under or relating to this EULA are not subject to the consent of any third party.
+
+11.6 Subject to Clause 9.1, this EULA shall constitute the entire agreement between the parties in relation to the subject matter of this EULA, and shall supersede all previous agreements, arrangements and understandings between the parties in respect of that subject matter.
+
+11.7 This EULA shall be governed by and construed in accordance with English and Welsh law.
+
+11.8 The courts of England and Wales shall have exclusive jurisdiction to adjudicate any dispute arising under or in connection with this EULA.
+
+12. Interpretation
+
+12.1 In this EULA, a reference to a statute or statutory provision includes a reference to:
+
+(a) that statute or statutory provision as modified, consolidated and/or re-enacted from time to time; and
+
+(b) any subordinate legislation made under that statute or statutory provision.
+
+12.2 The Clause headings do not affect the interpretation of this EULA.
+
+12.3 In this EULA, general words shall not be given a restrictive interpretation by reason of being preceded or followed by words indicating a particular class of acts, matters or things.
+
+
+
+Appendix A
+// Copyright 2015 The Chromium Authors. All rights reserved.
+//
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions are
+// met:
+//
+// * Redistributions of source code must retain the above copyright
+// notice, this list of conditions and the following disclaimer.
+// * Redistributions in binary form must reproduce the above
+// copyright notice, this list of conditions and the following disclaimer
+// in the documentation and/or other materials provided with the
+// distribution.
+// * Neither the name of Google Inc. nor the names of its
+// contributors may be used to endorse or promote products derived from
+// this software without specific prior written permission.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+// “AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
