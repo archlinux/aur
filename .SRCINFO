@@ -1,5 +1,5 @@
 pkgbase = otf-chivo
-	pkgdesc = A neo-grotesque sans-serif typeface family from Omnibus-Type.
+	pkgdesc = Neo-grotesque sans-serif typeface family from Omnibus-Type.
 	pkgver = 1.007
 	pkgrel = 3
 	url = https://www.omnibus-type.com/fonts/chivo/

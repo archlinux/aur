@@ -2,7 +2,7 @@
 pkgname=otf-chivo
 pkgver=1.007
 pkgrel=3
-pkgdesc='A neo-grotesque sans-serif typeface family from Omnibus-Type.'
+pkgdesc='Neo-grotesque sans-serif typeface family from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/chivo/'
 license=('OFL')
