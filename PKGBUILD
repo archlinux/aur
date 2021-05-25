@@ -2,7 +2,7 @@
 pkgname=otf-sansita
 pkgver=1.006
 pkgrel=3
-pkgdesc='A typeface exploring typography and calligraphy from Omnibus-Type.'
+pkgdesc='Typeface exploring typography and calligraphy from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/sansita/'
 license=('OFL')
