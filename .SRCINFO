@@ -1,6 +1,6 @@
 pkgbase = openmsx
 	pkgdesc = The MSX emulator that aims for perfection.
-	pkgver = 16.0
+	pkgver = 17.0
 	pkgrel = 1
 	url = http://openmsx.org/
 	install = openmsx.install
@@ -21,8 +21,8 @@ pkgbase = openmsx
 	optdepends = catalyst-utils
 	optdepends = nvidia-utils
 	optdepends = nvidia-304xx-utils
-	source = https://github.com/openMSX/openMSX/releases/download/RELEASE_16_0/openmsx-16.0.tar.gz
-	md5sums = ea3a70870242e2a836a7a350c16b18ec
+	source = https://github.com/openMSX/openMSX/releases/download/RELEASE_17_0/openmsx-17.0.tar.gz
+	md5sums = 3e03d3298d91d00bab77045c039d77f3
 
 pkgname = openmsx
 
