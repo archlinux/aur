@@ -2,7 +2,7 @@
 pkgname=otf-archivo-black
 pkgver=1.101
 pkgrel=1
-pkgdesc='A grotesque sans-serif typeface family from Omnibus-Type.'
+pkgdesc='Grotesque sans-serif typeface family from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/archivo-black/'
 license=('OFL')
