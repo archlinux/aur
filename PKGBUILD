@@ -2,14 +2,14 @@
 # Maintainer: Kemad Zhong <kemadz@gmail.com>
 
 pkgname=tcping-git
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 pkgdesc="a utility that does a TCP connect to the given ip/port combination"
 url="https://github.com/mkirchner/tcping"
-license=("LGPL")
+license=("MIT")
 arch=('x86_64')
 depends=('glibc')
-source=("git+https://github.com/mkirchner/tcping")
+source=("git+$url#tag=$pkgver")
 sha512sums=('SKIP')
 
 build() {
