@@ -1,12 +1,14 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = vim-bootstrap
+	pkgdesc = Vim Bootstrap is generator provides a simple method of generating a .vimrc configuration for vim
+	pkgver = 1.21.10
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
-	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	url = https://github.com/editor-bootstrap/vim-bootstrap
+	arch = any
+	license = MIT
+	makedepends = go
+	provides = editor-bootstrap
+	source = https://github.com/editor-bootstrap/vim-bootstrap/archive/v1.21.10.tar.gz
+	sha256sums = SKIP
 
-pkgname = yarxi
+pkgname = vim-bootstrap
 
