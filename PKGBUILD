@@ -3,14 +3,13 @@
 pkgname='perl-catalyst-plugin-stacktrace'
 _pkgname='Catalyst-Plugin-StackTrace'
 pkgver='0.12'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Catalyst::Plugin::StackTrace - Display a stack trace on the debug screen"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl' 'perl-catalyst-runtime>=5.80008' 'perl-devel-stacktrace' 'perl-namespace-autoclean'
-)
-makedepends=('')
+	 'perl-perlio-utf8-strict')
 url='http://search.cpan.org/dist/Catalyst-Plugin-StackTrace'
 source=("http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/${_pkgname}-${pkgver}.tar.gz")
 md5sums=('f089320a66b085f6ee087c990bdccf6c')

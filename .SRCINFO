@@ -1,7 +1,7 @@
 pkgbase = perl-catalyst-plugin-stacktrace
 	pkgdesc = Catalyst::Plugin::StackTrace - Display a stack trace on the debug screen
 	pkgver = 0.12
-	pkgrel = 2
+	pkgrel = 3
 	url = http://search.cpan.org/dist/Catalyst-Plugin-StackTrace
 	arch = any
 	license = PerlArtistic
@@ -10,6 +10,7 @@ pkgbase = perl-catalyst-plugin-stacktrace
 	depends = perl-catalyst-runtime>=5.80008
 	depends = perl-devel-stacktrace
 	depends = perl-namespace-autoclean
+	depends = perl-perlio-utf8-strict
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Catalyst-Plugin-StackTrace-0.12.tar.gz
 	md5sums = f089320a66b085f6ee087c990bdccf6c
