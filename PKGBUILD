@@ -1,8 +1,9 @@
-# Maintainer: lmartinez-mirror
+# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 # Contributor: Wesley Moore <wes@wezm.net>
+
 pkgname=dutree
-pkgver=0.2.17
-pkgrel=2
+pkgver=0.2.18
+pkgrel=1
 pkgdesc='A tool to analyze file system usage written in Rust'
 arch=('x86_64')
 url=https://github.com/nachoparker/dutree
@@ -10,12 +11,7 @@ license=('GPL3')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c88f2328c4e6cf96a0222efbe2a5c6d2de8cd0de0ebf01deb1f5fe81b5f8518e')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  sed -i "s/0.2.16/$pkgver/" Cargo.lock
-}
+sha256sums=('55c30e57cc339dd16141510af33245cc3b82f588f22419fc034f02b36ebecba0')
 
 build() {
   cd "$pkgname-$pkgver"
