@@ -1,13 +1,13 @@
 # Maintainer: ml <>
 pkgname=ubports-installer-git
-pkgver=0.8.2_beta.r0.ga55cc1a
+pkgver=0.8.8_beta.r3.g9319bc3
 pkgrel=1
 pkgdesc='A simple tool to install Ubuntu Touch on UBports devices'
 arch=('any')
 url='https://github.com/ubports/ubports-installer'
 license=('GPL3')
-depends=('android-tools' 'android-udev' 'electron')
-makedepends=('git' 'npm')
+depends=('android-tools' 'android-udev' 'electron' 'heimdall')
+makedepends=('git' 'nodejs-lts-fermium' 'npm')
 provides=('ubports-installer')
 conflicts=('ubports-installer')
 source=("$pkgname::git+$url.git"
