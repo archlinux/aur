@@ -1,12 +1,8 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Leo <i@setuid0.dev>
+
 pkgname=qbittorrent-enhanced-nox
 pkgver=4.3.5.10
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A bittorrent client powered by C++, Qt5 and the good libtorrent library (Enhanced Edition)"
 arch=('x86_64')
@@ -27,9 +23,12 @@ changelog=
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/c0re100/qBittorrent-Enhanced-Edition/archive/release-$pkgver.tar.gz"
 	"COPYING::https://raw.githubusercontent.com/c0re100/qBittorrent-Enhanced-Edition/v4_3_x/COPYING"
+	"qbittorrent-nox.service"
+	"qbittorrent-nox.sysusers"
+	"qbittorrent-nox.tmpfiles"
 )
 noextract=()
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 build() {
 	cd qBittorrent*$pkgver
@@ -45,10 +44,9 @@ package() {
 	cd qBittorrent*$pkgver
 
 	make INSTALL_ROOT="$pkgdir/" install
-	install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 
-	msg "IMPORTANT NOTICE"
-	msg2 "As of 2021 Mar 29, one of the dependency of this package, libtorrent-rasterbar >= 1.2.12"
-	msg2 "is not available yet in archlinux/extra"
-	msg2 "You may install without checking dependency by 'pacman -Ud {package_name}'"
+	install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
+	install -Dm644 "$srcdir"/qbittorrent-nox.service "$pkgdir"/usr/lib/systemd/system/qbittorrent-nox.service
+	install -Dm644 "$srcdir"/qbittorrent-nox.sysusers "$pkgdir"/usr/lib/sysusers.d/qbittorrent-nox.conf
+	install -Dm644 "$srcdir"/qbittorrent-nox.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/qbittorrent-nox.conf
 }
