@@ -4,13 +4,15 @@
 pkgname=gstcisp
 _pkgname=gSTCISP
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="gSTC-ISP is used to program the STC89C52RC by serial port in Linux"
 arch=(x86_64 i686)
 url="http://gstcisp.sourceforge.net/"
 license=('GPLv3')
 source=(http://sourceforge.net/projects/gstcisp/files/gSTC-ISP_v"$pkgver".tar.gz)
 depends=("vte-legacy" "gtk2")
+optdepends=("hex2bin: Converts Motorola and Intel hex files to binary."
+            "hex2bin-bin: Converts Motorola and Intel hex files to binary.")
 makedepends=("gcc")
 sha256sums=('67344a08a64cc2b0fdcec5cf50d57d2f4755928fa90828be5dc4d1ec06d8388a')
 
