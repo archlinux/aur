@@ -1,7 +1,7 @@
 pkgbase = r-modelr
 	pkgdesc = Modelling Functions that Work with the Pipe
 	pkgver = 0.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=modelr
 	arch = any
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = r-modelr
 	depends = r-broom
 	depends = r-magrittr
 	depends = r-purrr>=0.2.2
-	depends = r-lang>=0.2.0
+	depends = r-rlang>=0.2.0
 	depends = r-tibble
 	depends = r-tidyr>=0.8.0
 	depends = r-tidyselect
