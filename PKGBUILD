@@ -1,6 +1,7 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
+# Maintainer: Pranav K Anupam <pranavanupam@yahoo.com>
+# Contributor: Alex Branham <branham@utexas.edu>
 _cranname=rvest
-_cranver=0.3.2
+_cranver=1.0.0
 _pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-rvest
 pkgver=${_cranver//[:-]/.}
@@ -9,18 +10,19 @@ pkgdesc="Easily Harvest (Scrape) Web Pages"
 arch=('any')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL3')
-depends=('r' 'r-xml2' 'r-httr>=0.5' 'r-selectr' 'r-magrittr')
+depends=('r>=3.2' 'r-xml2>=1.3' 'r-lifecycle'  'r-httr>=0.5' 'r-selectr' 'r-magrittr' 'r-rlang>=0.4.10' 'r-tibble' )
 
-optdepends=('r-testthat' 'r-knitr' 'r-png' 'r-stringi' 'r-rmarkdown' 'r-covr')
+optdepends=('r-testthat>=3.0.2' 'r-knitr'  'r-stringi>=0.3.1' 'r-rmarkdown' 'r-repurrrsive' 'r-spelling' 'r-covr''r-webfakes')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('78c88740850e375fc5da50d37734d1b2')
+sha256sum=('a358bf258a91b3362b3736fb5f957c12e98cddf21b6066fb2abdd26ecd665713')
 
 build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+cd "${srcdir}"
+R CMD INSTALL ${_pkgtar} -l ${srcdir}
 }
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+cd "${scrdir}"
+install -dm0755 "$pkgdir/usr/lib/R/library"
+cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
-
