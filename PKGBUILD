@@ -3,9 +3,9 @@ pkgdesc="ROS - Components of MoveIt that use ROS."
 url='https://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-ros'
-pkgver='1.0.7'
+pkgver='1.0.8'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -32,7 +32,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="moveit-${pkgver}/moveit_ros/moveit_ros"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
-sha256sums=('388a15209a0191bcdc8a1a9e6b3eaca4717aaa3a6fb9f541ad31dff7c3d6d07a')
+sha256sums=('9f94cac094e0cd73caf2fb75ff85870045239806852aa00f6122f4785da23c14')
 
 build() {
   # Use ROS environment variables
