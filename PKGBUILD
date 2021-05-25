@@ -3,7 +3,7 @@
 
 pkgname=ttf-abel-regular
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Abel is a modern interpretation of the condensed flat-sided sans serif."
 url="http://www.madtype.com/"
 arch=(any)
