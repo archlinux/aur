@@ -1,0 +1,15 @@
+pkgbase = gobuster-bin
+	pkgdesc = A Directory/File, DNS and VHost busting tool
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/OJ/gobuster
+	arch = x86_64
+	license = Apache
+	provides = gobuster
+	conflicts = gobuster
+	conflicts = gobuster-git
+	source_x86_64 = gobuster-3.1.0-1.7z::https://github.com/OJ/gobuster/releases/download/v3.1.0/gobuster-linux-amd64.7z
+	sha256sums_x86_64 = 7f11cba97772ac4f276177d5d782e6ebda58fbdbbbf959d6cb02e0454bc52e14
+
+pkgname = gobuster-bin
+
