@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+electron11 /usr/share/zy-player/zy-player.asar

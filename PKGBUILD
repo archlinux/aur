@@ -1,36 +1,32 @@
-# Maintainer: ventusliberum <dafeinayius@gmail.com>
+# Maintainer: Ayatale  <ayatale@qq.com>
 
 pkgname=zy-player-appimage
-_pkgname=zy-player
 pkgver=2.8.4
 _pkgver=$(echo $pkgver | sed 's/\./-/3')
-pkgrel=1
+pkgrel=2
 pkgdesc="跨平台视频资源播放器, 简洁免费无广告"
 arch=("x86_64")
 url="http://zyplayer.fun/"
 license=('MIT')
+depends=('electron11')
 provides=('zy-player')
 options=(!strip)
 source=("https://github.com/Hunlongyu/ZY-Player/releases/download/v${_pkgver}/ZY-Player-${_pkgver}.AppImage"
-        'zy-player.sh')
-sha256sums=('54a720730413c14d3514a53ccf6207d6c32ef3d7394499338a8d45125b0fbe9a'
-            '3626ced8de95c110129ed9dff1f8ea34243b2430b0b91c737dd7d166658bc1f2')
+        'zy-player'
+        'zy-player.desktop')
+md5sums=('SKIP'
+        '00d32292a0f02465b83182ebe35a1f3f'
+        '8490019ad48ac40a5cde99ae5ba6baff')
 _filename=ZY-Player-${_pkgver}.AppImage
 
 prepare() {
-    cd "${srcdir}"
     chmod +x ${_filename}
-    ./${_filename} --appimage-extract
-    sed -i "s|^Exec=AppRun|Exec=/usr/bin/${_pkgname} %U|g;\
-            s|^Icon=zy|Icon=zy-player|g;\
-            s|^StartupWMClass=ZY Player|StartupWMClass=zy|g;\
-            s|^Categories=Development;|Categories=AudioVideo;Player;|g" "squashfs-root/zy.desktop"
+    ./${_filename} --appimage-extract &> /dev/null
 }
 
 package() {
-    install -Dm755 "${srcdir}/${_filename}" "${pkgdir}/opt/appimages/${_pkgname}.AppImage"
-    install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 "${srcdir}/squashfs-root/zy.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    install -Dm644 "${srcdir}/squashfs-root/zy.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
-} 
-
+    install -Dm755 "zy-player" "${pkgdir}/usr/bin/zy-player"
+    install -Dm644 "zy-player.desktop" "${pkgdir}/usr/share/applications/zy-player.desktop"
+    install -Dm644 "squashfs-root/zy.png" "${pkgdir}/usr/share/icons/zy-player.png"
+    install -Dm644 "squashfs-root/resources/app.asar" "${pkgdir}/usr/share/zy-player/zy-player.asar"
+}
