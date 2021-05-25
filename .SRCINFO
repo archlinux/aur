@@ -1,7 +1,7 @@
 pkgbase = wayfire
 	pkgdesc = 3D wayland compositor
 	pkgver = 0.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wayfire.org
 	arch = x86_64
 	license = custom:MIT
@@ -9,6 +9,8 @@ pkgbase = wayfire
 	makedepends = ninja
 	makedepends = wayland-protocols
 	makedepends = glm
+	makedepends = cmake
+	makedepends = doctest
 	depends = cairo
 	depends = wf-config>=0.5
 	depends = libjpeg
