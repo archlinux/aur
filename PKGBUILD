@@ -1,7 +1,7 @@
 # Maintainer: Groctel <aur@taxorubio.com>
 pkgname=python-glcontext
 _name=glcontext
-pkgver=2.3.3
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="A library providing OpenGL implementation for ModernGL on multiple platforms."
 arch=('any')
@@ -13,8 +13,8 @@ depends=(
 makedepends=(
 	'python-setuptools'
 )
-source=("$url/releases/download/$pkgver/$_name-$pkgver.tar.gz")
-sha512sums=('80b2292034d5a8e4e132091c186046ebbceaf322a80226eab11c7121a0d4f51416f3ca30b8b0e7792dbaae1fe47e4b0810482cd73e6fa020b43841d187d71edd')
+source=("$url/archive/refs/tags/$pkgver.tar.gz")
+sha512sums=('9ab412a03e82b82d86ee8939074c311ef777d6fed718601860cf4dc08e57e0bff553d9731948f2df784e611cbba1d829b9887d76c0a306950c51e1f86df60340')
 
 build() {
 	export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
