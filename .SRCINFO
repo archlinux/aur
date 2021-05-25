@@ -1,5 +1,5 @@
 pkgbase = ttf-charis-sil
-	pkgdesc = A transitional serif typeface based on Bitstream Charter.
+	pkgdesc = Transitional serif typeface based on Bitstream Charter.
 	pkgver = 5.000
 	pkgrel = 5
 	url = https://software.sil.org/charis/

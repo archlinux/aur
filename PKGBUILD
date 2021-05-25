@@ -2,7 +2,7 @@
 pkgname=ttf-charis-sil
 pkgver=5.000
 pkgrel=5
-pkgdesc='A transitional serif typeface based on Bitstream Charter.'
+pkgdesc='Transitional serif typeface based on Bitstream Charter.'
 arch=('any')
 url='https://software.sil.org/charis/'
 license=('OFL')
