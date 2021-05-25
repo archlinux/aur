@@ -1,6 +1,6 @@
 # Maintainer: Paul Delafosse <paul.delafosse@protonmail.com>
 pkgname=bombadil-bin
-pkgver=1.11.3
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A dotfile template manager"
 arch=('x86_64')
