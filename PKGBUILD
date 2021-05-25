@@ -117,7 +117,6 @@ ac_add_options --disable-gpsd
 ac_add_options --disable-synth-speechd
 ac_add_options --disable-debug-symbols
 ac_add_options --disable-debug-js-modules
-ac_add_options --disable-cdp
 ac_add_options --disable-trace-logging
 ac_add_options --disable-rust-tests
 ac_add_options --disable-ipdl-tests
@@ -153,8 +152,8 @@ END
   # we should have more than enough RAM on the CI spot instances.
   # ...or maybe not?
   export LDFLAGS+=" -Wl,--no-keep-memory"
-  patch -p1 -i ../arm.patch
-  patch -p1 -i ../build-arm-libopus.patch
+  patch -Np1 -i ../arm.patch
+  patch -Np1 -i ../build-arm-libopus.patch
 
 else
 
@@ -165,10 +164,10 @@ END
 fi
 
   # Fix build-time error
-  patch -p1 -i ../builtin_js.patch
+  patch -Np1 -i ../builtin_js.patch
 
   # Remove some pre-installed addons that might be questionable
-  patch -p1 -i ../remove_addons.patch
+  patch -Np1 -i ../remove_addons.patch
 
   # To enable global menubar
   # Set these to true
@@ -177,10 +176,10 @@ fi
   # Disabling Pocket
   sed -i 's/"pocket"/# "pocket"/g' browser/components/moz.build
 
-  patch -p1 -i ../context-menu.patch
+  patch -Np1 -i ../context-menu.patch
 
   # remove mozilla vpn ads
-  patch -p1 -i ../mozilla-vpn-ad.patch
+  patch -Np1 -i ../mozilla-vpn-ad.patch
 
   # this one only to remove an annoying error message:
   sed -i 's#SaveToPocket.init();#// SaveToPocket.init();#g' browser/components/BrowserGlue.jsm
