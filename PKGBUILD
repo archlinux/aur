@@ -4,9 +4,9 @@ pkgdesc="ROS - Components of MoveIt! connecting to occupancy map."
 url='https://moveit.ros.org/'
 
 pkgname='ros-melodic-moveit-ros-occupancy-map-monitor'
-pkgver='1.0.7'
+pkgver='1.0.8'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]})
 
 _dir="moveit-${pkgver}/moveit_ros/occupancy_map_monitor"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
-sha256sums=('388a15209a0191bcdc8a1a9e6b3eaca4717aaa3a6fb9f541ad31dff7c3d6d07a')
+sha256sums=('9f94cac094e0cd73caf2fb75ff85870045239806852aa00f6122f4785da23c14')
 
 build() {
   # Use ROS environment variables
