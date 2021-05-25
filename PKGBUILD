@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=croc-git
-pkgver=8.5.2.r2.gf562400
+pkgver=9.1.4.r3.ga9e7767
 pkgrel=1
 pkgdesc="Easily and securely send things from one computer to another"
 arch=('i686' 'x86_64')
@@ -31,7 +31,8 @@ build() {
   cd "croc"
 
   go build \
-    ./...
+    -o croc \
+    main.go
 }
 
 check() {
