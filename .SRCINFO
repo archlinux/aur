@@ -1,20 +1,15 @@
 pkgbase = addinclude
 	pkgdesc = Add include statements to header and sourcefiles, for C and C++
-	pkgver = 1.0.1
-	pkgrel = 4
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://addinclude.roboticoverlords.org/
-	arch = i686
 	arch = x86_64
-	arch = armv6h
-	arch = armv7h
-	arch = aarch64
 	license = GPL2
 	makedepends = go
-	source = https://addinclude.roboticoverlords.org/addinclude-1.0.1.tar.xz
-	source = https://addinclude.roboticoverlords.org/addinclude-1.0.1.tar.xz.asc
+	source = https://addinclude.roboticoverlords.org/addinclude-1.1.1.tar.xz
+	source = https://addinclude.roboticoverlords.org/addinclude-1.1.1.tar.xz.asc
 	validpgpkeys = 962855F072C7A01846405864FCF3C8CB5CF9C8D4
-	sha512sums = bb73427f85abd747104e2b24c19da3e1daf31ee0af2f1da5c268ef47cd8657c2e06d6a0611c153afeae1492752926f3765521643ee41a6337a7fe40ca55336aa
-	sha512sums = SKIP
+	b2sums = 46a174a39a2e0ba03345707af94443525c8766fd760c48be149bb86314591c949c09b000f5b5dd51fdc410dbd884c5e2e33fac84d9733be38aba2a63e0b2d27e
+	b2sums = SKIP
 
 pkgname = addinclude
-
