@@ -1,16 +1,7 @@
 # Maintaoner: Yamada Hayao <hayao@fascode.net>
 
 remove () {
-    local _list
-    local _file
-    _list=($(echo "$@"))
-    for _file in "${_list[@]}"; do
-        if [[ -f ${_file} ]]; then
-            rm -f "${_file}"
-        elif [[ -d ${_file} ]]; then
-            rm -rf "${_file}"
-        fi
-    done
+    rm -rf "${@}"
 }
 _pkgname=(
     "alterlinux-live-tools"
@@ -23,7 +14,7 @@ _pkgname=(
 
 pkgname=(${_pkgname[@]})
 _reponame="fascode-live-tools"
-pkgver="1.8"
+pkgver="1.8.1"
 pkgrel="1"
 pkgdesc="Scripts required for live environment"
 arch=('any')
@@ -33,7 +24,7 @@ depends=(
     "xdg-user-dirs"
     "bash"
 )
-md5sums=("2af82a135a095d86aad039ad5c5e6228")
+md5sums=("9a8c5cb5b3e4ab0c213aec0049b3fe59")
 source=("${url}/archive/v${pkgver}.zip")
 
 extracted="${_reponame}-${pkgver}"
