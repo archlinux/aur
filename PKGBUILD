@@ -1,7 +1,6 @@
 # Maintainer: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=torrential
-_id=com.github.davidmhewitt.torrential
 pkgver=1.1.0
 pkgrel=5
 pkgdesc='Simple BitTorrent client for Pantheon'
@@ -49,9 +48,6 @@ prepare() {
   # Don't treat warnings as fatal
   sed -i '/--fatal-warnings/d' CMakeLists.txt
 
-  # Fix metainfo file
-  sed -i "/<id>/a <launchable type=\"desktop-id\">$_id.desktop</launchable>" data/$_id.appdata.xml
-
   git submodule init
   git submodule set-url transmission "$srcdir/transmission-torrential"
   git submodule update
@@ -74,5 +70,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  ln -s $_id "$pkgdir/usr/bin/$pkgname"
+  ln -s com.github.davidmhewitt.torrential "$pkgdir/usr/bin/$pkgname"
 }
