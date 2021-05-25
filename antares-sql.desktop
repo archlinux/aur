@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Antares
+Comment=Open source and cross platform SQL client made to be simple and complete
+Exec=/usr/bin/antares-sql %u
+Terminal=false
+Type=Application
+Icon=antares-sql
+Categories=Network
