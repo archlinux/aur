@@ -1,20 +1,42 @@
-# Maintainer : Elvin L <elvin@eelviny.me>
+# Maintainer : Pim Bliek <pim@pimbliek.nl>
+# Contributor : Elvin L <elvin@eelviny.me>
 
 pkgname=rocrail
-pkgver=git
-pkgrel=11643
-pkgdesc="Rocrail - Model Railroad Control System"
-arch=('x86_64' 'i686')
-url='http://wiki.rocrail.net/'
-license=('unknown')
-depends=()
+pkgver=1559
+pkgrel=2.1
+pkgdesc="Rocrail - Innovative Model Railroad Control System"
+arch=('x86_64')
+url="http://wiki.rocrail.net/"
+license=('Proprietary')
+depends=('wxgtk2' 'libusb' 'wxgtk-common')
 makedepends=()
-source=()
-sha256sums=()
+source=("https://launchpad.net/rocrail/trunk/2.1/+download/Rocrail-$pkgver-archlinux-$arch.zip")
+md5sums=('a0a898e81cb65e4cb2b4b06be04f96bc')
 
-msg "This package is now hosted in a private repository."
-msg "Add this to your pacman.conf:"
-msg "[rocrail]"
-msg "SigLevel = Optional"
-msg "Server = http://home.eelviny.me:8051/rocrail/$CARCH/"
-exit 1
+package() {
+  msg "Installing..."
+  cd "$srcdir/"
+  chmod -R 755 .
+  mkdir -p $pkgdir/opt/rocrail
+  cp -r * $pkgdir/opt/rocrail/.
+  rm $pkgdir/opt/rocrail/*.zip
+  chmod -R 755 $pkgdir/opt/rocrail
+
+  TEMPFILE="rocrail.desktop"
+  echo "[Desktop Entry]" > $TEMPFILE
+  echo "Type=Application" >> $TEMPFILE
+  echo "Version=$pkgver" >> $TEMPFILE
+  echo "Name=Rocrail" >> $TEMPFILE
+  echo "Comment=$pkgdesc" >> $TEMPFILE
+  echo "Path=/opt/rocrail/" >> $TEMPFILE
+  echo "Exec=/opt/rocrail/rocview.sh" >> $TEMPFILE
+  echo "Icon=/opt/rocrail/rocrail.png" >> $TEMPFILE
+  echo "Terminal=false" >> $TEMPFILE
+  echo "Categories=Application;" >> $TEMPFILE
+
+  chmod +x $TEMPFILE
+  mkdir -p $pkgdir/usr/share/applications
+  cp -p $TEMPFILE $pkgdir/usr/share/applications/.
+  mkdir -p $pkgdir/usr/share/pixmaps
+  cp -p rocrail.png $pkgdir/usr/share/pixmaps/.
+}
