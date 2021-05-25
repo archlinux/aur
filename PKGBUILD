@@ -4,12 +4,12 @@
 
 pkgname=srandrd
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple randr daemon that reacts to monitor hotplug events" 
 arch=('i686' 'x86_64')
 url="https://github.com/jceb/srandrd/"
 license=('custom:MIT/X')
-depends=('libxrandr')
+depends=('libxrandr' 'libxinerama')
 provides=('srandrd')
 source=(https://github.com/jceb/${pkgname}/archive/v${pkgver}.tar.gz)
 md5sums=('91041c39b46e7c8e8f7401a74cdaab10')
