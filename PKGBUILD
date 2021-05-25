@@ -12,9 +12,9 @@ depends=()
 makedepends=()
 options=()
 install=bombadil.install
-bombadil_version='1.11.2'
+bombadil_version="$pkgver"
 source=("$pkgname-$pkgver.tar.gz::${url}/releases/download/${bombadil_version}/bombadil-${bombadil_version}-${CARCH}-unknown-linux-musl.tar.gz")
-md5sums=('e44d662c3c52899e1f59a33836d3b593')
+md5sums=('9b43775568958567a2c8f312bca2a674')
 
 package() {
     # install the Rust binary
