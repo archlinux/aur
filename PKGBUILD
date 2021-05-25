@@ -3,18 +3,18 @@
 
 pkgname=etcher-git
 _pkgname=etcher
-pkgver=1.5.116.r0.g37769efb
+pkgver=1.5.120.r0.gccb08a48
 pkgrel=1
 pkgdesc='Flash OS images to SD cards & USB drives, safely and easily'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://etcher.io/'
 license=(Apache)
-depends=("electron9" "gtk3" "libxtst" "libxss" "nss" "alsa-lib" "nodejs" "glib2" "polkit" "libusb")
+depends=("electron>=12.0.0" "gtk3" "libxtst" "libxss" "nss" "alsa-lib" "nodejs" "glib2" "polkit" "libusb")
 makedepends=("npm" "python2" "git" "jq")
 optdepends=("libnotify: for notifications")
 conflicts=(
-  "balena-${_pkgname}"
-  "${_pkgname}-bin"
+  "balena-etcher"
+  "etcher-bin"
 )
 options=('!strip')
 _scripts='scripts'
@@ -45,7 +45,6 @@ prepare() {
 
 build() {
   cd "${_pkgname}"
-  export NPM_VERSION=$(npm --version)
   make electron-develop
   npm run webpack
   npm prune --production
