@@ -1,6 +1,6 @@
 pkgbase = openlibm-casio
 	pkgdesc = Fork of the OpenLibm math library with support for fx-9860G and fx-CG 50
-	pkgver = 0.7.2
+	pkgver = 0.7.5
 	pkgrel = 1
 	url = https://gitea.planet-casio.com/Lephenixnoir/OpenLibm
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = openlibm-casio
 	makedepends = sh-elf-gcc-casio
 	options = !buildflags
 	options = !strip
-	source = openlibm-casio-0.7.2.tar.gz::https://gitea.planet-casio.com/Lephenixnoir/OpenLibm/archive/v0.7.2.tar.gz
-	sha256sums = d919ceda62ee32b7397ee521b8ad5f96e7f8c46645c6e554d51ce50fd9bf3f6f
+	source = openlibm-casio-0.7.5.tar.gz::https://gitea.planet-casio.com/Lephenixnoir/OpenLibm/archive/v0.7.5.tar.gz
+	sha256sums = 445e945750f8940f6c8ebd692f64f39f176353fea3671e6d39585f1f873a10a2
 
 pkgname = openlibm-casio
 

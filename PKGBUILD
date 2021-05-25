@@ -1,6 +1,6 @@
 # Maintainer: Eldeberen <eldeberen.aur@middleearth.fr>
 pkgname=openlibm-casio
-pkgver=0.7.2
+pkgver=0.7.5
 pkgrel=1
 pkgdesc='Fork of the OpenLibm math library with support for fx-9860G and fx-CG 50'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ licence=('custom')
 makedepends=('sh-elf-gcc-casio')
 options=('!buildflags' '!strip')
 source=("$pkgname-$pkgver.tar.gz::https://gitea.planet-casio.com/Lephenixnoir/OpenLibm/archive/v${pkgver}.tar.gz")
-sha256sums=('d919ceda62ee32b7397ee521b8ad5f96e7f8c46645c6e554d51ce50fd9bf3f6f')
+sha256sums=('445e945750f8940f6c8ebd692f64f39f176353fea3671e6d39585f1f873a10a2')
 
 prepare() {
   cd "${srcdir}/openlibm"
