@@ -1,7 +1,7 @@
 # Maintainer: Harvey Tindall <hrfee@protonmail.ch>
 pkgname="jfa-go-bin"
 _pkgname="jfa-go"
-pkgver=0.3.3
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="A web app for managing users on Jellyfin"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
