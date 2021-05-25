@@ -1,5 +1,3 @@
-# Maintainer: Max Davydovsky <max.davydovsky@gmail.com>
-
 pkgname=ttf-pacifico
 pkgver=3.000
 pkgrel=2
