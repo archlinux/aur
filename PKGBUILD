@@ -3,7 +3,7 @@
 
 _gemname=fusuma
 pkgname=ruby-$_gemname
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="Fusuma is multitouch gesture recognizer."
 arch=(any)
@@ -19,7 +19,7 @@ optdepends=('xdotool: Used to send shortcuts on Xorg'
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('0ead20fc152b90bceb97cb0158f29ae8dc91bc29')
+sha1sums=('2cdd9d9e458059da69e12835e4b605cedeebbf27')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
