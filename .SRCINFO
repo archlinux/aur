@@ -1,0 +1,17 @@
+pkgbase = diary-git
+	pkgdesc = Encrypted memories -- a journal program with local encryption support
+	pkgver = r24.d9bfeac
+	pkgrel = 1
+	url = https://github.com/actuday6418/diary
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = diary
+	conflicts = diary
+	source = diary-git::git+https://github.com/actuday6418/diary
+	sha256sums = SKIP
+
+pkgname = diary-git
+
