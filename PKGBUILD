@@ -1,6 +1,6 @@
 # Maintainer: Archisman Panigrahi <apandada1 at gmail dot com>
 pkgname=share-preview
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Preview and debug websites metadata tags for social media share."
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('gtk4' 'libadwaita' 'glib2')
 makedepends=('meson' 'rust')
 checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.xz::$url/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('51492f70f3bdefc1e09e2074276b4d049e95ae9195120c6207e63c056fc60a22')
+sha256sums=('d281fa0c8d81a1bab39988d94b075a813dcef4eb31581e457907c4535108b8df')
 
 build() {
 	arch-meson "$pkgname-$pkgver" build
