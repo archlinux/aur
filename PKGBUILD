@@ -1,27 +1,25 @@
 # Maintainer: Benoît Rouits <brouits at free dor fr>
 pkgname=qloud
-pkgver=1.3a
-_pkgver=1.3-alpha
+pkgver=1.4.1
 pkgrel=4
 pkgdesc="Tool to measure loudspeaker frequency response and distortions."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/molke-productions/qloud"
 license=('GPL')
-depends=('fftw' 'jack' 'qwt')
+depends=('fftw' 'jack' 'qt5-charts')
 conflicts=('qloud-qtcharts')
-source=("$pkgname.tar.gz::https://github.com/molke-productions/qloud/archive/v$_pkgver.tar.gz")
-sha512sums=('4ad124da340cd4f1e3ee43da65ba78c605665be7ce05fd375b09ecd785331adee56d4475b5d191fa7393528768e3c302a8051227d292ada57d2827ab0fffb5a1')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/molke-productions/qloud/archive/v$pkgver.tar.gz")
+sha512sums=('f7285bf75aaffdf9a9b8e003375b13f9418c828a4b7fe1d9b1b1a1245c2e57090545c4694b3808f4fccff66a8f495291f4c7cd31787360da05b697ae3d5979c9')
 
 build() {
-  cd "$srcdir/$pkgname-$_pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   qmake PREFIX=/usr -config release
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$_pkgver"
-  #make install INSTALL_ROOT="${pkgdir}"
-  install -D bin/qloud "${pkgdir}"/usr/bin/qloud
+  cd "$srcdir/$pkgname-$pkgver"
+  make install INSTALL_ROOT="${pkgdir}"
 }
 
 # vim:set ts=2 sw=2 et:
