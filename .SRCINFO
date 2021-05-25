@@ -1,6 +1,6 @@
 pkgbase = openmsx-catapult
 	pkgdesc = Front-end for openMSX: the MSX emulator that aims for perfection.
-	pkgver = 16.0
+	pkgver = 17.0
 	pkgrel = 2
 	url = http://openmsx.org
 	arch = i686
@@ -13,9 +13,9 @@ pkgbase = openmsx-catapult
 	depends = libjpeg
 	depends = libpng
 	depends = libtiff
-	depends = openmsx=16.0
-	source = https://github.com/openMSX/wxcatapult/archive/RELEASE_16_0.tar.gz
-	md5sums = 9e32547853d980b6b4c862458e0759a6
+	depends = openmsx=17.0
+	source = https://github.com/openMSX/wxcatapult/archive/RELEASE_17_0.tar.gz
+	md5sums = 8c2a09ec6bdc20684473540cfb4b1883
 
 pkgname = openmsx-catapult
 
