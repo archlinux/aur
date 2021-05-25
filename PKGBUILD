@@ -1,13 +1,13 @@
 # Maintainer graysky <graysky AT archlinux DOT us>
 
 # EDIT the build function to build disired PROJECT and ARCH, see:
-# https://wiki.libreelec.tv/compile#choose_the_project_and_arch_to_compile
+# https://wiki.libreelec.tv/development-1/build-basics#building
 #
 # When complete, there will be no package, you can manually copy the images
 # from $srcdir/target/
 
 pkgname=libreelec-git
-pkgver=r34501.c782141e95
+pkgver=r36611.04dc864eeb
 pkgrel=1
 pkgdesc='Build LibreELEC for any device and architecture'
 arch=('x86_64')

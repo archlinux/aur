@@ -1,6 +1,6 @@
 pkgbase = libreelec-git
 	pkgdesc = Build LibreELEC for any device and architecture
-	pkgver = r34501.c782141e95
+	pkgver = r36611.04dc864eeb
 	pkgrel = 1
 	url = https://wiki.libreelec.tv/compile
 	arch = x86_64
