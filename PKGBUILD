@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 
 pkgname=gnome-search-providers-jetbrains
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Add Jetbrains IDE projects to Gnome Search"
 arch=('x86_64')
@@ -10,9 +10,9 @@ license=('MPL2')
 depends=('gnome-shell')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-md5sums=('46336ac3b2b1b6d96941e654ce6d258b')
-sha1sums=('6080bc03df0ec35feb57a165bc2095dbc78e1676')
-sha512sums=('56a01f8d3d4c741bed999da9e24acc7b9289cf29844312e2b483e6fb2f11b03b1d850725bd6b8624788eb475b702596db752ef4803895fb7afc79141addd8963')
+md5sums=('b7fef63f6b40a473b64c5711faad7f81')
+sha1sums=('de58253e83c855f609861993f63fd6f68554c630')
+sha512sums=('27fbe472c3fdb94de4c7c440220317ab79aab65c223c9a5ec97111854e5c43976beb1cbceb7c0a1b79a80c3d9c565633105154397741a7801f3755d793b820a7')
 
 package() {
 	cd "$pkgname-$pkgver"
