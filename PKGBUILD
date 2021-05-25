@@ -4,7 +4,7 @@
 
 pkgname=bootstrap-studio
 pkgver=5.6.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Bootstrap Studio is a powerful tool which web developers and designers use to create layouts and fully functional websites using the Bootstrap framework."
 arch=("x86_64")
 license=("custom")
@@ -28,7 +28,7 @@ package() {
 	mkdir -p "${pkgdir}/opt/bootstrap-studio"
 	cp -Lr "${srcdir}/squashfs-root" "${pkgdir}/opt/bootstrap-studio"
 	# Set perms
-        chmod a+r "${pkgdir}/opt/bootstrap-studio" -R
+        chmod a+rx "${pkgdir}/opt/bootstrap-studio/" -R
 
 	# Add package to /usr/bin/
 	mkdir -p "${pkgdir}/usr/bin"
