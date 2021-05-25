@@ -2,7 +2,7 @@
 pkgname=otf-grenze-gotisch
 pkgver=1.001
 pkgrel=1
-pkgdesc='A peculiar version of Grenze from Omnibus-Type.'
+pkgdesc='Peculiar version of Grenze from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/grenze-gotisch/'
 license=('OFL')
