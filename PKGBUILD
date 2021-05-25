@@ -1,16 +1,18 @@
-# Maintainer: lmartinez
+# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 # Contributor: Wesley Moore <wes@wezm.net>
 
 pkgname=dutree-git
 _pkgname=${pkgname%-git}
-pkgver=0.2.16.r2.g83fc255
-pkgrel=1
+pkgver=0.2.18.r0.g44e877d
+pkgrel=2
 pkgdesc='A tool to analyze file system usage written in Rust'
 arch=('x86_64')
 url='https://github.com/nachoparker/dutree'
 license=('GPL3')
 depends=('gcc-libs')
 makedepends=('git' 'cargo')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
