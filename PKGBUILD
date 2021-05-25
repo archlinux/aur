@@ -2,24 +2,22 @@
 # Contributor: Aleshus <aleshusi@gmail.com>
 
 pkgname=sipp
-pkgver=3.4.0
-pkgrel=3
+pkgver=3.5.2
+pkgrel=1
 pkgdesc="A free Open Source test tool / traffic generator for the SIP protocol."
 arch=('i686' 'x86_64')
 url="http://sipp.sourceforge.net/"
 license=('GPL')
-depends=('openssl' 'libpcap' 'gsl')
-source=(https://github.com/SIPp/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('6b3a7f7410cac7053500843afe0d0de1c9bd54b8557e09c502a1d4131ab1f986')
+depends=('openssl' 'libpcap' 'lksctp-tools')
+source=(https://github.com/SIPp/${pkgname}/releases/download/v${pkgver}/sipp-${pkgver}.tar.gz)
+sha256sums=('875fc2dc2e46064aa8af576a26166b45e8a0ae22ec2ae0481baf197931c59609')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr \
-	--with-openssl \
-	--with-pcap \
-	--with-rtpstream \
-	--with-gsl
-  make
+  sed -i 's/SSL_library_init/SSL_CTX_new/' configure.ac
+  sed -i 's/CRYPTO_num_locks/CRYPTO_free/' configure.ac
+  sed -i 's/TLSv1_method/TLS_method/' src/socket.cpp
+  ./build.sh --with-pcap --with-sctp --with-openssl
 }
 
 package() {
