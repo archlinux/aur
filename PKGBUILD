@@ -10,11 +10,11 @@ pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - with tran
 # NodeJS versioning cheatsheet:
 #   - carbon: 8
 #   - dubnium: 10
-#   - ?: 11 (not in repos)
 #   - erbium: 12
+#   - fermium: 14
 # Important: Remember to check https://github.com/microsoft/vscode/blob/master/.yarnrc (choose correct tag) for target electron version
-_electron=electron11
-pkgver=1.55.2
+_electron=electron
+pkgver=1.56.2
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/microsoft/vscode'
@@ -23,7 +23,7 @@ depends=($_electron 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
 optdepends=('bash-completion: Bash completions'
             'zsh-completions: ZSH completitons'
             'x11-ssh-askpass: SSH authentication')
-makedepends=('git' 'gulp' 'npm' 'python2' 'yarn' 'nodejs-lts-erbium')
+makedepends=('git' 'gulp' 'npm' 'python2' 'yarn' 'nodejs-lts-dubnium')
 conflicts=('code')
 provides=('code' 'vscode')
 install='code-transparent.install'
@@ -34,8 +34,8 @@ source=("$_pkgname::git+$url.git#tag=$pkgver"
         'transparent.diff'
         'fix-first-window-not-transparent.diff')
 sha512sums=('SKIP'
-            '17a9f9e49d75ca0ee4bc74fb4b1fa0c7c18c72efcf81da3d0ac3a01fa40b175cfd5e9b3a74df2d0938cd1ccaec3b8325774a03701b225f08b192fd89a72e680a'
-            'e3e9fbce77afe74c6b489cd9668bacb4ba5750b100dc60377c59b307a5daf479a9f9422a0fefaeb1da5f92cd00454c139af0155f7fda2d3e45a5f36f336e5608'
+            '6e8ee1df4dd982434a8295ca99e786a536457c86c34212546e548b115081798c5492a79f99cd5a3f1fa30fb71d29983aaabc2c79f4895d4a709d8354e9e2eade'
+            'b8bdb0e53cf8748140ed444c9b02cb6a57a7e1e120d96861d4cc9f79744a987f0253c052a238c78aa2c3f86459c4afb6f3b687435f0588d8f640822a9908b257'
             'b1aa0d7c5b3e3e8ba1172822d75ea38e90efc431b270e0b4ca9e45bf9c0be0f60922c8618969ef071b5b6dbd9ac9f030294f1bf49bcc28c187b46d113dca63a7'
             '1ad5dd5090f33fe4f45f13ac7f20384869bb26f5e207933de8bfdea503386a331be9fd233205502aa742a7b90a3c15f8bd02a70a3c046c759c59d0d0b9f7f4bc'
             'e662f0bf3f55a82ce9bce98f22c6be80ee83c1e2241d2eca596326478887ec6b73c7d0041903e17f35a424578ccc22674354931166dc7c7d7e76bb97135e009e')
@@ -64,6 +64,7 @@ prepare() {
 
   # Change electron binary name to the target electron
   sed -i "s|exec electron |exec $_electron |" ../code.sh
+  sed -i "s|#!/usr/bin/electron|#!/usr/bin/$_electron|" ../code.js
 
   # This patch no longer contains proprietary modifications.
   # See https://github.com/Microsoft/vscode/issues/31168 for details.
