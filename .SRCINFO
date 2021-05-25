@@ -1,7 +1,7 @@
 pkgbase = emos
 	pkgdesc = ECMWF Interpolation Library
 	pkgver = 4.5.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://software.ecmwf.int/wiki/display/EMOS/Emoslib
 	arch = i686
 	arch = x86_64
