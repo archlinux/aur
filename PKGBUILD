@@ -2,7 +2,7 @@
 pkgname=dbgate-bin
 pkgver=4.2.3
 pkgrel=1
-pkgdesc="Database manager for MySQL, PostgreSQL, SQL Server and MongoDB."
+pkgdesc="Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others"
 arch=(x86_64)
 url="https://github.com/${pkgname%-bin}/${pkgname%-bin}"
 license=('MIT')

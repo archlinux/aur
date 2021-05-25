@@ -1,5 +1,5 @@
 pkgbase = dbgate-bin
-	pkgdesc = Database manager for MySQL, PostgreSQL, SQL Server and MongoDB.
+	pkgdesc = Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others
 	pkgver = 4.2.3
 	pkgrel = 1
 	url = https://github.com/dbgate/dbgate
