@@ -1,6 +1,6 @@
 pkgname="ffmt-bin"
 fullpkgname="FFXIV_Modding_Tool-linux"
-pkgver="0.9.9"
+pkgver="0.9.10"
 pkgrel="1"
 pkgdesc="FFXIV_Modding_Tool (FFMT for short) is a crossplatform commandline interface for Final Fantasy XIV Modding."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://ffmt.pwd.cat/docs/"
 license=("GNU General Public License v3.0")
 depends=("dotnet-runtime")
 source=("https://github.com/fosspill/FFXIV_Modding_Tool/releases/download/v${pkgver}/FFXIV_Modding_Tool-linux-${pkgver}.zip")
-sha256sums=("5460acd4156269342a349ee2f5c2bd9b8245330c1bb89656680ec7d0274ff423")
+sha256sums=("8fdc56ec3358ad3ed7c77e8e420df101f6334a69e3f063e14c0b5e6206608802")
 
 package() {
     cd $srcdir
