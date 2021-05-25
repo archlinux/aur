@@ -10,7 +10,7 @@ arch=("any")
 url="https://github.com/The-Repo-Club/Dracula"
 license=('GPL')
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('28bdc1394f21320b79adf6702ba0a913a67814705544c9bb5d6a6d1091320e79')
+sha256sums=('6b4afc8502d05dc8da60fd4c48b3bf445883618d65fda27d3b5737d302383e95')
 
 package() {
     cd "$_pkgname-$pkgver"
