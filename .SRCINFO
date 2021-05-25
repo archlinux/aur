@@ -1,0 +1,17 @@
+pkgbase = ratel-bin
+	pkgdesc = Dgraph data visualizer and cluster manager
+	pkgver = 21.03
+	pkgrel = 1
+	url = https://github.com/dgraph-io/ratel
+	arch = x86_64
+	license = APACHE
+	provides = ratel
+	conflicts = ratel
+	conflicts = ratel-git
+	source = ratel-bin-21.03.tar.gz::https://github.com/dgraph-io/ratel/releases/download/21.03/dgraph-ratel-linux.tar.gz
+	source = dgraph-ui.service
+	sha256sums = 44686173e9dbe9267c7bb202b3d8d9cabc9a7c936885bf34a1922d2604b05618
+	sha256sums = ce1df68d8d167b62ba08ca0b58450e35311e35267664aa7cd66a6e83cec9baae
+
+pkgname = ratel-bin
+
