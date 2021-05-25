@@ -1,6 +1,6 @@
 pkgbase = unison-git
 	pkgdesc = File-synchronization tool
-	pkgver = 2.51.3.r257.g22a05df
+	pkgver = 2.51.3.70.r29.g3c54310
 	pkgrel = 1
 	url = http://www.cis.upenn.edu/~bcpierce/unison/
 	arch = i686
