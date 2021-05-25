@@ -1,0 +1,23 @@
+pkgbase = vim-bogster-git
+	pkgdesc = A solarized-based theme for Vim and Neovim
+	pkgver = r18.07a082b
+	pkgrel = 1
+	url = https://github.com/wojciechkepka/bogster
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	optdepends = vim-airline
+	optdepends = vim-lightline-git
+	provides = vim-bogster
+	provides = vim-airline-bogster
+	provides = vim-lightline-bogster
+	conflicts = vim-bogster
+	conflicts = vim-airline-bogster
+	conflicts = vim-lightline-bogster
+	source = vim-bogster-git::git+https://github.com/wojciechkepka/bogster
+	sha256sums = SKIP
+
+pkgname = vim-bogster-git
+
