@@ -3,7 +3,7 @@
 
 pkgname=gtk
 pkgver=1.2.10
-pkgrel=17
+pkgrel=18
 pkgdesc="A multi-platform toolkit (v1)"
 arch=('i686' 'x86_64')
 url="http://www.gtk.org/"
@@ -25,7 +25,7 @@ prepare() {
 
 build() {
   cd gtk+-${pkgver}
-  ./configure --prefix=/usr --sysconfdir=/etc \
+  CFLAGS="-Wno-format-security" ./configure --prefix=/usr --sysconfdir=/etc \
     --mandir=/usr/share/man --infodir=/usr/share/info \
     --with-xinput=xfree
   make

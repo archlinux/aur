@@ -1,7 +1,7 @@
 pkgbase = gtk
 	pkgdesc = A multi-platform toolkit (v1)
 	pkgver = 1.2.10
-	pkgrel = 17
+	pkgrel = 18
 	url = http://www.gtk.org/
 	arch = i686
 	arch = x86_64
