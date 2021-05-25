@@ -1,0 +1,6 @@
+/src/
+/pkg/
+pkg/
+src/
+ritchie*
+*.tar.gz

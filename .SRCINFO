@@ -1,12 +1,14 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = ritchie-cli
+	pkgdesc = Ritchie CLI is an open-source tool that allows to create, store and share any kind of automation, executing them through command lines, to run operations or start workflows
+	pkgver = 2.11.2
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
-	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	url = https://ritchiecli.io/
+	arch = any
+	license = Apache License 2.0
+	makedepends = go
+	provides = ZupIT
+	source = https://github.com/ZupIT/ritchie-cli/archive/2.11.2.tar.gz
+	sha256sums = SKIP
 
-pkgname = yarxi
+pkgname = ritchie-cli
 
