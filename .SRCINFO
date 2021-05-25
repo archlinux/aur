@@ -1,7 +1,7 @@
 pkgbase = perl-gtk3-imageview-shutter
 	pkgdesc = Image viewer widget for Gtk3, recent version with fixes required for Shutter
 	pkgver = 9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Gtk3-ImageView
 	arch = any
 	license = LGPL
@@ -16,7 +16,7 @@ pkgbase = perl-gtk3-imageview-shutter
 	checkdepends = xorg-server-xvfb
 	depends = perl-gtk3
 	depends = imagemagick
-	provides = perl-gtk3-imageview
+	provides = perl-gtk3-imageview=9
 	conflicts = perl-gtk3-imageview
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/A/AS/ASOKOLOV/Gtk3-ImageView-9.tar.gz

@@ -5,14 +5,14 @@ _pkgname=perl-gtk3-imageview
 _perl_namespace=Gtk3
 _perl_module=ImageView
 pkgver=9
-pkgrel=1
+pkgrel=2
 pkgdesc="Image viewer widget for Gtk3, recent version with fixes required for Shutter"
 arch=('any')
 url="https://metacpan.org/release/${_perl_namespace}-${_perl_module}"
 license=('LGPL')
 depends=('perl-gtk3' 'imagemagick')
 conflicts=('perl-gtk3-imageview')
-provides=('perl-gtk3-imageview')
+provides=('perl-gtk3-imageview=9')
 checkdepends=('perl-test-exception' 'perl-test-deep' 'perl-test-memory-cycle' 'perl-try-tiny'
               'perl-readonly' 'perl-test-mockobject' 'perl-test-differences'
               'perl-carp-always' 'xorg-server-xvfb')
