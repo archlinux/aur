@@ -16,7 +16,7 @@ const zeroFill = require('zero-fill')
 fetch.concat('https://www.legendsofequestria.com/downloads', (err, res, data) => {
   if (err) throw err
   let html = data.toString('utf8')
-  const megaReg = /<a href="(https:\/\/mega\.nz\/#![a-zA-Z0-9_-]*![a-zA-Z0-9_-]*)">(.*?)<\/a>/ig
+  const megaReg = /<a href="(https:\/\/mega\.nz\/file\/[a-zA-Z0-9_-]*#[a-zA-Z0-9_-]*)">(.*?)<\/a>/ig
   const versions = {}
   for (let ma; (ma = megaReg.exec(html));) {
     let key = ma[2].trim().toLowerCase()
