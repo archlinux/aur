@@ -1,7 +1,7 @@
 pkgbase = shutter-git
 	pkgdesc = A featureful screenshot tool, git version
 	pkgver = r1548.85dc91e8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://shutter-project.org/
 	arch = any
 	license = GPL3
@@ -28,7 +28,7 @@ pkgbase = shutter-git
 	depends = perl-xml-simple
 	depends = perl-carp-always
 	depends = perl-gtk3
-	depends = perl-gtk3-imageview-shutter
+	depends = perl-gtk3-imageview>=9
 	depends = perl-readonly
 	depends = perl-goocanvas2
 	depends = perl-goocanvas2-cairotypes
