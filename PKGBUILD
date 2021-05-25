@@ -8,6 +8,7 @@ url="https://github.com/nspawn/nspawn"
 license=('GPL3')
 depends=('systemd')
 makedepends=('git')
+conflicts=("$pkgname-git")
 source=("git+${url}.git#commit=989bda57eb5a912041ce5e6dde26875a2bde4591")
 md5sums=('SKIP')
 
