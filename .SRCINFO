@@ -1,0 +1,15 @@
+pkgbase = hex2bin-bin
+	pkgdesc = Converts Motorola and Intel hex files to binary.
+	pkgver = 2.5
+	pkgrel = 1
+	url = http://hex2bin.sourceforge.net/
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	depends = glibc
+	conflicts = hex2bin
+	source = https://sourceforge.net/projects/hex2bin/files/hex2bin/Hex2bin-2.5.tar.bz2
+	sha256sums = 22afd5a63225e3f20401588f6796757dc62cc1c8ca5dc268f7e46a6c0405949d
+
+pkgname = hex2bin-bin
+
