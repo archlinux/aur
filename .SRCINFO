@@ -1,7 +1,7 @@
 pkgbase = sipp-git
 	pkgdesc = A free open source test tool and traffic generator for the SIP protocol
 	pkgver = 3.6.1.r42.g9f62be0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/sipp
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,10 @@ pkgbase = sipp-git
 	depends = libpcap
 	depends = gsl
 	depends = lksctp-tools
-	source = git+http://github.com/sipp/sipp
-	md5sums = SKIP
+	provides = sipp=3.6.1-2
+	conflicts = sipp
+	source = sipp-git::git+http://github.com/sipp/sipp
+	sha256sums = SKIP
 
 pkgname = sipp-git
 
