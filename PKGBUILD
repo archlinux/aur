@@ -1,10 +1,10 @@
-# Maintainer: Tomatopaste <marc.mail@gmx.net>
+# Maintainer: Tomatopaste <mafehling.git@gmail.com>
 pkgname=('python-jupyter-book')
 _pkgname=('jupyter-book')
-pkgver='0.6.4'
+pkgver='0.10.2'
 pkgrel=1
 pkgdesc="Create books with Jupyter Notebooks and Jekyll."
-url="https://github.com/ExecutableBookProject/jupyter-book"
+url="https://github.com/executablebooks/jupyter-book"
 depends=('python'
   'python-pytest'
   'python-ruamel-yaml'
@@ -21,8 +21,8 @@ checkdepends=()
 makedepends=()
 license=('BSD')
 arch=("any")  
-source=("${_pkgname}-${pkgver}.tgz::https://github.com/ExecutableBookProject/jupyter-book/archive/v${pkgver}.tar.gz")
-sha256sums=('22e8f232f61ebbd6684659ac28e053cd6836e8e57179891a7c038ed26abcd715')
+source=("${_pkgname}-${pkgver}.tgz::https://github.com/executablebooks/jupyter-book/archive/v${pkgver}.tar.gz")
+sha256sums=('0b48d8244d17371a0e6838598d3485842d5b28a25e745187ad65c164b928b58f')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
