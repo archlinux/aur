@@ -3,30 +3,27 @@
 
 pkgbase=linux-pf-git
 pkgdesc="Linux pf-kernel (git version)"
-pkgver=5.11.2.r33.gba90623a7248
-_kernel_rel=5.11
+pkgver=5.13.rc3.r50.g3be5571764f1
+_kernel_rel=5.13
 _branch=pf-${_kernel_rel}
 _product="${pkgbase%-git}"
 pkgrel=1
 arch=(x86_64)
-_base_url=https://gitlab.com/post-factum/pf-kernel
-url="${_base_url}/-/wikis/README"
+url=https://gitlab.com/post-factum/pf-kernel/-/wikis/README
 license=(GPL2)
 makedepends=(
-  bc kmod libelf pahole cpio perl
+  bc kmod libelf pahole cpio perl tar xz
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
 )
 options=('!strip')
 _srcname="${pkgbase}"
 source=(
-  "${_srcname}::git+${_base_url}.git#branch=${_branch}"
+  "${_srcname}::git+https://gitlab.com/post-factum/pf-kernel.git#branch=${_branch}"
   config         # the main kernel config file
-  sphinx-workaround.patch  # Sphinx 3.5 broke the build again
 )
 sha256sums=('SKIP'
-            '8b321b1bf372032092d74cddd3113b09dc0019521b8f899c05acc8a37bddeff4'
-            '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
+            '044dc5b5a73695040475cb5291cef657e6c04e0082f3e3d9a0b9eed2b985785f')
 
 pkgver() {
   cd "${_srcname}"
