@@ -1,14 +1,13 @@
 pkgbase = b3sum
 	pkgdesc = Command line implementation of the BLAKE3 hash function
-	pkgver = 0.3.7
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://github.com/BLAKE3-team/BLAKE3
 	arch = x86_64
 	license = Apache
 	makedepends = rust
 	depends = gcc-libs
-	source = b3sum-0.3.7.tar.gz::https://crates.io/api/v1/crates/b3sum/0.3.7/download
-	sha512sums = 78749ffc7e3632344996dda635b31a7a91a16e201ff8398148211a4315285c7c1d65acb78307fc8f54d7ce83e26364c8eafec94933f61aa78ed395540d44f833
+	source = b3sum-0.3.8.tar.gz::https://crates.io/api/v1/crates/b3sum/0.3.8/download
+	sha512sums = ae4e9f8bb035224afc1127f00d5f83567dea082a9b243cc8a024831ad4867278a2afb48fd5f64d60e1002ec12d446c9c9925523f1798f1006f4e07bd615e1afd
 
 pkgname = b3sum
-
