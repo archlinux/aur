@@ -1,0 +1,22 @@
+pkgbase = r-gargle
+	pkgdesc = Utilities for Working with Google APIs
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=gargle
+	arch = any
+	license = GPL3
+	depends = r>=3.3
+	depends = r-cli>=2.3.1
+	depends = r-fs>=1.3.1
+	depends = r-glue>=1.3.0
+	depends = r-httr>=1.4.0
+	depends = r-jsonlite
+	depends = r-rappdirs
+	depends = r-rlang>=0.4.9
+	depends = r-rstudioapi
+	depends = r-withr
+	source = https://cran.r-project.org/src/contrib/gargle_1.1.0.tar.gz
+	sha256sums = 7ce429638a3e3286e78f801636b3671400c0ea1647a159fa4d7c91f27f4bc20f
+
+pkgname = r-gargle
+
