@@ -1,6 +1,6 @@
 pkgbase = chromium-no-extras
 	pkgdesc = Chromium without hangout services, widevine, pipewire, or chromedriver
-	pkgver = 90.0.4430.212
+	pkgver = 91.0.4472.77
 	pkgrel = 1
 	url = https://www.chromium.org/Home
 	arch = x86_64
@@ -45,22 +45,30 @@ pkgbase = chromium-no-extras
 	depends = libxslt
 	depends = libpng
 	depends = freetype2
-	optdepends = kdialog: needed for file dialogs in KDE
+	optdepends = kdialog: support for native dialogs in Plasma
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
-	optdepends = kwallet: for storing passwords in KWallet on KDE desktops
-	provides = chromium=90.0.4430.212
+	optdepends = kwallet: support for storing passwords in KWallet on Plasma
+	provides = chromium=91.0.4472.77
 	conflicts = chromium
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-90.0.4430.212.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-91.0.4472.77.tar.xz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v7/chromium-launcher-7.tar.gz
-	source = https://github.com/stha09/chromium-patches/releases/download/chromium-90-patchset-6/chromium-90-patchset-6.tar.xz
+	source = https://github.com/stha09/chromium-patches/releases/download/chromium-91-patchset-5/chromium-91-patchset-5.tar.xz
+	source = fix-crash-in-ThemeService.patch
+	source = unbundle-use-char16_t-as-UCHAR_TYPE.patch
 	source = add-clang-nomerge-attribute-to-CheckError.patch
+	source = sql-make-VirtualCursor-standard-layout-type.patch
 	source = chromium-glibc-2.33.patch
+	source = unexpire-accelerated-video-decode-flag.patch
 	source = use-oauth2-client-switches-as-default.patch
-	sha256sums = abe11d0cb1ff21278aad2eec1a1e279d59176b15331804d7df1807446786d59e
+	sha256sums = 45d5a43ef798d20313c78fa8a075be0c22055e39c8481eb53eabda81df901b31
 	sha256sums = 86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f
-	sha256sums = 3eb9580ea35a96789e02815270498226fa33726f4210a5ee36f3868af2ffae1f
-	sha256sums = 5e22afcb91b5402bc09e80630c5323d61013c3fccb0bbd9b23d1e79a400b00d0
+	sha256sums = 171525009003a9ed1182cfcb6f407d7169d9a731a474304e263029376719f55a
+	sha256sums = 3cfe46e181cb9d337c454b5b5adbf5297052f29cd617cdee4380eeb1943825d8
+	sha256sums = 59a59a60a08b335fe8647fdf0f9d2288d236ebf2cc9626396d0c4d032fd2b25d
+	sha256sums = 50133dd196d288ad538bb536aa51dccd6cb4aacfd9a60160f77e8fb16034b460
+	sha256sums = dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150
 	sha256sums = 2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b
+	sha256sums = 82a85105fc33b92a84dabb7ed6725ccbb56f1075c11f9f3f43bb8ff724f88847
 	sha256sums = e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711
 
 pkgname = chromium-no-extras
