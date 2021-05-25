@@ -2,7 +2,7 @@
 pkgname=otf-manuale
 pkgver=1.001
 pkgrel=3
-pkgdesc='A serif typeface for editorial typography in print and online by Omnibus-Type.'
+pkgdesc='Serif typeface for editorial typography in print and online by Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/manuale/'
 license=('OFL')

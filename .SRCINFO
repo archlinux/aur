@@ -1,5 +1,5 @@
 pkgbase = otf-manuale
-	pkgdesc = A serif typeface for editorial typography in print and online by Omnibus-Type.
+	pkgdesc = Serif typeface for editorial typography in print and online by Omnibus-Type.
 	pkgver = 1.001
 	pkgrel = 3
 	url = https://www.omnibus-type.com/fonts/manuale/
