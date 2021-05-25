@@ -1,0 +1,16 @@
+pkgbase = gstcisp
+	pkgdesc = gSTC-ISP is used to program the STC89C52RC by serial port in Linux
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://gstcisp.sourceforge.net/
+	arch = x86_64
+	arch = i686
+	license = GPLv3
+	makedepends = gcc
+	depends = vte-legacy
+	depends = gtk2
+	source = http://sourceforge.net/projects/gstcisp/files/gSTC-ISP_v1.0.tar.gz
+	sha256sums = 67344a08a64cc2b0fdcec5cf50d57d2f4755928fa90828be5dc4d1ec06d8388a
+
+pkgname = gstcisp
+
