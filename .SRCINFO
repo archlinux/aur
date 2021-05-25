@@ -1,6 +1,6 @@
 pkgbase = gamja-git
 	pkgdesc = Simple IRC web client
-	pkgver = r213.727331c
+	pkgver = r229.982a945
 	pkgrel = 1
 	url = https://sr.ht/~emersion/gamja/
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = gamja-git
 	makedepends = git
 	provides = gamja
 	conflicts = gamja
+	backup = usr/share/webapps/gamja/config.json
 	source = gamja::git+https://git.sr.ht/~emersion/gamja
 	sha256sums = SKIP
 

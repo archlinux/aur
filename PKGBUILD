@@ -2,7 +2,7 @@
 
 pkgname=gamja-git
 _pkgname=gamja
-pkgver=r213.727331c
+pkgver=r229.982a945
 pkgrel=1
 pkgdesc='Simple IRC web client'
 arch=('any')
@@ -13,6 +13,7 @@ provides=('gamja')
 conflicts=('gamja')
 source=("$_pkgname::git+https://git.sr.ht/~emersion/${_pkgname}")
 sha256sums=('SKIP')
+backup=('usr/share/webapps/gamja/config.json')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
