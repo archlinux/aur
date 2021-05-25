@@ -1,4 +1,5 @@
-# Maintainer: Manifest0
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Manifest0
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.29
 
