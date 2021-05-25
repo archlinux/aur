@@ -4,9 +4,11 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Arch Haskell Team <arch-haskell@haskell.org>
 
+shopt -s extglob
+
 pkgname=pandoc-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=2.11.4.r33.gb79aba6ea
+pkgver=2.14rc.r12.g54ab7a0a3
 pkgrel=1
 pkgdesc='Conversion between markup formats (static build, dynamic Lua support)'
 url='https://pandoc.org'
@@ -16,13 +18,16 @@ optdepends=('pandoc-citeproc: for citation rendering with pandoc-citeproc filter
             'texlive-core: for pdf output')
 conflicts=('haskell-pandoc' 'pandoc' 'pandoc-bin')
 replaces=('haskell-pandoc' 'pandoc' 'pandoc-bin')
-provides=("pandoc=${pkgver%.r*}")
+provides=("pandoc=${pkgver%%*([a-z]).r*}")
 makedepends=('stack>=1.7.0')
 source=("git+https://github.com/jgm/pandoc.git")
 sha512sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
+    eval "$(git for-each-ref --shell --sort=creatordate \
+        --format 'git tag --force %(refname:lstrip=-1)rc %(refname)' \
+        'refs/**/rc/*' | tail -n1)"
     git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
