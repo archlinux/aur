@@ -1,4 +1,5 @@
-# Maintainer: Vanush Misha Paturyan <ektich+cfengine-aur@gmail.com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Vanush Misha Paturyan <ektich+cfengine-aur@gmail.com>
 # Maintainer: Alexey Shpakovsky <alexey at shpakovsky dot ru>
 # https://aur.archlinux.org/cfengine.git 
 #
@@ -7,8 +8,8 @@
 # Contributor: Christian Berendt <christian@thorlin.de>
 
 pkgname=cfengine
-pkgver=3.15.1
-pkgrel=3
+pkgver=3.15.2
+pkgrel=1
 pkgdesc='Automated suite of programs for configuring and maintaining Unix-like computers.'
 url='https://cfengine.com'
 license=('GPL3')
@@ -22,23 +23,30 @@ source=("${pkgname}-${pkgver}.tar.gz::https://cfengine-package-repos.s3.amazonaw
         'cf-execd.service'
         'cf-monitord.service'
         'cf-serverd.service'
-	'cfengine3.service')
+        'cfengine3.service'
+        'CFE-3302.patch')
 
-md5sums=('f45e3eefa6449ef44c60b5b7c8dbe257'
-         'd2876ef406e4f16d2eb93c74a2df7265'
+md5sums=('be04030c007dacd69ad705059a906495'
+         'c5cd389a09e33e58e7d944e10013ea1e'
          '6edac71eaac0a19fc5b8129f17d82bb2'
          '199a7867b60a3e4013da4ac42343e22e'
          'f8783637895f6f3dd19a6ba689181d41'
-         '4b89518da032b45073e46a993fd7fe26')
+         '4b89518da032b45073e46a993fd7fe26'
+         'fbdb0935f146efedb9dcc9f11b5b2ff7')
 
 prepare() {
-  cd ${srcdir}/${pkgname}-masterfiles-${pkgver}
-  patch -p1 <../../CFE-3302.patch
+  cd ${pkgname}-${pkgver}
+  autoreconf -fiv
+  cd ..
+  cd ${pkgname}-masterfiles-${pkgver}
+  patch -p1 <../CFE-3302.patch
+  autoreconf -fiv
 }
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
 
+  export CFLAGS="$CFLAGS -fcommon"
   ./configure \
     --prefix=/usr \
     --with-workdir=/var/${pkgname} \
@@ -52,36 +60,39 @@ build() {
     --with-postgresql=check
 
   make
+  cd ..
   # now build masterfiles
-  cd ${srcdir}/${pkgname}-masterfiles-${pkgver}
+  cd ${pkgname}-masterfiles-${pkgver}
   ./configure \
       --prefix=/usr/share/doc/cfengine/CoreBase \
       --with-core=../cfengine-${pkgver}
 }
 
 check() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
   make check
-
-  cd ${srcdir}/${pkgname}-masterfiles-${pkgver}
+  cd ..
+  cd ${pkgname}-masterfiles-${pkgver}
   make check
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
   make DESTDIR=$pkgdir install
+  cd ..
 
   # masterfiles
-  cd ${srcdir}/${pkgname}-masterfiles-${pkgver}
+  cd ${pkgname}-masterfiles-${pkgver}
   make DESTDIR=$pkgdir install
+  cd ..
 
-  install -D -m644 ${srcdir}/cf-execd.service \
+  install -D -m644 cf-execd.service \
 	  ${pkgdir}/usr/lib/systemd/system/cf-execd.service
-  install -D -m644 ${srcdir}/cf-serverd.service \
+  install -D -m644 cf-serverd.service \
 	  ${pkgdir}/usr/lib/systemd/system/cf-serverd.service
-  install -D -m644 ${srcdir}/cf-monitord.service \
+  install -D -m644 cf-monitord.service \
 	  ${pkgdir}/usr/lib/systemd/system/cf-monitord.service
-  install -D -m644 ${srcdir}/cfengine3.service \
+  install -D -m644 cfengine3.service \
 	  ${pkgdir}/usr/lib/systemd/system/cfengine3.service
 
 

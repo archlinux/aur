@@ -1,7 +1,7 @@
 pkgbase = cfengine
 	pkgdesc = Automated suite of programs for configuring and maintaining Unix-like computers.
-	pkgver = 3.15.1
-	pkgrel = 3
+	pkgver = 3.15.2
+	pkgrel = 1
 	url = https://cfengine.com
 	install = cfengine.install
 	arch = i686
@@ -20,18 +20,20 @@ pkgbase = cfengine
 	optdepends = postgresql-libs
 	optdepends = libmariadbclient
 	optdepends = acl
-	source = cfengine-3.15.1.tar.gz::https://cfengine-package-repos.s3.amazonaws.com/tarballs/cfengine-3.15.1.tar.gz
-	source = cfengine-masterfiles-3.15.1.tar.gz::https://cfengine-package-repos.s3.amazonaws.com/tarballs/cfengine-masterfiles-3.15.1.tar.gz
+	source = cfengine-3.15.2.tar.gz::https://cfengine-package-repos.s3.amazonaws.com/tarballs/cfengine-3.15.2.tar.gz
+	source = cfengine-masterfiles-3.15.2.tar.gz::https://cfengine-package-repos.s3.amazonaws.com/tarballs/cfengine-masterfiles-3.15.2.tar.gz
 	source = cf-execd.service
 	source = cf-monitord.service
 	source = cf-serverd.service
 	source = cfengine3.service
-	md5sums = f45e3eefa6449ef44c60b5b7c8dbe257
-	md5sums = d2876ef406e4f16d2eb93c74a2df7265
+	source = CFE-3302.patch
+	md5sums = be04030c007dacd69ad705059a906495
+	md5sums = c5cd389a09e33e58e7d944e10013ea1e
 	md5sums = 6edac71eaac0a19fc5b8129f17d82bb2
 	md5sums = 199a7867b60a3e4013da4ac42343e22e
 	md5sums = f8783637895f6f3dd19a6ba689181d41
 	md5sums = 4b89518da032b45073e46a993fd7fe26
+	md5sums = fbdb0935f146efedb9dcc9f11b5b2ff7
 
 pkgname = cfengine
 
