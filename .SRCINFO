@@ -1,6 +1,6 @@
 pkgbase = blender-2.93-bin
 	pkgdesc = A fully integrated 3D graphics creation suite
-	pkgver = 2.93.210429.39226cd437c4
+	pkgver = 2.93.210525.1a69d491e57c
 	pkgrel = 1
 	url = https://www.blender.org
 	arch = x86_64
@@ -40,7 +40,7 @@ pkgbase = blender-2.93-bin
 	depends = sdl2
 	depends = embree
 	optdepends = cuda: cycles renderer cuda support
-	source = daily.210430.html::https://builder.blender.org/download/
+	source = daily.210525.html::https://builder.blender.org/download/
 	md5sums = SKIP
 
 pkgname = blender-2.93-bin

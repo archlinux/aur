@@ -2,7 +2,7 @@
 # Contributor: Oliver Mangold <o.mangold@gmail.com>
 # Contributor: Adam Brunnmeier <adam.brunnmeier@gmail.com>
 pkgname=blender-2.93-bin
-pkgver=2.93.210429.39226cd437c4
+pkgver=2.93.210525.1a69d491e57c
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite"
 arch=('x86_64')
@@ -25,10 +25,11 @@ md5sums=('SKIP')
 _setvars() {
 	cd "$srcdir"
 	_upstreamversion=$(echo $pkgname | cut -d '-' -f2)
-	local regex="blender-${_upstreamversion}[^-]*-([^-]+)-linux64.tar.xz" && [[ $(cat $_webpage) =~ $regex ]]
+	local regex="blender-${_upstreamversion}[^-]*[^\+]+\+([^.]+).([^-]+)-linux.x86_64-release.tar.xz" && [[ $(cat $_webpage) =~ $regex ]]
 	_full=${BASH_REMATCH[0]}
-	_commit=${BASH_REMATCH[1]}
-	local regex="([A-Za-z]+ [0-9]+, [0-9]+:[0-9]+:[0-9]+)[^-]*-\s*$_commit" && [[ $(cat $_webpage) =~ $regex ]]
+	_branch=${BASH_REMATCH[1]}
+	_commit=${BASH_REMATCH[2]}
+	local regex="([A-Za-z]+ [0-9]+, [0-9]+:[0-9]+:[0-9]+) - $_branch - $_commit" && [[ $(cat $_webpage) =~ $regex ]]
 	_date=$(date --date="${BASH_REMATCH[1]//,}" "+%y%m%d")
 }
 
@@ -40,7 +41,7 @@ pkgver() {
 build() {
 	_setvars
 	cd "$srcdir"
-	wget -nc "https://builder.blender.org/download/$_full"
+	wget -nc "https://builder.blender.org/download/daily/$_full"
 	tar -xJ -f "$_full"
 	cd "${_full%.tar.xz}"
 	# Remove included Python installation, so system Python is used instead. (python 3.9) (working 2021-04-02)
