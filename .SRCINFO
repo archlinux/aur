@@ -1,17 +1,18 @@
 pkgbase = icon-library
 	pkgdesc = Find the right symbolic icon to use on your GNOME application
-	pkgver = 0.0.6
-	pkgrel = 2
+	pkgver = 0.0.8
+	pkgrel = 1
 	url = https://gitlab.gnome.org/World/design/icon-library
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = cmake
 	makedepends = meson
 	makedepends = rust
 	depends = gtksourceview4
-	depends = libhandy0
-	source = https://gitlab.gnome.org/World/design/icon-library/-/archive/0.0.6/icon-library-0.0.6.tar.gz
-	sha256sums = 39e96fad4213dcd0709a606d2fb9fb70bad1d9828741cd65498aa097556ef56d
+	depends = libhandy
+	source = https://gitlab.gnome.org/World/design/icon-library/-/archive/0.0.8/icon-library-0.0.8.tar.gz
+	sha256sums = 7aaebac60d615138971327a064f7a39ca19ea69e78c27b5fee04de0be76d135c
 
 pkgname = icon-library
 
