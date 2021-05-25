@@ -45,7 +45,7 @@ pkgver() {
   # git, no tags available
   #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   # Git, tags available
-  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "%s" "$(git describe --long --all | sed 's#^tags/##' | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
