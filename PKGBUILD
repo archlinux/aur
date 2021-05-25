@@ -2,7 +2,7 @@
 pkgname=otf-sansita-swashed
 pkgver=1.003
 pkgrel=2
-pkgdesc='An ornate version of Sansita from Omnibus-Type.'
+pkgdesc='Ornate version of Sansita from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/sansita-swashed/'
 license=('OFL')

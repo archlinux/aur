@@ -1,5 +1,5 @@
 pkgbase = otf-sansita-swashed
-	pkgdesc = An ornate version of Sansita from Omnibus-Type.
+	pkgdesc = Ornate version of Sansita from Omnibus-Type.
 	pkgver = 1.003
 	pkgrel = 2
 	url = https://www.omnibus-type.com/fonts/sansita-swashed/
