@@ -1,0 +1,12 @@
+diff -Naur apngasm-3.1.6.orig/cli/src/cli.cpp apngasm-3.1.6.new/cli/src/cli.cpp
+--- apngasm-3.1.6.orig/cli/src/cli.cpp	2015-08-21 07:57:18.000000000 +0200
++++ apngasm-3.1.6.new/cli/src/cli.cpp	2021-05-25 17:31:15.729027302 +0200
+@@ -80,7 +80,7 @@
+ 			  createParentDirs(filePath);
+ 			  return true;
+ 		  }
+-		  if(!filesystem::exists(filesystem::path(filePath))) {
++		  if(!boost::filesystem::exists(boost::filesystem::path(filePath))) {
+ 			  createParentDirs(filePath);
+ 			  return true;
+ 		  }
