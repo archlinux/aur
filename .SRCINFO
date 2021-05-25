@@ -1,0 +1,13 @@
+pkgbase = hidrdd
+	pkgdesc = USB Human Interface Device (HID) Report Descriptor Decoder.
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/abend0c1/hidrdd
+	arch = any
+	license = GPL3
+	depends = rexx
+	source = https://github.com/abend0c1/hidrdd/archive/refs/tags/v2.0.tar.gz
+	sha256sums = 428287d53acf84488e426bf60ef34070a66a74ab2a8634d8a69b987a60fd7ec0
+
+pkgname = hidrdd
+
