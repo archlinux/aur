@@ -1,8 +1,9 @@
 # Maintainer: Vitalii Rybalko <vilko dot a at gmail dot com>
+# Maintainer: Pasha Finkelshteyn <pavel.finkelshtein+AUR@gmail.com>
 
 pkgname=playkey-linux
 pkgver=1.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Client for game streaming service playkey.net'
 arch=('x86_64')
 url='https://www.playkey.net'
@@ -27,10 +28,9 @@ source_x86_64=(
 	'https://static.playkey.net/clientdownload.aspx?file=windows-desktop/Release/PlaykeySetup.exe&name=PlaykeySetup.exe'
 	'git+https://github.com/vilkoz/playkey-linux-launcher.git'
 )
-sha256sums_x86_64=(
-	'29d9903ecfa10cba77493625686623e4bc2590e0d476c80ea938f2e0c90d5618'
-	'SKIP'
-)
+sha256sums_x86_64=('64445f620b43a8dd93de6233c42643ef902d94c85d48ab4e6a116feba051ad13'
+                   'SKIP')
+
 
 prepare() {
 	msg2 'Extracting PlaykeySetup.exe'
