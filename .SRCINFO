@@ -1,6 +1,6 @@
 pkgbase = pcem-git
 	pkgdesc = Emulator for various IBM PC computers and clones - development version
-	pkgver = r1735.feda966
+	pkgver = r1739.c82cd20
 	pkgrel = 1
 	url = http://pcem-emulator.co.uk/
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = pcem-git
 	depends = openal
 	depends = sdl2
 	conflicts = pcem
-	conflicts = pcem-hg
 	source = git+https://github.com/sarah-walker-pcem/pcem.git
 	sha256sums = SKIP
 

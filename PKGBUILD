@@ -2,7 +2,7 @@
 # Based on Aaron Paden <aaronbpaden@gmail.com> PKGBUILD for pcem
 pkgname=pcem-git
 _pkgname=pcem
-pkgver=r1735.feda966
+pkgver=r1739.c82cd20
 pkgrel=1
 pkgdesc="Emulator for various IBM PC computers and clones - development version"
 url="http://pcem-emulator.co.uk/"
@@ -10,7 +10,7 @@ arch=('x86_64' 'i686')
 license=('GPL2')
 depends=('wxgtk2' 'openal' 'sdl2')
 makedepends=('git' 'automake-1.15')
-conflicts=('pcem' 'pcem-hg')
+conflicts=('pcem')
 source=("git+https://github.com/sarah-walker-pcem/pcem.git")
 sha256sums=('SKIP')
 
