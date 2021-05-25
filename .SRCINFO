@@ -17,7 +17,7 @@ pkgbase = vital-synth
 	depends = libglvnd
 	depends = libsecret>=0.7
 	provides = vital
-	source_x86_64 = VitalInstaller-1.0.8-1.deb::https://github.com/jackreeds/VitalInstaller/releases/download/1.0.8/VitalInstaller.deb
+	source_x86_64 = vital-synth-1.0.8-1.deb::https://github.com/jackreeds/VitalInstaller/releases/download/1.0.8/VitalInstaller.deb
 	sha512sums_x86_64 = 829d29a0c41ac9f79ca6d069e2e4f404a501abdcdc487fbb4e1e8afd44bf870c6c41095587c98f810fb946d946179468f8d5f417e67785313152a1613cf4a832
 
 pkgname = vital-synth

@@ -1,4 +1,3 @@
-# Maintainer: altaway <aur at altaway dot uk> 
 # Maintainer: jackreeds <jackreeds at git>
 maintainer=jackreeds
 pkgname=vital-synth
@@ -16,7 +15,7 @@ depends=('alsa-lib>=1.0.16' 'freetype2>=2.2.1' 'gcc-libs' 'gcc>=3.3.1' 'glib2>=2
 # options=('!strip' '!emptydirs')
 install=${pkgname}.install
 pkgname_deb="VitalInstaller"
-source_x86_64=("${pkgname_deb}-${pkgver}-${pkgrel}.deb::https://github.com/${maintainer}/${pkgname_deb}/releases/download/${pkgver}/${pkgname_deb}.deb")
+source_x86_64=("${pkgname}-${pkgver}-${pkgrel}.deb::https://github.com/${maintainer}/${pkgname_deb}/releases/download/${pkgver}/${pkgname_deb}.deb")
 sha512sums_x86_64=('829d29a0c41ac9f79ca6d069e2e4f404a501abdcdc487fbb4e1e8afd44bf870c6c41095587c98f810fb946d946179468f8d5f417e67785313152a1613cf4a832')
 
 package(){
