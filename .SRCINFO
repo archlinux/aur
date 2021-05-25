@@ -1,5 +1,5 @@
 pkgbase = otf-archivo-narrow
-	pkgdesc = A grotesque sans-serif typeface family from Omnibus-Type.
+	pkgdesc = Grotesque sans-serif typeface family from Omnibus-Type.
 	pkgver = 3.000
 	pkgrel = 1
 	url = https://www.omnibus-type.com/fonts/archivo-narrow/

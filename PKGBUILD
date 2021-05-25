@@ -2,7 +2,7 @@
 pkgname=otf-archivo-narrow
 pkgver=3.000
 pkgrel=1
-pkgdesc='A grotesque sans-serif typeface family from Omnibus-Type.'
+pkgdesc='Grotesque sans-serif typeface family from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/archivo-narrow/'
 license=('OFL')
