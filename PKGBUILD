@@ -1,7 +1,7 @@
 # Maintainer: Vincent Bernardoff <vb@luminar.eu.org>
 
 pkgname=solana-bin
-pkgver=1.6.9
+pkgver=1.6.10
 pkgrel=1
 pkgdesc='Binaries for the Solana blockchain'
 arch=('x86_64')
@@ -12,8 +12,8 @@ conflicts=('solana')
 options=(!strip)
 depends=('openssl' 'systemd-libs')
 
-source=("https://github.com/solana-labs/solana/releases/download/v${pkgver}/solana-release-x86_64-unknown-linux-gnu.tar.bz2")
-md5sums=('ee0b6e866b40ac950b09cac68e698257')
+source=("$pkgname-$pkgver.tar.bz2::https://github.com/solana-labs/solana/releases/download/v${pkgver}/solana-release-x86_64-unknown-linux-gnu.tar.bz2")
+md5sums=('b77fcea4aa6a75162829519e4e2143b4')
 
 package() {
   cd ${srcdir}
