@@ -1,7 +1,7 @@
 pkgbase = gint
 	pkgdesc = Alternative library and kernel for add-in development on fx-9860G and fx-CG50 under Linux
-	pkgver = 2.4.1
-	pkgrel = 3
+	pkgver = 2.5.0
+	pkgrel = 1
 	url = https://gitea.planet-casio.com/Lephenixnoir/gint
 	arch = i686
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = gint
 	conflicts = gint-git
 	options = !buildflags
 	options = !strip
-	source = gint-2.4.1.tar.gz::https://gitea.planet-casio.com/Lephenixnoir/gint/archive/2.4.1.tar.gz
-	sha256sums = c7dec382a039f2f8308d2d0e5782d6ea0b6fd5cc3c49aae5d258d5ab306adf0f
+	source = gint-2.5.0.tar.gz::https://gitea.planet-casio.com/Lephenixnoir/gint/archive/2.5.0.tar.gz
+	sha256sums = 7120a74bca179dd439e6b5478765c5988787cf3c7e7b1058d95f96d070807430
 
 pkgname = gint
 
