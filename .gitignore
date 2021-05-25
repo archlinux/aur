@@ -1,4 +1,6 @@
 DCL.txt
+add_dgraph_account.sh
+*.service
 
 # Created by https://www.gitignore.io/api/archlinuxpackages
 # Edit at https://www.gitignore.io/?templates=archlinuxpackages

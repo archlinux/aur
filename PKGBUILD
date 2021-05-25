@@ -5,7 +5,7 @@
 
 pkgname=dgraph-bin
 pkgver=20.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, transactional, distributed graph database'
 arch=('x86_64')
 url='https://github.com/dgraph-io/dgraph'
