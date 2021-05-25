@@ -1,0 +1,12 @@
+pkgbase = wormhole-gui-bin
+	pkgdesc = Cross-platform application for easy encrypted sharing of files, folders, and text between devices.
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = https://github.com/Jacalz/wormhole-gui
+	arch = x86_64
+	license = GPLv3
+	source = wormhole-gui-bin-2.2.2.tar.gz::https://github.com/Jacalz/wormhole-gui/releases/download/v2.2.2/wormhole-gui-v2.2.2-linux-amd64.tar.gz
+	sha256sums = 016a0ea6e2975b1ab253c3415c858c4bc2940f344b873cf2f0edff9dabbe7032
+
+pkgname = wormhole-gui-bin
+
