@@ -17,7 +17,7 @@ build()
     cd ${pkgname}-${pkgver}
     mkdir build
     cd build
-    cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DDISABLE_TESTS=ON
+    cmake ..
     make
 }
 
