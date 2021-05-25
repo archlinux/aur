@@ -1,6 +1,6 @@
 pkgbase = xde-helpers-git
 	pkgdesc = XDE .desktop entry helpers
-	pkgver = 1.6.r0.g86916b2c
+	pkgver = 1.7.r4.g1b57e139
 	pkgrel = 1
 	url = http://github.com/bbidulock/xde-helpers
 	install = xde-helpers.install
@@ -12,7 +12,7 @@ pkgbase = xde-helpers-git
 	depends = xdg-utils
 	depends = gxmessage-gtk2
 	depends = desktop-file-utils
-	provides = xde-helpers=1.6.r0.g86916b2c
+	provides = xde-helpers=1.7.r4.g1b57e139
 	conflicts = xde-helpers
 	source = xde-helpers-git::git+https://github.com/bbidulock/xde-helpers.git
 	md5sums = SKIP
