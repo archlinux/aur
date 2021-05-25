@@ -1,18 +1,18 @@
 # Maintainer: Maarten de Boer <maarten@cloudstek.nl>
 
 pkgname=teleport
-pkgver=6.1.2
-pkgrel=1
+pkgver=6.2.0
+pkgrel=2
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/gravitational/teleport"
 license=('Apache')
-depends=('bash' 'python')
+depends=()
 makedepends=('go>=1.14.0')
 provides=('tctl' 'tsh')
 install=teleport.install
 
-_webassets_ref=cf396f868aebb8ba654ea2398c25f033181e7114
+_webassets_ref=8c2812c169fa6bd5f31c13160bd93ef8b317bbc9
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gravitational/teleport/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}-webassets-${_webassets_ref}.tar.gz::https://github.com/gravitational/webassets/archive/${_webassets_ref}.tar.gz"
@@ -20,11 +20,11 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gravitational/teleport/
         "teleport@.service"
         "teleport.install")
 
-sha256sums=('5488590773f302a432fedde96a57235233d4c4669ceae8bebb1a74dac57b4f2c'
-            '341759a5bb6025eceaa78af96be19116756e9c4112a5b7688f12589f0e78a2d8'
+sha256sums=('bf479d580dc0f9187493645b6e3aa7e5458e46ff4c632169fc688946a6265ba2'
+            '14445b0864d759347c1f53dc144a346b1974b8ded49031d7f0b7227f5d49d407'
             '10ac25cea1b5c193d7f968ca28a1da0e54b847f29c2a0186b46fd853194be38a'
             '4bc17fdde981f91c5d9972ae0555ee5e8b63a6b67e007c28f83ada80823980fd'
-            'cff4e3c69677210bdde9a781146df06fba3a62cef72ed6854cd1923a05444435')
+            '367253397479419feb4572778f3bd5bbd573058070550bdbcf01d045efa6397a')
 
 prepare() {
     mv "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/${pkgname}"
