@@ -4,7 +4,7 @@
 
 pkgname=bootstrap-studio
 pkgver=5.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Bootstrap Studio is a powerful tool which web developers and designers use to create layouts and fully functional websites using the Bootstrap framework."
 arch=("x86_64")
 license=("custom")
@@ -16,19 +16,23 @@ sha256sums=("SKIP"
 						"SKIP")
 
 prepare() {
+        # Extract AppImage
+        echo "Extracting AppImage..."
 	chmod +x "Bootstrap Studio.AppImage"
-	./"Bootstrap Studio.AppImage" --appimage-extract
+	./"Bootstrap Studio.AppImage" --appimage-extract &> /dev/null
 }
 
 package() {
 	# Copy package files
+        echo "Copying package files..."
 	mkdir -p "${pkgdir}/opt/bootstrap-studio"
 	cp -Lr "${srcdir}/squashfs-root" "${pkgdir}/opt/bootstrap-studio"
+	# Set perms
+        chmod a+r "${pkgdir}/opt/bootstrap-studio" -R
 
 	# Add package to /usr/bin/
 	mkdir -p "${pkgdir}/usr/bin"
-	echo '#!/usr/bin/env bash
-    	 gtk-launch bstudio.desktop' | tee "${pkgdir}/usr/bin/bootstrap-studio"
+        printf '#!/bin/bash\n\n/opt/bootstrap-studio/AppRun' | tee "${pkgdir}/usr/bin/bootstrap-studio" &> /dev/null
         chmod +x "${pkgdir}/usr/bin/bootstrap-studio"
 
 	# Copy .desktop file
