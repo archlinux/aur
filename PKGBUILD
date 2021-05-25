@@ -1,7 +1,7 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 pkgname=spectrwm-git
 _gitname=spectrwm
-pkgver=3.2.0.r28.g64bee8a
+pkgver=3.4.1.r16.g92589af
 pkgrel=1
 pkgdesc="A minimalistic dynamic tiling window manager that tries to stay out of the way."
 arch=('i686' 'x86_64')
@@ -14,10 +14,8 @@ makedepends=('git' 'libxt')
 optdepends=('scrot: screenshots'
             'xlockmore: screenlocking')
 source=('git+https://github.com/conformal/spectrwm'
-        'LICENSE'
         'baraction.sh')
 md5sums=('SKIP'
-         'a67cfe51079481e5b0eab1ad371379e3'
          '950d663692e1da56e0ac864c6c3ed80e')
 provides=('scrotwm' "spectrwm=${epoch:+$epoch:}${pkgver%%.r*}-${pkgrel}")
 conflicts=('scrotwm' 'spectrwm')
@@ -37,17 +35,17 @@ prepare() {
 
 build() {
   cd "$srcdir/$_gitname/linux"
-  make PREFIX="/usr"
+  make PREFIX="/usr" SYSCONFDIR="/etc"
 }
 
 package() {
   cd "$srcdir/$_gitname/linux"
-  make PREFIX="/usr" DESTDIR="$pkgdir" install
+  make PREFIX="/usr" SYSCONFDIR="/etc" DESTDIR="$pkgdir" install
   install -Dm644 spectrwm.desktop "$pkgdir/usr/share/xsessions/spectrwm.desktop"
   cd ..
   install -Dm644 spectrwm.conf "$pkgdir/etc/spectrwm.conf"
   install -Dm755 screenshot.sh "$pkgdir/usr/share/spectrwm/screenshot.sh"
-  install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
   install -Dm755 ../baraction.sh "$pkgdir/usr/share/spectrwm/baraction.sh"
 
   #ln -s /usr/lib/libswmhack.so.0.0 "$pkgdir/usr/lib/libswmhack.so.0"
