@@ -3,19 +3,28 @@
 
 pkgname=helvum
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='GTK-based patchbay for pipewire, inspired by the JACK tool catia'
 arch=('x86_64')
 url='https://gitlab.freedesktop.org/ryuukyu/helvum'
 license=('GPL3')
 depends=('gtk4' 'pipewire')
-makedepends=('rust>=1.51' 'clang')
-provides=("${pkgname}")
+makedepends=('rust' 'clang' 'semver')
 conflicts=('helvum-git')
 source=("https://gitlab.freedesktop.org/ryuukyu/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
     "${pkgname}.desktop")
 sha512sums=('990a420ea837c13b216abe1cbbd7ba738a5b0b4d5793c9f2d7f55a6ad1369c2ff6ff67a176df0036d27e1e85577a9e915ad0ded2238d82cf83d1d584b7cb62da'
     '0a76aa3b7c98d08ded9d4c7a2254faa0b83a2f2339db81b995819b0f0e4721cf79df17473ca22a4d8aab161b162e70f7e63b728e603c6b9cb09f2f361aa8e537')
+
+# This package needs at least rust 1.51 to build correctly: https://gitlab.freedesktop.org/ryuukyu/helvum/-/issues/4
+# No proper solution to handle this was implemented in rust so far: https://rust-lang.github.io/rfcs/2495-min-rust-version.html
+# This check will fail when the installed rust version doesn't meet the minimum requirement, although it shouldn't occur when an up-to-date build environment is used.
+prepare() {
+  min_ver='1.51'
+  echo "Checking for minimal required rust version (${min_ver})..."
+  rust_ver=$(rustc --version | awk '{print $2}')
+  semver -r ">=${min_ver}" "${rust_ver}"
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
