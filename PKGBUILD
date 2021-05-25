@@ -2,7 +2,7 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-bin
 pkgver=3.83.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
 url="https://tutanota.com"
@@ -11,7 +11,7 @@ depends=('nss' 'libappindicator-gtk3' 'libnotify' 'org.freedesktop.secrets')
 makedepends=('openssl')
 source=("${pkgname%-bin}-$pkgver.AppImage::https://mail.tutanota.com/desktop/${pkgname%-bin}-linux.AppImage"
         "linux-sig-$pkgver.bin::https://mail.tutanota.com/desktop/linux-sig.bin"
-        'https://raw.githubusercontent.com/tutao/tutanota/master/tutao-pub.pem'
+        "tutao-pub-$pkgver.pem::https://github.com/tutao/tutanota/raw/tutanota-release-$pkgver/tutao-pub.pem"
         "${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-linux")
@@ -23,7 +23,7 @@ sha512sums=('5de22d317ada78b893f5b9aebc68eed3c2eff2607a439ebc9aa4e584a195111c844
 
 prepare() {
 	# Validate the signature against public key: https://tutanota.com/howto/#verify-desktop
-	openssl dgst -sha512 -verify tutao-pub.pem -signature linux-sig-${pkgver}.bin \
+	openssl dgst -sha512 -verify tutao-pub-$pkgver.pem -signature linux-sig-${pkgver}.bin \
 		"${pkgname%-bin}-$pkgver.AppImage"
 
 	chmod +x "${pkgname%-bin}-$pkgver.AppImage"
