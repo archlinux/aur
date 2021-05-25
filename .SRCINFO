@@ -1,6 +1,6 @@
 pkgbase = afni
 	pkgdesc = An open-source environment for processing and displaying functional MRI data
-	pkgver = 21.1.03
+	pkgver = 21.1.08
 	pkgrel = 1
 	url = http://afni.nimh.nih.gov
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = afni
 	depends = libjpeg-turbo
 	depends = libxmu
 	depends = libxft
-	source = afni-21.1.03.tar.gz::https://github.com/afni/afni/archive/AFNI_21.1.03.tar.gz
+	source = afni-21.1.08.tar.gz::https://github.com/afni/afni/archive/AFNI_21.1.08.tar.gz
 	source = Makefile.patch
-	md5sums = 763780228a67ba12a669f8923f6ab182
+	md5sums = 055dfa1d026f2fb1d297c73c4275fddc
 	md5sums = 2cc1916ecd1e775f52d189f1dd5b0ed9
 
 pkgname = afni
