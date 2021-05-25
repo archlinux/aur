@@ -1,6 +1,6 @@
 # Maintainer: Pranav K Anupam <pranavanupam@yahoo.com>
 _cranname=ids
-_cranver=0.1-4
+_cranver=1.0.1
 _pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-ids
 pkgver=${_cranver//[:-]/.}
