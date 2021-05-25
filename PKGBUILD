@@ -8,7 +8,7 @@ _lua=luajit
 
 _pkgname=powder-toy
 pkgname="${_pkgname}-snapshot"
-pkgver=209
+pkgver=210
 pkgrel=1
 pkgdesc="Desktop version of the classic falling sand physics sandbox, simulates air pressure, velocity & heat! - Bleeding edge (snapshot) branch"
 arch=(x86_64 i686)
@@ -24,7 +24,7 @@ source=("${pkgname}-${pkgver}.tar.gz::http://github.com/ThePowderToy/The-Powder-
         "${pkgname}.desktop"
         "${pkgname}-open.desktop"
         "${pkgname}-ptsave.desktop")
-sha256sums=('6e79f6d56c0a7c7c2e0fcaf23125640b7417d905809192d6d135a81fc90644cb'
+sha256sums=('067288c1a66222a538473e4761a0e58c78c8c5c3b62ffea9deef00fdec00c167'
             '2b3a51ed0f41be065da71c6f9b48d4b8e75111dd8ea6028b5ad069817c31b7bf'
             'b5d181c3141715b7dced8813cae6d07d2adc03bca2a7efe527592740de2d45e2'
             '265f530be7597fcc7bbaf2690fd517fe4f8f18372c808a90ddef49a604c8d455'
