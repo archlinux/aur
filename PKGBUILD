@@ -5,8 +5,10 @@
 
 pkgname=pandoc-crossref-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.3.12.0c
+pkgver=0.3.12.0c.r0.gfe8033c
+_pandoc_type=stock
 _pandoc_ver=2.14.2
+_pandoc_commit=c909d16cccbae92add6b1e2430ce9e6d51e0c7e5
 pkgrel=1
 pkgdesc="Pandoc filter for cross-references (static build)"
 url="https://github.com/lierdakil/pandoc-crossref"
@@ -17,8 +19,9 @@ provides=("$_pkgname=$pkgver")
 replaces=('pandoc-crossref-bin' 'pandoc-crossref-static' 'pandoc-crossref-lite')
 depends=("pandoc=$_pandoc_ver")
 makedepends=('stack' 'pandoc')
-source=("$pkgname::git+$url.git")
-sha256sums=('SKIP')
+source=("$pkgname::git+$url.git" ver-bump.patch)
+sha256sums=('SKIP'
+            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 
 pkgver() {
     cd "$pkgname"
@@ -27,7 +30,24 @@ pkgver() {
 
 prepare() {
     cd "$pkgname"
-    sed -i "s/pandoc-\([1-9]\+\.\)\{3\}[1-9]\+/pandoc-$_pandoc_ver/" stack.yaml
+    patch --forward --strip=1 --input="${srcdir}/ver-bump.patch"
+    sedscript=''
+    case "$_pandoc_type" in
+    stock) return;;
+    commit)
+        sedscript='/ pandoc-\([0-9]\+\.\)\{1,3\}[0-9]\+/{'
+        sedscript+='s#pandoc.*#github: jgm/pandoc#;'
+        sedscript+="a\  commit: $_pandoc_commit"$'\n'
+        sedscript+='}'
+        ;;
+    version)
+        sedscript="s/ pandoc-\([0-9]\+\.\)\{1,3\}[0-9]\+/ pandoc-$_pandoc_ver/"
+        ;;
+    esac
+    sed -i "$sedscript" stack.yaml
+    _pandoc_bound=$(awk -F. '/[0-9]+\./{$NF++;print}' OFS=. <<<"${_pandoc_ver}")
+    sed -i "/, pandoc /s#<.*#<$_pandoc_bound#" \
+        pandoc-crossref.cabal package.yaml
 }
 
 check() {
