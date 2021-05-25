@@ -1,0 +1,17 @@
+pkgbase = vim-move-git
+	pkgdesc = Vim plugin to move lines and selections up and down
+	pkgver = 1.4.r63.g1460aa9
+	pkgrel = 1
+	url = https://github.com/matze/vim-move
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-move
+	conflicts = vim-move
+	source = vim-move-git::git+https://github.com/matze/vim-move
+	sha256sums = SKIP
+
+pkgname = vim-move-git
+
