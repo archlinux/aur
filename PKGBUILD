@@ -6,10 +6,10 @@
 pkgname=servicewall-git
 _pkgname=${pkgname%-git}
 pkgdesc="The firewall that remembers the different networks you connect to."
-pkgver=0.4.7.r0.b44b87b
+pkgver=0.4.8.r1.513d875
 pkgrel=1
 arch=("any")
-url="https://github.com/lafleurdeboum/servicewall"
+url="https://git.relatif.moi/lafleur/servicewall"
 #url="https://pypi.python.org/pypi/servicewall"
 license=("GPL3")
 depends=(
@@ -30,7 +30,7 @@ backup=(
 )
 
 # Sources for git repos :
-source=("${_pkgname}::git+https://github.com/lafleurdeboum/${_pkgname}.git")
+source=("${_pkgname}::git+https://git.relatif.moi/lafleur/${_pkgname}.git")
 
 # Sources for non-git repos :
 #options=(!emptydirs)

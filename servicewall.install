@@ -1,6 +1,6 @@
 ## $1:  the new package version
 post_install() {
-    braise status | grep -q "enabled" || (
+    sw status | grep -q "enabled" || (
         echo -e "To enable ServiceWall, run a\n\t# systemctl enable servicewall";
     )
     echo -e "If you installed python-argcomplete, you should run\n\t# activate-global-python-argcomplete"
@@ -11,9 +11,9 @@ post_install() {
 ## $2:  the old package version
 post_upgrade() {
     # If ServiceWall is not disabled :
-    braise status | grep -q "disabled" || (
+    sw status | grep -q "disabled" || (
         echo "reloading ServiceWall";
-        braise reload;
+        sw reload;
     )
     echo "You should set XTABLES_LIBDIR inside /etc/environment to relevant dir."
 }
@@ -21,6 +21,6 @@ post_upgrade() {
 ## arg 1:  the old package version
 pre_remove() {
     echo "disabling ServiceWall";
-    braise disable;
+    sw disable;
 }
 
