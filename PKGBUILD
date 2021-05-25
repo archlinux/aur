@@ -4,7 +4,7 @@
 
 pkgname=bootstrap-studio
 pkgver=5.6.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Bootstrap Studio is a powerful tool which web developers and designers use to create layouts and fully functional websites using the Bootstrap framework."
 arch=("x86_64")
 license=("custom")
@@ -32,7 +32,7 @@ package() {
 
 	# Add package to /usr/bin/
 	mkdir -p "${pkgdir}/usr/bin"
-        printf '#!/bin/bash\n\n/opt/bootstrap-studio/AppRun' | tee "${pkgdir}/usr/bin/bootstrap-studio" &> /dev/null
+        printf '#!/bin/bash\n\n/opt/bootstrap-studio/squashfs-root/AppRun' | tee "${pkgdir}/usr/bin/bootstrap-studio" &> /dev/null
         chmod +x "${pkgdir}/usr/bin/bootstrap-studio"
 
 	# Copy .desktop file
