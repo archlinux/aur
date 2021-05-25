@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-daemons
 _name=${pkgname#python-}
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Python unix daemon base classes."
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('python-eventlet' 'python-gevent')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('49e7a9cad5c7c06f88af95fa0dba299e1c0d3d911f1512b203dd20f5e74b6cea')
+sha256sums=('37dab1d94d8e0d8c1eec225458c9bdbdfff72f35c49d92ae6457b6a06c867e33')
 
 build() {
 	cd "$_name-$pkgver"
