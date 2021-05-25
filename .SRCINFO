@@ -1,0 +1,22 @@
+pkgbase = norka
+	pkgdesc = Note-taking software with Markdown support designed for Pantheon
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://tenderowl.com/work/norka/
+	arch = any
+	license = MIT
+	makedepends = appstream-glib
+	makedepends = meson
+	depends = granite
+	depends = gtksourceview3
+	depends = gtkspell3
+	depends = python-cairo
+	depends = python-gobject
+	depends = python-mistune2
+	depends = python-requests
+	depends = webkit2gtk
+	source = https://github.com/TenderOwl/Norka/archive/0.7.2/norka-0.7.2.tar.gz
+	sha256sums = 4184940d3f73d60ef7b2a8793d4b23f56aaf24500e37984385f3186068fe5f7a
+
+pkgname = norka
+
