@@ -1,5 +1,6 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
-_cranver=0.2.1
+# Maintainer: Pranav K Anupam <pranavanupam@yahoo.com>
+# Contributor: Alex Branham <branham@utexas.edu>
+_cranver=2.0.0
 pkgname=r-reprex
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -7,16 +8,17 @@ pkgdesc='Prepare Reproducible Example Code via the Clipboard'
 arch=('any')
 url='https://cran.r-project.org/package=reprex'
 license=('MIT')
-depends=('r' 'r-callr>=2.0.0' 'r-clipr>=0.4.0' 'r-fs' 'r-rlang' 'r-rmarkdown' 'r-whisker' 'r-withr')
-optdepends=('pandoc' 'r-covr' 'r-devtools' 'r-fortunes' 'r-knitr' 'r-miniui' 'r-rprojroot' 'r-rstudioapi' 'r-shiny' 'r-styler' 'r-testthat')
+depends=('r>=3.3' 'r-callr>=3.6.0' 'r-clipr>=0.4.0' 'r-fs' 'r-glue' 'r-knitr>=1.23' 'r-rlang>=0.4.0' 'r-rmarkdown' 'r-rstudioapi' 'r-withr')
+optdepends=('pandoc>=2.0' 'r-covr' 'r-devtools' 'r-fortunes' 'r-knitr' 'r-miniui' 'r-mockr' 'r-rprojroot' 'r-sessioninfo' 'r-shiny' 'r-spelling' 'r-styler>=1.2.0' 'r-testthat>=3.0.2')
 source=("https://cran.r-project.org/src/contrib/reprex_"$_cranver".tar.gz")
-md5sums=('c0afa805a5f5b7350d637463edff517e')
+sha256sum=('905377fcc644a485e97caffda3b077f6b3ad8fda09c0bbf378c422e13feb96d1')
 
 build(){
-    R CMD INSTALL reprex_"$_cranver".tar.gz -l "$srcdir"
+    cd "${srcdir}"
+    R CMD INSTALL ${_pkgtar} -l ${srcdir}
 }
 package() {
-    install -dm0755 "$pkgdir"/usr/lib/R/library
-    cp -a --no-preserve=ownership reprex "$pkgdir"/usr/lib/R/library
+    cd "${scrdir}"
+    install -dm0755 "$pkgdir/usr/lib/R/library"
+    cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
-
