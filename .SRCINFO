@@ -1,5 +1,5 @@
 pkgbase = otf-unna
-	pkgdesc = A transitional typeface family from Omnibus-Type.
+	pkgdesc = Transitional typeface family from Omnibus-Type.
 	pkgver = 2.008
 	pkgrel = 3
 	url = https://www.omnibus-type.com/fonts/unna/

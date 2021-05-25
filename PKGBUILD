@@ -2,7 +2,7 @@
 pkgname=otf-unna
 pkgver=2.008
 pkgrel=3
-pkgdesc='A transitional typeface family from Omnibus-Type.'
+pkgdesc='Transitional typeface family from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/unna/'
 license=('OFL')
