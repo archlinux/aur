@@ -1,4 +1,4 @@
-# Maintainer: dr460nf1r3 <dr460nf1r3@garudalinux.org>
+# Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 # Contributor: torvic9 AT mailbox DOT org
 # Contributor: lsf
 
@@ -17,7 +17,7 @@ depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss nspr ttf-font libpulse
         graphite dav1d kfiredragonhelper)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
              rust ccache autoconf2.13 clang llvm jack gtk2 nodejs cbindgen nasm
-             python-setuptools python-psutil python-zstandard git binutils lld)
+             python-setuptools python-psutil python-zstandard git binutils lld dump_syms)
 optdepends=('firejail-git: Sandboxing the browser using the included profiles'
             'profile-sync-daemon: Load the browser profile into RAM'
             'whoogle: Searching the web using a locally running Whoogle instance'
@@ -31,12 +31,11 @@ optdepends=('firejail-git: Sandboxing the browser using the included profiles'
             'appmenu-gtk-module-git: Appmenu for GTK only'
             'plasma5-applets-window-appmenu: Appmenu for Plasma only')
 options=(!emptydirs !makeflags !strip)
-replaces=('firedragon-stable')
 conflicts=('firedragon-hg')
 install=$pkgname.install
 _arch_svn=https://git.archlinux.org/svntogit/packages.git/plain/trunk
-_linux_commit=9e90fb3a9bc38aad9921530ee69ecabf6ac8c7bf
-_settings_commit=1b9cc88ccf64993951fe28cf426cf883e37e1b4d
+_common_commit=5bce5285fa7046e6987ec3e5a8931ac17ca6c7c0
+_settings_commit=c78c50fbefe2fcf830611e21dcc0fe79180d1e01
 _mbrev=2389
 _patchrevsuse=aedbca44a8a2958947bed31f28e3083ac0496f4a
 _pfdate=20210420
@@ -45,51 +44,43 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         $pkgname.desktop
         "git+https://gitlab.com/dr460nf1r3/common.git"
         "git+https://gitlab.com/dr460nf1r3/settings.git"
-        "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
-        "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
-        "unity-menubar.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/unity-menubar.patch"
-        "mozilla-vpn-ad.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/mozilla-vpn-ad.patch"
-        0001-Use-remoting-name-for-GDK-application-names.patch
         firefox-kde-$_patchrevsuse.patch::$_patchurl/firefox/firefox-kde.patch
         mozilla-kde-$_patchrevsuse.patch::$_patchurl/mozilla-kde.patch
         mozilla-nongnome-proxies-$_patchrevsuse.patch::$_patchurl/mozilla-nongnome-proxies.patch
         fix-hidden-buttons-with-csd-menubar.patch
+        0001-Use-remoting-name-for-GDK-application-names.patch
         0004-bmo-847568-Support-system-harfbuzz.patch
         0005-bmo-847568-Support-system-graphite2.patch
         0006-bmo-1559213-Support-system-av1.patch
         0021-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
         0029-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
         reduce-rust-debuginfo.patch)
-source_aarch64=("arm.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/arm.patch"
-                https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch)
+source_aarch64=(https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch)
 
 sha256sums=('83df1eae0e28fe99661fd5d39d705cdab2e108b4a24ce12c2db6183c632804cc'
             '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
             'SKIP'
             'SKIP'
-            'af9d9341917cf3c5844fc46597ad2d842642c937c9be574bfacfe5c242b1114c'
-            '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
-            '860e49ab14ce2c9416a479d313a2da799e023db58e93b81ca4cb869c5afb39a7'
-            'f3fd29e24207d5cc83f9df6c9ffa960aabdab598ea59a61fec57e9947b1d8bc9'
-            '6ca7ff71cb4a7c72eca39769afe8e18ec81cba36d9b570df15fc243867049243'
             '0ae5bce3da13b7f58e37be6d7115bef323256d776195279592f4371179497f8a'
             '9843662fd9b766801a70bdef22bb996a1abd9d7c3781f1fb58b7034e575350a1'
             'fbd95cbcbc32673ef549b43b0d2de3ef0ef4fa303b6336e64993f2c8a73264e4'
             '482935782429b30f5e1581347a9a798705068c40f20bf4eee9304a254fd81bc8'
+            '6ca7ff71cb4a7c72eca39769afe8e18ec81cba36d9b570df15fc243867049243'
             'e17f631bc9b1873419ff10fef5fad6061e8695b961b6bb90616ec04444834608'
             '00d3524f5361614fee7eb448a528a0b53833f0a328055e17e07ea38038e5aa70'
             'be41698666dbd321884c35b661c3ac457ecc5bf699fe2374ad6ad9273c6489e4'
             '82129e30512477232556e939ee8ed64b999b0e095001d043b121c5e5d334692c'
             '1034a3edda8ffa889fcb4dcf57cb93f8f296f7c37e5cfcf1e5c6071a6f8f4261'
             '923a9373afc019202c0c07a7cba47042e9ebc78cc2605baecd99602beeaf82ed')
-sha256sums_aarch64=('6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7'
-                    '2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9')
+sha256sums_aarch64=('2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9')
 
 prepare() {
   if [[ ! -d mozbuild ]];then
       mkdir mozbuild
   fi
   cd firefox-$pkgver
+
+  local _patches_dir="${srcdir}/common/patches"
 
   sed -i 's/\"BrowserApplication\"\, \"firefox\"/\"BrowserApplication\"\, \"firedragon\"/g' $srcdir/firefox-kde-$_patchrevsuse.patch
   sed -i 's/kmozillahelper/kfiredragonhelper/g' $srcdir/mozilla-kde-$_patchrevsuse.patch
@@ -168,26 +159,26 @@ ac_add_options --with-system-webp
 ac_add_options --with-system-zlib
 
 # Features
-ac_add_options --enable-pulseaudio
-ac_add_options --enable-alsa
-ac_add_options --enable-jack
-ac_add_options --disable-warnings-as-errors
-ac_add_options --disable-crashreporter
-ac_add_options --disable-tests
-ac_add_options --disable-debug
-ac_add_options --disable-updater
-ac_add_options --enable-strip
-ac_add_options --disable-gpsd
-ac_add_options --disable-synth-speechd
-ac_add_options --disable-debug-symbols
-ac_add_options --disable-debug-js-modules
 ac_add_options --disable-cdp
-ac_add_options --disable-trace-logging
-ac_add_options --disable-rust-tests
+ac_add_options --disable-crashreporter
+ac_add_options --disable-debug
+ac_add_options --disable-debug-js-modules
+ac_add_options --disable-debug-symbols
+ac_add_options --disable-gpsd
 ac_add_options --disable-ipdl-tests
 ac_add_options --disable-necko-wifi
+ac_add_options --disable-rust-tests
+ac_add_options --disable-synth-speechd
+ac_add_options --disable-tests
+ac_add_options --disable-trace-logging
+ac_add_options --disable-updater
+ac_add_options --disable-warnings-as-errors
 ac_add_options --disable-webspeech
 ac_add_options --disable-webspeechtestbackend
+ac_add_options --enable-alsa
+ac_add_options --enable-jack
+ac_add_options --enable-pulseaudio
+ac_add_options --enable-strip
 
 # Disables crash reporting, telemetry and other data gathering tools
 mk_add_options MOZ_CRASHREPORTER=0
@@ -217,8 +208,8 @@ END
   # we should have more than enough RAM on the CI spot instances.
   # ...or maybe not?
   export LDFLAGS+=" -Wl,--no-keep-memory"
-  patch -p1 -i ../arm.patch
-  patch -p1 -i ../build-arm-libopus.patch
+  patch -Np1 -i ${_patches_dir}/arm.patch
+  patch -Np1 -i ../${pkgver}-${pkgrel}_build-arm-libopus.patch
 
 else
 
@@ -229,39 +220,34 @@ END
 fi
 
   # Remove some pre-installed addons that might be questionable
-  patch -p1 -i ../remove_addons.patch
+  patch -Np1 -i ${_patches_dir}/remove_addons.patch
+
+  # Disable (some) megabar functionality
+  # Adapted from https://github.com/WesleyBranton/userChrome.css-Customizations
+  patch -Np1 -i ${_patches_dir}/megabar.patch
 
   # Debian patch to enable global menubar
-  patch -p1 -i ../unity-menubar.patch
+  patch -Np1 -i ${_patches_dir}/unity-menubar.patch
 
   # Disabling Pocket
-  sed -i 's/"pocket"/# "pocket"/g' browser/components/moz.build
-
-  patch -p1 -i ../context-menu.patch
+  patch -Np1 -i ${_patches_dir}/sed-patches/disable-pocket.patch
 
   # Remove Mozilla VPN ads
-  patch -p1 -i ../mozilla-vpn-ad.patch
-
-  # This one only to remove an annoying error message:
-  sed -i 's#SaveToPocket.init();#// SaveToPocket.init();#g' browser/components/BrowserGlue.jsm
+  patch -Np1 -i ${_patches_dir}/mozilla-vpn-ad.patch
 
   # Remove Internal Plugin Certificates
-  _cert_sed='s#if (aCert.organizationalUnit == "Mozilla [[:alpha:]]\+") {\n'
-  _cert_sed+='[[:blank:]]\+return AddonManager\.SIGNEDSTATE_[[:upper:]]\+;\n'
-  _cert_sed+='[[:blank:]]\+}#'
-  _cert_sed+='// NOTE: removed#g'
-  sed -z "$_cert_sed" -i toolkit/mozapps/extensions/internal/XPIInstall.jsm
+  patch -Np1 -i ${_patches_dir}/sed-patches/remove-internal-plugin-certs.patch
 
   # Allow SearchEngines option in non-ESR builds
-  sed -i 's#"enterprise_only": true,#"enterprise_only": false,#g' browser/components/enterprisepolicies/schemas/policies-schema.json
-
-  _settings_services_sed='s#firefox.settings.services.mozilla.com#f.s.s.m.c.qjz9zk#g'
+  patch -Np1 -i ${_patches_dir}/sed-patches/allow-searchengines-non-esr.patch
 
   # Stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)
-  sed "$_settings_services_sed" -i browser/components/newtab/data/content/activity-stream.bundle.js
-  sed "$_settings_services_sed" -i modules/libpref/init/all.js
-  sed "$_settings_services_sed" -i services/settings/Utils.jsm
-  sed "$_settings_services_sed" -i toolkit/components/search/SearchUtils.jsm
+  patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
+
+  # Assorted patches
+  patch -Np1 -i ${_patches_dir}/context-menu.patch
+  patch -Np1 -i ${_patches_dir}/browser-confvars.patch
+  patch -Np1 -i ${_patches_dir}/urlbarprovider-interventions.patch
 
   rm -f ${srcdir}/common/source_files/mozconfig
   cp -r ${srcdir}/common/source_files/* ./
@@ -310,18 +296,16 @@ fi
     xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
     ./mach python build/pgo/profileserver.py
 
-  if [[ ! -s merged.profdata ]]; then
-    echo "No profile data produced."
-    return 1
-  fi
+  stat -c "Profile data found (%s bytes)" merged.profdata
+  test -s merged.profdata
 
-  if [[ ! -s jarlog ]]; then
-    echo "No jar log produced."
-    return 1
-  fi
+  stat -c "Jar log found (%s bytes)" jarlog
+  test -s jarlog
 
   echo "Removing instrumented browser..."
   ./mach clobber
+
+  echo "Building optimized browser..."
 
   echo "Building optimized browser..."
 
