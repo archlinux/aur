@@ -16,9 +16,13 @@ sha256sums=('4a61f15c21ee35e188246371bf61c8bc650bf40bb2b0c621d1b8d02bab696b5b'
             'b8474f3024d310b67454b8b59977fd26b66dba3930f31604058b773e13905e49')
 install=whoogle.install
 
+prepare() {
+  mv $pkgname-search-$pkgver $pkgname-search
+}
+
 build() {
   # Following official instructions
-  cd $pkgname-search-$pkgver
+  cd $pkgname-search
   python3 -m venv venv
   source venv/bin/activate
   pip install -r requirements.txt
@@ -28,8 +32,8 @@ build() {
 }
 
 package() {
- install -dm0755 "$pkgdir/usr/lib/systemd/system/"
- install -m0644 "$srcdir/whoogle.service" "$pkgdir/usr/lib/systemd/system/whoogle.service"
- install -dm0755 "$pkgdir/opt/whoogle-search"
- cp -r "$srcdir/$pkgname-search-$pkgver/" "$pkgdir/opt/"
+  install -dm0755 "$pkgdir/usr/lib/systemd/system/"
+  install -m0644 "$srcdir/whoogle.service" "$pkgdir/usr/lib/systemd/system/whoogle.service"
+  install -dm0755 "$pkgdir/opt/whoogle-search"
+  cp -r "$srcdir/$pkgname-search/" "$pkgdir/opt/"
 }
