@@ -11,7 +11,7 @@ makedepends=("cmake" "cmake-extras" "glib2")
 depends=("glib2")
 source=("https://github.com/AyatanaIndicators/$pkgname/archive/$pkgver.tar.gz")
 md5sums=("f0eb7e4fe2d0d18d4c94bb4ff2490f5f")
-options=(!strip)
+options=("!strip" "!buildflags")
 
 build()
 {

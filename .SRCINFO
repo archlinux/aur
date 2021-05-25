@@ -12,6 +12,7 @@ pkgbase = libayatana-common
 	makedepends = glib2
 	depends = glib2
 	options = !strip
+	options = !buildflags
 	source = https://github.com/AyatanaIndicators/libayatana-common/archive/0.9.2.tar.gz
 	md5sums = f0eb7e4fe2d0d18d4c94bb4ff2490f5f
 
