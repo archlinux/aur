@@ -5,7 +5,6 @@ pkgdesc="Pacifico is an original and fun brush script handwriting font by Vernon
 arch=('any')
 url="https://fonts.google.com/specimen/Pacifico"
 license=('OFL')
-depends=('fontconfig')
 source=('Pacifico-Regular.ttf::https://raw.githubusercontent.com/googlefonts/Pacifico/master/fonts/Pacifico-Regular.ttf'
         'OFL.txt::https://raw.githubusercontent.com/googlefonts/Pacifico/master/OFL.txt')
 sha256sums=('5b6c0d5334a7bf77dea52b975c5a0c408878c0f7115ed5b6fb151f634b7bf701'

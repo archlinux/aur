@@ -5,7 +5,6 @@ pkgbase = ttf-pacifico
 	url = https://fonts.google.com/specimen/Pacifico
 	arch = any
 	license = OFL
-	depends = fontconfig
 	source = Pacifico-Regular.ttf::https://raw.githubusercontent.com/googlefonts/Pacifico/master/fonts/Pacifico-Regular.ttf
 	source = OFL.txt::https://raw.githubusercontent.com/googlefonts/Pacifico/master/OFL.txt
 	sha256sums = 5b6c0d5334a7bf77dea52b975c5a0c408878c0f7115ed5b6fb151f634b7bf701
