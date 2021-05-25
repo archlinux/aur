@@ -3,25 +3,26 @@
 
 pkgname=ttf-cheapskate
 pkgver=2.0
-pkgrel=19
+pkgrel=20
 pkgdesc='TTF Fonts by Dustin Norlander'
 arch=('any')
-url='https://dustinn.1001fonts.com'
+url='https://www.1001fonts.com/users/dustinn'
 license=('GPL')
-source=("balker-$pkgver.zip::https://dl.1001fonts.com/balker.zip"
-        "domestic-manners-$pkgver.zip::https://dl.1001fonts.com/domestic-manners.zip"
-        "dustismo-$pkgver.zip::https://dl.1001fonts.com/dustismo.zip"
-        "dustismo-roman-$pkgver.zip::https://dl.1001fonts.com/dustismo-roman.zip"
-        "el-abogado-loco-$pkgver.zip::https://dl.1001fonts.com/el-abogado-loco.zip"
-        "flatline-$pkgver.zip::https://dl.1001fonts.com/flatline.zip"
-        "it-wasnt-me-$pkgver.zip::https://dl.1001fonts.com/it-wasnt-me.zip"
-        "junkyard-$pkgver.zip::https://dl.1001fonts.com/junkyard.zip"
-        "marked-fool-$pkgver.zip::https://dl.1001fonts.com/marked-fool.zip"
-        "penguin-attack-$pkgver.zip::https://dl.1001fonts.com/penguin-attack.zip"
-        "progenisis-$pkgver.zip::https://dl.1001fonts.com/progenisis.zip"
-        "swift-$pkgver.zip::https://dl.1001fonts.com/swift.zip"
-        "wargames-$pkgver.zip::https://dl.1001fonts.com/wargames.zip"
-        "winks-$pkgver.zip::https://dl.1001fonts.com/winksfilled.zip")
+_url='https://www.1001fonts.com/download'
+source=("balker-$pkgver-$pkgrel.zip::$_url/balker.zip"
+        "domestic-manners-$pkgver-$pkgrel.zip::$_url/domestic-manners.zip"
+        "dustismo-$pkgver-$pkgrel.zip::$_url/dustismo.zip"
+        "dustismo-roman-$pkgver-$pkgrel.zip::$_url/dustismo-roman.zip"
+        "el-abogado-loco-$pkgver-$pkgrel.zip::$_url/el-abogado-loco.zip"
+        "flatline-$pkgver-$pkgrel.zip::$_url/flatline.zip"
+        "it-wasnt-me-$pkgver-$pkgrel.zip::$_url/it-wasnt-me.zip"
+        "junkyard-$pkgver-$pkgrel.zip::$_url/junkyard.zip"
+        "marked-fool-$pkgver-$pkgrel.zip::$_url/marked-fool.zip"
+        "penguin-attack-$pkgver-$pkgrel.zip::$_url/penguin-attack.zip"
+        "progenisis-$pkgver-$pkgrel.zip::$_url/progenisis.zip"
+        "swift-$pkgver-$pkgrel.zip::$_url/swift.zip"
+        "wargames-$pkgver-$pkgrel.zip::$_url/wargames.zip"
+        "winks-$pkgver-$pkgrel.zip::$_url/winksfilled.zip")
 sha256sums=('312725ab193db7391e86369e921c1ce33bafa44438efa811bafb16c5467b4a6f'
             '37889315813271fb86ab889e92ee7410675600b5a30e1d0ad3bb31d751699f22'
             'f1067ffe03c8aa923d8ee9e9413294662e5a1565e07e0fd1a702a1e879889cbb'
