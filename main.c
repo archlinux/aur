@@ -202,7 +202,8 @@ int main(int argc, char **argv){
 				for(int i = 0; i < SUDOKU_LEN; i++)
 					combined_solution[i] = sudoku_str[i] == '0' ? user_nums[i] : sudoku_str[i];
 
-				if(check_validity(combined_solution)) sprintf(statusbar, "%s", "Valid");
+				if(check_validity(combined_solution))
+					sprintf(statusbar, "%s", "Valid");
 				else
 					sprintf(statusbar, "%s", "Invalid or not filled out");
 				break;
@@ -210,10 +211,11 @@ int main(int argc, char **argv){
 				free(combined_solution);
 			case 'd':
 				solve_user_nums();
-				sprintf(statusbar, "%s", "*Not saved");
 				break;
 			case 'e':
 				editing_notes = !editing_notes;
+				char* mode = editing_notes == 1 ? "Note\0" : "Normal\0";
+				sprintf(statusbar, "%s %s", mode, "Mode");
 				break;
 			case 'q':
 				finish(0);
@@ -221,22 +223,21 @@ int main(int argc, char **argv){
 			default:
 				//Check if the key is a number (not zero) in aasci chars or 'x' and if the cursor is not an a field filled by the puzzle
 
-				//Check if the field is empty in the puzzle
+				//Toggle the note fields
 				if(editing_notes){
-					if(key_press >= 0x30 && key_press <= 0x39){
+					if(key_press > 0x30 && key_press <= 0x39){
 						int* target = &notes[((cursor.y * LINE_LEN * LINE_LEN) + (cursor.x * LINE_LEN)) + (key_press - 0x31)];
 						*target = !*target;
 					}
+				//Check if the field is empty in the puzzle
 				}else if(sudoku_str[cursor.y * LINE_LEN + cursor.x] == '0'){
 					//check for numbers
 					if(key_press >= 0x30 && key_press <= 0x39 && user_nums[cursor.y * LINE_LEN + cursor.x] != key_press){ 
 						user_nums[cursor.y * LINE_LEN + cursor.x] = key_press;
-						sprintf(statusbar, "%s", "*Not saved");
 					}
 					//check for x
 					else if(key_press == 'x' && user_nums[cursor.y * LINE_LEN + cursor.x] != '0'){
 						user_nums[cursor.y * LINE_LEN + cursor.x] = '0';
-						sprintf(statusbar, "%s", "*Not saved");
 					}
 				}
 				break;
@@ -477,7 +478,7 @@ struct sudoku_cell_props get_cell_props(int cell, char* sudoku_str){
 //For -v flag: show the generating process
 void generate_visually(char* sudoku_to_display){
 	erase();
-	read_sudoku_notes(sudoku_to_display, 1);
+	read_sudoku(sudoku_to_display, 1);
 	refresh();
 	usleep(VISUAL_SLEEP);
 }
@@ -586,16 +587,16 @@ void finish_with_err_msg(char* msg){
 }
 
 //Read Sudoku to screen, adding seperators between the blocks for visuals
-void read_sudoku_notes(char* sudoku, int color_mode){
-	//Offset for horizontal seperators
+void read_sudoku(char* sudoku, int color_mode){
+	//Offset for counting in seperators when drawing numbers
 	int yoff = 0;
 	for(int y = 0; y < LINE_LEN; y++){
 		//On every third vertical line, add seperator
-		//Add 4 horizontal seperators 
+		//Add horizontal seperators 
 		for(int i = 0; i < (LINE_LEN * 3) + 10; i++){
 			if(y % 3 == 0)
 				attron(COLOR_PAIR(3));
-			mvaddch((y * 3) + yoff, i, '-');
+			mvaddch((y * 4), i, '-');
 			attron(COLOR_PAIR(color_mode));
 		}
 		//Increment offset
@@ -608,7 +609,7 @@ void read_sudoku_notes(char* sudoku, int color_mode){
 			for(int i = 1; i < LINE_LEN * 3 + 9; i++){
 				if(x % 3 == 0)
 					attron(COLOR_PAIR(3));
-				mvaddch(i, (x * 3) + xoff, '|');
+				mvaddch(i, (x * 4), '|');
 				attron(COLOR_PAIR(color_mode));
 			}
 			xoff++;
@@ -638,11 +639,10 @@ void read_sudoku_notes(char* sudoku, int color_mode){
 
 void read_notes(){
 	attron(COLOR_PAIR(3));
-	endwin();
 	for(int i = 0; i < SUDOKU_LEN; i++){
 		for(int j = 0; j < LINE_LEN; j++){
 			if(notes[i * LINE_LEN + j])
-				mvaddch(((i / LINE_LEN) * 4) + ((i / LINE_LEN) / 9) + 1 + (j / (LINE_LEN / 3)), ((i % LINE_LEN) * 4) + ((i % LINE_LEN) / 9) + 1 + (j % (LINE_LEN / 3)), j + 0x31);
+				mvaddch(((i / LINE_LEN) * 4) + 1 + (j / (LINE_LEN / 3)), ((i % LINE_LEN) * 4) + 1 + (j % (LINE_LEN / 3)), j + 0x31);
 		}
 	}
 	attron(COLOR_PAIR(1));
@@ -657,8 +657,8 @@ void move_cursor(){
 //Draw the user numbers under the given sudoku so the latter can't be overwritten
 void draw_sudokus(){
 	attron(COLOR_PAIR(2));
-	read_sudoku_notes(user_nums, 2);
+	read_sudoku(user_nums, 2);
 
 	attron(COLOR_PAIR(1));
-	read_sudoku_notes(sudoku_str, 1);
+	read_sudoku(sudoku_str, 1);
 }

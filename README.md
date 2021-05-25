@@ -44,6 +44,11 @@ Continue where you left of with
 
 See more flags and help with the -h flag.
 
+You start in "normal mode". Meaning you type in numbers for the solution
+into the grid. When pressing e you get into "Note Mode", where you can
+note numbers that would fit into that square. Every number there is like
+a switch: press a number to toggle it's visibility as a note.
+
 ## Generation of the Sudoku
 
 To see this process run with -v flag. What happens is from left to right

@@ -45,7 +45,7 @@ int check_validity(char* combined_solution);
 
 //Draw
 void draw();
-void read_sudoku_notes(char* sudoku, int color_mode);
+void read_sudoku(char* sudoku, int color_mode);
 void move_cursor();
 void draw_sudokus();
 void read_notes();
