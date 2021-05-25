@@ -1,6 +1,6 @@
 pkgbase = lite-xl
 	pkgdesc = A lightweight text editor written in Lua
-	pkgver = 1.16.9
+	pkgver = 1.16.10
 	pkgrel = 1
 	url = https://github.com/franko/lite-xl
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = lite-xl
 	depends = sdl2
 	provides = lite
 	conflicts = lite
-	source = lite-xl-1.16.9.tar.gz::https://github.com/franko/lite-xl/archive/v1.16.9.tar.gz
-	sha256sums = f4a0009a8c88c4b4d3a128077741830ed155ee22c15aabebaf54e8c2806a0ff5
+	source = lite-xl-1.16.10.tar.gz::https://github.com/franko/lite-xl/archive/v1.16.10.tar.gz
+	sha256sums = c66d0fb0c2d853587030a7ee3a855033c6f8d10a500560caa6188ac8316f9f71
 
 pkgname = lite-xl
 
