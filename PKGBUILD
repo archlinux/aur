@@ -2,8 +2,8 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=steam-native-runtime
-pkgver=1.0.0.62
-pkgrel=2
+pkgver=1.0.0.70
+pkgrel=1
 pkgdesc='Native replacement for the Steam runtime using system libraries'
 arch=('x86_64')
 url='https://wiki.archlinux.org/index.php/Steam/Troubleshooting#Native_runtime'
@@ -18,7 +18,7 @@ depends=(
   'lib32-libcaca' 'lib32-libcanberra'
   'lib32-libcups' 'lib32-libcurl-compat' 'lib32-libcurl-gnutls' 'lib32-dbus'
   'lib32-libdrm' 'lib32-libgcrypt15' 'lib32-libice' 'lib32-libidn11'
-  'lib32-libjpeg6' 'lib32-libnm-glib' 'lib32-libpng12' 'lib32-libpulse'
+  'lib32-libjpeg6' 'lib32-libnm-glib' 'lib32-pipewire' 'lib32-libpng12' 'lib32-libpulse'
   'lib32-librtmp0' 'lib32-libsm' 'lib32-libtheora' 'lib32-libtiff4'
   'lib32-libudev0-shim' 'lib32-libusb' 'lib32-libva' 'lib32-libvdpau'
   'lib32-libvorbis' 'lib32-libvpx1.3' 'lib32-libwrap' 'lib32-libxcomposite'
