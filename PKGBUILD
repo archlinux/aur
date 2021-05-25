@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-cpufreq
 _pkgname=cpufreq
-pkgver=47.0
+pkgver=49.0
 pkgrel=1
 pkgdesc="Gnome Shell CPU Frequency Monitor and Governor Manager."
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 conflicts=('gnome-shell-extension-cpufreq-git')
 depends=('gnome-shell')
 source=("${url}/archive/v${pkgver}.tar.gz")
-b2sums=('214fd3d3b9e317d88f0a466f89317185643496fa25d0d7f14f6411add949517ac68e6f59979cb5ef18fc2ffac134df38f907f62bdd6edba5f84656fc6a6e214d')
+b2sums=('05844f66a9b808a058ae6b51d67c9bea66e3500736a02fa25cd7e340ba57f14f66eea71918c05396cd5586c04012af2a8393aa24d63519b82555625ef915009b')
 
 package() {
   _extid='cpufreq@konkor'
