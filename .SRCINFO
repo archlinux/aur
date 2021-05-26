@@ -1,0 +1,17 @@
+pkgbase = diary-bin
+	pkgdesc = Encrypted memories -- a journal program with local encryption support (binary release)
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/actuday6418/diary
+	arch = x86_64
+	license = GPL3
+	depends = gcc-libs
+	provides = diary
+	conflicts = diary
+	source = diary-bin-0.1.2::https://github.com/actuday6418/diary/releases/download/0.1.2/diary
+	source = README-0.1.2.md::https://raw.githubusercontent.com/actuday6418/diary/0.1.2/README.md
+	sha256sums = c5f95be4088e353b965268460fe46caabb2d2dd836fcd068d855d2be38889661
+	sha256sums = 4a7ab6592482adf9da57d64cab3fac2721768065cdf46e64172ced9db7c1d7e3
+
+pkgname = diary-bin
+
