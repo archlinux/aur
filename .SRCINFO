@@ -1,0 +1,22 @@
+pkgbase = ros-melodic-pybind11-catkin
+	pkgdesc = ROS - The pybind11 package.
+	pkgver = 2.4.3
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	depends = python
+	depends = python-numpy
+	depends = eigen
+	source = ros-melodic-pybind11-catkin-2.4.3.tar.gz::https://github.com/wxmerkt/pybind11_catkin-release/archive/release/melodic/pybind11_catkin/2.4.3.tar.gz
+	sha256sums = c5700f26a677a0ac3950f1eb074e8a9297040b3e35584963afa5c7d20055a87b
+
+pkgname = ros-melodic-pybind11-catkin
+
