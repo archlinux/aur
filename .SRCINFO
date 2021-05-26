@@ -1,6 +1,6 @@
 pkgbase = vieb
 	pkgdesc = Vim Inspired Electron Browser - Vim bindings for the web by design
-	pkgver = 4.5.1
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://vieb.dev
 	install = vieb.install
@@ -19,7 +19,7 @@ pkgbase = vieb
 	depends = re2
 	depends = snappy
 	depends = libnotify
-	source = https://github.com/Jelmerro/Vieb/releases/download/4.5.1/vieb-4.5.1.pacman
-	sha512sums = e5faa7a79de2ad605c2043e4807270401469f414e18093f09f8c703d18ee33d48ec193e0a647a977a8c83fdb09dc26a74c8bd276a5bd02f97ec5e9f6a3b0cd39
+	source = https://github.com/Jelmerro/Vieb/releases/download/5.0.0/vieb-5.0.0.pacman
+	sha512sums = dad0d755be6ade5011e9f74c837e4d3338e5a1ebc536b8516c8833af18d491fc80427102092ec5df33109aa07758946ab76d13259e18063caf255b31b5c4d834
 
 pkgname = vieb
