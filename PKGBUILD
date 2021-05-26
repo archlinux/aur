@@ -48,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-aufs
 # pkgname=('linux-aufs' 'linux-aufs-headers' 'linux-aufs-docs')
 _major=5.12
-_minor=6
+_minor=7
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
@@ -71,8 +71,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_aufs_path}/${_aufs_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v5-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v5-sep/0002-drm-i915-gt-Disable-HiZ-Raw-Stall-Optimization-on-br.patch"
+        "${_lucjanpath}/arch-patches-v6/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
         'config')
 
@@ -308,12 +307,11 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('94ed56538c0dde46f25e213ad9ba37df7af68a6d040307d4d61496a91902942b830afac04c48d8bc28b8b782365326d20c88278731e60a80736ea923f4272fac'
+sha512sums=('4896446ace0ed0edbdce47d79be35f913b9dc98f1004822ffbcbdb86775609fc51d71ef642640d1de909f59631824bcbdd70d28f79f431e992d46bbfdd861712'
             'SKIP'
             'bf0e8fffff709d60d020c14bbff1666d1065e9b934094c9d7642f471dba7d831293fea89fb0068d98685a2c6da4b4b8a852283ed03434f157ad1f45d109529e9'
             'c4a2ed0bbd9d348893e802079ab684518b28f163ad242af1b74dd71c7e7e0f5d2db68ace1733879f4bd575103b365e90d6af5d2d849c6e6d2dda41ac73f822a7'
-            'bc67c4af1b3e6060468e302d9ff681710b9df176660d4f6d1314c5778330048ae385d0148db6426c1905ad35a7be5197b143833b3622432cec2283b36a3642b8'
-            'caec30582052e00383baedbed9a1d6ddd27429cce510d718088c2ee91d0aba64adef892eb146a909e8338176b9200ad564cdd3a1d0dec82ec21e4b0733cc0c73'
+            '1908055c446f04ef0a0a5a19579836d2f5dc60d7989677f85f084a7186a6327b240291feed8d25e320e72efa114b243a325362e2dbfbf7f4f3fb89bbdd3819be'
             '4abfa6632201d13254874c86d98452460e2136d267bc81de10f3c5d960f54e50978b1ec04f34be9d9d360e8154d8db9f15c814ea6abf57d066120fdac9cc2fc3')
 
 validpgpkeys=(
