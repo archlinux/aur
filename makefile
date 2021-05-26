@@ -4,7 +4,10 @@ LIBS = -lncurses
 SRC = main.c
 EXE = $(ODIR)/term-sudoku
 ODIR = bin
-IDIR = /usr/local/bin
+
+DESTDIR = /usr/local
+IDIR = $(DESTDIR)/bin
+MANPATH = $(DESTDIR)/share/man
 
 term-sudoku: $(EXE)
 
@@ -13,9 +16,12 @@ run: $(EXE)
 
 install: $(EXE)
 	cp $(ODIR)/term-sudoku $(IDIR)/term-sudoku
+	mkdir -p $(MANPATH)/man1
+	cp term-sudoku.1 $(MANPATH)/man1/term-sudoku.1
 
 uninstall:
-	rm $(IDIR)/term-sudoku
+	rm -f $(IDIR)/term-sudoku
+	rm -f $(MANPATH)/man1/term-sudoku.1
 
 clean:
 	rm -rf $(ODIR)
