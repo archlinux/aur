@@ -1,48 +1,50 @@
-# Maintainer: Stunts <f DOT pinamartins AT gmail DOT com>
+# Maintainer: Stunts <stunts AT pinamartins DOT com>
 # Contributor: bmpvieira <mail AT bmpvieira DOT com>
 pkgname=structure
 pkgver=2.3.4
 pkgrel=4
 pkgdesc="Program for using multi-locus genotype data to investigate population structure."
 arch=('i686' 'x86_64')
-url="http://pritch.bsd.uchicago.edu/structure.html"
+url="http://web.stanford.edu/group/pritchardlab/structure.html"
 license=('GPL')
-depends=('java-runtime=8')
+depends=('java-runtime')
 makedepends=('java-environment')
 
-source=(http://pritchardlab.stanford.edu/structure_software/release_versions/v${pkgver}/structure_kernel_source.tar.gz
-        http://pritchardlab.stanford.edu/structure_software/release_versions/v${pkgver}/structure_frontend_source.tar.gz
-        http://pritchardlab.stanford.edu/structure_software/release_versions/v${pkgver}/html/ran.c.patch)
+source=(http://web.stanford.edu/group/pritchardlab/structure_software/release_versions/v${pkgver}/structure_kernel_source.tar.gz
+        http://web.stanford.edu/group/pritchardlab/structure_software/release_versions/v${pkgver}/structure_frontend_source.tar.gz
+        http://web.stanford.edu/group/pritchardlab/structure_software/release_versions/v${pkgver}/html/ran.c.patch)
 md5sums=('4e0591678cdbfe79347d272b5dceeda1'
          'f4b257767562ba732c7a02414fee1865'
          'a7c26d216eacb2a10f9ff0fb7e0c31a6')
 
 build() {
-  #Patch for creating random seed in an RW location:
+  # Patch for creating random seed in an RW location:
   patch ${srcdir}/structure_kernel_src/ran.c < ran.c.patch
-  #build core program
+  # build core program
   cd ${srcdir}/structure_kernel_src
+  # force -fcommon to successfully build with GCC > 9.X
+  sed -i 's/OPT = -O3/OPT = -O3 -fcommon/' Makefile
   make
 
-  #build frontend
+  # build frontend
   cd ${srcdir}/structure_frontend_src
   javac -cp class/Structure.jar RunStructure.java
 }
 
 package() {
-  #create necessary dirs
+  # create necessary dirs
   mkdir -p "${pkgdir}/usr/bin"
   mkdir -p ${pkgdir}/opt/structure/bin
 
-  #copy frontend files
+  # copy frontend files
   cp -r ${srcdir}/structure_frontend_src/{class,images,library} ${pkgdir}/opt/structure/
   
-  #copy core program file
+  # copy core program file
   cp ${srcdir}/structure_kernel_src/structure ${pkgdir}/opt/structure/bin
 
   cd "$pkgdir/opt/structure"
 
-  #create launcher script
+  # create launcher script
   echo '#!/bin/sh' > structure
   echo 'cd /opt/structure/' >> structure
   echo 'java -cp /opt/structure/class/Structure.jar RunStructure' >> structure
