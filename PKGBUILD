@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=timetrace
-pkgver=0.5.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A simple time-tracking CLI tool"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('go')
 install="$pkgname.install"
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7dcb832858bbeaa57e378814833389073c20b781824edf9ed517ff60879ab683')
+sha256sums=('2140c9884d1619c91bdc3f75b2b0c6f32fb962f0300deec9bce2ced41ffbbbb1')
 
 build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
