@@ -8,6 +8,7 @@ pkgbase = python-reproject
 	license = BSD
 	checkdepends = python-shapely
 	checkdepends = python-pytest-astropy
+	checkdepends = python-scipy
 	makedepends = cython
 	makedepends = python-setuptools-scm
 	makedepends = python-extension-helpers
