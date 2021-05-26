@@ -1,12 +1,11 @@
 pkgbase = textadept
 	pkgdesc = A fast, minimalist, and remarkably extensible cross-platform text editor
 	pkgver = 11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://foicica.com/textadept/
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = mercurial
 	makedepends = wget
 	makedepends = unzip
 	depends = lua

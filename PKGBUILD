@@ -2,13 +2,13 @@
 # Based on a contribution of: bitwave
 pkgname=textadept
 pkgver=11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, minimalist, and remarkably extensible cross-platform text editor"
 arch=('i686' 'x86_64' 'aarch64')
 url="http://foicica.com/textadept/"
 license=('MIT')
 depends=('lua' 'gtk2')
-makedepends=('mercurial' 'wget' 'unzip')
+makedepends=('wget' 'unzip')
 provides=("$pkgname")
 conflicts=('textadept-bin')
 replaces=('textadept-bin')
