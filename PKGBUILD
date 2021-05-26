@@ -2,7 +2,7 @@
 
 pkgname=cloudflare-warp-bin
 pkgver=2021.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cloudflare Warp Client"
 
 url="https://developers.cloudflare.com/warp-client/"
