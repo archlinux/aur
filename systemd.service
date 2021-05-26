@@ -12,7 +12,7 @@ Environment=FLUENT_CONF=/etc/fluent/fluentd.conf
 Environment=FLUENT_PLUGIN=/etc/fluent/plugin
 Environment=FLUENT_SOCKET=/run/fluent/fluentd.sock
 Environment=FLUENT_LOG_FILE=/var/log/fluentd/fluentd.log
-EnvironmentFile=-/etc/conf.d/fluentd
+Environment=FLUENT_AGENT_OPTIONS=""
 PIDFile=/run/fluentd/fluentd.pid
 RuntimeDirectory=fluentd
 Type=forking
