@@ -1,6 +1,6 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com0
 pkgname=wayfire-git
-pkgver=0.6.0.r173.gf9683574
+pkgver=0.6.0.r196.ge510e70f
 pkgrel=1
 pkgdesc="3D wayland compositor"
 arch=('x86_64')
@@ -14,16 +14,9 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
 options=()
-source=('git+https://github.com/WayfireWM/wayfire'
-        'update_build.patch')
-sha256sums=('SKIP'
-            '1f584f9094005da424d761129aa68a98b3daaa4fa2ff4d68edaa2f051bf8e1c7')
+source=('git+https://github.com/WayfireWM/wayfire')
+sha256sums=('SKIP')
 
-prepare() {
- cd "$srcdir/wayfire"
- patch -Np1 -i ../update_build.patch
-
-}
 pkgver() {
 	cd "$srcdir/wayfire"
 
