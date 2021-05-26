@@ -1,4 +1,5 @@
 # Maintainer: Pranav K Anupam <pranavanupam@yahoo.com>
+_cranname=reprex
 _cranver=2.0.0
 pkgname=r-reprex
 pkgver=${_cranver//[:-]/.}
