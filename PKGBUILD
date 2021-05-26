@@ -1,27 +1,25 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 
 pkgname=outwiker
-pkgver=2.0.0
-pkgrel=2
+pkgver=3.0.0.888
+pkgrel=1
+pkgdesc='Outliner and personal wiki with keeping the tree of notes in the form of directories on a disk'
 arch=('any')
-pkgdesc="Outliner and personal wiki with keeping the tree of notes in the form of directories on a disk"
-url="https://jenyay.net/Outwiker/English"
+url='https://jenyay.net/Outwiker/English'
 license=('GPL3')
-depends=('python2' 'wxpython2.8' 'pywebkitgtk' 'python2-pillow' 'python2-pyenchant')
-optdepends=('mimetex: rendering of formulas')
-conflicts=('outwiker-git')
-source=("outwiker.deb::https://launchpad.net/~outwiker-team/+archive/ubuntu/ppa/+files/outwiker_2.0.0+822~zesty_all.deb");
-sha256sums=('4d0dd13dce875ebfe359818e9a3bec127f6af53f21100138e5fbd8caf9cc9021')
+depends=('python-cyhunspell' 'python-idna' 'python-pillow' 'python-pyparsing' 'python-wxpython')
+makedepends=('python-setuptools')
+source=("https://github.com/Jenyay/$pkgname/archive/stable_$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('5ac7b6654bef38bf57e98daddfd001e203020db96f97844eb0dfec3f2d7421ec')
+
+build() {
+  cd $pkgname-stable_$pkgver
+  python setup.py build
+}
 
 package() {
-	ar x outwiker.deb
-	tar xf data.tar.xz -C ${pkgdir}
-	cd ${pkgdir}
-	# python2 fix
-	for file in $(find . -name '*.py' -print); do
-		sed -i 's_#!.*/usr/bin/python_#!/usr/bin/python2_' $file
-		sed -i 's_#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
-	done
-	sed -i -e 's/python /python2 /' ${pkgdir}/usr/bin/${pkgname}
-	find ${pkgdir}/usr/share/${pkgname} -type f -exec chmod a-x,u+w {} \;
+  cd $pkgname-stable_$pkgver 
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  make DESTDIR="$pkgdir" install
 }
