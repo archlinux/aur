@@ -1,0 +1,11 @@
+--- a/meson.build
++++ b/meson.build
+@@ -88,7 +88,7 @@ else
+ 		deps += [ lib_rt ]
+ 		cdata.set('HAVE_CLOCK_GETTIME', 1)
+ 	endif
+-	add_project_arguments(['-Wshadow', '-pedantic-errors'], language: 'c')
++	add_project_arguments(['-Wshadow'], language: 'c')
+ 	add_project_arguments(cc.get_supported_arguments([
+ 		'-Wundef',
+ 		'-Werror=vla',
