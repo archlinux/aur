@@ -1,14 +1,14 @@
 pkgbase = file-rename
 	pkgdesc = Renames multiple files using regular expressions.
-	pkgver = 1.13
+	pkgver = 1.20
 	pkgrel = 1
 	url = https://metacpan.org/release/File-Rename
 	arch = any
 	license = PERL 5
 	depends = perl
 	options = !emptydirs
-	source = http://cpan.metacpan.org/authors/id/R/RM/RMBARKER/File-Rename-1.13.tar.gz
-	md5sums = b2c54014d40ed59fc83335e94ef0b5c0
+	source = http://cpan.metacpan.org/authors/id/R/RM/RMBARKER/File-Rename-1.20.tar.gz
+	sha256sums = 518fa23f2b00b009f9a6e30db72a3b344f29dae6eaf3edbb5302bf128a9ea8b0
 
 pkgname = file-rename
 
