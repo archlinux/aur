@@ -1,0 +1,48 @@
+From fcd5f2d0dd11c1c873c9e280c67a362d698aebc6 Mon Sep 17 00:00:00 2001
+From: 0x9fff00 <0x9fff00+git@protonmail.ch>
+Date: Wed, 26 May 2021 14:14:30 +0200
+Subject: [PATCH] Fix compile error with GCC 11
+
+Based on https://github.com/JayDDee/cpuminer-opt/commit/3c5e8921b764e03ef09c57b2207b9960d45123b0
+
+Co-authored-by: Jay D Dee <jayddee246@gmail.com>
+---
+ crypto/blake2s.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/crypto/blake2s.c b/crypto/blake2s.c
+index a20b746..0914b5a 100644
+--- a/crypto/blake2s.c
++++ b/crypto/blake2s.c
+@@ -323,7 +323,7 @@ int blake2s_final( blake2s_state *S, uint8_t *out, uint8_t outlen )
+ 
+ int blake2s( uint8_t *out, const void *in, const void *key, const uint8_t outlen, const uint64_t inlen, uint8_t keylen )
+ {
+-	blake2s_state S[1];
++	blake2s_state S;
+ 
+ 	/* Verify parameters */
+ 	if ( NULL == in ) return -1;
+@@ -334,15 +334,15 @@ int blake2s( uint8_t *out, const void *in, const void *key, const uint8_t outlen
+ 
+ 	if( keylen > 0 )
+ 	{
+-		if( blake2s_init_key( S, outlen, key, keylen ) < 0 ) return -1;
++		if( blake2s_init_key( &S, outlen, key, keylen ) < 0 ) return -1;
+ 	}
+ 	else
+ 	{
+-		if( blake2s_init( S, outlen ) < 0 ) return -1;
++		if( blake2s_init( &S, outlen ) < 0 ) return -1;
+ 	}
+ 
+-	blake2s_update( S, ( uint8_t * )in, inlen );
+-	blake2s_final( S, out, outlen );
++	blake2s_update( &S, ( uint8_t * )in, inlen );
++	blake2s_final( &S, out, outlen );
+ 	return 0;
+ }
+ 
+-- 
+2.31.1
+
