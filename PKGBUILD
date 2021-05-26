@@ -3,8 +3,9 @@
 
 pkgname=thunderbird-beta
 _pkgname=thunderbird
-_pkgver=87.0
-pkgver=${_pkgver}b1
+_pkgver=89.0
+_beta=4
+pkgver="${_pkgver}b${_beta}"
 pkgrel=1
 pkgdesc='Standalone mail and news reader from mozilla.org - Bleeding edge version'
 url='https://www.mozilla.org/thunderbird/'
@@ -29,7 +30,7 @@ optdepends=(
 )
 options=(!emptydirs !makeflags)
 provides=("thunderbird=$pkgver")
-conflicts=('thunderbird-beta-bin')
+conflicts=('thunderbird' 'thunderbird-beta-bin')
 source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz{,.asc}
         thunderbird-beta.desktop
         vendor-prefs.js
@@ -78,7 +79,7 @@ package() {
 
   install -Dm 644 ../vendor-prefs.js -t "$pkgdir/usr/lib/$pkgname/defaults/pref"
   install -Dm 644 ../distribution.ini -t "$pkgdir/usr/lib/$pkgname/distribution"
-  install -Dm 644 ../$pkgname.desktop -t "$pkgdir/usr/share/applications"
+  install -Dm 644 ../thunderbird-beta.desktop -t "$pkgdir/usr/share/applications"
 
   for i in 16 22 24 32 48 64 128 256; do
     install -Dm644 comm/mail/branding/thunderbird/default${i}.png \
@@ -103,7 +104,7 @@ END
     "$pkgdir/usr/lib/$pkgname/thunderbird-bin"
 }
 
-sha256sums=('9846c7a42553051c52a0df587d14c7d16577036a3680f664041ba951b424435d'
+sha256sums=('fedcadce2ff1cc4610fbd7a64d492a89aa4bbb82f75a6ac6f838c5415e41b193'
             'SKIP'
             'd7aa1bd77f74c255446eec4171e4360c7a6215dac1d29c8ee71ec1f2a03bda3d'
             'fa11b4736bbf53ec015f71cd42b1040b22d1a855c562b76927b3f0eccb925c85'
