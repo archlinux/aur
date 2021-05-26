@@ -1,7 +1,7 @@
 pkgbase = opensmtpd-filter-dkimsign
 	pkgdesc = opensmtd filter for signing mail with DKIM
-	pkgver = 0.5
-	pkgrel = 2
+	pkgver = 0.5.pre
+	pkgrel = 1
 	url = http://imperialat.at/dev/libopensmtpd/
 	arch = x86_64
 	license = BSD

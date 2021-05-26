@@ -1,13 +1,14 @@
 # Maintainer: Maarten de Vries <maarten@de-vri.es>
 pkgname=opensmtpd-filter-dkimsign
-pkgver=0.5
-pkgrel=2
+pkgver=0.5.pre
+_pkgver=0.5
+pkgrel=1
 pkgdesc="opensmtd filter for signing mail with DKIM"
 license=(BSD)
 url="http://imperialat.at/dev/libopensmtpd/"
 arch=(x86_64)
 source=(
-	"https://distfiles.sigtrap.nl/filter-dkimsign-$pkgver.tar.gz"
+	"https://distfiles.sigtrap.nl/filter-dkimsign-$_pkgver.tar.gz"
 	"LICENSE"
 )
 
@@ -21,13 +22,13 @@ sha512sums=(
 
 build() {
 	export CFLAGS="$CFLAGS -I/usr/include/libopensmtpd"
-	cd filter-dkimsign-$pkgver
+	cd filter-dkimsign-$_pkgver
 	make -f Makefile.gnu
 	gzip -kf filter-dkimsign.8
 }
 
 package() {
-	install -m 755 -Dt "$pkgdir/usr/lib/smtpd/opensmtpd/" filter-dkimsign-$pkgver/filter-dkimsign
-	install -m 644 -Dt "$pkgdir/usr/share/man/man8/" filter-dkimsign-$pkgver/filter-dkimsign.8.gz
+	install -m 755 -Dt "$pkgdir/usr/lib/smtpd/opensmtpd/" filter-dkimsign-$_pkgver/filter-dkimsign
+	install -m 644 -Dt "$pkgdir/usr/share/man/man8/" filter-dkimsign-$_pkgver/filter-dkimsign.8.gz
 	install -m 644 -Dt "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
