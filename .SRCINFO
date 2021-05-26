@@ -1,6 +1,6 @@
 pkgbase = txr-git
 	pkgdesc = A data munging language.
-	pkgver = v259.r0.9c16c667
+	pkgver = 260.r0.b4305c16
 	pkgrel = 1
 	url = http://nongnu.org/txr/
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = txr-git
 	makedepends = make
 	depends = libffi
 	depends = libxcrypt
+	provides = txr
 	conflicts = txr
 	source = git+http://kylheku.com/git/txr.git
 	source = ftdetect.vim

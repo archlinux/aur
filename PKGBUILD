@@ -1,15 +1,17 @@
 # Maintainer: Sergii Fesenko <sergii_f@loutlook.com>
+
 pkgname=txr-git
 _pkgname=txr
-pkgver=v259.r0.9c16c667
+pkgver=260.r0.b4305c16
 pkgrel=1
-pkgdesc="A data munging language."
+pkgdesc="A programming language for convenient data munging"
 arch=('i686' 'x86_64')
 url="http://nongnu.org/txr/"
 license=('BSD')
 depends=('libffi' 'libxcrypt')
 makedepends=('gcc' 'make')
 conflicts=(txr)
+provides=(txr)
 source=(
   'git+http://kylheku.com/git/txr.git'
   'ftdetect.vim'
@@ -20,7 +22,7 @@ sha256sums=(
 )
 pkgver() {
   cd ${srcdir}/${_pkgname}
-  git describe --tags --long | sed 's/txr-/v/; s/-/.r/; s/-g/./'
+  git describe --tags --long | sed 's/txr-/v/; s/-/.r/; s/-g/./; s/^v//'
 }
 
 build() {
@@ -32,7 +34,7 @@ build() {
 check() {
   cd $_pkgname
   # Tests have to run sequentially.
-  make -j tests
+  make tests
 }
 
 package() {
