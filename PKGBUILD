@@ -1,6 +1,6 @@
 # Maintainer: Pierre Mavro <deimosfr@gmail.com>
 pkgname=oled-backlight
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="CLI tool to Manage OLED backlight brightness"
 arch=(x86_64)
@@ -24,4 +24,4 @@ package() {
     install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-md5sums=('7589cb4e7c0ed6434e9bcd60651fdf25')
+md5sums=('d3134fa0bc25706ee9770d8445e96396')
