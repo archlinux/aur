@@ -1,25 +1,25 @@
 # Maintainer: dcordonu
 
 pkgname=connect-tunnel
-pkgver=12.40.00513
+pkgver=12.4.0.680
 pkgrel=1
 pkgdesc="SonicWALL Connect Tunnel VPN Client"
 arch=('x86_64')
 url="https://www.sonicwall.com/products/remote-access/vpn-clients/"
 depends=('java-runtime')
-makedepends=('tar')
+makedepends=('tar' 'gendesk')
 license=('custom')
 source=(
     "ConnectTunnel_Linux64-${pkgver}.tar::https://software.sonicwall.com/CT-NX-VPN%20Clients/CT-12.4.0/ConnectTunnel_Linux64-${pkgver}.tar"
     "https://www.sonicwall.com/legal/general-product-agreement"
 )
-md5sums=('f36008a0ecfc2c7f7962c264020a1710' 'SKIP')
+md5sums=('26a2ff9e5a62582ff57c91bf29609d3c' 'SKIP')
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 
 install=${pkgname}.install
 
 prepare() {
-    tar -xf ConnectTunnel-Linux64-${pkgver}.tar.bz2
+    ls . | grep ConnectTunnel*.tar.bz2 | xargs tar -xf
 }
 
 package() {

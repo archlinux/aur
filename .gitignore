@@ -3,3 +3,5 @@ src
 *.tar
 *.zst
 general-product-agreement
+version
+install.sh
