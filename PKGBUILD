@@ -1,6 +1,7 @@
-# Maintainer: BlackyFox <blacky@blackyfox.net>
+# Maintainer: cable_loco <el_gordo_usa@hotmail.com>
+# Contributor: BlackyFox <blacky@blackyfox.net>
 pkgname=purevpn
-pkgver=1.2.3
+pkgver=1.2.5
 pkgrel=2
 pkgdesc="PureVPN Linux Application (CLI). World's Fastest, Most Reliable and Easy to Use VPN service."
 arch=('i686' 'x86_64')
@@ -12,11 +13,11 @@ makedepends=('tar')
 conflicts=('purevpn-networkmanager')
 install=${pkgname}.install
 source=("purevpn.service")
-source_i686=("${pkgname}_${pkgver}_i386.deb::https://s3.amazonaws.com/purevpn-dialer-assets/linux/app/${pkgname}_${pkgver}_i386.deb")
-source_x86_64=("${pkgname}_${pkgver}_amd64.deb::https://s3.amazonaws.com/purevpn-dialer-assets/linux/app/${pkgname}_${pkgver}_amd64.deb")
+source_i686=("${pkgname}_${pkgver}_i386.deb::https://d3uym7n1flvv1x.cloudfront.net/linux/app/${pkgname}_${pkgver}_i386.deb")
+source_x86_64=("${pkgname}_${pkgver}_amd64.deb::https://d3uym7n1flvv1x.cloudfront.net/linux/app/${pkgname}_${pkgver}_amd64.deb")
 sha512sums=('cc02e6062c8cd9b44662bc0317b9f1ac49971db3e41970236ab0dc2ec7dbd48065f262c5fea4b07b0ddd5dbd4e7288e23b05f8711d913ed94e6a51959375fc83')
-sha512sums_i686=('9c10bae353d8aeba72bfe4d8ef6d3c5c04fbcfb003d8b86cc817a1375df61b52ba342062595e6488829ff41b13636c017f88e03379280ea0e4a25cf9d6b93dbe')
-sha512sums_x86_64=('bb064dd172dc3a3405007cba2d9c541a753f375bae34e372200eade26acd52740e1adf34df11e00a6249b142072b26ea523e5ee973c8b1df12866ee3a2f2535d')
+sha512sums_i686=('9bf34048d4b4ae62ea9ff6870e0c44621ebca029d2227f12364a7abd9eb969c0653509eaef52f7cad9bcae94bd6ceb40f4b231db6f22bb60fbb18167b7fe7d3f')
+sha512sums_x86_64=('7d9b31f3268c41905b81fa87d14e411df959e03a4dcae556b653b34fd310ab69a07d1d7af8d2ef27a12726697f561a2f78ca29a975827eb5756c1fbc219cf670')
 package(){
 
 	# Extract package data
