@@ -1,7 +1,7 @@
 pkgbase = aarch64-binutils
 	pkgdesc = A set of programs to assemble and manipulate binary and object files for the ARM64 target
 	pkgver = 2.36.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnu.org/software/binutils/
 	arch = x86_64
 	license = GPL
