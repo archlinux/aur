@@ -1,7 +1,7 @@
 # Maintainer: sohlk <sohlk at outlook dot com>
 
 pkgname=eleventy-plugin-syntaxhighlight
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="A pack of Eleventy plugins for syntax highlighting in Markdown, Liquid, and Nunjucks templates"
 arch=('any')
