@@ -179,15 +179,19 @@ int main(int argc, char **argv){
 		switch(key_press){
 			case 'h':
 				cursor.x = cursor.x - 1 < 0 ? cursor.x : cursor.x - 1;
+				move_cursor();
 				break;
 			case 'j':
 				cursor.y = cursor.y + 1 >= LINE_LEN ? cursor.y : cursor.y + 1 ;
+				move_cursor();
 				break;
 			case 'k':
 				cursor.y = cursor.y - 1 < 0 ? cursor.y : cursor.y - 1;
+				move_cursor();
 				break;
 			case 'l':
 				cursor.x = cursor.x + 1 >= LINE_LEN ? cursor.x : cursor.x + 1 ;
+				move_cursor();
 				break;
 			case 's':
 				//Save file and handle errors
@@ -195,6 +199,9 @@ int main(int argc, char **argv){
 					finish_with_err_msg("Error accessing file\n");
 				else
 					sprintf(statusbar, "%s", "Saved");
+
+				draw();
+
 				break;
 			case 'c':
 				//Check for errors (writes to statusbar directly)
@@ -206,16 +213,21 @@ int main(int argc, char **argv){
 					sprintf(statusbar, "%s", "Valid");
 				else
 					sprintf(statusbar, "%s", "Invalid or not filled out");
-				break;
+
+				draw();
 
 				free(combined_solution);
+				break;
 			case 'd':
 				solve_user_nums();
+				draw();
 				break;
 			case 'e':
 				editing_notes = !editing_notes;
 				char* mode = editing_notes == 1 ? "Note\0" : "Normal\0";
 				sprintf(statusbar, "%s %s", mode, "Mode");
+
+				draw();
 				break;
 			case 'q':
 				finish(0);
@@ -228,25 +240,33 @@ int main(int argc, char **argv){
 					if(key_press > 0x30 && key_press <= 0x39){
 						int* target = &notes[((cursor.y * LINE_LEN * LINE_LEN) + (cursor.x * LINE_LEN)) + (key_press - 0x31)];
 						*target = !*target;
+						draw();
 					}
 				//Check if the field is empty in the puzzle
 				}else if(sudoku_str[cursor.y * LINE_LEN + cursor.x] == '0'){
 					//check for numbers
 					if(key_press >= 0x30 && key_press <= 0x39 && user_nums[cursor.y * LINE_LEN + cursor.x] != key_press){ 
 						user_nums[cursor.y * LINE_LEN + cursor.x] = key_press;
-					}
+						draw();
+				}
 					//check for x
 					else if(key_press == 'x' && user_nums[cursor.y * LINE_LEN + cursor.x] != '0'){
 						user_nums[cursor.y * LINE_LEN + cursor.x] = '0';
+						draw();
 					}
 				}
 				break;
 		}
-
-		draw();
-
-		move_cursor();
 	}
+}
+
+void draw(){
+	erase();
+	read_notes();
+	draw_sudokus();
+	mvaddstr((LINE_LEN * 3) + 13, 0, controls);
+	mvaddstr((LINE_LEN * 3) + 11, 0, statusbar);
+	move_cursor();
 }
 
 //Generate a random sudoku
@@ -481,16 +501,6 @@ void generate_visually(char* sudoku_to_display){
 	read_sudoku(sudoku_to_display, 1);
 	refresh();
 	usleep(VISUAL_SLEEP);
-}
-
-//Draw stuff
-void draw(){
-	erase();
-	read_notes();
-	draw_sudokus();
-	mvaddstr((LINE_LEN * 3) + 11, 0, statusbar);
-	mvaddstr((LINE_LEN * 3) + 13, 0, controls);
-	move_cursor(cursor);
 }
 
 //Write changed values back to file
