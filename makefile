@@ -15,6 +15,7 @@ run: $(EXE)
 	bin/term-sudoku
 
 install: $(EXE)
+	mkdir -p $(IDIR)
 	cp $(ODIR)/term-sudoku $(IDIR)/term-sudoku
 	mkdir -p $(MANPATH)/man1
 	cp term-sudoku.1 $(MANPATH)/man1/term-sudoku.1
