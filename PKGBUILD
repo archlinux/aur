@@ -2,7 +2,7 @@
 
 pkgname=ghosts
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to evaluate, compare & format host files"
 arch=('x86_64')
 url="https://github.com/StevenBlack/ghosts"
@@ -13,12 +13,13 @@ b2sums=('21ec1aebc679a17e52c65ea77ca68ceb94429ae18e6734682525e958ecbd66d72a37778
 noextract=("$pkgname-$pkgver.tar.gz")
 
 prepare() {
+  # do not extract binaries
   bsdtar -xf "$pkgname-$pkgver.tar.gz" \
     --exclude "$pkgname-$pkgver/dist" \
     --exclude "$pkgname-$pkgver/$pkgname"
 
   # download dependencies
-	cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   go mod init "${url#https://}"
   go mod tidy
 
@@ -27,7 +28,7 @@ prepare() {
 }
 
 build() {
-	cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -37,12 +38,12 @@ build() {
 }
 
 check() {
-	cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   go test ./...
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
   # binary
   install -vDm755 -t "$pkgdir/usr/bin" "build/$pkgname"
