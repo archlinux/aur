@@ -1,6 +1,6 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=sqlite_fdw
-pkgver=1.3.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='SQLite Foreign Data Wrapper for PostgreSQL'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('postgresql')
 depends=('sqlite')
 makedepends=()
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('da75f3908dbd41437f15185bb9a508c4f2487a66c7e78b0aef28c3b4a0213db2')
+sha256sums=('8bcec6d3f38c5c2983fb0855d3b983e10b0c5390b5263e1654a21f209ba2bc4d')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
