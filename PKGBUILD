@@ -5,7 +5,7 @@
 # Contributor: Huulivoide
 
 pkgname=zsdx
-pkgver=1.12.2
+pkgver=1.12.3
 pkgrel=1
 epoch=
 pkgdesc="The Legend of Zelda: Mystery of Solarus DX - A free 2D Zelda fangame"
@@ -26,7 +26,7 @@ install=
 changelog=
 source=("https://gitlab.com/solarus-games/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 noextract=()
-md5sums=('b9acb79919bc0ecc2f7f1339c1cca721')
+md5sums=('fb6de53da0a3088a6692c7dfafb580f1')
 
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
