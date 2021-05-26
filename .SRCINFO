@@ -1,6 +1,6 @@
 pkgbase = python-red-lavalink
 	pkgdesc = Lavalink client library used in Red-DiscordBot
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/Cog-Creators/Red-Lavalink
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-red-lavalink
 	depends = python
 	depends = python-aiohttp
 	depends = python-discord
-	source = Red-Lavalink-0.8.0.tar.gz::https://github.com/Cog-Creators/Red-Lavalink/archive/0.8.0.tar.gz
-	sha256sums = c3d2445b09c42d39ed35143a17385b9ceac6128212d72a160dacdd554a84e6d8
+	source = Red-Lavalink-0.8.1.tar.gz::https://github.com/Cog-Creators/Red-Lavalink/archive/0.8.1.tar.gz
+	sha256sums = 36cb0a27d45f7b5c30c54b08303df44d6133fd1f23e814bfd1b63605fc72e39a
 
 pkgname = python-red-lavalink
 
