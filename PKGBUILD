@@ -3,7 +3,7 @@
 pkgname=searchmonkey-gtk
 _pkgname=searchmonkey
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful GUI search utility for matching regex patterns, GTK version"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/searchmonkey/"
@@ -14,7 +14,7 @@ md5sums=('abb2247e67cc0fa5f8a9bee13c531625')
 
 build() {
   cd "$srcdir/${_pkgname}-${pkgver}"
-  ./configure
+  CFLAGS=-Wno-error ./configure
   make
 }
 
