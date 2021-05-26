@@ -1,6 +1,6 @@
 pkgbase = objectivelymvc-git
 	pkgdesc = Object oriented MVC framework for OpenGL, SDL2 and GNU C. Inspired by Apple's AppKit.
-	pkgver = r872.1535d53
+	pkgver = r873.5dbd343
 	pkgrel = 1
 	url = https://github.com/jdolan/ObjectivelyMVC
 	arch = i686
