@@ -1,53 +1,51 @@
 # Maintainer: Danila Fedotov <mail at danilafedotov dot com>
-# Previous Maintainer: Gökberk Yaltıraklı <webdosusb at gmail dot com>
+# Contributor: Gökberk Yaltıraklı <webdosusb at gmail dot com>
 pkgname=notes
 pkgver=1.5.0
-_commmit=4840afcf0ea87f9b9eecc849ef3e4ec2e36894d7
 pkgrel=1
-pkgdesc="Note taking application, write down your thoughts."
-arch=('i686' 'x86_64')
-url="https://github.com/nuttyartist/notes"
+pkgdesc='Note taking application, write down your thoughts'
+arch=('x86_64')
+url='https://www.get-notes.com/'
 license=('MPL')
-depends=('qt5-base')
-makedepends=(git)
-provides=('notes')
-conflicts=('notes')
+depends=('hicolor-icon-theme' 'qt5-base')
+makedepends=('git')
+_commit=4840afcf0ea87f9b9eecc849ef3e4ec2e36894d7  # tags/v1.5.0
+source=("git+https://github.com/nuttyartist/notes.git#commit=$_commit"
+        'git+https://github.com/b00f/qautostart.git'
+        'git+https://github.com/pbek/qmarkdowntextedit.git'
+        'git+https://github.com/alex-spataru/QSimpleUpdater.git')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
 
 prepare() {
-    cd "$srcdir"
-    git clone https://github.com/nuttyartist/notes.git
-    cd "$srcdir/notes"
-    git reset --hard $_commit
-    git submodule init
-    git submodule update
+  cd $pkgname
+  git submodule init
+  git submodule set-url 3rdParty/qautostart "$srcdir/qautostart"
+  git submodule set-url 3rdParty/qmarkdowntextedit "$srcdir/qmarkdowntextedit"
+  git submodule set-url 3rdParty/QSimpleUpdater "$srcdir/QSimpleUpdater"
+  git submodule update
 }
 
 build() {
-  cd "$pkgname"
-
-  cat > $pkgname.desktop << EOF
-[Desktop Entry]
-Version=${pkgver}
-Type=Application
-Terminal=false
-StartupNotify=true
-Name=Notes
-Comment=$pkgdesc
-Categories=Utility;Application;
-Exec=/usr/bin/${pkgname}
-Icon=/usr/share/pixmaps/${pkgname}_icon.ico
-EOF
-
-  mkdir build
-  cd build
-  qmake ../src/
+  cd $pkgname
+  qmake
   make
 }
 
 package() {
-  cd "$pkgname"
-  install -Dm755 build/notes $pkgdir/usr/bin/$pkgname
-  install -Dm644 src/images/notes_icon.ico $pkgdir/usr/share/pixmaps/${pkgname}_icon.ico
-  install -Dm644 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-  install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  cd $pkgname
+  make INSTALL_ROOT="$pkgdir" install
+  install -Dm644 packaging/linux/common/notes.desktop "$pkgdir/usr/share/applications/notes.desktop"
+  install -Dm644 packaging/linux/common/icons/scalable/notes.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/notes.svg"
+
+  for i in 16 22 24 32 48 64 128 256 512; do
+    install -Dm644 packaging/linux/common/icons/${i}x${i}/notes.png "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/notes.png"
+  done
 }
