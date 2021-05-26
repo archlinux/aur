@@ -3,8 +3,8 @@
 
 pkgname=timetrace-bin
 _srcname=timetrace
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="A simple CLI for tracking your working time."
 arch=("x86_64")
 url="https://github.com/dominikbraun/timetrace"
@@ -12,8 +12,8 @@ license=("Apache")
 source=("timetrace-$pkgver.tar.gz::https://github.com/dominikbraun/timetrace/releases/download/v$pkgver/timetrace-linux-amd64.tar.gz"
 "https://github.com/dominikbraun/timetrace/archive/refs/tags/v$pkgver.tar.gz")
 
-sha256sums=('cea532b6e14eacf47d434633f5eaa8a5e8bb86d31a81e81a10e28e772f2377f0'
-            '7dcb832858bbeaa57e378814833389073c20b781824edf9ed517ff60879ab683')
+sha256sums=('7fea6cf91c76e2f10ca3d20f1483d87b1b7372822cd0b8031323c933f0238fa7'
+            '2140c9884d1619c91bdc3f75b2b0c6f32fb962f0300deec9bce2ced41ffbbbb1')
 
 conflicts=('timetrace')
 depends=('glibc')
