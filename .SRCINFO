@@ -1,12 +1,11 @@
 pkgbase = libopensmtpd
 	pkgdesc = library for creating opensmtd filters
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://imperialat.at/dev/libopensmtpd/
 	arch = x86_64
 	license = BSD
 	makedepends = gzip
-	depends = openssl
 	depends = libevent
 	source = https://distfiles.sigtrap.nl/libopensmtpd-0.6.tar.gz
 	source = LICENSE

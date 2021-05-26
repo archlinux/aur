@@ -1,7 +1,7 @@
 # Maintainer: Maarten de Vries <maarten@de-vri.es>
 pkgname=libopensmtpd
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="library for creating opensmtd filters"
 license=(BSD)
 url="http://imperialat.at/dev/libopensmtpd/"
@@ -11,7 +11,7 @@ source=(
 	"LICENSE"
 )
 
-depends=(openssl libevent)
+depends=(libevent)
 makedepends=(gzip)
 
 sha512sums=(
