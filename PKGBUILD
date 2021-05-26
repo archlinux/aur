@@ -67,7 +67,7 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.12.6
+pkgver=5.12.7
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -85,19 +85,17 @@ source=(
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "http://ck.kolivas.org/patches/5.0/5.12/5.12-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-drm-i915-gt-Disable-HiZ-Raw-Stall-Optimization-on-br.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('94a6f2b620a33fa52fabfce5781a7e0cd57ee03e65e823e5f25fc0d0bcaec019f9e955bc78c7799f258273c7e36cc277035d07afe4d4b3036bbe2ff526ce9b85'
+b2sums=('7881dceb8a88dfc290ef8e175e31f6b7cba30c1b343883344915acda6b9b20484496511f1d2d9a7e8195621db3b4c93fdc16c1d5be5cb9b685d1d8940800ab58'
         'SKIP'
         'ccb7779df282b54d9acf59682eaa93a39f27276798d61d4c8be8a3b31e582a377c9d3278a500744a3ed089a337807f95a2d23ef821af2f4a7eec24540092b746'
         '72194a32a06c43809d1272bd675890b6d27c6c54353150a366e8e2c50ad6eca6ee23c5d6281822965a228cfedfa07a60fe135d1b4f539e4a62728d4460cc0b0e'
         'c9f729ba1efe6f04e7b2c57d3999bc9675b577596dccb2f227e5b6e444285e1fdd270bf67c0fcf9f5808a4c3a4b1c7a5c13a76f754ad9b9447243ccbaf2ce6a3'
-        'e43852e13fad5cdf3ce47ed698579bf019ea5c4f2f63191f417e226733b70b984c892bf2fd64bdca89aaa44dfd6b06e01f169bc784d7bf61e6189427e24c8b0a'
-        '702170405ba80860ab6500853258021459a440388cff3d3427d85c080089c8c9032baadd7e634e32bb33d20e237476bea5cdb55a40116178fc87cd887b14b9da')
+        'e1eccb5b6b728e3852ade55dae7a53b8b6bd5f0fb2a330b99e85bfa64abaa430cb714d301ed169df14a1f302a75d952992f0d8fa6ab02fa6716165bdf23b63aa')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
