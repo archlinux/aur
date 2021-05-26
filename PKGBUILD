@@ -27,7 +27,7 @@ package() {
   # binary
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}/target/release/${pkgname}" \
     "${pkgdir}/usr/bin/${pkgname}"
-  # bash helper
+  # sh (bash, zsh, ...) helper
   install -Dm644 ${pkgname}.sh "${pkgdir}/usr/share/${pkgname}/${pkgname}.sh"
   # license
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" \
