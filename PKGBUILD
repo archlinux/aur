@@ -6,47 +6,36 @@
 # Contributor: Gabor Nyekhelyi (n0gabor) <n0gabor@vipmail.hu>
 
 pkgname=pitivi-git
-pkgver=0.999.0.r881.g7739e04c
+pkgver=2021.01.0.r68.gf0a99577
 pkgrel=1
 pkgdesc='Editor for audio/video projects using the GStreamer framework (git version)'
 arch=('x86_64')
 url='http://www.pitivi.org/'
 license=('LGPL')
-depends=('gsound' 'gst-editing-services' 'gst-plugins-bad' 'gst-plugins-good' 'gst-python'
-         'gst-transcoder' 'gtk3' 'libnotify' 'python-cairo' 'python-gobject'
-         'python-matplotlib' 'python-numpy' 'gdk-pixbuf2' 'libpeas')
-optdepends=('frei0r-plugins: for additional video effects, clip transformation feature'
-            'gst-libav: for additional multimedia codecs'
-            'gst-plugins-ugly: for additional multimedia codecs')
-makedepends=('git' 'gettext' 'itstool' 'meson' 'appstream-glib')
-checkdepends=('gst-validate' 'gst-plugin-gtk' 'zbar' 'lilv' 'libkate' 'fluidsynth'
-              'qt5-base' 'qt5-declarative' 'qt5-x11extras' 'gst-libav' 'xorg-server-xvfb')
+depends=('gsound' 'gst-editing-services' 'gst-plugin-gtk' 'gst-plugins-bad' 'gst-plugins-good' 'gst-python'
+         'gtk3' 'libnotify' 'libpeas' 'python-cairo' 'python-gobject' 'python-matplotlib' 'python-numpy')
+makedepends=('git' 'appstream-glib' 'intltool' 'itstool' 'meson')
+optdepends=('frei0r-plugins: additional video effects, clip transformation feature'
+            'gst-libav: additional multimedia codecs'
+            'gst-plugins-ugly: additional multimedia codecs')
 provides=('pitivi')
 conflicts=('pitivi')
-BUILDENV+=('!check')
 source=('git+https://gitlab.gnome.org/GNOME/pitivi.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    local _version
-    local _revision
-    local _shorthash
-    _version="$(git -C pitivi tag | grep '[[0-9]*\.]*[0-9]*' | sort -r | head -n1)"
-    _revision="$(git -C pitivi rev-list "${_version}..HEAD" --count)"
-    _shorthash="$(git -C pitivi rev-parse --short HEAD)"
-    printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
+    git -C pitivi describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    arch-meson pitivi/build pitivi
-    ninja -C pitivi/build
+    arch-meson build pitivi
+    ninja -v -C build
 }
 
 check() {
-    cd pitivi
-    xvfb-run gst-validate-launcher tests/ptv_testsuite.py
+    ninja -v -C build test
 }
 
 package() {
-    DESTDIR="$pkgdir" ninja -C pitivi/build install
+    DESTDIR="$pkgdir" ninja -v -C build install
 }
