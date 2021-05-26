@@ -1,0 +1,16 @@
+pkgbase = eso-wallpapers-git
+	pkgdesc = A collection of cool wall papers!
+	pkgver = d5109ca
+	pkgrel = 1
+	url = https://github.com/EndeavourOS-Community-Editions/Community-wallpapers
+	arch = any
+	groups = therepoclub
+	license = CC BY-NC-SA 4.0
+	makedepends = git
+	optdepends = feh: Allows setting wallpaper
+	optdepends = multimonitorlock-gui: Allows the background to be changed
+	source = eso-wallpapers-git::git+https://github.com/EndeavourOS-Community-Editions/Community-wallpapers
+	sha256sums = SKIP
+
+pkgname = eso-wallpapers-git
+
