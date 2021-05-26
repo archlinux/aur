@@ -1,6 +1,6 @@
 pkgbase = libcamera-clang-git
 	pkgdesc = A complex camera support library for Linux, Android, and ChromeOS (built with clang)
-	pkgver = r2570.0906ddb2
+	pkgver = r2623.258c7481
 	pkgrel = 1
 	url = https://libcamera.org/
 	arch = x86_64
@@ -36,4 +36,3 @@ pkgbase = libcamera-clang-git
 	md5sums = SKIP
 
 pkgname = libcamera-clang-git
-
