@@ -6,9 +6,9 @@
 _arch=aarch64
 _target=$_arch-unknown-linux-gnu
 pkgname=$_arch-gcc-bootstrap
-pkgver=10.3.0
-_islver=0.23
-pkgrel=2
+pkgver=11.1.0
+_islver=0.24
+pkgrel=0
 #_snapshot=8-20190111
 pkgdesc='The GNU Compiler Collection - cross compiler for ARM64 target'
 arch=(x86_64)
@@ -19,14 +19,18 @@ makedepends=($_arch-binutils)
 provides=($_arch-gcc)
 conflicts=($_arch-gcc)
 options=(!emptydirs !strip staticlibs)
-source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
+source=(https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz{,.sig}
         #https://gcc.gnu.org/pub/gcc/snapshots/$_snapshot/gcc-$_snapshot.tar.xz
-        http://isl.gforge.inria.fr/isl-$_islver.tar.bz2)
-sha256sums=('64f404c1a650f27fc33da242e1f2df54952e3963a49e06e73f6940f3223ac344'
+	http://isl.gforge.inria.fr/isl-$_islver.tar.bz2)
+
+sha256sums=('4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf'
             'SKIP'
-            'c58922c14ae7d0791a77932f377840890f19bc486b653fa64eba7f1026fb214d')
-validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06  # Jakub Jelinek <jakub@redhat.com>
-              13975A70E63C361C73AE69EF6EEB81F8981C74C7) # Richard Guenther <richard.guenther@gmail.com>
+	    'fcf78dd9656c10eb8cf9fbd5f59a0b6b01386205fe1934b3b287a0a1898145c0')
+
+validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
+              86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
+              13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
+              D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62) # Jakub Jelinek <jakub@redhat.com>
 
 if [ -n "$_snapshot" ]; then
   _basedir=gcc-$_snapshot
@@ -40,18 +44,15 @@ prepare() {
   # link isl for in-tree builds
   ln -sf ../isl-$_islver isl
 
-  #hack - Having CPPFLAGS defined makes the build barf. Workaround it like this:
-  _cppflags=$CPPFLAGS
-  CFLAGS="$_cppflags $CFLAGS"
-  CXXFLAGS="$_cppflags $CXXFLAGS"
-  unset CPPFLAGS
-
   rm -rf "$srcdir"/gcc-build
   mkdir "$srcdir"/gcc-build
 }
 
 build() {
   cd gcc-build
+
+  CFLAGS=${CFLAGS/-Werror=format-security/}
+  CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
   "$srcdir"/$_basedir/configure \
       --prefix=/usr \
@@ -83,6 +84,6 @@ package() {
   rm -r "$pkgdir"/usr/{include,share}
 
   #workaround for fakeroot bug
-  chown -R root:root "$pkgdir"/usr
+#  chown -R root:root "$pkgdir"/usr
 
 }
