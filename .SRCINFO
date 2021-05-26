@@ -1,0 +1,18 @@
+pkgbase = xfel-git
+	pkgdesc = Tiny FEL tools for allwinner SOC, support RISC-V D1 chip.
+	pkgver = d66fb6a
+	pkgrel = 1
+	url = https://github.com/xboot/xfel
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = libusb
+	provides = xfel-git
+	conflicts = xfel-git
+	conflicts = xfel
+	options = !strip
+	source = xfel::git+https://github.com/xboot/xfel.git
+	sha256sums = SKIP
+
+pkgname = xfel-git
+
