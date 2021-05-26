@@ -1,0 +1,22 @@
+pkgbase = picomc-git
+	pkgdesc = A tiny CLI Minecraft launcher
+	pkgver = v0.4.2.r12.g64285b3
+	pkgrel = 1
+	url = https://github.com/sammko/picomc
+	arch = any
+	license = MIT
+	depends = python>=3.7.0
+	depends = python-click>=7.0.0
+	depends = python-requests
+	depends = python-urllib3
+	depends = python-certifi
+	depends = python-tqdm
+	depends = python-coloredlogs
+	depends = java-runtime
+	provides = picomc
+	conflicts = picomc
+	source = picomc-git::git+https://github.com/sammko/picomc
+	sha256sums = SKIP
+
+pkgname = picomc-git
+
