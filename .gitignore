@@ -3,3 +3,4 @@ sudokus/
 term-sudoku.1.md
 src/
 term-sudoku/
+*.tar.xz
