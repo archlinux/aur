@@ -1,11 +1,11 @@
-# Maintainer: Sean Anderson <seanga2@gmail.com>
+# Maintainer: René Wagner <rwagner@rw-net.de>
+# Contributor: Sean Anderson <seanga2@gmail.com>
 # Contributor: Taran Lynn <taranlynn0@gmail.com>
 # Contributor: Derek Hawker <derekhawker+aur@gmail.com>
 _srcname=crawl
 pkgname=crawl-tiles
-pkgver=0.22.1
+pkgver=0.26.1
 pkgrel=1
-epoch=
 pkgdesc="Dungeon Crawl Stone Soup with graphical tiles and sound support"
 arch=('i686' 'x86_64')
 url="https://crawl.develz.org/"
@@ -16,6 +16,8 @@ depends=(
 	'freetype2'
 	'lua51'
 	'sqlite'
+	'zlib'
+	'python-pyaml'
 	'glu'
 )
 makedepends=('gendesk')
@@ -26,7 +28,7 @@ conflicts=('crawl' 'stone-soup')
 backup=()
 options=()
 source=("https://github.com/crawl/$_srcname/archive/$pkgver.tar.gz")
-md5sums=('d73637467a621b5cbf7eecbc065c054f')
+sha256sums=('c8c6abbefa7f21383ea77cd017033050471e06c60ea4deebd033f5198bc39596')
 
 getCRAWLOPT() {
 	CRAWLOPT=(
@@ -52,15 +54,10 @@ build() {
 	cd "$_srcname-$pkgver/crawl-ref/source"
 
 	getCRAWLOPT
-	make "${CRAWLOPT[@]}"
+	NPROC=$(getconf _NPROCESSORS_ONLN)
+    
+	make -j${NPROC} "${CRAWLOPT[@]}"
 }
-
-# Tests cannot be run without a debug build.
-# To enable them, add the debug target to build()
-#check() {
-#	cd "$_srcname-$pkgver/crawl-ref/source"
-#	make -k test $CRAWLOPT
-#}
 
 package() {
 	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
