@@ -1,7 +1,7 @@
 # Maintainer: Emanuele 'Lele aka eldios' Calo' <xeldiosx@gmail.com>
 
 pkgname=linkerd
-pkgver=2.10.1
+pkgver=2.10.2
 pkgrel=0
 pkgdesc="A service sidecar for Kubernetes and beyond. Main repo for Linkerd 2.x.  - https://linkerd.io"
 arch=('x86_64')
@@ -13,14 +13,14 @@ source_x86_64=(
     "linkerd::https://github.com/linkerd/linkerd2/releases/download/stable-${pkgver}/linkerd2-cli-stable-${pkgver}-linux-amd64"
     )
 sha256sums_x86_64=(
-    '6ce59b003e009cba805055edcf7a361ea8c244e1ea97b6f1d224e5a6ac5af6cb'
+    '7021232b50368b247e8d5226d381a654327f610c4f61d6719dc6fd6e46284035'
     )
 # ARMv5 & ARMv6
 source_arm=(
     "linkerd::https://github.com/linkerd/linkerd2/releases/download/stable-${pkgver}/linkerd2-cli-stable-${pkgver}-linux-arm"
     )
 sha256sums_arm=(
-    '389d11a1bba17bea4ad5a6820fe6b448eb2f76f8ff34d7dd505bb854a4ed6a91'
+    '16d1010603a5c39195ac83a45c305222fa7cb7c784e0e1d9b08e198e0755382f'
     )
 # ARMv7 hardfloat
 source_armv7h=("${source_arm[@]}")
@@ -30,7 +30,7 @@ source_aarch64=(
     "linkerd::https://github.com/linkerd/linkerd2/releases/download/stable-${pkgver}/linkerd2-cli-stable-${pkgver}-linux-arm64"
     )
 sha256sums_aarch64=(
-    '119d00df31fe0f83b665097f8689d76edfef35b2a29d1164df9c461bcb5ac6de'
+    'bd14989d7749a6055ac74f7e45a8c646efd7cba0f370bcd7fdc29becd093df9c'
     )
 options=(!strip)
 
