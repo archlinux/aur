@@ -18,6 +18,12 @@ creates a "bin" folder with the binary.
 
 copies that binary to /usr/local/bin.
 
+## AUR
+
+Install via (using paru)
+
+`$ paru -Syu term-sudoku`
+
 ## Usage
 
 When you start the program with
