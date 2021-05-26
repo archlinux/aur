@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=geojsonhint
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Validate and sanity-check geojson files (geojsonlint)"
 arch=(any)
@@ -24,4 +24,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('550d2f88c6310525f9b932947e8bb8408cbffbd2e096319e5aadf85a2c5aedd5')
+sha256sums=('e1bb8adbd5e6d769f735609d61688ac5c155678ec0badab9f9056c7c46a1dc97')
