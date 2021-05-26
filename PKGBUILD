@@ -2,8 +2,8 @@
 # thanks to celogeek, sseneca, dr460nf1r3, dr460nf1r3 and AverytheFurry for pointing out multiple things
 
 pkgname=fluffychat
-pkgver=0.30.2
-_flutterversion=2.0.6-stable
+pkgver=0.31.1
+_flutterversion=2.2.0-stable
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('x86_64')
@@ -19,8 +19,8 @@ makedepends=('clang'
 source=(
     "flutter-${_flutterversion}.tar.xz::https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_${_flutterversion}.tar.xz"
     "fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v${pkgver}/fluffychat-v${pkgver}.tar.gz")
-sha256sums=('2523bc997fb16cefcf50f88a30d9dd5ce34e24a15e5eeb23a5caddfe5012ba80'
-            'c75bac5c793e2e5ae4636936669f7ca667aebc9c59fb3d5eb4ca87e9f2a76790')
+sha256sums=('7a0e7ff8aea82f143ade4068c2f77cbad49a95bee3245e03d7a7f913421d788b'
+            '0a538d213a3714ada30e7e93d80a0a9e3cfd1ebe0bfc3ad2feb453e9f168912d')
 
 prepare() {
   export PATH="${srcdir}/flutter/bin:$PATH"
@@ -39,7 +39,7 @@ build() {
 package() {  
   # install
   install -dm755 ${pkgdir}/opt
-  mv ${pkgname}-v$pkgver/build/linux/release/bundle ${pkgdir}/opt/${pkgname}
+  mv ${pkgname}-v$pkgver/build/linux/x64/release/bundle ${pkgdir}/opt/${pkgname}
   
   # link
   install -dm755 ${pkgdir}/usr/bin
