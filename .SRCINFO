@@ -1,0 +1,16 @@
+pkgbase = pinephone-toolkit-git
+	pkgdesc = A collection of tools and utility apps for the PINE64 PinePhone.
+	pkgver = r9.0107cf9
+	pkgrel = 1
+	url = https://github.com/Dejvino/pinephone-toolkit
+	arch = aarch64
+	license = MIT
+	makedepends = meson
+	makedepends = git
+	provides = pinephone-toolkit
+	conflicts = pinephone-toolkit
+	source = git+https://github.com/Dejvino/pinephone-toolkit.git#branch=master
+	md5sums = SKIP
+
+pkgname = pinephone-toolkit-git
+
