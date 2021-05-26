@@ -1,8 +1,9 @@
-# Maintainer: Bruno Pagani <archange@archlinux.org>
+# Maintainer: Wilhelm Schuster <aur [aT] rot 13 doT io>
+# Contributor: Bruno Pagani <archange@archlinux.org>
 
 pkgname=prusa-slicer-gtk2
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="G-code generator for 3D printers (built with GTK2)"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://github.com/prusa3d/PrusaSlicer"
