@@ -4,28 +4,32 @@
 # Contributor: Nathan Owe <ndowens04 at gmail>
 
 pkgname=freeipmi
-pkgver=1.6.7
-pkgrel=2
+pkgver=1.6.8
+pkgrel=1
 pkgdesc="IPMI remote console and system management software"
 arch=('x86_64' 'aarch64')
 url="https://www.gnu.org/software/freeipmi"
 license=('GPL')
 depends=('libgcrypt')
-provides=('libipmimonitoring.so=6'
-          'libipmidetect.so=0'
-          'libipmiconsole.so=2'
-          'libfreeipmi.so=17')
-backup=("etc/$pkgname/$pkgname.conf"
-        "etc/$pkgname/${pkgname}_interpret_sel.conf"
-        "etc/$pkgname/${pkgname}_interpret_sensor.conf"
-        "etc/$pkgname/ipmidetect.conf"
-        "etc/$pkgname/ipmidetectd.conf"
-        "etc/$pkgname/ipmiseld.conf"
-        "etc/$pkgname/libipmiconsole.conf")
+provides=(
+  'libipmimonitoring.so=6'
+  'libipmidetect.so=0'
+  'libipmiconsole.so=2'
+  'libfreeipmi.so=17'
+)
+backup=(
+  "etc/$pkgname/$pkgname.conf"
+  "etc/$pkgname/${pkgname}_interpret_sel.conf"
+  "etc/$pkgname/${pkgname}_interpret_sensor.conf"
+  "etc/$pkgname/ipmidetect.conf"
+  "etc/$pkgname/ipmidetectd.conf"
+  "etc/$pkgname/ipmiseld.conf"
+  "etc/$pkgname/libipmiconsole.conf"
+)
 options=('!libtool')
 source=("https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz"{,.sig}
         "tmpfiles.conf")
-b2sums=('6e07afb7e93ec41c18c82725e781177d8a5fef78054ffca784cb951e360be9132ee35805014cd1ee92e1c167b2ec7dcfd07152b43f09a53eefff3e05c6f73789'
+b2sums=('afe3238955786b13aae0e0062028f5c969a8e686b46bea3850696361355b3bd82a55bd93523ea7fe2223fe5bb04922c26b46023f783bd879bbd01e34ffd6d59e'
         'SKIP'
         '5354e0b716b0806ac6f82dbbae533cb86f302d1952b948df6b5ab5bd41bf194ec927c9c39fd4d5969c2f4de8cfdbf3b66a4a1c1faaee4e5768201eaef83ca991')
 validpgpkeys=('A865A9FB6F0387624468543A3EFB7C4BE8303927') # Albert Chu <chu11@llnl.gov>
@@ -33,11 +37,8 @@ validpgpkeys=('A865A9FB6F0387624468543A3EFB7C4BE8303927') # Albert Chu <chu11@ll
 prepare() {
   cd "$pkgname-$pkgver"
 
-  # replace /usr/sbin with /usr/bin
-  sed -i "s/sbin/bin/" etc/*.service
-
   # use arch-specific config dir
-  sed -i "s/sysconfig/conf.d/" etc/bmc-watchdog.service
+  sed -i "s/sysconfig/conf.d/" etc/bmc-watchdog.service.in
 }
 
 build() {
