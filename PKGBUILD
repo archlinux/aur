@@ -5,7 +5,7 @@ url='https://moveit.ros.org'
 pkgname='ros-melodic-moveit-core'
 pkgver='1.0.8'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -24,14 +24,14 @@ ros_depends=(
   ros-melodic-geometric-shapes
   ros-melodic-geometry-msgs
   ros-melodic-kdl-parser
-  ros-melodic-urdf
   ros-melodic-moveit-msgs
   ros-melodic-octomap
   ros-melodic-octomap-msgs
+  ros-melodic-pybind11-catkin
   ros-melodic-random-numbers
+  ros-melodic-rosconsole
   ros-melodic-roslib
   ros-melodic-rostime
-  ros-melodic-rosconsole
   ros-melodic-sensor-msgs
   ros-melodic-shape-msgs
   ros-melodic-srdfdom
@@ -39,6 +39,7 @@ ros_depends=(
   ros-melodic-tf2-eigen
   ros-melodic-tf2-geometry-msgs
   ros-melodic-trajectory-msgs
+  ros-melodic-urdf
   ros-melodic-visualization-msgs
   ros-melodic-xmlrpcpp
 )
