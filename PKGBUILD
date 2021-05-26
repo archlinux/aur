@@ -38,7 +38,6 @@ build() {
 check() {
     cd ${srcdir}/${_gitname}
 
-    ls "build/lib.linux-${CARCH}-${_pyver}"
     PYTHONPATH="build/lib.linux-${CARCH}-${_pyver}" pytest "build/lib.linux-${CARCH}-${_pyver}"
 }
 
