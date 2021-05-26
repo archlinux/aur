@@ -1,6 +1,6 @@
 # Maintainer: Philip Johansson <philipphuket at gmail dotcom>
 pkgname=console_sudoku
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 epoch=
 pkgdesc="Fully fledged ncurses sudoku application built entirely in C++"
