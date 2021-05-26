@@ -1,6 +1,6 @@
 # Maintainer: ransome <ransome@uber.space>
 pkgname="sleek"
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Todo app based on the todo.txt format for Linux, free and open-source"
 arch=("x86_64")
@@ -10,8 +10,8 @@ options=(!strip)
 makedepends=("yarn" "nodejs<16.0.0")
 depends=("electron" "nodejs")
 source=("${url}archive/refs/tags/v${pkgver}.zip" "sleek.desktop" "sleek")
-sha512sums=('c1884cc5234378d1fe5038a7952aefb17316d37171c39c1ca3c87b47408f9e2f02e0344e4413c4f46e2caa3adc1b18c97e8fc507e2f3121feb274b7227d98ef7'
-            '60777dbda8202e5a265a274d126d30269fb8fba67641d22a83be19b353b4805cbed2a3c80bbc0e6ed7c0fe7ae21c3cde59b784d42d3ba941bb0fdf022c1375e8'
+sha512sums=('a6900d850193248cbbc43aa3c79c850bd25b63459cc4341ae8cf8e86848c19355cb9713987152f882b46eefd951eeda7063ba94de47066f3c0461eb75d40436f'
+            '605f49606eb0656846ac5dc3b97eca0acb3a781b07c71aff1e027935d5e8ea569d290c95d67bd7347ddd133c1643e6f3c6fe36bd1b52f49e528b34a458afe316'
             'ea1d322bd56c7944a9eae97f4968a6a2e937b510eb3c1c21266428450c5b2ddcd8576718d0b66b69fbce5694ba94e80a692d04bda1e8c2b24a8d814a5ed50963')
 
 build() {
@@ -37,12 +37,12 @@ package() {
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 
   msg2 "Installing startup script and desktop file"
-  install -Dm755 "../${pkgname}" -t "$pkgdir/usr/local/bin/"
+  install -Dm755 "../${pkgname}" -t "$pkgdir/usr/bin/"
   install -Dm644 "../${pkgname}.desktop" -t "$pkgdir/usr/share/applications/"
 
   msg2 "Installing icons"
   for size in 22 24 32 48 64 128 256 512; do
     install -Dm644 "assets/icons/${size}x${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
   done
-  install -Dm644 "assets/icons/${pkgname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+  install -Dm644 "assets/icons/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.png"
 }

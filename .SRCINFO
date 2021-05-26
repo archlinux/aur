@@ -1,6 +1,6 @@
 pkgbase = sleek
 	pkgdesc = Todo app based on the todo.txt format for Linux, free and open-source
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/ransome1/sleek/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = sleek
 	depends = electron
 	depends = nodejs
 	options = !strip
-	source = https://github.com/ransome1/sleek/archive/refs/tags/v1.0.3.zip
+	source = https://github.com/ransome1/sleek/archive/refs/tags/v1.0.4.zip
 	source = sleek.desktop
 	source = sleek
 	sha512sums = c1884cc5234378d1fe5038a7952aefb17316d37171c39c1ca3c87b47408f9e2f02e0344e4413c4f46e2caa3adc1b18c97e8fc507e2f3121feb274b7227d98ef7
