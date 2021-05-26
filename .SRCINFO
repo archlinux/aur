@@ -1,6 +1,6 @@
 pkgbase = rdm-bin
 	pkgdesc = Cross-platform open source database management tool for Redis ®
-	pkgver = 2021.3
+	pkgver = 2021.4
 	pkgrel = 1
 	url = https://rdm.dev/
 	arch = x86_64
@@ -25,10 +25,10 @@ pkgbase = rdm-bin
 	conflicts = redis-desktop-manager-bin
 	conflicts = redis-desktop-manager
 	source = rdm.desktop
-	source = https://github.com/pidario/rdm-build/releases/download/2021.3/rdm-2021.3+4b63e0d
+	source = https://github.com/pidario/rdm-build/releases/download/2021.4/rdm-2021.4+75e3305
 	source = https://raw.githubusercontent.com/uglide/RedisDesktopManager/2021/src/resources/images/rdm.png
 	sha256sums = 5e96ea919336c483fba09fd40839a77f33dc98a0aa5e9de0c7570d9fd888f62e
-	sha256sums = 4093802b28314235cb3dfb3039efac574abb4c14e38aee58397cdf1aab362ae8
+	sha256sums = d38b7a29aafc9bf9e174a05a57e365815f66ab41ee0957cb65f7ddd439c99a7b
 	sha256sums = SKIP
 
 pkgname = rdm-bin
