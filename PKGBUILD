@@ -65,7 +65,7 @@ package() {
 
 # build manpage
   make -C "${pkgname}/doc" man BUILDDIR="$PWD" && \
-  install -Dm644 "${srcdir}/man/1/colmap.1" -t "${pkgdir}/usr/share/man/man1"
+  install -Dm644 man/colmap.1 -t "${pkgdir}/usr/share/man/man1"
 
   # install vocabulary trees for sequential,vocabulary matching
   install -d -m755 "${pkgdir}/usr/share/${_name}"
