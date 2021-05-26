@@ -1,8 +1,8 @@
 # Maintainer: Nicolas F. <aur@fratti.ch>
 pkgname="pngnq-s9"
 pkgver=2.0.2
-pkgrel=2
-arch=('i686' 'x86_64' 'ARM')
+pkgrel=3
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 pkgdesc="Modified version of pngnq, neural network colour quantizer for PNG images"
 url="https://sourceforge.net/projects/pngnqs9/"
 conflicts=('pngnq')

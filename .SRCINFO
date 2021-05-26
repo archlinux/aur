@@ -1,11 +1,12 @@
 pkgbase = pngnq-s9
 	pkgdesc = Modified version of pngnq, neural network colour quantizer for PNG images
 	pkgver = 2.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/pngnqs9/
 	arch = i686
 	arch = x86_64
-	arch = ARM
+	arch = armv7h
+	arch = aarch64
 	license = custom
 	makedepends = pkg-config
 	depends = libpng
