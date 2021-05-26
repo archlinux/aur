@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=autogit
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=1
 pkgdesc="Define commands, using plugins, to execute across all your repositories."
 arch=(any)
@@ -22,4 +22,4 @@ package() {
   find "${pkgdir}"/usr -type d -exec chmod 755 {} +
 }
 
-sha256sums=('b6ac9aeab820a7d9d124762412b900fabc4d3266ebcf909fb0e2f9580d5f505a')
+sha256sums=('e2e9c128b67b96cb16640e621d0f8a62fb1888abaf853dc06fa77c07f12dbf8c')

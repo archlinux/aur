@@ -1,15 +1,15 @@
 pkgbase = autogit
 	pkgdesc = Define commands, using plugins, to execute across all your repositories.
-	pkgver = 1.2.6
+	pkgver = 1.2.7
 	pkgrel = 1
 	url = https://github.com/fabiospampinato/autogit#readme
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = autogit-1.2.6.tgz
-	source = https://registry.npmjs.org/autogit/-/autogit-1.2.6.tgz
-	sha256sums = b6ac9aeab820a7d9d124762412b900fabc4d3266ebcf909fb0e2f9580d5f505a
+	noextract = autogit-1.2.7.tgz
+	source = https://registry.npmjs.org/autogit/-/autogit-1.2.7.tgz
+	sha256sums = e2e9c128b67b96cb16640e621d0f8a62fb1888abaf853dc06fa77c07f12dbf8c
 
 pkgname = autogit
 
