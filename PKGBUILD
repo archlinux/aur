@@ -1,6 +1,6 @@
 # Maintainer: BBaoVanC <bbaovanc@bbaovanc.com>
 pkgname=checkra1n-gui
-pkgver=0.12.2
+pkgver=0.12.4
 pkgrel=1
 pkgdesc="checkra1n is a semi-tethered jailbreak based on the checkm8 bootrom exploit. (GUI version)"
 license=('unknown')
@@ -12,7 +12,7 @@ makedepends=(binutils tar)
 provides=(checkra1n)
 _debname="checkra1n_${pkgver}_amd64.deb"
 source=("https://assets.checkra.in/debian/${_debname}")
-sha256sums=('e9e7ad0e9a54514590e04664252f14d3ab0653d5a4d93c86f55927db20d28020')
+sha256sums=('90d3a5fb16e86c488344cfa8cec96e4592aa4d7f8932da99d4b5a052fdb10a1a')
 
 options=(!strip) # for some reason, checkra1n segfaults if the binary is stripped
 

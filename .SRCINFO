@@ -1,6 +1,6 @@
 pkgbase = checkra1n-gui
 	pkgdesc = checkra1n is a semi-tethered jailbreak based on the checkm8 bootrom exploit. (GUI version)
-	pkgver = 0.12.2
+	pkgver = 0.12.4
 	pkgrel = 1
 	url = https://checkra.in
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = checkra1n-gui
 	provides = checkra1n
 	conflicts = checkra1n
 	options = !strip
-	source = https://assets.checkra.in/debian/checkra1n_0.12.2_amd64.deb
-	sha256sums = e9e7ad0e9a54514590e04664252f14d3ab0653d5a4d93c86f55927db20d28020
+	source = https://assets.checkra.in/debian/checkra1n_0.12.4_amd64.deb
+	sha256sums = 90d3a5fb16e86c488344cfa8cec96e4592aa4d7f8932da99d4b5a052fdb10a1a
 
 pkgname = checkra1n-gui
