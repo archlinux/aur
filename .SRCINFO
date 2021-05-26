@@ -1,6 +1,6 @@
 pkgbase = o
 	pkgdesc = Text editor
-	pkgver = 2.37.2
+	pkgver = 2.37.3
 	pkgrel = 1
 	url = https://github.com/xyproto/o
 	arch = x86_64
@@ -32,8 +32,7 @@ pkgbase = o
 	optdepends = tidy: for formatting HTML
 	optdepends = v: for compiling and formatting V
 	optdepends = zig: for compiling and formatting Zig
-	source = git+https://github.com/xyproto/o#commit=234c38c3b50ff2ac5497185846d67d0b97c6bfd4
+	source = git+https://github.com/xyproto/o#commit=eb68ec135b9ae3c0b2e371107ab23aa85b2051c0
 	b2sums = SKIP
 
 pkgname = o
-
