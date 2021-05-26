@@ -4,7 +4,7 @@ pkgname=textadept
 pkgver=11.1
 pkgrel=1
 pkgdesc="A fast, minimalist, and remarkably extensible cross-platform text editor"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="http://foicica.com/textadept/"
 license=('MIT')
 depends=('lua' 'gtk2')
@@ -41,7 +41,7 @@ package() {
   
   # Documentation 
   install -d "$pkgdir/usr/share/doc"
-  ln -s /usr/share/textadept/doc "$pkgdir/usr/share/doc/$pkgname"
+  ln -s /usr/share/textadept/docs "$pkgdir/usr/share/doc/$pkgname"
 }
 
 md5sums=('ddf9350e5d29665dc18c115b536f4e51'
