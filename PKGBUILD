@@ -19,5 +19,6 @@ sha256sums=('7a522a342b7a908e4d7a258e1e04e03291d0856a84f9f6630306b0935bcf85e6')
 
 # TODO: install systemd files for warp-svc as well
 package() {
-    tar -xzf  data.tar.gz ./bin/ -C "${pkgdir}/usr/bin/"
+    mkdir ${pkgdir}/usr/
+    tar -xzvf  data.tar.gz -C "${pkgdir}/usr/"
 }
