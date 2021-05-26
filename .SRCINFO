@@ -1,13 +1,13 @@
 pkgbase = usb-pc-link
 	pkgdesc = Make usb audio work for MC-M530 HiFi
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nheir/usb_pc_link
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = libusb-compat
-	source = usb-pc-link::git+http://github.com/nheir/usb_pc_link.git
+	source = usb-pc-link::git+http://github.com/nheir/usb_pc_link.git#commit=3f79b8232fbdd388f007578a59cfe4f90c7978cf
 	md5sums = SKIP
 
 pkgname = usb-pc-link
