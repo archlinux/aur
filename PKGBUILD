@@ -1,6 +1,6 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail.com>
 pkgname=matrix-commander-git
-pkgver=r68.450a97a
+pkgver=r82.06b4738
 pkgrel=1
 pkgdesc="Simple CLI-based Matrix client for sending and receiving"
 arch=('any')
