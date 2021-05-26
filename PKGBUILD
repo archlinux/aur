@@ -2,21 +2,17 @@
 
 pkgname=rpg-cli
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Your filesystem as a dungeon!'
 arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
 url='https://github.com/facundoolano/rpg-cli'
-license=('MIT')
-makedepends=('rustup')
+license=('custom:MIT')
+depends=('gcc-libs')
+makedepends=('rust')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/facundoolano/${pkgname}/archive/${pkgver}.tar.gz"
         "${pkgname}.sh")
 sha256sums=('f92a7613852765659dcd2e837fbfecef4c3425089d684bf485dd89b7996ce8ae'
             '3c76b0710a88491f65f732c46397ddda6439fed873b3991b7d315a68f306265c')
-
-prepare() {
-  cd "${pkgname}-${pkgver}"
-  rustup override set nightly
-}
 
 build() {
   cd "${pkgname}-${pkgver}"
