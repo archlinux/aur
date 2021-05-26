@@ -1,0 +1,19 @@
+pkgbase = mongodb-tools-iran-bin
+	pkgdesc = The MongoDB tools provide import, export, and diagnostic capabilities. (Iran Mirror)
+	pkgver = 100.3.1
+	pkgrel = 1
+	url = https://github.com/mongodb/mongo-tools
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	depends = openssl
+	optdepends = mongodb-compass: The MongoDB GUI
+	provides = mongodb-tools=100.3.1
+	conflicts = mongodb-tools
+	source_x86_64 = mongodb-org-tools_100.3.1_x86_64.deb::https://downloads.tuxfamily.org/molaeiorg/mongo-mirror/mongodb-database-tools_100.3.1_amd64.deb
+	sha256sums_x86_64 = 21872a9ac42d7575d4ff5c764bccada525b8715cf2b159194cff3ccc45453728
+	source_aarch64 = mongodb-org-tools_100.3.1_aarch64.deb::https://downloads.tuxfamily.org/molaeiorg/mongo-mirror/mongodb-database-tools_100.3.1_arm64.deb
+	sha256sums_aarch64 = 595fbdb4e7049b1361e76594f74c83544e3afea21565ae40fb60858761210bcf
+
+pkgname = mongodb-tools-iran-bin
+
