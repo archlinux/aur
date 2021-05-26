@@ -9,7 +9,7 @@ license=('GPL3')
 provides=('share-preview')
 conflicts=('share-preview')
 depends=('gtk4' 'libadwaita' 'glib2')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/apandada1/share-preview/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/apandada1/share-preview/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 package() {

@@ -10,7 +10,7 @@ pkgbase = share-preview-bin
 	depends = glib2
 	provides = share-preview
 	conflicts = share-preview
-	source = share-preview-bin-0.1.2.tar.gz::https://github.com/apandada1/share-preview/releases/download/0.1.2/-0.1.2.tar.gz
+	source = share-preview-bin-0.1.2.tar.gz::https://github.com/apandada1/share-preview/releases/download/0.1.2/share-preview-bin-0.1.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = share-preview-bin
