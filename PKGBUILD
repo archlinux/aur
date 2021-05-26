@@ -1,7 +1,7 @@
 # Maintainer: Wayback Archiver <wabarc@tuta.io>
 
 pkgname=wayback
-pkgver=0.12.1
+pkgver=0.12.2
 pkgrel=1
 pkgdesc="A toolkit for snapshot webpage to Internet Archive, archive.today, IPFS and beyond"
 arch=('x86_64')
