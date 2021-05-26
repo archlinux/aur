@@ -3,7 +3,7 @@
 
 pkgname=ocaml-ocamlsdl
 pkgver=0.9.1
-pkgrel=4
+pkgrel=5
 pkgdesc="OCaml interface to the SDL (Simple DirectMedia Layer) library"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/ocamlsdl/"

@@ -1,7 +1,7 @@
 pkgbase = ocaml-ocamlsdl
 	pkgdesc = OCaml interface to the SDL (Simple DirectMedia Layer) library
 	pkgver = 0.9.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://sourceforge.net/projects/ocamlsdl/
 	arch = i686
 	arch = x86_64
