@@ -1,0 +1,15 @@
+pkgbase = python-cyhunspell
+	pkgdesc = Cython wrapper on Hunspell dictionary
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/MSeal/cython_hunspell
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-cacheman
+	source = https://github.com/MSeal/cython_hunspell/archive/2.0.2/python-cyhunspell-2.0.2.tar.gz
+	sha256sums = 4af1222113ec7142eee3689ddf95e26c6c72ffa585426b99a1de243ec61bd87c
+
+pkgname = python-cyhunspell
+
