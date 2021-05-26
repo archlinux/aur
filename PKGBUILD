@@ -1,7 +1,7 @@
-# Maintainer: A. Husen <hello@husen.id>
+# Maintainer: A. Husen <hi@husen.id>
 pkgname=nonicons-font
 pkgver=r42.8633191
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of SVG icons representing programming languages, designing & development tools."
 arch=('any')
 url="https://github.com/yamatsum/nonicons"
