@@ -1,7 +1,7 @@
 # Maintainer: Stephen Brennan <smb196@case.edu>
 pkgname=beamer-theme-cwru-git
 pkgver=r10.9482287
-pkgrel=2
+pkgrel=3
 pkgdesc="Beamer theme for Case Western Reserve University."
 arch=(any)
 url="https://github.com/mruffalo/beamer-theme-cwru/tree/master/theme"
@@ -11,7 +11,7 @@ makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install="${pkgname}.install"
-source=('git://github.com/mruffalo/beamer-theme-cwru.git')
+source=('git+https://github.com/mruffalo/beamer-theme-cwru')
 md5sums=('SKIP')
 
 pkgver() {
