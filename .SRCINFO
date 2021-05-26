@@ -1,5 +1,5 @@
 pkgbase = term-sudoku
-	pkgdesc = Play sudoku in yor terminal.
+	pkgdesc = Play sudoku in your terminal.
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/theeyeofcthulhu/term-sudoku

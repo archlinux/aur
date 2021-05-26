@@ -1,7 +1,7 @@
 pkgname='term-sudoku'
 pkgver='1.0'
 pkgrel=1
-pkgdesc='Play sudoku in yor terminal.'
+pkgdesc='Play sudoku in your terminal.'
 arch=('any')
 url='https://github.com/theeyeofcthulhu/term-sudoku'
 license=('GPL')
