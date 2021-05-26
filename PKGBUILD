@@ -74,9 +74,9 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.12
-_minor=6
+_minor=7
 _srcname=linux-${_major}
-_clr=${_major}.5-1041
+_clr=${_major}.6-1043
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -156,7 +156,6 @@ prepare() {
     # Device Drivers
     scripts/config --enable FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER \
                    --enable DELL_SMBIOS_SMM \
-                   --enable NET_VENDOR_AQUANTIA \
                    --module PATA_JMICRON \
                    --enable-after SOUND SOUND_OSS_CORE \
                    --enable SND_OSSEMUL \
@@ -352,7 +351,7 @@ done
 
 sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
             'SKIP'
-            '2ae3722dade1a14194d0431e260628f4b7a1a0117fa7464d745be37212cd8d3e'
+            '2dd00caab245c1fe0e27bf68c856f7cd716412e8642ffa4487f9f4dac560d2f9'
             'SKIP'
             'f1f62b6d2cd89d0ab15f8d7311f5bb775dfc97ff39f93bc77f6f733f75fa7558'
             '2c98de0814366b041aeee4cbf82b82620c7834bc33752d50f089e8bd7ea5cf5e'

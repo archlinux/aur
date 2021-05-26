@@ -1,6 +1,6 @@
 pkgbase = linux-clear
 	pkgdesc = Clear Linux
-	pkgver = 5.12.6
+	pkgver = 5.12.7
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = linux-clear
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.12.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.12.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.12.6.xz
-	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=5.12.5-1041
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.12.7.xz
+	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=5.12.6-1043
 	source = more-uarches-20210412.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20210412.tar.gz
 	source = pci-enable-overrides-for-missing-acs-capabilities.patch
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
@@ -23,7 +23,7 @@ pkgbase = linux-clear
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366
 	sha256sums = SKIP
-	sha256sums = 2ae3722dade1a14194d0431e260628f4b7a1a0117fa7464d745be37212cd8d3e
+	sha256sums = 2dd00caab245c1fe0e27bf68c856f7cd716412e8642ffa4487f9f4dac560d2f9
 	sha256sums = SKIP
 	sha256sums = f1f62b6d2cd89d0ab15f8d7311f5bb775dfc97ff39f93bc77f6f733f75fa7558
 	sha256sums = 2c98de0814366b041aeee4cbf82b82620c7834bc33752d50f089e8bd7ea5cf5e
