@@ -1,6 +1,6 @@
 pkgbase = megatools
 	pkgdesc = CLI for MEGA
-	pkgver = 1.11.0+20200830
+	pkgver = 1.11.0+20210505
 	pkgrel = 1
 	url = https://megatools.megous.com
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = megatools
 	makedepends = meson
 	depends = curl
 	depends = glib2
-	source = https://megatools.megous.com/builds/experimental/megatools-1.11.0-git-20200830.tar.gz
-	sha512sums = a64158b7248ea99d72b1aa790c28deb00ceca3065396565b187e371c415b27c05d782df45bd2f41bfae0b7439c303c4b44d820ea7c44b5fa733dbdf70d68cfa8
+	source = https://megatools.megous.com/builds/experimental/megatools-1.11.0-git-20210505.tar.gz
+	sha512sums = ef683129dd795f551718b99c40ea81a271a76c2f16bb6468a156c03236151883d4bd5daf4288f916b28b3b40ec9debc90d37342806e456b881bcb435b272c40b
 
 pkgname = megatools
 
