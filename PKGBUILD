@@ -1,5 +1,5 @@
 pkgname=tess-git
-pkgver=1.2r120.0e0463d
+pkgver=1.2r124.4f947c3
 pkgrel=1
 pkgdesc="Tess hackable, simple, rapid and beautiful terminal for the new era"
 arch=(x86_64)
@@ -24,6 +24,10 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/kservices5/ServiceMenus/"
 	cp -r -f tesshere.desktop "${pkgdir}/usr/share/kservices5/ServiceMenus/tesshere.desktop"
 
+	if type "$kbuildsycoca5" > /dev/null; then
+		kbuildsycoca5
+	fi
+
 	mkdir -p "${pkgdir}/opt/tess-cli"
 	mkdir -p "${pkgdir}/usr/bin"
 
@@ -32,7 +36,7 @@ package() {
 	cd "cli"
 	g++ main.cpp Class/*.cpp Utils/*.cpp Lib/*.cpp Lib/external/cpr/cpr/*.cpp -lpthread -lcurl -std=c++17 -o tess-cli
 
-	cp -r -f tess-cli "${pkgdir}/opt/tess-cli/tess-cli"
+	cp -r -f tess-cli "${pkgdir}/opt/tess-cli/tess-cli" 
 	ln -s "/opt/tess-cli/tess-cli" "${pkgdir}/usr/bin/tess-cli"
 
 	cd ../
