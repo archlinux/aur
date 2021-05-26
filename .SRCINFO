@@ -1,0 +1,21 @@
+pkgbase = app-icon-preview-git
+	pkgdesc = Tool for designing applications icons
+	pkgver = 2.1.2.r17.g37c7475
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/design/app-icon-preview
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = rust
+	depends = libhandy0
+	provides = app-icon-preview
+	conflicts = app-icon-preview
+	source = git+https://gitlab.gnome.org/World/design/app-icon-preview.git
+	source = git+https://gitlab.gnome.org/Teams/Design/HIG-app-icons.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = app-icon-preview-git
+
