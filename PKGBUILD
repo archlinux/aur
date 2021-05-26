@@ -113,7 +113,6 @@ ac_add_options --disable-gpsd
 ac_add_options --disable-synth-speechd
 ac_add_options --disable-debug-symbols
 ac_add_options --disable-debug-js-modules
-ac_add_options --disable-cdp
 ac_add_options --disable-trace-logging
 ac_add_options --disable-rust-tests
 ac_add_options --disable-ipdl-tests
