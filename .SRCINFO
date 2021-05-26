@@ -1,0 +1,32 @@
+pkgbase = python-astroscrappy-git
+	pkgdesc = Speedy Cosmic Ray Annihilation Package in Python
+	pkgver = 1.0.8.r74.g631ae4d
+	pkgrel = 1
+	url = https://astroscrappy.readthedocs.io
+	arch = i686
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest-doctestplus
+	checkdepends = python-scipy
+	makedepends = git
+	makedepends = python-setuptools-scm
+	makedepends = cython
+	makedepends = python-extension-helpers
+	makedepends = python-astropy
+	makedepends = python-sphinx-astropy
+	source = git+https://github.com/astropy/astroscrappy
+	md5sums = SKIP
+
+pkgname = python-astroscrappy-git
+	depends = python>=3.6
+	depends = python-astropy
+	depends = cython>=0.21
+	optdepends = python-astroscrappy-doc: Documentation for Astro-SCRAPPY
+	provides = python-astroscrappy
+	conflicts = python-astroscrappy
+
+pkgname = python-astroscrappy-doc-git
+	pkgdesc = Documentation for Astro-SCRAPPY
+	provides = python-astroscrappy-doc
+	conflicts = python-astroscrappy-doc
+
