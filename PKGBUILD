@@ -1,8 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=librist
-pkgver=0.2.0rc6
-_srcver=0.2.0-RC6
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A library that can be used to add the RIST protocol to applications'
 arch=('x86_64')
@@ -11,11 +10,17 @@ license=('BSD')
 depends=('cjson' 'mbedtls')
 makedepends=('meson' 'cmake' 'cmocka' 'lz4')
 BUILDENV=('!check')
-source=("https://code.videolan.org/rist/librist/-/archive/v${_srcver}/${pkgname}-v${_srcver}.tar.bz2")
-sha256sums=('74451d9b47c190649be7c95291c37f9bf4b2f766d540dd47c6f213f79f7c7edc')
+source=("https://code.videolan.org/rist/librist/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2"
+        '010-librist-gcc11-fix.patch')
+sha256sums=('10abfc4321762b12cce8d57b2ed2cc16c8baf1535f2d19df39fe9429d20d6de9'
+            '462003e930c8d83d0c43e92bbb3b65a013dbb56e8642d894ebd22e962e8cc94b')
+
+prepare() {
+    patch -d "${pkgname}-v${pkgver}" -Np1 -i "${srcdir}/010-librist-gcc11-fix.patch"
+}
 
 build() {
-    arch-meson build "${pkgname}-v${_srcver}"
+    arch-meson build "${pkgname}-v${pkgver}"
     ninja -v -C build
 }
 
@@ -25,5 +30,5 @@ check() {
 
 package() {
     DESTDIR="$pkgdir" ninja -v -C build install
-    install -D -m644 "${pkgname}-v${_srcver}/COPYING" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 "${pkgname}-v${pkgver}/COPYING" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
