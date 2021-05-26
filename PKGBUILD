@@ -3,22 +3,22 @@
 # Contributor: Evan Gates <evan.gates@gmail.com>
 pkgname=rsstail
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Monitor and print rss feeds (tail for rss...)"
 license=(GPL2)
 arch=('i686' 'x86_64')
-url=http://www.vanheusden.com/rsstail/
+url=https://github.com/oldlaptop/rsstail
 depends=('libmrss')
-source=("http://www.vanheusden.com/rsstail/$pkgname-$pkgver.tgz")
-md5sums=('03f11f9f9a4f78adcf2ecf430fba8291')
+source=("$pkgname::git+https://github.com/oldlaptop/rsstail#commit=208a40f14005f26315050d2d9b9444bde6698db0")
+md5sums=('SKIP')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgname
   sed -i -e "s/-liconv_hook //" Makefile
   make
 }
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgname
   mkdir -p $pkgdir/usr/{bin,share/man/man1}
   make prefix=$pkgdir/usr install
 }
