@@ -9,6 +9,7 @@ pkgbase = wayfire-git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = wayland-protocols
+	makedepends = doctest
 	depends = wlroots-git
 	depends = cairo
 	depends = glm
