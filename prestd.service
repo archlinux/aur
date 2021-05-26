@@ -1,11 +1,11 @@
 [Unit]
-Description=RESTful API Server for PostgreSQL
-Documentation=https://postgres.rest/
+Description=pREST (PostgreSQL REST), simplify and accelerate development, ⚡ instant, realtime, high-performance on any Postgres application, existing or new
+Documentation=https://prestd.com/
 After=network-online.target postgresql.service docker.service
 
 [Service]
 Restart=on-failure
-ExecStart=/usr/bin/prest
+ExecStart=/usr/bin/prestd
 WorkingDirectory=/etc
 PrivateTmp=true
 PrivateDevices=true

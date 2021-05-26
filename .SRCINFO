@@ -1,22 +1,19 @@
 pkgbase = prest
-	pkgdesc = RESTful API Server for PostgreSQL
-	pkgver = 0.3.4
-	pkgrel = 3
-	url = https://postgres.rest/
-	arch = x86_64
-	arch = i686
-	arch = armv6h
-	arch = armv7h
-	arch = aarch64
+	pkgdesc = pREST (PostgreSQL REST), simplify and accelerate development, ⚡ instant, realtime, high-performance on any Postgres application, existing or new
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://prestd.com/
+	arch = any
 	license = MIT
 	makedepends = go>=1.11.4
+	provides = prestd
 	backup = etc/prest.toml
-	source = https://github.com/prest/prest/archive/v0.3.4/prest-0.3.4.tar.gz
-	source = prest.service
+	source = https://github.com/prest/prest/archive/v1.0.8.tar.gz
+	source = prestd.service
 	source = prest.toml
-	sha256sums = cc45eb5de17a1957124545e11ae6dcc6e3957e9d5e9b06acf37a341113963829
-	sha256sums = 7af2f3b91cfad78c4ec5e052290ba556f5196e4b047c6882a9eb45f7723e3730
-	sha256sums = b04f132360a2f6e1f66bc64e7b48a1474e4296a1e22344bc437b17b122e90af6
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = prest
 

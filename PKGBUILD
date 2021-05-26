@@ -1,30 +1,36 @@
 # Maintainer: Wei Congrui < crvv.mail at gmail dot com >
-
-_gopkgname='github.com/prest/prest'
+# Maintainer: Avelino < avelinorun at gmail dot com >
 
 pkgname=prest
-pkgver=0.3.4
-pkgrel=3
-pkgdesc='RESTful API Server for PostgreSQL'
-arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
-url='https://postgres.rest/'
+pkgver=1.0.8
+pkgrel=1
+pkgdesc='pREST (PostgreSQL REST), simplify and accelerate development, ⚡ instant, realtime, high-performance on any Postgres application, existing or new'
+arch=('any')
+url='https://prestd.com/'
 license=('MIT')
 backup=('etc/prest.toml')
 makedepends=('go>=1.11.4')
-source=("https://$_gopkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
-        'prest.service'
+provides=("prestd")
+source=("https://github.com/prest/prest/archive/v${pkgver}.tar.gz"
+        'prestd.service'
         'prest.toml')
-sha256sums=('cc45eb5de17a1957124545e11ae6dcc6e3957e9d5e9b06acf37a341113963829'
-            '7af2f3b91cfad78c4ec5e052290ba556f5196e4b047c6882a9eb45f7723e3730'
-            'b04f132360a2f6e1f66bc64e7b48a1474e4296a1e22344bc437b17b122e90af6')
+sha256sums=("SKIP" "SKIP" "SKIP")
+
+prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    mkdir -pv build/
+}
 
 build() {
-    cd $pkgname-$pkgver
-    go build
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    go mod download
+    go build -o build/${pkgname}d -ldflags="-s -w" ./cmd/prestd/*.go
 }
 
 package() {
-    install -D -m 0755 "$pkgname-$pkgver/prest" "$pkgdir/usr/bin/prest"
-    install -D -m 0644 prest.service "$pkgdir/usr/lib/systemd/system/prest.service"
-    install -D -m 0644 prest.toml "$pkgdir/etc/prest.toml"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    install -Dpm755 -D "build/${pkgname}d" "${pkgdir}/usr/local/bin/${pkgname}d"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m 0644 ../../prestd.service "$pkgdir/usr/lib/systemd/system/prestd.service"
+    install -D -m 0644 ../../prest.toml "$pkgdir/etc/prest.toml"
 }
