@@ -1,14 +1,14 @@
 pkgbase = cuelang-bin
 	pkgdesc = Validate and define text-based and dynamic configuration
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://cuelang.org/
 	arch = x86_64
 	license = Apache-2.0
-	provides = cuelang=0.3.0
+	provides = cuelang=0.4.0
 	conflicts = cuelang-cue-git
-	source = cuelang-bin-0.3.0.tar.gz::https://github.com/cuelang/cue/releases/download/v0.3.0/cue_v0.3.0_linux_amd64.tar.gz
-	sha256sums = 9f1640d086f20c6f0114aa7579b6e51670cd881865dee9153cb188a3020bf8b1
+	source = cuelang-bin-0.4.0.tar.gz::https://github.com/cuelang/cue/releases/download/v0.4.0/cue_v0.4.0_linux_amd64.tar.gz
+	sha256sums = a118177d9c605b4fc1a61c15a90fddf57a661136c868dbcaa9d2406c95897949
 
 pkgname = cuelang-bin
 
