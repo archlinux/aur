@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=ipxe-git
-pkgver=1.21.1.r16.ga2a6618d
+pkgver=1.21.1.r162.g74c54461
 pkgrel=1
 pkgdesc='iPXE open source boot firmware - git checkout'
 arch=('any')
@@ -71,20 +71,33 @@ build() {
 	cd ipxe/src/
 
 	# default targets (ipxe.{lkrn,dsk,iso,usb}, undionly.kpxe)
-	make all
+	make \
+		NO_WERROR=1 \
+		all
 
 	# this includes drivers, but is bigger
 	# build targets with embedded scripts first and rename
-	make bin/ipxe.pxe EMBED=${srcdir}/chain-default.ipxe
+	make \
+		NO_WERROR=1 \
+		EMBED=${srcdir}/chain-default.ipxe \
+		bin/ipxe.pxe
 	mv bin/ipxe.pxe bin/ipxe-default.pxe
 
-	make bin/ipxe.pxe EMBED=${srcdir}/chain-default-3928.ipxe
+	make \
+		NO_WERROR=1 \
+		EMBED=${srcdir}/chain-default-3928.ipxe \
+		bin/ipxe.pxe
 	mv bin/ipxe.pxe bin/ipxe-default-3928.pxe
 
-	make bin/ipxe.pxe
+	make \
+		NO_WERROR=1 \
+		bin/ipxe.pxe
 
 	# EFI
-	make bin-i386-efi/ipxe.efi bin-x86_64-efi/ipxe.efi
+	make \
+		NO_WERROR=1 \
+		bin-i386-efi/ipxe.efi \
+		bin-x86_64-efi/ipxe.efi
 
 	# hybrid image
 	./util/genfsimg \
