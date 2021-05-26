@@ -5,7 +5,8 @@ pkgdesc='Open-source streaming video service with sub-second latency'
 arch=('x86_64')
 url='https://ovenmediaengine.com'
 license=('GPL2')
-depends=('openssl' 'libsrtp' 'srt' 'opus' 'x265' 'libvpx' 'fdkaac' 'nasm' 'ffmpeg' 'pcre2' 'intel-gmmlib' 'intel-media-driver' 'intel-media-sdk')
+# orderd by https://github.com/AirenSoft/OvenMediaEngine/blob/master/misc/prerequisites.sh
+depends=('openssl' 'libsrtp' 'srt' 'opus' 'x264' 'x265' 'libvpx' 'fdkaac' 'nasm' 'ffmpeg' 'jemalloc' 'pcre2' 'libva' 'intel-gmmlib' 'intel-media-sdk' 'intel-media-driver' 'cuda-tools' 'ffnvcodec-headers')
 makedepends=('bc' 'jemalloc')
 source=("git+https://github.com/AirenSoft/OvenMediaEngine")
 sha512sums=('SKIP')
