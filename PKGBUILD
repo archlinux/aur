@@ -2,7 +2,7 @@
 
 pkgname=unciv-bin
 _pkgname=Unciv
-pkgver=3.14.9_patch1
+pkgver=3.14.10
 pkgrel=1
 pkgdesc="Open-source remake of Civilization V"
 url="https://github.com/yairm210/Unciv"
@@ -17,7 +17,7 @@ source=(
   "$_pkgname.sh"
   "$_pkgname.desktop"
 )
-md5sums=('26fde8cf09a3531be0416ee302767ce4'
+md5sums=('7c1541523454891b8dc58487033e0506'
          '5aca7fc33f121fcf901fef14f784731a'
          'f8eab098f20681b8db232cc5709713d3'
          '42d5f7ea8ee48d2d643d070786f039ba')
