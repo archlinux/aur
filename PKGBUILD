@@ -20,12 +20,6 @@ validpgpkeys=('EAF1C276A747E9ED86210CBAC3126D3B4AE55E93'  # Tristan Gingold <gin
 
 prepare() {
   cd binutils-$pkgver
-
-  #hack - Having CPPFLAGS defined makes the build barf. Workaround it like this:
-  _cppflags=$CPPFLAGS
-  CFLAGS="$_cppflags $CFLAGS"
-  CXXFLAGS="$CFLAGS"
-  unset CPPFLAGS
 }
 
 build() {
