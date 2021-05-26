@@ -1,19 +1,17 @@
 pkgbase = opensmtpd-filter-dkimsign
 	pkgdesc = opensmtd filter for signing mail with DKIM
-	pkgver = 0.3.arch1
+	pkgver = 0.5
 	pkgrel = 1
 	url = http://imperialat.at/dev/libopensmtpd/
 	arch = x86_64
 	license = BSD
 	makedepends = gzip
+	depends = libopensmtpd
 	depends = openssl
-	depends = libevent
-	source = opensmtpd-filter-dkimsign-0.3.arch1.tar.gz::https://github.com/de-vri-es/filter-dkimsign/archive/v0.3.arch1.tar.gz
-	source = https://distfiles.sigtrap.nl/libopensmtpd-0.5.tar.gz
+	source = https://distfiles.sigtrap.nl/filter-dkimsign-0.5.tar.gz
 	source = Makefile
 	source = LICENSE
-	sha512sums = 9f9c80f403e5c42f27ff4a387121fdc865a3c0001086bf0ca9e213fcf079df82e5d48a7074ee27f114b1f226b3a04083bfa0e0667690a865545401658eb1faec
-	sha512sums = 4ca4fe1f30bc45246e70aa1489dcdfc6df9f75d07cdd5546aa35cdf25de61f0711743d249b4889cb3779487a3c2095ed51de100a9e1365f3dc3db70f984c27d6
+	sha512sums = 35293bc51c6026c6846952ddf3a0fc92c99c88e9a573676e3e46034761318f32fe86563c2607175909c331ff0c1e2e6603173e286574a922528eae92bf6a4064
 	sha512sums = bafafa768ef8c8420f12fecf59f758085ff7ce497a861c36a284764bd41e552d12a837ec997813edb95fadef34b72fc8dfe281e03cd9d02c7662f72724e76bbc
 	sha512sums = 24ffeb515e767416728adf4f02aac9b6305447ff4ce8acdfb1ecb8321f76e261e5a536b20df9acec90542e3c3f30e259c0d11cd99d401eb154fd5faf89a6e125
 
