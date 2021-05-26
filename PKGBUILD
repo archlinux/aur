@@ -5,8 +5,8 @@
 # Contributor: Drew DeVault
 
 pkgname=nginx-quic
-pkgver=1.20.0
-pkgrel=2
+pkgver=1.21.0
+pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
@@ -25,8 +25,8 @@ backup=('etc/nginx/fastcgi.conf'
 install=nginx.install
 provides=('nginx')
 conflicts=('nginx')
-source=("hg+https://hg.nginx.org/nginx-quic#revision=225e9f1dfe7c"
-        "git+https://boringssl.googlesource.com/boringssl#commit=68a799af7f6aed15dfeedc26e5ae43ebce873a6a"
+source=("hg+https://hg.nginx.org/nginx-quic#revision=60c6e8d8d3ae"
+        "git+https://boringssl.googlesource.com/boringssl#commit=3dd9864feace08641e1f856edd2bcca63ba7887f"
         "service"
         "logrotate")
 sha256sums=('SKIP'
@@ -76,7 +76,7 @@ prepare() {
   # Upstream hasn't merged the 1.20.0 update into the nginx-quic branch yet; do it manually
   cd ${srcdir}/$pkgname
   hg pull https://hg.nginx.org/nginx
-  hg merge 3ebf8a5fb670
+  hg merge f5de03f308a6 # release-1.21.0 tag
   hg commit -u aur -m "[automated aur commit] Merged with default branch"
 }
 
