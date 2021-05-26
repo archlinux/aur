@@ -1,4 +1,5 @@
-# Maintainer: Moritz Schoenherr <moritz.schoenherr[at]gmail[dot]com>
+# Maintainer: René Wagner <rwagner@rw-net.de>
+# Contributor: Moritz Schoenherr <moritz.schoenherr[at]gmail[dot]com>
 pkgname=crawl
 pkgver=0.26.1
 pkgrel=1
