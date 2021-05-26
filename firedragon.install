@@ -7,7 +7,14 @@ msg() {
 }
 
 post_install() {
-    post_upgrade
+    msg "Firejail profiles are now present in firejail-git."
+    echo ""
+    msg "To use profile-sync-daemon add firedragon to ~/.config/psd/psd.conf"
+    echo ""
+    msg "If you prefer strict hardened settings execute 'mkdir ~/.firedragon && cp /usr/lib/firedragon/firedragon.overrides.cfg ~/.firedragon/'"
+    echo ""
+    msg "Enjoy the Firedragon 🔥🐉"
+    echo ""
 }
 
 post_upgrade() {
@@ -15,7 +22,7 @@ post_upgrade() {
     echo ""
     msg "To use profile-sync-daemon add firedragon to ~/.config/psd/psd.conf"
     echo ""
-    msg "If you prefer strict hardened settings execute 'mkdir ~/.firedragon && cp /usr/lib/firedragon/firedragon.overrides.cfg ~/.firedragon/'"
+    msg "If you prefer strict hardened settings execute 'cp /usr/lib/firedragon/firedragon.overrides.cfg ~/.firedragon/'"
     echo ""
     msg "Enjoy the Firedragon 🔥🐉"
     echo ""

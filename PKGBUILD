@@ -10,7 +10,7 @@
 pkgname=firedragon-hg
 _pkgname=FireDragon
 __pkgname=firedragon
-pkgver=90.0a1.r647896
+pkgver=90.0a1.r648161
 pkgrel=1
 pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled."
 arch=(x86_64 aarch64)
@@ -23,7 +23,7 @@ depends=(gtk3 libxt mime-types dbus-glib
          ffmpeg nss-hg ttf-font libpulse
          libvpx libjpeg zlib icu libevent libpipewire02)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
-             rust xorg-server-xwayland xorg-server-xvfb
+             rust xorg-server-xwayland xorg-server-xvfb dump_syms
              autoconf2.13 mercurial clang llvm jack gtk2 nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard git binutils lld)
 optdepends=('firejail-git: Sandboxing the browser using the included profiles'
@@ -39,30 +39,17 @@ optdepends=('firejail-git: Sandboxing the browser using the included profiles'
             'appmenu-gtk-module-git: Appmenu for GTK only'
             'plasma5-applets-window-appmenu: Appmenu for Plasma only')
 options=(!emptydirs !makeflags !strip)
-_linux_commit=e123b80f7df1ad9043435f345c426717ca323579
 _repo=https://hg.mozilla.org/mozilla-unified
 install=firedragon.install
 source=("hg+$_repo#revision=autoland"
         $__pkgname.desktop
         "git+https://gitlab.com/dr460nf1r3/common.git"
-        "git+https://gitlab.com/dr460nf1r3/settings.git"
-        remove_addons.patch
-        context-menu.patch
-        mozilla-vpn-ad.patch
-        builtin_js.patch)
-source_aarch64=(arm.patch
-                build-arm-libopus.patch)
+        "git+https://gitlab.com/dr460nf1r3/settings.git")
 
 sha512sums=('SKIP'
             '1688d8696f0a4451bc1211707362ca79d302ae0e8153be8326392b5617cb3944344e9d8fe17d0b1d5fe7df6d38fd44d4d33e3eb84e7b8763c37aeab4b2c26290'
             'SKIP'
-            'SKIP'
-            'd4bc43a7922a2391d9f2a2d0654e4c3cb6ec08aeead5249e933dec28bbd5d4a945591e03db54e91298f41a4bc50acb4f7bc2a0df4094e458be33f146b6186879'
-            '29677a878286464e9bdd8d605515ef6105e0d409c54ce4e100f2474d090728869953b5a16e5c872325c71a94b83d35e86a8ca45d089ea14454713ff8dceff6f2'
-            '1d1e6e2675750e9b09533ff891ee253418fa0ae2d2b86d448b35fbbd712d3b43353babcda5c80273c897ef3ee1aec50e3bc8f80b5d2d1e18f2176556cf792286'
-            '25c9fa51d0ebfeea9ad88c83325dae1d0643499253946278ffeaf04b7d1aad61a76e24a5b0e1689877fa6fd5ca67135006dd8edecb54418012c826f94ca22555')
-sha512sums_aarch64=('7c2f0c792eb5744eaf0f2ee7c0887a74118796d691029e824451b063d5ba9e65626617ad343f69837297b2002446e02ac1d5ab3bc470419ae092424abf08293f'
-                    '6d464cce32cb2e440fb137666aeefec1240bcbdfdef0e8633e0fbe22e2214446b2c992ee2c8716c682a42fcd1d66d9fdf1d6d5b40f8ec3b0eeec5ca9e3f1aa35')
+            'SKIP')
 
 pkgver() {
   cd mozilla-unified
@@ -75,10 +62,7 @@ prepare() {
   fi
   cd mozilla-unified
 
-  #
-  # If you want to disable LTO/PGO (compile too long), delete the lines below beginning with
-  # `ac_add_options --enable-lto' and ending with 'export RANLIB=llvm-ranlib`
-  #
+  local _patches_dir="${srcdir}/common/patches-hg"
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
@@ -177,39 +161,30 @@ END
 fi
 
   # Fix build-time error
-  patch -p1 -i ../builtin_js.patch
+  patch -Np1 -i ${_patches_dir}/builtin_js.patch
 
   # Remove some pre-installed addons that might be questionable
-  patch -p1 -i ../remove_addons.patch
-
-  # Remove mozilla vpn ads
-  patch -p1 -i ../mozilla-vpn-ad.patch
+  patch -Np1 -i ${_patches_dir}/remove_addons.patch
 
   # Disabling Pocket
-  sed -i "s/'pocket'/#'pocket'/g" browser/components/moz.build
+  patch -Np1 -i ${_patches_dir}/sed-patches/disable-pocket.patch
 
-  patch -p1 -i ../context-menu.patch
-
-  # This one only to remove an annoying error message:
-  sed -i 's#SaveToPocket.init();#// SaveToPocket.init();#g' browser/components/BrowserGlue.jsm
+  # Remove Mozilla VPN ads
+  patch -Np1 -i ${_patches_dir}/mozilla-vpn-ad.patch
 
   # Remove Internal Plugin Certificates
-  _cert_sed='s#if (aCert.organizationalUnit == "Mozilla [[:alpha:]]\+") {\n'
-  _cert_sed+='[[:blank:]]\+return AddonManager\.SIGNEDSTATE_[[:upper:]]\+;\n'
-  _cert_sed+='[[:blank:]]\+}#'
-  _cert_sed+='// NOTE: removed#g'
-  sed -z "$_cert_sed" -i toolkit/mozapps/extensions/internal/XPIInstall.jsm
+  patch -Np1 -i ${_patches_dir}/sed-patches/remove-internal-plugin-certs.patch
 
   # Allow SearchEngines option in non-ESR builds
-  sed -i 's#"enterprise_only": true,#"enterprise_only": false,#g' browser/components/enterprisepolicies/schemas/policies-schema.json
-
-  _settings_services_sed='s#firefox.settings.services.mozilla.com#f.s.s.m.c.qjz9zk#g'
+  patch -Np1 -i ${_patches_dir}/sed-patches/allow-searchengines-non-esr.patch
 
   # Stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)
-  sed "$_settings_services_sed" -i browser/components/newtab/data/content/activity-stream.bundle.js
-  sed "$_settings_services_sed" -i modules/libpref/init/all.js
-  sed "$_settings_services_sed" -i services/settings/Utils.jsm
-  sed "$_settings_services_sed" -i toolkit/components/search/SearchUtils.jsm
+  patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
+
+  # Assorted patches
+  patch -Np1 -i ${_patches_dir}/context-menu.patch
+  patch -Np1 -i ${_patches_dir}/browser-confvars.patch
+  patch -Np1 -i ${_patches_dir}/urlbarprovider-interventions.patch
 
   rm -f ${srcdir}/common/source_files/mozconfig
   cp -r ${srcdir}/common/source_files/* ./
@@ -323,8 +298,6 @@ pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 // pref("extensions.autoDisableScopes", 11);
 END
 
-  # cd ${srcdir}/settings
-  # git checkout ${_settings_commit}
   cd ${srcdir}/mozilla-unified
   cp -r ${srcdir}/settings/* ${pkgdir}/usr/lib/${__pkgname}/
 
