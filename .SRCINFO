@@ -1,7 +1,7 @@
 pkgbase = r-rvest
 	pkgdesc = Easily Harvest (Scrape) Web Pages
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=rvest
 	arch = any
 	license = GPL3
@@ -21,6 +21,7 @@ pkgbase = r-rvest
 	optdepends = r-spelling
 	optdepends = r-covrr-webfakes
 	source = https://cran.r-project.org/src/contrib/rvest_1.0.0.tar.gz
+	sha256sums = a358bf258a91b3362b3736fb5f957c12e98cddf21b6066fb2abdd26ecd665713
 
 pkgname = r-rvest
 

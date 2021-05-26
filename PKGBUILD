@@ -5,7 +5,7 @@ _cranver=1.0.0
 _pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-rvest
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily Harvest (Scrape) Web Pages"
 arch=('any')
 url="https://cran.r-project.org/package=${_cranname}"
@@ -15,7 +15,7 @@ depends=('r>=3.2' 'r-xml2>=1.3' 'r-lifecycle'  'r-httr>=0.5' 'r-selectr' 'r-magr
 optdepends=('r-testthat>=3.0.2' 'r-knitr'  'r-stringi>=0.3.1' 'r-rmarkdown' 'r-repurrrsive' 'r-spelling' 'r-covr''r-webfakes')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-sha256sum=('a358bf258a91b3362b3736fb5f957c12e98cddf21b6066fb2abdd26ecd665713')
+sha256sums=('a358bf258a91b3362b3736fb5f957c12e98cddf21b6066fb2abdd26ecd665713')
 
 build(){
 cd "${srcdir}"
