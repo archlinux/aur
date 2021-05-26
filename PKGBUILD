@@ -4,8 +4,9 @@
 
 _pkgname=pyenv
 pkgname=$_pkgname-git
-pkgver=2.0.0.rc1.r0.g4ce52bd3
+pkgver=2.0.0.r0.g1270ca6b
 pkgrel=1
+epoch=1
 pkgdesc="Easily switch between multiple versions of Python (Git)"
 arch=('any')
 url='https://github.com/pyenv/pyenv'
