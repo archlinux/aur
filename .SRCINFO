@@ -1,0 +1,16 @@
+pkgbase = python-cacheman
+	pkgdesc = Python interface for managing dependent caches
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/MSeal/py_cache_manager
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-future
+	depends = python-psutil
+	depends = python-six
+	source = https://github.com/MSeal/py_cache_manager/archive/2.1.0/python-cacheman-2.1.0.tar.gz
+	sha256sums = bc266ebbcfa61adf1766c42b80ed998c124a202c7f4b91160eaf07990881182f
+
+pkgname = python-cacheman
+
