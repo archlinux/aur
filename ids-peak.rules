@@ -1,0 +1,2 @@
+SUBSYSTEM=="usb",         ATTR{idVendor}=="1409", OWNER="ueyed", GROUP="ueyed", MODE="0660", TAG+="UACCESS"
+SUBSYSTEM=="usb_device", ATTRS{idVendor}=="1409", OWNER="ueyed", GROUP="ueyed", MODE="0660", TAG+="UACCESS"
