@@ -1,19 +1,19 @@
 pkgbase = burpsuite-pro
 	pkgdesc = An integrated platform for performing security testing of web applications (professional edition)
-	pkgver = 2021.5.1
-	pkgrel = 2
+	pkgver = 2021.6
+	pkgrel = 1
 	url = https://portswigger.net/burp/
 	install = burpsuite-pro.install
 	arch = any
 	license = custom
 	makedepends = zip
 	depends = java-runtime>=9
-	noextract = burpsuite-pro-2021.5.1.jar
-	source = burpsuite-pro-2021.5.1.jar::https://portswigger.net/burp/releases/download?product=pro&version=2021.5.1&type=Jar
+	noextract = burpsuite-pro-2021.6.jar
+	source = burpsuite-pro-2021.6.jar::https://portswigger.net/burp/releases/download?product=pro&version=2021.6&type=Jar
 	source = burpsuite-pro.desktop
 	source = icon128.png
 	source = splash.png
-	sha256sums = be9f30043cb6ca7c8dbb3b183dab89fc112641cbfaa804dd44c7e2a46ad60098
+	sha256sums = 93861fc13a9bf9ce02b38fb9ae0cb42c2a76bed300a6d5ed8348e8e29c53c57b
 	sha256sums = 740a01fd3feacee5b0563edc4c6634219d367bf2590ecfc954959a95354506c8
 	sha256sums = f9b8bedbab02c8f0e03b2f5e3f99fa003c58d767168c3c4aa135233b3b533d4b
 	sha256sums = 3aaa84dd4c3d31a88cd065b8445d164737c7fad4fb56833fb994de0bf6dbe3be
