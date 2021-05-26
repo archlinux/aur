@@ -38,8 +38,15 @@ ros_depends=(ros-noetic-joint-limits-interface
 depends=(${ros_depends[@]})
 
 _dir="gazebo_ros_pkgs-${pkgver}/gazebo_ros_control"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-simulation/gazebo_ros_pkgs/archive/${pkgver}.tar.gz")
-sha256sums=('db937f15e5bf8f804de5d8dc0b67607f8b354aecde35785b6bff2d43387abff4')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-simulation/gazebo_ros_pkgs/archive/${pkgver}.tar.gz"
+        "no_GAZEBO_CXX_FLAGS.patch")
+sha256sums=('db937f15e5bf8f804de5d8dc0b67607f8b354aecde35785b6bff2d43387abff4'
+            '3adb9bdff185e9358eda7f406d5968f2d7b18e997ccf46fa1dc0386bfb59e0bc')
+
+prepare() {
+  cd "$srcdir/gazebo_ros_pkgs-$pkgver"
+  patch -p0 < "$srcdir/no_GAZEBO_CXX_FLAGS.patch"
+}
 
 build() {
   # Use ROS environment variables
@@ -52,6 +59,7 @@ build() {
 
   # Build project
   cmake ${srcdir}/${_dir} \
+        -DCMAKE_CXX_STANDARD=17 \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
         -DPYTHON_EXECUTABLE=/usr/bin/python \

@@ -35,7 +35,9 @@ pkgbase = ros-noetic-gazebo-ros-control
 	depends = ros-noetic-control-toolbox
 	depends = ros-noetic-transmission-interface
 	source = ros-noetic-gazebo-ros-control-2.9.2.tar.gz::https://github.com/ros-simulation/gazebo_ros_pkgs/archive/2.9.2.tar.gz
+	source = no_GAZEBO_CXX_FLAGS.patch
 	sha256sums = db937f15e5bf8f804de5d8dc0b67607f8b354aecde35785b6bff2d43387abff4
+	sha256sums = 3adb9bdff185e9358eda7f406d5968f2d7b18e997ccf46fa1dc0386bfb59e0bc
 
 pkgname = ros-noetic-gazebo-ros-control
 
