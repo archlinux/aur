@@ -1,7 +1,7 @@
 pkgbase = cpuminer-multi
 	pkgdesc = Multi-algo CPUMiner & Reference Cryptonote Miner (JSON-RPC 2.0)
 	pkgver = 1.3.7
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/tpruvot/cpuminer-multi
 	arch = x86_64
 	license = GPL
@@ -12,7 +12,9 @@ pkgbase = cpuminer-multi
 	provides = cpuminer
 	conflicts = cpuminer
 	source = git+https://github.com/tpruvot/cpuminer-multi.git#commit=04666ea6d0d7e00e4d520640aac29db5bcd65353
+	source = 0001-Fix-compile-error-with-GCC-11.patch
 	sha256sums = SKIP
+	sha256sums = 01f94fea8cc2753eee74a3d532b60d3e07319940f4b183bab80b5e9934009f92
 
 pkgname = cpuminer-multi
 
