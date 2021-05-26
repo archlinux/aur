@@ -1,7 +1,7 @@
 # Maintainer: Avelino <t AT avelino DOT xxx>
 
 pkgname=ritchie-cli
-pkgver=2.11.2
+pkgver=2.11.3
 pkgrel=1
 pkgdesc="Ritchie CLI is an open-source tool that allows to create, store and share any kind of automation, executing them through command lines, to run operations or start workflows"
 arch=('any')
