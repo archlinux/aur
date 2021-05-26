@@ -1,8 +1,11 @@
 pkg/
 src/
+nginx-*/
+boringssl/
 
 *.pkg*
 *.tar*
 
-nginx-*/
-boringssl/
+testing/
+
+.dockerignore

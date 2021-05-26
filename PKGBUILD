@@ -6,7 +6,7 @@
 
 pkgname=nginx-quic
 pkgver=1.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
@@ -86,7 +86,7 @@ build() {
   export CXXFLAGS=${CXXFLAGS/-D_FORTIFY_SOURCE=[1-9]/-D_FORTIFY_SOURCE=0}
 
   export CXXFLAGS="$CXXFLAGS -fPIC"
-  export CFLAGS="$CFLAGS -fPIC"
+  export CFLAGS="$CFLAGS -fPIC -Wno-stringop-overflow -Wno-array-parameter"
 
   cd ${srcdir}/boringssl
   mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release ../ && make
