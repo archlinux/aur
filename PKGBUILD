@@ -18,7 +18,7 @@ url="https://rega.kuleuven.be/cev/ecv/software/SpreaD3"
 license=('custom')
 source=("https://rega.kuleuven.be/cev/ecv/software/${pkgname}_files/${pkgname}-v${_pkgver}.jar" "${pkgname}.desktop")
 sha256sums=('4021b6dea480bec88c17666088c47f3ec1135c8f6ea7d9bb6cc21639ffc7956f'
-            'd3083d2471aca7cfb8e8a7da13f998bbbd94ce73c52a190fdfe0681500732191')
+            'c2d59b208dc6c334ea67ac8d557350c6e41a6d8d3b10d912ac402b7d1c2229d1')
 
 package() {
     install -dm755 "$pkgdir"/usr/share/{applications,${pkgname}}
