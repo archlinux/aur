@@ -32,7 +32,7 @@ pkgbase = linux-ck-uksm-cjktty
 	b2sums = 1f140c293d1ffdb13a38af1f636cf591ee1034702c9e3825ef7a12fff3ead79c6b9da1e2e099497c68b23cc7c690ce14bafb26d03c75648e27ab22b347f474a4
 
 pkgname = linux-ck-uksm-cjktty
-	pkgdesc = The Linux-ck kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler and the uksm patch, cjktty patch
+	pkgdesc = The Linux-ck kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler and with the uksm patch and cjktty patch
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
