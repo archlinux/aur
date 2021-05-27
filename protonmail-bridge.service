@@ -3,3 +3,6 @@ Description=An IMAP/SMTP bridge to a ProtonMail account
 
 [Service]
 ExecStart=/usr/bin/protonmail-bridge --noninteractive
+
+[Install]
+WantedBy=default.target

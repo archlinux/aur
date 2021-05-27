@@ -14,7 +14,7 @@ pkgbase = protonmail-bridge-nokeychain
 	source = protonmail-bridge.service
 	sha256sums = 3fd4f3649fae4063a67e8b5fd3472bc656d546449a2f7be4537e748989ba93e7
 	sha256sums = 60e1394fed0ae4feb4111476aa68817f2da72bb6bf516bc60ad9d618aead5ce8
-	sha256sums = 080b71b2a6b52895bcfbab66eee5cd1149d2c69a837bbeb1e0a154b93f4aa5e5
+	sha256sums = 5ffaaa5acc030ebed82b3b13f1ddc2791b50851fb93964a5d6a20a11000c18c2
 
 pkgname = protonmail-bridge-nokeychain
 
