@@ -5,7 +5,7 @@
 
 pkgname=yacpi
 pkgver=3.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="ncurses-based acpi monitor."
 arch=('i686' 'x86_64')
 url="http://www.ngolde.de/yacpi.html"
