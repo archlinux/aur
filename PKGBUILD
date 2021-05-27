@@ -2,7 +2,7 @@
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=('system76-firmware' 'system76-firmware-daemon')
 pkgbase=system76-firmware
-pkgver=1.0.25
+pkgver=1.0.26
 pkgrel=1
 pkgdesc="System76 CLI tool for installing firmware updates and systemd service that exposes a DBUS API for handling firmware updates"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('rust' 'dbus')
 conflicts=("$pkgbase-daemon-git")
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('86b156718241b78e2a0fbbf433ae1008e88b97248c6ac4e6828d8c74ff2fcb08')
+sha256sums=('ee8494ef9f8f9cddc4c94b5827485b74fa5772a5e923a8b1944c67350f90441d')
 
 build() {
 	cd "$pkgbase-$pkgver"
@@ -20,7 +20,7 @@ build() {
 
 package_system76-firmware() {
 	pkgdesc="System76 CLI tool for installing firmware updates"
-	depends=('ca-certificates' 'openssl' 'xz')
+	depends=('ca-certificates' 'efibootmgr' 'openssl' 'xz')
 
 	cd "$pkgbase-$pkgver"
 	make DESTDIR="$pkgdir" install-cli
@@ -28,7 +28,7 @@ package_system76-firmware() {
 
 package_system76-firmware-daemon() {
 	pkgdesc="System76 systemd service that exposes a DBUS API for handling firmware updates"
-	depends=('dbus' 'efibootmgr' 'system76-firmware')
+	depends=('dbus' 'dfu-programmer' 'system76-firmware' 'systemd')
 	install="$pkgname.install"
 
 	cd "$pkgbase-$pkgver"
