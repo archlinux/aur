@@ -27,8 +27,7 @@ build(){
 	npm run pack:dir
 }
 package(){
-	echo "const os = require('os'); console.log(os.arch());" > get-arch.js
-	_arch=$(node get-arch.js)
+	_arch=$(node -e "os=require('os'); console.log(os.arch());")
 	cd ${srcdir}/${pkgname}/build/linux-${_arch}-unpacked
 	mkdir -p ${pkgdir}/opt/${pkgname//-git/}
 	cp -r * ${pkgdir}/opt/${pkgname//-git/}
