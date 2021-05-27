@@ -1,6 +1,6 @@
 pkgbase = ovenmediaengine
 	pkgdesc = Open-source streaming video service with sub-second latency
-	pkgver = v0.12.0.r13.ge1b2ac3d
+	pkgver = v0.12.0.r15.g4ff7fdf1
 	pkgrel = 1
 	url = https://ovenmediaengine.com
 	arch = x86_64
@@ -25,9 +25,12 @@ pkgbase = ovenmediaengine
 	depends = intel-media-driver
 	depends = cuda-tools
 	depends = ffnvcodec-headers
+	backup = etc/ovenmediaengine/Server.xml
 	backup = etc/ovenmediaengine/Logger.xml
 	source = git+https://github.com/AirenSoft/OvenMediaEngine
+	source = ovenmediaengine.service
 	sha512sums = SKIP
+	sha512sums = 25448de934d37f6fe13832201096645b069d65f3842f05d2188df71f3b4ea911f52d97ff4b5a38347364dc3d6224516105b872b722367f5d9fd64b41ed3ab181
 
 pkgname = ovenmediaengine
 
