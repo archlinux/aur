@@ -1,0 +1,20 @@
+pkgbase = xmonad-cinnamon-git
+	pkgdesc = Starts xmonad inside a cinnamon session.
+	pkgver = r2.cd41608
+	pkgrel = 1
+	url = https://github.com/syvanpera/xmonad-cinnamon.git
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = xmonad
+	depends = cinnamon-session
+	depends = cinnamon-settings-daemon
+	optdepends = gdm: Recommended display manager
+	optdepends = lightdm: Recommended display manager
+	provides = xmonad-cinnamon
+	conflicts = xmonad-cinnamon
+	source = git+https://github.com/syvanpera/xmonad-cinnamon.git
+	md5sums = SKIP
+
+pkgname = xmonad-cinnamon-git
+
