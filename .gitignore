@@ -1,4 +1,5 @@
 src/
 pkg/
 gnome-shell-extension-improvedosk-git/
+*.log
 *.tar*
