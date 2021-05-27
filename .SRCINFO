@@ -1,0 +1,19 @@
+pkgbase = caja-admin
+	pkgdesc = Extension for Caja to do administrative operations
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/infirit/caja-admin
+	arch = any
+	license = GPL3
+	makedepends = meson
+	makedepends = gettext
+	depends = caja
+	depends = python-caja
+	depends = polkit
+	optdepends = pluma: to use the "Edit as Administrator" action
+	optdepends = mate-terminal: to use the "Run as Administrator" action
+	source = https://github.com/infirit/caja-admin/archive/0.0.4.tar.gz
+	sha512sums = 2aaa9c745e0532e2d1727382c89bfd679d5ae61e1aba78a41694f3c5c804d9f88424b60a2c412bb940b4df9a056bb73b195fc59dfc48827763dc7fb3678a0ac1
+
+pkgname = caja-admin
+
