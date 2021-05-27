@@ -1,8 +1,8 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="librespeed-go"
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.1.3
+pkgrel=1
 pkgdesc="Very lightweight speed test implemented in Javascript, using XMLHttpRequest and Web Workers."
 url="https://github.com/librespeed/speedtest-go"
 license=("LGPL3")
@@ -16,7 +16,7 @@ source=("https://github.com/librespeed/speedtest-go/archive/v$pkgver.zip"
         "librespeed.sysusers"
         "librespeed.tmpfiles"
         "settings.toml")
-sha256sums=("336632d5e0f02445c72bd751f3af784358e1930e12abd6612293518a8563a0b9"
+sha256sums=("b4bf0a88df3ba87643b8be567fda0cf4cdfc234102c21c9103e8303518e25b62"
             "c9db604a942f3fcc25f75b8e630fdb95916bf604721d0d1dbd70f29554ab766c"
             "d2cdcfd2a5d4ed1b482915c65e38a3aa06e34e967510a3721ea95180fe31c83f"
             "ef3ee7877738f801edc83a56ef83ed49cef2f6a7431641a55f3f6d5c8967059e"
