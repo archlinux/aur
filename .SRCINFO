@@ -1,6 +1,6 @@
 pkgbase = ada_language_server
 	pkgdesc = High performance syntactic and semantic engine for the Ada programming language
-	pkgver = 22.0.5
+	pkgver = 22.0.6
 	pkgrel = 1
 	url = https://github.com/AdaCore/ada_language_server/
 	arch = x86_64
@@ -29,16 +29,16 @@ pkgbase = ada_language_server
 	conflicts = ada_language_server-git
 	conflicts = libvss
 	conflicts = libadalang
-	source = ada_language_server-22.0.5.tar.gz::https://github.com/AdaCore/ada_language_server/archive/22.0.5.tar.gz
-	source = git+https://github.com/AdaCore/VSS.git#commit=d6b5de8
-	source = git+https://github.com/AdaCore/langkit.git#commit=024d02f
-	source = git+https://github.com/AdaCore/libadalang.git#commit=398acf2
-	source = git+https://github.com/AdaCore/libadalang-tools.git#commit=f114dbb
+	source = ada_language_server-22.0.6.tar.gz::https://github.com/AdaCore/ada_language_server/archive/22.0.6.tar.gz
+	source = git+https://github.com/AdaCore/VSS.git#commit=d6c6024
+	source = git+https://github.com/AdaCore/langkit.git#commit=80d6e2c
+	source = git+https://github.com/AdaCore/libadalang.git#commit=56616cc
+	source = git+https://github.com/AdaCore/libadalang-tools.git#commit=479382d
 	source = git+https://github.com/AdaCore/spawn.git#commit=e57c59d
 	source = libadalang-tools.patch
 	source = VSS.patch
 	source = ada_language_server.patch
-	sha1sums = cb83762ebebf085b6b54a4bfc5eb33248c21615d
+	sha1sums = 14aa85d349d9b0837fb5295f92cfa8a130946afc
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
