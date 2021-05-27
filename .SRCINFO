@@ -1,6 +1,6 @@
 pkgbase = 1password-cli
 	pkgdesc = 1Password command line tool
-	pkgver = 1.9.2
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://app-updates.agilebits.com/product_history/CLI
 	arch = x86_64
@@ -11,16 +11,16 @@ pkgbase = 1password-cli
 	license = custom
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://cache.agilebits.com/dist/1P/op/pkg/v1.9.2/op_linux_amd64_v1.9.2.zip
-	sha256sums_x86_64 = 8b326be1cdb91b23870e18be1e087eddab054cfac5f4ff98d26f0694de8521a3
-	source_i686 = https://cache.agilebits.com/dist/1P/op/pkg/v1.9.2/op_linux_386_v1.9.2.zip
-	sha256sums_i686 = 0a81f536922161386860c891fac0c70d3c9c054e7fa1cdd0adf5b88050078b9a
-	source_arm = https://cache.agilebits.com/dist/1P/op/pkg/v1.9.2/op_linux_arm_v1.9.2.zip
-	sha256sums_arm = 49b6de8d761c5ef94855da9c5ecf4b760a8c3d015a787438ea947d99664077ee
-	source_armv6h = https://cache.agilebits.com/dist/1P/op/pkg/v1.9.2/op_linux_arm_v1.9.2.zip
-	sha256sums_armv6h = 49b6de8d761c5ef94855da9c5ecf4b760a8c3d015a787438ea947d99664077ee
-	source_aarch64 = https://cache.agilebits.com/dist/1P/op/pkg/v1.9.2/op_linux_arm_v1.9.2.zip
-	sha256sums_aarch64 = 49b6de8d761c5ef94855da9c5ecf4b760a8c3d015a787438ea947d99664077ee
+	source_x86_64 = https://cache.agilebits.com/dist/1P/op/pkg/v1.10.0/op_linux_amd64_v1.10.0.zip
+	sha256sums_x86_64 = a55bf2d142481d8e15bf195db7263b7838acdd055812f14dd80ec827b903437e
+	source_i686 = https://cache.agilebits.com/dist/1P/op/pkg/v1.10.0/op_linux_386_v1.10.0.zip
+	sha256sums_i686 = 9ef1c8a8c79d888cd1f1dfa1fc9c2d09bcc411ddf35c91520e7454239f0938f5
+	source_arm = https://cache.agilebits.com/dist/1P/op/pkg/v1.10.0/op_linux_arm_v1.10.0.zip
+	sha256sums_arm = ac1b417ccda790f02c3f8fcf91e5ec0d5fe2d0ab3b8e7457ece952ecd78a8bb5
+	source_armv6h = https://cache.agilebits.com/dist/1P/op/pkg/v1.10.0/op_linux_arm_v1.10.0.zip
+	sha256sums_armv6h = ac1b417ccda790f02c3f8fcf91e5ec0d5fe2d0ab3b8e7457ece952ecd78a8bb5
+	source_aarch64 = https://cache.agilebits.com/dist/1P/op/pkg/v1.10.0/op_linux_arm_v1.10.0.zip
+	sha256sums_aarch64 = ac1b417ccda790f02c3f8fcf91e5ec0d5fe2d0ab3b8e7457ece952ecd78a8bb5
 
 pkgname = 1password-cli
 
