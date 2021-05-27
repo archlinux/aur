@@ -1,0 +1,33 @@
+Description: Add support for ext4 variable sized inodes
+ This is backwardly compatible with ext2/ext3 fixed sized inodes.
+Author: Colin King <colin.king@canonical.com>
+Bug-Debian: https://bugs.debian.org/511121
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/345488
+Last-Update: 2018-10-25
+
+Index: b/stage2/fsys_ext2fs.c
+===================================================================
+--- a/stage2/fsys_ext2fs.c
++++ b/stage2/fsys_ext2fs.c
+@@ -652,6 +652,8 @@
+   int off;			/* offset within block of directory entry (off mod blocksize) */
+   int loc;			/* location within a directory */
+   int blk;			/* which data blk within dir entry (off div blocksize) */
++  int inodes_per_block;		/* number of inodes in each block */
++  int inode_offset;		/* inode offset in block */
+   long map;			/* fs pointer of a particular block from dir entry */
+   struct ext2_dir_entry *dp;	/* pointer to directory entry */
+ #ifdef E2DEBUG
+@@ -687,9 +689,9 @@
+ 	  return 0;
+ 	}
+       gdp = GROUP_DESC;
+-      ino_blk = gdp[desc].bg_inode_table +
+-	(((current_ino - 1) % (SUPERBLOCK->s_inodes_per_group))
+-	 >> log2 (EXT2_INODES_PER_BLOCK (SUPERBLOCK)));
++      inodes_per_block =  EXT2_BLOCK_SIZE (SUPERBLOCK) / EXT2_INODE_SIZE(SUPERBLOCK);
++      inode_offset = ((current_ino - 1) % (SUPERBLOCK->s_inodes_per_group));
++      ino_blk = gdp[desc].bg_inode_table + (inode_offset / inodes_per_block);
+ #ifdef E2DEBUG
+       printf ("inode table fsblock=%d\n", ino_blk);
+ #endif /* E2DEBUG */

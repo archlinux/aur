@@ -1,5 +1,14 @@
---- grub-0.96/stage2/boot.c
-+++ grub-0.96/stage2/boot.c
+
+    Date: 2005-11-11
+    Author: Otavio Salvador
+    Comment: Stolen from SuSE grub package.
+     It fix the max address of initrd image and include a safe
+     default in case of it isn't available
+
+Index: b/stage2/boot.c
+===================================================================
+--- a/stage2/boot.c
++++ b/stage2/boot.c
 @@ -824,8 +824,11 @@
      moveto = (mbi.mem_upper + 0x400) << 10;
    

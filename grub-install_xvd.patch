@@ -1,0 +1,13 @@
+Index: b/util/grub-install.in
+===================================================================
+--- a/util/grub-install.in
++++ b/util/grub-install.in
+@@ -104,7 +104,7 @@
+ 	)"
+ 
+ 	# Convert RAID devices list into a list of disks
+-	tmp_disks=`echo "$devices" | sed -e 's%\([sh]d[a-z]\)[0-9]*$%\1%' \
++	tmp_disks=`echo "$devices" | sed -e 's%\(\(s\|h\|xv\)d[a-z]\)[0-9]*$%\1%' \
+ 					 -e 's%\(d[0-9]*\)p[0-9]*$%\1%' \
+ 					 -e 's%\(fd[0-9]*\)$%\1%' \
+ 					 -e 's%/part[0-9]*$%/disc%' \

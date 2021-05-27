@@ -1,0 +1,75 @@
+Description: Put pointers to static variables as arguments on the new stack
+ to get it working with gcc 7.
+Author: Bernhard Übelacker <bernhardu@mailbox.org>
+Forwarded: no
+Bug-Debian: https://bugs.debian.org/898553
+Last-Update: 2018-07-06
+
+Index: b/grub/asmstub.c
+===================================================================
+--- a/grub/asmstub.c
++++ b/grub/asmstub.c
+@@ -123,32 +123,42 @@
+   char *scratch, *simstack;
+   int i;
+ 
+-  auto void doit (void);
++  auto void doit_wrapper (void);
++  auto void doit (jmp_buf *p_env_for_exit, int *p_status);
+   
++  void doit_wrapper (void)
++    {
++      asm volatile ("movl %%esp, %0\n\t"
++                    "movl %2, %%esp\n\t"    /* Make sure our stack lives in the simulated memory area. */
++                    "pushl %1\n\t"          /* Put realstack on the new stack */
++                    "pushl %3\n\t"          /* Put &status on the new stack */
++                    "pushl %4\n\t"          /* Put &env_for_exit on the new stack */
++                    "call *%5\n\t"          /* Call doit */
++                    "popl %0\n\t"           /* Remove &env_for_exit from the stack */
++                    "popl %0\n\t"           /* Remove &status from the stack */
++                    "popl %0\n\t"           /* Retrieve realstack from the new stack */
++                    "movl %1, %%esp\n"      /* Switch back to the original stack */
++                    : "=&r" (realstack)
++                    : "0" (realstack), "r" (simstack), "r" (&status), "r" (&env_for_exit), "r" (doit));
++    }
++
+   /* We need a nested function so that we get a clean stack frame,
+      regardless of how the code is optimized. */
+-  void doit (void)
++  void doit (jmp_buf *p_env_for_exit, int *p_status)
+     {
+-      /* Make sure our stack lives in the simulated memory area. */
+-      asm volatile ("movl %%esp, %0\n\tmovl %1, %%esp\n"
+-		    : "=&r" (realstack) : "r" (simstack));
+-      
+       /* Do a setjmp here for the stop command.  */
+-      if (! setjmp (env_for_exit))
++      if (! setjmp (*p_env_for_exit))
+ 	{
+ 	  /* Actually enter the generic stage2 code.  */
+-	  status = 0;
++	  *p_status = 0;
+ 	  init_bios_info ();
+ 	}
+       else
+ 	{
+ 	  /* If ERRNUM is non-zero, then set STATUS to non-zero.  */
+ 	  if (errnum)
+-	    status = 1;
++	    *p_status = 1;
+ 	}
+-      
+-      /* Replace our stack before we use any local variables. */
+-      asm volatile ("movl %0, %%esp\n" : : "r" (realstack));
+     }
+ 
+   assert (grub_scratch_mem == 0);
+@@ -211,7 +221,7 @@
+ 
+   /* Set our stack, and go for it. */
+   simstack = (char *) PROTSTACKINIT;
+-  doit ();
++  doit_wrapper ();
+ 
+   /* I don't know if this is necessary really.  */
+   sync ();

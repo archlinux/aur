@@ -1,16 +1,37 @@
+Description: Adjust to work with modern Automake
+Author: Colin Watson <cjwatson@debian.org>
+Bug-Debian: http://bugs.debian.org/724383
+Forwarded: no
+Last-Update: 2013-09-24
+
+Index: b/configure.ac
+===================================================================
+--- a/configure.ac
++++ b/configure.ac
+@@ -60,8 +60,7 @@
+ _AM_DEPENDENCIES(CC)
+ 
+ dnl Because recent automake complains about AS, set it here.
+-CCAS="$CC"
+-AC_SUBST(CCAS)
++AM_PROG_AS
+ 
+ AC_ARG_WITH(binutils,
+   [  --with-binutils=DIR     search the directory DIR to find binutils])
+Index: b/stage1/Makefile.am
+===================================================================
 --- a/stage1/Makefile.am
 +++ b/stage1/Makefile.am
-@@ -1,7 +1,7 @@
+@@ -1,5 +1,5 @@
 -pkglibdir = $(libdir)/$(PACKAGE)/$(host_cpu)-$(host_vendor)
 -nodist_pkglib_DATA = stage1
-+stagedir = $(libdir)/$(PACKAGE)/$(host_cpu)-$(host_vendor)
-+nodist_stage_DATA = stage1
++pkgdatadir = $(libdir)/$(PACKAGE)/$(host_cpu)-$(host_vendor)
++nodist_pkgdata_DATA = stage1
  
--CLEANFILES = $(nodist_pkglib_DATA)
-+CLEANFILES = $(nodist_stage_DATA)
+ CLEANFILES = $(nodist_pkglib_DATA)
  
- # We can't use builtins or standard includes.
- AM_CCASFLAGS = $(STAGE1_CFLAGS) -fno-builtin -nostdinc
+Index: b/stage2/Makefile.am
+===================================================================
 --- a/stage2/Makefile.am
 +++ b/stage2/Makefile.am
 @@ -27,12 +27,12 @@
@@ -18,13 +39,13 @@
  
  # Stage 2 and Stage 1.5's.
 -pkglibdir = $(libdir)/$(PACKAGE)/$(host_cpu)-$(host_vendor)
-+stagedir = $(libdir)/$(PACKAGE)/$(host_cpu)-$(host_vendor)
++pkgdatadir = $(libdir)/$(PACKAGE)/$(host_cpu)-$(host_vendor)
  
  EXTRA_PROGRAMS = nbloader.exec pxeloader.exec diskless.exec
  
  if DISKLESS_SUPPORT
 -pkglib_DATA = stage2 stage2_eltorito e2fs_stage1_5 fat_stage1_5 \
-+stage_DATA = stage2 stage2_eltorito e2fs_stage1_5 fat_stage1_5 \
++pkgdata_DATA = stage2 stage2_eltorito e2fs_stage1_5 fat_stage1_5 \
  	ffs_stage1_5 iso9660_stage1_5 jfs_stage1_5 minix_stage1_5 \
  	reiserfs_stage1_5 ufs2_stage1_5 vstafs_stage1_5 xfs_stage1_5 \
  	nbgrub pxegrub
@@ -33,7 +54,7 @@
  	xfs_stage1_5.exec nbloader.exec pxeloader.exec diskless.exec
  else
 -pkglib_DATA = stage2 stage2_eltorito e2fs_stage1_5 fat_stage1_5 \
-+stage_DATA = stage2 stage2_eltorito e2fs_stage1_5 fat_stage1_5 \
++pkgdata_DATA = stage2 stage2_eltorito e2fs_stage1_5 fat_stage1_5 \
  	ffs_stage1_5 iso9660_stage1_5 jfs_stage1_5 minix_stage1_5 \
  	reiserfs_stage1_5 ufs2_stage1_5 vstafs_stage1_5 xfs_stage1_5
  noinst_DATA = pre_stage2 start start_eltorito
@@ -42,7 +63,7 @@
  endif
  
 -CLEANFILES = $(pkglib_DATA) $(noinst_DATA) $(BUILT_SOURCES)
-+CLEANFILES = $(stage_DATA) $(noinst_DATA) $(BUILT_SOURCES)
++CLEANFILES = $(pkgdata_DATA) $(noinst_DATA) $(BUILT_SOURCES)
  
  stage2_size.h: pre_stage2
  	-rm -f stage2_size.h

@@ -1,0 +1,72 @@
+
+Copyright: Charles Steinkuehler <charles@steinkuehler.net>, except he borrowed
+some code from other sources. He's cooperative about rewriting and/or doing
+the paperwork.
+Upstream: pending
+
+Index: b/util/grub-install.in
+===================================================================
+--- a/util/grub-install.in
++++ b/util/grub-install.in
+@@ -81,6 +81,50 @@
+ EOF
+ }
+ 
++# Usage: getraid_mdadm mddevice
++# Routine to find a physical device from an md device
++# If found, the first grub BIOS device (from device.map) is returned 
++# If no BIOS drives match the RAID devices, the first device returned
++# from mdadm -D is returned
++getraid_mdadm() {
++	device=$1
++	mdadm=$(mdadm -D "$device") || {
++		echo "$PROG: mdadm -D $device failed" >&2
++		exit 1
++	}
++	eval "$(
++		echo "$mdadm" | awk '
++			$1 == "Number" && $2 == "Major" { start = 1; next }
++			$1 == "UUID" { print "uuid=" $3; start = 0; next }
++			!start { next }
++			$2 == 0 && $3 == 0 { next }
++			{ devices = devices "\n" $NF }
++			END { print "devices='\''" devices "'\''" }
++		'
++	)"
++
++	# Convert RAID devices list into a list of disks
++	tmp_disks=`echo "$devices" | sed -e 's%\([sh]d[a-z]\)[0-9]*$%\1%' \
++					 -e 's%\(d[0-9]*\)p[0-9]*$%\1%' \
++					 -e 's%\(fd[0-9]*\)$%\1%' \
++					 -e 's%/part[0-9]*$%/disc%' \
++					 -e 's%\(c[0-7]d[0-9]*\).*$%\1%' \
++					 -e '/^$/d' |
++				     sed -n '1h;2,$H;${g;s/\n/|/g;p}'`
++
++	# Find first BIOS disk that's a member of the RAID array
++	# Default to first RAID member if no tmp_disks are BIOS devices
++	set -- `egrep $tmp_disks $device_map | \
++		sort | \
++		sed -n 1p `
++	device=${2:-${tmp_disks%%|*}}
++
++	# Return first partition on BIOS disk that's part of the RAID
++	echo "$devices" | \
++		sed -n "\:${device}:p" | \
++		sed -n 1p
++}
++
+ # Usage: convert os_device
+ # Convert an OS device to the corresponding GRUB drive.
+ # This part is OS-specific.
+@@ -96,6 +140,10 @@
+     # Break the device name into the disk part and the partition part.
+     case "$host_os" in
+     linux*)
++	# Find an actual physical device if we're passed a RAID device
++	case $1 in
++		/dev/md*)  set -- `getraid_mdadm $1`
++	esac
+ 	tmp_disk=`echo "$1" | sed -e 's%\([sh]d[a-z]\)[0-9]*$%\1%' \
+ 				  -e 's%\(d[0-9]*\)p[0-9]*$%\1%' \
+ 				  -e 's%\(fd[0-9]*\)$%\1%' \

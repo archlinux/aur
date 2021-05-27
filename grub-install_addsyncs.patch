@@ -1,0 +1,57 @@
+
+    Date: 2005-11-11
+    Author: Otavio Salvador
+    Comment: Stolen from Fedora grub package.
+     Add syncs to ensure that filesystem cache are flushed.
+
+ -- Original comment, below
+
+I just found another semi-critical bug, whose fix should really get
+into 0.91.
+
+It turns out that "grub-install" doesn't have any "sync" calls to make
+sure any filesystem caches are coherent with the raw devices they are
+on top of...  so if your filesystem waits to write out any data from the
+copy command in the script to put the "stage1" and "stage2" in their
+final location, you're hosed.
+
+I found this because it just bit me on one of my systems running stock
+RedHat 7.2 with a large "stage2".
+
+The only script that is patched here is "grub-install".  The others
+don't appear to need it as they either unmount things first or don't
+refer to devices.
+
+Hmm.  Maybe the right fix is to make the "sync" system call when
+starting the GRUB shell with a device map that refers to any real disks
+or something like that.
+
+    Erich Stefan Boleyn     <erich@uruk.org>     http://www.uruk.org/
+"Reality is truly stranger than fiction; Probably why fiction is so popular"
+
+Index: b/util/grub-install.in
+===================================================================
+--- a/util/grub-install.in
++++ b/util/grub-install.in
+@@ -384,6 +384,10 @@
+     # Create a safe temporary file.
+     test -n "$mklog" && log_file=`$mklog`
+ 
++    # Before all invocations of the grub shell, call sync to make sure
++    # the raw device is in sync with any bufferring in filesystems.
++    sync
++ 
+     $grub_shell --batch $no_floppy --device-map=$device_map <<EOF >$log_file
+ quit
+ EOF
+@@ -509,6 +513,10 @@
+ # Create a safe temporary file.
+ test -n "$mklog" && log_file=`$mklog`
+ 
++# Before all invocations of the grub shell, call sync to make sure
++# the raw device is in sync with any bufferring in filesystems.
++sync
++
+ # Now perform the installation.
+ $grub_shell --batch $no_floppy --device-map=$device_map <<EOF >$log_file
+ root $root_drive

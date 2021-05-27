@@ -1,0 +1,51 @@
+Index: b/lib/device.c
+===================================================================
+--- a/lib/device.c
++++ b/lib/device.c
+@@ -395,6 +395,16 @@
+ #endif
+ }
+ 
++static void
++get_xvd_disk_name (char *name, int unit)
++{
++#ifdef __linux__
++  sprintf (name, "/dev/xvd%c", unit + 'a');
++#else
++# warning "Xen XVD drives cannot be guessed in your operating system."
++  *name = 0;
++#endif
++}
+ #ifdef __linux__
+ static void
+ get_dac960_disk_name (char *name, int controller, int drive)
+@@ -788,7 +798,28 @@
+ 	  num_hd++;
+ 	}
+     }
+-  
++
++#ifdef __linux__
++  /* Xen Virtual Disks. */
++  for (i = 0; i < 16; i++)
++    {
++      char name[16];
++
++      get_xvd_disk_name (name, i);
++      if (check_device (name))
++        {
++          (*map)[num_hd + 0x80] = strdup (name);
++          assert ((*map)[num_hd + 0x80]);
++
++          /* If the device map file is opened, write the map.  */
++          if (fp)
++            fprintf (fp, "(hd%d)\t%s\n", num_hd, name);
++
++          num_hd++;
++        }
++    }
++#endif
++
+ #ifdef __linux__
+   /* This is for DAC960 - we have
+      /dev/rd/c<controller>d<logical drive>p<partition>.

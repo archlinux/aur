@@ -1,0 +1,35 @@
+
+    Date: 2005-11-11
+    Author: Otavio Salvador
+    Comment: Stolen from Fedora grub package.
+     Add document entry for splashimage option.
+
+Index: b/docs/grub.texi
+===================================================================
+--- a/docs/grub.texi
++++ b/docs/grub.texi
+@@ -2199,6 +2199,7 @@
+ * rarp::                        Initialize a network device via RARP
+ * serial::                      Set up a serial device
+ * setkey::                      Configure the key map
++* splashimage::                 Use a splash image
+ * terminal::                    Choose a terminal
+ * terminfo::                    Define escape sequences for a terminal
+ * tftpserver::                  Specify a TFTP server
+@@ -2578,6 +2579,16 @@
+ @end deffn
+ 
+ 
++@node splashimage
++@subsection splashimage
++
++@deffn Command splashimage file
++Select an image to use as the background image.  This should be
++specified using normal GRUB device naming syntax.  The format of the
++file is a gzipped xpm which is 640x480 with a 14 color palette.
++@end deffn
++
++
+ @node terminal
+ @subsection terminal
+ 

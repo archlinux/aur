@@ -1,0 +1,40 @@
+Description: Disable PIE for stage1 and stage2
+ This is no use for freestanding binaries and causes an explosion in binary
+ size.
+Author: Colin Watson <cjwatson@debian.org>
+Forwarded: no
+Last-Update: 2016-10-08
+
+Index: b/configure.ac
+===================================================================
+--- a/configure.ac
++++ b/configure.ac
+@@ -143,6 +143,28 @@
+     if test "x$no_combine_stack_adjustments_flag" = xyes; then
+       GRUB_CFLAGS="$GRUB_CFLAGS -fno-combine-stack-adjustments"
+     fi
++    # Disable PIE if possible.
++    AC_CACHE_CHECK([whether gcc has -fno-PIE],
++		   no_pie_flag, [
++      saved_CFLAGS=$CFLAGS
++      CFLAGS="-fno-PIE"
++      AC_TRY_COMPILE(, , no_pie_flag=yes, no_pie_flag=no)
++      CFLAGS=$saved_CFLAGS
++    ])
++    if test "x$no_pie_flag" = xyes; then
++      STAGE1_CFLAGS="$STAGE1_CFLAGS -fno-PIE"
++      STAGE2_CFLAGS="$STAGE2_CFLAGS -fno-PIE"
++    fi
++    AC_CACHE_CHECK([whether gcc has -no-pie],
++		   no_pie_linker_flag, [
++      saved_LDFLAGS=$LDFLAGS
++      LDFLAGS="-no-pie"
++      AC_TRY_LINK(, , no_pie_linker_flag=yes, no_pie_linker_flag=no)
++      LDFLAGS=$saved_LDFLAGS
++    ])
++    if test "x$no_pie_linker_flag" = xyes; then
++      LDFLAGS="$LDFLAGS -no-pie"
++    fi
+   fi
+ fi
+ 

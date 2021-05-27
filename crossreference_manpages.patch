@@ -1,0 +1,48 @@
+Index: b/docs/Makefile.am
+===================================================================
+--- a/docs/Makefile.am
++++ b/docs/Makefile.am
+@@ -37,14 +37,14 @@
+ 	$(SHELL) $(srcdir)/$(SRC2TEXI) $(srcdir) $< $@
+ 
+ if MAINTAINER_MODE
+-$(srcdir)/grub.8: ../grub/grub $(srcdir)/$(HELP2MAN)
++$(srcdir)/grub.8: ../grub/grub $(srcdir)/$(HELP2MAN) $(srcdir)/grub.8.additions $(srcdir)/help2man.additions
+ 	$(PERL) $(srcdir)/$(HELP2MAN) --name="the grub shell" \
+-		--section=8 --output=$@ $<
++		--section=8 --include=$@.additions --include=$(srcdir)/help2man.additions --output=$@ $<
+ 
+-$(srcdir)/grub-install.8: ../util/grub-install $(srcdir)/$(HELP2MAN)
++$(srcdir)/grub-install.8: ../util/grub-install $(srcdir)/$(HELP2MAN) $(srcdir)/grub-install.8.additions $(srcdir)/help2man.additions
+ 	chmod 755 $<
+ 	$(PERL) $(srcdir)/$(HELP2MAN) --name="install GRUB on your drive" \
+-		--section=8 --output=$@ $<
++		--section=8 --include=$@.additions --include=$(srcdir)/help2man.additions --output=$@ $<
+ 
+ $(srcdir)/mbchk.1: ../util/mbchk $(srcdir)/$(HELP2MAN)
+ 	$(PERL) $(srcdir)/$(HELP2MAN) \
+Index: b/docs/grub.8.additions
+===================================================================
+--- /dev/null
++++ b/docs/grub.8.additions
+@@ -0,0 +1,3 @@
++[SEE ALSO]
++.BR update-grub (8),
++.BR grub-install (8).
+Index: b/docs/grub-install.8.additions
+===================================================================
+--- /dev/null
++++ b/docs/grub-install.8.additions
+@@ -0,0 +1,3 @@
++[SEE ALSO]
++.BR grub (8),
++.BR update-grub (8).
+Index: b/docs/help2man.additions
+===================================================================
+--- /dev/null
++++ b/docs/help2man.additions
+@@ -0,0 +1,4 @@
++[>SEE ALSO]
++You may need to install the
++.B grub\-legacy\-doc
++package.

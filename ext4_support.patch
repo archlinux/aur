@@ -1,8 +1,14 @@
-diff -ruNp grub-0.97/stage2/fsys_ext2fs.c grub-0.97-patch/stage2/fsys_ext2fs.c
---- grub-0.97/stage2/fsys_ext2fs.c      2004-08-08 20:19:18.000000000 +0200
-+++ grub-0.97-patch/stage2/fsys_ext2fs.c        2007-12-29 16:25:19.000000000 
-+0100
-@@ -51,6 +51,9 @@ typedef unsigned int __u32;
+Description: Allow booting from ext4 partitions
+Author: Quentin Godfroy <godfroy@clipper.ens.fr>
+Bug-Debian: https://bugs.debian.org/511121
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/314350
+Last-Update: 2018-10-25
+
+Index: b/stage2/fsys_ext2fs.c
+===================================================================
+--- a/stage2/fsys_ext2fs.c
++++ b/stage2/fsys_ext2fs.c
+@@ -51,6 +51,9 @@
  #define EXT2_TIND_BLOCK                 (EXT2_DIND_BLOCK + 1)
  #define EXT2_N_BLOCKS                   (EXT2_TIND_BLOCK + 1)
  
@@ -12,7 +18,7 @@ diff -ruNp grub-0.97/stage2/fsys_ext2fs.c grub-0.97-patch/stage2/fsys_ext2fs.c
  /* include/linux/ext2_fs.h */
  struct ext2_super_block
    {
-@@ -191,6 +194,42 @@ struct ext2_dir_entry
+@@ -236,6 +239,42 @@
  #define EXT2_DIR_REC_LEN(name_len)      (((name_len) + 8 + EXT2_DIR_ROUND) & \
                                           ~EXT2_DIR_ROUND)
  
@@ -55,12 +61,12 @@ diff -ruNp grub-0.97/stage2/fsys_ext2fs.c grub-0.97-patch/stage2/fsys_ext2fs.c
  
  /* ext2/super.c */
  #define log2(n) ffz(~(n))
-@@ -279,6 +318,26 @@ ext2_rdfsb (int fsblock, int buffer)
-                  EXT2_BLOCK_SIZE (SUPERBLOCK), (char *) buffer);
+@@ -332,6 +371,27 @@
+ 		  EXT2_BLOCK_SIZE (SUPERBLOCK), (char *) buffer);
  }
  
 +/* Walk through extents index tree to find the good leaf */
-+static struct ext4_extent_header * 
++static struct ext4_extent_header *
 +ext4_recurse_extent_index(struct ext4_extent_header *extent_block, int logical_block)
 +{
 +  int i;
@@ -79,32 +85,42 @@ diff -ruNp grub-0.97/stage2/fsys_ext2fs.c grub-0.97-patch/stage2/fsys_ext2fs.c
 +  return (ext4_recurse_extent_index((struct ext4_extent_header *) DATABLOCK1, logical_block));
 +}
 +
++
  /* from
    ext2/inode.c:ext2_bmap()
  */
---- grub-0.97/stage2/fsys_ext2fs.c~	2008-12-28 20:19:00.000000000 +0100
-+++ grub-0.97/stage2/fsys_ext2fs.c	2008-12-28 20:19:00.000000000 +0100
-@@ -366,83 +366,106 @@
-     }
+@@ -340,7 +400,6 @@
+ static int
+ ext2fs_block_map (int logical_block)
+ {
+-
+ #ifdef E2DEBUG
+   unsigned char *i;
+   for (i = (unsigned char *) INODE;
+@@ -361,82 +420,106 @@
    printf ("logical block %d\n", logical_block);
  #endif /* E2DEBUG */
--
+ 
 -  /* if it is directly pointed to by the inode, return that physical addr */
 -  if (logical_block < EXT2_NDIR_BLOCKS)
--    {
--#ifdef E2DEBUG
++  if (!(INODE->i_flags & EXT4_EXTENTS_FL))
+     {
++      /* if it is directly pointed to by the inode, return that physical addr */
++      if (logical_block < EXT2_NDIR_BLOCKS)
++        {
+ #ifdef E2DEBUG
 -      printf ("returning %d\n", (unsigned char *) (INODE->i_block[logical_block]));
 -      printf ("returning %d\n", INODE->i_block[logical_block]);
--#endif /* E2DEBUG */
++          printf ("returning %d\n", (unsigned char *) (INODE->i_block[logical_block]));
++          printf ("returning %d\n", INODE->i_block[logical_block]);
+ #endif /* E2DEBUG */
 -      return INODE->i_block[logical_block];
 -    }
 -  /* else */
 -  logical_block -= EXT2_NDIR_BLOCKS;
 -  /* try the indirect block */
 -  if (logical_block < EXT2_ADDR_PER_BLOCK (SUPERBLOCK))
-+  /* standard ext2 inode */
-+  if (!(INODE->i_flags & EXT4_EXTENTS_FL))
-     {
+-    {
 -      if (mapblock1 != 1
 -	  && !ext2_rdfsb (INODE->i_block[EXT2_IND_BLOCK], DATABLOCK1))
 -	{
@@ -136,13 +152,6 @@ diff -ruNp grub-0.97/stage2/fsys_ext2fs.c grub-0.97-patch/stage2/fsys_ext2fs.c
 -	  return -1;
 -	}
 -      mapblock2 = bnum;
-+      /* if it is directly pointed to by the inode, return that physical addr */
-+      if (logical_block < EXT2_NDIR_BLOCKS)
-+        {
-+#ifdef E2DEBUG
-+          printf ("returning %d\n", (unsigned char *) (INODE->i_block[logical_block]));
-+          printf ("returning %d\n", INODE->i_block[logical_block]);
-+#endif /* E2DEBUG */
 +          return INODE->i_block[logical_block];
 +        }
 +      /* else */
@@ -150,12 +159,11 @@ diff -ruNp grub-0.97/stage2/fsys_ext2fs.c grub-0.97-patch/stage2/fsys_ext2fs.c
 +      /* try the indirect block */
 +      if (logical_block < EXT2_ADDR_PER_BLOCK (SUPERBLOCK))
 +        {
-+          if (mapblock1 != 1
-+         && !ext2_rdfsb (INODE->i_block[EXT2_IND_BLOCK], DATABLOCK1))
-+       {
-+         errnum = ERR_FSYS_CORRUPT;
-+         return -1;
-+       }
++          if (mapblock1 != 1 && !ext2_rdfsb (INODE->i_block[EXT2_IND_BLOCK], DATABLOCK1))
++            {
++              errnum = ERR_FSYS_CORRUPT;
++              return -1;
++            }
 +          mapblock1 = 1;
 +          return ((__u32 *) DATABLOCK1)[logical_block];
 +        }
@@ -165,21 +173,20 @@ diff -ruNp grub-0.97/stage2/fsys_ext2fs.c grub-0.97-patch/stage2/fsys_ext2fs.c
 +      if (logical_block < (1 << (EXT2_ADDR_PER_BLOCK_BITS (SUPERBLOCK) * 2)))
 +        {
 +          int bnum;
-+          if (mapblock1 != 2
-+         && !ext2_rdfsb (INODE->i_block[EXT2_DIND_BLOCK], DATABLOCK1))
-+       {
-+         errnum = ERR_FSYS_CORRUPT;
-+         return -1;
-+       }
++          if (mapblock1 != 2 && !ext2_rdfsb (INODE->i_block[EXT2_DIND_BLOCK], DATABLOCK1))
++            {
++              errnum = ERR_FSYS_CORRUPT;
++              return -1;
++            }
 +          mapblock1 = 2;
 +          if ((bnum = (((__u32 *) DATABLOCK1)
 +                  [logical_block >> EXT2_ADDR_PER_BLOCK_BITS (SUPERBLOCK)]))
 +         != mapblock2
 +         && !ext2_rdfsb (bnum, DATABLOCK2))
-+       {
-+         errnum = ERR_FSYS_CORRUPT;
-+         return -1;
-+       }
++           {
++             errnum = ERR_FSYS_CORRUPT;
++             return -1;
++           }
 +          mapblock2 = bnum;
 +          return ((__u32 *) DATABLOCK2)
 +            [logical_block & (EXT2_ADDR_PER_BLOCK (SUPERBLOCK) - 1)];
@@ -210,9 +217,11 @@ diff -ruNp grub-0.97/stage2/fsys_ext2fs.c grub-0.97-patch/stage2/fsys_ext2fs.c
 +          errnum = ERR_FSYS_CORRUPT;
 +          return -1;
 +        }
++
        return ((__u32 *) DATABLOCK2)
 -	[logical_block & (EXT2_ADDR_PER_BLOCK (SUPERBLOCK) - 1)];
--    }
++       [logical_block & (EXT2_ADDR_PER_BLOCK (SUPERBLOCK) - 1)];
+     }
 -  /* else */
 -  mapblock2 = -1;
 -  logical_block -= (1 << (EXT2_ADDR_PER_BLOCK_BITS (SUPERBLOCK) * 2));
@@ -221,8 +230,7 @@ diff -ruNp grub-0.97/stage2/fsys_ext2fs.c grub-0.97-patch/stage2/fsys_ext2fs.c
 -    {
 -      errnum = ERR_FSYS_CORRUPT;
 -      return -1;
-+       [logical_block & (EXT2_ADDR_PER_BLOCK (SUPERBLOCK) - 1)];
-     }
+-    }
 -  mapblock1 = 3;
 -  if (!ext2_rdfsb (((__u32 *) DATABLOCK1)
 -		   [logical_block >> (EXT2_ADDR_PER_BLOCK_BITS (SUPERBLOCK)
@@ -236,23 +244,25 @@ diff -ruNp grub-0.97/stage2/fsys_ext2fs.c grub-0.97-patch/stage2/fsys_ext2fs.c
 -		   [(logical_block >> EXT2_ADDR_PER_BLOCK_BITS (SUPERBLOCK))
 -		    & (EXT2_ADDR_PER_BLOCK (SUPERBLOCK) - 1)],
 -		   DATABLOCK2))
-+  /* inode is in extents format */
-+  else
++    /* inode is in extents format */
++    else
      {
 +      int i;
-+      struct ext4_extent_header *extent_hdr = ext4_recurse_extent_index((struct ext4_extent_header *) INODE->i_block, logical_block);
++      struct ext4_extent_header *extent_hdr =
++         ext4_recurse_extent_index((struct ext4_extent_header *) INODE->i_block, logical_block);
 +      struct ext4_extent *extent = (struct ext4_extent *) (extent_hdr + 1);
 +      if ( extent_hdr == NULL || extent_hdr->eh_magic != EXT4_EXT_MAGIC)
-+      {
-+        errnum = ERR_FSYS_CORRUPT;
-+        return -1;
-+      }
++        {
++          errnum = ERR_FSYS_CORRUPT;
++          return -1;
++        }
 +      for (i = 0; i<extent_hdr->eh_entries; i++)
 +        {
 +          if (extent[i].ee_block <= logical_block && logical_block < extent[i].ee_block + extent[i].ee_len && !(extent[i].ee_len>>15))
 +            return (logical_block - extent[i].ee_block + extent[i].ee_start);
 +        }
 +      /* We should not arrive here */
++
        errnum = ERR_FSYS_CORRUPT;
        return -1;
      }

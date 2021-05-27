@@ -1,0 +1,22 @@
+Index: b/util/grub-install.in
+===================================================================
+--- a/util/grub-install.in
++++ b/util/grub-install.in
+@@ -470,6 +470,17 @@
+ test -n "$mkimg" && img_file=`$mkimg`
+ test -n "$mklog" && log_file=`$mklog`
+ 
++# GRUB will try to verify that stage2 is accessible using its own
++# filesystem drivers.  Make sure it's committed to disk.
++sync
++
++# On XFS, sync() is not enough.
++if [ x"`grub-probe --device-map=${device_map} -t fs ${grubdir}`" = "xxfs" ] ; then
++  xfs_freeze -f ${grubdir} && xfs_freeze -u ${grubdir}
++  # We don't have set -e.  If xfs_freeze failed, it's worth trying anyway,
++  # maybe we're lucky.
++fi
++
+ for file in ${grubdir}/stage1 ${grubdir}/stage2 ${grubdir}/*stage1_5; do
+     count=5
+     tmp=`echo $file | sed "s|^${grubdir}|${grub_prefix}|"`

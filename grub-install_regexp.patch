@@ -1,0 +1,30 @@
+Index: b/util/grub-install.in
+===================================================================
+--- a/util/grub-install.in
++++ b/util/grub-install.in
+@@ -179,7 +179,7 @@
+ 
+     # Get the drive name.
+     tmp_drive=`grep -v '^#' $device_map | grep "$tmp_disk *$" \
+-	| sed 's%.*\(([hf]d[0-9][a-g0-9,]*)\).*%\1%'`
++	| sed 's%.*\(([hf]d[0-9][a-z0-9,]*)\).*%\1%'`
+ 
+     # If not found, print an error message and exit.
+     if test "x$tmp_drive" = x; then
+@@ -196,13 +196,13 @@
+ 	gnu*)
+ 	    if echo $tmp_part | grep "^s" >/dev/null; then
+ 		tmp_pc_slice=`echo $tmp_part \
+-		    | sed "s%s\([0-9]*\)[a-g]*$%\1%"`
++		    | sed "s%s\([0-9]*\)[a-z]*$%\1%"`
+ 		tmp_drive=`echo "$tmp_drive" \
+ 		    | sed "s%)%,\`expr "$tmp_pc_slice" - 1\`)%"`
+ 	    fi
+-	    if echo $tmp_part | grep "[a-g]$" >/dev/null; then
++	    if echo $tmp_part | grep "[a-z]$" >/dev/null; then
+ 		tmp_bsd_partition=`echo "$tmp_part" \
+-		    | sed "s%[^a-g]*\([a-g]\)$%\1%"`
++		    | sed "s%[^a-z]*\([a-z]\)$%\1%"`
+ 		tmp_drive=`echo "$tmp_drive" \
+ 		    | sed "s%)%,$tmp_bsd_partition)%"`
+ 	    fi

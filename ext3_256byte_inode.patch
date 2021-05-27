@@ -1,6 +1,10 @@
-diff -Naur grub-0.97-800/stage2/fsys_ext2fs.c grub-0.97-810/stage2/fsys_ext2fs.c
---- grub-0.97-800/stage2/fsys_ext2fs.c	2008-07-21 00:40:21.668879475 -0600
-+++ grub-0.97-810/stage2/fsys_ext2fs.c	2008-07-21 01:01:11.063953773 -0600
+
+Patch from Red Hat. See #463236, #463123 (and #491076 for the reviewed version)
+
+Index: b/stage2/fsys_ext2fs.c
+===================================================================
+--- a/stage2/fsys_ext2fs.c
++++ b/stage2/fsys_ext2fs.c
 @@ -79,7 +79,52 @@
      __u32 s_rev_level;		/* Revision level */
      __u16 s_def_resuid;		/* Default uid for reserved blocks */
@@ -59,12 +63,12 @@ diff -Naur grub-0.97-800/stage2/fsys_ext2fs.c grub-0.97-810/stage2/fsys_ext2fs.c
  #define EXT2_ADDR_PER_BLOCK(s)          (EXT2_BLOCK_SIZE(s) / sizeof (__u32))
  #define EXT2_ADDR_PER_BLOCK_BITS(s)		(log2(EXT2_ADDR_PER_BLOCK(s)))
  
-+#define EXT2_GOOD_OLD_REV   0   /* The good old (original) format */
-+#define EXT2_DYNAMIC_REV    1   /* V2 format w/ dynamic inode sizes */
++#define EXT2_GOOD_OLD_REV	0	/* The good old (original) format */
++#define EXT2_DYNAMIC_REV	1	/* V2 format w/ dynamic inode sizes */
 +#define EXT2_GOOD_OLD_INODE_SIZE 128
-+#define EXT2_INODE_SIZE(s)  (((s)->s_rev_level == EXT2_GOOD_OLD_REV) ? \
-+                 EXT2_GOOD_OLD_INODE_SIZE : \
-+                 (s)->s_inode_size)
++#define EXT2_INODE_SIZE(s)	(((s)->s_rev_level == EXT2_GOOD_OLD_REV) ? \
++				EXT2_GOOD_OLD_INODE_SIZE : \
++				(s)->s_inode_size)
 +#define EXT2_INODES_PER_BLOCK(s)	(EXT2_BLOCK_SIZE(s)/EXT2_INODE_SIZE(s))
 +
  /* linux/ext2_fs.h */
@@ -97,4 +101,3 @@ diff -Naur grub-0.97-800/stage2/fsys_ext2fs.c grub-0.97-810/stage2/fsys_ext2fs.c
        printf ("inode=%x, raw_inode=%x\n", INODE, raw_inode);
        printf ("offset into inode table block=%d\n", (int) raw_inode - (int) INODE);
        for (i = (unsigned char *) INODE; i <= (unsigned char *) raw_inode;
-

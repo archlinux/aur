@@ -1,0 +1,49 @@
+
+  Author: Goswin Brederlow
+  Status: pending
+  Updated by: Otavio Salvador - resync with 0.97 code
+
+Index: b/stage2/char_io.c
+===================================================================
+--- a/stage2/char_io.c
++++ b/stage2/char_io.c
+@@ -1231,13 +1231,13 @@
+ #endif /* ! STAGE1_5 */
+ 
+ int
+-memcheck (int addr, int len)
++memcheck (unsigned long int addr, unsigned long int len)
+ {
+ #ifdef GRUB_UTIL
+-  auto int start_addr (void);
+-  auto int end_addr (void);
++  auto unsigned long int start_addr (void);
++  auto int unsigned long end_addr (void);
+   
+-  auto int start_addr (void)
++  auto unsigned long int start_addr (void)
+     {
+       int ret;
+ # if defined(HAVE_START_SYMBOL)
+@@ -1248,7 +1248,7 @@
+       return ret;
+     }
+ 
+-  auto int end_addr (void)
++  auto unsigned long int end_addr (void)
+     {
+       int ret;
+ # if defined(HAVE_END_SYMBOL)
+Index: b/stage2/shared.h
+===================================================================
+--- a/stage2/shared.h
++++ b/stage2/shared.h
+@@ -921,7 +921,7 @@
+ int nul_terminate (char *str);
+ int get_based_digit (int c, int base);
+ int safe_parse_maxint (char **str_ptr, int *myint_ptr);
+-int memcheck (int start, int len);
++int memcheck (unsigned long int start, unsigned long int len);
+ void grub_putstr (const char *str);
+ 
+ #ifndef NO_DECOMPRESSION

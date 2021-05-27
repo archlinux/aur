@@ -1,0 +1,21 @@
+Index: b/docs/menu.lst
+===================================================================
+--- a/docs/menu.lst
++++ b/docs/menu.lst
+@@ -11,11 +11,12 @@
+ # Fallback to the second entry.
+ fallback 1
+ 
+-# For booting GNU/Hurd
+-title  GNU/Hurd
++# For booting GNU (also known as GNU/Hurd)
++title  GNU (also known as GNU/Hurd)
+ root   (hd0,0)
+-kernel /boot/gnumach.gz root=hd0s1
+-module /boot/serverboot.gz
++kernel /boot/gnumach.gz root=device:hd0s1
++module /hurd/ext2fs.static --multiboot-command-line=${kernel-command-line} --host-priv-port=${host-port} --device-master-port=${device-port} --exec-server-task=${exec-task} -T typed ${root} $(task-create) $(task-resume)
++module /lib/ld.so.1 /hurd/exec $(exec-task=task-create)
+ 
+ # For booting GNU/Linux
+ title  GNU/Linux

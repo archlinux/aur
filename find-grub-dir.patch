@@ -1,0 +1,56 @@
+Index: b/util/grub-set-default.in
+===================================================================
+--- a/util/grub-set-default.in
++++ b/util/grub-set-default.in
+@@ -74,18 +74,45 @@
+     exit 1
+ fi
+ 
++find_grub_dir ()
++{
++        echo  -n "Searching for GRUB installation directory ... " >&2
++
++        for d in $grub_dirs ; do
++                if [ -d "$d" ] ; then
++                        grub_dir="$d"
++                        break
++                fi
++        done
++
++        if [ -z "$grub_dir" ] ; then
++                abort "No GRUB directory found.\n###"
++        else
++                echo "found: $grub_dir" >&2
++        fi
++
++        echo $grub_dir
++}
++
++grub_dirs="/boot/grub /boot/boot/grub"
++
+ # Determine the GRUB directory. This is different among OSes.
+-grubdir=${rootdir}/boot/grub
+-if test -d ${grubdir}; then
++# if rootdir has been informed use it or find grubdir otherwise
++if [ -n "${rootdir}" ]; then
++  grubdir=${rootdir}/boot/grub
++  if test -d ${grubdir}; then
+     :
+-else
++  else
+     grubdir=${rootdir}/grub
+     if test -d ${grubdir}; then
+-	:
++        :
+     else
+-	echo "No GRUB directory found under ${rootdir}/" 1>&2
+-	exit 1
++        echo "No GRUB directory found under ${rootdir}/" 1>&2
++        exit 1
+     fi
++  fi
++else
++  grubdir=$(find_grub_dir)
+ fi
+ 
+ file=${grubdir}/default

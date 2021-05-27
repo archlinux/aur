@@ -1,0 +1,13 @@
+Index: b/lib/device.c
+===================================================================
+--- a/lib/device.c
++++ b/lib/device.c
+@@ -973,6 +973,8 @@
+   else
+     {
+       if ((strncmp (dev, "/dev/ataraid/", 13) == 0) ||
++         (strncmp (dev, "/dev/ida/", 9) == 0) ||
++         (strncmp (dev, "/dev/cciss/", 11) == 0) ||
+          (strncmp (dev, "/dev/rd/", 8) == 0))
+         strcpy (dev + strlen(dev), "p");
+     }
