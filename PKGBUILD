@@ -5,7 +5,7 @@ pkgver=1.0.0.A16
 _cyanversion=1.0.0.A13 # Needed to find the right version ZIP
 _aosutilverion=0.0.0.13 # Needed for CCFG
 
-pkgrel=8
+pkgrel=9
 pkgdesc="CQ -- CCFG Command Line Inteface (Cyan Configurations)"
 arch=( 'any' )
 url=""
