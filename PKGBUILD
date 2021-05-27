@@ -1,10 +1,10 @@
 pkgname='khello'
-pkgver=0.8
-pkgrel=2
+pkgver=0.9
+pkgrel=1
 arch=('x86_64')
 url='https://kurth4cker.github.io/khello'
-source=("http://launchpad.net/khello/trunk/0.8/+download/$pkgname-$pkgver.tar.xz")
-md5sums=("0cad5de9de71d06d62ef957a168ce375")
+source=("http://launchpad.net/khello/trunk/$pkgver/+download/$pkgname-$pkgver.tar.xz")
+md5sums=("915a399fa6b68100778fb7115bee67cd")
 description="Test and learning program created by kurth4cker."
 license=("GPL")
 depends=(glibc)
@@ -15,12 +15,7 @@ build () {
     make
 }
 
-check () {
-    cd $pkgname-$pkgver
-    make -k check
-}
-
 package () {
     cd $pkgname-$pkgver
-    make DESTDIR=$pkgdir install
+    make DESTDIR='$pkgdir/' install
 }
