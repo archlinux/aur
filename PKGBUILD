@@ -4,7 +4,7 @@
 
 pkgname=parallel-disk-usage-bin
 pkgver=0.0.0
-source=(pdu-52805c052bae449185de7210aab9f264ea01703e::https://github.com/KSXGitHub/parallel-disk-usage/releases/download/0.0.0/parallel-disk-usage-x86_64-unknown-linux-gnu completion.0.0.0.bash::https://github.com/KSXGitHub/parallel-disk-usage/releases/download/0.0.0/completion.bash completion.0.0.0.fish::https://github.com/KSXGitHub/parallel-disk-usage/releases/download/0.0.0/completion.fish completion.0.0.0.zsh::https://github.com/KSXGitHub/parallel-disk-usage/releases/download/0.0.0/completion.zsh https://raw.githubusercontent.com/KSXGitHub/parallel-disk-usage/0.0.0/README.md https://raw.githubusercontent.com/KSXGitHub/parallel-disk-usage/0.0.0/LICENSE.md)
+source=(pdu-52805c052bae449185de7210aab9f264ea01703e::https://github.com/KSXGitHub/parallel-disk-usage/releases/download/0.0.0/parallel-disk-usage-x86_64-unknown-linux-gnu completion.0.0.0.bash::https://github.com/KSXGitHub/parallel-disk-usage/releases/download/0.0.0/completion.bash completion.0.0.0.fish::https://github.com/KSXGitHub/parallel-disk-usage/releases/download/0.0.0/completion.fish completion.0.0.0.zsh::https://github.com/KSXGitHub/parallel-disk-usage/releases/download/0.0.0/completion.zsh https://raw.githubusercontent.com/KSXGitHub/parallel-disk-usage/0.0.0/README.md https://raw.githubusercontent.com/KSXGitHub/parallel-disk-usage/0.0.0/LICENSE)
 _checksum=52805c052bae449185de7210aab9f264ea01703e
 _completion_checksums=(SKIP SKIP SKIP)
 # This PKGBUILD is not a full PKGBUILD
@@ -31,4 +31,3 @@ package() {
   install -Dm644 "completion.$pkgver.fish" "$pkgdir/usr/share/fish/completions/pdu.fish"
   install -Dm644 "completion.$pkgver.zsh" "$pkgdir/usr/share/zsh/site-functions/_pdu"
 }
-
