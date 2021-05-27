@@ -27,6 +27,7 @@ pkgbase = chataigne-stable-bin
 	depends = hidapi
 	depends = nss
 	depends = ttf-bitstream-vera
+	depends = libcurl-gnutls
 	noextract = Chataigne-linux-x64-1.7.6.AppImage
 	options = !strip
 	source_x86_64 = Chataigne-linux-x64-1.7.6.AppImage::https://benjamin.kuperberg.fr/chataigne/user/data/Chataigne-linux-x64-1.7.6.AppImage
