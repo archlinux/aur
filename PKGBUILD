@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=sunxi-livesuite-git
-pkgname=($pkgbase{,-dkms})
+pkgname=($pkgbase sunxi-livesuite-dkms-git)
 pkgver=1a0b52a
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686')
 url="https://github.com/linux-sunxi/sunxi-livesuite"
 license=('GPLv2')
@@ -28,7 +28,7 @@ pkgver() {
 
 package_sunxi-livesuite-git() {
     pkgdesc="LiveSuit is a tool to flash Images to the NAND of Allwinner devices."
-    depends=('sunxi-livesuite-git-dkms')
+    depends=('sunxi-livesuite-dkms-git')
 
     install -dm0755 "${pkgdir}/opt/sunxi/${pkgbase%-git}"
     cp -r "${srcdir}/${pkgbase%-git}/x86" "${pkgdir}/opt/sunxi/${pkgbase%-git}"
@@ -58,10 +58,12 @@ EOF
 
 }
 
-package_sunxi-livesuite-git-dkms() {
+package_sunxi-livesuite-dkms-git() {
     pkgdesc="DKMS module for Allwinner devices"
+    url="https://github.com/M0Rf30/sunxi-awusb"
     depends=('dkms')
     conflicts=('sunxi-awusb-dkms')
+    replaces=('sunxi-livesuite-git-dkms' 'sunxi-awusb-dkms')
     cd "${srcdir}/sunxi-awusb/"
     install -Dt "${pkgdir}/usr/src/${pkgname}" -m644 awusb.c Makefile dkms.conf
     install -Dm0644 /dev/stdin "${pkgdir}/usr/lib/udev/rules.d/99-aw_usb.rules" << EOF
