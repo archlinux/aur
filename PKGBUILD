@@ -23,7 +23,7 @@ package() {
     install -dm755 "$pkgdir"/usr/{bin,share/{applications,tempest}}
     install -m 755 ${srcdir}/*.desktop ${pkgdir}/usr/share/applications
     mv ${srcdir}/TempEst_v${pkgver}/* ${pkgdir}/usr/share/tempest
-    chmod +x /usr/share/tempest/bin/tempest
+    chmod +x  ${pkgdir}/usr/share/tempest/bin/tempest
     ln -s /usr/share/tempest/bin/tempest ${pkgdir}/usr/bin/tempest
 }
 
