@@ -1,7 +1,7 @@
-Index: ada_language_server-22.0.4/Makefile
+Index: ada_language_server-22.0.5/Makefile
 ===================================================================
---- ada_language_server-22.0.4.orig/Makefile
-+++ ada_language_server-22.0.4/Makefile
+--- ada_language_server-22.0.5.orig/Makefile
++++ ada_language_server-22.0.5/Makefile
 @@ -68,12 +68,12 @@ else
  endif
  
@@ -9,14 +9,14 @@ Index: ada_language_server-22.0.4/Makefile
 -	$(GPRBUILD) -P gnat/tester.gpr -p $(BUILD_FLAGS)
 -	$(GPRBUILD) -d -ws -c -u -P gnat/lsp_server.gpr -p $(BUILD_FLAGS) s-memory.adb
 -	$(GPRBUILD) -P gnat/lsp_server.gpr -p $(COVERAGE_BUILD_FLAGS) \
-+	$(GPRBUILD) -P gnat/tester.gpr -aP ../spawn/gnat -p $(BUILD_FLAGS)
++	$(GPRBUILD) -P gnat/tester.gpr -aP ../spawn/gnat -aP ../VSS/gnat -p $(BUILD_FLAGS)
 +	$(GPRBUILD) -d -ws -c -u -P gnat/lsp_server.gpr -aP ../libadalang-tools/src -aP ../VSS/gnat -aP ../libadalang/build -aP ../langkit/support -p $(BUILD_FLAGS) s-memory.adb
 +	$(GPRBUILD) -P gnat/lsp_server.gpr -aP ../libadalang-tools/src -aP ../VSS/gnat -aP ../libadalang/build -aP ../langkit/support -p $(COVERAGE_BUILD_FLAGS) \
  		-XVERSION=$(TRAVIS_TAG)
 -	$(GPRBUILD) -P gnat/codec_test.gpr -p $(COVERAGE_BUILD_FLAGS)
 -	$(GPRBUILD) -P gnat/lsp_client.gpr -p $(COVERAGE_BUILD_FLAGS) \
-+	$(GPRBUILD) -P gnat/codec_test.gpr -aP ../VSS/gnat -p $(COVERAGE_BUILD_FLAGS)
-+	$(GPRBUILD) -P gnat/lsp_client.gpr -aP ../VSS/gnat -p $(COVERAGE_BUILD_FLAGS) \
++	$(GPRBUILD) -P gnat/codec_test.gpr -aP ../VSS/gnat -aP ../spawn/gnat -p $(COVERAGE_BUILD_FLAGS)
++	$(GPRBUILD) -P gnat/lsp_client.gpr -aP ../VSS/gnat -aP ../spawn/gnat -p $(COVERAGE_BUILD_FLAGS) \
  		-XVERSION=$(TRAVIS_TAG)
  	mkdir -p integration/vscode/ada/$(PLATFORM)
  	cp -f .obj/server/ada_language_server integration/vscode/ada/$(PLATFORM) ||\
@@ -27,10 +27,12 @@ Index: ada_language_server-22.0.4/Makefile
 -	gprinstall -f -P gnat/lsp_server.gpr -p -r --mode=usage \
 +	gprinstall -f -P gnat/lsp_server.gpr -aP ../libadalang-tools/src -aP ../VSS/gnat -aP ../libadalang/build -aP ../langkit/support -p -r --mode=usage \
  		--prefix=$(DESTDIR) $(LIBRARY_FLAGS)
- 	gprinstall -f -P gnat/tester.gpr -p --prefix=$(DESTDIR) $(LIBRARY_FLAGS)
- 	gprinstall -f -P gnat/codec_test.gpr -p --prefix=$(DESTDIR) $(LIBRARY_FLAGS)
+-	gprinstall -f -P gnat/tester.gpr -p --prefix=$(DESTDIR) $(LIBRARY_FLAGS)
+-	gprinstall -f -P gnat/codec_test.gpr -p --prefix=$(DESTDIR) $(LIBRARY_FLAGS)
 -	gprinstall -f -P gnat/lsp_client.gpr -p -r	\
-+	gprinstall -f -P gnat/lsp_client.gpr -aP ../VSS/gnat -p -r	\
++	gprinstall -f -P gnat/tester.gpr -aP ../spawn/gnat -aP ../VSS/gnat -p --prefix=$(DESTDIR) $(LIBRARY_FLAGS)
++	gprinstall -f -P gnat/codec_test.gpr -aP ../spawn/gnat -aP ../VSS/gnat -p --prefix=$(DESTDIR) $(LIBRARY_FLAGS)
++	gprinstall -f -P gnat/lsp_client.gpr -aP ../spawn/gnat -aP ../VSS/gnat -p -r	\
  		--mode=dev				\
  		--prefix=$(DESTDIR)			\
  		$(LIBRARY_FLAGS)
