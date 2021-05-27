@@ -1,10 +1,10 @@
 pkgbase = pokemonsay-newgenerations-git
 	pkgdesc = Brings pokemon to the terminal using the power of cowsay.
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/HRKings/pokemonsay-newgenerations.git
 	arch = any
-	license = unknown
+	license = MIT
 	depends = cowsay
 	provides = pokemonsay
 	source = git+https://github.com/HRKings/pokemonsay-newgenerations.git
