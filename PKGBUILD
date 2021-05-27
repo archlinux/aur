@@ -4,25 +4,35 @@
 pkgname=wmspaceclock
 _prgname=spaceclock
 pkgver=1.2d
-pkgrel=6
+pkgrel=7
 pkgdesc="Dockapp showing antialiased analog clock."
 url="http://$pkgname.sourceforge.net/"
 arch=('i686' 'x86_64')
-license=('GPLv2')
+license=('GPL')
 depends=('gdk-pixbuf')
 source=("http://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$_prgname-$pkgver.tar.bz2")
+md5sums=('97bcf9cc8a5518f8b37752beba9a7a9c')
+
+prepare() {
+	cd "$srcdir/$_prgname"
+	sed -e '/$(CXX)/s,$(PRG),\$(PRG) \$(CPPFLAGS) \$(CXXFLAGS),' -i Makefile
+}
 
 build() {
 	cd "$srcdir/$_prgname"
-	./configure
-	make
+	./configure \
+	  PREFIX=/usr \
+	  X_LDFLAGS="-L/usr/lib -lgdk_pixbuf -lgdk -lX11 -lm -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now" \
+	  CXXFLAGS="$CXXFLAGS -std=c++98 -Wno-write-strings -Wno-deprecated -Wno-return-type"
+	make \
+	  PREFIX=/usr \
+	  X_LDFLAGS="-L/usr/lib -lgdk_pixbuf -lgdk -lX11 -lm -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now" \
+	  CXXFLAGS="$CXXFLAGS -std=c++98 -Wno-write-strings -Wno-deprecated -Wno-return-type"
 }
 
 package() {
 	cd "$srcdir/$_prgname"
-	mkdir -p "$pkgdir/usr/local/bin"
+	mkdir -p "$pkgdir/usr/bin"
 	rm --recursive pixmaps/CVS
-	make DESTDIR="$pkgdir" install
+	make PREFIX="$pkgdir/usr" install
 }
-
-md5sums=('97bcf9cc8a5518f8b37752beba9a7a9c')
