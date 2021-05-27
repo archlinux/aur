@@ -11,7 +11,7 @@ depends=('glib2' 'libnautilus-extension' 'gnome-bluetooth')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 source=("https://github.com/madmurphy/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}-with-configure.tar.gz")
 install="${pkgname}.install"
-sha256sums=('c48cdad0b82d0c57f878725595cd26e66dd9da6cd6b4554c7fcdb0ef83e530ab')
+sha256sums=('df09960c85b6f2ddbb16ff875d3f6327435465976ce55fd28af2a45e74fd79d9')
 
 build() {
 
