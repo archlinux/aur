@@ -1,0 +1,32 @@
+pkgbase = mingw-w64-awesomebump-git
+	pkgdesc = A free program designed to generate normal, height, specular or ambient occlusion textures from a single image (mingw-w64)
+	pkgver = 5.1.1.r2.gf9fad16
+	pkgrel = 1
+	url = https://github.com/kmkolasinski/AwesomeBump
+	arch = any
+	license = LGPL3
+	makedepends = mingw-w64-mesa-demos
+	makedepends = mingw-w64-qt5-base-static
+	makedepends = mingw-w64-qt5-location-static
+	makedepends = mingw-w64-qt5-script-static
+	makedepends = mingw-w64-qt5-svg-static
+	makedepends = qt5-base
+	makedepends = git
+	makedepends = wget
+	makedepends = unzip
+	depends = mingw-w64-crt
+	provides = mingw-w64-awesomebump
+	conflicts = mingw-w64-awesomebump
+	noextract = master.zip
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = mingw-w64-awesomebump-git::git+https://github.com/kmkolasinski/AwesomeBump.git#branch=Release
+	source = awesomeBump.sh
+	source = master.zip::https://github.com/kmkolasinski/QtnProperty/archive/master.zip
+	md5sums = SKIP
+	md5sums = 2e54f4408b6295a779db7f0cc1a72ebc
+	md5sums = 6969a020373ee8d614b959a296f36470
+
+pkgname = mingw-w64-awesomebump-git
+
