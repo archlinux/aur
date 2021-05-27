@@ -66,7 +66,7 @@ index c99fc326ec24..71c27133c53c 100644
 +	if (diff > 0) {
  		// multiply life_time by 1024 for more precision
 -		u64 old_hrrn_x	= (life_time << 7) / ((cn->vruntime >> 3) | 1);
-+		u64 old_hrrn_x8	= div_u64_rem(life_time, ((cn->vruntime >> 3) | 1), &rem);
++		u64 old_hrrn_x	= div_u64_rem(life_time << 7, ((cn->vruntime >> 3) | 1), &rem);
  
  		// reset life to half max_life (i.e ~15s)
  		cn->cacule_start_time = now - (max_life_ns >> 1);
@@ -75,7 +75,7 @@ index c99fc326ec24..71c27133c53c 100644
  
  		// reset vruntime based on old hrrn ratio
 -		cn->vruntime = (max_life_ns << 9) / old_hrrn_x;
-+		cn->vruntime = div_u64_rem((max_life_ns << 2), old_hrrn_x8, &rem);
++		cn->vruntime = div_u64_rem((max_life_ns << 9), old_hrrn_x, &rem);
  	}
   }
  #endif /* CONFIG_CACULE_SCHED */
