@@ -1,6 +1,6 @@
 pkgbase = carla-bridges-win-git
 	pkgdesc = Carla win32/64 bridges
-	pkgver = r5773.c14ec23ab
+	pkgver = r6034.62a641017
 	pkgrel = 1
 	url = https://kx.studio/Applications:Carla
 	arch = x86_64
