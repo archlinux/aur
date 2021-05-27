@@ -2,7 +2,7 @@
 pkgname=webkitgtk2-bin
 epoch=3
 pkgver=2.4.11
-pkgrel=22
+pkgrel=24
 pkgdesc="Legacy Web content engine for GTK+ 3 (precompiled)."
 provides=("webkitgtk2=${epoch}:${pkgver}")
 conflicts=("webkitgtk2")
@@ -17,7 +17,7 @@ optdepends=(
 )
 options=(!emptydirs)
 source=("https://github.com/frealgagu/archlinux.webkitgtk2/releases/download/${epoch}_${pkgver}-${pkgrel}/webkitgtk2-${epoch}.${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=("92428275778a4def04ea08745f3299e72e21262bea0208e62604265e21f890db")
+sha256sums=("338b46e621b0647f63128672ce924c7bb0e26ad9e5b6bdc95dabb3f086a0b51f")
 
 package() {
   cp -Rfp $srcdir/usr $pkgdir/
