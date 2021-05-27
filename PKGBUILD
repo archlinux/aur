@@ -27,7 +27,7 @@ pkgver() {
 build() {
 	cd "$pkgname"
 	mkdir build
-	DESTDIR="$pkgdir/" meson . build
+	meson --prefix=/usr . build
 	ninja -C build
 }
 
