@@ -48,7 +48,7 @@ sha256sums=('3f262ef4b3e752992667ab482cbf364e3b9e6f95b4b6fb12a1ce6fa7a88f124e'
             'd72750c1dba2f754e6ea4eec22770f8a9c3858f270a91e7b1da4129e053a9d68'
             'bfa2715018e90811b21cc55205ec82ff56dc5fd165575d3ce26d9c12821809f6'
             '72dffe1ee4ae96a966a301dd1486832ce823cf3132f3ab1cd4ddb75ef9816d08'
-            'a3fc7f2b570af9d05435f2f9a0b8d7d9b30ee1dbeaea152f8e249ef5ef0461c9'
+            '0829497e24a103b4197f8b47fc1f38977aa7a2e76157d0cd936aaad1a5ee2958'
             '37e24dacf3a52037d0cddb11d979917f81741bf399ec5fa5e847359909b7bc25'
             '1447876c2d2dcf48c8e94c3bffbb09f1b4005621a55f78fb7d9faecebdb26264'
             '80de3facade04b394a501f13dd1c16d66381715c42c1f597fc1142cdcbe5f3de'
@@ -148,10 +148,10 @@ package() {
 
 	# Launchers and icons
 	install -dm755 \
-		"${pkgdir}/usr/share/pixmaps" \
+		"${pkgdir}/usr/share/icons/hicolor/scalable/apps" \
 		"${pkgdir}/usr/share/applications"
 
-	install -Dm644 "${srcdir}/xampp.svg" "${pkgdir}/usr/share/pixmaps/xampp.svg"
+	install -Dm644 "${srcdir}/xampp.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/xampp.svg"
 	install -Dm644 "${srcdir}/xampp-manager.desktop" "${pkgdir}/usr/share/applications/xampp-manager.desktop"
 	install -Dm644 "${srcdir}/xampp-control-panel.desktop" "${pkgdir}/usr/share/applications/xampp-control-panel.desktop"
 	ln -s "${_xampp_root}" "${pkgdir}/usr/share/xampp"
