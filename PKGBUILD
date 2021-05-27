@@ -7,9 +7,9 @@
 # Contributor: oguzkagan <me@oguzkaganeren.com.tr>
 
 pkgname='xampp'
-_srcver='8.0.3'
+_srcver='8.0.6'
 _binver=0
-pkgrel=2
+pkgrel=1
 # This PKGBUILD deals with two different versioning formats: the upstream
 # format MAJOR.MINOR.REVISION-BUILD - used internally by XAMPP - and the
 # makepkg-friendly format MAJOR.MINOR.REVISION[.BUILD]-RELEASE (where the only
@@ -46,7 +46,7 @@ options=('staticlibs' 'libtool' '!strip')
 install='xampp.install'
 sha256sums=('3f262ef4b3e752992667ab482cbf364e3b9e6f95b4b6fb12a1ce6fa7a88f124e'
             'd72750c1dba2f754e6ea4eec22770f8a9c3858f270a91e7b1da4129e053a9d68'
-            'ccaed1c416936323c60e2b3efead26d9c57f033f10454e5fb80f65b03ad590e5'
+            'bfa2715018e90811b21cc55205ec82ff56dc5fd165575d3ce26d9c12821809f6'
             '72dffe1ee4ae96a966a301dd1486832ce823cf3132f3ab1cd4ddb75ef9816d08'
             'a3fc7f2b570af9d05435f2f9a0b8d7d9b30ee1dbeaea152f8e249ef5ef0461c9'
             '37e24dacf3a52037d0cddb11d979917f81741bf399ec5fa5e847359909b7bc25'
@@ -55,7 +55,7 @@ sha256sums=('3f262ef4b3e752992667ab482cbf364e3b9e6f95b4b6fb12a1ce6fa7a88f124e'
             '39a5617deaf42d17281b3b1b828351c0f6108cee774b3e4671af3d9bbcd48883'
             '8825623ea18abb8bfb3a8811b6c59dc8485f7d767c6f3a013fdc1b1afc979426'
             '83b30970378e8d30d7acd13ebe6dc31652548a44d2cca9fd5919fa7f06fe238d')
-sha256sums_x86_64=('b35f31c260ceeaa1918e0c02598a3dca30b9c1223c2a4c110ad227b3c41affbe')
+sha256sums_x86_64=('3f034806bcb1826ed751ca52abe918f62d2951aee7aae9a91a7bfc3f22f898c1')
 sha256sums_i686=('SKIP')
 
 _platform="$(test "${CARCH}" = 'x86_64' && echo "${_build64name}" || echo "${_build32name}")"

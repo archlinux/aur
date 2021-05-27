@@ -27,4 +27,4 @@ mysql_socket=@XAMPP_ROOT@/var/mysql/mysql.sock
 [PHP]
 php_binary_directory=@XAMPP_ROOT@/bin
 php_configuration_directory=@XAMPP_ROOT@/etc
-php_extensions_directory=@XAMPP_ROOT@/lib/php/extensions/no-debug-non-zts-20190902
+php_extensions_directory=@XAMPP_ROOT@/lib/php/extensions/no-debug-non-zts-20200930
