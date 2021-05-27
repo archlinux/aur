@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="the simple man's fetch tool"
 arch=('any')
 url="https://github.com/jnats/nofetch"
-license=('custom:beerware')
+license=('custom:nolicense')
 depends=('coreutils' 'grep' 'sed' 'bash')
 provides=('nofetch')
 
