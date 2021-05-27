@@ -5,14 +5,14 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 _pkgname='flow'
 pkgname="$_pkgname-git"
-pkgver='0.151.1.r11937.g0efa1f6c2'
+pkgver='0.152.0.r11997.g433bb0367'
 pkgrel='1'
 pkgdesc='A static type checker for JavaScript - git version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://$_pkgname.org"
 license=('MIT')
 optdepends=('bash-completion: Bash completion')
-makedepends=('git' 'ocaml>=4.09.1' 'dune' 'ocamlbuild' 'ocaml-findlib' 'ocaml-base>=0.12.2' 'ocaml-dtoa>=0.3.1' 'ocaml-lwt>=4.5.0' 'ocaml-lwt_log>=1.1.0' 'ocaml-ppx_deriving' 'ocaml-ppx_gen_rec' 'ocaml-ppx_let>=0.11.0' 'ocaml-ppxlib' 'ocaml-sedlex>=2.1' 'ocaml-visitors' 'ocaml-wtf8')
+makedepends=('git' 'ocaml>=4.09.1' 'dune' 'ocamlbuild' 'ocaml-findlib' 'ocaml-base>=0.12.2' 'ocaml-core_kernel>=0.12.2' 'ocaml-dtoa>=0.3.1' 'ocaml-lwt>=4.5.0' 'ocaml-lwt_log>=1.1.0' 'ocaml-ppx_deriving' 'ocaml-ppx_gen_rec' 'ocaml-ppx_let>=0.11.0' 'ocaml-ppxlib' 'ocaml-sedlex>=2.1' 'ocaml-visitors' 'ocaml-wtf8')
 checkdepends=('ocaml-ounit')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
