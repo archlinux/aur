@@ -1,6 +1,6 @@
 pkgbase = nofetch-git
 	pkgdesc = the simple man's fetch tool
-	pkgver = 1.1
+	pkgver = 05_26_21
 	pkgrel = 1
 	url = https://github.com/jnats/nofetch
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: Matt C <matt@xhec.us>
 pkgname=nofetch-git
 _pkgname=nofetch
-pkgver=1.1
+pkgver=$(date +"%m-%d-%y" | sed 's/-/_/g')
 pkgrel=1
 pkgdesc="the simple man's fetch tool"
 arch=('any')
