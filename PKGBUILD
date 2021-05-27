@@ -12,13 +12,15 @@ pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="https://multimc.org/"
 license=('Apache')
-depends=('zlib' 'libgl' 'qt5-base' 'qt5-x11extras' 'java-runtime' 'qt5-svg')
+depends=('zlib' 'libgl' 'qt5-base' 'java-runtime')
 provides=('multimc')
 conflicts=('multimc')
 makedepends=('cmake' 'java-environment')
 optdepends=('mcedit: Allows editing of minecraft worlds'
             'visualvm: Profiling support'
             'xorg-xrandr: for older minecraft versions'
+            'openal: to use system OpenAL libraries'
+            'glfw: to use system GLFW libraries'
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MultiMC/MultiMC5/archive/${pkgver}.tar.gz"
