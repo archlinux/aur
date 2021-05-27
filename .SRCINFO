@@ -1,0 +1,19 @@
+pkgbase = spread
+	pkgdesc = a user-friendly application to analyze and visualize phylogeographic reconstructions resulting from Bayesian inference of spatio-temporal diffusion
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://rega.kuleuven.be/cev/ecv/software/spread
+	arch = x86_64
+	license = custom
+	depends = jre-openjdk-headless
+	depends = jre-openjdk
+	depends = jdk-openjdk
+	depends = openjdk-doc
+	depends = openjdk-src
+	source = https://rega.kuleuven.be/cev/ecv/software/spread_files/spread-v1-0-7.jar
+	source = spread.desktop
+	sha256sums = 2807406ba184d78d4d62adf2aa868f3b22b80719eb740085b13067183c907e71
+	sha256sums = a66b1681504a55e18926dd69cdcb8db13e6b76a9860b04c98cf2a881fd19aa09
+
+pkgname = spread
+

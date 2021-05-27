@@ -1,0 +1,19 @@
+[Desktop Entry]
+Categories=
+Encoding=UTF-8
+Exec=java -jar /usr/share/spread/spread.jar
+GenericName=
+GenericName[zh]=
+Icon=/usr/share/spread/spread.png
+MimeType=
+Name=SPREAD
+Name[zh]=SPREAD
+ServiceTypes=
+SwallowExec=
+SwallowTitle=
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=root
+
