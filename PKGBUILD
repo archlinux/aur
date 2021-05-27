@@ -3,7 +3,7 @@
 # AUR Maintainer: Joaquin "ShyanJMC" Crespo <joaquincrespo96@gmail.com>
 
 pkgname=links-minimal
-pkgver=2.21
+pkgver=2.23
 pkgrel=1
 pkgdesc="A text WWW browser, similar to Lynx. This version is very minimal with the lowest features as possible."
 arch=('x86_64')

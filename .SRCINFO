@@ -1,6 +1,6 @@
 pkgbase = links-minimal
 	pkgdesc = A text WWW browser, similar to Lynx. This version is very minimal with the lowest features as possible.
-	pkgver = 2.21
+	pkgver = 2.23
 	pkgrel = 1
 	url = http://links.twibright.com/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = links-minimal
 	depends = libevent
 	depends = pcre
 	depends = xz
-	source = http://links.twibright.com/download/links-2.21.tar.bz2
+	source = http://links.twibright.com/download/links-2.23.tar.bz2
 	sha256sums = 285eed8591c7781ec26213df82786665aaa1b9286782e8a7a1a7e2a6e1630d63
 
 pkgname = links-minimal
