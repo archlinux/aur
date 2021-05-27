@@ -5,7 +5,7 @@
 
 # Maintainer: Thayne McCombs <astrothayne@gmail.com>
 pkgname=dart-sass
-pkgver=1.32.13
+pkgver=1.34.0
 pkgrel=1
 pkgdesc="Sass makes CSS fun again (canonical implementation)"
 arch=(x86_64)
@@ -16,7 +16,7 @@ options=(!strip)
 provides=('sass')
 conflicts=('ruby-sass')
 source=("https://github.com/sass/$pkgname/archive/$pkgver.tar.gz")
-b2sums=('9d1db814fcbbb660a6a4a40bfb11e8ba76d188e2a57fadbd1eef0b3f7a639f5dcf639e9a840e2d37995d758547fbd0d856412172344b20166e3e2a6c31e9f59c')
+b2sums=('56308f93d811a29865434512e393614f20ba62c38baa33d97a7f57d84450926f42141f6de07ac9795cc9f26cd0fdba52ff5a219193bab57b9baea7b334d21c7c')
 
 build() {
   cd "$pkgname-$pkgver"
