@@ -6,6 +6,7 @@ pkgdesc="Electron wrapper for Apple Music"
 arch=("aarch64" "armv7h" "i686" "x86_64")
 url="https://github.com/17hoehbr/${pkgname}"
 license=("MIT")
+depends=('libxss')
 makedepends=("yarn")
 source=(
   "${pkgname}-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz"
