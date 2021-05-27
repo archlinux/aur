@@ -1,18 +1,25 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=systemd-lock-handler
-pkgver=1.1.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Logind lock event to systemd target translation."
 arch=('any')
-url="https://gitlab.com/WhyNotHugo/systemd-lock-handler"
+url="https://git.sr.ht/~whynothugo/systemd-lock-handler"
 license=('ISC')
-depends=('python-txdbus')
-source=("https://gitlab.com/WhyNotHugo/systemd-lock-handler/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-md5sums=('3cda34d63b29cbb52442f80c40fa27f7')
+depends=('go')
+source=("git+https://git.sr.ht/~whynothugo/systemd-lock-handler?signed#tag=v${pkgver}")
+md5sums=('SKIP')
+validpgpkeys=('951082781CA308E4A529DEFD6F9FFF122B98C0CD')
+
+build() {
+  cd "$srcdir/$pkgname"
+
+  make build
+}
 
 package() {
-  cd "$srcdir/$pkgname-v$pkgver"
+  cd "$srcdir/$pkgname"
 
   make DESTDIR="$pkgdir/" install
 }
