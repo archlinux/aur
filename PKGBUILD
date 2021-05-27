@@ -1,7 +1,7 @@
 # Maintainer: Tim Lagnese <tim at inept tech>
 
 pkgname=ada_language_server
-pkgver=22.0.4
+pkgver=22.0.5
 pkgrel=1
 
 pkgdesc='High performance syntactic and semantic engine for the Ada programming language'
@@ -22,15 +22,15 @@ _pkgname=libadalang-tools
 _pkgver=2020
 _checksum=740372d8ffb1e4755a99bead2d78dace904235c0
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AdaCore/ada_language_server/archive/$pkgver.tar.gz"
-        "git+https://github.com/AdaCore/VSS.git#commit=f255a08"
-        "git+https://github.com/AdaCore/langkit.git#commit=fc0a2be"
-        "git+https://github.com/AdaCore/libadalang.git#commit=6fd2550"
-        "git+https://github.com/AdaCore/libadalang-tools.git#commit=ca084eb"
-        "git+https://github.com/AdaCore/spawn.git#commit=2505624"
+        "git+https://github.com/AdaCore/VSS.git#commit=d6b5de8"
+        "git+https://github.com/AdaCore/langkit.git#commit=024d02f"
+        "git+https://github.com/AdaCore/libadalang.git#commit=398acf2"
+        "git+https://github.com/AdaCore/libadalang-tools.git#commit=f114dbb"
+        "git+https://github.com/AdaCore/spawn.git#commit=e57c59d"
         "libadalang-tools.patch"
         "VSS.patch"
         "ada_language_server.patch")
-sha1sums=('848d8611aa2f896a443c8889b7305c14e4401883'
+sha1sums=('cb83762ebebf085b6b54a4bfc5eb33248c21615d'
           'SKIP'
           'SKIP'
           'SKIP'
@@ -38,7 +38,7 @@ sha1sums=('848d8611aa2f896a443c8889b7305c14e4401883'
           'SKIP'
           '1eb931d9aea713d3d553d9f6ebc44e5bce58f551'
           'dcc8be463ad852ea595748b5c3c092fc88f79ae5'
-          '11c16a7360b47876b5a672222b29008a189b3d71')
+          'ee3bc8ed18ef9f1c94361aa91acae4f6c1364a25')
 
 prepare() {
     cd "$srcdir/libadalang-tools"
