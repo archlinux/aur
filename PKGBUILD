@@ -2,7 +2,7 @@
 
 pkgname=shadowsocks-rust-git
 pkgver=r1442.39b3567
-pkgrel=1
+pkgrel=2
 pkgdesc='A Rust port of shadowsocks https://shadowsocks.org/ (git version)'
 arch=('any')
 url='https://github.com/shadowsocks/shadowsocks-rust'
@@ -16,11 +16,9 @@ source=(
     'shadowsocks-rust@.service'
     'shadowsocks-rust-server@.service')
 
-sha512sums=(
-    'SKIP'
-    '3f56e02462ba8fa0a1cf62eaae5b796d7efb31ae1a8383a1132878244c1ab834ca3e23befa4c0c14c461c9883522d4f54f80aba45cd6331061bdd42618cbcfc6'
-    '770c50dd191f29e4fb42d3273970b9c49c33fc1ca347b0f73fc34e04955f98ce1ca9486435c809bbb535fe79edb54c0107f37501e771a9cc9cc6ab727b596c6d'
-)
+sha512sums=('SKIP'
+            'fccb02b922369a6ba01e7d438bd8bf306fe25b15d54e0a91e33832bd2726add8e9c01705f1f7a3afe44f3034f6438c3cc8c0fcad8905d67cb789f4f21feef102'
+            '573df735263cafc37f5eb315aa5de106141a787a3dfb98a47499f8ed196ca32f1873a644188685512f5e58e062049674c4bcdf6ca9a87ee8dfb840614c69bb55')
 
 pkgver() {
     cd "${srcdir}/${pkgname/-git/}"
