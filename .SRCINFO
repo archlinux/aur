@@ -1,14 +1,14 @@
 pkgbase = soulanchor
 	pkgdesc = X11 Bible tool
-	pkgver = 0.9.4
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = https://github.com/Anchorm/SoulAnchor
 	arch = x86_64
 	license = GPL3
 	depends = qt5-base
 	depends = qt5-multimedia
-	source = https://github.com/Anchorm/SoulAnchor/archive/soulanchor-0.9.4.tar.gz
-	sha256sums = 1eafc319b4331cbcdd0f96fe3f62756e5e87aa5932f67081fbf1b3abccfd7f39
+	source = https://github.com/Anchorm/SoulAnchor/archive/soulanchor-0.9.5.tar.gz
+	sha256sums = d4f944ff0b89ee15c1a99f7c1b6eee471782b4287fdda489357e86d031481efd
 
 pkgname = soulanchor
 
