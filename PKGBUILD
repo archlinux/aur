@@ -1,6 +1,6 @@
 pkgname=ananicy-cpp
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ananicy Cpp is a full rewrite of Ananicy in C++, featuring lower CPU and RAM usage."
 url="https://gitlab.com/aviallon/ananicy-cpp/"
 license=(GPLv3)
@@ -11,7 +11,7 @@ md5sums=('a1a3a551f8e0ce8a3b70bcd32804ec70')
 arch=(x86_64 i386 armv7h)
 depends=(fmt spdlog nlohmann-json systemd)
 makedepends=(cmake git)
-optdepends=(ananicy)
+optdepends=("ananicy: community rules")
 
 prepare() {
 	cd "$pkgname-v${pkgver}"
@@ -38,5 +38,7 @@ package() {
 
 	export DESTDIR="$pkgdir"
 	cmake --install .
+
+	install -m755 -d "$pkgdir/etc/ananicy.d"
 }
 
