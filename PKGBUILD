@@ -1,7 +1,7 @@
 # Maintainer: Alban Fichet <alban.fichet@inria.fr>
 pkgname=gthumb-openexr-extension
-pkgver=3.10
-pkgrel=9
+pkgver=3.10.1
+pkgrel=10
 pkgdesc="Extension for gThumb to support OpenEXR"
 arch=('any')
 url="https://github.com/afichet/gthumb-openexr-extension"
