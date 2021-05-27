@@ -1,0 +1,14 @@
+pkgbase = pywal-discord-git
+	pkgdesc = A script that dynamically generates discord theme based on the current wal colorscheme
+	pkgver = r83.5ca587a
+	pkgrel = 1
+	url = https://github.com/FilipLitwora/pywal-discord
+	arch = any
+	license = GPL3
+	provides = pywal-discord
+	conflicts = pywal-discord
+	source = git+https://github.com/FilipLitwora/pywal-discord
+	md5sums = SKIP
+
+pkgname = pywal-discord-git
+
