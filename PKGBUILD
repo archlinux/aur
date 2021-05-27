@@ -1,7 +1,7 @@
 # Maintainer: Sam L. Yes <samlukeyes123@gmail.com>
 
 pkgname=libcamera-clang-git
-pkgver=r2623.258c7481
+pkgver=r2627.459b3bc6
 pkgrel=1
 pkgdesc='A complex camera support library for Linux, Android, and ChromeOS (built with clang)'
 arch=('x86_64' 'i686')
@@ -43,8 +43,8 @@ build() {
     CC=clang CXX=clang++ arch-meson build \
         -Dwerror=false \
         -Dv4l2=true \
-        -Dipas=ipu3,rkisp1,vimc \
-        -Dpipelines=ipu3,rkisp1,simple,uvcvideo,vimc \
+        -Dipas=ipu3,vimc \
+        -Dpipelines=ipu3,uvcvideo,vimc \
         -Ddocumentation=disabled \
         -Dtracing=disabled  # comment this line to enable LTTng support
         # --prefix /usr --libexecdir lib \
