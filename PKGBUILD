@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Goy <kuon@goyman.com>
 
 pkgname=front-panel-designer-eu
-pkgver=6.3.2
+pkgver=6.3.3
 pkgrel=1
 epoch=
 pkgdesc="Free CAD software for front panel design"
@@ -14,7 +14,7 @@ options=(!strip)
 source_x86_64=(
 "https://assets.schaeffer-ag.de/fpd/Version-$pkgver/FrontDesign-EU-$pkgver-amd64.AppImage"
 "front-panel-express-eu.desktop")
-md5sums_x86_64=("d264af7ba51bd8e75fce3d1bb5d97cea" "d34b7ed5d87a206fe8b50fd4a8f8e167")
+md5sums_x86_64=("b5047c38ba9dedb8552d2020bedc2d1c" "d34b7ed5d87a206fe8b50fd4a8f8e167")
 noextract=("FrontDesign-EU-$pkgver-amd64.AppImage")
 
 package() {
