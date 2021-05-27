@@ -1,6 +1,6 @@
 pkgbase = rawstudio-git
 	pkgdesc = An open-source program to read and manipulate RAW images from digital cameras
-	pkgver = 2.0.r618.ge0522fa
+	pkgver = 2.0.r622.g58a8959
 	pkgrel = 1
 	url = https://rawstudio.org
 	arch = x86_64

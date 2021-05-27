@@ -2,7 +2,7 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=rawstudio-git
-pkgver=2.0.r618.ge0522fa
+pkgver=2.0.r622.g58a8959
 pkgrel=1
 pkgdesc='An open-source program to read and manipulate RAW images from digital cameras'
 arch=(x86_64)
@@ -25,7 +25,7 @@ build() {
     cd "$pkgname"
     ./autogen.sh
     ./configure --prefix=/usr
-    make
+    make -j $(nproc)
 }
 
 package() {
