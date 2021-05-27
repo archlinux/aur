@@ -1,6 +1,6 @@
 # Maintainer: fatalis <fatalis@fatalis.pw>
 pkgname=ida-free
-pkgver=7.6.210507
+pkgver=7.6.210526
 pkgrel=1
 pkgdesc="Freeware version of the world's smartest and most feature-full disassembler"
 arch=('x86_64')
@@ -12,7 +12,7 @@ _originalname='idafree76_linux.run'
 _installer="${_originalname}-${pkgver}-${pkgrel}"
 source=("${_installer}::https://out7.hex-rays.com/files/${_originalname}"
         'ida-free.desktop')
-sha256sums=('fe4256e67c07bf66b873fcdf13a4ec3922f312ae646eb62e313e66eab195d599'
+sha256sums=('f065227ea16fd4bed393056dbf1c38559d91896686c1a54bc58c38b3406b7243'
             '55f2ed3f165df6efb5f7975b17d8e53bee1d88cad33efb9d4422402213d17440')
 
 package() {
