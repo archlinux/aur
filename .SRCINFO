@@ -1,0 +1,21 @@
+pkgbase = r-rsdmx
+	pkgdesc = Tools for Reading SDMX Data and Metadata
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://cran.r-project.org/web/packages/rsdmx/
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-r6
+	depends = r-xml2
+	depends = r-httr
+	depends = r-plyr
+	optdepends = r-testthat
+	optdepends = r-knitr
+	optdepends = r-roxygen2
+	optdepends = r-markdown
+	source = https://cran.r-project.org/src/contrib/rsdmx_0.6.tar.gz
+	sha512sums = cbfb0569e7d61298645ce1cd569fdc3a25ef8ab07654523d001cd7b6292600c0baaf45be0b30fb2f692caed8e58367c4b6095914f5333ea5fb7c131df8931371
+
+pkgname = r-rsdmx
+
