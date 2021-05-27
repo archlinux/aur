@@ -2,8 +2,8 @@
 # Contributor: MoDoJ
 
 pkgname=insync-dolphin
-pkgver=3.3.10.40961
-pkgrel=2
+pkgver=3.4.0.40966
+pkgrel=1
 pkgdesc="This package contains the service menu for integrating Insync with Dolphin"
 url="https://www.insynchq.com"
 license=('custom')
@@ -11,7 +11,7 @@ arch=('x86_64')
 options=('!strip' '!emptydirs')
 depends=("insync" "dolphin")
 source=("${pkgname}-${pkgver}.deb::http://s.insynchq.com/builds/${pkgname}_${pkgver}_all.deb")
-sha256sums=('56b5caa3f38f47c1006210da0408cf7dfb292b6e19ba2289e1c97f262ff05724')
+sha256sums=('c231b24d22c021f14388970d4a714f9fffbe9d4fa5e01668e8c0561920edf81d')
 noextract=("${pkgname}-${pkgver}.deb")
 
 package() {
