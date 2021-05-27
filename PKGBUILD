@@ -1,8 +1,8 @@
 # Maintainer: Tobias Borgert <tobias.borgert@gmail.com>
 
 pkgname=ecal
-pkgver=5.8.8
-pkgrel=2
+pkgver=5.8.9
+pkgrel=1
 pkgdesc="enhanced Communication Abstraction Layer"
 arch=('x86_64' 'armv7h')
 url="https://github.com/continental/ecal"
