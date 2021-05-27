@@ -2,7 +2,7 @@
 _pkgbasename=zls
 pkgname=${_pkgbasename}-git
 pkgrel=1
-pkgver=r292.585ae07
+pkgver=r752.affbd2d
 pkgdesc="Zig LSP implementation + Zig Language Server"
 arch=('any')
 url="https://github.com/zigtools/${_pkgbasename}"
@@ -34,6 +34,6 @@ build() {
 package() {
 	cd "${srcdir}/${_pkgbasename}"
 
-	install -D -m755 zig-cache/bin/$_pkgbasename "${pkgdir}/usr/bin/$_pkgbasename"
+	install -D -m755 zig-out/bin/$_pkgbasename "${pkgdir}/usr/bin/$_pkgbasename"
 	install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/$_pkgbasename/LICENSE"
 }
