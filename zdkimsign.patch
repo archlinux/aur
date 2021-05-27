@@ -1,0 +1,17 @@
+Index: src/zdkimsign.c
+===================================================================
+--- src/zdkimsign.c	(revision 335)
++++ src/zdkimsign.c	(working copy)
+@@ -795,10 +795,8 @@
+ 				{
+ 					strcpy(&buf[len], zdkimfilter);
+ 					if (stat(buf, &a) == 0)
+-					{
+-						alt = strdup(buf);
+-						break;  // found
+-					}
++						alt = strdup(buf);   // found
++					break;
+ 				}
+ 				else if (next == NULL)
+ 					break; // not found
