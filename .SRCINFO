@@ -1,15 +1,15 @@
 pkgbase = python-sphinxext-opengraph
 	pkgdesc = Sphinx extension to generate unique OpenGraph metadata
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/wpilibsuite/sphinxext-opengraph
 	arch = any
 	license = BSD
 	checkdepends = python-sphinx
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/s/sphinxext-opengraph/sphinxext-opengraph-0.4.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/s/sphinxext-opengraph/sphinxext-opengraph-0.4.2.tar.gz
 	source = https://raw.githubusercontent.com/wpilibsuite/sphinxext-opengraph/main/LICENSE.md
-	md5sums = 285fcdaacae51d85892cf20e106dd8d7
+	md5sums = d87194cdbc2633b61d341d4dc751413a
 	md5sums = SKIP
 
 pkgname = python-sphinxext-opengraph

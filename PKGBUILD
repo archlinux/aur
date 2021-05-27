@@ -3,7 +3,7 @@ pkgbase=python-sphinxext-opengraph
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Sphinx extension to generate unique OpenGraph metadata"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 checkdepends=('python-sphinx')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/wpilibsuite/sphinxext-opengraph/main/LICENSE.md")
-md5sums=('285fcdaacae51d85892cf20e106dd8d7'
+md5sums=('d87194cdbc2633b61d341d4dc751413a'
          'SKIP')
 
 build() {
