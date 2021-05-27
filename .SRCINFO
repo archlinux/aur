@@ -25,6 +25,7 @@ pkgbase = slippi-online-git
 	depends = qt5-base
 	depends = sfml
 	depends = zlib
+	depends = webkit2gtk
 	depends = libavcodec.so
 	depends = libavformat.so
 	depends = libavutil.so
