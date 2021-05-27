@@ -1,6 +1,6 @@
 pkgbase = promscale
 	pkgdesc = An open source analytical platform for Prometheus metrics
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/timescale/promscale
 	arch = x86_64
@@ -10,15 +10,12 @@ pkgbase = promscale
 	optdepends = timescaledb
 	optdepends = prometheus
 	optdepends = promscale_extension
-	backup = etc/conf.d/promscale
-	source = promscale-0.4.0.tar.gz::https://github.com/timescale/promscale/archive/0.4.0.tar.gz
+	source = promscale-0.4.1.tar.gz::https://github.com/timescale/promscale/archive/0.4.1.tar.gz
 	source = systemd.service
 	source = sysusers.conf
-	source = environment.conf
-	b2sums = d00232917f9e68be59c8ec3083683715ea4de18027afeaa66f4e2696f966781f90da3bf3d7cdc4e9d4e455e6ae92a9d878bc28adf5367b536a01892f019f0eae
-	b2sums = 23a357e2fd252d1f6c1cd8d3cd4174bdd27d0ae5035f5afd08ac377405868ad0cc5d782fb5a73fcfdbd7169361e2c4b639aa096ebfe2d9adf95ffc1e26caa3b1
+	b2sums = 1334e4be9fc5e58a1448309e0f8562c7ee2c08c3d757ead38e0eff3a849d5176ae89764c25a6cd70d73bea4c28a013b51296733c93c893548fa7249239e614a7
+	b2sums = 98ad7412c94ff5a6643e9eec7a1cf4c7828ef84b25ec18b4469b70cc11ccbe933cde4e822c9b33977ae8bb25bf10de6baef13f84a83bde82b3922c7056f2f712
 	b2sums = 2fae9c07cd255528a1c87062650956b857caa8a3c656b59e85d740f527433f510a8fe18025e03480d9145673e6dd03867d60ead5a48044353262105a173cbbfd
-	b2sums = 959678ca6aa24c89249db7b3e273a659c2676ff220bee60e6c753f969b1b65f4e14a5e3f6ffcba304c4e880822929ae1125e9b468ebe24385881051e99e3752e
 
 pkgname = promscale
 

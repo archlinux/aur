@@ -9,7 +9,8 @@ User=promscale
 Group=promscale
 Restart=on-failure
 RestartSec=5s
-EnvironmentFile=-/etc/conf.d/promscale
+# If PROMSCALE_ARGS is required, it should be applied using a drop-in
+# systemd file. See `man 5 systemd.unit` for details.
 ExecStart=/usr/bin/promscale $PROMSCALE_ARGS
 ExecReload=/bin/kill -HUP $MAINPID
 
