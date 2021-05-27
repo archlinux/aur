@@ -1,0 +1,29 @@
+pkgbase = libzim-git
+	pkgdesc = The standard implementation of the ZIM specification - openzim
+	pkgver = 1326.ca0c95f
+	pkgrel = 1
+	url = https://openzim.org/wiki/Libzim
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gtest
+	makedepends = pkgconf
+	depends = xz
+	depends = gcc-libs
+	depends = zstd
+	depends = icu
+	depends = xapian-core
+	depends = util-linux-libs
+	optdepends = doxygen: build the documentations
+	optdepends = python-breathe: build the documentations
+	optdepends = python-sphinx: build the documentations
+	optdepends = python-exhale: build the documentations
+	conflicts = libzim
+	source = libzim-git::git+https://github.com/openzim/libzim.git
+	md5sums = SKIP
+
+pkgname = libzim-git
+
