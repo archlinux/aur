@@ -7,6 +7,7 @@ pkgbase = autovdirsyncer
 	arch = aarch64
 	license = ISC
 	makedepends = go
+	depends = vdirsyncer
 	source = git+https://git.sr.ht/~whynothugo/autovdirsyncer?signed#tag=v0.1.0
 	validpgpkeys = 951082781CA308E4A529DEFD6F9FFF122B98C0CD
 	md5sums = SKIP

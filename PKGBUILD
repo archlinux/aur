@@ -7,6 +7,7 @@ pkgdesc="Wrapper to daemonise vdirsyncer"
 arch=('x86_64' 'aarch64')
 url="https://git.sr.ht/~whynothugo/autovdirsyncer"
 license=('ISC')
+depends=('vdirsyncer')
 makedepends=('go')
 source=("git+https://git.sr.ht/~whynothugo/autovdirsyncer?signed#tag=v${pkgver}")
 md5sums=('SKIP')
