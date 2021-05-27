@@ -1,3 +1,6 @@
+2.12.4-1
+  - New upstream version 2.12.4
+
 2.12.3-2
   - Update patches for builing with boost 1.74+ to those merged upstream
 
