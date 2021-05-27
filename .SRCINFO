@@ -5,6 +5,7 @@ pkgbase = treemap
 	url = https://sites.google.com/site/cophylogeny/treemap/
 	arch = x86_64
 	license = custom
+	makedepends = wget
 	depends = jre-openjdk-headless
 	depends = jre-openjdk
 	depends = jdk-openjdk
