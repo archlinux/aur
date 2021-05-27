@@ -3,8 +3,8 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail.com>
 
 pkgname=pycharm-edu
-pkgver=2021.1
-_pkgver=2021.1
+pkgver=2021.1.1
+_pkgver=2021.1.1
 pkgrel=1
 pkgdesc="A Professional Tool to Learn and Teach Programming with Python"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(https://download.jetbrains.com/python/$pkgname-$_pkgver.tar.gz
 optdepends=('ipython: Alternative Python shell'
 			'ipython2: Alternative Python 2 shell'
 			'python2: Support for Python 2 language')
-sha256sums=('e629b4128640f4a011f58cdd92be97142ccbb8692edf2646588e5f57b4e4e284'
+sha256sums=('e67c984aad7e9c9e2681f8b6f02143980fcddb74a5a02746d0eb616b40ad2fb7'
             'bb47c5ebe079539aed256aea205fdc91a425937744e6d84df65a85cdbd51ab59')
 
 build() {
