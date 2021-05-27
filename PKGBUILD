@@ -1,7 +1,7 @@
 # Maintainer: grufo <madmurphy333 AT gmail DOT com>
 
 pkgname='nextgen'
-pkgver='0.2.1'
+pkgver='0.3.0'
 pkgrel=1
 pkgdesc='An interactive Bash script that lets you easily set up a new extension project for GNOME Files (formerly Nautilus)'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('bash' 'libnautilus-extension')
 conflicts=("${pkgname}-git")
 source=("https://gitlab.gnome.org/madmurphy/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('94688461e23a6c5f58cdcc04ab0b87c3d7a23ad5394ca361c7d0093110fa7ff7')
+sha256sums=('c6bd0f7a6f295169489258c97eca8aa0cb05a77f113d401c9d1aced940a9a86d')
 
 prepare() {
 
