@@ -1,0 +1,21 @@
+pkgbase = pibuss
+	pkgdesc = a BEAST/BEAGLE utility for sequence simulation, which provides an easy to use interface that allows flexible and extensible phylogenetic data fabrication
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://rega.kuleuven.be/cev/ecv/software/pibuss
+	arch = x86_64
+	license = custom
+	depends = jre-openjdk-headless
+	depends = jre-openjdk
+	depends = jdk-openjdk
+	depends = openjdk-doc
+	depends = openjdk-src
+	source = https://rega.kuleuven.be/cev/ecv/software/pibuss_files/pibuss-v1-4.jar
+	source = pibuss.desktop
+	source = pibuss.png
+	sha256sums = a9d397ec6815339a2d4b268b99897a7d42250d4cd649b1ad2e458033e48b432c
+	sha256sums = 96cc7d7b0ffce5358b14c981ac84355237f5c9c5599ca9ead16f1d1f11d29f40
+	sha256sums = 18a508a9fc4fb169d366b7158095aa001f3ccc389f6aca8f2ae2df0b84413003
+
+pkgname = pibuss
+
