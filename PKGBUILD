@@ -34,7 +34,6 @@ prepare() {
   git submodule update -f --init
   cd VTK
   sed -i "s|1ul|1ull|g" ThirdParty/ioss/vtkioss/cgns/Iocgns_Utils.h
-  sed -i "48i#define CG_BUILD_HDF5 1" ThirdParty/ioss/vtkioss/cgns/Iocgns_Utils.C
   cd ../ThirdParty/catalyst/vtkcatalyst/catalyst
   curl -L https://gitlab.kitware.com/paraview/catalyst/-/merge_requests/7.patch | patch -p1
 }
