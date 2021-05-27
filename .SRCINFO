@@ -1,0 +1,15 @@
+pkgbase = autovdirsyncer
+	pkgdesc = Wrapper to daemonise vdirsyncer
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://git.sr.ht/~whynothugo/autovdirsyncer
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	makedepends = go
+	source = git+https://git.sr.ht/~whynothugo/autovdirsyncer?signed#tag=v0.1.0
+	validpgpkeys = 951082781CA308E4A529DEFD6F9FFF122B98C0CD
+	md5sums = SKIP
+
+pkgname = autovdirsyncer
+
