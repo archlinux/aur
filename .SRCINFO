@@ -1,0 +1,16 @@
+pkgbase = python-pytorch-pytorch_wavelets
+	pkgdesc = 2D Wavelet Transforms in Pytorch
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/francois-rozet/pytorch_wavelets
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-pytorch
+	depends = python-pywavelets
+	provides = python-pytorch-pytorch_wavelets
+	source = https://github.com/fbcotter/pytorch_wavelets/archive/refs/tags/1.1.0.tar.gz
+	sha256sums = bb227ca3ddfb023af3105c5d430c8ff0e451ded0af58f7693d1321ad0215b941
+
+pkgname = python-pytorch-pytorch_wavelets
+
