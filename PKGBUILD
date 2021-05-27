@@ -1,7 +1,7 @@
 # Maintainer: Michael Riegert <michael at eowyn net>
 
 pkgname=fpga-toolchain-bin
-pkgver=20210526
+pkgver=20210527
 pkgrel=1
 pkgdesc="Nightly builds of open-source FPGA tools"
 arch=('x86_64')
@@ -27,7 +27,7 @@ conflicts=(
     )
 source_x86_64=($url/releases/download/nightly-$pkgver/fpga-toolchain-linux_x86_64-nightly-$pkgver.tar.xz
     path.install)
-sha256sums_x86_64=('41bf9644f797b36d8ecd7b32ba8660fec2624cbd8882da0a65a3bf17c29e50d8'
+sha256sums_x86_64=('ace76d3fd50e19ef3a5ed17fba8203cdc9395b59366ce5b16b191cb88ed46403'
                    'e7ed3de09af8a6353ae2627284e597ae37278623e206a26f16aeb9db0a35aaea')
 install='path.install'
 package() {
