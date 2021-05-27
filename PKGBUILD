@@ -13,12 +13,12 @@ pkgname=(
   dotnet-targeting-pack-preview
   aspnet-targeting-pack-preview
 )
-pkgver=6.0.0.sdk100+preview.3.21202.5
-_hostver=6.0.0-preview.3.21201.4
-_dotnetruntimever=6.0.0-preview.2.21201.4
-_aspnetruntimever=6.0.0-preview.2.21201.13
-_sdkver=6.0.100-preview.3.21202.5
-pkgrel=2
+pkgver=6.0.0.sdk100+preview.4.21255.9
+_hostver=6.0.0-preview.4.21253.7
+_dotnetruntimever=6.0.0-preview.4.21253.7
+_aspnetruntimever=6.0.0-preview.4.21253.5
+_sdkver=6.0.100-preview.4.21255.9
+pkgrel=1
 arch=(x86_64 armv7h aarch64)
 url=https://www.microsoft.com/net/core
 license=(MIT)
@@ -27,16 +27,16 @@ source=(dotnet.sh
         register-completions.bash
         register-completions.fish
         register-completions.zsh)
-source_x86_64=(https://download.visualstudio.microsoft.com/download/pr/cd855e4d-b02a-4327-b218-7ab500ecff83/c7649b00ee20e30244b8b84ff9139c71/dotnet-sdk-6.0.100-preview.3.21202.5-linux-x64.tar.gz)
-source_armv7h=(https://download.visualstudio.microsoft.com/download/pr/bd2c0cea-b1b5-4de8-941b-2b53f94df021/51bdc3008f95104c1e5bf1cd7f34cf78/dotnet-sdk-6.0.100-preview.3.21202.5-linux-arm.tar.gz)
-source_aarch64=(https://download.visualstudio.microsoft.com/download/pr/90d8a5e0-ed8f-430c-a66c-d17a096024a9/95d17428d5b0da3552c502eede9f7f05/dotnet-sdk-6.0.100-preview.3.21202.5-linux-arm64.tar.gz)
+source_x86_64=(https://download.visualstudio.microsoft.com/download/pr/f5c00d7a-e1c8-494a-a88b-9ed1dc62249e/8438122af4fd928900a0ebf129c6c1d6/dotnet-sdk-6.0.100-preview.4.21255.9-linux-x64.tar.gz)
+source_armv7h=(https://download.visualstudio.microsoft.com/download/pr/33688994-4547-4f42-b078-2da4c0396fa9/a5904769ea3badfb4758900d16672e4c/dotnet-sdk-6.0.100-preview.4.21255.9-linux-arm.tar.gz)
+source_aarch64=(https://download.visualstudio.microsoft.com/download/pr/4a0e30f5-9112-45f9-80b0-a5156056907a/7b526737d2907cc9f7c04f9e6b83b9ab/dotnet-sdk-6.0.100-preview.4.21255.9-linux-arm64.tar.gz)
 sha512sums=('e61b9e3e5a2305646a616d598378230c9755c5dd5363692cc363f8f4add3807563c324dd86f3a7ae9d358c82d730608e7b293935a2b6c81c0c0f62d752a0a1cf'
             '9f977e0bd12abc0dda4d914f369c58fce502b4030cf91d4248b32242d98fe5a2bbd8446502feeb914561f310dfd3c113bb6da19bfd5dfa6233109e62d22fa966'
             '1de3f09b96c44429b026277bb135a019b7577df2dec5f695ce51d18daefe2c1736b3359ab95f2abc46f7320c445b968e5582df92bb2bcad3ac5cfc5a32d3c5b6'
             'f2be62d9cce00357b7b18ae83b976841037830b7b9ed1b67445f76e02550c904be5ab023366441199f9bb3dfd602004b0334395ffdde6c313910c1da5c39c4a3')
-sha512sums_x86_64=('f776177c1ca2b672cf05f9ec32f20ef35a039dd8d31beaa139d1e47d71cca4ccf0f2a61bbf006a781e693977ee91cc9e08e12134ffb4c7a03a8e56c163b8661d')
-sha512sums_armv7h=('feff4ca8600c48482a4a4cf2863d16e36c4a33e46b1b56567e8acf7599d7ea71feb2bb1715a43e989c26148ea2c5024353114e687c290632fa12f18d184a5ca9')
-sha512sums_aarch64=('ee658e35f7917c5681d1f71ad3f82f4f2975d66a9b747ec5b5d58629b75c22fb6f31532b5423ad75b2e92ef333179948b52dd5507eadd9f3431e5638d98268d9')
+sha512sums_x86_64=('9b4554f9c223ff70083618da7c12a70686d39f7b413583c6a7449bfbb5e871ef281b3f692eefca53864ea57217685bf4d7f80383015b2462666a0a26376e0f97')
+sha512sums_armv7h=('5207f2842ec70fc6b428e20d25fe9b11202c593db8095b04d8f67a1ab2f445675229faa6eca9f07746d98a70f2cb891b5c6f65a1fd559ee1b8201be98d34e481')
+sha512sums_aarch64=('40dbb1cf48f7f27ba95e36b5638ce5529cdba8bbfb03b2ad84e03924067f17ecc1de12132a66bb07f6b432d247bfb80e86cda7f7832d34565b880acc65940321')
 
 package_dotnet-host-preview() {
   pkgdesc='A generic driver for the .NET Core Command Line Interface (preview, binary)'
