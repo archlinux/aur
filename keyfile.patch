@@ -1,0 +1,200 @@
+diff --git a/pkg/keychain/helper_linux.go b/pkg/keychain/helper_linux.go
+index f1221d2..f9216dc 100644
+--- a/pkg/keychain/helper_linux.go
++++ b/pkg/keychain/helper_linux.go
+@@ -18,46 +18,39 @@
+ package keychain
+ 
+ import (
+-	"os/exec"
++	"os/user"
++	"path/filepath"
+ 	"reflect"
+ 
+ 	"github.com/docker/docker-credential-helpers/credentials"
+-	"github.com/docker/docker-credential-helpers/pass"
+-	"github.com/docker/docker-credential-helpers/secretservice"
+ 	"github.com/sirupsen/logrus"
+ )
+ 
+ const (
+-	Pass         = "pass-app"
+-	GnomeKeyring = "gnome-keyring"
++	secrets = "~/.config/protonmail/bridge/secrets"
+ )
+ 
+ func init() { // nolint[noinit]
+ 	Helpers = make(map[string]helperConstructor)
+ 
+-	if _, err := exec.LookPath("pass"); err == nil {
+-		Helpers[Pass] = newPassHelper
+-	}
+-
+-	if _, err := exec.LookPath("gnome-keyring"); err == nil {
+-		Helpers[GnomeKeyring] = newGnomeKeyringHelper
+-	}
+-
+-	// If Pass is available, use it by default.
+-	// Otherwise, if GnomeKeyring is available, use it by default.
+-	if _, ok := Helpers[Pass]; ok && isUsable(newPassHelper("")) {
+-		defaultHelper = Pass
+-	} else if _, ok := Helpers[GnomeKeyring]; ok && isUsable(newGnomeKeyringHelper("")) {
+-		defaultHelper = GnomeKeyring
++	// Use keyFile as the only secrets handler
++	if isUsable(newKeyFileHelper("")) {
++		defaultHelper = "file-keychain"
++		Helpers[defaultHelper] = newKeyFileHelper
+ 	}
+ }
+ 
+-func newPassHelper(string) (credentials.Helper, error) {
+-	return &pass.Pass{}, nil
++func expandTilde(path string) string {
++	if path[:2] == "~/" {
++		user, _ := user.Current()
++		return filepath.Join(user.HomeDir, path[2:])
++	} else {
++		return path
++	}
+ }
+ 
+-func newGnomeKeyringHelper(string) (credentials.Helper, error) {
+-	return &secretservice.Secretservice{}, nil
++func newKeyFileHelper(string) (credentials.Helper, error) {
++	return &keyFile{expandTilde(secrets)}, nil
+ }
+ 
+ // isUsable returns whether the credentials helper is usable.
+diff --git a/pkg/keychain/keyfile.go b/pkg/keychain/keyfile.go
+new file mode 100644
+index 0000000..00c19ba
+--- /dev/null
++++ b/pkg/keychain/keyfile.go
+@@ -0,0 +1,127 @@
++package keychain
++
++import (
++	"bufio"
++	"errors"
++	"os"
++	"strings"
++
++	"github.com/docker/docker-credential-helpers/credentials"
++)
++
++
++type keyRecord struct {
++	username string
++	password string
++}
++
++type keyFile struct {
++	path string
++}
++
++
++// Verify that keychain file has correct permissions
++func (self *keyFile) checkPermissions() error {
++	info, err := os.Stat(self.path)
++	if err != nil {
++		return err
++	}
++	if info.Mode().Perm() != 0600 {
++		return errors.New("Keychain file has wrong permissions")
++	}
++	return nil
++}
++
++
++// Read full keychain from file
++func (self *keyFile) readKeychain() (map[string]keyRecord, error) {
++	keychain := make(map[string]keyRecord)
++	if err := self.checkPermissions(); err != nil {
++		return keychain, err
++	}
++	file, err := os.Open(self.path)
++	if err != nil {
++		return keychain, err
++	}
++	defer file.Close()
++	scanner := bufio.NewScanner(file)
++	for scanner.Scan() {
++		fields := strings.Split(scanner.Text(), "\x00")
++		if len(fields) != 3 {
++			return keychain, errors.New("Malformed keychain file")
++		}
++		keychain[fields[0]] = keyRecord{fields[1], fields[2]}
++	}
++	return keychain, nil
++}
++
++
++// Write full keychain to file
++func (self *keyFile) writeKeychain(keychain map[string]keyRecord) error {
++	mode := os.O_WRONLY | os.O_CREATE | os.O_TRUNC
++	file, err := os.OpenFile(self.path, mode, 0600)
++	if err != nil {
++		return err
++	}
++	defer file.Close()
++	for k, v := range keychain {
++		record := k + "\x00" + v.username + "\x00" + v.password + "\n"
++		if _, err := file.WriteString(record); err != nil {
++			return err
++		}
++	}
++	return nil
++}
++
++
++// Add a record to the keychain
++func (self *keyFile) Add(cred *credentials.Credentials) error {
++	keychain, err := self.readKeychain()
++	if err != nil && !errors.Is(err, os.ErrNotExist) {
++		return err
++	}
++	keychain[cred.ServerURL] = keyRecord{cred.Username, cred.Secret}
++	return self.writeKeychain(keychain)
++}
++
++
++// Delete a record from the keychain
++func (self *keyFile) Delete(serverURL string) error {
++	keychain, err := self.readKeychain()
++	if err != nil {
++		return err
++	}
++	if _, ok := keychain[serverURL]; !ok {
++		return errors.New("Attempt to delete a nonexistent record")
++	}
++	delete(keychain, serverURL)
++	return self.writeKeychain(keychain)
++}
++
++
++// Read a record from the keychain
++func (self *keyFile) Get(serverURL string) (string, string, error) {
++	keychain, err := self.readKeychain()
++	if err != nil {
++		return "", "", err
++	}
++	record, ok := keychain[serverURL]
++	if !ok {
++		return "", "", errors.New("Attempt to fetch a nonexistent record")
++	}
++	return record.username, record.password, nil
++}
++
++
++// List keychain records
++func (self *keyFile) List() (map[string]string, error) {
++	list := make(map[string]string)
++	keychain, err := self.readKeychain()
++	if err != nil {
++		return list, err
++	}
++	for k, v := range keychain {
++		list[k] = v.username
++	}
++	return list, nil
++}
