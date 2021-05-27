@@ -3,10 +3,10 @@
 
 pkgname=lightdm-enso-os-greeter-git
 pkgver=r195.bf0d53c
-pkgrel=1
+pkgrel=2
 pkgdesc="A fork of Pantheon greeter."
 arch=('x86_64')
-url="ssh://aur@aur.archlinux.org/lightdm-enso-os-greeter-git.git"
+url="https://github.com/nick92/Enso-OS"
 license=('GPL')
 depends=('clutter-gtk' 'libgee' 'libgl' 'lightdm' )
 makedepends=('meson' 'git' 'vala')
