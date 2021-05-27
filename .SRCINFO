@@ -1,19 +1,18 @@
 pkgbase = nautilus-launch
 	pkgdesc = A simple Nautilus extension that allows to run executables and launchers via right-click menu
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://gitlab.gnome.org/madmurphy/nautilus-launch
 	install = nautilus-launch.install
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = intltool
 	depends = glib2
 	depends = libnautilus-extension
 	conflicts = nautilus-launch-git
 	conflicts = nautilus-launch-bin
-	source = https://github.com/madmurphy/nautilus-launch/releases/download/1.0.3/nautilus-launch-1.0.3-with-configure.tar.gz
-	sha256sums = 3a94f5d3f7232e3fe0df15affab6be66eee9b91cbc9304d26f9143b4e0e7fbc3
+	source = https://github.com/madmurphy/nautilus-launch/releases/download/1.0.4/nautilus-launch-1.0.4-with-configure.tar.gz
+	sha256sums = 8c9f1959bf30fba1e235e7c2b3862bf9d6b16e4382832c5b127cfa9e3e4dc6e0
 
 pkgname = nautilus-launch
 
