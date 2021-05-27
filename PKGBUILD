@@ -1,21 +1,18 @@
 # Maintainer: nycex <nycex / cccp.org>
 pkgname=zig-master-bin
-pkgver=0.8.0_dev.1712+2f07d76ee
+pkgver=0.8.0_dev.2669+ae15281c0
 pkgrel=1
 pkgdesc="robust, optimal, and clear programming language"
 arch=('x86_64' 'aarch64')
 url="https://ziglang.org/"
 license=('MIT')
-depends=()
-makedepends=('jq' 'curl')
+depends=('jq' 'curl')
 provides=('zig')
 conflicts=('zig')
-source=("https://ziglang.org/download/index.json")
-md5sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}"
-	if build_version="$(jq -r '.master.version' 'index.json' 2>/dev/null)" &&
+	if build_version="$(curl 'https://ziglang.org/download/index.json' | jq -r '.master.version' 2>/dev/null)" &&
 		[ "${build_version}" != 'null' ]; then
 
 		printf '%s' "${build_version//-/_}"
