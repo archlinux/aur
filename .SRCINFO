@@ -12,7 +12,7 @@ pkgbase = nautilus-hide
 	conflicts = nautilus-hide-git
 	conflicts = nautilus-hide-bin
 	source = https://github.com/madmurphy/nautilus-hide/releases/download/0.2.4/nautilus-hide-0.2.4-with-configure.tar.gz
-	sha256sums = 243eff475e8f5c744a2f4c3a0afb3e7d5e69f8721cfc4f95dd6513a1b04af0dc
+	sha256sums = a2315b31188f210a60e088ace9f5a2893785c3ef94b3c6a033a55d31fc384617
 
 pkgname = nautilus-hide
 
