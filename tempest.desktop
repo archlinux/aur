@@ -1,0 +1,18 @@
+[Desktop Entry]
+Categories=
+Encoding=UTF-8
+Exec=java -jar /usr/share/tempest/lib/tempest.jar
+GenericName=
+GenericName[zh]=
+Icon=/usr/share/tempest/images/tempest.png
+MimeType=
+Name=TempEst
+ServiceTypes=
+SwallowExec=
+SwallowTitle=
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=root
+

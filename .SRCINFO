@@ -1,0 +1,19 @@
+pkgbase = tempest-bin
+	pkgdesc = a tool for investigating the temporal signal and 'clocklikeness' of molecular phylogenies
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = http://tree.bio.ed.ac.uk/software/tempest/
+	arch = x86_64
+	license = GPL2
+	depends = jre-openjdk-headless
+	depends = jre-openjdk
+	depends = jdk-openjdk
+	depends = openjdk-doc
+	depends = openjdk-src
+	source = http://tree.bio.ed.ac.uk/download.php?id=102&num=3
+	source = tempest.desktop
+	sha256sums = 83e482a7ba946e38606cc3331765db45b4331337d92d030ebeb537e3e16fa44e
+	sha256sums = 2af28c04f9d96f046947efeab28c27552be88ac56af0d8f1a0db2e439a228c45
+
+pkgname = tempest-bin
+
