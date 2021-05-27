@@ -20,10 +20,8 @@ depends=(
 	'openjdk-src'
 )
 package() {
-    install -dm755 "$pkgdir"/usr/{bin,share/{jane,icons,applications}}
+    install -dm755 "$pkgdir"/usr/share/{jane,icons,applications}
     install -m 755 ${srcdir}/*.desktop ${pkgdir}/usr/share/applications
     install -m 755 ${srcdir}/*.png ${pkgdir}/usr/share/icons
     mv "$srcdir"/* "$pkgdir"/usr/share/jane
-    ln -s /usr/share/jane/lib/Jane.jar ${pkgdir}/usr/bin/Jane
-    ln -s /usr/bin/Jane /usr/bin/jane
 }
