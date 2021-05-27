@@ -1,6 +1,6 @@
 pkgbase = python-semantic-release
 	pkgdesc = Automatic semantic versioning for Python projects
-	pkgver = 7.15.4
+	pkgver = 7.15.5
 	pkgrel = 1
 	url = https://github.com/relekang/python-semantic-release
 	arch = any
@@ -21,8 +21,8 @@ pkgbase = python-semantic-release
 	depends = python-gitlab
 	depends = python-tomlkit
 	depends = python-dotty-dict
-	source = python-semantic-release-7.15.4.tar.gz::https://github.com/relekang/python-semantic-release/archive/v7.15.4.tar.gz
-	b2sums = 9cf048b086f8c120c95121211c732d77116e2a63f5351038949470c35b7b10628ec940bcf658b4ad69ebb11c21301eb740e53a9e6cd1da93fb21e03f723848b7
+	source = python-semantic-release-7.15.5.tar.gz::https://github.com/relekang/python-semantic-release/archive/v7.15.5.tar.gz
+	b2sums = a2592fd5abfd0d28938b65c178fd9165b464ca8ce8d857216d5f66368d080fdbe6b49306f6f0e8a7bcd519cd0f2fc2f653714c26580a5186fcaf80e9358dd872
 
 pkgname = python-semantic-release
 
