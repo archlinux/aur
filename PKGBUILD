@@ -27,6 +27,7 @@ md5sums=( "8064e2a0b9b1aaf4ef880694e4ae1709" "c725e9bee57d6a63ce27b829cfa1a03e" 
 
 build() {
     cd CCFG
+    echo "rootProject.name = 'CCFG';" > settings.gradle
     gradle jar
 }
 
