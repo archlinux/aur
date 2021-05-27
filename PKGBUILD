@@ -2,7 +2,7 @@
 pkgname=runebook-bin
 _pkgname=runebook
 __pkgname=RuneBook
-pkgver=1.14.1
+pkgver=1.14.2
 pkgrel=1
 pkgdesc="Arcane Rune Pages manager for League of Legends"
 arch=('x86_64')
