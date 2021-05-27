@@ -1,8 +1,8 @@
 # Maintainer: rustemb <rustemb@systemli.org>
 
 pkgname=shadowsocks-rust-git
-pkgver=r1165.b501ec6
-pkgrel=2
+pkgver=r1442.39b3567
+pkgrel=1
 pkgdesc='A Rust port of shadowsocks https://shadowsocks.org/ (git version)'
 arch=('any')
 url='https://github.com/shadowsocks/shadowsocks-rust'

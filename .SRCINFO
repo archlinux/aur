@@ -1,7 +1,7 @@
 pkgbase = shadowsocks-rust-git
 	pkgdesc = A Rust port of shadowsocks https://shadowsocks.org/ (git version)
-	pkgver = r1165.b501ec6
-	pkgrel = 2
+	pkgver = r1442.39b3567
+	pkgrel = 1
 	url = https://github.com/shadowsocks/shadowsocks-rust
 	arch = any
 	license = MIT
