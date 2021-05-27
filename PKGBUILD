@@ -4,7 +4,7 @@
 
 pkgname=minify
 pkgver=2.9.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Minifier CLI for HTML, CSS, JS, JSON, SVG and XML"
 arch=('x86_64')
 url="https://github.com/tdewolff/minify"
