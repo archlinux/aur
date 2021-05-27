@@ -1,7 +1,7 @@
 pkgbase = boram
 	pkgdesc = Cross-platform WebM converter
 	pkgver = 0.5.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Kagami/boram
 	arch = x86_64
 	license = CC0-1.0
@@ -11,6 +11,7 @@ pkgbase = boram
 	depends = mpv
 	depends = ffmpeg
 	depends = gconf
+	depends = gtk2
 	source = https://github.com/Kagami/boram/releases/download/v0.5.6/boram-v0.5.6-linux-x64.7z
 	source = git+https://github.com/Kagami/nacl_sdk.git
 	source = git+https://github.com/Kagami/boram.git#tag=v0.5.6
