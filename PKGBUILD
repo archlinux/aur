@@ -1,7 +1,7 @@
 # Maintainer: Aleksander Mietinen <aleksander at mietinen dot net>
 
 pkgname=seclists
-pkgver=2021.1
+pkgver=2021.2
 pkgrel=1
 pkgdesc="A collection of multiple types of lists used during security assessments, collected in one place."
 arch=('any')
@@ -9,8 +9,8 @@ url="https://github.com/danielmiessler/SecLists"
 license=('MIT')
 makedepends=('findutils' 'coreutils' 'tar')
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('ac44e33bc388f954e077db90714a2eab5d2c65e67400dda8b998ca555f9eb74f')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('0dd338665be3d29b7f6194bc59831ce7a42b7c9552e430c1bf1d605f7f33ba76')
 
 prepare() {
 	cd "$srcdir/SecLists-$pkgver"
