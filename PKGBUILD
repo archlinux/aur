@@ -1,25 +1,25 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=python-fonttools-git
-pkgver=4.18.0.r8.g26f3ef0
+pkgver=4.24.4.r1.gee2aa26
 pkgrel=1
-pkgdesc="A library to manipulate font files from Python"
-url="https://github.com/fonttools/fonttools"
-license=("MIT")
-arch=('x86_64')
-depends=("python")
-makedepends=("cython")
-optdepends=("python-lxml: faster backend for XML files reading/writing"
-            "python-fs: to read/write UFO source files, "
-            "python-brotli: to compress/decompress WOFF 2.0 web fonts"
-            "python-zopfli: faster backend fom WOFF 1.0 web fonts compression"
-            "python-scipy: for finding wrong contour/component order between different masters"
-            "python-matplotlib: for visualizing DesignSpaceDocument and resulting VariationModel"
-            "python-unicodedata2: for displaying the Unicode character names when dumping the cmap table with ttx"
-            "python-sympy: for symbolic font statistics analysis"
-            "python-pyqt5: for drawing glyphs with Qt's QPainterPath"
-            "python-reportlab: to drawing glyphs as PNG images"
-            "python-lz4: for graphite type tables in ttLib/tables")
+pkgdesc='A library to manipulate font files from Python'
+url='https://github.com/fonttools/fonttools'
+license=(MIT)
+arch=(x86_64)
+depends=(python)
+makedepends=(cython git python-setuptools)
+optdepends=('python-brotli: to compress/decompress WOFF 2.0 web fonts'
+            'python-fs: to read/write UFO source files'
+            'python-lxml: faster backend for XML files reading/writing'
+            'python-lz4: for graphite type tables in ttLib/tables'
+            'python-matplotlib: for visualizing DesignSpaceDocument and resulting VariationModel'
+            'python-pyqt5: for drawing glyphs with Ql’s QPainterPath'
+            'python-reportlab: to drawing glyphs as PNG images'
+            'python-scipy: for finding wrong contour/component order between different masters'
+            'python-sympy: for symbolic font statistics analysis'
+            'python-unicodedata2: for displaying the Unicode character names when dumping the cmap table with ttx'
+            'python-zopfli: faster backend fom WOFF 1.0 web fonts compression')
 provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
@@ -32,14 +32,14 @@ pkgver() {
 }
 
 build() {
-    cd $pkgname
+    cd "$pkgname"
     python setup.py build_ext --inplace
     python setup.py build
 }
 
 package() {
-    cd $pkgname
+    cd "$pkgname"
     python setup.py install --skip-build --root="$pkgdir" --optimize=1
-    install -D -m755 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    install -Dpm755 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
 
