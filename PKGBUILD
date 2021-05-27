@@ -20,7 +20,7 @@ optdepends=('apache: a supported application server'
 	    'mysql: MySQL database support'
 	    'postgresql: PostgreSQL database support'
             'php-imap: email bounce tracking system'
-            'php-iconv: for some encodings when handling excel files'
+#            'php-iconv: for some encodings when handling excel files'
             'php-gd: for CAPTCHAs and graphs'
             'php-sodium: for data encryption')
 #            'php-ldap: import survey participants using ldap')

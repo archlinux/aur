@@ -12,7 +12,6 @@ pkgbase = limesurvey
 	optdepends = mysql: MySQL database support
 	optdepends = postgresql: PostgreSQL database support
 	optdepends = php-imap: email bounce tracking system
-	optdepends = php-iconv: for some encodings when handling excel files
 	optdepends = php-gd: for CAPTCHAs and graphs
 	optdepends = php-sodium: for data encryption
 	backup = etc/webapps/limesurvey/config.php
