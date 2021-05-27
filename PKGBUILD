@@ -11,7 +11,7 @@ depends=('glib2' 'libnautilus-extension')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 source=("https://github.com/madmurphy/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}-with-configure.tar.gz")
 install="${pkgname}.install"
-sha256sums=('8c9f1959bf30fba1e235e7c2b3862bf9d6b16e4382832c5b127cfa9e3e4dc6e0')
+sha256sums=('864abe1eaebf6e4c0eb8a2ff412e5476c96d4139b743198cac1eb640b08dd5ec')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
