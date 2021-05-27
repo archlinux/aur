@@ -7,7 +7,7 @@ url='https://wiki.ros.org/mavros'
 pkgname='ros-noetic-mavros'
 pkgver='1.8.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('GPLv3, LGPLv3, BSD')
 
 ros_makedepends=(
@@ -53,9 +53,9 @@ depends=(
   gtest
 )
 
-_dir="mavros-${pkgver}/mavros"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mavlink/mavros/archive/${pkgver}.tar.gz")
-sha256sums=('b078a8cdbe5675b93a4e2dc68d71b8f39241942af053722778da1be5d5db3152')
+_dir="mavros-release-upstream-${pkgver}/mavros"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mavlink/mavros-release/archive/refs/tags/upstream/${pkgver}.tar.gz")
+sha256sums=('936569a2f3dc4a829187f957ba93c80a65925a4445e3407443d30f717bd93571')
 
 build() {
   # Use ROS environment variables
