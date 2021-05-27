@@ -1,0 +1,47 @@
+pkgbase = linux-ck-uksm-cjktty
+	pkgver = 5.12.7
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/Linux-ck
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.12.7.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.12.7.tar.sign
+	source = config
+	source = more-uarches-20210412.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20210412.tar.gz
+	source = http://ck.kolivas.org/patches/5.0/5.12/5.12-ck1/patch-5.12-ck1.xz
+	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+	source = 0002-UKSM.patch
+	source = 0003-CJKTTY.patch::https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v5.x/cjktty-5.12.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	b2sums = 7881dceb8a88dfc290ef8e175e31f6b7cba30c1b343883344915acda6b9b20484496511f1d2d9a7e8195621db3b4c93fdc16c1d5be5cb9b685d1d8940800ab58
+	b2sums = SKIP
+	b2sums = ccb7779df282b54d9acf59682eaa93a39f27276798d61d4c8be8a3b31e582a377c9d3278a500744a3ed089a337807f95a2d23ef821af2f4a7eec24540092b746
+	b2sums = 72194a32a06c43809d1272bd675890b6d27c6c54353150a366e8e2c50ad6eca6ee23c5d6281822965a228cfedfa07a60fe135d1b4f539e4a62728d4460cc0b0e
+	b2sums = c9f729ba1efe6f04e7b2c57d3999bc9675b577596dccb2f227e5b6e444285e1fdd270bf67c0fcf9f5808a4c3a4b1c7a5c13a76f754ad9b9447243ccbaf2ce6a3
+	b2sums = e1eccb5b6b728e3852ade55dae7a53b8b6bd5f0fb2a330b99e85bfa64abaa430cb714d301ed169df14a1f302a75d952992f0d8fa6ab02fa6716165bdf23b63aa
+	b2sums = 62147c71b76b9986b60df333267882f089c89997cef430c8864e521536d76a6d7679733cbbea163c31341a48ad589c11b98231f71aafe0eaf87f0a3a84add429
+	b2sums = 1f140c293d1ffdb13a38af1f636cf591ee1034702c9e3825ef7a12fff3ead79c6b9da1e2e099497c68b23cc7c690ce14bafb26d03c75648e27ab22b347f474a4
+
+pkgname = linux-ck-uksm-cjktty
+	pkgdesc = The Linux-ck kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler and the uksm patch, cjktty patch
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+
+pkgname = linux-ck-uksm-cjktty-headers
+	pkgdesc = Headers and scripts for building modules for Linux-ck-uksm-cjktty kernel
+	depends = linux-ck-uksm-cjktty
+
