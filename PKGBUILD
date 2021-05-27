@@ -27,6 +27,10 @@ _kyber_disable=y
 _2k_HZ_ticks=
 _1k_HZ_ticks=y
 _500_HZ_ticks=
+### Enable protect file mappings under memory pressure
+_mm_protect=y
+### Enable multigenerational LRU
+_lru_enable=y
 # Compile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
 #
@@ -50,7 +54,7 @@ pkgver=${_major}
 #_stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -64,7 +68,7 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/$_srcname.tar.xz"
         "${_patchsource}/arch-patches-v6/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_patchsource}/cacule-patches/cacule-5.12.patch"
         "${_patchsource}/cpu-patches-v2/0001-cpu-patches.patch"
-        "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
+        "${_patchsource}/futex-patches-v2/0001-futex-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/futex2-stable-patches-v3/0001-futex2-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/wine-esync-patches/0001-v5.12-winesync.patch"
         "${_patchsource}/zen-patches-v2/0001-zen-patches.patch"
@@ -84,11 +88,11 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/$_srcname.tar.xz"
         "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch" )
 
 sha512sums=('4896446ace0ed0edbdce47d79be35f913b9dc98f1004822ffbcbdb86775609fc51d71ef642640d1de909f59631824bcbdd70d28f79f431e992d46bbfdd861712'
-            'c1ee52bb64bc14ddcb8015626015932f6e3160f82ec1ef142f406e0aaf7e6af7dac14a024132d3960dc11485cd28e924ebc483abd0a8d302bc596854ebda0893'
+            'd73fd8a4e369bf455d1619912865297084c149c1db4ba7d2f0b9dcbac961922c0094c48c240dca85a82c96382ee648a87fc6ad30417df81f58c73ac1607ffa93'
             '1908055c446f04ef0a0a5a19579836d2f5dc60d7989677f85f084a7186a6327b240291feed8d25e320e72efa114b243a325362e2dbfbf7f4f3fb89bbdd3819be'
             '97e661d3fbd75a6e9edeb79a694f42c49174f317bd35ae25dd13d71797d29fca630e88e1440415faca05fb46935591965fae0dcc4365c80e3cefa3d8b615c3b8'
             '60bda2070739a52af4f81816ebda8f3520a8d75ea5e00f65a903a3416ae31edba56fe151f6a9e02dc90ec3be7854e9a62e10e72120d7148fd3838806d8b9e986'
-            '449570b8b9a04391cc2cc171cc806b3a132c6e969c7cedf9c4925d24244888e6f2e5afb6c551521fe62fcb7e2bf08cb8d396f9ec785ecfcdd5ea27dd9ffed4ea'
+            '4b7766c590a692a008a0daca73806a1671a81b6e2ed756aae96de4c4455505b04765568ae5e04645f89bf75bd5611e3b1bf5ededff47bb0708dbca91769b5ab7'
             'f0ae3cd8cc8237c620f2a069a48d1e156589c42ee6cb13b7fa54b7004cf9c940d4363c05706df3c231ff405bfb0488d9121c610c6583ae94ab732ecb11942b5b'
             '905f97cdff3e096552159a229d069d1b1418f4142b2927134110f504bfe0883309b3f29c2aeeb94c528b63e0eec7d0d69b44c3d498211c610811969cc4d07a56'
             '1c6cdf40009ce6c62b0a35cc7c2a74818b7169d32e18fb3c2bb8761762c15c579f64cb36f9076c4f78d3f88f077f6246ee75ba93f370cc40dae450d6d71117bb'
@@ -216,30 +220,36 @@ prepare() {
   		    scripts/config --disable CONFIG_MQ_IOSCHED_KYBER
   	    fi
 
+
     ### Enable protect file mappings under memory pressure
+        if [ -n "$_mm_protect" ]; then
+        	echo "Enabling protect file mappings under memory pressure..."
+        	scripts/config --enable CONFIG_UNEVICTABLE_FILE
+        	scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
+        	scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
+        fi
 
-        echo "Enabling protect file mappings under memory pressure..."
-        scripts/config --enable CONFIG_UNEVICTABLE_FILE
-        scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
-        scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
+            ### Enable multigenerational LRU
+        if [ -n "$_lru_enable" ]; then
+        	echo "Enabling multigenerational LRU..."
+        	scripts/config --enable CONFIG_HAVE_ARCH_PARENT_PMD_YOUNG
+        	scripts/config --enable CONFIG_LRU_GEN
+        	scripts/config --set-val CONFIG_NR_LRU_GENS 7
+        	scripts/config --set-val CONFIG_TIERS_PER_GEN 4
+        	scripts/config --enable CONFIG_LRU_GEN_ENABLED
+        	scripts/config --disable CONFIG_LRU_GEN_STATS
+        fi
 
-    ### Enable multigenerational LRU
-
-        echo "Enabling multigenerational LRU..."
-        scripts/config --enable CONFIG_HAVE_ARCH_PARENT_PMD_YOUNG
-        scripts/config --enable CONFIG_LRU_GEN
-        scripts/config --set-val CONFIG_NR_LRU_GENS 5
-        scripts/config --set-val CONFIG_TIERS_PER_GEN 3
-        scripts/config --enable CONFIG_LRU_GEN_ENABLED
-        scripts/config --disable CONFIG_LRU_GEN_STATS
-
+        echo "Enabling standard ZSTD compression ratio..."
+    		scripts/config --set-val CONFIG_KERNEL_ZSTD_LEVEL 19
+    		scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
   ### Enabling ZSTD COMPRESSION ##
-        echo "Set module compression to ZSTD"
-        scripts/config --enable CONFIG_MODULE_COMPRESS
-        scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
-        scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
-        scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
-        scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
+  #      echo "Set module compression to ZSTD"
+  #      scripts/config --enable CONFIG_MODULE_COMPRESS
+  #      scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
+  #      scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
+  #      scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
+  #      scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
 
   ### Enabling Cacule-Config ##
       echo "Enable CacULE CPU scheduler..."
@@ -270,7 +280,6 @@ prepare() {
       scripts/config --enable CONFIG_NTFS3_64BIT_CLUSTER
       scripts/config --enable CONFIG_NTFS3_LZX_XPRESS
       scripts/config --enable CONFIG_NTFS3_FS_POSIX_ACL
-  ### Enable ANBOX
       echo "Enable Anbox"
       scripts/config --module  CONFIG_ASHMEM
       scripts/config --enable  CONFIG_ANDROID_BINDER_IPC_SELFTEST
@@ -319,7 +328,6 @@ _package() {
     optdepends=('crda: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
-
 
   cd $_srcname
   local kernver="$(<version)"
