@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('go')
 optdepends=('bash-completion: command-line autocomplete with bash')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('084daec853c23bf13aeaed97c36544f2ad9a29ab1f98e0f2709da2dc909da493')
+sha256sums=('3d0edbf9034dbbc47cffc7e3655b186b3dbca1aab05c3d4f78799182298f35b6')
 
 prepare() {
   cd "$pkgname-$pkgver"
