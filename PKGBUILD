@@ -10,7 +10,7 @@ options=(!strip)
 makedepends=("yarn" "nodejs<16.0.0")
 depends=("electron" "nodejs")
 source=("${url}archive/refs/tags/v${pkgver}.zip" "sleek.desktop" "sleek")
-sha512sums=('a6900d850193248cbbc43aa3c79c850bd25b63459cc4341ae8cf8e86848c19355cb9713987152f882b46eefd951eeda7063ba94de47066f3c0461eb75d40436f'
+sha512sums=('04d2bf6c4d5d0f424218ad9067ae0ef53c62daa1290ea9a43dedbf9edced82cd937b66fd0eccbc547f625c0d47143d0e121cb471b376eca247a1ada0b40ec553'
             '605f49606eb0656846ac5dc3b97eca0acb3a781b07c71aff1e027935d5e8ea569d290c95d67bd7347ddd133c1643e6f3c6fe36bd1b52f49e528b34a458afe316'
             'ea1d322bd56c7944a9eae97f4968a6a2e937b510eb3c1c21266428450c5b2ddcd8576718d0b66b69fbce5694ba94e80a692d04bda1e8c2b24a8d814a5ed50963')
 
