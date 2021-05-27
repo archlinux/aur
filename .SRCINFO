@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-mavros-extras
 	pkgdesc = ROS - Extra nodes and plugins for MAVROS.
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/mavros_extras
 	arch = i686
 	arch = x86_64
@@ -32,8 +32,8 @@ pkgbase = ros-noetic-mavros-extras
 	depends = ros-noetic-visualization-msgs
 	depends = ros-noetic-sensor-msgs
 	depends = geographiclib
-	source = ros-noetic-mavros-extras-1.8.0.tar.gz::https://github.com/mavlink/mavros/archive/1.8.0.tar.gz
-	sha256sums = b078a8cdbe5675b93a4e2dc68d71b8f39241942af053722778da1be5d5db3152
+	source = ros-noetic-mavros-extras-1.8.0.tar.gz::https://github.com/mavlink/mavros-release/archive/refs/tags/upstream/1.8.0.tar.gz
+	sha256sums = 936569a2f3dc4a829187f957ba93c80a65925a4445e3407443d30f717bd93571
 
 pkgname = ros-noetic-mavros-extras
 
