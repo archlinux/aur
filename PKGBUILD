@@ -1,7 +1,7 @@
 # Maintainer: HRKings <hrkings@***.com>
 pkgname=pokemonsay-newgenerations-git
 _pkgname=pokemonsay-newgenerations
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Brings pokemon to the terminal using the power of cowsay."
 arch=(any)
