@@ -27,8 +27,12 @@ build(){
 	npm run pack:dir
 }
 package(){
-	_arch=$(node -e "os=require('os'); console.log(os.arch());")
-	cd ${srcdir}/${pkgname}/build/linux-${_arch}-unpacked
+	_arch=$(node -e "os=require('os'); console.log(os.arch());")-
+	if [ ${_arch}==x64 ]
+	then
+		_arch=""
+	fi
+	cd ${srcdir}/${pkgname}/build/linux-${_arch}unpacked
 	mkdir -p ${pkgdir}/opt/${pkgname//-git/}
 	cp -r * ${pkgdir}/opt/${pkgname//-git/}
 	mkdir -p ${pkgdir}/usr/bin
