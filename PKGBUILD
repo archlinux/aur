@@ -25,5 +25,5 @@ package() {
     install -m 755 ${srcdir}/*.png ${pkgdir}/usr/share/icons
     mv "$srcdir"/* "$pkgdir"/usr/share/jane
     ln -s /usr/share/jane/lib/Jane.jar ${pkgdir}/usr/bin/Jane
-    ln -s /usr/bin/Jane ln -s /usr/bin/jane
+    ln -s /usr/bin/Jane /usr/bin/jane
 }
