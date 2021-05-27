@@ -1,10 +1,9 @@
 _name="pytorch_wavelets"
-pkgname=python-pytorch-${_name}
-provides=("${pkgname}")
+pkgname=python-${_name}
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="2D Wavelet Transforms in Pytorch"
-url="https://github.com/francois-rozet/${_name}"
+url="https://github.com/fbcotter/${_name}"
 license=('MIT')
 arch=('x86_64')
 depends=('python-pytorch' 'python-pywavelets')
