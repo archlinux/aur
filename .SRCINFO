@@ -1,16 +1,16 @@
 pkgbase = ca-certificates-cacert
 	pkgdesc = CAcert.org root certificates
-	pkgver = 20140824
-	pkgrel = 5
+	pkgver = 20210511
+	pkgrel = 1
 	url = https://www.cacert.org/index.php?id=3
 	arch = any
 	license = custom:RDL
 	depends = ca-certificates-utils
-	source = CAcert.org_root.crt::http://www.cacert.org/certs/root.crt
-	source = CAcert.org_class3.crt::http://www.cacert.org/certs/class3.crt
+	source = CAcert.org_root_X0F.crt::http://www.cacert.org/certs/root_X0F.crt
+	source = CAcert.org_class3_X0E.crt::http://www.cacert.org/certs/class3_X0E.crt
 	source = LICENSE
-	sha512sums = 7350f2604e9839f1c2d02926fd4299468ffe2c456ba57a396575cfbb5b2b91fa3cb0e049f6cf3e1406d02014e420e263d6b0c4a59c51d0f03a735bfaa56ec7cc
-	sha512sums = 416ceb36aa399f5116c617d470545a04e56bba2282e18fa7c1cc68271d8ac2e7b5787c7ea0f759794351f6e1ad77c76301664db10587046b2b269b274098845c
+	sha512sums = f04eb3ff2a1741970dbc3e66e5fcd8f22dd7a66384d91bd61d82522958599d4bd85476125ef092ece1f9ee7868d87802ed965bbacb59f9cf467fb627013fe9c7
+	sha512sums = 1d370a9f2dc36ef8de59650d8d589fca62ebf3d7cbc9081fc1c5de67a26a2f4e8a6903ccb488d64cb033f7444d1f613d00451f2d0e8a77a429da82d5ddb41cdf
 	sha512sums = ad140136e3529f67d0a2e5ac19d9a97ee80c5305aa793d663f68dd7ab4fdaf711490a78b49172f0c1414e2d7ebfe3d683e649bae047980bfacd7d4a2b7f6d172
 
 pkgname = ca-certificates-cacert
