@@ -1,6 +1,6 @@
 pkgbase = wiki-monkey
 	pkgdesc = Wiki Monkey - MediaWiki (ArchWiki-optimized) bot and editor-assistant user script (server-enabled version).
-	pkgver = 5.3.3
+	pkgver = 5.3.4
 	pkgrel = 1
 	url = https://github.com/kynikos/wiki-monkey/wiki
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = wiki-monkey
 	depends = python-flask-migrate
 	depends = python-marshmallow-sqlalchemy
 	optdepends = python-pyopenssl: use ad-hoc SSL certificates instead of generating one
-	source = https://files.pythonhosted.org/packages/source/w/wiki-monkey/wiki-monkey-5.3.3.tar.gz
-	sha256sums = e00f80cf93761ed7ea4c268a275ae038a53acba5af942ed585f4c02b3357ff56
+	source = https://files.pythonhosted.org/packages/source/w/wiki-monkey/wiki-monkey-5.3.4.tar.gz
+	sha256sums = 13e8087e7a7e8ba5fe924dce273453d12be80ea74bf61a483bac2bd4dd8ae86a
 
 pkgname = wiki-monkey
 
