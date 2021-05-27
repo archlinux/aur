@@ -1,13 +1,12 @@
 pkgbase = nautilus-annotations-git
 	pkgdesc = Annotate files and directories
-	pkgver = r11.f3eb7e6
+	pkgver = r12.d482f80
 	pkgrel = 1
 	url = https://gitlab.gnome.org/madmurphy/nautilus-annotations
 	install = nautilus-annotations-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = intltool
 	depends = glib2
 	depends = gtksourceview4
 	depends = libnautilus-extension
