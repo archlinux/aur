@@ -1,28 +1,35 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=deckmaster
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="An application to control your Elgato Stream Deck"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/muesli/${pkgname}"
 license=('MIT')
 depends=('ttf-roboto')
-makedepends=('go')
+makedepends=('git' 'go')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('082e24aca3304859f2e23e13f0bd7bf5c33cb3ac7f5e391f65c380e6c86e72dd')
+sha256sums=('0628b30e8d68a08d5783dcfe4beaff57f2c066e1024ce98db42fda84ca305298')
 
 build() {
-    cd "$pkgname-$pkgver"
+    local commit
+    local extraflags
+    commit=$(zcat ${pkgname}-${pkgver}.tar.gz | git get-tar-commit-id)
+    extraflags="-X main.Version=${pkgver} -X main.CommitSHA=${commit}"
 
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
+    cd "$pkgname-$pkgver"
     go build \
-        -ldflags "-X main.Version=$pkgver" \
+        -trimpath \
+        -buildmode=pie \
+        -mod=readonly \
+        -modcacherw \
+        -ldflags "${extraflags} -extldflags \"${LDFLAGS}\"" \
         -o "$pkgname" .
 }
 
