@@ -10,7 +10,7 @@ _completion_checksums=(SKIP SKIP SKIP)
 # This PKGBUILD is not a full PKGBUILD
 # pkgname, pkgver, source, and sha1sums are to be generated
 pkgdesc='Create a filesystem tree from YAML'
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 license=(Apache-2.0)
 url='https://github.com/KSXGitHub/parallel-disk-usage'

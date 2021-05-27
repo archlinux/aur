@@ -1,7 +1,7 @@
 pkgbase = parallel-disk-usage-bin
 	pkgdesc = Create a filesystem tree from YAML
 	pkgver = 0.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KSXGitHub/parallel-disk-usage
 	arch = x86_64
 	license = Apache-2.0
