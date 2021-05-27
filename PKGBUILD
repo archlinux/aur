@@ -1,7 +1,7 @@
 # Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
 
 pkgname=polly
-pkgver=11.1.0
+pkgver=12.0.0
 pkgrel=1
 pkgdesc="High-level loop and data-locality optimizer and optimization infrastructure for LLVM"
 arch=('x86_64')
@@ -11,22 +11,17 @@ depends=('gcc-libs')
 makedepends=('llvm' 'cmake' 'ninja' 'python-sphinx')
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
 source=($_source_base/$pkgname-$pkgver.src.tar.xz{,.sig}
-        $_source_base/llvm-$pkgver.src.tar.xz{,.sig}
-        support-linking-ScopPassManager-against-LLVM-dylib.patch)
-sha256sums=('580fd3b0b9e1247c3e40afa3067ac5bea70e9815750c5bd448fb7428e310390c'
+        $_source_base/llvm-$pkgver.src.tar.xz{,.sig})
+sha256sums=('0d9afc76b262f89d0fc6cb4f155ad25be5bf0554d14f96208ec81a51a44fb4c7'
             'SKIP'
-            'ce8508e318a01a63d4e8b3090ab2ded3c598a50258cc49e2625b9120d4c03ea5'
-            'SKIP'
-            'ce3c528eabef1ef3a4c3ca69a527b98b4f2e924069f24e68ced5462c95263ba6')
+            '49dc47c8697a1a0abd4ee51629a696d7bfe803662f2a7252a3b16fc75f3a8b50'
+            'SKIP')
 validpgpkeys+=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D') # Hans Wennborg <hans@chromium.org>
 validpgpkeys+=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com>
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver.src"
   mkdir build
-
-  # https://reviews.llvm.org/D85281
-  patch -Np2 -i ../support-linking-ScopPassManager-against-LLVM-dylib.patch
 }
 
 build() {
