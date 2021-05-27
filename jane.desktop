@@ -3,7 +3,6 @@ Categories=
 Encoding=UTF-8
 Exec=java -jar /usr/share/jane/lib/Jane.jar
 GenericName=
-GenericName[zh]=
 Icon=/usr/share/icons/jane.png
 MimeType=
 Name=Jane
