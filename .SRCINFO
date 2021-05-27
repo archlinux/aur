@@ -1,7 +1,7 @@
 pkgbase = prideflags-wallpapers
 	pkgdesc = Pride Flags Wallpapers
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.relms.dev/Relms/pride-flags-wallpapers
 	arch = any
 	license = custom:none

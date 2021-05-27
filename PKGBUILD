@@ -2,7 +2,7 @@
 
 pkgname=prideflags-wallpapers
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Pride Flags Wallpapers'
 arch=(any)
 url='https://code.relms.dev/Relms/pride-flags-wallpapers'
