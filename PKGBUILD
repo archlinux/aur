@@ -1,15 +1,15 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-compute-runtime-bin
-pkgver=21.20.19883
+pkgver=21.21.19914
+_gmmver=21.1.3
+_igcver=1.0.7423
+_lzver="1.1.${pkgver##*.}"
 pkgrel=1
 pkgdesc='Intel Graphics Compute Runtime for oneAPI Level Zero and OpenCL Driver (pre-compiled binaries)'
 arch=('x86_64')
 url='https://github.com/intel/compute-runtime/'
 license=('MIT')
-_igcver=1.0.7423
-_lzver="1.1.${pkgver##*.}"
-_gmmver=21.1.3
 depends=("intel-graphics-compiler-bin=1:${_igcver}")
 optdepends=('libva: for cl_intel_va_api_media_sharing'
             'libdrm: for cl_intel_va_api_media_sharing')
@@ -27,10 +27,10 @@ noextract=("intel-opencl_${pkgver}_amd64.deb"
            "intel-ocloc_${pkgver}_amd64.deb"
            "intel-level-zero-gpu_${_lzver}_amd64.deb"
            "${pkgname}-${pkgver}-gmmlib-${_gmmver}_amd64.deb")
-sha256sums=('94cfa19b9af03f120ddad90d28a55a8b49435f16a8cc0d1ed7537b79ed916aa2'
-            '6547596b74d882042513b013545b7b5fb5f1620bba3f223321ace8b10bfa69b0'
-            'd8274cf90e30a216bd274cd4a3cd7dcdff2a200a1a35896cca75fe19da337ae1'
-            'dc82a39a0258340c5f019a5979cfd72eaed5fda9469f12c516ef8551d1ac5b1b'
+sha256sums=('fb21222589e85387b5a26a0d611c24becc929b271efaa40613b85e2d080c57fa'
+            '4ae7ac49826216b65196be58f25759fec9be45dad7669aa24ca91497a8ee7501'
+            '1784e2d49162d61db768548d9b9bd1c525d59d5eeedd1dce149dfeff5f8174c7'
+            '99f7ad3b2b4fc1e3e86a943e8401d5a70b86a52db04338492440207a2b78fcf8'
             'c459a95243075296c72a40674c449ffcc314ed6d21ad0291c1603dbc11f4a74e'
             '73783f7cd3b35aa7d23fa64e400c8c6a6cf6256b62b35e4827094719a9acb172')
 
@@ -63,14 +63,13 @@ package() {
     mv "${pkgdir}/usr/local"/{bin,include,lib} "${pkgdir}/usr"
     cp -dr --no-preserve='ownership' gmmlib-devel/usr/include/* "${pkgdir}/usr/include"
     cp -dr --no-preserve='ownership' gmmlib-devel/usr/lib/pkgconfig "${pkgdir}/usr/lib"
-    install -D -m644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     chown -R root:root "$pkgdir"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     ln -s "$(find "${pkgdir}/usr/lib" -regex '.*libigdgmm.so.[0-9]*' -exec basename {} \;)" "${pkgdir}/usr/lib/libigdgmm.so"
     ln -s "$(find "${pkgdir}/usr/lib" -regex '.*libze_intel_gpu.so.[0-9]*' -exec basename {} \;)" "${pkgdir}/usr/lib/libze_intel_gpu.so"
     sed -i 's|/usr/local|/usr|' "${pkgdir}/etc/OpenCL/vendors/intel.icd"
     
     local _gmmlibver
-    _gmmlibver="$(find "${pkgdir}/usr/lib" -type f -name 'libigdgmm.so.*.*.*' -exec basename {} +)"
-    _gmmlibver="${_gmmlibver#*.so.}"
-    sed -i "/^Version:/s/^.*$/Version: ${_gmmlibver}/" "${pkgdir}/usr/lib/pkgconfig/igdgmm.pc"
+    _gmmlib="$(find "${pkgdir}/usr/lib" -type f -name 'libigdgmm.so.*.*.*' -exec basename {} +)"
+    sed -i "/^Version:/s/^.*$/Version: ${_gmmlib#*.so.}/" "${pkgdir}/usr/lib/pkgconfig/igdgmm.pc"
 }
