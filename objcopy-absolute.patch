@@ -29,7 +29,7 @@ Index: b/stage1/Makefile.am
  SUFFIXES = .exec
  .exec:
 -	$(OBJCOPY) -O binary $< $@
-+	$(OBJCOPY) -O binary -R .note -R .comment -R .note.gnu.build-id $< $@
++	$(OBJCOPY) -O binary -R .note* -R .comment* $< $@
 Index: b/stage2/Makefile.am
 ===================================================================
 --- a/stage2/Makefile.am
@@ -39,4 +39,4 @@ Index: b/stage2/Makefile.am
  SUFFIXES = .exec
  .exec:
 -	$(OBJCOPY) -O binary $< $@
-+	$(OBJCOPY) -O binary -R .note -R .comment -R .note.gnu.build-id $< $@
++	$(OBJCOPY) -O binary -R .note* -R .comment* $< $@

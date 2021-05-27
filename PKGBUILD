@@ -5,7 +5,7 @@
 pkgname=grub-legacy
 _srcname=grub
 pkgver=0.97
-pkgrel=26
+pkgrel=27
 pkgdesc="A GNU multiboot boot loader"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -80,7 +80,7 @@ sha1sums=('2580626c4579bd99336d3af4482c346c95dac4fb'
           '6a880733ad84ffebeef05515ebdf1ea451a4d054'
           '02f13de04b932093d07f9a52adf20df7f0468654'
           '8f6f13c0f752e20e690337488a178286ef1c381d'
-          '930e057794b0991557e769bc5e16f242972a70c5'
+          '07558de2935f4eefec243a6966095b68aa3b6e70'
           '610243204b776901a9696ab65c0729ec8fdb84d1'
           'c5aab6d3a5269054fc2e7f110ddc180d5595604d'
           '721bb91d381ee3e51c2e2af0b4cfa004032e15b1'
