@@ -11,7 +11,7 @@ depends=('glib2' 'gtksourceview4' 'libnautilus-extension')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 source=("https://github.com/madmurphy/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}-with-configure.tar.gz")
 install="${pkgname}.install"
-sha256sums=('f1a306bfee4d5b635319a2caa5a6c145547c1fcbc6095cab5a2a24702e2bd985')
+sha256sums=('bed9d2ca1815c078c94de8c10d54ebbc42093754569771d07ff8dd5cce2a0ccc')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"

@@ -13,7 +13,7 @@ pkgbase = nautilus-annotations
 	conflicts = nautilus-annotations-git
 	conflicts = nautilus-annotations-bin
 	source = https://github.com/madmurphy/nautilus-annotations/releases/download/0.8.0/nautilus-annotations-0.8.0-with-configure.tar.gz
-	sha256sums = f1a306bfee4d5b635319a2caa5a6c145547c1fcbc6095cab5a2a24702e2bd985
+	sha256sums = bed9d2ca1815c078c94de8c10d54ebbc42093754569771d07ff8dd5cce2a0ccc
 
 pkgname = nautilus-annotations
 
