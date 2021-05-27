@@ -1,14 +1,14 @@
-# Maintainer: Vyacheslav Konovalov <crabvk@protonmail.com>
+# Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=flux
-pkgver=0.113.0
+pkgver=0.117.0
 pkgrel=1
 pkgdesc='Lightweight scripting language for querying databases (like InfluxDB) and working with data'
-arch=(i686 x86_64 arm64)
+arch=('i686' 'x86_64' 'arm64')
 url='https://github.com/influxdata/flux'
-license=(MIT)
-depends=(gcc-libs)
-makedepends=(git go cargo clang)
+license=('MIT')
+depends=('gcc-libs')
+makedepends=('git' 'go' 'cargo' 'clang')
 source=("git+https://github.com/influxdata/flux#tag=v$pkgver")
 sha512sums=('SKIP')
 
