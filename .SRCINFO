@@ -1,7 +1,7 @@
 pkgbase = megacmd
 	pkgdesc = MEGA Command Line Interactive and Scriptable Application
 	pkgver = 1.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/meganz/MEGAcmd
 	arch = any
 	license = custom
@@ -18,7 +18,6 @@ pkgbase = megacmd
 	depends = readline
 	depends = libmediainfo
 	depends = pcre
-	depends = ffmpeg
 	depends = libuv
 	source = megacmd-1.4.0.tar.gz::https://github.com/meganz/MEGAcmd/archive/1.4.0_Linux.tar.gz
 	source = mega-sdk-2337aca38daaca6deedd04d8ea400293503f00ff.tar.gz::https://github.com/meganz/sdk/archive/2337aca38daaca6deedd04d8ea400293503f00ff.tar.gz

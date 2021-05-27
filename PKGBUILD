@@ -3,13 +3,13 @@
 
 pkgname=megacmd
 pkgver=1.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="MEGA Command Line Interactive and Scriptable Application"
 url="https://github.com/meganz/MEGAcmd"
 arch=('any')
 license=('custom')
 depends=('crypto++' 'zlib' 'sqlite' 'openssl' 'curl' 'c-ares' 'freeimage' 'libsodium'
-         'readline' 'libmediainfo' 'pcre' 'ffmpeg' 'libuv')
+         'readline' 'libmediainfo' 'pcre' 'libuv')
 makedepends=('git' 'autoconf')
 _sdkhash="2337aca38daaca6deedd04d8ea400293503f00ff"
 source=(
@@ -30,7 +30,9 @@ build() {
   cd "MEGAcmd-${pkgver}_Linux"
 
   ./autogen.sh
-  ./configure --prefix=/usr
+  ./configure \
+    --prefix=/usr \
+    --without-ffmpeg # disabled until #523 is fixed (-ffmpeg dep)
   make
 }
 
