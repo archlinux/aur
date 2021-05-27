@@ -1,0 +1,19 @@
+[Desktop Entry]
+Categories=
+Encoding=UTF-8
+Exec=java -jar /usr/share/spread3/spread3.jar
+GenericName=
+GenericName[zh]=
+Icon=/usr/share/spread3/spread3.png
+MimeType=
+Name=SPREAD3
+Name[zh]=SPREAD3
+ServiceTypes=
+SwallowExec=
+SwallowTitle=
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=root
+

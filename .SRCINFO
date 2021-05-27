@@ -1,0 +1,19 @@
+pkgbase = spread3
+	pkgdesc = a user-friendly application to analyze and visualize pathogen phylodynamic reconstructions resulting from Bayesian inference of sequence and trait evolutionary processes
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = https://rega.kuleuven.be/cev/ecv/software/SpreaD3
+	arch = x86_64
+	license = custom
+	depends = jre-openjdk-headless
+	depends = jre-openjdk
+	depends = jdk-openjdk
+	depends = openjdk-doc
+	depends = openjdk-src
+	source = https://rega.kuleuven.be/cev/ecv/software/spread3_files/spread3-v0-9-6.jar
+	source = spread3.desktop
+	sha256sums = 4021b6dea480bec88c17666088c47f3ec1135c8f6ea7d9bb6cc21639ffc7956f
+	sha256sums = d3083d2471aca7cfb8e8a7da13f998bbbd94ce73c52a190fdfe0681500732191
+
+pkgname = spread3
+
