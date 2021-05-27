@@ -1,8 +1,8 @@
 # Maintainer: Vojtech Kral ❬vojtech%kral.hk❭
 
 pkgname=bard
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Creates PDF and HTML songbooks out of easy-to-write Markdown sources."
 arch=('x86_64')
 url="https://github.com/vojtechkral/bard"
@@ -11,19 +11,17 @@ depends=()
 optdepends=('texlive-bin: TeX engine (generate PDFs) '
             'tectonic: Alternative TeX engine (generate PDFs) ')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vojtechkral/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('c55cb0e263e721c7faddb670493b3ad29a1e040e973e1be58fefef510b0a9e8c')
+sha256sums=('05011671d8bce6436985cd34d73ffb2c4c8980bf3a4b8891cd5dd07df4176705')
 
 build() {
   cd "$pkgname-$pkgver"
   cargo build --release --locked
 }
 
-# Not using check as that would require xelatex and tectonic
-# to build the default and example projects...
-# check() {
-#   cd "$pkgname-$pkgver"
-#   cargo test --release --locked
-# }
+check() {
+  cd "$pkgname-$pkgver"
+  cargo test --release --locked
+}
 
 package() {
 	cd "$pkgname-$pkgver"
