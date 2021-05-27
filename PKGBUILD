@@ -81,5 +81,9 @@ package() {
   # Remove Debian specific files
   rm -rf "${pkgdir}"/etc/initramfs
   rm -rf "${pkgdir}"/etc/kernel
+
+  # Remove other things you *probably* do not need (comment if you need them)
+  rm -rf "${pkgdir}"/boot/*.bmp
+  rm -rf "${pkgdir}"/boot/*.dat
 }
 
