@@ -2,12 +2,12 @@ Index: VSS/gnat/vss_config.gpr
 ===================================================================
 --- VSS.orig/gnat/vss_config.gpr
 +++ VSS/gnat/vss_config.gpr
-@@ -31,6 +31,8 @@ abstract project VSS_Config is
+@@ -34,6 +34,8 @@ abstract project VSS_Config is
     Ada_Coverage_Switches := ();
     Linker_Options := ();
  
 +   for Library_Kind use "static-pic";
 +
-    case Build_Mode is
-       when "prod" =>
-          Ada_Switches := (
+    Object_Dir       := "../.objs/" & Superproject;
+    Tests_Object_Dir := "../../.objs/" & Superproject & "/tests";
+ 
