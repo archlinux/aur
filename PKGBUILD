@@ -2,7 +2,7 @@
 
 _pkgname=WowUp
 pkgname=${_pkgname,,}
-_pkgver=2.3.0
+_pkgver=2.3.1
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc='WowUp the World of Warcraft addon updater'
@@ -17,7 +17,7 @@ source=(
     wowup.desktop
     run_wowup.sh
 )
-sha256sums=('a5157e08cbec7c457bd11cf7e4ed1c7dd1341766a54334626a70f7234a098a05'
+sha256sums=('0fc1f1c1e797ae897d0bda8f3627b9b5834bac2ebae0b7870a7111e9618e6b66'
             'f8e0bbe6c138997f1dc1d9dfb83773cc6a8c4f6af254a73194a8874e078746b9'
             '154da83623df19a3224f9777db0375f386ea1b9c108ba0fe84213be1cef56493')
 
