@@ -1,6 +1,6 @@
 pkgbase = chipon
 	pkgver = 1.0.17
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.chipon-ic.com/
 	arch = x86_64
 	groups = chipon
@@ -12,7 +12,7 @@ pkgbase = chipon
 	source = chipon-driver.install
 	sha256sums = c0a4469b78618712c75802a33a06f64f8f01bec1b6629af75a85095f8f8ecbc1
 	sha256sums = 2879a8063a7037ca8658ffcb96c8611274decc3c0fe2a97a5918f896451b7dbd
-	sha256sums = 1986c80f76f0f6d17f736f6b67f673348c2f22b13ca33ee38587e7c7994cd116
+	sha256sums = 7fad3b3685d79277d3122439126fdd3a1f443f151fa987d219c383d37b59f12c
 	sha256sums = e7ab8cea2aacbda3122e15da4c9d0833784f2c84f9b93333705e24b6056e8d34
 
 pkgname = chipon
