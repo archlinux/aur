@@ -1,7 +1,7 @@
 # Maintainer: PumpkinCheshire <sollyonzou@gmail.com>
 
 pkgname=rife-ncnn-vulkan-bin
-pkgver=20210516
+pkgver=20210520
 pkgrel=1
 pkgdesc="RIFE, Real-Time Intermediate Flow Estimation for Video Frame Interpolation implemented with ncnn library."
 arch=('x86_64')
