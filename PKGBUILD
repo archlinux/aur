@@ -1,7 +1,7 @@
 # Maintainer Xuanwo <xuanwo@archlinucn.org>
 pkgname=clickup
 pkgver=2.0.22
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop app for clickup.com"
 arch=('x86_64')
 url="https://clickup.com"
@@ -19,7 +19,7 @@ prepare() {
 }
 
 package() {
-  install -Dm755 $_filename "$pkgdir/opt/$_filename"
+  install -Dm755 $_filename "$pkgdir/opt/${pkgname}/$_filename"
 
   mkdir -p "${pkgdir}/usr/bin"
   ln -s "/opt/${pkgname}/$_filename" "${pkgdir}/usr/bin/${pkgname}"
