@@ -1,7 +1,7 @@
 pkgbase = superslicer-prerelease-bin
 	pkgdesc = G-code generator for 3D printers (Creality, RepRap, Makerbot, Ultimaker etc.) (binary AppImage)
 	pkgver = 2.3.56.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/supermerill/SuperSlicer
 	arch = x86_64

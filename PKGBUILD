@@ -5,7 +5,7 @@ pkgver=2.3.56.0
 _pkgtag=$pkgver
 #_appimage=SuperSlicer-ubuntu_18.04-$_pkgtag.AppImage
 _appimage=SuperSlicer-ubuntu_18.04-2.2.56.0.AppImage #Misnamed
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="G-code generator for 3D printers (Creality, RepRap, Makerbot, Ultimaker etc.) (binary AppImage)"
 arch=("$CARCH")
@@ -30,7 +30,7 @@ prepare() {
 build() {
     # Adjust .desktop so it will work outside of AppImage container
     sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/superslicer|"\
-        "squashfs-root/SuperSlicer.desktop"
+        "squashfs-root/Slic3r.desktop"
     # Fix permissions; .AppImage permissions are 700 for all directories
     chmod -R a-x+rX squashfs-root/resources
 }
@@ -40,7 +40,7 @@ package() {
     install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${_appimage}"
 
     # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/SuperSlicer.desktop"\
+    install -Dm644 "${srcdir}/squashfs-root/Slic3r.desktop"\
             "${pkgdir}/usr/share/applications/SuperSlicer.desktop"
 
     # Icon images
