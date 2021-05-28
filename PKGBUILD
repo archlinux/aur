@@ -1,15 +1,16 @@
-# Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
+# Maintainer: Steven Allen <steven@stebalien.com>
+# Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=rootlesskit
-pkgver=0.14.1
-pkgrel=2
+pkgver=0.14.2
+pkgrel=1
 pkgdesc='Native "fake root" for implementing rootless containers.'
 arch=('x86_64' 'aarch64')
 url="https://github.com/rootless-containers/rootlesskit"
 license=('Apache 2.0')
 makedepends=('go')
 source=("https://github.com/rootless-containers/rootlesskit/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('d6140c3c15dfe277f18c85ec8d3e7b98')
+sha256sums=('b7c5ee94af852c65116ae480714751ada3ba9cbb68c3ee7d01a76f644498b852')
 
 prepare(){
   cd "$pkgname-$pkgver"
