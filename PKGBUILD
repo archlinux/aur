@@ -2,7 +2,7 @@
 pkgname=solana  
 pkgver=1.6.10
 _splver=0.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast, secure, and censorship resistant blockchain."
 url="https://www.solana.com"
 arch=('i686' 'x86_64')
