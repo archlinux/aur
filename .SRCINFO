@@ -1,6 +1,6 @@
 pkgbase = ovh-ttyrec-git
 	pkgdesc = Enhanced (but compatible) version of the classic ttyrec
-	pkgver = v1.1.6.3.r0.gb8bdaab
+	pkgver = v1.1.6.7.r1.ga13ca74
 	pkgrel = 1
 	url = https://github.com/ovh/ovh-ttyrec
 	arch = x86_64
