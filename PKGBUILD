@@ -6,12 +6,12 @@
 # If you want to turn on additional patches there are switches below.
 pkgname=unreal-engine
 pkgver=4.26.2
-pkgrel=3
+pkgrel=4
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=(x86_64)
 url=https://www.unrealengine.com/
 makedepends=(mono mono-msbuild dos2unix git openssh)
-depends=(icu sdl2 python python3 lld xdg-user-dirs)
+depends=(icu sdl2 python lld xdg-user-dirs ccache)
 optdepends=('qt5-base: qmake build system for projects'
             'cmake: build system for projects'
             'qtcreator: IDE for projects'
@@ -28,6 +28,7 @@ source=(com.unrealengine.UE4Editor.desktop
 	compile_and_regenerate.patch
 	processor_multiplier.patch
 	stop_mono_clone.patch
+	march_native.patch
 	BuildConfiguration.xml)
 sha256sums=('15e9f9d8dc8bd8513f6a5eca990e2aab21fd38724ad57d213b06a6610a951d58'
             '8042bed3405298b5a4357068dd6b22a5a8a0f19def64b4f61ed0362fb46cb00d'
@@ -36,17 +37,19 @@ sha256sums=('15e9f9d8dc8bd8513f6a5eca990e2aab21fd38724ad57d213b06a6610a951d58'
             '7e53beb5818ceadb765689ad8e1baf55ce1d6afe8a9d6884b6f2bd121083c3f7'
             'a129607acc1ea6a48ee5af073da6bd9318176d07e91e743ce93662065f7288dd'
             'aa9eb83c9f58c539d3cd43e919a4ebd6714c0aa2d32eb9b320049cf04dd01587'
+            '381ae0ba58261914d47b52342085fbcc0368c14d0fa24b07da7812d090a47b1f'
             '7cfc5ef5f7842d5e0a574938226e54361529b2fb5c68606c0e099352a513f84c')
 options=(!strip staticlibs) # Package is 3 Gib smaller with "strip" but it takes a long time and generates many warnings
 
 # Set options to anything that is not null to enable them.
-_system_compiler= 	# for the system compiler you'll need to set LINUX_MULTIARCH_ROOT 
+_system_compiler=y 	# for the system compiler you'll need to set LINUX_MULTIARCH_ROOT 
 		   	# as an environment to /usr/sbin compile projects after building.
 			# The system compiler should work for everything in engine now.
-_ccache_support=       # Patches for ccache. More optimizations might be needed.
+_ccache_support=y       # Patches for ccache. More optimizations might be needed.
 _system_mono= # Uses System mono for unreal. must set UE_USE_SYSTEM_MONO
 		# in your environment for it to work after install
-_processor_multiplier=  # Allows multiplier on processor count. Allowing the Maximum threads your cpu can handle 
+_processor_multiplier=y  # Allows multiplier on processor count. Allowing the Maximum threads your cpu can handle 
+_native_cpu_support=y
 
 prepare() {
   # Check access to the repository
@@ -93,6 +96,11 @@ prepare() {
     mv "$srcdir/BuildConfiguration.xml" "$_"
   fi
 
+  if [ -n "$_native_cpu_support" ]
+  then
+    patch -p1 -i "$srcdir/march_native.patch"
+  fi
+
   # Qt Creator source code access
   if [ ! -d Engine/Plugins/Developer/QtCreatorSourceCodeAccess ]
   then
@@ -113,13 +121,18 @@ build() {
   then
     ARGS="ARGS=-ForceUseSystemCompiler"
   fi
-  make $ARGS CrashReportClient-Linux-Shipping
-  make $ARGS CrashReportClientEditor-Linux-Shipping
-  make $ARGS ShaderCompileWorker
-  make $ARGS UnrealLightmass
-  make $ARGS UnrealFrontend
-  make $ARGS UE4Editor
-  make $ARGS UnrealInsights
+  if [ -n "$_native_cpu_support" ]
+  then
+    ARGS="${ARGS} -EnableNativeInstructionSet"
+  fi
+
+  make "${ARGS}" CrashReportClient-Linux-Shipping
+  make "${ARGS}" CrashReportClientEditor-Linux-Shipping
+  make "${ARGS}" ShaderCompileWorker
+  make "${ARGS}" UnrealLightmass
+  make "${ARGS}" UnrealFrontend
+  make "${ARGS}" UE4Editor
+  make "${ARGS}" UnrealInsights
 }
 
 package() {
@@ -145,8 +158,6 @@ package() {
   # Engine
   if [ -n "$_system_mono" ]; then
     rm -r Engine/Binaries/ThirdParty/Mono
-    rm -r Engine/Binaries/ThirdParty/Python
-    rm -r Engine/Binaries/ThirdParty/Python3
   fi
   install -dm770 "$pkgdir/$dir/Engine"
   mv Engine/Binaries "$pkgdir/$dir/Engine/Binaries"
