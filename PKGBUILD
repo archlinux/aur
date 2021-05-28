@@ -1,8 +1,8 @@
 # Maintainer: Helle Vaanzinn <glitsj16 at riseup dot net >
 
 pkgname=firejail-handler-http
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="HTTP(S) URL handler for Firejail"
 arch=(x86_64)
 license=(GPL2)
@@ -12,7 +12,7 @@ depends=('firejail' 'inotify-tools' 'xdg-user-dirs' 'xdg-utils')
 options=(libtool !purge staticlibs !strip !zipman)
 install=firejail-handler-http.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/glitsj16/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('a9eb54b2c39c7913500aec97d8ee17098919901a62af6039903bf7852086fde7')
+sha256sums=('61d3a1647ee6358ff21ca3a407d74f6046d4af74d6248736904d2784a82941c9')
 
 package() {
     cd "${pkgname}-${pkgver}"
