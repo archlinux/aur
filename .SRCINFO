@@ -1,6 +1,6 @@
 pkgbase = python-cairo-git
 	pkgdesc = Python bindings for the cairo graphics library. Git version.
-	pkgver = v1.20.0.r6.g4865f55
+	pkgver = v1.20.0.r22.g071124e
 	pkgrel = 1
 	url = http://www.cairographics.org/
 	arch = i686
