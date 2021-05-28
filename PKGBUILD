@@ -3,13 +3,13 @@
 pkgname=tidal-dl-git
 _pkgname=Tidal-Media-Downloader
 pkgver=1.1.1.0.r154.ge38a3c4
-pkgrel=2
+pkgrel=1
 pkgdesc="Download videos and tracks from Tidal."
 arch=('any')
 url="https://github.com/yaronzz/Tidal-Media-Downloader"
 license=('Apache')
 depends=('python-prettytable' 'python-aigpy' 'python-libffmpeg'
-				 'python-pycryptodome' 'python-pydub' 'python-lyricsgenius')
+         'python-pycryptodome' 'python-pydub' 'python-lyricsgenius')
 makedepends=('git' 'python-setuptools')
 conflicts=('tidal-dl')
 source=(git+"${url}.git")
