@@ -1,7 +1,7 @@
 pkgbase = perl-moosex-types-uri
 	pkgdesc = URI related types and coercions for Moose
 	pkgver = 0.08
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/MooseX-Types-URI
 	arch = any
 	license = PerlArtistic

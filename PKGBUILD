@@ -3,7 +3,7 @@
 
 pkgname='perl-moosex-types-uri'
 pkgver='0.08'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="URI related types and coercions for Moose"
 arch=('any')
 license=('PerlArtistic' 'GPL')
