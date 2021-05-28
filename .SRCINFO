@@ -1,6 +1,6 @@
 pkgbase = googleduo-bin
 	pkgdesc = Unnofficial Google Duo desktop app
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://gitlab.com/google-duo/application
 	arch = x86_64
