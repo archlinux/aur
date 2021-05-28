@@ -1,8 +1,8 @@
-# Maintainer: PumpkinCheshire <sollyonzou@gmail.com>
+#Maintainer: PumpkinCheshire <me@pumpkincheshire.top>
 
 pkgname=waifu2x-ncnn-vulkan-bin
-pkgver=20210210
-pkgrel=2
+pkgver=20210521
+pkgrel=1
 pkgdesc="waifu2x converter ncnn version, runs fast on intel / amd / nvidia GPU with vulkan"
 arch=('x86_64')
 url="https://github.com/nihui/waifu2x-ncnn-vulkan"
@@ -13,8 +13,8 @@ provides=("waifu2x-ncnn-vulkan")
 conflicts=("waifu2x-ncnn-vulkan" "waifu2x-ncnn-vulkan-git")
 source=("https://github.com/nihui/${pkgname%-bin}/releases/download/$pkgver/${pkgname%-bin}-$pkgver-ubuntu.zip"
 	"waifu2x-ncnn-vulkan")
-sha256sums=('ce0296c4788474bd5acd997169016ade32f02f49ce622a7a145dedd529d3e721'
-	'ef1588b9a32583a5adab7279d0d89729105743675c1525c8cb251d1496ae1d4f')
+sha256sums=('71e7463643bd263ebaf86e39a192cb6edebdfe4a274b743a7fb33fb001eeea53'
+            'ef1588b9a32583a5adab7279d0d89729105743675c1525c8cb251d1496ae1d4f')
 
 package() {
 	install -Dm755 ${pkgname%-bin} "${pkgdir}/usr/bin/${pkgname%-bin}"
