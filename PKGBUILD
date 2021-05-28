@@ -3,7 +3,7 @@ pkgbase=python-ablog
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.10.18
+pkgver=0.10.19
 pkgrel=1
 pkgdesc=" ABlog for blogging with Sphinx"
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=('python-setuptools-scm')
 checkdepends=('python-pytest' 'python-sphinx' 'python-feedgen')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #source=("https://github.com/sunpy/ablog/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('304425d6eda79dfeed899a7ffde0b37f')
+md5sums=('e63369104f1eb3ef761e2875c1610209')
 
 #prepare() {
 #    export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
