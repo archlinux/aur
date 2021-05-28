@@ -1,16 +1,15 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=swtpm-git
-pkgver=0.5.0.r31.526c9fa
+pkgver=0.5.0.r63.c125e34
 pkgrel=1
 pkgdesc='Libtpms-based TPM emulator with socket, character device, and Linux CUSE interface'
 arch=('x86_64')
 url='https://github.com/stefanberger/swtpm'
 license=('BSD')
-depends=('fuse2' 'glib2' 'libseccomp' 'libtpms' 'libseccomp.so')
-makedepends=('git' 'expect' 'gnutls' 'iproute2' 'libtasn1' 'python' 'python-cryptography' 'python-setuptools' 'socat')
+depends=('fuse2' 'glib2' 'gnutls' 'json-glib' 'libseccomp' 'libtpms' 'libseccomp.so')
+makedepends=('git' 'expect' 'iproute2' 'libtasn1' 'python' 'python-setuptools' 'socat')
 checkdepends=('softhsm')
-optdepends=('gnutls: swtpm_cert support'
-            'python-cryptography: swtpm_setup support')
+optdepends=('python: swtpm-localca support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+$url.git")
@@ -26,8 +25,7 @@ prepare() {
 
 	# Remove usage of /usr/bin/env to avoid PATH manipulation attacks
 	sed --in-place 's/env //' samples/swtpm-create-tpmca samples/swtpm-create-user-config-files.in \
-	                          samples/swtpm-localca.in src/swtpm_setup/py_swtpm_setup/swtpm_setup.py \
-	                          src/swtpm_setup/swtpm_setup.in
+	                          samples/swtpm-localca.in
 
 	autoreconf --install --force
 }
@@ -37,7 +35,8 @@ build() {
 	./configure --prefix=/usr --with-cuse --with-gnutls --with-seccomp --disable-python-installation
 	make
 
-	for _dir in samples src/swtpm_setup; do (cd "$_dir"; python setup.py build); done
+	cd samples
+	python setup.py build
 }
 
 check() {
@@ -50,11 +49,10 @@ package() {
 	make DESTDIR="$pkgdir" install
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 
-	for _dir in samples src/swtpm_setup
-	do
-		(cd "$_dir"; python setup.py install --root="$pkgdir" --optimize=1 --skip-build)
-	done
+	cd samples
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
 	echo 'u tss - "tss user for tpm2"' | install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 	echo 'z /var/lib/swtpm-localca 0750 tss root' | install -Dm644 /dev/stdin "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+	chmod 750 "$pkgdir/var/lib/swtpm-localca"
 }
