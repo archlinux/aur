@@ -1,6 +1,6 @@
 pkgbase = linux-gc
 	pkgdesc = Linux
-	pkgver = 5.12.6
+	pkgver = 5.12.8
 	pkgrel = 1
 	url = https://cchalpha.blogspot.co.uk/
 	arch = x86_64
@@ -17,22 +17,20 @@ pkgbase = linux-gc
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.12.6.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.12.6.tar.sign
-	source = config::https://raw.githubusercontent.com/archlinux/svntogit-packages/d4d60e600262bab7386e43687da802b93037b0bb/trunk/config
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.12.8.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.12.8.tar.sign
+	source = config::https://raw.githubusercontent.com/archlinux/svntogit-packages/6428e21a274ca23facaf5f09c84eb25643741a5b/trunk/config
 	source = prjc_v5.12-r1.patch::https://gitlab.com/alfredchen/projectc/raw/master/5.12/prjc_v5.12-r1.patch
 	source = more-uarches-20210412.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20210412.tar.gz
-	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=22e3612b3c9305e1010da29ee500a6ad0cc3843f
-	source = 0002-drm-i915-gt-Disable-HiZ-Raw-Stall-Optimization-on-br.patch::https://git.archlinux.org/linux.git/patch/?id=de10bb9892a9e075f4489be1495da1d6c8bc6360
+	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=c07e44df5b54011594a65027f658473a11afe1e1
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	b2sums = 94a6f2b620a33fa52fabfce5781a7e0cd57ee03e65e823e5f25fc0d0bcaec019f9e955bc78c7799f258273c7e36cc277035d07afe4d4b3036bbe2ff526ce9b85
+	b2sums = c2d0c2239c5b440cc93e1e0e312511497eccf9e5cef61707c7f42fa924f66defdd4275575341b46b3ee45269c705dd2ba2e2c68fb1dd4ced438b852803180ddb
 	b2sums = SKIP
-	b2sums = ccb7779df282b54d9acf59682eaa93a39f27276798d61d4c8be8a3b31e582a377c9d3278a500744a3ed089a337807f95a2d23ef821af2f4a7eec24540092b746
+	b2sums = 18d9f071699c9e9bb4c7d340f4d688554b818a4f7fdcefeee24b8b39fc9328737c6967cfd7e884b518e0c87cfb64ac7a10368ac82436d73f96f0881b5c201099
 	b2sums = 77a1646ffbc67ed88af564b73cf63f0374772bdc1075e771a93ee4fe257b94cb3766a4842898b48f4343458d0b507229182220c7daeb5532df610b964c6640e7
 	b2sums = 72194a32a06c43809d1272bd675890b6d27c6c54353150a366e8e2c50ad6eca6ee23c5d6281822965a228cfedfa07a60fe135d1b4f539e4a62728d4460cc0b0e
-	b2sums = 150ba0ecef43e83668c2b81dd89ca1a98eb3e3aeec7115b0202ce02790f5bc728b08e251603ce687000d116702b8df993dcbe629858c0495ab9bf3c207fa473d
-	b2sums = ed99d7fe1605b3793d5aceabdb64b49b78c4e97fa3a615f91adc1c6c9d9f4f71e8f7f56e238d4cd41d07f9362a4d28c21a448a60071844a55040c715cb2689e4
+	b2sums = 897874d0e64acc96cab26c36ca7b15a616497bd17ea3d6cd9ae91f4b11879716eec34c2604f573c21eabad2b6b664248118681bd8321c8ccb7a64bb82e1eca36
 
 pkgname = linux-gc
 	pkgdesc = The Linux-gc kernel and modules with the Project C scheduler
