@@ -1,0 +1,83 @@
+From 7350d3533e97951865da79a0ef2ae1df9e686b9d Mon Sep 17 00:00:00 2001
+From: JM Lopez <jm.lopez@utoronto.ca>
+Date: Thu, 13 May 2021 14:34:48 -0400
+Subject: [PATCH 1/2] support for click 8 changes
+
+---
+ click_repl/__init__.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/click_repl/__init__.py b/click_repl/__init__.py
+index 5000020..a48f227 100644
+--- a/click_repl/__init__.py
++++ b/click_repl/__init__.py
+@@ -3,7 +3,7 @@
+ from prompt_toolkit.history import InMemoryHistory
+ from prompt_toolkit.shortcuts import prompt
+ import click
+-import click._bashcomplete
++import click.shell_completion
+ import click.parser
+ import os
+ import shlex
+@@ -108,7 +108,7 @@ def get_completions(self, document, complete_event=None):
+             # command, so give all relevant completions for this context.
+             incomplete = ""
+ 
+-        ctx = click._bashcomplete.resolve_ctx(self.cli, "", args)
++        ctx = click.shell_completion._resolve_context(self.cli, {}, "", args)
+         if ctx is None:
+             return
+ 
+
+From d98c0af5eb51026c8bfe8f47ce4107e04c350448 Mon Sep 17 00:00:00 2001
+From: JM Lopez <jm.lopez@utoronto.ca>
+Date: Mon, 17 May 2021 15:41:05 -0400
+Subject: [PATCH 2/2] Backwards compatibility between click 7 & 8
+
+---
+ click_repl/__init__.py | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/click_repl/__init__.py b/click_repl/__init__.py
+index a48f227..216eec7 100644
+--- a/click_repl/__init__.py
++++ b/click_repl/__init__.py
+@@ -3,7 +3,6 @@
+ from prompt_toolkit.history import InMemoryHistory
+ from prompt_toolkit.shortcuts import prompt
+ import click
+-import click.shell_completion
+ import click.parser
+ import os
+ import shlex
+@@ -11,6 +10,14 @@
+ import six
+ from .exceptions import InternalCommandException, ExitReplException  # noqa
+ 
++# Handle backwards compatibility between Click 7.0 and 8.0
++try: 
++    import click.shell_completion
++    HAS_C8 = True
++except ImportError:
++    import click._bashcomplete
++    HAS_C8 = False
++
+ # Handle click.exceptions.Exit introduced in Click 7.0
+ try:
+     from click.exceptions import Exit as ClickExit
+@@ -107,8 +114,12 @@ def get_completions(self, document, complete_event=None):
+             # We've not entered anything, either at all or for the current
+             # command, so give all relevant completions for this context.
+             incomplete = ""
+-
+-        ctx = click.shell_completion._resolve_context(self.cli, {}, "", args)
++        # Resolve context based on click version
++        if HAS_C8:
++            ctx = click.shell_completion._resolve_context(self.cli, {}, "", args)
++        else: 
++            ctx = click._bashcomplete.resolve_ctx(self.cli, "", args)
++            
+         if ctx is None:
+             return
+ 
