@@ -1,6 +1,6 @@
 pkgbase = inyokaedit-plugins
 	pkgdesc = Plugins for InyokaEdit
-	pkgver = 0.25.0
+	pkgver = 0.26.0
 	pkgrel = 1
 	url = https://github.com/inyokaproject/inyokaedit/
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = inyokaedit-plugins
 	depends = hunspell
 	optdepends = inyokaedit: Editor for Inyoka based portals
 	optdepends = inyokaedit-data-ubuntuusersde: ubuntuusers.de community files
-	source = inyokaedit-plugins-0.25.0.tar.gz::https://github.com/inyokaproject/inyokaedit/archive/v0.25.0.tar.gz
-	sha256sums = e90e32b18632c3d1697ddac74f374abcaf2c60816c40b3882169d6857e5cc0fe
+	source = inyokaedit-plugins-0.26.0.tar.gz::https://github.com/inyokaproject/inyokaedit/archive/v0.26.0.tar.gz
+	sha256sums = 107d33325e8c28573543b8dc7e7587078eca174675e935a0352e337f7718b8ea
 
 pkgname = inyokaedit-plugins
 
