@@ -5,7 +5,7 @@
 _gitname=tinyMediaManager
 pkgname=tiny-media-manager
 pkgver=4.1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-OS media managment tool"
 arch=('any')
 url="https://www.tinymediamanager.org/"
@@ -22,12 +22,12 @@ source=("tmm_${pkgver}_linux.tar.gz::https://gitlab.com/tinyMediaManager/tinyMed
 package() {
   destpath="$pkgdir/usr/share/$_gitname"
   mkdir -p "$destpath"
-  tar -xvf "tmm_${pkgver}_linux.tar.gz" -C "$destpath"
+  tar -xvf "tmm_${pkgver}_linux.tar.gz" --directory "$destpath" --strip-components 1
   install -m644 tinymediamanager.JAVA_OPTS "$destpath/tmm.JAVA_OPTS"
 
   # Install desktop entry
   install -D "$srcdir/tinyMediaManager.desktop" "$pkgdir/usr/share/applications/tinyMediaManager.desktop"
-  install -D "$destpath/tinyMediaManager/tmm.png" "$pkgdir/usr/share/pixmaps/tmm.png"
+  install -D "$destpath/tmm.png" "$pkgdir/usr/share/pixmaps/tmm.png"
 
   # Install launch scripts
   install -D "$srcdir/tinymediamanager-cli" "$pkgdir/usr/bin/tinymediamanager-cli"
