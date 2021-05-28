@@ -3,7 +3,7 @@
 
 pkgname='perl-mousex-simpleconfig'
 pkgver='0.11'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="A Mouse role for setting attributes from a simple configfile"
 arch=('any')
 license=('PerlArtistic' 'GPL')
