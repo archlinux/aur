@@ -1,18 +1,18 @@
 # Maintainer: Franco Masotti <franco dot masotti at live dot com>
 # Contributor: Franco Masotti <franco dot masotti at live dot com>
 pkgname=python-md_toc
-pkgver=7.2.0
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="Automatically generate a compliant table of contents for a markdown file to improve document readability"
 arch=('any')
 url="https://blog.franco.net.eu.org/software/#md-toc"
 license=('GPL3')
 depends=('python'
-         'python-fpyutils=1.2.3'
+         'python-fpyutils=2.0.0'
          'python-setuptools')
 options=(!emptydirs)
 source=("https://blog.franco.net.eu.org/software/md-toc-${pkgver}.tar.gz.sig" "https://blog.franco.net.eu.org/software/md-toc-${pkgver}.tar.gz")
-sha512sums=('SKIP' "8674e1235c3af2b4c150e64b3caeac0e92134429df8967117a18fbd6d9a60a634acfb1165b45360677fe75481f3ad6abf7868961689f5ebc888b89ed5cc7583b")
+sha512sums=('SKIP' '97ce0c07871cc0fd5267a4aafed7279a6af883d6fbac543ac2a2f75967a85e7bc5a2f8bee51ed031504383d84300a8669d4833204cbf050113634275c931a2ba')
 
 check() {
   cd "${srcdir}"/md-toc-"${pkgver}"
