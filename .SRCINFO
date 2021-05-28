@@ -1,13 +1,13 @@
 pkgbase = boost-note-bin
 	pkgdesc = Boost Note.next, a replacement for Boostnote, an open source note-taking app for programmers. Official binary.
-	pkgver = 0.16.1
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://boostnote.io/
 	arch = any
 	license = GPL3
 	conflicts = boost-note
-	source = boost-note-bin-0.16.1.deb::https://github.com/BoostIO/BoostNote.next/releases/download/v0.16.1/boost-note-linux.deb
-	sha512sums = 73ad95b598dbf17d62f7033bcd708062ed1335ee56068bdc1dd950a2e5c51d781bc64404591dd32dc1e21459347e73d1ab319ae6feb3693c6f00609909a058b0
+	source = boost-note-bin-0.17.1.deb::https://github.com/BoostIO/BoostNote.next/releases/download/v0.17.1/boost-note-linux.deb
+	sha512sums = a5f32392b98331d8bedc647f37b6dd0bd568c3a3a5d787e77601ad7b91ae8235393dc5719844258ec81bff32736ead80f7911e7d30257f9d8090323b9f3877a7
 
 pkgname = boost-note-bin
 
