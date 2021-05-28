@@ -1,6 +1,6 @@
 pkgbase = whitesur-gtk-theme-git
 	pkgdesc = MacOS Big Sur like theme for GNOME desktops
-	pkgver = 2021.05.05.r14.g19e1366
+	pkgver = 2021.05.05.r68.g474b0ec
 	pkgrel = 1
 	url = https://github.com/vinceliuice/WhiteSur-gtk-theme
 	arch = any
@@ -17,6 +17,8 @@ pkgbase = whitesur-gtk-theme-git
 	optdepends = whitesur-cursor-theme-git: matching cursor theme
 	optdepends = whitesur-kvantum-theme: matching Kvantum theme
 	optdepends = plank: for included plank theme
+	optdepends = gnome-shell-extension-dash-to-dock: recommended GNOME extension
+	optdepends = gnome-shell-extension-blur-my-shell: recommended GNOME extension
 	provides = whitesur-gtk-theme
 	conflicts = whitesur-gtk-theme
 	options = !strip
