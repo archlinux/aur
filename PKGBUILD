@@ -1,6 +1,6 @@
 pkgname=googleduo-git
 _pkgname=GoogleDuo-git
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Unnofficial GoogleDuo desktop application"
 arch=('any')
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/application"
-    npm --cache "$srcdir/npm-cache" i electron@12.0.0 electron-context-menu@2.5.0 electron-packager
+    npm --cache "$srcdir/npm-cache" i electron@13.0.1 electron-context-menu@3.1.0 electron-packager
     ./node_modules/.bin/electron-packager .
     for dir in GoogleDuo-linux-*/ ; do mv "${dir}" "GoogleDuo" ;done
 }
