@@ -1,7 +1,7 @@
 pkgbase = localtime-git
 	pkgdesc = Automatic Timezone Updater
-	pkgver = r38.c166204
-	pkgrel = 1
+	pkgver = r44.541590b
+	pkgrel = 2
 	url = http://stebalien.com/projects/localtime/
 	arch = any
 	license = GPL3
