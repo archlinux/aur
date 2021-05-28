@@ -46,7 +46,7 @@ _localmodcfg=
 
 pkgbase=linux-cacule
 # pkgname=('linux-cacule' linux-cacule-headers)
-_major=5.12.7
+_major=5.12.8
 #_minor=1
 #_minorc=$((_minor+1))
 #_rcver=rc8
@@ -54,7 +54,7 @@ pkgver=${_major}
 #_stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -72,7 +72,7 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/$_srcname.tar.xz"
         "${_patchsource}/futex2-stable-patches-v3/0001-futex2-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/wine-esync-patches/0001-v5.12-winesync.patch"
         "${_patchsource}/zen-patches-v2/0001-zen-patches.patch"
-        "${_patchsource}/lqx-patches-v2/0001-lqx-patches.patch"
+        "${_patchsource}/lqx-patches-v3/0001-zen-Allow-MSR-writes-by-default.patch"
         "${_patchsource}/bfq-patches-v8/0001-bfq-patches.patch"
         "${_patchsource}/block-patches-v3/0001-block-patches.patch"
         "${_patchsource}/ll-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
@@ -87,8 +87,8 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/$_srcname.tar.xz"
         "${_patchsource}/clearlinux-patches-v3/0001-clearlinux-patches.patch"
         "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch" )
 
-sha512sums=('4896446ace0ed0edbdce47d79be35f913b9dc98f1004822ffbcbdb86775609fc51d71ef642640d1de909f59631824bcbdd70d28f79f431e992d46bbfdd861712'
-            'd73fd8a4e369bf455d1619912865297084c149c1db4ba7d2f0b9dcbac961922c0094c48c240dca85a82c96382ee648a87fc6ad30417df81f58c73ac1607ffa93'
+sha512sums=('8a5f1774bee223445ad147d2f83a7b3a2c19ea620d0f3964344bb33d003fec17d36279b522745c03467e361ebd61479a4f7122e5911bb6b817ff52ee55c736d9'
+            'bdcada2ac7ae2263320622bf512520e188db1cfbbd08d0ece527cf30e10463331e7e709a33db913a80ff476c64d60e3e5dffed4a7756f56b4f516f95bdfd03bd'
             '1908055c446f04ef0a0a5a19579836d2f5dc60d7989677f85f084a7186a6327b240291feed8d25e320e72efa114b243a325362e2dbfbf7f4f3fb89bbdd3819be'
             '97e661d3fbd75a6e9edeb79a694f42c49174f317bd35ae25dd13d71797d29fca630e88e1440415faca05fb46935591965fae0dcc4365c80e3cefa3d8b615c3b8'
             '60bda2070739a52af4f81816ebda8f3520a8d75ea5e00f65a903a3416ae31edba56fe151f6a9e02dc90ec3be7854e9a62e10e72120d7148fd3838806d8b9e986'
@@ -96,7 +96,7 @@ sha512sums=('4896446ace0ed0edbdce47d79be35f913b9dc98f1004822ffbcbdb86775609fc51d
             'f0ae3cd8cc8237c620f2a069a48d1e156589c42ee6cb13b7fa54b7004cf9c940d4363c05706df3c231ff405bfb0488d9121c610c6583ae94ab732ecb11942b5b'
             '905f97cdff3e096552159a229d069d1b1418f4142b2927134110f504bfe0883309b3f29c2aeeb94c528b63e0eec7d0d69b44c3d498211c610811969cc4d07a56'
             '1c6cdf40009ce6c62b0a35cc7c2a74818b7169d32e18fb3c2bb8761762c15c579f64cb36f9076c4f78d3f88f077f6246ee75ba93f370cc40dae450d6d71117bb'
-            '5a326d0bb0c79cacad8b787c237ab43c649d429209d5eb2f5d8b5c98a7bcf5af2e48e31344aa353a93a023f885a1e0710592ae5531a54c09ecb51b3f01b196a7'
+            'd9e072c64cd413e1ba58a9924872b7a5bfed33c7b78d062a6be42f1becce450647c90066d95b8a7f1facc1cdc538d532b3d5915cd6c4f659b76ad950993af8f3'
             'c46fd4237b5c93acf853b2e59bf9cf6d36212fc1d494da06c9c956395fbbfb3765186dd72e9ce2b065cdca92483656bc8a418dd4ba7980516cf4d0cb89ab93ff'
             'b6997128403100c0f08cf898b215409efe137183c66a0faf2b8f5c82c185ac7224ef0f694f6920956d963ad002b6b7bdb33438d269f96a90097e0b1e12093e76'
             '47f265716ebd268e4296aaba1efe5098df00736b69ec7d0413cace6dbb5cb162c1c952f7527a2a41b246ed76e6e112514c5349e8dc52f4609def30257e18d7aa'
@@ -297,6 +297,7 @@ prepare() {
       echo "Enable CONFIG_VHBA"
       scripts/config --module CONFIG_VHBA
       scripts/config --disable CONFIG_BPF_PRELOAD
+      scripts/config --disable CONFIG_GCC_PLUGINS
 
       ### Optionally load needed modules for the make localmodconfig
        # See https://aur.archlinux.org/packages/modprobed-db
