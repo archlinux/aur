@@ -1,7 +1,7 @@
 # Contributor: Carlo Casta <carlo.casta@gmail.com>
 
 pkgname=gkrellm-nvidia
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A plugin for gkrellm2 which displays nVidia GPU status"
 arch=('i686' 'x86_64')
