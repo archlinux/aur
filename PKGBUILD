@@ -2,7 +2,7 @@
 # CPAN Name: Module-Starter
 
 pkgname=perl-module-starter
-pkgver=1.76
+pkgver=1.77
 pkgrel=1
 pkgdesc='a simple starter kit for any module'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('perl' 'perl-path-class' 'perl-module-runtime')
 checkdepends=('perl-software-license')
 options=('!emptydirs')
 source=("http://www.cpan.org/authors/id/D/DB/DBOOK/Module-Starter-${pkgver}.tar.gz")
-sha256sums=('ab8262ad1193df991fa29871bae015dea86175d65e647c236649c7e6cc9117bf')
+sha256sums=('108717def4755145fdccffbcb3cd5b9a9405e8139b9e54293ced83064982ea0d')
 
 build() {
 	cd "${srcdir}/Module-Starter-${pkgver}"

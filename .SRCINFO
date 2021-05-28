@@ -1,6 +1,6 @@
 pkgbase = perl-module-starter
 	pkgdesc = a simple starter kit for any module
-	pkgver = 1.76
+	pkgver = 1.77
 	pkgrel = 1
 	url = https://metacpan.org/release/Module-Starter
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = perl-module-starter
 	depends = perl-path-class
 	depends = perl-module-runtime
 	options = !emptydirs
-	source = http://www.cpan.org/authors/id/D/DB/DBOOK/Module-Starter-1.76.tar.gz
-	sha256sums = ab8262ad1193df991fa29871bae015dea86175d65e647c236649c7e6cc9117bf
+	source = http://www.cpan.org/authors/id/D/DB/DBOOK/Module-Starter-1.77.tar.gz
+	sha256sums = 108717def4755145fdccffbcb3cd5b9a9405e8139b9e54293ced83064982ea0d
 
 pkgname = perl-module-starter
 
