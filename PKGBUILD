@@ -2,7 +2,7 @@
 
 pkgname=neovim-plenary-git
 pkgver=r150.3f99330
-pkgrel=1
+pkgrel=2
 pkgdesc="A Lua library for Neovim plugins"
 arch=('any')
 url="https://github.com/nvim-lua/plenary.nvim"
@@ -12,7 +12,6 @@ depends=('neovim')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-install="$pkgname.install"
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
