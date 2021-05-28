@@ -1,19 +1,20 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 
 pkgname=vertica-client
-pkgver=7.2.2
-_pkgver=7.2.2-0
+pkgver=10.1.1
+_pkgver=${pkgver}-0
 pkgrel=1
 pkgdesc="Client for the Vertica Analytic Database"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://www.vertica.com/"
 license=('custom: commercial')
 PKGEXT=.pkg.tar
 install=${pkgname}.install
-depends=(zlib gcc-libs ncurses5-compat-libs)
+depends=(java-runtime gcc-libs)
 optdepends=('java-environment: Needed for the JDBC client')
-source=(LICENSE)
-md5sums=('411c631addb1ecdc934c0cb2fab1e52e')
+source=(https://www.vertica.com/client_drivers/10.1.x/${_pkgver}/vertica-client-${_pkgver}.x86_64.tar.gz LICENSE)
+sha256sums=('fdd7c5238146bceac3db4bedd16b5aa4b1038c51f3e66c0b9fcf25464d2667d9'
+            '6e0cd8aec08647e568b34d70754bfa354106d610873f753ae66d987a0ae0a796')
 
 if test "$CARCH" == i686; then
   __vertica_arch=i386
@@ -21,28 +22,13 @@ elif test "$CARCH" == x86_64; then
   __vertica_arch=x86_64
 fi
 
-_vpkg=vertica-client-${_pkgver}.${__vertica_arch}.tar.gz
-
-build() {
-  msg "You need a full copy of the client in order to install it"
-  msg "You can download it here: https://my.vertica.com/download-community-edition/#clients"
-  msg "Searching for ${_vpkg} in dir: \"$startdir\""
-  pkgpath="$startdir"
-  if [[ ! -f "${pkgpath}/${_vpkg}" ]]; then
-    error "Vertica client package not found, please type absolute path to ${_vpkg} (/home/joe):"
-    read pkgpath
-    if [[ ! -f "${pkgpath}/${_vpkg}" ]]; then
-      error "Unable to find Vertica client package." && return 1
-    fi
-  fi
-  msg "Found package, unpacking..."
-  tar xf "${pkgpath}/${_vpkg}" -C "${srcdir}"
-}
-
 package() {
   install -d "${pkgdir}/usr/share/licenses/vertica-client"
   install -d "${pkgdir}/opt"
+  install -d "${pkgdir}/usr/bin"
   
   cp -r "${srcdir}/opt/"* "${pkgdir}/opt/" -R
   install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  ln -s /opt/vertica/bin/vsql "${pkgdir}/usr/bin/vsql"
 }
+
