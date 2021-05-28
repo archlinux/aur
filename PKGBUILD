@@ -20,4 +20,5 @@ build(){
 
 package() {
     install -dm 755 "$pkgdir"/usr/lib/R/library
+    cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
 }
