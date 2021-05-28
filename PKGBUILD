@@ -1,3 +1,5 @@
+# Maintainer: Leonidas Spyropoulos <artafinde at gmail dot com>
+
 pkgname=auracle-git
 _pkgname=auracle
 pkgver=r366.8739929
@@ -8,16 +10,24 @@ url="https://github.com/falconindy/auracle.git"
 license=('MIT')
 depends=('pacman' 'libcurl.so' 'libsystemd')
 makedepends=('meson' 'git' 'perl' 'systemd')
-checkdepends=('gtest' 'gmock')
+checkdepends=('python' 'fakechroot' 'gtest' 'gmock')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://github.com/falconindy/auracle.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/falconindy/auracle.git"
+        "abseil-fix.patch::https://github.com/inglor/auracle/commit/bcd5ceef60bce3e463cc8a2c93f6750d6dd49f4e.patch")
+sha256sums=('SKIP'
+            'bd0fbc1020a51bf24176221586935a59ee5dbc4b2b9e5d9c2d37f79626b7ad2b')
 
 pkgver() {
   cd "$_pkgname"
 
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare(){
+  cd "$_pkgname"
+
+  patch -Np1 < "$srcdir/abseil-fix.patch"
 }
 
 build() {
@@ -31,19 +41,24 @@ build() {
 
   [[ -d build ]] && meson_args+=(--wipe)
 
+  # Some tests fail with these enabled
+  CFLAGS=${CFLAGS/,-D_GLIBCXX_ASSERTIONS/}
+  CXXFLAGS="${CFLAGS}"
   meson build "${meson_args[@]}"
 
-  ninja -C build
+  meson compile -C build
 }
 
 check() {
-  meson test -C "$_pkgname/build"
+  cd "$_pkgname"
+
+  meson test -C build
 }
 
 package () {
   cd "$_pkgname"
 
-  DESTDIR=$pkgdir ninja -C build install
+  DESTDIR="$pkgdir" meson install -C build
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 

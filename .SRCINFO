@@ -6,6 +6,8 @@ pkgbase = auracle-git
 	arch = x86_64
 	arch = i686
 	license = MIT
+	checkdepends = python
+	checkdepends = fakechroot
 	checkdepends = gtest
 	checkdepends = gmock
 	makedepends = meson
@@ -18,7 +20,9 @@ pkgbase = auracle-git
 	provides = auracle
 	conflicts = auracle
 	source = git+https://github.com/falconindy/auracle.git
+	source = abseil-fix.patch::https://github.com/inglor/auracle/commit/bcd5ceef60bce3e463cc8a2c93f6750d6dd49f4e.patch
 	sha256sums = SKIP
+	sha256sums = bd0fbc1020a51bf24176221586935a59ee5dbc4b2b9e5d9c2d37f79626b7ad2b
 
 pkgname = auracle-git
 
