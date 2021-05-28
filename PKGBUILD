@@ -7,7 +7,7 @@
 # Contributor: Bakasura <bakasura@protonmail.ch>
 
 pkgname=libadwaita
-pkgver=1.0r1596.65ac525
+pkgver=1.0.0alpha1
 pkgrel=1
 pkgdesc="Library to help with developing UI for mobile devices using GTK/GNOME"
 url="https://gitlab.gnome.org/GNOME/$pkgname"
@@ -17,9 +17,9 @@ depends=(gtk4)
 makedepends=(gobject-introspection meson sassc vala wayland-protocols)
 #checkdepends=(xorg-server-xvfb)
 provides=(libadwaita-1.so)
-_commit=65ac5258cdcd1c1bfdf2d8f29c9518e16bcca445
+_commit=faa9f26a2b8a89923c0b83d42e84078f672c19ec
 source=("$url/-/archive/$_commit/$pkgname-$_commit.tar.gz")
-b2sums=('72770f2e35dc83198cddf97878dfebbd967ce204b33389078f09b95a33b27f6e37ed9d3b6a24cd9bf0eb03c1883180a130a010fa92ba56214b87683f8548ead6')
+b2sums=('0ef4d249d562fd37805c853cca24d8dbf06ae91792a49d4df01546b761e5c347fdbf0e821701d79f172136490b8b7445a1689e200d69674b38a930dc81db6b0d')
 
 build() {
     arch-meson $pkgname-$_commit build -Dtests=false -Dexamples=false
