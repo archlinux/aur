@@ -1,0 +1,18 @@
+pkgbase = isolate-lib
+	pkgdesc = Dynamic library based on the isolate program for the IOI
+	pkgver = 1.8.2
+	pkgrel = 1
+	url = https://github.com/moulinex-app/isolate
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = gcc
+	makedepends = libcap
+	provides = isolate-lib
+	conflicts = isolate
+	conflicts = isolate-git
+	source = https://github.com/moulinex-app/isolate/releases/download/v1.8.2/isolate-lib-v1.8.2.tar.gz
+	sha512sums = a25aef5b4161b26fd92ff3ca5ba3a40039a60da43fa83338a95382eafb7bb79d19474a958eba1b881e352d3e3fa8c91e92eb4328917389c21e11f27790c01473
+
+pkgname = isolate-lib
+
