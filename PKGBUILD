@@ -1,7 +1,7 @@
 # Maintainer: ml <>
 pkgname=kind
-pkgver=0.11.0
-pkgrel=2
+pkgver=0.11.1
+pkgrel=1
 pkgdesc='Kubernetes IN Docker - local clusters for testing Kubernetes'
 arch=('x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
 url='https://kind.sigs.k8s.io/'
@@ -16,7 +16,7 @@ optdepends=(
 )
 install=kind.install
 source=("https://github.com/kubernetes-sigs/kind/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('c78bed3a39afd2e523b38256b7f16445d0ad4b8b25f18b5766005e095af772cd')
+sha256sums=('95ce0e7b01c00be149e5bd777936cef3f79ba7f1f3e5872e7ed60595858a2491')
 
 build() {
   local _commit
