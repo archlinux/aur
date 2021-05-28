@@ -1,0 +1,72 @@
+{
+  "leelaz": {
+    "limit-max-suggestion": 10,
+    "analyze-update-interval-centisec": 10,
+    "enable-lizzie-cache": true,
+    "limit-branch-length": 0,
+    "max-analyze-time-seconds": 600,
+    "max-game-thinking-time-seconds": 2,
+    "engine-settings-list": []
+  },
+  "ui": {
+    "comment-font-size": 0,
+    "scoremean-winrategraph-board": false,
+    "shadow-size": 75,
+    "autosave-interval-seconds": -1,
+    "append-winrate-to-comment": true,
+    "show-captured": true,
+    "replay-branch-interval-seconds": 0.9,
+    "no-refresh-on-sub": true,
+    "weighted-blunder-bar-height": false,
+    "win-rate-always-black": false,
+    "show-move-number": false,
+    "show-winrate-graph": true,
+    "large-winrate-graph": false,
+    "winrate-stroke-width": 1.7,
+    "show-next-moves": true,
+    "show-comment": true,
+    "show-leelaz-variation": true,
+    "theme": "default",
+    "show-winrate-in-suggestion": true,
+    "show-scoremean-in-suggestion": true,
+    "resume-previous-game": false,
+    "auto-check-date": "20210528",
+    "new-move-number-in-branch": true,
+    "use-language": 2,
+    "blunder-node-colors": [
+      [
+        255,
+        0,
+        0
+      ],
+      [
+        255,
+        153,
+        0
+      ]
+    ],
+    "show-coordinates": true,
+    "shadows-enabled": true,
+    "show-katago-boardscoremean": false,
+    "show-playouts-in-suggestion": true,
+    "blunder-winrate-thresholds": [
+      -25,
+      -10
+    ],
+    "show-variation-graph": true,
+    "show-dynamic-komi": false,
+    "host-name": "ralph-pc",
+    "minimum-blunder-bar-width": 3,
+    "show-blunder-bar": true,
+    "only-last-move-number": 1,
+    "confirm-exit": false,
+    "show-status": true,
+    "handicap-instead-of-winrate": false,
+    "large-subboard": false,
+    "first-time-load": false,
+    "show-subboard": true,
+    "norefresh-onmouse-move": true,
+    "show-best-moves": true,
+    "board-size": 19
+  }
+}

@@ -1,0 +1,23 @@
+pkgbase = lizzie-enhance
+	pkgdesc = Analysis interface for KataGo/Leela Zero, more features added by yzy
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/featurecat/lizzie
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	depends = bash
+	depends = java-runtime
+	provides = lizzie
+	conflicts = lizzie
+	source = lizzie::git+https://gitee.com/noobspace/lizzieyzy
+	source = lizzie.sh
+	source = lizzie.desktop
+	source = config.txt
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = lizzie-enhance
+
