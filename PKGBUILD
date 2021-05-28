@@ -2,7 +2,7 @@
 
 pkgname=notion-app
 pkgver=2.0.16
-pkgrel=10
+pkgrel=11
 epoch=2
 pkgdesc="The all-in-one workspace for your notes and tasks"
 arch=('i686' 'x86_64')
@@ -52,6 +52,7 @@ build() {
   rm -r node_modules
   npm install --cache "${srcdir}/npm-cache"
   node_modules/.bin/patch-package
+  npm install cld@2.7.0 --cache "${srcdir}/npm-cache"
 
   print_info "Converting app icon..."
   convert "icon.ico[0]" "icon.png" >/dev/null
