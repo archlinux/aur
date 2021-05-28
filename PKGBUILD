@@ -3,7 +3,7 @@
 
 pkgname='perl-date-easter'
 pkgver='1.22'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Calculates Easter for any given year"
 arch=('any')
 license=('PerlArtistic' 'GPL')
