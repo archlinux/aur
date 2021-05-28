@@ -51,7 +51,7 @@ _major=5.12
 _minor=7
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -313,7 +313,7 @@ sha512sums=('4896446ace0ed0edbdce47d79be35f913b9dc98f1004822ffbcbdb86775609fc51d
             'ca296d033acc4a8ac8955d18bf293305622dd58589924bbb4d377e624bbb6d5c577763bde42b40a1e3983e08d95f29b8725b6dbcf9f8814d44eddd734f8a0ae2'
             'c4a2ed0bbd9d348893e802079ab684518b28f163ad242af1b74dd71c7e7e0f5d2db68ace1733879f4bd575103b365e90d6af5d2d849c6e6d2dda41ac73f822a7'
             '1908055c446f04ef0a0a5a19579836d2f5dc60d7989677f85f084a7186a6327b240291feed8d25e320e72efa114b243a325362e2dbfbf7f4f3fb89bbdd3819be'
-            '9de790b32a2a7cb3722d14e16c88c7e7823493d23890791a80ecc0c2422fc18dda4832f3b67d82c9878851eb004bd5ae6d82f5d03e20caf824bc4569a7021e21')
+            'bf05b3ecb344aa9dbc5d9588f05d0a460b9ddae3f62970117dd0e9a33af51066b408ee89cab1573946855eb4d232f16a32a42a49d384547aacbbe2b04436d066')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
