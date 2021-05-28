@@ -1,16 +1,18 @@
 # Maintainer: AkinoKaede <autmaple@protonmail.com>
 
 pkgname=v2ray-extra
-pkgver=4.38.3
-pkgrel=2
+pkgver=4.39.2
+pkgrel=1
 pkgdesc="The extra resources of v2ray"
 arch=('any')
 url="https://github.com/v2fly/v2ray-core"
+provides=("v2ray-browserforwarder")
+conflicts=("v2ray-browserforwarder")
 license=('MIT')
 source=("v2ray-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=("e6089b346850fc61a4a135a2f86c4966ebf472737422676a9c40151323e2df9619e5fcea9e9ea345a8735bdba53e212cb502d7c76c2d359284624962b560ee1d")
+sha512sums=("eac92bfb63f7d2b465ad46ebf7d7e73639d1391c8715d6504624162dca05f632eb8bbed6c322713f08cd258d23cea82af86d1d97002bdf5fb3e61d30895e7d0b")
 package() {
     cd "${srcdir}"/"v2ray-core-${pkgver}"/
-    install -Dm644 release/extra/browserforwarder/* -t "${pkgdir}"/usr/share/v2ray/
+    install -Dm644 release/extra/browserforwarder/* -t "${pkgdir}"/usr/share/v2ray/browserforwarder/
     install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
