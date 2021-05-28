@@ -1,0 +1,15 @@
+pkgbase = lisgd-git
+	pkgdesc = Bind gestures on touchscreens, and unsupported gesture devices via libinput touch events
+	pkgver = 0.3.0.r2.g190a93d
+	pkgrel = 1
+	url = https://git.sr.ht/~mil/lisgd
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = libinput
+	provides = lisgd
+	source = git+https://git.sr.ht/~mil/lisgd#branch=master
+	sha1sums = SKIP
+
+pkgname = lisgd-git
+
