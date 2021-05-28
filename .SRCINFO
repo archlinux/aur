@@ -10,7 +10,7 @@ pkgbase = gkrellm-nvidia
 	depends = gkrellm
 	depends = libxnvctrl
 	source = https://github.com/carcass82/gkrellm-nvidia/archive/release-1.0.1.tar.gz
-	md5sums = 3d8bc8c334e98fe7d63ddbbacc0fa635
+	md5sums = 32691acf95df5b108395f5452f0c201b
 
 pkgname = gkrellm-nvidia
 

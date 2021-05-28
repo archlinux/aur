@@ -10,7 +10,7 @@ license=('GPL')
 depends=('gkrellm' 'libxnvctrl')
 makedepends=('pkgconfig')
 source=(https://github.com/carcass82/$pkgname/archive/release-$pkgver.tar.gz)
-md5sums=('3d8bc8c334e98fe7d63ddbbacc0fa635')
+md5sums=('32691acf95df5b108395f5452f0c201b')
 
 build()
 {
