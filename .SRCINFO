@@ -1,7 +1,7 @@
 pkgbase = ognibuild
 	pkgdesc = Detect and invoke build systems
 	pkgver = 0.0.7+2+gdcf1a00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jelmer/ognibuild
 	arch = any
 	license = GPL2

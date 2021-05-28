@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=ognibuild
 pkgver=0.0.7+2+gdcf1a00
-pkgrel=1
+pkgrel=2
 pkgdesc="Detect and invoke build systems"
 arch=('any')
 url="https://github.com/jelmer/ognibuild"
@@ -37,4 +37,7 @@ package() {
 	cd "$srcdir/$pkgname"
 	export PYTHONHASHSEED=0
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+	# Remove Debian-specific binary
+	rm "$pkgdir/usr/bin/deb-fix-build"
 }
