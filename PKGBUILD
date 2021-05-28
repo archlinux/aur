@@ -1,7 +1,7 @@
 # Maintainer: Luong The Minh Quang <luci at devel.faith>
 pkgname=wavm-git
 pkgdesc='WebAssembly Virtual Machine'
-pkgver=r1302.3783a6d
+pkgver=r2368.93c3ad73
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/WAVM/WAVM'
@@ -31,5 +31,5 @@ build() {
 package() {
   cd WAVM/build
   make DESTDIR="$pkgdir" install
-  install -Dm644 ../LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 ../LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

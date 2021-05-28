@@ -1,6 +1,6 @@
 pkgbase = wavm-git
 	pkgdesc = WebAssembly Virtual Machine
-	pkgver = r1302.3783a6d
+	pkgver = r2368.93c3ad73
 	pkgrel = 1
 	url = https://github.com/WAVM/WAVM
 	arch = x86_64
