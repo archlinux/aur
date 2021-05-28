@@ -7,7 +7,7 @@ pkgbase = r-rsdmx
 	license = GPL
 	depends = r
 	depends = r-r6
-	depends = r-xml2
+	depends = r-xml
 	depends = r-httr
 	depends = r-plyr
 	optdepends = r-testthat
@@ -15,7 +15,7 @@ pkgbase = r-rsdmx
 	optdepends = r-roxygen2
 	optdepends = r-markdown
 	source = https://cran.r-project.org/src/contrib/rsdmx_0.6.tar.gz
-	sha512sums = cbfb0569e7d61298645ce1cd569fdc3a25ef8ab07654523d001cd7b6292600c0baaf45be0b30fb2f692caed8e58367c4b6095914f5333ea5fb7c131df8931371
+	sha512sums = bc3150f521d24ac0c6552ab1de33d5026d610d736e5bc9025eba986d60735be9f8fd7c88d04e415b89e3f52a47ebcaa47946c7689f76bd632b76f6abcc30253e
 
 pkgname = r-rsdmx
 
