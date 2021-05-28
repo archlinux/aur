@@ -7,13 +7,15 @@ pkgbase = python-cocotb
 	license = BSD
 	makedepends = git
 	makedepends = gcc
+	makedepends = python-pip
 	depends = python
 	depends = python-setuptools
 	optdepends = iverilog: for simulating verilog designs
 	optdepends = ghdl: for simulating VHDL designs
 	optdepends = gtkwave: for visualizing waveforms
 	options = !emptydirs
-	source = git+https://github.com/cocotb/cocotb#tag=v1.5.0
+	source = git+https://github.com/cocotb/cocotb#tag=v1.5.2
 	md5sums = SKIP
 
 pkgname = python-cocotb
+
