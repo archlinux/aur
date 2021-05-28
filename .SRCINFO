@@ -1,6 +1,6 @@
 pkgbase = nuvolaruntime
 	pkgdesc = Nuvola Apps Runtime - Tight integration of web apps with your desktop
-	pkgver = 4.20.0
+	pkgver = 4.21.0
 	pkgrel = 1
 	url = https://nuvola.tiliado.eu
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = nuvolaruntime
 	depends = libappindicator-gtk3
 	provides = nuvolaplayer
 	conflicts = nuvolaplayer
-	source = https://github.com/tiliado/nuvolaruntime/archive/4.20.0/nuvolaruntime-4.20.0.tar.gz
-	sha256sums = 9441be8f574bd9f285568261ba77c11761d02f5e5e8218cefd239e2dba61f1de
+	source = https://github.com/tiliado/nuvolaruntime/archive/4.21.0/nuvolaruntime-4.21.0.tar.gz
+	sha256sums = 5e1d91c3e56ea8668e89ec3e2e8eaabfbd9ff4d9b1c6b1fd54e15756ddd5aa69
 
 pkgname = nuvolaruntime
 

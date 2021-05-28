@@ -4,7 +4,7 @@
 # Contributor: Laramy Black <laramy2020@gmail.com>
 
 pkgname=nuvolaruntime
-pkgver=4.20.0
+pkgver=4.21.0
 pkgrel=1
 pkgdesc="Nuvola Apps Runtime - Tight integration of web apps with your desktop"
 arch=(x86_64)
@@ -20,7 +20,7 @@ makedepends=(vala)
 provides=(nuvolaplayer)
 conflicts=(nuvolaplayer)
 source=("https://github.com/tiliado/$pkgname/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('9441be8f574bd9f285568261ba77c11761d02f5e5e8218cefd239e2dba61f1de')
+sha256sums=('5e1d91c3e56ea8668e89ec3e2e8eaabfbd9ff4d9b1c6b1fd54e15756ddd5aa69')
 
 build() {
 	cd "nuvolaplayer-${pkgver}"
