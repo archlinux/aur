@@ -1,7 +1,7 @@
 pkgbase = burpsuite-pro
 	pkgdesc = An integrated platform for performing security testing of web applications (professional edition)
 	pkgver = 2021.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://portswigger.net/burp/
 	install = burpsuite-pro.install
 	arch = any
