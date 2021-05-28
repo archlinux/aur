@@ -2,14 +2,14 @@
 
 pkgname=python-moderngl-git
 pkgdesc="Modern OpenGL binding for python."
-pkgver=20170726
+pkgver=20210522
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/cprogrammer1994/ModernGL"
 license=('MIT')
 groups=()
 depends=('python' 'libgl')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 options=(!emptydirs)
 source=("git+https://github.com/cprogrammer1994/ModernGL.git")
 md5sums=('SKIP')
