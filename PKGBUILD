@@ -6,7 +6,7 @@
 pkgname=libsodium-static
 _pkgname=libsodium
 pkgver=1.0.18
-pkgrel=2
+pkgrel=3
 pkgdesc="P(ortable|ackageable) NaCl-based crypto library (static library)"
 arch=('i686' 'x86_64')
 url="https://github.com/jedisct1/libsodium"
@@ -20,7 +20,7 @@ options=('staticlibs')
 build() {
   cd "$_pkgname-$pkgver"
 
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --disable-pie
   make
 }
 

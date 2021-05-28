@@ -1,7 +1,7 @@
 pkgbase = libsodium-static
 	pkgdesc = P(ortable|ackageable) NaCl-based crypto library (static library)
 	pkgver = 1.0.18
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jedisct1/libsodium
 	arch = i686
 	arch = x86_64
