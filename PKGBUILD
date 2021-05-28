@@ -1,28 +1,16 @@
 # Maintainer: Stephen Brennan <smb196@case.edu>
+# Contributor: Arvedui <arvedui@posteo.de>
 pkgname=libcommuni
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
-epoch=
 pkgdesc="A cross-platform IRC framework written with Qt."
-arch=('any')
+arch=('x86_64' 'i686' 'aarch64' 'arm' 'armv6h' 'armv7h')
 url="https://communi.github.io/"
-license=('custom')
-groups=()
+license=('BSD')
 depends=('qt5-declarative')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=($pkgname)
-conflicts=($pkgname)
-replaces=()
-backup=()
-options=()
-install=
-changelog=
+makedepends=('chrpath')
 source=("libcommuni-v$pkgver.tar.gz::https://github.com/communi/$pkgname/archive/v$pkgver.tar.gz")
-noextract=()
-md5sums=(2b62f599800962b2350cbd7ca2fc05ae)
-validpgpkeys=()
+md5sums=(34d7a865ecac8d444ee2433491df5634)
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -38,7 +26,10 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"
 	make INSTALL_ROOT="$pkgdir" install
-        mkdir -p "$pkgdir/usr/share/licenses/${pkgname}/"
-        install -m644 LICENSE \
-                "$pkgdir/usr/share/licenses/${pkgname}/"
+	mkdir -p "$pkgdir/usr/share/licenses/${pkgname}/"
+	install -m644 LICENSE \
+		"$pkgdir/usr/share/licenses/${pkgname}/"
+
+	chrpath -d "${pkgdir}/usr/lib/libIrc"{Model,Util}".so.${pkgver}"
+	chrpath -d "${pkgdir}/usr/lib/qt/qml/Communi/libcommuniplugin.so"
 }
