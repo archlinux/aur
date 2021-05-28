@@ -52,7 +52,7 @@ build() {
     binargs+=(--bin "$bin")
   done
   cargo build --release "${binargs[@]}"
-  cd "$srcdir/solana-program-library--solana-spl-token-v0.1.3"
+  cd "$srcdir/solana-program-library--solana-spl-token-v$_splver"
   cargo build --release --bin spl-token
 }
 
@@ -86,5 +86,5 @@ package() {
   for bin in "${BINS[@]}"; do
      install -Dm755 $srcdir/$pkgname-$pkgver/target/release/$bin $pkgdir/usr/bin
   done
-  install -Dm755 $srcdir/solana-program-library--solana-spl-token-v0.1.3/target/release/spl-token $pkgdir/usr/bin
+  install -Dm755 $srcdir/solana-program-library--solana-spl-token-v$_splver/target/release/spl-token $pkgdir/usr/bin
 }
