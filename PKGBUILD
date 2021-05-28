@@ -1,7 +1,7 @@
 # Maintainer: Ingo Meyer <i.meyer@fz-juelich.de>
 
 pkgname="gr-framework-git"
-pkgver="0.57.2.r48.g7b7a242c"
+pkgver="0.57.2.r53.gb93a5fae"
 pkgrel="1"
 pkgdesc="A universal framework for cross-platform visualization applications."
 arch=("i686" "x86_64" "armv6h" "armv7h" "aarch64")
