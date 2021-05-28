@@ -6,15 +6,15 @@
 _pkgbase=virt-manager
 pkgbase=$_pkgbase-git
 pkgname=(virt-install-git virt-manager-git)
-pkgver=2.2.1.r702.ga8aec2da
+pkgver=3.2.0.r91.ga1ddd23c
 pkgrel=1
 pkgdesc="Console user interface for managing virtual machines"
 arch=('any')
 url="http://virt-manager.org/"
 license=('GPL')
 depends=('python-gobject' 'libvirt-glib' 'libvirt-python'
-	 'python-requests' 'libosinfo')
-makedepends=('git' 'intltool' 'python-cairo' 'python-docutils')
+	 'python-requests' 'libosinfo' 'python-tqdm')
+makedepends=('git' 'intltool' 'python-setuptools' 'python-cairo' 'python-docutils')
 source=("git+https://github.com/virt-manager/virt-manager.git")
 sha512sums=('SKIP')
 
