@@ -2,14 +2,14 @@
 
 pkgname=notion-app
 pkgver=2.0.16
-pkgrel=11
+pkgrel=12
 epoch=2
 pkgdesc="The all-in-one workspace for your notes and tasks"
 arch=('i686' 'x86_64')
 url="https://www.notion.so/desktop"
 license=('MIT')
 depends=('re2' 'gtk3' 'xdg-utils')
-makedepends=('imagemagick' 'p7zip' 'npm' 'nvm' 'python2' 'git')
+makedepends=('imagemagick' 'p7zip' 'npm' 'nvm' 'python2' 'git' 'jq')
 source=("Notion-"${pkgver}".exe::https://desktop-release.notion-static.com/Notion%20Setup%20${pkgver}.exe" 
         'notion-app.desktop')
 md5sums=('9f72284086cda3977f7f569dff3974d5'
@@ -50,9 +50,11 @@ build() {
 
   print_info "Recreating package node_modules..."
   rm -r node_modules
+  PATCHED_PACKAGE_JSON=$(jq '.dependencies.cld="2.7.0"' package.json)
+  echo "${PATCHED_PACKAGE_JSON}" > package.json
+
   npm install --cache "${srcdir}/npm-cache"
   node_modules/.bin/patch-package
-  npm install cld@2.7.0 --cache "${srcdir}/npm-cache"
 
   print_info "Converting app icon..."
   convert "icon.ico[0]" "icon.png" >/dev/null
