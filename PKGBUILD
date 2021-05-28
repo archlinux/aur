@@ -89,6 +89,9 @@ build() {
     CFLAGS="${CFLAGS/-Wformat-overflow=[0-9]/}"
     CXXFLAGS="${CXXFLAGS/-Wformat-overflow=[0-9]/}"
 
+    #CXXFLAGS+=" -std=c++14" # CXXFLAGS is ignored by later stages, can't put into CPPFLAGS which works in all stages. Used below.
+    CPPFLAGS+=" -O2 -Wno-implicit-fallthrough -Wno-expansion-to-defined -Wno-unused-result -Wno-cast-function-type -Wno-switch"
+
     # The following options are one per line, mostly sorted so they are easy to diff compare to other gcc packages.
     ../configure \
       --build="${CHOST}" \
@@ -119,7 +122,8 @@ build() {
       --with-bugurl='https://bugs.archlinux.org/' \
       --with-linker-hash-style='gnu' \
       --with-system-zlib \
-      --prefix='/usr'
+      --prefix='/usr' \
+      CXX='g++ -std=c++14'
 #      CXX='g++-6.3' CC='gcc-6.3'
   fi
 
