@@ -1,8 +1,8 @@
 # Maintainer: Maximilian Stahlberg <maximilian.stahlberg tu-berlin de>
 
 pkgname=python-pyscipopt
-pkgver=3.1.0
-pkgrel=3
+pkgver=3.1.5
+pkgrel=1
 pkgdesc='A Python interface to the SCIP Optimization Suite.'
 arch=('any')
 url='https://www.scipopt.org/'
@@ -11,7 +11,7 @@ depends=('python' 'scipoptsuite')
 makedepends=('cython' 'python-setuptools')
 conflicts=('python-pyscipopt-git')
 source=("https://github.com/SCIP-Interfaces/PySCIPOpt/archive/v${pkgver}.tar.gz")
-md5sums=('9bf5f6b928888acb827298851804abc9')
+md5sums=('9192be97abe8e8c8f7b722f3152e2f27')
 
 build() {
 	cd "${srcdir}/PySCIPOpt-${pkgver}"
