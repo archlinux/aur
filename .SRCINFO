@@ -1,6 +1,6 @@
 pkgbase = quickmedia-git
-	pkgdesc = A dmenu-inspired native client for web services. Supports youtube, spotify (podcasts), soundcloud, nyaa.si, 4chan, matrix and several manga sites.
-	pkgver = r762.3ccd802
+	pkgdesc = A dmenu-inspired native client for web services. Supports youtube, soundcloud, nyaa.si, 4chan, matrix and several manga sites.
+	pkgver = r763.89c204b
 	pkgrel = 1
 	url = https://git.dec05eba.com/QuickMedia
 	arch = x86_64
@@ -21,12 +21,12 @@ pkgbase = quickmedia-git
 	optdepends = waifu2x-ncnn-vulkan: For upscaling manga pages when using the --upscale-images option
 	optdepends = xdg-utils: For downloading torrents when using nyaa.si plugin or opening remote links
 	optdepends = ffmpeg: For sending video metadata and thumbnail with /upload in matrix
-	optdepends = youtube-dl: To play youtube videos
+	optdepends = youtube-dl: To play youtube music/videos
 	optdepends = noto-fonts-cjk: To display chinese, japanese and korean characters
 	provides = quickmedia
 	conflicts = quickmedia
-	source = quickmedia-git-r762.3ccd802.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r762.3ccd802.tar.gz
-	sha512sums = 3184a465bc279e41f2157f62c9478b15bf723d3ca37f3c3f3347c8113e2c41dfbfe88d2e010534fb74c190e815b83b5565c7448e143fc9fe69ddc98ccf238983
+	source = quickmedia-git-r763.89c204b.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r763.89c204b.tar.gz
+	sha512sums = 31540d8829df8d95faf21ae7dab5b9a871ffbd78b8abbefc3a70e8d44e86727aa265e5647108b4d002a808db8b0424acc085380498070f00344dad232834e35e
 
 pkgname = quickmedia-git
 
