@@ -1,20 +1,20 @@
-# Contributor: Anonymous
+# Contributor: BluePeril <blueperil@blueperil.de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-io-aio'
-pkgver='4.72'
+pkgver='4.75'
 pkgrel='1'
 pkgdesc="Asynchronous/Advanced Input/Output"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('glibc>=2.28' 'perl-common-sense>=0')
-makedepends=()
+depends=('glibc>=2.33' 'perl-common-sense>=0')
+makedepends=('perl-canary-stability')
 url='https://metacpan.org/release/IO-AIO'
-source=('http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/IO-AIO-4.72.tar.gz')
-md5sums=('41ccb0bb8d6581e5227c1aab1f420598')
-sha512sums=('7b18fac37ed22e504dd43d71ae42a7bbb54843ab013574007e7fee17b3b25c5533a68d3163c89d7a6420266ff825c064405a752f85474816ece66c5fb1468fc1')
-_distdir="IO-AIO-4.72"
+source=('http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/IO-AIO-4.75.tar.gz')
+md5sums=('04edb0cb77d9ec19f73b8aa46d5b3d05')
+sha512sums=('3a30b34d6de476accc9b07c0723a3b21c235e5bd2b5951edc3ce3150de22a6b7dab5634d78ec17b799a71f2ede0bc138fead1e02885eed31a4da5cec05dfcaa3')
+_distdir="IO-AIO-4.75"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
