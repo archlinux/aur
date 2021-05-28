@@ -15,6 +15,9 @@ depends=(
 	'python-moderngl-git'
 	'python-pyrr'
 )
+makedepends=(
+	'python-setuptools'
+)
 provides=()
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
 sha512sums=('e0a4a0d92e6ba2c89770b76373b337bac8ab2bcba6758c9b76607941e3b22f6ce7677f213a8e48a6b5367fe487dde8b859d503589c30b918695f4113372b131b')

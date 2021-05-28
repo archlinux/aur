@@ -5,6 +5,7 @@ pkgbase = python-moderngl-window
 	url = https://github.com/moderngl/moderngl-window
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python-numpy
 	depends = python-pillow
 	depends = python-pyglet
