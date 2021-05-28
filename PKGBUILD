@@ -3,7 +3,7 @@
 
 pkgname='perl-moose'
 pkgver='2.2015'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="A postmodern object system for Perl 5"
 arch=('any')
 license=('PerlArtistic' 'GPL')
