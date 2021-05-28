@@ -1,0 +1,15 @@
+pkgbase = plotframes
+	pkgdesc = A Node.js frame plotter inspired by FFmpeg plotframes
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/rodrigopolo/plotframes
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = v2.0.2.tgz
+	source = https://github.com/danog/plotframes/archive/refs/tags/v2.0.2.tar.gz
+	sha512sums = aa8e6aeb1f86524ba6202bfaa788f97bbffe23f6ea448eeffe7ed8808aa62e0d11f346ff89605a1f13003042f63aa971c79c723afb6550ae4c5a618b569c1c67
+
+pkgname = plotframes
+
