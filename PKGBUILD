@@ -1,6 +1,6 @@
 # Maintainer: Ralph Zhou <1694487365@qq.com>
 
-pkgname=lizzie-enhance
+pkgname=lizzie-improve
 _pkgname=lizzie
 pkgver=2.1
 _pkgver=2.1

@@ -1,4 +1,4 @@
-pkgbase = lizzie-enhance
+pkgbase = lizzie-improve
 	pkgdesc = Analysis interface for KataGo/Leela Zero, more features added by yzy
 	pkgver = 2.1
 	pkgrel = 1
@@ -19,5 +19,5 @@ pkgbase = lizzie-enhance
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = lizzie-enhance
+pkgname = lizzie-improve
 
