@@ -3,7 +3,7 @@ _name=ovh-ttyrec
 pkgname="$_name-git"
 pkgdesc='Enhanced (but compatible) version of the classic ttyrec'
 pkgrel=1
-pkgver=v1.1.6.3.r0.gb8bdaab
+pkgver=v1.1.6.7.r1.ga13ca74
 arch=('x86_64')
 url='https://github.com/ovh/ovh-ttyrec'
 license=('BSD')
@@ -18,15 +18,9 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-package() {
-  npm install -g --user root --prefix "$pkgdir"/usr "$_name"
-  find "${pkgdir}"/usr -type d -exec chmod 755 {} +
-  chown -R root:root "$pkgdir"
-}
-
 prepare() {
   cd "$_name"
-  ./configure NO_STATIC_ZSTD=1
+  ./configure NO_STATIC_ZSTD=1 --prefix=/usr
 }
 
 build() {
