@@ -1,0 +1,17 @@
+pkgbase = chromiumos-devel
+	pkgdesc = Meta for building ChromiumOS
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = git
+	depends = subversion
+	depends = curl
+	depends = lvm2
+	depends = thin-provisioning-tools
+	depends = python-virtualenv
+	depends = python-oauth2client
+	depends = python-pkgconfig
+
+pkgname = chromiumos-devel
+
