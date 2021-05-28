@@ -2,7 +2,7 @@
 # Maintainer: Lunush
 
 pkgname=rates-bin
-_pkgver="$(curl --silent "https://api.github.com/repos/$1/releases/latest" | grep -Po '"tag_name": "\K.*?(?=")')"
+_pkgver="$(curl --silent "https://api.github.com/repos/lunush/rates/releases/latest" | grep -Po '"tag_name": "\K.*?(?=")')"
 pkgver=${_pkgver}
 pkgrel=1
 pkgdesc="Currency exchange rates in your terminal"
@@ -32,48 +32,3 @@ package() {
   install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
-
-# # Please report issues with the package on GitHub
-# # Maintainer: Lunush
-
-# pkgname=rates
-# _pkgver="$(curl --silent "https://api.github.com/repos/lunush/rates/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')"
-# pkgver=${_pkgver}
-# pkgrel=1
-# pkgdesc="Currency exchange rates in your terminal"
-# arch=("x86_64")
-# url="https://github.com/lunush/rates"
-# license=("Apache-2.0")
-# depends=()
-# makedepends=("git" "rust")
-# provides=("rates" "rates-bin" "rates-git")
-# conflicts=("rates")
-# source=("https://github.com/lunush/rates/archive/refs/tags/${pkgver}.tar.gz")
-# sha256sums=("SKIP")
-
-# prepare() {
-#   tar xzf "${pkgver}.tar.gz"
-# }
-
-# pkgver() {
-#   echo $_pkgver
-# }
-
-# build() {
-#   cd "$pkgver"
-#   export SHELL_COMPLETIONS_DIR="$PWD/completions"
-#   cargo build --release --locked
-# }
-
-# check() {
-#   cd "$pkgver"
-#   cargo test --release --locked
-# }
-
-# package() {
-#   cd "$pkgver"
-#   install -Dm755 "target/release/rates" "$pkgdir/usr/bin/rates"
-#   install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
-#   install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
-#   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-# }
