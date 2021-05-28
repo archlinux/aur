@@ -3,7 +3,7 @@
 pkgname=pscale-bin
 _pkgname=pscale
 pkgver=0.40.0
-pkgrel=0
+pkgrel=1
 pkgdesc='The command-line client for Planetscale DBaaS'
 arch=('x86_64')
 url='https://github.com/planetscale/cli'
