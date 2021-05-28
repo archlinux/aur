@@ -1,7 +1,7 @@
 pkgbase = perl-moosex-classattribute
 	pkgdesc = Declare class attributes Moose-style
 	pkgver = 0.29
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/MooseX-ClassAttribute
 	arch = any
 	license = PerlArtistic
