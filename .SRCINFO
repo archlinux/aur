@@ -1,17 +1,18 @@
 pkgbase = python-pygccxml
 	pkgdesc = Simple framework to navigate C++ declarations, using Python classes.
-	pkgver = 1.9.1
-	pkgrel = 2
+	pkgver = 2.2.1
+	pkgrel = 1
 	url = https://github.com/gccxml/pygccxml
 	arch = any
 	license = Boost
+	checkdepends = python-pycodestyle
 	makedepends = python-setuptools
 	depends = castxml
 	depends = python
 	provides = pygccxml
 	replaces = pygccxml
-	source = python-pygccxml-1.9.1.tar.gz::https://github.com/gccxml/pygccxml/archive/v1.9.1.tar.gz
-	sha256sums = 2fb4e18f7a3ae039a05230ca58f11e1fc925c8643f926a1be481bb4338414a95
+	source = python-pygccxml-2.2.1.tar.gz::https://github.com/gccxml/pygccxml/archive/v2.2.1.tar.gz
+	sha256sums = 9815a12e3bf6b83b2e9d8c88335fb3fa0e2b4067d7fbaaed09c3bf26c6206cc7
 
 pkgname = python-pygccxml
 
