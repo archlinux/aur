@@ -3,7 +3,7 @@
 pkgname=protonvpn-gui
 _gitpkgname=linux-app
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="ProtonVPN Graphical User Interface"
 arch=("any")
 url="https://github.com/ProtonVPN/"
@@ -23,5 +23,11 @@ build() {
 
 package() {
     cd "$_gitpkgname-$pkgver"
+    install -d -m755 "${pkgdir}/usr/share/applications"
+    install -d -m755 "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
+
+    cp protonvpn.desktop "${pkgdir}/usr/share/applications/protonvpn.desktop"
+    cp ./protonvpn_gui/assets/icons/protonvpn-logo.png "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
+    
     python setup.py install --root="$pkgdir" --optimize=1
 }

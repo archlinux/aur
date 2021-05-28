@@ -1,7 +1,7 @@
 pkgbase = protonvpn-gui
 	pkgdesc = ProtonVPN Graphical User Interface
 	pkgver = 0.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ProtonVPN/
 	arch = any
 	groups = ProtonVPN
