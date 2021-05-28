@@ -1,6 +1,6 @@
 pkgbase = rompr
 	pkgdesc = A php web frontend to MPD and Mopidy
-	pkgver = 1.57
+	pkgver = 1.58
 	pkgrel = 1
 	install = rompr.install
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = rompr
 	optdepends = apache: webserver to serve app
 	optdepends = nginx: webserver to serve app
 	optdepends = mysql: alternate database platform to sqlite
-	source = https://github.com/fatg3erman/RompR/releases/download/1.57/rompr-1.57.zip
-	sha256sums = 0f0e67a6eb471ddc41366d09b5d3e4d04435970cbc2072cb5646289bebce0ff0
+	source = https://github.com/fatg3erman/RompR/releases/download/1.58/rompr-1.58.zip
+	sha256sums = c4cc91a8003dd24584e78fb13f7be7051fcd5cd6c950ff1af167f5b31154064f
 
 pkgname = rompr
 
