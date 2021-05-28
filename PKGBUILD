@@ -1,9 +1,9 @@
-# Maintainer: PumpkinCheshire <sollyonzou at gmail dot com>
+# Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
 # Contributor: Cobalt Space <cobaltspace at protonmail dot com>
 # Contributor: Mitch Bigelow <ipha00 at gmail dot com>
 
 pkgname=ncnn
-pkgver=20210507
+pkgver=20210525
 pkgrel=1
 pkgdesc="High-performance neural network inference framework optimized for the mobile platform"
 url="https://github.com/Tencent/ncnn"
@@ -11,10 +11,10 @@ license=('BSD')
 depends=()
 makedepends=('cmake' 'glslang-git' 'vulkan-headers' 'vulkan-icd-loader' 'gcc')
 conflicts=('ncnn-git')
-arch=('i686' 'x86_64')
+arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Tencent/ncnn/archive/${pkgver}.tar.gz"
 )
-sha256sums=('b9f87aa7e7c41abfcb8e271ff2b15cebd7ecee52cd6e1fb84ebd130e1a483a52')
+sha256sums=('a385eb5505f09e59ae486fa89584e5a15d4c45e7463927bbdddf9060d81b9a18')
 
 prepare() {
     cd "${srcdir}/ncnn-${pkgver}"
