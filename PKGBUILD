@@ -1,16 +1,16 @@
 # Maintainer: Daryl Ronningen <relms@relms.dev>
 
-_attachmentId='c9896da7-2281-41f5-bbc8-f5e92a1d82e0'
+_attachmentId='d21371d7-170c-458c-b280-ffe9da43658e'
 
 pkgname=prideflags-wallpapers
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Pride Flags Wallpapers'
 arch=(any)
-url='https://code.relms.dev/Relms/pride-flags-wallpapers'
+url='https://code.relms.dev/Relms/prideflags-wallpapers'
 optdepends=('feh: set desktop wallpapers')
 license=('custom:CC0')
-source=("flags.tar.xz::https://code.relms.dev/attachments/${_attachmentId}")
+source=("flags-${pkgver}-${pkgrel}.tar.xz::https://code.relms.dev/attachments/${_attachmentId}")
 sha256sums=('4f739c1491e544acaeebb16406ed8929b02f5ef20b68909df60affbc5fb7501c')
 
 package() {

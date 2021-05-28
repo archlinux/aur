@@ -1,12 +1,12 @@
 pkgbase = prideflags-wallpapers
 	pkgdesc = Pride Flags Wallpapers
 	pkgver = 1.1.0
-	pkgrel = 1
-	url = https://code.relms.dev/Relms/pride-flags-wallpapers
+	pkgrel = 2
+	url = https://code.relms.dev/Relms/prideflags-wallpapers
 	arch = any
 	license = custom:CC0
 	optdepends = feh: set desktop wallpapers
-	source = flags.tar.xz::https://code.relms.dev/attachments/c9896da7-2281-41f5-bbc8-f5e92a1d82e0
+	source = flags-1.1.0-2.tar.xz::https://code.relms.dev/attachments/d21371d7-170c-458c-b280-ffe9da43658e
 	sha256sums = 4f739c1491e544acaeebb16406ed8929b02f5ef20b68909df60affbc5fb7501c
 
 pkgname = prideflags-wallpapers
