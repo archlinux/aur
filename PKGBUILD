@@ -2,7 +2,7 @@
 
 pkgname=notion-app-nativefier
 pkgver=2021.04.26
-pkgrel=1
+pkgrel=2
 pkgdesc='Notion in shared Electron runtime'
 arch=('x86_64')
 url='https://www.notion.so'
