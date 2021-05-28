@@ -2,7 +2,7 @@
 
 pkgname=semgrep-bin
 _name=semgrep
-pkgver=0.51.0
+pkgver=0.53.0
 pkgrel=1
 pkgdesc="Fast and syntax-aware semantic code pattern search for many languages: like grep but for code"
 arch=(x86_64)
@@ -17,8 +17,8 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
 )
 sha256sums=(
-  '6d11d86e59349d8a8fd8183565e2604ed0e981c8f4f9b2db1951120b3c67bbbe'
-  '16b127968819d9d48ca69319d61444ce74fd56d21f7a0e1b8ba8aef0079f4f85'
+  'd72e6c424d3d8dffc2476cb1567de64f384a617b9d993cdb3af9bab27383740e'
+  '5e6114301d485b584e84dbba8a87cc8bed4c2ac733efd8e7e8d6b54118bab2e0'
 )
 # https://github.com/returntocorp/semgrep/releases/download/v${pkgver}/semgrep-v${pkgver}-ubuntu-16.04.tgz.sha256
 

@@ -1,6 +1,6 @@
 pkgbase = semgrep-bin
 	pkgdesc = Fast and syntax-aware semantic code pattern search for many languages: like grep but for code
-	pkgver = 0.51.0
+	pkgver = 0.53.0
 	pkgrel = 1
 	url = https://github.com/returntocorp/semgrep
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = semgrep-bin
 	depends = python-jsonschema
 	provides = semgrep
 	options = !strip
-	source = https://github.com/returntocorp/semgrep/releases/download/v0.51.0/semgrep-v0.51.0-ubuntu-16.04.tgz
-	source = https://files.pythonhosted.org/packages/source/s/semgrep/semgrep-0.51.0.tar.gz
-	sha256sums = 6d11d86e59349d8a8fd8183565e2604ed0e981c8f4f9b2db1951120b3c67bbbe
-	sha256sums = 16b127968819d9d48ca69319d61444ce74fd56d21f7a0e1b8ba8aef0079f4f85
+	source = https://github.com/returntocorp/semgrep/releases/download/v0.53.0/semgrep-v0.53.0-ubuntu-16.04.tgz
+	source = https://files.pythonhosted.org/packages/source/s/semgrep/semgrep-0.53.0.tar.gz
+	sha256sums = d72e6c424d3d8dffc2476cb1567de64f384a617b9d993cdb3af9bab27383740e
+	sha256sums = 5e6114301d485b584e84dbba8a87cc8bed4c2ac733efd8e7e8d6b54118bab2e0
 
 pkgname = semgrep-bin
 
