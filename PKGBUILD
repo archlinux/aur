@@ -27,7 +27,7 @@ fi
 ##
 
 pkgname=brave
-pkgver=1.24.86
+pkgver=1.25.68
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -35,13 +35,13 @@ url='https://www.brave.com/download'
 license=('custom')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'ttf-font' 'libva' 'json-glib')
 makedepends=('git' 'npm' 'python' 'python2' 'icu' 'glibc' 'gperf' 'java-runtime-headless' 'clang' 'python2-setuptools' 'pipewire')
-optdepends=('cups: Printer support'
-            'pipewire: WebRTC desktop sharing under Wayland'
+optdepends=('pipewire: WebRTC desktop sharing under Wayland'
+            'kdialog: support for native dialogs in Plasma'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
-            'kwallet: for storing passwords in KWallet on KDE desktops'
+            'kwallet: support for storing passwords in KWallet on Plasma'
             'sccache: For faster builds')
-chromium_base_ver="90"
-patchset="6"
+chromium_base_ver="91"
+patchset="5"
 patchset_name="chromium-${chromium_base_ver}-patchset-${patchset}"
 _launcher_ver=7
 source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
@@ -54,11 +54,13 @@ source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v${pk
         "chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz"
         "https://github.com/stha09/chromium-patches/releases/download/${patchset_name}/${patchset_name}.tar.xz"
         "chromium-no-history.patch")
-arch_revision=8d3870e027300e243471b1e508f31d16ce45553a
+arch_revision=7cd2f08852ca3b88237a5c563eb8cfc5e471e489
 Patches="
+        fix-crash-in-ThemeService.patch
+        unbundle-use-char16_t-as-UCHAR_TYPE.patch
         add-clang-nomerge-attribute-to-CheckError.patch
-        chromium-glibc-2.33.patch
-        use-oauth2-client-switches-as-default.patch
+        sql-make-VirtualCursor-standard-layout-type.patch
+        unexpire-accelerated-video-decode-flag.patch
         "
 for arch_patch in $Patches
 do
@@ -73,11 +75,13 @@ sha256sums=('SKIP'
             '725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
             '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
-            '3eb9580ea35a96789e02815270498226fa33726f4210a5ee36f3868af2ffae1f'
+            '171525009003a9ed1182cfcb6f407d7169d9a731a474304e263029376719f55a'
             'ea3446500d22904493f41be69e54557e984a809213df56f3cdf63178d2afb49e'
-            '5e22afcb91b5402bc09e80630c5323d61013c3fccb0bbd9b23d1e79a400b00d0'
-            '2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b'
-            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
+            '3cfe46e181cb9d337c454b5b5adbf5297052f29cd617cdee4380eeb1943825d8'
+            '59a59a60a08b335fe8647fdf0f9d2288d236ebf2cc9626396d0c4d032fd2b25d'
+            '50133dd196d288ad538bb536aa51dccd6cb4aacfd9a60160f77e8fb16034b460'
+            'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
+            '82a85105fc33b92a84dabb7ed6725ccbb56f1075c11f9f3f43bb8ff724f88847')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -160,20 +164,21 @@ prepare() {
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/*.cc
 
-  # Use the --oauth2-client-id= and --oauth2-client-secret= switches for
-  # setting GOOGLE_DEFAULT_CLIENT_ID and GOOGLE_DEFAULT_CLIENT_SECRET at
-  # runtime -- this allows signing into Chromium without baked-in values
-  patch -Np1 -i ../../use-oauth2-client-switches-as-default.patch
+  # https://crbug.com/1207478
+  patch -Np0 -i ../../unexpire-accelerated-video-decode-flag.patch
 
-  # https://crbug.com/1164975
-  patch -Np1 -i ../../chromium-glibc-2.33.patch
+  # Upstream fixes
+  patch -Np1 -i ../../fix-crash-in-ThemeService.patch
+  patch -Np1 -i ../../unbundle-use-char16_t-as-UCHAR_TYPE.patch
 
   # Revert addition of [[clang::nomerge]] attribute; not supported by clang 11
-  patch -Rp1 -d base <../../add-clang-nomerge-attribute-to-CheckError.patch
+  patch -Rp1 -i ../../add-clang-nomerge-attribute-to-CheckError.patch
+
+  # https://chromium-review.googlesource.com/c/chromium/src/+/2862724
+  patch -Np1 -i ../../sql-make-VirtualCursor-standard-layout-type.patch
 
   # Fixes for building with libstdc++ instead of libc++
-  patch -Np1 -i ../../patches/chromium-90-quantization_utils-include.patch
-  patch -Np1 -i ../../patches/chromium-90-TokenizedOutput-include.patch
+  patch -Np1 -i ../../patches/chromium-90-ruy-include.patch
 
   # Force script incompatible with Python 3 to use /usr/bin/python2
   sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
