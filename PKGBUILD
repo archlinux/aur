@@ -2,7 +2,7 @@
 # Contributor: Brandon Mulcahy <brandon@jangler.info>
 
 pkgname=schismtracker
-pkgver=20200412
+pkgver=20210525
 pkgrel=1
 pkgdesc='An oldschool sample-based music composition tool'
 arch=('i686' 'pentium4' 'x86_64' 'armv7h')  # and probably other ARMs
@@ -11,11 +11,11 @@ license=('GPL')
 depends=('libxv' 'sdl')
 makedepends=('python')
 conflicts=('schismtracker-git')
-source=("$pkgname-$pkgver.source.tar.gz::https://github.com/schismtracker/schismtracker/releases/download/$pkgver/$pkgname-$pkgver.source.tar.gz")
-sha512sums=('0a1d857a772ab41c779ebb22b1f885654998cb4126cad2aaf35caf60a4275fca1163b4e35a770502fa4d7a07fc57cb77d539c5d54bd922646a53b4866e84a1c3')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/refs/tags/$pkgver.tar.gz")
+sha512sums=('1f20535e4e3b5175ceea803a45b7286a99cab248829c39d11bc85780bc63e0e26c49ad78997a13e290fb4ad2c292d15eeb494a975d53fbe25dec80499e675b16')
 
 build() {
-  cd $srcdir/$pkgname
+  cd "$srcdir/$pkgname"
   autoreconf -i
   ./configure --prefix=/usr
   make
