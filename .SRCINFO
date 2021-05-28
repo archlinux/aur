@@ -1,13 +1,13 @@
 pkgbase = dyn-wall-rs
 	pkgdesc = A utility to allow you to set a dynamic wallpaper and more.
-	pkgver = 2.1.2
-	pkgrel = 3
+	pkgver = 2.1.3
+	pkgrel = 1
 	url = https://github.com/RAR27/dyn-wall-rs
 	arch = x86_64
 	license = GPL3
 	makedepends = rust
 	optdepends = feh: for setting wallpapers for window managers
-	source = dyn-wall-rs-2.1.2.tar.gz::https://github.com/RAR27/dyn-wall-rs/archive/v2.1.2.tar.gz
-	sha256sums = 934e54eb77427f31d2f6b3ca0dc5903aefafc2d52cde47747fa879959718bc55
+	source = dyn-wall-rs-2.1.3.tar.gz::https://github.com/RAR27/dyn-wall-rs/archive/v2.1.3.tar.gz
+	sha256sums = 2770049adfa0dcaec800bbb1c735cbf63079319ec5ed400193c8a3b3adbd3f34
 
 pkgname = dyn-wall-rs
