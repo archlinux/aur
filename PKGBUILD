@@ -1,19 +1,20 @@
-# Contributor: Daniel Maurice Davis <daniel.maurice.davis@gmail.com>
+# Contributor: BluePeril <blueperil@blueperil.de>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-perl-languageserver'
-pkgver='0.03'
+pkgver='2.2.0'
 pkgrel='1'
-pkgdesc="Language Server for Perl"
+pkgdesc="Language Server and Debug Protocol Adapter for Perl"
 arch=('any')
 license=('PerlArtistic' 'GPL')
-options=('!emptydirs' purge)
-depends=('perl-anyevent>=0' 'perl-anyevent-aio>=0' 'perl-compiler-lexer-git' 'perl-coro>=0' 'perl-data-dump>=0' 'perl-io-aio>=0' 'perl-json>=0' 'perl-moose>=0' 'perl>=5.014')
+options=('!emptydirs')
+depends=('perl-anyevent>=0' 'perl-anyevent-aio>=0' 'perl-class-refresh>=0' 'perl-compiler-lexer>=0.23' 'perl-coro>=0' 'perl-data-dump>=0' 'perl-io-aio>=0' 'perl-json>=0' 'perl-moose>=0' 'perl-padwalker>=0' 'perl>=5.014')
 makedepends=()
 url='https://metacpan.org/release/Perl-LanguageServer'
-source=('http://search.cpan.org/CPAN/authors/id/G/GR/GRICHTER/Perl-LanguageServer-0.03.tar.gz')
-md5sums=('0629b505f336f98a4b3c06c6a61cb9c7')
-sha512sums=('26911f02bb76bf221716f5f10c30046fc92c4c3424c08d7753060f7abbcfc2b690e1e181409f24435c35e84859b4d789768c1c31650e02e650f810352d8fe0c4')
-_distdir="Perl-LanguageServer-0.03"
+source=('http://search.cpan.org/CPAN/authors/id/G/GR/GRICHTER/Perl-LanguageServer-2.2.0.tar.gz')
+md5sums=('ac3c9183c6e5846b9e294f3390445942')
+sha512sums=('886e7fe2656a5003cb48d61d809a4f80c1387aadaf6029f33e144aeccd90702fda8a32c1195337a7435dc296d0a15b58b2100a58d8d4508d3df13b5fcb1f2719')
+_distdir="Perl-LanguageServer-2.2.0"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -40,3 +41,9 @@ package() {
   make install
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
+
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
+# vim:set ts=2 sw=2 et:
