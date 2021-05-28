@@ -1,8 +1,8 @@
 # Maintainer: Helle Vaanzinn <glitsj16 at riseup dot net >
 
 pkgname=firejail-handler-extra
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="BitTorrent/Youtube URL handlers for Firejail"
 arch=(x86_64)
 license=(GPL2)
@@ -12,7 +12,7 @@ depends=('firejail' 'inotify-tools' 'xdg-user-dirs' 'xdg-utils')
 options=(libtool !purge staticlibs !strip !zipman)
 install=firejail-handler-extra.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/glitsj16/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('09951623e27618bd379734982533f9cad0b804c75e11187f427c336cc3d73159')
+sha256sums=('1a3988f7f74244d935e562760e66703f4e9e3132c6a1c2d17f23e02268a98bb4')
 
 package() {
     cd "${pkgname}-${pkgver}"
