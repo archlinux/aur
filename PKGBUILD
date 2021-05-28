@@ -10,8 +10,19 @@ license=(BSD-2)
 depends=(gtk3)
 makedepends=(cargo git rust)
 _commit=215363b86c121dbeabd8632f849eef7e72930204 # tag/v0.3.6
-source=("git+https://github.com/frenkel/timer-for-harvest.git#commit=${_commit}")
-sha512sums=('SKIP')
+source=(
+    "git+https://github.com/frenkel/timer-for-harvest.git#commit=${_commit}"
+    allow_resize.patch
+)
+sha256sums=(
+    SKIP
+    8c7e40b9fab97709ff460856ad96bd1eab8496bb50acb990e010a03e75f8b06d
+)
+
+prepare() {
+    cd "$pkgname"
+    patch -p1 -i "$srcdir/allow_resize.patch"
+}
 
 build() {
     return 0

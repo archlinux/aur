@@ -10,7 +10,9 @@ pkgbase = timer-for-harvest
 	makedepends = rust
 	depends = gtk3
 	source = git+https://github.com/frenkel/timer-for-harvest.git#commit=215363b86c121dbeabd8632f849eef7e72930204
-	sha512sums = SKIP
+	source = allow_resize.patch
+	sha256sums = SKIP
+	sha256sums = 8c7e40b9fab97709ff460856ad96bd1eab8496bb50acb990e010a03e75f8b06d
 
 pkgname = timer-for-harvest
 
