@@ -15,9 +15,9 @@ conflicts=("googleduo-git")
 sha256sums_x86_64=('SKIP')
 sha256sums_armv7h=('SKIP')
 sha256sums_aarch64=('SKIP')
-source_x86_64=("https://gitlab.com/google-duo/binaries/-/raw/master/GoogleDuo-linux-x64.tar.gz")
-source_armv7h=("https://gitlab.com/google-duo/binaries/-/raw/master/GoogleDuo-linux-armv7l.tar.gz")
-source_aarch64=("https://gitlab.com/google-duo/binaries/-/raw/master/GoogleDuo-linux-arm64.tar.gz")
+source_x86_64=("https://gitlab.com/google-duo/binaries/1.0.2-1/-/raw/master/GoogleDuo-linux-x64.tar.gz")
+source_armv7h=("https://gitlab.com/google-duo/binaries/1.0.2-1/-/raw/master/GoogleDuo-linux-armv7l.tar.gz")
+source_aarch64=("https://gitlab.com/google-duo/binaries/1.0.2-1/-/raw/master/GoogleDuo-linux-arm64.tar.gz")
 
 
 package() {
