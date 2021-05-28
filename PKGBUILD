@@ -2,7 +2,7 @@
 
 pkgname=timer-for-harvest
 pkgver=0.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Harvest client implemented using GTK+ and Rust"
 url="https://github.com/frenkel/timer-for-harvest"
 arch=(x86_64)
