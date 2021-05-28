@@ -3,7 +3,7 @@
 
 pkgname=waraddonclient
 _pkgname=WARAddonClient
-pkgver=1.12.3
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="Warhammer Return of Reckoning Addon Client"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("$_pkgname.jar::$url/releases/download/$pkgver/$_pkgname.jar"
         "logo.png"
         "waraddonclient"
         "permissions.install")
-sha256sums=('22a8698573bf9d82d1c2728ac2484190f9508a9327b9d794d026f7a18e39e7cf'
+sha256sums=('290d26e3db6684b5d568db71018451a33a743f7cdb9386369ad5ada44df1a518'
             '1ca564ed8afec3a55a126ccd3647e44588772ffa446efc7aa4414119cfb96690'
             '43c55b23d98950ed17d88d95d72e1eac1903f3f6a5b9ef99b29d328fe3cb5d24'
             '87d2572d15f15ad3539b180f831b31343c9cd24cb3575120318eba8057b3c1ea'
