@@ -11,6 +11,7 @@ depends=(
 	'python'
 )
 makedepends=(
+	'libx11'
 	'python-setuptools'
 )
 source=("$url/archive/refs/tags/$pkgver.tar.gz")

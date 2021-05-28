@@ -5,6 +5,7 @@ pkgbase = python-glcontext
 	url = https://github.com/moderngl/glcontext
 	arch = any
 	license = MIT
+	makedepends = libx11
 	makedepends = python-setuptools
 	depends = python
 	source = https://github.com/moderngl/glcontext/archive/refs/tags/2.3.4.tar.gz
