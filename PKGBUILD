@@ -2,7 +2,7 @@
 
 pkgname=todoist-nativefier
 pkgver=2021.04.26
-pkgrel=1
+pkgrel=2
 pkgdesc='Todoist in shared Electron runtime'
 arch=('x86_64')
 url='https://todoist.com'
