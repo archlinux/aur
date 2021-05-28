@@ -3,7 +3,7 @@
 
 pkgname=google-calendar-nativefier
 pkgver=2021.04.26
-pkgrel=1
+pkgrel=2
 pkgdesc='Google Calendar in shared Electron runtime'
 arch=('x86_64')
 url='https://calendar.google.com'
