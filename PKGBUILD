@@ -1,7 +1,7 @@
 # Maintainer: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 pkgname=zellij
 pkgver=0.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A terminal multiplexer."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://zellij.dev"
@@ -16,7 +16,6 @@ sha512sums=('c7ef800edd93dddab8b08bfa131a96120bd7728cf8adee262969e270bebd62aac61
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   RUSTUP_TOOLCHAIN=stable cargo build --release --locked --all-features --target-dir=target
-  cargo build --release --locked --target-dir=target
   ./target/release/zellij setup --generate-completion bash > target/zellij.bash
   ./target/release/zellij setup --generate-completion fish > target/zellij.fish
   ./target/release/zellij setup --generate-completion zsh > target/zellij.zsh
