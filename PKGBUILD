@@ -2,8 +2,8 @@
 # Contributor: bgkillas <bgkillas@gmail.com>
 pkgname=p7zip-jinfeihan57-git
 pkgdesc="Command-line file archiver with high compression ratio - jinfeihan57 fork"
-pkgver=v17.04.r6.geb1bbb0
-pkgrel=1
+pkgver=17.04.r6.geb1bbb0
+pkgrel=2
 arch=('x86_64')
 makedepends=('git')
 depends=(gcc-libs)
@@ -18,7 +18,7 @@ sha512sums=('SKIP'
             'SKIP')
 pkgver() {
 	cd p7zip
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
 }
             
 build () {

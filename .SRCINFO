@@ -1,7 +1,7 @@
 pkgbase = p7zip-jinfeihan57-git
 	pkgdesc = Command-line file archiver with high compression ratio - jinfeihan57 fork
-	pkgver = v17.04.r6.geb1bbb0
-	pkgrel = 1
+	pkgver = 17.04.r6.geb1bbb0
+	pkgrel = 2
 	url = https://github.com/jinfeihan57/p7zip
 	arch = x86_64
 	license = LGPL
