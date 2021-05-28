@@ -1,0 +1,16 @@
+pkgbase = mestrenova-12
+	pkgdesc = Widely used commercial NMR interpreter in Version 12.x
+	pkgver = 12.0.3
+	pkgrel = 1
+	url = https://www.mestrelab.com
+	install = mestrenova.install
+	arch = x86_64
+	license = custom:mestrelab
+	depends = libxi
+	depends = glu
+	depends = openssl-1.0
+	conflicts = mestrenova
+	source = https://mestrelab.com/downloads/mnova/linux/Ubuntu/18.04/mestrenova_12.0.4-22023_amd64.deb
+
+pkgname = mestrenova-12
+
