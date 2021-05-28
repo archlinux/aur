@@ -4,14 +4,14 @@
 pkgname=git-delta
 _name="${pkgname#*-}"
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc='A syntax-highlighting pager for git and diff output'
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/dandavison/$_name"
 license=('MIT')
 
-makedepends=('rust' 'clang' 'llvm')
+makedepends=('rust')
 depends=('git' 'libgit2')
 
 backup=("etc/gitconfig.$_name")
@@ -47,8 +47,8 @@ package() {
   cd "$_name-$pkgver"
   install -Dm755 "target/release/$_name"  -t"$pkgdir/usr/bin/"
   install -Dm644 themes.gitconfig           "$pkgdir/etc/gitconfig.$_name"
-  install -Dm644 {README,CONTRIBUTING}.md -t"$pkgdir/usr/share/doc/$_name/"
-  install -Dm644 LICENSE                  -t"$pkgdir/usr/share/licenses/$_name/"
+  install -Dm644 {README,CONTRIBUTING}.md -t"$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm644 LICENSE                  -t"$pkgdir/usr/share/licenses/$pkgname/"
   cd etc
   install -Dm644 completion/completion.bash "$pkgdir/usr/share/bash-completion/completions/$_name"
   install -Dm644 completion/completion.zsh  "$pkgdir/usr/share/zsh/site-functions/_$_name"

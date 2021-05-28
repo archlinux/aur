@@ -1,7 +1,7 @@
 pkgbase = git-delta
 	pkgdesc = A syntax-highlighting pager for git and diff output
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dandavison/delta
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,6 @@ pkgbase = git-delta
 	arch = aarch64
 	license = MIT
 	makedepends = rust
-	makedepends = clang
-	makedepends = llvm
 	depends = git
 	depends = libgit2
 	backup = etc/gitconfig.delta
