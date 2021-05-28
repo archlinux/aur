@@ -1,4 +1,5 @@
 *.log
 *.zst
 *.zip
+*.tar
 *.AppImage
