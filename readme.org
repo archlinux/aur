@@ -1,6 +1,6 @@
 #+TITLE: Python-cocotb-bus AUR package
 
-[[https://gitlab.com/aur-packages/python-cocotb/-/commits/master][https://gitlab.com/aur-packages/python-cocotb-bus/badges/master/pipeline.svg]]
+[[https://gitlab.com/aur-packages/python-cocotb-bus/-/commits/master][https://gitlab.com/aur-packages/python-cocotb-bus/badges/master/pipeline.svg]]
 
 [[https://docs.cocotb.org/en/latest/][Cocotb]] is a coroutine based cosimulation library for writing VHDL and Verilog testbenches in Python.
 [[https://github.com/cocotb/cocotb-bus][Cocotb-bus]] are pre-packaged testbenching tools and reusable bus interfaces for [[https://github.com/cocotb/cocotb-bus][Cocotb]].

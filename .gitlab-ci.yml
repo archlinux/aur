@@ -23,4 +23,4 @@ build-package:
     - su notroot -c "git clone https://aur.archlinux.org/python-cocotb-bus.git"
     - cd python-cocotb-bus
     - su notroot -c "makepkg --noconfirm --syncdeps --rmdeps --install --clean"
-    - python -c 'import cocotb-bus; print("All OK")'
+    - python -c 'import cocotb_bus; print("All OK")'
