@@ -1,0 +1,37 @@
+pkgbase = mingw-w64-gcc-11
+	pkgdesc = Cross GCC for the MinGW-w64 cross-compiler
+	pkgver = 11.1.0
+	pkgrel = 1
+	url = https://gcc.gnu.org
+	arch = x86_64
+	arch = aarch64
+	groups = mingw-w64-toolchain
+	groups = mingw-w64
+	license = GPL
+	license = LGPL
+	license = FDL
+	license = custom
+	makedepends = gcc-ada>=11
+	depends = zlib
+	depends = libmpc
+	depends = mingw-w64-crt
+	depends = mingw-w64-binutils
+	depends = mingw-w64-winpthreads
+	depends = mingw-w64-headers
+	provides = mingw-w64-gcc
+	conflicts = mingw-w64-gcc
+	options = !strip
+	options = staticlibs
+	options = !emptydirs
+	options = !buildflags
+	source = https://ftp.gnu.org/gnu/gcc/gcc-11.1.0/gcc-11.1.0.tar.xz
+	source = https://ftp.gnu.org/gnu/gcc/gcc-11.1.0/gcc-11.1.0.tar.xz.sig
+	source = http://isl.gforge.inria.fr/isl-0.24.tar.bz2
+	source = https://raw.githubusercontent.com/msys2/MINGW-packages/master/mingw-w64-gcc/0020-libgomp-Don-t-hard-code-MS-printf-attributes.patch
+	sha512sums = fd6bba0f67ff48069d03073d1a9b5e896383b1cfc9dde008e868e60a9ec5014a837d56af0ecbf467b3fb9b37ec74a676e819a18b44393a0a3c4280175b5d7ad8
+	sha512sums = SKIP
+	sha512sums = aab3bddbda96b801d0f56d2869f943157aad52a6f6e6a61745edd740234c635c38231af20bc3f1a08d416a5e973a90e18249078ed8e4ae2f1d5de57658738e95
+	sha512sums = 8266eae8b3be5557e8cd79c21b6326db7cd83604db6d6ad83923798650fcd8d0f9f1f4ed424c816a48e91f21fb1852ab9272c73100b219f07d3bbb566bfd6fae
+
+pkgname = mingw-w64-gcc-11
+
