@@ -1,14 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=pika-backup
-pkgver=0.3.1
-pkgrel=3
+pkgver=0.3.2
+pkgrel=1
 pkgdesc="Simple backups based on borg"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.gnome.org/World/pika-backup"
 license=('GPL')
 depends=('borg' 'gtk3' 'libhandy' 'python-llfuse')
 makedepends=('git' 'meson' 'rust')
-_commit=c2267e8d59b1faafbcfc49c26c8aa155b68c83aa # tag=v0.3.1^0
+_commit=e72a828574f1bd1bb7211a3e74da64892de26961 # tag=v0.3.2^0
 source=("git+https://gitlab.gnome.org/World/pika-backup.git#commit=$_commit"
         'remove-install_script.patch')
 sha256sums=('SKIP'
