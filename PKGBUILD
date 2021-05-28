@@ -1,9 +1,9 @@
-# Contributor: Anonymous
+# Contributor: Ordoban (<dirk.langer@vvovgonik.de>)
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-devel-overloadinfo'
 pkgver='0.007'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="introspect overloaded operators"
 arch=('any')
 license=('PerlArtistic' 'GPL')
