@@ -11,9 +11,11 @@ depends=(
 	'python'
 )
 makedepends=(
-	'python-setuptools'
 	'cmake'
+	'git'
 	'pybind11'
+	'python-pip'
+	'python-setuptools'
 )
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha512sums=('e7f5a174dfdee121737004240ca55dba5abc3466b5ef158411ad54955074fbab756cb0b468a2d6377b9aa8b990522ce47c1bfdf1eb611e55f8efcd3909c37424')
