@@ -1,6 +1,6 @@
 pkgbase = linux-next-git
 	pkgdesc = Linux NEXT
-	pkgver = 20210514.r0.gcd557f1c605f
+	pkgver = 20210528.r0.g3e029760e6f8
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = linux-next-git
 	source = config
 	sha512sums = SKIP
 	sha512sums = 88f9f1e6ea206068fd029566e4610c16b7c3007f10363c7db37cd922fe75646437d2e4814317bc292d06eff7e9ebd29d8cd1ee82c8abf45ddd1843c1ff55f5c7
-	sha512sums = e832ada82065a00f9d9fd773970f8b2a34cc52515b8911b90d97d3b084b9279c829e7eb63c801fc3ae3b9f0810e6690b263b2a7b391981fa685bc8ee8125a77c
+	sha512sums = d8d006db59115f4e5311cadec4f325dc282f71dc2a0aded551c6e2782e76d5211ec22032138cb2b86592cb029d317ba0c385d3273d184453d558de5eb4528850
 
 pkgname = linux-next-git
 	pkgdesc = The Linux NEXT kernel and modules
