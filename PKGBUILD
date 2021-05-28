@@ -25,6 +25,14 @@ build() {
 
 package() {
 	install -Dm755 "$srcdir/diesel/target/release/diesel" "$pkgdir/usr/bin/diesel"
-	install -d "$pkgdir/etc/bash_completion.d"
-	"$pkgdir/usr/bin/diesel" bash-completion >"$pkgdir/etc/bash_completion.d/diesel"
+
+
+    install -d "${pkgdir}/usr/share/bash-completion/completions" \
+               "${pkgdir}/usr/share/zsh/site-functions" \
+               "${pkgdir}/usr/share/fish/vendor_completions.d"
+    "${pkgdir}/usr/bin/diesel" completions bash > "${pkgdir}/usr/share/bash-completion/completions/diesel"
+    "${pkgdir}/usr/bin/diesel" completions zsh > "${pkgdir}/usr/share/zsh/site-functions/_diesel"
+    "${pkgdir}/usr/bin/diesel" completions fish > "${pkgdir}/usr/share/fish/vendor_completions.d/diesel.fish"
+
+    install -Dm644 LICENSE-MIT -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
