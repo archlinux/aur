@@ -1,18 +1,18 @@
 # Maintainer: Aaron Honeycutt <aaron at system76 dot com>
 pkgname=('keyboard-configurator')
 pkgbase=keyboard-configurator
-pkgver=0.2.11
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Configures keymap and backlight of System76 keyboards."
 arch=('x86_64')
 url="https://github.com/pop-os/keyboard-configurator"
 license=('GPL3')
 makedepends=('atk' 'at-spi2-atk' 'at-spi2-core' 'base' 'cairo' 'dbus' 'expat' 'fontconfig' 'freetype2' 'fribidi' 'gdk-pixbuf2' 'glib2' 'graphite' 'gtk3' 'harfbuzz' 'hidapi' 'libcap' 'libcloudproviders' 'libdatrie' 'libepoxy' 'libffi' 'libgcrypt' 'libgpg-error' 'libjpeg-turbo' 'libpng' 'libxrender' 'libthai' 'libtiff' 'libx11' 'libxau' 'libxcb' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxdmcp' 'libxext' 'libxfixes' 'libxi' 'libxinerama' 'libxkbcommon' 'libxrandr' 'lz4' 'pango' 'pcre' 'pixman' 'rust' 'systemd-libs' 'util-linux-libs' 'wayland' 'xz' 'zlib' 'zstd')
-source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver-beta.tar.gz")
-sha256sums=('92fcdd85213e8bed9db2920336a081447f2409219769d737247cff4d5adf2816')
+source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('96d2afd18641c66be6503283a5d90afd6737de1f14d4425f1a2e45057411043c')
 
 build() {
-	cd "$pkgbase-$pkgver-beta"
+	cd "$pkgbase-$pkgver"
 	make prefix=/usr
 }
 
@@ -20,7 +20,7 @@ package_keyboard-configurator() {
 	pkgdesc="System76 GUI for managing keyboards"
 	depends=('xz' 'hidapi')
 
-	cd "$pkgbase-$pkgver-beta"
+	cd "$pkgbase-$pkgver"
 	install -Dm755 target/release/system76-keyboard-configurator "$pkgdir"/usr/bin/system76-keyboard-configurator
 	install -Dm644 linux/com.system76.keyboardconfigurator.desktop "$pkgdir"/usr/share/applications/com.system76.keyboardconfigurator.desktop
 	install -Dm644 linux/com.system76.keyboardconfigurator.appdata.xml "$pkgdir"/usr/share/metainfo/com.system76.keyboardconfigurator.appdata.xml
