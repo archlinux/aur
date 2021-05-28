@@ -3,7 +3,7 @@
 pkgname=lisgd-git
 _pkgname=lisgd
 pkgver=0.3.0.r2.g190a93d
-pkgrel=1
+pkgrel=2
 pkgdesc='Bind gestures on touchscreens, and unsupported gesture devices via libinput touch events'
 arch=(any)
 url='https://git.sr.ht/~mil/lisgd'
@@ -32,6 +32,6 @@ build() {
 package() {
 	cd "$_pkgname"
 	mkdir -p "$pkgdir/usr/bin"
-	install -Dm644 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+	install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
 
