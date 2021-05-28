@@ -3,14 +3,14 @@
 # Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
-# NOTE: This PKGBUILD is based on https://osdn.net/downloads/users/30/30219/fcitx-mozc-ut-20210421.1.PKGBUILD
+# NOTE: This PKGBUILD is based on https://osdn.net/downloads/users/30/30473/fcitx-mozc-ut-20210524.1.PKGBUILD
 
 # Mozc compile option
 _bldtype=Release
 
-_mozcver=2.26.4346.102
+_mozcver=2.26.4381.102
 _fcitxver=20210329
-_utdicver=20210421
+_utdicver=20210524
 pkgver=${_mozcver}.${_utdicver}
 pkgrel=1
 
@@ -33,17 +33,19 @@ source=(
   https://osdn.net/users/utuhiro/pf/utuhiro/dl/mozcdic-ut-${_utdicver}.${pkgrel}.tar.bz2
   https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip
   https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip
+  fix-abseil-cpp-build-gcc11.patch::https://yanqiyu.fedorapeople.org/fcitx5-mozc/fix-build-gcc11.patch
 )
 
 sha256sums=(
-  'e17bf2fe008290268a633fca8bbac10c01eed674f3815e5078b0e6f53cb62b6e'
+  '4ee389b22aa171f9730e2de68e9231a22cd82b709f1b5c81984b6ead6158b281'
   'bf3f13b13a0095d926b25640e060f7e13881bd8a792705dd9e161f3c2b9aa976'
   '9dc9157a9a1551ec7a7e43daea9a694a0bb5fb8bec81235d8a1e6ef64c716dcb'
   'e46b1c40facbc969b7a4af154dab30ab414f48a0fdbe57d199f912316977ac25'
   '9b4ee22c250fe31b16f1a24d61467e40780a3fbb9b91c3b65be2a376ed913a1a'
-  '690237f82e6eda05c9dd8cf303dfe6cd94358b2518e92f36a029afd524efe9b1'
+  '32563ddc71a50716f907452bed600caa236db7271a7f3966a42df1be6d10a4ae'
   'SKIP'
   'SKIP'
+  '2b1a14993dbf6c16601c495b55fab3c7ff50d3260a79514d8fb1dbd53b602dca'
 )
 
 prepare() {
@@ -54,6 +56,7 @@ prepare() {
   mv ${srcdir}/googletest-release-1.10.0 src/third_party/gtest
   mv ${srcdir}/japanese-usage-dictionary-master src/third_party/japanese_usage_dictionary
   mv ${srcdir}/protobuf-3.13.0 src/third_party/protobuf
+  patch -Np1 -i ${srcdir}/fix-abseil-cpp-build-gcc11.patch
 
   # Add ZIP code
   cd src/data/dictionary_oss/
@@ -62,7 +65,7 @@ prepare() {
   --zip_code=${srcdir}/KEN_ALL.CSV --jigyosyo=${srcdir}/JIGYOSYO.CSV >> dictionary09.txt
   cd -
 
-  # use libstdc++ instead of libc++
+  # Use libstdc++ instead of libc++
   sed "/stdlib=libc++/d;/-lc++/d" -i src/gyp/common.gypi
 
   # Add UT dictionary
@@ -74,15 +77,18 @@ build() {
 
   _targets="server/server.gyp:mozc_server gui/gui.gyp:mozc_tool"
 
-  GYP_DEFINES="document_dir=/usr/share/licenses/mozc" python build_mozc.py gyp --gypdir=/usr/bin --target_platform=Linux
+  GYP_DEFINES="enable_gtk_renderer==0" python build_mozc.py gyp --gypdir=/usr/bin --target_platform=Linux
   python build_mozc.py build -c $_bldtype $_targets
 }
 
 package() {
   cd mozc-${_mozcver}/src
-  install -D -m 755 out_linux/${_bldtype}/mozc_server "${pkgdir}/usr/lib/mozc/mozc_server"
-  install -m 755 out_linux/${_bldtype}/mozc_tool "${pkgdir}/usr/lib/mozc/mozc_tool"
+  install -D -m 755 out_linux/${_bldtype}/mozc_server ${pkgdir}/usr/lib/mozc/mozc_server
+  install -m 755 out_linux/${_bldtype}/mozc_tool ${pkgdir}/usr/lib/mozc/mozc_tool
 
-  install -d "${pkgdir}/usr/share/licenses/$pkgname/"
-  install -m 644 ../LICENSE data/installer/*.html "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -d ${pkgdir}/usr/share/licenses/$pkgname/
+  install -m 644 ../LICENSE data/installer/*.html ${pkgdir}/usr/share/licenses/${pkgname}/
+
+  install -d ${pkgdir}/usr/share/doc/${pkgname}/
+  cp {../AUTHORS,../LICENSE,../README.md} ${pkgdir}/usr/share/doc/${pkgname}/
 }
