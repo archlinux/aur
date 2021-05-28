@@ -3,7 +3,7 @@
 
 pkgname='perl-mousex-getopt'
 pkgver='0.38'
-pkgrel='1'
+pkgrel='2'
 pkgdesc=""
 arch=('any')
 license=('PerlArtistic' 'GPL')

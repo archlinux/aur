@@ -1,6 +1,6 @@
 pkgbase = perl-mousex-getopt
 	pkgver = 0.38
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/MouseX-Getopt
 	arch = any
 	license = PerlArtistic
