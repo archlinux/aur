@@ -2,7 +2,7 @@
 
 pkgname=creduce
 pkgver=2.10.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A C/C++ program reducer"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://embed.cs.utah.edu/creduce/"
 license=('custom:University of Illinois Open Source License')
 depends=('astyle' 'clang>=9.0.0' 'indent' 'llvm>=9.0.0'
          'perl-benchmark-timer' 'perl-exporter-lite' 'perl-file-which'
-         'perl-getopt-tabular' 'perl-regexp-common' 'perl-sys-cpu')
+         'perl-getopt-tabular' 'perl-regexp-common')
 source=("https://embed.cs.utah.edu/$pkgname/$pkgname-$pkgver.tar.gz"
         '0001-Link-clang_delta-only-with-lclang-cpp-193.patch'
         '0002-Make-it-compile-with-LLVM11.patch')

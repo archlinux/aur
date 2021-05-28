@@ -1,7 +1,7 @@
 pkgbase = creduce
 	pkgdesc = A C/C++ program reducer
 	pkgver = 2.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://embed.cs.utah.edu/creduce/
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = creduce
 	depends = perl-file-which
 	depends = perl-getopt-tabular
 	depends = perl-regexp-common
-	depends = perl-sys-cpu
 	source = https://embed.cs.utah.edu/creduce/creduce-2.10.0.tar.gz
 	source = 0001-Link-clang_delta-only-with-lclang-cpp-193.patch
 	source = 0002-Make-it-compile-with-LLVM11.patch
