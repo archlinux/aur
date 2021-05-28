@@ -1,6 +1,6 @@
 pkgbase = wine-x64
 	pkgdesc = A compatibility layer for running Windows programs. This only configured with x64 support.
-	pkgver = 6.8
+	pkgver = 6.9
 	pkgrel = 1
 	url = http://www.winehq.com
 	arch = x86_64
@@ -33,15 +33,15 @@ pkgbase = wine-x64
 	optdepends = vkd3d
 	optdepends = vulkan-icd-loader
 	optdepends = vulkan-headers
-	provides = wine_x64=6.8
+	provides = wine_x64=6.9
 	conflicts = wine
 	options = staticlibs
-	source = https://dl.winehq.org/wine/source/6.x/wine-6.8.tar.xz
-	source = https://dl.winehq.org/wine/source/6.x/wine-6.8.tar.xz.sign
+	source = https://dl.winehq.org/wine/source/6.x/wine-6.9.tar.xz
+	source = https://dl.winehq.org/wine/source/6.x/wine-6.9.tar.xz.sign
 	source = 30-win32-aliases.conf
 	validpgpkeys = DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D
-	sha512sums = 784863e3aa11f692cee2ab3b3d99cc896c1eb41cfab8cc6b52b5a31671d82fc7f6783bae72c65d8806a8c4096000401cbd0a1a7f1a88fd980685fae67fa9bd91
-	sha512sums = bb82528de58fc69768e6d647ceee2f21c37cac5281f30754666f5ecd13fea15b605e005dc47105cf49fa7d1e3b0ac8e807eda319c378de09eeb122960665a8f7
+	sha512sums = e9dc4da8cd6553db4227f09b5734513939d7e361449f52472a1f51ae569377a2931a0ab6f402aef751587ff1fa50f10f222b4479aba44f862db320931eeff363
+	sha512sums = 2718c6b44b86e6f77f213435e3a8443ec57ae1c832dd423bb6a5d08a68c74be355e9158d87765d21a8549b3870eaaed089eb104110b8011f2ac82a690f553e96
 	sha512sums = 6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb
 
 pkgname = wine-x64
