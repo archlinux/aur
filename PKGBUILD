@@ -9,7 +9,7 @@ url="https://github.com/wachin/wps-office-all-mui-win-language"
 license=(GPL3)
 depends=(wps-office)
 conflicts=()
-source=(https://github.com/wachin/wps-office-all-mui-win-language/releases/download/11.2.0.9255/mui.7z)
+source=(https://github.com/wachin/wps-office-all-mui-win-language/releases/download/${pkgver}/mui.7z)
 sha256sums=('435ddb2b50163993e973b2151f92e5b830ab7373bc984fa4928393db69e7953a')
 
 package() {
