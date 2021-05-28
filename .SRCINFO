@@ -1,6 +1,6 @@
 pkgbase = python-proton-client
 	pkgdesc = Proton API Python Client.
-	pkgver = 0.4.1
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/ProtonMail/proton-python-client
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = python-proton-client
 	depends = python-bcrypt
 	depends = python-gnupg
 	depends = python-pyopenssl
-	source = https://github.com/ProtonMail/proton-python-client/archive/refs/tags/0.4.1.tar.gz
+	source = https://github.com/ProtonMail/proton-python-client/archive/refs/tags/0.5.1.tar.gz
 	validpgpkeys = A884 41BD 4864 F95B EE08 E63A 71EB 4740 1994 0E11
-	sha256sums = 8428e8cc76caf3ad8a1a02f50341f652fe106f3c7df104e3fb02d1d10b5df1d0
+	sha256sums = 941cd8bc41a9e976c98d40f64474c7f8c9070958118c659cfd5b41c7e1a80332
 
 pkgname = python-proton-client
 

@@ -2,7 +2,7 @@
 # Maintainer: Alexandru Cheltutior <acrandom at pm dot me>
 pkgname=python-proton-client
 _gitpkgname=proton-python-client
-pkgver=0.4.1
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Proton API Python Client."
 arch=("any")
@@ -12,7 +12,7 @@ groups=("ProtonVPN")
 depends=("python-requests" "python-bcrypt" "python-gnupg" "python-pyopenssl")
 makedepends=("python-setuptools")
 source=("https://github.com/ProtonMail/proton-python-client/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=("8428e8cc76caf3ad8a1a02f50341f652fe106f3c7df104e3fb02d1d10b5df1d0")
+sha256sums=('941cd8bc41a9e976c98d40f64474c7f8c9070958118c659cfd5b41c7e1a80332')
 validpgpkeys=("A884 41BD 4864 F95B EE08  E63A 71EB 4740 1994 0E11")
 
 build() {
