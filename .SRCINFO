@@ -1,0 +1,13 @@
+pkgbase = jira-terminal-bin
+	pkgdesc = This is a command line application that can be used as a personal productivity tool for interacting with JIRA
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/amritghimire/jira-terminal
+	arch = x86_64
+	license = AGPL-3.0-only
+	provides = jira-terminal
+	source = https://github.com/amritghimire/jira-terminal/releases/download/v1.0.0/jira-terminal-1.0.0-x86_64.tar.gz
+	sha256sums = 5352ea8d156f295ca50a8046b3972ada3e07c3de8027e226a35aab67c0602d25
+
+pkgname = jira-terminal-bin
+
