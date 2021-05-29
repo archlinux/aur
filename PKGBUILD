@@ -7,9 +7,9 @@
 
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-gcc-stage1
-pkgver=10.3.0
+pkgver=11.1.0
 _majorver=${pkgver%%.*}
-_islver=0.21
+_islver=0.24
 pkgrel=1
 pkgdesc="The GNU Compiler Collection. Stage 1 for toolchain building (${_target})"
 arch=(i686 x86_64)
@@ -19,15 +19,19 @@ depends=("${_target}-binutils>=2.36.1-1" libmpc zlib)
 options=(!emptydirs !distcc !strip)
 source=(https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz{,.sig}
         http://isl.gforge.inria.fr/isl-${_islver}.tar.xz
-        all_default-ssp-fix.patch)
+        all_default-ssp-fix.patch
+        gcc-ada-repro.patch
+        gcc11-Wno-format-security.patch)
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
               13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
-              33C235A34C46AA3FFB293709A328C3A2C3C45C06) # Jakub Jelinek <jakub@redhat.com>
-sha256sums=('64f404c1a650f27fc33da242e1f2df54952e3963a49e06e73f6940f3223ac344'
+              D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62) # Jakub Jelinek <jakub@redhat.com>
+sha256sums=('4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf'
             'SKIP'
-            '777058852a3db9500954361e294881214f6ecd4b594c00da5eee974cd6a54960'
-            '5481035e3a714c6ad7bbf06b342c8b278a474b131d88e3cdc00a6221fe4d12ac')
+            '043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad'
+            '88acab8b777759a002e186a1f9d96f96b651bf20454bfdf891a0d64231097c32'
+            '1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f'
+            '504e4b5a08eb25b6c35f19fdbe0c743ae4e9015d0af4759e74150006c283585e')
 
 prepare() {
   [[ ! -d gcc ]] && ln -s gcc-${pkgver/+/-} gcc
@@ -44,7 +48,13 @@ prepare() {
 
   # Turn off SSP for nostdlib|nodefaultlibs|ffreestanding
   # https://bugs.archlinux.org/task/64270
-  patch -p1 -i "$srcdir/all_default-ssp-fix.patch"
+  #patch -p1 -i "$srcdir/all_default-ssp-fix.patch"
+
+  # Reproducible gcc-ada
+  patch -Np0 < "$srcdir/gcc-ada-repro.patch"
+
+  # configure.ac: When adding -Wno-format, also add -Wno-format-security
+  patch -Np0 < "$srcdir/gcc11-Wno-format-security.patch"
 
   mkdir -p "$srcdir/gcc-build"
 }
