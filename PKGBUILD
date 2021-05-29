@@ -1,7 +1,7 @@
 # Maintainer: Bart De Vries <bart at mogwai dot be>
 
 pkgname=box86
-pkgver=0.2.0
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Linux Userspace x86 Emulator with a twist'
 arch=('armv7h')
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 optdepends=('gl4es: OpenGL 2 for GLES 2 devices')
 makedepends=('git' 'cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ptitSeb/box86/archive/v${pkgver}.tar.gz")
-sha256sums=('adef16eaad76ce9661007900a4014b11e58b4ca840d0ddfcd13965dc87f8ab9f')
+sha256sums=('24984dcdef8bbd164da6b2f727087f2df5dd54b568749b16efe3f51a0ce08838')
 
 build() {
   cd ${pkgname}-${pkgver}
@@ -25,6 +25,6 @@ build() {
 package() {
   cd ${pkgname}-${pkgver}/build
   make DESTDIR=${pkgdir} install
-  install -Dm644 ../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 ../docs/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
