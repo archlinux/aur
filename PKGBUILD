@@ -4,20 +4,20 @@
 # Contributor: j1simon
 pkgname=buttercup-desktop
 _pkgexename=buttercup
-pkgver=2.2.0
+pkgver=2.5.2
 pkgrel=1
 pkgdesc='Javascript Password Vault - Multi-Platform Desktop Application'
 arch=('i686' 'x86_64')
 url="https://github.com/buttercup/buttercup-desktop"
 license=('GPL3')
-depends=('gtk3' 'libxss' 'nss')
-makedepends=('npm' 'sed')
+depends=('gtk3' 'libxss' 'nss' 'libsass')
+makedepends=('npm' 'sed' 'nodejs-lts-fermium')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/buttercup/buttercup-desktop/archive/v$pkgver.tar.gz"
 	badge.svg
 	buttercup-desktop.desktop)
 sha512sums=(
-	'6aaab2a0495bab388dfcc61b88fb0a5cabc711a0d2094f0d8e57a1bc8eb22711a70b7962813c325ceff44575598211ae0ae397ee957d95814ae0c13b3f45b4d3'
+	'b100e5aa1d7932c6d65868440c6d1df072129d4bbc19814edc9aa316d7242da3515d40b860f119031e2b4e82452902836570db7101e69ef2f7add409f29bc336'
 	SKIP
 	SKIP)
 prepare() {
