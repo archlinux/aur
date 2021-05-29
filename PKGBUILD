@@ -1,7 +1,9 @@
 # Maintainer: John FrostFox <john.frostfox at gmail dot com>
+# Please, post comments/poke me by e-mail to update the package if I didn't do it in time
+# If there's any automatic solution to update the PKGBUILD, I'd be glad to know about it!
 pkgname=recapp-git
-pkgver=1.1.0.r18.g1d4e9eb
-pkgrel=2
+pkgver=1.1.1.r181.g4711698
+pkgrel=1
 pkgdesc="Simple screen recorder for Linux written in GTK, using only GStreamer."
 arch=('any')
 url="https://github.com/amikha1lov/RecApp"
