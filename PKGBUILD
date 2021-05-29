@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=minaxnt-bin
-pkgver=0.13.2
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="MinAXNT is a Go implementation of the Axentro mining protocol"
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=("Apache License 2.0")
 provides=("minaxnt")
 conflicts=("minaxnt" "minaxnt-git")
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/minaxnt_${pkgver}_linux_x86_64.tar.gz")
-sha256sums=("4c66309eb321855ab2e0e4b067ce5f9a06337a809d7c9955132e4d0bd2807775")
+sha256sums=("47049d8a19384a2bab4f5ed379e55b159daae59926395ee726602b5db10aa003")
 
 package() {
   mkdir -p "$pkgdir/opt/minaxnt"
