@@ -1,6 +1,6 @@
 pkgbase = zoneminder
 	pkgdesc = A full-featured, open source, state-of-the-art video surveillance software system
-	pkgver = 1.36.1
+	pkgver = 1.36.2
 	pkgrel = 1
 	url = https://www.zoneminder.com/
 	install = zoneminder.install
@@ -48,11 +48,12 @@ pkgbase = zoneminder
 	optdepends = pod2man: required for Docker support
 	optdepends = zmeventnotification: machine learning powered recognition engine & event notification server
 	optdepends = vlc: provides libvlc, which may achieve better performance with some camera models
+	optdepends = libvncserver
 	conflicts = zoneminder-git
 	backup = etc/nginx/sites-available/zoneminder.conf
 	backup = etc/httpd/conf/extra/zoneminder.conf
 	backup = etc/php/conf.d/zoneminder.ini
-	source = zoneminder-git::git+https://github.com/ZoneMinder/zoneminder.git#tag=1.36.1
+	source = zoneminder-git::git+https://github.com/ZoneMinder/zoneminder.git#tag=1.36.2
 	source = zoneminder-nginx.conf
 	source = zoneminder-httpd.conf
 	source = zoneminder-php.ini

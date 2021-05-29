@@ -16,7 +16,7 @@
 
 
 pkgname=zoneminder
-pkgver=1.36.1
+pkgver=1.36.2
 pkgrel=1
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('any')
@@ -45,7 +45,8 @@ optdepends=('mariadb'
             'multiwatch: required if using nginx'
             'pod2man: required for Docker support'
             'zmeventnotification: machine learning powered recognition engine & event notification server'
-            'vlc: provides libvlc, which may achieve better performance with some camera models')
+            'vlc: provides libvlc, which may achieve better performance with some camera models'
+            'libvncserver')
 conflicts=('zoneminder-git')
 backup=("etc/nginx/sites-available/$pkgname.conf"
         "etc/httpd/conf/extra/$pkgname.conf"
