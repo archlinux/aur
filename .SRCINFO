@@ -1,7 +1,7 @@
 pkgbase = among-us-dumpy-gif-maker
 	pkgdesc = A tool that lets you make Among Us Dumpy GIFs
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ThatOneCalculator/Among-Us-Dumpy-Gif-Maker
 	arch = x86_64
 	license = GPL
