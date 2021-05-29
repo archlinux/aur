@@ -8,7 +8,7 @@ pkgbase = nodejs-readability-git
 	makedepends = git
 	makedepends = npm
 	depends = nodejs
-	source = nodejs-readability-git::git+https://github.com/mozilla/readability.git
+	source = readability::git+https://github.com/mozilla/readability.git
 	sha256sums = SKIP
 
 pkgname = nodejs-readability-git
