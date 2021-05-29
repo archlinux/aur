@@ -5,7 +5,7 @@
 
 pkgname=anbox-image-nocsd-gapps
 pkgver=r47.c510ab89
-pkgrel=2
+pkgrel=3
 pkgdesc="Android image for running in Anbox, with no-csd patch, OpenGApps and Houdini"
 arch=('x86_64')
 url="https://anbox.io"
@@ -34,7 +34,7 @@ source=(
   "open_gapps-x86_64-7.1-pico-$_gapps_rel.zip::https://downloads.sourceforge.net/project/opengapps/x86_64/$_gapps_rel/open_gapps-x86_64-7.1-pico-$_gapps_rel.zip"
 )
 
-md5sums=('d41d8cd98f00b204e9800998ecf8427e'
+md5sums=('6c31bf493856f982da3d7d78b6e23b85'
          '7ebf618b1af94a02322d9f2d2610090b'
          '5ca37e1629edb7d13b18751b72dc98ad'
          '360c6d7b14a538c8034b282b0371be9b'
