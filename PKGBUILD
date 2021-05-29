@@ -4,7 +4,7 @@
 pkgname=gnatcoll-core
 epoch=1
 pkgver=21.0.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Gnat components collection - Core packages.'
 url='https://github.com/AdaCore/gnatcoll-core/'
