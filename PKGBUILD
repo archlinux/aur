@@ -31,4 +31,6 @@ package() {
   cp config.json $pkgdir/usr/share/pyglossary
 }
 
+install=pyglossary.install
+
 # vim:set ts=2 sw=2 et:
