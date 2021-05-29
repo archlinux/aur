@@ -12,7 +12,7 @@ pkgbase = ananicy-cpp-nosystemd
 	depends = fmt
 	depends = spdlog
 	depends = nlohmann-json
-	optdepends = ananicy: community rules
+	optdepends = ananicy-nosystemd-git: community rules
 	source = https://gitlab.com/ananicy-cpp/ananicy-cpp/-/archive/v0.5.1/ananicy-cpp-v0.5.1.tar.gz
 	md5sums = 5b16dc5595778fb8011837cfc2ab6ca1
 

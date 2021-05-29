@@ -13,7 +13,7 @@ md5sums=('5b16dc5595778fb8011837cfc2ab6ca1')
 arch=(x86_64 i386 armv7h)
 depends=(fmt spdlog nlohmann-json)
 makedepends=(cmake git)
-optdepends=("ananicy: community rules")
+optdepends=("ananicy-nosystemd-git: community rules")
 
 prepare() {
 	cd "ananicy-cpp-v${pkgver}"
