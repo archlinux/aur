@@ -1,15 +1,16 @@
 pkgbase = icon-explorer
 	pkgdesc = A small utility to examine app icons for installed icon themes.
-	pkgver = v1.1
+	pkgver = v1.2
 	pkgrel = 1
 	url = https://gitlab.com/JollyDevelopment/icon-explorer
 	arch = x86_64
 	license = GPL
 	depends = python>=3.0
+	depends = python-natsort
 	depends = gtk3
 	replaces = icon-explorer=1.0-2
-	source = https://gitlab.com/JollyDevelopment/icon-explorer/-/archive/v1.1/icon-explorer-v1.1.tar.gz
-	md5sums = a33b9fa2ddcbf8834310e1b15843c0ac
+	source = https://gitlab.com/JollyDevelopment/icon-explorer/-/archive/v1.2/icon-explorer-v1.2.tar.gz
+	md5sums = e4777497c3e7d3c45bdcdd41d67040d3
 
 pkgname = icon-explorer
 
