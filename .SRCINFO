@@ -1,5 +1,5 @@
 pkgbase = waycorner
-	pkgdesc = Hot corners for Wayland. Waycorner allows you to create anchors on specified locations of your monitors and execute a command of your choice.
+	pkgdesc = Hot corners for Wayland. Create anchors on specified locations of your monitors and execute a command of your choice.
 	pkgver = 0.1.0
 	pkgrel = 2
 	url = https://github.com/AndreasBackx/waycorner
