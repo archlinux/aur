@@ -1,15 +1,34 @@
 pkgname=paperwork-git
 _pkgname=paperwork
-pkgver=2.0.2+2+g783189a7
+pkgver=2.0.3+274+gb60a846c
 pkgrel=1
 pkgdesc="Personal document manager for GNOME to manage scanned documents and PDFs"
 arch=(any)
 url="https://openpaper.work/"
 license=(GPL3)
-depends=('gtk3' 'libinsane' 'libnotify' 'poppler-glib' 'python-cairo' 'python-dateutil' 'python-distro'
-         'python-gobject' 'python-levenshtein' 'python-natsort' 'python-pillowfight' 'python-pycountry'
-         'python-pydbus' 'python-pyenchant' 'python-pyocr' 'python-setuptools' 'python-simplebayes'
-         'python-termcolor' 'python-whoosh' 'python-xdg')
+depends=('gtk3'
+         'libinsane'
+         'libnotify'
+         'poppler-glib'
+         'python-cairo'
+         'python-dateutil'
+         'python-distro'
+         'python-gobject'
+         'python-levenshtein'
+         'python-natsort'
+         'python-numpy'
+         'python-pillowfight'
+         'python-pycountry'
+         'python-pydbus'
+         'python-pyenchant'
+         'python-pyocr'
+         'python-scikit-learn'
+         'python-scipy'
+         'python-setuptools'
+         'python-simplebayes'
+         'python-termcolor'
+         'python-whoosh'
+         'python-xdg')
 makedepends=('git')
 provides=('paperwork')
 conflicts=('paperwork')
