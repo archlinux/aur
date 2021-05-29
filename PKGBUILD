@@ -1,8 +1,8 @@
-# Contributor: ordoban <dirk.langer@vvovgonik.de>
+# Contributor: Ordoban <dirk.langer@vvovgonik.de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-mojo-dom58'
-pkgver='2.000'
+pkgver='3.000'
 pkgrel='1'
 pkgdesc="Minimalistic HTML/XML DOM parser with CSS selectors"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl>=5.8.1')
 makedepends=()
 url='https://metacpan.org/release/Mojo-DOM58'
-source=('https://cpan.metacpan.org/authors/id/D/DB/DBOOK/Mojo-DOM58-2.000.tar.gz')
-md5sums=('a2fb62034ce2b2cbcda84dd435f223c8')
-sha512sums=('755c3e042fc805ddb1ec29d733739312dda0e8b850a598c59ba02f28365c7a5998e7bf3241bb58c8982e5af72ce53964621b524c00a2aece008c1d6dcd754719')
-_distdir="Mojo-DOM58-2.000"
+source=("http://search.cpan.org/CPAN/authors/id/D/DB/DBOOK/Mojo-DOM58-$pkgver.tar.gz")
+md5sums=('9b6010e91b568ffaaafa8876a1d8670b')
+sha512sums=('fd44b58c1e0eb9821b456ca05d36f795d1c9fac1e262c89ba611d92b1633de241d0063f5f8d13820d45a915daea26e4aeb5dfdcc57d8744423f4c597aa4659e9')
+_distdir="Mojo-DOM58-$pkgver"
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                      \
