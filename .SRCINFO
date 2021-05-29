@@ -1,16 +1,16 @@
 pkgbase = nodejs-webpack
 	pkgdesc = JavaScript bundler (CommonJs, AMD, ES6 modules, CSS, Images, JSON, CoffeeScript, LESS)
-	pkgver = 5.37.0
+	pkgver = 5.38.1
 	pkgrel = 1
 	url = https://webpack.js.org/
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = webpack-5.37.0.tgz
+	noextract = webpack-5.38.1.tgz
 	options = !strip
-	source = https://registry.npmjs.org/webpack/-/webpack-5.37.0.tgz
-	sha256sums = 469a51c164d69576f948b7599f968eddf0c444f7f6bc4db917ae0bc9a7765bf8
+	source = https://registry.npmjs.org/webpack/-/webpack-5.38.1.tgz
+	sha256sums = f3b33ac7eba005c20921311acea395a38f0b8fc2772d8e41f595de0a95334945
 
 pkgname = nodejs-webpack
 
