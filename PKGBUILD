@@ -6,7 +6,7 @@
 pkgname=gprbuild-bootstrap
 epoch=1
 pkgver=21.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Static GPRbuild to bootstrap XML/Ada and GPRbuild itself"
 arch=('i686' 'x86_64')
 url='https://github.com/AdaCore/gprbuild/'
