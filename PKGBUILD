@@ -8,7 +8,7 @@ url="https://github.com/francescmm/GitQlient"
 license=('LGPL')
 depends=(git qt5-base qt5-webengine qt5-webchannel)
 source=("https://github.com/francescmm/GitQlient/archive/v${pkgver}.tar.gz")
-sha256sums=(SKIP)
+sha256sums=(d7c2c16d7a622b14b13a5f8f097dbfa6ab1e6e7f328ade775a4c0a9fcbe6e034)
 
 build() {
     cd "GitQlient-$pkgver"
