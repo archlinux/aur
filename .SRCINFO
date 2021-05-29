@@ -1,13 +1,13 @@
 pkgbase = geocam-bin
 	pkgdesc = Camera Assembly for the Atomic Pi Single-board computer from Digital Loggers
-	pkgver = r4.7416d9e
+	pkgver = r4.42e614e
 	pkgrel = 1
 	url = https://github.com/digitalloggers/geocam-bin
 	arch = x86_64
 	license = unknown
 	makedepends = git
 	optdepends = geocam-v4l2: H.264-encoded stream support
-	source = git+https://github.com/digitalloggers/geocam-bin#commit=7416d9e26003fea1fdab5b2b25c2a714abf67575
+	source = git+https://github.com/digitalloggers/geocam-bin#commit=42e614edcffa4f9d4d796a08841207af9779d494
 	source = 83-geocam.rules
 	md5sums = SKIP
 	md5sums = 9e0416ca838630153f18dfa349d12bfe

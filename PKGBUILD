@@ -1,9 +1,9 @@
 # Maintainer: NeverBehave <aur@never.pet>
-_commit="7416d9e26003fea1fdab5b2b25c2a714abf67575"
+_commit="42e614edcffa4f9d4d796a08841207af9779d494"
 
 pkgname=geocam-bin
 pkgrel=1
-pkgver=r4.7416d9e
+pkgver=r4.42e614e
 arch=('x86_64')
 pkgdesc="Camera Assembly for the Atomic Pi Single-board computer from Digital Loggers"
 url="https://github.com/digitalloggers/geocam-bin"
