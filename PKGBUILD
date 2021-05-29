@@ -2,8 +2,8 @@
 
 _npmname=autoprefixer
 pkgname=nodejs-$_npmname
-pkgver=10.2.5
-pkgrel=2
+pkgver=10.2.6
+pkgrel=1
 pkgdesc="Parse CSS and add vendor prefixes to rules by Can I Use"
 arch=(any)
 url=https://github.com/postcss/autoprefixer
@@ -12,7 +12,7 @@ depends=(nodejs)
 makedepends=(npm)
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('cbdb71eb202ace597fe2630695bdff7de6e0885b62fb196871ffcd107d5020ba')
+sha256sums=('5b63692c0ef3d0aa5cc14402b21a66a2b29c13b01fbf246449d5be4a2e56d7e5')
 
 package() {
   npm install \
