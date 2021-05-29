@@ -1,5 +1,6 @@
-# Maintainer: graysky <graysky AT archlinux DOT us>
+# Maintainer: RiverOnVenus <RiverOnVenus@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: graysky <graysky AT archlinux DOT us>
 
 ### BUILD OPTIONS
 # Set the next two variables to ANYTHING that is not null to enable them
