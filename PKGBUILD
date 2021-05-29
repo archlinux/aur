@@ -1,4 +1,4 @@
-# Maintainer: HamletDuFromage <https://github.com/HamletDuFromage/slippi-online-PKGBUILD/issues>
+# Maintainer: HamletDuFromage <https://github.com/HamletDuFromage/slippi-online-git-PKGBUILD/issues>
 
 _projectname='slippi-online'
 _mainpkgname="$_projectname"
