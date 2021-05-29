@@ -29,14 +29,14 @@ if [ "$1" = "dark" ]; then
   UI_VSCODE="Default Dark+"
   UI_ALACRITTY="dark"
   BG_X11="-B black ${HOME}/.wallpaper/light.png"
-  BG_SWAY="--color #000000 --image ${HOME}/.wallpaper/light.png"
+  BG_SWAY="output * background ~/.wallpaper/light.png center #000000"
 elif [ "$1" = "light" ]; then
   UI_THEME_GTK="Adwaita"
   UI_THEME_QT="Adwaita"
   UI_VSCODE="Default Light+"
   UI_ALACRITTY="light"
   BG_X11="-B white ${HOME}/.wallpaper/dark.png"
-  BG_SWAY="--color #ffffff --image ${HOME}/.wallpaper/dark.png"
+  BG_SWAY="output * background ~/.wallpaper/dark.png center #FFFFFF"
 elif [ "$1" = "toggle" ]; then
   if echo "$CURRENT" | grep -q "dark"; then
     exec $0 light
@@ -89,8 +89,7 @@ fi
 if [ "$XDG_SESSION_TYPE" = "x11" ]; then
   feh --no-fehbg --bg-center ${BG_X11}
 elif [ -n "$SWAYSOCK" ]; then
-  killall -q swaybg || true
-  swaybg --mode center $BG_SWAY &
+  swaymsg "$BG_SWAY"
 else
   echo "No supported window manager."
   echo "Not setting background."
