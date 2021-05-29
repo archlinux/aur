@@ -5,7 +5,7 @@ pkgbase=gnatcoll-bindings
 pkgname=(gnatcoll-python2 gnatcoll-readline gnatcoll-iconv gnatcoll-gmp)
 epoch=1
 pkgver=21.0.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc='GNAT Components Collection - Language and library bindings'
 url='https://github.com/AdaCore/gnatcoll-bindings/'
