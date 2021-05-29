@@ -8,8 +8,8 @@ pkgbase = lunarclient
 	depends = fuse
 	depends = xorg-xrandr
 	options = !strip
-	source = https://launcherupdates.lunarclientcdn.com/Lunar Client-2.7.2.AppImage
-	sha256sums = 84f6ad24d7bf05581610dc1a0f29f34cc42e0e47fa7077bce7f4c7bcedae4095
+	source = https://launcherupdates.lunarclientcdn.com/Lunar Client-2.7.3.AppImage
+	sha256sums = ce7a27a097a37f48c7342db7ccf1ca4af3742124eb9cb1923fc7c89ccf481146
 
 pkgname = lunarclient
 
