@@ -1,6 +1,6 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=buildbox-common
-pkgver=0.0.42.r0.g7311d76
+pkgver=0.0.44.r0.gdc9c1f3
 pkgrel=1
 pkgdesc="Shared protocol-buffer definitions and various helper functions"
 arch=(x86_64)
@@ -8,9 +8,16 @@ url="https://buildgrid.build"
 license=('Apache')
 depends=('c-ares' 'grpc' 'gtest' 'gmock' 'gflags' 'google-glog')
 makedepends=('cmake' 'git')
-_commit=7311d76a2d6198cda5d8af2dd8c9ab05fa59c326 # release 0.0.42
-source=("git+https://gitlab.com/BuildGrid/buildbox/buildbox-common#commit=$_commit")
-sha256sums=('SKIP')
+_commit=dc9c1f311e977f6b67c6b4a2a355c06ef7d2badb # release 0.0.44
+source=("git+https://gitlab.com/BuildGrid/buildbox/buildbox-common#commit=$_commit"
+        "include-memory.patch")
+sha256sums=('SKIP'
+            'b64d568eeb1d07d62920d3c563ba2cc1c0b4ef62e0252b3d44ade5e21a8b0567')
+
+prepare() {
+  cd $pkgname
+  git apply "$srcdir/include-memory.patch"
+}
 
 pkgver() {
   cd $pkgname

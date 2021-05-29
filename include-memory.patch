@@ -1,0 +1,24 @@
+From fc37ae26406308972fa6ef1de0fbc506102274d2 Mon Sep 17 00:00:00 2001
+From: Benjamin Schubert <contact@benschubert.me>
+Date: Tue, 25 May 2021 18:02:35 +0100
+Subject: [PATCH] shared_ptr comes from `memory`. Include it correctly
+
+---
+ .../buildboxcommonmetrics_metricsconfigurator.h                  | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/buildbox-common/buildboxcommonmetrics/buildboxcommonmetrics_metricsconfigurator.h b/buildbox-common/buildboxcommonmetrics/buildboxcommonmetrics_metricsconfigurator.h
+index 822c5a93..cd8b8c34 100644
+--- a/buildbox-common/buildboxcommonmetrics/buildboxcommonmetrics_metricsconfigurator.h
++++ b/buildbox-common/buildboxcommonmetrics/buildboxcommonmetrics_metricsconfigurator.h
+@@ -16,6 +16,7 @@
+ #define BUILDBOXCOMMONMETRICS_METRICSCONFIGURATOR_H
+ 
+ #include <iostream>
++#include <memory>
+ 
+ #include <buildboxcommonmetrics_metriccollectorfactory.h>
+ #include <buildboxcommonmetrics_metricsconfigtype.h>
+-- 
+GitLab
+
