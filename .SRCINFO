@@ -1,0 +1,21 @@
+pkgbase = steck
+	pkgdesc = A command line client for the pinnwand pastebin
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://supakeen.com/project/steck
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-pytest
+	depends = python
+	depends = python-appdirs
+	depends = python-click
+	depends = python-magic
+	depends = python-requests
+	depends = python-termcolor
+	depends = python-toml
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/s/steck/steck-0.7.0.tar.gz
+	sha256sums = 41c3d7e9f11fa752884c99440494b7b13e5921085707ffff4f93f1158f2074a8
+
+pkgname = steck
