@@ -1,0 +1,5 @@
+pkg/
+src/
+geany-tags-*.pkg.tar.xz
+geany-tags-*.pkg.tar.zst
+geany-tags*.tar.bz2
