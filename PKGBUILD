@@ -4,8 +4,8 @@
 # Contributor: Marek Jędryka <marek629@poczta.onet.pl>
  
 pkgname=sir
-pkgver=3.2
-pkgrel=2
+pkgver=3.2.1
+pkgrel=1
 pkgdesc="Simple image resizer in Qt" 
 arch=('i686' 'x86_64')
 url="http://marek629.github.io/SIR/" 
@@ -13,7 +13,7 @@ license=('GPLv2')
 depends=('qt5-base' 'qt5-imageformats' 'qt5-svg' 'exiv2')
 makedepends=('qt5-tools' 'cmake')
 optdepends=("dcraw: RAW images support")
-source=("https://www.dropbox.com/s/85pexiurs2354bs/sir_$pkgver.tar.gz?dl=1")
+source=("https://www.dropbox.com/s/mh3oaygh6y4rro3/sir_$pkgver.tar.gz?dl=1")
 
 build() {
      cd "$srcdir/SIR-$pkgver"
@@ -26,4 +26,4 @@ package() {
      cd "$srcdir/SIR-$pkgver/bld"
      make DESTDIR="$pkgdir/" install
 }  
-sha1sums=('36f6c0ef7de96a85b208a779b772f07a1700a937')
+sha1sums=('4dc7e38641db8f7aeb0867f79d02dd2d2b28b3b0')
