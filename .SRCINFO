@@ -1,7 +1,7 @@
 pkgbase = gtkada
 	pkgdesc = Ada bindings for the Gtk+ library.
 	pkgver = 21.0.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/AdaCore/gtkada
 	arch = i686

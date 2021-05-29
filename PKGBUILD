@@ -4,7 +4,7 @@
 pkgname=gtkada
 epoch=1
 pkgver=21.0.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Ada bindings for the Gtk+ library.'
 url='https://github.com/AdaCore/gtkada'
