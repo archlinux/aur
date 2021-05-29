@@ -1,8 +1,8 @@
 # Maintainer: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=d-feet
-pkgver=0.3.15
-pkgrel=3
+pkgver=0.3.16
+pkgrel=1
 pkgdesc="D-Bus debugger for GNOME"
 arch=('any')
 url="https://wiki.gnome.org/Apps/DFeet"
@@ -11,7 +11,7 @@ depends=('gtk3' 'python-gobject')
 makedepends=('gobject-introspection' 'meson' 'python-pycodestyle' 'yelp-tools')
 checkdepends=('xorg-server-xvfb')
 source=(https://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('1fff149ad01ccbd93c927f5733346a9122324b9d367da3adbf4f1a52e47dfdb1')
+sha512sums=('ff4db968cbd679e2065c614d538187fe3c56118b44638771ec9f7472bdba4a798dc682565f520a8680a8001ea39ce88555b07cda172e60f88eb6bdf1e00b5a6d')
 
 prepare() {
   cd $pkgname-$pkgver
