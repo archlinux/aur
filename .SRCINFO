@@ -1,7 +1,7 @@
 pkgbase = ferdi
 	pkgdesc = A messaging browser that allows you to combine your favorite messaging services into one application
 	pkgver = 5.5.0
-	pkgrel = 9
+	pkgrel = 10
 	url = https://getferdi.com
 	arch = x86_64
 	arch = i686
@@ -15,13 +15,13 @@ pkgbase = ferdi
 	makedepends = python2
 	depends = electron8-bin
 	depends = libxkbfile
-	source = ferdi-5.5.0-9.tar.gz::https://github.com/getferdi/ferdi/archive/v5.5.0.tar.gz
-	source = ferdi-5.5.0-9-recipes.tar.gz::https://github.com/getferdi/recipes/archive/3054fd4c362b5be81b5cdd48535a0e7078fcd0a6.tar.gz
-	source = ferdi-5.5.0-9-internal-server.tar.gz::https://github.com/getferdi/internal-server/archive/95ae59926dbd88d55a5377be997558a9e112ab49.tar.gz
+	source = ferdi-5.5.0-10.tar.gz::https://github.com/getferdi/ferdi/archive/v5.5.0.tar.gz
+	source = ferdi-5.5.0-10-recipes.tar.gz::https://github.com/getferdi/recipes/archive/3054fd4c362b5be81b5cdd48535a0e7078fcd0a6.tar.gz
+	source = ferdi-5.5.0-10-internal-server.tar.gz::https://github.com/getferdi/internal-server/archive/95ae59926dbd88d55a5377be997558a9e112ab49.tar.gz
 	source = fix-autostart-path.diff
 	sha256sums = 319b02b565e34720c8ccefdb08cfe37219304c002e469fdf1a15c8971b573fc3
 	sha256sums = b72d06155d20292d90c5b9fc05f83b318080abf858669ca2c1a2a539890c3427
 	sha256sums = 70cb957413aec3941845d7d567f250f010e7bd2e8549b530ba16817e62864b55
-	sha256sums = 91cc72f00db20e1bded69d08578e6ae9fdc89a4582ee8f6d29697b0233d7d095
+	sha256sums = b17dcbc621dba3b495bac99ce11f254e2fd086e7cf024fb0f8e89d9530e52227
 
 pkgname = ferdi

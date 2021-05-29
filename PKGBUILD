@@ -7,7 +7,7 @@ pkgname='ferdi'
 pkgver='5.5.0'
 _recipescommit='3054fd4c362b5be81b5cdd48535a0e7078fcd0a6'
 _internalservercommit='95ae59926dbd88d55a5377be997558a9e112ab49'
-pkgrel='9'
+pkgrel='10'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$pkgname.com"
@@ -23,7 +23,7 @@ source=(
 sha256sums=('319b02b565e34720c8ccefdb08cfe37219304c002e469fdf1a15c8971b573fc3'
             'b72d06155d20292d90c5b9fc05f83b318080abf858669ca2c1a2a539890c3427'
             '70cb957413aec3941845d7d567f250f010e7bd2e8549b530ba16817e62864b55'
-            '91cc72f00db20e1bded69d08578e6ae9fdc89a4582ee8f6d29697b0233d7d095')
+            'b17dcbc621dba3b495bac99ce11f254e2fd086e7cf024fb0f8e89d9530e52227')
 
 _sourcedirectory="$pkgname-$pkgver"
 _homedirectory="$pkgname-$pkgver-$pkgrel-home"
@@ -54,8 +54,11 @@ prepare() {
 	# Set system Electron version for ABI compatibility
 	sed -E -i -e 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron8/version')"'"|' 'package.json'
 
-	# Set node-sass version for node 14 compatibility
-	sed -E -i 's|("node-sass": ").*"|\14.14.0"|' 'package.json'
+	# Set node-sass version for node 16 compatibility (gulp-sass update still needed)
+	sed -E -i 's|("node-sass": ").*"|\16.0.0"|' 'package.json'
+
+	# Set cld version for GCC11 compatibility
+	sed -E -i 's|("node-sass":.*)|\1\n    "cld": "2.7.0",|' 'package.json'
 
 	# Prevent Ferdi from being launched in dev mode
 	sed -i "s|import isDevMode from 'electron-is-dev'|const isDevMode = false|g" 'src/index.js' 'src/config.js'

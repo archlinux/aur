@@ -1,5 +1,5 @@
 diff --git a/src/stores/AppStore.js b/src/stores/AppStore.js
-index 36e6efd4..c6e4a32c 100644
+index 96142787..2c62c8ae 100644
 --- a/src/stores/AppStore.js
 +++ b/src/stores/AppStore.js
 @@ -35,6 +35,7 @@ const mainWindow = remote.getCurrentWindow();
