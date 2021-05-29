@@ -4,7 +4,7 @@
 
 pkgname=g15daemon
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A daemon that makes it possible to use the G-Buttons and draw on the G15 LCD"
 arch=('x86_64')
 url="https://gitlab.com/menelkir/g15daemon"
@@ -24,6 +24,8 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
   echo ""
-  echo "You need to install an init script depending on what you're using it."
-  echo ""
+  echo "This package doesn't come with an init, you should install one:"
+  echo "g15daemon-runit"
+  echo "g15daemon-openrc"
+  echo "g15daemon-systemd"
 }
