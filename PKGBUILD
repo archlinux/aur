@@ -29,6 +29,7 @@ build() {
           CONFIG+=use_tbb \
           CONFIG+=use_eigen \
           CONFIG+=use_hdf5 \
+          DEFINES+="SPH_VERSION=${pkgver}-${pkgrel}" \
           -spec linux-g++ ${srcdir}/sph/sph.pro
     make
 }
