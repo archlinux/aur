@@ -1,7 +1,7 @@
 # Maintainer: nroi <nroi@mailbox.org>
 pkgname=flexo-git
 pkgrel=1
-pkgver=1.3.1.r1.g0489b83
+pkgver=1.3.2.r0.g166946b
 pkgdesc="A central pacman cache"
 # TODO we haven't tested yet if this package can be built on ARM architectures.
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
