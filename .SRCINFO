@@ -1,0 +1,17 @@
+pkgbase = goodix-gpdwin3-dkms
+	pkgdesc = Goodix touchscreen driver hack for GPD WIN3
+	pkgver = 1.0
+	pkgrel = 1
+	install = goodix-gpdwin3-dkms.install
+	arch = any
+	license = GPL2
+	depends = dkms
+	source = goodix.c
+	source = dkms.conf
+	source = Makefile
+	md5sums = dfb7e11d9209b8512a10236d5ff39a2b
+	md5sums = e5c031710ce7c30e237655d52de0175b
+	md5sums = d33b0aa9a29b5f5b811e4869ee40e245
+
+pkgname = goodix-gpdwin3-dkms
+
