@@ -1,0 +1,12 @@
+pkgbase = permafrost-git
+	pkgdesc = Lightweight single-site browser generator using Webview or Chrome/Chromium.
+	pkgver = r2.d9fc3a8
+	pkgrel = 1
+	arch = any
+	license = GPLv3
+	makedepends = go
+	source = git+https://gitea.arsenm.dev/Arsen6331/permafrost.git
+	md5sums = SKIP
+
+pkgname = permafrost-git
+
