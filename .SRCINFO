@@ -22,6 +22,6 @@ pkgbase = clifm
 	optdepends = p7zip: ISO 9660 support
 	optdepends = cdrtools: ISO 9660 support
 	source = clifm-1.1.tar.gz::https://github.com/leo-arch/clifm/archive/v1.1.tar.gz
-	sha256sums = 0fac66f50f34c1d7480fcc8f91b545fdddd069415d1ee9e80d7a1fbd12309f15
+	sha256sums = e2be66e8000fc43f177e472045d9d30f44625e854d85b4cdf5aad8179d32d5af
 
 pkgname = clifm
