@@ -1,7 +1,7 @@
 pkgbase = perl-compress-raw-lzma
 	pkgdesc = Low-Level Interface to lzma compression library
 	pkgver = 2.101
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Compress-Raw-Lzma
 	arch = i686
 	arch = x86_64

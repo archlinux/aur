@@ -5,7 +5,7 @@
 
 pkgname='perl-compress-raw-lzma'
 pkgver='2.101'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Low-Level Interface to lzma compression library"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
