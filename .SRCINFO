@@ -1,6 +1,6 @@
 pkgbase = nordvpn-runit
 	pkgdesc = runit service script for nordvpn-bin
-	pkgver = 3.9.4_1
+	pkgver = 3.9.5_1
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/nordvpn-runit
 	arch = any
