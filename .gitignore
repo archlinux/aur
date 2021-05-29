@@ -1,0 +1,10 @@
+# To keep a clean AUR git repo, only look at the following files.
+# - .gitignore file
+# - .SRCINFO versioning info
+# - PKGBUILD build script
+# All others files are ignored without `git add -f` directive.
+*
+*/
+!.gitignore
+!.SRCINFO
+!PKGBUILD
