@@ -1,12 +1,12 @@
 pkgbase = arm-linux-gnueabihf-glibc
 	pkgdesc = GNU C Library (arm-linux-gnueabihf)
 	pkgver = 2.33
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnu.org/software/libc/
 	arch = any
 	license = GPL
 	license = LGPL
-	makedepends = arm-linux-gnueabihf-gcc-stage2>=10.3.0-1
+	makedepends = arm-linux-gnueabihf-gcc-stage2>=11.1.0-1
 	makedepends = python
 	makedepends = gperf
 	depends = arm-linux-gnueabihf-linux-api-headers>=5.10.9-2

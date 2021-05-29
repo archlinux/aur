@@ -9,13 +9,13 @@
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-glibc
 pkgver=2.33
-pkgrel=2
+pkgrel=3
 pkgdesc="GNU C Library (${_target})"
 arch=('any')
 url="https://www.gnu.org/software/libc/"
 license=(GPL LGPL)
 depends=("${_target}-linux-api-headers>=5.10.9-2")
-makedepends=("${_target}-gcc-stage2>=10.3.0-1" python gperf)
+makedepends=("${_target}-gcc-stage2>=11.1.0-1" python gperf)
 provides=("${_target}-glibc-headers=${pkgver}" "${_target}-eglibc")
 conflicts=("${_target}-glibc-headers" "${_target}-eglibc")
 replaces=("${_target}-glibc-headers")
