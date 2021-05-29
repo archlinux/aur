@@ -4,12 +4,12 @@
 
 pkgname=('dash-daemon' 'dash-cli' 'dash-qt')
 pkgbase=dash
-pkgver=0.16.1.1
+pkgver=0.17.0.2
 pkgrel=1
 arch=('x86_64')
 url="http://www.dash.org/"
 depends=('boost-libs' 'libevent' 'libbacktrace-git')
-makedepends=('boost' 'codablock-bls-signatures' 'qt5-tools')
+makedepends=('boost' 'dashpay-bls-signatures' 'qt5-tools')
 optdepends=('miniupnpc: Firewall-jumping support'
             'db4.8: Wallet storage and wallet portability')
 pkgdesc="Dash peer-to-peer network based digital currency "
@@ -18,10 +18,10 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dashpay/dash/archive/v$
         'dashd@.service'
         'deque.patch'
         'qpainterpath.patch::https://github.com/bitcoin/bitcoin/commit/79b0a69e09c1a912122e6431ea3c530cc292c690.patch')
-sha512sums=('7347f23897f92ca1a01f84847481450922834a0bb917e7e0ba6a4d98712c86de7bdd151dc3ed42aaa8a8ec9bba24187cc0a9854870b50256ac21a37e6b683fff'
+sha512sums=('605221dd538e8554b6d97a939ce6c332642a58518ec66494086c75dd2bedd0e190fac898cc91a42c78c114bce3ab977b2e8b86642bf38ce35197278fac17ca20'
             'b5c59efacbe85de0292590af12e35d8c001c2b71eebda9829754be48e61a70ad7e8ed99662ed4e8da53006eb72e1994c435813b35c16a9c566ddf455efe81b5b'
             'f558e938285fbf14c2f1773b2b23018e52ee03d4d2c89c2e1c73dc5f84180b77acc229a2c041f2f058e3a0ea329302d3bd9ef683c5c88570f3d2c4ab5a7050a6'
-            '1eda9a1d5616a0602f85b0d04838657fe5fa75746a2da7a4614124e6081eeb1997e845d61a7d7a9a52a9d5ef9215617205924811cfef32132bf7fce9c3c603fb')
+            '6c3df861832926e72dfd820af42bb89c1c3bb556c3f8e2fd06544f76bf5369c992a556e717653e230e062e89b8f2ee4f5d02313f35672f8174deae48c3306a0d')
 
 prepare () {
   cd "$pkgbase-$pkgver"
