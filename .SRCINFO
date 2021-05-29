@@ -1,7 +1,7 @@
 pkgbase = ttf-dejavu-emojiless
 	pkgdesc = Derivate of DejaVu without characters listed as emoji, in order not to override color fonts
 	pkgver = 2.37
-	pkgrel = 2
+	pkgrel = 3
 	url = https://dejavu-fonts.github.io/
 	arch = any
 	license = custom

@@ -4,7 +4,7 @@
 
 pkgname=ttf-dejavu-emojiless
 pkgver=2.37
-pkgrel=2
+pkgrel=3
 pkgdesc="Derivate of DejaVu without characters listed as emoji, in order not to override color fonts"
 arch=('any')
 url="https://dejavu-fonts.github.io/"
@@ -33,19 +33,14 @@ prepare() {
 }
 
 package() {
-  install -dm755 "${pkgdir}"/etc/fonts/conf.avail
-  install -dm755 "${pkgdir}"/etc/fonts/conf.d
-  install -dm755 "${pkgdir}"/usr/share/fonts/TTF
+  cd dejavu-fonts-ttf-$pkgver
 
-  cd "${srcdir}"/dejavu-fonts-ttf-${pkgver}
-  install -m644 ttf/*.ttf "${pkgdir}"/usr/share/fonts/TTF/
-  install -m644 fontconfig/*.conf "${pkgdir}"/etc/fonts/conf.avail/
+  install -Dt "$pkgdir/usr/share/fonts/TTF" -m644 ttf/*.ttf
+  install -Dt "$pkgdir/usr/share/fontconfig/conf.avail" -m644 fontconfig/*.conf
 
-  pushd "${pkgdir}"/etc/fonts/conf.avail
-  for config in *; do
-    ln -sf ../conf.avail/${config} ../conf.d/${config}
-  done
-  popd
+  mkdir "$pkgdir/usr/share/fontconfig/conf.default"
+  ln -srt "$pkgdir/usr/share/fontconfig/conf.default" \
+    "$pkgdir"/usr/share/fontconfig/conf.avail/*
 
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 LICENSE
 }
