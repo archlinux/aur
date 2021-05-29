@@ -1,0 +1,16 @@
+pkgbase = gpg-tui
+	pkgdesc = A terminal user interface for GnuPG
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/orhun/gpg-tui
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = python
+	depends = libx11
+	depends = gpgme
+	source = gpg-tui-0.1.2.tar.gz::https://github.com/orhun/gpg-tui/archive/v0.1.2.tar.gz
+	sha512sums = 3412bc10c8a5777d160f1f6a9d68c9184285b02df7c81a40956ef865ccd093e3c942896bf8fe507fbaeb89aba97afa27a424637b67a71654bd6f6b383073088c
+
+pkgname = gpg-tui
+
