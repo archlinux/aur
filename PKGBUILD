@@ -2,8 +2,8 @@
 # Contributor: Rogof <rogof /at/ gmx /dot/ com>
 
 pkgname=ccl-git
-epoch=1
-pkgver=1.12.32.g8778079b
+epoch=2
+pkgver=1.12.1
 pkgrel=1
 pkgdesc="The Clozure Common Lisp implementation"
 url="http://ccl.clozure.com/"
@@ -22,7 +22,7 @@ noextract=('linuxx86.tar.gz')
 
 pkgver() {
   cd ccl
-  git describe --tags|tr - .|cut -c2-
+  git describe --tags|tr - . | cut -c2-
 }
 
 prepare() {
