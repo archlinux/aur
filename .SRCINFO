@@ -13,6 +13,7 @@ pkgbase = buildbox-common
 	depends = gmock
 	depends = gflags
 	depends = google-glog
+	depends = benchmark
 	source = git+https://gitlab.com/BuildGrid/buildbox/buildbox-common#commit=dc9c1f311e977f6b67c6b4a2a355c06ef7d2badb
 	source = include-memory.patch
 	sha256sums = SKIP
