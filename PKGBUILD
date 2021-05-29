@@ -20,7 +20,7 @@ _advcpmv_repo_name=advcpmv
 
 # sources
 source=(
-  "http://ftp.gnu.org/gnu/coreutils/coreutils-$coreutils_version.tar.xz"
+  "http://ftp.gnu.org/gnu/coreutils/coreutils-$_coreutils_version.tar.xz"
   "git+https://github.com/jarun/advcpmv"
 )
 sha256sums=(
