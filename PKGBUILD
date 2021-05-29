@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-redis'
-pkgver='1.995'
+pkgver='1.998'
 pkgrel='1'
 pkgdesc="Perl binding for Redis database"
 arch=('any')
@@ -12,10 +12,10 @@ depends=('perl-io-socket-timeout>=0.29' 'perl-io-string>=0' 'perl-try-tiny>=0' '
 makedepends=()
 checkdepends=('perl-test-deep>=0' 'perl-test-fatal>=0' 'perl-test-sharedfork>=0' 'perl-test-tcp>=1.19')
 url='https://metacpan.org/release/Redis'
-source=('https://cpan.metacpan.org/authors/id/D/DA/DAMS/Redis-1.995.tar.gz')
-md5sums=('8ef5f8d18409c38d940af474159f9a0b')
-sha512sums=('2788017f7e89eb2a074d0c8bfa27dce28504a11ae398c4d69612a06d1a96cae9efbc5626871082aff48355373ed4b27dd703983b314e2467be46b79d48346f02')
-_distdir="Redis-1.995"
+source=("https://cpan.metacpan.org/authors/id/D/DA/DAMS/Redis-$pkgver.tar.gz")
+md5sums=('187d464968fdca58eec675856a8cd0fe')
+sha512sums=('232f0e602f6165da426ff6ee6a531f81eea3491c0312dae2813bdb15ac34469f6621c7683d5bd6b2be0cdcc09edf3f1f19cc03c848d43d41e630fe1306f62268')
+_distdir="Redis-$pkgver"
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                      \
