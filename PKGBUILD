@@ -10,7 +10,7 @@ pkgdesc="jaruns patches for advcpmv, this is an optional dependency to get progr
 arch=(x86_64)
 url="https://github.com/jarun/advcpmv"
 license=('unknown')
-makedepends=(git gperf)
+makedepends=(git)
 provides=(cpg mvg)
 conflicts=(cpg mvg)
 
