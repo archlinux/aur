@@ -1,6 +1,5 @@
-# Maintainer:  RiverOnVenus <RiverOnVenus@gmail.com>
+# Maintainer: graysky <graysky AT archlinux DOT us>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: graysky <graysky AT archlinux DOT us>
 
 ### BUILD OPTIONS
 # Set the next two variables to ANYTHING that is not null to enable them
@@ -68,10 +67,10 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck-uksm-cjktty
-pkgver=5.12.7
+pkgver=5.12.8
 pkgrel=1
-_ckpatchversion=1
 _major=5.12
+_ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
@@ -94,9 +93,9 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('7881dceb8a88dfc290ef8e175e31f6b7cba30c1b343883344915acda6b9b20484496511f1d2d9a7e8195621db3b4c93fdc16c1d5be5cb9b685d1d8940800ab58'
+b2sums=('c2d0c2239c5b440cc93e1e0e312511497eccf9e5cef61707c7f42fa924f66defdd4275575341b46b3ee45269c705dd2ba2e2c68fb1dd4ced438b852803180ddb'
         'SKIP'
-        'ccb7779df282b54d9acf59682eaa93a39f27276798d61d4c8be8a3b31e582a377c9d3278a500744a3ed089a337807f95a2d23ef821af2f4a7eec24540092b746'
+        '12c5af050086d38a5495f3029984a4eca5ccb16412bcfbec4d1a8bce8f16cb4acb93c1ed82615bcc4022ee6f00f51c886ef914cccaae053b505c0ab37fb9d8bb'
         '72194a32a06c43809d1272bd675890b6d27c6c54353150a366e8e2c50ad6eca6ee23c5d6281822965a228cfedfa07a60fe135d1b4f539e4a62728d4460cc0b0e'
         'c9f729ba1efe6f04e7b2c57d3999bc9675b577596dccb2f227e5b6e444285e1fdd270bf67c0fcf9f5808a4c3a4b1c7a5c13a76f754ad9b9447243ccbaf2ce6a3'
         'e1eccb5b6b728e3852ade55dae7a53b8b6bd5f0fb2a330b99e85bfa64abaa430cb714d301ed169df14a1f302a75d952992f0d8fa6ab02fa6716165bdf23b63aa'
@@ -203,7 +202,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler"
+  pkgdesc="The Linux-ck kernel and modules with the ck1 patchset, uksm patch and cjktty patch, featuring MuQSS CPU scheduler"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
