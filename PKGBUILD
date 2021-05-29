@@ -1,13 +1,14 @@
 # Maintainer: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=libclc
-pkgver=11.1.0
+pkgver=12.0.0
 pkgrel=1
 pkgdesc="Library requirements of the OpenCL C programming language"
 arch=('any')
 url="https://libclc.llvm.org/"
 license=('MIT')
-makedepends=('clang' 'llvm' 'cmake' 'ninja' 'python' 'git')
+makedepends=('clang' 'llvm' 'cmake' 'ninja' 'python' 'git'
+             'spirv-llvm-translator')
 source=("git+https://github.com/llvm/llvm-project.git#tag=llvmorg-$pkgver")
 md5sums=('SKIP')
 
