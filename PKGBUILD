@@ -5,7 +5,7 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 _pkgname='ferdi'
 pkgname="$_pkgname-git"
-pkgver='5.6.0.beta.5.r222.gb88d312c'
+pkgver='5.6.0.beta.5.r266.g9d863a62'
 pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -24,7 +24,7 @@ source=(
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            '7eb846fe8242c78afcdef9c8e1fbce6fdcf100f59da85fee83a99690a57f60ea')
+            '36c9e0f631f3164f192cfcef294b9411509d8536a8b7e5fdb31b6d118a7b433e')
 
 _sourcedirectory="$pkgname"
 _homedirectory="$pkgname-home"
@@ -55,6 +55,9 @@ prepare() {
 
 	# Set system Electron version for ABI compatibility
 	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron/version')"'"|' 'package.json'
+
+	# Set node-sass version for node 16 compatibility (gulp-sass update still needed)
+	sed -E -i 's|("node-sass": ").*"|\16.0.0"|' 'package.json'
 
 	# Prevent Ferdi from being launched in dev mode
 	sed -i "s|import isDevMode from 'electron-is-dev'|const isDevMode = false|g" 'src/index.js' 'src/config.js'
