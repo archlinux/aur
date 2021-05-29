@@ -1,0 +1,15 @@
+pkgbase = nodejs-readability-git
+	pkgdesc = A standalone version of the readability library used for Firefox Reader View
+	pkgver = 0.4.1.r11.g28843b6
+	pkgrel = 1
+	url = https://github.com/mozilla/readability
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = npm
+	depends = nodejs
+	source = nodejs-readability-git::git+https://github.com/mozilla/readability.git
+	sha256sums = SKIP
+
+pkgname = nodejs-readability-git
+
