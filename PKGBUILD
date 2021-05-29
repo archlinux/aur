@@ -1,12 +1,13 @@
 # Mainintainer : Lucas Rooyakkers <lucas dot rooyakkers at pm dot me>
 pkgname=pnglatex
-pkgver=7f8ca12
+pkgver=r142.48cc55d
 pkgrel=1
 pkgdesc="Small script to turn LaTeX formulas into png images"
 arch=('any')
 url="https://github.com/mneri/pnglatex"
 license=('GPL3')
 depends=('texlive-bin' 'imagemagick' 'optipng')
+makedepends=('git')
 optdepends=('xorg-xdpyinfo: get dpi resolution of screen')
 provides=("pnglatex")
 conflicts=('pnglatex')
@@ -15,7 +16,7 @@ source=("$pkgname::git+https://github.com/mneri/pnglatex")
 
 pkgver() {
   cd "$pkgname"
-  echo $(git describe --always | sed 's/-/./g')
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
