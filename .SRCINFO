@@ -1,6 +1,6 @@
 pkgbase = vtr-git
 	pkgdesc = Open Source CAD Flow for FPGA Research
-	pkgver = 8.0.0.r3288.g991b11422
+	pkgver = 8.0.0.r3658.g448b8e124
 	pkgrel = 1
 	url = https://verilogtorouting.org
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = vtr-git
 	makedepends = git
 	makedepends = cmake
 	depends = gcc-libs
-	provides = vtr=8.0.0.r3288.g991b11422
+	provides = vtr=8.0.0.r3658.g448b8e124
 	conflicts = vtr
 	source = git+https://github.com/verilog-to-routing/vtr-verilog-to-routing
-	source = build.patch
+	source = 0001-aligned_allocator-add-operator.patch
 	sha256sums = SKIP
-	sha256sums = 558088f88221325e331062e7351d2b9e26a50169f74ece3ecc3e468180ff05b1
+	sha256sums = 6d360513c8b10738c77dfe8a91421ba47f5fcdfba9d083ef42caf0802215fdb9
 
 pkgname = vtr-git
 

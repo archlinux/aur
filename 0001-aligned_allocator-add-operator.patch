@@ -1,0 +1,58 @@
+From fc94422636b9f6e361dc49b0435215b40b435355 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sat, 29 May 2021 23:11:25 +0200
+Subject: [PATCH] aligned_allocator: add operator==
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This fixes building with GCC11, which previously errored:
+
+In file included from /usr/include/c++/11.1.0/bits/stl_algobase.h:59,
+                 from /usr/include/c++/11.1.0/vector:60,
+                 from /builddir/vtr-verilog-to-routing/libs/libvtrutil/src/vtr_linear_map.h:3,
+                 from /builddir/vtr-verilog-to-routing/vpr/src/timing/PostClusterDelayCalculator.h:3,
+                 from /builddir/vtr-verilog-to-routing/vpr/src/timing/AnalysisDelayCalculator.h:4,
+                 from /builddir/vtr-verilog-to-routing/vpr/src/analysis/timing_reports.h:5,
+                 from /builddir/vtr-verilog-to-routing/vpr/src/analysis/timing_reports.cpp:1:
+/usr/include/c++/11.1.0/bits/stl_vector.h: In instantiation of ‘void std::vector<_Tp, _Alloc>::swap(std::vector<_Tp, _Alloc>&) [with _Tp = t_rr_node_data; _Alloc = vtr::aligned_allocator<t_rr_node_data>]’:
+/usr/include/c++/11.1.0/bits/allocator.h:308:28:   required from ‘static bool std::__shrink_to_fit_aux<_Tp, true>::_S_do_it(_Tp&) [with _Tp = std::vector<t_rr_node_data, vtr::aligned_allocator<t_rr_node_data> >]’
+/usr/include/c++/11.1.0/bits/vector.tcc:693:56:   required from ‘bool std::vector<_Tp, _Alloc>::_M_shrink_to_fit() [with _Tp = t_rr_node_data; _Alloc = vtr::aligned_allocator<t_rr_node_data>]’
+/usr/include/c++/11.1.0/bits/stl_vector.h:990:9:   required from ‘void std::vector<_Tp, _Alloc>::shrink_to_fit() [with _Tp = t_rr_node_data; _Alloc = vtr::aligned_allocator<t_rr_node_data>]’
+/builddir/vtr-verilog-to-routing/vpr/src/route/rr_graph_storage.h:442:36:   required from here
+/usr/include/c++/11.1.0/bits/stl_vector.h:1483:9: error: no match for ‘operator==’ (operand types are ‘std::_Vector_base<t_rr_node_data, vtr::aligned_allocator<t_rr_node_data> >::_Tp_alloc_type’ {aka ‘std::allocator_traits<vtr::aligned_allocator<t_rr_node_data> >::rebind_alloc<t_rr_node_data>’} and ‘std::_Vector_base<t_rr_node_data, vtr::aligned_allocator<t_rr_node_data> >::_Tp_alloc_type’ {aka ‘std::allocator_traits<vtr::aligned_allocator<t_rr_node_data> >::rebind_alloc<t_rr_node_data>’})
+ 1483 |         __glibcxx_assert(_Alloc_traits::propagate_on_container_swap::value
+      |         ^~~~~~~~~~~~~~~~
+
+This is caused by gcc commit 10f51543b, which adds compile-time checking
+to __glibcxx_assert regardless of the _GLIBCXX_ASSERTIONS preprocessor
+definition.
+
+An assert in std::vector::swap that compares the two vectors' allocators
+was previously completely removed by the preprocessor, but now expands
+to a static assert. Since no equality operator is defined for
+aligned_allocator, any instantiation of a vector with this allocator
+fails to compile.
+---
+ libs/libvtrutil/src/vtr_memory.h | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/libs/libvtrutil/src/vtr_memory.h b/libs/libvtrutil/src/vtr_memory.h
+index 316e7b5d9..6ef9f91b4 100644
+--- a/libs/libvtrutil/src/vtr_memory.h
++++ b/libs/libvtrutil/src/vtr_memory.h
+@@ -136,6 +136,11 @@ struct aligned_allocator {
+     }
+ };
+ 
++template<typename T>
++bool operator==(const aligned_allocator<T>&, const aligned_allocator<T>&) {
++    return true;
++}
++
+ } // namespace vtr
+ 
+ #endif
+-- 
+2.31.1
+
