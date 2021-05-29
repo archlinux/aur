@@ -2,7 +2,7 @@
 # Maintainer: Luis Perez <luis.perez at protonmail.com>
 
 pkgname=advanced-rest-client
-pkgver=15.0.7
+pkgver=16.0.0
 pkgrel=1
 pkgdesc='A developer tool to test a HTTP request. The Advanced REST Client desktop application.'
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
 	'libxss')
 install=advanced-rest-client.install
 source_x86_64=("https://github.com/advanced-rest-client/arc-electron/releases/download/v${pkgver}/arc-linux-${pkgver}-amd64.deb")
-sha256sums_x86_64=('4b72bf402fb91795331472bb6ee5cb1e6cb5cf1c9e0dbf6d7c9ab17b20ab27f3')
+sha256sums_x86_64=('099e29dad50c558abec149dbf6980a8114e2decc1fc80bbf71104613147705cd')
 
 prepare() {
 	tar -xf data.tar.xz
