@@ -1,0 +1,14 @@
+pkgbase = aewan
+	pkgdesc = A multi-layered ascii-art/animation editor
+	pkgver = 1.0.01
+	pkgrel = 1
+	url = http://aewan.sourceforge.net/
+	arch = x86_64
+	license = GPL2
+	depends = zlib
+	depends = ncurses
+	source = https://downloads.sourceforge.net/project/aewan/aewan/aewan-1.0.01/aewan-1.0.01.tar.gz
+	md5sums = 89545338d1eba311297b520f9dc1b976
+
+pkgname = aewan
+
