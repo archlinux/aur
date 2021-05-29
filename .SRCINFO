@@ -1,7 +1,7 @@
 pkgbase = pplink-bin
 	pkgdesc = 帮助电脑、手机、平板等设备建立点到点的安全直连
-	pkgver = 5.2.1
-	pkgrel = 2
+	pkgver = 6.2
+	pkgrel = 1
 	url = https://www.ppzhilian.com/
 	arch = x86_64
 	license = custom
@@ -9,12 +9,12 @@ pkgbase = pplink-bin
 	provides = pplink
 	options = !strip
 	options = emptydirs
-	source = https://github.com/Brx86/yun/releases/download/2/pplink-bin.tar.zst
+	source = https://relay.ppzhilian.com/download/PPZhilian_amd64.deb
 	source = pplink
 	source = pplink.png
 	source = pplink.desktop
-	md5sums = ca94d3d293df390a68c6d5b6fc901df6
-	md5sums = eb8b1134f8696720748a93c6954431dd
+	md5sums = SKIP
+	md5sums = a347318935478069d3d4eb82b1267386
 	md5sums = 42cdee25421b4a84c117228e3f1d868d
 	md5sums = fb027a0085e615613be9617d533938b9
 

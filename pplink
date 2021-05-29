@@ -1,2 +1,2 @@
 #!/usr/bin/bash
-electron11 /usr/share/pplink/pplink.asar
+electron11 /usr/share/pplink/app.asar
