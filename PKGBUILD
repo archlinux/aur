@@ -1,6 +1,6 @@
 # Maintainer: Logan Koester <logan@logankoester.com>
 pkgname=smaug
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A tool to manage your DragonRuby Game Toolkit projects"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=(gcc-libs openssl zlib)
 optdepends=()
 source=("https://github.com/ereborstudios/smaug/releases/download/v${pkgver}/smaug-linux")
 noextract=()
-sha512sums=('bc192356db079ca77937e58c6048ed491e1e844ef40a8306cd9658ea9a0d77d25faf0a21d41bd2776c59edd1a584e91976fd47267d59f3169d946c43be4e3ad4')
+sha512sums=('bef026f26ef1680d1ceeabe0b2f0d3855d5978d7a14e6a8a99784efa5a44f412ef167071813150bcd4dd1a88563b1cd870f8A6D7308143BEC7DA8560556fd744')
 
 package() {
   cd $srcdir
