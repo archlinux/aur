@@ -9,6 +9,7 @@ pkgbase = pyglossary
 	depends = python
 	optdepends = python-gobject: Gtk3-based interface
 	optdepends = tix: Tkinter-based interface
+	optdepends = python-prompt_toolkit: interactive command-line interface
 	optdepends = python-lxml: Many optional flags and formats
 	optdepends = python-beautifulsoup4: HTML parsing
 	optdepends = python-yaml: Reading from cc-kedict

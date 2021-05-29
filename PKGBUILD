@@ -13,6 +13,7 @@ depends=('python')
 optdepends=(
   'python-gobject: Gtk3-based interface'
   'tix: Tkinter-based interface'
+  'python-prompt_toolkit: interactive command-line interface'
   'python-lxml: Many optional flags and formats'
   'python-beautifulsoup4: HTML parsing'
   'python-yaml: Reading from cc-kedict'
