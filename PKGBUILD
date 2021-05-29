@@ -45,11 +45,12 @@ prepare() {
   patch -p1 < "${srcdir}/add-limits-header.patch"
   patch -p1 < "${srcdir}/konamicode-fix-type-mismatch.patch"
 
-  rmdir "libraries/libnbtplusplus"
-  rmdir "libraries/quazip"
-  cp --recursive "${srcdir}/libnbtplusplus-${__pkgver_libnbtplusplus}/" \
+  rmdir "libraries/libnbtplusplus" 2>/dev/null || true
+  ln -sfT "${srcdir}/libnbtplusplus-${__pkgver_libnbtplusplus}/" \
     "libraries/libnbtplusplus"
-  cp --recursive "${srcdir}/quazip-${__pkgver_quazip}/" \
+
+  rmdir "libraries/quazip" 2>/dev/null || true
+  ln -sfT "${srcdir}/quazip-${__pkgver_quazip}/" \
     "libraries/quazip"
 
   cd "libraries/quazip"
