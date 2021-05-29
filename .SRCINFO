@@ -1,0 +1,15 @@
+pkgbase = minaxnt-bin
+	pkgdesc = MinAXNT is a Go implementation of the Axentro mining protocol
+	pkgver = 0.13.2
+	pkgrel = 1
+	url = https://github.com/Axentro/minaxnt
+	arch = x86_64
+	license = Apache License 2.0
+	provides = minaxnt
+	conflicts = minaxnt
+	conflicts = minaxnt-git
+	source = minaxnt-bin-0.13.2.tar.gz::https://github.com/Axentro/minaxnt/releases/download/v0.13.2/minaxnt_0.13.2_linux_x86_64.tar.gz
+	sha256sums = 4c66309eb321855ab2e0e4b067ce5f9a06337a809d7c9955132e4d0bd2807775
+
+pkgname = minaxnt-bin
+
