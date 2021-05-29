@@ -5,7 +5,7 @@
 
 pkgname=g15stats
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A CPU/Mem/Swap/Network monitoring client for G15Daemon."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/menelkir/g15stats"
@@ -26,8 +26,8 @@ package() {
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
   echo ""
-  echo ""
-  echo "You need to install an init script depending on what you're using it."
-  echo ""
-  echo ""
+  echo "This package doesn't come with an init, you should install one:"
+  echo "g15stats-runit"
+  echo "g15stats-openrc"
+  echo "g15stats-systemd"
 }

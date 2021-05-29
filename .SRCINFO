@@ -1,7 +1,7 @@
 pkgbase = g15stats
 	pkgdesc = A CPU/Mem/Swap/Network monitoring client for G15Daemon.
 	pkgver = 3.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/menelkir/g15stats
 	arch = i686
 	arch = x86_64
