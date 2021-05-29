@@ -1,7 +1,7 @@
 pkgbase = pyglossary
 	pkgdesc = A tool for converting dictionary files aka glossaries with various formats for different dictionary applications
 	pkgver = 4.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ilius/pyglossary
 	install = pyglossary.install
 	arch = any

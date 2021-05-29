@@ -3,7 +3,7 @@
 
 pkgname=pyglossary
 pkgver=4.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for converting dictionary files aka glossaries with various formats for different dictionary applications"
 arch=(any)
 url="https://github.com/ilius/pyglossary"
