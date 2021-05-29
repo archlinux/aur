@@ -1,0 +1,16 @@
+post_install()	{
+	printf "
+	:: You must set completeopt to menuone,noselect for this plugin to work.
+	:: You can do so with either of the following:
+
+	For vim script inits: set completeopt=menuone,noselect
+
+	For Lua inits: vim.o.completeopt = 'menuone,noselect'
+	\n"
+}
+
+pre_remove()	{
+	printf "
+	:: Remember to unset your settings before removing this package!
+	\n"
+}
