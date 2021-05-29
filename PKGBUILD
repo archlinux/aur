@@ -1,7 +1,7 @@
 # Maintainer: javsanpar <javsanpar@riseup.net>
 pkgname=abaddon-git
 _pkgname=abaddon
-pkgver=0.r360.5394c67
+pkgver=0.r401.c43b39f
 pkgrel=1
 pkgdesc='An alternative Discord client made with C++/gtkmm'
 url='https://github.com/uowuo/abaddon'
