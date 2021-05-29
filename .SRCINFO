@@ -1,0 +1,15 @@
+pkgbase = python-sphinx-comments
+	pkgdesc = hypothes.is interaction layer with Sphinx.
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/executablebooks/sphinx-comments
+	arch = any
+	license = BSD
+	depends = python
+	depends = python-setuptools
+	depends = python-sphinx
+	source = sphinx-comments-0.0.3.tgz::https://github.com/executablebooks/sphinx-comments/archive/v0.0.3.tar.gz
+	sha256sums = f0978c3f8eeb4f10711493f11cd8c6c0fc3dd61899ed593660c728741c331b40
+
+pkgname = python-sphinx-comments
+
