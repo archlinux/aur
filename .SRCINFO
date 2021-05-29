@@ -1,6 +1,6 @@
 pkgbase = gnome-commander
 	pkgdesc = Graphical two-pane filemanager for Gnome
-	pkgver = 1.10.3
+	pkgver = 1.12.2
 	pkgrel = 1
 	url = http://gcmd.github.io/
 	arch = i686
@@ -9,14 +9,16 @@ pkgbase = gnome-commander
 	makedepends = perl-xml-parser
 	makedepends = itstool
 	makedepends = yelp-tools
-	depends = python2
+	depends = python
 	depends = libgsf
 	depends = exiv2
 	depends = taglib
 	depends = poppler-glib
-	depends = libunique
-	source = https://download.gnome.org/sources/gnome-commander/1.10/gnome-commander-1.10.3.tar.xz
-	sha256sums = ef130851058d63194f790bfbba27b6be2b6f2906d923ccec847b9cc595193a2e
+	depends = libunique3
+	depends = gnome-vfs
+	depends = gtk2
+	source = https://download.gnome.org/sources/gnome-commander/1.12/gnome-commander-1.12.2.tar.xz
+	sha256sums = 45dd864494f6b2ade2bded5a3d7c2d780d7ad038742b08c9c4210fe8e715f438
 
 pkgname = gnome-commander
 
