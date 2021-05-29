@@ -1,7 +1,7 @@
 # Maintainer: Andreas Backx
 
 pkgname=waycorner
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=2
 pkgdesc="Hot corners for Wayland. Create anchors on specified locations of your monitors and execute a command of your choice."
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=()
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AndreasBackx/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('4dda9580d6a0624eed3c01de147aff589696dd9459846d1d196cbe926ede23b1')
+sha256sums=('763ba3407424934b77050e4dbba82b7dcf51078fc03815aba8d8180261bab07a')
 
 build() {
   cd "$pkgname-$pkgver"
