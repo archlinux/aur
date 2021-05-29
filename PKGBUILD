@@ -2,7 +2,7 @@
 # Contributor: Hunter Jones <hjones2199 at gmail dot com>
 # Maintainer: Thomas Bork <sudobash418 at gmail dot com>
 pkgname=worldpainter
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc='An interactive map generator for Minecraft'
 
@@ -17,7 +17,7 @@ source=("https://www.worldpainter.net/files/${pkgname}_${pkgver}.tar.gz"
 		'worldpainter.png'
 		'worldpainter.desktop'
 		'launch-script')
-sha256sums=('8dca3325067d24a55f3df9afe83d6d5f9491a8ab42c98b252cb37861394b4557'
+sha256sums=('717c8d12d31e036eb073676c6a5fce5e0653e0d4f0ead9e3b5dc812c1dec52e4'
             'a93cd4af0e8ef470f48a8dd2773fb9d83a5302f1b9bfba67f43b4ec7500a039e'
             '669f78518b75b441f4382cfd14e207dd91ee1dc967383db1771ec202dbb07cb4'
             'fd64d11450f03c8924cbc133a009b3373bc5f80b2589b63391b65db04d82963f')
@@ -25,14 +25,15 @@ sha256sums=('8dca3325067d24a55f3df9afe83d6d5f9491a8ab42c98b252cb37861394b4557'
 package() {
 	cd "${srcdir}/${pkgname}"
 
-	install -dm755 "${pkgdir}/opt/worldpainter/"{bin,lib,.install4j}
+	install -dm755 "${pkgdir}/opt/worldpainter/"{bin,lib,.install4j/user}
 	install -dm755 "${pkgdir}/usr/share/"{pixmaps,applications}
 
 	install -Dm644 bin/*        "${pkgdir}/opt/${pkgname}/bin/"
 	install -Dm644 lib/*        "${pkgdir}/opt/${pkgname}/lib/"
 	install -Dm644 *.vmoptions  "${pkgdir}/opt/${pkgname}/"
 	install -Dm755 worldpainter "${pkgdir}/opt/${pkgname}/"
-	install -Dm755 .install4j/* "${pkgdir}/opt/${pkgname}/.install4j"
+	find .install4j/ -maxdepth 1 -type f -exec install -Dm644 {} "${pkgdir}/opt/${pkgname}/.install4j/" \;
+	find .install4j/user/ -maxdepth 1 -type f -exec install -Dm644 {} "${pkgdir}/opt/${pkgname}/.install4j/user/" \;
 
 	install -Dm644 "${srcdir}/worldpainter.png" "${pkgdir}/usr/share/pixmaps/"
 	install -Dm755 "${srcdir}/launch-script" "${pkgdir}/usr/bin/worldpainter"
