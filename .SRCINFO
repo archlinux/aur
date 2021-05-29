@@ -1,0 +1,14 @@
+pkgbase = qspec
+	pkgdesc = A GUI testing library for Qt desktop applications
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/ugeneunipro/QSpec
+	arch = x86_64
+	license = GPL2
+	depends = libxtst
+	depends = qt5-webkit
+	source = qspec-0.2.tar.gz::https://github.com/ugeneunipro/QSpec/archive/refs/tags/v0.2.tar.gz
+	sha256sums = 6f5d44c6b7b7db82ece5238d343fab44f36dc2d3d56afae51bd122acb352d7bd
+
+pkgname = qspec
+
