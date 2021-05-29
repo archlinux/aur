@@ -3,8 +3,8 @@
 # Contributor: Glaucous <glakke1 at gmail dot com>
 
 pkgname=lib32-apitrace
-pkgver=9.0
-pkgrel=2
+pkgver=10.0
+pkgrel=1
 pkgdesc="Graphics API Tracing (32-bit)"
 arch=('x86_64')
 url="https://github.com/apitrace/apitrace"
@@ -12,7 +12,7 @@ license=('custom')
 depends=('python' 'lib32-libgl' 'lib32-procps-ng' 'apitrace')
 makedepends=('cmake' 'gcc-multilib')
 source=("apitrace-$pkgver.tar.gz::https://github.com/apitrace/apitrace/archive/${pkgver}.tar.gz")
-sha256sums=('0eec81ba7d3799622336319785465a2982a0621898842517a07894d7e2aa18eb')
+sha256sums=('2e57d37af39369d7ce78666acb8afb1a49ec758f683a21077ec39eb0befae4ad')
 
 build() {
   cd apitrace-${pkgver}
@@ -31,9 +31,9 @@ package() {
   
   make  -C build DESTDIR="${pkgdir}/" install
 
-  mv -v "${pkgdir}/usr/bin/apitrace" "${pkgdir}/usr/bin/apitrace32"
-  rm -r "${pkgdir}"/usr/share/doc
-  rm "${pkgdir}"/usr/bin/*retrace
+  mv -v ${pkgdir}"/usr/bin/apitrace" ${pkgdir}"/usr/bin/apitrace32"
+  rm -r ${pkgdir}/usr/share/doc
+  rm ${pkgdir}/usr/bin/{*retrace,gltrim}
   
   install -m755 -d "${pkgdir}/usr/share/licenses/apitrace"
   ln -s apitrace "$pkgdir/usr/share/licenses/apitrace/"${pkgname}
