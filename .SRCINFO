@@ -1,7 +1,7 @@
 pkgbase = peercoin
 	pkgdesc = A peer-to-peer network-based digital currency
-	pkgver = 0.10.0
-	pkgrel = 2
+	pkgver = 0.10.1
+	pkgrel = 1
 	url = https://www.peercoin.net/
 	arch = x86_64
 	license = MIT
@@ -15,8 +15,8 @@ pkgbase = peercoin
 	depends = qrencode
 	depends = qt5-base
 	depends = zeromq
-	source = peercoin-0.10.0.tar.gz::https://github.com/peercoin/peercoin/archive/v0.10.0ppc.tar.gz
-	b2sums = 77a60c9df5c7a8070dc77a82119516488e317ee46ccc0886790fa54c80d8d7ef8cdd02542a5f36f41132cf2ffdf8c26b6f64114df601ea0083a12648eae2501c
+	source = peercoin-0.10.1.tar.gz::https://github.com/peercoin/peercoin/archive/v0.10.1ppc.tar.gz
+	b2sums = 4ee3db3ae40c4908b6f396f10ddc5bf19140215ff85a621e2eb7f9f29264b4bbdcb1d17042fff8fd2fb6e1b062bdacdfaf1ed47f2fa3dec349a5ddb4bb61680b
 
 pkgname = peercoin-cli
 	pkgdesc = A peer-to-peer network-based digital currency - RPC client
