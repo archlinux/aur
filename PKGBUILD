@@ -1,21 +1,20 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
-_pkgname=gdrive
-pkgname=$_pkgname-git
-pkgver=2.0.1.r3.g401e017
+pkgname=gdrive-git
+pkgver=2.1.0.r35.gfb08fe2
 pkgrel=1
 pkgdesc="Google Drive CLI Client"
-arch=('x86_64' 'i686')
-url="https://github.com/gdrive-org/gdrive"
+arch=('x86_64')
+url="https://github.com/prasmussen/gdrive"
 license=('MIT')
 makedepends=('git' 'go')
-provides=($_pkgname)
-conflicts=($_pkgname)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 options=('!strip' '!emptydirs')
-source=($pkgname::git://github.com/prasmussen/gdrive.git)
+source=($pkgname::git+$url.git)
 md5sums=('SKIP')
 
-_gourl=github.com/prasmussen/gdrive
+_gopkg=github.com/prasmussen/gdrive
 
 pkgver() {
   cd $pkgname
@@ -23,11 +22,18 @@ pkgver() {
 }
 
 build() {
-  GOPATH="$srcdir/build" go get -fix -v -x $_gourl
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOPATH="$srcdir/build"
+  go get $_gopkg
 }
 
 #check() {
-#  GOPATH="$srcdir/build" go test -fix -v -x $_gourl
+#  export GOPATH="$srcdir/build"
+#  go test $_gopkg
 #}
 
 package() {
