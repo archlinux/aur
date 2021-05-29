@@ -17,7 +17,7 @@ pkgbase = sayonara-player
 	optdepends = gst-libav: additional codecs
 	optdepends = gst-plugins-bad: additional codecs
 	optdepends = gst-plugins-ugly: additional codecs
-	source = http://sayonara-player.com/sw/sayonara-player-1.7.0-stable1.tar.gz
+	source = https://sayonara-player.com/files/sayonara-player-1.7.0-stable1.tar.gz
 	sha512sums = b9e09770fb6a4dd2ee9ef2691f844e07cd4ed82467c1a70858538a2af1173308ec45481fc7bc48ba7d0183079befb603a44f352ee7e71073bb16f2e62dcb2177
 
 pkgname = sayonara-player

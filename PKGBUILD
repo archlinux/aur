@@ -14,7 +14,7 @@ makedepends=(cmake qt5-tools qt5-svg gst-plugins-bad)
 optdepends=('gst-libav: additional codecs'
             'gst-plugins-bad: additional codecs'
             'gst-plugins-ugly: additional codecs')
-source=("http://sayonara-player.com/sw/${pkgname}-${_pkgver}.tar.gz")
+source=("https://sayonara-player.com/files/sayonara-player-${_pkgver}.tar.gz")
 sha512sums=('b9e09770fb6a4dd2ee9ef2691f844e07cd4ed82467c1a70858538a2af1173308ec45481fc7bc48ba7d0183079befb603a44f352ee7e71073bb16f2e62dcb2177')
 
 prepare() {
