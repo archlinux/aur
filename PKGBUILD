@@ -2,37 +2,43 @@
 # Contributor: Philipp Klein <philipptheklein@gmail.com>
 
 pkgname=gdrive
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.1.1
+pkgrel=1
 pkgdesc="Google Drive CLI Client"
-arch=('x86_64' 'i686')
-url="https://github.com/gdrive-org/gdrive"
+arch=('x86_64')
+url="https://github.com/prasmussen/gdrive"
 license=('MIT')
 makedepends=('dep' 'git' 'go')
 options=('!strip' '!emptydirs')
-#source=(https://github.com/prasmussen/$pkgname/archive/$pkgver.tar.gz)
-source=($pkgname-$pkgver::git+https://github.com/prasmussen/gdrive.git#commit=97981f7fd205353907135eacfc0e0ade24b88269)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('SKIP')
 
-_gourl=github.com/prasmussen/gdrive
-_gobuild=build/src/$_gourl
+_gopkg=github.com/prasmussen/gdrive
+_gobuild=build/src/$_gopkg
 
 prepare() {
   mkdir -p "$(dirname $_gobuild)"
   cp -a "$srcdir/$pkgname-$pkgver" $_gobuild
 
   cd $_gobuild
-  GOPATH="$srcdir/build" dep init
-  GOPATH="$srcdir/build" dep ensure -update
+  export GOPATH="$srcdir/build"
+  dep init -skip-tools -no-examples
+  dep ensure -update
 }
 
 build() {
-  #GOPATH="$srcdir/build" go install -fix -v -x $_gourl
-  GOPATH="$srcdir/build" go install -v -x $_gourl
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOPATH="$srcdir/build"
+  go install $_gopkg@$pkgver
 }
 
 #check() {
-#  GOPATH="$srcdir/build" go test -fix -v -x $_gourl
+#  export GOPATH="$srcdir/build"
+#  go test $_gopkg@$pkgver
 #}
 
 package() {
