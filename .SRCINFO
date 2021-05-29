@@ -1,8 +1,8 @@
 pkgbase = sqlitestudio
 	pkgdesc = Database manager for SQLite
-	pkgver = 3.3.2
+	pkgver = 3.3.3
 	pkgrel = 1
-	url = http://sqlitestudio.pl/
+	url = https://github.com/pawelsalawa/sqlitestudio
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -14,10 +14,10 @@ pkgbase = sqlitestudio
 	depends = sqlite2
 	depends = tcl
 	depends = qt5-script
-	noextract = 3.3.2.tar.gz
-	source = https://github.com/pawelsalawa/sqlitestudio/archive/3.3.2.tar.gz
+	noextract = 3.3.3.tar.gz
+	source = https://github.com/pawelsalawa/sqlitestudio/archive/refs/tags/3.3.3.tar.gz
 	source = sqlitestudio.desktop
-	sha256sums = cf73969235b4e061122c9788d4d71bdb72c921a458cb2955760737b357d443cb
+	sha256sums = f234e1ea87d27e80a1794f86d32116ebd8919d51be63d35a7d0816a77115ce31
 	sha256sums = c5a26a9b9003b04274887a0e0febda13eea49bb46c618eaad0b5b5c88b1cc1d2
 
 pkgname = sqlitestudio

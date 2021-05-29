@@ -7,12 +7,13 @@ pkgname=(
   sqlitestudio-plugins
 )
 _pkgname=SQLiteStudio
-pkgver=3.3.2
-_pkgver=3
+pkgver=3.3.3
 pkgrel=1
+_pkgver=3
 pkgdesc='Database manager for SQLite'
 arch=(i686 x86_64)
-url='http://sqlitestudio.pl/'
+url='https://github.com/pawelsalawa/sqlitestudio'
+# url='https://sqlitestudio.pl/'
 license=('GPL3')
 depends=(
   termcap
@@ -27,13 +28,13 @@ makedepends=(
   qt5-tools
 )
 source=(
-  https://github.com/pawelsalawa/sqlitestudio/archive/${pkgver}.tar.gz
+  ${url}/archive/refs/tags/${pkgver}.tar.gz
   sqlitestudio.desktop
 )
 noextract=(
   "${pkgver}.tar.gz"
 )
-sha256sums=('cf73969235b4e061122c9788d4d71bdb72c921a458cb2955760737b357d443cb'
+sha256sums=('f234e1ea87d27e80a1794f86d32116ebd8919d51be63d35a7d0816a77115ce31'
             'c5a26a9b9003b04274887a0e0febda13eea49bb46c618eaad0b5b5c88b1cc1d2')
 prepare(){
   cd "$srcdir"
