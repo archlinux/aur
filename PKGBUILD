@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('g15daemon' 'runit')
 _filename='g15stats.run'
 source=("https://gitlab.com/menelkir/g15stats/-/raw/master/contrib/init/g15stats.run")
-sha256sums=('44f2ed8416a75fd3f2299eb682d93c52c9833af7a7c0906660114d1dd3987834')
+sha256sums=('4860d43f7104eddf3b9440295171a2c9b4d31b3398789a5adfb684d38c8e6351')
 
 pkgver() {
    date +%Y%m%d
