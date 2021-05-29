@@ -4,7 +4,7 @@
 pkgname=gnatcoll-postgres
 epoch=1
 pkgver=21.0.0
-pkgrel=1
+pkgrel=2
 _repo_name=gnatcoll-db
 
 pkgdesc='GNAT Components Collection - Postgres database support'
