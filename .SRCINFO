@@ -1,6 +1,6 @@
 pkgbase = ruby-curses
 	pkgdesc = Ruby binding for curses, ncurses, and PDCurses
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/ruby/curses
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = ruby-curses
 	makedepends = ruby-rdoc
 	depends = ruby
 	options = !emptydirs
-	source = https://rubygems.org/downloads/curses-1.4.0.gem
-	sha256sums = 51ce7a1cd81fb82585a9c5fe574f428ceb88f0b9e2c934dfe9d4c08882349244
+	source = https://rubygems.org/downloads/curses-1.4.1.gem
+	sha256sums = 37d8d3e5bb73eee16d288056f9fb5e7653de721251bfa3f680170eab3b0dd0b0
 
 pkgname = ruby-curses
 
