@@ -1,16 +1,17 @@
 pkgbase = statnot
 	pkgdesc = Notification daemon for lightweight window managers
-	pkgver = 0.0.4
-	pkgrel = 4
+	pkgver = 0.0.4.post1
+	pkgrel = 1
 	url = https://github.com/halhen/statnot
 	arch = x86_64
 	license = GPL
-	depends = pygtk
-	depends = python2-dbus
+	depends = gtk3
+	depends = python-dbus
+	depends = python-gobject
 	optdepends = libnotify: send notifications to statnot
 	optdepends = xorg-xsetroot: default configuration calls xsetroot
-	source = https://github.com/halhen/statnot/archive/0.0.4.tar.gz
-	md5sums = 73b74044b7aec19ab2483d5bac04eb8e
+	source = statnot-0.0.4.post1::git+https://github.com/halhen/statnot.git#commit=d70982eb5d86e7849295b634721a74a433fcb532
+	md5sums = SKIP
 
 pkgname = statnot
 

@@ -2,21 +2,22 @@
 # Contributor: halhen <halhen at k2h dot se>
 
 pkgname=statnot
-pkgver=0.0.4
-pkgrel=4
+pkgver=0.0.4.post1
+pkgrel=1
 pkgdesc="Notification daemon for lightweight window managers"
 arch=('x86_64')
+#url="http://www.k2h.se/code/"
 url="https://github.com/halhen/statnot"
 license=('GPL')
-depends=('pygtk' 'python2-dbus')
+depends=('gtk3' 'python-dbus' 'python-gobject') 
 optdepends=('libnotify: send notifications to statnot'
             'xorg-xsetroot: default configuration calls xsetroot')
-source=("$url/archive/$pkgver.tar.gz")
-md5sums=('73b74044b7aec19ab2483d5bac04eb8e')
+#source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+source=($pkgname-$pkgver::git+$url.git#commit=d70982eb5d86e7849295b634721a74a433fcb532)
+md5sums=('SKIP')
 
 package() {
   cd $pkgname-$pkgver
-  sed -i '1 s/python$/python2/' statnot
   make DESTDIR="$pkgdir" install
 }
 
