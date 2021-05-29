@@ -1,0 +1,36 @@
+pkgbase = notion-app-enhanced
+	pkgdesc = The all-in-one workspace for your notes and tasks, but enhanced
+	pkgver = 2.0.16_b417882
+	pkgrel = 1
+	url = https://www.notion.so/desktop
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = imagemagick
+	makedepends = p7zip
+	makedepends = npm
+	makedepends = nvm
+	makedepends = python2
+	makedepends = jq
+	depends = re2
+	depends = gtk3
+	depends = xdg-utils
+	provides = notion-app
+	conflicts = notion-app
+	source = Notion-2.0.16.exe::https://desktop-release.notion-static.com/Notion%20Setup%202.0.16.exe
+	source = notion-enhancer@b417882::git+https://github.com/notion-enhancer/notion-enhancer#commit=b417882
+	source = notion-app-enhanced.desktop
+	source = notion-check-relativeurl.patch
+	source = enhancer-query-selector-fix.patch
+	source = enhancer-urlhelper-fix.patch
+	source = enhancer-add-path.patch
+	md5sums = 9f72284086cda3977f7f569dff3974d5
+	md5sums = SKIP
+	md5sums = bbd8a12eb1993359f010ea9e7e7e660a
+	md5sums = 5319275232e34299341f9b34ea3039e9
+	md5sums = 887bc04c0305f6e0124544d0361ee928
+	md5sums = afc3df3c50e25710d7a1f4c391df8b25
+	md5sums = aaba0b7a2340686c5c4dd9f6eb0cd4de
+
+pkgname = notion-app-enhanced
+
