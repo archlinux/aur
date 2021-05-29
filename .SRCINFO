@@ -6,7 +6,6 @@ pkgbase = steck
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python-pytest
 	depends = python
 	depends = python-appdirs
 	depends = python-click

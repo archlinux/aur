@@ -18,7 +18,6 @@ depends=(
 )
 makedepends=(
   'python-setuptools'
-  'python-pytest'
 )
 options=(!emptydirs)
 source=(
