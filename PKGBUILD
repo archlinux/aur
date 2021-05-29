@@ -9,12 +9,12 @@
 pkgname='dashcore-git'
 _gitname='dash'
 _gitbranch='master'
-pkgver=v0.16.1.1.r0.g43d2973a0e
+pkgver=0.17.0.2.r0.g79a1b1aa47
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/dashpay/dash"
 depends=('qt5-base' 'boost' 'boost-libs' 'miniupnpc' 'protobuf' 'db4.8' 'zeromq' 'libevent' 'qrencode' 'libbacktrace-git')
-makedepends=('autoconf' 'automake' 'binutils' 'gcc' 'libtool' 'make' 'pkg-config' 'git' 'qt5-tools' 'python3' 'cmake' 'codablock-bls-signatures')
+makedepends=('autoconf' 'automake' 'binutils' 'gcc' 'libtool' 'make' 'pkg-config' 'git' 'qt5-tools' 'python3' 'cmake' 'dashpay-bls-signatures')
 license=('MIT')
 pkgdesc="Dash Core (DASH, Dashpay, formerly Darkcoin) is an open source, privacy-centric digital currency. (Includes the qt-client, the headless daemon and the command-line tool). WARNING: Unstable, development version."
 provides=('dash-daemon' 'dash-qt' 'dash-cli')
@@ -23,12 +23,12 @@ source=('deque.patch'
         'qpainterpath.patch::https://github.com/bitcoin/bitcoin/commit/79b0a69e09c1a912122e6431ea3c530cc292c690.patch'
         "git://github.com/dashpay/dash.git")
 sha512sums=('87c8fbe782a66222fd1121d61bde967d89e6ddda2f1a4dfc7f17eabfce1502ce172af13f52d94d752464ee125fa69d9b423f495baa52bde1fe02e4762aa889d5'
-            '1eda9a1d5616a0602f85b0d04838657fe5fa75746a2da7a4614124e6081eeb1997e845d61a7d7a9a52a9d5ef9215617205924811cfef32132bf7fce9c3c603fb'
+            '6c3df861832926e72dfd820af42bb89c1c3bb556c3f8e2fd06544f76bf5369c992a556e717653e230e062e89b8f2ee4f5d02313f35672f8174deae48c3306a0d'
             'SKIP')
 
 prepare () {
   cd "$_gitname"
-  git pull origin v0.16.x
+  git pull origin v0.17.x
  #deque patch 2020-02-12 == http: add missing header bootlegged by boost < 1.72
  #inlcude deque library in src/httpserver.cpp found in https://github.com/bitcoin/bitcoin/commit/a5929130223973636f3fd25fbfaf2953f2ec96a9 and #inlcude deque.h library in httpserver.cpp found in https://github.com/dogecoin/dogecoin/pull/1626
  #will delete when dash fixes/commits this. 
@@ -43,7 +43,7 @@ prepare () {
 pkgver() {
   cd "$_gitname"
 ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
