@@ -1,4 +1,4 @@
-# Maintainer: Tomatopaste <mafehling.git@gmail.com>
+# Maintainer: Marc Fehling <mafehling.git@gmail.com>
 pkgname=('python-sphinx-comments')
 _pkgname=('sphinx-comments')
 pkgver='0.0.3'
