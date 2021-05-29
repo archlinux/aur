@@ -1,0 +1,20 @@
+pkgbase = jaapi-advcpmv
+	pkgdesc = jaruns patches for advcpmv, this is an optional dependency to get progress bar for cp and mv in the n3 file manager
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://github.com/jarun/advcpmv
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = gperf
+	provides = cpg
+	provides = mvg
+	conflicts = cpg
+	conflicts = mvg
+	source = http://ftp.gnu.org/gnu/coreutils/coreutils-.tar.xz
+	source = git+https://github.com/jarun/advcpmv
+	sha256sums = 4458d8de7849df44ccab15e16b1548b285224dbba5f08fac070c1c0e0bcc4cfa
+	sha256sums = SKIP
+
+pkgname = jaapi-advcpmv
+
