@@ -1,0 +1,19 @@
+pkgbase = uefi_r2-git
+	pkgdesc = Core library for PSlab desktop
+	pkgver = r50.9bb55ba
+	pkgrel = 1
+	url = https://github.com/binarly-io/uefi_r2
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-r2pipe
+	depends = radare2
+	provides = uefi_r2
+	conflicts = uefi_r2
+	options = !emptydirs
+	source = git://github.com/binarly-io/uefi_r2.git
+	sha512sums = SKIP
+
+pkgname = uefi_r2-git
+
