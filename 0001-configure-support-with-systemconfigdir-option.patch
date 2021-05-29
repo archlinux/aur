@@ -1,0 +1,147 @@
+From 2ac272e98690808aa33b5929bf33d4c1653671ae Mon Sep 17 00:00:00 2001
+From: Albert Chu <chu11@llnl.gov>
+Date: Thu, 27 May 2021 22:44:03 -0700
+Subject: [PATCH] configure: support --with-systemconfigdir option
+
+---
+ ChangeLog                   |  4 ++++
+ configure.ac                | 16 ++++++++++++++++
+ etc/Makefile.am             |  4 ++--
+ etc/bmc-watchdog.init.in    |  2 +-
+ etc/bmc-watchdog.service.in |  2 +-
+ freeipmi.spec.in            | 14 +++++++++++++-
+ 6 files changed, 37 insertions(+), 5 deletions(-)
+
+diff --git a/ChangeLog b/ChangeLog
+index b720fe6cb..edd3c4286 100644
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -1,3 +1,7 @@
++2021-05-28 Albert Chu <chu11@llnl.gov>
++
++	* configure.ac: Support --with-systemconfigdir option.
++
+ 2021-05-29 Heather Lemon <heather.lemon@canonical.com>
+ 
+ 	* libfreeipmi/sensor-read/ipmi-sensor-read.c: (LP#1926299)
+diff --git a/configure.ac b/configure.ac
+index 4fe8f6733..695f4b592 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -769,4 +769,20 @@ fi
+ AM_CONDITIONAL(WITH_PKG_CONFIG, test -n "${pkgconfigdir}")
+ AC_SUBST(pkgconfigdir)
+ 
++dnl Option for alternate system config dir
++
++AC_MSG_CHECKING(alternate system config dir)
++AC_ARG_WITH(systemconfigdir,
++	AS_HELP_STRING([--with-systemconfigdir=PATH],
++                       [where to install system config file]),
++                       [SYSTEMCONFIGDIR="${withval}"],
++                       [])
++if test -n "${SYSTEMCONFIGDIR}"; then
++	AC_MSG_RESULT(using ${SYSTEMCONFIGDIR})
++else
++	AC_MSG_RESULT(no)
++        SYSTEMCONFIGDIR="${X_SYSCONFDIR}/sysconfig"
++fi
++AC_SUBST(SYSTEMCONFIGDIR)
++
+ AC_OUTPUT
+diff --git a/etc/Makefile.am b/etc/Makefile.am
+index 571a7d5f5..5c023982f 100644
+--- a/etc/Makefile.am
++++ b/etc/Makefile.am
+@@ -37,8 +37,8 @@ install-systemd-scripts: install-sysconfig
+ 	$(INSTALL) -m 644 $(srcdir)/ipmiseld.service $(DESTDIR)$(systemdsystemunitdir)/ipmiseld.service
+ 
+ install-sysconfig:
+-	$(INSTALL) -m 755 -d $(DESTDIR)$(sysconfdir)/sysconfig
+-	$(INSTALL) -m 444 $(srcdir)/bmc-watchdog.sysconfig $(DESTDIR)$(sysconfdir)/sysconfig/bmc-watchdog
++	$(INSTALL) -m 755 -d $(DESTDIR)@SYSTEMCONFIGDIR@
++	$(INSTALL) -m 444 $(srcdir)/bmc-watchdog.sysconfig $(DESTDIR)@SYSTEMCONFIGDIR@/bmc-watchdog
+ 
+ uninstall-local: $(UNINSTALL_DAEMON_SCRIPTS)
+ 	$(RM) -f $(DESTDIR)$(sysconfdir)/sysconfig/bmc-watchdog
+diff --git a/etc/bmc-watchdog.init.in b/etc/bmc-watchdog.init.in
+index 49cda4c60..a1207e6f7 100755
+--- a/etc/bmc-watchdog.init.in
++++ b/etc/bmc-watchdog.init.in
+@@ -16,7 +16,7 @@
+ DAEMON=@X_SBINDIR@/bmc-watchdog
+ PIDFILE=@X_LOCALSTATEDIR@/run/bmc-watchdog.pid
+ LOCKFILE=@X_LOCALSTATEDIR@/lock/subsys/bmc-watchdog
+-CONFFILE=@X_SYSCONFDIR@/sysconfig/bmc-watchdog
++CONFFILE=@SYSTEMCONFIGDIR@/bmc-watchdog
+ 
+ [ -f $DAEMON ] || exit 5
+ 
+diff --git a/etc/bmc-watchdog.service.in b/etc/bmc-watchdog.service.in
+index 7044e5fb6..2e9ba6e19 100644
+--- a/etc/bmc-watchdog.service.in
++++ b/etc/bmc-watchdog.service.in
+@@ -5,7 +5,7 @@ After=network.target
+ [Service]
+ Type=forking
+ PIDFile=/run/bmc-watchdog.pid
+-EnvironmentFile=-@X_SYSCONFDIR@/sysconfig/bmc-watchdog
++EnvironmentFile=-@SYSTEMCONFIGDIR@/bmc-watchdog
+ ExecStart=@X_SBINDIR@/bmc-watchdog $OPTIONS
+ 
+ [Install]
+diff --git a/freeipmi.spec.in b/freeipmi.spec.in
+index ebc3c950d..5e8ec2c13 100644
+--- a/freeipmi.spec.in
++++ b/freeipmi.spec.in
+@@ -75,12 +75,17 @@ IPMI SEL syslog logging daemon.
+   %define _with_systemdsystemunitdir --with-systemdsystemunitdir=%{_unitdir}
+ %endif
+ 
++%if %{?_systemconfigdir:0}%{!?_systemconfigdir:1}
++  %define _systemconfigdir %{_sysconfdir}/sysconfig
++%endif
++
+ %prep
+ %setup -q
+ 
+ %build
+ %configure --program-prefix=%{?_program_prefix:%{_program_prefix}} \
+ 	   %{?_with_systemdsystemunitdir} \
++	   --with-systemconfigdir=%{_systemconfigdir} \
+            %{?_enable_debug} --disable-static
+ CFLAGS="$RPM_OPT_FLAGS" make %{?_smp_mflags}
+ 
+@@ -99,6 +104,7 @@ mv $RPM_BUILD_ROOT/%{_sysconfdir}/init.d/ipmidetectd $RPM_BUILD_ROOT/%{_initrddi
+ mv $RPM_BUILD_ROOT/%{_sysconfdir}/init.d/ipmiseld $RPM_BUILD_ROOT/%{_initrddir}/ipmiseld
+ fi
+ %endif
++mkdir -p $RPM_BUILD_ROOT/%{_systemconfigdir}/
+ rm -f %{buildroot}%{_infodir}/dir
+ # kludge to get around rpmlint complaining about 0 length semephore file
+ echo freeipmi > %{buildroot}%{_localstatedir}/lib/freeipmi/ipckey
+@@ -459,7 +465,7 @@ fi
+ %else
+ %config(noreplace) %{_initrddir}/bmc-watchdog
+ %endif
+-%config(noreplace) %{_sysconfdir}/sysconfig/bmc-watchdog
++%config(noreplace) %{_systemconfigdir}/bmc-watchdog
+ %{_sbindir}/bmc-watchdog
+ %{_mandir}/man8/bmc-watchdog.8*
+ 
+@@ -491,6 +497,12 @@ fi
+ %dir %{_localstatedir}/cache/ipmiseld
+ 
+ %changelog
++* Wed May 28 2021 Albert Chu <chu11@llnl.gov> 1.7.0
++- Add _systemconfigdir definition
++
++* Wed Mar 27 2021 Albert Chu <chu11@llnl.gov> 1.7.0
++- Add include/spec/oem/intel dir
++
+ * Wed Nov 4 2015 Albert Chu <chu11@llnl.gov> 1.5.0
+ - Add systemd support.
+ 
+-- 
+2.31.1
+

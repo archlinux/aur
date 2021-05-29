@@ -1,7 +1,7 @@
 pkgbase = freeipmi
 	pkgdesc = IPMI remote console and system management software
 	pkgver = 1.6.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/freeipmi
 	arch = x86_64
 	arch = aarch64
@@ -22,10 +22,12 @@ pkgbase = freeipmi
 	source = https://ftp.gnu.org/gnu/freeipmi/freeipmi-1.6.8.tar.gz
 	source = https://ftp.gnu.org/gnu/freeipmi/freeipmi-1.6.8.tar.gz.sig
 	source = tmpfiles.conf
+	source = 0001-configure-support-with-systemconfigdir-option.patch
 	validpgpkeys = A865A9FB6F0387624468543A3EFB7C4BE8303927
 	b2sums = afe3238955786b13aae0e0062028f5c969a8e686b46bea3850696361355b3bd82a55bd93523ea7fe2223fe5bb04922c26b46023f783bd879bbd01e34ffd6d59e
 	b2sums = SKIP
 	b2sums = 5354e0b716b0806ac6f82dbbae533cb86f302d1952b948df6b5ab5bd41bf194ec927c9c39fd4d5969c2f4de8cfdbf3b66a4a1c1faaee4e5768201eaef83ca991
+	b2sums = 3afcd95716b61a7d542193e78e6fe3598711b7641c98c771d01aacb3bb6c94112a6df78236c27d15879a51da5a4b6b2ad3fcfacbd380fce3cdfafc826197fcc8
 
 pkgname = freeipmi
 
