@@ -9,7 +9,6 @@ pkgbase = auracle-git
 	checkdepends = python
 	checkdepends = fakechroot
 	checkdepends = gtest
-	checkdepends = gmock
 	makedepends = meson
 	makedepends = git
 	makedepends = perl
