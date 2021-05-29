@@ -2,15 +2,17 @@
 
 pre_upgrade() {
 	if (( $(vercmp $2 1.0.0) < 0 )); then
-		echo "######################################################"
-		echo "# You are going to upgrade HORNET to the new         #"
-		echo "# Chrysalis version. This is a breaking change.      #"
-		echo "# 1. Your Hornet configuration may get invalid.      #"
-		echo "#    A new template configuration can be found in    #"
-		echo "#    - /etc/default/hornet.pacnew and                #"
-		echo "#    - /var/lib/hornet/config.json.pacnew            #"
-		echo "# 2. The old database files are incompatible.        #"
-		echo "#    Restart Hornet with an empty database folder.   #"
-		echo "######################################################"
+		echo "> hornet$ You are going to upgrade HORNET to the new"
+		echo "> hornet$ Chrysalis version. This is a breaking change."
+		echo "> hornet$ 1. Your Hornet configuration may get invalid."
+		echo "> hornet$    A new template configuration can be found in"
+		echo "> hornet$    - /etc/default/hornet.pacnew and"
+		echo "> hornet$    - /var/lib/hornet/config.json.pacnew"
+		echo "> hornet$ 2. The old database files are incompatible."
+		echo "> hornet$    Restart Hornet with an empty database folder."
+	fi
+	if (( $(vercmp $2 1.0.1) == 0 )); then
+		echo "> hornet$ Config files changes"
+		echo "> hornet$ https://github.com/gohornet/hornet/releases/tag/v1.0.2"
 	fi
 }
