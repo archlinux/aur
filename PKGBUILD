@@ -4,12 +4,12 @@
 pkgname=('peercoin-cli' 'peercoin-daemon' 'peercoin-qt' 'peercoin-tx')
 pkgbase='peercoin'
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A peer-to-peer network-based digital currency"
 arch=('x86_64')
 url="https://www.peercoin.net/"
 license=('MIT')
-depends=('boost-libs' 'db' 'libevent' 'miniupnpc' 'qrencode' 'qt5-base' 'zeromq')
+depends=('boost-libs' 'db' 'libevent' 'miniupnpc' 'openssl' 'qrencode' 'qt5-base' 'zeromq')
 makedepends=('boost' 'qt5-tools')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/peercoin/peercoin/archive/v${pkgver}ppc.tar.gz")
 b2sums=('77a60c9df5c7a8070dc77a82119516488e317ee46ccc0886790fa54c80d8d7ef8cdd02542a5f36f41132cf2ffdf8c26b6f64114df601ea0083a12648eae2501c')
@@ -78,7 +78,7 @@ package_peercoin-daemon() {
 
 package_peercoin-qt() {
     pkgdesc="A peer-to-peer network-based digital currency - Qt"
-    depends=('boost-libs' 'db' 'libevent' 'miniupnpc' 'qrencode' 'qt5-base' 'zeromq')
+    depends=('boost-libs' 'db' 'libevent' 'miniupnpc' 'openssl' 'qrencode' 'qt5-base' 'zeromq')
 
     cd "$pkgbase-${pkgver}ppc"
     install -D --mode 644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
