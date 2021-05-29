@@ -10,7 +10,7 @@ url="https://github.com/mozilla/readability"
 license=('Apache')
 depends=('nodejs')
 makedepends=('git' 'npm')
-source=("$pkgname::git+${url}.git")
+source=("$_npmname::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
