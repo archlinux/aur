@@ -1,0 +1,112 @@
+commit b681682ec91bb594ecd35cfe79f4e8dfef95be1c
+Author: Bruno Santos <brunomanuelsantos@tecnico.ulisboa.pt>
+Date:   Thu May 20 22:58:35 2021 +0100
+
+    Check the return value of mutex_lock_interruptible
+    
+    These locks may fail yet the error was not caught. This also has the
+    benefit of suppressing some compilation warnings.
+
+diff --git a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_active.c b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_active.c
+index 00805dd..ebb5f13 100644
+--- a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_active.c	
++++ b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_active.c	
+@@ -466,7 +466,9 @@ static int ixx_act_ib_xxx_get_intf_caps(struct pci_dev *pdev,
+         intf_caps_res.dal_res.ret_size = 0;
+         intf_caps_res.dal_res.ret_code = 0xffffffff;
+ 
+-        mutex_lock_interruptible(&intf->cmd_lock);
++        if (mutex_lock_interruptible(&intf->cmd_lock))
++                return err;
++
+         err = ixx_act_ib_xxx_send_cmd(intf, tx_cmd_fifo, &intf_caps_req.dal_req,
+                         &intf_caps_res.dal_res);
+         if (err)
+@@ -564,7 +566,9 @@ static int ixx_act_ib_xxx_init_ctrl(struct ixx_pci_priv* priv)
+         ctrl_init_res.dal_res.ret_size = 0;
+         ctrl_init_res.dal_res.ret_code = 0xffffffff;
+ 
+-        mutex_lock_interruptible(&intf->cmd_lock);
++        if (mutex_lock_interruptible(&intf->cmd_lock))
++                return err;
++
+         err = ixx_act_ib_xxx_send_cmd(intf, tx_cmd_fifo, &ctrl_init_req.dal_req,
+                         &ctrl_init_res.dal_res);
+ 
+@@ -626,7 +630,9 @@ static int ixx_act_ib_xxx_start_ctrl(struct ixx_pci_priv* priv, u32 * time_ref)
+         ctrl_start_res.dal_res.ret_code = 0xffffffff;
+         ctrl_start_res.start_time = 0;
+ 
+-        mutex_lock_interruptible(&priv->intf->cmd_lock);
++        if (mutex_lock_interruptible(&priv->intf->cmd_lock))
++                return err;
++
+         err = ixx_act_ib_xxx_send_cmd(intf, tx_cmd_fifo,
+                         &ctrl_start_req.dal_req, &ctrl_start_res.dal_res);
+ 
+@@ -677,7 +683,9 @@ static int ixx_act_ib_xxx_stop_ctrl(struct ixx_pci_priv* priv)
+         ctrl_stop_res.dal_res.ret_size = 0;
+         ctrl_stop_res.dal_res.ret_code = 0xffffffff;
+ 
+-        mutex_lock_interruptible(&priv->intf->cmd_lock);
++        if (mutex_lock_interruptible(&priv->intf->cmd_lock))
++                return err;
++
+         err = ixx_act_ib_xxx_send_cmd(intf, tx_cmd_fifo, &ctrl_stop_req.dal_req,
+                         &ctrl_stop_res.dal_res);
+         if (err)
+@@ -726,7 +734,9 @@ static int ixx_act_ib_xxx_get_dev_info(struct ixx_pci_interface * intf,
+         dev_info_res.dal_res.ret_size = 0;
+         dev_info_res.dal_res.ret_code = 0xffffffff;
+ 
+-        mutex_lock_interruptible(&intf->cmd_lock);
++        if (mutex_lock_interruptible(&intf->cmd_lock))
++                return err;
++
+         err = ixx_act_ib_xxx_send_cmd(intf, tx_cmd_fifo, &dev_info_req.dal_req,
+                         &dev_info_res.dal_res);
+         if (err)
+@@ -1937,7 +1947,9 @@ static int ixx_act_ib_xxx_trigger_int(struct pci_dev *pdev,
+         trigger_res.dal_res.ret_size = 0;
+         trigger_res.dal_res.ret_code = 0xFFFFFFFF;
+ 
+-        mutex_lock_interruptible(&intf->cmd_lock);
++        if (mutex_lock_interruptible(&intf->cmd_lock))
++                return err;
++
+         err = ixx_act_ib_xxx_send_cmd(intf, tx_cmd_fifo, &trigger_req.dal_req,
+                         &trigger_res.dal_res);
+         if (err)
+@@ -1993,7 +2005,9 @@ static int ixx_act_ib_xxx_test_cmd(struct pci_dev *pdev,
+                 bmg_request->data[index] = (u8) index + 1;
+         }
+ 
+-        mutex_lock_interruptible(&intf->cmd_lock);
++        if (mutex_lock_interruptible(&intf->cmd_lock))
++                return err;
++
+         /* Execute command */
+         err = ixx_act_ib_xxx_send_cmd(intf, tx_cmd_fifo, &bmg_request->dal_req,
+                         &bmg_response->dal_res);
+@@ -2061,7 +2075,9 @@ static int ixx_act_ib_xxx_test_dma(struct pci_dev *pdev,
+         read_res->dal_res.ret_size = 0;
+         read_res->dal_res.ret_code = 0xFFFFFFFF;
+ 
+-        mutex_lock_interruptible(&intf->cmd_lock);
++        if (mutex_lock_interruptible(&intf->cmd_lock))
++                return err;
++
+         err = ixx_act_ib_xxx_send_cmd(intf, tx_cmd_fifo, &read_req.dal_req,
+                         &read_res->dal_res);
+         if (err)
+@@ -2187,7 +2203,9 @@ static int ixx_act_ib_xxx_start_fw(struct pci_dev *pdev,
+         start_res.dal_res.ret_size = 0;
+         start_res.dal_res.ret_code = 0xFFFFFFFF;
+ 
+-        mutex_lock_interruptible(&intf->cmd_lock);
++        if (mutex_lock_interruptible(&intf->cmd_lock))
++                return err;
++
+         err = ixx_act_ib_xxx_send_cmd(intf, tx_cmd_fifo, &start_req.dal_req,
+                         &start_res.dal_res);
+         if (err)

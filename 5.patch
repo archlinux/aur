@@ -1,0 +1,263 @@
+commit c7374eeac3f1f341c6c6663c362c2aa2a5224163
+Author: Bruno Santos <brunomanuelsantos@tecnico.ulisboa.pt>
+Date:   Thu May 20 23:09:49 2021 +0100
+
+    Fix for new CAN subsystem API
+    
+    A number of commits upstream has been changing the API of the CAN
+    subsystem to allow for greater performance and to consolidate name
+    prefixes.
+    
+    The relevant changes are:
+    
+    1. adding an `frame_len` parameter to several functions to cache the
+       last frame length. In fact more of these changes have been merged
+       already, but not merged in Arch's default kernel and so left out for
+       now. (1dcb6e57db833419483d0df2d956b1cc2a802683)
+    
+    2. The addition of a specialized function for releasing the echo skb's.
+       This one is actually old already (commit dated 2009), but at least
+       one case was obvious enough that it could use it.
+       (39e3ab6fded4d7e66e01a878f0cae23ddd480c3b)
+    
+    3. Renames and deprecations of functions.
+       (3ab4ce0d6fa8c93d41df4a74ec8d2c9198be2109,
+        cd1124e76d740327be5d8f9ce3785ce1119daf4b)
+    
+    Thanks to Bart Verhagen for the report and early patch.
+
+diff --git a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_core.c b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_core.c
+index 7f019fb..731ecd6 100644
+--- a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_core.c	
++++ b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_core.c	
+@@ -298,7 +298,7 @@ int ixxat_pci_handle_frn(struct ixx_pci_priv *dev, u8 frn, u32 timestamp)
+                         if (skb)
+                                 ixxat_pci_get_ts_tv(dev, timestamp,
+                                                 &skb->tstamp);
+-                        can_get_echo_skb(dev->netdev, frn - 1);
++                        can_get_echo_skb(dev->netdev, frn - 1, NULL);
+                         dev->frn_read++;
+                         result = 1;
+                         netdev_dbg(dev->netdev, "can_get_echo_skb %d", frn - 1);
+@@ -320,7 +320,7 @@ int ixxat_pci_handle_frn(struct ixx_pci_priv *dev, u8 frn, u32 timestamp)
+                         if (skb)
+                                 ixxat_pci_get_ts_tv(dev, timestamp,
+                                                 &skb->tstamp);
+-                        can_get_echo_skb(dev->netdev, frn - 1);
++                        can_get_echo_skb(dev->netdev, frn - 1, NULL);
+                         dev->frn_read = expectedfrn;
+                         result = 1;
+                 } else if (frn > expectedfrn && frn >= dev->frn_write) {
+@@ -342,7 +342,7 @@ int ixxat_pci_handle_frn(struct ixx_pci_priv *dev, u8 frn, u32 timestamp)
+                         if (skb)
+                                 ixxat_pci_get_ts_tv(dev, timestamp,
+                                                 &skb->tstamp);
+-                        can_get_echo_skb(dev->netdev, frn - 1);
++                        can_get_echo_skb(dev->netdev, frn - 1, NULL);
+                         dev->frn_read++;
+                         result = 1;
+ //                                                netdev_dbg(dev->netdev, "can_get_echo_skb %d", frn - 1);
+@@ -357,7 +357,7 @@ int ixxat_pci_handle_frn(struct ixx_pci_priv *dev, u8 frn, u32 timestamp)
+                         if (skb)
+                                 ixxat_pci_get_ts_tv(dev, timestamp,
+                                                 &skb->tstamp);
+-                        can_get_echo_skb(dev->netdev, frn - 1);
++                        can_get_echo_skb(dev->netdev, frn - 1, NULL);
+                         dev->frn_read = expectedfrn;
+                         result = 1;
+                 } else if (frn < expectedfrn && frn >= dev->frn_write) {
+@@ -382,7 +382,7 @@ int ixxat_pci_handle_frn(struct ixx_pci_priv *dev, u8 frn, u32 timestamp)
+                         if (skb)
+                                 ixxat_pci_get_ts_tv(dev, timestamp,
+                                                 &skb->tstamp);
+-                        can_get_echo_skb(dev->netdev, frn - 1);
++                        can_get_echo_skb(dev->netdev, frn - 1, NULL);
+                         dev->frn_read = expectedfrn;
+                         result = 1;
+                 }
+diff --git a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_active.c b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_active.c
+index ebb5f13..94c5b10 100644
+--- a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_active.c	
++++ b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_active.c	
+@@ -882,7 +882,7 @@ static int ixx_act_ib_xxx_handle_srr_canfdmsg(struct ixx_pci_priv *priv,
+         ifi_reg_dlc = le32_to_cpu(ifi_base[IXX_IFI_DLC]);
+ 
+         priv->netdev->stats.tx_packets += 1;
+-        priv->netdev->stats.tx_bytes += can_dlc2len(
++        priv->netdev->stats.tx_bytes += can_fd_dlc2len(
+                         ifi_reg_dlc & IFIFD_RXFIFO_DLC);
+         frn = (ifi_reg_dlc & IFIFD_RXFIFO_FRN) >> IFIFD_RXFIFO_FRN_S;
+ 
+@@ -959,7 +959,7 @@ static int ixx_act_ib_xxx_handle_canfdmsg(struct ixx_pci_priv *priv,
+         raw_dlc = le32_to_cpu(ifi_base[IXX_IFI_DLC]);
+         raw_id = le32_to_cpu(ifi_base[IXX_IFI_ID]);
+ 
+-        can_frame->len = can_dlc2len(
++        can_frame->len = can_fd_dlc2len(
+                         (raw_dlc & IFIFD_RXFIFO_DLC) >> IFIFD_RXFIFO_DLC_S);
+ 
+         if (raw_id & IFIFD_RXFIFO_IDE) {
+@@ -1406,6 +1406,7 @@ static int ixx_act_ib_xxx_start_xmit(struct sk_buff *skb,
+         int i, j;
+         u32 write_index, read_index, obj_size;
+         unsigned long spin_flags;
++        size_t frame_len;
+ 
+         if (can_dropped_invalid_skb(netdev, skb)) {
+                 netdev_dbg(netdev, "dropped invalid skb\n");
+@@ -1478,7 +1479,8 @@ static int ixx_act_ib_xxx_start_xmit(struct sk_buff *skb,
+                         can_free_echo_skb(priv->netdev, priv->frn_write - 1);
+                 }
+ 
+-                can_put_echo_skb(skb, priv->netdev, priv->frn_write - 1);
++                frame_len = can_skb_get_frame_len(skb);
++                can_put_echo_skb(skb, priv->netdev, priv->frn_write - 1, frame_len);
+                 can_dlc |= (priv->frn_write << IFI_R0_FRN_S) & IFI_R0_RD_FRN;
+ 
+                 priv->frn_write++;
+@@ -1529,6 +1531,7 @@ static int ixx_act_ib_xxx_start_xmit_fd(struct sk_buff *skb,
+         int i, j;
+         u32 write_index, read_index, obj_size;
+         unsigned long spin_flags;
++        size_t frame_len;
+ 
+         if (can_dropped_invalid_skb(netdev, skb)) {
+                 netdev_info(netdev, "dropped invalid skb\n");
+@@ -1576,7 +1579,7 @@ static int ixx_act_ib_xxx_start_xmit_fd(struct sk_buff *skb,
+         if (cf->can_id & CAN_RTR_FLAG)
+                 can_dlc |= IFIFD_TXFIFO_RTR;
+         else {
+-                can_dlc |= can_len2dlc(cf->len) & IFIFD_TXFIFO_DLC;
++                can_dlc |= can_fd_len2dlc(cf->len) & IFIFD_TXFIFO_DLC;
+                 if (cf->len > 8) {
+                         can_dlc |= IFIFD_TXFIFO_EDL;
+                 }
+@@ -1610,7 +1613,8 @@ static int ixx_act_ib_xxx_start_xmit_fd(struct sk_buff *skb,
+                         can_free_echo_skb(priv->netdev, priv->frn_write - 1);
+                 }
+ 
+-                can_put_echo_skb(skb, priv->netdev, priv->frn_write - 1);
++                frame_len = can_skb_get_frame_len(skb);
++                can_put_echo_skb(skb, priv->netdev, priv->frn_write - 1, frame_len);
+                 can_dlc |= (priv->frn_write << IFIFD_TXFIFO_FRN_S)
+                                 & IFIFD_TXFIFO_FRN;
+ 
+diff --git a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_fd_passive.c b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_fd_passive.c
+index def2ea6..5b7b5b6 100644
+--- a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_fd_passive.c	
++++ b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_fd_passive.c	
+@@ -207,7 +207,7 @@ static int ixx_pas_ib_fd_xxx_handle_srr_canmsg(struct ixx_pci_priv *priv)
+                         ioread32(priv->ifi_base + IFIFDREG_RX_FIFO_DLC));
+ 
+         priv->netdev->stats.tx_packets += 1;
+-        priv->netdev->stats.tx_bytes += can_dlc2len(
++        priv->netdev->stats.tx_bytes += can_fd_dlc2len(
+                         ifi_reg_dlc & IFIFD_RXFIFO_DLC);
+         frn = (ifi_reg_dlc & IFIFD_RXFIFO_FRN) >> IFIFD_RXFIFO_FRN_S;
+ 
+@@ -235,9 +235,8 @@ static int ixx_pas_ib_fd_xxx_handle_canmsg(struct ixx_pci_priv *priv)
+         raw_id = le32_to_cpu(ioread32(priv->ifi_base + IFIFDREG_RX_FIFO_ID));
+         raw_dlc = le32_to_cpu(ioread32(priv->ifi_base + IFIFDREG_RX_FIFO_DLC));
+ 
+-        can_frame->len = can_dlc2len(
+-                        le32_to_cpu(
+-                                        (raw_dlc & IFIFD_RXFIFO_DLC)
++        can_frame->len = can_fd_dlc2len(
++                        le32_to_cpu((raw_dlc & IFIFD_RXFIFO_DLC)
+                                                         >> IFIFD_RXFIFO_DLC_S));
+ 
+         if (raw_id & IFIFD_RXFIFO_IDE) {
+@@ -498,7 +497,7 @@ static int ixx_pas_ib_fd_xxx_start_xmit(struct sk_buff *skb,
+         if (cf->can_id & CAN_RTR_FLAG)
+                 can_dlc |= IFIFD_TXFIFO_RTR;
+ 
+-        can_dlc |= can_len2dlc(cf->len) & IFIFD_TXFIFO_DLC;
++        can_dlc |= can_fd_len2dlc(cf->len) & IFIFD_TXFIFO_DLC;
+ 
+         if (skb->len == CANFD_MTU) {
+                 can_dlc |= IFIFD_TXFIFO_EDL;
+@@ -515,7 +514,8 @@ static int ixx_pas_ib_fd_xxx_start_xmit(struct sk_buff *skb,
+                         can_free_echo_skb(priv->netdev, priv->frn_write - 1);
+                 }
+ 
+-                can_put_echo_skb(skb, priv->netdev, priv->frn_write - 1);
++		size_t frame_len = can_skb_get_frame_len(skb);
++                can_put_echo_skb(skb, priv->netdev, priv->frn_write - 1, frame_len);
+                 can_dlc |= ((priv->frn_write << IFIFD_TXFIFO_FRN_S)
+                                 & IFIFD_TXFIFO_FRN);
+ 
+diff --git a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_passive.c b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_passive.c
+index 2ff247b..28887f4 100644
+--- a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_passive.c	
++++ b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_passive.c	
+@@ -602,7 +602,8 @@ static int ixx_pas_ib_xxx_start_xmit(struct sk_buff *skb,
+                         can_free_echo_skb(priv->netdev, priv->frn_write - 1);
+                 }
+ 
+-                can_put_echo_skb(skb, priv->netdev, priv->frn_write - 1);
++                size_t frame_len = can_skb_get_frame_len(skb);
++                can_put_echo_skb(skb, priv->netdev, priv->frn_write - 1, frame_len);
+                 can_dlc |= (priv->frn_write << IFI_R0_FRN_S) & IFI_R0_WR_FRN;
+ 
+                 priv->frn_write++;
+diff --git a/SocketCAN - Linux (V1.1.148.0)/usb-to-can_socketcan/ixx_usb_core.c b/SocketCAN - Linux (V1.1.148.0)/usb-to-can_socketcan/ixx_usb_core.c
+index 696e5d4..3453cf3 100644
+--- a/SocketCAN - Linux (V1.1.148.0)/usb-to-can_socketcan/ixx_usb_core.c	
++++ b/SocketCAN - Linux (V1.1.148.0)/usb-to-can_socketcan/ixx_usb_core.c	
+@@ -239,7 +239,7 @@ static void ixxat_usb_write_bulk_callback(struct urb *urb)
+         }
+ 
+         /* should always release echo skb and corresponding context */
+-        can_get_echo_skb(netdev, context->echo_index);
++        can_free_echo_skb(netdev, context->echo_index);
+         context->echo_index = IXXAT_USB_MAX_TX_URBS;
+ 
+         /* do wakeup tx queue in case of success only */
+@@ -261,6 +261,7 @@ static netdev_tx_t ixxat_usb_ndo_start_xmit(struct sk_buff *skb,
+         u8 *obuf;
+         int i, err;
+         size_t size = dev->adapter->tx_buffer_size;
++        size_t frame_len;
+ 
+         if (can_dropped_invalid_skb(netdev, skb))
+                 return NETDEV_TX_OK;
+@@ -298,7 +299,8 @@ static netdev_tx_t ixxat_usb_ndo_start_xmit(struct sk_buff *skb,
+ 
+         usb_anchor_urb(urb, &dev->tx_submitted);
+ 
+-        can_put_echo_skb(skb, netdev, context->echo_index);
++        frame_len = can_skb_get_frame_len(skb);
++        can_put_echo_skb(skb, netdev, context->echo_index, frame_len);
+ 
+         atomic_inc(&dev->active_tx_urbs);
+ 
+diff --git a/SocketCAN - Linux (V1.1.148.0)/usb-to-can_socketcan/ixx_usb_fd.c b/SocketCAN - Linux (V1.1.148.0)/usb-to-can_socketcan/ixx_usb_fd.c
+index 83db4e2..b0d09f6 100644
+--- a/SocketCAN - Linux (V1.1.148.0)/usb-to-can_socketcan/ixx_usb_fd.c	
++++ b/SocketCAN - Linux (V1.1.148.0)/usb-to-can_socketcan/ixx_usb_fd.c	
+@@ -620,13 +620,9 @@ static int ixx_usbfd_handle_canmsg(struct ixx_usb_device *dev,
+ 			can_frame->flags |= CANFD_ESI;
+ 
+ 		can_frame->len =
+-			can_dlc2len(
+-			get_canfd_dlc((flags & IXXAT_USBFD_MSG_FLAGS_DLC)
+-			>> 16));
+-	}	else {
+-		can_frame->len =
+-			get_canfd_dlc((flags & IXXAT_USBFD_MSG_FLAGS_DLC)
+-			>> 16);
++			can_fd_dlc2len((flags & IXXAT_USBFD_MSG_FLAGS_DLC) >> 16);
++	} else {
++		can_frame->len = (flags & IXXAT_USBFD_MSG_FLAGS_DLC) >> 16;
+ 	}
+ 
+ 	if (flags & IXXAT_USBFD_MSG_FLAGS_OVR) {
+@@ -894,7 +890,7 @@ static int ixx_usbfd_encode_msg(struct ixx_usb_device *dev, struct sk_buff *skb,
+ 			can_msg.flags |= IXXAT_USBFD_MSG_FLAGS_FDR;
+ 	}
+ 
+-	can_msg.flags |= (can_len2dlc(cf->len) << 16) &
++	can_msg.flags |= (can_fd_len2dlc(cf->len) << 16) &
+ 		IXXAT_USBFD_MSG_FLAGS_DLC;
+ 
+ 	can_msg.flags = cpu_to_le32(can_msg.flags);

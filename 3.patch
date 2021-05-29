@@ -1,0 +1,22 @@
+commit 087687e986e89e19f7ccdb787a9d118faec5f307
+Author: Bruno Santos <brunomanuelsantos@tecnico.ulisboa.pt>
+Date:   Thu May 20 22:56:26 2021 +0100
+
+    Remove deprecated and unused kmap_types.h
+    
+    Fortunately this header was not actually used, so we can simply delete
+    the include. This header was removed upstream with commit
+    d7029e4549691ecaf1ead536d3322a00bda85659.
+
+diff --git a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_active.c b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_active.c
+index 16ed10d..00805dd 100644
+--- a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_active.c	
++++ b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_active.c	
+@@ -32,7 +32,6 @@
+ #include <linux/firmware.h>
+ #include <linux/time.h>
+ 
+-#include <asm-generic/kmap_types.h>
+ #include <asm-generic/errno.h>
+ 
+ #include <stdarg.h>

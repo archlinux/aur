@@ -1,0 +1,73 @@
+commit a05c12b1440010cc5462bb6ee8e7809709610852
+Author: Bruno Santos <brunomanuelsantos@tecnico.ulisboa.pt>
+Date:   Thu May 20 22:54:17 2021 +0100
+
+    Remove unimplemented MODULE_SUPPORTED_DEVICE
+    
+    Echoing the upstream commit 6417f03132a6952cd17ddd8eaddbac92b61b17e0
+
+diff --git a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_active.c b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_active.c
+index 1e698c8..16ed10d 100644
+--- a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_active.c	
++++ b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_active.c	
+@@ -40,8 +40,6 @@
+ #include "ififd.h"
+ #include "ixx_pci_core.h"
+ 
+-MODULE_SUPPORTED_DEVICE("IXXAT Automation GmbH CAN-IB2x0, CAN-IB4x0, CAN-IB6x0 and CAN-IB8x0 interfaces");
+-
+ #define IXX_FIRMWARE "ixx-can-ib-1.9.3.fw"
+ 
+ #define IXX_IFI_FIFOCMD    0x00
+diff --git a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_fd_passive.c b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_fd_passive.c
+index 7a3514f..def2ea6 100644
+--- a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_fd_passive.c	
++++ b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_fd_passive.c	
+@@ -35,8 +35,6 @@
+ 
+ #ifdef CANFD_CAPABLE
+ 
+-MODULE_SUPPORTED_DEVICE("IXXAT Automation GmbH CAN-IB5X0 and CAN-IB7X0 interfaces");
+-
+ /* IFI-CANFD internal clock (Hz) */
+ #define IFIFD_CANFD_CLOCK_HZ 80000000
+ 
+diff --git a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_passive.c b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_passive.c
+index fb08c03..2ff247b 100644
+--- a/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_passive.c	
++++ b/SocketCAN - Linux (V1.1.148.0)/can-ibxxx_socketcan/ixx_pci_ib_passive.c	
+@@ -33,8 +33,6 @@
+ #include "ifi.h"
+ #include "ixx_pci_core.h"
+ 
+-MODULE_SUPPORTED_DEVICE("IXXAT Automation GmbH CAN-IB1X0 and CAN-IB3X0 interfaces");
+-
+ /* IFI-CAN internal clock (Hz) */
+ #define IFI_CAN_CLOCK_HZ     40000000
+ 
+diff --git a/SocketCAN - Linux (V1.1.148.0)/usb-to-can_socketcan/ixx_usb_fd.c b/SocketCAN - Linux (V1.1.148.0)/usb-to-can_socketcan/ixx_usb_fd.c
+index db5c79e..83db4e2 100644
+--- a/SocketCAN - Linux (V1.1.148.0)/usb-to-can_socketcan/ixx_usb_fd.c	
++++ b/SocketCAN - Linux (V1.1.148.0)/usb-to-can_socketcan/ixx_usb_fd.c	
+@@ -33,8 +33,6 @@
+ 
+ #ifdef CANFD_CAPABLE
+ 
+-MODULE_SUPPORTED_DEVICE("IXXAT Automation GmbH USB-to-CAN FD");
+-
+ /* use ifi can fd clock due to internal bittiming calculations */
+ #define IFIFD_CRYSTAL_HZ	      80000000
+ 
+diff --git a/SocketCAN - Linux (V1.1.148.0)/usb-to-can_socketcan/ixx_usb_v2.c b/SocketCAN - Linux (V1.1.148.0)/usb-to-can_socketcan/ixx_usb_v2.c
+index 3fe639c..10bae2a 100644
+--- a/SocketCAN - Linux (V1.1.148.0)/usb-to-can_socketcan/ixx_usb_v2.c	
++++ b/SocketCAN - Linux (V1.1.148.0)/usb-to-can_socketcan/ixx_usb_v2.c	
+@@ -31,8 +31,6 @@
+ 
+ #include "ixx_usb_core.h"
+ 
+-MODULE_SUPPORTED_DEVICE("IXXAT Automation GmbH USB-to-CAN V2");
+-
+ /* use sja 1000 clock due to internal bittiming calculations */
+ #define SJA1000_CRYSTAL_HZ	      8000000
+ 
