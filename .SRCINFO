@@ -1,14 +1,14 @@
 pkgbase = smaug
 	pkgdesc = A tool to manage your DragonRuby Game Toolkit projects
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://smaug.dev/
 	arch = x86_64
 	license = AGPL3
 	depends = gcc-libs
 	depends = openssl
 	depends = zlib
-	source = https://github.com/ereborstudios/smaug/releases/download/v0.3.1/smaug-linux
+	source = smaug-0.3.1::https://github.com/ereborstudios/smaug/releases/download/v0.3.1/smaug-linux
 	sha512sums = bef026f26ef1680d1ceeabe0b2f0d3855d5978d7a14e6a8a99784efa5a44f412ef167071813150bcd4dd1a88563b1cd870f8A6D7308143BEC7DA8560556fd744
 
 pkgname = smaug
