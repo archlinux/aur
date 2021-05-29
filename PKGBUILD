@@ -26,6 +26,6 @@ package() {
     cd "$srcdir/geocam-bin"
     install -m644 sensor_ov2710_mayfield_le.bin gc6500_ddrboot_fw.img config.json "$pkgdir/usr/lib/$pkgname"
     install -m755 mxcam "$pkgdir/usr/lib/$pkgname"
-    install -dm755 "$pkgdir/usr/lib/udev.d/rules"
-    install -m644 "$srcdir/83-geocam.rules" "$pkgdir/usr/lib/udev.d/rules/83-geocam.rules"
+    install -dm755 "$pkgdir/usr/lib/udev/rules.d"
+    install -m644 "$srcdir/83-geocam.rules" "$pkgdir/usr/lib/udev/rules.d/83-geocam.rules"
 }
