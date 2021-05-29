@@ -1,7 +1,7 @@
 pkgbase = notion-app-enhanced
 	pkgdesc = The all-in-one workspace for your notes and tasks, but enhanced
-	pkgver = 2.0.16_b417882
-	pkgrel = 2
+	pkgver = 2.0.16
+	pkgrel = 3
 	url = https://www.notion.so/desktop
 	arch = i686
 	arch = x86_64

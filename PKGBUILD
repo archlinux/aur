@@ -3,8 +3,8 @@
 pkgname=notion-app-enhanced
 notion_ver=2.0.16
 enhancer_commit=b417882
-pkgver="${notion_ver}_${enhancer_commit}"
-pkgrel=2
+pkgver="${notion_ver}"
+pkgrel=3
 pkgdesc="The all-in-one workspace for your notes and tasks, but enhanced"
 arch=('i686' 'x86_64')
 url="https://www.notion.so/desktop"
