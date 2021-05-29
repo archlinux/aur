@@ -1,14 +1,14 @@
 pkgbase = gitlab-cli-bin
 	pkgdesc = Gitlab command line
-	pkgver = 3.7.3
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/makkes/gitlab-cli
 	arch = x86_64
 	license = Apache
-	source = https://github.com/makkes/gitlab-cli/releases/download/v3.7.3/gitlab_v3.7.3_linux_amd64
-	source = https://github.com/makkes/gitlab-cli/archive/v3.7.3.zip
-	sha1sums = 9637c5d098ad3336a6673d92561e43df16562230
-	sha1sums = c93138165c6a4ff441474cf597a4cdb2f7427066
+	source = https://github.com/makkes/gitlab-cli/releases/download/v4.0.0/gitlab_v4.0.0_linux_amd64
+	source = https://github.com/makkes/gitlab-cli/archive/v4.0.0.zip
+	sha1sums = c558e60e0114af04694a0f373fd6c99b8588f696
+	sha1sums = f0febec34984984cf5ab1e275c2f2a2042f64890
 
 pkgname = gitlab-cli-bin
 

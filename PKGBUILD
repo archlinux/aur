@@ -11,7 +11,7 @@ source=(
 	"${url}/releases/download/v${pkgver}/gitlab_v${pkgver}_linux_amd64"
 	"${url}/archive/v$pkgver.zip"
 )
-sha1sums=('c558e60e0114af04694a0f373fd6c99b8588f696
+sha1sums=('c558e60e0114af04694a0f373fd6c99b8588f696'
           'f0febec34984984cf5ab1e275c2f2a2042f64890')
 
 package() {
