@@ -4,7 +4,7 @@
 
 pkgname=whalebird-bin
 
-pkgver=4.4.0
+pkgver=4.4.1
 pkgrel=1
 
 pkgdesc='Electron based multi-platform client for Mastodon, Misskey & Pleroma'
