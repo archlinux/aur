@@ -1,7 +1,7 @@
 # Maintainer: Roman Vasilev <2rvasilev@live.ru>
 
 pkgname=zoomdl
-pkgver=2021.03.28
+pkgver=2021.05.27
 pkgrel=1
 epoch=
 pkgdesc="Download Zoom recorded meetings easily"
