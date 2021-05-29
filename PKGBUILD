@@ -1,12 +1,12 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=checkmake
 pkgver=0.1.0.47
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental linter/analyzer for makefiles"
 arch=('any')
 url="https://github.com/mrtazz/checkmake"
 license=('MIT')
-makedepends=('git' 'go')
+makedepends=('git' 'go' 'pandoc')
 conflicts=('checkmake-git')
 source=("git+https://github.com/mrtazz/checkmake.git#commit=575315c")
 sha256sums=('SKIP')
@@ -17,6 +17,8 @@ build(){
     export CGO_CFLAGS="$CFLAGS"
     export CGO_CXXFLAGS="$CXXFLAGS"
     export CGO_CPPFLAGS="$CPPFLAGS"
+    export BUILDER_NAME="${BUILDER_NAME:-$(git config user.name || echo makepkg)}"
+    export BUILDER_EMAIL="${BUILDER_EMAIL:-$(git config user.email || echo makepkg)}"
     make EXT_LDFLAGS="-linkmode external" GOFLAGS="-buildmode=pie -trimpath"
 }
 
