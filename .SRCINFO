@@ -1,7 +1,7 @@
 pkgbase = prisma-studio-appimage
-	pkgdesc = Description of my project
+	pkgdesc = The easiest way to explore and manipulate your data in all of your Prisma projects.
 	pkgver = 0.394.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.prisma.io/studio
 	arch = x86_64
 	license = Apache

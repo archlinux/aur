@@ -4,8 +4,8 @@ _pkgname=prisma-studio
 
 pkgname="${_pkgname}"-appimage
 pkgver=0.394.0
-pkgrel=3
-pkgdesc="Description of my project"
+pkgrel=4
+pkgdesc="The easiest way to explore and manipulate your data in all of your Prisma projects."
 arch=('x86_64')
 url="https://www.prisma.io/studio"
 license=('Apache')
