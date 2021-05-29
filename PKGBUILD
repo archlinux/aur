@@ -3,7 +3,7 @@
 
 _pkgname=hydrogen
 pkgname="${_pkgname}-git"
-pkgver=1.0.0.r203.gc4982c6d
+pkgver=1.1.0.beta1.r31.gacd1b9f7
 pkgrel=1
 pkgdesc="An advanced drum machine (git version)"
 arch=('x86_64')
@@ -12,8 +12,8 @@ groups=('pro-audio')
 url="https://github.com/hydrogen-music/hydrogen"
 depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'qt5-base' 'qt5-xmlpatterns')
 makedepends=('git' 'alsa-lib' 'cmake' 'jack' 'ladspa' 'libarchive' 'liblo'
-             'liblrdf' 'libpulse' 'libsndfile' 'portaudio' 'portmidi' 'python'
-             'qt5-tools' 'docbook-xml' 'docbook-sgml' 'docbook-utils'
+             'liblrdf' 'libpulse' 'libsndfile' 'libxml2' 'portaudio' 'portmidi'
+             'python' 'qt5-tools' 'docbook-xml' 'docbook-sgml' 'docbook-utils'
              'docbook-xsl' 'poxml' 'xmlto')
 optdepends=('new-session-manager: for session management')
 source=("${_pkgname}"::'git://github.com/hydrogen-music/hydrogen.git'
@@ -23,7 +23,7 @@ provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}")
 conflicts=("${_pkgname}")
 md5sums=('SKIP'
          'SKIP'
-         '67122f71e3be7546d0b483f6fc923b19')
+         'dac93731dd33285ebd129eae60161337')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -70,9 +70,11 @@ build() {
     make
   # build html manual & tutorial
   cd "${srcdir}/${_pkgname}/data/doc"
-  make
+  msg2 "Making manual..."
+  make -j1
   # update translations
   cd "${srcdir}/${_pkgname}/data/i18n"
+  msg2 "Updating translations..."
   ./updateTranslations.sh
 }
 
@@ -90,8 +92,9 @@ package() {
   # install html manual & tutorial
   cd "${srcdir}/${_pkgname}/data/doc"
   install -Dm644 *.html -t "${pkgdir}/usr/share/${_pkgname}/data/doc"
-  install -Dm644 img/*.png img/*.h2song -t "${pkgdir}/usr/share/${_pkgname}/data/doc/img"
-  install -Dm644 img/nl/*.png -t "${pkgdir}/usr/share/${_pkgname}/data/doc/img/nl"
+  install -Dm644 *.ods -t "${pkgdir}/usr/share/${_pkgname}/data/doc"
+  install -Dm644 img/*.png -t "${pkgdir}/usr/share/${_pkgname}/data/doc/img"
+  install -Dm644 img/admonitions/*.svg -t "${pkgdir}/usr/share/${_pkgname}/data/doc/img/admonitions"
   install -Dm644 img_tutorial/*.png -t "${pkgdir}/usr/share/${_pkgname}/data/doc/img_tutorial"
 }
 
