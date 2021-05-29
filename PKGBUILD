@@ -1,7 +1,7 @@
 # Maintainer Xuanwo <xuanwo@archlinucn.org>
 pkgname=clickup
 pkgver=2.0.22
-pkgrel=3
+pkgrel=4
 pkgdesc="Desktop app for clickup.com"
 arch=('x86_64')
 url="https://clickup.com"
@@ -15,7 +15,7 @@ prepare() {
   rm -rf squashfs-root
   chmod +x $_filename
   ./$_filename --appimage-extract
-  sed -i -e "s|Exec=.\+|Exec=/opt/$_filename %U|" squashfs-root/clickup-desktop.desktop
+  sed -i -e "s|Exec=.\+|Exec=/opt/${pkgname}/$_filename %U|" squashfs-root/clickup-desktop.desktop
 }
 
 package() {
