@@ -30,6 +30,7 @@ pkgbase = retroshare
 	source = openssl-894da2fb7ed5d314ee5c2fc9fd2d9b8b74111596.tar.gz::https://github.com/corvusoft/openssl-dependency/archive/894da2fb7ed5d314ee5c2fc9fd2d9b8b74111596.tar.gz
 	source = udp-discovery-cpp-f3a3103a6c52e5707629e8d0a7e279a7758fe845.tar.gz::https://github.com/truvorskameikin/udp-discovery-cpp/archive/f3a3103a6c52e5707629e8d0a7e279a7758fe845.tar.gz
 	source = fix_icon_path.patch
+	source = fix_create_directories.patch
 	sha256sums = c545b9249ac7dbfef72a2d636bc0f8b729c7ce05f21a54dd9284b2a387592d4a
 	sha256sums = e01389d3f0481458e14861ee33abc2f7aec3a382bd70e91dee495ac6e943d403
 	sha256sums = a4a47becc545c88724fa831617e628c66503d5ef7faf235c7c7237611230f59f
@@ -37,6 +38,7 @@ pkgbase = retroshare
 	sha256sums = d5e94ef0fd5aa9168080cc3c086093443964b582292c91519d391db8ac4065b4
 	sha256sums = ec00c4da0d43769351ff94cef81b30afe0dd1932a80ded497a338b2f2364d232
 	sha256sums = 724f55edb3aa5ae34abfcba341cdecf3d6f5095d1d7018de4e254ae5627c426f
+	sha256sums = 1019d25aa0f6d467fcd1e67c15acb5e11a44f97b328385b750b061decdcdf6a3
 
 pkgname = retroshare
 

@@ -1,0 +1,41 @@
+diff --git a/libretroshare/src/util/rsdir.cc b/libretroshare/src/util/rsdir.cc
+index 8556b8198..0277762d8 100644
+--- a/libretroshare/src/util/rsdir.cc
++++ b/libretroshare/src/util/rsdir.cc
+@@ -528,7 +528,7 @@ bool RsDirUtil::checkCreateDirectory(const std::string& dir)
+ 	return true;
+ }
+ 
+-#if __cplusplus < 201703L
++//#if __cplusplus < 201703L
+ bool std::filesystem::create_directories(const std::string& path)
+ {
+ 	for( std::string::size_type lastIndex = 0; lastIndex < std::string::npos;
+@@ -544,7 +544,7 @@ bool std::filesystem::create_directories(const std::string& path)
+ 	}
+ 	return true;
+ }
+-#endif // __cplusplus < 201703L
++//#endif // __cplusplus < 201703L
+ 
+ std::string RsDirUtil::removeSymLinks(const std::string& path)
+ {
+diff --git a/libretroshare/src/util/rsdir.h b/libretroshare/src/util/rsdir.h
+index 50e636541..af8e59509 100644
+--- a/libretroshare/src/util/rsdir.h
++++ b/libretroshare/src/util/rsdir.h
+@@ -153,7 +153,7 @@ std::string makePath(const std::string &path1, const std::string &path2);
+ RS_SET_CONTEXT_DEBUG_LEVEL(1);
+ }
+ 
+-#if __cplusplus < 201703L
++//#if __cplusplus < 201703L
+ namespace std
+ {
+ namespace filesystem
+@@ -161,4 +161,4 @@ namespace filesystem
+ bool create_directories(const std::string& path);
+ }
+ }
+-#endif // __cplusplus < 201703L
++//#endif // __cplusplus < 201703L

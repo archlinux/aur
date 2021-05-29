@@ -51,7 +51,8 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/retroshare/${pkgname}/a
         "catch-${_catch_cid}.tar.gz::https://github.com/corvusoft/catch-dependency/archive/${_catch_cid}.tar.gz"
         "openssl-${_openssl_cid}.tar.gz::https://github.com/corvusoft/openssl-dependency/archive/${_openssl_cid}.tar.gz"
         "udp-discovery-cpp-${_udpdiscoverycpp_cid}.tar.gz::https://github.com/truvorskameikin/udp-discovery-cpp/archive/${_udpdiscoverycpp_cid}.tar.gz"
-        "fix_icon_path.patch")
+        "fix_icon_path.patch"
+        "fix_create_directories.patch")
 
 sha256sums=('c545b9249ac7dbfef72a2d636bc0f8b729c7ce05f21a54dd9284b2a387592d4a'
             'e01389d3f0481458e14861ee33abc2f7aec3a382bd70e91dee495ac6e943d403'
@@ -59,7 +60,8 @@ sha256sums=('c545b9249ac7dbfef72a2d636bc0f8b729c7ce05f21a54dd9284b2a387592d4a'
             'df455d92de685af7798c2e18811a5e86f95777e8c022ab9b13f3b2b3d134a16d'
             'd5e94ef0fd5aa9168080cc3c086093443964b582292c91519d391db8ac4065b4'
             'ec00c4da0d43769351ff94cef81b30afe0dd1932a80ded497a338b2f2364d232'
-            '724f55edb3aa5ae34abfcba341cdecf3d6f5095d1d7018de4e254ae5627c426f')
+            '724f55edb3aa5ae34abfcba341cdecf3d6f5095d1d7018de4e254ae5627c426f'
+            '1019d25aa0f6d467fcd1e67c15acb5e11a44f97b328385b750b061decdcdf6a3')
 
 # Add missing dependencies if needed
 [[ "$_plugin_voip" == 'true' ]] && depends=(${depends[@]} 'ffmpeg' 'opencv3-opt')
@@ -86,6 +88,7 @@ prepare() {
 	cd "${srcdir}"/${pkgname}-${pkgver}
 
 	patch -p1 --ignore-whitespace -i "${srcdir}"/fix_icon_path.patch
+        patch -p1 --ignore-whitespace -i "${srcdir}"/fix_create_directories.patch
 
 	[[ "$_plugin_voip" == 'true' ]] && sed -i -e 's/PKGCONFIG += opencv/PKGCONFIG += opencv3/g' plugins/VOIP/VOIP.pro || true
 
