@@ -1,6 +1,6 @@
 pkgbase = gpg-tui
 	pkgdesc = A terminal user interface for GnuPG
-	pkgver = 0.1.2
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/orhun/gpg-tui
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = gpg-tui
 	makedepends = python
 	depends = libx11
 	depends = gpgme
-	source = gpg-tui-0.1.2.tar.gz::https://github.com/orhun/gpg-tui/archive/v0.1.2.tar.gz
-	sha512sums = 3412bc10c8a5777d160f1f6a9d68c9184285b02df7c81a40956ef865ccd093e3c942896bf8fe507fbaeb89aba97afa27a424637b67a71654bd6f6b383073088c
+	source = gpg-tui-0.1.4.tar.gz::https://github.com/orhun/gpg-tui/archive/v0.1.4.tar.gz
+	sha512sums = 8911565dfa760149db6c187a1dc941bc7dbf726f5da85bf383c6fff11b0c0f7d1efeb6e8149e8820d90f3f07c86f349c94db90078785b56ad8f90d2497e023bf
 
 pkgname = gpg-tui
 

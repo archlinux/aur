@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=gpg-tui
-pkgver=0.1.2
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A terminal user interface for GnuPG"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('libx11' 'gpgme')
 makedepends=('rust' 'python')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('3412bc10c8a5777d160f1f6a9d68c9184285b02df7c81a40956ef865ccd093e3c942896bf8fe507fbaeb89aba97afa27a424637b67a71654bd6f6b383073088c')
+sha512sums=('8911565dfa760149db6c187a1dc941bc7dbf726f5da85bf383c6fff11b0c0f7d1efeb6e8149e8820d90f3f07c86f349c94db90078785b56ad8f90d2497e023bf')
 
 prepare() {
   cd "$pkgname-$pkgver"
