@@ -1,0 +1,19 @@
+pkgbase = gpg-tui-bin
+	pkgdesc = A terminal user interface for GnuPG
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/orhun/gpg-tui
+	arch = x86_64
+	license = MIT
+	depends = libx11
+	depends = gpgme
+	provides = gpg-tui
+	conflicts = gpg-tui
+	validpgpkeys = 14D49A4073C6899425D5315C1BC755D9FBD24068
+	source_x86_64 = https://github.com/orhun/gpg-tui/releases/download/v0.1.2/gpg-tui-0.1.2-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = https://github.com/orhun/gpg-tui/releases/download/v0.1.2/gpg-tui-0.1.2-x86_64-unknown-linux-gnu.tar.gz.sig
+	sha512sums_x86_64 = 390fd4d4454e116c9da63f4280a1e3aa73bab950323f8be19771faaf638872c259b9c354e71fcdf22b57ca705b2810e7263161cfe3ddb357fffc67760105365a
+	sha512sums_x86_64 = SKIP
+
+pkgname = gpg-tui-bin
+
