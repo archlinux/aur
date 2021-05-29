@@ -1,22 +1,33 @@
-# Maintainer: Tomatopaste <mafehling.git@gmail.com>
+# Maintainer: Marc Fehling <mafehling.git@gmail.com>
 pkgname=('python-jupyter-book')
 _pkgname=('jupyter-book')
 pkgver='0.10.2'
-pkgrel=1
-pkgdesc="Create books with Jupyter Notebooks and Jekyll."
+pkgrel=2
+pkgdesc="Build interactive, publication-quality documents from Jupyter Notebooks."
 url="https://github.com/executablebooks/jupyter-book"
 depends=('python'
-  'python-pytest'
-  'python-ruamel-yaml'
-  'python-pyaml'
-  'python-libsass'
-  'python-tqdm'
   'python-setuptools'
+  'python-click'
+  'python-docutils'
+  'python-jsonschema'
+  'python-jupyterbook-latex'
   'python-jupytext'
-  'jupyter-nbformat'
+  'python-linkify-it-py'
+  'python-myst-nb'
   'jupyter-nbconvert'
-  'python-jupyter_client'
-  'python-ipykernel')
+  'jupyter-nbformat'
+  'python-pyaml'
+  'python-sphinx'
+  'python-sphinx-comments'
+  'python-sphinx-copybutton'
+  'python-sphinx-external-toc'
+  'python-sphinx-panels'
+  'python-sphinx-thebe'
+  'python-sphinx-book-theme'
+  'python-sphinx-togglebutton'
+  'python-sphinxcontrib-bibtex'
+  'python-importlib-metadata'
+)
 checkdepends=()
 makedepends=()
 license=('BSD')
