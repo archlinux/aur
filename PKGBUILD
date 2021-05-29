@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=python-cligj
 _pyname=cligj
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Click params for command line interfaces to GeoJSON"
 arch=('any')
@@ -22,4 +22,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
-sha256sums=('b2f1f7247d59a5387bd3013a08b9ed6829e96fafa4a6e6292341efdb46fe6220')
+sha256sums=('a4bc13d623356b373c2c27c53dbd9c68cae5d526270bfa71f6c6fa69669c6b27')
