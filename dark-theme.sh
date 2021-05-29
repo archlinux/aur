@@ -93,5 +93,5 @@ elif [ -n "$SWAYSOCK" ]; then
   swaybg --mode center $BG_SWAY &
 else
   echo "No supported window manager."
-  echo "Not setting background"
+  echo "Not setting background."
 fi
