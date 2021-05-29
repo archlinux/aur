@@ -1,6 +1,6 @@
 pkgbase = lunarclient
 	pkgdesc = PvP Modpack for Minecraft 1.7, 1.8, 1.12, 1.15 and 1.16
-	pkgver = 2.7.2
+	pkgver = 2.7.3
 	pkgrel = 1
 	url = https://lunarclient.com
 	arch = x86_64
