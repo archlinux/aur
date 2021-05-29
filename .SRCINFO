@@ -1,7 +1,7 @@
 pkgbase = vcsh-git
 	pkgdesc = Version Control System for $HOME that manages multiple Git repositories
 	pkgver = 1.20190621.r130.gfb7fde8
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/RichiH/vcsh
 	arch = any

@@ -6,7 +6,7 @@
 
 pkgname=vcsh-git
 pkgver=1.20190621.r130.gfb7fde8
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Version Control System for $HOME that manages multiple Git repositories'
 arch=(any)
@@ -34,7 +34,7 @@ prepare() {
 
 build() {
   cd "$pkgname"
-  ./configure
+  ./configure --prefix /usr
   make
 }
 
