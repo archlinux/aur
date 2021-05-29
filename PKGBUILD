@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=jakartaee9-doc
-pkgver=9.0.0
+pkgver=9.1.0
 pkgrel=1
 pkgdesc="Jakarta EE 9 documentation."
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/eclipse-ee4j/jakartaee-api"
 license=('EPL')
 makedepends=('java-environment>=8' 'maven')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('a89e42cdc806963a5b564d7230dabc35f819c5448a3fca7d27ffcf5cf45b3f45')
+sha256sums=('6e76bd0d9e895709977f058bf71beb355d5b117028b626e121db8793e3ed14ff')
 
 build() {
 	cd "jakartaee-api-${pkgver}"
