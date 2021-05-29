@@ -8,5 +8,6 @@
 !ventoy
 !ventoyweb
 !ventoy-persistent
+!ventoy-extend-persistent
 !sanitize.patch
 !ventoy.install

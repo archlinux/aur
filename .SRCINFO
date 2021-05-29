@@ -1,6 +1,6 @@
 pkgbase = ventoy-bin
 	pkgdesc = A new multiboot USB solution (Binary)
-	pkgver = 1.0.44
+	pkgver = 1.0.45
 	pkgrel = 1
 	url = http://www.ventoy.net/
 	install = ventoy.install
@@ -14,15 +14,17 @@ pkgbase = ventoy-bin
 	depends = lib32-glibc
 	provides = ventoy
 	conflicts = ventoy
-	source = https://github.com/ventoy/Ventoy/releases/download/v1.0.44/ventoy-1.0.44-linux.tar.gz
+	source = https://github.com/ventoy/Ventoy/releases/download/v1.0.45/ventoy-1.0.45-linux.tar.gz
 	source = ventoy
 	source = ventoyweb
 	source = ventoy-persistent
+	source = ventoy-extend-persistent
 	source = sanitize.patch
-	sha256sums = fd3a3d6e1fd6790d2b2d3937276c5c1ef1c85778d53c131cd9f5ca3e8ea7628e
+	sha256sums = 7fadb5ed661054fbd9c3f5572131a49c2d97501052e47cfbc4e6de9d94904847
 	sha256sums = 1ad5d314e02b84127a5a59f3871eb1d28617218cad07cde3eeddcac391473000
 	sha256sums = c3d4463a878a89d96e5f0bc4e1a43e48f27af5965bd4c977567695d7cf91fe5f
 	sha256sums = 51029745da197dded6e007aee3f30f7ea1aa6e898172a6ea176cc2f3a842d0ff
+	sha256sums = 00dec31721a052d5e6c928e3b38b870959bdb42188f34717898d99c0cef950df
 	sha256sums = d250816de0903a5fc5364ee25914a06b1b1595bcfc72dac84ad016e1d30727c4
 
 pkgname = ventoy-bin
