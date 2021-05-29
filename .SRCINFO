@@ -1,7 +1,7 @@
 pkgbase = mod_perl
 	pkgdesc = Apache module that embeds the Perl interpreter within the server
 	pkgver = 2.0.11
-	pkgrel = 4
+	pkgrel = 5
 	url = http://perl.apache.org/
 	arch = i686
 	arch = x86_64
@@ -16,9 +16,11 @@ pkgbase = mod_perl
 	options = !emptydirs
 	source = http://apache.org/dist/perl/mod_perl-2.0.11.tar.gz
 	source = http://apache.org/dist/perl/mod_perl-2.0.11.tar.gz.asc
+	source = perl-5-33-7.patch
 	validpgpkeys = 2026E6A4A6A4483E61BA6F3FAB34BA0040E92ECE
 	sha256sums = ca2a9e18cdf90f9c6023e786369d5ba75e8dac292ebfea9900c29bf42dc16f74
 	sha256sums = SKIP
+	sha256sums = 9df55e5c5d55771687019645c651204fb62cabe24b904a31197a78cdf9332a21
 
 pkgname = mod_perl
 
