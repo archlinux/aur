@@ -2,7 +2,7 @@
 # Contributor: Samadi van Koten <me at vktec dot co dot uk>
 
 pkgname=ircd-hybrid
-pkgver=8.2.37
+pkgver=8.2.38
 pkgrel=1
 pkgdesc='A lightweight, high-performance internet relay chat daemon.'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ircd-hybrid/ircd-hybrid/arc
 conflicts=("ircd")
 provides=("ircd")
 backup=("etc/ircd-hybrid/ircd.conf")
-sha512sums=('bb5e6aa6e02cd99920ceea53c4c73968eabedec95fbfe56d22745603902ec1e4e13ca7643c011ff056ef0040e3b9978169a955f787a52507768ada7a8ba0a767'
+sha512sums=('6d7397d5be081e4f38e91cbf0b456a7891e752acf8a7897b725ee31d0bbc93f0b56d2892be9447211b2d5cdc8f2543cf89cedcda919c36bb48c36859ecce7e80'
             'cebd20d53d7e289ebfebaf5944bfb9a22a7dc6b013681157b4b254d86f917b9fc76a7d5100fe99c5cce74db2a96417c1f081df39b41b35860dc87348f07c2b02'
             'db9efc53012993577b4f5510898c788c7a70de9348d66e6b1a6826d519f47ca2a28689a60c3e6b5a30f33b3b4af058f4c2cca5f89ad02ef37f86286c0096314f'
             '41e50980eefa1f4b2cb39bc0ac6017f42ae5c8e9bc0ca3670432e181883b40b41765917c25fbd273af83c92237003ff955f69bef0851f8cf9eb84dfb384515fa'
@@ -63,4 +63,3 @@ package() {
 }
 
 # vim: ft=sh sw=2 ts=2 et
-
