@@ -1,3 +1,4 @@
 enhancer-query-selector-fix.patch text eol=lf
 enhancer-urlhelper-fix.patch text eol=lf
-package-rename-enhancer.patch text eol=crlf
+enhancer-add-path.patch text eol=tf
+notion-check-relativeurl.patch text eol=crlf
