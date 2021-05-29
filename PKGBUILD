@@ -19,7 +19,7 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 md5sums=('SKIP'
-         '9e0416ca838630153f18dfa349d12bfe')
+         '99e8513f52742641dd89a45b473d5c93')
 
 package() {
     install -dm755 "$pkgdir/usr/lib/$pkgname/"

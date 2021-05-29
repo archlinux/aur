@@ -10,7 +10,7 @@ pkgbase = geocam-bin
 	source = git+https://github.com/digitalloggers/geocam-bin#commit=42e614edcffa4f9d4d796a08841207af9779d494
 	source = 83-geocam.rules
 	md5sums = SKIP
-	md5sums = 9e0416ca838630153f18dfa349d12bfe
+	md5sums = 99e8513f52742641dd89a45b473d5c93
 
 pkgname = geocam-bin
 
