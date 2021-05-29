@@ -1,14 +1,14 @@
 pkgbase = bilili
 	pkgdesc = bilibili video and danmaku downloader | B站视频、弹幕下载器
-	pkgver = 1.4.7
+	pkgver = 1.4.8
 	pkgrel = 1
 	url = https://github.com/SigureMo/bilili
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python-requests
-	source = https://pypi.io/packages/source/b/bilili/bilili-1.4.7.tar.gz
-	sha256sums = c8ce369ecf2b1579c39ee823803176a238d2c3d2e16a243a58bf4112d30bca53
+	source = https://pypi.io/packages/source/b/bilili/bilili-1.4.8.tar.gz
+	sha256sums = 9c74f3f8a4dd5eb5db4bb884cd8de9ba1c19d1c3b736589b0504e773050fe32e
 
 pkgname = bilili
 
