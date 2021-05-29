@@ -1,12 +1,13 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
-	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
-	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+pkgbase = waycorner
+	pkgdesc = Hot corners for Wayland. Waycorner allows you to create anchors on specified locations of your monitors and execute a command of your choice.
+	pkgver = 0.1.0
+	pkgrel = 2
+	url = https://github.com/AndreasBackx/waycorner
+	arch = any
+	license = MIT
+	makedepends = cargo
+	source = waycorner-0.1.0.tar.gz::https://github.com/AndreasBackx/waycorner/archive/0.1.0.tar.gz
+	sha256sums = 329b70cef12e476409bd542842bb77637f6ee31cb49553e6d1319efa0c17d65e
 
-pkgname = yarxi
+pkgname = waycorner
 
