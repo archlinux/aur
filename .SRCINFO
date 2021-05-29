@@ -1,6 +1,6 @@
 pkgbase = proton-ge-custom-bin
 	pkgdesc = A fancy custom distribution of Valves Proton with various patches
-	pkgver = 6.9_GE_1
+	pkgver = 6.9_GE_2
 	pkgrel = 1
 	url = https://github.com/GloriousEggroll/proton-ge-custom
 	changelog = changelog
@@ -30,9 +30,9 @@ pkgbase = proton-ge-custom-bin
 	conflicts = proton-ge-custom-stable-bin
 	options = !strip
 	backup = usr/share/steam/compatibilitytools.d/proton-ge-custom/user_settings.py
-	source = proton-ge-custom-6.9-GE-1_1.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/6.9-GE-1/Proton-6.9-GE-1.tar.gz
+	source = proton-ge-custom-6.9-GE-2_1.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/6.9-GE-2/Proton-6.9-GE-2.tar.gz
 	source = supplementary.tar.zst
-	sha512sums = 6d0139441ef094410c863d9c96c2b453b631f3cc61b4373d221062d798d7b8179fe4eed39b31257c1fd64baf8e62ed105419751769f6037f4764bcd793129254
+	sha512sums = ed7c85e73fceaa1e7f11b13be9a433bf2f426109f284d3a2a7278e0eb8f751a17adce76daa4f820189fe4c89ea6b517a89cb23d8c11954e40880f7cbcdbd9d59
 	sha512sums = 9925a9972a9bed9b9e71c2aa169db03eeb72307336c3ed004434397deb379b55eb13b249ca9c0b28f48dd5ea728a1ad32685b84e2dcab881ba428c2acb7bc58d
 
 pkgname = proton-ge-custom-bin

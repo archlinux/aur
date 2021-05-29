@@ -1,3 +1,7 @@
+Proton-6.9-GE-2 Released
+
+This build is a hotfix for Resident Evil Village (8)
+
 Proton-6.9-GE-1 Released
 
 -Removed patch that was causing a lot of the RE8 crashes. Stability should be a lot better now. You may still occasionally get crashes when first opening the game, or during loading, or while changing screen resolution. Apart from that I was able to get through all of the intro cutscenes up to the playable 'van' area (trying not to spoil the game here) at the beginning on both AMD and Nvidia . Nvidia still takes a while to load the game, but it should at least be playable now.
