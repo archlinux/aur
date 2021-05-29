@@ -12,14 +12,13 @@ license=('Apache')
 depends=('zlib' 'hicolor-icon-theme')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
+source=("https://raw.githubusercontent.com/prisma/prisma/master/LICENSE")
 source_x86_64=(
 "${_appimage}::https://github.com/prisma/studio/releases/download/v${pkgver}/Prisma-Studio.AppImage"
-"https://raw.githubusercontent.com/prisma/prisma/master/LICENSE"
 )
 noextract=("${_appimage}")
-sha256sums_x86_64=('b6f818461ddd77426414bd79829a501c096c0bb9c2b5225e717471ebb48fcb77'
-                   'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-
+sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
+sha256sums_x86_64=('b6f818461ddd77426414bd79829a501c096c0bb9c2b5225e717471ebb48fcb77')
 
 prepare() {
     chmod +x "${_appimage}"
