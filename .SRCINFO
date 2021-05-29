@@ -1,0 +1,15 @@
+pkgbase = smines-git
+	pkgdesc = Minesweeper for the terminal, using C and ncurses.
+	pkgver = r133.38f66f7
+	pkgrel = 1
+	url = https://github.com/BBaoVanC/smines
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = ncurses
+	provides = smines
+	conflicts = smines
+	source = git+https://github.com/BBaoVanC/smines.git
+	sha256sums = SKIP
+
+pkgname = smines-git
