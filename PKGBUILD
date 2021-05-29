@@ -4,7 +4,7 @@ _pkgname="zorin-icon-themes"
 pkgname="${_pkgname}"
 pkgdesc="The Zorin icon theme provided in a variety of color combinations"
 
-deb_pkgver="2.8.1"
+deb_pkgver="2.8.3"
 pkgver="${deb_pkgver}"
 pkgrel="1"
 
@@ -13,7 +13,7 @@ url="https://zorinos.com/"
 license=('GPL')
 conflicts=("${_pkgname}" "${_pkgname}-git")
 
-depends=("grub")
+depends=()
 optdepends=()
 
 source=(
