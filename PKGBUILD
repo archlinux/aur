@@ -1,7 +1,7 @@
 # Maintainer: Mythbusters123 (Adam Reisenauer <atr10605@hotmail.com>)
 # Original Maintainer: monosans
 
-pkgname=lunar-client
+pkgname=lunarclient
 _pkgname=lunarclient
 pkgver=2.7.2
 pkgrel=1
@@ -10,8 +10,8 @@ url=https://lunarclient.com
 arch=(x86_64)
 license=(unknown)
 depends=(fuse xorg-xrandr alsa-lib atk at-spi2-atk at-spi2-core avahi bzip2 cairo dbus e2fsprogs expat fontconfig freetype2 fribidi gcc-libs gdk-pixbuf2 glib2 glibc gmp gnutls graphite gtk3 harfbuzz keyutils krb5 libcap libcloudproviders libcups libdatrie libdrm libepoxy libffi libgcrypt libgpg-error libidn2 libjpeg-turbo libp11-kit libpng libtasn1 libthai libtiff libunistring libx11 libxau libxcb libxcomposite libxcursor libxdamage libxdmcp libxext libxfixes libxi libxinerama libxkbcommon libxrandr libxrender libxshmfence lz4 mesa nettle nspr nss pango pcre pixman systemd-libs util-linux-libs wayland xz zlib zstd)
-conflicts=(lunar-client)
-provides=(lunar-client)
+conflicts=(lunarclient)
+provides=(lunarclient)
 options=(!strip)
 _appimage="Lunar Client-${pkgver}.AppImage"
 source=("https://launcherupdates.lunarclientcdn.com/${_appimage}")
