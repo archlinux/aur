@@ -1,6 +1,6 @@
 pkgbase = ktextwidgets-git
 	pkgdesc = Advanced text editing widgets
-	pkgver = 5.79.0_r366.g2928501
+	pkgver = 5.83.0_r398.g93d3f80
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = ktextwidgets-git
 	makedepends = extra-cmake-modules-git
 	makedepends = doxygen
 	makedepends = qt5-tools
-	makedepends = qt5-doc
 	depends = kcompletion-git
 	depends = kconfigwidgets-git
 	depends = sonnet-git
