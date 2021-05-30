@@ -1,10 +1,10 @@
 # Merged with official ABS kde-cli-tools PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Antonio Rojas <nqn1976 @ gmail.com>
 
 pkgname=kde-cli-tools-git
-pkgver=5.21.80_r1826.g685fc49
+pkgver=5.22.80_r1845.gddccf63
 pkgrel=1
 pkgdesc="Tools based on KDE Frameworks 5 to better interact with the system"
 arch=($CARCH)
