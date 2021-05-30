@@ -3,7 +3,7 @@
 _pyname=oslo.cache
 _pycname=${_pyname/./-}
 pkgname=python-${_pycname}
-pkgver=2.7.0
+pkgver=2.8.0
 pkgrel=2
 pkgdesc="Cache storage for OpenStack projects."
 arch=(any)
@@ -45,9 +45,9 @@ checkdepends=(
 )
 options=('!emptydirs')
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('012c54f8779cd416792554a65cb6573c')
-sha256sums=('aad244c3cc38b86d610166bd2979e01acb59201f173d7069fa4a0a8bcb153520')
-sha512sums=('27cb541cb60247b69fc291278dce5c3828daa7914e2b9787882066c66ffa69629c0232ac7e3ad0388ddda414fe5c3d1ab52df075a3ac168c95751827408f1fb0')
+md5sums=('95800e23fe5896f7cf7bbf24cc0aa314')
+sha256sums=('df6719808835ec13d98c9cc2dcd99d7bb50d72755cf347f7299c663ffb76c2e8')
+sha512sums=('9eade48ccc56b6387e497b59dc72b59e9f9b76ae32931b696d7d312ec34fede64b31200afd6d755409207a966ff5cc9715a3f4f9881d64b0323ef03f6f250609')
 
 export PBR_VERSION=$pkgver
 
