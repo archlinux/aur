@@ -1,15 +1,15 @@
 # Merged with official ABS syntax-highlighting PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=syntax-highlighting-git
-pkgver=5.79.0_r1492.g064912cb
+pkgver=5.83.0_r1586.g09d72d8a
 pkgrel=1
 pkgdesc='Syntax highlighting engine for structured text and code'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(GPL2)
 depends=(qt5-base)
-makedepends=(git extra-cmake-modules-git qt5-xmlpatterns qt5-tools qt5-doc doxygen)
+makedepends=(git extra-cmake-modules-git qt5-xmlpatterns qt5-tools doxygen)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf5-git)
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  _ver="$(grep -m1 "set(KF5\?_VERSION" CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  _ver="$(grep -m1 'set(KF5\?_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
