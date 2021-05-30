@@ -1,10 +1,10 @@
 # Merged with official ABS kscreenlocker PKGBUILD by João, 2021/04/20 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Marcin Mikołajczak <me@mkljczk.pl>
 
 pkgname=kscreenlocker-git
-pkgver=5.21.80_r832.gd610b79
+pkgver=5.22.80_r850.g4913b97
 pkgrel=1
 pkgdesc='Library and components for secure lock screen architecture'
 arch=($CARCH)
