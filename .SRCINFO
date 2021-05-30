@@ -1,0 +1,13 @@
+pkgbase = avalonia-ilspy-bin
+	pkgdesc = Avalonia-based .NET Decompiler (port of ILSpy)
+	pkgver = 7.0
+	pkgrel = 1
+	url = https://github.com/icsharpcode/AvaloniaILSpy
+	arch = x86_64
+	depends = dotnet-runtime
+	provides = ilspy
+	source = avalonia-ilspy-bin-7.0.zip::https://github.com/icsharpcode/AvaloniaILSpy/releases/download/v7.0-rc1/linux-x64.zip
+	sha512sums = 5198eeb7afab66a1e004432a3af23962dba0d827fef37cbbfaba0870cc24a55a6a95e28bb6c78fbef4d2d870a82fe5c89cde91f762615e407d4387e64b8d624c
+
+pkgname = avalonia-ilspy-bin
+
