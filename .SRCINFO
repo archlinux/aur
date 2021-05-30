@@ -1,6 +1,6 @@
 pkgbase = akonadi-calendar-git
 	pkgdesc = Akonadi calendar integration
-	pkgver = 5.16.40_r1896.g2baafeb
+	pkgver = 5.17.40_r1939.gb9233c7
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64

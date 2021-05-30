@@ -1,9 +1,9 @@
 # Merged with official ABS akonadi-calendar PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=akonadi-calendar-git
-pkgver=5.16.40_r1896.g2baafeb
+pkgver=5.17.40_r1939.gb9233c7
 pkgrel=1
 pkgdesc="Akonadi calendar integration"
 arch=($CARCH)
