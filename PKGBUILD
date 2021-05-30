@@ -56,11 +56,13 @@ source=("${pkgname}_${pkgver}.tgz::https://github.com/alicevision/AliceVision/ar
         "MeshSDFilter::git+https://github.com/alicevision/MeshSDFilter.git#branch=av_develop"
         "nanoflann::git+https://github.com/alicevision/nanoflann.git"
         "cmake_cxx_std_14.patch"
+        "openexr3.patch"
 )
 sha256sums=('39dcf4bb0a7cb1d0ba234b4ec2de6d245a83ac21846585de3156b37b82d3066b'
             'SKIP'
             'SKIP'
-            'caf2bf06bd7c6a2387f01f312d94b649ef3e4363b18fcdf95986cd71a0d6c275')
+            'caf2bf06bd7c6a2387f01f312d94b649ef3e4363b18fcdf95986cd71a0d6c275'
+            'de9def936b143b6a95d8afc93e4673e8f8b0e434785b65c557353549efd95c1b')
 
 prepare() {
   cd "${srcdir}"/AliceVision-${pkgver}
@@ -70,6 +72,12 @@ prepare() {
   #fix missing submodule warning.
   mkdir src/dependencies/osi_clp/CoinUtils
   patch -Np1 -i"${srcdir}"/cmake_cxx_std_14.patch
+  #fix FindOpenEXR.cmake against openexr:3
+  patch -Np1 -i"${srcdir}"/openexr3.patch
+  #fix header relocation against openexr:3
+  grep -lR "#include.*OpenEXR/half.h"|xargs sed -i 's|OpenEXR/half|Imath/half|'
+  #fix gcc:11 headers regression
+  grep -lR "std::numeric_limits"|xargs sed -i '1 i\#include <limits>'
 }
 
 
