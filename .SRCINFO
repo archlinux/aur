@@ -1,6 +1,6 @@
 pkgbase = kldap-git
 	pkgdesc = LDAP access API for KDE
-	pkgver = 5.16.44_r815.ge924400
+	pkgver = 5.17.40_r856.g212285f
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = kldap-git
 	makedepends = kdoctools-git
 	depends = kcompletion-git
 	depends = kwallet-git
-	optdepends = kio-git: LDAP kio-gitslave
+	optdepends = kio-git: LDAP kioslave
 	provides = kldap
 	conflicts = kldap
 	source = git+https://github.com/KDE/kldap.git

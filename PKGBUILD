@@ -1,9 +1,9 @@
 # Merged with official ABS kldap PKGBUILD by João, 2021/01/31 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kldap-git
-pkgver=5.16.44_r815.ge924400
+pkgver=5.17.40_r856.g212285f
 pkgrel=1
 pkgdesc="LDAP access API for KDE"
 arch=($CARCH)
@@ -11,7 +11,7 @@ url="https://kontact.kde.org"
 license=(LGPL)
 groups=(kdepim-git)
 depends=(kcompletion-git kwallet-git)
-optdepends=('kio-git: LDAP kio-gitslave')
+optdepends=('kio-git: LDAP kioslave')
 makedepends=(git extra-cmake-modules-git kio-git kdoctools-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
