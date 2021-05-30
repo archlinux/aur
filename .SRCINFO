@@ -1,0 +1,22 @@
+pkgbase = aretext-bin
+	pkgdesc = [BETA] Minimalist text editor that never slows you down.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/aretext/aretext
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = GPL3
+	provides = aretext
+	provides = aretext-git
+	conflicts = aretext
+	conflicts = aretext-git
+	source_x86_64 = https://github.com/aretext/aretext/releases/download/v0.1.0/aretext_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0e71930a172eb2353baf868898535b8d3fc3e88e1449ee25e69af8d13ef81b25
+	source_i686 = https://github.com/aretext/aretext/releases/download/v0.1.0/aretext_0.1.0_linux_386.tar.gz
+	sha256sums_i686 = 5da097052a2727d9497be5dfe33d309e1978365928e6ce93459e8b108f14e5b3
+	source_aarch64 = https://github.com/aretext/aretext/releases/download/v0.1.0/aretext_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5d38ca55046becd933318740c1e51efb318e676dbb80cc750db27d7b56622612
+
+pkgname = aretext-bin
+
