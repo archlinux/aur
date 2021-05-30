@@ -1,0 +1,17 @@
+pkgbase = vim-sideways-git
+	pkgdesc = A Vim plugin to switch around function arguments in-place
+	pkgver = 0.4.0.r47.g9ce855a
+	pkgrel = 1
+	url = https://github.com/andrewradev/sideways.vim
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-sideways
+	conflicts = vim-sideways
+	source = vim-sideways-git::git+https://github.com/andrewradev/sideways.vim
+	sha256sums = SKIP
+
+pkgname = vim-sideways-git
+
