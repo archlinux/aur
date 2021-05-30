@@ -1,16 +1,15 @@
 # Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=breitbandmessung
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Die Breitbandmessung Desktop-App erlaubt es Ihnen, die tatsächliche Datenübertragungsrate Ihres Breitbandanschlusses zu messen. Weitere Informationen erhalten Sie unter https://breitbandmessung.de"
 arch=('x86_64')
 license=('unknown')
 url="https://breitbandmessung.de/"
 options=('!strip')
-
 source=("breitbandmessung-${pkgver}.deb::https://download.breitbandmessung.de/bbm/Breitbandmessung-linux.deb")
-sha256sums=("6f855990ba51de612151d2ba4473fa84f74b56cbf5824b260816ff7738d89b0c")
+sha256sums=("07073899891fb1cc4b07cb93a6d21d7eaee173244eb80ace49a110cde11460d1")
 depends=("net-tools")
 makedepends=("asar")
 
@@ -22,8 +21,8 @@ build() {
 
     cd "${_builddir}/opt/Breitbandmessung/resources/"
 
-    _unpatched="}return m.current={}"
-    _patched="}m.allowed=!0;return m.current={}"
+    _unpatched="}return p.current={}"
+    _patched="}p.allowed=!0;return p.current={}"
 
     asar e app.asar unpacked/
     sed -i "s/${_unpatched}/${_patched}/g" unpacked/build/static/js/*.js
