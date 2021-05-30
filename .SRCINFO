@@ -1,0 +1,18 @@
+pkgbase = samloader-git
+	pkgdesc = Download firmware for Samsung devices
+	pkgver = r33.15f0887
+	pkgrel = 1
+	url = https://github.com/nlscc/samloader
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-setuptools
+	depends = python-clint
+	depends = python-pycryptodomex
+	depends = python-pip
+	conflicts = samloader
+	source = git+https://github.com/nlscc/samloader.git
+	sha256sums = SKIP
+
+pkgname = samloader-git
+
