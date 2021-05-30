@@ -53,11 +53,11 @@ sha256sums=('45d5a43ef798d20313c78fa8a075be0c22055e39c8481eb53eabda81df901b31'
             '2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b'
             '82a85105fc33b92a84dabb7ed6725ccbb56f1075c11f9f3f43bb8ff724f88847'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
-source=("${source[@]}"
+source=(${source[@]}
         $_pkgname-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz
         chromium-drirc-disable-10bpc-color-configs.conf
         wayland-egl.patch)
-sha256sums=("${sha256sums[@]}"
+sha256sums=(${sha256sums[@]}
             'f93021dab9fd8496beb57a3defc90233258e7128c3141a1a9d9a0c45f29967e1'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             '34d08ea93cb4762cb33c7cffe931358008af32265fc720f2762f0179c3973574')
@@ -113,7 +113,7 @@ prepare() {
   patch -Np1 -i ../chromium-glibc-2.33.patch
 
   # Upstream fixes
-  patch -Np1 -i ../fix-crash-in-ThemeService.patch
+  #patch -Np1 -i ../fix-crash-in-ThemeService.patch
   patch -Np1 -i ../unbundle-use-char16_t-as-UCHAR_TYPE.patch
 
   # Revert addition of [[clang::nomerge]] attribute; not supported by clang 11
