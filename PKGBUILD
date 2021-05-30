@@ -1,15 +1,15 @@
 # Merged with official ABS plasma-workspace PKGBUILD by João, 2021/01/31 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgbase=plasma-workspace-git
 pkgname=(plasma-workspace-git plasma-wayland-session-git)
-pkgver=5.21.80_r10157.gaecbc037d
+pkgver=5.22.80_r10328.g46c784099
 pkgrel=1
 pkgdesc='KDE Plasma Workspace'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(knotifyconfig-git libksysguard-git ktexteditor-git libqalculate-git kde-cli-tools-git appstream-qt phonon-qt5
+depends=(knotifyconfig-git libksysguard-git ktexteditor-git libqalculate kde-cli-tools-git appstream-qt phonon-qt5-git
          xorg-xrdb xorg-xsetroot kactivitymanagerd-git kholidays-git xorg-xmessage milou-git prison-git kwin-git
          plasma-integration-git kdelibs4support-git kpeople-git kactivities-stats-git libkscreen-git kquickcharts-git kuserfeedback-git layer-shell-qt-git)
 makedepends=(git extra-cmake-modules-git kdoctools-git gpsd baloo-git networkmanager-qt-git kdesignerplugin-git kinit-git plasma-wayland-protocols-git)
