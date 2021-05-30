@@ -1,9 +1,9 @@
 # Merged with official ABS kmailtransport PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kmailtransport-git
-pkgver=5.16.40_r1570.g7c6869c
+pkgver=5.17.40_r1604.g5a30a0b
 pkgrel=1
 pkgdesc="Mail Transport Service"
 arch=($CARCH)
