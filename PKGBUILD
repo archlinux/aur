@@ -1,11 +1,11 @@
 # Merged with official ABS kdecoration PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Henri Chain <henri@henricha.in>
 
 pkgname=kdecoration-git
-pkgver=5.21.80_r248.g54d5b27
+pkgver=5.22.80_r265.g319d174
 pkgrel=1
 pkgdesc='Plugin based library to create window decorations'
 arch=($CARCH)

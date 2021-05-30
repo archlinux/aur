@@ -1,6 +1,6 @@
 pkgbase = kdecoration-git
 	pkgdesc = Plugin based library to create window decorations
-	pkgver = 5.21.80_r248.g54d5b27
+	pkgver = 5.22.80_r265.g319d174
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
