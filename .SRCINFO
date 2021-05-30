@@ -1,6 +1,6 @@
 pkgbase = kholidays-git
 	pkgdesc = KDE library for regional holiday information
-	pkgver = 5.79.0_r904.g0131570
+	pkgver = 5.83.0_r932.g2cd577b
 	pkgrel = 1
 	epoch = 1
 	url = https://community.kde.org/Frameworks
@@ -11,7 +11,6 @@ pkgbase = kholidays-git
 	makedepends = extra-cmake-modules-git
 	makedepends = qt5-declarative
 	makedepends = qt5-tools
-	makedepends = qt5-doc
 	makedepends = doxygen
 	depends = qt5-base
 	optdepends = qt5-declarative: QML bindings
