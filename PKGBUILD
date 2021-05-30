@@ -1,5 +1,5 @@
 # Merged with official ABS kdiagram PKGBUILD by João, 2021/02/13 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kdiagram-git
 pkgver=2.7.90_r297.gd5089ef
@@ -9,7 +9,7 @@ arch=($CARCH)
 url="https://www.kde.org/"
 license=(GPL2)
 depends=(qt5-svg)
-makedepends=(git extra-cmake-modules-git qt5-tools qt5-doc doxygen)
+makedepends=(git extra-cmake-modules-git qt5-tools doxygen)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")

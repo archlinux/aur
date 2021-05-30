@@ -8,7 +8,6 @@ pkgbase = kdiagram-git
 	makedepends = git
 	makedepends = extra-cmake-modules-git
 	makedepends = qt5-tools
-	makedepends = qt5-doc
 	makedepends = doxygen
 	depends = qt5-svg
 	provides = kdiagram
