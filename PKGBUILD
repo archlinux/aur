@@ -1,8 +1,8 @@
 # Merged with official ABS libksieve PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=libksieve-git
-pkgver=5.16.42_r1479.gd7035fc3
+pkgver=5.17.40_r1526.g8e90710e
 pkgrel=1
 pkgdesc="KDE PIM library for managing sieves"
 arch=($CARCH)
