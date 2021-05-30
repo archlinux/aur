@@ -11,7 +11,7 @@ _fcitxver=20210329
 _iconver=20201229
 _utdicver=20210524
 pkgver=${_mozcver}.${_utdicver}
-pkgrel=1
+pkgrel=2
 
 _pkgbase=mozc
 pkgname=fcitx-mozc-ut-unified-full
@@ -60,6 +60,7 @@ prepare() {
   mv ${srcdir}/japanese-usage-dictionary-master src/third_party/japanese_usage_dictionary
   mv ${srcdir}/protobuf-3.13.0 src/third_party/protobuf
   patch -Np1 -i ${srcdir}/fcitx-mozc-${_fcitxver}.patch
+  patch -Np1 -i ${srcdir}/fix-abseil-cpp-build-gcc11.patch
 
   # Add ZIP code
   cd src/data/dictionary_oss/
@@ -72,7 +73,7 @@ prepare() {
   sed "/stdlib=libc++/d;/-lc++/d" -i src/gyp/common.gypi
 
   # Add UT dictionary
-  cat ${srcdir}/mozcdic-ut-${_utdicver}.${pkgrel}/mozcdic*-ut-*.txt >> src/data/dictionary_oss/dictionary00.txt
+  cat ${srcdir}/mozcdic-ut-${_utdicver}.1/mozcdic*-ut-*.txt >> src/data/dictionary_oss/dictionary00.txt
 }
 
 build() {

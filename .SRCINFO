@@ -1,7 +1,7 @@
 pkgbase = fcitx-mozc-ut-unified-full
 	pkgdesc = Fcitx Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with New UT dictionaries (default dictionaties.)
 	pkgver = 2.26.4381.102.20210524
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osdn.net/users/utuhiro/pf/utuhiro/files/
 	arch = x86_64
 	license = custom
