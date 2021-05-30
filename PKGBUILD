@@ -1,8 +1,8 @@
 # Merged with official ABS kdsoap PKGBUILD by João, 2021/02/18 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kdsoap-git
-pkgver=1.99.50_r1615.ga6dec7e2
+pkgver=1.99.50_r1699.g914c1de3
 pkgrel=1
 pkgdesc='Qt-based client-side and server-side SOAP component'
 license=(GPL3 LGPL custom)
@@ -21,11 +21,6 @@ pkgver() {
   _minor_ver="$(grep -m1 'set(${PROJECT_NAME}_VERSION_MINOR' CMakeLists.txt | cut -d ' ' -f2 | tr -d ')')"
   _patch_ver="$(grep -m1 'set(${PROJECT_NAME}_VERSION_PATCH' CMakeLists.txt | cut -d ' ' -f2 | tr -d ')')"
   echo "${_major_ver}.${_minor_ver}.${_patch_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd KDSoap
-  git submodule update --init --recursive
 }
 
 build() {
