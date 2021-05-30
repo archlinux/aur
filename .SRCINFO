@@ -1,6 +1,6 @@
 pkgbase = kpackage-git
 	pkgdesc = Framework that lets applications manage user installable packages of non-binary assets
-	pkgver = 5.79.0_r629.ga5c6bd2
+	pkgver = 5.83.0_r659.g2e761f3
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = kpackage-git
 	makedepends = git
 	makedepends = extra-cmake-modules-git
 	makedepends = qt5-tools
-	makedepends = qt5-doc
 	makedepends = kdoctools-git
 	makedepends = doxygen
 	depends = karchive-git
