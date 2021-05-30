@@ -1,8 +1,8 @@
 # Merged with official ABS libkdepim PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=libkdepim-git
-pkgver=5.16.40_r803.g1c334ff
+pkgver=5.17.40_r829.gdc21970
 pkgrel=1
 pkgdesc="Libraries for KDE PIM applications"
 arch=($CARCH)

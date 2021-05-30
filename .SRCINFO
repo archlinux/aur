@@ -1,6 +1,6 @@
 pkgbase = libkdepim-git
 	pkgdesc = Libraries for KDE PIM applications
-	pkgver = 5.16.40_r803.g1c334ff
+	pkgver = 5.17.40_r829.gdc21970
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
