@@ -1,7 +1,7 @@
 # contributor: fbis251
 # former Maintainer: si_kabayan <aaizap4p at gmail dot com>
 pkgname=raccoon
-pkgver=4.17.0
+pkgver=4.18.0
 pkgrel=1
 arch=('any')
 pkgdesc="Alternative Google Play (with GUI) client to download Android APK files to your computer"
@@ -17,7 +17,7 @@ source=('raccoon.desktop'
 noextract=('${pkgname}-${pkgver}.jar')
 sha512sums=('99ae7ab9aa77f6de0779c9179e16dbccd36362adc710cd5d7289c473b6aff62d39a0e29be63840bc7f614e360d17b51f877ff2bf2fda938da8fa13e3f9248647'
             'f63e94b86f5b111b8833d53767b0f6eada48426e1b0e30df0137bed455c80ec37087f656e2f0cac9386f4d25441686df82c988252120fc335028d2885b8653f6'
-            '5be50c7ae2fd6f3cbbbf6587e5ba9e720f37b40ea8c150d67ddccbe25756cd957c5dbfead53493cf6fd191eb1bbc5d4c35881b698dea06d6fa94ccb63b07f8d9'
+            '18ffe0fc69cf43ba7ba8ec47811ac7761254fc4cff947ec77bc3a0fe1b25385d878f7ddfa43b6f86455d8c4c02ee54704ae728a86019bcc5a9432b929f3037eb'
             '0e095c7cb167fd049968ba9e7c5acf51c3454aca884fd3106209d9ba92cd434c22c1398996f58238e98c692d7b0a635c6e6fb60782ba0dcb79cd837fe9ed7bba')
 
 prepare() {
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
     cd "$srcdir/raccoon4-$pkgver"
-    gradle -Pversion=$pkgver fatJar
+    gradlew -Pversion=$pkgver fatJar
 }
 
 package() {
