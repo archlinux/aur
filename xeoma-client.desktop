@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Exec=xeoma-client -client
+Icon=xeoma.png
+Type=Application
+Categories=Application;Internet;
+StartupNotify=false
+Name=Xeoma Client
+GenericName=Xeoma Video Surveillance
+Comment=The video surveillance software
