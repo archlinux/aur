@@ -1,6 +1,6 @@
 pkgbase = kidletime-git
 	pkgdesc = Monitoring user activity
-	pkgver = 5.79.0_r279.g50996b7
+	pkgver = 5.83.0_r301.g050c4fc
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = kidletime-git
 	makedepends = extra-cmake-modules-git
 	makedepends = doxygen
 	makedepends = qt5-tools
-	makedepends = qt5-doc
 	depends = qt5-x11extras
 	depends = libxss
 	provides = kidletime
