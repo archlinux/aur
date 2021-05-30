@@ -1,6 +1,6 @@
 pkgbase = python-os-api-ref
 	pkgdesc = Sphinx Extensions to support API reference sites in OpenStack
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://docs.openstack.org/os-api-ref/latest/
 	arch = any
@@ -21,10 +21,10 @@ pkgbase = python-os-api-ref
 	depends = python-six
 	depends = python-sphinx
 	depends = python-openstackdocstheme
-	source = https://pypi.io/packages/source/o/os-api-ref/os-api-ref-2.1.0.tar.gz
-	md5sums = b3b4d24e171cac01df12e1cc12759c64
-	sha256sums = d89133f36e4ba187408d851ab2e0f1c8419877ca928af6f63a390e721b367798
-	sha512sums = b006b9cc98221d570a838573783242438563f8d67be5ddcfaaf864210955c7f8170a9cdff3d4ea0f4a29769ca6aeafa18b09f95a1c25670629ab9c0dfee92eca
+	source = https://pypi.io/packages/source/o/os-api-ref/os-api-ref-2.2.0.tar.gz
+	md5sums = 499c648060b5f2bf9b9bf1bcdf32ff32
+	sha256sums = 50394bc71edd2926e3a385ca7b5174e8a6ac79b9f601f0630d5afed8bdf7fbba
+	sha512sums = 3d25b3cd702c611577c86c206a60f92d929191f9e75c210e04c639c2a597ea58d31c81c17b79e41276c3e5b391e2c7bb95a9d7483b0f248e230d03550da3af96
 
 pkgname = python-os-api-ref
 
