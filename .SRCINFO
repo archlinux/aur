@@ -1,6 +1,6 @@
 pkgbase = kirigami2-git
 	pkgdesc = A QtQuick based components set
-	pkgver = 5.80.0_r2659.g5e079538
+	pkgver = 5.83.0_r2803.gdd7bb331
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = kirigami2-git
 	makedepends = git
 	makedepends = extra-cmake-modules-git
 	makedepends = qt5-tools
-	makedepends = qt5-doc
 	makedepends = qt5-svg
 	makedepends = kpackage-git
 	makedepends = doxygen
