@@ -4,6 +4,7 @@ pkgbase = dbus-selinux
 	pkgrel = 1
 	url = https://wiki.freedesktop.org/www/Software/dbus/
 	arch = x86_64
+	arch = aarch64
 	groups = selinux
 	license = GPL
 	license = custom
@@ -50,4 +51,3 @@ pkgname = dbus-docs-selinux
 	pkgdesc = Freedesktop.org message bus system with SELinux support (documentation)
 	depends = 
 	conflicts = dbus-docs
-

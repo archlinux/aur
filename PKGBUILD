@@ -16,7 +16,7 @@ pkgver=1.12.20
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system with SELinux support"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 license=(GPL custom)
 groups=('selinux')
 # Make sure systemd's hook supports reloading dbus: the following commit was introduced in package systemd 242.84-2
