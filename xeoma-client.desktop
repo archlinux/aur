@@ -1,11 +1,11 @@
 [Desktop Entry]
+Name=Xeoma Client
 Version=1.0
 Terminal=false
 Exec=xeoma-client -client
-Icon=xeoma.png
+Icon=xeoma-client.png
 Type=Application
-Categories=Application;Internet;
+Categories=GNOME;GTK;Network
 StartupNotify=false
-Name=Xeoma Client
 GenericName=Xeoma Video Surveillance
 Comment=The video surveillance software
