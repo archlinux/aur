@@ -2,11 +2,11 @@
 
 pkgname=anki-release-source
 pkgver=2.1.44
-pkgrel=1
+pkgrel=2
 pkgdesc="The latest release building from source locally"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
-arch=('any')
+arch=('x86_64')
 provides=('anki')
 conflicts=('anki' 'anki20' 'anki-git' 'anki-official-binary-bundle')
 depends=(
@@ -35,6 +35,7 @@ depends=(
 )
 makedepends=(
     'rsync'
+    'git'
 
     'bazel'
     'clang'
@@ -52,14 +53,8 @@ optdepends=(
     'mpv: play sound. prefered over mplayer'
     'mplayer: play sound'
 )
-source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/ankitects/anki/archive/refs/tags/${pkgver}.tar.gz"
-)
-sha256sums=('SKIP')
-
-prepare() {
-    tar xf "$pkgname-$pkgver.tar.gz"
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ankitects/anki/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('c24c87aac042b3ac803ea22669091730a48b575ee9d9939672d46caf6d3287b5')
 
 build() {
     cd "anki-$pkgver"
