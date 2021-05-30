@@ -1,5 +1,5 @@
 # Merged with official ABS kimap2 PKGBUILD by João, 2021/01/31 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Marco Scarpetta <marcoscarpetta02@gmail.com>
 # Contributor: Jens Staal <staal1978@gmail.com>
@@ -9,7 +9,7 @@
 
 
 pkgname=kimap2-git
-pkgver=0.4_r824.gee0dd26
+pkgver=0.4.0_r825.gf36ea7f
 pkgrel=1
 pkgdesc="Job-based API for interacting with IMAP servers"
 arch=($CARCH)
