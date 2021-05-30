@@ -1,8 +1,8 @@
 # Merged with official ABS kquickcharts PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kquickcharts-git
-pkgver=5.79.0_r420.g38f1cfd
+pkgver=5.83.0_r454.g4023aa6
 pkgrel=1
 pkgdesc='A QtQuick plugin providing high-performance charts'
 arch=($CARCH)

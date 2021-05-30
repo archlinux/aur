@@ -1,6 +1,6 @@
 pkgbase = kquickcharts-git
 	pkgdesc = A QtQuick plugin providing high-performance charts
-	pkgver = 5.79.0_r420.g38f1cfd
+	pkgver = 5.83.0_r454.g4023aa6
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
