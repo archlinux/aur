@@ -1,7 +1,7 @@
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=layer-shell-qt-git
-pkgver=5.21.80_r34.g8d1aeb7
+pkgver=5.22.80_r41.g9af3c35
 pkgrel=1
 pkgdesc='Qt component to allow applications to make use of the Wayland wl-layer-shell protocol'
 arch=($CARCH)
