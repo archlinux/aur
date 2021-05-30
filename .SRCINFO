@@ -1,4 +1,4 @@
-pkgbase = dosbox-ne2000-svn
+pkgbase = dosbox-svn-ne2000
 	pkgdesc = An emulator with builtin DOS for running DOS Games - Includes patches for NE2000 network card
 	pkgver = 0.74.2.4335M
 	pkgrel = 1
