@@ -1,6 +1,6 @@
 pkgbase = kxmlgui-git
 	pkgdesc = User configurable main windows
-	pkgver = 5.79.0_r714.g2d33e56
+	pkgver = 5.83.0_r760.g778badac
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = kxmlgui-git
 	makedepends = extra-cmake-modules-git
 	makedepends = doxygen
 	makedepends = qt5-tools
-	makedepends = qt5-doc
 	depends = kglobalaccel-git
 	depends = kiconthemes-git
 	depends = attica-git
