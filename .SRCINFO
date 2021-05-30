@@ -1,5 +1,5 @@
 pkgbase = xeoma-client-bin
-	pkgdesc = Xeoma Client
+	pkgdesc = Xeoma Client - the video surveillance software.
 	pkgver = 21.4.2
 	pkgrel = 1
 	url = https://felenasoft.com/xeoma/en/
