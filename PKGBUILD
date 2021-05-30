@@ -1,16 +1,16 @@
 # Merged with official ABS kiconthemes PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kiconthemes-git
-pkgver=5.79.0_r469.gc161dfe
+pkgver=5.83.0_r524.g1012036
 pkgrel=1
 pkgdesc='Support for icon themes'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(qt5-svg kconfigwidgets-git kitemviews-git karchive-git)
-makedepends=(git extra-cmake-modules-git doxygen qt5-tools qt5-doc)
+makedepends=(git extra-cmake-modules-git doxygen qt5-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 optdepends=('breeze-icons-git: fallback icon theme')
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  _ver="$(grep -m1 "set(KF5\?_VERSION" CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  _ver="$(grep -m1 'set(KF5\?_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
