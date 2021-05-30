@@ -1,6 +1,6 @@
 pkgbase = grantleetheme-git
 	pkgdesc = Library for Grantlee theming support
-	pkgver = 5.16.40_r293.gcf61081
+	pkgver = 5.17.40_r322.gdc8e1c0
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = grantleetheme-git
 	license = LGPL
 	makedepends = git
 	makedepends = extra-cmake-modules-git
-	depends = grantlee-git
+	depends = grantlee
 	depends = knewstuff-git
 	provides = grantleetheme
 	conflicts = grantleetheme

@@ -1,14 +1,14 @@
 # Merged with official ABS grantleetheme PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=grantleetheme-git
-pkgver=5.16.40_r293.gcf61081
+pkgver=5.17.40_r322.gdc8e1c0
 pkgrel=1
 pkgdesc="Library for Grantlee theming support"
 arch=($CARCH)
 url="https://kontact.kde.org"
 license=(LGPL)
-depends=(grantlee-git knewstuff-git)
+depends=(grantlee knewstuff-git)
 makedepends=(git extra-cmake-modules-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
