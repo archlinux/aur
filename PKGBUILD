@@ -2,7 +2,7 @@
 
 _pkgname=janet
 pkgname=janet-lang-git
-pkgver=1.15.1.r2776.69095fbb
+pkgver=1.16.0.r2878.b990d77f
 pkgrel=1
 pkgdesc="A dynamic Lisp dialect and bytecode vm"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
@@ -47,6 +47,6 @@ package() {
     install -dm755 "${pkgdir}"/usr/share/janet
     cp -a examples "${pkgdir}"/usr/share/janet
 
-    install -Dm644 build/doc.html "${pkgdir}"/usr/share/doc/janet/doc.html
+    # install -Dm644 build/doc.html "${pkgdir}"/usr/share/doc/janet/doc.html
     install -Dm644 -t "${pkgdir}"/usr/lib/janet tools/.keep
 }
