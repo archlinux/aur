@@ -5,6 +5,7 @@ pkgbase = termius-app
         url = https://www.termius.com/
         arch = x86_64
         license = custom
+	makedepends = grep
         makedepends = sed
         provides = termius
         conflicts = termius
