@@ -1,6 +1,6 @@
 pkgbase = kactivities-stats-git
 	pkgdesc = A library for accessing the usage data collected by the activities system
-	pkgver = 5.79.0_r327.g62b208f
+	pkgver = 5.83.0_r354.gc57b33a
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = kactivities-stats-git
 	makedepends = boost
 	makedepends = doxygen
 	makedepends = qt5-tools
-	makedepends = qt5-doc
 	depends = kactivities-git
 	provides = kactivities-stats
 	conflicts = kactivities-stats
