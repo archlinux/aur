@@ -1,12 +1,13 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
-pkgname=python-polyscope
-pkgver=0.1.6
+_pkgname=polyscope
+pkgname=python-${_pkgname}
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Python viewer and user interface for 3D data, like meshes and point clouds"
 url="https://polyscope.run/py/"
 license=(MIT)
-arch=(i686 x86_64 armv7h aarch64)
+arch=(x86_64 aarch64)
 depends=(gcc-libs libx11)
 makedepends=(
 	cmake
@@ -17,8 +18,8 @@ makedepends=(
 	libxrandr
 	python-setuptools
 )
-source=("https://files.pythonhosted.org/packages/03/3b/a68d346ac6d03bafbd10ffb4076418824f51c32d1de254fad5741d5b5669/polyscope-0.1.6.tar.gz")
-sha256sums=('4a040de27d65135e7caed1d3030e8299be363743183b4847ec229afcc67a3b4a')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('d49ce408b0947181ecd3d5652ecaf8e25fa2abd681deef74fc12d8c7fc3c7fb7')
 
 build(){
 	cd "polyscope-${pkgver}"
