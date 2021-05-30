@@ -55,6 +55,7 @@ cantarell-fonts
 gtk-update-icon-cache)
 makedepends=(
 meson
+ninja
 gi-docgen
 shaderc
 sassc
