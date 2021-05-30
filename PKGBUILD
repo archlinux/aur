@@ -5,7 +5,7 @@ _pkgname=sdl2_compat12
 pkgname=sdl2_compat12-git
 provides=('sdl=1.12.15')
 conflicts=('sdl')
-pkgver=r271.c71d037
+pkgver=r285.646ecd7
 pkgrel=1
 pkgdesc="Provides a binary-compatible API for programs written against SDL 1.2, but it uses SDL 2.0 behind the scenes."
 url=https://github.com/libsdl-org/sdl12-compat.git
