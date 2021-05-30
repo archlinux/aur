@@ -4,6 +4,7 @@ pkgbase = psmisc-selinux
 	pkgrel = 1
 	url = https://gitlab.com/psmisc/psmisc
 	arch = x86_64
+	arch = aarch64
 	groups = selinux
 	license = GPL
 	depends = ncurses
@@ -16,4 +17,3 @@ pkgbase = psmisc-selinux
 	sha256sums = 7f0cceeace2050c525f3ebb35f3ba01d618b8d690620580bdb8cd8269a0c1679
 
 pkgname = psmisc-selinux
-
