@@ -11,10 +11,10 @@ install="bettercrewlink.install"
 depends=('libcap>=2')
 source=("https://mirror.bettercrewl.ink/pc/latest/BetterCrewlink-Linux.AppImage"
         "bettercrewlink.desktop"
-        "https://github.com/OhMyGuus/BetterCrewLink/raw/nightly/logo.png")
+        "https://raw.githubusercontent.com/OhMyGuus/BetterCrewLink/nightly/src/renderer/logos/BCL-AppIcon.png")
 md5sums=('092279463a6ec767da4bca4a9aee0ec8'
          '617a6fc40e38cb2be31a1541e39fcf96'
-         '01af2cd3a3ef33e85f267854d35e14c4')
+         '0c383871ddf0e11c81cf4cd3a77bd589')
 options=(!strip libtool emptydirs staticlibs)
 
 package() {
@@ -26,5 +26,5 @@ package() {
 	ln -s /opt/BetterCrewlink/BetterCrewlink-Linux.AppImage "$pkgdir/usr/bin/bettercrewlink"
 	
 	install -Dm 644 bettercrewlink.desktop "$pkgdir/usr/share/applications/bettercrewlink.desktop"
-	install -Dm 644 logo.png "$pkgdir/usr/share/pixmaps/bettercrewlink.png"
+	install -Dm 644 BCL-AppIcon.png "$pkgdir/usr/share/pixmaps/bettercrewlink.png"
 }
