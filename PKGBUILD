@@ -1,11 +1,12 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz[at]gmail[dot]com>
 # Contributer: Felix Golatofski <contact@xdfr.de>
 # Contributer: Jamie Magee <jamie dot magee at gmail dot com>
+
 pkgname=java-openjfx-ea-bin
 _majorver=17
-_buildver=5
+_buildver=11
 pkgver=${_majorver}rc${_buildver}
-pkgrel=2
+pkgrel=1
 pkgdesc="Java OpenJFX ${_majorver} Early-Access Build."
 arch=('x86_64')
 url='https://openjfx.io/'
@@ -16,9 +17,9 @@ conflicts=("java${_majorver}-openjfx")
 source=("https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-ea+${_buildver}_linux-x64_bin-sdk.zip"
         "https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-ea+${_buildver}_linux-x64_bin-jmods.zip"
         "https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-ea+${_buildver}-javadoc.zip")
-sha256sums=('6fdec3583b6b9ec42f591dd76238a1f8b7f825bbc299055bd30cdc0554d8336d'
-            '9a78907c1b94dbcbf913495cdce9b8b2c2c152eeb8ffa122e77fc8b6af6a86e3'
-            '705ab43f98080da46148713a65ded73436ee76fc0fcbf9eaed76e16f1fc7f855')
+sha256sums=('85cbbc3cc28f9933a0c7833e092b064a8b5cc8e34c17ce68683bb4514b132bf1'
+            '07b25566f4b703ab33340866eeda7629924be5b947a39a024b623d4eb9955b3f'
+            '60e488eb5df89704ac7937577c1c03228f037fd0bb6cb2e144681f224205021f')
 
 _jvmdir=usr/lib/jvm/java-${_majorver}-openjdk
 
