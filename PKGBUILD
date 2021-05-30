@@ -2,7 +2,7 @@
 
 pkgname=perl-io-interface
 pkgver=1.09
-pkgrel=9
+pkgrel=9.1
 pkgdesc="Perl extension for access to network card configuration information"
 arch=('i686' 'x86_64')
 url='http://search.cpan.org/perldoc?IO::Interface'
