@@ -1,17 +1,18 @@
 # Contributor: johnnybash <georgpfahler@wachenzell.org>
 # Contributor: r20d20 <r20d20@web.de>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
-# Maintainer: Square252 <square@0xfc.de>
+# Contributor: Square252 <square@0xfc.de>
+# Maintainer: Harvey <harv at gmx dot de>
 
 pkgname=jameica-nightly
 pkgver=2.11.0
-pkgrel=1
-pkgdesc="Jameica is a free Java application platform"
-arch=('any')
+pkgrel=3
+pkgdesc="Free Java application platform"
+arch=('x86_64')
 url="http://www.willuhn.de/products/jameica/"
-license=('GPL')
-depends=('java-runtime>=1.6' 'bash' 'swt')
-makedepends=('zip' 'unzip')
+license=('GPL2')
+depends=('java-runtime>=11' 'gtk3')
+makedepends=('unzip')
 conflicts=('jameica')
 source=("http://www.willuhn.de/products/jameica/releases/nightly/jameica-linux64-$pkgver-nightly.zip" "jameica.desktop")
 sha256sums=('SKIP'
@@ -20,24 +21,7 @@ sha256sums=('SKIP'
 package() {
   install -d "$pkgdir"/usr/share/{java/jameica,applications}
   cp -R "$srcdir"/jameica "$pkgdir"/usr/share/java
-  # remove local swt lib
-  rm -rf "$pkgdir"/usr/share/java/jameica/lib/swt/linux64
-
-  # adjust classpath in order to use system swt
-  unzip "$pkgdir"/usr/share/java/jameica/jameica-linux64.jar \
-	  -d "$pkgdir"/usr/share/java/jameica/unzipped
-  sed -i 's|lib/swt/linux64/swt.jar|/usr/share/java/swt.jar|g' \
-	  "$pkgdir"/usr/share/java/jameica/unzipped/META-INF/MANIFEST.MF
-
-  pushd "$pkgdir"/usr/share/java/jameica/unzipped
-  zip -r ../jameica-linux64.jar *
-  popd
-
-  # remove dead bodies
-  rm -rf "$pkgdir"/usr/share/java/jameica/unzipped
-  # link jameica-linux64.jar to jameica-linux.jar
   ln -s /usr/share/java/jameica/jameica-linux64.jar \
     "$pkgdir"/usr/share/java/jameica/jameica-linux.jar
-
   install -m 644 "$srcdir"/jameica.desktop "$pkgdir"/usr/share/applications
 }

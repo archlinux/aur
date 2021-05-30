@@ -1,15 +1,13 @@
 pkgbase = jameica-nightly
-	pkgdesc = Jameica is a free Java application platform
+	pkgdesc = Free Java application platform
 	pkgver = 2.11.0
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.willuhn.de/products/jameica/
-	arch = any
-	license = GPL
-	makedepends = zip
+	arch = x86_64
+	license = GPL2
 	makedepends = unzip
-	depends = java-runtime>=1.6
-	depends = bash
-	depends = swt
+	depends = java-runtime>=11
+	depends = gtk3
 	conflicts = jameica
 	source = http://www.willuhn.de/products/jameica/releases/nightly/jameica-linux64-2.11.0-nightly.zip
 	source = jameica.desktop
