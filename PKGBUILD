@@ -67,7 +67,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-pkgbase=linux-ck-uksm
+pkgbase=linux-ck1-uksm
 pkgver=5.12.8
 pkgrel=1
 _ckpatchversion=1
