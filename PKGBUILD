@@ -1,9 +1,9 @@
 # Merged with official ABS kpimtextedit PKGBUILD by João, 2021/01/31 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kpimtextedit-git
-pkgver=5.16.40_r1327.gcea5570
+pkgver=5.17.40_r1380.gb7966ce
 pkgrel=1
 pkgdesc="A textedit with PIM-specific features"
 arch=($CARCH)

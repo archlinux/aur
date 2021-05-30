@@ -1,6 +1,6 @@
 pkgbase = kpimtextedit-git
 	pkgdesc = A textedit with PIM-specific features
-	pkgver = 5.16.40_r1327.gcea5570
+	pkgver = 5.17.40_r1380.gb7966ce
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
