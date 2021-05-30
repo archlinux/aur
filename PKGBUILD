@@ -1,10 +1,10 @@
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdisplay-git
-pkgver=5.21.80_r1444.g293233c
+pkgver=5.22.80_r1446.gdbac314
 pkgrel=1
 pkgdesc="App and daemon for display managing by the KWinFT project (kscreen fork)"
 arch=($CARCH)
