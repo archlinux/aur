@@ -3,8 +3,8 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=python-bitvector
-pkgver=3.4.9
-pkgrel=4
+pkgver=3.5.0
+pkgrel=1
 pkgdesc="A memory-efficient packed representation for bit arrays in pure Python"
 url="https://pypi.python.org/pypi/BitVector"
 license=('PSF')
@@ -12,7 +12,7 @@ arch=('any')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://pypi.io/packages/source/B/BitVector/BitVector-$pkgver.tar.gz")
-sha512sums=('be2144a35990b46aa2cbd71d65db51baac5fec65d4c91a1e2222857b307c96f5551adf1c5a86f145f01fa895465b99bc02a485d5d7a43495dd1e05b9a0d9d513')
+sha512sums=('c303b77f0f6ea4fb80233afb09e0f830e0beb8cbe17d9bff242a4b6465ec34a5621b1003f5cb8e139460a27bb4fb897960e3dce92eb30b95bef55aa6aa5f0827')
 
 build() {
   cd BitVector-$pkgver
