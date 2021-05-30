@@ -1,0 +1,13 @@
+diff --git a/openstackdocstheme-2.2.7/openstackdocstheme/ext.py b/openstackdocstheme-2.2.7/openstackdocstheme/ext.py
+index 123eb12..80d43e5 100644
+--- a/openstackdocstheme-2.2.7/openstackdocstheme/ext.py
++++ b/openstackdocstheme-2.2.7/openstackdocstheme/ext.py
+@@ -298,7 +298,7 @@ def _setup_link_roles(app):
+             role_name,
+             url,
+         )
+-        app.add_role(role_name, extlinks.make_link_role(url, project_name))
++        app.add_role(role_name, extlinks.make_link_role(project_name, url, project_name))
+ 
+ 
+ def _find_setup_cfg(srcdir):
