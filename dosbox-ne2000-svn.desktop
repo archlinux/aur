@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=DOSBox
+Comment=DOS Emulator
+Comment[es]=Emulador de DOS
+Comment[fr]=Emulateur DOS
+Exec=dosbox
+Icon=dosbox
+Terminal=false
+Categories=System;Emulator;Game;
