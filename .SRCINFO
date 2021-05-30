@@ -1,6 +1,6 @@
 pkgbase = kdoctools-git
 	pkgdesc = Documentation generation from docbook
-	pkgver = 5.79.0_r586.g5d4d5df
+	pkgver = 5.83.0_r607.gbb39bd9
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = kdoctools-git
 	makedepends = ki18n-git
 	makedepends = doxygen
 	makedepends = qt5-tools
-	makedepends = qt5-doc
 	depends = karchive-git
 	depends = docbook-xsl
 	provides = kdoctools
