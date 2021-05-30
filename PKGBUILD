@@ -1,9 +1,9 @@
 # Merged with official ABS ksysguard PKGBUILD by João, 2021/01/31 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Antonio Rojas <nqn1976 @ gmail.com>
 
 pkgname=ksysguard-git
-pkgver=5.21.80_r3473.ga22ec0b7
+pkgver=5.21.80_r3503.g5b75d854
 pkgrel=1
 pkgdesc='Track and control the processes running in your system'
 arch=($CARCH)
