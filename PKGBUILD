@@ -2,29 +2,34 @@
 # Contributor: Arvid Norlander <anmaster A_T tele2 d_o_t (ccTLD for Sweden, which is se)>
 
 pkgname=c-intercal
-pkgver=0.29
-pkgrel=2
-epoch=1
-pkgdesc='INTERCAL to binary (via C) compiler'
+pkgver=0.31
+pkgrel=1
+pkgdesc='A compiler for the INTERCAL language. INTERCAL is the original esoteric language, a farrago of features that will test the mettle of any programmer and bend the minds of most. Includes a compiler, debugger, and sample code.'
 arch=('x86_64' 'i686')
-url='http://overload.intercal.org.uk/c/'
+url='https://gitlab.com/esr/intercal'
 license=('GPL')
-depends=('gcc' 'sh')
+depends=('sh')
 options=('staticlibs')
-source=("http://overload.intercal.org.uk/c/intercal-0.29.pax.gz")
-sha256sums=('fba1678bdd058350742fad2f3f0673bcea9f4c8add761855a67d8ada6650950b')
+source=("git+https://gitlab.com/esr/intercal#tag=0.31")
+sha256sums=('SKIP')
 
 build() {
-  cd "intercal-0.29"
+  cd intercal/buildaux
+  ./regenerate-build-system.sh
+  cd ..
+  mkdir -p build
+  cd build
 
-  ./configure --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info
-  make -j1
+  # https://gitlab.com/esr/intercal/-/issues/4
+  # gcc 10 switched the default from -fcommon to -fno-common
+  CFLAGS=-fcommon ../configure "--prefix=/usr"
+  make
 }
 
 package() {
-  cd "intercal-0.29"
+  cd intercal/build
 
-  make DESTDIR="$pkgdir" install
+  make "DESTDIR=$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:

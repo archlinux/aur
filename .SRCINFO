@@ -1,17 +1,15 @@
 pkgbase = c-intercal
-	pkgdesc = INTERCAL to binary (via C) compiler
-	pkgver = 0.29
-	pkgrel = 2
-	epoch = 1
-	url = http://overload.intercal.org.uk/c/
+	pkgdesc = A compiler for the INTERCAL language. INTERCAL is the original esoteric language, a farrago of features that will test the mettle of any programmer and bend the minds of most. Includes a compiler, debugger, and sample code.
+	pkgver = 0.31
+	pkgrel = 1
+	url = https://gitlab.com/esr/intercal
 	arch = x86_64
 	arch = i686
 	license = GPL
-	depends = gcc
 	depends = sh
 	options = staticlibs
-	source = http://overload.intercal.org.uk/c/intercal-0.29.pax.gz
-	sha256sums = fba1678bdd058350742fad2f3f0673bcea9f4c8add761855a67d8ada6650950b
+	source = git+https://gitlab.com/esr/intercal#tag=0.31
+	sha256sums = SKIP
 
 pkgname = c-intercal
 
