@@ -1,6 +1,6 @@
 pkgbase = kdialog-git
 	pkgdesc = A utility for displaying dialog boxes from shell scripts
-	pkgver = 21.03.70_r1167.gd1a5a9518
+	pkgver = 21.07.70_r1179.g1906217e5
 	pkgrel = 1
 	url = https://www.kde.org/
 	arch = x86_64
