@@ -1,6 +1,6 @@
 pkgbase = khelpcenter-git
 	pkgdesc = Application to show KDE Applications' documentation
-	pkgver = 21.03.70_r2650.g7a8f86c1
+	pkgver = 21.07.70_r2657.g0ca1368f
 	pkgrel = 1
 	url = https://userbase.kde.org/KHelpCenter
 	arch = x86_64
