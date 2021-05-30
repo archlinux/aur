@@ -1,0 +1,16 @@
+pkgbase = passrofi-git
+	pkgdesc = POSIX-compliant shell script to extend passmenu functionality to rofi. Extended to provide username, password, and OTP tokens to clipboard.
+	pkgver = r1.2e8cada
+	pkgrel = 1
+	url = https://github.com/98WuG/passrofi
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = pass
+	depends = rofi
+	optdepends = pass-otp: OTP support
+	source = git+https://github.com/98WuG/passrofi.git
+	sha256sums = SKIP
+
+pkgname = passrofi-git
+
