@@ -1,10 +1,10 @@
 # Merged with official ABS kidentitymanagement PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Felix Golatofsk <contact@xdfr.de>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kidentitymanagement-git
-pkgver=5.16.41_r3749.ge3386a79
+pkgver=5.17.40_r3782.g28881265
 pkgrel=1
 pkgdesc="KDE PIM libraries"
 arch=($CARCH)
