@@ -1,6 +1,6 @@
 pkgbase = kcalutils-git
 	pkgdesc = The KDE calendar utility library
-	pkgver = 5.16.40_r804.gd69e7cd9e
+	pkgver = 5.17.40_r834.g9a96b023f
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64

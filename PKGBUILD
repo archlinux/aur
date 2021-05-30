@@ -1,10 +1,10 @@
 # Merged with official ABS kcalutils PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kcalutils-git
-pkgver=5.16.40_r804.gd69e7cd9e
+pkgver=5.17.40_r834.g9a96b023f
 pkgrel=1
 pkgdesc="The KDE calendar utility library"
 arch=($CARCH)
