@@ -13,7 +13,7 @@ license=('GPL')
 depends=('gcc-libs')
 makedepends=('pkgconfig' 'libtool' 'autoconf' 'automake')
 options=('!emptydirs')
-source=(http://downloads.sourceforge.net/sidplay2/sidplay-libs-$pkgver.tar.gz
+source=(https://downloads.sourceforge.net/sidplay2/sidplay-libs-$pkgver.tar.gz
         $pkgname.patch)
 sha1sums=('8af6350866edc30b0d331e075fa97292f6f645a5'
           'e2d1fe7ddd53b3f614d8ab2740ab0af20dd72abb')
