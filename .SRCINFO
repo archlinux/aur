@@ -5,7 +5,7 @@ pkgbase = tachidesk
 	url = https://github.com/Suwayomi/Tachidesk
 	arch = any
 	license = MPL2
-	depends = java-runtime
+	depends = java-runtime>=8
 	provides = tachidesk
 	conflicts = tachidesk-preview
 	noextract = Tachidesk-v0.4.2-r645.jar
@@ -13,10 +13,10 @@ pkgbase = tachidesk
 	source = tachidesk.desktop
 	source = tachidesk.png
 	source = tachidesk.sh
-	md5sums = 16a1abcb1c6553da74d4a6470f92c33b
-	md5sums = 728182fd92daa4e50b98c0d62bb65c5e
-	md5sums = 520cdde66717d1701fb40dfbcdab59a2
-	md5sums = 196d4e69879d3b01f73672c812c0f20c
+	sha256sums = 9c6a4371e4c96611d975df871911728cf860a12c0e333dd0eab02733e492dff2
+	sha256sums = 22a6a9a8c8198985759f66b35377d87bce82d46dbf7a4a7505b55621a9c5487e
+	sha256sums = 7528715b5b8d8360a9fd7dc096b51fd52bf3da671167e224b6cb637437fc4831
+	sha256sums = 3ac5c813b88f2dd4f38fac5dcd344f1f54dd9929fbb8faba758a972015d12c19
 
 pkgname = tachidesk
 
