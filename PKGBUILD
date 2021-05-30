@@ -2,7 +2,7 @@
 # Based on dosbox-svn AUR PKGBUILD from: https://aur.archlinux.org/packages/dosbox-svn/
 # Includes patches from: James Kelly Jr, James-F (https://sourceforge.net/p/dosbox/patches/238/)
 
-pkgname=dosbox-svn-ne2000
+pkgname=dosbox-ne2000-svn
 pkgver=0.74.2.4335M
 pkgrel=1
 epoch=1
