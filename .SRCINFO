@@ -1,6 +1,6 @@
 pkgbase = kcontacts-git
 	pkgdesc = Address book API for KDE
-	pkgver = 5.79.0_r3213.g384974c2
+	pkgver = 5.83.0_r3239.g231101ce
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = kcontacts-git
 	makedepends = extra-cmake-modules-git
 	makedepends = doxygen
 	makedepends = qt5-tools
-	makedepends = qt5-doc
 	depends = kcoreaddons-git
 	depends = kconfig-git
 	depends = ki18n-git
