@@ -1,6 +1,6 @@
 pkgbase = akonadi-import-wizard-git
 	pkgdesc = Import data from other mail clients to KMail
-	pkgver = 5.16.40_r1675.g7d8df2c
+	pkgver = 5.17.40_r1707.gfe1bd30
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64

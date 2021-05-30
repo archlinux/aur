@@ -1,8 +1,8 @@
 # Merged with official ABS akonadi-import-wizard PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=akonadi-import-wizard-git
-pkgver=5.16.40_r1675.g7d8df2c
+pkgver=5.17.40_r1707.gfe1bd30
 pkgrel=1
 pkgdesc="Import data from other mail clients to KMail"
 arch=($CARCH)
