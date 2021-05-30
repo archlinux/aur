@@ -1,10 +1,10 @@
 # Merged with official ABS kmbox PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kmbox-git
-pkgver=5.16.40_r489.gb23719c
+pkgver=5.17.40_r518.g3603e0c
 pkgrel=1
 pkgdesc="Library for accessing mail storages in MBox format"
 arch=($CARCH)
