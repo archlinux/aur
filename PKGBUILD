@@ -1,16 +1,16 @@
 # Merged with official ABS labplot PKGBUILD by João, 2021/01/31 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=labplot-git
-pkgver=2.9.0_r7979.gc4a151148
+pkgver=2.9.0_r8443.g48ee28c12
 pkgrel=1
 arch=($CARCH)
 pkgdesc="KDE Application for interactive graphing and analysis of scientific data"
 url="https://labplot.kde.org/"
 license=(GPL2)
-depends=(cantor netcdf cfitsio fftw gsl qt5-serialport libcerf qt5-mqtt kuserfeedback-git)
+depends=(cantor-git netcdf cfitsio fftw gsl qt5-serialport libcerf qt5-mqtt kuserfeedback-git)
 makedepends=(git extra-cmake-modules-git kdoctools-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
