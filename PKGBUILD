@@ -1,16 +1,16 @@
 # Merged with official ABS libkscreen PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Matthias Blaicher <matthias at blaicher dot com>
 
 pkgname=libkscreen-git
-pkgver=5.21.80_r1565.gbb3395f
+pkgver=5.22.80_r1578.gada0797
 pkgrel=1
 pkgdesc='KDE screen management software'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
 depends=(qt5-x11extras libxrandr kwayland-git)
-makedepends=(git extra-cmake-modules-git doxygen qt5-tools qt5-doc)
+makedepends=(git extra-cmake-modules-git doxygen qt5-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(plasma-git)
