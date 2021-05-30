@@ -1,6 +1,6 @@
 pkgbase = kunitconversion-git
 	pkgdesc = Support for unit conversion
-	pkgver = 5.79.0_r342.g3a8032a
+	pkgver = 5.83.0_r362.gca29af6
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = kunitconversion-git
 	makedepends = extra-cmake-modules-git
 	makedepends = doxygen
 	makedepends = qt5-tools
-	makedepends = qt5-doc
 	depends = ki18n-git
 	provides = kunitconversion
 	conflicts = kunitconversion
