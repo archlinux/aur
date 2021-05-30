@@ -3,7 +3,7 @@
 _pyname=pymemcache
 pkgbase=python-$_pyname
 pkgname=(python{,2}-$_pyname)
-pkgver=3.4.2
+pkgver=3.4.3
 pkgrel=1
 pkgdesc="A comprehensive, fast, pure Python memcached client"
 arch=(any)
@@ -18,9 +18,9 @@ makedepends=(
 	python2-setuptools
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('4e5373344ffe0d549e7332f8b69b1192')
-sha256sums=('ff6f7db6893e05e30b259b25ca399181d1d20eb6f78b8c999448be997f26745f')
-sha512sums=('e46ca0a311eed40f716e812898eb601e3ebef8b5c09bdbd41923a0fd03297377e37c97bdec3c5df5c4e46b05653d8cfc2f4fb6f3b2ad5a451b36e8c6b1c8a340')
+md5sums=('ba3840b67f7586f492a60453b8c087a9')
+sha256sums=('1d628659f8d88c88832448f3917a2b68468ec8f1515108726c26efc968c413af')
+sha512sums=('433f5652b2293140df265dd92a33b6c6bcded53ab8a4e12ee6b2bed2937117ba687ee9e9ed8cca04d1c26f88e8bfb35c93a33d87539e4ff53042bf7eb9c6abdd')
 
 prepare(){
 	cp -a $_pyname-$pkgver{,-py2}
