@@ -1,6 +1,6 @@
 pkgbase = kservice-git
 	pkgdesc = Advanced plugin and service introspection
-	pkgver = 5.79.0_r865.gc70e07b
+	pkgver = 5.83.0_r911.g2986322
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = kservice-git
 	makedepends = kdoctools-git
 	makedepends = doxygen
 	makedepends = qt5-tools
-	makedepends = qt5-doc
 	depends = ki18n-git
 	depends = kconfig-git
 	depends = kcrash-git
