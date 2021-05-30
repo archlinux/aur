@@ -6,6 +6,7 @@ pkgbase = libsemanage
 	install = libsemanage.install
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	groups = selinux
 	license = LGPL2.1
 	makedepends = flex
@@ -26,4 +27,3 @@ pkgbase = libsemanage
 	sha256sums = 5b0e6929428e095b561701ccdfa9c8b0c3d70dad3fc46e667eb46a85b246a4a0
 
 pkgname = libsemanage
-
