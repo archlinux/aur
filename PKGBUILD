@@ -1,16 +1,16 @@
 # Merged with official ABS kwayland PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Antonio Rojas
 
 pkgname=kwayland-git
-pkgver=5.79.0_r1052.gba6115e
+pkgver=5.83.0_r1086.g8bc536d
 pkgrel=1
 pkgdesc='Qt-style Client and Server library wrapper for the Wayland libraries'
 arch=($CARCH)
 url='https://www.kde.org'
 license=(LGPL)
 depends=(qt5-wayland)
-makedepends=(git extra-cmake-modules-git doxygen qt5-tools qt5-doc wayland-protocols plasma-wayland-protocols-git)
+makedepends=(git extra-cmake-modules-git doxygen qt5-tools wayland-protocols plasma-wayland-protocols-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf5-git)
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  _ver="$(grep -m1 "set(KF5\?_VERSION" CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  _ver="$(grep -m1 'set(KF5\?_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
