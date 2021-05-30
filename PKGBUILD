@@ -1,9 +1,9 @@
 # Merged with official ABS kinfocenter PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kinfocenter-git
-pkgver=5.21.80_r1785.g0bb30a6
+pkgver=5.22.80_r1836.ga3051a4
 pkgrel=1
 pkgdesc='A utility that provides information about a computer system'
 arch=($CARCH)
