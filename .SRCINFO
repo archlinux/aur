@@ -1,6 +1,6 @@
 pkgbase = calendarsupport-git
 	pkgdesc = Calendar support library
-	pkgver = 5.16.40_r468.g54c1ec4
+	pkgver = 5.17.40_r523.g6a9459c
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64

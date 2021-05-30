@@ -1,8 +1,8 @@
 # Merged with official ABS calendarsupport PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=calendarsupport-git
-pkgver=5.16.40_r468.g54c1ec4
+pkgver=5.17.40_r523.g6a9459c
 pkgrel=1
 pkgdesc="Calendar support library"
 arch=($CARCH)
