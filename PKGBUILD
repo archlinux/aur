@@ -1,8 +1,8 @@
 # Merged with official ABS eventviews PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=eventviews-git
-pkgver=5.16.40_r588.g57293f0
+pkgver=5.17.40_r647.gc23f610
 pkgrel=1
 pkgdesc="Library for creating events"
 arch=($CARCH)
