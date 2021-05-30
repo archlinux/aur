@@ -4,7 +4,7 @@
 pkgname=perl-b-hooks-op-check
 _cpanname="B-Hooks-OP-Check"
 pkgver=0.22
-pkgrel=1
+pkgrel=1.1
 pkgdesc="Wrap OP check callbacks"
 arch=('i686' 'x86_64')
 license=('GPL' 'PerlArtistic')
