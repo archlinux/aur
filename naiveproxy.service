@@ -1,0 +1,12 @@
+[Unit]
+Description=NaiveProxy Service
+After=network-online.target
+
+[Service]
+Type=simple
+User=nobody
+ExecStart=/usr/bin/naiveproxy /etc/naiveproxy/config.json
+
+[Install]
+WantedBy=multi-user.target
+

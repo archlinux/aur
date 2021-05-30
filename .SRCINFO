@@ -1,6 +1,6 @@
 pkgbase = naiveproxy-git
 	pkgdesc = Make a fortune quietly
-	pkgver = 80.0.3987.87.r59.8ba5562f0
+	pkgver = v91.0.4472.77.1.r0.g724caf7f3
 	pkgrel = 1
 	url = https://github.com/klzgrad/naiveproxy
 	arch = x86_64
@@ -21,16 +21,15 @@ pkgbase = naiveproxy-git
 	makedepends = gcc
 	makedepends = llvm
 	depends = nspr
-	depends = nss
 	optdepends = ccache: Speed up compilation
 	provides = naiveproxy
 	conflicts = naiveproxy
 	conflicts = naiveproxy-bin
 	backup = etc/naiveproxy/config.json
 	source = git+https://github.com/klzgrad/naiveproxy.git
-	source = build.sh
+	source = naiveproxy.service
 	md5sums = SKIP
-	md5sums = 3aa2fe322a99a603b4afb27980a77472
+	md5sums = SKIP
 
 pkgname = naiveproxy-git
 

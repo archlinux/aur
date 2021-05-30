@@ -1,35 +1,44 @@
 # Maintainer: navigaid <navigaid@gmail.com>
+# Maintainer: shi liang <shiliang2008@msn.com>
 
 pkgname=naiveproxy-git
 _pkgname=naiveproxy
-pkgdesc='Make a fortune quietly'
-pkgver=80.0.3987.87.r59.8ba5562f0
+pkgver=v91.0.4472.77.1.r0.g724caf7f3
 pkgrel=1
+pkgdesc='Make a fortune quietly'
 arch=('x86_64' 'amd64' 'i386' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/klzgrad/naiveproxy'
 license=('BSD')
-depends=('nspr' 'nss')
-source=('git+https://github.com/klzgrad/naiveproxy.git'
-	'build.sh')
+depends=('nspr')
+source=('git+https://github.com/klzgrad/naiveproxy.git' 'naiveproxy.service')
 makedepends=("clang" "lld" "ninja" "gn" "python2" "gcc" "llvm")
 optdepends=("ccache: Speed up compilation")
 backup=(etc/naiveproxy/config.json)
-md5sums=('SKIP'
-         '3aa2fe322a99a603b4afb27980a77472')
+md5sums=('SKIP' 'SKIP')
 provides=('naiveproxy')
 conflicts=('naiveproxy' 'naiveproxy-bin')
 
-pkgver(){
+prepare() {
+  cd ${srcdir}/${_pkgname}/src
+  #sed -ri "s|./gn/out/||" build.sh
+  git checkout 90.0.4430.85
+  chmod a+x build.sh
+  ./get-clang.sh
+}
+
+pkgver() {
   cd ${srcdir}/${_pkgname}
-  printf "%s.r%s.%s" "$(cat CHROMIUM_VERSION)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git checkout 90.0.4430.85
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build(){
   cd ${srcdir}/${_pkgname}/src
-  ../../build.sh
+  ./build.sh
 }
 
 package(){
+  install -Dm 0644 -o root "naiveproxy.service" -t "${pkgdir}/usr/lib/systemd/system/"
   cd ${srcdir}/${_pkgname}
   install -Dm755 src/out/Release/naive ${pkgdir}/usr/bin/naiveproxy
   install -Dm644 src/config.json ${pkgdir}/etc/naiveproxy/config.json
