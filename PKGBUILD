@@ -1,8 +1,8 @@
 # Merged with official ABS kactivitymanagerd PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kactivitymanagerd-git
-pkgver=5.20.90_r1316.ge53f5dd
+pkgver=5.21.90_r1352.g11be786
 pkgrel=1
 pkgdesc="System service to manage user's activities and track the usage patterns"
 arch=($CARCH)
