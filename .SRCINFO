@@ -5,6 +5,7 @@ pkgbase = openssh-selinux
 	url = https://www.openssh.com/portable.html
 	install = install
 	arch = x86_64
+	arch = aarch64
 	groups = selinux
 	license = custom:BSD
 	checkdepends = inetutils
@@ -47,4 +48,3 @@ pkgbase = openssh-selinux
 	sha256sums = 25b4a4d9e2d9d3289ef30636a30e85fa1c71dd930d5efd712cca1a01a5019f93
 
 pkgname = openssh-selinux
-
