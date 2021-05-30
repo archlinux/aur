@@ -1,8 +1,8 @@
 # Merged with official ABS akonadi-contacts PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=akonadi-contacts-git
-pkgver=5.16.40_r2968.ge53af931
+pkgver=5.17.40_r3009.gc2b05057
 pkgrel=1
 pkgdesc="Libraries and daemons to implement Contact Management in Akonadi"
 arch=($CARCH)
