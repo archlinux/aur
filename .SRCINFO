@@ -5,6 +5,7 @@ pkgbase = secilc
 	url = https://github.com/SELinuxProject/cil/wiki
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	groups = selinux
 	license = custom
 	checkdepends = checkpolicy
@@ -16,4 +17,3 @@ pkgbase = secilc
 	sha256sums = 5f6e6528a281b29ac5e558babffc3d8aab682fd8df8977daff5f266a50292cc3
 
 pkgname = secilc
-
