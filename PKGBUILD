@@ -1,14 +1,14 @@
 # Merged with official ABS kitinerary PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kitinerary-git
-pkgver=5.16.40_r1583.gc1c0d7b
+pkgver=5.17.41_r1791.ge85a1a9
 pkgrel=1
 pkgdesc="Data model and extraction system for travel reservation information"
 arch=($CARCH)
 url="https://kontact.kde.org"
 license=(LGPL)
-depends=(kmime-git kpkpass-git kcalendarcore-git kcontacts-git poppler-git libphonenumber zxing-cpp)
+depends=(kmime-git kpkpass-git kcalendarcore-git kcontacts-git poppler libphonenumber zxing-cpp)
 makedepends=(git extra-cmake-modules-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})

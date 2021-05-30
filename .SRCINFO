@@ -1,6 +1,6 @@
 pkgbase = kitinerary-git
 	pkgdesc = Data model and extraction system for travel reservation information
-	pkgver = 5.16.40_r1583.gc1c0d7b
+	pkgver = 5.17.41_r1791.ge85a1a9
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = kitinerary-git
 	depends = kpkpass-git
 	depends = kcalendarcore-git
 	depends = kcontacts-git
-	depends = poppler-git
+	depends = poppler
 	depends = libphonenumber
 	depends = zxing-cpp
 	provides = kitinerary
