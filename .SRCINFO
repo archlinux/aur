@@ -1,0 +1,13 @@
+pkgbase = fcitx5-skin-microsoft_style
+	pkgdesc = A ssf to fcitx5 skin ,made by ssfconv.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/zzy-ac/fcitx5-skin-microsoft-style
+	arch = any
+	license = Apache
+	depends = fcitx5
+	source = https://github.com/zzy-ac/fcitx5-skin-microsoft-style/raw/main/Microsoft-style.tar.gz
+	md5sums = c61c92766ced53482d91b301c7347f7c
+
+pkgname = fcitx5-skin-microsoft_style
+
