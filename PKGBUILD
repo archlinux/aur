@@ -2,8 +2,8 @@
 # Maintainer: Swift Geek
 pkgname=bluez-git
 _pkgname=bluez
-pkgver=5.58.r21.gd9fdbedf0
-pkgrel=2
+pkgver=5.58.r80.gd7c2a4cee
+pkgrel=1
 epoch=1
 pkgdesc="Libraries and tools for the Bluetooth protocol stack"
 
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('libical' 'libdbus' 'glib2' 'alsa-lib' 'ell' 'json-c')
 optdepends=('cups: CUPS backend')
-makedepends=('git')
+makedepends=('git' 'python-docutils')
 conflicts=($_pkgname
 	   $_pkgname-utils
 	   $_pkgname-libs
@@ -22,7 +22,8 @@ conflicts=($_pkgname
 	   $_pkgname-hcidump
            'obexd-client'
 	   'obexd-server')
-provides=($_pkgname=${pkgver%%.r*}-${pkgrel}
+provides=(libbluetooth.so
+	  $_pkgname=${pkgver%%.r*}-${pkgrel}
           $_pkgname-utils=${pkgver%%.r*}-${pkgrel}
 	  $_pkgname-libs=${pkgver%%.r*}-${pkgrel}
 	  $_pkgname-cups=${pkgver%%.r*}-${pkgrel}
