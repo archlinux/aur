@@ -2,43 +2,43 @@
 
 pkgname=proton-ge-custom
 _srctag=6.9-GE-2
-_commit=0c7f0825eea26cd98151e91e63802dd15a6b1494
+_commit=f12fed6d53f5d9b85e8f233a8c0b7e295978b9a0
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=6.1.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
-arch=(x86_64)
 url="https://github.com/GloriousEggroll/proton-ge-custom"
+arch=(x86_64)
+options=(staticlibs)
 license=('custom')
+
 depends=(
-  fontconfig      lib32-fontconfig
-  lcms2           lib32-lcms2
-  libxml2         lib32-libxml2
-  libxcursor      lib32-libxcursor
-  libxrandr       lib32-libxrandr
-  libxdamage      lib32-libxdamage
-  libpulse        lib32-libpulse
-  gsm             lib32-gsm
-  libxi           lib32-libxi
-  gettext         lib32-gettext
-  freetype2       lib32-freetype2
-  glu             lib32-glu
-  libsm           lib32-libsm
-  gcc-libs        lib32-gcc-libs
-  libpcap         lib32-libpcap
-  lzo             lib32-lzo
+  attr             lib32-attr
+  fontconfig       lib32-fontconfig
+  lcms2            lib32-lcms2
+  libxml2          lib32-libxml2
+  libxcursor       lib32-libxcursor
+  libxrandr        lib32-libxrandr
+  libxdamage       lib32-libxdamage
+  libxi            lib32-libxi
+  gettext          lib32-gettext
+  freetype2        lib32-freetype2
+  glu              lib32-glu
+  libsm            lib32-libsm
+  gcc-libs         lib32-gcc-libs
+  libpcap          lib32-libpcap
+  lzo              lib32-lzo
   desktop-file-utils
   python
   steam-native-runtime
   cabextract
 )
+
 makedepends=(autoconf ncurses bison perl fontforge flex mingw-w64-gcc
-  mingw-w64-tools
-  meson
-  cargo
-  rust                  lib32-rust-libs
+  git rsync mingw-w64-tools lld nasm meson cmake python-virtualenv python-pip
+  glslang vulkan-headers
   giflib                lib32-giflib
   libpng                lib32-libpng
   gnutls                lib32-gnutls
@@ -50,30 +50,27 @@ makedepends=(autoconf ncurses bison perl fontforge flex mingw-w64-gcc
   mpg123                lib32-mpg123
   openal                lib32-openal
   v4l-utils             lib32-v4l-utils
-  libpulse              lib32-libpulse
   alsa-lib              lib32-alsa-lib
   libxcomposite         lib32-libxcomposite
   mesa                  lib32-mesa
   mesa-libgl            lib32-mesa-libgl
   opencl-icd-loader     lib32-opencl-icd-loader
   libxslt               lib32-libxslt
+  libpulse              lib32-libpulse
+  libva                 lib32-libva
+  gtk3                  lib32-gtk3
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
   sdl2                  lib32-sdl2
-  libgphoto2
+  libcups               lib32-libcups
   sane
+  libgphoto2
   gsm
-  vulkan-headers
+  ffmpeg
   samba
   opencl-headers
-  git
-  rsync
-  cmake
-  python-virtualenv
-  python-pip
-  nasm
-  glslang
 )
+
 optdepends=(
   giflib                lib32-giflib
   libpng                lib32-libpng
@@ -82,23 +79,28 @@ optdepends=(
   mpg123                lib32-mpg123
   openal                lib32-openal
   v4l-utils             lib32-v4l-utils
+  libpulse              lib32-libpulse
   alsa-plugins          lib32-alsa-plugins
   alsa-lib              lib32-alsa-lib
   libjpeg-turbo         lib32-libjpeg-turbo
   libxcomposite         lib32-libxcomposite
   libxinerama           lib32-libxinerama
+  ncurses               lib32-ncurses
   opencl-icd-loader     lib32-opencl-icd-loader
   libxslt               lib32-libxslt
+  libva                 lib32-libva
+  gtk3                  lib32-gtk3
   gst-plugins-base-libs lib32-gst-plugins-base-libs
+  vulkan-icd-loader     lib32-vulkan-icd-loader
   sdl2                  lib32-sdl2
-  speex                 lib32-speex
-  opus                  lib32-opus
-  libgphoto2
   sane
+  libgphoto2
   gsm
+  ffmpeg
   cups
   samba           dosbox
 )
+
 makedepends=(${makedepends[@]} ${depends[@]})
 #install=${pkgname}.install
 source=(
@@ -141,7 +143,7 @@ prepare() {
     # I know this is fugly and it should NOT be done
     # but the afdko package from AUR breaks regularly.
     # Install it from pip in a virtualenv
-    virtualenv --app-data "$srcdir"/afdko/cache --no-wheel build_venv
+    virtualenv --app-data "$srcdir"/build_venv/cache --no-wheel build_venv
     source build_venv/bin/activate
     pip install --no-cache-dir afdko
     pip install --no-cache-dir pefile
@@ -317,7 +319,7 @@ sha256sums=('SKIP'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
             '463efcae9aec82e2ae51adbafe542f2a0674e1a1d0899d732077211f5c62d182'
             '6fc5bd437b2161777f90416fa92760e73bff39c6cf507b612bc020d87909f812'
-            '02f189cc8149eaa2547a4b1cf736e71dea139379544bf9efbb3690f6d70b8b61'
+            '61dbdb4d14e22c2c34b136e5ddb800eac54023b5b23c19acd13a82862f94738c'
             '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
             '429de61522db02c4c87d31221a59b504eac1fb8b7b5c1a3f61aed3f21350eeb5'
 )

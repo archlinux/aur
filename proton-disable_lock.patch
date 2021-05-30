@@ -1,10 +1,10 @@
 diff --git a/proton b/proton
-index 9965fa2..df1461e 100755
+index 667a24b..0ac6bd8 100755
 --- a/proton
 +++ b/proton
-@@ -160,53 +160,22 @@ class Proton:
-         self.user_settings_file = self.path("user_settings.py")
+@@ -161,53 +161,22 @@ class Proton:
          self.wine_bin = self.bin_dir + "wine"
+         self.wine64_bin = self.bin_dir + "wine64"
          self.wineserver_bin = self.bin_dir + "wineserver"
 -        self.dist_lock = FileLock(self.path("dist.lock"), timeout=-1)
  
@@ -53,7 +53,7 @@ index 9965fa2..df1461e 100755
 -                #make default prefix
 -                local_env["WINEPREFIX"] = self.default_pfx_dir
 -                local_env["WINEDEBUG"] = "-all"
--                g_session.run_proc([self.wine_bin, "wineboot"], local_env)
+-                g_session.run_proc([self.wine64_bin, "wineboot"], local_env)
 -                g_session.run_proc([self.wineserver_bin, "-w"], local_env)
 +        return True
  
