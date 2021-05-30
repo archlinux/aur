@@ -26,7 +26,7 @@ prepare() {
 
 build() {
     cd "$srcdir/raccoon4-$pkgver"
-    gradlew -Pversion=$pkgver fatJar
+    ./gradlew -Pversion=$pkgver fatJar
 }
 
 package() {
