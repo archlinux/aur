@@ -29,7 +29,7 @@ build() {
   export LDFLAGS+=" -m32"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   cd sdl12-compat
-  cmake .
+  cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make
 }
 
