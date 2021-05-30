@@ -4,6 +4,7 @@ pkgbase = iproute2-selinux
 	pkgrel = 1
 	url = https://git.kernel.org/pub/scm/network/iproute2/iproute2.git
 	arch = x86_64
+	arch = aarch64
 	groups = selinux
 	license = GPL2
 	makedepends = linux-atm
@@ -33,4 +34,3 @@ pkgbase = iproute2-selinux
 	sha256sums = f60fefe4c17d3b768824bb50ae6416292bcebba06d73452e23f4147b46b827d3
 
 pkgname = iproute2-selinux
-
