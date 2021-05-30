@@ -1,6 +1,6 @@
 pkgbase = kfilemetadata-git
 	pkgdesc = A library for extracting file metadata
-	pkgver = 5.79.0_r758.g5c12562
+	pkgver = 5.83.0_r791.g27c7d9c
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = kfilemetadata-git
 	makedepends = catdoc
 	makedepends = doxygen
 	makedepends = qt5-tools
-	makedepends = qt5-doc
 	makedepends = libappimage
 	depends = ki18n-git
 	depends = karchive-git
