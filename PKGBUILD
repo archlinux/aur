@@ -4,7 +4,7 @@
 pkgname=perl-audio-mixer
 _cpanname=Audio-Mixer
 pkgver=0.7
-pkgrel=18
+pkgrel=18.1
 pkgdesc="Sound mixer control using ioctl"
 arch=(i686 x86_64)
 license=(PerlArtistic GPL)
