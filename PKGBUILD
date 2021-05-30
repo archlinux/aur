@@ -1,6 +1,6 @@
 # Maintainer: Јован Ђокић-Шумарац <sumarac@protonmail.com>
 pkgname=fetchy-git
-pkgver=2.0
+pkgver=2.2
 pkgrel=1
 epoch=
 pkgdesc="Cli system info tool written in C. "
@@ -24,13 +24,12 @@ noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
+build() {
+  cd fetchy
+  make
+}
 
 package() {
   cd fetchy
-  mkdir -p ${pkgdir}/opt/${pkgname}
-  cp -rf * ${pkgdir}/opt/${pkgname}
-  sudo make install
-  
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
-
-
