@@ -8,8 +8,8 @@ pkgdesc='GObject-based multi-platform GUI toolkit -- beta/testing/rc releases'
 arch=('x86_64')
 url='https://www.gtk.org/'
 license=('lgpl')
-provides=(libgtk-4.so gtk4)
-conflicts=(gtk4)
+provides=(libgtk-4.so gtk4 gtk-update-icon-cache gtk4-docs gtk4-demos)
+conflicts=(gtk4 gtk-update-icon-cache gtk4-docs gtk4-demos)
 depends=(
 glib2
 cairo

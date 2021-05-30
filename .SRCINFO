@@ -57,7 +57,13 @@ pkgbase = gtk-rc
 	depends = gtk-update-icon-cache
 	provides = libgtk-4.so
 	provides = gtk4
+	provides = gtk-update-icon-cache
+	provides = gtk4-docs
+	provides = gtk4-demos
 	conflicts = gtk4
+	conflicts = gtk-update-icon-cache
+	conflicts = gtk4-docs
+	conflicts = gtk4-demos
 	source = gtk-rc-4.3.0.tar.xz::https://download.gnome.org/sources/gtk/4.3/gtk-4.3.0.tar.xz
 	md5sums = 002270efd3fceb34763ff73c59b3874a
 
