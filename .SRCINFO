@@ -1,0 +1,14 @@
+pkgbase = python-caio
+	pkgdesc = Linux AIO c python bindings
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/mosquito/caio
+	arch = x86_64
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.org/packages/source/c/caio/caio-0.8.1.tar.gz
+	sha256sums = 05741338a0fd7e4bf3d20e969a0e4a5687bc60fa81cbebe6230034650520a6e2
+
+pkgname = python-caio
+
