@@ -1,0 +1,26 @@
+pkgbase = snap-pac-git
+        pkgdesc = Pacman hooks that use snapper to create pre/post btrfs snapshots like openSUSE's YaST
+        pkgver = 3.0.1
+        pkgrel = 1
+        url = https://github.com/wesbarnett/snap-pac.git
+        arch = i686
+        arch = pentium4
+        arch = x86_64
+        arch = arm
+        arch = armv7h
+        arch = armv6h
+        arch = aarch64
+        license = GPL2
+        makedepends = git
+        makedepends = python-sphinx
+        depends = btrfs-progs
+        depends = pacman
+        depends = procps-ng
+        depends = snapper
+        provides = snap-pac
+        conflicts = snap-pac
+        backup = etc/snap-pac.ini
+        source = git+https://github.com/wesbarnett/snap-pac.git
+        md5sums = SKIP
+
+pkgname = snap-pac-git
