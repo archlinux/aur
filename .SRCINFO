@@ -1,0 +1,12 @@
+pkgbase = kubectl-df-pv
+	pkgdesc = kubectl plugin - giving admins df (disk free) like utility for persistent volumes
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/yashbhutwala/kubectl-df-pv
+	arch = x86_64
+	license = Apache-2.0
+	source = https://github.com/yashbhutwala/kubectl-df-pv/releases/download/v0.2.7/kubectl-df-pv_v0.2.7_linux_amd64.tar.gz
+	sha256sums = 40388f2d0f8fad43ca2028f677400c71abc6dcb27a8bbc055d8a26461364285b
+
+pkgname = kubectl-df-pv
+
