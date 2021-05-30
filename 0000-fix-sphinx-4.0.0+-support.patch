@@ -1,0 +1,14 @@
+diff --git a/nova-23.0.1/doc/ext/feature_matrix.py b/nova-23.0.1.new/doc/ext/feature_matrix.py
+index caeaecf..74f5308 100644
+--- a/nova-23.0.1/doc/ext/feature_matrix.py
++++ b/nova-23.0.1.new/doc/ext/feature_matrix.py
+@@ -575,7 +575,8 @@ class FeatureMatrixDirective(rst.Directive):
+ 
+ def setup(app):
+     app.add_directive('feature_matrix', FeatureMatrixDirective)
+-    app.add_stylesheet('feature-matrix.css')
++    attrs = {'rel': 'stylesheet' }
++    app.add_css_file('feature-matrix.css', **attrs)
+     return {
+         'parallel_read_safe': True,
+         'parallel_write_safe': True,

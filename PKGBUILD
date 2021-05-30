@@ -4,7 +4,7 @@ _pyname=nova
 pkgbase=openstack-$_pyname
 pkgname=(openstack-$_pyname{,-doc})
 pkgver=23.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cloud computing fabric controller"
 arch=(any)
 url="https://docs.openstack.org/nova/latest/"
@@ -139,6 +139,7 @@ source=(
 	sudoers.conf
 	sysusers.conf
 	tmpfiles.conf
+	0000-fix-sphinx-4.0.0+-support.patch
 )
 md5sums=('962aface03358d279363d10c72440f45'
          '3f26a8660462ae32a683ad79ef733b79'
@@ -150,7 +151,8 @@ md5sums=('962aface03358d279363d10c72440f45'
          'de818eb31a86aaf4ae47bbf49a011a21'
          '063c88893366f685c380fae0aa678b15'
          'fdc38aa4d35b511165091aac88c6614d'
-         '7e4af4b03bf0ac69b3a657b6642ae5bb')
+         '7e4af4b03bf0ac69b3a657b6642ae5bb'
+         'bff9f9b8767862db7fb4998a28cff646')
 sha256sums=('d4771def4107cbd1b088e1e33e147f50d1ff2913a45dc067738927fe61fcb69f'
             'ccee044c78f73566662b46ae1d2837b34fa998e607a5b965dff85c5042eb21de'
             '14c3724e55fa7d094cc95c334d564c5b2276d73bbf3771de6fa2c8acaab9f71b'
@@ -161,7 +163,8 @@ sha256sums=('d4771def4107cbd1b088e1e33e147f50d1ff2913a45dc067738927fe61fcb69f'
             '5b6276b3480d30fc402a980e073e437fd81818cc024d1a04192bc6239177ad9d'
             'a8101096ca72a2f70d003c54b3339d16697315380795d657134cf9c02388a49f'
             'ed64bd90f87a3c41ed57e8fea77055d9df85ed6229bd3f75d74627c42322eb4c'
-            '46ac6ef1d5b31996e3cfb4ec3647acbdc056efd01a91ff0d757f5fd8f4f8637d')
+            '46ac6ef1d5b31996e3cfb4ec3647acbdc056efd01a91ff0d757f5fd8f4f8637d'
+            '6fd255a0b1f0dc21c4c9e05e6348821213925f53675d208ae2196e5a23bf7183')
 sha512sums=('04b0aebf58aa8cb0e364094a27fa2289c4223d00f93f0387af047fda8642dcf1bf390badd0708385cea9166ecf31200bd74946836dabb65f9ea0b2735df31861'
             'bcd6c94e9d882528b4883fa947822e6dbea6ca8b438815556471f54f8f5bd8b413f0906d4cc210a85891fef09846972689d7d4c25ed1ae8a582fd413c22c4820'
             'df839698bf257be1de5ed667c1c8f3c53c9384e549edc79b0988edae366ea6c10aff96ca9bbfb272852f5dd2348fbf1ea95c610ef261a771e8e6ca42b3448abc'
@@ -172,9 +175,21 @@ sha512sums=('04b0aebf58aa8cb0e364094a27fa2289c4223d00f93f0387af047fda8642dcf1bf3
             '3e0671510a19f700f75d5d0efc98ae49a1616984f0abbadf19c0f9732bce6700b5fde436933a90906426877a2c52fcdb1c0b643f97781df8169808847388e850'
             'b2351829821824724106663a64e1237c01cec99ea5c503e92611fcceb32a1c10e85c59fee020a75e05748a8a82d89e08edaeb8f62a52843673dd59e5cfb4f6c4'
             '77a3849f4604fdb4293dbaf7341f9dab62b6e2df82eeab5baa728ed5ae9b3d0ac73f4fd924aee2271d6696ba5c26a50ff21f2a2a452515b8a4a2c12e9fd6a7e9'
-            '1ba67c1ef08878dd25db648f80a1aefe73f07e283b18132ec18814176e2e27b67dbc264d0904bcb3df06d4fcc7f2945bd23306e7742a19a6ddb945b3627cb0f6')
+            '1ba67c1ef08878dd25db648f80a1aefe73f07e283b18132ec18814176e2e27b67dbc264d0904bcb3df06d4fcc7f2945bd23306e7742a19a6ddb945b3627cb0f6'
+            '3ad4dfd92ec96686311d48b4e3ad403976294ff1a32fbdaa47a7fe9f5c891a09d3faa18ad6448b73c81146adc320d3a3cb27195f9e8a21ee2f338f31c819cb9d')
 
 export PBR_VERSION=$pkgver
+
+prepare(){
+	for i in "${source[@]}"
+	do case "${i}" in
+		?*.patch)
+			msg2 "Apply patch ${i}"
+			patch -Np1 <"${i}"
+		;;
+	esac
+	done
+}
 
 build(){
 	cd $_pyname-$pkgver
