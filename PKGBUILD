@@ -1,8 +1,9 @@
-# Maintainer: Sebastien Bariteau <numkem@gmail.com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Sebastien Bariteau <numkem@gmail.com>
 pkgname=perl-geoip
 _gitname=geoip-api-perl
 pkgver=1.51
-pkgrel=2
+pkgrel=2.1
 pkgdesc="GeoIP Perl API"
 arch=(i686 x86_64)
 license=(GPL)
