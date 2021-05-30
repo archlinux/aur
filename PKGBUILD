@@ -1,15 +1,15 @@
 # Merged with official ABS plasma-browser-integration PKGBUILD by João, 2021/01/31 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=plasma-browser-integration-git
-pkgver=5.21.80_r1208.g3d1b0191
+pkgver=5.22.80_r1254.gcedda05a
 pkgrel=1
 pkgdesc='Components necessary to integrate browsers into the Plasma Desktop'
 arch=($CARCH)
 url='https://www.kde.org/plasma-desktop'
 license=(GPL)
-depends=(krunner-git purpose-git kfilemetadata-git)
+depends=(purpose-git kfilemetadata-git plasma-workspace-git)
 makedepends=(git extra-cmake-modules-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
