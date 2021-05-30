@@ -1,9 +1,9 @@
 # Merged with official ABS systemsettings PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Antonio Rojas <nqn1976 @ gmail.com>
 
 pkgname=systemsettings-git
-pkgver=5.21.80_r2365.g10f63700
+pkgver=5.22.80_r2436.gcef4ec6d
 pkgrel=1
 pkgdesc='KDE system manager for hardware, software, and workspaces'
 arch=($CARCH)
