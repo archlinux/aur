@@ -1,9 +1,9 @@
 # Merged with official ABS akonadi-search PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=akonadi-search-git
-pkgver=5.16.40_r1044.gea0c103
+pkgver=5.17.40_r1091.gb2d99d7
 pkgrel=1
 pkgdesc="Libraries and daemons to implement searching in Akonadi"
 url='https://kontact.kde.org'
