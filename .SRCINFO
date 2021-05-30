@@ -1,7 +1,7 @@
 pkgbase = hydrogen-git
 	pkgdesc = An advanced drum machine (git version)
 	pkgver = 1.1.0.beta1.r31.gacd1b9f7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hydrogen-music/hydrogen
 	arch = x86_64
 	groups = pro-audio
@@ -9,6 +9,7 @@ pkgbase = hydrogen-git
 	makedepends = git
 	makedepends = alsa-lib
 	makedepends = cmake
+	makedepends = itstool
 	makedepends = jack
 	makedepends = ladspa
 	makedepends = libarchive

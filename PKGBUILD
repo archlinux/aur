@@ -4,14 +4,14 @@
 _pkgname=hydrogen
 pkgname="${_pkgname}-git"
 pkgver=1.1.0.beta1.r31.gacd1b9f7
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced drum machine (git version)"
 arch=('x86_64')
 license=('GPL')
 groups=('pro-audio')
 url="https://github.com/hydrogen-music/hydrogen"
 depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'qt5-base' 'qt5-xmlpatterns')
-makedepends=('git' 'alsa-lib' 'cmake' 'jack' 'ladspa' 'libarchive' 'liblo'
+makedepends=('git' 'alsa-lib' 'cmake' 'itstool' 'jack' 'ladspa' 'libarchive' 'liblo'
              'liblrdf' 'libpulse' 'libsndfile' 'libxml2' 'portaudio' 'portmidi'
              'python' 'qt5-tools' 'docbook-xml' 'docbook-sgml' 'docbook-utils'
              'docbook-xsl' 'poxml' 'xmlto')
