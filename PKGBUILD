@@ -5,8 +5,8 @@ pkgver=r10550.a9c10309f
 pkgrel=1
 pkgdesc='Zotero is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources.'
 arch=('x86_64')
-url='http://www.zotero.org'
-license=('GPL3')
+url='https://www.zotero.org'
+license=('AGPL3')
 depends=('dbus-glib' 'gtk3' 'nss' 'libxt')
 makedepends=('npm' 'wget' 'zip' 'unzip' 'python2' 'python' 'rsync' 'git')
 conflicts=('zotero')
@@ -57,6 +57,8 @@ package() {
     install -Dm644 "$pkgdir"/usr/lib/zotero/chrome/icons/default/default32.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/zotero.png
     install -Dm644 "$pkgdir"/usr/lib/zotero/chrome/icons/default/default48.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/zotero.png
     install -Dm644 "$pkgdir"/usr/lib/zotero/chrome/icons/default/default256.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/zotero.png
+    # Copy license
+    install -Dm644 "$builddir"/COPYING "$pkgdir"/usr/share/licenses/zotero/LICENSE
     # Disable APP update
     sed -i '/pref("app.update.enabled", true);/c\pref("app.update.enabled", false);' "$pkgdir"/usr/lib/zotero/defaults/preferences/prefs.js
 }
