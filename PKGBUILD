@@ -1,8 +1,8 @@
 # Merged with official ABS ksmtp PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=ksmtp-git
-pkgver=5.16.40_r318.g9ad326d
+pkgver=5.17.40_r348.g66e416f
 pkgrel=1
 pkgdesc="Job-based library to send email through an SMTP server"
 arch=($CARCH)

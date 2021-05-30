@@ -1,6 +1,6 @@
 pkgbase = ksmtp-git
 	pkgdesc = Job-based library to send email through an SMTP server
-	pkgver = 5.16.40_r318.g9ad326d
+	pkgver = 5.17.40_r348.g66e416f
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
