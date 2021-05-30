@@ -1,9 +1,8 @@
 pkgbase = ksshaskpass-git
 	pkgdesc = ssh-add helper that uses kwallet-git and kpassworddialog
-	pkgver = 5.21.80_r184.ga7f82cf
+	pkgver = 5.22.80_r196.gdaa2679
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
-	install = ksshaskpass.install
 	arch = x86_64
 	groups = plasma-git
 	license = GPL

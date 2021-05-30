@@ -1,9 +1,9 @@
 # Merged with official ABS ksshaskpass PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=ksshaskpass-git
-pkgver=5.21.80_r184.ga7f82cf
+pkgver=5.22.80_r196.gdaa2679
 pkgrel=1
 pkgdesc='ssh-add helper that uses kwallet-git and kpassworddialog'
 url='https://kde.org/plasma-desktop/'
@@ -14,7 +14,6 @@ makedepends=(git extra-cmake-modules-git kdoctools-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git} x11-ssh-askpass)
 groups=(plasma-git)
-install=${pkgname%-git}.install
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
