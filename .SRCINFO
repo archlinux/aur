@@ -5,6 +5,7 @@ pkgbase = sudo-selinux
 	url = https://www.sudo.ws/sudo/
 	install = sudo.install
 	arch = x86_64
+	arch = aarch64
 	groups = selinux
 	license = custom
 	depends = glibc
