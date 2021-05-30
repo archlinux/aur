@@ -1,10 +1,10 @@
 # Merged with official ABS kdeplasma-addons PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Stefano Avallone <stavallo@gmail.com>
 
 pkgname=kdeplasma-addons-git
-pkgver=5.21.80_r8454.g0ecdecaa4
+pkgver=5.22.80_r8520.ga6435e48c
 pkgrel=1
 pkgdesc='All kind of addons to improve your Plasma experience'
 arch=($CARCH)
