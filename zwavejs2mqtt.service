@@ -1,0 +1,16 @@
+[Unit]
+Description=zwavejs2mqtt nodejs daemon
+After=network.target
+
+[Service]
+Type=simple
+User=zwavejs2mqtt
+Group=zwavejs2mqtt
+ExecStart=/usr/bin/zwavejs2mqtt
+PrivateDevices=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target
