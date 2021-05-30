@@ -3,7 +3,7 @@ _pkgname=chatterino
 _appimage=Chatterino-x86_64.AppImage
 
 pkgname=chatterino2-nightly-appimage
-pkgver=2021.05.25
+pkgver=2021.05.30
 pkgrel=1
 pkgdesc='Second installment of the Twitch chat client series "Chatterino", nightly appimage'
 arch=('x86_64')
