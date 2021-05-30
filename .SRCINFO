@@ -5,6 +5,7 @@ pkgbase = checkpolicy
 	url = https://github.com/SELinuxProject/selinux
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	groups = selinux
 	license = GPL2
 	makedepends = libsepol>=3.2
@@ -14,4 +15,3 @@ pkgbase = checkpolicy
 	sha256sums = 9b1c81fa86fe3867842164448d90c8e7ea94b2987497809c65d4caa87a5c5bc8
 
 pkgname = checkpolicy
-
