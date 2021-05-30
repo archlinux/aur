@@ -1,9 +1,9 @@
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Christoph Haag <christoph.haag@collabora.com>
 # Author: Matthias Blaicher <matthias at blaicher dot com>
 
 pkgname=disman-git
-pkgver=0.521.80_r1792.g2dffbe8
+pkgver=0.522.80_r1794.gb5c1515
 pkgrel=1
 pkgdesc='Qt/C++ display management library by the KWinFT project (libkscreen fork)'
 arch=($CARCH)

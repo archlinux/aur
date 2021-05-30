@@ -1,6 +1,6 @@
 pkgbase = disman-git
 	pkgdesc = Qt/C++ display management library by the KWinFT project (libkscreen fork)
-	pkgver = 0.521.80_r1792.g2dffbe8
+	pkgver = 0.522.80_r1794.gb5c1515
 	pkgrel = 1
 	url = https://gitlab.com/kwinft/disman
 	arch = x86_64
