@@ -4,6 +4,7 @@ pkgbase = logrotate-selinux
 	pkgrel = 1
 	url = https://github.com/logrotate/logrotate
 	arch = x86_64
+	arch = aarch64
 	groups = selinux
 	license = GPL
 	depends = popt
@@ -24,4 +25,3 @@ pkgbase = logrotate-selinux
 	md5sums = 94dae4d3eded2fab9ae879533d3680db
 
 pkgname = logrotate-selinux
-
