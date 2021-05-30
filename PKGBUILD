@@ -1,16 +1,16 @@
 # Maintainer: Brodi <me@brodi.space>
+_pkgname=aretext
 pkgname=aretext-git
-pkgver=0.r531
+pkgver=0.r626
 pkgrel=1
 pkgdesc="Minimalist text editor that never slows you down."
-arch=("x86_64")
+arch=('any')
 url="https://github.com/aretext/aretext"
 license=(GPL3)
-arch=(x86_64 i686)
 depends=(go)
 makedepends=(git)
-provides=("${pkgname%-git}")
-conflicts=("${provides[@]}")
+provides=("${_pkgname}" "${_pkgname}-git")
+conflicts=("${_pkgname}" "${_pkgname}-bin")
 source=("${pkgname}::git+${url}")
 sha512sums=(SKIP)
 
