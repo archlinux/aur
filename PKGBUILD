@@ -3,20 +3,22 @@
 
 pkgname=flmusic
 pkgver=1.2.1
-pkgrel=3
+pkgrel=3.1
 pkgdesc="Very simple CD/audio player application for FLTK"
 arch=('i686' 'x86_64')
 url="http://home.arcor.de/szukw000/english_index.html"
 license=('LGPL')
-depends=('fltk' 'sox')
+depends=('fltk' 'alsa-lib' 'sox')
 makedepends=('gendesk')
-source=(http://home.arcor.de/szukw000/$pkgname-fltk13-source-$pkgver.tgz)
+# source=(http://home.arcor.de/szukw000/$pkgname-fltk13-source-$pkgver.tgz)
+source=($pkgname-fltk13-source-$pkgver.tgz)
 md5sums=('1e2e1bd760a7f5ea583093537090c3ae')
 
 prepare() {
   cd $pkgname-fltk13-source-$pkgver
   sed -i '/ioctl.h/a #include <limits.h>' reader.c
   sed -i 's/$(installdir)/$(DESTDIR)$(installdir)/' Makefile.in
+  sed -i '/\$(FLAGS)/s/\$(FLAGS)/\$(FLAGS) \$(LDFLAGS)/' Makefile.in
   gendesk -n -f --pkgname=$pkgname --pkgdesc="Very simple CD/audio player" --categories="AudioVideo;Audio;Player"
 }
 
