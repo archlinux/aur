@@ -1,8 +1,8 @@
 # Merged with official ABS signon-kwallet-extension PKGBUILD by João, 2021/02/18 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=signon-kwallet-extension-git
-pkgver=21.03.70_r63.ge2463a9
+pkgver=21.07.70_r64.g47e187d
 pkgrel=1
 pkgdesc="KWallet integration for signon framework"
 arch=($CARCH)
