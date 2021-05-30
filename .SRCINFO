@@ -10,7 +10,6 @@ pkgbase = kdsoap-ws-discovery-client-git
 	makedepends = extra-cmake-modules-git
 	makedepends = doxygen
 	makedepends = qt5-tools
-	makedepends = qt5-doc
 	depends = kdsoap-git
 	provides = kdsoap-ws-discovery-client
 	conflicts = kdsoap-ws-discovery-client
