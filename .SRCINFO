@@ -1,14 +1,14 @@
 pkgbase = setlx
 	pkgdesc = Interpreter for the SetlX programming language
-	pkgver = 2.7.1
+	pkgver = 2.7.2
 	pkgrel = 1
 	url = http://randoom.org/Software/SetlX
 	arch = any
 	license = BSD
 	depends = java-runtime
-	source = http://download.randoom.org/setlX/pc/setlX_v2-7-1.binary_only.zip
+	source = http://download.randoom.org/setlX/pc/setlX_v2-7-2.binary_only.zip
 	source = LICENSE
-	sha256sums = fd28c0e718fcabfeff6a85d60937d91a2fd690be5bc5b21014ae2b6dd688b3d5
+	sha256sums = f0afd23148a6cba0406bfea76cdce30fc447f347f297fbca884fffb63fbd2c5b
 	sha256sums = c4ac68ea51527f7cc2859cac9f2fed74e9072fb7595a08d3f958cc2aa5fb99e5
 
 pkgname = setlx

@@ -1,9 +1,9 @@
-# Maintainer: Jendrik Wenke <jendrikwenke+aur at gmail dot com>
+# Maintainer: Jendrik <rua@jendrik.eu>
 # Contributor: kaptoxic@yahoo.com
 # Contributor: Thomas Lange <thomas-lange2@gmx.de>
 
 pkgname=setlx
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc='Interpreter for the SetlX programming language'
 arch=('any')
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('java-runtime')
 source=(http://download.randoom.org/setlX/pc/setlX_v${pkgver//./-}.binary_only.zip
         LICENSE)
-sha256sums=('fd28c0e718fcabfeff6a85d60937d91a2fd690be5bc5b21014ae2b6dd688b3d5'
+sha256sums=('f0afd23148a6cba0406bfea76cdce30fc447f347f297fbca884fffb63fbd2c5b'
             'c4ac68ea51527f7cc2859cac9f2fed74e9072fb7595a08d3f958cc2aa5fb99e5')
 
 package() {
