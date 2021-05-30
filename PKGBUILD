@@ -13,7 +13,7 @@ pkgrel=2
 pkgdesc='Daemon that runs specified programs at scheduled times and related tools with SELinux support'
 url='https://github.com/cronie-crond/cronie/'
 license=('custom:BSD')
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 depends=('pam-selinux' 'bash' 'run-parts' 'libselinux')
 optdepends=('smtp-server: send job output via email'
             'smtp-forwarder: forward job output to email server')

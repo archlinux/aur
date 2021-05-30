@@ -5,6 +5,7 @@ pkgbase = cronie-selinux
 	url = https://github.com/cronie-crond/cronie/
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	groups = selinux
 	license = custom:BSD
 	depends = pam-selinux
@@ -37,4 +38,3 @@ pkgbase = cronie-selinux
 	sha256sums = ae6e533ecdfc1bd2dd80a9e25acb0260cbe9f00c4e4abee93d552b3660f263fc
 
 pkgname = cronie-selinux
-
