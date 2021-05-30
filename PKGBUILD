@@ -22,13 +22,14 @@ sha256sums=('706b55667de221b651b0d938dfbb468112b322ed41a634d3ca5c8bd861b19e8a')
 prepare() {
   # Assist chroot builds with a persistent cargo cache (hat tip @ccorn for this patch)
   if [ -d "$startdir/.cargo" ]; then
-    export CARGO_HOME="${CARGO_HOME:-$startdir/.cargo}"
+    export _cargo="${CARGO_HOME:-$startdir/.cargo}"
   else
     msg2 "NOTE : If you're building in a (clean) chroot and want a persistant
             cargo cache folder specific for this package, you can create
-            an empty '.cargo' directory next to the 'PKGBUILD'. This will
-            be recognized and used as CARGO_HOME (except when CARGO_HOME is
-            already set)."
+            an empty '.cargo' directory next to the PKGBUILD.  This will
+            then be recognized and used as the CARGO_HOME cache. (Except
+            when the CARGO_HOME variable is already set in your environ-
+            ment.)"
   fi
   sed -i "4s|\(path *= *\).*$|\1/etc/gitconfig.$_name|" "$_name-$pkgver/themes.gitconfig"
 }
@@ -38,12 +39,14 @@ build() {
   # git2 cannot be built with current nightly due to a regression; for ref.:
   # https://github.com/rust-lang/rust/issues/85574
   RUSTUP_TOOLCHAIN=stable \
+  CARGO_HOME="$_cargo" \
   cargo build --release --locked --target-dir ./target
 }
 
 check() {
   cd "$_name-$pkgver"
   RUSTUP_TOOLCHAIN=stable \
+  CARGO_HOME="$_cargo" \
   cargo test --release --locked --target-dir ./target
 }
 
