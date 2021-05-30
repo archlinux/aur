@@ -1,6 +1,6 @@
 pkgbase = kconfigwidgets-git
 	pkgdesc = Widgets for KConfig
-	pkgver = 5.79.0_r532.g1301208
+	pkgver = 5.83.0_r577.g40e36e9
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -13,8 +13,7 @@ pkgbase = kconfigwidgets-git
 	makedepends = python-pyqt5
 	makedepends = doxygen
 	makedepends = qt5-tools
-	makedepends = qt5-doc
-	makedepends = sip
+	makedepends = sip4
 	depends = kauth-git
 	depends = kcodecs-git
 	depends = kconfig-git
