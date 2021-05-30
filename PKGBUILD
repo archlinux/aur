@@ -1,9 +1,9 @@
 # Merged with official ABS breeze PKGBUILD by João, 2021/01/31 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=breeze-git
-pkgver=5.21.80_r2138.g21d8e4aa
+pkgver=5.22.80_r2190.g29f1ef63
 pkgrel=1
 arch=($CARCH)
 pkgdesc='Artwork, styles and assets for the Breeze visual style for the Plasma Desktop'
