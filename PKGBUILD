@@ -1,8 +1,8 @@
 # Merged with official ABS akonadi-mime PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=akonadi-mime-git
-pkgver=5.16.40_r1586.g5a290f2
+pkgver=5.17.40_r1618.g6d19ae9
 pkgrel=1
 pkgdesc="Libraries and daemons to implement basic email handling"
 arch=($CARCH)
