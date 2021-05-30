@@ -1,65 +1,52 @@
+# Merged with official ABS calligra PKGBUILD by João, 2021/05/30 (all respective contributors apply herein)
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Maintainer: Solomon Choina <shlomochoina@gmail.com
-pkgbase=calligra-git
-pkgname=('calligra-git')
-pkgver=3.2.1.r214.g92f10c7bd1d
+
+pkgname=calligra-git
+pkgdesc="A set of applications for productivity and creative usage"
+pkgver=3.2.89_r101519.g961ce2d9ade
 pkgrel=1
-pkgdesc="office and graphic art suite by KDE"
-arch=("$CARCH")
-license=('FDL1.2' 'GPL2' 'LGPL')
-url='http://www.calligra-suite.org/'
-makedepends=('git' 'vc' 'libgit2' 'extra-cmake-modules' 'kdesignerplugin' 'kdoctools' 'kdelibs4support' 'cmake' 'khtml' 'kross'
-             'kreport' 'kproperty' 'kdiagram' 'okular' 'kxmlgui' 'qt5-webkit' 'poppler' 'qca-qt5' 'libvisio' 'ninja'
-             'libetonyek' 'kactivities' 'kio' 'openexr' 'lcms2'  'kxmlgui' 'marble'
-             'kcalcore' 'akonadi-contacts' 'knotifyconfig' 'poppler-qt5' 'libodfgen' 'threadweaver' 'boost' 'eigen' 'kinit' 'libwps')
-depends=('kcmutils'  'knotifyconfig' 'kross' 'kactivities' 'okular'
-         'kdiagram' 'libspnav' 'kdelibs4support' 'gsl' 'openexr' 'kcontacts' 'qca-qt5'
-               'poppler-qt5' 'libodfgen' 'qt5-webkit'
-               'cauchy' 'khtml' 'qt5-declarative')
+arch=($CARCH)
+url='https://www.calligra-suite.org/'
+license=(FDL1.2 GPL2 LGPL)
+depends=(kcmutils-git knotifyconfig-git kross-git kactivities-git kdiagram-git libspnav kdelibs4support-git
+         gsl openexr kcontacts-git qca-git poppler-qt5 libodfgen khtml-git cauchy)
+makedepends=(git extra-cmake-modules-git kdoctools-git kdesignerplugin-git kinit-git libwpg okular-git eigen marble-common-git boost pstoedit libvisio libetonyek libwps vc libgit2 kcalendarcore-git akonadi-git)
 optdepends=('libwpg: Corel WordPerfect Graphics image importer'
             'libwps: Microsoft Works file word processor format import'
             'libvisio: Microsoft Visio import filter'
             'libetonyek: Apple Keynote import filter'
             'pstoedit: EPS to SVG filter'
             'poppler: PDF to SVG filter'
-            'openjpeg: PDF to SVG filer'
             'libgit2: Calligra Gemini git plugin'
-            'kirigami2: for Calligra Gemini'
+            'kirigami2-git: for Calligra Gemini'
             'qt5-quickcontrols: for Calligra Gemini'
             'qt5-webengine: for Calligra Gemini')
-source=('calligra::git+https://invent.kde.org/office/calligra.git')
-sha256sums=('SKIP')
-conflicts=(calligra calligra-devtools-git calligra-extras-git calligra-filters-git calligra-karbon-git karbon calligra-libs-git
-  calligra-plugins-git calligra-sheets-git calligra-stage-git calligra-words-git calligra-meta
-  calligra-flow-git calligra-braindump-git calligra-gemin-git calligra-handbook-git)
-replaces=(calligra calligra-devtools calligra-extras calligra-filters calligra-karbon karbon calligra-libs
-  calligra-plugins calligra-sheets calligra-stage calligra-words calligra-l10n calligra-meta)
-provides=('calligra')
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+source=("git+https://github.com/KDE/${pkgname%-git}.git" calligra-openexr3.patch)
+sha256sums=('SKIP'
+            '0dec106deff4cff342021da4ca4e9759f0bbe5707ea2d4ee8536eaf863409cec')
 
 pkgver() {
-  cd calligra
-   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'set(CALLIGRA_VERSION_STRING' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  patch -d ${pkgname%-git} -p1 < calligra-openexr3.patch # Fix build with OpenEXR 3
 }
 
 build() {
-
-   if [[ "${CARCH}" == "i686" ]]; then
-     CFLAGS="-march=i686 -mtune=generic -O2 -pipe -fstack-protector-strong --param=ssp-buffer-size=4"
-     CXXFLAGS="-march=i686 -mtune=generic -O2 -pipe -fstack-protector-strong --param=ssp-buffer-size=4"
-   else
-     CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong --param=ssp-buffer-size=4"
-     CXXFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong --param=ssp-buffer-size=4"
-   fi
-
-  cmake -B build \
-  -S calligra -G Ninja \
-      -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_BUILD_TYPE=debugfull \
-      -DCMAKE_INSTALL_LIBDIR=lib \
-      -DBUILD_TESTING=OFF  -Wno-dev
-  ninja -C build
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
-}
+  DESTDIR="$pkgdir" cmake --install build
 
+# Remove utterly broken thumbnailers
+  rm "$pkgdir"/usr/lib/qt/plugins/calligra*thumbnail.so
+}
