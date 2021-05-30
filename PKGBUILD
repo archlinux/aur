@@ -1,9 +1,9 @@
 # Merged with official ABS kded PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kded-git
-pkgver=5.79.0_r373.g8dfb2c8
+pkgver=5.83.0_r402.ge6bb77c
 pkgrel=1
 pkgdesc='Extensible deamon for providing system level services'
 arch=($CARCH)
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  _ver="$(grep -m1 "set(KF5\?_VERSION" CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  _ver="$(grep -m1 'set(KF5\?_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
