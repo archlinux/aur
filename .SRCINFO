@@ -1,6 +1,6 @@
 pkgbase = phonon-git
 	pkgdesc = The multimedia framework by KDE
-	pkgver = 4.11.1_r3848.g528c604b
+	pkgver = 4.11.1_r3850.g6a5106d3
 	pkgrel = 1
 	url = https://community.kde.org/Phonon
 	arch = x86_64
