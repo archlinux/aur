@@ -1,9 +1,9 @@
 # Merged with official ABS okular PKGBUILD by João, 2021/04/30 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Alex Talker
 
 pkgname=okular-git
-pkgver=21.07.70_r9293.g97264b534
+pkgver=21.07.70_r9334.g195bbe363
 pkgrel=1
 pkgdesc='Document Viewer'
 arch=($CARCH)
@@ -27,7 +27,7 @@ pkgver() {
   _minor_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MINOR' CMakeLists.txt | cut -d '"' -f2)"
   _micro_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MICRO' CMakeLists.txt | cut -d '"' -f2)"
   echo "${_major_ver}.${_minor_ver}.${_micro_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
-  }
+}
 
 build() {
   cmake -B build -S ${pkgname%-git} \

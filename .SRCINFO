@@ -1,6 +1,6 @@
 pkgbase = okular-git
 	pkgdesc = Document Viewer
-	pkgver = 21.07.70_r9293.g97264b534
+	pkgver = 21.07.70_r9334.g195bbe363
 	pkgrel = 1
 	url = https://kde.org/applications/graphics/okular/
 	arch = x86_64
