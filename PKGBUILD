@@ -1,31 +1,43 @@
-# Maintainer: Lucas Sampaio <lucas@lsmagalhaes.com>
-# Maintainer: Quan Guo <guotsuan@gmail.com>
+# Maintainer: Thiago Perrotta <perrotta dot thiago at poli dot ufrj dot br>
+# Contributor: Lucas Sampaio <lucas@lsmagalhaes.com>
+# Contributor: Quan Guo <guotsuan@gmail.com>
 
 pkgname=fpp-git
-pkgver=0.7.2.r521
+pkgver=0.9.2.r130.ge0d5cfc
 pkgrel=1
-pkgdesc='Facebook PathPicker is a simple command line tool that solves the perpetual problem of selecting files out of bash output.'
-url='https://github.com/facebook/PathPicker'
-license=('BSD')
-source=('git+https://github.com/facebook/PathPicker.git')
+pkgdesc='TUI that lets you pick paths out of its stdin and run arbitrary commands on them'
+url='https://facebook.github.io/PathPicker'
+license=('MIT')
+source=("${pkgname%-git}::git+https://github.com/facebook/PathPicker.git")
 sha256sums=('SKIP')
 arch=('any')
-makedepends=('git' 'python')
-depends=()
-conflicts=('fpp')
-provides=('fpp')
+makedepends=('git')
+depends=('python')
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
+
+prepare() {
+  cd "$srcdir/${pkgname%-git}"
+  rm -r "src/tests"
+}
 
 pkgver() {
-  cd "${srcdir}/PathPicker"
-  printf "%s.r%s" "$(git describe --abbrev=0 --tags)" "$(git rev-list --count HEAD)"
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  mkdir -p $pkgdir/opt/PathPicker
-  cp -r $srcdir/PathPicker $pkgdir/opt
+  cd "$srcdir/${pkgname%-git}"
 
-  mkdir -p $pkgdir/usr/bin
-  ln -s "/opt/PathPicker/fpp" "$pkgdir/usr/bin/fpp"
-  install -d  "$pkgdir/usr/share/man/man1"
-  ln -s /opt/PathPicker/debian/usr/share/man/man1/fpp.1 "$pkgdir/usr/share/man/man1/fpp.1"
+  # library
+  install -Dm755 "fpp" -t "$pkgdir/usr/share/fpp"
+  cp -a src "$pkgdir/usr/share/fpp"
+
+  # entrypoint
+  install -dm755 "$pkgdir/usr/bin"
+  ln -s "/usr/share/fpp/fpp" "$pkgdir/usr/bin"
+
+  # documentation
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 "debian/usr/share/man/man1/fpp.1" -t "$pkgdir/usr/share/man/man1"
 }
