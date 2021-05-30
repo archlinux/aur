@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _cranname=fansi
-_cranver=0.4.2
+_cranver=0.5.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(GPL2 GPL3)
 depends=('r>=3.1.0')
 optdepends=(r-unitizer r-knitr r-rmarkdown)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('a2edf06cf8b91333a5df4990d50cdb35a63aa4b63c8c8ddf5bedcb499daafc44')
+sha256sums=('9d1bf8c316969c163abd3dd41cc1425b2671df9471fe806bf8783794a19ca54f')
 
 build() {
   cd "${srcdir}"
