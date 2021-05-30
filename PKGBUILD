@@ -40,7 +40,7 @@ _name=alice-vision
 _fragment="#branch=develop"
 
 pkgname=${_name}-git
-pkgver=2.4.0.r62.g2f2768071
+pkgver=2.4.0.r74.gd5662a267
 pkgrel=1
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('i686' 'x86_64')
@@ -77,6 +77,8 @@ prepare() {
 # fix doc build
   sed -i '/^ *install.*doc/s/doc/htmlDoc/' src/CMakeLists.txt
   git apply -v "${srcdir}"/{cmake_cxx_std_14,openexr3}.patch
+  #fix gcc:11 headers regression
+  grep -lR "std::numeric_limits" src/aliceVision/hdr |xargs sed -i '1 i\#include <limits>'
 }
 
 
