@@ -1,9 +1,9 @@
 # Merged with official ABS ktnef PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=ktnef-git
-pkgver=5.16.40_r616.gb888201
+pkgver=5.17.40_r645.g71a9ae1
 pkgrel=1
 pkgdesc="API for handling TNEF data"
 arch=($CARCH)

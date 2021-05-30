@@ -1,6 +1,6 @@
 pkgbase = ktnef-git
 	pkgdesc = API for handling TNEF data
-	pkgver = 5.16.40_r616.gb888201
+	pkgver = 5.17.40_r645.g71a9ae1
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
