@@ -5,6 +5,7 @@ pkgbase = semodule-utils
 	url = https://github.com/SELinuxProject/selinux/wiki
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	groups = selinux
 	license = GPL2
 	depends = libsepol>=2.7
@@ -13,4 +14,3 @@ pkgbase = semodule-utils
 	sha256sums = be155654883c8dc4d05493e04a3eb9e56d28803009f1fdd721d42c68b878f757
 
 pkgname = semodule-utils
-
