@@ -1,7 +1,7 @@
 pkgbase = qemu-launcher
 	pkgdesc = GNOME/Gtk front-end for the Qemu x86 PC emulator
 	pkgver = 1.7.4
-	pkgrel = 5
+	pkgrel = 6
 	url = http://gna.org/projects/qemulaunch
 	arch = any
 	license = GPL
