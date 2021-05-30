@@ -1,16 +1,16 @@
 # Merged with official ABS kconfig PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kconfig-git
-pkgver=5.79.0_r776.g5d0dac0
+pkgver=5.83.0_r837.g0d6cdae
 pkgrel=1
 pkgdesc='Configuration system'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(qt5-base)
-makedepends=(git extra-cmake-modules-git qt5-tools qt5-doc clang python-pyqt5 doxygen sip)
+makedepends=(git extra-cmake-modules-git qt5-tools clang python-pyqt5 doxygen sip4)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 optdepends=('python-pyqt5: for the Python bindings')
@@ -26,12 +26,9 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_LIBEXECDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
   cmake --build build
 }
 
