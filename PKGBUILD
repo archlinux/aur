@@ -35,11 +35,15 @@ prepare() {
 
 build() {
   cd "$_name-$pkgver"
+  # git2 cannot be built with current nightly due to a regression; for ref.:
+  # https://github.com/rust-lang/rust/issues/85574
+  RUSTUP_TOOLCHAIN=stable \
   cargo build --release --locked --target-dir ./target
 }
 
 check() {
   cd "$_name-$pkgver"
+  RUSTUP_TOOLCHAIN=stable \
   cargo test --release --locked --target-dir ./target
 }
 
