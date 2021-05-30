@@ -1,8 +1,8 @@
 # Merged with official ABS incidenceeditor PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=incidenceeditor-git
-pkgver=5.16.40_r660.g3f2c226
+pkgver=5.17.40_r724.g5125eb6
 pkgrel=1
 pkgdesc="KDE PIM incidence editor"
 arch=($CARCH)
