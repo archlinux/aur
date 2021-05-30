@@ -22,7 +22,7 @@ pkgver=4.4.0
 pkgrel=1
 pkgdesc="Policy analysis tools for SELinux"
 groups=('selinux')
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/SELinuxProject/setools/wiki"
 license=('GPL' 'LGPL')
 depends=('libsepol>=3.2' 'libselinux>=3.2' 'python' 'python-networkx>=2.0' 'python-setuptools')

@@ -5,6 +5,7 @@ pkgbase = setools
 	url = https://github.com/SELinuxProject/setools/wiki
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	groups = selinux
 	license = GPL
 	license = LGPL
@@ -24,4 +25,3 @@ pkgbase = setools
 	sha256sums = f3786677e40b7f16a226f48f233dcf835e700739614a7dbed2ff61cc9607814e
 
 pkgname = setools
-
