@@ -1,16 +1,16 @@
 # Merged with official ABS polkit-kde-agent PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=polkit-kde-agent-git
-pkgver=5.21.80_r484.gd7ab7df
+pkgver=5.22.80_r497.gaa6f7c5
 pkgrel=1
 pkgdesc='Daemon providing a polkit authentication UI for KDE'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(kiconthemes kdbusaddons kcrash)
-makedepends=(git extra-cmake-modules-git kdoctools)
+depends=(kiconthemes-git kdbusaddons-git kcrash-git)
+makedepends=(git extra-cmake-modules-git kdoctools-git)
 conflicts=(${pkgname%-git} polkit-kde-git)
 provides=(${pkgname%-git})
 replaces=(polkit-kde-git)
