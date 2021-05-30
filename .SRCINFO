@@ -1,13 +1,13 @@
 pkgbase = ttc-iosevka-aile
 	pkgdesc = Typeface family designed for coding, terminal use and technical documents.
-	pkgver = 7.0.0
+	pkgver = 7.0.1
 	pkgrel = 1
 	url = https://typeof.net/Iosevka/
 	arch = any
 	license = OFL
-	source = https://github.com/be5invis/Iosevka/releases/download/v7.0.0/ttc-iosevka-aile-7.0.0.zip
-	source = ttc-iosevka-aile-7.0.0-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v7.0.0/LICENSE.md
-	sha256sums = 8f17d3f960b8704b0b65755b67742974aeceb474403bc88c6619efbc75a64bba
+	source = https://github.com/be5invis/Iosevka/releases/download/v7.0.1/ttc-iosevka-aile-7.0.1.zip
+	source = ttc-iosevka-aile-7.0.1-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v7.0.1/LICENSE.md
+	sha256sums = 7ca294b4ce737499742b932884837348c8318bac2f5a859d7ebf258a484ff61f
 	sha256sums = 72c3d557ff41d871680652f56afd565ba6834c90eadc45a4ec15410dce1c0c80
 
 pkgname = ttc-iosevka-aile
