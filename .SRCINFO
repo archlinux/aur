@@ -1,6 +1,6 @@
 pkgbase = kparts-git
 	pkgdesc = Document centric plugin system
-	pkgver = 5.79.0_r470.g3679b07
+	pkgver = 5.83.0_r506.g4dcd25c
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = kparts-git
 	makedepends = extra-cmake-modules-git
 	makedepends = doxygen
 	makedepends = qt5-tools
-	makedepends = qt5-doc
 	depends = kio-git
 	provides = kparts
 	conflicts = kparts
