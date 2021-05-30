@@ -1,12 +1,12 @@
 # Maintainer: Ruben Solvang <post@rubensolvang.no>
 pkgname=bas21-bin
-pkgver=1.5.9
+pkgver=1.5.10
 pkgrel=1
 pkgdesc="A norwegian accounting and invoice system"
 arch=('x86_64')
 url=https://bas21.no
 license=('custom')
-sha256sums=('970f8ed991ffffa56c0af7eacdef403c9341707868889da4b47adf4d48ab6ef7')
+sha256sums=('311dcca8fab71271b8457d3ec1fb80d8c718c3b4b99c605f687b7ec9fd3fa0ed')
 options=('!strip')
 depends=('openssl>=1.1.1')
 source=("https://download.bas21.no/bas21/bas21-$pkgver.tar.xz")
