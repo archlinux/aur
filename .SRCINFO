@@ -4,6 +4,7 @@ pkgbase = findutils-selinux
 	pkgrel = 1
 	url = https://www.gnu.org/software/findutils/
 	arch = x86_64
+	arch = aarch64
 	groups = selinux
 	license = GPL3
 	depends = glibc
@@ -20,4 +21,3 @@ pkgbase = findutils-selinux
 	sha1sums = SKIP
 
 pkgname = findutils-selinux
-
