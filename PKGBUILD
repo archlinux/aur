@@ -1,14 +1,14 @@
 # Merged with official ABS messagelib PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=messagelib-git
-pkgver=5.16.43_r5646.gd2bbff22
+pkgver=5.17.50_r5970.g5d5d6873
 pkgrel=1
 pkgdesc="KDE PIM messaging library"
 arch=($CARCH)
 url="https://kontact.kde.org"
 license=(LGPL)
-depends=(kdepim-apps-libs-git kmailtransport-git libgravatar-git kidentitymanagement-git kmbox-git qca)
+depends=(kmailtransport-git libgravatar-git kidentitymanagement-git kmbox-git qca-git)
 makedepends=(git extra-cmake-modules-git boost)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
