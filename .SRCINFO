@@ -5,6 +5,7 @@ pkgbase = selinux-sandbox
 	url = https://github.com/SELinuxProject/selinux/wiki
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	groups = selinux
 	license = GPL2
 	depends = libcap-ng
@@ -14,4 +15,3 @@ pkgbase = selinux-sandbox
 	sha256sums = 45cc762934df28f094d7f3aa65525dd00877a7a2c806ef99a0404adf2aa47e44
 
 pkgname = selinux-sandbox
-
