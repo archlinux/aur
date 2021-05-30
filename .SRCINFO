@@ -1,6 +1,6 @@
 pkgbase = libgravatar-git
 	pkgdesc = KDE PIM library providing Gravatar support
-	pkgver = 5.16.40_r321.g0c7a696
+	pkgver = 5.17.40_r349.g6941b9e
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64

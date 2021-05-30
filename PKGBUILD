@@ -1,8 +1,8 @@
 # Merged with official ABS libgravatar PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=libgravatar-git
-pkgver=5.16.40_r321.g0c7a696
+pkgver=5.17.40_r349.g6941b9e
 pkgrel=1
 pkgdesc="KDE PIM library providing Gravatar support"
 arch=($CARCH)
