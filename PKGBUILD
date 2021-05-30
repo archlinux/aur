@@ -1,10 +1,10 @@
 # Merged with official ABS kimap PKGBUILD by João, 2021/01/31 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kimap-git
-pkgver=5.16.40_r1058.g377d7ad
+pkgver=5.17.40_r1088.ga50c518
 pkgrel=1
 pkgdesc="Job-based API for interacting with IMAP servers"
 arch=($CARCH)
