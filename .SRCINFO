@@ -1,6 +1,6 @@
 pkgbase = kpkpass-git
 	pkgdesc = Apple Wallet Pass reader
-	pkgver = 5.16.40_r189.g0c6d8fa
+	pkgver = 5.17.40_r215.ga5daca8
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64

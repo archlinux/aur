@@ -1,8 +1,8 @@
 # Merged with official ABS kpkpass PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kpkpass-git
-pkgver=5.16.40_r189.g0c6d8fa
+pkgver=5.17.40_r215.ga5daca8
 pkgrel=1
 pkgdesc="Apple Wallet Pass reader"
 arch=($CARCH)
