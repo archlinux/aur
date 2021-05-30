@@ -1,6 +1,6 @@
 pkgbase = kdav-git
 	pkgdesc = A DAV protocol implemention with KJobs
-	pkgver = 5.79.0_r1261.g7e75073
+	pkgver = 5.83.0_r1283.gf01e7af
 	pkgrel = 1
 	epoch = 1
 	url = https://community.kde.org/Frameworks
