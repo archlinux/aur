@@ -1,6 +1,6 @@
 pkgbase = kdesignerplugin-git
 	pkgdesc = Integration of Frameworks widgets in Qt Designer/Creator
-	pkgver = 5.79.0_r306.g826e877
+	pkgver = 5.83.0_r324.g1406e59
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
