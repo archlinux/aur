@@ -1,5 +1,5 @@
-# $Id$
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Muflone http://www.muflone.com/contacts/english/
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
@@ -7,7 +7,7 @@
 
 pkgname=ffmpeg2.8
 pkgver=2.8.16
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=('x86_64')
 url='https://ffmpeg.org/'
@@ -25,13 +25,15 @@ optdepends=('ladspa: LADSPA filters')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
           'libswscale.so')
-source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc})
+source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
+        "${pkgname}.conf")
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
 sha256sums=('6b895902f1ec0d738af40f514dfeac6caba143aa2d0a17af22397c2fc4ebc092'
-            'SKIP')
+            'SKIP'
+            'f0d34b08843e3cba6276e234f1fc4e520e3a7c45d2b4450393a1a5dd9da49247')
 
 build() {
-  cd ffmpeg-${pkgver}
+  cd "ffmpeg-${pkgver}"
 
   ./configure \
     --prefix='/usr' \
@@ -80,16 +82,14 @@ build() {
 }
 
 package() {
-  cd ffmpeg-${pkgver}
+  cd "ffmpeg-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/usr/share
 
-  find "${pkgdir}"/usr/bin -type f -exec mv {} {}2.8 \;
+  find "${pkgdir}/usr/bin" -type f -exec mv "{}" "{}2.8" \;
 
-  install -dm 755 "${pkgdir}"/etc/ld.so.conf.d
-  echo -e '/usr/lib/\n/usr/lib/ffmpeg2.8/' > "${pkgdir}"/etc/ld.so.conf.d/50-ffmpeg2.8.conf
+  install -m 755 -d "${pkgdir}/etc/ld.so.conf.d"
+  install -m 644 -t "${pkgdir}/etc/ld.so.conf.d" "${srcdir}/${pkgname}.conf"
 }
-
-# vim: ts=2 sw=2 et:
 
