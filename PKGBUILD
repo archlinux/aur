@@ -31,7 +31,7 @@ prepare() {
             when the CARGO_HOME variable is already set in your environ-
             ment.)"
   fi
-  sed -i "4s|\(path *= *\).*$|\1/etc/gitconfig.$_name|" "$_name-$pkgver/themes.gitconfig"
+  sed -i "/path *=/s|=.*|= /etc/gitconfig.$_name|" "$_name-$pkgver/themes.gitconfig"
 }
 
 build() {
