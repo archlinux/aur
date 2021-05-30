@@ -1,9 +1,9 @@
 # Merged with official ABS kgamma5 PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kgamma5-git
-pkgver=5.21.80_r444.gc4e0b78
+pkgver=5.22.80_r455.gdb6a51b
 pkgrel=1
 pkgdesc="Adjust your monitor's gamma settings"
 arch=($CARCH)
