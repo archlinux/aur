@@ -5,6 +5,7 @@ pkgbase = restorecond
 	url = https://github.com/SELinuxProject/selinux/wiki
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	groups = selinux
 	license = GPL2
 	makedepends = pkgconf
@@ -15,4 +16,3 @@ pkgbase = restorecond
 	sha256sums = 471c17e64aa6d7226e861d4d0125d15fdf9b38892c542be32bd83d999e5e75f5
 
 pkgname = restorecond
-
