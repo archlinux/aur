@@ -1,7 +1,7 @@
-# Maintainer: A. Husen <hello@husen.id>
+# Maintainer: A. Husen <hi@husen.id>
 pkgname=plenti-bin
 _pkgname=plenti
-pkgver=0.4.19
+pkgver=0.4.20
 pkgrel=1
 pkgdesc="Static Site Generator with Go backend and Svelte frontend"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('APACHE')
 provides=('plenti')
 conflicts=('plenti')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/plenti_${pkgver}_Linux_64-bit.tar.gz")
-sha512sums=('bc4a7366a0fb60fbef75f6a7773a3f735421972a8a2b497c33cdff0a3ae4cd6bf039c2ac3f635e5c01516117ffd1126ac0dc0e46ac804dcb3b8d7396607a7797')
+sha512sums=('0c0562268316b0839bd41ebb51710148f8827770e8efbdd1fd58580467dcc325568a4b2d1b057452bf203936d60d70b1bcb03492d9522e953a16a01d80d20a51')
 
 package() {
     cd "$srcdir"
