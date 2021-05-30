@@ -1,4 +1,4 @@
-pkgbase = dosbox-svn-ne2000
+pkgbase = dosbox-ne2000-svn
 	pkgdesc = An emulator with builtin DOS for running DOS Games - Includes patches for NE2000 network card
 	pkgver = 0.74.2.4335M
 	pkgrel = 1
@@ -19,8 +19,8 @@ pkgbase = dosbox-svn-ne2000
 	depends = sdl_sound
 	provides = dosbox
 	conflicts = dosbox
-	source = dosbox-svn-ne2000::svn+https://svn.code.sf.net/p/dosbox/code-0/dosbox/trunk
-	source = dosbox-svn-ne2000.desktop
+	source = dosbox-ne2000-svn::svn+https://svn.code.sf.net/p/dosbox/code-0/dosbox/trunk
+	source = dosbox-ne2000-svn.desktop
 	source = dosbox-16.png
 	source = dosbox-48.png
 	source = dosbox-128.png
@@ -32,5 +32,5 @@ pkgbase = dosbox-svn-ne2000
 	sha256sums = 228593e97732eaa31e0202b7d46da9d7529672369c17312db3f97784601b5d81
 	sha256sums = 839e20fab07cc29bb80e34fce2199dea91eacd090c6bce89c4d276564ac519cb
 
-pkgname = dosbox-svn-ne2000
+pkgname = dosbox-ne2000-svn
 
