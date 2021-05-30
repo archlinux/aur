@@ -4,7 +4,7 @@ pkgname=perl-gtk2-ex-listmodelconcat
 _realname=Gtk2-Ex-ListModelConcat
 _module=Gtk2::Ex::ListModelConcat
 pkgver=11
-pkgrel=1
+pkgrel=2
 pkgdesc="${_module} -- concatenated list models"
 arch=('any')
 url="https://metacpan.org/release/${_realname}"
@@ -29,7 +29,7 @@ check() {
 package() {
   cd  "$srcdir/$_realname-$pkgver"
   make install DESTDIR="$pkgdir"
-  find "$pkgdir" -name '.packlist' -o -name '*.pod' -delete
+  find "$pkgdir" \( -name '.packlist' -o -name '*.pod' \) -delete
 }
 
 # vim:set ts=2 sw=2 et:
