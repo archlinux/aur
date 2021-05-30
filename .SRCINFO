@@ -1,22 +1,21 @@
 pkgbase = python-conda
 	pkgdesc = OS-agnostic, system-level binary package manager and ecosystem https://conda.io
-	pkgver = 4.9.2
+	pkgver = 4.10.1
 	pkgrel = 1
 	url = https://github.com/conda/conda
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	depends = python
+	depends = python>=3.6
 	depends = python-conda-package-handling
 	depends = python-pycosat>=0.6.3
 	depends = python-requests>=2.12.4
 	depends = python-ruamel-yaml>=0.11.14
-	optdepends = python-conda-build: to use the conda build command
 	provides = python-conda
 	provides = python-conda-env
 	options = !emptydirs
-	source = conda-4.9.2.tar.gz::https://github.com/conda/conda/archive/4.9.2.tar.gz
-	sha512sums = da99c3a5cb8663a607278a9a4ce360e5c9b9347713377103623a535265ee0cf19a6a87737ef43d322121ef4a928bc2bbfb1dbba59140c1965aa0f3715dea0dd0
+	source = conda-4.10.1.tar.gz::https://github.com/conda/conda/archive/4.10.1.tar.gz
+	sha512sums = 75796b580abcc91c449461302cecb98cd067285ef03d6630c882177b0b0f8f9df56101480943d5a14855ecfca10c5ea7dcb57c569a3ff538add713f82772a6f0
 
 pkgname = python-conda
 
