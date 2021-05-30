@@ -1,19 +1,20 @@
 # Merged with official ABS kwin PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kwin-git
-pkgver=5.21.80_r18923.g4dcb3c495
+pkgver=5.22.80_r19461.geb27d312a
 pkgrel=1
 pkgdesc='An easy to use, but flexible, composited Window Manager'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(kscreenlocker-git xcb-util-cursor plasma-framework-git kcmutils-git kwayland-server-git breeze-git qt5-sensors qt5-script pipewire libqaccessibilityclient-git)
-makedepends=(git extra-cmake-modules-git qt5-tools kdoctools-git)
+depends=(kscreenlocker-git xcb-util-cursor plasma-framework-git kcmutils-git kwayland-server-git breeze-git qt5-sensors qt5-script pipewire libqaccessibilityclient-git libdrm lcms2)
+makedepends=(git extra-cmake-modules-git qt5-tools kdoctools-git krunner-git xorg-xwayland)
+optdepends=('qt5-virtualkeyboard: virtual keyboard support for kwin-wayland'
+            'maliit-keyboard: virtual keyboard support for kwin-wayland')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('qt5-virtualkeyboard: virtual keyboard support for kwin-wayland')
 groups=(plasma-git)
 install=${pkgname%-git}.install
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
