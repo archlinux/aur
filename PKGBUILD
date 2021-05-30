@@ -1,8 +1,8 @@
 # Merged with official ABS mailimporter PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=mailimporter-git
-pkgver=5.16.40_r420.g62b09bf
+pkgver=5.17.40_r451.g3054952
 pkgrel=1
 pkgdesc="Mail importer library"
 arch=($CARCH)

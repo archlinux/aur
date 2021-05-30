@@ -1,6 +1,6 @@
 pkgbase = mailimporter-git
 	pkgdesc = Mail importer library
-	pkgver = 5.16.40_r420.g62b09bf
+	pkgver = 5.17.40_r451.g3054952
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
