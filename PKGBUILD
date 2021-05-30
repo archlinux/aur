@@ -1,10 +1,10 @@
 # Merged with official ABS kdelibs4support PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdelibs4support-git
-pkgver=5.79.0_r996.ge6dde367
+pkgver=5.83.0_r1018.g8015119a
 pkgrel=1
 pkgdesc='Porting aid from KDELibs4'
 arch=($CARCH)
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  _ver="$(grep -m1 "set(KF5\?_VERSION" CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  _ver="$(grep -m1 'set(KF5\?_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
