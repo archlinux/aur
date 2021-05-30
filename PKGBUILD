@@ -3,7 +3,7 @@
 pkgname=xeoma-client-bin
 pkgver=21.4.2
 pkgrel=1
-pkgdesc='Xeoma Client'
+pkgdesc='Xeoma Client - the video surveillance software.'
 arch=('x86_64')
 url='https://felenasoft.com/xeoma/en/'
 license=('custom:xeoma')
