@@ -1,7 +1,7 @@
 # Maintainer: fenuks
 
 _pkgver=0.22
-_pkgrel=04
+_pkgrel=05
 _file=gtk-wave-cleaner-${_pkgver}-${_pkgrel}
 pkgname=gwc
 pkgver=${_pkgver}_${_pkgrel}
@@ -18,11 +18,11 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 # install=$pkgname.install
 source=("https://github.com/AlisterH/gwc/releases/download/${_pkgver}-${_pkgrel}/${_file}.tar.gz")
-sha256sums=('0107c3a0c6074e03f7f5fca8eb4ea0d8e7f47d574b1c5df4fcc4a4418c1ab64a')
+sha256sums=('6e7cd392b56925ed07d118eedf967b154679e66dbbc84316ae1a35ab0f3c1517')
 
 prepare() {
     cd "${srcdir}/${_file}"
-    LDFLAGS="-Xlinker --allow-multiple-definition" ./configure --prefix=/usr
+    ./configure --prefix=/usr
 }
 
 build() {
