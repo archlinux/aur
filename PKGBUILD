@@ -1,8 +1,8 @@
 # Merged with official ABS libkleo PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=libkleo-git
-pkgver=5.16.48_r703.g7e354cf
+pkgver=5.17.46_r881.gb45c40d
 pkgrel=1
 pkgdesc="KDE PIM cryptographic library"
 arch=($CARCH)

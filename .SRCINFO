@@ -1,6 +1,6 @@
 pkgbase = libkleo-git
 	pkgdesc = KDE PIM cryptographic library
-	pkgver = 5.16.48_r703.g7e354cf
+	pkgver = 5.17.46_r881.gb45c40d
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
