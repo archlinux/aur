@@ -1,20 +1,18 @@
 pkgbase = tidal-hifi
 	pkgdesc = The web version of listen.tidal.com running in electron with hifi support thanks to widevine.
-	pkgver = 0.5
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/Mastermindzh/tidal-hifi
 	arch = x86_64
 	license = custom:MIT
 	makedepends = npm
-	makedepends = git
 	depends = libxss
 	depends = nss
 	depends = gtk3
-	provides = tidal-hifi
-	source = https://github.com/Mastermindzh/tidal-hifi/archive/0.5.zip
+	source = tidal-hifi-2.2.1.zip::https://github.com/Mastermindzh/tidal-hifi/archive/2.2.1.zip
 	source = tidal-hifi.desktop
-	sha512sums = a25a9189a10aa35a62ad41299792909b0ac6547544802ef9d1f58d6d0bff75b4d364975c81d5a4d73eabf64bdb772c3823c3b3cd58540d40acaedf6594033f61
-	sha512sums = fa5fa918ea890baa5f500db3153a6eff3d63966528ffa3349acda3ea02fbecb1ea78a1ba1d23ef7402de2228fc0a483252e0b7e72c73cfb25ed401bedaf856f5
+	sha512sums = adf126bb23945deca1f3cc5e50b53422d442096726f6b77c7490fc3fcd6af809502750d1670ef26c7ab019f1b31e6bf8fa59274bdc9a8be6779caa73c7f50cc9
+	sha512sums = e47dc754a23dbf6f9837275a93cf5868b23abca84b789393d77da855068eb6f63a1d702b4688c315ad3f7c5c09deab5d172566a377807bc56f54dc8a31431495
 
-pkgname = tidal-hifi-git
+pkgname = tidal-hifi
 
