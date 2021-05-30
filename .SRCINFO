@@ -1,7 +1,7 @@
 pkgbase = aretext-bin
 	pkgdesc = [BETA] Minimalist text editor that never slows you down.
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/aretext/aretext
 	arch = x86_64
 	arch = i686
