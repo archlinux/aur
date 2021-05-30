@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
   cd sdl12-compat
-  cmake .
+  cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make
 }
 
