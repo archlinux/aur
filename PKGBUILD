@@ -11,7 +11,7 @@ depends=('python'
 )
 checkdepends=()
 makedepends=()
-license=('BSD')
+license=('MIT')
 arch=("any")  
 source=("${_pkgname}-${pkgver}.tgz::https://github.com/executablebooks/sphinx-comments/archive/v${pkgver}.tar.gz")
 sha256sums=('f0978c3f8eeb4f10711493f11cd8c6c0fc3dd61899ed593660c728741c331b40')
