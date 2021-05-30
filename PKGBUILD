@@ -2,7 +2,7 @@
 
 pkgname=termius-app
 _pkgname=${pkgname%-*}
-pkgver=7.11.1
+pkgver=7.11.3
 pkgrel=1
 pkgdesc="Desktop SSH Client"
 url="https://www.termius.com/"
@@ -26,7 +26,7 @@ source=(
 	"$pkgname-$pkgver.deb::$_mirror/pool/main/t/$pkgname/${pkgname}_${pkgver}_amd64.deb"
 	"TERMS_OF_USE"
 )
-sha512sums=('7ad1cdb27d77a9161dc12890c4818bc6867990f7c4a27b242d693d90483d4fa3ac2f8a3bfcfc8c13c69be9a549960e75ca411ab9c95d4d8e16596b7119f42321'
+sha512sums=('0cb6086f1a1d5a7e27011dcd33e40f21170b4cd045541b88f1a63f7356cfb4c58bed3f74c1eb97ceb4a05dc08fe8e062800ef133c2e1e2aa9f347085d06dc810'
             'bf187f1ec9387d9c3ddbd0e401a235ec9bafab14698f49a182546ed4a057c398f3532f472b2a6be22b9a200b29d1ccb6e3c2fb69a92dfce2a4bf29264617565b')
 
 prepare() {
