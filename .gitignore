@@ -2,6 +2,7 @@ cis-latex-*
 pkg
 src
 *.aux
+*.cls
 *.dtx
 *.fdb_latexmk
 *.fls
