@@ -1,5 +1,5 @@
 # Merged with official ABS qca PKGBUILD by João, 2021/05/29 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=qca-git
 pkgver=2.3.2_r2411.g797b4305
