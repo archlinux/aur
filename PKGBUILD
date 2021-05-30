@@ -2,7 +2,7 @@
 
 pkgname=perl-coro
 _realname=Coro
-pkgver=6.54
+pkgver=6.57
 pkgrel=1
 pkgdesc="CPAN/Coro - the only real threads in perl"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('perl>=0' 'perl-anyevent>=5' 'perl-common-sense' 'perl-guard>=0.5')
 makedepends=('perl-canary-stability')
 url="https://metacpan.org/release/${_realname}"
 source=("http://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/${_realname}-${pkgver}.tar.gz")
-md5sums=('aaf5ca766a7323feaab7c9aea77e6ea8')
+md5sums=('fa5970a2a2f3df9d68d4369c7dde1a55')
 
 build() {
   cd $_realname-$pkgver
