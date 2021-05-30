@@ -11,6 +11,7 @@ pkgbase = satdump-git
 	makedepends = libcorrect-git
 	makedepends = airspy-git
 	makedepends = rtl-sdr
+	makedepends = hackrf
 	depends = libvolk
 	depends = glfw
 	depends = glew
