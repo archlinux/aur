@@ -1,9 +1,9 @@
 # Merged with official ABS kscreen PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kscreen-git
-pkgver=5.21.80_r1298.gdcac1b4
+pkgver=5.22.80_r1331.gefc7de1
 pkgrel=1
 pkgdesc="KDE's screen management software"
 arch=($CARCH)
