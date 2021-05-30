@@ -1,0 +1,17 @@
+pkgbase = pkgctrl-bin
+	pkgdesc = reconcile packages installed on Arch Linux system
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/nmiculinic/pkgctrl
+	arch = x86_64
+	license = Apache
+	depends = glibc
+	depends = pacman
+	depends = yay
+	provides = pkgctrl
+	conflicts = pkgctrl
+	source = pkgctrl-linux-amd64-0.1.0::https://github.com/nmiculinic/pkgctrl/releases/download/v0.1.0/pkgctrl-linux-amd64
+	sha256sums = 76185995fc6fa589e1c32cc3ac915be68c32632b376b7c5da8fc6ef55f52a379
+
+pkgname = pkgctrl-bin
+
