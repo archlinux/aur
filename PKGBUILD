@@ -1,8 +1,8 @@
 # Merged with official ABS kdegraphics-mobipocket PKGBUILD by João, 2021/03/05 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kdegraphics-mobipocket-git
-pkgver=20.12.3_r257.g959ed35
+pkgver=21.04.1_r258.g036fd81
 pkgrel=1
 pkgdesc="A collection of plugins to handle mobipocket files"
 url="https://www.kde.org/applications/graphics/"
