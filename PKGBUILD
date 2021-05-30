@@ -1,15 +1,45 @@
-# Maintainer: nitsky
-arch=("x86_64")
-license=("MIT")
-pkgdesc="Tangram is an automated machine learning framework designed for programmers."
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Sonny Piers <sonny at fastmail dot net>
 pkgname=tangram
+pkgver=1.3.1
 pkgrel=1
-pkgver=0.3.0
-provides=("tangram")
-sha256sums_x86_64=("030a0ad71ce5ce3d84a71a83ebddefe06469de055eec9e43ccdba901fcffd51f")
-source_x86_64=("https://github.com/tangramxyz/tangram/releases/download/v${pkgver}/tangram_cli_${pkgver}_x86_64-unknown-linux-gnu.tar.gz")
-url='https://www.tangram.xyz'
+pkgdesc="Run web apps on your desktop."
+arch=('any')
+url="https://github.com/sonnyp/Tangram"
+license=('GPL3')
+depends=('gjs' 'libsoup' 'webkit2gtk')
+conflicts=('gigagram' "$pkgname-web")
+replaces=("$pkgname-web")
+makedepends=('git' 'npm' 'meson')
+#checkdepends=('appstream-glib')
+source=("${pkgname%-web}::git+https://github.com/sonnyp/Tangram.git#tag=v$pkgver"
+        'git+https://github.com/sonnyp/troll.git')
+sha256sums=('SKIP'
+            'SKIP')
 
-package() {
-  install -D -m 755 tangram "$pkgdir/usr/bin/tangram"
+prepare() {
+	cd "$srcdir/$pkgname"
+	git submodule init
+	git config submodule.src/troll.url $srcdir/troll
+	git submodule update
+}
+
+build() {
+	pushd "$srcdir/$pkgname"
+	npm install --cache "$srcdir/npm-cache"
+	./node_modules/.bin/rollup -c
+	popd
+
+	arch-meson "$pkgname" build
+	meson compile -C build
+}
+
+#check() {
+#	meson test -C build --print-errorlogs
+#}
+
+package(){
+	DESTDIR="$pkgdir" meson install -C build
+
+	ln -s /usr/bin/re.sonny.Tangram "$pkgdir/usr/bin/$pkgname"
 }
