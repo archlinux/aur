@@ -1,7 +1,7 @@
 pkgbase = kdepim-addons-git
 	pkgdesc = Addons for KDE PIM applications
-	pkgver = 5.16.40_r3981.g139fef08
-	pkgrel = 2
+	pkgver = 5.17.40_r4100.g1006f2ba
+	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
 	groups = kdepim-git

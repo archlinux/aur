@@ -1,9 +1,9 @@
 # Merged with official ABS kdepim-addons PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kdepim-addons-git
-pkgver=5.16.40_r3981.g139fef08
-pkgrel=2
+pkgver=5.17.40_r4100.g1006f2ba
+pkgrel=1
 pkgdesc='Addons for KDE PIM applications'
 arch=($CARCH)
 url='https://kontact.kde.org'
