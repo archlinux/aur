@@ -1,14 +1,14 @@
 # Merged with official ABS mailcommon PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=mailcommon-git
-pkgver=5.16.40_r988.g87f2d8d
+pkgver=5.17.40_r1035.gdabdc14
 pkgrel=1
 pkgdesc="KDE PIM library providing support for mail applications"
 arch=($CARCH)
 url="https://kontact.kde.org"
 license=(LGPL)
-depends=(mailimporter-git messagelib-git phonon-qt5)
+depends=(mailimporter-git messagelib-git phonon-qt5-git)
 makedepends=(git extra-cmake-modules-git boost qt5-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})

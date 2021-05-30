@@ -1,6 +1,6 @@
 pkgbase = mailcommon-git
 	pkgdesc = KDE PIM library providing support for mail applications
-	pkgver = 5.16.40_r988.g87f2d8d
+	pkgver = 5.17.40_r1035.gdabdc14
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = mailcommon-git
 	makedepends = qt5-tools
 	depends = mailimporter-git
 	depends = messagelib-git
-	depends = phonon-qt5
+	depends = phonon-qt5-git
 	provides = mailcommon
 	conflicts = mailcommon
 	source = git+https://github.com/KDE/mailcommon.git
