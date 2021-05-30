@@ -5,6 +5,7 @@ pkgbase = mcstrans
 	url = https://github.com/SELinuxProject/selinux/wiki
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	groups = selinux
 	license = GPL2
 	depends = libcap
@@ -14,4 +15,3 @@ pkgbase = mcstrans
 	sha256sums = fafaf7614b7114b95c582643f8b2a6ae1605093fbaf3b571d9b01fc81fb70929
 
 pkgname = mcstrans
-
