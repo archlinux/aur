@@ -1,8 +1,8 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com> 
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=elf-dissector-git
-pkgver=0.0.1_r776.g4113e8b
-pkgrel=2
+pkgver=0.0.1_r783.g368d2a0
+pkgrel=1
 pkgdesc='Static analysis tool for ELF libraries and executables'
 arch=($CARCH)
 url='https://invent.kde.org/sdk/elf-dissector'

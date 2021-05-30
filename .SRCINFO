@@ -1,7 +1,7 @@
 pkgbase = elf-dissector-git
 	pkgdesc = Static analysis tool for ELF libraries and executables
-	pkgver = 0.0.1_r776.g4113e8b
-	pkgrel = 2
+	pkgver = 0.0.1_r783.g368d2a0
+	pkgrel = 1
 	url = https://invent.kde.org/sdk/elf-dissector
 	arch = x86_64
 	license = GPL
