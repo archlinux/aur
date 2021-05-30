@@ -1,9 +1,8 @@
 # Maintainer: Brodi <me@brodi.space>
-
 _pkgname=aretext
 pkgname=${_pkgname}-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="[BETA] Minimalist text editor that never slows you down."
 url="https://github.com/aretext/aretext"
 license=(GPL3)
@@ -22,7 +21,6 @@ sha256sums_aarch64=('5d38ca55046becd933318740c1e51efb318e676dbb80cc750db27d7b566
 package() {
 	case ${arch} in
      x86_64)
-           echo "AMD64"
 	   cd "${_pkgname}_${pkgver}_linux_amd64"
           ;;
      i386)
