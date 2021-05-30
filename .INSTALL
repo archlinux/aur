@@ -18,7 +18,7 @@ post_install() {
     --nodelay             Disable delay time
     -e, --enable          Enable anonymization at boot time
     -d, --disable         Disable anonymization at boot time
-    -l, --fix              Fix connecting problem
+    -l, --fix             Fix connecting problem
     -u, --uninstall       Uninstall GenTor
 
 # Licensing
