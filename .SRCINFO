@@ -1,6 +1,6 @@
 pkgbase = kio-git
 	pkgdesc = Resource and network access abstraction
-	pkgver = 5.79.0_r4527.g43a7867e
+	pkgver = 5.83.0_r4759.g930d03d4
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = kio-git
 	makedepends = kdoctools-git
 	makedepends = doxygen
 	makedepends = qt5-tools
-	makedepends = qt5-doc
 	depends = solid-git
 	depends = kjobwidgets-git
 	depends = kbookmarks-git
