@@ -3,7 +3,7 @@
 pkgname=shutter-git
 _pkgname=shutter
 pkgver=r1548.85dc91e8
-pkgrel=4
+pkgrel=5
 pkgdesc="A featureful screenshot tool, git version"
 arch=('any')
 url="https://shutter-project.org/"
@@ -24,6 +24,7 @@ optdepends=('gnome-web-photo: web screenshot support'
 		'perl-net-oauth: Imgur upload support'
 		'bc: 3D Rotate and 3D Reflection plugins support'
 		'perl-webservice-gyazo-b: Gyazo upload support')
+makedepends=('git')
 source=('shutter::git+https://github.com/shutter-project/shutter.git')
 md5sums=('SKIP')
 
