@@ -1,0 +1,13 @@
+pkgbase = rockpix-ap6255
+	pkgdesc = WiFi & BT Firmware patch for ROCK PI X
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://wiki.radxa.com/RockpiX/downloads
+	arch = x86_64
+	license = custom
+	depends = linux-firmware
+	source = https://dl.radxa.com/rockpix/drivers/firmware/AP6255_BT_WIFI_Firmware.zip
+	sha256sums = 1b9434fcdd361b778effe4b510b84e717e3ece7589cfaec55ec8944ef9836003
+
+pkgname = rockpix-ap6255
+
