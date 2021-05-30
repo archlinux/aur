@@ -1,9 +1,9 @@
 # Merged with official ABS kwallet-pam PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwallet-pam-git
-pkgver=5.21.80_r234.g8b5aba5
+pkgver=5.22.80_r244.gb93e8c6
 pkgrel=1
 pkgdesc='KWallet PAM integration'
 arch=($CARCH)
