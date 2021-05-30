@@ -1,10 +1,10 @@
 # Merged with official ABS kwrited PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kwrited-git
-pkgver=5.21.80_r467.g44ce622
+pkgver=5.22.80_r478.gb687e84
 pkgrel=1
 pkgdesc='KDE daemon listening for wall and write messages'
 arch=($CARCH)

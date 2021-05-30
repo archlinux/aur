@@ -1,6 +1,6 @@
 pkgbase = kwrited-git
 	pkgdesc = KDE daemon listening for wall and write messages
-	pkgver = 5.21.80_r467.g44ce622
+	pkgver = 5.22.80_r478.gb687e84
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
