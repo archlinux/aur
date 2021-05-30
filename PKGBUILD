@@ -18,9 +18,9 @@ source=("https://imdone.io/downloads/${_pkgname}-${pkgver}.deb"
 sha512sums=('2d336846f8d9f98f8420af61e60030b1d30eabbbbbe9fe44d57b04e41760d7b36dba46d79ece59b9108debe7c4f4caa651a06b2eec6a056740a8ea11973fc42d'
             'SKIP')
 package() {
-  echo "  -> Add non-free license"
   install -Dm644 eula "${pkgdir}/usr/share/licenses/${_pkgname}/eula.html"
-  echo "  -> Extracting the data.tar.xz..."
   bsdtar -xf data.tar.xz -C "$pkgdir/"
+  mkdir "${pkgdir}/usr/bin"
+  ln -s "/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
 # vim:set ts=2 sw=2 et:
