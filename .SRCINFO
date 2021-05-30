@@ -3,6 +3,7 @@ pkgbase = systemd-selinux
 	pkgrel = 2
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
+	arch = aarch64
 	groups = selinux
 	makedepends = acl
 	makedepends = cryptsetup
@@ -198,4 +199,3 @@ pkgname = systemd-sysvcompat-selinux
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat
-
