@@ -5,6 +5,7 @@ pkgbase = shadow-selinux
 	url = https://github.com/shadow-maint/shadow
 	install = shadow.install
 	arch = x86_64
+	arch = aarch64
 	groups = selinux
 	license = BSD
 	depends = bash
@@ -65,4 +66,3 @@ pkgbase = shadow-selinux
 	sha1sums = c173208c5cf34528602f9931468a67b7f68abad3
 
 pkgname = shadow-selinux
-
