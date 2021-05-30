@@ -1,6 +1,6 @@
 pkgbase = akonadi-notes-git
 	pkgdesc = Libraries and daemons to implement management of notes in Akonadi
-	pkgver = 5.16.40_r977.g9ba4b7e
+	pkgver = 5.17.40_r1003.g2411b4d
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64

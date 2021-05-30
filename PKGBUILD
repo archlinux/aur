@@ -1,8 +1,8 @@
 # Merged with official ABS akonadi-notes PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=akonadi-notes-git
-pkgver=5.16.40_r977.g9ba4b7e
+pkgver=5.17.40_r1003.g2411b4d
 pkgrel=1
 pkgdesc="Libraries and daemons to implement management of notes in Akonadi"
 arch=($CARCH)
