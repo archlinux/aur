@@ -1,8 +1,8 @@
 # Merged with official ABS pimcommon PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=pimcommon-git
-pkgver=5.16.40_r999.g4c51ece
+pkgver=5.17.40_r1051.g0e243ee
 pkgrel=1
 pkgdesc="Common libraries for KDE PIM"
 arch=($CARCH)
