@@ -4,6 +4,7 @@ pkgbase = util-linux-selinux
 	pkgrel = 3
 	url = https://github.com/karelzak/util-linux
 	arch = x86_64
+	arch = aarch64
 	groups = selinux
 	license = GPL2
 	makedepends = asciidoctor

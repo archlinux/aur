@@ -16,7 +16,7 @@ pkgver=${_realver/-/}
 pkgrel=3
 pkgdesc='SELinux aware miscellaneous system utilities for Linux'
 url='https://github.com/karelzak/util-linux'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 groups=('selinux')
 # SELinux package maintenance note:
 #   ArchLinux base packages have a build-time cyclic dependency because
