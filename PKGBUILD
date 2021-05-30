@@ -2,7 +2,7 @@
 
 _pkgname=tidal-hifi
 pkgname="$_pkgname-git"
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="The web version of listen.tidal.com running in electron with hifi support thanks to widevine."
 arch=("x86_64")
@@ -15,8 +15,8 @@ provides=("$_pkgname")
 
 source=("https://github.com/Mastermindzh/tidal-hifi/archive/$pkgver.zip"
         "${_pkgname}.desktop")
-sha512sums=('dcbef53cdbf64256d75a0a677e6af1e53d90cdea3028e50fa953eb59475fc9affb76cb426d1293b4f9c9d2e48156481789d7f44d4858a64b4d297c1908aada53'
-            '35f38ac308b871c1822d7f6f760f2fb54c3748cf769822cb0f0dfb90f0f5754ba9316da5e903a0d2e9839de3a43ec76f238f3f2e44021956fa1da19142081349')
+sha512sums=('adf126bb23945deca1f3cc5e50b53422d442096726f6b77c7490fc3fcd6af809502750d1670ef26c7ab019f1b31e6bf8fa59274bdc9a8be6779caa73c7f50cc9'
+            'd7e283e841aa0ba8189d56c090f01aaa7fe2b187756a6d037d1412e698ff586aef45698c5cb89c36fe22f403885060e65fef98be9f8807ac1e6878d8fca686eb')
 
 cdToPkg(){
     cd "tidal-hifi-$pkgver"
@@ -51,6 +51,7 @@ package() {
 
     install -Dm 644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -dm755 "icon.png" "${pkgdir}/usr/share/icons/hicolor/0x0/apps/tidal-hifi.png"
     ln -s "/opt/${_pkgname}/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
     ln -s "/opt/${_pkgname}/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
 }
