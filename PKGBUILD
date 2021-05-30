@@ -1,7 +1,7 @@
 # Maintainer: Sajeev Ramasamy <thorion3006@gmail.com>
 pkgname=snap-pac-git
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Pacman hooks that use snapper to create pre/post btrfs snapshots like openSUSE's YaST"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/wesbarnett/snap-pac.git"
@@ -15,11 +15,11 @@ source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd snap-pac
   printf "$(git describe --tags)"
 }
 
 package() {
-  cd "$pkgname"
+  cd snap-pac
   make DESTDIR="$pkgdir/" install
 }
