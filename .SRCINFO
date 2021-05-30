@@ -6,6 +6,7 @@ pkgbase = libsepol
 	arch = i686
 	arch = x86_64
 	arch = armv6h
+	arch = aarch64
 	groups = selinux
 	license = LGPL2.1
 	makedepends = flex
@@ -17,4 +18,3 @@ pkgbase = libsepol
 	sha256sums = dfc7f662af8000116e56a01de6a0394ed79be1b34b999e551346233c5dd19508
 
 pkgname = libsepol
-
