@@ -1,0 +1,10 @@
+#!/bin/bash
+export WINEARCH=win64
+export WINEDEBUG=-all
+export WINEDLLOVERRIDES="mscoree,mshtml="
+export WINEPREFIX="$HOME/.thr-editor/wine"
+if [ ! -d "$HOME/.thr-editor" ] ; then
+   mkdir -p "$HOME/.thr-editor/wine"
+   wineboot -u
+fi
+wine /usr/share/thr-editor/thr-editor.exe "$@"

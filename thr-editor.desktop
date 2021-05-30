@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=THR Editor
+Comment=Configure Yamaha THR guitar amplifiers
+Icon=thr-editor
+Exec=/usr/bin/thr-editor %f
+TryExec=/usr/bin/thr-editor
+Terminal=false
+Categories=Audio;AudioVideo;
+StartupWMClass=thr-editor.exe
+StartupNotify=true
+MimeType=application/x-thr-editor-ydl;application/x-thr-editor-ydp;

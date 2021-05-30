@@ -1,0 +1,21 @@
+pkgbase = thr-editor
+	pkgdesc = Control Yamaha THR5, THR5A, THR10, THR10C, and THR10X guitar amplifiers.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://usa.yamaha.com/support/updates/57648_en.html
+	arch = x86_64
+	license = custom
+	makedepends = icoutils
+	makedepends = p7zip
+	depends = wine
+	source = https://usa.yamaha.com/files/download/software/6/312346/THR_Editor_V110_Win.zip
+	source = thr-editor.desktop
+	source = thr-editor.xml
+	source = thr-editor
+	sha256sums = 3620f0f8f25efa33e3f6fd85b79718153bc4ccb181ff681f20f925561e07d1cd
+	sha256sums = 23a29c602cd89f2cf8f195d8c735384d57225b538ba4852687641d367e473c3b
+	sha256sums = 2f8759a7a02e6f4851cbedd2be3a8a3b9d8cd62636984a3ff6788fed6aa5dcf3
+	sha256sums = 0cebc788388ce88ff51514a2d162bec68fc8ed40bbfa9c07cbd70b794ece2ba5
+
+pkgname = thr-editor
+

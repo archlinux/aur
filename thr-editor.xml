@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-thr-editor-ydl">
+    <glob pattern="*.YDL"/>
+    <comment>Yamaha THR Editor Library File</comment>
+    <icon name="thr-editor-ydl"/>
+  </mime-type>
+  <mime-type type="application/x-thr-editor-ydp">
+    <glob pattern="*.YDP"/>
+    <comment>Yamaha THR Editor Patch File</comment>
+    <icon name="thr-editor-ydp"/>
+  </mime-type>
+</mime-info>
