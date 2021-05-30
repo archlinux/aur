@@ -1,10 +1,10 @@
 # Merged with official ABS kwalletmanager PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: farseerfc <farseerfc@archlinuxcn.org>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kwalletmanager-git
-pkgver=21.03.70_r1167.g30c50ee
+pkgver=21.07.70_r1188.gf593224
 pkgrel=1
 pkgdesc='Wallet management tool'
 arch=($CARCH)
@@ -20,9 +20,9 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  _major_ver="$(grep -m1 "set *(RELEASE_SERVICE_VERSION_MAJOR" CMakeLists.txt | cut -d '"' -f2)"
-  _minor_ver="$(grep -m1 "set *(RELEASE_SERVICE_VERSION_MINOR" CMakeLists.txt | cut -d '"' -f2)"
-  _micro_ver="$(grep -m1 "set *(RELEASE_SERVICE_VERSION_MICRO" CMakeLists.txt | cut -d '"' -f2)"
+  _major_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MAJOR' CMakeLists.txt | cut -d '"' -f2)"
+  _minor_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MINOR' CMakeLists.txt | cut -d '"' -f2)"
+  _micro_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MICRO' CMakeLists.txt | cut -d '"' -f2)"
   echo "${_major_ver}.${_minor_ver}.${_micro_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
