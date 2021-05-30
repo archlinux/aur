@@ -3,8 +3,8 @@
 # Contributor: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=papirus-folders
-pkgver=1.8.0
-pkgrel=2
+pkgver=1.9.0
+pkgrel=1
 pkgdesc='Change Papirus icon theme folder colors'
 arch=('any')
 url='https://github.com/PapirusDevelopmentTeam/papirus-folders'
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('papirus-icon-theme')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.hook")
-sha256sums=('a60d0d432ea9b7c98b74a607301bdc4e26b3b48a3b9bc6054ffb7d64f8dcf9c5'
+sha256sums=('0e41e34c637b7bfad716fa06c1df35833968b220e47e3b73ba34918907ac3009'
             '5c48cde4ad155e357857f56ec2ce4d26d3e3fdd12b141e349640775481539ed9')
 
 build() {
