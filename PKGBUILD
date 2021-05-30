@@ -3,7 +3,7 @@
 
 pkgname=spooles
 pkgver=2.2
-pkgrel=5
+pkgrel=6
 pkgdesc="SParse Object Oriented Linear Equations Solver"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -12,18 +12,24 @@ license=('GPL')
 depends=('glibc')
 makedepends=('perl' 'ghostscript')
 source=($url/${pkgname}.${pkgver}.tgz $url/ReferenceManual.ps.gz
-        spooles.patch license.txt)
+        spooles.patch spooles-1.patch license.txt)
 md5sums=('5789ca60d1ae565a4eaef6d03ca837af'
          '9e5e32828f59c4cf066fdb34218705e7'
          '4bb065242e3df5b39a99370dd0f5e57a'
+         'd681e9e4444df17c79abf6b2ffb23902'
          '0f6276a9728bcf7ab0a31350d9a906c2')
 noextract=("${pkgname}.${pkgver}.tgz" "ReferenceManual.ps.gz")
 
-build() {
+prepare() {
   mkdir ${srcdir}/$pkgname
   cd ${srcdir}/$pkgname
   tar -xzf ${srcdir}/${pkgname}.${pkgver}.tgz
   patch -Np1 -i ${srcdir}/spooles.patch
+  patch -Np1 -i ${srcdir}/spooles-1.patch
+}
+
+build() {
+  cd ${srcdir}/$pkgname
   make CFLAGS="$CFLAGS" lib
   zcat "$srcdir/ReferenceManual.ps.gz" |ps2pdf - ReferenceManual.pdf
 }
