@@ -1,0 +1,24 @@
+pkgbase = python-kosmorrolib
+	pkgdesc = A library to compute the ephemerides
+	pkgver = 0.11.2
+	pkgrel = 1
+	url = https://kosmorro.space/lib
+	arch = any
+	license = CeCILL-C
+	makedepends = python-pip
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.7.0
+	depends = python<4.0.0
+	depends = python-skyfield>=1.21
+	depends = python-skyfield<2.0
+	depends = python-numpy>=1.17.0
+	depends = python-numpy<2.0.0
+	depends = python-dateutil>=2.8.0
+	depends = python-dateutil<3.0.0
+	conflicts = kosmorro<0.10.0
+	source = python-kosmorrolib-v0.11.2.tar.gz::https://github.com/Kosmorro/lib/archive/v0.11.2.tar.gz
+	sha256sums = ed85e10c8badf9e980ad5e909c9008460da88d0cd4f6a62b5230313d1e9926bb
+
+pkgname = python-kosmorrolib
+
