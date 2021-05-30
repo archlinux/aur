@@ -1,8 +1,8 @@
 # Merged with official ABS plasma-integration PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=plasma-integration-git
-pkgver=5.21.80_r505.gb6f4feb
+pkgver=5.22.80_r517.ged1c2fa
 pkgrel=1
 pkgdesc="Qt Platform Theme integration plugins for the Plasma workspaces"
 arch=($CARCH)
