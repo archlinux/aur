@@ -14,8 +14,6 @@ options=('!strip' '!emptydirs')
 source=($pkgname::git+$url.git)
 md5sums=('SKIP')
 
-_gopkg=github.com/prasmussen/gdrive
-
 pkgver() {
   cd $pkgname
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -28,13 +26,8 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   export GOPATH="$srcdir/build"
-  go get $_gopkg
+  go get "${url##*https://}"
 }
-
-#check() {
-#  export GOPATH="$srcdir/build"
-#  go test $_gopkg
-#}
 
 package() {
   cd build
