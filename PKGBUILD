@@ -15,8 +15,8 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-source=("https://sxrepo.mpie.de/attachments/downloads/65/sphinx-$pkgver.tar.xz")
-pkgext=("https://sxrepo.mpie.de/attachments/downloads/65/sphinx-$pkgver.tar.xz")
+source=("https://sxrepo.mpie.de/attachments/download/65/sphinx-$pkgver.tar.xz")
+pkgext=("https://sxrepo.mpie.de/attachments/download/65/sphinx-$pkgver.tar.xz")
 sha1sums=('8e392869ad2b1a5b485701d0b22c06ef7aa0d13c')
 
 prep() {
