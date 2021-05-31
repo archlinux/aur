@@ -2,7 +2,7 @@
 
 pkgname=zoomdl
 pkgver=2021.05.27
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Download Zoom recorded meetings easily"
 arch=('any')
