@@ -1,6 +1,6 @@
 pkgbase = clisp-git
 	pkgdesc = ANSI Common Lisp interpreter, compiler and debugger
-	pkgver = clisp.2.49.60.2017.06.25.r570.ga9aeb8030
+	pkgver = clisp.2.49.60.2017.06.25.r576.g129eaf3f1
 	pkgrel = 1
 	url = https://clisp.sourceforge.io/
 	arch = x86_64

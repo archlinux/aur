@@ -1,6 +1,6 @@
 # Maintainer: Tarn W. Burton <twburton@gmail.com>
 pkgname=clisp-git
-pkgver=clisp.2.49.60.2017.06.25.r570.ga9aeb8030
+pkgver=clisp.2.49.60.2017.06.25.r576.g129eaf3f1
 pkgrel=1
 pkgdesc="ANSI Common Lisp interpreter, compiler and debugger"
 arch=('x86_64')
@@ -21,6 +21,7 @@ pkgver() {
 
 build() {
   cd $pkgname
+  sed -i 's/clhs.el//g' src/makemake.in
   ./configure --prefix=/usr --with-readline --with-ffcall --with-module=asdf --with-dynamic-ffi --with-threads=POSIX_THREADS --with-debug --config build
   cd build
   make
