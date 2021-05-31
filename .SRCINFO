@@ -1,14 +1,14 @@
 pkgbase = rinetd
 	pkgdesc = internet redirection server
-	pkgver = 0.64
-	pkgrel = 6
-	url = http://www.boutell.com/rinetd
+	pkgver = 0.73
+	pkgrel = 7
+	url = https://github.com/samhocevar/rinetd/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = https://github.com/boutell/rinetd/archive/0973bd2d1c187da9706fd83c8aa68fabc1775a31.zip
+	source = https://github.com/samhocevar/rinetd/releases/download/v0.73/rinetd-0.73.tar.gz
 	source = rinetd.service
-	md5sums = a8abec08d78e08f600d64427612e6791
+	md5sums = f2f4b0d7ff94de183d90c6778a6661e4
 	md5sums = af12522780774cabdb3c9797aa0b55ab
 
 pkgname = rinetd
