@@ -5,7 +5,7 @@
 
 pkgname=bombermaaan
 pkgver=1.4.0.627
-pkgrel=6
+pkgrel=7
 _pkgdate=20081018
 pkgdesc="A classic Bomberman-like game with multiplayer support"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=('sdl_mixer')
 install=$pkgname.install
 source=("http://downloads.sourceforge.net/$pkgname/Bombermaaan_${pkgver}_${_pkgdate}_src.tar.gz"
         "http://downloads.sourceforge.net/$pkgname/Bombermaaan_${pkgver}_${_pkgdate}_res.tar.gz"
-        "https://www.moddb.com/downloads/mirror/30444/123/0ae43028077e624538aa4e1d3820190d"
+        "Bombermaan_levels_pack.zip::https://www.moddb.com/downloads/mirror/30444/121/fc5860811eb63e2a1a0b5798bbd92d13"
         "$pkgname.png"
         "$pkgname.desktop"
         "print.patch")
