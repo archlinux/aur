@@ -8,7 +8,7 @@ pkgbase = cni-bin
 	arch = armv7h
 	arch = armv7l
 	license = apache
-	provides = cni=$pkgver
+	provides = cni=0.9.1
 	conflicts = cni
 	source = cni-bin-0.9.1::https://github.com/containernetworking/plugins/releases/download/v0.9.1/cni-plugins-linux-amd64-v0.9.1.tgz
 	sha256sums = 962100bbc4baeaaa5748cdbfce941f756b1531c2eadb290129401498bfac21e7

@@ -7,8 +7,7 @@ arch=('x86_64' 'aarch64' 'armv7h' 'armv7l')
 url="https://www.cni.dev/"
 license=('apache')
 conflicts=('cni')
-provides=('cni=$pkgver')
-_kubectl_file=kubectl-$pkgver
+provides=("cni=${pkgver}")
 source=()
 sha256sums=()
 
