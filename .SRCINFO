@@ -1,0 +1,13 @@
+pkgbase = port-bin
+	pkgdesc = A ship runner and manager for Urbit OS
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/arthyn/port
+	arch = x86_64
+	license = MIT
+	license = custom:chromium
+	source = https://github.com/arthyn/port/releases/download/v1.0.1/port-linux-x64-1.0.1.zip
+	sha512sums = 5d24ad79b9feac00235ede42819727223c250b6550d90a16b61bdbebe897231b7e8a4f85ccda7fe8fc7c9fab444a5eb97acadb970d2323539fc4977d9aff523d
+
+pkgname = port-bin
+
