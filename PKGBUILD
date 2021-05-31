@@ -4,22 +4,21 @@ pkgname=giara-git
 pkgver=0.3.r0.g7f985e0
 pkgrel=1
 epoch=
-pkgdesc="Reddit gtk client"
+pkgdesc="GTK app for Reddit"
 arch=('any')
 url="https://gitlab.gnome.org/GabMus/giara"
 license=('GPL3')
 groups=()
 depends=(
-	'gtksourceview4'
-	'libhandy>=1'
+	'gtk4>=4.3'
+	'gtksourceview5'
+	'libadwaita-git'
 	'python-beautifulsoup4'
-	'python-cairo'
 	'python-dateutil'
 	'python-gobject'
 	'python-mistune'
 	'python-pillow'
 	'python-praw'
-	'webkit2gtk'
 )
 makedepends=('meson' 'git' 'gobject-introspection')
 checkdepends=()
