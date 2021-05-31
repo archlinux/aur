@@ -1,5 +1,5 @@
 pkgbase = gnome-settings-daemon-oldstable
-	pkgdesc = GNOME Settings Daemon
+	pkgdesc = GNOME Settings Daemon (oldstable version)
 	pkgver = 3.38.2
 	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/gnome-settings-daemon

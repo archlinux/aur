@@ -4,7 +4,7 @@
 pkgname=gnome-settings-daemon-oldstable
 pkgver=3.38.2
 pkgrel=2
-pkgdesc="GNOME Settings Daemon"
+pkgdesc="GNOME Settings Daemon (oldstable version)"
 url="https://gitlab.gnome.org/GNOME/gnome-settings-daemon"
 conflicts=("gnome-settings-daemon")
 provides=("gnome-settings-daemon=$pkgver")
