@@ -11,7 +11,7 @@ url='http://gaim-extprefs.sourceforge.net/'
 license=('GPL')
 depends=('pidgin' 'glibc')
 makedepends=('pkgconfig')
-source=("http://downloads.sourceforge.net/sourceforge/gaim-extprefs/$pkgname-$pkgver.tar.gz")
+source=("https://downloads.sourceforge.net/sourceforge/gaim-extprefs/$pkgname-$pkgver.tar.gz")
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
