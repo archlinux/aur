@@ -1,13 +1,13 @@
 pkgbase = telegram-tg
 	pkgdesc = terminal telegram client that really works
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/paul-nameless/tg
 	arch = any
 	license = Unlicense
-	makedepends = python-setuptools
 	depends = python-telegram=0.14.0
 	depends = python3
+	depends = python-setuptools
 	optdepends = libnotify: for notifications, you could also use other programs: see config
 	optdepends = ffmpeg: to record voice msgs and upload videos correctly
 	optdepends = urlview: to choose urls when there is multiple in message, use URL_VIEW in config file to use another app, it should accept urls in stdin

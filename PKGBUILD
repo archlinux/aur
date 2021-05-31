@@ -2,13 +2,12 @@
 _pkgname=tg
 pkgname=telegram-$_pkgname
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="terminal telegram client that really works"
 arch=('any')
 url="https://github.com/paul-nameless/tg"
 license=('Unlicense')
-depends=('python-telegram=0.14.0' 'python3')
-makedepends=('python-setuptools')
+depends=('python-telegram=0.14.0' 'python3' 'python-setuptools')
 optdepends=(
 	'libnotify: for notifications, you could also use other programs: see config'
 	'ffmpeg: to record voice msgs and upload videos correctly'
