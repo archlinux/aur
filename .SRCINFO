@@ -56,7 +56,7 @@ pkgbase = gtk-rc
 	depends = cantarell-fonts
 	depends = gtk-update-icon-cache
 	provides = libgtk-4.so
-	provides = gtk4
+	provides = gtk4=4.3.0
 	provides = gtk-update-icon-cache
 	provides = gtk4-docs
 	provides = gtk4-demos
