@@ -32,11 +32,13 @@ source=("https://github.com/jonaski/strawberry/releases/download/${pkgver}/straw
 sha256sums=(b71da4cec9cc7b60961bbb82378d15fb79798e6b880852414ce05276084047a0)
 
 build() {
-  cmake -B build -S "strawberry-${pkgver}" \
-    -DCMAKE_INSTALL_PREFIX=/usr
-  cmake --build build
+	cmake -B build -S "strawberry-${pkgver}" \
+			-DCMAKE_INSTALL_PREFIX=/usr \
+			-DBUILD_WITH_QT5=on \
+			-DENABLE_VLC=off
+	cmake --build build
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install build
+	DESTDIR="${pkgdir}" cmake --install build
 }
