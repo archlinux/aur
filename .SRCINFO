@@ -411,7 +411,6 @@ pkgbase = gitit
 	source = haskell-zip-archive-0.4.1-1.cabal::https://hackage.haskell.org/package/zip-archive-0.4.1/revision/1.cabal
 	source = haskell-zip-archive-0.4.1.tar.gz::https://hackage.haskell.org/package/zip-archive-0.4.1/zip-archive-0.4.1.tar.gz
 	source = haskell-zlib-0.6.2.2.tar.gz::https://hackage.haskell.org/package/zlib-0.6.2.2/zlib-0.6.2.2.tar.gz
-	source = https://downloads.haskell.org/~ghc/8.8.4/ghc-8.8.4-x86_64-deb9-linux.tar.xz
 	sha512sums = 4455110c95172461b2d82ae88ba4f386d5e49ddd7f7def83714d2f6198090f0d121166eece3efa735341da9bbc0029e704be00d3e671d24ad27e838dfe913776
 	sha512sums = 6a48a234d3140bc8c641cdf649a1f0daa39ab4de4064435dcbb15a9ea52994c967aadc8584f70aab89ef78e17ecc66b8ce3d8dd2157eb5b85277dfff80fd608c
 	sha512sums = b2b2ee93f2cadf01f8a6828b9e742a241601f5fada1f73388dc0044f8e0985c601bd6a42738c60c54eecb619b6289ac1302751d8e2402f6494aaeb2b2a4abb42
@@ -610,7 +609,10 @@ pkgbase = gitit
 	sha512sums = d75097619e9d999f84e80e8fe7f541e3df81289ce40763f9193460e23a0dcb0d37c5cad7ce6b0fe7a8f32d856e4b231bc83dab34729248a6bf1dda1377b94691
 	sha512sums = 216555bd73a46da5061291c2c071e9c71239bd5ae253ac06ee80ade65bb1871366cc8e4dffbad983c5b6a7f4b0cb2a1439dfa5971db3e183124fa90442a73f0c
 	sha512sums = 3619b5c32e16a4fb9a68a9e6ea0beb9b14d06a4b5825811f429ee232a0ea13035335cd86c0301f8afcff126a473b86698fd310f9608e0e0ecb849714842be1ea
-	sha512sums = 4c508b5a717a3598ebe8f88c0dd8ffe077115c1a91197af4ce9e25e8bfde445adb98efde9b35edcd1a4896870f505f67029b16c3ed89ac01c986f2afc2ed09b7
+	source_i686 = https://downloads.haskell.org/~ghc/8.8.4/ghc-8.8.4-i386-deb9-linux.tar.xz
+	sha512sums_i686 = 519eaf812c86d8d7bc92999ecc16b9994803927e1e56adcc69bc83c66c8ba5ec43caf2727ff905310c78d08b78afc03892ccc76f9268b2325c2915cab3ceadcf
+	source_x86_64 = https://downloads.haskell.org/~ghc/8.8.4/ghc-8.8.4-x86_64-deb9-linux.tar.xz
+	sha512sums_x86_64 = 4c508b5a717a3598ebe8f88c0dd8ffe077115c1a91197af4ce9e25e8bfde445adb98efde9b35edcd1a4896870f505f67029b16c3ed89ac01c986f2afc2ed09b7
 
 pkgname = gitit
 
