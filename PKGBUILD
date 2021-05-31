@@ -22,17 +22,18 @@ build() {
     make
 
   else
-  _dir=$(find $srcdir -maxdepth 2 -type f -name 'Build.PL')
-  if [ ! -z "$_dir" ]; then
-    cd $(dirname "$_dir")
-    PERL_MM_USE_DEFAULT=1 perl Build.PL INSTALLDIRS=vendor
-    ./Build
+    _dir=$(find $srcdir -maxdepth 2 -type f -name 'Build.PL')
+    if [ ! -z "$_dir" ]; then
+      cd $(dirname "$_dir")
+      PERL_MM_USE_DEFAULT=1 perl Build.PL INSTALLDIRS=vendor
+      ./Build
 
-  else
-    echo "error: failed to detect build method for $pkgname"
-    echo "you may be able to fix this by editing the PKGBUILD"
-    return 1
-  fi fi
+    else
+      echo "error: failed to detect build method for $pkgname"
+      echo "you may be able to fix this by editing the PKGBUILD"
+      return 1
+    fi
+  fi
 
 }
 
@@ -42,18 +43,18 @@ echo "pkg starts here"
   if [ ! -z "$_dir" ]; then
     cd $(dirname "$_dir")
     make install DESTDIR="${pkgdir}"
-
   else
-  _dir=$(find $srcdir -maxdepth 2 -type f -name 'Build.PL')
-  if [ ! -z "$_dir" ]; then
-    cd $(dirname "$_dir")
-    ./Build install destdir=${pkgdir}
+    _dir=$(find $srcdir -maxdepth 2 -type f -name 'Build.PL')
+    if [ ! -z "$_dir" ]; then
+      cd $(dirname "$_dir")
+      ./Build install destdir=${pkgdir}
 
-  else
-    echo "error: failed to detect build method for $pkgname"
-    echo "you may be able to fix this by editing the PKGBUILD"
-    return 1
-  fi fi
+    else
+      echo "error: failed to detect build method for $pkgname"
+      echo "you may be able to fix this by editing the PKGBUILD"
+      return 1
+    fi
+  fi
 
   # remove perllocal.pod and .packlist
   find ${pkgdir} -name perllocal.pod -delete
