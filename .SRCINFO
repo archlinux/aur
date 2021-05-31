@@ -1,0 +1,17 @@
+pkgbase = vim-photon-git
+	pkgdesc = An elegant pair of Vim colorschemes with minimal syntax highlighting
+	pkgver = r41.0b08dd6
+	pkgrel = 1
+	url = https://github.com/axvr/photon.vim
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-photon
+	conflicts = vim-photon
+	source = vim-photon-git::git+https://github.com/axvr/photon.vim
+	sha256sums = SKIP
+
+pkgname = vim-photon-git
+
