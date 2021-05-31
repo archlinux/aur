@@ -8,6 +8,7 @@ pkgbase = zsh-autosuggestions-git
 	makedepends = git
 	depends = zsh
 	provides = zsh-autosuggestions
+	conflicts = zsh-autosuggestions
 	source = git+https://github.com/zsh-users/zsh-autosuggestions.git
 	sha256sums = SKIP
 

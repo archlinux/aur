@@ -11,7 +11,8 @@ url="https://github.com/zsh-users/zsh-autosuggestions"
 license=('MIT')
 depends=('zsh')
 makedepends=('git')
-provides=('zsh-autosuggestions')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("git+https://github.com/zsh-users/zsh-autosuggestions.git")
 sha256sums=('SKIP')
 
