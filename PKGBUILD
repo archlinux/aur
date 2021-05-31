@@ -2,7 +2,7 @@
 pkgname=buildstream
 pkgver=1.6.1
 pkgrel=1
-pkgdesc="Framework for modelling build pipelines in a declarative YAML format"
+pkgdesc="A powerful and flexible software integration toolset"
 arch=('any')
 url="https://buildstream.build"
 license=('LGPL')

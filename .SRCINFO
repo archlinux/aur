@@ -1,5 +1,5 @@
 pkgbase = buildstream
-	pkgdesc = Framework for modelling build pipelines in a declarative YAML format
+	pkgdesc = A powerful and flexible software integration toolset
 	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://buildstream.build
