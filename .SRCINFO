@@ -13,11 +13,9 @@ pkgbase = minosoft-git
 	provides = minosoft
 	conflicts = minosoft
 	source = minosoft::git+https://gitlab.bixilon.de/bixilon/minosoft.git
-	source = minosoft.png::https://gitlab.bixilon.de/bixilon/minosoft/-/raw/rendering/doc/img/Minosoft_logo.png
 	source = minosoft.sh
 	source = minosoft.desktop
 	md5sums = SKIP
-	md5sums = 0cd7c197d6c9335927a572443f43ce62
 	md5sums = ccf32826e6ba903bad8653160af7d731
 	md5sums = 26f1f6230fb117c558f848a08165c8d5
 

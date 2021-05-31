@@ -12,11 +12,9 @@ makedepends=('git' 'maven' 'java-environment')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+https://gitlab.bixilon.de/bixilon/minosoft.git"
-	"$_pkgname.png::https://gitlab.bixilon.de/bixilon/minosoft/-/raw/rendering/doc/img/Minosoft_logo.png"
 	'minosoft.sh'
 	'minosoft.desktop')
 md5sums=('SKIP'
-         '0cd7c197d6c9335927a572443f43ce62'
          'ccf32826e6ba903bad8653160af7d731'
          '26f1f6230fb117c558f848a08165c8d5')
 
@@ -38,9 +36,9 @@ check() {
 package() {
 	cd "$srcdir/$_pkgname"
 	install -Dm644 target/Minosoft-0.1-jar-with-dependencies.jar "$pkgdir/usr/share/java/$_pkgname/$_pkgname.jar"
+	install -Dm644 doc/img/Minosoft_logo.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
 	cd "$srcdir"
 	install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/minosoft"
 	install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
-	install -Dm644 "$_pkgname.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 }
