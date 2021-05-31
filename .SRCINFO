@@ -1,6 +1,6 @@
 pkgbase = avocode
 	pkgdesc = Export code, specs and images from PSD & Sketch designs
-	pkgver = 4.14.0
+	pkgver = 4.14.1
 	pkgrel = 1
 	url = http://avocode.com/
 	install = avocode.install
@@ -16,8 +16,8 @@ pkgbase = avocode
 	source = avocode-app-icon.png
 	md5sums = f1a87052b2356b2d4eede22cfc1eb2af
 	md5sums = 96c2dd65a4a3ac5bcdba7426ade1960e
-	source_x86_64 = https://media.avocode.com/download/avocode-app/4.14.0/avocode-4.14.0-linux.zip
-	md5sums_x86_64 = 33ffed8ad5a39f63b432560766d21b08
+	source_x86_64 = https://media.avocode.com/download/avocode-app/4.14.1/avocode-4.14.1-linux.zip
+	md5sums_x86_64 = 2e12bd840295ceaec285cd76a6ea25e5
 
 pkgname = avocode
 
