@@ -1,14 +1,14 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 _pkgname=telegram-tg
 pkgname=$_pkgname-git
-pkgver=0.11.0.r1.bba72ef
+pkgver=0.17.0.r4.7511565
 pkgrel=1
 pkgdesc="terminal telegram client that really works"
 arch=(any)
 url="https://github.com/paul-nameless/tg"
 license=('Unlicense')
-depends=('python-telegram=0.14.0' 'python3')
-makedepends=('git' 'python-setuptools')
+depends=('python-telegram=0.14.0' 'python3' 'python-setuptools')
+makedepends=('git')
 optdepends=(
 	'libnotify: for notifications, you could also use other programs: see config'
 	'ffmpeg: to record voice msgs and upload videos correctly'
