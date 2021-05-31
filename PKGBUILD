@@ -1,9 +1,9 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=buildstream-git
-pkgver=1.93.5.r0.g51afe1c81
+pkgver=1.93.6.r47.gc388631bb
 pkgrel=1
 pkgdesc="Framework for modelling build pipelines in a declarative YAML format"
-arch=('any')
+arch=('x86_64')
 url="https://buildstream.build"
 license=('LGPL')
 depends=(
@@ -25,7 +25,7 @@ depends=(
 makedepends=(python-setuptools cython git)
 provides=('buildstream')
 conflicts=('buildstream')
-source=("git+https://gitlab.com/BuildStream/buildstream.git")
+source=("git+https://github.com/apache/buildstream.git")
 md5sums=('SKIP')
 
 pkgver() {
