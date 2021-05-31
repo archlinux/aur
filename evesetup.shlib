@@ -29,7 +29,7 @@ check_env() {
 	if [ -r "$EVECONF" ] ;then SHAREDIR=$(getval SharedCacheFolder) ;fi
 	if [ ! -d "$SHAREDIR" ] ;then SHAREDIR="" ;fi
 	if [ "x$SHAREDIR" != "x$EVEDIR/SharedCache/" ] ;then
-		desktop_msg "Please wait, prepare environment in $EVEDIR"
+		desktop_msg "Preparing environment in $EVEDIR"
 		mkdir -p $CONFDIR
 		cat >$EVECONF <<EOF
 [General]
@@ -80,7 +80,7 @@ check_wine() {
 		WINECONF=$(find ${WINEINFP%bin*}share/wine* -name 'wine.inf')
 		WINEDATE=$(getdate $WINECONF)
 		if [ "$WINEDATE" != "$INSTWINE" ] ;then
-			desktop_msg "Prepare wine environment for EVE"
+			desktop_msg "Preparing wine environment for EVE"
 			for DXVKFILE in d3d10_1 d3d10core d3d10 d3d11 d3d9 dxgi ;do
 				rm $WINSYSDIR/$DXVKFILE.dll* || true
 				rm $W32SYSDIR/$DXVKFILE.dll* || true

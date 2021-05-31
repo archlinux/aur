@@ -86,12 +86,12 @@ pkg_install() {
 check_req() {
 	printf "\nChecking requirements...\n\n"
 	case $distro in
-#		"Arch Linux"|"Manjaro Linux")
-#			qrycmd="pacman -Q"
-#			inscmd="pacman -S"
-#			req="lsof openssl p7zip qt5-translations qt5-webengine qt5-websockets vulkan-icd-loader "
-#			pkg_install
-#			;;
+		"Arch Linux"|"Manjaro Linux")
+			qrycmd="pacman -Q"
+			inscmd="pacman -S"
+			req="lsof openssl p7zip qt5-translations qt5-webengine qt5-websockets vulkan-icd-loader "
+			pkg_install
+			;;
 		"Fedora")
 			qrycmd="rpm -q"
 			inscmd="dnf install"
