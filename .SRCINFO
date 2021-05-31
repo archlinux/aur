@@ -1,6 +1,6 @@
 pkgbase = mathics-pygments
 	pkgdesc = A pygments-based lexer and scanner for Mathics.
-	pkgver = 1.0.0
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/Mathics3/mathics-pygments
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = mathics-pygments
 	depends = mathics-scanner>=1.2.0
 	depends = python-pygments>=2
 	depends = python-ujson
-	source = mathics-pygments-1.0.0.tar.gz::https://github.com/Mathics3/mathics-pygments/archive/refs/tags/1.0.0.tar.gz
-	sha256sums = 6e153577416d822058e0352d618a4ad0e39d22f958ecab54502201b690dd953d
+	source = mathics-pygments-1.0.2.tar.gz::https://github.com/Mathics3/mathics-pygments/archive/refs/tags/1.0.2.tar.gz
+	sha256sums = 70121208eb13be0d1795bda1890bfd7e3b856bbc2e0b9891119ca5ae97de51ac
 
 pkgname = mathics-pygments
 
