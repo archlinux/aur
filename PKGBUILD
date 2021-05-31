@@ -1,7 +1,7 @@
 # Maintainer: djazz
 
 pkgname=fimfic2epub
-pkgver=1.7.53
+pkgver=1.7.55
 pkgrel=1
 pkgdesc="Tool to generate improved EPUB ebooks from Fimfiction stories"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('npm')
 options=(!strip)
 source=("https://github.com/daniel-j/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=(
-  '2e54ff079963233ab65af7ef2f1b49ec919e176b7c444a10c615c80beb3b2594'
+  '206366f74f293699756f27004949f6846c7c15676d4a81d02cac405250c9fa70'
 )
 
 package() {
