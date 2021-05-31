@@ -4,13 +4,13 @@
 
 pkgname=openboard-git
 _fragment="#branch=master"
-pkgver=1.6.1rc.0309.r10.gf3f07f99
+pkgver=1.6.1.r6.gdd19e752
 pkgrel=1
 pkgdesc="Interactive whiteboard software for schools and universities (development version current master)"
 arch=('x86_64' 'i686')
 url="http://openboard.ch/index.en.html"
 license=('GPL3')
-provides=("${pkgname%-git}=${pkgver%%rc*}")
+provides=("${pkgname%-git}=${pkgver%%.r*}")
 conflicts=("${pkgname%-git}")
 depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'qt5-script' 'qt5-webkit' 'qt5-tools' 'qt5-xmlpatterns' 'libpaper' 'bzip2' 'openssl' 'libfdk-aac' 'sdl' 'ffmpeg')
 depends+=(quazip)  #drop internal quazip and use system one.
@@ -42,6 +42,8 @@ prepare() {
   patch -p1 < "$srcdir"/qchar.patch
   msg2 "quazip"
   patch -p1 < "$srcdir"/quazip.patch
+  msg2 "gcc11"
+  sed 's/_serialize/serialize/g' -i src/pdf-merger/Object.{h,cpp}
 }
 
 build() {
