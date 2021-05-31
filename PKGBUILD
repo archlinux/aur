@@ -8,7 +8,7 @@ url="https://github.com/parabolala/bpylist2"
 license=('MIT')
 depends=('python3')
 makedepends=('git')
-source=("bpylist::git+$url.git")
+source=("python-bpylist2::git+$url.git")
 md5sums=('SKIP')
 
 

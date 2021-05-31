@@ -7,7 +7,7 @@ pkgbase = python-bpylist2
 	license = MIT
 	makedepends = git
 	depends = python3
-	source = bpylist::git+https://github.com/parabolala/bpylist2.git
+	source = python-bpylist2::git+https://github.com/parabolala/bpylist2.git
 	md5sums = SKIP
 
 pkgname = python-bpylist2
