@@ -3,20 +3,23 @@
 # Contributor: franciscod <demartino.francisco@gmail.com>
 
 pkgname=simulide
-pkgver=0.4.14_SR4
+pkgver=0.4.15_SR1
 _realver=${pkgver//_/-}
 pkgrel=2
 pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers)"
 arch=("x86_64")
 url="https://www.simulide.com/"
 license=("GPL3")
-source=("https://mailfence.com/pub/docs/santigoro/web/SimulIDE_${pkgver//_*/}/simulide_${_realver}_Sources.tar.gz"
-	"simulide.desktop"
+source=(
+        "https://launchpad.net/simulide/${pkgver//_*/}/${_realver,,}/+download/simulide_${_realver}_Sources.tar.gz"
+        "simulide.desktop"
         "changelog.txt")
-md5sums=("c73088d73f9bbf1c5408e53416d849c2"
-         "beda8f4452562e5cc1e2c9a19ac99bb3"
-         "SKIP"
-        )
+
+md5sums=('c8e8e1d737dbe4d04e2a2b6555918d03'
+         'SKIP'
+         'SKIP')
+
+
 changelog="changelog.txt"
 depends=(
   "qt5-base>=5.15.1"

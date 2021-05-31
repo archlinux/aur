@@ -1,226 +1,144 @@
 
-simulide 0.4.14
+simulide 0.4.15
 
 Changes:
-  RC2:
-    - Full Adder: change to horizontal configuration.
-    - Adder, Counter, FlipFlops: smaller size.
-    - Properties Tab removed, now right-click->Properties opens new window.
-    
-  RC4:
-    - Updated About SimulIDE Dialog.
-    - Old Relays not supported (save circuit with 0.4.13).
-    
   Final:
-    - Delete key working again to remove Components.
-    - RamTabe Tab removed (open Ramtable in MCU).
+    - Arduinos to Subcircuits.
+    - "About SimulIDE" dialog updated.
   
+  SR1:
+    - Keep old Arduinos available (needed for old circuits by now).
+    - New Arduinos as experimental.
+    
 New Features:
   RC1:
-    - Mcu Logic Symbol enabled.
-    - Some AVR Logic Symbols (Sergey Roenko)
-    - Mcu Help Files enabled.
-    - Some AVR Help files (Sergey Roenko)
-    - Gui French translation (Pascal Cotret)
-    - Change Language: Circuit->Properties.
-  
+    - Update Oscope to V3.
+    - Dutch translation by mvandorp.
+    - Increase Frequency meter resolution to 5 digits.
+    - SSD1306 I2C Address property.
+    - Load and Save to file for Function Component.
+    - I2C to Parallel: read implemented.
+    - Update to new Subcircuits.
+    
   RC2:
-    - Debugger: Show number of Clock Cycles for each Debug Step.
-    - AVR: Allow AVR GPRs R0-R31 names in Ramtable.
-    - RamTable: show Status Reg. bits and PC.
-    - Flipflops: Trigger property (None, Clock, InEnable).
-    - Gui German translation (Tim Fischer).
-    - Circuit Speed label: float with 2 decimals.
-    - New Oscope: basic + advanced modes.
+    - Oscope Hide Channel implemented.
+    - Resizable Multiplexer and Demultiplexer
+    - Binary Couter: add Set Pin.
+    - Clock and WaveGen exact frequency.
+    - Czech translation and help files (by vranik).
   
-  RC3:
-    - New Plotter and Oscilloscope unified Component.
-    - Recently used Circuits.
-    - Recently used Editor files.
-    - Search Components in Component List.
-    - Esc Key to cancel New wire.
-    - Open .simu file by command line: "simulide circ.simu" (or double-click).
-    - Set Simulation speed by steps per second or percentage.
-    - Set Simulation step (nanoseconds).
-    - Gui Brazilian Portuguese Translation ( Maico Smaniotto ).
-    
-  RC4:
-    - New Subcircuits with graphical Components capabilities (Boards).
-    - Several AVR Logic Symbol Packages (Sergey Roenko).
-    - Several AVR help files (Sergey Roenko).
-    
   Final:
-    - Make RamTable persistent.
-    - Unique Ramtable as window for each MCU.
-    - OpAmp: Properties for positive and negative power voltages.
-    - Remove all limitations to simulation speed (before limited to 1 GHz).
-    - Editor: Accept dropping files.
-    
-  SR1:
-    - Some new Russian help files (Sergey Roenko).
-    - Boards finished.
-  
-  SR2:
-    - Italian translation (@rcanoid).
+    - Oscope & Analizer extended time frame.
+    - MCU Monitor.
+    - Open Component Properties at Double-Click.
+    - Arduino Shields (experimental).
+    - Memories: Show Memory Table (editable).
+    - Turkish translation (by Aejwt).
     
 Bug Fixes:
   RC1:
-    - Mosfet animation not updating after Power-Off.
-    - Editor: SaveAs should take current file instead of last file.
-    - Editor: SaveAs+Modify+Compile takes old fileName.
-    - Crash Setting values < 1 pico
-    - Passive Components: should not accept value = 0.
-    - Atmega32u4: Pwm not working.
-    - Atmega32u4: Duplicated Pin D4. (Sergey Roenko)
-    - Atmega64: Wrong Pin20, should be reset. (Sergey Roenko)
-    - Mcu eeprom: error loading data files.
-    - Pic mcu: error reading opencollector pins as input.
-  
+    - AVR: I2C not working after circuit restart.
+    - I2C module interfering pullups.
+    - AudioOut: Crash when no audio output device found (by acebrian).
+    - Arduino compiler can't find includes.
+    - Audio Output cracking souds.
+    - Ampmeter & Voltmeter wrong decimals.
+    - AVR "bricks" after avrcpu crash.
+    - PIC MCUs not recovering from MCLR.
+    - Hd44780 Error on command = 0.
+    - AVR can miss port states in some cases.
+    - Crash setting Keypad rows or cols to 0.
+    - Some Pic Package errors.
+    - Redraw trazes in inverted Pins, SevenSegment and SwitchDip.
+    - Logic devices with Input Enable not working in Subcircuits.
+    - Memory not working in subcircuits.
+    - AVR Aref Pin not working.
+    
   RC2:
-    - Atmega32u4: Fast PWM on pin OC1C doesn't work for timer 1.
-    - Audio Output: cracking sounds.
-    - Volt. Regulator not working in some cases.
-    - PIC16F505 wrong package.
-    - Counter not working in Subcircuits.
-    - Crash deleting a subcircuit that fails to load .subcircuit file.
-    - Gates sometimes fail to restart after power-off (inverter oscillator example).
-    - SubPackage->LoadPackage fails to set proper default path in some cases.
-    - Logic Devices: Input HighV & LowV not working in Subcircuits.
-    - Windows can only reach 80% simulation speed.
-    - Windows cancel wire by right-click shows context menu.
-    - Drag & drop files not working in windows.
-    - Editor: some grammatical errors.
-    - Frequencimeter: Wrong value at Circuit speed > 1 MHz.
-    - Plotter not showing small signals properly ( < 0.1 V ).
-    - Mcu: Setting Pin direction can miss previous Pin state.
-    - Mcu: Pullups not working depending on Pin direction set order.
-    - BcdToDec not working in subcircuits.
-    - Editor: asm type not recognized after modify and save.
-    
-  RC3:
-    - Clock & WaveGen: Wrong frequency after circuit speed change > 1 MHz while running.
-    - New Circuit when Simulation is paused => Power button dissabled.
-    - Serial Monitor not properly deleted.
-    - Remove waveGen max frequency limit.
-    - AVR Adc not working for channels > 8.
-    - Avr asm Copmiler: error in mega16 & mega 32 .inc files.
-    - Arduino Uno should have a buffer lo drive builtin led.
-    - Debugger broken ( 0.4.14-RC2 ).
-    - Locale variants not working (eg. pt_BR).
-    - AVR i2c not working properly.
-    
-  RC4:
-    - Drag&Drop files not working as it should (item created at Drag enter).
-    - Crash: Arduino Uno led buffer not properly removed (0.4.14-RC3).
-    - LedMatrix not cleanly removed.
-    - Properties & Serial Monitor Windows always on top.
-    - Not possible to set simulation steps < 1 nS.
-    - RamTable: some PIC status bits names don't fit.
-    - Missing files: TC4560, TC4561 (Sergey Roenko).
-    - 74HC148 not working properly (Sergey Roenko).
-    - Mcu pins not properly initializated in some cases (0.4.14-RC2).
-    - Weird bug in examples/pic/glcd8544_p18f2550 (0.4.14-RC2).
-    - Pressing delete key while editing values removes oscope.
-    - Pausing simulation and click on oscope clears oscope screen.
-    - Fix Windows version number.
-    
+    - AVR Timer1 not working in CTC OCRA mode (4).
+    - Crash on matrix inf values.
+    - Oscope initialization issues.
+    - Oscope not showing DC values.
+    - Arduino: not showing variables in RamTable.
+    - Package asking to be saved when it's unmodified.
+    - DC Motor problems.
+    - AVR SPI not working.
+    - Arduino Nano package error.
+    - Circuit: Copy/Paste missing connectors.
+    - Chip: show Id property overriden at initChip.
+    - Frequencymeter Wrong readings in some cases.
+    - Latch D: Size error when no OE and no Tristate.
+    - Several subcircuit fixed (sergey Roenko).
+  
   Final:
-    - Oscope DC input: not shown until volt change.
-    - Oscope: Wrong central axis subdivisions for X sizes not multiple of 50.
-    - Text Component: Deleteº Key not working.
-    - Random Crash removing grounded Leds (0.4.14-RC4).
-    - PIC Comparator: Output Vref to Pin doesn't work.
-    - Image Component: Animated Gifs not working.
-    - RamTable: Load varset brokes RamTable (addr = 0).
-    - Pic Uart sends extra character after reset (0.4.13.RC2).
-    - AVR spi not synched to mcu clock in some cases (asteroid game).
-    - Changing Simulation Speed (Steps Per Sec.) should change step size if speed% results >100%.
-    - Editor: Set Compiler Path for unsaved or unsupported files should show an info dialog.
-    - Crash dropping files to circuit in some cases.
-    - Tunnel: wrong icon (0.4.14-RC4).
+    - Several Oscope issues.
+    - FlipFlop not shown in non english languages.
+    - Subcircuits not saving Main Component properties.
+    - Subcircuit label wrong pos in old circuits.
+    - Pic12F683 CCP1If flag not set.
+    - Wrong Build date in About Widget.
+    - Switches:label not hidden in Subcircuits.
+    - PIC: Crash creating Mclr Pin.
+    - Errors in some PIC packages.
+    - MCU EEPROM: First value = 0.
+    - PIC16F887 ADC Channel 7 not working.
+    - All Variable Resistors: Errors in value multipliers.
+    - Program freezes sometimes at Simulation restart.
+    - Subcircuits not working after pasting.
+    - Subcircuits fixed (sergey Roenko):
+      7445, 74137, 74138, 74139, 74141,
+      74145, 75154, 744028, 744514, 744515
   
   SR1:
-    - Undo/Redo: errors after new circuit.
-    - Undo/Redo: move single wire or component not saved.
-    - Attiny13 Timer0 pwm not working.
-    - Variable Resistors not updating values if simulation not running.
-    - Redraw problems moving Variable Resistor or Resistor Dip when zoomed.
-    - Error in Logical symbols for AtMega1280, 1281, 2560
-    - "Recently Used Circuits" button not showing ToolTip.
-    - Help text not shown for MCUs and Subcircuits.
-    - Some Russian help files fixed (Sergey Roenko).
-    - Font scale can lead to unreadable sizes, limit scale to 0.5->2.0
-    - Ramtable: missing first row after saving + reloading circuit (0.4.14-F).
-    - AVR: Flag ADIF in ADC must be cleared by writing a 1.
-    - AVR Comparators not working.
-    - Package Pins should not go outside limits.
-    - Package Pins not visible when "Point Pin" selected.
-    - Missing avra and gpasm executables in Win 64 version.
+    - Critical: Undo Rev 97, changes in eNode break simulation.
+    - Wires not updating correctly when Circuit is animated.
+    - Crash: attach+detach+attach Sield.
+    - Boards: error in some Pin angles.
+    - Boards(Subcircuits): Childs moving if selected.
+    - Subcircuit: Tunnels not properly initialized.
+    - New Arduinos: make shields usable for all Arduinos.
+    - DC Motor wrong speed indicator.
+    - KY40 not working.
+    - Oscope: Missing graphic if no wave detected.
+    - Oscope: Error changing Time Div in box.
+    - Oscope not working at long Time Div.
+    - Oscope: fix square wave at low freq & long Time Div.
+    - Oscope & LA: pulses not shown when subsample is active.
+    - Oscope & LA: Connect to Tunnel not working
+    - Logic Analizer: wrong defaul Volt. Div.
+    - Tunnels: Error after renaming.
+    - Tunnels: Connection error in some cases.
+    - Crash deleting MCU and then running simulation.
+    - MCU extra step time not in sync with Simulation time.
+    - 7 Seg BCD not working in Subcircuits.
   
-  SR2:
-    - AVR fails to read some hex files (unordered address).
-    - Crash compiling some Arduino sketches (var type and name not in same line).
-    - Crash reading Arduino Mega ADC (0.4.14-SR1).
-    - AVR AtTinyX5: Timer1 not working in some cases.
-    - Arduino: Changing Mcu Freq does nothing (simulide 0.4.14-SR1).
-    - AVR Phase Correct PWM not working correctly.
-    - Fixed Volt. not updated if simulation not running.
-    - Backspace key should delete components (Jan K. S.)
-    - Fix MacOs build problems (Jan K. S.)
-        Buttons not showing properly.
-        Missing MacOs simulide icon.
-        Child windows stay on top.
-        Editor monospaced Font.
-        Fix simulation crashes/bugs.
-    - Fix center position after loading circuit (Jan K. S.)
-    - Serial Monitor: Limit output size to avoid exesive memory usage.
-    - AVR load firmware fails with non english characters.
-    
-  SR3:
-    - Fixed Volt not saving state.
-    - Ammeter and voltmeter redraw problems (zooming).
-    - Battery doesn't show Volt. label.
-    - AVR PWM not taking total control of OC pins.
-    - AVR eeprom: unwritten value at address 0 should be 0xFF;
-    - Crash opening Serial Monitor (Qt >= 5.12.2).
-    - Dc Motor speed indicator not working with PWM.
-    - Mosfet error, shown whith switches in the circuit.
-    - Clock and WaveGen On/Off color indicator not updated.
-    
-  SR4:
-    - Relay Normally Closed not behaving correctly.
-    - Bjt: fails to converge in some cases (contant current circuit).
-    - Crash deleting Subcircuits in some cases (analog mux).
-    - Oscope: Cursor randomly wrong scale.
-    - Crash setting very large Component values
-    
-    
 New Components:
   RC1:
-    - Dc Motor.
-    - Variable Resistor.
-    - LDR.
-    - Termistor (NTC).
-    - Atmega32m1, Atmega64m1.
-
+    - aip31068 I2C LCD (by acebrian).
+    - Max72xx Led matrix (by acebrian).
+    - Ky-023 Joystic (by Jan K. S.).
+    - KY-040 Rotary Encoder (by Jan K. S.).
+    - RTD PT100 (by Benoit ZERR).
+    - Strain Gauge (by Benoit ZERR).
+    - 74XX189.
+    - Subcircuits (by Sergey Roenko):
+        tpic6a595,
+        K176IE3, K176IE4, K176IE5, K176IE12,
+        74HC640, 74HC643, 74HC645
+    
   RC2:
-    - IC74 (Sergey Roenko)
-        74C925, 74C926, 74C927, 74HC51, 74HC594, 74HC597, 74HC4016, 74LS54, 74XX45, 
-        74XX46, 74XX48, 74XX49, 74XX54, 74XX55, 74XX56, 74XX57, 74XX64, 74XX65, 
-        74XX68, 74XX69, 74XX70, 74XX72, 74XX82, 74XX83, 74XX114, 74XX141, 74XX145, 
-        74XX156, 74XX159, 74XX168, 74XX169, 74XX171, 74XX180, 74XX240, 74XX242, 
-        74XX243, 74XX244, 74XX246, 74XX248, 74XX249, 74XX276, 74XX280, 74XX295, 
-        74XX299, 74XX323, 74XX365, 74XX366, 74XX367, 74XX368, 74XX376, 74XX378, 
-        74XX379, 74XX395, 74XX540, 74XX541, 74XX591, 74XX682, 74XX684.
+    - FlipFlop RS.
+    - Ili9341 TFT display.
+    - Logic Analizer basic implementation.
+    - New Subcircuits (sergey Roenko): 
+      7489, 74200, 74219, 74301.
       
-    - ICCD (Sergey Roenko)
-        CD4085, CD4502, CD4503, CD4522, CD4526, CD4539, MC14495, MM74C922, MM74C923, 
-        TC4467, TC4468, TC4469.
-      
-    - Keys (Sergey Roenko)
-        L293.
-      
-  RC4:
-    - Tunnel.
+  Final:
+    - atmega8515 (by avklab)
     
-    
+    - New Subcircuits (by sergey Roenko): 
+      7497, 74184, 74185, 74502, 74503, 
+      CD4054, CD4055, CD4056,
+      K155ID11, K155ID13, 564Ik2
+      L298, ULN2001, ULN2803
+  
