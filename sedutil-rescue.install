@@ -1,0 +1,27 @@
+#!/bin/bash
+
+build() {
+    add_binary sedutil-cli
+    add_file "$SEDUTIL_PBA_IMG" /usr/sedutil/uefi64.img
+    cat << EOF > "$BUILDROOT"/usr/bin/linuxrescue
+cat << EOM
+* ********************************** *
+* DTA sedutil rescue image           *
+*                                    *
+* The following tools are available: *
+* - sedutil-cli                      *
+* - PBA image in /usr/sedutil/       *
+*                                    *
+* ********************************** *
+EOM
+EOF
+    chmod 755 "$BUILDROOT"/usr/bin/linuxrescue
+
+    add_runscript
+}
+
+help() {
+    cat <<HELPEOF
+This hook creates a rescue environment to manage self-encrypting drives that comply with the TCG OPAL 2.00 standard.
+HELPEOF
+}

@@ -1,0 +1,16 @@
+post_install() {
+  cat << EOM
+
+:: Requirements for sedutil-cli
+- add "libata.allow_tpm=1" to the kernel parameters
+
+:: PBA and rescue images
+- run "sedutil-mkimg" to build both image types
+
+:: Optional sleep support
+- WARNING: requires the unlock secrets to be kept on disk and in kernel memory
+- set the unlock password in "/etc/sedutil/sedutil-sleep.conf"
+- enable the systemd service "sedutil-sleep.service"
+
+EOM
+}

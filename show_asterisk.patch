@@ -1,0 +1,9 @@
+# Disable visual feedback for the password prompt
+--- a/LinuxPBA/GetPassPhrase.h
++++ b/LinuxPBA/GetPassPhrase.h
+@@ -19,4 +19,4 @@ along with sedutil.  If not, see <http:/
+ * C:E********************************************************************** */
+ #pragma once
+ #include "SecureContainer.h"
+-std::shared_ptr<SecureString> GetPassPhrase(const char *prompt, bool show_asterisk=true);
++std::shared_ptr<SecureString> GetPassPhrase(const char *prompt, bool show_asterisk=false);

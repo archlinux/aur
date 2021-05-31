@@ -1,0 +1,7 @@
+[Service]
+Type=oneshot
+EnvironmentFile=/etc/sedutil/sedutil-sleep.conf
+ExecStart=/bin/sh -c 'echo "$SED_PASSWORD" | /usr/bin/sedutil-cli -s --prepareForS3Sleep 0 Admin1 /dev/nvme0n1 &>/dev/null'
+
+[Install]
+WantedBy=multi-user.target

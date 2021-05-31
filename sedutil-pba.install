@@ -1,0 +1,13 @@
+#!/bin/bash
+
+build() {
+    add_binary linuxpba
+
+    add_runscript
+}
+
+help() {
+    cat <<HELPEOF
+This hook creates a pre-boot authentication environment to unlock self-encrypting drives that comply with the TCG OPAL 2.00 standard.
+HELPEOF
+}
