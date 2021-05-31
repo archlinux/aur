@@ -1,6 +1,6 @@
 pkgbase = ocaml-lwt
 	pkgdesc = A library for cooperative threads in OCaml
-	pkgver = 5.4.0
+	pkgver = 5.4.1
 	pkgrel = 1
 	url = https://github.com/ocsigen/lwt
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = ocaml-lwt
 	depends = ocaml-result
 	depends = ocaml-seq
 	options = !strip
-	source = ocaml-lwt-5.4.0-1.tar.gz::https://github.com/ocsigen/lwt/archive/5.4.0.tar.gz
-	sha256sums = 8c5f5ff040d0ffcc9a6d73eb0501c61827ccf3fc99aeb077bc68a1915fe88b03
+	source = ocaml-lwt-5.4.1-1.tar.gz::https://github.com/ocsigen/lwt/archive/5.4.1.tar.gz
+	sha256sums = 9090e646cff89435971a9bca08c4ddbb4719f5d6c8745cfd617d3a549a0ed1cf
 
 pkgname = ocaml-lwt
