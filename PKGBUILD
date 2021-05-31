@@ -8,7 +8,7 @@ pkgdesc="GNU Coreutils rewritten in Rust"
 arch=('x86_64')
 url='https://github.com/uutils/coreutils'
 license=('MIT')
-makedepends=('rust' 'cargo' 'python-sphinx' 'cmake')
+makedepends=('git' 'rust' 'cargo' 'python-sphinx' 'cmake')
 source=("git+https://github.com/uutils/coreutils.git")
 sha512sums=('SKIP')
 
