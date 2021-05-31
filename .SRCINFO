@@ -1,0 +1,20 @@
+pkgbase = neovim-coc-cmake-git
+	pkgdesc = coc.nvim extension for cmake language.
+	pkgver = r22.a729ae6
+	pkgrel = 1
+	url = https://github.com/voldikss/coc-cmake
+	arch = any
+	license = MIT
+	makedepends = yarn
+	makedepends = npm
+	makedepends = ts-node
+	makedepends = git
+	depends = neovim-coc
+	depends = cmake
+	provides = neovim-coc-cmake
+	conflicts = neovim-coc-cmake
+	source = coc-cmake::git+https://github.com/voldikss/coc-cmake.git
+	sha256sums = SKIP
+
+pkgname = neovim-coc-cmake-git
+
