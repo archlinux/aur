@@ -13,7 +13,7 @@ options=('!strip' '!emptydirs')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('SKIP')
 
-_gopkg=github.com/prasmussen/gdrive
+_gopkg="${url##*https://}"
 _gobuild=build/src/$_gopkg
 
 prepare() {
@@ -35,11 +35,6 @@ build() {
   export GOPATH="$srcdir/build"
   go install $_gopkg@$pkgver
 }
-
-#check() {
-#  export GOPATH="$srcdir/build"
-#  go test $_gopkg@$pkgver
-#}
 
 package() {
   cd build
