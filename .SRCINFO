@@ -1,14 +1,15 @@
 pkgbase = python-snimpy
 	pkgdesc = Interactive SNMP tool
 	pkgver = 0.8.14
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/vincentbernat/snimpy
 	arch = x86_64
 	license = ISC
 	checkdepends = python-nose
 	checkdepends = python-mock
-	makedepends = python-setuptools
+	checkdepends = python-pycryptodomex
 	makedepends = python-vcversioner
+	depends = python-setuptools
 	depends = python-cffi
 	depends = libsmi
 	depends = python-pysnmp
