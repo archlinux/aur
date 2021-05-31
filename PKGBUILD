@@ -5,7 +5,7 @@ _pkgname=lib32-sdl2_compat12
 pkgname=lib32-sdl2_compat12-git
 provides=('lib32-sdl=1.2.15')
 conflicts=('lib32-sdl')
-pkgver=r285.646ecd7
+pkgver=r292.809f8a0
 pkgrel=1
 pkgdesc="Provides a binary-compatible API for programs written against SDL 1.2, but it uses SDL 2.0 behind the scenes."
 url=https://github.com/libsdl-org/sdl12-compat.git
@@ -34,9 +34,16 @@ build() {
 }
 
 package() {
-  cd "sdl12-compat"
-
+  cd sdl12-compat
   make DESTDIR="$pkgdir" install
+  
+  cd "${pkgdir}"/usr
+  rm -rf {bin,include,share}
+  mv lib lib32
+  sed -i'' -e 's/usr\/lib/usr\/lib32/g' lib32/pkgconfig/sdl12_compat.pc
+  
+  cd "${srcdir}/sdl12-compat"
   install -dm755 "$pkgdir/usr/share/licenses/$_pkgname/"
   install -m644 LICENSE.txt "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  
 }
