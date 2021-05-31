@@ -1,6 +1,6 @@
 pkgbase = monado-git
 	pkgdesc = The open source OpenXR runtime.
-	pkgver = 21.0.0.r69.g1b692c63
+	pkgver = 21.0.0.r565.gb7b46908
 	pkgrel = 1
 	url = https://monado.dev
 	arch = i686
@@ -16,12 +16,11 @@ pkgbase = monado-git
 	depends = vulkan-icd-loader
 	depends = libgl
 	depends = wayland
+	depends = xr-hardware
 	optdepends = libuvc: optical tracking support
 	optdepends = opencv: optical tracking support
-	optdepends = xr-hardware: udev permissions for popular XR hardware
 	provides = openxr-runtime
 	source = monado::git+https://gitlab.freedesktop.org/monado/monado.git
 	md5sums = SKIP
 
 pkgname = monado-git
-
