@@ -6,13 +6,13 @@
 pkgbase=lib32-pipewire-git
 _pkgbase=pipewire
 pkgname=(lib32-pipewire-git lib32-pipewire-jack-git lib32-gst-plugin-pipewire-git)
-pkgver=0.3.23.r131.g529f4d31
+pkgver=0.3.28.r108.g2a8d511b
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (git) (32 bit client libraries)'
 url=https://pipewire.org
 license=(LGPL2.1)
 arch=(x86_64)
-makedepends=(git meson valgrind jack2 lib32-jack2 libpulse lib32-libpulse
+makedepends=(git meson valgrind jack2 libpulse lib32-libpulse
              alsa-lib lib32-alsa-lib gst-plugins-base lib32-gst-plugins-base
              rtkit dbus lib32-dbus libsndfile lib32-libsndfile)
 source=(git+https://gitlab.freedesktop.org/pipewire/pipewire.git)
@@ -34,6 +34,7 @@ build() {
         -D systemd-system-service=disabled \
         -D tests=disabled \
         -D audiotestsrc=disabled \
+        -D avahi=disabled \
         -D bluez5=disabled \
         -D bluez5-codec-aptx=disabled \
         -D bluez5-codec-ldac=disabled \
@@ -81,8 +82,8 @@ package_lib32-pipewire-git() {
 
 package_lib32-pipewire-jack-git() {
     pkgdesc+=' (JACK support) (git) (32 bit)'
-    depends=(lib32-pipewire lib32-pipewire-git=$pkgver lib32-jack2)
-    provides=(lib32-pipewire-jack)
+    depends=(lib32-pipewire lib32-pipewire-git=$pkgver)
+    provides=(lib32-pipewire-jack libjack.so=0-32)
     conflicts=(lib32-pipewire-jack)
     _pick "$srcdir"/install/usr/lib32/pipewire-${_ver}/jack
 }
