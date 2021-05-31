@@ -1,6 +1,6 @@
 pkgbase = nordvpn-bin
 	pkgdesc = NordVPN CLI tool for Linux
-	pkgver = 3.9.5_1
+	pkgver = 3.10.0_1
 	pkgrel = 1
 	url = https://nordvpn.com/download/linux/
 	install = nordvpn-bin.install
@@ -12,14 +12,14 @@ pkgbase = nordvpn-bin
 	depends = libxml2
 	provides = nordvpn
 	conflicts = openvpn-nordvpn
-	source_x86_64 = https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_3.9.5-1_amd64.deb
-	sha256sums_x86_64 = 36fccf2e53792766cedb6b4b95f2945b2adb6714482460c21afcc65a33fa3ca3
-	source_i686 = https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_3.9.5-1_i386.deb
-	sha256sums_i686 = e1f356051e0dd16a26d963ee81330fdfe045195f195a66a0304a4441242fc953
-	source_armv7h = https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_3.9.5-1_armhf.deb
-	sha256sums_armv7h = 6c1e0637b13fe932c733c281b4e75c7bd4516e578a5e5536ac93718d71b06da6
-	source_aarch64 = https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_3.9.5-1_arm64.deb
-	sha256sums_aarch64 = 807ce776213052ce4426ce97b11258c7d1ecf0667a17de9b297cb9381beaffb2
+	source_x86_64 = https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_3.10.0-1_amd64.deb
+	sha256sums_x86_64 = 04d0089e326542c629c5f50a235de82bf3fa9fa829065be0490a0902e6770b63
+	source_i686 = https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_3.10.0-1_i386.deb
+	sha256sums_i686 = 57b99b801d3e9364b0ae8bf0e9790204cbae0a120db9f1fdbd57ef6f1f0fd657
+	source_armv7h = https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_3.10.0-1_armhf.deb
+	sha256sums_armv7h = 08ab1bd5692732530a51c5690bc91eb0368b66ff4a0d9d4c9d943d9248326097
+	source_aarch64 = https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_3.10.0-1_arm64.deb
+	sha256sums_aarch64 = d215b33979090bda4220401872255e8c638f4efc4e7efe3bb25254ddb0c10445
 
 pkgname = nordvpn-bin
 
