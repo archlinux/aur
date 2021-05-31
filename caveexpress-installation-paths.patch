@@ -1,7 +1,6 @@
-diff --color -Naur caveexpress-2.4.orig/cmake/macros.cmake caveexpress-2.4/cmake/macros.cmake
---- caveexpress-2.4.orig/cmake/macros.cmake	2016-02-18 13:24:54.000000000 +0100
-+++ caveexpress-2.4/cmake/macros.cmake	2018-02-04 13:34:19.021420405 +0100
-@@ -804,8 +804,8 @@
+--- macros.cmake.orig	2021-05-31 05:11:41.232027690 -0400
++++ macros.cmake	2021-05-31 05:13:06.426611147 -0400
+@@ -721,8 +721,8 @@
  		if (LINUX AND NOT TESTS AND NOT STEAMLINK)
  			set(SHARE_DIR "share")
  			set(GAMES_DIR "${SHARE_DIR}/${_EXE_TARGET}")
@@ -11,22 +10,13 @@ diff --color -Naur caveexpress-2.4.orig/cmake/macros.cmake caveexpress-2.4/cmake
 +			set(BIN_DIR "bin")
  			configure_file(${ROOT_DIR}/contrib/installer/linux/editor.in ${PROJECT_BINARY_DIR}/${_EXE_TARGET}-editor)
  			configure_file(${ROOT_DIR}/contrib/installer/linux/desktop.in ${PROJECT_BINARY_DIR}/${_EXE_TARGET}.desktop)
- 			configure_file(${ROOT_DIR}/contrib/installer/linux/appdata.xml.in ${PROJECT_BINARY_DIR}/${_EXE_TARGET}.appdata.xml)
-@@ -906,7 +906,7 @@
- 	if (NOT TESTS)
- 		set(ICON "${_EXE_TARGET}-icon.png")
- 		if (EXISTS ${ROOT_DIR}/contrib/${ICON})
--			install(FILES ${ROOT_DIR}/contrib/${ICON} DESTINATION ${ICON_DIR} COMPONENT ${_EXE_TARGET})
-+			install(FILES ${ROOT_DIR}/contrib/${ICON} DESTINATION ${ICON_DIR} RENAME ${_EXE_TARGET}.png COMPONENT ${_EXE_TARGET})
+ 			configure_file(${ROOT_DIR}/contrib/installer/linux/snapcraft.yaml.in ${PROJECT_BINARY_DIR}/${_EXE_TARGET}.snapcraft.yaml)
+@@ -847,7 +847,7 @@
+ 		else()
+ 			set(ICON "${_EXE_TARGET}-icon.png")
+ 			if (EXISTS ${ROOT_DIR}/contrib/${ICON})
+-				install(FILES ${ROOT_DIR}/contrib/${ICON} DESTINATION ${ICON_DIR} COMPONENT ${_EXE_TARGET})
++				install(FILES ${ROOT_DIR}/contrib/${ICON} DESTINATION ${ICON_DIR} RENAME ${_EXE_TARGET}.png COMPONENT ${_EXE_TARGET})
+ 			endif()
  		endif()
  	endif()
- 
-@@ -914,7 +914,7 @@
- 	# install relative to /usr/<APPNAME>
- 	if (NOT TESTS)
- 		if (PKGDATADIR)
--			install(DIRECTORY ${RESOURCE_DIR} DESTINATION ${PKGDATADIR} COMPONENT ${_EXE_TARGET})
-+			install(DIRECTORY ${RESOURCE_DIR} DESTINATION /usr/share COMPONENT ${_EXE_TARGET})
- 		else()
- 			install(DIRECTORY ${RESOURCE_DIR} DESTINATION ${GAMES_DIR}/${GAME_BASE_DIR} COMPONENT ${_EXE_TARGET})
- 		endif()
