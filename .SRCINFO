@@ -1,7 +1,7 @@
 pkgbase = zsh-easy-motion-git
 	pkgdesc = Vim's easy-motion for zsh
 	pkgver = r65.bc71781
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/IngoMeyer441/zsh-easy-motion
 	arch = any
 	license = MIT

@@ -2,7 +2,7 @@
 
 pkgname=zsh-easy-motion-git
 pkgver=r65.bc71781
-pkgrel=1
+pkgrel=2
 pkgdesc="Vim's easy-motion for zsh"
 arch=('any')
 url='https://github.com/IngoMeyer441/zsh-easy-motion'
@@ -23,7 +23,7 @@ package() {
   typeset _plugindir="${pkgdir}/usr/share/zsh/plugins"
   typeset _licdir="${pkgdir}/usr/share/licenses/${pkgname}"
 
-  install -Dm755 "${srcdir}/${_gitname}/easy_motion.plugin.zsh" "${_plugindir}"
-  install -Dm755 "${srcdir}/${_gitname}/easy_motion.py" "${_plugindir}"
-  install -Dm644 "${srcdir}/${_gitname}/LICENSE" "${_licdir}"
+  install -Dm755 "${srcdir}/${_gitname}/easy_motion.plugin.zsh" -t "${_plugindir}"
+  install -Dm755 "${srcdir}/${_gitname}/easy_motion.py" -t "${_plugindir}"
+  install -Dm644 "${srcdir}/${_gitname}/LICENSE" -t "${_licdir}"
 }
