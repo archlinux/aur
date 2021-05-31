@@ -1,5 +1,5 @@
 pkgbase = mutter-oldstable
-	pkgdesc = A window manager for GNOME
+	pkgdesc = A window manager for GNOME (oldstable version)
 	pkgver = 3.38.4
 	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/mutter

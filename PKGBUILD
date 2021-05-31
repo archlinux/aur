@@ -6,7 +6,7 @@
 pkgname=mutter-oldstable
 pkgver=3.38.4
 pkgrel=2
-pkgdesc="A window manager for GNOME"
+pkgdesc="A window manager for GNOME (oldstable version)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 conflicts=("mutter")
 provides=("mutter=$pkgver")
