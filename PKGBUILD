@@ -4,7 +4,7 @@
 pkgname=munt
 pkgdesc='Software synthesizer emulating pre-GM MIDI devices such as the Roland MT-32, CM-32L, CM-64 and LAPC-I'
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://munt.sourceforge.net'
 license=('GPL2')
@@ -29,7 +29,7 @@ build() {
   convert "${srcdir}/${pkgname}-${__mt32suffix}_${pkgver//./_}/mt32emu_qt/src/images/Icon.gif" -resize 32x32 "${srcdir}/munt.png"
 
   cd "${srcdir}/${pkgname}-${__mt32suffix}_${pkgver//./_}"
-  cmake -DCMAKE_INSTALL_PREFIX='/usr'
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -Dlibmt32emu_SHARED=ON
   make
 }
 
