@@ -2,7 +2,7 @@
 
 _pkgname=lepton-snippet-manager
 pkgname=${_pkgname}-appimage
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="Lepton is a lean code snippet manager based on GitHub Gist"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('lepton-snippet-manager')
 makedepends=('fuse2')
 source=("https://github.com/hackjutsu/Lepton/releases/download/v${pkgver}/Lepton-${pkgver}.AppImage"
         "lepton-snippet-manager.sh")
-sha256sums=('16998d719c3e29e252f09f270e81a656a6724eb91cde612347bf5eb1772644aa'
+sha256sums=('21383875ad9da8ef7accf4d1a36504d61c0e9a64748888932bfabeb94f4e1c36'
             '3a6fd5430844ac76e793f17c5019be9f701f8702813e354f87530cbb36bb3965')
 options=(!strip)
 _filename=./Lepton-${pkgver}.AppImage
