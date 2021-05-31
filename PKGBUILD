@@ -19,12 +19,14 @@
 _pkgname='tor-browser'
 pkgname='tor-browser-behind-tor'
 pkgver='10.0.16'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Tor Browser Bundle: anonymous browsing using Firefox and Tor (international PKGBUILD) (using tor service to download sources)'
 url='https://www.torproject.org/projects/torbrowser.html'
 arch=('i686' 'x86_64')
 license=('GPL')
 makedepends=('tor')
+conflicts=('tor-browser')
+provides=('tor-browser')
 depends=('libxt' 'startup-notification' 'mime-types'
 	'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
 	'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite')

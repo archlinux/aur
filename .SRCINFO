@@ -1,7 +1,7 @@
 pkgbase = tor-browser-behind-tor
 	pkgdesc = Tor Browser Bundle: anonymous browsing using Firefox and Tor (international PKGBUILD) (using tor service to download sources)
 	pkgver = 10.0.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.torproject.org/projects/torbrowser.html
 	install = tor-browser.install
 	arch = i686
@@ -28,6 +28,8 @@ pkgbase = tor-browser-behind-tor
 	optdepends = libpulse: PulseAudio audio driver
 	optdepends = libnotify: Gnome dialog boxes
 	optdepends = mozilla-common: Common Initialization Profile for Mozilla.org products
+	provides = tor-browser
+	conflicts = tor-browser
 	noextract = tor-browser-linux32-10.0.16_en-US.tar.xz
 	noextract = tor-browser-linux64-10.0.16_en-US.tar.xz
 	source = tor-browser.desktop.in
@@ -49,4 +51,3 @@ pkgbase = tor-browser-behind-tor
 	sha256sums_x86_64 = SKIP
 
 pkgname = tor-browser-behind-tor
-
