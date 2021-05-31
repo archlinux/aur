@@ -7,8 +7,7 @@ pkgbase = gitit
 	arch = x86_64
 	license = GPL
 	makedepends = cabal-install
-	makedepends = libffi
-	makedepends = ncurses5-compat-libs
+	makedepends = ghc8.8
 	depends = gmp
 	depends = mailcap
 	depends = numactl
@@ -609,10 +608,6 @@ pkgbase = gitit
 	sha512sums = d75097619e9d999f84e80e8fe7f541e3df81289ce40763f9193460e23a0dcb0d37c5cad7ce6b0fe7a8f32d856e4b231bc83dab34729248a6bf1dda1377b94691
 	sha512sums = 216555bd73a46da5061291c2c071e9c71239bd5ae253ac06ee80ade65bb1871366cc8e4dffbad983c5b6a7f4b0cb2a1439dfa5971db3e183124fa90442a73f0c
 	sha512sums = 3619b5c32e16a4fb9a68a9e6ea0beb9b14d06a4b5825811f429ee232a0ea13035335cd86c0301f8afcff126a473b86698fd310f9608e0e0ecb849714842be1ea
-	source_i686 = https://downloads.haskell.org/~ghc/8.8.4/ghc-8.8.4-i386-deb9-linux.tar.xz
-	sha512sums_i686 = 519eaf812c86d8d7bc92999ecc16b9994803927e1e56adcc69bc83c66c8ba5ec43caf2727ff905310c78d08b78afc03892ccc76f9268b2325c2915cab3ceadcf
-	source_x86_64 = https://downloads.haskell.org/~ghc/8.8.4/ghc-8.8.4-x86_64-deb9-linux.tar.xz
-	sha512sums_x86_64 = 4c508b5a717a3598ebe8f88c0dd8ffe077115c1a91197af4ce9e25e8bfde445adb98efde9b35edcd1a4896870f505f67029b16c3ed89ac01c986f2afc2ed09b7
 
 pkgname = gitit
 
