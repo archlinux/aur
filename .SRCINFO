@@ -19,7 +19,7 @@ pkgbase = mautrix-signal
 	optdepends = python-phonenumbers>=8
 	optdepends = python-pillow>=4: webp conversion and qr code login
 	optdepends = python-prometheus_client>=0.6: metrics upload
-	optdepends = pycryptodome>=3
+	optdepends = python-pycryptodome>=3
 	optdepends = python-olm>=3: end-to-bridge encryption support
 	optdepends = python-qrcode>=6: qr code login
 	optdepends = python-unpaddedbase64: end-to-bridge encryption support

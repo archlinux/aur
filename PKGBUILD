@@ -1,4 +1,4 @@
-# Maintainer: Frédéric Tobias Christ <develop+mautrix-signal@ntr.li> <ftchrist:matrix.org>
+# Maintainer: Frédéric Tobias Christ <dev+mautrix-signal@ntr.li> <ftchrist:matrix.org>
 pkgname='mautrix-signal'
 pkgver=0.1.1
 pkgrel=1
@@ -13,7 +13,7 @@ optdepends=(
 'python-phonenumbers>=8'
 'python-pillow>=4: webp conversion and qr code login'
 'python-prometheus_client>=0.6: metrics upload'
-'pycryptodome>=3'
+'python-pycryptodome>=3'
 'python-olm>=3: end-to-bridge encryption support'
 'python-qrcode>=6: qr code login'
 #'signalstickers-client>=3' does not exist yet
