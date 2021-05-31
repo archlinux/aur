@@ -10,7 +10,7 @@ url="https://gitlab.gnome.org/World/giara"
 license=('GPL3')
 groups=()
 depends=(
-	'gtk4>=4.3'
+	'gtk4-git'
 	'gtksourceview5'
 	'libadwaita-git'
 	'python-beautifulsoup4'
