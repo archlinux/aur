@@ -1,6 +1,6 @@
 pkgbase = prometheus-mysqld-exporter-bin
 	pkgdesc = Prometheus exporter for MySQL server metrics (binary, not built from source)
-	pkgver = 0.12.1
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/prometheus/mysqld_exporter
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = prometheus-mysqld-exporter-bin
 	backup = etc/conf.d/prometheus-mysqld-exporter
 	source = prometheus-mysqld-exporter.service
 	source = prometheus-mysqld-exporter.confd
-	source = https://github.com/prometheus/mysqld_exporter/releases/download/v0.12.1/mysqld_exporter-0.12.1.linux-amd64.tar.gz
+	source = https://github.com/prometheus/mysqld_exporter/releases/download/v0.13.0/mysqld_exporter-0.13.0.linux-amd64.tar.gz
 	sha256sums = d8939e5f53ea847c177b65d5748c614a53f068076dfdea564773ec2f2193a1c7
 	sha256sums = 5de90c46506c47d49fb98c41b6be09096fcc9a147c4d0304ac4a6bfb3974c165
-	sha256sums = 133b0c281e5c6f8a34076b69ade64ab6cac7298507d35b96808234c4aa26b351
+	sha256sums = 626584c5d1c0cf09982302763e69db24fabe5dc736e7b694a3f8fdfee3d8d9a2
 
 pkgname = prometheus-mysqld-exporter-bin
 
