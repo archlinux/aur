@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Blockout II
+GenericName=3D tetris
+GenericName[de]=3D-Tetris
+Comment=3D tetris, free adaptation of the original BlockOut DOS game edited by California Dreams in 1989
+Comment[de]=3D-Tetris, freie Adaption des DOS-Spiels BlockOut von California Dreams aus dem Jahr 1989
+Icon=blockout2
+Exec=blockout2
+Terminal=false
+Categories=Game;BlocksGame;
