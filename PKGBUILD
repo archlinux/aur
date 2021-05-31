@@ -45,7 +45,6 @@ package() {
 
   install -Dm 755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
   install -Dm 755 $_pkgname-launcher "$pkgdir"/usr/bin/$_pkgname-launcher
-  # install -Dm 755 resources/$pkgname-launcher.sh "$pkgdir"/usr/bin/$pkgname-launcher.sh
 
   install -Dm 644 "resources/$_pkgname@.service" "$pkgdir"/usr/lib/systemd/user/"$_pkgname@.service"
   install -Dm 644 resources/$_pkgname.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop
