@@ -14,9 +14,9 @@ checkdepends=('python' 'fakechroot' 'gtest')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/falconindy/auracle.git"
-        "abseil-fix.patch::https://github.com/inglor/auracle/commit/bcd5ceef60bce3e463cc8a2c93f6750d6dd49f4e.patch")
+        "abseil-fix.patch::https://github.com/inglor/auracle/commit/9075aabcd3eac5a058d97b871e786e9fb65bfbce.patch")
 sha256sums=('SKIP'
-            'bd0fbc1020a51bf24176221586935a59ee5dbc4b2b9e5d9c2d37f79626b7ad2b')
+            'ca65cb7f95c3427a5abc5e95eb69b34da6ccfc8200b0c800c42971b901e88bd4')
 
 pkgver() {
   cd "$_pkgname"
