@@ -1,11 +1,11 @@
 pkgbase = otf-allerta
 	pkgdesc = Open-source signage typeface
 	pkgver = 1.001
-	pkgrel = 3
-	url = https://pixelspread.com/$_pkgname
+	pkgrel = 4
+	url = https://pixelspread.com/allerta
 	arch = any
 	license = OFL
-	source = https://pixelspread.com/$_pkgname/allerta.zip
+	source = https://pixelspread.com/allerta/allerta.zip
 	sha256sums = 668cf2188bda44999d60931dded94af5d08b60ce1b9a951bd93b658fe000e099
 
 pkgname = otf-allerta

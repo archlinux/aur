@@ -5,10 +5,10 @@
 _pkgname=allerta
 pkgname=otf-$_pkgname
 pkgver=1.001
-pkgrel=3
+pkgrel=4
 pkgdesc='Open-source signage typeface'
 arch=('any')
-url='https://pixelspread.com/$_pkgname'
+url="https://pixelspread.com/$_pkgname"
 license=('OFL')
 source=("$url/$_pkgname.zip")
 sha256sums=('668cf2188bda44999d60931dded94af5d08b60ce1b9a951bd93b658fe000e099')
