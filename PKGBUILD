@@ -45,7 +45,7 @@ package() {
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+    ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_Pkgname}"
 
     # start avahi daemon
     echo "Configure avahi-daemon to launch after boot."
