@@ -4,7 +4,7 @@
 # shellcheck disable=2148
 
 pkgname=ganglia-web
-pkgver=3.7.4
+pkgver=3.7.5
 pkgrel=1
 pkgdesc="Web front-end to Ganglia (see ganglia package)"
 arch=('any')
@@ -16,7 +16,7 @@ backup=(usr/share/webapps/ganglia/conf_default.php)
 install='ganglia-web.install'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ganglia/ganglia-web/archive/$pkgver.tar.gz"
         'ganglia-web.install')
-sha256sums=('18cac5fd232dbd18cce91a8b107cf0ec254f710797ff56017e0c8f9f7ea26825'
+sha256sums=('067f791287a11210d274acf4c9c1b5e3df3482ab3f3a151071cf6c926460cfa9'
             'b2d01098ffc3998143cbd4cc996f3ce572604b6c29f5c97e917f6de8986131da')
 
 package() {
