@@ -1,0 +1,13 @@
+pkgbase = armcord-bin
+	pkgdesc = Discord client for lower end and ARM devices.
+	pkgver = 2.4
+	pkgrel = 1
+	url = https://github.com/smartfrigde/armcord
+	arch = arm64
+	license = MIT
+	options = !strip
+	source = https://github.com/smartfrigde/armcord/releases/download/2.4/armcord-linux-arm64.tar.gz
+	sha256sums = 022c6944ee1111e657b8d9899a2c7fd92f6dc42a34e6f08e4aa54a0f844a7c6f
+
+pkgname = armcord-bin
+
