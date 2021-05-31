@@ -7,7 +7,7 @@
 pkgname=gsettings-desktop-schemas-oldstable
 pkgver=3.38.0
 pkgrel=2
-pkgdesc="Shared GSettings schemas for the desktop"
+pkgdesc="Shared GSettings schemas for the desktop (oldstable version)"
 arch=(any)
 url="https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas"
 conflicts=("gsettings-desktop-schemas")

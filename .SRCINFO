@@ -1,5 +1,5 @@
 pkgbase = gsettings-desktop-schemas-oldstable
-	pkgdesc = Shared GSettings schemas for the desktop
+	pkgdesc = Shared GSettings schemas for the desktop (oldstable version)
 	pkgver = 3.38.0
 	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas
