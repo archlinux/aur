@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='spot'
 pkgname="$_projectname-client-git"
-pkgver='0.1.11.r28.gca32e38'
+pkgver='0.1.14.r21.g30caeaa'
 pkgrel='1'
 pkgdesc='Gtk/Rust native Spotify client - git version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -33,7 +33,7 @@ build() {
 
 check() {
 	cd "$srcdir/"
-	meson test -C "$_builddirectory"
+	meson test -C "$_builddirectory" --timeout-multiplier -1
 }
 
 package() {
