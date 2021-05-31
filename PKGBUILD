@@ -1,7 +1,7 @@
 # Maintained by Faisal Moledina (faisal at moledina dot me)
 pkgname=onedriver
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Native Linux filesystem for Microsoft OneDrive"
 arch=('x86_64')
 url='https://github.com/jstaf/onedriver'
@@ -24,7 +24,7 @@ build() {
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-X main.commit=f560cbe48072bd8f88a44de038c1928e30608d14 -linkmode external -extldflags \"${LDFLAGS}\""
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\""
 }
 
 package() {
