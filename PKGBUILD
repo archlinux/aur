@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=giara-git
-pkgver=0.3.r3.g98045cf
+pkgver=0.3.r118.gcee3186
 pkgrel=1
 epoch=
 pkgdesc="GTK app for Reddit"

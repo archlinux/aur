@@ -1,6 +1,6 @@
 pkgbase = giara-git
-	pkgdesc = Reddit gtk client
-	pkgver = 0.3.r3.g98045cf
+	pkgdesc = GTK app for Reddit
+	pkgver = 0.3.r118.gcee3186
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/giara
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = giara-git
 	makedepends = meson
 	makedepends = git
 	makedepends = gobject-introspection
-	depends = gtksourceview4
-	depends = libhandy>=1
+	depends = gtk4-git
+	depends = gtksourceview5
+	depends = libadwaita-git
 	depends = python-beautifulsoup4
-	depends = python-cairo
 	depends = python-dateutil
 	depends = python-gobject
 	depends = python-mistune
