@@ -4,11 +4,11 @@
 pkgname=kubeadm-bin
 pkgdesc="Kubernetes.io kubeadm binary"
 pkgver=1.21.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="http://kubernetes.io"
 license=('apache')
-depends=('kubelet-bin')
+depends=('kubelet-bin' 'conntrack-tools' 'iptables' 'iproute2' 'util-linux')
 conflicts=('kubernetes' 'kubernetes-bin')
 provides=('kubeadm')
 source=(
