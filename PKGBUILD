@@ -14,7 +14,7 @@ _NUMAdisable=y
 # Enable fsync
 _fsync=y
 #enable futex2
-_futex2=y
+_futex2=
 #enable winesync
 _winesync=
 ### Set performance governor as default
@@ -51,7 +51,7 @@ pkgbase=linux-cacule-rc
 _major=5.13
 #_minor=1
 #_minorc=$((_minor+1))
-_rcver=rc3
+_rcver=rc4
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 _stablerc=${_major}-${_rcver}
@@ -65,39 +65,56 @@ options=('!strip')
 makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
 _patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.12"
+_patchsource2="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.13"
 source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz"
-        "https://git.kernel.org/torvalds/t/linux-5.13-rc3.tar.gz"
+        "https://git.kernel.org/torvalds/t/linux-5.13-rc4.tar.gz"
         "config"
-        "${_patchsource}/arch-patches-v3/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_patchsource}/cacule-patches/cacule-5.13.patch"
-        "${_patchsource}/cpu-patches-v2/0001-cpu-patches.patch"
+    #    "${_patchsource}/arch-patches-v3/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_patchsource2}/cacule-patches/cacule-5.13.patch"
+        "${_patchsource2}/bbr2-5.13.patch"
+        "${_patchsource2}/bfq-5.13.patch"
+        "${_patchsource2}/ksm-5.13.patch"
+        "${_patchsource2}/cpu-5.13.patch"
+        "${_patchsource2}/fixes-5.13.patch"
+        "${_patchsource2}/zstd-5.13.patch"
+        "${_patchsource}/futex/1001-futex-513-wait_multiple.patch"
+        "${_patchsource2}/misc/2002-tune-vm-mm-and-vfs-settings.patch"
+        "${_patchsource}/ll-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
+        "${_patchsource}/lru-gen/PATCH-v3-00-14-Multigenerational-LRU-Framework.patch"
+#        "${_patchsource}/lrng/1004-dev-random-new-lrng-approach-v40.patch"
+        "${_patchsource}/ll-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
+   #     "${_patchsource}/cpu-patches-v2/0001-cpu-patches.patch"
       #  "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
       #  "${_patchsource}/futex2-stable-patches-v3/0001-futex2-resync-from-gitlab.collabora.com.patch"
        # "${_patchsource}/wine-esync-patches/0001-v5.12-winesync.patch"
        # "${_patchsource}/zen-patches-v2/0001-zen-patches.patch"
        # "${_patchsource}/lqx-patches-v2/0001-lqx-patches.patch"
       #  "${_patchsource}/bfq-patches-v8/0001-bfq-patches.patch"
-      #  "${_patchsource}/block-patches-v3/0001-block-patches.patch"
-        "${_patchsource}/ll-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
-      #  "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
+  #  "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
     #    "${_patchsource}/bbr2-patches-v2/0001-bbr2-5.12-introduce-BBRv2.patch"
       #  "${_patchsource}/btrfs-patches-v8/0001-btrfs-patches.patch"
        # "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
        # "${_patchsource}/pf-patches-v2/0001-pf-patches.patch"
-        "${_patchsource}/lru-gen/PATCH-v3-00-14-Multigenerational-LRU-Framework.patch"
        # "${_patchsource}/ntfs3-patches-v2/0001-ntfs3-patches.patch"
       #  "${_patchsource}/zstd-dev-patches-v3/0001-zstd-dev-patches.patch"
       #  "${_patchsource}/clearlinux-patches-v3/0001-clearlinux-patches.patch"
       #  "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch"
-       )
+      )
 
-sha512sums=('e836fb1873adbdb434b142aa64323e0e5f7fe2bad6060edd42e5e7e6c82ea821105e2eb50a9cb578ff7028d87c07948383fc01b8fff70978fbf08d14bb7dc37c'
+sha512sums=('94ee9e59d4a3edcaf229c5ec29623302b50dd62d4ef8bdd91539cf0009f5a5fd13be629dbe78d004b016fec822c9e755898ea708fa33e1c74c54a650f64e030e'
             '13e846acdb24a19e1834b62e81b144469ccfdb86cf37cb10febfaaf5052ba97db3f299feec50c935c8cb92f009ce2a40f482f3f9e54d5ccad171eb1f79402f81'
-            'f07743a59c992f7a48cd1604a0ed30663fe043f5bc93dfe54780da88421c920e7daf801fa345b475ab551f7855360a72774cd2b117e41d5a4ac35005250e3c2f'
             '0ca83b1c2d97dfa6f6498694266d3785e67d877a7b5abe66505f96b8f31cb62d93e719212d19bfef522826166f8c00719cfec442a128ca0d261761a75d334ea6'
-            '60bda2070739a52af4f81816ebda8f3520a8d75ea5e00f65a903a3416ae31edba56fe151f6a9e02dc90ec3be7854e9a62e10e72120d7148fd3838806d8b9e986'
+            '7b4911737ef22cb1209ad88b894e20b6740ade7e6a44513c5d8555090df77f84d0aa5955b21cafaa6da26f0b7e92eaca60f92662f9e5ae8f3175f908fe416214'
+            '2230a9158069302b63ea7ff7902a8115e6bfb478827550f2974d8e3ee590471a587040e15614ec775d04c5983e228864f2097e757a5b6260f89022db04eed66b'
+            'c1a565d63a679f00fc597ed6d63f0b1568adfbe96c484fe9f816a4aef727ed22dd108b270e4f47b1df72f1415fe645afeede3d71c8c22d9b821175a5c83a135a'
+            '224fed8f664a779c66959766b15c74f11b13c5484e53ba372b5c12fc3b8885141d8dfdafdc0cd5003de130d7b63d6d786f468ca044ff522b640493a82dca27c4'
+            '8646c34028a563ad4aa2f86c9c267a132504df43134ea804bc893545ac2b14eb805ee42b7954d554a4bd128a6e3a7cd5757c2d3eb7797944fbce7668bc06b37e'
+            '962b0dd7be9e1298a7972680efba445061fa508bdb2d3777fb2b2e3636738654a4bd2e7dd02e7936129e536527145f906a388f65b2f25775ba9be351d1181b82'
+            'd8fbb667096a8d1d84db4d40c361bce5fc55e207c73fab266dba9033c6aff0cc0307c8a854c09fd2dabd99139ce640047bc87e0fd067d12ca1bd8f76f5d10ad3'
+            'a5e9b9d6a08be2d6bc6b724176c207c052d2271b3b77885b8169ed02c608b89726ea8b3e9664c4bc4c85aab938e88c67fb15de42f9f9a649d54b466b473fcdc5'
             '47f265716ebd268e4296aaba1efe5098df00736b69ec7d0413cace6dbb5cb162c1c952f7527a2a41b246ed76e6e112514c5349e8dc52f4609def30257e18d7aa'
-            '341492bf6b899a8fb4a0ef375e5461ec6e49c96755c10dd85d36b3b35a62d4e15a8b2df14aecc6bcc13485a16ad21a360050a091cf69b5aa4fc84a74dee34020')
+            '341492bf6b899a8fb4a0ef375e5461ec6e49c96755c10dd85d36b3b35a62d4e15a8b2df14aecc6bcc13485a16ad21a360050a091cf69b5aa4fc84a74dee34020'
+            '47f265716ebd268e4296aaba1efe5098df00736b69ec7d0413cace6dbb5cb162c1c952f7527a2a41b246ed76e6e112514c5349e8dc52f4609def30257e18d7aa')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -240,10 +257,10 @@ prepare() {
   scripts/config --disable CONFIG_LRU_GEN_STATS
 
 ### Enabling ZSTD COMPRESSION ##
-    echo "Set module compression to ZSTD"
-    scripts/config --enable CONFIG_MODULE_COMPRESS
-  #  scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
-    scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
+  #  echo "Set module compression to ZSTD"
+#    scripts/config --enable CONFIG_MODULE_COMPRESS
+#    scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
+#    scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
     scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
     scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
 
@@ -294,7 +311,7 @@ prepare() {
     echo "Enable CONFIG_VHBA"
     scripts/config --module CONFIG_VHBA
     scripts/config --disable CONFIG_BPF_PRELOAD
-
+    scripts/config --disable CONFIG_GCC_PLUGINS
 
 
 ### Optionally load needed modules for the make localmodconfig
