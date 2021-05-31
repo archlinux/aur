@@ -11,6 +11,7 @@ license=('custom:mestrelab')
 depends=('libxi' 'glu' 'openssl-1.0')
 conflicts=('mestrenova')
 source=("https://mestrelab.com/downloads/mnova/linux/Ubuntu/18.04/mestrenova_12.0.4-22023_amd64.deb")
+sha256sum=("4ea49f44351082b3dd9bce96537b13f1cea878c657ba97d80d96e23224c930f2")
 
 package() {
     tar -xvf data.tar.gz
