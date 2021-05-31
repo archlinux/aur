@@ -1,6 +1,6 @@
 pkgbase = multilockscreen
 	pkgdesc = A simple lock script for i3lock-color
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/jeffmhubbard/multilockscreen
 	install = multilockscreen.install
@@ -13,8 +13,8 @@ pkgbase = multilockscreen
 	depends = bc
 	optdepends = feh: set desktop background to match
 	conflicts = multilockscreen-git
-	source = https://github.com/jeffmhubbard/multilockscreen/archive/v1.1.0.tar.gz
-	md5sums = f3b68bfba73eb92103ca8e2278b71f1c
+	source = https://github.com/jeffmhubbard/multilockscreen/archive/v1.2.0.tar.gz
+	md5sums = dfade440efb875cc2b6f22b5ff776a9a
 
 pkgname = multilockscreen
 

@@ -2,7 +2,7 @@
 # Contributor: AUTplayed <fips.hem@gmail.com>
 # Contributor: pavanjadhaw <pavanjadhaw96@gmail.com>
 pkgname=multilockscreen
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A simple lock script for i3lock-color"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('i3lock-color' 'imagemagick' 'xorg-xrandr' 'xorg-xdpyinfo' 'bc')
 optdepends=('feh: set desktop background to match')
 conflicts=('multilockscreen-git')
 source=("https://github.com/jeffmhubbard/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('f3b68bfba73eb92103ca8e2278b71f1c')
+md5sums=('dfade440efb875cc2b6f22b5ff776a9a')
 install=$pkgname.install
 
 package() {
