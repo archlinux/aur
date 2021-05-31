@@ -4,7 +4,7 @@
 # Contributor: j1simon
 pkgname=buttercup-desktop
 _pkgexename=buttercup
-pkgver=2.6.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc='Javascript Password Vault - Multi-Platform Desktop Application'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=(
 	badge.svg
 	buttercup-desktop.desktop)
 sha512sums=(
-	'fdf458c7b703e0ec0569e76d2c90a7620df219094caf88aeaba7ab487dfca2f60a4b6b585a10746ca5e821a7f62989a9a92d11d465e0178e0bc5b79e16ea7509'
+	'4757edc74d3c42282ded5bfaef6975425746ff66dd0d6efa43a107b941a15eb4ddbc9eb4acb64486e3af3b02563b8ca19ed361cc8672f46b8f1be8ff0c896954'
 	SKIP
 	SKIP)
 prepare() {
@@ -31,6 +31,7 @@ prepare() {
   
 }
 build() {
+  export NODE_ARCHITECTURE=x64
   cd "$srcdir/$pkgname-$pkgver"
   npm install --cache "$srcdir/npm-cache"
   npm run build
