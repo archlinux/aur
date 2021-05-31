@@ -1,5 +1,5 @@
 pkgbase = gnome-control-center-oldstable
-	pkgdesc = GNOME's main interface to configure various aspects of the desktop
+	pkgdesc = GNOME's main interface to configure various aspects of the desktop (oldstable version)
 	pkgver = 3.38.6
 	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/gnome-control-center

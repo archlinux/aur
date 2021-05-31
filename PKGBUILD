@@ -5,7 +5,7 @@
 pkgname=gnome-control-center-oldstable
 pkgver=3.38.6
 pkgrel=2
-pkgdesc="GNOME's main interface to configure various aspects of the desktop"
+pkgdesc="GNOME's main interface to configure various aspects of the desktop (oldstable version)"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 conflicts=("gnome-control-center")
 provides=("gnome-control-center=$pkgver")
