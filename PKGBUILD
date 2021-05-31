@@ -5,16 +5,16 @@
 
 pkgname=gnome-shell-oldstable
 pkgver=3.38.4
-pkgrel=2
+pkgrel=3
 epoch=1
-pkgdesc="Next generation desktop shell"
+pkgdesc="Next generation desktop shell (oldstable version)"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 conflicts=("gnome-shell")
 provides=("gnome-shell=$pkgver")
 replaces=("gnome-shell")
 arch=(x86_64)
 license=(GPL)
-depends=(accountsservice gcr gjs gnome-bluetooth upower gnome-session gtk4
+depends=(accountsservice gcr gjs gnome-bluetooth upower gnome-session
          gnome-settings-daemon-oldstable gnome-themes-extra gsettings-desktop-schemas-oldstable
          libcanberra-pulse libgdm libsecret mutter-oldstable nm-connection-editor unzip
          gstreamer libibus gnome-autoar gnome-disk-utility gst-plugin-pipewire)
