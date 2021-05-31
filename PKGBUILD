@@ -1,7 +1,7 @@
 # Maintainer: Jan Schmitt <arch@smittie.de>
 _pkgname=git-team
 pkgname=git-team-git
-pkgver=1.6.0.r24.g4891b15
+pkgver=1.7.0.r1.g036ae5e
 pkgrel=1
 epoch=
 pkgdesc="Command line interface for managing and enhancing git commit messages with co-authors."
