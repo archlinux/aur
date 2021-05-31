@@ -13,8 +13,8 @@ provides=('unciv')
 conflicts=('unciv')
 arch=('any')
 source=(
-  "$_pkgname.jar::https://github.com/yairm210/Unciv/releases/download/$_pkgver/Unciv.jar"
-  "unciv.png::https://raw.githubusercontent.com/yairm210/Unciv/$_pkgver/extraImages/Unciv%20icon%20v4.png"
+  "$_pkgname-$_pkgver.jar::https://github.com/yairm210/Unciv/releases/download/$_pkgver/Unciv.jar"
+  "unciv-$_pkgver.png::https://raw.githubusercontent.com/yairm210/Unciv/$_pkgver/extraImages/Unciv%20icon%20v4.png"
   "$_pkgname.sh"
   "$_pkgname.desktop"
 )
@@ -26,7 +26,7 @@ md5sums=('21d378a05c0507237ced5a5c04257b75'
 package() {
   install -Dm755 $_pkgname.sh "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 $_pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  install -Dm644 unciv.png "$pkgdir/usr/share/pixmaps/unciv.png"
-  install -Dm644 $_pkgname.jar "$pkgdir/usr/share/$_pkgname/$_pkgname.jar"
+  install -Dm644 unciv-$_pkgver.png "$pkgdir/usr/share/pixmaps/unciv.png"
+  install -Dm644 $_pkgname-$_pkgver.jar "$pkgdir/usr/share/$_pkgname/$_pkgname.jar"
 }
 
