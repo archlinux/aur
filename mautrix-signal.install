@@ -1,0 +1,8 @@
+post_install() {
+	cat <<- 'EOF'
+		See: https://docs.mau.fi/bridges/python/setup/index.html?bridge=signal
+		after editing /etc/mautrix-signal/config.yaml, generate a registration file using:
+		# python -m mautrix_signal -b /usr/share/mautrix-signal/example-config.yaml -c /etc/mautrix-signal/config.yaml -r /etc/mautrix-signal/registration.yaml -g
+		Add the path to the registration file (registration.yaml by default) to your Synapse's homeserver.yaml under app_service_config_files. Restart Synapse to apply changes.
+	EOF
+}

@@ -1,0 +1,19 @@
+[Unit]
+Description=A Matrix-Signal puppeting bridge
+After=network-online.target
+Requires=network-online.target
+
+[Service]
+User=mautrix-signal
+WorkingDirectory=~
+ExecStart=python -m mautrix_signal -b /usr/share/mautrix-signal/example-config.yaml -c /etc/mautrix-signal/config.yaml -r /etc/mautrix-signal/registration.yaml
+
+
+Restart=on-failure
+RestartSec=30s
+
+# ProtectSystem=on
+# ProtectHome=on
+
+[Install]
+WantedBy=multi-user.target
