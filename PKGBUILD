@@ -1,20 +1,30 @@
-# Maintainer: grimsock <lord.grimsock at gmail dot com>
-# Contributor: Joel Sevilleja Febrer Joel7987[at].gmail.com
+# Maintainer :  Kr1ss  $(tr +- .@ <<<'<kr1ss+x-yandex+com>')
+# Contributor : grimsock <lord.grimsock at gmail dot com>
+# Contributor : Joel Sevilleja Febrer Joel7987[at].gmail.com
+
 
 pkgname=htmlunit
-pkgver=2.36.0
+
+pkgver=2.50.0
 pkgrel=1
-pkgdesc="A HTTP headless webclient for Java"
+
+pkgdesc='Headless HTTP webclient for Java'
 arch=('any')
-url="http://htmlunit.sourceforge.net/"
-license=('apache')
+url="http://$pkgname.sourceforge.net/"
+license=('Apache')
+
 depends=('java-runtime-common')
-source=("http://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgver}/${pkgname}-${pkgver}-bin.zip")
-md5sums=('bdfa9a88797a082c55f885e4483066e2')
-sha256sums=('f6e47362dc8855eff0093825826252b38c006e000f82184720b982808f36f82b')
+
+source=("http://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgname-$pkgver-bin.zip")
+sha256sums=('630354b90695dfd5c3fd32cf4a8bd8eb9e5cf3951f83f8722f32db0ee1544764')
+
 
 package() {
-	cd ${srcdir}/${pkgname}-${pkgver}/lib
-	mkdir -p ${pkgdir}/usr/share/java/${pkgname}
-	cp *.jar $pkgdir/usr/share/java/${pkgname}
+  cd "$pkgname-$pkgver"
+  install -Dm644 lib/*.jar -t"$pkgdir/usr/share/java/$pkgname/"
+  install -dm755 "$pkgdir/usr/share/doc"
+  cp -a --no-preserve=o apidocs "$pkgdir/usr/share/doc/$pkgname"
 }
+
+
+# vim: ts=2 sw=2 et ft=PKGBUILD:
