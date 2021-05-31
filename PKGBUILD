@@ -3,12 +3,13 @@
 pkgname=('htd')
 pkgName=('htd')
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A small but efficient C++ library for computing (customized) tree and hypertree decompositions."
 arch=('x86_64')
 url="https://github.com/mabseher/htd/"
 license=('GPL3')
 groups=('viennarna-package')
+depends=('gcc-libs')
 makedepends=('cmake'
              'doxygen')
 provides=("libhtd.so=$pkgver" "htd_main=$pkgver")
@@ -36,4 +37,12 @@ check() {
 package() {
 	cd "$pkgName-$pkgver"
 	make DESTDIR="$pkgdir" install
+
+	rm $pkgdir/usr/lib/libgmock_main.so
+	rm $pkgdir/usr/lib/libgtest_main.so
+  rm $pkgdir/usr/lib/libgtest.so
+  rm $pkgdir/usr/lib/libgmock.so
+  rm -r $pkgdir/usr/include/gtest
+  rm -r $pkgdir/usr/include/gmock
+
 }
