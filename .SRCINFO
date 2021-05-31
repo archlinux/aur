@@ -1,4 +1,4 @@
-pkgbase = vim-minimap-git
+pkgbase = vim-code-minimap-git
 	pkgdesc = Blazing fast minimap for Vim, powered by code-minimap
 	pkgver = r116.408db1f
 	pkgrel = 1
@@ -8,18 +8,22 @@ pkgbase = vim-minimap-git
 	license = MIT
 	makedepends = git
 	depends = code-minimap
-	source = vim-minimap-git::git+https://github.com/wfxr/minimap.vim
+	source = vim-code-minimap-git::git+https://github.com/wfxr/minimap.vim
 	sha256sums = SKIP
 
-pkgname = vim-minimap-git
+pkgname = vim-code-minimap-git
 	depends = code-minimap
 	depends = vim>=8.2
+	provides = vim-code-minimap
 	provides = vim-minimap
+	conflicts = vim-code-minimap
 	conflicts = vim-minimap
 
-pkgname = neovim-minimap-git
+pkgname = neovim-code-minimap-git
 	depends = code-minimap
 	depends = neovim-git
-	provides = neovim-minimap
-	conflicts = neovim-minimap
+	provides = neovim-code-minimap
+	provides = vim-minimap
+	conflicts = neovim-code-minimap
+	conflicts = vim-minimap
 

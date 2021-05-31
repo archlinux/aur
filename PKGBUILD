@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
-pkgbase=vim-minimap-git
-pkgname=('vim-minimap-git' 'neovim-minimap-git')
+pkgbase=vim-code-minimap-git
+pkgname=('vim-code-minimap-git' 'neovim-code-minimap-git')
 pkgver=r116.408db1f
 pkgrel=1
 pkgdesc="Blazing fast minimap for Vim, powered by code-minimap"
@@ -19,10 +19,10 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package_vim-minimap-git()  {
+package_vim-code-minimap-git()  {
 	depends+=('vim>=8.2')
-	provides=("${pkgname%-git}")
-	conflicts=("${pkgname%-git}")
+	provides=("${pkgname%-git}" 'vim-minimap')
+	conflicts=("${pkgname%-git}" 'vim-minimap')
 
 	cd "$pkgbase"
 	find autoload doc plugin \
@@ -32,10 +32,10 @@ package_vim-minimap-git()  {
 	install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
-package_neovim-minimap-git()  {
+package_neovim-code-minimap-git()  {
 	depends+=('neovim-git')
-	provides=("${pkgname%-git}")
-	conflicts=("${pkgname%-git}")
+	provides=("${pkgname%-git}" 'vim-minimap')
+	conflicts=("${pkgname%-git}" 'vim-minimap')
 
 	cd "$pkgbase"
 	find autoload doc plugin \
