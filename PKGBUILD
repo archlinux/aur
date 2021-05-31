@@ -4,7 +4,7 @@
 pkgname=linak-usb-desk-control-git
 pkgver=r76.5e37dcf
 pkgrel=1
-pkgdesc="Talk to LINAK acutators via usb2lin06"
+pkgdesc="Talk to LINAK actuators via usb2lin06"
 arch=(x86_64)
 url="https://github.com/UrbanskiDawid/usb2lin06-HID-in-linux-for-LINAK-Desk-Control-Cable"
 license=(MIT)
