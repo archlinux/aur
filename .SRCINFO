@@ -1,6 +1,6 @@
 pkgbase = munt
 	pkgdesc = Software synthesizer emulating pre-GM MIDI devices such as the Roland MT-32, CM-32L, CM-64 and LAPC-I
-	pkgver = 2.4.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = http://munt.sourceforge.net
 	install = munt.install
@@ -10,14 +10,12 @@ pkgbase = munt
 	makedepends = cmake
 	makedepends = imagemagick
 	makedepends = gendesk
-	depends = qt5-base
 	depends = qt5-multimedia
 	depends = portaudio
-	depends = libpulse
-	depends = alsa-lib
+	depends = hicolor-icon-theme
 	options = staticlibs
-	source = https://github.com/munt/munt/archive/libmt32emu_2_4_0.zip
-	md5sums = 8e8569ad037051f5cdfcdb70d0d43bee
+	source = https://github.com/munt/munt/archive/libmt32emu_2_5_0.zip
+	sha512sums = a6ae2b45c8bd0d222ae2afbecbff7e29291f1d92dcbe188e5cf915324af7111700d293522a6514e8c7801557702225d2fa456997eb77a66534ad4e8e8b88c8fd
 
 pkgname = munt
 
