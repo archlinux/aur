@@ -1,0 +1,19 @@
+pkgbase = port
+	pkgdesc = A ship runner and manager for Urbit OS
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/arthyn/port
+	arch = x86_64
+	license = MIT
+	license = custom:chromium
+	depends = urbit
+	depends = yarn
+	depends = dpkg
+	depends = fakeroot
+	depends = zip
+	conflicts = port-bin
+	source = git+https://github.com/arthyn/port.git#tag=v1.0.1
+	sha512sums = SKIP
+
+pkgname = port
+
