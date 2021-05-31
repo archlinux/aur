@@ -1,0 +1,30 @@
+pkgbase = buildstream-devel
+	pkgdesc = A powerful and flexible software integration toolset
+	pkgver = 1.93.6
+	pkgrel = 1
+	url = https://buildstream.build
+	arch = x86_64
+	license = LGPL
+	makedepends = python-setuptools
+	makedepends = cython
+	depends = bubblewrap
+	depends = buildbox-casd
+	depends = python-click
+	depends = python-dateutil
+	depends = python-grpcio
+	depends = python-jinja
+	depends = python-pluginbase
+	depends = python-protobuf
+	depends = python-psutil
+	depends = python-pyroaring
+	depends = python-ruamel-yaml
+	depends = python-ujson
+	depends = git
+	depends = lzip
+	provides = buildstream
+	conflicts = buildstream
+	source = buildstream-devel-1.93.6.tar.gz::https://github.com/apache/buildstream/archive/refs/tags/1.93.6.tar.gz
+	sha256sums = 377876c169162227c087ebde4f8543c556b894f37d9bc3d8cb23b2d3db707f47
+
+pkgname = buildstream-devel
+
