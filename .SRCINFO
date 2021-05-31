@@ -1,7 +1,7 @@
 pkgbase = mestrenova-12
 	pkgdesc = Widely used commercial NMR interpreter in Version 12.x
 	pkgver = 12.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mestrelab.com
 	install = mestrenova.install
 	arch = x86_64

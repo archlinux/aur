@@ -2,7 +2,7 @@
 
 pkgname=mestrenova-12
 pkgver=12.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Widely used commercial NMR interpreter in Version 12.x"
 arch=('x86_64')
 url="https://www.mestrelab.com"
