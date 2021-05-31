@@ -11,7 +11,7 @@ pkgbase = hledger-bin
 	source = hledger-1.21.zip::https://github.com/simonmichael/hledger/releases/download/1.21/hledger-ubuntu.zip
 	source = patch-ncurses5.sh
 	sha256sums = 259affe4245789f754b82ecce5a72c0908fcdb655fb42f5a6496d6967993d992
-	sha256sums = 84d25d9f2946349cdd2327a375625b587837880578eb3251754d0d92f139a0cb
+	sha256sums = 773cbdeb794d7d395b24c0fbf3006168ddef74fede2b671bb49ee7d88558ca30
 
 pkgname = hledger-bin
 	pkgdesc = Command-line interface for the hledger accounting system

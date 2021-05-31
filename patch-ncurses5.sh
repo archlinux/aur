@@ -4,10 +4,6 @@ set -e -o pipefail
 
 BINARY=$1
 
-hex () {
-    printf "0x%X" "$1"
-}
-
 # cat_word file offset
 # cat Elfxx_Word (int32) from file at offset
 cat_word () {
@@ -27,9 +23,9 @@ section_version_r_offset=0x$(readelf -S "$BINARY" | grep ".gnu.version_r" | awk 
 #     Elfxx_Word    vn_aux;
 #     Elfxx_Word    vn_next;
 # } Elfxx_Verneed;
-ncurses_verneed_offset=$(hex $(("$section_version_r_offset" + "$(readelf -V "$BINARY" | sed -n 's/^ *\(0x[0-9a-f]*\): .*File: libtinfo.so.[56].*$/\1/p')")))
+ncurses_verneed_offset=$(("$section_version_r_offset" + "$(readelf -V "$BINARY" | sed -n 's/^ *\(0x[0-9a-f]*\): .*File: libtinfo.so.[56].*$/\1/p')"))
 # Elfxx_Verneed.vn_file
-ncurses_file_offset=$(hex $(("$section_dynstr_offset" + "$(cat_word "$BINARY" $(("$ncurses_verneed_offset" + 4)))")))
+ncurses_file_offset=$(("$section_dynstr_offset" + "$(cat_word "$BINARY" $(("$ncurses_verneed_offset" + 4)))"))
 
 # typedef struct {
 #     Elfxx_Word    vna_hash;
@@ -38,9 +34,9 @@ ncurses_file_offset=$(hex $(("$section_dynstr_offset" + "$(cat_word "$BINARY" $(
 #     Elfxx_Word    vna_name;
 #     Elfxx_Word    vna_next;
 # } Elfxx_Vernaux;
-ncurses_verdaux_offset=$(hex $(("$section_version_r_offset" + "$(readelf -V "$BINARY" | sed -n 's/^ *\(0x[0-9a-f]*\): *Name: NCURSES6\{0,1\}_TINFO_5.0.19991023.*$/\1/p')")))
+ncurses_verdaux_offset=$(("$section_version_r_offset" + "$(readelf -V "$BINARY" | sed -n 's/^ *\(0x[0-9a-f]*\): *Name: NCURSES6\{0,1\}_TINFO_5.0.19991023.*$/\1/p')"))
 # Elfxx_Vernaux.vn_name
-ncurses_name_offset=$(hex $(("$section_dynstr_offset" + "$(cat_word "$BINARY" $(("$ncurses_verdaux_offset" + 8)))")))
+ncurses_name_offset=$(("$section_dynstr_offset" + "$(cat_word "$BINARY" $(("$ncurses_verdaux_offset" + 8)))"))
 
 printf 'libtinfo.so.5\x00' | dd conv=notrunc of="$BINARY" bs=1 seek=$(("$ncurses_file_offset")) 2> /dev/null
 
