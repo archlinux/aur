@@ -1,0 +1,17 @@
+pkgbase = onedriver-git
+	pkgdesc = Native Linux filesystem for Microsoft OneDrive
+	pkgver = 0.10.1.r3.g5c552cf
+	pkgrel = 1
+	url = https://github.com/jstaf/onedriver
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	depends = fuse2
+	depends = webkit2gtk
+	provides = onedriver
+	conflicts = onedriver
+	source = onedriver::git+https://github.com/jstaf/onedriver.git#branch=master
+	sha512sums = SKIP
+
+pkgname = onedriver-git
+
