@@ -7,7 +7,7 @@ _srcname=linux-5.12
 _major=5.12
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=7
+_minor=8
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -35,11 +35,11 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('2c2b22edf3644a1922ed7a98df12d9f409751bd63fe87adedcf8a3c111130be8dfd0a4381fa328df53120f16e97150244bdcf9fca1edd96295145cbde2e1f8ec'
+b2sums=('93b25d23ad47f7ebf05ac55245d7b04da91a0e0d1296cc2888b74d12f6db954a84a6178b43d3a8f3924300d4739cf2c5399ad0cd8ba74256dc803b65fa6792b9'
         'SKIP'
-        '7881dceb8a88dfc290ef8e175e31f6b7cba30c1b343883344915acda6b9b20484496511f1d2d9a7e8195621db3b4c93fdc16c1d5be5cb9b685d1d8940800ab58'
+        'c2d0c2239c5b440cc93e1e0e312511497eccf9e5cef61707c7f42fa924f66defdd4275575341b46b3ee45269c705dd2ba2e2c68fb1dd4ced438b852803180ddb'
         'SKIP'
-        'ccb7779df282b54d9acf59682eaa93a39f27276798d61d4c8be8a3b31e582a377c9d3278a500744a3ed089a337807f95a2d23ef821af2f4a7eec24540092b746'
+        '12c5af050086d38a5495f3029984a4eca5ccb16412bcfbec4d1a8bce8f16cb4acb93c1ed82615bcc4022ee6f00f51c886ef914cccaae053b505c0ab37fb9d8bb'
         'e43852e13fad5cdf3ce47ed698579bf019ea5c4f2f63191f417e226733b70b984c892bf2fd64bdca89aaa44dfd6b06e01f169bc784d7bf61e6189427e24c8b0a')
 
 
