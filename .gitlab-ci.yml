@@ -1,6 +1,6 @@
 # * Prepare
 
-image: archlinux
+image: archlinux/archlinux:base-devel
 
 variables:
   DOSUDO: "notroot ALL=(ALL) NOPASSWD: ALL"
@@ -10,7 +10,6 @@ stages:
 
 before_script:
   - pacman --noconfirm -Syu
-  - pacman --noconfirm -S sudo fakeroot binutils
   - useradd -m notroot
   - echo "$DOSUDO" > /etc/sudoers.d/notroot
 
