@@ -18,6 +18,9 @@ source=(
   "$_pkgname.sh"
   "$_pkgname.desktop"
 )
+noextract=(
+	"$_pkgname-$_pkgver.jar"
+)
 md5sums=('21d378a05c0507237ced5a5c04257b75'
          '5aca7fc33f121fcf901fef14f784731a'
          'f8eab098f20681b8db232cc5709713d3'
