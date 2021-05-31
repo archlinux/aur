@@ -1,10 +1,10 @@
 pkgbase = candy-icons-git
-	pkgdesc = Sweet gradient icons.
-	pkgver = r91.a3e3067
+	pkgdesc = Sweet gradient icons
+	pkgver = r595.7a29005
 	pkgrel = 1
 	url = https://github.com/EliverLara/candy-icons
 	arch = any
-	license = unknown
+	license = GPL3
 	makedepends = git
 	provides = candy-icons
 	conflicts = candy-icons
