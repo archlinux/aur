@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://github.com/jgraph/drawio-desktop'
 license=('Apache')
 depends=(electron libnotify)
-makedepends=(yarn ant)
+makedepends=(yarn ant 'nodejs>=12')
 source=("drawio-$pkgver.tar.gz::https://github.com/jgraph/drawio/archive/v$pkgver.tar.gz"
         "drawio-desktop-$pkgver.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v$pkgver.tar.gz")
 sha256sums=('83f27e7acafa434bc3287081ef5cdd5000c03c7c175e078cae4f997ff7100120'
