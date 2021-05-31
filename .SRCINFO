@@ -1,6 +1,6 @@
 pkgbase = fpga-toolchain-bin
 	pkgdesc = Nightly builds of open-source FPGA tools
-	pkgver = 20210530
+	pkgver = 20210531
 	pkgrel = 1
 	url = https://github.com/open-tool-forge/fpga-toolchain
 	install = path.install
@@ -24,9 +24,9 @@ pkgbase = fpga-toolchain-bin
 	conflicts = yices
 	conflicts = prjtrellis
 	conflicts = prjtrellis-db
-	source_x86_64 = https://github.com/open-tool-forge/fpga-toolchain/releases/download/nightly-20210530/fpga-toolchain-linux_x86_64-nightly-20210530.tar.xz
+	source_x86_64 = https://github.com/open-tool-forge/fpga-toolchain/releases/download/nightly-20210531/fpga-toolchain-linux_x86_64-nightly-20210531.tar.xz
 	source_x86_64 = path.install
-	sha256sums_x86_64 = 5f279016658936f98cfff75eb31cd1c408266d7cf27cd9693fc981dfc33360dd
+	sha256sums_x86_64 = e3593b7670f44729bc5623b450210bfe3827ef7c926009d23578401c90a3b70a
 	sha256sums_x86_64 = e7ed3de09af8a6353ae2627284e597ae37278623e206a26f16aeb9db0a35aaea
 
 pkgname = fpga-toolchain-bin
