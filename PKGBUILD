@@ -1,15 +1,15 @@
 # Maintainer: Trevor Bergeron <aur@sec.gd>
 
 pkgname=nginx-mainline-mod-rtmp
-pkgver=1.2.1
-pkgrel=15
+pkgver=1.2.2
+pkgrel=1
 
 _modname="nginx-rtmp-module"
 _nginxver="$(/bin/nginx -v 2>&1 | grep -Eo '([[:digit:]]|\.)+')"
 
 pkgdesc="Module for mainline nginx that adds RTMP support"
 arch=('i686' 'x86_64')
-depends=('nginx-mainline>=1.17.0')
+depends=('nginx-mainline')
 url="https://github.com/arut/nginx-rtmp-module"
 license=('BSD')
 
@@ -20,7 +20,7 @@ source=(
 )
 sha256sums=('SKIP'
             'SKIP'
-            '87aa597400b0b5a05274ee2d23d8cb8224e12686227a0abe31d783b3a645ea37')
+            '07f19b7bffec5e357bb8820c63e5281debd45f5a2e6d46b1636d9202c3e09d78')
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8')
 
 build() {
