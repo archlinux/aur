@@ -7,8 +7,8 @@ url="https://github.com/amritghimire/jira-terminal"
 license=("AGPL-3.0-only")
 arch=("x86_64")
 provides=("jira-terminal")
-source=("https://github.com/amritghimire/jira-terminal/releases/download/v$pkgver/jira-terminal-v$pkgver-linux.tar.gz")
-sha256sums=("e87089b46690e805fb5a0486d688a1f6bc8f66d8b6fa3907200528f3405b7e98")
+source=("https://github.com/amritghimire/jira-terminal/releases/download/v$pkgver/jira-terminal-$pkgver-x86_64.tar.gz")
+sha256sums=("2e0552b3c22d97e466a81794c58a472791d0f040bb9066599653d6cc6d245efb")
 
 package() {
     install -Dm755 jira-terminal -t "$pkgdir/usr/bin/"

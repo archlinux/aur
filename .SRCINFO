@@ -6,8 +6,8 @@ pkgbase = jira-terminal-bin
 	arch = x86_64
 	license = AGPL-3.0-only
 	provides = jira-terminal
-	source = https://github.com/amritghimire/jira-terminal/releases/download/v1.1.0/jira-terminal-v1.1.0-linux.tar.gz
-	sha256sums = e87089b46690e805fb5a0486d688a1f6bc8f66d8b6fa3907200528f3405b7e98
+	source = https://github.com/amritghimire/jira-terminal/releases/download/v1.1.0/jira-terminal-1.1.0-x86_64.tar.gz
+	sha256sums = 2e0552b3c22d97e466a81794c58a472791d0f040bb9066599653d6cc6d245efb
 
 pkgname = jira-terminal-bin
 
