@@ -1,6 +1,6 @@
 pkgbase = glibc-dso
 	pkgver = 2.33
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.gnu.org/software/libc
 	arch = x86_64
 	license = GPL
@@ -22,6 +22,9 @@ pkgbase = glibc-dso
 	source = sdt.h
 	source = sdt-config.h
 	source = bz27343.patch
+	source = 0001-nptl_db-Support-different-libpthread-ld.so-load-orde.patch
+	source = 0002-nptl-Check-for-compatible-GDB-in-nptl-tst-pthread-gd.patch
+	source = 0003-nptl-Do-not-build-nptl-tst-pthread-gdb-attach-as-PIE.patch
 	source = b595a6b5.patch
 	source = b595a6b5_2.patch
 	validpgpkeys = 7273542B39962DF7B299931416792B4EA25340F8
@@ -34,6 +37,9 @@ pkgbase = glibc-dso
 	md5sums = 91fec3b7e75510ae2ac42533aa2e695e
 	md5sums = 680df504c683640b02ed4a805797c0b2
 	md5sums = cfe57018d06bf748b8ca1779980fef33
+	md5sums = 78f041fc66fee4ee372f13b00a99ff72
+	md5sums = 9e418efa189c20053e887398df2253cf
+	md5sums = 7a09f1693613897add1791e7aead19c9
 	md5sums = 91434652013688da63c706583237b8fd
 	md5sums = ded7a8f9021c756a8cae595eab3e0385
 
@@ -49,7 +55,7 @@ pkgname = glibc-dso
 	backup = etc/nscd.conf
 
 pkgname = lib32-glibc-dso
-	pkgdesc = GNU C Library (32-bit)
+	pkgdesc = GNU C Library (32-bit) - DSO patch
 	depends = glibc=2.33
 	options = !strip
 	options = staticlibs
