@@ -1,0 +1,15 @@
+pkgbase = gcstr
+	pkgdesc = Safe garbage collected strings for C, inspired by Go
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/xyproto/gcstr
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = gc
+	source = git+https://github.com/xyproto/gcstr#commit=cfb75eb0d6953b31f42c4834332db7460dc8ea2a
+	b2sums = SKIP
+
+pkgname = gcstr
