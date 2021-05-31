@@ -1,5 +1,5 @@
 pkgbase = cni-bin
-	pkgdesc = Standardised container networking interface plugins
+	pkgdesc = Standardised container networking interface
 	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://www.cni.dev/

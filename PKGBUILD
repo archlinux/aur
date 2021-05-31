@@ -1,6 +1,6 @@
 # Maintainer: GeorgeRaven <GeorgeRavenCommunity at pm dot me>
 pkgname=cni-bin
-pkgdesc="Standardised container networking interface plugins"
+pkgdesc="Standardised container networking interface"
 pkgver=0.9.1
 pkgrel=1
 arch=('x86_64' 'aarch64' 'armv7h' 'armv7l')
