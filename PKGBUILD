@@ -2,7 +2,7 @@
 
 pkgver=1.21
 pkgname=(hledger-bin hledger-ui-bin hledger-web-bin)
-pkgrel=3
+pkgrel=4
 pkgdesc="Easy-to-use command-line/curses/web plaintext accounting tool"
 arch=(x86_64)
 url="http://hledger.org"
@@ -15,7 +15,7 @@ source=(
 )
 sha256sums=(
     259affe4245789f754b82ecce5a72c0908fcdb655fb42f5a6496d6967993d992
-    773cbdeb794d7d395b24c0fbf3006168ddef74fede2b671bb49ee7d88558ca30
+    7ab08be2e715f6b647ce3b6cfdac1b6c2e3e1e35b6409439f6c02ad04ed9789f
 )
 
 prepare() {
