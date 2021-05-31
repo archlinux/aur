@@ -5,8 +5,8 @@ After=network.target
 [Service]
 User=xmrig
 Group=xmrig
-Type=forking
-ExecStart=/usr/bin/xmrig -c %i.conf -B
+Type=simple
+ExecStart=/usr/bin/xmrig -c %i.conf
 WorkingDirectory=/etc/xmrig
 Restart=on-failure
 RestartSec=20s
