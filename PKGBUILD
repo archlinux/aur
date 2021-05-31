@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-mojolicious-plugin-authorization'
-pkgver='1.05'
+pkgver='1.06'
 pkgrel='1'
 pkgdesc="A plugin to make Authorization a bit easier"
 arch=('any')
@@ -13,8 +13,8 @@ makedepends=()
 checkdepends=('perl-test-deep>=0.113' 'perl-test-exception>=0.32')
 url='https://metacpan.org/release/Mojolicious-Plugin-Authorization'
 source=("http://search.cpan.org/CPAN/authors/id/B/BY/BYTEROCK/Mojolicious-Plugin-Authorization-${pkgver}.tar.gz")
-md5sums=('9c009599cf397e3eacf5d7cd0dec45b8')
-sha512sums=('8fdee3e8305bdfe2a1b31770b124e768250c615525122a9ff063cb83fa7dabc0b90a61f0bc420ff68571dd082c005f0919f503803e1bded3181d3f1b5cc07422')
+md5sums=('7906886e2a66b84bb3c0edd7ea85c485')
+sha512sums=('82dbf201bc5d9e9912dd1e522e2fde225f54befbc024c07757ee2ddeb56e5131300672a18aafaf60df2ab00c724c55f56b35fdafd96936f54360a143f102f688')
 _distdir="Mojolicious-Plugin-Authorization-${pkgver}"
 
 build() {
