@@ -15,8 +15,9 @@ sha512sums=("SKIP")
 
 package() {
 	yarn --cwd "$srcdir"/port
-	# the | true is really stupid but until we can just build the exec, i think its required
-	yarn --cwd "$srcdir"/port/ run make:linux | true
-	mkdir -p "$pkgdir"/usr/bin
-	ln -s "$srcdir"/port/out/port-linux-x64/port "$pkgdir"/usr/bin
+	yarn --cwd "$srcdir"/port/ make --targets=@electron-forge/maker-zip
+	install -d -m755 "$pkgdir"/usr/bin
+	install -d -m755 "$pkgdir"/usr/share/port
+	cp -r "$srcdir"/port/out/port-linux-x64* "$pkgdir"/usr/share/port
+	ln -s /usr/share/port/port "$pkgdir"/usr/bin/port
 }
