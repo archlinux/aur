@@ -1,0 +1,24 @@
+pkgbase = pymobiledevice-git
+	pkgdesc = Python implementation of libimobiledevice, supporting Apple devices protocols
+	pkgver = r210.6a02896
+	pkgrel = 1
+	url = https://github.com/iOSForensics/pymobiledevice
+	arch = any
+	license = MIT
+	license = GPL3
+	makedepends = git
+	depends = python-m2crypto
+	depends = python-construct>=2.9.29
+	depends = python-pyasn1
+	depends = python-termcolor
+	depends = python-click
+	depends = python-coloredlogs
+	depends = ipython
+	depends = python-bpylist2
+	depends = python-pygments
+	depends = usbmuxd
+	source = pymobiledevice::git+https://github.com/iOSForensics/pymobiledevice.git#branch=py3
+	md5sums = SKIP
+
+pkgname = pymobiledevice-git
+
