@@ -1,12 +1,13 @@
 pkgbase = drawio-desktop
 	pkgdesc = Diagram drawing application built on web technology
 	pkgver = 14.6.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jgraph/drawio-desktop
 	arch = x86_64
 	license = Apache
 	makedepends = yarn
 	makedepends = ant
+	makedepends = nodejs>=12
 	depends = electron
 	depends = libnotify
 	source = drawio-14.6.13.tar.gz::https://github.com/jgraph/drawio/archive/v14.6.13.tar.gz
