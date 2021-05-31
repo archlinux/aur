@@ -1,17 +1,15 @@
 pkgbase = munt-alsadrv
 	pkgdesc = Software synthesizer emulating pre-GM MIDI devices such as the Roland MT-32, CM-32L, CM-64 and LAPC-I - ALSA sequencer driver
-	pkgver = 2.3.0
-	pkgrel = 2
+	pkgver = 2.5.0
+	pkgrel = 1
 	url = http://munt.sourceforge.net
 	install = munt-alsadrv.install
 	arch = x86_64
 	license = GPL2
-	makedepends = munt
-	depends = alsa-lib
-	depends = gcc-libs
-	source = https://github.com/munt/munt/archive/munt_2_3_0.zip
+	depends = munt>=2.5.0-2
+	source = https://github.com/munt/munt/archive/munt_2_5_0.zip
 	source = munt-alsadrv.service
-	sha512sums = baa49f1db677693fa6442e9e1dc3bc39ea67a4096fdb9f4dfabeb2cb8d76d5711c233d17e31d66c64ae74b2227173c989bf95725b8bd61d2aa0ef59aa7e4403d
+	sha512sums = f2011b108e67f4bcac93003c397db491932fb32782f39cc19001c9521983fac3622311c5574d0cf055f52d93e7c7190b7b19588a370e6e2a415984a8c44f4698
 	sha512sums = 178f6b478e3d88c5ccb3b60799ed398c57b75384c96c2ee91c9f95ab94b772a5b5ce7bbc87465f334e5fd3d6decf87c47d6dcea2fe22b687dc023931fa79d480
 
 pkgname = munt-alsadrv
