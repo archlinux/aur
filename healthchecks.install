@@ -1,0 +1,58 @@
+# arg1: package version
+post_install() {
+    cat <<EOF
+You may configure healthchecks via /var/lib/healthchecks/local_settings.py.
+Consult the documentation at https://github.com/healthchecks/healthchecks.
+
+Before running healthchecks, create a superuser with the command:
+  sudo hc-manage createsuperuser
+
+Some important settings you may need to modify include:
+- SITE_ROOT,PING_ENDPOINT: server address/port
+- PING_EMAIL_DOMAIN: domain where healthchecks will receive alert e-mails
+- SITE_NAME: name displayed on the healthchecks site
+- Email settings: EMAIL_HOST,EMAIL_PORT,EMAIL_HOST_USER,EMAIL_HOST_PASSWORD,EMAIL_USE_TLS,DEFAULT_FROM_EMAIL,
+                  SERVER_EMAIL,ADMINS
+- SECRET_KEY: Django cryptographic setting
+- RP_ID: U2F two-factor authentication
+
+A sample nginx config file is included if you wish to proxy healthchecks.
+The healthchecks database was created at /var/lib/healthchecks/hc.sqlite.
+
+To run healthchecks, enable and start its systemd service and its weekly cleanup timer:
+
+systemctl enable --now healthchecks
+systemctl enable --now healthchecks-clean-db.timer
+
+These processes will be run by the healthchecks user.
+EOF
+    cd /usr/share/webapps/healthchecks
+
+    if [[ -f /var/lib/healthchecks/hc.sqlite ]]; then
+	echo "Existing healthchecks database detected, migrating it to the latest format."
+	ln -s /var/lib/healthchecks/hc.sqlite
+	hc-manage makemigrations > /dev/null
+	hc-manage migrate > /dev/null
+    else
+	echo "Creating healthchecks database."
+	hc-manage makemigrations > /dev/null
+	hc-manage migrate > /dev/null
+	mv hc.sqlite "$pkgdir"/var/lib/healthchecks
+	ln -s /var/lib/healthchecks/hc.sqlite
+    fi
+}
+
+# arg1: new package version
+# arg2: old package version
+post_upgrade() {
+    cat <<EOF
+    NOTE: The healthchecks database format may have changed!  Re-starting the healthchecks service
+    will migrate the database to the new format (if any).
+EOF
+}
+
+# arg1: old package version
+post_remove() {
+    # cleanup untracked files in webapps
+    rm -rf /usr/share/webapps/healthchecks
+}
