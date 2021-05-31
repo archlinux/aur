@@ -1,10 +1,9 @@
 pkgbase = standardnotes-desktop
 	pkgdesc = A standard notes app with an un-standard focus on longevity, portability, and privacy.
-	pkgver = 3.6.7
+	pkgver = 3.7.1
 	pkgrel = 1
 	url = https://standardnotes.org/
 	arch = x86_64
-	arch = aarch64
 	license = GPL3
 	makedepends = npm
 	makedepends = node-gyp
@@ -16,7 +15,7 @@ pkgbase = standardnotes-desktop
 	depends = electron
 	conflicts = sn-bin
 	source = git://github.com/standardnotes/desktop.git
-	source = git://github.com/standardnotes/web.git#commit=cba4a4f6415ac9ce423a0fdc14b9426a10337512
+	source = git://github.com/standardnotes/web.git#commit=26732f5b8d54aa2f098880f1c9a8e968b0cc0670
 	source = git://github.com/sn-extensions/extensions-manager.git#commit=c8a614bf093a3d6ab95ea8eb5e7507b152ed49e2
 	source = git://github.com/sn-extensions/batch-manager.git#commit=2d1ba6ac9f09193e40c4241a70605ecb3c15d3c7
 	source = webpack.patch
@@ -31,4 +30,3 @@ pkgbase = standardnotes-desktop
 	sha256sums = 2d90137b689cc38d6c68b17fad2336503846152a0061a91ac2073ea0873a6fc5
 
 pkgname = standardnotes-desktop
-

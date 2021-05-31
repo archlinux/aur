@@ -2,18 +2,18 @@
 # Contributor: Daniel Haß <aur@hass.onl>
 pkgname=standardnotes-desktop
 _pkgname=desktop
-pkgver=3.6.7
+pkgver=3.7.1
 pkgrel=1
 pkgdesc="A standard notes app with an un-standard focus on longevity, portability, and privacy."
-arch=('x86_64' 'aarch64')
+arch=('x86_64') # 'aarch64'
 url="https://standardnotes.org/"
 license=('GPL3')
 conflicts=('sn-bin')
 depends=('electron')
 makedepends=('npm' 'node-gyp' 'git' 'jq' 'python2' 'yarn' 'nvm')
-_nodeversion=14.16.0
+_nodeversion=14
 source=("git://github.com/standardnotes/desktop.git"
-        "git://github.com/standardnotes/web.git#commit=cba4a4f6415ac9ce423a0fdc14b9426a10337512"
+        "git://github.com/standardnotes/web.git#commit=26732f5b8d54aa2f098880f1c9a8e968b0cc0670"
         "git://github.com/sn-extensions/extensions-manager.git#commit=c8a614bf093a3d6ab95ea8eb5e7507b152ed49e2"
         "git://github.com/sn-extensions/batch-manager.git#commit=2d1ba6ac9f09193e40c4241a70605ecb3c15d3c7"
         'webpack.patch'
@@ -58,11 +58,7 @@ build() {
   yarn install
   yarn run webpack --config webpack.prod.js
 
-  if [[ ${CARCH} == "aarch64" ]]; then
-    yarn run electron-builder --linux --arm64 -c.linux.target=dir --publish=never
-  elif [[ ${CARCH} == "x86_64" ]]; then
-    yarn run electron-builder --linux --x64 -c.linux.target=dir --publish=never
-  fi
+  yarn run electron-builder --linux -c.linux.target=dir --publish=never
 }
 
 
