@@ -6,7 +6,7 @@
 pkgbase=glibc-dso
 pkgname=(glibc-dso lib32-glibc-dso)
 pkgver=2.33
-pkgrel=4
+pkgrel=5
 arch=(x86_64)
 provides=("glibc=${pkgver%%.r*}")
 url='https://www.gnu.org/software/libc'
@@ -23,6 +23,9 @@ source=(https://ftp.gnu.org/gnu/glibc/glibc-$pkgver.tar.xz{,.sig}
         lib32-glibc.conf
         sdt.h sdt-config.h
         bz27343.patch
+        0001-nptl_db-Support-different-libpthread-ld.so-load-orde.patch
+        0002-nptl-Check-for-compatible-GDB-in-nptl-tst-pthread-gd.patch
+        0003-nptl-Do-not-build-nptl-tst-pthread-gdb-attach-as-PIE.patch
         b595a6b5.patch
         b595a6b5_2.patch)
 validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8 # Carlos O'Donell
@@ -35,6 +38,9 @@ md5sums=('390bbd889c7e8e8a7041564cb6b27cca'
          '91fec3b7e75510ae2ac42533aa2e695e'
          '680df504c683640b02ed4a805797c0b2'
          'cfe57018d06bf748b8ca1779980fef33'
+         '78f041fc66fee4ee372f13b00a99ff72'
+         '9e418efa189c20053e887398df2253cf'
+         '7a09f1693613897add1791e7aead19c9'
          '91434652013688da63c706583237b8fd'
          'ded7a8f9021c756a8cae595eab3e0385')
 
@@ -46,6 +52,15 @@ prepare() {
 
   # commit c3479fb7939898ec22c655c383454d6e8b982a67
   patch -p1 -i "$srcdir"/bz27343.patch
+
+  # nptl_db: Support different libpthread/ld.so load orders (bug 27744)
+  patch -p1 -i "$srcdir"/0001-nptl_db-Support-different-libpthread-ld.so-load-orde.patch
+
+  # nptl: Check for compatible GDB in nptl/tst-pthread-gdb-attach
+  patch -p1 -i "$srcdir"/0002-nptl-Check-for-compatible-GDB-in-nptl-tst-pthread-gd.patch
+
+  # nptl: Do not build nptl/tst-pthread-gdb-attach as PIE
+  patch -p1 -i "$srcdir"/0003-nptl-Do-not-build-nptl-tst-pthread-gdb-attach-as-PIE.patch
   patch -p1 -i "$srcdir"/b595a6b5.patch
   patch -p1 -i "$srcdir"/b595a6b5_2.patch
 }
@@ -204,7 +219,7 @@ package_glibc-dso() {
 }
 
 package_lib32-glibc-dso() {
-  pkgdesc='GNU C Library (32-bit)'
+  pkgdesc='GNU C Library (32-bit) - DSO patch'
   depends=("glibc=$pkgver")
   options+=('!emptydirs')
 
