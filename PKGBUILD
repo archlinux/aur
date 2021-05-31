@@ -1,6 +1,6 @@
 # Maintainer: Yujeonja <hardboiled65@gmail.com>
 pkgname=httproto
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 epoch=
 pkgdesc="HTTP protocol library."
@@ -19,9 +19,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/hardboiled65/httproto/archive/v0.1.1.tar.gz")
+source=("https://github.com/hardboiled65/httproto/archive/v0.1.2.tar.gz")
 noextract=()
-md5sums=()
+md5sums=('f957a54aa4e39b8f10c1d6abc3706241')
 validpgpkeys=()
 
 #prepare() {
@@ -41,7 +41,6 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+	make PREFIX=/usr DESTDIR="$pkgdir/" install
 	install -D -m 644 "$srcdir/$pkgname-$pkgver"/LICENSE "${pkgdir}"/usr/share/licenses/httproto/LICENSE
 }
-md5sums=('e7d3f357a64beebf2fac6a629e8a3622')

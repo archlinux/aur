@@ -1,13 +1,13 @@
 pkgbase = httproto
 	pkgdesc = HTTP protocol library.
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/hardboiled65/httproto
 	arch = x86_64
 	license = MIT
 	depends = http-parser>=2.9.4
-	source = https://github.com/hardboiled65/httproto/archive/v0.1.1.tar.gz
-	md5sums = e7d3f357a64beebf2fac6a629e8a3622
+	source = https://github.com/hardboiled65/httproto/archive/v0.1.2.tar.gz
+	md5sums = f957a54aa4e39b8f10c1d6abc3706241
 
 pkgname = httproto
 
