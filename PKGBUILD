@@ -3,8 +3,8 @@
 pkgbase='python-nbterm'
 pkgname=('python-nbterm')
 _module='nbterm'
-pkgver='0.0.7'
-pkgrel=2
+pkgver='0.0.11'
+pkgrel=1
 pkgdesc="A tool for viewing, editing and executing Jupyter Notebooks in the terminal"
 url="https://github.com/davidbrochart/nbterm.git"
 depends=('python' 'python-kernel-driver' 'python-rich' 'python-pyzmq' 'python-typer')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('8cf427520b2507cc064cb98c2789317583616481e6816abce930dd45073a6407')
+sha256sums=('7dec2e13435c7a4fcfdd3fd2c733aedb60ba2af1a87f9babfd9ced693188e3f3')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
