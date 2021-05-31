@@ -27,7 +27,11 @@ source+=(${pkgname}-${pkgver}::"https://github.com/containernetworking/plugins/r
 
 package() {
   cd "${srcdir}"
+  # get rid of unwanted link
   unlink "${pkgname}-${pkgver}"
-  mkdir -p "${pkgdir}/opt/cni/bin"
+  # install to default location
+  mkdir -p "${pkgdir}/opt/cni/bin" "${pkgdir}/usr/lib/cni"
   install -Dm755 "${srcdir}/"* "${pkgdir}/opt/cni/bin/."
+  # also deposit bins in alternate possible location
+  install -Dm755 "${srcdir}/"* "${pkgdir}/usr/lib/cni"
 }
