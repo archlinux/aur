@@ -23,4 +23,6 @@ package() {
   install -m 644 $srcdir/rinetd-0.73/rinetd.8 $pkgdir/usr/share/man8/
   install -d $pkgdir/usr/lib/systemd/system
   install -m 644 $srcdir/rinetd.service $pkgdir/usr/lib/systemd/system/
+  install -d $pkgdir/etc
+  install -m 644 $srcdir/rinetd-0.73/rinetd.conf $pkgdir/etc/
 }
