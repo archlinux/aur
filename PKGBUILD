@@ -1,34 +1,26 @@
-# Maintainer: Sebastien Duthil <duthils@free.fr>
-
-# Note: I can't test on x86, feel free to drop me an email/comment with the
-# working PKGBUILD for x86
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Sebastien Duthil <duthils@free.fr>
 
 pkgname=blackvoxel
-pkgver=2.40
-pkgrel=2
+pkgver=2.42
+pkgrel=1
 pkgdesc="Game of automation and programming in a voxel world"
 arch=('x86_64')
 url='http://www.blackvoxel.com/'
 license=('GPL3')
 depends=('glew' 'hicolor-icon-theme' 'mesa' 'sdl')
 install="${pkgname}.install"
-source=("${pkgname}_source_2_40.tar.bz2::${url}/dm_download.php?file=149&key=1"
-        "blackvoxel.patch")
-sha256sums=('5e11959a147d888ec7985a10b11fdfef136b14a85bcf9136b16550d64e9dc04c'
-            '5423a426434498480abe47a18ef10a11d8ee99fca8d2d05aec070814ccd6628a')
-
-prepare() {
-  # Disable #include glext. Should be already included by glew.
-  patch "${srcdir}/${pkgname}_source_2_40/src/main.cpp" "${srcdir}/blackvoxel.patch"
-}
+_srcdir="${pkgname}_source_2_42"
+source=("${pkgname}-${pkgver}.tar.bz2::${url}/dm_download.php?file=163&key=1")
+sha256sums=('379a89ff60df0e397920b35c10629a5f4c77a4fc6343bf544dfbbf8dd7353ee6')
 
 build() {
-	cd "${srcdir}/${pkgname}_source_2_40"
+	cd "${_srcdir}"
 	make blackvoxeldatadir="/usr/share/${pkgname}/"
 }
 
 package() {
-	cd "${srcdir}/${pkgname}_source_2_40"
+	cd "${_srcdir}"
 	make install \
 		specialinstall=true \
 		DESTDIR="${pkgdir}/" \
