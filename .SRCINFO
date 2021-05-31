@@ -1,6 +1,6 @@
 pkgbase = minosoft-git
 	pkgdesc = Open source minecraft client, written from scratch in java.
-	pkgver = r1331.ed06322f
+	pkgver = r1377.eba0cf5d
 	pkgrel = 1
 	url = https://gitlab.bixilon.de/bixilon/minosoft
 	arch = any
@@ -8,18 +8,16 @@ pkgbase = minosoft-git
 	makedepends = git
 	makedepends = maven
 	makedepends = java-environment
-	depends = java-runtime
+	depends = java-runtime>=14
 	depends = sh
 	provides = minosoft
 	conflicts = minosoft
 	source = minosoft::git+https://gitlab.bixilon.de/bixilon/minosoft.git
 	source = minosoft.png::https://gitlab.bixilon.de/bixilon/minosoft/-/raw/rendering/doc/img/Minosoft_logo.png
-	source = java-version-1.15.patch
 	source = minosoft.sh
 	source = minosoft.desktop
 	md5sums = SKIP
 	md5sums = 0cd7c197d6c9335927a572443f43ce62
-	md5sums = 79ecfa9a8514ce9890148e32fdd5db31
 	md5sums = ccf32826e6ba903bad8653160af7d731
 	md5sums = 26f1f6230fb117c558f848a08165c8d5
 
