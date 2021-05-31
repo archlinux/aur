@@ -6,6 +6,7 @@ pkgbase = python-cocotb
 	arch = any
 	license = BSD
 	makedepends = git
+	makedepends = python-pip
 	depends = python
 	depends = python-setuptools
 	optdepends = iverilog: for simulating verilog designs

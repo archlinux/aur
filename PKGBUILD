@@ -7,7 +7,7 @@ arch=('any')
 url="http://github.com/cocotb/cocotb/"
 license=('BSD')
 depends=('python' 'python-setuptools')
-makedepends=('git')
+makedepends=('git' 'python-pip')
 optdepends=('iverilog: for simulating verilog designs'
 	    'ghdl: for simulating VHDL designs'
 	    'gtkwave: for visualizing waveforms')
