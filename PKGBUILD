@@ -1,15 +1,15 @@
 # Maintained by Faisal Moledina (faisal at moledina dot me)
 pkgname=onedriver
-pkgver=0.9.2
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Native Linux filesystem for Microsoft OneDrive"
 arch=('x86_64')
 url='https://github.com/jstaf/onedriver'
 license=('GPL3')
-depends=('webkit2gtk')
+depends=('fuse2' 'webkit2gtk')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('5d64ab34d81c978408c7847f4b427d35694579024cc09a98336eef4b1b4880206be68ae78320d4ba674c0e1e4d16de1c2f063370a64df4748716e1ed9b457815')
+sha512sums=('8fb9d12dbcdaa96774d03458fcac7e64ba9fa0938c1a1615937587fe93e1352606a42acdd2062e3f492c7b290e61fbbbb167c6dbc68e93d282c95ae780152ec2')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -24,8 +24,7 @@ build() {
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-X main.commit=f560cbe48072bd8f88a44de038c1928e30608d14 -linkmode external -extldflags \"${LDFLAGS}\"" \
-    ./cmd/onedriver
+    -ldflags "-X main.commit=f560cbe48072bd8f88a44de038c1928e30608d14 -linkmode external -extldflags \"${LDFLAGS}\""
 }
 
 package() {
