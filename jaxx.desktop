@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Jaxx Liberty
+GenericName=Multi-chain cryptocurrency wallet
+Exec=jaxx %u
+Comment=Multi-chain cryptocurrency wallet
+Type=Application
+Categories=Finance;
+Icon=/opt/jaxx/jaxx.png
