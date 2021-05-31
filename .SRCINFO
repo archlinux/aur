@@ -10,8 +10,10 @@ pkgbase = pymobiledevice-git
 	depends = python-m2crypto
 	depends = python-construct>=2.9.29
 	depends = python-pyasn1
+	depends = python-future
 	depends = python-termcolor
 	depends = python-click
+	depends = python-arrow
 	depends = python-coloredlogs
 	depends = ipython
 	depends = python-bpylist2
