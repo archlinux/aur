@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Talk to LINAK acutators via usb2lin06"
 arch=(x86_64)
 url="https://github.com/UrbanskiDawid/usb2lin06-HID-in-linux-for-LINAK-Desk-Control-Cable"
-license=('unknown')
+license=(MIT)
 depends=(
 libusb)
 source=("git+https://github.com/UrbanskiDawid/usb2lin06-HID-in-linux-for-LINAK-Desk-Control-Cable.git")
@@ -38,7 +38,6 @@ package() {
   do
     cp $f "${pkgdir}"/usr/bin/${f/example/linak}
   done
-  #make DESTDIR="${pkgdir}/"  install
 
   mkdir -p "${pkgdir}/etc/udev/rules.d"
   echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="12d3", ATTR{idProduct}=="0002", GROUP="uucp", MODE="0660"' > "${pkgdir}"/etc/udev/rules.d/41-linak.rules
