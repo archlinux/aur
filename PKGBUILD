@@ -1,7 +1,7 @@
 # Maintainer: Antoine POPINEAU <antoine at popineau dot eu>
 
 pkgname=greetd-tuigreet-git
-pkgver=0.2.0.r56.ad06a85
+pkgver=0.3.0.r64.15b7543
 pkgrel=1
 
 pkgdesc='A console UI greeter for greetd'
@@ -10,11 +10,13 @@ license=(GPL3)
 conflicts=(greetd-tuigreet greetd-tuigreet-bin)
 
 arch=(x86_64)
-depends=()
+depends=(greetd)
 makedepends=(git rust)
 
-source=("git+${url}")
-sha256sums=('SKIP')
+source=("git+${url}"
+        'tuigreet.conf')
+sha256sums=('SKIP'
+            '8f83aee7874aab5d06981a1d1cd05df906368a79dbca90d157a33a2f023b67d3')
 
 pkgver() {
   cd tuigreet
@@ -30,5 +32,5 @@ package() {
   install -Dm755 "${srcdir}/tuigreet/target/release/tuigreet" "${pkgdir}/usr/bin/tuigreet"
   install -Dm644 "${srcdir}/tuigreet/LICENSE" "${pkgdir}/usr/share/licenses/tuigreet/LICENSE"
 
-  install -Dd -ogreeter -ggreeter -m755 "${pkgdir}/var/cache/tuigreet"
+  install -Dm644 "${srcdir}/tuigreet.conf" "${pkgdir}/usr/lib/tmpfiles.d/tuigreet.conf"
 }
