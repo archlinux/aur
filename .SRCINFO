@@ -5,6 +5,7 @@ pkgbase = python-cocotb
 	url = http://github.com/cocotb/cocotb/
 	arch = any
 	license = BSD
+	makedepends = git
 	depends = python
 	depends = python-setuptools
 	optdepends = iverilog: for simulating verilog designs
