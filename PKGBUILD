@@ -31,6 +31,8 @@ prepare() {
   patch -p1 < "$srcdir"/qchar.patch
   msg2 "quazip"
   patch -p1 < "$srcdir"/quazip.patch
+  msg2 "gcc11"
+  sed 's/_serialize/serialize/g' -i src/pdf-merger/Object.{h,cpp}
 }
 
 build() {
