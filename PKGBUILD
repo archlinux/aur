@@ -1,5 +1,4 @@
 # Maintainer: <mumei AT airmail DOT cc>
-
 pkgname=gnustep-gui
 pkgver=0.29.0
 pkgrel=1
@@ -20,16 +19,6 @@ build() {
   cd "$srcdir"/$pkgname-$pkgver
   . /usr/share/GNUstep/Makefiles/GNUstep.sh
   ./configure --prefix=/usr --sysconfdir=/etc/GNUstep
-  echo "/*
- * Define TRUE/FALSE to be used with UBool parameters, as these are no longer
- * defined in ICU as of ICU 68.
- */
-#ifndef TRUE
-#define TRUE 1
-#endif
-#ifndef FALSE
-#define FALSE 0
-#endif" >> Source/config.h
   make
 }
 
