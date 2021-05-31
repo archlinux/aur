@@ -15,9 +15,9 @@
 # ExecStop=/usr/bin/screen -X -S bridgedaemon quit
 
 pkgname=protonmail-bridge-nogui
-pkgver=1.8.1
+pkgver=1.8.3
 _srcname=br-"$pkgver"
-pkgrel=3
+pkgrel=1
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
 url="https://github.com/ProtonMail/proton-bridge"
@@ -30,12 +30,12 @@ conflicts=('protonmail-bridge-bin' 'protonmail-bridge')
 options=('!emptydirs' '!strip')
 source=("$_srcname.tar.gz::https://github.com/ProtonMail/proton-bridge/archive/"$_srcname".tar.gz"
         "bridge.service")
-sha256sums=('a2487e4a1696cc5ab5915bc10b1b77bac490ae4d01f0f4a9b7a97b5a1f3177cf'
+sha256sums=('39085332d59e4db261824db7096d607f01ff97b22226b44b0cdd55fd9c46dc40'
             '6b2fd1e042b55dc6d0ffe5eb44e82ffd233452b4571ef571132600e7ec0d5d82')
 
 prepare() {
     cd "${srcdir}"/proton-bridge-"$_srcname"/
-    sed -i s/1.8.0+git/1.8.1+git/ Makefile
+    sed -i s/1.8.0+git/1.8.3+git/ Makefile
     export PATH=$PATH:$(go env GOPATH)/bin/
     make clean
 }
