@@ -1,0 +1,18 @@
+pkgbase = chunghwa-post-webatm
+	pkgdesc = WebATM plugin for Chunghwa Post (中華郵政 WebATM 元件)
+	pkgver = 1.2101.11.1
+	pkgrel = 4
+	url = https://webatm.post.gov.tw/
+	arch = any
+	license = unknown
+	makedepends = msitools
+	makedepends = gendesk
+	makedepends = pev
+	makedepends = imagemagick
+	depends = wine-winscard
+	source = ATMSetup-1.2101.11.1.msi::https://webatm.post.gov.tw/postatm/cab/ATMSetup.msi
+	source = chunghwa-post-webatm
+	sha256sums = 39098f3bfbf667498c85209ebf9045ca12bbaa7ea883378fb2c117e77e6c7751
+	sha256sums = 2a21dba5dea4132d3693cf3d6332cee2f3a0be650f0e19e76ece27cd834abb75
+
+pkgname = chunghwa-post-webatm

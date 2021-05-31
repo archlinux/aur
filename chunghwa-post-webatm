@@ -1,0 +1,2 @@
+#!/bin/sh
+wine /usr/share/chunghwa-post-webatm/ATMXHRService.exe
