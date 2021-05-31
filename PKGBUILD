@@ -3,14 +3,13 @@
 
 pkgname=advanced-rest-client
 pkgver=16.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A developer tool to test a HTTP request. The Advanced REST Client desktop application.'
 arch=('x86_64')
 url='https://github.com/advanced-rest-client/arc-electron'
 license=('Apache')
 options=('!strip')
 depends=(
-	'gconf'
 	'libnotify'
 	'libappindicator-gtk3'
 	'libxtst'
