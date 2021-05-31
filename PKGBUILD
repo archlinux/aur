@@ -1,6 +1,6 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=solanum
-pkgver=v2.1.0.r0.g3e69272
+pkgver=2.1.0.r0.g3e69272
 pkgrel=1
 pkgdesc="A pomodoro timer for the GNOME desktop"
 arch=(x86_64)
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/^v//;s/-/./g'
 }
 
 build() {

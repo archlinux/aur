@@ -1,6 +1,6 @@
 pkgbase = solanum
 	pkgdesc = A pomodoro timer for the GNOME desktop
-	pkgver = v2.1.0.r0.g3e69272
+	pkgver = 2.1.0.r0.g3e69272
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/solanum
 	arch = x86_64
