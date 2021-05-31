@@ -1,0 +1,19 @@
+pkgbase = circuitjs-bin
+	pkgdesc = Falstad Circuit Simulator for Linux. (Real and offline version)
+	pkgver = 2.4.7
+	pkgrel = 1
+	url = https://www.falstad.com/circuit/
+	arch = x86_64
+	license = GPL
+	provides = circuitjs-bin
+	conflicts = circuitjs-bin
+	options = !strip
+	source = https://www.falstad.com/circuit/offline/circuitjs1-linux64.tgz
+	source = https://i.postimg.cc/Y0ZkBmDV/circuitjs.png
+	source = circuitjs.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = circuitjs-bin
+

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Circuit JS
+GenericName=Circuit Simulator app.
+GenericName[fa]=شبیه ساز مدارات الکترونیکی
+Version=1.0.0
+Type=Application
+Terminal=false
+Keywords=Electronics;Simulation;Simulator;
+Exec=circuitjs
+Icon=circuitjs
+Categories=Science;Education
