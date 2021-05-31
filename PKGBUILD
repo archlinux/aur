@@ -9,6 +9,7 @@ arch=('x86_64')
 url='https://github.com/uutils/coreutils'
 license=('MIT')
 makedepends=('git' 'rust' 'cargo' 'python-sphinx' 'cmake')
+conflicts=('uutils-coreutils')
 source=("git+https://github.com/uutils/coreutils.git")
 sha512sums=('SKIP')
 
