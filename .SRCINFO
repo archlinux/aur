@@ -1,0 +1,19 @@
+pkgbase = chez-srfi
+	pkgdesc = SRFI for ChezScheme
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/shih-liang/chez-srfi
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	depends = chez-scheme
+	provides = chez-srfi
+	source = chez-srfi-1.2-1.tar.gz::https://github.com/shih-liang/chez-srfi/archive/refs/tags/v1.2.tar.gz
+	md5sums = 93a7dfa3f2e3a5ebe06de69346449a30
+
+pkgname = chez-srfi
+
