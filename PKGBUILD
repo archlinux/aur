@@ -6,7 +6,7 @@ _commit=f12fed6d53f5d9b85e8f233a8c0b7e295978b9a0
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=6.1.2
-pkgrel=3
+pkgrel=2
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -165,15 +165,11 @@ prepare() {
     git config submodule.ffmpeg.url "$srcdir"/ffmpeg-meson
     git submodule update ffmpeg
 
-    for submodule in wine wine-staging; do
+    for submodule in wine wine-staging dxvk; do
         git submodule init "${submodule}"
         git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
         git submodule update "${submodule}"
     done
-
-    git submodule init dxvk
-    git config submodule.dxvk.url "$srcdir"/dxvk
-    git submodule update --remote dxvk
 
     for submodule in gstreamer gst-{plugins-{base,good,bad,ugly},libav,orc}; do
         git submodule init "${submodule}"
