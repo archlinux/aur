@@ -1,15 +1,15 @@
 pkgbase = ethminer-bin
 	pkgdesc = Ethereum miner with OpenCL, CUDA and stratum support (precompiled binary)
 	pkgver = 0.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ethereum-mining/ethminer
 	arch = x86_64
-	license = MIT
+	license = GPL3
 	provides = ethminer
 	conflicts = ethminer
 	options = !strip
 	source = https://github.com/ethereum-mining/ethminer/releases/download/v0.18.0/ethminer-0.18.0-cuda-9-linux-x86_64.tar.gz
-	md5sums = 23bad8d12c43fc3e3a0568dbc8f19c85
+	sha1sums = 3623bb37984f5a3ccf49555ac591eb932015399a
 
 pkgname = ethminer-bin
 
