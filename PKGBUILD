@@ -37,6 +37,8 @@ prepare() {
   git -C "${srcdir}/${name}" submodule update --init --recursive
   git -C "${srcdir}/${name}" apply -v "${srcdir}"/{constexpr,pcl}.patch
   git -C "${srcdir}/${name}-cork" apply -v "${srcdir}"/cork.patch
+  #fix gcc:11 porting
+  sed '1 i\#include <limits>' -i "${srcdir}/${name}"/plugins/core/IO/qE57IO/extern/libE57Format/src/E57XmlParser.cpp
 }
 
 build() {
