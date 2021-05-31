@@ -8,6 +8,8 @@ pkgbase = sphinxdft
 	depends = cblas
 	depends = lapacke
 	depends = netcdf
+	depends = gcc-objc
+	depends = patchelf
 
 pkgname = sphinxdft
 
