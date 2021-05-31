@@ -1,7 +1,7 @@
 # Maintained by Faisal Moledina (faisal at moledina dot me)
 pkgname=onedriver
 pkgver=0.10.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Native Linux filesystem for Microsoft OneDrive"
 arch=('x86_64')
 url='https://github.com/jstaf/onedriver'
@@ -37,4 +37,5 @@ package() {
   install -Dm 644 resources/$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
   install -Dm 644 resources/$pkgname.png "$pkgdir"/usr/share/icons/onedriver/$pkgname.png
   install -Dm 644 resources/$pkgname.svg "$pkgdir"/usr/share/icons/onedriver/$pkgname.svg
+  install -Dm 644 resources/$_pkgname.1 "$pkgdir"/usr/share/man/man1/$_pkgname.1
 }

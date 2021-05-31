@@ -1,7 +1,7 @@
 pkgbase = onedriver
 	pkgdesc = Native Linux filesystem for Microsoft OneDrive
 	pkgver = 0.10.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jstaf/onedriver
 	arch = x86_64
 	license = GPL3
