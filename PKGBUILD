@@ -1,11 +1,13 @@
-# Maintainer: Michał Przybyś <michal@przybys.eu>
+# Contributor: Michał Przybyś <michal@przybys.eu>
+# Maintainer: Thomas Bork <sudoBash418@gmail.com>
 pkgname=strawberry-qt5
 pkgver=0.9.1
 pkgrel=1
-pkgdesc='A music player aimed at audio enthusiasts and music collectors (QT5 version)'
+pkgdesc="A music player aimed at audio enthusiasts and music collectors (Qt5 version)"
 arch=(x86_64)
-url='https://www.strawbs.org/'
+url="https://strawberrymusicplayer.org/"
 license=(GPL3)
+
 depends=(chromaprint
          protobuf
          gst-plugins-base
@@ -16,13 +18,16 @@ depends=(chromaprint
          libgpod
          libmtp
          fftw)
-conflicts=(strawberry)
 makedepends=(cmake
              boost
              qt5-tools)
 optdepends=('gst-libav: additional codecs'
             'gst-plugins-bad: additional codecs'
             'gst-plugins-ugly: additional codecs')
+
+provides=(strawberry)
+conflicts=(strawberry)
+
 source=("https://github.com/jonaski/strawberry/releases/download/${pkgver}/strawberry-${pkgver}.tar.xz")
 sha256sums=(b71da4cec9cc7b60961bbb82378d15fb79798e6b880852414ce05276084047a0)
 
