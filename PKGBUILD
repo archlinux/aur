@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-media-driver-git
-pkgver=2020.4.0.r113.g2eeb7e50
+pkgver=2021.2.1.r53.g67261a4df
 pkgrel=1
 pkgdesc='Intel Media Driver for VAAPI — Broadwell+ iGPUs (git version)'
 arch=('x86_64')
@@ -27,6 +27,7 @@ build() {
     cmake -B build -S media-driver \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DINSTALL_DRIVER_SYSCONF:BOOL='OFF' \
+        -DMEDIA_BUILD_FATAL_WARNINGS='OFF' \
         -Wno-dev
     make -C build
 }
