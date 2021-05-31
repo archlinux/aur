@@ -8,7 +8,7 @@ name=cloudcompare
 #_fragment="#branch="
 options=('!strip') # strip would also remove plugins, for some reason
 pkgname=${name}-git
-pkgver=2.10.2.r918.gf8d9db13
+pkgver=2.10.2.r945.ga4ebd61e
 pkgrel=1
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
@@ -42,6 +42,8 @@ sha256sums=('SKIP'
 prepare() {
   prepare_submodule
   git -C "${srcdir}/${name}-cork" apply -v "${srcdir}"/cork.patch
+  #fix gcc:11 porting
+  sed '1 i\#include <limits>' -i "${srcdir}/${name}"/plugins/core/IO/qE57IO/extern/libE57Format/src/E57XmlParser.cpp
 }
 
 pkgver() {
