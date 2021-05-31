@@ -8,8 +8,6 @@ pkgbase = port
 	license = custom:chromium
 	depends = urbit
 	depends = yarn
-	depends = dpkg
-	depends = fakeroot
 	depends = zip
 	conflicts = port-bin
 	source = git+https://github.com/arthyn/port.git#tag=v1.0.1

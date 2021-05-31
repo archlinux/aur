@@ -8,7 +8,7 @@ pkgdesc="A ship runner and manager for Urbit OS"
 arch=("x86_64")
 url="https://github.com/arthyn/port"
 license=("MIT" "custom:chromium")
-depends=("urbit" "yarn" "dpkg" "fakeroot" "zip")
+depends=("urbit" "yarn" "zip")
 conflicts=("port-bin")
 source=("git+https://github.com/arthyn/port.git#tag=v${pkgver}")
 sha512sums=("SKIP")
