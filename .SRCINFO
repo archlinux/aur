@@ -1,7 +1,7 @@
 pkgbase = python-snimpy
 	pkgdesc = Interactive SNMP tool
-	pkgver = 0.8.14
-	pkgrel = 4
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/vincentbernat/snimpy
 	arch = x86_64
 	license = ISC
@@ -13,8 +13,8 @@ pkgbase = python-snimpy
 	depends = python-cffi
 	depends = libsmi
 	depends = python-pysnmp
-	source = https://files.pythonhosted.org/packages/source/s/snimpy/snimpy-0.8.14.tar.gz
-	sha256sums = c7bcbb0cf9f6e5bf71cf7b0407fd9149c3ca31d1b681d26305b7e3faeae911c8
+	source = https://files.pythonhosted.org/packages/source/s/snimpy/snimpy-1.0.0.tar.gz
+	sha256sums = 65bfe796d3d0234b829a96936bc868c3741743a89179367089bc673ca03c591a
 
 pkgname = python-snimpy
 
