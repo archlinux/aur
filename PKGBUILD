@@ -4,14 +4,15 @@
 # Contributor: FzerorubigD <Fzerorubigd {AT} GMail {DOT} com>
 pkgname=obfs4proxy-behind-tor
 pkgver=0.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc='The obfourscator - a pluggable transport proxy written in Go (using tor service to download sources)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://gitweb.torproject.org/pluggable-transports/obfs4.git/'
 license=('BSD')
 makedepends=('git' 'go')
 optdepends=('tor: you need tor to use this package')
-replaces=('obfs4proxy')
+conflicts=('obfs4proxy')
+provides=('obfs4proxy')
 source=("https://people.torproject.org/~yawning/releases/obfs4proxy/obfs4proxy-${pkgver}.tar.xz")
 sha512sums=('7d7fef951bcebd4433dfb638896d4be15dc090d38a3b54c9a9d34ea264b006cff75a42da1b97b6af998cfbc3b44919770cd8cb519ada351486a247faf47c656f')
 export all_proxy="socks5h://127.0.0.1:9050"
