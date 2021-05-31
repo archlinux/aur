@@ -2,7 +2,7 @@
 _projectname='spot'
 pkgname="$_projectname-client"
 pkgver='0.1.14'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Gtk/Rust native Spotify client'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/xou816/$_projectname"
@@ -26,7 +26,7 @@ build() {
 
 check() {
 	cd "$srcdir/"
-	meson test -C "$_builddirectory"
+	meson test -C "$_builddirectory" --timeout-multiplier -1
 }
 
 package() {
