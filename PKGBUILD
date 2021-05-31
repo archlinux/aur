@@ -2,7 +2,7 @@
 # Maintainer: Oliver Marquardt <marquardt@wias-berlin.de>
 pkgname=sphinxdft
 pkgver=3.0
-pkgrel=3
+pkgrel=2
 pkgdesc="S/PHI/nX electronic structure code for density-functional theory and k dot p"
 arch=('x86_64')
 url="https://sxrepo.mpie.de"
