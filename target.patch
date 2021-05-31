@@ -38,8 +38,8 @@ diff --color --unified --recursive --text onscripter-jh/Makefile.Linux onscripte
  ifneq ($(filter i686 x86_64,$(ARCH)),)
  DEFS += -DUSE_SIMD_X86_SSE2
  else
--ifneq ($(filter armv7h armv7l,$(ARCH)),)
-+ifneq ($(filter armv7h armv7l aarch64,$(ARCH)),)
- DEFS += -DUSE_SIMD_ARM_NEON
++DEFS += -DUSE_SIMD_ARM_NEON
+ ifneq ($(filter armv7h armv7l,$(ARCH)),)
+-DEFS += -DUSE_SIMD_ARM_NEON
  EXT_FLAGS += -mfpu=neon
  endif
