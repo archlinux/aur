@@ -10,7 +10,7 @@ stages:
 
 before_script:
   - pacman --noconfirm -Syu
-  - pacman --noconfirm -S sudo git fakeroot binutils
+  - pacman --noconfirm -S sudo gcc fakeroot binutils
   - useradd -m notroot
   - echo "$DOSUDO" > /etc/sudoers.d/notroot
 
@@ -21,3 +21,6 @@ build-package:
   script:
     - su notroot -c "makepkg --noconfirm --syncdeps --rmdeps --install --clean"
     - python -c 'import cocotb; print("All OK")'
+  artifacts:
+    paths:
+      - python-cocotb-1.5-2-any.pkg.tar.zst
