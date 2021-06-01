@@ -3,7 +3,7 @@
 pkgname=sedutil-ladar
 _pkgname=sedutil
 pkgver=1.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="TCG OPAL 2.00 SED Management Program. ladar's fork, SHA512 variant"
 arch=(x86_64)
 url=https://github.com/ladar/sedutil
@@ -30,8 +30,8 @@ source=("$url/releases/download/$pkgver/$_pkgname-$pkgver-SHA512.tar.gz"
 sha256sums=('e31fdfdc9d57f8bc63652bca5abe0468be145b6f5d5a215ce34b666cf9893f84'
             'c192b82c7ce0080e920e805a05b49b0cca4692467b9d716e6c5fcbf8f2a9463c'
             '8f1e5c43e70382cef32a9fe888d7aba71c8cceecd9c045c492746a85a200ab17'
-            'fdf05acf90bf86fe269a3fbd1a34ee1f04d2c6b1c6289b6a779fa1c403ae4336'
-            '26f18516de5a6ad16ea02cb84d621175b54033b22b32efb10a8bb0f2eed49456'
+            'fa4729c0922f07f6349567bfb11e62f4c25f117da191a4d8caa684dcd1bde502'
+            '74bf3b603cd62a571626a6238c48354c9d0448d05039fb02e412cce7829dbf30'
             'd9a7b66d8365e7f4eb0233b30c0ab70b5e978f6554960bf12994a1f0910c1447'
             'c4ac3b9e9572138e3599b953418a246da0f41ec28dc2edd67867abbb011a47ac'
             'eb734a57b48964be9a703250215532c25b33d38510766ef571a1999100095bfc'

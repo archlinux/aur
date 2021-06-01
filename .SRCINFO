@@ -1,7 +1,7 @@
 pkgbase = sedutil-ladar
 	pkgdesc = TCG OPAL 2.00 SED Management Program. ladar's fork, SHA512 variant
 	pkgver = 1.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ladar/sedutil
 	install = sedutil.install
 	arch = x86_64
@@ -27,8 +27,8 @@ pkgbase = sedutil-ladar
 	sha256sums = e31fdfdc9d57f8bc63652bca5abe0468be145b6f5d5a215ce34b666cf9893f84
 	sha256sums = c192b82c7ce0080e920e805a05b49b0cca4692467b9d716e6c5fcbf8f2a9463c
 	sha256sums = 8f1e5c43e70382cef32a9fe888d7aba71c8cceecd9c045c492746a85a200ab17
-	sha256sums = fdf05acf90bf86fe269a3fbd1a34ee1f04d2c6b1c6289b6a779fa1c403ae4336
-	sha256sums = 26f18516de5a6ad16ea02cb84d621175b54033b22b32efb10a8bb0f2eed49456
+	sha256sums = fa4729c0922f07f6349567bfb11e62f4c25f117da191a4d8caa684dcd1bde502
+	sha256sums = 74bf3b603cd62a571626a6238c48354c9d0448d05039fb02e412cce7829dbf30
 	sha256sums = d9a7b66d8365e7f4eb0233b30c0ab70b5e978f6554960bf12994a1f0910c1447
 	sha256sums = c4ac3b9e9572138e3599b953418a246da0f41ec28dc2edd67867abbb011a47ac
 	sha256sums = eb734a57b48964be9a703250215532c25b33d38510766ef571a1999100095bfc
@@ -39,4 +39,3 @@ pkgbase = sedutil-ladar
 	sha256sums = f3a24271ba964de1db2927f07a9ea2765515d871c481c87cf3dccd5dd5949326
 
 pkgname = sedutil-ladar
-
