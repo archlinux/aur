@@ -1,0 +1,14 @@
+pkgbase = kn
+	pkgdesc = alternative. Navigate by typing abbreviation of paths.
+	pkgver = 0.2.2
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+
+pkgname = kn
+
