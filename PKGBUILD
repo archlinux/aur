@@ -3,7 +3,7 @@
 # Contributor: schard <mail@richard.neumann.de>
 
 pkgname='obs-gnome-screencast'
-pkgver='0.1.2'
+pkgver='0.2.0'
 pkgrel='1'
 pkgdesc="GNOME Screen Cast OBS Studio plugin"
 changelog='CHANGELOG'
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('gnome-shell' 'obs-studio' 'gstreamer' 'gst-plugins-base-libs')
 makedepends=('meson' 'git')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('a8ff8cbdb01c7c8e60f62a137eedc857bc44ffa3aa127fed269a8f2e5d1485f5')
+sha256sums=('ed48de33b1f0a89a0bee33683006a25925780f3e962d5ead8292241f1540353a')
 
 build() {
     arch-meson "${pkgname}-${pkgver}"  build

@@ -1,7 +1,5 @@
-v0.1.1
+v0.2.0
 ======
+- added window selection property to easily select a single window to capture(!)
 
-- create own thread with it's own main loop. let us not assume OBS comes with one, and if it does, try not to interfere with it.
-- always copy the video buffer. this comes with a performance penalty, but pipewire versions >= 0.21 seem to have issue if we don't.
-- don't leak the bus watch handle. this could have led to "too many files open" error in case of many stop/starts.
 
