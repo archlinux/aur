@@ -3,16 +3,16 @@
 
 pkgname=python-strictyaml
 _pkgname=strictyaml
-pkgver=1.4.0
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='A type-safe YAML parser that parses a restricted subset of the YAML specificaton'
 arch=(any)
 url="http://hitchdev.com/$_pkgname"
-license=('MIT')
-depends=('python' 'python-dateutil' 'python-ruamel-yaml')
-makedepends=('python-setuptools')
+license=(MIT)
+depends=(python python-dateutil python-ruamel-yaml)
+makedepends=(python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('9f4e5814f96e17e82044a7dbbb8a0976048f2841b073e8114c2a2c025e7f81b9')
+sha256sums=('ddb4e4e807dd510c9bc7fc50fc8d1369ed696ed5cc92d494b5e752ba8276a5a2')
 
 build() {
     cd "$_pkgname-$pkgver"
