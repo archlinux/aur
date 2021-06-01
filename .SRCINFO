@@ -1,0 +1,17 @@
+pkgbase = carnot
+	pkgdesc = A tool for the calculation and simulation of the thermal components of HVAC systems with regards to conventional and regenerative elements
+	pkgver = 7.1.0
+	pkgrel = 1
+	url = https://www.fh-aachen.de/forschung/solar-institut-juelich/carnot/
+	arch = i686
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = gcc8
+	depends = matlab
+	source = carnot-7.1.0.zip::https://fh-aachen.sciebo.de/s/0hxub0iIJrui3ED/download?path=%2F&files=Carnot_71.zip
+	source = script_build.m
+	sha256sums = ecd28cb7324c3b0bc2ae4760180fa7b7d69395a9f04138b185782acc27105c57
+	sha256sums = 3ce68c106d4f778fb93593bd2b8f1f4ebf99a8f50f17f5333d956c1d41773e4f
+
+pkgname = carnot
+
