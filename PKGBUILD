@@ -1,6 +1,6 @@
 # Maintainer: ransome <ransome@uber.space>
 pkgname="sleek"
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Todo app based on the todo.txt format for Linux, free and open-source"
 arch=("x86_64")
@@ -10,7 +10,7 @@ options=(!strip)
 makedepends=("yarn" "nodejs<16.0.0")
 depends=("electron" "nodejs")
 source=("${url}archive/refs/tags/v${pkgver}.zip" "sleek.desktop" "sleek")
-sha512sums=('04d2bf6c4d5d0f424218ad9067ae0ef53c62daa1290ea9a43dedbf9edced82cd937b66fd0eccbc547f625c0d47143d0e121cb471b376eca247a1ada0b40ec553'
+sha512sums=('0ec8f83beae9f099e99d9f276159e75d28d631a76005e2a323c5839e91ca9672230c7aa8c9001ab1fb3b3a93b93ad83f1b48a0d45ec830c0aad7dec4872aee6c'
             '605f49606eb0656846ac5dc3b97eca0acb3a781b07c71aff1e027935d5e8ea569d290c95d67bd7347ddd133c1643e6f3c6fe36bd1b52f49e528b34a458afe316'
             'ea1d322bd56c7944a9eae97f4968a6a2e937b510eb3c1c21266428450c5b2ddcd8576718d0b66b69fbce5694ba94e80a692d04bda1e8c2b24a8d814a5ed50963')
 
