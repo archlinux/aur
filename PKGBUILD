@@ -2,16 +2,16 @@
 
 _pipname=cattrs
 pkgname=python-${_pipname,,}
-pkgver=1.6.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc='Complex custom class converters for attrs'
-arch=('any')
+arch=(any)
 url="https://github.com/Tinche/$_pipname"
-license=('MIT')
-depends=('python')
-makedepends=('python-setuptools')
+license=(MIT)
+depends=(python)
+makedepends=(python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_pipname::1}/$_pipname/$_pipname-$pkgver.tar.gz")
-sha256sums=('3e2cd5dc8a1006d5da53ddcbf4f0b1dd3a21e294323b257678d0a96721f8253a')
+sha256sums=('95265b8aaa45e6de75b5f52ae081e021a2a7a688babdb711e4174e6b18920d08')
 
 build() {
     cd "$_pipname-$pkgver"
