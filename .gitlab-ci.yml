@@ -1,6 +1,6 @@
 # * Prepare
 
-image: archlinux
+image: archlinux/archlinux:base-devel
 
 variables:
   DOSUDO: "notroot ALL=(ALL) NOPASSWD: ALL"
@@ -10,7 +10,6 @@ stages:
 
 before_script:
   - pacman --noconfirm -Syu
-  - pacman --noconfirm -S sudo git fakeroot binutils
   - useradd -m notroot
   - echo "$DOSUDO" > /etc/sudoers.d/notroot
 
@@ -19,8 +18,8 @@ before_script:
 build-package:
   stage: test
   script:
-    - cd /home/notroot
-    - su notroot -c "git clone https://aur.archlinux.org/python-cocotb-git.git"
-    - cd python-cocotb-git
     - su notroot -c "makepkg --noconfirm --syncdeps --rmdeps --install --clean"
     - python -c 'import cocotb; print("All OK")'
+  artifacts:
+    paths:
+      - python-cocotb-git-*.tar.zst

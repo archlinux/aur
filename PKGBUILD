@@ -9,8 +9,7 @@ license=('BSD')
 conflicts=('python-cocotb')
 provides=('python-cocotb')
 depends=('python' 'python-setuptools')
-
-makedepends=('git' 'gcc')
+makedepends=('git')
 optdepends=('iverilog: for simulating verilog designs'
 	    'ghdl: for simulating VHDL designs'
 	    'gtkwave: for visualizing waveforms')
