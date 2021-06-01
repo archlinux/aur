@@ -1,6 +1,6 @@
 pkgbase = cuberite
 	pkgdesc = A Minecraft-compatible multiplayer game server that is written in C++ and designed to be efficient with memory and CPU, as well as having a flexible Lua Plugin API. It is compatible with the vanilla Minecraft client.
-	pkgver = 1.12.2b191
+	pkgver = 1.12.2c0_04cb4996
 	pkgrel = 1
 	url = https://cuberite.org/
 	install = cuberite.install
@@ -8,20 +8,39 @@ pkgbase = cuberite
 	arch = x86_64
 	arch = armv7h
 	license = Apache
+	makedepends = clang
+	makedepends = cmake
+	makedepends = gtest
+	makedepends = git
 	depends = lua
 	depends = screen
 	depends = sudo
 	depends = bash
 	depends = awk
 	depends = sed
+	depends = sqlite
 	optdepends = tar: needed in order to create world backups
 	optdepends = netcat: required in order to suspend an idle server
 	provides = minecraft-server=1.12.2
 	provides = spigot=1.12.2
-	noextract = Cuberite.b201_i686.tar.gz
-	noextract = Cuberite.b191_x86_64.tar.gz
-	noextract = Cuberite.b190_armv7h.tar.gz
 	backup = etc/conf.d/cuberite
+	source = git+https://github.com/cuberite/cuberite#commit=04cb4996
+	source = git+https://github.com/cuberite/Core#commit=eb88dff
+	source = git+https://github.com/cuberite/ProtectionAreas#commit=5cc1171
+	source = git+https://github.com/cuberite/ChatLog#commit=cc04da3
+	source = git+https://github.com/cuberite/SQLiteCpp#commit=a25ffb5
+	source = git+https://github.com/cuberite/libevent#commit=bbc5fd6
+	source = git+https://github.com/open-source-parsers/jsoncpp#commit=375a111
+	source = git+https://github.com/cuberite/TCLAP#commit=0747261
+	source = git+https://github.com/cuberite/cmake-coverage#commit=25af3c6
+	source = git+https://github.com/cuberite/expat#commit=e87c790
+	source = git+https://github.com/cuberite/lua#commit=935fe91
+	source = git+https://github.com/cuberite/luaexpat#commit=368e292
+	source = git+https://github.com/cuberite/sqlite#commit=4435d7e
+	source = git+https://github.com/cuberite/toluapp#commit=4d24aa3
+	source = git+https://github.com/fmtlib/fmt#commit=9976869
+	source = git+https://github.com/grafi-tt/lunajson#commit=1dcf3fa
+	source = git+https://github.com/cuberite/libdeflate#commit=cb15020
 	source = cuberite-backup.service
 	source = cuberite-backup.timer
 	source = cuberite.service
@@ -29,6 +48,23 @@ pkgbase = cuberite
 	source = cuberite.tmpfiles
 	source = cuberite.conf
 	source = cuberite.sh
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 	sha512sums = 4b4161558343dd2ec4d6b2be41b958e061df2a41961d9476ac1d38f28530043f99735d20115ba65bdbdc04003582f3ab8beb00b19623aae72ecab81797eb05dc
 	sha512sums = 2ae834c75dfc299e823308bcb500e028020f1ac47675c645c4a7832ae225f63e9f7d22c08cd1bbb754388db7cf57ab3d4c359615be70f8d234e82013c148b024
 	sha512sums = afc35227b91bc302e095c84c30ee85114e4b97220e8ee6acf8e7250306bee969e2cd4d57b4d2afd1e43298b32fc7ecaa543bdf6fead8c0f218cfc37aa51b524e
@@ -36,11 +72,5 @@ pkgbase = cuberite
 	sha512sums = 09047f4df9591b2d61885c842cbd9abde590b0069945f2e10fd402ad93f0f0abd3c2557e61200388038708960f5d82e22d332efe83cf1acf0895f56dd2e5d5d0
 	sha512sums = 9282301a67a612a4b757324274b6deea16d57e919b3c367a92414d7b74fe0ec4f5e54748ccf0ff14f6c62e8dbc5cb211afebfff8ad5abe63945afccf9484378f
 	sha512sums = 7fbf77803df26e96e68ffeafb1ebef591c433503faa039dc47a741e2cded7d56445f0ec20ebc73ffd3bc7df123db23dff8b54d97652253fbc79dbf70257b0deb
-	source_i686 = Cuberite.b201_i686.tar.gz::https://builds.cuberite.org/view/all/job/linux-i386/201/artifact/Cuberite.tar.gz
-	sha512sums_i686 = 10e7f83554b353a4e0e040f9c06ad3aebbf5a75ef11aa5d27473fb23d5b3ced37d9649959eff3da1c88b8dbab017bea5bf7c081e90e5c9e4aa62ff70eb9d45eb
-	source_x86_64 = Cuberite.b191_x86_64.tar.gz::https://builds.cuberite.org/view/all/job/linux-x86_64/191/artifact/Cuberite.tar.gz
-	sha512sums_x86_64 = ce949b50e49bb357a337868699ae17b64aff8e1d4d5ce5c92fe9bfecef5bca9b9f8633d6779eb6d49e492c85dd537597bc83e504369116203a943af6fd163b51
-	source_armv7h = Cuberite.b190_armv7h.tar.gz::https://builds.cuberite.org/view/all/job/linux-armhf/190/artifact/Cuberite.tar.gz
-	sha512sums_armv7h = 2c5609a6dc36c8a61fe3935c4cd879d0fcf768a89e2a04d38786ec3be7dba105b33868cc58d02df935a58366b119d160b637bae25f79380e90c7782639492e8d
 
 pkgname = cuberite
