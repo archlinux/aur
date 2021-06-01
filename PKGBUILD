@@ -8,7 +8,7 @@ license=("AGPL-3.0-or-later")
 arch=("x86_64")
 provides=("dokkoo")
 source=("https://github.com/Dirout/dokkoo/releases/download/v$pkgver/dokkoo-$pkgver-x86_64.tar.gz")
-sha256sums=("44f55a360debc27ff0655c18049b5747d0e0b79369db4ec559931598f207596c")
+sha256sums=("02cd1c0185d2fe38b0e2f5a35c078764e2c8745c06c4d860ea1101e0b82b58ad")
 
 package() {
     install -Dm755 dokkoo -t "$pkgdir/usr/bin/"
