@@ -1,4 +1,5 @@
 # Maintainer: Sabu Siyad <ssiyad at disroot dot org>
+# This PKGBUILD is maintained at https://github.com/ssiyad/pkgbuilds/
 
 pkgname=hopp-cli
 pkgver=0.0.7

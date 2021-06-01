@@ -11,4 +11,3 @@ pkgbase = hopp-cli
 	sha256sums = SKIP
 
 pkgname = hopp-cli
-
