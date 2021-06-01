@@ -5,10 +5,10 @@ _vlcver=3.0.14
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit and lua5.1 for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
-arch=('x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 license=('LGPL2.1' 'GPL2')
 depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'luajit' 'libidn'
          'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libmad'
@@ -125,6 +125,14 @@ prepare() {
   autoreconf -vf
 }
 
+if [[ $CARCH == 'x86_64' ]]; then
+  GLES=--disable-gles2
+elif [[ $CARCH == 'i686' ]]; then
+  GLES=--disable-gles2
+elif [[ $CARCH == 'aarch64' ]]; then
+  GLES=--enable-gles2
+fi
+
 build() {
   cd ${_name}-${_vlcver}
 
@@ -235,7 +243,9 @@ build() {
     --enable-aribcam \
     --enable-aom \
     --enable-srt \
-    --enable-dav1d
+    --enable-dav1d \
+    $GLES
+
   make
 }
 
