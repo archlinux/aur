@@ -2,14 +2,14 @@
 # Maintainer: sh0rez <me@shorez.de>
 
 pkgname=tanka-git
-pkgver=v0.15.0.r1.gb19bc9f
+pkgver=v0.16.0.r0.g774c664
 pkgrel=1
 pkgdesc="Flexible, reusable and concise configuration for Kubernetes using Jsonnet"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 
 url="https://tanka.dev"
 license=('Apache')
-source=("git+https://github.com/grafana/tanka.git")
+source=("git+https://github.com/grafana/tanka.git#branch=main")
 
 makedepends=('git' 'go')
 depends=('diffutils' 'kubectl')
