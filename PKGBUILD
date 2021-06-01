@@ -93,7 +93,7 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_BROWSER=ON \
     -DCEF_ROOT_DIR=/opt/cef-obs \
-    -DOBS_VERSION_OVERRIDE=$pkgver ..
+    -DOBS_VERSION_OVERRIDE="$pkgver-$pkgrel" ..
 
   make
 }
