@@ -1,6 +1,6 @@
 # Maintainer: Alex Forencich <alex@alexforencich.com>
 pkgname=python-cocotbext-eth-git
-pkgver=0.1.6.r1.ga81d432
+pkgver=0.1.14.r1.g8956de4
 pkgrel=1
 pkgdesc="Ethernet interface modules for cocotb"
 arch=('any')
