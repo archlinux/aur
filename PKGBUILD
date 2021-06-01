@@ -4,7 +4,7 @@
 pkgname=obsidian-insider
 _pkgname=obsidian
 # Insider release (lacks app.asar)
-pkgver=0.12.3
+pkgver=0.12.4
 # Full public release
 _pkgver=0.12.3
 pkgrel=1
@@ -27,7 +27,7 @@ sha256sums=(
     'd6b6ea6749b343787a2ab8379f0396c3ea48796717773ad5447afecc10e042e7'
     'b58f58a58278dc5eaddd0e935d973b69eb671d971db678c077892c7369a0f6e4'
     '9f0b50a7b064319c0ccdf9c0e7075c30085f7b333ffcb9bd71fd296ef9ce5591'
-    '8553e904752d237af8e034457ed1f7fa8e25ec97db61315d29af6c5ad835d5b2'
+    'a2f9708245bf6bb1e529c9065a65493f290970c4ddc8bf175b5f382682273794'
 )
 
 prepare() {
