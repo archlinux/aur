@@ -2,7 +2,7 @@
 # Orginally Packaged By: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=rasdaemon
 pkgver=0.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Logging daemon for Platform Reliability, Availability and Serviceability (RAS), replacing mcelog"
 arch=(i686 x86_64)
 url="https://pagure.io/rasdaemon"
@@ -30,6 +30,7 @@ build() {
     --prefix=/usr           \
     --sbindir=/usr/bin      \
     --sysconfdir=/etc       \
+    --with-sysconfdefdir=/etc/sysconfig \
     --localstatedir=/var    \
     --enable-aer            \
     --enable-arm            \
