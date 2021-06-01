@@ -1,4 +1,6 @@
 # Maintainer: Sabu Siyad <ssiyad at disroot.org>
+# This PKGBUILD is maintained at https://github.com/ssiyad/pkgbuilds/
+
 # Contributor: Dmitri Goutnik <dg@syrec.org>
 # Contributor: Doron Behar <doron.behar@gmail.com>
 
