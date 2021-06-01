@@ -1,7 +1,7 @@
 pkgbase = antlrworks
 	pkgdesc = A netbeans-based grammar IDE for ANTLR
 	pkgver = 2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://tunnelvisionlabs.com/products/demo/antlrworks
 	arch = x86_64
 	arch = i686
@@ -13,7 +13,6 @@ pkgbase = antlrworks
 	source = http://tunnelvisionlabs.com/downloads/antlr/2013-07-21-antlrworks-2.1.zip
 	source = antlrworks
 	sha256sums = 87cb71e0ad84da4f4642c12995a028be63c7f1179e38d551a47090c8c3bab988
-	sha256sums = 3755df4cbb5757a5c7d799cbe23040bc4209263fa70bad8fad6ea977e5a8a759
+	sha256sums = 403296a4ea478709308212bb3cd4945689a62ef31738ea230c921b57cce31253
 
 pkgname = antlrworks
-

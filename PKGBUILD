@@ -2,7 +2,7 @@
 # Contributor: Will Price <will.price94+aur@gmail.com>
 pkgname=antlrworks
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A netbeans-based grammar IDE for ANTLR"
 arch=('x86_64' 'i686')
 url="http://tunnelvisionlabs.com/products/demo/antlrworks"
@@ -16,7 +16,7 @@ source=(
 	)
 sha256sums=(
 	"87cb71e0ad84da4f4642c12995a028be63c7f1179e38d551a47090c8c3bab988"
-	"3755df4cbb5757a5c7d799cbe23040bc4209263fa70bad8fad6ea977e5a8a759"
+	"403296a4ea478709308212bb3cd4945689a62ef31738ea230c921b57cce31253"
 	)
 
 package() {
