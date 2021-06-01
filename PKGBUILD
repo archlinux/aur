@@ -9,7 +9,6 @@ license=('BSD')
 conflicts=('python-cocotb-bus')
 provides=('python-cocotb-bus')
 depends=('python' 'python-setuptools')
-
 makedepends=('git')
 optdepends=('iverilog: for simulating verilog designs'
 	    'ghdl: for simulating VHDL designs'
