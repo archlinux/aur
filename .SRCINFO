@@ -1,7 +1,7 @@
 pkgbase = fossil-fossil
 	pkgdesc = A simple, high-reliability, distributed software configuration management system
 	pkgver = r15706.d1f6b9d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fossil-scm.org/home/doc/trunk/www/index.wiki
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = fossil-fossil
 	provides = fossil
 	conflicts = fossil
 	backup = etc/xinetd.d/fossil
-	source = fossil::fossil+https://fossil-scm.org/home
+	source = fossil.fossil::fossil+https://fossil-scm.org/home
 	source = fossil-xinetd::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/fossil/trunk/fossil-xinetd
 	source = fossil@.service::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/fossil/trunk/fossil.service
 	source = fossil.socket::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/fossil/trunk/fossil.socket
