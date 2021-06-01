@@ -1,6 +1,6 @@
 pkgbase = yap-frontend-cli
 	pkgdesc = A TUI for the yap planner written in rust
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/flammenderdrache/yap-frontend-cli
 	arch = x86_64
@@ -11,4 +11,3 @@ pkgbase = yap-frontend-cli
 	sha512sums = SKIP
 
 pkgname = yap-frontend-cli
-
