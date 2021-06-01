@@ -1,0 +1,11 @@
+pkgbase = digitalroadmap
+	pkgdesc = DigitalRoadmap - Simple roadmapping utility
+	pkgver = 1.0.0.A1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	makedepends = gradle>=6.7
+	depends = java-environment
+
+pkgname = digitalroadmap
+
