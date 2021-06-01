@@ -1,7 +1,7 @@
 # Maintainer: mlunax <lunax@mlunax.com>
 
 pkgname=haruhi-dl
-pkgver=2021.04.01
+pkgver=2021.06.01
 _name="haruhi-dl-v$pkgver"
 pkgrel=1
 pkgdesc="Fork of youtube-dl, focused on bringing a fast, steady stream of updates. We'll do our best to merge patches to any site, not only youtube."
