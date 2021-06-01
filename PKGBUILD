@@ -2,16 +2,16 @@
 
 pkgname=python-ufl-git
 pkgdesc="Unified form language."
-pkgver=20200113
+pkgver=20210525
 pkgrel=1
 arch=('any')
-url="https://bitbucket.org/fenics-project/ufl"
+url="https://github.com/FEniCS/ufl"
 license=('GPL3')
 groups=('fenics-git')
 depends=('python-numpy')
 makedepends=('python-setuptools' 'git')
 options=(!emptydirs)
-source=("ufl::git+https://bitbucket.org/fenics-project/ufl.git")
+source=("ufl::git+https://github.com/FEniCS/ufl.git")
 md5sums=('SKIP')
 
 pkgver() {
