@@ -2,7 +2,7 @@
 # Maintainer: f3fora <f3 dot foradori at gmail dot com>
 
 pkgname=rmfuse
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="FUSE access to the reMarkable Cloud"
 arch=(any)
@@ -14,7 +14,7 @@ optdepends=('python-pyfuse3: for FUSE3 (recommended)'
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/r/rmfuse/rmfuse-$pkgver.tar.gz"
 	"xdg.py::https://raw.githubusercontent.com/srstevenson/xdg/5.0.1/src/xdg/__init__.py")
-sha256sums=('885c8ca6e369161aea023196a404c5b97e7c7db6d9cf115fc685e69f0274e020'
+sha256sums=('94f71ef2d8aa20fc9981b0a00318800dc6be2518d4cd82c37c0d2d7f54907ed2'
 	'93a5ba17785c5e00d24ebd0e148d36470076c03fa16cf7e9a113a7d8fb1bceba')
 
 build() {
