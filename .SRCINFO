@@ -1,0 +1,12 @@
+pkgbase = wordtsar
+	pkgdesc = A WordStar 7.0D Document mode clone with CLI and GUI. It loads WordStar 4, WordStar 7, DOCX and RTF files, and saves in WordStar 7 and RTF format.
+	pkgver = 0.3.281
+	pkgrel = 1
+	url = http://wordtsar.ca/
+	arch = x86_64
+	license = AGPL3
+	depends = qt5-base
+	source = https://downloads.sourceforge.net/wordtsar/WordTsar-0.3.281-src.zip
+	sha256sums = db8e533bf03588feec0011da341f57c91ce066f380c2553bdee472c0c3b6b450
+
+pkgname = wordtsar
