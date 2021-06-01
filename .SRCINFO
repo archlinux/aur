@@ -5,7 +5,7 @@ pkgbase = digitalroadmap
 	arch = any
 	license = GPL
 	makedepends = gradle>=6.7
-	depends = java-environment
+	depends = java-environment>=15
 
 pkgname = digitalroadmap
 

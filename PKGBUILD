@@ -8,7 +8,7 @@ arch=( 'any' )
 url=""
 license=('GPL')
 groups=()
-depends=( 'java-environment' )
+depends=( 'java-environment>=15' )
 makedepends=( 'gradle>=6.7' )
 optdepends=()
 provides=()
