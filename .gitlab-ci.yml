@@ -1,11 +1,17 @@
 image: "registry.devseed.de/all-the-things/docker-archlinux"
 
+stages:
+  - test
+  - update_hash
+  - release
+
+
 before_script:
   - sudo pacman -Sy --noconfirm pacman-contrib
   - git config --global user.email "renovate@devseed.de"
   - git config --global user.name "Renovate Bot"
 
-makepkg:
+test:
   script:
     # update package hash for integrity check
     - updpkgsums
