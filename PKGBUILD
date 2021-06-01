@@ -4,16 +4,16 @@
 
 pkgname=rtl8814au-dkms-git
 _pkgbase=rtl8814au
-pkgver=4.3.21.r34.ga0c4479
-pkgrel=2
-pkgdesc="RTL8814AU and RTL8813AU chipset driver with firmware v4.3.21"
+pkgver=5.8.5.1.r98.gc5fd13c
+pkgrel=1
+pkgdesc="RTL8814AU and RTL8813AU chipset driver with firmware v5.8.5.1"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="https://github.com/zebulon2/rtl8814au"
+url="https://github.com/morrownr/8814au"
 license=('GPL2')
 depends=('dkms' 'bc')
 makedepends=('git')
 conflicts=("${_pkgbase}")
-source=("git+https://github.com/zebulon2/rtl8814au.git"
+source=("git+https://github.com/morrownr/8814au.git"
         'dkms.conf'
         'arm.patch')
 sha256sums=('SKIP'
@@ -21,8 +21,8 @@ sha256sums=('SKIP'
 	    '2911f6c1285277d0507b2ad7a09c20edd682476be67502db63f63663cac97efb')
 
 pkgver() {
-    cd ${srcdir}/rtl8814au
-    printf '%s.r%s.g%s' '4.3.21' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd ${srcdir}/8814au
+    printf '%s.r%s.g%s' '5.8.5.1' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
@@ -30,7 +30,7 @@ package() {
 			msg2 "Applying patch for ARM architecture..."
 			patch ${srcdir}/rtl8814au/Makefile -i ${srcdir}/arm.patch
 		fi
-		cd ${srcdir}/rtl8814au
+		cd ${srcdir}/8814au
         mkdir -p ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
         cp -pr * ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
         cp ${srcdir}/dkms.conf ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
