@@ -1,6 +1,6 @@
 pkgbase = linux-mini
 	pkgdesc = Linux kernel and modules with minimal configuration
-	pkgver = 5.12.6
+	pkgver = 5.12.8
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = linux-mini
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.12.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.12.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.12.6.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.12.8.xz
 	source = enable_additional_cpu_optimizations-20210412.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20210412.tar.gz
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
@@ -30,9 +30,9 @@ pkgbase = linux-mini
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = 7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366
 	sha256sums = 39045607567d69f84424b224e4fa6bf8f97a21a06ac9d6396acab16a18c4bcd3
-	sha256sums = 2ae3722dade1a14194d0431e260628f4b7a1a0117fa7464d745be37212cd8d3e
+	sha256sums = a6cf39c43a231184cbabe557542fbd80f1660895dd792220ac2b4740606b535e
 	sha256sums = f1f62b6d2cd89d0ab15f8d7311f5bb775dfc97ff39f93bc77f6f733f75fa7558
-	sha256sums = 55c4cb76754b1db234a0994806106d8481c171d4e3fead12793f0083a48511d4
+	sha256sums = 0d0691aa0f80fea0d9d204c05a845416dd443f3bb629cbb68e098e4d19cc841d
 
 pkgname = linux-mini
 	pkgdesc = The Linux kernel and modules with minimal configuration kernel and modules
@@ -50,4 +50,3 @@ pkgname = linux-mini
 pkgname = linux-mini-headers
 	pkgdesc = Headers and scripts for building modules for the Linux kernel and modules with minimal configuration kernel
 	depends = pahole
-
