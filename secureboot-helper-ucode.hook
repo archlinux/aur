@@ -1,0 +1,14 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = intel-ucode
+Target = amd-ucode
+
+[Action]
+Description = Signing Micro Code images for SecureBoot
+When = PostTransaction
+Exec = /usr/bin/sh -c "/usr/bin/find /boot/ -type f -name '*ucode.img' -exec /usr/bin/sh -c 'if ! /usr/bin/sbverify --list {} 2>/dev/null | /usr/bin/grep -q \"signature certificates\"; then /usr/bin/sbsign --key /%SIGN_LOCATION%/db/db.crt --cert /%SIGN_LOCATION%/db/db.crt --output {} {}; fi' \;"
+Depends = sbsigntools
+Depends = findutils
+Depends = grep

@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = systemd
+
+[Action]
+Description = Update SystemD-Boot Binaries
+When = PostTransaction
+Exec = /usr/bin/bootctl update
+Depends = systemd
