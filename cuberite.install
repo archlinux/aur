@@ -1,0 +1,7 @@
+_game="cuberite"
+_user="cuberite"
+_server_root="/srv/cuberite"
+
+post_install() {
+	echo "The world data is stored under ${_server_root} and the server runs as ${_user} user to increase security."
+}

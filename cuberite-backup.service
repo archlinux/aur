@@ -1,0 +1,12 @@
+[Unit]
+Description=Cuberite Server World, Plugins and Configuration-File Backup
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/cuberite backup
+User=cuberite
+Group=cuberite
+
+[Install]
+WantedBy=multi-user.target
