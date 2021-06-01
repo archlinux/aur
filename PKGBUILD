@@ -1,9 +1,10 @@
-# Maintainer: Caleb Johnson <me@calebj.io>
+# Maintainer: Yichao Zhou <zyc@berkeley.edu>
 _pkgname=wmidump
 pkgname=${_pkgname}-git
-pkgrel=2
+pkgrel=3
 pkgver=r13
-conflicts=(wmidump)
+conflicts=(${_pkgname})
+provides=("${_pkgname}=$pkgver")
 pkgdesc="Dump WMI informations from ACPI tables"
 arch=('i686' 'x86_64')
 url="https://github.com/iksaif/wmidump"

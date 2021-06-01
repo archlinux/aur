@@ -1,12 +1,13 @@
 pkgbase = wmidump-git
 	pkgdesc = Dump WMI informations from ACPI tables
 	pkgver = r13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/iksaif/wmidump
 	arch = i686
 	arch = x86_64
 	license = unknown
 	makedepends = git
+	provides = wmidump=r13
 	conflicts = wmidump
 	source = wmidump-git::git+http://github.com/iksaif/wmidump
 	sha256sums = SKIP
