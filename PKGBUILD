@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=fossil-fossil
-pkgver=r15675.4b01359
+pkgver=r15706.d1f6b9d
 pkgrel=1
 pkgdesc="A simple, high-reliability, distributed software configuration management system"
 arch=('i686' 'x86_64')
@@ -13,25 +13,15 @@ optdepends=('tcl')
 provides=('fossil')
 conflicts=('fossil')
 backup=('etc/xinetd.d/fossil')
-source=("fossil-xinetd::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/fossil/trunk/fossil-xinetd"
+source=("fossil::fossil+https://fossil-scm.org/home"
+        "fossil-xinetd::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/fossil/trunk/fossil-xinetd"
         "fossil@.service::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/fossil/trunk/fossil.service"
         "fossil.socket::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/fossil/trunk/fossil.socket")
 sha256sums=('SKIP'
             'SKIP'
+            'SKIP'
             'SKIP')
 
-
-prepare() {
-  cd "$srcdir"
-
-  if [ -d "fossil" ]; then
-    cd "fossil"
-    fossil update
-  else
-    rm -f "fossil.fossil"
-    fossil clone --workdir "fossil" "https://fossil-scm.org/" "fossil.fossil"
-  fi
-}
 
 pkgver() {
   cd "fossil"

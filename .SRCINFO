@@ -1,6 +1,6 @@
 pkgbase = fossil-fossil
 	pkgdesc = A simple, high-reliability, distributed software configuration management system
-	pkgver = r15675.4b01359
+	pkgver = r15706.d1f6b9d
 	pkgrel = 1
 	url = https://fossil-scm.org/home/doc/trunk/www/index.wiki
 	arch = i686
@@ -16,12 +16,13 @@ pkgbase = fossil-fossil
 	provides = fossil
 	conflicts = fossil
 	backup = etc/xinetd.d/fossil
+	source = fossil::fossil+https://fossil-scm.org/home
 	source = fossil-xinetd::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/fossil/trunk/fossil-xinetd
 	source = fossil@.service::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/fossil/trunk/fossil.service
 	source = fossil.socket::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/fossil/trunk/fossil.socket
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = fossil-fossil
-
