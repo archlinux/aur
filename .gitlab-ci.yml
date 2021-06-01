@@ -1,12 +1,13 @@
 image: "registry.devseed.de/all-the-things/docker-archlinux"
 
+before_script:
+  - sudo pacman -Sy --noconfirm pacman-contrib
+
 test:makepkg:
   script:
+    # update package hash for integrity check
+    - updpkgsums
     # Test building a source package
     - sudo -u builder makepkg -C -S --log --noconfirm
     # Test building and installing the package
     - sudo -u builder makepkg -C -i --log --noconfirm
-
-      #curl --silent "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
-      #grep '"tag_name":' |                                            # Get tag line
-      #sed -E 's/.*"([^"]+)".*/\1/'
