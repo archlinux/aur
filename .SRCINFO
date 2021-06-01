@@ -1,6 +1,6 @@
 pkgbase = python-cocotbext-pcie-git
 	pkgdesc = PCI express simulation framework for cocotb
-	pkgver = 0.1.4.r1.gbfdbe87
+	pkgver = 0.1.10.r5.gf84d39b
 	pkgrel = 1
 	url = https://github.com/alexforencich/cocotbext-pcie
 	arch = any
