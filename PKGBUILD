@@ -1,12 +1,12 @@
 # Maintainer: Alex Forencich <alex@alexforencich.com>
 pkgname=python-cocotbext-axi-git
-pkgver=0.1.6.r1.gcfd5dae
+pkgver=0.1.12.r1.g8dcdbfe
 pkgrel=1
 pkgdesc="AXI, AXI lite, and AXI stream modules for cocotb"
 arch=('any')
 url="https://github.com/alexforencich/cocotbext-axi"
 license=('MIT')
-depends=('python-cocotb')
+depends=('python-cocotb' 'python-cocotb-bus')
 provides=('python-cocotbext-axi')
 conflicts=('python-cocotbext-axi')
 makedepends=('git' 'python-setuptools')
