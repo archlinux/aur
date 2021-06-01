@@ -77,7 +77,7 @@ pkg_install() {
 	done
 	set -e
 	if [ ! -z "$mreq" ] ;then
-		printf "$distro\n$mreq\n" >packages.list
+		printf "#$distro\n$mreq\n" >packages.list
 		printf "\n"
 		$inscmd $mreq
 	fi
@@ -86,7 +86,7 @@ pkg_install() {
 check_req() {
 	printf "\nChecking requirements...\n\n"
 	case $distro in
-		"Arch Linux"|"Manjaro Linux")
+		"Arch Linux"|"Manjaro Linux"|"EndeavourOS")
 			qrycmd="pacman -Q"
 			inscmd="pacman -S"
 			req="lsof openssl p7zip qt5-translations qt5-webengine qt5-websockets vulkan-icd-loader "
@@ -149,7 +149,7 @@ if [ $(id -u) -ne 0 ] ;then
 	exit 0
 fi
 
-distro=$(sed -rn 's,^NAME=(.+),\1,p' /etc/os-release 2>/dev/null | tr -d \") #'
+distro=$(sed -rn 's,^NAME=,,p' /etc/os-release 2>/dev/null | tr -d \")
 
 if [ -d "$destdir" ] ;then
 	printf "\n"
@@ -168,9 +168,8 @@ else
 		bootstrap_install
 		printf "\nYou can now start EVE Online Launcher and his Tools:\n\n"
 		for cmd in *.desktop ;do
-			oexec=$(grep Exec= $cmd | cut -d= -f2); oexec=${oexec##*/}
-			[ ! "$oexec" = "evelauncher.sh" ] && \
-			printf " $oexec\t- $(grep Comment= $cmd | cut -d= -f2)\n"
+			oexec=$(sed -rn 's,^Exec=,,;s,.*/,,p' $cmd)
+			[ ! "$oexec" = "evelauncher.sh" ] && printf " $oexec\t- $(sed -rn 's,^Comment=,,p' $cmd)\n"
 		done
 		printf "\n evelauncher.sh\t- EVE Online Launcher\n"
 	fi
