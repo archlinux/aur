@@ -1,6 +1,6 @@
 pkgbase = python-xsdata
 	pkgdesc = Naive XML bindings for python
-	pkgver = 21.5
+	pkgver = 21.6
 	pkgrel = 1
 	url = https://xsdata.readthedocs.io
 	arch = any
@@ -14,8 +14,7 @@ pkgbase = python-xsdata
 	makedepends = python-setuptools
 	optdepends = python-click
 	optdepends = python-toposort
-	source = https://files.pythonhosted.org/packages/source/x/xsdata/xsdata-21.5.tar.gz
-	sha256sums = 926cd20f2e1e84b3ae980f5ca26d11166550dbe72326740da474485a8879be4b
+	source = https://files.pythonhosted.org/packages/source/x/xsdata/xsdata-21.6.tar.gz
+	sha256sums = f624a819c039f8b71d339c2357d8f4b0a61dca4913fdb1b3a4c8e9329af030c0
 
 pkgname = python-xsdata
-
