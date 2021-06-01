@@ -1,6 +1,6 @@
 pkgbase = tcl-fossil
 	pkgdesc = The Tcl scripting language
-	pkgver = r29875.2f18255
+	pkgver = r29975.d4d7495
 	pkgrel = 1
 	url = https://www.tcl.tk/
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = tcl-fossil
 	provides = tcl
 	conflicts = tcl
 	options = staticlibs
+	source = fossil+https://core.tcl-lang.org/tcl
+	sha256sums = SKIP
 
 pkgname = tcl-fossil
-

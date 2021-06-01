@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tcl-fossil
-pkgver=r29875.2f18255
+pkgver=r29975.d4d7495
 pkgrel=1
 pkgdesc="The Tcl scripting language"
 arch=('i686' 'x86_64')
@@ -12,19 +12,9 @@ makedepends=('fossil')
 provides=('tcl')
 conflicts=('tcl')
 options=('staticlibs')
+source=("fossil+https://core.tcl-lang.org/tcl")
+sha256sums=('SKIP')
 
-
-prepare() {
-  cd "$srcdir"
-
-  if [ -d "tcl" ]; then
-    cd "tcl"
-    fossil update
-  else
-    rm -f "tcl.fossil"
-    fossil clone --workdir "tcl" "https://core.tcl-lang.org/tcl" "tcl.fossil"
-  fi
-}
 
 pkgver() {
   cd "tcl"
@@ -52,7 +42,11 @@ check() {
 package() {
   cd "tcl"
 
-  make DESTDIR="$pkgdir" -C "unix" install install-private-headers
+  make \
+    DESTDIR="$pkgdir" \
+    -C "unix" \
+    install \
+    install-private-headers
 
   ln -sf tclsh${*} "$pkgdir/usr/bin/tclsh"
   ln -sf libtcl${*}.so "${pkgdir}/usr/lib/libtcl.so"
