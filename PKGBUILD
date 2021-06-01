@@ -1,14 +1,14 @@
-# Maintainer: Jelle van der Waa <jelle@vdwaa.nl>
+# Maintainer: Bas Timmer <basjetimmer at yahoo dot com >
 
 pkgname=pstreams
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='C++ utility for simple IOStream-based Inter-Process Communication.'
 arch=('any')
 url='http://pstreams.sourceforge.net'
 license=('LGPL')
 source=("https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('23199e3d12a644a2a0c66ec889d4c064')
+sha256sums=('e9ca807bc6046840deae63207183f9ac516e67187d035429772a5fc7bd3e8fc8')
 
 package() {
   cd ${pkgname}-${pkgver}
