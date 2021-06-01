@@ -10,4 +10,3 @@ pkgbase = hopp-cli-bin
 	sha256sums = 4b187b083ac6cb159f7725b9d254e4f915ec7de512dbfde5e11688bbf37d3622
 
 pkgname = hopp-cli-bin
-
