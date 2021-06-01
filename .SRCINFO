@@ -1,7 +1,7 @@
 pkgbase = mautrix-signal
 	pkgdesc = A Matrix-Signal puppeting bridge
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tulir/mautrix-signal
 	install = mautrix-signal.install
 	arch = any
@@ -22,6 +22,7 @@ pkgbase = mautrix-signal
 	optdepends = python-pycryptodome>=3
 	optdepends = python-olm>=3: end-to-bridge encryption support
 	optdepends = python-qrcode>=6: qr code login
+	optdepends = python-signalstickers-client>=3
 	optdepends = python-unpaddedbase64: end-to-bridge encryption support
 	backup = etc/mautrix-signal/config.yaml
 	source = https://github.com/tulir/mautrix-signal/archive/refs/tags/v0.1.1.tar.gz

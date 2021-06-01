@@ -1,7 +1,7 @@
 # Maintainer: Frédéric Tobias Christ <dev+mautrix-signal@ntr.li> <ftchrist:matrix.org>
 pkgname='mautrix-signal'
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Matrix-Signal puppeting bridge"
 arch=('any')
 url="https://github.com/tulir/mautrix-signal"
@@ -16,7 +16,7 @@ optdepends=(
 'python-pycryptodome>=3'
 'python-olm>=3: end-to-bridge encryption support'
 'python-qrcode>=6: qr code login'
-#'signalstickers-client>=3' does not exist yet
+'python-signalstickers-client>=3'
 'python-unpaddedbase64: end-to-bridge encryption support')
 backup=("etc/${pkgname}/config.yaml")
 install="${pkgname}.install"
