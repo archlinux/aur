@@ -22,4 +22,3 @@ pkgbase = matomo-git
 	md5sums = SKIP
 
 pkgname = matomo-git
-
