@@ -1,0 +1,17 @@
+pkgbase = cargo-sort
+	pkgdesc = Check if tables and items in a .toml file are lexically sorted
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://crates.io/crates/cargo-sort
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	replaces = cargo-sort-ck
+	source = cargo-sort-1.0.2.tar.gz::https://crates.io/api/v1/crates/cargo-sort/1.0.2/download
+	sha512sums = d4a752db2c3765097db16f197afedb4f44a6aaed65248ca0128f714c6620b245722eca646b09265b8d8c5830480f6fccd682a812809aac4d52772b5fd5803bd5
+
+pkgname = cargo-sort
