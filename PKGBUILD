@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-srt
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.4.3
+pkgrel=1
 pkgdesc="Secure Reliable Transport library (mingw-w64)"
 url="https://www.srtalliance.org/"
 arch=('any')
@@ -10,7 +10,7 @@ depends=(mingw-w64-openssl)
 makedepends=(mingw-w64-cmake)
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/Haivision/srt/archive/v${pkgver}.tar.gz")
-sha256sums=('28a308e72dcbb50eb2f61b50cc4c393c413300333788f3a8159643536684a0c4')
+sha256sums=('c06e05664c71d635c37207a2b5a444f2c4a95950a3548402b3e0c524f735b33d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
