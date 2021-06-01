@@ -15,4 +15,3 @@ pkgbase = hashcat-utils-git
 	md5sums = SKIP
 
 pkgname = hashcat-utils-git
-
