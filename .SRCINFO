@@ -1,8 +1,8 @@
 pkgbase = gnome-shell-extension-shutdowntimer-git
 	pkgdesc = Shutdown your device after a specific time. This extension adds a submenu to the status area.
 	pkgver = v30.r0.g678558a
-	pkgrel = 1
-	url = https://github.com/neumann89/ShutdownTimer
+	pkgrel = 2
+	url = https://github.com/neumann-d/ShutdownTimer
 	arch = any
 	license = unknow
 	depends = gnome-shell
