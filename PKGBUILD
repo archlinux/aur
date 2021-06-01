@@ -6,6 +6,7 @@ makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="cd alternative. Navigate by typing abbreviation of paths."
 license=('MIT')
+url="https://github.com/micouy/kn"
 
 build() {
     return 0
