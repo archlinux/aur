@@ -11,6 +11,7 @@ pkgbase = instamenu
 	depends = libxinerama
 	depends = libxft
 	optdepends = instamenu-extra: Extra script that instamenu can use
+	optdepends = instamenu-schemas: gsettings for instamenu
 	optdepends = siji: font used by default
 	optdepends = nerd-fonts-fira-code: font used by default
 	optdepends = adobe-source-code-pro-fonts: font used by default
