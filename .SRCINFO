@@ -1,0 +1,19 @@
+pkgbase = st-deshdeepak-git
+	pkgdesc = My build of simple (suckless) terminal with breeze colorscheme and patches.
+	pkgver = 0.8.4.r1132.1160ea8
+	pkgrel = 1
+	url = https://github.com/deshdeepak1/st
+	arch = x86_64
+	license = MIT
+	makedepends = ncurses
+	makedepends = libxext
+	makedepends = git
+	depends = nerd-fonts-mononoki
+	depends = libxft-bgra
+	provides = st
+	conflicts = st
+	source = git+https://github.com/deshdeepak1/st
+	md5sums = SKIP
+
+pkgname = st-deshdeepak-git
+
