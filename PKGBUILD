@@ -2,7 +2,7 @@
 # Submitter: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.16.12281.1dc00cced
+pkgver=0.0.16.12353.b8b5b93b6
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64)
@@ -68,7 +68,7 @@ pkgver() {
 prepare() {
   cd rpcs3
   
-  git submodule init Vulkan/glslang llvm
+  git submodule init 3rdparty/glslang/glslang llvm
   git config submodule.glslang.url ../glslang
   git config submodule.llvm.url ../rpcs3-llvm
   
@@ -76,7 +76,7 @@ prepare() {
   
   git submodule update --init --depth=1 $SUBMODULES
   
-  git submodule update Vulkan/glslang llvm
+  git submodule update 3rdparty/glslang/glslang llvm
 }
 
 build() {
