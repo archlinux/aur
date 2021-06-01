@@ -1,0 +1,28 @@
+pkgbase = cef-minimal-obs-bin
+	pkgdesc = Chromium Embedded Framework minimal release needed by OBS Studio release
+	pkgver = 76.1.13+gf19c584+chromium_76.0.3809.132
+	pkgrel = 1
+	url = https://bitbucket.org/chromiumembedded/cef
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = make
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = pango
+	depends = libxcursor
+	depends = libxrandr
+	depends = libxcomposite
+	depends = at-spi2-atk
+	depends = libxdamage
+	provides = cef-minimal-obs
+	conflicts = cef-minimal-obs
+	source_i686 = https://cef-builds.spotifycdn.com/cef_binary_76.1.13+gf19c584+chromium-76.0.3809.132_linux32_minimal.tar.bz2
+	sha256sums_i686 = baa0624e2d6b86a60d18117cb65e125f882ef66cf413cd7ac63a480d904004f0
+	source_x86_64 = https://cef-builds.spotifycdn.com/cef_binary_76.1.13+gf19c584+chromium-76.0.3809.132_linux64_minimal.tar.bz2
+	sha256sums_x86_64 = 6b0dfa8ddafcec822fcd20018cf081959ffa6d0565be3793da1f596ac0733c38
+
+pkgname = cef-minimal-obs-bin
+
