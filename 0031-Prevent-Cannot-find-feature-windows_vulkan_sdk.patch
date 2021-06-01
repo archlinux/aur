@@ -1,7 +1,7 @@
-From f483f2d0cf4db82ba2302874c67923b77ae15cb9 Mon Sep 17 00:00:00 2001
+From 8dd259dde3e0f8cd26ea9f9ddb64c79c541200a8 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 24 Jun 2019 13:51:02 +0200
-Subject: [PATCH 31/31] Prevent 'Cannot find feature windows_vulkan_sdk'
+Subject: [PATCH 31/32] Prevent 'Cannot find feature windows_vulkan_sdk'
 
 See https://bugreports.qt.io/browse/QTBUG-76660
 ---

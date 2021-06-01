@@ -1,7 +1,7 @@
-From 318d7e6283975013fc4eea21c5c2ac861849aafe Mon Sep 17 00:00:00 2001
+From 54f4a5bd8e239a94f4e48d2f275cadb4dc67bf6e Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 20:59:54 +0100
-Subject: [PATCH 25/31] Ignore errors about missing feature static
+Subject: [PATCH 25/32] Ignore errors about missing feature static
 
 Not sure why this error occurs, let's hope for the best
 ---

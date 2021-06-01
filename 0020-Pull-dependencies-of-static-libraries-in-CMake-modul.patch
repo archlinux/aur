@@ -1,7 +1,7 @@
-From 625df2d13ff194603a339e770c645489e2a52f9a Mon Sep 17 00:00:00 2001
+From 2a23c3d45db1a49409b396cd4f3bdd3ad9588865 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:32:00 +0200
-Subject: [PATCH 20/31] Pull dependencies of static libraries in CMake modules
+Subject: [PATCH 20/32] Pull dependencies of static libraries in CMake modules
 
 When doing a static build of Qt, the dependencies of the Qt
 libraries and plugins itself must be specified when linking

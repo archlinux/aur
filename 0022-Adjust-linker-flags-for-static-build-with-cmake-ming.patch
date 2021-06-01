@@ -1,7 +1,7 @@
-From 70e76369ababd9f7c22cef148eaa2755e31c2b2b Mon Sep 17 00:00:00 2001
+From 3e2ef8be011b02cbb900717ced96bcd7b0e55a93 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 2 Jun 2017 16:42:07 +0200
-Subject: [PATCH 22/31] Adjust linker flags for static build with
+Subject: [PATCH 22/32] Adjust linker flags for static build with
  cmake/mingw-w64
 
 It is not clear anymore where I picked that change up and for

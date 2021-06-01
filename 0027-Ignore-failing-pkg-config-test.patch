@@ -1,7 +1,7 @@
-From 407fc2e686c14cf64cc519225440439b783b15f6 Mon Sep 17 00:00:00 2001
+From 1d9baf03ac68d2be47d6d6b94ab78a9145dd799d Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 21:08:48 +0100
-Subject: [PATCH 27/31] Ignore failing pkg-config test
+Subject: [PATCH 27/32] Ignore failing pkg-config test
 
 Didn't investigate why it fails, let's hope for the best
 ---

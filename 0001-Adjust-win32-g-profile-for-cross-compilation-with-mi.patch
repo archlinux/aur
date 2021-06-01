@@ -1,7 +1,7 @@
-From e598463de84a2fa54739b386acf64bef368e8089 Mon Sep 17 00:00:00 2001
+From ec51b8d37aefbe2d8804c537eb68b9761eabb140 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 18:30:51 +0100
-Subject: [PATCH 01/31] Adjust win32-g++ profile for cross compilation with
+Subject: [PATCH 01/32] Adjust win32-g++ profile for cross compilation with
  mingw-w64
 
 Adding a new, separate mkspec instead of patching the existing one

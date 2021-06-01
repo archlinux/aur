@@ -1,7 +1,7 @@
-From de05a40cbb5e86f0a0217624f80cb1a1ad31351f Mon Sep 17 00:00:00 2001
+From 6b05a19f07c9e00e56d475a13b53b7b548ebf111 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:26:18 +0200
-Subject: [PATCH 19/31] Use *.dll.a as import lib extension
+Subject: [PATCH 19/32] Use *.dll.a as import lib extension
 
 The variables used here are provided by
 g++-win32.conf
