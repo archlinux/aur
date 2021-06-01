@@ -17,6 +17,3 @@ package() {
   install -Dm644 ${srcdir}/unluac_${pkgver}.jar $pkgdir/usr/share/java/${pkgname}/${pkgname}.jar
   install -Dm755 ${srcdir}/unluac.sh $pkgdir/usr/bin/unluac
 }
-
-md5sums=('0bdf07add22031bf8aecfaaa79f9cf7c'
-         'f86eb01199590ec711691c2c0f5ac539')

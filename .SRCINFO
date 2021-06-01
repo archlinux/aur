@@ -8,7 +8,5 @@ pkgbase = unluac
 	depends = java-runtime
 	source = https://downloads.sourceforge.net/project/unluac/Unstable/unluac_2021_06_01.jar
 	source = unluac.sh
-	md5sums = 0bdf07add22031bf8aecfaaa79f9cf7c
-	md5sums = f86eb01199590ec711691c2c0f5ac539
 
 pkgname = unluac
