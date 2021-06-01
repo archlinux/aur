@@ -1,62 +1,38 @@
-# Maintainer: Luke Street <luke.street@encounterpc.com>
-
+# Maintainer: Mark Wagie <mark dot wagie at tutanota.com>
+# Contributor: Luke Street <luke.street@encounterpc.com>
 pkgname=gnome-shell-extension-gamemode-git
-pkgver=4.r5.g03d73fb
-pkgrel=1
+pkgver=4.r7.gac23266
+pkgrel=2
 pkgdesc="GNOME Shell extension for Feral Interactive's GameMode"
 arch=('any')
-url='https://github.com/gicmo/gamemode-extension'
+url="https://github.com/gicmo/gamemode-extension"
 license=('GPL2')
-makedepends=('meson' 'intltool' 'gamemode')
-optdepends=('lib32-gamemode: support for 32-bit applications')
-install=gschemas.install
+depends=('gamemode' 'gnome-shell')
+makedepends=('meson' 'git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=('git+https://github.com/gicmo/gamemode-extension.git'
+        'https://github.com/gicmo/gamemode-extension/pull/38.patch')
+sha256sums=('SKIP'
+            'c49558889af2f2f991abe9c7c8d48783f7a719a26e1e72c4751dcbe787794f86')
 
-makedepends+=('git')
-source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
-for integ in $(get_integlist)
-do
-  typeset -n array="${integ}sums"
-  array+=('SKIP')
-done
-provides+=("$_gitname=$pkgver")
-conflicts+=("$_gitname")
 pkgver() {
-  cd ${_gitname:-$pkgname}
-  git describe --long --tags 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1'
+  cd $srcdir/gamemode-extension
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd $srcdir/gamemode-extension
+
+  # support for gnome-shell40/gtk4
+  patch -Np1 -i $srcdir/38.patch
 }
 
 build() {
-  cd "$_gitname"
-  rm -rf build
-  meson build --prefix='/usr'
+  arch-meson gamemode-extension build
+  meson compile -C build
 }
 
 package() {
-  for function in $(declare -F | grep -Po 'package_[[:digit:]]+[[:alpha:]_]*$')
-  do
-    $function
-  done
-}
-
-package_01_ninja_install() {
-  cd "$_gitname"
-  DESTDIR="$pkgdir" ninja -C build install
-}
-
-depends[125]=gnome-shell
-
-package_20_version() {
-  local compatibles=($(\
-    find -path ./pkg -type d -prune -o \
-    -name metadata.json -exec cat '{}' \; | \
-    tr -d '\n' | grep -Po '(?<="shell-version": \[)[^\[\]]*(?=\])' | \
-    tr '\n," ' '\n' | sed 's/3\.//g;/^$/d' | sort -n -t. -k 1,1))
-  depends+=("gnome-shell>=3.${compatibles[0]}")
-  local max="${compatibles[-1]}"
-  if [ "$max" != $(
-    gnome-shell --version | grep -Po '(?<=GNOME Shell 3\.)[[:digit:]]+'
-  ) ]; then
-    depends+=("gnome-shell<3.$((${max%%.*} + 1))")
-  fi
-  unset depends[125]
+  DESTDIR="$pkgdir" meson install -C build
 }

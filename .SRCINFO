@@ -1,21 +1,20 @@
 pkgbase = gnome-shell-extension-gamemode-git
 	pkgdesc = GNOME Shell extension for Feral Interactive's GameMode
-	pkgver = 4.r5.g03d73fb
-	pkgrel = 1
+	pkgver = 4.r7.gac23266
+	pkgrel = 2
 	url = https://github.com/gicmo/gamemode-extension
-	install = gschemas.install
 	arch = any
 	license = GPL2
 	makedepends = meson
-	makedepends = intltool
-	makedepends = gamemode
 	makedepends = git
+	depends = gamemode
 	depends = gnome-shell
-	optdepends = lib32-gamemode: support for 32-bit applications
-	provides = gnome-shell-extension-gamemode=4.r5.g03d73fb
+	provides = gnome-shell-extension-gamemode
 	conflicts = gnome-shell-extension-gamemode
-	source = gnome-shell-extension-gamemode::git+https://github.com/gicmo/gamemode-extension
+	source = git+https://github.com/gicmo/gamemode-extension.git
+	source = https://github.com/gicmo/gamemode-extension/pull/38.patch
 	sha256sums = SKIP
+	sha256sums = c49558889af2f2f991abe9c7c8d48783f7a719a26e1e72c4751dcbe787794f86
 
 pkgname = gnome-shell-extension-gamemode-git
 
