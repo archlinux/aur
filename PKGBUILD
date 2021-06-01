@@ -28,8 +28,8 @@ package()
 	install -d ${pkgdir}/usr/bin
 	cp -R "${srcdir}/circuitjs1/." "${pkgdir}/opt/circuitjs/"
 	
-	# symlink to bin
-	ln -s $pkgdir/opt/circuitjs/circuitjs1 "${pkgdir}"/usr/bin/circuitjs
+	# create symlink from real opt to bin
+	ln -s /opt/circuitjs/circuitjs1 "${pkgdir}"/usr/bin/circuitjs
 	
 	#integrate the desktop file
 	install -d ${pkgdir}/usr/share/applications/
