@@ -2,7 +2,7 @@
 # Maintainer: f3fora <f3 dot foradori at gmail dot com>
 
 pkgname=python-rmcl
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="reMarkable Cloud Library"
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 optdepends=('python-rmrl: producing PDF versions of any type of document with your annotations included')
 source=("https://files.pythonhosted.org/packages/source/r/rmcl/rmcl-$pkgver.tar.gz"
 	"xdg.py::https://raw.githubusercontent.com/srstevenson/xdg/5.0.1/src/xdg/__init__.py")
-sha256sums=('38fdc837d58a3576661d7c68d9fabfbe09579063842aca8d61996a56dd8f3b4e'
+sha256sums=('58de4758e7e3cb7acbf28fcfa80f4155252afdfb191beb4ba4aa36961f66cc67'
 	'93a5ba17785c5e00d24ebd0e148d36470076c03fa16cf7e9a113a7d8fb1bceba')
 
 build() {
