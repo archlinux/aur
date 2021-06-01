@@ -10,7 +10,7 @@ url="https://wiki.gnome.org/Apps/Fractal"
 license=(GPL3)
 depends=(gtk4 gst-plugins-base-libs gst-plugin-gtk gst-plugins-bad gst-editing-services gtksourceview5 gspell libhandy)
 optdepends=('org.freedesktop.secrets: password storage')
-makedepends=(meson rust)
+makedepends=(git meson rust)
 source=("fractal::git+https://gitlab.gnome.org/GNOME/fractal#branch=fractal-next")
 sha256sums=('SKIP')
 

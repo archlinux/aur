@@ -5,6 +5,7 @@ pkgbase = fractal-next
 	url = https://wiki.gnome.org/Apps/Fractal
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	makedepends = meson
 	makedepends = rust
 	depends = gtk4
