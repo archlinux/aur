@@ -1,7 +1,7 @@
 # Maintainer: The-Repo-Club <The-Repo-Club@github.com>
 # Contributor: The-Repo-Club <The-Repo-Club@github.com>
 pkgname=qt-logout
-pkgver=2021.05.06
+pkgver=2021.06.01
 pkgrel=1
 pkgdesc='Logout screen for QT using QT5 and pyside2'
 arch=('any')
@@ -11,7 +11,7 @@ license=('CC BY-NC-SA 4.0')
 depends=('pyside2')
 optdepends=('multimonitorlock: default lock screen for qt-logout')
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('14d7efaeb7393f4670184bca6cec311f9f980d99d2b5c6306a84c049503b9694')
+sha256sums=('b2bd00f3bab00eaab15dc6d963548a46772e2d7a702f5618c8b30039bab3dcfe')
 
 package() {
     cp -a $srcdir/$pkgname-$pkgver/etc $pkgdir/etc
