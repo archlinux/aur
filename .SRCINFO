@@ -1,7 +1,7 @@
 pkgbase = openrgb
 	pkgdesc = Open source RGB lighting control that doesn't depend on manufacturer software.
-	pkgver = 0.5
-	pkgrel = 7
+	pkgver = 0.6
+	pkgrel = 1
 	url = https://gitlab.com/CalcProgrammer1/OpenRGB
 	arch = x86_64
 	license = GPL2
@@ -10,14 +10,14 @@ pkgbase = openrgb
 	depends = libusb
 	depends = hidapi
 	optdepends = i2c-tools: Motherboard & RAM access
-	source = https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_0.5/OpenRGB-release_0.5.tar.gz
-	source = hidapifix.patch
+	source = https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_0.6/OpenRGB-release_0.6.tar.gz
 	source = openrgb.conf
 	source = openrgb.service
+	source = openrgb.desktop
 	sha256sums = e227dedfe0c3aa8f3bcb0c4149aa5feb1db4b0429a151423d74c0103c55d7d26
-	sha256sums = eeaed61a7bdbfa98cd9aaa6ea8a55df3eb092bc1f02ba047dd73cf75d1578b88
 	sha256sums = b5a53d747422f8b594e3e9615e238457d696732efce94050cdd72182a8645ef2
 	sha256sums = 97445ee2e0824441dbebab14a10c2ea6983e14ab8f7177b977ee6b8bdc3398f9
+	sha256sums = 2f96f6bcb381490dae7132b9533045dd46db8a0fc9f9ab5d00d952545800c6fc
 
 pkgname = openrgb
 
