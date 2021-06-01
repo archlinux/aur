@@ -4,7 +4,7 @@ pkgdesc="OpenMP boosted NDT and GICP algorithms with CUDA enabled"
 url='https://github.com/SMRT-AIST/fast_gicp'
 
 pkgname='ros-noetic-fast-gicp-git'
-pkgver=r127.77a9ac4
+pkgver=r131.2fd580c
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=2
 license=('BSD-3-Clause License')
@@ -29,13 +29,11 @@ depends=(
 source=(
   $pkgname::git://github.com/SMRT-AIST/fast_gicp
   nvbio::https://github.com/NVlabs/nvbio/archive/9bb7e6363c65f65e46f21df09bef98e404250f10.tar.gz
-  CMakeLists.patch::https://github.com/SMRT-AIST/fast_gicp/pull/50.patch
 )
 
 sha256sums=(
   'SKIP'
   'd8208f7044ab26f8b9dc87898a0265c57346d171375e9e4d8669807cada955cb'
-  'SKIP'
 )
  
 pkgver() {
@@ -46,8 +44,6 @@ pkgver() {
 prepare(){
   cd $srcdir
   mv -n nvbio-9bb7e6363c65f65e46f21df09bef98e404250f10/* $pkgname/thirdparty/nvbio
-  cd $pkgname
-  patch --forward --strip=1 --input="${srcdir}/CMakeLists.patch"
 }
 
 build() {
@@ -65,8 +61,7 @@ build() {
             -DSETUPTOOLS_DEB_LAYOUT=OFF \
             -DBUILD_VGICP_CUDA=$cuda \
             -DCMAKE_CXX_STANDARD=17 \
-            -DCMAKE_C_COMPILER=gcc-10 \
-            -DCMAKE_CXX_COMPILER=g++-10
+            -DCUDA_HOST_COMPILER=/usr/bin/gcc-10
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-fast-gicp-git
 	pkgdesc = OpenMP boosted NDT and GICP algorithms with CUDA enabled
-	pkgver = r127.77a9ac4
+	pkgver = r131.2fd580c
 	pkgrel = 2
 	url = https://github.com/SMRT-AIST/fast_gicp
 	arch = i686
@@ -18,10 +18,7 @@ pkgbase = ros-noetic-fast-gicp-git
 	provides = ros-noetic-fast-gicp
 	source = ros-noetic-fast-gicp-git::git://github.com/SMRT-AIST/fast_gicp
 	source = nvbio::https://github.com/NVlabs/nvbio/archive/9bb7e6363c65f65e46f21df09bef98e404250f10.tar.gz
-	source = CMakeLists.patch::https://github.com/SMRT-AIST/fast_gicp/pull/50.patch
 	sha256sums = SKIP
 	sha256sums = d8208f7044ab26f8b9dc87898a0265c57346d171375e9e4d8669807cada955cb
-	sha256sums = SKIP
 
 pkgname = ros-noetic-fast-gicp-git
-
