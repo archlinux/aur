@@ -1,6 +1,6 @@
 pkgbase = wallsch-git
 	pkgdesc = A simple wallpaper changer/scheduler with night/day split
-	pkgver = r29.281664c
+	pkgver = r32.76d28cb
 	pkgrel = 1
 	url = https://github.com/jazzsewera/wallsch
 	arch = any
