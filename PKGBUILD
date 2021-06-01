@@ -2,12 +2,12 @@
 pkgname=python-aiopath
 _name=${pkgname#python-}
 pkgver=0.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Asynchronous pathlib for Python"
 arch=('any')
 url="https://github.com/alexdelorenzo/aiopath"
 license=('LGPL3')
-depends=('python-aiofile' 'python-aiofiles' 'python-typing-extensions')
+depends=('python-aiofile' 'python-aiofiles')
 makedepends=('python-setuptools')
 #source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
