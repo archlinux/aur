@@ -24,6 +24,7 @@ build() {
 }
 
 package() {
+    cd "$srcdir/diesel"
 	install -Dm755 "$srcdir/diesel/target/release/diesel" "$pkgdir/usr/bin/diesel"
 
 
