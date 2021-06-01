@@ -1,7 +1,7 @@
 pkgbase = slimbookbattery
 	pkgdesc = A battery optimization application for portable devices
 	pkgver = 3.97beta
-	pkgrel = 3
+	pkgrel = 4
 	url = https://slimbook.es
 	install = slimbookbattery.install
 	arch = x86_64

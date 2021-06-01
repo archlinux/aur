@@ -2,7 +2,7 @@
 # Contributor: tioguda <guda.flavio@gmail.com>
 pkgname=slimbookbattery
 pkgver=3.97beta
-pkgrel=3
+pkgrel=4
 pkgdesc="A battery optimization application for portable devices"
 arch=('x86_64')
 url="https://slimbook.es"
@@ -17,14 +17,14 @@ source=("https://launchpad.net/~slimbook/+archive/ubuntu/slimbook/+files/${pkgna
 sha256sums=('8eda64d2207b01a8dd1f89b8234711c5ceeda516e0ead1de5dae1e5cb709bf13')
 
 package() {
-    tar xf data.tar.xz -C "$pkgdir"
+    bsdtar xf data.tar.xz -C "$pkgdir"
 
     install -d "$pkgdir/usr/lib/systemd/system"
     mv "$pkgdir/etc/systemd/system/suspend-sedation.service" \
     	"$pkgdir/usr/lib/systemd/system"
     rm -rf "$pkgdir/etc/systemd"
 
-    install -dm644 "$pkgdir/usr/share/licenses/$pkgname"
+    install -d "$pkgdir/usr/share/licenses/$pkgname"
     mv "$pkgdir/usr/share/doc/$pkgname/copyright" \
-    	"$pkgdir/usr/share/licenses/$pkgname/copyright"
+    	"$pkgdir/usr/share/licenses/$pkgname"
 }
