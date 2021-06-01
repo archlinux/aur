@@ -3,7 +3,7 @@
 ### Info ###
 pkgname=simplenote-electron-arm-bin
 _pkgname=${pkgname%-electron-arm-bin}
-pkgver=2.11.0
+pkgver=2.12.0
 _appimage="simplenote-electron-${pkgver}-${CARCH}.AppImage"
 pkgrel=1
 pkgdesc='The simplest way to keep notes'
@@ -22,8 +22,8 @@ options=(!strip)
 source_armv7h=("simplenote-electron-${pkgver}-armv7h.AppImage"::"${url}/releases/download/v${pkgver}/Simplenote-linux-${pkgver}-armv7l.AppImage")
 source_aarch64=("simplenote-electron-${pkgver}-aarch64.AppImage"::"${url}/releases/download/v${pkgver}/Simplenote-linux-${pkgver}-arm64.AppImage")
 noextract=("${source[@]%%::*}")
-b2sums_armv7h=('bd47339d8cd0049bb672cd7205e30773d4acc2bc2e353b0cbe6c7400287180e4d9eee24088bebb243b0d8f21c7f732e3b6734a2333433dc8c4930a2a226520dd')
-b2sums_aarch64=('7cc61ee448a876ac2a3c2c27a7739f359c879b003acf21ea26eabd6d3e3bf0f576fb96dfc026a0b7d6acc871f500b6447cada2c8cd1b952cc298c5b56fd3bfb9')
+b2sums_armv7h=('54b1b48941742cb6978348101bdd277994fbabcef8ec08bfd58c3721789868f1c2accb8ab409fae48fb140df3624db2a8583cddfe0a42029ae6a110bbd203502')
+b2sums_aarch64=('9cf802ddae6b119ca7361d20ebb44d61e8bf461a9068bb52ea2f0061cea7490e63b6655577dbc7cc34aa2effe1265ee6cfbce5fa1e53a57b7b835a6b50b5e209')
 
 ### Prepare ###
 prepare() {
