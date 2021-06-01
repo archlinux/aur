@@ -1,6 +1,6 @@
 pkgbase = geocam-bin
 	pkgdesc = Camera Assembly for the Atomic Pi Single-board computer from Digital Loggers
-	pkgver = r4.42e614e
+	pkgver = r5.42e614e
 	pkgrel = 1
 	url = https://github.com/digitalloggers/geocam-bin
 	arch = x86_64

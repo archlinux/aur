@@ -3,7 +3,7 @@ _commit="42e614edcffa4f9d4d796a08841207af9779d494"
 
 pkgname=geocam-bin
 pkgrel=1
-pkgver=r4.42e614e
+pkgver=r5.42e614e
 arch=('x86_64')
 pkgdesc="Camera Assembly for the Atomic Pi Single-board computer from Digital Loggers"
 url="https://github.com/digitalloggers/geocam-bin"
