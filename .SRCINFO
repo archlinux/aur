@@ -1,0 +1,17 @@
+pkgbase = simplecpp-git
+	pkgdesc = A simple 2D graphics library in C++
+	pkgver = r13.35aa33c
+	pkgrel = 1
+	url = https://github.com/adi-g15/simplecpp
+	arch = x86_64
+	license = CC
+	makedepends = git
+	depends = libx11
+	depends = gcc
+	provides = s++
+	conflicts = simplecpp
+	source = git://github.com/adi-g15/simplecpp.git
+	md5sums = SKIP
+
+pkgname = simplecpp-git
+
