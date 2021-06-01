@@ -12,8 +12,8 @@
 
 pkgname=bitwig-studio-beta
 _pkgname=bitwig-studio
-_pkgver=3.3
-pkgver=${_pkgver}beta5
+_pkgver=4.0
+pkgver=${_pkgver}beta1
 pkgrel=1
 pkgdesc='Digital audio workstation for music production, remixing and live performance'
 arch=('x86_64')
@@ -26,10 +26,8 @@ depends=('jack' 'gtk2' 'gtk3' 'lib32-gcc-libs' 'libbsd' 'xcb-util' 'xcb-util-wm'
 optdepends=('alsa-lib' 'oss' 'ffmpeg: MP3 support')
 provides=('bitwig-studio')
 options=(!strip)
-#source=("https://downloads.bitwig.com/secure/beta/${_pkgver}/bitwig-studio-${pkgver}.deb")
-#source=("local://bitwig-studio-${pkgver}.deb")
-source=("$pkgname-$pkgver.deb::https://www.bitwig.com/dl/?id=424&os=installer_linux")
-b2sums=('321069891e347a3926bf447c2ed7e340859ed93bbd8e0f2ce1ed9d656b11f43c00ad405c112024c7388d90c37dcb4830206bb049cb226898c73bce392861d5df')
+source=("$_pkgname-$pkgver.deb::https://www.bitwig.com/dl/?id=438&os=installer_linux")
+b2sums=('1ba6d6626809964d44aa66e0bed2c2d2f57e26dcf6ebca896ad8dea5e9e68f1bc6c4672dddd5950daa4b8e37c8bbf0111c2574a619873a1a41b2e03486335882')
 
 prepare() {
 	msg2 "Unpacking archive contents..."
@@ -44,21 +42,28 @@ prepare() {
 	ln -s /opt/${pkgname}/${_pkgname} bin/${pkgname}
 
 	cd share/
-	mv applications/${_pkgname}.desktop applications/${pkgname}.desktop
+	mv applications/com.bitwig.BitwigStudio.desktop applications/com.bitwig.BitwigStudioBeta.desktop
 	sed -i "s|${_pkgname}|${pkgname}|g;
-	        7s|Studio|Studio Beta|;
-	        11s|bitwig-|bitwig-beta-|g" applications/${pkgname}.desktop
+	        s|Bitwig Studio|Bitwig Studio Beta|g;
+	        s|BitwigStudio|BitwigStudioBeta|g;
+	        12s|bitwig-|bitwig-beta-|g;" applications/com.bitwig.BitwigStudioBeta.desktop
 
-	mv mime/packages/${_pkgname}.xml  mime/packages/${pkgname}.xml
+	mv metainfo/com.bitwig.BitwigStudio.appdata.xml metainfo/com.bitwig.BitwigStudioBeta.appdata.xml
+	sed -i "5s|BitwigStudio|BitwigStudioBeta|;
+	        8s|Bitwig Studio|Bitwig Studio Beta|;
+	        s|application/bitwig-|application/bitwig-beta-|g" metainfo/com.bitwig.BitwigStudioBeta.appdata.xml
+
+	mv mime/packages/com.bitwig.BitwigStudio.xml  mime/packages/com.bitwig.BitwigStudioBeta.xml
 	sed -i "s|bitwig-|bitwig-beta-|g;
-	        s|Studio |Studio Beta |g" mime/packages/${pkgname}.xml
+	        s|BitwigStudio|BitwigStudioBeta|g;
+	        s|Studio |Studio Beta |g" mime/packages/com.bitwig.BitwigStudioBeta.xml
 
 	cd icons/hicolor/
-	for icon in 48x48/apps/*.png scalable/apps/*.svg; do
-		mv "$icon" "${icon/./-beta.}"
+	for icon in 48x48/apps/*.png 128x128/apps/*png scalable/apps/*.svg; do
+		mv "$icon" "${icon/Studio/StudioBeta}"
 	done
 	for icon in scalable/mimetypes/*.svg; do
-		mv "$icon" "${icon/bitwig-/bitwig-beta-}"
+		mv "$icon" "${icon/Studio.application-bitwig/StudioBeta.application-bitwig-beta}"
 	done
 }
 
