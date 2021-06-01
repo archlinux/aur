@@ -1,8 +1,8 @@
 # Maintainer: Matt Fields (0x6d617474) <aur at 0x6d617474 dot net>
 
 pkgname=wp-cli
-pkgver=2.4.0
-pkgrel=4
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="A command-line tool for managing WordPress"
 url="http://wp-cli.org/"
 arch=('any')
@@ -14,12 +14,10 @@ conflicts=()
 replaces=()
 backup=()
 source=("https://github.com/wp-cli/wp-cli-bundle/archive/v${pkgver}.tar.gz")
-md5sums=('ea149787cacc1b8f2e76730573d97874')
+md5sums=('b26c0a64f1da59113e7721b428129b5a')
 
 build() {
   cd "${pkgname}-bundle-${pkgver}"
-  echo "Applying composer 2.x compatibility patch..."
-  composer update --prefer-dist cweagans/composer-patches:1.7.0 dealerdirect/phpcodesniffer-composer-installer wp-cli/wp-cli-tests:v2.1.13
   composer install --no-interaction --prefer-dist --no-scripts && composer dump
   echo -n "Building phar... "
   php -dphar.readonly=0 utils/make-phar.php wp-cli.phar --quiet
