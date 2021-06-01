@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=sqlite-fossil
-pkgver=r24926.354a4db
+pkgver=r25088.587a304
 pkgrel=1
 pkgdesc="Self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine"
 arch=('i686' 'x86_64')
@@ -12,19 +12,9 @@ makedepends=('fossil' 'tcl')
 provides=('sqlite')
 conflicts=('sqlite')
 options=('staticlibs')
+source=("sqlite::fossil+https://www.sqlite.org/src")
+sha256sums=('SKIP')
 
-
-prepare() {
-  cd "$srcdir"
-
-  if [ -d "sqlite" ]; then
-    cd "sqlite"
-    fossil update
-  else
-    rm -f "sqlite.fossil"
-    fossil clone --workdir "sqlite" "https://www.sqlite.org/src" "sqlite.fossil"
-  fi
-}
 
 pkgver() {
   cd "sqlite"
