@@ -1,6 +1,6 @@
 pkgbase = firefox-esr-bin
 	pkgdesc = Standalone web browser from mozilla.org - Extended Support Release
-	pkgver = 78.10.1
+	pkgver = 78.11.0
 	pkgrel = 1
 	url = http://www.mozilla.org/en-US/firefox/organizations/
 	install = firefox-esr.install
@@ -15,10 +15,10 @@ pkgbase = firefox-esr-bin
 	depends = dbus-glib
 	depends = nss
 	provides = firefox=78
-	source = https://ftp.mozilla.org/pub/firefox/releases/78.10.1esr/linux-x86_64/en-US/firefox-78.10.1esr.tar.bz2
+	source = https://ftp.mozilla.org/pub/firefox/releases/78.11.0esr/linux-x86_64/en-US/firefox-78.11.0esr.tar.bz2
 	source = firefox-esr.desktop
 	source = firefox-esr-safe.desktop
-	sha512sums = 718f1196fa6140c498b6b33e94904ddf2d5c74f76c8c5cc3c88675c2d92296232a5555d131b726d262a6ff614bb387749327b323e0f2482ffc110e2697ffe0fd
+	sha512sums = 77bc1b70ba15d6c9103d4ec7703092d7af0927ed239f53ae047cd7e2d948442bde8342fe53ae6eb6feeac337fc44a979627f1fa1d3ab556fa687ce6c9155ac31
 	sha512sums = c585f6e8ac7abfc96ad4571940b6f0dcc3f7331a18a518b4fe5d19b45e4c2d96c394524ea5c115c8fdd256c9229ea2fabeb1fc04ca7102f1626fd20728aef47d
 	sha512sums = ab2fa2e08c7a65ac0bfe169a4b579e54b038bddabf838cd3df5ab341bd77be7c101092d0123598944d2174ab3a8fbc70dfbd692b2944016efdb7a69216a74428
 
