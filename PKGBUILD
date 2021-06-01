@@ -1,9 +1,10 @@
+# Maintainer : Achmad Fathoni <fathoni DOT id AT gmail DOT com>
 # Contributor: Jonathon Fernyhough <jonathon_at manjaro dot_org>
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 
 pkgname=libxml
 pkgver=1.8.17
-pkgrel=1
+pkgrel=2
 pkgdesc="The XML C parser and toolkit of Gnome. Older version."
 arch=(i686 x86_64)
 url="http://xmlsoft.org/"
@@ -23,7 +24,7 @@ build() {
   autoreconf -fi
 
   ./configure --prefix=/usr --enable-static=no
-  make
+  make CFLAGS=-Wno-format-security
 }
 
 package() {
