@@ -13,4 +13,3 @@ pkgbase = shelby-git
 	sha256sums = SKIP
 
 pkgname = shelby-git
-
