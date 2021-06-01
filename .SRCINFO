@@ -6,7 +6,6 @@ pkgbase = instamenu
 	arch = any
 	groups = therepoclub
 	license = CC BY-NC-SA 4.0
-	depends = instamenu-schemas
 	depends = python
 	depends = libxinerama
 	depends = libxft

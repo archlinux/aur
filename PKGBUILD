@@ -8,7 +8,7 @@ url="https://github.com/The-Repo-Club/$pkgname"
 arch=('any')
 groups=('therepoclub')
 license=('CC BY-NC-SA 4.0')
-depends=('instamenu-schemas' 'python' 'libxinerama' 'libxft')
+depends=('python' 'libxinerama' 'libxft')
 optdepends=('instamenu-extra: Extra script that instamenu can use'
         'instamenu-schemas: gsettings for instamenu'
         'siji: font used by default'
