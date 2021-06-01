@@ -1,0 +1,20 @@
+pkgbase = python-pyexiftool-nocheck
+	pkgdesc = Library to communicate with an instance of ExifTool command-line application, without python2 and without broken checks.
+	pkgver = 0.2.0
+	pkgrel = 2
+	url = https://github.com/smarnach/pyexiftool
+	arch = any
+	license = GPL3
+	makedepends = python
+	makedepends = python-sphinx
+	makedepends = perl-image-exiftool
+	provides = python-pyexiftool
+	conflicts = python-pyexiftool
+	options = !makeflags
+	source = python-pyexiftool-0.2.0.tar.gz::https://github.com/smarnach/pyexiftool/archive/v0.2.0.tar.gz
+	md5sums = 37ea1d935321858b386abc314fca024d
+
+pkgname = python-pyexiftool-nocheck
+	depends = python
+	depends = perl-image-exiftool
+
