@@ -1,7 +1,7 @@
-From 292851da7011f84ffa9031cc653997b7a5a9822e Mon Sep 17 00:00:00 2001
+From 573c8958419f112afe5600bddda1d0bd4ca132d0 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 4 Dec 2016 20:35:47 +0100
-Subject: [PATCH 24/31] Fix macro invoking moc, rcc and uic
+Subject: [PATCH 24/32] Fix macro invoking moc, rcc and uic
 
 * Otherwise the arguments aren't passed correctly leading to errors like
   ```

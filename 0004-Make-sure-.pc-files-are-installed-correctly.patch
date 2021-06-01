@@ -1,7 +1,7 @@
-From f041def0ede2e36edd35ddae430fb7c06186756e Mon Sep 17 00:00:00 2001
+From 59628a6023505f0efb5c885b5bb60c888c90a2e1 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:54:12 +0200
-Subject: [PATCH 04/31] Make sure *.pc files are installed correctly
+Subject: [PATCH 04/32] Make sure *.pc files are installed correctly
 
 ---
  qmake/generators/makefile.cpp          | 8 ++++++--
