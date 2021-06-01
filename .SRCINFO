@@ -1,6 +1,6 @@
 pkgbase = sabnzbd
 	pkgdesc = A web-interface based binary newsgrabber with NZB file support
-	pkgver = 3.2.1
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = http://www.sabnzbd.org
 	install = sabnzbd.install
@@ -26,16 +26,15 @@ pkgbase = sabnzbd
 	optdepends = par2cmdline-tbb: par2 multi-threading
 	optdepends = p7zip: for .7z support
 	backup = var/lib/sabnzbd/sabnzbd.ini
-	source = https://github.com/sabnzbd/sabnzbd/releases/download/3.2.1/SABnzbd-3.2.1-src.tar.gz
+	source = https://github.com/sabnzbd/sabnzbd/releases/download/3.3.0/SABnzbd-3.3.0-src.tar.gz
 	source = sabnzbd.service
 	source = sabnzbd@.service
 	source = sabnzbd.sysusers
 	source = sabnzbd.tmpfiles
-	sha256sums = 79c2bb46e41f2316e4c2827b61598157fbc9467ecddaca6fc4f0b2f4e7b8f809
+	sha256sums = bb5617f8e5d89720e69655275fc2a25023d8d7173dce2eae5ef45d9dd5df442e
 	sha256sums = c1bcdb5ce7787aab5ab4f07508c1451441f42df0ec7be85a5dedda0a5ee70014
 	sha256sums = 4c4ff2882de744d1b5435470ed829d58defcc84fafc56e6211d1298c0b22813f
 	sha256sums = 525f294372963fde09db08b0368c80078a16d4cefcb34f8179706336709afdf7
 	sha256sums = 3a3c292020cca0251478c70a6499afa64aeca3dfcb6d5e32f6e21d5d4d94fa81
 
 pkgname = sabnzbd
-
