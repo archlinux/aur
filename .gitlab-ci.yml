@@ -25,4 +25,4 @@ update_hash:
     - updpkgsums
     - git add PKGBUILD
     - git commit -m "updates hash for AppImage"
-    - git push
+    - git push origin HEAD:$CI_COMMIT_REF_NAME
