@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-unique-id
 	pkgdesc = ROS - ROS Python and C++ interfaces for universally unique identifiers.
 	pkgver = 1.0.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.ros.org/unique_id
 	arch = i686
 	arch = x86_64
@@ -22,4 +22,3 @@ pkgbase = ros-noetic-unique-id
 	sha256sums = e376df28058d69da4c3c5fce4ef5d3cc24518ed9b64a181055ff86a2fc11b832
 
 pkgname = ros-noetic-unique-id
-
