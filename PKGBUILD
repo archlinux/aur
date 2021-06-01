@@ -1,5 +1,6 @@
+# Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libtasn1
-pkgver=4.16.0
+pkgver=4.17.0
 pkgrel=1
 pkgdesc="The ASN.1 library used in GNUTLS (mingw-w64)"
 arch=(any)
@@ -9,8 +10,7 @@ makedepends=(mingw-w64-configure)
 depends=(mingw-w64-crt)
 options=(staticlibs !strip !buildflags)
 source=("http://ftp.gnu.org/gnu/libtasn1/libtasn1-${pkgver}.tar.gz")
-#sha256sums=('7e528e8c317ddd156230c4e31d082cd13e7ddeb7a54824be82632209550c8cca'
-sha256sums=('0e0fb0903839117cb6e3b56e68222771bebf22ad7fc2295a0ed7d576e8d4329d')
+sha256sums=('ece7551cea7922b8e10d7ebc70bc2248d1fdd73351646a2d6a8d68a9421c45a5')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -37,3 +37,5 @@ package() {
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
 }
+
+# vim: ts=2 sw=2 et:

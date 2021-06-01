@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libtasn1
 	pkgdesc = The ASN.1 library used in GNUTLS (mingw-w64)
-	pkgver = 4.16.0
+	pkgver = 4.17.0
 	pkgrel = 1
 	url = http://www.gnu.org/software/libtasn1
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = mingw-w64-libtasn1
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://ftp.gnu.org/gnu/libtasn1/libtasn1-4.16.0.tar.gz
-	sha256sums = 0e0fb0903839117cb6e3b56e68222771bebf22ad7fc2295a0ed7d576e8d4329d
+	source = http://ftp.gnu.org/gnu/libtasn1/libtasn1-4.17.0.tar.gz
+	sha256sums = ece7551cea7922b8e10d7ebc70bc2248d1fdd73351646a2d6a8d68a9421c45a5
 
 pkgname = mingw-w64-libtasn1
-
