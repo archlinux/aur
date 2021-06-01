@@ -1,7 +1,7 @@
 pkgbase = linux-logo
 	pkgdesc = Linux with tux logo
 	pkgver = 5.12.8.arch1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.archlinux.org/linux.git/log/?h=v5.12.8-arch1
 	arch = x86_64
 	license = GPL2
@@ -27,8 +27,8 @@ pkgbase = linux-logo
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
-	sha256sums = c14e6820460eec990ada09ac1a2e504c60047d8fab76ae24724bacd450697aa1
-	sha256sums = 9ce7738598a017b78d41141ebc2fb873c0d169467d81ecf5712fdc6c0dd7564d
+	sha256sums = 0d0691aa0f80fea0d9d204c05a845416dd443f3bb629cbb68e098e4d19cc841d
+	sha256sums = 5bda7acfafe90d10c2dde0c76a945338e18e8f228e916b05c0fca65844b31737
 
 pkgname = linux-logo
 	pkgdesc = The Linux with tux logo kernel and modules

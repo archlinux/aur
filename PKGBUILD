@@ -3,7 +3,7 @@
 
 pkgbase=linux-logo
 pkgver=5.12.8.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux with tux logo'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
@@ -27,8 +27,8 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'c14e6820460eec990ada09ac1a2e504c60047d8fab76ae24724bacd450697aa1'
-            '9ce7738598a017b78d41141ebc2fb873c0d169467d81ecf5712fdc6c0dd7564d')
+            '0d0691aa0f80fea0d9d204c05a845416dd443f3bb629cbb68e098e4d19cc841d'
+            '5bda7acfafe90d10c2dde0c76a945338e18e8f228e916b05c0fca65844b31737')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
