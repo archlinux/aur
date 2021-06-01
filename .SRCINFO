@@ -11,7 +11,6 @@ pkgbase = qbpm-git
 	depends = python
 	depends = python-pyxdg
 	provides = qbpm
-	conflicts = qbpm
 	source = git://github.com/pvsr/qbpm
 	sha512sums = SKIP
 
