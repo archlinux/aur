@@ -1,6 +1,6 @@
 pkgbase = fltk-git
 	pkgdesc = Graphical user interface toolkit for X (Git version)
-	pkgver = 1.4.0.r8558.aa9f0a696
+	pkgver = 1.4.0.r9205.3c84894f1
 	pkgrel = 1
 	url = http://www.fltk.org/
 	arch = x86_64

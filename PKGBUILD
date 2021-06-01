@@ -3,7 +3,7 @@
 _pkgbase=fltk
 pkgbase=fltk-git
 pkgname=fltk-git
-pkgver=1.4.0.r8558.aa9f0a696
+pkgver=1.4.0.r9205.3c84894f1
 pkgrel=1
 pkgdesc='Graphical user interface toolkit for X (Git version)'
 arch=('x86_64')
@@ -20,7 +20,7 @@ pkgver() {
 	cd "${srcdir}/${_pkgbase}"
 
 	printf '%s.r%s.%s' \
-		"$(cat VERSION)" \
+		"$(cat fltk_version.dat)" \
 		"$(git rev-list --count master)" \
 		"$(git log -1 --format='%h')"
 }
