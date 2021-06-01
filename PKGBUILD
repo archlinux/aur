@@ -5,7 +5,7 @@
 ################################################################
 
 pkgname=digital-git
-pkgver=.4293
+pkgver=v0.27.r72.g5aa8e2bc2
 pkgrel=1
 pkgdesc="A digital logic designer and circuit simulator. Git development version"
 arch=('x86_64')
@@ -23,18 +23,14 @@ jar_name=Digital.jar
 executable_name=digital
 ################################################################
 pkgver() {
-  cd "$srcdir/digital-git"
-
-  printf "%s.%s" \
-    "$(grep AC_INIT configure.ac | \
-    sed -e 's/^.\+\ \([0-9]\+\.[0-9]\+\.[0-9]\+\?\).\+$/\1/')" \
-    "$(git rev-list --count HEAD)"
+    cd "$pkgname"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
     echo -e "[Desktop Entry]\nType=Application\nVersion=1.0\nName=Digital\nComment=A digital logic designer and circuit simulator.\nExec=digital\nTerminal=false\nCategories=Education;Java;" > "$srcdir/$executable_name.desktop"
 
-	echo -e "#!/usr/bin/env bash\njava -jar /usr/share/java/$pkgname/$pkgname.jar \$@" > "$srcdir/$pkgname.sh"
+	# echo -e "#!/usr/bin/env bash\njava -jar /usr/share/java/$pkgname/$pkgname.jar \$@" > "$srcdir/$excutable_name.sh"
     # don't use imagemagick to convert, use the icons provided by the developer
 	# for SIZE in 16 32 48 128 256 512
 	# do
@@ -63,6 +59,7 @@ package() {
 	# cp -dr --no-preserve=ownership "$srcdir/Digital/examples/" "$pkgdir/usr/share/java/$pkgname/examples/"
 	install -vDm644 "$srcdir/$executable_name.desktop" "$pkgdir/usr/share/applications/$pkgname/$executable_name.desktop"
     install -vDm644 "$srcdir/digital-git/distribution/ReleaseNotes.txt" "$pkgdir/usr/share/doc/$pkgname/changelog.txt"
+    
     echo -e "#!/bin/env bash\njava -jar $pkgdir/usr/share/java/$pkgname/$jar_name \$@"  > "$srcdir/$executable_name.sh"
 	install -vDm755 "$srcdir/$executable_name.sh" "$pkgdir/usr/bin/digital"
 	for SIZE in 32 48 64 128
