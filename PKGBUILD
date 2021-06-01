@@ -1,7 +1,7 @@
 # Maintainer: The-Repo-Club <The-Repo-Club@github.com>
 # Contributor: The-Repo-Club <The-Repo-Club@github.com>
 pkgname=multimonitorlock
-pkgver=2021.01.01
+pkgver=2021.06.01
 pkgrel=1
 pkgdesc="A simple lock script for i3lock-color"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('feh: Allows setting wallpaper' 'multimonitorlock-gui: Allows the ba
 makedepends=('git')
 conflicts=('multilockscreen-git' 'betterlockscreen' 'betterlockscreen-git')
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=("92cc4567b4ec95658949aef689a3b095b621eac53c25195d262ef70fe2e299bb")
+sha256sums=("a4248099bb59999f2e5bd666afd98697214aa8e80774859a0a485a77d15d4194")
 install=${pkgname}.install
 
 package() {
