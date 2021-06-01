@@ -1,6 +1,6 @@
 pkgbase = youtrack
 	pkgdesc = Issue tracker designed for development teams
-	pkgver = 2021.2.16363
+	pkgver = 2021.2.17047
 	pkgrel = 1
 	url = https://www.jetbrains.com/youtrack/
 	arch = i686
@@ -10,13 +10,13 @@ pkgbase = youtrack
 	noextract = youtrack.jar
 	options = !strip
 	backup = etc/youtrack/youtrack.conf
-	source = youtrack-2021.2.16363.jar::https://download.jetbrains.com/charisma/youtrack-2021.2.16363.jar
+	source = youtrack-2021.2.17047.jar::https://download.jetbrains.com/charisma/youtrack-2021.2.17047.jar
 	source = youtrack.conf
 	source = youtrack.service
 	source = youtrack.sysusers
 	source = youtrack.tmpfiles
 	source = LICENSE
-	b2sums = a5af27cbe40aef56bfddf7e17ab573ddfa247a1d80aec277779897f558c69b7ec727e71c880108cd403e41b1e24bc19aa16bcb6d4a73cb3018c31e0c15696899
+	b2sums = da5293b849613ad63486aa6477b8d9a2d44d5c7f78ac7ab007f47b030779a3073098fffc5d4ff010fc4d8146f5b494fbdc67be2a936356c456d92cc4560b1677
 	b2sums = bea90c36e6658a671ec99b99cf5c0ec6fa7abb5f744cc5738dd53833308f2b005353fb4621f9f8586384be54e42a7557fa94b6f10a3d8ab57fe81cd2e4006696
 	b2sums = a9267c85339b55dd68cdc110b8134495be9db3b99d38ac4b3e08d9862abb6817e58ced9071a04b5d65d72e7c6c5f9a92fe6d390eb647ae69ce265749b2a25ca6
 	b2sums = 7f9ef6cd0e6feb97b2e700096e0bfad0b8d3abd4080bf9d5c8cf64a86e28ec4b8ff92787ebd8afa1dead5e56e771b1084e03f8cfd4045ed4d8ef4e5a2b8bbc5e
@@ -24,4 +24,3 @@ pkgbase = youtrack
 	b2sums = dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77
 
 pkgname = youtrack
-
