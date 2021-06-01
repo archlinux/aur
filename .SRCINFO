@@ -1,0 +1,15 @@
+pkgbase = histdb-rs
+	pkgdesc = Better history management for zsh.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AlexanderThaller/histdb-rs
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = sqlite
+	provides = histdb-rs
+	source = histdb-rs::git+https://github.com/AlexanderThaller/histdb-rs
+	sha1sums = SKIP
+
+pkgname = histdb-rs
