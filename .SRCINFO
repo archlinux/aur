@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-hector-gazebo-plugins
 	pkgdesc = ROS - hector_gazebo_plugins provides gazebo plugins from Team Hector.
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/hector_gazebo_plugins
 	arch = i686
 	arch = x86_64
@@ -35,4 +35,3 @@ pkgbase = ros-noetic-hector-gazebo-plugins
 	sha256sums = cff34de0bb583a2b468ff7b130b729b79eccda59e481ac3a98bf16df68c8e9b5
 
 pkgname = ros-noetic-hector-gazebo-plugins
-
