@@ -11,6 +11,11 @@ provides=("hx")
 source=("git+https://github.com/helix-editor/helix.git")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 prepare() {
 	cat > "hx" << EOF
 #!/usr/bin/env sh
