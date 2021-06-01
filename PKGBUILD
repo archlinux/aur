@@ -3,7 +3,7 @@
 
 _pkgname=('kimai')
 pkgname=${_pkgname}-git
-pkgver=1.1.0.r54.g968bceaa
+pkgver=1.1.0.r206.gab8c2a92
 pkgrel=1
 pkgdesc="Kimai is a free open source timetracker"
 url="http://www.kimai.org/"
