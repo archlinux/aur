@@ -8,6 +8,7 @@ pkgbase = fractal-next
 	makedepends = git
 	makedepends = meson
 	makedepends = rust
+	makedepends = cmake
 	depends = gtk4
 	depends = gst-plugins-base-libs
 	depends = gst-plugin-gtk
@@ -15,7 +16,7 @@ pkgbase = fractal-next
 	depends = gst-editing-services
 	depends = gtksourceview5
 	depends = gspell
-	depends = libhandy
+	depends = libadwaita
 	optdepends = org.freedesktop.secrets: password storage
 	source = fractal::git+https://gitlab.gnome.org/GNOME/fractal#branch=fractal-next
 	sha256sums = SKIP
