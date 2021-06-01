@@ -6,7 +6,7 @@ arch=('x86_64')
 url='https://github.com/EgeBalci/sgn'
 license=('MIT')
 makedepends=('go')
-source=("https://github.com/EgeBalci/sgn/archive/refs/tags/2.0.tar.gz")
+source=("https://github.com/EgeBalci/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 sha512sums=('bc788d8d03df2c04996b5f2a44fe2b99629cd434a11e6de9db4dbc24b0059cbeb06a77347ca6338473a91bce9b6a1b912f00df9d94f4ce536490010dbb77befb')
 
 prepare(){
