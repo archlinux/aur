@@ -1,0 +1,15 @@
+pkgbase = battmngr
+	pkgdesc = Battery manager to handle system performance modes and charge modes through acpi_calls (for ideapad 15are05).
+	pkgver = r10.00b3a6d
+	pkgrel = 1
+	url = https://github.com/0xless/battmngr
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = acpi_call
+	provides = battmngr
+	source = git+https://github.com/0xless/battmngr
+	sha256sums = SKIP
+
+pkgname = battmngr
+
