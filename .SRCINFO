@@ -1,0 +1,14 @@
+pkgbase = xfswm-git
+	pkgdesc = An X11 window manager that keeps a single window fullscreen
+	pkgver = r12.0dc53b7
+	pkgrel = 1
+	url = https://github.com/tomKPZ/x-active-window-indicator
+	arch = x86_64
+	makedepends = cmake
+	makedepends = git
+	depends = glibc
+	depends = libx11
+	source = git+https://github.com/tomKPZ/xfswm.git
+	md5sums = SKIP
+
+pkgname = xfswm-git
