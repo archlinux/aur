@@ -1,0 +1,20 @@
+pkgbase = bluecherry-client-git
+	pkgdesc = Bluecherry Client for use with a bluecherry DVR server.
+	pkgver = 2.2.8.r17.gd9d5744e
+	pkgrel = 1
+	url = https://github.com/bluecherrydvr/bluecherry-client.git
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	depends = mpv
+	depends = ffmpeg
+	depends = sdl
+	depends = qt5-base
+	provides = bluecherry-client
+	conflicts = bluecherry-client
+	source = git+https://github.com/bluecherrydvr/bluecherry-client.git
+	md5sums = SKIP
+
+pkgname = bluecherry-client-git
+
