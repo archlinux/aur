@@ -1,10 +1,11 @@
 pkgbase = obs-studio-tytan652
 	pkgdesc = Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, working VLC sources and my bind interface PR.
-	pkgver = 26.1.2
-	pkgrel = 9
+	pkgver = 27.0.0
+	pkgrel = 1
 	url = https://github.com/obsproject/obs-studio
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL2
 	makedepends = cmake
 	makedepends = git
@@ -13,7 +14,8 @@ pkgbase = obs-studio-tytan652
 	makedepends = swig
 	makedepends = luajit
 	makedepends = python
-	makedepends = cef-minimal-obs
+	makedepends = pipewire
+	makedepends = cef-minimal-obs=87.1.14
 	depends = ffmpeg
 	depends = mbedtls
 	depends = jack
@@ -28,27 +30,28 @@ pkgbase = obs-studio-tytan652
 	depends = ftl-sdk
 	optdepends = libfdk-aac: FDK AAC codec support
 	optdepends = libxcomposite: XComposite capture support
+	optdepends = pipewire: PipeWire capture support
+	optdepends = xdg-desktop-portal-impl: PipeWire capture support
 	optdepends = libva-intel-driver: Hardware encoding
 	optdepends = libva-mesa-driver: Hardware encoding
 	optdepends = swig: Scripting
 	optdepends = luajit: Lua scripting
 	optdepends = python: Python scripting
 	optdepends = v4l2loopback-dkms: Virtual camera output
-	provides = obs-studio=26.1.2
+	provides = obs-studio=27.0.0
 	conflicts = obs-studio
 	conflicts = obs-linuxbrowser
-	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=26.1.2
+	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=27.0.0-rc6
 	source = python_fix.patch
-	source = use_system_ftl-sdk.patch
 	source = bind_iface.patch
+	source = en-US.ini
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8
 	sha256sums = SKIP
 	sha256sums = 430d7d0a7e1006c1f6309ad7d4912033dadd542b641f9d41259a5bad568379c9
-	sha256sums = c19c48fa8cc2821281ae452acc19c3003010224ecf2f2080991a5398bac4ec2e
-	sha256sums = 109ffd8702b7b3973f4167f8821196b304df268205bf19e277281e65a0448182
+	sha256sums = a43f2ad974104888ef36eef49b3e60dc26f7cfc0f48300726c861978ae5ae3ea
+	sha256sums = b242289d5d186bee253ba82185ff43d5e93d7f89254055e9d4833350c6a1cc7a
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = obs-studio-tytan652
-

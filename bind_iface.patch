@@ -1,4 +1,4 @@
-From 95bfa70603674a0cd8c33524681ad5ccb37be6bb Mon Sep 17 00:00:00 2001
+From 44bdd7991d516120188a3bff36d55bd451d73914 Mon Sep 17 00:00:00 2001
 From: tytan652 <tytan652@tytanium.xyz>
 Date: Thu, 11 Feb 2021 14:29:08 +0100
 Subject: [PATCH 1/5] librtmp: Add interface binding for Linux
@@ -58,7 +58,7 @@ index 6c1f2567ef0..3bccc9422e0 100644
  
          uint8_t m_bSendChunkSizeInfo;
 
-From f34e560ba81dd9cf54b366db9acd938db0ab7897 Mon Sep 17 00:00:00 2001
+From 472175f81cca27c76c4209e7f4d3ef7bf5f15f4c Mon Sep 17 00:00:00 2001
 From: tytan652 <tytan652@tytanium.xyz>
 Date: Thu, 11 Feb 2021 14:47:45 +0100
 Subject: [PATCH 2/5] obs-outputs: Add RTMP iface binding for Linux
@@ -241,32 +241,19 @@ index a4494ba7f36..7f81a57e5d1 100644
  
  	/* frame drop variables */
 
-From e387edced7fdd244846234b98d1f17213179cf84 Mon Sep 17 00:00:00 2001
+From 68ce6dc8b72623d9bb4be06d092b66ea589269ed Mon Sep 17 00:00:00 2001
 From: tytan652 <tytan652@tytanium.xyz>
 Date: Thu, 11 Feb 2021 14:51:42 +0100
 Subject: [PATCH 3/5] UI: Add interface binding property for Linux
 
 ---
- UI/data/locale/en-US.ini             |  1 +
  UI/forms/OBSBasicSettings.ui         | 24 ++++++++++++----
  UI/window-basic-auto-config-test.cpp |  3 ++
  UI/window-basic-main-outputs.cpp     |  6 ++++
  UI/window-basic-main.cpp             |  2 ++
  UI/window-basic-settings.cpp         | 42 ++++++++++++++++++++++++++++
- 6 files changed, 73 insertions(+), 5 deletions(-)
+ 5 files changed, 72 insertions(+), 5 deletions(-)
 
-diff --git a/UI/data/locale/en-US.ini b/UI/data/locale/en-US.ini
-index b196a78cc42..bedc86d834b 100644
---- a/UI/data/locale/en-US.ini
-+++ b/UI/data/locale/en-US.ini
-@@ -989,6 +989,7 @@ Basic.Settings.Advanced.StreamDelay.Duration="Duration"
- Basic.Settings.Advanced.StreamDelay.Preserve="Preserve cutoff point (increase delay) when reconnecting"
- Basic.Settings.Advanced.StreamDelay.MemoryUsage="Estimated Memory Usage: %1 MB"
- Basic.Settings.Advanced.Network="Network"
-+Basic.Settings.Advanced.Network.BindToInterface="Bind to interface"
- Basic.Settings.Advanced.Network.BindToIP="Bind to IP"
- Basic.Settings.Advanced.Network.EnableNewSocketLoop="Enable network optimizations"
- Basic.Settings.Advanced.Network.EnableLowLatencyMode="Enable TCP pacing"
 diff --git a/UI/forms/OBSBasicSettings.ui b/UI/forms/OBSBasicSettings.ui
 index 28c07cdb4e8..6641ccd0320 100644
 --- a/UI/forms/OBSBasicSettings.ui
@@ -391,10 +378,10 @@ index ad733218c8f..fb3ac6cbec0 100644
  	obs_data_set_bool(settings, "new_socket_loop_enabled",
  			  enableNewSocketLoop);
 diff --git a/UI/window-basic-main.cpp b/UI/window-basic-main.cpp
-index bd9ba5346d1..e1b26185938 100644
+index d4569155c57..0eae4ae3e15 100644
 --- a/UI/window-basic-main.cpp
 +++ b/UI/window-basic-main.cpp
-@@ -1446,6 +1446,8 @@ bool OBSBasic::InitBasicConfigDefaults()
+@@ -1444,6 +1444,8 @@ bool OBSBasic::InitBasicConfigDefaults()
  	config_set_default_uint(basicConfig, "Output", "RetryDelay", 10);
  	config_set_default_uint(basicConfig, "Output", "MaxRetries", 20);
  
@@ -496,7 +483,7 @@ index 6062c5f95c2..86ad16333ae 100644
  	SaveCheckBox(ui->autoRemux, "Video", "AutoRemux");
  	SaveCheckBox(ui->dynBitrate, "Output", "DynamicBitrate");
 
-From 56a46c309ea94cd41da88f4d2d3a418fa28030f2 Mon Sep 17 00:00:00 2001
+From 2c5e9511daaa1881d0f53dc583ce770ebf0c6979 Mon Sep 17 00:00:00 2001
 From: tytan652 <tytan652@tytanium.xyz>
 Date: Thu, 11 Feb 2021 14:53:55 +0100
 Subject: [PATCH 4/5] UI,obs-outputs: Rename bind IP property variables
@@ -573,7 +560,7 @@ index ee9723737df..32e6711c74d 100644
  	netif_saddr_data_free(&addrs);
  
 
-From b1f7faf0a6a9227fff067a84e5066f075878378d Mon Sep 17 00:00:00 2001
+From 43b7dde4759c1aaca5d14f3279fbb470c75519c6 Mon Sep 17 00:00:00 2001
 From: tytan652 <tytan652@tytanium.xyz>
 Date: Mon, 15 Feb 2021 11:37:56 +0100
 Subject: [PATCH 5/5] UI: Disable bind IP if no iface selected on Linux
