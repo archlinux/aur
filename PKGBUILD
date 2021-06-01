@@ -1,21 +1,19 @@
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+
 pkgname=equestria-fonts
 pkgver=20140909
-pkgrel=1
-pkgdesc="Based on the package logos for Hasbro's My Little Pony Line. Includes full alphabet, extended characters and punctuation, and Euro."
+pkgrel=2
+pkgdesc='Irregular, irreverent typeface based on logos for Hasbro’s My Little Pony Line'
 arch=(any)
-url="http://www.dafont.com/equestria.font"
-license=("custom:Pixel Sagas Freeware Fonts")
-depends=(fontconfig xorg-font-utils)
-source=("equestria.zip::http://img.dafont.com/dl/?f=equestria")
-md5sums=('5cbfa71684abbfd0c901e16ad931c628')
+url='http://www.dafont.com/equestria.font'
+license=('custom:Pixel Sagas Freeware Fonts')
 provides=(ttf-equestria)
 conflicts=(ttf-equestria)
 replaces=(ttf-equestria)
-install="$pkgname.install"
+source=("$pkgname-$pkgver-$pkgrel.zip::http://img.dafont.com/dl/?f=equestria")
+sha256sums=('d12fa57f66fb3e7ff5b5a12e6125bada73355c2d468099faabe5acc16177433a')
 
-package()
-{
-  cd "$srcdir"
-  find . -name '*.otf' -exec install -Dm644 {} "$pkgdir/usr/share/fonts/OTF/"{} \;
-  install -Dm644 "$srcdir/Font License.txt" "$pkgdir/usr/share/licenses/equestria-fonts/Font License.txt"
+package() {
+    install -Dpm644 -t "$pkgdir/usr/share/fonts/OTF/" *.otf
+    install -Dpm644 -t "$pkgdir/usr/share/licenses/$pkgname/" 'Font License.txt'
 }

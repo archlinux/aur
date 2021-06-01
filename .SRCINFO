@@ -1,18 +1,14 @@
 pkgbase = equestria-fonts
-	pkgdesc = Based on the package logos for Hasbro's My Little Pony Line. Includes full alphabet, extended characters and punctuation, and Euro.
+	pkgdesc = Irregular, irreverent typeface based on logos for Hasbro’s My Little Pony Line
 	pkgver = 20140909
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.dafont.com/equestria.font
-	install = equestria-fonts.install
 	arch = any
 	license = custom:Pixel Sagas Freeware Fonts
-	depends = fontconfig
-	depends = xorg-font-utils
 	provides = ttf-equestria
 	conflicts = ttf-equestria
 	replaces = ttf-equestria
-	source = equestria.zip::http://img.dafont.com/dl/?f=equestria
-	md5sums = 5cbfa71684abbfd0c901e16ad931c628
+	source = equestria-fonts-20140909-2.zip::http://img.dafont.com/dl/?f=equestria
+	sha256sums = d12fa57f66fb3e7ff5b5a12e6125bada73355c2d468099faabe5acc16177433a
 
 pkgname = equestria-fonts
-
