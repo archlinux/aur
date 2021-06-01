@@ -1,6 +1,6 @@
 pkgbase = swarm-bee-clef
 	pkgdesc = Go Ethereum's external signer packaged for bee
-	pkgver = 0.4.9
+	pkgver = 0.4.12
 	pkgrel = 1
 	url = https://swarm.ethereum.org/
 	install = swarm-bee-clef.install
@@ -15,7 +15,7 @@ pkgbase = swarm-bee-clef
 	options = !makeflags
 	backup = etc/bee-clef/4byte.json
 	backup = etc/bee-clef/rules.js
-	source = git+https://github.com/ethersphere/bee-clef.git#tag=v0.4.9
+	source = git+https://github.com/ethersphere/bee-clef.git#tag=v0.4.12
 	sha512sums = SKIP
 
 pkgname = swarm-bee-clef
