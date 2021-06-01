@@ -30,5 +30,5 @@ build() {
 
 package() {
     cd ${_pkgname}
-    DESTDIR="${_pkgdir}" meson install -C _build
+    DESTDIR="${pkgdir}" meson install -C _build
 }
