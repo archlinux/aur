@@ -1,0 +1,13 @@
+pkgbase = kubectl-who-can
+	pkgdesc = Shows which subjects have RBAC permissions to VERB [TYPE | TYPE/NAME | NONRESOURCEURL] in Kubernetes
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/aquasecurity/kubectl-who-can/
+	arch = x86_64
+	license = APACHE
+	depends = kubectl
+	source = https://github.com/aquasecurity/kubectl-who-can/releases/download/v0.3.0/kubectl-who-can_linux_x86_64.tar.gz
+	md5sums = d9b28538fc9961c45334ec011042fb11
+
+pkgname = kubectl-who-can
+
