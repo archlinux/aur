@@ -12,8 +12,8 @@ makepkg:
     # Test building and installing the package
     - sudo -u builder makepkg -C -i --log --noconfirm
 
-  update_hash:
-    - updpkgsums
-    - git add PKGBUILD
-    - git commit -m "updates hash for AppImage"
-    - git push
+update_hash:
+  - updpkgsums
+  - git add PKGBUILD
+  - git commit -m "updates hash for AppImage"
+  - git push
