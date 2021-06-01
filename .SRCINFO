@@ -10,6 +10,7 @@ pkgbase = ultrastar-creator
 	depends = git
 	depends = libbass
 	depends = taglib
+	depends = cld2-git
 	source = git://github.com/UltraStar-Deluxe/UltraStar-Creator.git
 	source = ultrastar-creator.desktop
 	source = ultrastar-creator
