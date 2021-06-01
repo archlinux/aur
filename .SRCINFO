@@ -1,6 +1,6 @@
 pkgbase = timetrace-bin
 	pkgdesc = A simple CLI for tracking your working time.
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/dominikbraun/timetrace
 	arch = x86_64
@@ -8,10 +8,9 @@ pkgbase = timetrace-bin
 	depends = glibc
 	optdepends = bash-completion
 	conflicts = timetrace
-	source = timetrace-0.6.1.tar.gz::https://github.com/dominikbraun/timetrace/releases/download/v0.6.1/timetrace-linux-amd64.tar.gz
-	source = https://github.com/dominikbraun/timetrace/archive/refs/tags/v0.6.1.tar.gz
-	sha256sums = 7fea6cf91c76e2f10ca3d20f1483d87b1b7372822cd0b8031323c933f0238fa7
-	sha256sums = 2140c9884d1619c91bdc3f75b2b0c6f32fb962f0300deec9bce2ced41ffbbbb1
+	source = timetrace-0.7.0.tar.gz::https://github.com/dominikbraun/timetrace/releases/download/v0.7.0/timetrace-linux-amd64.tar.gz
+	source = https://github.com/dominikbraun/timetrace/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 3d8e2d80f12e29ef698abc07bcf037fd5e265da7fe128d563c700fc4c1e81743
+	sha256sums = b6ff8dbb76025b0ef32c976513fb74591a5bb7c2d48fe1b3bb3c18fa0ccb95e1
 
 pkgname = timetrace-bin
-
