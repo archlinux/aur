@@ -2,7 +2,7 @@
 # Contributor: Sean Enck <enckse@gmail.com>
 pkgname=python-flask-git
 _pkgname=flask
-pkgver=1.0.2.r81.g7d9dcfa2
+pkgver=2.0.1.r19.g6f5870a7
 pkgrel=1
 pkgdesc='Micro webdevelopment framework for Python'
 arch=('any')
@@ -28,5 +28,5 @@ build() {
 package() {
   cd $_pkgname
   python setup.py install --root=${pkgdir} --optimize=1
-  install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/python-flask
+  install -D -m644 LICENSE.rst ${pkgdir}/usr/share/licenses/python-flask
 }
