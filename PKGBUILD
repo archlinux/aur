@@ -4,7 +4,7 @@
 
 pkgname=libxml
 pkgver=1.8.17
-pkgrel=2
+pkgrel=3
 pkgdesc="The XML C parser and toolkit of Gnome. Older version."
 arch=(i686 x86_64)
 url="http://xmlsoft.org/"
@@ -24,7 +24,8 @@ build() {
   autoreconf -fi
 
   ./configure --prefix=/usr --enable-static=no
-  make CFLAGS=-Wno-format-security
+  sed -i 's/-Werror=format-security//g' Makefile
+  make
 }
 
 package() {
