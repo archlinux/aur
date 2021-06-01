@@ -1,7 +1,7 @@
 # Maintainer: Joshua Rubin <me at jawa dot dev>
 
 pkgname=jtdxhamlib
-pkgver=rc155
+pkgver=4.2
 pkgrel=1
 pkgdesc='Modified hamlib for jtdx'
 arch=('x86_64')
@@ -9,13 +9,13 @@ url='https://github.com/jtdx-project/jtdxhamlib'
 license=('GPL2')
 depends=('libusb-1.0.so')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jtdx-project/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('361b0ee5ed788d00a405e66d2385c4ae')
-sha1sums=('b6f4535e35abbb91c755c7f6627f5977cd920f94')
-sha224sums=('0937669cd5e2202dc315599f5bb212db8280555a5f2a2cd71a24a529')
-sha256sums=('c1589bdd273b5dee61c2d6bd7f5d98ceba50eed523a409345c1611ec39a4903d')
-sha384sums=('5ddce4e956382601f9eb5262a2e87bc9ed1cc91eda205ab4a01aef3ddf852cf1398c278205142003a10128b8b85e6045')
-sha512sums=('7ddf2750b39fa6e6e45dc709150316f4e813f6794a1b7437fd360f0059120a07f4b9382315de1c228cb53510c80fb41d109608c1946759eaf0d758f39f05e34b')
-b2sums=('2c4bc12330e26d5711e5a2863fc3289d2efa7c6a7c7b95b90593bff27cce3f74add83db934458146fd0032774e7180351d3fdaa4e12bb33931e2a7977ae29f3f')
+md5sums=('a0d2fc31d7cbbaf49286897727884d63')
+sha1sums=('518bad18e8bd0e74fa04fd38cbd944b50a1cb79b')
+sha224sums=('c0b089d4b23e9bf348016633a7ea3385e0ab755ecfed7061c77f65f9')
+sha256sums=('42c55e83a89d058e614ad2803a6ceb9cef329647872b147412f80f676bae8a51')
+sha384sums=('eed9564915d658a4f5bb1a5559ac50e44a6db6280dfb75ecb2a663be6b8f4d026a6c8073c2a108dcbb9f84a44365d438')
+sha512sums=('0a8d0379e3ca9aa624c9914953fee691fdaedbbbd0eeeac2f39907197959d0d50abc2a109ffd01817044c6111da687480834c9096a057911fb8045f714e6b270')
+b2sums=('27c6f05c548de63b9cf1c0a828ecdec4e54d80e31705328a42f0092f7db9a5a5e392481da90ccbdb4712eab9341d9d6d26329c426496236a0dd9023dbd81365c')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
