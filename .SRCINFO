@@ -1,6 +1,6 @@
 pkgbase = cbonsai
 	pkgdesc = A bonsai tree generator, written in C using ncurses
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://gitlab.com/jallbrit/cbonsai
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = cbonsai
 	depends = ncurses
 	provides = cbonsai
 	conflicts = cbonsai
-	source = https://gitlab.com/jallbrit/cbonsai/-/archive/v1.1.1/cbonsai-v1.1.1.zip
-	sha256sums = c7531747e380b144a80ac85031953acf858648409346cbd4e82278bff6703ce5
+	source = https://gitlab.com/jallbrit/cbonsai/-/archive/v1.2.0/cbonsai-v1.2.0.zip
+	sha256sums = 6acbf14df2fc26a2b849a59dad64510aec436764d1257fa17df1de0a1e327456
 
 pkgname = cbonsai
-
