@@ -1,12 +1,12 @@
 pkgbase = betterlockscreen-git
 	pkgdesc = A simple lock script for i3lock-color
-	pkgver = r122.ee1a643
-	pkgrel = 2
+	pkgver = r125.1c36673
+	pkgrel = 1
 	url = https://github.com/pavanjadhaw/betterlockscreen
 	install = betterlockscreen.install
 	arch = any
 	license = MIT
-	depends = i3lock-color
+	depends = i3lock-color>=2.13.c.3-1
 	depends = imagemagick
 	depends = xorg-xrandr
 	depends = xorg-xdpyinfo
