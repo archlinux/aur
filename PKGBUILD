@@ -11,7 +11,6 @@ arch=('any')
 depends=('python' 'python-pyxdg')
 makedepends=('git' 'python-setuptools' 'python-setuptools-scm')
 provides=('qbpm')
-conflicts=('qbpm')
 source=("git://github.com/pvsr/qbpm")
 
 pkgver() {
