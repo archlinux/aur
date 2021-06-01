@@ -3,7 +3,7 @@
 pkgorg='humanoid-path-planner'
 _pkgname='hpp-fcl'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="An extension of the Flexible Collision Library"
 arch=('i686' 'x86_64')
@@ -12,14 +12,19 @@ license=('BSD')
 depends=('assimp' 'eigenpy' 'octomap')
 optdepends=('doxygen')
 makedepends=('cmake' 'eigen')
-source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig})
-sha256sums=('SKIP' 'SKIP')
+source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig} "$url/pull/226.patch")
+sha256sums=('SKIP' 'SKIP' '320f51a9477cf53bfbbbbb20268a272a4c30bba71e79903302981b7ce8ca453b')
 validpgpkeys=('9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28' 'A031AD35058955293D54DECEC45D22EF408328AD')
+
+prepare() {
+    cd "$pkgbase-$pkgver"
+    patch -p1 -i "$srcdir/226.patch"
+}
 
 build() {
     cd "$pkgbase-$pkgver"
 
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib .
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_CXX_STANDARD=14 .
     make
 }
 
