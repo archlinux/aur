@@ -1,6 +1,6 @@
 pkgbase = imagemagick-fftw
 	pkgdesc = An image viewing/manipulation program
-	pkgver = 7.0.11.13
+	pkgver = 7.0.11.14
 	pkgrel = 1
 	url = https://www.imagemagick.org/
 	arch = x86_64
@@ -31,11 +31,11 @@ pkgbase = imagemagick-fftw
 	makedepends = libpng
 	makedepends = djvulibre
 	makedepends = fftw
-	source = https://imagemagick.org/download/ImageMagick-7.0.11-13.tar.xz
-	source = https://imagemagick.org/download/ImageMagick-7.0.11-13.tar.xz.asc
+	source = https://imagemagick.org/download/ImageMagick-7.0.11-14.tar.xz
+	source = https://imagemagick.org/download/ImageMagick-7.0.11-14.tar.xz.asc
 	source = arch-fonts.diff
 	validpgpkeys = D8272EF51DA223E4D05B466989AB63D48277377A
-	sha256sums = 11797503bc4dd72c7e65e60783e156fd74ec0a551d2f1fe1f41eaa4bd06987a5
+	sha256sums = a1010a27b93f07374400988d026449c8b21e10178910cd473b4170b4d2c6c030
 	sha256sums = SKIP
 	sha256sums = a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73
 
@@ -63,7 +63,7 @@ pkgname = imagemagick-fftw
 	optdepends = imagemagick-doc: manual and API docs
 	provides = libmagick
 	provides = libmagick-fftw
-	provides = imagemagick=7.0.11.13
+	provides = imagemagick=7.0.11.14
 	conflicts = imagemagick6
 	conflicts = imagemagick
 	replaces = libmagick-fftw
@@ -79,4 +79,3 @@ pkgname = imagemagick-fftw
 	backup = etc/ImageMagick-7/type.xml
 	backup = etc/ImageMagick-7/type-dejavu.xml
 	backup = etc/ImageMagick-7/type-ghostscript.xml
-
