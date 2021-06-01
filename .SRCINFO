@@ -1,14 +1,13 @@
 pkgbase = oled-backlight
 	pkgdesc = CLI tool to Manage OLED backlight brightness
-	pkgver = 0.6
-	pkgrel = 1
+	pkgver = 0.7
+	pkgrel = 2
 	url = https://github.com/deimosfr/oled-backlight
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = go
-	source = https://github.com/deimosfr/oled-backlight/archive/v0.6.tar.gz
-	md5sums = 99a38af8cd4fbd899b864049e77ec1db
+	source = https://github.com/deimosfr/oled-backlight/archive/v0.7.tar.gz
+	sha256sums = 5db421d707ad336aef23c7e0ed109dcddff8496afd6ee16ba4b3eb7783f13009
 
 pkgname = oled-backlight
-
