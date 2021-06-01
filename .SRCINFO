@@ -6,17 +6,16 @@ pkgbase = instamenu
 	arch = any
 	groups = therepoclub
 	license = CC BY-NC-SA 4.0
-	depends = sh
-	depends = python>=3.4
+	depends = instamenu-schemas
+	depends = python
 	depends = libxinerama
 	depends = libxft
-	depends = noto-fonts-emoji
-	depends = ttf-joypixels
-	depends = siji
-	depends = cantarell-fonts
-	depends = nerd-fonts-fira-code
-	depends = instamenu-schemas
 	optdepends = instamenu-extra: Extra script that instamenu can use
+	optdepends = siji: font used by default
+	optdepends = nerd-fonts-fira-code: font used by default
+	optdepends = adobe-source-code-pro-fonts: font used by default
+	optdepends = ttf-material-design-icons: font used by default
+	optdepends = ttf-remixicon: font used by default
 	provides = instamenu
 	provides = dmenu
 	conflicts = dmenu
@@ -25,4 +24,3 @@ pkgbase = instamenu
 	sha256sums = c284689218948ed6c3d5526cd56b01b5afe21fbee1818da77f27f1db17875509
 
 pkgname = instamenu
-

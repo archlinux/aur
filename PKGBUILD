@@ -8,8 +8,13 @@ url="https://github.com/The-Repo-Club/$pkgname"
 arch=('any')
 groups=('therepoclub')
 license=('CC BY-NC-SA 4.0')
-depends=('sh' 'python>=3.4' 'libxinerama' 'libxft' 'noto-fonts-emoji' 'ttf-joypixels' 'siji' 'cantarell-fonts' 'nerd-fonts-fira-code' 'instamenu-schemas')
-optdepends=('instamenu-extra: Extra script that instamenu can use')
+depends=('instamenu-schemas' 'python' 'libxinerama' 'libxft')
+optdepends=('instamenu-extra: Extra script that instamenu can use'
+        'siji: font used by default' 
+        'nerd-fonts-fira-code: font used by default'
+        'adobe-source-code-pro-fonts: font used by default'
+        'ttf-material-design-icons: font used by default'
+        'ttf-remixicon: font used by default')
 provides=($pkgname dmenu)
 conflicts=(dmenu)
 replaces=(dmenu)
