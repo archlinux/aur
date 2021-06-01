@@ -4,7 +4,7 @@
 # Package Information
 _crate="sqlx-cli"
 pkgname="$_crate"
-pkgver=0.5.2
+pkgver=0.5.5
 pkgrel=1
 pkgdesc='Command-line utility for SQLx, the Rust SQL toolkit.'
 license=('Apache' 'MIT')
@@ -17,11 +17,13 @@ url="https://github.com/launchbadge/sqlx"
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$_crate/$pkgver/download")
-sha512sums=('e8030c856872a4c48b793a72debb4214d94c7af3a076ed5aa4a3df6319715f4bc2eb1ec8887ece0e61bd683c2a274d8c5a6d55cd0898d61881835c9d5608c3f4')
+sha512sums=('9f43a2ca83601c8c73502deb71bae8701e0cfc385038da806f2cd454b70e01d290f99b2761df6ab56f81396abf3a2b177ca0fe547b6c5ae25aa83ed4db29efff')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	cargo build --release --locked
+	cargo build \
+		--locked \
+		--release
 }
 
 package() {
