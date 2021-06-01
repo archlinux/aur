@@ -1,11 +1,11 @@
 # Maintainer: ThatOneCalculator (kainoa@t1c.dev)
 
-pkgname=ytfzf
+pkgname=ytfzfim
 pkgver=1.1.7
 pkgrel=1
 pkgdesc="Slightly improved fork of ytfzf"
 arch=('any')
-url="https://github.com/pystardust/ytfzf"
+url="https://github.com/thatonecalculator/ytfzfim"
 license=('GPL')
 depends=('jq' 'mpv' 'youtube-dl')
 makedepends=('make')

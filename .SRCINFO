@@ -1,8 +1,8 @@
-pkgbase = ytfzf
+pkgbase = ytfzfim
 	pkgdesc = Slightly improved fork of ytfzf
 	pkgver = 1.1.7
 	pkgrel = 1
-	url = https://github.com/pystardust/ytfzf
+	url = https://github.com/thatonecalculator/ytfzfim
 	arch = any
 	license = GPL
 	makedepends = make
@@ -17,4 +17,4 @@ pkgbase = ytfzf
 	source = https://github.com/thatonecalculator/ytfzfim/archive/v1.1.7.tar.gz
 	sha256sums = 5296143fe77be3cc89d06660c1563b51b0a328ce27978ab93ea7f0c38d1e946f
 
-pkgname = ytfzf
+pkgname = ytfzfim
