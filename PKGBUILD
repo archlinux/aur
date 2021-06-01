@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=ardupilot-gazebo-sitl-git
 pkgver=r34.e72ecf5
-pkgrel=1
+pkgrel=2
 pkgdesc="Gazebo plugin for Ardupilot's SITL."
 arch=('x86_64')
 url='https://ardupilot.org/dev/docs/using-gazebo-simulator-with-sitl.html'
@@ -30,9 +30,10 @@ build() {
     mkdir -p ${srcdir}/${_pkgname}/build
     cd ${srcdir}/${_pkgname}/build
 
-	cmake .. \
+	cmake .. -Wno-dev \
         -DCMAKE_BUILD_TYPE="Release" \
-        -DCMAKE_INSTALL_PREFIX="/usr"
+        -DCMAKE_INSTALL_PREFIX="/usr" \
+        -DCMAKE_CXX_STANDARD=17
 
     make
 }
