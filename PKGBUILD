@@ -1,4 +1,5 @@
 # Maintainer: Sabu Siyad <ssiyad at disroot dot org>
+# This PKGBUILD is maintained at https://github.com/ssiyad/pkgbuilds/
 
 pkgname=shelby-bin
 pkgver=1.0.2
