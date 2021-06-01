@@ -1,7 +1,7 @@
 # Maintainer: Groctel <aur@taxorubio.com>
 pkgname=python-networkx-git
 _name=networkx
-pkgver=2.5.r277.g01d9cfe02
+pkgver=2.6rc1.r1.gc444024a5
 pkgrel=1
 pkgdesc="Python package for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks."
 arch=('any')
