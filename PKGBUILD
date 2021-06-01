@@ -2,7 +2,7 @@
 
 pkgname=pacana-git
 _pkgname=pacana
-pkgver=0.12.r1.g8b34a59
+pkgver=0.13.r1.g7dc27da
 pkgrel=1
 pkgdesc="Pacman repository analysis tool"
 arch=('i686' 'x86_64')
