@@ -9,7 +9,13 @@ arch=('i686' 'x86_64')
 groups=('therepoclub')
 license=('CC BY-NC-SA 4.0')
 options=(zipman)
-depends=('libx11' 'libxinerama' 'libxft' 'freetype2' 'instamenu' 'ttf-remixicon')
+depends=('libx11' 'libxinerama' 'libxft' 'freetype2' 'instamenu')
+optdepends=('instawm-schemas: gsettings for instawm'
+        'siji: font used by default'
+        'nerd-fonts-fira-code: font used by default'
+        'adobe-source-code-pro-fonts: font used by default'
+        'ttf-material-design-icons: font used by default'
+        'ttf-remixicon: font used by default')
 install=instawm.install
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
 sha256sums=('87a46fe76b8ac3bd8ce8f172d6a28a74e9046d236eda4b0dba8c0f2418998281')

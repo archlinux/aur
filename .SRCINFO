@@ -13,10 +13,14 @@ pkgbase = instawm
 	depends = libxft
 	depends = freetype2
 	depends = instamenu
-	depends = ttf-remixicon
+	optdepends = instawm-schemas: gsettings for instawm
+	optdepends = siji: font used by default
+	optdepends = nerd-fonts-fira-code: font used by default
+	optdepends = adobe-source-code-pro-fonts: font used by default
+	optdepends = ttf-material-design-icons: font used by default
+	optdepends = ttf-remixicon: font used by default
 	options = zipman
 	source = instawm-2021.05.09.tar.gz::https://github.com/The-Repo-Club/instawm/archive/2021.05.09.tar.gz
 	sha256sums = 87a46fe76b8ac3bd8ce8f172d6a28a74e9046d236eda4b0dba8c0f2418998281
 
 pkgname = instawm
-
