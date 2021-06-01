@@ -1,6 +1,6 @@
 pkgbase = chan-sccp
 	pkgdesc = Cisco SCCP channel driver for Asterisk, alternative to chan_skinny
-	pkgver = 4.3.3
+	pkgver = 4.3.4
 	pkgrel = 1
 	url = http://chan-sccp-b.sourceforge.net
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = chan-sccp
 	depends = asterisk
 	depends = zlib
 	backup = etc/asterisk/sccp.conf
-	source = chan-sccp-4.3.3.tar.gz::https://github.com/chan-sccp/chan-sccp/archive/v4.3.3.tar.gz
-	sha256sums = 970961c2b7128e840c09e3ce994bc109c9526e81a90ffbc72b6e6bffe860ad82
+	source = chan-sccp-4.3.4.tar.gz::https://github.com/chan-sccp/chan-sccp/archive/v4.3.4.tar.gz
+	sha256sums = 29b808e2329da46eba2a163615202d9fa89c4b6db00ec3b9589ec12ab76e7882
 
 pkgname = chan-sccp
 
