@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories=Office;WordProcessor;
+Name=WordTsar
+Comment=A WordStar clone
+GenericName=Word Processor
+Icon=wordtsar
+Exec=/usr/bin/WordTsar
+Terminal=false
+StartupNotify=false
