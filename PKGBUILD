@@ -1,11 +1,8 @@
 # Maintainer: Robert Manning <duckz@protonmail.ch>
 
- mv ${startdir}/lncrawl ${startdir}/lncrawl-old
-
 pkgname=lightnovel-crawler-bin
-pkgver=v2.25.1
-# pkgver=v2.24.5
-pkgrel=5
+pkgver=2.26.3
+pkgrel=6
 pkgdesc="An app to download novels from online sources and generate e-books."
 arch=('any')
 url="https://github.com/dipu-bd/lightnovel-crawler.git"
@@ -15,19 +12,12 @@ optdepends=('calibre: Output suport for docx, mobi, pdf, rtf, azw3, txt, fb2, li
 provides=(lncrawl)
 conflicts=(lncrawl)
 
-source=("https://github.com/dipu-bd/lightnovel-crawler/releases/download/$pkgver/lncrawl")
+source=("https://github.com/dipu-bd/lightnovel-crawler/releases/download/v$pkgver/lncrawl-$pkgver-linux")
+md5sums=('033f1f00a8588eecf67546ef201fe7aa')
+sha1sums=('6abbdc56c43459bfb2b7846a1678d86303666613')
+sha256sums=('72ba156a06082964523c400476d23558e3ab39416341f01a4ca079295ec29199')
 
-md5sums=('bbc464d4461315f0c57c1630f8b93767')
-sha1sums=('6ae2c514033976434dad47ac44af89c77b8a6293')
-sha256sums=('deea716726839311ff6af8b3e294ed8ba090a19f7dbf676dc8555ccf6d27d7a5')
-
-
-
-
-prepare() {
-   mv ${startdir}/lncrawl ${startdir}/lncrawl-$pkgver
-}
 
 package() {
-  install -Dm755 ${startdir}/lncrawl-$pkgver ${pkgdir}/usr/bin/lncrawl
+  install -Dm755 ${startdir}/lncrawl-$pkgver-linux ${pkgdir}/usr/bin/lncrawl
 }
