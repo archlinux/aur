@@ -20,4 +20,3 @@ pkgbase = diesel-cli-git
 	sha256sums = SKIP
 
 pkgname = diesel-cli-git
-
