@@ -1,8 +1,9 @@
-# Maintainer: Andrei Marinescu <iandrei.marinescu@gmail.com>
+# Maintainer: Wavebox <tom@wavebox.io>
+# Contributor: Andrei Marinescu <iandrei.marinescu@gmail.com>
 
 pkgname=wavebox
-_pkgver=10.0.518_2
-pkgver=10.0.518_2
+_pkgver=10.0.542_2
+pkgver=10.0.542_2
 pkgrel=1
 pkgdesc="The next generation of web-desktop communication."
 arch=(x86_64)
@@ -10,31 +11,29 @@ url="https://wavebox.io"
 license=('custom:Wavebox-EULA')
 depends=('ttf-liberation' 'libappindicator-gtk3' 'at-spi2-atk' 'cairo' 'libcups' 'gdk-pixbuf2' 'glib2' 'gtk3' 'nspr' 'nss' 'libxss' 'wget' 'xdg-utils')
 optdepends=('pam-u2f: Two-Factor Auth')
-conflicts=('wavebox-bin' 'wavebox-bin-beta')
-source=("$pkgname-$pkgver.tar.gz::https://download.wavebox.app/stable/linux/tar/Wavebox_10.0.518-2.tar.gz"
-#source=("$pkgname-$pkgver.tar.gz::http://download.wavebox.app/latest/beta/linux/tar"
+conflicts=('wavebox-bin' 'wavebox-bin-beta' 'wavebox-beta')
+source=("wavebox-$pkgver.tar.gz::https://download.wavebox.app/stable/linux/aur/Wavebox_10.0.542-2_aur.tar.gz"
         'wavebox.appdata.xml'
         'wavebox.menu'
         'LICENSE')
-md5sums=('050c67c5d6464713620f8bebf08fc248'
+md5sums=('070c123fb15411461f91d6f7321d24cd'
          '170a7d4e04402fa5c759e8f5e87e9d9c'
          '4f08794ea93eafd0e77b522ac7738638'
          'b92c8854e4553540df6bc998afe68cc4')
 
 prepare() {
-	cd "${srcdir}/${pkgname}_"*
-	# patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
+	cd "${srcdir}/wavebox_"*
 }
 
 package() {
-	cd "${srcdir}/${pkgname}_"*
+	cd "${srcdir}/wavebox_"*
 
-	install -Dm 644 ${srcdir}/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm 644 ${srcdir}/LICENSE "$pkgdir/usr/share/licenses/wavebox/LICENSE"
 	install -Dm 644 ${srcdir}/wavebox.appdata.xml ${pkgdir}/usr/share/appdata/wavebox.appdata.xml
 	install -Dm 755 wavebox.desktop ${pkgdir}/usr/share/applications/wavebox.desktop
 	install -Dm 644 product_logo_256.png  ${pkgdir}/usr/share/icons/hicolor/256x256/apps/wavebox.png
 	install -Dm 644 ${srcdir}/wavebox.menu ${pkgdir}/usr/share/menu/wavebox.menu
 	install -dm 755 ${pkgdir}/opt/wavebox.io
 
-	cp -r ../"${pkgname}_"* ${pkgdir}/opt/wavebox.io/wavebox
+	cp -r ../"wavebox_"* ${pkgdir}/opt/wavebox.io/wavebox
 }
