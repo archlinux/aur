@@ -10,7 +10,7 @@ license=('GPL')
 depends=('zeromq' 'gtkmm3' 'cairomm' 'librsvg' 'sqlite3' 'libgit2' 'curl' 'opencascade' 'podofo' 'libzip')
 makedepends=('boost-libs' 'boost' 'glm')
 source=("https://github.com/horizon-eda/horizon/archive/v${pkgver}.tar.gz")
-sha256sums=('b53b9bf6e50848022c0d9533d50dc6d2d36f29d39b4d083ba08dd48ca21decb3')
+sha256sums=('978fab9a20d367abfb785ef592e61648d0b21c8e573a7556325035e23f0110c3')
 
 build() {
     cd "$srcdir/horizon-$pkgver"
