@@ -1,10 +1,11 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Arkham <arkham@archlinux.us>
 # Contributor: brix <blbennett@telus.net>
 
 pkgname=ghextris
 pkgver=0.9.0
-pkgrel=7
+pkgrel=8
 pkgdesc='Tetris-like game on a hexagonal grid'
 arch=('any')
 # the https certificate is invalid
@@ -32,7 +33,7 @@ prepare() {
 package() {
   cd "$pkgname-$pkgver"
 
-  ./install.sh "$pkgdir/usr" /usr > install.log
+  ./install.sh "$pkgdir/usr" /usr
 }
 
 # vim: ts=2 sw=2 et:
