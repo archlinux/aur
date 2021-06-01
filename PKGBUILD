@@ -1,7 +1,7 @@
 # Maintainer: Francisco Giordano <fg@frang.io>
 
 pkgname=volta
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="JavaScript Launcher"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('openssl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/volta-cli/volta/releases/download/v$pkgver/volta-$pkgver-linux-openssl-1.1.tar.gz"
         "https://raw.githubusercontent.com/volta-cli/volta/v$pkgver/LICENSE")
-md5sums=('5574e2c885e444e79ec3a051e4edb78d'
+md5sums=('e3c312bd6e2943eb398a5744062dad80'
          'a8a025d12adc6bd305a7402166baefef')
 
 package() {
