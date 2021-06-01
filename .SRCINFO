@@ -1,13 +1,13 @@
 pkgbase = jtdx
 	pkgdesc = For amateur radio communication using very weak signals. Forked from WSJT-X.
-	pkgver = rc155
+	pkgver = 2.2.156
 	pkgrel = 1
 	url = https://github.com/jtdx-project/jtdx
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	makedepends = asciidoctor
-	makedepends = jtdxhamlib=rc155
+	makedepends = jtdxhamlib=4.2
 	makedepends = gcc9
 	makedepends = gcc9-fortran
 	makedepends = qt5-tools
@@ -17,14 +17,13 @@ pkgbase = jtdx
 	depends = hamlib
 	depends = qt5-serialport
 	depends = qt5-multimedia
-	source = jtdx-rc155.tar.gz::https://github.com/jtdx-project/jtdx/archive/rc155.tar.gz
-	md5sums = 2bc653a120a424afc15a98b85f4362ec
-	sha1sums = c9bdaecc4643031baebb05a4a032a01236b7f4fa
-	sha224sums = 4e440091bd07b3f5b2de65b10755903215970106ac73cf38a9adebab
-	sha256sums = 4ae2675ead697888ddd23645eaf22bf97d3e1803af2ba18061489c978956287d
-	sha384sums = 17a6ac9d6cd1a1c3add399dc6e5e2f4fbb0c354fae79d5a792f76636c1b757bd7a7a189826ee1b32ffb41e1a19df6fbd
-	sha512sums = 6fcf99bdb97481d3764c4a258afc041abfb7af6b89727844255b91e91b4d6223654c49930eaea9d3a51e8ef41716e512ab783853dd2ff1055b2709ae663efebe
-	b2sums = a7df3e036134203e9da4cacc5f96a771f504f4c74d7c01861cbd6260f6455f5044cc251b9bbfb2175b7165c841f4c244e63bfc285b2fb49f0586377cefe65021
+	source = jtdx-156_corrected.tar.gz::https://github.com/jtdx-project/jtdx/archive/156_corrected.tar.gz
+	md5sums = 9c611338694c5f72ca3ab2898dae7f4e
+	sha1sums = 8c18fd61d7eead992ecc7a7bc3fb72a06485929e
+	sha224sums = 516dfac23b94fc6a0c2abe747d8e9ff7811da4382175173e234b41c2
+	sha256sums = 4c734b44a4d60c1d1aae40bff3e609f1559dd3ad3cbdd1994e63d6f349461f94
+	sha384sums = 68261e847b1d2f408a16c9ddd67c806273ab039b35905ea12480eef53036ffd6d99f79777c11790c956ca6e33ae03e32
+	sha512sums = ae4d21b28bb47e6c45685c40893374138d79005c49499fc2b4435fab1f8903083d3c8f94d784e2eb8543e258717563c4ca9d3374b6732f6d6be0f6f05af981f7
+	b2sums = b3d6e7d065bf1a53266f8d0b4ed328ed20b383fed3b65e42298b5d21585ea35238993e902b56a31053eda2ddba2838ccbeb10b9f780384a18b873775da1be6ca
 
 pkgname = jtdx
-
