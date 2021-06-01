@@ -1,4 +1,4 @@
-pkgbase = bluecherry-client-git
+pkgbase = bluecherry-client
 	pkgdesc = Bluecherry Client for use with a bluecherry DVR server.
 	pkgver = 2.2.8.r17.gd9d5744e
 	pkgrel = 1
