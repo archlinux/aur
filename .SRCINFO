@@ -1,5 +1,5 @@
 pkgbase = kn
-	pkgdesc = alternative. Navigate by typing abbreviation of paths.
+	pkgdesc = cd alternative. Navigate by typing abbreviation of paths.
 	pkgver = 0.2.2
 	pkgrel = 1
 	arch = i686
