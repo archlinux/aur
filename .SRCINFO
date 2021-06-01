@@ -1,7 +1,7 @@
 pkgbase = cast_control
 	pkgdesc = Control Chromecasts from Linux and D-Bus
-	pkgver = 0.10.3
-	pkgrel = 2
+	pkgver = 0.10.4
+	pkgrel = 1
 	url = https://github.com/alexdelorenzo/cast_control
 	arch = any
 	license = AGPL3
@@ -14,12 +14,13 @@ pkgbase = cast_control
 	depends = python-mpris_server=0.2.18
 	depends = python-pychromecast=9.1.2
 	depends = python-pydbus
+	depends = python-typing_extensions
 	optdepends = playerctl: Get the D-Bus name for your device
 	optdepends = gnome-shell-extension-mpris-indicator-button: MPRIS indicator for GNOME
 	conflicts = chromecast_mpris
 	replaces = chromecast_mpris
-	source = https://pypi.org/packages/source/c/cast_control/cast_control-0.10.3.tar.gz
-	sha256sums = dbbce532a8cf9ef3a2a582807e138d6775b166c8bb752e36ea928b0c15a3dc82
+	source = https://pypi.org/packages/source/c/cast_control/cast_control-0.10.4.tar.gz
+	sha256sums = 0c7cf0eafd2d7fc5ea17d960c33a0b00d588cf801560cf557b08337cc185a3f2
 
 pkgname = cast_control
 
