@@ -6,7 +6,7 @@
 
 pkgname=pacman-git
 pkgver=6.0.0.r0.g75eb3f4c
-pkgrel=2
+pkgrel=3
 pkgdesc="A library-based package manager with dependency support"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.archlinux.org/pacman/"
@@ -76,6 +76,7 @@ package() {
   fi
 
   # set things correctly in the default conf file
+  local mychost myflags moresed=()
   case $CARCH in
     i686)
       mychost="i686-pc-linux-gnu"
@@ -85,6 +86,9 @@ package() {
       mychost="x86_64-pc-linux-gnu"
       myflags="-march=x86-64"
       ;;
+    arm*|aarch64)
+      moresed+=('-e' 's/-fcf-protection//')
+      ;;&
     arm)
       mychost="armv5tel-unknown-linux-gnueabi"
       myflags="-march=armv5te"
@@ -108,7 +112,8 @@ package() {
   sed -i "$pkgdir/etc/makepkg.conf" \
     -e "s|@CARCH[@]|$CARCH|g" \
     -e "s|@CHOST[@]|$mychost|g" \
-    -e "s|@CARCHFLAGS[@]|$myflags|g"
+    -e "s|@CARCHFLAGS[@]|$myflags|g" \
+    "${moresed[@]}"
 }
 
 # vim: set ts=2 sw=2 et:
