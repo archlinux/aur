@@ -1,3 +1,5 @@
+# Maintainer: Simone Cimarelli <aquilairreale@ymail.com>
+
 pkgname=sgn
 pkgver=2.0
 pkgrel=1
