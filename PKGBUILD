@@ -17,8 +17,8 @@
 #
 pkgbase="zfs-linux-rc"
 pkgname=("zfs-linux-rc" "zfs-linux-rc-headers")
-_zfsver="2.1.0_rc5"
-_kernelver="5.12.7.arch1-1"
+_zfsver="2.1.0_rc6"
+_kernelver="5.12.8.arch1-1"
 _extramodules="${_kernelver/.arch/-arch}"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
@@ -28,7 +28,7 @@ arch=("x86_64")
 url="https://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver/_/-}/zfs-${_zfsver/_/-}.tar.gz"
               "linux-5.12-compat.patch")
-sha256sums=("d6488d89e8d76386d8946732e5117ce2f06544a1775b6b90c12208e9771684aa"
+sha256sums=("2ab8ccb911c27ed301865a2321284cc64a61fce1cb61b315138b90a6a8b72445"
                         "9c601804dc473766d85da2198aa3769707e051d3659dc82dd1302edd5e91a8cf")
 license=("CDDL")
 depends=("kmod" "zfs-utils-rc=${_zfsver}" "linux=${_kernelver}")
