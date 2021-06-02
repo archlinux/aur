@@ -1,5 +1,5 @@
 pkgbase = cef-minimal-obs-bin
-	pkgdesc = Chromium Embedded Framework minimal release needed by OBS Studio release
+	pkgdesc = Chromium Embedded Framework minimal release needed by OBS Studio release in /opt/cef-obs
 	pkgver = 87.1.14+ga29e9a3+chromium_87.0.4280.141
 	pkgrel = 1
 	url = https://bitbucket.org/chromiumembedded/cef
