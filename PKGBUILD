@@ -2,7 +2,7 @@
 
 pkgname=xidlehook-git
 _pkgname=xidlehook
-pkgver=0.9.1.r29.g5c6cd2f
+pkgver=0.10.0.r3.g5c6cd2f
 pkgrel=1
 pkgdesc="xautolock rewrite in Rust, with a few extra features"
 url="https://gitlab.com/jD91mZM2/xidlehook"
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
