@@ -2,9 +2,9 @@
 pkgname=libclassicclient
 _luxver=1.4.1
 pkgver=7.3.0_b06.01
-pkgrel=2
+pkgrel=3
 pkgdesc="Gemalto PKCS#11 driver"
-url="https://www.luxtrust.lu/en/simple/225"
+url="https://www.luxtrust.com/en/middleware"
 arch=(x86_64)
 depends=()
 optdepends=(
