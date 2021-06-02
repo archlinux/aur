@@ -7,7 +7,7 @@
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
 
 pkgname=swi-prolog-devel
-pkgver=8.3.24
+pkgver=8.3.25
 pkgrel=1
 pkgdesc='Prolog environment (development version)'
 arch=('x86_64' 'i686')
@@ -27,19 +27,19 @@ source=("https://www.swi-prolog.org/download/devel/src/swipl-$pkgver.tar.gz")
 provides=('swi-prolog')
 conflicts=('swi-prolog')
 
-sha256sums=('6cd57485097a07a7ab68f88f7c49c824b9593060a8349f09a36c302d4e71908a')
+sha256sums=('6ab48209b0eefd1a4a250fe39cad0ab3f2468565ab381ee5724253baa160e9fb')
 
 build() {
   mkdir -p build
   cd build
   cmake ../swipl-$pkgver \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=PGO \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_C_FLAGS="$CFLAGS -fPIC -ffile-prefix-map=$PWD= -w" \
     -DLIBEDIT_LIBRARIES=/usr/lib/libedit.so.0 \
     -DLIBEDIT_INCLUDE_DIR=/usr/include \
     -G Ninja
-  ../swipl-$pkgver/scripts/pgo-compile.sh
+  #../swipl-$pkgver/scripts/pgo-compile.sh
   ninja
 }
 
