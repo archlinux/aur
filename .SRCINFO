@@ -1,0 +1,16 @@
+pkgbase = python-django-bootstrap-breadcrumbs-git
+	pkgdesc = Django template tags for easy breadcrumbs using twitter bootstrap css classes or custom template
+	pkgver = 0.9.2.r0.gaeb0c82
+	pkgrel = 1
+	url = https://github.com/prymitive/bootstrap-breadcrumbs/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = mkdocs
+	provides = python-django-bootstrap-breadcrumbs
+	source = git+https://github.com/prymitive/bootstrap-breadcrumbs/
+	sha256sums = SKIP
+
+pkgname = python-django-bootstrap-breadcrumbs-git
+
