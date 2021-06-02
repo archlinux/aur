@@ -1,0 +1,122 @@
+From 87de5068f5ad5b03b77c3e071e7f2213460a75f1 Mon Sep 17 00:00:00 2001
+From: Arnaud Dovi <mr.dovi@gmail.com>
+Date: Tue, 1 Jun 2021 15:00:24 +0200
+Subject: [PATCH] Added pacman 6.0 support.
+
+---
+ src/alpm_config.vala       | 14 +++++++-------
+ src/alpm_octopi_utils.vala |  9 ++++++---
+ vapi/libalpm.vapi          |  8 ++++----
+ 3 files changed, 17 insertions(+), 14 deletions(-)
+
+diff --git a/src/alpm_config.vala b/src/alpm_config.vala
+index f6b3ad6..84d56f7 100644
+--- a/src/alpm_config.vala
++++ b/src/alpm_config.vala
+@@ -49,7 +49,7 @@ class AlpmConfig {
+ 	public string? dbpath;
+ 	public string? logfile;
+ 	public string? gpgdir;
+-	public string? arch;
++	public Alpm.List<unowned string> architectures;
+ 	public int usesyslog;
+ 	public int checkspace;
+ 	public Alpm.List<unowned string> cachedirs;
+@@ -120,8 +120,8 @@ class AlpmConfig {
+ 			// rootdir is defined because it contains configuration data.
+ 			gpgdir = "/etc/pacman.d/gnupg/";
+ 		}
+-		if (arch == null) {
+-			arch = Posix.utsname().machine;
++		if (architectures.length () == 0) {
++			architectures.append (Posix.utsname().machine);
+ 		}
+ 	}
+ 
+@@ -135,7 +135,7 @@ class AlpmConfig {
+ 		// define options
+ 		handle.logfile = logfile;
+ 		handle.gpgdir = gpgdir;
+-		handle.arch = arch;
++		handle.architectures = architectures;
+ 		handle.usesyslog = usesyslog;
+ 		handle.checkspace = checkspace;
+ 		handle.defaultsiglevel = siglevel;
+@@ -160,7 +160,7 @@ class AlpmConfig {
+ 			repo.siglevel = merge_siglevel (siglevel, repo.siglevel, repo.siglevel_mask);
+ 			unowned Alpm.DB db = handle.register_syncdb (repo.name, repo.siglevel);
+ 			foreach (unowned string url in repo.urls) {
+-				db.add_server (url.replace ("$repo", repo.name).replace ("$arch", handle.arch));
++				db.add_server (url.replace ("$repo", repo.name).replace ("$arch", handle.architectures.nth(0).data));
+ 			}
+ 			if (repo.usage == 0) {
+ 				db.usage = Alpm.DB.Usage.ALL;
+@@ -231,9 +231,9 @@ class AlpmConfig {
+ 							logfile = val;
+ 						} else if (key == "Architecture") {
+ 							if (val == "auto") {
+-								arch = Posix.utsname ().machine;
++							  architectures.append (Posix.utsname().machine);
+ 							} else {
+-								arch = val;
++							  architectures.append (val);
+ 							}
+ 						} else if (key == "UseSysLog") {
+ 							usesyslog = 1;
+diff --git a/src/alpm_octopi_utils.vala b/src/alpm_octopi_utils.vala
+index 1160ec2..8e3429d 100644
+--- a/src/alpm_octopi_utils.vala
++++ b/src/alpm_octopi_utils.vala
+@@ -61,20 +61,23 @@ public class AlpmUtils {
+ 
+ 	public Alpm.List<unowned Alpm.Package> search_all_dbs (string search_string) {
+ 		Alpm.List<unowned Alpm.Package> syncpkgs = null;
++		Alpm.List<unowned Alpm.Package> results = null;
++		Alpm.List<unowned Alpm.Package> ret = null;
+ 		Alpm.List<unowned string> needles = null;
+ 		string[] splitted = search_string.split (" ");
+ 		foreach (unowned string part in splitted) {
+ 			needles.append (part);
+ 		}
+-		Alpm.List<unowned Alpm.Package> results = alpm_handle.localdb.search (needles);
++		alpm_handle.localdb.search (needles, results);
+ 		unowned Alpm.List<unowned Alpm.DB> list = alpm_handle.syncdbs;
+ 		while (list != null) {
+ 			unowned Alpm.DB db = list.data;
+ 			if (syncpkgs.length () == 0) {
+-				syncpkgs = db.search (needles);
++				 db.search (needles, syncpkgs);
+ 			} else {
+ 				//syncpkgs.join (db.search (needles).diff (syncpkgs, (Alpm.List.CompareFunc) alpm_pkg_compare_name));
+-				syncpkgs.join (db.search (needles));
++				db.search (needles, ret);
++				syncpkgs.join (ret.copy());
+ 			}
+ 			list = list.next;
+ 		}
+diff --git a/vapi/libalpm.vapi b/vapi/libalpm.vapi
+index 35abf77..19c5915 100644
+--- a/vapi/libalpm.vapi
++++ b/vapi/libalpm.vapi
+@@ -64,9 +64,9 @@ namespace Alpm {
+ 		public unowned string dbpath {
+ 			[CCode (cname = "alpm_option_get_dbpath")] get;
+ 		}
+-		public unowned string arch {
+-			[CCode (cname = "alpm_option_get_arch")] get;
+-			[CCode (cname = "alpm_option_set_arch")] set;
++		public unowned Alpm.List<unowned string?> architectures {
++			[CCode (cname = "alpm_option_get_architectures")] get;
++			[CCode (cname = "alpm_option_set_architectures")] set;
+ 		}
+ 		public unowned Alpm.List<unowned string?> cachedirs {
+ 			[CCode (cname = "alpm_option_get_cachedirs")] get;
+@@ -362,7 +362,7 @@ namespace Alpm {
+ 
+ 		public unowned Package? get_pkg(string name);
+ 		public unowned Group? get_group(string name);
+-		public Alpm.List<unowned Package?> search(Alpm.List<unowned string> needles);
++		public int search(Alpm.List<unowned string> needles, Alpm.List<unowned Package?> ret);
+ 
+ 		public int check_pgp_signature(out SigList siglist);
+ 	}
