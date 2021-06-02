@@ -4,7 +4,7 @@
 shopt -s extglob
 
 pkgname=wake
-pkgver=0.20.0
+pkgver=0.20.1
 pkgrel=1
 pkgdesc="The SiFive wake build tool"
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('custom')
 depends=('dash' 'sqlite' 'gmp' 'fuse2' 'libutf8proc' 're2')
 optdepends=('re2c: for flag support')
 source=("https://github.com/sifive/wake/releases/download/v$pkgver/wake_$pkgver.tar.xz")
-sha512sums=('d3c666f00e6ca1b660a48cd1e3ed50718c70671a0bdf1f5f19afd41fe281de97bcc3208ca6136489dddc4297c728bbd501dafb09bb432c0d7bb75c7a7754cc68')
+sha512sums=('2b1a7f524c312ad98c77e55d01a39718d04f698d6a24a381f2de376a06cc52dcdb01f0048847862727303793f85f7c9c1aa5dd04a8f715c82e73eea2cbe38ef7')
 
 prepare() {
   cd $pkgname-$pkgver
