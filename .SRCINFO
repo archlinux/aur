@@ -1,7 +1,7 @@
 pkgbase = perl-object-insideout
 	pkgdesc = Comprehensive inside-out object support module
 	pkgver = 4.05
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Object-InsideOut
 	arch = any
 	license = PerlArtistic
@@ -14,4 +14,3 @@ pkgbase = perl-object-insideout
 	sha512sums = 0bc853766d229d8043e9829915b50c158ce2e2d12d5ba9d49d6be892979f69d675dc032163400ca1ee1a8a89db39207828981ee66f02a24a3032a21760acf87d
 
 pkgname = perl-object-insideout
-
