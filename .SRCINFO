@@ -1,6 +1,6 @@
 pkgbase = make-tui
 	pkgdesc = Display and run Makefile rules in the terminal.
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/claby2/make-tui
 	arch = x86_64

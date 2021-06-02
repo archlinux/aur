@@ -1,6 +1,6 @@
 # Maintainer: Edward Wibowo <wibow9770@gmail.com>
 pkgname=make-tui
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Display and run Makefile rules in the terminal.'
 arch=('x86_64')
