@@ -2,7 +2,7 @@
 # Modified PKGBUILD from vulkan-html-docs
 
 pkgname="vulkan-man-pages"
-pkgver=1.2.154
+pkgver=1.2.179
 pkgrel=1
 pkgdesc="Vulkan man pages as manpages"
 arch=("any")
@@ -20,12 +20,12 @@ makedepends=(
 )
 source=("$url/archive/v$pkgver.tar.gz" "manpage.patch")
 sha256sums=(
-	'd0c9dae301c13f2d2f992056982864c4df2ab7e8b3d9dde7fb398e0520d1f574'
-	'f867124881d2735ae2091f1071213f196590c9e6b6e6ce06bab70c6c965d8540'
+	'0005b0b7b3019e82a73e95fafcb419f92c8187a527b55e337f0b0d25f0ae17e1'
+	'ddf2bcf4da1bca508428e74aad51eefadc014f797cb28c8510b358f8c86dcaea'
 )
 
 prepare() {
-	npm install escape-string-regexp
+	npm install escape-string-regexp@4.0.0
 	npm install he
 	cd "$srcdir"
 

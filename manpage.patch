@@ -1,7 +1,7 @@
-diff --unified --recursive --text src/vulkan-man-pages-1.2.154/Makefile src2/vulkan-man-pages-1.2.154/Makefile
---- src/vulkan-man-pages-1.2.154/Makefile	2020-07-20 03:04:18.000000000 -0500
-+++ src2/vulkan-man-pages-1.2.154/Makefile	2020-08-02 21:37:51.683223751 -0500
-@@ -407,7 +407,7 @@
+diff '--color=auto' --unified --recursive --text src/vulkan-man-pages-1.2.179/Makefile src2/vulkan-man-pages-1.2.179/Makefile
+--- src/vulkan-man-pages-1.2.179/Makefile	2021-05-24 02:23:32.000000000 -0500
++++ src2/vulkan-man-pages-1.2.179/Makefile	2021-06-02 17:30:19.571260784 -0500
+@@ -435,7 +435,7 @@
  
  # Build the individual refpages, then the symbolic links from aliases
  MANHTMLDIR  = $(OUTDIR)/man/html
@@ -10,18 +10,18 @@ diff --unified --recursive --text src/vulkan-man-pages-1.2.154/Makefile src2/vul
  buildmanpages: $(MANHTML)
  	$(MAKE) $(SUBMAKEOPTIONS) -e manaliases
  
-@@ -427,11 +427,11 @@
- # suppress make output instead of using QUIET
- # Running translate_math.js on every refpage is slow since most of them
+@@ -455,11 +455,11 @@
+ # use VERYQUIET instead of QUIET
+ # Running translate_math.js on every refpage is slow and most of them
  # don't contain math, so do a quick search for latexmath delimiters.
 -$(MANHTMLDIR)/%.html: KATEXDIR = ../../katex
 -$(MANHTMLDIR)/%.html: $(REFPATH)/%.txt $(GENDEPENDS) katexinst
 +$(MANHTMLDIR)/%.3: KATEXDIR = ../../katex
 +$(MANHTMLDIR)/%.3: $(REFPATH)/%.txt $(GENDEPENDS) katexinst
- 	@echo "Building $@ from $< using default options"
- 	@$(MKDIR) $(MANHTMLDIR)
--	@$(ASCIIDOC) -b html5 $(ADOCOPTS) $(ADOCHTMLOPTS) $(ADOCREFOPTS) \
-+	@$(ASCIIDOC) -b manpage $(ADOCOPTS) $(ADOCHTMLOPTS) $(ADOCREFOPTS) \
+ 	$(VERYQUIET)echo "Building $@ from $< using default options"
+ 	$(VERYQUIET)$(MKDIR) $(MANHTMLDIR)
+-	$(VERYQUIET)$(ASCIIDOC) -b html5 $(ADOCOPTS) $(ADOCHTMLOPTS) $(ADOCREFOPTS) \
++	$(VERYQUIET)$(ASCIIDOC) -b manpage $(ADOCOPTS) $(ADOCHTMLOPTS) $(ADOCREFOPTS) \
  	    -d manpage -o $@ $<
- 	@if egrep -q '\\[([]' $@ ; then \
+ 	$(VERYQUIET)if egrep -q '\\[([]' $@ ; then \
  	    $(TRANSLATEMATH) $@ ; \
