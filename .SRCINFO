@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-vertical-overview-git
 	pkgdesc = Gnome 40 Vertical workspaces
-	pkgver = 0+9943e5e21fa5
+	pkgver = v6.r0.g832fb87
 	pkgrel = 1
 	url = https://github.com/RensAlthuis/vertical-overview
 	arch = any
@@ -12,4 +12,3 @@ pkgbase = gnome-shell-extension-vertical-overview-git
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-vertical-overview-git
-

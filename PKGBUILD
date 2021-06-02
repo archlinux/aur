@@ -1,9 +1,10 @@
 # Maintainer: Jason Kölker <jason@koelker.net>
+# Contributor: Oliver Papst <op3@mailbox.org>
 
 pkgname=gnome-shell-extension-vertical-overview-git
 pkgdesc='Gnome 40 Vertical workspaces'
 url='https://github.com/RensAlthuis/vertical-overview'
-pkgver=0+9943e5e21fa5
+pkgver=v6.r0.g832fb87
 pkgrel=1
 license=('GPL2')
 arch=('any')
@@ -17,17 +18,17 @@ sha256sums=(
 )
 
 pkgver() {
-  cd "$pkgname"
-  echo 0+$(git rev-parse --short HEAD)
+  cd "${pkgname}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "$pkgname"
+  cd "${pkgname}"
   uuid=$(jq -r '.uuid' metadata.json)
-  destdir="$pkgdir/usr/share/gnome-shell/extensions/$uuid"
-  install -dm755 "$destdir"
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
-  install -Dm644 -t "$pkgdir/usr/share/glib-2.0/schemas" \
+  destdir="${pkgdir}/usr/share/gnome-shell/extensions/${uuid}"
+  install -dm755 "${destdir}"
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+  install -Dm644 -t "${pkgdir}/usr/share/glib-2.0/schemas" \
       schemas/org.gnome.shell.extensions.vertical-overview.gschema.xml
-  cp -a ./*.js ./*.ui ./metadata.json "$destdir"
+  cp -a ./*.js ./*.ui ./metadata.json "${destdir}"
 }
