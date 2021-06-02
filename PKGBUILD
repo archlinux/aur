@@ -15,7 +15,7 @@ optdepends=('playerctl: Get the D-Bus name for your device'
 conflicts=('chromecast_mpris')
 replaces=('chromecast_mpris')
 source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('0c7cf0eafd2d7fc5ea17d960c33a0b00d588cf801560cf557b08337cc185a3f2')
+sha256sums=('28d263cf86ce5afb05b02286a4f4cea45b0b85169cfeace6bf2d146585be4fce')
 
 build() {
 	cd "$pkgname-$pkgver"
