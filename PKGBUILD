@@ -2,7 +2,7 @@
 
 pkgname=kops
 pkgver=1.20.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Kubernetes Operations - Production Grade K8s Installation, Upgrades, and Management (build from src)'
 arch=('x86_64')
 url='https://github.com/kubernetes/kops'
@@ -14,6 +14,7 @@ makedepends=('go1.15')
 build() {
   cd $pkgname-$pkgver
   export VERSION=$pkgver
+  sed -i 's/go build/go1.15 build/g' Makefile
   make kops
 }
 
