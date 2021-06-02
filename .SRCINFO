@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-inputstream-adaptive-git
 	pkgdesc = InputStream client for adaptive streams for Kodi 18+
-	pkgver = 2.6.11.Matrix.r2.g8887378
+	pkgver = 2.6.16.Matrix.r0.g4612021
 	pkgrel = 1
 	url = https://github.com/xbmc/inputstream.adaptive
 	arch = x86_64
@@ -20,4 +20,3 @@ pkgbase = kodi-addon-inputstream-adaptive-git
 	md5sums = SKIP
 
 pkgname = kodi-addon-inputstream-adaptive-git
-
