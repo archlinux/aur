@@ -1,16 +1,15 @@
 pkgbase = gnome-shell-extension-mpris-indicator-button-git
-	pkgdesc = A mediaplayer indicator for the Gnome Shell
-	pkgver = r82.97e4207
+	pkgdesc = A full featured MPRIS indicator button extension for GNOME Shell 3.38+
+	pkgver = r180.c24c68e
 	pkgrel = 1
-	url = https://github.com/JasonLG1979/gnome-shell-extensions-mpris-indicator-button
+	url = https://github.com/JasonLG1979/gnome-shell-extension-mpris-indicator-button
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = gnome-shell
-	provides = gnome-shell-extension-mpris-indicator-button=r82.97e4207
+	provides = gnome-shell-extension-mpris-indicator-button
 	conflicts = gnome-shell-extension-mpris-indicator-button
-	source = gnome-shell-extension-mpris-indicator-button::git+https://github.com/JasonLG1979/gnome-shell-extensions-mpris-indicator-button
-	md5sums = SKIP
+	source = git+https://github.com/JasonLG1979/gnome-shell-extension-mpris-indicator-button.git
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-mpris-indicator-button-git
