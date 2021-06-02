@@ -6,15 +6,7 @@ pkgrel=2
 pkgdesc="Gemalto PKCS#11 driver"
 url="https://www.luxtrust.lu/en/simple/225"
 arch=(x86_64)
-depends=(
-  gcc-libs
-  gdk-pixbuf2   # for CCChangePinTool
-  gtk2          # for CCChangePinTool
-  libusb-compat # for libidkit.so
-  openssl
-  pcsclite
-  qt5-base      # for Secure{Bio,Pin}Dialog
-)
+depends=()
 optdepends=(
   "luxtrust-middleware: LuxTrust software for web authentication"
 )
@@ -37,7 +29,16 @@ prepare() {
 }
 
 package() {
-  depends+=(openmp)
+  depends=(
+    gcc-libs
+    gdk-pixbuf2   # for CCChangePinTool
+    gtk2          # for CCChangePinTool
+    libusb-compat # for libidkit.so
+    openmp
+    openssl
+    pcsclite
+    qt5-base      # for Secure{Bio,Pin}Dialog
+  )
 
   cp -a etc usr "$pkgdir"/
 
