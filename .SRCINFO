@@ -1,0 +1,22 @@
+pkgbase = shiromino
+	pkgdesc = A fast-paced puzzle game with roots in the arcade
+	pkgver = 0.1.1+9+gc7a6bb6
+	pkgrel = 1
+	url = https://github.com/shiromino/shiromino
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = pkgconf
+	depends = libvorbis
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = sqlite
+	conflicts = shiromino-git
+	backup = etc/shiromino.ini
+	source = git+https://github.com/shiromino/shiromino.git
+	sha256sums = SKIP
+
+pkgname = shiromino
+
