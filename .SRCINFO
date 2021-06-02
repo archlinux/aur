@@ -1,11 +1,10 @@
 pkgbase = libretro-parallel-n64-git
 	pkgdesc = libretro implementation to Nintendo 64 e 64DD
 	pkgver = 5223.0a67445c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/libretro/parallel-n64
 	arch = i686
 	arch = x86_64
-	arch = arm
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
