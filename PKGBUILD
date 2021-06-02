@@ -1,15 +1,15 @@
-# Maintainer: Vyacheslav Konovalov <f4f7l1hvr@relay.firefox.com>
+# Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=opensnitch
 pkgver=1.3.6
-pkgrel=2
+pkgrel=3
 pkgdesc='GNU/Linux port of the Little Snitch application firewall'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/evilsocket/opensnitch'
 license=('GPL3')
 depends=(
     'libnetfilter_queue' 'libpcap' 'python-grpcio' 'python-protobuf'
-    'python-pyinotify' 'python-slugify' 'python-pyqt5'
+    'python-pyinotify' 'python-slugify' 'python-pyqt5' 'abseil-cpp'
 )
 makedepends=('go' 'python-setuptools' 'python-grpcio-tools')
 optdepends=('logrotate: for logfile rotation support')
