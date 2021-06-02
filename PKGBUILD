@@ -1,10 +1,11 @@
 # Maintainer :  Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
+# Contributor : ccorn
 
 
 pkgname=git-delta
 _name="${pkgname#*-}"
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 
 pkgdesc='A syntax-highlighting pager for git and diff output'
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -19,11 +20,11 @@ source=("$pkgname-$pkgver.tgz::$url/archive/$pkgver.tar.gz")
 sha256sums=('706b55667de221b651b0d938dfbb468112b322ed41a634d3ca5c8bd861b19e8a')
 
 
-prepare() {
-  # Assist chroot builds with a persistent cargo cache (hat tip @ccorn for this patch)
+_setup_build_env() {
+  # Assist chroot builds with a persistent cargo cache
   if [ -d "$startdir/.cargo" ]; then
-    export _cargo="${CARGO_HOME:-$startdir/.cargo}"
-  else
+    export CARGO_HOME="${CARGO_HOME:-$startdir/.cargo}"
+  elif [ "$1" = "-v" ]; then
     msg2 "NOTE : If you're building in a (clean) chroot and want a persistant
             cargo cache folder specific for this package, you can create
             an empty '.cargo' directory next to the PKGBUILD.  This will
@@ -31,22 +32,25 @@ prepare() {
             when the CARGO_HOME variable is already set in your environ-
             ment.)"
   fi
+
+  # git2 cannot be built with current nightly due to a regression; for ref.:
+  # https://github.com/rust-lang/rust/issues/85574
+  export RUSTUP_TOOLCHAIN=stable
+}
+
+prepare() {
   sed -i "/path *=/s|=.*|= /etc/gitconfig.$_name|" "$_name-$pkgver/themes.gitconfig"
 }
 
 build() {
+  _setup_build_env -v
   cd "$_name-$pkgver"
-  # git2 cannot be built with current nightly due to a regression; for ref.:
-  # https://github.com/rust-lang/rust/issues/85574
-  RUSTUP_TOOLCHAIN=stable \
-  CARGO_HOME="$_cargo" \
   cargo build --release --locked --target-dir ./target
 }
 
 check() {
+  _setup_build_env
   cd "$_name-$pkgver"
-  RUSTUP_TOOLCHAIN=stable \
-  CARGO_HOME="$_cargo" \
   cargo test --release --locked --target-dir ./target
 }
 
