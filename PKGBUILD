@@ -2,10 +2,10 @@
 
 pkgname=python-pyiot-git
 _realname=pyiot
-pkgver=v0.1.r113.g6bb9fc7
+pkgver=v0.1.r114.g7ae346a
 pkgrel=1
 pkgdesc="Python library for IOT devices"
-url="https://github.com/angrysoft/pycouchdb"
+url="https://bitbucket.org/angrysoft/pyiot"
 license=('Apache 2.0')
 arch=('any')
 depends=('python-setuptools' 'python-pycryptodomex')
