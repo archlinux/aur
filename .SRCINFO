@@ -1,6 +1,6 @@
 pkgbase = doublecmd-gtk2-alpha-bin
 	pkgdesc = A file manager with two panels side by side
-	pkgver = 1.0.0.svn.r9804
+	pkgver = 1.0.0.svn.r9805
 	pkgrel = 1
 	url = https://doublecmd.sourceforge.io
 	arch = x86_64
@@ -19,16 +19,16 @@ pkgbase = doublecmd-gtk2-alpha-bin
 	conflicts = doublecmd-gtk2-svn
 	conflicts = doublecmd-gtk2-bin-nightly
 	replaces = doublecmd-gtk2-bin-nightly
-	noextract = doublecmd-gtk_1.0.0~0+svn9804+git54bfc8fdc-1_amd64.deb
-	noextract = doublecmd-plugins_1.0.0~0+svn9804+git54bfc8fdc-1_amd64.deb
-	noextract = doublecmd-common_1.0.0~0+svn9804+git54bfc8fdc-1_all.deb
+	noextract = doublecmd-gtk_1.0.0~0+svn9805+git51eced685-1_amd64.deb
+	noextract = doublecmd-plugins_1.0.0~0+svn9805+git51eced685-1_amd64.deb
+	noextract = doublecmd-common_1.0.0~0+svn9805+git51eced685-1_all.deb
 	options = !strip
-	source = https://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/xUbuntu_20.10/all/doublecmd-common_1.0.0~0+svn9804+git54bfc8fdc-1_all.deb
-	sha256sums = d28a883cbe0df55a5e37048ce9040b53e2d89d263848d60835ec48c6860a09e6
-	source_x86_64 = https://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/xUbuntu_20.10/amd64/doublecmd-gtk_1.0.0~0+svn9804+git54bfc8fdc-1_amd64.deb
-	source_x86_64 = https://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/xUbuntu_20.10/amd64/doublecmd-plugins_1.0.0~0+svn9804+git54bfc8fdc-1_amd64.deb
-	sha256sums_x86_64 = 269bed3805354b302787ebeb6712cadd536d326d1a55828e82de0c16abc5beb2
-	sha256sums_x86_64 = c1b0912f3eb65cb1c907fa8a0b824956eb826252192162f2ddfc5c06ed5377c4
+	source = https://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/xUbuntu_20.10/all/doublecmd-common_1.0.0~0+svn9805+git51eced685-1_all.deb
+	sha256sums = 0dc274ed1eea4e849fb2f3714d8a5f305b7f8cfe386d750a35c6a00095b3920e
+	source_x86_64 = https://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/xUbuntu_20.10/amd64/doublecmd-gtk_1.0.0~0+svn9805+git51eced685-1_amd64.deb
+	source_x86_64 = https://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/xUbuntu_20.10/amd64/doublecmd-plugins_1.0.0~0+svn9805+git51eced685-1_amd64.deb
+	sha256sums_x86_64 = 955fe78c3e898851c76016cad3759866fd6d0f8ca99b86d0e5b95738e9e114af
+	sha256sums_x86_64 = e3d259e6179f62ca3f031d08486d94ac7285a8a874b33ab5c4ff50f8bcb25c0e
 
 pkgname = doublecmd-gtk2-alpha-bin
 
