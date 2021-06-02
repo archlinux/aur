@@ -1,16 +1,15 @@
 pkgbase = jand-git
 	pkgdesc = The Jan process manager
-	pkgver = r31.8dde61a
+	pkgver = r88.ee473a4
 	pkgrel = 1
 	url = https://github.com/Jan0660/JanD
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	depends = dotnet-sdk-bin
-	depends = clang
-	depends = llvm
+	makedepends = dotnet-sdk
+	makedepends = clang
+	makedepends = llvm
 	source = git+https://github.com/Jan0660/JanD.git
 	sha256sums = SKIP
 
 pkgname = jand-git
-
