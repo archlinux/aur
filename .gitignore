@@ -1,7 +1,8 @@
 *.tar
-obs-studio-git/
+obs-studio-browser/
 ftl-sdk
 obs-browser
+obs-vst
 pkg/
 src/
 
