@@ -1,36 +1,19 @@
 pkgbase = obs-time-warp-scan
 	pkgdesc = Time Warp Scan filter for OBS Studio
 	pkgver = 0.1.5
-	pkgrel = 1
-	url = https://github.com/exeldro/obs-time-warp-scan
+	pkgrel = 2
+	url = https://obsproject.com/forum/resources/time-warp-scan.1167/
+	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL2
 	makedepends = cmake
-	makedepends = libfdk-aac
-	makedepends = libxcomposite
-	makedepends = x264
-	makedepends = vlc
-	makedepends = swig
-	makedepends = python
-	makedepends = luajit
-	makedepends = ffmpeg
-	makedepends = jansson
-	makedepends = libxinerama
-	makedepends = libxkbcommon-x11
-	makedepends = mbedtls
-	makedepends = qt5-svg
-	makedepends = qt5-x11extras
-	makedepends = curl
-	makedepends = jack
-	makedepends = gtk-update-icon-cache
 	makedepends = git
-	depends = obs-studio
+	makedepends = libxcomposite
+	depends = obs-studio>=27.0.0
 	source = obs-time-warp-scan-0.1.5::git+https://github.com/exeldro/obs-time-warp-scan#commit=68e53869d26538c2a1ac3267dd96d2fea982a526
-	source = obs-studio-26.1.2.tar.gz::https://github.com/obsproject/obs-studio/archive/26.1.2.tar.gz
-	source = fix_python_binary_loading.patch
+	source = obs-studio-27.0.0.tar.gz::https://github.com/obsproject/obs-studio/archive/27.0.0.tar.gz
 	sha256sums = SKIP
-	sha256sums = bc8b4c61ba4aae87b70c589a6a5b8538e4f03121b31e9b98a2071d9f6006b897
-	sha256sums = bdfbd062f080bc925588aec1989bb1df34bf779cc2fc08ac27236679cf612abd
+	sha256sums = c7ea5369f4c94203a8a81b73c6372873f08ab9e5b20860691dad2c29f5dda85e
 
 pkgname = obs-time-warp-scan
-
