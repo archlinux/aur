@@ -7,7 +7,7 @@
 
 _pkgname=mumble
 pkgname="$_pkgname-git"
-pkgver=1.4.0.development.snapshot.006.r27.g8c99fe811
+pkgver=1.4.0.development.snapshot.006.r84.g6fc8de5f3
 pkgrel=1
 epoch=1
 pkgdesc='An Open Source, low-latency, high quality voice chat software (git version)'
@@ -26,11 +26,10 @@ optdepends=('speech-dispatcher: Text-to-Speech support'
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=('git://github.com/mumble-voip/mumble.git'
-        'git://github.com/mumble-voip/mumble-theme.git'
         'git://github.com/mumble-voip/celt-0.7.0.git'
         'git://github.com/mumble-voip/opus.git'
         'git://github.com/mumble-voip/speex.git')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "$_pkgname"
@@ -44,7 +43,6 @@ prepare() {
   git config submodule.3rdparty/celt-0.7.0-src.url "$srcdir/celt"
   git config submodule.3rdparty/opus.url "$srcdir/opus"
   git config submodule.3rdparty/speex.url "$srcdir/speex"
-  git config submodule.themes/Mumble.url "$srcdir/mumble-theme"
   git submodule update
 }
 
