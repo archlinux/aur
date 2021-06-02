@@ -1,6 +1,6 @@
 pkgbase = package-query
 	pkgdesc = Query ALPM and AUR
-	pkgver = 1.11
+	pkgver = 1.12
 	pkgrel = 1
 	url = https://github.com/archlinuxfr/package-query/
 	arch = i686
@@ -12,10 +12,9 @@ pkgbase = package-query
 	arch = aarch64
 	arch = pentium4
 	license = GPL
-	depends = pacman>=5.2
+	depends = pacman>=6.0
 	depends = yajl>=2.0
-	source = https://github.com/archlinuxfr/package-query/releases/download/1.11/package-query-1.11.tar.gz
-	md5sums = 650bfb4f98255c55ee469784e38bf633
+	source = https://github.com/archlinuxfr/package-query/releases/download/1.12/package-query-1.12.tar.gz
+	md5sums = 3d91612aa47bb30db5e028251089255b
 
 pkgname = package-query
-
