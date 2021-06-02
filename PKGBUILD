@@ -7,7 +7,7 @@
 # Contributor: archtux <antonio.arias99999 at gmail.com>
 
 pkgname=bitfighterd
-pkgver=021
+pkgver=022
 pkgrel=1
 pkgdesc="A fast-paced team-based outer-space multi-player combat game - server
 and base program"
@@ -61,5 +61,5 @@ package() {
 }
 
 
-md5sums=('2d2c33abca2e322c1d6c8e1998add3c3'
+md5sums=('364336a19e7fa48cc849c24af115077b'
          'cb32039b47026e176d3f1f3639bd1a9f')
