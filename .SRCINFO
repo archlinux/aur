@@ -1,0 +1,23 @@
+pkgbase = firmware-phicomm-n1
+	pkgdesc = Additional firmware for Phicomm N1
+	pkgver = 7
+	pkgrel = 7
+	url = https://github.com/RPi-Distro
+	install = firmware-phicomm-n1.install
+	arch = any
+	license = custom
+	depends = wireless-regdb
+	depends = uboot-tools
+	conflicts = firmware-raspberrypi
+	options = !strip
+	source = brcmfmac43455-sdio_7.7.clm_blob::https://raw.staticdn.net/RPi-Distro/firmware-nonfree/f713a6054746bc61ece1c8696dce91a7b7e22dd9/brcm/brcmfmac43455-sdio.clm_blob
+	source = brcmfmac43455-sdio_7.7.txt::https://raw.staticdn.net/RPi-Distro/firmware-nonfree/f713a6054746bc61ece1c8696dce91a7b7e22dd9/brcm/brcmfmac43455-sdio.txt
+	source = brcmfmac43455-sdio_7.7.bin::https://raw.staticdn.net/RPi-Distro/firmware-nonfree/f713a6054746bc61ece1c8696dce91a7b7e22dd9/brcm/brcmfmac43455-sdio.bin
+	source = BCM4345C0_7.7.hcd::https://raw.staticdn.net/RPi-Distro/bluez-firmware/8445a53ce2c51a77472b908a0c8f6f8e1fa5c37a/broadcom/BCM4345C0.hcd
+	sha256sums = 2dbd7d22fc9af0eb560ceab45b19646d211bc7b34a1dd00c6bfac5dd6ba25e8a
+	sha256sums = ca709be81a78bdb6932936374f39943acbd7af07fae6151011127599a3ce9e3d
+	sha256sums = cf79e8e8727d103a94cd243f1d98770fa29f5da25df251d0d31b3696f3b4ac6a
+	sha256sums = c723c903655086c9f3a1de94a291f495a0f087f1ee6d3ee7bc4c558497aae7bc
+
+pkgname = firmware-phicomm-n1
+

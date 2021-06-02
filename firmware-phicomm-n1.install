@@ -1,0 +1,25 @@
+post_install() {
+    post_upgrade $1 0
+    echo 'Please REBOOT your machine.'
+}
+
+post_upgrade() {
+    # get uboot wifi macaddr 
+    tmpfile=$(mktemp -p /tmp)
+    # found in 5.10.1 kernel, mmc device name may be inconsistent across reboots, so we avoid hardcoding
+    mmcdevname=$(lsblk -d | grep -v 'mmcblk.boot' | grep mmcblk | xargs | cut -d ' ' -f1)
+    echo "/dev/${mmcdevname}   0x27400000   0x10000" > $tmpfile
+    mac_wifi=$(fw_printenv -c $tmpfile mac_wifi)
+    rm $tmpfile
+    mac=${mac_wifi#*=}
+    # make sure we have got a correct mac address
+    if ! grep -qiE '([0-9a-f][0-9a-f]:){5}[0-9a-f][0-9a-f]' <<< "$mac"; then
+        # oops! Then we might generate a random one
+        mac=$(sed 's/^.*\(..\)\(..\)\(..\)\(..\)\(..\)\(..\)$/\1:\2:\3:\4:\5:\6/' < /etc/machine-id)
+        grep -qiE '([0-9a-f][0-9a-f]:){5}[0-9a-f][0-9a-f]' <<< "$mac" || exit 1
+    fi
+    sed -i "s/^macaddr=.*$/macaddr=${mac}/g" /usr/lib/firmware/updates/brcm/brcmfmac43455-sdio.phicomm,n1.txt
+    # set bluetooth macaddr
+    echo -en $(sed 's/^.*:\(..\):\(..\):\(..\)$/\\x\3\\x\2\\x\1/' <<< "$mac") | \
+        dd of=/usr/lib/firmware/updates/brcm/BCM4345C0.hcd bs=1 seek=$((0x21)) count=3 conv=notrunc status=none
+}
