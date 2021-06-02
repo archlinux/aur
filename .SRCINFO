@@ -1,18 +1,13 @@
 pkgbase = darkman
 	pkgdesc = Framework for dark-mode and light-mode transitions on Linux desktop.
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://gitlab.com/whynothugo/darkman
 	arch = any
 	license = ISC
-	depends = python-astral
-	depends = python-dateutil
-	depends = python-pyxdg
-	depends = python-jeepney
+	makedepends = go
 	depends = geoclue
-	depends = python-pip
-	source = https://files.pythonhosted.org/packages/source/d/darkman/darkman-0.2.0.tar.gz
-	sha512sums = a6e0515b0f919900201961b9062590703d7c5be3defc3b74c9022ee1707cbcb65c9e1009d5d7c429b808ed84ddbf99e9658107ed251973ea8d911f223e891dc9
+	source = https://gitlab.com/WhyNotHugo/darkman/-/archive/v0.3.0/darkman-v0.3.0.tar.gz
+	sha256sums = b56a4037574cd8979bb1f16ea0115612de0a022a0a4bdb144aa155b84bbaf92d
 
 pkgname = darkman
-

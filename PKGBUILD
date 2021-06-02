@@ -1,31 +1,26 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=darkman
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Framework for dark-mode and light-mode transitions on Linux desktop."
 arch=('any')
 url="https://gitlab.com/whynothugo/darkman"
 license=('ISC')
-depends=('python-astral' 'python-dateutil' 'python-pyxdg' 'python-jeepney'
-         'geoclue' 'python-pip')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('a6e0515b0f919900201961b9062590703d7c5be3defc3b74c9022ee1707cbcb65c9e1009d5d7c429b808ed84ddbf99e9658107ed251973ea8d911f223e891dc9')
+depends=('geoclue')
+makedepends=('go')
+source=("https://gitlab.com/WhyNotHugo/darkman/-/archive/v${pkgver}/darkman-v${pkgver}.tar.gz")
+sha256sums=('b56a4037574cd8979bb1f16ea0115612de0a022a0a4bdb144aa155b84bbaf92d')
 
 build() {
-  cd "$pkgname-$pkgver"
-  python setup.py build
+  cd "$pkgname-v$pkgver"
+  make build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  python setup.py install --skip-build \
-    --optimize=1 \
-    --prefix=/usr \
-    --root="${pkgdir}"
+  cd "$pkgname-v$pkgver"
 
+  make DESTDIR="$pkgdir/" PREFIX=/usr/ install
   # TODO: manpages
-
   install -Dm 644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENCE"
-  install -Dm 644 darkman.service "${pkgdir}/usr/lib/systemd/user/darkman.service"
 }
