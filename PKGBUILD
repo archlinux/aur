@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Paś <t.pas93 at gmail>
 pkgname=alvr-amd-git
-pkgver=r1439.b4a7bce4
-pkgrel=2
+pkgver=r1462.9d4b1c5b
+pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
@@ -32,5 +32,5 @@ package() {
 	install -d $pkgdir/usr/bin
 	cp -a $srcdir/${pkgname%-git}/build/alvr_server_linux/* $pkgdir/opt/alvr
 	
-	ln -s /opt/alvr/ALVR\ Launcher $pkgdir/usr/bin/alvr
+	ln -s /opt/alvr/bin/alvr_launcher $pkgdir/usr/bin/alvr
 }
