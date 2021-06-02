@@ -1,7 +1,7 @@
 pkgbase = rtklib-emlid-git
 	pkgdesc = An Open Source Program Package for GNSS Positioning tuned for Emlid Device
 	pkgver = r587.81b5a61
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/emlid/RTKLIB/tree/reach
 	arch = x86_64
 	groups = GNSS

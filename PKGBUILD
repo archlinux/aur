@@ -3,7 +3,7 @@ _pkgname=RTKLIB
 pkgname=rtklib-emlid-git
 provides=("rtklib-qt")
 pkgver=r587.81b5a61
-pkgrel=2
+pkgrel=3
 pkgdesc="An Open Source Program Package for GNSS Positioning tuned for Emlid Device"
 arch=('x86_64')
 url="https://github.com/emlid/RTKLIB/tree/reach"
@@ -25,7 +25,6 @@ prepare(){
     cd "${_pkgname}"
     patch --forward --strip=1 --input="${srcdir}/110.patch"
     patch --forward --strip=1 --input="${srcdir}/111.patch"
-    find . -name "*_qt.pro*" -exec sed -i '$ a target.path = /usr/bin\nINSTALLS += target' {} \;
 }
 
 build() {
