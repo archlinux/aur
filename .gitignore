@@ -1,5 +1,6 @@
 snowflake-client*.bash
 snowflake-client*.bash.sig
 snowflake-client*.pkg.tar.zst
+snowflake-client*.sh
 pkg
 src

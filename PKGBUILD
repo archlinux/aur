@@ -8,7 +8,7 @@
 # ```
 
 pkgname=snowflake-client
-pkgver=1.2.10
+pkgver=1.2.14
 pkgrel=1
 epoch=1
 pkgdesc="Snowflake Database command line client (snowsql)"
@@ -20,10 +20,8 @@ source=(
     "${pkgname}-${pkgver}.bash::https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/$(echo ${pkgver} | awk -F. '{print $1 "." $2}')/linux_x86_64/snowsql-${pkgver}-linux_x86_64.bash"
     "${pkgname}-${pkgver}.bash.sig::https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/$(echo ${pkgver} | awk -F. '{print $1 "." $2}')/linux_x86_64/snowsql-${pkgver}-linux_x86_64.bash.sig"
 )
-sha256sums=(
-    '0b7e620efab22df2a22bc80bae81544628a2eb4117a76ec109cfead6e8334c3c'
-    'f5ecd6ffe307f559c8041c54f57ce4c93e408d6828e573a2411d39d7f7257725'
-)
+sha256sums=('1afb83a22b9ccb2f8e84c2abe861da503336cb3b882fcc2e8399f86ac76bc2a9'
+            'SKIP')
 
 package() {
   # Stop Snowflake installer from modifying shell profile
