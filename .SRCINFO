@@ -1,6 +1,6 @@
 pkgbase = tcgui-git
 	pkgdesc = A lightweight Python-based Web-GUI for Linux traffic control (tc) to set, view and delete traffic shaping rules.
-	pkgver = 57d33c4
+	pkgver = 39e2d77
 	pkgrel = 1
 	url = https://github.com/tum-lkn/tcgui
 	arch = any
@@ -14,4 +14,3 @@ pkgbase = tcgui-git
 	sha256sums = SKIP
 
 pkgname = tcgui-git
-
