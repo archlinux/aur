@@ -1,7 +1,7 @@
 # Maintainer: Tor Vic <torvic9 AT mailbox DOT org>
 
 pkgname='mini-benchmarker'
-pkgver=0.9.r63.g2a49602
+pkgver=0.9.r80.ge4a3de2
 pkgrel=1
 pkgdesc='A simple benchmarking script using stress-ng, perf, blender etc.'
 url="https://github.com/torvic9/bash-scripts"
@@ -10,7 +10,7 @@ licence=('GPL3')
 depends=('gcc' 'make' 'cmake' 'time' 'perf' 'unzip'
 	 'nasm' 'inxi' 'argon2' 'gmp' 'wget' 'blender'
 	 'zlib' 'libdrm' 'git' 'python')
-source=(git+https://github.com/torvic9/bash-scripts.git)
+source=(git+https://gitlab.com/torvic9/bash-scripts.git)
 sha512sums=('SKIP')
 
 pkgver() {
