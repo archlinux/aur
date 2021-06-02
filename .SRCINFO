@@ -1,6 +1,6 @@
 pkgbase = firefox-beta
 	pkgdesc = Standalone web browser from mozilla.org - Beta
-	pkgver = 89.0rc1
+	pkgver = 90.0b2
 	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/channel/#beta
 	arch = i686
@@ -43,17 +43,17 @@ pkgbase = firefox-beta
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = firefox=89.0rc1
+	provides = firefox=90.0b2
 	conflicts = firefox-beta-bin
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = firefox-89.0rc1.source.tar.xz::https://ftp.mozilla.org/pub/firefox/candidates/89.0-candidates/build1/source/firefox-89.0.source.tar.xz
-	source = firefox-89.0rc1.source.tar.xz.asc::https://ftp.mozilla.org/pub/firefox/candidates/89.0-candidates/build1/source/firefox-89.0.source.tar.xz.asc
+	source = http://archive.mozilla.org/pub/firefox/candidates/90.0b2-candidates/build1/source/firefox-90.0b2.source.tar.xz
+	source = http://archive.mozilla.org/pub/firefox/candidates/90.0b2-candidates/build1/source/firefox-90.0b2.source.tar.xz.asc
 	source = 0001-Use-remoting-name-for-GDK-application-names.patch
 	source = firefox-beta.desktop
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = 926584209afc12920bf24f8d28e1e186c8ef9bd245376d18a89356f94aadd279
+	sha256sums = 8bf306b07dda288b51afdb13410190a1ca03e25e40ef730ab1c5f27b80d1b666
 	sha256sums = SKIP
 	sha256sums = 1b6814e85f13dcf069482ad1acfc1a099661922c85e3344aa4ee059288506ccc
 	sha256sums = 54d93249fedc9c4cdc5eb82da498b08f08bcb089f85a138b457f3251a0913ad1
