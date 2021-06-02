@@ -3,7 +3,7 @@
 _pkgname=fractal
 pkgname=fractal-next
 pkgver=r122.145e9bd0
-pkgrel=2
+pkgrel=3
 pkgdesc="GTK4 client for Matrix written in Rust (fractal-next branch)"
 arch=(x86_64)
 url="https://wiki.gnome.org/Apps/Fractal"
@@ -11,6 +11,8 @@ license=(GPL3)
 depends=(gtk4 gst-plugins-base-libs gst-plugin-gtk gst-plugins-bad gst-editing-services gtksourceview5 gspell libadwaita)
 optdepends=('org.freedesktop.secrets: password storage')
 makedepends=(git meson rust cmake)
+provides=(fractal)
+conflicts=(fractal fractal-git)
 source=("fractal::git+https://gitlab.gnome.org/GNOME/fractal#branch=fractal-next")
 sha256sums=('SKIP')
 
