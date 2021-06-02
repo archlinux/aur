@@ -6,7 +6,7 @@
 
 pkgname=obs-studio-browser
 pkgver=27.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Free and open source software for video recording and live streaming. Built with browser, vst plugins."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
@@ -31,14 +31,17 @@ conflicts=("obs-studio" "obs-linuxbrowser")
 source=("$pkgname::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
         "git+https://github.com/Mixer/ftl-sdk.git"
         "git+https://github.com/obsproject/obs-browser.git"
-        "git+https://github.com/obsproject/obs-vst.git")
+        "git+https://github.com/obsproject/obs-vst.git"
+        "fix_python_binary_loading.patch")
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '93ad704cef425073b417d1ed95e076f688a6e45cdf589472c65e437d77297303f31dd8f15c7d5e30f83276a6396b732dfb5a695db9c773911aaa0423c5262177')
 
 prepare() {
     cd $pkgname
+    patch -Np1 < "$srcdir"/fix_python_binary_loading.patch
     git config submodule.plugins/obs-outputs/ftl-sdk.url "$srcdir"/ftl-sdk
     git config submodule.plugins/obs-browser.url "$srcdir"/obs-browser
     git config submodule.plugins/obs-vst.url "$srcdir"/obs-vst
