@@ -1,7 +1,7 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=c-lightning-git
-pkgver=r5960.fa1c8b36
+pkgver=0.10.0.r9907.03cfe0b46
 pkgrel=1
 pkgdesc='A Lightning Network implementation in C'
 arch=('i686' 'x86_64')
@@ -13,19 +13,18 @@ source=('git+https://github.com/ElementsProject/lightning.git'
         'git+https://github.com/zserge/jsmn.git'
         'git+https://github.com/ianlancetaylor/libbacktrace.git'
         'git+https://github.com/jedisct1/libsodium.git'
-        'git+https://github.com/ElementsProject/libwally-core.git'
-        'macro-quotation.patch')
+        'git+https://github.com/ElementsProject/libwally-core.git')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '35e294ffdc49c02f8e9d79b7122dab4c4d4ebd8321c1b98ba518127bb6e0d423')
+            'SKIP')
 
 pkgver() {
     cd lightning
-
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    _tag=$(git tag --list --sort=taggerdate | tail -n1 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
+    printf $_tag;
+    printf ".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -45,9 +44,7 @@ prepare() {
 
     git submodule update
 
-    patch -Np1 -i ../macro-quotation.patch
     sed -e 's/ -Werror//' -i configure
-    sed -e '/include lightningd\/test\/Makefile/d' -i lightningd/Makefile
 }
 
 build() {

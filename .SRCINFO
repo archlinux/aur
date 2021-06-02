@@ -1,6 +1,6 @@
 pkgbase = c-lightning-git
 	pkgdesc = A Lightning Network implementation in C
-	pkgver = r5960.fa1c8b36
+	pkgver = 0.10.0.r9907.03cfe0b46
 	pkgrel = 1
 	url = https://github.com/ElementsProject/lightning
 	arch = i686
@@ -17,13 +17,11 @@ pkgbase = c-lightning-git
 	source = git+https://github.com/ianlancetaylor/libbacktrace.git
 	source = git+https://github.com/jedisct1/libsodium.git
 	source = git+https://github.com/ElementsProject/libwally-core.git
-	source = macro-quotation.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 35e294ffdc49c02f8e9d79b7122dab4c4d4ebd8321c1b98ba518127bb6e0d423
 
 pkgname = c-lightning-git
 
