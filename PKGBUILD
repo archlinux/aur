@@ -1,4 +1,4 @@
-# Maintainer: Your Name <AliNajafian81@gmail.com>
+# Maintainer: Ali Najafian <AliNajafian81@gmail.com>
 pkgname=circuitjs-bin
 pkgver=2.4.7
 pkgrel=2
