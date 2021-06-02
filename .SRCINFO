@@ -1,6 +1,6 @@
 pkgbase = python-cocotb-bus
 	pkgdesc = Pre-packaged testbenching tools and reusable bus interfaces for cocotb
-	pkgver = 0.1
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/cocotb/cocotb-bus/
 	arch = any

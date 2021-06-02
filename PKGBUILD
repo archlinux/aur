@@ -1,6 +1,6 @@
 # Maintainer: csantosb <csantosb dot inventati dot org>
 pkgname=python-cocotb-bus
-pkgver=0.1
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Pre-packaged testbenching tools and reusable bus interfaces for cocotb"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('iverilog: for simulating verilog designs'
 	    'gtkwave: for visualizing waveforms')
 
 options=(!emptydirs)
-source=("git+https://github.com/cocotb/cocotb-bus#tag=v${pkgver}.${pkgrel}")
+source=("git+https://github.com/cocotb/cocotb-bus#tag=v${pkgver}")
 md5sums=('SKIP')
 
 build() {
