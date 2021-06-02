@@ -1,7 +1,7 @@
 # Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=bee-clef-bin
-pkgver=0.4.10
+pkgver=0.4.12
 pkgrel=1
 pkgdesc="Go Ethereum's external signer"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
     'https://raw.githubusercontent.com/ethersphere/bee-clef/master/LICENSE'
 )
 sha512sums=(
-    '49d47bfe12a007af2fdb0d9fc73ac61d4c6b231a62319aad72f9c854ede8c48e2ef7e5cc6b8b97f20c2234d7aee74dbf364589d2c2a7eb696bfed6e6bf444d1d'
+    'fcfae59e4b30edc95ff097f57d89689e06b00097f18d30d24404550db38868fb442aa884cf70a1cf8e7c8dc900c765ea8acb19841563f0a5fd8a5d373e55c24d'
     'd361e5e8201481c6346ee6a886592c51265112be550d5224f1a7a6e116255c2f1ab8788df579d9b8372ed7bfd19bac4b6e70e00b472642966ab5b319b99a2686'
 )
 install='bee-clef.install'
