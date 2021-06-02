@@ -1,7 +1,7 @@
 pkgbase = gmpbench
 	pkgdesc = gmpbench v0.2 from gmplib.org
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gmplib.org/gmpbench
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,7 @@ pkgbase = gmpbench
 	makedepends = git
 	makedepends = gmp
 	depends = gmp
-	source = git+https://github.com/torvic9/gmpbench.git
+	source = git+https://gitlab.com/torvic9/gmpbench.git
 	md5sums = SKIP
 
 pkgname = gmpbench
-
