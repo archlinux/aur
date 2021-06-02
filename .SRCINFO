@@ -3,6 +3,7 @@ pkgbase = adscript
 	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/Amplus2/Adscript
+	install = adscript.install
 	arch = x86_64
 	arch = arm
 	arch = armv6h
@@ -13,6 +14,6 @@ pkgbase = adscript
 	depends = llvm>=11.1
 	options = !buildflags
 	source = https://github.com/Amplus2/Adscript/archive/refs/tags/adscript-0.3.zip
-	md5sums = a313846f560ea6755bff21572e175769
+	md5sums = SKIP
 
 pkgname = adscript

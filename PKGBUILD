@@ -9,7 +9,8 @@ arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 depends=('llvm>=11.1')
 makedepends=('clang>=11.1')
 source=("${url}/archive/refs/tags/${pkgname}-${pkgver}.zip")
-md5sums=('a313846f560ea6755bff21572e175769')
+md5sums=('SKIP')
+install=$pkgname.install
 
 upname='Adscript'
 
