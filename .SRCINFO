@@ -1,0 +1,19 @@
+pkgbase = hyperrogue-git
+	pkgdesc = A puzzle-roguelike taking place on a hyperbolic plane. Latest git version.
+	pkgver = 120.r0.g805f33d8
+	pkgrel = 1
+	url = https://www.roguetemple.com/z/hyper/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = glu
+	makedepends = git
+	depends = sdl_gfx
+	depends = sdl_ttf
+	depends = sdl_mixer
+	depends = mesa
+	provides = hyperrogue
+	source = git+https://github.com/zenorogue/hyperrogue.git
+	sha256sums = SKIP
+
+pkgname = hyperrogue-git
