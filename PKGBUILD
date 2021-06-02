@@ -1,7 +1,7 @@
 # Contributor: Discordian <therealdiscordian@gmail.com>
 
 pkgname=ipfs-sync
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="A simple daemon which will watch files on your filesystem, mirror them to MFS, automatically update related pins, and update related IPNS keys."
 url="https://github.com/TheDiscordian/ipfs-sync"
@@ -10,8 +10,8 @@ arch=('any')
 depends=('go-ipfs')
 makedepends=('go')
 source=(https://github.com/TheDiscordian/ipfs-sync/archive/v${pkgver}.tar.gz)
-md5sums=('41b740d858c9834193dee6d2ec92c6ab')
-sha512sums=("9d56e13a9952956c9e308ce048e5d59dc11a50fdb0909e82ff9ca36bf0a7032b48ac9cdd477b34ef1e336ea6ead01de6176a59cecb384199f7951d629e90c5e2")
+md5sums=('3aa09fc24150c0aa198d2a5137def946')
+sha512sums=("8b1eff65c8bc331a3a381e36699bf82105f4b8351b49d47de1e87d89bdb31c75b25401a006e7529bc24b7c4a31269f002b14ba92060175287cafb8aa7a05db25")
 
 package() {
 	cd ${pkgname}-${pkgver}/
