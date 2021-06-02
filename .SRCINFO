@@ -1,6 +1,6 @@
 pkgbase = python-pywikibot
 	pkgdesc = Python MediaWiki Bot Framework
-	pkgver = 6.2.0
+	pkgver = 6.3.0
 	pkgrel = 1
 	url = https://www.mediawiki.org/wiki/Pywikibot
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-pywikibot
 	optdepends = python-mwoauth: authentication
 	optdepends = python-mwparserfromhell: parsing MediaWiki wikicode
 	optdepends = python-stdnum: cosmetic changes for numbers
-	source = https://files.pythonhosted.org/packages/source/p/pywikibot/pywikibot-6.2.0.tar.gz
-	sha256sums = aeac6cbcfbea11b6e5ed6069607848854ca7389788c324339c66718d3cf97baa
+	source = https://files.pythonhosted.org/packages/source/p/pywikibot/pywikibot-6.3.0.tar.gz
+	sha256sums = bcbafba40878102c0a4233dbcb1be2f51d4d55960d1b9b33f18b65188b6581bd
 
 pkgname = python-pywikibot
 
