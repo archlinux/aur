@@ -1,15 +1,15 @@
 pkgbase = nodejs-npm2arch
 	pkgdesc = Convert NPM package to a PKGBUILD for ArchLinux
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/simon04/npm2arch
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = npm2arch-1.0.0.tgz
-	source = https://registry.npmjs.org/@simon04/npm2arch/-/npm2arch-1.0.0.tgz
-	sha1sums = e53348f74f661b3430f94011a3d597fb0db80741
+	noextract = npm2arch-2.0.0.tgz
+	source = https://registry.npmjs.org/@simon04/npm2arch/-/npm2arch-2.0.0.tgz
+	sha1sums = 1c200b71fe6dc68d63cebf0749ee7c34f1f91d9b
 
 pkgname = nodejs-npm2arch
 
