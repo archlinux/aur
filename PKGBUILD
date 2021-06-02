@@ -2,7 +2,7 @@
 
 pkgname=kops
 pkgver=1.20.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Kubernetes Operations - Production Grade K8s Installation, Upgrades, and Management (build from src)'
 arch=('x86_64')
 url='https://github.com/kubernetes/kops'
@@ -19,7 +19,7 @@ build() {
 }
 
 package() {
-  install -Dm 755 "${srcdir}/$pkgname-$pkgver/bin/kops" "${pkgdir}/usr/bin/kops"
+  install -Dm 755 "${srcdir}/$pkgname-$pkgver/.build/local/kops" "${pkgdir}/usr/bin/kops"
 
   # Populate bash and zsh completions
   install -dm 755 "${pkgdir}/usr/share/bash-completion/completions"
