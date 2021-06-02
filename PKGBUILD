@@ -1,6 +1,6 @@
 # Maintainer: Mateusz Maćkowski <mateusz@mackowski.org>
 pkgname=tundra
-pkgver=0.1
+pkgver=0.1.1
 pkgrel=1
 epoch=
 pkgdesc="MyAnimeList scrobbler"
@@ -22,17 +22,17 @@ changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/m4tx/$pkgname/archive/v$pkgver.tar.gz"
         "https://raw.githubusercontent.com/erengy/anime-relations/2c55e0ce48462a75ca8680dc2a9828887aea1792/anime-relations.txt")
 noextract=()
-md5sums=('1e3427b3cc4fc7f36afe673d02983eb7'
+md5sums=('459cec687c6763f282478fc9a727f3b7'
          'ec26a1895b54f4f7a03538e117354311')
 validpgpkeys=()
 
 prepare() {
-	cd "$pkgname-$pkgver"
-	cp "$srcdir/anime-relations.txt" "vendor/anime-relations/"
+    cd "$pkgname-$pkgver"
+    cp "$srcdir/anime-relations.txt" "vendor/anime-relations/"
 }
 
 build() {
-	cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
     cargo build --release --locked --all-features
 }
 
@@ -41,8 +41,8 @@ check() {
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
     install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
-    install -Dm 755 data/com.m4tx.Tundra.svg -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-    install -Dm 755 data/com.m4tx.Tundra.desktop -t "${pkgdir}/usr/share/applications"
+    install -Dm 755 data/moe.tundra.Tundra.svg -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+    install -Dm 755 data/moe.tundra.Tundra.desktop -t "${pkgdir}/usr/share/applications"
 }
