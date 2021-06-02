@@ -17,7 +17,7 @@ makedepends=(
 pkgdesc="A fast-paced puzzle game with roots in the arcade"
 pkgname=shiromino-git
 pkgrel=1
-pkgver=0.1.1+8+g1619500
+pkgver=0.1.1+9+gc7a6bb6
 provides=(shiromino)
 sha256sums=(SKIP)
 source=(git+https://github.com/shiromino/shiromino.git)
@@ -33,4 +33,8 @@ build() {
 }
 package() {
 	cmake --install "$srcdir/shiromino/build" --prefix "$pkgdir" --strip
+}
+pkgver() {
+	cd "$srcdir/shiromino"
+	git describe --long --tags | tr - +
 }
