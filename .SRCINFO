@@ -1,6 +1,6 @@
 pkgbase = adscript
 	pkgdesc = A high-performance, s-expressions based programming language that is natively compiled.
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/Amplus2/Adscript
 	install = adscript.install
@@ -13,7 +13,7 @@ pkgbase = adscript
 	makedepends = clang>=11.1
 	depends = llvm>=11.1
 	options = !buildflags
-	source = https://github.com/Amplus2/Adscript/archive/refs/tags/adscript-0.3.zip
+	source = https://github.com/Amplus2/Adscript/archive/refs/tags/adscript-0.4.zip
 	md5sums = SKIP
 
 pkgname = adscript

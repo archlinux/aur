@@ -1,6 +1,6 @@
 pkgname='adscript'
 pkgdesc="A high-performance, s-expressions based programming language that is natively compiled."
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 url="https://github.com/Amplus2/Adscript"
 license=('MPL2')
