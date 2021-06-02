@@ -1,6 +1,6 @@
 pkgbase = lib32-spirv-tools
 	pkgdesc = API and commands for processing SPIR-V modules
-	pkgver = 2020.5
+	pkgver = 2021.1
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/SPIRV-Tools
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = lib32-spirv-tools
 	depends = lib32-gcc-libs
 	depends = vulkan-tools
 	depends = spirv-tools
-	source = git+https://github.com/KhronosGroup/SPIRV-Tools.git#tag=v2020.5
-	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git#tag=1.5.3.reservations1
+	source = git+https://github.com/KhronosGroup/SPIRV-Tools.git#tag=v2021.1
+	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
