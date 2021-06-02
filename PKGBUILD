@@ -1,5 +1,5 @@
 pkgname=mingw-w64-suitesparse
-pkgver=5.9.0
+pkgver=5.10.1
 pkgrel=1
 pkgdesc="A collection of sparse matrix libraries (mingw-w64)"
 url="https://people.engr.tamu.edu/davis/suitesparse.html"
@@ -9,7 +9,7 @@ makedepends=('mingw-w64-cmake' 'mingw-w64-make')
 license=('GPL')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v${pkgver}.tar.gz" suitesparse-no-demo.patch)
-sha256sums=('7bdd4811f1cf0767c5fdb5e435817fdadee50b0acdb598f4882ae7b8291a7f24' SKIP)
+sha256sums=('acb4d1045f48a237e70294b950153e48dce5b5f9ca8190e86c2b8c54ce00a7ee' SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -44,6 +44,9 @@ prepare () {
 
   # use MAKEFLAGS instead of JOBS
   sed -i "s| --jobs=\$(JOBS)||g" */Makefile
+
+  # https://github.com/DrTimothyAldenDavis/GraphBLAS/issues/42
+  sed -i '/misleading-indentation/d' GraphBLAS/Source/GB_warnings.h
 }
 
 build() {
