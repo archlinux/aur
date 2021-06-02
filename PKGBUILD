@@ -18,7 +18,7 @@ depends=(
 optdepends=(
   "luxtrust-middleware: LuxTrust software for web authentication"
 )
-source_x86_64=("https://www.luxtrust.lu/downloads/middleware/LuxTrust_Middleware_${_luxver}_Ubuntu_64bit.tar.gz")
+source_x86_64=("https://www.luxtrust.com/sites/default/files/downloads/middleware/LuxTrust_Middleware_${_luxver}_Ubuntu_64bit.tar.gz")
 sha256sums_x86_64=('2b27b873f223f254b37fcc6ae9b21e5bb48ac081b0845be0f3bee10d8a377eff')
 
 prepare() {
