@@ -22,4 +22,4 @@ build-package:
     - python -c 'import cocotb_bus; print("All OK")'
   artifacts:
     paths:
-      - python-cocotb-bus-0.1-1-any.pkg.tar.zst
+      - python-cocotb-bus-*.pkg.tar.zst
