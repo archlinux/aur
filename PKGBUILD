@@ -11,7 +11,7 @@ arch=("x86_64")
 license=('MIT')
 depends=("kio" "knotifications" "kwindowsystem" "ki18n")
 makedepends=("cmake" "extra-cmake-modules" "git")
-source=("git+https://github.com/torvic9/kplasmafoxhelper.git#tag=$pkgver")
+source=("git+https://gitlab.com/torvic9/kplasmafoxhelper.git#tag=$pkgver")
 md5sums=('SKIP')
 
 build() {

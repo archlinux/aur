@@ -12,8 +12,7 @@ pkgbase = kplasmafoxhelper
 	depends = knotifications
 	depends = kwindowsystem
 	depends = ki18n
-	source = git+https://github.com/torvic9/kplasmafoxhelper.git#tag=5.0.6
+	source = git+https://gitlab.com/torvic9/kplasmafoxhelper.git#tag=5.0.6
 	md5sums = SKIP
 
 pkgname = kplasmafoxhelper
-
