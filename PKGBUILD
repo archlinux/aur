@@ -1,35 +1,29 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
-pkgname=obs-freeze-filter
+_pluginname=freeze-filter
+pkgname=obs-$_pluginname
 pkgver=0.3.2
-_obsver=26.1.2
-pkgrel=1
+_obsver=27.0.0
+pkgrel=2
 pkgdesc="Filter to freeze a frame of a source"
-arch=('x86_64')
-url="https://github.com/exeldro/obs-freeze-filter"
+arch=("i686" "x86_64" "aarch64")
+url="https://obsproject.com/forum/resources/freeze-filter.950/"
 license=("GPL2")
-depends=("obs-studio")
-# Need to compile plugin in OBS compilation process
-makedepends=(
-  'cmake' 'libfdk-aac' 'libxcomposite' 'x264' 'vlc' 'swig' 'python'
-  'luajit' 'ffmpeg' 'jansson' 'libxinerama' 'libxkbcommon-x11' 'mbedtls'
-  'qt5-svg' 'qt5-x11extras' 'curl' 'jack' 'gtk-update-icon-cache' 'git'
-)
+depends=("obs-studio>=$_obsver")
+makedepends=("cmake" "git" "libxcomposite")
 source=(
   "$pkgname-$pkgver::git+https://github.com/exeldro/obs-freeze-filter#commit=575e7e333cf4c9dcb825a72ea4eceb5894c845fd"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
-  "fix_python_binary_loading.patch"
 )
 sha256sums=(
-  'SKIP'
-  'bc8b4c61ba4aae87b70c589a6a5b8538e4f03121b31e9b98a2071d9f6006b897'
-  'bdfbd062f080bc925588aec1989bb1df34bf779cc2fc08ac27236679cf612abd'
+  "SKIP"
+  "c7ea5369f4c94203a8a81b73c6372873f08ab9e5b20860691dad2c29f5dda85e"
 )
 
 prepare() {
   rm -rf fakeroot
-  cd "obs-studio-$_obsver"
-  patch -Np1 < "$srcdir"/fix_python_binary_loading.patch
-  cd plugins
+
+  cd "obs-studio-$_obsver"/plugins
+
   cp -r "$srcdir/$pkgname-$pkgver" .
   echo "add_subdirectory($pkgname-$pkgver)" | tee -a CMakeLists.txt >/dev/null
 }
@@ -38,8 +32,26 @@ prepare() {
 build() {
   cd "obs-studio-$_obsver"
   cmake -B build \
-  -DCMAKE_INSTALL_PREFIX='/usr' \
-  -DBUILD_CAPTIONS=ON
+  -DCMAKE_INSTALL_PREFIX=/usr \
+  -DCMAKE_INSTALL_LIBDIR=lib \
+  -DDISABLE_UI=ON \
+  -DENABLE_WAYLAND=OFF \
+  -DENABLE_PIPEWIRE=OFF \
+  -DENABLE_SCRIPTING=OFF \
+  -DDISABLE_DECKLINK=ON \
+  -DDISABLE_ALSA=ON \
+  -DDISABLE_JACK=ON \
+  -DDISABLE_PULSEAUDIO=ON \
+  -DDISABLE_V4L2=ON \
+  -DDISABLE_SPEEXDSP=ON \
+  -DDISABLE_LIBFDK=ON \
+  -DDISABLE_SNDIO=ON \
+  -DDISABLE_FREETYPE=ON \
+  -DDISABLE_VLC=ON \
+  -DBUILD_BROWSER=OFF \
+  -DBUILD_VST=OFF \
+  -DWITH_RTMPS=OFF
+
   make -C build
 }
 
@@ -49,6 +61,6 @@ package() {
 
   cd "obs-studio-$_obsver"
   make -C build DESTDIR="$srcdir/fakeroot/" install
-  cp -a "$srcdir"/fakeroot/usr/lib/obs-plugins/freeze-filter.so "$pkgdir"/usr/lib/obs-plugins/
-  cp -a "$srcdir"/fakeroot/usr/share/obs/obs-plugins/freeze-filter "$pkgdir"/usr/share/obs/obs-plugins/
+  cp -a "$srcdir"/fakeroot/usr/lib/obs-plugins/$_pluginname.so "$pkgdir"/usr/lib/obs-plugins/
+  cp -a "$srcdir"/fakeroot/usr/share/obs/obs-plugins/$_pluginname "$pkgdir"/usr/share/obs/obs-plugins/
 }
