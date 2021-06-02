@@ -3,7 +3,7 @@
 
 pkgname='perl-xml-generator'
 pkgver='1.04'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl extension for generating XML"
 arch=('any')
 license=('PerlArtistic' 'GPL')

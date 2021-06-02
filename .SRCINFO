@@ -1,7 +1,7 @@
 pkgbase = perl-xml-generator
 	pkgdesc = Perl extension for generating XML
 	pkgver = 1.04
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/XML-Generator
 	arch = any
 	license = PerlArtistic
@@ -13,4 +13,3 @@ pkgbase = perl-xml-generator
 	sha512sums = ce151a2d575c9ec4cd42819a5d573bfc4985e0daa3945c310d61bb0a6376e4b8a0dcef5ce89e444795d99c9751719d45981675d1418ba6d729d152187688d552
 
 pkgname = perl-xml-generator
-
