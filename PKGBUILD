@@ -8,7 +8,7 @@ arch=(x86_64)
 url='https://github.com/phra/PEzor'
 license=(GPL3 Apache)
 makedepends=(git)
-depends=(capstone clang cowsay donut keystone mingw-w64-binutils mingw-w64-clang-git mingw-w64-crt mingw-w64-gcc mingw-w64-headers mingw-w64-winpthreads mono sgn)
+depends=(capstone clang cowsay donut keystone mingw-w64-clang-git mingw-w64-gcc mono sgn)
 source=('git+https://github.com/phra/PEzor.git#commit=d03563cd0c2994d911f9ffb7edb3987163a721fe'
         'git+https://github.com/JustasMasiulis/inline_syscall.git#commit=24238544b510d8f85ca38de3a43bc41fa8cfe380'
         'install_dir.patch'

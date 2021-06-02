@@ -12,12 +12,8 @@ pkgbase = pezor
 	depends = cowsay
 	depends = donut
 	depends = keystone
-	depends = mingw-w64-binutils
 	depends = mingw-w64-clang-git
-	depends = mingw-w64-crt
 	depends = mingw-w64-gcc
-	depends = mingw-w64-headers
-	depends = mingw-w64-winpthreads
 	depends = mono
 	depends = sgn
 	source = git+https://github.com/phra/PEzor.git#commit=d03563cd0c2994d911f9ffb7edb3987163a721fe
