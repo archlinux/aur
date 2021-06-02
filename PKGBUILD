@@ -7,11 +7,11 @@
 
 pkgname=lxc-anbox
 pkgver=4.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux Containers (for anbox)"
 arch=('x86_64')
 url="https://linuxcontainers.org"
-provides=('lxc=1:4.0.6')
+provides=('lxc=4.0.6')
 conflicts=('lxc' 'lxc-git')
 depends=('bash' 'perl' 'libseccomp' 'libcap' 'python' 'rsync' 'wget')
 makedepends=('docbook2x' 'lua' 'python-setuptools' 'apparmor')

@@ -1,7 +1,7 @@
 pkgbase = lxc-anbox
 	pkgdesc = Linux Containers (for anbox)
 	pkgver = 4.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://linuxcontainers.org
 	arch = x86_64
 	license = LGPL
@@ -20,7 +20,7 @@ pkgbase = lxc-anbox
 	optdepends = lua
 	optdepends = lua-filesystem: lxc-top
 	optdepends = lua-alt-getopt: lxc-top
-	provides = lxc=1:4.0.6
+	provides = lxc=4.0.6
 	conflicts = lxc
 	conflicts = lxc-git
 	options = emptydirs
