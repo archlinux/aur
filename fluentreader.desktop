@@ -1,9 +1,8 @@
 [Desktop Entry]
 Name=Fluent Reader
 Comment=Modern desktop RSS reader
-Exec=/usr/share/fluentreader/fluent-reader
+Exec=/usr/share/fluentreader/AppRun
 Terminal=false
 Type=Application
-Icon=/usr/share/icons/hicolor/512x512/apps/fluent-reader.png
+Icon=/usr/share/fluentreader/usr/share/icons/hicolor/512x512/apps/fluent-reader.png
 Categories=Network;Internet
-

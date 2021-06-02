@@ -10,7 +10,7 @@ url="https://github.com/yang991178/fluent-reader/"
 license=('BSD-3-Clause License')
 source=("https://github.com/yang991178/fluent-reader/releases/download/v${pkgver}/Fluent.Reader.${pkgver}.AppImage" "fluentreader.desktop")
 sha256sums=('36c650b05776a33fc043bfbf0a9133cab74f8a936b0666cae2c5d386eca7bfa9'
-            '54af9482e7627a9af3495afc909112af61d068d39f7202ae3c270f547d456785')
+            'd4c86c55710d9914229a7cdf704f5d09e8fadc34708eba857e512aea05cb2c3c')
 prepare() {
   cd "${srcdir}"
   chmod +x Fluent.Reader.${pkgver}.AppImage
