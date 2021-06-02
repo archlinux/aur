@@ -1,7 +1,7 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=('any')
@@ -56,7 +56,7 @@ depends+=("${_lua_deps[@]/#/lua-}" "${_lua_deps[@]/#/lua53-}"
           "${_python_deps[@]/#/python-}")
 makedepends=('autoconf-archive' 'cargo' 'luarocks' 'node-prune' 'rust' 'yarn')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('b5d166a6b2f116faab8b9613ad4094a89848672d6ddd3403ff0017f9a347c50c')
+sha256sums=('5fe5709cba7d1089ed22908cf9032dd8e4bdf12d1b737cf54a160a9b68644b21')
 
 prepare() {
     cd "$pkgname-$pkgver"
