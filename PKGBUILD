@@ -1,10 +1,11 @@
+# Maintainer: afontenot <adam.m.fontenot@gmail.com>
 # Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
 
 pkgname=python-crcmod
 pkgver=1.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Cyclic Redundancy Check (CRC) implementation in Python.'
-arch=('any')
+arch=('x86_64')
 url=https://pypi.python.org/pypi/crcmod/
 license=('MIT')
 depends=('python')

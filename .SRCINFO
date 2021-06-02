@@ -1,13 +1,12 @@
 pkgbase = python-crcmod
 	pkgdesc = Cyclic Redundancy Check (CRC) implementation in Python.
 	pkgver = 1.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.python.org/pypi/crcmod/
-	arch = any
+	arch = x86_64
 	license = MIT
 	depends = python
 	source = https://pypi.python.org/packages/source/c/crcmod/crcmod-1.7.tar.gz
 	sha256sums = dc7051a0db5f2bd48665a990d3ec1cc305a466a77358ca4492826f41f283601e
 
 pkgname = python-crcmod
-
