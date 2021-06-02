@@ -13,8 +13,8 @@
 # Based on the plex-media-server package by Maxime Gauduin.
 
 pkgname=plex-media-server-plexpass
-pkgver=1.23.2.4600
-_pkgsum=f06057b33
+pkgver=1.23.2.4625
+_pkgsum=a83d2d0f9
 pkgrel=1
 pkgdesc='The back-end media server component of Plex.'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -43,10 +43,10 @@ sha256sums=('b7f2fb1cbedde54a79a1794ec9f35f8bdeb033a4c5453ec77944ca7fe77cd9b7'
             'c597bee0bcbb59ed791651555a904e5f7e9d2e82f6c6986b6352e5fc38e5b557'
             'b7ff6525a3c7a8be885edc85bb523095f8e25ddb38873127e2a4e97b28f2c7ad'
             '7bb97271eb2dc5d1dcb95f9763f505970d234df17f1b8d79b467b9020257915a')
-sha256sums_x86_64=('b8cef19862797fd38845ba27d721967350b98bcfda633e8a667563a0d8635abe')
-sha256sums_i686=('233c59231d9f09028c7297517d833187f85ce4a43d844a1b758326387f27f79d')
-sha256sums_armv7h=('c19452d4a4240ae853c4dc6134e4f270a2b8309a11f96338c592335cfccf49da')
-sha256sums_aarch64=('5cb1282ded42b015d0c27015cee17604bbf6e2f34c40fb5bce79dc67c4c842e9')
+sha256sums_x86_64=('297b51e67cae590fac048bf1995ffb67bf07ef7d25829bece4425fa5b1b784d0')
+sha256sums_i686=('8d0fb6a6082653981f135d2571328349f64fc2b9b5ac82efb2754e359810c4b3')
+sha256sums_armv7h=('7092c357b195abc7d752fcad365092112d93225c7f3921abfdfd6f2c9417bf90')
+sha256sums_aarch64=('6c90d162c56de1331c0d0c05a2aeb2cc0693e5718d27f96621fdd0aef428ad9e')
 
 prepare() {
   if [[ $CARCH = armv7h ]] || [[ $CARCH = aarch64 ]]; then
