@@ -1,0 +1,21 @@
+pkgbase = openvtuber
+	pkgdesc = Real-time face and gaze analyzation via deep neural networks.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/tallero/pgpgram
+	arch = any
+	license = GPL3
+	depends = npm
+	depends = python
+	depends = python-bidict
+	depends = python-engineio
+	depends = python-opencv
+	depends = python-socketio
+	depends = python-tensorflow
+	depends = python-websocket-client
+	depends = yarn
+	source = openvtuber::git+https://github.com/1996scarlet/OpenVtuber.git#tag=v1.0-2019
+	sha256sums = SKIP
+
+pkgname = openvtuber
+
