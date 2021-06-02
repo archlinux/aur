@@ -1,13 +1,13 @@
 # Maintainer: Jerry <isjerryxiao at outlook dot com>
 _srcname=pacroller
 pkgname=pacroller-dev-git
-pkgver=0.1.0.7.g87fe2ee
-pkgrel=2
+pkgver=0.1.3.3.g76b13e8
+pkgrel=1
 pkgdesc="Unattended upgrade for archlinux"
 arch=('any')
 url="https://github.com/isjerryxiao/pacroller"
 license=('GPL3')
-depends=('python' 'pyalpm')
+depends=('python')
 makedepends=('python-setuptools' 'git')
 optdepends=('needrestart')
 provides=("pacroller")
