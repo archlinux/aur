@@ -1,0 +1,6 @@
+*
+!.SRCINFO
+!PKGBUILD
+!lxc-auto.service
+!lxc.service
+!lxc.tmpfiles.d
