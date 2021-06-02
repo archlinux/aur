@@ -1,6 +1,6 @@
 pkgname='adscript'
 pkgdesc="A high-performance, s-expressions based programming language that is natively compiled."
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 url="https://github.com/Amplus2/Adscript"
 license=('MPL2')
@@ -8,7 +8,7 @@ options=(!buildflags)
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 depends=('llvm>=11.1')
 makedepends=('clang>=11.1')
-source=("${url}/archive/refs/tags/${pkgname}-${pkgver}.zip")
+source=("${url}/archive/refs/tags/${pkgname}-${pkgver}.tar.gz")
 md5sums=('SKIP')
 install=$pkgname.install
 
