@@ -1,10 +1,10 @@
 # Maintainer: Arnaud Dovi <mr.dovi@gmail.com>
 
 pkgname=ghidra-dev
-pkgbranch=debugger
-pkgver=9.2.4.r980.95aa62288+debugger
+pkgbranch=master
+pkgver=9.2.4.r991.68a9c0a5a+master
 pkgrel=1
-pkgdesc='Software reverse engineering framework (git, current branch: debugger)'
+pkgdesc='Software reverse engineering framework (git, current branch: master)'
 arch=('x86_64')
 url='https://www.nsa.gov/ghidra'
 license=(Apache)
@@ -56,9 +56,9 @@ pkgver() {
 prepare() {
   cd "$pkgname2" || return
 
-  # PATCH - GP-793 corrected missing IP info - https://github.com/NationalSecurityAgency/ghidra/commit/70675fce99a4c6e6e650729e5dda6ccbbbbbd40d
-  echo -e "${prefix}[PATCH] - GP-793 corrected missing IP info (https://github.com/NationalSecurityAgency/ghidra/commit/70675fce99a4c6e6e650729e5dda6ccbbbbbd40d)"
-  patch --no-backup-if-mismatch --forward --strip=2 --input="${srcdir}/0000-GP-793-corrected-missing-IP-info.patch"
+  # DEPRECATED PATCH - GP-793 corrected missing IP info - https://github.com/NationalSecurityAgency/ghidra/commit/70675fce99a4c6e6e650729e5dda6ccbbbbbd40d
+#  echo -e "${prefix}[PATCH] - GP-793 corrected missing IP info (https://github.com/NationalSecurityAgency/ghidra/commit/70675fce99a4c6e6e650729e5dda6ccbbbbbd40d)"
+#  patch --no-backup-if-mismatch --forward --strip=2 --input="${srcdir}/0000-GP-793-corrected-missing-IP-info.patch"
 
   # DEPRECATED PATCH - Attaching with GDB doesn't work - https://github.com/NationalSecurityAgency/ghidra/issues/2735
 #  echo -e "${prefix}[PATCH] - Attaching with GDB doesn't work (https://github.com/NationalSecurityAgency/ghidra/issues/2735)"
