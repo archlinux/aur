@@ -53,7 +53,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd mozilla-unified
-  printf "90.0a1.r%s" "$(hg identify -n)" | sed 's/\+//g'
+  printf "91.0a1.r%s" "$(hg identify -n)" | sed 's/\+//g'
 }
 
 prepare() {
