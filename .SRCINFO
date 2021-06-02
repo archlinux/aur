@@ -1,16 +1,14 @@
 pkgbase = nodejs-gatsby-cli
-	pkgdesc = The Gatsby command line interface
-	pkgver = 3.3.0
+	pkgdesc = Gatsby command-line interface for creating new sites and running Gatsby commands
+	pkgver = 3.6.0
 	pkgrel = 1
-	url = https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-cli
+	url = https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-cli#readme
 	arch = any
 	license = MIT
-	makedepends = npm
-	makedepends = jq
 	depends = nodejs
-	noextract = gatsby-cli-3.3.0.tgz
-	source = https://registry.npmjs.org/gatsby-cli/-/gatsby-cli-3.3.0.tgz
-	md5sums = a7a9013d7c85f716d0d6861734a678e3
+	depends = npm
+	noextract = gatsby-cli-3.6.0.tgz
+	source = https://registry.npmjs.org/gatsby-cli/-/gatsby-cli-3.6.0.tgz
+	sha1sums = 7450a04023871ba1d849d90ba133fa53fa9c90e8
 
 pkgname = nodejs-gatsby-cli
-

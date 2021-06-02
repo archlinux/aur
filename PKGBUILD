@@ -1,36 +1,24 @@
 # Maintainer: Eric Cheng <ericcheng@hey.com>
 
 _npmname=gatsby-cli
-pkgname=nodejs-${_npmname}
-pkgver=3.3.0
+_npmver=3.6.0
+pkgname=nodejs-gatsby-cli # All lowercase
+pkgver=3.6.0
 pkgrel=1
-pkgdesc="The Gatsby command line interface"
+pkgdesc="Gatsby command-line interface for creating new sites and running Gatsby commands"
 arch=(any)
-url="https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-cli"
-license=('MIT')
-depends=('nodejs')
-makedepends=('npm' 'jq')
-source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
-noextract=($_npmname-$pkgver.tgz)
-md5sums=('a7a9013d7c85f716d0d6861734a678e3')
+url="https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-cli#readme"
+license=(MIT)
+depends=('nodejs' 'npm')
+optdepends=()
+source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
+noextract=($_npmname-$_npmver.tgz)
+sha1sums=('7450a04023871ba1d849d90ba133fa53fa9c90e8')
 
 package() {
-    npm install -g --cache "${srcdir}/npm-cache" --user root --prefix "${pkgdir}/usr" "${srcdir}/${_npmname}-${pkgver}.tgz"
-    find "${pkgdir}"/usr -type d -exec chmod 755 {} +
-    chown -R root:root "${pkgdir}"
-
-    # Remove references to $pkgdir
-    find "${pkgdir}" -type f -name package.json -print0 | xargs -0 sed -i "/_where/d"
-
-    # Remove references to $srcdir
-    local tmppackage="$(mktemp)"
-    local pkgjson="${pkgdir}/usr/lib/node_modules/${_npmname}/package.json"
-    jq '.|=with_entries(select(.key|test("_.+")|not))' "${pkgjson}" > "${tmppackage}"
-    mv "${tmppackage}" "${pkgjson}"
-    chmod 644 "${pkgjson}"
-
-    # Install license file
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgdir}"
-    mv "${pkgdir}/usr/lib/node_modules/${_npmname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgdir}/LICENSE"
+  cd $srcdir
+  local _npmdir="$pkgdir/usr/lib/node_modules/"
+  mkdir -p $_npmdir
+  cd $_npmdir
+  npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
 }
-
