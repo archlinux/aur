@@ -1,0 +1,16 @@
+pkgbase = clubhouse-desktop-bin
+	pkgdesc = An unofficial Clubhouse desktop client
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/callmearta/clubhouse-desktop
+	arch = x86_64
+	license = MIT
+	provides = clubhouse-desktop
+	source = https://github.com/callmearta/clubhouse-desktop/releases/download/1.0.2/clubhouse-linux-x64.zip
+	source = clubhouse-desktop.sh
+	source = clubhouse-desktop.desktop
+	sha256sums = 5d6fa337491bce097afa3a4d4b7b0f2a63ccb49f4ad6c717e16202edd785c297
+	sha256sums = b3cee2deede1e69172d0b2cc246e0e259675f8c0fd09de339027288aebb224fa
+	sha256sums = d088cea66fa7d5f8e99d29b150a33b311131a9c38144f0093ccca9bd633aaa52
+
+pkgname = clubhouse-desktop-bin

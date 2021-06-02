@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Clubhouse Desktop
+Exec=clubhouse-desktop
+Terminal=false
+Type=Application
+StartupWMClass=Clubhouse
+Comment=An unofficial Clubhouse desktop client
+Categories=Utility;
