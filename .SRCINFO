@@ -1,0 +1,15 @@
+pkgbase = pdfutil
+	pkgdesc = A utility for PDF document manipulation.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/J-F-Liu/lopdf/tree/master/pdfutil
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = pdfutil-0.4.0.tar.gz::https://crates.io/api/v1/crates/pdfutil/0.4.0/download
+	sha512sums = c1d3c503e2043cf8b7a4824727ea559b8cc1a201ccd78fd85c640f8e33a5c64199fa7466adfbbee5c730cdb35c6510b3a17a6f484c0174b99d9afb94160dfa68
+
+pkgname = pdfutil
