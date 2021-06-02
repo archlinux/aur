@@ -1,0 +1,16 @@
+pkgbase = matrix-3ds-sdk-git
+	pkgdesc = Matrix client SDK for the Nintendo 3DS
+	pkgver = r34.8b4315c
+	pkgrel = 1
+	url = https://github.com/Sorunome/matrix-3ds-sdk/
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = 3ds-curl
+	makedepends = 3ds-jansson
+	provides = matrix-3ds-sdk-git
+	conflicts = matrix-3ds-sdk-git
+	source = git+https://github.com/Sorunome/matrix-3ds-sdk.git
+	md5sums = SKIP
+
+pkgname = matrix-3ds-sdk-git
