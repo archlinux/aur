@@ -1,6 +1,6 @@
 pkgbase = python-eml-parser
 	pkgdesc = Parse EML files and return various information found in the e-mail
-	pkgver = 1.14.1
+	pkgver = 1.14.6
 	pkgrel = 0
 	url = https://pypi.org/project/eml-parser
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = python-eml-parser
 	depends = python
 	depends = python-chardet
 	depends = python-dateutil
-	source = python-eml-parser.tar.gz::https://github.com/GOVCERT-LU/eml_parser/archive/v1.14.1.tar.gz
-	sha512sums = 543f43eaf677259be341001a35021ad0327b92b952f817809cbcb3257994bf23b5e7488d752d6b3985b3913c02374d97c23a8da99eb5a76eed9b15c209326d77
+	source = python-eml-parser.tar.gz::https://github.com/GOVCERT-LU/eml_parser/archive/v1.14.6.tar.gz
+	sha512sums = 405efae7a3186fb89d6545284aa9b2d49e786c0f5f323e0cf106e4f7774237857fac7305f3a54f71e4fda0fdd14141f6bb2129d4c98e624a5ed7a4868c78b73b
 
 pkgname = python-eml-parser
-
