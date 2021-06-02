@@ -14,7 +14,7 @@ source=("https://download.brother.com/welcome/dlf103945/hll3270cdwpdrv-$pkgver-0
 sha256sums=('18b479c8587430675d13e116dcf4e77010840ff47e61bc80d91c3ab87023abc1')
 
 package() {
-	_model="HLL3270CDW"
+	_model="hll3270cdw"
 
 	# using /usr/share instead of /opt
 	mkdir -p "$pkgdir/usr/share"
