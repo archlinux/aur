@@ -1,6 +1,6 @@
 pkgbase = osm2pgsql
 	pkgdesc = tool for loading OpenStreetMap data into a PostgreSQL / PostGIS database
-	pkgver = 1.4.2
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://osm2pgsql.org/
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = osm2pgsql
 	optdepends = lua: used for Lua tag transforms
 	optdepends = postgresql: for creating a PostgreSQL database
 	optdepends = postgis: for creating a PostGIS database
-	source = osm2pgsql-1.4.2.tar.gz::https://github.com/openstreetmap/osm2pgsql/archive/1.4.2.tar.gz
-	sha256sums = fc68283930ccd468ed9b28685150741b16083fec86800a4b011884ae22eb061c
+	source = osm2pgsql-1.5.0.tar.gz::https://github.com/openstreetmap/osm2pgsql/archive/1.5.0.tar.gz
+	sha256sums = d31be268dda21cf31418f68c78b8e0cbbd90cd8a283c4dfe0c134a7960936fce
 
 pkgname = osm2pgsql
 
