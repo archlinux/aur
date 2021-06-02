@@ -1,7 +1,7 @@
 pkgbase = nodejs-npm2arch
 	pkgdesc = Convert NPM package to a PKGBUILD for ArchLinux
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/simon04/npm2arch
 	arch = any
 	license = MIT
