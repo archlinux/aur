@@ -2,7 +2,7 @@ pkgbase = borna-fonts
 	pkgdesc = Borna Rayaneh Co. Persian B font series.
 	pkgver = 20011225
 	pkgrel = 4
-	url = http://www.bornaray.com/products/font.html
+	url = http://www.bornaray.com/
 	arch = any
 	license = unknown
 	depends = fontconfig
@@ -15,4 +15,3 @@ pkgbase = borna-fonts
 	sha256sums = f9d7dcabe3378b82d7d32ae5b4f41b90dc9f72a572604ee59b4ebde54851379a
 
 pkgname = borna-fonts
-
