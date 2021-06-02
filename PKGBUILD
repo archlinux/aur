@@ -2,7 +2,7 @@
 
 pkgname=rime-flypy
 pkgver=10.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="小鹤音形 rime 挂接文件"
 arch=('any')
 url="http://flypy.com/"
@@ -25,7 +25,7 @@ package() {
     install -Dm644 rime.lua "$pkgdir"/usr/share/rime-data/lua-recipe/flypy.lua
     install -Dm644 flypy.schema.yaml -t "$pkgdir"/usr/share/rime-data
     install -Dm644 flypy_{sys,top,user}.txt -t "$pkgdir"/usr/share/rime-data
-    install -Dm644 lua/flypy.lua "$pkgdir"/usr/share/rime-data/lua/flypy.lua
+    install -Dm644 lua/*.lua -t "$pkgdir"/usr/share/rime-data/lua
     install -Dm644 build/{flypy,flypydz}.{table,prism,reverse}.bin -t "$pkgdir"/usr/share/rime-data/build
 }
 
