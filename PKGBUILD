@@ -14,6 +14,11 @@ sha256sums=('8b490ad35c28a79806f84dacbdc36d602ce0a3a4e32c3575f99495c6e6b4906e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
+prepare() {
+  cd "$srcdir/Bcp-$pkgver"
+  curl -L https://github.com/coin-or/Bcp/commit/e581a2dd4b55352eb318c15e8281b3cc9d8abe23.patch | patch -p1
+}
+
 build() {
   cd "$srcdir/Bcp-$pkgver"
   for _arch in ${_architectures}; do
