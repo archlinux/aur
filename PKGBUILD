@@ -1,3 +1,5 @@
+# Maintainer: Simone Cimarelli <aquilairreale@ymail.com>
+
 pkgname=donut
 pkgver=0.9.3
 pkgrel=1
