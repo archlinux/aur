@@ -1,7 +1,9 @@
 # Maintainer: Groctel <aur@taxorubio.com>
+# Maintainer: Naveen M K <naveen@syrusdark.website>
+
 pkgname=python-manimpango
 _name=ManimPango
-pkgver=0.2.6
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="C binding for Pango using Cython used in Manim to render (non-LaTeX) text."
 arch=('any')
@@ -20,7 +22,7 @@ makedepends=(
 )
 provides=()
 source=("https://github.com/ManimCommunity/$_name/releases/download/v$pkgver/$_name-$pkgver.tar.gz")
-sha512sums=('4944ca2c3afa7bad54738d7d9c81c3c7d8348eac40fd5614a8f1f430ec85084de10de0bd1d970edd4cd3674bbdec375ca86351cf2ce0a7d429409fd6d32d72d8')
+sha512sums=('60e7e24cff47ec7ad358f9b7f0506d9469aa28c1f3866518b9a9410abd28652a1be86d32af54a66acc5e5a0e3db3caefe29a7b9d801c00591b9d00a3c6332350')
 
 build() {
 	cd "$srcdir/$_name-$pkgver"
@@ -33,4 +35,3 @@ package() {
 	python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1 --skip-build
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_name/LICENSE"
 }
-
