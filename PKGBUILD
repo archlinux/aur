@@ -1,6 +1,6 @@
 pkgname=svix-cli
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The Svix CLI'
 arch=('x86_64')
 url="https://www.svix.com"
@@ -21,7 +21,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o build ./...
+  go build -ldflags "-s -w -X github.com/svixhq/svix-cli/version.Version=v$pkgver" -o build ./...
 }
 
 package() {
