@@ -1,7 +1,7 @@
 # Maintainer: csantosb <csantosb dot inventati dot org>
 pkgname=python-cocotb
-pkgver=1.5
-pkgrel=2
+pkgver=1.5.2
+pkgrel=1
 pkgdesc="Coroutine based cosimulation library for writing VHDL and Verilog testbenches in Python"
 arch=('any')
 url="http://github.com/cocotb/cocotb/"
@@ -13,7 +13,7 @@ optdepends=('iverilog: for simulating verilog designs'
 	    'gtkwave: for visualizing waveforms')
 
 options=(!emptydirs)
-source=("git+https://github.com/cocotb/cocotb#tag=v${pkgver}.${pkgrel}")
+source=("git+https://github.com/cocotb/cocotb#tag=v${pkgver}")
 md5sums=('SKIP')
 
 build() {
