@@ -2,14 +2,15 @@
 # Contributor: Sergey Malkin  <adresatt@gmail.com>
 
 pkgname=nemu-git
-pkgver=2.6.0.r34.g953e68e
+pkgver=2.6.0.r78.g18f79a4
 pkgrel=1
 pkgdesc="ncurses interface for QEMU"
 arch=('i686' 'x86_64')
 url="https://github.com/nemuTUI/nemu"
 license=('custom:BSD')
-depends=('qemu-headless' 'glibc' 'ncurses' 'sqlite' 'udev' 'libusb' 'libarchive')
+depends=('libarchive' 'libxml2' 'qemu-headless')
 makedepends=('git')
+optdepends=('tigervnc: for vncviewer' 'virt-viewer: for remote-viewer')
 provides=('nemu')
 conflicts=('nemu')
 source=("git+$url.git")
@@ -31,5 +32,7 @@ build() {
 package() {
   cd "${pkgname%-git}"/build
   make DESTDIR="$pkgdir/" install
+  mv "$pkgdir"/usr/local/* "$pkgdir"/usr
+  rmdir "$pkgdir"/usr/local
   install -Dm644 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
