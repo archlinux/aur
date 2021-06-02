@@ -5,18 +5,18 @@
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 
 pkgname=psi-plus
-pkgver=1.5.1484
+pkgver=1.5.1543
 pkgrel=1
 pkgdesc="Psi+ is a powerful XMPP client (Qt, C++) designed for the XMPP power users (with all plugins)"
 url="https://psi-plus.com"
 license=('GPL2')
 arch=('x86_64')
 depends=('qt5-webengine' 'qt5-multimedia' 'qt5-x11extras' 'qca'
-	 'libidn' 'libxss' 'qt5-svg' 'hunspell' 'qtkeychain'
+	 'qt5-svg' 'hunspell' 'qtkeychain'
 	 'libsignal-protocol-c' 'libotr' 'tidy' 'http-parser')
-makedepends=('patch' 'cmake' 'usrsctp-git')
+makedepends=('cmake' 'ninja' 'usrsctp-git')
 source=("https://github.com/psi-plus/psi-plus-snapshots/archive/${pkgver}.tar.gz")
-sha256sums=('631652c66904ed8b6deca557370c3708a8862931633f7676070326b0f0eda444')
+sha256sums=('06bc386f40636984731ff719d48bc6d77cb231aead0c211c2dac0c54d10c83cb')
 
 build() {
   cd psi-plus-snapshots-${pkgver}
@@ -24,13 +24,14 @@ build() {
   # patch -p0 -i "${srcdir}/otr-fix.patch"
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release  \
-	  -DENABLE_PLUGINS=ON -DBUILD_DEV_PLUGINS=ON ..
-  make
+  cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release \
+	-DCHAT_TYPE=webengine \
+	-DENABLE_PLUGINS=ON -DBUILD_DEV_PLUGINS=ON ..
+  ninja
 }
 
 package() {
   cd psi-plus-snapshots-${pkgver}/build
 
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja install
 }
