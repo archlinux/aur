@@ -1,7 +1,7 @@
 pkgbase = kind
 	pkgdesc = Kubernetes IN Docker - local clusters for testing Kubernetes
 	pkgver = 0.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kind.sigs.k8s.io/
 	install = kind.install
 	arch = x86_64
@@ -17,7 +17,8 @@ pkgbase = kind
 	optdepends = podman: container engine
 	optdepends = kubectl: for managing Kubernetes clusters
 	source = https://github.com/kubernetes-sigs/kind/archive/v0.11.1/kind-0.11.1.tar.gz
+	source = iptables.conf
 	sha256sums = 95ce0e7b01c00be149e5bd777936cef3f79ba7f1f3e5872e7ed60595858a2491
+	sha256sums = fac7413afb24af54abd8cbe5e1424723ea6bccf0c26205670b7f3f4fe0f98f0d
 
 pkgname = kind
-

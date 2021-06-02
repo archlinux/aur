@@ -1,7 +1,7 @@
 # Maintainer: ml <>
 pkgname=kind
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Kubernetes IN Docker - local clusters for testing Kubernetes'
 arch=('x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
 url='https://kind.sigs.k8s.io/'
@@ -15,8 +15,10 @@ optdepends=(
   'kubectl: for managing Kubernetes clusters'
 )
 install=kind.install
-source=("https://github.com/kubernetes-sigs/kind/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('95ce0e7b01c00be149e5bd777936cef3f79ba7f1f3e5872e7ed60595858a2491')
+source=("https://github.com/kubernetes-sigs/kind/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
+        iptables.conf)
+sha256sums=('95ce0e7b01c00be149e5bd777936cef3f79ba7f1f3e5872e7ed60595858a2491'
+            'fac7413afb24af54abd8cbe5e1424723ea6bccf0c26205670b7f3f4fe0f98f0d')
 
 build() {
   local _commit
@@ -37,6 +39,8 @@ build() {
 }
 
 package() {
+  install -Dm755 iptables.conf -t "$pkgdir/etc/modules-load.d"
+
   cd "$pkgname-$pkgver"
   install -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
   install -Dm644 completion.bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
