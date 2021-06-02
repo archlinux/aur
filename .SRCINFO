@@ -1,0 +1,16 @@
+pkgbase = python-django-recaptcha-git
+	pkgdesc = Django reCAPTCHA form field/widget integration app
+	pkgver = 2.0.6.r7.gdc7cbfe
+	pkgrel = 1
+	url = https://github.com/praekelt/django-recaptcha
+	arch = any
+	license = BSD3
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = mkdocs
+	provides = python-django-recaptcha
+	source = git+https://github.com/praekelt/django-recaptcha
+	sha256sums = SKIP
+
+pkgname = python-django-recaptcha-git
+
