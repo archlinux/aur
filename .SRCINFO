@@ -1,7 +1,7 @@
 pkgbase = obs-studio-browser
 	pkgdesc = Free and open source software for video recording and live streaming. Built with browser, vst plugins.
-	pkgver = 26.1.1
-	pkgrel = 4
+	pkgver = 27.0.0
+	pkgrel = 3
 	url = https://github.com/obsproject/obs-studio
 	arch = i686
 	arch = x86_64
@@ -11,13 +11,17 @@ pkgbase = obs-studio-browser
 	makedepends = libfdk-aac
 	makedepends = libxcomposite
 	makedepends = x264
-	makedepends = jack
 	makedepends = vlc
 	makedepends = swig
 	makedepends = luajit
 	makedepends = python
-	makedepends = cef-minimal-3770
+	makedepends = cef-minimal>=87.0.0
+	makedepends = wayland
+	makedepends = qt5-wayland
+	makedepends = pipewire
+	makedepends = xdg-desktop-portal
 	depends = ffmpeg
+	depends = jack
 	depends = jansson
 	depends = libxinerama
 	depends = libxkbcommon-x11
@@ -27,23 +31,24 @@ pkgbase = obs-studio-browser
 	depends = gtk-update-icon-cache
 	optdepends = libfdk-aac: FDK AAC codec support
 	optdepends = libxcomposite: XComposite capture support
-	optdepends = jack: JACK Support
+	optdepends = libva-intel-driver: Hardware encoding
+	optdepends = libva-mesa-driver: Hardware encoding
 	optdepends = vlc: VLC Media Source
-	optdepends = swig: Scripting
 	optdepends = luajit: Lua scripting
+	optdepends = pipewire: Pipewire capture
+	optdepends = xdg-desktop-portal: Pipewire capture
 	optdepends = python: Python scripting
 	optdepends = v4l2loopback-dkms: Virtual camera output
-	provides = obs-studio=26.1.1
+	provides = obs-studio=27.0.0
 	conflicts = obs-studio
 	conflicts = obs-linuxbrowser
-	source = obs-studio-browser::git+https://github.com/obsproject/obs-studio.git#tag=26.1.1
+	source = obs-studio-browser::git+https://github.com/obsproject/obs-studio.git#tag=27.0.0
 	source = git+https://github.com/Mixer/ftl-sdk.git
 	source = git+https://github.com/obsproject/obs-browser.git
 	source = git+https://github.com/obsproject/obs-vst.git
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = obs-studio-browser
-
