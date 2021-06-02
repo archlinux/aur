@@ -1,0 +1,13 @@
+pkgbase = svix-cli
+	pkgdesc = The Svix CLI
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://www.svix.com
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	source = https://github.com/svixhq/svix-cli/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = bcfe5a430ad8a652cc69c64d3caf462028b858bfc48c085bd45d09c56d3c10fd
+
+pkgname = svix-cli
+
