@@ -1,7 +1,7 @@
 pkgname=mingw-w64-cgns
 _PKGNAME=CGNS
 pkgver=4.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Standard for recording and recovering computer data associated with the numerical solution of fluid dynamics equations (mingw-w64)'
 arch=('any')
 url='http://www.cgns.org'
@@ -16,6 +16,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare(){
   cd "${srcdir}/${_PKGNAME}-${pkgver}"
+  curl -L https://github.com/CGNS/CGNS/pull/271.patch | patch -p1
 }
 
 build() {
