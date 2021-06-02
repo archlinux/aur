@@ -1,0 +1,12 @@
+diff -ur a/PEzor.sh b/PEzor.sh
+--- a/PEzor.sh	2021-06-02 02:42:40.407590509 +0200
++++ b/PEzor.sh	2021-06-02 02:42:56.194032668 +0200
+@@ -16,7 +16,7 @@
+ echo '---------------------------------------------------------------------------'
+ 
+ CURRENT_DIR=`pwd`
+-INSTALL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
++INSTALL_DIR=/opt/PEzor
+ TMP_DIR=/tmp
+ SGN=false
+ BLOB=false
