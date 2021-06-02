@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-opencv
-pkgver=4.5.1
+pkgver=4.5.2
 pkgrel=1
 pkgdesc="Open Source Computer Vision Library (mingw-w64)"
 arch=('any')
@@ -9,10 +9,20 @@ url="http://opencv.org/"
 options=('!buildflags' 'staticlibs' '!strip')
 depends=('mingw-w64-crt' 'mingw-w64-libpng' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libtiff' 'mingw-w64-zlib' 'mingw-w64-libwebp' 'mingw-w64-lapack' 'mingw-w64-cblas' 'mingw-w64-openjpeg2')
 makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-lapacke')
-source=("opencv-$pkgver.zip::https://github.com/opencv/opencv/archive/$pkgver.zip"
-        "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz")
-sha256sums=('5fbc26ee09e148a4d494b225d04217f7c913ca1a4d46115b70cca3565d7bbe05'
-            '12c3b1ddd0b8c1a7da5b743590a288df0934e5cef243e036ca290c2e45e425f5')
+source=("opencv-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver.tar.gz"
+  "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz"
+  "opencv-lapack-3.9.1.patch"
+  "0105-wechat-iconv-dependency.patch"
+  "0012-make-header-usable-with-C-compiler.patch"
+  "0008-mingw-w64-cmake-lib-path.patch"
+  "0010-find-libpng-header.patch")
+sha256sums=('ae258ed50aa039279c3d36afdea5c6ecf762515836b27871a8957c610d0424f8'
+  '9f52fd3114ac464cb4c9a2a6a485c729a223afb57b9c24848484e55cef0b5c2a'
+  '5233d9b4b8e3f4600e3f4ebef2b0ad5621faf25efbdfee96ee720a83cc81d0cc'
+  '3cf6a17b234ddf4f20e042acce329823e970aa06873d63652fa132c46ee56739'
+  '9f918a974e9d5227fce3702b1f38716a7fb79586dda9256b5df44dcc0f858c3b'
+  '7398e66f80be37382bd427b5eb3a1201a23113c14e71435a44df8779ea1b8a34'
+  'd6ad5a0865eefe662ca4c7aceb6aa7b1fd5fcd27e1e65ca839d442f054095e69')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -40,6 +50,15 @@ _cmakeopts=('-DCMAKE_SKIP_RPATH=ON'
             '-DWITH_DSHOW=OFF'
             '-DOPENCV_GENERATE_PKGCONFIG=ON'
             '-DOPENCV_GENERATE_SETUPVARS=OFF')
+
+prepare() {
+  patch -d $srcdir/opencv-$pkgver -p1 < opencv-lapack-3.9.1.patch
+  patch -d $srcdir/opencv-$pkgver -p1 < 0008-mingw-w64-cmake-lib-path.patch
+  patch -d $srcdir/opencv-$pkgver -p1 < 0010-find-libpng-header.patch 
+  patch -d $srcdir/opencv-$pkgver -p1 < 0012-make-header-usable-with-C-compiler.patch 
+  
+  patch -d $srcdir/opencv_contrib-$pkgver -p1 < 0105-wechat-iconv-dependency.patch 
+}
 
 build() {
   cd "$srcdir/opencv-$pkgver"

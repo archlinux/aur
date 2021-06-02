@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-opencv
 	pkgdesc = Open Source Computer Vision Library (mingw-w64)
-	pkgver = 4.5.1
+	pkgver = 4.5.2
 	pkgrel = 1
 	url = http://opencv.org/
 	arch = any
@@ -20,10 +20,19 @@ pkgbase = mingw-w64-opencv
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = opencv-4.5.1.zip::https://github.com/opencv/opencv/archive/4.5.1.zip
-	source = opencv_contrib-4.5.1.tar.gz::https://github.com/opencv/opencv_contrib/archive/4.5.1.tar.gz
-	sha256sums = 5fbc26ee09e148a4d494b225d04217f7c913ca1a4d46115b70cca3565d7bbe05
-	sha256sums = 12c3b1ddd0b8c1a7da5b743590a288df0934e5cef243e036ca290c2e45e425f5
+	source = opencv-4.5.2.tar.gz::https://github.com/opencv/opencv/archive/4.5.2.tar.gz
+	source = opencv_contrib-4.5.2.tar.gz::https://github.com/opencv/opencv_contrib/archive/4.5.2.tar.gz
+	source = opencv-lapack-3.9.1.patch
+	source = 0105-wechat-iconv-dependency.patch
+	source = 0012-make-header-usable-with-C-compiler.patch
+	source = 0008-mingw-w64-cmake-lib-path.patch
+	source = 0010-find-libpng-header.patch
+	sha256sums = ae258ed50aa039279c3d36afdea5c6ecf762515836b27871a8957c610d0424f8
+	sha256sums = 9f52fd3114ac464cb4c9a2a6a485c729a223afb57b9c24848484e55cef0b5c2a
+	sha256sums = 5233d9b4b8e3f4600e3f4ebef2b0ad5621faf25efbdfee96ee720a83cc81d0cc
+	sha256sums = 3cf6a17b234ddf4f20e042acce329823e970aa06873d63652fa132c46ee56739
+	sha256sums = 9f918a974e9d5227fce3702b1f38716a7fb79586dda9256b5df44dcc0f858c3b
+	sha256sums = 7398e66f80be37382bd427b5eb3a1201a23113c14e71435a44df8779ea1b8a34
+	sha256sums = d6ad5a0865eefe662ca4c7aceb6aa7b1fd5fcd27e1e65ca839d442f054095e69
 
 pkgname = mingw-w64-opencv
-
