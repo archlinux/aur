@@ -1,0 +1,11 @@
+pkgbase = donut
+	pkgdesc = x86, x64, or AMD64+x86 position-independent shellcode generator
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/TheWover/donut
+	arch = x86_64
+	license = BSD
+	source = https://github.com/TheWover/donut/archive/refs/tags/v0.9.3.tar.gz
+	sha512sums = 523d83ce2a605bec0d4b3c7aa910bea41839fc7b4c923a737993ecf6a2d112080c7e3a3f38e2e9bc3cf06919be073df21f288af22a87c28b042da3d37ac624b2
+
+pkgname = donut
