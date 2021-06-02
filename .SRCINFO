@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-cmake
 	pkgdesc = CMake wrapper for MinGW (mingw-w64)
 	pkgver = 1
-	pkgrel = 35
+	pkgrel = 36
 	url = http://fedoraproject.org/wiki/MinGW
 	arch = any
 	license = GPL
@@ -16,4 +16,3 @@ pkgbase = mingw-w64-cmake
 	sha256sums = SKIP
 
 pkgname = mingw-w64-cmake
-
