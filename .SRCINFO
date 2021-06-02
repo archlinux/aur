@@ -1,7 +1,7 @@
 pkgbase = perl-string-truncate
 	pkgdesc = a module for when strings are too long to be displayed in...
 	pkgver = 1.100602
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/String-Truncate
 	arch = any
 	license = PerlArtistic
@@ -14,4 +14,3 @@ pkgbase = perl-string-truncate
 	sha512sums = 67519f7c4e3b5b7021b71d70468e3b74b0a60b09cf32988bdf0058a10ee4bec80b189ee33f7c2bc67db804d92ceddaac11feb2f39c7f8b941b12f52eee47b90e
 
 pkgname = perl-string-truncate
-
