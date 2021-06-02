@@ -1,5 +1,5 @@
 pkgbase = lxc-anbox
-	pkgdesc = Linux Containers
+	pkgdesc = Linux Containers (for anbox)
 	pkgver = 4.0.6
 	pkgrel = 1
 	url = https://linuxcontainers.org

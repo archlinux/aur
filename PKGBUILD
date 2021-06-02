@@ -8,7 +8,7 @@
 pkgname=lxc-anbox
 pkgver=4.0.6
 pkgrel=1
-pkgdesc="Linux Containers"
+pkgdesc="Linux Containers (for anbox)"
 arch=('x86_64')
 url="https://linuxcontainers.org"
 provides=('lxc=1:4.0.6')
