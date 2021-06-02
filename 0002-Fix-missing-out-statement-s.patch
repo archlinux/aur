@@ -1,0 +1,66 @@
+From 789ba9acc52b7b0624fb08de9f4756b5d51c10f1 Mon Sep 17 00:00:00 2001
+From: Arnaud Dovi <mr.dovi@gmail.com>
+Date: Wed, 2 Jun 2021 22:30:11 +0200
+Subject: [PATCH 2/2] Fix missing out statement :s
+
+---
+ src/alpm_config.vala       | 4 ++--
+ src/alpm_octopi_utils.vala | 6 +++---
+ vapi/libalpm.vapi          | 2 +-
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/src/alpm_config.vala b/src/alpm_config.vala
+index 84d56f7..5625082 100644
+--- a/src/alpm_config.vala
++++ b/src/alpm_config.vala
+@@ -231,9 +231,9 @@ class AlpmConfig {
+ 							logfile = val;
+ 						} else if (key == "Architecture") {
+ 							if (val == "auto") {
+-							  architectures.append (Posix.utsname().machine);
++								architectures.append (Posix.utsname().machine);
+ 							} else {
+-							  architectures.append (val);
++								architectures.append (val);
+ 							}
+ 						} else if (key == "UseSysLog") {
+ 							usesyslog = 1;
+diff --git a/src/alpm_octopi_utils.vala b/src/alpm_octopi_utils.vala
+index 8e3429d..60b6f33 100644
+--- a/src/alpm_octopi_utils.vala
++++ b/src/alpm_octopi_utils.vala
+@@ -68,15 +68,15 @@ public class AlpmUtils {
+ 		foreach (unowned string part in splitted) {
+ 			needles.append (part);
+ 		}
+-		alpm_handle.localdb.search (needles, results);
++		alpm_handle.localdb.search (needles, out results);
+ 		unowned Alpm.List<unowned Alpm.DB> list = alpm_handle.syncdbs;
+ 		while (list != null) {
+ 			unowned Alpm.DB db = list.data;
+ 			if (syncpkgs.length () == 0) {
+-				 db.search (needles, syncpkgs);
++				db.search (needles, out syncpkgs);
+ 			} else {
+ 				//syncpkgs.join (db.search (needles).diff (syncpkgs, (Alpm.List.CompareFunc) alpm_pkg_compare_name));
+-				db.search (needles, ret);
++				db.search (needles, out ret);
+ 				syncpkgs.join (ret.copy());
+ 			}
+ 			list = list.next;
+diff --git a/vapi/libalpm.vapi b/vapi/libalpm.vapi
+index 19c5915..4e1d59b 100644
+--- a/vapi/libalpm.vapi
++++ b/vapi/libalpm.vapi
+@@ -362,7 +362,7 @@ namespace Alpm {
+ 
+ 		public unowned Package? get_pkg(string name);
+ 		public unowned Group? get_group(string name);
+-		public int search(Alpm.List<unowned string> needles, Alpm.List<unowned Package?> ret);
++		public int search(Alpm.List<unowned string> needles, out Alpm.List<unowned Package?> ret);
+ 
+ 		public int check_pgp_signature(out SigList siglist);
+ 	}
+-- 
+2.31.1
+
