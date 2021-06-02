@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Pixel Vision 8 (v1.0.0)
+GenericName=Fantasy Game Console
+Icon=pixelvision8-100
+Comment=Open source fantasy game console
+Exec="/opt/PixelVision8-v1.0.0-linux/Pixel Vision 8"
+TryExec="/opt/PixelVision8-v1.0.0-linux/Pixel Vision 8"
+Path="/opt/PixelVision8-v1.0.0.0-linux"
+Terminal=false
+Categories=Game;Development;IDE;Emulator;

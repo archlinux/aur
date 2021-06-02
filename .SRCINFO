@@ -1,0 +1,17 @@
+pkgbase = pixelvision8-1.0.0-bin
+	pkgdesc = Open source fantasy game console
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://pixelvision8.github.io/PixelVision8Website/
+	arch = x86_64
+	license = custom:MS-PL
+	source = https://github.com/PixelVision8/PixelVision8/releases/download/v1.0.0/PixelVision8-v1.0.0-linux.zip
+	source = https://raw.githubusercontent.com/PixelVision8/PixelVision8/v1.0.0/LICENSE.txt
+	source = https://raw.githubusercontent.com/PixelVision8/PixelVision8/v1.0.0/Icon.bmp
+	source = pixelvision8-100.desktop
+	md5sums = 0ac4759ddf9110e62a3b458f57d34853
+	md5sums = a0b546798a31051973040a49ae64e8ef
+	md5sums = cccd96a5667823b9f9b5fa49e53601f4
+	md5sums = 83eda2d1778605bce682620b01cf4db3
+
+pkgname = pixelvision8-1.0.0-bin
