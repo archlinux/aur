@@ -54,4 +54,3 @@ pkgname = lib32-glibc-linux4
 	options = !strip
 	options = staticlibs
 	options = !emptydirs
-
