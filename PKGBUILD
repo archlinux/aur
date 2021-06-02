@@ -19,19 +19,19 @@ package() {
 	# using /usr/share instead of /opt
 	mkdir -p "$pkgdir/usr/share"
 	cp -R "$srcdir/opt/brother" "$pkgdir/usr/share"
-	sed -i 's|\\\/opt\\\/|\\\/usr\\\/|' "$pkgdir/usr/share/brother/Printers/$_model/cupswrapper/lpdwrapper"
-	sed -i 's|\\\/opt\\\/|\\\/usr\\\/|' "$pkgdir/usr/share/brother/Printers/$_model/lpd/lpdfilter"
+	sed -i 's|\\\/opt\\\/|\\\/usr\\\/|' "$pkgdir/usr/share/brother/Printers/$_model/cupswrapper/brother_lpdwrapper_$_model"
+	sed -i 's|\\\/opt\\\/|\\\/usr\\\/|' "$pkgdir/usr/share/brother/Printers/$_model/lpd/filter_$_model"
 
 	# /etc/printcap is managed by cups
 	find "$pkgdir" -type f -name 'setupPrintcap*' -delete
 
 	# symlink for lpdwrapper so it correctly figures out the printer model from the path
 	install -d "$pkgdir/usr/lib/cups/filter/"
-	ln -s "/usr/share/brother/Printers/$_model/cupswrapper/lpdwrapper" "$pkgdir/usr/lib/cups/filter/brother_lpdwrapper_$_model"
+	ln -s "/usr/share/brother/Printers/$_model/cupswrapper/brother_lpdwrapper_$_model" "$pkgdir/usr/lib/cups/filter/brother_lpdwrapper_$_model"
 
 	# symlink for the PPD
 	install -d "$pkgdir/usr/share/cups/model/"
-	ln -s "/usr/share/brother/Printers/$_model/cupswrapper/brother-$_model-cups-en.ppd" "$pkgdir/usr/share/cups/model/"
+	ln -s "/usr/share/brother/Printers/$_model/cupswrapper/brother_${_model}_printer_en.ppd" "$pkgdir/usr/share/cups/model/"
 
 	# a couple architecture-specific symlinks
 	ln -s "/usr/share/brother/Printers/$_model/lpd/$CARCH/brprintconflsr3" "$pkgdir/usr/share/brother/Printers/$_model/lpd/"
