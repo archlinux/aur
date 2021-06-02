@@ -1,7 +1,6 @@
-
 pkgname=mingw-w64-configure
 pkgver=0.1.1
-pkgrel=9
+pkgrel=10
 arch=('any')
 pkgdesc="configure wrapper for MinGW (mingw-w64)"
 depends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-environment')
