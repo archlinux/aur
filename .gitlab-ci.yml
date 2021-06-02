@@ -21,5 +21,6 @@ build-package:
     - su notroot -c "makepkg --noconfirm --syncdeps --rmdeps --install --clean"
     - python -c 'import cocotb; print("All OK")'
   artifacts:
+    when: always
     paths:
       - python-cocotb-git-*.tar.zst
