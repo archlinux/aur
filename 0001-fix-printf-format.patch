@@ -1,0 +1,66 @@
+From 83241efb85f7d75d37da0a6f001b88641943abc2 Mon Sep 17 00:00:00 2001
+From: Nicola Murino <nicola.murino@gmail.com>
+Date: Wed, 2 Jun 2021 12:24:08 +0200
+Subject: [PATCH] fix printf format
+
+---
+ libvisual/lv_plugin.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/libvisual/lv_plugin.c b/libvisual/lv_plugin.c
+index 123b4c6..c278b16 100644
+--- a/libvisual/lv_plugin.c
++++ b/libvisual/lv_plugin.c
+@@ -442,11 +442,11 @@ VisList *visual_plugin_registry_filter (VisList *pluglist, const char *domain)
+ 				
+ 				visual_list_add (list, ref);
+ 			} else if (ret != FALSE) {
+-				visual_log (VISUAL_LOG_WARNING, visual_error_to_string (ret));
++				visual_log (VISUAL_LOG_WARNING, "%s", visual_error_to_string (ret));
+ 			}
+ 		}
+ 		else if (ret != FALSE) { /* FIXME XXX TODO, patch frmo duilio check how this works */
+-			visual_log (VISUAL_LOG_WARNING, visual_error_to_string (ret));
++			visual_log (VISUAL_LOG_WARNING, "%s", visual_error_to_string (ret));
+ 		}
+ 	}
+ 
+@@ -720,7 +720,7 @@ VisPluginData *visual_plugin_load (VisPluginRef *ref)
+ 
+ 	if (handle == NULL) {
+ #if defined(VISUAL_OS_WIN32)
+-		visual_log (VISUAL_LOG_CRITICAL, "Cannot load plugin: win32 error code: %d", GetLastError ());
++		visual_log (VISUAL_LOG_CRITICAL, "Cannot load plugin: win32 error code: %ld", GetLastError ());
+ #else
+ 		visual_log (VISUAL_LOG_CRITICAL, _("Cannot load plugin: %s"), dlerror ());
+ #endif
+@@ -735,7 +735,7 @@ VisPluginData *visual_plugin_load (VisPluginRef *ref)
+ 
+ 	if (get_plugin_info == NULL) {
+ #if defined(VISUAL_OS_WIN32)
+-		visual_log (VISUAL_LOG_CRITICAL, "Cannot initialize plugin: win32 error code: %d", GetLastError ());
++		visual_log (VISUAL_LOG_CRITICAL, "Cannot initialize plugin: win32 error code: %ld", GetLastError ());
+ 
+ 		FreeLibrary (handle);
+ #else
+@@ -837,7 +837,7 @@ VisPluginRef **visual_plugin_get_references (const char *pluginpath, int *count)
+ 
+ 	if (handle == NULL) {
+ #if defined(VISUAL_OS_WIN32)
+-		visual_log (VISUAL_LOG_CRITICAL, "Cannot load plugin: win32 error code: %d", GetLastError());
++		visual_log (VISUAL_LOG_CRITICAL, "Cannot load plugin: win32 error code: %ld", GetLastError());
+ #else
+ 		visual_log (VISUAL_LOG_CRITICAL, _("Cannot load plugin: %s"), dlerror ());
+ #endif
+@@ -872,7 +872,7 @@ VisPluginRef **visual_plugin_get_references (const char *pluginpath, int *count)
+ 
+ 	if (get_plugin_info == NULL) {
+ #if defined(VISUAL_OS_WIN32)
+-		visual_log (VISUAL_LOG_CRITICAL, "Cannot initialize plugin: win32 error code: %d", GetLastError ());
++		visual_log (VISUAL_LOG_CRITICAL, "Cannot initialize plugin: win32 error code: %ld", GetLastError ());
+ 
+ 		FreeLibrary (handle);
+ #else
+-- 
+2.31.1
+

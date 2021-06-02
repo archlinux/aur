@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libvisual
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Abstraction library that comes between applications and audio visualisation plugins (mingw-w64)"
 arch=('any')
 url="http://sourceforge.net/projects/libvisual/"
@@ -10,6 +10,7 @@ makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("http://downloads.sourceforge.net/sourceforge/libvisual/libvisual-${pkgver}.tar.gz"
+  "0001-fix-printf-format.patch"
   "0003-Add-long-long-check-for-win64.patch"
   "0005-Fix-compilation-in-win64.patch"
   "0008-Remove-malloc-realloc-configure-checks-they-re-broke.patch"
@@ -21,6 +22,7 @@ source=("http://downloads.sourceforge.net/sourceforge/libvisual/libvisual-${pkgv
   "0015-Include-lv_cpu.h-in-another-place-too.patch"
   "0016-configure.ac-Use-gettext-0.19.patch")
 sha256sums=('0b4dfdb87125e129567752089e3c8b54cefed601eef169d2533d8659da8dc1d7'
+  'dc0f3d97df9d18702a57fa9567c8c1539d8d61328e1734ccd724e442d8fe1edb'
   'ad26dc477e09e1cdc28a29e4d1bc7d45ae3db7741d38a1bd56bccfef96bcefaa'
   'f5e3eb5e7b2993618be9ac034ac7ac943fb68d3db1cde05f60f406b22666a8b6'
   '4c8ec4b57fe6d795c822587657f7cf82db33013910f27e8df473138b86b3c183'
@@ -36,6 +38,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "libvisual-$pkgver"
+  patch -Np1 -i "$srcdir/0001-fix-printf-format.patch" 
   patch -Np1 -i "$srcdir/0003-Add-long-long-check-for-win64.patch" 
   patch -Np1 -i "$srcdir/0005-Fix-compilation-in-win64.patch" 
   patch -Np1 -i "$srcdir/0008-Remove-malloc-realloc-configure-checks-they-re-broke.patch" 
