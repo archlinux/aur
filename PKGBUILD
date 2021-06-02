@@ -3,7 +3,7 @@
 # Contributor: Xavier Devlamynck <magicrhesus@ouranos.be>
 
 pkgname=sipvicious
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Set of security tools that can be used to audit SIP based VoIP systems"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('python-scapy: allow svcrash to crash SIPVicious toolset')
 makedepends=('python-setuptools')
 changelog=$pkgname.changelog
 source=("$pkgname-$pkgver.tar.gz::https://github.com/EnableSecurity/sipvicious/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('4ef872ecea9113f3ec24df98133230f678ccfff24380c2fafff810a4cbc3e2fe26866deb3595a7540cd42d34fd5bc045e6a2f51c7eb6403a445f33acd74e2213')
+b2sums=('75f3d190cb4224ada84cd7c714eb545e44a9759589890a559d3cb5243c5430c0aa81138e3cd294926901e961a5ec156c8d991b648c70e1d8fc2dc906473d507d')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
