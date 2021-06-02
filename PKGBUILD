@@ -18,6 +18,6 @@ package() {
 	yarn --cwd "$srcdir"/port/ make --targets=@electron-forge/maker-zip
 	install -d -m755 "$pkgdir"/usr/bin
 	install -d -m755 "$pkgdir"/usr/share/port
-	cp -r "$srcdir"/port/out/port-linux-x64* "$pkgdir"/usr/share/port
+	cp -r "$srcdir"/port/out/port-linux-x64/* "$pkgdir"/usr/share/port
 	ln -s /usr/share/port/port "$pkgdir"/usr/bin/port
 }
