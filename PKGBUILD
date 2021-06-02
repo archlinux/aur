@@ -26,8 +26,8 @@ prepare() {
   # but all we want is the Gemalto .deb
   case $CARCH in
     x86_64)
-      _hash=302306990a732c9717399cc8f6010fd08a9058a99d91d4445c82ee01154a0553
-      _file=Gemalto_Middleware_Ubuntu_64bit_${pkgver/_/-}.deb;;
+      _hash='302306990a732c9717399cc8f6010fd08a9058a99d91d4445c82ee01154a0553'
+      _file="Gemalto_Middleware_Ubuntu_64bit_${pkgver/_/-}.deb";;
     *)
       false;;
   esac
