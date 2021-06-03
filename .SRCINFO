@@ -1,7 +1,7 @@
 pkgbase = g15composer-systemd
 	pkgdesc = g15composer init script for systemd
-	pkgver = 20210510
-	pkgrel = 1
+	pkgver = 1
+	pkgrel = 2
 	url = https://gitlab.com/menelkir/g15composer
 	arch = any
 	license = GPL2
@@ -11,4 +11,3 @@ pkgbase = g15composer-systemd
 	sha256sums = 243bfc145afc43241dcc042a7f79c9a542aff596d12e1b3d87fb04ae18b25c6b
 
 pkgname = g15composer-systemd
-
