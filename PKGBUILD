@@ -1,9 +1,9 @@
 pkgname=banano-vanity
-pkgver=1.41
-pkgrel=3
+pkgver=1.0
+pkgrel=4
 pkgdesc="A vanity address generator for banano cryptocurrency"
 arch=('x86_64')
-source=("git+https://github.com/flammenderdrache/banano-vanity.git")
+source=("https://github.com/flammenderdrache/banano-vanity/archive/refs/tags/${pkgver}.zip")
 url="https://github.com/flammenderdrache/banano-vanity"
 sha512sums=('SKIP')
 makedepends=(
@@ -13,18 +13,25 @@ makedepends=(
    'ocl-icd'
 )
 
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  cargo fetch --locked
+}
+
 build() {
-    cd "${srcdir}/${pkgname}"
-    cargo build --release --features gpu --locked
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  cargo build --release --locked
 }
 
 check() {
-    cd "${srcdir}/${pkgname}"
-    cargo test --release --features gpu --locked
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  cargo test --release --locked
 }
 
+
 package() {
-    cd "${srcdir}/${pkgname}"
+    #cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
     install -Dm 755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
 
