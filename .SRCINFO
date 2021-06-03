@@ -1,0 +1,11 @@
+pkgbase = kepler-gtk-theme
+	pkgdesc = Kepler GTK theme
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ChromaCat248/Kepler
+	arch = any
+	license = GPLv3
+	source = kepler-gtk-theme-1.0.tar.zst::https://github.com/ChromaCat248/Kepler/releases/download/1.0/Kepler.tar.zst
+	sha256sums = ea958b13264fcf1883439d5786e1938ec2a4e3f887479c88b17591b2e96c1e3c
+
+pkgname = kepler-gtk-theme
