@@ -1,7 +1,7 @@
 pkgbase = onvifviewer
 	pkgdesc = ONVIF camera viewer for Plasma Mobile and Linux desktop
-	pkgver = 0.12
-	pkgrel = 3
+	pkgver = 0.13
+	pkgrel = 1
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
@@ -18,10 +18,7 @@ pkgbase = onvifviewer
 	depends = kdsoap-ws-discovery-client
 	depends = kirigami2
 	depends = qtav
-	source = https://gitlab.com/caspermeijn/onvifviewer/-/archive/v0.12/onvifviewer-v0.12.tar.gz
-	source = Patch-97-onvifdevicediscover-move-over-to-changed-api-of-kdsoap-ws-discovery-client.patch
-	sha256sums = 23dc08c573766688527b8f88d8e3765700f83c72f033b9a42ff9752e0ab487db
-	sha256sums = 074cb2b89a784e51aa8ab9fa5b999dcc36bda92e90b09dbf3cad1cda9d97a00d
+	source = https://gitlab.com/caspermeijn/onvifviewer/-/archive/v0.13/onvifviewer-v0.13.tar.gz
+	sha256sums = 12bc6ff65d93289632aa1fd3dfb862c2fed9792f31092aba63e5b3bf985d52ea
 
 pkgname = onvifviewer
-

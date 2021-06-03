@@ -1,8 +1,8 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=onvifviewer
-pkgver=0.12
-pkgrel=3
+pkgver=0.13
+pkgrel=1
 pkgdesc='ONVIF camera viewer for Plasma Mobile and Linux desktop'
 arch=(x86_64)
 license=('GPL3')
@@ -24,17 +24,16 @@ makedepends=(
   'appstream-qt'
   'git'
 )
-source=("https://gitlab.com/caspermeijn/onvifviewer/-/archive/v${pkgver}/onvifviewer-v${pkgver}.tar.gz"
-        'Patch-97-onvifdevicediscover-move-over-to-changed-api-of-kdsoap-ws-discovery-client.patch')
-sha256sums=('23dc08c573766688527b8f88d8e3765700f83c72f033b9a42ff9752e0ab487db'
-            '074cb2b89a784e51aa8ab9fa5b999dcc36bda92e90b09dbf3cad1cda9d97a00d')
+source=("https://gitlab.com/caspermeijn/onvifviewer/-/archive/v${pkgver}/onvifviewer-v${pkgver}.tar.gz")
+
+sha256sums=('12bc6ff65d93289632aa1fd3dfb862c2fed9792f31092aba63e5b3bf985d52ea')
 
 build() {
   cd "onvifviewer-v${pkgver}"
 
-  for f in "${srcdir}"/*.patch; do
-    patch -Np1 < $f
-  done
+#  for f in "${srcdir}"/*.patch; do
+#    patch -Np1 < $f
+#  done
 
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
