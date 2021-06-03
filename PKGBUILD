@@ -2,7 +2,7 @@
 # Contributor: Lucki
 
 pkgname="asf"
-pkgver="5.0.6.6"
+pkgver="5.1.0.8"
 pkgrel=1
 pkgdesc="Steam cards farmer."
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -22,7 +22,7 @@ source=("asf::git+https://github.com/JustArchiNET/ArchiSteamFarm.git#tag=${pkgve
 sha256sums=('SKIP'
             'ba1ff85e55e56d71dbdd0d898244ff7725bced8625f29c5389e28525e6cdb987'
             'b627c8d4b3ba7f194a44749bd401b33bae601b9570da98e457737a6f9cfa408f'
-            'e63a92fd8008c40dab963161bdac967b57146553c00f114469c204ac6e1795b2'
+            'c300c5ce63c0237d7558b5b303159b8e2a8e5323f581cc8435dd2a6f1ead5332'
             'c6d8dff9306532babf5100629ea48a5322561823a4c7416f02dacbbee5ab30da')
 
 build() {

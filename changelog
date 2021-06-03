@@ -1,3 +1,17 @@
+2021-06-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.1.0.8-1:
+    [!] ASF V5.1, while fairly compatible for the users, has gone through extensive refactor and maintenance internally which was crucial for the future development. We've reorganized the whole project structure, re-evaluated the decisions made in the past and corrected those that were vastly suboptimal given time. All third-party plugins will need to be recompiled in order to work with this release. For plugin developers, we've also prepared a small "developer changelog" below.
+    Our SteamTokenDumperPlugin now supports advanced config that might come useful for the developers and other people having access to potentially sensitive apps on Steam. As of today the config includes various exclusion options.
+    Upon loading a config file, ASF will now automatically migrate it to the latest syntax, if needed. This covers especially the below config property changes, but also the general cleanup of removing default properties and re-ordering the file to follow ASF scheme. All custom plugin properties (such as our SteamTokenDumperPluginEnabled) are left in-tact.
+    Added --no-config-migrate command-line argument for setups that can't or don't want to utilize automatic migration explained above.
+    Added points command (#2330).
+    IPC is now true by default. The property still exists for people that would like to disable it through "IPC": false.
+    IdlePriorityQueueOnly has been renamed to FarmPriorityQueueOnly, other than that it acts the same as before. ASF will automatically migrate this change if config migration is enabled (default behaviour).
+    IdleRefundableGames has been renamed to SkipRefundableGames, other than that it acts as a negation now, as it was counter-intuitive (to deactivate) before. ASF will automatically migrate this change if config migration is enabled (default behaviour).
+    Fixed AWH retry logic not working properly with Steam Web API calls (SteamRE/SteamKit#992).
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Updated localization provided by our community.
+    Usual amount of other core improvements, optimizations and bugfixes.
 2021-05-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.0.6.6-1:
     Fixed a crash related to Humanizer on Windows 7 machines (ref).
