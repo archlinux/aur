@@ -1,7 +1,7 @@
 # Contributor: Spyros Stathopoulos <foucault.online@gmail.com>
 pkgname=pkgupd-git
 _pkgname=pkgupd
-pkgver=0.41
+pkgver=0.42
 pkgrel=1
 pkgdesc="Checks repositories and AUR for package updates"
 arch=('i686' 'x86_64')
@@ -24,12 +24,7 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p ${srcdir}/godeps
-  msg "Getting GO dependencies"
-  for dep in ${_gogets[@]}; do
-    msg2 "Go getting ${dep}"
-    GOPATH=${srcdir}/godeps go get -v ${dep}
-  done
+  mkdir -p ${srcdir}/godeps/src
   if [[ -e ${srcdir}/godeps/src/${_pkgname} ]]; then
     if [[ -h ${srcdir}/godeps/src/${_pkgname} ]]; then
       unlink ${srcdir}/godeps/src/${_pkgname}
@@ -37,7 +32,15 @@ prepare() {
       error "${srcdir}/godeps/src/${_pkgname} should be a link"
     fi
   fi
-  ln -s ${srcdir}/${_pkgname} ${srcdir}/godeps/src
+  ln -s ${srcdir}/${_pkgname} ${srcdir}/godeps/src/${_pkgname}
+  cd ${srcdir}/godeps/src/${_pkgname}
+  GOPATH=${srcdir}/godeps go mod init ${_pkgname}
+  GOPATH=${srcdir}/godeps go mod tidy
+  msg "Getting GO dependencies"
+  for dep in ${_gogets[@]}; do
+    msg2 "Go getting ${dep}"
+    GOPATH=${srcdir}/godeps go get -v ${dep}
+  done
 }
 
 build() {
@@ -45,8 +48,8 @@ build() {
   cd ${srcdir}/${_pkgname}/alpm
   make
 
-  msg "Building pkgupd"
-  cd ${srcdir}
+  msg "Building pkgupd in ${srcdir}/${_pkgname}"
+  cd ${srcdir}/${_pkgname}
   GOPATH=${srcdir}/godeps \
     LIBRARY_PATH=${srcdir}/${_pkgname}/alpm \
     go install -v pkgupd/pkgupd
