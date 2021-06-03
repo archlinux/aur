@@ -8,7 +8,7 @@ pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-alsa-git
          pipewire-common-jack-git pipewire-common-pulse-git
          pipewire-common-zeroconf-git gst-plugin-pipewire-common-git)
 pkgver=0.3.28.r159.g6971d1190
-pkgrel=1
+pkgrel=2
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 license=(MIT)
@@ -63,6 +63,7 @@ package_pipewire-common-git() {
   license+=(LGPL)
   depends=(rtkit libdbus-1.so libncursesw.so libsndfile.so
            libudev.so libasound.so libsystemd.so libpulse.so
+           webrtc-audio-processing
            libbluetooth.so libsbc.so libldacBT_{enc,abr}.so
            libopenaptx.so libfdk-aac.so)
   optdepends=('pipewire-common-docs-git: Documentation'
