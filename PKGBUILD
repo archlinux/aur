@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=python-ocp-git
-pkgver=7.5.RC2.r0.gb59edab
+pkgver=7.5.RC2.r1.gb058865
 pkgrel=1
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
@@ -51,10 +51,12 @@ prepare(){
   
   # don't use the opencascade headers packaged here
   # instead use the ones from the installed opencascade package
-
   rm -rf opencascade
   ln -s /usr/include/opencascade .
 
+  # add support for jinja v3
+  cd pywrap
+  curl https://patch-diff.githubusercontent.com/raw/CadQuery/pywrap/pull/34.diff | patch -p1 || true
 }
 
 build() {

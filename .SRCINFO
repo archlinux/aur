@@ -1,6 +1,6 @@
 pkgbase = python-ocp-git
 	pkgdesc = Python wrapper for OCCT generated using pywrap
-	pkgver = 7.5.RC2.r0.gb59edab
+	pkgver = 7.5.RC2.r1.gb058865
 	pkgrel = 1
 	url = https://github.com/CadQuery/OCP
 	arch = x86_64
@@ -32,4 +32,3 @@ pkgbase = python-ocp-git
 	sha256sums = SKIP
 
 pkgname = python-ocp-git
-
