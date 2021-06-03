@@ -3,21 +3,19 @@
 
 pkgname=jamulus-headless
 _pkgname=Jamulus
-pkgver=3.6.2
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="Internet jam session software (headless server)"
 arch=('x86_64')
-url='http://llcon.sourceforge.net/'
-install=jamulus.install
+url='https://jamulus.io/'
 license=('GPL2')
-depends=('glibc' 'gcc-libs' 'qt5-base')
+depends=('glibc' 'gcc-libs' 'qt5-base' 'opus-git')
 provides=('jamulus')
-source=("jamulus-${pkgver}.tar.gz::https://github.com/corrados/jamulus/archive/r${pkgver//./_}.tar.gz"
-        "jamulus.service")
+source=("jamulus-${pkgver}.tar.gz::https://github.com/corrados/jamulus/archive/r${pkgver//./_}.tar.gz")
 
 build() {
   cd "${srcdir}/jamulus-r${pkgver//./_}"
-  qmake "CONFIG+=nosound headless" Jamulus.pro
+  qmake "CONFIG+=nosound headless opus_shared_lib" Jamulus.pro
   make clean
   make
 }
@@ -26,9 +24,7 @@ package() {
   cd "${srcdir}/jamulus-r${pkgver//./_}"
   install -Dm755 Jamulus "${pkgdir}/usr/bin/Jamulus-headless"
   install -vDm 644 {ChangeLog,README.md} -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm644 $srcdir/jamulus.service $pkgdir/usr/lib/systemd/system/jamulus.service
+  install -Dm644 "${srcdir}/jamulus-r${pkgver//./_}"/distributions/jamulus-server.service $pkgdir/usr/lib/systemd/system/jamulus-server.service
 }
 
-sha1sums=('b161f6738f35607a5dac59525c6b69e812548a7c'
-          'cbe82818b40eba6dc3ee88f98af8ae16ff44137e')
-
+sha1sums=('7c285c3dafd5cf8fc0184a2ef97e6cebdacf61ea')
