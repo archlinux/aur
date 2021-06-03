@@ -2,7 +2,7 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 pkgname=perl-git-repository
-pkgver=1.324
+pkgver=1.325
 pkgrel=1
 pkgdesc="Perl interface to Git repositories"
 _dist=Git-Repository
@@ -13,8 +13,8 @@ depends=(perl perl-git-version-compare perl-system-command perl-namespace-clean)
 checkdepends=(git perl-test-requires-git)
 url="https://metacpan.org/release/$_dist"
 source=("https://cpan.metacpan.org/authors/id/B/BO/BOOK/$_dist-$pkgver.tar.gz")
-md5sums=('9d7b851ee21f5ff93df7541489995103')
-sha256sums=('814dfad104a9546349f9e0fd492c86137de827ebc284017a91a5267c120ad4f6')
+md5sums=('34979454fb75e50810458cde7313d920')
+sha256sums=('9b2a4fa194f4a0eb452355d0c808727e5e9c16c145ac7d24c3ea96d0abefed43')
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
