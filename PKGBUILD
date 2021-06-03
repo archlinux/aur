@@ -1,7 +1,7 @@
 # Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=mintstick
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc='A GUI to write .img or .iso files to a USB Key. It can also format them'
 arch=('any')
@@ -35,10 +35,15 @@ conflicts=(
     mintstick-git
 )
 source=("${pkgname}-${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('56e46f99d48ae6a3bc44e863c236d66575235b67a729d8d93e7e393532bcceb4')
+sha256sums=('2adf01ebbb46d33459322c12ba7dcbf0afa19b13c425de21b9e0d31cafc59b43')
 
 prepare() {
   cd ${pkgname}
+
+  ## File "install.sh" was not updated to match the new filenames. For now, this is added
+  sed -i 's|org.linuxmint.im|com.linuxmint.mintstick|g' install.sh
+  sed -i 's|mintstick.glade|mintstick.ui|g' install.sh
+
   ## https://wiki.archlinux.org/index.php/Arch_packaging_standards#Directories
   sed -i 's| /usr| "'$pkgdir'"/usr|g' install.sh
 
