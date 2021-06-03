@@ -1,5 +1,5 @@
---- Makefile.in-orig	2016-12-18 16:38:17.205009279 +1100
-+++ Makefile.in	2016-12-18 17:08:10.110128607 +1100
+--- PolyORB-master-old/Makefile.in
++++ PolyORB-master/Makefile.in
 @@ -86,7 +86,7 @@
  # Note: if EXTRA_GNATMAKE_FLAGS contains a -%args argument, we add -margs at
  # the end because further builder flags may need to be passed.
@@ -9,7 +9,7 @@
  # Gnatmake flags for compilation tools mains, built without project files
  
  # Extra flags for target
-@@ -847,16 +847,16 @@
+@@ -626,16 +626,16 @@
  target=@target@
  
  ifeq (${target}, ${host})
@@ -33,7 +33,7 @@
  endif
  projects_subdir=lib/gnat/polyorb
  
-@@ -867,7 +867,7 @@
+@@ -646,7 +646,7 @@
  	@echo "Install prefix: ${prefix}"
  	@echo "          Host: ${host}"
  	@echo "        Target: ${target}"
@@ -42,8 +42,8 @@
  	${RM} -fr "${target_prefix}/${projects_subdir}"
  	${PINSTALL} -d ${target_prefix}/${projects_subdir}
  	${PINSTALL} -d ${target_prefix}/lib/polyorb
-@@ -910,10 +910,10 @@
-         # check for existence of sphinx-build.
+@@ -689,10 +689,10 @@
+ 	# check for existence of sphinx-build.
  	if [ -r doc/_build ]; \
  	then \
 -	  (cd doc && ${MAKE} install prefix="${prefix}" SPHINXBUILD=true); \
@@ -55,3 +55,4 @@
  	fi
  
  # polyorb-dsa_p-partitions.ali is a special case above.
+

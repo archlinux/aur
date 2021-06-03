@@ -1,8 +1,8 @@
 # Maintainer: Rod Kay   <charlie5 on #ada at freenode.net>
 
 pkgname=polyorb
-pkgver=20210516
-pkgrel=3
+pkgver=20210603
+pkgrel=1
 pkgdesc="Provides the Distributed Systems Annex (DSA) to build distributed applications with Ada."
 
 arch=('i686' 'x86_64')
@@ -14,15 +14,20 @@ makedepends=('gprbuild' 'autoconf' 'python-sphinx')
 source=(https://github.com/AdaCore/PolyORB/archive/master.zip
         patch-Makefile.in)
 
-md5sums=('77b0b1332f8dde9b76f615c7a4cb0401'
-         '40476ea50c9ac1c2473d9801e765be04')
+md5sums=('24b9ebabe5a77d97f0bc2f2f7be430fb'
+         '002a3fd9d6f9015a004f03dda36d7020')
 
 
 prepare()
 {
   cd $srcdir/PolyORB-master
-  patch -p0 -i ../patch-Makefile.in
+  
+  patch -p1 -i ../patch-Makefile.in
 
+  support/reconfig
+
+  # 'support/reconfig' does not generate the 'compile' and 'missing' files, so create them.
+  #
   touch support/compile
   touch support/missing
 }
@@ -32,7 +37,6 @@ build()
 {
   cd $srcdir/PolyORB-master
 
-  support/reconfig
   ./configure --prefix=/usr                                             \
               --enable-warnings=n                                       \
               --with-gprbuild=yes                                       \
@@ -41,8 +45,8 @@ build()
               --with-proto-perso="giop soap"                            \
               --with-corba-services="event ir naming notification time" \
               --with-openssl
+
   make -j1 all
-  make -j1 examples
   make -j1 docs
 }
 
