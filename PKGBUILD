@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=matplotplusplus
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Matplot++: A C++ Graphics Library for Data Visualization"
 url="https://alandefreitas.github.io/matplotplusplus/"
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=(cmake)
 depends=(gnuplot)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alandefreitas/matplotplusplus/archive/v$pkgver.tar.gz")
-sha256sums=("19f5f6fe40b56efc49dcda7f6c6de07679f5707254dea6859c3c7b4a8a0759a3")
+sha256sums=("5c3a1bdfee12f5c11fd194361040fe4760f57e334523ac125ec22b2cb03f27bb")
 
 build() {
   mkdir -p "$srcdir/${pkgname}-${pkgver}/build"
