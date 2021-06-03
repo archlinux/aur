@@ -14,7 +14,8 @@ depends=('python-setuptools'
         'python-dateutil'
         'python-numpy>=1.1.0'
         'python-pyqt5'
-        'qt5-svg')
+        'qt5-svg'
+        'python-markdown2')
 optdepends=('python-matplotlib'
             'python-pyenchant'
             'python-pip')

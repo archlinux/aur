@@ -10,6 +10,7 @@ pkgbase = pyspread
 	depends = python-numpy>=1.1.0
 	depends = python-pyqt5
 	depends = qt5-svg
+	depends = python-markdown2
 	optdepends = python-matplotlib
 	optdepends = python-pyenchant
 	optdepends = python-pip
