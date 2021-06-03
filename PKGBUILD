@@ -3,7 +3,7 @@
 pkgname=ipe
 _dirver=7.2
 pkgver=7.2.24
-pkgrel=1
+pkgrel=2
 pkgdesc="The extensible drawing editor"
 url="http://ipe.otfried.org/"
 depends=('lua53' 'qt5-base' 'qt5-svg' 'freetype2' 'zlib' 'poppler' 'hicolor-icon-theme' 'gsl' 'libspiro')
@@ -23,6 +23,10 @@ prepare() {
 
   sed -i -e 's/"ipefonts.h"/<ipefonts.h>/' ipepresenter/ipepresenter.h
   sed -i -e 's/"ipethumbs.h"/<ipethumbs.h>/' ipepresenter/ipepresenter_qt.cpp
+
+  # https://github.com/otfried/ipe-issues/issues/392
+  # TODO: remove after 7.2.25
+  sed -i -e 's/(\*ui)->setBookmarks(no, &bm\[0\]);/(*ui)->setBookmarks(no, bm.data());/' ipe/uilua.cpp
 }
 
 build() {
