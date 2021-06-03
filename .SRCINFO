@@ -1,0 +1,15 @@
+pkgbase = susbernate-git
+	pkgdesc = Script to suspend the system, then hibernate after a while
+	pkgver = r2.a6029e0
+	pkgrel = 1
+	url = https://github.com/soystemd/susbernate
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	optdepends = xprintidle
+	provides = susbernate
+	conflicts = susbernate
+	source = git+https://github.com/soystemd/susbernate.git
+	md5sums = SKIP
+
+pkgname = susbernate-git
