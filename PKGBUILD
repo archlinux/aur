@@ -74,11 +74,8 @@ prepare() {
   patch -Np1 -i ${_patches_dir}/gentoo/0005-bmo-847568-Support-system-graphite2.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0006-bmo-1559213-Support-system-av1.patch
 
-  # Fix build-time error
-  echo "---- Librewolf patches"
-  patch -Np1 -i ${_patches_dir}/builtin_js.patch
-
   # Remove some pre-installed addons that might be questionable
+  echo "---- Librewolf patches"
   patch -Np1 -i ${_patches_dir}/remove_addons.patch
 
   # Disabling Pocket
@@ -100,6 +97,10 @@ prepare() {
   patch -Np1 -i ${_patches_dir}/context-menu.patch
   patch -Np1 -i ${_patches_dir}/browser-confvars.patch
   patch -Np1 -i ${_patches_dir}/urlbarprovider-interventions.patch
+
+  # Fix build-time error
+  echo "---- Fix some things"
+  patch -Np1 -i ${_patches_dir}/misc/builtin_js.patch
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
