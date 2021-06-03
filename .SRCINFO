@@ -1,7 +1,7 @@
 pkgbase = perl-mousex-types-path-class
 	pkgdesc = A Path::Class type library for Mouse
 	pkgver = 0.07
-	pkgrel = 2
+	pkgrel = 4
 	url = https://metacpan.org/release/MouseX-Types-Path-Class
 	arch = any
 	license = PerlArtistic
@@ -17,4 +17,3 @@ pkgbase = perl-mousex-types-path-class
 	sha512sums = 07593ec3c20f1b817c8881f6569ff4ad21e7cf1deeed34f790cd64027c956e1a501ec325e4296c3af480643f5d386c074c2810cf14236f8b6ab389d2e5a241d8
 
 pkgname = perl-mousex-types-path-class
-

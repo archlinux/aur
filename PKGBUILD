@@ -3,7 +3,7 @@
 
 pkgname='perl-mousex-types-path-class'
 pkgver='0.07'
-pkgrel='2'
+pkgrel='4'
 pkgdesc="A Path::Class type library for Mouse"
 arch=('any')
 license=('PerlArtistic' 'GPL')
