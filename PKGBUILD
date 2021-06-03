@@ -1,28 +1,28 @@
-# Maintainer: Brian BIdulock <bidulock@openss7.org>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Jose Riha <jose1711 gmail com>
 # Contributor: Patrick Jackson <PatrickSJackson gmail com>
 # Contributor: Christoph Vigano <mail@cvigano.de>
 
 pkgname=st-white
 _pkgname=st
-pkgver=0.8.2
-pkgrel=2
+pkgver=0.8.4
+pkgrel=1
 pkgdesc='A simple virtual terminal emulator for X.'
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('libxft' 'libxext' 'xorg-fonts-misc')
+depends=('libxft')
 makedepends=('ncurses')
 url="http://st.suckless.org"
 provides=($_pkgname=$pkgver)
 conflicts=($_pkgname)
 source=(http://dl.suckless.org/st/$_pkgname-$pkgver.tar.gz config.h)
-sha256sums=('aeb74e10aa11ed364e1bcc635a81a523119093e63befd2f231f8b0705b15bf35'
-            'd2675fede628ce1db2bd57efde18bff74803f36219efb70886f2fb3ceab4e7a4')
+sha256sums=('d42d3ceceb4d6a65e32e90a5336e3d446db612c3fbd9ebc1780bc6c9a03346a6'
+            '4ab25d63126a964a37653fc3f731f8cddb3603c5c8e3dcfbde87bbc06d564974')
 
 prepare() {
   cd $_pkgname-$pkgver
   # user is supposed to maintain config.h him/herself
-  cp $srcdir/config.h config.h
+  cp ../config.h config.h
 }
 
 build() {
