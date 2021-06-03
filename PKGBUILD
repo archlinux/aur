@@ -1,7 +1,7 @@
 # Maintainer: Daniel Menelkir <menelkir at itroll dot org>
 pkgname=g15stats-systemd
 pkgver=1
-pkgrel=1
+pkgrel=0
 pkgdesc="g15stats init script for systemd"
 arch=('any')
 url="https://gitlab.com/menelkir/g15stats"
