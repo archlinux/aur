@@ -3,8 +3,8 @@
 # package, maintained by T. Borgert.
 
 pkgname=ros2-git
-pkgver=r216.0e58b2b
-pkgrel=2
+pkgver=r224.3d98527
+pkgrel=1
 pkgdesc="A set of software libraries and tools for building robot applications (Rolling Distro)"
 url="https://docs.ros.org/en/rolling/"
 arch=('any')
@@ -55,6 +55,8 @@ prepare() {
     patch --forward $srcdir/ros2/src/ros2/yaml_cpp_vendor/CMakeLists.txt yaml_cpp_vendor.patch
     ## ros1_bridge
     git -C $srcdir/ros2/src/ros2/ros1_bridge revert 81b7610568286ec7b390c64cf6207b362d0a6550 --no-edit
+    ## cyclonedds
+    git -C $srcdir/ros2/src/eclipse-cyclonedds/cyclonedds cherry-pick bdf270a588aae77d0f1a0f0070b53ad1388da61c
 }
 
 build() {
