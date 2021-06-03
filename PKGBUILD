@@ -2,7 +2,7 @@
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
 
 pkgname=matrix-synapse-git
-pkgver=1.21.0rc2.r9.ge3debf968
+pkgver=1.35.0.r0.g3fdaf4df5
 pkgrel=1
 
 pkgdesc="Matrix reference homeserver"
@@ -37,6 +37,7 @@ depends=(
 	'python-jinja'
 	'python-bleach'
 	'python-typing-extensions'
+	'python-ijson'
 
 	'python-systemd'
 	'systemd'
@@ -67,10 +68,11 @@ optdepends=(
 	'python-hiredis: worker communication via Redis (faster)'
 )
 
-source=("git+https://github.com/matrix-org/synapse.git#branch=develop"
+source=(
+	"git+https://github.com/matrix-org/synapse.git#branch=master"
         'synapse.service'
-        'sysusers-synapse.conf')
-
+        'sysusers-synapse.conf'
+)
 
 md5sums=('SKIP'
          '02539d38e16ba49573adebd029a71858'
@@ -104,7 +106,7 @@ build() {
 
 check() {
 	cd synapse
-	PYTHONPATH=. trial3 tests
+	PYTHONPATH=. trial tests
 }
 
 package() {
