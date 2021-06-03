@@ -12,7 +12,7 @@ pkgdesc="Run X clients under Wayland (git version)"
 depends=('nettle' 'libegl' 'libepoxy' 'systemd-libs' 'libxfont2'
          'pixman' 'xorg-server-common')
 makedepends=('meson' 'git'
-             'xorgproto' 'xtrans'
+             'xorgproto-git' 'xtrans'
              'pixman' 'libxkbfile' 'libxfont2' 'dbus'
              'xorg-font-util'
              'wayland' 'wayland-protocols'
