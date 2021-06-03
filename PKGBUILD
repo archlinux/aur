@@ -19,13 +19,12 @@ backup=('usr/lib/firedragon/firedragon.cfg'
 license=(MPL GPL LGPL)
 provides=(firedragon)
 url="https://gitlab.com/dr460nf1r3/settings/"
-depends=(gtk3 libxt mime-types dbus-glib
-         ffmpeg nss-hg ttf-font libpulse
-         libvpx libjpeg zlib icu libevent libpipewire02)
-makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
-             rust xorg-server-xwayland xorg-server-xvfb dump_syms
-             autoconf2.13 mercurial clang llvm jack gtk2 nodejs cbindgen nasm
-             python-setuptools python-psutil python-zstandard git binutils lld)
+depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss-hg nspr-hg ttf-font libpulse
+        libwebp libvpx libjpeg zlib icu libevent libpipewire02 aom harfbuzz
+        graphite dav1d)
+makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
+             rust ccache autoconf2.13 clang llvm jack gtk2 nodejs cbindgen nasm
+             python-setuptools python-psutil python-zstandard git binutils lld dump_syms)
 optdepends=('firejail-git: Sandboxing the browser using the included profiles'
             'profile-sync-daemon: Load the browser profile into RAM'
             'whoogle: Searching the web using a locally running Whoogle instance'
@@ -63,6 +62,44 @@ prepare() {
   cd mozilla-unified
 
   local _patches_dir="${srcdir}/common/patches-hg"
+
+  # Gentoo patches
+  echo "---- Gentoo patches"
+  patch -Np1 -i ${_patches_dir}/gentoo/0021-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0029-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
+
+  # Use more system libs
+  echo "---- Patching for system libs"
+  patch -Np1 -i ${_patches_dir}/gentoo/0004-bmo-847568-Support-system-harfbuzz.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0005-bmo-847568-Support-system-graphite2.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0006-bmo-1559213-Support-system-av1.patch
+
+  # Fix build-time error
+  echo "---- Librewolf patches"
+  patch -Np1 -i ${_patches_dir}/builtin_js.patch
+
+  # Remove some pre-installed addons that might be questionable
+  patch -Np1 -i ${_patches_dir}/remove_addons.patch
+
+  # Disabling Pocket
+  patch -Np1 -i ${_patches_dir}/sed-patches/disable-pocket.patch
+
+  # Remove Mozilla VPN ads
+  patch -Np1 -i ${_patches_dir}/mozilla-vpn-ad.patch
+
+  # Remove Internal Plugin Certificates
+  patch -Np1 -i ${_patches_dir}/sed-patches/remove-internal-plugin-certs.patch
+
+  # Allow SearchEngines option in non-ESR builds
+  patch -Np1 -i ${_patches_dir}/sed-patches/allow-searchengines-non-esr.patch
+
+  # Stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)
+  patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
+
+  # Assorted patches
+  patch -Np1 -i ${_patches_dir}/context-menu.patch
+  patch -Np1 -i ${_patches_dir}/browser-confvars.patch
+  patch -Np1 -i ${_patches_dir}/urlbarprovider-interventions.patch
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
@@ -158,32 +195,6 @@ else
 ac_add_options --enable-optimize
 END
 fi
-
-  # Fix build-time error
-  patch -Np1 -i ${_patches_dir}/builtin_js.patch
-
-  # Remove some pre-installed addons that might be questionable
-  patch -Np1 -i ${_patches_dir}/remove_addons.patch
-
-  # Disabling Pocket
-  patch -Np1 -i ${_patches_dir}/sed-patches/disable-pocket.patch
-
-  # Remove Mozilla VPN ads
-  patch -Np1 -i ${_patches_dir}/mozilla-vpn-ad.patch
-
-  # Remove Internal Plugin Certificates
-  patch -Np1 -i ${_patches_dir}/sed-patches/remove-internal-plugin-certs.patch
-
-  # Allow SearchEngines option in non-ESR builds
-  patch -Np1 -i ${_patches_dir}/sed-patches/allow-searchengines-non-esr.patch
-
-  # Stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)
-  patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
-
-  # Assorted patches
-  patch -Np1 -i ${_patches_dir}/context-menu.patch
-  patch -Np1 -i ${_patches_dir}/browser-confvars.patch
-  patch -Np1 -i ${_patches_dir}/urlbarprovider-interventions.patch
 
   rm -f ${srcdir}/common/source_files/mozconfig
   cp -r ${srcdir}/common/source_files/* ./
