@@ -30,7 +30,7 @@ pkgver() {
 }
 
 build() {
-    cmake -S photivo -B "build-$pkgver" \
+    cmake -G "Unix Makefiles" -S photivo -B "build-$pkgver" \
           -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
     cd "build-$pkgver"
     make
