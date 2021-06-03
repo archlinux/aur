@@ -1,21 +1,10 @@
 *.tar
 *.tar.*
-*.jar
-*.exe
-*.msi
-*.AppImage
-*.deb
-*.rpm
-*.zip
-*.tgz
-*.log
-*.log.*
-*.sig
+*.ukb
 
 src/
 pkg/
 
-encoding.ukb
 gfetch*
 ukbconv*
 ukbfetch*
