@@ -1,11 +1,12 @@
-# Maintainer : Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
+# Maintainer: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
+# Contributor: Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Infy <eugene.yudin@gmail.com>
-# Contributor: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
+# Contributor: hlechner <hlechner@gmail.com>
 
 pkgname=pcsxr-git
 pkgver=1.9.94.r1697.6484236c
-pkgrel=1
+pkgrel=2
 pkgdesc='A Sony PlayStation emulator based on the PCSX-df Project'
 arch=('i686' 'x86_64')
 url='https://github.com/pcsxr/PCSX-Reloaded/tree/master/pcsxr'
@@ -41,7 +42,7 @@ prepare() {
 build() {
   cd pcsxr/pcsxr/build
 
-  cmake .. \
+  CFLAGS="$CFLAGS -fcommon" cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
