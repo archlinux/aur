@@ -1,6 +1,6 @@
 # Maintainer: Anna <morganamilo@gmail.com>
 pkgname=pacdiffviewer
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Pacfiles manager."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -13,16 +13,16 @@ optdepends=("vim: view via 'vim -f'"
   "sudo: view via 'sudo -e'")
 conflicts=('yaourt')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Morganamilo/pacdiffviewer/archive/v$pkgver.tar.gz")
-sha512sums=('27698b8ce637b7e3c460bb90172155f48d84290131b6a11530ea12bd967d40a628b25e733bcd1efaa95085b5a79d84429fa85f5670a303e5dc33515b68107ee3')
+sha512sums=('86959316cae74fa08b08e1abbc18bf6fe93be4fd1e2e672d0d2190ac4ade1ae5b39fa2e0360b639979a46c08492e529a9cb8f5923388d8fbdb7c3738e7546b30')
 
 build() {
   cd "$pkgname-$pkgver"
 
-  if pacman -T pacman-git; then
+  if pacman -T pacman-git > /dev/null; then
     _features=git
   fi
 
-  COMPLETIONS_DIR=target cargo build --release --locked --features "$_features"
+  COMPLETIONS_DIR=target cargo build --release --locked --target-dir target --features "$_features"
 }
 
 package() {
