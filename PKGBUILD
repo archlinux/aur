@@ -1,6 +1,6 @@
 pkgname=banano-vanity
 pkgver=1.41
-pkgrel=2
+pkgrel=1
 pkgdesc="A vanity address generator for banano cryptocurrency"
 arch=('x86_64')
 source=("git+https://github.com/flammenderdrache/banano-vanity.git")
@@ -25,6 +25,6 @@ check() {
 
 package() {
     cd "${srcdir}/${pkgname}"
-    install -Dm 755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm 755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
 
