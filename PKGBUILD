@@ -2,18 +2,19 @@
 
 _pkgname=nemo-fileroller
 pkgname=nemo-engrampa
-pkgver=4.8.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="Archive management plugin for Nemo using engrampa"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/nemo-extensions"
 license=('GPL2')
 depends=('nemo>=3.2' 'engrampa')
+makedepends=('meson' 'samurai')
 options=('!libtool' '!emptydirs')
 source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz")
-sha256sums=('1b7b85b41c659fe0f93a9b83fadb81a7934c7e7cb2df9eda4a03413b7f5d05c4')
+sha256sums=('e9d0e592a8b8bc0a4f0eb5222994f522f0e255f5a0c86e8069933864e2ca7485')
 
-build() {
+prepare() {
   cd "${srcdir}/nemo-extensions-${pkgver}/${_pkgname}"
 
   cd src
@@ -24,14 +25,19 @@ build() {
   find . -type f -exec sed -i -E \
     -e 's:file[\ \-]?roller:engrampa:g' \
     -e 's:File[\ \-]?[rR]oller:Engrampa:g' '{}' \;
+}
 
-  autoreconf -fi
-
-  PYTHON=python ./configure --prefix=/usr --sysconfdir=/etc
-  make
+build() {
+  mkdir -p "${srcdir}/nemo-extensions-${pkgver}/${_pkgname}"/builddir
+  cd "${srcdir}/nemo-extensions-${pkgver}/${_pkgname}"/builddir
+  meson --prefix=/usr \
+        --libexecdir=lib/${pkgname} \
+        --buildtype=plain \
+        ..
+  samu
 }
 
 package() {
-  cd "${srcdir}/nemo-extensions-${pkgver}/${_pkgname}"
-  make DESTDIR="${pkgdir}" install
+  cd "${srcdir}/nemo-extensions-${pkgver}/${_pkgname}"/builddir
+  DESTDIR="${pkgdir}" samu install
 }
