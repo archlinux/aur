@@ -11,7 +11,6 @@ build() {
 
     # binaries from lvm2
     add_binary "lvm"
-    add_binary "lvmetad"
 
     # beinaries from device-mapper
     add_binary "dmsetup"
@@ -30,8 +29,7 @@ build() {
     add_file "/usr/lib/initcpio/udev/11-dm-initramfs.rules" "/usr/lib/udev/rules.d/11-dm-initramfs.rules"
     add_file "/usr/lib/initcpio/udev/69-dm-lvm-metad.rules" "/usr/lib/udev/rules.d/69-dm-lvm-metad.rules"
     add_file "/etc/lvm/lvm.conf"
-
-    add_runscript
+    sed -i '/^\smonitoring =/s/1/0/' "${BUILDROOT}/etc/lvm/lvm.conf"
 }
 
 help() {
@@ -39,5 +37,3 @@ help() {
 This hook enables LVM2 volumes in initramfs.
 HELPEOF
 }
-
-# vim: set ft=sh ts=4 sw=4 et:

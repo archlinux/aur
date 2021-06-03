@@ -1,29 +1,29 @@
 pkgbase = lvm2-noudev
-	pkgver = 2.02.187
-	pkgrel = 2
+	pkgver = 2.03.12
+	pkgrel = 1
 	url = https://sourceware.org/lvm2/
 	arch = x86_64
 	license = GPL2
 	license = LGPL2.1
 	makedepends = git
 	makedepends = thin-provisioning-tools
-	source = git+https://sourceware.org/git/lvm2.git#tag=v2_02_187?signed
+	source = git+https://sourceware.org/git/lvm2.git#tag=e6809e10a27865fbd6d67980a348946a2867182d?signed
 	source = lvm2_install
-	source = lvm2_hook
 	source = 11-dm-initramfs.rules
 	validpgpkeys = 88437EF5C077BD113D3B7224228191C1567E2C17
 	validpgpkeys = D501A478440AE2FD130A1BE8B9112431E509039F
 	sha256sums = SKIP
-	sha256sums = cc51940a8437f3c8339bb9cec7e929b2cc0852ffc8a0b2463e6f67ca2b9950f6
-	sha256sums = a6e88d4457ff49a1df5b1d243c5e245d33832855c8804e99c50b30c3e56a8a80
+	sha256sums = ed78acdec013bc22df253e51a474d4beab2f9204bbabde34b83d56149bb435d4
 	sha256sums = e10f24b57582d6e2da71f7c80732a62e0ee2e3b867fe84591ccdb53e80fa92e0
 
 pkgname = lvm2-noudev
 	pkgdesc = Logical Volume Manager 2 utilities
 	depends = bash
-	depends = device-mapper>=2.02.187
-	depends = libutil-linux
+	depends = device-mapper>=2.03.12
+	depends = util-linux-libs
+	depends = libblkid.so
 	depends = readline
+	depends = libreadline.so
 	depends = thin-provisioning-tools
 	provides = lvm2
 	conflicts = lvm
@@ -37,8 +37,7 @@ pkgname = device-mapper-noudev
 	pkgdesc = Device mapper userspace library and tools
 	url = http://sourceware.org/dm/
 	depends = glibc
-	provides = device-mapper=2.02.187
+	provides = device-mapper=2.03.12
 	provides = libdevmapper.so
 	provides = libdevmapper-event.so
 	conflicts = device-mapper
-
