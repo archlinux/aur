@@ -1,0 +1,15 @@
+pkgbase = gk6x-bin
+	pkgdesc = Configure keys, macros, and lighting on GK6X keyboards (GK64, GK84, GK61, etc)
+	pkgver = 1.15
+	pkgrel = 1
+	url = https://github.com/pixeltris/GK6X
+	arch = x86_64
+	license = MIT
+	license = unkown
+	depends = mono
+	source = https://github.com/pixeltris/GK6X/releases/download/GK6X-v1.15/GK6X-v1.15-GUI.zip
+	source = gk6x
+	md5sums = 827c483c717acb3bf79622e33e714f5e
+	md5sums = f0611a521786c9ca1fc5c075d7bd8aeb
+
+pkgname = gk6x-bin
