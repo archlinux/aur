@@ -2,7 +2,7 @@
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 
 pkgname=openimageio-qfix
-pkgver=2.2.13.0
+pkgver=2.2.14.0
 pkgrel=1
 pkgdesc="A library for reading and writing images, including classes, utilities, and applications (build agaist opencolorio=2"
 arch=(x86_64)
@@ -17,7 +17,7 @@ makedepends=('cmake' 'qt5-base' 'python' 'boost' 'mesa' 'freetype2' 'fontconfig'
 optdepends=('qt5-base: iv image viewer'
             'python: bindings support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenImageIO/oiio/archive/Release-$pkgver.tar.gz")
-sha512sums=('93daceb784bff0039724282c723f939d919971fc94cf8fe10ca6bab0576d6cba97c3e4c9d1a9a501ee26bd66251fa51ce8b0755cf50c3fdb0e1de3ba0940600c')
+sha512sums=('063291c0bd742b79a7b6065a41856b84732af2e2e404265262aa9ba91d07209fb308ecf0403a139d7021b8062f9c3e1b92a725a7cad091af1bcf45499ae47a82')
 
 build() {
   cd oiio-Release-$pkgver
