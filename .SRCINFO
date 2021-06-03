@@ -1,7 +1,7 @@
 pkgbase = yay-bin
 	pkgdesc = Yet another yogurt. Pacman wrapper and AUR helper written in go. Pre-compiled.
-	pkgver = 10.2.2
-	pkgrel = 2
+	pkgver = 10.2.3
+	pkgrel = 1
 	url = https://github.com/Jguer/yay
 	arch = x86_64
 	arch = aarch64
@@ -12,15 +12,14 @@ pkgbase = yay-bin
 	optdepends = sudo
 	provides = yay
 	conflicts = yay
-	conflicts = libalpm.so>12-64
-	source_x86_64 = https://github.com/Jguer/yay/releases/download/v10.2.2/yay_10.2.2_x86_64.tar.gz
-	sha256sums_x86_64 = 9f9a768903892ecd19382f626e5f2cf3c07019e2ce3f30634a3c34f585b87b70
-	source_aarch64 = https://github.com/Jguer/yay/releases/download/v10.2.2/yay_10.2.2_aarch64.tar.gz
-	sha256sums_aarch64 = c5d9f2f3b0dfb7758825a9bdb67e242e0f51443663aec5e4218785a731e6c31b
-	source_armv6h = https://github.com/Jguer/yay/releases/download/v10.2.2/yay_10.2.2_armv6h.tar.gz
-	sha256sums_armv6h = 9edf05f1f881a3463067c6a521a2dbbcd57a555f2f71c7b44f575feec4b4e07d
-	source_armv7h = https://github.com/Jguer/yay/releases/download/v10.2.2/yay_10.2.2_armv7h.tar.gz
-	sha256sums_armv7h = fbd9019fe48c1abd8bafc0c01c24ebfba68037413abf30b4c129c45be70df5a7
+	conflicts = libalpm.so<13-64
+	source_x86_64 = https://github.com/Jguer/yay/releases/download/v10.2.3/yay_10.2.3_x86_64.tar.gz
+	sha256sums_x86_64 = aa3a6f2535fa16dd5d8d90fb59cba01e377b189fa56437699132622fd0a6539f
+	source_aarch64 = https://github.com/Jguer/yay/releases/download/v10.2.3/yay_10.2.3_aarch64.tar.gz
+	sha256sums_aarch64 = 1ccf3d52034863d15a31a4e327d295a1d489311eaf3975f14727f919e6c67f9b
+	source_armv6h = https://github.com/Jguer/yay/releases/download/v10.2.3/yay_10.2.3_armv6h.tar.gz
+	sha256sums_armv6h = 3da5c844da9896a63acb035c4d70663ebf07d0c15de547a569994d689575db00
+	source_armv7h = https://github.com/Jguer/yay/releases/download/v10.2.3/yay_10.2.3_armv7h.tar.gz
+	sha256sums_armv7h = 85ab9df2b813cefd38800475294943e48ec9341a24618553de8c03a4cb016110
 
 pkgname = yay-bin
-
