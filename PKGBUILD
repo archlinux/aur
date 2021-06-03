@@ -7,8 +7,8 @@ arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/acedron/egawari"
 license=('GPL3')
 depends=(
-    'libxi'
-    'libx11'
+    'libXi.so'
+    'libX11.so'
 )
 makedepends=(
     'cmake>=3.9.0'
