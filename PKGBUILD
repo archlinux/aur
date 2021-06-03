@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=webapp-manager-git
-pkgver=1.0.8.r0.g4a879d1
+pkgver=1.1.2.r0.g9816f8f
 pkgrel=1
 pkgdesc="Run websites as if they were apps."
 arch=('x86_64')
@@ -24,12 +24,15 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
 
+	# Fix typo
+	sed -i 's/range(4)/range(5)/g' "usr/lib/${pkgname%-git}/common.py"
+
 	# Fix browser names
 	sed -i 's/brave-browser/brave/g' \
 		"usr/lib/${pkgname%-git}/common.py"
 	sed -i 's/epiphany-browser/epiphany/g' \
 		"usr/lib/${pkgname%-git}/common.py"
-	sed -i 's/microsoft-edge/microsoft-edge-dev/g' \
+	sed -i 's/microsoft-edge/microsoft-edge-beta/g' \
 		"usr/lib/${pkgname%-git}/common.py"
 
 	# Fix license path
@@ -43,7 +46,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	make
+	make buildmo
 }
 
 package() {
