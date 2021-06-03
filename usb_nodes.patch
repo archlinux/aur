@@ -1,0 +1,26 @@
+From 4c7b9620a746c35bb943cc40b27d729e714884d1 Mon Sep 17 00:00:00 2001
+From: Platon Ryzhikov <ihummer63@yandex.ru>
+Date: Thu, 3 Jun 2021 10:26:35 +0300
+Subject: [PATCH] Create USB nodes correctly
+
+Linux kernel creates USB devices with nodes like bus/usb/002/007
+---
+ smdev.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/smdev.c b/smdev.c
+index b774908..b9321df 100644
+--- a/smdev.c
++++ b/smdev.c
+@@ -185,7 +185,7 @@ parsepath(struct rule *rule, struct rulepath *rpath,
+ 	if (!rule->path) {
+ 		strlcpy(rpath->name, basedevname, sizeof(rpath->name));
+ 		snprintf(rpath->path, sizeof(rpath->path), "/dev/%s",
+-			 rpath->name);
++			 devname);
+ 		return;
+ 	}
+ 
+-- 
+2.31.1
+

@@ -1,0 +1,8 @@
+post_install() {
+	id cdrom &>/dev/null || {
+		groupadd cdrom
+	}
+	id cdrom &>/dev/null || {
+		groupadd usb
+	}
+}

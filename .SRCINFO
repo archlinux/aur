@@ -1,20 +1,22 @@
 pkgbase = smdev-phkr
 	pkgdesc = Suckless mdev
 	pkgver = 0.2.3
-	pkgrel = 8
+	pkgrel = 9
 	url = http://git.suckless.org/smdev/
+	install = smdev.install
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = MIT/X
 	makedepends = git
-	depends = mksh
+	provides = mdev
 	options = strip
 	source = git+https://git.suckless.org/smdev#commit=8d07540
 	source = scan_all.patch
 	source = glibc.patch
+	source = usb_nodes.patch
 	source = config.h
-	source = proceeddev
+	source = processdev
 	source = 00-modprobe
 	source = 99-remove_links
 	source = initcpio.hook
@@ -22,12 +24,12 @@ pkgbase = smdev-phkr
 	sha1sums = SKIP
 	sha1sums = a90bd08c8c482dec4b8cc063b4841db034ea7e1e
 	sha1sums = b300e68de6bcb6f542bb28206ab10f6ceca242bc
-	sha1sums = 03a2f92c8c4f77784b7fdec8d53589f6a6b49112
-	sha1sums = 36415dd4b3f95877a6a6c9649eb489d9ee4ed944
-	sha1sums = 3a5d1f975539131248fde0db5e44c29798706ea7
+	sha1sums = f0e3bfc2956d0c8885e08732cff8d0f9b6cf7103
+	sha1sums = 1f6b9327866981ffab4a275a64ee5c5249038968
+	sha1sums = d741887a118ed921528189754d886159782ca6fe
+	sha1sums = 04745465d144a8cf4e367c5a42ab8a0bc39622b3
 	sha1sums = 6a5369d9e3efc4317c907cc6140e509e82a559a5
 	sha1sums = 7fe74315c9a3592c2eb66cea8cd652da04461786
-	sha1sums = b3142387784e5590c9ae56840f5eaf0dec54aa79
+	sha1sums = ea04c776d0f6b749bfd1fc421d51c5ecd07379b5
 
 pkgname = smdev
-

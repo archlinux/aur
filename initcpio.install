@@ -1,8 +1,7 @@
 #!/bin/bash
 
 build() {
-    add_file "/etc/smdev/proceeddev"
-    add_binary /usr/bin/mksh
+    add_file "/etc/smdev/processdev"
     add_binary /usr/bin/smdev
 
     add_file "/etc/smdev/add/00-modprobe"
@@ -17,5 +16,3 @@ help() {
 This hook will use smdev to process device uevents. It prepares your root device and adds some else device nodes.
 HELPEOF
 }
-
-# vim: set ft=sh ts=4 sw=4 et:
