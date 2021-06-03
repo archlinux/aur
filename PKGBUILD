@@ -1,8 +1,8 @@
 # Maintainer:   Daniel Menelkir <menelkir@itroll.org>
 
 pkgname=ananicy-cpp-runit
-pkgver=20210529
-pkgrel=3
+pkgver=1
+pkgrel=4
 pkgdesc="Ananicy Cpp is a full rewrite of Ananicy in C++, featuring lower CPU and RAM usage."
 arch=('any')
 url="https://gitlab.com/ananicy-cpp/ananicy-cpp/"
