@@ -1,6 +1,6 @@
 pkgbase = invoiceninja
 	pkgdesc = Invoices, Expenses and Tasks built with Laravel and Flutter
-	pkgver = 5.1.11
+	pkgver = 5.1.70
 	pkgrel = 2
 	url = https://www.invoiceninja.com
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = invoiceninja
 	optdepends = phantomjs: pdf creation
 	options = !strip
 	backup = etc/webapps/invoiceninja/config.env
-	source = invoiceninja-5.1.11::https://github.com/invoiceninja/invoiceninja/archive/v5.1.11.tar.gz
-	sha256sums = 90d9a68b1fe8f71b154231f8ee75b18ddcc45ad75de3f20274a373456e55463a
+	source = invoiceninja-5.1.70::https://github.com/invoiceninja/invoiceninja/archive/v5.1.70.tar.gz
+	sha256sums = b68f7875fa03e6a23893404a4eac81acc7028d4f013e79a400b63a34b3c33229
 
 pkgname = invoiceninja
 

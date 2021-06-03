@@ -3,7 +3,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname="invoiceninja"
-pkgver=5.1.11
+pkgver=5.1.70
 pkgrel=2
 pkgdesc="Invoices, Expenses and Tasks built with Laravel and Flutter"
 url="https://www.invoiceninja.com"
@@ -17,7 +17,7 @@ optdepends=("mariadb: database"
             "redis: cache and session driver"
             "phantomjs: pdf creation")
 source=("$pkgname-$pkgver::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=("90d9a68b1fe8f71b154231f8ee75b18ddcc45ad75de3f20274a373456e55463a")
+sha256sums=("b68f7875fa03e6a23893404a4eac81acc7028d4f013e79a400b63a34b3c33229")
 backup=("etc/webapps/$pkgname/config.env")
 options=("!strip")
 
