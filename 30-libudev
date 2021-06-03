@@ -1,0 +1,1 @@
+[ "$DEVNAME" -a -x /usr/bin/libudev-helper ] && /usr/bin/libudev-helper /run/libudev-zero
