@@ -7,6 +7,7 @@ pkgbase = coin-or-hsl
 	arch = x86_64
 	makedepends = gcc
 	makedepends = metis
+	makedepends = gcc-fortran
 	optdepends = openmp
 	optdepends = coin-or-ipopt
 	source = ThirdParty-HSL::git+https://github.com/coin-or-tools/ThirdParty-HSL.git
