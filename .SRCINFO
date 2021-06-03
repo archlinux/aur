@@ -1,6 +1,6 @@
 pkgbase = tl-launcher
 	pkgdesc = One of the best simple Minecraft launchers
-	pkgver = 1.120.2
+	pkgver = 1.120.3
 	pkgrel = 1
 	url = http://tlaun.ch/
 	arch = x86_64
@@ -34,12 +34,11 @@ pkgbase = tl-launcher
 	depends = java-runtime
 	depends = xorg-xrandr
 	optdepends = flite: narrator support
-	source = tl-launcher.jar::http://tlaun.ch/dl/mcl/jar
+	source = tl-launcher.jar::http://tlaun.ch/jar
 	source = tl-launcher.desktop
 	source = tl-launcher.svg::https://launcher.mojang.com/download/minecraft-launcher.svg
-	sha256sums = 332138ab72c5203ca77e2418204d012626a860c4e5c638537599e873e06a0154
+	sha256sums = c2b52693f512b3b89afd52e1e5e6111c0cb1e7dcf95d8ae47be3fd793b9f8f98
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = tl-launcher
-
