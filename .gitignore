@@ -1,0 +1,6 @@
+GitGudCLI/
+*.pkg.tar.*
+src/
+srcdir/
+pkg/
+pkgdir/

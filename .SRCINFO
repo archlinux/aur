@@ -1,0 +1,15 @@
+pkgbase = gitgudcli-git
+	pkgdesc = Brings pokemon to the terminal using the power of cowsay.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/HRKings/GitGudCLI.git
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = dotnet-sdk
+	provides = gitgudcli
+	options = !strip
+	source = git+https://github.com/HRKings/GitGudCLI.git
+	md5sums = SKIP
+
+pkgname = gitgudcli-git
