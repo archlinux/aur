@@ -2,12 +2,12 @@
 # Contributor: Kyle Laker <kyle@laker.email>
 pkgname=warpinator-git
 pkgver=1.2.0.r1.g471c893
-pkgrel=2
+pkgrel=3
 pkgdesc="Share files across the LAN"
 arch=('any')
 url="https://github.com/linuxmint/warpinator"
 license=('GPL3')
-depends=('grpc' 'gtk3' 'libnm' 'python-cryptography' 'python-gobject' 'python-grpcio'
+depends=('gtk3' 'libnm' 'python-cryptography' 'python-gobject' 'python-grpcio'
          'python-netaddr' 'python-netifaces' 'python-protobuf' 'python-pynacl'
          'python-setproctitle' 'python-zeroconf' 'python-xapp' 'xapps')
 makedepends=('git' 'meson' 'gobject-introspection')
