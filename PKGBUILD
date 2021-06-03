@@ -3,7 +3,7 @@
 pkgbase=libjxl
 pkgname=('libjxl' 'libjxl-doc')
 pkgver=0.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc='JPEG XL image format reference implementation'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
@@ -58,6 +58,9 @@ prepare() {
 }
 
 build() {
+    # https://github.com/libjxl/libjxl/issues/98
+    export CXXFLAGS="${CXXFLAGS/ -Wp,-D_GLIBCXX_ASSERTIONS/}"
+    
     export CC='clang'
     export CXX='clang++'
     cmake -B build -S libjxl \
@@ -93,6 +96,7 @@ package_libjxl() {
     replaces=('libjpeg-xl')
     
     make -C build DESTDIR="$pkgdir" install
+    rm -rf "${pkgdir}/usr"/{include/{contrib,hwy},lib/{pkgconfig/,}libhwy*}
 }
 
 package_libjxl-doc() {
