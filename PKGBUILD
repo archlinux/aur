@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/PolyORB"
 license=('GPL')
 depends=('gcc-ada' 'xmlada' 'gnatcoll-core' 'openssl')
-makedepends=('gprbuild' 'autoconf' 'python-sphinx')
+makedepends=('gprbuild' 'autoconf' 'python-sphinx' 'texlive-core' 'texlive-latexextra')
 
 source=(https://github.com/AdaCore/PolyORB/archive/master.zip
         patch-Makefile.in)
