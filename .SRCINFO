@@ -1,6 +1,6 @@
 pkgbase = pipewire-common-git
 	pkgdesc = Low-latency audio/video router and processor
-	pkgver = 0.3.28.r0.gfb55cc47
+	pkgver = 0.3.28.r159.g6971d1190
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = pipewire-common-git
 	makedepends = avahi
 	makedepends = sdl2
 	makedepends = gst-plugins-base-libs
+	makedepends = webrtc-audio-processing
 	makedepends = bluez-libs
 	makedepends = sbc
 	makedepends = libldac
@@ -112,4 +113,3 @@ pkgname = gst-plugin-pipewire-common-git
 	depends = gst-plugins-base-libs
 	provides = gst-plugin-pipewire
 	conflicts = gst-plugin-pipewire
-
