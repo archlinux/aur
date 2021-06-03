@@ -17,10 +17,10 @@ pkgbase=java11-jetbrains-imfix
 _pkgbase=java11-jetbrains
 pkgname=('jre11-jetbrains-headless-imfix' 'jre11-jetbrains-imfix' 'jdk11-jetbrains-imfix')
 _majorver=11
-_ver=11.0.10
-_hgver=11_0_10
+_ver=11.0.11
+_hgver=11_0_11
 _updatever=9
-_jbver1=1379
+_jbver1=1481
 _jbver2=1
 pkgrel=1
 pkgver=${_ver}.b${_jbver1}.${_jbver2}
@@ -37,7 +37,7 @@ source=(https://github.com/JetBrains/JetBrainsRuntime/archive/${_hg_tag}.tar.gz
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
-sha256sums=('a7423235d33a21451e0bb7ba1656b0c4e3d052cad19d52b4640c44d101a0bf23'
+sha256sums=('dea32c8ab047c123df5bc35fd09d36f3423b74ab243a7bd9a43acf945cbae37b'
             'ceb149421aeceb286143a9c9979f3b9ce9fc9b161dfda1e20d41352c5e4741c4'
             '915bd0722e897fd811bb0d77829528017ecdfd703880454bc690018ee54e44b6'
             '3f072ef4d1f59e1188d4b36ff83378c67b9f77db532b4f5cbaeb57cd37620f07'
