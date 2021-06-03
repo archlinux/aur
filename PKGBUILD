@@ -2,11 +2,11 @@
 
 pkgname=pgadmin4-nwjs
 pkgver=5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Comprehensive design and management interface for PostgreSQL"
 arch=('x86_64')
 url="https://www.pgadmin.org/"
-license=('GPL')
+license=('custom')
 depends=('python' 'postgresql-libs' 'hicolor-icon-theme')
 makedepends=('python-pip' 'yarn')
 provides=('pgadmin4=5.3')
