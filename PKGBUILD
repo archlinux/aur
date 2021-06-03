@@ -1,8 +1,8 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=redoc-cli
-pkgver=0.10.4
-pkgrel=2
+pkgver=0.11.4
+pkgrel=1
 pkgdesc="ReDoc's Command Line Interface"
 arch=('any')
 url="https://github.com/Redocly/redoc"
@@ -13,7 +13,7 @@ source=(
   "https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz"
 )
 sha256sums=(
-  'b0baae4b1d21d4a46cfea5e69b4e9c72bcda9da89b6c428fad6747f57dd0b8c1'
+  '7a77be918b086b1578e8fc772718adf89822f0b5c6e8f7610409b45784532d21'
 )
 noextract=("${pkgname}-${pkgver}.tgz")
 
