@@ -2,7 +2,7 @@
 
 pkgname=cherrytree-git
 _pkgname="${pkgname%%-git}"
-pkgver=0.99.30.r15.g2a56d216
+pkgver=0.99.37.r13.g1f55d501
 pkgrel=1
 pkgdesc="Hierarchical note-taking application, git version"
 arch=('x86_64')
@@ -34,6 +34,7 @@ prepare() {
   cd "${_pkgname}"
   git submodule init
   git config submodule.googletest.url "${srcdir}/googletest"
+  #git config submodule.spdlog.url "${srcdir}/spdlog"
   git submodule update
 }
 
