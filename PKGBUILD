@@ -1,7 +1,7 @@
 # Maintainer: Daniel Menelkir <menelkir at itroll dot org>
 pkgname=g15daemon-openrc
-pkgver=20210510
-pkgrel=1
+pkgver=1
+pkgrel=2
 pkgdesc="g15daemon init script for OpenRC"
 arch=('any')
 url="https://gitlab.com/menelkir/g15daemon"
