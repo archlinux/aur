@@ -5,6 +5,7 @@ url="https://alocy.be/page/agave"
 license=('MIT')
 pkgdesc='A TrueType monospaced font designed for X environments'
 provides=('ttf-font')
+makedepends=('fontconfig' 'xorg-mkfontscale')
 arch=('any')
 source=(
   "https://github.com/agarick/agave/releases/download/v$pkgver/Agave-Regular.ttf"
