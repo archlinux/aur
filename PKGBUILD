@@ -2,7 +2,7 @@
 
 pkgname=dxvk-mingw
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
 url="https://github.com/doitsujin/dxvk"
@@ -11,6 +11,7 @@ depends=('vulkan-icd-loader' 'wine>=4.0rc1' 'lib32-vulkan-icd-loader' 'bash')
 makedepends=('ninja' 'meson>=0.43' 'glslang' 'git' 'mingw-w64-gcc')
 provides=('dxvk' 'd9vk' "dxvk=$pkgver")
 conflicts=('dxvk' 'd9vk')
+options=(!lto)
 source=(
     "git+https://github.com/doitsujin/dxvk.git#tag=v$pkgver"
     "setup_dxvk"
@@ -60,6 +61,10 @@ prepare() {
     # https://bugs.winehq.org/show_bug.cgi?id=43516
     dxvk64_cflags="$dxvk_cflags -mno-avx"
     dxvk32_cflags="$dxvk_cflags -mno-avx"
+    # These flags are taken from Proton, I don't know if there are issues with Arch wine.
+    #dxvk64_cflags="$dxvk_cflags -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf"
+    #dxvk32_cflags="$dxvk_cflags -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf"
+    #dxvk_ldflags="$dxvk_ldflags -Wl,--file-alignment,4096"
 
     sed -i build-win64.txt \
         -e "s|@CARGS@|\'${dxvk64_cflags// /\',\'}\'|g" \
