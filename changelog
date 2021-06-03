@@ -1,4 +1,6 @@
 2021-06-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.1.0.9-1:
+    Fixed advanced config for STD plugin not being parsed correctly.
   * 5.1.0.8-1:
     [!] ASF V5.1, while fairly compatible for the users, has gone through extensive refactor and maintenance internally which was crucial for the future development. We've reorganized the whole project structure, re-evaluated the decisions made in the past and corrected those that were vastly suboptimal given time. All third-party plugins will need to be recompiled in order to work with this release. For plugin developers, we've also prepared a small "developer changelog" below.
     Our SteamTokenDumperPlugin now supports advanced config that might come useful for the developers and other people having access to potentially sensitive apps on Steam. As of today the config includes various exclusion options.
