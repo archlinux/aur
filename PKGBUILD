@@ -34,7 +34,6 @@ prepare() {
   cd "${_pkgname}"
   git submodule init
   git config submodule.googletest.url "${srcdir}/googletest"
-  #git config submodule.spdlog.url "${srcdir}/spdlog"
   git submodule update
 }
 
