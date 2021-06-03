@@ -12,6 +12,7 @@ depend()
 start()
 {
 	ebegin "Starting nldev device manager"
+	mkdir /run/libudev-zero
 	nldev -b -r "${runpath}" "${nldev_opts}"
 	eend $?
 }

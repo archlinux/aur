@@ -1,7 +1,7 @@
 # Maintainer: Platon Ryzhikov <ihummer63@yandex.ru>
 
 pkgname=nldev-openrc
-pkgver=20181222
+pkgver=20210603
 pkgrel=1
 pkgdesc="OpenRC nldev and nltrigger init scripts"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('nldev' 'openrc')
 source=("nldev.confd"
         "nldev.initd"
         "nltrigger.initd")
-sha256sums=('210bf319a575bac663f3926f832d296cd13747c31e2c2d575808d1fa773e7a87'
+sha256sums=('72523eebefc050df76a82698bf56901c46df98bb554d016ebabb805ab10c6d7e'
             '262238f02af571db99e18663414d4d3450609f1b35a85722d9bae08f0e84a16a'
             '766bb955aad9289b87eccb5ab1c4f82815288ac209c0a7454374fdcda547d088')
 
