@@ -1,6 +1,6 @@
 pkgbase = nemo-emblems
 	pkgdesc = Nemo file emblems extension
-	pkgver = 4.8.1
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/linuxmint/nemo-extensions
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = nemo-emblems
 	depends = nemo-python>=3.9.0
 	options = !libtool
 	options = !emptydirs
-	source = git+https://github.com/linuxmint/nemo-extensions#commit=1f21b0d12ad1be80f8be218fc3a08d0fe9cbd8b0
-	sha256sums = SKIP
+	source = nemo-extensions-5.0.0.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/5.0.0.tar.gz
+	sha256sums = e9d0e592a8b8bc0a4f0eb5222994f522f0e255f5a0c86e8069933864e2ca7485
 
 pkgname = nemo-emblems
-
