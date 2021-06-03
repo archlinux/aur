@@ -1,6 +1,6 @@
 pkgbase = aobook
 	pkgdesc = Aozora Bunko text viewer
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = http://azsky2.html.xdomain.jp/soft/aobook.html
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = aobook
 	depends = fontconfig
 	depends = hicolor-icon-theme
 	depends = libjpeg-turbo
+	depends = libxcursor
 	depends = libxext
-	source = http://azsky2.html.xdomain.jp/arc/aobook-2.0.0.tar.xz
-	md5sums = 435c4eb3fd887468d63ca1252805df01
+	source = http://azsky2.html.xdomain.jp/arc/aobook-2.0.1.tar.xz
+	md5sums = 5c98b45bc52ed844957034b9cecc8941
 
 pkgname = aobook
-
