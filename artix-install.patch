@@ -1,0 +1,14 @@
+--- Makefile.old	2021-05-13 15:09:50.844470426 +0300
++++ Makefile	2021-05-13 15:11:10.774409180 +0300
+@@ -48,8 +48,9 @@ install: libudev.so libudev.a libudev.pc
+ 	mkdir -p         ${DESTDIR}${INCLUDEDIR} ${DESTDIR}${LIBDIR}/pkgconfig
+ 	cp -f udev.h  	 ${DESTDIR}${INCLUDEDIR}/libudev.h
+ 	cp -f libudev.a  ${DESTDIR}${LIBDIR}/libudev.a
+-	cp -f libudev.so ${DESTDIR}${LIBDIR}/libudev.so
+-	ln -fs libudev.so ${DESTDIR}${LIBDIR}/libudev.so.1
++	cp -f libudev.so ${DESTDIR}${LIBDIR}/libudev.so.${LIBUDEV_VER}
++	ln -fs libudev.so.${LIBUDEV_VER} ${DESTDIR}${LIBDIR}/libudev.so.1
++	ln -fs libudev.so.1 ${DESTDIR}${LIBDIR}/libudev.so
+ 	cp -f libudev.pc ${DESTDIR}${LIBDIR}/pkgconfig/
+ 
+ uninstall:
