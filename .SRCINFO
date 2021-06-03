@@ -1,7 +1,7 @@
 pkgbase = g15composer-runit
 	pkgdesc = g15composer init script for runit
-	pkgver = 20210510
-	pkgrel = 1
+	pkgver = 1
+	pkgrel = 2
 	url = https://gitlab.com/menelkir/g15composer
 	arch = any
 	license = GPL2
@@ -11,4 +11,3 @@ pkgbase = g15composer-runit
 	sha512sums = 0d92a2d25b15de0fd2a2238574e419d48ba25cb661961d7bea68cfede81770f0b5b3882487ba324238290d222269243e3a1d6b18478b2a7eee242fea60f06340
 
 pkgname = g15composer-runit
-
