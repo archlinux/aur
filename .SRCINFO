@@ -1,27 +1,34 @@
 pkgbase = gtk-theme-framework
 	pkgdesc = GTK themes built with the GTK Theme Framework
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/jaxwilko/gtk-theme-framework
 	arch = any
 	license = GPL3
-	makedepends = sassc
-	makedepends = inkscape
-	makedepends = optipng
+	makedepends = git
 	depends = gtk3
-	depends = gtk-engine-murrine
-	depends = gtk-engines
+	optdepends = gtk-engine-murrine: GTK2 theme support
+	optdepends = gtk-engines: GTK2 theme support
 	conflicts = material-gtk-framework
 	replaces = material-gtk-framework
 	options = !strip
-	source = gtk-theme-framework-0.2.1.tar.gz::https://github.com/jaxwilko/gtk-theme-framework/archive/v0.2.1.tar.gz
+	source = gtk-theme-framework-0.2.2.tar.gz::https://github.com/jaxwilko/gtk-theme-framework/archive/v0.2.2.tar.gz
 	source = git+https://github.com/vinceliuice/vimix-icon-theme.git
-	sha256sums = 90fdab6c78b8cbb262cc9b99125a156bcdda1133f8d69a71d94b7ca6baae9fe9
+	sha256sums = 0d698d525607095d1e99122b79f2cbeacc79361693115d2a0ae2cf7ed8f2b988
 	sha256sums = SKIP
 
 pkgname = palenight-gtk-theme
+	pkgdesc = Palenight GTK theme & icon set: built with the GTK Theme Framework
 
 pkgname = amarena-gtk-theme
+	pkgdesc = Amarena GTK theme & icon set: built with the GTK Theme Framework
 
 pkgname = gruvterial-gtk-theme
+	pkgdesc = Gruvterial GTK theme & icon set: built with the GTK Theme Framework
+
+pkgname = oceanic-gtk-theme
+	pkgdesc = Oceanic GTK theme & icon set: built with the GTK Theme Framework
+
+pkgname = spacx-gtk-theme
+	pkgdesc = Spacex GTK theme & icon set: built with the GTK Theme Framework
 
