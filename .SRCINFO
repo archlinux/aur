@@ -1,6 +1,6 @@
 pkgbase = st-deshdeepak-git
 	pkgdesc = My build of simple (suckless) terminal with breeze colorscheme and patches.
-	pkgver = 0.8.4.r1132.1160ea8
+	pkgver = 0.8.4.r1143.aa24ff7
 	pkgrel = 1
 	url = https://github.com/deshdeepak1/st
 	arch = x86_64
@@ -10,6 +10,9 @@ pkgbase = st-deshdeepak-git
 	makedepends = git
 	depends = nerd-fonts-mononoki
 	depends = libxft-bgra
+	optdepends = gnu-free-fonts: Unicode support
+	optdepends = noto-fonts-emoji: Color Emoji Support
+	optdepends = noto-color-emoji-fontconfig: Prefer color emoji(Better rendering)
 	provides = st
 	conflicts = st
 	source = git+https://github.com/deshdeepak1/st
