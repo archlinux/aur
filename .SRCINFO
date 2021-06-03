@@ -1,16 +1,22 @@
 pkgbase = seahorse-caja
 	pkgdesc = An extension for caja which allows encryption and decryption of OpenPGP files using GnuPG.
-	pkgver = 1.18.4
+	pkgver = 1.18.5
 	pkgrel = 1
 	url = https://github.com/darkshram/seahorse-caja/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = caja
+	depends = dbus-glib
+	depends = gcr
+	depends = gnupg
+	depends = gpgme
+	depends = gtk3
+	depends = intltool
 	depends = libcryptui
+	depends = libnotify
 	provides = seahorse-caja
-	source = https://github.com/darkshram/seahorse-caja/releases/download/1.18.4/seahorse-caja-1.18.4.tar.xz
-	sha256sums = c604705d8e700d14dca7f1ab983c82541e291fde27177146b95339b5f7602dca
+	source = https://github.com/darkshram/seahorse-caja/releases/download/1.18.5/seahorse-caja-1.18.5.tar.xz
+	sha512sums = 85b022439faeadc20202111adf0056993e560a3e1d0c06b9788f5f871fdd452c52b198da3510ad444f7be8e917783e1d016cc240b220cdd85391140b79adb2f1
 
 pkgname = seahorse-caja
-
