@@ -1,6 +1,6 @@
 pkgname=svix-cli
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The Svix CLI (webhooks as a service)'
 arch=('x86_64')
 url="https://www.svix.com"
@@ -27,4 +27,8 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 build/$pkgname "$pkgdir"/usr/bin/svix
+  "$pkgdir"/usr/bin/svix completion bash > bash-svix
+  install -D bash-svix "$pkgdir"/etc/bash_completion.d/svix
+  "$pkgdir"/usr/bin/svix completion zsh > zsh-svix
+  install -D zsh-svix "$pkgdir"/usr/share/zsh/site-functions/_svix
 }
