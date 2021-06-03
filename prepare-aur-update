@@ -13,4 +13,4 @@ namcap PKGBUILD
 
 echo "--- Checking "
 _pkgarch="$(grep 'arch = ' .SRCINFO | cut -d ' ' -f 3)"
-namcap "$pkgname-$epoch:$pkgver-$pkgrel-$_pkgarch.pkg.tar"
+namcap "$pkgname-$epoch:$pkgver-$pkgrel-$_pkgarch.pkg.tar.zst"
