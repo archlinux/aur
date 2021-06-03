@@ -1,4 +1,5 @@
 # Maintainer: Michael Herzberg <{firstname}@{firstinitial}{lastname}.de>
+# Contributor: SoftwareRat <jaguar5018@gmail.com>
 
 pkgname=moonlight-qt-git
 pkgver=r891.212ed33
@@ -8,7 +9,7 @@ arch=('x86_64')
 license=('GPL')
 url='https://moonlight-stream.org'
 depends=('qt5-base' 'qt5-quickcontrols2' 'qt5-svg' 'ffmpeg' 'sdl2_ttf')
-makedepends=('git')
+makedepends=('git' 'pkg-config')
 optdepends=('libva-intel-driver: hardware acceleration for Intel GPUs')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
