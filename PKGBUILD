@@ -15,7 +15,7 @@ makedepends=(
 
 build() {
     cd "${srcdir}/${pkgname}"
-    cargo build --release --locked
+    cargo build --release --features gpu --locked
 }
 
 check() {
