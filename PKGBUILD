@@ -4,30 +4,36 @@
 # Contributor: Danny Bautista <pyrolagus@gmail.com>
 
 pkgname=ghidra-git
-pkgver=9.2.4+r796+gf19811622
+pkgver=10.0.BETA.r25.52d07a8e6
 pkgrel=1
 pkgdesc='Software reverse engineering framework (git)'
 arch=('x86_64')
 url='https://www.nsa.gov/ghidra'
 license=(Apache)
-provides=(ghidra)
-conflicts=(ghidra)
+provides=('ghidra')
+conflicts=('ghidra')
 depends=(
-  'java-runtime-common'
-  'jdk11-openjdk'
+  'bash'
+  'java-environment>=11'
+  'polkit'
 )
 makedepends=(
   'git'
-  'gradle6' # gradle>=7 is currently not supported
+  'gradle'
+  'java-environment=11'
   'unzip'
 )
 source=(
   "git+https://github.com/NationalSecurityAgency/ghidra"
-  ghidra.desktop
+  'ghidra.desktop'
+  'ghidra-root.desktop'
+  'ghidra.policy'
 )
 sha512sums=(
   'SKIP'
   'a85b8b3276e2ff4ed8bda6470c15d02711ebaa48463c775cd2a36549fad738e9fe073dab80f8c57646490ffc959cdc27e9d25b1dc2a5810b0ddb249b5dc99a9b'
+  'c717029cf31860e27b5563c3ff4b2740d4b1997bc50481214e24c38f12d9acbfa9ca2cbfe594d43071fbf8420ac8f022119c2c23ddef0c717d96860e22eb35c3'
+  '0a35f58b1820ac65ce37d09b0a6904ab7018c773c73ecd29bcfda37cbd27f34af868585084b5cd408b1066b7956df043cb1573a1e3d890e173be737d2de51401'
 )
 _pkgname="${pkgname/-*/}"
 _stop='\e[m'
@@ -35,16 +41,22 @@ _color="\e[33m"
 _bold='\e[1m'
 _prefix=" ${_bold}${_color}==>$_stop "
 
+
+
 pkgver() {
   cd "$_pkgname"
-  git describe --tags | sed 's#Ghidra_##;s#_build##;s#-#+#g;s#+#+r#'
+  printf "%s" "$(git describe --tags | sed 's/Ghidra_\([^_]*\)_build/\1/;s/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
   cd "$_pkgname"
 
+  # DEPRECATED PATCH - GP-793 corrected missing IP info - https://github.com/NationalSecurityAgency/ghidra/commit/70675fce99a4c6e6e650729e5dda6ccbbbbbd40d
+#  echo -e "${_prefix}[PATCH] - GP-793 corrected missing IP info (https://github.com/NationalSecurityAgency/ghidra/commit/70675fce99a4c6e6e650729e5dda6ccbbbbbd40d)"
+#  patch --no-backup-if-mismatch --forward --strip=2 --input="${srcdir}/0000-GP-793-corrected-missing-IP-info.patch"
+
   echo -e "${_prefix}Setting up the build dependencies"
-  gradle6 --parallel --init-script gradle/support/fetchDependencies.gradle init
+  gradle --parallel --init-script gradle/support/fetchDependencies.gradle init
 
   ##
   ## FOR GHIDRA DEVELOPERS
@@ -53,22 +65,22 @@ prepare() {
   ##
 
 #  echo -e "${_prefix}Setting up the developers environment"
-#  gradle6 --parallel prepDev
+#  gradle --parallel prepDev
 #
 #  echo -e "${_prefix}Setting up the eclipse configurations"
-#  gradle6 --parallel eclipse
+#  gradle --parallel eclipse
 #
 #  echo -e "${_prefix}Compiling the linux64 native binaries"
-#  gradle6 --parallel buildNatives_linux64
+#  gradle --parallel buildNatives_linux64
 #
 #  echo -e "${_prefix}Compiling the precompile language modules"
-#  gradle6 --parallel sleighCompile
+#  gradle --parallel sleighCompile
 }
 
 build() {
   cd "$_pkgname"
   echo -e "${_prefix}Building Ghidra"
-  gradle6 --parallel buildGhidra
+  gradle --parallel buildGhidra
 }
 
 package() {
@@ -89,9 +101,13 @@ package() {
   ln -s /opt/ghidra/ghidraRun "$pkgdir"/usr/bin/ghidra
   ln -s /opt/ghidra/support/analyzeHeadless "$pkgdir"/usr/bin/ghidra-headless
 
-  echo -e "${_prefix}Setting up desktop shortcut"
+  echo -e "${_prefix}Setting up desktop shortcuts"
   install -Dm 644 ../ghidra.desktop -t "$pkgdir"/usr/share/applications
+  install -Dm 644 ../ghidra-root.desktop -t "$pkgdir"/usr/share/applications
 
   echo -e "${_prefix}Setting up desktop icon"
-  install -Dm 644 Ghidra/Framework/Generic/src/main/resources/images/GhidraIcon256.png "$pkgdir"/usr/share/pixmaps/ghidra.png
+  install -Dm 644 Ghidra/Framework/Generic/src/main/resources/images/GhidraIcon64.png "$pkgdir"/usr/share/pixmaps/ghidra.png
+
+  echo -e "${_prefix}Setting up policy file for the \"run as root\" desktop shortcut"
+  install -Dm 644 ../ghidra.policy -t "$pkgdir"/usr/share/polkit-1/actions
 }

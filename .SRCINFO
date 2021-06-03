@@ -1,21 +1,26 @@
 pkgbase = ghidra-git
 	pkgdesc = Software reverse engineering framework (git)
-	pkgver = 9.2.4+r796+gf19811622
+	pkgver = 10.0.BETA.r25.52d07a8e6
 	pkgrel = 1
 	url = https://www.nsa.gov/ghidra
 	arch = x86_64
 	license = Apache
 	makedepends = git
-	makedepends = gradle6
+	makedepends = gradle
+	makedepends = java-environment=11
 	makedepends = unzip
-	depends = java-runtime-common
-	depends = jdk11-openjdk
+	depends = bash
+	depends = java-environment>=11
+	depends = polkit
 	provides = ghidra
 	conflicts = ghidra
 	source = git+https://github.com/NationalSecurityAgency/ghidra
 	source = ghidra.desktop
+	source = ghidra-root.desktop
+	source = ghidra.policy
 	sha512sums = SKIP
 	sha512sums = a85b8b3276e2ff4ed8bda6470c15d02711ebaa48463c775cd2a36549fad738e9fe073dab80f8c57646490ffc959cdc27e9d25b1dc2a5810b0ddb249b5dc99a9b
+	sha512sums = c717029cf31860e27b5563c3ff4b2740d4b1997bc50481214e24c38f12d9acbfa9ca2cbfe594d43071fbf8420ac8f022119c2c23ddef0c717d96860e22eb35c3
+	sha512sums = 0a35f58b1820ac65ce37d09b0a6904ab7018c773c73ecd29bcfda37cbd27f34af868585084b5cd408b1066b7956df043cb1573a1e3d890e173be737d2de51401
 
 pkgname = ghidra-git
-
