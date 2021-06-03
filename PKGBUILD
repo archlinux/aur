@@ -1,7 +1,7 @@
 # Maintainer: Mateusz Maćkowski <mateusz@mackowski.org>
 pkgname=tundra
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="MyAnimeList scrobbler"
 arch=('x86_64')
@@ -45,4 +45,5 @@ package() {
     install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
     install -Dm 755 data/moe.tundra.Tundra.svg -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
     install -Dm 755 data/moe.tundra.Tundra.desktop -t "${pkgdir}/usr/share/applications"
+    install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
