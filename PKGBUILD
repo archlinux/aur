@@ -2,7 +2,7 @@
 # Submitter: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.16.12353.b8b5b93b6
+pkgver=0.0.16.12361.6c44664c1
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64)
@@ -69,12 +69,27 @@ prepare() {
   cd rpcs3
   
   git submodule init 3rdparty/glslang/glslang llvm
-  git config submodule.glslang.url ../glslang
+  git config submodule.3rdparty/glslang.url ../glslang
   git config submodule.llvm.url ../rpcs3-llvm
   
-  SUBMODULES=$(git config --file .gitmodules --get-regexp path | awk '!/ffmpeg/ && !/libpng/ && !/zlib/ && !/curl/ && !/llvm/ && !/glslang/ && !/wolfss/ && !/pugixml/ && !/flatbuffers/ { print $2 }')
-  
-  git submodule update --init --depth=1 $SUBMODULES
+  SUBMODULES=($(git config --file .gitmodules --get-regexp path | \
+    awk '!/ffmpeg/ && !/libpng/ && !/zlib/ && !/curl/ && !/llvm/ && !/glslang/ && !/wolfssl/ && !/pugixml/ && !/flatbuffers/'))
+
+  # We need to convert from a relative folder path to a https://github.com path
+  for ((i=0;i<${#SUBMODULES[@]};i+=2))
+  do
+    pathid=${SUBMODULES[$i]}
+    path=${SUBMODULES[$i+1]}
+
+    git submodule init $path
+    urlid=${pathid/%.path/.url}
+
+    # This gets the last two paths in the url, ie RPCS3/rpcs3.git
+    url=$(git config $urlid | awk -F/ '{print $(NF-1)"/"$(NF-0)}')
+
+    git config $urlid https://github.com/$url
+    git submodule update --init --depth=1 $path
+  done
   
   git submodule update 3rdparty/glslang/glslang llvm
 }
