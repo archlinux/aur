@@ -2,7 +2,7 @@
 
 pkgname=alternatives
 pkgver=1.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to maintain symbolic links determining default commands."
 arch=('i686' 'x86_64')
 url="https://github.com/fedora-sysv/chkconfig"
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=()
 makedepends=()
 checkdepends=('beakerlib')
-conflicts=('chkconfig')
+conflicts=('chkconfig' 'dpkg')
 source=("https://github.com/fedora-sysv/chkconfig/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('eac2af3e7fc42a3a60b28e04d98dcfbc5c5cb7f51eb02cb71329b6b71ef99d6e')
 
