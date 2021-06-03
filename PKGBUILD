@@ -10,6 +10,8 @@ depends=(
     'libxi'
     'libx11'
     'xf86-input-libinput'
+    'libXi.so'
+    'libX11.so'
 )
 makedepends=(
     'cmake>=3.9.0'
