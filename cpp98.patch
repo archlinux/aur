@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 55c6f2d..7d9bb68 100644
+--- a/Makefile
++++ b/Makefile
+@@ -43,7 +43,7 @@ PKGS=fuse glib-2.0 gstreamer-1.0
+ 
+ LIBS=-lboost_thread -lpthread $$(pkg-config --libs $(PKGS))
+ 
+-CXXFLAGS+=-g -Wall -D_FILE_OFFSET_BITS=64 -DFUSE_USE_VERSION=26 $$(pkg-config --cflags $(PKGS))
++CXXFLAGS+=-g -Wall -D_FILE_OFFSET_BITS=64 -DFUSE_USE_VERSION=26 $$(pkg-config --cflags $(PKGS)) --std=c++98
+ 
+ all: $(PRODUCT)
+ 
