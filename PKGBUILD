@@ -2,7 +2,7 @@
 
 pkgname=rpms
 pkgver=1.0.3
-pkgrel=5
+pkgrel=6
 pkgdesc='Renoir power metrics server'
 arch=('x86_64')
 url="https://github.com/moson-mo/$pkgname"
@@ -25,7 +25,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath"
-  go build -o build -ldflags "-s -w"
+  GO111MODULE=off go build -o build -ldflags "-s -w"
 }
 
 package() {
