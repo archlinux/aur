@@ -6,11 +6,12 @@ _pkgbase=pipewire
 pkgbase=pipewire-full-git
 pkgname=(pipewire-full-git pipewire-full-docs-git pipewire-full-alsa-git
          pipewire-full-jack-git pipewire-full-pulse-git
+         pipewire-full-zeroconf-git
          gst-plugin-pipewire-full-git
          pipewire-full-jack-client-git
          pipewire-full-vulkan-git pipewire-full-ffmpeg-git)
 pkgver=0.3.28.r159.g6971d1190
-pkgrel=1
+pkgrel=2
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 license=(MIT)
@@ -66,7 +67,7 @@ package_pipewire-full-git() {
   license+=(LGPL)
   depends=(rtkit libdbus-1.so libncursesw.so libsndfile.so
            libudev.so libasound.so libsystemd.so libpulse.so
-           libavahi-common.so libavahi-client.so
+           webrtc-audio-processing
            libbluetooth.so libsbc.so libldacBT_enc.so
            libopenaptx.so libfdk-aac.so)
   optdepends=('pipewire-full-docs-git: Documentation'

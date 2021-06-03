@@ -1,7 +1,7 @@
 pkgbase = pipewire-full-git
 	pkgdesc = Low-latency audio/video router and processor
 	pkgver = 0.3.28.r159.g6971d1190
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pipewire.org
 	arch = x86_64
 	license = MIT
@@ -43,8 +43,7 @@ pkgname = pipewire-full-git
 	depends = libasound.so
 	depends = libsystemd.so
 	depends = libpulse.so
-	depends = libavahi-common.so
-	depends = libavahi-client.so
+	depends = webrtc-audio-processing
 	depends = libbluetooth.so
 	depends = libsbc.so
 	depends = libldacBT_enc.so
@@ -102,6 +101,15 @@ pkgname = pipewire-full-pulse-git
 	conflicts = pipewire-pulse
 	conflicts = pulseaudio
 	conflicts = pulseaudio-bluetooth
+
+pkgname = pipewire-full-zeroconf-git
+	pkgdesc = Low-latency audio/video router and processor - Zeroconf support
+	depends = pipewire-common-git
+	depends = libpipewire-0.3.so
+	depends = libavahi-client.so
+	depends = libavahi-common.so
+	provides = pipewire-zeroconf
+	conflicts = pipewire-zeroconf
 
 pkgname = gst-plugin-pipewire-full-git
 	pkgdesc = Multimedia graph framework - pipewire plugin
