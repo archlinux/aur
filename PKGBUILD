@@ -3,8 +3,8 @@
 # Contributor: Roni Choudhury <aichoudh@gmail.com>
 
 pkgname=pin
-pkgver=3.18.r98332
-_pkgver=3.18-98332-gaebd7b1e6
+pkgver=3.19.r98425
+_pkgver=3.19-98425-gd666b2bee
 pkgrel=1
 pkgdesc="A tool for the dynamic instrumentation of programs"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('gcc>=4.4.7' 'bash' 'lib32-gcc-libs>=4.4.7')
 options=('!strip' 'staticlibs')
 source=("http://software.intel.com/sites/landingpage/pintool/downloads/${pkgname}-${_pkgver}-gcc-linux.tar.gz"
         "pin.sh")
-sha256sums=('de8ef1a0cb301764a774aa9bcaae8cba997a7dde3155ed271e52d00acceb230b'
+sha256sums=('04cf450f9490279be2a83c9d2a17ec3350712d5fe366e28d74e091123e072e50'
             '7198073c94e785cbd9002cdd174ab3bb1d28cc4e26626905c12173ad31ae82fc')
 
 package() {
@@ -38,6 +38,6 @@ package() {
 
     # Copy shell script for modifying path.
     cd "$srcdir"
-    mkdir -p ${pkgdir}/etc/profile.d 
+    mkdir -p ${pkgdir}/etc/profile.d
     install pin.sh ${pkgdir}/etc/profile.d
 }
