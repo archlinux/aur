@@ -76,7 +76,7 @@ prepare() {
 
   # Remove some pre-installed addons that might be questionable
   echo "---- Librewolf patches"
-  patch -Np1 -i ${_patches_dir}/remove_addons.patch
+  patch -Np1 -i ${_patches_dir}/librewolf/remove_addons.patch
 
   # Disabling Pocket
   patch -Np1 -i ${_patches_dir}/sed-patches/disable-pocket.patch
