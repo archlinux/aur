@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-crt-git
 	pkgdesc = MinGW-w64 CRT for Windows (git version)
-	pkgver = 8.0.0.20200927
+	pkgver = 9.0.0.20210601
 	pkgrel = 1
 	url = https://mingw-w64.org/doku.php
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = mingw-w64-crt-git
 	makedepends = git
 	makedepends = mingw-w64-gcc-base
 	makedepends = mingw-w64-binutils
-	makedepends = mingw-w64-headers-git>=8.0.0.20200927
-	provides = mingw-w64-crt=8.0.0.20200927
+	makedepends = mingw-w64-headers-git>=9.0.0.20210601
+	provides = mingw-w64-crt=9.0.0.20210601
 	conflicts = mingw-w64-crt
 	options = !strip
 	options = staticlibs
@@ -20,4 +20,3 @@ pkgbase = mingw-w64-crt-git
 	sha256sums = SKIP
 
 pkgname = mingw-w64-crt-git
-
