@@ -4,7 +4,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 pkgname=gtk3-typeahead
 pkgver=3.24.29
-pkgrel=1
+pkgrel=2
 pkgdesc="GObject-based multi-platform GUI toolkit - Typeahead feature enabled for file chooser widget"
 arch=(x86_64)
 url="https://www.gtk.org/"
@@ -12,8 +12,8 @@ license=(LGPL)
 depends=(atk cairo libxcursor libxinerama libxrandr libxi libepoxy gdk-pixbuf2
          dconf libxcomposite libxdamage pango shared-mime-info at-spi2-atk
          wayland libxkbcommon adwaita-icon-theme json-glib librsvg
-         wayland-protocols desktop-file-utils mesa cantarell-fonts colord rest
-         libcups libcanberra fribidi iso-codes libcloudproviders
+         wayland-protocols desktop-file-utils mesa cantarell-fonts libcolord
+         rest libcups libcanberra fribidi iso-codes libcloudproviders
          gtk-update-icon-cache)
 makedepends=(gobject-introspection gtk-doc git glib2-docs sassc meson)
 provides=("gtk3=$pkgver" gtk3-print-backends libgtk-3.so libgdk-3.so libgailutil-3.so)
