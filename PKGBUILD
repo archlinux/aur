@@ -9,6 +9,7 @@ license=('GPL3')
 depends=(
     'libxi'
     'libx11'
+    'xf86-input-libinput'
 )
 makedepends=(
     'cmake>=3.9.0'
