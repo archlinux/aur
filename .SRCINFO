@@ -1,0 +1,13 @@
+pkgbase = ynetd
+	pkgdesc = A small (< 400 lines of C) server for binding programs to TCP ports
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://yx7.cc/code/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	source = https://yx7.cc/code/ynetd/ynetd-0.1.2.tar.xz
+	sha512sums = b60dc79685dff2fe4e606f07f011a4a91ee05e1335bb56bb81bc5ad46c0d249755aa525f7d44df21565c95557e56bada2caaf09cd89d713960a3e9216ea88eab
+
+pkgname = ynetd

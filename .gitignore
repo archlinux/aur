@@ -1,0 +1,6 @@
+*.tar
+*.gz
+*.xz
+*.zst
+src/
+pkg/
