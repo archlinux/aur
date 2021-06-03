@@ -2,7 +2,7 @@
 
 pkgname=ghidra-dev
 pkgbranch=master
-pkgver=9.2.4.r991.68a9c0a5a+master
+pkgver=10.0.BETA.r25.52d07a8e6+master
 pkgrel=1
 pkgdesc='Software reverse engineering framework (git, current branch: master)'
 arch=('x86_64')
