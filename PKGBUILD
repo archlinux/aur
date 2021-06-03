@@ -15,10 +15,10 @@ _commitid_wl=f713a6054746bc61ece1c8696dce91a7b7e22dd9
 _commitid_bt=8445a53ce2c51a77472b908a0c8f6f8e1fa5c37a
 _ver="${pkgver}.${pkgrel}"
 options=('!strip')
-source=("brcmfmac43455-sdio_$_ver.clm_blob::https://raw.staticdn.net/RPi-Distro/firmware-nonfree/$_commitid_wl/brcm/brcmfmac43455-sdio.clm_blob"
-        "brcmfmac43455-sdio_$_ver.txt::https://raw.staticdn.net/RPi-Distro/firmware-nonfree/$_commitid_wl/brcm/brcmfmac43455-sdio.txt"
-        "brcmfmac43455-sdio_$_ver.bin::https://raw.staticdn.net/RPi-Distro/firmware-nonfree/$_commitid_wl/brcm/brcmfmac43455-sdio.bin"
-        "BCM4345C0_$_ver.hcd::https://raw.staticdn.net/RPi-Distro/bluez-firmware/$_commitid_bt/broadcom/BCM4345C0.hcd")
+source=("brcmfmac43455-sdio_$_ver.clm_blob::https://raw.githubusercontent.com/RPi-Distro/firmware-nonfree/$_commitid_wl/brcm/brcmfmac43455-sdio.clm_blob"
+        "brcmfmac43455-sdio_$_ver.txt::https://raw.githubusercontent.com/RPi-Distro/firmware-nonfree/$_commitid_wl/brcm/brcmfmac43455-sdio.txt"
+        "brcmfmac43455-sdio_$_ver.bin::https://raw.githubusercontent.com/RPi-Distro/firmware-nonfree/$_commitid_wl/brcm/brcmfmac43455-sdio.bin"
+        "BCM4345C0_$_ver.hcd::https://raw.githubusercontent.com/RPi-Distro/bluez-firmware/$_commitid_bt/broadcom/BCM4345C0.hcd")
 sha256sums=('2dbd7d22fc9af0eb560ceab45b19646d211bc7b34a1dd00c6bfac5dd6ba25e8a'
             'ca709be81a78bdb6932936374f39943acbd7af07fae6151011127599a3ce9e3d'
             'cf79e8e8727d103a94cd243f1d98770fa29f5da25df251d0d31b3696f3b4ac6a'
