@@ -1,4 +1,4 @@
-From b920ce94b3fb3765ea5b35b01639325155cd1609 Mon Sep 17 00:00:00 2001
+From 30206cc898c524bc3288844e22a63114b3a7a86d Mon Sep 17 00:00:00 2001
 From: Wu Xiaotian <yetist@gmail.com>
 Date: Wed, 24 Jul 2019 15:55:17 +0800
 Subject: [PATCH] Add duktape as javascript engine.
@@ -6,12 +6,12 @@ Subject: [PATCH] Add duktape as javascript engine.
 ---
  configure.ac                                  |   28 +-
  src/polkitbackend/Makefile.am                 |   14 +-
- .../polkitbackendduktapeauthority.c           | 1428 +++++++++++++++++
- 3 files changed, 1462 insertions(+), 8 deletions(-)
+ .../polkitbackendduktapeauthority.c           | 1402 +++++++++++++++++
+ 3 files changed, 1436 insertions(+), 8 deletions(-)
  create mode 100644 src/polkitbackend/polkitbackendduktapeauthority.c
 
 diff --git a/configure.ac b/configure.ac
-index 4ac2219..d51cfbd 100644
+index b625743..54a8dc4 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -80,11 +80,22 @@ PKG_CHECK_MODULES(GLIB, [gmodule-2.0 gio-unix-2.0 >= 2.30.0])
@@ -57,7 +57,7 @@ index 4ac2219..d51cfbd 100644
  if test "$have_pam" = yes ; then
  echo "
 diff --git a/src/polkitbackend/Makefile.am b/src/polkitbackend/Makefile.am
-index e48b739..9572b06 100644
+index 7e3c080..abcbc6f 100644
 --- a/src/polkitbackend/Makefile.am
 +++ b/src/polkitbackend/Makefile.am
 @@ -33,7 +33,7 @@ libpolkit_backend_1_la_SOURCES =                                   			\
@@ -101,10 +101,10 @@ index e48b739..9572b06 100644
  
 diff --git a/src/polkitbackend/polkitbackendduktapeauthority.c b/src/polkitbackend/polkitbackendduktapeauthority.c
 new file mode 100644
-index 0000000..4b4f8fd
+index 0000000..ae98453
 --- /dev/null
 +++ b/src/polkitbackend/polkitbackendduktapeauthority.c
-@@ -0,0 +1,1428 @@
+@@ -0,0 +1,1402 @@
 +/*
 + * Copyright (C) 2008-2012 Red Hat, Inc.
 + * Copyright (C) 2015 Tangent Space <jstpierre@mecheye.net>
@@ -133,11 +133,7 @@ index 0000000..4b4f8fd
 +#include <errno.h>
 +#include <pwd.h>
 +#include <grp.h>
-+#ifdef HAVE_NETGROUP_H
-+#include <netgroup.h>
-+#else
 +#include <netdb.h>
-+#endif
 +#include <string.h>
 +#include <glib/gstdio.h>
 +#include <locale.h>
@@ -176,6 +172,7 @@ index 0000000..4b4f8fd
 +  duk_context *cx;
 +};
 +
++#define WATCHDOG_TIMEOUT (15 * G_TIME_SPAN_SECOND)
 +
 +static void utils_spawn (const gchar *const  *argv,
 +                         guint                timeout_seconds,
@@ -230,18 +227,6 @@ index 0000000..4b4f8fd
 +/* ---------------------------------------------------------------------------------------------------- */
 +
 +/* ---------------------------------------------------------------------------------------------------- */
-+
-+static duk_ret_t js_polkit_log (duk_context *cx);
-+static duk_ret_t js_polkit_spawn (duk_context *cx);
-+static duk_ret_t js_polkit_user_is_in_netgroup (duk_context *cx);
-+
-+static const duk_function_list_entry js_polkit_functions[] =
-+{
-+  { "log", js_polkit_log, 1 },
-+  { "spawn", js_polkit_spawn, 1 },
-+  { "_userIsInNetGroup", js_polkit_user_is_in_netgroup, 2 },
-+  { NULL, NULL, 0 },
-+};
 +
 +static void
 +polkit_backend_js_authority_init (PolkitBackendJsAuthority *authority)
@@ -325,22 +310,18 @@ index 0000000..4b4f8fd
 +
 +  for (l = files; l != NULL; l = l->next)
 +    {
-+      const gchar *filename = (gchar *)l->data;
-+#if (DUK_VERSION >= 20000)
-+      GFile *file = g_file_new_for_path (filename);
-+      char *contents;
-+      gsize len;
-+      if (!g_file_load_contents (file, NULL, &contents, &len, NULL, NULL))
-+        {
-+          polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (authority),
-+                                        "Error compiling script %s",
-+                                        filename);
-+          g_object_unref (file);
-+          continue;
-+        }
++      const gchar *filename = l->data;
 +
-+      g_object_unref (file);
-+      if (duk_peval_lstring_noresult(cx, contents,len) != 0)
++#if (DUK_VERSION >= 20000)
++      gchar *contents;
++      gsize length;
++      GError *error = NULL;
++      if (!g_file_get_contents (filename, &contents, &length, &error)){
++        g_warning("Error when file contents of %s: %s\n", filename, error->message);
++        g_error_free (error);
++        continue;
++      }
++      if (duk_peval_lstring_noresult(cx, contents,length) != 0)
 +#else
 +      if (duk_peval_file_noresult (cx, filename) != 0)
 +#endif
@@ -371,11 +352,7 @@ index 0000000..4b4f8fd
 +  duk_context *cx = authority->priv->cx;
 +
 +  duk_set_top (cx, 0);
-+  if (!duk_get_global_string (cx, "polkit")) {
-+      polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (authority),
-+                                    "Error deleting old rules, not loading new ones");
-+      return;
-+  }
++  duk_get_global_string (cx, "polkit");
 +  duk_push_string (cx, "_deleteRules");
 +
 +  duk_call_prop (cx, 0, 0);
@@ -464,6 +441,18 @@ index 0000000..4b4f8fd
 +  g_ptr_array_add (p, NULL);
 +  authority->priv->dir_monitors = (GFileMonitor**) g_ptr_array_free (p, FALSE);
 +}
++
++static duk_ret_t js_polkit_log (duk_context *cx);
++static duk_ret_t js_polkit_spawn (duk_context *cx);
++static duk_ret_t js_polkit_user_is_in_netgroup (duk_context *cx);
++
++static const duk_function_list_entry js_polkit_functions[] =
++{
++  { "log", js_polkit_log, 1 },
++  { "spawn", js_polkit_spawn, 1 },
++  { "_userIsInNetGroup", js_polkit_user_is_in_netgroup, 2 },
++  { NULL, NULL, 0 },
++};
 +
 +static void
 +polkit_backend_js_authority_constructed (GObject *object)
@@ -660,10 +649,7 @@ index 0000000..4b4f8fd
 +  char *seat_str = NULL;
 +  char *session_str = NULL;
 +
-+  if (!duk_get_global_string (cx, "Subject")) {
-+    return FALSE;
-+  }
-+
++  duk_get_global_string (cx, "Subject");
 +  duk_new (cx, 0);
 +
 +  if (POLKIT_IS_UNIX_PROCESS (subject))
@@ -769,10 +755,7 @@ index 0000000..4b4f8fd
 +  gchar **keys;
 +  guint n;
 +
-+  if (!duk_get_global_string (cx, "Action")) {
-+    return FALSE;
-+  }
-+
++  duk_get_global_string (cx, "Action");
 +  duk_new (cx, 0);
 +
 +  set_property_str (cx, "id", action_id);
@@ -815,12 +798,7 @@ index 0000000..4b4f8fd
 +  duk_context *cx = authority->priv->cx;
 +
 +  duk_set_top (cx, 0);
-+  if (!duk_get_global_string (cx, "polkit")) {
-+      polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (authority),
-+                                    "Error deleting old rules, not loading new ones");
-+      goto out;
-+  }
-+
++  duk_get_global_string (cx, "polkit");
 +  duk_push_string (cx, "_runAdminRules");
 +
 +  if (!push_action_and_details (cx, action_id, details, &error))
@@ -903,10 +881,7 @@ index 0000000..4b4f8fd
 +  duk_context *cx = authority->priv->cx;
 +
 +  duk_set_top (cx, 0);
-+  if (!duk_get_global_string (cx, "polkit")) {
-+      goto out;
-+  }
-+
++  duk_get_global_string (cx, "polkit");
 +  duk_push_string (cx, "_runRules");
 +
 +  if (!push_action_and_details (cx, action_id, details, &error))
@@ -953,8 +928,7 @@ index 0000000..4b4f8fd
 + out:
 +  if (!good)
 +    ret = POLKIT_IMPLICIT_AUTHORIZATION_NOT_AUTHORIZED;
-+  if (ret_str != NULL)
-+      g_free (ret_str);
++  g_free (ret_str);
 +
 +  return ret;
 +}
@@ -1025,8 +999,8 @@ index 0000000..4b4f8fd
 +          GAsyncResult  *res,
 +          gpointer       user_data)
 +{
-+  SpawnData *data = (SpawnData *)user_data;
-+  data->res = (GAsyncResult*)g_object_ref (res);
++  SpawnData *data = user_data;
++  data->res = g_object_ref (res);
 +  g_main_loop_quit (data->loop);
 +}
 +
@@ -1301,7 +1275,7 @@ index 0000000..4b4f8fd
 +utils_on_cancelled (GCancellable *cancellable,
 +                    gpointer      user_data)
 +{
-+  UtilsSpawnData *data = (UtilsSpawnData *)user_data;
++  UtilsSpawnData *data = user_data;
 +  GError *error;
 +
 +  error = NULL;
@@ -1316,7 +1290,7 @@ index 0000000..4b4f8fd
 +                         GIOCondition condition,
 +                         gpointer user_data)
 +{
-+  UtilsSpawnData *data = (UtilsSpawnData *)user_data;
++  UtilsSpawnData *data = user_data;
 +  gchar buf[1024];
 +  gsize bytes_read;
 +
@@ -1330,7 +1304,7 @@ index 0000000..4b4f8fd
 +                         GIOCondition condition,
 +                         gpointer user_data)
 +{
-+  UtilsSpawnData *data = (UtilsSpawnData *)user_data;
++  UtilsSpawnData *data = user_data;
 +  gchar buf[1024];
 +  gsize bytes_read;
 +
@@ -1344,7 +1318,7 @@ index 0000000..4b4f8fd
 +                      gint     status,
 +                      gpointer user_data)
 +{
-+  UtilsSpawnData *data = (UtilsSpawnData *)user_data;
++  UtilsSpawnData *data = user_data;
 +  gchar *buf;
 +  gsize buf_size;
 +
@@ -1373,7 +1347,7 @@ index 0000000..4b4f8fd
 +static gboolean
 +utils_timeout_cb (gpointer user_data)
 +{
-+  UtilsSpawnData *data = (UtilsSpawnData *)user_data;
++  UtilsSpawnData *data = user_data;
 +
 +  data->timed_out = TRUE;
 +
@@ -1402,12 +1376,12 @@ index 0000000..4b4f8fd
 +  data->simple = g_simple_async_result_new (NULL,
 +                                            callback,
 +                                            user_data,
-+                                            (gpointer*)utils_spawn);
++                                            utils_spawn);
 +  data->main_context = g_main_context_get_thread_default ();
 +  if (data->main_context != NULL)
 +    g_main_context_ref (data->main_context);
 +
-+  data->cancellable = cancellable != NULL ? (GCancellable*)g_object_ref (cancellable) : NULL;
++  data->cancellable = cancellable != NULL ? g_object_ref (cancellable) : NULL;
 +
 +  data->child_stdout = g_string_new (NULL);
 +  data->child_stderr = g_string_new (NULL);
@@ -1507,7 +1481,7 @@ index 0000000..4b4f8fd
 +  if (g_simple_async_result_propagate_error (simple, error))
 +    goto out;
 +
-+  data = (UtilsSpawnData*)g_simple_async_result_get_op_res_gpointer (simple);
++  data = g_simple_async_result_get_op_res_gpointer (simple);
 +
 +  if (data->timed_out)
 +    {
@@ -1534,5 +1508,5 @@ index 0000000..4b4f8fd
 +  return ret;
 +}
 -- 
-2.29.2
+2.31.1
 
