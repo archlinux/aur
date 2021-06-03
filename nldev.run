@@ -1,4 +1,9 @@
 #!/bin/sh
 [ -r conf ] && . ./conf
+mkdir /run/libudev-zero
+[ -f /run/nldev.pid ] && {
+    kill $(cat /run/nldev.pid)
+    rm /run/nldev.pid
+}
 runpath=${runpath:-/usr/bin/smdev}
 exec nldev -r $runpath $optargs 2>&1

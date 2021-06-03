@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# sourcing our current rc.conf requires this to be a bash script
+. /usr/lib/rc/functions
+
+case "$1" in
+    start)
+        stat_busy "Triggering udev uevents"
+        nltrigger add all
+        ret=$?
+        (( ret )) && stat_die nltrigger
+        add_daemon nltrigger
+        stat_done nltrigger
+        ;;
+    *)
+        echo "usage: $0 {start}"
+        exit 1
+        ;;
+esac
+

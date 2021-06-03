@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# sourcing our current rc.conf requires this to be a bash script
+. /usr/lib/rc/functions
+
+case "$1" in
+    start)
+        stat_busy "Starting nldev daemon"
+        mkdir /run/libudev-zero
+        bus create /run/udev-bus
+        bus chmod 644 /run/udev-bus
+        nldev -r /usr/bin/smdev &
+        echo $! > /run/nldev.pid
+        # Note: This is only needed for initialization, nldev will
+        #       be controlled by runit on stage 2.
+        add_daemon nldev
+        stat_done nldev
+        ;;
+    stop)
+        stat_busy "Stopping nldev"
+        # check whether nldev might still be running.
+        ! pgrep -f "nldev" >/dev/null 2>&1 || killall nldev || stat_die nldev
+        rm_daemon nldev
+        stat_done nldev
+        ;;
+    *)
+        echo "usage: $0 {start|stop}"
+        exit 1
+        ;;
+esac
+
