@@ -1,6 +1,6 @@
 # Maintainer: Daniel Menelkir <menelkir at itroll dot org>
 pkgname=g15stats-openrc
-pkgver=20210510
+pkgver=1
 pkgrel=1
 pkgdesc="g15stats init script for OpenRC"
 arch=('any')
