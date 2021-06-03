@@ -1,0 +1,13 @@
+diff --git a/build_deps/toolchains/gpu/cuda_configure.bzl b/build_deps/toolchains/gpu/cuda_configure.bzl
+index ba38c6b5..3a0b558d 100644
+--- a/build_deps/toolchains/gpu/cuda_configure.bzl
++++ b/build_deps/toolchains/gpu/cuda_configure.bzl
+@@ -1022,6 +1022,8 @@ def _create_local_cuda_repository(repository_ctx):
+ 
+     builtin_include_directories = []
+     for one_line in cuda_defines["%{host_compiler_includes}"].splitlines():
++        if len(one_line) == 0:
++            continue
+         inc_dir = one_line.split(":")[1][2:-1]
+         builtin_include_directories.append(inc_dir)
+ 
