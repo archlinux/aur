@@ -7,7 +7,7 @@ pkgbase = python-cocotb-bus
 	license = BSD
 	makedepends = git
 	depends = python
-	depends = python-setuptools
+	depends = python-setuptools-scm
 	optdepends = iverilog: for simulating verilog designs
 	optdepends = ghdl: for simulating VHDL designs
 	optdepends = gtkwave: for visualizing waveforms
@@ -16,4 +16,3 @@ pkgbase = python-cocotb-bus
 	md5sums = SKIP
 
 pkgname = python-cocotb-bus
-

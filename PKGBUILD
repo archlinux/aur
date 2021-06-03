@@ -6,7 +6,7 @@ pkgdesc="Pre-packaged testbenching tools and reusable bus interfaces for cocotb"
 arch=('any')
 url="https://github.com/cocotb/cocotb-bus/"
 license=('BSD')
-depends=('python' 'python-setuptools')
+depends=('python' 'python-setuptools-scm')
 
 makedepends=('git')
 optdepends=('iverilog: for simulating verilog designs'
