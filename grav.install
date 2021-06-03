@@ -14,10 +14,10 @@ post_install() {
   rm /var/lib/grav/user/README.md
   rm -rf /var/lib/grav/user/config
   ln -s /var/lib/grav/user $GRAV_ROOT/user
-  _fix_permissions /var/lib/grav 644 755
+  _fix_permissions /var/lib/grav 640 750
 
   ln -s /etc/webapps/grav/config /var/lib/grav/user/config
-  _fix_permissions /etc/webapps/grav 640 750
+  _fix_permissions /etc/webapps/grav 644 755
 }
 
 pre_upgrade() {
@@ -55,14 +55,14 @@ post_upgrade() {
 
     rm -rf $GRAV_ROOT/user/config
     ln -s /etc/webapps/grav/config $GRAV_ROOT/user/config
-    _fix_permissions /etc/webapps/grav 640 750
+    _fix_permissions /etc/webapps/grav 644 755
 
     mkdir -p /var/lib/grav
     mv $GRAV_ROOT/user /var/lib/grav
     ln -s /var/lib/grav/user $GRAV_ROOT/user
     _move_or_create "$GRAV_ROOT/backup" /var/lib/grav/backup
-    _fix_permissions /var/lib/grav 640 750
   fi
+  _fix_permissions /var/lib/grav 640 750
 }
 
 pre_remove() {

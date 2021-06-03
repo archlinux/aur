@@ -3,7 +3,7 @@
 # Contributor: Nils Czernia <nils at czserver dot de>
 
 pkgname=grav
-pkgver=1.7.15
+pkgver=1.7.16
 pkgrel=1
 pkgdesc='Modern, Crazy Fast, Ridiculously Easy and Amazingly Powerful Flat-File CMS'
 arch=('any')
@@ -29,11 +29,11 @@ source=("${pkgname}-${pkgver}.zip::https://github.com/getgrav/grav/releases/down
         "grav.php-fpm.ini"
         "grav.php-fpm.d.grav.conf"
         "grav.php-fpm.service.d.override.conf")
-sha256sums=('b0164d360a8564915267382eb77d964936d25dcbe7b389dbaa4d88cdcd536628'
+sha256sums=('0371a02398f4431b3b044f348df5fc79ff0a3baecdd73c24586c8dbb7f79a2f6'
             'c93008057d3c3f224ecebc93b5b835c5b46c4b16f0caf821c75fcac4b7c20d4f'
             '125e08820ed477582d7ae716dac6495bca4eac485fa4d4263b11f2505fc355db'
             'ced168231a98be4816afc0a1928b54218c4ce4081be7b49acd704e2a9325f9db'
-            'eb4507ec4efbdd605d0f25d4e41e6480e0ce551d7f6d5c3aa52a25242b8adcbb'
+            'ca7197a1e73fec939ea25ee8f3cc05db2117463aa9db8b2911f889e647974228'
             '494e1fb15cc7ca15f8d543276396f87c9498564a167dc70b6cbe9f91ebbc2f42'
             '40235242a47c5f4424212ccf657b0716d533ce3f8125af349e2c2ac4d9e0deef'
             'bdde9deebedd5d53e43b1d5ac2fb2348953903f0c21cfad35a1ebfb78e065385'
@@ -58,7 +58,7 @@ package() {
   chmod -R 644 "${gravroot}"
   chmod -R 755 "${gravroot}/bin"
   find "${gravroot}" -type d -exec chmod 755 {} \;
-  install -Dm 640 "${gravroot}/user.upstream/config/"{site,system}".yaml" -t "${pkgdir}/etc/webapps/${pkgname}/config"
+  install -Dm 644 "${gravroot}/user.upstream/config/"{site,system}".yaml" -t "${pkgdir}/etc/webapps/${pkgname}/config"
   install -Dm 644 "${srcdir}/grav.sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   install -Dm 644 "${srcdir}/grav.tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
   install -Dm 644 "${srcdir}/grav.uwsgi.ini" "${gravroot}/webserver-configs/uwsgi-${pkgname}.ini"
