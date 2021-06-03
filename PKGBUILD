@@ -2,16 +2,16 @@
 
 pkgname=proton-ge-custom
 _srctag=6.9-GE-2
-_commit=f12fed6d53f5d9b85e8f233a8c0b7e295978b9a0
+_commit=86f8171b04219db5f43598c4bc4c508ade6d344b
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=6.1.2
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
 arch=(x86_64)
-options=(staticlibs)
+options=(staticlibs !lto)
 license=('custom')
 
 depends=(
@@ -36,7 +36,7 @@ depends=(
   cabextract
 )
 
-makedepends=(autoconf ncurses bison perl fontforge flex mingw-w64-gcc
+makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc
   git rsync mingw-w64-tools lld nasm meson cmake python-virtualenv python-pip
   glslang vulkan-headers
   giflib                lib32-giflib
@@ -85,7 +85,6 @@ optdepends=(
   libjpeg-turbo         lib32-libjpeg-turbo
   libxcomposite         lib32-libxcomposite
   libxinerama           lib32-libxinerama
-  ncurses               lib32-ncurses
   opencl-icd-loader     lib32-opencl-icd-loader
   libxslt               lib32-libxslt
   libva                 lib32-libva
@@ -133,6 +132,7 @@ source=(
     proton-disable_lock.patch
     proton-user_compat_data.patch
     patches-remove_broken.patch
+    dxvk-1582_missing_optional.patch
 )
 noextract=(
     wine-gecko-${_geckover}-{x86,x86_64}.tar.xz
@@ -165,15 +165,11 @@ prepare() {
     git config submodule.ffmpeg.url "$srcdir"/ffmpeg-meson
     git submodule update ffmpeg
 
-    for submodule in wine wine-staging; do
+    for submodule in wine wine-staging dxvk; do
         git submodule init "${submodule}"
         git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
         git submodule update "${submodule}"
     done
-
-    git submodule init dxvk
-    git config submodule.dxvk.url "$srcdir"/dxvk
-    git submodule update --remote dxvk
 
     for submodule in gstreamer gst-{plugins-{base,good,bad,ugly},libav,orc}; do
         git submodule init "${submodule}"
@@ -201,8 +197,8 @@ prepare() {
     done
 
     patch -p1 -i "$srcdir"/patches-remove_broken.patch
-
     ./patches/protonprep.sh
+    patch -p1 -i "$srcdir"/dxvk-1582_missing_optional.patch
 
     patch -p1 -i "$srcdir"/proton-unfuck_makefile.patch
     patch -p1 -i "$srcdir"/proton-disable_lock.patch
@@ -322,8 +318,9 @@ sha256sums=('SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
             '463efcae9aec82e2ae51adbafe542f2a0674e1a1d0899d732077211f5c62d182'
-            '6fc5bd437b2161777f90416fa92760e73bff39c6cf507b612bc020d87909f812'
+            '4b8d2c2836606725f9daaf4b4b127a9dc074abf3ba0cb18ba05534b731d263b6'
             '61dbdb4d14e22c2c34b136e5ddb800eac54023b5b23c19acd13a82862f94738c'
             '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
             '429de61522db02c4c87d31221a59b504eac1fb8b7b5c1a3f61aed3f21350eeb5'
+            'e7e7ebb09115998b49838a8cfac37a3ff820e1eb97c9ecea7a930892fe382890'
 )

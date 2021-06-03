@@ -1,5 +1,5 @@
 diff --git a/build/makefile_base.mak b/build/makefile_base.mak
-index 30fed04..343b16a 100755
+index e0f564d..6787812 100755
 --- a/build/makefile_base.mak
 +++ b/build/makefile_base.mak
 @@ -48,7 +48,6 @@ include $(SRC)/make/rules-cargo.mk
@@ -31,16 +31,17 @@ index 30fed04..343b16a 100755
  	rm -rf $(abspath $(DIST_PREFIX))
  	python3 $(SRCDIR)/default_pfx.py $(abspath $(DIST_PREFIX)) $(abspath $(DST_DIR)) $(STEAM_RUNTIME_RUNSH)
  
-@@ -371,6 +371,8 @@ endif # ifeq ($(CONTAINER),)
+@@ -371,6 +371,9 @@ endif # ifeq ($(CONTAINER),)
  ##
  
  GST_COMMON_MESON_ARGS := \
 +	-Db_lto=true \
 +	-Db_pie=true \
++	-Ddoc=disabled \
  	-Dexamples=disabled \
  	-Dtests=disabled \
  	-Dgtk_doc=disabled \
-@@ -383,6 +385,7 @@ GST_COMMON_MESON_ARGS := \
+@@ -383,6 +386,7 @@ GST_COMMON_MESON_ARGS := \
  
  GST_ORC_MESON_ARGS := \
  	-Dorc-test=disabled \
@@ -48,7 +49,7 @@ index 30fed04..343b16a 100755
  	$(GST_COMMON_MESON_ARGS)
  
  $(eval $(call rules-source,gst_orc,$(SRCDIR)/gst-orc))
-@@ -399,6 +402,9 @@ GSTREAMER_MESON_ARGS := \
+@@ -399,6 +403,9 @@ GSTREAMER_MESON_ARGS := \
  	-Dbenchmarks=disabled \
  	-Dtools=disabled \
  	-Dbash-completion=disabled \
@@ -58,7 +59,7 @@ index 30fed04..343b16a 100755
  	$(GST_COMMON_MESON_ARGS)
  
  GSTREAMER_DEPENDS = gst_orc
-@@ -436,6 +442,8 @@ GST_BASE_MESON_ARGS := \
+@@ -435,6 +442,8 @@ GST_BASE_MESON_ARGS := \
  	-Dx11=disabled \
  	-Dxshm=disabled \
  	-Dxvideo=disabled \
@@ -67,16 +68,17 @@ index 30fed04..343b16a 100755
  	$(GST_COMMON_MESON_ARGS)
  
  GST_BASE_DEPENDS = gst_orc gstreamer
-@@ -499,6 +507,8 @@ GST_GOOD_MESON_ARGS := \
+@@ -498,7 +507,8 @@ GST_GOOD_MESON_ARGS := \
  	-Dwavenc=disabled \
  	-Dximagesrc=disabled \
- 	-Dy4m=disabled \
+ 	-Dy4m=enabled \
+-    -Ddoc='disabled' \
 +	-Dtools=disabled \
 +	-Dpackage-name="GStreamer Good Plugins (Proton)" \
  	$(GST_COMMON_MESON_ARGS)
  
  GST_GOOD_DEPENDS = gst_orc gstreamer gst_base
-@@ -531,6 +541,9 @@ GST_BAD_MESON_ARGS := \
+@@ -533,6 +543,9 @@ GST_BAD_MESON_ARGS := \
  	-Dopencv=disabled \
  	-Dvoamrwbenc=disabled \
  	-Dx265=disabled \
@@ -86,16 +88,16 @@ index 30fed04..343b16a 100755
  	$(GST_COMMON_MESON_ARGS)
  
  GST_BAD_DEPENDS = gst_orc gstreamer gst_base
-@@ -550,6 +563,8 @@ GST_UGLY_MESON_ARGS := \
-         -Dglib-checks='disabled' \
-         -Dglib-checks='disabled' \
+@@ -548,6 +561,8 @@ $(eval $(call rules-meson,gst_bad,64))
+ 
+ GST_UGLY_MESON_ARGS := \
          -Ddoc='disabled' \
 +        -Dtools='disabled' \
 +        -Dpackage-name="GStreamer Ugly Plugins (Proton)" \
  	$(GST_COMMON_MESON_ARGS)
  
  GST_UGLY_DEPENDS = gst_orc gstreamer gst_base
-@@ -565,6 +580,8 @@ $(eval $(call rules-meson,gst_ugly,64))
+@@ -563,6 +578,8 @@ $(eval $(call rules-meson,gst_ugly,64))
  
  GST_LIBAV_MESON_ARGS := \
          -Ddoc=disabled \
@@ -104,7 +106,7 @@ index 30fed04..343b16a 100755
  	$(GST_COMMON_MESON_ARGS)
  
  GST_LIBAV_DEPENDS = gst_orc gstreamer gst_base
-@@ -688,7 +705,13 @@ WINE_SOURCE_ARGS = \
+@@ -686,7 +703,13 @@ WINE_SOURCE_ARGS = \
    --exclude include/config.h.in \
  
  WINE_CONFIGURE_ARGS = \
@@ -118,7 +120,7 @@ index 30fed04..343b16a 100755
    --disable-tests
  
  WINE_CONFIGURE_ARGS64 = --enable-win64
-@@ -782,7 +805,7 @@ VKD3D_PROTON_SOURCE_ARGS = \
+@@ -780,7 +803,7 @@ VKD3D_PROTON_SOURCE_ARGS = \
    --exclude vkd3d_build.h.in \
    --exclude vkd3d_version.h.in \
  
@@ -241,7 +243,7 @@ index 11d91ba..fb86161 100644
  endif
  endef
 diff --git a/make/rules-winemaker.mk b/make/rules-winemaker.mk
-index 8a0f0ce..36a107c 100644
+index 052e1c5..3d831bc 100644
 --- a/make/rules-winemaker.mk
 +++ b/make/rules-winemaker.mk
 @@ -29,7 +29,7 @@ $(OBJ)/.$(1)-build$(3):
@@ -252,4 +254,4 @@ index 8a0f0ce..36a107c 100644
 +	$$(MAKE) -j$$(SUBJOBS) -C "$$($(2)_OBJ$(3))" LIBRARIES="$$($(2)_LDFLAGS)"
  	cd "$$($(2)_OBJ$(3))" && touch "$(basename $(4)).spec" && env $$($(2)_ENV$(3)) \
  	winebuild --dll --fake-module -E "$(basename $(4)).spec" -o "$(4).fake"
- 	mkdir -p $$($(2)_DST$(3))/lib$(subst 32,,$(3))/wine/fakedlls/
+ ifeq ($(3),32)

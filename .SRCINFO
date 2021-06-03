@@ -1,13 +1,12 @@
 pkgbase = proton-ge-custom
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build
 	pkgver = 6.9.GE.2
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/GloriousEggroll/proton-ge-custom
 	arch = x86_64
 	license = custom
 	makedepends = autoconf
-	makedepends = ncurses
 	makedepends = bison
 	makedepends = perl
 	makedepends = fontforge
@@ -172,8 +171,6 @@ pkgbase = proton-ge-custom
 	optdepends = lib32-libxcomposite
 	optdepends = libxinerama
 	optdepends = lib32-libxinerama
-	optdepends = ncurses
-	optdepends = lib32-ncurses
 	optdepends = opencl-icd-loader
 	optdepends = lib32-opencl-icd-loader
 	optdepends = libxslt
@@ -199,7 +196,8 @@ pkgbase = proton-ge-custom
 	noextract = wine-gecko-2.47.2-x86_64.tar.xz
 	noextract = wine-mono-6.1.2-x86.tar.xz
 	options = staticlibs
-	source = proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#commit=f12fed6d53f5d9b85e8f233a8c0b7e295978b9a0
+	options = !lto
+	source = proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#commit=86f8171b04219db5f43598c4bc4c508ade6d344b
 	source = wine::git://source.winehq.org/git/wine.git
 	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git
 	source = vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
@@ -229,6 +227,7 @@ pkgbase = proton-ge-custom
 	source = proton-disable_lock.patch
 	source = proton-user_compat_data.patch
 	source = patches-remove_broken.patch
+	source = dxvk-1582_missing_optional.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -259,6 +258,6 @@ pkgbase = proton-ge-custom
 	sha256sums = 61dbdb4d14e22c2c34b136e5ddb800eac54023b5b23c19acd13a82862f94738c
 	sha256sums = 20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3
 	sha256sums = 429de61522db02c4c87d31221a59b504eac1fb8b7b5c1a3f61aed3f21350eeb5
+	sha256sums = e7e7ebb09115998b49838a8cfac37a3ff820e1eb97c9ecea7a930892fe382890
 
 pkgname = proton-ge-custom
-

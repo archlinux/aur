@@ -1,0 +1,19 @@
+diff --git a/src/spirv/spirv_module.h b/src/spirv/spirv_module.h
+index a1bd5871..67953679 100644
+--- a/dxvk/src/spirv/spirv_module.h
++++ b/dxvk/src/spirv/spirv_module.h
+@@ -1,6 +1,7 @@
+ #pragma once
+ 
+ #include <unordered_set>
++#include <optional>
+ 
+ #include "spirv_code_buffer.h"
+ #include "spirv_compression.h"
+@@ -1348,4 +1349,4 @@ namespace dxvk {
+     
+   };
+   
+-}
+\ No newline at end of file
++}
