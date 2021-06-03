@@ -1,7 +1,8 @@
 post_install() {
   cat >&2 << EOF
 
-  => ATTENTION: Now run "launcher" once to set up notparadoxlauncher
+  => ATTENTION: Now run "launcher" once to set up notparadoxlauncher!
+  =>            (Run it as your user, not as root.)
 
 EOF
 }

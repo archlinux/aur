@@ -1,13 +1,14 @@
 pkgbase = notparadoxlauncher
 	pkgdesc = Alternative for Paradox Launcher
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shusaura85/notparadoxlauncher
 	install = notparadoxlauncher.install
 	arch = x86_64
 	license = MIT
+	makedepends = lazarus
 	depends = qt5pas
-	source = https://github.com/shusaura85/notparadoxlauncher/releases/download/v1.3.1/Linux.Not.Paradox.Launcher.v1.3.1.x64.tar.xz
-	sha256sums = aedd9d358160134c4d29da00c0d796aea770c24f03cd32951c4bfc03898601cd
+	source = https://github.com/shusaura85/notparadoxlauncher/archive/refs/tags/v1.3.1.tar.gz
+	sha256sums = 475db848596d4c05db8e628a69e1477092291d962fe92e2972525e2c848262a2
 
 pkgname = notparadoxlauncher
