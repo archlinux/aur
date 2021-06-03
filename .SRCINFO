@@ -1,7 +1,7 @@
 pkgbase = rpg-cli
 	pkgdesc = Your filesystem as a dungeon!
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/facundoolano/rpg-cli
 	arch = arm
 	arch = armv6h
@@ -12,10 +12,9 @@ pkgbase = rpg-cli
 	license = custom:MIT
 	makedepends = rust
 	depends = gcc-libs
-	source = rpg-cli-0.2.0.tar.gz::https://github.com/facundoolano/rpg-cli/archive/0.2.0.tar.gz
+	source = rpg-cli-0.3.0.tar.gz::https://github.com/facundoolano/rpg-cli/archive/0.3.0.tar.gz
 	source = rpg-cli.sh
-	sha256sums = f92a7613852765659dcd2e837fbfecef4c3425089d684bf485dd89b7996ce8ae
+	sha256sums = 948deab1d2d0b44b39104c483fc6951bf0681807962f6a1ce8b0285d31d705f3
 	sha256sums = 3c76b0710a88491f65f732c46397ddda6439fed873b3991b7d315a68f306265c
 
 pkgname = rpg-cli
-
