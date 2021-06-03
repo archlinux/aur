@@ -244,6 +244,7 @@ build() {
     --enable-aom \
     --enable-srt \
     --enable-dav1d \
+    --disable-decklink \
     $GLES
 
   make
