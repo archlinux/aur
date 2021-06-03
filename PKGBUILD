@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/thiezn/iperf3-python"
 license=('GPL')
 depends=('python' 'iperf3')
+makedepends=('python-setuptools')
 source=("https://github.com/thiezn/iperf3-python/archive/v$pkgver.tar.gz")
 sha1sums=('6768f369167ee509ce20416be28846fc829a50af')
 
