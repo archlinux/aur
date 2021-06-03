@@ -6,8 +6,8 @@
 ### Info ###
 pkgname=ukbprep-bin
 _pkgname=${pkgname%-bin}
-pkgver=20201213
-pkgrel=5
+pkgver=20210603
+pkgrel=1
 pkgdesc='UK Biobank file handlers'
 arch=('x86_64')
 url='https://biobank.ndph.ox.ac.uk'
