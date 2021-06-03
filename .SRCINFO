@@ -1,0 +1,22 @@
+pkgbase = egawari
+	pkgdesc = Makes your touchpad work like a graphics tablet.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/acedron/egawari
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake>=3.9.0
+	makedepends = gcc
+	depends = libxi
+	depends = libx11
+	source = egawari-0.1.1.tar.gz::https://github.com/acedron/egawari/archive/v0.1.1.tar.gz
+	sha256sums = 2f4c7b9b34eed882e70609d2ec0b3fec0e9959429bd7d4e17126c197ad8cffe5
+
+pkgname = egawari
+
