@@ -9,7 +9,7 @@ pkgname=(pipewire-full-git pipewire-full-docs-git pipewire-full-alsa-git
          gst-plugin-pipewire-full-git
          pipewire-full-jack-client-git
          pipewire-full-vulkan-git pipewire-full-ffmpeg-git)
-pkgver=0.3.28.r0.gfb55cc47
+pkgver=0.3.28.r159.g6971d1190
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -18,6 +18,7 @@ arch=(x86_64)
 makedepends=(git meson doxygen xmltoman
              ncurses libsndfile alsa-lib dbus rtkit
              libpulse avahi sdl2 gst-plugins-base-libs
+             webrtc-audio-processing
              bluez-libs sbc libldac libopenaptx libfdk-aac
              jack2 vulkan-headers vulkan-icd-loader ffmpeg)
 source=("git+https://gitlab.freedesktop.org/pipewire/pipewire.git")
