@@ -1,17 +1,17 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-aiopath
 _name=${pkgname#python-}
-pkgver=0.5.6
-pkgrel=2
+pkgver=0.5.7
+pkgrel=1
 pkgdesc="Asynchronous pathlib for Python"
 arch=('any')
 url="https://github.com/alexdelorenzo/aiopath"
 license=('LGPL3')
-depends=('python-aiofile' 'python-aiofiles')
+depends=('python-aiofile' 'python-anyio')
 makedepends=('python-setuptools')
 #source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2ced30066921313a77dacfdce798c4bc7d7c400ca608c1111c84e5cc6ade6e42')
+sha256sums=('a010bab7c7701d82631a09c569b6ee4b38e7ba4d8ad26ef2902fc0033fa4ec22')
 
 build() {
 	cd "$_name-$pkgver"
