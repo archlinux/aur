@@ -1,0 +1,16 @@
+pkgbase = cubic-bot-telegram-git
+	pkgdesc = A stupid and annoying chatbot for your group chats
+	pkgver = v1.0.r30.c65f907
+	pkgrel = 1
+	url = https://github.com/database64128/CubicBot
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = dotnet-sdk>=5.0.0
+	provides = cubic-bot-telegram
+	conflicts = cubic-bot-telegram
+	options = !strip
+	source = cubic-bot-telegram-git::git+https://github.com/database64128/CubicBot.git
+	b2sums = SKIP
+
+pkgname = cubic-bot-telegram-git

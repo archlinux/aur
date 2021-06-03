@@ -1,0 +1,40 @@
+# Maintainer: database64128 <free122448@hotmail.com>
+pkgname=cubic-bot-telegram-git
+pkgver=v1.0.r30.c65f907
+pkgrel=1
+pkgdesc="A stupid and annoying chatbot for your group chats"
+arch=(x86_64)
+url="https://github.com/database64128/CubicBot"
+license=('GPL3')
+makedepends=('git' 'dotnet-sdk>=5.0.0')
+provides=("cubic-bot-telegram")
+conflicts=("cubic-bot-telegram")
+options=(!strip)
+source=("$pkgname::git+$url.git")
+b2sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/$pkgname"
+    printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
+build() {
+    cd "$srcdir/$pkgname"
+    dotnet publish CubicBot.Telegram -c Release \
+        -p:DefineConstants=PACKAGED \
+        -p:PublishReadyToRun=true \
+        -p:PublishSingleFile=true \
+        -p:PublishTrimmed=true \
+        -p:TrimMode=link \
+        -p:DebuggerSupport=false \
+        -p:EnableUnsafeBinaryFormatterSerialization=false \
+        -p:EnableUnsafeUTF7Encoding=false \
+        -p:InvariantGlobalization=true \
+        -r linux-x64 --self-contained
+}
+
+package() {
+    cd "$srcdir/$pkgname"
+    install -Dm755 CubicBot.Telegram/bin/Release/net5.0/linux-x64/publish/cubic-bot-telegram $pkgdir/usr/bin/cubic-bot-telegram
+    install -Dm644 systemd/user/cubic-bot-telegram.service $pkgdir/usr/lib/systemd/user/cubic-bot-telegram.service
+}
