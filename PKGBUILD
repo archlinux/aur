@@ -22,6 +22,6 @@ package() {
   cd "${srcdir}/vimtex"
   local _installpath="${pkgdir}/usr/share/vim/vimfiles"
   install -dvm755 "${_installpath}"
-  cp -rvt "${_installpath}" after autoload compiler doc ftdetect ftplugin indent media rplugin syntax
+  cp -rvt "${_installpath}" after autoload compiler doc ftdetect ftplugin indent rplugin syntax
   install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
