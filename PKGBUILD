@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=cast_control
-pkgver=0.10.6
+pkgver=0.10.7
 pkgrel=1
 pkgdesc="Control Chromecasts from Linux and D-Bus"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('playerctl: Get the D-Bus name for your device'
 conflicts=('chromecast_mpris')
 replaces=('chromecast_mpris')
 source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('d61e36f6d5867a6e2ddde6c1cab7826d1486fa231216636b997a657df13b0fd4')
+sha256sums=('c5a9c9ff899cd2e37415fb2a754a9ad6334e45c6dce28093f37b510a77a1368e')
 
 build() {
 	cd "$pkgname-$pkgver"
