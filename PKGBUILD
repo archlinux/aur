@@ -1,4 +1,4 @@
-# Maintainer: Bernd Schöler <besc@here-be-braces.bom>
+# Maintainer: Bernd Schöler <besc@here-be-braces.com>
 # Contributor: Lukas Jirkovsky <l.jirkovsky AT gmail.com>
 
 # The Photivo-to-Gimp GIMP plugin (ptGimp) is not built
