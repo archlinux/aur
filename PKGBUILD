@@ -82,7 +82,7 @@ prepare() {
   patch -Np1 -i ${_patches_dir}/sed-patches/disable-pocket.patch
 
   # Remove Mozilla VPN ads
-  patch -Np1 -i ${_patches_dir}/mozilla-vpn-ad.patch
+  patch -Np1 -i ${_patches_dir}/librewolf/mozilla-vpn-ad.patch
 
   # Remove Internal Plugin Certificates
   patch -Np1 -i ${_patches_dir}/sed-patches/remove-internal-plugin-certs.patch
@@ -94,9 +94,9 @@ prepare() {
   patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
 
   # Assorted patches
-  patch -Np1 -i ${_patches_dir}/context-menu.patch
-  patch -Np1 -i ${_patches_dir}/browser-confvars.patch
-  patch -Np1 -i ${_patches_dir}/urlbarprovider-interventions.patch
+  patch -Np1 -i ${_patches_dir}/librewolf/context-menu.patch
+  patch -Np1 -i ${_patches_dir}/librewolf/browser-confvars.patch
+  patch -Np1 -i ${_patches_dir}/librewolf/urlbarprovider-interventions.patch
 
   # Fix build-time error
   echo "---- Fix some things"
@@ -186,8 +186,8 @@ END
   # we should have more than enough RAM on the CI spot instances.
   # ...or maybe not?
   export LDFLAGS+=" -Wl,--no-keep-memory"
-  patch -p1 -i ../arm.patch
-  patch -p1 -i ../build-arm-libopus.patch
+  patch -p1 -i ${_patches_dir}/librewolf/arm.patch
+  patch -p1 -i ${_patches_dir}/arch/build-arm-libopus.patch
 
 else
 
