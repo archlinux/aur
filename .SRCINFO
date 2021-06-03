@@ -1,12 +1,15 @@
 pkgbase = sooperlooper
 	pkgdesc = Live looping sampler capable of immediate loop recording
-	pkgver = 1.7.4
+	pkgver = 1.7.7
 	pkgrel = 1
 	url = http://essej.net/sooperlooper/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = alsa-lib
+	makedepends = autoconf-archive
+	makedepends = gendesk
+	makedepends = imagemagick
 	makedepends = jack
 	makedepends = liblo
 	makedepends = libsamplerate
@@ -18,12 +21,9 @@ pkgbase = sooperlooper
 	depends = glibc
 	depends = libsigc++
 	depends = wxgtk2
-	source = sooperlooper-1.7.4.tar.gz::https://github.com/essej/sooperlooper/archive/v1_7_4.tar.gz
-	source = sooperlooper.desktop
-	source = slgui.png
-	sha256sums = 69646705f48c3fe3c3371f3aba7052c67c5797bd3e2837e89cd998cb524cf23f
-	sha256sums = add385c13329e0d28b4d89d1a08953d09013a896c80bbda7fe450de4bd279507
-	sha256sums = 465dfb14154899eae5435afa7b2e04b2cbb8463fc3b60c465246628e496b3d85
+	source = sooperlooper-1.7.7.tar.gz::https://github.com/essej/sooperlooper/archive/v1.7.7.tar.gz
+	sha512sums = eea3c8549c177a9fb15c4848220515f4534ca05f0b863155e0744d3e6871002a2365f090b01003d06a0f5cc21ca58aacfb4cf81622b731e5a538677e5aa751cd
+	b2sums = 927cdc0940f3caf907f25d5b1547cbcb025d394fd117a72910d6536c23191aa2808e8bb1b93ade1b771493db49b819bb3f8d43165af6ef63649311dbcc55966b
 
 pkgname = sooperlooper
 	depends = gcc-libs
@@ -37,4 +37,3 @@ pkgname = sooperlooper
 	depends = librubberband.so
 	depends = libsamplerate.so
 	depends = libsndfile.so
-
