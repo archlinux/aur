@@ -1,0 +1,14 @@
+pkgbase = abc80sim-git
+	pkgdesc = An X windows based emulator of a Luxor ABC80
+	pkgver = r431.067a8ad
+	pkgrel = 1
+	url = https://git.zytor.com/abc80/abc80sim.git
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = sdl
+	source = git+https://git.zytor.com/abc80/abc80sim.git
+	md5sums = SKIP
+
+pkgname = abc80sim-git
