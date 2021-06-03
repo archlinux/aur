@@ -6,34 +6,26 @@
 
 pkgname=qgnomeplatform
 _pkgname=QGnomePlatform
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Qt Platform Theme aimed to accomodate as much of GNOME settings 
 as possible"
 arch=('x86_64')
 url="https://github.com/FedoraQt/QGnomePlatform"
 license=('LGPL2.1')
-depends=('gtk3' 'qt5-wayland' 'adwaita-qt>=1.2.0')
+depends=('gtk3' 'qt5-wayland' 'adwaita-qt>=1.3.0')
+makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FedoraQt/QGnomePlatform/archive/$pkgver.tar.gz")
-sha256sums=('f479ea5ca28108bc6b66e6790c35831d0e359b709db93f49d1b7015d25335eb9')
-
-prepare() {
-  cd $_pkgname-$pkgver
-}
+sha256sums=('b95d38558dd1f1af9099985d432973cad0d6dcb00d069451862ea89b2b1443f5')
 
 build() {
-	cd $_pkgname-$pkgver
-	qmake-qt5
-	make
-}
-
-check() {
-	cd $_pkgname-$pkgver
-	make -k check
+	cd "$srcdir"
+  cmake -B build -S "$_pkgname-$pkgver" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH="/usr" -Wno-dev
+	make -C build
 }
 
 package() {
-	cd $_pkgname-$pkgver
-	make INSTALL_ROOT="$pkgdir/" install
+	cd "$srcdir"
+	make -C build DESTDIR="$pkgdir" install
 }
 # vim:set ts=2 sw=2 et:
