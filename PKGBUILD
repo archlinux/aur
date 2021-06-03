@@ -6,7 +6,7 @@
 
 pkgname=nyxt
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A keyboard-oriented, infinitely extensible web browser designed for power users"
 arch=('x86_64')
 url="https://github.com/atlas-engineer/nyxt"
@@ -20,7 +20,7 @@ source=("git+https://github.com/atlas-engineer/nyxt.git#tag=${pkgver}")
 sha256sums=('SKIP')
 # If someday Next works with other Lisps, replace 'sbcl' with 'common-lisp'.
 makedepends=('cl-asdf' 'git' 'gobject-introspection-runtime' 'sbcl')
-depends=('enchant' 'glib-networking' 'gsettings-desktop-schemas' 'libfixposix' 'webkit2gtk')
+depends=('enchant' 'glib-networking' 'gobject-introspection-runtime' 'gsettings-desktop-schemas' 'libfixposix' 'webkit2gtk')
 optdepends=('gstreamer: for HTML5 audio/video'
             'gst-plugins-base: for HTML5 audio/video'
             'gst-plugins-good: for HTML5 audio/video'
