@@ -8,8 +8,8 @@ url="https://github.com/cocotb/cocotb-bus"
 license=('BSD')
 conflicts=('python-cocotb-bus')
 provides=('python-cocotb-bus')
-depends=('python' 'python-setuptools-scm')
-makedepends=('git')
+depends=('python')
+makedepends=('git' 'python-setuptools-scm')
 optdepends=('iverilog: for simulating verilog designs'
 	    'ghdl: for simulating VHDL designs'
 	    'gtkwave: for visualizing waveforms')
