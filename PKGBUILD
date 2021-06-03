@@ -2,11 +2,11 @@
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-hi-res-scroll-git
-pkgver=0.13.0.r95.g8e9e6e1a
+pkgver=0.13.0.r153.g9e58301d
 pkgrel=1
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library with hi-res scroll patches (git version)'
-url=https://github.com/janza/wlroots
+url=https://github.com/swaywm/wlroots
 arch=(x86_64)
 provides=("wlroots=${pkgver%%.r*}" "wlroots-git")
 conflicts=(wlroots)
@@ -29,8 +29,12 @@ makedepends=(
 	meson
 	wayland-protocols
 	xorgproto)
-source=("${pkgname}::git+${url}")
-sha512sums=('SKIP')
+source=("${pkgname}::git+${url}"
+        # "hi_res_scroll.diff::https://github.com/swaywm/wlroots/pull/2064.diff"
+        "hi_res_scroll.diff::https://github.com/swaywm/wlroots/compare/master...janza:master.diff"
+       )
+sha512sums=('SKIP'
+            'a7eec598fa659a9118826d26596c7b8baea4b6fc7297195039726dee961f22aca7d9627b40498d1c490644657244198a31577c5b1bc66ae8a99f2d0b5d460949')
 
 pkgver () {
 	cd "${pkgname}"
@@ -39,6 +43,11 @@ pkgver () {
 		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
+}
+
+prepare () {
+	cd "${pkgname}"
+	patch --forward --strip=1 --input="${srcdir}/hi_res_scroll.diff"
 }
 
 build () {
