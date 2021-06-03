@@ -7,7 +7,7 @@
 # Contributor: Mefju <mefju at o2 dot pl>
 #
 pkgname="isomaster"
-pkgver="1.3.15"
+pkgver="1.3.16"
 pkgrel="1"
 pkgdesc="CD image editor written in GTK2"
 arch=('i686' 'x86_64')
@@ -15,10 +15,10 @@ url="http://littlesvr.ca/isomaster"
 license=('GPL2')
 depends=('gtk2' 'desktop-file-utils')
 source=("${pkgname}-${pkgver}.tar.bz2::${url}/releases/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('ace5deadc681bf81e86b3fe6f9c599149cbf91c10e6222cbe9a55500fdbff958')
+sha256sums=('dfe6e4d7e46eced7b51d263e568fb7d6c5b781d62476d6ed4715269c6626b0c6')
 
 prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     sed -i 's/m 644/Dm 644/' Makefile
 
     ## uncomment to disable the messagebox when last used dir is missing ##
