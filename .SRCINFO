@@ -1,0 +1,17 @@
+pkgbase = os-prober-git
+	pkgdesc = Tool to detect other filesystems with operating systems on them
+	pkgver = 1.78.r0.g5debc53
+	pkgrel = 1
+	url = https://tracker.debian.org/pkg/os-prober
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	depends = sh
+	provides = os-prober
+	conflicts = os-prober
+	source = git+https://salsa.debian.org/installer-team/os-prober.git
+	sha256sums = SKIP
+
+pkgname = os-prober-git
