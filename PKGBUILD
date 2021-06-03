@@ -1,6 +1,6 @@
 # Maintainer: Daniel Menelkir <menelkir at itroll dot org>
 pkgname=g15stats-systemd
-pkgver=1
+pkgver=0.1
 pkgrel=1
 pkgdesc="g15stats init script for systemd"
 arch=('any')
