@@ -45,7 +45,7 @@ _localmodcfg=
 
 pkgbase=linux-cacule-rdb
 # pkgname=('linux-cacule' linux-cacule-headers)
-_major=5.12.8
+_major=5.12.9
 #_minor=1
 #_minorc=$((_minor+1))
 #_rcver=rc8
@@ -53,7 +53,7 @@ pkgver=${_major}
 #_stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=3
+pkgrel=1
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -62,54 +62,57 @@ options=('!strip')
 makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
 _patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.12"
+#"_patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/cacule-patches"
 source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/$_srcname.tar.xz"
         "config"
         "${_patchsource}/arch-patches-v6/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_patchsource}/cacule-patches/cacule-5.12.patch"
-        "${_patchsource}/cacule-patches/rdb-testing.patch"
+        "${_patchsource}/cacule-patches/rdb.patch"
         "${_patchsource}/cpu-patches-v2/0001-cpu-patches.patch"
         "${_patchsource}/futex-patches-v2/0001-futex-resync-from-gitlab.collabora.com.patch"
-        "${_patchsource}/futex2-stable-patches-v3/0001-futex2-resync-from-gitlab.collabora.com.patch"
+        "${_patchsource}/futex2-stable-patches-v5/0001-futex2-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/wine-esync-patches/0001-v5.12-winesync.patch"
         "${_patchsource}/zen-patches-v2/0001-zen-patches.patch"
         "${_patchsource}/lqx-patches-v3/0001-zen-Allow-MSR-writes-by-default.patch"
-        "${_patchsource}/bfq-patches-v9/0001-bfq-patches.patch"
-        "${_patchsource}/block-patches-v3/0001-block-patches.patch"
+        "${_patchsource}/bfq-patches-v12/0001-bfq-patches.patch"
+        "${_patchsource}/block-patches-v4/0001-block-patches.patch"
+        "${_patchsource}/ll-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
         "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
         "${_patchsource}/bbr2-patches-v2/0001-bbr2-5.12-introduce-BBRv2.patch"
         "${_patchsource}/btrfs-patches-v9/0001-btrfs-patches.patch"
-        "${_patchsource}/ll-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
         "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
         "${_patchsource}/pf-patches-v2/0001-pf-patches.patch"
         "${_patchsource}/lru-patches-v4/0001-lru-patches.patch"
         "${_patchsource}/ntfs3-patches-v2/0001-ntfs3-patches.patch"
         "${_patchsource}/zstd-dev-patches-v3/0001-zstd-dev-patches.patch"
         "${_patchsource}/clearlinux-patches-v3/0001-clearlinux-patches.patch"
+        "${_patchsource}/ksm-patches/0001-ksm-patches.patch"
         "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch" )
 
-sha512sums=('8a5f1774bee223445ad147d2f83a7b3a2c19ea620d0f3964344bb33d003fec17d36279b522745c03467e361ebd61479a4f7122e5911bb6b817ff52ee55c736d9'
-            'd8d006db59115f4e5311cadec4f325dc282f71dc2a0aded551c6e2782e76d5211ec22032138cb2b86592cb029d317ba0c385d3273d184453d558de5eb4528850'
+sha512sums=('f97b025db8a469ff982d445356dac78765a4a5625fa442e0242598c807df49753eedd99517e3ca6d1713714f12b802d58e752b3b71259eb2540b86422a72e937'
+            'a49537a61bd7ca80f456e0618f4c64630651efada8bcc68ee260461370e9638410b0a883e036a3e7777c841d585f91eea9a051e4c93d38b639ebebdff643cf4e'
             '1908055c446f04ef0a0a5a19579836d2f5dc60d7989677f85f084a7186a6327b240291feed8d25e320e72efa114b243a325362e2dbfbf7f4f3fb89bbdd3819be'
-            '97e661d3fbd75a6e9edeb79a694f42c49174f317bd35ae25dd13d71797d29fca630e88e1440415faca05fb46935591965fae0dcc4365c80e3cefa3d8b615c3b8'
-            '7595e5c6b386d1d1661c9f2538a35c93c27de6a076865578f36c3450557a5f20208047bb3062b6f7ef145293b82c14733f23c10454fa99b069c8e4e3daa9c721'
+            '367f5ec3ec03d41c4ae5c60ca70d2aa2a1fb200245f1fd7a3409c123c0b93e36338c944864cf473b3fa236cc97d715e86de4184362837af54ff8a6ade33e7d99'
+            '91a2a9173870637786cb1379ede303c5c923695069e5d3bc74d5221d45d529f9230c29e910e80eb9d8118633296f9e746fedf16ec5a3f22bd90b6d6010dd13d7'
             '60bda2070739a52af4f81816ebda8f3520a8d75ea5e00f65a903a3416ae31edba56fe151f6a9e02dc90ec3be7854e9a62e10e72120d7148fd3838806d8b9e986'
             '4b7766c590a692a008a0daca73806a1671a81b6e2ed756aae96de4c4455505b04765568ae5e04645f89bf75bd5611e3b1bf5ededff47bb0708dbca91769b5ab7'
-            'f0ae3cd8cc8237c620f2a069a48d1e156589c42ee6cb13b7fa54b7004cf9c940d4363c05706df3c231ff405bfb0488d9121c610c6583ae94ab732ecb11942b5b'
+            'a5585535a5db9b94508fe13ff6d1f796c51881ea4e7fe37bdd6ab7b62942f9775004a3ec5e4f88ef9587b87c14041210eafa6ffa6584f364eb0c4378444f830b'
             '905f97cdff3e096552159a229d069d1b1418f4142b2927134110f504bfe0883309b3f29c2aeeb94c528b63e0eec7d0d69b44c3d498211c610811969cc4d07a56'
             '1c6cdf40009ce6c62b0a35cc7c2a74818b7169d32e18fb3c2bb8761762c15c579f64cb36f9076c4f78d3f88f077f6246ee75ba93f370cc40dae450d6d71117bb'
             'd9e072c64cd413e1ba58a9924872b7a5bfed33c7b78d062a6be42f1becce450647c90066d95b8a7f1facc1cdc538d532b3d5915cd6c4f659b76ad950993af8f3'
-            'b32a8e9ab49e897d2af505ef4fea0921285d53a0b05bf42fe0d5eb905d6181d883c29862273c43b28399982a13638e14df2bf297f8044e95388a68126bd3107c'
-            'b6997128403100c0f08cf898b215409efe137183c66a0faf2b8f5c82c185ac7224ef0f694f6920956d963ad002b6b7bdb33438d269f96a90097e0b1e12093e76'
+            'a6c95262adbf0ddffd896511a9cc2c347dea0cf8cc0ec4218869ccd287a5f44c7a953b718b74db70592bc3b774bbdc1d4a39c3d6ae90acf3ff8c8cc24299773e'
+            '5a865976aa40e8e3ebbf270bb3d1dbde5a737fa55c051a733a1102cb6e202a61d22020e78145d11f324d272ad6d49ee7055b4ddd20ad5ef3bc3a3f99e221b26c'
+            '47f265716ebd268e4296aaba1efe5098df00736b69ec7d0413cace6dbb5cb162c1c952f7527a2a41b246ed76e6e112514c5349e8dc52f4609def30257e18d7aa'
             '5081a6a3a3db160ef0a23acd0c0db403cc4b3eb2dfd280b1b7ba2ae907d362e4d6a653d546523c870af07009c62f58eec26e7b8174a3f4fcbaa32808d965ad73'
             '28446f518e88ab934330111a01019cb164bfdd21094c69e96cc16c7931440d069ef997ae141154c97c80fcb727e8c4d940b8bf63554e3f4179652523e285c5b4'
             '9d0b86f0f36af9f00a463b9b4423241228e5d28164dadff75f2a6ab15688c6e1867bdd98217781104f0e933b1254cc409f9c38accde1000674f4a87ef02901cd'
-            '47f265716ebd268e4296aaba1efe5098df00736b69ec7d0413cace6dbb5cb162c1c952f7527a2a41b246ed76e6e112514c5349e8dc52f4609def30257e18d7aa'
             '1b3b48246fe70e8ca7390cacacf560696c1d98604a7716ac32df8f3d7fc7cc2ab733ab24e372fffa63016344f2e4ed078f7d597c3c1261f0ca3ff1c87a13dcb9'
-            '076a48767614ec97a84ccefa5795e4f36973f64a7728a9f716d5d9ecb6f6907ffcc74f7fab845e9d9aef3ef5d3d4df4e03f6c5a755c7fdd4bc43751003902e71'
+            '6b574c79e6ebc866cb5ed01b2edb1187672f8cbe4ac507c811adfca859baaa89460bf66184a99c3b02a583f4b51fd15c1ef0431601dd4838a08bc031de902067'
             'd428d3f54634b91e41cac279f7c7b708a174d9cac085b7497802c5a50f77bbfcfdd8799c1db3351ba18e8316685b729d292bb45de0da443762dbd1b87cbc7dad'
             'ed0fbbafa32b05130ad61017f3d6e13fdcae7e1c59290fa2819b209de5c2368b3f9cf157ecf115fc20825599448fed7eef3b5fd3647e5889e2a66b82971b6f6f'
             'db592b1e12651ae494f1414079a3f268175776a067c69148387e05f86b6656308c810eb20cc5c1fe7804030abcb8c37ba5ab7480660c224c591f2718569c2cc9'
             'a24d649fc7f84975b8f970e921f5bf4e4046e4741e35a77b4b173275587657f6d9d30e5492052fa8df73c3177b6f54cdc4f3143c67b26f516f8ce9fc43b4bf62'
+            'c8ec07f45c466b5eccef668c229b33e135e8ee8320c7f2304953860f3eb2a87f47ce4c8f122d0f4ddeca955433085194c4fc8a2e7e9034e51f35ed12a474031e'
             '21a613ef65497ecf66daf31b43e02022c71195b48082ae7628a9d2ba8619819f69a6702c4c87e39e8718074c7ebfd674694a29a962049a16d47f1e5f748c78c3')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -244,10 +247,10 @@ prepare() {
     	scripts/config --set-val CONFIG_KERNEL_ZSTD_LEVEL 19
     	scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
   ### Enabling ZSTD COMPRESSION ##
-  #      echo "Set module compression to ZSTD"
-  #      scripts/config --enable CONFIG_MODULE_COMPRESS
-  #      scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
-  #      scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
+       echo "Set module compression to ZSTD"
+    scripts/config --enable CONFIG_MODULE_COMPRESS
+    scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
+        scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
   #      scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
   #      scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
 
@@ -258,17 +261,19 @@ prepare() {
       scripts/config --disable CONFIG_RDB_TASKS_GROUP
       scripts/config --disable CONFIG_EXPERT
       scripts/config --disable CONFIG_FAIR_GROUP_SCHED
-      scripts/config --disable  CONFIG_SCHED_AUTOGROUP
+      scripts/config --disable CONFIG_SCHED_AUTOGROUP
       scripts/config --disable CONFIG_SCHED_DEBUG
       scripts/config --disable CONFIG_SCHED_INFO
       scripts/config --disable CONFIG_SCHEDSTATS
       scripts/config --disable CONFIG_DEBUG_KERNEL
+      echo "Enabling Full Tickless"
       scripts/config --disable CONFIG_HZ_PERIODIC
       scripts/config --disable CONFIG_NO_HZ_IDLE
+      scripts/config --enable CONFIG_NO_HZ_FULL
       scripts/config --enable CONFIG_NO_HZ
       scripts/config --enable CONFIG_NO_HZ_COMMON
-#      scripts/config --enable CONFIG_NO_HZ_FULL
-#      scripts/config --enable CONFIG_CONTEXT_TRACKING_FORCE
+      scripts/config --enable CONFIG_CONTEXT_TRACKING
+      scripts/config --disable CONFIG_CONTEXT_TRACKING_FORCE
       echo "Enabling KBUILD_CFLAGS -O3..."
       scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
       scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
@@ -278,6 +283,7 @@ prepare() {
       scripts/config --enable CONFIG_PREEMPT
       scripts/config --enable CONFIG_PREEMPT_COUNT
       scripts/config --enable CONFIG_PREEMPTION
+      scripts/config --enable CONFIG_PREEMPT_DYNAMIC
       echo "Enable NTFS3"
       scripts/config --module CONFIG_NTFS_FS
       scripts/config --enable CONFIG_NTFS_RW
@@ -302,7 +308,6 @@ prepare() {
       scripts/config --set-str CONFIG_DEFAULT_TCP_CONG bbr2
       echo "Enable CONFIG_VHBA"
       scripts/config --module CONFIG_VHBA
-      scripts/config --disable CONFIG_BPF_PRELOAD
       scripts/config --disable CONFIG_GCC_PLUGINS
 
       ### Optionally load needed modules for the make localmodconfig
@@ -335,6 +340,7 @@ _package() {
     optdepends=('crda: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
+    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE linux-cacule-rdb)
 
 
   cd $_srcname
