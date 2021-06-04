@@ -13,7 +13,7 @@ pre_upgrade() {
 }
 
 post_upgrade() {
-    systemctl reload bluetit.service
+    systemctl reload dbus.service
 }
 pre_remove() {
     systemctl stop bluetit.service
