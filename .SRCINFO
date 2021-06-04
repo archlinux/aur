@@ -1,6 +1,6 @@
 pkgbase = waterfox-classic-kpe
 	pkgdesc = Customizable privacy conscious web browser with better integration with KDE
-	pkgver = 2021.04.2
+	pkgver = 2021.06
 	pkgrel = 0
 	url = https://www.waterfox.net/
 	arch = x86_64
@@ -43,14 +43,14 @@ pkgbase = waterfox-classic-kpe
 	optdepends = jack: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = waterfox-classic=2021.04.2
+	provides = waterfox-classic=2021.06
 	conflicts = waterfox-classic
 	conflicts = waterfox-kde
 	replaces = waterfox-kde
 	options = !emptydirs
 	options = !makeflags
 	options = zipman
-	source = git+https://github.com/MrAlex94/Waterfox.git#tag=2021.04.2
+	source = git+https://github.com/MrAlex94/Waterfox.git#tag=2021.06-classic
 	source = waterfox-classic.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8056d442bb78d009400bc0823cf39d8571e96df3/waterfox-classic-kpe/waterfox-classic.desktop
 	source = kde.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8056d442bb78d009400bc0823cf39d8571e96df3/waterfox-classic-kpe/kde.js
 	source = distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8056d442bb78d009400bc0823cf39d8571e96df3/waterfox-classic-kpe/distribution.ini
@@ -61,6 +61,7 @@ pkgbase = waterfox-classic-kpe
 	source = pgo_fix_missing_kdejs.patch
 	source = classic-kde.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8056d442bb78d009400bc0823cf39d8571e96df3/waterfox-classic-kpe/patches/classic-kde.patch
 	source = classic-kde-xul.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8056d442bb78d009400bc0823cf39d8571e96df3/waterfox-classic-kpe/patches/classic-kde-xul.patch
+	source = Bug1436242.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8056d442bb78d009400bc0823cf39d8571e96df3/waterfox-classic-kpe/patches/Bug1436242.patch
 	sha256sums = SKIP
 	sha256sums = f915278f7015356d83ecd718a406b605edba85ba7bbf22901228687dfd475c39
 	sha256sums = 0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc
@@ -72,6 +73,7 @@ pkgbase = waterfox-classic-kpe
 	sha256sums = bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e
 	sha256sums = 6ff820e43a48ce9450e59e02877ff574a1921d0b286737d55949ad40865add08
 	sha256sums = b06289812def0ddd289ab2c06b3ea2ee909bf984af7742f9fb930c8a44e1423a
+	sha256sums = 368cc219b010b232218cd8d86f174b3e8d95e84c7628cdf939eb5124a1be7e31
 
 pkgname = waterfox-classic-kpe
 
