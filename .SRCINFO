@@ -1,12 +1,14 @@
 pkgbase = backintime
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bit-team/backintime
 	arch = any
 	license = GPL
 	makedepends = python
 	source = backintime-1.2.1.tar.gz::https://github.com/bit-team/backintime/archive/v1.2.1.tar.gz
-	sha256sums = b94ecdc6731236d6b640270dbd34ef59c8113c34ac7831de3e8f79eea465786a
+	source = 000-PR-1135.patch::https://github.com/bit-team/backintime/commit/9310acc30362907c7d14f3c8c31a0e4a366d44f5.patch
+	b2sums = a20d22243d7302e4702631b86e4aaf8d1562a485641f11084c5632125eb5be5d52503ad566bcf21d669c4e7a7f9bd4a96b5c47718714cb5fd96fe53c40d2433d
+	b2sums = 54447b266f1eaa871246e009cf1061d61f4eb612146728b8f637a442b58001990e31bbaf93270f6f594a794b0c188d77dd63a62ec35a58ba836cd043999fb5e5
 
 pkgname = backintime
 	pkgdesc = Simple backup system inspired from the Flyback Project and TimeVault. QT5 GUI version.
@@ -32,4 +34,3 @@ pkgname = backintime-cli
 	optdepends = encfs: encrypted filesystem in user-space
 	optdepends = pm-utils: for laptops allows an option to not snapshot on battery
 	optdepends = sshfs: FUSE client based on the ssh file transfer protocol
-

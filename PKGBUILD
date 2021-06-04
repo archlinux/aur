@@ -4,14 +4,22 @@
 pkgname=('backintime' 'backintime-cli')
 _pkgname="backintime"
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/bit-team/backintime"
 license=('GPL')
 makedepends=('python')
 #source=("https://github.com/bit-team/$_pkgname/archive/v$pkgver.tar.gz")
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/bit-team/$_pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('b94ecdc6731236d6b640270dbd34ef59c8113c34ac7831de3e8f79eea465786a')
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/bit-team/$_pkgname/archive/v$pkgver.tar.gz"
+  000-PR-1135.patch::https://github.com/bit-team/backintime/commit/9310acc30362907c7d14f3c8c31a0e4a366d44f5.patch
+)
+b2sums=('a20d22243d7302e4702631b86e4aaf8d1562a485641f11084c5632125eb5be5d52503ad566bcf21d669c4e7a7f9bd4a96b5c47718714cb5fd96fe53c40d2433d'
+        '54447b266f1eaa871246e009cf1061d61f4eb612146728b8f637a442b58001990e31bbaf93270f6f594a794b0c188d77dd63a62ec35a58ba836cd043999fb5e5')
+
+prepare() {
+  cd "$_pkgname-$pkgver"
+  patch -Np1 -i ../000-PR-1135.patch
+}
 
 build() {
   cd "$_pkgname-$pkgver/common"
