@@ -5,6 +5,7 @@ pkgbase = supercollider-mkplugins-git
 	url = https://github.com/madskjeldgaard/mkplugins
 	arch = any
 	groups = pro-audio
+	groups = supercollider-plugins
 	license = GPL
 	makedepends = git
 	makedepends = cmake
