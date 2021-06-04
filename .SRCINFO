@@ -11,7 +11,7 @@ pkgbase = openturns
 	makedepends = spectra
 	depends = libxml2
 	depends = tbb
-	depends = hmat-oss
+	depends = hmat-oss16
 	depends = python-matplotlib
 	depends = python-psutil
 	depends = python-dill
@@ -26,4 +26,3 @@ pkgbase = openturns
 	sha256sums = 42f65701f7cbd0081362be56c8232ddadfc21f2a32f636fd460919cd8f10c84d
 
 pkgname = openturns
-
