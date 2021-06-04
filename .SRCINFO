@@ -1,7 +1,7 @@
 pkgbase = librewolf-bin
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 88.0.1
-	pkgrel = 2
+	pkgver = 89.0
+	pkgrel = 1
 	url = https://librewolf-community.gitlab.io/
 	install = librewolf-bin.install
 	arch = x86_64
@@ -29,14 +29,13 @@ pkgbase = librewolf-bin
 	backup = usr/lib/librewolf/librewolf.cfg
 	backup = usr/lib/librewolf/distribution/policies.json
 	validpgpkeys = 031F7104E932F7BD7416E7F6D2845E1305D6E801
-	source_x86_64 = https://gitlab.com/librewolf-community/browser/arch/-/jobs/1262460657/artifacts/raw/librewolf-88.0.1-2-x86_64.pkg.tar.zst
-	source_x86_64 = https://gitlab.com/librewolf-community/browser/arch/uploads/408789ac38996292279f47844c480659/librewolf-88.0.1-2-x86_64.pkg.tar.zst.sig
-	sha256sums_x86_64 = be30e10997596f25b75cac0e533e6228bed89f52e3ce66d312442da8d7bd2f03
+	source_x86_64 = https://gitlab.com/librewolf-community/browser/arch/-/jobs/1313296485/artifacts/raw/librewolf-89.0-1-x86_64.pkg.tar.zst
+	source_x86_64 = https://gitlab.com/librewolf-community/browser/arch/uploads/5cd78a92ea6dc00817691e88884d4a11/librewolf-89.0-1-x86_64.pkg.tar.zst.sig
+	sha256sums_x86_64 = 884f49a35ecd8884dc41ef0638efa59164a4e7a8b0f302a55848d09984a87356
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://gitlab.com/librewolf-community/browser/arch/-/jobs/1264787939/artifacts/raw/librewolf-88.0.1-2-aarch64.pkg.tar.zst
-	source_aarch64 = https://gitlab.com/librewolf-community/browser/arch/uploads/12387e9bc574d87eec2360677b3f95bf/librewolf-88.0.1-2-aarch64.pkg.tar.zst.sig
-	sha256sums_aarch64 = 83d726880434a259b263524982698df170a24d990e6302a6b6b17df1f2a6ccc3
+	source_aarch64 = https://gitlab.com/librewolf-community/browser/arch/-/jobs/1315427956/artifacts/raw/librewolf-89.0-1-aarch64.pkg.tar.zst
+	source_aarch64 = https://gitlab.com/librewolf-community/browser/arch/uploads/847aef108920aeb5cb4287173c4c0cf2/librewolf-89.0-1-aarch64.pkg.tar.zst.sig
+	sha256sums_aarch64 = 39003390ee2fc57a09c4170f6d7baa25e51e8a835f6eef2f734dce9ee3e92241
 	sha256sums_aarch64 = SKIP
 
 pkgname = librewolf-bin
-
