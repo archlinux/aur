@@ -1,7 +1,7 @@
 pkgbase = betterlockscreen
 	pkgdesc = A simple, minimal lockscreen
-	pkgver = 3.0.1
-	pkgrel = 6
+	pkgver = 3.2.0
+	pkgrel = 1
 	url = https://github.com/pavanjadhaw/betterlockscreen
 	arch = any
 	license = MIT
@@ -12,8 +12,7 @@ pkgbase = betterlockscreen
 	depends = xorg-xdpyinfo
 	depends = xorg-xrandr
 	conflicts = betterlockscreen-git
-	source = betterlockscreen-3.0.1.tar.gz::https://github.com/pavanjadhaw/betterlockscreen/archive/3.0.1.tar.gz
-	sha256sums = 9b80af4b93e0b35bc916a584522ecf9eb39414c8010a2e4f2bb6941fdc5faf28
+	source = betterlockscreen-3.2.0.tar.gz::https://github.com/pavanjadhaw/betterlockscreen/archive/3.2.0.tar.gz
+	sha256sums = 8ec392c767937784042abde18a08b573d080e468c81457b64f4d798c005e8b3c
 
 pkgname = betterlockscreen
-
