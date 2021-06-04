@@ -1,11 +1,11 @@
 pkgbase = clustalw
 	pkgdesc = Clustal W multiple sequence alignment program, version 2.0
 	pkgver = 2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.clustal.org
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = LGPL3
 	depends = glibc
 	depends = gcc-libs
 	provides = clustalw2
@@ -13,4 +13,3 @@ pkgbase = clustalw
 	md5sums = 144df8440a0ae083d5167616c8ceeb41
 
 pkgname = clustalw
-

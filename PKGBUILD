@@ -2,12 +2,12 @@
 
 pkgname=clustalw
 pkgver=2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Clustal W multiple sequence alignment program, version 2.0"
 arch=('i686' 'x86_64')
 provides=('clustalw2')
 url="http://www.clustal.org"
-license=('GPL3')
+license=('LGPL3')
 depends=('glibc' 'gcc-libs')
 source=(${url}/download/current/${pkgname}-${pkgver}.tar.gz)
 md5sums=('144df8440a0ae083d5167616c8ceeb41')
