@@ -6,7 +6,7 @@
 # Contributor: orbisvicis <orbisvicis at gmail dot com>
 pkgname=darktable-git
 _gitname=darktable
-pkgver=3.5.0.r2218.g48ced17083
+pkgver=3.5.0.r2438.g941122872d
 pkgrel=1
 pkgdesc="A virtual lighttable and darkroom for photographers"
 arch=('i686' 'x86_64')
@@ -51,7 +51,7 @@ prepare() {
   git config submodule.src/external/libxcf.url "$srcdir/libxcf.git"
   git config submodule.src/external/whereami.url "$srcdir/whereami"
   git config submodule.src/tests/integration.url "$srcdir/darktable-tests.git"
-  git submodule update --init --remote --recursive
+  git submodule update --init --recursive
 }
 
 build() {
