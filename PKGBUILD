@@ -12,7 +12,7 @@ depends=('libxft' 'perl' 'startup-notification' 'gdk-pixbuf2')
 provides=('rxvt-unicode' 'rxvt-unicode-terminfo')
 conflicts=('rxvt-unicode' 'rxvt-unicode-terminfo')
 source=(
-  "http://dist.schmorp.de/rxvt-unicode/$_pkgname-$pkgver.tar.bz2"
+  "http://dist.schmorp.de/rxvt-unicode/Attic/$_pkgname-$pkgver.tar.bz2"
   'intensity.patch'
   'background-img-use-color.patch'
   'font-resize.patch'
