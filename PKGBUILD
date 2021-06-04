@@ -1,16 +1,16 @@
 # Maintainer: kachelaqa <kachelaqa at gmail dot com>
 
 pkgname='pkgbrowser'
-pkgver=0.24
+pkgver=0.25
 pkgrel=1
 pkgdesc='A utility for browsing pacman databases and the AUR'
 arch=('x86_64')
 url="https://osdn.net/projects/$pkgname"
 license=('GPL2')
-depends=('pacman>=4.1' 'pacman<5.3' 'python>=3.2' 'python<3.10' 'python-pyqt5')
+depends=('pacman>=4.1' 'pacman<6.1' 'python>=3.2' 'python<3.10' 'python-pyqt5')
 install="$pkgname.install"
 source=("https://osdn.net/dl/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('f4d8c86a58f7245d357797bf8694fa71')
+md5sums=('2fce9a98e6e18f346fb4ad932534cd38')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
