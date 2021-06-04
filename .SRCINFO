@@ -1,7 +1,7 @@
 pkgbase = gtk3-patched-filechooser-icon-view
 	pkgdesc = GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch.
 	pkgver = 3.24.29
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/Dudemanguy/gtk
 	install = gtk3.install
@@ -36,7 +36,7 @@ pkgbase = gtk3-patched-filechooser-icon-view
 	depends = desktop-file-utils
 	depends = mesa
 	depends = cantarell-fonts
-	depends = colord
+	depends = libcolord
 	depends = rest
 	depends = libcups
 	depends = libcanberra
@@ -61,4 +61,3 @@ pkgbase = gtk3-patched-filechooser-icon-view
 	sha256sums = 7a1730f08649b769cbaf24432ec176cefb55a5e81dc969a8242152718cb72eea
 
 pkgname = gtk3-patched-filechooser-icon-view
-
