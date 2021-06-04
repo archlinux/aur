@@ -1,4 +1,4 @@
-# Maintainer: Franck Stauffer <franck.stauffer@monaco.mc>
+# Maintainer: Qontinuum <qontinuum.dev@protonmail.ch>
 # Contributor: GI_Jack <iamjacksemail@hackermail.com>
 # Contributor: Xavier Devlamynck <magicrhesus@ouranos.be>
 
