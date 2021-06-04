@@ -1,4 +1,4 @@
-# Maintainer: Franck Stauffer <franck.stauffer@monaco.mc>
+# Maintainer: Qontinuum <qontinuum.dev@protonmail.ch>
 
 pkgname=firedm
 pkgver=2021.5.22
