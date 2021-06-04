@@ -13,6 +13,6 @@ pkgbase = instawm-schemas
 	depends = dconf
 	provides = instawm-schemas=2021.06.04
 	source = instawm-schemas-2021.06.04.tar.gz::https://github.com/The-Repo-Club/instawm-schemas/archive/2021.06.04.tar.gz
-	sha256sums = SKIP
+	sha256sums = dfdbc5a4cd6809c0c773ed4cd48bed16f377fe1655f3f87f200900a18d73f660
 
 pkgname = instawm-schemas
