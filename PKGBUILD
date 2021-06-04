@@ -66,8 +66,3 @@ package() {
 	install -Dm644 "$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 "50-systemd-user.conf" -t "$pkgdir/etc/sway/config.d/"
 }
-
-post_upgrade() {
-	echo "Make sure to upgrade wlroots-git and sway-git together."
-	echo "Upgrading one but not the other is unsupported."
-}
