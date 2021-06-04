@@ -7,7 +7,7 @@ msg() {
 }
 
 post_upgrade() {
-  msg  "Remember to check for changes in /usr/lib/librewolf/librewolf.cfg.pacnew"
+  msg  "Remember to check for changes in /usr/lib/librewolf-nightly/librewolf.cfg.pacnew"
   echo ""
   msg  "as those will currently not automatically overwrite your existing librewolf.cfg"
   echo ""
