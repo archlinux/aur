@@ -3,7 +3,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-intensityfix
 pkgver=9.22
-pkgrel=16
+pkgrel=17
 pkgdesc='A unicode enabled rxvt-clone terminal emulator (urxvt) (opinionated build)'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -58,6 +58,8 @@ prepare() {
 
 build() {
   cd $_pkgname-$pkgver
+
+  export CXXFLAGS="$CXXFLAGS -std=c++03"
 
   # we disable smart-resize (FS#34807)
   # do not specify --with-terminfo (FS#46424)
