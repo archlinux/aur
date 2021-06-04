@@ -2,9 +2,9 @@
 
 _pkgname=abc80sim
 pkgname=abc80sim-git
-pkgver=r431.067a8ad
+pkgver=r437.0398837
 pkgrel=1
-pkgdesc="An X windows based emulator of a Luxor ABC80"
+pkgdesc="An SDL based emulator of a Luxor ABC80"
 url="https://git.zytor.com/abc80/abc80sim.git"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -16,26 +16,27 @@ md5sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${_pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}    
+}
 
 prepare() {
-	cd ${srcdir}/${_pkgname}
+    cd ${srcdir}/${_pkgname}
     git checkout master
 }
 
-build() { 
-	cd ${srcdir}/${_pkgname}
+build() {
+    cd ${srcdir}/${_pkgname}
     ./autogen.sh
-	./configure --prefix=/usr
-	make
+    ./configure --prefix=/usr
+    make
 }
 
 package() {
-	cd ${srcdir}/${_pkgname}
-	
+    cd ${srcdir}/${_pkgname}
+
     install -D abc80 $pkgdir/usr/bin/abc80
     install -Dm644 abc80.man $pkgdir/usr/share/man/man1/abc80.1
-	#make DESTDIR=${pkgdir} install
+    install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname}/LICENSE
+    #make DESTDIR=${pkgdir} install
 }
 
 # vim:set ts=4 sw=4 et:
