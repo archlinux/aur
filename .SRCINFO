@@ -31,7 +31,7 @@ pkgbase = tl-launcher
 	depends = pango
 	depends = util-linux-libs
 	depends = zlib
-	depends = java-runtime
+	depends = java-runtime=8
 	depends = xorg-xrandr
 	optdepends = flite: narrator support
 	source = tl-launcher.jar::http://tlaun.ch/jar
