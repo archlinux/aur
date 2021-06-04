@@ -1,0 +1,12 @@
+diff --git a/src/disable_threading.cpp b/src/disable_threading.cpp
+index e3be7ff..94c645a 100644
+--- a/src/disable_threading.cpp
++++ b/src/disable_threading.cpp
+@@ -36,6 +36,7 @@
+ extern "C" {
+ // This function is private in openblas
+ int  goto_get_num_procs(void);
++void openblas_set_num_threads(int num_threads);
+ }
+ #endif
+ 
