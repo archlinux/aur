@@ -1,15 +1,16 @@
 pkgbase = sqls
-	pkgdesc = SQL language server written in Go.
-	pkgver = 0.2.14.r0.g4cea80a
+	pkgdesc = Implementation of the Language Server Protocol for SQL
+	pkgver = 0.2.18
 	pkgrel = 1
 	url = https://github.com/lighttiger2505/sqls
 	arch = x86_64
 	license = MIT
-	depends = git
-	depends = go
-	conflicts = sqls-bin
-	source = sqls::git+https://github.com/lighttiger2505/sqls.git
-	sha256sums = SKIP
+	makedepends = go
+	depends = glibc
+	optdepends = mysql
+	optdepends = sqlite3
+	optdepends = postgresql
+	source = sqls-0.2.18.tar.gz::https://github.com/lighttiger2505/sqls/archive/refs/tags/v0.2.18.tar.gz
+	sha256sums = f78f3c21fc03995731d5c035edff5f6c508864b3280d8d1e9665f27d1cc973dc
 
 pkgname = sqls
-

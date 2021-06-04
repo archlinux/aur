@@ -1,0 +1,4 @@
+post_install() {
+	echo ':: Please refer to upstream documentation on how to set up this plugin.'
+	echo ':: A copy has been installed for your convenience at /usr/share/doc/sqls/README.md.'
+}
