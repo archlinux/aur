@@ -1,7 +1,7 @@
 # Maintainer: amesgen <amesgen AT amesgen DOT de>
 
 pkgname='dhall-yaml-bin'
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=1
 pkgdesc="Dhall to YAML compiler and a YAML to Dhall compiler"
 arch=('x86_64')
@@ -9,10 +9,10 @@ url='https://github.com/dhall-lang/dhall-haskell'
 license=('GPL3')
 conflicts=('dhall-yaml')
 
-_dhall_ver=1.38.1
+_dhall_ver=1.39.0
 
 source=("dhall-yaml-$_dhall_ver-$pkgver.tar.bz2::https://github.com/dhall-lang/dhall-haskell/releases/download/$_dhall_ver/dhall-yaml-$pkgver-x86_64-linux.tar.bz2")
-sha256sums=('264ba6a628d648addcf8275bb48e68ea48466ca40807bc419d18235286bae584')
+sha256sums=('212812e50c0dc516d72152b863bb4b146c0eb5daa426231dc9da1a3bde9312d7')
 
 package() {
   for f in dhall-to-yaml-ng yaml-to-dhall; do
