@@ -1,6 +1,6 @@
 pkgbase = timetrace
 	pkgdesc = A simple time-tracking CLI tool
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/dominikbraun/timetrace
 	install = timetrace.install
@@ -9,7 +9,7 @@ pkgbase = timetrace
 	license = Apache
 	makedepends = go
 	depends = glibc
-	source = timetrace-0.7.1.tar.gz::https://github.com/dominikbraun/timetrace/archive/refs/tags/v0.7.1.tar.gz
-	sha256sums = 3d32380e3f7f989511aa662ac63c20a8b69d22d40aec2b1dff943394c2c32b04
+	source = timetrace-0.7.2.tar.gz::https://github.com/dominikbraun/timetrace/archive/refs/tags/v0.7.2.tar.gz
+	sha256sums = dd9d8940d60e141f03d2ea87328f7bbf3f825e31fa5d6ff627b13704d11f8f04
 
 pkgname = timetrace
