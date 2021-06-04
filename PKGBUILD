@@ -1,4 +1,4 @@
-# Maintainer: Franck Stauffer <franck.stauffer@monaco.mc>
+# Maintainer: Qontinuum <qontinuum.dev@protonmail.ch>
 # Contributor: Super Bo <supernbo@gmail.com>
 
 pkgname=nerd-fonts-complete-mono-glyphs
