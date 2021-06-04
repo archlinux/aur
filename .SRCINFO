@@ -1,20 +1,23 @@
 pkgbase = kikit-git
 	pkgdesc = KiKit is a Python library and CLI tool to automate several tasks in a standard KiCAD
-	pkgver = r65.c76c51e
+	pkgver = r196.be2b3fc
 	pkgrel = 1
 	url = https://github.com/yaqwsx/KiKit.git
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = kicad>=5.1.0
-	depends = python-markdown2
-	depends = python-numpy
 	depends = python-shapely
+	depends = python-solidpython
+	depends = python-numpy
 	depends = python-click
+	depends = python-markdown2
+	depends = python-commentjson
+	depends = python-matplotlib
 	depends = python-pybars3
+	depends = python-wxpython
 	provides = kikit
 	source = kikit-git::git+https://github.com/yaqwsx/KiKit.git
 	md5sums = SKIP
 
 pkgname = kikit-git
-

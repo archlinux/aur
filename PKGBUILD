@@ -2,7 +2,7 @@
 # Contributor: Julian Daube <joposter at gmail dot com>
 pkgname=kikit-git
 pkgdesc="KiKit is a Python library and CLI tool to automate several tasks in a standard KiCAD"
-pkgver=r65.c76c51e
+pkgver=r196.be2b3fc
 pkgrel=1
 
 url="https://github.com/yaqwsx/KiKit.git"
@@ -16,11 +16,15 @@ md5sums=("SKIP")
 makedepends=("python-setuptools")
 depends=(
 	"kicad>=5.1.0"
-	"python-markdown2" 
-	"python-numpy"
 	"python-shapely"
+	"python-solidpython"
+	"python-numpy"
 	"python-click"
+	"python-markdown2"
+	"python-commentjson"
+	"python-matplotlib"
 	"python-pybars3"
+	"python-wxpython"
 )
 
 pkgver() {
