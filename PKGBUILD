@@ -1,4 +1,4 @@
-# Maintainer: Franck Stauffer <franck.stauffer@monaco.mc>
+# Maintainer: Qontinuum <qontinuum.dev@protonmail.ch>
 
 pkgname='chromium-extension-decentraleyes'
 pkgver=2.0.15
