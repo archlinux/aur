@@ -1,4 +1,4 @@
-# Maintainer: Franck Stauffer <franck.stauffer@monaco.mc>
+# Maintainer: Qontinuum <qontinuum.dev@protonmail.ch>
 
 pkgname='privacy-redirect'
 pkgver=1.1.47
