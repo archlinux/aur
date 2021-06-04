@@ -1,6 +1,6 @@
 # Maintainer: Joost Bremmer <contact at madeofmagicandwires dot online>
 pkgname=sad
-pkgver=0.4.5
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="Space Age seD"
 arch=("x86_64")
@@ -11,17 +11,26 @@ depends=('gcc-libs')
 optdepends=('fzf: for tui usage'
             'diff-so-fancy: diff colourizer'
             'git-delta-git: diff colourizer')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ms-jpq/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('65bcf6c3a40bdc139d68d73cb58d1aad2585f019e90485c31188177efe77fe66')
+source=(
+  "$pkgname-$pkgver.tar.gz::https://github.com/ms-jpq/${pkgname}/archive/${pkgver}.tar.gz"
+  "lockfile.patch")
+sha256sums=('241d6161a1f26323a2cb07774db95b47df794e8bdcd7254905f6971be7def987'
+            '571cd53cfe3b4a9af3356067f00347f96f599146274c9f7ec65d89d070fb062e')
+
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  patch -Np1 -i ../lockfile.patch
+}
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --locked --all-features
+  cargo build --release --all-features
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  cargo test --release --locked --all-features
+  cargo test --release  --all-features
 
 }
 
