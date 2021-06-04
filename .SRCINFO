@@ -30,9 +30,10 @@ pkgbase = prusa-slicer-gtk2
 	conflicts = prusa-slicer
 	replaces = slic3r-prusa3d
 	source = https://github.com/prusa3d/PrusaSlicer/archive/version_2.3.1/prusa-slicer-gtk2-2.3.1.tar.gz
+	source = prusa-slicer-gcc11.patch
 	source = prusa-slicer-openexr3.patch
 	sha256sums = c1315826d07f428dfe4b9aa6325727beb1257aa6f711d1659a2760f8e213cd51
+	sha256sums = 1d394b12e0b8f597e5c19c3531621a7ccfd70216d997a77de24891c92a524170
 	sha256sums = 1ef7c22f641b7c18de212202c21f14f6533834a36d7fe0c2b322bc9a13804c6b
 
 pkgname = prusa-slicer-gtk2
-
