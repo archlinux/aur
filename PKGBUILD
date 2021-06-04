@@ -2,7 +2,7 @@
 pkgname=airvpn-suite
 _pkgname=AirVPN-Suite
 pkgver=1.0.0
-pkgrel=5
+pkgrel=6
 _commit="fee05fd016b22d222ec85846786c1d627b03b40e"
 pkgdesc="AirVPN client software collection including Bluetit, Goldcrest and Hummingbird – stable"
 arch=('x86_64')
@@ -55,11 +55,11 @@ package() {
     install -Dm755 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 
     # place configuration
-    install -Dm600 -t "$pkgdir/etc/" etc/airvpn/*
+    install -Dm600 -t "$pkgdir/etc/" "$_pkgname"/etc/airvpn/*
 
     # place D-Bus config#
-    install -Dm644 -t "$pkgdir/etc/dbus-1/system.d/" etc/dbus-1/system.d/*
+    install -Dm644 -t "$pkgdir/etc/dbus-1/system.d/" "$_pkgname"/etc/dbus-1/system.d/*
 
     # place Systemd service
-    install -Dm644 systemd/system/bluetit.service "$pkgdir/etc/systemd/system/bluetit.service"
+    install -Dm644 "$_pkgname/etc/systemd/system/bluetit.service" "$pkgdir/etc/systemd/system/bluetit.service"
 }

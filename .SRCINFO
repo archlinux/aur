@@ -1,7 +1,7 @@
 pkgbase = airvpn-suite
 	pkgdesc = AirVPN client software collection including Bluetit, Goldcrest and Hummingbird – stable
 	pkgver = 1.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://gitlab.com/AirVPN/AirVPN-Suite
 	install = airvpn-suite.install
 	arch = x86_64
