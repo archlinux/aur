@@ -1,4 +1,4 @@
-# Maintainer: Franck Stauffer <franck.stauffer@monaco.mc>
+# Maintainer: Qontinuum <qontinuum.dev@protonmail.ch>
 
 pkgname='chromium-extension-privacybadger'
 pkgver=2021.2.2
