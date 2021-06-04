@@ -23,7 +23,7 @@ provides=("waterfox-classic=${pkgver}")
 conflicts=('waterfox-classic' 'waterfox-kde')
 replaces=('waterfox-kde')
 options=('!emptydirs' '!makeflags' 'zipman')
-_filesrev=8056d442bb78d009400bc0823cf39d8571e96df3
+_filesrev=09f457ca504da27a1b32a2c05aea27a0249b978e
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-classic-kpe
 _commit=709bbfedcb2750665fbda4993b253737615ee8f8
 #"git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
