@@ -1,6 +1,6 @@
 pkgbase = edopro-bin
 	pkgdesc = Free and open source ygopro client
-	pkgver = 39.0.3
+	pkgver = 39.1.0
 	pkgrel = 1
 	url = https://github.com/edo9300/edopro
 	arch = x86_64
@@ -9,12 +9,11 @@ pkgbase = edopro-bin
 	depends = libglvnd
 	optdepends = mono: AI support
 	options = emptydirs
-	source = ProjectIgnis-EDOPro-39.0.3-linux.tar::https://mega.nz/file/ACglSKaC#Mhu-KfVoO4UgWmMkZLULpp531KdoiocylEhHisXZ3Ls
+	source = ProjectIgnis-EDOPro-39.1.0-linux.tar.gz::https://mega.nz/file/lLYzhKzS#8hueM0Qb8LQMspE2NiCZ7-IRditGG1lydbnyLZ9PRCk
 	source = io.github.edo9300.EDOPro.desktop
 	source = edopro
-	sha256sums = 472bc831c0a22f0a619d1fb4cc1b39af14f0bda74bf0a96a821038d711c700bb
+	sha256sums = 590b328c764414c966d7eb8035df57161341ebd2940623751529319c678074df
 	sha256sums = 831c8d915064e997162ee172af1765b3105e8191f914b013317b3efa3906ef96
 	sha256sums = 149301c11a921742180535d77df7e2c89e486ef8cb6c5e6e33202dccc03a9ec7
 
 pkgname = edopro-bin
-
