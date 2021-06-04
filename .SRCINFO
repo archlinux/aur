@@ -5,6 +5,7 @@ pkgbase = supercollider-flucoma
 	url = https://www.flucoma.org/
 	arch = x86_64
 	groups = pro-audio
+	groups = supercollider-plugins
 	license = BSD
 	depends = supercollider
 	source = supercollider-flucoma-1.5.0-2.zip::https://github.com/flucoma/flucoma-sc/releases/download/TB2-beta01/FluCoMa-SC-Unix-beta01.zip
