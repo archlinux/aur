@@ -1,4 +1,4 @@
-# Maintainer: Franck STAUFFER <franck.stauffer@monaco.mc>
+# Maintainer: Qontinuum <qontinuum.dev@protonmail.ch>
 
 pkgname=cos-git
 pkgver=r2051.c2dc1ad3
