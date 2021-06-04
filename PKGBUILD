@@ -8,7 +8,7 @@
 # Contributor: Christian Schwarz <me et cschwarz punkt com>
 
 pkgname=apt-cacher-ng
-pkgver=3.5
+pkgver=3.6.4
 pkgrel=1
 pkgdesc="A caching proxy specialized for package files."
 url="http://www.unix-ag.uni-kl.de/~bloch/acng/"
@@ -16,14 +16,14 @@ arch=('i686' 'x86_64' 'armv7h')
 license=('custom')
 depends=('zlib' 'bzip2' 'fuse' 'xz' 'openssl' 'libwrap' 'libevent')
 makedepends=('cmake')
-source=("http://snapshot.debian.org/archive/debian-debug/20200421T024713Z/pool/main/a/apt-cacher-ng/apt-cacher-ng_${pkgver}.orig.tar.xz"
+source=("http://snapshot.debian.org/archive/debian-debug/20210604T083012Z/pool/main/a/apt-cacher-ng/apt-cacher-ng_${pkgver}.orig.tar.xz"
         'acng.conf.patch'
         'apt-cacher-ng.service.patch'
         'apt-cacher-ng.tmpfile'
 )
 
 backup=('etc/apt-cacher-ng/acng.conf')
-md5sums=('129dfeb63f14896fcf133d1bb9b8a981' # package
+md5sums=('27e61ad5c085e6640749184e75d2f630' # package
          '615f24677e35a346990c9a040293bb9a' # acng.conf.patch
          '814ce1d0820f1a42d6aab483a6961fc6' # apt-cacher-ng.service.patch
          '29979b8064ff52aa24017b42c37e6bfb') # apt-cacher-ng.tmpfile
