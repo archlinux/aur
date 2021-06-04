@@ -1,0 +1,18 @@
+pkgbase = lpc55
+	pkgdesc = NXP LPC55 host-side utilities
+	pkgver = 0.1.0_alpha.6
+	pkgrel = 1
+	url = https://github.com/lpc55/lpc55-host
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = systemd
+	depends = systemd-libs
+	source = lpc55-0.1.0_alpha.6.tar.gz::https://github.com/lpc55/lpc55-host/archive/refs/tags/0.1.0-alpha.6.tar.gz
+	source = 70-raw-lpc55-mcuboot.rules
+	sha256sums = d63f2f4cddc905779029aace1cff411644dd86a432f2a629a39e93bdcca2ad47
+	sha256sums = 4175fee2145e3e085d2cbf2b67ec3c8ec7fb641a08b97fb65da1bd5cf52d4f88
+
+pkgname = lpc55
