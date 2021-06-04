@@ -1,4 +1,4 @@
-# Maintainer: Franck STAUFFER <franck.stauffer@monaco.mc>
+# Maintainer: Qontinuum <qontinuum.dev@protonmail.ch>
 
 pkgname=voadi-git
 pkgver=0.3.r423.gec6fefd
