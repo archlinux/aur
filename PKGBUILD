@@ -1,28 +1,21 @@
-# Maintainer: Shatur95 <genaloner@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Contributor: Shatur95 <genaloner@gmail.com>
 
 pkgname=vim-language-server
-pkgver=2.0.0
+pkgver=2.2.3
 pkgrel=1
-pkgdesc="Vim language server"
-arch=(x86_64)
+pkgdesc="VimScript language server"
+arch=('any')
 url="https://github.com/iamcco/vim-language-server"
-license=(Custom)
-depends=(nodejs)
-makedepends=(yarn)
-source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha256sums=(1d295314629309aea9a2af8fe59be8ed49bca4c31f5f8ac5a75767c5ec84b446)
-
-build() {
-    cd $pkgname-$pkgver
-    yarn
-    yarn build
-}
+license=('unknown')
+depends=('nodejs')
+makedepends=('npm')
+source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
+sha256sums=('1915b18f06903ec4e5d0eeb98933d8ed2287f562fe4369ed9a82a8f91dd3eb68')
+noextract=("$pkgname-$pkgver.tgz")
 
 package() {
-    install -d "$pkgdir/usr/lib/$pkgname"
-    cd "$pkgdir/usr/lib/$pkgname"
-    cp -a "$srcdir/$pkgname-$pkgver/"{bin,out} .
-
-    install -d "$pkgdir/usr/bin"
-    ln -s "/usr/lib/$pkgname/bin/index.js" "$pkgdir/usr/bin/$pkgname"
+	npm install -g --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "$pkgname-$pkgver.tgz"
+	find "$pkgdir/usr" -type d -exec chmod 755 '{}' \+
+	chown -R root:root "$pkgdir"
 }

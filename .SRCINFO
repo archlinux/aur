@@ -1,14 +1,14 @@
 pkgbase = vim-language-server
-	pkgdesc = Vim language server
-	pkgver = 2.0.0
+	pkgdesc = VimScript language server
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://github.com/iamcco/vim-language-server
-	arch = x86_64
-	license = Custom
-	makedepends = yarn
+	arch = any
+	license = unknown
+	makedepends = npm
 	depends = nodejs
-	source = vim-language-server-2.0.0.tar.gz::https://github.com/iamcco/vim-language-server/archive/v2.0.0.tar.gz
-	sha256sums = 1d295314629309aea9a2af8fe59be8ed49bca4c31f5f8ac5a75767c5ec84b446
+	noextract = vim-language-server-2.2.3.tgz
+	source = https://registry.npmjs.org/vim-language-server/-/vim-language-server-2.2.3.tgz
+	sha256sums = 1915b18f06903ec4e5d0eeb98933d8ed2287f562fe4369ed9a82a8f91dd3eb68
 
 pkgname = vim-language-server
-
