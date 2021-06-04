@@ -1,4 +1,4 @@
-# Maintainer: Franck STAUFFER <franck.stauffer@monaco.mc>
+# Maintainer: Qontinuum <qontinuum.dev@protonmail.ch>
 # Contributor: Caio Novais <caionov08 at gmail dot com>
 
 pkgname=pfetch
