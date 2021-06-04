@@ -1,0 +1,13 @@
+pkgbase = brother-mfcj4710dw-cups-bin
+	pkgdesc = CUPS wrapper for Brother MFC-J4710DW(T) printer
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://download.brother.com/welcome/dlf006594/mfcj4710dwlpr-3.0.1-1.i386.deb
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf006596/mfcj4710dwcupswrapper-3.0.1-1.i386.deb
+	md5sums = c6a7a8172e72c00faebb60cdb4eaac64
+
+pkgname = brother-mfcj4710dw-cups-bin
