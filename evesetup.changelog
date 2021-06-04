@@ -1,3 +1,2 @@
-Attempt to add a package based dependency solution for lite installer.
-Wine dependency are now optional to use other sources if desired.
-Minor changes in evelauncher.kwinrule and evelauncher.lua
+EndeavourOS added in arch tree of lite installer.
+Minor changes in evelauncher.shlib and setup scripts
