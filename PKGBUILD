@@ -9,7 +9,7 @@ license=('GPL')
 groups=('pro-audio')
 depends=('supercollider')
 source=("$pkgname-$pkgver.zip::$url/releases/download/v${pkgver}/f0plugins-Linux.zip")
-md5sums=('SKIP')
+md5sums=('4479887fc3575128c0ced556f1effcd6')
 
 package() {
  	DESTINATION_="usr/share/SuperCollider/Extensions/"

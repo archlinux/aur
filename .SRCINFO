@@ -8,7 +8,7 @@ pkgbase = supercollider-f0plugins
 	license = GPL
 	depends = supercollider
 	source = supercollider-f0plugins-4.0.3.zip::https://github.com/redFrik/f0plugins/releases/download/v4.0.3/f0plugins-Linux.zip
-	md5sums = SKIP
+	md5sums = 4479887fc3575128c0ced556f1effcd6
 
 pkgname = supercollider-f0plugins
 
