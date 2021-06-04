@@ -1,7 +1,7 @@
 # Maintainer: Brodi <me@brodi.space>
 pkgname=obs-rtspserver-bin
 pkgver=2.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="RTSP server plugin for obs-studio"
 arch=("x86_64")
 url="https://github.com/iamscottxu/obs-rtspserver"
@@ -14,10 +14,12 @@ sha512sums=('ca9f11410c02a9b2d4dcc0afa140f45aeb8f8b4e16bfd7baba0614a5a2c961c8b59
 	 'SKIP')
 
 package() {
-	cd ${srcdir}/obs-rtspserver
-	install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/{$pkgname}/LICENSE"	
+	cd ${srcdir}/obs-rtspserver	
 	install -d ${pkgdir}/usr/lib/obs-plugins/
 	install -d ${pkgdir}/usr/share/obs/obs-plugins/obs-rtspserver/
+	install -d ${pkgdir}/usr/share/obs/obs-plugins/obs-rtspserver/locale/
+	
 	install -Dm755 ./bin/64bit/* ${pkgdir}/usr/lib/obs-plugins/
-	cp -R ./data/* ${pkgdir}/usr/share/obs/obs-plugins/obs-rtspserver/
+	install -Dm755 data/locale/* ${pkgdir}/usr/share/obs/obs-plugins/obs-rtspserver/locale/
+	install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/{$pkgname}/LICENSE"
 }
