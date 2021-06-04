@@ -1,7 +1,7 @@
 # Maintainer: Roboron <robertoms258 at gmail dot com>
 
 pkgname=simutrans-extended-git
-pkgver=r18878.d2a467ad8
+pkgver=r18880.abf5c7b74
 pkgrel=1
 pkgdesc="Transportation simulation game - Extended Version - Nightly build from git"
 arch=('any')
@@ -46,7 +46,7 @@ build() {
   cd simutrans-extended
   mkdir build
   cd build
-  cmake ..
+  cmake -DSIMUTRANS_USE_FREETYPE=ON ..
   make
 }
 
