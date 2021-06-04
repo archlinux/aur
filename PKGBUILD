@@ -1,9 +1,9 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 _pluginname=gradient-source
 pkgname=obs-$_pluginname
-pkgver=0.1.0
+pkgver=0.2.0
 _obsver=27.0.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Gradient Source for OBS studio"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/gradient-source.1172/e"
@@ -11,7 +11,7 @@ license=("GPL2")
 depends=("obs-studio>=$_obsver")
 makedepends=("cmake" "git" "libxcomposite")
 source=(
-  "$pkgname-$pkgver::git+https://github.com/exeldro/obs-gradient-source#commit=f3d3a5b19183963bb051c223faacbd64161028c6"
+  "$pkgname-$pkgver::git+https://github.com/exeldro/obs-gradient-source#commit=fe42abcc8d3fbb2fec82ca85b741ea70f37ab45f"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
 )
 sha256sums=(
