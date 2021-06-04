@@ -2,21 +2,21 @@
 
 pkgname=jdk-jetbrains
 _major=11
-_minor=0.10
-_build=1428.2
+_minor=0.11
+_build=1481.1
 pkgver=${_major}.${_minor}b${_build}
 pkgrel=1
 pkgdesc='OpenJDK development kit with some fixes and enhancements by JetBrains'
 arch=('x86_64')
-url="https://bintray.com/jetbrains/intellij-jbr"
+url="https://confluence.jetbrains.com/display/JBR/Release+notes+and+builds"
 license=('GPL2')
 depends=( 'java-runtime-common'          'ca-certificates-java'              'java-environment-common' )
 provides=("java-runtime=$_major"         "java-runtime-headless=$_major"     "java-environment=$_major"
           "java-runtime-openjdk=$_major" "java-runtime-headless-jre=$_major" "java-environment-openjdk=$_major")
 replaces=('intellij-jdk' 'jdk-jetbrains')
 _zipname="jbrsdk-${_major}_${_minor//./_}-linux-x64-b${_build}.tar.gz"
-source=("${_zipname}::https://bintray.com/jetbrains/intellij-jbr/download_file?file_path=${_zipname}")
-b2sums=('371467d94b5a77eb91859297eaf409e2cbfd3b5b0fdf75216bd3ffe65426b7ebb6e8ca86e43a8d5a15ad41ef8be07e4cd94ba507bdd98c8c68aaa25601a0613c')
+source=("${_zipname}::https://cache-redirector.jetbrains.com/intellij-jbr/${_zipname}")
+b2sums=('8410e9b13f75eb17a46fe1fd6859bf3bdafb30d860fe8da60e695213e3a46dca405dab3b212d0981c52c2c610f8782c58edc10928204acdff97b0838c63479c5')
 
 package() {
   find . -exec chmod g+r,o+r {} +
