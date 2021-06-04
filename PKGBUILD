@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=xboot-git
-pkgver=v1.50.3008.g8934405d4
+pkgver=v1.50.3009.ge4f340b96
 pkgrel=1
 pkgdesc="The extensible bootloader for embedded system with application engine, write once, run everywhere. (Linux Sandbox for x86_64)"
 arch=('x86_64')
@@ -32,20 +32,19 @@ package() {
     install -Dm0755 "${srcdir}/${pkgname%-git}/output/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm0644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
     install -Dm0644 "${srcdir}/${pkgname%-git}/developments/logo/xboot-logo.svg" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.svg"
-    install -Dm0644 "${srcdir}/${pkgname%-git}/developments/logo/xboot-logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/application-${pkgname%-git}.svg"
+    install -Dm0644 "${srcdir}/${pkgname%-git}/developments/logo/xboot-logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/application-x-${pkgname%-git}.svg"
 
     install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop" << EOF
 [Desktop Entry]
 Name=${pkgname%-git}
 Name[zh_CN]=${pkgname%-git}
 Comment=The runtime environment
-MimeType=application/${pkgname%-git};
+MimeType=application/x-${pkgname%-git};
 Exec=${pkgname%-git} %f
 Type=Application
 Categories=Development;Game;
 Terminal=false
 Icon=${pkgname%-git}
-NoDisplay=true
 Version=${pkgver}
 EOF
 

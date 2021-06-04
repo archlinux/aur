@@ -1,6 +1,6 @@
 pkgbase = xboot-git
 	pkgdesc = The extensible bootloader for embedded system with application engine, write once, run everywhere. (Linux Sandbox for x86_64)
-	pkgver = v1.50.3008.g8934405d4
+	pkgver = v1.50.3009.ge4f340b96
 	pkgrel = 1
 	url = https://github.com/xboot/xboot
 	arch = x86_64
