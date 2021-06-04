@@ -1,20 +1,21 @@
-# Maintainer: Dan Elkouby <streetwalkermc@gmail.com>
-# Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
+# Maintainer: novenary <streetwalkermc@gmail.com>
 # Contributor: hexchain <i@hexchain.org>
 pkgname=telegram-desktop9
-pkgver=2.7.1
+pkgver=2.7.4
 pkgrel=1
 pkgdesc='Official Telegram Desktop client (personal build)'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
 depends=('ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
-         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'gtk3' 'glibmm')
+         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'gtk3' 'glibmm' 'webkit2gtk')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'libtg_owt')
 provides=('telegram-desktop')
 conflicts=('telegram-desktop')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
-        "fix-tgcalls-gcc10._patch::https://raw.githubusercontent.com/archlinux/svntogit-community/fdda5c9b372b99860bc978ddbc6ce89eca8b08a3/trunk/fix-tgcalls-gcc10.patch"
+        "71deaa48afab2bcf9df67b9b347b1f44aad3a9ce._patch::https://github.com/telegramdesktop/tdesktop/commit/71deaa48afab2bcf9df67b9b347b1f44aad3a9ce.patch"
+        "a8807bc915f2439acc7c84f06d931d96d6ca602a._patch::https://github.com/telegramdesktop/tdesktop/commit/a8807bc915f2439acc7c84f06d931d96d6ca602a.patch"
+        "fix-webview-includes._patch::https://raw.githubusercontent.com/archlinux/svntogit-community/bf53e23b5321cbc664bfb93e4350b179b26238f6/trunk/fix-webview-includes.patch"
 
         "always_delete_for_everyone.patch"
         "always_pin_without_notify.patch"
@@ -25,8 +26,10 @@ source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver
         "use_xdg-open.patch"
         "fix_thread_context_menu.patch"
         "mediaviewer_nofullscreen.patch")
-sha512sums=('dffd184c4369c5c5947b1ca085add533e54313ce39aebcdca4f0958431a305aa5e95c2f2b48592f6992e666b2d33eeba5697f9e09f6048a53b807f2950fbd17b'
-            'dbc61a8520f3698fdeec6c9849cfd8241b8b778589f89277f82d6c748d8ed7a81db90daa0a69dedc3ab2b81bba848ee68e1df79a9cb3fb055f99bd7d19f46e5d'
+sha512sums=('0a796d7a8c5e5982bc60f19c41da53996a609bf794fad224e7beea5fc3816b5cf35f16b0ec2cc7279085c69996063a44085f48e1596dfe746d260a2e8f1b2d14'
+            'cabdadddc7a6873c7c6fc8128ceddf2712c0c73d3316520482162e5c67937bda2a627ddb2f078558a52e812c2a876351196488a5a75381d84a43815b873bac5b'
+            '72ef9bddef1f40e09b9c4334153f1ab8aaddf63d95d9f25dc1b0a0826b7f2ae24f7c5fc4cb5ce90aae2c3144a5d52c4cb870d643f447d654190c4a2c78079354'
+            '5492c73f0b984da1e2d1f21c3a36c11c4b9ad511522dccd4d6440681f68d6ebc9e672806a534b1e551f736f080d3ef307c8ddd012e4646bd84d09c5e8fa85a40'
             'fdef3a430bdd60d88c9e9011ee878805e7803699204a2a7e22797d0f8729bf7dc0543851083ad700a4ece32bc768b6bfeb6f0135c8c039e035b22afb6df1171d'
             'dc5ffda130496c44bfe52792e856dac811b1a8e48b463529dd54396ad1b45915f8b6d9fcb6cb254f9350b3440d7b94a67d1c19660962f0350015061b021af6f1'
             '4da055da633b40b6133d14fd13d1aa9d933b3ba4b19370bc0edbccc02d4e31a9291191f7dc3a2aca9225da8dabca6ed33f90ab757435bebd034b6fed28ac8092'
@@ -52,9 +55,12 @@ prepare() {
     cd cmake
     # force webrtc link to libjpeg
     echo "target_link_libraries(external_webrtc INTERFACE jpeg)" | tee -a external/webrtc/CMakeLists.txt
+    cd ../Telegram/lib_webview
+    patch -Np1 -i "$srcdir"/fix-webview-includes._patch
 
-    cd ../Telegram/ThirdParty/tgcalls
-    patch -Np1 -i "$srcdir"/fix-tgcalls-gcc10._patch
+    cd ..
+    patch -Np2 -i "$srcdir"/71deaa48afab2bcf9df67b9b347b1f44aad3a9ce._patch
+    patch -Np2 -i "$srcdir"/a8807bc915f2439acc7c84f06d931d96d6ca602a._patch
 }
 
 build() {
