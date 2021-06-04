@@ -2,7 +2,7 @@
 
 pkgname=portmod
 pkgver=2.0_rc10
-pkgrel=1
+pkgrel=2
 pkgdesc="A cli tool to manage mods for OpenMW"
 provides=('portmod')
 conflicts=('portmod')
@@ -21,6 +21,7 @@ sha512sums=('281db214aa3afa02a2b9736a2965c7a4af91c42b9aeab7ae5ad1b5c75f52b1e0ba8
 
 build() {
   cd "$srcdir/$pkgname-v$pkgver"
+  touch portmodlib/parsers/__init__.py
   SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver python setup.py build_rust --inplace --release
 }
 
