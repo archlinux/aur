@@ -1,0 +1,14 @@
+pkgbase = timing71
+	pkgdesc = Desktop client for the Timing71 live timing aggregation service.
+	pkgver = 2021.1.1
+	pkgrel = 1
+	url = https://www.timing71.org
+	arch = x86_64
+	license = custom
+	depends = electron9
+	source = timing71-v2021.1.1.AppImage::https://releases.timing71.org/client/v2021.1.1/Timing71%20Client%20v2021.1.1.AppImage
+	source = wrapper.sh
+	sha512sums = c088425bf903beb2df8dcef59cc1f2c9cfab6606c5bfc8630561258fa9a752eb634e5ccd08c34e904fa86dc6e6ce4184186e43d11715e148f194c1d42e49c800
+	sha512sums = cfa60e34c36c03af745c3989bd184f1275cbe962db53dc5aec0ed96c865cbfba98a92b4ebac4f0e17fdc2d0dcb6281d4db23c9ad1fe85514b7e21e3d652685b2
+
+pkgname = timing71
