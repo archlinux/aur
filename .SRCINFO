@@ -1,0 +1,18 @@
+pkgbase = supercollider-steroids-ugens-git
+	pkgdesc = SuperCollider standard UGens on steroids
+	pkgver = r3.1d4a9b2
+	pkgrel = 1
+	url = https://github.com/tai-studio/steroids-ugens
+	arch = any
+	groups = pro-audio
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = supercollider
+	source = supercollider-steroids-ugens-git-r3.1d4a9b2::git+https://github.com/tai-studio/steroids-ugens.git
+	source = supercollider-source::git+https://github.com/supercollider/supercollider.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = supercollider-steroids-ugens-git
+
