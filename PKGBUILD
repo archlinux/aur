@@ -9,7 +9,6 @@ pkgdesc="Fork of Sway with some additional (mostly graphical) features"
 makedepends=(
 	"git"
 	"meson"
-	"ninja"
 	"scdoc"
 	"wayland-protocols"
 )
