@@ -3,11 +3,12 @@
 
 pkgname='ravenfield'
 pkgver=b5_1
-pkgrel=3
+pkgrel=4
 pkgdesc='A singleplayer battlefield style game.'
 arch=('x86_64' 'i686')
 url='https://steelraven7.itch.io/ravenfield'
 license=('unknown')
+depends=('libgl')
 makedepends=('unzip')
 options=(!emptydirs)
 source=(
