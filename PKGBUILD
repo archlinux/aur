@@ -1,13 +1,14 @@
-# Maintainer: Benoit Favre <benoit.favre@lif.univ-mrs.fr>
+# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: Benoit Favre <benoit.favre@lif.univ-mrs.fr>
 pkgname=vamp-pyin-f0-plugin
-pkgver=1.0
+pkgver=1.2
 pkgrel=1
 pkgdesc="Probabilistic YIN algorithm for fundamental frequency (F0) estimation in monophonic audio (vamp plugin)"
 arch=(i686 x86_64)
 url="https://code.soundsoftware.ac.uk/projects/pyin"
 license=('GPL')
 depends=(vamp-plugin-sdk)
-source=(https://code.soundsoftware.ac.uk/attachments/download/884/pyin-v$pkgver.tar.gz)
+source=("http://code.soundsoftware.ac.uk/attachments/download/2627/pyin-v$pkgver.tar.gz")
 md5sums=(c16bb500796614983dac8c2f7346ddc2) 
 
 build() {
