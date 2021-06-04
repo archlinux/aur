@@ -2,7 +2,7 @@
 pkgname=airvpn-suite
 _pkgname=AirVPN-Suite
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 _commit="fee05fd016b22d222ec85846786c1d627b03b40e"
 pkgdesc="AirVPN client software collection including Bluetit, Goldcrest and Hummingbird – stable"
 arch=('x86_64')
@@ -10,8 +10,8 @@ url="https://gitlab.com/AirVPN/$_pkgname"
 license=('GPL3')
 provides=('hummingbird-bin' 'hummingbird' 'airvpn-suite-bin' 'airvpn-suite-beta-bin')
 conflicts=('hummingbird-bin' 'hummingbird' 'airvpn-suite-bin' 'airvpn-suite-beta-bin')
-depends=('dbus' 'openssl' 'libxml2' 'xz' 'lz4')
-makedepends=('gcc' 'make' 'pkgconf' 'autoconf' 'automake' 'git' 'crypto++')
+depends=('dbus' 'openssl' 'libxml2' 'xz' 'lz4' 'crypto++')
+makedepends=('gcc' 'make' 'pkgconf' 'autoconf' 'automake' 'git')
 source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 install="$pkgname.install"
@@ -55,14 +55,10 @@ package() {
     install -Dm755 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 
     # place configuration
-    cd $_pkgname/etc
-    for file in airvpn/*; do
-        install -Dm600 "$file" "$pkgdir/etc/$file"
-    done
+    install -Dm600 -t "$pkgdir/etc/" etc/airvpn/*
 
-    # place D-Bus config
-    install -Dm644 dbus-1/system.d/org.airvpn.client.conf "$pkgdir/etc/dbus-1/system.d/org.airvpn.client.conf"
-    install -Dm644 dbus-1/system.d/org.airvpn.server.conf "$pkgdir/etc/dbus-1/system.d/org.airvpn.server.conf"
+    # place D-Bus config#
+    install -Dm644 -t "$pkgdir/etc/dbus-1/system.d/" etc/dbus-1/system.d/*
 
     # place Systemd service
     install -Dm644 systemd/system/bluetit.service "$pkgdir/etc/systemd/system/bluetit.service"
