@@ -3,9 +3,9 @@
 # Contributor: Andreas Pieber <anpieber@gmail.com>
 
 set -u
-pkgname='liquibase'
-pkgver='3.9.0'
-pkgrel='1'
+pkgname=liquibase
+pkgver=4.3.5
+pkgrel=1
 pkgdesc='VCS source control tailored for database management'
 arch=('any')
 url="http://www.liquibase.org/"
@@ -16,7 +16,7 @@ _verwatch=("${_giturl}/releases.atom" '\s\+<link rel="alternate" type="text/html
 options=('!strip')
 source=("https://github.com/liquibase/liquibase/releases/download/v${pkgver}/liquibase-${pkgver}.tar.gz"
         "liquibase.profile")
-sha256sums=('68eda6527ef36b45aff70a755e5660a15d82079a0074b56b7da3c7aede8b5a61'
+sha256sums=('5ce62afa9efa5c5b7b8f8a31302959a31e70b1a5ee579a2f701ea464984c0655'
             '7c1939e5b1aee63db199c86989726bbdf81102784512ed69f8595fddf80c30c0')
 package() {
   set -u
