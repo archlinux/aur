@@ -28,7 +28,7 @@
 #define BuildNetCDF4 1
 #define NetCDF4lib -lnetcdf
 #define BuildGDAL 1
-#define BuildTRIANGLE 1
+#define BuildTRIANGLE 0
 #define BuildUdunits 1
 #define UdUnitslib -ludunits2 -lexpat
 #define BuildHDFEOS 0

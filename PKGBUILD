@@ -2,7 +2,7 @@
 
 pkgname=ncl
 pkgver=6.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Ncar Command Language, is an interpreted language designed specifically for scientific data analysis and visualization'
 url='http://www.ncl.ucar.edu'
 license=('APACHE')
@@ -17,23 +17,31 @@ install=${pkgname}.install
 backup=(etc/profile.d/ncarg.sh)
 source=(ncl-$pkgver.tar.gz::https://github.com/NCAR/ncl/archive/$pkgver.tar.gz
         http://www.netlib.org/voronoi/triangle.zip Site.local ncarg.sh hluresfile ncl.install
-        no_install_dep.patch::https://src.fedoraproject.org/rpms/ncl/raw/master/f/ncl-5.0.0-no_install_dep.patch
-        includes.patch::https://src.fedoraproject.org/rpms/ncl/raw/master/f/ncl-5.1.0-includes.patch
-        netcdff.patch::https://src.fedoraproject.org/rpms/ncl/raw/master/f/ncl-5.1.0-netcdff.patch
-        paths.patch::https://src.fedoraproject.org/rpms/ncl/raw/master/f/ncl-5.1.0-paths.patch
-        ncl-libs.patch::https://src.fedoraproject.org/rpms/ncl/raw/master/f/ncl-libs.patch)
+        no_install_dep.patch::https://src.fedoraproject.org/rpms/ncl/raw/main/f/ncl-5.0.0-no_install_dep.patch
+        includes.patch::https://src.fedoraproject.org/rpms/ncl/raw/main/f/ncl-5.1.0-includes.patch
+        netcdff.patch::https://src.fedoraproject.org/rpms/ncl/raw/main/f/ncl-5.1.0-netcdff.patch
+        paths.patch::https://src.fedoraproject.org/rpms/ncl/raw/main/f/ncl-5.1.0-paths.patch
+        ncl-libs.patch::https://src.fedoraproject.org/rpms/ncl/raw/main/f/ncl-libs.patch
+        ncl-gdal.patch::https://src.fedoraproject.org/rpms/ncl/raw/main/f/ncl-gdal.patch
+        ncl-proj8.patch::https://src.fedoraproject.org/rpms/ncl/raw/main/f/ncl-proj8.patch
+        ncl-format.patch::https://src.fedoraproject.org/rpms/ncl/raw/main/f/ncl-format.patch
+        ncl-boz.patch::https://src.fedoraproject.org/rpms/ncl/raw/main/f/ncl-boz.patch)
 optdepends=('ncl-highres: High-resolution coastlines (RANGS and GSHHS)')
-md5sums=('38e3d2b55490f6eac93035d31579a45e'
-         '10aff8d7950f5e0e2fb6dd2e340be2c9'
-         'bdbef74e361df88fbceff912bff6dd8a'
-         '33fd270a3ea1b4beb770b3e89ada4f59'
-         'c18b84591221cf956f3c626cf8766f41'
-         '913322ce7d4ca5efed7674693e8a3124'
-         'fdafb5d316ee2a86c81030a47cc9aaad'
-         'a996694fec633798787cb3f288022125'
-         'c40d02a87b447f79d83c3f0d56923db8'
-         '9634e0287a4f972e79ceeca44387c13a'
-         '2dc539dc3133339aed425aa03f87f103')
+sha256sums=('cad4ee47fbb744269146e64298f9efa206bc03e7b86671e9729d8986bb4bc30e'
+            '1766327add038495fa3499e9b7cc642179229750f7201b94f8e1b7bee76f8480'
+            'bbb3d9a712107a3cabb427a06960ec0e1db90f3df9891845f8dc7af66f57123a'
+            '4e2347ffc7ffe20c32124430c8a165ad9e750f60d9948f11fc7e610aa7130c8e'
+            '5b3990a78e849044cd5f0e9d98661f8325b8a5629604237dd3caa1f7e3b6e32e'
+            '79a9b66ea670dcf5a69c29ad6eab804e696ca79d050d584d66dafbd2c611bcdb'
+            '6b15ccdbd3a5c0d044b867342b5ab9daad1add6f6a488d14be955b172116c0ed'
+            '870e6e7a868a3c5c94bcd3f3af898ea9bebd666343e4b0f77e4a74e85aadf55b'
+            '4f168597ca725145c009fd33dfde27d50d936412b0365edb33be2f915d1af07c'
+            '61b9b3beab800f0de350564a42ccd54d5e7e1e23189199350f084435fbce6564'
+            '5a7516b9ddbc1af91518b030f58f4b17de0efb046ba615eab549dde6b0875e04'
+            '0ae96df73ac8902b1cd4bab203c45c4bc58b2f645ed094768884f9149066849a'
+            'f960b172438485f664a2ce72c47daf5ccd6f3ff81ecd5866ae746c2ae8300529'
+            'adb5e0eaa5edcedf0276979431dff2fba3fe7850a5bace3a3071ca858bc8b3b5'
+            '64f3502c9deab48615a4cbc26073173081c0774faf75778b044d251e45d238f7')
          
 build() {
     # copy triangle library
@@ -47,9 +55,20 @@ build() {
     patch -Np1 --ignore-whitespace -i ../netcdff.patch
     patch -Np1 --ignore-whitespace -i ../paths.patch
     patch -Np1 --ignore-whitespace -i ../ncl-libs.patch
+    patch -Np1 --ignore-whitespace -i ../ncl-gdal.patch
+    patch -Np1 --ignore-whitespace -i ../ncl-proj8.patch
+    patch -Np1 --ignore-whitespace -i ../ncl-format.patch
+    patch -Np1 --ignore-whitespace -i ../ncl-boz.patch
     
     # Spurrious exec permissions
     find -name '*.[fh]' -exec chmod -x {} +
+    
+    #Fixup LINUX config (to expose vsnprintf prototype)
+    sed -i -e '/StdDefines/s/-DSYSV/-D_ISOC99_SOURCE/' config/LINUX
+    
+    rm -rf external/blas external/lapack
+    sed -ri -e 's,-lblas_ncl,-lblas,' \
+        -e 's,-llapack_ncl,-llapack,' config/Project
 
     # configure
     #./Configure -ncar || return 1
@@ -68,8 +87,8 @@ build() {
     ./config/ymkmf
 
     # build
-    make Build CCOPTIONS="-O2 -std=c99 -fPIC -fno-strict-aliasing -fopenmp -lnetcdf" F77="gfortran" F77_LD="gfortran"\
-        CTOFLIBS="-lgfortran" FCOPTIONS="-fPIC -fno-second-underscore -fno-range-check -fopenmp" # >> log 2>&1 
+    make Build CCOPTIONS="-O2 -std=c99 -fPIC -fno-strict-aliasing -fopenmp -lnetcdf -fcommon -DH5_USE_110_API" F77="gfortran" F77_LD="gfortran"\
+        CTOFLIBS="-lgfortran" FCOPTIONS="-fPIC -fno-second-underscore -fno-range-check -fopenmp -fallow-argument-mismatch -fcommon -DH5_USE_110_API" >> log 2>&1 
 }
 
 package() {
