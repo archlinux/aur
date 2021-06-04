@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=neovim-lspconfig-git
-pkgver=r1054.6a25eb0
+pkgver=r1062.62c0424
 pkgrel=1
 pkgdesc="Quickstart configurations for the Neovim LSP client"
 arch=('any')
@@ -12,6 +12,7 @@ depends=('neovim-git')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+install="$pkgname.install"
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
