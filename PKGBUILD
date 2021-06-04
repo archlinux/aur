@@ -1,91 +1,106 @@
-# Maintainer: Petit Pierre <petit.pierre@outlook.com>
+# Maintainer: AlphaJack <alphajack at tuta dot io>
+# Contributor: Petit Pierre <petit.pierre@outlook.com>
 # Contributor: Bidossessi Sodonon
 
-pkgname=odoo
-pkgver=13.0
-_pkgsubver=20200321
-pkgrel=4
+pkgname="odoo"
+pkgver=14.0
+_pkgsubver=20210604
+pkgrel=1
 pkgdesc="Web-based Open Source Business Apps"
-url=https://www.odoo.com/
-arch=('any')
-license=('GPL3')
-conflicts=('openerp')
-replaces=('openerp')
-makedepends=('python-setuptools')
-depends=(
-  'wkhtmltopdf-static'
-  'python'
-  'python-babel'
-  'python-chardet'
-  'python-decorator'
-  'python-docutils'
-  'python-ebaysdk'
-  'python-feedparser'
-  'python-gevent'
-  'python-greenlet'
-  'python-html2text'
-  'python-jinja'
-  'sassc'
-  'python-lxml'
-  'python-mako'
-  'python-markupsafe'
-  'python-mock'
-  'python-num2words'
-  'python-ofxparse'
-  'python-passlib'
-  'python-pillow'
-  'python-polib'
-  'python-psutil'
-  'python-psycopg2'
-  'python-pydot'
-  'python-ldap'
-  'python-pyparsing'
-  'python-pypdf2'
-  'python-pyserial'
-  'python-dateutil'
-  'python-pytz'
-  'python-pyusb'
-  'python-qrcode'
-  'python-reportlab'
-  'python-requests'
-  'python-zeep'
-  'python-vatnumber'
-  'python-vobject'
-  'python-werkzeug'
-  'python-xlsxwriter'
-  'python-xlwt'
-  'python-xlrd'
-  
-)
+url="https://www.odoo.com/"
+arch=("any")
+license=("GPL3")
+conflicts=("openerp")
+replaces=("openerp")
+makedepends=("python-setuptools" "python-wheel")
+depends=("postgresql"
+        #"sassc" # not needed
+        "wkhtmltopdf-static"
+        "python-babel"
+        "python-chardet"
+        "python-decorator"
+        "python-docutils"
+        #"python-ebaysdk" # aur checksum is wrong at 2021-06-04
+        "python-feedparser"
+        # "python-freezegun" # used for testing
+        "python-gevent"
+        "python-greenlet"
+        "python-html2text"
+        "python-idna"
+        "python-jinja"
+        "python-libsass"
+        "python-lxml"
+        "python-mako"
+        "python-markupsafe"
+        "python-mock"
+        "python-num2words"
+        "python-ofxparse"
+        "python-passlib"
+        "python-pillow"
+        "python-polib"
+        "python-psutil"
+        "python-psycopg2"
+        "python-pydot"
+        "python-ldap"
+        #"python-pyparsing" # not needed
+        "python-pypdf2"
+        "python-pyserial"
+        "python-dateutil"
+        "python-pyopenssl"
+        "python-pytz"
+        "python-pyusb"
+        "python-qrcode"
+        "python-reportlab"
+        "python-requests"
+        "python-stdnum"
+        #"python-vatnumber" # not needed
+        "python-vobject"
+        "python-werkzeug"
+        "python-xlsxwriter"
+        "python-xlwt"
+        "python-xlrd"
+        "python-zeep"
+        )
+source=("https://nightly.odoo.com/$pkgver/nightly/src/${pkgname}_$pkgver.$_pkgsubver.tar.gz"
+        "odoo.conf"
+        "odoo.logrotate"
+        "odoo.service"
+        "odoo.sysusers"
+        "odoo.tmpfiles")
+sha256sums=("62d529ee4f919a18682be962609a5ec76c1e69201edc3db295d8ed3bf0a42fb2"
+            "33d3331e47ab31705e2122ee9cebf791bf2a23169767960fd949ff26e3fb420e"
+            "0cfb2d663be2c23491be71ded73284a6a81460e44e5e1f3c37cfcdd73ee51c01"
+            "949cfeb604af5425860cffa197b7464b9d87ab3999424d890b2210511823264f"
+            "b06fcf6f6fc0cd7e3dbc7699bbd31138b39a0a1d1f8d06984ff2605a5eeb3257"
+            "b6bae94d1a5e51c6cae42987124dd1528626a6f87331c1777c104394c34a95cb")
+backup=("etc/odoo/odoo.conf")
+install="odoo.install"
+options=("!strip")
 
-source=("https://nightly.odoo.com/${pkgver}/nightly/src/${pkgname}_${pkgver}.${_pkgsubver}.tar.gz"
-        odoo.conf
-        odoo.confd
-        odoo.service
-        odoo.sysusers)
-md5sums=('59de4b28f920bfdcf9a6a9eb0502379f'
-         '863418f31f0fb982cde0008fa63f35f0'
-         '742fa9ad94a92ac2aa910197a26af4e8'
-         '5bddcc6edbdefdd07cae945165c63604'
-         '720b7b8c3df3142dfd0383acd1c9e9b4')
-
-backup=('etc/odoo/odoo.conf')
-install=odoo.install
-
-build() {
-  cd ${srcdir}/${pkgname}-${pkgver}.post${_pkgsubver}
-  python setup.py build
+prepare(){
+ # posixemulation has been removed in werkzeug 2.0
+ sed -i "$pkgname-$pkgver.post$_pkgsubver/$pkgname/tools/_vendor/sessions.py" \
+     -e "s/from werkzeug.posixemulation import rename/#from werkzeug.posixemulation import rename/" \
+     -e "s/rename(tmp, fn)/os.rename(tmp, fn)/"
 }
 
-package()
-{
-  cd ${srcdir}/${pkgname}-${pkgver}.post${_pkgsubver}
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+build(){
+ cd "$pkgname-$pkgver.post$_pkgsubver"
+ python setup.py build >/dev/null
+}
 
-  mkdir -p ${pkgdir}/etc/{conf.d,odoo}
-  mkdir -p ${pkgdir}/usr/lib/systemd/system
-  install -Dm 644 ${srcdir}/odoo.conf ${pkgdir}/etc/odoo/odoo.conf
-  install -Dm 644 ${srcdir}/odoo.confd ${pkgdir}/etc/conf.d/odoo
-  install -Dm 644 ${srcdir}/odoo.service ${pkgdir}/usr/lib/systemd/system/odoo.service
-  install -Dm 644 ${srcdir}/odoo.sysusers ${pkgdir}/usr/lib/sysusers.d/odoo.conf
+package(){
+ cd "$pkgname-$pkgver.post$_pkgsubver"
+ python setup.py install --root="$pkgdir" --optimize=1 --skip-build >/dev/null
+
+ install -d -m 750 "$pkgdir/etc/odoo"
+ install -d -m 700 "$pkgdir/var/lib/odoo"
+ install -d "$pkgdir/etc/logrotate.d"
+ install -d "$pkgdir/usr/lib/systemd/system"
+
+ install -D -m 640 "$srcdir/odoo.conf" "$pkgdir/etc/odoo/odoo.conf"
+ install -D -m 644 "$srcdir/odoo.logrotate" "$pkgdir/etc/logrotate.d/odoo"
+ install -D -m 644 "$srcdir/odoo.service" "$pkgdir/usr/lib/systemd/system/odoo.service"
+ install -D -m 644 "$srcdir/odoo.sysusers" "$pkgdir/usr/lib/sysusers.d/odoo.conf"
+ install -D -m 644 "$srcdir/odoo.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/odoo.conf"
 }

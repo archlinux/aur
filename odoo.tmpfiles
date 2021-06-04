@@ -1,0 +1,4 @@
+d /etc/odoo 0750 root odoo
+f /etc/odoo/odoo.conf 0640 root odoo
+d /var/lib/odoo 0700 odoo odoo
+Z /var/lib/odoo - odoo odoo
