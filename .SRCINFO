@@ -1,7 +1,7 @@
 pkgbase = outliner
 	pkgdesc = CLI tool for Auto setup and deploy Outline VPN
 	pkgver = 0.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Jyny/outliner
 	arch = x86_64
 	license = MIT
@@ -11,4 +11,3 @@ pkgbase = outliner
 	sha256sums = 1ffc4f2be4f183fa0094eb622c19f4b4838dcced071a2cfbce0869e2bee253f3
 
 pkgname = outliner
-

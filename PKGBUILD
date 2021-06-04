@@ -1,8 +1,8 @@
-# Maintainer jyny chen <simon54894@gmail.com>
+# Maintainer Jerry Y. Chen <jynych3n@gmail.com>
 
 pkgname=outliner
 pkgver=0.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI tool for Auto setup and deploy Outline VPN"
 url="https://github.com/Jyny/outliner"
 license=('MIT')
