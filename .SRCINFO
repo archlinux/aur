@@ -1,0 +1,14 @@
+pkgbase = supercollider-headers-git
+	pkgdesc = SuperCollider headers used for building plugins
+	pkgver = r24987.f622b66b51
+	pkgrel = 1
+	url = https://github.com/supercollider/supercollider
+	arch = any
+	groups = pro-audio
+	license = GPL
+	depends = git
+	source = supercollider-headers::git+https://github.com/supercollider/supercollider.git
+	md5sums = SKIP
+
+pkgname = supercollider-headers-git
+
