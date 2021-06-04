@@ -1,4 +1,4 @@
-# Maintainer: Franck STAUFFER <franck.stauffer@monaco.mc>
+# Maintainer: Qontinuum <qontinuum.dev@protonmail.ch>
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Fernando Carmona Varo <ferkiwi @t gmail dot com>
 # Contributor: BenObiWan <benobiwan @t gmail dot com>
