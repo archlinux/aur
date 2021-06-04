@@ -3,7 +3,7 @@
 pkgname=python-equation
 _pkgname=Equation
 pkgver=1.2.01
-pkgrel=1
+pkgrel=2
 pkgdesc="General Equation Parser and Evaluator"
 arch=('any')
 url="https://github.com/glenfletcher/Equation"
@@ -13,9 +13,11 @@ makedepends=(python-setuptools)
 optdepends=("python-numpy: Vector Maths"
             "python-scipy: SciConst")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
-        "LICENCE.html::https://web.archive.org/web/20150913004722/http://www.alphaomega-technology.com.au/license/AOT-OL/1.0")
+        # retrieved from https://web.archive.org/web/20150913004722/http://www.alphaomega-technology.com.au/license/AOT-OL/1.0
+        # and cleaned up a bit
+        "LICENCE.html")
 sha256sums=('c8a21dc47d6c748fd19b6485978cf8c42fe31c43db7f44789d95fb5e9752b81c'
-            '8a9706fc32b39254aacefa09194d35255b36fd141675fe03cccee030194ed229')
+            '9549c8a9a3cb2fb71af32bd1d0500a033d96423faf3c28905ae9902831eab6b5')
 
 check() {
   cd "${_pkgname}-${pkgver}"
