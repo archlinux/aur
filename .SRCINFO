@@ -1,0 +1,19 @@
+pkgbase = supercollider-vbugens-git
+	pkgdesc = Volker Böhm's UGen collection
+	pkgver = r34.96794ed
+	pkgrel = 1
+	url = https://github.com/v7b1/vb_UGens
+	arch = any
+	groups = pro-audio
+	groups = supercollider-plugins
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = supercollider
+	source = supercollider-vbugens-git-r34.96794ed::git+https://github.com/v7b1/vb_UGens.git
+	source = supercollider-source::git+https://github.com/supercollider/supercollider.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = supercollider-vbugens-git
+
