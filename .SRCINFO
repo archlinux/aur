@@ -1,13 +1,14 @@
 pkgbase = gnome-shell-xrdesktop-git
 	pkgdesc = Next generation desktop shell - with patches for xrdesktop.
-	pkgver = 3.38.4
+	pkgver = 40.1
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.freedesktop.org/xrdesktop
 	install = gnome-shell.install
 	arch = x86_64
 	groups = gnome
-	license = GPL2
+	license = GPL
+	checkdepends = xorg-server-xvfb
 	makedepends = gtk-doc
 	makedepends = gnome-control-center
 	makedepends = evolution-data-server
@@ -23,6 +24,7 @@ pkgbase = gnome-shell-xrdesktop-git
 	depends = gnome-bluetooth
 	depends = upower
 	depends = gnome-session
+	depends = gtk4
 	depends = gnome-settings-daemon
 	depends = gnome-themes-extra
 	depends = gsettings-desktop-schemas
@@ -41,9 +43,9 @@ pkgbase = gnome-shell-xrdesktop-git
 	depends = libinputsynth-git
 	optdepends = gnome-control-center: System settings
 	optdepends = evolution-data-server: Evolution calendar integration
-	provides = gnome-shell=3.38.4
+	provides = gnome-shell=40.1
 	conflicts = gnome-shell
-	source = gnome-shell::git+https://gitlab.freedesktop.org/xrdesktop/gnome-shell.git#branch=3.38.4-xrdesktop
+	source = git+https://gitlab.freedesktop.org/xrdesktop/gnome-shell.git#branch=40.1-xrdesktop
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -55,6 +57,7 @@ pkgname = gnome-shell-xrdesktop-git
 	depends = gnome-bluetooth
 	depends = upower
 	depends = gnome-session
+	depends = gtk4
 	depends = gnome-settings-daemon
 	depends = gnome-themes-extra
 	depends = gsettings-desktop-schemas
@@ -71,5 +74,4 @@ pkgname = gnome-shell-xrdesktop-git
 	depends = gst-plugin-pipewire
 	depends = xrdesktop-git
 	depends = libinputsynth-git
-	depends = libmutter-7.so
-
+	depends = libmutter-8.so
