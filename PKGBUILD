@@ -12,7 +12,7 @@ makedepends=('unzip')
 source=("https://media.djangoproject.com/docs/django-docs-${pkgver}-en.zip")
 noextract=("django-docs-${pkgver}-en.zip")
 # We check sha256 but we will see if it does change even if pkgver doesnt
-sha256sums=('64fb3531c13e96419681e93884187ac25f2989564deee1872c9b2303d02487eb')
+sha256sums=('cb4aa75eacbea181e8ff505a8c253077f28dd89795d20e0e7bf3b9d665cb49a0')
 
 prepare() {
   unzip -oq "django-docs-${pkgver}-en.zip" -d "$srcdir/html"
