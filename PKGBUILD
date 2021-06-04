@@ -1,7 +1,7 @@
 # Maintainer: Julian Daube <joposter at gmail dot com>
 # Contributor: Julian Daube <joposter at gmail dot com>
 pkgname=kikit-git
-pkgdesc="KiKit is a Python library and CLI tool to automate several tasks in a standard KiCAD"
+pkgdesc="Automation for KiCAD boards"
 pkgver=r196.be2b3fc
 pkgrel=1
 
@@ -10,6 +10,7 @@ url="https://github.com/yaqwsx/KiKit.git"
 arch=("any")
 provides=("kikit")
 license=("MIT")
+conflicts=("python-kikit")
 
 source=("$pkgname::git+https://github.com/yaqwsx/KiKit.git")
 md5sums=("SKIP")
@@ -24,8 +25,9 @@ depends=(
 	"python-commentjson"
 	"python-matplotlib"
 	"python-pybars3"
-	"python-wxpython"
 )
+optdepends=("python-wxpython: for plugin hideReferences")
+
 
 pkgver() {
 	cd "$pkgname"
