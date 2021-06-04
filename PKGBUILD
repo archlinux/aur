@@ -3,7 +3,7 @@
 
 pkgname=envoyproxy
 pkgver=1.18.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
 arch=('i686' 'x86_64')
 url='https://envoyproxy.io'
@@ -12,6 +12,7 @@ makedepends=(
     'cmake'
     'clang'
     'git'
+    'lld'
     'go'
     'java-environment-openjdk'
     'ninja'
