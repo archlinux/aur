@@ -1,7 +1,7 @@
 pkgbase = blendercam-git
 	pkgdesc = An open source solution for artistic CAM
-	pkgver = r644.fd61ffe
-	pkgrel = 2
+	pkgver = r850.ad130df
+	pkgrel = 1
 	url = http://blendercam.blogspot.com/
 	install = blendercam-git.install
 	arch = any
@@ -14,4 +14,3 @@ pkgbase = blendercam-git
 	md5sums = SKIP
 
 pkgname = blendercam-git
-
