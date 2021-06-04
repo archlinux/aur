@@ -9,7 +9,7 @@
 
 pkgname=firefox-appmenu-bin
 _pkgname=firefox
-pkgver=88.0.1
+pkgver=89.0
 _pkgrel=1
 pkgrel=${_pkgrel}
 pkgdesc="Firefox-appmenu, binary version"
@@ -17,7 +17,7 @@ arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://aur.archlinux.org/packages/firefox-appmenu/"
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
-         ffmpeg nss ttf-font libpulse)
+         ffmpeg nss ttf-font libpulse libdbusmenu-gtk3)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -30,7 +30,7 @@ source=(https://github.com/nikatar/AUR/raw/master/firefox-appmenu-bin/firefox-ap
 noextract=(firefox-appmenu-${pkgver}-${_pkgrel}-x86_64.pkg.tar.xz)
 validpgpkeys=(85F86E317555BECC1C2184BF2C45BA09ABC5D7DA)
 sha256sums=(
-	'4d4edefc53c3e648c42a67923cff6e876b048012534f5a83f3cbc1f5c53d04c5'
+	'ea9dc1187af9ea09b5aa88c04c8e4ad7c9e51087eac82f432391ded7f9c6a8f5'
 	'SKIP'
 )
 
