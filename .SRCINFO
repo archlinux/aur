@@ -6,7 +6,6 @@ pkgbase = supercollider-headers-git
 	arch = any
 	groups = pro-audio
 	license = GPL
-	depends = git
 	source = supercollider-headers::git+https://github.com/supercollider/supercollider.git
 	md5sums = SKIP
 
