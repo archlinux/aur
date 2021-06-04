@@ -1,0 +1,20 @@
+pkgbase = supercollider-bytebeat-git
+	pkgdesc = A bytebeat interpreter
+	pkgver = r25.f4e25f8
+	pkgrel = 1
+	url = https://github.com/midouest/bytebeat
+	arch = any
+	groups = pro-audio
+	groups = supercollider-plugins
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = catch2
+	depends = supercollider
+	source = supercollider-bytebeat-git-r25.f4e25f8::git+https://github.com/midouest/bytebeat.git
+	source = supercollider-source::git+https://github.com/supercollider/supercollider.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = supercollider-bytebeat-git
+
