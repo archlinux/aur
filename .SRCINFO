@@ -1,0 +1,16 @@
+pkgbase = python-secure-cookie-git
+	pkgdesc = Secure cookies and sessions for WSGI
+	pkgver = 0.1.0.r88.gc959082
+	pkgrel = 1
+	url = https://github.com/pallets/secure-cookie
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-secure-cookie
+	source = git+https://github.com/pallets/secure-cookie
+	sha256sums = SKIP
+
+pkgname = python-secure-cookie-git
+
