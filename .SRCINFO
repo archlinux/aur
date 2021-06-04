@@ -1,0 +1,26 @@
+pkgbase = cx-chains
+	pkgdesc = Execute CX programs on blockchain. https://github.com/skycoin/cx-chains
+	pkgver = 0.22.0
+	pkgrel = 1
+	url = https://github.com/skycoin/cx-chains
+	arch = x86_64
+	arch = aarch64
+	arch = armv8
+	arch = armv7
+	arch = armv7l
+	arch = armv7h
+	arch = armv6h
+	arch = armhf
+	arch = armel
+	arch = arm
+	makedepends = git
+	makedepends = go
+	makedepends = musl
+	makedepends = kernel-headers-musl
+	source = git+https://github.com/skycoin/cx-chains.git
+	source = git+https://github.com/skycoin/cx-tracker.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = cx-chains
+
