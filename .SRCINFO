@@ -1,6 +1,6 @@
 pkgbase = o
 	pkgdesc = Text editor
-	pkgver = 2.37.3
+	pkgver = 2.38.0
 	pkgrel = 1
 	url = https://github.com/xyproto/o
 	arch = x86_64
@@ -26,13 +26,14 @@ pkgbase = o
 	optdepends = ocaml: for compiling and formatting OCaml
 	optdepends = odin: for compiling Odin
 	optdepends = pandoc: for exporting Markdown to PDF
+	optdepends = prettier: for formatting JavaScript, TypeScript and CSS
 	optdepends = rustup: for compiling and formatting Rust
 	optdepends = scala: for compiling Scala
 	optdepends = scdoc: for writing man pages
 	optdepends = tidy: for formatting HTML
 	optdepends = v: for compiling and formatting V
 	optdepends = zig: for compiling and formatting Zig
-	source = git+https://github.com/xyproto/o#commit=eb68ec135b9ae3c0b2e371107ab23aa85b2051c0
+	source = git+https://github.com/xyproto/o#commit=c7626a70e9bce34d7824de77a481c0f171a80e42
 	b2sums = SKIP
 
 pkgname = o
