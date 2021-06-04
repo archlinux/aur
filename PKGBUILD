@@ -1,4 +1,4 @@
-# Maintainer: Franck STAUFFER <franck.stauffer@monaco.mc>
+# Maintainer: Qontinuum <qontinuum.dev@protonmail.ch>
 # Contributor: Julien Nicoulaud <julien DOT nicoulaud AT gmail DOT com>
 
 pkgname="python-pystray"
