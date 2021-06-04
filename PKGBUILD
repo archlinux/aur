@@ -2,7 +2,7 @@
 pkgname=earbuds
 _gitname=LiveBudsCli
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Control your galaxy buds live via cli"
 url="https://github.com/JojiiOfficial/LiveBudsCli"
 license=("GPL3")
@@ -26,7 +26,7 @@ package() {
     ./target/release/${pkgname} --generate=zsh > _${pkgname}
     install -Dm 644 _earbuds "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
 
-    ./target/release/${pkgname} --generate=bash > ${pkgname}.fish
+    ./target/release/${pkgname} --generate=fish > ${pkgname}.fish
     install -Dm 644 ${pkgname}.fish "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
 }
 
