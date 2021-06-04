@@ -2,7 +2,7 @@
 
 _pkgname='sfeed_curses'
 pkgname="${_pkgname/_/-}"
-pkgver=0.9.11
+pkgver=0.9.12
 pkgrel=1
 pkgdesc='Curses UI front-end for sfeed RSS and Atom parser'
 arch=('any')
@@ -12,14 +12,15 @@ license=('ISC')
 depends=('ncurses')
 optdepends=('sfeed: RSS and Atom parser')
 source=("${_url_source}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('17885597096c4a1f2146ba2a0b7a439c1deeb814092c4f721e6570506b32a382')
+sha256sums=('d08a481c6a4f74cac3e16bda6c5373fe4ce068afa11a09d75b727e07b739d581')
 
 build() {
   make -C "${_pkgname}-${pkgver}"
 }
 
 package() {
-  make DESTDIR="${pkgdir}" PREFIX='/usr' MANPREFIX='/usr/share/man' -C "${_pkgname}-${pkgver}" install
+  # Theming support: SFEED_THEME can be set to mono_highlight, newsboat, templeos
+  make DESTDIR="${pkgdir}" PREFIX='/usr' MANPREFIX='/usr/share/man' SFEED_THEME=mono -C "${_pkgname}-${pkgver}" install
   install -Dvm644 "${_pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
 
