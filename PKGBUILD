@@ -2,7 +2,7 @@
 
 pkgname=fawkes-bin
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Image cloaking tool for personal privacy"
 arch=('x86_64')
 url="https://sandlab.cs.uchicago.edu/fawkes/"
@@ -19,6 +19,6 @@ sha256sums_x86_64=('ff74e9fa671b0d3e0fe2a749d2aed9a5cb86298a2546915b5a199669fc5e
 package() {
   cd "$srcdir"
 
-  install -Dm755 "protection" -t "$pkgdir/usr/bin"
+  install -Dm755 "protection" "$pkgdir/usr/bin/fawkes"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/fawkes"
 }
