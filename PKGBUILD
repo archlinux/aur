@@ -1,13 +1,11 @@
 # Maintainer: Det <nimetonmaili g-mail>
 
 pkgname=jdk-devel-docs
-#_major=11
-#_build=28
-#pkgver=${_major}b${_build}
-pkgver=11.0.1
 _major=${pkgver/.*}
-_build=13
-_hash=90cf5d8f270a4347a95050320eef3fb7
+_build=9
+_hash=ab2da78f32ed489abb3ff52fd0a02b1c
+#pkgver=${_major}b${_build}
+pkgver=11.0.11
 pkgrel=1
 pkgdesc="Documentation for Oracle Java $_major Development Kit Snapshot"
 arch=('any')
@@ -15,11 +13,9 @@ url="http://jdk.java.net/$_major/"
 license=('custom:Oracle')
 depends=("java-environment>=$_major")
 options=('!strip')
-#source=("https://download.java.net/java/early_access/jdk${_major}/${_build}/BCL/jdk-${_major}+${_build}_doc-all.zip"
-source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_hash}/jdk-${pkgver}_doc-all.zip"
+source=("https://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_hash}/jdk-${pkgver}_doc-all.zip"
         'LICENSE-Early-Adopter-Development-Agreement.txt')
-#sha256sums=('f33f2d8220d5a82e3343a412e7c761276c33d9ed7e2effa03f8ee8ae7bf0456c'
-sha256sums=('6255d96128898b8dd3c65d84d9732e47d633879aff4345a5dd8d41bfffdd2199'
+sha256sums=('ab72172df368ca1a1b6cabad94601fb12f829722f43a12f2fac062888195a61a'
             '36d48f14c16f0dcc98a8ce2301fd2a111701e6f59a7da08b0e51fdb3e2f9ca89')
 
 package() {
@@ -30,3 +26,7 @@ package() {
   # License
   install -Dm644 LICENSE-Early-Adopter-Development-Agreement.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
+
+
+#Current link:
+#https://download.oracle.com/otn-pub/java/jdk/11.0.11+9/ab2da78f32ed489abb3ff52fd0a02b1c/jdk-11.0.11_doc-all.zip
