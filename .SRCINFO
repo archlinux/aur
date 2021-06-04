@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-hmat-oss
 	pkgdesc = A hierarchical matrix C/C++ library (mingw-w64)
-	pkgver = 1.6.1
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/jeromerobert/hmat-oss
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = mingw-w64-hmat-oss
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = https://github.com/jeromerobert/hmat-oss/archive/1.6.1.tar.gz
-	sha256sums = 1517be8bde1c06bd8bc42d95926c72d787af95fc3d37439c911a7cea3243d2ca
+	source = https://github.com/jeromerobert/hmat-oss/archive/1.7.0.tar.gz
+	sha256sums = 137c221aa964afe880d0b06f6d9359561463a2a2a3f688075bbaf34847cddf99
 
 pkgname = mingw-w64-hmat-oss
-
