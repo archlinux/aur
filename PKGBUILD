@@ -3,7 +3,7 @@
 
 pkgname=timing71
 pkgver=2021.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for the Timing71 live timing aggregation service."
 arch=('x86_64')
 url="https://www.timing71.org"
@@ -28,5 +28,5 @@ package() {
     install -D "wrapper.sh" "$pkgdir"/usr/lib/"$pkgname/$pkgname"
 
     mkdir -p "$pkgdir"/usr/bin
-    ln -s "$pkgdir"/usr/lib/"$pkgname/$pkgname" "$pkgdir"/usr/bin/"$pkgname"
+    ln -s /usr/lib/"$pkgname/$pkgname" "$pkgdir"/usr/bin/"$pkgname"
 }

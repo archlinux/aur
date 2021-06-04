@@ -1,7 +1,7 @@
 pkgbase = timing71
 	pkgdesc = Desktop client for the Timing71 live timing aggregation service.
 	pkgver = 2021.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.timing71.org
 	arch = x86_64
 	license = custom
