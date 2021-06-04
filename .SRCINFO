@@ -1,9 +1,14 @@
 pkgbase = zlib-ng
 	pkgdesc = zlib replacement with optimizations for "next generation" systems
 	pkgver = 2.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zlib-ng/zlib-ng
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = zlib
 	makedepends = cmake
 	depends = glibc

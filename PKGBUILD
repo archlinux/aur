@@ -2,12 +2,12 @@
 
 pkgname=zlib-ng
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="zlib replacement with optimizations for \"next generation\" systems"
-arch=("any")
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/zlib-ng/zlib-ng"
-license=("zlib")
-depends=( "glibc" )
+license=('zlib')
+depends=( 'glibc' )
 makedepends=('cmake')
 provides=('zlib=1.2.11' 'zlib-ng')
 conflicts=('zlib' 'zlib-ng' 'zlib-ng-git')
