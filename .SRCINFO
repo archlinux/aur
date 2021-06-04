@@ -8,8 +8,10 @@ pkgbase = blendercam-git
 	license = GPL2
 	depends = blender
 	depends = python
+	depends = python-equation
 	depends = python-shapely
 	depends = python-numpy
+	depends = vtk
 	source = git+https://github.com/vilemnovak/blendercam.git
 	md5sums = SKIP
 
