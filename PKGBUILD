@@ -3,7 +3,7 @@
 
 _pkgname=vtr-verilog-to-routing
 pkgname=vtr-git
-pkgver=8.0.0.r3658.g448b8e124
+pkgver=8.0.0.r3718.g265904830
 pkgrel=1
 pkgdesc='Open Source CAD Flow for FPGA Research'
 arch=(x86_64)
@@ -13,11 +13,8 @@ makedepends=('git' 'cmake')
 depends=('gcc-libs')
 provides=("${pkgname%%-git}=$pkgver")
 conflicts=("${pkgname%%-git}")
-source=('git+https://github.com/verilog-to-routing/vtr-verilog-to-routing'
-        '0001-aligned_allocator-add-operator.patch'
-)
-sha256sums=('SKIP'
-            '6d360513c8b10738c77dfe8a91421ba47f5fcdfba9d083ef42caf0802215fdb9')
+source=('git+https://github.com/verilog-to-routing/vtr-verilog-to-routing')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$_pkgname"
@@ -28,7 +25,6 @@ pkgver() {
 prepare() {
 	cd "$_pkgname"
 
-	patch -p1 < "$srcdir/0001-aligned_allocator-add-operator.patch"
 }
 
 build() {
