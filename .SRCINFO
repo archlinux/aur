@@ -1,7 +1,7 @@
 pkgbase = passwordmanager-qt6
 	pkgdesc = A simple password store using AES-256-CBC encryption via OpenSSL
-	pkgver = 4.1.6
-	pkgrel = 2
+	pkgver = 4.1.7
+	pkgrel = 1
 	url = https://github.com/Martchus/passwordmanager
 	arch = i686
 	arch = x86_64
@@ -22,8 +22,7 @@ pkgbase = passwordmanager-qt6
 	depends = libxkbcommon-x11
 	depends = desktop-file-utils
 	depends = xdg-utils
-	source = passwordmanager-4.1.6.tar.gz::https://github.com/Martchus/passwordmanager/archive/v4.1.6.tar.gz
+	source = passwordmanager-4.1.7.tar.gz::https://github.com/Martchus/passwordmanager/archive/v4.1.7.tar.gz
 	sha256sums = 2498867bb85e267202cd8d0e665f9675456072882d43c5aba22219474ccfa008
 
 pkgname = passwordmanager-qt6
-
