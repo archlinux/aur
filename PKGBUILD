@@ -2,8 +2,8 @@
 _python=python
 _distname=docx
 pkgname=$_python-$_distname
-pkgver=0.8.10
-pkgrel=2
+pkgver=0.8.11
+pkgrel=1
 pkgdesc="A Python library for creating and updating Microsoft Word (.docx) files"
 arch=(any)
 url="https://github.com/python-openxml/python-docx"
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://github.com/python-openxml/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('cf6af380f2cc049264e13ae35e8ffa4e')
+md5sums=('c528ad6052ee635143d15f9c063e28ad')
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
