@@ -3,7 +3,7 @@
 validpgpkeys=('33ED753E14757D79FA17E57DC4C1F715B2B66B95')
 
 pkgname=verible
-pkgver=0.0r1261.ge2d7e72
+pkgver=0.0r1274.g25c3f76
 pkgrel=1
 pkgdesc="SystemVerilog(Verilog) Parser, Style-Linter, and Formatter from Google"
 arch=('x86_64')
@@ -13,14 +13,14 @@ depends=('bash')
 makedepends=('bazel' 'git')
 provides=('verible')
 conflicts=('verible-git')
-_gittag="v0.0-1261-ge2d7e72"
+_gittag="v0.0-1274-g25c3f76"
 source=("verible::git+https://github.com/google/verible.git#tag=${_gittag}")
 sha512sums=('SKIP')
 
 pkgver() {
 
   cd "${srcdir:?}/${pkgname}" || (
-    echo -e "\E[1m\E[31mCan't cd to ${srcdir}/${pkgname} build directory! PkgVer Failed! \E[0m"
+    echo -e "\E[1;31mCan't cd to ${srcdir}/${pkgname} build directory! PkgVer Failed! \E[0m"
     exit 1
   )
 
@@ -31,7 +31,7 @@ pkgver() {
 build() {
 
   cd "${srcdir:?}/${pkgname}" || (
-    echo -e "\E[1m\E[31mCan't change working directory to ${srcdir}/${pkgname}! Build Failed!\E[0m"
+    echo -e "\E[1;31mCan't change working directory to ${srcdir}/${pkgname}! Build Failed!\E[0m"
     exit 1
   )
 
@@ -42,7 +42,7 @@ build() {
 check() {
 
   cd "${srcdir:?}/${pkgname}" || (
-    echo -e "\E[1m\E[31mCan't change working directory to ${srcdir}/${pkgname}! Check Failed!\E[0m"
+    echo -e "\E[1;31mCan't change working directory to ${srcdir}/${pkgname}! Check Failed!\E[0m"
     exit 1
   )
 
@@ -53,7 +53,7 @@ check() {
 package() {
 
   cd "${srcdir:?}/${pkgname}" || (
-    echo -e "\E[1m\E[31mCan't change working directory to ${srcdir}/${pkgname}! Package Failed!\E[0m"
+    echo -e "\E[1;31mCan't change working directory to ${srcdir}/${pkgname}! Package Failed!\E[0m"
     exit 1
   )
 
