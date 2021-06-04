@@ -3,7 +3,7 @@
 pkgname=alpm_octopi_utils-dev
 pkgver=1.0.2
 _pkgrealbase=alpm_octopi_utils
-_commit=2bb9349507f8155155c9b5f12b1f30e60e157d30
+_commit=1e735c3a27803ca5b6470e946f9cac708143dfd9
 pkgrel=6
 pkgdesc="Alpm utils for Octopi"
 url="https://tintaescura.com/projects/octopi/"
