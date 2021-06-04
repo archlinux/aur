@@ -10,7 +10,7 @@ pkgname='dashcore-git'
 _gitname='dash'
 _gitbranch='master'
 pkgver=0.17.0.2.r0.g79a1b1aa47
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/dashpay/dash"
 depends=('qt5-base' 'boost' 'boost-libs' 'miniupnpc' 'protobuf' 'db4.8' 'zeromq' 'libevent' 'qrencode' 'libbacktrace-git')
@@ -20,10 +20,10 @@ pkgdesc="Dash Core (DASH, Dashpay, formerly Darkcoin) is an open source, privacy
 provides=('dash-daemon' 'dash-qt' 'dash-cli')
 conflicts=('dashcore' 'dashcore-bin' 'dash-cli' 'dash-qt' 'dash-daemon')
 source=('deque.patch'
-        'qpainterpath.patch::https://github.com/bitcoin/bitcoin/commit/79b0a69e09c1a912122e6431ea3c530cc292c690.patch'
+        'qpainterpath.patch'
         "git://github.com/dashpay/dash.git")
 sha512sums=('87c8fbe782a66222fd1121d61bde967d89e6ddda2f1a4dfc7f17eabfce1502ce172af13f52d94d752464ee125fa69d9b423f495baa52bde1fe02e4762aa889d5'
-            '1eda9a1d5616a0602f85b0d04838657fe5fa75746a2da7a4614124e6081eeb1997e845d61a7d7a9a52a9d5ef9215617205924811cfef32132bf7fce9c3c603fb'
+            '6c3df861832926e72dfd820af42bb89c1c3bb556c3f8e2fd06544f76bf5369c992a556e717653e230e062e89b8f2ee4f5d02313f35672f8174deae48c3306a0d'
             'SKIP')
 
 prepare () {
