@@ -10,7 +10,7 @@
 
 _pkgname=hyper
 pkgname=${_pkgname}-git
-pkgver=3.1.0.canary.4.r783.gbb5635cb
+pkgver=3.1.0.canary.5.r0.gfc29ce58
 pkgrel=1
 pkgdesc="A terminal built on web technologies"
 arch=('any')
@@ -27,18 +27,17 @@ source=(
     "Hyper.desktop"
 )
 sha256sums=('SKIP'
-         '980f7405ca85e4e540a15a0c2325fb2b5a8290f0baedf1c934816898ae11f463'
+         '65c52023f95c3ab3acf3f54bfce217f3c87b3e21da1965afbb9bcab5888b932c'
          'a928049af63f49dd270a26c7099dccbe038124e4195507919f2d062e5cd2ecaa'
          'ae29bd930c822c3144817a0e2fe2e2a8253fde90d31b0e19ad7880cd35609ebf')
 
 pkgver() {
     cd "${pkgname}"
-    git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
     cd "$pkgname"
-    git tag -d v3.1.0-canary.3
     patch -p1 < ../disable-auto-update.diff
 
     # yarn is a build-dep according to the README

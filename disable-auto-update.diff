@@ -1,10 +1,10 @@
 diff --git a/app/ui/window.ts b/app/ui/window.ts
-index 9cb35b9..9c0e8ee 100644
+index 2f00146..253f54a 100644
 --- a/app/ui/window.ts
 +++ b/app/ui/window.ts
-@@ -102,12 +102,6 @@ export function newWindow(
+@@ -110,12 +110,6 @@ export function newWindow(
      (app.windowCallback || fn)(window);
-     delete app.windowCallback;
+     app.windowCallback = undefined;
      fetchNotifications(window);
 -    // auto updates
 -    if (!isDev) {
