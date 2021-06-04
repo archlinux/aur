@@ -9,7 +9,7 @@ pkgbase = ttf-agave
 	makedepends = fontconfig
 	makedepends = xorg-mkfontscale
 	provides = ttf-font
-	source = https://github.com/agarick/agave/releases/download/v37/Agave-Regular.ttf
+	source = ttf-agave-37.ttf::https://github.com/agarick/agave/releases/download/v37/Agave-Regular.ttf
 	md5sums = 037aed0f8470eb82ab3c63ba04b2ba2a
 
 pkgname = ttf-agave

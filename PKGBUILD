@@ -8,7 +8,7 @@ provides=('ttf-font')
 makedepends=('fontconfig' 'xorg-mkfontscale')
 arch=('any')
 source=(
-  "https://github.com/agarick/agave/releases/download/v$pkgver/Agave-Regular.ttf"
+  "$pkgname-$pkgver.ttf::https://github.com/agarick/agave/releases/download/v$pkgver/Agave-Regular.ttf"
 )
 md5sums=('037aed0f8470eb82ab3c63ba04b2ba2a')
 
@@ -16,5 +16,5 @@ install=$pkgname.install
 
 package() {
   install -dm755 "${pkgdir}"/usr/share/fonts/TTF 
-  install -Dm644 "${srcdir}"/Agave-Regular.ttf "${pkgdir}"/usr/share/fonts/TTF/agave-r.ttf
+  install -Dm644 "${srcdir}"/$pkgname-$pkgver.ttf "${pkgdir}"/usr/share/fonts/TTF/agave-r.ttf
 }
