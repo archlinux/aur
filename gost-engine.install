@@ -7,8 +7,8 @@ post_install() {
   openssl_conf=/etc/ssl/openssl.cnf
   if [ ! -f ${openssl_conf} ]; then
     echo "OpenSSL Configuration file ${openssl_conf} not exist!"
-    echo -e "Please manually edit yours OpenSSL configuration file and add strings \E[1m\E[33mopenssl_conf=openssl_gost # Set GOST Configuration\E[0m" \
-      "to the beginning and to the end \E[1m\E[33m.include \$dir/gost.cnf # Include GOST Configuration file\E[0m of the file!"
+    echo -e "Please manually edit yours OpenSSL configuration file and add strings \E[1;33mopenssl_conf=openssl_gost # Set GOST Configuration\E[0m" \
+      "to the beginning and to the end \E[1;33m.include \$dir/gost.cnf # Include GOST Configuration file\E[0m of the file!"
     echo "Sample configuration file gost.cnf you are can get from /etc/ssl folder!"
     exit 0
   fi
@@ -45,8 +45,8 @@ post_install() {
       fi
     else
       if ! grep -iq "openssl_conf=openssl_gost" ${openssl_conf}; then
-        echo -e "\E[1m\E[33mopenssl_conf\E[0m already defined in ${openssl_conf} file!"
-        echo -e "Please check ${openssl_conf} file and add string \E[1m\E[33mopenssl_conf=openssl_gost # Set GOST Configuration\E[0m" \
+        echo -e "\E[1;33mopenssl_conf\E[0m already defined in ${openssl_conf} file!"
+        echo -e "Please check ${openssl_conf} file and add string \E[1;33mopenssl_conf=openssl_gost # Set GOST Configuration\E[0m" \
           "to the beginning of the ${openssl_conf} file!"
         exit 0
       fi
@@ -56,13 +56,13 @@ post_install() {
   if ! grep -iq "\.include\s*\$dir/gost\.cnf" ${openssl_conf} ||
     ! grep -iq "openssl_conf=openssl_gost" ${openssl_conf}; then
     echo 'OpenSSL GOST Configuration failed!'
-    echo -e "Please check ${openssl_conf} file and add string \E[1m\E[33mopenssl_conf=openssl_gost # Set GOST Configuration\E[0m" \
-      "to the beginning and to the end \E[1m\E[33m.include \$dir/gost.cnf # Include GOST Configuration file\E[0m of the file!"
+    echo -e "Please check ${openssl_conf} file and add string \E[1;33mopenssl_conf=openssl_gost # Set GOST Configuration\E[0m" \
+      "to the beginning and to the end \E[1;33m.include \$dir/gost.cnf # Include GOST Configuration file\E[0m of the file!"
     exit 0
   fi
 
   if openssl engine | grep -iq "gost"; then
-    echo -e "\E[1m\E[33mGost Engine successfully installed and OpenSSL automatic configured! All works fine!\E[0m"
+    echo -e "\E[1;33mGost Engine successfully installed and OpenSSL automatic configured! All works fine!\E[0m"
   fi
 
 }
@@ -73,8 +73,8 @@ post_remove() {
   openssl_conf=/etc/ssl/openssl.cnf
   if [ ! -f ${openssl_conf} ]; then
     echo "OpenSSL Configuration file ${openssl_conf} not exist!"
-    echo -e "Please edit yours OpenSSL Configuration file and remove strings \E[1m\E[33mopenssl_conf=openssl_gost # Set GOST Configuration\E[0m" \
-      "in the beginning and in the end \E[1m\E[33m.include \$dir/gost.cnf # Include GOST Configuration file\E[0m of the file!"
+    echo -e "Please edit yours OpenSSL Configuration file and remove strings \E[1;33mopenssl_conf=openssl_gost # Set GOST Configuration\E[0m" \
+      "in the beginning and in the end \E[1;33m.include \$dir/gost.cnf # Include GOST Configuration file\E[0m of the file!"
     exit 0
   fi
 
@@ -99,10 +99,10 @@ post_remove() {
       sed -i ":a;N;\$!ba;s/\n\?\(\#\s*Include\s*GOST\s*Configuration\s*file\s*\)\?\.include\s*\$dir\/gost\.cnf\s*\(\#\s*\(Include\)\?\s*GOST\s*\(Configuration\)\?\s*\(file\)\?\)\?//IM" ${openssl_conf}
     fi
     if ! grep -iq "\.include\s*\$dir/gost\.cnf" ${openssl_conf}; then
-      echo -e "Remove include GOST Configuration file gost.cnf from ${openssl_conf} file - \E[1m\E[32mSUCCESS\E[0m"
+      echo -e "Remove include GOST Configuration file gost.cnf from ${openssl_conf} file - \E[1;32mSUCCESS\E[0m"
     else
-      echo -e "Remove include GOST Configuration file gost.cnf from ${openssl_conf} file - \E[1m\E[31mFAILED\E[0m" \
-      "\nPlease manually remove string \E[1m\E[33m.include \$dir/gost.cnf # Include GOST Configuration file\E[0m from the OpenSSL Configuration file!"
+      echo -e "Remove include GOST Configuration file gost.cnf from ${openssl_conf} file - \E[1;31mFAILED\E[0m" \
+      "\nPlease manually remove string \E[1;33m.include \$dir/gost.cnf # Include GOST Configuration file\E[0m from the OpenSSL Configuration file!"
     fi
 
     # Remove GOST Configuration from OpenSSL Configuration file
@@ -111,10 +111,10 @@ post_remove() {
     fi
 
     if ! grep -iq "openssl_conf=openssl_gost" ${openssl_conf}; then
-      echo -e "Remove GOST Configuration from OpenSSL Configuration ${openssl_conf} file - \E[1m\E[32mSUCCESS\E[0m"
+      echo -e "Remove GOST Configuration from OpenSSL Configuration ${openssl_conf} file - \E[1;32mSUCCESS\E[0m"
     else
-      echo -e "Remove GOST Configuration from ${openssl_conf} file - \E[1m\E[31mFAILED\E[0m" \
-      "\nPlease manually remove string \E[1m\E[33mopenssl_conf=openssl_gost # Set GOST Configuration\E[0m from the OpenSSL Configuration file!"
+      echo -e "Remove GOST Configuration from ${openssl_conf} file - \E[1;31mFAILED\E[0m" \
+      "\nPlease manually remove string \E[1;33mopenssl_conf=openssl_gost # Set GOST Configuration\E[0m from the OpenSSL Configuration file!"
     fi
 
   fi
