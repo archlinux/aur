@@ -2,13 +2,13 @@
 
 pkgname="python-benchit"
 _pkgname="benchit"
-pkgver="0.0.5"
+pkgver="0.0.6"
 pkgrel=1
 pkgdesc="Benchmarking tools for Python"
 arch=("any")
 url="https://github.com/droyed/${_pkgname}"
 source=("https://github.com/droyed/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=("d8f6ad119b1c106b24957e440ddd87e1f8bdb2a09d817d6b4eca2bfc962c618a")
+sha256sums=("9a3a32a424b7390ff74664d9debbb713459b4cc9abcc475f7ecbe677c87a3f6c")
 license=("MIT")
 depends=("python"
 	 "python-pandas"
