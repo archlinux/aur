@@ -1,7 +1,7 @@
 # Maintainer: TheRepoClub <TheRepoClub@github.com>
 # Contributor: TheRepoClub <TheRepoClub@github.com>
 pkgname=instawm-schemas
-pkgver=2021.04.17
+pkgver=2021.06.04
 pkgrel=1
 pkgdesc="addons for instawm"
 url="https://github.com/The-Repo-Club/$pkgname"
@@ -12,7 +12,7 @@ provides=("instawm-schemas=$pkgver")
 depends=('glib2' 'dconf')
 makedepends=('gobject-introspection' 'git' 'meson')
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('db7295fb59468433d7cac445a678fdc1759baf67c92557fe8be2fa908bfd9f37')
+sha256sums=('SKIP')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
