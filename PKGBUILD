@@ -14,8 +14,8 @@
 
 _pkgname=mpd
 pkgname=${_pkgname}-git
-pkgver=0.22.6.r447.ga7ba10423
-pkgrel=2
+pkgver=0.22.8.r437.g36680607d
+pkgrel=1
 pkgdesc='Flexible, powerful, server-side application for playing music (from git)'
 url='https://www.musicpd.org/'
 license=('GPL2')
@@ -25,7 +25,7 @@ depends=('bzip2' 'chromaprint' 'expat' 'gcc-libs' 'glibc' 'lame' 'libcdio'
          'libmpcdec' 'libnfs' 'libshout' 'libsidplayfp' 'libsoxr' 'openal' 'opus'
          'pipewire' 'smbclient' 'sqlite' 'wavpack' 'wildmidi' 'yajl' 'zlib' 'zziplib')
 makedepends=('alsa-lib' 'audiofile' 'avahi' 'boost' 'curl' 'dbus' 'faad2'
-             'ffmpeg' 'flac' 'fluidsynth' 'git' 'icu' 'jack' 'libao' 'libid3tag' 'libmikmod'
+             'ffmpeg' 'flac' 'fluidsynth' 'fmt' 'git' 'icu' 'jack' 'libao' 'libid3tag' 'libmikmod'
              'libmpdclient' 'libogg' 'libpulse' 'libsamplerate' 'libsndfile' 'libupnp'
              'liburing' 'libvorbis' 'meson' 'mpg123' 'python-sphinx' 'systemd-libs'
              'twolame')
@@ -77,6 +77,7 @@ build() {
         -D sndio=disabled \
         -D shine=disabled \
         -D tremor=disabled \
+        -D openmpt=disabled \
         build
   ninja -C build
 }
