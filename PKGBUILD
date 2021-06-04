@@ -2,7 +2,7 @@
 
 pkgbase=libjxl-git
 pkgname=('libjxl-git' 'libjxl-doc-git')
-pkgver=0.3.7.r68.gdfc730a
+pkgver=0.3.7.r72.g82c14cd
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
@@ -10,7 +10,8 @@ url='https://jpeg.org/jpegxl/'
 license=('BSD')
 makedepends=('git' 'cmake' 'clang' 'brotli' 'gdk-pixbuf2' 'giflib' 'gimp'
              'libjpeg-turbo' 'libpng' 'openexr' 'zlib' 'libgl' 'freeglut'
-             'gtest' 'gmock' 'python' 'asciidoc' 'doxygen' 'graphviz')
+             'gtest' 'gmock' 'python' 'asciidoc' 'doxygen' 'graphviz'
+             'java-environment')
 source=('git+https://github.com/libjxl/libjxl.git'
         'git+https://github.com/google/brotli.git'
         'git+https://github.com/lvandeve/lodepng.git'
@@ -84,21 +85,24 @@ package_libjxl-git() {
                 'libjpeg-turbo: for CLI tools'
                 'libpng: for CLI tools'
                 'openexr: for CLI tools')
-    provides=('libjxl' 'libjpeg-xl-git' 'libjxl.so')
+    provides=('libjxl' 'libjpeg-xl-git' 'libjxl.so' 'libjxl_jni.so' 'libjxl_threads.so')
     conflicts=('libjxl' 'libjpeg-xl-git')
     replaces=('libjpeg-xl-git')
     
     make -C build DESTDIR="$pkgdir" install
-    rm -rf "${pkgdir}/usr"/{include/{contrib,hwy},lib/{pkgconfig/,}libhwy*}
+    install -D -m755 build/tools/libjxl_jni.so -t "${pkgdir}/usr/lib"
+    install -D -m644 libjxl/{LICENSE,PATENTS} -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    rm -r "${pkgdir}/usr"/{include/{contrib,hwy},lib/{pkgconfig/,}libhwy*}
 }
 
 package_libjxl-doc-git() {
-    pkgdesc="$(sed 's/\((git\)/(documentation) \1/' <<< "$pkgdesc")"
+    pkgdesc="$(sed 's/(\(git\)/(documentation; \1/' <<< "$pkgdesc")"
     arch=('any')
     provides=('libjxl-doc' 'libjpeg-xl-doc-git')
     conflicts=('libjxl-doc' 'libjpeg-xl-doc-git')
     replaces=('libjpeg-xl-doc-git')
     
-    mkdir -p "${pkgdir}/usr/share/doc"
+    install -d -m755 "${pkgdir}/usr/share/doc"
+    install -D -m644 libjxl/{LICENSE,PATENTS} -t "${pkgdir}/usr/share/licenses/${pkgname}"
     cp -dr --no-preserve='ownership' build/html "${pkgdir}/usr/share/doc/libjxl"
 }
