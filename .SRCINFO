@@ -1,0 +1,22 @@
+pkgbase = lightning-terminal-bin
+	pkgdesc = Lightning Terminal (LiT) is a browser-based interface for managing channel liquidity.
+	pkgver = 0.4.1_alpha
+	pkgrel = 1
+	url = https://github.com/lightninglabs/lightning-terminal
+	arch = any
+	license = MIT
+	optdepends = frcli
+	optdepends = lncli
+	optdepends = lnd
+	optdepends = loop
+	optdepends = pool
+	provides = lightning-terminald
+	source = lightning-terminal-linux-amd64-v0.4.1-alpha.tar.gz::https://github.com/lightninglabs/lightning-terminal/releases/download/v0.4.1-alpha/lightning-terminal-linux-amd64-v0.4.1-alpha.tar.gz
+	source = manifest-v0.4.1-alpha.txt.sig::https://github.com/lightninglabs/lightning-terminal/releases/download/v0.4.1-alpha/manifest-guggero-v0.4.1-alpha.sig
+	source = manifest-v0.4.1-alpha.txt::https://github.com/lightninglabs/lightning-terminal/releases/download/v0.4.1-alpha/manifest-v0.4.1-alpha.txt
+	validpgpkeys = F4FC70F07310028424EFC20A8E4256593F177720
+	sha256sums = 10bd92cd0b2b5a0c0698b763085ded71fa2bb1106545a9ded86ee7f88a1db68e
+	sha256sums = SKIP
+	sha256sums = ee7dc2317a8c807cf5e9ba49a3104c0a1c968e4130f594ef3eac6275629019fc
+
+pkgname = lightning-terminal-bin
