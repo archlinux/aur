@@ -1,6 +1,6 @@
 # Maintainer: spsf64 <at g m a i l  dot com>
 pkgname=webapp-manager
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Run websites as if they were apps"
 arch=('x86_64')
@@ -9,16 +9,15 @@ license=('GPL')
 depends=('python-beautifulsoup4' 'python-configobj' 'python-gobject' 'python-pillow'
          'python-setproctitle' 'python-tldextract' 'dconf' 'xapp')
 makedepends=('git')
-provides=("${pkgname}")
-conflicts=("${pkgname}-git" 'ice-ssb' 'ice-dev')
-
-
-sha256sums=('2ee8c38b5fe8d0d9a9a9bd60eceb9eea802b873e0cbff9a38dce48c12af5a67b')
-
-source=("https://github.com/linuxmint/$pkgname/archive/$pkgver.zip")
+conflicts=('ice-ssb' 'ice-dev')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('07458737b98ac3058ad0ad72345586811b3dff868b5607f8153f8a8baa754f47')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
+
+	# Fix typo
+	sed -i 's/range(4)/range(5)/g' "usr/lib/${pkgname%-git}/common.py"
 
 	# Fix browser names
 	sed -i 's/brave-browser/brave/g' \
@@ -39,7 +38,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	make
+	make buildmo
 }
 
 package() {
