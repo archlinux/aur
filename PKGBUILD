@@ -1,5 +1,5 @@
 # Maintainer: Hydral <nathan.dacunha.nd@gmail.com>
-# Co-maintainer: Franck STAUFFER <franck.stauffer@monaco.mc>
+# Co-maintainer: Qontinuum <qontinuum.dev@protonmail.ch>
 
 _jobId=1187465154 
 pkgname=solarus-bin
