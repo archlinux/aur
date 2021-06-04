@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=SIGNUS
+Comment=turn-based strategy war game
+Exec=signus
+Icon=signus
+Terminal=false
+StartupNotify=false
+Categories=Game;
