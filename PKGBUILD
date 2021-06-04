@@ -1,13 +1,14 @@
-# Maintainer: Wilson E. Alvarez <wilson.e.alvarez1@gmail.com>
+# Contributor: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Wilson E. Alvarez <wilson.e.alvarez1@gmail.com>
 # Contributor: Etzos <supercodingmonkey @ gmail.com>
-# Contributer: Gordin <9ordin @t gmail dot com>
+# Contributor: Gordin <9ordin @t gmail dot com>
 # Contributor: Geequlim <geequlim@gmail.com>
 # Contributor: Antti Juhani Oja <antti.oja@gmail.com>
 
 
 pkgname=physicseditor
-pkgver=1.8.2
-pkgrel=2
+pkgver=1.8.6
+pkgrel=1
 pkgdesc="Physics editor for certain game engines such as Cocos2D-X, Corona SDK, etc."
 arch=('x86_64')
 url="http://www.codeandweb.com/$pkgname"
@@ -17,7 +18,7 @@ depends=('shared-mime-info' 'hicolor-icon-theme' 'desktop-file-utils' 'grantlee'
 		 'gcc-libs-multilib' 'qt5-svg' 'qt5-declarative' 'qt5-imageformats'
 		 'qt5-quickcontrols')
 source=("https://www.codeandweb.com/download/$pkgname/${pkgver}/PhysicsEditor-${pkgver}-ubuntu64.deb")
-sha256sums=("dc4685855c7cd12bf9a17d3f1c00ca50c0239afb4404998e7c251cc145590f86")
+sha256sums=("902b46b6ba5eadd495485eb09feb66a595d3855253f666cb01c569bc704c59d8")
 
 build() {
     ar -x "PhysicsEditor-${pkgver}-ubuntu64.deb"
