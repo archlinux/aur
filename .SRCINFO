@@ -12,3 +12,4 @@ pkgbase = alpm_octopi_utils-dev
 	sha256sums = SKIP
 
 pkgname = alpm_octopi_utils-dev
+
