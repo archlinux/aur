@@ -3,7 +3,7 @@ _pkgname=loop
 pkgname=${_pkgname}-bin
 pkgver=0.14.0_beta
 _pkgver="${pkgver//_/-}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightning Loop is a non-custodial service offered by Lightning Labs that makes it easy to move bitcoin into and out of the Lightning Network."
 arch=('any')
 _arch=linux-amd64
@@ -27,7 +27,7 @@ sha256sums=('c05803d8c2b78b1719f69191d3b4bf294f1b97045734f97236cce5a652e3fefd'
 # To import their keys run
 curl https://keybase.io/guggero/pgp_keys.asc | gpg --import
 curl https://keybase.io/roasbeef/pgp_keys.asc | gpg --import
-curl https://keys.openpgp.org/vks/v1/by-fingerprint/DE23E73BFA8A0AD5587D2FCDE80D2F3F311FD87E | gpg --import # alexbosworth
+curl https://keybase.io/alexbosworth/pgp_keys.asc | gpg --import
 # But of course don't trust this rando AUR comment - verify yourself that the keybase accounts really belong to the developers.
 validpgpkeys=(
     'F4FC70F07310028424EFC20A8E4256593F177720'
