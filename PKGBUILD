@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=mingw-w64-openimageio
-pkgver=2.2.14.0
+pkgver=2.2.15.1
 pkgrel=1
 pkgdesc="A library for reading and writing images, including classes, utilities, and applications (mingw-w64)"
 url="http://www.openimageio.org/"
@@ -26,18 +26,18 @@ depends=(
 	"mingw-w64-libraw"
 	"mingw-w64-libheif"
 )
-makedepends=("mingw-w64-cmake" "mingw-w64-robin-map")
+makedepends=('mingw-w64-cmake' 'mingw-w64-robin-map' 'mingw-w64-wine')
 #checkdepends=('mingw-w64-wine' 'python')
 arch=("any")
 options=(!strip !buildflags staticlibs)
 optdepends=()
-sha256sums=(
-	'e41b4b6958d318250caa1d1f167863a915a99062273583bb96457101d54e89cd'
-	'9afbed7e3f989dba04a8bb784af24dda26b362f13d4b5933c56bed68289ee352'
-)
 source=(
 	"https://github.com/OpenImageIO/oiio/archive/Release-${pkgver}.tar.gz"
 	"mingw-dependency-fix.patch"
+)
+sha256sums=(
+	'f222c6b51a40aabbc80ddf4055535be9af1ffa907452fa6d1ffa7674854aab17'
+	'9afbed7e3f989dba04a8bb784af24dda26b362f13d4b5933c56bed68289ee352'
 )
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
