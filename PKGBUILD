@@ -89,7 +89,7 @@ source=(
   "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=c07e44df5b54011594a65027f658473a11afe1e1"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=0d9c01cd2c5e3e9d65c3c3869f69c296e87b804a"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -100,7 +100,7 @@ b2sums=('c2d0c2239c5b440cc93e1e0e312511497eccf9e5cef61707c7f42fa924f66defdd42755
         '18d9f071699c9e9bb4c7d340f4d688554b818a4f7fdcefeee24b8b39fc9328737c6967cfd7e884b518e0c87cfb64ac7a10368ac82436d73f96f0881b5c201099'
         '77a1646ffbc67ed88af564b73cf63f0374772bdc1075e771a93ee4fe257b94cb3766a4842898b48f4343458d0b507229182220c7daeb5532df610b964c6640e7'
         '72194a32a06c43809d1272bd675890b6d27c6c54353150a366e8e2c50ad6eca6ee23c5d6281822965a228cfedfa07a60fe135d1b4f539e4a62728d4460cc0b0e'
-        '897874d0e64acc96cab26c36ca7b15a616497bd17ea3d6cd9ae91f4b11879716eec34c2604f573c21eabad2b6b664248118681bd8321c8ccb7a64bb82e1eca36')
+        '220e3cc920d1b199d4195a120249e240f05478f706337c88b32f2e61cc202b8de1c73a9820baaee9015d4e2c7ad97f416e758a5cd9f416c8d020f86be538922e')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
