@@ -1,4 +1,4 @@
-# Maintainer: Franck STAUFFER <franck.stauffer@monaco.mc>
+# Maintainer: Qontinuum <qontinuum.dev@protonmail.ch>
 # Contributor: Ricardo Madriz <richin13@gmail.com>
 # Contributor: Aoibhinn di Tori <email@aoibh.in>
 # Contributor: Lara Maia <lara@craft.net.br>
