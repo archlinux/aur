@@ -3,7 +3,7 @@
 
 pkgname=zotero-beta
 _pkgname=zotero-beta
-pkgver=5.0.97beta.28%2B1daf4b041
+pkgver=5.0.97beta.29%2fd46157f
 pkgrel=1
 pkgdesc="Zotero is a free, easy-to-use tool to help you collect, organize, cite, and share research."
 arch=('x86_64')
@@ -38,7 +38,7 @@ depends=(
 	'nss'
 )
 source=("https://www.zotero.org/download/standalone/dl?platform=linux-x86_64&channel=beta" "zotero.desktop")
-sha256sums=('1a87da5dea778731e84c1dfb03a01b6ee8f65870dd7c3231b19960080d8940d2'
+sha256sums=('8dc563b284dcfc1b0bc1b31559ade24217f2f199193f7427310b55760e0a6588'
             '17d1a0892d7a516e4f9d732de21ee595d9168d7554ca34b11cdd255795b22eaa')
 
 package() {
