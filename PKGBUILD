@@ -4,7 +4,7 @@ pkgver=2.10.3
 _pkgver=2.10
 pkgrel=1
 pkgdesc="HBCI banking plugin for jameica."
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'aarch64')
 url="https://www.willuhn.de/projects/hibiscus/"
 license=("GPL2")
 depends=('java-runtime>=1.5' 'jameica>=2.8')

@@ -6,6 +6,7 @@ pkgbase = hibiscus
 	install = hibiscus.install
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = GPL2
 	makedepends = unzip
 	depends = java-runtime>=1.5
