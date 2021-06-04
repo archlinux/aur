@@ -1,13 +1,13 @@
 # Maintainer: Morteza NourelahiAlamdari <m@0t1.me>
 
 pkgname="pingtop"
-pkgver="0.3.0"
+pkgver="0.4.0"
 pkgrel=1
 pkgdesc="Ping multiple servers and show results in a top-like terminal UI."
 arch=("any")
 url="https://pypi.org/project/pingtop/"
 source=("https://github.com/laixintao/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("4658059e8252cf897f5803cc9717bb5df5e4800f30ebf59c055e3373dae79b98")
+sha256sums=("5bc1923d3fc9b53d56681a45ff403550bb893b68508c63760f8636f3e32387cf")
 license=("MIT")
 depends=("python" "python-click" "python-panwid")
 makedepends=("python-setuptools")
