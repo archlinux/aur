@@ -7,7 +7,7 @@
 pkgname=lib32-boost-libs
 pkgver=1.75.0
 _boostver=${pkgver//./_}
-pkgrel=1
+pkgrel=2
 url='http://www.boost.org'
 arch=('x86_64')
 pkgdesc='Free peer-reviewed portable C++ source libraries - runtime libraries (32-bit)'
@@ -109,9 +109,6 @@ package() {
   # boost package splits those between the `boost` and `boost-libs` packages.
   install -dm755 "${pkgdir}"/usr/lib32
   cp -a "${_stagedir}"/lib/* "${pkgdir}"/usr/lib32
-
-  # These are already included in the regular `boost` package
-  rm -r "${pkgdir}"/usr/lib32/cmake
 
   # This would be needed if built with Python support
   # # https://github.com/boostorg/python/issues/203#issuecomment-391477685
