@@ -2,7 +2,7 @@
 
 pkgbase='pokete-git'
 pkgname='pokete-git'
-pkgver=0.2.alpha.r135.g379e007
+pkgver=0.3.0.r19.g89b7b4b
 pkgrel=1
 pkgdesc="A small terminal based game in the style of a very popular and old game from gamefreak."
 arch=(any)
@@ -23,6 +23,7 @@ package() {
   cd "${srcdir}/$pkgbase"
   install -dm755 "$pkgdir/usr/share/pokete"
   install -dm755 "$pkgdir/usr/bin/"
+  install -Dm644 ./assets/pokete.desktop "$pkgdir/usr/share/applications/pokete.desktop"
   cp -r ./* "$pkgdir/usr/share/pokete"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/pokete/LICENSE"
   ln -s "$pkgdir/usr/share/pokete/pokete.py" "$pkgdir/usr/bin/"
