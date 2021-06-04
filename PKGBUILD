@@ -1,17 +1,18 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Luis Aranguren <pizzaman@hotmail.com> 
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=eclair
-pkgver=0.4.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A Scala implementation of the Lightning Network (GUI)'
 arch=('any')
 url='https://github.com/ACINQ/eclair'
 license=('Apache')
-depends=('java-environment=8' 'java-openjfx')
+depends=('java-environment=11')
 makedepends=('maven' 'unzip')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('530f091e2d7cefff39c84d1606c5c0b390a35b08ba87eab50b854f3ef1484009')
+sha256sums=('40969d09268c37febf80830ec31812c40d3f4eb8cd707be7181f220f7ad5b2a0')
 
 build() {
   cd "${pkgname}-${pkgver}"
