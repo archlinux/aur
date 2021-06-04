@@ -2,7 +2,7 @@
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=adwaita-qt-git
-pkgver=1.2.0.r13.g7ca96d9
+pkgver=1.3.0.r3.g1a089c8
 pkgrel=1
 pkgdesc='A style to bend Qt applications to look like they belong into GNOME Shell (Qt5).'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('qt5-base')
 makedepends=('cmake' 'git' 'qt5-x11extras')
 optdepends=('qgnomeplatform: apply GNOME settings to Qt apps')
 conflicts=('adwaita-qt-common' "${pkgname%-git}" 'adwaita-qt5')
-provides=('adwaita-qt-common' "${pkgname%-git}=1.2.0" 'adwaita-qt5')
+provides=('adwaita-qt-common' "${pkgname%-git}" 'adwaita-qt5')
 source=("${pkgname%-git}::git+${url}.git")
 sha512sums=('SKIP')
 
