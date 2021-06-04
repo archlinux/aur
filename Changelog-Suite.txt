@@ -1,5 +1,15 @@
 Changelog for AirVPN Suite
 
+Version 1.1.0 - 4 June 2021
+
+- [ProMIND] vpnclient.hpp: restoreNetworkSettings() now returns a warning in case backup files are not found
+- [ProMIND] vpnclient.hpp: restoreNetworkSettings() improved restoring management with more cases/scenarios
+- [ProMIND] updated all dependencies and libraries
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
 Version 1.1.0 RC 4 - 14 May 2021
 
 - [ProMIND] optionparser.cpp: added proper message errors in case of invalid argument and allocation
