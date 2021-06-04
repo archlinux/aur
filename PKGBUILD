@@ -4,7 +4,7 @@ validpgpkeys=('33ED753E14757D79FA17E57DC4C1F715B2B66B95')
 
 pkgname=llvm12-git
 pkgdesc="LLVM 12 Toolchain with clang, clang-tools-extra, compiler-rt, openmp, polly, lldb, lld"
-pkgver=12.0.1_r48.g328a6ec95532
+pkgver=12.0.1_rc1.ge673593742e7
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -38,26 +38,30 @@ _build_tests=0
 pkgver() {
 
   cd "${srcdir:?}/llvm-project" || (
-    echo -e "\E[1m\E[31mCan't cd to ${srcdir}/llvm-project build directory! PkgVer Failed! \E[0m"
+    echo -e "\E[1;31mCan't cd to ${srcdir}/llvm-project build directory! PkgVer Failed! \E[0m"
     exit 1
   )
+
+  _gitdesc=$(git describe --long --tags)
+  if [[ "${_gitdesc}" =~ "rc" ]]; then
+    _gitdesc=$(echo "${_gitdesc}" | cut -f3,5 -d- | tr '-' '.')
+  else
+    _gitdesc="r$(echo "${_gitdesc}" | cut -f3-4 -d- | tr '-' '.')" 
+  fi
 
   echo "$(
     sed -nE "/LLVM_VERSION_MAJOR/{:a;N;/LLVM_VERSION_SUFFIX/Ta};0,/LLVM_VERSION_MAJOR/D;p" \
       llvm/CMakeLists.txt |
       grep -oP "\d+" |
       xargs | tr ' ' '.'
-  )_r$(
-    git describe --long --tags |
-      cut -f3-4 -d- | tr '-' '.'
-  )"
+  )_${_gitdesc}"
 
 }
 
 prepare() {
 
   cd "${srcdir:?}/llvm-project" || (
-    echo -e "\E[1m\E[31mCan't cd to ${srcdir}/llvm-project build directory! Prepare Failed! \E[0m"
+    echo -e "\E[1;31mCan't cd to ${srcdir}/llvm-project build directory! Prepare Failed! \E[0m"
     exit 1
   )
 
@@ -70,13 +74,13 @@ prepare() {
 build() {
 
   cd "${srcdir:?}/llvm-project" || (
-    echo -e "\E[1m\E[31mCan't cd to ${srcdir}/llvm-project build directory! Build Failed! \E[0m"
+    echo -e "\E[1;31mCan't cd to ${srcdir}/llvm-project build directory! Build Failed! \E[0m"
     exit 1
   )
 
   local yn=0
   while true; do
-    echo -ne "\n\E[1m\E[33mBuild with clang and llvm toolchain? [Y/n] \E[0m"
+    echo -ne "\n\E[1;33mBuild with clang and llvm toolchain? [Y/n] \E[0m"
     read -r yn
     case ${yn} in
     [Yy]|"")
@@ -97,7 +101,7 @@ build() {
         export DEBUG_CFLAGS="-g"
         export DEBUG_CXXFLAGS="${DEBUG_CFLAGS}"
       else
-        echo -e "\E[1m\E[31mClang not found. Will use default system compiler! \E[0m"
+        echo -e "\E[1;31mClang not found. Will use default system compiler! \E[0m"
       fi
 
       if ld.lld --version 2>/dev/null | grep -iq "LLD\s*[0-9]" ; then
@@ -109,13 +113,13 @@ build() {
       break
       ;;
     [Nn]) break ;;
-    *) echo -e "\E[1m\E[31mPlease answer Y or N! \E[0m" ;;
+    *) echo -e "\E[1;31mPlease answer Y or N! \E[0m" ;;
     esac
   done
 
   yn=0
   while true; do
-    echo -ne "\n\E[1m\E[33mSkip build tests? [Y/n] \E[0m"
+    echo -ne "\n\E[1;33mSkip build tests? [Y/n] \E[0m"
     read -r yn
     case ${yn} in
     [Yy]|"")
@@ -128,13 +132,13 @@ build() {
       _extra_build_flags="${_extra_build_flags} -DLLVM_BUILD_TESTS=ON"
       break
       ;;
-    *) echo -e "\E[1m\E[31mPlease answer Y or N! \E[0m" ;;
+    *) echo -e "\E[1;31mPlease answer Y or N! \E[0m" ;;
     esac
   done
 
   yn=0
   while true; do
-    echo -ne "\n\E[1m\E[33mSkip build documentation? [Y/n] \E[0m"
+    echo -ne "\n\E[1;33mSkip build documentation? [Y/n] \E[0m"
     read -r yn
     case ${yn} in
     [Yy]|"")
@@ -148,7 +152,7 @@ build() {
       "-DLLVM_ENABLE_SPHINX=ON -DLLVM_ENABLE_DOXYGEN=OFF -DSPHINX_WARNINGS_AS_ERRORS=OFF"
       break
       ;;
-    *) echo -e "\E[1m\E[31mPlease answer Y or N! \E[0m" ;;
+    *) echo -e "\E[1;31mPlease answer Y or N! \E[0m" ;;
     esac
   done
 
@@ -181,7 +185,7 @@ build() {
 check() {
 
   cd "${srcdir:?}/llvm-project" || (
-    echo -e "\E[1m\E[31mCan't cd to ${srcdir}/llvm-project/build build directory! Check Failed! \E[0m"
+    echo -e "\E[1;31mCan't cd to ${srcdir}/llvm-project/build build directory! Check Failed! \E[0m"
     exit 1
   )
 
@@ -211,7 +215,7 @@ _python3_optimize() {
 package() {
 
   cd "${srcdir:?}/llvm-project" || (
-    echo -e "\E[1m\E[31mCan't cd to ${srcdir}/llvm-project build directory! Package Failed! \E[0m"
+    echo -e "\E[1;31mCan't cd to ${srcdir}/llvm-project build directory! Package Failed! \E[0m"
     exit 1
   )
 
@@ -222,13 +226,13 @@ package() {
   DESTDIR="${pkgdir:?}" ninja -C build "${NINJAFLAGS}" install
   
   pushd llvm/utils/lit || (
-    echo -e "\E[1m\E[31mpushd utils/lit - Package Failed! \E[0m"
+    echo -e "\E[1;31mpushd utils/lit - Package Failed! \E[0m"
     exit 1
   )
 
   python3 setup.py install --root="${pkgdir:?}" -O1
   popd || (
-    echo -e "\E[1m\E[31mpopd - Package Failed!  \E[0m"
+    echo -e "\E[1;31mpopd - Package Failed!  \E[0m"
     exit 1
   )
 
