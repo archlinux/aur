@@ -2,7 +2,7 @@
  
 basename='xrdesktop'
 pkgname="$basename-git"
-pkgver=0.15.0.829.0b0d42f
+pkgver=0.15.1.863.4fbda41
 pkgrel=1
 pkgdesc='A library for XR interaction with classical desktop compositors.'
 arch=('i686' 'x86_64')
