@@ -2,13 +2,13 @@
 
 basename=gnome-shell-extension-xrdesktop
 pkgname=$basename-git
-pkgver=0.14.0.30.8344a06
+pkgver=0.14.0.32.c23f566
 pkgrel=1
 pkgdesc="An extension for toggling xrdesktop mode in GNOME Shell."
 url="https://gitlab.freedesktop.org/xrdesktop/gnome-shell-extension-xrdesktop"
 arch=(any)
 license=(MIT)
-makedepends=(meson git js68)
+makedepends=(meson git js78)
 
 source=('git+https://gitlab.freedesktop.org/xrdesktop/gnome-shell-extension-xrdesktop.git')
 sha256sums=('SKIP')
@@ -31,9 +31,9 @@ build() {
   ninja -C build
 }
 
-check() {
-  meson test -C build
-}
+# check() {
+#   meson test -C build
+# }
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
