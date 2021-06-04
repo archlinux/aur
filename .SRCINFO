@@ -1,7 +1,7 @@
 pkgbase = alpm_octopi_utils-dev
 	pkgdesc = Alpm utils for Octopi
 	pkgver = 1.0.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://tintaescura.com/projects/octopi/
 	arch = i686
 	arch = x86_64
