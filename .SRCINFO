@@ -73,4 +73,3 @@ pkgbase = librewolf-hg
 	sha512sums = SKIP
 
 pkgname = librewolf-hg
-
