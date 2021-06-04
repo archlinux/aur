@@ -1,7 +1,7 @@
 # Maintainer: aulonsal <aulonsal at gmail dot com>
 pkgname=f2-bin
 pkgver=1.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform command-line tool for batch renaming files and directories quickly and safely"
 arch=(x86_64 i686 aarch64)
 url="https://github.com/ayoisaiah/${pkgname%-bin}"
@@ -18,6 +18,6 @@ b2sums_aarch64=('cb4e1e2ce62d42d62ff7378624b5cf1ba43c455914b1a30b5118df181af87ec
 
 package() {
 	install -Dm755 "${pkgname%-bin}" -t "$pkgdir/usr/bin"
-	install -Dm644 LICENCE -t "$pkgdir/usr/share/licenses/${pkgname%-bin}"
-	install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/${pkgname%-bin}"
+	install -Dm644 'LICENCE' -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm644 'README.md' -t "$pkgdir/usr/share/doc/${pkgname%-bin}"
 }
