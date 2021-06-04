@@ -4,7 +4,7 @@ _gitname=wpgtk
 pkgname="${_gitname}-git"
 _gitbranch=master
 _gitauthor=deviantfero # deviantfero
-pkgver=r752.64b4523
+pkgver=r841.70226b4
 pkgrel=1
 pkgdesc="A gui wallpaper chooser that changes your Openbox theme, GTK theme and Tint2 theme"
 url="https://github.com/${_gitauthor}/${_gitname}"
@@ -14,6 +14,7 @@ source=("git://github.com/${_gitauthor}/${_gitname}#branch=${_gitbranch}"
 noextract=('wpgtk.png')
 sha512sums=('SKIP' 'SKIP')
 arch=('any')
+makedepends=('python-setuptools' 'git')
 depends=('python' 'python-pillow' 'python-gobject' 'gtk3' 'libxslt' 'python-pywal')
 optdepends=('feh: set wallpaper'
             'nitrogen: set wallpaper'
@@ -28,9 +29,14 @@ pkgver() {
   )
 }
 
+build() {
+  cd "${srcdir}/${_gitname}"
+  python setup.py build
+}
+
 package() {
   cd "${srcdir}/${_gitname}"
-  python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
+  python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1 --skip-build
   install -Dm644 "$srcdir/$_gitname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "$srcdir/$_gitname/$_gitname/misc/wpg.conf" \
                  "usr/etc/$_gitname/wpg.conf"
