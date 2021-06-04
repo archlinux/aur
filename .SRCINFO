@@ -5,6 +5,7 @@ pkgbase = supercollider-mkplugins
 	url = https://github.com/madskjeldgaard/mkplugins
 	arch = x86_64
 	groups = pro-audio
+	groups = supercollider-plugins
 	license = GPL
 	depends = supercollider
 	source = supercollider-mkplugins-0.2.3.zip::https://github.com/madskjeldgaard/mkplugins/releases/download/v0.2.3/MKPlugins-Linux.zip
