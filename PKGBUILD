@@ -1,4 +1,4 @@
-# Maintainer: Franck STAUFFER <franck.stauffer@monaco.mc>
+# Maintainer: Qontinuum <qontinuum.dev@protonmail.ch>
 # Contributor: Kris McCleary <kris27mc@gmail.com>
 
 pkgname=lib32-libzip
