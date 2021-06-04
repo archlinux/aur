@@ -1,4 +1,4 @@
-# Maintainer: Franck STAUFFER <franck.stauffer@monaco.mc>
+# Maintainer: Qontinuum <qontinuum.dev@protonmail.ch>
 
 pkgname=zelda-alttd-git
 pkgver=r3950.4e3c25a2
