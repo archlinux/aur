@@ -26,10 +26,13 @@ sha256sums_aarch64=("eb7ed49a020f06b54d4561a7d6811fa78b518035449c16a1cfd687cd3b2
 
 if [[ $CARCH == 'x86_64' ]]; then
   _arch=64
+  _parch=x86_64
 elif [[ $CARCH == 'i686' ]]; then
   _arch=32
+  _parch=x86
 elif [[ $CARCH == 'aarch64' ]]; then
   _arch=arm64
+  _parch=arm64
 fi
 
 prepare() {
@@ -39,7 +42,10 @@ prepare() {
 
 build() {
     cd "$srcdir"/cef_binary_${_cefver}_linux${_arch}_minimal
-    cmake .
+
+    #The arm64 CEF set the wrong arch for the project
+    cmake -DPROJECT_ARCH=$_parch .
+
     make libcef_dll_wrapper
 }
 
