@@ -3,7 +3,7 @@ pkgbase=python-sphinx-panels
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A sphinx extension for creating panels in a grid layout"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('python-setuptools')
 checkdepends=('python-sphinx')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('d44fbb7c8ec3659fc34b4276580e769c')
+md5sums=('f2e926a14ad27d66d59fc329339d496e')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
