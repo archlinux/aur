@@ -1,7 +1,7 @@
 pkgbase = pool-bin
 	pkgdesc = Lightning Pool: a non-custodial batched uniform clearing-price auction for Lightning Channel Leases (LCL). An LCL packages up inbound channel liquidity (ability to receive funds) as a fixed income asset with a maturity date expressed in blocks.
 	pkgver = 0.5.0_alpha
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lightninglabs/pool
 	arch = any
 	license = MIT
