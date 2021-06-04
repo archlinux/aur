@@ -1,7 +1,7 @@
 #Maintainer: affe-ali <affe-ali@web.de>
 #Co-Maintainer: Jannik Hauptvogel <jannikhv@gmail.com>
 pkgname=gydl-git
-pkgver=r88.fae39bc
+pkgver=r111.ae2d296
 pkgrel=1
 pkgdesc="Gydl (Graphical Youtube-dl) is a GUI wrapper around the already existing youtube-dl program."
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('python' 'gtk3' 'python-gobject' 'youtube-dl')
 makedepends=('git' 'meson')
 conflicts=('gydl')
-source=("$pkgname"::"git://github.com/JannikHv/gydl.git")
+source=("$pkgname"::"git+https://github.com/JannikHv/gydl.git")
 sha256sums=('SKIP')
 
 pkgver() {

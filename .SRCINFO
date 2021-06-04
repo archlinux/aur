@@ -1,6 +1,6 @@
 pkgbase = gydl-git
 	pkgdesc = Gydl (Graphical Youtube-dl) is a GUI wrapper around the already existing youtube-dl program.
-	pkgver = r88.fae39bc
+	pkgver = r111.ae2d296
 	pkgrel = 1
 	url = https://github.com/JannikHv/gydl
 	arch = any
@@ -12,8 +12,7 @@ pkgbase = gydl-git
 	depends = python-gobject
 	depends = youtube-dl
 	conflicts = gydl
-	source = gydl-git::git://github.com/JannikHv/gydl.git
+	source = gydl-git::git+https://github.com/JannikHv/gydl.git
 	sha256sums = SKIP
 
 pkgname = gydl-git
-
