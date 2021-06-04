@@ -4,14 +4,14 @@ __pkgname=fr
 pkgname=${_pkgname}-bin
 pkgver=0.2.5_alpha
 _pkgver="${pkgver//_/-}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Faraday is a suite of tools built to help node operators and businesses run lnd, the leading implementation of the Lightning Network."
 arch=('any')
 _arch=linux-amd64
 url="https://github.com/lightninglabs/${_pkgname}"
 license=("MIT")
 depends=("lnd")
-provides=("${_pkgname}" "${_pkgname}d")
+provides=("${_pkgname}" "${_pkgname}cli")
 
 developer=carlakirkcohen
 source=(
