@@ -5,6 +5,7 @@ pkgbase = supercollider-steroids-ugens-git
 	url = https://github.com/tai-studio/steroids-ugens
 	arch = any
 	groups = pro-audio
+	groups = supercollider-plugins
 	license = GPL
 	makedepends = git
 	makedepends = cmake
