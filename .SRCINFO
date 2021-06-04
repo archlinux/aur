@@ -1,0 +1,13 @@
+pkgbase = istyle-verilog-formatter-git
+	pkgdesc = Fast and Free Automatic Formatter for Verilog Source Code
+	pkgver = v1.23.r0.g3ec7507
+	pkgrel = 1
+	url = https://github.com/thomasrussellmurphy/istyle-verilog-formatter
+	arch = x86_64
+	makedepends = make
+	provides = istyle-verilog-formatter
+	conflicts = istyle-verilog-formatter
+	source = istyle-verilog-formatter-git::git+https://github.com/thomasrussellmurphy/istyle-verilog-formatter.git
+	md5sums = SKIP
+
+pkgname = istyle-verilog-formatter-git
