@@ -1,0 +1,18 @@
+pkgbase = supercollider-ibufwr-git
+	pkgdesc = An Interpolating Buffer Writer UGen for SuperCollider
+	pkgver = r30.96f9a23
+	pkgrel = 1
+	url = https://github.com/tremblap/IBufWr
+	arch = any
+	groups = pro-audio
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	depends = supercollider
+	source = supercollider-ibufwr-git-r30.96f9a23::git+https://github.com/tremblap/IBufWr.git
+	source = supercollider-source::git+https://github.com/supercollider/supercollider.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = supercollider-ibufwr-git
+
