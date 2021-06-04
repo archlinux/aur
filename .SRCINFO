@@ -1,10 +1,11 @@
 pkgbase = ledger-live-git
 	pkgdesc = Ledger Live - Desktop (development version)
-	pkgver = 2.27.2.r1.g603527a5f
+	pkgver = 2.29.0.r0.g5d17fec61
 	pkgrel = 1
 	url = https://github.com/LedgerHQ/ledger-live-desktop
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = yarn
 	makedepends = python
 	makedepends = nodejs>=12
@@ -18,4 +19,3 @@ pkgbase = ledger-live-git
 	sha512sums = 01bee3b5a90d9a87bb8b1f8edd8fa5851b39db7f9374d0e31114301876fafbc9226b120f114b66a3158a4e98eb514569f34cd0d4f1212062a55d0c8d0e698dda
 
 pkgname = ledger-live-git
-
