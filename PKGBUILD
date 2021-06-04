@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=mingw-w64-openexr
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=2
 pkgdesc="An high dynamic-range image file format library (mingw-w64)"
 url="http://www.openexr.com/"
@@ -13,9 +13,11 @@ checkdepends=('mingw-w64-wine')
 options=('staticlibs' '!buildflags' '!strip')
 source=(
 	"https://github.com/AcademySoftwareFoundation/openexr/archive/v${pkgver}.tar.gz"
+	"keycode.patch"
 )
 sha256sums=(
-	"d3526a3ccdca78a94658d5208e1963e4686181087004edd5bb98290e1fd0f389"
+	'64daae95d406fe3f59ee11ad8586d03fe7df2552b9630eac1a4f9152b8015fb9'
+	'499b6a59993a362fdbed46d8328f7aa2e6b81e153d2844b27ada67e109b63f63'
 )
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -25,7 +27,9 @@ _srcdir="openexr-${pkgver}"
 
 prepare() {
 	cd "${_srcdir}"
-	find . -name "CMakeLists.txt" -print0 | xargs -0 sed -i -r 's/COMMAND \$<TARGET_FILE/COMMAND \${CMAKE_CROSSCOMPILING_EMULATOR} \$<TARGET_FILE/'
+	find . -name 'CMakeLists.txt' -print0 | xargs -0 sed -i -r 's/COMMAND \$<TARGET_FILE/COMMAND \${CMAKE_CROSSCOMPILING_EMULATOR} \$<TARGET_FILE/'
+	cd 'src/lib/OpenEXR'
+	patch -N -i "${srcdir}/keycode.patch"
 }
 
 build() {
