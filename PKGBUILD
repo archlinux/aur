@@ -3,13 +3,15 @@
 
 pkgname=astc-encoder-git
 pkgver=3.0.r0.gd21d551
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for compressing and decompressing images using the ASTC texture compression standard (git version)'
 arch=('x86_64')
 url='https://github.com/ARM-software/astc-encoder/'
 license=('Apache')
 depends=('gcc-libs')
 makedepends=('git' 'cmake' 'python')
+provides=('astc-encoder')
+conflicts=('astc-encoder')
 source=('git+https://github.com/ARM-software/astc-encoder.git#branch=main'
         'git+https://github.com/google/googletest.git'
         '010-astc-encoder-fix-install.patch')
