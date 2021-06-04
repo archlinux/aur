@@ -1,33 +1,50 @@
-# Maintainer: Dario Ostuni <another.code.996@gmail.com>
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Contributor: Dario Ostuni <another.code.996@gmail.com>
+
 pkgname=astc-encoder-git
-pkgver=r43.a47b80f
+pkgver=3.0.r0.gd21d551
 pkgrel=1
-pkgdesc="An ASTC (Adaptive Scalable Texture Compression) encoder and decoder"
-arch=('i686' 'x86_64' 'armv7h' 'aarch64')
-url="https://github.com/ARM-software/astc-encoder"
-license=('CUSTOM')
-depends=('openexr')
-makedepends=('clang')
-options=()
-source=("git+https://github.com/ARM-software/astc-encoder.git")
-sha256sums=('SKIP')
+pkgdesc='A tool for compressing and decompressing images using the ASTC texture compression standard (git version)'
+arch=('x86_64')
+url='https://github.com/ARM-software/astc-encoder/'
+license=('Apache')
+depends=('gcc-libs')
+makedepends=('git' 'cmake' 'python')
+source=('git+https://github.com/ARM-software/astc-encoder.git#branch=main'
+        'git+https://github.com/google/googletest.git'
+        '010-astc-encoder-fix-install.patch')
+sha256sums=('SKIP'
+            'SKIP'
+            '32cb972d67318166273e6ca508270630bf329f5e1855502f6a493cd803ab2447')
+
+prepare() {
+    git -C astc-encoder submodule init
+    git -C astc-encoder config --local submodule.Source/GoogleTest.url "${srcdir}/googletest"
+    git -C astc-encoder submodule update
+    patch -d astc-encoder -Np1 -i "${srcdir}/010-astc-encoder-fix-install.patch"
+}
 
 pkgver() {
-	cd "$srcdir/astc-encoder"
-	echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    git -C astc-encoder describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd "$srcdir/astc-encoder/Source"
-    sed -i -- 's/g++/clang++/g' Makefile
-    sed -i -- 's/-msse2 -mfpmath=sse//g' Makefile
-    make
-    clang++ exr_to_htga.cpp $(pkg-config --cflags --libs OpenEXR) -o exr_to_htga
+    cmake -B build -S astc-encoder \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DISA_AVX2:BOOL='ON' \
+        -DISA_SSE41:BOOL='ON' \
+        -DISA_SSE2:BOOL='ON' \
+        -DUNITTEST:BOOL='ON' \
+        -Wno-dev
+    make -C build
+}
+
+check() {
+    make -C build test
 }
 
 package() {
-    cd "$srcdir/astc-encoder/Source"
-    install -Dm755 astcenc "$pkgdir/usr/bin/astcenc"
-    install -Dm755 exr_to_htga "$pkgdir/usr/bin/exr_to_htga"
-    install -Dm644 ../license.txt "$pkgdir/usr/share/licenses/astc-encoder-git/LICENSE"
+    make -C build DESTDIR="$pkgdir" install
+    ln -s astcenc-sse2 "${pkgdir}/usr/bin/astcenc"
 }
