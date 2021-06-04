@@ -9,4 +9,3 @@ pkgbase = stlink-server
 	validpgpkeys = 33ED753E14757D79FA17E57DC4C1F715B2B66B95
 
 pkgname = stlink-server
-
