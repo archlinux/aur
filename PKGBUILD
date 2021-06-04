@@ -4,7 +4,7 @@ pkgbase=python-awscli-plugin-endpoint
 pkgname=('python-awscli-plugin-endpoint')
 pkgname=python-awscli-plugin-endpoint
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="This awscli plugin provides service endpoint configure **per service** on profile."
 arch=(any)
 url="https://github.com/wbingli/awscli-plugin-endpoint"
@@ -18,7 +18,7 @@ sha256sums=('f87c3e9e9f08047517848908c729411be055f7dc24cd6d2cff5b9a44dfc9afb5')
 package_python-awscli-plugin-endpoint() {
   pkgdesc="This awscli plugin provides service endpoint configure **per service** on profile. (python3 version)"
 
-  cd "${srcdir}/wbingli-awscli-plugin-endpoint-5bd5eaa"
+  cd "${srcdir}/wbingli-awscli-plugin-endpoint-ab3aa53"
   python setup.py install --root="${pkgdir}/" --optimize=1
 
   install -v -m755 -d "${pkgdir}/usr/share/doc/python-awscli-plugin-endpoint"
