@@ -10,26 +10,26 @@ patch() {
   output="$(cp -av "/usr/share/games/re3/gamefiles"/* . 2>&1)" && error=$? || error=$?
   if [ $error -ne 0 ]
   then
-    zenity --text="Updating the games files failed:$output" --error
+    zenity --text="Updating the game files failed:$output" --error
     exit $error
   fi
-  zenity --text="Successfully updated the games files:$output" --info
+  zenity --text="Successfully updated the game files:$output" --info
 }
 
 run() {
-  if [ "x--patch" == "x$1" ]
+  if [ "--patch" = "$1" ]
   then
     echo "force patching"
     shift
     patch
-  else if [ ! -r "gamecontrollerdb.txt" ]
+  elif [ ! -r "gamecontrollerdb.txt" ]
   then
     echo "missing 'gamecontrollerdb.txt', patching needed"
     if zenity --text="The game in '$PWD' is missing re3 specific resources, do you want to patch it?" --question
     then
       patch
     fi
-  fi fi
+  fi
   echo "running re3 from '$PWD'"
   exec re3 "$@"
 }
