@@ -1,7 +1,7 @@
 pkgbase = django-docs
 	pkgdesc = Docs for Django's release
 	pkgver = 3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.djangoproject.com/en/
 	arch = any
 	license = GPL

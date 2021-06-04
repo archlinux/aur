@@ -3,7 +3,7 @@
 # Contributor: Apkawa <apkawa at gmail dot com>
 pkgname=django-docs
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Docs for Django's release"
 arch=('any')
 url='https://docs.djangoproject.com/en/'
