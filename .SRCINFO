@@ -1,7 +1,7 @@
 pkgbase = fmodstudio
 	pkgdesc = Desktop application for adaptive audio content creation
-	pkgver = 2.02.00
-	pkgrel = 2
+	pkgver = 2.02.01
+	pkgrel = 1
 	url = https://fmod.com
 	arch = x86_64
 	license = custom
@@ -17,4 +17,3 @@ pkgbase = fmodstudio
 	sha256sums = f828e794ce468d1aa47f1a4436af9fbf2e95eac0e3051c1eefa44ab1a7c9eab8
 
 pkgname = fmodstudio
-
