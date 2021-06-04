@@ -1,0 +1,14 @@
+pkgbase = rssd
+	pkgdesc = Poll and execute command when there is a new rss item
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/ssiyad/rssd
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	makedepends = make
+	provides = rssd
+	source = rssd::git+https://github.com/ssiyad/rssd#tag=0.3
+	sha256sums = SKIP
+
+pkgname = rssd
