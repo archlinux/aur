@@ -9,6 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/sionescu/libfixposix"
 license=('Boost')
 depends=('glibc')
+makedepends=('git')
 source=("libfixposix::git+https://github.com/sionescu/libfixposix#commit=b6bfd4a3ba9a9d2761cbf78d3a04a2d71482284e")
 sha256sums=("SKIP")
 
