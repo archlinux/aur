@@ -6,3 +6,4 @@
 !PKGBUILD
 !.SRCINFO
 !timeshift.install
+!util-linux.patch
