@@ -2,8 +2,8 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=python-cadquery-git
-pkgver=2.1.r65.g0325474
-pkgrel=2
+pkgver=2.1.r149.g7b1a99c
+pkgrel=1
 pkgdesc="A parametric CAD scripting framework based on PythonOCC built from git"
 arch=(x86_64)
 url="https://github.com/CadQuery/cadquery"
@@ -14,10 +14,10 @@ depends=(
 python
 python-ocp
 python-ezdxf
+python-typing_extensions
 )
 checkdepends=(
 python-pytest
-python-typing_extensions
 python-nptyping
 ipython
 )
