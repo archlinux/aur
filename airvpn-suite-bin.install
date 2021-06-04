@@ -5,10 +5,16 @@ post_install() {
     fi
     chown -R airvpn:airvpn /etc/airvpn
     systemctl daemon-reload
+    systemctl reload dbus.service
 }
 
 pre_upgrade() {
     systemctl stop bluetit.service
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    systemctl reload dbus.service
 }
 
 pre_remove() {
@@ -20,4 +26,5 @@ post_remove() {
     userdel -r airvpn 2>/dev/null
     getent group airvpn >/dev/null && gpasswd airvpn -M "" && groupdel airvpn
     systemctl daemon-reload
+    systemctl reload dbus.service
 }

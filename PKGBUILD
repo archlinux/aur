@@ -1,20 +1,21 @@
 # Maintainer: OpenSorcerer <alex at opensourcery dot eu>
 pkgname=airvpn-suite-bin
 _pkgname=AirVPN-Suite
-pkgver=1.0.0
-_pkgver=1.0
-pkgrel=5
+pkgver=1.1.0
+_pkgver=1.1
+pkgrel=1
 pkgdesc="AirVPN client software collection including Bluetit, Goldcrest and Hummingbird – prebuilt stable"
 arch=('x86_64' 'i686' 'armv7l' 'aarch64')
 url="https://gitlab.com/AirVPN/$_pkgname"
 license=('GPL3')
-provides=('hummingbird-bin' 'hummingbird' 'airvpn-suite' 'airvpn-suite-beta-bin')
-conflicts=('hummingbird-bin' 'hummingbird' 'airvpn-suite' 'airvpn-suite-beta-bin')
+provides=('hummingbird' 'airvpn-suite' 'airvpn-suite-beta-bin')
+conflicts=('hummingbird' 'airvpn-suite' 'airvpn-suite-beta-bin')
 depends=('dbus' 'openssl' 'libxml2' 'xz' 'lz4')
 makedepends=('curl')
 source=("https://eddie.website/repository/$_pkgname/$_pkgver/$_pkgname-$arch-$pkgver.tar.gz")
 sha512sums=(`curl -sLo - https://eddie.website/repository/$_pkgname/$_pkgver/$_pkgname-$arch-$pkgver.tar.gz.sha512|cut -f1 -d " "`)
 install="$pkgname.install"
+changelog="Changelog-Suite.txt"
 
 package() {
     cd $srcdir/$_pkgname
@@ -31,9 +32,7 @@ package() {
     install -Dm755 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 
     # place configuration
-    for file in etc/airvpn/*; do
-        install -Dm600 "$file" "$pkgdir/etc/airvpn/$file"
-    done
+    install -Dm600 -t "$pkgdir/etc/airvpn/" etc/airvpn/*
 
     # place D-Bus config
     install -Dm644 etc/dbus-1/system.d/org.airvpn.client.conf "$pkgdir/etc/dbus-1/system.d/org.airvpn.client.conf"
