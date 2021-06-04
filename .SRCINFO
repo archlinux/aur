@@ -1,6 +1,6 @@
 pkgbase = dpdk
 	pkgdesc = A set of libraries and drivers for fast packet processing
-	pkgver = 21.02
+	pkgver = 21.05
 	pkgrel = 1
 	url = http://dpdk.org
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = dpdk
 	depends = dtc
 	depends = jansson
 	options = staticlibs
-	source = http://fast.dpdk.org/rel/dpdk-21.02.tar.xz
-	sha1sums = 88ed3a698387caa917a0227bcb9eca2a838bf55d
+	source = http://fast.dpdk.org/rel/dpdk-21.05.tar.xz
+	sha1sums = f0e50aff9bf7705307d65fe0e1e624a2568293e6
 
 pkgname = dpdk
