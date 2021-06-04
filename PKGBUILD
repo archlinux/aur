@@ -1,17 +1,17 @@
 # Maintainer: Twann <twann@ctemplar.com>
 
 pkgname=tblock
-pkgver=0.0.6
+pkgver=1.0.0
 pkgrel=1
 provides=("$pkgname")
 pkgdesc="An anticapitalist ad-blocker that uses the hosts file"
 url="https://tblock.codeberg.page"
 arch=("any")
 license=("GPL3")
-makedepends=("make" "zip" "pandoc" "gzip")
+makedepends=("make" "pandoc" "gzip" "python>=3")
 depends=("python>=3" "python-urllib3" "python-requests" "python-colorama")
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/tblock/tblock/archive/$pkgver.tar.gz")
-sha512sums=("c8930dbee84100421aa219d891faa3b37777bcf2889ab0a0e4af75379eac6a2079d6fcc806ca241e72a1f4a3bff7144fbe706aca22d745666683a21ba7d023c5")
+sha512sums=("e7a044abdc6d6a52bcc9135c045eda063848b62958e6565e62e42a96a7bf1fde80e4e06e37065e79fb43fd108a7fd99264cfdee3e918252279d5796b53c03e61")
 
 build()
 {
@@ -22,5 +22,5 @@ build()
 package()
 {
         cd "$srcdir/$pkgname"
-	make install DESTDIR="$pkgdir/usr"
+	make install DESTDIR="$pkgdir"
 }
