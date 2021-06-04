@@ -4,7 +4,7 @@
 
 _pkgname='concourse'
 pkgname="${_pkgname}-bin"
-pkgver=6.0.0
+pkgver=7.3.1
 pkgrel=1
 pkgdesc='Concourse is a pipeline-based CI system written in Go.'
 arch=(x86_64)
@@ -15,7 +15,7 @@ replaces=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 optdepends=('zsh-completions: auto completion for concourse on zsh shell')
 source=("https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.tgz")
-sha512sums=('22b3c50fc7a190e57cc2fb571a1f707e0042c4754337d559c06ec6cd614ddf0c20aad0bcd899bf068e6317ae9cc0877a6bea70ae525eec676be9d9ef4645a5c8')
+sha512sums=('0a34ba1f03efd58d06f63d3accdecbd6a623b7494a679710553d9abae11522da7bf3e3f538b6e6a3b4a32527220f151b8478afa2149c6e3d7b26215d2203c4ab')
 
 package() {
   install -dm755 "${pkgdir}/opt"
