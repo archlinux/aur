@@ -1,4 +1,4 @@
-# Maintainer: Franck STAUFFER <franck.stauffer@monaco.mc>
+# Maintainer: Qontinuum <qontinuum.dev@protonmail.ch>
 # Contributor: BenObiWan <benobiwan @t gmail dot com>
 # Contributor: Sam101 <zoetrem @t gmail dot com>
 # Contributor: BenObiWan <benobiwan @t gmail dot com>
