@@ -6,8 +6,8 @@
 
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-pixbuf
-pkgver=9.22
-pkgrel=2
+pkgver=9.26
+pkgrel=1
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt), with support for custom icons and backgrounds'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -22,22 +22,19 @@ source=(
 'urxvtc.desktop'
 'urxvt-tabbed.desktop'
 'font-width-fix.patch'
-'line-spacing-fix.patch'
-'https://gist.githubusercontent.com/alexoj/df5bae7a4825cb596581/raw/75a1e75c2ae1ec5c0db68a29f8a6821e9e3d87a5/sgr-mouse-mode.patch')
-md5sums=('93782dec27494eb079467dacf6e48185'
+'line-spacing-fix.patch')
+md5sums=('18dd0b15e7f67478bf0a88b0fc5e8cd4'
          'fec94dc986fa37ec380079d81de3e0b2'
          'fac55f0a8404c86dad3e702146762332'
          '8a5599197568c63720e282b9722a7990'
-         'df0c3a8b6bb0578d1b91e4081c47881c'
-         'd4e03127a0d3bbf2e173850770651b08'
-         'f8325b0a33999db4d5d1eeac4f320156')
+         'f6bb5770d2e7b06d88882513710a267d'
+         'd4e03127a0d3bbf2e173850770651b08')
 
 prepare() {
 	cd $_pkgname-$pkgver
 
 	patch -p0 -i ../font-width-fix.patch
 	patch -p0 -i ../line-spacing-fix.patch
-	patch -p0 -i ../sgr-mouse-mode.patch
 }
 
 build() {
