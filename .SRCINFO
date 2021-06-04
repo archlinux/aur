@@ -5,6 +5,7 @@ pkgbase = supercollider-simplexnoise-git
 	url = https://github.com/esluyter/simplexsynth
 	arch = any
 	groups = pro-audio
+	groups = supercollider-plugins
 	license = GPL
 	makedepends = git
 	makedepends = cmake
