@@ -2,14 +2,14 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=ttf-teletext2
-pkgver=1.0
+pkgver=1.1
 _gitver=b2df8095dee3bec5f0a5cf9a363b364512ed3df9
-pkgrel=2
+pkgrel=1
 pkgdesc="TrueType font for renderng special graphic characters used in Teletext"
 arch=('any')
 license=('GPL2')
-url="https://projects.vdr-developer.org/projects/plg-osdteletext"
-source=("${url}/repository/revisions/${_gitver}/entry/teletext2.ttf")
+url="https://github.com/pbiering/vdr-plugin-osdteletext"
+source=("https://raw.githubusercontent.com/pbiering/vdr-plugin-osdteletext/${_gitver}/teletext2.ttf")
 md5sums=('ddc338f8165f93d7b7ee722f59ec8be0')
 
 package() {
