@@ -1,6 +1,6 @@
 pkgname=libudev-zero-git
 _pkgname=libudev-zero
-pkgver=160
+pkgver=187
 pkgrel=1
 udev_version=243
 libudev_ver=1-64
@@ -12,10 +12,11 @@ license=('GPL')
 makedepends=('glibc' 'make' 'git')
 provides=('libudev-zero' 'libeudev' 'libudev' "libudev.so=$libudev_ver")
 conflicts=('libudev')
-source=(git+https://github.com/illiliti/libudev-zero
+#source=("git+https://github.com/illiliti/libudev-zero#commit=496291c8ddda031c9e30c78edb11a786b17de6c6"
+source=("git+https://github.com/illiliti/libudev-zero"
         artix-install.patch)
 md5sums=('SKIP'
-         '18f04374a66ba1d9d233dde7f68018f5')
+         'ac1272d59fe80e488d09c088de1c59a4')
 
 pkgver() {
   cd ${srcdir}/${_pkgname}
