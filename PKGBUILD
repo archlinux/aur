@@ -3,7 +3,7 @@
 
 pkgbase=linux-logo
 pkgver=5.12.9.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux with tux logo'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
@@ -19,7 +19,6 @@ _srcname=archlinux-linux
 source=(
   "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
   config         # the main kernel config file
-  config.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -27,8 +26,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '0d0691aa0f80fea0d9d204c05a845416dd443f3bb629cbb68e098e4d19cc841d'
-            '24d50424af2a1d4ee50522a3f8e87aae601765c5ca4db4a3aebad61050d60108')
+            '0d0691aa0f80fea0d9d204c05a845416dd443f3bb629cbb68e098e4d19cc841d')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -53,6 +51,8 @@ prepare() {
   done
 
   echo "Setting config..."
+  sed -i 's/CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER=y/# CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER is not set/g' .config
+  sed -i 's/# CONFIG_LOGO is not set/CONFIG_LOGO=y\n# CONFIG_LOGO_LINUX_MONO is not set\n# CONFIG_LOGO_LINUX_VGA16 is not set\nCONFIG_LOGO_LINUX_CLUT224=y/g' .config
   #make olddefconfig
   make prepare
 

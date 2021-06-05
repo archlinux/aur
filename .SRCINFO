@@ -1,7 +1,7 @@
 pkgbase = linux-logo
 	pkgdesc = Linux with tux logo
 	pkgver = 5.12.9.arch1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.archlinux.org/linux.git/log/?h=v5.12.9-arch1
 	arch = x86_64
 	license = GPL2
@@ -22,13 +22,11 @@ pkgbase = linux-logo
 	options = !strip
 	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.12.9-arch1
 	source = config
-	source = config.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
 	sha256sums = 0d0691aa0f80fea0d9d204c05a845416dd443f3bb629cbb68e098e4d19cc841d
-	sha256sums = 24d50424af2a1d4ee50522a3f8e87aae601765c5ca4db4a3aebad61050d60108
 
 pkgname = linux-logo
 	pkgdesc = The Linux with tux logo kernel and modules
