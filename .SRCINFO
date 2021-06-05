@@ -1,0 +1,21 @@
+pkgbase = supercollider-flucoma-git
+	pkgdesc = Fluid Corpus Manipulation plugins for Supercollider
+	pkgver = r1179.5956e97
+	pkgrel = 1
+	url = https://github.com/flucoma/flucoma-sc
+	arch = any
+	groups = pro-audio
+	groups = supercollider-plugins
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = supercollider-headers-git
+	depends = supercollider
+	conflicts = supercollider-flucoma
+	source = supercollider-flucoma-git-r1179.5956e97::git+https://github.com/flucoma/flucoma-sc.git
+	source = flucoma-core::git+https://github.com/flucoma/flucoma-core.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = supercollider-flucoma-git
+
