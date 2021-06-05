@@ -1,7 +1,7 @@
 pkgbase = gcc6
 	pkgdesc = The GNU Compiler Collection (6.x.x)
 	pkgver = 6.5.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gcc.gnu.org/gcc-6/
 	arch = x86_64
 	license = GPL
@@ -21,26 +21,30 @@ pkgbase = gcc6
 	makedepends = zlib
 	makedepends = java-runtime
 	options = !emptydirs
+	options = !makeflags
 	source = https://gcc.gnu.org/pub/gcc/releases/gcc-6.5.0/gcc-6.5.0.tar.xz
 	source = https://gcc.gnu.org/pub/gcc/infrastructure/isl-0.18.tar.bz2
 	source = http://www.bastoul.net/cloog/pages/download/cloog-0.18.4.tar.gz
 	source = libsanitizer.patch
+	source = Workaround-for-format-security.patch
 	source = c89
 	source = c99
 	sha512sums = ce046f9a50050fd54b870aab764f7db187fe7ea92eb4aaffb7c3689ca623755604e231f2af97ef795f41c406bb80c797dd69957cfdd51dfa2ba60813f72b7eac
 	sha512sums = 85d0b40f4dbf14cb99d17aa07048cdcab2dc3eb527d2fbb1e84c41b2de5f351025370e57448b63b2b8a8cf8a0843a089c3263f9baee1542d5c2e1cb37ed39d94
 	sha512sums = d35d67b08ffe13c1a010b65bfe4dd02b0ae013d5b489e330dc950bd3514defca8f734bd37781856dcedf0491ff6122c34eecb4b0fe32a22d7e6bdadea98c8c23
 	sha512sums = e7861f77d54ac9bc12cfc6d3498a9bc284e72f728435c23866ac0763fb93e94e431d819c3def9f5aa03acbafc437141882e7b3746f4574ec6e5eb66b555cebb6
+	sha512sums = 7c9dfadad196ac53f7a33d5875bd39aacd4a650e79696ab3177f245ad5e24cdd9fa084c8829820ba82b0159756f89baa9db99f373f42e38e757b3d5b7c699cf5
 	sha512sums = a02da589b23e4a76b5ca3b3e4e2261ef4cf69dadd9460703f14e34090d4e574025a52acef9f54e897679115e2122b0095d9d7eab556024bb0e9c695915951a58
 	sha512sums = d17176547a1ed2b7aa4743eb66a06308db182a993985a1905b418dfa46b74723631b17fd0d536adfefbdf4900d3b71cdf1e7d663ad379fa11b58b613dccb931c
 
 pkgname = gcc6
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends (6.x.x)
-	depends = gcc6-libs=6.5.0-4
+	depends = gcc6-libs=6.5.0-5
 	depends = binutils>=2.28
 	depends = libmpc
 	depends = zlib
 	options = !emptydirs
+	options = !makeflags
 	options = staticlibs
 
 pkgname = gcc6-libs
@@ -48,21 +52,21 @@ pkgname = gcc6-libs
 	depends = glibc>=2.25
 	depends = zlib
 	options = !emptydirs
+	options = !makeflags
 	options = !strip
 
 pkgname = gcc6-fortran
 	pkgdesc = Fortran front-end for GCC
-	depends = gcc6=6.5.0-4
+	depends = gcc6=6.5.0-5
 	depends = zlib
 	depends = libmpc
 
 pkgname = gcc6-gcj
 	pkgdesc = Java front-end for GCC
-	depends = gcc6=6.5.0-4
+	depends = gcc6=6.5.0-5
 	depends = libmpc
 	depends = libxtst
 	depends = gtk2
 	depends = java-runtime
 	depends = libsm
 	replaces = gcc-gcj
-
