@@ -2,9 +2,9 @@
 
 # Maintainer: Alexander Grothe <seahawk1986[at]hotmail[dot]com>
 pkgname=vdr-filebrowser
-pkgver=0.2.2
+pkgver=0.2.3
 _vdrapi=2.4.7
-pkgrel=2
+pkgrel=1
 pkgdesc="filebrowser with custom commands for vdr"
 url="https://github.com/vdr-projects/vdr-plugin-filebrowser"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -19,7 +19,7 @@ backup=("var/lib/vdr/plugins/filebrowser/commands.conf"
         "var/lib/vdr/plugins/filebrowser/othercommands.conf"
         "var/lib/vdr/plugins/filebrowser/sources.conf"
         "etc/vdr/conf.avail/50-$_plugname.conf")
-sha256sums=('9596c65b1d9c3745eab04b9fb3e37dad4fe778db25f7bafe0c2e50cf348a8335')
+sha256sums=('5c820bc7399970e74d4846d78829254e8784cde332b683f09cb69ec4460cc9e0')
 
 build() {
   cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
