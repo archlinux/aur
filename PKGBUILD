@@ -197,7 +197,7 @@ prepare() {
 
 build() {
   cd linux-${pkgver}
-  make -j40 all
+  make all
 }
 
 _package() {
