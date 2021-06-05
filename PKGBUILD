@@ -1,6 +1,6 @@
 # Maintainer: Henri Derycke <nheir.kim@gmail.com>
 pkgname=bluez-alsa-git
-pkgver=3.0.0.r6.g93853e5
+pkgver=3.1.0.r0.gb09f373
 pkgrel=1
 pkgdesc="Bluetooth Audio ALSA Backend"
 arch=('x86_64' 'armv7h' 'aarch64' 'armv6h')
@@ -12,6 +12,7 @@ depends=(
 	'libfdk-aac'         # --enable-aac
 #	'lame'               # --enable-mp3lame
 #	'mpg123'             # --enable-mpg123
+#	'libopenaptx'        # --with-libopenaptx
 #	'readline'           # --enable-rfcomm
 #	'libbsd' 'ncurses'   # --enable-hcitop
 )
@@ -36,17 +37,23 @@ prepare() {
 build() {
 	cd "$pkgname"
 	autoreconf --install
+	# See https://github.com/Arkq/bluez-alsa/wiki/Installation-from-source#3-configure-the-build-directory
+	# for options details
 	local flags=(
 		--enable-aac
-	#	--enable-debug
-		--enable-manpages
+	#	--enable-aptx --enable-aptx-hd --with-libopenaptx
+	#	--enable-ldac
 	#	--enable-mp3lame
 	#	--enable-mpg123
 	#	--enable-msbc
-	#	--enable-hcitop
-	#	--enable-ldac
-	#	--enable-upower
+	#	--enable-ofono
+		--enable-manpages
+	#	--enable-a2dpconf
+	#	--enable-cli
 	#	--enable-rfcomm
+	#	--enable-hcitop
+	#	--enable-upower
+	#	--enable-debug
 	)
 	./configure --prefix=/usr \
 	            --sysconfdir=/etc \
