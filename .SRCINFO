@@ -1,0 +1,20 @@
+pkgbase = vim-rigel-git
+	pkgdesc = A 24bit colorscheme based on the star Rigel, the bright blue star of Orion
+	pkgver = 1.0.0.r39.gce441c5
+	pkgrel = 1
+	url = https://github.com/rigellute/rigel
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-rigel
+	provides = vim-airline-rigel
+	provides = vim-lightline-rigel
+	conflicts = vim-rigel
+	conflicts = vim-airline-rigel
+	conflicts = vim-lightline-rigel
+	source = vim-rigel-git::git+https://github.com/rigellute/rigel
+	sha256sums = SKIP
+
+pkgname = vim-rigel-git
