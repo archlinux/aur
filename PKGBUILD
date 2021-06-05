@@ -2,21 +2,19 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-epgsearch
-pkgver=2.4.0.r11.gd8cff1a
-_gitver=d8cff1a251ef2b54f1de3f8e6ea55a838eeb73c3
+pkgver=2.4.1
 _vdrapi=2.4.7
+pkgrel=1
 epoch=1
-pkgrel=4
 pkgdesc="Searchtimer and replacement of the VDR program menu"
-url="https://projects.vdr-developer.org/projects/plg-epgsearch"
+url="https://github.com/vdr-projects/vdr-plugin-epgsearch"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 optdepends=('msmtp: To send notification mails (Simpler replacement for sendmail)'
             'ssmtp: To send notification mails (Another simpler replacement for sendmail)')
-makedepends=('git')
 _plugname=${pkgname//vdr-/}
-source=("git://projects.vdr-developer.org/vdr-plugin-$_plugname.git#commit=$_gitver"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/vdr-projects/vdr-plugin-epgsearch/archive/refs/tags/v$pkgver.tar.gz"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-conflictcheckonly.conf"
         "etc/vdr/conf.avail/50-$_plugname.conf"
@@ -30,26 +28,21 @@ backup=("etc/vdr/conf.avail/50-conflictcheckonly.conf"
         'var/lib/vdr/plugins/epgsearch/epgsearchupdmail-html.templ'
         'var/lib/vdr/plugins/epgsearch/epgsearchupdmail.templ')
 options=('!emptydirs')
-md5sums=('SKIP'
-         '9a936790ce844d011d8bbb3bf13ec336')
-
-pkgver() {
-  cd "${srcdir}/vdr-plugin-${_plugname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
-}
+sha256sums=('328031a4d41275d152d1d4b80165e287ccf1b54bd37747c3f295b1cfd8badcfe'
+            'f3f8c750a0313c01a4295d2249f030ee510b2e35137b1f2cdcaa39aa440a3a88')
 
 prepare() {
-  cd "${srcdir}/vdr-plugin-$_plugname"
+  cd "${srcdir}/vdr-plugin-$_plugname-$pkgver"
   sed -i 's/^Menu/# Menu/g' conf/epgsearchmenu.conf
 }
 
 build() {
-  cd "${srcdir}/vdr-plugin-$_plugname"
+  cd "${srcdir}/vdr-plugin-$_plugname-$pkgver"
   make REGEXLIB='' #Empty REGEXLIB to force regex.h from glibc
 }
 
 package() {
-  cd "${srcdir}/vdr-plugin-$_plugname"
+  cd "${srcdir}/vdr-plugin-$_plugname-$pkgver"
   make DESTDIR="$pkgdir" install
 
   install -Dm644 "$srcdir/50-$_plugname.conf" "$pkgdir/etc/vdr/conf.avail/50-$_plugname.conf"
