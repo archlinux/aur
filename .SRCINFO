@@ -1,6 +1,6 @@
 pkgbase = eduke32
 	pkgdesc = An advanced Duke Nukem 3D source port
-	pkgver = 20210404.r9321_7225643e3
+	pkgver = 20210604.r9382_bcc1cb0db
 	pkgrel = 1
 	url = http://eduke32.com/
 	install = eduke32.install
@@ -10,19 +10,21 @@ pkgbase = eduke32
 	license = custom: BUILD
 	makedepends = mesa
 	makedepends = glu
-	depends = sdl2_mixer
 	depends = libvpx
-	depends = gtk2
+	depends = sdl2
+	depends = flac
+	depends = libvorbis
+	depends = alsa-lib
 	optdepends = freepats-legacy: a free soundfont for music
 	optdepends = fluidsynth: alternative midi sequencer
 	optdepends = eduke32-shareware-episode: Duke Nukem 3D Demo
-	source = http://dukeworld.com/eduke32/synthesis/20210404-9321-7225643e3/eduke32_src_20210404-9321-7225643e3.tar.xz
+	source = http://dukeworld.com/eduke32/synthesis/20210604-9382-bcc1cb0db/eduke32_src_20210604-9382-bcc1cb0db.tar.xz
 	source = eduke32.png
 	source = eduke32.desktop
-	sha256sums = 9893958fa4a63cb18c1e84f7ba56a8cef7725f62785fc5f732f5294032646b4e
+	sha256sums = bafe5b1e7f05a54c35af7773df109c9573478776c220d99f47fcc1af96b1d498
 	sha256sums = b55a264b4682afabd49587d700d4c85ce6c2e7af7ce2764dd217ebe167549863
 	sha256sums = cf2ea2c6a0d85ab15e30171ed5b921f1fcf5644de7af9638c0ef60de21c44f24
+	depends_i686 = lib32alsa-lib
 	makedepends_i686 = nasm
 
 pkgname = eduke32
-
