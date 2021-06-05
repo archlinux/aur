@@ -1,0 +1,30 @@
+--- opt/brother/Printers/HLL2335D/cupswrapper/lpdwrapper	2017-07-18 03:34:11.000000000 +0200
++++ opt/brother/Printers/HLL2335D/cupswrapper/lpdwrapper	2017-07-18 03:34:11.000000000 +0200
+@@ -66,8 +66,8 @@
+ logprint( 0 , "START\n");
+ 
+ 
+-$ENV{OWNER} = $ARGV[1];
+-$ENV{TITLE} = $ARGV[2];
++$ENV{OWNER} = $ARGV[2];
++$ENV{TITLE} = $ARGV[3];
+ 
+ $ENV{NODENAME} = `uname -n`;
+ 
+@@ -85,7 +85,7 @@
+ 
+ 
+ 
+-my $cmdoptions=$ARGV[4];
++my $cmdoptions=$ARGV[5];
+ my $PPD = $ENV{PPD};
+ my $CUPSINPUT='';
+ if ( @ARGV >= 6 ){
+@@ -193,6 +193,7 @@
+   'Media=Env.Thin'                   => {"opt"=>"-md" , "val"=>"ENV-THIN"},
+   'Media=Recycled'                   => {"opt"=>"-md" , "val"=>"RECYCLED"},
+   'Sleep=PrinterDefault'             => {"opt"=>"-sp" , "val"=>"PRINTER"},
++  'PageSize=200.03x148.17mm'         => {"opt"=>"-pt" , "val"=>"A5"},
+ );
+ 
+ 

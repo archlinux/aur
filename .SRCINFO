@@ -1,0 +1,20 @@
+pkgbase = brother-hll2335d
+	pkgdesc = Brother HL-L2335D CUPS driver
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = http://www.brother.com
+	arch = x86_64
+	arch = i686
+	license = custom:Brother
+	depends = perl
+	depends = bash
+	depends = ghostscript
+	depends = cups
+	depends = lib32-glibc
+	source = https://download.brother.com/welcome/dlf104134/hll2335dpdrv-4.0.0-1.i386.rpm
+	source = wrapper.patch
+	sha512sums = 0b666f130455611c9afb68479b5f53b38fbc8220f04638cfa4bee2306eda3a6bbcf6035636dab3a808dae7d934fbf5c0538d50b9594d8cff5a596b9505be9087
+	sha512sums = c6d9c28347c1dd153b987226419401750b2f13b9a41da1984a4f895accc746f1e580be1a07a698cf6db3b9f1a649dd028619a7806b6faf3fc3fc5323ea19e147
+
+pkgname = brother-hll2335d
+
