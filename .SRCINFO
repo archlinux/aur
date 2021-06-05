@@ -1,0 +1,13 @@
+pkgbase = sway-xkb-switcher
+	pkgdesc = Keyboard layout switcher for sway windows
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/nmukhachev/sway-xkb-switcher
+	arch = x86_64
+	license = MIT
+	makedepends = python-pip
+	depends = python-i3ipc
+	source = sway-xkb-switcher-0.3.0.tar.gz::https://github.com/nmukhachev/sway-xkb-switcher/archive/v0.3.0.tar.gz
+	sha256sums = 2c3afee5e891a13340fe8fb2fda81b3c172411d2acd6a50502f9d014133fa773
+
+pkgname = sway-xkb-switcher
