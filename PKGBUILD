@@ -1,13 +1,13 @@
 # Maintainer: andre.menrath@posteo.de
 pkgname=sws
 pkgver=2.12.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of features that seamlessly integrate into REAPER"
 arch=('x86_64')
 url="https://www.sws-extension.org/"
 license=('MIT')
 depends=('reaper-bin>=6.19' 'taglib')
-makedepends=('git' 'gcc' 'make' 'cmake' 'php' 'perl')
+makedepends=('git' 'gcc10' 'make' 'cmake' 'php' 'perl')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 _commit=3b209e75a69476b218fa09983c2a04d6d5e5a452  # version 2.12.1.3
@@ -30,7 +30,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname"
-	cmake -B build -DCMAKE_BUILD_TYPE=Release -DUSE_SYSTEM_TAGLIB=YES
+	cmake -B build -DCMAKE_BUILD_TYPE=Release -DUSE_SYSTEM_TAGLIB=YES -DCMAKE_C_COMPILER=/usr/bin/gcc-10 -DCMAKE_CXX_COMPILER=/usr/bin/g++-10
 	cmake --build build
 }
 
