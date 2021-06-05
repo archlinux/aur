@@ -3,7 +3,7 @@
 
 pkgbase=linux-amd-staging-drm-next-git
 pkgdesc='Linux kernel with AMDGPU WIP patches'
-pkgver=5.12.r987513.de5972c0117b
+pkgver=5.11.r987909.f60839821f77
 _product="${pkgbase%-git}"
 _branch="${_product#linux-}"
 pkgrel=1
@@ -23,14 +23,13 @@ source=(
   sphinx-workaround.patch # Sphinx 3.5 broke the build again
 )
 sha256sums=('SKIP'
-            'bd644e14f3e885bfdda17d5da2f9112070c7126362864664234df2033d17d8ca'
+            '0d0691aa0f80fea0d9d204c05a845416dd443f3bb629cbb68e098e4d19cc841d'
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
 
 pkgver() {
   cd "${_srcname}"
   local version="$(grep \^VERSION Makefile|cut -d"=" -f2|cut -d" " -f2)"
   local patch="$(grep \^PATCHLEVEL Makefile|cut -d"=" -f2|cut -d" " -f2)"
-  patch=$(( "${patch}" + 1 ))
 
   printf "%s.%s.r%s.%s" "${version}" "${patch}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
