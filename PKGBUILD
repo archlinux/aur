@@ -5,7 +5,7 @@ pkgname=sonobus
 pkgver=1.4.6
 pkgrel=1
 pkgdesc="An easy to use application for streaming high-quality, low-latency peer-to-peer audio"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://sonobus.net"
 license=('GPL3')
 depends=('opus' 'freetype2' 'libxrandr' 'libxinerama' 'libxcursor' 'libasound.so=2-64' 'libjack.so=0-64')
