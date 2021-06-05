@@ -8,7 +8,7 @@
 
 _pack=matgeom
 pkgname=octave-$_pack
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Geometry toolbox for 2D/3D geometric computing"
 arch=(any)
@@ -24,7 +24,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('3379606509530f7f186017c1238ad193')
+md5sums=('5d1750c01486183840a6894423556f4c')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
