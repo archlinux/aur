@@ -21,12 +21,13 @@ prepare() {
 
   # Don't build the AppImage package
   sed -i '/"AppImage"/d' package.json
+
+  yarn install
 }
 
 build() {
   cd "$pkgname-$pkgver"
 
-  yarn install
   yarn build
   yarn make:linux
 }
