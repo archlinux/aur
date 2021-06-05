@@ -2,7 +2,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname="unpackerr"
-pkgver=0.9.4
+pkgver=0.9.6
 pkgrel=1
 pkgdesc="A daemon that checks for completed downloads and extracts them so Radarr, Sonarr and/or Lidarr may import them."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -25,7 +25,7 @@ source=(
   'unpackerr.sysusers'
 )
 
-sha512sums=('019e88d3083a3e4be72a349f89519986a7c88a70e7202c00816894c32ee6853792ff418a3a738dd2ab4674ee6241666b157c7ca250839057b963586c497abcea'
+sha512sums=('1f70ec14e1a02028ea92838dab8520a368c232cd4cde0f1b0a9a787ebf6fe683ef1440ca6ae42262da23f84038b3607cbd2952fc4595f39c0fe752ab30de112d'
             '54017fc67dc86233c01fcf9b6a46c9758509111442782e67c2356b8ec5fc062abf2a6a45df62abe13d789b9933a00e2bfedbfdb6ac9eb57c3e03b43334c96676'
             '1607677947bb788eb9a7bdc37e85c10632888d476d393493013dbdb3924f805adae9b6c6f31e60800ed95a9bed7c1e8ee8a48ebdaacd60c52e355054f62e0237')
 
