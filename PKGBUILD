@@ -2,7 +2,7 @@
 
 pkgname=xss-lock-locked-hint
 pkgver=0.3.0.r8.g7b0b4dc
-pkgrel=1
+pkgrel=2
 pkgdesc="Forked version of xss lock that supports logind's SetLockedHint"
 arch=('i686' 'x86_64')
 url="https://github.com/xdbob/xss-lock/tree/locked_hint"
