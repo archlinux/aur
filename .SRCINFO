@@ -1,6 +1,6 @@
 pkgbase = g15stats-openrc
 	pkgdesc = g15stats init script for OpenRC
-	pkgver = 1
+	pkgver = 20210605
 	pkgrel = 1
 	url = https://gitlab.com/menelkir/g15stats
 	arch = any
