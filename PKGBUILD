@@ -8,20 +8,14 @@ url="https://gitlab.com/menelkir/g15stats"
 license=('GPL2')
 depends=('g15stats' 'openrc')
 _filename=('g15stats.initd' 'g15stats.confd')
-source=("https://gitlab.com/menelkir/g15stats/-/raw/master/contrib/init/g15stats.initd
-	https://gitlab.com/menelkir/g15stats/-/raw/master/contrib/init/g15stats.confd
-	")
-sha256sums=('e155c92fc3639a2785df1020053cf2881eb53490402dbe8053761302641c7ed2
-	57d18f10ededd1003c59e86c2a1721165a0aa6c731bc8880710bb2e8e182bd52	
-	')
-
-pkgver() {
-   date +%Y%m%d
-}
+source=("https://gitlab.com/menelkir/g15stats/-/raw/master/contrib/init/g15stats.initd" 
+        "https://gitlab.com/menelkir/g15stats/-/raw/master/contrib/init/g15stats.confd")
+sha256sums=('6d43c777ececbe7a926b57b0bcf948df5ee810b6a676dd59ebc89c667d3d47d0'
+            'ca6520f9752ec526e284d4359aea57399949e0ea5e98ee5904524d186d898f01')
 
 package() {
     install -dm755 "$pkgdir/etc/init.d"
     install -dm755 "$pkgdir/etc/conf.d"
-    install -Dm755 "$srcdir/$_service.initd" "$pkgdir/etc/init.d/$_service"
-    install -Dm644 "$srcdir/$_service.confd" "$pkgdir/etc/conf.d/$_service"
+    install -Dm755 "$srcdir/g15stats.initd" "$pkgdir/etc/init.d/g15stats"
+    install -Dm644 "$srcdir/g15stats.confd" "$pkgdir/etc/conf.d/g15stats"
 }

@@ -7,7 +7,9 @@ pkgbase = g15stats-openrc
 	license = GPL2
 	depends = g15stats
 	depends = openrc
-	source = https://gitlab.com/menelkir/g15stats/-/raw/master/contrib/init/g15stats.initd https://gitlab.com/menelkir/g15stats/-/raw/master/contrib/init/g15stats.confd
-	sha256sums = e155c92fc3639a2785df1020053cf2881eb53490402dbe8053761302641c7ed2 57d18f10ededd1003c59e86c2a1721165a0aa6c731bc8880710bb2e8e182bd52
+	source = https://gitlab.com/menelkir/g15stats/-/raw/master/contrib/init/g15stats.initd
+	source = https://gitlab.com/menelkir/g15stats/-/raw/master/contrib/init/g15stats.confd
+	sha256sums = 6d43c777ececbe7a926b57b0bcf948df5ee810b6a676dd59ebc89c667d3d47d0
+	sha256sums = ca6520f9752ec526e284d4359aea57399949e0ea5e98ee5904524d186d898f01
 
 pkgname = g15stats-openrc
