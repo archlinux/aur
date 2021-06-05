@@ -1,6 +1,6 @@
-diff --unified --recursive --text orig/package.json deltachat-desktop-1.15.3/package.json
---- orig/package.json	2021-03-18 13:55:27.000000000 +0100
-+++ deltachat-desktop-1.15.3/package.json	2021-03-18 19:48:25.361065415 +0100
+diff --unified --recursive --text orig/package.json patched/package.json
+--- orig/package.json	2021-06-04 12:23:59.000000000 +0200
++++ patched/package.json	2021-06-05 13:42:17.602981022 +0200
 @@ -4,8 +4,6 @@
    "description": "Desktop Application for delta.chat",
    "main": "index.js",

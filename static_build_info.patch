@@ -1,7 +1,7 @@
-diff --unified --recursive --text a/bin/build-shared-version-info.js b/bin/build-shared-version-info.js
---- a/bin/build-shared-version-info.js	2021-02-13 11:36:03.000000000 +0100
-+++ b/bin/build-shared-version-info.js	2021-02-15 15:57:08.270159483 +0100
-@@ -2,36 +2,12 @@
+diff --unified --recursive --text orig/bin/build-shared-version-info.js patched/bin/build-shared-version-info.js
+--- orig/bin/build-shared-version-info.js	2021-06-04 12:23:59.000000000 +0200
++++ patched/bin/build-shared-version-info.js	2021-06-05 13:45:26.128357170 +0200
+@@ -2,40 +2,8 @@
  const fs = require('fs-extra')
  const { join } = require('path')
  
@@ -11,31 +11,35 @@ diff --unified --recursive --text a/bin/build-shared-version-info.js b/bin/build
 -  return stdout.toString().replace(/\n/g, '')
 -}
 -
- async function gatherBuildInfo() {
--  let git_describe, git_branch;
+ async function getGitRef() {
+-  if (process.env.VERSION_INFO_GIT_REF) {
+-    return process.env.VERSION_INFO_GIT_REF
+-  }
+-
+-  let git_describe, git_branch
 -  try {
 -    git_describe = gatherProcessStdout('git', ['describe'])
 -    try {
--      git_symbolic_ref = process.env.GITHUB_HEAD_REF || process.env.GITHUB_REF || gatherProcessStdout('git', ['symbolic-ref', 'HEAD'])
+-      git_symbolic_ref =
+-        process.env.GITHUB_HEAD_REF ||
+-        process.env.GITHUB_REF ||
+-        gatherProcessStdout('git', ['symbolic-ref', 'HEAD'])
 -      git_branch = git_symbolic_ref.split('/').pop()
 -      console.log(git_symbolic_ref, git_branch)
 -    } catch (err) {
 -      console.log(err)
--      git_branch = "master"
+-      git_branch = 'master'
 -    }
 -  } catch (err) {
 -    console.log(err)
+-    console.log('Hint: you can set the env var VERSION_INFO_GIT_REF manualy')
 -    process.exit(1)
 -  }
 -
--  const git_ref = git_describe + (git_branch === 'master' ? '' : '-' + git_branch)
--
-   const package = await fs.readJSON(join(__dirname, '../package.json'))
-   return {
-     VERSION: package.version,
-     BUILD_TIMESTAMP: Date.now(),
--    GIT_REF: git_ref
-+    GIT_REF: "NOGIT"
-   }
+-  const git_ref =
+-    git_describe + (git_branch === 'master' ? '' : '-' + git_branch)
+-  return git_ref
++  return "tags/v1.20.2"
  }
  
+ async function gatherBuildInfo() {
