@@ -2,37 +2,35 @@
 # Contributor: Alexander Bogdanov <andorn@gmail.com>
 
 pkgname=kchmviewer
-pkgver=7.7
-pkgrel=5
+pkgver=8.0
+pkgrel=1
 pkgdesc="A .chm files (MS HTML help file format) viewer"
 arch=('x86_64')
 url="http://kchmviewer.sourceforge.net/"
 license=('GPL')
-depends=('chmlib' 'libzip' 'qt5-webkit')
+depends=('chmlib' 'libzip' 'qt5-webkit' 'qt5-webengine')
 changelog=$pkgname.changelog
-source=(https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
-        $pkgname-$pkgver-underlinking.patch
-        fix-qt5-build.patch)
-sha256sums=('27cbac45c786b1718550a87e6f86010e161302b426c6396ff2a3091b913b17dd'
-            'bb9345a0ecaf70e06cfad06c6c2dbbfca79c3462e1f4bb459e80ecaa31ea58cc'
-            '7d070f4eaa79fa2fd8c4a06807b4792807056e9c248d55e98169d01066248f3d')
+source=($pkgname-$pkgver.tar.gz::https://github.com/gyunaev/$pkgname/archive/refs/tags/RELEASE_8_0.tar.gz
+       fix-8.0-build.patch::https://github.com/gyunaev/$pkgname/commit/e3b09edbbae17ad19661a7514afe5a9d84ca0ffa.patch)
+sha256sums=('0eec144b2c09c8b6be98b795f84767098c893bdad7b5a3d11fc5faafead5f9b2'
+            '9a3022ce78ab97b6816f80b04557dc25c5dde868e6d89a2a2435ce51417b4f2c')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd $pkgname-RELEASE_8_0
 
-  patch -Np1 -i "${srcdir}"/$pkgname-$pkgver-underlinking.patch
-  patch -Np1 -i "${srcdir}"/fix-qt5-build.patch
+#https://github.com/gyunaev/kchmviewer/issues/9
+  patch -Np1 -i "${srcdir}"/fix-8.0-build.patch
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname-RELEASE_8_0
 
   qmake-qt5 PREFIX=/usr
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname-RELEASE_8_0
 
   make DESTDIR="${pkgdir}" install
 
