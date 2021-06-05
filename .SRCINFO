@@ -1,10 +1,10 @@
 pkgbase = python-pdfflow
 	pkgdesc = Parton distribution function interpolation library written in Python and based on the TensorFlow framework
-	pkgver = 1.1
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://pdfflow.readthedocs.io/
 	arch = any
-	license = GPL3
+	license = Apache
 	makedepends = python-setuptools
 	depends = python>=3.7
 	depends = python-numpy
@@ -14,8 +14,7 @@ pkgbase = python-pdfflow
 	optdepends = lhapdf: provides PDF files in the LHAPDF format
 	optdepends = python-vegasflow: MonteCarlo library to run examples
 	provides = pdfflow
-	source = https://github.com/N3PDF/pdfflow/archive/v1.1.tar.gz
-	md5sums = a0a56db01b27fd71261584e316527fcb
+	source = https://github.com/N3PDF/pdfflow/archive/v1.2.1.tar.gz
+	md5sums = b0e8e7207c5ea62b41f316ae15bea006
 
 pkgname = python-pdfflow
-
