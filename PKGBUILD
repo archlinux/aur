@@ -1,19 +1,17 @@
 # Maintainer: Mads Kjeldgaard<mail@madskjeldgaard.dk>
 pkgname=supercollider-ibufwr-git
 pkgver=r30.96f9a23
-pkgrel=1
+pkgrel=2
 pkgdesc='An Interpolating Buffer Writer UGen for SuperCollider'
 arch=('any')
 url='https://github.com/tremblap/IBufWr'
 license=('BSD')
 groups=('pro-audio' 'supercollider-plugins')
 depends=('supercollider')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'supercollider-headers-git' )
 optdepends=()
-source=("$pkgname-$pkgver"::git+$url.git
-        'supercollider-source::git+https://github.com/supercollider/supercollider.git')
-md5sums=('SKIP'
-         'SKIP')
+source=("$pkgname-$pkgver"::git+$url.git)
+md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -21,16 +19,15 @@ pkgver() {
 }
 
 build() {
-		SC_SRC="$srcdir/supercollider-source"
+		SC_SRC="/usr/share/supercollider-headers"
 
-		cd $SC_SRC 
-		git submodule update --init --recursive
 		cd "$srcdir/$pkgname-$pkgver"
-
 		mkdir build 
 		cd build
 
 		cmake -DSC_PATH=$SC_SRC -DCMAKE_BUILD_TYPE=RELEASE ..
+		# cmake -DCMAKE_BUILD_TYPE=RELEASE ..
+
 		make
 }
 
@@ -43,7 +40,6 @@ package() {
 	mkdir -p $DEST/Classes 
 	mkdir -p $DEST/HelpSource/Classes
 	mkdir -p $DEST/HelpSource/Guides
-
 
 	# Classes
 	PLUGIN_NAME=IBufWr
@@ -58,7 +54,5 @@ package() {
 
 	# Shared objects
 	for FILE in *.so; do install -Dm755 ./build/*.so "$DEST"; done
-
-
 }
 
