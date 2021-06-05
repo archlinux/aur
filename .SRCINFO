@@ -9,10 +9,9 @@ pkgbase = supercollider-steroids-ugens-git
 	license = GPL
 	makedepends = git
 	makedepends = cmake
+	makedepends = supercollider-headers-git
 	depends = supercollider
 	source = supercollider-steroids-ugens-git-r3.1d4a9b2::git+https://github.com/tai-studio/steroids-ugens.git
-	source = supercollider-source::git+https://github.com/supercollider/supercollider.git
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = supercollider-steroids-ugens-git
