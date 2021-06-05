@@ -9,10 +9,9 @@ pkgbase = supercollider-sonoro1234-ugens-git
 	license = GPL
 	makedepends = git
 	makedepends = cmake
+	makedepends = supercollider-headers-git
 	depends = supercollider
 	source = supercollider-sonoro1234-ugens-git-r52.373594f::git+https://github.com/sonoro1234/MyUGens.git
-	source = supercollider-source::git+https://github.com/supercollider/supercollider.git
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = supercollider-sonoro1234-ugens-git

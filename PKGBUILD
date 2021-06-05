@@ -8,13 +8,11 @@ url='https://github.com/sonoro1234/MyUGens'
 license=('GPL')
 groups=('pro-audio' 'supercollider-plugins')
 depends=('supercollider')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'supercollider-headers-git')
 optdepends=()
 source=("$pkgname-$pkgver"::git+$url.git
-        'supercollider-source::git+https://github.com/supercollider/supercollider.git')
-md5sums=('SKIP'
-         'SKIP')
-
+        )
+md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -22,10 +20,7 @@ pkgver() {
 }
 
 build() {
-		SC_SRC="$srcdir/supercollider-source"
-
-		cd $SC_SRC 
-		git submodule update --init --recursive
+		SC_SRC="/usr/share/supercollider-headers"
 
 		cd "$srcdir/$pkgname-$pkgver"
 		git submodule update --init --recursive
