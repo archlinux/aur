@@ -9,10 +9,9 @@ pkgbase = supercollider-super-bufrd-git
 	license = GPL
 	makedepends = git
 	makedepends = cmake
+	makedepends = supercollider-headers-git
 	depends = supercollider
 	source = supercollider-super-bufrd-git-r84.a785981::git+https://github.com/esluyter/super-bufrd.git
-	source = supercollider-source::git+https://github.com/supercollider/supercollider.git
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = supercollider-super-bufrd-git

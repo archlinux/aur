@@ -8,12 +8,10 @@ url="https://github.com/esluyter/super-bufrd"
 license=('GPL')
 groups=('pro-audio' 'supercollider-plugins')
 depends=('supercollider')
-makedepends=("git" "cmake")
+makedepends=("git" "cmake" "supercollider-headers-git")
 optdepends=()
-source=("$pkgname-$pkgver"::git+$url.git
-        "supercollider-source::git+https://github.com/supercollider/supercollider.git")
-md5sums=('SKIP'
-         'SKIP')
+source=("$pkgname-$pkgver"::git+$url.git)
+md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -21,10 +19,8 @@ pkgver() {
 }
 
 build() {
-		SC_SRC="$srcdir/supercollider-source"
+		SC_SRC="/usr/share/supercollider-headers"
 
-		cd $SC_SRC 
-		git submodule update --init --recursive
 		cd "$srcdir/$pkgname-$pkgver"
 
 		mkdir build 
