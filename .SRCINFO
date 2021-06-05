@@ -8,7 +8,7 @@ pkgbase = hmat-oss16
 	makedepends = cmake
 	depends = cblas
 	depends = lapack
-	provides = hmat-oss
+	provides = hmat-oss=1.6.1
 	conflicts = hmat-oss
 	source = https://github.com/jeromerobert/hmat-oss/archive/1.6.1.tar.gz
 	source = set_num_threads.patch
