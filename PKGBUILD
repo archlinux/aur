@@ -2,8 +2,8 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=vivaldi-snapshot-ffmpeg-codecs
-pkgver=90.0.4430.58
-_vivaldi_major_version=3.8
+pkgver=91.0.4472.77
+_vivaldi_major_version=4.0
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for vivaldi"
 arch=('x86_64')
@@ -12,13 +12,13 @@ license=('LGPL2.1')
 depends=('glibc')
 makedepends=(
   'gtk3' 'libexif' 'libxss' 'ninja' 'nss' 'pciutils' 'python' 'python2'
-  'xdg-utils' 'gn' 'libva'
+  'xdg-utils' 'gn' 'libva' 'nodejs'
 )
 options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
 )
-sha512sums=('f433ef49f2f5da6d4952208bc653b578622fc14f97e5da1107ed18d8f2a0016e9167c03f424e7a2ec464e4d15d93e38e726eb973a8967162b80f08820feea911')
+sha512sums=('06113c3627c1ccd390f078a52e0eaaf9c1d7178d568d6d2e37c96e1eb09fc0e872ac2b2d7ebe55e4da87eebee4965816bbba2f6ea53047f86cd5d0ad1d260a25')
 
 #prepare() {
   #cd "$srcdir/chromium-$pkgver"
@@ -30,6 +30,10 @@ build() {
   python tools/clang/scripts/update.py
 
   export PATH="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin:$PATH"
+
+  # Setup nodejs dependency.
+  mkdir -p third_party/node/linux/node-linux-x64/bin/
+  ln -sf /usr/bin/node third_party/node/linux/node-linux-x64/bin/node
 
   # error while loading shared libraries: libtinfo.so.5: cannot open shared object file: No such file or directory
   ln -s /usr/lib/libtinfo.so.6 \
