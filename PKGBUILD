@@ -4,7 +4,7 @@
 
 pkgname=maltego
 
-pkgver=4.2.17.13809
+pkgver=4.2.18.13878
 pkgrel=1
 
 pkgdesc='Information gathering software by Paterva'
@@ -17,7 +17,7 @@ depends=('java-runtime' 'sh')
 install="$pkgname.install"
 source=("https://$pkgname-downloads.s3.us-east-2.amazonaws.com/linux/Maltego.v$pkgver.deb"
         "LICENSE.pdf::https://www.$pkgname.com/pdf/legal/${pkgname^}%20Technologies_TermsandConditions_2020-11.pdf")
-sha256sums=('169e7c4d89612317248c8223886254e00ce387eb06993746266ff58e11260e99'
+sha256sums=('e681a6ae7b02ec534f04fb4e83d753bcab07a206b94a50e17eddb024f7f9f572'
             '5295b55e0da0a7aaa733032bf6d508dd149d66b379f71c4b15271729c3aa5500')
 
 
