@@ -1,0 +1,20 @@
+pkgbase = gpgpwd-git
+	pkgdesc = A command-line password manager based around GnuPG
+	pkgver = 0.7.2.r8.ga6fa6a1
+	pkgrel = 1
+	url = https://gitlab.com/zerodogg/gpgpwd/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = perl
+	depends = perl-json
+	depends = perl-try-tiny
+	depends = gnupg
+	optdepends = git: synchronize your passwords between different machines
+	optdepends = xclip: for X11 clipboard support
+	optdepends = wl-copy: for Wayland clipboard support
+	conflicts = gpgpwd
+	source = git+https://gitlab.com/zerodogg/gpgpwd.git
+	sha256sums = SKIP
+
+pkgname = gpgpwd-git
