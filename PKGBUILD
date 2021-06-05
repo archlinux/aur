@@ -13,7 +13,7 @@ depends=('libevdev' 'hidapi' 'gtk3' 'libappindicator-gtk3')
 optdepends=('libx11: autoload configuration based on focused window')
 conflicts=("joyshockmapper" "joyshockmapper-git")
 provides=("${_pkgname}")
-source=("git+https://github.com/JibbSmart/JoyShockMapper")
+source=("git+https://github.com/Electronicks/JoyShockMapper")
 md5sums=('SKIP')
 
 pkgver() {
