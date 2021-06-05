@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-librsvg
 	pkgdesc = SVG rendering library (mingw-w64)
-	pkgver = 2.50.5
+	pkgver = 2.50.7
 	pkgrel = 1
 	url = https://wiki.gnome.org/action/show/Projects/LibRsvg
 	arch = any
@@ -20,8 +20,7 @@ pkgbase = mingw-w64-librsvg
 	options = !strip
 	options = staticlibs
 	options = !buildflags
-	source = git+https://gitlab.gnome.org/GNOME/librsvg.git#commit=fd385e68b4eb50cdeffbd120d8165f5a695f44e8
+	source = git+https://gitlab.gnome.org/GNOME/librsvg.git#commit=6ca387974e6a3e248c261d3dac15b8d4a742d3aa
 	sha256sums = SKIP
 
 pkgname = mingw-w64-librsvg
-
