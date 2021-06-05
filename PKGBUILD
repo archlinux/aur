@@ -1,69 +1,37 @@
-# Maintainer: Daurnimator <daurnimator@archlinux.org>
 
-pkgname="river-git"
-pkgver=r610.c8b1017
+# Maintainer: Andrea Feletto <andrea@andreafeletto.com>
+# Contributor: Daurnimator <daurnimator@archlinux.org>
+
+pkgname=river-git
+_pkgname=${pkgname%-*}
+pkgver=r623.0e9dc08
 pkgrel=1
 pkgdesc='A dynamic tiling wayland compositor.'
 arch=('x86_64')
 url='https://github.com/ifreund/river'
 license=('GPL3')
-depends=('libevdev' 'libxkbcommon' 'pixman' 'wayland' 'wlroots')
-makedepends=('git' 'pkg-config' 'scdoc' 'wayland-protocols' 'zig')
-provides=('river')
+depends=(
+	'zig>=0.8.0' 'mesa>=21.1.2' 'wayland' 'wayland-protocols' 'wlroots'
+	'libxkbcommon' 'libevdev' 'pixman' 'xorg-xwayland' 'scdoc'
+)
+provides=('river' 'riverctl' 'rivertile')
 conflicts=('river')
-source=('git+https://github.com/ifreund/river.git'
-        'git+https://github.com/ifreund/zig-pixman.git'
-        'git+https://github.com/ifreund/zig-wayland.git'
-        'git+https://github.com/swaywm/zig-wlroots.git'
-        'git+https://github.com/ifreund/zig-xkbcommon.git'
-        'libc.patch')
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            '8f17827bca6c320a9f4c722af4d56d77884a8965999629c050baee19136df38e')
-
-pkgver() {
-  cd river
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=("git+$url")
+sha256sums=('SKIP')
 
 prepare() {
-  cd river
-  git submodule init
-  git config submodule.deps/zig-pixman.url "${srcdir}/zig-pixman"
-  git config submodule.deps/zig-wayland.url "${srcdir}/zig-wayland"
-  git config submodule.deps/zig-wlroots.url "${srcdir}/zig-wlroots"
-  git config submodule.deps/zig-xkbcommon.url "${srcdir}/zig-xkbcommon"
-  git submodule update
-
-  # Workaround https://github.com/ziglang/zig/issues/8144
-  # See https://github.com/ifreund/river/issues/232#issuecomment-794067079
-  zig libc > libc-paths
-  patch -p1 < ../libc.patch
+	cd "$_pkgname"
+	git submodule update --init
 }
 
-build() {
-  cd river
-  zig build \
-    --search-prefix "/usr" \
-    -Dtarget=x86_64-linux-gnu \
-    -Drelease-safe \
-    -Dxwayland \
-    -Dman-pages
+pkgver() {
+	cd "$_pkgname"
+	printf 'r%s.%s' "$(git rev-list --count HEAD)" \
+		"$(git rev-parse --short HEAD)"
 }
 
 package() {
-  backup=('etc/river/init')
-
-  cd river
-  DESTDIR="${pkgdir}" zig build \
-    --prefix "/usr" \
-    --search-prefix "/usr" \
-    -Dtarget=x86_64-linux-gnu \
-    -Drelease-safe \
-    -Dxwayland \
-    -Dman-pages \
-    install
+	cd "$_pkgname"
+	DESTDIR="$pkgdir" zig build install -Drelease-safe -Dxwayland \
+		--prefix '/usr'
 }

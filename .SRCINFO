@@ -1,35 +1,25 @@
 pkgbase = river-git
 	pkgdesc = A dynamic tiling wayland compositor.
-	pkgver = r610.c8b1017
+	pkgver = r623.0e9dc08
 	pkgrel = 1
 	url = https://github.com/ifreund/river
 	arch = x86_64
 	license = GPL3
-	makedepends = git
-	makedepends = pkg-config
-	makedepends = scdoc
-	makedepends = wayland-protocols
-	makedepends = zig
-	depends = libevdev
-	depends = libxkbcommon
-	depends = pixman
+	depends = zig>=0.8.0
+	depends = mesa>=21.1.2
 	depends = wayland
+	depends = wayland-protocols
 	depends = wlroots
+	depends = libxkbcommon
+	depends = libevdev
+	depends = pixman
+	depends = xorg-xwayland
+	depends = scdoc
 	provides = river
+	provides = riverctl
+	provides = rivertile
 	conflicts = river
-	source = git+https://github.com/ifreund/river.git
-	source = git+https://github.com/ifreund/zig-pixman.git
-	source = git+https://github.com/ifreund/zig-wayland.git
-	source = git+https://github.com/swaywm/zig-wlroots.git
-	source = git+https://github.com/ifreund/zig-xkbcommon.git
-	source = libc.patch
+	source = git+https://github.com/ifreund/river
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = 8f17827bca6c320a9f4c722af4d56d77884a8965999629c050baee19136df38e
 
 pkgname = river-git
-	backup = etc/river/init
-
