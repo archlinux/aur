@@ -3,7 +3,7 @@
 _npmname=git-split-diffs
 pkgname=nodejs-git-split-diffs
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='GitHub style split diffs with syntax highlighting in your terminal.'
 arch=('x86_64')
 url='https://github.com/banga/git-split-diffs'
@@ -22,4 +22,5 @@ package() {
   npm install -g --prefix "$pkgdir/usr" "$_npmname@$pkgver"
   find "$pkgdir"/usr -type d -exec chmod 755 {} +
   install -Dm644 "$_npmdir/$_npmname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  chown -R root:root "${pkgdir}"
 }
