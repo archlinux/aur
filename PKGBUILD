@@ -1,5 +1,5 @@
-# Maintainer: Connor Sheridan <cws@nullsec.sh>
-# Contributor: Connor Sheridan <cws@nullsec.sh>
+# Maintainer: Justin Coffman <j@gosecure.dev>
+# Contributor: Justin Coffman <j@gosecure.dev>
 
 pkgname=tinyfugue
 pkgver=5.0.1
