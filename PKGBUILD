@@ -8,12 +8,10 @@ url="https://github.com/elgiano/xplaybuf"
 license=('GPL')
 groups=('pro-audio' 'supercollider-plugins')
 depends=('supercollider')
-makedepends=("git" "cmake")
+makedepends=('git' 'cmake' 'supercollider-headers-git')
 optdepends=()
-source=("$pkgname-$pkgver"::git+$url.git
-        "supercollider-source::git+https://github.com/supercollider/supercollider.git")
-md5sums=('SKIP'
-         'SKIP')
+source=("$pkgname-$pkgver"::git+$url.git)
+md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -21,37 +19,20 @@ pkgver() {
 }
 
 build() {
-		SC_SRC="$srcdir/supercollider-source"
+		SC_SRC="/usr/share/supercollider-headers"
 
-		cd $SC_SRC 
-		git submodule update --init --recursive
 		cd "$srcdir/$pkgname-$pkgver"
+		git submodule update --init --recursive
 
-		mkdir build 
-		cd build
-
-		cmake -DSC_PATH=$SC_SRC -DCMAKE_BUILD_TYPE=RELEASE ..
+		mkdir build; cd build
+		DEST="$pkgdir/usr/share/SuperCollider/Extensions"
+		cmake -DSC_PATH=$SC_SRC -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=$DEST ..
 		make
-
 }
 
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	DEST="$pkgdir/usr/share/SuperCollider/Extensions/$pkgname"
-
-	# Prepare install directories
-	mkdir -p $DEST/Classes 
-	mkdir -p $DEST/HelpSource/Classes
-
-	# Classes
-	PLUGIN_FOLDER=plugins/XPlayBuf
-	for FILE in "${PLUGIN_FOLDER}/*.sc"; do install -Dm755 ./$FILE "$DEST/Classes"; done
-
-	# Shared objects
-	for FILE in *.so; do install -Dm755 ./build/*.so "$DEST"; done
-
-	# Help Files
-	for FILE in "${PLUGIN_FOLDER}/*.schelp"; do install -Dm755 ./$FILE "$DEST/HelpSource/Classes"; done
-
+	cd "$srcdir/$pkgname-$pkgver/build"
+	cmake --build . --config Release --target install
 }
+

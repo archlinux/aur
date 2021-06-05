@@ -9,10 +9,9 @@ pkgbase = supercollider-xplaybuf-git
 	license = GPL
 	makedepends = git
 	makedepends = cmake
+	makedepends = supercollider-headers-git
 	depends = supercollider
 	source = supercollider-xplaybuf-git-r10.f0af995::git+https://github.com/elgiano/xplaybuf.git
-	source = supercollider-source::git+https://github.com/supercollider/supercollider.git
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = supercollider-xplaybuf-git
