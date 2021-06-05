@@ -1,7 +1,7 @@
 pkgbase = eduke32
 	pkgdesc = An advanced Duke Nukem 3D source port
 	pkgver = 20210604.r9382_bcc1cb0db
-	pkgrel = 1
+	pkgrel = 2
 	url = http://eduke32.com/
 	install = eduke32.install
 	arch = i686
