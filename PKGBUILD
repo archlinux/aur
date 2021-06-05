@@ -1,7 +1,7 @@
 # Maintainer: David Barri <japgolly@gmail.com>
 pkgname=verthash-miner
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GPU miner for the Verthash algorithm and Vertcoin"
 arch=('x86_64')
 url="https://github.com/CryptoGraphics/VerthashMiner"
@@ -13,14 +13,9 @@ conflicts=('verthash-miner-bin')
 
 build() {
 	set -eu
-	cd VerthashMiner
-
-	cmake \
-	  -DCMAKE_BUILD_TYPE=Release \
-	  -DCMAKE_VERBOSE_MAKEFILE=TRUE \
-		.
-
-	make
+  MAKE_BUILD_TYPE=Release
+  MAKE_VERBOSE_MAKEFILE=TRUE
+	pmake
 }
 
 package() {

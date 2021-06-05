@@ -1,7 +1,7 @@
 pkgbase = verthash-miner
 	pkgdesc = GPU miner for the Verthash algorithm and Vertcoin
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CryptoGraphics/VerthashMiner
 	arch = x86_64
 	license = GPL-3.0
