@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=xboot-git
-pkgver=v2.0.1.r1919.ge4f340b96
+pkgver=v2.0.1.r1919
 pkgrel=1
 pkgdesc="The extensible bootloader for embedded system with application engine, write once, run everywhere. (Linux Sandbox for x86_64)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/g' | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/-/./g'
 }
 
 build() {
