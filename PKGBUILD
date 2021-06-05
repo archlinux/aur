@@ -5,14 +5,14 @@ pkgname=eduke32
 _pkgdate=20210604
 _pkgrev='9382-bcc1cb0db'
 pkgver=$_pkgdate.r${_pkgrev/-/_}
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced Duke Nukem 3D source port"
 arch=('i686' 'x86_64')
 url="http://eduke32.com/"
 license=('GPL' 'custom: BUILD')
 depends=('libvpx' 'sdl2' 'flac' 'libvorbis' 'alsa-lib')
 makedepends=('mesa' 'glu')
-depends_i686=('lib32alsa-lib')
+depends_i686=('lib32-alsa-lib')
 makedepends_i686=('nasm')
 optdepends=('freepats-legacy: a free soundfont for music'
             'fluidsynth: alternative midi sequencer'
