@@ -1,20 +1,18 @@
 # Maintainer: Mads Kjeldgaard<mail@madskjeldgaard.dk>
 pkgname=supercollider-mkplugins-git
 pkgver=r235.fa9bd99
-pkgrel=1
+pkgrel=2
 pkgdesc="Mads Kjeldgaard's plugins for SuperCollider"
 arch=('any')
 url='https://github.com/madskjeldgaard/mkplugins'
 license=('GPL')
 groups=('pro-audio' 'supercollider-plugins')
 depends=('supercollider')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'supercollider-headers-git')
 optdepends=()
 conflicts=("supercollider-mkplugins")
-source=("$pkgname-$pkgver"::git+$url.git
-        'supercollider-source::git+https://github.com/supercollider/supercollider.git')
-md5sums=('SKIP'
-         'SKIP')
+source=("$pkgname-$pkgver"::git+$url.git)
+md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -22,10 +20,7 @@ pkgver() {
 }
 
 build() {
-		SC_SRC="$srcdir/supercollider-source"
-
-		cd $SC_SRC 
-		git submodule update --init --recursive
+		SC_SRC="/usr/share/supercollider-headers"
 
 		cd "$srcdir/$pkgname-$pkgver"
 		git submodule update --init --recursive

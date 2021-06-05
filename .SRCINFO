@@ -1,7 +1,7 @@
 pkgbase = supercollider-mkplugins-git
 	pkgdesc = Mads Kjeldgaard's plugins for SuperCollider
 	pkgver = r235.fa9bd99
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/madskjeldgaard/mkplugins
 	arch = any
 	groups = pro-audio
@@ -9,11 +9,10 @@ pkgbase = supercollider-mkplugins-git
 	license = GPL
 	makedepends = git
 	makedepends = cmake
+	makedepends = supercollider-headers-git
 	depends = supercollider
 	conflicts = supercollider-mkplugins
 	source = supercollider-mkplugins-git-r235.fa9bd99::git+https://github.com/madskjeldgaard/mkplugins.git
-	source = supercollider-source::git+https://github.com/supercollider/supercollider.git
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = supercollider-mkplugins-git
