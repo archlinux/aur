@@ -3,12 +3,13 @@
 
 pkgname=guide-bin
 pkgver=1.0.2
-pkgrel=5
+pkgrel=6
 pkgdesc='由北航 GAIT 研究组开发的、专门为 NOI 选手设计的轻型集成开发环境'
 arch=('i686' 'x86_64')
 url='http://www.noi.cn/xw/2009-03-23/714714.shtml'
 license=('custom')
 depends=(
+  'hicolor-icon-theme'
   'lib32-libpng12'
   'lib32-libsm'
   'lib32-libice'
@@ -32,10 +33,8 @@ source=(
   "http://download.noi.cn/T/noi/GUIDE-${pkgver}-ubuntu.tar"
   'GUIDE.desktop'
 )
-sha256sums=(
-  '263af8b4710408f08c772edf065dd9d41e287f8bbd3e57054fdb5b612c6f3086'
-  '121f3e0eebc4bfa911fefa55025ed4d6a74a183b225dee8801361e6873e24859'
-)
+sha256sums=('263af8b4710408f08c772edf065dd9d41e287f8bbd3e57054fdb5b612c6f3086'
+            '121f3e0eebc4bfa911fefa55025ed4d6a74a183b225dee8801361e6873e24859')
 
 package() {
   cd "$srcdir/GUIDE-${pkgver}-ubuntu"

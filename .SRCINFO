@@ -1,11 +1,12 @@
 pkgbase = guide-bin
 	pkgdesc = 由北航 GAIT 研究组开发的、专门为 NOI 选手设计的轻型集成开发环境
 	pkgver = 1.0.2
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.noi.cn/xw/2009-03-23/714714.shtml
 	arch = i686
 	arch = x86_64
 	license = custom
+	depends = hicolor-icon-theme
 	depends = lib32-libpng12
 	depends = lib32-libsm
 	depends = lib32-libice
