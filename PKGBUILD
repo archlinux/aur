@@ -3,7 +3,7 @@
 
 pkgname=realrtcw
 pkgver=3.2n
-pkgrel=1
+pkgrel=2
 pkgdesc="An overhaul mod for critically acclaimed Return To Castle Wolfenstein."
 arch=('i686' 'x86_64')
 url="http://www.moddb.com/mods/realrtcw-realism-mod"
@@ -12,8 +12,8 @@ depends=('freetype2' 'graphite' 'harfbuzz' 'iortcw-data' 'libjpeg-turbo' 'libogg
 makedepends=('unzip')
 install='realrtcw.install'
 sha256sums=('3dba9afe8d945c9e351acfde3d6b66e895b6f3aa8f7240204fb71046e9bcb6ce'
-            '7bdfe066287d0c5dcf9d34bde662ed557bbab825437ace5ae7cc4eba8c8ba191'
-            '7940bcba27e82a4de14d8243f057ded501986b780190d87bc2729f556c76a2ed'
+            'SKIP'
+            'SKIP'
             '643bd2a56b06fbdf9790b3bb7557c7f6663cc3e86295431f6470b347e37b4bb2'
             'e68d6f400342e36d3db94e519978da0afa2d74f3368b1fe88014c4bdb26b193e'
             '43501d60c80ae4a2837295fb5faf01d42e31f31371fcd6cecc8054eed965b8f6'
