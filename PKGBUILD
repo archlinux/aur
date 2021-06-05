@@ -1,5 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=goverlay-bin
+_id="io.github.benjamimgois.${pkgname%-bin}"
 _pkgver=0_5_1
 pkgver=${_pkgver//_/.}
 pkgrel=1
@@ -18,8 +19,8 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("$url/releases/download/$pkgver/${pkgname%-bin}_${_pkgver}.tar.xz"
         "${pkgname%-bin}.1.gz"
-        "io.github.benjamimgois.${pkgname%-bin}.desktop"
-        "io.github.benjamimgois.${pkgname%-bin}.metainfo.xml"
+        "$_id.desktop"
+        "$_id.metainfo.xml"
         "${pkgname%-bin}.png")
 sha256sums=('a3cc428d63012a54b3a6bb832ba44ec11f65f089327c82c90a81b55f2a40ba6e'
             '5fc33dc64105c0bb2a3bdbab80e2a556a282da952b3612e21612a043367025f7'
@@ -30,9 +31,7 @@ sha256sums=('a3cc428d63012a54b3a6bb832ba44ec11f65f089327c82c90a81b55f2a40ba6e'
 package() {
 	install -Dm755 "${pkgname%-bin}" -t "$pkgdir/usr/bin"
 	install -Dm644 "${pkgname%-bin}.1" -t "$pkgdir/usr/share/man/man1"
-	install -Dm644 "io.github.benjamimgois.${pkgname%-bin}.desktop" -t \
-		"$pkgdir/usr/share/applications"
-	install -Dm644 "io.github.benjamimgois.${pkgname%-bin}.metainfo.xml" -t \
-		"$pkgdir/usr/share/metainfo"
+	install -Dm644 "$_id.desktop" -t "$pkgdir/usr/share/applications"
+	install -Dm644 "$_id.metainfo.xml" -t "$pkgdir/usr/share/metainfo"
 	install -Dm644 "${pkgname%-bin}.png" -t "$pkgdir/usr/share/pixmaps"
 }
