@@ -9,10 +9,9 @@ pkgbase = supercollider-vbugens-git
 	license = GPL
 	makedepends = git
 	makedepends = cmake
+	makedepends = supercollider-headers-git
 	depends = supercollider
 	source = supercollider-vbugens-git-r34.96794ed::git+https://github.com/v7b1/vb_UGens.git
-	source = supercollider-source::git+https://github.com/supercollider/supercollider.git
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = supercollider-vbugens-git
