@@ -1,6 +1,6 @@
 pkgbase = g15daemon-systemd
 	pkgdesc = g15daemon init script for systemd
-	pkgver = 1
+	pkgver = 20210605
 	pkgrel = 1
 	url = https://gitlab.com/menelkir/g15daemon
 	arch = any
