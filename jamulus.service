@@ -1,0 +1,29 @@
+[Unit]
+Description=Jamulus-Server
+After=network.target
+
+[Service]
+Type=simple
+User=jamulus
+Group=nobody
+NoNewPrivileges=true
+ProtectSystem=true
+ProtectHome=true
+Nice=-20
+IOSchedulingClass=realtime
+IOSchedulingPriority=0
+Environment=central_server="jamulus.fischvolk.de"
+Environment=server_info="yourServerName;yourCity;[country ID]"
+
+#### Change this to set genre, location and other parameters.
+#### See https://github.com/corrados/jamulus/wiki/Command-Line-Options ####
+ExecStart=/usr/bin/Jamulus-headless -s -n -e "${central_server}" -o "${server_info}"
+     
+Restart=on-failure
+RestartSec=30
+StandardOutput=journal
+StandardError=inherit
+SyslogIdentifier=jamulus
+
+[Install]
+WantedBy=multi-user.target

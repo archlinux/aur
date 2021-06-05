@@ -1,7 +1,7 @@
 pkgbase = jamulus-headless
 	pkgdesc = Internet jam session software (headless server)
 	pkgver = 3.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jamulus.io/
 	arch = x86_64
 	license = GPL2
@@ -11,6 +11,8 @@ pkgbase = jamulus-headless
 	depends = opus-git
 	provides = jamulus
 	source = jamulus-3.8.0.tar.gz::https://github.com/corrados/jamulus/archive/r3_8_0.tar.gz
+	source = jamulus.service
 	sha1sums = 7c285c3dafd5cf8fc0184a2ef97e6cebdacf61ea
+	sha1sums = cbe82818b40eba6dc3ee88f98af8ae16ff44137e
 
 pkgname = jamulus-headless
