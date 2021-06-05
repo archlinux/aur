@@ -29,7 +29,7 @@ build() {
   cd "$pkgname-$pkgver"
 
   yarn build
-  yarn make:linux
+  yarn make:linux --"${!CARCH}"
 }
 
 package() {
