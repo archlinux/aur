@@ -4,30 +4,39 @@
 
 _pkgbase=pipewire
 pkgbase=pipewire-full-git
-pkgname=(pipewire-full-git pipewire-full-docs-git pipewire-full-alsa-git
-         pipewire-full-jack-git pipewire-full-pulse-git
+pkgname=(pipewire-full-git
+         pipewire-full-docs-git
+         pipewire-full-alsa-git
+         pipewire-full-jack-git
+         pipewire-full-pulse-git
          pipewire-full-zeroconf-git
          gst-plugin-pipewire-full-git
          pipewire-full-jack-client-git
-         pipewire-full-vulkan-git pipewire-full-ffmpeg-git)
+         pipewire-full-vulkan-git
+         pipewire-full-ffmpeg-git
+         )
 pkgver=0.3.28.r159.g6971d1190
 pkgrel=2
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 license=(MIT)
 arch=(x86_64)
-makedepends=(git meson doxygen xmltoman
-             ncurses libsndfile alsa-lib dbus rtkit
-             libpulse avahi sdl2 gst-plugins-base-libs
-             webrtc-audio-processing
-             bluez-libs sbc libldac libopenaptx libfdk-aac
-             jack2 vulkan-headers vulkan-icd-loader ffmpeg)
+makedepends=(git meson doxygen xmltoman ncurses
+             libsndfile alsa-lib dbus rtkit libpulse
+             webrtc-audio-processing bluez-libs
+             sbc libldac libopenaptx libfdk-aac
+             avahi
+             gst-plugins-base-libs
+             jack2
+             vulkan-headers vulkan-icd-loader
+             ffmpeg
+             )
 source=("git+https://gitlab.freedesktop.org/pipewire/pipewire.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgbase
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=8 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -39,10 +48,10 @@ build() {
   rm -rf build || true
   arch-meson $_pkgbase build \
     -D docs=enabled \
-    -D ffmpeg=enabled \
     -D test=enabled \
     -D libcamera=disabled \
-    -D vulkan=enabled \
+    -D sdl2=disabled \
+    -D ffmpeg=enabled \
     -D udevrulesdir=/usr/lib/udev/rules.d
   meson compile -C build
 }
@@ -67,8 +76,8 @@ package_pipewire-full-git() {
   license+=(LGPL)
   depends=(rtkit libdbus-1.so libncursesw.so libsndfile.so
            libudev.so libasound.so libsystemd.so libpulse.so
-           webrtc-audio-processing
-           libbluetooth.so libsbc.so libldacBT_enc.so
+           libwebrtc_audio_processing.so
+           libbluetooth.so libsbc.so libldacBT_{enc,abr}.so
            libopenaptx.so libfdk-aac.so)
   optdepends=('pipewire-full-docs-git: Documentation'
               'pipewire-full-alsa-git: ALSA configuration'
@@ -135,8 +144,8 @@ package_pipewire-full-alsa-git() {
 }
 
 package_pipewire-full-jack-git() {
-  license+=(GPL2)
   pkgdesc+=" - JACK support"
+  license+=(GPL2)
   depends=(pipewire-full-git libpipewire-$_ver.so bash)
   provides=(pipewire-jack)
   conflicts=(pipewire-jack)
@@ -160,7 +169,7 @@ package_pipewire-full-pulse-git() {
 
 package_pipewire-full-zeroconf-git() {
   pkgdesc+=" - Zeroconf support"
-  depends=(pipewire-common-git libpipewire-$_ver.so
+  depends=(pipewire-full-git libpipewire-$_ver.so
            libavahi-{client,common}.so)
   provides=(pipewire-zeroconf)
   conflicts=(pipewire-zeroconf)
