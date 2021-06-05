@@ -1,6 +1,6 @@
 pkgbase = linux-lts-logo
 	pkgdesc = LTS Linux with tux logo
-	pkgver = 5.10.41
+	pkgver = 5.10.42
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -19,18 +19,18 @@ pkgbase = linux-lts-logo
 	makedepends = graphviz
 	makedepends = imagemagick
 	options = !strip
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.41.tar.xz
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.41.tar.sign
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.42.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.42.tar.sign
 	source = config
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 	source = config.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = f604759de80767c4f8bdc500eec730dc161bc914a48bd366b748c176701a6771
+	sha256sums = 8ba027c73bd67b8ded2649a741d2f018db630c1cbc081700d8ffd07ab0d906e5
 	sha256sums = SKIP
 	sha256sums = c6d4cef408fcc4c7c30ff6ec8bf142a8846459c831aa1184979a45b70ffff21a
 	sha256sums = 6992aed5d5398f9442f0ce94d5d5b6503bf492df0ebe719ed6e0fc1dc2ee1929
-	sha256sums = f738526286e1b0b516a629a35e255dfc86a95fa55a41564bba4e40adaa364978
+	sha256sums = 11d9b32336ab3454eedf34eb382c0102868053de5b340b345506c0f5f6be91f9
 
 pkgname = linux-lts-logo
 	pkgdesc = The LTS Linux with tux logo kernel and modules
@@ -45,4 +45,3 @@ pkgname = linux-lts-logo
 
 pkgname = linux-lts-logo-headers
 	pkgdesc = Headers and scripts for building modules for the LTS Linux with tux logo kernel
-
