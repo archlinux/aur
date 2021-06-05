@@ -3,7 +3,7 @@
 pkgname='gitify'
 _pkgname="Gitify"
 pkgver=4.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='GitHub notifications on your menu bar.'
 arch=('x86_64')
 url='https://www.gitify.io/'
@@ -36,5 +36,8 @@ package() {
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   mkdir -p "$pkgdir/usr/bin"
-  ln -s "/opt/$_pkgname/gitify" "$pkgdir/usr/bin/gitify"
+  ln -sf "/opt/$_pkgname/gitify" "$pkgdir/usr/bin/gitify"
+
+  # SUID chrome-sandbox for electron 5+ as indicated here: https://github.com/electron/electron/issues/17972#issuecomment-487369441
+  chmod 4755 "$pkgdir/opt/Gitify/chrome-sandbox"
 }
