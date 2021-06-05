@@ -1,6 +1,39 @@
+From 9a42006b641bc8e0c333174a9bf269ac9450d521 Mon Sep 17 00:00:00 2001
+From: Piotr Gorski <lucjan.lucjanov@gmail.com>
+Date: Tue, 13 Apr 2021 16:27:12 +0200
+Subject: [PATCH] UKSM for 5.12
+
+Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
+---
+ Documentation/vm/uksm.txt   |   61 +
+ fs/exec.c                   |    1 +
+ fs/proc/meminfo.c           |    4 +
+ include/linux/ksm.h         |   43 +-
+ include/linux/mm_types.h    |    3 +
+ include/linux/mmzone.h      |    3 +
+ include/linux/pgtable.h     |   17 +-
+ include/linux/sradix-tree.h |   77 +
+ include/linux/uksm.h        |  149 +
+ kernel/fork.c               |    2 +-
+ lib/Makefile                |    2 +-
+ lib/sradix-tree.c           |  476 +++
+ mm/Kconfig                  |   26 +
+ mm/Makefile                 |    3 +-
+ mm/ksm.c                    |   11 -
+ mm/memory.c                 |   33 +-
+ mm/mmap.c                   |   37 +
+ mm/uksm.c                   | 5614 +++++++++++++++++++++++++++++++++++
+ mm/vmstat.c                 |    3 +
+ 19 files changed, 6539 insertions(+), 26 deletions(-)
+ create mode 100644 Documentation/vm/uksm.txt
+ create mode 100644 include/linux/sradix-tree.h
+ create mode 100644 include/linux/uksm.h
+ create mode 100644 lib/sradix-tree.c
+ create mode 100644 mm/uksm.c
+
 diff --git a/Documentation/vm/uksm.txt b/Documentation/vm/uksm.txt
 new file mode 100644
-index 000000000000..be19a3127001
+index 000000000..be19a3127
 --- /dev/null
 +++ b/Documentation/vm/uksm.txt
 @@ -0,0 +1,61 @@
@@ -66,7 +99,7 @@ index 000000000000..be19a3127001
 +2016-09-10 UKSM 0.1.2.5 Fix a bug in dedup ratio calculation.
 +2017-02-26 UKSM 0.1.2.6 Fix a bug in hugetlbpage handling and a race bug with page migration.
 diff --git a/fs/exec.c b/fs/exec.c
-index 18594f11c31f..aee636fd4c87 100644
+index 18594f11c..aee636fd4 100644
 --- a/fs/exec.c
 +++ b/fs/exec.c
 @@ -65,6 +65,7 @@
@@ -78,7 +111,7 @@ index 18594f11c31f..aee636fd4c87 100644
  #include <linux/uaccess.h>
  #include <asm/mmu_context.h>
 diff --git a/fs/proc/meminfo.c b/fs/proc/meminfo.c
-index 6fa761c9cc78..45fd59a0d85c 100644
+index 6fa761c9c..45fd59a0d 100644
 --- a/fs/proc/meminfo.c
 +++ b/fs/proc/meminfo.c
 @@ -108,6 +108,10 @@ static int meminfo_proc_show(struct seq_file *m, void *v)
@@ -93,7 +126,7 @@ index 6fa761c9cc78..45fd59a0d85c 100644
  	show_val_kb(m, "NFS_Unstable:   ", 0);
  	show_val_kb(m, "Bounce:         ",
 diff --git a/include/linux/ksm.h b/include/linux/ksm.h
-index 161e8164abcf..f0dbdf3c986a 100644
+index 161e8164a..f0dbdf3c9 100644
 --- a/include/linux/ksm.h
 +++ b/include/linux/ksm.h
 @@ -21,20 +21,16 @@ struct mem_cgroup;
@@ -164,7 +197,7 @@ index 161e8164abcf..f0dbdf3c986a 100644
 +
  #endif /* __LINUX_KSM_H */
 diff --git a/include/linux/mm_types.h b/include/linux/mm_types.h
-index 6613b26a8894..82e18e41b319 100644
+index 6613b26a8..82e18e41b 100644
 --- a/include/linux/mm_types.h
 +++ b/include/linux/mm_types.h
 @@ -370,6 +370,9 @@ struct vm_area_struct {
@@ -178,7 +211,7 @@ index 6613b26a8894..82e18e41b319 100644
  
  struct core_thread {
 diff --git a/include/linux/mmzone.h b/include/linux/mmzone.h
-index 47946cec7584..a6ce64844180 100644
+index 47946cec7..a6ce64844 100644
 --- a/include/linux/mmzone.h
 +++ b/include/linux/mmzone.h
 @@ -157,6 +157,9 @@ enum zone_stat_item {
@@ -192,7 +225,7 @@ index 47946cec7584..a6ce64844180 100644
  
  enum node_stat_item {
 diff --git a/include/linux/pgtable.h b/include/linux/pgtable.h
-index 5e772392a379..9d733540d57e 100644
+index 5e772392a..9d733540d 100644
 --- a/include/linux/pgtable.h
 +++ b/include/linux/pgtable.h
 @@ -1111,12 +1111,25 @@ extern void untrack_pfn(struct vm_area_struct *vma, unsigned long pfn,
@@ -233,7 +266,7 @@ index 5e772392a379..9d733540d57e 100644
  static inline unsigned long my_zero_pfn(unsigned long addr)
 diff --git a/include/linux/sradix-tree.h b/include/linux/sradix-tree.h
 new file mode 100644
-index 000000000000..d71edba6b63f
+index 000000000..d71edba6b
 --- /dev/null
 +++ b/include/linux/sradix-tree.h
 @@ -0,0 +1,77 @@
@@ -316,7 +349,7 @@ index 000000000000..d71edba6b63f
 +#endif /* _LINUX_SRADIX_TREE_H */
 diff --git a/include/linux/uksm.h b/include/linux/uksm.h
 new file mode 100644
-index 000000000000..bb8651f534f2
+index 000000000..bb8651f53
 --- /dev/null
 +++ b/include/linux/uksm.h
 @@ -0,0 +1,149 @@
@@ -470,7 +503,7 @@ index 000000000000..bb8651f534f2
 +#endif /* !CONFIG_UKSM */
 +#endif /* __LINUX_UKSM_H */
 diff --git a/kernel/fork.c b/kernel/fork.c
-index 426cd0c51f9e..5fd356ca780e 100644
+index 426cd0c51..5fd356ca7 100644
 --- a/kernel/fork.c
 +++ b/kernel/fork.c
 @@ -588,7 +588,7 @@ static __latent_entropy int dup_mmap(struct mm_struct *mm,
@@ -483,7 +516,7 @@ index 426cd0c51f9e..5fd356ca780e 100644
  		if (!(tmp->vm_flags & VM_WIPEONFORK))
  			retval = copy_page_range(tmp, mpnt);
 diff --git a/lib/Makefile b/lib/Makefile
-index b5307d3eec1a..480b099e1bb6 100644
+index b5307d3ee..480b099e1 100644
 --- a/lib/Makefile
 +++ b/lib/Makefile
 @@ -28,7 +28,7 @@ CFLAGS_string.o += -fno-stack-protector
@@ -497,7 +530,7 @@ index b5307d3eec1a..480b099e1bb6 100644
  	 is_single_threaded.o plist.o decompress.o kobject_uevent.o \
 diff --git a/lib/sradix-tree.c b/lib/sradix-tree.c
 new file mode 100644
-index 000000000000..ab21e6309b93
+index 000000000..ab21e6309
 --- /dev/null
 +++ b/lib/sradix-tree.c
 @@ -0,0 +1,476 @@
@@ -978,7 +1011,7 @@ index 000000000000..ab21e6309b93
 +	return 0;
 +}
 diff --git a/mm/Kconfig b/mm/Kconfig
-index 24c045b24b95..3ce98ecc2151 100644
+index 24c045b24..3ce98ecc2 100644
 --- a/mm/Kconfig
 +++ b/mm/Kconfig
 @@ -317,6 +317,32 @@ config KSM
@@ -1015,7 +1048,7 @@ index 24c045b24b95..3ce98ecc2151 100644
  config DEFAULT_MMAP_MIN_ADDR
  	int "Low address space to protect from user allocation"
 diff --git a/mm/Makefile b/mm/Makefile
-index 72227b24a616..fd50a3a51370 100644
+index 72227b24a..fd50a3a51 100644
 --- a/mm/Makefile
 +++ b/mm/Makefile
 @@ -76,7 +76,8 @@ obj-$(CONFIG_SPARSEMEM)	+= sparse.o
@@ -1029,7 +1062,7 @@ index 72227b24a616..fd50a3a51370 100644
  obj-$(CONFIG_SLAB) += slab.o
  obj-$(CONFIG_SLUB) += slub.o
 diff --git a/mm/ksm.c b/mm/ksm.c
-index 9694ee2c71de..63af6a528752 100644
+index 9694ee2c7..63af6a528 100644
 --- a/mm/ksm.c
 +++ b/mm/ksm.c
 @@ -858,17 +858,6 @@ static int unmerge_ksm_pages(struct vm_area_struct *vma,
@@ -1051,7 +1084,7 @@ index 9694ee2c71de..63af6a528752 100644
  /*
   * Only called through the sysfs control interface:
 diff --git a/mm/memory.c b/mm/memory.c
-index 550405fc3b5e..b4005b195dae 100644
+index 550405fc3..b4005b195 100644
 --- a/mm/memory.c
 +++ b/mm/memory.c
 @@ -158,6 +158,25 @@ EXPORT_SYMBOL(zero_pfn);
@@ -1139,7 +1172,7 @@ index 550405fc3b5e..b4005b195dae 100644
  		}
  		flush_cache_page(vma, vmf->address, pte_pfn(vmf->orig_pte));
 diff --git a/mm/mmap.c b/mm/mmap.c
-index 3f287599a7a3..dc719db434fc 100644
+index 3f287599a..dc719db43 100644
 --- a/mm/mmap.c
 +++ b/mm/mmap.c
 @@ -46,6 +46,7 @@
@@ -1300,7 +1333,7 @@ index 3f287599a7a3..dc719db434fc 100644
  
 diff --git a/mm/uksm.c b/mm/uksm.c
 new file mode 100644
-index 000000000000..e4732c00be69
+index 000000000..e4732c00b
 --- /dev/null
 +++ b/mm/uksm.c
 @@ -0,0 +1,5614 @@
@@ -6919,7 +6952,7 @@ index 000000000000..e4732c00be69
 +#endif
 +
 diff --git a/mm/vmstat.c b/mm/vmstat.c
-index 74b2c374b86c..ae42103a8e5e 100644
+index 74b2c374b..ae42103a8 100644
 --- a/mm/vmstat.c
 +++ b/mm/vmstat.c
 @@ -1231,6 +1231,9 @@ const char * const vmstat_text[] = {
@@ -6932,3 +6965,6 @@ index 74b2c374b86c..ae42103a8e5e 100644
  	/* enum writeback_stat_item counters */
  	"nr_dirty_threshold",
  	"nr_dirty_background_threshold",
+-- 
+2.31.1.305.gd1b10fc6d8
+

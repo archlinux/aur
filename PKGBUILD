@@ -6,7 +6,7 @@
 # Set the next two variables to ANYTHING that is not null to enable them
 
 # Tweak kernel options prior to a build via nconfig
-_makenconfig=
+_makenconfig=y
 
 # Only compile active modules to VASTLY reduce the number of modules built and
 # the build time.
@@ -63,12 +63,12 @@ _localmodcfg=
 #  39. Generic-x86-64-v4 (GENERIC_CPU4) (NEW)
 #  40. Intel-Native optimizations autodetected by GCC (MNATIVE_INTEL) (NEW)
 #  41. AMD-Native optimizations autodetected by GCC (MNATIVE_AMD) (NEW)
-_subarch=
+_subarch=17
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-pkgbase=linux-ck1-uksm
-pkgver=5.12.8
+pkgbase=linux-ck-uksm
+pkgver=5.12.9
 pkgrel=1
 _ckpatchversion=1
 _major=5.12
@@ -93,13 +93,13 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('c2d0c2239c5b440cc93e1e0e312511497eccf9e5cef61707c7f42fa924f66defdd4275575341b46b3ee45269c705dd2ba2e2c68fb1dd4ced438b852803180ddb'
+b2sums=('c4ba5b7da3e7af4edb3511b63a21f3d6ca8138f4a5fa77714f49a97f7c06db21daf3df66bb905561d6975b6652bf5b517e995f5e673328b9df3415f37ac01fd0'
         'SKIP'
         'SKIP'
         '72194a32a06c43809d1272bd675890b6d27c6c54353150a366e8e2c50ad6eca6ee23c5d6281822965a228cfedfa07a60fe135d1b4f539e4a62728d4460cc0b0e'
         'c9f729ba1efe6f04e7b2c57d3999bc9675b577596dccb2f227e5b6e444285e1fdd270bf67c0fcf9f5808a4c3a4b1c7a5c13a76f754ad9b9447243ccbaf2ce6a3'
         'e1eccb5b6b728e3852ade55dae7a53b8b6bd5f0fb2a330b99e85bfa64abaa430cb714d301ed169df14a1f302a75d952992f0d8fa6ab02fa6716165bdf23b63aa'
-        '62147c71b76b9986b60df333267882f089c89997cef430c8864e521536d76a6d7679733cbbea163c31341a48ad589c11b98231f71aafe0eaf87f0a3a84add429')
+        '14f45171afc3b15488b40a05e58b352c5057da3a5782e13527392f7750d8e45a8db54f9b50b218fedb8bf679de3b4e5d78e230a44f7b1aa482f7b3aa831bd641')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -197,11 +197,11 @@ prepare() {
 
 build() {
   cd linux-${pkgver}
-  make all
+  make -j40 all
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 and uksm patchset featuring MuQSS CPU scheduler"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
