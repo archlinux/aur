@@ -3,7 +3,7 @@
 
 pkgname=qt-avif-image-plugin-git
 _pkgname=${pkgname%-git}
-pkgver=r83.77c1a38
+pkgver=r90.ff24889
 pkgrel=1
 pkgdesc='Qt plug-in to allow Qt and KDE based applications to read/write AVIF images'
 arch=('x86_64')
