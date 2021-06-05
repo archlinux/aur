@@ -1,7 +1,7 @@
 pkgbase = i3blocks-contrib
 	pkgdesc = Community-contributed blocklets for i3blocks
-	pkgver = 1.4.0
-	pkgrel = 4
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/vivien/i3blocks-contrib
 	arch = any
 	groups = i3
@@ -55,8 +55,7 @@ pkgbase = i3blocks-contrib
 	optdepends = mpv: For ytdl-mpv script
 	optdepends = xclip: For ytdl-mpv script
 	optdepends = youtube-dl: For ytdl-mpv script
-	source = i3blocks-contrib-1.4.0.tar.gz::https://github.com/vivien/i3blocks-contrib/archive/v1.4.0.tar.gz
-	sha256sums = 84148bf8f514de3b3dcaedeb5621e9640f96423d06759b7072507a15d0b6337f
+	source = i3blocks-contrib-2.0.0.tar.gz::https://github.com/vivien/i3blocks-contrib/archive/v2.0.0.tar.gz
+	sha256sums = 3fd88430b0348f4621629cde99c6155441429b117e5721c9b52308f6a5d7c7a6
 
 pkgname = i3blocks-contrib
-

@@ -3,15 +3,15 @@
 # Contributor: hashworks <mail@hashworks.net>
 
 pkgname=i3blocks-contrib
-pkgver=1.4.0
-pkgrel=4
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Community-contributed blocklets for i3blocks"
 arch=('any')
 groups=('i3')
 url="https://github.com/vivien/i3blocks-contrib"
 license=('GPL3')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('84148bf8f514de3b3dcaedeb5621e9640f96423d06759b7072507a15d0b6337f')
+sha256sums=('3fd88430b0348f4621629cde99c6155441429b117e5721c9b52308f6a5d7c7a6')
 
 # Please keep those ordered by script-name. Packages for more than 2 scripts go on top
 optdepends=('coreutils: For some scripts'
