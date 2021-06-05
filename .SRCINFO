@@ -9,10 +9,9 @@ pkgbase = supercollider-simplexnoise-git
 	license = GPL
 	makedepends = git
 	makedepends = cmake
+	makedepends = supercollider-headers-git
 	depends = supercollider
 	source = supercollider-simplexnoise-git-r6.6fb3235::git+https://github.com/esluyter/simplexsynth.git
-	source = supercollider-source::git+https://github.com/supercollider/supercollider.git
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = supercollider-simplexnoise-git
