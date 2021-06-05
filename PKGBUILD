@@ -2,6 +2,7 @@
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=exifcleaner-bin
+_pkgname=ExifCleaner
 pkgver=3.6.0
 pkgrel=1
 pkgdesc="Desktop app to clean metadata from images, videos, PDFs, and other files."
@@ -17,7 +18,7 @@ depends=(
 provides=('exifcleaner')
 
 source=(
-  "${pkgname}-${pkgver}.deb::https://github.com/szTheory/exifcleaner/releases/download/v${pkgver}/exifcleaner_${pkgver}_amd64.deb"
+  "$pkgname-$pkgver.deb::https://github.com/szTheory/exifcleaner/releases/download/v$pkgver/exifcleaner_${pkgver}_amd64.deb"
   'LICENSE::https://github.com/szTheory/exifcleaner/raw/master/LICENSE'
 )
 sha512sums=(
@@ -28,10 +29,8 @@ sha512sums=(
 )
 
 package() {
-  tar xvf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -d "${pkgdir}/usr/bin/"
-  ln -s /opt/ExifCleaner/exifcleaner "${pkgdir}/usr/bin/exifcleaner"
-  # cd "${pkgdir}/usr/share/icons/hicolor/"
-  # mv 0x0 512x512
+  tar xf "$srcdir/data.tar.xz" -C "$pkgdir/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -d "$pkgdir/usr/bin/"
+  ln -s "/opt/$_pkgname/exifcleaner" "${pkgdir}/usr/bin/exifcleaner"
 }
