@@ -2,7 +2,7 @@
 # Contributor: Thorben Guenther <echo YWRtaW5AeGVucm94Lm5ldAo= | base64 -d>
 
 pkgname=mycroft-core
-pkgver=20.8.1
+pkgver=21.2.0
 pkgrel=1
 pkgdesc="The Mycroft Artificial Intelligence platform."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -88,7 +88,7 @@ package() {
     "${pkgdir}/etc/profile.d/mycroft.csh"
 }
 
-md5sums=('3786e787098d6523e91410cb48c02ad2'
+md5sums=('36413c2facd4ccaf1d8f0200688c1d31'
          '39bcf2f0f30854b7b6e516d49946566a'
          'bfe08c1d8cba053ef83cfac5a36c7910'
          '7cbcc7b8b71d00c19a11166fbbd5ed4f'
