@@ -2,23 +2,20 @@
 # Maintainer: database64128 <free122448@hotmail.com>
 
 pkgbase=shadowsocks-uri-generator-git
-pkgname=(ss-uri-gen-git ss-uri-gen-chatbot-telegram-git ss-uri-gen-rescue)
-pkgver=20210413.r130.3ca93b1
+pkgname=(ss-uri-gen-git ss-uri-gen-chatbot-telegram-git ss-uri-gen-rescue-git)
+pkgver=v4.1.r15.b305ff1
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/database64128/shadowsocks-uri-generator"
 license=('GPL3')
 makedepends=('git' 'dotnet-sdk>=5.0')
-source=("$pkgbase::git+$url")
+source=("$pkgbase::git+$url.git")
 options=(!strip)
 b2sums=(SKIP)
 
 pkgver() {
 	cd $srcdir/$pkgbase
-	local date=$(git log -1 --format="%cd" --date=short | sed s/-//g)
-	local count=$(git rev-list --count HEAD)
-	local commit=$(git rev-parse --short HEAD)
-	echo "$date.r${count}.$commit"
+	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {

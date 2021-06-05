@@ -1,5 +1,5 @@
 pkgbase = shadowsocks-uri-generator-git
-	pkgver = 20210413.r130.3ca93b1
+	pkgver = v4.1.r15.b305ff1
 	pkgrel = 1
 	url = https://github.com/database64128/shadowsocks-uri-generator
 	arch = x86_64
@@ -7,7 +7,7 @@ pkgbase = shadowsocks-uri-generator-git
 	makedepends = git
 	makedepends = dotnet-sdk>=5.0
 	options = !strip
-	source = shadowsocks-uri-generator-git::git+https://github.com/database64128/shadowsocks-uri-generator
+	source = shadowsocks-uri-generator-git::git+https://github.com/database64128/shadowsocks-uri-generator.git
 	b2sums = SKIP
 
 pkgname = ss-uri-gen-git
@@ -24,4 +24,3 @@ pkgname = ss-uri-gen-rescue-git
 	pkgdesc = Rescue tool for restoring ss-uri-gen config from generated online config directory
 	provides = ss-uri-gen-rescue
 	conflicts = ss-uri-gen-rescue
-
