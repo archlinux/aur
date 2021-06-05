@@ -1,22 +1,26 @@
 pkgbase = gitify
 	pkgdesc = GitHub notifications on your menu bar.
 	pkgver = 4.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gitify.io/
 	arch = x86_64
 	license = MIT
 	makedepends = nodejs>=12.0.0
 	makedepends = yarn
+	depends = c-ares
+	depends = ffmpeg
 	depends = gtk3
-	depends = libnotify
-	depends = nss
+	depends = http-parser
+	depends = libevent
+	depends = libvpx
+	depends = libxslt
 	depends = libxss
-	depends = libxtst
-	depends = xdg-utils
-	depends = at-spi2-core
-	depends = libutil-linux
+	depends = minizip
+	depends = nss
+	depends = re2
+	depends = snappy
+	depends = libnotify
 	depends = libappindicator-gtk3
-	depends = libsecret
 	source = gitify-4.2.1.tar.gz::https://github.com/manosim/gitify/archive/v4.2.1.tar.gz
 	sha512sums = f570267aad17dfb43a405d3b7d5b799f388fbdf37ac1339fe62c6cef303e8de7a3bbb7c38ce688ab4ce46eca17150454a6324d09ee458622cd781d2f50f77530
 

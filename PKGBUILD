@@ -3,12 +3,12 @@
 pkgname='gitify'
 _pkgname="Gitify"
 pkgver=4.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='GitHub notifications on your menu bar.'
 arch=('x86_64')
 url='https://www.gitify.io/'
 license=('MIT')
-depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'libutil-linux' 'libappindicator-gtk3' 'libsecret')
+depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3')
 makedepends=('nodejs>=12.0.0' 'yarn')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/manosim/gitify/archive/v$pkgver.tar.gz")
 sha512sums=('f570267aad17dfb43a405d3b7d5b799f388fbdf37ac1339fe62c6cef303e8de7a3bbb7c38ce688ab4ce46eca17150454a6324d09ee458622cd781d2f50f77530')
