@@ -13,6 +13,7 @@ optdepends=('vim-fzf: for inline previews')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+install="$pkgname.install"
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
