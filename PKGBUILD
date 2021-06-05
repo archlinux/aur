@@ -1,4 +1,4 @@
-# Maintainer: Connor Sheridan <conwsh@protonmail.com>
+# Maintainer: Justin Coffman <j@gosecure.dev>
 
 pkgname=stimmtausch-git
 pkgver=r246.575a286
