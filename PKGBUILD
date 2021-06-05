@@ -2,13 +2,13 @@
 
 pkgname=qt-jpegxl-image-plugin-git
 _pkgname=${pkgname%-git}
-pkgver=r20.64d8341
+pkgver=r32.7d19098
 pkgrel=1
 pkgdesc='Qt plug-in to allow Qt and KDE based applications to read/write JXL images'
 arch=('x86_64')
 url="https://github.com/novomesk/$_pkgname"
 license=('GPL3')
-depends=('qt5-base' 'libjpeg-xl')
+depends=('qt5-base' 'libjxl')
 makedepends=('git' 'make')
 source=("git+$url.git")
 sha256sums=('SKIP')
