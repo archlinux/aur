@@ -1,6 +1,6 @@
 # Maintainer: Aditya Gupta <ag15035 at gmail dot com>
 pkgname=graphmat-git
-pkgver=r25.15a33a9
+pkgver=r26.62e8a20
 pkgrel=1
 pkgdesc="A matrix header-only library, uses graphs internally"
 arch=(x86_64)
@@ -10,7 +10,7 @@ depends=()
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/adi-g15/graphMat')
+source=(${pkgname%-git}::'git+https://github.com/adi-g15/graphMat')
 md5sums=('SKIP')
 
 pkgver() {
