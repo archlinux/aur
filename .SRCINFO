@@ -1,6 +1,6 @@
 pkgbase = xviewer-git
 	pkgdesc = A simple and easy to use image viewer. X-Apps Project (git version).
-	pkgver = master.lmde4.r0.gb2849a6
+	pkgver = 3.0.0.r0.g38e7ba5
 	pkgrel = 1
 	url = https://github.com/linuxmint/xviewer
 	arch = i686
@@ -11,13 +11,13 @@ pkgbase = xviewer-git
 	makedepends = gnome-common
 	makedepends = gobject-introspection
 	makedepends = librsvg
-	makedepends = exempi
 	depends = xapp
 	depends = gtk3
 	depends = cinnamon-desktop
 	depends = libpeas
 	depends = libexif
 	depends = libjpeg-turbo
+	depends = exempi
 	optdepends = xviewer-plugins-git: Extra plugins
 	optdepends = exempi: XMP metadata support
 	optdepends = librsvg: for scaling svg images
@@ -27,4 +27,3 @@ pkgbase = xviewer-git
 	md5sums = SKIP
 
 pkgname = xviewer-git
-
