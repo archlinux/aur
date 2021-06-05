@@ -1,19 +1,19 @@
 # Maintainer: Mads Kjeldgaard <mail@madskjeldgaard.dk>
 pkgname=supercollider-mi-ugens-git
 pkgver=r91.b2607b9
-pkgrel=1
+pkgrel=2
 pkgdesc="SuperCollider UGen versions of Mutable Instruments synthesizer modules"
 arch=('any')
 url="https://github.com/v7b1/mi-UGens"
 license=('GPL')
-groups=('pro-audio' 'supercollider-plugins')
+groups=('pro-audio' 'supercollider-plugins' )
 depends=()
-makedepends=('git' 'cmake' 'gcc-libs')
+makedepends=('git' 'cmake' 'gcc-libs' 'supercollider-headers-git')
 optdepends=()
-source=("$pkgname-$pkgver::git+$url.git"
-	"supercollider-source::git+https://github.com/supercollider/supercollider.git")
-md5sums=('SKIP'
-         'SKIP')
+source=("$pkgname-$pkgver::git+$url.git")
+md5sums=('SKIP')
+
+_FOLDERS=(MiClouds MiGrids MiOmi MiRipples MiWarps MiElements MiMu MiPlaits MiRings MiVerb)
 
 pkgver() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -27,10 +27,9 @@ build() {
 	git submodule update --init --recursive
 
 	# Files to build
-	FOLDERS=(MiClouds MiGrids MiOmi MiRipples MiWarps MiElements MiMu MiPlaits MiRings MiVerb)
-	SC_SRC="$srcdir/supercollider-source"
+	SC_SRC="/usr/share/supercollider-headers"
 
-	for FOLDER in "${FOLDERS[@]}"
+	for FOLDER in "${_FOLDERS[@]}"
 	do
 		cd $FOLDER
 		# Build folder
@@ -47,7 +46,7 @@ build() {
 
 package() {
 	# Files to install
-	FOLDERS=(MiClouds MiElements MiMu MiPlaits MiRings MiVerb)
+	_FOLDERS=(MiClouds MiGrids MiOmi MiRipples MiWarps MiElements MiMu MiPlaits MiRings MiVerb)
 
 	# Destination: System extension dir
 	DEST="$pkgdir/usr/share/SuperCollider/Extensions/$pkgname/"
@@ -55,7 +54,7 @@ package() {
 
 	cd "$pkgname-$pkgver"
 
-	for FILE in "${FOLDERS[@]}"
+	for FILE in "${_FOLDERS[@]}"
 	do
 		# Class
 		install -Dm755 ./sc/Classes/$FILE.sc "$DEST/Classes/$FILE.sc"
