@@ -25,7 +25,7 @@ source=("https://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz
         "https://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2"
         "http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz"
         libsanitizer.patch
-	      Workaround-for-format-security.patch
+        Workaround-for-format-security.patch
         c89
         c99
 )
@@ -75,10 +75,9 @@ build() {
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
   export CFLAGS="${CFLAGS/-pipe/} -Wno-error=format-security -Wformat-security"
   export CXXFLAGS="${CXXFLAGS/-pipe/} -Wno-error=format-security -Wformat-security"
-  
+
   export CFLAGS_FOR_TARGET="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -Wno-error=format-security -Wformat-security"
   export CXXFLAGS_FOR_TARGET="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -Wno-error=format-security -Wformat-security"
-
 
   "${srcdir}/gcc/configure" \
     --prefix=/usr \
@@ -304,5 +303,4 @@ package_gcc6-gcj() {
   ln -sf "libgcj-${pkgver}.jar" "${pkgdir}"/usr/share/java/libgcj.jar
   ln -sf "libgcj-tools-${pkgver}.jar" "${pkgdir}"/usr/share/java/libgcj-tools-${pkgver%.?}.jar
   ln -sf "libgcj-tools-${pkgver}.jar" "${pkgdir}"/usr/share/java/libgcj-tools.jar
-
 }
