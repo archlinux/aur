@@ -5,7 +5,7 @@
 pkgname=river-git
 _pkgname=${pkgname%-*}
 pkgver=r623.0e9dc08
-pkgrel=1
+pkgrel=2
 pkgdesc='A dynamic tiling wayland compositor.'
 arch=('x86_64')
 url='https://github.com/ifreund/river'
@@ -34,4 +34,6 @@ package() {
 	cd "$_pkgname"
 	DESTDIR="$pkgdir" zig build install -Drelease-safe -Dxwayland \
 		--prefix '/usr'
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
 }
