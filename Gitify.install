@@ -1,0 +1,15 @@
+post_install() {
+  # Link to the binary
+  ln -sf '/opt/Gitify/gitify' '/usr/bin/gitify'
+
+  # SUID chrome-sandbox for Electron 5+
+  chmod 4755 '/opt/Gitify/chrome-sandbox' || true
+
+  update-mime-database /usr/share/mime || true
+  update-desktop-database /usr/share/applications || true
+}
+
+post_remove() {
+  # Delete the link to the binary
+  rm -f '/usr/bin/gitify'
+}

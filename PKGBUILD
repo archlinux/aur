@@ -10,6 +10,7 @@ url='https://www.gitify.io/'
 license=('MIT')
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3')
 makedepends=('nodejs>=12.0.0' 'yarn')
+install="Gitify.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/manosim/gitify/archive/v$pkgver.tar.gz")
 sha512sums=('f570267aad17dfb43a405d3b7d5b799f388fbdf37ac1339fe62c6cef303e8de7a3bbb7c38ce688ab4ce46eca17150454a6324d09ee458622cd781d2f50f77530')
 
@@ -39,9 +40,4 @@ package() {
 
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  mkdir -p "$pkgdir/usr/bin"
-  ln -sf "/opt/$_pkgname/gitify" "$pkgdir/usr/bin/gitify"
-
-  # SUID chrome-sandbox for electron 5+ as indicated here: https://github.com/electron/electron/issues/17972#issuecomment-487369441
-  chmod 4755 "$pkgdir/opt/Gitify/chrome-sandbox"
 }
