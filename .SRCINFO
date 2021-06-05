@@ -1,6 +1,6 @@
 pkgbase = fluent-bit
 	pkgdesc = Collect data/logs from different sources, unify and send them to multiple destinations.
-	pkgver = 1.7.7
+	pkgver = 1.7.8
 	pkgrel = 1
 	url = https://fluentbit.io/
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = fluent-bit
 	depends = openssl
 	backup = etc/fluent-bit/fluent-bit.conf
 	backup = etc/fluent-bit/parsers.conf
-	source = https://fluentbit.io/releases/1.7/fluent-bit-1.7.7.tar.gz
-	sha512sums = f45e98cb1f3c0565dd6233a2b2e4cc7132de8b8232e39f24bdc484e62220e4133b4fff359cb536fee9062667866edb313b32debb33722434994cdec0080b0293
+	source = https://www.fluentbit.io/releases/1.7/fluent-bit-1.7.8.tar.gz
+	sha512sums = 496f57d4d6c2bd149dfd462bc7878b81ba599d7e743790a34591acac607ecd23ed7b589c4483ea4e21fcd31e49e5c583645f00710aae76dca517385f51ddeae0
 
 pkgname = fluent-bit
 
