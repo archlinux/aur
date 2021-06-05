@@ -1,7 +1,7 @@
 # Maintainer: David Barri <japgolly@gmail.com>
 pkgname=verthash-miner-bin
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GPU miner for the Verthash algorithm and Vertcoin"
 arch=('x86_64')
 url="https://github.com/CryptoGraphics/VerthashMiner"
@@ -13,15 +13,11 @@ conflicts=('verthash-miner')
 
 package() {
 	set -eu
-
-	cd VerthashMiner-$pkgver-CUDA11-linux
-
-	mkdir -p "$pkgdir/opt"
-	cp -r . "$pkgdir/opt/verthash-miner"
-
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-	mkdir -p "$pkgdir/usr/bin"
 	cd "$pkgdir/usr/bin"
+	cd VerthashMiner-$pkgver-CUDA11-linux
+	cp -r . "$pkgdir/opt/verthash-miner"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	ln -s ../../opt/verthash-miner/VerthashMiner verthash-miner
+	mkdir -p "$pkgdir/opt"
+	mkdir -p "$pkgdir/usr/bin"
 }
