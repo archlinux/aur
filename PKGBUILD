@@ -34,6 +34,9 @@ clang_major_ver() {
 make_env_variant=""
 make_with_lto="make CC=clang HOSTCC=clang NM=llvm-nm AR=llvm-ar HOSTLD=ld.lld LD=ld.lld OBJCOPY=llvm-objcopy STRIP=llvm-strip"
 make_without_lto="make CC=clang HOSTCC=clang"
+# "Modern performance" – uses a slimmer config with
+# performance tuned to your specific machine (-march=native)
+USE_MPERFORMANCE=${USE_MPERFORMANCE:=false}
 
 pkgver() {
   echo ${pkgver}
@@ -60,6 +63,11 @@ build() {
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
+
+  _defconfig="nitrous_defconfig"
+  if $USE_MPERFORMANCE; then
+    _defconfig="nitrous-mperformance_defconfig"
+  fi
 
   rm -f .clang
   $make_env_variant nitrous_defconfig
