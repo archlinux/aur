@@ -1,7 +1,7 @@
 pkgbase = loop-bin
 	pkgdesc = Lightning Loop is a non-custodial service offered by Lightning Labs that makes it easy to move bitcoin into and out of the Lightning Network.
 	pkgver = 0.14.0_beta
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lightninglabs/loop
 	arch = any
 	license = MIT
