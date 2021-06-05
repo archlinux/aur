@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=cutefish-wallpapers
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="CutefishOS's system wallpaper"
 arch=('any')
@@ -11,7 +11,7 @@ groups=('cutefish')
 depends=()
 makedepends=('cmake' 'ninja')
 source=("https://github.com/cutefishos/wallpapers/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('5b921ae69ba31c5745e789af4b121338163ff2df3c1d5a9a5ff00a950731de0bbe9d82480eac12d3ab2b59fcda51ca467c316a546b5f76b35470953a0757e5ef')
+sha512sums=('0d0c219dfa6b5b5a841ff588c64f68bea57a0546d13e3570d01196efe610269ed711398614aab5664d14b0e5c776514744a2afb4b96d6870a30df32aaf429772')
 
 build() {
   cd wallpapers-$pkgver
