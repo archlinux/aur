@@ -1,5 +1,7 @@
 # Maintainer: Felipe Contreras <felipe.contreras@gmail.com>
 
+# shellcheck disable=SC2034,SC2115
+
 pkgname=vte3-nohang
 pkgver=0.64.0
 pkgrel=2
@@ -19,7 +21,7 @@ provides=("vte3=$pkgver" libvte-2.91.so)
 conflicts=(vte3)
 
 prepare() {
-  cd vte
+  cd vte || exit 1
   patch -p1 -i "$srcdir/fix-exit-regression.patch"
 }
 
