@@ -8,6 +8,7 @@ pkgbase = supercollider-flucoma
 	groups = supercollider-plugins
 	license = BSD
 	depends = supercollider
+	conflicts = supercollider-flucoma-git
 	source = supercollider-flucoma-1.5.0-2.zip::https://github.com/flucoma/flucoma-sc/releases/download/TB2-beta01/FluCoMa-SC-Unix-beta01.zip
 	md5sums = 074abe31fa0f1c6a4ed15342dfbb000d
 

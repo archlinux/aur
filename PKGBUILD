@@ -9,6 +9,7 @@ url="https://www.flucoma.org/"
 license=('BSD')
 groups=('pro-audio' 'supercollider-plugins')
 depends=('supercollider')
+conflicts=('supercollider-flucoma-git')
 optdepends=()
 source=("$pkgname-$pkgver-$pkgrel.zip::https://github.com/flucoma/flucoma-sc/releases/download/${altver_}/FluCoMa-SC-Unix-beta01.zip")
 md5sums=('074abe31fa0f1c6a4ed15342dfbb000d')
