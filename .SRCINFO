@@ -1,0 +1,14 @@
+pkgbase = graphmat-git
+	pkgdesc = A matrix header-only library, uses graphs internally
+	pkgver = r25.15a33a9
+	pkgrel = 1
+	url = https://github.com/adi-g15/graphMat
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	provides = graphmat
+	conflicts = graphmat
+	source = git+https://github.com/adi-g15/graphMat
+	md5sums = SKIP
+
+pkgname = graphmat-git
