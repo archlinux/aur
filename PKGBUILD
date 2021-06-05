@@ -9,7 +9,7 @@
 
 _pkgname=xfce4-sensors-plugin
 pkgname=xfce4-sensors-plugin-nvidia
-pkgver=1.3.92
+pkgver=1.3.95
 pkgrel=1
 pkgdesc="A lm_sensors plugin for the Xfce panel with nvidia gpu support"
 arch=('i686' 'x86_64')
@@ -20,8 +20,16 @@ depends=('xfce4-panel' 'lm_sensors' 'libnotify' 'hicolor-icon-theme' 'libxnvctrl
 makedepends=('intltool' 'hddtemp' 'gnu-netcat')
 optdepends=('hddtemp: for monitoring the temperature of hard drives')
 conflicts=('xfce4-sensors-plugin')
-source=(https://archive.xfce.org/src/panel-plugins/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('3dc6643d2c064b7718badff44b948f8d410f00f13db197820b26ae38045f5112')
+source=(
+	https://archive.xfce.org/src/panel-plugins/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2
+	nvidia.c.patch
+)
+sha256sums=('83c64ae4618dd592971cfa0bc285a9b47af801a3ed856835cdb2a4c533c7846c'
+            '5ed9142eb3b213f7b9b354ba3e967994a9046c78579256567ebda7e462237d8a')
+
+prepare() {
+  patch ./"$_pkgname-$pkgver"/lib/nvidia.c -i ./nvidia.c.patch
+}
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"

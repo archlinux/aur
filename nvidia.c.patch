@@ -1,0 +1,4 @@
+37a38
+> #include <X11/Xlib.h>
+41d41
+< #include <X11/Xlib.h>
