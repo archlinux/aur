@@ -5,13 +5,13 @@
 pkgname=qxmledit
 pkgver=0.9.16
 pkgrel=1
-pkgdesc="Simple XML editor and XSD viewer"
-arch=(x86_64)
-url="https://qxmledit.org/"
-license=(LGPL)
-depends=(glu hicolor-icon-theme qt5-scxml qt5-svg qt5-xmlpatterns)
-makedepends=(qt5-tools)
-source=(https://downloads.sourceforge.net/qxmledit/$pkgname-$pkgver-src.tgz)
+pkgdesc='Simple XML editor and XSD viewer'
+arch=('x86_64')
+url='https://qxmledit.org/'
+license=('LGPL')
+depends=('glu' 'hicolor-icon-theme' 'qt5-scxml' 'qt5-svg' 'qt5-xmlpatterns')
+makedepends=('qt5-tools')
+source=("https://downloads.sourceforge.net/qxmledit/$pkgname-$pkgver-src.tgz")
 sha256sums=('e86443d640b2d2486b8278a200e098425c52607f82908a1b5676c42af057caa8')
 
 prepare() {
