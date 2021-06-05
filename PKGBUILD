@@ -4,26 +4,33 @@
 
 _pkgbase=pipewire
 pkgbase=pipewire-common-git
-pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-alsa-git
-         pipewire-common-jack-git pipewire-common-pulse-git
-         pipewire-common-zeroconf-git gst-plugin-pipewire-common-git)
+pkgname=(pipewire-common-git
+         pipewire-common-docs-git
+         pipewire-common-alsa-git
+         pipewire-common-jack-git
+         pipewire-common-pulse-git
+         pipewire-common-zeroconf-git
+         gst-plugin-pipewire-common-git
+         )
 pkgver=0.3.28.r159.g6971d1190
 pkgrel=2
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 license=(MIT)
 arch=(x86_64)
-makedepends=(git meson doxygen xmltoman
-             ncurses libsndfile alsa-lib dbus rtkit
-             libpulse avahi sdl2 gst-plugins-base-libs
-             webrtc-audio-processing
-             bluez-libs sbc libldac libopenaptx libfdk-aac)
+makedepends=(git meson doxygen xmltoman ncurses
+             libsndfile alsa-lib dbus rtkit libpulse
+             webrtc-audio-processing bluez-libs
+             sbc libldac libopenaptx libfdk-aac
+             avahi
+             gst-plugins-base-libs
+             )
 source=("git+https://gitlab.freedesktop.org/pipewire/pipewire.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgbase
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=8 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -35,10 +42,12 @@ build() {
   rm -rf build || true
   arch-meson $_pkgbase build \
     -D docs=enabled \
-    -D ffmpeg=disabled \
-    -D jack=disabled \
+    -D test=enabled \
     -D libcamera=disabled \
+    -D sdl2=disabled \
+    -D jack=disabled \
     -D vulkan=disabled \
+    -D ffmpeg=disabled \
     -D udevrulesdir=/usr/lib/udev/rules.d
   meson compile -C build
 }
@@ -63,7 +72,7 @@ package_pipewire-common-git() {
   license+=(LGPL)
   depends=(rtkit libdbus-1.so libncursesw.so libsndfile.so
            libudev.so libasound.so libsystemd.so libpulse.so
-           webrtc-audio-processing
+           libwebrtc_audio_processing.so
            libbluetooth.so libsbc.so libldacBT_{enc,abr}.so
            libopenaptx.so libfdk-aac.so)
   optdepends=('pipewire-common-docs-git: Documentation'
@@ -72,8 +81,8 @@ package_pipewire-common-git() {
               'pipewire-common-pulse-git: PulseAudio replacement'
               'pipewire-common-zeroconf-git: Zeroconf support'
               'gst-plugin-pipewire-common-git: GStreamer support'
-              'ofono: ofono HFP support'
-              'hsphfpd: hsphfpd HSP/HFP support')
+              'ofono: ofono Bluetooth HFP support'
+              'hsphfpd: hsphfpd Bluetooth HSP/HFP support')
   provides=(pipewire pipewire-media-session alsa-card-profiles libpipewire-$_ver.so)
   conflicts=(pipewire pipewire-media-session alsa-card-profiles)
   install=pipewire.install
@@ -107,7 +116,6 @@ package_pipewire-common-docs-git() {
   mv docs/* "$pkgdir"
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $_pkgbase/COPYING
-
 }
 
 package_pipewire-common-alsa-git() {
