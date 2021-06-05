@@ -3,7 +3,7 @@
 
 pkgname=darkplaces-git
 _gitname=darkplaces
-pkgver=r10219.49aafc31
+pkgver=r10232.1f7645e7
 pkgrel=1
 pkgdesc="An advanced Quake 1 game engine (git-latest)"
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ build() {
   cd $srcdir/$_gitname
 
   # Make sure Darkplaces is not compiled with -j > 1.
-  MAKEFLAGS="${MAKEFLAGS} -j4"
+  MAKEFLAGS="${MAKEFLAGS} -j$(nproc)"
   make OPTIM_RELEASE="${CFLAGS}" DP_FS_BASEDIR=/usr/share/games/quake release
 
 }
