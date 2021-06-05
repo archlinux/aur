@@ -3,7 +3,7 @@
 
 pkgbase=linux-lts-logo
 pkgver=5.10.42
-pkgrel=1
+pkgrel=2
 pkgdesc='LTS Linux with tux logo'
 url="https://www.kernel.org/"
 arch=(x86_64)
@@ -18,7 +18,6 @@ source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  config.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -28,8 +27,7 @@ validpgpkeys=(
 sha256sums=('8ba027c73bd67b8ded2649a741d2f018db630c1cbc081700d8ffd07ab0d906e5'
             'SKIP'
             'c6d4cef408fcc4c7c30ff6ec8bf142a8846459c831aa1184979a45b70ffff21a'
-            '6992aed5d5398f9442f0ce94d5d5b6503bf492df0ebe719ed6e0fc1dc2ee1929'
-            '11d9b32336ab3454eedf34eb382c0102868053de5b340b345506c0f5f6be91f9')
+            '6992aed5d5398f9442f0ce94d5d5b6503bf492df0ebe719ed6e0fc1dc2ee1929')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -57,6 +55,8 @@ prepare() {
   #make olddefconfig
   #make menuconfig
   #make oldconfig
+  sed -i 's/CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER=y/# CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER is not set/g' .config
+  sed -i 's/# CONFIG_LOGO is not set/CONFIG_LOGO=y\n# CONFIG_LOGO_LINUX_MONO is not set\n# CONFIG_LOGO_LINUX_VGA16 is not set\nCONFIG_LOGO_LINUX_CLUT224=y/g' .config
   make prepare
 
   make -s kernelrelease > version
