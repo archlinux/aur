@@ -8,4 +8,4 @@ if [ ! -d $CONFIG_DIR ]; then
    touch $CONFIG_DIR/LTspiceXVII.ini
 fi
 export WINEPREFIX=$HOME/.ltspice/env WINEARCH=win64
-wine /usr/lib/wine/start.exe /unix /opt/ltspice/XVIIx64 -ini $CONFIG_DIR/LTspiceXVII.ini "$@"
+wine /usr/lib/wine/x86_64-windows/start.exe /unix /opt/ltspice/XVIIx64 -ini $CONFIG_DIR/LTspiceXVII.ini "$@"
