@@ -4,7 +4,7 @@
 
 pkgname=mercury
 pkgver=20.06.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The mercury language compiler."
 arch=('i686' 'x86_64')
 url="http://www.mercurylang.org/"
@@ -16,6 +16,8 @@ sha256sums=('ef093ae81424c4f3fe696eff9aefb5fb66899e11bb17ae0326adfb70d09c1c1f')
 
 build() {
   cd "$srcdir"/mercury-srcdist-$pkgver
+
+  echo "EXTRA_CFLAGS += -Wno-error=array-parameter" >> Mmake.params
 
   ./configure --prefix=/usr --mandir=/usr/share/man \
               --infodir=/usr/share/info \
