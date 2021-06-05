@@ -2,7 +2,7 @@
 
 pkgname=ttf-lxgw-wenkai
 pkgver=0.333
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source Chinese font derived from Fontworks' Klee One."
 arch=('any')
 url='https://github.com/lxgw/LxgwWenKai'
@@ -15,8 +15,8 @@ _fontfiles=(
 )
 
 source=("${pkgname}-${pkgver}-${pkgrel}-LICENSE::${url}/raw/v${pkgver}/SIL_Open_Font_License_1.1.txt")
-for file in "${_fontfiles[@]}"; do
-    source+=("${pkgname}-${pkgver}-${pkgrel}-${file}::${url}/releases/download/v${pkgver}/${file}")
+for _file in "${_fontfiles[@]}"; do
+    source+=("${pkgname}-${pkgver}-${pkgrel}-${_file}::${url}/releases/download/v${pkgver}/${_file}")
 done
 
 sha256sums=('e564f06d018e7b95bc3594c96a17f1d41865af4038c375e7aa974dd69df38602'
@@ -25,8 +25,8 @@ sha256sums=('e564f06d018e7b95bc3594c96a17f1d41865af4038c375e7aa974dd69df38602'
             '1c39892367a01ff83fa639a4561c672c64047f68dec7a734d1e1cf80ee756a0c')
 
 package() {
-    for file in "${_fontfiles[@]}"; do
-        install -Dm644 "${pkgname}-${pkgver}-${pkgrel}-${file}" "${pkgdir}/usr/share/fonts/${pkgname}/${file}"
+    for _file in "${_fontfiles[@]}"; do
+        install -Dm644 "${pkgname}-${pkgver}-${pkgrel}-${_file}" "${pkgdir}/usr/share/fonts/${pkgname}/${_file}"
     done
     install -Dm644 "${pkgname}-${pkgver}-${pkgrel}-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
