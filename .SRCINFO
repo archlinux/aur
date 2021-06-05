@@ -1,0 +1,19 @@
+pkgbase = neovim-web-devicons-git
+	pkgdesc = A Lua fork of vim-devicons for Neovim
+	pkgver = r60.da717e1
+	pkgrel = 1
+	url = https://github.com/kyazdani42/nvim-web-devicons
+	arch = any
+	groups = neovim-plugins
+	license = unknown
+	makedepends = git
+	depends = neovim
+	depends = nerd-fonts
+	provides = neovim-web-devicons
+	provides = vim-devicons
+	conflicts = neovim-web-devicons
+	conflicts = vim-devicons
+	source = neovim-web-devicons-git::git+https://github.com/kyazdani42/nvim-web-devicons
+	sha256sums = SKIP
+
+pkgname = neovim-web-devicons-git

@@ -1,0 +1,4 @@
+post_install() {
+	echo ':: Please consult upstream documentation on how to set up this plugin.'
+	echo ':: A copy has been installed to /usr/share/doc/neovim-web-devicons-git/README.md for your convenience.'
+}
