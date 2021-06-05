@@ -46,7 +46,7 @@ prepare() {
   done
   git submodule update
   patch -uNp1 -i ../crossplatform_fix.patch
-  #patch -uNp1 -i ../no_link_with_unnecessary_sndfile.patch
+  patch -uNp1 -i ../no_link_with_unnecessary_sndfile.patch
 }
 
 build() {
