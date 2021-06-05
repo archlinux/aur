@@ -4,7 +4,7 @@
 pkgname=exifcleaner-bin
 _pkgname=ExifCleaner
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop app to clean metadata from images, videos, PDFs, and other files."
 arch=('x86_64')
 url="https://exifcleaner.com"
@@ -33,4 +33,7 @@ package() {
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -d "$pkgdir/usr/bin/"
   ln -s "/opt/$_pkgname/exifcleaner" "${pkgdir}/usr/bin/exifcleaner"
+
+  # SUID chrome-sandbox for electron 5+ as indicated here: https://github.com/electron/electron/issues/17972#issuecomment-487369441
+  chmod 4755 "$pkgdir/opt/$_pkgname/chrome-sandbox"
 }
