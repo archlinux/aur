@@ -2,9 +2,9 @@
 
 pkgname=lunar-client
 _pkgname=lunarclient
-pkgver=2.7.1
+pkgver=2.7.3
 pkgrel=1
-pkgdesc='PvP Modpack for Minecraft 1.7, 1.8, 1.12, 1.15 and 1.16'
+pkgdesc='A PvP modpack for all modern versions of Minecraft'
 url=https://lunarclient.com
 arch=(x86_64)
 license=(unknown)
@@ -43,3 +43,4 @@ package() {
 	install -dm755 "${pkgdir}/usr/bin"
 	ln -s "/opt/${_pkgname}/${_pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
 }
+# vim:set ts=4 sw=4 noet:
