@@ -5,7 +5,7 @@
 pkgname=river-git
 _pkgname=${pkgname%-*}
 pkgver=r623.0e9dc08
-pkgrel=2
+pkgrel=3
 pkgdesc='A dynamic tiling wayland compositor.'
 arch=('x86_64')
 url='https://github.com/ifreund/river'
@@ -16,12 +16,22 @@ depends=(
 )
 provides=('river' 'riverctl' 'rivertile')
 conflicts=('river')
-source=("git+$url")
-sha256sums=('SKIP')
+source=(
+	"git+$url"
+	'git+https://github.com/ifreund/zig-pixman.git'
+	'git+https://github.com/ifreund/zig-wayland.git'
+	'git+https://github.com/swaywm/zig-wlroots.git'
+	'git+https://github.com/ifreund/zig-xkbcommon.git'
+)
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
 	cd "$_pkgname"
-	git submodule update --init
+	git submodule init
+	for dep in pixman wayland wlroots xkbcommon; do
+		git config "submodule.deps/zig-$dep.url" "$srcdir/zig-$dep"
+	done
+	git submodule update
 }
 
 pkgver() {
