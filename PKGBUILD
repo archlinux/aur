@@ -7,15 +7,16 @@
 
 pkgbase='archiso-git'
 pkgname=('archiso-git' 'mkinitcpio-archiso-git')
-pkgver=51.r9.ge43017c
+pkgver=55.r4.g960b988
 pkgrel=1
 pkgdesc='Tools for creating Arch Linux live and install iso images'
 arch=('any')
 url="https://gitlab.archlinux.org/archlinux/archiso"
 license=('GPL3')
 makedepends=('git')
-source=('git+https://gitlab.archlinux.org/archlinux/archiso.git')
+source=('git+https://gitlab.archlinux.org/archlinux/archiso.git?signed')
 sha512sums=('SKIP')
+validpgpkeys=('C7E7849466FE2358343588377258734B41C31549') # David Runge <dvzrv@archlinux.org>
 
 pkgver() {
   cd "${srcdir}/${pkgbase%-git}"
