@@ -1,6 +1,6 @@
 pkgbase = questrade-iq-edge
 	pkgdesc = A proprietary desktop stock trading platform.
-	pkgver = 6.3.5.244
+	pkgver = 6.4.4.258
 	pkgrel = 1
 	url = https://www.questrade.com/self-directed-investing/trading-platforms/iq-edge
 	arch = any
@@ -8,10 +8,9 @@ pkgbase = questrade-iq-edge
 	makedepends = icoutils
 	depends = wine
 	optdepends = ttf-ms-win10: readable window titles
-	source = questrade-iq-edge-6.3.5.244.zip::https://media.questrade.com/iq_downloads/QuestradeIQEdge.zip
+	source = questrade-iq-edge-6.4.4.258.zip::https://media.questrade.com/iq_downloads/QuestradeIQEdge.zip
 	source = com.questrade.IQEdge.desktop
-	sha256sums = 7f4c4233005ca8588cc47cdb77f69d8b4554af3271666ac3dc2de578bfea1fa0
+	sha256sums = 38431818c30a54ff80b01db1a53f97894b187fddc2a60ab1e77fa62aa49f5e12
 	sha256sums = a72c10367e165bd03591ae6998a6b85bd72b799088655968d9bcee4ebfeb3d1e
 
 pkgname = questrade-iq-edge
-
