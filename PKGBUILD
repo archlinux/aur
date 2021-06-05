@@ -1,7 +1,7 @@
 # Maintainer: David Barri <japgolly@gmail.com>
 pkgname=vertcoin-bin
 pkgver=0.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A digital currency with mining decentralisation and ASIC resistance as a key focus."
 arch=('x86_64')
 url="https://github.com/vertcoin-project/vertcoin-core"
@@ -16,13 +16,11 @@ conflicts=('vertcoin')
 
 package() {
   set -eu
-
+  cmake .
   mkdir -p "$pkgdir/usr/bin"
-
-  install -Dm755 \
-    vertcoind \
-    vertcoin-tx \
-    vertcoin-cli \
-    vertcoin-wallet \
+  install \
+    vertcoind-tx \
+    vertcoind-cli \
+    vertcoind-wallet \
     "$pkgdir/usr/bin"
 }
