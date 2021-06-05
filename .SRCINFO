@@ -12,4 +12,3 @@ pkgbase = nodejs-git-split-diffs
 	sha256sums = 9ccb4b76633e33156cca6084a65dcf02c676ef15aadf5911739910e4a69214af
 
 pkgname = nodejs-git-split-diffs
-
