@@ -2,7 +2,7 @@
 # This PKGBUILD is maintained at https://github.com/ssiyad/pkgbuilds/
 
 pkgname=rssd
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="Poll and execute command when there is a new rss item"
 arch=('x86_64')

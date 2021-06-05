@@ -1,6 +1,6 @@
 pkgbase = rssd
 	pkgdesc = Poll and execute command when there is a new rss item
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/ssiyad/rssd
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rssd
 	makedepends = go
 	makedepends = make
 	provides = rssd
-	source = rssd::git+https://github.com/ssiyad/rssd#tag=0.3
+	source = rssd::git+https://github.com/ssiyad/rssd#tag=0.4
 	sha256sums = SKIP
 
 pkgname = rssd
