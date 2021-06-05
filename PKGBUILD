@@ -3,7 +3,7 @@
 
 pkgname=tachidesk
 pkgver=0.4.2_r645
-pkgrel=1
+pkgrel=2
 pkgdesc="A free and open source manga reader that runs extensions built for Tachiyomi"
 arch=("any")
 url="https://github.com/Suwayomi/Tachidesk"
@@ -27,8 +27,8 @@ sha256sums=('9c6a4371e4c96611d975df871911728cf860a12c0e333dd0eab02733e492dff2'
 noextract=("${_jar}")
 
 package() {
-    install -Dm755 "${srcdir}/${_jar}"             "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
+    install -Dm644 "${srcdir}/${_jar}"                "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
     install -Dm644 "${srcdir}/${pkgname}.desktop"  -t "${pkgdir}/usr/share/applications/"
     install -Dm644 "${srcdir}/${pkgname}.png"      -t "${pkgdir}/usr/share/pixmaps/"
-    install -Dm644 "${srcdir}/${pkgname}.sh"       "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}.sh"          "${pkgdir}/usr/bin/${pkgname}"
 }
