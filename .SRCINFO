@@ -18,4 +18,3 @@ pkgbase = xss-lock-locked-hint
 	md5sums = SKIP
 
 pkgname = xss-lock-locked-hint
-
