@@ -6,6 +6,7 @@ pkgver=1.58
 pkgrel=1
 pkgdesc="A php web frontend to MPD and Mopidy"
 arch=('any')
+url='https://github.com/fatg3erman/RompR/'
 license=('custom')
 depends=('imagemagick'
          'php' # note that deps php-json, php-curl, php-xml and php-mbstring are included in php

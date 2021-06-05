@@ -2,6 +2,7 @@ pkgbase = rompr
 	pkgdesc = A php web frontend to MPD and Mopidy
 	pkgver = 1.58
 	pkgrel = 1
+	url = https://github.com/fatg3erman/RompR/
 	install = rompr.install
 	arch = any
 	license = custom
@@ -17,4 +18,3 @@ pkgbase = rompr
 	sha256sums = c4cc91a8003dd24584e78fb13f7be7051fcd5cd6c950ff1af167f5b31154064f
 
 pkgname = rompr
-
