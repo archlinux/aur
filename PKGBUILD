@@ -11,14 +11,14 @@ WITH_KNOTIFICATION=0
 WITH_DARK_ICON=1
 
 pkgname=octopi-git
-pkgver=0.11.0.r25.d6a6ecc
-pkgrel=2
+pkgver=0.11.0.r45.f5b9270
+pkgrel=1
 pkgdesc="This is Octopi, a powerful Pacman frontend using Qt libs"
 arch=('x86_64')
 url="https://github.com/aarnt/octopi"
 license=('GPL2')
 depends=(
-  'alpm_octopi_utils'
+  'alpm_octopi_utils-git'
   'pkgfile'
   'qtermwidget'
   'sudo'
