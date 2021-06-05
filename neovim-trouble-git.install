@@ -1,0 +1,5 @@
+post_install() {
+	echo ':: A working LSP client must be installed in order to use this plugin.'
+	echo ':: Please consult upstream documentation on how to set up neovim-trouble.'
+	echo ':: A copy has been installed to /usr/share/doc/neovim-trouble-git/README.md'
+}
