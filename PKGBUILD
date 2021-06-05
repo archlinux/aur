@@ -1,7 +1,7 @@
 # Maintainer: Nichlas Severinsen <ns@nsz.no>
 pkgname=libray
 _gitname="libray"
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 url="https://notabug.org/necklace/libray"
 pkgdesc="LibRay aims to be a Libre (FLOSS) Python application for unencrypting, extracting, repackaging, and encrypting PS3 ISOs."
@@ -10,13 +10,36 @@ license=("GPLv3")
 depends=("python" "python-pycryptodome" "python-beautifulsoup4" "python-tqdm" "python-requests")
 makedepends=("python-setuptools")
 
-source=("https://notabug.org/necklace/${_gitname}/archive/${pkgver}.tar.gz")
+source=("https://notabug.org/necklace/${_gitname}/archive/${pkgver}.tar.gz"
+        "https://archive.org/download/sony-playstation-3-disc-keys-dat-cuesheets/Sony%20-%20PlayStation%203%20-%20Datfile%20%283590%29%20%282021-06-05%2001-59-33%29.zip"
+        "https://archive.org/download/sony-playstation-3-disc-keys-dat-cuesheets/Sony%20-%20PlayStation%203%20-%20Disc%20Keys%20%283388%29%20%282021-06-05%2001-59-33%29.zip")
 
-sha256sums=("8551755080437faef064986c38b955abb5f5cfb4b8ceadd6b2b6464144d462b8")
+sha256sums=("871cbc0f05a3a692a40bc53b0ca86a46c0391e8e1cdc324c177895e4b2a014cc"
+            "ecf05922689296a9b151d2331cf85692120bc9aebc52c346001a55a3716ef120"
+            "aaa5d64440d1294f85f74311efbe2760bac4a68770e1b74d47be03d22cfe7e43")
+
+build() {
+  cd $srcdir
+
+  mkdir -p $_gitname/$_gitname/data
+  
+  mkdir -p $_gitname/tools/keys
+  mv *.key $_gitname/tools/keys/
+  mv *.dat $_gitname/tools/
+
+  cd $_gitname/tools/
+
+  python keys2db.py
+
+  cd $srcdir/$_gitname
+  
+  python setup.py build  
+}
+
 
 package() {
 	cd $srcdir/$_gitname
-	python setup.py install --root="${pkgdir}" --optimize=1
+	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
