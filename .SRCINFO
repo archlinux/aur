@@ -10,6 +10,7 @@ pkgbase = supercollider-mkplugins-git
 	makedepends = git
 	makedepends = cmake
 	depends = supercollider
+	conflicts = supercollider-mkplugins
 	source = supercollider-mkplugins-git-r235.fa9bd99::git+https://github.com/madskjeldgaard/mkplugins.git
 	source = supercollider-source::git+https://github.com/supercollider/supercollider.git
 	md5sums = SKIP

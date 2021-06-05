@@ -10,7 +10,7 @@ groups=('pro-audio' 'supercollider-plugins')
 depends=('supercollider')
 makedepends=('git' 'cmake')
 optdepends=()
-conflicting=("supercollider-mkplugins")
+conflicts=("supercollider-mkplugins")
 source=("$pkgname-$pkgver"::git+$url.git
         'supercollider-source::git+https://github.com/supercollider/supercollider.git')
 md5sums=('SKIP'
