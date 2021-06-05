@@ -53,9 +53,9 @@ _makenconfig=
 
 pkgbase=linux-xanmod-rt510
 _major=5.10
-pkgver=${_major}.30
+pkgver=${_major}.41
 _branch=5.x
-_rt=38
+_rt=42
 xanmod=1
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod real-time version'
@@ -85,7 +85,7 @@ done
 
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'SKIP'
-            '84d1ceb8e1007d222cb96ef56c100613298bb0676932850018fdbb70e484ffb9'
+            '25d81d8f7211712ff3028a4089c3034a99b11904999e40e3992aeb36a972deb2'
             '51742dee57cd15bece152d6527f48af87cb7930f0f6a356d5282f778e7c35b39'
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
 
