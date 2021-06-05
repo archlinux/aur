@@ -15,7 +15,7 @@ pkgbase = joyshockmapper-git
 	provides = joyshockmapper
 	conflicts = joyshockmapper
 	conflicts = joyshockmapper-git
-	source = git+https://github.com/JibbSmart/JoyShockMapper
+	source = git+https://github.com/Electronicks/JoyShockMapper
 	md5sums = SKIP
 
 pkgname = joyshockmapper-git
