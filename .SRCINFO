@@ -1,7 +1,7 @@
 pkgbase = g15stats-systemd
 	pkgdesc = g15stats init script for systemd
-	pkgver = 1
-	pkgrel = 0
+	pkgver = 20210605
+	pkgrel = 1
 	url = https://gitlab.com/menelkir/g15stats
 	arch = any
 	license = GPL2
