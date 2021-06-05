@@ -1,0 +1,10 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libsmacker
+Description: C library for decoding Smacker Video files
+Version: 1.1.1r35
+Libs: -L${libdir} -lsmacker
+Cflags: -I${includedir}
