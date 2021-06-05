@@ -1,40 +1,46 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=pam_beacon-git
-pkgver=r20.4a0bd5a
+pkgver=r36.52d058d
 pkgrel=1
 pkgdesc="PAM module for multi-factor authentication with Bluetooth Devices & Beacons"
-arch=('x86_64')
+arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/muesli/pam-beacon"
 license=('MIT')
-makedepends=('go' 'git' 'pam')
 depends=('pam')
-provides=('pam_beacon')
-source=('git+https://github.com/muesli/pam-beacon.git')
+makedepends=('git' 'go')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=($pkgname::"git://github.com/muesli/pam-beacon.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/pam-beacon"
+    cd "$srcdir/$pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-    cd "$srcdir/pam-beacon"
-    GOPATH=`pwd` go get -d -v
-}
-
 build() {
-    cd "$srcdir/pam-beacon"
-    GOPATH=`pwd` make
+    cd "$srcdir/$pkgname"
+
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+
+    go build \
+        -trimpath \
+        -buildmode=pie \
+        -mod=readonly \
+        -modcacherw \
+        -ldflags "${extraflags} -extldflags \"${LDFLAGS}\"" \
+        -buildmode=c-shared \
+        -o "pam_beacon.so" .
 }
 
 package() {
-    cd "$srcdir/pam-beacon"
+    cd "$srcdir/$pkgname"
 
-    # Install binary
     install -Dm755 "pam_beacon.so" "$pkgdir/usr/lib/security/pam_beacon.so"
-    # Install PAM config
-    install -Dm644 config/pam.d/system-auth-beacon "$pkgdir/etc/pam.d/system-auth-beacon"
-    # Copy License
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "config/pam.d/system-auth-beacon" "$pkgdir/etc/pam.d/system-auth-beacon"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
