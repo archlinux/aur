@@ -1,6 +1,6 @@
 # Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 # Contributor: Michael DeGuzis <mdeguzis@gmail.com>
-# Co-Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 # Please note you must have a Vulkan-capable GPU
 
 _quake=vkQuake
