@@ -4,7 +4,7 @@ __pkgname=lit
 pkgname=${_pkgname}-bin
 pkgver=0.4.1_alpha
 _pkgver="${pkgver//_/-}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightning Terminal (LiT) is a browser-based interface for managing channel liquidity."
 
 arch=('any')
@@ -13,7 +13,7 @@ _arch=linux-amd64
 url="https://github.com/lightninglabs/${_pkgname}"
 license=("MIT")
 optdepends=("frcli" "lncli" "lnd" "loop" "pool")
-provides=("${_pkgname}d")
+provides=("${__pkgname}d")
 
 developer=guggero
 source=(
