@@ -1,10 +1,11 @@
 pkgbase = arnie-git
 	pkgdesc = ZNC plugin to make bridged IRC channels appear more natural
 	pkgver = r6.aba5b75
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LukeMoll/arnie
 	arch = any
 	license = BSD
+	makedepends = git
 	depends = znc
 	depends = python
 	provides = arnie

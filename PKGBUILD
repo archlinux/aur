@@ -1,12 +1,13 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname=arnie-git
 pkgver=r6.aba5b75
-pkgrel=1
+pkgrel=2
 pkgdesc="ZNC plugin to make bridged IRC channels appear more natural"
 arch=('any')
 url="https://github.com/LukeMoll/arnie"
 license=('BSD')
 depends=('znc' 'python')
+makedepends=('git')
 provides=('arnie')
 replaces=('arnie')
 source=("git+https://github.com/LukeMoll/arnie.git")
