@@ -11,4 +11,3 @@ pkgbase = htmltest-bin
 	sha256sums = ac47355b06ec9ee59d4a6cbd51be6402c3e6b7211275bd3e307c684ed74c1eba
 
 pkgname = htmltest-bin
-
