@@ -3,6 +3,7 @@ m vdr audio
 m vdr lp
 m vdr optical
 m vdr storage
+m vdr render
 m vdr video
 m vdr power
 m vdr uucp
