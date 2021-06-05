@@ -1,7 +1,7 @@
 # Maintainer: Yufan You <ouuansteve at gmail>
 
 pkgname=nvim-packer-git
-pkgver=r351.f59d630
+pkgver=r370.3715ce4
 pkgrel=1
 pkgdesc='A use-package inspired plugin manager for Neovim.'
 arch=('any')
