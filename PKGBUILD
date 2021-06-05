@@ -3,27 +3,31 @@
 
 pkgbase=open3d
 pkgname=( {,python-}open3d python-py3d )
-pkgver=0.9.0
+pkgver=0.13.0
 pkgrel=1
-epoch=3
+epoch=0
 pkgdesc="A Modern Library for 3D Data Processing"
 arch=('x86_64')
 url="http://www.open3d.org"
 license=('MIT')
 depends=(
     eigen
+    flann
+    fmt
     glew
     glfw-x11
+    gtest
     jsoncpp
     libjpeg-turbo
+    liblzf
     libpng
     mesa
+    python
+    pybind11
     xorg-server-devel
 )
 optdepends=(
     'openmp: Multiprocess support'
-    'pybind11: System pybind11 support'
-    'python: Python support'
     'jupyter-notebook: Jupyter notebook support'
 )
 makedepends=(
@@ -31,14 +35,11 @@ makedepends=(
     git
     python-setuptools
 )
-source=("${pkgbase}::git+https://github.com/intel-isl/Open3D.git#tag=v${pkgver}"
-        fix_3rdparty_path.patch)
-sha256sums=('SKIP'
-            '3bf6b79fd075b356a5c2d86a557e0bc6e6df0e84d53c2077d2c6685641838d81')
+source=("${pkgbase}::git+https://github.com/intel-isl/Open3D.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 
 function prepare() {
     cd "${srcdir}/${pkgbase}"
-    patch --forward --strip=1 --input="${srcdir}/fix_3rdparty_path.patch"
     git submodule update --init --recursive
     mkdir build
 }
@@ -49,19 +50,34 @@ function build() {
     cmake .. \
           -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
           -DBUILD_SHARED_LIBS=ON \
-          -DCMAKE_BUILD_TYPE=Release
+          -DCMAKE_BUILD_TYPE=Release \
+          -DUSE_SYSTEM_FLANN=ON \
+          -DUSE_SYSTEM_FMT=ON \
+          -DUSE_SYSTEM_GLEW=ON \
+          -DUSE_SYSTEM_GLFW=ON \
+          -DUSE_SYSTEM_GOOGLETEST=ON \
+          -DUSE_SYSTEM_JPEG=ON \
+          -DUSE_SYSTEM_LIBLZF=ON \
+          -DUSE_SYSTEM_PNG=ON \
+          -DUSE_SYSTEM_PYBIND11=ON
     make -j$(nproc)
 }
 
 function package_open3d() {
     depends=(
         eigen
+        flann
+        fmt
         glew
         glfw-x11
+        gtest
         jsoncpp
         libjpeg-turbo
+        liblzf
         libpng
         mesa
+        python
+        pybind11
         xorg-server-devel
     )
     optdepends=(
@@ -77,20 +93,24 @@ function package_open3d() {
 function package_python-open3d() {
     depends=(
         eigen
+        flann
+        fmt
         glew
         glfw-x11
+        gtest
         jsoncpp
         libjpeg-turbo
+        liblzf
         libpng
         mesa
         open3d
         python
+        pybind11
         xorg-server-devel
     )
     optdepends=(
         'jupyter-notebook: Jupyter notebook support'
         'openmp: Multiprocess support'
-        'pybind11: System pybind11 support'
     )
     provides=(
         python-py3d
@@ -108,20 +128,24 @@ function package_python-open3d() {
 function package_python-py3d() {
     depends=(
         eigen
+        flann
+        fmt
         glew
         glfw-x11
+        gtest
         jsoncpp
         libjpeg-turbo
+        liblzf
         libpng
         mesa
         open3d
         python
+        pybind11
         xorg-server-devel
     )
     optdepends=(
         'jupyter-notebook: Jupyter notebook support'
         'openmp: Multiprocess support'
-        'pybind11: System pybind11 support'
     )
     provides=(
         python-open3d
