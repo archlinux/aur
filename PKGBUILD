@@ -3,7 +3,7 @@
 
 pkgname=aliza
 pkgver=1.98.57
-pkgrel=1
+pkgrel=2
 pkgdesc="Medical Imaging. Open 2D, 3D and 4D images in DICOM, MetaIO, Nifti, Nrrd and other formats, incl. Meshes in VTK, OBJ and STL formats. Filters, segmentation, front-end for registration with Elastix and many more features"
 arch=('x86_64')
 url="http://www.aliza-dicom-viewer.com"
@@ -14,17 +14,20 @@ depends=('hicolor-icon-theme'
 options=('!emptydirs')
 source=("${pkgname}-${pkgver}.tar.gz::https://www.dropbox.com/s/mr55xb79zpwcoc4/aliza-1.98.57.tar.gz")
 sha512sums=('cbfa34a0932d1b5d6054b6b97d9b7fe904f1681dcb22f86bb03f153ed2c12f028f58a6a56880e4951c486af2d0a69659dd6058316eda398d3106f08177e6047b')
-noextract=("${pkgname}-${pkgver}.tar.gz")
-
+#noextract=("${pkgname}-${pkgver}.tar.gz")
 
 package() {
     ALIZA_DIR="/opt/aliza"
     ALIZA_C_DIR="${pkgdir}${ALIZA_DIR}/install_menu"
     ALIZA_I_DIR="${pkgdir}/usr/share/icons/hicolor"
 
+    find "${pkgdir}" -type d -exec chmod 777 {} \;
+    
     mkdir -p "${pkgdir}${ALIZA_DIR}"
-    tar xzf "${pkgname}-${pkgver}.tar.gz" -C "${pkgdir}${ALIZA_DIR}" --strip 1
+    cp -r "${pkgname}-${pkgver}"/* "${pkgdir}${ALIZA_DIR}"
 
+    #tar xzf "${pkgname}-${pkgver}.tar.gz" -C "${pkgdir}${ALIZA_DIR}" --strip 1 --owner root --group root
+    #install -d 
 
     mkdir -p "${pkgdir}/usr/share/applications";
     mkdir -p "${ALIZA_I_DIR}/16x16/apps";
