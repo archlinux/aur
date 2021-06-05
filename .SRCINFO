@@ -1,0 +1,17 @@
+pkgbase = alpm_octopi_utils-git
+	pkgdesc = Alpm utils for Octopi (git)
+	pkgver = r20.1e735c3
+	pkgrel = 1
+	url = https://tintaescura.com/projects/octopi/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = vala
+	depends = pacman-contrib
+	provides = alpm_octopi_utils
+	conflicts = alpm_octopi_utils
+	conflicts = alpm_octopi_utils-dev
+	source = git+https://github.com/aarnt/alpm_octopi_utils.git
+	sha512sums = SKIP
+
+pkgname = alpm_octopi_utils-git
