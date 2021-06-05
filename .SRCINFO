@@ -14,6 +14,7 @@ pkgbase = odoo
 	depends = python-chardet
 	depends = python-decorator
 	depends = python-docutils
+	depends = python-ebaysdk
 	depends = python-feedparser
 	depends = python-gevent
 	depends = python-greenlet

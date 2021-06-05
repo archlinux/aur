@@ -20,7 +20,7 @@ depends=("postgresql"
         "python-chardet"
         "python-decorator"
         "python-docutils"
-        #"python-ebaysdk" # aur checksum is wrong at 2021-06-04
+        "python-ebaysdk"
         "python-feedparser"
         # "python-freezegun" # used for testing
         "python-gevent"
