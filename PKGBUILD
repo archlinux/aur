@@ -1,7 +1,7 @@
 # Maintainer: Dylan <dylan@psilly.com>
 
 pkgname=questrade-iq-edge
-pkgver=6.3.5.244
+pkgver=6.4.4.258
 pkgrel=1
 pkgdesc="A proprietary desktop stock trading platform."
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=(icoutils)
 optdepends=('ttf-ms-win10: readable window titles')
 source=($pkgname-$pkgver.zip::https://media.questrade.com/iq_downloads/QuestradeIQEdge.zip
         com.questrade.IQEdge.desktop)
-sha256sums=('7f4c4233005ca8588cc47cdb77f69d8b4554af3271666ac3dc2de578bfea1fa0'
+sha256sums=('38431818c30a54ff80b01db1a53f97894b187fddc2a60ab1e77fa62aa49f5e12'
             'a72c10367e165bd03591ae6998a6b85bd72b799088655968d9bcee4ebfeb3d1e')
 
 build() {
