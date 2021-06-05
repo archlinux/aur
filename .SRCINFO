@@ -1,0 +1,14 @@
+pkgbase = i3-xkb-switcher
+	pkgdesc = Keyboard layout switcher for i3 windows
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/inn0kenty/i3-xkb-switcher
+	arch = x86_64
+	license = MIT
+	makedepends = python-pip
+	depends = python-i3ipc
+	depends = python-xkbgroup
+	source = i3-xkb-switcher-0.2.1.tar.gz::https://github.com/inn0kenty/i3-xkb-switcher/archive/v0.2.1.tar.gz
+	sha256sums = 8d03c40226321253b7c988ff23d5808eeaedeea6e0824d5116958107bed76510
+
+pkgname = i3-xkb-switcher
