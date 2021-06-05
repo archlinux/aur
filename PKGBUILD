@@ -18,6 +18,9 @@ prepare() {
 
   # Working around this issue: https://github.com/manosim/gitify/issues/503
   sed -i 's/"version": "4.2.0",/"version": "4.2.1",/g' package.json
+
+  # Don't build the AppImage package
+  sed -i '/"AppImage"/d' package.json
 }
 
 build() {
