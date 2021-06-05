@@ -1,0 +1,16 @@
+pkgbase = archinstall-git
+	pkgdesc = Just another guided/automated Arch Linux installer with a twist
+	pkgver = r2239.a4033a7
+	pkgrel = 1
+	url = https://github.com/archlinux/archinstall
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	makedepends = python-sphinx
+	depends = python
+	provides = python-archinstall
+	conflicts = python-archinstall
+	source = git+https://github.com/archlinux/archinstall.git
+	md5sums = SKIP
+
+pkgname = archinstall-git
