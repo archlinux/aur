@@ -7,7 +7,7 @@
 pkgname=lxd
 _pkgname=lxd
 _lxd=github.com/lxc/lxd
-pkgver=4.14
+pkgver=4.15
 pkgrel=1
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=("https://linuxcontainers.org/downloads/${pkgname}/${pkgname}-${pkgver}.t
         "lxd.service"
         "lxd.sysusers")
 validpgpkeys=('602F567663E593BCBD14F338C638974D64792D67')
-sha256sums=('1e1ea51aec8860faae3028820d38df66f3dbf70436bc2749117c8c21c1d92ff5'
+sha256sums=('5178a918d59c9412a0af4af4c1abfce469e1a76497913bc316bf602895a2b265'
             'SKIP'
             '3a14638f8d0f9082c7214502421350e3b028db1e7f22e8c3fd35a2b1d9153ef4'
             '102d1d54186e0fc606a58f030231d76df6bd662b16dfd8f946e1f48e2b473b54'
@@ -47,9 +47,6 @@ build() {
   export GOPATH="${srcdir}/${pkgname}-${pkgver}/_dist"
   cd "${GOPATH}/src/${_lxd}"
   export GOFLAGS="-buildmode=pie -trimpath"
-  export CGO_CFLAGS="$CFLAGS -I/usr/include/sqlite-replication"
-  export CGO_LDFLAGS="$LDFLAGS -L/usr/lib/sqlite-replication -Wl,-R/usr/lib/sqlite-replication"
-  export CGO_LDFLAGS_ALLOW='-Wl,-wrap,pthread_create'
   export GO111MODULE=off
 
   mkdir -p bin
