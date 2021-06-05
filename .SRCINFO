@@ -1,7 +1,7 @@
 pkgbase = python-pdfminer.six
 	pkgdesc = Community maintained fork of pdfminer
 	pkgver = 20201018
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pdfminersix.readthedocs.io/
 	arch = any
 	license = MIT
@@ -9,7 +9,8 @@ pkgbase = python-pdfminer.six
 	depends = python>=3.6
 	depends = python-chardet
 	depends = python-cryptography
-	provides = python-pdfminer=20201018
+	provides = python-pdfminer
+	conflicts = python-pdfminer
 	source = https://files.pythonhosted.org/packages/source/p/pdfminer.six/pdfminer.six-20201018.tar.gz
 	sha384sums = 608fd8a810ef2e85add322ba68f167101a700f4a597c1c7deb3e3ad95bad50fd151798872f5290294c808cb128c89304
 
