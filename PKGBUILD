@@ -1,16 +1,17 @@
-# Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
-# Contributor: zootboy
+# Maintainer: Sean Greenslade <aur@seangreenslade.com>
+# Contributor: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: FadeMind <fademind@gmail.com>
 # Contributor: Richard Jackson <rj@iinet.net.au>
 pkgname=abiword-gtk2
 _pkgname=abiword
 pkgver=3.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Fully-featured word processor, GTk2, No plugins, Lite version'
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('fribidi' 'wv' 'librsvg' 'enchant' 'desktop-file-utils' 'gtk2' 'libxslt')
 makedepends=('boost')
+optdepends=('hunspell: for spell checking')
 conflicts=('abiword' 'abiword-plugins')
 url='https://www.abisource.com'
 source=("$_pkgname-$pkgver.tar.gz::https://abisource.com/downloads/$_pkgname/$pkgver/source/$_pkgname-$pkgver.tar.gz"
@@ -32,6 +33,8 @@ prepare() {
 
 build() {
   cd $_pkgname-$pkgver
+
+  CXXFLAGS="-std=c++14"
 
   ./configure --prefix=/usr \
     --enable-shared \

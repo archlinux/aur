@@ -1,7 +1,7 @@
 pkgbase = abiword-gtk2
 	pkgdesc = Fully-featured word processor, GTk2, No plugins, Lite version
 	pkgver = 3.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.abisource.com
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = abiword-gtk2
 	depends = desktop-file-utils
 	depends = gtk2
 	depends = libxslt
+	optdepends = hunspell: for spell checking
 	conflicts = abiword
 	conflicts = abiword-plugins
 	source = abiword-3.0.4.tar.gz::https://abisource.com/downloads/abiword/3.0.4/source/abiword-3.0.4.tar.gz
