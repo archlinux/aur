@@ -1,6 +1,6 @@
 pkgbase = nootka
 	pkgdesc = A cross-platform tool for learning classical score notation. Sight reading and ear training.
-	pkgver = 1.9.1.rc2
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://nootka.sourceforge.io/
 	arch = x86_64
@@ -27,8 +27,7 @@ pkgbase = nootka
 	optdepends = qt5-translations: for other languages support
 	conflicts = nootka-hg
 	conflicts = nootka-git
-	source = https://sourceforge.net/projects/nootka/files/Nootka-1.9.1-rc2/nootka-1.9.1-rc2-source.tar.bz2
-	md5sums = 01ae95ca9a1ed42edbbda947d0fc6399
+	source = https://sourceforge.net/projects/nootka/files/Nootka-2.0.0/nootka-2.0.0-source.tar.bz2
+	md5sums = ec27f97908bc00a0a32fa35c48801602
 
 pkgname = nootka
-
