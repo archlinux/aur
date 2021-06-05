@@ -17,7 +17,7 @@ sha256sums=('6b04868b5b0f34e8a1d6a20f1dd41aae62e819a8c7540ac83a11ba4dcea5e8a1'
             '3f7049c62862ffb4a2672c36f125bca491753da67cf1e7da1a8651815308e180')
 
 build() {
-  qmake
+  qmake-qt5
   make
 }
 
