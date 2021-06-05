@@ -1,0 +1,14 @@
+pkgbase = firefox-chrome-manager-git
+	pkgdesc = Firefox userChrome.css Installer
+	pkgver = r4.6a5c868
+	pkgrel = 1
+	url = https://github.com/quininer/firefox-chrome-manager
+	arch = x86_64
+	license = unknown
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	source = git+https://github.com/quininer/firefox-chrome-manager
+	sha512sums = SKIP
+
+pkgname = firefox-chrome-manager-git
