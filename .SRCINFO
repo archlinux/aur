@@ -1,16 +1,14 @@
 pkgbase = python-ebaysdk
 	pkgdesc = eBay SDK for Python
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/timotheus/ebaysdk-python
 	arch = any
 	license = CDDL
 	makedepends = python-setuptools
-	depends = python
 	depends = python-lxml
 	depends = python-requests
-	source = https://github.com/timotheus/ebaysdk-python/archive/v2.2.0.tar.gz
-	md5sums = ef9fa8544661ba11593680fe1ba595a6
+	source = python-ebaysdk-2.2.0.tar.gz::https://github.com/timotheus/ebaysdk-python/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = aaf2b04deb504676deaa9915f0993d37f5fd883929b6247d35f13654f6fa9594
 
 pkgname = python-ebaysdk
-

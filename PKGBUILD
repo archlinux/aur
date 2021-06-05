@@ -1,21 +1,26 @@
-# Maintainer: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
+# Maintainer:  Anton Kudelin <kudelin at protonmail dot com>
+# Contributor: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
 
 pkgname=python-ebaysdk
 _pkgname=ebaysdk-python
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="eBay SDK for Python"
-url=https://github.com/timotheus/ebaysdk-python
+url="https://github.com/timotheus/ebaysdk-python"
 arch=('any')
 license=('CDDL')
-depends=('python' 'python-lxml' 'python-requests')
+depends=('python-lxml' 'python-requests')
 makedepends=('python-setuptools')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('aaf2b04deb504676deaa9915f0993d37f5fd883929b6247d35f13654f6fa9594')
 
-source=("https://github.com/timotheus/${_pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('ef9fa8544661ba11593680fe1ba595a6')
+build() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  python setup.py build
+}
 
 package() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
-  python setup.py install --root="${pkgdir}"
-  rm -r "${pkgdir}"/usr/lib/python*/site-packages/{samples,tests}
+  cd "$srcdir/$_pkgname-$pkgver"
+  python setup.py install --root="$pkgdir" -O1 --skip-build
+  rm -r "$pkgdir"/usr/lib/python*/site-packages/{samples,tests}
 }
