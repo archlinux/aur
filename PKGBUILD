@@ -11,10 +11,6 @@ _filename='g15daemon.initd'
 source=("https://gitlab.com/menelkir/g15daemon/-/raw/master/contrib/init/g15daemon.openrc")
 sha256sums=('3fad6371f206be83cbaa9b904f494bbe7828d1da6ef5ec3ea202bc5959f2b402')
 
-pkgver() {
-   date +%Y%m%d
-}
-
 package() {
     install -dm755 "$pkgdir/etc/init.d"
     install -Dm755 "$srcdir/g15daemon.openrc" "$pkgdir/etc/init.d/g15daemon"
