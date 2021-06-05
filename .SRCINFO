@@ -13,27 +13,14 @@ pkgbase = purify-git
 
 pkgname = vim-purify-git
 	depends = vim-plugin-runtime
-	optdepends = vim-airline-purify
-	optdepends = vim-lightline-purify
 	provides = vim-purify
-	conflicts = vim-purify
-
-pkgname = vim-airline-purify-git
-	depends = vim-airline
-	depends = vim-plugin-runtime
-	optdepends = vim-purify: Base vim theme
 	provides = vim-airline-purify
-	conflicts = vim-airline-purify
-
-pkgname = vim-lightline-purify-git
-	depends = vim-lightline-git
-	depends = vim-plugin-runtime
-	optdepends = vim-purify: Base vim theme
 	provides = vim-lightline-purify
+	conflicts = vim-purify
+	conflicts = vim-airline-purify
 	conflicts = vim-lightline-purify
 
 pkgname = fish-purify-git
 	depends = fish
 	provides = fish-purify
 	conflicts = fish-purify
-
