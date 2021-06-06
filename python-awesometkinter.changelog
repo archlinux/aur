@@ -1,3 +1,8 @@
+2021.6.4:
+- Add tooltip to tkinter widgets.
+- used python-bidi and custom reshaper instead of pyfribidi.
+- fixes for right click menu.
+
 2021.5.23:
 - limit bidi support to linux, since windows handle bidi in os level.
 - fixed selected text deletion with delete and bkspace keys in bidi supported entry.
