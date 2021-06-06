@@ -9,8 +9,6 @@ url="https://filebrowser.org/"
 license=(Apache)
 depends=(glibc)
 makedepends=(go npm go.rice)
-provides=(filebrowser)
-conflicts=(filebrowser)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/filebrowser/filebrowser/archive/v${pkgver}.tar.gz"
         "filebrowser@.service")
 sha512sums=('e6401512f1e492568e2dc7e5e5447fa262b4df15c908fd0693fd06826fddc37d94a0899d8241e9d88498e65b9107fbe1bc1b7a6d8fe2c0fb23b5e3a5edd1b57f'
