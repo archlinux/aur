@@ -2,7 +2,7 @@
 
 pkgname=obs-studio-tytan652
 pkgver=27.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, working VLC sources and my bind interface PR."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -12,6 +12,9 @@ depends=("ffmpeg" "mbedtls" "jack" "gtk-update-icon-cache" "x264" "rnnoise"
          # "libxinerama" "qt5-svg" provided by "vlc-luajit"
          # "libxkbcommon-x11" provided by "qt5-base"
          # "jansson" "curl" provided by "ftl-sdk"
+
+         # Both needed to load linux-capture, so those two are no longer optional
+         "libxcomposite" "pipewire"
 
          # Needed by obs-browser
          "libxss" "libxrandr" "nss" "at-spi2-atk"
@@ -23,14 +26,11 @@ depends=("ffmpeg" "mbedtls" "jack" "gtk-update-icon-cache" "x264" "rnnoise"
 # So I also created vlc-luajit, a VLC package compiled with the same lua as OBS.
 # But to make people unable to install VLC official package with obs-studio-tytan652.
 # I decided to make vlc-luajit a dependency of OBS rather than an optional one.
-makedepends=("cmake" "git" "libfdk-aac" "libxcomposite" "swig"
-             "luajit" "python" "pipewire"
+makedepends=("cmake" "git" "libfdk-aac" "swig" "luajit" "python"
              # AUR Packages
              "cef-minimal-obs=87.1.14")
 optdepends=(
             "libfdk-aac: FDK AAC codec support"
-            "libxcomposite: XComposite capture support"
-            "pipewire: PipeWire capture support"
             "xdg-desktop-portal-impl: PipeWire capture support"
             "libva-intel-driver: Hardware encoding"
             "libva-mesa-driver: Hardware encoding"
