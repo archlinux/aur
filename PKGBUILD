@@ -15,8 +15,8 @@ pkgname=(pipewire-full-git
          pipewire-full-vulkan-git
          pipewire-full-ffmpeg-git
          )
-pkgver=0.3.28.r159.g6971d1190
-pkgrel=2
+pkgver=0.3.29.r28.g5a054cfc
+pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 license=(MIT)
