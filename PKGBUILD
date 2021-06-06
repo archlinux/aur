@@ -1,9 +1,9 @@
-# Maintainer: Isaac Mills <rooster0055@protonmail.com>
+# Maintainer: Endo Aya <endoaya@protonmail.ch>
 
 pkgname=dogehouse
 pkgver=1.0.64
 pkgrel=1
-pkgdesc="Taking voice conversations to the moon"
+pkgdesc="Dogehouse - a fun spin on Clubhouse"
 url="https://dogehouse.tv"
 license=('MIT')
 arch=('x86_64')
