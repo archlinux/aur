@@ -2,12 +2,12 @@
 
 pkgname=python-awesometkinter
 pkgver=2021.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Pretty tkinter widgets"
 arch=('any')
 url='https://github.com/Aboghazala/AwesomeTkinter'
 license=('MIT')
-depends=('python' 'tk' 'python-pillow')
+depends=('python' 'tk' 'python-pillow' 'python-bidi')
 makedepends=('python-setuptools')
 changelog="$pkgname.changelog"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Aboghazala/AwesomeTkinter/tarball/ecbd05f4227679af856cbf724e7dc879fba76262")
