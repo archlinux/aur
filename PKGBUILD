@@ -1,29 +1,27 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=pinktrace-1
 pkgdesc='Lightweight ptrace() wrapper library'
-pkgver=0.9.3
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 license=(custom:BSD)
 depends=(glibc)
-url='https://git.exherbo.org/pinktrace-1.git'
-source=("${url}/snapshot/${pkgname}-${pkgver}.tar.xz")
+url=https://pinktrace.exherbo.org/
+source=("https://dev.exherbo.org/distfiles/pinktrace/pinktrace-${pkgver}.tar.bz2")
 arch=(x86_64)
-sha512sums=('78d6b3509380ccfff06c31babb23326d1609a4e18f9f4da925b1d81e4305092375013c63b73d5a42cbdbd521db64994006839ef9ad86771dc3f45a73cd4608e1')
+sha512sums=('35a3071902d1e7bfaaec2880c6d1fd8ecd085d9fea6b455e1b193da808a52cb16c54bdac38af69760bb16847c0d03530e04c9e3fae055fd8f719d8bced977cd9')
 
 build () {
-	cd "${pkgname}-${pkgver}"
-	./autogen.sh
+	cd "pinktrace-${pkgver}"
 	./configure --prefix=/usr
 	make
 }
 
 check () {
-	echo 'Linking tests seems to be broken. Skipped.'
-	# make -C "${pkgname}-${pkgver}" check
+	make -C "pinktrace-${pkgver}" check
 }
 
 package () {
-	cd "${pkgname}-${pkgver}"
+	cd "pinktrace-${pkgver}"
 	make DESTDIR="${pkgdir}" install
-	install -Dm644 COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
+	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
