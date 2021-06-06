@@ -1,7 +1,7 @@
 # Maintainer: Joseph Lansdowne <J49137@gmail.com>
 pkgname=arcdps-log-manager
-pkgver=1.1.0
-_gitver=1.1
+pkgver=1.1.1
+_gitver=1.1.1
 pkgrel=3
 pkgdesc="Manager for Guild Wars 2 arcdps EVTC logs"
 arch=(x86_64)
