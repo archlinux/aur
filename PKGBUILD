@@ -6,12 +6,13 @@ pkgver=1.2.1
 pkgrel=3.1
 pkgdesc="Very simple CD/audio player application for FLTK"
 arch=('i686' 'x86_64')
-url="http://home.arcor.de/szukw000/english_index.html"
+# url="http://home.arcor.de/szukw000/english_index.html"
+url="https://github.com/bbidulock/$pkgname"
 license=('LGPL')
 depends=('fltk' 'alsa-lib' 'sox')
 makedepends=('gendesk')
 # source=(http://home.arcor.de/szukw000/$pkgname-fltk13-source-$pkgver.tgz)
-source=("https://github.com/bbidulock/$pkgname/releases/download/$pkgver/$pkgname-fltk13-source-$pkgver.tgz")
+source=("$url/releases/download/$pkgver/$pkgname-fltk13-source-$pkgver.tgz")
 md5sums=('1e2e1bd760a7f5ea583093537090c3ae')
 
 prepare() {
