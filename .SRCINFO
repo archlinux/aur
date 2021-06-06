@@ -1,22 +1,26 @@
 pkgbase = lightly-git
-	pkgdesc = A modern style for qt applications, forked from Breeze
-	pkgver = r2022.fe1663e1
+	pkgdesc = A modern style for qt applications
+	pkgver = r2120.be20234d
 	pkgrel = 1
 	url = https://github.com/Luwx/Lightly
 	arch = x86_64
+	arch = aarch64
 	license = GPL2
 	makedepends = git
+	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = kcmutils
+	makedepends = kdecoration
+	makedepends = qt5-declarative
+	makedepends = qt5-x11extras
 	depends = frameworkintegration
 	depends = kdecoration
 	depends = breeze-icons
 	depends = kwayland
 	depends = hicolor-icon-theme
-	provides = lightly
-	conflicts = lightly
-	source = lightly::git+https://github.com/Luwx/Lightly.git
+	provides = lightly-qt
+	conflicts = lightly-qt
+	source = git+https://github.com/Luwx/Lightly
 	sha512sums = SKIP
 
 pkgname = lightly-git
-
