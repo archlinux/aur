@@ -19,7 +19,7 @@ url='https://www.boost.org/'
 arch=('x86_64')
 license=('custom')
 makedepends=('icu' 'python' 'python2' 'python-numpy' 'python2-numpy' 'bzip2' 'zlib' 'openmpi' 'zstd' 'findutils')
-source=("https://dl.bintray.com/boostorg/release/${pkgver}/source/boost_${_boostver}.tar.bz2"
+source=("https://boostorg.jfrog.io/artifactory/main/release/${pkgver}/source/boost_${_boostver}.tar.bz2"
         "${pkgbase%-python2}-ublas-c++20-iterator.patch::https://github.com/boostorg/ublas/commit/a31e5cffa85f.patch")
 sha256sums=('953db31e016db7bb207f11432bef7df100516eeb746843fa0486a222e3fd49cb'
             'aa38addb40d5f44b4a8472029b475e7e6aef1c460509eb7d8edf03491dc1b5ee')
