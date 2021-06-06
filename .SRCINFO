@@ -1,6 +1,6 @@
 pkgbase = copasi-bin
 	pkgdesc = COmplex PAthway SImulator for analysis of biochemical networks and their dynamics
-	pkgver = 4.30.240
+	pkgver = 4.31.243
 	pkgrel = 1
 	url = http://www.copasi.org/
 	install = copasi.install
@@ -9,13 +9,12 @@ pkgbase = copasi-bin
 	license = Artistic 2.0
 	depends = shared-mime-info
 	depends = freetype2
-	noextract = copasi-bin-4.30.240.tar.gz
+	noextract = copasi-bin-4.31.243.tar.gz
 	source = copasi-desktop.tar.gz
 	sha256sums = 9576e4a9b2c7e74c91d0e1c0b39fcb20531e8fb4f21c5e8ac95b048609702923
-	source_i686 = copasi-bin-4.30.240.tar.gz::https://github.com/copasi/COPASI/releases/download/Build-240/COPASI-4.30.240-Linux-32bit.tar.gz
-	sha256sums_i686 = d9fa077c260dfafec94c4c205267f61fc12bd0dcaa429bb26f31d2e704e18ce3
-	source_x86_64 = copasi-bin-4.30.240.tar.gz::https://github.com/copasi/COPASI/releases/download/Build-240/COPASI-4.30.240-Linux-64bit.tar.gz
-	sha256sums_x86_64 = d9fa077c260dfafec94c4c205267f61fc12bd0dcaa429bb26f31d2e704e18ce3
+	source_i686 = copasi-bin-4.31.243.sh::https://github.com/copasi/COPASI/releases/download/Build-243/COPASI-4.31.243-Linux-32bit.sh
+	sha256sums_i686 = d9d08cf72b577b89179a90eaf9604c3c4ede550d2a729bc602f2523b0935be49
+	source_x86_64 = copasi-bin-4.31.243.sh::https://github.com/copasi/COPASI/releases/download/Build-243/COPASI-4.31.243-Linux-64bit.sh
+	sha256sums_x86_64 = d9d08cf72b577b89179a90eaf9604c3c4ede550d2a729bc602f2523b0935be49
 
 pkgname = copasi-bin
-
