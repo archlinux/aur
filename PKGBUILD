@@ -1,8 +1,9 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
-pkgname=pinktrace-1
+pkgbase=pinktrace-1
+pkgname=(pinktrace-1 python-pinktrace)
 pkgdesc='Lightweight ptrace() wrapper library'
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 license=(custom:BSD)
 depends=(glibc)
 makedepends=(python)
@@ -21,8 +22,23 @@ check () {
 	make -C "pinktrace-${pkgver}" check
 }
 
-package () {
+_package_common () {
 	cd "pinktrace-${pkgver}"
 	make DESTDIR="${pkgdir}" install
 	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+	rm -r "${pkgdir}/usr/lib/libpinktrace_1.0.a"
+}
+
+package_pinktrace-1 () {
+	_package_common
+	rm -rf "${pkgdir}/usr/lib"/python3.*/
+}
+
+package_python-pinktrace ()
+{
+	depends=(pinktrace-1 python)
+	_package_common
+	rm -rf "${pkgdir}/usr/share/doc" "${pkgdir}/usr/lib/pkgconfig" \
+		"${pkgdir}/usr/include"
+	rm -f "${pkgdir}/usr/lib"/libpinktrace_1.0.so*
 }
