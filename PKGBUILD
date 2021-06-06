@@ -1,16 +1,16 @@
 # Maintainer: James McMurray <jamesmcm03@gmail.com>
 
 pkgname=vopono
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='Run applications through VPN connections in network namespaces'
-arch=('x86_64')
+arch=('any')
 url='https://github.com/jamesmcm/vopono'
 license=('GPL3')
 makedepends=('git' 'rust')
 optdepends=('openvpn: for OpenVPN connections' 'wireguard-tools: for Wireguard connections' 'shadowsocks-libev: for Shadowsocks support (Mullvad)')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('3266b6735fa282a87e71a36d81a62ea6694691cf9d98782a40bcde82bb96eb49')
+sha256sums=('7af74302fb468e02598281647f17350ec9b87c1749df09a9c5fc1c52f336b9ab')
 provides=('vopono')
 conflicts=('vopono')
 
