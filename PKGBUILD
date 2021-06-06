@@ -25,7 +25,7 @@ sha256sums=('ecb6276656194aa137ce50db92c1c014c2bc91c3810d1e36b6946c01610b5e68'
             '0ba95ed8914f1c3d7fb3601a9735d53be0445aa070a003f7938bfff754677578')
 backup=('etc/bitcoin/${_bitcoin}.conf'
         'etc/logrotate.d/${_bitcoin}')
-makedepends=('boost' 'cmake' 'desktop-file-utils' 'libevent' 'miniupnpc' 'ninja' 'protobuf' 'qrencode' 'qt5-tools' 'zeromq')
+makedepends=('boost' 'cmake' 'desktop-file-utils' 'help2man' 'libevent' 'miniupnpc' 'ninja' 'protobuf' 'qrencode' 'qt5-tools' 'zeromq')
 
 build() {
   cd "$srcdir/bitcoin-cash-node-v$pkgver"

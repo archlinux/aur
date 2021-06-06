@@ -9,6 +9,7 @@ pkgbase = bitcoin-cash
 	makedepends = boost
 	makedepends = cmake
 	makedepends = desktop-file-utils
+	makedepends = help2man
 	makedepends = libevent
 	makedepends = miniupnpc
 	makedepends = ninja
