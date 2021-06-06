@@ -3,7 +3,7 @@
 pkgname=doppler-cli-bin
 pkgver=3.26.0
 pkgrel=1
-pkgdesc="A CLI utility for Doppler, environment and secret manager."
+pkgdesc="A CLI utility for Doppler, environment and secrets manager."
 arch=("x86_64")
 license=('Apache')
 depends=()
