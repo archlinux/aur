@@ -1,7 +1,7 @@
 pkgbase = libdaq
 	pkgdesc = Data Acquisition library for packet I/O.
 	pkgver = 3.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.snort.org/
 	arch = i686
 	arch = x86_64
