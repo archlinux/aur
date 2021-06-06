@@ -1,10 +1,11 @@
-# Maintainer: FadeMind <fademind@gmail.com>
-# Contributor: Que Quotion <quequotion@bugmenot.com>
-# Contributor: Jameson Pugh <imntreal@gmail.com>
+# maintainer: libele <libele@disroot.org>
+# contributor: FadeMind <fademind@gmail.com>
+# contributor: Que Quotion <quequotion@bugmenot.com>
+# contributor: Jameson Pugh <imntreal@gmail.com>
 
 _pkgbasename=python2
 pkgname=lib32-$_pkgbasename
-pkgver=2.7.15
+pkgver=2.7.18
 pkgrel=1
 _pybasever=2.7
 pkgdesc="A high-level scripting language (32 bit)"
@@ -17,9 +18,8 @@ optdepends=('lib32-tk: for IDLE')
 conflicts=('lib32-python<3')
 options=('!makeflags')
 source=("https://www.python.org/ftp/python/${pkgver%rc?}/Python-${pkgver}.tar.xz"
-        'descr_ref.patch' 'python-config-32.patch' 'lib32-distutils-sysconfig.patch')
-sha256sums=('22d9b1ac5b26135ad2b8c2901a9413537e08749a753356ee913c84dbd2df5574'
-            '8f84c2efd9963541a55e2caccbb2651a132430c49f9e66e8e299a9e34e1c74b8'
+        'python-config-32.patch' 'lib32-distutils-sysconfig.patch')
+sha256sums=('b62c0e7937551d0cc02b8fd5cb0f544f9405bafc9a54d3808ed4594812edef43'
             '227230f73a2144f997c8246576e514783749b4432b45256765eee0193864f1eb'
             '54b58eb8d0083c9ff751763180e9951b776dfa0c65e6391b000c56a538e20ad9')
 
@@ -34,10 +34,6 @@ prepare() {
   rm -r Modules/expat
   rm -r Modules/zlib
   rm -r Modules/_ctypes/{darwin,libffi}*
-  
-  # FS#48761
-  # http://bugs.python.org/issue25750
-  patch -Np1 -i "${srcdir}/descr_ref.patch"
   
   # Here start the patches lib32 specific
   
