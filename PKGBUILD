@@ -10,8 +10,8 @@
 # shellcheck disable=SC2164 # cd safe
 
 pkgname=megasync-nopdfium
-pkgver=4.4.0.0
-pkgrel=2
+pkgver=4.5.1.0
+pkgrel=1
 pkgdesc="Easy automated syncing between your computers and your MEGA cloud drive(stripped of pdfium dependency)"
 arch=('i686' 'x86_64')
 provides=(megasync=$pkgver)
@@ -19,7 +19,7 @@ conflicts=(megasync)
 url="https://github.com/meganz/MEGAsync"
 license=('custom:MEGA LIMITED CODE REVIEW LICENCE')
 depends=('c-ares' 'crypto++' 'libsodium' 'libuv'
-         'libmediainfo' 'libraw' 'qt5-base' 'qt5-svg' 'qt5-x11extras' 'ffmpeg')
+         'libmediainfo' 'libraw' 'qt5-base' 'qt5-svg' 'qt5-x11extras' 'ffmpeg3.4')
 makedepends=('qt5-tools' 'swig' 'doxygen' 'lsb-release' 'git')
 _extname="_Win"
 source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}${_extname}"
@@ -40,6 +40,12 @@ prepare() {
 build() {
     # build sdk
     cd "MEGAsync/src/MEGASync/mega"
+
+    export PKG_CONFIG_PATH="/usr/lib/ffmpeg3.4/pkgconfig"
+    export CFLAGS+=" -I/usr/include/ffmpeg3.4"
+    export CXXFLAGS+=" -I/usr/include/ffmpeg3.4"
+    export LDFLAGS+=" -L/usr/lib/ffmpeg3.4"
+
     ./autogen.sh
     ./configure \
         --disable-shared \
@@ -47,6 +53,7 @@ build() {
         --disable-silent-rules \
         --disable-curl-checks \
         --disable-megaapi \
+        --with-ffmpeg \
         --with-cryptopp \
         --with-sodium \
         --with-zlib \
@@ -63,7 +70,11 @@ build() {
 
     # build megasync
     cd "../.."
-    qmake-qt5 "CONFIG += FULLREQUIREMENTS" MEGA.pro
+    qmake-qt5 \
+        "LIBS += -L/usr/lib/ffmpeg3.4" \
+        "INCLUDEPATH += /usr/include/ffmpeg3.4" \
+        "CONFIG += FULLREQUIREMENTS" \
+        MEGA.pro
     lrelease-qt5 MEGASync/MEGASync.pro
     make
 }
