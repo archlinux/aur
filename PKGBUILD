@@ -1,5 +1,7 @@
 # Maintainer: Felipe Contreras <felipe.contreras@gmail.com>
 
+# shellcheck disable=SC2154,SC2115
+
 pkgname=git-completion
 pkgver=1.3.1
 pkgrel=1
