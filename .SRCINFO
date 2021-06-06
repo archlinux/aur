@@ -1,7 +1,7 @@
 pkgbase = fontpreview
 	pkgdesc = Highly customizable and minimal font previewer written in bash
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sdushantha/fontpreview
 	arch = any
 	license = MIT
@@ -13,4 +13,3 @@ pkgbase = fontpreview
 	sha256sums = 5785ed96852b84e082c05af56d4811ea8a830ed714d683201a128436a32f7758
 
 pkgname = fontpreview
-

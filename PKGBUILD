@@ -1,8 +1,9 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Daniel Menelkir <menelkir@itroll.org>
+# Old Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='fontpreview'
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Highly customizable and minimal font previewer written in bash'
 arch=('any')
 url='https://github.com/sdushantha/fontpreview'
