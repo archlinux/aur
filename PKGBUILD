@@ -3,9 +3,9 @@
 
 pkgname=qt5-quick3d
 _qtver=5.15.2
-pkgver=5.15.2+kde+r18
+pkgver=5.15.2+kde+r19
 pkgrel=1
-_commit=e3dfdf1bed735dc720f08c4a01cdc7ddbe7623f7
+_commit=3e3e53c834b25dc2959dd30f319d12d6f84ee1e3
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -15,10 +15,8 @@ makedepends=('assimp' 'git')
 optdepends=('assimp: Import from assimp')
 groups=('qt' 'qt5')
 _pkgfqn=qtquick3d
-source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
-        qtquick3d-assimp.patch)
-sha256sums=('SKIP'
-            '531c479880b51a0e5247ccba1b5158b99d16d2a8d4d63b462572687bef1862ef')
+source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgfqn
@@ -30,7 +28,6 @@ prepare() {
 
   cd $_pkgfqn
   git revert -n 80196af36528e66826549a8b54d6cc5988db1622 # Revert version bump
-  patch -p1 -i ../qtquick3d-assimp.patch # Fix build with system assimp
 }
 
 build() {
