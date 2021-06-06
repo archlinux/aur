@@ -22,8 +22,13 @@
 #include <X11/cursorfont.h>
 #include <X11/Xutil.h>
 
-#include <unistd.h>
 #include <stdio.h>
+#include <getopt.h>
+
+/*
+static struct option long_options[] = {
+	{"oneshot", no_argument, }
+	};*/
 
 int main(int argc, char *argv[]) {
 
@@ -31,7 +36,16 @@ int main(int argc, char *argv[]) {
 	int one_shot = 0;
 	int quit_on_keypress = 0;
 	int output_format = 0x11;
-	while ((opt = getopt(argc, argv, "oqhrd")) != -1) {
+	
+	static struct option long_options[] = {
+		{"oneshot", no_argument, NULL, 'o'},
+		{"quit-on-keypress", no_argument, NULL, 'q'},
+		{"help", no_argument, NULL, 'h'},
+		{"rgb", no_argument, NULL, 'r'},
+		{"hex", no_argument, NULL, 'd'}
+	};
+	
+	while ((opt = getopt_long(argc, argv, "oqhrd", long_options, NULL)) != -1) {
 		switch(opt) {
 			case 'o':
 				one_shot = 1;
@@ -47,11 +61,11 @@ int main(int argc, char *argv[]) {
 				break;
 			case 'h':
 				printf( "colorpicker [options]\n"
-						"  -h: show this help\n"
-						"  -o: oneshot\n"
-						"  -q: quit on keypress\n"
-						"  -d: hex only\n"
-						"  -r: rgb only\n");
+						"  -h, --help:             show this help\n"
+						"  -o, --one-shot:         oneshot\n"
+						"  -q, --quit-on-keypress: quit on keypress\n"
+						"  -d, --hex:              hex only\n"
+						"  -r, --rgb:              rgb only\n");
 				return 0;
 			default:
 				return 1;
