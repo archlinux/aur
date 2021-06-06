@@ -4,22 +4,15 @@
 _name="luxcorerender"
 
 pkgname=blender-plugin-${_name}
-pkgver=2.3
+pkgver=2.5
 epoch=2
-pkgrel=2
+pkgrel=1
 pkgdesc="LuxCoreRender exporter plugin for Blender"
 arch=('any')
 url="https://luxcorerender.org/"
 license=('GPL')
-source=("https://github.com/LuxCoreRender/BlendLuxCore/archive/blendluxcore_v${pkgver}.tar.gz"
-        "denoise.patch")
-sha256sums=('a5ea3dbac4e56decef5561ceb456be3eb6658111dd8feed55d632a52bfd7edaa'
-            '118853c17d90f034e0f6e3b1e07f7d3042bc7c706c46cfb3c2dd13242e1c6ce0')
-
-prepare() {
-  cd "${srcdir}/BlendLuxCore-blendluxcore_v${pkgver}"
-  patch -Np1 -i "${srcdir}/denoise.patch"
-}
+source=("https://github.com/LuxCoreRender/BlendLuxCore/archive/blendluxcore_v${pkgver}.tar.gz")
+sha256sums=('db06e1eabcb0e81f04336324e9d032414c78a5d205d8de3193702f04e451f06c')
 
 package() {
   depends=("blender>=2.80" "luxcorerender>$pkgver")
