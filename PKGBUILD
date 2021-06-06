@@ -5,19 +5,20 @@
 #              Christoph Haag <haagch@studi,informatik.uni-stuttgart.de>
 #              WorMzy Tykashi <wormzy.tykashi@gmail.com>
 pkgname=steamos-compositor-plus
-pkgver=1.7.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Compositor used by SteamOS with some added tweaks and fixes"
 arch=('i686' 'x86_64')
 url="https://github.com/gamer-os/steamos-compositor-plus"
 license=('custom')
 depends=('libxfixes' 'libxext' 'libxcomposite' 'libxdamage' 'libxrender' 'libxxf86vm' 'sdl_image' 'libgl' 'lsb-release' 'ttf-dejavu' 'xorg-xrandr' 'steam')
+optdepends=('sxhkd')
 makedepends=('mesa')
 conflicts=('steamos-compositor')
 _msver=1.10
 source=("https://github.com/gamer-os/steamos-compositor-plus/archive/${pkgver}.tar.gz"
         "https://repo.steampowered.com/steamos/pool/main/s/steamos-modeswitch-inhibitor/steamos-modeswitch-inhibitor_${_msver}.tar.xz")
-md5sums=('f9ea4c97591d3983bbbff7285375920b'
+md5sums=('144f027cb894aec75e25dec90d8b6f58'
          'ab8b731fb917aff183aa338bf3298495')
 
 prepare() {
@@ -41,12 +42,14 @@ package() {
   install -m 755 "usr/bin/steamos-session" "$pkgdir/usr/bin"
   sed -i "s|x86_64-linux-gnu/||g" "$pkgdir/usr/bin/steamos-session"
   sed -i "s|lib/i386-linux-gnu/|lib32/|g" "$pkgdir/usr/bin/steamos-session"
-  mkdir -p "$pkgdir/usr/share/steamos-compositor-plus/bin" "$pkgdir/usr/share/xsessions" "$pkgdir/usr/share/icons/steam" "$pkgdir/usr/share/pixmaps"
+  mkdir -p "$pkgdir/usr/share/steamos-compositor-plus/bin" "$pkgdir/usr/share/xsessions" "$pkgdir/usr/share/icons/steam" "$pkgdir/usr/share/pixmaps" "$pkgdir/usr/lib/systemd/user"
   install -m 755 "usr/share/steamos-compositor-plus/bin/set_hd_mode.sh" "$pkgdir/usr/share/steamos-compositor-plus/bin/set_hd_mode.sh"
   install -m 755 "usr/share/steamos-compositor-plus/bin/dpkg-query" "$pkgdir/usr/share/steamos-compositor-plus/bin/dpkg-query"
+  install -m 644 "usr/share/steamos-compositor-plus/sxhkdrc" "$pkgdir/usr/share/steamos-compositor-plus/sxhkdrc"
   install -m 644 "usr/share/xsessions/steamos.desktop" "$pkgdir/usr/share/xsessions"
   install -m 644 "usr/share/icons/steam/arrow.png" "$pkgdir/usr/share/icons/steam"
   install -m 644 "usr/share/pixmaps/steam-bootstrapper.jpg" "$pkgdir/usr/share/pixmaps"
+  install -m 644 "usr/lib/systemd/user/sxhkd.service" "$pkgdir/usr/lib/systemd/user/sxhkd.service"
   cd "$srcdir/steamos-modeswitch-inhibitor-$_msver"
   make DESTDIR="$pkgdir/" install
   rm -rf "$pkgdir/usr/share/doc"
