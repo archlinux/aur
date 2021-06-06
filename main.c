@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
 	int output_format = 0x11;
 	
 	static struct option long_options[] = {
-		{"oneshot", no_argument, NULL, 'o'},
+		{"one-shot", no_argument, NULL, 'o'},
 		{"quit-on-keypress", no_argument, NULL, 'q'},
 		{"help", no_argument, NULL, 'h'},
 		{"rgb", no_argument, NULL, 'r'},
@@ -57,7 +57,7 @@ int main(int argc, char *argv[]) {
 			case 'h':
 				printf( "colorpicker [options]\n"
 						"  -h, --help:             show this help\n"
-						"  -o, --one-shot:         oneshot\n"
+						"  -o, --one-shot:         one shot\n"
 						"  -q, --quit-on-keypress: quit on keypress\n"
 						"  -d, --hex:              hex only\n"
 						"  -r, --rgb:              rgb only\n");
