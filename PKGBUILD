@@ -12,7 +12,7 @@ conflicts=('omegat-beta')
 options=('!strip')
 source=(http://downloads.sourceforge.net/$pkgname/OmegaT_${pkgver}_Without_JRE.zip
         $pkgname.desktop $pkgname.sh)
-sha256sums=('dd00489108a478af5aa9f9b7d6fc1f09bcb473c931f034818f1f8e049d0537b3'
+sha256sums=('32ca4d8d708cfa390cb21a7c0ce4df0590ba7be35ca1e55ac026a7322e81270d'
             'ac480a8244c1a5171b7f2d5892585360067d78e3113ccb45aad6afe7ed69aec5'
             '8a6893d382d37c7a12f81370920ca362a8b36e81cec4121942f58613d18b5ade')
 
