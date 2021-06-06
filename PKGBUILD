@@ -3,7 +3,7 @@
 pkgname=aritim-dark-kde-git
 _pkgname=Aritim-Dark
 pkgver=r108.a908770
-pkgrel=1
+pkgrel=2
 pkgdesc="A Dark theme for KDE based DEs, deeply inspired by the Ayu Dark color palette."
 arch=(any)
 url="https://github.com/Mrcuve0/$_pkgname"
@@ -33,6 +33,6 @@ package() {
     cp -r KDE/auroraeTheme/* ${pkgdir}/usr/share/aurorae/themes/Aritim-Dark
     cp -r KDE/colorScheme/AritimDark.colors ${pkgdir}/usr/share/color-schemes
     cp -r KDE/globalTheme/* ${pkgdir}/usr/share/plasma/look-and-feel/Aritim-Dark
-    cp -r KDE/plasmaTheme/* ${pkgdir}/usr/share/plasma/desktoptheme
+    cp -r KDE/plasmaTheme/Aritim-Dark* ${pkgdir}/usr/share/plasma/desktoptheme
 }
 
