@@ -3,7 +3,7 @@
 _pkgname=tidal-hifi
 pkgname="$_pkgname-git"
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The web version of listen.tidal.com running in electron with hifi support thanks to widevine."
 arch=("x86_64")
 url="https://github.com/Mastermindzh/tidal-hifi"
@@ -47,11 +47,12 @@ package() {
     ln -s "/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
     install -Dm 644 "build/icon.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+    install -Dm 644 "build/icon.png" "${pkgdir}/usr/share/icons/hicolor/0x0/apps/tidal-hifi.png"
     install -Dm 644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
     install -Dm 644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm 644 "build/icon.png" "${pkgdir}/usr/share/icons/hicolor/0x0/apps/tidal-hifi.png"
+    
     ln -s "/opt/${_pkgname}/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
     ln -s "/opt/${_pkgname}/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
 }
