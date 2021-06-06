@@ -1,11 +1,12 @@
 # Maintainer: zebulon <zeb (at)zebulon(dot)org(dot)uk>
 # Contributor: NovaMoon <novamoon1 (at)gmail(dot)com>
 # Contributor: Erikas Rudinskas <erikmnkl (at)gmail(dot)com>
+# Contributor: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 
 pkgname=rtl8814au-dkms-git
 _pkgbase=rtl8814au
 pkgver=5.8.5.1.r98.gc5fd13c
-pkgrel=1
+pkgrel=2
 pkgdesc="RTL8814AU and RTL8813AU chipset driver with firmware v5.8.5.1"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/morrownr/8814au"
