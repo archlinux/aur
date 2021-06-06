@@ -2,7 +2,7 @@ _bitcoin=bitcoin
 pkgdesc="Bitcoin Cash Node"
 pkgbase=bitcoin-cash
 pkgname=("${pkgbase}" "${pkgbase}-qt")
-pkgver=22.2.0
+pkgver=23.0.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://bitcoincashnode.org"
@@ -15,7 +15,7 @@ source=(https://gitlab.com/bitcoin-cash-node/bitcoin-cash-node/-/archive/v${pkgv
         ${_bitcoin}.service
         ${_bitcoin}-reindex.service
         ${_bitcoin}.desktop)
-sha256sums=('7cee4b738b080dd1b4e773f024cbd02bc209c56d3c9e0f85e5bafd06950ad38d'
+sha256sums=('ecb6276656194aa137ce50db92c1c014c2bc91c3810d1e36b6946c01610b5e68'
             '27d0d4cf1a5dbf502db709d1d799baf137ecdfe2d9224ba6e599cad72aa80644'
             '24a17167ac26e2b6076266a7360336c7fa989684dd9732ab0408ef010988e715'
             'c30e5c7e0e97b001fdeac5f4510d5ebc0e0499ec086325e845db609a24f2e22f'
