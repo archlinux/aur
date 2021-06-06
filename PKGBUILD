@@ -1,5 +1,5 @@
 # Maintainer: Fancy Zhang <springzfx@gmail.com>
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: ForMat <2934301923[AT]qq.com>
 
 pkgname=qcef
 pkgver=1.1.6
