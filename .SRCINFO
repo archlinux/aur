@@ -1,0 +1,50 @@
+pkgbase = linux-beacon
+	pkgdesc = Linux
+	pkgver = 5.12.9.arch1
+	pkgrel = 1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.12.9-arch1
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
+	makedepends = xmlto
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = git
+	options = !strip
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.12.9-arch1
+	source = config
+	source = beacon_timeout.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
+	sha256sums = SKIP
+	sha256sums = 0d0691aa0f80fea0d9d204c05a845416dd443f3bb629cbb68e098e4d19cc841d
+	sha256sums = f9aff9e30c5468d37a1434c59ac550bf0afeeee54707aca50bc49343efca40a6
+
+pkgname = linux-beacon
+	pkgdesc = The Linux kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
+
+pkgname = linux-beacon-headers
+	pkgdesc = Headers and scripts for building modules for the Linux kernel
+	depends = pahole
+
+pkgname = linux-beacon-docs
+	pkgdesc = Documentation for the Linux kernel
