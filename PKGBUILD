@@ -3,7 +3,7 @@ pkgbase=fake-background-webcam-git
 _pkgname="${pkgbase%-git}"
         
 pkgname=('fake-background-webcam-git' 'fake-background-bodypix-git')           
-pkgver=r136.1b2aad1
+pkgver=r145.b423e09
 pkgrel=1
 pkgdesc="Virtual background-replacing camera"
 #optdepends=('cuda: for GPU acceleration of the TensorFlow on NVidia cards')
@@ -21,7 +21,7 @@ source=("${pkgname}::git+${url}.git"
 sha256sums=('SKIP'
             '24827ce9ae57cc11472c26ef4dc8edfa3218250a4ff6bba424f24bfe0eed3cb2'
             '9e8b5fb7fece0b1d2809b5dcb880419e85035f80f8fcaefc9cf9fe56017bf4d9'
-            'f6b37aff68926eb16c510db56df665ec2a3f8aa7348c0e8ddf247bcaa770a955'
+            'd36d981513560e1c906390b8cf2644319f019a4741517f725198605956458209'
             'b57c70f3b498d646d8834d770d806219b306251c908cc8591b0d711e3638916f')
 
 install=$_pkgname.install            
@@ -49,6 +49,7 @@ package_fake-background-webcam-git() {
 
 
 package_fake-background-bodypix-git() {  
+  depends=('nodejs>=12')
   provides=('fake-background-bodypix')
   conflicts=('fake-background-bodypix') 
   
