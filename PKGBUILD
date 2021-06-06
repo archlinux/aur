@@ -2,7 +2,7 @@
 # Author: Mario Oenning <mo-son[at]mailbox[dot]org>
 
 pkgname=matray
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A Manjaro Linux announcements notification app"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('vala' 'meson' 'ninja')
 conflicts=('mntray')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 
-sha256sums=('4587716a1fe48ee4d73c165c61bac1647560b8e6b2a64f64c00513c0bfd4bc40')
+sha256sums=('6806b28132c7996cfa72cf97845e928e18c79244df9e8918ffd158aee466d75a')
 
 build() {
   cd $pkgname-$pkgver
