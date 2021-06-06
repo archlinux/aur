@@ -1,14 +1,14 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=tok-git
-pkgver=r124.4337f9e
-pkgrel=2
+pkgver=r148.035ab76
+pkgrel=1
 pkgdesc="Telegram client built using Kirigami"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://invent.kde.org/network/tok"
 license=('GPL3')
 depends=('kirigami2' 'knotifications' 'libtd-git' 'ki18n' 'icu')
-makedepends=('git' 'qt5-tools' 'qt5-svg' 'qbs')
+makedepends=('git' 'qt5-tools' 'qt5-svg' 'rlottie-git' 'qbs')
 provides=('tok')
 conflicts=('tok')
 source=("git+${url}.git")
