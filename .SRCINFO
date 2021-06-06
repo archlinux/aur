@@ -1,0 +1,14 @@
+pkgbase = 10moons-driver-t503
+	pkgdesc = Driver fer tablet 10moons T503
+	pkgver = 1.0
+	pkgrel = 10
+	url = https://github.com/alex-s-v/10moons-driver.git
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = python
+	depends = python
+	source = https://github.com/LuanCamarim/10moons-driver-t503/archive/refs/tags/1.0.tar.gz
+	sha256sums = c1bff6b6981b6ed80d962643fb4f0527f43354f2f86f3fa25078e9978962430a
+
+pkgname = 10moons-driver-t503
