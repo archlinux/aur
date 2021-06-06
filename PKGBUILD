@@ -53,7 +53,7 @@ pkgver=${_major}
 #_stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=1
+pkgrel=3
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -145,8 +145,8 @@ prepare() {
 
 
   ### Prepared version
-        make -s kernelrelease > version
-        echo "Prepared $pkgbase version $(<version)"
+      make -s kernelrelease > version
+      echo "Prepared $pkgbase version $(<version)"
 
   ### CPU_ARCH SCRIPT ##
     source "${startdir}"/configure
@@ -274,9 +274,9 @@ prepare() {
       scripts/config --enable CONFIG_NO_HZ_COMMON
       scripts/config --enable CONFIG_CONTEXT_TRACKING
       scripts/config --disable CONFIG_CONTEXT_TRACKING_FORCE
-      echo "Enabling KBUILD_CFLAGS -O3..."
-      scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
-      scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
+      echo "Enabling KBUILD_CFLAGS -O2..."
+      scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
+      scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
       echo "Enable PREEMPT"
       scripts/config --disable CONFIG_PREEMPT_NONE
       scripts/config --disable CONFIG_PREEMPT_VOLUNTARY
@@ -309,6 +309,68 @@ prepare() {
       echo "Enable CONFIG_VHBA"
       scripts/config --module CONFIG_VHBA
       scripts/config --disable CONFIG_GCC_PLUGINS
+      # General Setup
+      scripts/config --disable CONFIG_BSD_PROCESS_ACCT
+      scripts/config --disable CONFIG_TASK_XACCT
+      scripts/config --disable CONFIG_PSI
+      scripts/config --disable CONFIG_MEMCG
+      scripts/config --disable CONFIG_CGROUP_CPUACCT
+      scripts/config --disable CONFIG_CGROUP_DEBUG
+      scripts/config --disable CONFIG_CHECKPOINT_RESTORE
+      scripts/config --disable CONFIG_SLAB_MERGE_DEFAULT
+      scripts/config --disable CONFIG_SLAB_FREELIST_HARDENED
+      scripts/config --disable CONFIG_SLUB_CPU_PARTIAL
+      scripts/config --disable CONFIG_PROFILING
+
+      # Processor type and features
+      scripts/config --disable CONFIG_RETPOLINE
+      scripts/config --disable CONFIG_X86_5LEVEL
+      scripts/config --disable CONFIG_KEXEC
+      scripts/config --disable CONFIG_KEXEC_FILE
+      scripts/config --disable CONFIG_CRASH_DUMPs
+      scripts/config --disable CONFIG_KPROBES
+      # Kernel hacking
+      scripts/config --disable CONFIG_FTRACE
+      scripts/config --disable CONFIG_DEBUG_KERNEL
+      scripts/config --disable CONFIG_PAGE_EXTENSION
+      scripts/config --set-val CONFIG_RCU_CPU_STALL_TIMEOUT 4
+      scripts/config --disable CONFIG_PRINTK_TIME
+      scripts/config --disable CONFIG_DEBUG_INFO
+      scripts/config --disable CONFIG_ENABLE_MUST_CHECK
+      scripts/config --disable CONFIG_STRIP_ASM_SYMS
+      scripts/config --disable CONFIG_UNUSED_SYMBOLS
+      scripts/config --disable CONFIG_DEBUG_FS
+      scripts/config --disable CONFIG_OPTIMIZE_INLINING
+      scripts/config --disable CONFIG_DEBUG_SECTION_MISMATCH
+      scripts/config --disable CONFIG_SECTION_MISMATCH_WARN_ONLY
+      scripts/config --disable CONFIG_STACK_VALIDATION
+      scripts/config --disable CONFIG_DEBUG_FORCE_WEAK_PER_CPU
+      scripts/config --disable CONFIG_MAGIC_SYSRQ
+      scripts/config --disable CONFIG_MAGIC_SYSRQ_SERIAL
+      scripts/config --disable CONFIG_PAGE_EXTENSION
+      scripts/config --disable CONFIG_DEBUG_PAGEALLOC
+      scripts/config --disable CONFIG_PAGE_OWNER
+      scripts/config --disable CONFIG_DEBUG_MEMORY_INIT
+      scripts/config --disable CONFIG_HARDLOCKUP_DETECTOR
+      scripts/config --disable CONFIG_SOFTLOCKUP_DETECTOR
+      scripts/config --disable CONFIG_DETECT_HUNG_TASK
+      scripts/config --disable CONFIG_WQ_WATCHDOG
+      scripts/config --set-val CONFIG_PANIC_TIMEOUT 10
+      scripts/config --disable CONFIG_SCHED_DEBUG
+      scripts/config --disable CONFIG_SCHEDSTATS
+      scripts/config --disable CONFIG_SCHED_STACK_END_CHECK
+      scripts/config --disable CONFIG_STACKTRACE
+      scripts/config --disable CONFIG_DEBUG_BUGVERBOSE
+      scripts/config --set-val CONFIG_RCU_CPU_STALL_TIMEOUT 4
+      scripts/config --disable CONFIG_RCU_TRACE
+      scripts/config --disable CONFIG_FAULT_INJECTION
+      scripts/config --disable CONFIG_LATENCYTOP
+      scripts/config --disable CONFIG_PROVIDE_OHCI1394_DMA_INIT
+      scripts/config --disable RUNTIME_TESTING_MENU
+      scripts/config --disable CONFIG_MEMTEST
+      scripts/config --disable CONFIG_KGDB
+      scripts/config --disable CONFIG_EARLY_PRINTK
+      scripts/config --disable CONFIG_DOUBLEFAULT
 
       ### Optionally load needed modules for the make localmodconfig
        # See https://aur.archlinux.org/packages/modprobed-db
@@ -340,8 +402,8 @@ _package() {
     optdepends=('crda: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
-    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE linux-cacule-rdb)
-
+    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+    replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
   cd $_srcname
   local kernver="$(<version)"
@@ -364,7 +426,7 @@ _package() {
 
 _package-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-    depends=('linux-cacule-rdb' 'pahole')
+    depends=('pahole')
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"

@@ -1,7 +1,7 @@
 pkgbase = linux-cacule-rdb
 	pkgdesc = Linux-CacULE Kernel by Hamad Marri and with some other patchsets
 	pkgver = 5.12.9
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/hamadmarri/cacule-cpu-scheduler
 	arch = x86_64
 	license = GPL2
@@ -79,9 +79,9 @@ pkgname = linux-cacule-rdb
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
-	provides = linux-cacule-rdb
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
 
 pkgname = linux-cacule-rdb-headers
 	pkgdesc = Headers and scripts for building modules for the Linux-CacULE Kernel by Hamad Marri and with some other patchsets kernel
-	depends = linux-cacule-rdb
 	depends = pahole
