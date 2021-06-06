@@ -2,11 +2,12 @@
 
 pkgname=xbgdump
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool to dump the X11 background to a file'
 url='https://github.com/FallenWarrior2k/xbgdump'
 license=(MIT)
 arch=(x86_64)
+depends=(gcc-libs)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('a462900872c4672be0c9c2d438688c1dec609a8f995fb748cab9fca41789ea3d')
