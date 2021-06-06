@@ -1,0 +1,15 @@
+pkgbase = aritim-dark-kde-git
+	pkgdesc = A Dark theme for KDE based DEs, deeply inspired by the Ayu Dark color palette.
+	pkgver = r108.a908770
+	pkgrel = 1
+	url = https://github.com/Mrcuve0/Aritim-Dark
+	arch = any
+	license = GPL3
+	makedepends = git
+	optdepends = aritim-dark-gtk-git: Matching GTK theme
+	provides = aritim-dark-kde
+	options = !strip
+	source = git+https://github.com/Mrcuve0/Aritim-Dark.git
+	sha256sums = SKIP
+
+pkgname = aritim-dark-kde-git
