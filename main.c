@@ -25,11 +25,6 @@
 #include <stdio.h>
 #include <getopt.h>
 
-/*
-static struct option long_options[] = {
-	{"oneshot", no_argument, }
-	};*/
-
 int main(int argc, char *argv[]) {
 
 	int opt;
