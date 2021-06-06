@@ -1,7 +1,7 @@
 pkgbase = tok-git
 	pkgdesc = Telegram client built using Kirigami
 	pkgver = r148.035ab76
-	pkgrel = 2
+	pkgrel = 3
 	url = https://invent.kde.org/network/tok
 	arch = x86_64
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = tok-git
 	makedepends = qt5-tools
 	makedepends = qt5-svg
 	makedepends = qbs
+	makedepends = jq
 	depends = kirigami2
 	depends = knotifications
 	depends = libtd-git

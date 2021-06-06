@@ -2,13 +2,13 @@
 
 pkgname=tok-git
 pkgver=r148.035ab76
-pkgrel=2
+pkgrel=3
 pkgdesc="Telegram client built using Kirigami"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://invent.kde.org/network/tok"
 license=('GPL3')
 depends=('kirigami2' 'knotifications' 'libtd-git' 'ki18n' 'icu' 'rlottie-git')
-makedepends=('git' 'qt5-tools' 'qt5-svg' 'qbs')
+makedepends=('git' 'qt5-tools' 'qt5-svg' 'qbs' 'jq')
 provides=('tok')
 conflicts=('tok')
 source=("git+${url}.git")
