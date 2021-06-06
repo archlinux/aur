@@ -2,7 +2,7 @@
 
 _pkgname="vopono"
 pkgname=vopono-bin
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='Run applications through VPN connections in network namespaces'
 arch=('x86_64')
@@ -12,8 +12,8 @@ optdepends=('openvpn: for OpenVPN connections' 'wireguard-tools: for Wireguard c
 source_x86_64=("${_pkgname}::${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_linux_x86-64_gcc")
 source_armv7h=("${_pkgname}::${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_linux_armv7")
 noextract=("${_pkgname}")
-sha256sums_x86_64=('13e421c47fa27acc4f5e9ceb73df598fc0bd29efbdcb44403c961681275693ce')
-sha256sums_armv7h=('1a063aad4ca5ac39929dcc245cd71704e8e453c2eb589f9a4a6d19611e82988c')
+sha256sums_x86_64=('33dc536d3b9f24310f5b40bb3dc4336323e555d2a2a19131c764e2f8e9450625')
+sha256sums_armv7h=('6f3e8b41a4b1d0ad327aae1ba21921160a475e08d3985810d5c919095ef64e0a')
 provides=('vopono')
 conflicts=('vopono')
 
