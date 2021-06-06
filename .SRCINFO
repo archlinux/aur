@@ -1,0 +1,18 @@
+pkgbase = tree-sitter-html-git
+	pkgdesc = HTML5 grammar for tree-sitter
+	pkgver = 0.19.0.r0.gd93af48
+	pkgrel = 1
+	url = https://github.com/tree-sitter/tree-sitter-html
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = git
+	makedepends = tree-sitter
+	makedepends = npm
+	depends = gcc-libs
+	provides = tree-sitter-html
+	conflicts = tree-sitter-html
+	source = tree-sitter-html-git::git+https://github.com/tree-sitter/tree-sitter-html
+	sha256sums = SKIP
+
+pkgname = tree-sitter-html-git
