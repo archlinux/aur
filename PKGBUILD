@@ -2,7 +2,7 @@
 
 pkgbase=libjxl-git
 pkgname=('libjxl-git' 'libjxl-doc-git')
-pkgver=0.3.7.r72.g82c14cd
+pkgver=0.3.7.r80.g848cf98
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=('git' 'cmake' 'clang' 'brotli' 'gdk-pixbuf2' 'giflib' 'gimp'
              'libjpeg-turbo' 'libpng' 'openexr' 'zlib' 'libgl' 'freeglut'
              'gtest' 'gmock' 'python' 'asciidoc' 'doxygen' 'graphviz'
-             'java-environment')
+             'java-environment' 'highway')
 source=('git+https://github.com/libjxl/libjxl.git'
         'git+https://github.com/google/brotli.git'
         'git+https://github.com/lvandeve/lodepng.git'
@@ -67,7 +67,7 @@ build() {
         -DJPEGXL_ENABLE_GIMP_SAVING:BOOL='ON' \
         -DJPEGXL_FORCE_SYSTEM_BROTLI:BOOL='true' \
         -DJPEGXL_FORCE_SYSTEM_GTEST:BOOL='true' \
-        -DJPEGXL_FORCE_SYSTEM_HWY:BOOL='false' \
+        -DJPEGXL_FORCE_SYSTEM_HWY:BOOL='true' \
         -DJPEGXL_WARNINGS_AS_ERRORS:BOOL='false' \
         -Wno-dev
     make -C build all doc
@@ -92,7 +92,6 @@ package_libjxl-git() {
     make -C build DESTDIR="$pkgdir" install
     install -D -m755 build/tools/libjxl_jni.so -t "${pkgdir}/usr/lib"
     install -D -m644 libjxl/{LICENSE,PATENTS} -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    rm -r "${pkgdir}/usr"/{include/{contrib,hwy},lib/{pkgconfig/,}libhwy*}
 }
 
 package_libjxl-doc-git() {
