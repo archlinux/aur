@@ -1,4 +1,5 @@
-# Maintainer: luelistan <archlinux-aur-git@max-weller.de>
+# Maintainer: nafets227 <nafets227@users.noreply.github.com>
+# Contributor: luelistan <archlinux-aur-git@max-weller.de>
 
 pkgname=dhtest
 pkgver=2c6a9c3ef96e570b213fb9592bed1aae28c9d7cd
