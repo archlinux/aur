@@ -19,6 +19,7 @@ pkgbase = linux-ck-uksm
 	source = http://ck.kolivas.org/patches/5.0/5.12/5.12-ck1/patch-5.12-ck1.xz
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 	source = 0002-UKSM.patch
+	source = 0003-bfq-lucjan-r2K210602.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	b2sums = c4ba5b7da3e7af4edb3511b63a21f3d6ca8138f4a5fa77714f49a97f7c06db21daf3df66bb905561d6975b6652bf5b517e995f5e673328b9df3415f37ac01fd0
@@ -28,6 +29,7 @@ pkgbase = linux-ck-uksm
 	b2sums = c9f729ba1efe6f04e7b2c57d3999bc9675b577596dccb2f227e5b6e444285e1fdd270bf67c0fcf9f5808a4c3a4b1c7a5c13a76f754ad9b9447243ccbaf2ce6a3
 	b2sums = e1eccb5b6b728e3852ade55dae7a53b8b6bd5f0fb2a330b99e85bfa64abaa430cb714d301ed169df14a1f302a75d952992f0d8fa6ab02fa6716165bdf23b63aa
 	b2sums = 14f45171afc3b15488b40a05e58b352c5057da3a5782e13527392f7750d8e45a8db54f9b50b218fedb8bf679de3b4e5d78e230a44f7b1aa482f7b3aa831bd641
+	b2sums = 6a195695fcd207adbdea28dd2803b479f6e5dc478b56d5fce16a7600f719fa545ed0e468a26f9c94e982346fb803a0ff026abd0d70335e42027468475beb7cbb
 
 pkgname = linux-ck-uksm
 	pkgdesc = The Linux-ck-uksm kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler
