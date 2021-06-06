@@ -15,6 +15,6 @@ source=("https://github.com/janet-lang/janet/releases/download/v${pkgver}/${pkgn
 sha256sums=('43dbe0e55facb5f388271797d3f5b01d672f43ec57c2526e708d64fa0c59dd2b')
 
 package() {
-  install -Dm755 "${srcdir}/${pkgname/\-lang-bin/}-v${pkgver}-linux/janet" "${pkgdir}/usr/bin/janet"
-  install -Dm755 "${srcdir}/${pkgname/\-lang-bin/}-v${pkgver}-linux/jpm" "${pkgdir}/usr/bin/jpm"
+  install -Dm755 "${srcdir}/${pkgname/\-lang-bin/}-v${pkgver}-linux/bin/janet" "${pkgdir}/usr/bin/janet"
+  install -Dm755 "${srcdir}/${pkgname/\-lang-bin/}-v${pkgver}-linux/bin/jpm" "${pkgdir}/usr/bin/jpm"
 }
