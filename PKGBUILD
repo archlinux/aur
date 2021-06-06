@@ -1,14 +1,14 @@
 # Maintainer: <oliver < a t > first . in-berlin . de>
 
 pkgname=multiple
-pkgver=0.5.2
-pkgrel=2
+pkgver=0.5.6
+pkgrel=1
 pkgdesc="Program to detect (and optionally delete) files with same contents."
 arch=('i686' 'x86_64')
 license=('GPL3')
-source=(http://www.first.in-berlin.de/software/tools/multiple/multiple-0.5.2.tgz)
-md5sums=('7bc8de45be1f91278e67103dfe3f2899')
-url="http://www.first.in-berlin.de/software/tools/multiple/"
+source=(https://www.first.in-berlin.de/software/tools/multiple/multiple-0.5.6.tgz)
+md5sums=('031f94486edfbb0bfd9bd011769f7c15')
+url="https://www.first.in-berlin.de/software/tools/multiple/"
 
 
 build() {
