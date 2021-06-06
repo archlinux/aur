@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=FireDM
+Comment=Python open source alternative to IDM
+Path=/usr/bin
+Exec=firedm
+Icon=firedm
+Terminal=false
+Categories=Utility;AudioVideo;Network;
