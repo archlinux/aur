@@ -6,7 +6,7 @@
 
 pkgname=digital-git
 pkgver=v0.27.r72.g5aa8e2bc2
-pkgrel=1
+pkgrel=2
 pkgdesc="A digital logic designer and circuit simulator. Git development version"
 arch=('x86_64')
 url="https://github.com/hneemann/Digital"
@@ -56,11 +56,12 @@ package() {
     install -vDm644 "$TARGET_DIR/docu/Documentation_fr.pdf" "$pkgdir/usr/share/doc/$pkgname/documentation_fr.pdf"
 	install -vDm644 "$TARGET_DIR/$jar_name" "$pkgdir/usr/share/java/$pkgname/$jar_name"
     cp -dr --no-preserve=ownership "$srcdir/digital-git/src/main/dig/lib" "$pkgdir/usr/share/java/$pkgname/lib/"
+
 	# cp -dr --no-preserve=ownership "$srcdir/Digital/examples/" "$pkgdir/usr/share/java/$pkgname/examples/"
 	install -vDm644 "$srcdir/$executable_name.desktop" "$pkgdir/usr/share/applications/$pkgname/$executable_name.desktop"
     install -vDm644 "$srcdir/digital-git/distribution/ReleaseNotes.txt" "$pkgdir/usr/share/doc/$pkgname/changelog.txt"
     
-    echo -e "#!/bin/env bash\njava -jar $pkgdir/usr/share/java/$pkgname/$jar_name \$@"  > "$srcdir/$executable_name.sh"
+    echo -e "#!/bin/env bash\njava -jar /usr/share/java/$pkgname/$jar_name \$@"  > "$srcdir/$executable_name.sh"
 	install -vDm755 "$srcdir/$executable_name.sh" "$pkgdir/usr/bin/digital"
 	for SIZE in 32 48 64 128
 	do
