@@ -1,6 +1,6 @@
 pkgbase = steam-buddy
-	pkgdesc = A web interface for managing Steam remotely
-	pkgver = 0.10.2
+	pkgdesc = Configure and manage games in Steam
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/gamer-os/steam-buddy
 	arch = any
@@ -9,6 +9,8 @@ pkgbase = steam-buddy
 	depends = python-bottle
 	depends = python-pyftpdlib
 	depends = python-yaml
+	depends = python-vdf
+	depends = python-inotify-simple
 	depends = python-requests
 	depends = python-beaker
 	depends = python-pygame
@@ -40,8 +42,11 @@ pkgbase = steam-buddy
 	optdepends = libretro-mame-git
 	optdepends = libretro-stella2014-git
 	optdepends = libretro-opera-git
-	source = https://github.com/gamer-os/steam-buddy/archive/0.10.2.tar.gz
-	md5sums = af239b7dafb9ff1d794a0c0ec6868a26
+	optdepends = srt-live-server
+	provides = steam-tweaks
+	conflicts = steam-tweaks
+	source = https://github.com/gamer-os/steam-buddy/archive/0.11.0.tar.gz
+	md5sums = 79c1b9a173e714c877a873b5837ebf01
 
 pkgname = steam-buddy
 
