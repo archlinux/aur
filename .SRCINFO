@@ -1,0 +1,17 @@
+pkgbase = tree-sitter-java-git
+	pkgdesc = Java grammar for tree-sitter
+	pkgver = 0.19.1.r25.g2efe37f
+	pkgrel = 1
+	url = https://github.com/tree-sitter/tree-sitter-java
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = git
+	makedepends = tree-sitter
+	makedepends = npm
+	provides = tree-sitter-java
+	conflicts = tree-sitter-java
+	source = tree-sitter-java-git::git+https://github.com/tree-sitter/tree-sitter-java
+	sha256sums = SKIP
+
+pkgname = tree-sitter-java-git
