@@ -5,9 +5,8 @@
 # Maintainer: Tom Gundersen <teg@jklm.no>
 
 pkgname=lib32-systemd-git
-_pkgname=lib32-systemd
 _pkgbasename=systemd
-pkgver=247.r147.g6dd16814a5
+pkgver=248.r1416.g33f2de7b64
 pkgrel=1
 pkgdesc='system and service manager (32-bit, git version)'
 arch=('x86_64')
@@ -15,12 +14,12 @@ url='https://www.github.com/systemd/systemd'
 license=('GPL2' 'LGPL2.1')
 depends=('lib32-gcc-libs' 'lib32-libcap' 'lib32-libgcrypt' 'lib32-libxcrypt'
          'lib32-xz' 'lib32-zstd' 'systemd-git')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=("lib32-systemd=$pkgver")
+conflicts=('lib32-systemd')
 makedepends=('git' 'gperf' 'intltool' 'lib32-acl' 'lib32-bzip2'
              'lib32-curl' 'lib32-dbus' 'lib32-gcc-libs' 'lib32-glib2'
              'lib32-gnutls' 'lib32-libelf' 'lib32-libidn2' 'lib32-pcre2'
-             'libxslt' 'meson')
+             'libxslt' 'meson' 'python-jinja')
 options=('strip')
 source=('git+https://github.com/systemd/systemd')
 sha512sums=('SKIP')
@@ -53,32 +52,73 @@ build() {
  
   local _meson_options=(
     --libexecdir  /usr/lib32
-    --libdir      /usr/lib32
+    --libdir    /usr/lib32
 
     -Dversion-tag="${pkgver}-${pkgrel}-arch"
     -Dmode=release
 
+    # features
     -Daudit=false
     -Dblkid=false
     -Dgnu-efi=false
-    -Dhtml=false
     -Dima=false
     -Dkmod=false
     -Dlibcryptsetup=false
     -Dlibidn2=true
     -Dlibiptc=false
     -Dlz4=false
-    -Dman=false
-    -Dmanpages=false
     -Dmicrohttpd=false
-    -Dnetworkd=false
     -Dpam=false
     -Dpython=false
-    -Drepart=false
     -Dseccomp=false
 
+    # components
+    -Dutmp=false
+    -Dhibernate=false
+    -Dldconfig=false
+    -Dresolve=true
+    -Defi=false
+    -Dtpm=false
+    -Denvironment-d=false
+    -Dbinfmt=false
+    -Drepart=false
+    -Dcoredump=false
+    -Dpstore=false
+    -Doomd=false
+    -Dlogind=false
+    -Dhostnamed=false
+    -Dlocaled=false
+    -Dmachined=true
+    -Dportabled=false
+    -Dsysext=false
+    -Duserdb=false
+    -Dhomed=false
+    -Dnetworkd=false
+    -Dtimedated=false
+    -Dtimesyncd=false
+    -Dremote=false
+    -Dcreate-log-dirs=false
+    -Dnss-myhostname=true
+    -Dnss-mymachines=true
+    -Dnss-resolve=true
+    -Dnss-systemd=true
+    -Dfirstboot=false
+    -Drandomseed=false
+    -Dbacklight=false
+    -Dvconsole=false
+    -Dquotacheck=false
+    -Dsysusers=false
+    -Dtmpfiles=false
+    -Dimportd=false
+    -Dhwdb=false
+    -Drfkill=false
+    -Dxdg-autostart=false
+    -Dman=false
+    -Dhtml=false
+    -Dtranslations=false
+
     -Ddbuspolicydir=/usr/share/dbus-1/system.d
-    -Ddefault-hierarchy=hybrid
+    -Ddefault-hierarchy=unified
     -Ddefault-kill-user-processes=false
     -Ddefault-locale=C
     -Dfallback-hostname='archlinux'
