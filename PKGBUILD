@@ -11,7 +11,7 @@ license=('LGPL')
 depends=('fltk' 'alsa-lib' 'sox')
 makedepends=('gendesk')
 # source=(http://home.arcor.de/szukw000/$pkgname-fltk13-source-$pkgver.tgz)
-source=($pkgname-fltk13-source-$pkgver.tgz)
+source=("https://github.com/bbidulock/$pkgname/releases/download/$pkgver/$pkgname-fltk13-source-$pkgver.tgz")
 md5sums=('1e2e1bd760a7f5ea583093537090c3ae')
 
 prepare() {

@@ -10,8 +10,7 @@ pkgbase = flmusic
 	depends = fltk
 	depends = alsa-lib
 	depends = sox
-	source = flmusic-fltk13-source-1.2.1.tgz
+	source = https://github.com/bbidulock/flmusic/releases/download/1.2.1/flmusic-fltk13-source-1.2.1.tgz
 	md5sums = 1e2e1bd760a7f5ea583093537090c3ae
 
 pkgname = flmusic
-
