@@ -1,7 +1,7 @@
 pkgbase = resume-pycli
 	pkgdesc = CLI tool to easily setup a new resume
 	pkgver = 1.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sr.ht/~nka/resume-pycli
 	arch = any
 	license = GPL3
@@ -12,6 +12,7 @@ pkgbase = resume-pycli
 	depends = python-jinja
 	depends = python-pdfkit
 	depends = python-jsonschema
+	depends = python-beautifulsoup4
 	provides = resume-pycli=1.3.2
 	conflicts = resume-pycli
 	source = https://files.pythonhosted.org/packages/5a/d9/4498a82739adaa030b1e58088aa9aead023f3ab402788d56237788082250/resume-pycli-1.3.2.tar.gz

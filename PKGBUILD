@@ -2,12 +2,12 @@
 
 pkgname="resume-pycli"
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool to easily setup a new resume"
 arch=(any)
 license=("GPL3")
 url="https://sr.ht/~nka/resume-pycli"
-depends=("python-click" "python-jinja" "python-pdfkit" "python-jsonschema")
+depends=("python-click" "python-jinja" "python-pdfkit" "python-jsonschema" "python-beautifulsoup4")
 makedepends=("python-pytest" "python-setuptools" "python-toml")
 provides=("resume-pycli="$pkgver)
 conflicts=("resume-pycli")
