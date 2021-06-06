@@ -1,6 +1,6 @@
 pkgbase = glibc-dso
 	pkgver = 2.33
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.gnu.org/software/libc
 	arch = x86_64
 	license = GPL
@@ -60,4 +60,3 @@ pkgname = lib32-glibc-dso
 	options = !strip
 	options = staticlibs
 	options = !emptydirs
-

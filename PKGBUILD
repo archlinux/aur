@@ -6,7 +6,7 @@
 pkgbase=glibc-dso
 pkgname=(glibc-dso lib32-glibc-dso)
 pkgver=2.33
-pkgrel=5
+pkgrel=6
 arch=(x86_64)
 provides=("glibc=${pkgver%%.r*}")
 url='https://www.gnu.org/software/libc'
@@ -93,6 +93,7 @@ build() {
 
   # remove fortify for building libraries
   CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}
+  CFLAGS=${CFLAGS/-Wp,-D_FORTIFY_SOURCE=2/}
 
   #
   CFLAGS=${CFLAGS/-fno-plt/}
@@ -129,6 +130,7 @@ build() {
 
   # remove fortify for building libraries
   CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}
+  CFLAGS=${CFLAGS/-Wp,-D_FORTIFY_SOURCE=2/}
   CFLAGS=${CFLAGS/-fno-plt/}
   CXXFLAGS=${CXXFLAGS/-fno-plt/}
 
