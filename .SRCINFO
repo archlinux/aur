@@ -1,0 +1,26 @@
+pkgbase = cryptsetup-deluks
+	pkgdesc = Cryptsetup version with 'Deniable encryption' support
+	pkgver = 0.2BETA
+	pkgrel = 1
+	arch = any
+	license = GPL
+	makedepends = util-linux
+	makedepends = git
+	depends = device-mapper
+	depends = libdevmapper.so
+	depends = openssl
+	depends = popt
+	depends = libutil-linux
+	depends = libuuid.so
+	depends = json-c
+	depends = libjson-c.so
+	depends = argon2
+	depends = libargon2.so
+	provides = cryptsetup
+	provides = libcryptsetup.so=12-64
+	provides = cryptsetup-deluks
+	conflicts = cryptsetup
+	source = git+https://github.com/kriswebdev/cryptsetup-deluks
+	md5sums = SKIP
+
+pkgname = cryptsetup-deluks
