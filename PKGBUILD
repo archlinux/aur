@@ -3,11 +3,12 @@
 pkgname=restic-rest-server
 _reponame=rest-server
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance HTTP server that implements restic's REST backend API"
 url='https://github.com/restic/rest-server'
 license=(BSD)
 arch=(x86_64)
+makedepends=(go)
 optdepends=('apache: htpasswd manipulation')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('d109cf9e9c3f36c9c8eb6d4a2bd530c5dfcd62b11687d93034e2edc0fdecf479')
