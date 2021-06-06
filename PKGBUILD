@@ -4,7 +4,7 @@
 _projectname=electron
 _major=13
 _pkgname="${_projectname}${_major}"
-_pkgver=13.0.0-beta.20
+_pkgver=$_major.1.1
 pkgname="$_pkgname-bin"
 pkgver="${_pkgver/-/.}"
 pkgrel=1
@@ -15,12 +15,11 @@ license=('MIT')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy')
-optdepends=(
-	'kde-cli-tools: file deletion support (kioclient5)'
-	'libappindicator-gtk3: StatusNotifierItem support'
-	'trash-cli: file deletion support (trash-put)'
-	"xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)"
-)
+optdepends=('kde-cli-tools: file deletion support (kioclient5)'
+            'libappindicator-gtk3: StatusNotifierItem support'
+            'pipewire: WebRTC desktop sharing under Wayland'
+            'trash-cli: file deletion support (trash-put)'
+            "xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)")
 _releaseurl="https://github.com/$_projectname/$_projectname/releases/download/v$_pkgver"
 source_x86_64=(
 	"$pkgname-chromedriver-$_pkgver-$pkgrel-x86_64.zip::$_releaseurl/chromedriver-v$_pkgver-linux-x64.zip"
@@ -38,14 +37,14 @@ source_aarch64=(
 	"$pkgname-chromedriver-$_pkgver-$pkgrel-aarch64.zip::$_releaseurl/chromedriver-v$_pkgver-linux-arm64.zip"
 	"$pkgname-$_pkgver-$pkgrel-aarch64.zip::$_releaseurl/$_projectname-v$_pkgver-linux-arm64.zip"
 )
-sha256sums_x86_64=('bfe964c0bddfbe67310cc1a61a225061d8cad7da05d43e6b6a2220d5a2f2811f'
-                   '77717e7e6e09289636bba3ef8de72da2445c9aaeee4d1b6ef1e3bee00152c8b0')
-sha256sums_i686=('9cfa2075624f1acbb217c580073e8140ecb0d01eaa8f5257cbda19f7962ae716'
-                 '96a2d399320ad32ee8aec762b48d1b179a236027277fdc93322d7818ef8706a3')
-sha256sums_armv7h=('1f642ed7229e0940873b29a53847897b2b24de6da9dffe0a1b970278fdc8df1c'
-                   '0a437fb450a553eaed0f371ca4eb3d99c0c1b1f109ae5d4b365d21c66dcb5b42')
-sha256sums_aarch64=('cb5fd1d979e3bcf200deb94295cea3a6106b7a8f24cdf0d4e6be9cb08aedcc3a'
-                    'a304e3f3f6b78ce23a6327033c92356e7505888e8bf5bcc23e51f11cfeff08bc')
+sha256sums_x86_64=('0eeb353979ea1bf2b0db49720413009c71a07b505a54c644760d26b3b62c1025'
+                   'eb6ae81d71a4d390ec5140d907b191a84c37621176eec9369bb6fc3bf8570e3b')
+sha256sums_i686=('e92421327b40f1c0f9eb3695a004b35fbdf5746c7c84fcd3d3fda9713d2eeb3b'
+                 'fed00edaaba0c4a615fe835baf7d0d0ff893dff902800006bf63cc994c24d3dd')
+sha256sums_armv7h=('5cf7aad674249e76d8eefe3cbdbfae6b02ec260f7c5491cec964755e5470698c'
+                   '7e745a38c6761fa9826b3b9b8d0bd060126a3949da6f3f09f11b842e5e22cee4')
+sha256sums_aarch64=('7a5e684148e1d0add8bbd3add4c123063caedd692c512f3651c93c047e16d92e'
+                    '445c88e9c9b33abbdb263103736fb5203938b0643bc5377fbdf12b444d26f211')
 
 package() {
 	cd "$srcdir/"
