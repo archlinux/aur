@@ -22,7 +22,6 @@ source=(
   "https://github.com/dolohow/uksm/raw/master/v5.x/uksm-5.12.patch"
   "https://lab.retarded.farm/zappel/zGentoo/-/raw/master/sys-kernel/gentoo-sources-g14/files/0001-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch"
   "https://lab.retarded.farm/zappel/zGentoo/-/raw/master/sys-kernel/gentoo-sources-g14/files/0002-HID-ASUS-Add-support-for-ASUS-N-Key-keyboard_fanmode.patch"
-  "add-jack-toggle-support.patch::https://aur.archlinux.org/cgit/aur.git/plain/5.12.4--Add-jack-toggle-support-for-headphones-on-Asus-ROG-Z.patch?h=linux-g14"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -33,8 +32,7 @@ sha256sums=('SKIP'
             '296a656e8a2b577252c5f9d72c7ec13e36963d82f9a17e413152924bfea0dfef'
             '8b2e476ae108255ae5dc6da43cda57620021a8e68da0e3c568eb44afd3d3254a'
             'd9f5742fed4406396698897aa042d4d5fdbfd7c51add7483a777f9ab41901aac'
-            '9a8ff7948b16c1ad2ab23f390fd9a2cad4c765821bae7a2a1e4a61b79ffee522'
-            'f52aadc1ebcdc118bb50769e4f5a4c036521c09ffecba48cb34392e1a687ac0a')
+            '9a8ff7948b16c1ad2ab23f390fd9a2cad4c765821bae7a2a1e4a61b79ffee522')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
