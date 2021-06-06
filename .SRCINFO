@@ -1,0 +1,20 @@
+pkgbase = xfce4-i3-window-title-plugin-git
+	pkgdesc = An i3wm-aware window-title plugin for xfce4-panel
+	pkgver = 0.0.1.r1.gbdb9290
+	pkgrel = 1
+	url = https://github.com/carmelopellegrino/xfce4-i3-window-title-plugin
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = xfce4-dev-tools
+	depends = xfce4-panel
+	depends = i3ipc-glib-git
+	provides = xfce4-i3-window-title-plugin
+	source = xfce4-i3-window-title-plugin-git::git+https://github.com/carmelopellegrino/xfce4-i3-window-title-plugin
+	md5sums = SKIP
+
+pkgname = xfce4-i3-window-title-plugin-git
+
