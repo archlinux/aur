@@ -4,8 +4,8 @@
 
 pkgname=nvhpc
 _REL_YEAR=2021
-_CUDA_VER=11.2
-pkgver=21.3
+_CUDA_VER=11.3
+pkgver=21.5
 pkgrel=1
 pkgdesc='NVIDIA HPC SDK'
 arch=('x86_64')
@@ -18,8 +18,8 @@ conflicts=('pgi-compilers')
 _pkgname="${pkgname}_${_REL_YEAR}_${pkgver//.}_Linux_${arch}_cuda_${_CUDA_VER}"
 source=("https://developer.download.nvidia.com/hpc-sdk/$pkgver/$_pkgname.tar.gz"
         "nvhpc.sh")
-sha256sums=('d5e90baf1aaf8d6b41c2901950c2c2d02ac441456276f3f46c9fee962527c042'
-            '378bf04318ba8272df95cd79ec0d32f6d3bfeccb58220af1560d76a488131397')
+sha256sums=('c624cdd662099fbde5ca904272ad614ef190577b4bbbf8921e49968f1de6502d'
+            '1144ba292de786d78c3a7c23ee4ff8fa4994c735627c2e7561d610bb9ecfc2fa')
 options=(!strip)
 
 package() {
