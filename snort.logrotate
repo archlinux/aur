@@ -1,0 +1,18 @@
+/var/log/snort/*.log {
+	sharedscripts
+	missingok
+	notifempty
+}
+
+/var/log/snort/alert_fast.txt /var/log/snort/*.log.* {
+	nocompress
+	nocreate
+        olddir /var/log/snort/old
+	sharedscripts
+	missingok
+	postrotate
+		/usr/bin/find /var/log/snort/old -maxdepth 1 -name 'alert_fast.*' -type f -mtime +60 -exec /usr/bin/rm '{}' ';' > /dev/null 2>&1 || true
+		/usr/bin/find /var/log/snort/old -maxdepth 1 -name '*.log*' -type f -mtime +60 -exec /usr/bin/rm '{}' ';' > /dev/null 2>&1 || true
+		/usr/bin/systemctl try-restart snort.service > /dev/null 2>&1 || true
+	endscript
+}

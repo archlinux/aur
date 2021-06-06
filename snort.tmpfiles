@@ -1,0 +1,2 @@
+d /var/log/snort 0750 snort snort -
+d /var/log/snort/old 0750 snort snort -
