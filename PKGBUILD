@@ -4,6 +4,7 @@ pkgname=jenv-git
 _pkgname=jenv
 pkgver=0.5.4.r2.9bbc5eb
 pkgrel=1
+pkgdesc="A command line tool to manage your Java environment"
 arch=('any')
 url="https://jenv.be"
 license=('MIT')
