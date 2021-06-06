@@ -5,7 +5,7 @@
 
 pkgname=chromium
 pkgver=91.0.4472.77
-pkgrel=1
+pkgrel=2
 _launcher_ver=7
 _gcc_patchset=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -27,7 +27,6 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         fix-crash-in-ThemeService.patch
         unbundle-use-char16_t-as-UCHAR_TYPE.patch
         extend-enable-accelerated-video-decode-flag.patch
-        add-clang-nomerge-attribute-to-CheckError.patch
         sql-make-VirtualCursor-standard-layout-type.patch
         chromium-glibc-2.33.patch
         use-oauth2-client-switches-as-default.patch)
@@ -37,7 +36,6 @@ sha256sums=('45d5a43ef798d20313c78fa8a075be0c22055e39c8481eb53eabda81df901b31'
             '3cfe46e181cb9d337c454b5b5adbf5297052f29cd617cdee4380eeb1943825d8'
             '59a59a60a08b335fe8647fdf0f9d2288d236ebf2cc9626396d0c4d032fd2b25d'
             '66db9132d6f5e06aa26e5de0924f814224a76a9bdf4b61afce161fb1d7643b22'
-            '50133dd196d288ad538bb536aa51dccd6cb4aacfd9a60160f77e8fb16034b460'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
             '2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
@@ -102,9 +100,6 @@ prepare() {
   patch -Np1 -i ../unbundle-use-char16_t-as-UCHAR_TYPE.patch
   patch -Np1 -i ../extend-enable-accelerated-video-decode-flag.patch
 
-  # Revert addition of [[clang::nomerge]] attribute; not supported by clang 11
-  patch -Rp1 -i ../add-clang-nomerge-attribute-to-CheckError.patch
-
   # https://chromium-review.googlesource.com/c/chromium/src/+/2862724
   patch -Np1 -i ../sql-make-VirtualCursor-standard-layout-type.patch
 
@@ -151,7 +146,6 @@ build() {
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
     'clang_use_chrome_plugins=false'
     'is_official_build=true' # implies is_cfi=true on x86_64
-    'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
     'treat_warnings_as_errors=false'
     'fieldtrial_testing_like_official_build=true'
     'ffmpeg_branding="Chrome"'
