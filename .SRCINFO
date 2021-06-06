@@ -17,6 +17,7 @@ pkgbase = magic-wormhole
 	depends = python-idna
 	depends = python-service-identity
 	depends = python-txtorcon
+	depends = python-pyopenssl
 	provides = wormhole
 	provides = wormhole-server
 	provides = python-wormhole
@@ -30,4 +31,3 @@ pkgbase = magic-wormhole
 	sha512sums = 0ef4241a5692227206c1a07a2aed8a2c1575281d52db8bcdb8ffd070c158b4969126486b5e68e899f2100d7daedbbe0b91a7d667915bd5b86be26d6553b34dd6
 
 pkgname = magic-wormhole
-
