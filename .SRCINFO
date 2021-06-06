@@ -1,4 +1,4 @@
-pkgbase = 10moons-driver-t503
+    pkgbase = t503-git
 	pkgdesc = Driver fer tablet 10moons T503
 	pkgver = 1.0
 	pkgrel = 10
