@@ -11,7 +11,7 @@
 # against Tectonic if the settings in this file need changing.
 
 pkgname=tectonic
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=0
 arch=('x86_64')
 pkgdesc='Modernized, complete, self-contained TeX/LaTeX engine, powered by XeTeX and TeXLive'
@@ -20,20 +20,20 @@ license=('MIT')
 depends=('fontconfig' 'harfbuzz-icu' 'openssl')
 makedepends=('rust' 'gcc' 'pkg-config')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha512sums=('cd4e48781daa08f5518d97cc20fb13212d136954c41459fc5a5ac0eaf149ada3dd1b01e2117dd339c30f3423f970ebc734377e8e99612439e2b69c9e4922a53d')
+sha512sums=('9fb8ac27ba1ea22a635cf7926859974d202d047cd503c086ab2f5f4b5045b97b730b975500bd90cedb0e5dbdadda21e32be12b3e586536fb0f02d95e4752eaa3')
 
 build() {
 	cd $pkgname-$pkgver
-	cargo build --release --target-dir "./target"
+	cargo build --release
 }
 
 check() {
 	cd $pkgname-$pkgver
-	cargo test --release --target-dir "./target"
+	cargo test --release
 }
 
 package() {
 	cd $pkgname-$pkgver
-	install -Dm755 target/release/tectonic "$pkgdir"/usr/bin/tectonic
+	install -Dm755 ${CARGO_TARGET_DIR:-target}/release/tectonic "$pkgdir"/usr/bin/tectonic
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
