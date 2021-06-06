@@ -1,0 +1,18 @@
+pkgbase = prometheus-bind-exporter
+	pkgdesc = Prometheus exporter for BIND metrics
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/prometheus-community/bind_exporter
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	depends = glibc
+	optdepends = bind: for monitoring a local BIND server
+	source = prometheus-bind-exporter-0.4.0.tar.gz::https://github.com/prometheus-community/bind_exporter/archive/v0.4.0.tar.gz
+	source = systemd.service
+	source = sysusers.conf
+	b2sums = ec391fa2db90d02f3f468d8db5b6ada47f84853401d4f00fdfd9be7a142cc4305de0fdedd3aa553ab08d78ddd55ce948f098eb4f7a6e9412f5327d2499eb65c1
+	b2sums = 83ac2fb9b39f10f9eb130fc566887a5dc70447265d9d567221ceccf83a9fe7ad8035dfa751ecefe9681c64fd8ddb260b3e370f956350b9cab699eed507d9affc
+	b2sums = 739b1e4e7ab277096d0875ed14d61f223e7b990e7081721e4638aebad9c3beccc270ce9944384784af8eab035dbb34a86badae687c065291bfb384abfb42573a
+
+pkgname = prometheus-bind-exporter
