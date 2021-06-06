@@ -4,21 +4,15 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=qtfm
-pkgver=6.2.0
-pkgrel=2
+pkgver=6.2.1
+pkgrel=1
 pkgdesc="A lightweight file manager"
 arch=('i686' 'x86_64')
 url="https://github.com/rodlie/qtfm/releases"
 license=('GPL')
 depends=('qt5-base' 'desktop-file-utils' 'hicolor-icon-theme')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/rodlie/$pkgname/archive/$pkgver.tar.gz" qt-5.15+gentoo.patch)
-sha256sums=('58c6af502b606e63f96e8aec96b65ca9125be18ecdd5e4680ccaf50e9c40b064'
-            '34271a58f32eeed01ab2db408505e8a1cef20f4a60a372ba78c5607b404eb010')
-
-prepare() {
-  cd $pkgname-${pkgver//_/-}
-  patch -Np1 < "$srcdir"/qt-5.15+gentoo.patch
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/rodlie/$pkgname/archive/$pkgver.tar.gz")
+sha256sums=('b9c707443e20644f6e5f0393ce5158843724ac08f92cf8d7ea8e1109957b5c00')
 
 build() {
   cd $pkgname-${pkgver//_/-}
