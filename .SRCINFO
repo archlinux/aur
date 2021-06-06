@@ -1,0 +1,16 @@
+pkgbase = piwigo-remote-sync
+	pkgdesc = GUI for uploading images to Piwigo server
+	pkgver = 1.0_beta
+	pkgrel = 1
+	url = https://github.com/Piwigo/Piwigo-Java
+	arch = any
+	license = GPL
+	makedepends = gendesk
+	depends = java-runtime
+	noextract = remotesync-ui.jar
+	source = https://github.com/Piwigo/Piwigo-Java/releases/download/1.0-beta/remotesync-ui.jar
+	source = piwigo-remote-sync.png
+	md5sums = ba04afc333b1022dd73d1aa3853cdae6
+	md5sums = 69ef2358a4cbc075847a2d2e2a6e4486
+
+pkgname = piwigo-remote-sync
