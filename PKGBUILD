@@ -5,22 +5,21 @@
 # Contributor: Doug Newgard <scimmia22 at outlook dot com>
 # Contributor: Robert Orzanna <orschiro at gmail dot com>
 pkgname=timeshift
-pkgver=20.11.1+3+g08d0e59
-pkgrel=4
+pkgver=20.11.1+4+gd437358
+pkgrel=1
 pkgdesc="A system restore utility for Linux"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/teejee2008/timeshift"
-license=('GPL')
+license=('GPL3')
 depends=('gtk3' 'libsoup' 'cronie' 'rsync' 'libgee' 'vte3' 'xapp' 'xorg-xhost')
-makedepends=('git' 'vala')
+makedepends=('git' 'vala' 'chrpath')
 checkdepends=('appstream-glib' 'desktop-file-utils')
 optdepends=('btrfs-progs: BTRFS support')
+options=('!emptydirs')
 install="$pkgname.install"
-_commit=08d0e5912b617009f2f0fdb61fb4173cb3576ed4
-source=("git+https://github.com/teejee2008/timeshift.git#commit=$_commit"
-        'util-linux.patch')
-sha256sums=('SKIP'
-            '4d7f17e697c47784b3c6fb587fa4bef59e8c036de3e04a838ca8d426a592f354')
+_commit=d437358ac3debf7625aefda4d0bd387a91b69df5
+source=("git+https://github.com/teejee2008/timeshift.git#commit=$_commit")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
@@ -30,12 +29,11 @@ pkgver() {
 prepare() {
 	cd "$srcdir/$pkgname"
 	sed -i -e 's/--Xcc="-O3" //g' src/makefile
-
-	# https://github.com/teejee2008/timeshift/issues/753
-	patch -Np1 -i $srcdir/util-linux.patch
 }
 
 build() {
+	export CFLAGS="${CFLAGS} --std=c99"
+
 	cd "$srcdir/$pkgname/src"
 	make app-gtk
 	make app-console
