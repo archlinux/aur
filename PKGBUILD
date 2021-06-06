@@ -2,16 +2,16 @@
 
 _pkgname="bulk-downloader-for-reddit"
 pkgname=python-bdfr
-pkgver=2.1.1
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="Bulk downloader for Reddit"
 arch=('any')
 url="https://github.com/aliparlakci/bulk-downloader-for-reddit"
 depends=('python' 'python-setuptools')
 makedepends=()
 license=('GPL3')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/aliparlakci/bulk-downloader-for-reddit/archive/refs/tags/v2.1.1.tar.gz")
-md5sums=('c78c2ab5384215eafb41e7bcc7637595')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/aliparlakci/bulk-downloader-for-reddit/archive/refs/tags/v2.2.0.tar.gz")
+md5sums=('1a523a6f322d70c1d064b85bff3accea')
 
 package() {
     cd "$srcdir/$_pkgname-$pkgver"

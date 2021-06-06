@@ -1,14 +1,13 @@
 pkgbase = python-bdfr
 	pkgdesc = Bulk downloader for Reddit
-	pkgver = 2.1.1
-	pkgrel = 2
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://github.com/aliparlakci/bulk-downloader-for-reddit
 	arch = any
 	license = GPL3
 	depends = python
 	depends = python-setuptools
-	source = python-bdfr-2.1.1.tar.gz::https://github.com/aliparlakci/bulk-downloader-for-reddit/archive/refs/tags/v2.1.1.tar.gz
-	md5sums = c78c2ab5384215eafb41e7bcc7637595
+	source = python-bdfr-2.2.0.tar.gz::https://github.com/aliparlakci/bulk-downloader-for-reddit/archive/refs/tags/v2.2.0.tar.gz
+	md5sums = 1a523a6f322d70c1d064b85bff3accea
 
 pkgname = python-bdfr
-
