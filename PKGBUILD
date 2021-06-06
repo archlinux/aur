@@ -2,7 +2,7 @@
 # Contributor: Kyle Meyer <kyle@kyleam.com>
 
 pkgname=snakemake
-pkgver=6.3.0
+pkgver=6.4.1
 pkgrel=1
 pkgdesc='Python-based language and execution environment for GNU Make-like workflows'
 arch=(any)
@@ -22,8 +22,9 @@ depends=(
 	python-psutil
 	jupyter-nbformat
 	python-toposort
+	python-connection_pool
 	'python-pulp>=2.0'
-	python-smart_open
+	'python-smart_open>=3.0'
 	python-filelock
 )
 makedepends=(python-setuptools)
@@ -44,7 +45,7 @@ optdepends=(
 )
 license=(MIT)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('eb6a59c7cfe847333d792fad8ef04a478bed8f2184f0f447c011b15dfbc20a49')
+sha256sums=('24e42747fa4c7c0b1ce7dba5793b51785ab0118f6b30751c6b1ba692dbc4d755')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
