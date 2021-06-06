@@ -4,7 +4,7 @@
 
 
 pkgname=10moons-driver-t503
-pkgver=1.1
+pkgver=1.0
 pkgrel=10
 pkgdesc="Driver fer tablet 10moons T503"
 arch=(i686 x86_64)
