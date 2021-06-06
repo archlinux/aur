@@ -1,7 +1,7 @@
 # Maintainer: <user11681 at gmail dot com>
 pkgname=circle
 pkgver=build_126
-pkgrel=1
+pkgrel=2
 pkgdesc='Compiler for the Circle language'
 arch=('any')
 url='https://circle-lang.org'
