@@ -1,0 +1,17 @@
+pkgbase = tree-sitter-regex-git
+	pkgdesc = Regex grammar for tree-sitter
+	pkgver = 0.19.0.r0.g3041aa3
+	pkgrel = 1
+	url = https://github.com/tree-sitter/tree-sitter-regex
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = git
+	makedepends = tree-sitter
+	makedepends = npm
+	provides = tree-sitter-regex
+	conflicts = tree-sitter-regex
+	source = tree-sitter-regex-git::git+https://github.com/tree-sitter/tree-sitter-regex
+	sha256sums = SKIP
+
+pkgname = tree-sitter-regex-git
