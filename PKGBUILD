@@ -6,7 +6,7 @@
 
 #  printf "'SKIP'%.0s\n" {1..43}
 pkgname=ossia-score-git
-pkgver=r8572.4a1fefb96
+pkgver=r8835.6ef5c108e
 pkgrel=1
 pkgdesc="ossia score, an interactive sequencer for the intermedia arts (git master)"
 arch=('x86_64')
@@ -23,6 +23,7 @@ replaces=('i-score')
 source=(
 "git+https://github.com/jcelerier/QCodeEditor"
 "git+https://github.com/Vidvox/hap"
+"git+https://github.com/ossia/score"
 "git+https://github.com/ossia/libossia"
 "git+https://github.com/catchorg/Catch2"
 "git+https://github.com/OculusVR/Flicks"
@@ -148,6 +149,7 @@ sha256sums=(
 'SKIP'
 'SKIP'
 'SKIP'
+'SKIP'
 )
 
 _gitname=score
@@ -162,15 +164,15 @@ build() {
 
   git config submodule.3rdparty/QCodeEditor.url $srcdir/QCodeEditor
   git config submodule.3rdparty/hap.url $srcdir/hap
-  git config submodule.3rdparty/libossia.url $srcdir/API
+  git config submodule.3rdparty/libossia.url $srcdir/libossia
   git config submodule.3rdparty/libpd.url $srcdir/libpd
   git config submodule.3rdparty/magicitems.url $srcdir/magicitems
   git config submodule.3rdparty/phantomstyle.url $srcdir/phantomstyle
   git config submodule.3rdparty/snappy.url $srcdir/snappy
-  git config submodule.3rdparty/vst3/base.url $srcdir/base
-  git config submodule.3rdparty/vst3/cmake.url $srcdir/cmake
-  git config submodule.3rdparty/vst3/pluginterfaces.url $srcdir/pluginterfaces
-  git config submodule.3rdparty/vst3/public.sdk.url $srcdir/public.sdk
+  git config submodule.3rdparty/vst3/base.url $srcdir/vst3_base
+  git config submodule.3rdparty/vst3/cmake.url $srcdir/vst3_cmake
+  git config submodule.3rdparty/vst3/pluginterfaces.url $srcdir/vst3_pluginterfaces
+  git config submodule.3rdparty/vst3/public.sdk.url $srcdir/vst3_public_sdk
   git config submodule.3rdparty/zipdownloader.url $srcdir/zipdownloader
   git config submodule.docs/Doxygen/doxygen-bootstrapped.url $srcdir/doxygen-bootstrapped
   git config submodule.src/lib/3rdparty/QProgressIndicator.url $srcdir/QProgressIndicator
