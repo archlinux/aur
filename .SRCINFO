@@ -29,4 +29,3 @@ pkgname = exec-helper-docs
 	pkgdesc = HTML API documentation for exec-helper
 	arch = any
 	depends = 
-
