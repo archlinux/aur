@@ -1,13 +1,17 @@
-pkgbase = sdtool
-	pkgdesc = set hardware lock/unlock on (micro) sd cards
-	pkgver = 1.0
+pkgbase = sdtool-git
+	pkgdesc = A small tool for managing the write protection flag of SD cards
+	pkgver = r9.6154df2
 	pkgrel = 1
-	url = http://www.bertold.org/sdtool/
+	url = https://github.com/BertoldVdb/sdtool
 	arch = i686
 	arch = x86_64
 	license = custom
-	source = https://github.com/BertoldVdb/sdtool
-	md5sums = 347e223869f61d3314b1ecf979bf8d36
+	makedepends = git
+	depends = glibc
+	provides = sdtool
+	conflicts = sdtool
+	replaces = sdtool
+	source = git+https://github.com/BertoldVdb/sdtool.git
+	md5sums = SKIP
 
-pkgname = sdtool
-
+pkgname = sdtool-git

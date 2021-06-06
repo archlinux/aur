@@ -1,22 +1,33 @@
-# Maintainer: Manuel Conzelmann
-pkgname=sdtool
-pkgver=1.0
+# Maintainer: David Thurstenson <thurstylark@gmail.com>
+# Contributor: Manuel Conzelmann
+pkgname=sdtool-git
+_pkgname=${pkgname%-git}
+pkgver=r9.6154df2
 pkgrel=1
-pkgdesc="set hardware lock/unlock on (micro) sd cards"
+pkgdesc="A small tool for managing the write protection flag of SD cards"
 arch=('i686' 'x86_64')
-url="http://www.bertold.org/sdtool/"
+url="https://github.com/BertoldVdb/sdtool"
 license=('custom')
-depends=()
-makedepends=()
-source=("https://github.com/BertoldVdb/$pkgname/archive/master.zip")
-md5sums=('347e223869f61d3314b1ecf979bf8d36') #autofill using updpkgsums
+depends=('glibc')
+makedepends=('git')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+replaces=("$_pkgname")
+source=("git+https://github.com/BertoldVdb/sdtool.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-cd $srcdir/$pkgname-master/
+  cd "$srcdir/$_pkgname"
   make
 }
 
 package() {
-  install -D -m644 $srcdir/$pkgname-master/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -D -m755 $srcdir/$pkgname-master/$pkgname "${pkgdir}/usr/bin/${pkgname}"  
+  cd "$srcdir/$_pkgname"
+  install -D -m644 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
