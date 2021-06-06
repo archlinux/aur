@@ -1,0 +1,15 @@
+pkgbase = libphutil-stable-git
+	pkgdesc = A collection of PHP utility classes
+	pkgver = r1717.5e0d5022
+	pkgrel = 1
+	url = https://www.phacility.com/phabricator/
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = php7
+	provides = libphutil=r1717.5e0d5022
+	conflicts = libphutil
+	source = git+https://github.com/phacility/libphutil.git#branch=stable
+	sha256sums = SKIP
+
+pkgname = libphutil-stable-git
