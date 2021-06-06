@@ -1,0 +1,11 @@
+--- src/bower-0.7/src/Mercury.options	2016-03-28 02:10:09.000000000 +0200
++++ patched	2017-07-29 14:05:18.286657586 +0200
+@@ -9,7 +9,7 @@
+ MLLIBS-bower += -lgpgme
+ 
+ # Statically link to Mercury libraries.
+-MCFLAGS-bower += --mercury-linkage static
++#MCFLAGS-bower += --mercury-linkage static
+ 
+ # General optimisation flags.
+ MCFLAGS += --optimise-constructor-last-call
