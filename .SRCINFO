@@ -1,7 +1,7 @@
 pkgbase = llvm12-git
 	pkgdesc = LLVM 12 Toolchain with clang, clang-tools-extra, compiler-rt, openmp, polly, lldb, lld
 	pkgver = 12.0.1_rc1.g0826268d59c6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://llvm.org/
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
@@ -23,7 +23,7 @@ pkgbase = llvm12-git
 	provides = llvm-libs
 	provides = llvm-ocaml
 	provides = clang
-	provides = clang=11.1.0
+	provides = clang=12.0.0
 	provides = clang-analyzer
 	provides = clang-tools-extra
 	provides = openmp
@@ -35,7 +35,6 @@ pkgbase = llvm12-git
 	conflicts = llvm-libs
 	conflicts = llvm-ocaml
 	conflicts = clang
-	conflicts = clang=11.1.0
 	conflicts = clang-analyzer
 	conflicts = clang-tools-extra
 	conflicts = openmp
@@ -50,7 +49,6 @@ pkgbase = llvm12-git
 	replaces = llvm-libs
 	replaces = llvm-ocaml
 	replaces = clang
-	replaces = clang=11.1.0
 	replaces = clang-analyzer
 	replaces = clang-tools-extra
 	replaces = openmp
@@ -61,10 +59,25 @@ pkgbase = llvm12-git
 	options = staticlibs
 	source = llvm-project::git+https://github.com/llvm/llvm-project.git#branch=release/12.x
 	source = llvm-config.h
+	source = 001-add-fno-semantic-interposition.patch
+	source = 002-llvm-link-with-Bsymbolic-functions.patch
+	source = 003-clang-link-with-Bsymbolic-functions.patch
+	source = 004-clangd-CompletionModel-cmake.patch
+	source = 005-enable-SSP-and-PIE-by-default.patch
 	validpgpkeys = 33ED753E14757D79FA17E57DC4C1F715B2B66B95
 	sha256sums = SKIP
 	sha256sums = 597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48
+	sha256sums = fc8c64267a5d179e9fc24fb2bc6150edef2598c83f5b2d138d14e05ce9f4e345
+	sha256sums = 560ce1e206c19f4b86f4c583b743db0ad47a610418999350710aafd60ae50fcd
+	sha256sums = 5bc0b47c70990bb8dd0cf4138a8ab9e15cf6b008b7c0cf2c7aac3736b559e0e6
+	sha256sums = 6739abedc8870879618414c5358fda4fcfd4a3ac7a22030ac7c409779b68f669
+	sha256sums = a877fa5cf1c1cca3bd55f9a36cf8c1bdd061ff398aeace90fe3cbd9e82550da3
 	sha512sums = SKIP
 	sha512sums = 75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd
+	sha512sums = b823ebb76d4adc82cb894518bf0336c48f42bc99bb98752714c46eea4b13226e9e8a7c980acf97151dff714c11f8d7c1837358d6aa1338d3f3e12b73658a89c2
+	sha512sums = de7097c578ab7b47182f68adf76bc2d41db57326cdfa98aff7dc1253cbe313afde65937f2419ef04bc997e12db67816960e8c75bebda524d930d9af816dd9f83
+	sha512sums = 9f4c8e0a6065fa271666ccb7e40633f913447c63ff6d508083aa7e6c77e7365eb921157c49c499d8d96ed733f822460bf62225ec10ce2fb2100b8fc54146389e
+	sha512sums = 4dc253d817d29e7977bdd9c5a07e64ef2973c58e1bdbb62aa0547ad557eba8e942c1680da35252acd1d35c660038dbc9a4b222cb1aef43b380a8d962f25e48b7
+	sha512sums = a1254c1fe9533d71d88d173ceee74e206cf22aa65f90d32cba61d2c14299c4842add5e21aa16649a61e1044a4bd040522fbeb1130e00de5ded081029df6bc39b
 
 pkgname = llvm12-git

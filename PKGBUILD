@@ -5,14 +5,14 @@ validpgpkeys=('33ED753E14757D79FA17E57DC4C1F715B2B66B95')
 pkgname=llvm12-git
 pkgdesc="LLVM 12 Toolchain with clang, clang-tools-extra, compiler-rt, openmp, polly, lldb, lld"
 pkgver=12.0.1_rc1.g0826268d59c6
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 
-provides=('llvm' 'llvm-libs' 'llvm-ocaml' 'clang' 'clang=11.1.0' 'clang-analyzer' 'clang-tools-extra' 'openmp' 'polly' 'compiler-rt' 'lld' 'lldb')
-replaces=('llvm' 'llvm-libs' 'llvm-ocaml' 'clang' 'clang=11.1.0' 'clang-analyzer' 'clang-tools-extra' 'openmp' 'polly' 'compiler-rt' 'lld' 'lldb')
-conflicts=('llvm' 'llvm-libs' 'llvm-ocaml' 'clang' 'clang=11.1.0' 'clang-analyzer' 'clang-tools-extra' 'openmp' 'polly' 'compiler-rt' 'lld' 'lldb' 'llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
+provides=('llvm' 'llvm-libs' 'llvm-ocaml' 'clang' 'clang=12.0.0' 'clang-analyzer' 'clang-tools-extra' 'openmp' 'polly' 'compiler-rt' 'lld' 'lldb')
+replaces=('llvm' 'llvm-libs' 'llvm-ocaml' 'clang' 'clang-analyzer' 'clang-tools-extra' 'openmp' 'polly' 'compiler-rt' 'lld' 'lldb')
+conflicts=('llvm' 'llvm-libs' 'llvm-ocaml' 'clang' 'clang-analyzer' 'clang-tools-extra' 'openmp' 'polly' 'compiler-rt' 'lld' 'lldb' 'llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
 
 _ocaml_ver=4.11.1
 makedepends=('git' 'ninja' 'cmake' 'libffi' 'libedit' 'ncurses' 'libxml2'
@@ -23,12 +23,28 @@ makedepends=('git' 'ninja' 'cmake' 'libffi' 'libedit' 'ncurses' 'libxml2'
 _gitbranch="release/12.x"
 source=(
   "llvm-project::git+https://github.com/llvm/llvm-project.git#branch=${_gitbranch}"
-  'llvm-config.h')
+  'llvm-config.h'
+  '001-add-fno-semantic-interposition.patch'
+  '002-llvm-link-with-Bsymbolic-functions.patch'
+  '003-clang-link-with-Bsymbolic-functions.patch'
+  '004-clangd-CompletionModel-cmake.patch'
+  '005-enable-SSP-and-PIE-by-default.patch'
+)
 
 sha256sums=('SKIP'
-  '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48')
+            '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48'
+            'fc8c64267a5d179e9fc24fb2bc6150edef2598c83f5b2d138d14e05ce9f4e345'
+            '560ce1e206c19f4b86f4c583b743db0ad47a610418999350710aafd60ae50fcd'
+            '5bc0b47c70990bb8dd0cf4138a8ab9e15cf6b008b7c0cf2c7aac3736b559e0e6'
+            '6739abedc8870879618414c5358fda4fcfd4a3ac7a22030ac7c409779b68f669'
+            'a877fa5cf1c1cca3bd55f9a36cf8c1bdd061ff398aeace90fe3cbd9e82550da3')
 sha512sums=('SKIP'
-  '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd')
+            '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd'
+            'b823ebb76d4adc82cb894518bf0336c48f42bc99bb98752714c46eea4b13226e9e8a7c980acf97151dff714c11f8d7c1837358d6aa1338d3f3e12b73658a89c2'
+            'de7097c578ab7b47182f68adf76bc2d41db57326cdfa98aff7dc1253cbe313afde65937f2419ef04bc997e12db67816960e8c75bebda524d930d9af816dd9f83'
+            '9f4c8e0a6065fa271666ccb7e40633f913447c63ff6d508083aa7e6c77e7365eb921157c49c499d8d96ed733f822460bf62225ec10ce2fb2100b8fc54146389e'
+            '4dc253d817d29e7977bdd9c5a07e64ef2973c58e1bdbb62aa0547ad557eba8e942c1680da35252acd1d35c660038dbc9a4b222cb1aef43b380a8d962f25e48b7'
+            'a1254c1fe9533d71d88d173ceee74e206cf22aa65f90d32cba61d2c14299c4842add5e21aa16649a61e1044a4bd040522fbeb1130e00de5ded081029df6bc39b')
 options=('staticlibs')
 
 _extra_build_flags=""
@@ -46,7 +62,7 @@ pkgver() {
   if [[ "${_gitdesc}" =~ "rc" ]]; then
     _gitdesc=$(echo "${_gitdesc}" | cut -f3,5 -d- | tr '-' '.')
   else
-    _gitdesc="r$(echo "${_gitdesc}" | cut -f3-4 -d- | tr '-' '.')" 
+    _gitdesc="r$(echo "${_gitdesc}" | cut -f3-4 -d- | tr '-' '.')"
   fi
 
   echo "$(
@@ -65,9 +81,11 @@ prepare() {
     exit 1
   )
 
-  #if [ -d build ]; then
-  #  rm -rf build
-  #fi
+  patch --forward --strip=1 --input="${srcdir:?}/001-add-fno-semantic-interposition.patch"
+  patch --forward --strip=1 --input="${srcdir:?}/002-llvm-link-with-Bsymbolic-functions.patch"
+  patch --forward --strip=1 --input="${srcdir:?}/003-clang-link-with-Bsymbolic-functions.patch"
+  patch --forward --strip=1 --input="${srcdir:?}/004-clangd-CompletionModel-cmake.patch"
+  patch --forward --strip=1 --input="${srcdir:?}/005-enable-SSP-and-PIE-by-default.patch"
 
 }
 
@@ -83,8 +101,8 @@ build() {
     echo -ne "\n\E[1;33mBuild with clang and llvm toolchain? [Y/n] \E[0m"
     read -r yn
     case ${yn} in
-    [Yy]|"")
-      if clang --version 2>/dev/null | grep -iq "clang\s*version\s*[0-9]" ; then
+    [Yy] | "")
+      if clang --version 2>/dev/null | grep -iq "clang\s*version\s*[0-9]"; then
         export LLVM=1
         export LLVM_IAS=1
         export CC=clang
@@ -104,7 +122,7 @@ build() {
         echo -e "\E[1;31mClang not found. Will use default system compiler! \E[0m"
       fi
 
-      if ld.lld --version 2>/dev/null | grep -iq "LLD\s*[0-9]" ; then
+      if ld.lld --version 2>/dev/null | grep -iq "LLD\s*[0-9]"; then
         export LD=ld.lld
         export HOSTLD=ld.lld
         _extra_build_flags="-DLLVM_USE_LINKER=lld"
@@ -122,7 +140,7 @@ build() {
     echo -ne "\n\E[1;33mSkip build tests? [Y/n] \E[0m"
     read -r yn
     case ${yn} in
-    [Yy]|"")
+    [Yy] | "")
       _build_tests=0
       _extra_build_flags="${_extra_build_flags} -DLLVM_BUILD_TESTS=OFF"
       break
@@ -141,15 +159,14 @@ build() {
     echo -ne "\n\E[1;33mSkip build documentation? [Y/n] \E[0m"
     read -r yn
     case ${yn} in
-    [Yy]|"")
+    [Yy] | "")
       _build_documentation=0
       _extra_build_flags="${_extra_build_flags} -DLLVM_BUILD_DOCS=OFF"
       break
       ;;
     [Nn])
       _build_documentation=1
-      _extra_build_flags="${_extra_build_flags} -DLLVM_BUILD_DOCS=ON"
-      "-DLLVM_ENABLE_SPHINX=ON -DLLVM_ENABLE_DOXYGEN=OFF -DSPHINX_WARNINGS_AS_ERRORS=OFF"
+      _extra_build_flags="${_extra_build_flags} -DLLVM_BUILD_DOCS=ON -DLLVM_ENABLE_SPHINX=ON -DLLVM_ENABLE_DOXYGEN=OFF -DSPHINX_WARNINGS_AS_ERRORS=OFF"
       break
       ;;
     *) echo -e "\E[1;31mPlease answer Y or N! \E[0m" ;;
@@ -166,12 +183,12 @@ build() {
     -DLLVM_INSTALL_UTILS=ON \
     -DLLVM_ENABLE_RTTI=ON \
     -DLLVM_ENABLE_FFI=ON \
-    -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;compiler-rt;polly;lldb;lld;openmp" \
+    -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;polly;compiler-rt;lldb;lld;openmp" \
     -DCLANG_LINK_CLANG_DYLIB=ON \
     -DLLDB_USE_SYSTEM_SIX=1 \
     -DLIBOMP_INSTALL_ALIASES=OFF \
     -DPOLLY_ENABLE_GPGPU_CODEGEN=ON \
-    "${_extra_build_flags}" \
+    ${_extra_build_flags} \
     -Wno-dev
 
   ninja -C build "${NINJAFLAGS}"
@@ -224,7 +241,7 @@ package() {
   fi
 
   DESTDIR="${pkgdir:?}" ninja -C build "${NINJAFLAGS}" install
-  
+
   pushd llvm/utils/lit || (
     echo -e "\E[1;31mpushd utils/lit - Package Failed! \E[0m"
     exit 1
@@ -280,5 +297,5 @@ package() {
   install -Dm644 "${srcdir:?}/llvm-project/lldb/LICENSE.TXT" "${pkgdir:?}/usr/share/licenses/${pkgname}/lldb-LICENSE"
   install -Dm644 "${srcdir:?}/llvm-project/polly/LICENSE.txt" "${pkgdir:?}/usr/share/licenses/${pkgname}/polly-LICENSE"
   install -Dm644 "${srcdir:?}/llvm-project/openmp/LICENSE.txt" "${pkgdir:?}/usr/share/licenses/${pkgname}/openmp-LICENSE"
-
+  
 }

@@ -1,0 +1,66 @@
+From f51ab1871655a9a96134c2636c37dcb5a6b01ac3 Mon Sep 17 00:00:00 2001
+From: serge-sans-paille <sguelton@redhat.com>
+Date: Mon, 22 Mar 2021 10:05:25 +0100
+Subject: [PATCH] Make clangd CompletionModel usable even with non-standard
+ (but supported) layout
+
+llvm supports specifying a non-standard layout where each project lies in its
+own place. Do not assume a fixed layout and use the appropriate cmake variable
+instead.
+
+Differential Revision: https://reviews.llvm.org/D96787
+---
+ clang-tools-extra/clangd/quality/CompletionModel.cmake | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/clang-tools-extra/clangd/quality/CompletionModel.cmake b/clang-tools-extra/clangd/quality/CompletionModel.cmake
+index 60c6d2aa8433..41bc2ed1890b 100644
+--- a/clang-tools-extra/clangd/quality/CompletionModel.cmake
++++ b/clang-tools-extra/clangd/quality/CompletionModel.cmake
+@@ -5,8 +5,8 @@
+ # will define a C++ class called ${cpp_class} - which may be a
+ # namespace-qualified class name.
+ function(gen_decision_forest model filename cpp_class)
+-  set(model_compiler ${CMAKE_SOURCE_DIR}/../clang-tools-extra/clangd/quality/CompletionModelCodegen.py)
+-  
++  set(model_compiler ${LLVM_EXTERNAL_CLANG_TOOLS_EXTRA_SOURCE_DIR}/clangd/quality/CompletionModelCodegen.py)
++
+   set(output_dir ${CMAKE_CURRENT_BINARY_DIR})
+   set(header_file ${output_dir}/${filename}.h)
+   set(cpp_file ${output_dir}/${filename}.cpp)
+
+From 7907c46fe6195728fafd843b8c0fb19a3e68e9ad Mon Sep 17 00:00:00 2001
+From: Harald van Dijk <harald@gigawatt.nl>
+Date: Wed, 5 May 2021 19:25:34 +0100
+Subject: [PATCH] Make clangd CompletionModel not depend on directory layout.
+
+The current code accounts for two possible layouts, but there is at
+least a third supported layout: clang-tools-extra may also be checked
+out as clang/tools/extra with the releases, which was not yet handled.
+Rather than treating that as a special case, use the location of
+CompletionModel.cmake to handle all three cases. This should address the
+problems that prompted D96787 and the problems that prompted the
+proposed revert D100625.
+
+Reviewed By: usaxena95
+
+Differential Revision: https://reviews.llvm.org/D101851
+---
+ clang-tools-extra/clangd/quality/CompletionModel.cmake | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/clang-tools-extra/clangd/quality/CompletionModel.cmake b/clang-tools-extra/clangd/quality/CompletionModel.cmake
+index 41bc2ed1890b..dc0c0cde4dab 100644
+--- a/clang-tools-extra/clangd/quality/CompletionModel.cmake
++++ b/clang-tools-extra/clangd/quality/CompletionModel.cmake
+@@ -4,8 +4,9 @@
+ # ${CMAKE_CURRENT_BINARY_DIR}. The generated header
+ # will define a C++ class called ${cpp_class} - which may be a
+ # namespace-qualified class name.
++set(CLANGD_COMPLETION_MODEL_COMPILER ${CMAKE_CURRENT_LIST_DIR}/CompletionModelCodegen.py)
+ function(gen_decision_forest model filename cpp_class)
+-  set(model_compiler ${LLVM_EXTERNAL_CLANG_TOOLS_EXTRA_SOURCE_DIR}/clangd/quality/CompletionModelCodegen.py)
++  set(model_compiler ${CLANGD_COMPLETION_MODEL_COMPILER})
+ 
+   set(output_dir ${CMAKE_CURRENT_BINARY_DIR})
+   set(header_file ${output_dir}/${filename}.h)
