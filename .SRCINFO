@@ -8,6 +8,7 @@ pkgbase = obs-vkcapture-git
 	makedepends = gcc
 	makedepends = cmake
 	makedepends = vulkan-headers
+	makedepends = lib32-gcc-libs
 	makedepends = lib32-vulkan-icd-loader
 	depends = vulkan-icd-loader
 	depends = obs-studio>=27
