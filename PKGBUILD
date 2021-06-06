@@ -16,18 +16,9 @@ machine_arch="${CARCH}"
 
 for _arch in ${arch[@]}; do
     eval "source_${_arch}=(FileZilla_${pkgver}_${_arch}-linux-gnu.tar.bz2::https://download.filezilla-project.org/client/FileZilla_${pkgver}_${_arch}-linux-gnu.tar.bz2)"
-    eval "sha512sums_${_arch}=(
-        '$(
-            _url="https://download.filezilla-project.org/client/FileZilla_${pkgver}.sha512"
-            _sum="$(curl --silent -L "${_url}" | grep "FileZilla_${pkgver}_${_arch}-linux-gnu.tar.bz2")"
-            if [[ ! "${?}" = 0 ]] || [[ ! -v "_sum" ]] || [[ -z "${_sum}" ]] || [[ "${_sum}" = "" ]]; then
-                echo -n "SKIP"
-            else
-                echo -n "$(echo "${_sum}" | cut -d ' ' -f 1)"
-            fi
-        )'
-    )"
+    eval "sha512sums_${_arch}=(SKIP)"
 done
+
 
 package() {
     mkdir -p "${pkgdir}/opt/" "${pkgdir}/usr/bin/"
