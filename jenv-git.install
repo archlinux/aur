@@ -1,0 +1,40 @@
+## arg 1:  the new package version
+post_install() {
+  echo "
+Remember to do the following before you can use jenv:
+
+1.  Source jenv in your shell's configuration file.
+
+    For example, if you use bash execute the following:
+    \`echo 'source /usr/share/jenv-git/init-jenv.sh' >> ~/.bashrc\`
+
+2.  Disable Arch Linux's default Java management tool.
+
+    \`sudo archlinux-java unset\`
+
+3.  Restart your terminal or re-source your shell configuration file.
+
+Note when using \`jenv add\` that Arch Linux installs Java versions in
+/usr/lib/jvm by default.
+  "
+}
+
+## arg 1:  the old package version
+post_remove() {
+  echo "
+Remember to take the following cleanup actions to continue using Java after
+uninstalling jenv:
+
+1.  Remove any lines added to your shell's configuration file.
+
+    For example, if you use bash remove the following line from your ~/.bashrc:
+  \`source /usr/share/jenv-git/init-jenv.sh\`
+
+2.  Restart your terminal or re-source your shell configuration file.
+
+3.  Re-enable Arch Linux's default Java management tool.
+
+    \` sudo archlinux-java fix\`
+  "
+}
+
