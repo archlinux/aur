@@ -1,7 +1,7 @@
 # Maintainer: Frontier (frontier314 at gmail dot com)
 
 pkgname=fbc
-pkgver=1.08
+pkgver=1.08.0
 pkgrel=1
 _bootver=1.08.0
 pkgdesc="FreeBASIC Compiler (Release version)"
