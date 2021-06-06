@@ -4,7 +4,7 @@
 
 pkgname=tailscale-git
 _pkgname=tailscale
-pkgver=1.9.108+t4cfaf489a
+pkgver=1.9.142+tdfb1385fc
 pkgrel=1
 pkgdesc="A mesh VPN that makes it easy to connect your devices, wherever they are."
 arch=("x86_64")
@@ -24,30 +24,42 @@ install="tailscale.install"
 
 pkgver() {
   cd "${_pkgname}"
-  eval "$(./version/version.sh)"
+  eval "$(./build_dist.sh shellvars)"
   echo "$VERSION_LONG" | sed 's/-/+/g'
 }
 
 prepare() {
     cd "${_pkgname}"
     go mod vendor
+    # go mod vendor can contribute some changes to go.mod or go.sum.
+    # Revert them so that the version stamp in "tailscale version" doesn't have
+    # "-dirty" suffix.
+    git restore go.mod go.sum
 }
 
 build() {
     cd "${_pkgname}"
-    eval "$(./version/version.sh)"
+
+    # https://wiki.archlinux.org/title/Go_package_guidelines#Flags_and_build_options
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+
+    # The version stamp flags mirror build_dist.sh. However, we have to
+    # duplicate that logic since we also want to set -linkmode=external, and Go
+    # has no way of merging ldflags specified through GOFLAGS with those in the
+    # command line: https://github.com/golang/go/issues/26849
+    eval "$(./build_dist.sh shellvars)"
     GO_LDFLAGS="\
         -linkmode=external \
         -X tailscale.com/version.Long=${VERSION_LONG} \
         -X tailscale.com/version.Short=${VERSION_SHORT} \
         -X tailscale.com/version.GitCommit=${VERSION_GIT_HASH}"
+
     for cmd in ./cmd/tailscale ./cmd/tailscaled; do
-        go build -v -tags xversion -ldflags "$GO_LDFLAGS" "$cmd"
+        ./build_dist.sh -ldflags "$GO_LDFLAGS" $cmd
     done
 }
 
