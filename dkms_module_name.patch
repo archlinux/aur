@@ -1,0 +1,12 @@
+diff --unified --recursive --text linux-apfs-rw.orig/dkms.conf linux-apfs-rw.new/dkms.conf
+--- linux-apfs-rw.orig/dkms.conf	2021-06-06 14:29:57.751325924 -0700
++++ linux-apfs-rw.new/dkms.conf		2021-06-06 14:30:10.297269885 -0700
+@@ -1,7 +1,7 @@
+ PACKAGE_NAME="linux-apfs-rw"
+ PACKAGE_VERSION="0.2"
+ 
+-BUILT_MODULE_NAME[0]="apfsrw"
++BUILT_MODULE_NAME[0]="apfs"
+ DEST_MODULE_LOCATION[0]="/extra"
+ 
+ AUTOINSTALL="yes"
