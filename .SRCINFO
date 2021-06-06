@@ -1,6 +1,6 @@
 pkgbase = flexo-git
 	pkgdesc = A central pacman cache
-	pkgver = 1.3.2.r0.g166946b
+	pkgver = 1.4.0.r0.g2b8469b
 	pkgrel = 1
 	url = https://github.com/nroi/flexo
 	install = flexo.install
@@ -25,4 +25,3 @@ pkgbase = flexo-git
 	sha256sums = 0ba13ff1d92b51433635e1fbf5f1017e3e06b3e408be663acb1fbf65f344a3ad
 
 pkgname = flexo-git
-
