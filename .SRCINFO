@@ -1,7 +1,7 @@
 pkgbase = zw3d-bin
 	pkgdesc = 国内首款支持Linux系统的三维CAD软件
 	pkgver = 2022.26.00
-	pkgrel = 1
+	pkgrel = 2.0
 	url = https://www.zwsoft.cn/product/zw3d/linux
 	arch = x86_64
 	license = unknown
