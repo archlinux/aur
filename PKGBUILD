@@ -2,7 +2,7 @@
 # Archlinux package contributor is Dimadenisjuk <dimadenisjuk@yandex.ru>
 pkgname=('cryptsetup-deluks')
 pkgver=0.2BETA
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Cryptsetup version with 'Deniable encryption' support"
 arch=('any')

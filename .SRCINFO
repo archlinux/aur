@@ -1,7 +1,7 @@
 pkgbase = cryptsetup-deluks
 	pkgdesc = Cryptsetup version with 'Deniable encryption' support
 	pkgver = 0.2BETA
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL
 	makedepends = util-linux
