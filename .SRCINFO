@@ -1,7 +1,7 @@
 pkgbase = nvidia-340xx
 	pkgdesc = NVIDIA drivers for linux, 340xx legacy branch
 	pkgver = 340.108
-	pkgrel = 19
+	pkgrel = 20
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
@@ -42,4 +42,3 @@ pkgname = nvidia-340xx-dkms
 	provides = nvidia-340xx=340.108
 	conflicts = nvidia
 	conflicts = nvidia-340xx
-

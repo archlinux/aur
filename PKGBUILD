@@ -4,9 +4,9 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgbase=nvidia-340xx
-pkgname=(nvidia-340xx nvidia-340xx-dkms)
+pkgname=(nvidia-340xx nvidia-340xx-dkms); [ -n "$NVIDIA_340XX_DKMS_ONLY" ] && pkgname=(nvidia-340xx-dkms)
 pkgver=340.108
-pkgrel=19
+pkgrel=20
 pkgdesc="NVIDIA drivers for linux, 340xx legacy branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
@@ -55,6 +55,7 @@ prepare() {
 }
 
 build() {
+  [ -n "$NVIDIA_340XX_DKMS_ONLY" ] && return 0
   cd "${_pkg}/kernel"
   make SYSSRC="/usr/src/$_kernelname" module
 
