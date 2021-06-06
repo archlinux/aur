@@ -1,0 +1,12 @@
+diff -aur src.orig/clanlib-1.0~svn3827/Sources/API/Core/System/cl_assert.h src/clanlib-1.0~svn3827/Sources/API/Core/System/cl_assert.h
+--- src.orig/clanlib-1.0~svn3827/Sources/API/Core/System/cl_assert.h	2021-06-06 15:17:41.575014216 +0200
++++ src/clanlib-1.0~svn3827/Sources/API/Core/System/cl_assert.h	2021-06-06 15:17:53.545055365 +0200
+@@ -29,6 +29,8 @@
+ 
+ //! clanCore="System"
+ //! header=core.h
++//
++#include <cstddef>
+ 
+ #ifndef header_cl_assert
+ #define header_cl_assert

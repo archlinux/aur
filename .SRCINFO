@@ -1,7 +1,7 @@
 pkgbase = clanlib10
 	pkgdesc = A multi-platform game development library (legacy version)
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0svn3827
+	pkgrel = 3
 	url = http://clanlib.org/
 	arch = i686
 	arch = x86_64
@@ -19,8 +19,11 @@ pkgbase = clanlib10
 	conflicts = clanlib
 	conflicts = clanlib-svn
 	options = !libtool
-	source = http://clanlib.org/download/releases-1.0/ClanLib-1.0.0.tgz
-	md5sums = 281e64a463155474d0f1270686286811
+	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/clanlib/1.0~svn3827-8/clanlib_1.0~svn3827.orig.tar.gz
+	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/clanlib/1.0~svn3827-8/clanlib_1.0~svn3827-8.debian.tar.xz
+	source = include_cstddef.patch
+	md5sums = 0ee29d0aeeee5e993543320a6148b372
+	md5sums = 13d3f177489c2f5255249d77ab361a8f
+	md5sums = e314140173980004bd1dbb91d25e8669
 
 pkgname = clanlib10
-
