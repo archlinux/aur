@@ -5,18 +5,18 @@ _sysroot=/usr/lib/${_target}
 _pkgname=binutils
 
 pkgname=$_target-${_pkgname}
-pkgver=2.35
+pkgver=2.36.1
 pkgrel=2
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the x86_64-elf target'
 arch=(x86_64)
 url='http://www.gnu.org/software/binutils/'
 license=(GPL)
-depends=(zlib)
+depends=(zlib libelf)
 options=(!emptydirs !docs)
 source=("http://mirrors.kernel.org/gnu/binutils/binutils-$pkgver.tar.xz"
         "https://mirrors.kernel.org/gnu/binutils/binutils-$pkgver.tar.xz.sig")
 
-sha256sums=('1b11659fb49e20e18db460d44485f09442c8c56d5df165de9461eb09c8302f85'
+sha256sums=('e81d9edf373f193af428a0f256674aea62a9d74dfe93f65192d4eae030b0f3b0'
             'SKIP')
 _basedir=binutils-$pkgver
 validpgpkeys=("3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F")
@@ -35,6 +35,7 @@ build() {
 		--target=$_target \
 		--prefix=${_sysroot} \
 		--bindir=/usr/bin \
+		--libdir=/usr/lib/x86_64-elf/ \
 		--with-sysroot=${_sysroot} \
 		--disable-nls \
 		--disable-werror
