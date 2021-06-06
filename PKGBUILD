@@ -13,7 +13,7 @@ license=('custom')
 depends=(python)
 makedepends=(python)
 source=("https://github.com/LuanCamarim/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c1bff6b6981b6ed80d962643fb4f0527f43354f2f86f3fa25078e9978962430a')
+sha256sums=('SKIP')
 
 package() {
   cd ${pkgname}-${pkgver}
