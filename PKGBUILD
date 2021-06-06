@@ -32,6 +32,10 @@ prepare() {
 build() {
 	cd "$pkgname"
 	bash ./autogen.sh
+  	sed -i 's/$PATH:\/sbin/$PATH:\/bin/g' configure
+  	sed -i 's/$PATH:\/sbin/$PATH:\/bin/g' libtool
+	sed -i 's/${exec_prefix}\/sbin/${exec_prefix}\/bin/g' configure
+  	sed -i 's/\/sbin\//\/bin\//g' configure
 	make
 }
 
@@ -42,5 +46,6 @@ check() {
 
 package() {
 	cd "$pkgname"
+	# needs to change binary directory from /usr/sbin to /usr/bin
 	make DESTDIR="$pkgdir/" install
 }
