@@ -1,6 +1,6 @@
 pkgbase = i686-elf-gcc
 	pkgdesc = The GNU Compiler Collection - cross compiler for i686-elf target
-	pkgver = 10.2.0
+	pkgver = 11.1.0
 	pkgrel = 1
 	url = http://gcc.gnu.org/
 	arch = i686
@@ -13,13 +13,12 @@ pkgbase = i686-elf-gcc
 	depends = mpfr
 	depends = gmp
 	options = !emptydirs
-	source = https://mirrors.kernel.org/gnu/gcc/gcc-10.2.0/gcc-10.2.0.tar.xz
+	source = https://mirrors.kernel.org/gnu/gcc/gcc-11.1.0/gcc-11.1.0.tar.xz
 	source = libiberty-ignore-cflags.patch
-	source = https://mirrors.kernel.org/gnu/gcc/gcc-10.2.0/gcc-10.2.0.tar.xz.sig
-	validpgpkeys = 13975A70E63C361C73AE69EF6EEB81F8981C74C7
-	sha256sums = b8dd4368bb9c7f0b98188317ee0254dd8cc99d1e3a18d0ff146c855fe16c1d8c
+	source = https://mirrors.kernel.org/gnu/gcc/gcc-11.1.0/gcc-11.1.0.tar.xz.sig
+	validpgpkeys = D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62
+	sha256sums = 4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf
 	sha256sums = 8b2aea00e98f7c311b1d0fb14e4b435a03c65fde32bc992c924edb6fa7b83c9c
 	sha256sums = SKIP
 
 pkgname = i686-elf-gcc
-
