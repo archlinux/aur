@@ -1,6 +1,6 @@
 pkgbase = tonelib-gfx-bin
 	pkgdesc = ToneLib GFX – the perfect custom tone with a complete guitar studio in your computer!
-	pkgver = 4.6.5
+	pkgver = 4.6.6
 	pkgrel = 1
 	url = https://tonelib.net/gfx-overview/
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = tonelib-gfx-bin
 	depends = freetype2
 	optdepends = jack: JACK output
 	source = https://www.tonelib.net/download/ToneLib-GFX-amd64.deb
-	sha256sums = ceb2346171e5bb25230351dbc42da587042e32ae69ec5e82d3333a6df3aba815
+	sha256sums = c1d5f74904abd08647b13525fb56348844e67b7813cabc9ec6167ff571e419ea
 
 pkgname = tonelib-gfx-bin
-
