@@ -21,16 +21,15 @@ conflicts=('ossia-score')
 replaces=('i-score')
 
 source=(
-'git+https://github.com/OSSIA/score.git'
 "git+https://github.com/jcelerier/QCodeEditor"
-"git+https://github.com/OSSIA/libossia.git"
+"git+https://github.com/Vidvox/hap"
+"git+https://github.com/ossia/libossia"
+"git+https://github.com/catchorg/Catch2"
 "git+https://github.com/OculusVR/Flicks"
 "git+https://github.com/Microsoft/GSL"
-"git+https://github.com/jcelerier/RtMidi17"
 "git+https://github.com/jcelerier/Servus"
 "git+https://github.com/jcelerier/dnssd"
 "git+https://github.com/jcelerier/SmallFunction"
-"git+https://github.com/chriskohlhoff/asio"
 "git+https://github.com/ClaasBontus/bitset2"
 "git+https://github.com/edouarda/brigand"
 "git+https://github.com/Chobolabs/chobo-shl"
@@ -44,9 +43,11 @@ source=(
 "git+https://github.com/fmtlib/fmt"
 "git+https://github.com/serge-sans-paille/frozen"
 "git+https://github.com/tessil/hopscotch-map.git"
+"git+https://github.com/avilleret/ios-cmake.git"
 "git+https://github.com/jcelerier/libartnet"
+"git+https://github.com/jcelerier/libremidi"
 "git+https://github.com/jcelerier/libsamplerate"
-"git+https://github.com/Cycling74/max-sdk.git"
+"git+https://github.com/ossia/max-sdk.git"
 "git+https://github.com/jcelerier/multi_index"
 "git+https://github.com/jcelerier/nano-signal-slot"
 "git+https://github.com/jcelerier/oscpack"
@@ -66,8 +67,18 @@ source=(
 "git+https://github.com/gpakosz/whereami"
 "git+https://github.com/OSSIA/wiiuse.git"
 "git+https://github.com/OSSIA/cmake-modules"
+"git+https://github.com/libpd/libpd"
+"git+https://github.com/pure-data/pure-data"
 "git+https://github.com/jcelerier/magicitems"
 "git+https://github.com/jcelerier/phantomstyle"
+"git+https://github.com/jcelerier/snappy"
+"git+https://github.com/google/benchmark.git"
+"git+https://github.com/google/googletest.git"
+"git+https://github.com/steinbergmedia/vst3_base"
+"git+https://github.com/jcelerier/vst3_cmake"
+"git+https://github.com/jcelerier/vst3_pluginterfaces"
+"git+https://github.com/jcelerier/vst3_public_sdk"
+"git+https://github.com/gulrak/filesystem"
 "git+https://github.com/jcelerier/zipdownloader"
 "git+https://github.com/Velron/doxygen-bootstrapped"
 "git+https://github.com/jcelerier/QProgressIndicator"
@@ -75,6 +86,17 @@ source=(
 )
 
 sha256sums=(
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
 'SKIP'
 'SKIP'
 'SKIP'
@@ -137,10 +159,18 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
+
   git config submodule.3rdparty/QCodeEditor.url $srcdir/QCodeEditor
+  git config submodule.3rdparty/hap.url $srcdir/hap
   git config submodule.3rdparty/libossia.url $srcdir/API
+  git config submodule.3rdparty/libpd.url $srcdir/libpd
   git config submodule.3rdparty/magicitems.url $srcdir/magicitems
   git config submodule.3rdparty/phantomstyle.url $srcdir/phantomstyle
+  git config submodule.3rdparty/snappy.url $srcdir/snappy
+  git config submodule.3rdparty/vst3/base.url $srcdir/base
+  git config submodule.3rdparty/vst3/cmake.url $srcdir/cmake
+  git config submodule.3rdparty/vst3/pluginterfaces.url $srcdir/pluginterfaces
+  git config submodule.3rdparty/vst3/public.sdk.url $srcdir/public.sdk
   git config submodule.3rdparty/zipdownloader.url $srcdir/zipdownloader
   git config submodule.docs/Doxygen/doxygen-bootstrapped.url $srcdir/doxygen-bootstrapped
   git config submodule.src/lib/3rdparty/QProgressIndicator.url $srcdir/QProgressIndicator
@@ -148,12 +178,11 @@ build() {
 
   (
     cd 3rdparty/libossia
+    git config submodule.3rdparty/Catch2.url $srcdir/Catch2
     git config submodule.3rdparty/Flicks.url $srcdir/Flicks
     git config submodule.3rdparty/GSL.url $srcdir/GSL
-    git config submodule.3rdparty/RtMidi17.url $srcdir/RtMidi17
     git config submodule.3rdparty/Servus.url $srcdir/Servus
     git config submodule.3rdparty/SmallFunction.url $srcdir/SmallFunction
-    git config submodule.3rdparty/asio.url $srcdir/asio
     git config submodule.3rdparty/bitset2.url $srcdir/bitset2
     git config submodule.3rdparty/brigand.url $srcdir/brigand
     git config submodule.3rdparty/chobo-shl.url $srcdir/chobo-shl
@@ -166,7 +195,9 @@ build() {
     git config submodule.3rdparty/fmt.url $srcdir/fmt
     git config submodule.3rdparty/frozen.url $srcdir/frozen
     git config submodule.3rdparty/hopscotch-map.url $srcdir/hopscotch-map
+    git config submodule.3rdparty/ios-cmake.url $srcdir/ios-cmake
     git config submodule.3rdparty/libartnet.url $srcdir/libartnet
+    git config submodule.3rdparty/libremidi.url $srcdir/libremidi
     git config submodule.3rdparty/libsamplerate.url $srcdir/libsamplerate
     git config submodule.3rdparty/max-sdk.url $srcdir/max-sdk
     git config submodule.3rdparty/multi_index.url $srcdir/multi_index
@@ -188,6 +219,7 @@ build() {
     git config submodule.3rdparty/wiiuse.url $srcdir/wiiuse
     git config submodule.cmake/cmake-modules.url $srcdir/cmake-modules
   )
+
 
   git checkout master
   git submodule update --init --recursive
