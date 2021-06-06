@@ -3,7 +3,7 @@
 pkgname=aritim-light-kde-git
 _pkgname=Aritim-Light
 pkgver=r68.19223ea
-pkgrel=1
+pkgrel=2
 pkgdesc="A Light theme for KDE, pleasant to the eyes and perfect for your daily workload."
 arch=(any)
 url="https://github.com/Mrcuve0/$_pkgname"
@@ -33,7 +33,7 @@ package() {
     cp -r KDE/auroraeTheme/* ${pkgdir}/usr/share/aurorae/themes/Aritim-Light
     cp -r KDE/colorScheme/AritimLight.colors ${pkgdir}/usr/share/color-schemes
     cp -r KDE/globalTheme/* ${pkgdir}/usr/share/plasma/look-and-feel/Aritim-Light
-    cp -r KDE/plasmaTheme/* ${pkgdir}/usr/share/plasma/desktoptheme
+    cp -r KDE/plasmaTheme/Aritim-Light* ${pkgdir}/usr/share/plasma/desktoptheme
 }
 
  
