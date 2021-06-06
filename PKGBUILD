@@ -1,24 +1,29 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Maintainer: Amish <contact at via dot aur>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=libdaq
-pkgver=2.2.2
-pkgrel=1
+pkgver=3.0.3
+pkgrel=2
 pkgdesc='Data Acquisition library for packet I/O.'
 arch=('i686' 'x86_64')
-url='http://www.snort.org/'
+url='https://www.snort.org/'
 license=('GPL')
-depends=('libpcap')
+depends=('libpcap' 'libnetfilter_queue')
 makedepends=('ca-certificates')
-source=(http://www.snort.org/downloads/archive/snortplus/daq-${pkgver}.tar.gz)
-sha512sums=('7c5341853eff6d2f94cc0b0c38df03b3595c6b829581cbe756582c33de813fba018fa4a984e8ea66fbb2849e573d33bb1fbd23a77f4ac7e0f93fe66ff205c95d')
+source=("libdaq-${pkgver}.tar.gz::https://github.com/snort3/libdaq/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('85b88e5dc5befd4076bfcfb08c3efdd3f7d3b3b96730c2baa30ea331320623ebcfbe49d7310f24a57607d54820cdbd6afc89891d793d6a01033b031daabbee0e')
+provides=('libdaq-nfqueue')
+conflicts=('libdaq-nfqueue')
+replaces=('libdaq-nfqueue')
 
 build() {
-  cd "${srcdir}/daq-${pkgver}"
+  cd "${srcdir}/libdaq-${pkgver}"
+  ./bootstrap
   ./configure --prefix=/usr
   make -j1
 }
 
 package() {
-  cd "${srcdir}/daq-${pkgver}"
+  cd "${srcdir}/libdaq-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
