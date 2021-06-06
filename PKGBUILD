@@ -3,7 +3,7 @@
 pkgname=wordbook
 _author=fushinari
 _gitname=wordbook
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='An offline dictionary app for GNOME'
 arch=(any)
@@ -22,7 +22,7 @@ makedepends=(
     meson
 )
 source=("$_gitname-v$pkgver.tar.gz::https://github.com/$_author/$_gitname/archive/$pkgver.tar.gz")
-sha256sums=('528b4454fc0cef7b4edcdd6dec6bab6e450c4abbfd1cedad9325fba939c109ed')
+sha256sums=('0fe8ae1c518a852dc58f0e551a9e93d836fd2089e6f42740814f9c8d18108836')
 
 prepare() {
     cd $_gitname-$pkgver
