@@ -1,7 +1,7 @@
 _pkgname=xfswm
 pkgname=${_pkgname}-git
 pkgver=r12.0dc53b7
-pkgrel=1
+pkgrel=2
 pkgdesc="An X11 window manager that keeps a single window fullscreen"
 url="https://github.com/tomKPZ/xfswm"
 arch=("x86_64")
