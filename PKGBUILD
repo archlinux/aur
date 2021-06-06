@@ -26,7 +26,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/firedm/FireDM/archive/$pkgv
         firedm.{desktop,png})
 b2sums=('7ff035e2fa747b7c1b82e069938d17f22692e2a5a7f849061175831e69daf1da35065557a0eaa45b1a7c09a3c19e217b34b896fe407eb374c9cc322b9e8a3800'
         '0e172a987e5a9967df0d906e5906daeb38868e8222b6eb6afebcb3fcc9d2f5b6b26dbe36e4a52d0cd66628d29d5bec16b0f76618a04f0ec02ed86cf811d5e172'
-        '2f6c6b25b97ec02e3bf396ad0fdce6db88e7be1b7d90247d0422890af8181ee62fab4728b33563628ad0ba1b2e702a53fffc615fa54037b5b8429b7586dd828c')
+        '3cf1a71d1a324e5182cf119cc0895651385451f4bc90835415e7897b713af5394662c8fb1a20d86dbb941613ee8f675079922b92501eb77bcdd5bc85d30d4df0')
 
 prepare() {
   sed -i 's/disable_update_feature = False/disable_update_feature = True/' "$srcdir/FireDM-$pkgver/firedm/config.py"
