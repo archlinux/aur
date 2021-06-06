@@ -1,0 +1,533 @@
+From 100bb8c3b95d6cb52b5698fb6f7a4c7243816ce9 Mon Sep 17 00:00:00 2001
+From: Carl Smedstad <carl.smedstad@protonmail.com>
+Date: Sat, 5 Jun 2021 05:32:28 +0200
+Subject: [PATCH 1/6] Skip tests depending on dash & checkbashisms if not
+ installed
+
+---
+ test/Testing.py       |  3 +++
+ test/test_bashisms.py |  6 +++++-
+ test/test_cli.py      |  6 ++++++
+ test/test_lint.py     | 16 +++++++++++++++-
+ 4 files changed, 29 insertions(+), 2 deletions(-)
+
+diff --git a/test/Testing.py b/test/Testing.py
+index a5fefdb..902a17d 100644
+--- a/test/Testing.py
++++ b/test/Testing.py
+@@ -3,6 +3,7 @@ import os
+ from pathlib import Path
+ import platform
+ import re
++import shutil
+ 
+ from rpmlint.config import Config
+ from rpmlint.pkg import FakePkg, Pkg
+@@ -19,6 +20,8 @@ CONFIG = Config(TEST_CONFIG)
+ IS_X86_64 = platform.machine() == 'x86_64'
+ IS_I686 = re.match(platform.machine(), 'i[3456]86')
+ HAS_32BIT_GLIBC = glob.glob('/lib/ld-linux.so.*')
++HAS_CHECKBASHISMS = shutil.which('checkbashisms')
++HAS_DASH = shutil.which('dash')
+ 
+ 
+ def get_tested_path(path):
+diff --git a/test/test_bashisms.py b/test/test_bashisms.py
+index 880c930..aaf35e0 100644
+--- a/test/test_bashisms.py
++++ b/test/test_bashisms.py
+@@ -2,7 +2,7 @@ import pytest
+ from rpmlint.checks.BashismsCheck import BashismsCheck
+ from rpmlint.filter import Filter
+ 
+-from Testing import CONFIG, get_tested_package
++from Testing import CONFIG, get_tested_package, HAS_CHECKBASHISMS, HAS_DASH
+ 
+ 
+ @pytest.fixture(scope='function', autouse=True)
+@@ -13,6 +13,8 @@ def bashismscheck():
+     return output, test
+ 
+ 
++@pytest.mark.skipif(not HAS_CHECKBASHISMS, reason='Optional dependency checkbashisms not installed')
++@pytest.mark.skipif(not HAS_DASH, reason='Optional dependency dash not installed')
+ @pytest.mark.parametrize('package', ['binary/bashisms'])
+ def test_bashisms(tmpdir, package, bashismscheck):
+     output, test = bashismscheck
+@@ -22,6 +24,8 @@ def test_bashisms(tmpdir, package, bashismscheck):
+     assert 'W: bin-sh-syntax-error /bin/script2' in out
+ 
+ 
++@pytest.mark.skipif(not HAS_CHECKBASHISMS, reason='Optional dependency checkbashisms not installed')
++@pytest.mark.skipif(not HAS_DASH, reason='Optional dependency dash not installed')
+ @pytest.mark.parametrize('package', ['binary/bashisms'])
+ def test_bashisms_error(tmpdir, package, bashismscheck):
+     output, test = bashismscheck
+diff --git a/test/test_cli.py b/test/test_cli.py
+index 4e77fc3..2f0c55f 100644
+--- a/test/test_cli.py
++++ b/test/test_cli.py
+@@ -5,6 +5,8 @@ from rpmlint.cli import process_lint_args
+ from rpmlint.config import Config
+ from rpmlint.lint import Lint
+ 
++from Testing import HAS_CHECKBASHISMS, HAS_DASH
++
+ 
+ @pytest.mark.parametrize('test_arguments', [['-c', 'rpmlint/configs/thisdoesntexist.toml']])
+ def test_parsing_non_existing_config_file(test_arguments):
+@@ -21,6 +23,8 @@ def test_parsing_config_file(test_arguments):
+     assert parsed['config'][0] == PosixPath('rpmlint/configdefaults.toml')
+ 
+ 
++@pytest.mark.skipif(not HAS_CHECKBASHISMS, reason='Optional dependency checkbashisms not installed')
++@pytest.mark.skipif(not HAS_DASH, reason='Optional dependency dash not installed')
+ @pytest.mark.parametrize('test_arguments', [['-c', 'configs/openSUSE']])
+ def test_parsing_opensuse_conf(test_arguments):
+     parsed = process_lint_args(test_arguments)
+@@ -50,6 +54,8 @@ def test_parsing_opensuse_conf(test_arguments):
+         assert score_key in checks
+ 
+ 
++@pytest.mark.skipif(not HAS_CHECKBASHISMS, reason='Optional dependency checkbashisms not installed')
++@pytest.mark.skipif(not HAS_DASH, reason='Optional dependency dash not installed')
+ @pytest.mark.parametrize('test_arguments', [['-c', 'configs/Fedora']])
+ def test_parsing_fedora_conf(test_arguments):
+     parsed = process_lint_args(test_arguments)
+diff --git a/test/test_lint.py b/test/test_lint.py
+index f68e365..73f16d2 100644
+--- a/test/test_lint.py
++++ b/test/test_lint.py
+@@ -3,7 +3,7 @@ from pathlib import Path
+ import pytest
+ from rpmlint.lint import Lint
+ 
+-from Testing import TEST_CONFIG, testpath
++from Testing import HAS_CHECKBASHISMS, HAS_DASH, TEST_CONFIG, testpath
+ 
+ TEST_RPMLINTRC = testpath() / 'configs/testing2-rpmlintrc'
+ 
+@@ -287,6 +287,8 @@ def test_header_information(capsys):
+     assert 'packages: 1' in out
+ 
+ 
++@pytest.mark.skipif(not HAS_CHECKBASHISMS, reason='Optional dependency checkbashisms not installed')
++@pytest.mark.skipif(not HAS_DASH, reason='Optional dependency dash not installed')
+ @pytest.mark.parametrize('packages', [list(Path('test').glob('*/*.rpm'))])
+ @pytest.mark.parametrize('configs', [list(Path('configs').glob('*/*.toml'))])
+ @pytest.mark.no_cover
+@@ -310,6 +312,8 @@ def test_run_full_rpm(capsys, packages, configs):
+     assert not err_reduced
+ 
+ 
++@pytest.mark.skipif(not HAS_CHECKBASHISMS, reason='Optional dependency checkbashisms not installed')
++@pytest.mark.skipif(not HAS_DASH, reason='Optional dependency dash not installed')
+ @pytest.mark.parametrize('packages', [list(Path('test/spec').glob('*.spec'))])
+ @pytest.mark.parametrize('configs', [list(Path('configs').glob('*/*.toml'))])
+ @pytest.mark.no_cover
+@@ -327,6 +331,8 @@ def test_run_full_specs(capsys, packages, configs):
+     assert not err
+ 
+ 
++@pytest.mark.skipif(not HAS_CHECKBASHISMS, reason='Optional dependency checkbashisms not installed')
++@pytest.mark.skipif(not HAS_DASH, reason='Optional dependency dash not installed')
+ @pytest.mark.parametrize('packages', [Path('test/spec')])
+ @pytest.mark.no_cover
+ def test_run_full_directory(capsys, packages):
+@@ -347,6 +353,8 @@ def test_run_full_directory(capsys, packages):
+     assert not err
+ 
+ 
++@pytest.mark.skipif(not HAS_CHECKBASHISMS, reason='Optional dependency checkbashisms not installed')
++@pytest.mark.skipif(not HAS_DASH, reason='Optional dependency dash not installed')
+ def test_run_empty(capsys):
+     linter = Lint(options_preset)
+     linter.run()
+@@ -355,6 +363,8 @@ def test_run_empty(capsys):
+     assert '0 packages and 0 specfiles checked; 0 errors, 0 warnings' in out
+ 
+ 
++@pytest.mark.skipif(not HAS_CHECKBASHISMS, reason='Optional dependency checkbashisms not installed')
++@pytest.mark.skipif(not HAS_DASH, reason='Optional dependency dash not installed')
+ @pytest.mark.parametrize('packages', [Path('test/rpmlintrc/single')])
+ def test_run_rpmlintrc_single_dir(capsys, packages):
+     additional_options = {
+@@ -368,6 +378,8 @@ def test_run_rpmlintrc_single_dir(capsys, packages):
+     assert 'rpmlintrc:' in out
+ 
+ 
++@pytest.mark.skipif(not HAS_CHECKBASHISMS, reason='Optional dependency checkbashisms not installed')
++@pytest.mark.skipif(not HAS_DASH, reason='Optional dependency dash not installed')
+ @pytest.mark.parametrize('packages', [Path('test/rpmlintrc/multiple')])
+ def test_run_rpmlintrc_multiple(capsys, packages):
+     additional_options = {
+@@ -382,6 +394,8 @@ def test_run_rpmlintrc_multiple(capsys, packages):
+     assert '0 badness' in out
+ 
+ 
++@pytest.mark.skipif(not HAS_CHECKBASHISMS, reason='Optional dependency checkbashisms not installed')
++@pytest.mark.skipif(not HAS_DASH, reason='Optional dependency dash not installed')
+ @pytest.mark.parametrize('packages', [Path('test/rpmlintrc/single/sample.spec')])
+ def test_run_rpmlintrc_single_file(capsys, packages):
+     additional_options = {
+-- 
+2.31.1
+
+
+From 6d6f3d8cb9eabb733132801fbcbfaed057f9a776 Mon Sep 17 00:00:00 2001
+From: Carl Smedstad <carl.smedstad@protonmail.com>
+Date: Sat, 5 Jun 2021 06:32:27 +0200
+Subject: [PATCH 2/6] Skip tests depending on pyenchant if not installed
+
+---
+ test/test_lint.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/test/test_lint.py b/test/test_lint.py
+index 73f16d2..84444b2 100644
+--- a/test/test_lint.py
++++ b/test/test_lint.py
+@@ -2,6 +2,7 @@ from pathlib import Path
+ 
+ import pytest
+ from rpmlint.lint import Lint
++from rpmlint.spellcheck import ENCHANT
+ 
+ from Testing import HAS_CHECKBASHISMS, HAS_DASH, TEST_CONFIG, testpath
+ 
+@@ -167,6 +168,7 @@ def test_explain_non_standard_dir_from_cfg(capsys):
+     assert not err
+ 
+ 
++@pytest.mark.skipif(not ENCHANT, reason='Optional dependency pyenchant not install')
+ @pytest.mark.parametrize('packages', [Path('test/binary/non-fhs-0-0.x86_64.rpm')])
+ def test_descriptions_from_config(capsys, packages):
+     """
+-- 
+2.31.1
+
+
+From ecd3773216bc3de0579ee128aabd3beda4b2f39e Mon Sep 17 00:00:00 2001
+From: Carl Smedstad <carl.smedstad@protonmail.com>
+Date: Sat, 5 Jun 2021 06:32:52 +0200
+Subject: [PATCH 3/6] Skip tests depending on desktop-file-utils if not
+ installed
+
+---
+ test/Testing.py      | 1 +
+ test/test_menuxdg.py | 8 +++++++-
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/test/Testing.py b/test/Testing.py
+index 902a17d..90f680a 100644
+--- a/test/Testing.py
++++ b/test/Testing.py
+@@ -22,6 +22,7 @@ IS_I686 = re.match(platform.machine(), 'i[3456]86')
+ HAS_32BIT_GLIBC = glob.glob('/lib/ld-linux.so.*')
+ HAS_CHECKBASHISMS = shutil.which('checkbashisms')
+ HAS_DASH = shutil.which('dash')
++HAS_DESKTOP_FILE_UTILS = shutil.which('desktop-file-validate')
+ 
+ 
+ def get_tested_path(path):
+diff --git a/test/test_menuxdg.py b/test/test_menuxdg.py
+index e8f398c..93278bc 100644
+--- a/test/test_menuxdg.py
++++ b/test/test_menuxdg.py
+@@ -2,7 +2,7 @@ import pytest
+ from rpmlint.checks.MenuXDGCheck import MenuXDGCheck
+ from rpmlint.filter import Filter
+ 
+-from Testing import CONFIG, get_tested_package
++from Testing import CONFIG, get_tested_package, HAS_DESKTOP_FILE_UTILS
+ 
+ 
+ @pytest.fixture(scope='function', autouse=True)
+@@ -13,6 +13,7 @@ def menuxdgcheck():
+     return output, test
+ 
+ 
++@pytest.mark.skipif(not HAS_DESKTOP_FILE_UTILS, reason='Optional dependency desktop-file-utils not installed')
+ @pytest.mark.parametrize('package', ['binary/menuxdg1'])
+ def test_raises_parse_error(tmpdir, package, menuxdgcheck):
+     output, test = menuxdgcheck
+@@ -24,6 +25,7 @@ def test_raises_parse_error(tmpdir, package, menuxdgcheck):
+     assert 'check with desktop-file-validate' in out
+ 
+ 
++@pytest.mark.skipif(not HAS_DESKTOP_FILE_UTILS, reason='Optional dependency desktop-file-utils not installed')
+ @pytest.mark.parametrize('package', ['binary/desktopfile-bad-binary'])
+ def test_without_binary(tmpdir, package, menuxdgcheck):
+     output, test = menuxdgcheck
+@@ -32,6 +34,7 @@ def test_without_binary(tmpdir, package, menuxdgcheck):
+     assert 'desktopfile-without-binary' in out
+ 
+ 
++@pytest.mark.skipif(not HAS_DESKTOP_FILE_UTILS, reason='Optional dependency desktop-file-utils not installed')
+ @pytest.mark.parametrize('package', ['binary/desktopfile-bad-duplicate'])
+ def test_duplicate(tmpdir, package, menuxdgcheck):
+     output, test = menuxdgcheck
+@@ -41,6 +44,7 @@ def test_duplicate(tmpdir, package, menuxdgcheck):
+     assert 'invalid-desktopfile' in out
+ 
+ 
++@pytest.mark.skipif(not HAS_DESKTOP_FILE_UTILS, reason='Optional dependency desktop-file-utils not installed')
+ @pytest.mark.parametrize('package', ['binary/desktopfile-bad-section'])
+ def test_missing_header(tmpdir, package, menuxdgcheck):
+     output, test = menuxdgcheck
+@@ -50,6 +54,7 @@ def test_missing_header(tmpdir, package, menuxdgcheck):
+     assert 'invalid-desktopfile' in out
+ 
+ 
++@pytest.mark.skipif(not HAS_DESKTOP_FILE_UTILS, reason='Optional dependency desktop-file-utils not installed')
+ @pytest.mark.parametrize('package', ['binary/desktopfile-bad-unicode'])
+ def test_bad_unicode(tmpdir, package, menuxdgcheck):
+     output, test = menuxdgcheck
+@@ -58,6 +63,7 @@ def test_bad_unicode(tmpdir, package, menuxdgcheck):
+     assert 'non-utf8-desktopfile' in out
+ 
+ 
++@pytest.mark.skipif(not HAS_DESKTOP_FILE_UTILS, reason='Optional dependency desktop-file-utils not installed')
+ @pytest.mark.parametrize('package', ['binary/desktopfile-good'])
+ def test_good(tmpdir, package, menuxdgcheck):
+     output, test = menuxdgcheck
+-- 
+2.31.1
+
+
+From 69bb4d21ba6e2ac5de27e28126c8c79c59977af3 Mon Sep 17 00:00:00 2001
+From: Carl Smedstad <carl.smedstad@protonmail.com>
+Date: Sat, 5 Jun 2021 07:20:10 +0200
+Subject: [PATCH 4/6] Skip tests depending on appstream-glib if not installed
+
+---
+ test/Testing.py      | 1 +
+ test/test_appdata.py | 3 ++-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/test/Testing.py b/test/Testing.py
+index 90f680a..48d2449 100644
+--- a/test/Testing.py
++++ b/test/Testing.py
+@@ -23,6 +23,7 @@ HAS_32BIT_GLIBC = glob.glob('/lib/ld-linux.so.*')
+ HAS_CHECKBASHISMS = shutil.which('checkbashisms')
+ HAS_DASH = shutil.which('dash')
+ HAS_DESKTOP_FILE_UTILS = shutil.which('desktop-file-validate')
++HAS_APPSTREAM_GLIB = shutil.which('appstream-util')
+ 
+ 
+ def get_tested_path(path):
+diff --git a/test/test_appdata.py b/test/test_appdata.py
+index 58930ce..2986eca 100644
+--- a/test/test_appdata.py
++++ b/test/test_appdata.py
+@@ -4,7 +4,7 @@ import pytest
+ from rpmlint.checks.AppDataCheck import AppDataCheck
+ from rpmlint.filter import Filter
+ 
+-from Testing import CONFIG, get_tested_package
++from Testing import CONFIG, get_tested_package, HAS_APPSTREAM_GLIB
+ 
+ 
+ @pytest.fixture(scope='function', autouse=True)
+@@ -15,6 +15,7 @@ def appdatacheck():
+     return output, test
+ 
+ 
++@pytest.mark.skipif(not HAS_APPSTREAM_GLIB, reason='Optional dependency appstream-glib not installed')
+ @pytest.mark.parametrize('package', ['binary/appdata'])
+ def test_appdata_fail(tmpdir, package, appdatacheck):
+     output, test = appdatacheck
+-- 
+2.31.1
+
+
+From 717e0152c1f3d1a179e319ef9e63472f699ea7d2 Mon Sep 17 00:00:00 2001
+From: Carl Smedstad <carl.smedstad@protonmail.com>
+Date: Sat, 5 Jun 2021 06:48:43 +0200
+Subject: [PATCH 5/6] Skip tests requiring RPM database if not present
+
+---
+ test/Testing.py   | 4 ++++
+ test/test_lint.py | 8 +++++++-
+ 2 files changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/test/Testing.py b/test/Testing.py
+index 48d2449..279cc4e 100644
+--- a/test/Testing.py
++++ b/test/Testing.py
+@@ -4,6 +4,7 @@ from pathlib import Path
+ import platform
+ import re
+ import shutil
++import subprocess
+ 
+ from rpmlint.config import Config
+ from rpmlint.pkg import FakePkg, Pkg
+@@ -25,6 +26,9 @@ HAS_DASH = shutil.which('dash')
+ HAS_DESKTOP_FILE_UTILS = shutil.which('desktop-file-validate')
+ HAS_APPSTREAM_GLIB = shutil.which('appstream-util')
+ 
++RPMDB_PATH = subprocess.run(['rpm', '--eval', '"%_dbpath"'], encoding='utf8').stdout
++HAS_RPMDB = RPMDB_PATH and Path(RPMDB_PATH).exists()
++
+ 
+ def get_tested_path(path):
+     return testpath() / path
+diff --git a/test/test_lint.py b/test/test_lint.py
+index 84444b2..3390c33 100644
+--- a/test/test_lint.py
++++ b/test/test_lint.py
+@@ -4,7 +4,9 @@ import pytest
+ from rpmlint.lint import Lint
+ from rpmlint.spellcheck import ENCHANT
+ 
+-from Testing import HAS_CHECKBASHISMS, HAS_DASH, TEST_CONFIG, testpath
++from Testing import (
++    HAS_CHECKBASHISMS, HAS_DASH, HAS_RPMDB, TEST_CONFIG, testpath
++)
+ 
+ TEST_RPMLINTRC = testpath() / 'configs/testing2-rpmlintrc'
+ 
+@@ -212,6 +214,7 @@ def test_run_single(capsys, packages):
+     assert not err
+ 
+ 
++@pytest.mark.skipif(not HAS_RPMDB, reason='No RPM database present')
+ @pytest.mark.parametrize('packages', [Path('test/source/wrongsrc-0-0.src.rpm')])
+ def test_run_installed(capsys, packages):
+     # load up 1 normal path file and 2 installed packages
+@@ -247,6 +250,7 @@ def test_run_strict(capsys, packages):
+     assert not err
+ 
+ 
++@pytest.mark.skipif(not HAS_RPMDB, reason='No RPM database present')
+ def test_run_installed_not_present(capsys):
+     additional_options = {
+         'rpmfile': [],
+@@ -262,6 +266,7 @@ def test_run_installed_not_present(capsys):
+     assert 'There are no files to process' in err
+ 
+ 
++@pytest.mark.skipif(not HAS_RPMDB, reason='No RPM database present')
+ def test_run_installed_and_no_files(capsys):
+     additional_options = {
+         'rpmfile': [],
+@@ -276,6 +281,7 @@ def test_run_installed_and_no_files(capsys):
+     assert not err
+ 
+ 
++@pytest.mark.skipif(not HAS_RPMDB, reason='No RPM database present')
+ def test_header_information(capsys):
+     additional_options = {
+         'rpmfile': [],
+-- 
+2.31.1
+
+
+From 3e0a3e774b8ed975396c8f209ee0a097f608e8ad Mon Sep 17 00:00:00 2001
+From: Carl Smedstad <carl.smedstad@protonmail.com>
+Date: Sun, 6 Jun 2021 19:07:28 +0200
+Subject: [PATCH 6/6] Skip tests requiring spellchecking dictionaries if not
+ installed
+
+Add pytest predicates HAS_ENGLISH_DICTIONARY and HAS_CZECH_DICTIONARY and use
+these to skip tests requiring a dictionary if it is not installed.
+---
+ test/Testing.py            | 16 ++++++++++++++++
+ test/test_lint.py          |  4 +++-
+ test/test_spellchecking.py |  6 ++++++
+ 3 files changed, 25 insertions(+), 1 deletion(-)
+
+diff --git a/test/Testing.py b/test/Testing.py
+index 279cc4e..7c6b7d1 100644
+--- a/test/Testing.py
++++ b/test/Testing.py
+@@ -8,6 +8,7 @@ import subprocess
+ 
+ from rpmlint.config import Config
+ from rpmlint.pkg import FakePkg, Pkg
++import rpmlint.spellcheck
+ 
+ 
+ def testpath():
+@@ -30,6 +31,21 @@ RPMDB_PATH = subprocess.run(['rpm', '--eval', '"%_dbpath"'], encoding='utf8').st
+ HAS_RPMDB = RPMDB_PATH and Path(RPMDB_PATH).exists()
+ 
+ 
++def _has_dictionary(language):
++    if not rpmlint.spellcheck.ENCHANT:
++        return False
++    spell = rpmlint.spellcheck.Spellcheck()
++    spell._init_checker(language)
++    return (
++        language in spell._enchant_checkers and
++        spell._enchant_checkers[language] is not None
++    )
++
++
++HAS_ENGLISH_DICTIONARY = _has_dictionary('en_US')
++HAS_CZECH_DICTIONARY = _has_dictionary('cs_CZ')
++
++
+ def get_tested_path(path):
+     return testpath() / path
+ 
+diff --git a/test/test_lint.py b/test/test_lint.py
+index 3390c33..7879ab9 100644
+--- a/test/test_lint.py
++++ b/test/test_lint.py
+@@ -5,7 +5,8 @@ from rpmlint.lint import Lint
+ from rpmlint.spellcheck import ENCHANT
+ 
+ from Testing import (
+-    HAS_CHECKBASHISMS, HAS_DASH, HAS_RPMDB, TEST_CONFIG, testpath
++    HAS_CHECKBASHISMS, HAS_DASH, HAS_ENGLISH_DICTIONARY, HAS_RPMDB,
++    TEST_CONFIG, testpath
+ )
+ 
+ TEST_RPMLINTRC = testpath() / 'configs/testing2-rpmlintrc'
+@@ -171,6 +172,7 @@ def test_explain_non_standard_dir_from_cfg(capsys):
+ 
+ 
+ @pytest.mark.skipif(not ENCHANT, reason='Optional dependency pyenchant not install')
++@pytest.mark.skipif(not HAS_ENGLISH_DICTIONARY, reason='Missing English dictionary')
+ @pytest.mark.parametrize('packages', [Path('test/binary/non-fhs-0-0.x86_64.rpm')])
+ def test_descriptions_from_config(capsys, packages):
+     """
+diff --git a/test/test_spellchecking.py b/test/test_spellchecking.py
+index 5542c56..3aa9255 100644
+--- a/test/test_spellchecking.py
++++ b/test/test_spellchecking.py
+@@ -1,8 +1,11 @@
+ import pytest
+ import rpmlint.spellcheck
+ 
++from Testing import HAS_CZECH_DICTIONARY, HAS_ENGLISH_DICTIONARY
++
+ 
+ @pytest.mark.skipif(not rpmlint.spellcheck.ENCHANT, reason='Missing enchant bindings')
++@pytest.mark.skipif(not HAS_ENGLISH_DICTIONARY, reason='Missing English dictionary')
+ def test_spelldict(capsys):
+     """
+     Check we can init dictionary spellchecker
+@@ -25,6 +28,8 @@ def test_spelldict(capsys):
+ 
+ 
+ @pytest.mark.skipif(not rpmlint.spellcheck.ENCHANT, reason='Missing enchant bindings')
++@pytest.mark.skipif(not HAS_ENGLISH_DICTIONARY, reason='Missing English dictionary')
++@pytest.mark.skipif(not HAS_CZECH_DICTIONARY, reason='Missing Czech dictionary')
+ def test_spellchecking():
+     """
+     Check if we can test the spelling
+@@ -55,6 +60,7 @@ def test_spellchecking():
+ 
+ 
+ @pytest.mark.skipif(not rpmlint.spellcheck.ENCHANT, reason='Missing enchant bindings')
++@pytest.mark.skipif(not HAS_ENGLISH_DICTIONARY, reason='Missing English dictionary')
+ def test_pkgname_spellchecking():
+     spell = rpmlint.spellcheck.Spellcheck()
+ 
+-- 
+2.31.1
+
