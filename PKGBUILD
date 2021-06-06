@@ -3,7 +3,7 @@
 pkgname='gitify'
 _pkgname="Gitify"
 pkgver=4.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc='GitHub notifications on your menu bar.'
 arch=('x86_64')
 url='https://www.gitify.io/'

@@ -1,7 +1,7 @@
 pkgbase = gitify
 	pkgdesc = GitHub notifications on your menu bar.
 	pkgver = 4.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.gitify.io/
 	install = Gitify.install
 	arch = x86_64
