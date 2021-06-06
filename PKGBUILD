@@ -1,29 +1,42 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
+# Maintainer: Gabriel Guldner <gabriel at guldner dot eu>
+
+# Contributor: NebulaNeko <chfsefefgesfen foxmail>
+# Contributor: Radek Podgorny <radek@podgorny.cz>
 
 pkgname=websockify-git
-_gitname=websockify
-pkgver=667.23045cb
+_pkgname=websockify
+pkgver=v0.9.0.r52.geca301c
 pkgrel=1
-pkgdesc="WebSocket to TCP proxy/bridge."
-arch=('i686' 'x86_64')
-url="http://github.com/kanaka/websockify"
+pkgdesc="WebSockets support for any application/server"
 license=('LGPL3')
-depends=( 'python2' 'python2-numpy' 'python2-setuptools' )
-provides=( "$_gitname" )
-conflicts=( "$_gitname" )
-source=("${_gitname}::git+$url")
-md5sums=('SKIP')
+arch=('any')
+url="https://github.com/novnc/websockify"
+provides=($_pkgname)
+conflicts=($_pkgname)
+makedepends=(python-setuptools)
+depends=(python)
+optdepends=('python-numpy: for better HyBi protocol performance')
+source=('git+https://github.com/novnc/websockify.git')
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${_gitname}"
-  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare(){
+  cd "$_pkgname"
+  sed -i '/numpy/d' setup.py
+}
+
+build() {
+  cd "$_pkgname"
+
+  python setup.py build
 }
 
 package() {
-  cd "$srcdir/${_gitname}"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
-  make
-  install -Dm755 rebind.so "$pkgdir/usr/bin/rebind.so"
-}
+  cd "$_pkgname"
 
-# vim:set ts=2 sw=2 et:
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
