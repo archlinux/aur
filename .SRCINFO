@@ -5,6 +5,7 @@ pkgbase = sunflower
 	url = https://sunflower-fm.org
 	arch = any
 	license = GPL3
+	makedepends = python-setuptools
 	makedepends = libnotify
 	depends = gtk3
 	depends = vte3

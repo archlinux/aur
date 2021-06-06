@@ -12,7 +12,7 @@ arch=(any)
 license=(GPL3)
 url="https://sunflower-fm.org"
 depends=(gtk3 vte3 python-gobject python-chardet python-cairo librsvg)
-makedepends=(libnotify)
+makedepends=(python-setuptools libnotify)
 optdepends=('libnotify'
             'python-mutagen: audio-metadata support'
             'gvfs: mount-management')
