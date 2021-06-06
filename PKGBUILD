@@ -19,10 +19,13 @@ check() {
     ./sanity
 }
 
-package() {
-    _bin="$pkgdir/usr/bin"
+_move() {
+    mkdir -p "$2"
+    mv "$1" "$2"
+}
 
-    mkdir -p "$_bin"
-    mv circle "$_bin"
+package() {
+    _move circle "$pkgdir/usr/bin"
+    _move license.txt "$pkgdir/usr/share/licenses/${pkgname}"
 }
 
