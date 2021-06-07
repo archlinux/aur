@@ -21,6 +21,11 @@ source=("$_pkgname-$pkgver.tar.gz::https://github.com/neovim/neovim/releases/dow
 sha512sums=(SKIP) 
 install=neovim.install
 
+pkgver() {
+  cd "${srcdir}/nvim-linux64"
+  ./bin/nvim --version | head -1 | awk '{ printf $2 }' | sed 's/-/+/g'
+}
+
 check() {
   cd "${srcdir}/nvim-linux64"
   ./bin/nvim --version
