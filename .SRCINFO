@@ -1,7 +1,7 @@
 pkgbase = jrnl-git
 	pkgdesc = Collect your thoughts and notes without leaving the command line
 	pkgver = v2.8.1.r12.g5e87ff1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://jrnl.sh/
 	arch = any
 	license = GPL3
