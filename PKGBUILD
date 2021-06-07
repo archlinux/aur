@@ -13,7 +13,12 @@ optdepends=()
 source=("$pkgname-$pkgver::git+$url.git")
 md5sums=('SKIP')
 
-_FOLDERS=(MiClouds MiGrids MiOmi MiRipples MiWarps MiElements MiMu MiPlaits MiRings MiVerb)
+# These should work on all architectures (MiRipples does not build on arm)
+_folders_limited=("MiClouds" "MiGrids" "MiOmi" "MiWarps" "MiElements" "MiMu" "MiPlaits" "MiRings" "MiVerb")
+
+# x86 exclusive 
+_folders_full=("MiRipples")
+_folders_full+=("${_folders_limited[@]}")
 
 pkgver() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -25,11 +30,17 @@ build() {
 
 	# Get dependencies
 	git submodule update --init --recursive
-
 	# Files to build
 	SC_SRC="/usr/share/supercollider-headers"
 
-	for FOLDER in "${_FOLDERS[@]}"
+	folders=()
+	if [ "$CARCH" == "x86_64" ]; then
+		folders=("${_folders_full[@]}")
+	else
+		folders=("${_folders_limited[@]}")
+	fi
+
+	for FOLDER in "${folders[@]}"
 	do
 		cd $FOLDER
 		# Build folder
@@ -46,7 +57,12 @@ build() {
 
 package() {
 	# Files to install
-	_FOLDERS=(MiClouds MiGrids MiOmi MiRipples MiWarps MiElements MiMu MiPlaits MiRings MiVerb)
+	folders=()
+	if [ "$CARCH" == "x86_64" ]; then
+		folders=("${_folders_full[@]}")
+	else
+		folders=("${_folders_limited[@]}")
+	fi
 
 	# Destination: System extension dir
 	DEST="$pkgdir/usr/share/SuperCollider/Extensions/$pkgname/"
@@ -54,7 +70,7 @@ package() {
 
 	cd "$pkgname-$pkgver"
 
-	for FILE in "${_FOLDERS[@]}"
+	for FILE in "${folders[@]}"
 	do
 		# Class
 		install -Dm755 ./sc/Classes/$FILE.sc "$DEST/Classes/$FILE.sc"
