@@ -1,6 +1,6 @@
 pkgbase = pikaur-git
 	pkgdesc = AUR helper which asks all questions before installing/building. Inspired by pacaur, yaourt and yay.
-	pkgver = 1.6.17
+	pkgver = 1.7
 	pkgrel = 1
 	url = https://github.com/actionless/pikaur
 	arch = any
@@ -16,4 +16,3 @@ pkgbase = pikaur-git
 	md5sums = SKIP
 
 pkgname = pikaur-git
-
