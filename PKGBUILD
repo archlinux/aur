@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=wine-staging-git
-pkgver=6.8.r0.g0f00e37c
+pkgver=6.10.r0.g8a3554ad
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version)'
 arch=('x86_64')
@@ -25,7 +25,7 @@ depends=(
     'faudio'                'lib32-faudio'
     'desktop-file-utils'
 )
-makedepends=('git' 'autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex' 'mingw-w64-gcc'
+makedepends=('git' 'autoconf' 'bison' 'perl' 'fontforge' 'flex' 'mingw-w64-gcc'
     'giflib'                'lib32-giflib'
     'libpng'                'lib32-libpng'
     'gnutls'                'lib32-gnutls'
@@ -73,7 +73,6 @@ optdepends=(
     'libjpeg-turbo'         'lib32-libjpeg-turbo'
     'libxcomposite'         'lib32-libxcomposite'
     'libxinerama'           'lib32-libxinerama'
-    'ncurses'               'lib32-ncurses'
     'opencl-icd-loader'     'lib32-opencl-icd-loader'
     'libxslt'               'lib32-libxslt'
     'libva'                 'lib32-libva'
@@ -195,5 +194,5 @@ package() {
     
     # strip native PE libraries
     i686-w64-mingw32-strip --strip-unneeded "${pkgdir}/usr/lib32/wine/i386-windows"/*.dll
-    "${CARCH}-w64-mingw32-strip" --strip-unneeded "${pkgdir}/usr/lib/wine/x86_64-windows"/*.dll
+    "${CARCH}-w64-mingw32-strip" --strip-unneeded "${pkgdir}/usr/lib/wine/${CARCH}-windows"/*.dll
 }

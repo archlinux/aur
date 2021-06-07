@@ -1,6 +1,6 @@
 pkgbase = wine-staging-git
 	pkgdesc = A compatibility layer for running Windows programs (staging branch, git version)
-	pkgver = 6.8.r0.g0f00e37c
+	pkgver = 6.10.r0.g8a3554ad
 	pkgrel = 1
 	url = https://www.wine-staging.com/
 	install = wine-staging-git.install
@@ -8,7 +8,6 @@ pkgbase = wine-staging-git
 	license = LGPL
 	makedepends = git
 	makedepends = autoconf
-	makedepends = ncurses
 	makedepends = bison
 	makedepends = perl
 	makedepends = fontforge
@@ -128,8 +127,6 @@ pkgbase = wine-staging-git
 	optdepends = lib32-libxcomposite
 	optdepends = libxinerama
 	optdepends = lib32-libxinerama
-	optdepends = ncurses
-	optdepends = lib32-ncurses
 	optdepends = opencl-icd-loader
 	optdepends = lib32-opencl-icd-loader
 	optdepends = libxslt
@@ -153,8 +150,8 @@ pkgbase = wine-staging-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine-staging=6.8.r0.g0f00e37c
-	provides = wine=6.8
+	provides = wine-staging=6.10.r0.g8a3554ad
+	provides = wine=6.10
 	provides = wine-wow64
 	conflicts = wine
 	conflicts = wine-wow64
@@ -169,4 +166,3 @@ pkgbase = wine-staging-git
 	sha256sums = 6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4
 
 pkgname = wine-staging-git
-
