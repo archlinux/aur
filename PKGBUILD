@@ -7,7 +7,7 @@ pkgdesc="A free and open source manga reader that runs extensions built for Tach
 arch=("x86_64")
 url="https://github.com/Suwayomi/TachideskJUI"
 license=("MPL2")
-depends=("java-runtime>=15")
+depends=("jre-openjdk=15")
 provides=("tachidesk-jui")
 
 _jar=TachideskJUI-linux-x64-${pkgver}.jar
