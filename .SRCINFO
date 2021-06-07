@@ -1,13 +1,15 @@
 pkgbase = mailchecker
 	pkgdesc = Definition and optimized evaluation of mathematical expressions on Numpy arrays.
-	pkgver = 4.0.7
-	pkgrel = 2
+	pkgver = 4.0.8
+	pkgrel = 1
 	url = https://github.com/FGRibreau/mailchecker/
 	arch = any
 	license = MIT
 	makedepends = python-distribute
-	source = https://github.com/FGRibreau/mailchecker//archive/v4.0.7.tar.gz
-	sha256sums = 7ae8908b5bff1c2827058c9925fb4b38539d9c77bcfd902a3edfa4499574e82e
+	makedepends = nodejs
+	makedepends = npm
+	source = https://github.com/FGRibreau/mailchecker//archive/v4.0.8.tar.gz
+	sha256sums = a23b2d67be49a7bb50eb1ee026412634189150b01051550a6de382489da24590
 
 pkgname = python-mailchecker
-
+	depends = python-distribute
