@@ -4,10 +4,10 @@ pkgdesc="ROS - Xacro (XML Macros) Xacro is an XML macro language."
 url='https://wiki.ros.org/xacro'
 
 pkgname='ros-melodic-xacro'
-pkgver='1.13.10'
+pkgver='1.13.11'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -31,7 +31,7 @@ depends=(
 
 _dir="xacro-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/xacro/archive/${pkgver}.tar.gz")
-sha256sums=('ca898e80a2549349d10baa04175c67eec8b4f77e8b31399109d5716923170fc7')
+sha256sums=('d16c56d3400a281f0e038f18377ce02ff69d3344145a308664d55ae4f54e980a')
 
 build() {
 	# Use ROS environment variables.
