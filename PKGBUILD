@@ -29,14 +29,14 @@ _typescript="y" # If you enable both typescript and tern it will defaul to types
 _tern="n"       # Tern seems abandoned - consider moving to TSserver above (see project page)
 _java="y"
 
-_use_system_clang="OFF"
+_use_system_clang="ON"
 _use_system_abseil="OFF"
 _neovim="$NEOVIM_YOUCOMPLETEME"
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=vim-youcompleteme-git
-pkgver=r2812.ab73ca25
+pkgver=r2813.4df6f35f
 pkgrel=1
 pkgdesc='A code-completion engine for Vim'
 arch=('x86_64')
