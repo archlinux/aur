@@ -4,8 +4,8 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=wine-mono-bin
-pkgver=6.1.1
-pkgrel=2
+pkgver=6.2.0
+pkgrel=1
 pkgdesc="Wine's built-in replacement for Microsoft's .NET Framework"
 arch=('any')
 url="https://wiki.winehq.org/Mono"
@@ -20,4 +20,4 @@ package() {
   cp -dr --no-preserve='ownership' ${pkgname/-bin/}-$pkgver "$pkgdir"/usr/share/wine/mono/
 }
 
-sha512sums=('ecc2ab6875fffebc5e94c23fd04c84ce5550be65a7f5f1832d4c74a944680405c4cba28a59b7c362abb08d689e83f153543eb0ef375ec9b894295aba1eff99b1')
+sha512sums=('7e5ed7e4abf88d915d59715b107722135af08bb43e6356f9ae95fdafc539332150a82f85b67d15710ae4ece6c883733bab142f59894f70acd893cac85f6ca905')
