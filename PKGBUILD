@@ -1,6 +1,6 @@
 # Maintainer: Joe S <kenwood364@gmail.com>
 pkgname=bluecherry-client-git
-pkgver=2.2.8.r17.gd9d5744e
+pkgver=2.2.9.r0.gd9d5744e
 pkgrel=1
 pkgdesc="Bluecherry Client for use with a bluecherry DVR server."
 arch=(x86_64 i686)
