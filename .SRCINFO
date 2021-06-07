@@ -1,6 +1,6 @@
 pkgbase = hamlib-git-python3
 	pkgdesc = Ham radio equipment control libraries - compiled for Python3
-	pkgver = 781403fb
+	pkgver = 53476dd1
 	pkgrel = 1
 	url = http://hamlib.org
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = hamlib-git-python3
 	makedepends = automake
 	makedepends = libtool
 	makedepends = swig
+	makedepends = git
 	depends = tcl
 	depends = python
 	depends = libxml2
@@ -28,4 +29,3 @@ pkgbase = hamlib-git-python3
 	sha256sums = SKIP
 
 pkgname = hamlib-git-python3
-

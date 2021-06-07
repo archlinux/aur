@@ -7,14 +7,14 @@
 pkgname=hamlib-git-python3
 _pkgname=hamlib-git
 __pkgname=hamlib
-pkgver=781403fb
+pkgver=53476dd1
 pkgrel=1
 pkgdesc="Ham radio equipment control libraries - compiled for Python3"
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
 url="http://hamlib.org"
 license=('GPL' 'LGPL')
 depends=('tcl' 'python' 'libxml2' 'libusb')
-makedepends=('autoconf' 'automake' 'libtool' 'swig')
+makedepends=('autoconf' 'automake' 'libtool' 'swig' 'git')
 source=("$_pkgname::git+git://git.code.sf.net/p/$__pkgname/code")
 options=('!emptydirs')
 conflicts=('hamlib' 'hamlib-git')
