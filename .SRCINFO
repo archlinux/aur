@@ -1,5 +1,5 @@
 pkgbase = stillalive
-	pkgdesc = Log into GLaDOS to see the "still alive" message int realtime!
+	pkgdesc = Log into GLaDOS to see the "still alive" message in realtime!
 	pkgver = 1
 	pkgrel = 1
 	url = https://www.ffmpeg.org/
@@ -13,4 +13,3 @@ pkgbase = stillalive
 	sha256sums = ea98b0e4554f4ddc384845db60c53332b95b3f87ddd678236138b99f400c7e41
 
 pkgname = stillalive
-
