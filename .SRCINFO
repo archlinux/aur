@@ -1,0 +1,19 @@
+pkgbase = termius-snap
+	pkgver = 7.12.0
+	pkgrel = 1
+	arch = x86_64
+	license = custom
+	makedepends = squashfs-tools
+	depends = libnotify
+	depends = libappindicator-gtk3
+	depends = libxtst
+	depends = nss
+	depends = libxss
+	conflicts = termius
+	conflicts = termius-app
+	conflicts = termius-beta
+	source = termius.snap::https://api.snapcraft.io/api/v1/snaps/download/WkTBXwoX81rBe3s3OTt3EiiLKBx2QhuS_76.snap
+	sha512sums = 8e550e8bca0ba425cf5298ea9f3f7c4fa81635a8ceb2dae173437b85ca748f3996d6b5a469806d3d4611851bdfcb93586c4b631e49a891bfca6cf4f0664009ef
+
+pkgname = termius-snap
+
