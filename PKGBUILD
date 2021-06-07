@@ -2,15 +2,15 @@
 pkgbase=mse-mtg
 pkgname=("$pkgbase" "$pkgbase-new" "$pkgbase-m15")
 pkgver=2.0.0
-pkgrel=9
+pkgrel=10
 pkgdesc="Magic: the Gathering templates for Magic Set Editor."
 arch=(any)
 url="http://magicseteditor.sourceforge.net"
 license=('freeware')
 depends=('magicseteditor')
 conflicts=("mse-mtg-phyrexian" "magicseteditor-mtg-base")
-source=('http://downloads.sourceforge.net/project/msetemps/Magic%20-%20Recently%20Printed%20Styles.mse-installer'
-        'http://downloads.sourceforge.net/project/msetemps/Magic%20-%20Tarkir%20Update.mse-installer')
+source=('https://downloads.sourceforge.net/project/msetemps/Magic%20-%20Recently%20Printed%20Styles.mse-installer'
+        'https://downloads.sourceforge.net/project/msetemps/Magic%20-%20Tarkir%20Update.mse-installer')
 
 package_mse-mtg() {
 	pkgdesc="Magic: the Gathering base game and symbol fonts for Magic Set Editor."
@@ -40,5 +40,5 @@ package_mse-mtg-m15()
 }
 
 # vim:set ts=2 sw=2
-md5sums=('5ca37f7fb47fb10565b8a2c617d968e8'
-         '7bed025a7b878a3af060a9cb47139bb9')
+sha256sums=('a0a2c7821965134180fe096ed76ef56c5b7d14ecb2f003a919c2b3b3cd0ce0d3'
+            'e4e1d55fe5e8d884f7f676676b9fa1338bbcaf54e9fe0dac9502e49826f21c6f')
