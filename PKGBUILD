@@ -3,7 +3,7 @@
 # Contributor: Mamy Ratsimbazafy <mamy (dot) ratsimbazafy_pkgbuild {at} gadz {dot} org>
 
 pkgname=python-sklearn-pandas
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Pandas integration with scikit-learn'
 arch=(any)
@@ -17,7 +17,7 @@ depends=('python'
 makedepends=(python-setuptools)
 checkdepends=(python-pytest python-joblib)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('efae5ed3be80fee34608ab3b1705a07758711d462d534a4ab222cb2dd24a0f109d3007a15fc5ff9fedd2ebc2590af946ca6e8bfc7fe4bdca0b36833c237bca52')
+b2sums=('290c587a1d6a74ebf2046b7753143cfedfe498fdb5b8b7318aee96fc98b20c12410bf7f03feb7a86fa5351a0dd899f7dce44b13090f49755cf20c15fa14082aa')
 
 build() {
   cd "${srcdir}/sklearn-pandas-${pkgver}"
