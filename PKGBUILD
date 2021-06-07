@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=xplr-bin
-pkgver=0.8.4
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="A hackable, minimal, fast TUI file explorer"
 arch=('x86_64')
@@ -14,18 +14,18 @@ provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux.tar.gz"
                "$pkgname-$pkgver-LICENSE::$url/raw/v$pkgver/LICENSE"
                "$pkgname-$pkgver-README.md::$url/raw/v$pkgver/README.md"
-               "$pkgname-$pkgver-config.yml::$url/raw/v$pkgver/src/config.yml"
+               "$pkgname-$pkgver-init.lua::$url/raw/v$pkgver/src/init.lua"
                "$pkgname-$pkgver.desktop::$url/raw/v$pkgver/assets/desktop/${pkgname%-bin}.desktop")
-sha512sums_x86_64=('0d994dccd81032f25a90fc889581a63f0e8c0152bde521aec8e4589b342ef61bbb806106436f783fc986043f327f7a89832550de4a6289d24653649f03bbaeb9'
+sha512sums_x86_64=('871e5e242ac959d81024b253f626742baaf3e18cfab5b941634e995e782b35ac90e5f7c308a5ad9d54cf09fe7f043ef6010abf7d44726de9e8174bbc67d03a60'
                    '10d441de2060f413df1fd70ce44816a46eedaca9f3a672b38d2fabd99398158a115fafe137cbc5c1ba60791c89086946d978889f6d708f95aa5cb81f57d1143e'
-                   '627a13c5197ac7c14b419e7e08d50a9b642f2803568c649ed7ef747187665d3729bf4312e2cf325103a321e219a4c0e07a2efb81d69cd95d0cb87ddb84b85121'
-                   '043b910b988be18ec465dbce1895ef35f76d4220da38ce6d321c7354b382e0419f30587f7b95647f772fd7a0763639304359276a39dd79d507961bef7259088e'
+                   'b49f21580b69c4215d1d0595f533cb769b5b098099dcb468c67839d0638cbe99634acd5cbfe7e5ea8643ea6bfd2bf4d256fadfa67c9180d42c8bbe90c3f9fb6a'
+                   'bb774c85d736ed6dc21694f823eef427f28b1650efba5309be0033401bd57cf00c9719e5acf1c87a4c3e2ffb04f46c5fc8fb38272679ec2f27c205044b3794ce'
                    'a05e0cc83fdce3132a05928ab455f6ec8060ef81f6032270575d79188573c9af62863872a008c1b7b0ad7c9fdf1ce1dcf914c82224e275463f9b7bd4c3992a9a')
 
 package() {
   install -Dm 755 "${pkgname%-bin}" -t "${pkgdir}/usr/bin"
   install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm 644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm 644 "$pkgname-$pkgver-config.yml" "$pkgdir/usr/share/${pkgname%-bin}/examples/config.yml"
+  install -Dm 644 "$pkgname-$pkgver-init.lua" "$pkgdir/usr/share/${pkgname%-bin}/examples/init.lua"
   install -Dm 644 "$pkgname-$pkgver.desktop" "$pkgdir/usr/share/applications/${pkgname%-bin}.desktop"
 }
