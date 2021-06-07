@@ -402,8 +402,8 @@ _package() {
     optdepends=('crda: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
-    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
-    replaces=(virtualbox-guest-modules-arch wireguard-arch)
+    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE linux-cacule-rdb)
+
 
   cd $_srcname
   local kernver="$(<version)"
@@ -426,7 +426,7 @@ _package() {
 
 _package-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-    depends=('pahole')
+    depends=('linux-cacule-rdb''pahole')
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"

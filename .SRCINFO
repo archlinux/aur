@@ -79,9 +79,8 @@ pkgname = linux-cacule-rdb
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
-	replaces = virtualbox-guest-modules-arch
-	replaces = wireguard-arch
+	provides = linux-cacule-rdb
 
 pkgname = linux-cacule-rdb-headers
 	pkgdesc = Headers and scripts for building modules for the Linux-CacULE Kernel by Hamad Marri and with some other patchsets kernel
-	depends = pahole
+	depends = linux-cacule-rdbpahole
