@@ -51,7 +51,7 @@ pkgbase=linux-cacule-rdb-rc
 _major=5.13
 #_minor=1
 #_minorc=$((_minor+1))
-_rcver=rc4
+_rcver=rc5
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 _stablerc=${_major}-${_rcver}
@@ -66,29 +66,28 @@ makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
 _patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.12"
 _patchsource2="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.13"
-source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz"
-                     "https://git.kernel.org/torvalds/t/linux-5.13-rc4.tar.gz"
+source=("https://git.kernel.org/torvalds/t/linux-${_stablerc}.tar.gz"
                      "config"
                  #    "${_patchsource}/arch-patches-v3/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
                      "${_patchsource2}/cacule-patches/cacule-5.13.patch"
-                    "${_patchsource2}/cacule-patches/rdb-5.13.patch"
+                     "${_patchsource2}/cacule-patches/rdb-5.13.patch"
                      "${_patchsource2}/bbr2-5.13.patch"
                      "${_patchsource2}/bfq-5.13.patch"
                      "${_patchsource2}/ksm-5.13.patch"
                      "${_patchsource2}/cpu-5.13.patch"
                      "${_patchsource2}/fixes-5.13.patch"
                      "${_patchsource2}/zstd-5.13.patch"
+                     "${_patchsource2}/ntfs3-5.13.patch"
+                     "${_patchsource2}/v4l2loopback-5.13.patch"
                      "${_patchsource2}/futex/1001-futex-513-wait_multiple.patch"
                      "${_patchsource2}/misc/2002-tune-vm-mm-and-vfs-settings.patch"
                      "${_patchsource}/ll-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
                      "${_patchsource}/lru-gen/PATCH-v3-00-14-Multigenerational-LRU-Framework.patch"
-             #        "${_patchsource}/lrng/1004-dev-random-new-lrng-approach-v40.patch"
                      "${_patchsource}/ll-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
-      )
-
-sha512sums=('94ee9e59d4a3edcaf229c5ec29623302b50dd62d4ef8bdd91539cf0009f5a5fd13be629dbe78d004b016fec822c9e755898ea708fa33e1c74c54a650f64e030e'
-            '13e846acdb24a19e1834b62e81b144469ccfdb86cf37cb10febfaaf5052ba97db3f299feec50c935c8cb92f009ce2a40f482f3f9e54d5ccad171eb1f79402f81'
-            '0ca83b1c2d97dfa6f6498694266d3785e67d877a7b5abe66505f96b8f31cb62d93e719212d19bfef522826166f8c00719cfec442a128ca0d261761a75d334ea6'
+)
+sha512sums=('73f72ae0e8608f8d6b2e3d699f210e03f5e77b67b72ed5256226c92c93517514029c7c98d486ebe6842adc6195cb8bb6da752cfda33e1e01c825e589438ec578'
+            'a49537a61bd7ca80f456e0618f4c64630651efada8bcc68ee260461370e9638410b0a883e036a3e7777c841d585f91eea9a051e4c93d38b639ebebdff643cf4e'
+            '278e045dc5c5ec70087bbb14a4c7d7f2db6dd5bfd0a3f393c85e42a6847dcad2994473ecb3719fbea03261a574d56815d63623ea6c8e07f7afb2c948c87a5bc7'
             'bf184a096b72f6ba795dd42814d8f6b1b6ea50b6efdf24d172c2cf4f6228f626aaaf665c2cec0bbd9540e7acb46d977c35eda4e66fd475c63511ef534212391d'
             '7b4911737ef22cb1209ad88b894e20b6740ade7e6a44513c5d8555090df77f84d0aa5955b21cafaa6da26f0b7e92eaca60f92662f9e5ae8f3175f908fe416214'
             '2230a9158069302b63ea7ff7902a8115e6bfb478827550f2974d8e3ee590471a587040e15614ec775d04c5983e228864f2097e757a5b6260f89022db04eed66b'
@@ -96,6 +95,8 @@ sha512sums=('94ee9e59d4a3edcaf229c5ec29623302b50dd62d4ef8bdd91539cf0009f5a5fd13b
             '224fed8f664a779c66959766b15c74f11b13c5484e53ba372b5c12fc3b8885141d8dfdafdc0cd5003de130d7b63d6d786f468ca044ff522b640493a82dca27c4'
             '8646c34028a563ad4aa2f86c9c267a132504df43134ea804bc893545ac2b14eb805ee42b7954d554a4bd128a6e3a7cd5757c2d3eb7797944fbce7668bc06b37e'
             '962b0dd7be9e1298a7972680efba445061fa508bdb2d3777fb2b2e3636738654a4bd2e7dd02e7936129e536527145f906a388f65b2f25775ba9be351d1181b82'
+            '256bedd5de57a4638e8331b0adf01bd1784ed77c4965b2b26c6cdd9eb7db4e0636417d6e9312e57f3d2dd67253cb5e97a383a76f423b5043c51d5e88160a291c'
+            'dae7d3a868ca9061552e0a098b448d71f3bf842e3f40b58590d6f8dc4173feed55df6f25c8f71a65fde3478f7671c5a93e8cd0ce825509804c7684b7adf0ee15'
             'd8fbb667096a8d1d84db4d40c361bce5fc55e207c73fab266dba9033c6aff0cc0307c8a854c09fd2dabd99139ce640047bc87e0fd067d12ca1bd8f76f5d10ad3'
             'a5e9b9d6a08be2d6bc6b724176c207c052d2271b3b77885b8169ed02c608b89726ea8b3e9664c4bc4c85aab938e88c67fb15de42f9f9a649d54b466b473fcdc5'
             '47f265716ebd268e4296aaba1efe5098df00736b69ec7d0413cace6dbb5cb162c1c952f7527a2a41b246ed76e6e112514c5349e8dc52f4609def30257e18d7aa'
@@ -264,8 +265,8 @@ prepare() {
     scripts/config --enable CONFIG_NO_HZ
     scripts/config --enable CONFIG_NO_HZ_COMMON
     echo "Enabling KBUILD_CFLAGS -O3..."
-    scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
-    scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
+    scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
+    scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
     echo "Enable PREEMPT"
     scripts/config --disable CONFIG_PREEMPT_NONE
     scripts/config --disable CONFIG_PREEMPT_VOLUNTARY
@@ -299,7 +300,68 @@ prepare() {
     scripts/config --module CONFIG_VHBA
     scripts/config --disable CONFIG_BPF_PRELOAD
     scripts/config --disable CONFIG_GCC_PLUGINS
+    # General Setup
+    scripts/config --disable CONFIG_BSD_PROCESS_ACCT
+    scripts/config --disable CONFIG_TASK_XACCT
+    scripts/config --disable CONFIG_PSI
+    scripts/config --disable CONFIG_MEMCG
+    scripts/config --disable CONFIG_CGROUP_CPUACCT
+    scripts/config --disable CONFIG_CGROUP_DEBUG
+    scripts/config --disable CONFIG_CHECKPOINT_RESTORE
+    scripts/config --disable CONFIG_SLAB_MERGE_DEFAULT
+    scripts/config --disable CONFIG_SLAB_FREELIST_HARDENED
+    scripts/config --disable CONFIG_SLUB_CPU_PARTIAL
+    scripts/config --disable CONFIG_PROFILING
 
+    # Processor type and features
+    scripts/config --disable CONFIG_RETPOLINE
+    scripts/config --disable CONFIG_X86_5LEVEL
+    scripts/config --disable CONFIG_KEXEC
+    scripts/config --disable CONFIG_KEXEC_FILE
+    scripts/config --disable CONFIG_CRASH_DUMPs
+    scripts/config --disable CONFIG_KPROBES
+    # Kernel hacking
+    scripts/config --disable CONFIG_FTRACE
+    scripts/config --disable CONFIG_DEBUG_KERNEL
+    scripts/config --disable CONFIG_PAGE_EXTENSION
+    scripts/config --set-val CONFIG_RCU_CPU_STALL_TIMEOUT 4
+    scripts/config --disable CONFIG_PRINTK_TIME
+    scripts/config --disable CONFIG_DEBUG_INFO
+    scripts/config --disable CONFIG_ENABLE_MUST_CHECK
+    scripts/config --disable CONFIG_STRIP_ASM_SYMS
+    scripts/config --disable CONFIG_UNUSED_SYMBOLS
+    scripts/config --disable CONFIG_DEBUG_FS
+    scripts/config --disable CONFIG_OPTIMIZE_INLINING
+    scripts/config --disable CONFIG_DEBUG_SECTION_MISMATCH
+    scripts/config --disable CONFIG_SECTION_MISMATCH_WARN_ONLY
+    scripts/config --disable CONFIG_STACK_VALIDATION
+    scripts/config --disable CONFIG_DEBUG_FORCE_WEAK_PER_CPU
+    scripts/config --disable CONFIG_MAGIC_SYSRQ
+    scripts/config --disable CONFIG_MAGIC_SYSRQ_SERIAL
+    scripts/config --disable CONFIG_PAGE_EXTENSION
+    scripts/config --disable CONFIG_DEBUG_PAGEALLOC
+    scripts/config --disable CONFIG_PAGE_OWNER
+    scripts/config --disable CONFIG_DEBUG_MEMORY_INIT
+    scripts/config --disable CONFIG_HARDLOCKUP_DETECTOR
+    scripts/config --disable CONFIG_SOFTLOCKUP_DETECTOR
+    scripts/config --disable CONFIG_DETECT_HUNG_TASK
+    scripts/config --disable CONFIG_WQ_WATCHDOG
+    scripts/config --set-val CONFIG_PANIC_TIMEOUT 10
+    scripts/config --disable CONFIG_SCHED_DEBUG
+    scripts/config --disable CONFIG_SCHEDSTATS
+    scripts/config --disable CONFIG_SCHED_STACK_END_CHECK
+    scripts/config --disable CONFIG_STACKTRACE
+    scripts/config --disable CONFIG_DEBUG_BUGVERBOSE
+    scripts/config --set-val CONFIG_RCU_CPU_STALL_TIMEOUT 4
+    scripts/config --disable CONFIG_RCU_TRACE
+    scripts/config --disable CONFIG_FAULT_INJECTION
+    scripts/config --disable CONFIG_LATENCYTOP
+    scripts/config --disable CONFIG_PROVIDE_OHCI1394_DMA_INIT
+    scripts/config --disable RUNTIME_TESTING_MENU
+    scripts/config --disable CONFIG_MEMTEST
+    scripts/config --disable CONFIG_KGDB
+    scripts/config --disable CONFIG_EARLY_PRINTK
+    scripts/config --disable CONFIG_DOUBLEFAULT
 
 
 ### Optionally load needed modules for the make localmodconfig
