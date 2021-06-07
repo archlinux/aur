@@ -1,4 +1,4 @@
-# Maintainer: mutantmonkey <aur@mutantmonkey.in>
+# Maintainer: mutantmonkey <aur@mutantmonkey.mx>
 pkgname=onionlink
 pkgver=4.c26f0c0
 pkgrel=1
