@@ -1,8 +1,8 @@
 pkgbase = python-pykeepass-git
 	pkgdesc = Low-level library to interact with keepass databases
-	pkgver = 3.0.2
+	pkgver = 3.2.1.r36.gfa6f608
 	pkgrel = 1
-	url = https://github.com/pschmitt/pykeepass
+	url = https://github.com/libkeepass/pykeepass
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
@@ -16,8 +16,8 @@ pkgbase = python-pykeepass-git
 	depends = python-markupsafe
 	depends = python-pycparser
 	provides = python-pykeepass
-        conflicts = python-pykeepass
-	source = git+https://github.com/pschmitt/pykeepass.git
+	conflicts = python-pykeepass
+	source = git+https://github.com/libkeepass/pykeepass.git
 	sha512sums = SKIP
 
 pkgname = python-pykeepass-git
