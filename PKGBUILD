@@ -1,5 +1,6 @@
-# Maintainer: Jan Ole Zabel <joz@spline.de>
-# This package is not maintained by the author himself.
+# Author of software: jedisct1
+# Maintainer of this package: Jan Ole Zabel <joz@spline.de>
+# Package contributor: mys_721tx
 pkgname=doh-proxy
 reponame=doh-server
 pkgver=0.4.0
