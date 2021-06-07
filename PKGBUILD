@@ -2,7 +2,7 @@
 
 pkgname=onvifviewer
 pkgver=0.13
-pkgrel=1
+pkgrel=2
 pkgdesc='ONVIF camera viewer for Plasma Mobile and Linux desktop'
 arch=(x86_64)
 license=('GPL3')
@@ -26,7 +26,7 @@ makedepends=(
 )
 source=("https://gitlab.com/caspermeijn/onvifviewer/-/archive/v${pkgver}/onvifviewer-v${pkgver}.tar.gz")
 
-sha256sums=('12bc6ff65d93289632aa1fd3dfb862c2fed9792f31092aba63e5b3bf985d52ea')
+sha256sums=('3a55022f59a9a8c3ccacc6bb8d7f7e329157c3034001c528530751ae7cb2cad2')
 
 build() {
   cd "onvifviewer-v${pkgver}"
