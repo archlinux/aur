@@ -2,8 +2,8 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=activemq
-pkgver=5.16.1
-pkgrel=2
+pkgver=5.16.2
+pkgrel=1
 pkgdesc="Popular and powerful open source messaging and Integration Patterns provider"
 arch=('x86_64')
 url="https://downloads.apache.org"
@@ -24,6 +24,6 @@ package() {
     ln -s /opt/activemq/apache-${pkgname}-${pkgver} ${pkgdir}/opt/${pkgname}/current
 }
 
-md5sums=('8565fc73bf942e6afea8ebed5ef092d6'
-         '702b858fdb54ff2ba26f25758c01bc3b'
-         '4f4459a36f94a0ffdaf4c8bca762cf81')
+sha256sums=('212feca1ee4bc750befd45a735cbfef00c0c9aee451ef5116e991330c1ab105b'
+            '8a3dbf1130cb66beef6d5bb84636594bbd090663e4ccca5214c8269e0c8a6e1f'
+            '3898131d4c696828dd2cca793907417db9471ad6bf9c8014d25a4995796daff7')
