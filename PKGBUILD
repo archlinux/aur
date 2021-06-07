@@ -5,20 +5,18 @@ _pkgname='denise'
 pkgdesc='Highly accurate C64/Amiga emulator - binary releases'
 url='https://sourceforge.net/projects/deniseemu/'
 license=('GPL')
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 _filename="${_pkgname}_linux_v${pkgver}"
-source=("https://sourceforge.net/projects/deniseemu/files/v%20${pkgver}/${_filename}.tar.gz"
-        "desktop_patch.patch")
-md5sums=('c134d8c906eedace5a29e178428b3607'
-         'a519d9cac23e85585091505bdad78839')
+source=("https://sourceforge.net/projects/deniseemu/files/v%20${pkgver}/${_filename}.tar.gz")
+md5sums=('c134d8c906eedace5a29e178428b3607')
 provides=('denise')
 conflicts=('denise-git' 'denise')
 depends=('sdl2' 'gtk3')
 arch=('i686' 'x86_64')
 
 prepare() {
-  patch --binary -Np1 -i desktop_patch.patch
+  sed -i 's/Exec=Denise/Exec=denise/g' "$srcdir/$_filename/data/denise.desktop"
 }
 package() {
   cd "$srcdir/$_filename"
@@ -40,4 +38,3 @@ package() {
   install -Dm644 img/startscreen.png $pkgdir/usr/lib/$_pkgname/img/
   cp -r shader $pkgdir/usr/lib/$_pkgname/
 }
-

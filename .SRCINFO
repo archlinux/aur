@@ -1,6 +1,6 @@
 pkgbase = denise-bin
 	pkgdesc = Highly accurate C64/Amiga emulator - binary releases
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://sourceforge.net/projects/deniseemu/
 	arch = i686
@@ -11,10 +11,7 @@ pkgbase = denise-bin
 	provides = denise
 	conflicts = denise-git
 	conflicts = denise
-	source = https://sourceforge.net/projects/deniseemu/files/v%201.1.0/denise_linux_v1.1.0.tar.gz
-	source = desktop_patch.patch
+	source = https://sourceforge.net/projects/deniseemu/files/v%201.1.1/denise_linux_v1.1.1.tar.gz
 	md5sums = c134d8c906eedace5a29e178428b3607
-	md5sums = a519d9cac23e85585091505bdad78839
 
 pkgname = denise-bin
-
