@@ -3,7 +3,7 @@
 _perlmod='Prometheus-Tiny'
 _modnamespace=Prometheus
 pkgname=perl-prometheus-tiny
-pkgver=0.005
+pkgver=0.007
 pkgrel=1
 pkgdesc="A tiny Prometheus client"
 arch=("any")
@@ -13,7 +13,7 @@ depends=('perl')
 checkdepends=('perl-plack')
 options=('!emptydirs')
 source=("http://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz")
-sha256sums=('1b43af4dd3fbc40f036696631330d9b4fb1ca9d06151d0ad6d877ac6e247d2b8')
+sha256sums=('0ef8b226a2025cdde4df80129dd319aa29e884e653c17dc96f4823d985c028ec')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
