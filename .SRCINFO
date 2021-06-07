@@ -1,7 +1,7 @@
 pkgbase = ucommon
 	pkgdesc = GNU Common C++ is a class framework that was specifically designed for telephony applications.
 	pkgver = 7.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnu.org/software/commoncpp/
 	arch = i686
 	arch = x86_64

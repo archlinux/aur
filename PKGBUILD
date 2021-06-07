@@ -4,7 +4,7 @@
 
 pkgname=ucommon
 pkgver=7.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='GNU Common C++ is a class framework that was specifically designed for telephony applications.'
 arch=('i686' 'x86_64')
 url='https://www.gnu.org/software/commoncpp/'
