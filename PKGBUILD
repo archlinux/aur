@@ -6,11 +6,13 @@ pkgrel=1
 pkgbase=bash-fuzzy-clock-git
 pkgdesc="Script to display the time in natural language. Translated to six languages"
 replaces=('bash-fuzzy-clock')
+conflicts=('bash-fuzzy-clock')
 arch=('any')
 url="https://github.com/coreymwamba/bash-fuzzy-clock"
 license=('OSL')
 makedepends=('git')
 depends=('bash')
+
 source=('git://github.com/coreymwamba/bash-fuzzy-clock')
 md5sums=('SKIP')
 pkgver() {
