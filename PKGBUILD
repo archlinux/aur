@@ -14,7 +14,6 @@ sha512sums=('bb71fbc40d86bb1b635318c994e35535c58a333d10faa41b663e289e91a4e006322
 
 build() {
 	cd "doh-server-$pkgver"
-	cargo update
 	cargo build --release
 }
 
