@@ -7,7 +7,7 @@
 
 _pkgname=elinks
 pkgname=${_pkgname}-git
-pkgver=v0.14.0.r49.gf351fbcf
+pkgver=v0.14.1.r0.g9e0c85e5
 pkgrel=1
 pkgdesc="An advanced and well-established feature-rich text mode web browser. Git version."
 arch=("i686" "x86_64")
@@ -16,7 +16,7 @@ provides=(${_pkgname})
 license=('GPL')
 conflicts=(${_pkgname})
 depends=('bzip2' 'expat>=2.0' 'gpm>=1.20.4' 'openssl' 'lua51' 'libidn' 'gc' 'tre' 'zlib')
-source=("git+https://github.com/rkd77/elinks")
+source=("git+https://github.com/rkd77/elinks#branch=elinks-0.14")
 md5sums=('SKIP')
 
 pkgver() {
