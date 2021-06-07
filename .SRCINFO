@@ -1,0 +1,20 @@
+pkgbase = coreboot-configurator-git
+	pkgdesc = Graphical user interface to configure Starlabs Systems Labtop series
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/StarLabsLtd/coreboot-configurator
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-quickcontrols
+	makedepends = inkscape
+	makedepends = meson
+	depends = nvramtool-corevantage-git
+	depends = qt5-base
+	depends = hicolor-icon-theme
+	provides = coreboot-configurator
+	conflicts = coreboot-configurator
+	source = git+https://github.com/StarLabsLtd/coreboot-configurator.git
+	sha256sums = SKIP
+
+pkgname = coreboot-configurator-git
