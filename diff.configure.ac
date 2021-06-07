@@ -1,0 +1,60 @@
+--- configure.ac.org	2021-02-25 13:17:39.000000000 -0700
++++ configure.ac	2021-06-07 07:02:11.481650059 -0600
+@@ -186,32 +186,32 @@
+ LIBZIA_CFLAGS=$zia_CFLAGS
+ LIBZIA_LIBS=$zia_LIBS
+ 
+-if test -d "../libzia"; then
+-    echo "existuje ../libzia"
+-    tucnak_libzia_ver="$(sh ../libzia/bin/zia-config --version) in $(readlink -f ../libzia/bin/zia-config)"
+-    tucnak_libzia_settings="../libzia/settings"
+-    LIBZIA_CFLAGS="$(bash ../libzia/bin/zia-config --cflags2) -I$(readlink -f ../libzia/include) -I$(readlink -f ../libzia/include/unix)"
+-    LIBZIA_LIBS="-L$(readlink -f ../libzia/src/.libs) -Wl,-Bstatic -lzia -Wl,-Bdynamic $(bash ../libzia/bin/zia-config --libs2)"
+-    AC_MSG_RESULT([yes; static in ../libzia/src])
+-else
+-    echo "neexistuje ../libzia"
++#if test -d "../libzia"; then
++#    echo "existuje ../libzia"
++#    tucnak_libzia_ver="$(sh ../libzia/bin/zia-config --version) in $(readlink -f ../libzia/bin/zia-config)"
++#    tucnak_libzia_settings="../libzia/settings"
++#    LIBZIA_CFLAGS="$(bash ../libzia/bin/zia-config --cflags2) -I$(readlink -f ../libzia/include) -I$(readlink -f ../libzia/include/unix)"
++#    LIBZIA_LIBS="-L$(readlink -f ../libzia/src/.libs) -Wl,-Bstatic -lzia -Wl,-Bdynamic $(bash ../libzia/bin/zia-config --libs2)"
++#    AC_MSG_RESULT([yes; static in ../libzia/src])
++#else
++#    echo "neexistuje ../libzia"
++#
++#    if test x"$libzia_via_pkg" = x"1"; then
++#        tucnak_libzia_ver="$($PKG_CONFIG --modversion 'libzia') via pkg-config in $($PKG_CONFIG --variable=prefix 'libzia')"
++#        tucnak_libzia_settings="$(zia-config --prefix)/share/libzia/$target/settings"
++#        LIBZIA_CFLAGS=$($PKG_CONFIG --cflags 'libzia') 
++#        LIBZIA_LIBS=$($PKG_CONFIG --libs 'libzia') 
++#        AC_MSG_RESULT([yes  dynamic in $($PKG_CONFIG --variable=prefix 'libzia')])
++#    else
++#        AC_MSG_ERROR([no  libzia not found via pkg-config])
++#    fi    
+ 
+-    if test x"$libzia_via_pkg" = x"1"; then
+-        tucnak_libzia_ver="$($PKG_CONFIG --modversion 'libzia') via pkg-config in $($PKG_CONFIG --variable=prefix 'libzia')"
+-        tucnak_libzia_settings="$(zia-config --prefix)/share/libzia/$target/settings"
+-        LIBZIA_CFLAGS=$($PKG_CONFIG --cflags 'libzia') 
+-        LIBZIA_LIBS=$($PKG_CONFIG --libs 'libzia') 
+-        AC_MSG_RESULT([yes  dynamic in $($PKG_CONFIG --variable=prefix 'libzia')])
+-    else
+-        AC_MSG_ERROR([no  libzia not found via pkg-config])
+-    fi    
+-
+-#    tucnak_libzia_ver="$(zia-config --version) $(which zia-config)"
+-#    tucnak_libzia_settings="$(zia-config --prefix)/share/libzia/settings"
+-#    LIBZIA_CFLAGS="$(zia-config --cflags)"
+-#    LIBZIA_LIBS=$(zia-config --libs)
+-#    AC_MSG_RESULT([yes; dynamic in $(zia-config --prefix)])
+-fi
++    tucnak_libzia_ver="$(zia-config --version) $(which zia-config)"
++    tucnak_libzia_settings="$(zia-config --prefix)/share/libzia/settings"
++    LIBZIA_CFLAGS="$(zia-config --cflags)"
++    LIBZIA_LIBS=$(zia-config --libs)
++    AC_MSG_RESULT([yes; dynamic in $(zia-config --prefix)])
++#fi
+ 
+ echo "LIBZIA_CFLAGS='$LIBZIA_CFLAGS'"
+ echo "LIBZIA_LIBS='$LIBZIA_LIBS'"
