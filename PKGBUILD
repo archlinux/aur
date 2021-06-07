@@ -1,7 +1,7 @@
 # Maintainer: Mads Kjeldgaard <mail@madskjeldgaard.dk>
 pkgname=flucoma-cli-git
-pkgver=r106.5b49c0a
-pkgrel=1
+pkgver=r128.940a7fa
+pkgrel=2
 pkgdesc="Fluid Corpus Manipulation Command line interface"
 arch=('x86_64')
 url="https://github.com/flucoma/flucoma-cli"
@@ -34,21 +34,8 @@ build() {
 package() {
 	cd "$srcdir/${pkgname}"
 
-	install -Dm755 ./bin/fluid-ampgate "$pkgdir/usr/bin/fluid-ampgate"
-	install -Dm755 ./bin/fluid-ampslice "$pkgdir/usr/bin/fluid-ampslice"
-	install -Dm755 ./bin/fluid-hpss "$pkgdir/usr/bin/fluid-hpss"
-	install -Dm755 ./bin/fluid-loudness "$pkgdir/usr/bin/fluid-loudness"
-	install -Dm755 ./bin/fluid-melbands "$pkgdir/usr/bin/fluid-melbands"
-	install -Dm755 ./bin/fluid-mfcc "$pkgdir/usr/bin/fluid-mfcc"
-	install -Dm755 ./bin/fluid-nmf "$pkgdir/usr/bin/fluid-nmf"
-	install -Dm755 ./bin/fluid-noveltyslice "$pkgdir/usr/bin/fluid-noveltyslice"
-	install -Dm755 ./bin/fluid-onsetslice "$pkgdir/usr/bin/fluid-onsetslice"
-	install -Dm755 ./bin/fluid-pitch "$pkgdir/usr/bin/fluid-pitch"
-	install -Dm755 ./bin/fluid-sines "$pkgdir/usr/bin/fluid-sines"
-	install -Dm755 ./bin/fluid-spectralshape "$pkgdir/usr/bin/fluid-spectralshape"
-	install -Dm755 ./bin/fluid-stats "$pkgdir/usr/bin/fluid-stats"
-	install -Dm755 ./bin/fluid-transients "$pkgdir/usr/bin/fluid-transients"
-	install -Dm755 ./bin/fluid-transientslice "$pkgdir/usr/bin/fluid-transientslice"
-
+	# Install binaries
+	for F in $(ls bin); do install -Dm755 "bin/$F"  "$pkgdir/usr/bin/$F"; done
+	# for F in $(ls docs); do install -Dm644 "docs/$F"  "$pkgdir/usr/share/doc/$pkgname/$F"; done
 	install -Dm644 ./LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

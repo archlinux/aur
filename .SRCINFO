@@ -1,7 +1,7 @@
 pkgbase = flucoma-cli-git
 	pkgdesc = Fluid Corpus Manipulation Command line interface
-	pkgver = r106.5b49c0a
-	pkgrel = 1
+	pkgver = r128.940a7fa
+	pkgrel = 2
 	url = https://github.com/flucoma/flucoma-cli
 	arch = x86_64
 	license = BSD
