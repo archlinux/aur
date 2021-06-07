@@ -11,25 +11,25 @@
 # against Tectonic if the settings in this file need changing.
 
 pkgname=tectonic
-pkgver=0.5.0
-pkgrel=0
-arch=('x86_64')
+pkgver=0.5.1
+pkgrel=1
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 pkgdesc='Modernized, complete, self-contained TeX/LaTeX engine, powered by XeTeX and TeXLive'
 url=https://tectonic-typesetting.github.io/
 license=('MIT')
 depends=('fontconfig' 'harfbuzz-icu' 'openssl')
-makedepends=('rust' 'gcc' 'pkg-config')
+makedepends=('cargo' 'pkg-config')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha512sums=('9fb8ac27ba1ea22a635cf7926859974d202d047cd503c086ab2f5f4b5045b97b730b975500bd90cedb0e5dbdadda21e32be12b3e586536fb0f02d95e4752eaa3')
+sha512sums=('f0493725f4355bd94176122990bcbd8b4362506a4353aca28157b1ad8f960df555ba70681a3edbbcaa08c3d20a9c5f340b6800c9857da3c6546487c21812cfce')
 
 build() {
 	cd $pkgname-$pkgver
-	cargo build --release
+	cargo build --release --locked --features external-harfbuzz
 }
 
 check() {
 	cd $pkgname-$pkgver
-	cargo test --release
+	cargo test --release --locked --features external-harfbuzz
 }
 
 package() {
