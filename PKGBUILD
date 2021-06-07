@@ -1,7 +1,7 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=compton-old-git
-pkgver=r436.316eac0
+pkgver=r437.1765c9d
 pkgrel=1
 pkgdesc='Old version of compton, before the picom fork, avoids some regressions'
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('git' 'asciidoc')
 conflicts=(compton)
 provides=(compton)
-source=('git+https://github.com/chjj/compton.git')
+source=('git+https://github.com/sandsmark/compton.git')
 md5sums=('SKIP')
 
 pkgver() {
