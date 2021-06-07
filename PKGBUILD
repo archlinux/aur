@@ -2,20 +2,20 @@
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 
 pkgname=photoqt
-pkgver=2.1.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="Fast and highly configurable image viewer with a simple and nice interface."
 arch=('x86_64')
 url="http://photoqt.org/"
 license=('GPL2')
 depends=('exiv2' 'graphicsmagick' 'qt5-imageformats' 'qt5-multimedia' 'qt5-svg' 'qt5-quickcontrols' 'libraw' 'qt5-graphicaleffects' 'hicolor-icon-theme' 'libarchive' 'kimageformats' 'pugixml')
-# 'freeimage' 'devil-ilut' 'poppler-qt5'
-# to use ImageMagick instead of GraphicsMagick replace it in the depends array above
+# To use ImageMagick instead of GraphicsMagick replace it in the depends array above
+# These dependencies are disabled in the cmake call below: 'freeimage' 'devil-ilut' 'poppler-qt5'
 optdepends=('libqpsd-git: PSB/PSD support'
             'xcftools: XCF support')
 makedepends=('cmake' 'qt5-tools' 'extra-cmake-modules')
 source=(https://photoqt.org/downloads/source/$pkgname-$pkgver.tar.gz)
-sha256sums=('7d54891d55690b6eaee3c8f8a0a920a589504cdeee5c17d210994fee626879ab')
+sha256sums=('34c29dae8189294e3673867c52fc9b9da983de82cb2d6eba6ba1dfe6838e8845')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-  make -j3
+  make
 }
 
 package() {
