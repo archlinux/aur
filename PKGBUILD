@@ -2,8 +2,8 @@
 
 _name=FoxDot
 pkgname=foxdot
-pkgver=0.8.11
-pkgrel=2
+pkgver=0.8.12
+pkgrel=1
 pkgdesc="Live Coding with Python"
 arch=('any')
 url="https://foxdot.org"
@@ -16,7 +16,8 @@ optdepends=('sc3-plugins: use additional UGens')
 # pypi sdist doesn't contain tests: https://github.com/Qirky/FoxDot/issues/188
 # source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${_name}-${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Qirky/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('4f1bea5839ac14509dccad395054325f6fce0354ff012d9948800f4cddd08f5d4da29cfc009de42c785d7969fbda215530e9fba3c41d80d68c042d6daf6baa4d')
+sha512sums=('d0b59bb117871ba5a785c2ab3ce83048a6649f02e8d07f1248432868ec49262bcd44fdf98dc5cb2694e1f8a9b38d76c2ac111c21708ef43fda7ce0d4d8471d64')
+b2sums=('38bd7781daabb4abe3385444fcb254d36a24c532de789fc86063f35ddaacba8092e65bbf4e8b1eb62aff02f2705b35284fcebdfdacca5b0ad5260ffff7293989')
 
 prepare() {
   mv -v "${_name}-$pkgver" "$pkgname-$pkgver"
