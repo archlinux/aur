@@ -1,6 +1,6 @@
 # Maintainer: Tomasz Paś <t.pas93 at gmail>
 pkgname=alvr-git
-pkgver=r1466.ab9f6eb7
+pkgver=r1467.540d14f6
 pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/alvr-org/ALVR"
 license=('MIT')
 groups=()
 depends=('libunwind' 'vulkan-icd-loader' 'vulkan-driver')
-makedepends=('git' 'rust')
+makedepends=('git' 'rust' 'vulkan-headers')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('alvr'::'git+https://github.com/alvr-org/ALVR.git')
