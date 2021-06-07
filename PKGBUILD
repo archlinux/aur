@@ -51,7 +51,7 @@ _major=5.12
 _minor=9
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
@@ -64,13 +64,13 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 _aufs_path="aufs-patches"
 _aufs_ver="20210517"
 _aufs_patch="0001-aufs-${_aufs_ver}.patch"
-_gcc_path="cpu-patches-v3-sep"
-_gcc_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
+_compiler_path="cpu-patches-v3-sep"
+_compiler_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_aufs_path}/${_aufs_patch}"
-        "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
+        "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
         "${_lucjanpath}/arch-patches-v6/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
         'config')
