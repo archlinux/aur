@@ -13,7 +13,7 @@
 
 pkgname=libreoffice-fresh-rpm
 pkgver=7.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Libre Office Suite installed from rpms"
 arch=('x86_64')
 url='https://www.libreoffice.org'
