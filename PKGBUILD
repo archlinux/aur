@@ -1,7 +1,7 @@
 # Maintainer: GI Jack <GI_Jack@hackermail.com>
 
 pkgname=gosecretsdump
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Go Prog to dump windows passwords from ntds.dit and SAM/system files"
 arch=('x86_64' 'i686' 'pentium4')
@@ -9,7 +9,7 @@ url="https://github.com/C-Sto/gosecretsdump"
 license=('unknown')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/C-Sto/gosecretsdump/archive/v${pkgver}.tar.gz")
-sha256sums=('d0b4ff67d9b8e53b2fa40535ed26dca9e6de255bcc11ae37e0b3f761b63dfb6d')
+sha256sums=('7e695e664d95eda72d1442ef3355869f7e5d3ec9e6b2b63affd16b118178173e')
 
 build() {
   cd "${pkgname}-${pkgver}"
