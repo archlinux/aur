@@ -6,12 +6,12 @@ pkgname=pacman-static
 pkgver=5.2.2
 _cares_ver=1.17.1
 _nghttp2_ver=1.43.0
-_curlver=7.76.0
+_curlver=7.77.0
 _sslver=1.1.1k
 _zlibver=1.2.11
 _xzver=5.2.5
 _bzipver=1.0.8
-_zstdver=1.4.9
+_zstdver=1.5.0
 _libarchive_ver=3.5.1
 _gpgerrorver=1.42
 _libassuanver=2.5.5
@@ -50,7 +50,8 @@ validpgpkeys+=('3690C240CE51B4670D30AD1C38EE757D69184620') # Lasse Collin <lasse
 source+=("https://sourceware.org/pub/bzip2/bzip2-${_bzipver}.tar.gz"{,.sig})
 validpgpkeys+=('EC3CFE88F6CA0788774F5C1D1AA44BE649DE760A') # Mark Wielaard <mark@klomp.org>
 # zstd
-source+=("https://github.com/facebook/zstd/releases/download/v${_zstdver}/zstd-${_zstdver}.tar.zst")
+source+=("https://github.com/facebook/zstd/releases/download/v${_zstdver}/zstd-${_zstdver}.tar.zst"{,.sig})
+validpgpkeys+=('4EF4AC63455FC9F4545D9B7DEF8FE99528B52FFD') # Zstandard Release Signing Key <signing@zstd.net>
 # libgpg-error
 source+=("https://gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-${_gpgerrorver}.tar.bz2"{,.sig})
 validpgpkeys+=('6DAA6E64A76D2840571B4902528897B826403ADA'  # "Werner Koch (dist signing 2020)"
@@ -68,7 +69,7 @@ sha512sums=('1f9c569fb9cfe90afeeb7e3715bfa821ec4c57fdbbd7e09cd1e2519fad1a555b2f5
             'eac69ba356870a1cba420a06771082897be8dd40a68f4e04223f41f3d22626e4f5b3766d3dbcc496dd212be01f64c3ac280a2ebddd31dd88f7350c20f56e5d39'
             'b11887bcc9274d368088e1a8b6aca62414f20675cf0bc58e948f54fa04c327c39dd23cefe7509eec6397db14b550a3f6b77f5c18b3d735b3eef48ce2da1dcd00'
             'SKIP'
-            'f074e9315739bb05fc194ef66b154912620df3ddec11c01ded8f2ecde08875006418a716919dafe5001256f912c07e5576072e1df9a683f91cd3bc8143c6f054'
+            'cacd85eb9b2ad90f59595b497035f4660b6c5cff2d653da939c9ceac6dd8dd4bc7bdcb2dfd251862af0c29b9299312bf7271ed0249734fca979c9588799635d6'
             'SKIP'
             '73cd042d4056585e5a9dd7ab68e7c7310a3a4c783eafa07ab0b560e7462b924e4376436a6d38a155c687f6942a881cfc0c1b9394afcde1d8c46bf396e7d51121'
             'SKIP'
@@ -79,7 +80,8 @@ sha512sums=('1f9c569fb9cfe90afeeb7e3715bfa821ec4c57fdbbd7e09cd1e2519fad1a555b2f5
             'SKIP'
             '083f5e675d73f3233c7930ebe20425a533feedeaaa9d8cc86831312a6581cefbe6ed0d08d2fa89be81082f2a5abdabca8b3c080bf97218a1bd59dc118a30b9f3'
             'SKIP'
-            'e157cfcac64f5b86b4ddeefa7bfef1f721d3e74467459509794f43630e474976cae29f63a1aac73eca8f047d8b821a8265f8ceb646524fa66887def89629b69c'
+            '071b4596afbb290fdfab0021b1ddda3e24f508680c643259ced683ec4685fca186f6c9c111097594d2d2911976df1a2f92a321ae71a0d5b9734c9f8e2c1bff76'
+            'SKIP'
             'f6d95712a874edefc39a7746062c8037a62801a550560c5b2eab08b5b86987c1de5be60eba5fcb56d35a37db109aa32d07b7eff2bb99800c1c47d2227421a8f4'
             'SKIP'
             '70117f77aa43bbbe0ed28da5ef23834c026780a74076a92ec775e30f851badb423e9a2cb9e8d142c94e4f6f8a794988c1b788fd4bd2271e562071adf0ab16403'
@@ -93,7 +95,7 @@ b2sums=('14896b3911f851f66b93443fe29eca9ffe21a73698ce7844a7924450c0399ce71d03884
         '0e6c674486c484558a55822501a13ac93c4e890cf62749bc8519690f468912701329b7b9e83b0b68c3f35b72442b1ed47a90050cccd3fc05d79622e1e26634dc'
         '31dac21ecae231e2a201dc1ba954c1a0663a06f93eb8e7e033ca3c6d385f53e07af0b04854739f1ee8a7f0693f67f620143e152ef092b49342c62279a0480905'
         'SKIP'
-        '960b504ec084a75fa4ee8949b125198ea0da4bf62452d3861ee004ea6ab18ca6aa3ca572163004d3dd7b15b691eb132fb16f7ec8c400d7de6d8fac232a1a4e03'
+        'b75e0de2f4134444d62c4495e11045181bb10624c0b48efcfdd45d18749936293b9f1b1f3b59b7c80e997d144a6be266b3cd945a147281a193aa040b6995e6be'
         'SKIP'
         'e9bd90f17bc819c4960d07bbee04346e8a7adb87a764a09d033ef76f1d638c67b180c4f2beb84ec25fbff54ccc9c14c13b9b16a27cac231a5dd22b02635d5cec'
         'SKIP'
@@ -104,7 +106,8 @@ b2sums=('14896b3911f851f66b93443fe29eca9ffe21a73698ce7844a7924450c0399ce71d03884
         'SKIP'
         '22ab3acd84f4db8c3d6f59340c252faedfd4447cea00dafbd652e65b6cf8a20adf6835c22e58563004cfafdb15348c924996230b4b23cae42da5e25eeac4bdad'
         'SKIP'
-        '01a5dedf211c8f136ed4d1a736a2de08329bfdd35b31c585c0a39c32c09c88f8eea9dff0cc646d7d40948b4837ad36a5380fb09cdbea1d05eccf7ffa403649ce'
+        'cfea18b2347bf893d9bd461e57113d0a141040a1f7a42db6221ed9662f84023f45b058df3382cc06d82596f8eb98e0806f3abe1e79155fafd46da2a8b746bfbe'
+        'SKIP'
         'eb3381ec7106cfe5dca333391f473e97b03df83f247d3067e9f933ed7206f826e59d2b74b8c28d41e785ffe1c2980b680470064eb2fa2ff1ee3d8fa8be5b81a8'
         'SKIP'
         '24952e97c757b97c387ab4c2c4bf7b040f2874e9326c129805c7f5326fa14d80e083b0842e336a635531a2c8d4a66d428c816bae6b175f1c4518add1ffa3554d'
@@ -235,7 +238,7 @@ build() {
                 --disable-{dict,gopher,imap,imaps,ldap,ldaps,manual,pop3,pop3s,rtsp,scp,sftp,smb,smbs,smtp,smtps,telnet,tftp} \
                 --without-{brotli,libidn2,librtmp,libssh2} \
                 --disable-libcurl-option \
-                --with-ssl \
+                --with-openssl \
                 --enable-ares="${srcdir}"/temp/usr
     make -C lib
     make install-pkgconfigDATA
