@@ -1,7 +1,7 @@
 # Maintainer: Alexander Bocken <alexander@bocken.org>
 pkgname=threadwatcher
 pkgver=r7.c044a74
-pkgrel=1
+pkgrel=2
 pkgdesc="Keep a list of 4chan threads to watch over and continually download media from"
 arch=(any)
 depends=(
@@ -24,9 +24,9 @@ pkgver() {
 }
 package() {
 	#Update from old urlfile location to new
-	THREADWATCHER_DIR_OLD=${XDG_DATA_HOME:-$HOME/.local/share}/threadwatcher
+	THREADWATCHER_DIR_OLD=${XDG_DATA_HOME:-$HOME/.local/share}/4chan_watcher
 	THREADWATCHER_DIR=${XDG_DATA_HOME:-$HOME/.local/share}/threadwatcher
-	[ -d "$THREADWATCHER_DIR_OLD" ] && mv "$THREADWATCHER_DIR_OLD" -T "$THREADWATCHER_DIR"
+	[ -d "$THREADWATCHER_DIR_OLD" ] && mv -f "$THREADWATCHER_DIR_OLD" -T "$THREADWATCHER_DIR"
 	#create urlfile location
 	[ -d "$THREADWATCHER_DIR" ] || mkdir -p "$THREADWATCHER_DIR"
 	cd "$srcdir/$pkgname"

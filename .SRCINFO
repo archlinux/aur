@@ -1,7 +1,7 @@
 pkgbase = threadwatcher
 	pkgdesc = Keep a list of 4chan threads to watch over and continually download media from
 	pkgver = r7.c044a74
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AlexBocken/threadwatcher
 	arch = any
 	license = AGPL3
