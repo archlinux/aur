@@ -32,6 +32,6 @@ build() {
 } 
 
 package(){
-  false 
+  true 
 }
 
