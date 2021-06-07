@@ -1,9 +1,9 @@
 post_install() {
-	echo "  To let threadwatcher automatically scan for new files, consider using a cronjob such as"
-	echo "  */10 * * * * /usr/bin/threadwatcher scan"
+	echo " To let threadwatcher automatically scan for new files, consider using a cronjob such as"
+	echo " */10 * * * * /usr/bin/threadwatcher scan"
 }
 post_remove() {
-	echo "  urlfile (default  location .local/share/threadwatcher/threads) has not been removed."
-	echo "  please remove the dir manually if you wish to do so"
-	echo "  ( rm -rf ${XDG_DATA_HOME:-$HOME/.local.share}/threadwatcher/ )"
+	echo " urlfile (default location .local/share/threadwatcher/threads) has not been removed."
+	echo " please remove the dir manually if you wish to do so"
+	echo " ( rm -rf \${XDG_DATA_HOME:-\$HOME/.local/share}/threadwatcher/ )"
 }
