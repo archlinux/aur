@@ -1,7 +1,7 @@
 # Maintainer: Kirill Goncharov <kdgoncharov at gmail dot com>
 
 pkgname=mermaid-cli
-pkgver=8.10.1
+pkgver=8.10.2
 pkgrel=1
 pkgdesc='Generation of diagram and flowchart from text in a similar manner as markdown (CLI)'
 arch=('any')
@@ -13,7 +13,7 @@ _npmscope=@mermaid-js
 _npmname=mermaid-cli
 _npmver=$pkgver
 source=("http://registry.npmjs.org/${_npmscope}/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-sha256sums=('01a3fc212dabcba498942f9e2520f24b26758151a0f9b3ab82c1c1fe85ad3150')
+sha256sums=('a0b07fd3291cb645f24ca61311bd3ec74e0f0e294b7725cd0edabfd5e5256240')
 noextract=("${_npmname}-${_npmver}.tgz")
 
 package() {
