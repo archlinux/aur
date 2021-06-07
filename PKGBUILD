@@ -1,7 +1,7 @@
 # Maintainer: lottieratworld <lottieratworld at proton mail dot com>
 _pkgname=hyperrogue
 pkgname=${_pkgname}-git
-pkgver='120.r0.g805f33d8'
+pkgver='12.0a.r0.g7777c7b4'
 pkgrel=1
 pkgdesc="A puzzle-roguelike taking place on a hyperbolic plane. Latest git version."
 arch=('i686' 'x86_64')
