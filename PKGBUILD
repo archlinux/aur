@@ -1,7 +1,7 @@
 # Maintainer: Alexander Bocken <alexander@bocken.org>
 pkgname=threadwatcher
-pkgver=r7.c044a74
-pkgrel=2
+pkgver=r9.40693f4
+pkgrel=1
 pkgdesc="Keep a list of 4chan threads to watch over and continually download media from"
 arch=(any)
 depends=(
@@ -17,7 +17,7 @@ url="https://github.com/AlexBocken/threadwatcher"
 license=('AGPL3')
 source=('threadwatcher::git+https://github.com/AlexBocken/threadwatcher.git')
 md5sums=('SKIP')
-
+install="${pkgname}.install"
 pkgver() {
 	cd "$srcdir/$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
