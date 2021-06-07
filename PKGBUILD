@@ -1,4 +1,4 @@
-# Maintainer: mutantmonkey <aur@mutantmonkey.in>
+# Maintainer: mutantmonkey <aur@mutantmonkey.mx>
 pkgname=whatmp3-git
 _gitname=whatmp3
 pkgver=128.6b0fe1e
