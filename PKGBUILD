@@ -1,14 +1,14 @@
 # Maintainer: OpenSourcerer <alex at opensourcery dot eu>
 pkgname=hummingbird
-pkgver=1.1.1
-pkgrel=2
-_commit="d55d88c96c0e77c7d39886ec52937678dbf98c7b"
+pkgver=1.1.2
+pkgrel=1
+_commit="bfa3cbfd33b715dd5fa3b93046d476a13bfe427e"
 pkgdesc="FLOSS OpenVPN3 client using AirVPN's OpenVPN3 library fork"
 arch=('x86_64')
 url="https://gitlab.com/AirVPN/$pkgname"
 license=('GPL3')
 provides=('hummingbird-bin')
-conflicts=('hummingbird-bin' 'airvpn-suite' 'airvpn-suite-bin')
+conflicts=('hummingbird-bin' 'airvpn-suite' 'airvpn-suite-bin' 'airvpn-suite-beta-bin')
 depends=('openssl' 'xz' 'lz4')
 makedepends=('gcc' 'make' 'pkgconf' 'autoconf' 'automake' 'git' 'crypto++')
 source=("git+$url.git#commit=$_commit")
@@ -45,4 +45,7 @@ package() {
 
     # place documentation
     install -Dm755 README.md "$pkgdir/usr/share/doc/hummingbird/README.md"
+
+    # place license
+    install -Dm755 LICENSE.md "$pkgdir/usr/share/licenses/hummingbird/LICENSE.md"
 }
