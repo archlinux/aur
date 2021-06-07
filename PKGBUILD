@@ -2,7 +2,7 @@
 
 pkgname=python-pptx
 _pypiname=${pkgname}
-pkgver=0.6.18
+pkgver=0.6.19
 pkgrel=1
 pkgdesc="Create Open XML PowerPoint documents in Python"
 url="https://github.com/scanny/python-pptx"
@@ -12,7 +12,7 @@ depends=('python' 'python-behave' 'flake8' 'python-lxml' 'python-mock'
 	'python-pyparsing' 'python-pillow' 'python-pytest' 'python-xlsxwriter')
 makedepends=('python-setuptools')
 source=(${_pypiname}-${pkgver}.tar.gz::"https://github.com/scanny/python-pptx/archive/v${pkgver}.tar.gz")
-sha256sums=('f427728c4f5f3a0d28f8d1fb6d2f8c56fe133acf1161cd16083c294e10071bc0')
+sha256sums=('116b24237ecb12a831699fd784dbac947b8bee6c27f99262a0207f6fccb7c9e4')
 
 package() {
   cd ${_pypiname}-${pkgver}
