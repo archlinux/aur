@@ -1,0 +1,18 @@
+pkgbase = tree-sitter-ruby-git
+	pkgdesc = Ruby grammar for tree-sitter
+	pkgver = 0.19.0.r8.g391269d
+	pkgrel = 1
+	url = https://github.com/tree-sitter/tree-sitter-ruby
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = git
+	makedepends = tree-sitter
+	makedepends = npm
+	depends = gcc-libs
+	provides = tree-sitter-ruby
+	conflicts = tree-sitter-ruby
+	source = tree-sitter-ruby-git::git+https://github.com/tree-sitter/tree-sitter-ruby
+	sha256sums = SKIP
+
+pkgname = tree-sitter-ruby-git
