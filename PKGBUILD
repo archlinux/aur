@@ -1,5 +1,5 @@
 # Contributor: François Charette <firmicus ατ gmx δοτ net>
-# Maintainer: mutantmonkey <aur@mutantmonkey.in>
+# Maintainer: mutantmonkey <aur@mutantmonkey.mx>
 
 pkgname=perl-term-shellui
 pkgver=0.92
