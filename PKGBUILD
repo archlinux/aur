@@ -1,10 +1,10 @@
 pkgname=webdav-daemon
-pkgver=v1.1.r1.bc88ec6
+pkgver=v1.1.r17.93759c7
 pkgver() {
 	cd "WebDAV-Daemon"
 	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
-pkgrel=3
+pkgrel=1
 pkgdesc="WebDAV server designed to be a replace for SMBA providing access to a system's files without taking ownership of them"
 arch=(x86_64)
 url="https://github.com/couling/WebDAV-Daemon"
@@ -18,19 +18,7 @@ source=("git+https://github.com/couling/WebDAV-Daemon.git"
 	conf.xml
 	webdavd.logrotate
 	webdavd.pam
-	webdavd.service
-	build-fix.patch)
-md5sums=('SKIP'
-         'a9bfe1e242db185bfd8bc0acbde24610'
-         '305484a532e6e9be0e491cec5457c047'
-         'cce88995b96d78aebfbaa6cc865eb535'
-         'dddf8fd7c52bd3807eb7d9b8daef02db'
-         'a2ef51c60c732ed1a152606e1157568a')
-
-prepare() {
-	cd "WebDAV-Daemon"
-	patch -p1 -i "$srcdir/build-fix.patch"
-}
+	webdavd.service)
 
 build() {
 	cd "WebDAV-Daemon"
@@ -52,3 +40,8 @@ package() {
 	install -Dm0755 build/rap "$pkgdir/usr/bin/rap"
 	install -Dm0755 build/webdavd "$pkgdir/usr/bin/webdavd"
 }
+sha256sums=('SKIP'
+            '1846a9e9804e5cd2c566280f3936fec36f5036b904001e06df73874b269317f3'
+            '48bf81665fb3588e126bb8f121df46f8c4ad103e9a6010450ce33e838ab27e9e'
+            '6cb1f277dbc77b9718ea4eac0e9f99c07a35d1012f6ae39a91516485e8f759d8'
+            '93dbe69a295c1a5e3b6179ead5a925bcbfcc819b2f9ed80d68ab95981ce41723')
