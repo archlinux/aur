@@ -1,0 +1,18 @@
+pkgbase = tree-sitter-ocaml-git
+	pkgdesc = OCaml grammar for tree-sitter
+	pkgver = 0.19.0.r2.g0348562
+	pkgrel = 1
+	url = https://github.com/tree-sitter/tree-sitter-ocaml
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = git
+	makedepends = tree-sitter
+	makedepends = npm
+	depends = gcc-libs
+	provides = tree-sitter-ocaml
+	conflicts = tree-sitter-ocaml
+	source = tree-sitter-ocaml-git::git+https://github.com/tree-sitter/tree-sitter-ocaml
+	sha256sums = SKIP
+
+pkgname = tree-sitter-ocaml-git
