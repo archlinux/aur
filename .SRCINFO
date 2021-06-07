@@ -18,4 +18,3 @@ pkgbase = tpm-tools
 	sha256sums = ee00e8932526f16ae062fcaf06168f78d46c71fe2e41cfe67394023bafbb4fe6
 
 pkgname = tpm-tools
-

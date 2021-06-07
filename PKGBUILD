@@ -1,4 +1,4 @@
-# Maintainer: mutantmonkey <aur@mutantmonkey.in>
+# Maintainer: mutantmonkey <aur@mutantmonkey.mx>
 # Contributor: Gerardo Exequiel Pozzi <djgera@archlinux.org>
 # Contributor: Patryk Kowalczyk <patryk AT kowalczyk dot ws>
 # Contributor: Robert Buhren <robert@robertbuhren.de>
