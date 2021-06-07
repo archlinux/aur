@@ -2,7 +2,7 @@
 
 pkgname=python-aliyun-python-sdk-kms
 _pkgname=${pkgname/python-}
-pkgver=2.14.0
+pkgver=2.15.0
 pkgrel=1
 pkgdesc="The kms module of Aliyun Python sdk."
 arch=('any')
@@ -10,10 +10,8 @@ url="https://github.com/aliyun/aliyun-openapi-python-sdk/"
 license=('Apache')
 depends=('python-aliyun-python-sdk-core')
 makedepends=('python-setuptools')
-conflicts=("${pkgname}-git")
-provides=("${pkgname}-git")
-source=("https://files.pythonhosted.org/packages/16/9e/9f4fdcee98e6d9f15217dcda94139827cbbf83284de5a6a3239a8e24a3ca/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('8382847057e9f74205932358cf50b198aae81c1f931cef6fbb527edf6a940afc')
+source=("https://files.pythonhosted.org/packages/31/8d/5052612578e9237ff5b2c398fe33fa52541ed53f741143893fb8f5f27120/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('642a3f4f04dcdba5f8a3a0f1edff04479e76df33017a5b25512490ce5894ab2d')
 
 build() {
   cd $_pkgname-$pkgver
