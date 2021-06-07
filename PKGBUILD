@@ -1,7 +1,7 @@
 _pkgname=unity-version-manager
 pkgname=${_pkgname}-git
-pkgver=2.4.1.r0.g1a3af8a
-pkgrel=1
+pkgver=2.4.1.r6.g9259ba8
+pkgrel=2
 pkgdesc='cli utility to install and manager unity versions'
 arch=(x86_64)
 url='https://github.com/Larusso/unity-version-manager'
@@ -25,18 +25,5 @@ build() {
 
 package() {
   cd $_pkgname
-  cargo install --path ./commands/uvm --root "$pkgdir"/usr
-  cargo install --path ./commands/uvm-commands --root "$pkgdir"/usr
-  cargo install --path ./commands/uvm-detect --root "$pkgdir"/usr
-  cargo install --path ./commands/uvm-download-manifest --root "$pkgdir"/usr
-  cargo install --path ./commands/uvm-fix-modules-json --root "$pkgdir"/usr
-  cargo install --path ./commands/uvm-generate-modules-json --root "$pkgdir"/usr
-  cargo install --path ./commands/uvm-help --root "$pkgdir"/usr
-  cargo install --path ./commands/uvm-launch --root "$pkgdir"/usr
-  cargo install --path ./commands/uvm-list --root "$pkgdir"/usr
-  cargo install --path ./install/uvm-install --root "$pkgdir"/usr
-  cargo install --path ./install/uvm-modules --root "$pkgdir"/usr
-  cargo install --path ./install/uvm-install2 --root "$pkgdir"/usr
-  cargo install --path ./install/uvm-uninstall --root "$pkgdir"/usr
-  cargo install --path ./install/uvm-versions --root "$pkgdir"/usr
+  make PREFIX="$pkgdir"/usr install
 }
