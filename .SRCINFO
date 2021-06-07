@@ -7,8 +7,8 @@ pkgbase = wine-discord-ipc-bridge-git
 	license = MIT
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-binutils
-	provides = wine-discord-ipc-bridge-git-git
-	conflicts = wine-discord-ipc-bridge-git-git
+	provides = wine-discord-ipc-bridge
+	conflicts = wine-discord-ipc-bridge
 	source = git+https://github.com/0e4ef622/wine-discord-ipc-bridge.git
 	sha256sums = SKIP
 
