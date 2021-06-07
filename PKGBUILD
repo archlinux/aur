@@ -1,6 +1,6 @@
 # Maintainer: Alexander Bocken <alexander@bocken.org>
 pkgname=threadwatcher
-pkgver=r3.753749c
+pkgver=r7.c044a74
 pkgrel=1
 pkgdesc="Keep a list of 4chan threads to watch over and continually download media from"
 arch=(any)
@@ -23,6 +23,12 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 package() {
+	#Update from old urlfile location to new
+	THREADWATCHER_DIR_OLD=${XDG_DATA_HOME:-$HOME/.local/share}/threadwatcher
+	THREADWATCHER_DIR=${XDG_DATA_HOME:-$HOME/.local/share}/threadwatcher
+	[ -d "$THREADWATCHER_DIR_OLD" ] && mv "$THREADWATCHER_DIR_OLD" -T "$THREADWATCHER_DIR"
+	#create urlfile location
+	[ -d "$THREADWATCHER_DIR" ] || mkdir -p "$THREADWATCHER_DIR"
 	cd "$srcdir/$pkgname"
 	install -Dm755 threadwatcher $pkgdir/usr/bin/threadwatcher
 	install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname}/LICENSE
