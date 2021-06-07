@@ -1,0 +1,16 @@
+pkgbase = tree-sitter-toml-git
+	pkgdesc = TOML grammar for tree-sitter
+	pkgver = 0.5.1.r2.g8bd2056
+	pkgrel = 1
+	url = https://github.com/ikatyang/tree-sitter-toml
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = git
+	makedepends = tree-sitter
+	provides = tree-sitter-toml
+	conflicts = tree-sitter-toml
+	source = tree-sitter-toml-git::git+https://github.com/ikatyang/tree-sitter-toml
+	sha256sums = SKIP
+
+pkgname = tree-sitter-toml-git
