@@ -1,4 +1,4 @@
-# Maintainer: mutantmonkey <aur@mutantmonkey.in>
+# Maintainer: mutantmonkey <aur@mutantmonkey.mx>
 pkgname=whatmp3
 pkgver=3.8
 pkgrel=1
