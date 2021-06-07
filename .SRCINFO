@@ -1,0 +1,20 @@
+pkgbase = pikaur-aurnews
+	pkgdesc = AUR helper which asks all questions before installing/building. Inspired by pacaur, yaourt and yay, and with the live aurnews eggzpatch
+	pkgver = 1.6.17
+	pkgrel = 1
+	url = https://github.com/actionless/pikaur
+	arch = any
+	license = GPL3
+	makedepends = python-commonmark
+	depends = pyalpm
+	depends = git
+	optdepends = asp: for ABS support in -G/--getpkgbuild operation
+	optdepends = python-pysocks: for socks5 proxy support
+	provides = pikaur
+	conflicts = pikaur
+	source = pikaur-aurnews::git+https://github.com/actionless/pikaur.git#branch=master
+	source = aurnews.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = pikaur-aurnews
