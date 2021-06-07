@@ -1,4 +1,4 @@
-# Maintainer: echnobas
+# Maintainer: endo aya <endoaya@protonmail.ch>
 pkgname=archer
 pkgver=0.1
 pkgrel=1
