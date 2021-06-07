@@ -3,7 +3,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=pacman-static
-pkgver=5.2.2
+pkgver=6.0.0
 _cares_ver=1.17.1
 _nghttp2_ver=1.43.0
 _curlver=7.77.0
@@ -16,16 +16,17 @@ _libarchive_ver=3.5.1
 _gpgerrorver=1.42
 _libassuanver=2.5.5
 _gpgmever=1.15.1
-pkgrel=5
+pkgrel=1
 pkgdesc="Statically-compiled pacman (to fix or install systems without libc)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.archlinux.org/pacman/"
 license=('GPL')
 depends=('pacman')
-makedepends=('musl' 'kernel-headers-musl')
+makedepends=('meson' 'musl' 'kernel-headers-musl')
+options=('!emptydirs')
 
 # pacman
-source=("https://sources.archlinux.org/other/pacman/pacman-${pkgver}.tar.gz"{,.sig})
+source=("https://sources.archlinux.org/other/pacman/pacman-${pkgver}.tar.xz"{,.sig})
 validpgpkeys=('6645B0A8C7005E78DB1D7864F99FFE0FEAE999BD'  # Allan McRae <allan@archlinux.org>
               'B8151B117037781095514CA7BBDFFC92306B1121') # Andrew Gregory (pacman) <andrew@archlinux.org>
 # nghttp2
@@ -64,7 +65,7 @@ source+=("https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-${_gpgmever}.tar.bz2"{,.s
 source+=("https://github.com/libarchive/libarchive/releases/download/${_libarchive_ver}/libarchive-${_libarchive_ver}.tar.xz"{,.asc})
 validpgpkeys+=('A5A45B12AD92D964B89EEE2DEC560C81CEC2276E') # Martin Matuska <mm@FreeBSD.org>
 
-sha512sums=('1f9c569fb9cfe90afeeb7e3715bfa821ec4c57fdbbd7e09cd1e2519fad1a555b2f5378dedb2c2e551d2e92db92f1db9684969b472507f676c5bb932cdf436eda'
+sha512sums=('78fc5b70a2fc356746f8a4580ce7fd01b25b3463db1b9b008f02a97e22c236fdb1d09985769caf6ac675d9b1091ba0f71afa38ec5759cf7911f1b1a33586f563'
             'SKIP'
             'eac69ba356870a1cba420a06771082897be8dd40a68f4e04223f41f3d22626e4f5b3766d3dbcc496dd212be01f64c3ac280a2ebddd31dd88f7350c20f56e5d39'
             'b11887bcc9274d368088e1a8b6aca62414f20675cf0bc58e948f54fa04c327c39dd23cefe7509eec6397db14b550a3f6b77f5c18b3d735b3eef48ce2da1dcd00'
@@ -90,7 +91,7 @@ sha512sums=('1f9c569fb9cfe90afeeb7e3715bfa821ec4c57fdbbd7e09cd1e2519fad1a555b2f5
             'SKIP'
             '04ad3e98e840fee19eb4c2652f29eccef1cffc071fd5c6a6feb358fea6048699281c7baacbb9ca8f823b1bfaaef6d4c87d9cf6a8b0c28aab53b75b2d259b2045'
             'SKIP')
-b2sums=('14896b3911f851f66b93443fe29eca9ffe21a73698ce7844a7924450c0399ce71d038843d8a4acedb029d5444cd1b409776d482edff5e58928e248068acb68dd'
+b2sums=('79443cbee5df7b367267c70da04d570455a42d9cfa2e623333fd30e640d3cd9f01da382134efcd1c84202331499fd134b23dde8788a89f6949f0eb40e0e7a38b'
         'SKIP'
         '0e6c674486c484558a55822501a13ac93c4e890cf62749bc8519690f468912701329b7b9e83b0b68c3f35b72442b1ed47a90050cccd3fc05d79622e1e26634dc'
         '31dac21ecae231e2a201dc1ba954c1a0663a06f93eb8e7e033ca3c6d385f53e07af0b04854739f1ee8a7f0693f67f620143e152ef092b49342c62279a0480905'
@@ -270,27 +271,36 @@ build() {
 
     # ew libtool
     rm "${srcdir}"/temp/usr/lib/lib*.la
-    export PKG_CONFIG='pkg-config --static'
 
     # Finally, it's a pacman!
-    cd "${srcdir}"/pacman-${pkgver}
-    ./configure --prefix=/usr \
-                --libdir=/usr/lib/pacman/lib \
-                --sysconfdir=/etc \
-                --localstatedir=/var \
-                --program-suffix=-static \
-                --with-scriptlet-shell=/usr/bin/bash \
-                --with-ldconfig=/usr/bin/ldconfig \
-                --disable-shared \
-                --disable-doc
-    make V=1 AM_LDFLAGS=-all-static
+    mkdir -p "${srcdir}"/pacman-${pkgver}/builddir
+    cd "${srcdir}"/pacman-${pkgver}/builddir
+    meson setup \
+        --prefix=/usr \
+        --includedir=lib/pacman/include \
+        --libdir=lib/pacman/lib \
+        --buildtype=plain \
+        -Dbuildstatic=true \
+        -Ddefault_library=static \
+        -Ddoc=disabled \
+        -Dldcofig=/usr/bin/ldconfig \
+        -Dscriptlet-shell=/usr/bin/bash \
+        ..
+    ninja
 }
 
 package() {
-    cd "${srcdir}"/pacman-${pkgver}
-    make -C lib/libalpm  DESTDIR="${pkgdir}" install-libLTLIBRARIES install-pkgconfigDATA
-    make -C src/util  DESTDIR="${pkgdir}" install
-    make -C src/pacman  DESTDIR="${pkgdir}" install-binPROGRAMS
+    cd "${srcdir}"/pacman-${pkgver}/builddir
+    DESTDIR="${pkgdir}" ninja install
+
+    rm -rf "${pkgdir}"/usr/share "${pkgdir}"/etc
+    for exe in "${pkgdir}"/usr/bin/*; do
+        if [[ -f ${exe} && $(head -c4 "${exe}") = $'\x7fELF' ]]; then
+            mv "${exe}" "${exe}"-static
+        else
+            rm "${exe}"
+        fi
+    done
 
     cp -a "${srcdir}"/temp/usr/{bin,include,lib} "${pkgdir}"/usr/lib/pacman/
     sed -i "s@${srcdir}/temp/usr@/usr/lib/pacman@g" \
