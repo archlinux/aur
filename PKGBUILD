@@ -3,7 +3,7 @@
 # Contributor: regreddit <nik.martin@gmail.com>
 
 pkgname=mixxx-git
-pkgver=r7860
+pkgver=r7950
 pkgrel=1
 pkgdesc="Digital DJ mixing software. Git master branch (development/alpha)."
 arch=('i686' 'x86_64')
@@ -30,6 +30,8 @@ depends=(
     'portmidi'
     'protobuf'
     'qt5-declarative'
+    'qt5-quickcontrols'
+    'qt5-quickcontrols2'
     'qt5-svg'
     'qt5-translations'
     'qt5-x11extras'
