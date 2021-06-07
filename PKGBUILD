@@ -3,7 +3,7 @@
 # Contributor: sxe <sxxe@gmx.de>
 
 pkgname=wine-git
-pkgver=6.8.r0.g99e47361a37
+pkgver=6.10.r0.g649385e7d47
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (git version)'
 arch=('x86_64')
@@ -26,7 +26,7 @@ depends=(
     'faudio'                'lib32-faudio'
     'desktop-file-utils'
 )
-makedepends=('git' 'autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex' 'mingw-w64-gcc'
+makedepends=('git' 'autoconf' 'bison' 'perl' 'fontforge' 'flex' 'mingw-w64-gcc'
     'giflib'                'lib32-giflib'
     'libpng'                'lib32-libpng'
     'gnutls'                'lib32-gnutls'
@@ -71,7 +71,6 @@ optdepends=(
     'libjpeg-turbo'         'lib32-libjpeg-turbo'
     'libxcomposite'         'lib32-libxcomposite'
     'libxinerama'           'lib32-libxinerama'
-    'ncurses'               'lib32-ncurses'
     'opencl-icd-loader'     'lib32-opencl-icd-loader'
     'libxslt'               'lib32-libxslt'
     'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
@@ -169,5 +168,5 @@ package() {
     
     # strip native PE libraries
     i686-w64-mingw32-strip --strip-unneeded "${pkgdir}/usr/lib32/wine/i386-windows"/*.dll
-    "${CARCH}-w64-mingw32-strip" --strip-unneeded "${pkgdir}/usr/lib/wine/x86_64-windows"/*.dll
+    "${CARCH}-w64-mingw32-strip" --strip-unneeded "${pkgdir}/usr/lib/wine/${CARCH}-windows"/*.dll
 }

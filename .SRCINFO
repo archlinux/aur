@@ -1,6 +1,6 @@
 pkgbase = wine-git
 	pkgdesc = A compatibility layer for running Windows programs (git version)
-	pkgver = 6.8.r0.g99e47361a37
+	pkgver = 6.10.r0.g649385e7d47
 	pkgrel = 1
 	url = https://www.winehq.org/
 	install = wine-git.install
@@ -8,7 +8,6 @@ pkgbase = wine-git
 	license = LGPL
 	makedepends = git
 	makedepends = autoconf
-	makedepends = ncurses
 	makedepends = bison
 	makedepends = perl
 	makedepends = fontforge
@@ -121,8 +120,6 @@ pkgbase = wine-git
 	optdepends = lib32-libxcomposite
 	optdepends = libxinerama
 	optdepends = lib32-libxinerama
-	optdepends = ncurses
-	optdepends = lib32-ncurses
 	optdepends = opencl-icd-loader
 	optdepends = lib32-opencl-icd-loader
 	optdepends = libxslt
@@ -141,9 +138,9 @@ pkgbase = wine-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=6.8.r0.g99e47361a37
-	provides = bin32-wine=6.8.r0.g99e47361a37
-	provides = wine-wow64=6.8.r0.g99e47361a37
+	provides = wine=6.10.r0.g649385e7d47
+	provides = bin32-wine=6.10.r0.g649385e7d47
+	provides = wine-wow64=6.10.r0.g649385e7d47
 	conflicts = wine
 	conflicts = bin32-wine
 	conflicts = wine-wow64
@@ -157,4 +154,3 @@ pkgbase = wine-git
 	sha256sums = 6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4
 
 pkgname = wine-git
-
