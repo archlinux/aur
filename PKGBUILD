@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/novomesk/$_pkgname"
 license=('GPL3')
 depends=('qt5-base' 'libjxl')
-makedepends=('git' 'make')
+makedepends=('git')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
