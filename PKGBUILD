@@ -2,7 +2,7 @@
 # Archlinux package contributor is Dimadenisjuk <dimadenisjuk@yandex.ru>
 pkgname=('cryptsetup-deluks')
 pkgver=0.2BETA
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Cryptsetup version with 'Deniable encryption' support"
 arch=('any')
@@ -48,4 +48,5 @@ package() {
 	cd "$pkgname"
 	# needs to change binary directory from /usr/sbin to /usr/bin
 	make DESTDIR="$pkgdir/" install
+	ln -s $pkgdir/usr/lib/libcryptsetup.so $pkgdir/usr/lib/libcryptsetup.so.12
 }
