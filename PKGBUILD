@@ -2,7 +2,7 @@
 
 pkgname=tree-sitter-c-git
 pkgver=0.19.0.r3.g008008e
-pkgrel=1
+pkgrel=2
 pkgdesc="C grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/tree-sitter/tree-sitter-c"
@@ -10,7 +10,6 @@ license=('Apache')
 groups=('tree-sitter-grammars')
 depends=('gcc-libs')
 makedepends=('git' 'tree-sitter')
-optdepends=('neovim-tree-sitter')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url")
