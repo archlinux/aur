@@ -1,7 +1,7 @@
 # Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
 
 pkgname=arch-secure-boot
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 license=('ISC')
 pkgdesc='UEFI Secure Boot for Arch Linux + btrfs snapshot recovery'
@@ -16,7 +16,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/maximbaz/${pkgname}/archive/${pkgver}.tar.gz"
     "https://github.com/maximbaz/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz.asc"
 )
-sha256sums=('226462d3218e47538da71131543b96fbc8e553e4390114bec871927336c6a7e8'
+sha256sums=('e3e9bf2cfe591e6bb28ce9ef2265829301b6f7f08dfbd3ae28e01e737b3d8d3b'
             'SKIP')
 validpgpkeys=('EB4F9E5A60D32232BB52150C12C87A28FEAC6B20')
 
