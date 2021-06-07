@@ -4,7 +4,7 @@
 
 pkgname=pdf2djvu
 pkgver=0.9.18
-pkgrel=1
+pkgrel=10
 pkgdesc="Creates DjVu files from PDF files"
 arch=('x86_64')
 url="https://jwilk.net/software/pdf2djvu"
