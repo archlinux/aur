@@ -1,4 +1,4 @@
-# Maintainer: mutantmonkey <aur@mutantmonkey.in>
+# Maintainer: mutantmonkey <aur@mutantmonkey.mx>
 pkgname=snowflake-pt-client-git
 _gitname=snowflake
 pkgver=754.0054cb2
