@@ -1,0 +1,17 @@
+pkgbase = cpproj-git
+	pkgdesc = C++ Package Management tool based on cargo (rust)
+	pkgver = r28.eedf654
+	pkgrel = 1
+	url = https://github.com/adi-g15/cpproj
+	arch = x86_64
+	license = Unlicense
+	makedepends = git
+	makedepends = gcc
+	makedepends = ninja
+	depends = cmake
+	provides = cpproj
+	conflicts = cpproj
+	source = git+https://github.com/adi-g15/cpproj.git
+	md5sums = SKIP
+
+pkgname = cpproj-git
