@@ -54,7 +54,7 @@ pkgver=${_major}
 #_stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -67,18 +67,18 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/$_srcname.tar.xz"
         "config"
         "${_patchsource}/arch-patches-v6/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_patchsource}/cacule-patches/cacule-5.12.patch"
-        "${_patchsource}/cpu-patches-v2/0001-cpu-patches.patch"
+        "${_patchsource}/cpu-patches-v3/0001-cpu-patches.patch"
         "${_patchsource}/futex-patches-v2/0001-futex-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/futex2-stable-patches-v5/0001-futex2-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/wine-esync-patches/0001-v5.12-winesync.patch"
         "${_patchsource}/zen-patches-v2/0001-zen-patches.patch"
         "${_patchsource}/lqx-patches-v3/0001-zen-Allow-MSR-writes-by-default.patch"
-        "${_patchsource}/bfq-patches-v12/0001-bfq-patches.patch"
-        "${_patchsource}/block-patches-v4/0001-block-patches.patch"
+        "${_patchsource}/bfq-patches-v13/0001-bfq-patches.patch"
+        "${_patchsource}/block-patches-v5/0001-block-patches.patch"
         "${_patchsource}/ll-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
         "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
         "${_patchsource}/bbr2-patches-v2/0001-bbr2-5.12-introduce-BBRv2.patch"
-        "${_patchsource}/btrfs-patches-v9/0001-btrfs-patches.patch"
+        "${_patchsource}/btrfs-patches-v10/0001-btrfs-patches.patch"
         "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
         "${_patchsource}/pf-patches-v2/0001-pf-patches.patch"
         "${_patchsource}/lru-patches-v4/0001-lru-patches.patch"
@@ -92,18 +92,18 @@ sha512sums=('f97b025db8a469ff982d445356dac78765a4a5625fa442e0242598c807df49753ee
             'd2be2d406356dd629d8913be622eab80a25838565fdc008551cca86d127c71c824ef3023e6adb36268bfb0d5dc2b7f02cb745de04402a81811a80dd4083b59eb'
             '1908055c446f04ef0a0a5a19579836d2f5dc60d7989677f85f084a7186a6327b240291feed8d25e320e72efa114b243a325362e2dbfbf7f4f3fb89bbdd3819be'
             '367f5ec3ec03d41c4ae5c60ca70d2aa2a1fb200245f1fd7a3409c123c0b93e36338c944864cf473b3fa236cc97d715e86de4184362837af54ff8a6ade33e7d99'
-            '60bda2070739a52af4f81816ebda8f3520a8d75ea5e00f65a903a3416ae31edba56fe151f6a9e02dc90ec3be7854e9a62e10e72120d7148fd3838806d8b9e986'
+            'cf3caf1ad42ee52f4472c71b6e88be5810fb27d8bf5e64a0db3851d5312aea84b704099bd02c90f910e1d4c96a8df788bc9cb18167d7c2324e8d6b48726d405f'
             '4b7766c590a692a008a0daca73806a1671a81b6e2ed756aae96de4c4455505b04765568ae5e04645f89bf75bd5611e3b1bf5ededff47bb0708dbca91769b5ab7'
             'a5585535a5db9b94508fe13ff6d1f796c51881ea4e7fe37bdd6ab7b62942f9775004a3ec5e4f88ef9587b87c14041210eafa6ffa6584f364eb0c4378444f830b'
             '905f97cdff3e096552159a229d069d1b1418f4142b2927134110f504bfe0883309b3f29c2aeeb94c528b63e0eec7d0d69b44c3d498211c610811969cc4d07a56'
             '1c6cdf40009ce6c62b0a35cc7c2a74818b7169d32e18fb3c2bb8761762c15c579f64cb36f9076c4f78d3f88f077f6246ee75ba93f370cc40dae450d6d71117bb'
             'd9e072c64cd413e1ba58a9924872b7a5bfed33c7b78d062a6be42f1becce450647c90066d95b8a7f1facc1cdc538d532b3d5915cd6c4f659b76ad950993af8f3'
-            'a6c95262adbf0ddffd896511a9cc2c347dea0cf8cc0ec4218869ccd287a5f44c7a953b718b74db70592bc3b774bbdc1d4a39c3d6ae90acf3ff8c8cc24299773e'
-            '5a865976aa40e8e3ebbf270bb3d1dbde5a737fa55c051a733a1102cb6e202a61d22020e78145d11f324d272ad6d49ee7055b4ddd20ad5ef3bc3a3f99e221b26c'
+            '5cfd7bca1b06de9f189204cc3b4d085f158a677a0ca8b506e961cb9184b9411587bb9a3c9308933ee1c8e5c5c58c12f84953f5dca4d6a98690e4ec3acae3c79a'
+            'f564ed40d9835126e197702dc759f0ca4e6642da0448c3500570f96e56c511a1e97cb2d7c283aed3d8afbcf751b514130f9254fcf9cc7680c96b2f7d3b64bb81'
             '47f265716ebd268e4296aaba1efe5098df00736b69ec7d0413cace6dbb5cb162c1c952f7527a2a41b246ed76e6e112514c5349e8dc52f4609def30257e18d7aa'
             '5081a6a3a3db160ef0a23acd0c0db403cc4b3eb2dfd280b1b7ba2ae907d362e4d6a653d546523c870af07009c62f58eec26e7b8174a3f4fcbaa32808d965ad73'
             '28446f518e88ab934330111a01019cb164bfdd21094c69e96cc16c7931440d069ef997ae141154c97c80fcb727e8c4d940b8bf63554e3f4179652523e285c5b4'
-            '9d0b86f0f36af9f00a463b9b4423241228e5d28164dadff75f2a6ab15688c6e1867bdd98217781104f0e933b1254cc409f9c38accde1000674f4a87ef02901cd'
+            '31ce7487a10be803bca6c2cd8348d48d4eeba140ac99af12242b0782b3b4014ca1f850560ec0669aea0cb43dccff101612829ccdf8e8d9a861f118a238764aaf'
             '1b3b48246fe70e8ca7390cacacf560696c1d98604a7716ac32df8f3d7fc7cc2ab733ab24e372fffa63016344f2e4ed078f7d597c3c1261f0ca3ff1c87a13dcb9'
             '6b574c79e6ebc866cb5ed01b2edb1187672f8cbe4ac507c811adfca859baaa89460bf66184a99c3b02a583f4b51fd15c1ef0431601dd4838a08bc031de902067'
             'd428d3f54634b91e41cac279f7c7b708a174d9cac085b7497802c5a50f77bbfcfdd8799c1db3351ba18e8316685b729d292bb45de0da443762dbd1b87cbc7dad'
@@ -269,8 +269,8 @@ prepare() {
       scripts/config --enable CONFIG_CONTEXT_TRACKING
       scripts/config --disable CONFIG_CONTEXT_TRACKING_FORCE
       echo "Enabling KBUILD_CFLAGS -O3..."
-      scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
-      scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
+      scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
+      scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
       echo "Enable PREEMPT"
       scripts/config --disable CONFIG_PREEMPT_NONE
       scripts/config --disable CONFIG_PREEMPT_VOLUNTARY
@@ -303,6 +303,69 @@ prepare() {
       echo "Enable VHBA-Module"
       scripts/config --module CONFIG_VHBA
       scripts/config --disable CONFIG_GCC_PLUGINS
+
+      # General Setup
+      scripts/config --disable CONFIG_BSD_PROCESS_ACCT
+      scripts/config --disable CONFIG_TASK_XACCT
+      scripts/config --disable CONFIG_PSI
+      scripts/config --disable CONFIG_MEMCG
+      scripts/config --disable CONFIG_CGROUP_CPUACCT
+      scripts/config --disable CONFIG_CGROUP_DEBUG
+      scripts/config --disable CONFIG_CHECKPOINT_RESTORE
+      scripts/config --disable CONFIG_SLAB_MERGE_DEFAULT
+      scripts/config --disable CONFIG_SLAB_FREELIST_HARDENED
+      scripts/config --disable CONFIG_SLUB_CPU_PARTIAL
+      scripts/config --disable CONFIG_PROFILING
+
+      # Processor type and features
+      scripts/config --disable CONFIG_RETPOLINE
+      scripts/config --disable CONFIG_X86_5LEVEL
+      scripts/config --disable CONFIG_KEXEC
+      scripts/config --disable CONFIG_KEXEC_FILE
+      scripts/config --disable CONFIG_CRASH_DUMPs
+      scripts/config --disable CONFIG_KPROBES
+      # Kernel hacking
+      scripts/config --disable CONFIG_FTRACE
+      scripts/config --disable CONFIG_DEBUG_KERNEL
+      scripts/config --disable CONFIG_PAGE_EXTENSION
+      scripts/config --set-val CONFIG_RCU_CPU_STALL_TIMEOUT 4
+      scripts/config --disable CONFIG_PRINTK_TIME
+      scripts/config --disable CONFIG_DEBUG_INFO
+      scripts/config --disable CONFIG_ENABLE_MUST_CHECK
+      scripts/config --disable CONFIG_STRIP_ASM_SYMS
+      scripts/config --disable CONFIG_UNUSED_SYMBOLS
+      scripts/config --disable CONFIG_DEBUG_FS
+      scripts/config --disable CONFIG_OPTIMIZE_INLINING
+      scripts/config --disable CONFIG_DEBUG_SECTION_MISMATCH
+      scripts/config --disable CONFIG_SECTION_MISMATCH_WARN_ONLY
+      scripts/config --disable CONFIG_STACK_VALIDATION
+      scripts/config --disable CONFIG_DEBUG_FORCE_WEAK_PER_CPU
+      scripts/config --disable CONFIG_MAGIC_SYSRQ
+      scripts/config --disable CONFIG_MAGIC_SYSRQ_SERIAL
+      scripts/config --disable CONFIG_PAGE_EXTENSION
+      scripts/config --disable CONFIG_DEBUG_PAGEALLOC
+      scripts/config --disable CONFIG_PAGE_OWNER
+      scripts/config --disable CONFIG_DEBUG_MEMORY_INIT
+      scripts/config --disable CONFIG_HARDLOCKUP_DETECTOR
+      scripts/config --disable CONFIG_SOFTLOCKUP_DETECTOR
+      scripts/config --disable CONFIG_DETECT_HUNG_TASK
+      scripts/config --disable CONFIG_WQ_WATCHDOG
+      scripts/config --set-val CONFIG_PANIC_TIMEOUT 10
+      scripts/config --disable CONFIG_SCHED_DEBUG
+      scripts/config --disable CONFIG_SCHEDSTATS
+      scripts/config --disable CONFIG_SCHED_STACK_END_CHECK
+      scripts/config --disable CONFIG_STACKTRACE
+      scripts/config --disable CONFIG_DEBUG_BUGVERBOSE
+      scripts/config --set-val CONFIG_RCU_CPU_STALL_TIMEOUT 4
+      scripts/config --disable CONFIG_RCU_TRACE
+      scripts/config --disable CONFIG_FAULT_INJECTION
+      scripts/config --disable CONFIG_LATENCYTOP
+      scripts/config --disable CONFIG_PROVIDE_OHCI1394_DMA_INIT
+      scripts/config --disable RUNTIME_TESTING_MENU
+      scripts/config --disable CONFIG_MEMTEST
+      scripts/config --disable CONFIG_KGDB
+      scripts/config --disable CONFIG_EARLY_PRINTK
+      scripts/config --disable CONFIG_DOUBLEFAULT
 
       ### Optionally load needed modules for the make localmodconfig
        # See https://aur.archlinux.org/packages/modprobed-db
