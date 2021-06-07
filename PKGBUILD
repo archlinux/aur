@@ -31,15 +31,10 @@ source=("https://download.documentfoundation.org/libreoffice/stable/${pkgver}/rp
 prepare() { ## prepare function
 
 ## install optional language & help packs (queries user)
-msg "Debug: 1";
 curl "http://download.documentfoundation.org/libreoffice/stable/${pkgver}/rpm/${arch_mod}/" -o index.html;  ## get index.html
-msg "Debug: 2";
 declare -ar opt_pak=('langpack' 'helppack');  ## declare optional extensions
-msg "Debug: 3";
 for a in ${opt_pak[@]}; do  ## loop for all optional extensions
-  msg "Debug: 4";
   read -p "Do you want to install additional ${a} (Y/y/N/n)?" opt_ans;
-  msg "Debug: 5";
   case $opt_ans in  ## evaluate the answer
     Y|y)
        echo "Which ${a} do you want to install?";
