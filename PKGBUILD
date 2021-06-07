@@ -1,7 +1,7 @@
 # Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 
 pkgname=whoogle
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc='A self-hosted, ad-free, privacy-respecting metasearch engine'
 arch=(x86_64 aarch64)
@@ -12,7 +12,7 @@ makedepends=(python python-pip)
 conflicts=(whoogle-git)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/benbusby/whoogle-search/archive/refs/tags/v$pkgver.tar.gz"
         whoogle.service)
-sha256sums=('832925bea8f33f3a2befe6e91fb6138409e78048d2b055ad38c90045d001d942'
+sha256sums=('SKIP'
             'b8474f3024d310b67454b8b59977fd26b66dba3930f31604058b773e13905e49')
 install=whoogle.install
 
