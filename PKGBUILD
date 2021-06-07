@@ -2,15 +2,15 @@
 pkgbase=mse-extrafoils
 pkgname=("${pkgbase}-clights" "${pkgbase}-fire" "${pkgbase}-fracture" "${pkgbase}-ghost" "${pkgbase}-insanity" "${pkgbase}-jss"  "${pkgbase}-oil" "${pkgbase}-old" "${pkgbase}-parallel" "${pkgbase}-polishedstone" "${pkgbase}-ribbon" "${pkgbase}-ripples")
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Various extra foils for MSE."
 arch=(any)
 url="http://msetemps.sourceforge.net/phpBB3/viewtopic.php?&t=144"
 license=('GPL')
 depends=('magicseteditor')
 groups=('mse-addons' 'mse-addons-foils')
-source=('http://downloads.sourceforge.net/msetemps/Magic%20-%20Overlays.mse-installer')
-sha256sums=('5e5add436487d4b26ebe0a1a233a6fb39bde1eb13f10833fa8b665861b775abc')
+source=('https://downloads.sourceforge.net/msetemps/Magic%20-%20Overlays.mse-installer')
+sha256sums=('9290cec200846ad9133336a95acb97b5965a024fef9243b47001ba6a8626a09d')
 
 _package-clights() {
 	pkgdesc="${pkgdesc} This one is the Christmas Lights object gradient by Art_Freak."
