@@ -1,18 +1,17 @@
 pkgbase = gdu-bin
 	pkgdesc = Fast disk usage analyzer
-	pkgver = 4.11.2
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://github.com/Dundee/gdu
 	arch = x86_64
 	license = MIT
 	conflicts = gdu
 	conflicts = gdu-git
-	source = gdu-bin-4.11.2.tgz::https://github.com/dundee/gdu/releases/download/v4.11.2/gdu_linux_amd64.tgz
-	source = gdu-bin.1-4.11.2.tgz::https://github.com/dundee/gdu/releases/download/v4.11.2/gdu.1.tgz
+	source = gdu-bin-5.1.0.tgz::https://github.com/dundee/gdu/releases/download/v5.1.0/gdu_linux_amd64.tgz
+	source = gdu-bin.1-5.1.0.tgz::https://github.com/dundee/gdu/releases/download/v5.1.0/gdu.1.tgz
 	source = LICENSE
-	sha256sums = b7e5738dd56f1765eea14a37b95a0eb7885c9ee475a2ed032cabecc497d44673
-	sha256sums = bcf5e07d020b752c0b9c2c9f0eb9a25b93222dd6fa7a34396a9219748a223ec2
+	sha256sums = 37f672e46912816fe7617a12ddca89746184e8cdb6ca261f12911cb4cf787ee1
+	sha256sums = e1a9aa34b29366a74fcef9472a65fc57521abe58292a7384d6f3b0dea47d3434
 	sha256sums = 613e9144d1403bba9553d64daf6a5e28d4c6bd9fabed81da80efaf91eb573dad
 
 pkgname = gdu-bin
-
