@@ -1,4 +1,4 @@
-# Maintainer: Daniel Milde <daniel at milde dot cz>
+# Maintainer: Endo Aya <endoaya@protonmail.ch>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 _pkgbasename=libxpm
 pkgname=lib32-$_pkgbasename
