@@ -15,6 +15,7 @@ sha256sums=('6ac9f76c2af010f97e916e4bae1cece341dc64ca28e3881ff4ddc3bc334060d7')
 
 build() {
   cd ${pkgname}-${pkgver}
+  CXXFLAGS+=" -std=c++14"
   ./configure --prefix=/usr --with-sslstack=gnu --enable-socks --enable-stdcpp --enable-atomics --with-pkg-config
   make
 }
