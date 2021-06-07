@@ -1,7 +1,7 @@
 # Maintainer: Patrick Lühne <patrick-arch@luehne.de>
 
 pkgname=python-miio
-pkgver=0.5.6
+pkgver=0.5.0.1
 pkgrel=1
 pkgdesc="Python library & console tool for controlling Xiaomi smart appliances"
 url="https://github.com/rytilahti/python-miio"
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python>=3.6' 'python-appdirs' 'python-attrs' 'python-click>=7' 'python-construct' 'python-cryptography' 'python-netifaces' 'python-pytz' 'python-tqdm' 'python-zeroconf')
 optdepends=('python-android-backup-tools: Android backup extraction support')
 source=("https://github.com/rytilahti/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('f8ebe9a37a12bb58f86014347af0dfda74cb973e41faa60a86bf927dc229f0298a576ee7969f3754f285a1f97231d3a6d43f242dfec73b1f617579b6a8af7506')
+sha512sums=('d82c4d52c7590892f7322d2d1a428a8dcb4843085a42374458bdfeeeacfc73a0f159d1a3bcc0612a5740d61dca472bbb022f912d20cf07ba2e1f9df6fdc52b20')
 
 build() {
 	cd ${pkgname}-${pkgver}
