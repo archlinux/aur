@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p
-pkgver=20210530
+pkgver=20210606
 pkgrel=1
 pkgdesc='Mupen64Plus with custom plugins and Qt5 GUI'
 arch=('x86_64')
@@ -11,26 +11,27 @@ depends=('freetype2' 'hidapi' 'libgl' 'libpng' 'libsamplerate' 'minizip'
          'qt5-base' 'qt5-websockets' 'sdl2' 'sdl2_net' 'zlib' 'hicolor-icon-theme')
 optdepends=('p7zip: for 7z/zip support')
 makedepends=('git' 'cmake' 'nasm' 'python' 'zip' 'icoutils')
-provides=('mupen64plus-gui' 'mupen64plus-video-gliden64')
-conflicts=('mupen64plus-gui' 'mupen64plus-video-gliden64' 'mupen64plus')
-_tag="v$(sed -E 's/^([0-9]{4})([0-9])([0-9])/\1.\3./' <<< "$pkgver")"
+provides=('mupen64plus-gui')
+conflicts=('mupen64plus-gui' 'mupen64plus')
+_tag="v$(sed -E 's/^([0-9]{4})([0-9]{2})/\1.\2./' <<< "$pkgver" |
+         awk -F'.' 'OFS="." { for(N=2; N<=3; N++) sub(/^0/, "", $N); print }')"
 source=("git+https://github.com/loganmc10/m64p.git#tag=${_tag}"
         '010-m64p-remove-build-jobs-limitation.patch'
-        '020-m64p-enable-optimizations.patch'
+        '020-m64p-change-optimizations.patch'
         '030-m64p-fix-paths.patch'
         '040-m64p-add-pie.patch'
         'm64p.desktop')
 sha256sums=('SKIP'
-            '4c483f9bf3230171c433d7f8310881babbd02416ce16079e85fd0ef254442d57'
-            'a35c7370d4545356cfcc9b10ad84250685510744911fde8910ecd224da046711'
-            'b70a51e6120ca05bcf48e2e8ffb5ec29d93a4edeabd5b745d15d552f611d5f37'
-            '11aba57b816afc3df1895bb000aa67a27315fe839c396fed7180dab8191a55f9'
+            '18cfd173f15de588285771b6159e69a07f6735d981b7326e8be52c3acce562b0'
+            'e774a0f25f951c5296a83f565384b3d788aa224537c4695e6712ae057d5a54a7'
+            '4271db8d4a4c8a39373897562cf0429f20cd95d952ab8385c1b376451ea55096'
+            '13879a08f76881c75597883c54917dbcd782ed0486050856043abaeff8ec86db'
             '8df4e8076d28a1bc44f41b0129a9935da9839e8a8cb9944206757e47da561808')
 
 prepare() {
     icotool -x m64p/mupen64plus-gui/mupen64plus.ico -o m64p/mupen64plus-gui
     patch -d m64p -Np1 -i "${srcdir}/010-m64p-remove-build-jobs-limitation.patch"
-    patch -d m64p -Np1 -i "${srcdir}/020-m64p-enable-optimizations.patch"
+    patch -d m64p -Np1 -i "${srcdir}/020-m64p-change-optimizations.patch"
     patch -d m64p -Np1 -i "${srcdir}/030-m64p-fix-paths.patch"
     patch -d m64p -Np1 -i "${srcdir}/040-m64p-add-pie.patch"
 }
@@ -55,7 +56,7 @@ package() {
     # mupen64plus components
     local _component
     local _sover
-    for _component in core audio-sdl2 input-raphnetraw rsp-hle
+    for _component in core audio-sdl2 input-raphnetraw
     do
         make -C "m64p/mupen64plus-${_component}/projects/unix" DESTDIR="$pkgdir" PREFIX='/usr' LDCONFIG='true' OSD='0' install
     done
@@ -66,7 +67,5 @@ package() {
     install -D -m644 m64p/mupen64plus/libdiscord_game_sdk.so -t "${pkgdir}/usr/lib"
     install -D -m644 m64p/mupen64plus/mupen64plus-input-qt.so -t "${pkgdir}/usr/lib/mupen64plus"
     install -D -m644 m64p/mupen64plus/mupen64plus-rsp-parallel.so -t "${pkgdir}/usr/lib/mupen64plus"
-    install -D -m644 m64p/mupen64plus/mupen64plus-video-angrylion-plus.so -t "${pkgdir}/usr/lib/mupen64plus"
-    install -D -m644 m64p/mupen64plus/mupen64plus-video-GLideN64.so -t "${pkgdir}/usr/lib/mupen64plus"
-    install -D -m644 m64p/mupen64plus/GLideN64.custom.ini -t "${pkgdir}/usr/share/mupen64plus"
+    install -D -m644 m64p/mupen64plus/mupen64plus-video-parallel.so -t "${pkgdir}/usr/lib/mupen64plus"
 }
