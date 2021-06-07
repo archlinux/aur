@@ -2,7 +2,7 @@
 # Contributor: TBK <aur at jjtc dot eu>
 
 pkgname=bluemail
-pkgver=1.1.92
+pkgver=1.1.98
 pkgrel=1
 pkgdesc="BlueMail is a free, secure, universal email app, capable of managing an unlimited number of mail accounts"
 arch=('x86_64')
@@ -20,10 +20,10 @@ options=(!strip)
 # curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/bluemail | jq '.download_url' -r
 # curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/bluemail | jq '.version' -r
 source=('LICENSE'
-        "${pkgname}-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/download/ZVlj0qw0GOFd5JgTfL8kk2Y5eIG1IpiH_80.snap")
+        "${pkgname}-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/download/ZVlj0qw0GOFd5JgTfL8kk2Y5eIG1IpiH_87.snap")
 
 sha512sums=('546994dbf25972659db6130402926020fdfc763b3f41580d812aeb785824218bae1204babe99af51ad91fd758ad0e7f4d0636a00e9130ce13fc6ebb90540e9dc'
-            '16c9edd2fbd04b3e5053e56d9f2495949eb4a03b5eb41f6d429616b60ad785071cf0283a615e3efd708bd3df118a8c9f1cc8f05a41e58e77e8ce987b11461366')
+            '81cf608fc5b4f5eaaa7cbdc2bb45738f84bf7b5baae748d910afb61b0a771e73512d12446da9887fa5a9504cfcf470a15177235fce7659ef51e29d51d2499287')
 
 package() {
     mkdir -p "${pkgdir}/opt"
