@@ -1,0 +1,17 @@
+pkgbase = tree-sitter-fish-git
+	pkgdesc = Fish shell grammar for tree-sitter
+	pkgver = r99.ff49d86
+	pkgrel = 1
+	url = https://github.com/krnik/tree-sitter-fish
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = git
+	makedepends = tree-sitter
+	depends = glibc
+	provides = tree-sitter-fish
+	conflicts = tree-sitter-fish
+	source = tree-sitter-fish-git::git+https://github.com/krnik/tree-sitter-fish
+	sha256sums = SKIP
+
+pkgname = tree-sitter-fish-git
