@@ -1,0 +1,18 @@
+pkgbase = tree-sitter-yaml-git
+	pkgdesc = YAML grammar for tree-sitter
+	pkgver = 0.5.0.r1.g0e36bed
+	pkgrel = 1
+	url = https://github.com/ikatyang/tree-sitter-yaml
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = git
+	makedepends = tree-sitter
+	makedepends = npm
+	depends = gcc-libs
+	provides = tree-sitter-yaml
+	conflicts = tree-sitter-yaml
+	source = tree-sitter-yaml-git::git+https://github.com/ikatyang/tree-sitter-yaml
+	sha256sums = SKIP
+
+pkgname = tree-sitter-yaml-git
