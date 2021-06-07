@@ -1,7 +1,7 @@
 pkgbase = steam-buddy
 	pkgdesc = Configure and manage games in Steam
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gamer-os/steam-buddy
 	arch = any
 	license = MIT
@@ -17,7 +17,6 @@ pkgbase = steam-buddy
 	depends = python-bcrypt
 	depends = python-psutil
 	depends = python-pillow
-	depends = steam-tweaks
 	depends = retroarch
 	depends = libretro-genesis-plus-gx
 	depends = libretro-mgba
