@@ -2,9 +2,9 @@
 # Maintainer: ForMat <2934301923[AT]qq.com>
 
 pkgname=qcef
-pkgver=1.1.6
+pkgver=1.1.8
 pkgrel=1
-cef_binary_commit=fecf00339545d2819224333cc506d5aa22ae8008
+cef_binary_commit=059a0c9cef4e289a50dc7a2f4c91fe69db95035e
 pkgdesc="Qt5 binding of CEF"
 arch=('x86_64')
 url="https://github.com/linuxdeepin/qcef"
@@ -18,8 +18,8 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/linuxdeepin/qcef/archive/$p
         # "cef-$_cefcommit.tar.gz::https://github.com/linuxdeepin/cef-binary/archive/$_cefcommit.tar.gz"
         # http://opensource.spotify.com/cefbuilds/cef_binary_${_cefver}_linux64_minimal.tar.bz2
         # https://raw.githubusercontent.com/cztomczak/cefpython/master/patches/issue231.patch)
-sha512sums=('6d9862f05dbc1975453e4273b9e9a4df6a4514146cfb928b4dce19893098e12c269290e6ecdb66cc0522aedaf968d781c79458b7d69361727bc622b2b133f9a1'
-            '310adbaef333a54c56b9b49af653b6d5c4b00952bf44036b561e4c7544af547332f758bc73d0531f51494b8e0701f6b4900bbe7dac36faca7009009c7800dd1f'
+sha512sums=('72a3a0ca4ef655407e583469f2d55ac38bd6e829e8f9ee270df794a724f192667a97796cb9825a8b08c82810d486091cd504d0387561a3a08615a1e0b2cdfcbd'
+            '42c39f7f764f46ed1420d73d5d170fe8ab13b55b939e4a1a60e10c8c8d7fdb31dd381656196546ae404af02066b0c0bd013a34f4d81f44d8dc44881d73b11a6c'
             '7450ae7c33d847c5d82560f5d32508c605b7e593b3aff7418aecd836859c002d177eee081260d3e816cf89ce043b20a17d87fc17569667b0ddc7a2da696c9472'
             '34a3d83abc573d13fd11c85aa85b0ec7dfb9117b297395773996d38f9cda3314561ccbbecbe0312ebe70dfb641a66c124c3d5e9afbdf40ba0487db5cad9bc406')
 
