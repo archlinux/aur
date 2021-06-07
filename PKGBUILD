@@ -1,7 +1,7 @@
 # Maintainer: Josep Mengual <josepmengual at protonmail.com>
 
 pkgname=wine-discord-ipc-bridge-git
-pkgver=0.0.1.r6.g2f9dfca
+pkgver=0.0.1.6.g2f9dfca
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/0e4ef622/wine-discord-ipc-bridge"
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "wine-discord-ipc-bridge"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c 2-
+    git describe --long --tags | sed 's/^v//;s/-/./g'
 }
 
 build() {
