@@ -1,13 +1,14 @@
 # Maintainer: Spacingbat3 (https://github.com/spacingbat3)
 pkgname=webcord-git
 pkgver=1.4.2.r7.9cf51d0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Discord client based on the Electron engine."
 arch=("any")
 
 _repo="WebCord"
 _author="SpacingBat3"
 
+url="https://github.com/${_author}/${_repo}"
 license=('MIT')
 makedepends=('npm' 'git' 'librsvg' 'imagemagick' 'typescript')
 depends=('electron')
@@ -163,5 +164,5 @@ package() {
     # Make package valid for current major version only
     # (to force users to rebuild it on Electron update)
     _e="$(electron -v --no-sandbox | sed 's~v~~g;s~\..*~~g')"
-    depends=("electron>=${_e}.0.0" "electron<$[_e+1].0.0")
+    [[ ! -z "${_e}" ]] && depends=("electron>=${_e}.0.0" "electron<$[_e+1].0.0")
 }
