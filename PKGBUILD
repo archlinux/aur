@@ -19,6 +19,9 @@ backup=("etc/gitconfig.$_name")
 source=("$pkgname-$pkgver.tgz::$url/archive/$pkgver.tar.gz")
 sha256sums=('706b55667de221b651b0d938dfbb468112b322ed41a634d3ca5c8bd861b19e8a')
 
+# lto fails, ref: https://aur.archlinux.org/packages/git-delta/#comment-811625
+options=('!lto')
+
 
 _setup_build_env() {
   # Assist chroot builds with a persistent cargo cache
