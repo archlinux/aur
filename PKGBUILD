@@ -5,7 +5,7 @@
 
 _basename=xmoto
 pkgname="$_basename-git"
-pkgver=0.6.1.r39.gcdc1204d
+pkgver=0.6.1.r66.ga3450a47
 pkgrel=1
 pkgdesc="A challenging 2D motocross platform game, where physics play an important role."
 arch=('i686' 'x86_64')
