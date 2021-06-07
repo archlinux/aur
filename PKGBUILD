@@ -2,16 +2,16 @@
 
 pkgname=python-aiosmb
 _pkgname=aiosmb
-pkgver=0.2.41
+pkgver=0.2.46
 pkgrel=1
-pkgdesc="Partial Mimikatz implementation in pure Python."
-url="https://pypi.org/project/pypykatz/"
+pkgdesc="Fully asynchronous SMB library written in pure python."
+url="https://github.com/skelsec/aiosmb"
 arch=('any')
 license=('MIT')
 depends=('python' 'python-minikerberos' 'python-winsspi' 'python-asysocks' 'python-prompt_toolkit' 'python-winacl' 'python-six' 'python-tqdm' 'python-colorama')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('8622cba05b30874ae6e5fe53b1a5fecf244390e232cc65d53b433927977f82d4')
+sha256sums=('a4e982534f7d74a1dcb8c28f191318ac16a93b2e3501a5d6d023a8135ec0b345')
 
 package() {
   cd ${_pkgname}-${pkgver}
