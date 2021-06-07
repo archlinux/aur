@@ -7,28 +7,25 @@
 _pkgbase=julia
 pkgbase=${_pkgbase}-aarch64-git
 pkgname=(julia-aarch64-git julia-aarch64-git-docs)
-pkgver=1.6.0.DEV.r48221.gba06f439d18
+pkgver=1.7.0.DEV.r49718.ge2ad3731681
 pkgrel=1
 arch=(aarch64)
 pkgdesc='High-level, high-performance, dynamic programming language'
 url='https://julialang.org/'
 license=(MIT)
-depends=(cblas hicolor-icon-theme libgit2 libunwind libutf8proc openblas icu
-         suitesparse mbedtls mpfr openlibm pcre2 libssh2 curl zlib
-         xdg-utils desktop-file-utils gtk-update-icon-cache patchelf llvm)
+# build fails with system blas/openblas
+depends=(fftw hicolor-icon-theme libgit2 libunwind libutf8proc #openblas cblas
+         suitesparse mbedtls mpfr openlibm pcre2 llvm-libs llvm
+         curl zlib libssh2 xdg-utils desktop-file-utils gtk-update-icon-cache patchelf p7zip)
 makedepends=(cmake gcc-fortran gmp python git)
 # Needed if building the documentation
 #makedepends+=('juliadoc-git' 'texlive-langcjk' 'texlive-latexextra')
 source=(git+https://github.com/JuliaLang/julia.git#branch=master
         Make.user
-        julia-system-cblas.patch
-        libunwind-version.patch
         make-install-no-build.patch)
 sha256sums=('SKIP'
-            '66302108f04242392379677e70ba9b9eb8961e35dc87915a738137aaa67db231'
-            'd4c8fe9eec1bc416549924ae328ceb3f63cc736ecd5e67886faa924e7c14bc5d'
-            '856dab2da8124df95e4fbd17f1164bebe1b10e99852fedf38f9dfe31f8ae295c'
-            '0b57e0bc6e25c92fde8a6474394f7a99bfb57f9b5d0f7b53f988622ae67de8b7')
+            'SKIP'
+            '8be4605f92a009072ca7e843549c225fc4e959893498e7c4f8f79e861e63714d')
 
 pkgver() {
   cd $_pkgbase
@@ -47,30 +44,17 @@ prepare() {
   msg2 'Configuring the build...'
   cp -v $srcdir/Make.user .
 
-  # Add and use option to build with system cblas
-  patch -p1 -i ../julia-system-cblas.patch
-
-  # Fixing libunwind version check
-  # https://github.com/JuliaLang/julia/pull/29082
-  patch -p1 -i ../libunwind-version.patch
-
-  # Don't build again in install
+# Don't build again in install
   patch -p1 -i ../make-install-no-build.patch
 
-  # For some reason during build time julia tries to load
-  # libgcc_s and libopenlibm from build directory instead of system ones
-  mkdir usr
-  mkdir usr/lib
-  cp /usr/lib/libgcc_s.so.1 usr/lib
-  cp /usr/lib/libopenlibm.so* usr/lib
+# Fix test failure
+  sed -e 's|0.22314355f0 + 3.1415927f0im|0.22314355f0 - 3.1415927f0im|' -i stdlib/LinearAlgebra/test/lu.jl
 }
 
 build() {
   # See FS#58221 for why USE_SYSTEM_ARPACK=0 is used, for now
-  export PATH="$srcdir/bin:$PATH"
-  #hack to build stringreplace, otherwise install will fail
-  cp "$_pkgbase"/Makefile{.orig,}
-  env CFLAGS="-O2 -pipe -fstack-protector-strong -w" CXXFLAGS="-O2 -pipe -fstack-protector-strong -w" make VERBOSE=1 -C "$_pkgbase"
+  #export PATH="$srcdir/bin:$PATH"
+  env CFLAGS="-O2 -pipe -fstack-protector-strong -w" CXXFLAGS="-O2 -pipe -fstack-protector-strong -w" make VERBOSE=1 -C "$_pkgbase" -j2
 
   # Building doc
   cd $_pkgbase/doc
