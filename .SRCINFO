@@ -16,4 +16,3 @@ pkgbase = obfs4proxy
 	sha512sums = 7d7fef951bcebd4433dfb638896d4be15dc090d38a3b54c9a9d34ea264b006cff75a42da1b97b6af998cfbc3b44919770cd8cb519ada351486a247faf47c656f
 
 pkgname = obfs4proxy
-
