@@ -1,0 +1,18 @@
+pkgbase = perl-gtk2-ex-form-factory
+	pkgdesc = Gtk2::Ex::FormFactory -- makes building complex GUI's easy
+	pkgver = 0.67
+	pkgrel = 1
+	url = https://metacpan.org/release/Gtk2-Ex-FormFactory
+	arch = any
+	license = LGPL
+	license = Perl
+	depends = perl
+	depends = gtk2-perl
+	depends = perl-gtk2-ex-simple-list
+	conflicts = perl-gtk2-ex-formfactory
+	options = !emptydirs
+	source = https://www.exit1.org/packages/Gtk2-Ex-FormFactory/dist/Gtk2-Ex-FormFactory-0.67.tar.gz
+	sha1sums = 1d42ad798a16efb212d984b3d38b630a8bf1cdb3
+
+pkgname = perl-gtk2-ex-form-factory
+
