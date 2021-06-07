@@ -1,20 +1,21 @@
 # Maintainer: OpenSorcerer <alex at opensourcery dot eu>
 pkgname=airvpn-suite
 _pkgname=AirVPN-Suite
-pkgver=1.0.0
-pkgrel=7
-_commit="fee05fd016b22d222ec85846786c1d627b03b40e"
+pkgver=1.1.0
+pkgrel=1
+_commit="46273bd11471b5b7d4c551c65bd1f304e12e1877"
 pkgdesc="AirVPN client software collection including Bluetit, Goldcrest and Hummingbird – stable"
 arch=('x86_64')
 url="https://gitlab.com/AirVPN/$_pkgname"
 license=('GPL3')
-provides=('hummingbird' 'airvpn-suite-beta-bin')
-conflicts=('hummingbird' 'airvpn-suite-beta-bin')
+provides=('hummingbird' 'hummingbird-bin' 'airvpn-suite-bin' 'airvpn-suite-beta-bin')
+conflicts=('hummingbird' 'hummingbird-bin' 'airvpn-suite-bin' 'airvpn-suite-beta-bin')
 depends=('dbus' 'openssl' 'libxml2' 'xz' 'lz4' 'crypto++')
 makedepends=('gcc' 'make' 'pkgconf' 'autoconf' 'automake' 'git')
 source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 install="$pkgname.install"
+changelog="Changelog-Suite.txt"
 
 build() {
     # set vars needed by original OpenVPN3 build scripts
@@ -57,7 +58,7 @@ package() {
     # place configuration
     install -Dm600 -t "$pkgdir/etc/airvpn/" "$_pkgname"/etc/airvpn/*
 
-    # place D-Bus config#
+    # place D-Bus config
     install -Dm644 -t "$pkgdir/etc/dbus-1/system.d/" "$_pkgname"/etc/dbus-1/system.d/*
 
     # place Systemd service
