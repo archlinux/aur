@@ -1,4 +1,5 @@
 # Maintainer: Stephen Checkley <scheckley at gmail dot com>
+# Contributor: jrohwer 
 pkgname=copasi-bin
 pkgver=4.31.243
 _pkgver=${pkgver##*.}
