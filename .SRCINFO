@@ -1,0 +1,24 @@
+pkgbase = webcord-git
+	pkgdesc = A Discord client based on the Electron engine.
+	pkgver = 1.4.2.r7.9cf51d0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	makedepends = librsvg
+	makedepends = imagemagick
+	makedepends = typescript
+	depends = electron
+	optdepends = papirus-icon-theme: extra icons
+	provides = webcord
+	conflicts = webcord
+	source = webcord::git+https://github.com/SpacingBat3/WebCord.git
+	source = webcord.desktop
+	md5sums = SKIP
+	md5sums = 85d234a65c69f3cf817fac5c54c194c8
+
+pkgname = webcord-git
+	depends = electron>=.0.0
+	depends = electron<1.0.0
+
