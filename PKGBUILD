@@ -3,7 +3,7 @@
 # Corrected with a smile by CvR_XX <info@carlosvanrooijen.nl>
 
 pkgname=nrf5x-command-line-tools
-pkgver=10.12.1
+pkgver=10.12.2
 pkgrel=2
 pkgdesc="Tools for programming Nordic nRF51, nRF52 and nRF91 MCU using J-Link"
 arch=('x86_64')
@@ -13,13 +13,16 @@ depends=('jlink-software-and-documentation')
 provides=('nrfjprog')
 conflicts=('nrfjprog')
 options=()
-_source="https://www.nordicsemi.com/-/media/Software-and-other-downloads/Desktop-software/nRF-command-line-tools/sw/Versions-10-x-x/${pkgver//./-}/nRFCommandLineTools${pkgver//./}Linux"
-source_x86_64=("${_source}amd64.tar.gz")
-md5sums_x86_64=('a5d88595f13296614f07a8e8da6716b6')
+_source="https://www.nordicsemi.com/-/media/Software-and-other-downloads/Desktop-software/nRF-command-line-tools/sw/Versions-10-x-x/${pkgver//./-}/nRF-Command-Line-Tools_${pkgver//./_}_Linux-"
+source_x86_64=("${_source}amd64.zip")
+md5sums_x86_64=('f70bee8805f7bb2f93063c67d197a0d0')
+
+# https://www.nordicsemi.com/-/media/Software-and-other-downloads/Desktop-software/nRF-command-line-tools/sw/Versions-10-x-x/10-12-2/nRF-Command-Line-Tools_10_12_2_Linux-amd64.zip
 
 package() {
-    cd ${srcdir}
-    tar xf "nRF-Command-Line-Tools_${pkgver//./_}.tar"
+    cd ${srcdir}/nRF-Command-Line-Tools_10_12_2_Linux-amd64
+    tar zxf "nRF-Command-Line-Tools_10_12_2_Linux-amd64.tar.gz"
+    tar xf "nRF-Command-Line-Tools_10_12_2.tar"
 
     # Install nrfjprog and mergehex
     install -dm755 "${pkgdir}/opt/nrfjprog" "${pkgdir}/opt/mergehex"
