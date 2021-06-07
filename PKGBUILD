@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/novomesk/$_pkgname"
 license=('BSD')
 depends=('qt5-base' 'libavif')
-makedepends=('git' 'make')
+makedepends=('git')
 source=("git+$url.git")
 sha256sums=('SKIP')
 

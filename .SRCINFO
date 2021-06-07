@@ -6,7 +6,6 @@ pkgbase = qt-avif-image-plugin-git
 	arch = x86_64
 	license = BSD
 	makedepends = git
-	makedepends = make
 	depends = qt5-base
 	depends = libavif
 	source = git+https://github.com/novomesk/qt-avif-image-plugin.git
