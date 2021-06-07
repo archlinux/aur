@@ -10,7 +10,7 @@ pkgname=${_pkgname}-git
 pkgver=v0.14.1.r0.g9e0c85e5
 pkgrel=1
 pkgdesc="An advanced and well-established feature-rich text mode web browser. Git version."
-arch=("i686" "x86_64")
+arch=(i686 x86_64 armv6h armv7h aarch64)
 url="https://github.com/rkd77/elinks"
 provides=(${_pkgname})
 license=('GPL')
@@ -27,7 +27,12 @@ pkgver() {
 build() {
   cd "${_pkgname}"
 
-  [ -x configure ] || sh autogen.sh
+  # not needed when using autoreconf
+  #[ -x configure ] || sh autogen.sh
+
+  # autoreconf to allow compiling on arm (project's config is outdated (updated 2004)?)
+  autoreconf -ifv
+
   ./configure --prefix=/usr --mandir=/usr/share/man \
               --sysconfdir=/etc \
               --with-zlib \
