@@ -4,7 +4,7 @@
 pkgbase=ogre-1.9
 pkgname=('ogre-1.9' 'ogre-docs-1.9')
 pkgver=1.9.1
-pkgrel=5
+pkgrel=6
 pkgdesc='Scene-oriented, flexible 3D engine written in C++'
 arch=('x86_64')
 url='https://www.ogre3d.org'
@@ -14,15 +14,25 @@ depends=('freeimage' 'freetype2' 'libxaw' 'libxrandr' 'openexr'
          'boost-libs')
 makedepends=('cmake' 'doxygen' 'graphviz' 'ttf-dejavu' 'mesa' 'python' 'swig' 'systemd')
 provides=('ogre=1.9' 'ogre-docs=1.9')
-source=("https://github.com/OGRECave/ogre/archive/v${pkgver}.tar.gz")
-sha512sums=('69e1ea27ef3126ac0e09be9c1f8a9fc762630cd236ce6c3352a550ad977925387b1dfb9d124cc27bb8ac5231e036155451db988a26de6fb2df6da6f7d961115d')
+source=("https://github.com/OGRECave/ogre/archive/v${pkgver}.tar.gz"
+        "sample-comparison-operator-const-args.patch::https://github.com/OGRECave/ogre/commit/4a430a4846d1ea68f669de6b61a72934ac153f7b.patch"
+        "sample-comparison-operator-const-callable.patch::https://github.com/OGRECave/ogre/commit/9b1c536b85448ea971822081c7e3c775dbb5cc47.patch"
+)
+sha512sums=('69e1ea27ef3126ac0e09be9c1f8a9fc762630cd236ce6c3352a550ad977925387b1dfb9d124cc27bb8ac5231e036155451db988a26de6fb2df6da6f7d961115d'
+            'SKIP'
+            'SKIP'
+)
 
 prepare() {
-  mkdir -p ogre-${pkgver}/build
+  cd "${srcdir}/ogre-${pkgver}"
+  patch -l --strip=1 < "${srcdir}/sample-comparison-operator-const-args.patch"
+  patch -l --strip=1 < "${srcdir}/sample-comparison-operator-const-callable.patch"
+
+  mkdir -p "${srcdir}/ogre-${pkgver}/build"
 }
 
 build() {
-  cd ogre-${pkgver}/build
+  cd "${srcdir}/ogre-${pkgver}/build"
 
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
