@@ -49,4 +49,5 @@ package() {
 	# needs to change binary directory from /usr/sbin to /usr/bin
 	make DESTDIR="$pkgdir/" install
 	ln -s $pkgdir/usr/lib/libcryptsetup.so $pkgdir/usr/lib/libcryptsetup.so.12
+	echo "see https://github.com/kriswebdev/cryptsetup-deluks/wiki/System-encryption for more information."
 }
