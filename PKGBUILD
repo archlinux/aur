@@ -3,11 +3,10 @@
 
 pkgbase=qemu-pinning
 _pkgname=qemu
-pkgname=(qemu-pinning qemu-pinning-headless qemu-pinning-arch-extra qemu-pinning-headless-arch-extra
-         qemu-pinning-block-{iscsi,rbd,gluster} qemu-pinning-guest-agent)
+pkgname=(qemu-pinning qemu-pinning-headless qemu-pinning-arch-extra qemu-pinning-headless-arch-extra qemu-pinning-block-{iscsi,rbd,gluster} qemu-pinning-guest-agent)
 pkgdesc="A generic and open source machine emulator and virtualizer. Patch from saveriomiroddi/qemu-pinning applied."
-pkgver=5.0.0
-pkgrel=7
+pkgver=6.0.0
+pkgrel=6
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
 url="https://wiki.qemu.org/"
@@ -17,21 +16,18 @@ _headlessdeps=(seabios gnutls libpng libaio numactl libnfs
 depends=(virglrenderer sdl2 vte3 libpulse brltty "${_headlessdeps[@]}")
 makedepends=(spice-protocol python ceph libiscsi glusterfs python-sphinx xfsprogs)
 source=(https://download.qemu.org/qemu-$pkgver.tar.xz{,.sig}
-        iouring-1.patch::https://github.com/qemu/qemu/commit/de137e44f75d9868f5b548638081850f6ac771f2.patch
-        iouring-2.patch::https://github.com/qemu/qemu/commit/ba607ca8bff4d2c2062902f8355657c865ac7c29.patch
-        hostmem.patch::https://github.com/qemu/qemu/commit/70b6d525dfb51d5e523d568d1139fc051bc223c5.patch
-        qemu-ga.service
+        build-most-modules-statically-hack.diff
+        qemu-guest-agent.service
         65-kvm.rules
-        https://github.com/saveriomiroddi/qemu-pinning/commit/76241abfe8c5c71bc02a7e268ff3d3ca0734308c.diff)
+        qemu-pinning-$pkgver.patch::https://github.com/saveriomiroddi/qemu-pinning/commit/61050b3f3400cd8d984b4db63d104e2480682227.patch
+) 
 provides=(qemu)
-sha512sums=('21ef0cbe107c468a40f0fa2635db2a40048c8790b629dfffca5cd62bb1b502ea8eb133bfc40df5ecf1489e2bffe87f6829aee041cb8a380ff04a8afa23b39fcf'
+sha512sums=('ee3ff00aebec4d8891d2ff6dabe4e667e510b2a4fe3f6190aa34673a91ea32dcd2db2e9bf94c2f1bf05aa79788f17cfbbedc6027c0988ea08a92587b79ee05e4'
             'SKIP'
-            '533010ba4adb2678e232febaa0ae476556a2d319d431ab14c83985510e3a0f8159fca20a926df0f8b30e02c7859e1b33ffd8f7fcd6144dc87f09ea62a177b82b'
-            'ffea3356fcc5c42a5e3d811f47ff1a0add6f3e3c96de7ee11a6a17c9667b4e5b2f1f0e9eabb59b448e421824d02a3038d1149d02398986e1ec7a752c7e71e9b1'
-            'ddbd9e141ae918c52a97c1e28da372e939848223951f00dc84e1d0980ce87b90e4b9b2289c2100976c94042f04eaa234f201ab605e430e970da98e98879e4b2c'
+            '8721068fb968dbae62ceff71aa46eb4c2452c7fde95b87396b439f2f927ea84d2ee2c512264a9f28a5ccaf3096aacce052cebf209aaffd62a201b5bafb512002'
             '269c0f0bacbd06a3d817fde02dce26c99d9f55c9e3b74bb710bd7e5cdde7a66b904d2eb794c8a605bf9305e4e3dee261a6e7d4ec9d9134144754914039f176e4'
             'bdf05f99407491e27a03aaf845b7cc8acfa2e0e59968236f10ffc905e5e3d5e8569df496fd71c887da2b5b8d1902494520c7da2d3a8258f7fd93a881dd610c99'
-            'SKIP')
+            '3331cf44d8ecd3ed6bac243e4800ecc3ee81262f31c5577043f7af84cc55cc2d90bc7faa60f255dab3de68e5370ce99b9d862da879ef545f0c081d0cba4df600')
 validpgpkeys=('CEACC9E15534EBABB82D3FA03353C9CEF108B584')
 
 case $CARCH in
@@ -44,15 +40,8 @@ prepare() {
   mkdir -p extra-arch-{full,headless}/usr/{bin,share/qemu}
 
   cd ${_pkgname}-${pkgver}
-
-  # FS#66578 FS#66710
-  patch -p1 < ../iouring-1.patch
-  patch -p1 < ../iouring-2.patch
-
-  # FS#66646
-  patch -p1 < ../hostmem.patch
-
-  patch -p1 < ../76241abfe8c5c71bc02a7e268ff3d3ca0734308c.diff
+  patch -p1 < ../build-most-modules-statically-hack.diff
+  patch -p1 < ../qemu-pinning-$pkgver.patch
 }
 
 build() {
@@ -225,10 +214,10 @@ package_qemu-pinning-block-gluster() {
 
 package_qemu-pinning-guest-agent() {
   pkgdesc="QEMU Guest Agent"
-  depends=(gcc-libs glib2 libudev.so)
+  depends=(gcc-libs glib2 libudev.so liburing)
 
-  install -D build-full/qemu-ga "$pkgdir/usr/bin/qemu-ga"
-  install -Dm644 qemu-ga.service "$pkgdir/usr/lib/systemd/system/qemu-ga.service"
+  install -D build-full/qga/qemu-ga "$pkgdir/usr/bin/qemu-ga"
+  install -Dm644 qemu-guest-agent.service "$pkgdir/usr/lib/systemd/system/qemu-guest-agent.service"
   install -Dm755 "$srcdir/qemu-$pkgver/scripts/qemu-guest-agent/fsfreeze-hook" "$pkgdir/etc/qemu/fsfreeze-hook"
 }
 
