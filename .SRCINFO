@@ -23,6 +23,6 @@ pkgbase = passwordmanager-qt6
 	depends = desktop-file-utils
 	depends = xdg-utils
 	source = passwordmanager-4.1.7.tar.gz::https://github.com/Martchus/passwordmanager/archive/v4.1.7.tar.gz
-	sha256sums = 2498867bb85e267202cd8d0e665f9675456072882d43c5aba22219474ccfa008
+	sha256sums = 1f41fa3d39c9280cdba447c7e52074b65983ce8a257114231c773eea7a98c0b1
 
 pkgname = passwordmanager-qt6
