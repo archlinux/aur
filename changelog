@@ -1,3 +1,19 @@
+Proton-6.10-GE-1 Released
+
+-Added UE4 preinstall workaround for Necrumunda
+-Added UE4 preinstall workaround for Deliver us the Moon
+-Added fix for Guilty Gear XX Accent Core R 2 hang
+-Added Horizon Zero Dawn animations patch
+-Added FarCry regression hotfix
+-Origin seems to be much more stable/reliable now in regards to installation and launching
+-Added staging bcrypt patches rebased on top of proton rdr2 patches (allows Steep online mode to work again)
+-Added proton nvapi updates-Added proton QPC performance patches (should help with fps regression)
+-Added proton LFH performance patches (should help with frame times)
+-dxvk updated with proton latency fixes
+-vkd3d updated with proton latency fixes
+-faudio updated
+-steamclient updated with splitgate fix
+
 Proton-6.9-GE-2 Released
 
 This build is a hotfix for Resident Evil Village (8)
