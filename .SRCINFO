@@ -1,11 +1,11 @@
 pkgbase = drill-search
 	pkgdesc = Search files without indexing, but clever crawling
 	pkgver = 566
-	pkgrel = 1
+	pkgrel = 2
 	url = https://drill.software
 	arch = x86_64
 	license = GPL2
-	makedepends = dmd
+	makedepends = ldc
 	makedepends = dub
 	makedepends = gtk3
 	source = drill-search-566.tar.gz::https://github.com/yatima1460/Drill/archive/refs/tags/v566.tar.gz
