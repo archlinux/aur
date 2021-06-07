@@ -23,6 +23,6 @@ pkgbase = tageditor-qt6
 	depends = xdg-utils
 	depends = qt6-declarative
 	source = tageditor-3.4.0.tar.gz::https://github.com/Martchus/tageditor/archive/v3.4.0.tar.gz
-	sha256sums = 0d720dcfce039c5dc85c0dcc0ce3daa0bd15835394c977da28b20a63e09f0d71
+	sha256sums = 8623057c2b1bf38eaab7d8de87e259ce639afcac35253145d102e91751015835
 
 pkgname = tageditor-qt6
