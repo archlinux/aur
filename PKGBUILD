@@ -12,11 +12,14 @@ depends=('java-runtime>=11')
 optdepends=('qrencode: display account linking token as QR code')
 conflicts=('signald-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/signald/signald/-/archive/${pkgver}/signald-${pkgver}.tar.gz"
-        'gradle-no-daemon.patch')
+        'gradle-no-daemon.patch'
+        "${pkgname}.install")
 sha512sums=('a413781248a10505294fe8c36772d887ecbbbf63a9a38a93994674e1cad0a23ac3cc5f4d8aae5fe0c0363fd2b96bc881100a06aed38f13bf524b24dd5930d540'
-            'aa2ff9eef6ebd8ad31275a587b7b24e34938e9744b06892c96d43e274b18a15d2f0258f56cea8fea9163e85a754ebde1e66c20781876bcb524960defe02ce535')
-            
+            'aa2ff9eef6ebd8ad31275a587b7b24e34938e9744b06892c96d43e274b18a15d2f0258f56cea8fea9163e85a754ebde1e66c20781876bcb524960defe02ce535'
+            '17b3a0ddb756f4be0e063dcd94e3dc4b895dba6739d959c54ab52448779d3f37e646052a5505edbe8160caa9fef2411c9d54df35d8696bf42c78dfa7951a07e2')
+
 backup=('var/lib/signald/data')
+install="${pkgname}.install"
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -34,7 +37,6 @@ package() {
     rm "build/install/signald/bin/signald.bat"
     install -dm755 "${pkgdir}/var/lib/signald/data"
     cp -dr --no-preserve=ownership "build/install/signald/" "${pkgdir}/var/lib/"
-    #chown -R ${_daemon_uid}:${_daemon_uid} "${pkgdir}/var/lib/signald/"
 
     install -dm755 "${pkgdir}/usr/bin/"
     ln -s ../../var/lib/signald/bin/signald "${pkgdir}/usr/bin/signald"

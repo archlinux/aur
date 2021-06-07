@@ -1,0 +1,7 @@
+post_install() {
+  chown -R signald:signald "/var/lib/signald/"
+}
+
+post_upgrade() {
+  post_install
+}
