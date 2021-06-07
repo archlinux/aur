@@ -27,10 +27,10 @@ index fb38ffe34fe..c26c447ad3d 100644
  			{
  				Result += " -fno-inline-functions";
 diff --git a/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/UEBuildLinux.cs b/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/UEBuildLinux.cs
-index 2f0acc23d7a..5503cb87646 100644
+index 2f0acc23d7a..efd662a7c35 100644
 --- a/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/UEBuildLinux.cs
 +++ b/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/UEBuildLinux.cs
-@@ -73,6 +73,12 @@ namespace UnrealBuildTool
+@@ -73,6 +73,13 @@ namespace UnrealBuildTool
  		[CommandLine("-ThinLTO")]
  		public bool bEnableThinLTO = false;
  
@@ -38,12 +38,13 @@ index 2f0acc23d7a..5503cb87646 100644
 +		/// Enables Native cpu instruction set
 +		/// </summary>
 +		[CommandLine("-EnableNativeInstructionSet")]
++		[XmlConfigFile(Category = "BuildConfiguration", Name = "bEnableNativeInstructionSet")]
 +		public bool bEnableNativeInstructionSet = false;
 +
  		/// <summary>
  		/// Whether or not to preserve the portable symbol file produced by dump_syms
  		/// </summary>
-@@ -137,6 +143,11 @@ namespace UnrealBuildTool
+@@ -137,6 +144,11 @@ namespace UnrealBuildTool
  			get { return Inner.bEnableThinLTO; }
  		}
  
@@ -55,7 +56,7 @@ index 2f0acc23d7a..5503cb87646 100644
  		#if !__MonoCS__
  		#pragma warning restore CS1591
  		#endif
-@@ -617,6 +628,11 @@ namespace UnrealBuildTool
+@@ -617,6 +629,11 @@ namespace UnrealBuildTool
  				Options |= LinuxToolChainOptions.EnableThinLTO;
  			}
  

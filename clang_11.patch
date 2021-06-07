@@ -15,19 +15,6 @@ diff --git a/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChai
 index 1f856d789be..b4ffbeb2950 100644
 --- a/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs
 +++ b/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs
-@@ -186,10 +186,10 @@ namespace UnrealBuildTool
- 				throw new BuildException("Unable to build: no compatible clang version found. Please run Setup.sh");
- 			}
- 			// prevent unknown clangs since the build is likely to fail on too old or too new compilers
--			else if ((CompilerVersionMajor * 10 + CompilerVersionMinor) > 100 || (CompilerVersionMajor * 10 + CompilerVersionMinor) < 60)
-+			else if ((CompilerVersionMajor * 10 + CompilerVersionMinor) > 111 || (CompilerVersionMajor * 10 + CompilerVersionMinor) < 60)
- 			{
- 				throw new BuildException(
--					string.Format("This version of the Unreal Engine can only be compiled with clang 10.0, 9.0, 8.0, 7.0 and 6.0. clang {0} may not build it - please use a different version.",
-+					string.Format("This version of the Unreal Engine can only be compiled with clang 11.1, 10.0, 9.0, 8.0, 7.0 and 6.0. clang {0} may not build it - please use a different version.",
- 						CompilerVersionString)
- 					);
- 			}
 @@ -592,6 +592,12 @@ namespace UnrealBuildTool
  			}
  

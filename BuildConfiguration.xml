@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Configuration xmlns="https://www.unrealengine.com/BuildConfiguration">
+	<bEnableNativeInstructionSet>true</bEnableNativeInstructionSet>
 	<LocalExecutor>
-		<ProcessorCountMultiplier>1.2</ProcessorCountMultiplier>
+		<ProcessorCountMultiplier>1.25</ProcessorCountMultiplier>
 		<MaxProcessorCount>30</MaxProcessorCount>
 	</LocalExecutor>
 </Configuration>
