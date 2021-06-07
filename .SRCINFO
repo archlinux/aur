@@ -1,0 +1,15 @@
+pkgbase = wine-discord-ipc-bridge-git
+	pkgver = 0.0.1.r6.g2f9dfca
+	pkgrel = 1
+	url = https://github.com/0e4ef622/wine-discord-ipc-bridge
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-binutils
+	provides = wine-discord-ipc-bridge-git-git
+	conflicts = wine-discord-ipc-bridge-git-git
+	source = git+https://github.com/0e4ef622/wine-discord-ipc-bridge.git
+	sha256sums = SKIP
+
+pkgname = wine-discord-ipc-bridge-git
