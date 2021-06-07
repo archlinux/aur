@@ -13,7 +13,7 @@
 
 pkgname=libreoffice-fresh-rpm
 pkgver=7.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Libre Office Suite installed from rpms"
 arch=('x86_64')
 url='https://www.libreoffice.org'
@@ -37,6 +37,7 @@ msg "Debug: 2";
 declare -ar opt_pak=('langpack' 'helppack');  ## declare optional extensions
 msg "Debug: 3";
 for a in ${opt_pak[@]}; do  ## loop for all optional extensions
+  msg "Debug: 4";
   read -p "Do you want to install additional ${a} (Y/y/N/n)?" opt_ans;
   case $opt_ans in  ## evaluate the answer
     Y|y)
