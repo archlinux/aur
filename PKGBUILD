@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> https://github.com/mschubert/PKGBUILDs
 pkgname=latex-media9
 _pkgname=${pkgname#latex-}
-pkgver=1.14
+pkgver=1.15
 pkgrel=1
 pkgdesc="Embed video/sound (SWF, MP4, FLV, MP3) files in PDFs"
 arch=('any')
