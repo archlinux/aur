@@ -1,11 +1,11 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 pkgname=python-imaplib2-git
-pkgver=r162.be2c018
+pkgver=r166.94218ec
 pkgrel=1
 pkgdesc="Threaded Python IMAP4 client"
 arch=("any")
 url="https://github.com/jazzband/imaplib2"
-license=("Python")
+license=("MIT")
 depends=("python")
 makedepends=("git" "python-setuptools")
 provides=("${pkgname%-git}")
@@ -29,4 +29,7 @@ package() {
 
     # install README
     install -Dm644 "README" -t "$pkgdir/usr/share/doc/$pkgname"
+
+    # install LICENSE
+    install -Dm644 "LICENCE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
