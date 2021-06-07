@@ -2,7 +2,7 @@
 
 pkgname=neovim-tree-sitter-git
 pkgver=r1398.37ed50f
-pkgrel=1
+pkgrel=2
 pkgdesc="Neovim tree-sitter configurations and abstraction layer"
 arch=('any')
 url="https://github.com/nvim-treesitter/nvim-treesitter"
@@ -10,7 +10,6 @@ license=('Apache')
 groups=('neovim-plugins')
 depends=('neovim-git' 'tree-sitter')
 makedepends=('git')
-optdepends=('tree-sitter-grammars')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install="$pkgname.install"
