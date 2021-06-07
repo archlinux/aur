@@ -1,3 +1,4 @@
 post_install() {
-	printf "\tTo let threadwatcher automatically scan for new files, consider using a cronjob such as\n\t\t*/10 * * * * /usr/bin/threadwatcher scan"
+	echo "  To let threadwatcher automatically scan for new files, consider using a cronjob such as"
+	echo "  */10 * * * * /usr/bin/threadwatcher scan"
 }
