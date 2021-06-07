@@ -3,7 +3,7 @@
 _perlmod='Mail-BIMI'
 _modnamespace=Mail
 pkgname=perl-mail-bimi
-pkgver=3.20210301
+pkgver=3.20210512
 pkgrel=1
 pkgdesc="BIMI object"
 arch=("any")
@@ -13,7 +13,7 @@ depends=('perl' 'perl-app-cmd' 'perl-cache-fastmmap' 'perl-capture-tiny' 'perl-c
 makedepends=('perl-net-dns-resolver-mock' 'perl-test-class' 'perl-test-exception' 'perl-test-requiresinternet')
 options=('!emptydirs')
 source=("http://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz")
-sha256sums=('6058b73ae973ff12c55d8b697541731d2cdcb6d033ae59ba4054aefb29fec49e')
+sha256sums=('f6a360db130e120f58a58a2b4feef219c9d2a377f507b9693adda66f2838b130')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
