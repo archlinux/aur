@@ -14,12 +14,13 @@
 pkgname=libreoffice-fresh-rpm
 pkgver=7.1.3
 pkgrel=1
-pkgdesc="LGPL Office Suite installed from rpms"
+pkgdesc="Libre Office Suite installed from rpms"
 arch=('x86_64')
 url='https://www.libreoffice.org'
 license=('LGPL')
 depends=('glibc>=2.5' 'gtk2>=2.10.4' 'xorg-server')
-conflicts=('libreoffice-fresh' 'libreoffice-base')
+provides=(libreoffice)
+conflicts=('libreoffice-fresh' 'libreoffice-base' 'libreoffice-still')
 makedepends=('curl' 'awk')
 optdepends=('jre8-openjdk' 'gtk3' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
 # WARNING sha256sums values should be taken from details page about rpm.tar.gz files from servers. DO NOT USE _updpgksums_ tool.

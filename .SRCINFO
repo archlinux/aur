@@ -1,5 +1,5 @@
 pkgbase = libreoffice-fresh-rpm
-	pkgdesc = LGPL Office Suite installed from rpms
+	pkgdesc = Libre Office Suite installed from rpms
 	pkgver = 7.1.3
 	pkgrel = 1
 	url = https://www.libreoffice.org
@@ -16,10 +16,11 @@ pkgbase = libreoffice-fresh-rpm
 	optdepends = gst-plugins-good
 	optdepends = gst-plugins-bad
 	optdepends = gst-plugins-ugly
+	provides = libreoffice
 	conflicts = libreoffice-fresh
 	conflicts = libreoffice-base
+	conflicts = libreoffice-still
 	source = https://download.documentfoundation.org/libreoffice/stable/7.1.3/rpm/x86_64/LibreOffice_7.1.3_Linux_x86-64_rpm.tar.gz
 	sha256sums = 09adb0653e76614ada61f01f7ce4a4943e4bd90568d141f6a884f0a247b6b1f4
 
 pkgname = libreoffice-fresh-rpm
-
