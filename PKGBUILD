@@ -2,13 +2,13 @@
 
 pkgname=jrnl-git
 _gitname=jrnl
-pkgver=v2.8.beta.r1.g7bacf4a
-pkgrel=3
+pkgver=v2.8.1.r12.g5e87ff1
+pkgrel=2
 pkgdesc="Collect your thoughts and notes without leaving the command line"
 arch=('any')
 url="https://jrnl.sh/"
 license=('GPL3')
-depends=('python')
+depends=('python' 'python-ansiwrap' 'python-asteval' 'python-colorama' 'python-cryptography' 'python-keyring' 'python-parsedatetime' 'python-dateutil' 'python-pyxdg' 'python-pyaml')
 checkdepends=('python-behave' 'python-pytest' 'python-black')
 makedepends=('git' 'python-dephell' 'python-setuptools')
 conflicts=("jrnl")
@@ -22,14 +22,16 @@ pkgver() {
 
 check() {
   cd "$_gitname"
-  pytest
+  pytest .
   behave --no-skipped --format progress
+
+  black setup.py --diff | patch
+  black --check --diff .
 }
 
 prepare() {
   cd "$_gitname"
   dephell deps convert --from pyproject.toml --to setup.py --envs main
-  black setup.py --diff | patch
 }
 
 build() {

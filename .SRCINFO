@@ -1,7 +1,7 @@
 pkgbase = jrnl-git
 	pkgdesc = Collect your thoughts and notes without leaving the command line
-	pkgver = v2.8.beta.r1.g7bacf4a
-	pkgrel = 3
+	pkgver = v2.8.1.r12.g5e87ff1
+	pkgrel = 2
 	url = https://jrnl.sh/
 	arch = any
 	license = GPL3
@@ -12,9 +12,17 @@ pkgbase = jrnl-git
 	makedepends = python-dephell
 	makedepends = python-setuptools
 	depends = python
+	depends = python-ansiwrap
+	depends = python-asteval
+	depends = python-colorama
+	depends = python-cryptography
+	depends = python-keyring
+	depends = python-parsedatetime
+	depends = python-dateutil
+	depends = python-pyxdg
+	depends = python-pyaml
 	conflicts = jrnl
 	source = git+https://github.com/jrnl-org/jrnl.git
 	md5sums = SKIP
 
 pkgname = jrnl-git
-
