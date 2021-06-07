@@ -1,11 +1,11 @@
 pkgbase = dvdrip
 	pkgdesc = DVD Ripper and Encoder - Backup and compression utility for DVDs
 	pkgver = 0.98.11
-	pkgrel = 14
+	pkgrel = 15
 	url = https://www.exit1.org/dvdrip/
 	arch = x86_64
 	license = custom
-	depends = perl-gtk2-ex-formfactory
+	depends = perl-gtk2-ex-form-factory
 	depends = transcode
 	depends = imagemagick
 	depends = perl-libintl-perl

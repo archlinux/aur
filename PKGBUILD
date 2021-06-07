@@ -4,12 +4,12 @@
 
 pkgname=dvdrip
 pkgver=0.98.11
-pkgrel=14
+pkgrel=15
 pkgdesc="DVD Ripper and Encoder - Backup and compression utility for DVDs"
 arch=('x86_64')
 license=('custom')
 url="https://www.exit1.org/dvdrip/"
-depends=('perl-gtk2-ex-formfactory' 'transcode' 'imagemagick'
+depends=('perl-gtk2-ex-form-factory' 'transcode' 'imagemagick'
          'perl-libintl-perl' 'desktop-file-utils' 'perl-event-execflow')
 optdepends=('ogmtools: for ogm/odd video creation'
             'lsdvd: fast reading of DVD table'
