@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=vim-bitbake-git
-pkgver=r50.d601f51
+pkgver=r90.6d4148c
 _gitname=vim-bitbake
 pkgrel=1
 pkgdesc="Vim files for the BitBake tool"
@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/kergoth/vim-bitbake"
 license=('MIT')
 depends=('vim')
+makedepends=('git')
 source=('git+https://github.com/kergoth/vim-bitbake.git')
 noextract=()
 md5sums=('SKIP')
