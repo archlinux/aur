@@ -2,7 +2,7 @@
 
 pkgname=carta-appimage
 _pkgname="carta"
-pkgver=1.4
+pkgver=2.0
 pkgrel=1
 pkgdesc="Cube Analysis and Rendering Tool for Astronomy"
 arch=('x86_64')
@@ -10,12 +10,12 @@ url="https://cartavis.github.io"
 license=('GPL3')
 depends=('zlib' 'hicolor-icon-theme' 'electron' 'libidn11' 'rtmpdump')
 options=(!strip)
-_appimage="CARTA.AppImage"
-source_x86_64=("${pkgname}-v${pkgver}.tgz::https://github.com/CARTAvis/carta-releases/releases/download/v${pkgver}/CARTA-v${pkgver}-ubuntu.tgz"
+_appimage="CARTA-v2.0-ubuntu.AppImage"
+source_x86_64=("${pkgname}-v${pkgver}.tgz::https://github.com/CARTAvis/carta/releases/download/v${pkgver}/CARTA-v${pkgver}-ubuntu.tgz"
                "LICENSE::https://raw.githubusercontent.com/CARTAvis/carta-backend/v${pkgver}.0/COPYING.md"
               )
 noextract=("${_appimage}")
-sha256sums_x86_64=('c1e1ac5b1dd76ee066f4e74cfcbbbdbaeddf000427e96f97803ec936f66875b5'
+sha256sums_x86_64=('5af69555aeeb97ee410cf2549281f4725180b50e87de0593fd2b954b3ed9d609'
                    '26c03bc049c15fc5b9e52d791a06f1a6bc32f89edc8f8c701ab0aadf66e85b82')
 
 prepare() {
@@ -33,7 +33,7 @@ build() {
 
 package() {
     # AppImage
-    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}-v${pkgver}-ubuntu.AppImage"
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/opt/${pkgname}/LICENSE"
 
     # Desktop file
