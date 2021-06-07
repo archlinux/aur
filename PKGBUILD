@@ -1,4 +1,5 @@
-# Maintainer: Andrew Rabert <draje@nullsum.net>
+# Maintainer: Cullen Ross <cullenrss@gmail.com>
+# Contributor: Andrew Rabert <draje@nullsum.net>
 
 _pkgname=urxvt-config-reload
 pkgname=${_pkgname}-git
