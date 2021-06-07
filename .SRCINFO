@@ -1,7 +1,7 @@
 pkgbase = tt
 	pkgdesc = Terminal based typing test
-	pkgver = 0.4.0
-	pkgrel = 3
+	pkgver = 0.4.1
+	pkgrel = 1
 	url = https://github.com/lemnos/tt
 	arch = x86_64
 	arch = i686
@@ -14,8 +14,7 @@ pkgbase = tt
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = tt-0.4.0::git+https://github.com/lemnos/tt/#commit=57357e2674e30912c6ebae7c0b5009d770ff50e0
-	b2sums = SKIP
+	source = tt-0.4.1.tar.gz::https://github.com/lemnos/tt/archive/refs/tags/v0.4.1.tar.gz
+	b2sums = d42928da6dc3480613e1ecb81506fd4accbe22ef3dfb75b46d1e9471f24e6b5fcc47643de422d88093e03663340bfd3f01e3ad9ca48cea320ed9e6064d6fd14c
 
 pkgname = tt
-

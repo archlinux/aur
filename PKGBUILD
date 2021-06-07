@@ -1,9 +1,7 @@
 # Maintainer: aulonsal <aulonsal at gmail dot com>
 pkgname=tt
-# To match default theme with v4.0.0 binary release
-_gitcommit=57357e2674e30912c6ebae7c0b5009d770ff50e0
-pkgver=0.4.0
-pkgrel=3
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="Terminal based typing test"
 arch=('x86_64' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64' )
 url="https://github.com/lemnos/tt"
@@ -15,8 +13,8 @@ makedepends=(
 	'go'
 	'git'
 )
-source=("$pkgname-$pkgver::git+$url/#commit=$_gitcommit")
-b2sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+b2sums=('d42928da6dc3480613e1ecb81506fd4accbe22ef3dfb75b46d1e9471f24e6b5fcc47643de422d88093e03663340bfd3f01e3ad9ca48cea320ed9e6064d6fd14c')
 
 build() {
 	export local CGO_CPPFLAGS="${CPPFLAGS}"
@@ -32,7 +30,6 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 
-	install -Dm755 bin/tt -t "$pkgdir/usr/bin"
-	install -Dm644 tt.1.gz -t "$pkgdir/usr/share/man/man1"
+	make DESTDIR="$pkgdir" PREFIX='/usr' install
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
