@@ -6,7 +6,7 @@
 _pkgsrcname=all-the-icons.el
 _pkgmaintainer=domtronn
 _versionprefix=
-pkgver=4.0.1
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="Icon font for all-the-icons.el (A utility package to collect various Icon Fonts and propertize them within Emacs.)"
 pkgname=ttf-all-the-icons
@@ -16,7 +16,7 @@ license=('MIT')
 provides=('ttf-atom-file-icons' 'ttf-font-awesome' 'ttf-material-design-icons' 'ttf-octicons' 'ttf-weather-icons')
 conflicts=('ttf-octicons')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${_versionprefix}${pkgver}.tar.gz")
-sha256sums=('30ac8a44efdf638e893b9f802cde3388da8776d39296dcc83694720ba74950d0')
+sha256sums=('72ac4544ba715e082e1150adce50f9ad80b9d350585acd45ee080ac4e91caa57')
 
 package() {
   cd "${srcdir}/${_pkgsrcname}-${pkgver}/"
