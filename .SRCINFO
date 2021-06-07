@@ -1,0 +1,18 @@
+pkgbase = tree-sitter-php-git
+	pkgdesc = PHP grammar for tree-sitter
+	pkgver = 0.19.0.r52.gb065fc4
+	pkgrel = 1
+	url = https://github.com/tree-sitter/tree-sitter-php
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = git
+	makedepends = tree-sitter
+	makedepends = npm
+	depends = gcc-libs
+	provides = tree-sitter-php
+	conflicts = tree-sitter-php
+	source = tree-sitter-php-git::git+https://github.com/tree-sitter/tree-sitter-php
+	sha256sums = SKIP
+
+pkgname = tree-sitter-php-git
