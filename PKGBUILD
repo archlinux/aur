@@ -1,13 +1,13 @@
 # Maintainer: Ward Segers <w@rdsegers.be>
 
 pkgname=dollar
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="Omit the $ from commands"
 arch=('any')
 url="https://github.com/editicalu/dollar"
 source=("https://github.com/editicalu/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=("7d61f7daa957a281b01fc3cd3dfa0beba00b02240d004005c627af89e6dd137082eec5087a66a089b077809ec4f03558ed539a6485cf82d664204b96909af47c")
+sha512sums=("17cca26c01b22d064a999c89a43b65d22eafbcfa575ac5e57195b7fba8de9d88ca713fdd186fdb61c3214fa006c63f8d7b4edde17ab06baa4a6b184b4e9720db")
 
 license=('custom:unlicense')
 conflicts=('dollar-sign')
