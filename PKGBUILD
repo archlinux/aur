@@ -3,16 +3,16 @@
 pkgname=android-ndk-16b-opt
 _pkg=android-ndk
 pkgver=r16_b
-pkgrel=3
-pkgdesc="Android C/C++ developer kit. Don't override package \`android-ndk\` and support any arch"
-arch=('any')
+pkgrel=4
+pkgdesc="Android C/C++ developer kit. Don't override package \`android-ndk\`"
+arch=('x86_64')
 url='https://developer.android.com/ndk/'
 license=('GPL' 'LGPL' 'custom')
 options=('!strip' 'staticlibs')
 provides=('android-ndk')
 replaces=('android-ndk64')
 depends=('ncurses5-compat-libs')
-source=("http://dl.google.com/android/repository/$_pkg-${pkgver/_/}-linux-$(uname -m).zip")
+source=("http://dl.google.com/android/repository/$_pkg-${pkgver/_/}-linux-x86_64.zip")
 sha256sums=('SKIP')
 
 package() {

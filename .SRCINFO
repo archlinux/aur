@@ -1,9 +1,9 @@
 pkgbase = android-ndk-16b-opt
-	pkgdesc = Android C/C++ developer kit. Don't override package `android-ndk` and support any arch
+	pkgdesc = Android C/C++ developer kit. Don't override package `android-ndk`
 	pkgver = r16_b
-	pkgrel = 3
+	pkgrel = 4
 	url = https://developer.android.com/ndk/
-	arch = any
+	arch = x86_64
 	license = GPL
 	license = LGPL
 	license = custom
