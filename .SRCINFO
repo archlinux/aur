@@ -1,7 +1,7 @@
 pkgbase = pdf2djvu
 	pkgdesc = Creates DjVu files from PDF files
-	pkgver = 0.9.17.1
-	pkgrel = 9
+	pkgver = 0.9.18
+	pkgrel = 1
 	url = https://jwilk.net/software/pdf2djvu
 	arch = x86_64
 	license = GPL
@@ -13,11 +13,10 @@ pkgbase = pdf2djvu
 	depends = gcc-libs
 	depends = graphicsmagick
 	depends = exiv2
-	source = https://github.com/jwilk/pdf2djvu/releases/download/0.9.17.1/pdf2djvu-0.9.17.1.tar.xz
-	source = https://github.com/jwilk/pdf2djvu/releases/download/0.9.17.1/pdf2djvu-0.9.17.1.tar.xz.asc
+	source = https://github.com/jwilk/pdf2djvu/releases/download/0.9.18/pdf2djvu-0.9.18.tar.xz
+	source = https://github.com/jwilk/pdf2djvu/releases/download/0.9.18/pdf2djvu-0.9.18.tar.xz.asc
 	validpgpkeys = CDB5A1243ACDB63009AD07212D4EB3A6015475F5
-	sha256sums = 5bbbb7bdc7858a1eeac6ff270e5a323390f2abb6bd3b0b2ae08c1965272226a3
+	sha256sums = 42a855585f9152fad5f1848cc1b0c71a6a102170c452530ba30efef3c602aa6f
 	sha256sums = SKIP
 
 pkgname = pdf2djvu
-
