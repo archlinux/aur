@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='pgbackrest'
-pkgver='2.33'
+pkgver='2.34'
 pkgrel='1'
 pkgdesc='Reliable PostgreSQL Backup & Restore'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/${pkgname}/${pkgname}"
 license=('MIT')
 depends=('openssl' 'libxml2' 'icu' 'gcc-libs' 'xz' 'perl' 'postgresql-libs')
 source=("${url}/archive/release/${pkgver}.tar.gz")
-sha256sums=('772afaf5cae17fa1fa102c84576b8d6a5074ba3ff510bb86d321c98feebff837')
+sha256sums=('eade2fce25fcf68d1b9ae2d772ebb59915e482b04599fb79e639881eca895a70')
 backup=("etc/${pkgname}/${pkgname}.conf")
 
 prepare() {
