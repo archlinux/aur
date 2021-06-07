@@ -1,7 +1,7 @@
 # Contributor: Sapphira Armageddos <shadowkyogre@aim.com>
 pkgname=mse-ygo
 pkgver=2.0.0
-pkgrel=7
+pkgrel=8
 pkgdesc="YugiOh template for Magic Set Editor."
 arch=(any)
 url="http://magicseteditor.sourceforge.net"
@@ -9,8 +9,8 @@ license=('freeware')
 depends=('magicseteditor')
 conflicts=('mse-ygo-xyz')
 provides=('mse-ygo-xyz')
-source=('http://downloads.sourceforge.net/msetemps/Yu-Gi-Oh%20-%20Printed.mse-installer')
-md5sums=('47c1cd2065897d465789844828776f33')
+source=('https://downloads.sourceforge.net/msetemps/Yu-Gi-Oh%20-%20Printed.mse-installer')
+sha256sums=('cb2953c6ee9fef765b7eda25fb691bcd827aaab7009b2ebfb800060889d88636')
 
 package() {
 	cd "$srcdir"
