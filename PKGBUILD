@@ -1,12 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=6.9-GE-2
-_commit=86f8171b04219db5f43598c4bc4c508ade6d344b
+_srctag=6.10-GE-1
+_commit=a565b03d478131b88f0b49b85ba9e56620cd7eaf
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
-_monover=6.1.2
-pkgrel=4
+_monover=6.2.0
+pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -108,6 +108,7 @@ source=(
     wine-staging::git+https://github.com/wine-staging/wine-staging.git
     vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
     dxvk::git+https://github.com/doitsujin/dxvk.git
+    dxvk-nvapi::git+https://github.com/jp7677/dxvk-nvapi.git
     openvr::git+https://github.com/ValveSoftware/openvr.git
     OpenXR-SDK::git+https://github.com/KhronosGroup/OpenXR-SDK.git
     ffmpeg-meson::git+https://gitlab.freedesktop.org/gstreamer/meson-ports/ffmpeg.git
@@ -131,8 +132,6 @@ source=(
     proton-unfuck_makefile.patch
     proton-disable_lock.patch
     proton-user_compat_data.patch
-    patches-remove_broken.patch
-    dxvk-1582_missing_optional.patch
 )
 noextract=(
     wine-gecko-${_geckover}-{x86,x86_64}.tar.xz
@@ -165,7 +164,7 @@ prepare() {
     git config submodule.ffmpeg.url "$srcdir"/ffmpeg-meson
     git submodule update ffmpeg
 
-    for submodule in wine wine-staging dxvk; do
+    for submodule in wine wine-staging dxvk dxvk-nvapi; do
         git submodule init "${submodule}"
         git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
         git submodule update "${submodule}"
@@ -190,15 +189,21 @@ prepare() {
     popd
     popd
 
+    pushd dxvk-nvapi
+    for submodule in external/Vulkan-Headers; do
+        git submodule init "${submodule}"
+        git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
+        git submodule update "${submodule}"
+    done
+    popd
+
     for submodule in lsteamclient vrclient_x64 protonfixes; do
         git submodule init "${submodule}"
         git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}-gloriouseggroll"
         git submodule update "${submodule}"
     done
 
-    patch -p1 -i "$srcdir"/patches-remove_broken.patch
     ./patches/protonprep.sh
-    patch -p1 -i "$srcdir"/dxvk-1582_missing_optional.patch
 
     patch -p1 -i "$srcdir"/proton-unfuck_makefile.patch
     patch -p1 -i "$srcdir"/proton-disable_lock.patch
@@ -315,12 +320,11 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
-            '463efcae9aec82e2ae51adbafe542f2a0674e1a1d0899d732077211f5c62d182'
-            '4b8d2c2836606725f9daaf4b4b127a9dc074abf3ba0cb18ba05534b731d263b6'
+            'f15d6a646b0bf141bd1b826dd4a273bbb6f8f1d592a2b65192281223e986ee15'
+            '82d003a4cc835700c385df5545029b01fa2b05d688752727f7df04b83b3d1ef5'
             '61dbdb4d14e22c2c34b136e5ddb800eac54023b5b23c19acd13a82862f94738c'
             '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
-            '429de61522db02c4c87d31221a59b504eac1fb8b7b5c1a3f61aed3f21350eeb5'
-            'e7e7ebb09115998b49838a8cfac37a3ff820e1eb97c9ecea7a930892fe382890'
 )
