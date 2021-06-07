@@ -2,12 +2,13 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=pwninit-git
-pkgver=2.2.0.r63.g511fb88
-pkgrel=2
+pkgver=3.0.0.r0.g4821f64
+pkgrel=1
 pkgdesc="Automate starting binary exploit challenges (git)"
 arch=('x86_64')
 url="https://github.com/io12/pwninit"
 license=('MIT')
+depends=('openssl' 'xz')
 makedepends=('rust' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
