@@ -2,7 +2,7 @@
 
 pkgname=alire
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A catalog of ready-to-use Ada libraries plus a command-line tool (alr) to obtain, build, and incorporate them into your own projects. It aims to fulfill a similar role to Rust's cargo or OCaml's opam."
 arch=('i686' 'x86_64')
 url="https://alire.ada.dev/"
@@ -46,9 +46,9 @@ prepare()
 {
   # Get the submodules from the sources above
   cd "$srcdir/$pkgname-$pkgver"
-  git apply "$srcdir/alire.patch"
+  patch --strip=1 < "$srcdir/alire.patch"
   # Apply patch as workaround for https://github.com/alire-project/alire/issues/729
-  git apply "$srcdir/20efc54a47ddd62faeb483301c9cb28a968ca80e.patch"
+  patch --strip=1 < "$srcdir/20efc54a47ddd62faeb483301c9cb28a968ca80e.patch"
 }
 
 build() {
