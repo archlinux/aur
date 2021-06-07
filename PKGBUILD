@@ -20,7 +20,7 @@ prepare() {
 build() {
   # magic script to invoke the actual esy binary
   echo > esy.sh '#!/bin/sh
-exec /opt/esy/node_modules/esy/_build/default/bin/esy.exe $@
+exec /opt/esy/node_modules/esy/bin/esy $@
 '
 
   # cleanup
