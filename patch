@@ -1,0 +1,12 @@
+Only in cpulimit-git: patch~
+diff --unified --recursive --text cpulimit-git/src/cpulimit.c cpulimit-git-patched/src/cpulimit.c
+--- cpulimit-git/src/cpulimit.c	2021-05-23 14:30:31.441532911 -0600
++++ cpulimit-git-patched/src/cpulimit.c	2021-05-23 14:29:24.612229881 -0600
+@@ -38,7 +38,6 @@
+ #include <string.h>
+ #include <sys/stat.h>
+ #include <sys/time.h>
+-#include <sys/sysctl.h>
+ #include <sys/resource.h>
+ #include <sys/types.h>
+ #include <sys/wait.h>

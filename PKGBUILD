@@ -8,8 +8,8 @@
 
 # Maintainer: Mike Lenzen <lenzenmi@gmail.com>
 pkgname=cpulimit-git
-pkgver=92.49d7c69
-pkgrel=2
+pkgver=113.f4d2682
+pkgrel=1
 pkgdesc="Limit cpu usage in %. Actualy sends SIGSTOP/SIGCONT"
 arch=('i686' 'x86_64')
 url="https://github.com/opsengine/cpulimit"
@@ -18,9 +18,10 @@ depends=('glibc')
 makedepends=('git')
 provides=('cpulimit')
 conflicts=('cpulimit')
-source=("$pkgname::git+git://github.com/opsengine/cpulimit.git")
+source=("$pkgname::git+https://github.com/opsengine/cpulimit.git" "patch")
 
-md5sums=('SKIP')
+md5sums=('SKIP'
+         '524d8ec2fa0d6f5c4e2f453929c94c3e')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -31,6 +32,12 @@ build() {
   cd "$srcdir/$pkgname"
 
   make
+}
+
+# Patch to remove sysctl.h - removed from linxu
+prepare() {
+  cd "$srcdir/$pkgname"
+  patch --forward --strip=1 --input="${srcdir}/patch"
 }
 
 package() {
