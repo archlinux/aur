@@ -13,13 +13,22 @@ makedepends=('git')
 optdepends=('tree-sitter-grammars')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-# install="$pkgname.install"
-source=("$pkgname::git+$url")
-sha256sums=('SKIP')
+install="$pkgname.install"
+source=("$pkgname::git+$url"
+        'no_install.patch')
+sha256sums=('SKIP'
+            '5531574b77217a2766626ef2c05dac307e650dc830a613bada297e17abcb3e3c')
 
 pkgver() {
 	cd "$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "$pkgname"
+	## Patching out install/uninstall functionality as this will be resolved with
+	## tree-sitter-language packages
+	patch -p1 < "$srcdir/no_install.patch"
 }
 
 package() {
