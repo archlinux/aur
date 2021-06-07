@@ -1,7 +1,7 @@
 # Maintainer: GI Jack <GI_Jack@hackermail.com>
 
 pkgname=zecwallet-lite
-pkgver=1.4.5
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="Z-Addr first, Sapling compatible lightwallet client for Zcash"
 arch=('any')
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/adityapk00/zecwallet-li
 	"zecwallet-icons.tar.xz"
 	"${pkgname}.desktop"
 	)
-sha256sums=('6c00e4a22ab86c4f1396e1a53df18de4578b245b202aa44e117189551bbd89ae'
+sha256sums=('a0c944491e5ee1b09c849d220eabe4b6467c06382230c1b4baefb134707c27cb'
             '19d8b4acee2c6ff062e86ecbb2365123d0471f2991192323780b53630104574d'
             'a53083250c61d1e43cf3b5c371222bb5740e2befcdc4d9b7ea003a1f4ac30ef4')
             
