@@ -7,7 +7,6 @@ pkgbase = libalpm12
 	license = GPL
 	checkdepends = python
 	checkdepends = fakechroot
-	makedepends = asciidoc
 	depends = bash
 	depends = glibc
 	depends = libarchive

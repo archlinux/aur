@@ -9,7 +9,6 @@ arch=('x86_64')
 url="https://www.archlinux.org/pacman/"
 license=('GPL')
 depends=('bash' 'glibc' 'libarchive' 'curl' 'gpgme')
-makedepends=('asciidoc')
 checkdepends=('python' 'fakechroot')
 provides=('libalpm.so=12')
 options=('strip' 'debug')
@@ -33,7 +32,7 @@ build() {
   cd pacman-5.2.2
 
   ./configure --prefix=/usr --sysconfdir=/etc \
-    --localstatedir=/var --enable-doc \
+    --localstatedir=/var --disable-doc \
     --with-scriptlet-shell=/usr/bin/bash \
     --with-ldconfig=/usr/bin/ldconfig
   make V=1
