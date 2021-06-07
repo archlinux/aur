@@ -1,7 +1,7 @@
 # Maintainer: Yurii <yu.hrysh@posteo.net>
 
 pkgname=open-hexagon-git
-pkgver=2.0.preview.r2241.g103aa2df
+pkgver=2.0.6.r7.g41d48c9b
 pkgrel=1
 epoch=1
 pkgdesc='Free software clone of Super Hexagon - a music-based arcade game'
@@ -50,7 +50,7 @@ prepare() {
 pkgver() {
 	# Use the most recent un-annotated tag
 	cd "${srcdir}/${_reponame}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

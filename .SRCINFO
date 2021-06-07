@@ -1,6 +1,6 @@
 pkgbase = open-hexagon-git
 	pkgdesc = Free software clone of Super Hexagon - a music-based arcade game
-	pkgver = 2.0.preview.r2241.g103aa2df
+	pkgver = 2.0.6.r7.g41d48c9b
 	pkgrel = 1
 	epoch = 1
 	url = https://openhexagon.org/
@@ -38,4 +38,3 @@ pkgbase = open-hexagon-git
 	b2sums = aa51608e4796f8be19cea31135e8e240f8f9de962a7d77bc5dffd7beba5f87193a2f7c1a2df4a13de0fd7861170fc1e8f606b97ef7718e8d1aaf6e4cbfb9a8bc
 
 pkgname = open-hexagon-git
-
