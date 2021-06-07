@@ -28,16 +28,18 @@ package() {
     fi
 
     cd "$srcdir"
-    sh $pkgname-$pkgver.sh -e ~/
+    sh $pkgname-$pkgver.sh -e `pwd`
 
-    rm ~/COPASI-$pkgver-Linux-$arch_flag/share/copasi/lib/libfreetype.so.6
-    ln -s /usr/lib/libfreetype.so ~/COPASI-$pkgver-Linux-$arch_flag/share/copasi/lib/
-    ln -s /usr/lib/libfreetype.so.6 ~/COPASI-$pkgver-Linux-$arch_flag/share/copasi/lib/
-
+    cd "$srcdir"/COPASI-$pkgver-Linux-$arch_flag
+    rm share/copasi/lib/libfreetype.so.6
+    ln -s /usr/lib/libfreetype.so share/copasi/lib/
+    ln -s /usr/lib/libfreetype.so.6 share/copasi/lib/
+    
     # install program files
-    install -m755 bin/* /usr/bin/
-    cp -R ~/COPASI-$pkgver-Linux-$arch_flag/share/copasi /usr/share/
-
+    install -d "$pkgdir"/usr/{bin,share}
+    install -m755 bin/* "$pkgdir"/usr/bin
+    cp -R share/copasi "$pkgdir"/usr/share/
+    
     # desktop integration...
     cd "$srcdir"/copasi-desktop
     install -Dm755 copasi.sh "$pkgdir/etc/profile.d/copasi.sh"
