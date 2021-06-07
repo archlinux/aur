@@ -2,7 +2,7 @@
 
 pkgname=signald
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An unofficial daemon that facilitates communication with the Signal messaging app.'
 url='https://gitlab.com/signald/signald'
 license=('GPL3')
@@ -34,7 +34,7 @@ package() {
     rm "build/install/signald/bin/signald.bat"
     install -dm755 "${pkgdir}/var/lib/signald/data"
     cp -dr --no-preserve=ownership "build/install/signald/" "${pkgdir}/var/lib/"
-    chown -R ${_daemon_uid}:${_daemon_uid} "${pkgdir}/var/lib/signald/"
+    #chown -R ${_daemon_uid}:${_daemon_uid} "${pkgdir}/var/lib/signald/"
 
     install -dm755 "${pkgdir}/usr/bin/"
     ln -s ../../var/lib/signald/bin/signald "${pkgdir}/usr/bin/signald"
