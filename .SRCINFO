@@ -1,12 +1,11 @@
 pkgbase = pacman-expire-cache
 	pkgdesc = Tool for deleting old cached package files for pacman
-	pkgver = 0.2
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = http://ikn.org.uk/tool/pacman-expire-cache
 	arch = any
 	license = BSD
-	source = http://ikn.org.uk/download/tool/pacman-expire-cache/pacman-expire-cache-0.2.tar.gz
-	md5sums = c8fc4c6e0c95d39dfe5a0cffbbc43dfb
+	source = http://ikn.org.uk/download/tool/pacman-expire-cache/pacman-expire-cache-0.2.1.tar.gz
+	sha256sums = 700c036459b88b86fe335a4dc41abb7139163b2300a3c1b4a5567075a6ec5a69
 
 pkgname = pacman-expire-cache
-
