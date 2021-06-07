@@ -1,6 +1,6 @@
 pkgbase = sakura-frp
 	pkgdesc = Sakura Frp
-	pkgver = 0.36.1_sakura_1
+	pkgver = 0.37.0_sakura_1
 	pkgrel = 1
 	url = https://www.natfrp.com/
 	arch = x86_64
@@ -23,16 +23,15 @@ pkgbase = sakura-frp
 	md5sums = 2a0bc53302d2ab06b2bcee826d10c727
 	md5sums = 136ace6ea106819f10ee785b56825e4e
 	md5sums = 69b510ef3fda703cd749473ffd506bfc
-	source_x86_64 = sakura-frp-0.36.1_sakura_1-x86_64::https://azure.globalslb.net/frp/0.36.1-sakura-1/frpc_linux_amd64
-	md5sums_x86_64 = ec03ac70fa11438151191b367f0ee7e1
-	source_i686 = sakura-frp-0.36.1_sakura_1-i686::https://azure.globalslb.net/frp/0.36.1-sakura-1/frpc_linux_386
-	md5sums_i686 = 9020882124b07c7ab99222de7a4af772
-	source_aarch64 = sakura-frp-0.36.1_sakura_1-aarch64::https://azure.globalslb.net/frp/0.36.1-sakura-1/frpc_linux_arm64
-	md5sums_aarch64 = 39f07e2d5ae0f3655673dccca9484a19
-	source_armv6h = sakura-frp-0.36.1_sakura_1-armv6h::https://azure.globalslb.net/frp/0.36.1-sakura-1/frpc_linux_armv6
+	source_x86_64 = sakura-frp-0.37.0_sakura_1-x86_64::https://azure.globalslb.net/frp/0.37.0-sakura-1/frpc_linux_amd64
+	md5sums_x86_64 = 3efded37d5e3c9868aa466885c166c7f
+	source_i686 = sakura-frp-0.37.0_sakura_1-i686::https://azure.globalslb.net/frp/0.37.0-sakura-1/frpc_linux_386
+	md5sums_i686 = 486cd9a90d50611913e7a297c4633f62
+	source_aarch64 = sakura-frp-0.37.0_sakura_1-aarch64::https://azure.globalslb.net/frp/0.37.0-sakura-1/frpc_linux_arm64
+	md5sums_aarch64 = aae0cc956f38ad1e66fce72a28c4fcec
+	source_armv6h = sakura-frp-0.37.0_sakura_1-armv6h::https://azure.globalslb.net/frp/0.37.0-sakura-1/frpc_linux_armv6
 	md5sums_armv6h = 8f34582942b9ce2d14c6de5d0963181e
-	source_armv7h = sakura-frp-0.36.1_sakura_1-armv7h::https://azure.globalslb.net/frp/0.36.1-sakura-1/frpc_linux_armv7
-	md5sums_armv7h = bfa01fe13a4cedf6321592930d37f313
+	source_armv7h = sakura-frp-0.37.0_sakura_1-armv7h::https://azure.globalslb.net/frp/0.37.0-sakura-1/frpc_linux_armv7
+	md5sums_armv7h = 32fe4a04f4394105c9bb4dff916f04bc
 
 pkgname = sakura-frp
-
