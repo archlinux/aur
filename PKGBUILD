@@ -5,7 +5,7 @@
 # Contributor: Salvador Pardiñas <darkfm@vera.com.uy>
 
 pkgname=woeusb
-pkgver=5.1.0
+pkgver=5.1.2
 pkgrel=1
 pkgdesc='A Linux program to create Windows USB stick installer from a Windows DVD or an image'
 arch=('any')
@@ -14,7 +14,7 @@ license=('GPL3')
 depends=('dosfstools' 'grub' 'ntfs-3g' 'parted' 'wget' 'wimlib')
 provides=('woeusb')
 source=("https://github.com/WoeUSB/WoeUSB/releases/download/v${pkgver}/woeusb-${pkgver}.bash")
-md5sums=(e87d885b326f18780da4f22900fc2461)
+sha256sums=(d009120f1d04feba5976ea9180a1bce38ed4d92b08a2d28572eed59bb00acd32)
 
 prepare() {
   chmod +x woeusb-$pkgver.bash
