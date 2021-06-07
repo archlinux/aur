@@ -2,14 +2,14 @@
 
 pkgname=sortpuz  
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Unscramble a square matrix of numbered tiles to put them in order."
 url="http://www.kornelix.net/$pkgname/$pkgname.html"
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('clutter-gtk')
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('d8de9aa15ef4b3288382b4792551e75d6059492ea34135bde3eb8ee4add238fa')
+sha256sums=('ac8077b5e90f8d313c32413a82bbd1ecaa0570d434b3eb1ce8961ae416586e61')
 options=('!emptydirs')
 
 build() {
