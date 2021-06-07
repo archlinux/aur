@@ -1,8 +1,8 @@
-# Maintainer: mutantmonkey <aur@mutantmonkey.in>
+# Maintainer: mutantmonkey <aur@mutantmonkey.mx>
 pkgname=hokiestalker-git
 _gitname=hokiestalker
 pkgver=29.98405c6
-pkgrel=1
+pkgrel=2
 pkgdesc="Query the Virginia Tech people search service for information about a person."
 url="https://github.com/mutantmonkey/hokiestalker"
 arch=('any')
