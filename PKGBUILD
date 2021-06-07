@@ -1,13 +1,13 @@
 # Maintainer: not_anonymous <nmlibertarian@gmail.com>
 
 pkgname=libzia
-pkgver=4.18
+pkgver=4.26
 pkgrel=1
 pkgdesc="Support lib. for tucnak4"
 arch=('i686' 'x86_64')
 url="http://tucnak.nagano.cz/"
 license=('GPL')
-depends=('sdl' 'gtk2' 'libusb-compat' 'libftdi')
+depends=('sdl' 'gtk3' 'libusb-compat' 'libftdi')
 makedepends=('libftdi-compat' 'pkg-config')
 conflicts=('libzia3')
 source=("http://tucnak.nagano.cz/$pkgname-$pkgver.tar.gz"
@@ -33,9 +33,9 @@ package() {
 
 	make DESTDIR=$pkgdir install
 }
-md5sums=('9ea23e96662efe22ea2bb3c742f7f613'
+md5sums=('95960b118096774599bce39eaf97de0f'
          '89c0df530740b443ecb9a81fcd56b290'
          '2605f7404324ff64c78d539e37dc3a8a')
-sha256sums=('c7ff9ad99dbe5d11e832495cf52f283e6c7ae14deeaa29edcd77e9ce4ac2dced'
+sha256sums=('3da6b51929af4735686e3df9a6df8350445855b456a3835ccc97816f97fc9acc'
             'd7e847934c40ce192ff949c0aa33b2ddf252310d11ade4fbbbd21f47e00c1301'
             '414064189562c05a5d600ead106f77348db4dccc73dc4a3a1b103075befe96ed')
