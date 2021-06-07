@@ -1,14 +1,13 @@
 pkgbase = sealcrypto
 	pkgdesc = Microsoft library for fully homomorphic encryption
-	pkgver = 3.6.0
+	pkgver = 3.6.5
 	pkgrel = 1
 	url = https://sealcrypto.org/
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	provides = sealcrypto
-	source = https://github.com/Microsoft/SEAL/archive/3.6.0.tar.gz
-	sha1sums = 154a7355e93035f8cf139e8f051a7af138082dec
+	source = https://github.com/Microsoft/SEAL/archive/3.6.5.tar.gz
+	sha1sums = ea41ac6eff63bd485f6cd52b6c12c9e26dec564f
 
 pkgname = sealcrypto
-
