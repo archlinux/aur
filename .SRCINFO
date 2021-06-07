@@ -1,6 +1,6 @@
 pkgbase = cryptsetup-git
 	pkgdesc = Userspace setup tool for transparent encryption of block devices using dm-crypt
-	pkgver = v2.3.3.r81.gf3ec1e22
+	pkgver = v2.3.3.r349.gcd3cb945
 	pkgrel = 1
 	url = https://gitlab.com/cryptsetup/cryptsetup
 	arch = armv6h
@@ -24,13 +24,12 @@ pkgbase = cryptsetup-git
 	conflicts = cryptsetup
 	options = !emptydirs
 	source = git+https://gitlab.com/cryptsetup/cryptsetup#branch=master
-	source = encrypt_hook
-	source = encrypt_install
-	source = sd-encrypt
+	source = hooks-encrypt
+	source = install-encrypt
+	source = install-sd-encrypt
 	sha256sums = SKIP
-	sha256sums = 416aa179ce3c6a7a5eee0861f1f0a4fafac91b69e84a2aae82b6e5a6140e31e2
+	sha256sums = 10461d20fe3bc357864ace3b408a2e93b4b03b5cff023def3ab126ae9857720d
 	sha256sums = d325dc239ecc9a5324407b0782da6df2573e8491251836d6c4e65fa61339ce57
-	sha256sums = 31d816b3650a57512a5f9b52c1995fa65a161faa8b37975d07c9a1b8e1a119db
+	sha256sums = 46af2f1353db1909fc483f20e3fa1e13f1e7c0d14f44c0d6163ce0862916c613
 
 pkgname = cryptsetup-git
-

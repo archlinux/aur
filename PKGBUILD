@@ -6,7 +6,7 @@ _gitname=cryptsetup
 pkgname="${_gitname}-git"
 _gitbranch=master
 _gitauthor=cryptsetup
-pkgver=v2.3.3.r81.gf3ec1e22
+pkgver=v2.3.3.r349.gcd3cb945
 pkgrel=1
 pkgdesc='Userspace setup tool for transparent encryption of block devices using dm-crypt'
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -20,13 +20,13 @@ conflicts=('cryptsetup')
 provides=('cryptsetup')
 options=('!emptydirs')
 source=("git+https://gitlab.com/${_gitauthor}/${_gitname}#branch=${_gitbranch}"
-        "encrypt_hook"
-        "encrypt_install"
-        "sd-encrypt")
+        "hooks-encrypt"
+        "install-encrypt"
+        "install-sd-encrypt")
 sha256sums=('SKIP'
-            '416aa179ce3c6a7a5eee0861f1f0a4fafac91b69e84a2aae82b6e5a6140e31e2'
+            '10461d20fe3bc357864ace3b408a2e93b4b03b5cff023def3ab126ae9857720d'
             'd325dc239ecc9a5324407b0782da6df2573e8491251836d6c4e65fa61339ce57'
-            '31d816b3650a57512a5f9b52c1995fa65a161faa8b37975d07c9a1b8e1a119db')
+            '46af2f1353db1909fc483f20e3fa1e13f1e7c0d14f44c0d6163ce0862916c613')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
@@ -48,9 +48,9 @@ package() {
   cd "${srcdir}/${_gitname}"
   make DESTDIR="${pkgdir}" install
   # install hook
-  install -D -m644 "${srcdir}"/encrypt_hook "${pkgdir}"/usr/lib/initcpio/hooks/encrypt
-  install -D -m644 "${srcdir}"/encrypt_install "${pkgdir}"/usr/lib/initcpio/install/encrypt
-  install -D -m644 "${srcdir}"/sd-encrypt "${pkgdir}"/usr/lib/initcpio/install/sd-encrypt
+  install -D -m644 "${srcdir}"/hooks-encrypt "${pkgdir}"/usr/lib/initcpio/hooks/encrypt
+  install -D -m644 "${srcdir}"/install-encrypt "${pkgdir}"/usr/lib/initcpio/install/encrypt
+  install -D -m644 "${srcdir}"/install-sd-encrypt "${pkgdir}"/usr/lib/initcpio/install/sd-encrypt
   install -D -m644 "${srcdir}"/"${_gitname}"/scripts/cryptsetup.conf "${pkgdir}"/usr/lib/tmpfiles.d/cryptsetup.conf
 }
 
