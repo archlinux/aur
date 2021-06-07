@@ -2,7 +2,7 @@
 
 pkgname=dumpzilla-git
 _pkgname=${pkgname%-git}
-pkgver=r41.73d82d9
+pkgver=r44.ec337da
 pkgrel=1
 pkgdesc="Extract All Forensic Interesting Information Of Firefox, Iceweasel And Seamonkey"
 arch=('any')
