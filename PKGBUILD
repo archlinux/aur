@@ -9,18 +9,15 @@ arch=('any')
 url='https://developer.android.com/ndk/'
 license=('GPL' 'LGPL' 'custom')
 options=('!strip' 'staticlibs')
-install="android-ndk-16b.install"
 provides=('android-ndk')
 replaces=('android-ndk64')
 depends=('ncurses5-compat-libs')
-source=('android-ndk-16b.sh' "http://dl.google.com/android/repository/$_pkg-${pkgver/_/}-linux-$(uname -m).zip")
-sha256sums=('eaf17f400698d5829a2b5a137f96f32f9c0e3564c708c6b84922d319d446fff3'
-            'SKIP')
+source=("http://dl.google.com/android/repository/$_pkg-${pkgver/_/}-linux-$(uname -m).zip")
+sha256sums=('SKIP')
 
 package() {
   install -d "$pkgdir/opt"
   mv "$_pkg-${pkgver/_/}" "$pkgdir/opt/$_pkg-16b"
-  install -Dm755 android-ndk-16b.sh "$pkgdir/etc/profile.d/android-ndk-16b.sh"
 
   # Fix permissions
   chmod -R o=g "$pkgdir/opt/$_pkg-16b"
