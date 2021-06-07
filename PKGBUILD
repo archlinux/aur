@@ -1,14 +1,14 @@
-# Maintainer: mutantmonkey <aur@mutantmonkey.in>
+# Maintainer: mutantmonkey <aur@mutantmonkey.mx>
 pkgname=pyhugh-git
 _gitname=pyhugh
-pkgver=1.e5c1c48
-pkgrel=1
+pkgver=5.26b0542
+pkgrel=4
 pkgdesc="Python library for the Hue API",
 url="https://github.com/mutantmonkey/pyhugh"
 arch=('any')
 license=('WTFPL')
 depends=('python' 'python-requests>=2.4')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 provides=('pyhugh')
 conflicts=('pyhugh')
 source=('git+https://github.com/mutantmonkey/pyhugh.git')
