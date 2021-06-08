@@ -3,9 +3,9 @@
 pkgbase=chipon
 pkgname=($pkgbase{,-jre,-ide32,-program32,-cc32,-driver,-usart-async2,-librxtx,-rxtx-2})
 pkgver=1.0.17
-pkgrel=6
-arch=(x86_64)
-url='https://www.chipon-ic.com/'
+pkgrel=7
+arch=('x86_64')
+url='https://www.chipon-ic.com'
 license=('unknow')
 groups=('chipon')
 #provides=()
@@ -13,14 +13,14 @@ groups=('chipon')
 depends=()
 makedepends=('unarchiver')
 
-source=("${pkgbase}.zip"'::https://www.chipon-ic.com/upload/file/20210413/67c90ef0-da85-4f9c-aacd-4e1056f0d1c8.zip'
-        "${pkgbase}.png"'::https://www.chipon-ic.com/images/logo.png'
+source=("${pkgbase}.zip::${url}/upload/file/20210413/67c90ef0-da85-4f9c-aacd-4e1056f0d1c8.zip"
+        "${pkgbase}.png::${url}/images/logo.png"
         "chipon-program32.install"
         "chipon-driver.install")
 
 sha256sums=('c0a4469b78618712c75802a33a06f64f8f01bec1b6629af75a85095f8f8ecbc1'
             '2879a8063a7037ca8658ffcb96c8611274decc3c0fe2a97a5918f896451b7dbd'
-            '7fad3b3685d79277d3122439126fdd3a1f443f151fa987d219c383d37b59f12c'
+            '6a2196796a9cf54f0696a2ee3621d5b8af8bc5aa24aee40bc8f6d9309639fac8'
             'e7ab8cea2aacbda3122e15da4c9d0833784f2c84f9b93333705e24b6056e8d34')
 
 prepare() {

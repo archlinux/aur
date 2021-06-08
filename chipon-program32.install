@@ -10,7 +10,7 @@ chipon_program32 () {
     echo "Delete users to uucp group: sudo gpasswd -d \`whoami\` uucp"
     echo "Delete users to lock group: sudo gpasswd -d \`whoami\` lock"
     echo "Note: configure uucp and lock under CentOS, configure uucp under Ubuntu"
-    echo "注：CentOS 下配置 uucp 与 lock，ubuntu 下配置 uucp."
+    echo "注：CentOS 下配置 uucp 与 lock，ubuntu 下配置 uucp。 Arch Linux 下配置 uucp 组，lock 组已弃用。"
 }
 
 post_install() {
