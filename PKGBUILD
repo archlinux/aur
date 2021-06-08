@@ -8,14 +8,14 @@
 
 
 ## Helpful internal stuff
-_commit=027238dd0f7be51dcb4fbd63a79e81562daf58a8
-_mozcver=2.26.4381.102
-_utdicver=20210524
-_utdicrel=1
+_commit=d031469630c70188c20598c0f3a3c3c46c6c7a14
+_mozcver=2.26.4395.102
+_utdicver=20210603
+_utdicrel=
 _utuserlink=30
-_utdiclink=30474
-_kenver=202104
-_jugyosyover=202104
+_utdiclink=30562
+_kenver=202105
+_jugyosyover=202105
 _buildtype=Release
 
 pkgname='mozc-ut-common'
@@ -30,13 +30,14 @@ makedepends=('clang' 'git' 'gtk2' 'ninja' 'pkgconf' 'python' 'python-six')
 conflicts=('mozc' 'mozc-ut' 'mozc-ut2' 'mozc-neologd-ut' 'mozc-neologd-ut+ut2' 'mozc-ut-unified' 'mozc-ut-united')
 provides=("mozc=${_mozcver}" "mozc-ut=${_mozcver}.${_utdicver}")
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit}"
-        "https://osdn.net/downloads/users/${_utuserlink}/${_utdiclink}/mozcdic-ut-${_utdicver}.${_utdicrel}.tar.bz2"
+#        "https://osdn.net/downloads/users/${_utuserlink}/${_utdiclink}/mozcdic-ut-${_utdicver}.${_utdicrel}.tar.bz2"
+        "https://osdn.net/downloads/users/${_utuserlink}/${_utdiclink}/mozcdic-ut-${_utdicver}.tar.bz2"
         "https://osdn.net/projects/ponsfoot-aur/storage/mozc/ken_all-${_kenver}.zip"
         "https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-${_jugyosyover}.zip")
 sha256sums=('SKIP'
-            '32563ddc71a50716f907452bed600caa236db7271a7f3966a42df1be6d10a4ae'
-            '20d0e16deebb2f70754f46a74d9eac697cd250df538c3a8bbba482069671ade8'
-            '9924bdb746b23a6f0ddd0279439c31fff8ec4aeb0d79e40267533e2d11f93bc7')
+            '46303f6d2ecc77a990834d5ae0607b52a4e7cb8cc512fc9f266861d777b4c192'
+            '659d7faa3e12b09721d45eb44c3f79d0b63c018ae71d9d745d9b23d2cd0d1d6e'
+            '0121dc4983dfca149df74c715f86c14f8dba21aaa6fd163b3cda021b94cf916f')
 
 prepare() {
     cd ${pkgname}-git
@@ -53,7 +54,8 @@ prepare() {
     sed -i -e 's/-lc++//' src/gyp/common.gypi
 
     # Add the UT dictionary
-    cat ${srcdir}/mozcdic-ut-${_utdicver}.${_utdicrel}/mozcdic*-ut-*.txt >> src/data/dictionary_oss/dictionary00.txt
+    #cat ${srcdir}/mozcdic-ut-${_utdicver}.${_utdicrel}/mozcdic*-ut-*.txt >> src/data/dictionary_oss/dictionary00.txt
+    cat ${srcdir}/mozcdic-ut-${_utdicver}/mozcdic*-ut-*.txt >> src/data/dictionary_oss/dictionary00.txt
 
     # Add latest ZIP codes
     PYTHONPATH="${PYTHONPATH}:src/" \
@@ -71,8 +73,9 @@ build() {
     python build_mozc.py build -c ${_buildtype} ${_targets}
 }
 
-package() {    
-    install -Dm644 mozcdic-ut-${_utdicver}.${_utdicrel}/COPYING        ${pkgdir}/usr/share/licenses/mozc/ut-dictionary
+package() {
+    #install -Dm644 mozcdic-ut-${_utdicver}.${_utdicrel}/COPYING        ${pkgdir}/usr/share/licenses/mozc/ut-dictionary
+    install -Dm644 mozcdic-ut-${_utdicver}/COPYING        ${pkgdir}/usr/share/licenses/mozc/ut-dictionary
 
     cd ${pkgname}-git/src
 
