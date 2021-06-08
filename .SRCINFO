@@ -1,0 +1,17 @@
+pkgbase = tree-sitter-nix-git
+	pkgdesc = GNU Makefile grammar for tree-sitter
+	pkgver = r38.50f38ce
+	pkgrel = 1
+	url = https://github.com/cstrahan/tree-sitter-nix
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = git
+	makedepends = tree-sitter
+	makedepends = npm
+	provides = tree-sitter-nix
+	conflicts = tree-sitter-nix
+	source = tree-sitter-nix-git::git+https://github.com/cstrahan/tree-sitter-nix
+	sha256sums = SKIP
+
+pkgname = tree-sitter-nix-git
