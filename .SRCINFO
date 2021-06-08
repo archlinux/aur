@@ -1,11 +1,12 @@
 pkgbase = among-us-dumpy-gif-maker
 	pkgdesc = A tool that lets you make Among Us Dumpy GIFs
 	pkgver = 1.6.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ThatOneCalculator/Among-Us-Dumpy-Gif-Maker
 	arch = x86_64
 	license = GPL
 	depends = jre-openjdk
+	depends = imagemagick
 	noextract = Among-Us-Dumpy-Gif-Maker-1.6.3-all.jar
 	noextract = among-us-dumpy-gif-maker
 	source_x86_64 = Among-Us-Dumpy-Gif-Maker-1.6.3-all.jar::https://github.com/ThatOneCalculator/Among-Us-Dumpy-Gif-Maker/releases/download/v1.6.3/Among-Us-Dumpy-Gif-Maker-1.6.3-all.jar

@@ -7,12 +7,12 @@ _jar="Among-Us-Dumpy-Gif-Maker-${_pkgver}-all.jar"
 
 pkgname="${_pkgname}"
 pkgver="${_pkgver}"
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool that lets you make Among Us Dumpy GIFs"
 arch=("x86_64")
 url="https://github.com/ThatOneCalculator/Among-Us-Dumpy-Gif-Maker"
 license=("GPL")
-depends=("jre-openjdk")
+depends=("jre-openjdk" "imagemagick")
 source_x86_64=("${_jar}::https://github.com/ThatOneCalculator/Among-Us-Dumpy-Gif-Maker/releases/download/v${_pkgver}/${_jar}" "${_pkgname}::https://raw.githubusercontent.com/ThatOneCalculator/Among-Us-Dumpy-Gif-Maker/main/among-us-dumpy-gif-maker")
 noextract=("${_jar}" "${_pkgname}")
 sha256sums_x86_64=("SKIP" "SKIP")
