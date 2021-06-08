@@ -1,0 +1,28 @@
+From f3749fd41aba5983912ce95e48ddb5cab60efb0c Mon Sep 17 00:00:00 2001
+From: tytan652 <tytan652@tytanium.xyz>
+Date: Tue, 8 Jun 2021 10:50:14 +0200
+Subject: [PATCH] xdg-data: Add desktop entry for Gnome with Wayland
+
+This change new-window action name in the original entry
+and make it invisible under Gnome Shell.
+
+And it also add a new entry only showed in Gnome Shell
+with a another action to launch it with QT__QPA_PLATFORM
+set to "wayland"
+---
+ UI/xdg-data/CMakeLists.txt                    |  2 +
+ 1 files changed, 2 insertions(+)
+
+diff --git a/UI/xdg-data/CMakeLists.txt b/UI/xdg-data/CMakeLists.txt
+index 9acd14e835a..d50f9f18460 100644
+--- a/UI/xdg-data/CMakeLists.txt
++++ b/UI/xdg-data/CMakeLists.txt
+@@ -18,6 +18,8 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/com.obsproject.Studio.appdata.xml
+ 
+ install(FILES com.obsproject.Studio.desktop
+ 	DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
++install(FILES com.obsproject.Studio.Gnome.desktop
++	DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
+ 
+ install(FILES ../forms/images/obs.png
+ 	DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/256x256/apps

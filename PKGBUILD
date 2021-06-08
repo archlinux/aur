@@ -2,8 +2,8 @@
 
 pkgname=obs-studio-tytan652
 pkgver=27.0.0
-pkgrel=2
-pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, working VLC sources and my bind interface PR."
+pkgrel=3
+pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, working VLC sources and my bind interface and GNOME entry PRs."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL2")
@@ -47,6 +47,11 @@ source=(
         "bind_iface.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4219.patch
         "en-US.ini::https://raw.githubusercontent.com/tytan652/obs-studio/bind_iface/UI/data/locale/en-US.ini"
         # Because the patch created by github can't manage different line endings
+        "add_gnome_entry.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4496.patch
+        "com.obsproject.Studio.desktop::https://raw.githubusercontent.com/tytan652/obs-studio/wl_dotdesktop/UI/xdg-data/com.obsproject.Studio.desktop"
+        # Because missing translation on the release one for now
+        "com.obsproject.Studio.Gnome.desktop::https://raw.githubusercontent.com/tytan652/obs-studio/wl_dotdesktop/UI/xdg-data/com.obsproject.Studio.Gnome.desktop"
+        # Because adding file with a patch is not a good idea
         "obs-browser::git+https://github.com/obsproject/obs-browser.git"
         "obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8"
 )
@@ -55,6 +60,9 @@ sha256sums=(
         "430d7d0a7e1006c1f6309ad7d4912033dadd542b641f9d41259a5bad568379c9"
         "a43f2ad974104888ef36eef49b3e60dc26f7cfc0f48300726c861978ae5ae3ea"
         "1d308c7d37e9a1202aae6cd51761a409ad93c33742b8ba2e60cf6cda473658ee"
+        "200868bb9550bff6355b2c9853e568a12f3aab331a9049473e246fe2dbc08900"
+        "62c01f1a78f39b78391544711908c6abf1214fef3c4dbfe9febb7fa617be754a"
+        "324b518507ec6e8d43afb672f784c7e84d46b742e866478770b550dcb7e90325"
         "SKIP"
         "SKIP"
 )
@@ -70,6 +78,10 @@ prepare() {
   # Add network interface binding for RTMP on Linux (https://github.com/obsproject/obs-studio/pull/4219)
   patch -Np1 < "$srcdir/bind_iface.patch"
   cp "$srcdir/en-US.ini" "$srcdir/obs-studio"/UI/data/locale/en-US.ini
+  # xdg-data: Add a custom desktop entry for Gnome Shell (https://github.com/obsproject/obs-studio/pull/4496)
+  patch -Np1 < "$srcdir/add_gnome_entry.patch"
+  cp "$srcdir/com.obsproject.Studio.desktop" "$srcdir/obs-studio"/UI/xdg-data/com.obsproject.Studio.desktop
+  cp "$srcdir/com.obsproject.Studio.Gnome.desktop" "$srcdir/obs-studio"/UI/xdg-data/com.obsproject.Studio.Gnome.desktop
 }
 
 build() {
