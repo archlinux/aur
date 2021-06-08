@@ -13,6 +13,7 @@ pkgbase = libalpm12
 	depends = curl
 	depends = gpgme
 	provides = libalpm.so=12
+	conflicts = pacman<6.0
 	options = strip
 	options = debug
 	source = https://sources.archlinux.org/other/pacman/pacman-5.2.2.tar.gz

@@ -11,6 +11,7 @@ license=('GPL')
 depends=('bash' 'glibc' 'libarchive' 'curl' 'gpgme')
 checkdepends=('python' 'fakechroot')
 provides=('libalpm.so=12')
+conflicts=('pacman<6.0')
 options=('strip' 'debug')
 validpgpkeys=('6645B0A8C7005E78DB1D7864F99FFE0FEAE999BD'  # Allan McRae <allan@archlinux.org>
               'B8151B117037781095514CA7BBDFFC92306B1121') # Andrew Gregory (pacman) <andrew@archlinux.org>
