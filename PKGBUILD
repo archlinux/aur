@@ -1,7 +1,7 @@
 # Maintainer: ccat3z <c0ldcat3z@gmail.com>
 
 pkgname=miktex-git
-pkgver=21.3.r0.ab8ebca7c
+pkgver=21.6.r0.1dd0ae58d
 pkgrel=1
 pkgdesc="a distribution of the TeX/LaTeX typesetting system"
 arch=('x86_64')
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
     cd "$srcdir/${pkgname%-git}/build"
-    make -j6
+    make
 }
 
 package() {
