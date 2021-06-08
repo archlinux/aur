@@ -2,7 +2,7 @@
 pkgname=outfieldr-git
 _pkgname="${pkgname%-git}"
 pkgver=r85.76c3e58
-pkgrel=1
+pkgrel=2
 pkgdesc='TLDR client in zig'
 arch=('x86_64')
 url='https://gitlab.com/ve-nt/outfieldr'
@@ -19,17 +19,17 @@ source=(
 	'git+https://github.com/MasterQ32/zig-uri.git'
 	'git+https://github.com/alexnask/iguanaTLS.git'
 	'git+https://github.com/truemedian/hzzp.git'
-	"$_pkgname-pie.patch"
 )
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'f5da58674be06ae5d5b2f56ca9d32d5d2f91291f8561eda18400f5a4e1720540')
+b2sums=(
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+)
 
 pkgver() {
 	cd "$_pkgname"
@@ -38,8 +38,6 @@ pkgver() {
 
 prepare() {
 	cd "$_pkgname"
-
-	patch -Np1 -i "$srcdir/$_pkgname-pie.patch"
 
 	git submodule init
 	git config submodule.deps/zfetch.url "${srcdir}/zfetch"
