@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=python-django-q
-pkgver=1.3.6
+pkgver=1.3.7
 pkgrel=1
 pkgdesc='A multiprocessing distributed task queue for Django'
 arch=(any)
@@ -17,29 +17,26 @@ depends=(
 )
 makedepends=(
   git
-  python-setuptools
+  python-pip
+  python-poetry
 )
-_tag=8d49825d4047dfbb96b3230968e6bdfd00a60505
+_tag=d80580dae50ce36c37777bafa5bda9d4815dfbf1
 source=(git+https://github.com/Koed00/django-q.git#tag=${_tag})
 sha256sums=(SKIP)
 
 pkgver() {
   cd django-q
-
   git describe --tags | sed 's/^v//'
 }
 
 build() {
   cd django-q
-
-  python setup.py build
+  poetry build --format wheel
 }
 
 package() {
-  cd django-q
-
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/python-django-q/
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}" --ignore-installed --no-deps django-q/dist/*.whl
+  install -Dm 644 django-q/LICENSE -t "${pkgdir}"/usr/share/licenses/python-django-q/
 }
 
 # vim: ts=2 sw=2 et:
