@@ -10,7 +10,7 @@ url='https://github.com/kahing/goofys'
 license=('Apache')
 depends=()
 makedepends=('git' 'go')
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 source=('git+https://github.com/kahing/goofys')
 sha512sums=('SKIP')
 

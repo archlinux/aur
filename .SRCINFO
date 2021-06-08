@@ -8,6 +8,7 @@ pkgbase = goofys-git
 	arch = arm
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = Apache
 	makedepends = git
 	makedepends = go
