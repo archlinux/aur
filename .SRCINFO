@@ -1,7 +1,7 @@
 pkgbase = lxdm-gdmflexiserver
 	pkgdesc = gdmflexiserver emulation for LXDM so you can switch user from XFCE4, x-screensaver...
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	arch = i686
 	license = GPLv3
