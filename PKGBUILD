@@ -9,7 +9,7 @@ arch=(x86_64)
 url="https://github.com/Plippo/${_pkgname}-screenpad"
 license=('GPL2')
 depends=(dkms)
-makedepends=(git)
+makedepends=(git wget)
 source=("${pkgname}::git+https://github.com/Plippo/${_pkgname}-screenpad")
 sha512sums=("SKIP")
 
