@@ -16,6 +16,11 @@ changelog=$pkgname.changelog
 source=(https://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
 sha256sums=('53bf207ebca82c563b9e67bce977459a17e7fd94e35c27c196986736da248df1')
 
+prepare() {
+  cd "${srcdir}"/$pkgname-$pkgver
+  sed -i 's/goocanvas-2\.0/goocanvas-3.0/' configure
+}
+
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
 
