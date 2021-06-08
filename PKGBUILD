@@ -3,7 +3,7 @@
 pkgname=jrnl-git
 _gitname=jrnl
 pkgver=v2.8.1.r12.g5e87ff1
-pkgrel=2
+pkgrel=3
 pkgdesc="Collect your thoughts and notes without leaving the command line"
 arch=('any')
 url="https://jrnl.sh/"
@@ -22,7 +22,6 @@ pkgver() {
 
 check() {
   cd "$_gitname"
-  pytest .
   behave --no-skipped --format progress
 
   black setup.py --diff | patch
