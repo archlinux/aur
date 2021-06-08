@@ -1,10 +1,11 @@
 # Maintainer: Sven Lechner <sven[dot]lechner[at]rwth-aachen[dot]de>
 # Maintainer: Oleg Shparber <trollixx+aur@gmail.com>
+# Maintainer: Yoan Blanc <yoan@dosimple.ch>
 
 pkgname="act-git"
 _pkgname="act"
-pkgver=0.2.14.r0.g7d443c6
-pkgrel=2
+pkgver=0.2.22.r19.g05bce00
+pkgrel=1
 pkgdesc='Run your GitHub Actions locally'
 arch=('x86_64')
 url='https://github.com/nektos/act'

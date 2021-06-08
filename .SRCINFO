@@ -1,7 +1,7 @@
 pkgbase = act-git
 	pkgdesc = Run your GitHub Actions locally
-	pkgver = 0.2.14.r0.g7d443c6
-	pkgrel = 2
+	pkgver = 0.2.22.r19.g05bce00
+	pkgrel = 1
 	url = https://github.com/nektos/act
 	arch = x86_64
 	license = MIT
@@ -14,4 +14,3 @@ pkgbase = act-git
 	sha256sums = SKIP
 
 pkgname = act-git
-
