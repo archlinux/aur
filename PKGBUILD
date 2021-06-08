@@ -2,7 +2,7 @@
 
 pkgname=adebar
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Android DEvice Backup And Report, using Bash and ADB."
 arch=("any")
 url="https://codeberg.org/izzy/Adebar"
@@ -11,7 +11,7 @@ depends=('bash' 'android-tools')
 #source=("https://codeberg.org/izzy/${pkgname}/archive/v${pkgver}.tar.gz")
 #sha1sums=('83cdab3aaafc16385506a260db26682d9f3efd34')
 source=("https://codeberg.org/6543/Adebar/archive/make-adebar-system-instalable.tar.gz")
-sha1sums=('974812b9045bc16151c2dfd830f8089da4d02a43')
+sha1sums=('1bcc9cb7f71658094058c0de460177f439947ab3')
 
 package() {
     # adebar
@@ -31,5 +31,5 @@ build() {
     cd "${srcdir}/${pkgname}"
     sed -i "/BINDIR=/d" adebar-cli
     sed -i '/LIBDIR=/cLIBDIR=/usr/lib/adebar' adebar-cli
-    sed -i '/^USER_CONF=/cmkdir -p "$HOME/.config/adebar/cli"' adebar-cli
+    sed -i '/^\ \ USER_CONF=/c\ \ mkdir -p "$USER_CONF"' adebar-cli
 }
