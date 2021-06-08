@@ -1,0 +1,26 @@
+pkgbase = lfutils-meta
+	pkgdesc = Meta package to install some required packages of lfutils.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/soystemd/lfutils
+	arch = any
+	license = GPL
+	depends = archivemount
+	depends = ueberzug
+	depends = chafa
+	depends = imagemagick
+	depends = gnome-epub-thumbnailer
+	depends = ffmpegthumbnailer
+	depends = poppler
+	depends = atool-git
+	depends = bat
+	depends = mediainfo
+	depends = binutils
+	depends = libcdio
+	depends = catdoc
+	depends = docx2txt
+	depends = odt2txt
+	optdepends = sxiv: sxiv integration using lfsxiv
+	optdepends = transmission-cli: previewing .torrent files
+
+pkgname = lfutils-meta
