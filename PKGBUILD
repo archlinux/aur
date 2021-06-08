@@ -6,7 +6,7 @@
 #_with_usermode=1
 
 pkgname=mock
-pkgver=2.10
+pkgver=2.11
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -33,10 +33,10 @@ source=("$url/archive/$_pkgtag.tar.gz"
         "archlinux-defaults.cfg"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-md5sums=('4cfe1f4fe3e989ab474c4bb3b5310e07'
-         'f64f312dfdca58dc510504041dcc9675'
-         'd277502b9a95484594f86231d073dae0'
-         '1052fa4db74b59b0c195f4756bd865e8')
+sha256sums=('97ab1b0000593a87a35b9d880fff1fe93d57067656d4169c355db51753d796e2'
+            'e32d7e96c6ea3c1fb06f20bca60d7e9bc92e70e0eab52e74b0070264c94cef9c'
+            'f6cba3f7e7f35c3d811f548af9ff2044764b6b65eb9bd74f035904c0c8463651'
+            '7fd98f2d7700996041a835551a746cc8e6ab1048c7b297db9ac5c5534dd87d86')
 
 _prefix=/usr
 _bindir=$_prefix/bin
@@ -61,7 +61,7 @@ build() {
 
 	pushd "$pkgname" >/dev/null
 
-	python_sitelib=$(python -c 'from distutils.sysconfig import get_python_lib; import sys; sys.stdout.write(get_python_lib())')
+	python_sitelib=$(python -c 'from sysconfig import get_path; import sys; sys.stdout.write(get_path(name="purelib"))')
 	sed -r -i "py/$pkgname"{,-parse-buildlog}.py \
 	    -e 's|^__VERSION__\s*=.*|__VERSION__="'$pkgver'"|' \
 	    -e 's|^SYSCONFDIR\s*=.*|SYSCONFDIR="'$_sysconfdir'"|' \
