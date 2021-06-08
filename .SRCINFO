@@ -1,7 +1,7 @@
 pkgbase = vorta
 	pkgdesc = A GUI for BorgBackup
 	pkgver = 0.7.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/borgbase/vorta
 	arch = any
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = vorta
 	depends = borg
 	depends = python-appdirs
 	depends = python-apscheduler
-	depends = python-pyqt5
+	depends = python-pyqt5<=5.15.3
 	depends = python-peewee
 	depends = python-paramiko
 	depends = python-dateutil

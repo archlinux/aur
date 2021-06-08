@@ -1,12 +1,12 @@
 # Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
 pkgname=vorta
 pkgver=0.7.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI for BorgBackup"
 arch=('any')
 url="https://github.com/borgbase/vorta"
 license=('GPL')
-depends=('borg' 'python-appdirs' 'python-apscheduler' 'python-pyqt5' 'python-peewee' 'python-paramiko' 'python-dateutil' 'python-secretstorage' 'python-psutil' 'python-llfuse' 'python-setuptools')
+depends=('borg' 'python-appdirs' 'python-apscheduler' 'python-pyqt5<=5.15.3' 'python-peewee' 'python-paramiko' 'python-dateutil' 'python-secretstorage' 'python-psutil' 'python-llfuse' 'python-setuptools')
 makedepends=('qt5-tools' 'python-pip')
 options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/borgbase/$pkgname/archive/v$pkgver.tar.gz")
