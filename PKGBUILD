@@ -7,7 +7,7 @@
 # installation.
 
 pkgname=jabref-git
-pkgver=5.2.r136.ga7948e8f28
+pkgver=5.2.r377.g2497ba4d82
 pkgrel=1
 epoch=2
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
@@ -55,6 +55,9 @@ package() {
   install -Dm644 LICENSE.md "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.md
   install -Dm644 src/main/resources/icons/jabref.svg \
 	  "${pkgdir}"/usr/share/pixmaps/${pkgname}.svg
+
+  # lowercase alias (for convenience and required for browser extensions)
+  ln -sf /usr/bin/JabRef "${pkgdir}"/usr/bin/jabref
 
   install -d "${pkgdir}/opt"
   cp -R build/image "${pkgdir}"/opt/jabref
