@@ -7,10 +7,10 @@ pkgver=latest
 pkgrel=5
 pkgdesc="Nostalgia bucklespring keyboard sound, sampled from IBM's Model-M. libinput version"
 arch=('i686' 'x86_64')
-url='https://github.com/zevv/bucklespring'
+url="https://github.com/zevv/bucklespring"
 license=('MIT')
 conflicts=('bucklespring' 'bucklespring-git')
-depends=('openal' 'alure' 'libxtst' 'libinput')
+depends=('openal' 'alure' 'libxtst' 'dumb' 'mpg123' 'libinput')
 makedepends=('git')
 source=(
   'git+https://github.com/zevv/bucklespring'
@@ -24,8 +24,8 @@ sha1sums=('SKIP'
           '26461f59226c610d54d3d6fb3824c537475cc8cd')
 
 build() {
-  cd "$srcdir/$_pkgname"
-  make libinput=1 PATH_AUDIO=/usr/share/bucklespring
+  cd "$_pkgname"
+  make PATH_AUDIO=/usr/share/bucklespring libinput=1
 }
 
 package() {
@@ -41,4 +41,7 @@ package() {
   install -dD -m750 "$pkgdir/usr/share/polkit-1/rules.d"
   install -D -m644 "$srcdir/nl.zevv.bucklespring.run.policy" -t "$pkgdir/usr/share/polkit-1/actions"
   install -D -m644 "$srcdir/bucklespring.rules" "$pkgdir/usr/share/polkit-1/rules.d"
+
+  # LICENSE
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
