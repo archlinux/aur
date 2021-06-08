@@ -1,7 +1,7 @@
 # Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=r268.0940064
+pkgver=r339.580ad45
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c"
 arch=("any")
@@ -14,6 +14,7 @@ makedepends=(
   "libxrandr" # Depends on libX11, which headers are also needed
   "dconf"     # Depends on glib2, which headers are also needed
   "wayland"
+  "sqlite"
 )
 optdepends=(
   "pciutils: GPU output"
@@ -23,6 +24,7 @@ optdepends=(
   "glib2: Output for values that are only stored in GSettings"
   "dconf: Output for values that are only stored in DConf"
   "xfconf: XFWM theme + xfce-terminal font"
+  "sqlite: rpm package count"
 )
 provides=("flashfetch=${pkgver}")
 source=("git+https://github.com/LinusDierheimer/fastfetch.git")

@@ -1,6 +1,6 @@
 pkgbase = fastfetch-git
 	pkgdesc = Like neofetch, but much faster because written in c
-	pkgver = r268.0940064
+	pkgver = r339.580ad45
 	pkgrel = 1
 	url = https://github.com/LinusDierheimer/fastfetch
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = fastfetch-git
 	makedepends = libxrandr
 	makedepends = dconf
 	makedepends = wayland
+	makedepends = sqlite
 	optdepends = pciutils: GPU output
 	optdepends = libx11: Resolution output
 	optdepends = libxrandr: Refresh rate in Resolution output
@@ -17,9 +18,9 @@ pkgbase = fastfetch-git
 	optdepends = glib2: Output for values that are only stored in GSettings
 	optdepends = dconf: Output for values that are only stored in DConf
 	optdepends = xfconf: XFWM theme + xfce-terminal font
-	provides = flashfetch=r268.0940064
+	optdepends = sqlite: rpm package count
+	provides = flashfetch=r339.580ad45
 	source = git+https://github.com/LinusDierheimer/fastfetch.git
 	sha256sums = SKIP
 
 pkgname = fastfetch-git
-
