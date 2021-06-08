@@ -37,18 +37,15 @@ arch=('i686' 'x86_64')
 url="http://www.codelite.org/"
 license=('GPL')
 makedepends=('pkgconfig' 'cmake' 'clang')
-depends=(
-          'wxgtk3'
-          #'wxgtk2' 'webkit2gtk'
+depends=('wxgtk3'
+          #'webkit2gtk'
           'clang' 'lldb'
           'libedit'
           'libssh'
           'mariadb-libs'
           'ncurses'
-          'wget' 'curl'
-          'xterm'
-          'python2'
-          'python'
+          #'xterm'
+          #'wget' 'curl'
         )
 optdepends=('graphviz: callgraph visualization'
              'clang: compiler'
