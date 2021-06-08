@@ -1,7 +1,7 @@
 pkgbase = ruby-vimgolf
 	pkgdesc = Real Vim ninjas count every keystroke - do you?
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/igrigorik/vimgolf
 	arch = any
 	license = MIT
@@ -9,7 +9,10 @@ pkgbase = ruby-vimgolf
 	provides = vimgolf
 	conflicts = python-vimgolf
 	noextract = vimgolf-0.5.0.gem
+	options = !emptydirs
 	source = https://rubygems.org/downloads/vimgolf-0.5.0.gem
+	source = https://github.com/igrigorik/vimgolf/raw/v0.5.0/LICENSE
 	sha256sums = de6a20eb67e0558b0d749b13d8b2e12a7fa649bdb683e1a489a441bd27fe0da4
+	sha256sums = 07e5c5ff6d7a5f5dbb39f882d89afe38e0e4e60d3302a80e47876a07be70b4b1
 
 pkgname = ruby-vimgolf
