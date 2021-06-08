@@ -1,7 +1,7 @@
 pkgbase = helvum
 	pkgdesc = GTK-based patchbay for pipewire, inspired by the JACK tool catia
-	pkgver = 0.2.0
-	pkgrel = 4
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://gitlab.freedesktop.org/ryuukyu/helvum
 	arch = x86_64
 	license = GPL3
@@ -11,10 +11,9 @@ pkgbase = helvum
 	depends = gtk4
 	depends = pipewire
 	conflicts = helvum-git
-	source = https://gitlab.freedesktop.org/ryuukyu/helvum/-/archive/0.2.0/helvum-0.2.0.tar.gz
+	source = https://gitlab.freedesktop.org/ryuukyu/helvum/-/archive/0.2.1/helvum-0.2.1.tar.gz
 	source = helvum.desktop
-	sha512sums = 990a420ea837c13b216abe1cbbd7ba738a5b0b4d5793c9f2d7f55a6ad1369c2ff6ff67a176df0036d27e1e85577a9e915ad0ded2238d82cf83d1d584b7cb62da
+	sha512sums = 667908a8c4296f742e91705bb74d2276f8e8d721eb4b16f8e5f97f99156075b194540083b36d69c4fe6ee0558584047dd5862d71c91c59b9d59f9d0cc2eb9a1a
 	sha512sums = 0a76aa3b7c98d08ded9d4c7a2254faa0b83a2f2339db81b995819b0f0e4721cf79df17473ca22a4d8aab161b162e70f7e63b728e603c6b9cb09f2f361aa8e537
 
 pkgname = helvum
-
