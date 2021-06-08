@@ -8,9 +8,9 @@
 
 
 ## Helpful internal stuff
-_commit=027238dd0f7be51dcb4fbd63a79e81562daf58a8
-_mozcver=2.26.4381.102
-_utdicver=20210524
+_commit=d031469630c70188c20598c0f3a3c3c46c6c7a14
+_mozcver=2.26.4395.102
+_utdicver=20210603
 _buildtype=Release
 
 pkgname='emacs-mozc-ut'
