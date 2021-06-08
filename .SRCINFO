@@ -1,7 +1,7 @@
 pkgbase = julia-aarch64-git
 	pkgdesc = High-level, high-performance, dynamic programming language
 	pkgver = 1.7.0.DEV.r49718.ge2ad3731681
-	pkgrel = 1
+	pkgrel = 1.1
 	url = https://julialang.org/
 	arch = aarch64
 	license = MIT
