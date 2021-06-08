@@ -27,11 +27,13 @@ provides=(
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/puppetlabs/leatherman/archive/${pkgver}.tar.gz"
         librapidjson-1.1.patch
         1.12.4-shared_nowide.patch
+        gcc11.patch
         build-against-ruby27.patch)
 
 sha512sums=('b2645a5049856f93c30bb89e87e3a47cf8137aeac73708248b2b228874818063fb31440ca2bd760783e8c95e880fe7ae34a387fcc448efee01dd0cda48089b55'
             'bf05009e466ea62282a78c16fe23e8cfacfbb6e5da9fdf118bf7b1b257a3b48c5c5665ef080bfdf12c9088cb4e180358d11a5bd05e2e658bdbe8f35e0bba4969'
             '1f95d6e0ac1000d2eb8cdfee6184ca74d2bb96a9dec50cdd1539cb7e3060decbf1e4863fa2594ce1cf3405b1edf270b94b82f1c9ca79aaeb6f32f11d10c7eece'
+            '7d5418f4ade7b614eb22120a36ff02bf52ed10cf400b9c8cbca201684735b8ad7ff2a682f8602eb3a2d74c14b362c594d621b27c0f13f64716835b2bbfce7732'
             '86b2adaa55560fa6564b84041fcc27268f74acf85bf082723b7b721313168806c4dcb3ce48bf166c6b2ab7249e3880266b573bb98028f1b5bc2f80bdce1e89b0')
 
 prepare() {
@@ -44,6 +46,8 @@ prepare() {
   patch -Np1 < ../librapidjson-1.1.patch
   # Boost 1.74 provides nowide, and since leatherman vendors nowide it has to be patched out.
   patch -Np1 < ../1.12.4-shared_nowide.patch
+  # Fix build with GCC 11
+  patch -Np1 -i ../gcc11.patch
   # update leatherman to use ruby-2.7 and not ruby
   patch -Np1 < ../build-against-ruby27.patch
 }
