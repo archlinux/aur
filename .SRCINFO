@@ -1,7 +1,7 @@
 pkgbase = advent
 	pkgdesc = WELCOME TO ADVENTURE!!
 	pkgver = 0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.russotto.net/~mrussotto/ADVENT/
 	arch = i686
 	arch = x86_64
@@ -13,4 +13,3 @@ pkgbase = advent
 	md5sums_x86_64 = 24fe4965f8c8fa57ed3d95e14815d6e5
 
 pkgname = advent
-

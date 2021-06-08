@@ -1,8 +1,9 @@
+# maintainer: libele <libele@disroot.org>
 # http://advent.jenandcal.familyds.org/#RUSS0000
 
 pkgname=advent
 pkgver=0
-pkgrel=3
+pkgrel=4
 pkgdesc="WELCOME TO ADVENTURE!!"
 arch=('i686' 'x86_64')
 url='http://www.russotto.net/~mrussotto/ADVENT/'
