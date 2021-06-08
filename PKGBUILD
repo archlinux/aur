@@ -4,7 +4,7 @@
 
 pkgname=gatling-stress-tool # Name collision with https://aur.archlinux.org/packages.php?ID=7159
 _pkgname=gatling
-pkgver=3.4.1
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Open-source load testing framework based on Scala, Akka and Netty"
 arch=(any)
@@ -14,11 +14,19 @@ depends=('java-environment-common')
 backup=(usr/share/java/${pkgname}/conf/{application,gatling,recorder}.conf
         usr/share/java/${pkgname}/conf/logback.xml)
 source=("https://repo1.maven.org/maven2/io/gatling/highcharts/gatling-charts-highcharts-bundle/${pkgver}/gatling-charts-highcharts-bundle-${pkgver}-bundle.zip"
+        "https://repo1.maven.org/maven2/io/gatling/highcharts/gatling-charts-highcharts-bundle/${pkgver}/gatling-charts-highcharts-bundle-${pkgver}-bundle.zip.sha1"
         "gatling"
         "gatling-recorder")
-sha256sums=('b4628755a82d7963655f40ce2abf0a5c3b8270a4eaf542c1364127832d1eda16'
+
+sha256sums=('b359e915c1b8ecdd241f20d412cb315a2b5e17c7ebc9202c2d5c3ada1d15333c'
+            'f3f8781d60ea832eb4291c3cf520d7b3d34f5803ca7691dc65c42c81a0d32c09'
             'b537f7c31f0fe66b291f30e05498c7412e01bf4572abaea0a07823b2cf4f07d9'
             '6124d91ec20c2d495cf9b2867027251c12db478da4429982d7794a356d56aebf')
+
+prepare() {
+  local ar="${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}-bundle.zip"
+  echo -n "$(cat $ar.sha1) ${ar}" | sha1sum --quiet -c -
+}
 
 package() {
   srcbase="${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}"
