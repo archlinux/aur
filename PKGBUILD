@@ -11,7 +11,7 @@ pkgname=(
 )
 _pkgname="mailchecker"
 pkgver="4.0.8"
-pkgrel="1"
+pkgrel="2"
 pkgdesc='Definition and optimized evaluation of mathematical expressions on Numpy arrays.'
 arch=('any')
 url='https://github.com/FGRibreau/mailchecker/'
@@ -22,16 +22,24 @@ makedepends=(
 'python-distribute'
 'nodejs'
 'npm'
+'rubygems'
 )
 
 
 build() {
   msg "Generate List"
   cd "$srcdir/${_pkgname}-${pkgver}"
-  npm install && npm run build
+  npm install && npm audit fix && npm run build
+
   msg "Building Python 3"
   cd "$srcdir/${_pkgname}-${pkgver}/platform/python"
+  sed -E -i "s/version[[:space:]]*=(.*)/version = '${pkgver}',/g" setup.py
   python setup.py build
+
+  msg "Building Ruby Gem"
+  cd "$srcdir/${_pkgname}-${pkgver}"
+  sed -E -i "s/spec.version[[:space:]]*=(.*)/spec.version = '${pkgver}'/g" *.gemspec
+  gem build *.gemspec
 }
 
 
@@ -43,4 +51,13 @@ package_python-mailchecker() {
   python setup.py install --root="$pkgdir"/ --optimize=1 --skip-build
   cd "$srcdir/${_pkgname}-${pkgver}"
   install -Dm644 LICENSE-MIT "${pkgdir}/usr/share/licenses/python-mailchecker/LICENSE.txt"
+}
+
+package_ruby-mailchecker() {
+  depends=(
+	'ruby'
+  )
+  local _gemdir="$('gem env gemdir')"
+  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $pkgbase-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$pkgbase-$pkgver.gem"
 }
