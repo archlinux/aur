@@ -1,9 +1,20 @@
 [Unit]
 Description="Honk ActivityPub server"
+After=syslog.target network.target
+Requires=network.target
 
 [Service]
+Restart=always
+RestartSec=30
 WorkingDirectory=/usr/share/honk
 ExecStart=/usr/bin/honk
+NoNewPrivileges=yes
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+
 
 User=honk
 Group=honk

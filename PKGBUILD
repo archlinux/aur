@@ -3,7 +3,7 @@
 
 pkgname=honk-hg
 _pkgname=honk
-pkgver=1340.0a351daab5d0
+pkgver=1341.f74b9ce19463
 pkgrel=2
 epoch=0
 pkgdesc="ActivityPub compatible server with web frontend. Mercurialtip."
@@ -18,7 +18,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}" 'honk')
 source=("hg+https://humungus.tedunangst.com/r/honk")
 sha512sums=('SKIP')
-options=(strip zipman)
+options=(strip zipman docs)
 install="$_pkgname.install"
 
 pkgver() {
@@ -33,17 +33,18 @@ build() {
 }
 
 package() {
-   _PKG_HONKDIR="$pkgdir/usr/share/$pkgname"
+   _PKG_HONKDIR="$pkgdir/usr/share/$_pkgname"
    _PKG_DOCDIR="$srcdir/$_pkgname/docs"
    _MANDIR="$pkgdir/usr/share/man/man"
 
    install -Dm755 "$srcdir/$_pkgname/$_pkgname" -t "$pkgdir/usr/bin"
    install -Dm644 "$srcdir/$_pkgname"/views/* -t "$_PKG_HONKDIR/views/"
    install -Dm644 "$_PKG_DOCDIR"/* -t "$_PKG_HONKDIR/docs/"
-
-   for i in {1,3,5,8}; do
-       install -Dm644 $_PKG_DOCDIR/honk.$i.gz -t ${_MANDIR}$i/
-   done
+   
+#  gzip -k -f $_PKG_DOCDIR/*.{1,3,5,7,8}
+  for i in {1,3,5,8}; do
+      install -Dm644 $_PKG_DOCDIR/honk.$i.gz -t ${_MANDIR}$i/
+  done
 
    install -Dm644 $_PKG_DOCDIR/activitypub.7.gz ${_MANDIR}7/honk_activitypub.7.gz
    install -Dm644 $_PKG_DOCDIR/hfcs.1.gz ${_MANDIR}1/honk_hfcs.1.gz
@@ -52,5 +53,5 @@ package() {
 
 
    install -Dm644 "$srcdir/$_pkgname"/LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
-   install -Dm644 "../$_pkgname.service" -t "$pkgdir/etc/systemd/system"
+   install -Dm644 "../$_pkgname.service" -t "$pkgdir/usr/lib/systemd/system/"
 }
