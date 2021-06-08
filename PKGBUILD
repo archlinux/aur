@@ -3,7 +3,7 @@
 # Previous Maintainer: Stephan Wienczny <stephan@wienczny.de>
 
 pkgname=dbeaver-ee
-pkgver=21.0.0
+pkgver=21.1.0
 pkgrel=1
 pkgdesc="A universal database tool for developers and database administrators. Enterprise Edition includes NoSQL database support"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(dbeaver-ee.desktop dbeaver-ee.install)
 source_x86_64=(http://dbeaver.com/files/${pkgver}/dbeaver-ee-${pkgver}-linux.gtk.x86_64.tar.gz)
 sha256sums=('453912912ae8377b16ef74a3e7d93ea588792ee8f7054a573e9fe9b93cd9265f'
             '0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f')
-sha256sums_x86_64=('871925e2cb6cab5b9d701314cacadac8a7db4cca551f16992d0f28dd8d0dabda')
+sha256sums_x86_64=('b03d895afe11deb21d4a2c28a0496b0d47fda4fe2bd1156be13e95f5bf25a939')
 
 noextract=("dbeaver-ee-${pkgver}-linux.gtk.x86_64.tar.gz")
 
