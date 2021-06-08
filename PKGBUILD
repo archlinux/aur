@@ -3,7 +3,7 @@
 pkgname=obs-studio-browser-bin
 pkgver=27.0.0
 pkgrel=1
-pkgdesc="Free and open source software for video recording and live streaming. Pre-built with browser, vst plugins."
+pkgdesc="Does not work. Do not use."
 arch=('x86_64')
 license=('GPL2')
 url="https://obsproject.com"
@@ -31,11 +31,5 @@ prepare() {
     tar -xJf data.tar.xz -C ${pkgname}
 
     chmod 755 $(find ${pkgname} -type d)
-}
-
-package() {
-	cd ${srcdir}
-
-	cp -a ${pkgname}/. ${pkgdir}
 }
  
