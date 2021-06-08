@@ -1,0 +1,33 @@
+pkgbase = outfieldr-git
+	pkgdesc = TLDR client in zig
+	pkgver = r85.76c3e58
+	pkgrel = 1
+	url = https://gitlab.com/ve-nt/outfieldr
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = zig
+	provides = outfieldr
+	provides = tldr
+	conflicts = outfieldr
+	conflicts = tldr
+	source = git+https://gitlab.com/ve-nt/outfieldr.git
+	source = git+https://github.com/truemedian/zfetch.git
+	source = git+https://github.com/Hejsil/zig-clap.git#branch=zig-master
+	source = zig-tar::git+https://github.com/mattnite/tar.git
+	source = git+https://github.com/MasterQ32/zig-network.git
+	source = git+https://github.com/MasterQ32/zig-uri.git
+	source = git+https://github.com/alexnask/iguanaTLS.git
+	source = git+https://github.com/truemedian/hzzp.git
+	source = outfieldr-pie.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = f5da58674be06ae5d5b2f56ca9d32d5d2f91291f8561eda18400f5a4e1720540
+
+pkgname = outfieldr-git
