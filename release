@@ -7,11 +7,11 @@ if [ -z $1 ]; then
   exit 1;
 fi
 
-if [[ ${pkgver:0:1} != 'v' ]]; then
-  pkgver="v$pkgver"
+if [[ ${pkgver:0:1} == 'v' ]]; then
+  pkgver=${pkgver:1}
 fi
 
-filename="$pkgver.tar.gz"
+filename="v$pkgver.tar.gz"
 
 echo 'Downlading archive file...'
 
@@ -38,7 +38,7 @@ echo
 case "$REPLY" in
   y|Y)
     git add PKGBUILD .SRCINFO
-    git commit -m "release: $pkgver"
+    git commit -m "release: v$pkgver"
     echo 'Release AUR package successfully!'
     ;;
 esac
