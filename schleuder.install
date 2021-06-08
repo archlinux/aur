@@ -1,0 +1,6 @@
+post_install() {
+    echo "    Please consider additionally installing schleuder-cli (allows to
+    configure lists from the command line).
+
+    To set up Schleuder on this system please run `schleuder install`."
+}

@@ -4,14 +4,14 @@
 
 pkgname='schleuder'
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An encrypting mailing list manager with remailing-capabilities'
 arch=(any)
 url='https://schleuder.org'
 license=('GPL3')
+install="${pkgname}.install"
 options=(!emptydirs)
-depends=('ruby' 'ruby-activerecord' 'ruby-bcrypt' 'ruby-bigdecimal' 'ruby-charlock_holmes' 'ruby-gpgme' 'ruby-mail' 'ruby-mail-gpg' 'ruby-rake' 'ruby-sinatra' 'ruby-sinatra-contrib' 'ruby-sqlite3' 'ruby-thin' 'ruby-thor')
-makedepends=('inetutils')
+depends=('inetutils' 'ruby' 'ruby-activerecord' 'ruby-bcrypt' 'ruby-bigdecimal' 'ruby-charlock_holmes' 'ruby-gpgme' 'ruby-mail' 'ruby-mail-gpg' 'ruby-rake' 'ruby-sinatra' 'ruby-sinatra-contrib' 'ruby-sqlite3' 'ruby-thin' 'ruby-thor')
 checkdepends=('procps-ng' 'ruby-bundler' 'ruby-database_cleaner' 'ruby-factory_bot' 'ruby-hirb' 'ruby-rack-test' 'ruby-rspec')
 source=("${pkgname}-${pkgver}.tar.gz::https://0xacab.org/schleuder/schleuder/-/archive/schleuder-${pkgver}/schleuder-schleuder-${pkgver}.tar.gz"
         "rspec.patch")
@@ -54,6 +54,8 @@ check() {
 
   bundle exec rake db:init
   bundle exec rspec
+
+  rm -f ./db/test.sqlite3
 }
 
 package() {
@@ -61,7 +63,7 @@ package() {
 
   local _gemdir="$(gem env gemdir)"
 
-  gem install --ignore-dependencies --no-user-install --install-dir "${pkgdir}${_gemdir}" --bindir "${pkgdir}/usr/bin" "${pkgname}-${pkgver}.gem"
+  gem install --ignore-dependencies --no-user-install --no-document --install-dir "${pkgdir}${_gemdir}" --bindir "${pkgdir}/usr/bin" "${pkgname}-${pkgver}.gem"
 
   install -Dm 644 CHANGELOG.md CODE_OF_CONDUCT.md CONTRIBUTING.md MISSION_STATEMENT.md README.md --target-directory "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 man/*.8 --target-directory "${pkgdir}/usr/share/man/man8"
