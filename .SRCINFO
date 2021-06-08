@@ -1,6 +1,6 @@
 pkgbase = dcda-git
 	pkgdesc = 本软件支持串口 / TCP Server / TCP Client 三合一的通讯调试工具。
-	pkgver = 1.0.1.0.11.ge723dac
+	pkgver = beta.1.0.1.r11.ge723dac
 	pkgrel = 1
 	url = https://gitee.com/danpey/dcda
 	arch = any
@@ -19,4 +19,3 @@ pkgbase = dcda-git
 	sha256sums = SKIP
 
 pkgname = dcda-git
-
