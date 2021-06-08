@@ -3,6 +3,7 @@ pkgbase = forge-server-unstable
 	pkgver = 1.16.5_36.1.25
 	pkgrel = 1
 	url = https://files.minecraftforge.net
+	install = forge-server.install
 	arch = any
 	license = custom
 	depends = java-runtime-headless=8
