@@ -1,8 +1,8 @@
 # Maintainer: Artemii Sudakov <finziyr@yandex.ru>
 
 pkgname="freezer-git"
-pkgver="1.1.19"
-pkgrel="2"
+pkgver="1.1.20"
+pkgrel="1"
 pkgdesc='Free music streaming client for Deezer based on the Deezloader/Deemix "bug".'
 arch=('x86_64')
 url="https://git.freezer.life/exttex/freezerpc"
@@ -19,7 +19,7 @@ pkgver() {
 }
 build() {
 	cd "$srcdir/$pkgname"
-	sed -n '1,/"target": \[/p;/\],/,$p' -i package.json
+	sed -e '/"target": \[/,/\].*/{//!d}' -i package.json
 	sed '/^[[:blank:]]*"target": \[/a "dir"' -i package.json
 	npm i
 	npm run build
