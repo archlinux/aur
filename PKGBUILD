@@ -1,6 +1,9 @@
 # Maintainer: tsp <patrictroy at gmail dot com>
+
+#Configuration:
+_fragmant="${FRAGMENT:-#branch=dev}"
 pkgname=rizin-git
-pkgver=0.2.0.r25946.6b3c58ebf
+pkgver=0.3.0.r26328.6436b239a7
 pkgrel=1
 epoch=1
 pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files"
@@ -12,9 +15,9 @@ depends=('capstone' 'lz4' 'file' 'libzip' 'xxhash' 'libuv' 'tree-sitter')
 depends=('sh' 'capstone' 'libcapstone.so' 'openssl' 'libzip' 'zlib'
          'lz4' 'xxhash' 'libxxhash.so' 'file' 'libuv' 'tree-sitter'
          'libtree-sitter.so')
-provides=('rizin')
+provides=("rizin=${pkgver%.r*}")
 conflicts=('rizin')
-source=("$pkgname::git+https://github.com/rizinorg/rizin.git")
+source=("$pkgname::git+https://github.com/rizinorg/rizin.git${_fragmant}")
 md5sums=('SKIP')
 
 pkgver () {
