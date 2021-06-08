@@ -1,7 +1,7 @@
 pkgbase = svtplay-dl
 	pkgdesc = Media downloader for play sites (e.g. SVT Play)
-	pkgver = 3.8
-	pkgrel = 2
+	pkgver = 3.9.1
+	pkgrel = 1
 	url = https://github.com/spaam/svtplay-dl
 	arch = any
 	license = MIT
@@ -12,8 +12,7 @@ pkgbase = svtplay-dl
 	depends = ffmpeg
 	depends = python-yaml
 	optdepends = python-pysocks: proxy support
-	source = svtplay-dl-3.8.tar.gz::https://github.com/spaam/svtplay-dl/archive/3.8.tar.gz
-	sha256sums = 64ebcd0a7af92ff092a5bd2b75a0538c540fbf294b6e7574132c62eb23498a6d
+	source = svtplay-dl-3.9.1.tar.gz::https://github.com/spaam/svtplay-dl/archive/3.9.1.tar.gz
+	sha256sums = c1ba4d40e5367b0aafc0b892c15b7b1130eefc8ecb95f4eddacce5f39d97e49a
 
 pkgname = svtplay-dl
-
