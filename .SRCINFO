@@ -12,6 +12,7 @@ pkgbase = goofys-git
 	license = Apache
 	makedepends = git
 	makedepends = go
+	depends = fuse2
 	source = git+https://github.com/kahing/goofys
 	sha512sums = SKIP
 
