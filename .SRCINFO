@@ -1,6 +1,6 @@
 pkgbase = threshold-miku-dark-steam-skin
 	pkgdesc = A Hatsune Miku Steam Theme Skin with Steam New Library Supported!(Dark Version)
-	pkgver = 2.3.5
+	pkgver = 2.3.6
 	pkgrel = 1
 	url = https://github.com/Jack-Myth/Threshold-Miku
 	install = threshold-miku-dark-steam-skin.install
@@ -8,8 +8,8 @@ pkgbase = threshold-miku-dark-steam-skin
 	license = unknown
 	depends = steam
 	depends = sssm
-	source = https://github.com/Jack-Myth/Threshold-Miku/releases/download/v2.3.5-Dark/Threshold-Miku-master.zip
-	md5sums = 43a033238a9d5d69ba897df4fc185fc5
+	source = https://github.com/Jack-Myth/Threshold-Miku/releases/download/v2.3.6-Dark/Threshold.Miku.zip
+	md5sums = 3d0be10a22c33c9d5eb91445c5987553
 
 pkgname = threshold-miku-dark-steam-skin
 
