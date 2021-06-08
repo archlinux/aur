@@ -1,7 +1,7 @@
 # Maintainer: grtcdr <ba.tahaaziz@gmail.com>
 
 pkgname=macchina
-pkgver=0.8.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="A system information fetcher, with an emphasis on performance and minimalism."
 
@@ -14,8 +14,8 @@ optdepends=('wmctrl: window manager support')
 makedepends=('rust' 'cargo' 'git')
 
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('f5ac11a49470639d81424b208fc5d95b111a77b97138af7fce347ad3daae8005')
 
-sha256sums=('21ecc57ecc0f13bdb438d8ec78d3f630084cae7a4b69eea66e8f3ce18b5ab2f6')
 build() {
 	cd "$pkgname-$pkgver"
 	cargo build --release --locked --target-dir=target
