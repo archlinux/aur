@@ -1,6 +1,6 @@
 pkgbase = filetovox
 	pkgdesc = Tool for convert files into Magicavoxel file
-	pkgver = 1.11
+	pkgver = 1.12.3
 	pkgrel = 1
 	url = https://github.com/Zarbuz/FileToVox
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = filetovox
 	makedepends = dotnet-sdk
 	depends = dotnet-runtime
 	depends = libgdiplus
-	source = https://github.com/Zarbuz/FileToVox/archive/1.11.tar.gz
-	md5sums = a45cd5f7fde19bd5e40363f820a43074
+	source = https://github.com/Zarbuz/FileToVox/archive/1.12.3.tar.gz
+	md5sums = f983f0c0be36b2577d2f40e5ca68909f
 
 pkgname = filetovox
-
