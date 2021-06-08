@@ -2,7 +2,7 @@
 
 pkgbase='pokete-git'
 pkgname='pokete-git'
-pkgver=0.3.0.r19.g89b7b4b
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A small terminal based game in the style of a very popular and old game from gamefreak."
 arch=(any)
