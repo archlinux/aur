@@ -1,13 +1,12 @@
 pkgbase = greetd-tuigreet-git
 	pkgdesc = A console UI greeter for greetd
 	pkgver = 0.3.1.r67.65fecf3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/apognu/tuigreet
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = rust
-	depends = greetd
 	conflicts = greetd-tuigreet
 	conflicts = greetd-tuigreet-bin
 	source = git+https://github.com/apognu/tuigreet
