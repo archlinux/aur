@@ -29,7 +29,7 @@ build() {
   for f in "$srcdir/Library/Fonts"/*.otf; do
     printf "%b" "\e[1;32m==> \e[0mNow patching $f\n"
     # patch font quiet with complete single-width glyphs
-    python "$srcdir/font-patcher" -q -c -s "$f" -out "$srcdir/patched" &> /dev/null
+    python "$srcdir/font-patcher" -q -c -s "$f" -out "$srcdir/patched" > /dev/null
   done
 }
 
