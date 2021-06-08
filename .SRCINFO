@@ -1,0 +1,21 @@
+pkgbase = r-bis
+	pkgdesc = Provides an interface to data provided by the Bank for International Settlements, allowing for programmatic retrieval of a large quantity of (central) banking data.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://cran.r-project.org/web/packages/BIS/
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-dplyr
+	depends = r-readr
+	depends = r-tidyr
+	depends = r-rvest
+	depends = r-xml2
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-ggplot2
+	optdepends = r-zoo
+	source = https://cran.r-project.org/src/contrib/BIS_0.2.1.tar.gz
+	sha512sums = c5bd657aa942a6793f9149ece9929f8f19ec9707fd093b49e8ccb1d666f4a39088057cda513c2b2474003615b0f15abe91a83eec3c028da0071dd6e9c8ab1b21
+
+pkgname = r-bis
