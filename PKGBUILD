@@ -1,26 +1,29 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 pkgname=go2tv
-_name=Go2TV
-pkgver=1.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='cast your videos to UPnP/DLNA MediaRenderer'
 arch=('x86_64')
 url="https://github.com/alexballas/Go2TV"
 license=('MIT')
+depends=('libglvnd')
 makedepends=('go')
 source=("${url}/archive/v${pkgver}.tar.gz")
 
 build() {
-  cd $_name-$pkgver
-  go build \
-    -gcflags "all=-trimpath=$PWD" \
-    -asmflags "all=-trimpath=$PWD" \
-    -ldflags "-extldflags $LDFLAGS" \
-    -o $pkgname .
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+  cd $pkgname-$pkgver
+  make build
 }
 
 package() {
-  install -Dm755 $_name-$pkgver/$pkgname "$pkgdir"/usr/bin/$pkgname
+  install -Dm755 $pkgname-$pkgver/build/$pkgname "$pkgdir"/usr/bin/$pkgname
+  install -Dm644 $pkgname-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/go2tv/LICENSE
 }
 
-sha256sums=('3822dc68374a2dcd81d865fc51c85d95d8e7ee90bcd67d88ba904e9570827ec6')
+sha256sums=('21bf233dd24b0cfb4a2f56d7640029dccb0f4e6e8559450af021378abe3645cc')
