@@ -1,7 +1,7 @@
 # Maintainer: HRKings <hrkings@***.com>
 pkgname=gitgudcli-git
 _pkgname=GitGudCLI
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Brings pokemon to the terminal using the power of cowsay."
 arch=(any)
