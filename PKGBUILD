@@ -3,19 +3,16 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=ksysguard
-pkgver=5.21.5
+pkgver=5.22.0
 pkgrel=1
 pkgdesc='Track and control the processes running in your system'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(libksysguard kinit)
-makedepends=(extra-cmake-modules kdoctools networkmanager-qt)
-optdepends=('nvidia-utils: NVIDIA GPU usage' 'networkmanager-qt: improved network statistics')
-groups=(plasma)
-install=$pkgname.install
-source=(https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('103b34b83fd2ea1af1cb01b67de70be2ad5362e22270d23cd437ac210bca1bb0'
+depends=(ksystemstats)
+makedepends=(extra-cmake-modules kdoctools)
+source=(https://download.kde.org/stable/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('0f9c624e5fbb2aee906d8d9563c5a7eb09eaf38bc8e4382c072f9e6d8854622d'
             'SKIP')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
@@ -24,7 +21,6 @@ validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell <jr
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
-    -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
