@@ -1,7 +1,7 @@
 pkgbase = wmclockmon
 	pkgdesc = A dockapp which displays a clock in 12/24h mode with alarm mode and 3 different LCD styles
 	pkgver = 0.8.1
-	pkgrel = 6
+	pkgrel = 7
 	url = http://tnemeth.free.fr/projets/dockapps.html
 	arch = i686
 	arch = x86_64
@@ -16,4 +16,3 @@ pkgbase = wmclockmon
 	md5sums = 641dc6f5bc5449a59fe206cefa068b95
 
 pkgname = wmclockmon
-

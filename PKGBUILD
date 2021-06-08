@@ -3,7 +3,7 @@
 
 pkgname=wmclockmon
 pkgver=0.8.1
-pkgrel=6
+pkgrel=7
 pkgdesc="A dockapp which displays a clock in 12/24h mode with alarm mode and 3 different LCD styles"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -24,14 +24,13 @@ prepare() {
 
   # builds against gtk+2.0
   patch -Np2 -b -z .orig -i "$srcdir/build2.0.patch"
-
   autoreconf -fiv
 }
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr
-  make
+  ./configure --prefix=/usr CFLAGS="$CFLAGS -fcommon -Wno-deprecated-declarations" LDFLAGS="$LDFLAGS"
+  make CFLAGS="$CFLAGS -fcommon -Wno-deprecated-declarations" LDFLAGS="$LDFLAGS"
 }
 
 package() {
