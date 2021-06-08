@@ -81,7 +81,7 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_BROWSER=ON \
     -DCEF_ROOT_DIR=/opt/cef-obs \
-    -DOBS_VERSION_OVERRIDE="$pkgver-$pkgrel" ..
+    -DOBS_VERSION_OVERRIDE="$pkgver-tytan652-$pkgrel" ..
 
   make
 }
