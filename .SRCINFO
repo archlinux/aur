@@ -1,0 +1,17 @@
+pkgbase = althttpd-fossil
+	pkgdesc = The Althttpd Webserver
+	pkgver = r16.2c5e3f9
+	pkgrel = 1
+	url = https://sqlite.org/althttpd/
+	arch = x86_64
+	license = custom:Public Domain
+	makedepends = fossil
+	makedepends = gcc
+	makedepends = make
+	depends = gcc-libs
+	provides = althttpd
+	conflicts = althttpd
+	source = fossil+https://sqlite.org/althttpd
+	sha256sums = SKIP
+
+pkgname = althttpd-fossil
