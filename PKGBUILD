@@ -6,7 +6,7 @@
 
 pkgname=gtkglarea
 pkgver=2.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="GTK/GL Area libraries"
 arch=('x86_64')
 url="https://mono-project.com/GtkGLArea"
@@ -17,7 +17,7 @@ sha512sums=('c790c1b542d85d86cd57f333c87ab2c930c8065d6f75320d588688b9a0adb8c4270
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	./configure --prefix=/usr
+	CFLAGS="-Wno-format-security" ./configure --prefix=/usr
 	make
 }
 

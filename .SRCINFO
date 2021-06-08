@@ -1,7 +1,7 @@
 pkgbase = gtkglarea
 	pkgdesc = GTK/GL Area libraries
 	pkgver = 2.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://mono-project.com/GtkGLArea
 	arch = x86_64
 	license = GPL
