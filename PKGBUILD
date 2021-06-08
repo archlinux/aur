@@ -1,7 +1,7 @@
 # Maintainer: Wojciech Kępka (wojciech@wkepka.dev) 
 pkgname=helix
 pkgver=0.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A text editor written in rust"
 url="https://helix-editor.com"
 arch=(x86_64)
@@ -18,9 +18,8 @@ HELIX_RUNTIME=/usr/lib/helix/runtime exec /usr/lib/helix/hx "\$@"
 EOF
 	chmod +x "hx"
 
-	cd helix
-    git checkout tags/v$pkgver -b master
-	git submodule update --recursive --recommend-shallow --init
+	rm -rf helix
+	git clone --recurse-submodules --shallow-submodules -j8 https://github.com/helix-editor/helix
 }
 
 build() {
