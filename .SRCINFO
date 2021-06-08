@@ -1,21 +1,20 @@
 pkgbase = mobac
-	pkgdesc = Mobile Atlas Creator (formerly TrekBuddy Atlas Creator) creates offline atlases for GPS handhelds and cell phone applications like TrekBuddy, AndNav and other Android and WindowsCE based applications.
-	pkgver = 2.2.0
+	pkgdesc = Mobile Atlas Creator (formerly TrekBuddy Atlas Creator) creates offline atlases for GPS handhelds and cell phone applications like TrekBuddy, AndNav and other
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = http://mobac.sourceforge.net/
 	arch = x86_64
 	license = GPL
 	depends = java-runtime
-	source = http://sourceforge.net/projects/mobac/files/Mobile Atlas Creator/MOBAC 2.0/Mobile Atlas Creator 2.2.0.zip
+	source = http://sourceforge.net/projects/mobac/files/Mobile Atlas Creator/MOBAC 2.0/Mobile Atlas Creator 2.2.1.zip
 	source = mobac.sh
 	source = directories.ini
 	source = mobac.desktop
 	source = mobac.png
-	md5sums = a9b9e40d07e611caaebfede18ad080a2
+	md5sums = 42ec6685a7b1ffeaa35e083419f76341
 	md5sums = 1bc898bc6a623b5550249f96da0f0a29
 	md5sums = 1552ae46115fd8315658ed660b16cf03
 	md5sums = a5710ec7830b78216f516e7955b57c55
 	md5sums = b1dc3b3e5f08216e0b32d31d60809cee
 
 pkgname = mobac
-
