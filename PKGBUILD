@@ -1,56 +1,48 @@
 # Maintainer: timescam <rex.ky.ng at gmail dot com>
+# Maintainer: m8D2 <omui (at) proton mail (dot) com>
 
 pkgname=zentile-git
-_pkgname="zentile"
-pkgver=r7.c4e3fe0
-pkgrel=2
-pkgdesc="Automatic Tiling for EWMH Complaint Window Managers. Development version."
-arch=('any')
+pkgver=0.1.1.r8.g8d1b3d4
+pkgrel=1
+pkgdesc="On-demand tiling for Openbox, Xfce and other EWMH Complaint Window Managers (git version)"
+arch=(any)
 url="https://github.com/blrsn/zentile"
-license=('MIT')
-depends=(
-  'go'
-)
-optdepends=(
-  'xorg-server: with EWMH Complaint Window Managers'
-)
-makedepends=(
-  'git'
-)
-
+license=(MIT)
+optdepends=('xorg-server: with EWMH Complaint Window Managers')
+makedepends=(git go)
 provides=('zentile')
-conflicts=(
-	'bin32-zentile'
-	'zentile-bin'
-)
-
-source=("$_pkgname::git+https://github.com/blrsn/$_pkgname.git")
-
-md5sums=('SKIP')
+conflicts=(bin32-zentile zentile-bin zentile)
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    cd "$pkgname"
+
+    # cutting off 'v' prefix that presents in the git tag
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+#prepare(){
+#  cd "$pkgname"
+#}
+
 build() {
-	cd "$srcdir/$_pkgname"
+  cd "$pkgname"
+  export GOPATH="$srcdir"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go get
+}
 
-	rm -rf "$srcdir/.go/src"
-
-	mkdir -p "$srcdir/.go/src"
-
-	export GOPATH="$srcdir/.go"
-
-	mv "$srcdir/$_pkgname" "$srcdir/.go/src/"
-
-	cd "$srcdir/.go/src/$_pkgname/"
-	ln -sf "$srcdir/.go/src/$_pkgname/" "$srcdir/$_pkgname"
-
-	echo "Running 'go get'..."
-	go get
+check() {
+  cd "$pkgname"
+  go test ./...
 }
 
 package() {
-	install -Dm755 "$srcdir/.go/bin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  cd "$pkgname"
+  install -Dm755 "$srcdir"/bin/zentile "$pkgdir"/usr/bin/zentile
 }
