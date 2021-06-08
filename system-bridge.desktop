@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=System bridge
+Comment=A bridge for your systems.
+Exec=system-bridge
+Icon=system-bridge
+Type=Application
+Categories=System;

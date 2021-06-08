@@ -1,0 +1,15 @@
+pkgbase = system-bridge
+	pkgdesc = A bridge for your systems.
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/timmo001/system-bridge
+	arch = any
+	license = MIT
+	makedepends = yarn
+	makedepends = node-gyp
+	source = https://github.com/timmo001/system-bridge/archive/refs/tags/v1.7.0.tar.gz
+	source = system-bridge.desktop
+	sha256sums = 320ed6bd42b15a3f77350731eae6b20320d5844123360fb366e2d569eb2cef51
+	sha256sums = 88aa544901a54eef3052f4d79fdd5278a5fa3ca220e3ff1daa486b176d552ee5
+
+pkgname = system-bridge
