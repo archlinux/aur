@@ -28,7 +28,7 @@ sha256sums_armv7h=('f1b0c979e1b61ec52ebd5e1d0b754d7681d8623b09ac90c69718a553ef9b
                    'f044a8dc8764868d769748d29868879858fe16e1012fe5f1317328a3bfa2fe48'
                    'b52d98f247deb35a192df83a23e5565df17375322f633453c8358cdd3dd3d90a'
                    '9278716094e7f017c18a581ea8edb9537ffd00757b9c6b815225a97e7a9aff76')
-noextract=('jdk-8u251-linux-arm32-vfp-hflt.tar.gz' 'jdk-8u251-linux-arm64-vfp-hflt.tar.gz' 'lwjgl3arm32.tar.gz' 'lwjgl3arm32.tar.gz' 'lwjgl2arm32.tar.gz')
+noextract=('jdk-8u251-linux-arm32-vfp-hflt.tar.gz' 'jdk-8u251-linux-arm64-vfp-hflt.tar.gz' 'lwjgl3arm64.tar.gz' 'lwjgl3arm32.tar.gz' 'lwjgl2arm32.tar.gz' 'launcher.jar')
 install='minecraft-launcher-arm.install'
 
 package() {
@@ -41,7 +41,7 @@ package() {
 	if [ "${BITS}" == "32" ]; then
 	    mkdir -p "$pkgdir/opt/minecraft/lwjgl2arm32"
 	fi
-	mkdir -p /opt/jdk
+	mkdir -p "$pkgdir/opt/jdk"
 	install -Dm644 launcher.jar "$pkgdir/opt/minecraft/launcher.jar"
 	install -Dm755 minecraft-launcher-arm${_BITS}.sh "$pkgdir/usr/bin/minecraft-launcher"
 	install -Dm644 minecraft-launcher.svg "$pkgdir/usr/share/pixmaps/minecraft-launcher.svg"
