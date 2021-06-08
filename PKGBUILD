@@ -1,5 +1,5 @@
 pkgname=svix-cli
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='The Svix CLI (webhooks as a service)'
 arch=('x86_64')
@@ -7,7 +7,7 @@ url="https://www.svix.com"
 license=('GPL')
 makedepends=('go')
 source=("https://github.com/svixhq/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7f1f39b23ce43a0904d13e36fa6f357de4ecec93565049b4a929c8f265eaf02e')
+sha256sums=('2dbac7503ed3d79cf3a7f239300e97d091142ee9b88db0f91ac10c288e8b081d')
 
 prepare(){
   cd "$pkgname-$pkgver"
