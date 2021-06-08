@@ -1,7 +1,7 @@
 pkgbase = pacmanfile
 	pkgdesc = Manage your pacman packages declaratively
 	pkgver = 0.0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mastertinner/pacmanfile
 	arch = x86_64
 	arch = i686
