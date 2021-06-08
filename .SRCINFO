@@ -1,6 +1,6 @@
 pkgbase = agisoft-delighter
 	pkgdesc = A free stand-alone tool designed to remove shadows from model textures
-	pkgver = 1.7.2
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://www.agisoft.com/
 	install = agisoft-delighter.install
@@ -10,9 +10,9 @@ pkgbase = agisoft-delighter
 	makedepends = imagemagick
 	provides = agisoft-delighter
 	options = !strip
-	source = https://s3-eu-west-1.amazonaws.com/download.agisoft.com/delighter_1_7_2_amd64.tar.gz
+	source = https://s3-eu-west-1.amazonaws.com/download.agisoft.com/delighter_1_7_3_amd64.tar.gz
 	source = agisoft-delighter-icon-encoded.txt
-	sha256sums = 6dee3e581cb0a69b55f3bbfa1e34e917b15723980fc1fb27d5e3edd57e5488ba
+	sha256sums = 97916b517e835ac1d3c677cecd740e03aaa28fd83b20efe86b229dc928b71ccb
 	sha256sums = 6cc74a4ac8ec776ebea5eff2383ddaf2520bb0a47f7d2135a62277dbd9206921
 
 pkgname = agisoft-delighter
