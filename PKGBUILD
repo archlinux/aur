@@ -5,7 +5,7 @@ pkgname='ros-melodic-catkin'
 pkgver='0.7.29'
 epoch=1
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
@@ -34,8 +34,15 @@ depends=(
 )
 
 _dir="catkin-${pkgver}/"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/catkin/archive/${pkgver}.tar.gz")
-sha256sums=('8a86803b9081b19d2d37c3d028cc9f7bdfc7122f6204ec7e77ae0cbfda57ff71')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/catkin/archive/${pkgver}.tar.gz"
+        "${pkgname}-${pkgver}-7fa3eb3.patch"::"https://github.com/ros/catkin/commit/7fa3eb3508ba12c34d85b8e54bbdf4bbdc60a5c1.patch")
+sha256sums=('8a86803b9081b19d2d37c3d028cc9f7bdfc7122f6204ec7e77ae0cbfda57ff71'
+            '96c39f295fedb8efd47dd7b899ac4aaa221c4a9731e117e09db001388642dbeb')
+
+prepare() {
+	cd ${srcdir}/${_dir}
+	patch -p1 < "${srcdir}/${pkgname}-${pkgver}-7fa3eb3.patch"
+}
 
 build() {
 	# Use ROS environment variables.
