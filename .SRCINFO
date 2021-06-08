@@ -1,0 +1,18 @@
+pkgbase = landrop-git
+	pkgdesc = Drop any files to any devices on your LAN.
+	pkgver = r59.ee8144a
+	pkgrel = 1
+	url = https://github.com/LANDrop/LANDrop
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	depends = libsodium
+	depends = qt5-base
+	depends = hicolor-icon-theme
+	provides = landrop
+	conflicts = landrop
+	source = landrop-git::git+https://github.com/LANDrop/LANDrop.git
+	sha512sums = SKIP
+
+pkgname = landrop-git
