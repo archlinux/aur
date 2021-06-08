@@ -3,7 +3,7 @@
 
 pkgname=spooles
 pkgver=2.2
-pkgrel=6
+pkgrel=7
 pkgdesc="SParse Object Oriented Linear Equations Solver"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -30,7 +30,7 @@ prepare() {
 
 build() {
   cd ${srcdir}/$pkgname
-  make CFLAGS="$CFLAGS" lib
+  make CFLAGS="$CFLAGS -Wno-error=format-security" lib
   zcat "$srcdir/ReferenceManual.ps.gz" |ps2pdf - ReferenceManual.pdf
 }
 

@@ -1,7 +1,7 @@
 pkgbase = spooles
 	pkgdesc = SParse Object Oriented Linear Equations Solver
 	pkgver = 2.2
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.netlib.org/linalg/spooles
 	arch = i686
 	arch = x86_64
