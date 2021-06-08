@@ -17,11 +17,6 @@ pkgbase = codelite-unstable
 	depends = libssh
 	depends = mariadb-libs
 	depends = ncurses
-	depends = xterm
-	depends = wget
-	depends = curl
-	depends = python2
-	depends = python
 	optdepends = graphviz: callgraph visualization
 	optdepends = clang: compiler
 	optdepends = gcc: compiler
@@ -35,4 +30,3 @@ pkgbase = codelite-unstable
 	md5sums = 20f3428eb831c3ff2539a7228afaa3b4
 
 pkgname = codelite-unstable
-
