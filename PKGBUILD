@@ -2,9 +2,9 @@
 
 pkgname=cloudflared-bin
 pkgver=2021.5.10
-pkgrel=1
+pkgrel=2
 pkgdesc="An Argo Tunnel client which proxies any local webserver through the Cloudflare network"
-arch=("x86_64" "i686" "armv6h" "armv7h")
+arch=("x86_64" "i686" "aarch64" "armv6h" "armv7h")
 url="https://developers.cloudflare.com/argo-tunnel/"
 license=("custom")
 depends=("glibc")
@@ -17,6 +17,7 @@ source=("https://raw.githubusercontent.com/cloudflare/cloudflared/master/LICENSE
         "sysusers.d")
 source_x86_64=("https://github.com/cloudflare/cloudflared/releases/download/${pkgver}/cloudflared-linux-amd64")
 source_i686=("https://github.com/cloudflare/cloudflared/releases/download/${pkgver}/cloudflared-linux-386")
+source_aarch64=("https://github.com/cloudflare/cloudflared/releases/download/${pkgver}/cloudflared-linux-arm64")
 source_armv6h=("https://github.com/cloudflare/cloudflared/releases/download/${pkgver}/cloudflared-linux-armv6")
 source_armv7h=("https://github.com/cloudflare/cloudflared/releases/download/${pkgver}/cloudflared-linux-armv6")
 sha256sums=('6a486a0f6c00e87cce1caf0aa8db45ea9fefd0bf91d9be6fc44460160dc0dbda'
@@ -26,6 +27,7 @@ sha256sums=('6a486a0f6c00e87cce1caf0aa8db45ea9fefd0bf91d9be6fc44460160dc0dbda'
             'bfda935c07b8e49821ee13e19433b1ed475ebb651e3008a32950734afbaef813')
 sha256sums_x86_64=('de705d95b546e6192c31c4321a1c1a9ae3cb8a488e8595ab51e2661187038129')
 sha256sums_i686=('fca00f4f14ff2932e926333419b6dffa5f0e272cc9ce2dbcfbe95ba02b95a419')
+sha256sums_aarch64=('9bb4643ca4b50047da20e4d22a86db673c1c70faf31b4bf4da00bc76106c2a50')
 sha256sums_armv6h=('2bf6a54d19120ab63d7f9b37909ab0296a08e03b8b87eeef3349eb21b89366f6')
 sha256sums_armv7h=('2bf6a54d19120ab63d7f9b37909ab0296a08e03b8b87eeef3349eb21b89366f6')
 
