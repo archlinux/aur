@@ -1,6 +1,5 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 # Contributor: Harry Beadle <harrybeadle@protonmail.com>
-
 pkgname=otf-san-francisco-mono
 pkgver=1
 pkgrel=5
@@ -24,7 +23,7 @@ prepare() {
 
 package() {
   # install fonts
-  install -d "$pkgdir"/usr/share/fonts/apple
+  install -d "$pkgdir/usr/share/fonts/apple"
   install -m644 "Library/Fonts/"*.otf "$pkgdir/usr/share/fonts/apple"
 
   # install license
