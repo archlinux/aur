@@ -2,7 +2,7 @@
 # Maintainer: MonstrousOgre <monstrousogre0813@gmail.com>
 
 pkgname=zsh-vi-mode
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="A better and friendly vi(vim) mode plugin for ZSH"
 arch=('any')
