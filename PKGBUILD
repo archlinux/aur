@@ -2,10 +2,10 @@
 
 pkgname=zfscrypt-git
 pkgver=9662d6d
-pkgrel=1
+pkgrel=2
 pkgdesc="Combine ZFS and PAM to encrypt home directories on Linux"
 arch=("any")
-url="https://github.com/BenKerry/zfscrypt"
+url="https://github.com/rlaager/zfscrypt"
 license=("MIT")
 depends=("pam" "zfs-utils")
 makedepends=("git" "make" "gcc")
