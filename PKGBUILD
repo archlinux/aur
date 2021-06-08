@@ -13,18 +13,14 @@ makedepends=('gendesk' 'wget')
 depends=('libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk3')
 conflicts=('gdlauncher-appimage' 'gdlauncher' 'gdlauncher-git')
 source_x86_64=(
-    "GDLauncher-${pkgver}.zip::https://github.com/gorilla-devs/GDLauncher/releases/download/v${pkgver}/GDLauncher-linux-setup.zip"
-)
+    "GDLauncher-${pkgver}.zip::https://github.com/gorilla-devs/GDLauncher/releases/download/v${pkgver}/GDLauncher-linux-setup.zip" "https://github.com/gorilla-devs/GDLauncher/raw/master/public/icon.png")
 
-md5sums_x86_64=('SKIP')
+md5sums_x86_64=('SKIP' 'SKIP')
 
 prepare() {
     # Generate .desktop
     gendesk --pkgname "GDLauncher" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n -f
     mv "GDLauncher.desktop" "${pkgname}.desktop"
-
-    # Download icon
-    wget https://github.com/gorilla-devs/GDLauncher/raw/master/public/icon.png
 }
 
 package() {

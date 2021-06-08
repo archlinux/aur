@@ -16,6 +16,8 @@ pkgbase = gdlauncher-bin
 	conflicts = gdlauncher
 	conflicts = gdlauncher-git
 	source_x86_64 = GDLauncher-1.1.8.zip::https://github.com/gorilla-devs/GDLauncher/releases/download/v1.1.8/GDLauncher-linux-setup.zip
+	source_x86_64 = https://github.com/gorilla-devs/GDLauncher/raw/master/public/icon.png
+	md5sums_x86_64 = SKIP
 	md5sums_x86_64 = SKIP
 
 pkgname = gdlauncher-bin
