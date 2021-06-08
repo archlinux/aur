@@ -1,7 +1,7 @@
 # Maintainer: theferdi265 at gmail dot com
 
 pkgname=gtk-theme-numix-solarized-git
-pkgver=20200910.b598ade
+pkgver=20210524.1181ce0
 pkgrel=1
 pkgdesc="Solarized versions of Numix GTK2 and GTK3 theme, compatible with GTK 3.20"
 arch=('any')
@@ -14,17 +14,20 @@ source=('git+https://github.com/Ferdi265/numix-solarized-gtk-theme.git')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "numix-solarized-gtk-theme"
-	local date=$(date --date "$(git show -s --format=%ci)" +%Y%m%d)
-	local commit=$(git rev-parse --short HEAD)
-	echo $date.$commit
+    cd "numix-solarized-gtk-theme"
+    local date=$(date --date "$(git show -s --format=%ci)" +%Y%m%d)
+    local commit=$(git rev-parse --short HEAD)
+    echo $date.$commit
 }
 
 package() {
-	cd "numix-solarized-gtk-theme"
-	themes=( *.colors )
+    cd "numix-solarized-gtk-theme"
 
-	for theme in ${themes[@]/.colors/}; do
-		make -j1 THEME="$theme" DESTDIR="$pkgdir" install
-	done
+    pushd colors >/dev/null
+    themes=( *.colors )
+    popd >/dev/null
+
+    for theme in ${themes[@]/.colors/}; do
+        make -j1 THEME="$theme" DESTDIR="$pkgdir" install
+    done
 }
