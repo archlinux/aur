@@ -1,0 +1,13 @@
+pkgbase = time_warrior
+	pkgdesc = A CLI-based time tracking tool
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/mrcook/time_warrior
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = https://github.com/mrcook/time_warrior/archive/v1.3.2/time_warrior-1.3.2.tar.gz
+	sha256sums = a8b80082d62f464edc21f00faa98fa4a917f85e0b0878898a2f87ccddc2e971c
+
+pkgname = time_warrior
