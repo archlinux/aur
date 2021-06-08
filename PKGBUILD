@@ -23,8 +23,8 @@ HELIX_RUNTIME=/usr/lib/helix/runtime exec /usr/lib/helix/hx "\$@"
 EOF
 	chmod +x "hx"
 
-	cd helix
-	git submodule update --recursive --recommend-shallow --init
+	rm -rf helix
+	git clone --recurse-submodules --shallow-submodules -j8 https://github.com/helix-editor/helix
 }
 
 build() {
