@@ -4,10 +4,12 @@ pkgbase = fi
 	pkgrel = 1
 	url = http://www.vanheusden.com/fi/
 	arch = i686
+	arch = x86_64
 	license = unknown
 	depends = ncurses
-	source = http://www.vanheusden.com/f-irc/fi-1.36.tgz
-	md5sums = 195e3fe6ba32013888eb12a640016d37
+	source = http://deb.debian.org/debian/pool/main/f/f-irc/f-irc_1.36.orig.tar.gz
+	source = fix_ftbfs.patch
+	md5sums = f5b092f75f9b5dc068ecdde92a9ebb62
+	md5sums = fb409c6b07aec6c189b8e9f82b1c12ae
 
 pkgname = fi
-

@@ -1,0 +1,18 @@
+Description: Fix ftbfs with GCC-10
+
+Author: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+Bug-Debian: https://bugs.debian.org/957189
+Forwarded: no
+
+---
+
+--- f-irc-1.36.orig/theme.c
++++ f-irc-1.36/theme.c
+@@ -17,7 +17,6 @@
+ #include "theme.h"
+ #include "utils.h"
+ 
+-layout_theme theme;
+ const char *theme_file = NULL;
+ 
+ theme_parsing theme_parser[] =
