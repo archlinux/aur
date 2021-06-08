@@ -1,0 +1,18 @@
+pkgbase = ruby-circleci
+	pkgdesc = Ruby gem for Circle CI REST API
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/mtchavez/circleci/
+	changelog = CHANGELOG.md
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby
+	noextract = circleci-2.0.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/circleci-2.0.3.gem
+	source = https://raw.githubusercontent.com/mtchavez/circleci/v2.0.3/LICENSE
+	sha256sums = 4e9719a8fd63ad48058bed82aec9d1885bd88a386491bb19dfc46591ce3159dd
+	sha256sums = 21366ef752c0c7fbf91c46ff163212d3991c6f31cf5edd216467966c50783e7e
+
+pkgname = ruby-circleci
