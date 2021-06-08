@@ -4,7 +4,7 @@
 
 pkgname=hheretic
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux port of Raven Game's old shooter, Heretic (aka Hacked Heretic)"
 arch=('i686' 'x86_64')
 url="http://hhexen.sourceforge.net/hheretic.html"
@@ -20,7 +20,7 @@ sha256sums=('ad69fbdbae75cd673b140a0f1058fd1835ce26d5859ede9e8477d5c44ec35733')
 build() {
   cd $pkgname-$pkgver-src
 
-  ./configure --prefix=/usr --with-audio=sdlmixer
+  ./configure --prefix=/usr --with-audio=sdlmixer --with-datapath=/usr/share/games/heretic/
   make
 }
 

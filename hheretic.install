@@ -1,7 +1,7 @@
 
 post_install() {
-  echo "Put your heretic(1).wad (and additional wads) in '~/.hheretic'."
-  echo "You can put custom mp3/ogg music in '~/.hheretic/music', a recreated version"
+  echo "Put your heretic(1).wad (and additional wads) in '/usr/share/games/heretic/'."
+  echo "You can put custom mp3/ogg music in '/usr/share/games/heretic/music', a recreated version"
   echo "of the original sound track is available freely here:"
   echo "http://sycraft.org/content/audio/heretic.shtml"
 }

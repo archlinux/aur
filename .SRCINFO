@@ -1,7 +1,7 @@
 pkgbase = hheretic
 	pkgdesc = A Linux port of Raven Game's old shooter, Heretic (aka Hacked Heretic)
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hhexen.sourceforge.net/hheretic.html
 	install = hheretic.install
 	changelog = hheretic.ChangeLog
