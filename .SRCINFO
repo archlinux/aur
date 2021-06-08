@@ -1,5 +1,5 @@
 pkgbase = networkmanager-openvpn-tls-crypt
-	pkgdesc = NetworkManager VPN plugin for OpenVPN (supports tls-crypt)
+	pkgdesc = NetworkManager VPN plugin for OpenVPN (supports tls-crypt, depends on removed 'libnm-gtk')
 	pkgver = 1.2.8
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/NetworkManager

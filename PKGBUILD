@@ -6,7 +6,7 @@
 pkgname=networkmanager-openvpn-tls-crypt
 pkgver=1.2.8
 pkgrel=1
-pkgdesc="NetworkManager VPN plugin for OpenVPN (supports tls-crypt)"
+pkgdesc="NetworkManager VPN plugin for OpenVPN (supports tls-crypt, depends on removed 'libnm-gtk')"
 arch=('i686' 'x86_64')
 url="https://wiki.gnome.org/Projects/NetworkManager"
 license=('GPL')
