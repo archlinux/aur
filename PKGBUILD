@@ -21,7 +21,6 @@ depends=(
     atool-git
     bat
     mediainfo
-    binutils
     libcdio
     catdoc
     docx2txt
