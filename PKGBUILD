@@ -32,13 +32,13 @@ noextract=('jdk-8u251-linux-arm32-vfp-hflt.tar.gz' 'jdk-8u251-linux-arm64-vfp-hf
 install='minecraft-launcher-arm.install'
 
 package() {
-	if [ "$(uname -m)" = "aarch64" ]; then
+	if [ "$CARCH" = "aarch64" ]; then
 	    _BITS=64
 	else
 	    _BITS=32
 	fi
 	mkdir -p "$pkgdir/"opt/minecraft/lwjgl3arm${_BITS}
-	if [ "${BITS}" == "32" ]; then
+	if [ "${_BITS}" == "32" ]; then
 	    mkdir -p "$pkgdir/opt/minecraft/lwjgl2arm32"
 	fi
 	mkdir -p "$pkgdir/opt/jdk"
@@ -47,7 +47,7 @@ package() {
 	install -Dm644 minecraft-launcher.svg "$pkgdir/usr/share/pixmaps/minecraft-launcher.svg"
 	install -Dm644 minecraft-launcher.desktop "$pkgdir/usr/share/applications/minecraft-launcher.desktop"
 	bsdtar -xv -C "$pkgdir/opt/jdk" -f jdk-8u251-linux-arm${_BITS}-vfp-hflt.tar.gz
-	bsdtar -xv -C "$pkgdir/"opt/minecraft/lwjgl3arm${_BITS} -f lwjgl3arm{_BITS}.tar.gz
+	bsdtar -xv -C "$pkgdir/"opt/minecraft/lwjgl3arm${_BITS} -f lwjgl3arm${_BITS}.tar.gz
 	if [ "${_BITS}" == "32" ]; then
 	    bsdtar -xv -C "$pkgdir/opt/minecraft/lwjglarm32" -f lwjgl2arm32.tar.gz
 	fi
