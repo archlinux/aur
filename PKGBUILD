@@ -1,12 +1,12 @@
 # Maintainer: Alisson Lauffer <alissonvitortc@gmail.com>
 
 pkgname=telegrand-git
-pkgver=r67.f029e11
-pkgrel=3
+pkgver=r173.9c1cb51
+pkgrel=1
 pkgdesc='A GTK4 telegram client built to be well integrated with the GNOME desktop environment.'
 arch=('x86_64' 'i686')
 url='https://github.com/melix99/telegrand'
-depends=('gtk4' 'libadwaita')
+depends=('gtk4' 'libadwaita' 'telegram-tdlib')
 makedepends=('git' 'rust' 'meson')
 license=('GPL3')
 source=('git+https://github.com/melix99/telegrand.git')
