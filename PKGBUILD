@@ -2,7 +2,7 @@
 # Contributor: Justin Davis <jrcd83@gmail.com>
 # Generator  : CPANPLUS::Dist::Arch 1.09
 pkgname=perl-crypt-rijndael
-pkgver=1.15
+pkgver=1.16
 pkgrel=1
 pkgdesc="AES/Rijndael Encryption Module"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('perl')
 makedepends=('perl-test-manifest>=1.14')
 url='http://search.cpan.org/dist/Crypt-Rijndael'
 source=("http://cpan.metacpan.org/authors/id/L/LE/LEONT/Crypt-Rijndael-${pkgver}.tar.gz")
-md5sums=('5a26457e9f6a747896234773140a4f58')
+md5sums=('7dccb639178148d6113cf1fc83b02886')
 
 build() {
   PERL=/usr/bin/perl
