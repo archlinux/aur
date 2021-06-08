@@ -1,30 +1,26 @@
-# Maintainer: Marcel Korpel <marcel[dot]korpel[at]gmail>
+# Maintainer: Mark Stenglein <aur@markstenglein.com>
+# Contributor: Marcel Korpel <marcel[dot]korpel[at]gmail>
 # Contributor: Peter Richard Lewis <plewis@aur.archlinux.org>
 
 _gemname=commander
 pkgname=ruby-$_gemname
-pkgver=4.4.3
+pkgver=4.6.0
 pkgrel=1
-pkgdesc="The complete solution for Ruby command-line executables"
+pkgdesc='The complete solution for Ruby command-line executables. Commander bridges the gap between other terminal related libraries you know and love (OptionParser, HighLine), while providing many new features, and an elegant API.'
 arch=('any')
-url="https://rubygems.org/gems/commander"
+url='https://github.com/commander-rb/commander'
 license=('MIT')
-depends=('ruby' 'ruby-highline>=1.7.2')
 options=(!emptydirs)
-source=("http://gems.rubyforge.org/gems/$_gemname-$pkgver.gem"
-        "https://raw.githubusercontent.com/commander-rb/commander/master/LICENSE")
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('aedf4af6fdf8f05489001bcd70af87d83afec6896a3a2dfd9b49ec02bc391d07'
-            'd1c0118f15b4e197c63ce1894a1f72f786020adad84a0930157dc0f74c38e0c0')
+depends=('ruby' 'ruby-highline')
+makedepends=('rubygems')
+source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
+sha256sums=('7d1ddc3fccae60cc906b4131b916107e2ef0108858f485fdda30610c0f2913d9')
 
 package() {
-  cd "$srcdir"
-  # _gemdir is defined inside package() because if ruby[gems] is not installed on
-  # the system, makepkg will exit with an error when sourcing the PKGBUILD.
-  local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
-
-  gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" \
-    "$_gemname-$pkgver.gem"
-
-  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  install -Dm644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
