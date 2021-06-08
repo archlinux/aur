@@ -45,7 +45,8 @@ source=(
         "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver-rc6"
         "python_fix.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3335.patch
         "bind_iface.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4219.patch
-        "en-US.ini" # Because the patch created by github can't manage different line endings
+        "en-US.ini::https://raw.githubusercontent.com/tytan652/obs-studio/bind_iface/UI/data/locale/en-US.ini"
+        # Because the patch created by github can't manage different line endings
         "obs-browser::git+https://github.com/obsproject/obs-browser.git"
         "obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8"
 )
@@ -53,7 +54,7 @@ sha256sums=(
         "SKIP"
         "430d7d0a7e1006c1f6309ad7d4912033dadd542b641f9d41259a5bad568379c9"
         "a43f2ad974104888ef36eef49b3e60dc26f7cfc0f48300726c861978ae5ae3ea"
-        "b242289d5d186bee253ba82185ff43d5e93d7f89254055e9d4833350c6a1cc7a"
+        "1d308c7d37e9a1202aae6cd51761a409ad93c33742b8ba2e60cf6cda473658ee"
         "SKIP"
         "SKIP"
 )
@@ -68,6 +69,7 @@ prepare() {
   patch -Np1 < "$srcdir/python_fix.patch"
   # Add network interface binding for RTMP on Linux (https://github.com/obsproject/obs-studio/pull/4219)
   patch -Np1 < "$srcdir/bind_iface.patch"
+  cp "$srcdir/en-US.ini" "$srcdir/obs-studio"/UI/data/locale/en-US.ini
 }
 
 build() {

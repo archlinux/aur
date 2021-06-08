@@ -42,13 +42,13 @@ pkgbase = obs-studio-tytan652
 	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=27.0.0-rc6
 	source = python_fix.patch
 	source = bind_iface.patch
-	source = en-US.ini
+	source = en-US.ini::https://raw.githubusercontent.com/tytan652/obs-studio/bind_iface/UI/data/locale/en-US.ini
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8
 	sha256sums = SKIP
 	sha256sums = 430d7d0a7e1006c1f6309ad7d4912033dadd542b641f9d41259a5bad568379c9
 	sha256sums = a43f2ad974104888ef36eef49b3e60dc26f7cfc0f48300726c861978ae5ae3ea
-	sha256sums = b242289d5d186bee253ba82185ff43d5e93d7f89254055e9d4833350c6a1cc7a
+	sha256sums = 1d308c7d37e9a1202aae6cd51761a409ad93c33742b8ba2e60cf6cda473658ee
 	sha256sums = SKIP
 	sha256sums = SKIP
 
