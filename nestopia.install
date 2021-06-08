@@ -1,0 +1,7 @@
+
+post_upgrade() {
+  if [ $(vercmp "$2" 1.51.0) -lt 0 ]; then
+    echo " => The settings/data directories have been moved from ~/.nestopia to"
+    echo "    respect xdg basedir spec."
+  fi
+}
