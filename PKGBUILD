@@ -2,7 +2,7 @@
 # Maintainer: Oguzcan Kucukbayrak <oguz@okb1100.com>
 
 pkgname=shadow-icon-theme
-pkgver=3.0
+pkgver=9.1
 pkgrel=0
 pkgdesc="This is a flat icon-theme Gnome 3.10+. The icons have colourful circular base with long shadow."
 arch=(any)

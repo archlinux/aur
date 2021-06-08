@@ -1,6 +1,6 @@
 pkgbase = shadow-icon-theme
 	pkgdesc = This is a flat icon-theme Gnome 3.10+. The icons have colourful circular base with long shadow.
-	pkgver = 3.0
+	pkgver = 9.1
 	pkgrel = 0
 	url = https://www.gnome-look.org/content/show.php/Shadow?content=170398
 	arch = any
@@ -10,4 +10,3 @@ pkgbase = shadow-icon-theme
 	sha256sums = SKIP
 
 pkgname = shadow-icon-theme
-
