@@ -8,19 +8,6 @@ index 19306266..31de63aa 100755
   :deps
   {org.clojure/clojure         {:mvn/version "1.10.0"}
    cheshire/cheshire {:mvn/version "5.10.0"}
-diff --git a/package.json b/package.json
-index 0107c441..3968ee61 100644
---- a/package.json
-+++ b/package.json
-@@ -66,7 +66,7 @@
-         "codemirror": "^5.58.1",
-         "diff": "5.0.0",
-         "diff-match-patch": "^1.0.5",
--        "electron": "^11.2.0",
-+        "electron": "^12.0.4",
-         "fs": "^0.0.1-security",
-         "fs-extra": "^9.1.0",
-         "fuse.js": "^6.4.6",
 diff --git a/shadow-cljs.edn b/shadow-cljs.edn
 index 98122949..0fd9c5f4 100644
 --- a/shadow-cljs.edn

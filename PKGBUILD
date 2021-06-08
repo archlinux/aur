@@ -1,6 +1,6 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 pkgname=logseq-desktop-git
-pkgver=0.1.0.r14.43101c3c
+pkgver=0.1.5.r4.a22f7040
 pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management. (supports Wayland)"
 arch=("x86_64")
@@ -17,7 +17,7 @@ source=(
     "logseq-desktop-wayland.desktop")
 md5sums=(
     "SKIP"
-    "831356a5cad0064c4710ed57598d706f"
+    "d662de8a86149ff2f487ec4a26de8512"
     "3a5ebb330fd33e59f1cc56690df1995d"
     "724d351804bbe2074334a8e529462d0a")
 
