@@ -13,7 +13,8 @@ optdepends=(
     'r-shiny: build interactive web apps with R' # AUR
     'r-rmarkdown: convert R markdown docs to various formats' # AUR
 )
-source=("git+https://github.com/rstudio/shiny-server#tag=v${pkgver}"
+_commit="94db8f793f1d921fe3fd7eb8e68e1d32eeace19e" # v1.5.16.958
+source=("git+https://github.com/rstudio/shiny-server#commit=${_commit}"
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
