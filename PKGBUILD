@@ -8,9 +8,9 @@
 
 
 ## Helpful internal stuff
-_commit=027238dd0f7be51dcb4fbd63a79e81562daf58a8
-_mozcver=2.26.4381.102
-_utdicver=20210524
+_commit=d031469630c70188c20598c0f3a3c3c46c6c7a14
+_mozcver=2.26.4395.102
+_utdicver=20210603
 _fcitx5patchver=20210329
 _fcitx5patchuserlink=28
 _fcitx5patchlink=28063
@@ -21,7 +21,7 @@ _buildtype=Release
 
 pkgname='fcitx5-mozc-ut'
 pkgver=${_mozcver}.${_utdicver}
-pkgrel=2
+pkgrel=1
 pkgdesc='Mozc module for Fcitx5 bundled with the UT dictionary'
 arch=('i686' 'x86_64')
 url='https://github.com/fcitx/mozc'
