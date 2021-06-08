@@ -1,7 +1,7 @@
 # Maintainer: <user11681 at gmail dot com>
 pkgname=circle
 pkgver=build_126
-pkgrel=2
+pkgrel=3
 pkgdesc='Compiler for the Circle language'
 arch=('any')
 url='https://circle-lang.org'
@@ -19,13 +19,8 @@ check() {
     ./sanity
 }
 
-_move() {
-    mkdir -p "$2"
-    mv "$1" "$2"
-}
-
 package() {
-    _move circle "$pkgdir/usr/bin"
-    _move license.txt "$pkgdir/usr/share/licenses/${pkgname}"
+    install -D circle "$pkgdir/usr/bin/circle"
+    install -Dm 664 license.txt "$pkgdir/usr/share/licenses/${pkgname}/license.txt"
 }
 
