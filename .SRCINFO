@@ -1,0 +1,17 @@
+pkgbase = tree-sitter-dockerfile-git
+	pkgdesc = Dockerfile grammar for tree-sitter
+	pkgver = 0.1.0.r0.gb25f86c
+	pkgrel = 1
+	url = https://github.com/camdencheek/tree-sitter-dockerfile
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = git
+	makedepends = tree-sitter
+	makedepends = npm
+	provides = tree-sitter-dockerfile
+	conflicts = tree-sitter-dockerfile
+	source = tree-sitter-dockerfile-git::git+https://github.com/camdencheek/tree-sitter-dockerfile
+	sha256sums = SKIP
+
+pkgname = tree-sitter-dockerfile-git
