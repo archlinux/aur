@@ -4,13 +4,11 @@ pkgname=chromium-widevine
 pkgdesc='A browser plugin designed for the viewing of premium video content'
 pkgver=4.10.2209.0
 _chrome_ver=91.0.4472.77
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('x86_64')
 url='https://www.widevine.com/'
 license=('custom')
-provides=("chromium-widevine-dev=$pkgver")
-conflicts=('chromium-widevine-dev')
 options=('!strip')
 source=("https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${_chrome_ver}-1_amd64.deb")
 sha256sums=('4d355db6df597b9e530a3398089bdabd5b167d0c54dd08976d2f96aafa214e31')
@@ -26,9 +24,9 @@ pkgver() {
 package() {
   depends=('gcc-libs' 'glib2' 'glibc' 'nspr' 'nss')
 
-  install -dm755 "$pkgdir/usr/lib/"chromium{,-dev}/
+  install -dm755 "$pkgdir/usr/lib/chromium/"
   cp -a WidevineCdm "$pkgdir/usr/lib/chromium/"
-  ln -s ../chromium/WidevineCdm "$pkgdir/usr/lib/chromium-dev/WidevineCdm"
+  find "$pkgdir" -name '*.so' -exec chmod +x {} \;
   install -Dm644 WidevineCdm/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 # backward compatibility
   ln -s WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so "$pkgdir/usr/lib/chromium/libwidevinecdm.so"
