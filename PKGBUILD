@@ -1,4 +1,4 @@
-# Maintainer: B. Gazotti 
+# Maintainer: B. Gazotti <bgv177@hotmail.com>
 # Previous Mantainer: Joahnnes joens <johannes@joens.email>
 
 # Based on the `forge-server` AUR package by:
@@ -40,8 +40,7 @@ optdepends=("tar: needed in order to create world backups"
 	"netcat: required in order to suspend an idle server")
 provides=("forge-server=${pkgver}")
 backup=("etc/conf.d/${_forge_name}")
-# this is throwing an error. is it necessary?
-# install="forge-server.install"
+install="forge-server.install"
 source=("forged-backup.service"
 	"forged-backup.timer"
 	"forged.service"
