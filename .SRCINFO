@@ -1,9 +1,10 @@
 pkgbase = ruby-dropbox-sdk
 	pkgdesc = A library that provides a plain function-call interface to the Dropbox API web endpoints.
 	pkgver = 1.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.dropbox.com/developers/
-	arch = x86_64
+	changelog = .CHANGELOG
+	arch = any
 	license = MIT
 	makedepends = rubygems
 	depends = ruby
