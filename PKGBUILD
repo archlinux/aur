@@ -28,7 +28,7 @@ package() {
   mkdir -p "${pkgdir}/usr/share/freeplane/doc/Images/mouse"
   mkdir -p "${pkgdir}/usr/share/freeplane/doc/Images/other/workspace/output"
 
-  cd ""${srcdir}/${pkgname}-${pkgver}""
+  cd "${srcdir}/${pkgname}-${pkgver}"
   # Copy plugins
   find plugins -type f | while read file ; do
     install -Dm644 "${file}" "${pkgdir}/usr/share/freeplane/${file}"
@@ -63,7 +63,7 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}"/scripts/* "${pkgdir}"/usr/share/freeplane/scripts/
   
   # Install the desktop entry
-  install -Dm644 ${srcdir}/freeplane.desktop "${pkgdir}"/usr/share/applications/freeplane.desktop
+  install -Dm644 "${srcdir}"/freeplane.desktop "${pkgdir}"/usr/share/applications/freeplane.desktop
   # Install icons
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}"/freeplane.svg "${pkgdir}"/usr/share/pixmaps/freeplane.svg
   # Install the executable script
