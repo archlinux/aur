@@ -1,6 +1,6 @@
 pkgbase = rz-cutter-git
 	pkgdesc = A Qt and C++ GUI for rizin reverse engineering framework (originally named Iaito)
-	pkgver = 2.0.2.rc1.r0.g8d4c8606
+	pkgver = 2.0.2.r3.gbc571675
 	pkgrel = 1
 	url = https://cutter.re/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = rz-cutter-git
 	makedepends = shiboken2
 	makedepends = qt5-tools
 	makedepends = meson
-	depends = rizin
+	depends = rizin>=0.3.0
 	depends = capstone
 	depends = qt5-base
 	depends = qt5-svg
@@ -36,4 +36,3 @@ pkgbase = rz-cutter-git
 	b2sums = SKIP
 
 pkgname = rz-cutter-git
-

@@ -3,13 +3,13 @@
 
 _name=cutter
 pkgname=rz-${_name}-git
-pkgver=2.0.2.rc1.r0.g8d4c8606
+pkgver=2.0.2.r3.gbc571675
 pkgrel=1
 pkgdesc="A Qt and C++ GUI for rizin reverse engineering framework (originally named Iaito)"
 url="https://cutter.re/"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('rizin' 'capstone' 'qt5-base' 'qt5-svg' 'qt5-webengine' 'icu' 'python' 'jupyter'
+depends=('rizin>=0.3.0' 'capstone' 'qt5-base' 'qt5-svg' 'qt5-webengine' 'icu' 'python' 'jupyter'
          'pyside2' 'python-shiboken2' 'graphviz' 'gcc-libs' 'syntax-highlighting')
 makedepends=('git' 'cmake' 'ninja' 'shiboken2' 'qt5-tools' 'meson')
 provides=('rz-cutter')
