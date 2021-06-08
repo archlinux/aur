@@ -1,15 +1,15 @@
 pkgname=mingw-w64-scipoptsuite
-pkgver=6.0.2
+pkgver=7.0.3
 pkgrel=1
 pkgdesc="Toolbox for generating and solving optimization problems. (mingw-w64)"
 arch=('any')
 url='http://scip.zib.de'
 license=('LGPL3' 'custom:ZIB Academic License')
-depends=('mingw-w64-gmp' 'mingw-w64-readline' 'mingw-w64-libgnurx' 'mingw-w64-zlib' 'mingw-w64-gsl' 'mingw-w64-coin-or-ipopt')
+depends=('mingw-w64-gmp' 'mingw-w64-readline' 'mingw-w64-regex' 'mingw-w64-zlib' 'mingw-w64-gsl' 'mingw-w64-coin-or-ipopt' 'mingw-w64-tbb')
 makedepends=('mingw-w64-cmake')
 options=('staticlibs' '!strip' '!buildflags')
 source=("http://scip.zib.de/download/release/scipoptsuite-${pkgver}.tgz")
-sha256sums=('e25329a2ed4fbdde8a32279a4c955ee7a8b8795429b6e7105ae17998c2ecbe66')
+sha256sums=('5af5185a6e60cc62d1a89e3ac4fe22d32351a5158c2c04a95e180e76eb98cc07')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -17,7 +17,7 @@ build() {
   cd "${srcdir}/scipoptsuite-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -Dlibs=gnurx -DGCG=OFF -DIPOPT_DIR=/usr/${_arch}/ ..
+    ${_arch}-cmake -Dlibs="regex;gfortran" -DGCG=OFF -DIPOPT_DIR=/usr/${_arch}/ -DBUILD_TESTING=OFF ..
     make
     popd
   done
