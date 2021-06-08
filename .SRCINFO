@@ -6,9 +6,9 @@ pkgbase = asus-wmi-screenpad-dkms-git
 	arch = x86_64
 	license = GPL2
 	makedepends = git
+	makedepends = wget
 	depends = dkms
 	source = asus-wmi-screenpad-dkms-git::git+https://github.com/Plippo/asus-wmi-screenpad
 	sha512sums = SKIP
 
 pkgname = asus-wmi-screenpad-dkms-git
-
