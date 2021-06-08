@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=nerd-fonts-sf-mono
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Monospaced variant of San Francisco. Sourced directly from Apple, patched with the Nerd Fonts Patcher"
 arch=('any')
 url='https://developer.apple.com/fonts/'
@@ -10,7 +10,7 @@ makedepends=('git' 'p7zip' 'python' 'fontforge' 'subversion')
 conflicts=('nerd-fonts-sf-mono')
 provides=('nerd-fonts-sf-mono')
 source=('https://developer.apple.com/design/downloads/SF-Mono.dmg' "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v$pkgver/font-patcher" "svn+https://github.com/ryanoasis/nerd-fonts/tags/v$pkgver/src/glyphs")
-sha256sums=('SKIP' '3377615be4271f8bdeef66e6f2f82ac3f3cfb7b5677abe7b8e189409da048859' 'SKIP')
+sha256sums=('ec0518e310797d2f9cb924c18e3e7b661359f4fb653d1ad4315758ebcdb5ff11' '3377615be4271f8bdeef66e6f2f82ac3f3cfb7b5677abe7b8e189409da048859' 'SKIP')
 # TODO: remove warning and msg since they are only intended for internal use by makepkg. what to use instead?
 
 build() {
