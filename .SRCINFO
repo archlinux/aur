@@ -1,21 +1,19 @@
 pkgbase = azpainter
 	pkgdesc = Painting software
-	pkgver = 2.1.7
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = http://azsky2.html.xdomain.jp/soft/azpainter.html
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = libxfixes
 	depends = hicolor-icon-theme
 	depends = fontconfig
 	depends = libjpeg-turbo
 	depends = libxi
+	depends = libxcursor
+	depends = libwebp
 	options = !makeflags
-	source = http://azsky2.html.xdomain.jp/arc/azpainter-2.1.7.tar.xz
-	source = azpainter-2.1.7-translations.patch
-	sha256sums = 62e0ce810ada061864c728dbb7dd8c3eb7398566657d758442e9fd33b3db5cb4
-	sha256sums = b0ed4040480a8a4c5fea5b754b8f11c7925371ececa7dcee6d5416fb85a829fd
+	source = http://azsky2.html.xdomain.jp/arc/azpainter-3.0.1.tar.xz
+	sha256sums = 990658c5ac54b08c14796d593a870f8d26c27d13b8a8c7224a4e0c7ff0182a37
 
 pkgname = azpainter
-
