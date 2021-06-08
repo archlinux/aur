@@ -1,7 +1,7 @@
 pkgbase = velero
 	pkgdesc = Backup and migrate Kubernetes applications and their persistent volumes
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://velero.io
 	arch = x86_64
 	arch = armv6h
