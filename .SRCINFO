@@ -1,7 +1,7 @@
 pkgbase = wmcalclockkbd
 	pkgdesc = Simple calendar WM dockapp with integrated keyboard group indicator, based on wmCalClock-1.25
 	pkgver = 0.1a
-	pkgrel = 2
+	pkgrel = 3
 	url = http://web.archive.org/web/20121101003315/http://dockapps.windowmaker.org/file.php/id/214
 	arch = i686
 	arch = x86_64
@@ -11,4 +11,3 @@ pkgbase = wmcalclockkbd
 	md5sums = a994ad377fdf70a2401eb664e191237c
 
 pkgname = wmcalclockkbd
-

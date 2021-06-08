@@ -1,9 +1,10 @@
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Michael G. Henderson
 # Contributor: Petr Hlavka
-# Maintainer: Oleksandr Shatov <alexx67 at list dot ru>
+# Contributor: Oleksandr Shatov <alexx67 at list dot ru>
 pkgname=wmcalclockkbd
 pkgver=0.1a
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple calendar WM dockapp with integrated keyboard group indicator, based on wmCalClock-1.25"
 arch=('i686' 'x86_64')
 #url="http://dockapps.windowmaker.org/file.php/id/214"
@@ -16,7 +17,7 @@ md5sums=('a994ad377fdf70a2401eb664e191237c')
 
 build() {
   cd "$srcdir/wmCalClockKbd-$pkgver/src"
-  make || return 1
+  make CFLAGS="$CFLAGS -fcommon" COPTS="$LDFLAGS"
 }
 package() {
   cd "$srcdir/wmCalClockKbd-$pkgver/src"
