@@ -1,0 +1,17 @@
+pkgbase = tree-sitter-make-git
+	pkgdesc = GNU Makefile grammar for tree-sitter
+	pkgver = r43.716c294
+	pkgrel = 1
+	url = https://github.com/alemuller/tree-sitter-make
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = git
+	makedepends = tree-sitter
+	makedepends = npm
+	provides = tree-sitter-make
+	conflicts = tree-sitter-make
+	source = tree-sitter-make-git::git+https://github.com/alemuller/tree-sitter-make
+	sha256sums = SKIP
+
+pkgname = tree-sitter-make-git
