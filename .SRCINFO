@@ -1,6 +1,6 @@
 pkgbase = waterfox-g3-bin
 	pkgdesc = Third generation of customizable privacy-conscious web browser.
-	pkgver = 2.2
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://www.waterfox.net
 	arch = x86_64
@@ -20,12 +20,12 @@ pkgbase = waterfox-g3-bin
 	optdepends = alsa-lib: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = waterfox-g3=2.2
+	provides = waterfox-g3=2.3
 	conflicts = waterfox-g3
 	source = waterfox-g3.desktop
-	source = https://cdn.waterfox.net/releases/linux64/installer/waterfox-G3.2.2.en-US.linux-x86_64.tar.bz2
+	source = https://cdn.waterfox.net/releases/linux64/installer/waterfox-G3.2.3.en-US.linux-x86_64.tar.bz2
 	sha256sums = 6d37d08ee522173057918de8ad8394ba62b61a38c102cb03439d257a93e4b4a6
-	sha256sums = c622ad44de3f6a1785cbd986aa8e50f73a22fdea0a7a7ca8af5cc38b12288d05
+	sha256sums = 59809f0d91b4006e5476de4e3436e51e3779282eeeee39f71dbb720ee6231bb7
 
 pkgname = waterfox-g3-bin
 
