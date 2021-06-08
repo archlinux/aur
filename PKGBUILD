@@ -1,4 +1,5 @@
-# Maintainer: Dan McCurry <dan.mccurry at linux dot com>
+# Maintainer: Piotr Sokołowski <piotrsokolowski00@outlook.com>
+# Contributor: Dan McCurry <dan.mccurry at linux dot com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
@@ -10,7 +11,7 @@ arch=('i686' 'x86_64')
 url="https://wiki.gnome.org/Projects/NetworkManager"
 license=('GPL')
 depends=('libnm' 'libsecret' 'openvpn')
-makedepends=('libnm-gtk' 'intltool' 'python' 'git')
+makedepends=('nm-connection-editor' 'intltool' 'python' 'git')
 conflicts=('networkmanager-openvpn')
 replaces=('networkmanager-openvpn')
 install=networkmanager-openvpn.install
