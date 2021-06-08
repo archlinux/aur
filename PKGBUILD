@@ -2,7 +2,7 @@
 
 pkgname=isis
 pkgver=1.6.2_47
-pkgrel=1
+pkgrel=2
 pkgdesc="ISIS is designed to facilitate the interpretation and analysis of high resolution X-ray spectra."
 url="http://space.mit.edu/asc/isis/"
 arch=('x86_64')
@@ -24,7 +24,7 @@ build() {
     HEADAS=/opt/heasoft/x86_64-pc-linux-gnu-libc${_glibcver}
 
     cd $srcdir/${pkgname}-${pkgver//_/-}
-    ./configure --prefix=${pkgdir}/opt/${pkgname} #--with-headas=$HEADAS
+    ./configure --prefix=${pkgdir}/opt/${pkgname} --with-headas=$HEADAS
     make
 
 }
