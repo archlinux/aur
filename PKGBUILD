@@ -76,23 +76,23 @@ _use_current=
 _major=5.12
 _minor=9
 _srcname=linux-${_major}
-_clr=${_major}.8-1045
+_clr=${_major}.9-1046
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_gcc_more_v='20210412'
+_gcc_more_v='20210606'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
   "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clr}"
-  "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
+  "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   'pci-enable-overrides-for-missing-acs-capabilities.patch'
   '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch'
 )
@@ -183,10 +183,10 @@ prepare() {
 
     make olddefconfig
 
-    # https://github.com/graysky2/kernel_gcc_patch
+    # https://github.com/graysky2/kernel_compiler_patch
     # make sure to apply after olddefconfig to allow the next section
     echo "Patching to enable GCC optimization for other uarchs..."
-    patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/more-uarches-for-kernel-5.8+.patch"
+    patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.8+.patch"
 
     if [ -n "$_subarch" ]; then
         # user wants a subarch so apply choice defined above interactively via 'yes'
@@ -353,7 +353,7 @@ sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
             'SKIP'
             'b844ec7be25f915578e322838b03c2780c4b1185fbab5e84a8d52db7341804e8'
             'SKIP'
-            'f1f62b6d2cd89d0ab15f8d7311f5bb775dfc97ff39f93bc77f6f733f75fa7558'
+            '21454906014ac8e448be85147be06a1e3dfbefb644ef96d9a37c15fcc8e07a42'
             '2c98de0814366b041aeee4cbf82b82620c7834bc33752d50f089e8bd7ea5cf5e'
             'f3eb1e857f60a96a0c8d4f25f55a64ddf4aa4b3a33e9fcc6886430cf4789cb1c')
 
