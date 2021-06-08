@@ -1,14 +1,15 @@
 pkgbase = akamai-bin
 	pkgdesc = Manage and configure Akamai from the Command Line
-	pkgver = 1.1.5
-	pkgrel = 2
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = https://developer.akamai.com/cli
 	arch = x86_64
 	license = Apache
 	provides = akamai
 	provides = akamai-cli
-	source = akamai-bin-1.1.5::https://github.com/akamai/cli/releases/download/1.1.5/akamai-1.1.5-linuxamd64
-	sha256sums = 1aaf3248a610ffd8bdf1f9f96b5a91cf5bfc5bd788a7f6e01c3901b56b9c4d69
+	source = akamai-bin-1.2.1::https://github.com/akamai/cli/releases/download/1.2.1/akamai-1.2.1-linuxamd64
+	source = https://raw.githubusercontent.com/akamai/cli/1.2.1/LICENSE
+	sha512sums = 5b30164bc85440c081dad123eef82075aa2d8f218cc595b6b08d71c0afab76ff406bb52e6afbea5ed358e721452b6b8df1b1c04f70ffd94efc494958380c2953
+	sha512sums = 389080b6132d3eaae780648d6998390d8cc71908561bce09578e27c542aa1a9f3122e01f640c5b01bee73004c23aa4e9f2066fe5ee0ca2072c2420578b28d71f
 
 pkgname = akamai-bin
-
