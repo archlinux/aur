@@ -1,6 +1,6 @@
 pkgbase = chronoengine
 	pkgdesc = An Open Source Multi-physics Simulation Engine
-	pkgver = 5.0.1
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://projectchrono.org/
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = chronoengine
 	makedepends = gcc-fortran
 	makedepends = python
 	makedepends = swig
-	makedepends = cuda<=10.2.89
+	makedepends = cuda
 	makedepends = blaze
 	makedepends = oce
 	makedepends = mumps
@@ -29,6 +29,7 @@ pkgbase = chronoengine
 	depends = blas
 	depends = boost-libs
 	depends = hdf5
+	depends = opencrg
 	optdepends = irrlicht: Runtime visualization with Irrlicht.
 	optdepends = glew: Runtime visualization with OpenGL.
 	optdepends = glfw: Runtime visualization with OpenGL.
@@ -37,18 +38,17 @@ pkgbase = chronoengine
 	optdepends = nvidia-utils: CUDA support in PARALLEL module
 	optdepends = opencascade: add 3D CAD file support (STEP format)
 	optdepends = intel-mkl: This library is currently used in Chrono for its parallel direct solver (Pardiso)
-	source = chronoengine::git+https://github.com/projectchrono/chrono.git#tag=5.0.1
+	source = chronoengine::git+https://github.com/projectchrono/chrono.git#tag=6.0.0
 	source = git+https://github.com/google/benchmark.git
 	source = git+https://github.com/google/googletest.git
 	source = chronoengine.sh
 	source = glm.patch
-	source = fsi.patch
+	source = thrust.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 0fe883cfcc1db869d08235482a3801fa458db15360e0eefac9084c7f2993af4a
 	sha256sums = 4e8ed0097fb14bbe437c2a57e9ef1852fdbfe8675e5345b0af42287d24fbfefe
-	sha256sums = 30b72d0004f784950ef8496a10cc491de8d98a855c6db97ac8fe2e73d01c1579
+	sha256sums = bf9717a2a1d569e376623d40e9b83fb766629a9ef9acc16e4af5358132202526
 
 pkgname = chronoengine
-

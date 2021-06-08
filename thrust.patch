@@ -1,0 +1,15 @@
+diff --git a/cmake/FindThrust.cmake b/cmake/FindThrust.cmake
+index d1fb58f37..2b6a6d03d 100644
+--- a/cmake/FindThrust.cmake
++++ b/cmake/FindThrust.cmake
+@@ -67,5 +67,8 @@ find_package_handle_standard_args( Thrust
+   VERSION_VAR THRUST_VERSION
+   )
+ 
++# Append cuda dir
++list(APPEND THRUST_INCLUDE_DIR "/opt/cuda/targets/x86_64-linux/include")
++
+ set(THRUST_INCLUDE_DIRS ${THRUST_INCLUDE_DIR})
+-mark_as_advanced(THRUST_INCLUDE_DIR)
+\ No newline at end of file
++mark_as_advanced(THRUST_INCLUDE_DIR)
