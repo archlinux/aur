@@ -3,17 +3,19 @@
 
 _gemname=dropbox-sdk
 pkgname=ruby-$_gemname
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=1
-pkgdesc='Dropbox REST API Client.'
+pkgdesc='A library that provides a plain function-call interface to the Dropbox API web endpoints.'
 arch=(any)
 url='http://www.dropbox.com/developers/'
 license=(MIT)
-depends=(ruby)
+depends=('ruby' 'ruby-json')
+makedepends=('rubygems')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('22107a6a987dee16cd9726e2c431734d09e470c3')
+sha256sums=('561a18cc4a54bd0480062e80eca54b38709610875c307bcb10aadf95c7a041a3')
+changelog=.CHANGELOG
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"

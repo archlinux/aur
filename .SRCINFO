@@ -1,15 +1,16 @@
 pkgbase = ruby-dropbox-sdk
-	pkgdesc = Dropbox REST API Client.
-	pkgver = 1.6.4
+	pkgdesc = A library that provides a plain function-call interface to the Dropbox API web endpoints.
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = http://www.dropbox.com/developers/
-	arch = any
+	arch = x86_64
 	license = MIT
+	makedepends = rubygems
 	depends = ruby
-	noextract = dropbox-sdk-1.6.4.gem
+	depends = ruby-json
+	noextract = dropbox-sdk-1.6.5.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/dropbox-sdk-1.6.4.gem
-	sha1sums = 22107a6a987dee16cd9726e2c431734d09e470c3
+	source = https://rubygems.org/downloads/dropbox-sdk-1.6.5.gem
+	sha256sums = 561a18cc4a54bd0480062e80eca54b38709610875c307bcb10aadf95c7a041a3
 
 pkgname = ruby-dropbox-sdk
-
