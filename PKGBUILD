@@ -1,8 +1,8 @@
 # Maintainer: ohli <olifriedrich at gmail dot com>
 
 pkgname=w_scan_cpp
-pkgver=20210512
-pkgrel=2
+pkgver=20210608
+pkgrel=1
 pkgdesc="A dtv channel scanner based on VDR. Successor of w_scan"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://www.gen2vdr.de/wirbel/w_scan_cpp/index2.html"
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('glibc' 'libcap' 'freetype2' 'fontconfig') 
 makedepends=('sed' 'make' 'wget' 'git')
 source=("https://www.gen2vdr.de/wirbel/$pkgname/$pkgname-$pkgver.tar.bz2")
-sha256sums=('f64dd0adfcdf4d3ba6f44060fafaf98f385b6d67a7f42016254e53b764980fcd')
+sha256sums=('da04f5a490b08b8dcb4cd8218fee779f55a23a53ad0010a9323d7055fabdda1b')
 
 build() {
   cd "$pkgname-$pkgver"
