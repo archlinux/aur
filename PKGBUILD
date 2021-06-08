@@ -10,8 +10,8 @@
 # Contributor: Luca Roccia <little_rock@users.sourceforge.net>
 
 pkgname=('boost' 'boost-libs')
-pkgver=1.75.0
-pkgrel=5
+pkgver=1.76.0
+pkgrel=1
 _srcname=boost_${pkgver//./_}
 pkgdesc="Free peer-reviewed portable C++ source libraries"
 arch=('x86_64')
@@ -19,32 +19,22 @@ url="https://www.boost.org/"
 license=('custom')
 makedepends=('icu' 'python' 'python-numpy' 'bzip2' 'zlib' 'openmpi' 'zstd')
 source=(https://boostorg.jfrog.io/artifactory/main/release/$pkgver/source/$_srcname.tar.gz
-        $pkgname-ublas-c++20-iterator.patch::https://github.com/boostorg/ublas/commit/a31e5cffa85f.patch
-        histogram-cropping.patch
-        build-bootstrap-fix.patch)
-sha256sums=('aeb26f80e80945e82ee93e5939baebdca47b9dee80a07d3144be1e1a6a66dd6a'
-            'aa38addb40d5f44b4a8472029b475e7e6aef1c460509eb7d8edf03491dc1b5ee'
-            'fbb27a583a6c61c4fe50621d08a8b4fd5b4a0563a48f47185fc462cb29a38540'
-            '3e431e5f7f023feb8e7c4d64e8d9989315dfcd4e36cdb965043ac5221497746c')
+        $pkgname-ublas-c++20-iterator.patch::https://github.com/boostorg/ublas/commit/a31e5cffa85f.patch)
+sha256sums=('7bd7ddceec1a1dfdcbdb3e609b60d01739c38390a5f956385a12f3122049f0ca'
+            'aa38addb40d5f44b4a8472029b475e7e6aef1c460509eb7d8edf03491dc1b5ee')
 
 prepare() {
   cd $_srcname
 
   # https://github.com/boostorg/ublas/pull/97
   patch -Np2 -i ../$pkgname-ublas-c++20-iterator.patch
-
-  # https://github.com/boostorg/histogram/pull/302
-  patch -Np1 -i ../histogram-cropping.patch
-
-  # https://github.com/boostorg/build/issues/650
-  patch -Np1 -d tools/build <../build-bootstrap-fix.patch
 }
 
 build() {
   local JOBS="$(sed 's/.*\(-j *[0-9]\+\).*/\1/' <<<$MAKEFLAGS)"
 
   pushd $_srcname/tools/build
-  CXXFLAGS+=" $LDFLAGS" ./bootstrap.sh
+  ./bootstrap.sh --cxxflags="$CXXFLAGS $LDFLAGS"
   ./b2 install --prefix="$srcdir"/fakeinstall
   ln -s b2 "$srcdir"/fakeinstall/bin/bjam
   popd
