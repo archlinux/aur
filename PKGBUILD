@@ -1,10 +1,12 @@
 pkgname=mingw-w64-libgnurx
 pkgver=2.5.1
-pkgrel=5
+pkgrel=6
 arch=(any)
 pkgdesc="regex functionality from glibc (mingw-w64)"
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure')
+provides=('mingw-w64-regex')
+conflicts=('mingw-w64-regex')
 options=('!buildflags' '!strip' 'staticlibs')
 license=('GPL')
 url="https://sourceforge.net/projects/mingw/"
