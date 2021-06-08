@@ -1,0 +1,14 @@
+pkgbase = harmonyos-sans-git
+	pkgdesc = 鸿蒙黑体, HarmonyOS fonts
+	pkgver = r2.58f1bfa
+	pkgrel = 1
+	url = https://gitee.com/openharmony/resources
+	arch = any
+	license = custom
+	makedepends = git
+	provides = harmonyos-sans
+	conflicts = harmonyos-sans
+	source = harmonyos-sans::git+https://gitee.com/openharmony/resources
+	md5sums = SKIP
+
+pkgname = harmonyos-sans-git
