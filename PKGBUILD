@@ -12,7 +12,7 @@ pkgbase=boost
 pkgname=('boost-libs' 'boost')
 pkgver=1.75.0
 _boostver=${pkgver//./_}
-pkgrel=4
+pkgrel=5
 pkgdesc='Free peer-reviewed portable C++ source libraries'
 url='https://www.boost.org/'
 arch=('x86_64')
@@ -45,14 +45,17 @@ build() {
    export _stagedir="${srcdir}/stagedir"
    local JOBS="$(sed -e 's/.*\(-j *[0-9]\+\).*/\1/' <<< ${MAKEFLAGS})"
 
+   pushd ${pkgbase}_${_boostver}/tools/build
+   ./bootstrap.sh
+   ./b2 install --prefix="${_stagedir}"
+   popd
+
    cd ${pkgbase}_${_boostver}
 
    ./bootstrap.sh \
      --with-toolset=gcc \
      --with-icu \
      --with-python=/usr/bin/python3 \
-
-   install -Dm755 tools/build/src/engine/b2 "${_stagedir}"/bin/b2
 
    # Support for OpenMPI
    echo "using mpi ;" >> project-config.jam
