@@ -1,13 +1,15 @@
 # Maintainer: Ariel AxionL <axionl@aosc.io>
+# Contributor: Yuan Zhou <xyyqzy@hotmail.com>
+
 pkgname=landrop-git
 pkgver=r59.ee8144a
-pkgrel=2
+pkgrel=3
 pkgdesc="Drop any files to any devices on your LAN."
 arch=('x86_64')
 url="https://github.com/LANDrop/LANDrop"
 license=('BSD')
 depends=('libsodium' 'qt5-base' 'hicolor-icon-theme')
-makedepends=('git' 'qmake')
+makedepends=('git')
 conflicts=('landrop')
 provides=('landrop')
 source=("${pkgname}::git+$url.git")
