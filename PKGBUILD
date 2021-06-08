@@ -4,7 +4,7 @@ pkgdesc="ROS - Message and service definitions for interacting with Universal Ro
 url='http://www.ros.org/'
 
 pkgname='ros-melodic-ur-msgs'
-pkgver='1.3.2'
+pkgver='1.3.4'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD-3-Clause')
@@ -31,9 +31,9 @@ depends=(
   ${ros_depends[@]}
 )
 
-_dir="ur_msgs-release-release-melodic-ur_msgs"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-industrial-release/ur_msgs-release/archive/release/melodic/ur_msgs/${pkgver}.tar.gz")
-sha256sums=('019a4b09ff08b6ad898e89ade7cc58a6d71107993a1a693b409c99375883279e')
+_dir="ur_msgs-${pkgver}/"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-industrial/ur_msgs/archive/${pkgver}.tar.gz")
+sha256sums=('b761596b4bd192ee19589988b25e9a23f38260150e73cf4059ee18918ec72cd4')
 
 
 build() {
