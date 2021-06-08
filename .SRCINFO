@@ -1,7 +1,7 @@
 pkgbase = schleuder
 	pkgdesc = An encrypting mailing list manager with remailing-capabilities
 	pkgver = 4.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://schleuder.org
 	install = schleuder.install
 	arch = any

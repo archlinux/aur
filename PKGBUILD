@@ -4,7 +4,7 @@
 
 pkgname='schleuder'
 pkgver=4.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='An encrypting mailing list manager with remailing-capabilities'
 arch=(any)
 url='https://schleuder.org'
