@@ -1,8 +1,8 @@
 # Maintainer:  Yigit Dallilar <yigit.dallilar@gmail.com>
 
 pkgname=isis
-pkgver=1.6.2
-pkgrel=47
+pkgver=1.6.2_47
+pkgrel=1
 pkgdesc="ISIS is designed to facilitate the interpretation and analysis of high resolution X-ray spectra."
 url="http://space.mit.edu/asc/isis/"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-source=("ftp://space.mit.edu/pub/cxc/ISIS/isis-${pkgver}-${pkgrel}.tar.gz")
+source=("ftp://space.mit.edu/pub/cxc/ISIS/${pkgname}-${pkgver//_/-}.tar.gz")
 sha1sums=('cfb8c55d41d856d02cc9d231ca1f29e3893256ea')
 install="${pkgname}.install"
 
@@ -23,22 +23,22 @@ build() {
 
     HEADAS=/opt/heasoft/x86_64-pc-linux-gnu-libc${_glibcver}
 
-    cd $srcdir/${pkgname}-${pkgver}-${pkgrel}
-    ./configure --prefix=${pkgdir}/opt/${pkgname} --with-headas=$HEADAS
+    cd $srcdir/${pkgname}-${pkgver//_/-}
+    ./configure --prefix=${pkgdir}/opt/${pkgname} #--with-headas=$HEADAS
     make
 
 }
 
 check() {
 
-    cd $srcdir/${pkgname}-${pkgver}-${pkgrel}
+    cd $srcdir/${pkgname}-${pkgver//_/-}
     make check
 
 }
 
 package() {
     
-    cd $srcdir/${pkgname}-${pkgver}-${pkgrel}
+    cd $srcdir/${pkgname}-${pkgver//_/-}
     make install
 
     install -Dm644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
