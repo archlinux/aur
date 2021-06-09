@@ -1,6 +1,6 @@
 pkgbase = linux-bcachefs-git
 	pkgdesc = Linux
-	pkgver = v5.11.22.arch1.r984952.58c599e31315
+	pkgver = v5.11.22.arch1.r984980.e3a7cee5034f
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = linux-bcachefs-git
 	makedepends = git
 	options = !strip
 	source = linux-bcachefs::git+https://github.com/koverstreet/bcachefs#branch=master
-	source = git+https://github.com/graysky2/kernel_gcc_patch
+	source = git+https://github.com/graysky2/kernel_compiler_patch
 	source = config
 	source = arch_patches.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
@@ -50,4 +50,3 @@ pkgname = linux-bcachefs-git-headers
 
 pkgname = linux-bcachefs-git-docs
 	pkgdesc = Documentation for the Linux kernel ~ featuring Kent Overstreet's bcachefs filesystem
-

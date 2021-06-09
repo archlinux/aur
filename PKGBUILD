@@ -2,6 +2,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 ### BUILD OPTIONS
+
 # Set these variables to ANYTHING that is not null to enable them
 
 # Tweak kernel options prior to a build via nconfig
@@ -59,7 +60,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.11.22.arch1.r984952.58c599e31315
+pkgver=v5.11.22.arch1.r984980.e3a7cee5034f
 _srcver_tag=v5.11.22.arch1
 pkgrel=1
 pkgdesc="Linux"
@@ -87,15 +88,15 @@ options=('!strip')
 _reponame="linux-bcachefs"
 _repo_url="https://github.com/koverstreet/bcachefs"
 
-_reponame_gcc_patch="kernel_gcc_patch"
-_repo_url_gcc_patch="https://github.com/graysky2/${_reponame_gcc_patch}"
-_gcc_patch_name="more-uarches-for-kernel-5.8+.patch"
+_reponame_kernel_patch="kernel_compiler_patch"
+_repo_url_kernel_patch="https://github.com/graysky2/${_reponame_kernel_patch}"
+_kernel_patch_name="more-uarches-for-kernel-5.8+.patch"
 
 _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 
 source=(
     "${_reponame}::git+${_repo_url}#branch=master"
-    "git+${_repo_url_gcc_patch}"
+    "git+${_repo_url_kernel_patch}"
     config # kernel config file
     arch_patches.patch
 )
@@ -131,9 +132,10 @@ prepare() {
     git merge --no-edit --no-commit FETCH_HEAD
 
     PatchesArray=(
-        $_reponame_gcc_patch/$_gcc_patch_name
+        $_reponame_kernel_patch/$_kernel_patch_name
         arch_patches.patch
     )
+
     for MyPatch in "${PatchesArray[@]}"
     do
         msg2 "Applying patch $MyPatch..."
