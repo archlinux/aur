@@ -1,0 +1,16 @@
+pkgbase = slides-git
+	pkgdesc = Terminal based presentation tool
+	pkgver = 0.1.1.r3.g5d89bf2
+	pkgrel = 1
+	url = https://github.com/maaslalani/slides
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = slides
+	conflicts = slides
+	source = slides::git+https://github.com/maaslalani/slides.git
+	sha256sums = SKIP
+
+pkgname = slides-git
