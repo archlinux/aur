@@ -1,47 +1,15 @@
-From e7d40b904df28f67d775d48e36dbf4f5b385bc37 Mon Sep 17 00:00:00 2001
-From: Giovanni Santini <giovannisantini93@yahoo.it>
-Date: Sat, 29 Dec 2018 01:53:12 +0100
-Subject: [PATCH] Small fixes 1. Path adjusted for FFmpeg library for Linux and
- OSX targets 2. Small changes in checking for the downloaded FFmpeg library
-
----
- gulpfile.js | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
-
 diff --git a/gulpfile.js b/gulpfile.js
-index c6c8739e..26a6fbbe 100644
+index a3fdd9d7..2f442484 100644
 --- a/gulpfile.js
 +++ b/gulpfile.js
-@@ -306,7 +306,7 @@ gulp.task('nwjs', () => {
- // get ffmpeg lib
- gulp.task('downloadffmpeg', done => {
-     var parsed = ffmpegurl.substring(ffmpegurl.lastIndexOf('/'));
--        if(!fs.existsSync('./cache/ffmpeg/')){
-+        if(!fs.existsSync('./cache/ffmpeg/' + parsed)){
-             console.log('FFmpeg download starting....');
-             return download(ffmpegurl).pipe(gulp.dest('./cache/ffmpeg/')).on('error', function (err) {
-                 console.error(err);
-@@ -322,8 +322,10 @@ gulp.task('unzipffmpeg', () => {
-       // Need to check Correct folder on every Nw.js Upgrade as long as we use nwjs Binary directly
-       var ffpath = './build/' + pkJson.name + '/' + parsePlatforms() + '/' + pkJson.name + '.app/Contents/Versions/69.0.3497.100';
-     } else {
--    var ffpath = './build/' + pkJson.name + '/' + parsePlatforms();
-+      var ffpath = './build/' + pkJson.name + '/' + parsePlatforms();
-     }
-+    if (parsePlatforms()[0].indexOf('win') === -1)
-+        ffpath = ffpath + '/lib';
-     return gulp.src('./cache/ffmpeg/*.{tar,tar.bz2,tar.gz,zip}')
-         .pipe(decompress({ strip: 1 }))
-         .pipe(gulp.dest(ffpath))
-@@ -343,6 +345,8 @@ gulp.task('unzipffmpegcache', () => {
-   } else {
-     var platform = parsePlatforms()[0];
-     var bin = path.join('cache', nwVersion + '-' + nwFlavor, platform);
-+    if (platform.indexOf('win') === -1)
-+        bin = bin + '/lib';
-   }
-     return gulp.src('./cache/ffmpeg/*.{tar,tar.bz2,tar.gz,zip}')
-         .pipe(decompress({ strip: 1 }))
--- 
-2.20.1
-
+@@ -142,8 +142,8 @@ const nw = new nwBuilder({
+   macIcns: './src/app/images/butter.icns',
+   version: nwVersion,
+   flavor: nwFlavor,
+-  manifestUrl: 'https://popcorntime.app/version.json',
+-  downloadUrl: 'https://get.popcorntime.app/repo/nw/',
++  manifestUrl: 'https://popcorn-ru.tk/version.json',
++  downloadUrl: 'https://popcorn-ru.tk/nw/',
+   platforms: parsePlatforms()
+ }).on('log', console.log);
+ 

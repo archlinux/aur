@@ -9,7 +9,7 @@
 
 pkgname=popcorntime
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=(i686 x86_64)
 url="https://popcorntime.app/"
@@ -40,16 +40,18 @@ _bpath="${_srcdir}/build/Popcorn-Time/${_platform}"
 source=(
     "${_pkgname}::git+https://github.com/popcorn-official/popcorn-desktop/#${_commit_hash}"
     "popcorntime.desktop"
+    "gulp-fixes.patch"
 )
 sha256sums=('SKIP'
-            '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
+            '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334'
+            '3596ed22e0f140bb0873770ed93585801d66327f7a3e2f5c0b17f7c4cf186610')
 
 # Building the package
 prepare() {
     cd "${srcdir}/${_srcdir}"
 
-    #msg2 "Apply Gulpfile fixes ..."
-    #git apply "$srcdir/gulp-fixes.patch"
+    msg2 "Apply Gulpfile fixes ..."
+    git apply "$srcdir/gulp-fixes.patch"
 
     # Thanks to Eschwartz for the tip! yarn edition
     export YARN_CACHE_FOLDER="$srcdir/npm_cache"
