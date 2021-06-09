@@ -2,7 +2,7 @@
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=haguichi
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Provides a user friendly GUI to control the Hamachi client on Linux"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gtk3' 'libappindicator-gtk3' 'libnotify' 'logmein-hamachi')
 makedepends=('meson' 'vala')
 source=("http://launchpad.net/$pkgname/${pkgver%.*}/$pkgver/+download/$pkgname-$pkgver.tar.xz")
-sha256sums=('e961bbb72f225d0aa547130452921c824c5cb43424deda4266d66626808b8e22')
+sha256sums=('659047caaf6c8e310036e7b06ed503480abeb5fb56cb2dd45b7701586f1ddd9e')
 
 prepare() {
   cd $pkgname-$pkgver
