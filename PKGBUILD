@@ -1,8 +1,8 @@
 # Maintainer: Mark Stenglein <aur@markstenglein.com>
 
 pkgname=slides-git
-pkgver=0.1.1.r3.g5d89bf2
-pkgrel=2
+pkgver=0.1.1.r4.gf68b802
+pkgrel=1
 pkgdesc='Terminal based presentation tool'
 arch=('x86_64')
 url="https://github.com/maaslalani/${pkgname%-git}"
@@ -28,12 +28,10 @@ build() {
     go build -buildmode=pie -trimpath -ldflags "-linkmode external -X main.Version=${pkgver} -s -w"
 }
 
-# Can't add until a `go vet` issue is addressed.
-#   https://github.com/maaslalani/slides/issues/14
-#check() {
-#    cd $pkgname
-#    go test ./...
-#}
+check() {
+    cd ${pkgname%-git}
+    go test ./...
+}
 
 package() {
     cd ${pkgname%-git}
