@@ -1,7 +1,7 @@
-pkgbase = libadwaita-git
-	pkgdesc = Library full of GTK widgets for mobile phones
-	pkgver = r1560.4f6e828
-	pkgrel = 2
+pkgbase = libadwaita-shortwave
+	pkgdesc = Library full of GTK widgets for mobile phones (version required by shortwave)
+	pkgver = r1937.afee036
+	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.gnome.org/GNOME/libadwaita
 	arch = i686
@@ -9,7 +9,6 @@ pkgbase = libadwaita-git
 	arch = armv7h
 	arch = aarch64
 	license = LGPL
-	checkdepends = xorg-server-xvfb
 	makedepends = git
 	makedepends = gobject-introspection
 	makedepends = meson
@@ -22,5 +21,4 @@ pkgbase = libadwaita-git
 	source = git+https://gitlab.gnome.org/GNOME/libadwaita
 	md5sums = SKIP
 
-pkgname = libadwaita-git
-
+pkgname = libadwaita-shortwave
