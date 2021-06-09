@@ -1,10 +1,11 @@
 pkgbase = jdk8-arm
-	pkgdesc = Oracle Java 8 Development Kit for ARM32 LTS
-	pkgver = 8u251
+	pkgdesc = Oracle Java 8 Development Kit LTS for ARM
+	pkgver = 8u291
 	pkgrel = 1
 	url = https://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = jdk8-arm.install
 	arch = armv7h
+	arch = aarch64
 	license = custom:Oracle
 	makedepends = awk
 	depends = ca-certificates-java
@@ -14,8 +15,8 @@ pkgbase = jdk8-arm
 	depends = xdg-utils
 	depends = java-environment-common
 	optdepends = alsa-lib: for basic sound support
-	optdepends = eclipse-java: to use "Oracle Java Mission Control" plugins in Eclipse
 	optdepends = gtk2: for Gtk+ look and feel (desktop)
+	optdepends = eclipse-java: to use "Oracle Java Mission Control" plugins in Eclipse
 	provides = java-runtime=8
 	provides = java-runtime-headless=8
 	provides = java-web-start=8
@@ -23,8 +24,8 @@ pkgbase = jdk8-arm
 	provides = java-runtime-headless-jre=8
 	provides = java-web-start-jre=8
 	provides = java-openjfx=8
-	provides = java-environment-jdk=8
 	provides = java-environment=8
+	provides = java-environment-jdk=8
 	options = !strip
 	backup = etc/java-jdk8/amd64/jvm.cfg
 	backup = etc/java-jdk8/images/cursors/cursors.properties
@@ -41,20 +42,18 @@ pkgbase = jdk8-arm
 	backup = etc/java-jdk8/psfont.properties.ja
 	backup = etc/java-jdk8/psfontj2d.properties
 	backup = etc/java-jdk8/sound.properties
-	source = https://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip
-	source = https://download.oracle.com/otn-pub/java/jdk/8u251-b08/3d5a2bb8f8d4428bbe94aed7ec7ae784/jdk-8u251-linux-arm32-vfp-hflt.tar.gz
-	source = jconsole-jdk8.desktop
 	source = jmc-jdk8.desktop
 	source = jvisualvm-jdk8.desktop
 	source = policytool-jdk8.desktop
 	source = readme.sh
-	md5sums = b3c7031bc65c28c2340302065e7d00d3
-	md5sums = 6d2c09eced1c83379117ab59e564c75c
-	md5sums = 8a66f50efdc867ffd6a27168bc93b210
-	md5sums = 1cbde70639abd98db4bace284dbf2bc4
-	md5sums = f0b39865361437f3778ecbe6ffbc0a06
-	md5sums = 89704501aff8efe859c31968d8d168e6
-	md5sums = 51c8839211cc53f09c9b11a8e28ed1ef
+	sha256sums = 8f865b52946a9ab98556c56306c7e70ae7aa432b4d005c70df0bba9d2c3111b1
+	sha256sums = 144e6651fcea08d95f3148d3a8ad17deb93fec4dd9236d37d27d7c648230b870
+	sha256sums = 635433e9c78ff58af65c316232ac9907d289a324428923788ea0f82ae7f8083b
+	sha256sums = 4c9d5ab69494b3d0d8b166fd5552aa7d587f44f804cec9e2990842ebcd1c8e1d
+	source_armv7h = https://download.oracle.com/otn-pub/java/jdk/8u291-b10/d7fc238d0cbf4b0dac67be84580cfb4b/jdk-8u291-linux-arm32-vlp-hflt.tar.gz
+	sha256sums_armv7h = 9a28e6dd42786c50c1ecb71194dafd65aaa148fcf6a620e6da54495f42e3ff2c
+	source_aarch64 = https://download.oracle.com/otn-pub/java/jdk/8u291-b10/d7fc238d0cbf4b0dac67be84580cfb4b/jdk-8u291-linux-aarch64.tar.gz
+	sha256sums_aarch64 = bb5b6c64183aa6bbf96d80fcd43fd01f259754f9ca2906546e1e3c4773999187
 
 pkgname = jdk8-arm
 
