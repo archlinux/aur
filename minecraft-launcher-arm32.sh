@@ -1,2 +1,2 @@
 #!/bin/bash
-/opt/jdk/jdk1.8.0_251/bin/java -jar /opt/minecraft/launcher.jar "$@"
+/usr/lib/jvm/java-8-jdk/bin/java -jar /opt/minecraft/launcher.jar "$@"
