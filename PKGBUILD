@@ -60,7 +60,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.12.6.arch1
+pkgver=5.12.9.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -88,15 +88,15 @@ options=('!strip')
 _reponame="linux-archlinux"
 _repo_url="https://git.archlinux.org/linux"
 
-_reponame_gcc_patch="kernel_gcc_patch"
-_repo_url_gcc_patch="https://github.com/graysky2/${_reponame_gcc_patch}"
-_gcc_patch_name="more-uarches-for-kernel-5.8+.patch"
+_reponame_kernel_patch="kernel_compiler_patch"
+_repo_url_kernel_patch="https://github.com/graysky2/${_reponame_kernel_patch}"
+_kernel_patch_name="more-uarches-for-kernel-5.8+.patch"
 
 _pkgdesc_extra="~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG"
 
 source=(
     "${_reponame}::git+${_repo_url}#tag=$_srcver_tag"
-    "git+${_repo_url_gcc_patch}"
+    "git+${_repo_url_kernel_patch}"
     config # kernel config file
     0009-prjc_v5.12-r1.patch
     0005-glitched-pds.patch
@@ -108,7 +108,7 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '5616735b3e725978558f58aee2c1cc312af810d3185e45982780ac9eeed3e09c7a6c7a8f6a900b0b30052b63bc5a5494c1a3e82fe17033c52668ace9841037b7'
+            '88181c83a2dca7558b5296e8fef93a70279419295aeb0597098db7eacfabcd741224e894c8cb67e6c2ea07be32380a148befb91cfeb93d2a85b1372edfc0227f'
             '3500160e35ffb16771f9ae556f0c8260e616833898f05b3c03e6197b47b20fe3a25f717117ca8257852734c1764e407fbfe70aac077c482e9f9fca97cdd938ee'
             '889f0a49f326de3f119290256393b09a9e9241c2a297ca0b7967a2884e4e35d71388d2a559e4c206f55f67228b65e8f2013a1ec61f6ff8f1de3b6a725fd5fa57')
 
@@ -125,7 +125,7 @@ prepare() {
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
     PatchesArray=(
-        $_reponame_gcc_patch/$_gcc_patch_name
+        $_reponame_kernel_patch/$_kernel_patch_name
         0009-prjc_v5.12-r1.patch
         0005-glitched-pds.patch
     )
