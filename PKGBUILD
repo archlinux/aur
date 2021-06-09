@@ -1,7 +1,7 @@
 pkgname=mingw-w64-boost
 pkgver=1.75.0
 _boostver=${pkgver//./_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Free peer-reviewed portable C++ source libraries (mingw-w64)"
 arch=('any')
 url="http://www.boost.org/"
@@ -29,6 +29,9 @@ prepare() {
 
   # https://github.com/boostorg/context/issues/136
   curl -L https://github.com/boostorg/context/commit/85783e8cbba03804e13b3d314112df6b089ed2c0.patch | patch -p1 -R -d libs/context
+
+  # enable thread_local with gcc 11.x
+  curl -L https://github.com/boostorg/config/pull/380.patch | patch -p2
 
   cd "${srcdir}"
   for _arch in ${_architectures}; do

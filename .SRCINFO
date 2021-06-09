@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-boost
 	pkgdesc = Free peer-reviewed portable C++ source libraries (mingw-w64)
 	pkgver = 1.75.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.boost.org/
 	arch = any
 	license = custom
@@ -21,4 +21,3 @@ pkgbase = mingw-w64-boost
 	sha256sums = 333791abd17ea192e0aa90185bfb8938e8e3dc102b284db316b061b2067e2fc2
 
 pkgname = mingw-w64-boost
-
