@@ -1,27 +1,23 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
-pkgbase=linux-cpu-opt
-pkgver=5.11.7.arch1
-pkgrel=1
-pkgdesc='Linux (with CPU optimizations patch)'
+pkgbase=linux
+pkgver=5.12.3.arch1
+pkgrel=2
+pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
-_major_ver=$(echo $pkgver | cut -d '.' -f 1-2)
 url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc kmod libelf pahole
+  bc kmod libelf pahole cpio perl tar xz
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
-  awk sed
 )
 options=('!strip')
 _srcname=archlinux-linux
 source=(
   "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
   config         # the main kernel config file
-  sphinx-workaround.patch
-  "enable-cpu-optimizations-for-gcc10.patch::https://gitweb.gentoo.org/proj/linux-patches.git/plain/5013_enable-cpu-optimizations-for-gcc10.patch?h=${_major_ver}"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -29,13 +25,13 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'd8d5d11c80424985642b0eea6ace3256b5a1e5e69d637104523460a5ebdda202'
-            '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb'
-            '5ab29eb64e57df83b395a29a6a4f89030d142feffbfbf73b3afc6d97a2a7fd12')
+            '6dde032690644a576fd36c4a7d3546d9cec0117dd3fb17cea6dc95e907ef9bef')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
+
+source "PKGBUILD.include"
 
 prepare() {
   cd $_srcname
@@ -54,26 +50,10 @@ prepare() {
     patch -Np1 < "../$src"
   done
 
+  configure_arch
+
   echo "Setting config..."
   cp ../config .config
-
-  microarch=$(echo -march=x86-64 $CFLAGS | sed -r 's/.*-march=([a-z0-9-]+).*/\1/')
-  echo "Prepare for ${microarch} microarchitecture..."
-  _config_param_name=""
-  case "$microarch" in
-	native|k6|k7|k8|k10|bulldozer|piledriver|steamroller|excavator|atom|nehalem|westmere|silvermont|goldmont|sandybridge|ivybridge|haswell|broadwell|skylake|icelake|core2)
-		_config_param_name="$(echo $microarch | awk '{ print toupper($0) }')";;
-	znver1) _config_param_name="ZEN";;
-	znver2) _config_param_name="ZEN2";;
-	*)
-		echo "Unrecognized microarch '${microarch}, using 'native' by default'"
-		_config_param_name="NATIVE" ;;
-  esac
-  if [[ ! -z "${_config_param_name}" ]]; then
-  	echo -e "\nCONFIG_M${_config_param_name}=y" >> .config
-    sed -e 's|^CONFIG_GENERIC_CPU=y|# CONFIG_GENERIC_CPU is not set|g' -i .config
-  fi
-
   make olddefconfig
 
   make -s kernelrelease > version
@@ -115,6 +95,7 @@ _package() {
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+  depends=(pahole)
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"

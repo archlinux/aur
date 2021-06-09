@@ -1,0 +1,27 @@
+#!/bin/bash
+
+_major_ver=$(echo $pkgver | cut -d '.' -f 1-2)
+pkgbase="${pkgbase}-cpu-opt"
+pkgdesc="${pkgdesc} (with CPU optimizations patch)"
+sources+=("enable-cpu-optimizations-for-gcc10.patch::https://gitweb.gentoo.org/proj/linux-patches.git/plain/5013_enable-cpu-optimizations-for-gcc10.patch?h=${_major_ver}")
+
+function configure_arch() {
+  microarch=$(echo -march=x86-64 $CFLAGS | sed -r 's/.*-march=([a-z0-9-]+).*/\1/')
+  echo "Prepare for ${microarch} microarchitecture..."
+  _config_param_name=""
+  case "$microarch" in
+    native|k6|k7|k8|k10|bulldozer|piledriver|steamroller|excavator|atom|nehalem|westmere|silvermont|goldmont|sandybridge|ivybridge|haswell|broadwell|skylake|icelake|core2)
+        _config_param_name="$(echo $microarch | awk '{ print toupper($0) }')";;
+    znver1) _config_param_name="ZEN";;
+    znver2) _config_param_name="ZEN2";;
+    *)
+        echo "Unrecognized microarch '${microarch}, using 'native' by default'"
+        _config_param_name="NATIVE" ;;
+  esac
+  if [[ ! -z "${_config_param_name}" ]]; then
+    echo -e "\nCONFIG_M${_config_param_name}=y" >> .config
+    sed -e 's|^CONFIG_GENERIC_CPU=y|# CONFIG_GENERIC_CPU is not set|g' -i .config
+  fi
+}
+
+
