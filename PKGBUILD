@@ -4,7 +4,7 @@ pkgver=0.1.0.11
 pkgrel=1
 pkgdesc="Fast RSS reader as light as a photon"
 arch=("i686" "pentium4" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
-url="https://gitlab.com/microo8/photon"
+url="https://git.sr.ht/~ghost08/photon"
 license=("GPL3")
 makedepends=(
 	"go>=1.16"
@@ -15,7 +15,7 @@ optdepends=(
 	"mpv: a free, open source, and cross-platform media player"
 	"imv: Image viewer for Wayland and X11"
 )
-source=("${_pkgname}::git+https://gitlab.com/microo8/photon.git")
+source=("${_pkgname}::git+https://git.sr.ht/~ghost08/photon.git")
 sha256sums=("SKIP")
 
 prepare(){
