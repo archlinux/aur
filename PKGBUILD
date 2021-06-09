@@ -1,7 +1,7 @@
 # Maintainer: Morteza NourelahiAlamdari <m@0t1.me>
 
 pkgname="jolie"
-pkgver="1.10.2"
+pkgver="1.10.4"
 pkgrel=1
 pkgdesc="The Jolie programming language"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.jolie-lang.org/"
 license=('LGPL-2.1')
 depends=('jre-openjdk')
 source=("https://github.com/jolie/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.jar")
-sha256sums=('683d1910accfd1d5afcd4ea2806ce2a2b393de5e8a4cd2a289e03ef3bdcfa098')
+sha256sums=('45f4882b9e78dac8728fe75b7ae827799a441b3298c5d2b585ae0d85c5f07fb7')
 
 package() {
   mkdir -p "${pkgdir}/usr/lib/"
