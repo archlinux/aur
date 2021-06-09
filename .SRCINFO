@@ -11,6 +11,7 @@ pkgbase = pyfa
 	depends = python-logbook
 	depends = python-matplotlib
 	depends = python-dateutil
+	depends = python-setuptools
 	depends = python-requests
 	depends = python-sqlalchemy
 	depends = python-cryptography
