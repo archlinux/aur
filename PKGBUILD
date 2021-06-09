@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=rusty-krab-manager-git
-pkgver=1.2.1.r0.g9e3b6ef
+pkgver=1.2.2.r0.g8bb78e3
 pkgrel=1
 pkgdesc="Time management TUI (git)"
 arch=('x86_64')
