@@ -1,6 +1,6 @@
 pkgbase = python-weasyprint
 	pkgdesc = Converts web documents (HTML, CSS, SVG, ...) to PDF.
-	pkgver = 52.3
+	pkgver = 52.5
 	pkgrel = 1
 	url = http://weasyprint.org/
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = python-weasyprint
 	makedepends = python
 	makedepends = python-distribute
 	depends = python
+	depends = python-pip
 	depends = pango>=1.29.3
 	depends = gdk-pixbuf2>=2.25
 	depends = cairo>=1.15.4
@@ -20,8 +21,7 @@ pkgbase = python-weasyprint
 	depends = python-cairocffi
 	depends = python-pyphen
 	depends = python-xcffib
-	source = https://github.com/Kozea/WeasyPrint/archive/v52.3.tar.gz
-	md5sums = b8a9549d898ab9dcdec75c8360151898
+	source = https://github.com/Kozea/WeasyPrint/archive/v52.5.tar.gz
+	md5sums = dae9e7b3d0d48312669050593d504e12
 
 pkgname = python-weasyprint
-
