@@ -1,0 +1,16 @@
+pkgbase = brother-dcpj987n-cups-bin
+	pkgdesc = LPR and CUPS wrapper for Brother DCP-J987N-(W/B) printer
+	pkgver = 1.0.5
+	pkgrel = 0
+	url = https://support.brother.co.jp/j/b/downloadlist.aspx?c=jp&lang=ja&prod=dcpj987n&os=128
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	depends = cups
+	optdepends = brscan4: scanner support
+	source = https://download.brother.com/welcome/dlf105217/dcpj987npdrv-1.0.5-0.i386.rpm
+	md5sums = fcf8b5a6e744906d10eecd22821ae7b4
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-dcpj987n-cups-bin
