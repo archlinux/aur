@@ -8,7 +8,7 @@ pkgbase = shim-signed
 	noextract = shim-helpers-amd64-signed_1+15+1533136590.3beb971+7+deb10u1_amd64.deb
 	options = !strip
 	source = https://deb.debian.org/debian/pool/main/s/shim-signed/shim-signed_1.33+15+1533136590.3beb971-7_amd64.deb
-	source = http://deb.debian.org/debian/pool/main/s/shim-helpers-amd64-signed/shim-helpers-amd64-signed_1+15+1533136590.3beb971+7+deb10u1_amd64.deb
+	source = https://deb.debian.org/debian/pool/main/s/shim-helpers-amd64-signed/shim-helpers-amd64-signed_1+15+1533136590.3beb971+7+deb10u1_amd64.deb
 	sha256sums = da466858eee1786433646dfcc9918395d2da06a7fb1815a3f66de749f5d8e506
 	sha256sums = 5d9198a417a4e0692e68d04594df1717ea10e9f80eb8292f19d30c56ab34a100
 
