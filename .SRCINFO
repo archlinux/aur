@@ -1,7 +1,7 @@
 pkgbase = pyfa
 	pkgdesc = EVE Online Fitting Assistant
 	pkgver = 2.35.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pyfa-org/Pyfa
 	arch = any
 	license = GPL3
