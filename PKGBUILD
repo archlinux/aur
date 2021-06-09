@@ -1,7 +1,7 @@
 # Maintainer: Ben Westover <kwestover.kw@gmail.com>
 
 pkgname='tor-browser-arm'
-pkgver='10.0.16'
+pkgver='10.0.17'
 pkgrel='1'
 pkgdesc='Tor Browser Bundle: anonymous browsing using Firefox and Tor (international PKGBUILD) (built for ARM)'
 url='https://sourceforge.net/projects/tor-browser-ports/'
@@ -22,7 +22,7 @@ provides=('tor-browser')
 
 _tag_armv7h='linux-armhf'
 _tag_aarch64='linux-arm64'
-_urlbase="https://sourceforge.net/projects/tor-browser-ports/files/${pkgver}-$([[ "${CARCH}" == 'aarch64' ]] && echo -n "arm64" || echo -n "armhf")"
+_urlbase="https://sourceforge.net/projects/tor-browser-ports/files/${pkgver}"
 _archstr=$([[ "${CARCH}" == 'aarch64' ]] && echo -n "${_tag_aarch64}" || echo -n "${_tag_armv7h}")
 
 _localetor() {
