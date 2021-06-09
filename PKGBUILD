@@ -5,7 +5,7 @@
 
 pkgname=pyfa
 pkgver=2.35.0
-pkgrel=2
+pkgrel=3
 _distname="Pyfa-${pkgver}"
 pkgdesc="EVE Online Fitting Assistant"
 arch=('any')
