@@ -3,7 +3,7 @@
 _pkgname=neovim
 _pkgver=0.5.0
 pkgname=neovim-nightly-bin
-pkgver=0.5.0+dev+1227+gb518b9076
+pkgver=0.5.0+dev+1385+g93f15db5d
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs - Nightly Builds'
 arch=('x86_64')
@@ -17,13 +17,14 @@ optdepends=('python2-neovim: for Python 2 plugin support, see :help python'
             'xclip: for clipboard support, see :help clipboard'
             'xsel: for clipboard support, see :help clipboard')
 
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz")
+_date="$(date -u +%Y%m%d)"
+source=("$_pkgname-$_date.tar.gz::https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz")
 sha512sums=(SKIP) 
 install=neovim.install
 
 pkgver() {
   cd "${srcdir}/nvim-linux64"
-  ./bin/nvim --version | head -1 | awk '{ printf $2 }' | sed 's/-/+/g'
+  ./bin/nvim --version | head -1 | awk '{ printf $2 }' | sed 's/-/+/g' | sed 's/v//'
 }
 
 check() {
