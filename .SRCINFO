@@ -1,6 +1,6 @@
 pkgbase = jdk8-arm
 	pkgdesc = Oracle Java 8 Development Kit LTS for ARM
-	pkgver = 8u291
+	pkgver = 8u251
 	pkgrel = 1
 	url = https://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = jdk8-arm.install
@@ -27,13 +27,12 @@ pkgbase = jdk8-arm
 	provides = java-environment=8
 	provides = java-environment-jdk=8
 	options = !strip
-	backup = etc/java-jdk8/amd64/jvm.cfg
+	backup = etc/java-jdk8/arm/jvm.cfg
 	backup = etc/java-jdk8/images/cursors/cursors.properties
 	backup = etc/java-jdk8/management/jmxremote.access
 	backup = etc/java-jdk8/management/management.properties
 	backup = etc/java-jdk8/security/java.policy
 	backup = etc/java-jdk8/security/java.security
-	backup = etc/java-jdk8/security/javaws.policy
 	backup = etc/java-jdk8/content-types.properties
 	backup = etc/java-jdk8/flavormap.properties
 	backup = etc/java-jdk8/fontconfig.properties.src
@@ -50,10 +49,10 @@ pkgbase = jdk8-arm
 	sha256sums = 144e6651fcea08d95f3148d3a8ad17deb93fec4dd9236d37d27d7c648230b870
 	sha256sums = 635433e9c78ff58af65c316232ac9907d289a324428923788ea0f82ae7f8083b
 	sha256sums = 4c9d5ab69494b3d0d8b166fd5552aa7d587f44f804cec9e2990842ebcd1c8e1d
-	source_armv7h = https://download.oracle.com/otn-pub/java/jdk/8u291-b10/d7fc238d0cbf4b0dac67be84580cfb4b/jdk-8u291-linux-arm32-vlp-hflt.tar.gz
-	sha256sums_armv7h = 9a28e6dd42786c50c1ecb71194dafd65aaa148fcf6a620e6da54495f42e3ff2c
-	source_aarch64 = https://download.oracle.com/otn-pub/java/jdk/8u291-b10/d7fc238d0cbf4b0dac67be84580cfb4b/jdk-8u291-linux-aarch64.tar.gz
-	sha256sums_aarch64 = bb5b6c64183aa6bbf96d80fcd43fd01f259754f9ca2906546e1e3c4773999187
+	source_armv7h = https://download.oracle.com/otn-pub/java/jdk/8u251-b08/3d5a2bb8f8d4428bbe94aed7ec7ae784/jdk-8u251-linux-arm32-vfp-hflt.tar.gz
+	sha256sums_armv7h = f1b0c979e1b61ec52ebd5e1d0b754d7681d8623b09ac90c69718a553ef9b0cd1
+	source_aarch64 = https://download.oracle.com/otn-pub/java/jdk/8u251-b08/3d5a2bb8f8d4428bbe94aed7ec7ae784/jdk-8u251-linux-arm64-vfp-hflt.tar.gz
+	sha256sums_aarch64 = 58baeaab7da97dd5a6b02ad2dcd77c14b3b6ba014029ee67dbc2bd5f0fa98d1b
 
 pkgname = jdk8-arm
 
