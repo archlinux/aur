@@ -1,0 +1,29 @@
+pkgbase = rakubrew
+	pkgdesc = Manage Raku (Formarly Perl 6+) installations in your $HOME
+	pkgver = 16
+	pkgrel = 1
+	url = https://rakubrew.org/perl/rakubrew
+	arch = any
+	license = MIT
+	checkdepends = perl-test-exception
+	checkdepends = perl-test-output
+	checkdepends = perl-test-spec
+	checkdepends = perl-path-class
+	checkdepends = perl-io-all
+	makedepends = perl-module-build-tiny
+	depends = perl
+	depends = perl-capture-tiny
+	depends = perl-cpan-perl-releases
+	depends = perl-devel-patchperl
+	depends = perl-file-path-tiny
+	depends = perl-local-lib
+	depends = perl-file-homedir
+	depends = perl-http-tinyish
+	depends = perl-json
+	depends = perl-file-copy-recursive
+	options = !emptydirs
+	source = https://github.com/Raku/App-Rakubrew/archive/refs/tags/v16.tar.gz
+	sha1sums = 8df3e72e914ea09ae596103a1987e6b80dceaa36
+
+pkgname = rakubrew
+
