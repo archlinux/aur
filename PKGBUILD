@@ -27,9 +27,9 @@ build() {
 
 package() {
     cd "$srcdir/LiE"
-    sed -i "s|LD=.*|LD=/usr/lib/lie|" lie
+    sed -i "s|LD=.*|LD=/usr/lib/LiE|" lie
     install -D -m755 lie $pkgdir/usr/bin/lie
-    install -D -m755 Lie.exe $pkgdir/usr/lib/lie/Lie.exe
-    install -m644 INFO.* $pkgdir/usr/lib/lie
-    install -m644 LEARN* $pkgdir/usr/lib/lie
+    install -D -m755 Lie.exe $pkgdir/usr/lib/LiE/Lie.exe
+    install -m644 INFO.* $pkgdir/usr/lib/LiE
+    install -m644 LEARN* $pkgdir/usr/lib/LiE
 }
