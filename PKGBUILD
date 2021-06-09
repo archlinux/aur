@@ -2,18 +2,18 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=zip
-_cranver=2.1.1
+_cranver=2.2.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="Cross-Platform 'zip' Compression"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
-license=(CC0)
+license=(MIT)
 depends=(r)
 optdepends=(r-covr r-processx r-r6 r-testthat r-withr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('4c1e601dfcb8b229426caf657e93b592')
+sha256sums=('9f95987c964039834f770ecda2d5f7e3d3a9de553c89db2a5926c4219bf4b9d8')
 
 build() {
   cd "${srcdir}"
