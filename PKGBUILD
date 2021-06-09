@@ -2,7 +2,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=inline
-_cranver=0.3.18
+_cranver=0.3.19
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,10 +10,10 @@ pkgdesc="Functions to Inline C, C++, Fortran Function Calls from R"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(LGPL2 LGPL2.1 LGPL3)
-depends=('r>=2.4.0')
+depends=(r)
 optdepends=(r-rcpp r-tinytest)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('cc89d8c1c0355ab037193eded3a8a4231383b5d8b83dc0f084343c071777ec3a')
+sha256sums=('0ee9309bb7dab0b97761ddd18381aa12bd7d54678ccd7bec00784e831f4c99d5')
 
 build() {
   cd "${srcdir}"
