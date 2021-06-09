@@ -1,13 +1,13 @@
 # Maintainer: Florijan Hamzic <florijanh at gmail dot com>
 _pypi_name='WeasyPrint'
 pkgver=52.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Converts web documents (HTML, CSS, SVG, ...) to PDF."
 license=('BSD')
 arch=('any')
 url="http://weasyprint.org/"
-makedepends=('python' 'python-distribute')
-depends=('python' 'python-pip' 'pango>=1.29.3' 'gdk-pixbuf2>=2.25' 'cairo>=1.15.4'
+makedepends=('python' 'python-distribute' 'python-pip')
+depends=('python' 'pango>=1.29.3' 'gdk-pixbuf2>=2.25' 'cairo>=1.15.4'
          'python-cairo' 'python-cairosvg'
          'python-tinycss2' 'python-cssselect2>=0.1' 'python-html5lib'
          'python-cffi' 'python-cairocffi' 'python-pyphen' 'python-xcffib')

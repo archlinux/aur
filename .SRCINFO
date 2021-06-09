@@ -1,14 +1,14 @@
 pkgbase = python-weasyprint
 	pkgdesc = Converts web documents (HTML, CSS, SVG, ...) to PDF.
 	pkgver = 52.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://weasyprint.org/
 	arch = any
 	license = BSD
 	makedepends = python
 	makedepends = python-distribute
+	makedepends = python-pip
 	depends = python
-	depends = python-pip
 	depends = pango>=1.29.3
 	depends = gdk-pixbuf2>=2.25
 	depends = cairo>=1.15.4
