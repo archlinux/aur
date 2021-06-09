@@ -1,0 +1,13 @@
+pkgbase = opera-proxy
+	pkgdesc = Standalone Opera VPN client.
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/Snawoot/opera-proxy
+	arch = i686
+	arch = x86_64
+	license = MIT
+	provides = opera-proxy
+	source = https://github.com/Snawoot/opera-proxy/releases/download/v1.2.2/opera-proxy.linux-amd64
+	sha512sums = 6874d055c0a6c5f44cdb37d4c136d2aaf11218e0d2e38cea8e0fd16ff6c62fb1071e420c7818797585729ad61692c776c7b8161ee9bb42bf1ee983f303d988df
+
+pkgname = opera-proxy
