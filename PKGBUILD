@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Set the system's date from a remote host"
 arch=('i686' 'x86_64' 'arm' 'armv6h')
 url="https://github.com/resurrecting-open-source-projects/openrdate"
-license=("unknown")
+license=('BSD')
 depends=('libbsd')
 makedepends=('autoconf' 'automake')
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
@@ -23,7 +23,7 @@ build() {
 package() {
   cd ${pkgname}-${pkgver}
   make DESTDIR="$pkgdir" install
-  install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}
+  install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 
 # vim: ts=2 sw=2 et:
