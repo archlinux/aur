@@ -1,6 +1,6 @@
-# Maintainer: ml <mlævisu.li>
+# Maintainer: ml <>
 pkgname=helm-2to3
-pkgver=0.8.2
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Migrates and cleans up Helm v2 configuration and releases in-place to Helm v3'
 arch=('x86_64' 'aarch64')
@@ -11,16 +11,16 @@ depends=('helm')
 makedepends=('go')
 groups=('helm-plugins')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('19106d88802f2c73d8b4f49c1f718f2dd95fdedf1697af8d09448bd94ec38455')
+sha256sums=('69d6f9c869189eff63690e31c42ff22fab2541c063a4c8a1feaf6502ced73bfe')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
+  sed -i '/^hooks:$/Q' plugin.yaml
   go mod edit \
     -dropreplace gotest.tools \
     -dropreplace github.com/Azure/go-autorest \
     -dropreplace github.com/docker/distribution
   go mod tidy
-  sed -i '/^hooks:$/Q' plugin.yaml
 }
 
 build() {
@@ -30,7 +30,7 @@ build() {
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
-  export GOFLAGS='-buildmode=pie -trimpath -modcacherw -mod=readonly'
+  export GOFLAGS='-buildmode=pie -trimpath -modcacherw'
   go build -ldflags="-linkmode=external -X=main.version=$pkgver" -o bin/2to3
 }
 
