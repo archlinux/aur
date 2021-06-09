@@ -1,6 +1,6 @@
 pkgbase = valheim-server
 	pkgdesc = Dedicated server for the Valheim PC game
-	pkgver = 0.153.2
+	pkgver = 0.154.1
 	pkgrel = 1
 	url = https://www.valheimgame.com/
 	arch = x86_64
@@ -23,4 +23,3 @@ pkgbase = valheim-server
 	sha512sums = 86830550c1953137b876258db948af319181760a496c69c3580047f58c18746d70d720a2cfb34650a657a5944b41f1d73bf8aa8d003ffa459056755a2edda8af
 
 pkgname = valheim-server
-
