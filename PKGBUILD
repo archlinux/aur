@@ -4,15 +4,22 @@ pkgbase=python-flask-paginate
 pkgname=python-flask-paginate
 _name=${pkgname#python-}
 pkgver=0.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple paginate extension for flask"
 arch=('any')
 license=('BSD')
 url="https://pypi.org/project/flask-paginate"
-makedepends=('python-pip')
-source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/${_name/-/_}-$pkgver-py2.py3-none-any.whl")
-sha512sums=(b0afc4a11b2ddc87386775cd553aa7ca0a5c1f991ea8ec64ed3c5c8e1138eaec9922a320cb56609716e16154a830ca1ca913012b6c60a76005799f1c25077e53)
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+b2sums=(b06536d59e943b8e3b8562447903f40f2f23ed4f3cb1795c48b4586be64ffcc067371de653d3dc614664554152d35fa60441c7ba3cddcc4a0188202fbe0d44ca)
+
+build() {
+	# https://wiki.archlinux.org/title/Python_package_guidelines
+	cd "$_name-$pkgver" 
+	python setup.py build
+}
 
 package() {
-	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.whl
+	cd "$_name-$pkgver"
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
