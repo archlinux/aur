@@ -1,0 +1,37 @@
+pkgbase = synochat
+	pkgdesc = Synology Chat Client is the desktop client software of Synology Chat.
+	pkgver = 1.1.1.57
+	pkgrel = 1
+	url = https://www.synology.com/dsm/feature/chat
+	install = synochat.install
+	arch = x86_64
+	groups = 
+	license = non-free
+	depends = desktop-file-utils
+	depends = gconf
+	depends = hicolor-icon-theme
+	depends = libappindicator-gtk2
+	depends = scrot
+	depends = alsa-lib
+	depends = nss
+	depends = libxtst
+	depends = libxss
+	noextract = libharfbuzz0b_1.7.2-1ubuntu1_amd64.deb
+	noextract = libpango-1.0-0_1.40.14-1ubuntu0.1_amd64.deb
+	noextract = libpangocairo-1.0-0_1.40.14-1ubuntu0.1_amd64.deb
+	noextract = libpangoft2-1.0-0_1.40.14-1ubuntu0.1_amd64.deb
+	options = !strip
+	options = !emptydirs
+	source = http://global.download.synology.com/download/Utility/ChatClient/1.1.1-57/Ubuntu/x86_64/Chat_1.1.1-57_amd64.deb
+	source = http://archive.ubuntu.com/ubuntu/pool/main/h/harfbuzz/libharfbuzz0b_1.7.2-1ubuntu1_amd64.deb
+	source = http://archive.ubuntu.com/ubuntu/pool/main/p/pango1.0/libpango-1.0-0_1.40.14-1ubuntu0.1_amd64.deb
+	source = http://archive.ubuntu.com/ubuntu/pool/main/p/pango1.0/libpangocairo-1.0-0_1.40.14-1ubuntu0.1_amd64.deb
+	source = http://archive.ubuntu.com/ubuntu/pool/main/p/pango1.0/libpangoft2-1.0-0_1.40.14-1ubuntu0.1_amd64.deb
+	sha512sums = 702fb5566874dabe780f506defdbd69d3f65377875c6d1a6c8f97eaf4ac640a7cebe93ef370d9ec5cec58bd89908bb86649b6dba2335ac0c8fcfc92abf59d094
+	sha512sums = a5e3cf6510b392f517c473b2dd3cb3a6e62d624b8a2cd42f1691cedb9c2edb58f5bcdab361156caeab3a8f6da49b6b934f367582828fbb800d75dc75b674fedd
+	sha512sums = c136202a86a60f4b0df8f1bc76b62a11a23c7626dce7274fb0b9d40fc172fc12e40106a560f56334e75b33496adf41dddc961e0d590fdb7c4fc7151f96b5c0b5
+	sha512sums = e3796052cd33fec46a63f67e1b390eef80647f74fb2980e4a8b075f4d41454d928df0116d33bd6df91f196a5faa81b58ef1611fae4f1f2102eddcb355fa6ab6a
+	sha512sums = 4f05f4da0df9b2a8522de78d1104549408ea9daf4de3812c42d18165d8599fe8b65e71cd1860c60577929ae818abf6d3ff2253f75c22b5535524bb78620fab1b
+
+pkgname = synochat
+
