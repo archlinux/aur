@@ -24,10 +24,10 @@ source_armv7h=('webkit2gtk-wpe-bin-armv7h::https://webreflection.github.io/aur/w
 source_armv7l=('webkit2gtk-wpe-bin-armv7l::https://webreflection.github.io/aur/webkit2gtk-wpe-bin-armv7l-2.32.1.tar.gz')
 source_x86_64=('webkit2gtk-wpe-bin-x86::https://webreflection.github.io/aur/webkit2gtk-wpe-bin-x86_64-2.32.1.tar.gz')
 
-sha256sums_aarch64=('120bdebafbaf1d2c170e22466f4b131aeffc672ac720b5e08b0fb09b6f2770e0')
-sha256sums_armv7l=('8f823b892eed3935def738084c2a9fa1cde561825c573d9b331efa5dcadd1e1d')
-sha256sums_armv7h=('8f823b892eed3935def738084c2a9fa1cde561825c573d9b331efa5dcadd1e1d')
-sha256sums_x86_64=('4ae6e487b8e6efad2f5c1207a56a6a41f344c772a0f38c415be36f536e5506bf')
+sha256sums_aarch64=('174db6ad81163e3c63f38218d1e6065b10511b89aeefac5ee3b4bfdb8cc83ca9')
+sha256sums_armv7l=('2fc2c5a4285513226b6458455376df44da9294d76fecd2d9462a8463751a193e')
+sha256sums_armv7h=('2fc2c5a4285513226b6458455376df44da9294d76fecd2d9462a8463751a193e')
+sha256sums_x86_64=('06d97cac9e6de859b9ad945c850324abbdb54b7699fe91998da26716ee079ede')
 
 package () {
     cp -R "${srcdir}/usr" "${pkgdir}"
