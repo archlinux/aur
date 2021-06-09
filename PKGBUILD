@@ -4,11 +4,11 @@
 
 pkgname=webstorm-eap
 _pkgname=WebStorm
-pkgver=212.3724.2
+pkgver=212.4037.16
 _pkgver=2021.2
 pkgrel=1
 pkgdesc="JavaScript IDE and HTML editor. Early Access Program."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 options=('!strip')
 url="http://www.jetbrains.com/webstorm"
 license=('custom')
@@ -19,27 +19,10 @@ source=(https://download.jetbrains.com/webstorm/${_pkgname}-${pkgver}.tar.gz
         jetbrains-webstorm-eap.desktop
         ${_pkgname}_license.txt)
 
-sha256sums=('388dfec3a19151a01e0f6cf19bae8bed46579d9391609fcd505b72216076fcc4'
+sha256sums=('8cd344d632f823b6a2d5d70eae7f9bce5cdfee662b8af0f608d7a098a152f2dd'
             '5d71fec58a85d936a24fce93f9e95339cf276902a646da1f2982267fe926a7ed'
             'e8d1be7f980b7d371ef5aa65f2375397d970e887659bf3b280601cced8498e32'
             '8464fc766dbb4f6a0de4acd84007fc2916b50ca48ce7d22654144f549c8c6f4c')
-
-prepare() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-
-  # Remove bin/libs of non-matching architectures
-  if [[ $CARCH = 'i686' ]]; then
-    rm bin/fsnotifier64
-    rm bin/libdbm64.so
-    rm bin/webstorm64.vmoptions
-    rm -rf lib/pty4j-native/linux/x86_64
-  fi
-  if [[ $CARCH = 'x86_64' ]]; then
-    rm bin/fsnotifier
-    rm bin/webstorm.vmoptions
-    rm -rf lib/pty4j-native/linux/x86
-  fi
-}
 
 package() {
   cd "${srcdir}"
