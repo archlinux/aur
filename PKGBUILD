@@ -4,14 +4,14 @@
 _pypi_name=WeasyPrint
 pkgname=python-${_pypi_name,,}
 pkgver=52.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Convert web documents (HTML, CSS, SVG, ...) to PDF'
 license=('BSD')
 arch=('any')
 url='http://weasyprint.org'
-_py_deps=(cairo cairocffi cairosvg cffi cssselect2 html5lib pillow pyphen pytest-runner tinycss2)
+_py_deps=(cairo cairocffi cairosvg cffi cssselect2 html5lib pillow pyphen tinycss2)
 depends=(python "${_py_deps[@]/#/python-}")
-makedepends=(python-setuptools)
+makedepends=(python-pytest-runner python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_pypi_name::1}/$_pypi_name/$_pypi_name-$pkgver.tar.gz")
 sha256sums=('b37ea02d75ca04babd7becad7341426be332ae560d8f02d664bfa1e9afb18481')
 
