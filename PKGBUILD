@@ -1,7 +1,7 @@
 # Maintainer:  JakobDev<jakobdev at gmx dot de>
 
 pkgname=cubiomes-viewer
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="An efficient graphical Minecraft seed finder and map viewer"
 arch=("x86_64")
@@ -10,13 +10,11 @@ license=('GPL3')
 depends=("qt5-base")
 makedepends=("gendesk")
 source=("https://github.com/Cubitect/cubiomes-viewer/releases/download/${pkgver}/cubiomes-viewer-${pkgver}-src.tar.gz")
-sha256sums=("9aded1d3001ef9c4c72ea7d211605c452e46d41ec791f2c9fc1ca5e5bd17af4d")
+sha256sums=("f6c494fc7b1393cf35d9f0ee9f0f37986f436d01773f5bfaef558f940da946a7")
 
 build() {
-    cd "cubiomes-viewer/cubiomes"
-    make
-    mkdir -p ../build
-    cd ../build
+    mkdir -p cubiomes-viewer/build
+    cd cubiomes-viewer/build
     qmake ..
     make
 }
@@ -34,4 +32,3 @@ package() {
     install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "cubiomes-viewer/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
-
