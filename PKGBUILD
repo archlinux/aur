@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=corrplot
-_cranver=0.88
+_cranver=0.89
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=(GPL2 GPL3)
 depends=(r)
 optdepends=(r-knitr r-rcolorbrewer r-rmarkdown r-prettydoc r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('bfd14d28ea0009843bb27ec4d65d2b0deb75c66414146fa5b9248a7e9b8e09e8')
+sha256sums=('bad847f8fd791f2d3a2817d7a56d7c0e30757759a697f50c21325e56cf673bb4')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
