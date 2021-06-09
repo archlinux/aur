@@ -2,7 +2,7 @@
 
 _upname=ftCLI
 pkgname=ftcli
-pkgver=0.2.8
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='A command line font editor'
 arch=(any)
@@ -11,8 +11,8 @@ license=('MIT')
 _py_deps=('colorama'
           'click'
           'brotli'
-          'fonttools>=4.21.1'
-          'skia-pathops'
+          'fonttools>=4.24.4'
+          'skia-pathops>=0.6.0.post2'
           'zopfli')
 depends=('dehinter'
          'font-line'
@@ -20,7 +20,7 @@ depends=('dehinter'
          "${_py_deps[@]/#/python-}")
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9bc1664e830c6948eb76ec501ace9ca3edbc24abd484ac4b7c891b03f124131f')
+sha256sums=('8936eb9b9a5b2c6b89afc838d31d955ddb7e01d177bd86b07ce4e56c97027ae5')
 
 build() {
     cd "$_upname-$pkgver"
