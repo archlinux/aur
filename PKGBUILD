@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=rusty-krab-manager
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Time management TUI"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('custom:ETHICAL')
 depends=('alsa-lib' 'gcc-libs')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('4e177607555edcb5f8afcba4f8c920c303b06cfae7d0b19a1d11535189a78aec80836f0509194f012321612790e8afc8807138d72894c44a0b041663dc605380')
+sha512sums=('391fa1b5019d3fca2be7b9a4be7ee23a05274fa7fd2d9d013c94fff75693303aa707fbace242e0b455c0d3e917f50c28e6b42d86765e21617b6d2df4a87680e9')
 
 build() {
   cd "$pkgname-$pkgver"

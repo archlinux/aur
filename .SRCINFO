@@ -1,6 +1,6 @@
 pkgbase = rusty-krab-manager
 	pkgdesc = Time management TUI
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/aryakaul/rusty-krab-manager
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rusty-krab-manager
 	makedepends = rust
 	depends = alsa-lib
 	depends = gcc-libs
-	source = rusty-krab-manager-1.2.1.tar.gz::https://github.com/aryakaul/rusty-krab-manager/archive/v1.2.1.tar.gz
-	sha512sums = 4e177607555edcb5f8afcba4f8c920c303b06cfae7d0b19a1d11535189a78aec80836f0509194f012321612790e8afc8807138d72894c44a0b041663dc605380
+	source = rusty-krab-manager-1.2.2.tar.gz::https://github.com/aryakaul/rusty-krab-manager/archive/v1.2.2.tar.gz
+	sha512sums = 391fa1b5019d3fca2be7b9a4be7ee23a05274fa7fd2d9d013c94fff75693303aa707fbace242e0b455c0d3e917f50c28e6b42d86765e21617b6d2df4a87680e9
 
 pkgname = rusty-krab-manager
