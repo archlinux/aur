@@ -1,34 +1,33 @@
-# Maintainer: Lukas Sabota <lukas@lwsabota.com>
+# Maintainer: prg <prg@xannode.com>
 pkgname=vecx-git
-pkgver=v1.0.r11.ga8b2f3f
-pkgrel=1
+pkgver=v1.1.r0.gbe44a67
+pkgrel=2
 pkgdesc="SDL-based Vectrex console emulator"
 arch=('x86' 'x86_64')
 url="https://github.com/jhawthorn/vecx"
 license=('unknown')
-groups=()
 depends=(sdl sdl_gfx sdl_image)
 makedepends=('git')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=()
 source=('git+https://github.com/jhawthorn/vecx.git')
-noextract=()
 md5sums=('SKIP')
+
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
+prepare() {
   cd "$srcdir/${pkgname%-git}"
+  # Fix build on modern gcc
+  sed -i 's/-O3/-fgnu89-inline -O3/g' Makefile
+  # Load ROM from /usr/share/vecx
   sed -i 's/rom.dat/\/usr\/share\/vecx\/rom.dat/' osint.c
-  make
 }
 
+build() {
+  cd "$srcdir/${pkgname%-git}"
+  make
+}
 
 package() {
   cd "$srcdir/${pkgname%-git}"
@@ -36,3 +35,4 @@ package() {
   install -D -m 644 rom.dat $pkgdir/usr/share/vecx/rom.dat
 }
 
+# vim: set ts=2 sw=2 tw=80 et :

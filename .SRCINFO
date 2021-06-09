@@ -1,7 +1,7 @@
-pkgbase = vecx
+pkgbase = vecx-git
 	pkgdesc = SDL-based Vectrex console emulator
-	pkgver = v1.0.r11.ga8b2f3f
-	pkgrel = 1
+	pkgver = v1.1.r0.gbe44a67
+	pkgrel = 2
 	url = https://github.com/jhawthorn/vecx
 	arch = x86
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = vecx
 	md5sums = SKIP
 
 pkgname = vecx-git
-
