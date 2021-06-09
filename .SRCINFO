@@ -11,7 +11,7 @@ pkgbase = minecraft-launcher-arm
 	depends = freetype2
 	depends = glib2
 	depends = opengl-driver
-	depends = jdk8-arm
+	depends = jdk8-arm=8u251
 	noextract = lwjgl3arm64.tar.gz
 	noextract = lwjgl3arm32.tar.gz
 	noextract = lwjgl2arm32.tar.gz

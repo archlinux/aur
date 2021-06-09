@@ -7,7 +7,7 @@ _commit=969d98ba925de21adead3700901395c05be1ae78
 pkgdesc='Minecraft Java Edition for ARM devices using Legacy Launcher'
 arch=('aarch64' 'armv7h')
 license=('All Rights Reserved')
-depends=('glibc' 'libx11' 'freetype2' 'glib2' 'opengl-driver' 'jdk8-arm')
+depends=('glibc' 'libx11' 'freetype2' 'glib2' 'opengl-driver' 'jdk8-arm=8u251')
 source=("https://launcher.mojang.com/v1/objects/eabbff5ff8e21250e33670924a0c5e38f47c840b/launcher.jar"
         "https://launcher.mojang.com/download/minecraft-launcher.svg"
         "minecraft-launcher.desktop")
