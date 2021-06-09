@@ -65,7 +65,7 @@ package() {
       --prefix=${pkgdir}/usr/${_arch:3} \
       --user-config=user-config.jam \
       --without-python --without-mpi --without-graph_parallel \
-      cxxflags="-std=c++14 -D_FORTIFY_SOURCE=2 -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4" \
+      cxxflags="-D_FORTIFY_SOURCE=2 -D_GLIBCXX_ASSERTIONS -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4 -Wformat -Werror=format-security -fcf-protection" \
       linkflags="-Wl,-O1,--sort-common,--as-needed -fstack-protector" \
       address-model=${_arch:0:2} \
       architecture=x86 \
