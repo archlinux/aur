@@ -2,7 +2,7 @@
 
 pkgname=detect-it-easy-git
 pkgver=3.02.r8.bf4dfe4
-pkgrel=1
+pkgrel=2
 pkgdesc='Detect It Easy, or abbreviated "DIE" is a program for determining types of files'
 arch=('x86_64')
 url='https://github.com/horsicq/Detect-It-Easy/'
@@ -30,15 +30,53 @@ makedepends=(
   'imagemagick'
   'qt5-tools'
 )
+_srcname="DIE-engine"
 source=(
   'git+https://github.com/horsicq/DIE-engine.git'
+  "${_srcname}/Controls::git+https://github.com/horsicq/Controls.git"
+  "${_srcname}/Detect-It-Easy::git+https://github.com/horsicq/Detect-It-Easy.git"
+  "${_srcname}/FormatDialogs::git+https://github.com/horsicq/FormatDialogs.git"
+  "${_srcname}/FormatWidgets::git+https://github.com/horsicq/FormatWidgets.git"
+  "${_srcname}/Formats::git+https://github.com/horsicq/Formats.git"
+  "${_srcname}/QHexView::git+https://github.com/horsicq/QHexView.git"
+  "${_srcname}/SpecAbstract::git+https://github.com/horsicq/SpecAbstract.git"
+  "${_srcname}/StaticScan::git+https://github.com/horsicq/StaticScan.git"
+  "${_srcname}/XArchive::git+https://github.com/horsicq/XArchive.git"
+  "${_srcname}/XCapstone::git+https://github.com/horsicq/XCapstone.git"
+  "${_srcname}/XDEX::git+https://github.com/horsicq/XDEX.git"
+  "${_srcname}/XDemangle::git+https://github.com/horsicq/XDemangle.git"
+  "${_srcname}/XDemangleWidget::git+https://github.com/horsicq/XDemangleWidget.git"
+  "${_srcname}/XDisasm::git+https://github.com/horsicq/XDisasm.git"
+  "${_srcname}/XDisasmView::git+https://github.com/horsicq/XDisasmView.git"
+  "${_srcname}/XEntropyWidget::git+https://github.com/horsicq/XEntropyWidget.git"
+  "${_srcname}/XGithub::git+https://github.com/horsicq/XGithub.git"
+  "${_srcname}/XHashWidget::git+https://github.com/horsicq/XHashWidget.git"
+  "${_srcname}/XHexEdit::git+https://github.com/horsicq/XHexEdit.git"
+  "${_srcname}/XHexView::git+https://github.com/horsicq/XHexView.git"
+  "${_srcname}/XLLVMDemangler::git+https://github.com/horsicq/XLLVMDemangler.git"
+  "${_srcname}/XMIME::git+https://github.com/horsicq/XMIME.git"
+  "${_srcname}/XMIMEWidget::git+https://github.com/horsicq/XMIMEWidget.git"
+  "${_srcname}/XMemoryMapWidget::git+https://github.com/horsicq/XMemoryMapWidget.git"
+  "${_srcname}/XOptions::git+https://github.com/horsicq/XOptions.git"
+  "${_srcname}/XQwt::git+https://github.com/horsicq/XQwt.git"
+  "${_srcname}/XShortcuts::git+https://github.com/horsicq/XShortcuts.git"
+  "${_srcname}/XSingleApplication::git+https://github.com/horsicq/XSingleApplication.git"
+  "${_srcname}/XStyles::git+https://github.com/horsicq/XStyles.git"
+  "${_srcname}/XTranslation::git+https://github.com/horsicq/XTranslation.git"
+  "${_srcname}/archive_widget::git+https://github.com/horsicq/archive_widget.git"
+  "${_srcname}/build_tools::git+https://github.com/horsicq/build_tools.git"
+  "${_srcname}/die_script::git+https://github.com/horsicq/die_script.git"
+  "${_srcname}/die_widget::git+https://github.com/horsicq/die_widget.git"
+  "${_srcname}/nfd_widget::git+https://github.com/horsicq/nfd_widget.git"
+  "${_srcname}/signatures::git+https://github.com/horsicq/signatures.git"
   'detect-it-easy.desktop'
 )
 sha512sums=(
-  'SKIP'
+  'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+  'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+  'SKIP' 'SKIP' 'SKIP'
   '65f33f3c5f3d01e771d3f9c5b1d59b4cedc2441cf002f762239580592b2d98820173427d6385ac1fd339a8ae105a89705caa8540e20b3c65640f80ba4711f446'
 )
-_srcname="DIE-engine"
 _pkgname="${pkgname/-git/}"
 _stop='\e[m'
 _color="\e[33m"
@@ -53,9 +91,15 @@ pkgver() {
 }
 
 prepare() {
-  cd "$_srcname" || return
-  echo -e "${_prefix}Checking out external dependencies (git submodules)"
-  git submodule update --init --recursive
+  #cd "$_srcname" || return
+  echo -e "${_prefix}Moving external dependencies (git submodules)"
+  _subdirs="Controls Detect-It-Easy FormatDialogs FormatWidgets Formats QHexView SpecAbstract StaticScan XArchive XCapstone \
+XDEX XDemangle XDemangleWidget XDisasm XDisasmView XEntropyWidget XGithub XHashWidget XHexEdit XHexView XLLVMDemangler XMIME \
+XMIMEWidget XMemoryMapWidget XOptions XQwt XShortcuts XSingleApplication XStyles XTranslation archive_widget build_tools \
+die_script die_widget nfd_widget signatures"
+  for _subdir in $_subdirs; do
+    mv "$_subdir" "$_srcname"
+  done
 }
 
 build() {
