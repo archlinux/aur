@@ -18,8 +18,8 @@
 
 _pkgname='tor-browser'
 pkgname='tor-browser-behind-tor'
-pkgver='10.0.16'
-pkgrel='2'
+pkgver='10.0.17'
+pkgrel='1'
 pkgdesc='Tor Browser Bundle: anonymous browsing using Firefox and Tor (international PKGBUILD) (using tor service to download sources)'
 url='https://www.torproject.org/projects/torbrowser.html'
 arch=('i686' 'x86_64')
@@ -99,9 +99,9 @@ sha256sums=('0b0614d04d55ac3748775fd34cb6c1f244fd05b5a16cc1e3ae70d887f7eedbc6'
             '8a6e0945571c332c1fc8b1cef11d15f699a752da2bb403bd0b65ee44821cc643'
             'f25ccf68b47f5eb14c6fec0664c74f30ea9c6c58d42fc6abac3b64670aaa3152'
             '7b28b5dbe8ad573bb46e61b4d542b33e01ca240825ca640b4893fee6203b021f')
-sha256sums_i686=('aa08ec40fc16a36812dc509cdbf2c24b94dfff7b4fec412968d616bf62b4b390'
+sha256sums_i686=('38d08a773c96b4ee0a6d3d71531a8984f7b6695f3438b6f8d6621cf82b6f1638'
                  'SKIP')
-sha256sums_x86_64=('fc0acea2d62767a67038296e0cc041dea2bc7b80ca5dc9333d0173ce4c7b021e'
+sha256sums_x86_64=('55d404c251b6e0f111d8fb9d57ffd7454cd12952cd0927c197bde2cd8245a38f'
                    'SKIP')
 
 noextract=("${_pkgname}-${_tag_i686}-${pkgver}_${_language}.tar.xz"
@@ -146,9 +146,12 @@ package() {
 	sed "${_sed_subst}" "${_pkgname}.in" > "${pkgdir}/usr/bin/${_pkgname}"
 	chmod +x "${pkgdir}/usr/bin/${_pkgname}"
 
-	install -Dm 644 "${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+	install -dm755 \
+		"${pkgdir}/usr/share/icons/hicolor/scalable/apps" \
+		"${pkgdir}/usr/share/icons/hicolor/128x128/apps"
 
-	install -Dm 644 "${_pkgname}.svg" "${pkgdir}/usr/share/pixmaps/${_pkgname}.svg"
+	install -Dm 644 "tor-browser.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/tor-browser.png"
+	install -Dm 644 "tor-browser.svg" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/tor-browser.svg"
 
 	install -dm755 "${pkgdir}/usr/share/applications"
 	sed "${_sed_subst}" "${_pkgname}.desktop.in" > \
