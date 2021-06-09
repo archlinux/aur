@@ -2,7 +2,7 @@
 
 pkgname=yabridgectl
 _yabridge=yabridge
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Optional utility to help set up and manage yabridge"
 epoch=
@@ -13,7 +13,7 @@ makedepends=('cargo')
 provides=('yabridgectl')
 conflicts=('yabridge-bin' 'yabridgectl-git')
 source=("https://github.com/robbert-vdh/yabridge/archive/$pkgver.tar.gz")
-sha256sums=('50d3b4aa62d38ac2a3a8edd394075085a98e560e4d21f7e723f36f03a222f5b4')
+sha256sums=('f0619ecffe0e9d5843a28a0506b0488f6a6391f2aad726f0a50c22962ab0fcf3')
 
 build() {
   cd "$_yabridge-$pkgver/tools/yabridgectl"
