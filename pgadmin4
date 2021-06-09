@@ -1,0 +1,15 @@
+#!/bin/sh
+
+cd $HOME && \
+kdesu sh -c "mkdir -p /var/lib/pgadmin && mkdir -p /var/log/pgadmin && chown $USER /var/lib/pgadmin && chown $USER /var/log/pgadmin" && \
+xterm -iconic -e "python3 -m venv pgadmin4 && \
+source pgadmin4/bin/activate && \
+pip install pgadmin4 && \
+python3 -m venv pgadmin4 && \
+source pgadmin4/bin/activate && \
+(pgadmin4 &) && \
+sleep 5s && \
+xdg-open http://127.0.0.1:5050"
+
+# && \
+#trap \"trap - SIGTERM && kill -- -$$\" SIGINT SIGTERM EXIT"

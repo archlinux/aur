@@ -1,0 +1,25 @@
+pkgbase = pgadmin4-latest
+	pkgdesc = Comprehensive design and management interface for PostgreSQL. Self-updating. Opens the server in a terminal and launches the default browser
+	pkgver = latest
+	pkgrel = 0
+	url = https://www.pgadmin.org/
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	depends = postgresql-libs
+	depends = hicolor-icon-theme
+	depends = python
+	depends = python-pip
+	depends = xterm
+	provides = pgadmin4=latest
+	conflicts = pgadmin4
+	conflicts = pgadmin4-last
+	replaces = pgadmin4
+	source = pgadmin4
+	source = pgadmin4.desktop
+	source = pgadmin4.png
+	sha512sums = 1602c069093f2eefe02e8f8796f935daf76095d97b4366354167dc33ae1178ea76f3f8786e9d9b38e2b9aefb6781c0cf8dab0f56a56991dc79693deaf83a796b
+	sha512sums = cf0a738031ed11456a3f0fd554af76c81a5ecd707c59f4510e80692bc5feb75d9eba7503fe8f73fc8525733fa2c884b02593af113a6f2b8b8edd60735ae5205f
+	sha512sums = 583348ae0786ed948abc8416afd9f10e989b08fd3b6fd357c3d1c42e1235e303656e8d324a11515d19aa8dd60a1cfaf8b50da534eb2456ba777b604f5c580d93
+
+pkgname = pgadmin4-latest
