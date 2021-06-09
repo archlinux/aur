@@ -37,12 +37,13 @@ build() {
 	    mkdir build
 	fi
 	cd build
-	cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" -DCMAKE_BUILD_TYPE=Release -Wnodev ..
+	#cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" -DCMAKE_BUILD_TYPE=Release -Wnodev ..
+	cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=Release -Wnodev ..
 	make -j$(nproc)
 }
 
 
 package() {
 	cd "$pkgname/build"
-	make install
+	make DESTDIR="$pkgdir/" install
 }
