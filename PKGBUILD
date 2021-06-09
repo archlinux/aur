@@ -1,13 +1,16 @@
-# Maintainer: D. Can Celasun <can[at]dcc[dot]im>
+# Maintainer: AlphaJack <alphajack at tuta dot io>
+# Contributor: D. Can Celasun <can[at]dcc[dot]im>
 # Contributor: Carl George < arch at cgtx dot us >
 
-pkgname=mkdocs
+pkgname="mkdocs"
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Project documentation with Markdown."
 arch=("any")
 url="http://www.mkdocs.org"
 license=("BSD")
+provides=("mkdocs")
+conflicts=("python-mkdocs")
 makedepends=("python-setuptools")
 depends=(
         "python-click>=7.0"
