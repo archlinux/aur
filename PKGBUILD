@@ -7,8 +7,8 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=pambase-selinux
-pkgver=20200721.1
-pkgrel=3
+pkgver=20210605
+pkgrel=2
 pkgdesc="SELinux aware base PAM configuration for services"
 arch=('any')
 url="https://www.archlinux.org"
@@ -29,7 +29,7 @@ backup=('etc/pam.d/system-auth'
         'etc/pam.d/system-remote-login'
         'etc/pam.d/system-services'
         'etc/pam.d/other')
-sha256sums=('89d62406b2d623a76d53c33aca98ce8ee124ed4a450ff6c8a44cfccca78baa2f'
+sha256sums=('e9aedc66bfe06aa0e62e4539525b23dcdf98e373e6930a2a8b2be06045355fee'
             '005736b9bd650ff5e5d82a7e288853776d5bb8c90185d5774c07231c1e1c64a9'
             '5540c3b34e9c2344ddc55183015c2e0b9c6009b4248154db62f1e560d0d64d11'
             '005736b9bd650ff5e5d82a7e288853776d5bb8c90185d5774c07231c1e1c64a9'
