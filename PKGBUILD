@@ -9,7 +9,7 @@ license=(custom)
 depends=('desktop-file-utils' 'hicolor-icon-theme' 'libappindicator-gtk2' 'libnotify' 'libxss' 'libxtst' 'nss' 'libxkbcommon-x11')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("http://releases.obins.net/occ/linux/tar/ObinsKit_${pkgver}_x64.tar.gz"
+source_x86_64=("https://s2.hexcore.xyz/occ/linux/tar/ObinsKit_${pkgver}_x64.tar.gz"
 "deb_extra_files_obins.tar.gz")
 sha256sums_x86_64=('649a1b40281db9f9124815b3d878a7ccd6ee55b7d171db117ea21e92bfcf69f7'
 '137296d606b8127dfda7626421fd17fbee06712678b7ae25793e51d78221fab5')
