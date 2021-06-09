@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec /opt/system-bridge/system-bridge "$@"
