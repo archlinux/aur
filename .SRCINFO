@@ -1,6 +1,6 @@
 pkgbase = drawbot-skia
 	pkgdesc = A tool for the removal of TrueType instruction sets (hints) in fonts
-	pkgver = 0.4.7
+	pkgver = 0.4.8
 	pkgrel = 1
 	url = https://github.com/justvanrossum/drawbot-skia
 	arch = any
@@ -8,13 +8,12 @@ pkgbase = drawbot-skia
 	makedepends = python-setuptools
 	depends = python
 	depends = python-bidi
-	depends = python-fonttools
-	depends = python-skia
-	depends = python-skia-pathops
-	depends = python-uharfbuzz
+	depends = python-fonttools>=4.24.3
+	depends = python-skia>=87.2
+	depends = python-skia-pathops>=0.6.0.post2
+	depends = python-uharfbuzz>=0.16.1
 	depends = python-unicodedata2
-	source = https://files.pythonhosted.org/packages/source/d/drawbot-skia/drawbot-skia-0.4.7.tar.gz
-	sha256sums = d32e2d14ed3f290c74aa74e51fefe41688c1336fcb514fa1d41e6857d26cb025
+	source = https://files.pythonhosted.org/packages/source/d/drawbot-skia/drawbot-skia-0.4.8.tar.gz
+	sha256sums = 61d4169b10fca6cea40f4d97898c36de0274c918923582ef0eef5767d6f7c161
 
 pkgname = drawbot-skia
-
