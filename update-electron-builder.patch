@@ -1,0 +1,13 @@
+diff --git a/package.json b/package.json
+index 3a46df0..e2bc65b 100644
+--- a/package.json
++++ b/package.json
+@@ -222,7 +222,7 @@
+     "babel-plugin-transform-remove-console": "^6.9.4",
+     "customize-cra": "^1.0.0",
+     "electron": "^9.2.0",
+-    "electron-builder": "^22.7.0",
++    "electron-builder": "^22.11.0",
+     "jetifier": "~1.6.4",
+     "metro-react-native-babel-preset": "^0.59.0",
+     "mocha": "^8.2.1",
