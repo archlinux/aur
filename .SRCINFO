@@ -1,0 +1,12 @@
+pkgbase = hacker-laws-cli
+	pkgdesc = A CLI tool displaying hacker laws from the hacker-laws GitHub repository
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/umutphp/hacker-laws-cli
+	arch = x86_64
+	license = unknown
+	makedepends = go
+	source = git+https://github.com/umutphp/hacker-laws-cli.git#tag=v1.0.1
+	sha256sums = SKIP
+
+pkgname = hacker-laws-cli
