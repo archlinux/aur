@@ -1,22 +1,29 @@
-# Maintainer: Jeff Parent <jecxjo@sdf.lonestar.org>
+# Maintainer: João Vitor S. Anjos <jvanjos at protonmail dot com>
+# Contributor: Jeff Parent <jecxjo@sdf.lonestar.org>
 
 pkgname=openrdate
-pkgver=1.2
-pkgrel=3
-pkgdesc="Open implementation of rdate."
-license=("BSD")
-source=("http://downloads.sourceforge.net/project/openrdate/openrdate/${pkgname}-${pkgver}.tar.gz/${pkgname}-${pkgver}.tar.gz")
+pkgver=1.10
+pkgrel=1
+pkgdesc="Set the system's date from a remote host"
 arch=('i686' 'x86_64' 'arm' 'armv6h')
-url="http://sourceforge.net/projects/openrdate/"
-sha256sums=('2921fc96d4ca676190d6ffd45fa80e107c1fe12291c0c4f64827c29639863332')
+url="https://github.com/resurrecting-open-source-projects/openrdate"
+license=("unknown")
+depends=('libbsd')
+makedepends=('autoconf' 'automake')
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('8a29eed664e1ba3f628ac16227da2f872d595ddf0be2daee23fbc9da7fc7846a')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr
+  cd ${pkgname}-${pkgver}
+  ./autogen.sh
+  ./configure --prefix=/usr --mandir=/usr/share/man
   make
-} 
+}
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install	
+  cd ${pkgname}-${pkgver}
+  make DESTDIR="$pkgdir" install
+  install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}
 }
+
+# vim: ts=2 sw=2 et:
