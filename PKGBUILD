@@ -1,7 +1,7 @@
 # Maintainer: Samuel "scrufulufugus" Monson <smonson at irbash dot net>
 # Original PKGBUILD Contributor: "PedroHLC"
 pkgname="gamescope"
-pkgver=3.8.1
+pkgver=3.8.3
 pkgrel=0
 pkgdesc="The micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
@@ -18,7 +18,7 @@ replaces=('steamcompmgr')
 source=("${url}/archive/${pkgver}.tar.gz"
         'https://github.com/emersion/libliftoff/archive/b08bbaa5e6331ed273c4bbd867143bf776c18207.tar.gz'
         'https://github.com/swaywm/wlroots/archive/69c71dbc8afecc5da5c800cdc1475185064b4ac4.tar.gz')
-sha256sums=('07e7f2a8aa4cb5b6053e7d2963688bf1fbce3ba270a7447fcd533e829e6d4cfc'
+sha256sums=('fc1a5b66227a73d6c19cdf38b2cde75e18ae0ab04437539ab138f1e5a199c75e'
             '46415b8470913e3fe746867f396c45e59628cfd5918c0467aef27c86b9f5ecd6'
             'd2feb19cd2dcf1ea1ef3559a22ec49d916e6fc266bd80a5e32ab1564a5c93589')
 
