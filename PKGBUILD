@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=gzdoom-git
-pkgver=4.6pre+3+gff9a56dc0
+pkgver=4.7.0pre+33+gadad028b3
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games (git version)'
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ optdepends_x86_64=('vulkan-driver: Vulkan renderer'
                    'vulkan-icd-loader: Vulkan renderer')
 provides=('gzdoom')
 conflicts=('gzdoom')
-replaces=('gzdoom1-git')
+replaces=('gzdoom1-git' 'gzdoom-legacy-git')
 source=('gzdoom::git://github.com/coelckers/gzdoom.git'
         'gzdoom.desktop'
         '0001-Fix-file-paths.patch')
