@@ -24,18 +24,28 @@ pkgver() {
 }
 
 build() {
+
+		DEST="$pkgdir/usr/share/SuperCollider/Extensions"
 		SC_SRC="/usr/share/supercollider-headers"
+		FLUCOMA_CORE=$srcdir/flucoma-core
 
 		cd "$srcdir/$pkgname-$pkgver"
+		mkdir build; cd build
+
 		git submodule update --init --recursive
 
-		mkdir build; cd build
-		DEST="$pkgdir/usr/share/SuperCollider/Extensions"
-		FLUCOMA_CORE=$srcdir/flucoma-core
-		cmake -DFLUID_PATH=$FLUCOMA_CORE -DSC_PATH=$SC_SRC -DCMAKE_INSTALL_PREFIX=$DEST ..
-		make
+		# These will be removed if the build script detects arm architectures
+		ARM_EXCLUDE=("FluidSines"  "FluidBufSines" "FluidAudioTransport" "FluidBufAudioTransport" "FluidNoveltySlice"  "FluidBufNoveltySlice" "FluidTransients"  "FluidBufTransients" "FluidTransientSlice"  "FluidBufTransientSlice" "FluidNMFMorph")
 
-		# cmake -DSC_PATH=<location of your SC source> -DFLUID_PATH=<location of Fluid Corpus Manipulation Library> ..
+		if [ "$CARCH" != "x86_64" ]; then
+			# Remove incompatible plugins on non x86 architectures
+			for PLUG in "${ARM_EXCLUDE[@]}"; do rm -rfv "src/$PLUG"; done
+			cmake -E env CXXFLAGS="-D__arm64=1 -fPIC" cmake -DFLUID_PATH=$FLUCOMA_CORE -DSC_PATH=$SC_SRC -DCMAKE_INSTALL_PREFIX=$DEST ..
+		else
+			cmake -DFLUID_PATH=$FLUCOMA_CORE -DSC_PATH=$SC_SRC -DCMAKE_INSTALL_PREFIX=$DEST ..
+		fi
+
+		make
 
 }
 
