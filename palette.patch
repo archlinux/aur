@@ -1,17 +1,19 @@
---- a/smacker.c	2020-01-06 02:28:16.000000000 +0100
-+++ b/smacker.c	2021-05-01 00:50:21.510161523 +0200
-@@ -800,8 +800,7 @@
- 			p ++; size --;
+diff '--color=auto' -Naur a/smacker.c b/smacker.c
+--- a/smacker.c	2021-06-09 15:49:13.498784481 +0200
++++ b/smacker.c	2021-06-09 15:49:52.586150196 +0200
+@@ -1225,8 +1225,8 @@
+ 			size --;
  
  			/* overflow: see if we write/read beyond 256colors, or overwrite own palette */
 -			if (i + count > 256 || src + count > 256 ||
--				(src < i && src + count > i) )
+-				(src < i && src + count > i)) {
 +			if (i + count > 256 || src + count > 256)
- 			{
- 				fprintf(stderr,"libsmacker::palette_render(s,p,size) - ERROR: overflow, 0x40 attempt to copy %d entries from %d to %d\n",count,src,i);
++			{
+ 				fprintf(stderr, "libsmacker::palette_render(s,p,size) - ERROR: overflow, 0x40 attempt to copy %d entries from %d to %d\n", count, src, i);
  				goto error;
-@@ -1360,6 +1359,11 @@
- 	return -1;
+ 			}
+@@ -1733,6 +1733,11 @@
+ 	return SMK_MORE;
  }
  
 +unsigned char smk_palette_updated(smk s)
@@ -22,8 +24,9 @@
  /* advance to next frame */
  char smk_next(smk s)
  {
---- a/smacker.h	2020-01-06 02:32:24.000000000 +0100
-+++ b/smacker.h	2021-05-01 00:50:21.511161527 +0200
+diff '--color=auto' -Naur a/smacker.h b/smacker.h
+--- a/smacker.h	2021-06-09 15:49:13.498784481 +0200
++++ b/smacker.h	2021-06-09 15:49:32.952850956 +0200
 @@ -91,6 +91,8 @@
  
  /** rewind to first frame and unpack */
