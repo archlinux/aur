@@ -1,7 +1,7 @@
 pkgbase = minecraft-bedrock-server
 	pkgdesc = Minecraft Bedrock Server for Windows 10 and Xbox One versions of Minecraft
 	pkgver = 1.17.0.03
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.minecraft.net/en-us/download/server/bedrock
 	arch = x86_64
 	license = custom
