@@ -1,11 +1,11 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
-# Contributors: Arkham, Christoph Zeiler, JD Steffen
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributors: carstene1ns, Arkham, Christoph Zeiler, JD Steffen
 
 pkgname=eduke32
-_pkgdate=20210604
-_pkgrev='9382-bcc1cb0db'
+_pkgdate=20210608
+_pkgrev='9391-189ed2930'
 pkgver=$_pkgdate.r${_pkgrev/-/_}
-pkgrel=3
+pkgrel=1
 pkgdesc="An advanced Duke Nukem 3D source port"
 arch=('i686' 'x86_64')
 url="http://eduke32.com/"
@@ -21,7 +21,7 @@ install=$pkgname.install
 source=("http://dukeworld.com/$pkgname/synthesis/$_pkgdate-$_pkgrev/eduke32_src_$_pkgdate-$_pkgrev.tar.xz"
         "$pkgname.png"
         "$pkgname.desktop")
-sha256sums=('bafe5b1e7f05a54c35af7773df109c9573478776c220d99f47fcc1af96b1d498'
+sha256sums=('cfdc2e0fda9a24a422f1bc7712b2cb9a751e29060571103dc8a1cf56ccb1399f'
             'b55a264b4682afabd49587d700d4c85ce6c2e7af7ce2764dd217ebe167549863'
             'cf2ea2c6a0d85ab15e30171ed5b921f1fcf5644de7af9638c0ef60de21c44f24')
 
