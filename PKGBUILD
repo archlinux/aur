@@ -3,7 +3,7 @@
 
 pkgname=gzdoom
 pkgver=4.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Feature centric port for all Doom engine games'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
@@ -34,7 +34,7 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'xorg-xmessage: crash dialog (other)')
 optdepends_x86_64=('vulkan-driver: Vulkan renderer'
                    'vulkan-icd-loader: Vulkan renderer')
-replaces=("gzdoom1")
+replaces=('gzdoom1' 'gzdoom-legacy')
 source=("gzdoom::git://github.com/coelckers/gzdoom.git#tag=g${pkgver}"
         'gzdoom.desktop'
         '0001-Fix-file-paths.patch')
