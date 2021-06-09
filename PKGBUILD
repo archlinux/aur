@@ -3,7 +3,7 @@
 pkgname=sphinxchat-appimage-git
 pkgver=r636.8159c4e
 pkgrel=1
-pkgdesc="Lightning wallet focused on user experience and ease of use"
+pkgdesc="The first platform that handles money and speech in the same protocol built on top of Bitcoin"
 arch=('x86_64')
 url="https://sphinx.chat/"
 license=('MIT')
