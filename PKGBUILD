@@ -1,6 +1,6 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail.com>
 pkgname=crowdin-cli-bin
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="Command line tool that allows you to manage and synchronize localization resources with your Crowdin project"
 url="https://support.crowdin.com/cli-tool/"
@@ -10,7 +10,7 @@ provides=("crowdin-cli=${pkgver}")
 conflicts=("crowdin-cli")
 arch=('x86_64')
 
-sha256sums=('c5a829bbad21e32590046be29eeba05fc7508eacd1de140c136a1d02b35d73db')
+sha256sums=('4c7e6b8277438208377f63fafc6661488e120d465ae72860da40ffeb4d0edaf4')
 
 source=(
 	"https://artifacts.crowdin.com/repo/rpm/crowdin3.rpm"
