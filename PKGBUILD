@@ -2,7 +2,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-ffmpeg-codecs
-pkgver=90.0.4430.212
+pkgver=91.0.4472.77
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera"
 arch=('x86_64')
@@ -11,13 +11,13 @@ license=('LGPL2.1')
 depends=('glibc')
 makedepends=(
   'gtk3' 'libexif' 'libxss' 'ninja' 'nss' 'pciutils' 'python' 'python2'
-  'xdg-utils' 'gn' 'libva'
+  'xdg-utils' 'gn' 'libva' 'nodejs'
 )
 options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
 )
-sha512sums=('7cd300d22725e3457b9e3347fb34d6f5728c91aa178d6960d4243bc80122c446890c2276334a01f9c81a43479339e9e266c3bbb040081a22c521b3c4250850f5')
+sha512sums=('06113c3627c1ccd390f078a52e0eaaf9c1d7178d568d6d2e37c96e1eb09fc0e872ac2b2d7ebe55e4da87eebee4965816bbba2f6ea53047f86cd5d0ad1d260a25')
 
 #prepare() {
   #cd "$srcdir/chromium-$pkgver"
@@ -29,6 +29,10 @@ build() {
   python tools/clang/scripts/update.py
 
   export PATH="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin:$PATH"
+
+  # Setup nodejs dependency.
+  mkdir -p third_party/node/linux/node-linux-x64/bin/
+  ln -sf /usr/bin/node third_party/node/linux/node-linux-x64/bin/node
 
   # error while loading shared libraries: libtinfo.so.5: cannot open shared object file: No such file or directory
   ln -s /usr/lib/libtinfo.so.6 \
