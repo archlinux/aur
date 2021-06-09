@@ -26,6 +26,8 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  sed '27a#include <limits>' -i bm3d/include/VBM3D_Final.h
 }
 
 build() {
