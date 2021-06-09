@@ -20,15 +20,13 @@ depends=('ftgl' 'cairomm' 'dbus-glib' 'freetype2' 'glibmm' 'gtkglext' 'gtkmm'
          'libpng' 'libsigc++' 'expat' 'boost-libs' 'graphviz' 'opencollada')
 optdepends=('aqsis: Rendering engine')
 makedepends=('boost' 'cmake' 'icoutils' 'gendesk' 'git'
-             'asciidoc' 'doxygen' 'libxslt' )
+             'asciidoc' 'doxygen' 'libxslt')
 provides=('k3d')
 conflicts=('k3d')
 
 if [[ $_k3d_python = ON ]]; then
   depends+=('boost-python2-libs' 'python2')
   makedepends+=('boost-python2')
-else
-  msg2 "Building without Python support"
 fi
 
 source=("git+https://github.com/K-3D/k3d.git"
@@ -37,12 +35,11 @@ source=("git+https://github.com/K-3D/k3d.git"
         # patches from fedora
         "https://src.fedoraproject.org/rpms/k3d/raw/f30/f/0102-Avoid-signed-unsigned-int-warning.patch"
         "https://src.fedoraproject.org/rpms/k3d/raw/f30/f/0103-Use-usr-bin-python2-instead-of-usr-bin-python.patch")
-[1m[34m  ->(B[m[1m Building without Python support(B[m
-md5sums=('SKIP'
-         '2018b7e8e1258aa0aa86494032b0a74a'
-         'e93406cc28c4ed55c9640c09d447c53d'
-         '341319b07392b21b56bc10a078627e7f'
-         'b08d2fc3e331f732623f6188be800949')
+sha256sums=('SKIP'
+            '5ffc7ede569bbd1b35bf6d66cec606c948fd34687fc65ab1d4c3d4c5c81cddc2'
+            'daedd5319c44fc773e1f1f41abb1f2950f0edab2f2d5978e23ecc46eaeef2318'
+            '7cdef0cac28ac183a5b2b1d41780ffa2902e3eb512a3941fa1a39acb46df9428'
+            '9e701b2f514aaf875c7b5ba0e1f55c73f5e3afb77dde3a6dccea5b2ebce96f1d')
 
 pkgver() {
   cd k3d
@@ -72,12 +69,17 @@ build() {
   mkdir -p k3d-build
   cd k3d-build
 
+  if [[ $_k3d_python != ON ]]; then
+    echo "==> Building without Python support"
+  fi
+
   # Debian sets the -frounding-math option
   export CFLAGS="$CFLAGS -frounding-math"
   export CXXFLAGS="$CXXFLAGS -frounding-math -DBOOST_BIND_GLOBAL_PLACEHOLDERS"
 
   # The cmake script finds a mix of imagmagick 6 and 7, specify 7 directly.
   # The python paths are given to sort out python 3.
+  # The openexr module does not compile anymore and is thus disabled.
   cmake ../k3d \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX=/usr \
@@ -89,6 +91,7 @@ build() {
       -DK3D_BUILD_NGUI_PYTHON_SHELL_MODULE=$_k3d_python \
       -DK3D_BUILD_PYTHON_MODULE=$_k3d_python \
       -DK3D_BUILD_PYUI_MODULE=$_k3d_python \
+      -DK3D_BUILD_OPENEXR_IO_MODULE=OFF \
       -DImageMagick_Magick++_ARCH_INCLUDE_DIR=/usr/include/ImageMagick-7 \
       -Wno-dev
 

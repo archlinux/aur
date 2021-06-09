@@ -40,7 +40,7 @@ pkgbase = k3d-git
 	depends = graphviz
 	depends = opencollada
 	optdepends = aqsis: Rendering engine
-	optdepends = boost-python2: python support
+	optdepends = boost-python2: Python support
 	provides = k3d
 	conflicts = k3d
 	source = git+https://github.com/K-3D/k3d.git
@@ -48,11 +48,10 @@ pkgbase = k3d-git
 	source = workaround.xml
 	source = https://src.fedoraproject.org/rpms/k3d/raw/f30/f/0102-Avoid-signed-unsigned-int-warning.patch
 	source = https://src.fedoraproject.org/rpms/k3d/raw/f30/f/0103-Use-usr-bin-python2-instead-of-usr-bin-python.patch
-	md5sums = SKIP
-	md5sums = af54b31d0aa00338d1a4b85d8343f327
-	md5sums = 8559903ac6fed3a1a757f8327eab7105
-	md5sums = 341319b07392b21b56bc10a078627e7f
-	md5sums = b08d2fc3e331f732623f6188be800949
+	sha256sums = SKIP
+	sha256sums = 5ffc7ede569bbd1b35bf6d66cec606c948fd34687fc65ab1d4c3d4c5c81cddc2
+	sha256sums = daedd5319c44fc773e1f1f41abb1f2950f0edab2f2d5978e23ecc46eaeef2318
+	sha256sums = 7cdef0cac28ac183a5b2b1d41780ffa2902e3eb512a3941fa1a39acb46df9428
+	sha256sums = 9e701b2f514aaf875c7b5ba0e1f55c73f5e3afb77dde3a6dccea5b2ebce96f1d
 
 pkgname = k3d-git
-
