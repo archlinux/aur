@@ -8,7 +8,7 @@ arch=('any')
 url="https://lczero.org/"
 license=('GPLv3')
 depends=('openblas' 'protobuf')
-makedepends=('git' 'meson>=0.46' 'ninja' 'clang' 'openblas-cblas-git')
+makedepends=('git' 'meson>=0.46' 'ninja' 'openblas-cblas-git')
 source=("${_pkgname}::git+https://github.com/LeelaChessZero/lc0.git#branch=master")
 md5sums=('SKIP')
 
@@ -25,7 +25,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    CC=clang CXX=clang++ ./build.sh release -Dopencl=false -Ddefault_library=static || return 1
+    CC=gcc CXX=g++ ./build.sh release -Dopencl=false -Ddefault_library=static || return 1
 }
 
 package() {
