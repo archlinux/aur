@@ -2,7 +2,7 @@
 
 pkgname=slides-git
 pkgver=0.1.1.r3.g5d89bf2
-pkgrel=1
+pkgrel=2
 pkgdesc='Terminal based presentation tool'
 arch=('x86_64')
 url="https://github.com/maaslalani/${pkgname%-git}"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
 source=("${pkgname%-git}::git+$url.git")
 sha256sums=('SKIP')
 
