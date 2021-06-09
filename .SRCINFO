@@ -1,5 +1,5 @@
 pkgbase = chatterino7
-	pkgdesc = Second installment of the Twitch chat client series "Chatterino", release appimage
+	pkgdesc = Chatterino2, with integrated support for the 7TV emote platform. forsenE
 	pkgver = 7.3.2
 	pkgrel = 1
 	url = https://chatterino.com
