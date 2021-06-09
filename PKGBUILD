@@ -29,16 +29,20 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/$pkgname/$pkgver-focal1/${pkgname}_${pkgver}.orig.tar.gz")
+source=("https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/$pkgname/$pkgver-groovy1/${pkgname}_${pkgver}.orig.tar.gz" "$pkgname.service")
 noextract=()
-sha256sums=('2957936408df32efc2c1a7ce896214e3683194b0f8e2fec5ef4ac7c33e142e4d')
+sha256sums=('2957936408df32efc2c1a7ce896214e3683194b0f8e2fec5ef4ac7c33e142e4d'
+            'cedcbee738273d11d597a3054a55da98fa45daa0c58cd70936be54f0eae956a4')
 validpgpkeys=()
 
 build() {
-        qmake PREFIX=/usr CONFIG+=production CONFIG-=debug CONFIG+=release CONFIG-=debug_and_release
+    qmake PREFIX=/usr CONFIG+=production
 	make
 }
 
 package() {
 	make INSTALL_ROOT="$pkgdir" install
+	
+	install -dm 755 "$pkgdir/usr/lib/systemd/system"
+    install -Dm 644 "$pkgname.service" "$pkgdir/usr/lib/systemd/system"
 }
