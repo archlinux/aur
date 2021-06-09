@@ -1,15 +1,15 @@
 pkgbase = cpp-ghc-filesystem
 	pkgdesc = ghc C++ header-only single-file std filesystem compatible helper library
-	pkgver = 1.5.2
-	pkgrel = 2
+	pkgver = 1.5.6
+	pkgrel = 1
 	url = https://github.com/gulrak/filesystem
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = gcc
 	depends = cmake
-	source = cpp-ghc-filesystem-1.5.2.tar.gz::https://github.com/gulrak/filesystem/archive/v1.5.2.tar.gz
-	md5sums = 2104e4da3a9be52f496b51fa3248df8d
+	source = cpp-ghc-filesystem-1.5.6.tar.gz::https://github.com/gulrak/filesystem/archive/v1.5.6.tar.gz
+	md5sums = 95b3b55c4f5e29f5915a1b21111e043f
 
 pkgname = cpp-ghc-filesystem
 
