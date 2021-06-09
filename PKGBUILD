@@ -22,6 +22,7 @@ build() {
 }
 
 # Can't add until a `go vet` issue is addressed.
+#   https://github.com/maaslalani/slides/issues/14
 #check() {
 #    cd $pkgname
 #    go test ./...
