@@ -1,0 +1,17 @@
+pkgbase = yang-lsp-git
+	pkgdesc = A Language Server for YANG
+	pkgver = r302275e
+	pkgrel = 1
+	url = https://github.com/theia-ide/yang-lsp
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = jdk11-openjdk
+	depends = bash
+	depends = java-runtime=11
+	provides = yang-lsp
+	conflicts = yang-lsp
+	source = git+https://github.com/theia-ide/yang-lsp.git#branch=dh-check-build
+	md5sums = SKIP
+
+pkgname = yang-lsp-git
