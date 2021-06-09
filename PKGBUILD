@@ -3,7 +3,7 @@
 pkgname=plasma5-applets-hoppla-sa-git
 _pkgname=plasma5-applets-hoppla-sa
 _gitpkgname=hoppla-sa
-pkgver=2.8.4.r0.g371268c
+pkgver=4.0.0.r0.g53de161
 pkgrel=1
 pkgdesc="Plasmoid for Plasma 5 for controlling Phillips Hue lights"
 arch=('any')
@@ -23,11 +23,11 @@ pkgver() {
 
 build() {
   cd "${_gitpkgname}"
-  
+
   mkdir -p build
   cd build
   rm -rf *
-  
+
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
@@ -37,6 +37,6 @@ build() {
 
 package() {
   cd "${_gitpkgname}"/build
-  
+
   make install DESTDIR="${pkgdir}"
 }
