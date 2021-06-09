@@ -37,12 +37,12 @@ build() {
 		# These will be removed if the build script detects arm architectures
 		ARM_EXCLUDE=("FluidSines"  "FluidBufSines" "FluidAudioTransport" "FluidBufAudioTransport" "FluidNoveltySlice"  "FluidBufNoveltySlice" "FluidTransients"  "FluidBufTransients" "FluidTransientSlice"  "FluidBufTransientSlice" "FluidNMFMorph")
 
-		if [ "$CARCH" != "x86_64" ]; then
+		if [ "$CARCH" == "x86_64" ]; then
+			cmake -DFLUID_PATH=$FLUCOMA_CORE -DSC_PATH=$SC_SRC -DCMAKE_INSTALL_PREFIX=$DEST ..
+		else
 			# Remove incompatible plugins on non x86 architectures
 			for PLUG in "${ARM_EXCLUDE[@]}"; do rm -rfv "src/$PLUG"; done
 			cmake -E env CXXFLAGS="-D__arm64=1 -fPIC" cmake -DFLUID_PATH=$FLUCOMA_CORE -DSC_PATH=$SC_SRC -DCMAKE_INSTALL_PREFIX=$DEST ..
-		else
-			cmake -DFLUID_PATH=$FLUCOMA_CORE -DSC_PATH=$SC_SRC -DCMAKE_INSTALL_PREFIX=$DEST ..
 		fi
 
 		make
