@@ -1,7 +1,7 @@
 # Maintainer: Arnaud Dovi <mr.dovi@gmail.com>
 
 pkgname=detect-it-easy-git
-pkgver=3.02.r1.aec057a
+pkgver=3.02.r8.bf4dfe4
 pkgrel=1
 pkgdesc='Detect It Easy, or abbreviated "DIE" is a program for determining types of files'
 arch=('x86_64')
@@ -64,14 +64,14 @@ build() {
 
   _subdirs="build_libs gui_source console_source"
 
-  # FIXME UPSTREAM: -Werror=format-security is causing build errors
-  export CFLAGS+=" -Wno-format-security"
-  export CXXFLAGS+=" -Wno-format-security"
+  # [DEPRECATED] FIXME UPSTREAM: -Werror=format-security is causing build errors (merged upstream)
+  #export CFLAGS+=" -Wno-format-security"
+  #export CXXFLAGS+=" -Wno-format-security"
 
   for _subdir in $_subdirs; do
     pushd "$_subdir" || return
     echo -e "${_prefix}${_prefix}Building $_subdir"
-    qmake-qt5 PREFIX=/usr QMAKE_CFLAGS="${CFLAGS}" QMAKE_CXXFLAGS="${QMAKE_CXXFLAGS}" QMAKE_LFLAGS="${LDFLAGS}" "$_subdir.pro"
+    qmake-qt5 PREFIX=/usr QMAKE_CFLAGS="${CFLAGS}" QMAKE_CXXFLAGS="${CXXFLAGS}" QMAKE_LFLAGS="${LDFLAGS}" "$_subdir.pro"
     make -f Makefile clean
     make -f Makefile
     popd || return
