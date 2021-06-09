@@ -2,8 +2,8 @@
 
 pkgname=nsfminer-cuda
 _pkgname=nsfminer
-pkgver=1.3.13
-pkgrel=2
+pkgver=1.3.14
+pkgrel=1
 pkgdesc='No Fee Ethash miner for AMD and Nvidia'
 url='https://github.com/no-fee-ethereum-mining/nsfminer'
 license=('GPL3')
@@ -12,16 +12,9 @@ depends=('cuda' 'opencl-mesa' 'mesa' 'ethash-lib')
 makedepends=('cmake')
 conflicts=('ethminer-cuda' 'nsfminer-cuda-opencl')
 provides=('nsfminer')
-source=(https://github.com/no-fee-ethereum-mining/$_pkgname/archive/refs/tags/v$pkgver.tar.gz
-        https://github.com/ethereum/cable/archive/refs/tags/v0.2.14.tar.gz)
-sha256sums=('a692628346301f7c3d56d19f50a973405dc0d2142a82a132d7c3367c9505f675'
-            'f7f0e042cfccb42fe9c432d85ec1ec1a7ded038f4ad23bc4bc26e6331870fbfc')
-
-prepare() {
-    rm -rf "$srcdir"/$_pkgname-$pkgver/cmake/cable
-    mv "$srcdir"/cable-0.2.14 "$srcdir"/$_pkgname-$pkgver/cmake/cable
-}
-            
+source=(https://github.com/no-fee-ethereum-mining/$_pkgname/archive/refs/tags/v$pkgver.tar.gz)
+sha256sums=('ca6452cb28f8f97b3648b34eb9375bdc48716c04374ec8ecc40377eb0af9096a')
+        
 build() {
     cmake \
         -B "$_pkgname-$pkgver"/build \
