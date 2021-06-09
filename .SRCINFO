@@ -1,7 +1,7 @@
 pkgbase = neovim-compe-git
 	pkgdesc = Autocompletion plugin for Neovim
-	pkgver = 2.0.0.r49.gc7cd3bf
-	pkgrel = 1
+	pkgver = 2.0.0.r56.gc459c3f
+	pkgrel = 2
 	url = https://github.com/hrsh7th/nvim-compe
 	install = neovim-compe-git.install
 	arch = any
@@ -15,4 +15,3 @@ pkgbase = neovim-compe-git
 	sha256sums = SKIP
 
 pkgname = neovim-compe-git
-

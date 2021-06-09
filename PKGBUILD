@@ -1,8 +1,8 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=neovim-compe-git
-pkgver=2.0.0.r49.gc7cd3bf
-pkgrel=1
+pkgver=2.0.0.r56.gc459c3f
+pkgrel=2
 pkgdesc="Autocompletion plugin for Neovim"
 arch=('any')
 url="https://github.com/hrsh7th/nvim-compe"
