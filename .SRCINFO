@@ -1,12 +1,13 @@
 pkgbase = moonlight-qt-git
 	pkgdesc = GameStream client for PCs (Windows, Mac, and Linux) (master branch)
-	pkgver = r891.212ed33
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://moonlight-stream.org
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = pkg-config
+	makedepends = discord-rpc-api
 	depends = qt5-base
 	depends = qt5-quickcontrols2
 	depends = qt5-svg
