@@ -14,8 +14,6 @@ source=("$pkgname::git+https://github.com/stakwork/sphinx-android.git"
        )
 sha256sums=('SKIP'
             '177d18eb86f34ff261557faa06d0d6f49ca18ee110a15ac8591ca7a34387f214')
-conflicts=("zap-desktop-bin")
-provides=("zap-desktop")
 options=(!strip)
 
 _appimage="Sphinx Chat-0.1.0.AppImage"
