@@ -8,7 +8,7 @@
 # Contributor: Tad Fisher <tadfisher at gmail dot com>
 
 pkgname=android-studio-canary
-pkgver=2021.1.1.1
+pkgver=2021.1.1.2
 pkgrel=1
 pkgdesc="The Official Android IDE (Canary branch)"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ optdepends=('gtk2: GTK+ look and feel'
 options=('!strip')
 source=("https://redirector.gvt1.com/edgedl/android/studio/ide-zips/$pkgver/android-studio-$pkgver-linux.tar.gz"
         "$pkgname.desktop")
-sha256sums=('954e25cb849f2b512109d88d7eea1f973d9412cd485469ca380171bfd0ac5b29'
+sha256sums=('b9291c3489d3ae38d2d1037dc96c4758ff034f490e867c7e81169a69ba269781'
             '60edb7937f6c0fd1ad724574ff3c63fa69cedd2fdfcedf788f39a443c76743b6')
 
 if [ "$CARCH" = "i686" ]; then
@@ -40,7 +40,7 @@ package() {
 
   # Install the application.
   install -d $pkgdir/{opt/$pkgname,usr/bin}
-  cp -a bin lib jre license plugins product-info.json build.txt LICENSE.txt NOTICE.txt $pkgdir/opt/$pkgname
+  cp -a bin lib jre license plugins product-info.json build.txt LICENSE.txt NOTICE.txt icons.db $pkgdir/opt/$pkgname
   ln -s /opt/$pkgname/bin/studio.sh $pkgdir/usr/bin/$pkgname
 
   # Add the icon and desktop file.
