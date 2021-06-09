@@ -4,8 +4,8 @@ validpgpkeys=('33ED753E14757D79FA17E57DC4C1F715B2B66B95')
 
 pkgname=llvm12-git
 pkgdesc="LLVM 12 Toolchain with clang, clang-tools-extra, compiler-rt, openmp, polly, lldb, lld"
-pkgver=12.0.1_rc1.g0826268d59c6
-pkgrel=2
+pkgver=12.0.1_rc1.g84e8b1cf07b9
+pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -50,6 +50,7 @@ options=('staticlibs')
 _extra_build_flags=""
 _build_documentation=0
 _build_tests=0
+_build_bindings=0
 
 pkgver() {
 
@@ -135,7 +136,6 @@ build() {
     esac
   done
 
-  yn=0
   while true; do
     echo -ne "\n\E[1;33mSkip build tests? [Y/n] \E[0m"
     read -r yn
@@ -154,7 +154,6 @@ build() {
     esac
   done
 
-  yn=0
   while true; do
     echo -ne "\n\E[1;33mSkip build documentation? [Y/n] \E[0m"
     read -r yn
@@ -173,6 +172,23 @@ build() {
     esac
   done
 
+  while true; do
+    echo -ne "\n\E[1;33mSkip build OCaml and Go bindings? [Y/n] \E[0m"
+    read -r yn
+    case ${yn} in
+    [Yy] | "")
+      _build_bindings=0
+      _extra_build_flags="${_extra_build_flags} -DLLVM_ENABLE_BINDINGS=OFF"
+      break
+      ;;
+    [Nn])
+      _build_bindings=1
+      break
+      ;;
+    *) echo -e "\E[1;31mPlease answer Y or N! \E[0m" ;;
+    esac
+  done
+
   cmake -S llvm -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -183,7 +199,7 @@ build() {
     -DLLVM_INSTALL_UTILS=ON \
     -DLLVM_ENABLE_RTTI=ON \
     -DLLVM_ENABLE_FFI=ON \
-    -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;polly;compiler-rt;lldb;lld;openmp" \
+    -DLLVM_ENABLE_PROJECTS="polly;lldb;lld;compiler-rt;openmp;clang-tools-extra;clang" \
     -DCLANG_LINK_CLANG_DYLIB=ON \
     -DLLDB_USE_SYSTEM_SIX=1 \
     -DLIBOMP_INSTALL_ALIASES=OFF \
@@ -193,7 +209,7 @@ build() {
 
   ninja -C build "${NINJAFLAGS}"
 
-  if [[ _build_documentation -eq 1 ]]; then
+  if [[ _build_documentation -eq 1 && _build_bindings -ne 0 ]]; then
     ninja -C build "${NINJAFLAGS}" ocaml_doc
   fi
 
