@@ -18,4 +18,3 @@ pkgbase = mingw-w64-assimp
 	sha256sums = 986af7dda8625e6d9cbea787dcdab57fd1e00f8d171c76acece7187a032ca46c
 
 pkgname = mingw-w64-assimp
-
