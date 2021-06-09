@@ -68,12 +68,12 @@ pkgbase = webkit2gtk-wpe-bin
 	conflicts = libjavascriptcoregtk-4.0.so
 	conflicts = libwebkit2gtk-4.0.so
 	source_aarch64 = webkit2gtk-wpe-bin-aarch64::https://webreflection.github.io/aur/webkit2gtk-wpe-bin-aarch64-2.32.1.tar.gz
-	sha256sums_aarch64 = 174db6ad81163e3c63f38218d1e6065b10511b89aeefac5ee3b4bfdb8cc83ca9
+	sha256sums_aarch64 = fef1e009bb50dbdeed8a5ce038970776b4eb2b7e428ffdf518ef52ab262f12e8
 	source_armv7h = webkit2gtk-wpe-bin-armv7h::https://webreflection.github.io/aur/webkit2gtk-wpe-bin-armv7l-2.32.1.tar.gz
-	sha256sums_armv7h = 2fc2c5a4285513226b6458455376df44da9294d76fecd2d9462a8463751a193e
+	sha256sums_armv7h = 67c32456a3a4951c8a5ff3e6d10a7c39aa51f670a8f6c27a5561871b97180919
 	source_armv7l = webkit2gtk-wpe-bin-armv7l::https://webreflection.github.io/aur/webkit2gtk-wpe-bin-armv7l-2.32.1.tar.gz
-	sha256sums_armv7l = 2fc2c5a4285513226b6458455376df44da9294d76fecd2d9462a8463751a193e
+	sha256sums_armv7l = 67c32456a3a4951c8a5ff3e6d10a7c39aa51f670a8f6c27a5561871b97180919
 	source_x86_64 = webkit2gtk-wpe-bin-x86::https://webreflection.github.io/aur/webkit2gtk-wpe-bin-x86_64-2.32.1.tar.gz
-	sha256sums_x86_64 = 06d97cac9e6de859b9ad945c850324abbdb54b7699fe91998da26716ee079ede
+	sha256sums_x86_64 = 38c971cb4af94677a0511baef320ba9307450133ae8257a317e386793171d757
 
 pkgname = webkit2gtk-wpe-bin
