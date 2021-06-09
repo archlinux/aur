@@ -9,8 +9,6 @@ pkgbase = linux-apfs-rw-dkms-git
 	makedepends = git
 	depends = dkms
 	source = git+https://github.com/linux-apfs/linux-apfs-rw.git
-	source = dkms_module_name.patch
 	sha256sums = SKIP
-	sha256sums = 4890c2589d30ca88fbf782a7bc101853ed51d939272c2f466e27bc56f54dded4
 
 pkgname = linux-apfs-rw-dkms-git

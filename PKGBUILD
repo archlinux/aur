@@ -15,19 +15,12 @@ url="https://github.com/linux-apfs/linux-apfs-rw"
 license=('GPL2')
 depends=('dkms')
 makedepends=('git')
-source=("git+${url}.git"
-	'dkms_module_name.patch')
-sha256sums=('SKIP'
-	    '4890c2589d30ca88fbf782a7bc101853ed51d939272c2f466e27bc56f54dded4')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd linux-apfs-rw
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "${srcdir}/linux-apfs-rw"
-    patch --forward --strip=1 --input="${srcdir}/dkms_module_name.patch"
 }
 
 package() {
