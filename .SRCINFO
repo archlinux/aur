@@ -1,11 +1,13 @@
 pkgbase = slides
 	pkgdesc = Terminal based presentation tool
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maaslalani/slides
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	makedepends = git
+	depends = glibc
 	source = slides::git+https://github.com/maaslalani/slides.git#tag=v0.1.1
 	sha256sums = SKIP
 

@@ -2,12 +2,13 @@
 
 pkgname=slides
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Terminal based presentation tool'
 arch=('x86_64')
 url="https://github.com/maaslalani/$pkgname"
 license=('MIT')
-makedepends=('go')
+depends=('glibc')
+makedepends=('go' 'git')
 source=("$pkgname::git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
