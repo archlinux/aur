@@ -2,7 +2,7 @@
 
 _plug=dpid
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r3.10.g53194f1
+pkgver=r4.10.g9eda70b
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -12,6 +12,7 @@ depends=('vapoursynth'
          'cuda'
          )
 makedepends=('git'
+             'meson'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -23,12 +24,21 @@ pkgver() {
   echo "$(git describe --long --tags | tr - .)"
 }
 
+prepare() {
+  mkdir -p build
+
+}
+
 build() {
-  make -C "${_plug}/Source"
+  cd build
+  arch-meson "../${_plug}/Source" \
+    --libdir /usr/lib/vapoursynth
+
+  ninja
 }
 
 package(){
-  make -C "${_plug}/Source" PREFIX="${pkgdir}/usr/lib/vapoursynth" install
+  DESTDIR="${pkgdir}" ninja -C build install
 
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
