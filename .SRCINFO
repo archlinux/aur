@@ -1,0 +1,31 @@
+pkgbase = python-mkdocs
+	pkgdesc = Project documentation with Markdown
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://www.mkdocs.org
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-babel
+	depends = python-click
+	depends = python-ghp-import
+	depends = python-jinja
+	depends = python-importlib-metadata
+	depends = python-livereload
+	depends = python-markdown
+	depends = python-markupsafe
+	depends = python-mergedeep
+	depends = python-mdx-gh-links
+	depends = python-packaging
+	depends = python-yaml
+	depends = python-watchdog
+	optdepends = python-lunr: to prebuild search index
+	provides = mkdocs
+	conflicts = mkdocs
+	replaces = mkdocs
+	source = https://github.com/mkdocs/mkdocs/archive/refs/tags/1.2.1.tar.gz
+	sha256sums = 4b134ce568f5c6b5ffa80f432b9e7f548a3f33b5fb8033257eb15d17655c22a3
+
+pkgname = python-mkdocs
+
