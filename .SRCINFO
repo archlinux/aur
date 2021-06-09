@@ -1,6 +1,6 @@
 pkgbase = vale
 	pkgdesc = A customizable, syntax-aware linter for prose
-	pkgver = 2.10.0
+	pkgver = 2.10.3
 	pkgrel = 1
 	url = https://github.com/errata-ai/vale
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = vale
 	makedepends = go
 	makedepends = go-bindata
 	makedepends = rsync
-	source = vale-2.10.0.tar.gz::https://github.com/errata-ai/vale/archive/v2.10.0.tar.gz
-	sha256sums = 9f581c1cb13d87e9591bff6983e10f286b6ca248e7cd82cb74c5df1d732d3364
+	source = vale-2.10.3.tar.gz::https://github.com/errata-ai/vale/archive/v2.10.3.tar.gz
+	sha256sums = db5e23fa5356f409c4b09fb37ad13985e404f4a4ad216a5e1b659d72322610c0
 
 pkgname = vale
 
