@@ -1,0 +1,13 @@
+pkgbase = lie
+	pkgdesc = A computer algebra package for Lie group computations
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = http://wwwmathlabo.univ-poitiers.fr/~maavl/LiE/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = cwebx
+	source = http://wwwmathlabo.univ-poitiers.fr/~maavl/LiE/LiE.tar.gz
+	md5sums = 10d36319c4177ae2f054dcaea6edf705
+
+pkgname = lie
