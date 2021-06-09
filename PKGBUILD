@@ -5,28 +5,44 @@ url='https://moveit.ros.org'
 pkgname='ros-melodic-moveit-ros-planning'
 pkgver='1.0.8'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
-ros_makedepends=(ros-melodic-moveit-core
-  ros-melodic-pluginlib
-  ros-melodic-dynamic-reconfigure
-  ros-melodic-moveit-ros-perception
+ros_makedepends=(
   ros-melodic-actionlib
   ros-melodic-angles
+  ros-melodic-catkin
   ros-melodic-chomp-motion-planner
-  ros-melodic-catkin)
+  ros-melodic-dynamic-reconfigure
+  ros-melodic-moveit-core
+  ros-melodic-moveit-msgs
+  ros-melodic-moveit-ros-occupancy-map-monitor
+  ros-melodic-pluginlib
+  ros-melodic-tf2
+  ros-melodic-tf2-eigen
+  ros-melodic-tf2-geometry-msgs
+  ros-melodic-tf2-msgs
+  ros-melodic-tf2-ros
+  )
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   eigen)
 
-ros_depends=(ros-melodic-moveit-core
-  ros-melodic-pluginlib
-  ros-melodic-dynamic-reconfigure
-  ros-melodic-moveit-ros-perception
+ros_depends=(
   ros-melodic-actionlib
+  ros-melodic-angles
   ros-melodic-chomp-motion-planner
-  ros-melodic-angles)
+  ros-melodic-dynamic-reconfigure
+  ros-melodic-moveit-core
+  ros-melodic-moveit-msgs
+  ros-melodic-moveit-ros-occupancy-map-monitor
+  ros-melodic-pluginlib
+  ros-melodic-tf2
+  ros-melodic-tf2-eigen
+  ros-melodic-tf2-geometry-msgs
+  ros-melodic-tf2-msgs
+  ros-melodic-tf2-ros
+  )
 depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
