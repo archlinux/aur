@@ -1,15 +1,14 @@
 pkgbase = python-django-prometheus
 	pkgdesc = Export Django monitoring metrics for Prometheus.io
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/korfuri/django-prometheus
 	arch = any
-	license = apache-2.0
+	license = Apache
 	makedepends = python-setuptools
-	depends = python
+	makedepends = python-pip
 	depends = python-django
 	source = https://files.pythonhosted.org/packages/source/d/django-prometheus/django-prometheus-2.1.0.tar.gz
 	md5sums = 088d85f344de189989748cd790918ebc
 
 pkgname = python-django-prometheus
-
