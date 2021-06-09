@@ -5,25 +5,33 @@ url='https://moveit.ros.org'
 pkgname='ros-melodic-moveit-ros-perception'
 pkgver='1.0.8'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
-ros_makedepends=(ros-melodic-message-filters
+ros_makedepends=(
+  ros-melodic-catkin
+  ros-melodic-cv-bridge
+  ros-melodic-image-transport
+  ros-melodic-message-filters
   ros-melodic-moveit-core
   ros-melodic-moveit-msgs
   ros-melodic-moveit-ros-occupancy-map-monitor
-  ros-melodic-tf
-  ros-melodic-cv-bridge
-  ros-melodic-urdf
-  ros-melodic-pluginlib
-  ros-melodic-roscpp
+  ros-melodic-moveit-ros-planning
+  ros-melodic-nodelet
+  ros-melodic-object-recognition-msgs
   ros-melodic-octomap
-  ros-melodic-sensor-msgs
-  ros-melodic-image-transport
-  ros-melodic-tf-conversions
-  ros-melodic-tf2-geometry-msgs
+  ros-melodic-pluginlib
   ros-melodic-rosconsole
-  ros-melodic-catkin)
+  ros-melodic-roscpp
+  ros-melodic-sensor-msgs
+  ros-melodic-tf
+  ros-melodic-tf-conversions
+  ros-melodic-tf2
+  ros-melodic-tf2-eigen
+  ros-melodic-tf2-geometry-msgs
+  ros-melodic-tf2-ros
+  ros-melodic-urdf
+  )
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   glut
@@ -31,21 +39,29 @@ makedepends=('cmake' 'ros-build-tools'
   eigen
   glew)
 
-ros_depends=(ros-melodic-message-filters
+ros_depends=(
+  ros-melodic-cv-bridge
+  ros-melodic-image-transport
+  ros-melodic-message-filters
   ros-melodic-moveit-core
   ros-melodic-moveit-msgs
   ros-melodic-moveit-ros-occupancy-map-monitor
-  ros-melodic-tf
-  ros-melodic-cv-bridge
-  ros-melodic-urdf
-  ros-melodic-pluginlib
-  ros-melodic-roscpp
+  ros-melodic-moveit-ros-planning
+  ros-melodic-nodelet
+  ros-melodic-object-recognition-msgs
   ros-melodic-octomap
+  ros-melodic-pluginlib
+  ros-melodic-rosconsole
+  ros-melodic-roscpp
   ros-melodic-sensor-msgs
-  ros-melodic-image-transport
+  ros-melodic-tf
   ros-melodic-tf-conversions
+  ros-melodic-tf2
+  ros-melodic-tf2-eigen
   ros-melodic-tf2-geometry-msgs
-  ros-melodic-rosconsole)
+  ros-melodic-tf2-ros
+  ros-melodic-urdf
+  )
 depends=(${ros_depends[@]}
   glut
   glew
