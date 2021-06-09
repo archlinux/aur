@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='python-ecos'
 _module='ecos-python'
-pkgver='2.0.7'
+pkgver='2.0.8'
 pkgrel=1
 pkgdesc="Python interface for ECOS."
 url="https://github.com/embotech/ecos-python"
@@ -15,7 +15,7 @@ license=('GPL3')
 arch=('x86_64')
 source=("https://github.com/embotech/ecos-python/archive/${pkgver}.tar.gz"
     "use_external_ecos.patch")
-sha256sums=('5cec19d5647b2bf8f07c7c06c7005d2113c44a911dd7832a4955b228af19982c'
+sha256sums=('4715d97fa728c1446e2a68a3009f73325c79c509b25ad745d3756a397193d884'
             'c929cbe71cf8a109a66cbc681c6c501c42517b44e63f88440c36e5c7ca9e3be9')
 
 prepare() {
