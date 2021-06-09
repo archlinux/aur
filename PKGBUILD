@@ -3,13 +3,14 @@
 
 pkgname=openrdate
 pkgver=1.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Set the system's date from a remote host"
 arch=('i686' 'x86_64' 'arm' 'armv6h')
 url="https://github.com/resurrecting-open-source-projects/openrdate"
 license=('BSD')
 depends=('libbsd')
 makedepends=('autoconf' 'automake')
+conflicts=('rdate')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('8a29eed664e1ba3f628ac16227da2f872d595ddf0be2daee23fbc9da7fc7846a')
 
