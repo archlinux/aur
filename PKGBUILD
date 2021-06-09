@@ -1,24 +1,26 @@
 # Maintainer: Florijan Hamzic <florijanh at gmail dot com>
-_pypi_name='WeasyPrint'
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+
+_pypi_name=WeasyPrint
+pkgname=python-${_pypi_name,,}
 pkgver=52.5
-pkgrel=2
-pkgdesc="Converts web documents (HTML, CSS, SVG, ...) to PDF."
+pkgrel=3
+pkgdesc='Convert web documents (HTML, CSS, SVG, ...) to PDF'
 license=('BSD')
 arch=('any')
-url="http://weasyprint.org/"
-makedepends=('python' 'python-distribute' 'python-pip')
-depends=('python' 'pango>=1.29.3' 'gdk-pixbuf2>=2.25' 'cairo>=1.15.4'
-         'python-cairo' 'python-cairosvg'
-         'python-tinycss2' 'python-cssselect2>=0.1' 'python-html5lib'
-         'python-cffi' 'python-cairocffi' 'python-pyphen' 'python-xcffib')
+url='http://weasyprint.org'
+_py_deps=(cairo cairocffi cairosvg cffi cssselect2 html5lib pillow pyphen pytest-runner tinycss2)
+depends=(python "${_py_deps[@]/#/python-}")
+makedepends=(python-setuptools)
+source=("https://files.pythonhosted.org/packages/source/${_pypi_name::1}/$_pypi_name/$_pypi_name-$pkgver.tar.gz")
+sha256sums=('b37ea02d75ca04babd7becad7341426be332ae560d8f02d664bfa1e9afb18481')
 
-pkgname="python-weasyprint"
-_pypi_name_inital=$(echo ${_pypi_name}|cut -c1)
-source=("https://github.com/Kozea/WeasyPrint/archive/v${pkgver}.tar.gz")
-md5sums=('dae9e7b3d0d48312669050593d504e12')
-
+build() {
+    cd "$_pypi_name-$pkgver"
+    python setup.py build
+}
 
 package() {
-  cd "$srcdir/WeasyPrint-$pkgver"
-  python3 setup.py install --root="$pkgdir/" --optimize=1
+    cd "$_pypi_name-$pkgver"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
