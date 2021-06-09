@@ -4,8 +4,8 @@ pkgname=("pivx-daemon" "pivx-cli" "pivx-qt" "pivx-sapling-params")
 pkgbase=pivx
 _pkgbase=${pkgbase^^}
 pkgver=5.1.0
-pkgrel=1
-arch=("i686" "x86_64" "aarch64")
+pkgrel=2
+arch=("i686" "x86_64" "armv7h")
 url="https://pivx.org/"
 #depends=("boost-libs")
 pkgdesc="Transactional security and privacy-focused decentralized open source cryptocurrency "
@@ -13,11 +13,11 @@ license=("MIT")
 source=("https://github.com/PIVX-Project/PIVX/archive/v$pkgver.tar.gz")
 source_i686=("https://github.com/PIVX-Project/PIVX/releases/download/v$pkgver/pivx-$pkgver-i686-linux-gnu.tar.gz")
 source_x86_64=("https://github.com/PIVX-Project/PIVX/releases/download/v$pkgver/pivx-$pkgver-x86_64-linux-gnu.tar.gz")
-source_aarch64=("https://github.com/PIVX-Project/PIVX/releases/download/v$pkgver/pivx-$pkgver-aarch64-linux-gnu.tar.gz")
+source_armv7h=("https://github.com/PIVX-Project/PIVX/releases/download/v$pkgver/pivx-$pkgver-arm-linux-gnueabihf.tar.gz")
 sha256sums=("b3bf1a086187836c671363bebae72dfa58ebb20cd470d13188be737c1aab4d58")
 sha256sums_i686=("a81dcec8103a2cfbe3b0a71aea6234b51f38a78dac9b3875d1de10949beabf2e")
 sha256sums_x86_64=("bf2585b658f9272973d273f4682ad5090b8606705c0a8755d4094ae6f79e81ad")
-sha256sums_aarch64=("82976a92eb973691c4fec13993d43bf9682bd170de1fed7eba1bc178fc3de893")
+sha256sums_armv7h=("08e56c36fa45d07edcb1cc851c6fe3d72fd84d3898e25d7f9d4d9d69b800918a")
 
 package_pivx-daemon() {
   pkgdesc+="(daemon)"
@@ -26,12 +26,12 @@ package_pivx-daemon() {
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
   install -Dm755 "bin/pivxd"				"${pkgdir}/usr/bin/pivxd"
-  install -Dm644 "doc/man/pivxd.1"			"${pkgdir}/usr/share/man/man1/pivxd.1"
 
   cd "${srcdir}/${_pkgbase}-${pkgver}"
-  install -Dm644 "contrib/init/pivxd.service"		"${pkgdir}/usr/lib/systemd/system/pivxd.service"
-  install -Dm644 "contrib/debian/examples/pivx.conf"	"${pkgdir}/usr/share/doc/${pkgname}/examples/pivx.conf"
   install -Dm644 "COPYING"				"${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 "contrib/debian/examples/pivx.conf"	"${pkgdir}/usr/share/doc/${pkgname}/examples/pivx.conf"
+  install -Dm644 "contrib/init/pivxd.service"		"${pkgdir}/usr/lib/systemd/system/pivxd.service"
+  install -Dm644 "doc/man/pivxd.1"			"${pkgdir}/usr/share/man/man1/pivxd.1"
 }
 
 package_pivx-cli() {

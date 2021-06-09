@@ -1,11 +1,11 @@
 pkgbase = pivx
 	pkgdesc = Transactional security and privacy-focused decentralized open source cryptocurrency
 	pkgver = 5.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pivx.org/
 	arch = i686
 	arch = x86_64
-	arch = aarch64
+	arch = armv7h
 	license = MIT
 	source = https://github.com/PIVX-Project/PIVX/archive/v5.1.0.tar.gz
 	sha256sums = b3bf1a086187836c671363bebae72dfa58ebb20cd470d13188be737c1aab4d58
@@ -13,8 +13,8 @@ pkgbase = pivx
 	sha256sums_i686 = a81dcec8103a2cfbe3b0a71aea6234b51f38a78dac9b3875d1de10949beabf2e
 	source_x86_64 = https://github.com/PIVX-Project/PIVX/releases/download/v5.1.0/pivx-5.1.0-x86_64-linux-gnu.tar.gz
 	sha256sums_x86_64 = bf2585b658f9272973d273f4682ad5090b8606705c0a8755d4094ae6f79e81ad
-	source_aarch64 = https://github.com/PIVX-Project/PIVX/releases/download/v5.1.0/pivx-5.1.0-aarch64-linux-gnu.tar.gz
-	sha256sums_aarch64 = 82976a92eb973691c4fec13993d43bf9682bd170de1fed7eba1bc178fc3de893
+	source_armv7h = https://github.com/PIVX-Project/PIVX/releases/download/v$pkgver/pivx-$pkgver-arm-linux-gnueabihf.tar.gz
+	sha256sums_arm7h = 08e56c36fa45d07edcb1cc851c6fe3d72fd84d3898e25d7f9d4d9d69b800918a
 
 pkgname = pivx-daemon
 	pkgdesc = Transactional security and privacy-focused decentralized open source cryptocurrency (daemon)
