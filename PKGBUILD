@@ -3,25 +3,25 @@
 
 pkgname=azpainter
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Painting software'
 arch=('i686' 'x86_64')
 url='http://azsky2.html.xdomain.jp/soft/azpainter.html'
 license=('GPL3')
 depends=('hicolor-icon-theme' 'fontconfig' 'libjpeg-turbo' 'libxi' 'libxcursor' 'libwebp')
 options=('!makeflags')
-source=(http://azsky2.html.xdomain.jp/arc/azpainter-3.0.1.tar.xz)
-sha256sums=('990658c5ac54b08c14796d593a870f8d26c27d13b8a8c7224a4e0c7ff0182a37')
+source=("https://gitlab.com/azelpg/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
+sha256sums=('0ab0e21bf2d62b60f3448436fb3441c2ca8e022a92eef5c63fdef116799dcedc')
 
 
 build() {
-    cd ${pkgname}-${pkgver}
+    cd ${pkgname}-v${pkgver}
     ./configure --prefix=/usr
     make
 }
 
 package() {
-    cd ${pkgname}-${pkgver}
+    cd ${pkgname}-v${pkgver}
     make DESTDIR=${pkgdir} install
 }
 
