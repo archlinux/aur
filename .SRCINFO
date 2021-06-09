@@ -1,0 +1,19 @@
+pkgbase = bart
+	pkgdesc = Berkeley Advanced Reconstruction Toolbox (BART) for Computational Magnetic Resonance Imaging
+	pkgver = 0.7.00
+	pkgrel = 1
+	url = https://mrirecon.github.io/bart/
+	arch = x86_64
+	license = BSD
+	depends = gcc10
+	depends = gcc10-libs
+	depends = openblas-lapack
+	depends = fftw
+	depends = libpng
+	optdepends = octave
+	optdepends = python3
+	conflicts = bart-git
+	source = https://github.com/mrirecon/bart/archive/refs/tags/v0.7.00.tar.gz
+	sha512sums = 53eec57f1e81d7d8cecfcca4828b28fedb8ae8fd1e38de652b9c8263309c74726d36e18ec683d511e11047d711903541ce1784051f79b9e00cc07ee29381c642
+
+pkgname = bart
