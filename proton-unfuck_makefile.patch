@@ -1,5 +1,5 @@
 diff --git a/build/makefile_base.mak b/build/makefile_base.mak
-index 954236e..e4993a1 100755
+index 965baf0..e4993a1 100755
 --- a/build/makefile_base.mak
 +++ b/build/makefile_base.mak
 @@ -48,7 +48,6 @@ include $(SRC)/make/rules-cargo.mk
@@ -14,7 +14,7 @@ index 954236e..e4993a1 100755
  endif
  
  CROSSLDFLAGS   += -Wl,--file-alignment,4096
--OPTIMIZE_FLAGS := -O2 -march=native -mtune=core-avx2 -mfpmath=sse
+-OPTIMIZE_FLAGS := -O2 -march=nocona -mtune=core-avx2 -mfpmath=sse
 +CFLAGS         ?= -O2 -march=nocona -mtune=core-avx2
 +OPTIMIZE_FLAGS := $(CFLAGS) -mfpmath=sse
  SANITY_FLAGS   := -fwrapv -fno-strict-aliasing
