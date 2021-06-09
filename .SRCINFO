@@ -1,6 +1,6 @@
 pkgbase = appimage-thumbnailer-git
 	pkgdesc = AppImage thumbnailer for file-managers like nautilus, nemo, etc
-	pkgver = 5.a05716f
+	pkgver = 6.f736e8f
 	pkgrel = 1
 	url = https://github.com/realmazharhussain/appimage-thumbnailer
 	arch = any

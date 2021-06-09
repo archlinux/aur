@@ -1,6 +1,6 @@
 # Maintainer: Mazhar Hussain <mmazharhussainkgb1145@gmail.com>
 pkgname=appimage-thumbnailer-git
-pkgver=5.a05716f
+pkgver=6.f736e8f
 pkgrel=1
 pkgdesc="AppImage thumbnailer for file-managers like nautilus, nemo, etc"
 arch=(any)
