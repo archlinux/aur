@@ -1,7 +1,7 @@
 pkgbase = system-bridge
 	pkgdesc = A bridge for your systems.
 	pkgver = 1.7.2
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/timmo001/system-bridge
 	arch = any

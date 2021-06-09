@@ -1,7 +1,7 @@
 # Maintainer: Gleb Sinyavskiy <zhulik.gleb@gmail.com>
 pkgname=system-bridge
 pkgver=1.7.2
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="A bridge for your systems."
 arch=('any')
@@ -28,7 +28,7 @@ package() {
 	mkdir -p "$pkgdir/opt"
 
 	cp -r "$pkgname-$pkgver/out/$pkgname-linux-x64" "$pkgdir/opt/$pkgname"
-	chmod -R 755 "/opt/$pkgname"
+	chmod -R 755 "$pkgdir/opt/$pkgname"
 	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 
 	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
