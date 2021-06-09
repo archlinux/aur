@@ -8,7 +8,7 @@ pkgdesc="Cube Analysis and Rendering Tool for Astronomy"
 arch=('x86_64')
 url="https://cartavis.github.io"
 license=('GPL3')
-depends=('zlib' 'hicolor-icon-theme' 'electron' 'libidn11' 'rtmpdump')
+depends=('zlib' 'hicolor-icon-theme' 'libidn11' 'rtmpdump')
 options=(!strip)
 _appimage="CARTA-v2.0-ubuntu.AppImage"
 source_x86_64=("${pkgname}-v${pkgver}.tgz::https://github.com/CARTAvis/carta/releases/download/v${pkgver}/CARTA-v${pkgver}-ubuntu.tgz"
@@ -33,7 +33,7 @@ build() {
 
 package() {
     # AppImage
-    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}-v${pkgver}-ubuntu.AppImage"
+    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/opt/${pkgname}/LICENSE"
 
     # Desktop file
