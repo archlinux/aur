@@ -44,12 +44,10 @@ check() {
 }
 
 package() {
-  install -Dm644 "${srcdir}/matchbox.sysusers" "${pkgdir}/usr/lib/sysusers.d/$pkgname.conf"
+  cd "${pkgname}-${pkgver}"
   mkdir -p "${pkgdir}"/var/lib/matchbox/assets
 
-  cd "${pkgname}-${pkgver}"
-  ls contrib/systemd/
-
+  install -Dm644 "${srcdir}/matchbox.sysusers" "${pkgdir}/usr/lib/sysusers.d/$pkgname.conf"
   install -Dm644 "contrib/systemd/matchbox.service" "$pkgdir/usr/lib/systemd/system/matchbox.service"
   install -Dm755 "build/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
