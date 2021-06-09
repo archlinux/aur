@@ -1,6 +1,6 @@
 pkgbase = r-devtools
 	pkgdesc = Tools to Make Developing R Packages Easier
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=devtools
 	arch = any
@@ -43,8 +43,7 @@ pkgbase = r-devtools
 	optdepends = r-rhub
 	optdepends = r-rmarkdown
 	optdepends = r-spelling
-	source = https://cran.r-project.org/src/contrib/devtools_2.4.1.tar.gz
-	sha256sums = 062ac64a18144bafe634a9470c23fa2663583108910c4e91f718eaf307bca449
+	source = https://cran.r-project.org/src/contrib/devtools_2.4.2.tar.gz
+	sha256sums = 71f0a55054d293fb553702b21b91941bc5c83a933610fad6f9662bf0a6178f05
 
 pkgname = r-devtools
-
