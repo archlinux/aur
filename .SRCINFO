@@ -1,0 +1,14 @@
+pkgbase = slides-bin
+	pkgdesc = Terminal based presentation tool
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/maaslalani/slides
+	arch = x86_64
+	license = MIT
+	provides = slides
+	conflicts = slides
+	conflicts = slides-git
+	source = https://github.com/maaslalani/slides/releases/download/v0.1.1/slides_0.1.1_linux_amd64.tar.gz
+	sha256sums = 25d000c48bb63481f18656349411f293c2693ad2e6514aacd1f539c8c227b4c9
+
+pkgname = slides-bin
