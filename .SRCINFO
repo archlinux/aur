@@ -1,6 +1,6 @@
 pkgbase = vircadia-appimage
 	pkgdesc = An open-source 3D interface and server foundation that allows for vast social & educational platforms to be created and lived in while also being shared in real-time with others.
-	pkgver = 2021.1.1
+	pkgver = 2021.1.2
 	pkgrel = 1
 	url = https://vircadia.com/
 	arch = x86_64
@@ -8,10 +8,9 @@ pkgbase = vircadia-appimage
 	depends = zlib
 	depends = hicolor-icon-theme
 	depends = fuse
-	noextract = vircadia-appimage-2021.1.1.AppImage
+	noextract = vircadia-appimage-2021.1.2.AppImage
 	options = !strip
-	source_x86_64 = vircadia-appimage-2021.1.1.AppImage::https://cdn.vircadia.com/dist/release/Vircadia-2021.1.1-Eos.AppImage
-	sha256sums_x86_64 = 7f77b5f963d2e44a2a9afe590286bd9fd608bcfbd838bf137c321051848cd4e3
+	source_x86_64 = vircadia-appimage-2021.1.2.AppImage::https://cdn.vircadia.com/dist/release/Vircadia-x86_64_v2021.1.2-Eos.AppImage
+	sha256sums_x86_64 = bbb17dd56809351d28c1a1fcfdd011df29219eb6de8de52ece71e9ea4dd2d0f8
 
 pkgname = vircadia-appimage
-

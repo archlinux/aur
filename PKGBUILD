@@ -2,9 +2,9 @@
 # Maintainer: Adam Cassedy <adam.cass@pm.me>
 
 _pkgname=Vircadia
-_pkgver=2021.1.1-Eos
+_pkgver=x86_64_v2021.1.2-Eos
 pkgname=vircadia-appimage
-pkgver=2021.1.1
+pkgver=2021.1.2
 pkgrel=1
 pkgdesc="An open-source 3D interface and server foundation that allows for vast social & \
 educational platforms to be created and lived in while also being shared in real-time with others."
@@ -16,7 +16,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://cdn.vircadia.com/dist/release/${_pkgname}-${_pkgver}.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('7f77b5f963d2e44a2a9afe590286bd9fd608bcfbd838bf137c321051848cd4e3')
+sha256sums_x86_64=('bbb17dd56809351d28c1a1fcfdd011df29219eb6de8de52ece71e9ea4dd2d0f8')
 
 prepare() {
     chmod +x "${_appimage}"
