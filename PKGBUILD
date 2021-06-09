@@ -1,20 +1,21 @@
-# Maintainer: Chiu-Hsiang Hsu <wdv4758h at gmail.com>
+# Maintainer: BrLi <brli chakralinux org>
 # Contributor: HIME team
 _pkgname=hime
 pkgname=hime-git
-pkgver=1103.2cd1b9b
+pkgver=1268.1310167
 pkgrel=1
 pkgdesc="A GTK2+/GTK3+ based universal input method platform"
 arch=('i686' 'x86_64')
 url="http://hime-ime.github.io/"
 license=('LGPL2' 'FDL' 'GPL2')
 depends=('gtk2' 'libxtst')
-makedepends=('git' 'gettext' 'libchewing')
-optdepends=('gtk3: enable gtk3 im module' 'qt5-base: enable qt5 im module' 'qt4: enable qt4 im module' 'anthy: enable Anthy input method' 'libchewing: enable Chewing input method')
-options=(!strip)
-install=hime-git.install
-conflicts=('hime')
-provides=('hime')
+makedepends=('git' 'gettext' 'libchewing' 'anthy')
+optdepends=('gtk3: enable gtk3 im module'
+            'qt5-base: enable qt5 im module'
+            'anthy: enable Anthy input method'
+            'libchewing: enable Chewing input method')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/hime-ime/hime.git")
 sha512sums=('SKIP')
 
