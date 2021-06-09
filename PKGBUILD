@@ -5,7 +5,7 @@
 # Contributor: speed145a <jonathan@tagchapter.com>
 
 pkgname=firewalld-git
-pkgver=r3296.f3bd1297
+pkgver=r3337.012a87a3
 pkgrel=1
 epoch=1
 pkgdesc="Firewall daemon with D-Bus interface (from git)"
@@ -13,13 +13,12 @@ arch=(any)
 url="https://firewalld.org/"
 license=(GPL2)
 depends=(
+  dbus-python
   dconf
   glib2
   hicolor-icon-theme
   nftables
-  python-decorator
   python-gobject
-  python-slip
 )
 makedepends=(
   docbook-xsl

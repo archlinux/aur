@@ -10,13 +10,12 @@ pkgbase = firewalld-git
 	makedepends = git
 	makedepends = intltool
 	makedepends = ipset
+	depends = dbus-python
 	depends = dconf
 	depends = glib2
 	depends = hicolor-icon-theme
 	depends = nftables
-	depends = python-decorator
 	depends = python-gobject
-	depends = python-slip
 	optdepends = bash-completion: bash completion
 	optdepends = gtk3: firewall-config
 	optdepends = ipset: ipset support
@@ -33,4 +32,3 @@ pkgbase = firewalld-git
 	sha256sums = cf7d655230c43acf10a0f97dffdbcba136729967c8b9a25a930871d54a589834
 
 pkgname = firewalld-git
-
