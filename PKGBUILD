@@ -3,12 +3,12 @@
 # Contributor: Petrenko Alexey <alexey-p at uralweb dot ru>
 
 pkgname=perl-devel-nytprof
-pkgver=6.06
-pkgrel=3
-_author='T/TI/TIMB'
+pkgver=6.10
+pkgrel=1
+_author='J/JK/JKEENAN'
 _perlmod='Devel-NYTProf'
 pkgdesc='Devel::NYTProf - Powerful fast feature-rich perl source code profiler'
-url='http://search.cpan.org/dist/Devel-NYTProf'
+url='https://metacpan.org/dist/Devel-NYTProf/'
 depends=(
 perl-getopt-long
 perl-test-simple
@@ -28,7 +28,7 @@ makedepends=(perl-extutils-makemaker)
 arch=('i686' 'x86_64')
 license=('GPL')
 options=('!emptydirs')
-source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
+source=("http://cpan.metacpan.org/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
 unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
 export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
 build(){
@@ -53,4 +53,4 @@ package(){
 #   ln -s /usr/bin/vendor_perl/nytprofcalls "$pkgdir"/usr/bin/nytprofcalls
 #   ln -s /usr/bin/vendor_perl/flamegraph.pl "$pkgdir"/usr/bin/flamegraph.pl
 }
-sha256sums=('a14227ca79f1750b92cc7b8b0a5806c92abc4964a21a7fb100bd4907d6c4be55')
+sha256sums=('24ac4174f1f01322063fa4e119b247d371d3260ddca6e778c6c1a0e3f905f58e')

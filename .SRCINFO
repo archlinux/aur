@@ -1,8 +1,8 @@
 pkgbase = perl-devel-nytprof
 	pkgdesc = Devel::NYTProf - Powerful fast feature-rich perl source code profiler
-	pkgver = 6.06
-	pkgrel = 3
-	url = http://search.cpan.org/dist/Devel-NYTProf
+	pkgver = 6.10
+	pkgrel = 1
+	url = https://metacpan.org/dist/Devel-NYTProf/
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -17,8 +17,8 @@ pkgbase = perl-devel-nytprof
 	depends = perl-json-maybexs
 	depends = zlib
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/T/TI/TIMB/Devel-NYTProf-6.06.tar.gz
-	sha256sums = a14227ca79f1750b92cc7b8b0a5806c92abc4964a21a7fb100bd4907d6c4be55
+	source = http://cpan.metacpan.org/authors/id/J/JK/JKEENAN/Devel-NYTProf-6.10.tar.gz
+	sha256sums = 24ac4174f1f01322063fa4e119b247d371d3260ddca6e778c6c1a0e3f905f58e
 
 pkgname = perl-devel-nytprof
 
