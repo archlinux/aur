@@ -1,7 +1,7 @@
 pkgbase = supercollider-flucoma-git
 	pkgdesc = Fluid Corpus Manipulation plugins for Supercollider
 	pkgver = r1179.5956e97
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flucoma/flucoma-sc
 	arch = any
 	groups = pro-audio

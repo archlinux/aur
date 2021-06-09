@@ -1,7 +1,7 @@
 # Maintainer: Mads Kjeldgaard<mail@madskjeldgaard.dk>
 pkgname=supercollider-flucoma-git
 pkgver=r1179.5956e97
-pkgrel=1
+pkgrel=2
 pkgdesc='Fluid Corpus Manipulation plugins for Supercollider'
 arch=('any')
 url='https://github.com/flucoma/flucoma-sc'
