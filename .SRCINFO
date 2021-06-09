@@ -13,7 +13,6 @@ pkgbase = picomc
 	depends = python-certifi
 	depends = python-tqdm
 	depends = python-coloredlogs
-	depends = java-runtime
 	optdepends = java-runtime: Launching Minecraft
 	source = https://github.com/sammko/picomc/archive/v0.4.3.tar.gz
 	md5sums = 897e09f9a5d31445eefd43f0bd98c8ad

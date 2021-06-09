@@ -12,8 +12,7 @@ depends=("python>=3.9"
          "python-urllib3"
          "python-certifi"
          "python-tqdm"
-         "python-coloredlogs"
-         "java-runtime")
+         "python-coloredlogs")
 makedepends=("python-setuptools")
 optdepends=("java-runtime: Launching Minecraft")
 source=("https://github.com/sammko/$pkgname/archive/v$pkgver.tar.gz")
