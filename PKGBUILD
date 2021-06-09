@@ -29,7 +29,7 @@ build() {
         -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib \
         -DBUILD_SHARED_LIBS=ON \
         -DCMAKE_BUILD_TYPE=Release \
-        -DUSE_AVX_INSTRUCTIONS=ON \
+        -DUSE_AVX_INSTRUCTIONS=OFF \
         -DDLIB_USE_CUDA=OFF \
         "../${pkgbase}-${pkgver}"
     ninja ${MAKEFLAGS:--j1}
