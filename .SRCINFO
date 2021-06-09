@@ -32,4 +32,3 @@ pkgbase = sudo-selinux
 	sha256sums = d1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2
 
 pkgname = sudo-selinux
-
