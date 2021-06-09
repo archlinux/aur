@@ -1,4 +1,4 @@
-# Maintainer: Jguer <joaogg3@gmail.com>
+# Maintainer: Johannes Hörmann <aligator@suncraft-server.de>
 pkgname=goslice
 _pkgname=GoSlice
 pkgver=0.3.9

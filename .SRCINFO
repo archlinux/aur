@@ -16,4 +16,3 @@ pkgbase = goslice
 	sha512sums = d377cf3f31a188fe5ebeaeec4ea70c2178120dc8778cd4ede954c6972ecbc804ae7f03b92b84810ca02ff9cbc12458c2820d4b13bc8c086db47b47d554f86d61
 
 pkgname = goslice
-
