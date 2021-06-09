@@ -1,8 +1,8 @@
 # Maintainer: Mark Stenglein <aur@markstenglein.com>
 
 pkgname=slides
-pkgver=0.1.1
-pkgrel=4
+pkgver=0.1.2
+pkgrel=1
 pkgdesc='Terminal based presentation tool'
 arch=('x86_64')
 url="https://github.com/maaslalani/$pkgname"
@@ -12,6 +12,7 @@ makedepends=('go' 'git')
 conflicts=("$pkgname-git" "$pkgname-bin")
 source=("$pkgname::git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
+changelog='CHANGELOG.md'
 
 build() {
     cd $pkgname
