@@ -1,5 +1,5 @@
 # Maintainer: Aaron Honeycutt <aaron at system76 dot com>
-pkgname=('keyboard-configurator')
+pkgname=('keyboard-configurator-git')
 pkgbase=keyboard-configurator-git
 pkgver=1.0.0
 pkgrel=1

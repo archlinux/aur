@@ -1,4 +1,4 @@
-pkgbase = keyboard-configurator
+pkgbase = keyboard-configurator-git
 	pkgdesc = Configures keymap and backlight of System76 keyboards.
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -9,5 +9,5 @@ pkgbase = keyboard-configurator
 	depends = rust
 	depends = systemd
 
-pkgname = keyboard-configurator
+pkgname = keyboard-configurator-git
 
