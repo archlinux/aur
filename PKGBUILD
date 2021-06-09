@@ -2,7 +2,7 @@
 
 pkgname=lizzie-improve
 _pkgname=lizzie
-pkgver=2.1
+pkgver=20210608
 _pkgver=2.1
 pkgrel=1
 pkgdesc="Analysis interface for KataGo/Leela Zero, more features added by yzy"
@@ -23,7 +23,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 package() {
-  install -Dm644 "$srcdir"/$_pkgname/lizzie-"$_pkgver"-shaded-linux64.jar "$pkgdir"/usr/share/java/"$_pkgname"/"$_pkgname".jar
+  install -Dm644 "$srcdir"/$_pkgname/lizzie-yzy"$_pkgver"-shaded-linux64.jar "$pkgdir"/usr/share/java/"$_pkgname"/"$_pkgname".jar
   install -Dm644 config.txt "$pkgdir"/usr/share/"$_pkgname"/config.txt
   install -Dm755 "$_pkgname".sh "$pkgdir"/usr/bin/"$_pkgname"
   install -Dm644 "$_pkgname".desktop "$pkgdir"/usr/share/applications/"$_pkgname".desktop
