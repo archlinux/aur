@@ -1,6 +1,6 @@
 pkgbase = r-matrixstats
 	pkgdesc = Functions that Apply to Rows and Columns of Matrices (and to Vectors)
-	pkgver = 0.58.0
+	pkgver = 0.59.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=matrixStats
 	arch = i686
@@ -13,8 +13,7 @@ pkgbase = r-matrixstats
 	optdepends = r-microbenchmark
 	optdepends = r-r.devices
 	optdepends = r-r.rsp
-	source = https://cran.r-project.org/src/contrib/matrixStats_0.58.0.tar.gz
-	sha256sums = 8367b4b98cd24b6e40022cb2b11e907aa0bcf5ee5b2f89fefb186f53661f4b49
+	source = https://cran.r-project.org/src/contrib/matrixStats_0.59.0.tar.gz
+	sha256sums = 07428726ad29d9b144c88946dc6ac240355df49dd97f10e8b071e5d332560b9d
 
 pkgname = r-matrixstats
-
