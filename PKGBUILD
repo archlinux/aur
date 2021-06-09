@@ -3,19 +3,20 @@
 # Contributor: Liganic <liganic-aur@gmx.net>
 _pkgname='cpplint'
 pkgname="python-${_pkgname}"
-pkgver='1.5.4'
+pkgver='1.5.5'
 pkgrel=1
 pkgdesc="Command-line tool to check C/C++ files for style issues following Google's C++ style guide."
 arch=('any')
 url='https://github.com/cpplint/cpplint'
 license=('custom:BSD3')
 depends=('python')
+makedepends=('python-setuptools')
 provides=('cpplint' 'cpplint-py3')
 replaces=('cpplint-py3')
 conflicts=('cpplint')
-checkdepends=('python-pytest' 'python-pytest-cov')
+checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-runner')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('e254b5620fb039689b8f5e64b07384ee53beb695304c5c01195133be662b4457')
+sha256sums=('6abc3acd7b0a3d51d8dcaff0a8cb66c772dea73dd45099cba2d0960ec90e8de4')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
