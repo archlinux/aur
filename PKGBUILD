@@ -1,4 +1,5 @@
 # Maintainer: Alastair Pharo <asppsa at gmail dot com>
+# Co-Maintainer: Bert Peters <bert@bertptrs.nl>
 # Contributor: Felix Morgner <felix.morgner@gmail.com>
 # Contributor: Vlad M. <vlad@archlinux.net>
 # Contributor: Mario Rodas
@@ -7,7 +8,7 @@
 # Contributor: Anders Bennehag
 
 pkgname=nix
-pkgver=2.3.11
+pkgver=2.3.12
 pkgrel=1
 pkgdesc="A purely functional package manager"
 arch=('i686' 'x86_64' 'armv7h')
@@ -19,7 +20,7 @@ makedepends=('bzip2' 'openssl')
 install=nix.install
 source=("https://nixos.org/releases/nix/nix-$pkgver/nix-$pkgver.tar.xz"
         'ldflags.patch')
-sha256sums=('89a8d7995305a78b1561e6670bbf1879c791fc4904eb094bc4f180775a61c128'
+sha256sums=('213a7d49c461079b32361e4d008d248d7f68e34d2cc9347f3a8ff9029f9afb5d'
             '42350237d98785b30b0ee099405f2f1f7412f8a816162c22bd232ed3dbbe0305')
 
 prepare() {
