@@ -2,7 +2,7 @@
 
 pkgname=kotatogram-dev-git
 _pkgname=kotatogram-desktop
-pkgver=k1.4.1.6.gb0fed1a6a
+pkgver=k1.4.1.9.g5124ca1b6
 pkgrel=1
 pkgdesc="Kotatogram – experimental Telegram Desktop fork - Dev branch"
 arch=(x86_64)
@@ -66,6 +66,7 @@ source=(
   "https://github.com/telegramdesktop/tdesktop/commit/98180d3a9e994081a134196adad0023651d28bf3.patch"
   "https://github.com/telegramdesktop/tdesktop/commit/383acf0ffc489990302797ff0f048519b3c7c9bf.patch"
   "lib_base-gcc11-fix.patch"
+  "lib_base-gtk-loading-fix.patch"
   "https://github.com/desktop-app/lib_webview/commit/8816639c74a4cb6d512cba8e2271aceb404b0492.patch"
   "mallocng.patch"
   "https://github.com/desktop-app/cmake_helpers/commit/5318ac7c54dbf33b17ccc4bd3281bb8b8db25e02.patch"
@@ -101,6 +102,7 @@ sha512sums=(
             'fcc4c5f649381ace974a3b73cd76f7dd3e78c3a8c0d0bffeccd3e66ec45b84c0cada1f6fd91e1498e0442ed70b679d6b975b499b1f37d25113053b38c873e9e7'
             'c5511bd073095a171b998ae8425d01305ac7927398640c0b62d5dcbcc2184e8dae25c1430a5950c45fac38ec5de353449765454f428fa6e16dc588214edd8db8'
             'ce364d20b9c3e8d65d4d0def6c2f025e16814c8782c78f720ee5e9891e0b296c6edca9f3a7fa46652516c6a748e29a8cdbbf5f7d1273e4e1a64c7216275c5cda'
+            '956cd39e5a488b8ce02eddbca75c3f05467dcd4ff0f62907a966a1ad36b7d9329130e48f570f2e3ee95c135a085106442ce87bd48e0288db3bf8d8f06821f28d'
             'c82e41e9fab49d7eca4602327ebb10c795cf6db414a3c5fe91271af336c327fed5a5c67e3219734e20b7559ff7cbca220be8b94b3b551bf33c162c90370e5af3'
             '12c6a439b3960cb5a25edd2b2b1959f96fdbba634f281890f5ec91420834a852a7bcfa5d11051dfdf4fe719137345b23ae77a8e48eb6b9444ad973a34574cb84'
             '2f7c24851e9879b238366c82f35a046c5a69ec5059e6441ac6eae578450669f094bb659a63b79be635dcae93ddd388bc957e29a219cc3cfc0e6591f0f333d7e3'
@@ -154,6 +156,7 @@ prepare() {
     patch -p1 < ${srcdir}/383acf0ffc489990302797ff0f048519b3c7c9bf.patch
     pushd Telegram/lib_base
     patch -p1 < ${srcdir}/lib_base-gcc11-fix.patch
+    patch -p1 < ${srcdir}/lib_base-gtk-loading-fix.patch
     popd
     pushd Telegram/lib_webview
     patch -p1 < ${srcdir}/8816639c74a4cb6d512cba8e2271aceb404b0492.patch
