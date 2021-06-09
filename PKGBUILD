@@ -2,7 +2,7 @@
 pkgname="applet-window-buttons-git"
 _pkgname="applet-window-button"
 pkgver=0.9.0.r2.g9910320
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="This is a Plasma 5 applet that shows window buttons in your panels"
 arch=('i686' 'x86_64')
