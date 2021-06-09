@@ -2,14 +2,14 @@
 # Contributor: SoftwareRat <jaguar5018@gmail.com>
 
 pkgname=moonlight-qt-git
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc='GameStream client for PCs (Windows, Mac, and Linux) (master branch)'
 arch=('x86_64')
 license=('GPL')
 url='https://moonlight-stream.org'
-depends=('qt5-base' 'qt5-quickcontrols2' 'qt5-svg' 'ffmpeg' 'sdl2_ttf')
-makedepends=('git' 'pkg-config' 'discord-rpc-api')
+depends=('qt5-base' 'qt5-quickcontrols2' 'qt5-svg' 'ffmpeg' 'sdl2_ttf' 'discord-rpc-api')
+makedepends=('git' 'pkg-config')
 optdepends=('libva-intel-driver: hardware acceleration for Intel GPUs')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
