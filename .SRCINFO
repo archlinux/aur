@@ -1,6 +1,6 @@
 pkgbase = hyperrogue-git
 	pkgdesc = A puzzle-roguelike taking place on a hyperbolic plane. Latest git version.
-	pkgver = 12.0a.r0.g7777c7b4
+	pkgver = 12.0a.r6.gd4f34d0d
 	pkgrel = 1
 	url = https://www.roguetemple.com/z/hyper/
 	arch = i686
@@ -14,6 +14,12 @@ pkgbase = hyperrogue-git
 	depends = mesa
 	provides = hyperrogue
 	source = git+https://github.com/zenorogue/hyperrogue.git
+	source = hyperrogue.desktop
+	source = 96x96.png
+	source = 256x256.png
 	sha256sums = SKIP
+	sha256sums = f36c41ab5cb033cdc360afc2163254f7b1ff9774d2dec34b0e57d0bbf7ee1bde
+	sha256sums = af4fe1e4234024bcc305a31e16de386c40b4e98aad89ca546b2a2d44e1f85d52
+	sha256sums = b80df03ffe180bc32931efdfabdf7a819b48261e92febb09790455eeddb45164
 
 pkgname = hyperrogue-git
