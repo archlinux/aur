@@ -1,0 +1,10 @@
+diff --git a/parallel-rsp/CMakeLists.txt b/parallel-rsp/CMakeLists.txt
+@@ -6,7 +6,7 @@
+ 
+ set(NAME_PLUGIN_M64P "mupen64plus-rsp-parallel")
+ 
+-include_directories(../mupen64plus-core/src/api)
++include_directories(/usr/include/mupen64plus)
+ add_definitions(-DM64P_PLUGIN_API)
+ add_definitions(-DPARALLEL_INTEGRATION)
+
