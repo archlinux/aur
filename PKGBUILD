@@ -2,7 +2,7 @@
 pkgbase=python-asdf
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="A Python tool for reading and writing Advanced Scientific Data Format (ASDF) files"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ makedepends=('python>=3.6'
              'python-jmespath>=0.6.2')
 checkdepends=('python-pytest-doctestplus' 'python-pytest-remotedata' 'python-pytest-openfiles' 'python-lz4')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('a7de6c796dadc758d9fc1a694f420d55')
+md5sums=('c92afe197820abea27e67c3f6fade665')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
