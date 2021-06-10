@@ -3,7 +3,7 @@
 
 pkgname=lite-xl
 _pkgname=lite
-pkgver=1.16.10
+pkgver=1.16.11
 pkgrel=1
 pkgdesc='A lightweight text editor written in Lua'
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('meson')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c66d0fb0c2d853587030a7ee3a855033c6f8d10a500560caa6188ac8316f9f71')
+sha256sums=('63c24570299a7200eb94c0fa064c823769835f78a9b93c497d120f7a99c91057')
 
 build() {
     cd "$pkgname-$pkgver"
