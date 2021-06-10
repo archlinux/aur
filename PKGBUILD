@@ -1,3 +1,4 @@
+# Maintainer: Alex Gu <gualse.mail@yandex.com>
 pkgname=mycorrhiza-bin
 pkgver=1.1.0
 pkgrel=1
