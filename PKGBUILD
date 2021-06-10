@@ -2,7 +2,7 @@
 
 pkgname=plasma-angelfish
 pkgver=21.06
-pkgrel=1
+pkgrel=2
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 pkgdesc="Web browser for Plasma Mobile"
 url="https://invent.kde.org/plasma-mobile/angelfish"
