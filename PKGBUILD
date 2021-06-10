@@ -2,7 +2,7 @@
 # Contributor: malet <malet@invalid>
 _projectname='visitors'
 pkgname="ocaml-$_projectname"
-pkgver='20210316'
+pkgver='20210608'
 pkgrel='1'
 pkgdesc='An OCaml syntax extension for generating visitor classes'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ depends=('ocaml>=4.05.0' 'ocaml-ppx_deriving>=5.0' 'ocaml-ppxlib>=0.22.0' 'ocaml
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/-/archive/$pkgver/$_projectname-$pkgver.tar.gz")
-sha256sums=('da33232dadd9601bfdbdf7b640f7a06bd2b03abcb24383e8cedb32897788a4a6')
+sha256sums=('fff684c35c12a1e9bcbaa7a95ac901d234e45cca3653f2310ae19a56716f6026')
 
 _sourcedirectory="$_projectname-$pkgver"
 
