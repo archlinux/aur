@@ -1,4 +1,5 @@
 # Maintainer: robertfoster
+# Contributor: Amish <contact at via dot aur>
 # Contributor: Lukas Fleischer <archlinux at cryptocrack dot de>
 # Contributor: Hugo Doria <hugo@archlinux.org>
 # Contributor: Kessia 'even' Pinheiro <kessiapinheiro at gmail.com>
@@ -10,7 +11,7 @@ pkgname=snort
 _pkgname=snort3
 _openappid=17843
 pkgver=3.1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight network intrusion detection system.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64' 'arm')
 url='http://www.snort.org'
@@ -24,7 +25,7 @@ backup=('etc/snort/snort.lua'
   'etc/snort/rules/local.rules'
   'etc/snort/rules/snort.rules'
   'etc/logrotate.d/snort')
-options=('!makeflags' '!libtool')
+options=('!libtool')
 install='snort.install'
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/snort3/snort3/archive/refs/tags/${pkgver}.tar.gz"
   "snort-openappid-${_openappid}.tar.gz::https://snort.org/downloads/openappid/${_openappid}"
