@@ -1,14 +1,14 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=plane-icon-theme-git
-pkgver=r194.777b356
+pkgver=r198.80e970e
 pkgrel=1
 pkgdesc="A modern icon theme for gnome linux versions."
 arch=('any')
 url="https://github.com/wfpaisa/plane-icon-theme"
 license=('GPL3')
 depends=('gnome-shell')
-makedepends=('git' 'gulp')
+makedepends=('git' 'gulp' 'npm')
 source=("${pkgname}::git+https://github.com/wfpaisa/plane-icon-theme.git")
 sha256sums=('SKIP')
 
