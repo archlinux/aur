@@ -2,14 +2,14 @@
 # Former maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
 
 pkgname=ompl
-pkgver=1.5.0
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="The Open Motion Planning Library (OMPL) consists of many state-of-the-art sampling-based motion planning algorithms"
 arch=('i686' 'x86_64')
 url="http://ompl.kavrakilab.org/"
 license=('BSD')
-conflicts=('ros-melodic-ompl' 'ompl-git')
-replaces=('ros-melodic-ompl' 'ompl-git')
+conflicts=('ompl-git')
+replaces=('ompl-git')
 depends=('boost-libs')
 makedepends=('boost' 'cmake' 'ninja' 'pkgconf' 'eigen')
 optdepends=('python: Python bindings'
@@ -25,7 +25,7 @@ optdepends=('python: Python bindings'
             'castxml: Python bindings'
             'pygccxml: Python bindings')
 source=(https://github.com/ompl/ompl/archive/${pkgver}.tar.gz)
-sha512sums=(a300682fa0af40768c93e44b819c677b6121812e4f968ad89b5ae4044f3171a7febca63fa5645f2ad0f99ec3dfb3b02fe8c7443c4e389bf19a4a4bc9c7a5d013)
+sha512sums=(5b29a409822efaf783a9076e4c2a84731956e84669ccc1d07765198b0f9812573014a8fa85e76de5cbee48385c5c588da6aba40f27b57aa9eb353b95745d9edb)
 
 build() {
   # NOTE: To get Python bindings, you currently need to install pyplusplus through pip3. The AUR
