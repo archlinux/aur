@@ -1,0 +1,8 @@
+post_install() {
+	echo ':: Please consult upstream documentation on how to set up this plugin.'
+	echo ':: A copy has been installed under /usr/share/doc/neovim-lastplace-git/README.md.'
+}
+
+post_remove() {
+	echo ":: Don't forget to remove your require statements before uninstalling!"
+}
