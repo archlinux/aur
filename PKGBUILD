@@ -1,6 +1,6 @@
 # Maintainer: FirstAirBender <noblechuk5[at]web[dot]de>
 pkgname=perli
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Multi-platform Perl REPL"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('perl>=5.6.2')
 optdepends=('rlwrap: provide command-line editing support')
 source=("https://github.com/mklement0/perli/archive/v${pkgver}.tar.gz")
-sha256sums=('ff5c6582c2839e230035db07716f5bcaa3725e8520e1f36089664e5d5b1f338b')
+sha256sums=('210be26bdd6f8e84948d3a1366d3908e06c518684714dd99ca343fdca01ae329')
 
 package() {
 	cd "$pkgname-$pkgver"
