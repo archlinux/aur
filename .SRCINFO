@@ -1,7 +1,7 @@
 pkgbase = mobac
 	pkgdesc = Mobile Atlas Creator (formerly TrekBuddy Atlas Creator) creates offline atlases for GPS handhelds and cell phone applications like TrekBuddy, AndNav and other
 	pkgver = 2.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://mobac.sourceforge.net/
 	arch = x86_64
 	license = GPL

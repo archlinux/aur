@@ -4,7 +4,7 @@
 
 pkgname=mobac
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Mobile Atlas Creator (formerly TrekBuddy Atlas Creator) creates offline atlases for GPS handhelds and cell phone applications like TrekBuddy, AndNav and other"
 arch=('x86_64')
 url="http://mobac.sourceforge.net/"
@@ -39,7 +39,7 @@ package() {
   install -Dm644 $srcdir/mapsources/* $pkgdir/usr/share/mobac/mapsources/
   install -Dm644 $srcdir/directories.ini $pkgdir/usr/share/mobac/
   install -Dm644 $srcdir/Mobile_Atlas_Creator.jar $pkgdir/usr/share/mobac/
-  install -Dm644 $srcdir/README.html $pkgdir/usr/share/mobac/
+  install -Dm644 $srcdir/README.html $pkgdir/usr/share/mobac/README.HTM
   install -Dm644 $srcdir/ReleaseNotes.txt $pkgdir/usr/share/mobac/
   install -Dm644 $srcdir/CHANGELOG.txt $pkgdir/usr/share/mobac/
   install -Dm644 $srcdir/mobac.png $pkgdir/usr/share/pixmaps/mobac.png
