@@ -28,7 +28,7 @@ _CMAKE_FLAGS+=( -DCMAKE_C_COMPILER=gcc-10
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
 
 pkgname=blender-${_suffix}-git
-pkgver=3.0.r106561.g5025757b12e
+pkgver=3.0.r107131.g767d501e285
 _blenver=${pkgver%.r*}
 pkgrel=1
 pkgdesc="Development version of Blender (non-conflicting version)"

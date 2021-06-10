@@ -1,6 +1,6 @@
 pkgbase = blender-cycles-x-git
 	pkgdesc = Development version of Blender (non-conflicting version)
-	pkgver = 3.0.r106561.g5025757b12e
+	pkgver = 3.0.r107131.g767d501e285
 	pkgrel = 1
 	url = https://blender.org/
 	changelog = blender.changelog
@@ -62,4 +62,3 @@ pkgbase = blender-cycles-x-git
 	sha256sums = 5297dc61cc4edcc1d5bad3474ab882264b69d68036cebbd0f2600d9fe21d5a1b
 
 pkgname = blender-cycles-x-git
-
