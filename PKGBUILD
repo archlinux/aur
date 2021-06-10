@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=kweather
-pkgver=0.4
+pkgver=21.06
 pkgrel=1
 pkgdesc="Weather application for Plasma Mobile"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
