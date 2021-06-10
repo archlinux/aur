@@ -39,7 +39,7 @@ source=(
 	"$_rocky_mirror/$_rocky_ver/BaseOS/x86_64/os/Packages/kernel-core-$_rpmver.x86_64.rpm"
 	"$_rocky_mirror/$_rocky_ver/BaseOS/x86_64/os/Packages/kernel-modules-$_rpmver.x86_64.rpm"
 	"$_rocky_mirror/$_rocky_ver/BaseOS/x86_64/os/Packages/kernel-devel-$_rpmver.x86_64.rpm"
-	"$_rocky_mirror/$_rocky_rel/BaseOS/x86_64/os/Packages/kernel-doc-$_rpmver.noarch.rpm"
+	"$_rocky_mirror/$_rocky_ver/BaseOS/x86_64/os/Packages/kernel-doc-$_rpmver.noarch.rpm"
 	"$_pkgbase.preset"
 )
 noextract=(kernel-doc-$_rpmver.noarch.rpm)  # bsdtar cannot extract it
