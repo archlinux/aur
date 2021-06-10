@@ -1,0 +1,19 @@
+pkgbase = xcursor-lambda
+	pkgdesc = Recreation of the perspective cursor theme with some changes and a black variant
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://www.pling.com/p/999496/
+	arch = any
+	makedepends = libxml2
+	depends = libxcursor
+	options = !debug
+	source = xcursor-lambda_dl.xml::https://api.kde-look.org/ocs/v1/content/download/999496/1
+	source = xcursor-lambda-black_dl.xml::https://api.kde-look.org/ocs/v1/content/download/999424/1
+	source = lambda.index.theme
+	source = lambda-black.index.theme
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 06356d3e024295a514fbe3c51e4c9ab0ac45bca1ae2a78c875cb4a638b30890b
+	sha256sums = 1fa2aee2f4184f514af37ff4d18cb681c3ca524c360895bf9a2b3128d21b33de
+
+pkgname = xcursor-lambda
