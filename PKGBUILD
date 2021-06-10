@@ -6,7 +6,7 @@
 
 _name=libpcap
 pkgname=lib32-libpcap
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="A system-independent interface for user-level packet capture (32-bit)"
 arch=('x86_64')
@@ -16,16 +16,16 @@ depends=('lib32-glibc' 'lib32-libnl' "${_name}=${pkgver}")
 makedepends=('bluez-libs' 'lib32-dbus')
 provides=('libpcap.so')
 source=("https://www.tcpdump.org/release/libpcap-${pkgver}.tar.gz"{,.sig})
-sha512sums=('007710386ff3435ef97fc99293076eae3c39b424e986141184c712b0285f8589357a1b25085f7eba28730de04312042c724d193934a399797e95a56f5301da7f'
+sha512sums=('56c314f19c2b857742bf8abcb1e78066986aaa95cec339b75a3c8b70a9fa2b5167da98708352f9ec97a1cea2700cfb4e040bda108d58ac46cec9b7deab88d171'
             'SKIP')
-b2sums=('54e809af242b18d600b88f29bbe31b01784b5160366242f313908b58dfb1e6ee2ceae8d359f730881e15c1b26ed90c553869dffb25a74eb3cea9f597dd490b1d'
+b2sums=('0ec028e5d026a97b92ba6f23f88daf36b827eee08a752a0162fbabd1b5a2a70141ec403b6ff26dc3eb25ca5c6630c9c2f60f05b33161770da3d5e829c4eecdc6'
         'SKIP')
 validpgpkeys=('1F166A5742ABB9E0249A8D30E089DEF1D9C15D0D') # The Tcpdump Group (Package signing key) <release@tcpdump.org>
 
 prepare() {
   mv -v "${_name}-${pkgver}" "${pkgname}-${pkgver}"
   cd "${pkgname}-${pkgver}"
-  autoreconf -vfi
+  autoreconf -fiv
 }
 
 build() {
