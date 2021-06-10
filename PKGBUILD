@@ -1,42 +1,33 @@
-# Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
+# Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
+# Contributor: Gavin Yancey <gyancey@hmc.edu>
+# Contributor: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=bees-git
-pkgver=v0.6.r130.g177f393
+pkgver=0.6.r138.g80c69f1
 pkgrel=1
 pkgdesc="Best-Effort Extent-Same, a btrfs deduplicator daemon"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/Zygo/bees"
 license=('GPL3')
-depends=()
-makedepends=('git' 'make' 'gcc' 'markdown' 'btrfs-progs' 'systemd')
-source=("$pkgname"::'git://github.com/zygo/bees.git#branch=master')
-md5sums=('SKIP')
+depends=('util-linux-libs' 'bash')
+makedepends=('git' 'markdown' 'btrfs-progs' 'systemd')
+source=('git+https://github.com/zygo/bees.git#branch=master')
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$pkgname"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${pkgname}"
+  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
-	cd "$pkgname"
-	make
-	make scripts
+  cd "${pkgname}"
+  make BEES_VERSION="${pkgver}" all scripts
 }
 
 package() {
-	cd "$pkgname"
+  cd "${pkgname}"
 
-	make install DESTDIR="${pkgdir}"
-
-	mkdir -p "${pkgdir}/usr/bin/"
-
-	if [ -f "${pkgdir}/usr/sbin/beesd" ]; then
-		mv -v "${pkgdir}/usr/sbin/beesd" "${pkgdir}/usr/bin/beesd"
-	fi
-
-	if grep "$pkgname" "${pkgdir}/usr/bin/beesd"; then
-		exit 1
-	fi
-
-	find ${pkgdir} -empty -delete -print
+  make install DESTDIR="${pkgdir}" BEES_VERSION="${pkgver}"
+  mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
 }
