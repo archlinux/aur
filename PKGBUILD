@@ -34,6 +34,11 @@ if [ -z ${use_tracers+x} ]; then
   use_tracers=y
 fi
 
+## Choose between GCC and CLANG config (default is GCC)
+if [ -z ${_compiler+x} ]; then
+  _compiler=gcc
+fi
+
 # Compile ONLY used modules to VASTLY reduce the number of modules built
 # and the build time.
 #
@@ -53,7 +58,7 @@ _makenconfig=
 
 pkgbase=linux-xanmod
 _major=5.12
-pkgver=${_major}.9
+pkgver=${_major}.10
 _branch=5.x
 xanmod=1
 pkgrel=${xanmod}
@@ -86,7 +91,7 @@ done
 
 sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
             'SKIP'
-            'bae3ee9c642b48abbaa609ac29d74f082bcdbdd8a1070e83b2a2ecce86d4bb99'
+            'ad47cc2b1e14ad443a419af5c56c3adc29f299b399ddac72a6fd5cfc5c64265d'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
 
@@ -100,7 +105,6 @@ prepare() {
   # hacky work around for xz not getting extracted
   # https://bbs.archlinux.org/viewtopic.php?id=265115
   if [[ ! -f "$srcdir/patch-${pkgver}-xanmod${xanmod}" ]]; then
-    #unlink "$srcdir/patch-${pkgver}-xanmod${xanmod}.xz"
     xz -dc "$SRCDEST/patch-${pkgver}-xanmod${xanmod}.xz" > "$srcdir/patch-${pkgver}-xanmod${xanmod}"
   fi
 
@@ -121,6 +125,9 @@ prepare() {
     msg2 "Applying patch $src..."
     patch -Np1 < "../$src"
   done
+
+  # Applying configuration
+  cp -vf CONFIGS/xanmod/${_compiler}/config .config
 
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
   scripts/config --enable CONFIG_STACK_VALIDATION
