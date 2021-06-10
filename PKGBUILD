@@ -2,7 +2,7 @@
 
 pkgname=obs-studio-tytan652
 pkgver=27.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, working VLC sources and my bind interface and GNOME entry PRs."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -42,7 +42,7 @@ optdepends=(
 provides=("obs-studio=$pkgver")
 conflicts=("obs-studio" "obs-linuxbrowser")
 source=(
-        "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver-rc6"
+        "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
         "python_fix.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3335.patch
         "bind_iface.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4219.patch
         "en-US.ini::https://raw.githubusercontent.com/tytan652/obs-studio/bind_iface/UI/data/locale/en-US.ini"
