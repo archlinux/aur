@@ -1,7 +1,7 @@
-From c0e504e5d21cbf6b708dbc34d9e52e9bf56f07b3 Mon Sep 17 00:00:00 2001
+From b95bfa5f73b66f31073644a60f04e5740e5a4dec Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 8 Nov 2020 00:33:12 +0100
-Subject: [PATCH 6/8] Support finding static MariaDB client library
+Subject: [PATCH 6/7] Support finding static MariaDB client library
 
 We need to reverse the order to look for mariadb first (and only then
 for mysql) because otherwise it would pick up the static library
@@ -27,5 +27,5 @@ index 0fcba2148e..ab4f6fdc9e 100644
  
  include(FindPackageHandleStandardArgs)
 -- 
-2.31.1
+2.32.0
 
