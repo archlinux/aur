@@ -1,7 +1,7 @@
 pkgbase = ag-dsp-controller
 	pkgdesc = Yamaha AG06/AG03 DSP Controller software, patched to work with Linux/Wine MIDI device names (uses Wine)
 	pkgver = 1.1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.yamaha.com/
 	arch = i686
 	arch = x86_64
@@ -14,10 +14,11 @@ pkgbase = ag-dsp-controller
 	source = LICENSE
 	source = fix-midi-device-name.patch
 	sha256sums = 2b2a7af814be568bf65885b9514b492565cdf0a9d42d0620ffe7ab24069de117
-	sha256sums = e0a20240b58a94fa9994acc686fd88b40e66232189b356eefb6e76578529778f
+	sha256sums = 63483086e47e6f6e7cab27ea33306fed49f495d41a3640e99bc9e5a094df58e7
 	sha256sums = 10a81716c2083c13763d27423512d286eb9e6805be8d589c34e13d630a9aa6f9
 	sha256sums = fe7a83618459c97f038d32e8c54b77c76541bdfd522e6bd4fbe15ab709570bde
 	sha256sums = b354db1682d1306822305c2942b3b6921532a4e9088c3e4379f35f07b8f29cea
+	depends_i686 = alsa-lib
+	depends_x86_64 = lib32-alsa-lib
 
 pkgname = ag-dsp-controller
-
