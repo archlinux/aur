@@ -4,7 +4,7 @@
 # Maintainer: Daniel Jongepier <djongepier@gmail.com>
 pkgname=coreboot-configurator-git
 _pkgname=coreboot-configurator
-pkgver=1.2
+pkgver=6
 pkgrel=1
 pkgdesc="Graphical user interface to configure Starlabs Systems Labtop series"
 arch=('i686' 'x86_64')
@@ -14,15 +14,15 @@ depends=("nvramtool-corevantage-git" "qt5-base" "hicolor-icon-theme")
 makedepends=("qt5-quickcontrols" "inkscape" "meson")
 provides=("coreboot-configurator")
 conflicts=("coreboot-configurator")
-source=("git+https://github.com/StarLabsLtd/coreboot-configurator.git")
-sha256sums=("SKIP")
+source=("https://github.com/StarLabsLtd/coreboot-configurator/archive/refs/tags/6.tar.gz")
+sha256sums=("38145c73595dc86ae7a0d56abf0f3c86f51eaec2174af0df396371ef0494b21f")
 
 build() {
-	cd "$_pkgname"
+	cd "$_pkgname-$pkgver"
 	meson build
 }
 
 package() {
-	cd "$_pkgname"
+	cd "$_pkgname-$pkgver"
 	ninja -C build install
 }
