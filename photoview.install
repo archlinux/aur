@@ -1,0 +1,22 @@
+post_install() {
+  cat << EOF
+!NOTE!
+  You need to have a database backend. Select one from the first three optional dependencies.
+
+Configure the server via its environment variables in /etc/photoview.env.
+Especially assign the correct value to PHOTOVIEW_DATABASE_DRIVER, according to which database backend you have installed and want to use.
+
+If you selected mysql or postgresql, you need to create the database before running photoview.
+
+Additionally, you may wish to configure a webserver to serve the ui via a reverse proxy.
+
+More information on all the above can be found in the upstream documentation:
+https://photoview.github.io/docs/
+
+Create or edit drop-in file:
+# systemctl edit photoview.service
+
+Enable and start the photoview systemd service:
+# systemctl enable --now photoview.service
+EOF
+}
