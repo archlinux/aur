@@ -1,7 +1,7 @@
 # Maintainer Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=koko
-pkgver=21.05
+pkgver=21.06
 pkgrel=1
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 pkgdesc="Image gallery application designed for desktop and touch devices"
