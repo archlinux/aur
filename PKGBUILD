@@ -7,6 +7,8 @@ arch=("i686" "x86_64")
 url="https://www.yamaha.com/"
 license=("custom")
 depends=("wine")
+depends_i686=("alsa-lib")
+depends_x86_64=("lib32-alsa-lib")
 makedepends=("bsdiff")
 source=("https://usa.yamaha.com/files/download/software/6/827126/AG_DSP_Controller_v1100_win.zip"
 		"ag-dsp-controller.sh"
