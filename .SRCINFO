@@ -1,7 +1,7 @@
 pkgbase = touchosc-bin
 	pkgdesc = Modular control surface
 	pkgver = 1.0.0.92
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hexler.net
 	arch = x86_64
 	license = custom:TouchOSC

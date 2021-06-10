@@ -2,7 +2,7 @@
 
 pkgname=touchosc-bin
 pkgver=1.0.0.92
-pkgrel=1
+pkgrel=2
 pkgdesc='Modular control surface'
 arch=('x86_64')
 url=http://hexler.net
