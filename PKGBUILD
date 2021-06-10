@@ -2,7 +2,7 @@
 
 pkgname=gitstatus
 # Whenever pkgver is updated, _libgit2ver below must also be updated.
-pkgver=1.4.4
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='Git status for Bash and Zsh prompt'
 arch=('any')
@@ -16,7 +16,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/romkatv/gitstatus/archive/v${pkgver}.tar.gz"
   "libgit2-${_libgit2ver}.tar.gz::https://github.com/romkatv/libgit2/archive/${_libgit2ver}.tar.gz")
 sha512sums=(
-  'e625472a2ac4fa56e45320cabbcadd5e3b93b2442ba4ff3661af43280cb7216dacfb1ea5ded5f465efd0b01a3c198a29592712e4f9c274e6e566ce87f27739ce'
+  '6499e506f36f4afcf313e1990b486cd37595c1c5e862c98bcb1cc0f85648c0ebd14b9b96772719fed4d4a412380e4991fa4b5adfc8d63c70dcc8468c06b8a07f'
   'b2760593b9ff0223e10b170702e21fb022c13bd07d360ecffece7fae20ef2fdc9e42597e609dd26803bd02dc5c22bc6a5b85aac91496710ddbf433b67db5a1c0')
 makedepends=('git' 'cmake' 'zsh')
 install='gitstatus.install'
