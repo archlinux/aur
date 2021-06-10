@@ -1,16 +1,15 @@
 pkgbase = ai-bot-workspace-bin
 	pkgdesc = An Electron application which includes testing workspaces for most Riddles.io competitions
-	pkgver = 2.4.2
+	pkgver = 2.4.3
 	pkgrel = 1
 	url = https://github.com/jmerle/ai-bot-workspace
 	arch = x86_64
 	license = MIT
 	depends = jre8-openjdk
 	options = !strip
-	source = https://github.com/jmerle/ai-bot-workspace/releases/download/v2.4.2/ai-bot-workspace-2.4.2-x86_64.AppImage
+	source = https://github.com/jmerle/ai-bot-workspace/releases/download/v2.4.3/ai-bot-workspace-2.4.3-x86_64.AppImage
 	source = ai_bot_workspace.tar.gz
-	sha256sums = e9b04f972c528b8dcf21fa60072f44af774329ded343d453b868347c068ca9bf
+	sha256sums = 15f8dcbc6f729cfb421a342f809b53cfac0f816ac298e5ed5a14a4424a2196de
 	sha256sums = 933f70e73eb8d7eb57d394d43fc712299004bbb815fbe4e4d5548ebbc8f13d5a
 
 pkgname = ai-bot-workspace-bin
-

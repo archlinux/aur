@@ -1,6 +1,6 @@
 # Maintainer: Emanuele Faranda <black.silver@hotmail.it>
 pkgname=ai-bot-workspace-bin
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="An Electron application which includes testing workspaces for most Riddles.io competitions"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   'ai_bot_workspace.tar.gz'
 )
 sha256sums=(
-  'e9b04f972c528b8dcf21fa60072f44af774329ded343d453b868347c068ca9bf'
+  '15f8dcbc6f729cfb421a342f809b53cfac0f816ac298e5ed5a14a4424a2196de'
   '933f70e73eb8d7eb57d394d43fc712299004bbb815fbe4e4d5548ebbc8f13d5a'
 )
 conflicts=()
