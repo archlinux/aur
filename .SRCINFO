@@ -14,4 +14,3 @@ pkgbase = tsukae-git
 	sha256sums = SKIP
 
 pkgname = tsukae-git
-
