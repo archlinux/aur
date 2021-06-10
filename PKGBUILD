@@ -16,17 +16,19 @@ source=('git+https://github.com/zygo/bees.git#branch=master')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
+  cd bees
+
   git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
-  cd "${pkgname}"
+  cd bees
+
   make BEES_VERSION="${pkgver}" all scripts
 }
 
 package() {
-  cd "${pkgname}"
+  cd bees
 
   make install DESTDIR="${pkgdir}" BEES_VERSION="${pkgver}"
   mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
