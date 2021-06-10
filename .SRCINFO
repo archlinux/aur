@@ -1,6 +1,6 @@
 pkgbase = blender-2.93-git
 	pkgdesc = Maintenance version of Blender v2.93 branch
-	pkgver = 2.93.r105442.g018cca94b8a
+	pkgver = 2.93.r105607.g57301121747
 	pkgrel = 1
 	url = https://blender.org/
 	changelog = blender.changelog
@@ -59,4 +59,3 @@ pkgbase = blender-2.93-git
 	sha256sums = 5297dc61cc4edcc1d5bad3474ab882264b69d68036cebbd0f2600d9fe21d5a1b
 
 pkgname = blender-2.93-git
-
