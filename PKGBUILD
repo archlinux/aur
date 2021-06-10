@@ -2,7 +2,7 @@
 
 _pkgname=pgadmin4
 pkgname=${_pkgname}-latest
-pkgver=latest
+pkgver=999
 pkgrel=0
 pkgdesc='Comprehensive design and management interface for PostgreSQL. Self-updating. Opens the server in a terminal and launches the default browser'
 url='https://www.pgadmin.org/'
