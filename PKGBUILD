@@ -34,22 +34,6 @@ else
     sha256sums=($(curl -s "${source}.sha256" | cut -f1 -d" "))
 fi
 
-prepare() {
-    cd "${srcdir}/${_pkgname}-${_buildver}"
-    # Remove bin/libs of non-matching architectures
-    if [[ $CARCH = 'i686' ]]; then
-        rm bin/libyjpagent-linux64.so
-        rm bin/fsnotifier64
-        rm bin/idea64.vmoptions
-        rm -rf lib/pty4j-native/linux/x86_64
-    fi
-    if [[ $CARCH = 'x86_64' ]]; then
-        rm bin/fsnotifier
-        rm bin/idea.vmoptions
-        rm -rf lib/pty4j-native/linux/x86
-   fi
-}
-
 package() {
     cd "$srcdir"
     mkdir -p "${pkgdir}/opt/${pkgname}"
