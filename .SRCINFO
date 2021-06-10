@@ -1,0 +1,11 @@
+pkgbase = touchosc-bin
+	pkgdesc = Modular control surface
+	pkgver = 1.0.0.92
+	pkgrel = 1
+	url = http://hexler.net
+	arch = x86_64
+	license = custom:TouchOSC
+	source = https://hexler.net/pub/touchosc/touchosc-1.0.0.92-linux-x86_64.deb
+	sha256sums = 83469ec3aa776954d2eee2a52d58dab061593aab8605f99cf35b851fe0d4e6ef
+
+pkgname = touchosc-bin
