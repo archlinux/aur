@@ -1,13 +1,13 @@
 pkgname=python-pdbpp-git
 _realname=pdbpp
-pkgver=0.10.2.r203.gb62a338
+pkgver=0.10.2.r206.gb326f14
 pkgrel=1
 pkgdesc="pdb++, a drop-in replacement for pdb"
 arch=(any)
 url="https://github.com/pdbpp/pdbpp"
 license=('BSD')
 depends=('python' 'python-fancycompleter' 'python-pygments')
-optdepends=('python-pyrepl-hg')
+optdepends=('python-pyrepl-git')
 options=(!emptydirs)
 conflicts=('python-pdbpp')
 provides=('python-pdbpp')
