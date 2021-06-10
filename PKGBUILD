@@ -2,7 +2,7 @@
 # Maintainer: Yoan Blanc <yoan@dosimple.ch>
 
 pkgname=tfsec
-pkgver=0.40.0
+pkgver=0.40.1
 pkgrel=1
 pkgdesc="Static analysis powered security scanner for your terraform code"
 depends=('glibc')
@@ -13,7 +13,7 @@ license=('MIT')
 
 source=("v${pkgver}-${pkgrel}.zip::${url}/archive/refs/tags/v${pkgver}.zip")
 
-sha256sums=('5c06c6816f965be7e0e682334fda1fc81a5d00a1aaa925680f9edd5f71f9fe16')
+sha256sums=('c733d7be6537d88bf151dd38d8b1e96c7a308ae1b8c02708751752dcf7918125')
 
 build() {
     export CGO_CPPFLAGS="${CPPFLAGS}"
