@@ -1,0 +1,43 @@
+BOLD='\033[1m'
+GREEN='\033[32m'
+RESET='\033[0m'
+
+msg_replug() {
+	echo -e "${BOLD}${GREEN}Replug${RESET} your tablet if it is connected. This will re-trigger the udev rules accordingly."
+	echo
+}
+
+msg_starting() {
+	echo "The daemon can be started with:"
+	echo -e "  $ ${GREEN}otd${RESET}"
+	echo "You can fork it to the background and use output redirection to a log file if desired."
+	echo "A systemd user service is also provided and can be used instead:"
+	echo -e "  $ ${GREEN}systemctl --user enable --now opentabletdriver.service${RESET}"
+	echo
+}
+
+msg_modules() {
+	echo "You will have to manually disable built-in kernel modules in order for this driver to work properly."
+	echo -e "This can be done by blacklisting the kernel module by creating a file in ${GREEN}/etc/modprobe.d/blacklist.conf${RESET} with a single line:"
+	echo -e "    ${GREEN}blacklist <module>${RESET}"
+	echo "Where <module> is 'wacom' if you own a wacom tablet, and 'hid_uclogic' otherwise."
+	echo "To unload the module immediately, run:"
+	echo -e "  # ${GREEN}rmmod <module>${RESET}"
+	echo
+}
+
+msg_faq() {
+	echo -e "In the case that you still have issues after following these instructions, the FAQ at ${GREEN}https://github.com/InfinityGhost/OpenTabletDriver/wiki/Linux-FAQ${RESET} may help."
+	echo
+}
+
+post_install() {
+	echo
+	echo -e "${BOLD}Welcome to OpenTabletDriver!${RESET}"
+	echo "In order to start using this driver, there are certain things that have to be configured manually."
+	echo
+	msg_replug
+	msg_starting
+	msg_modules
+	msg_faq
+}
