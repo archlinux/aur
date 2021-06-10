@@ -4,18 +4,18 @@
 pkgname=jamulus
 _pkgname=Jamulus
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Internet jam session software"
 arch=('x86_64')
 url='https://jamulus.io/'
 license=('GPL2')
-depends=('glibc' 'gcc-libs' 'qt5-base' 'qt5-translations' 'opus-git')
+depends=('glibc' 'gcc-libs' 'qt5-base' 'qt5-translations')
 makedepends=('jack')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jamulussoftware/jamulus/archive/r${pkgver//./_}.tar.gz")
 
 build() {
   cd "${srcdir}/${pkgname}-r${pkgver//./_}"
-  qmake CONFIG+=opus_shared_lib Jamulus.pro
+  qmake Jamulus.pro
   make clean
   make
 }
