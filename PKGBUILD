@@ -1,7 +1,7 @@
 # Maintainer: Ehsan Ghorbannezad <ehsangn@protonmail.ch>
 _pkgname='pulseaudio-subscribe'
 pkgname="${_pkgname}-git"
-pkgver=r7.3c6aaf7
+pkgver=r9.983b005
 pkgrel=1
 pkgdesc='program to subscribe to pulseaudio events. useful for updating statusbars.'
 arch=('x86_64')

@@ -1,6 +1,6 @@
 pkgbase = pulseaudio-subscribe-git
 	pkgdesc = program to subscribe to pulseaudio events. useful for updating statusbars.
-	pkgver = r7.3c6aaf7
+	pkgver = r9.983b005
 	pkgrel = 1
 	url = https://github.com/soystemd/pulseaudio-subscribe
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = pulseaudio-subscribe-git
 	md5sums = SKIP
 
 pkgname = pulseaudio-subscribe-git
-
