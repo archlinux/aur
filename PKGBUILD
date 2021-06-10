@@ -4,17 +4,17 @@
 
 pkgname=('pamac-aur-git')
 _pkgname=pamac
-pkgver=10.1.2.r3.g819a831
-_pkgver=10.1.2
+pkgver=10.1.3.r0.g8582762
+_pkgver=10.1.3
 pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm - git version"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
 license=('GPL3')
-depends=('dbus-glib' 'vte3>=0.38' 'libnotify' 'pacman>=5.2' 'pacman<5.3' 'appstream-glib' 'libappindicator-gtk3' 'archlinux-appstream-data-pamac' 'git' 'libhandy')
+depends=('libnotify' 'libpamac' 'libhandy')
 optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
             'lxsession: needed for authentification in Xfce, LXDE etc.')
-makedepends=('gettext' 'itstool' 'vala' 'meson' 'ninja' 'gobject-introspection' 'xorgproto' 'asciidoc')
+makedepends=('gettext' 'itstool' 'vala' 'meson' 'ninja' 'gobject-introspection' 'xorgproto' 'asciidoc' 'git')
 options=(!emptydirs)
 # Only for Manjaro users who should not use it...
 provides=('pamac')
@@ -45,7 +45,6 @@ build() {
 }
 
 package() {
-  backup=('etc/pamac.conf')
   conflicts=('pamac-aur')
   install=pamac.install
   cd $_pkgname
