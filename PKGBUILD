@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/docker/compose-cli"
 license=(Apache)
 source=("https://github.com/docker/compose-cli/archive/refs/tags/v${pkgver}.tar.gz")
+depends=('docker')
 makedepends=('go')
 sha256sums=('f931053d7a654c8b321dad4d397f36a60df6034d01cea7b9662859f45ae9e048')
 
