@@ -1,14 +1,14 @@
 pkgbase = minecraft-launcher-cmd
 	pkgdesc = Start Minecraft from commandline
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://gitlab.com/JakobDev/minecraft-launcher-cmd
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python-minecraft-launcher-lib
-	source = minecraft-launcher-cmd-1.0.tar.gz::https://gitlab.com/JakobDev/minecraft-launcher-cmd/-/archive/1.0/minecraft-launcher-cmd-1.0.tar.gz
-	sha256sums = bc212daf66f1a0cd0cd44f5441252f1bd15e25a17fc4524f3590adc79c44ab07
+	source = minecraft-launcher-cmd-1.1.tar.gz::https://gitlab.com/JakobDev/minecraft-launcher-cmd/-/archive/1.1/minecraft-launcher-cmd-1.1.tar.gz
+	sha256sums = eee639fccf8add4a05c9f4619c3eef4ae0de492e5933d430900cc9250db42cdb
 
 pkgname = minecraft-launcher-cmd
 
