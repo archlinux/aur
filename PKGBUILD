@@ -2,13 +2,13 @@
 
 pkgname=nordic-polar-theme-git
 _pkgname=Nordic-Polar
-pkgver=r87.7a1a577
+pkgver=v1.9.0.r28.ga38fd7d
 pkgrel=1
 pkgdesc="A Gtk3.20+ theme created using the awesome Nord color palette."
 arch=("any")
 url="https://github.com/EliverLara/${_pkgname}"
 license=('GPL')
-makedepends=('inkscape' 'optipng')
+makedepends=('git' 'inkscape' 'optipng')
 optdepends=('ttf-roboto: primary font face defined'
 			'ttf-ubuntu-font-family: secondary font face defined'
 			'cantarell-fonts: tertiary font face defined')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 pkgver() {
   	cd "${srcdir}/${_pkgname}"
 
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -37,12 +37,15 @@ build() {
 	msg2 "Rendering assets, please wait"
 	pushd gtk-2.0
 	while read $line; do echo -n "."; done < \
-		<(./render-assets.sh); echo
+		<(./render-assets.sh 2>/dev/null); echo
 	popd
 
 	pushd src
 	while read $line; do echo -n "."; done < \
-		<(./render-gtk3-assets.py; ./render-gtk3-assets-hidpi.py; ./render-wm-assets-hidpi.py; ./render-wm-assets.py); echo
+		<(./render-gtk3-assets.py 2>/dev/null; \
+		./render-gtk3-assets-hidpi.py 2>/dev/null; \
+		./render-wm-assets-hidpi.py 2>/dev/null; \
+		./render-wm-assets.py 2>/dev/null); echo
 	popd
 	msg2 "Done!"
 
