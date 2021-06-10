@@ -1,6 +1,6 @@
 pkgbase = slimbookamdcontroller
 	pkgdesc = Application for the performance management of AMD processors
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://slimbook.es
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = slimbookamdcontroller
 	depends = python-pillow
 	depends = ryzenadj
 	depends = systemd-libs
-	source = https://launchpad.net/~slimbook/+archive/ubuntu/slimbook/+files/slimbookamdcontroller_0.2_all.deb
-	sha256sums = ffb6d19556881d2511264eb943a97880fdc8e69d4f4e152153e7d1eb09593694
+	source = https://launchpad.net/~slimbook/+archive/ubuntu/slimbook/+files/slimbookamdcontroller_0.3_all.deb
+	sha256sums = 0d38da3e0ffa07c12a8717c520edc2550670f4841e2602a983c495a289e6acd1
 
 pkgname = slimbookamdcontroller
 
