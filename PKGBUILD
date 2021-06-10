@@ -2,16 +2,18 @@
 
 pkgname=ant-theme-git
 _pkgname=Ant
-pkgver=v1.3.0.r68.g93f3f60
+pkgver=v1.3.0.r76.g7ca2ea8
 pkgrel=1
 pkgdesc="A flat and light theme with a modern look"
 arch=("any")
 url="https://github.com/EliverLara/${_pkgname}"
 license=('GPL')
-makedepends=('inkscape' 'optipng')
+makedepends=('git' 'inkscape' 'optipng')
 optdepends=('ttf-roboto: primary font face defined'
 			'ttf-ubuntu-font-family: secondary font face defined'
 			'cantarell-fonts: tertiary font face defined')
+conflicts=('ant-gtk-theme')
+provides=('ant-gtk-theme')
 source=("${_pkgname}::git+https://github.com/EliverLara/${_pkgname}.git")
 sha256sums=('SKIP')
 
