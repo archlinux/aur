@@ -1,6 +1,6 @@
 pkgbase = pamac-all-git
 	pkgdesc = A Gtk3 frontend for libalpm (everything in one package - snap, flatpak, appindicator)
-	pkgver = 10.1.2.r3.g819a831
+	pkgver = 10.1.3.r0.g8582762
 	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/pamac
 	install = pamac.install
@@ -19,23 +19,9 @@ pkgbase = pamac-all-git
 	makedepends = gobject-introspection
 	makedepends = xorgproto
 	makedepends = asciidoc
-	depends = glib2>=2.42
-	depends = json-glib
-	depends = libsoup
-	depends = dbus-glib
-	depends = polkit
-	depends = vte3>=0.38
-	depends = gtk3>=3.22
 	depends = libnotify
-	depends = desktop-file-utils
-	depends = pacman>=5.2
-	depends = gnutls>=3.4
-	depends = git
-	depends = appstream-glib
-	depends = archlinux-appstream-data
-	depends = flatpak
-	depends = snapd
-	depends = snapd-glib
+	depends = libpamac-full
+	depends = libhandy
 	depends = libappindicator-gtk3
 	optdepends = polkit-gnome: needed for authentification in Cinnamon, Gnome
 	provides = pamac
@@ -53,9 +39,7 @@ pkgbase = pamac-all-git
 	conflicts = pamac-tray-appindicator
 	conflicts = pamac-aur-tray-appindicator-git
 	options = !emptydirs
-	backup = etc/pamac.conf
 	source = git+https://gitlab.manjaro.org/applications/pamac.git
 	sha256sums = SKIP
 
 pkgname = pamac-all-git
-

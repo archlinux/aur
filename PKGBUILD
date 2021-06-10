@@ -7,21 +7,17 @@ ENABLE_APPINDICATOR=1
 ENABLE_GNOME=0
 _pkgname=pamac
 pkgname=pamac-all-git
-pkgver=10.1.2.r3.g819a831
+pkgver=10.1.3.r0.g8582762
 pkgrel=1
-_pkgfixver=10.1.2
+_pkgfixver=10.1.3
 
 pkgdesc="A Gtk3 frontend for libalpm (everything in one package - snap, flatpak, appindicator)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
 license=('GPL3')
-depends=('glib2>=2.42' 'json-glib' 'libsoup' 'dbus-glib' 'polkit' 'vte3>=0.38' 'gtk3>=3.22'
-         'libnotify' 'desktop-file-utils' 'pacman>=5.2' 'gnutls>=3.4' 'git'
-         'appstream-glib' 'archlinux-appstream-data')
-
+depends=('libnotify' 'libpamac-full' 'libhandy')
 optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome')
 makedepends=('gettext' 'itstool' 'vala>=0.45' 'meson' 'ninja' 'gobject-introspection' 'xorgproto' 'asciidoc')
-backup=('etc/pamac.conf')
 conflicts=('pamac' 'pamac-gtk' 'pamac-cli' 'pamac-common' 'pamac-aur' 'pamac-aur-git')
 provides=("pamac")
 options=(!emptydirs)
@@ -36,14 +32,12 @@ pkgver() {
 
 define_meson=''
 if [ "${ENABLE_FLATPAK}" = 1 ]; then
-  depends+=('flatpak')
   define_meson+=' -Denable-flatpak=true'
   provides+=('pamac-flatpak-plugin')
   conflicts+=('pamac-flatpak-plugin')
 fi
 
 if [ "${ENABLE_SNAPD}" = 1 ]; then
-  depends+=('snapd' 'snapd-glib')
   define_meson+=' -Denable-snap=true'
   provides+=('pamac-snap-plugin')
   conflicts+=('pamac-snap-plugin')
@@ -73,9 +67,7 @@ build() {
   cd "$srcdir/$_pkgname"
   mkdir -p builddir
   cd builddir
-  meson --buildtype=release \
-        --prefix=/usr \
-        --sysconfdir=/etc $define_meson
+  meson --prefix=/usr --sysconfdir=/etc -Denable-appindicator=true --buildtype=release $define_meson
   # build
   ninja
 }
