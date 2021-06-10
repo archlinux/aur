@@ -14,12 +14,6 @@ _CMAKE_FLAGS+=( -DCMAKE_C_COMPILER=gcc-10
                 -DCMAKE_CXX_COMPILER=g++-10
 )
 
-# opencolorio=2 fix (add LD_LIBRRY_PATH or rpath to blender-2.93)
-_CMAKE_FLAGS+=( -DOSL_ROOT_DIR=/opt/osl
-                -DOPENIMAGEIO_ROOT_DIR=/opt/oiio
-                -DOPENCOLORIO_ROOT_DIR=/opt/ocio
-)
-
 #some extra, unofficially supported stuff goes here:
 _CMAKE_FLAGS+=( -DWITH_CYCLES_NETWORK=OFF )
 
@@ -30,8 +24,8 @@ pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
 url="https://blender.org/"
 depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2' 'libharu' 'potrace' 'openxr'
-         'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio-qfix' 'opencolorio-qfix'
-         'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage-qfix' 'libtiff' 'libpng')
+         'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
+         'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 optdepends=('cuda: CUDA support in Cycles'
             'optix=7.1.0: OptiX support in Cycles'
             'usd=21.05: USD export Scene'
@@ -128,10 +122,6 @@ build() {
 package() {
   _suffix=${pkgver%%.r*}
   DESTDIR="$pkgdir" ninja -C "$srcdir/build" install
-
-    #undo rpath clean in cmake_install ( faster than patching CMakeLists.txt)
-    cp "$srcdir/build/bin/blender" "$pkgdir/usr/bin/blender"
-
 
   if [[ -e "$pkgdir/usr/share/blender/${_suffix}/scripts/addons/cycles/lib/" ]] ; then
     # make sure the cuda kernels are not stripped
