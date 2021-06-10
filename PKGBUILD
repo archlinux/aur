@@ -1,7 +1,7 @@
 # Maintainer: Ehsan Ghorbannezad <ehsangn@protonmail.ch>
 _pkgname='vimdict'
 pkgname="${_pkgname}-git"
-pkgver=r3.8ac470c
+pkgver=r4.a6e22c1
 pkgrel=1
 pkgdesc='Look up word definitions in vim, using dict. '
 arch=('x86_64')
