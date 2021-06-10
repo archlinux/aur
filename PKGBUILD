@@ -1,13 +1,13 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 pkgname=offlineimap3-git
-pkgver=r2732.721d579
-pkgrel=2
+pkgver=r2746.fe443e6
+pkgrel=1
 pkgdesc="Read/sync your IMAP mailboxes (python3)"
 arch=("any")
 url="https://github.com/OfflineIMAP/offlineimap3"
 license=("GPL2")
 depends=(
-    "python-imaplib2-git"
+    "python-imaplib2"
     "python-rfc6555"
     "python-distro"
 )
