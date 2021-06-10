@@ -1,0 +1,12 @@
+diff --git a/src/compression.cpp b/src/compression.cpp
+index 7db0c97..f2290df 100644
+--- a/src/compression.cpp
++++ b/src/compression.cpp
+@@ -364,6 +364,7 @@ compressAcaPartial(const ClusterAssemblyFunction<T>& block, bool useRandomPivots
+     Pivot<dp_t > randomOrDefaultPivot = randomPivotManager.GetPivot();
+     if(I!=randomOrDefaultPivot.row && squaredNorm(randomOrDefaultPivot.value) > maxNorm2){
+       I = randomOrDefaultPivot.row;
++      delete bCol;
+       continue;
+     }
+ 

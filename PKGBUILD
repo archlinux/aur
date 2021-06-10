@@ -1,6 +1,6 @@
 pkgname=hmat-oss16
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A hierarchical matrix C/C++ library"
 license=('GPL')
 arch=('x86_64')
@@ -9,12 +9,13 @@ depends=('cblas' 'lapack')
 makedepends=('cmake')
 provides=("hmat-oss=${pkgver}")
 conflicts=('hmat-oss')
-source=("https://github.com/jeromerobert/hmat-oss/archive/${pkgver}.tar.gz" set_num_threads.patch)
-sha256sums=('1517be8bde1c06bd8bc42d95926c72d787af95fc3d37439c911a7cea3243d2ca' SKIP)
+source=("https://github.com/jeromerobert/hmat-oss/archive/${pkgver}.tar.gz" set_num_threads.patch leak.patch)
+sha256sums=('1517be8bde1c06bd8bc42d95926c72d787af95fc3d37439c911a7cea3243d2ca' SKIP SKIP)
 
 prepare() {
   cd hmat-oss-$pkgver
   patch -p1 -i "$srcdir"/set_num_threads.patch
+  patch -p1 -i "$srcdir"/leak.patch
   sed -i "s|-Werror ||g" CMakeLists.txt
 }
 
