@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-quickcontrols2
-_qtver=6.1.0
+_qtver=6.1.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,7 +18,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtquickcontrols2-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('784f1d79e74df59f095b126a116d85e72801bd357f5666d6bad8407ac3957d59')
+sha256sums=('7ebc99724bedd97a2c6a606ba2726feb66bb76eb9f30262ae13cd246f5665ea4')
 
 build() {
   source android-env ${_android_arch}
