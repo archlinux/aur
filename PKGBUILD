@@ -4,7 +4,7 @@ pkgname=opentabletdriver-git
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
-pkgver=v0.5.3.1.r188.gf2ec9fd4
+pkgver=v0.5.3.1.r221.g96516285
 pkgrel=2
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
@@ -17,7 +17,6 @@ provides=("opentabletdriver")
 conflicts=("opentabletdriver")
 install="notes.install"
 source=('git+https://github.com/OpenTabletDriver/OpenTabletDriver'
-        'git+https://github.com/OpenTabletDriver/OpenTabletDriver-udev'
         "$_spkgname"
         "$_spkgname-gui"
         "$_lpkgname.service"
@@ -25,7 +24,6 @@ source=('git+https://github.com/OpenTabletDriver/OpenTabletDriver'
         "notes.install")
 
 sha256sums=('SKIP'
-            'SKIP'
             '8a09d29e683aefcbf54e5fe891d5688f959d9399804f9c151f0e8f6e6a1ede1a'
             '20aac1584a8e08b5a9add1d02ce38e60ddfede615227df6f25c7422217df82b0'
             '88f7d9ae1e9402cfbf9266ddf0de642195b64de13a3d5ce6f93460ba035cf7f2'
@@ -35,16 +33,6 @@ sha256sums=('SKIP'
 pkgver() {
     cd "$srcdir/$_pkgname"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-    cd "$srcdir/$_pkgname-udev/.modules"
-    rmdir "$_pkgname"
-    ln -s "$srcdir/$_pkgname" "$_pkgname"
-
-    cd "$srcdir/$_pkgname"
-    sed -i 's/2.5.10/2.5.11/' "$_pkgname.UX/$_pkgname.UX.csproj"
-    sed -i 's/2.5.10/2.5.11/' "$_pkgname.UX.Gtk/$_pkgname.UX.Gtk.csproj"
 }
 
 build() {
@@ -87,15 +75,14 @@ build() {
         /p:SuppressNETCoreSdkPreviewMessage=true    \
         /p:PublishTrimmed=false
 
-    cd "$srcdir/$_pkgname-udev"
-    dotnet build          OpenTabletDriver.udev     \
+    dotnet build          OpenTabletDriver.Tools.udev \
         --configuration   Release                   \
-        --framework       net5                      \
+        --framework       net5.0                    \
         --runtime         linux-x64                 \
-        --output          "./$_pkgname.udev/out"    \
+        --output          "./$_pkgname/out-udev"    \
         /p:SuppressNETCoreSdkPreviewMessage=true
 
-    dotnet "./$_pkgname.udev/out/$_pkgname.udev.dll" \
+    dotnet "./$_pkgname/out-udev/$_pkgname.Tools.udev.dll" \
         "$srcdir/$_pkgname/$_pkgname/Configurations" \
         "90-$_lpkgname.rules" > /dev/null
 }
