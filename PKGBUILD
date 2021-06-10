@@ -2,8 +2,8 @@
 
 pkgname=nordic-theme-git
 _pkgname=Nordic
-pkgver=r126.9a98c05
-pkgrel=3
+pkgver=v1.9.0.r48.g9a98c05
+pkgrel=1
 pkgdesc="Dark Gtk3.20+ theme created using the awesome Nord color pallete."
 arch=("any")
 url="https://github.com/EliverLara/${_pkgname}"
@@ -13,13 +13,14 @@ optdepends=('ttf-roboto: primary font face defined'
 			'ttf-ubuntu-font-family: secondary font face defined'
 			'cantarell-fonts: tertiary font face defined')
 conflicts=('nordic-theme')
+provides=('nordic-theme')
 source=("${_pkgname}::git+https://github.com/EliverLara/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
   	cd "${srcdir}/${_pkgname}"
 
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
