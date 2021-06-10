@@ -1,0 +1,32 @@
+From 12f2659035f73cf4a405c4a185978c74291b8e85 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Wed, 9 Jun 2021 17:25:27 +0200
+Subject: [PATCH] Enable only SQL plugins which are known to work
+
+Change-Id: I0abc44db77cecbd323edc936529fb557e1664de8
+---
+ src/assistant/assistant/CMakeLists.txt | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/assistant/assistant/CMakeLists.txt b/src/assistant/assistant/CMakeLists.txt
+index eb5a04a0..5b28ae65 100644
+--- a/src/assistant/assistant/CMakeLists.txt
++++ b/src/assistant/assistant/CMakeLists.txt
+@@ -173,6 +173,14 @@ qt_internal_extend_target(assistant CONDITION UNIX
+         stdinlistener.cpp stdinlistener.h
+ )
+ 
++if(MINGW)
++    # enable only SQL plugins which are known to work
++    # note: The static plugins for MySQL/PostgreSQL don't work because these libs come with their
++    #       own pthread implementation which has conflicting symbols with the normal pthread library
++    #       leading to linker errors.
++    qt_import_plugins(assistant INCLUDE_BY_TYPE sqldrivers Qt6::QSQLiteDriverPlugin Qt6::QODBCDriverPlugin)
++endif()
++
+ if(APPLE)
+     set_target_properties(assistant PROPERTIES
+         MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/Info_mac.plist"
+-- 
+2.32.0
+
