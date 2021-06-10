@@ -2,7 +2,7 @@
 
 pkgname=obs-studio-tytan652
 pkgver=27.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, working VLC sources and my bind interface and GNOME entry PRs."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -61,8 +61,8 @@ sha256sums=(
         "a43f2ad974104888ef36eef49b3e60dc26f7cfc0f48300726c861978ae5ae3ea"
         "1d308c7d37e9a1202aae6cd51761a409ad93c33742b8ba2e60cf6cda473658ee"
         "200868bb9550bff6355b2c9853e568a12f3aab331a9049473e246fe2dbc08900"
-        "62c01f1a78f39b78391544711908c6abf1214fef3c4dbfe9febb7fa617be754a"
-        "324b518507ec6e8d43afb672f784c7e84d46b742e866478770b550dcb7e90325"
+        "eeb55870cc0f42c45ca714d49d6c865c36a67c34dc9a29504ace15736a110deb"
+        "70557ca1ea2d1ec841cefe60b7d70ab6aed0e3b518dae9b9720f32a69125474d"
         "SKIP"
         "SKIP"
 )
