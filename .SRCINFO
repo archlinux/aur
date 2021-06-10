@@ -1,0 +1,18 @@
+pkgbase = kripton-theme-git
+	pkgdesc = A dark theme with flat style for GNOME
+	pkgver = r46.7be519b
+	pkgrel = 1
+	url = https://github.com/EliverLara/Kripton
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = inkscape
+	makedepends = optipng
+	optdepends = ttf-roboto: primary font face defined
+	optdepends = ttf-ubuntu-font-family: secondary font face defined
+	optdepends = cantarell-fonts: tertiary font face defined
+	source = Kripton::git+https://github.com/EliverLara/Kripton.git
+	sha256sums = SKIP
+
+pkgname = kripton-theme-git
+
