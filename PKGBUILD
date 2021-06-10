@@ -1,8 +1,8 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=plasma-phonebook
-pkgver=21.05
-pkgrel=1
+pkgver=21.06
+pkgrel=2
 pkgdesc="Phone book for Plasma Mobile"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://invent.kde.org/plasma-mobile/plasma-phonebook"
