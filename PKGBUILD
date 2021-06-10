@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=krecorder
-pkgver=21.05
+pkgver=21.06
 pkgrel=1
 pkgdesc="A convergent audio recording application for Plasma"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
