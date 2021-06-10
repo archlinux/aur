@@ -1,6 +1,6 @@
 pkgbase = gwenview-no-purpose
 	pkgdesc = A fast and easy to use image viewer, without the dependency on purpose. This disables the share menu
-	pkgver = 21.04.1
+	pkgver = 21.04.2
 	pkgrel = 1
 	url = https://apps.kde.org/gwenview/
 	arch = x86_64
@@ -25,13 +25,12 @@ pkgbase = gwenview-no-purpose
 	optdepends = kamera: import pictures from gphoto2 cameras
 	conflicts = gwenview
 	replaces = gwenview
-	source = https://download.kde.org/stable/release-service/21.04.1/src/gwenview-21.04.1.tar.xz
-	source = https://download.kde.org/stable/release-service/21.04.1/src/gwenview-21.04.1.tar.xz.sig
+	source = https://download.kde.org/stable/release-service/21.04.2/src/gwenview-21.04.2.tar.xz
+	source = https://download.kde.org/stable/release-service/21.04.2/src/gwenview-21.04.2.tar.xz.sig
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
-	sha256sums = 675c7109c95e5a592d68e7c132afff5e48868895c54428a65c66ebeae56633c5
+	sha256sums = db062fa4f07c9372534c21b15f2953eecf172c81a1d3ebc227267670f615d47e
 	sha256sums = SKIP
 
 pkgname = gwenview-no-purpose
-
