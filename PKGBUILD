@@ -7,7 +7,7 @@ ENABLE_APPINDICATOR=1
 ENABLE_GNOME=0
 
 pkgname=pamac-all
-pkgver=10.1.2
+pkgver=10.1.3
 pkgrel=1
 _pkgfixver=$pkgver
 
@@ -15,28 +15,22 @@ pkgdesc="A Gtk3 frontend for libalpm (everything in one package - snap, flatpak,
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
 license=('GPL3')
-depends=('glib2>=2.42' 'json-glib' 'libsoup' 'dbus-glib' 'polkit' 'vte3>=0.38' 'gtk3>=3.22'
-         'libnotify' 'desktop-file-utils' 'pacman>=5.2' 'gnutls>=3.4' 'git'
-         'appstream-glib' 'archlinux-appstream-data')
+depends=('libnotify' 'libpamac-full' 'libhandy')
 optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome')
 makedepends=('gettext' 'itstool' 'vala>=0.45' 'meson' 'ninja' 'gobject-introspection' 'xorgproto' 'asciidoc')
-backup=('etc/pamac.conf')
 conflicts=('pamac' 'pamac-gtk' 'pamac-cli' 'pamac-common' 'pamac-aur' 'pamac-aur-git')
-provides=("pamac" "pamac-aur" "pamac-aur-git")
 options=(!emptydirs)
 install=pamac.install
 source=("pamac-$pkgver.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.gz") 
-sha256sums=('0a71762b12cb5c8b713da3773d7a0efc6f2e91f4b453609373e570b22a2009cf')
+sha256sums=('3eceb6897df4425417b1e983aba81a197713bd71cedfcd8f5b015728e80ffbe8')
 define_meson=''
 if [ "${ENABLE_FLATPAK}" = 1 ]; then
-  depends+=('flatpak')
   define_meson+=' -Denable-flatpak=true'
   provides+=('pamac-flatpak-plugin')
   conflicts+=('pamac-flatpak-plugin')
 fi
 
 if [ "${ENABLE_SNAPD}" = 1 ]; then
-  depends+=('snapd' 'snapd-glib')
   define_meson+=' -Denable-snap=true'
   provides+=('pamac-snap-plugin')
   conflicts+=('pamac-snap-plugin')
@@ -65,9 +59,7 @@ build() {
   cd "$srcdir/pamac-v$pkgver"
   mkdir -p builddir
   cd builddir
-  meson --buildtype=release \
-        --prefix=/usr \
-        --sysconfdir=/etc $define_meson
+  meson --prefix=/usr --sysconfdir=/etc -Denable-appindicator=true --buildtype=release $define_meson
   # build
   ninja
 }
