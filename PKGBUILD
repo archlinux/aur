@@ -10,13 +10,12 @@
 
 pkgname=myrepos
 pkgver=1.20180726
-pkgrel=4
+pkgrel=5
 pkgdesc='Multiple Repository management tool'
 arch=(any)
 url='https://myrepos.branchable.com/'
 license=(GPL2)
 depends=(perl)
-makedepends=(git)
 optdepends=('bzr: support for bzr repositories'
             'cvs: support for cvs repositories'
             'darcs: support for darcs repositories'
