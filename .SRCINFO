@@ -1,6 +1,6 @@
 pkgbase = peazip-gtk2-bin
 	pkgdesc = File and archive manager, 7Z BR RAR TAR ZST ZIP files extraction utility
-	pkgver = 7.9.0
+	pkgver = 8.0.0
 	pkgrel = 1
 	url = http://www.peazip.org/peazip-linux.html
 	arch = i686
@@ -23,8 +23,7 @@ pkgbase = peazip-gtk2-bin
 	conflicts = peazip-qt
 	conflicts = peazip-qt-opensuse-latest
 	options = !emptydirs
-	source = peazip-gtk2-bin-7.9.0.rpm::https://sourceforge.net/projects/peazip/files/7.8.0/peazip-7.9.0.LINUX.GTK2-1.x86_64.rpm
-	sha256sums = 79f1566dde4a361d7c514d9ebb138dbdce9b35b791349227adf7d2d5aee4b9cc
+	source = peazip-gtk2-bin-8.0.0.rpm::https://sourceforge.net/projects/peazip/files/8.0.0/peazip-8.0.0.LINUX.GTK2-1.x86_64.rpm
+	sha256sums = 85d3271a8ffd4da0f9a5e2acd0f42acb678fa8b7a854e646cedd0cb8dd6e0f40
 
 pkgname = peazip-gtk2-bin
-
