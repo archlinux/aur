@@ -2,19 +2,20 @@
 
 pkgname=macterial-theme-git
 _pkgname=macterial
-pkgver=r47.95c184c
+pkgver=v2.3.1.r15.g95c184c
 pkgrel=1
 pkgdesc="A mac inspired Gtk+ theme based on Material design"
 arch=("any")
 url="https://github.com/mythio/${_pkgname}"
 license=('GPL')
+makedepends=('git')
 source=("${_pkgname}::git+https://github.com/mythio/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
   	cd "${srcdir}/${_pkgname}"
 
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

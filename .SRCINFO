@@ -1,10 +1,11 @@
 pkgbase = macterial-theme-git
 	pkgdesc = A mac inspired Gtk+ theme based on Material design
-	pkgver = r47.95c184c
+	pkgver = v2.3.1.r15.g95c184c
 	pkgrel = 1
 	url = https://github.com/mythio/macterial
 	arch = any
 	license = GPL
+	makedepends = git
 	source = macterial::git+https://github.com/mythio/macterial.git
 	sha256sums = SKIP
 
