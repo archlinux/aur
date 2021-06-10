@@ -1,7 +1,7 @@
 # Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=lightdm-settings
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc='A configuration tool for the LightDM display manager'
 arch=('any')
@@ -24,7 +24,7 @@ makedepends=(
 optdepends=('lightdm-guest: Enable guest session options')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/${pkgver}.tar.gz")
 #source=("${pkgname}-${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('2c5c2574b04b243f143397b0ffdc4d375f5414ad87cb3371fc142bc89af36606')
+sha256sums=('4ea8e31cfcf8078961ee292e82388d470f49cc3d8bde3618d594780ed8af0144')
 
 ## Packaging via Github
 build() {
