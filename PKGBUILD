@@ -1,14 +1,14 @@
 #Maintainer: Toni Sagrista Selles <tsagrista@ari.uni-heidelberg.de>
 pkgname=gaiasky
-pkgver=3.0.3.39da1974c
+pkgver=3.1.0.8053403c4
 pkgrel=1
 epoch=2
-pkgdesc="Interactive 3D Universe software focused on ESA's Gaia mission"
+pkgdesc="Open source 3D universe simulator for desktop and VR with support for more than a billion objects"
 arch=(x86_64)
 url="https://zah.uni-heidelberg.de/gaia/outreach/gaiasky"
 license=('MPL')
 groups=()
-depends=('jre15-openjdk' 'xorg-xrandr')
+depends=('jre11-openjdk' 'xorg-xrandr')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -21,8 +21,8 @@ install=gaiasky.install
 changelog=CHANGELOG.md
 source=("http://gaia.ari.uni-heidelberg.de/gaiasky/files/releases/${pkgver//_/-}/$pkgname-${pkgver//_/-}.tar.gz")
 noextract=()
-md5sums=("047fc6014f7c96dca414b3ae50ba2c1f")
-sha256sums=("8194976826f86e3d27eb8f5ef0a0f60e4d795675698f9f4ddf591d7d7b7f205f")
+md5sums=("26957b5508bc13fbd03428a2d7834093")
+sha256sums=("fb26afefe2e282fde061cc096bb6a187c4c6b32b6b83b3e24444a5c67d47aad7")
 validpgpkeys=()
 
 prepare() {
