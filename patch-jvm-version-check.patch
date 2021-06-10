@@ -1,6 +1,6 @@
-diff --color --unified --recursive --text package.orig/IPMIView_2.18.0_build.201007_bundleJRE_Linux_x64/IPMIView20 package.new/IPMIView_2.18.0_build.201007_bundleJRE_Linux_x64/IPMIView20
---- package.orig/IPMIView_2.18.0_build.201007_bundleJRE_Linux_x64/IPMIView20	2020-11-27 18:19:21.353422941 -0600
-+++ package.new/IPMIView_2.18.0_build.201007_bundleJRE_Linux_x64/IPMIView20	2020-11-27 18:20:15.453482649 -0600
+diff --color --unified --recursive --text package.orig/IPMIView_2.19.0_build.210401_bundleJRE_Linux_x64/IPMIView20 package.new/IPMIView_2.19.0_build.210401_bundleJRE_Linux_x64/IPMIView20
+--- package.orig/IPMIView_2.19.0_build.210401_bundleJRE_Linux_x64/IPMIView20	2020-11-27 18:19:21.353422941 -0600
++++ package.new/IPMIView_2.19.0_build.210401_bundleJRE_Linux_x64/IPMIView20	2020-11-27 18:20:15.453482649 -0600
 @@ -872,7 +872,7 @@
  {
  	javaExe=$1
