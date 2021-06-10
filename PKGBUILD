@@ -1,16 +1,28 @@
-# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: E-Hern Lee <ehern.lee@gmail.com>
+# Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 # Contributor: Panagiotis Papadopoulos pano_90 AT gmx DOT net 
+
 pkgname=lib32-libbs2b
 _pkgname=libbs2b
 pkgver=3.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Bauer stereophonic-to-binaural DSP effect library"
 arch=('i686' 'x86_64')
 url='http://bs2b.sourceforge.net'
 license=('GPL')
 depends=('lib32-libsndfile' 'libbs2b')
-source=(https://cfhcable.dl.sourceforge.net/project/bs2b/$_pkgname/$pkgver/$_pkgname-$pkgver.tar.gz)
-sha1sums=('a71318211611a00bd3d595b0830d2188938ff89d')
+source=(
+  https://cfhcable.dl.sourceforge.net/project/bs2b/$_pkgname/$pkgver/$_pkgname-$pkgver.tar.gz
+  printf.patch
+)
+sha512sums=(
+  'SKIP'
+  'SKIP'
+)
+
+prepare() {
+  patch --forward --strip=1 --input="${srcdir}/printf.patch"
+}
 
 build() {
   cd "${_pkgname}-${pkgver}"
