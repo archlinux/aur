@@ -1,7 +1,7 @@
 pkgbase = irpf
 	pkgdesc = Programa Oficial da Receita para elaboração do IRPF
 	pkgver = 2021.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.receita.fazenda.gov.br
 	arch = any
 	license = custom
@@ -20,4 +20,3 @@ pkgbase = irpf
 	md5sums = a3343e87932f90696d08d0bd015ea89b
 
 pkgname = irpf
-
