@@ -2,16 +2,18 @@
 
 pkgname=ant-dracula-theme-git
 _pkgname=Ant-Dracula
-pkgver=v2.0.r28.gd75888b
+pkgver=v2.0.r34.g2413487
 pkgrel=1
 pkgdesc="Dracula variant of the Ant theme"
 arch=("any")
 url="https://github.com/EliverLara/${_pkgname}"
 license=('GPL')
-makedepends=('inkscape' 'optipng')
+makedepends=('git' 'inkscape' 'optipng')
 optdepends=('ttf-roboto: primary font face defined'
 			'ttf-ubuntu-font-family: secondary font face defined'
 			'cantarell-fonts: tertiary font face defined')
+conflicts=('ant-dracula-gtk-theme')
+provides=('ant-dracula-gtk-theme')
 source=("${_pkgname}::git+https://github.com/EliverLara/${_pkgname}.git")
 sha256sums=('SKIP')
 
