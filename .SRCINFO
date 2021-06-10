@@ -1,7 +1,7 @@
 pkgbase = minecraftsp-anjocaido
 	pkgdesc = Minecraft is a sandbox game which allows players to build constructions out of textured cubes in a 3D world.
 	pkgver = 4.400
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://teamshiginima.com/update/
 	install = minecraft.install
@@ -21,16 +21,16 @@ pkgbase = minecraftsp-anjocaido
 	depends = nss
 	provides = minecraft
 	replaces = minecraft
+	noextract = ShiginimaSP.v4400.jar
 	source = minecraft
 	source = minecraft.desktop
 	source = minecraft.png
 	source = readme.txt
-	source = https://teamshiginima.com/update/ShiginimaSE_v4400.zip
+	source = ShiginimaSP.v4400.jar::https://mc-pc.net/backend/download.php?id=1568
 	sha256sums = ee83fe03a964489fe201d786dfb10f6a31afdb96b1b7fd983e4c45e9ab8675bf
 	sha256sums = b6a74142c394fe874206d3f5b9cbdc809972f4c39351e2a112cc92e72d3d6181
 	sha256sums = 81dfe3dea0a61bb314dd95271903ded6fff35cec0751794cbd33b3fc838f060e
 	sha256sums = bd086bc827b404cf91a28282fc692cdf8bc97f7488b12d08828913a94d304f22
-	sha256sums = a62e5272a29a926bc236ec2fa4f06d28600006751247039eb18f50fe95038a22
+	sha256sums = 03a94acfb2387dea60af8678e3bd802f78da01cddc18d9643173d3a19337de8b
 
 pkgname = minecraftsp-anjocaido
-
