@@ -8,7 +8,7 @@
  #include "settingsdialog.h"
  #include "plugindialog.h"
  #include "mainwindow.h"
-@@ -407,11 +408,11 @@ MainWindow::MainWindow(QWidget *parent) :
+@@ -371,11 +372,11 @@ MainWindow::MainWindow(QWidget *parent) :
      updatePIF(ui);
  
      if (!settings->contains("coreLibPath"))
@@ -23,7 +23,7 @@
  
      updatePlugins();
  
-@@ -507,7 +508,7 @@ void MainWindow::setupLLE()
+@@ -428,7 +429,7 @@ void MainWindow::updateApp()
  
  void MainWindow::setupDiscord()
  {

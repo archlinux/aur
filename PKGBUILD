@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p-git
-pkgver=20201101.r0.gaa3d849
+pkgver=20210610.r2.g5c06fbb
 pkgrel=1
 pkgdesc='Mupen64Plus with custom plugins and Qt5 GUI (git version)'
 arch=('x86_64')
@@ -15,21 +15,21 @@ provides=('m64p' 'mupen64plus-gui' 'mupen64plus-video-gliden64')
 conflicts=('m64p' 'mupen64plus-gui' 'mupen64plus-video-gliden64' 'mupen64plus')
 source=('git+https://github.com/loganmc10/m64p.git'
         '010-m64p-remove-build-jobs-limitation.patch'
-        '020-m64p-enable-optimizations.patch'
+        '020-m64p-change-optimizations.patch'
         '030-m64p-fix-paths.patch'
         '040-m64p-add-pie.patch'
         'm64p.desktop')
 sha256sums=('SKIP'
-            '4c483f9bf3230171c433d7f8310881babbd02416ce16079e85fd0ef254442d57'
-            'a35c7370d4545356cfcc9b10ad84250685510744911fde8910ecd224da046711'
-            'fe5d5e200f7c2fa5146b56346bd57d95c440e36569608ab0738700b0f57935cc'
-            '0075fe9463f3c629066c5dd4f6407f11ff413b0f76fcd15ac61905f210c42e02'
+            '18cfd173f15de588285771b6159e69a07f6735d981b7326e8be52c3acce562b0'
+            'e774a0f25f951c5296a83f565384b3d788aa224537c4695e6712ae057d5a54a7'
+            '4271db8d4a4c8a39373897562cf0429f20cd95d952ab8385c1b376451ea55096'
+            '13879a08f76881c75597883c54917dbcd782ed0486050856043abaeff8ec86db'
             '8df4e8076d28a1bc44f41b0129a9935da9839e8a8cb9944206757e47da561808')
 
 prepare() {
     icotool -x m64p/mupen64plus-gui/mupen64plus.ico -o m64p/mupen64plus-gui
     patch -d m64p -Np1 -i "${srcdir}/010-m64p-remove-build-jobs-limitation.patch"
-    patch -d m64p -Np1 -i "${srcdir}/020-m64p-enable-optimizations.patch"
+    patch -d m64p -Np1 -i "${srcdir}/020-m64p-change-optimizations.patch"
     patch -d m64p -Np1 -i "${srcdir}/030-m64p-fix-paths.patch"
     patch -d m64p -Np1 -i "${srcdir}/040-m64p-add-pie.patch"
 }
@@ -62,7 +62,7 @@ package() {
     # mupen64plus components
     local _component
     local _sover
-    for _component in core audio-sdl2 input-raphnetraw rsp-hle
+    for _component in core audio-sdl2 input-raphnetraw
     do
         make -C "m64p/mupen64plus-${_component}/projects/unix" DESTDIR="$pkgdir" PREFIX='/usr' LDCONFIG='true' OSD='0' install
     done
@@ -71,9 +71,5 @@ package() {
     
     # other plugins and components
     install -D -m644 m64p/mupen64plus/libdiscord_game_sdk.so -t "${pkgdir}/usr/lib"
-    install -D -m644 m64p/mupen64plus/mupen64plus-input-qt.so -t "${pkgdir}/usr/lib/mupen64plus"
-    install -D -m644 m64p/mupen64plus/mupen64plus-rsp-parallel.so -t "${pkgdir}/usr/lib/mupen64plus"
-    install -D -m644 m64p/mupen64plus/mupen64plus-video-angrylion-plus.so -t "${pkgdir}/usr/lib/mupen64plus"
-    install -D -m644 m64p/mupen64plus/mupen64plus-video-GLideN64.so -t "${pkgdir}/usr/lib/mupen64plus"
-    install -D -m644 m64p/mupen64plus/GLideN64.custom.ini -t "${pkgdir}/usr/share/mupen64plus"
+    install -D -m644 m64p/mupen64plus/mupen64plus-{input-qt,{rsp,video}-parallel}.so -t "${pkgdir}/usr/lib/mupen64plus"
 }
