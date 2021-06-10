@@ -1,6 +1,6 @@
 pkgbase = devscripts
 	pkgdesc = Scripts to make the life of a Debian Package maintainer easier
-	pkgver = 2.21.1
+	pkgver = 2.21.2
 	pkgrel = 1
 	url = https://tracker.debian.org/pkg/devscripts
 	arch = i686
@@ -30,11 +30,12 @@ pkgbase = devscripts
 	depends = perl-timedate
 	depends = sensible-utils
 	optdepends = debian-keyring: Required for commands interacting with the system / user keyring
+	optdepends = perl-file-touch: Required for uscan
+	optdepends = perl-file-dirlist: Required for uscan
 	options = !makeflags
-	source = https://deb.debian.org/debian/pool/main/d/devscripts/devscripts_2.21.1.tar.xz
+	source = https://deb.debian.org/debian/pool/main/d/devscripts/devscripts_2.21.2.tar.xz
 	source = fixes.patch
-	sha256sums = d596c8894ac5777f2e3152f2ed86b22cb9b946b99ca2fb00fbe2536fc3db4c52
-	sha256sums = e5fef21e1d8aee3128c6499078bc2f38e8f80189b30882df817637388f1e7717
+	sha256sums = c32db3f5b62c30d4ac77724c1ab2eb241eb4b9a1d9ea24bd762eba4d6b07ed32
+	sha256sums = f8e7ce50c0d008c5d38c94b93c9fc560e5dd2cc8f06eeb2909b0b1784911b768
 
 pkgname = devscripts
-

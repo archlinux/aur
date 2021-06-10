@@ -5,7 +5,7 @@
 # Contributor: JD Horelick <jdhore1@gmail.com>
 
 pkgname=devscripts
-pkgver=2.21.1
+pkgver=2.21.2
 pkgrel=1
 pkgdesc="Scripts to make the life of a Debian Package maintainer easier"
 arch=('i686' 'x86_64')
@@ -31,14 +31,16 @@ makedepends=(
 )
 optdepends=(
     'debian-keyring: Required for commands interacting with the system / user keyring'
+    'perl-file-touch: Required for uscan'
+    'perl-file-dirlist: Required for uscan'
 )
 options=('!makeflags')
 source=(
     "https://deb.debian.org/debian/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}.tar.xz"
     fixes.patch
 )
-sha256sums=('d596c8894ac5777f2e3152f2ed86b22cb9b946b99ca2fb00fbe2536fc3db4c52'
-            'e5fef21e1d8aee3128c6499078bc2f38e8f80189b30882df817637388f1e7717')
+sha256sums=('c32db3f5b62c30d4ac77724c1ab2eb241eb4b9a1d9ea24bd762eba4d6b07ed32'
+            'f8e7ce50c0d008c5d38c94b93c9fc560e5dd2cc8f06eeb2909b0b1784911b768')
 
 prepare(){
     cd "$pkgname-$pkgver"
