@@ -25,6 +25,6 @@ pkgbase = plasma-angelfish
 	depends = kwindowsystem
 	depends = knotifications
 	source = https://download.kde.org/stable/plasma-mobile/21.06/angelfish-21.06.tar.xz
-	sha256sums = e5809a25c60375d295fc08a4302a04c23a3e7c4f82e5f20b9c4775e0792b4d86
+	sha256sums = 8878261bf0de6943e7457955214f0ffe851c6083627a7626476cc8f50e18777b
 
 pkgname = plasma-angelfish

@@ -11,7 +11,7 @@ depends=('qt5-webengine' 'qt5-feedback' 'purpose' 'kirigami2' 'ki18n' 'kconfig'
          'kcoreaddons' 'kdbusaddons' 'kwindowsystem' 'knotifications')
 makedepends=('extra-cmake-modules' 'corrosion-git' 'qt5-svg' 'qt5-tools')
 source=("https://download.kde.org/stable/plasma-mobile/${pkgver}/angelfish-${pkgver}.tar.xz")
-sha256sums=('e5809a25c60375d295fc08a4302a04c23a3e7c4f82e5f20b9c4775e0792b4d86')
+sha256sums=('8878261bf0de6943e7457955214f0ffe851c6083627a7626476cc8f50e18777b')
 
 build() {
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -B build -S angelfish-${pkgver}
