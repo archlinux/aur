@@ -1,0 +1,2 @@
+*.pkg.tar.*
+/sdl12-compat
