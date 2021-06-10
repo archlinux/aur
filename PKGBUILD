@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=snappymail
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="modern PHP webmail client"
 arch=('any')
@@ -17,11 +17,12 @@ source=(
   'sysusers.conf'
   'tmpfiles.conf'
 )
-b2sums=('a18462900e2d217a7a67f1ad3eb3b8b97d52e8a73fa7fc7a7f7b990834d1bda26a150837be2751932646bad6dcc581236d33a1921b35c4b312b6d8791c216f09'
+b2sums=('a2f7e884765d2c1d70f244b1f2abb88daff194eefedfb387390ce8ef83bc639be7cc6b7f590338c5048c881e4ede3d706a33cd95af8c34af0b378af5ebd33195'
         'e020b2d4bc694ca056f5c15b148c69553ab610b5e1789f52543aa65e098f8097a41709b5b0fc22a6a01088a9d3f14d623b1b6e9ae2570acd4f380f429301c003'
         'be25b05d775ac4e88065e8018a1026b4c41a073639e59e6520818b7ca578cc93ac2120bd090caf1d255fade69a6680ca764b14cb32f6dd61c80b521d1b16f205')
 
 prepare() {
+  # ensure data path is set to /var/lib/snappymail
   sed -i "s/\$sCustomDataPath = '';/\$sCustomDataPath = '\/var\/lib\/$pkgname';/" "$pkgname-$pkgver/$pkgname/v/0.0.0/include.php"
 
   # create folder for build output
