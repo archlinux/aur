@@ -3,7 +3,7 @@
 # PRs are welcome at: https://github.com/captn3m0/aur-pop-bin
 
 pkgname=pop-bin
-pkgver=6.0.7
+pkgver=6.0.8
 pkgrel=1
 pkgdesc="Low latency videoconferencing & screen sharing with multiplayer drawing & control. Pop is a multiplayer screen sharing app that lets you work together like you’re in the same room."
 arch=('x86_64')
@@ -21,7 +21,7 @@ options=('!strip' '!emptydirs')
 replaces=('screen-desktop-bin')
 conflicts=('screen-desktop-bin')
 source=("https://download.pop.com/desktop-app/linux/${pkgver}/pop_${pkgver}_amd64.deb")
-sha512sums=('f2ca8323f372fb2de7f20552f7c7f526c39491ef7bab6099fe3e7e96ae5290e3e0b89fdda43cef2e36633adffd60ab39f672aca0d4064a2dc07b9edf6612b0b7')
+sha512sums=('1aa7d73fea7dafc61dff94bd2f2b45a1813ffbcb0edb9d5158e3819075adc9bad63952eabc4eeddc4ab190917e54cb81077a782564a1686c98ff854f9736e8e9')
 
 package(){
     mkdir -p "${pkgdir}/opt/${pkgname}"
