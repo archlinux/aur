@@ -10,6 +10,7 @@ depends=('cmake' 'gcc' 'ninja') # ninja is optional, just remove "-G Ninja" from
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+install='.install'
 source=("${pkgname%-git}::git+https://github.com/ArthurSonzogni/FTXUI")
 md5sums=('SKIP')
 

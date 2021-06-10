@@ -1,0 +1,10 @@
+post_install() {
+	echo "-------------------------->"
+	echo "The headers have been installed to '/usr/local/include/ftxui' and libraries to /usr/local/lib/ftxui, namely 'libcomponent.a', 'libdom.a', 'libscreen.a'"
+	echo "Don't Forget to link with the libraries :D"
+	echo "<--------------------------"
+}
+
+post_upgrade() {
+	post_install
+}

@@ -3,6 +3,7 @@ pkgbase = ftxui-git
 	pkgver = r277.4d29dcc
 	pkgrel = 1
 	url = https://github.com/ArthurSonzogni/FTXUI
+	install = .install
 	arch = x86_64
 	license = MIT
 	makedepends = git
