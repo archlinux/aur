@@ -3,6 +3,7 @@ pkgbase = teaspeak-server
 	pkgver = 1.5.6
 	pkgrel = 1
 	url = https://teaspeak.de/gb
+	install = .install
 	arch = x86_64
 	license = custom:teaspeak-server
 	depends = nss
@@ -11,4 +12,3 @@ pkgbase = teaspeak-server
 	sha256sums = 50ddd39e59c075137371ccde4c26c5930b33cc3a326230bd93d442efc57b7c9c
 
 pkgname = teaspeak-server
-

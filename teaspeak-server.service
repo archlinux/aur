@@ -1,0 +1,16 @@
+[Unit]
+Description=TeaSpeak Server Start Script
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/opt/teaspeak-server
+Type=forking
+ExecStart=/opt/teaspeak-server/teastart.sh start
+ExecStop=/opt/teaspeak-server/teastart.sh stop
+ExecReload=/opt/teaspeak-server/teastart.sh restart
+PIDFile=/opt/teaspeak-server/tpid.pid
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
