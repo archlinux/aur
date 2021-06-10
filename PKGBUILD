@@ -65,7 +65,7 @@ package()
 
     # Install the software.
     cd "${srcdir}"/"${pkgname}"-v"${pkgver}"/build/ || exit
-    make DESTDIR="${pkgdir}" install
+    make install
 
     # Install the documentation.
     install -Dm644 "${srcdir}"/"${pkgname}"-v"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
