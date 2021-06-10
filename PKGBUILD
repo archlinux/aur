@@ -70,7 +70,7 @@ build() {
   fi
 
   rm -f .clang
-  $make_env_variant nitrous_defconfig
+  $make_env_variant $_defconfig
   _handle_lsmod
   makeflags="${MAKEFLAGS}"
   if [[ "$MAKEFLAGS" != *"-j"* ]]; then
