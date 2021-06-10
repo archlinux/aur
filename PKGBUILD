@@ -1,43 +1,38 @@
 # Submitter: Sean Greenslade <aur@seangreenslade.com>
 pkgname="onboard-sdk-git"
-pkgdesc="DJI Onboard SDK - git version, 3.3 branch"
+pkgdesc="DJI Onboard SDK - git version"
 url="https://github.com/dji-sdk/Onboard-SDK"
-pkgver=3.3.r7.g2295710
+pkgver=r1320.17b50bb0
 arch=('any')
-pkgrel=2
+pkgrel=1
 
-source=('git+https://github.com/dji-sdk/Onboard-SDK#branch=3.3'
-		'includes_fix.patch')
+source=('git+https://github.com/dji-sdk/Onboard-SDK'
+        'https://github.com/dji-sdk/Onboard-SDK/pull/740.patch')
 
 depends=('cmake')
-sha256sums=('SKIP'
-'e3bca20b6932521830e41f300602560bd5e6492fea096709d5dbcfce8accf518')
+sha256sums=('SKIP' 'SKIP')
 
 _pkgdir="Onboard-SDK"
 
-pkgver() {
-	cd "${_pkgdir}"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+prepare() {
+    cd "${_pkgdir}"
+    patch --forward --strip=1 --input="${srcdir}/740.patch"
 }
 
-prepare() {
-	[ -d ${srcdir}/${_pkgdir}/build ] || mkdir ${srcdir}/${_pkgdir}/build
-	cd "${srcdir}/${_pkgdir}"
-	patch -p1 -i ../includes_fix.patch
+pkgver() {
+	cd "${_pkgdir}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "${srcdir}/${_pkgdir}/build"
-
-	# Build project
-	cmake ${srcdir}/${_pkgdir} \
+	cmake -B build -S ${srcdir}/${_pkgdir} \
         -DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release
 
-	make djiosdk-core
+	make -C build
 }
 
 package() {
-	cd "${srcdir}/${_pkgdir}/build"
+	cd build
 	make DESTDIR="${pkgdir}/" install
 }
