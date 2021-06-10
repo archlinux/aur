@@ -1,6 +1,6 @@
 # Maintainer: nekgem2 <nekgem2@firemail.cc>
 pkgname=lokinet
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Anonymous, decentralized and IP based overlay network for the internet."
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ source=("https://github.com/loki-project/loki-network/releases/download/v$pkgver
         'lokinet.tmpfiles'
         'lokinet.pkla'
         'lokinet.rules')
-sha256sums=('334149d949e3508bf07816336ec4e9f7e2af553747f8e42bef4dc564d10a08a9'
+sha256sums=('e8ebc752e7f67c2186915446a48aa3aa0877787025ae66b2b3ddaf5556499217'
             'SKIP'
             'ff5e7db4e65463e50978da0185487bd4a7f213f04bdb6256e221089f833c6ab6'
             '41f02f6ca693cd596165a7431795f36a2559504361857063278d31f833b3b7b1'
