@@ -1,0 +1,17 @@
+pkgbase = ftxui-git
+	pkgdesc = C++ Functional Terminal User Interface
+	pkgver = r277.4d29dcc
+	pkgrel = 1
+	url = https://github.com/ArthurSonzogni/FTXUI
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = cmake
+	depends = gcc
+	depends = ninja
+	provides = ftxui
+	conflicts = ftxui
+	source = ftxui::git+https://github.com/ArthurSonzogni/FTXUI
+	md5sums = SKIP
+
+pkgname = ftxui-git
