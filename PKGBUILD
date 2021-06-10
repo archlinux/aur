@@ -1,6 +1,6 @@
 pkgname=mingw-w64-hmat-oss16
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A hierarchical matrix C/C++ library (mingw-w64)"
 license=('GPL')
 arch=('any')
@@ -10,10 +10,15 @@ makedepends=('mingw-w64-cmake')
 conflicts=('mingw-w64-hmat-oss')
 provides=('mingw-w64-hmat-oss')
 options=('!buildflags' 'staticlibs' '!strip')
-source=("https://github.com/jeromerobert/hmat-oss/archive/${pkgver}.tar.gz")
-sha256sums=('1517be8bde1c06bd8bc42d95926c72d787af95fc3d37439c911a7cea3243d2ca')
+source=("https://github.com/jeromerobert/hmat-oss/archive/${pkgver}.tar.gz" leak.patch)
+sha256sums=('1517be8bde1c06bd8bc42d95926c72d787af95fc3d37439c911a7cea3243d2ca' SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare() {
+  cd "$srcdir/hmat-oss-${pkgver}"
+  patch -p1 -i "${srcdir}"/leak.patch
+}
 
 build() {
   cd "$srcdir/hmat-oss-${pkgver}"
