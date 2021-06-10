@@ -3,12 +3,13 @@
 # https://gitlab.manjaro.org/packages/extra/pamac
 ENABLE_FLATPAK=1
 ENABLE_SNAPD=1
+#Set this flag to 0 if you want to use pamac-tray-icon-plasma
 ENABLE_APPINDICATOR=1
 ENABLE_GNOME=0
 _pkgname=pamac
 pkgname=pamac-all-git
 pkgver=10.1.3.r0.g8582762
-pkgrel=1
+pkgrel=2
 _pkgfixver=10.1.3
 
 pkgdesc="A Gtk3 frontend for libalpm (everything in one package - snap, flatpak, appindicator)"
