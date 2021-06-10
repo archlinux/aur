@@ -10,7 +10,7 @@
 
 pkgname=myrepos-git
 pkgver=1.20180726.r101.ge58d3b8
-pkgrel=1
+pkgrel=2
 pkgdesc='Multiple Repository management tool'
 arch=(any)
 url='https://myrepos.branchable.com/'
@@ -22,7 +22,6 @@ optdepends=('bzr: support for bzr repositories'
             'darcs: support for darcs repositories'
             'git-annex: support for git-annex clones'
             'git: support for git repositories'
-            'gitk: support for visualizing git repository history'
             'mercurial: support for mercurial repositories'
             'perl-html-parser: support for webcheckout'
             'perl-libwww: support for webcheckout'
