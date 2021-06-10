@@ -4,7 +4,7 @@
 _target=mips64-elf
 pkgname=${_target}-newlib
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A C library intended for use on embedded systems (${_target})"
 arch=('any')
 url='http://sourceware.org/newlib/'
@@ -19,7 +19,7 @@ build()
   rm -rf build
   mkdir build && cd build
 
-  export CFLAGS_FOR_TARGET='-G0 -O2 -fcommon -ffunction-sections -fdata-sections -fomit-frame-pointer'
+  export CFLAGS_FOR_TARGET='-G0 -O2 -fcommon -ffunction-sections -fdata-sections -fomit-frame-pointer -DHAVE_ASSERT_FUNC'
 
   ../newlib-${pkgver}/configure \
     --prefix=/usr \
