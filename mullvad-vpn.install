@@ -3,6 +3,8 @@ pre_install() {
 		echo 'Stopping & disabling Mullvad VPN daemon...'
 		/opt/Mullvad\ VPN/resources/mullvad-setup prepare-restart || true
 		systemctl disable --now mullvad-daemon
+		cp /var/log/mullvad-vpn/daemon.log /var/log/mullvad-vpn/old-install-daemon.log \
+			|| echo "Failed to copy old daemon log"
 	fi
 
 	pkill -x "mullvad-gui" || true
