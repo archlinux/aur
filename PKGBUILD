@@ -2,16 +2,18 @@
 
 pkgname=ant-nebula-theme-git
 _pkgname=Ant-Nebula
-pkgver=v1.3.0.r62.g51e4c03
+pkgver=v1.3.0.r67.g3a380c0
 pkgrel=1
 pkgdesc="Nebula variant of the Ant theme"
 arch=("any")
 url="https://github.com/EliverLara/${_pkgname}"
 license=('GPL')
-makedepends=('inkscape' 'optipng')
+makedepends=('git' 'inkscape' 'optipng')
 optdepends=('ttf-roboto: primary font face defined'
 			'ttf-ubuntu-font-family: secondary font face defined'
 			'cantarell-fonts: tertiary font face defined')
+conflicts=('ant-nebula-gtk-theme')
+provides=('ant-nebula-gtk-theme')
 source=("${_pkgname}::git+https://github.com/EliverLara/${_pkgname}.git")
 sha256sums=('SKIP')
 
