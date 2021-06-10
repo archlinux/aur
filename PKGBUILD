@@ -1,6 +1,6 @@
 #Maintainer: Sanskrit Coders <sanskrit-programmers@googlegroups.com>
 pkgname=sanskrit-fonts
-pkgver=r30.d041a69
+pkgver=r33.15a2dd4
 pkgrel=1
 pkgdesc="Various unicode fonts for Sanskrit (Scripts: Devanagari, Kannada, Tamil, Telugu, Malayalam, Oriya). Fonts include: Siddhanta, Chandas, Uttara, Sanskrit2003, Noto Sans Devanagari."
 url="http://github.com/sanskrit-coders/sanskrit-fonts"
