@@ -1,8 +1,8 @@
 # Maintainer: Arnaud Dovi <mr.dovi@gmail.com>
 
 pkgname=detect-it-easy-git
-pkgver=3.02.r8.bf4dfe4
-pkgrel=2
+pkgver=3.02.r11.4bb3439
+pkgrel=1
 pkgdesc='Detect It Easy, or abbreviated "DIE" is a program for determining types of files'
 arch=('x86_64')
 url='https://horsicq.github.io'
@@ -98,7 +98,7 @@ XDEX XDemangle XDemangleWidget XDisasm XDisasmView XEntropyWidget XGithub XHashW
 XMIMEWidget XMemoryMapWidget XOptions XQwt XShortcuts XSingleApplication XStyles XTranslation archive_widget build_tools \
 die_script die_widget nfd_widget signatures"
   for _subdir in $_subdirs; do
-    mv "$_subdir" "$_srcname"
+    cp -r "$_subdir" "$_srcname"
   done
 }
 
