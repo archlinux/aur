@@ -1,0 +1,18 @@
+pkgbase = python-pywhat
+	pkgdesc = Identify emails, IP addresses and more
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/bee-san/pyWhat
+	arch = any
+	license = GPL-3.0
+	makedepends = python-setuptools
+	makedepends = python-dephell
+	depends = python
+	depends = python-click
+	depends = python-langdetect
+	depends = python-name-that-hash
+	depends = python-rich
+	source = python-pywhat.tar.gz::https://github.com/bee-san/pyWhat/archive/refs/tags/1.2.0.tar.gz
+	sha256sums = 64909fd3af97d914fb41732bc635487c483a4d8bcea2a1dc49f35b1f5b9b776c
+
+pkgname = python-pywhat
