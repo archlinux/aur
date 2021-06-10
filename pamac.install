@@ -24,7 +24,6 @@ post_install() {
   # enable systemd timers
   mkdir -p /etc/systemd/system/timers.target.wants
   ln -sf /usr/lib/systemd/system/pamac-cleancache.timer /etc/systemd/system/timers.target.wants/pamac-cleancache.timer
-  /etc/pacman.d/hooks.bin/fix-appstream-data.sh
   # restore old conf
   restore_conf
 }
