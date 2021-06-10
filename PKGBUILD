@@ -34,6 +34,11 @@ if [ -z ${use_tracers+x} ]; then
   use_tracers=y
 fi
 
+## Choose between GCC and CLANG config (default is GCC)
+if [ -z ${_compiler+x} ]; then
+  _compiler=gcc
+fi
+
 # Compile ONLY used modules to VASTLY reduce the number of modules built
 # and the build time.
 #
@@ -53,7 +58,7 @@ _makenconfig=
 
 pkgbase=linux-xanmod-cacule
 _major=5.12
-pkgver=${_major}.9
+pkgver=${_major}.10
 _branch=5.x
 xanmod=1
 pkgrel=${xanmod}
@@ -85,7 +90,7 @@ done
 
 sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
             'SKIP'
-            '8e1a56faf8bf9c6b886bf6fc747d6384e9846b1b99bb78f5d345ec72340c3227'
+            '04416f1da8d36178f2f2993c00735957a5d6505aa9150b8d60c796feb8103c1b'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
 
@@ -99,7 +104,6 @@ prepare() {
   # hacky work around for xz not getting extracted
   # https://bbs.archlinux.org/viewtopic.php?id=265115
   if [[ ! -f "$srcdir/patch-${pkgver}-xanmod${xanmod}-cacule" ]]; then
-    unlink "$srcdir/patch-${pkgver}-xanmod${xanmod}-cacule.xz"
     xz -dc "$startdir/patch-${pkgver}-xanmod${xanmod}-cacule.xz" > "$srcdir/patch-${pkgver}-xanmod${xanmod}-cacule"
   fi
 
@@ -120,6 +124,9 @@ prepare() {
     msg2 "Applying patch $src..."
     patch -Np1 < "../$src"
   done
+
+  # Applying configuration
+  cp -vf CONFIGS/xanmod/${_compiler}/config .config
 
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
   scripts/config --enable CONFIG_STACK_VALIDATION
@@ -147,7 +154,7 @@ prepare() {
   # Put the file "myconfig" at the package folder (this will take preference) or "${XDG_CONFIG_HOME}/linux-xanmod/myconfig"
   # If we detect partial file with scripts/config commands, we execute as a script
   # If not, it's a full config, will be replaced
-  for _myconfig in "${startdir}/myconfig" "${XDG_CONFIG_HOME}/linux-xanmod/myconfig" ; do
+  for _myconfig in "${SRCDEST}/myconfig" "${HOME}/.config/linux-xanmod/myconfig" "${XDG_CONFIG_HOME}/linux-xanmod/myconfig" ; do
     if [ -f "${_myconfig}" ]; then
       if grep -q 'scripts/config' "${_myconfig}"; then
         # myconfig is a partial file. Executing as a script
@@ -159,6 +166,7 @@ prepare() {
         cp -f "${_myconfig}" .config
       fi
       echo
+      break
     fi
   done
 
@@ -182,7 +190,7 @@ prepare() {
   [[ -z "$_makenconfig" ]] || make nconfig
 
   # save configuration for later reuse
-  cat .config > "${startdir}/config.last"
+  cat .config > "${SRCDEST}/config.last"
 }
 
 build() {
