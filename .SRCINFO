@@ -1,6 +1,6 @@
 pkgbase = ompl-git
 	pkgdesc = The Open Motion Planning Library (OMPL) consists of many state-of-the-art sampling-based motion planning algorithms (git)
-	pkgver = r4625.31c3689d
+	pkgver = r4678.253e8c0e
 	pkgrel = 1
 	url = http://ompl.kavrakilab.org/
 	arch = i686
@@ -34,4 +34,3 @@ pkgbase = ompl-git
 	sha512sums = SKIP
 
 pkgname = ompl-git
-
