@@ -11,9 +11,9 @@ shopt -s extglob
 
 pkgbase=python-git
 pkgname=(python-git python-tests-git)
-pkgver=3.10.0a0.r109913.d1b81574edd
+pkgver=3.11.0a0.r110186.42d5a4fc3b3
 pkgrel=1
-_pybasever=3.10
+_pybasever=3.11
 pkgdesc="Next generation of the python high-level scripting language"
 arch=('x86_64')
 license=('custom')
