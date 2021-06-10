@@ -1,10 +1,11 @@
 pkgbase = emerald-icon-theme-git
 	pkgdesc = Fresh and simple personality icon theme
 	pkgver = 2018.02.02.r18.ge2d3520
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vinceliuice/emerald-icon-theme
 	arch = any
 	license = Custom
+	makedepends = git
 	provides = emerald-icon-theme
 	conflicts = emerald-icon-theme
 	source = emerald-icon-theme-git::git+https://github.com/vinceliuice/emerald-icon-theme
