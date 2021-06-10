@@ -3,12 +3,13 @@
 # https://gitlab.manjaro.org/packages/extra/pamac
 ENABLE_FLATPAK=1
 ENABLE_SNAPD=1
+#Set this flag to 0 if you want to use pamac-tray-icon-plasma
 ENABLE_APPINDICATOR=1
 ENABLE_GNOME=0
 
 pkgname=pamac-all
 pkgver=10.1.3
-pkgrel=2
+pkgrel=3
 _pkgfixver=$pkgver
 
 pkgdesc="A Gtk3 frontend for libalpm (everything in one package - snap, flatpak, appindicator)"
@@ -19,6 +20,7 @@ depends=('libnotify' 'libpamac-full' 'libhandy')
 optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome')
 makedepends=('gettext' 'itstool' 'vala>=0.45' 'meson' 'ninja' 'gobject-introspection' 'xorgproto' 'asciidoc')
 conflicts=('pamac' 'pamac-gtk' 'pamac-cli' 'pamac-common' 'pamac-aur' 'pamac-aur-git')
+provides=('pamac')
 options=(!emptydirs)
 install=pamac.install
 source=("pamac-$pkgver.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.gz") 
