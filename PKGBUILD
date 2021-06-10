@@ -1,5 +1,4 @@
-# Maintainer: madhogs <madhogs at protonmail dot com>
-# Contributor: grimi <grimi at poczta dot fm>
+# Maintainer: Markus Kitsinger (SwooshyCueb) <root@swooshalicio.us>
 
 pkgname=xcursor-lambda
 pkgver=1.3
