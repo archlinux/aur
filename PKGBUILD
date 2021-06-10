@@ -1,6 +1,6 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail>
 pkgname=rubymine-eap
-pkgver=212.3724.3
+pkgver=212.4037.6
 _pkgname=RubyMine
 _pkgver=2021.2
 pkgrel=1
@@ -15,7 +15,7 @@ install=rubymine.install
 source=(https://download.jetbrains.com/ruby/${_pkgname}-${pkgver}.tar.gz
         rubymine-eap.desktop
         rubymine.install)
-sha256sums=('3936868b9c2e05493d3154f1a746fcf801259379e0d7523ce9a0097efee18d55'
+sha256sums=('1f3cb4ef5e2f8edc7b2ef230aed406a9721669136fed17e806708a15ece8c367'
             '02b32d973da26ef7d61e4c291fff71229729b203661dc75cc947c8098cb8e660'
             'fe42e281cdcaca5008d3f254a16974504c9271407800d0234ce06476ea9e3bdd')
 
@@ -24,18 +24,6 @@ prepare() {
 
     rm Install-Linux-tar.txt
     rm help/ReferenceCardForMac.pdf
-    #Remove bin/libs if architecture doesn't match
-    if [[ $CARCH = 'i686' ]]; then
-        rm bin/fsnotifier64
-        rm bin/libdbm64.so
-        rm bin/rubymine64.vmoptions
-        rm -rf lib/pty4j-native/linux/x86_64
-    fi
-    if [[ $CARCH = 'x86_64' ]]; then
-        rm bin/fsnotifier
-        rm bin/rubymine.vmoptions
-        rm -rf lib/pty4j-native/linux/x86
-    fi
 }
 
 package() {
