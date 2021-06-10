@@ -3,7 +3,7 @@
 
 pkgname=zoxide-bin
 _pkgname=zoxide
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='A fast cd command that learns your habits (binary release)'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -15,9 +15,9 @@ changelog=CHANGELOG.md
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-x86_64-unknown-linux-musl.tar.gz")
 source_armv7h=("$_pkgname-$pkgver-armv7h.tar.gz::$url/releases/download/v$pkgver/$_pkgname-armv7-unknown-linux-musleabihf.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-aarch64-unknown-linux-musl.tar.gz")
-sha512sums_x86_64=('72809c8e65e3f6155e1bfaf068e8571d6caea6d17db54432477c1847391ee0fd1bf08d1a70b176b47e2d728bc2eda3cf25cc219251e26e631a9beae0abad8ce5')
-sha512sums_armv7h=('95227428a4f49068159fc960b4924b4e6aed31f53346665f23129e439afd46f974cd57ecf3ae9e918c57e02f6d8d25edf448a76992b8a07e9a3d2e7c233fca82')
-sha512sums_aarch64=('a1a3ff5416d70c1b6a71a08313ff9203087a6c8b266a9f78e73ad24c77b97ffb7938027f711e769628ce35cd69d12012655420603ef69d3d201cacbf769de135')
+sha512sums_x86_64=('adf6d2d79138be62f5a915db6319a293132fce205cf2d10ae06247eed4e12649833fd4331d78e022f6b8f5a3ebb4e6c25db1bdbcd1f3beb10f233a7aa30c4348')
+sha512sums_armv7h=('615785e73175a6126e06ba3457f84ac8a6696f9438e6c2f18d444da5d62c865f75f5173f50834c0d7e8f4b6a4a7a1c3b16fc37905ec0e11ca060ea3fd0b478c0')
+sha512sums_aarch64=('9b5d64b69d23897ff41056a5c51d9a4d030ed4f069d5babc6b2f54767b89f79e83a86e44636a7c828779536ed61338da13e833173515e27a2e301ad4f08eb9e8')
 
 prepare() {
   if [[ "$CARCH" == 'armv7h' ]]
