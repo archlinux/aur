@@ -1,6 +1,6 @@
 pkgbase = google-slides-nativefier
 	pkgdesc = Electron wrapper for the Google Slides web application
-	pkgver = 21.04.01
+	pkgver = 21.06.10
 	pkgrel = 1
 	url = https://slides.google.com
 	arch = x86_64
@@ -15,4 +15,3 @@ pkgbase = google-slides-nativefier
 	sha256sums = d453eca9594c39cbb6de6910ca410878e4c381fd7b8845f9db09341435b88f7c
 
 pkgname = google-slides-nativefier
-

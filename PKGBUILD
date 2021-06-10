@@ -2,7 +2,7 @@
 # Based on package "google-docs-nativefier"
 
 pkgname=google-slides-nativefier
-pkgver=21.04.01
+pkgver=21.06.10
 pkgrel=1
 pkgdesc="Electron wrapper for the Google Slides web application"
 arch=(x86_64)
@@ -25,16 +25,10 @@ build() {
       --maximize \
       --name "$_instname" \
       --user-agent "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:87.0) Gecko/20100101 Firefox/87.0" \
-      --internal-urls "(.*?docs\.google\.com.*?|.*?slides\.google\.com.*?|.*?accounts\.google\.com.*?)"  \
-      --electron-version 12.0.2
+      --internal-urls "(.*?docs\.google\.com.*?|.*?slides\.google\.com.*?|.*?accounts\.google\.com.*?)"
 }
 
-package() {
-    # удаляем главное меню, которое появляется по нажатию Alt
-    # Для этого в строчку №5078 вставляем: `mainWindow.removeMenu();`
-    # номер строки может измениться, когда обновится electron. Тогда надо искать строчку return mainWindow и вставлять этот код перед ней
-    sed -i '5078 i mainWindow.removeMenu();' $_instname-linux-x64/resources/app/lib/main.js
-    
+package() {   
     install -d "$pkgdir"/opt "$pkgdir"/usr/{bin,share/pixmaps}
     install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$_instname.desktop
 
