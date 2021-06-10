@@ -1,0 +1,6 @@
+src/*
+pkg/*
+*.zst
+*.sig
+*.bin
+latest
