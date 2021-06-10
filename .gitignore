@@ -1,5 +1,5 @@
 pkg/
 src/
-*.zip
+OFL-*.txt
+static_otf-*.zip
 otf-stix-*.zst
-OFL.txt
