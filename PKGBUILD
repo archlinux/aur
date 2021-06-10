@@ -23,7 +23,7 @@ conflicts=('pix-git')
 url='https://github.com/linuxmint/pix'
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linuxmint/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('b0f05239c07380661f85a576ffed120d')
+md5sums=('0bc163ce0e80675800c4dac75cabad20')
 
 
 build() {
@@ -51,4 +51,3 @@ package(){
     cd ${srcdir}/${pkgname}-${pkgver}
     make DESTDIR="$pkgdir/" install
 }
-
