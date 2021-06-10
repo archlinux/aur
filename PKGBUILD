@@ -42,9 +42,9 @@ build() {
   mkdir build
   cd build
 
-  # NOTE: -march=native causes test failures by slowing down PRM and PRMstar for unknown reasons. As
-  # such, we currently remove it from CXXFLAGS if it's present
-  CXXFLAGS=$(echo $CXXFLAGS | sed 's/-march=native//g')
+  # NOTE: -march=native causes test failures by slowing down PRM and PRMstar on AMD processors for
+  # unknown reasons. Uncomment the following to remove it if you encounter this issue.
+  # CXXFLAGS=$(echo $CXXFLAGS | sed 's/-march=native//g')
   cmake -G Ninja \
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DCMAKE_INSTALL_LIBDIR=lib \
