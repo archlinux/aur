@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=kalk
-pkgver=21.05
+pkgver=21.06
 pkgrel=1
 pkgdesc="Kalk is a powerful cross-platfrom calculator application built with the Kirigami framework"
 arch=('x86_64')
