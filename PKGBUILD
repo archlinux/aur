@@ -4,6 +4,7 @@ pkgname=mingw-w64-libsystre
 pkgver=1.0.1
 pkgrel=1
 pkgdesc="Wrapper library around TRE that provides POSIX API (mingw-w64)"
+provides=('mingw-w64-regex')
 arch=('any')
 url=""
 license=('BSD')
