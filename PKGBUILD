@@ -2,7 +2,7 @@
 # Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protonmail.com>
 
 pkgname=keysmith
-pkgver=0.2
+pkgver=21.06
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -19,7 +19,7 @@ groups=()
 # shellcheck disable=SC2034
 depends=()
 # shellcheck disable=SC2034
-makedepends=("cmake" "extra-cmake-modules" "frameworkintegration" "gcc" "kirigami2" "libsodium" "qt5-base" "qt5-quickcontrols2" "sudo")
+makedepends=("cmake" "extra-cmake-modules" "frameworkintegration" "gcc" "kirigami2" "libsodium" "qt5-base" "qt5-quickcontrols2")
 # shellcheck disable=SC2034
 checkdepends=()
 # shellcheck disable=SC2034
@@ -43,7 +43,7 @@ source=("${pkgname}-v${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/${pkgname}-v$
 # shellcheck disable=SC2034
 noextract=()
 # shellcheck disable=SC2034
-md5sums=("bb63b3c244d5a6ca5686f0af423866e8")
+md5sums=("bd2ebc5296b39c621474d26bc1182d2e")
 # shellcheck disable=SC2034
 validpgpkeys=()
 
@@ -65,7 +65,7 @@ package()
 
     # Install the software.
     cd "${srcdir}"/"${pkgname}"-v"${pkgver}"/build/ || exit
-    sudo make install
+    make install
 
     # Install the documentation.
     install -Dm644 "${srcdir}"/"${pkgname}"-v"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
