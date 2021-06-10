@@ -1,6 +1,6 @@
 pkgbase = gorm
 	pkgdesc = GNUstep's easy-to-use interface designer
-	pkgver = 1.2.8
+	pkgver = 1.2.26
 	pkgrel = 1
 	url = http://www.gnustep.org/experience/Gorm.html
 	arch = i686
@@ -10,8 +10,7 @@ pkgbase = gorm
 	makedepends = gnustep-make
 	depends = gnustep-base
 	depends = gnustep-gui
-	source = ftp://ftp.gnustep.org/pub/gnustep/dev-apps/gorm-1.2.8.tar.gz
+	source = ftp://ftp.gnustep.org/pub/gnustep/dev-apps/gorm-1.2.26.tar.gz
 	sha256sums = 1384900a32838a60e152cc9e83495125e47f34f484adc6cc411b43e7d3b5b6dd
 
 pkgname = gorm
-

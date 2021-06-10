@@ -3,7 +3,7 @@
 pkgname=gorm
 _pkgname=Gorm
 pkgrel=1
-pkgver=1.2.8
+pkgver=1.2.26
 pkgdesc="GNUstep's easy-to-use interface designer"
 arch=('i686' 'x86_64')
 url="http://www.gnustep.org/experience/Gorm.html"
