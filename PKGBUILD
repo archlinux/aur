@@ -2,11 +2,11 @@
 
 pkgname=proton-ge-custom
 _srctag=6.10-GE-1
-_commit=18e9eeea9e5427b0015b843f8d9e380b66fbd1ad
+_commit=1768fb7b2c1bf09381929ce41deb87e3add0e0ce
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=6.2.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
