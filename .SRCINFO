@@ -1,7 +1,7 @@
 pkgbase = mullvad-vpn-beta-bin
 	pkgdesc = The Mullvad VPN client app for desktop (beta channel)
 	pkgver = 2021.4.beta1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mullvad.net
 	install = mullvad-vpn.install
 	arch = x86_64
@@ -21,4 +21,3 @@ pkgbase = mullvad-vpn-beta-bin
 	sha256sums = a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4
 
 pkgname = mullvad-vpn-beta-bin
-
