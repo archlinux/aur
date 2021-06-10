@@ -1,29 +1,28 @@
-# Maintainer: Joshua Haase <hahj87@gmail.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Joshua Haase <hahj87@gmail.com>
 # Contributor: Matjaž Mozetič (https://github.com/sysadminmatmoz)
-# Contributor: Vincent Demeester (vincent@sbr.pm)
+# Contributor: Vincent Demeester <vincent@sbr.pm>
 # Contributor: Nicolas Pouillard (http://nicolaspouillard.fr)
 # Contributor: Peter Simons <simons@cryp.to>
 # Contributor: Andreas Hilboll <andreas@hilboll.de>
-# Contributor: kljohann@gmail.com
+# Contributor: <kljohann@gmail.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=myrepos-git
-pkgver=1.20160122
-pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-}
+pkgver=1.20180726.r101.ge58d3b8
 pkgrel=1
-pkgdesc="Multiple Repository management tool"
-arch=('any')
-depends=('perl')
-makedepends=('git')
+pkgdesc='Multiple Repository management tool'
+arch=(any)
+url='https://myrepos.branchable.com/'
+license=(GPL2)
+depends=(perl)
+makedepends=(git)
 optdepends=('bzr: support for bzr repositories'
             'cvs: support for cvs repositories'
             'darcs: support for darcs repositories'
             'git-annex: support for git-annex clones'
-            'gitk: support for visualizing git repository history'
             'git: support for git repositories'
+            'gitk: support for visualizing git repository history'
             'mercurial: support for mercurial repositories'
             'perl-html-parser: support for webcheckout'
             'perl-libwww: support for webcheckout'
@@ -32,28 +31,29 @@ optdepends=('bzr: support for bzr repositories'
             'svn: support for subversion repositories'
             'unison: support for unison as a vcs'
             'vcsh: support for vcsh')
-url="http://myrepos.branchable.com"
-license=('GPL2')
-source=("${pkgname%-git}::git+git://myrepos.branchable.com/")
+provides=(mr "myrepos=$pkgver" webcheckout)
+conflicts=(mr myrepos webcheckout)
+source=("$pkgname::${url/#https/git}")
 sha256sums=('SKIP')
-provides=('mr' 'myrepos' 'webcheckout')
-conflicts=('mr' 'myrepos' 'webcheckout')
+
+pkgver() {
+    cd "$pkgname"
+    git describe --long --abbrev=7 --tags --match='1.20*' |
+        sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
-  make
+    cd "$pkgname"
+    make
 }
 
 check() {
-  cd "$srcdir/${pkgname%-git}"
-  make test
+    cd "$pkgname"
+    make test
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
-  make DESTDIR="$pkgdir" PREFIX=/usr install
-  install -D README -t "$pkgdir/usr/share/doc/mr/"
-  install -D mrconfig "$pkgdir/usr/share/doc/mr/"mrconfig.example
-  install -D mrconfig.complex "$pkgdir/usr/share/doc/mr/"mrconfig.complex.example
-
+    cd "$pkgname"
+    make DESTDIR="$pkgdir" install
+    install -Dm644 -t "$pkgdir/usr/share/doc/${pkgname%-git}/" README
 }
