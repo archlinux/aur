@@ -1,7 +1,7 @@
 pkgbase = libpamac-full
 	pkgdesc = Library for Pamac package manager based on libalpm - flatpak and snap support enabled
 	pkgver = 11.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.manjaro.org/applications/libpamac
 	arch = i686
 	arch = pentium4
@@ -24,6 +24,7 @@ pkgbase = libpamac-full
 	depends = flatpak
 	depends = snapd
 	depends = snapd-glib
+	depends = archlinux-appstream-data-pamac
 	provides = libpamac
 	options = !emptydirs
 	source = https://gitlab.manjaro.org/applications/libpamac/-/archive/11.0.0/libpamac-11.0.0.tar.bz2

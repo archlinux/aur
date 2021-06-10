@@ -3,12 +3,12 @@
 pkgname=libpamac-full
 _pkgname=libpamac
 pkgver=11.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for Pamac package manager based on libalpm - flatpak and snap support enabled"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/libpamac"
 license=('GPL3')
-depends=('pacman>=6.0' 'pacman<6.1' 'flatpak' 'snapd' 'snapd-glib')
+depends=('pacman>=6.0' 'pacman<6.1' 'flatpak' 'snapd' 'snapd-glib' 'archlinux-appstream-data-pamac')
 makedepends=('gettext' 'itstool' 'vala' 'meson' 'ninja' 'gobject-introspection' 'xorgproto' 'asciidoc')
 options=(!emptydirs)
 # Only for Manjaro users who should not use it...
