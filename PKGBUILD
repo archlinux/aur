@@ -2,15 +2,24 @@
 # Contributor:
 
 ### BUILD OPTIONS
-# Set these variables to ANYTHING that is not null to enable them
+# Set the next two variables to ANYTHING that is not null to enable them
 
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
-_enable_gcc_more_v="y"
+# Only compile active modules to VASTLY reduce the number of modules built and
+# the build time.
+#
+# To keep track of which modules are needed for your specific system/hardware,
+# give module_db a try: https://aur.archlinux.org/packages/modprobed-db
+# This PKGBUILD reads the database kept if it exists
+#
+# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
+_localmodcfg=
+
 # Optionally select a sub architecture by number or leave blank which will
 # require user interaction during the build. Note that the generic (default)
-# option is 32.
+# option is 36.
 #
 #  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
 #  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
@@ -24,46 +33,50 @@ _enable_gcc_more_v="y"
 #  10. AMD Excavator (MEXCAVATOR)
 #  11. AMD Zen (MZEN)
 #  12. AMD Zen 2 (MZEN2)
-#  13. Intel P4 / older Netburst based Xeon (MPSC)
-#  14. Intel Atom (MATOM)
+#  13. AMD Zen 3 (MZEN3)
+#  14. Intel P4 / older Netburst based Xeon (MPSC)
 #  15. Intel Core 2 (MCORE2)
-#  16. Intel Nehalem (MNEHALEM)
-#  17. Intel Westmere (MWESTMERE)
-#  18. Intel Silvermont (MSILVERMONT)
-#  19. Intel Goldmont (MGOLDMONT)
-#  20. Intel Goldmont Plus (MGOLDMONTPLUS)
-#  21. Intel Sandy Bridge (MSANDYBRIDGE)
-#  22. Intel Ivy Bridge (MIVYBRIDGE)
-#  23. Intel Haswell (MHASWELL)
-#  24. Intel Broadwell (MBROADWELL)
-#  25. Intel Skylake (MSKYLAKE)
-#  26. Intel Skylake X (MSKYLAKEX)
-#  27. Intel Cannon Lake (MCANNONLAKE)
-#  28. Intel Ice Lake (MICELAKE)
-#  29. Intel Cascade Lake (MCASCADELAKE)
-#  30. Intel Cooper Lake (MCOOPERLAKE)
-#  31. Intel Tiger Lake (MTIGERLAKE)
-#  32. Generic-x86-64 (GENERIC_CPU)
-#  33. Intel-Native optimizations autodetected by GCC (MNATIVE_INTEL)
-#  34. AMD-Native optimizations autodetected by GCC (MNATIVE_AMD)
+#  16. Intel Atom (MATOM)
+#  17. Intel Nehalem (MNEHALEM)
+#  18. Intel Westmere (MWESTMERE)
+#  19. Intel Silvermont (MSILVERMONT)
+#  20. Intel Goldmont (MGOLDMONT)
+#  21. Intel Goldmont Plus (MGOLDMONTPLUS)
+#  22. Intel Sandy Bridge (MSANDYBRIDGE)
+#  23. Intel Ivy Bridge (MIVYBRIDGE)
+#  24. Intel Haswell (MHASWELL)
+#  25. Intel Broadwell (MBROADWELL)
+#  26. Intel Skylake (MSKYLAKE)
+#  27. Intel Skylake X (MSKYLAKEX)
+#  28. Intel Cannon Lake (MCANNONLAKE)
+#  29. Intel Ice Lake (MICELAKE)
+#  30. Intel Cascade Lake (MCASCADELAKE)
+#  31. Intel Cooper Lake (MCOOPERLAKE)
+#  32. Intel Tiger Lake (MTIGERLAKE)
+#  33. Intel Sapphire Rapids (MSAPPHIRERAPIDS)
+#  34. Intel Rocket Lake (MROCKETLAKE)
+#  35. Intel Alder Lake (MALDERLAKE)
+#  36. Generic-x86-64 (GENERIC_CPU)
+#  37. Generic-x86-64-v2 (GENERIC_CPU2)
+#  38. Generic-x86-64-v3 (GENERIC_CPU3)
+#  39. Generic-x86-64-v4 (GENERIC_CPU4)
+#  40. Intel-Native optimizations autodetected by GCC (MNATIVE_INTEL)
+#  41. AMD-Native optimizations autodetected by GCC (MNATIVE_AMD)
 _subarch=
 
-# Only compile active modules to VASTLY reduce the number of modules built and
-# the build time.
-#
-# To keep track of which modules are needed for your specific system/hardware,
-# give module_db a try: https://aur.archlinux.org/packages/modprobed-db
-# This PKGBUILD reads the database kept if it exists
-#
-# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=
+# Use the current kernel's .config file
+# Enabling this option will use the .config of the RUNNING kernel rather than
+# the ARCH defaults. Useful when the package gets updated and you already went
+# through the trouble of customizing your config options.  NOT recommended when
+# a new kernel is released, but again, convenient for package bumps.
+_use_current=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.19
-_minor=188
+_minor=194
 _srcname=linux-${_major}
-_clr=${_major}.177-198
+_clr=${_major}.193-206
 pkgbase=linux-clear-lts2018
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -73,12 +86,12 @@ url="https://github.com/clearlinux-pkgs/linux-lts2018"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_gcc_more_v='20210327'
+_gcc_more_v='20210610'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-${_major}.tar".{xz,sign}
   "https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
   "${pkgbase}::git+https://github.com/clearlinux-pkgs/linux-lts2018.git#tag=${_clr}"
-  "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
+  "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -86,129 +99,130 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-    # https://bbs.archlinux.org/viewtopic.php?id=265115
-
-    if [[ ! -f "$srcdir/patch-${pkgver}" ]]; then
-      xz -dc "$SRCDEST/patch-${pkgver}.xz" > "patch-${pkgver}"
-    fi
-
     cd ${_srcname}
 
     ### Add upstream patches
-        echo "Add upstream patches"
-        patch -Np1 -i ../patch-${pkgver}
+    echo "Add upstream patches"
+    patch -Np1 -i ../patch-${pkgver}
 
     ### Setting version
-        echo "Setting version..."
-        scripts/setlocalversion --save-scmversion
-        echo "-$pkgrel" > localversion.10-pkgrel
-        echo "${pkgbase#linux}" > localversion.20-pkgname
+    echo "Setting version..."
+    scripts/setlocalversion --save-scmversion
+    echo "-$pkgrel" > localversion.10-pkgrel
+    echo "${pkgbase#linux}" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-        for i in $(grep '^Patch' ${srcdir}/${pkgbase}/linux-lts2018.spec | grep -Ev '^Patch0126' | sed -n 's/.*: //p'); do
+    for i in $(grep '^Patch' ${srcdir}/${pkgbase}/linux-lts2018.spec | grep -Ev '^Patch0126' | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/${pkgbase}/${i}"
-        done
+    done
 
     ### Setting config
-        echo "Setting config..."
-        cp -Tf $srcdir/${pkgbase}/config ./.config
+    echo "Setting config..."
+    cp -Tf $srcdir/${pkgbase}/config ./.config
 
     ### Enable extra stuff from arch kernel
-        echo "Enable extra stuff from arch kernel..."
+    echo "Enable extra stuff from arch kernel..."
 
-        # General setup
-        scripts/config --enable IKCONFIG \
-                       --enable-after IKCONFIG IKCONFIG_PROC \
-                       --undefine RT_GROUP_SCHED
+    # General setup
+    scripts/config --enable IKCONFIG \
+                   --enable-after IKCONFIG IKCONFIG_PROC \
+                   --undefine RT_GROUP_SCHED
 
-        # Power management and ACPI options
-        scripts/config --enable ACPI_REV_OVERRIDE_POSSIBLE \
-                       --enable ACPI_TABLE_UPGRADE
+    # Power management and ACPI options
+    scripts/config --enable ACPI_REV_OVERRIDE_POSSIBLE \
+                   --enable ACPI_TABLE_UPGRADE
 
-        # Enable loadable module support
-        scripts/config --undefine MODULE_SIG_FORCE \
-                       --enable MODULE_COMPRESS \
-                       --enable-after MODULE_COMPRESS MODULE_COMPRESS_XZ
+    # Enable loadable module support
+    scripts/config --undefine MODULE_SIG_FORCE \
+                   --enable MODULE_COMPRESS \
+                   --enable-after MODULE_COMPRESS MODULE_COMPRESS_XZ
 
-        # Networking support
-        scripts/config --enable NETFILTER_INGRESS \
-                       --module NET_SCH_CAKE
+    # Networking support
+    scripts/config --enable NETFILTER_INGRESS \
+                   --module NET_SCH_CAKE
 
-        # Device Drivers
-        scripts/config --enable FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER \
-                       --enable DELL_SMBIOS_SMM \
-                       --enable NET_VENDOR_AQUANTIA \
-                       --module PATA_JMICRON \
-                       --enable-after SOUND SOUND_OSS_CORE \
-                       --enable SND_OSSEMUL \
-                       --module-after SND_OSSEMUL SND_MIXER_OSS \
-                       --module-after SND_MIXER_OSS SND_PCM_OSS \
-                       --enable-after SND_PCM_OSS SND_PCM_OSS_PLUGINS
+    # Device Drivers
+    scripts/config --enable FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER \
+                   --enable DELL_SMBIOS_SMM \
+                   --enable NET_VENDOR_AQUANTIA \
+                   --module PATA_JMICRON \
+                   --enable-after SOUND SOUND_OSS_CORE \
+                   --enable SND_OSSEMUL \
+                   --module-after SND_OSSEMUL SND_MIXER_OSS \
+                   --module-after SND_MIXER_OSS SND_PCM_OSS \
+                   --enable-after SND_PCM_OSS SND_PCM_OSS_PLUGINS
 
-        # Kernel hacking -> Compile-time checks and compiler options -> Make section mismatch errors non-fatal
-        scripts/config --enable SECTION_MISMATCH_WARN_ONLY
+    # Kernel hacking -> Compile-time checks and compiler options -> Make section mismatch errors non-fatal
+    scripts/config --enable SECTION_MISMATCH_WARN_ONLY
 
-        # Security options
-        scripts/config --enable SECURITY_SELINUX \
-                       --enable-after SECURITY_SELINUX SECURITY_SELINUX_BOOTPARAM \
-                       --set-val SECURITY_SELINUX_BOOTPARAM_VALUE 0 \
-                       --enable SECURITY_SMACK \
-                       --enable-after SECURITY_SMACK SECURITY_SMACK_BRINGUP \
-                       --enable-after SECURITY_SMACK_BRINGUP SECURITY_SMACK_NETFILTER \
-                       --enable-after SECURITY_SMACK_NETFILTER SECURITY_SMACK_APPEND_SIGNALS \
-                       --enable SECURITY_TOMOYO \
-                       --enable SECURITY_APPARMOR \
-                       --set-val SECURITY_APPARMOR_BOOTPARAM_VALUE 0 \
-                       --enable SECURITY_YAMA
+    # Security options
+    scripts/config --enable SECURITY_SELINUX \
+                   --enable-after SECURITY_SELINUX SECURITY_SELINUX_BOOTPARAM \
+                   --set-val SECURITY_SELINUX_BOOTPARAM_VALUE 0 \
+                   --enable SECURITY_SMACK \
+                   --enable-after SECURITY_SMACK SECURITY_SMACK_BRINGUP \
+                   --enable-after SECURITY_SMACK_BRINGUP SECURITY_SMACK_NETFILTER \
+                   --enable-after SECURITY_SMACK_NETFILTER SECURITY_SMACK_APPEND_SIGNALS \
+                   --enable SECURITY_TOMOYO \
+                   --enable SECURITY_APPARMOR \
+                   --set-val SECURITY_APPARMOR_BOOTPARAM_VALUE 0 \
+                   --enable SECURITY_YAMA
 
-        make olddefconfig
+    make olddefconfig
 
-    ### Patch source to unlock additional gcc CPU optimizations
-        # https://github.com/graysky2/kernel_gcc_patch
-        if [ "${_enable_gcc_more_v}" = "y" ]; then
-        echo "Patching to enable GCC optimization for other uarchs..."
-        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/more-uarches-for-kernel-4.19-5.4.patch"
-        fi
+    # https://github.com/graysky2/kernel_compiler_patch
+    # make sure to apply after olddefconfig to allow the next section
+    echo "Patching to enable GCC optimization for other uarchs..."
+    patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-4.19-5.4.patch"
 
-    ### Get kernel version
-        if [ "${_enable_gcc_more_v}" = "y" ] || [ -n "${_subarch}" ]; then
+    if [ -n "$_subarch" ]; then
+        # user wants a subarch so apply choice defined above interactively via 'yes'
         yes "$_subarch" | make oldconfig
-        else
-        make prepare
-        fi
+    else
+        # no subarch defined so allow user to pick one
+        make oldconfig
+    fi
 
-    ### Prepared version
-        make -s kernelrelease > version
-        echo "Prepared $pkgbase version $(<version)"
+    ### Optionally use running kernel's config
+    # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
+    if [ -n "$_use_current" ]; then
+        if [[ -s /proc/config.gz ]]; then
+            echo "Extracting config from /proc/config.gz..."
+            # modprobe configs
+            zcat /proc/config.gz > ./.config
+        else
+            warning "Your kernel was not compiled with IKCONFIG_PROC!"
+            warning "You cannot read the current config!"
+            warning "Aborting!"
+            exit
+        fi
+    fi
 
     ### Optionally load needed modules for the make localmodconfig
-        # See https://aur.archlinux.org/packages/modprobed-db
-        if [ -n "$_localmodcfg" ]; then
-          if [ -e $HOME/.config/modprobed.db ]; then
+    # See https://aur.archlinux.org/packages/modprobed-db
+    if [ -n "$_localmodcfg" ]; then
+        if [ -e $HOME/.config/modprobed.db ]; then
             echo "Running Steven Rostedt's make localmodconfig now"
             make LSMOD=$HOME/.config/modprobed.db localmodconfig
-          else
+        else
             echo "No modprobed.db data found"
             exit
-          fi
         fi
+    fi
 
-    ### do not run `make olddefconfig` as it sets default options
-        yes "" | make config >/dev/null
+    make -s kernelrelease > version
+    echo "Prepared $pkgbase version $(<version)"
 
-    ### Running make nconfig
-
-        [[ -z "$_makenconfig" ]] || make nconfig
+    [[ -z "$_makenconfig" ]] || make nconfig
 
     ### Save configuration for later reuse
-
-        cp -Tf ./.config "${startdir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
+    cp -Tf ./.config "${startdir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
 }
 
 build() {
     cd ${_srcname}
-    make -j$(nproc) bzImage modules
+    make bzImage modules
 }
 
 _package() {
@@ -328,9 +342,9 @@ done
 
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            '823f72c0d5724084ef0d4ac010db92cc63d4ccab7eec24a9877fe08eab544a9e'
+            'fb3bd1a952622cbeab1e3d60df49bd6e901994e51a867d47a8880ebc5bf80258'
             'SKIP'
-            'ac0e44bd089eeb7f52d358e6899005599fff50972f090af9c8e6ee0097d01db6')
+            '71dae1e97982addd42df106932112c163e940dacbff3cf52d6ecd0807e09fe89')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
