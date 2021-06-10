@@ -1,28 +1,31 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: João Vitor S. Anjos <jvanjos at protonmail dot com>
 # Contributor: Sebastien Duquette <ekse.0x@gmail.com>
 
 pkgname=dnsmap
-pkgver=0.30
-pkgrel=3
+pkgver=0.36
+pkgrel=1
 pkgdesc='Passive DNS network mapper'
-url='https://dnsmap.googlecode.com'
+url='https://github.com/resurrecting-open-source-projects/dnsmap'
 arch=('i686' 'x86_64')
 depends=('bash')
-license=('GPL2')
-source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/dnsmap/dnsmap-${pkgver}.tar.gz)
-sha512sums=('a4653fec0c407b88d1edc0d40dead19d2fa405d840b701160586c3efc90e7fccef166966af19809b7d175ed9c658b014298a991544213fb604fa9b007030e63d')
+makedepends=('autoconf' 'automake')
+license=('GPL3')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('f52d6d49cbf9a60f601c919f99457f108d51ecd011c63e669d58f38d50ad853c')
+sha512sums=('60f0602314ea6f2b8c16bda1d1d47110c4b2a16f32174882e4406b4ccece39001527337f6ba40da65524287d005c1611e4c14e6a1ec99b25e50f4a20c7e6577f')
 
 build() {
   cd ${pkgname}-${pkgver}
+  ./autogen.sh
+  ./configure --prefix=/usr --mandir=/usr/share/man
   make
 }
 
 package() {
   cd ${pkgname}-${pkgver}
-  install -Dm 755 dnsmap "${pkgdir}/usr/bin/dnsmap"
-  install -Dm 755 dnsmap-bulk.sh "${pkgdir}/usr/bin/dnsmap-bulk"
-  install -Dm 644 wordlist_TLAs.txt "${pkgdir}/usr/share/dnsmap/wordlist_TLAs.txt"
-  install -Dm 644 README.txt "${pkgdir}/usr/share/doc/${pkgname}/README"
+  make DESTDIR="$pkgdir" install
+  install -Dm 644 COPYING -t "${pkgdir}"/usr/share/licenses/${pkgname}
 }
 
 # vim: ts=2 sw=2 et:
