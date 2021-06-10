@@ -1,6 +1,7 @@
 # Maintainer: Ben <bensongsyz@gmail.com>
 pkgname=okular-vim-colemak
-pkgver=v21.04.1
+_pkgname=okular
+pkgver=v21.04.2
 pkgrel=1
 pkgdesc="Document Viewer with colemak vim-binding"
 arch=('any')
@@ -14,19 +15,18 @@ conflicts=('okular')
 
 makedepends=('unzip' 'extra-cmake-modules' 'appstream' 'kdoctools')
 source=("$pkgname-$pkgver.zip::https://invent.kde.org/graphics/okular/-/archive/$pkgver/okular-$pkgver.zip")
-sha512sums=('cb9f00fbc9f0b2425958f73479e25f0a65b5ddf97bf61fd7ea92b6702a4c3175c29e97f02e87ec1a22fec644b9d9bbea10964cf0bea9cea0fe66254346f2e758')
+sha512sums=('7a1eb38d25a448c32c2fc6dc286858935eced38402b611b1c6c618a93b47df469c538d38fac1e2919dbfd2b5fb0771d8d74639793d2cebec8e4d2a9a6ed7fa87')
 
 prepare() {
-	cp okular-$pkgver/part/pageview.cpp ../
+	cp $_pkgname-$pkgver/part/pageview.cpp ../
 	sed "s/Key_J\([^a-zA-Z]\)/Key_N\1/g;
 		s/Key_K\([^a-zA-Z]\)/Key_E\1/g;
-		s/Key_L\([^a-zA-Z]\)/Key_I\1/g" -i okular-$pkgver/part/pageview.cpp
-	[ -d build ] || mkdir build
+		s/Key_L\([^a-zA-Z]\)/Key_I\1/g" -i okular-$pkgver/part/pageview.cpp || return 1
 }
 
 build() {
-	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr ../okular-$pkgver
+	cd "$_pkgname-$pkgver"
+	cmake -DCMAKE_INSTALL_PREFIX=/usr
 	make -j12
 }
 
