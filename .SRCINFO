@@ -1,16 +1,21 @@
 pkgbase = pixiecore-git
 	pkgdesc = An all-in-one tool for easy netbooting
-	pkgver = r306.870d490
+	pkgver = r349.bdaec9d
 	pkgrel = 1
-	url = https://github.com/google/netboot
-	arch = x86_64
-	arch = armv7h
-	license = GPL2
-	makedepends = git
+	url = https://godoc.org/go.universe.tf/netboot/pixiecore
+	arch = any
+	license = Apache
 	makedepends = go
-	depends = glibc
+	makedepends = gcc
+	makedepends = binutils
 	provides = pixiecore
 	conflicts = pixiecore
+	source = pixiecore::git+https://github.com/danderson/netboot.git#branch=master
+	source = initramfs.patch
+	source = initramfs.patch.sig
+	validpgpkeys = 748231EBCBD808A14F5E85D28C004C2F93481F6B
+	sha512sums = SKIP
+	sha512sums = 6deb1f06a213cfe252c989e895d9370b3310c5308cb5de3b13c1441cfc83bbe7832717538e916563f18c550c4c79115da16e635746fa33cd9248b79939e6e483
+	sha512sums = SKIP
 
 pkgname = pixiecore-git
-
