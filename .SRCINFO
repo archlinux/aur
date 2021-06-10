@@ -1,0 +1,18 @@
+pkgbase = bytedance-feishu-stable-bin
+	pkgdesc = 飞书Linux版本. 飞书整合即时消息、日历、音视频会议、云文档、工作台等功能于一体，成就团队和个人，更高效、更愉悦。
+	pkgver = 4.3.0
+	pkgrel = 1
+	url = https://www.feishu.cn/
+	install = bytedance-feishu-stable-bin.install
+	arch = x86_64
+	groups = 
+	license = unknown
+	depends = ca-certificates
+	depends = libx11
+	depends = libxtst
+	options = !strip
+	options = !emptydirs
+	source = file://bytedance-feishu_4.3.0-49_amd64.deb
+	sha256sums = fbd28428ec3df298a03b7bf61d140b8533b16b4506e7a6ba73395ba5b807deef
+
+pkgname = bytedance-feishu-stable-bin
