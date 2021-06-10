@@ -1,0 +1,15 @@
+pkgbase = xcursor-perspective
+	pkgdesc = White, traditional, high contrast cursor theme made for Plasma Next
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://www.pling.com/p/999679/
+	arch = any
+	makedepends = libxml2
+	depends = libxcursor
+	options = !debug
+	source = xcursor-perspective_dl.xml::https://api.kde-look.org/ocs/v1/content/download/999679/1
+	source = index.theme
+	sha256sums = SKIP
+	sha256sums = 2380ccb9b9cc6a0099410113c58953d66d5adfed7700e06b6319b8a0da7d3f09
+
+pkgname = xcursor-perspective
