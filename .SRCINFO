@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-qt6-charts
 	pkgdesc = Provides a set of easy to use chart components (android)
-	pkgver = 6.1.0
+	pkgver = 6.1.1
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -18,8 +18,7 @@ pkgbase = android-aarch64-qt6-charts
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.1/6.1.0/submodules/qtcharts-everywhere-src-6.1.0.tar.xz
-	sha256sums = 8f70dc54b3f29eed91cf207db4185cef25f3d0bbc479059725c75c1895cddfcd
+	source = https://download.qt.io/official_releases/qt/6.1/6.1.1/submodules/qtcharts-everywhere-src-6.1.1.tar.xz
+	sha256sums = a245b8e1b3edd22c5319d8cf0ee18f95901cfc39e4f94b34b59befffc17af60a
 
 pkgname = android-aarch64-qt6-charts
-
