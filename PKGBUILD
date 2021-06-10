@@ -2,8 +2,8 @@
 
 _name=sigpy
 pkgname=${_name}
-pkgver=0.1.21
-pkgrel=2
+pkgver=0.1.22
+pkgrel=1
 pkgdesc="A package for signal processing, with emphasis on iterative methods."
 arch=('any')
 url="https://github.com/mikgroup/sigpy"
@@ -13,8 +13,8 @@ makedepends=('python-setuptools')
 optdepends=('python-cupy: CUDA support' 'python-matplotlib: plotting' 'python-mpi4py: MPI support')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
 	"https://raw.githubusercontent.com/mikgroup/${pkgname}/master/LICENSE")
- sha256sums=('9e5e58ed155502bbe97267db6821a0831f42edd8b6e58e8d0be767d4e49f2137'
-            '506416d7ce128410517c77753a5e0ccab4783f13061fd1f724a92a5de08d1244') 
+sha256sums=('e9ff5aa47bef18390ccbe9237bb3b18d358095d3a81f7c6270b776364ede76a2'
+            '506416d7ce128410517c77753a5e0ccab4783f13061fd1f724a92a5de08d1244')
 
 package() {
   cd "$srcdir"
