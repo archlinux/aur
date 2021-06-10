@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-tools
-_qtver=6.1.0
+_qtver=6.1.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -17,8 +17,20 @@ makedepends=('android-cmake' 'android-aarch64-qt6-declarative' 'qt6-declarative'
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qttools-everywhere-src-${_qtver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('6263030c1120a30b0541d37b52dc0be0ea04bbb8d1695ec9648f0bd77e421f3e')
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
+        '0001-Enable-only-SQL-plugins-which-are-known-to-work.patch')
+sha256sums=('cba8d9a836e83b7a5e6d068239635b261f7ca4a059992b2b66cd546380091273'
+            '7254956e64929072ab0dae3aa14ad392eaceb070a7c02da75b3f3c770b1f7cfa')
+
+prepare () {
+  cd $_pkgfqn
+
+  # apply patches; further descriptions can be found in patch files itself
+  for patch in "$srcdir/"*.patch; do
+    msg2 "Applying patch $patch"
+    patch -p1 -i "$patch"
+  done
+}
 
 build() {
   source android-env ${_android_arch}
