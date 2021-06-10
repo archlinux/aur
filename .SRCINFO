@@ -1,7 +1,7 @@
 pkgbase = calindori
 	pkgdesc = Calendar for Plasma Mobile
 	pkgver = 21.06
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/plasma-mobile/calindori
 	arch = x86_64
 	arch = i686
@@ -23,6 +23,6 @@ pkgbase = calindori
 	depends = kservice
 	depends = kpeople
 	source = https://download.kde.org/stable/plasma-mobile/21.06/calindori-21.06.tar.xz
-	sha256sums = 9261a61d96b22f29ffece0273863c7af604225ed6ec2e50336cb869c624e0e84
+	sha256sums = 48dc162edb457d164ca371eb006c7e9b7ddb8d54f49b66a6bf7db1776cf26e47
 
 pkgname = calindori
