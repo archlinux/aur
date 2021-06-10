@@ -1,7 +1,7 @@
 # Maintainer: Dale Whinham <daleyo at gmail dot com>
 pkgname=ag-dsp-controller
 pkgver=1.1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Yamaha AG06/AG03 DSP Controller software, patched to work with Linux/Wine MIDI device names (uses Wine)"
 arch=("i686" "x86_64")
 url="https://www.yamaha.com/"
