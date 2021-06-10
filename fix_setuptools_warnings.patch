@@ -1,0 +1,17 @@
+--- setup.cfg
++++ setup.cfg
+@@ -1,11 +1,11 @@
+ [metadata]
+ name = requests-unixsocket
+ author = Marc Abramowitz
+-author-email = marc@marc-abramowitz.com
++author_email = marc@marc-abramowitz.com
+ summary = Use requests to talk HTTP via a UNIX domain socket
+-description-file = README.rst
++description_file = README.rst
+ license = Apache-2
+-home-page = https://github.com/msabramo/requests-unixsocket
++home_page = https://github.com/msabramo/requests-unixsocket
+ classifier = 
+ 	Development Status :: 3 - Alpha
+ 	Intended Audience :: Developers
