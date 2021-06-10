@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-charts
-_qtver=6.1.0
+_qtver=6.1.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -17,7 +17,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtcharts-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('8f70dc54b3f29eed91cf207db4185cef25f3d0bbc479059725c75c1895cddfcd')
+sha256sums=('a245b8e1b3edd22c5319d8cf0ee18f95901cfc39e4f94b34b59befffc17af60a')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
