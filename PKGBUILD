@@ -1,7 +1,7 @@
 # Maintainer: Nocifer <apmichalopoulos at gmail dot com>
 
 pkgname=zmeventnotification
-pkgver=6.1.23
+pkgver=6.1.25
 pkgrel=1
 pkgdesc='A machine learning powered, secure websocket & MQTT based event notification server for ZoneMinder'
 arch=('any')
@@ -59,11 +59,8 @@ sha256sums=('SKIP'
 prepare() {
     cd ${pkgname}-git
     
-    # Change the default upstream ZM address to match the one used by the ZoneMinder package in the AUR
+    # Change the default upstream ZM address to match the one used by the ZoneMinder package
     sed -i 's|https://portal/zm|http://localhost:8095|g' secrets.ini
-    
-    # Hackilly disable SSL by default (because it requires the user to first generate a real SSL certificate or the notification server won't work)
-    sed -i '140s|enable = yes|enable = no|g' zmeventnotification.ini
 }
 
 package() {
@@ -116,9 +113,6 @@ package() {
     install -m755 -o http -g http hook/zm_event_end.sh                      ${pkgdir}/var/lib/${pkgname}/bin
     install -m755 -o http -g http hook/zm_detect.py                         ${pkgdir}/var/lib/${pkgname}/bin
     install -m755 -o http -g http hook/zm_train_faces.py                    ${pkgdir}/var/lib/${pkgname}/bin
-    
-    # Optional script to migrate your settings from 5.15.x to 6.x.x (read the official documentation for instructions)
-    install -m755 -o http -g http hook/config_upgrade.py                    ${pkgdir}/var/lib/${pkgname}/bin
     
     install -m644 -o http -g http docs/guides/contrib_guidelines.rst        ${pkgdir}/var/lib/${pkgname}/contrib
     install -m755 -o http -g http contrib/*                                 ${pkgdir}/var/lib/${pkgname}/contrib
