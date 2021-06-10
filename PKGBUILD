@@ -1,8 +1,8 @@
 # Maintainer Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
-pkgname=plasma-dialer-git
+pkgname=plasma-dialer
 pkgver=21.06
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 pkgdesc="Dialer for Plasma Mobile"
 url="https://invent.kde.org/plasma-mobile/plasma-dialer"

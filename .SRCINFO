@@ -1,7 +1,7 @@
-pkgbase = plasma-dialer-git
+pkgbase = plasma-dialer
 	pkgdesc = Dialer for Plasma Mobile
 	pkgver = 21.06
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/plasma-mobile/plasma-dialer
 	arch = x86_64
 	arch = arm
@@ -24,7 +24,7 @@ pkgbase = plasma-dialer-git
 	depends = telepathy-qt
 	depends = libpulse
 	depends = libphonenumber
-	source = https://download.kde.org/stable/plasma-mobile/21.06/plasma-dialer-git-21.06.tar.xz
+	source = https://download.kde.org/stable/plasma-mobile/21.06/plasma-dialer-21.06.tar.xz
 	sha256sums = SKIP
 
-pkgname = plasma-dialer-git
+pkgname = plasma-dialer
