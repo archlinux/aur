@@ -2,13 +2,13 @@
 
 pkgname=juno-theme-git
 _pkgname=Juno
-pkgver=r98.2506064
+pkgver=r103.0be4c94
 pkgrel=1
 pkgdesc="GTK themes inspired by epic vscode themes"
 arch=("any")
 url="https://github.com/EliverLara/${_pkgname}"
 license=('GPL')
-makedepends=('inkscape' 'optipng')
+makedepends=('git' 'inkscape' 'optipng')
 optdepends=('ttf-roboto: primary font face defined'
 			'ttf-ubuntu-font-family: secondary font face defined'
 			'cantarell-fonts: tertiary font face defined')
