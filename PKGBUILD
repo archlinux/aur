@@ -6,19 +6,19 @@
 
 pkgname=apngasm
 pkgver=3.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="tool for assembling apng files"
 arch=('i686' 'x86_64')
 url="https://github.com/apngasm/apngasm"
 license=('LGPL')
 conflicts=('apng-utils')
 depends=('libpng' 'boost-libs')
-makedepends=('cmake' 'boost')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/${pkgver}.tar.gz")
-sha512sums=('cbc6f0ad119a7ce17079be3434e516265bea619ecb46fe147d652bbaff4652a858698df07a072f5095894961137fe32546f75ad603c7483476be7ffe463cf999')
+makedepends=('cmake' 'boost' 'git')
+source=("git+$url.git#commit=de1c87cd7696384be3235eb07766766891474e09")
+sha512sums=('SKIP')
 
 build() {
-  cd $pkgname-${pkgver}
+  cd $pkgname
   [[ -d build ]] || mkdir build
   cd build
   cmake -D CMAKE_INSTALL_PREFIX="/usr" ../
@@ -26,7 +26,7 @@ build() {
 }
 
 package() {
-  cd $pkgname-${pkgver}/build
+  cd $pkgname/build
   make DESTDIR="${pkgdir}" install
   install -Dm644 "${pkgdir}"/usr/man/man1/apngasm.1 "${pkgdir}"/usr/share/man/man1/apngasm.1
   rm -r "${pkgdir}"/usr/man
