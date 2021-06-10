@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('ki18n' 'kcoreaddons' 'kconfig' 'kpeople' 'kcontacts' 'kpeoplevcard' 'kirigami2')
 makedepends=('extra-cmake-modules' 'qt5-svg' 'qt5-tools')
 source=("https://download.kde.org/stable/plasma-mobile/${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('8aedc6813f8a264b64bf2843c8e4529953230c031eb91fc8fb046ab6df88182b')
+sha256sums=('0ee96c809fe52fc4c183ba8febb707aca629a37437e864f9a2e356a9fd9ebb28')
 
 build() {
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -B build -S "${pkgname}-${pkgver}"
