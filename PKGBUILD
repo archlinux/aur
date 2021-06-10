@@ -4,7 +4,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=webkit2gtk-unstable
-pkgver=2.33.1
+pkgver=2.33.2
 pkgrel=1
 pkgdesc="GTK Web content engine library"
 arch=(x86_64)
@@ -19,7 +19,7 @@ optdepends=('geoclue: Geolocation support'
             'gst-plugins-good: media decoding'
             'gst-libav: nonfree media decoding')
 source=(https://webkitgtk.org/releases/webkitgtk-${pkgver}.tar.xz{,.asc})
-sha256sums=('0697463f435a2c156cffae470aa623033c1f4033da826d107a0ace8b7a0d89d5'
+sha256sums=('32bb0ace3cf4df42ff805e00de3fc13a2287f173d3ff5982816a7c5b4f8b551b'
             'SKIP')
 validpgpkeys=('D7FCF61CF9A2DEAB31D81BD3F3D322D0EC4582C3'
               '5AA3BC334FD7E3369E7C77B291C559DBE4C9123B')
@@ -37,7 +37,8 @@ build() {
     -DENABLE_GTKDOC=ON \
     -DLIBEXEC_INSTALL_DIR=/usr/lib \
     -DLIB_INSTALL_DIR=/usr/lib \
-    -DUSE_SOUP2=ON
+    -DUSE_SOUP2=ON \
+    -DUSE_AVIF=ON
 
   cmake --build build
 }
