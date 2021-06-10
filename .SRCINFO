@@ -1,7 +1,7 @@
 pkgbase = feedgnuplot
 	pkgdesc = General purpose pipe-oriented plotting tool
 	pkgver = 1.58
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dkogan/feedgnuplot
 	arch = any
 	license = GPL
@@ -14,4 +14,3 @@ pkgbase = feedgnuplot
 	b2sums = 0a57d44658661ebc167d3dbcf6000f5dfee0d1dcd22185129a915180611e2588d719fbd7b268869373eff4e5d95ca4660a295dc02431ea27ba7578b7999a07e8
 
 pkgname = feedgnuplot
-

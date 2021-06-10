@@ -2,7 +2,7 @@
 # Contributor: Eric Schulte <[firstname] dot [lastname] at gmx dot com>
 pkgname=feedgnuplot
 pkgver=1.58
-pkgrel=1
+pkgrel=2
 pkgdesc="General purpose pipe-oriented plotting tool"
 arch=('any')
 url="https://github.com/dkogan/feedgnuplot"
@@ -28,4 +28,12 @@ package() {
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
 
   make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+
+  # Copy shell completions
+  install -D --mode=644 --target-directory="$pkgdir/usr/share/bash-completion/completions/" completions/bash/feedgnuplot
+  install -D --mode=644 --target-directory="$pkgdir/usr/share/zsh/site-functions/" completions/zsh/_feedgnuplot
+
+  # Copy guide
+  install --directory "$pkgdir/usr/share/docs/feedgnuplot"
+  cp --recursive guide "$pkgdir/usr/share/docs/feedgnuplot/"
 }
