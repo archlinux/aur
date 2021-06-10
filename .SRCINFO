@@ -1,6 +1,6 @@
 pkgbase = visual-studio-code-bin
 	pkgdesc = Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications (official binary version)
-	pkgver = 1.56.2
+	pkgver = 1.57.0
 	pkgrel = 1
 	url = https://code.visualstudio.com/
 	arch = x86_64
@@ -30,14 +30,13 @@ pkgbase = visual-studio-code-bin
 	sha256sums = 07909803b0ce5e3412a92a2303e546c970ab48db505d6bf25fbd55dbb8466982
 	sha256sums = be3d123aacd575d8f836728266eb421ea70399d713d1fc30378dbc5602b519fb
 	sha256sums = 24ba09a6398c9781ed7cb6f1a9f6f38ec204899ba1f33db92638bf6d3cb0aed6
-	source_x86_64 = code_x64_1.56.2.tar.gz::https://update.code.visualstudio.com/1.56.2/linux-x64/stable
-	sha256sums_x86_64 = 7b3decb6cc6c372315437ba060f94c8bf6ff09abeb31a1f7ffcfd66fd3531923
-	source_i686 = code_ia32_1.56.2.tar.gz::https://update.code.visualstudio.com/latest/linux-ia32/stable
+	source_x86_64 = code_x64_1.57.0.tar.gz::https://update.code.visualstudio.com/1.57.0/linux-x64/stable
+	sha256sums_x86_64 = 417f5df3a6d510bfb2047182601c07dab7731ff2c2c7fc50b760662e272949ae
+	source_i686 = code_ia32_1.57.0.tar.gz::https://update.code.visualstudio.com/latest/linux-ia32/stable
 	sha256sums_i686 = 64360439cc2fa596838062f7e6f9757b79d4b775a564f18bad6cbad154bf850c
-	source_aarch64 = code_arm64_1.56.2.tar.gz::https://update.code.visualstudio.com/1.56.2/linux-arm64/stable
-	sha256sums_aarch64 = 0123d9447eb9c7e5fe076a0e0a654a4b699c7b011aa14898c25ae90e483a47d4
-	source_armv7h = code_armhf_1.56.2.tar.gz::https://update.code.visualstudio.com/1.56.2/linux-armhf/stable
-	sha256sums_armv7h = 3397f110d7ab49b6351542e5662180508dff40401d11d4b36d1b1429df63a4e2
+	source_aarch64 = code_arm64_1.57.0.tar.gz::https://update.code.visualstudio.com/1.57.0/linux-arm64/stable
+	sha256sums_aarch64 = f35391e1861b71aea3922c5ae9e50c91629da7b0ea4af39737b4719d06af2e12
+	source_armv7h = code_armhf_1.57.0.tar.gz::https://update.code.visualstudio.com/1.57.0/linux-armhf/stable
+	sha256sums_armv7h = 649da8cafcbc18e2f757fb35f2574df29a41fdff679794bdb099132f85fd3978
 
 pkgname = visual-studio-code-bin
-
