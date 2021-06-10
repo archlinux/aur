@@ -2,16 +2,18 @@
 
 pkgname=ant-bloody-theme-git
 _pkgname=Ant-Bloody
-pkgver=v1.3.0.r60.gc4bf9e6
+pkgver=v1.3.0.r66.ge23e2ed
 pkgrel=1
 pkgdesc="Bloody variant of the Ant theme"
 arch=("any")
 url="https://github.com/EliverLara/${_pkgname}"
 license=('GPL')
-makedepends=('inkscape' 'optipng')
+makedepends=('git' 'inkscape' 'optipng')
 optdepends=('ttf-roboto: primary font face defined'
 			'ttf-ubuntu-font-family: secondary font face defined'
 			'cantarell-fonts: tertiary font face defined')
+conflicts=('ant-bloody-gtk-theme')
+provides=('ant-bloody-gtk-theme')
 source=("${_pkgname}::git+https://github.com/EliverLara/${_pkgname}.git")
 sha256sums=('SKIP')
 
