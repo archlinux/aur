@@ -18,7 +18,7 @@ _CMAKE_FLAGS+=( -DCMAKE_C_COMPILER=gcc-10
 _CMAKE_FLAGS+=( -DWITH_CYCLES_NETWORK=OFF )
 
 pkgname=blender-git
-pkgver=3.0.r106155.gf41a753e751
+pkgver=3.0.r106621.g7b62a542308
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
