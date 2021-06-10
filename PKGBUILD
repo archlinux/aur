@@ -2,13 +2,14 @@
 
 pkgname=ciphey
 _pkgname=Ciphey
-pkgver=5.10.0
+pkgver=5.14.0
 pkgrel=1
 pkgdesc='Automated decryption tool'
 arch=('any')
 url='https://github.com/Ciphey/Ciphey'
 license=('MIT')
 depends=(
+    'flake8'
     'python'
     'python-appdirs'
     'python-base58' #aur
@@ -16,13 +17,13 @@ depends=(
     'python-cipheycore' #aur
     'python-cipheydists' #aur
     'python-click'
-    'python-click-spinner' #aur
-    'python-loguru' #aur
+    'python-mock'
+    'python-pyaml'
     'python-pybase62' #aur
     'python-pylint'
-    'python-pyaml'
+    'python-pywhat' #aur
     'python-rich'
-    'python-yaspin'
+    'python-typing_inspect'
 )
 makedepends=('python-setuptools' 'python-dephell')
 provides=('ciphey')
@@ -30,7 +31,7 @@ source=(
     "$pkgname.tar.gz::https://codeload.github.com/Ciphey/Ciphey/tar.gz/$pkgver"
 )
 sha256sums=(
-    '3c2cd5e7e4b697d875cc85e4125913c692a8bdf9f34e1791bbef7cd5e9ce5a42'
+    '42fd5ea5b462ab37cb2e6aed41c254e7ed44bb190fed9a3918e6bdd56d86e10f'
 )
 
 prepare() {
