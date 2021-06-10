@@ -2,13 +2,13 @@
 
 pkgname=bmz-cursor-theme-git
 pkgver=r3.a2eb059
-pkgrel=1
+pkgrel=2
 pkgdesc="Mouse cursor for your X11 desktop. Inspiration was drawn from various sources, including DMZ and Breeze, but design manages to be quite unique."
 arch=('any')
 url="https://github.com/tonylambiris/BMZ-cursor"
 license=('GPL')
 source=("${pkgname}::git+${url}")
-makedepends=('unzip')
+makedepends=('git' 'unzip')
 sha256sums=('SKIP')
 
 pkgver() {
