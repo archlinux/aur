@@ -2,7 +2,7 @@
 # Contributor: Lukas Böger <dev___AT___lboeger___DOT___de>
 pkgname=alberta
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Adaptive multi-Level finite element toolbox"
 url="http://www.alberta-fem.de"
 license=('GPL2')
@@ -40,6 +40,4 @@ package() {
 
   install -d ${pkgdir}/usr/share/doc/${pkgname}
   install doc/*.pdf ${pkgdir}/usr/share/doc/${pkgname}
-
-  install -Dm644 ${srcdir}/${pkgname}3-releases/COPYING "${pkgdir}/usr/share/licenses/${pkgname}"
 }
