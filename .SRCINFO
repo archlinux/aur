@@ -1,7 +1,7 @@
 pkgbase = h7toolpc-bin
 	pkgdesc = H7-TOOL 的 PC 上位机，支持串口、CAN、示波器、CMSIS-DAP、DS18B20、RTT Viewer、脱机烧录等
 	pkgver = 2.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.armbbs.cn/forum.php?mod=viewthread&tid=95468
 	install = h7toolpc-bin.install
 	arch = x86_64
@@ -21,6 +21,6 @@ pkgbase = h7toolpc-bin
 	source = h7toolpc-bin.install
 	sha256sums = 13A02CB749BC6E5C69986EE231E0647ED829C5D5247BD77D4509A91093F7E121
 	sha256sums = 6823224b5699dc17c41efdcbc8465554f007cb62cadea0aad9b67c08c5698142
-	sha256sums = 603fafa9b8d21a6a686dd1be47c15853c5fe5966ed49b3ccfb0be665bf78e39e
+	sha256sums = 10ebc665ba27ab7b38659e4b8fc9b88f45af0600aa6039ff3f563c5272988b99
 
 pkgname = h7toolpc-bin

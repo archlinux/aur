@@ -2,7 +2,7 @@
 
 pkgname=h7toolpc-bin
 pkgver=2.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="H7-TOOL 的 PC 上位机，支持串口、CAN、示波器、CMSIS-DAP、DS18B20、RTT Viewer、脱机烧录等"
 arch=('x86_64')
 url="http://www.armbbs.cn/forum.php?mod=viewthread&tid=95468"
@@ -25,48 +25,42 @@ sha256sums=('13A02CB749BC6E5C69986EE231E0647ED829C5D5247BD77D4509A91093F7E121'
 noextract=("${pkgname/pc-bin/PC_release}.zip"
             "icons.tar.gz")
 
-
 prepare() {
     unar -e GBK "${srcdir}/${pkgname/pc-bin/PC_release}.zip"
 }
 
 package() {
     export LC_CTYPE="zh_CN.UTF-8"
+
     armfly="opt/armfly"
+    _ftname="wqy-zenhei.ttc"
+
     install -dm0755 "${pkgdir}/${armfly}/${pkgname%-bin}"
+
     cp -ra ${srcdir}/${pkgname/pc-bin/PC_release}/* "${pkgdir}/${armfly}/${pkgname%-bin}"
-#     cd "${srcdir}/${pkgname/pc-bin/PC_release}"
-    rm -rf "${pkgdir}/${armfly}/${pkgname%-bin}/Driver"
 
     find "${pkgdir}/${armfly}" -type f -exec chmod 644 "{}" \;
     find "${pkgdir}/${armfly}" -type d -exec chmod 755 "{}" \;
 
-    _ttffont="wqy-zenhei.ttc"
+    install -Dm0644 /dev/stdin "${pkgdir}/${armfly}/${pkgname%-bin}/ttffont.reg" << EOF
+REGEDIT4
 
-    install -Dm0644 /dev/stdin "${pkgdir}/${armfly}/${pkgname%-bin}/font.patch" << EOF
---- wine/system.reg.orig        2021-06-11 16:55:17.989624488 +0800
-+++ wine/system.reg     2021-06-11 17:02:25.742581014 +0800
-@@ -37724,9 +37724,17 @@
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\FontLink\SystemLink]
+"Lucida Sans Unicode"="${_ftname}"
+"Microsoft Sans Serif"="${_ftname}"
+"MS Sans Serif"="${_ftname}"
+"Tahoma"="${_ftname}"
+"Tahoma Bold"="${_ftname}"
+"SimSun"="${_ftname}"
+"Arial"="${_ftname}"
+"Arial Black"="${_ftname}"
+"Lucida Sans Unicode"=str(7):"${_ftname}"
+"Microsoft Sans Serif"=str(7):"${_ftname}"
+"Tahoma"=str(7):"${_ftname}"
 
- [Software\\Microsoft\\Windows NT\\CurrentVersion\\FontLink\\SystemLink] 1623401646
- #time=1d75e9f5615584c
--"Lucida Sans Unicode"=str(7):"SIMSUN.TTC,SimSun\0MINGLIU.TTC,PMingLiu\0MSGOTHIC.TTC,MS UI Gothic\0BATANG.TTC,Batang\0"
--"Microsoft Sans Serif"=str(7):"SIMSUN.TTC,SimSun\0MINGLIU.TTC,PMingLiu\0MSGOTHIC.TTC,MS UI Gothic\0BATANG.TTC,Batang\0"
--"Tahoma"=str(7):"SIMSUN.TTC,SimSun\0MINGLIU.TTC,PMingLiu\0MSGOTHIC.TTC,MS UI Gothic\0BATANG.TTC,Batang\0"
-+"Lucida Sans Unicode"="${_ttffont}"
-+"Microsoft Sans Serif"="${_ttffont}"
-+"MS Sans Serif"="${_ttffont}"
-+"Tahoma"="${_ttffont}"
-+"Tahoma Bold"="${_ttffont}"
-+"SimSun"="${_ttffont}"
-+"Arial"="${_ttffont}"
-+"Arial Black"="${_ttffont}"
-+"Lucida Sans Unicode"=str(7):"${_ttffont}"
-+"Microsoft Sans Serif"=str(7):"${_ttffont}"
-+"Tahoma"=str(7):"${_ttffont}"
+[HKEY_CURRENT_USER\Software\Wine\X11 Driver]
+"ClientSideWithRender"="N"
 
- [Software\\Microsoft\\Windows NT\\CurrentVersion\\FontMapper] 1623401670
- #time=1d75e9f64384ca4
 EOF
 
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-bin}" << EOF
@@ -75,21 +69,27 @@ export LC_CTYPE="zh_CN.UTF-8"
 export WINEARCH=win32 WINEPREFIX="$HOME/.${pkgname%-bin}/wine"
 
 if [ ! -d "$HOME"/.${pkgname%-bin} ] ; then
-  mkdir -p "$HOME"/.${pkgname%-bin}/wine || exit 1
+    mkdir -p "$HOME"/.${pkgname%-bin}/wine || exit 1
 
-  cp -r /${armfly}/${pkgname%-bin}/app.ini "$HOME"/.${pkgname%-bin} || exit 1
-  cp -r /${armfly}/${pkgname%-bin}/Backup "$HOME"/.${pkgname%-bin} || exit 1
-  cp -r /${armfly}/${pkgname%-bin}/Readback "$HOME"/.${pkgname%-bin} || exit 1
-  cp -r /${armfly}/${pkgname%-bin}/ini "$HOME"/.${pkgname%-bin} || exit 1
-  cp -r /${armfly}/${pkgname%-bin}/log "$HOME"/.${pkgname%-bin} || exit 1
-  cp -r /${armfly}/${pkgname%-bin}/*.lua "$HOME"/.${pkgname%-bin} || exit 1
-  cp -r /${armfly}/${pkgname%-bin}/font.patch "$HOME"/.${pkgname%-bin} || exit 1
+    cp -r /${armfly}/${pkgname%-bin}/app.ini "$HOME"/.${pkgname%-bin} || exit 1
+    cp -r /${armfly}/${pkgname%-bin}/Backup "$HOME"/.${pkgname%-bin} || exit 1
+    cp -r /${armfly}/${pkgname%-bin}/Readback "$HOME"/.${pkgname%-bin} || exit 1
+    cp -r /${armfly}/${pkgname%-bin}/ini "$HOME"/.${pkgname%-bin} || exit 1
+    cp -r /${armfly}/${pkgname%-bin}/log "$HOME"/.${pkgname%-bin} || exit 1
+    cp -r /${armfly}/${pkgname%-bin}/*.lua "$HOME"/.${pkgname%-bin} || exit 1
+    cp -r /${armfly}/${pkgname%-bin}/ttffont.reg "$HOME"/.${pkgname%-bin}/wine || exit 1
 
-  ln -s /${armfly}/${pkgname%-bin}/${pkgname/pc-bin/PC}.exe "$HOME"/.${pkgname%-bin}/${pkgname%-bin} || exit 1
-  ln -s -T /${armfly}/${pkgname%-bin}/EMMC "$HOME"/.${pkgname%-bin}/EMMC || exit 1
-  ln -s -T /${armfly}/${pkgname%-bin}/Help "$HOME"/.${pkgname%-bin}/Help || exit 1
-  ln -s -T /${armfly}/${pkgname%-bin}/USBBus "$HOME"/.${pkgname%-bin}/USBBus || exit 1
-  ln -s -T /${armfly}/${pkgname%-bin}/ChangeLog.txt "$HOME"/.${pkgname%-bin}/ChangeLog.txt || exit 1
+    ln -s /${armfly}/${pkgname%-bin}/${pkgname/pc-bin/PC}.exe "$HOME"/.${pkgname%-bin}/${pkgname%-bin} || exit 1
+    ln -s -T /${pkgdir}/${armfly}/${pkgname%-bin}/Driver "$HOME"/.${pkgname%-bin}/Driver || exit 1
+    ln -s -T /${armfly}/${pkgname%-bin}/EMMC "$HOME"/.${pkgname%-bin}/EMMC || exit 1
+    ln -s -T /${armfly}/${pkgname%-bin}/Help "$HOME"/.${pkgname%-bin}/Help || exit 1
+    ln -s -T /${armfly}/${pkgname%-bin}/USBBus "$HOME"/.${pkgname%-bin}/USBBus || exit 1
+    ln -s -T /${armfly}/${pkgname%-bin}/ChangeLog.txt "$HOME"/.${pkgname%-bin}/ChangeLog.txt || exit 1
+fi
+
+if [ ! -f "$HOME"/.${pkgname%-bin}/fontok ] ; then
+    touch "$HOME"/.${pkgname%-bin}/fontok || exit 1
+    cd "$HOME"/.${pkgname%-bin}/wine && regedit ttffont.reg
 fi
 
 wine "$HOME"/.${pkgname%-bin}/${pkgname%-bin} "$@"
@@ -115,24 +115,30 @@ export LC_CTYPE="zh_CN.UTF-8"
 export WINEARCH=win32 WINEPREFIX="$HOME/.${pkgname%-bin}/wine"
 
 if [ ! -d "$HOME"/.${pkgname%-bin} ] ; then
-  mkdir -p "$HOME"/.${pkgname%-bin}/wine || exit 1
+    mkdir -p "$HOME"/.${pkgname%-bin}/wine || exit 1
 
-  cp -r /${armfly}/${pkgname%-bin}/app.ini "$HOME"/.${pkgname%-bin} || exit 1
-  cp -r /${armfly}/${pkgname%-bin}/Backup "$HOME"/.${pkgname%-bin} || exit 1
-  cp -r /${armfly}/${pkgname%-bin}/Readback "$HOME"/.${pkgname%-bin} || exit 1
-  cp -r /${armfly}/${pkgname%-bin}/ini "$HOME"/.${pkgname%-bin} || exit 1
-  cp -r /${armfly}/${pkgname%-bin}/log "$HOME"/.${pkgname%-bin} || exit 1
-  cp -r /${armfly}/${pkgname%-bin}/*.lua "$HOME"/.${pkgname%-bin} || exit 1
-  cp -r /${armfly}/${pkgname%-bin}/font.patch "$HOME"/.${pkgname%-bin} || exit 1
+    cp -r /${armfly}/${pkgname%-bin}/app.ini "$HOME"/.${pkgname%-bin} || exit 1
+    cp -r /${armfly}/${pkgname%-bin}/Backup "$HOME"/.${pkgname%-bin} || exit 1
+    cp -r /${armfly}/${pkgname%-bin}/Readback "$HOME"/.${pkgname%-bin} || exit 1
+    cp -r /${armfly}/${pkgname%-bin}/ini "$HOME"/.${pkgname%-bin} || exit 1
+    cp -r /${armfly}/${pkgname%-bin}/log "$HOME"/.${pkgname%-bin} || exit 1
+    cp -r /${armfly}/${pkgname%-bin}/*.lua "$HOME"/.${pkgname%-bin} || exit 1
+    cp -r /${armfly}/${pkgname%-bin}/ttffont.reg "$HOME"/.${pkgname%-bin}/wine || exit 1
 
-  ln -s /${armfly}/${pkgname%-bin}/${pkgname/pc-bin/PC(PC V1.44 用于升级V2.00前的固件)}.exe "$HOME"/.${pkgname%-bin}/${pkgname/-bin/-old} || exit 1
-  ln -s -T /${armfly}/${pkgname%-bin}/EMMC "$HOME"/.${pkgname%-bin}/EMMC || exit 1
-  ln -s -T /${armfly}/${pkgname%-bin}/Help "$HOME"/.${pkgname%-bin}/Help || exit 1
-  ln -s -T /${armfly}/${pkgname%-bin}/USBBus "$HOME"/.${pkgname%-bin}/USBBus || exit 1
-  ln -s -T /${armfly}/${pkgname%-bin}/ChangeLog.txt "$HOME"/.${pkgname%-bin}/ChangeLog.txt || exit 1
+    ln -s /${armfly}/${pkgname%-bin}/${pkgname/pc-bin/PC(PC V1.44 用于升级V2.00前的固件)}.exe "$HOME"/.${pkgname%-bin}/${pkgname/-bin/-old} || exit 1
+    ln -s -T /${pkgdir}/${armfly}/${pkgname%-bin}/Driver "$HOME"/.${pkgname%-bin}/Driver || exit 1
+    ln -s -T /${armfly}/${pkgname%-bin}/EMMC "$HOME"/.${pkgname%-bin}/EMMC || exit 1
+    ln -s -T /${armfly}/${pkgname%-bin}/Help "$HOME"/.${pkgname%-bin}/Help || exit 1
+    ln -s -T /${armfly}/${pkgname%-bin}/USBBus "$HOME"/.${pkgname%-bin}/USBBus || exit 1
+    ln -s -T /${armfly}/${pkgname%-bin}/ChangeLog.txt "$HOME"/.${pkgname%-bin}/ChangeLog.txt || exit 1
 fi
 
-wine "$HOME"/.${pkgname%-bin}/${pkgname/-bin/-old} "$@"
+if [ ! -f "$HOME"/.${pkgname%-bin}/fontok ] ; then
+    touch "$HOME"/.${pkgname%-bin}/fontok || exit 1
+    cd "$HOME"/.${pkgname%-bin}/wine && regedit ttffont.reg
+fi
+
+    wine "$HOME"/.${pkgname%-bin}/${pkgname/-bin/-old} "$@"
 EOF
 
     install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname/-bin/-old}.desktop" << EOF
