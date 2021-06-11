@@ -6,7 +6,7 @@
 
 
 pkgbase=linux-hardened-cacule
-pkgver=5.12.9.hardened1
+pkgver=5.12.10.hardened1
 pkgrel=1
 pkgdesc='Security-Hardened Linux with the cacule scheduler'
 url='https://github.com/anthraxx/linux-hardened'
@@ -26,12 +26,12 @@ source=(
   cpu-patches.patch
   config         # the main kernel config file
 )
-sha256sums=('c7fabef5754271cd12f2d3a9ae237ed91c6fce09cec3895400d48194110ce76d'
+sha256sums=('c8d499fc53ed14838994ec2f51591ae40d64cce68559cd897be8acbeeee7630f'
             'SKIP'
-            '0abbac808119aef9e201aa94ad810919e07be021de8a31232a886a44a18b3222'
-            '9e4c35003606d046eb2ee0da511c73168886fcbbe7192f1bfefd71e6a1915be9'
+            'ac06ed41641cdac5e6238746349a4294ca7e554dce6998821430f6f1e618dc73'
+            '8bb2c8e10ea1d4f24a4b57d93aa5e3855410fb7cb6367832b28849ffceb3c89e'
             'fa5bcd1ae237ce017c2bd9fe984e6d9fbd069d3475087c360f398f6fa7fa946c'
-            '02af475714c0c80265ac859ec57668bf320e6df5196c733ffe12399dcd9a7e4e')
+            '227fb337f5b7e44af8697391f32461778818679be7195210d415300511fb6743')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
