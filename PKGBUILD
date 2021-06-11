@@ -25,7 +25,7 @@ package(){
   rm -rf  $srcdir/$pkgname/ffmpeg/bin/V3/
   cp  $srcdir/$pkgname/VideoCut.desktop "${pkgdir}/usr/share/applications"
   cp -r $srcdir/$pkgname/* "${pkgdir}/opt/${pkgname}"
-  ln -s ${pkgdir}/opt/videocut/VideoCut.py  ${pkgdir}//usr/bin/VideoCut
+  ln -s /opt/videocut/VideoCut.py  ${pkgdir}//usr/bin/VideoCut
 }
 
 
