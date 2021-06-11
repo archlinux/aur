@@ -13,7 +13,7 @@ _pgo=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=88.0.1
+pkgver=89.0.2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
@@ -42,19 +42,17 @@ makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake'
              'python' 'python-psutil' 'python-zstandard' 'dump_syms')
 
 
-if [ $_pgo ] ; then
-  # rhbz#1849165
-  # https://bugzilla.redhat.com/show_bug.cgi?id=1849165
-  # LTO/PGO needs fixes from GCC 10.2.1
-  makedepends+=('gcc>=10.2.1')
-fi
+# https://bugs.gentoo.org/792705
+# needs fixes from GCC 11.2
+makedepends+=('gcc>=11.2.0')
+
 
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech'
             'pulseaudio: Audio support')
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
-_patchrev=aedbca44a8a2958947bed31f28e3083ac0496f4a
+_patchrev=bf580bacd132687dc0135959fbc9eeb8d8ba3ea9
 options=('!emptydirs')
 _patchurl=https://raw.githubusercontent.com/openSUSE/firefox-maintenance/$_patchrev
 _repo=https://hg.mozilla.org/mozilla-unified
@@ -89,15 +87,15 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         # Force disable elfhack to fix build errors
         build-disable-elfhack.patch
         # patches from gentoo:
-        # https://dev.gentoo.org/~whissi/mozilla/patchsets/firefox-85-patches-04.tar.xz
-        0020-Make-PGO-use-toolchain.patch
+        # https://dev.gentoo.org/~whissi/mozilla/patchsets/firefox-89-patches-01.tar.xz
+        0021-Make-PGO-use-toolchain.patch
         # Fix MOZILLA#1516803
         # https://bugzilla.mozilla.org/show_bug.cgi?id=1516803
-        0022-bmo-1516803-force-one-LTO-partition-for-sandbox-when.patch
+        0023-bmo-1516803-force-one-LTO-partition-for-sandbox-when.patch
         # PGO/LTO GCC patches
-        0024-Fix-building-with-PGO-when-using-GCC.patch
-        0027-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
-        0028-Make-elfhack-use-toolchain.patch
+        0025-Fix-building-with-PGO-when-using-GCC.patch
+        0028-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
+        0029-Make-elfhack-use-toolchain.patch
         # end
         # Fix CSD when globalmenu is active #8
         fix_csd_window_buttons.patch
@@ -163,13 +161,13 @@ prepare() {
     # Fix MOZILLA#1516803
     # sandbox needs to be built with --param lto-partitions=1 when
     # GCC LTO is enabled
-    patch -Np1 -i "$srcdir"/0022-bmo-1516803-force-one-LTO-partition-for-sandbox-when.patch
+    patch -Np1 -i "$srcdir"/0023-bmo-1516803-force-one-LTO-partition-for-sandbox-when.patch
 
     # PGO/LTO GCC patches
-    patch -Np1 -i "$srcdir"/0020-Make-PGO-use-toolchain.patch
-    patch -Np1 -i "$srcdir"/0024-Fix-building-with-PGO-when-using-GCC.patch
-    patch -Np1 -i "$srcdir"/0027-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
-    patch -Np1 -i "$srcdir"/0028-Make-elfhack-use-toolchain.patch
+    patch -Np1 -i "$srcdir"/0021-Make-PGO-use-toolchain.patch
+    patch -Np1 -i "$srcdir"/0025-Fix-building-with-PGO-when-using-GCC.patch
+    patch -Np1 -i "$srcdir"/0028-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
+    patch -Np1 -i "$srcdir"/0029-Make-elfhack-use-toolchain.patch
 
     # add missing rule for pgo builds
     patch -Np1 -i "$srcdir"/add_missing_pgo_rule.patch
@@ -276,7 +274,7 @@ md5sums=('SKIP'
          '43c65f6513fbc28aaa8238ad3bdb4e26'
          '7a97237384119556880ab5393c9091a3'
          '0a5733b7a457a2786c2dd27626a1bf88'
-         'f7dd45358cf99a22b551ffd4514cee74'
+         'e81dfd1207442ccef8afd8bb5fecb3b5'
          'fe24f5ea463013bb7f1c12d12dce41b2'
          '3c383d371d7f6ede5983a40310518715'
          '6a1ed12b8dbac57722436a2987e3ea33'
@@ -285,9 +283,9 @@ md5sums=('SKIP'
          'e7994b3b78b780ebe610ba3d87247e40'
          '00abc3976f028f8fe07111b9e687b574'
          'c7b492df4fbf42ffe8aea4c0afb89921'
-         'd6dd4e8e23b2e6e37ea6ea4a981d4316'
-         '67c0bca3e38404d53e6057e744c7ecee'
-         'c8e251f1fc9050cd12173b540baa96f8'
-         '72176c9ee7b2ac4f1bb07ff5ee5fe10b'
-         '07770d558b8999b5793794e1551a1309'
+         '5f3d8a91f73b319310cddbf596bb1850'
+         'c2ccbfca8c29fb6d960206af335c1d8e'
+         'b21033ca08953e7ce8304a208869eed1'
+         '5634ebb84f82d0d14d59715172219b27'
+         '11ea83f4953e77509505054d97a60af5'
          'f49ac3b9f5146e33ce587e6b23eb1a86')
