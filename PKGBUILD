@@ -28,7 +28,7 @@ _tagver=0.9.6
 _partsrev=e79a69765026f3fda8aab1b3e7a4952c28047a62
 
 pkgdesc='PCB layout prototyping application'
-arch=('i686' 'x86_64')
+arch=('aarch64' 'i686' 'x86_64')
 url=http://fritzing.org
 license=(GPL3)
 makedepends=('boost' 'git')
