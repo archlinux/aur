@@ -1,7 +1,7 @@
 # Maintainer: Pierre Carru <pierre@carru.fr>
 
 pkgname=inspect
-pkgdesc='A browser plugin designed for the viewing of premium video content'
+pkgdesc='Developer tool to inspect and debug mobile web apps and websites on iOS devices'
 pkgver=0.6.9
 pkgrel=1
 arch=('x86_64')

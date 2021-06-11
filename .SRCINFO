@@ -1,10 +1,10 @@
 pkgbase = inspect
-	pkgdesc = A browser plugin designed for the viewing of premium video content
+	pkgdesc = Developer tool to inspect and debug mobile web apps and websites on iOS devices
 	pkgver = 0.6.9
 	pkgrel = 1
-	url = https://github.com/inspectdev/inspect-release
+	url = https://inspect.dev
 	arch = x86_64
-	license = custom
+	license = proprietary
 	source = https://github.com/inspectdev/inspect-release/releases/download/v0.6.9/Inspect-0.6.9-linux-amd64.deb
 	sha256sums = f717daaaba79ffa71d02d64a3d6887fc09fad9821184c6dbdb4449755a019781
 
