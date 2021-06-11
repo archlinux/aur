@@ -1,9 +1,9 @@
 # Maintainer: Eric Cheng <ericcheng@hey.com>
 
 _npmname=gatsby-cli
-_npmver=3.6.0
+_npmver=3.7.1
 pkgname=nodejs-gatsby-cli # All lowercase
-pkgver=3.6.0
+pkgver=3.7.1
 pkgrel=1
 pkgdesc="Gatsby command-line interface for creating new sites and running Gatsby commands"
 arch=(any)
@@ -13,7 +13,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('7450a04023871ba1d849d90ba133fa53fa9c90e8')
+sha1sums=(2a9d3bc5ccb4bd001db7eadfb667cc4cad8f162a)
 
 package() {
   cd $srcdir
@@ -22,3 +22,5 @@ package() {
   cd $_npmdir
   npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
 }
+
+# vim:set ts=2 sw=2 et:
