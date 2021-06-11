@@ -3,12 +3,13 @@
 # Contributor: Evan Gates <evan.gates@gmail.com>
 pkgname=rsstail
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Monitor and print rss feeds (tail for rss...)"
 license=(GPL2)
 arch=('i686' 'x86_64')
 url=https://github.com/oldlaptop/rsstail
 depends=('libmrss')
+makedepends=('git')
 source=("$pkgname::git+https://github.com/oldlaptop/rsstail#commit=208a40f14005f26315050d2d9b9444bde6698db0")
 md5sums=('SKIP')
 
