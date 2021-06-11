@@ -2,8 +2,8 @@
 
 _name=HTMLHint
 pkgname=htmlhint
-pkgver=0.14.2
-pkgrel=3
+pkgver=0.15.0
+pkgrel=1
 pkgdesc='Static Code Analysis Tool for your HTML'
 arch=('any')
 url=https://htmlhint.com/
