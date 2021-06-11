@@ -5,13 +5,13 @@
 _name=rogerrouter
 pkgname=roger-router
 pkgver=2.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Journal, Fax-Software and Call-Monitor for AVM FRITZ!Box or compatible"
 arch=('i686' 'x86_64')
 url="https://www.tabos.org/"
 license=('GPL2')
-depends=(gtk3 libsoup ghostscript librm poppler-glib cmake libhandy)
-makedepends=(meson ninja)
+depends=(gtk3 libsoup ghostscript librm poppler-glib libhandy)
+makedepends=(meson ninja cmake)
 optdepends=(
 	'cups: FAX printer'
 	'evolution-data-server: Evolution address book support'

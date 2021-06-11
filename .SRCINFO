@@ -1,7 +1,7 @@
 pkgbase = roger-router
 	pkgdesc = Journal, Fax-Software and Call-Monitor for AVM FRITZ!Box or compatible
 	pkgver = 2.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tabos.org/
 	install = roger-router.install
 	arch = i686
@@ -9,12 +9,12 @@ pkgbase = roger-router
 	license = GPL2
 	makedepends = meson
 	makedepends = ninja
+	makedepends = cmake
 	depends = gtk3
 	depends = libsoup
 	depends = ghostscript
 	depends = librm
 	depends = poppler-glib
-	depends = cmake
 	depends = libhandy
 	optdepends = cups: FAX printer
 	optdepends = evolution-data-server: Evolution address book support
@@ -29,4 +29,3 @@ pkgbase = roger-router
 	sha512sums = 5fe17dc7edf1830a968f9cbd7844b2a552b9fc8b7755b7d23143c9d03adc7b29dcfb2d98c62c08a3095b1f59c212a0895b3f50ef60a4be788b523fb3aeebc0a2
 
 pkgname = roger-router
-
