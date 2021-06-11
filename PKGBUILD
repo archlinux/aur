@@ -3,10 +3,10 @@
 
 pkgname=alpm12
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Arch Linux Package Manager Library v12"
 arch=('x86_64')
-url="https://www.archlinux.org/pacman/"
+url="https://github.com/jghodd/alpm12"
 license=('GPL')
 depends=('bash' 'glibc' 'libarchive' 'curl' 'gpgme' 'archlinux-keyring')
 makedepends=('asciidoc')

@@ -1,8 +1,8 @@
 pkgbase = alpm12
 	pkgdesc = Arch Linux Package Manager Library v12
 	pkgver = 1.0.1
-	pkgrel = 1
-	url = https://www.archlinux.org/pacman/
+	pkgrel = 2
+	url = https://github.com/jghodd/alpm12
 	arch = x86_64
 	license = GPL
 	checkdepends = python
