@@ -1,8 +1,7 @@
 pkgbase = fish-fzf
 	pkgdesc = fzf key-bindings into fish
 	pkgver = 7.0
-	pkgrel = 1
-	epoch = 1
+	pkgrel = 2
 	url = https://github.com/PatrickF1/fzf.fish
 	install = fish-fzf.install
 	arch = any

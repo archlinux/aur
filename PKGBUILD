@@ -2,8 +2,7 @@
 
 pkgname=fish-fzf
 pkgver=7.0
-pkgrel=1
-epoch=1
+pkgrel=2
 pkgdesc="fzf key-bindings into fish"
 arch=('any')
 url="https://github.com/PatrickF1/fzf.fish"
