@@ -54,7 +54,7 @@ _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=19
+pkgrel=20
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -76,8 +76,8 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 _bfq_path="bfq-lucjan"
 _bfq_rel="r2K210421"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_rel}.patch"
-_gcc_path="cpu-patches-v4-sep"
-_gcc_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
+_compiler_path="cpu-patches-v6-sep"
+_compiler_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
@@ -85,7 +85,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_pkgver}-${_rtpatchver}.patch.sign"
         #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
-        "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
+        "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
         "${_lucjanpath}/arch-patches-v10-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_lucjanpath}/arch-patches-v10-sep/0002-drm-i915-ilk-glk-Fix-link-training-on-links-with-LTT.patch"
         "${_lucjanpath}/arch-patches-v10-sep/0003-drm-i915-dp-Prevent-setting-the-LTTPR-LT-mode-if-no-.patch"
@@ -342,7 +342,7 @@ sha512sums=('69bf72b99b0ef55cb9cd8c37bc9670e0dc7d97ab1f5b9f7edd2c161e8489d3aac43
             'e37ebf7e6c0f669f35bbc96bbbb096ae37541aeb65c540caa1201fcc11ebd7b7cca1a6a5f42b92e1da4040c92f882fb7830d054051d5b37a7b178a2de5ca3e24'
             'SKIP'
             '1225355dae67ca06d734ab724bcbaef0aae07ad3864bb4ec2d464f62b0a4b03043710f78afdbb42d4f16c4d24b42ed49bafca0cd278540e8016ab6e5df669153'
-            '08ba50a763f71267215ebf00f136edf68c63aa8afa362c30d6b06fbf38d5cd03c4300165eebb9db9571e7c47150eaa6efbbb7a7f53053b05570cb11f3b4a8303'
+            '7f52d5c70d18d49b6722d4c6d0267a3bb64ac329fe5b9670feb7e79653504d83ff0c3f2a3c7224e48bcaa8eaf8a2a67f3af5da3937fcf838f58ff02165c580cf'
             '4d9f5419f41e0f5a937c077e3c0ee605c08f65b54e1e07affa84cb1d9d68cf59cbffdcac79b40a62fe14fbdea4b34521f9e43786f29b40044d156fa5375d3e8a'
             'bdf872b8cc237730c2a174771d65e2d1c261cdb5c2359a8e0af88aeedc76dc510b86602941e0a7819d388163fb2ee2c0053ff79348b641c46d282c4dc11a42ca'
             'fe0e8f597d20e44344787f267913544256ff4a9545f08dd5d7dc3eb15240c570a127b34328ab62e958dd47d85c82ff2b24e16f00e05175b6b6e88960c3f84de3'
