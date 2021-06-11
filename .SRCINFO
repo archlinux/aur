@@ -5,7 +5,6 @@ pkgbase = intel-cpu-runtime
 	url = https://software.intel.com/content/www/us/en/develop/articles/opencl-runtime-release-notes.html
 	arch = x86_64
 	license = custom
-	depends = libxml2
 	depends = tbb
 	depends = hwloc
 	provides = opencl-intel

@@ -9,7 +9,7 @@ pkgdesc="Intel(R) CPU Runtime for OpenCL(TM) Applications"
 arch=('x86_64')
 url="https://software.intel.com/content/www/us/en/develop/articles/opencl-runtime-release-notes.html"
 license=('custom')
-depends=('libxml2' 'tbb' 'hwloc')
+depends=('tbb' 'hwloc')
 provides=('opencl-intel' 'opencl-driver')
 source=(
   "https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-runtime-tbb-${_pkgver}-${_pkgrel}_amd64.deb"
