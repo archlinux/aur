@@ -196,7 +196,11 @@ prepare() {
 
 build() {
   cd linux-${_major}
-  make all
+  if [ "${_compiler}" = "clang" ]; then
+    make LLVM=1 LLVM_IAS=1 all
+  else
+    make all
+  fi
 }
 
 _package() {
