@@ -9,7 +9,7 @@ pkgname=dustforce-hib-dustmod
 pkgver=1.0+h20141222_21.5.1
 _hibver=2014-12-22
 _hibver_windows=07012015
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast-paced 2D action platformer (Humble Bundle version, with Dustmod)'
 url='http://dustmod.com/'
 arch=('x86_64')
@@ -27,12 +27,12 @@ source=("hib://${_installer}"
         'dustmod-patch::http://dustkid.com/backend8/dustmod_package4.php?platform=linux64_drmfree'
         'dustforce-dustmod'
         'dustforce-hib-dustmod.desktop')
-md5sums=('e2fa7efd5b9ec64fc453f32480f63ad4'
-         'fed1b6d82bdbea66d242eaaaf7d3a2f2'
-         '2e6c4033e5f75dc9bf3245e7a7eb756d'
-         '9a97db6407d89430138e5302a9262d56'
-         '7b30db080ff59c0eba443b14da7c39bc'
-         'cc98a6127bc6d6cbdcfced14c69327cf')
+sha256sums=('f7bc7ac00ef9166c0b4550e1fc120ffe78307e92be1e379f9c40a4513660fae1'
+            '386c82e28eb08eea443b9881ea360cc10f29d9baf7bdafa90457a96e75b3c72c'
+            '8cbec5907d58d8f8c7b78ee6d616e3946aca0d51a1ecf3bc637c9c68ef58240e'
+            '4f5c50674d413b9b6438e404c251414670ff0989f1c5fa63f13a72ebd51f7e58'
+            'ff3c4e8cb45f6e931b6545c55064aaf644b885eb99947b6e32c953faea77a3ce'
+            '031d9d6a6ed41c4f6c69ea7dc7037d1a53f656e37f16d33f220ca25db7e2912b')
 # zip with no top-level directory - will extract manually
 noextract=('linux64_drmfree')
 
