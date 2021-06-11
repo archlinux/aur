@@ -1,0 +1,16 @@
+pkgbase = rationl
+	pkgdesc = An expressive and fast regular expression library for C
+	pkgver = v0.1.0
+	pkgrel = 1
+	url = https://github.com/TheNaturLFoundation/rationl
+	arch = any
+	license = GPL3
+	checkdepends = criterion
+	makedepends = git
+	makedepends = gcc
+	provides = rationl
+	source = https://github.com/TheNaturLFoundation/rationl/releases/download/v0.1.0/rationl-v0.1.0.tar.gz
+	sha512sums = 36b711ed2c4dc6b462ed7702115a4db66aa014d2adacf8f2fed636a3eb253378de73e2d3e4a9d5e963daeb6d6b2503e8236b74e1e43cf9db84534ee7cc917a19
+
+pkgname = rationl
+
