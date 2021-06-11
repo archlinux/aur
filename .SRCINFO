@@ -1,13 +1,14 @@
 pkgbase = conversejs
 	pkgdesc = Web-based XMPP/Jabber chat client written in JavaScript
 	pkgver = 7.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://conversejs.org/
 	arch = any
 	license = custom:MPL2
 	makedepends = git
 	makedepends = npm
 	makedepends = python2
+	depends = nodejs-lts-fermium
 	backup = usr/share/webapps/converse.js/fullscreen.html
 	source = conversejs-7.0.6.tar.gz::https://github.com/conversejs/converse.js/archive/v7.0.6.tar.gz
 	sha256sums = 38e65f6c0b950d30e40d0b9c253c729bd7a54926e7858221fe070ec7631fe25e

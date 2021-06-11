@@ -3,11 +3,12 @@
 # Contributor: Maxime "pep" Buquet <archlinux@bouah.net>
 pkgname=conversejs
 pkgver=7.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Web-based XMPP/Jabber chat client written in JavaScript'
 arch=('any')
 url="https://conversejs.org/"
 license=('custom:MPL2')
+depends=("nodejs-lts-fermium")
 makedepends=('git' 'npm' 'python2')
 backup=('usr/share/webapps/converse.js/fullscreen.html')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/conversejs/converse.js/archive/v$pkgver.tar.gz")
