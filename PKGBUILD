@@ -2,14 +2,14 @@
 
 pkgname=tree-sitter-typescript-git
 pkgver=0.16.3.r34.g28e757a
-pkgrel=1
+pkgrel=2
 pkgdesc="TypeScript and TSX grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/tree-sitter/tree-sitter-typescript"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('git' 'tree-sitter' 'npm')
+makedepends=('git' 'tree-sitter')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url")
