@@ -1,7 +1,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=trackarr
-pkgver=1.8.3
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Send irc based tracker announcements to Sonarr, Radarr and/or Lidarr."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -19,7 +19,7 @@ source=(
   'trackarr.sysusers'
   'trackarr.service'
 )
-sha256sums=('edb4ed917babcbd2afeb9b9362fd825984a07d128239bf3976432af78303c54d'
+sha256sums=('54427a9750db5c4bc72976070d854b9288eb9582a710c94f7ae6d7ea78369d67'
             'ce3cf95823f61845cef3c266f9fcf686cf332c859ab7afffe7e5b7f765cba3fa'
             '3512f2f072b1945cf5809bf803cfc00871281bef83536aadac847f5542604c67'
             '7348fdd9e1bd48b8d5eb76abecd00fe621d64c27f211ca97d61dbbc4c71ffdea')
