@@ -3,7 +3,7 @@
 pkgname=gcc-go-no-conflicts
 _pkgname_=gcc-go
 pkgver=11.1.0
-pkgrel=1
+pkgrel=2
 _pkgrel_=1
 pkgdesc='Go front-end for GCC, does not conflict with go package.'
 arch=(x86_64)
@@ -26,7 +26,7 @@ package() {
 	install -dm755 "${pkgdir}/usr/lib/"
 	install -dm755 "${pkgdir}/usr/lib32/"
 	install -dm755 "${pkgdir}/usr/share/"
-	cp -r "${srcdir}/usr/lib/" "${pkgdir}/usr/"
-	cp -r "${srcdir}/usr/lib32/" "${pkgdir}/usr/"
-	cp -r "${srcdir}/usr/share/" "${pkgdir}/usr/"
+	cp -prd "${srcdir}/usr/lib/" "${pkgdir}/usr/"
+	cp -prd "${srcdir}/usr/lib32/" "${pkgdir}/usr/"
+	cp -prd "${srcdir}/usr/share/" "${pkgdir}/usr/"
 }
