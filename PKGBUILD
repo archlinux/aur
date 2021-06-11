@@ -3,7 +3,7 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com> ([community] package)
 
 pkgname=remmina-git
-pkgver=1.4.16.r38.ga650d58d8
+pkgver=1.4.18.r30.g155fbcd0f
 pkgrel=1
 pkgdesc='A remote desktop client written in GTK+ - git checkout'
 arch=(i686 x86_64)
@@ -13,7 +13,8 @@ depends=('gtk2' 'zlib' 'libjpeg' 'libssh' 'avahi' 'vte3'
 	'libgcrypt' 'libxdmcp' 'libgnome-keyring' 'libvncserver'
 	'libsecret' 'webkit2gtk' 'libsodium')
 makedepends=('git' 'intltool' 'pkgconfig' 'cmake'
-	'avahi' 'libxkbfile' 'freerdp-git' 'telepathy-glib' 'gobject-introspection' 'spice' 'spice-gtk' 'spice-protocol')
+	'avahi' 'libxkbfile' 'freerdp-git' 'telepathy-glib' 'gobject-introspection' 'spice' 'spice-gtk' 'spice-protocol' 'gnome-keyring' 'kwallet' 'libappindicator-gtk3'
+	'gtk-vnc' 'libgnome-keyring' 'docbook-xsl' 'libpulse')
 optdepends=('avahi' 'libxkbfile' 'telepathy-glib' 'gobject-introspection' 'spice' 'spice-gtk' 'spice-protocol')
 replaces=('remmina-plugins')
 provides=('remmina' 'grdc' "grdc=${pkgver}" 'remmina-plugins')
@@ -44,7 +45,13 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DWITH_APPINDICATOR=OFF \
-        -DWITH_FREERDP3=ON \
+        -DWITH_FREERDP_MASTER=ON \
+        -DWITH_CUPS=ON \
+	-DWITH_LIBSSH=ON \
+        -DWITH_NEWS=ON \
+        -DWITH_KF5WALLET=ON \
+        -DWITH_PYTHONLIBS=OFF \
+        -DWITH_GVNC=ON \
 		.
 	make
 }
