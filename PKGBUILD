@@ -2,14 +2,14 @@
 _pkgname=hyperrogue
 pkgname=${_pkgname}-git
 pkgver='12.0a.r6.gd4f34d0d'
-pkgrel=1
+pkgrel=2
 pkgdesc="A puzzle-roguelike taking place on a hyperbolic plane. Latest git version."
 arch=('i686' 'x86_64')
 url="https://www.roguetemple.com/z/hyper/"
 license=('GPL2')
 provides=("${_pkgname}")
 depends=('sdl_gfx' 'sdl_ttf' 'sdl_mixer' 'mesa')
-makedepends=('glu' 'git')
+makedepends=('glew' 'git')
 
 source=("git+https://github.com/zenorogue/hyperrogue.git"
         "${_pkgname}.desktop"
