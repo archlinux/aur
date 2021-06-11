@@ -1,0 +1,20 @@
+pkgbase = tokodon-git
+	pkgdesc = A native Mastodon client
+	pkgver = r47.0ca83fe
+	pkgrel = 1
+	url = https://invent.kde.org/network/tokodon
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	makedepends = git
+	depends = kirigami2
+	depends = qtkeychain-qt5
+	depends = kdbusaddons
+	provides = tokodon
+	conflicts = tokodon
+	source = git+https://invent.kde.org/network/tokodon.git
+	md5sums = SKIP
+
+pkgname = tokodon-git
