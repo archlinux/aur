@@ -1,21 +1,30 @@
 # Maintainer: Ranieri Althoff <ranisalt+aur at gmail dot com>
 
+_imgui_ver=1.81
+_imgui_wrap_ver=1
+
 pkgbase=mangohud
 pkgname=('mangohud' 'lib32-mangohud' 'mangohud-common')
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.6.3
+pkgrel=1
 url='https://github.com/flightlessmango/MangoHud'
 license=('MIT')
 arch=('x86_64')
 makedepends=('meson' 'python-mako' 'glslang' 'libglvnd' 'lib32-libglvnd'
              'vulkan-headers' 'vulkan-icd-loader' 'lib32-vulkan-icd-loader'
              'libxnvctrl' 'dbus')
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/flightlessmango/MangoHud/archive/v$pkgver.tar.gz")
-sha256sums=('a1cb0bef85fd46a6e5e7426b86e0d16714e5ec68f96c724f6f53a357f516f78b')
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/flightlessmango/MangoHud/archive/v$pkgver.tar.gz"
+	"imgui-$_imgui_ver.tar.gz::https://github.com/ocornut/imgui/archive/refs/tags/v$_imgui_ver.tar.gz"
+	"imgui-$_imgui_ver-$_imgui_wrap_ver-wrap.zip::https://wrapdb.mesonbuild.com/v1/projects/imgui/$_imgui_ver/$_imgui_wrap_ver/get_zip")
+sha256sums=('6dbb2b496a75340c135a4bf8d85e0f52a23108449171aef535a3940df2d21daa'
+            'f7c619e03a06c0f25e8f47262dbc32d61fd033d2c91796812bf0f8c94fca78fb'
+            '6d00b442690b6a5c5d8f898311daafbce16d370cf64f53294c3b8c5c661e435f')
 
 _srcdir="MangoHud-$pkgver"
 
 build() {
+    ln -s "$srcdir/imgui-$_imgui_ver" "$_srcdir/subprojects/imgui"
+
     arch-meson -Dappend_libdir_mangohud=false -Duse_system_vulkan=enabled "$_srcdir" build64
     ninja -C build64
 
