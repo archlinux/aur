@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libuargp-git
 	pkgdesc = libuargp extracted from uclibc (mingw-w64)
-	pkgver = r18.488eb69
+	pkgver = r19.1f92296
 	pkgrel = 1
 	url = https://sourceware.org/elfutils/
 	arch = any

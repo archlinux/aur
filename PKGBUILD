@@ -1,5 +1,5 @@
 pkgname=mingw-w64-libuargp-git
-pkgver=r18.488eb69
+pkgver=r19.1f92296
 pkgrel=1
 pkgdesc='libuargp extracted from uclibc (mingw-w64)'
 arch=('any')
@@ -18,11 +18,6 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 pkgver() {
   cd "$srcdir/libuargp"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir/libuargp"
-  curl -L https://github.com/xhebox/libuargp/pull/2.patch | patch -p1
 }
 
 build() {
