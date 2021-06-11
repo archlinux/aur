@@ -1,7 +1,0 @@
-post_install() {
-    ln -s /opt/videocut/VideoCut.py  /usr/bin/VideoCut
-}
-
-pre_remove() {
-   rm /usr/bin/VideoCut
-}
