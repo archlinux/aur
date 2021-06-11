@@ -7,9 +7,9 @@ pkgrel=2
 arch=('i686' 'x86_64')
 depends=('gtk2')
 pkgdesc="mind-developing game written in pure C, Gtk+ 2.0 and some OpenGL."
-url="http://clickomatic.sourceforge.net/"
+url="https://sourceforge.net/projects/clickomatic/"
 license=('BSD')
-source=(http://downloads.sourceforge.net/project/clickomatic/clickosquare-src/0.0.1/clickosquare-0.0.1.src.tar.bz2)
+source=(https://downloads.sourceforge.net/project/clickomatic/clickosquare-src/0.0.1/clickosquare-0.0.1.src.tar.bz2)
 md5sums=('146037721ef7ad4cc5e9ad9a22a5bd99')
 
 build() {
