@@ -3,7 +3,7 @@
 pkgname=sedutil-ladar
 _pkgname=sedutil
 pkgver=1.16.0
-pkgrel=2
+pkgrel=3
 pkgdesc="TCG OPAL 2.00 SED Management Program. ladar's fork, SHA512 variant"
 arch=(x86_64)
 url=https://github.com/ladar/sedutil
@@ -62,6 +62,7 @@ package() {
 
   # pre-boot authentication and rescue image creation
   install -Dm644 sedutil-pba.hook          "$pkgdir"/usr/lib/initcpio/hooks/sedutil-pba
+  install -Dm644 sedutil-rescue.hook       "$pkgdir"/usr/lib/initcpio/hooks/sedutil-rescue
   install -Dm644 sedutil-pba.install       "$pkgdir"/usr/lib/initcpio/install/sedutil-pba
   install -Dm644 sedutil-rescue.install    "$pkgdir"/usr/lib/initcpio/install/sedutil-rescue
   install -Dm644 mkinitcpio-pba.conf    -t "$pkgdir"/usr/share/sedutil/
