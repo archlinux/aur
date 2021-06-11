@@ -1,7 +1,7 @@
 pkgbase = bisq-bin
 	pkgdesc = Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges
-	pkgver = 1.6.4
-	pkgrel = 3
+	pkgver = 1.6.5
+	pkgrel = 1
 	url = https://bisq.network
 	arch = x86_64
 	license = AGPL3
@@ -10,10 +10,9 @@ pkgbase = bisq-bin
 	conflicts = bisq
 	conflicts = bisq-git
 	validpgpkeys = CB36D7D2EBB2E35D9B75500BCD5DC1C529CDFD3B
-	source_x86_64 = https://github.com/bisq-network/bisq/releases/download/v1.6.4/Bisq-64bit-1.6.4.deb
-	source_x86_64 = https://github.com/bisq-network/bisq/releases/download/v1.6.4/Bisq-64bit-1.6.4.deb.asc
-	sha512sums_x86_64 = 81f6405a70eb0eecb56575bfbf0567d353d0835f707830f141480749fb917c2ebc0deb2438a79ca94ad5ef6aa87f3c1d61343b9e1a3d53fb0d29bd131631e9e1
-	sha512sums_x86_64 = 52331e465a26eeb92c5090aa75553a9eeb58c1007891eecd2155fa6d6af6588cf8d74cc09d958cdcfe11ad2ce8c331dfeb38f677a271d7c2824fb16973f22ac6
+	source_x86_64 = https://github.com/bisq-network/bisq/releases/download/v1.6.5/Bisq-64bit-1.6.5.deb
+	source_x86_64 = https://github.com/bisq-network/bisq/releases/download/v1.6.5/Bisq-64bit-1.6.5.deb.asc
+	sha512sums_x86_64 = 32da5f7bdf89eb3dc9b7c08df4199a4fe8272e1006d42cbbde1ea1802bfec98493e9e879e2331fa056c21e4f0c3f31285e0cdf9360ec97a25f968da906d05c29
+	sha512sums_x86_64 = dd686642d75389b6bf28e0db07a2aedc4c87c138446cd715aa350a60e45ab101b6f15dbddd469cc269318cc9a47e89c58e2df2b7a6315a17fe2661554f730016
 
 pkgname = bisq-bin
-
