@@ -34,6 +34,11 @@ if [ -z ${use_tracers+x} ]; then
   use_tracers=y
 fi
 
+## Choose between GCC and CLANG config (default is GCC)
+if [ -z ${_compiler+x} ]; then
+  _compiler=gcc
+fi
+
 # Compile ONLY used modules to VASTLY reduce the number of modules built
 # and the build time.
 #
@@ -52,7 +57,7 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-git
-pkgver=5.11.11.xanmod1.r0.gfa947bbb2a4c
+pkgver=5.12.9.xanmod1.r1.ge2253e02d3ef
 xanmod=1
 pkgrel=1
 pkgdesc='Linux Xanmod - git version'
@@ -102,6 +107,9 @@ prepare() {
     msg2 "Applying patch $src..."
     patch -Np1 < "../$src"
   done
+
+  # Applying configuration
+  cp -vf CONFIGS/xanmod/${_compiler}/config .config
 
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
   scripts/config --enable CONFIG_STACK_VALIDATION
