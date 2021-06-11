@@ -1,8 +1,5 @@
 info() {
-    echo -e "Run h7toolpc once to install the wine environment,\r
-    and then run the following command to fix the font display"
-    echo -e "Install fonts patch"
-    echo -e "cd ~/.h7toolpc && patch -p0 < font.patch"
+    echo -e "H7-TOOL 的 PC 上位机，支持串口、CAN、示波器、CMSIS-DAP、DS18B20、RTT Viewer、脱机烧录等"
 }
 post_install() {
     info
