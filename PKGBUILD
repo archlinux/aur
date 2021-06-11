@@ -2,7 +2,7 @@
 
 pkgname=superbfetch-git
 _gitname="bfetch"
-pkgver=r46.16173cf
+pkgver=r85.91c138e
 pkgrel=1
 pkgdesc="Dynamic fetch displayer that SuperB"
 arch=('any')
@@ -16,7 +16,10 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_gitname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 prepare() {
@@ -30,5 +33,5 @@ build() {
 package() {
   cd $_gitname
   mkdir -p "${pkgdir}/usr/bin"
-  mv "bfetch" "${pkgdir}/usr/bin/bfetch"
+  mv "bin/bfetch" "${pkgdir}/usr/bin/bfetch"
 }
