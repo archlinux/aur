@@ -1,5 +1,5 @@
 pkgname=nodejs-solid-server
-pkgver=5.1.5
+pkgver=5.6.6
 pkgrel=1
 pkgdesc="Solid server on top of the file-system"
 arch=(any)
@@ -10,7 +10,7 @@ makedepends=('npm')
 source=("http://registry.npmjs.org/${pkgname#nodejs-}/-/${pkgname#nodejs-}-$pkgver.tgz"
         "config.json")
 noextract=(${npmname#nodejs-}-$pkgver.tgz)
-sha512sums=('027a5297d5a7b4eecb36257ebc8df71bf717bb521f95b618880838cd3f50eecbb61c399955fdedddecea2be9b36b6f9d369c99e9b924a3583dfdfcfb1c547135'
+sha512sums=('13e263adcda2cac67bc6e710cc4bc8a3ed825e7415b7b71170a740d548de5c814476f90aa68c670d4a29c0004de311d5574976eff7dde5fcd7e8887a1f784307'
             '2084520681f4f2b499a58ba94dcb4480745a3550a7041afe4c35f5ff743577caac312eb22e6ec109c82ed06d8bea335b4032b429c9d94e7640e036fdb007261c')
 backup=('etc/solid-server/config.json')
 
