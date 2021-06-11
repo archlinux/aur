@@ -2,7 +2,7 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='kclock'
-pkgver=21.05
+pkgver=21.06
 pkgrel=1
 pkgdesc='Convergent clock application for Plasma'
 arch=('x86_64' 'aarch64')
@@ -27,3 +27,4 @@ package() {
 }
 
 # vim: ts=2 sw=2 et:
+sha256sums=('52347878e96ff2fe5ee19de75479d8e19d4d27ac55b439b0b393c07a74caaaa8')
