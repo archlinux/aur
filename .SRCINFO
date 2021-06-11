@@ -1,0 +1,20 @@
+pkgbase = vim-dracula-git
+	pkgdesc = A dark theme for Vim
+	pkgver = 2.0.0.r50.g869f70a
+	pkgrel = 1
+	url = https://draculatheme.com/vim
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-dracula
+	provides = vim-airline-dracula
+	provides = vim-lightline-dracula
+	conflicts = vim-dracula
+	conflicts = vim-airline-dracula
+	conflicts = vim-lightline-dracula
+	source = vim-dracula-git::git+https://github.com/dracula/vim
+	sha512sums = SKIP
+
+pkgname = vim-dracula-git
