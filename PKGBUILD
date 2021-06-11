@@ -9,6 +9,8 @@ arch=('x86_64')
 url="https://github.com/weclaw1/image-roll"
 license=('MIT')
 depends=('gtk3')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("$url/releases/download/$pkgver/$_pkgname-$pkgver"
         "https://raw.githubusercontent.com/weclaw1/$_pkgname/$pkgver/LICENSE"
         "https://raw.githubusercontent.com/weclaw1/$_pkgname/$pkgver/README.md")
