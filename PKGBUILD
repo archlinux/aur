@@ -3,22 +3,24 @@
 
 pkgname=kalu-kde
 pkgver=4.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Upgrade notifier w/ AUR support, watched (AUR) packages, news; supports autohide in KDE Plasma's panel"
 arch=('i686' 'x86_64')
 url="https://jjacky.com/kalu"
 license=('GPL3+')
-depends=('dbus' 'polkit' 'gtk3' 'pacman>=5.2' 'pacman<5.3' 'curl' 'libnotify'
+depends=('dbus' 'polkit' 'gtk3' 'alpm12' 'curl' 'libnotify'
          'notification-daemon' 'statusnotifier')
-makedepends=('perl' 'groff')
+makedepends=('perl' 'groff' 'alpm12')
 source=(http://jjacky.com/${pkgname%-kde}/${pkgname%-kde}-$pkgver.tar.xz
         statusnotifier.patch
         gcc10.patch
+        fix-for-alpm12.patch
         https://github.com/deraffe/kalu/commit/a46975cdcb926ea8508c012d333471c1e1cb8529.patch)
 install=kalu.install
 sha1sums=('4e9fc8b311077d3720af8619de04c917c01acbfb'
           'd58712ff827df6bea9c5eb5a7e3d9034f3cac506'
           '6e02682594c169561fbadbde635053cf47e3a2f1'
+          '2f8744a2b52e60dbb0cfd9cebf3331c8f07f627f'
           '6418c6df072de666873e37240bddb33712ae4aac')
 provides=(${pkgname%-kde})
 conflicts=(${pkgname%-kde})
@@ -28,6 +30,7 @@ prepare() {
   patch -p0 -i "$srcdir/statusnotifier.patch"
   patch -p1 -i "$srcdir/gcc10.patch"
   patch -p1 -i "$srcdir/a46975cdcb926ea8508c012d333471c1e1cb8529.patch"
+  patch -p1 -i "$srcdir/fix-for-alpm12.patch"
 }
 
 build() {
