@@ -1,6 +1,6 @@
 pkgbase = mmctl
 	pkgdesc = A remote CLI tool for Mattermost
-	pkgver = v5.30.0
+	pkgver = v5.35.0
 	pkgrel = 1
 	url = https://github.com/mattermost/mmctl
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = mmctl
 	makedepends = go
 	depends = gcc-libs
 	options = !strip
-	source = mmctl-v5.30.0.tar.gz::https://github.com/mattermost/mmctl/archive/v5.30.0.tar.gz
-	sha256sums = 0e391de1a15b574d0ec2f7167b94c155f8ebaf249d5c8a30e64365cb8a85a575
+	source = mmctl-v5.35.0.tar.gz::https://github.com/mattermost/mmctl/archive/v5.35.0.tar.gz
+	sha256sums = 83bfaa8428a86078bc91d7c7d9c0b3311c000061cd9ff26c2e9ef7e385fe6b8e
 
 pkgname = mmctl
 
