@@ -1,6 +1,6 @@
 pkgbase = jicofo-bin
 	pkgdesc = JItsi meet COnference FOcus binary
-	pkgver = 1.0+747
+	pkgver = 1.0+756
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	install = jitsi.install
@@ -18,13 +18,13 @@ pkgbase = jicofo-bin
 	backup = etc/jicofo/logging.properties
 	backup = etc/jicofo/sip-communicator.properties
 	backup = etc/jicofo/jicofo.conf
-	source = https://download.jitsi.org/stable/jicofo_1.0-747-1_all.deb
+	source = https://download.jitsi.org/stable/jicofo_1.0-756-1_all.deb
 	source = config
 	source = sip-communicator.properties
 	source = service
 	source = sysusers.conf
 	source = tmpfiles.conf
-	sha256sums = 925f99bedb6db68985f5a5d2d2ca1142d0432e845e926a01fbbe952b581f271c
+	sha256sums = dff19b1920d56940c5b283c4f33c99829d307f193f8254e044f6521a2eee151f
 	sha256sums = f3928f382fbfd5bc40bd0c2a9553d2480b4fa7cf2fd04109257cdac535ed3d9f
 	sha256sums = f295f5f8ee13edd019defc037c60e04c6ea2d30e69cc4a896c010b8570f5efab
 	sha256sums = 6eff8e605966fc827e9074d2f42c80e61feaeba307395b16423c2e5984d750e1
@@ -32,4 +32,3 @@ pkgbase = jicofo-bin
 	sha256sums = 9f6fb4759099feefaee6fd44cac5854401e58f7ce929949cbc3994faaa3487d3
 
 pkgname = jicofo-bin
-
