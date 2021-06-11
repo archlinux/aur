@@ -7,7 +7,7 @@
 # Contributor: oguzkagan <me@oguzkaganeren.com.tr>
 
 pkgname='xampp'
-_srcver='8.0.6'
+_srcver='8.0.7'
 _binver=0
 pkgrel=1
 # This PKGBUILD deals with two different versioning formats: the upstream
@@ -26,7 +26,7 @@ arch=('x86_64')
 depends=('inetutils' 'net-tools')
 optdepends=('polkit: for launching XAMPP Manager and Control Panel from menu'
             'pygtk: for using XAMPP Control Panel')
-makedepends=('sdx' 'tclkit' 'rsync')
+makedepends=('sdx' 'tclkit' 'rsync' 'pcre')
 source=('bitrock-unpacker.tcl'
 	'org.apachefriends.xampp.policy'
 	'properties.ini.in'
@@ -46,16 +46,16 @@ options=('staticlibs' 'libtool' '!strip')
 install='xampp.install'
 sha256sums=('3f262ef4b3e752992667ab482cbf364e3b9e6f95b4b6fb12a1ce6fa7a88f124e'
             'd72750c1dba2f754e6ea4eec22770f8a9c3858f270a91e7b1da4129e053a9d68'
-            'bfa2715018e90811b21cc55205ec82ff56dc5fd165575d3ce26d9c12821809f6'
+            '90a0003840fc9310f22b26e909845d5909a515dbf3f5aff39f730b190e808597'
             '72dffe1ee4ae96a966a301dd1486832ce823cf3132f3ab1cd4ddb75ef9816d08'
-            '0829497e24a103b4197f8b47fc1f38977aa7a2e76157d0cd936aaad1a5ee2958'
+            '3236b8e4b397ab9081038450efa7e0d0cfcc744ba942118d67ada2e36a60dd61'
             '37e24dacf3a52037d0cddb11d979917f81741bf399ec5fa5e847359909b7bc25'
             '1447876c2d2dcf48c8e94c3bffbb09f1b4005621a55f78fb7d9faecebdb26264'
             '80de3facade04b394a501f13dd1c16d66381715c42c1f597fc1142cdcbe5f3de'
             '39a5617deaf42d17281b3b1b828351c0f6108cee774b3e4671af3d9bbcd48883'
             '8825623ea18abb8bfb3a8811b6c59dc8485f7d767c6f3a013fdc1b1afc979426'
             '83b30970378e8d30d7acd13ebe6dc31652548a44d2cca9fd5919fa7f06fe238d')
-sha256sums_x86_64=('3f034806bcb1826ed751ca52abe918f62d2951aee7aae9a91a7bfc3f22f898c1')
+sha256sums_x86_64=('e14c5fff4e2af6c0b932981893dd3928525ac9a4b9035e1b353d80dbdd5dfe7c')
 sha256sums_i686=('SKIP')
 
 _platform="$(test "${CARCH}" = 'x86_64' && echo "${_build64name}" || echo "${_build32name}")"
@@ -83,12 +83,6 @@ package() {
 	# This is a constant, you should not change it - this path is hard-coded in some of the files
 	local _xampp_root='/opt/lampp'
 
-	local _sed_subst="
-		s/@XAMPP_VERSION@/$(_sed_escape "${_srcver}-${_binver}")/g
-		s/@XAMPP_PLATFORM@/$(_sed_escape "${_platform}")/g
-		s/@XAMPP_ROOT@/$(_sed_escape "${_xampp_root}")/g
-	"
-
 	cd "${srcdir}"
 
 	# Package tree
@@ -114,6 +108,13 @@ package() {
 	# Temp folders
 	install -dm777 "${pkgdir}${_xampp_root}/phpmyadmin/tmp"
 	chmod 777 "${pkgdir}${_xampp_root}/temp"
+
+	local _sed_subst="
+		s/@XAMPP_VERSION@/$(_sed_escape "${_srcver}-${_binver}")/g
+		s/@XAMPP_PLATFORM@/$(_sed_escape "${_platform}")/g
+		s/@XAMPP_ROOT@/$(_sed_escape "${_xampp_root}")/g
+		s/@XAMPP_EXTENSIONDIR@/$(_sed_escape "$(pcregrep -o1 -o2 -o3 '^\s*extension_dir='\''([^\'\'']+)'\''\s*$|^\s*extension_dir="([^\"]+)"\s*$|^\s*extension_dir=([^\s]+)\s*$' "${pkgdir}${_xampp_root}/bin/php-config")")/g
+	"
 
 	# Links and missing files
 	sed "${_sed_subst}" "${srcdir}/properties.ini.in" > "${pkgdir}${_xampp_root}/properties.ini"
