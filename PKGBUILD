@@ -1,22 +1,51 @@
-# Maintainer: Jan-Tarek Butt <tarek@ring0.de>
-pkgbase=ros-melodic-soem
-pkgname=ros-melodic-soem
-pkgver=1.4.0
-pkgrel=1
-arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-license=('LGPL2')
-pkgdesc="ROS wrapper for the Simple Open EtherCAT Master SOEM. This is an updated version of the original SOEM wrapper released into ROS now including the upstream Repo as a git subtree."
-provides=('ros-melodic-soem')
+# Script generated with create_pkgbuild.py
+# For more information: https://github.com/ros-melodic-arch/ros-build-tools-py3
+pkgdesc="ROS - ROS wrapper for the Simple Open EtherCAT Master SOEM."
+url='http://wiki.ros.org/soem'
 
-source=("${pkgname}-${pkgver}.deb"::"http://packages.ros.org/ros/ubuntu/pool/main/r/ros-melodic-soem/${pkgname}_${pkgver}-1bionic.20200303.055401_amd64.deb")
-sha256sums=('636c049ff907dd9a711727c86ff382b3fb85a2fa194029945ea540ce7a77bef8')
+pkgname='ros-melodic-soem'
+pkgver='1.4.1003'
+arch=('any')
+pkgrel=1
+license=('GPLv2 with linking exception')
+
+ros_makedepends=(ros-melodic-catkin)
+makedepends=('cmake' 'ros-build-tools'
+${ros_makedepends[@]}
+)
+
+ros_depends=()
+depends=(${ros_depends[@]}
+)
+
+_dir="soem-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mgruhler/soem/archive/${pkgver}.tar.gz")
+sha256sums=('146be1a7dc88e2db5834bdf9378c0ce4a71273408bcf3965c3f26d9006fd068a')
+
 
 build() {
-	cd "${srcdir}"
-	# unpack
-	tar --xz -xf data.tar.xz
+  # Use ROS environment variables
+  source /usr/share/ros-build-tools/clear-ros-env.sh
+  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+
+  # Create build directory
+  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
+  cd ${srcdir}/build
+
+  # Fix Python2/Python3 conflicts
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
+
+  # Build project
+  cmake ${srcdir}/${_dir} \
+            -DCATKIN_BUILD_BINARY_PACKAGE=ON \
+            -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
+            -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+            -DSETUPTOOLS_DEB_LAYOUT=OFF
+  make
 }
 
 package() {
-	cp -r "${srcdir}"/opt "${pkgdir}"/opt
+  cd "${srcdir}/build"
+  make DESTDIR="${pkgdir}/" install
 }
+
