@@ -1,0 +1,12 @@
+diff --git a/src/backend/opencl/kernel/homography.hpp b/src/backend/opencl/kernel/homography.hpp
+index b84e599..3034658 100644
+--- a/src/backend/opencl/kernel/homography.hpp
++++ b/src/backend/opencl/kernel/homography.hpp
+@@ -21,6 +21,7 @@
+ 
+ #include <string>
+ #include <vector>
++#include <cfloat>
+ 
+ namespace opencl {
+ namespace kernel {

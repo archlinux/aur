@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 pkgname=arrayfire
 pkgver=3.8.0
-pkgrel=6
+pkgrel=7
 pkgdesc="High performance software library for parallel computing with an easy-to-use API"
 arch=('x86_64')
 url='https://arrayfire.com'
@@ -14,8 +14,15 @@ optdepends=('cuda: Required for using CUDA backend'
             'opencl-driver: Required for using OpenCL backend'
             'ocl-icd: Required for OpenCL ICD Bindings')
 options=('!buildflags')
-source=("http://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname}-full-${pkgver}.tar.bz2")
-sha512sums=('f36bee89a0f1a0a48ca2cae3a7b2527d63830e3070cb31174ff7f5c42f065aad6981d5142a8b7af7215a3c7dbf67ae13d1ea3543cd94eb70cff509c8cb95c739')
+source=("http://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname}-full-${pkgver}.tar.bz2"
+        'arrayfire-boost-1.76.0.patch')
+sha512sums=('f36bee89a0f1a0a48ca2cae3a7b2527d63830e3070cb31174ff7f5c42f065aad6981d5142a8b7af7215a3c7dbf67ae13d1ea3543cd94eb70cff509c8cb95c739'
+            '92e34c28e4b6222febef5a3047f4faf64756a50b46a68507931b989984bbc6729aa4d1560dc267650f1890cb1ad7aa0866dd3debc0073f9103f764af7618d795')
+
+prepare() {
+  cd "${srcdir}/arrayfire-full-${pkgver}"
+  patch -Np1 -i "${srcdir}/arrayfire-boost-1.76.0.patch"
+}
 
 build() {
   cd "${srcdir}/arrayfire-full-${pkgver}"
@@ -35,7 +42,7 @@ build() {
       -DAF_BUILD_DOCS=ON \
       -DCUDA_architecture_build_targets="5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6" \
       -DCMAKE_BUILD_TYPE=Release \
-      -DCUDA_HOST_COMPILER=/usr/bin/gcc \
+      -DCUDA_HOST_COMPILER=/usr/bin/gcc-10 \
       -DBoost_NO_BOOST_CMAKE=ON
 
   ninja -C build
