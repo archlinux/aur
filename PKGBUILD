@@ -4,7 +4,7 @@ validpgpkeys=('33ED753E14757D79FA17E57DC4C1F715B2B66B95')
 
 pkgname=llvm12-git
 pkgdesc="LLVM 12 Toolchain with clang, clang-tools-extra, compiler-rt, openmp, polly, lldb, lld"
-pkgver=12.0.1_rc1.g5b149c437194
+pkgver=12.0.1_rc1.19.g5b149c437194
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -61,7 +61,7 @@ pkgver() {
 
   _gitdesc=$(git describe --long --tags)
   if [[ "${_gitdesc}" =~ "rc" ]]; then
-    _gitdesc=$(echo "${_gitdesc}" | cut -f3,5 -d- | tr '-' '.')
+    _gitdesc=$(echo "${_gitdesc}" | cut -f3-5 -d- | tr '-' '.')
   else
     _gitdesc="r$(echo "${_gitdesc}" | cut -f3-4 -d- | tr '-' '.')"
   fi
