@@ -4,7 +4,7 @@
 
 pkgname=com.gloomyghost.netron-bin
 pkgver=4.9.6
-pkgrel=5
+pkgrel=6
 pkgdesc="Visualizer for neural network, deep learning and machine learning models"
 arch=('x86_64')
 url='https://www.lutzroeder.com/ai'
