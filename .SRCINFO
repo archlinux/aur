@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-libuargp-git
+	pkgdesc = libuargp extracted from uclibc (mingw-w64)
+	pkgver = r18.488eb69
+	pkgrel = 1
+	url = https://sourceware.org/elfutils/
+	arch = any
+	license = LGPL3
+	license = GPL3
+	makedepends = mingw-w64-gcc
+	makedepends = git
+	depends = mingw-w64-gettext
+	provides = mingw-w64-libuargp
+	conflicts = mingw-w64-libuargp
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = git+https://github.com/xhebox/libuargp.git
+	sha256sums = SKIP
+
+pkgname = mingw-w64-libuargp-git
