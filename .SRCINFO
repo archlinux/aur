@@ -1,7 +1,7 @@
 pkgbase = com.gloomyghost.netron-bin
 	pkgdesc = Visualizer for neural network, deep learning and machine learning models
 	pkgver = 4.9.6
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.lutzroeder.com/ai
 	arch = x86_64
 	license = MIT

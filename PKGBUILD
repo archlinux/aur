@@ -4,7 +4,7 @@
 
 pkgname=com.gloomyghost.netron-bin
 pkgver=4.9.6
-pkgrel=6
+pkgrel=7
 pkgdesc="Visualizer for neural network, deep learning and machine learning models"
 arch=('x86_64')
 url='https://www.lutzroeder.com/ai'
@@ -24,13 +24,14 @@ package() {
   chmod 755 ./${pkgname}-${pkgver}.AppImage
   ./${pkgname}-${pkgver}.AppImage --appimage-extract
   install -Dm644 squashfs-root/usr/share/icons/hicolor/0x0/apps/netron.png "${pkgdir}/usr/share/pixmaps/netron.png"
+  install -Dm644 icon.png -t "${pkgdir}/usr/share/pixmaps/${pkgname}"
   gendesk -f -n --pkgname "${pkgname%-bin}" \
           --pkgdesc "$pkgdesc" \
           --name "Netron" \
           --comment "$pkgdesc" \
           --exec "${pkgname%-bin}" \
           --categories 'Development;Application;' \
-          --icon "${pkgdir}/usr/share/pixmaps/icon.png"
+          --icon "${pkgdir}/usr/share/pixmaps/${pkgname}/icon.png"
   install -Dm644 "${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/opt"
@@ -38,5 +39,4 @@ package() {
   ln -s /opt/${pkgname%-bin}/AppRun "${pkgdir}/usr/bin/${pkgname%-bin}"
   find "${pkgdir}/opt/${pkgname%-bin}" -type d -exec chmod 755 {} +
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm644 icon.png -t "${pkgdir}/usr/share/pixmaps/${pkgname}"
 }
