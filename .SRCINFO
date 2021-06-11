@@ -1,7 +1,7 @@
 pkgbase = libmag3110
 	pkgdesc = A C++ library for the MAG3110 SparkFun 3-axis magnetometer breakout board
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ahpohl.github.io/mag3110/
 	arch = aarch64
 	arch = armv6h
@@ -12,4 +12,3 @@ pkgbase = libmag3110
 	sha256sums = SKIP
 
 pkgname = libmag3110
-
