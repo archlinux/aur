@@ -1,8 +1,8 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=superslicer-git
-pkgver=2.3.55.5.r124.g2e9562d5d
-pkgrel=1
+pkgver=2.3.56.4.r0.gea2aea4c3
+pkgrel=2
 epoch=1
 pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
 arch=("$CARCH")
@@ -18,7 +18,7 @@ source=("SuperSlicer::git+https://github.com/supermerill/SuperSlicer.git"
         "0001-wxgtk3-is-broken-on-wayland.patch"
         "https://raw.githubusercontent.com/archlinux/svntogit-community/1dea61c0b581ff5001d073689f68b0323740be93/trunk/prusa-slicer-openexr3.patch")
 sha512sums=('SKIP'
-            '9a91e374b606447889ac517061fe559d7cbc7c6b2a79d521d46205b6ffdb8264e6fbcc09f62a6c6e462c1172b0ed08b1d4ddf839a3cc448ae1717888f1df287e'
+            '6a117a0ae2e82b2c0ad9e8f746fddeceb1b0efe04962468e266d7ee9d38218311fff5a82c9880b82a23b2499461ba6f8f3cabef064fc8f9b906b0e2e35bcd846'
             'acf35ebe467e9fb30f1b77d15348f1a7b82dcf45a5b829e375e972b5d6b49968603b3fa090c4d1f56e8b5148e2b820e79afa269da60ace70de1ceadcf6e820c5'
             'c33c2414746bc9d7dceb5af59ecb4aed2189211fc3c8b144d712a39d3677ba4d366eb9b4dd05fbc3811954d69cd1273d714dc4536489fe153ac1aee2919e5c98')
 
@@ -37,10 +37,7 @@ prepare()
 
 	# apply patches
 	patch --forward --strip=1 --input="$srcdir/0001-wxgtk3-is-broken-on-wayland.patch"
-	if pacman -qQi imath &> /dev/null # not all distros has already upgrade to openEXR 3
-	then
-		patch -p1 < "$srcdir/prusa-slicer-openexr3.patch" # Fix build with openEXR 3
-	fi
+	patch -p1 < "$srcdir/prusa-slicer-openexr3.patch" # Fix build with openEXR 3
 }
 
 build()
@@ -58,6 +55,7 @@ build()
 		-DSLIC3R_WX_STABLE=ON \
 		-DSLIC3R_GTK=3 \
 		-DSLIC3R_BUILD_TESTS=OFF \
+		-DSLIC3R_ALPHA=ON \
 		-DwxWidgets_CONFIG_EXECUTABLE=/opt/wxgtk-dev/bin/wx-config
 
 	make
