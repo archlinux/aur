@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=deckmaster-bin
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="An application to control your Elgato Stream Deck"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('ttf-roboto')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source_x86_64=("$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('57c95dff655cd03364d719c652208fd7f0b891e667c7b0dce8639621ced037a9')
+sha256sums_x86_64=('8f1729917627335928efb2ae6fb63c965adda3cf84b97f2d06fe8a31f47a1a6d')
 
 package() {
     install -Dm755 "${pkgname%-bin}" "$pkgdir/usr/bin/${pkgname%-bin}"
