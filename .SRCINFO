@@ -3,6 +3,7 @@ pkgbase = fritzing
 	pkgver = 0.9.6
 	pkgrel = 1
 	url = http://fritzing.org
+	arch = aarch64
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -23,4 +24,3 @@ pkgbase = fritzing
 	sha256sums = fb0d8fc6257f166ab77f99bbe32dff51bbdace7d5a3d4d9a789542a8e3fec540
 
 pkgname = fritzing
-
