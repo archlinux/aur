@@ -2,7 +2,7 @@
 # Maintainer: Maël <alemswaj+tutanota+com>
 
 pkgname=hypnotix-wayland
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
 pkgdesc="An IPTV streaming application. (With Wayland support). It's the package from the linux mint's github modified to work with wayland as it's whrote on the hypnotix's github repository. IT WORK GREAT EVEN IF YOU USE X11"
 arch=(any)
@@ -10,8 +10,8 @@ url="https://github.com/linuxmint/hypnotix"
 license=(GPL3)
 depends=(dconf hicolor-icon-theme python-cairo python-imdbpy python-requests python-setproctitle mpv xapp)
 conflicts=(hypnotix hypnotix-git)
-source=(https://codeload.github.com/linuxmint/hypnotix/tar.gz/refs/tags/1.7)
-sha256sums=('5ee620490e6ed502d4d542aa66ea3932c1da055f2933e12513dfef442b74745e')
+source=(https://codeload.github.com/linuxmint/hypnotix/tar.gz/refs/tags/${pkgver})
+sha256sums=('9a552d6dd1b27f2203e5e6d54578c444bda98ef58d036cbb2016a1672ec059a0')
 prepare() {
 	cd hypnotix-$pkgver
 	sed -i "s/__DEB_VERSION__/$pkgver/g" usr/lib/hypnotix/hypnotix.py
@@ -19,7 +19,6 @@ prepare() {
 
 build() {
 	cd hypnotix-$pkgver
-	make
 	sed -i '2d' usr/bin/hypnotix
 	sh -c "echo 'if [ \$WAYLAND_DISPLAY=wayland-0 ]
 then
