@@ -2,9 +2,9 @@
 # contributer:  Dimitris Kiziridis <ragouel at outlook dot com>
 # modifiier: Yuzuki Tsuru <gloomyghost at gloomyghost dot com>
 
-pkgname=netron-bin
+pkgname=com.gloomyghost.netron-bin
 pkgver=4.9.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Visualizer for neural network, deep learning and machine learning models"
 arch=('x86_64')
 url='https://www.lutzroeder.com/ai'
