@@ -2,12 +2,12 @@
 
 pkgname=networkmanager-wireguard-git
 pkgver=r87.0e1124d
-pkgrel=1
+pkgrel=2
 pkgdesc='NetworkManager VPN plugin for WireGuard - git'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'pentium4')
 license=('GPL')
 url='https://github.com/max-moser/network-manager-wireguard/'
-depends=('networkmanager' 'libnma' 'WIREGUARD-MODULE' 'wireguard-tools' 'libnm-glib')
+depends=('networkmanager' 'libnma' 'WIREGUARD-MODULE' 'wireguard-tools')
 makedepends=('git' 'intltool')
 provides=('networkmanager-wireguard')
 conflicts=('networkmanager-wireguard')
@@ -22,22 +22,23 @@ pkgver() {
 	)
 }
 
-build() {
+prepare() {
 	cd $pkgname
 
-	./autogen.sh
-	./configure --prefix=/usr \
+	./autogen.sh --prefix=/usr \
 		--sysconfdir=/etc \
 		--localstatedir=/var \
 		--libexecdir=/usr/lib/networkmanager \
-		--enable-more-warnings=yes \
+		--enable-more-warnings=no \
+		--with-libnm-glib=no \
 		--disable-static
-	make
+}
+
+build() {
+	make -C "$pkgname"
 }
 
 package() {
-	cd $pkgname
-
-	make DESTDIR="${pkgdir}" sysconfdir=/etc libdir=/usr/lib install
+	make -C "$pkgname" DESTDIR="${pkgdir}" sysconfdir=/etc libdir=/usr/lib install
 }
 
