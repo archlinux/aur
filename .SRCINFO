@@ -1,6 +1,6 @@
 pkgbase = rationl
 	pkgdesc = An expressive and fast regular expression library for C
-	pkgver = v0.1.0
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/TheNaturLFoundation/rationl
 	arch = any
