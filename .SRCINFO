@@ -1,13 +1,14 @@
 pkgbase = docker-rootless-extras-bin
 	pkgdesc = Extras to run docker as non-root.
 	pkgver = 20.10.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.docker.com/engine/security/rootless/
 	install = docker-rootless-extras-bin.install
 	arch = x86_64
 	arch = aarch64
 	license = Apache
 	depends = docker
+	depends = rootlesskit
 	optdepends = fuse-overlayfs: overlayfs support
 	optdepends = slirp4netns: faster network stack
 	provides = docker-rootless
@@ -28,4 +29,3 @@ pkgbase = docker-rootless-extras-bin
 	sha256sums_aarch64 = d0d790d4c3d887b10b2b155b83a58a44980b9fa638f8c0f1faec0739dc0ef473
 
 pkgname = docker-rootless-extras-bin
-

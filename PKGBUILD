@@ -4,12 +4,12 @@
 
 pkgname=docker-rootless-extras-bin
 pkgver=20.10.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Extras to run docker as non-root."
 arch=('x86_64' 'aarch64')
 url="https://docs.docker.com/engine/security/rootless/"
 license=('Apache')
-depends=('docker')
+depends=('docker' 'rootlesskit')
 optdepends=('fuse-overlayfs: overlayfs support'
             'slirp4netns: faster network stack')
 provides=('docker-rootless' 'docker-rootless-extras')
@@ -42,4 +42,7 @@ package() {
 	install -Dm644 "$srcdir/docker.service" "$pkgdir/usr/lib/systemd/user/docker.service"
 	install -Dm644 "$srcdir/docker.socket" "$pkgdir/usr/lib/systemd/user/docker.socket"
 	install -Dm644 "$srcdir/99-docker-rootless.conf" "$pkgdir/usr/lib/sysctl.d/99-docker-rootless.conf"
+
+        # Delete files provided by `rootlesskit`.
+	rm "$pkgdir/usr/bin/rootlessctl" "$pkgdir/usr/bin/rootlesskit"
 }
