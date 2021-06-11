@@ -1,7 +1,7 @@
 pkgbase = libpamac
 	pkgdesc = Library for Pamac package manager based on libalpm
 	pkgver = 11.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.manjaro.org/applications/libpamac
 	arch = i686
 	arch = pentium4
@@ -24,6 +24,7 @@ pkgbase = libpamac
 	depends = appstream-glib
 	depends = polkit
 	depends = archlinux-appstream-data-pamac
+	conflicts = libpamac-aur
 	options = !emptydirs
 	source = https://gitlab.manjaro.org/applications/libpamac/-/archive/11.0.0/libpamac-11.0.0.tar.bz2
 	sha256sums = d4fa2fadffac7a811f9708d724797833377986d2f8c1bf9cc6a24f301783dc78
