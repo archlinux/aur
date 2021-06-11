@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=librist
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='A library that can be used to add the RIST protocol to applications'
 arch=('x86_64')
@@ -9,14 +9,13 @@ url='https://code.videolan.org/rist/librist/'
 license=('BSD')
 depends=('cjson' 'mbedtls')
 makedepends=('meson' 'cmake' 'cmocka' 'lz4')
-BUILDENV=('!check')
 source=("https://code.videolan.org/rist/librist/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2"
-        '010-librist-gcc11-fix.patch')
-sha256sums=('10abfc4321762b12cce8d57b2ed2cc16c8baf1535f2d19df39fe9429d20d6de9'
-            '462003e930c8d83d0c43e92bbb3b65a013dbb56e8642d894ebd22e962e8cc94b')
+        '010-librist-disable-multicast-tests.patch')
+sha256sums=('2e109b0d14b88022d778ce0458464b63e3ffe9741e67f7f11c379362880f672c'
+            '60004953f606bb96418be5dcc6bae2fa0883ce83c4f2246f33a2eda8c9c5a56b')
 
 prepare() {
-    patch -d "${pkgname}-v${pkgver}" -Np1 -i "${srcdir}/010-librist-gcc11-fix.patch"
+    patch -d "${pkgname}-v${pkgver}" -Np1 -i "${srcdir}/010-librist-disable-multicast-tests.patch"
 }
 
 build() {
