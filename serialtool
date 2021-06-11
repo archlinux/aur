@@ -1,0 +1,5 @@
+#!/bin/env bash
+# add lib path
+APP_PATH=/usr/share/serialtool
+cd $APP_PATH
+./SerialTool
