@@ -1,0 +1,7 @@
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  if (( $(vercmp "$2" '1.2.5-1') < 0 )); then
+    printf "WARNING: Non-backwards compatible changes to ALSA require restarting of audio engines (e.g. pulseaudio or pipewire) using it.\n"
+  fi
+}
