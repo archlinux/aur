@@ -1,7 +1,7 @@
 pkgbase = gtk3-no_deadkeys_underline
 	pkgdesc = Like gtk3 in extra but with a patch to disable dead keys having an underline below them while typing
 	pkgver = 3.24.29
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.gtk.org/
 	install = gtk3.install
@@ -36,7 +36,7 @@ pkgbase = gtk3-no_deadkeys_underline
 	depends = desktop-file-utils
 	depends = mesa
 	depends = cantarell-fonts
-	depends = colord
+	depends = libcolord
 	depends = rest
 	depends = libcups
 	depends = libcanberra
@@ -78,4 +78,3 @@ pkgbase = gtk3-no_deadkeys_underline
 	sha256sums = SKIP
 
 pkgname = gtk3-no_deadkeys_underline
-
