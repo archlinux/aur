@@ -4,7 +4,7 @@ validpgpkeys=('33ED753E14757D79FA17E57DC4C1F715B2B66B95')
 
 pkgname=llvm12-git
 pkgdesc="LLVM 12 Toolchain with clang, clang-tools-extra, compiler-rt, openmp, polly, lldb, lld"
-pkgver=12.0.1_rc1.gb54ccef144d2
+pkgver=12.0.1_rc1.g5b149c437194
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -32,19 +32,19 @@ source=(
 )
 
 sha256sums=('SKIP'
-            '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48'
-            'fc8c64267a5d179e9fc24fb2bc6150edef2598c83f5b2d138d14e05ce9f4e345'
-            '560ce1e206c19f4b86f4c583b743db0ad47a610418999350710aafd60ae50fcd'
-            '5bc0b47c70990bb8dd0cf4138a8ab9e15cf6b008b7c0cf2c7aac3736b559e0e6'
-            '6739abedc8870879618414c5358fda4fcfd4a3ac7a22030ac7c409779b68f669'
-            'a877fa5cf1c1cca3bd55f9a36cf8c1bdd061ff398aeace90fe3cbd9e82550da3')
+  '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48'
+  'fc8c64267a5d179e9fc24fb2bc6150edef2598c83f5b2d138d14e05ce9f4e345'
+  '560ce1e206c19f4b86f4c583b743db0ad47a610418999350710aafd60ae50fcd'
+  '5bc0b47c70990bb8dd0cf4138a8ab9e15cf6b008b7c0cf2c7aac3736b559e0e6'
+  '6739abedc8870879618414c5358fda4fcfd4a3ac7a22030ac7c409779b68f669'
+  'a877fa5cf1c1cca3bd55f9a36cf8c1bdd061ff398aeace90fe3cbd9e82550da3')
 sha512sums=('SKIP'
-            '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd'
-            'b823ebb76d4adc82cb894518bf0336c48f42bc99bb98752714c46eea4b13226e9e8a7c980acf97151dff714c11f8d7c1837358d6aa1338d3f3e12b73658a89c2'
-            'de7097c578ab7b47182f68adf76bc2d41db57326cdfa98aff7dc1253cbe313afde65937f2419ef04bc997e12db67816960e8c75bebda524d930d9af816dd9f83'
-            '9f4c8e0a6065fa271666ccb7e40633f913447c63ff6d508083aa7e6c77e7365eb921157c49c499d8d96ed733f822460bf62225ec10ce2fb2100b8fc54146389e'
-            '4dc253d817d29e7977bdd9c5a07e64ef2973c58e1bdbb62aa0547ad557eba8e942c1680da35252acd1d35c660038dbc9a4b222cb1aef43b380a8d962f25e48b7'
-            'a1254c1fe9533d71d88d173ceee74e206cf22aa65f90d32cba61d2c14299c4842add5e21aa16649a61e1044a4bd040522fbeb1130e00de5ded081029df6bc39b')
+  '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd'
+  'b823ebb76d4adc82cb894518bf0336c48f42bc99bb98752714c46eea4b13226e9e8a7c980acf97151dff714c11f8d7c1837358d6aa1338d3f3e12b73658a89c2'
+  'de7097c578ab7b47182f68adf76bc2d41db57326cdfa98aff7dc1253cbe313afde65937f2419ef04bc997e12db67816960e8c75bebda524d930d9af816dd9f83'
+  '9f4c8e0a6065fa271666ccb7e40633f913447c63ff6d508083aa7e6c77e7365eb921157c49c499d8d96ed733f822460bf62225ec10ce2fb2100b8fc54146389e'
+  '4dc253d817d29e7977bdd9c5a07e64ef2973c58e1bdbb62aa0547ad557eba8e942c1680da35252acd1d35c660038dbc9a4b222cb1aef43b380a8d962f25e48b7'
+  'a1254c1fe9533d71d88d173ceee74e206cf22aa65f90d32cba61d2c14299c4842add5e21aa16649a61e1044a4bd040522fbeb1130e00de5ded081029df6bc39b')
 options=('staticlibs')
 
 _extra_build_flags=""
@@ -104,8 +104,6 @@ build() {
     case ${yn} in
     [Yy] | "")
       if clang --version 2>/dev/null | grep -iq "clang\s*version\s*[0-9]"; then
-        export LLVM=1
-        export LLVM_IAS=1
         export CC=clang
         export CXX=clang++
         export AR=llvm-ar
@@ -118,13 +116,15 @@ build() {
         export HOSTCXX=clang++
         export HOSTAR=llvm-ar
         export DEBUG_CFLAGS="-g"
-        export DEBUG_CXXFLAGS="${DEBUG_CFLAGS}"
+        export DEBUG_CXXFLAGS="-g"
       else
         echo -e "\E[1;31mClang not found. Will use default system compiler! \E[0m"
       fi
 
       if ld.lld --version 2>/dev/null | grep -iq "LLD\s*[0-9]"; then
         export LD=ld.lld
+        export CC_LD=lld
+        export CXX_LD=lld
         export HOSTLD=ld.lld
         _extra_build_flags="-DLLVM_USE_LINKER=lld"
       fi
@@ -313,5 +313,5 @@ package() {
   install -Dm644 "${srcdir:?}/llvm-project/lldb/LICENSE.TXT" "${pkgdir:?}/usr/share/licenses/${pkgname}/lldb-LICENSE"
   install -Dm644 "${srcdir:?}/llvm-project/polly/LICENSE.txt" "${pkgdir:?}/usr/share/licenses/${pkgname}/polly-LICENSE"
   install -Dm644 "${srcdir:?}/llvm-project/openmp/LICENSE.txt" "${pkgdir:?}/usr/share/licenses/${pkgname}/openmp-LICENSE"
-  
+
 }
