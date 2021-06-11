@@ -1,2 +1,0 @@
-KERNEL=="ttyUSB*",MODE="0666" 
-KERNEL=="ttyS*",MODE="0666"
