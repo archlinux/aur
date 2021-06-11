@@ -1,6 +1,6 @@
 pkgbase = upbge-git
 	pkgdesc = Uchronia Project Blender Game Engine fork of Blender Game Engine
-	pkgver = 110538.740c1695091
+	pkgver = 111035.86cef44f8a1
 	pkgrel = 1
 	url = https://upbge.org/
 	install = upbge.install
@@ -28,12 +28,12 @@ pkgbase = upbge-git
 	depends = openal
 	depends = freetype2
 	depends = libxi
-	depends = openimageio-qfix
-	depends = opencolorio-qfix
+	depends = openimageio
+	depends = opencolorio
 	depends = openvdb
 	depends = opencollada
 	depends = opensubdiv
-	depends = openshadinglanguage-qfix
+	depends = openshadinglanguage
 	depends = libtiff
 	depends = libpng
 	depends = openimagedenoise
@@ -61,4 +61,3 @@ pkgbase = upbge-git
 	sha256sums = 5297dc61cc4edcc1d5bad3474ab882264b69d68036cebbd0f2600d9fe21d5a1b
 
 pkgname = upbge-git
-
