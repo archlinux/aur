@@ -7,7 +7,7 @@ pkgname='ros-noetic-unique-id'
 pkgver='1.0.6'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=(ros-noetic-roscpp
@@ -47,6 +47,7 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
         -DPYTHON_EXECUTABLE=/usr/bin/python \
+        -DCMAKE_CXX_STANDARD=14 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
