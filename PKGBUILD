@@ -1,7 +1,7 @@
 # Maintainer: Ilya Elenskiy 
 
 pkgname=megax-bin
-pkgver=10.2.5
+pkgver=10.2.6
 pkgrel=1
 pkgdesc="Molecular Evolutionary Genetics Analysis"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('gtk2' 'gconf' 'libxtst' 'nss' 'libxss' 'alsa-lib')
 source=("https://www.megasoftware.net/do_force_download/megax_${pkgver}-1_amd64.deb"
         'MEGA_EUA.pdf::https://www.megasoftware.net/download_eua')
-md5sums=('98fbfb10289e24efaea7d525e3316726'
+md5sums=('SKIP'
          '82f225eaed3a512ca70af54fabaf6690')
 
 package() {
