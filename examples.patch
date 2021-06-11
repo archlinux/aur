@@ -1,0 +1,24 @@
+diff -Naur a/pack/Makefile.am b/pack/Makefile.am
+--- a/pack/Makefile.am	2021-01-12 09:48:09.000000000 +0100
++++ b/pack/Makefile.am	2021-06-11 12:16:11.119922290 +0100
+@@ -304,7 +304,7 @@
+ 
+ examples:work/examples/.dirok work/guitest.edp
+ 	rsync -avq --exclude freefem++.pref --exclude '*.@SHAREDLIB@' --exclude '*.@OBJEXT@' --exclude ff-c++ --exclude '*-ffcsref.edp'	\
+-	--exclude .deps --delete --delete-excluded ~/ffalh/ff/examples/* work/examples
++	--exclude .deps work/examples
+ work/guitest.edp:work/.dirok ../tests/guitest.edp
+ 	cp ../tests/guitest.edp $@
+ 
+diff -Naur a/pack/Makefile.in b/pack/Makefile.in
+--- a/pack/Makefile.in	2021-01-12 09:48:13.000000000 +0100
++++ b/pack/Makefile.in	2021-06-11 13:23:17.859894235 +0100
+@@ -1391,7 +1391,7 @@
+ 
+ examples:work/examples/.dirok work/guitest.edp
+ 	rsync -avq --exclude freefem++.pref --exclude '*.@SHAREDLIB@' --exclude '*.@OBJEXT@' --exclude ff-c++ --exclude '*-ffcsref.edp'	\
+-	--exclude .deps --delete --delete-excluded ~/ffalh/ff/examples/* work/examples
++	--exclude .deps work/examples
+ work/guitest.edp:work/.dirok ../tests/guitest.edp
+ 	cp ../tests/guitest.edp $@
+ 

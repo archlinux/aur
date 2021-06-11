@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=21.1
+Type=Application
+Categories=Development;Science;Graphics;
+Comment=An integrated environment for FreeFEM
+Terminal=false
+Exec=/usr/bin/freefem-cs
+Name=FreeFem-cs
+Icon=/opt/ffcs/logo.xpm
