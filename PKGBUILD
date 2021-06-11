@@ -2,13 +2,13 @@
 
 pkgname=gomics-git
 _pkgname=gomics
-pkgver=r16.1501315
+pkgver=r22.c3016ed
 pkgrel=1
 pkgdesc="A lightweight and free comic viewer"
 url="https://github.com/salviati/gomics"
 license=('GPLv3')
 depends=('gtk3' 'gdk-pixbuf2' 'glib2')
-makedepends=('git' 'go' 'go-bindata')
+makedepends=('git' 'go')
 conflicts=('gomics')
 provides=('gomics')
 arch=('i686' 'x86_64')
