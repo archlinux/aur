@@ -1,7 +1,7 @@
 pkgname=ipmiview
 pkgver=2.19.0
 _pkghash=210401
-pkgrel=2
+pkgrel=3
 pkgdesc="Supermicro IPMI tool"
 makedepends=('tar')
 depends=("glibc" "java-runtime=8")
@@ -34,7 +34,7 @@ sha512sums=(
 
 prepare() {
   cd ${srcdir}
-  patch --forward --strip=1 --input="../patch-jvm-version-check.patch"
+  patch --forward --strip=1 --input="./patch-jvm-version-check.patch"
 }
 
 package() {
