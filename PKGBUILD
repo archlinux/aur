@@ -6,21 +6,23 @@
 
 pkgname=marktext
 pkgver=0.16.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple and elegant open-source markdown editor that focused on speed and usability'
-arch=('x86_64')
+arch=(x86_64)
 url='https://marktext.app'
-license=('MIT')
-depends=('electron'
-         'libxkbfile'
-         'libsecret'
-         'ripgrep')
-makedepends=('jq'
-             'nodejs'
-             'node-gyp'
-             'moreutils'
-             'yarn'
-             'yq')
+license=(MIT)
+_electron=electron11
+depends=("$_electron"
+         libxkbfile
+         libsecret
+         ripgrep)
+makedepends=(jq
+             nodejs
+             npm
+             node-gyp
+             moreutils
+             yarn
+             yq)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/marktext/marktext/archive/v${pkgver}.tar.gz"
         "$pkgname.sh"
         "$pkgname-arg-handling.patch")
@@ -30,8 +32,8 @@ sha256sums=('ab7702558a09f9be5326a03ad56249378fad67138dd21261458b60d4b37191ce'
 
 
 prepare() {
-    local _electronDist=$(dirname $(realpath $(which electron)))
-    local _electronVersion=$(electron --version | sed -e 's/^v//')
+    local _electronDist=$(dirname $(realpath $(which $_electron)))
+    local _electronVersion=$($_electron --version | sed -e 's/^v//')
     cd "$pkgname-$pkgver"
     jq 'del(.devDependencies["electron"], .scripts["preinstall", "postinstall"])' \
         package.json | sponge package.json
@@ -41,6 +43,7 @@ prepare() {
     yarn --cache-folder "$srcdir/node_modules" install --frozen-lockfile
     yarn --cache-folder "$srcdir/node_modules" add -D --no-lockfile --ignore-scripts electron@$_electronVersion
     patch -p1 < "$srcdir/$pkgname-arg-handling.patch"
+    sed -e "s/\belectron\b/$_electron/" "../$pkgname.sh" > "$pkgname.sh"
 }
 
 build() {
@@ -54,7 +57,7 @@ build() {
 
 package() {
     cd "$pkgname-$pkgver"
-    install -Dm755 "../$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
     local _dist=build/linux-unpacked/resources
     install -Dm644 -t "$pkgdir/usr/lib/$pkgname/" "$_dist/app.asar"
     cp -a "$_dist"/{app.asar.unpacked,hunspell_dictionaries} "$pkgdir/usr/lib/$pkgname/"
