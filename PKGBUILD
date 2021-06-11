@@ -9,7 +9,7 @@ _pkg=paraview
 _mpi=openmpi
 pkgname=${_pkg}-opt
 #-${_mpi}
-pkgver=5.9.0
+pkgver=5.9.1
 pkgrel=1
 pkgdesc="Parallel Visualization application using VTK (${_mpi} version): installed to /opt/"
 arch=(x86_64)
@@ -27,7 +27,7 @@ makedepends=(cmake boost mesa gcc-fortran ninja qt5-tools qt5-xmlpatterns eigen 
 # pegtl https://gitlab.kitware.com/vtk/vtk/-/issues/18151
 source=(${url}/files/v${pkgver:0:3}/ParaView-v${pkgver/R/-R}.tar.xz
         paraview.sh)
-sha256sums=('b03258b7cddb77f0ee142e3e77b377e5b1f503bcabc02bfa578298c99a06980d'
+sha256sums=('0d486cb6fbf55e428845c9650486f87466efcb3155e40489182a7ea85dfd4c8d'
             '862e79bdf72f5c3ec55d3373fc34d0e5da33b1597c54c4586bdf84641d0cc291')
 
 prepare() {
