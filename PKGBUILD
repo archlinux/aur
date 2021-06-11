@@ -6,7 +6,7 @@
 
 pkgname=nginx-quic
 pkgver=1.21.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
@@ -25,8 +25,8 @@ backup=('etc/nginx/fastcgi.conf'
 install=nginx.install
 provides=('nginx')
 conflicts=('nginx')
-source=("hg+https://hg.nginx.org/nginx-quic#revision=60c6e8d8d3ae"
-        "git+https://boringssl.googlesource.com/boringssl#commit=3dd9864feace08641e1f856edd2bcca63ba7887f"
+source=("hg+https://hg.nginx.org/nginx-quic#revision=1fec68e322d0"
+        "git+https://boringssl.googlesource.com/boringssl#commit=c3b373bf4f4b2e2fba2578d1d5b5fe04e410f7cb"
         "service"
         "logrotate")
 sha256sums=('SKIP'
@@ -71,14 +71,6 @@ _quic_flags=(
   --with-http_quic_module
   --with-stream_quic_module
 )
-
-prepare() {
-  # Upstream hasn't merged the 1.20.0 update into the nginx-quic branch yet; do it manually
-  cd ${srcdir}/$pkgname
-  hg pull https://hg.nginx.org/nginx
-  hg merge f5de03f308a6 # release-1.21.0 tag
-  hg commit -u aur -m "[automated aur commit] Merged with default branch"
-}
 
 build() {
   # Clear -D_FORTIFY_SOURCE from build flags, it causes Boringssl tests to fail to compile
