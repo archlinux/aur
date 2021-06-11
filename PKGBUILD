@@ -4,7 +4,7 @@
 # Contributor: hagabaka
 
 pkgname='peazip-qt5'
-pkgver=7.9.0
+pkgver=8.0.0
 pkgrel=1
 pkgdesc='Free file archiver utility, open, extract RAR TAR ZIP archives'
 license=('GPL3')
@@ -16,8 +16,10 @@ makedepends=('lazarus')
 provides=('peazip')
 conflicts=('peazip')
 options=('!strip')
-source=("https://github.com/giorgiotani/PeaZip/releases/download/$pkgver/peazip-$pkgver.src.zip")
-sha512sums=('7659c4d6e56437a3a29a95bc414e6a59bad34505926e2f41fbfe01f39129d0862263b494a6042a6029e87d658be3a599644e4fac2d28a2bf0b15f8a6b96de782')
+source=("https://github.com/giorgiotani/PeaZip/releases/download/$pkgver/peazip-$pkgver.src.zip"
+"help-$pkgver.pdf::https://github.com/peazip/PeaZip/releases/download/$pkgver/peazip_help.pdf")
+sha512sums=('a1d1bd1ccb4f18358f6fef18c0572151248098c867a16d8b528c6862822ddd1a20c0962c579e4dfa602940babc65a9a79138e780035c4117348a5997633ed079'
+            'd09985d41279249232f45dbef4361663f1fc8e0418d5d9311b59cd912d979e9995c19d9e0875e717f8484393ff65230ae33775e4eff058c8f558f18005861ba4')
 
 build() {
   cd "$srcdir/peazip-$pkgver.src"
@@ -32,6 +34,7 @@ package() {
   install -Dm644 "$srcdir/peazip-$pkgver.src/FreeDesktop_integration/peazip.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/peazip.png"
   install -Dm644 "$srcdir/peazip-$pkgver.src/FreeDesktop_integration/peazip_alt.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/peazip_alt.png"
   install -Dm644 "$srcdir/peazip-$pkgver.src/FreeDesktop_integration/peazip.desktop" "$pkgdir/usr/share/applications/peazip.desktop"
+  install -Dm644 "$srcdir/help-$pkgver.pdf" "$pkgdir/opt/peazip/peazip_help.pdf"
 
   cd "$srcdir/peazip-$pkgver.src/res"
   for _file in *.txt icons/*.ico lang/* themes/{*-embedded/*,*.7z}; do
