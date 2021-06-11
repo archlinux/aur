@@ -4,7 +4,7 @@
 
 pkgname="act-git"
 _pkgname="act"
-pkgver=0.2.22.r19.g05bce00
+pkgver=0.2.23.r0.ga9fe038
 pkgrel=1
 pkgdesc='Run your GitHub Actions locally'
 arch=('x86_64')
