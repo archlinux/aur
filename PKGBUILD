@@ -1,7 +1,7 @@
 # Maintainer: Kanehekili (mat dot wegmann at gmail dot com)
 pkgname=videocut
 pkgver=1.3.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Fast mp4/matroska/Av1/webm/mp2/mpts lossless Video cutter"
 url="https://github.com/kanehekili/VideoCut"
 license=('GPL2')
