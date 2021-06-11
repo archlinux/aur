@@ -1,7 +1,7 @@
 pkgbase = ruby-azure-armrest
 	pkgdesc = This is a Ruby interface for Azure using the newer REST API
-	pkgver = 0.9.4
-	pkgrel = 2
+	pkgver = 0.11.0
+	pkgrel = 1
 	url = http://github.com/ManageIQ/azure-armrest
 	arch = any
 	license = Apache 2.0
@@ -15,9 +15,8 @@ pkgbase = ruby-azure-armrest
 	depends = ruby-nokogiri
 	depends = ruby-parallel
 	depends = ruby-rest-client
-	noextract = azure-armrest-0.9.4.gem
-	source = https://rubygems.org/downloads/azure-armrest-0.9.4.gem
-	sha512sums = f8c21e8ee4c2293ab3c4cc5dca6c6b78e791d840ca6bafac80592d50f400bb46499786dd7b1eef7c299013b02db860eec9df14f19850fd62639cc43a98b83265
+	noextract = azure-armrest-0.11.0.gem
+	source = https://rubygems.org/downloads/azure-armrest-0.11.0.gem
+	sha512sums = 5bc7e7563ea5603b87acb7c541356f3023651743eefc2537088d1cccce0e7c967c2a7603de1c48466d8054b5040d7a98b1a8cb61a3c28b1cd298d24a60fa21b8
 
 pkgname = ruby-azure-armrest
-
