@@ -79,14 +79,14 @@ _srcname=linux-${_major}
 _clr=${_major}.9-1046
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_gcc_more_v='20210606'
+_gcc_more_v='20210610'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
@@ -353,7 +353,7 @@ sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
             'SKIP'
             '034eb39ad49f3a26fc1b4ef799ef481ce35fe03e2b24131e9cd3d2805a99ad19'
             'SKIP'
-            '21454906014ac8e448be85147be06a1e3dfbefb644ef96d9a37c15fcc8e07a42'
+            '71dae1e97982addd42df106932112c163e940dacbff3cf52d6ecd0807e09fe89'
             '2c98de0814366b041aeee4cbf82b82620c7834bc33752d50f089e8bd7ea5cf5e'
             'f3eb1e857f60a96a0c8d4f25f55a64ddf4aa4b3a33e9fcc6886430cf4789cb1c')
 
