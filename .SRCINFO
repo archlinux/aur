@@ -1,0 +1,15 @@
+pkgbase = do-ansible-inventory
+	pkgdesc = A tool to generate Ansible inventories of DigitalOcean Droplets
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/do-community/do-ansible-inventory
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	makedepends = git
+	depends = doctl
+	optdepends = ansible
+	source = git+https://github.com/do-community/do-ansible-inventory.git#commit=c135f1456f92a558940194a66603a3299a0e462a
+	sha256sums = SKIP
+
+pkgname = do-ansible-inventory
