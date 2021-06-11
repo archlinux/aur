@@ -1,8 +1,8 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=neovim-tree-sitter-git
-pkgver=r1398.37ed50f
-pkgrel=3
+pkgver=r1405.d343624
+pkgrel=2
 pkgdesc="Neovim tree-sitter configurations and abstraction layer"
 arch=('any')
 url="https://github.com/nvim-treesitter/nvim-treesitter"
@@ -24,6 +24,8 @@ optdepends=('tree-sitter-bash: Bash shell grammar'
             'tree-sitter-json: JSON grammar'
             'tree-sitter-kotlin: Kotlin grammar'
             'tree-sitter-latex: LaTeX grammar'
+            'tree-sitter-make: Makefile grammar'
+            'tree-sitter-nix: Nix grammar'
             'tree-sitter-ocaml: OCaml grammar'
             'tree-sitter-php: PHP grammar'
             'tree-sitter-python: Python grammar'
