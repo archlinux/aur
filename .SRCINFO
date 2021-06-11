@@ -1,16 +1,12 @@
 pkgbase = alberta
-	pkgdesc = An adaptive hierarchical finite element toolbox
-	pkgver = 3.0.1
+	pkgdesc = Adaptive multi-Level finite element toolbox
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = http://www.alberta-fem.de
-	arch = i686
 	arch = x86_64
 	license = GPL2
-	license = GPL3
-	depends = libtool
-	depends = bash
-	source = http://www.mathematik.uni-stuttgart.de/fak8/ians/lehrstuhl/nmh/downloads/alberta/alberta-3.0.1.tar.gz
-	md5sums = 8211248c997fe4fe501f0831231e65f4
+	makedepends = gcc-fortran
+	source = https://gitlab.mathematik.uni-stuttgart.de/ians-nmh/alberta/alberta3/-/archive/releases/alberta3-releases.tar.gz
+	sha512sums = 3a03d671f8d1fdeb72b8463e7f732dd79ccbd24ce15a23a6e1ffe2a22adff6feb861939382dad627a9c554c5e5024732974dc3a9ae8e99207db560f96f509e13
 
 pkgname = alberta
-
