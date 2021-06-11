@@ -1,0 +1,17 @@
+pkgbase = php-xhprof-pecl
+	pkgdesc = A Hierarchical Profiler for PHP
+	pkgver = 2.3.2
+	pkgrel = 1
+	url = https://pecl.php.net/package/xhprof
+	install = php-xhprof.install
+	arch = i686
+	arch = x86_64
+	license = Apache 2.0
+	depends = php
+	optdepends = graphviz: to generate callgraphs in reports
+	backup = etc/php/conf.d/xhprof.ini
+	source = https://pecl.php.net/get/xhprof-2.3.2.tgz
+	sha256sums = 4438a56d19630dfb82f6f3fe7d51f4c0b99095fd1154b93fc70d80852068d907
+
+pkgname = php-xhprof-pecl
+
