@@ -1,14 +1,13 @@
 pkgbase = python-btlewrap
 	pkgdesc = Bluetooth LowEnergy wrapper for different python backends
-	pkgver = 0.0.9
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/ChristianKuehnel/btlewrap
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-bluepy
-	source = python-btlewrap-0.0.9.tar.gz::https://github.com/ChristianKuehnel/btlewrap/archive/v0.0.9.tar.gz
-	sha512sums = ef15265fac8813bb5837b96ba638dd1635c4d7b3f624091c8722a5c048c20dd496094aacef41d115e25d84356d8b26a47f269c6cd58fd2d41601fca65ab35b06
+	source = python-btlewrap-0.1.0.tar.gz::https://github.com/ChristianKuehnel/btlewrap/archive/v0.1.0.tar.gz
+	sha512sums = bcfd0631e466240b8c36728726c1010023e45d95b248c88c6378fa42dc6213037fd1fbb8189a034f3250876d021e6b74804f35ba047149a6472788221688e2f9
 
 pkgname = python-btlewrap
-
