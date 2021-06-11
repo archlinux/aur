@@ -1,6 +1,6 @@
 pkgname=vesc_tool-git
-pkgver=2.03
-pkgrel=2
+pkgver=3.00.r287.b0632c4.r287.b0632c4.r287.b0632c4
+pkgrel=1
 pkgdesc="VESC ESC graphical configuration tool"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 url="https://vesc-project.com/vesc_tool"
@@ -15,7 +15,7 @@ source=("$pkgname"::"git+https://github.com/vedderb/vesc_tool.git"
 	'vesc-tool.png')
 
 sha256sums=('SKIP'
-            'fb9eb66d9ef00606f61754a7efa8dbab18dff810c674a106e2e770e62899be68'
+            'ec412196053475483de113262fa8ff15d7c95183d0f8cb18572eae3dda21fe16'
             'a0d31826279e900ab614744afad1a26b849440c298d8a5e6e318df554beebdde'
             'ace90b5a9bd1001e234800b935d3622c6a10c73445f726677e838d51fe4c8e02')
 
@@ -41,7 +41,7 @@ package() {
 
   install -Dm644 ../vesc-tool.desktop \
     "$pkgdir/usr/share/applications/vesc-tool.desktop"
-  
+
   install -Dm644 ../vesc-tool.png \
     "$pkgdir/usr/share/icons/vesc-tool.png"
 }

@@ -1,4 +1,4 @@
-VT_VERSION = 2.03
+VT_VERSION = 3.00
 VT_INTRO_VERSION = 1
 VT_IS_TEST_VERSION = 0
 
@@ -52,6 +52,7 @@ contains(DEFINES, HAS_POS) {
 SOURCES += main.cpp\
         mainwindow.cpp \
     packet.cpp \
+    udpserversimple.cpp \
     vbytearray.cpp \
     commands.cpp \
     configparams.cpp \
@@ -67,6 +68,7 @@ SOURCES += main.cpp\
 
 HEADERS  += mainwindow.h \
     packet.h \
+    udpserversimple.h \
     vbytearray.h \
     commands.h \
     datatypes.h \
@@ -91,10 +93,13 @@ contains(DEFINES, HAS_BLUETOOTH) {
 
 include(pages/pages.pri)
 include(widgets/widgets.pri)
+include(mobile/mobile.pri)
 include(map/map.pri)
 include(lzokay/lzokay.pri)
 
-RESOURCES += res.qrc
+RESOURCES += res.qrc \
+    res_fw_bms.qrc \
+    res_qml.qrc
 RESOURCES += res_config.qrc
 RESOURCES += res_original.qrc \
 res_fw_original.qrc
