@@ -1,7 +1,7 @@
 pkgbase = superslicer-prerelease
 	pkgdesc = G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
-	pkgver = 2.3.56.1
-	pkgrel = 3
+	pkgver = 2.3.56.4
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/supermerill/SuperSlicer
 	arch = x86_64
@@ -19,16 +19,16 @@ pkgbase = superslicer-prerelease
 	depends = wxgtk3-dev-opt
 	depends = boost>=1.73.0
 	depends = qhull>=2020.2-4
-	provides = superslicer=1:2.3.56.1
+	provides = superslicer=1:2.3.56.4
 	conflicts = superslicer
 	conflicts = superslicer-git
 	replaces = slic3r++
-	source = https://github.com/supermerill//SuperSlicer/archive/2.3.56.1.tar.gz
+	source = https://github.com/supermerill//SuperSlicer/archive/2.3.56.4.tar.gz
 	source = start-superslicer.sh
 	source = 0001-wxgtk3-is-broken-on-wayland.patch
 	source = https://raw.githubusercontent.com/archlinux/svntogit-community/1dea61c0b581ff5001d073689f68b0323740be93/trunk/prusa-slicer-openexr3.patch
-	sha512sums = ddd26d52fa45b583e48a08ff4b1abdebed0318fe482adf648a1f2e3c9d8979c2b246c3b4c1788d23579edad977bd71c0117c3b4f3d214def2a8b9d956c067aa4
-	sha512sums = 9a91e374b606447889ac517061fe559d7cbc7c6b2a79d521d46205b6ffdb8264e6fbcc09f62a6c6e462c1172b0ed08b1d4ddf839a3cc448ae1717888f1df287e
+	sha512sums = 88c73ebe7b2991170f4fe3fa7f2057750072f315a80e550c811ed4bc681dc2a86740ea82c402a114f50124a641c7c3a43fbb9250a7091fdea53d7a246a82bf82
+	sha512sums = 6a117a0ae2e82b2c0ad9e8f746fddeceb1b0efe04962468e266d7ee9d38218311fff5a82c9880b82a23b2499461ba6f8f3cabef064fc8f9b906b0e2e35bcd846
 	sha512sums = acf35ebe467e9fb30f1b77d15348f1a7b82dcf45a5b829e375e972b5d6b49968603b3fa090c4d1f56e8b5148e2b820e79afa269da60ace70de1ceadcf6e820c5
 	sha512sums = c33c2414746bc9d7dceb5af59ecb4aed2189211fc3c8b144d712a39d3677ba4d366eb9b4dd05fbc3811954d69cd1273d714dc4536489fe153ac1aee2919e5c98
 
