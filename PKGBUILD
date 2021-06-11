@@ -6,12 +6,12 @@
 
 pkgname=krb5-auth-dialog
 pkgver=3.26.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Monitors Kerberos tickets and pops up a dialog when they are about to expire."
 arch=('i686' 'x86_64')
 url="https://honk.sigxcpu.org/piki/projects/krb5-auth-dialog/"
 license=('GPL')
-depends=('gtk3' 'libnm-glib' 'libnotify')
+depends=('gtk3' 'libnotify')
 makedepends=('gettext' 'intltool' 'pkgconfig' 'yelp-tools')
 source=("http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz")
 sha256sums=('ddb0b6813c833559d5deab52259bc2868b994b44c8e13eaa8a10bb58b77e21f1')
@@ -24,7 +24,7 @@ build() {
     --prefix=/usr \
     --sysconfdir=/etc \
     --enable-pkinit \
-    --enable-network-manager
+    --disable-network-manager
 
   make
 }
