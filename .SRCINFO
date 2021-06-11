@@ -1,7 +1,7 @@
 pkgbase = reuse
 	pkgdesc = Helper tool for providing and confirming copyright and licensing information
-	pkgver = 0.12.1
-	pkgrel = 2
+	pkgver = 0.13.0
+	pkgrel = 1
 	url = https://github.com/fsfe/reuse-tool
 	arch = any
 	license = GPL-3.0-or-later
@@ -18,8 +18,8 @@ pkgbase = reuse
 	depends = python-jinja
 	depends = python-license-expression
 	depends = python-requests
-	source = reuse-0.12.1.tar.gz::https://github.com/fsfe/reuse-tool/archive/v0.12.1.tar.gz
-	sha256sums = ba0d900346b23498716625cc044aad694266ddbd28e27c78e9944d2247694a0e
+	source = reuse-0.13.0.tar.gz::https://github.com/fsfe/reuse-tool/archive/v0.13.0.tar.gz
+	sha256sums = 0782a8d739e3c737cf2505feda16aef860fe4649d457192e21b2c51a732dd41c
 
 pkgname = reuse
 

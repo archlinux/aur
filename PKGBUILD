@@ -3,8 +3,8 @@
 # SPDX-License-Identifier: CC0-1.0
 
 pkgname=reuse
-pkgver=0.12.1
-pkgrel=2
+pkgver=0.13.0
+pkgrel=1
 pkgdesc='Helper tool for providing and confirming copyright and licensing information'
 arch=('any')
 url='https://github.com/fsfe/reuse-tool'
@@ -22,7 +22,7 @@ makedepends=('python-pip'
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/fsfe/reuse-tool/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('ba0d900346b23498716625cc044aad694266ddbd28e27c78e9944d2247694a0e')
+sha256sums=('0782a8d739e3c737cf2505feda16aef860fe4649d457192e21b2c51a732dd41c')
 
 package() {
   cd "reuse-tool-${pkgver}"
