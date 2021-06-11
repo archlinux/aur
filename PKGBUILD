@@ -1,6 +1,6 @@
 # Maintainer: database64128 <free122448@hotmail.com>
 pkgname=qjsonstruct-git
-pkgver=1.0.0
+pkgver=v1.0.r0.3c46dbc
 pkgrel=1
 pkgdesc="JSON helper library for Qt apps"
 arch=(x86_64)
