@@ -2,8 +2,8 @@
 
 pkgname=inform-git
 _gitpkg=inform6unix
-pkgver=6.35.r1.0.gf72cb72
-pkgrel=2
+pkgver=6.34.6.12.4.1.44.g12f9935
+pkgrel=1
 pkgdesc="Interactive fiction compiler (git version)"
 arch=(i686 x86_64)
 url="http://www.inform-fiction.org/"
@@ -34,7 +34,7 @@ package() {
   cd "${srcdir}"/"${_gitpkg}"
   make PREFIX="${pkgdir}"/usr MAN_PREFIX="${pkgdir}"/usr/share install
 
-  sed 's,^LIBPATH.*,LIBPATH=/usr/share/inform,g' "${srcdir}"/"${_gitpkg}"/punyinform.sh > "${pkgdir}"/usr/bin/punyinform.sh
-  rm "${pkgdir}"/usr/bin/punyinform
-  mv "${pkgdir}"/usr/bin/punyinform.sh "${pkgdir}"/usr/bin/punyinform
+  rm "${pkgdir}"/usr/bin/punyinform*
+  sed 's,^LIBPATH.*,LIBPATH=/usr/share/inform,g' "${srcdir}"/"${_gitpkg}"/punyinform.sh > "${pkgdir}"/usr/bin/punyinform
+  chmod +x "${pkgdir}"/usr/bin/punyinform
 }
