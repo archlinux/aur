@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=quickmedia-git
-pkgver=r801.979f911
+pkgver=r806.63ceee7
 pkgrel=1
 pkgdesc='A dmenu-inspired native client for web services. Supports youtube, soundcloud, nyaa.si, 4chan, matrix, saucenao and several manga sites.'
 arch=('x86_64')
@@ -15,13 +15,13 @@ optdepends=(
     'waifu2x-ncnn-vulkan: For upscaling manga pages when using the --upscale-images option'
     'xdg-utils: For downloading torrents when using nyaa.si plugin or opening remote links'
     'ffmpeg: For sending video metadata and thumbnail with /upload in matrix'
-    'youtube-dl: To play youtube music/videos'
+    'youtube-dl: To download youtube music/videos. Not required when streaming music/videos'
     'noto-fonts-cjk: To display chinese, japanese and korean characters'
 )
 provides=('quickmedia')
 conflicts=('quickmedia')
-source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r801.979f911.tar.gz")
-sha512sums=('a7a2baff335b0ee0d8417b909d91c0bc7cf3ee3b095d0172499e39d234aa7e5ce097c2f3439bb92c28c216d32bdc20370c1b015105496e5ae186c3653fe424d8')
+source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r806.63ceee7.tar.gz")
+sha512sums=('0a98d2d3b31468d638d1b195dc3b6bc977872ba87444c91b81c94c7d0f1b069a55c4fb02f8bd914dcb42ca0cf205ef907e0b790abec72ddd04cb26c861a4340c')
 
 build() {
   cd "$srcdir"
