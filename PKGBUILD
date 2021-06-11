@@ -4,7 +4,7 @@
 
 pkgname='visidata'
 pkgver=2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Terminal spreadsheet multitool for discovering and arranging data'
 arch=('any')
 url='https://www.visidata.org'
@@ -38,7 +38,7 @@ sha256sums=('0d98ffced2fae043b76d684be2767a51c4fecd911cbe5e551b22e23ada232fbd')
 prepare() {
   # Set correct permissions
   cd "${pkgname}-${pkgver}"
-  chmod -c 644 "${pkgname}/man/vd.1"
+  chmod -c 644 "${pkgname}/man/"*
   chmod -c 644 "${pkgname}.egg-info/"*
 }
 

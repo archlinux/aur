@@ -1,7 +1,7 @@
 pkgbase = visidata
 	pkgdesc = Terminal spreadsheet multitool for discovering and arranging data
 	pkgver = 2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.visidata.org
 	arch = any
 	license = GPL3
@@ -30,4 +30,3 @@ pkgbase = visidata
 	sha256sums = 0d98ffced2fae043b76d684be2767a51c4fecd911cbe5e551b22e23ada232fbd
 
 pkgname = visidata
-
