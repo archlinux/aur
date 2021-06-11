@@ -41,6 +41,8 @@ prepare() {
                       VTK/Filters/HyperTree/vtkHyperTreeGridThreshold.cxx
                       VTK/Rendering/Core/vtkColorTransferFunction.cxx)
     sed -i '1 i\#include <limits>' -i "${files_to_patch[@]}"
+    #fix gcc:11 headers regression
+    grep -lR "std::numeric_limits"|xargs sed -i '1 i\#include <limits>'
 }
 
 build() {
