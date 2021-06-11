@@ -1,3 +1,5 @@
+# Maintainer: Popolon <popolon@popolon.org>
+
 pkgbase='yoga'
 pkgname=('yoga')
 _module='yoga'
