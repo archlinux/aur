@@ -3,7 +3,7 @@ pkgbase=python-mkdocs-minify-plugin
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An MkDocs plugin to minify HTML and/or JS files prior to being written to disk"
 arch=('i686' 'x86_64')
 url="https://github.com/byrnereese/mkdocs-minify-plugin"
@@ -28,7 +28,7 @@ check() {
 }
 
 package() {
-    depends=('python>=3.4' 'mkdocs>=1.0.4' 'python-htmlmin>=0.1.4' 'python-jsmin>=2.2.2')
+    depends=('python>=3.4' 'python-mkdocs>=1.0.4' 'python-htmlmin>=0.1.4' 'python-jsmin>=2.2.2')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/LICENSE"
