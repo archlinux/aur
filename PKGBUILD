@@ -1,27 +1,54 @@
 # Maintainer: Colin Arnott <colin@urandom.co.uk>
 
 pkgname=go-tip
-pkgver=1.14beta1
+pkgver=1.17beta1
 pkgrel=1
 pkgdesc='Core compiler tools for the Go programming language'
 arch=(x86_64)
 url='https://golang.org/'
 license=(BSD)
-provides=(go)
-conflicts=(go)
-source=(https://storage.googleapis.com/golang/go$pkgver.linux-amd64.tar.gz
-        https://storage.googleapis.com/golang/go$pkgver.linux-amd64.tar.gz.asc)
+makedepends=(git go perl)
+provides=(go go-pie)
+conflicts=(go go-pie)
+options=(!strip staticlibs)
+source=(https://storage.googleapis.com/golang/go$pkgver.src.tar.gz{,.asc})
 validpgpkeys=('EB4C1BFD4F042F6DDDCCEC917721F63BD38B4796')
-sha512sums=('00a848dab57579b49aa2b2028069db34738350b2d65c3214b53678aa7b9cf9fbee2183df4c1d03c347ecc7132ce3251d45c9722b45eb2ed2b73c3062d2a36067'
+sha256sums=('02b8973725f9bc545955865576e8c8f6ca672312f69fd9e5549c25b0ce1d75f0'
             'SKIP')
 
-package() {
+build() {
   export GOARCH=amd64
   export GOROOT_FINAL=/usr/lib/go
   export GOROOT_BOOTSTRAP=/usr/lib/go
+  export GOPATH="$srcdir/"
+  export GOROOT="$srcdir/${pkgname%-tip}"
+  export GOBIN="$GOROOT/bin"
 
-  options=(!strip staticlibs)
-  cd "$srcdir/go"
+  cd "${pkgname%-tip}/src"
+  ./make.bash --no-clean -v
+
+  PATH="$GOBIN:$PATH" go install -v -race std
+  PATH="$GOBIN:$PATH" go install -v -buildmode=shared std
+}
+
+check() {
+  export GOARCH=amd64
+  export GOROOT_FINAL=/usr/lib/go
+  export GOROOT_BOOTSTRAP=/usr/lib/go
+  export GOROOT="$srcdir/${pkgname%-tip}"
+  export GOBIN="$GOROOT/bin"
+  export PATH="$srcdir/${pkgname%-tip}/bin:$PATH"
+  export GO_TEST_TIMEOUT_SCALE=2
+
+  cd "${pkgname%-tip}/src"
+  # rm os/signal/signal_cgo_test.go  # TODO: There is a bug somewhere.
+  #                                  # Should only affect containers
+  #                                  # so lets just say No.
+  ./run.bash --no-rebuild -v -v -v -k
+}
+
+package() {
+  cd "${pkgname%-tip}"
 
   install -d "$pkgdir/usr/bin" "$pkgdir/usr/lib/go" "$pkgdir/usr/share/doc/go"
   cp -a bin pkg src lib misc api test "$pkgdir/usr/lib/go"
@@ -38,7 +65,7 @@ package() {
   # TODO: Figure out if really needed
   rm -rf "$pkgdir"/usr/lib/go/pkg/obj/go-build/*
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$1/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-tip}/LICENSE"
 }
 
 # vim: ts=2 sw=2 et

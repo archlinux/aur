@@ -1,19 +1,24 @@
 pkgbase = go-tip
 	pkgdesc = Core compiler tools for the Go programming language
-	pkgver = 1.14beta1
+	pkgver = 1.17beta1
 	pkgrel = 1
 	url = https://golang.org/
 	arch = x86_64
 	license = BSD
+	makedepends = git
+	makedepends = go
+	makedepends = perl
 	provides = go
+	provides = go-pie
 	conflicts = go
-	source = https://storage.googleapis.com/golang/go1.14beta1.linux-amd64.tar.gz
-	source = https://storage.googleapis.com/golang/go1.14beta1.linux-amd64.tar.gz.asc
-	validpgpkeys = EB4C1BFD4F042F6DDDCCEC917721F63BD38B4796
-	sha512sums = 00a848dab57579b49aa2b2028069db34738350b2d65c3214b53678aa7b9cf9fbee2183df4c1d03c347ecc7132ce3251d45c9722b45eb2ed2b73c3062d2a36067
-	sha512sums = SKIP
-
-pkgname = go-tip
+	conflicts = go-pie
 	options = !strip
 	options = staticlibs
+	source = https://storage.googleapis.com/golang/go1.17beta1.src.tar.gz
+	source = https://storage.googleapis.com/golang/go1.17beta1.src.tar.gz.asc
+	validpgpkeys = EB4C1BFD4F042F6DDDCCEC917721F63BD38B4796
+	sha256sums = 02b8973725f9bc545955865576e8c8f6ca672312f69fd9e5549c25b0ce1d75f0
+	sha256sums = SKIP
+
+pkgname = go-tip
 
