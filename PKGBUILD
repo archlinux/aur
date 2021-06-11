@@ -5,9 +5,9 @@
 # Github Contributor: Joey Dumont <https://github.com/joeydumont>
 
 pkgname=heroku-cli
-pkgver=7.54.0
+pkgver=7.54.1
 pkgrel=1
-_commit_id="4b89482ab15e28d1449af9cfe95821d64acd4b6e"
+_commit_id="2bdd9d738ba74b80510cafa7953c1b1a2e127bff"
 pkgdesc="CLI to manage Heroku apps and services with forced auto-update removed"
 arch=('any')
 url="https://devcenter.heroku.com/articles/heroku-cli"
