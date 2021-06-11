@@ -1,6 +1,6 @@
 pkgbase = remmina-git
 	pkgdesc = A remote desktop client written in GTK+ - git checkout
-	pkgver = 1.4.16.r38.ga650d58d8
+	pkgver = 1.4.18.r30.g155fbcd0f
 	pkgrel = 1
 	url = http://www.remmina.org/
 	install = remmina.install
@@ -19,6 +19,13 @@ pkgbase = remmina-git
 	makedepends = spice
 	makedepends = spice-gtk
 	makedepends = spice-protocol
+	makedepends = gnome-keyring
+	makedepends = kwallet
+	makedepends = libappindicator-gtk3
+	makedepends = gtk-vnc
+	makedepends = libgnome-keyring
+	makedepends = docbook-xsl
+	makedepends = libpulse
 	depends = gtk2
 	depends = zlib
 	depends = libjpeg
@@ -41,7 +48,7 @@ pkgbase = remmina-git
 	optdepends = spice-protocol
 	provides = remmina
 	provides = grdc
-	provides = grdc=1.4.16.r38.ga650d58d8
+	provides = grdc=1.4.18.r30.g155fbcd0f
 	provides = remmina-plugins
 	conflicts = remmina
 	conflicts = grdc
@@ -50,4 +57,3 @@ pkgbase = remmina-git
 	sha256sums = SKIP
 
 pkgname = remmina-git
-
