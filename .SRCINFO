@@ -1,0 +1,16 @@
+pkgbase = image-roll-bin
+	pkgdesc = A simple and fast GTK image viewer with basic image manipulation tools
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/weclaw1/image-roll
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	source = https://github.com/weclaw1/image-roll/releases/download/1.0.0/image-roll-1.0.0
+	source = https://raw.githubusercontent.com/weclaw1/image-roll/1.0.0/LICENSE
+	source = https://raw.githubusercontent.com/weclaw1/image-roll/1.0.0/README.md
+	sha256sums = 4a76fe29417eb7216e72ba2ed87f23f77b49c8716b691134dbfb334d6e502330
+	sha256sums = a05b29c2d3db2d0099c21b8bd50618ae6bfdaf6bb4e92cadd94ae673eb5717c6
+	sha256sums = 09d03984477163d3831a80c9bb1009db1d0e85c03330691ee7a04e2043da8eb2
+
+pkgname = image-roll-bin
