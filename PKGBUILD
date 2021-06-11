@@ -2,7 +2,7 @@
 # Contributor: Eric Schulte <[firstname] dot [lastname] at gmx dot com>
 pkgname=feedgnuplot
 pkgver=1.58
-pkgrel=2
+pkgrel=3
 pkgdesc="General purpose pipe-oriented plotting tool"
 arch=('any')
 url="https://github.com/dkogan/feedgnuplot"
@@ -34,6 +34,6 @@ package() {
   install -D --mode=644 --target-directory="$pkgdir/usr/share/zsh/site-functions/" completions/zsh/_feedgnuplot
 
   # Copy guide
-  install --directory "$pkgdir/usr/share/docs/feedgnuplot"
-  cp --recursive guide "$pkgdir/usr/share/docs/feedgnuplot/"
+  install --directory "$pkgdir/usr/share/doc/feedgnuplot"
+  cp --recursive guide "$pkgdir/usr/share/doc/feedgnuplot/"
 }
