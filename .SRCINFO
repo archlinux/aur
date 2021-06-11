@@ -1,0 +1,21 @@
+pkgbase = qjsonstruct-git
+	pkgdesc = JSON helper library for Qt apps
+	pkgver = v1.0.r0.3c46dbc
+	pkgrel = 1
+	url = https://github.com/moodyhunter/QJsonStruct
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = qt6-tools
+	makedepends = grpc-cli
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt6-base
+	depends = grpc
+	depends = protobuf
+	provides = qjsonstruct
+	conflicts = qjsonstruct
+	source = qjsonstruct-git::git+https://github.com/moodyhunter/QJsonStruct
+	sha512sums = SKIP
+
+pkgname = qjsonstruct-git
