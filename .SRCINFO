@@ -42,19 +42,13 @@ pkgbase = obs-studio-tytan652
 	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=27.0.0
 	source = python_fix.patch
 	source = bind_iface.patch
-	source = en-US.ini::https://raw.githubusercontent.com/tytan652/obs-studio/bind_iface/UI/data/locale/en-US.ini
-	source = add_gnome_entry.patch
-	source = com.obsproject.Studio.desktop::https://raw.githubusercontent.com/tytan652/obs-studio/wl_dotdesktop/UI/xdg-data/com.obsproject.Studio.desktop
-	source = com.obsproject.Studio.Gnome.desktop::https://raw.githubusercontent.com/tytan652/obs-studio/wl_dotdesktop/UI/xdg-data/com.obsproject.Studio.Gnome.desktop
+	source = update_desktop_entries.patch
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8
 	sha256sums = SKIP
 	sha256sums = 430d7d0a7e1006c1f6309ad7d4912033dadd542b641f9d41259a5bad568379c9
 	sha256sums = a43f2ad974104888ef36eef49b3e60dc26f7cfc0f48300726c861978ae5ae3ea
-	sha256sums = 1d308c7d37e9a1202aae6cd51761a409ad93c33742b8ba2e60cf6cda473658ee
-	sha256sums = 200868bb9550bff6355b2c9853e568a12f3aab331a9049473e246fe2dbc08900
-	sha256sums = eeb55870cc0f42c45ca714d49d6c865c36a67c34dc9a29504ace15736a110deb
-	sha256sums = 70557ca1ea2d1ec841cefe60b7d70ab6aed0e3b518dae9b9720f32a69125474d
+	sha256sums = 9dedcb1996794754f5e36c0c69b36abc5a2c3e6514f4556dc5b867cec2ec9731
 	sha256sums = SKIP
 	sha256sums = SKIP
 

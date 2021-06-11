@@ -45,13 +45,7 @@ source=(
         "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
         "python_fix.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3335.patch
         "bind_iface.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4219.patch
-        "en-US.ini::https://raw.githubusercontent.com/tytan652/obs-studio/bind_iface/UI/data/locale/en-US.ini"
-        # Because the patch created by github can't manage different line endings
-        "add_gnome_entry.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4496.patch
-        "com.obsproject.Studio.desktop::https://raw.githubusercontent.com/tytan652/obs-studio/wl_dotdesktop/UI/xdg-data/com.obsproject.Studio.desktop"
-        # Because missing translation on the release one for now
-        "com.obsproject.Studio.Gnome.desktop::https://raw.githubusercontent.com/tytan652/obs-studio/wl_dotdesktop/UI/xdg-data/com.obsproject.Studio.Gnome.desktop"
-        # Because adding file with a patch is not a good idea
+        "update_desktop_entries.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4496.patch
         "obs-browser::git+https://github.com/obsproject/obs-browser.git"
         "obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8"
 )
@@ -59,10 +53,7 @@ sha256sums=(
         "SKIP"
         "430d7d0a7e1006c1f6309ad7d4912033dadd542b641f9d41259a5bad568379c9"
         "a43f2ad974104888ef36eef49b3e60dc26f7cfc0f48300726c861978ae5ae3ea"
-        "1d308c7d37e9a1202aae6cd51761a409ad93c33742b8ba2e60cf6cda473658ee"
-        "200868bb9550bff6355b2c9853e568a12f3aab331a9049473e246fe2dbc08900"
-        "eeb55870cc0f42c45ca714d49d6c865c36a67c34dc9a29504ace15736a110deb"
-        "70557ca1ea2d1ec841cefe60b7d70ab6aed0e3b518dae9b9720f32a69125474d"
+        "9dedcb1996794754f5e36c0c69b36abc5a2c3e6514f4556dc5b867cec2ec9731"
         "SKIP"
         "SKIP"
 )
@@ -73,15 +64,24 @@ prepare() {
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git submodule update
 
-  # libobs/util: Fix loading Python binary modules on *nix (https://github.com/obsproject/obs-studio/pull/3335)
+  ## libobs/util: Fix loading Python binary modules on *nix (https://github.com/obsproject/obs-studio/pull/3335)
   patch -Np1 < "$srcdir/python_fix.patch"
-  # Add network interface binding for RTMP on Linux (https://github.com/obsproject/obs-studio/pull/4219)
+
+  ## Add network interface binding for RTMP on Linux (https://github.com/obsproject/obs-studio/pull/4219)
   patch -Np1 < "$srcdir/bind_iface.patch"
-  cp "$srcdir/en-US.ini" "$srcdir/obs-studio"/UI/data/locale/en-US.ini
-  # xdg-data: Add a custom desktop entry for Gnome Shell (https://github.com/obsproject/obs-studio/pull/4496)
-  patch -Np1 < "$srcdir/add_gnome_entry.patch"
-  cp "$srcdir/com.obsproject.Studio.desktop" "$srcdir/obs-studio"/UI/xdg-data/com.obsproject.Studio.desktop
-  cp "$srcdir/com.obsproject.Studio.Gnome.desktop" "$srcdir/obs-studio"/UI/xdg-data/com.obsproject.Studio.Gnome.desktop
+  # Add translation
+  echo -e "\r\n# Bind Network Interface PR translation" >> "$srcdir/obs-studio"/UI/data/locale/en-US.ini
+  echo -e "Basic.Settings.Advanced.Network.BindToInterface=\"Bind to interface\"" >> "$srcdir/obs-studio"/UI/data/locale/en-US.ini
+
+  ## xdg-data: Add a custom desktop entry for Gnome Shell, Phosh and maybe more (https://github.com/obsproject/obs-studio/pull/4496)
+  patch -Np1 < "$srcdir/update_desktop_entries.patch"
+  # Creating the GNOME entry based on the non-GNOME one
+  cp "$srcdir/obs-studio"/UI/xdg-data/com.obsproject.Studio.desktop "$srcdir/obs-studio"/UI/xdg-data/com.obsproject.Studio.Gnome.desktop
+  sed -i 's/NotShowIn=GNOME/OnlyShowIn=GNOME/g' "$srcdir/obs-studio"/UI/xdg-data/com.obsproject.Studio.Gnome.desktop
+  sed -i 's/Actions=new-window;/Actions=new-window;new-wayland-window;/g' "$srcdir/obs-studio"/UI/xdg-data/com.obsproject.Studio.Gnome.desktop
+  echo -e "\n[Desktop Action new-wayland-window]" >> "$srcdir/obs-studio"/UI/xdg-data/com.obsproject.Studio.Gnome.desktop
+  echo "Name=New Wayland Instance" >> "$srcdir/obs-studio"/UI/xdg-data/com.obsproject.Studio.Gnome.desktop
+  echo "Exec=obs -platform wayland" >> "$srcdir/obs-studio"/UI/xdg-data/com.obsproject.Studio.Gnome.desktop
 }
 
 build() {

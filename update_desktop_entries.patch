@@ -1,4 +1,4 @@
-From f3749fd41aba5983912ce95e48ddb5cab60efb0c Mon Sep 17 00:00:00 2001
+From 4c4690d99e35083c44699df0dab1cdd14f99e329 Mon Sep 17 00:00:00 2001
 From: tytan652 <tytan652@tytanium.xyz>
 Date: Tue, 8 Jun 2021 10:50:14 +0200
 Subject: [PATCH] xdg-data: Add desktop entry for Gnome with Wayland
@@ -11,7 +11,8 @@ with a another action to launch it with QT__QPA_PLATFORM
 set to "wayland"
 ---
  UI/xdg-data/CMakeLists.txt                    |  2 +
- 1 files changed, 2 insertions(+)
+ UI/xdg-data/com.obsproject.Studio.desktop     |  6 ++
+ 2 files changed, 8 insertions(+)
 
 diff --git a/UI/xdg-data/CMakeLists.txt b/UI/xdg-data/CMakeLists.txt
 index 9acd14e835a..d50f9f18460 100644
@@ -26,3 +27,24 @@ index 9acd14e835a..d50f9f18460 100644
  
  install(FILES ../forms/images/obs.png
  	DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/256x256/apps
+diff --git a/UI/xdg-data/com.obsproject.Studio.desktop b/UI/xdg-data/com.obsproject.Studio.desktop
+index 3fd8cd98b5d..664c13728ac 100644
+--- a/UI/xdg-data/com.obsproject.Studio.desktop
++++ b/UI/xdg-data/com.obsproject.Studio.desktop
+@@ -10,6 +10,8 @@ Type=Application
+ Categories=AudioVideo;Recorder;
+ StartupNotify=true
+ StartupWMClass=obs
++NotShowIn=GNOME
++Actions=new-window;
+ 
+ GenericName[ar_SA]=برامج البث / التسجيل
+ Comment[ar_SA]=برنامج بث / تسجيل مجاني ومفتوح المصدر
+@@ -75,3 +77,7 @@ GenericName[zh_CN]=直播/录像软件
+ Comment[zh_CN]=自由且开源的用于直播串流以及视频录制的软件
+ GenericName[zh_TW]=串流與錄影軟體
+ Comment[zh_TW]=免費，開源的串流與錄影軟體
++
++[Desktop Action new-window]
++Name=New Instance
++Exec=obs
