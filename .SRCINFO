@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-ros-control-boilerplate
 	pkgdesc = ROS - Simple simulation interface and template for setting up a hardware interface for ros_control.
 	pkgver = 0.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/davetcoleman/ros_control_boilerplate
 	arch = i686
 	arch = x86_64
@@ -44,4 +44,3 @@ pkgbase = ros-melodic-ros-control-boilerplate
 	sha256sums = d7effcf6b0c543827323db65f4716d6aff28f9ea9ab37dc73516f2fe02f9736f
 
 pkgname = ros-melodic-ros-control-boilerplate
-
