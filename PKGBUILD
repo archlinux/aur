@@ -1,17 +1,17 @@
-# Maintainer: wenLiangcan <boxeed at gmail dot com>
+# Contributor: wenLiangcan <boxeed at gmail dot com>
 # Contributor: Rafael Beraldo <rafaelluisberaldo@gmail.com>
 
 pkgname=todo.c-git
-pkgver=20130905
+pkgver=20161020
 pkgrel=1
 pkgdesc="Command line lightweight todo tool with readable storage , written in C"
 arch=("any")
 url="https://github.com/hit9/todo.c"
 license=('BSD')
 makedepends=('git')
-provides=('todo.c=${pkgver}')
+provides=('todo.c')
 conflicts=('todo.c' 'todo')
-source=("$pkgname"::'git://github.com/hit9/todo.c.git')
+source=("$pkgname"::'git+https://github.com/hit9/todo.c.git')
 md5sums=('SKIP')
 
 pkgver() {
