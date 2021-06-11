@@ -4,7 +4,7 @@
 
 pkgname=com.gloomyghost.netron-bin
 pkgver=4.9.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Visualizer for neural network, deep learning and machine learning models"
 arch=('x86_64')
 url='https://www.lutzroeder.com/ai'
@@ -28,7 +28,7 @@ package() {
           --comment "$pkgdesc" \
           --exec "${pkgname%-bin}" \
           --categories 'Development;Application;' \
-          --icon "${pkgname%-bin}"
+          --icon "${pkgdir}/usr/share/pixmaps/netron.png"
   install -Dm644 "${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/opt"
