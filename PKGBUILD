@@ -1,5 +1,5 @@
 pkgname=tess-git
-pkgver=1.2r141.30ea8c3
+pkgver=1.2r143.f1e9e3d
 pkgrel=1
 pkgdesc="Tess hackable, simple, rapid and beautiful terminal for the new era"
 arch=(x86_64)
