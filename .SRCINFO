@@ -1,0 +1,15 @@
+pkgbase = landrop
+	pkgdesc = Drop any files to any devices on your LAN
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://landrop.app
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	depends = libsodium
+	depends = hicolor-icon-theme
+	depends = gcc-libs
+	source = landrop-0.4.0.tar.gz::https://github.com/LANDrop/LANDrop/archive/v0.4.0.tar.gz
+	b2sums = 8dc02cf952bc8761265d2ea78868f6ea81a4a0be7496c017b87b0253bd82e2d729b1172a6eeafdc73966d628c8f67bd60600daf6a43adf365b5afd986a249cf2
+
+pkgname = landrop
