@@ -3,13 +3,13 @@
 
 pkgname=stone-soup-git
 _pkgname=stone-soup
-pkgver=0.26.a0.566.gbc9326e332
+pkgver=0.27.a0.1281.ge233d83751
 pkgrel=1
 pkgdesc="An open-source, single-player, role-playing roguelike game of exploration and treasure-hunting"
 arch=('i686' 'x86_64' 'ppc')
 url='http://crawl.develz.org/'
-depends=('lua51' 'ncurses' 'sdl2_image' 'sqlite' 'glu' 'freetype2' 'ttf-dejavu')
-makedepends=('git' 'bison' 'flex')
+depends=('lua51' 'ncurses' 'sdl2_image' 'sqlite' 'glu' 'freetype2' 'ttf-dejavu' 'python-yaml')
+makedepends=('git' 'bison' 'flex' 'advancecomp' 'pngcrush')
 conflicts=('crawl' 'stone-soup' 'stone-soup-tile')
 license=('custom')
 backup=('usr/share/stone-soup/data/settings/tiles_options.txt'
