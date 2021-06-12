@@ -6,7 +6,7 @@
 # Set the next two variables to ANYTHING that is not null to enable them
 
 # Tweak kernel options prior to a build via nconfig
-_makenconfig=y
+_makenconfig=
 
 # Only compile active modules to VASTLY reduce the number of modules built and
 # the build time.
@@ -63,15 +63,17 @@ _localmodcfg=
 #  39. Generic-x86-64-v4 (GENERIC_CPU4) (NEW)
 #  40. Intel-Native optimizations autodetected by GCC (MNATIVE_INTEL) (NEW)
 #  41. AMD-Native optimizations autodetected by GCC (MNATIVE_AMD) (NEW)
-_subarch=36
+_subarch=17
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck-uksm
-pkgver=5.12.9
+pkgver=5.12.10
 pkgrel=1
 _ckpatchversion=1
+_ckpatch="patch-5.12-ck${_ckpatchversion}"
 _major=5.12
+_gcc_more_v=20210610
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
@@ -79,12 +81,10 @@ makedepends=(
   bc kmod libelf cpio perl tar xz
 )
 options=('!strip')
-_ckpatch="patch-5.12-ck${_ckpatchversion}"
-_gcc_more_v=20210412
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
-  "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
+  "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "http://ck.kolivas.org/patches/5.0/5.12/5.12-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-UKSM.patch
@@ -94,10 +94,10 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('c4ba5b7da3e7af4edb3511b63a21f3d6ca8138f4a5fa77714f49a97f7c06db21daf3df66bb905561d6975b6652bf5b517e995f5e673328b9df3415f37ac01fd0'
+b2sums=('b40ef5a11ca435299899e8131fa72af147455cd8ebee4c0e187572b1f628e66d2b6fbb318308bc911a598d8303d1ab3622d52966deaa5c48d59dcd65f4f58687'
         'SKIP'
         'SKIP'
-        '72194a32a06c43809d1272bd675890b6d27c6c54353150a366e8e2c50ad6eca6ee23c5d6281822965a228cfedfa07a60fe135d1b4f539e4a62728d4460cc0b0e'
+        '30d1df754608bb423cbc99c2097ad521baa091b9a3b39df4bd5c2d50c57eec54d8fa0e4a4a04b847c3d1b87ba682cadc8db45fabeefdc9ad7caaf8e77b96e41a'
         'c9f729ba1efe6f04e7b2c57d3999bc9675b577596dccb2f227e5b6e444285e1fdd270bf67c0fcf9f5808a4c3a4b1c7a5c13a76f754ad9b9447243ccbaf2ce6a3'
         'e1eccb5b6b728e3852ade55dae7a53b8b6bd5f0fb2a330b99e85bfa64abaa430cb714d301ed169df14a1f302a75d952992f0d8fa6ab02fa6716165bdf23b63aa'
         '14f45171afc3b15488b40a05e58b352c5057da3a5782e13527392f7750d8e45a8db54f9b50b218fedb8bf679de3b4e5d78e230a44f7b1aa482f7b3aa831bd641'
@@ -163,7 +163,7 @@ prepare() {
   # https://github.com/graysky2/kernel_gcc_patch
   # make sure to apply after olddefconfig to allow the next section
   echo "Patching to enable GCC optimization for other uarchs..."
-  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/more-uarches-for-kernel-5.8+.patch"
+  patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.8+.patch"
 
   if [ -n "$_subarch" ]; then
     # user wants a subarch so apply choice defined above interactively via 'yes'
@@ -199,7 +199,7 @@ prepare() {
 
 build() {
   cd linux-${pkgver}
-  make all
+  make -j40 all
 }
 
 _package() {
