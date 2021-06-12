@@ -2,14 +2,14 @@
 
 pkgname=tree-sitter-lua-git
 pkgver=1.6.0.r10.gb6d4e9e
-pkgrel=1
+pkgrel=2
 pkgdesc="Lua grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/nvim-treesitter/tree-sitter-lua"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('gcc-libs')
-makedepends=('git' 'tree-sitter')
+makedepends=('git' 'tree-sitter' 'npm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url")
@@ -18,6 +18,11 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "$pkgname"
 	git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+}
+
+prepare() {
+	cd "$pkgname"
+	tree-sitter generate
 }
 
 build() {

@@ -1,13 +1,14 @@
 pkgbase = tree-sitter-lua-git
 	pkgdesc = Lua grammar for tree-sitter
 	pkgver = 1.6.0.r10.gb6d4e9e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nvim-treesitter/tree-sitter-lua
 	arch = x86_64
 	groups = tree-sitter-grammars
 	license = MIT
 	makedepends = git
 	makedepends = tree-sitter
+	makedepends = npm
 	depends = gcc-libs
 	provides = tree-sitter-lua
 	conflicts = tree-sitter-lua
