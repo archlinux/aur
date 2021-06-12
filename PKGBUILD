@@ -3,30 +3,34 @@
 # Contributor: tmm1 <archΘtmm1·net>
 
 pkgname=duma
-pkgver=2.5.15
-pkgrel=3
-pkgdesc='Multi-platform memory debugging library (Detect Unintended Memory Access)'
+pkgver=2.5.21
+pkgrel=1
+pkgdesc='Detect Unintended Memory Access (D.U.M.A.) - A Red-Zone memory allocator'
 arch=('i686' 'x86_64')
-url='http://duma.sourceforge.net/'
+url='https://github.com/johnsonjh/duma'
 license=('GPL')
 depends=('bash' 'gcc-libs')
 _pkgver="${pkgver//./_}"
-source=("http://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/${pkgname}_${_pkgver}.tar.gz")
-md5sums=('fe630c69cbaa39caf225a3d9ed2fda1f')
-sha256sums=('baaf794854e3093ad1bddadbfb8ad4b220a7117d70359ee216bd59e353734e17')
+source=("https://github.com/johnsonjh/duma/archive/refs/tags/VERSION_${_pkgver}.tar.gz")
+sha256sums=('470aa72e7018f0beadb5fbe3c932a62ba1b0594c29158a744c614bfa42133e59')
 
 prepare() {
-  cd "${pkgname}_${_pkgver}"
-  sed -i 's/CPPFLAGS=/\0-std=gnu++98 /g' GNUmakefile
+  cd "${pkgname}-VERSION_${_pkgver}"
+#  sed -i 's/CPPFLAGS=/\0-std=gnu++98 /g' GNUmakefile
 }
 
 build() {
-  cd "${pkgname}_${_pkgver}"
+  cd "${pkgname}-VERSION_${_pkgver}"
   make
 }
 
+check() {
+  cd "${pkgname}-VERSION_${_pkgver}"
+#  make check
+}
+
 package() {
-  cd "${pkgname}_${_pkgver}"
+  cd "${pkgname}-VERSION_${_pkgver}"
   make prefix="$pkgdir/usr/" install
-  install -m644 duma_hlp.h "$pkgdir/usr/include/"
+#  install -m644 duma_hlp.h "$pkgdir/usr/include/"
 }

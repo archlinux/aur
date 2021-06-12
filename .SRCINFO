@@ -1,16 +1,15 @@
 pkgbase = duma
-	pkgdesc = Multi-platform memory debugging library (Detect Unintended Memory Access)
-	pkgver = 2.5.15
-	pkgrel = 3
-	url = http://duma.sourceforge.net/
+	pkgdesc = Detect Unintended Memory Access (D.U.M.A.) - A Red-Zone memory allocator
+	pkgver = 2.5.21
+	pkgrel = 1
+	url = https://github.com/johnsonjh/duma
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = bash
 	depends = gcc-libs
-	source = http://sourceforge.net/projects/duma/files/duma/2.5.15/duma_2_5_15.tar.gz
-	md5sums = fe630c69cbaa39caf225a3d9ed2fda1f
-	sha256sums = baaf794854e3093ad1bddadbfb8ad4b220a7117d70359ee216bd59e353734e17
+	source = https://github.com/johnsonjh/duma/archive/refs/tags/VERSION_2_5_21.tar.gz
+	sha256sums = 470aa72e7018f0beadb5fbe3c932a62ba1b0594c29158a744c614bfa42133e59
 
 pkgname = duma
 
