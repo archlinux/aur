@@ -3,7 +3,7 @@
 validpgpkeys=('33ED753E14757D79FA17E57DC4C1F715B2B66B95')
 
 pkgname=verible
-pkgver=0.0r1274.g25c3f76
+pkgver=0.0r1282.gd49303d
 pkgrel=1
 pkgdesc="SystemVerilog(Verilog) Parser, Style-Linter, and Formatter from Google"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('bash')
 makedepends=('bazel' 'git')
 provides=('verible')
 conflicts=('verible-git')
-_gittag="v0.0-1274-g25c3f76"
+_gittag="v0.0-1282-gd49303d"
 source=("verible::git+https://github.com/google/verible.git#tag=${_gittag}")
 sha512sums=('SKIP')
 
