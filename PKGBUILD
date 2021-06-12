@@ -1,16 +1,16 @@
 # Maintainer: fossdd <fossdd@tutanota.com>
 pkgname=yarr-git
 _pkgname=yarr
-pkgver=v1.3.r0.g0916f11
+pkgver=v2.0.r29.g0c5385c
 pkgrel=1
 pkgdesc="yet another rss reader."
 arch=('i686' 'x86_64')
 url='https://github.com/nkanaev/yarr'
 license=('MIT')
-source=('git+git://github.com/nkanaev/yarr' 'git+git://github.com/nkanaev/gofeed')
+source=('git+git://github.com/nkanaev/yarr')
 depends=()
 makedepends=('go' 'make' 'git')
-sha1sums=('SKIP' 'SKIP')
+sha1sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -20,17 +20,12 @@ pkgver() {
   )
 }
 
-prepare() {
-  cd "$srcdir"
-  mv "gofeed" "$_pkgname"
-}
-
 build(){
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgname"
   make build_linux
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgname"
   install -Dm755 '_output/linux/yarr' "$pkgdir/usr/bin/yarr"
 }
