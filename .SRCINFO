@@ -1,5 +1,5 @@
 pkgbase = console_sudoku
-	pkgdesc = Fully fledged ncurses sudoku application built entirely in C++
+	pkgdesc = This package is no longer maintained, please use tuidoku instead
 	pkgver = 2.2.4
 	pkgrel = 1
 	url = https://github.com/flyingpeakock/Console_sudoku
@@ -13,4 +13,3 @@ pkgbase = console_sudoku
 	md5sums = SKIP
 
 pkgname = console_sudoku
-
