@@ -1,7 +1,7 @@
 pkgbase = gammy-git
 	pkgdesc = Adaptive screen brightness/temperature tool.
 	pkgver = 0.9.64.r4.gf42577a
-	pkgrel = 2
+	pkgrel = 3
 	url = https://getgammy.com
 	arch = x86_64
 	license = GPL3
@@ -14,6 +14,6 @@ pkgbase = gammy-git
 	source = git+https://github.com/Fushko/gammy.git
 	source = https://github.com/Fushko/gammy/pull/119.patch
 	sha256sums = SKIP
-	sha256sums = 786ff6bb674feb4cacdbd4e79b428eb03ca5716533d765ff99b16a23ad3e306b
+	sha256sums = 8b96a361c39351cde45d73947f55ad1d64b98c43617dad5a3c901c6c668ba1ed
 
 pkgname = gammy-git

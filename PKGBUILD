@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gammy-git
 pkgver=0.9.64.r4.gf42577a
-pkgrel=2
+pkgrel=3
 pkgdesc="Adaptive screen brightness/temperature tool."
 arch=('x86_64')
 url="https://getgammy.com"
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-git}")
 source=('git+https://github.com/Fushko/gammy.git'
         'https://github.com/Fushko/gammy/pull/119.patch')
 sha256sums=('SKIP'
-            '786ff6bb674feb4cacdbd4e79b428eb03ca5716533d765ff99b16a23ad3e306b')
+            '8b96a361c39351cde45d73947f55ad1d64b98c43617dad5a3c901c6c668ba1ed')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
