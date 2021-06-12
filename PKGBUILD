@@ -1,4 +1,4 @@
-# Maintainer: d0lphin <scrouthtv [at] gmail [dot] com>
+# Maintainer: scrouthtv <scrouthtv 0x40 gmail 0x2e com>
 # Contributor: Marcos Ferreira <merkkp at gmail dot com>
 
 _gitname="bpkg"

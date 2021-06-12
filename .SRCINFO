@@ -13,4 +13,3 @@ pkgbase = bpkg-git
 	md5sums = SKIP
 
 pkgname = bpkg-git
-
