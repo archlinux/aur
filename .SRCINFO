@@ -1,0 +1,16 @@
+pkgbase = garbage-git
+	pkgdesc = Rust implementation of trash-cli, a tool that interfaces with Freedesktop's Trash spec
+	pkgver = v0.3.0.r1.gf7784c1
+	pkgrel = 1
+	url = https://sr.ht/~iptq/garbage/
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = cargo
+	makedepends = rust
+	makedepends = git
+	provides = garbage
+	conflicts = garbage
+	source = git+https://git.sr.ht/~iptq/garbage
+	sha256sums = SKIP
+
+pkgname = garbage-git
