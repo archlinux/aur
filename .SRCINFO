@@ -1,6 +1,6 @@
 pkgbase = ferdi-nightly-bin
 	pkgdesc = A messaging browser that allows you to combine your favorite messaging services into one application - nightly binary version
-	pkgver = 5.6.0.nightly.55
+	pkgver = 5.6.0.nightly.57
 	pkgrel = 1
 	url = https://getferdi.com
 	arch = x86_64
@@ -24,8 +24,9 @@ pkgbase = ferdi-nightly-bin
 	provides = ferdi
 	conflicts = ferdi
 	conflicts = ferdi-bin
-	source = ferdi-nightly-bin-5.6.0-nightly.55.rpm::https://github.com/getferdi/nightlies/releases/download/v5.6.0-nightly.55/ferdi-5.6.0-nightly.55.x86_64.rpm
-	sha256sums = f6fdad433a438051291ba3b96cada4ee863552460e270927e967bac49b3f8403
-	b2sums = 487c11f499ce2226b5148b6ed17448c9f2275dbe91845e7335f72794de8a82a091ac6428122a4535c696631373fc6c5381d3d6f2f1c689127d4ad108bfdc84ed
+	source = ferdi-nightly-bin-5.6.0-nightly.57.rpm::https://github.com/getferdi/nightlies/releases/download/v5.6.0-nightly.57/ferdi-5.6.0-nightly.57.x86_64.rpm
+	cksums = 797705101
+	sha256sums = e2d093a5badea3f2b1a894cba70ae8087909ceceecf7e6526eb4cbcb193962d4
+	b2sums = 4308405b328abd604cfbe6a1bc270afe113ef76727a9e2e9861fd9e4e0c5102e9be2ff776efc7b627c48051c50bbcb2cf0f07c038517146aaa1c207f9361f55a
 
 pkgname = ferdi-nightly-bin
