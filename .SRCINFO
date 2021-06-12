@@ -1,7 +1,7 @@
 pkgbase = obs-studio-tytan652
 	pkgdesc = Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, working VLC sources and my bind interface and GNOME entry PRs.
-	pkgver = 27.0.0
-	pkgrel = 5
+	pkgver = 27.0.1
+	pkgrel = 1
 	url = https://github.com/obsproject/obs-studio
 	arch = i686
 	arch = x86_64
@@ -36,10 +36,10 @@ pkgbase = obs-studio-tytan652
 	optdepends = luajit: Lua scripting
 	optdepends = python: Python scripting
 	optdepends = v4l2loopback-dkms: Virtual camera output
-	provides = obs-studio=27.0.0
+	provides = obs-studio=27.0.1
 	conflicts = obs-studio
 	conflicts = obs-linuxbrowser
-	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=27.0.0
+	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=27.0.1
 	source = python_fix.patch
 	source = bind_iface.patch
 	source = update_desktop_entries.patch
