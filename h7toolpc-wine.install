@@ -1,0 +1,16 @@
+# h7toolpc-wine.install
+info() {
+    echo -e "Wine H7-TOOL 的 PC 上位机，支持串口、CAN、示波器、CMSIS-DAP、DS18B20、RTT Viewer、脱机烧录等"
+}
+post_install() {
+    info
+}
+post_upgrade() {
+    echo "deleting the h7toolpc bottle..."
+    find /home -maxdepth 2 -name ".h7toolpc" -exec rm -rf {} \;
+    info
+}
+pre_remove() {
+    echo "deleting the h7toolpc bottle..."
+    find /home -maxdepth 2 -name ".h7toolpc" -exec rm -rf {} \;
+}
