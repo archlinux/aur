@@ -1,0 +1,10 @@
+post_install() {
+	echo "Removing xpad kernel module"
+	modprobe -r xpad
+	echo "Reloading udev rules"
+	udevadm control --reload-rules
+}
+
+post_upgrade() {
+	post_install
+}
