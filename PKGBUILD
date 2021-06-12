@@ -3,7 +3,7 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=jrtplib
-pkgver=3.11.1
+pkgver=3.11.2
 pkgrel=1
 pkgdesc='An object-oriented RTP library written in C++'
 arch=('i686' 'x86_64')
@@ -13,12 +13,12 @@ license=('MIT')
 depends=('jthread>=1.3.1')
 makedepends=('cmake')
 source=("http://research.edm.uhasselt.be/jori/$pkgname/$pkgname-$pkgver.tar.bz2")
-sha256sums=('e24745f22418fb5d741b6b9871b89ed43964870f292dda92fd11cfbb5d6d0e43')
+sha256sums=('2c01924c1f157fb1a4616af5b9fb140acea39ab42bfb28ac28d654741601b04c')
 
 build() {
   cd "$pkgname-$pkgver"
 #  ./configure --prefix=/usr
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DLIBRARY_INSTALL_DIR:PATH=lib
+  CPPFLAGS="-std=gnu++98" cmake . -DCMAKE_INSTALL_PREFIX=/usr -DLIBRARY_INSTALL_DIR:PATH=lib
   make
 }
 
