@@ -6,26 +6,28 @@ pkgname=${_pkgname}-git
 pkgver=0.17.0a2.r15.g69f4e4f
 pkgrel=1
 pkgdesc="Synchronize CalDAV and CardDAV."
-arch=('x86_64')
+arch=("x86_64")
 url="https://vdirsyncer.readthedocs.org/"
-license=('BSD')
+license=("BSD")
 depends=("python-click>=5.0" "python-click-log>=0.2.0" "python-click-threading>=0.2"
          "python-requests>2.9.0" "python-requests-toolbelt>=0.4.0"
          "python-atomicwrites>=0.1.7"
          "python-requests-oauthlib"
          "python-shippai"
          "rust")
-makedepends=("git" "python-setuptools-scm"
-             "python-sphinx" 'python-sphinx_rtd_theme'
-             'python-milksnake')
+makedepends=("git"
+             "python-setuptools-scm"
+             "python-sphinx"
+             "python-sphinx_rtd_theme"
+             "python-milksnake")
 checkdepends=("python-hypothesis>=3.1"
               "python-pytest"
               "python-pytest-localserver"
               "python-pytest-subtesthack"
               "python-pytest-cov")
 source=("git+https://github.com/pimutils/${_pkgname}.git")
-sha256sums=('SKIP')
-conflicts=('vdirsyncer')
+sha256sums=("SKIP")
+conflicts=("vdirsyncer")
 provides=("vdirsyncer=${pkgver}")
 
 pkgver() {
