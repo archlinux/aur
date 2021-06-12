@@ -1,7 +1,7 @@
 # Maintainer: Maxim Kurnosenko <asusx2@mail.ru>
 
 pkgname=anylogic-professional
-pkgver=8.7.0
+pkgver=8.7.5
 pkgrel=1
 pkgdesc="AnyLogic Professional Edition - for companies and government organizations"
 arch=(x86_64)
@@ -15,7 +15,7 @@ provides=('anylogic')
 conflicts=('anylogic')
 options=(!strip)
 source=("https://files.anylogic.com/$pkgname-$pkgver.linux.x86_64.tgz.bin")
-sha256sums=('0da5909ae1ae68bf1b4cbed88a743c408d80b8e0af37406edbcb0cf4a954ff3f')
+sha256sums=('55c1bef81af60201bb1cd5e08d0ee829eed7904550b8850fe658f335009a7df4')
 
 prepare() {
     msg2 "Unpacking archive..."
