@@ -3,7 +3,7 @@
 pkgname=python-playwright
 _name=${pkgname#python-}
 _py=py3
-pkgver=1.11.2
+pkgver=1.12.1
 pkgrel=1
 pkgdesc="a Python library to automate Chromium, Firefox and WebKit browsers with a single API"
 arch=(x86_64)
@@ -15,7 +15,7 @@ source=(
   "https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/${_name/-/_}-$pkgver-$_py-none-manylinux1_x86_64.whl"
 )
 sha256sums=(
-  'bb34780cfce8aa1a52be867e4b099735bf0cd7fbb35df879ddd64678374913fa'
+  'cbfd3240e35c2836476416d3befb63b43fd537dbd9212a3108e08e7fd756c183'
 )
 
 package() {
