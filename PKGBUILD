@@ -22,11 +22,11 @@ pkgver() {
 
 build() {
 	cd "$srcdir"
-        g++ -O3 -pthread ./$_pkgname/src/*.cpp -lncursesw -o tuidoku
+        g++ -O3 -pthread ./tuidoku/src/*.cpp -lncursesw -o tuidoku-bin
 }
 
 package() {
         cd "$srcdir"
-        install -Dm755 console_sudoku $pkgdir/usr/bin/tuidoku
+        install -Dm755 tuidoku-bin $pkgdir/usr/bin/tuidoku
         install -Dm644 ./tuidoku/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
