@@ -1,7 +1,7 @@
 # Maintainer: Artemii Sudakov <finziyr@yandex.ru>
 pkgname=wine-stable-ubuntu
-pkgver=6.0
-pkgrel=5
+pkgver=6.0.1
+pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs (binary for Ubuntu)"
 arch=('x86_64')
 url="https://winehq.org/"
@@ -60,18 +60,18 @@ lib32-libgphoto2
 dosbox
 )
 options=('!emptydirs' '!strip')
-_pkgver="${pkgver}.0"
-_channel="focal"
-source=("wine.deb::https://dl.winehq.org/wine-builds/ubuntu/dists/focal/main/binary-amd64/wine-stable-amd64_${_pkgver}~${_channel}-1_amd64.deb"
-	"wine2.deb::https://dl.winehq.org/wine-builds/ubuntu/dists/focal/main/binary-amd64/wine-stable_${_pkgver}~${_channel}-1_amd64.deb"
-	"winei386.deb::https://dl.winehq.org/wine-builds/ubuntu/dists/focal/main/binary-i386/wine-stable-i386_${_pkgver}~${_channel}-1_i386.deb"
+_pkgver="${pkgver}"
+_channel="hirsute"
+source=("wine.deb::https://dl.winehq.org/wine-builds/ubuntu/dists/${_channel}/main/binary-amd64/wine-stable-amd64_${_pkgver}~${_channel}-1_amd64.deb"
+	"wine2.deb::https://dl.winehq.org/wine-builds/ubuntu/dists/${_channel}/main/binary-amd64/wine-stable_${_pkgver}~${_channel}-1_amd64.deb"
+	"winei386.deb::https://dl.winehq.org/wine-builds/ubuntu/dists/${_channel}/main/binary-i386/wine-stable-i386_${_pkgver}~${_channel}-1_i386.deb"
 	"30-win32-aliases.conf"
         "wine-binfmt.conf")
-sha512sums=("224299cf2ae87f6cf0757cab8fec4c0af92fe3207ab87650709ba604132a2771d1877ba5b5cdab40c388ebf1c54d0bc8852126af7e73b4e3f16733a1b12d365b"
-            "487737d24e534ea3483b80b498da295c62cad009369ffff3b0de0377bc4f7c21884886457fa7760c7188f88ec6d67075332e33fd071774bde498a3ab3c4c200a"
-            "8b50cea9243f0a8801a4092697806a346a2ce6d65b4757c6a894ea4c865a7e554f06fff66714e966e26c8cdf31780726ce8f2ee6c71fa663419d132b2cad2b48"
-            "6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb"
-            "bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285")
+sha512sums=('d48d4753aeddeebbc5587ba7e2f5ef682b23ad93ea4ce939ffc468f2470382faccbd487a65d07f3ac5cfa6b824a6f75ecd0211edc2cb0424d9be29400bdada3e'
+            '47e975fc27213b8c75e38bf9f5e28c5557e9c173eef88e5ef3dbfddd20f6daf0997b049d4b101f6e909f1886fe4fa427bf36090a3e398f75994279e583739a6e'
+            '598b03be68606a6632fea93e13d84a8528d2eaf02a63814c18639e05ee8fb4f04477f42404bdafad16ed91aa29b56d4650da0c0d69cbbef808d645005b509823'
+            '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
+            'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285')
 
 prepare() {
 	mkdir "$srcdir"/wine{,2,i386} || :
