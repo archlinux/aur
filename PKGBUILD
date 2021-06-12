@@ -8,7 +8,7 @@ pkgdesc="Yummy Optimizer for Gorgeous Assets"
 url="https://github.com/wanadev/yoga"
 depends=(python3 python-cffi python-pillow python-pycparser python-unidecode python-pyguetzli python--zopflipy)
 makedepends=('python-setuptools')
-license=('Apache')
+license=('unknown')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz"
         "assimp-5.0.1.tar.gz::https://github.com/assimp/assimp/archive/refs/tags/v5.0.1.tar.gz")
