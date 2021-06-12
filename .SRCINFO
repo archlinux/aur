@@ -46,4 +46,3 @@ pkgname = peercoin-qt
 pkgname = peercoin-tx
 	pkgdesc = A peer-to-peer network-based digital currency - transaction tool
 	depends = boost-libs
-
