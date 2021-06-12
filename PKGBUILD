@@ -1,8 +1,8 @@
 # Maintainer: Alesh Slovak <aleshslovak@gmail.com>
 
 pkgname=steam-buddy
-pkgver=0.11.0
-pkgrel=2
+pkgver=0.11.1
+pkgrel=1
 pkgdesc="Configure and manage games in Steam"
 arch=('any')
 url="https://github.com/gamer-os/steam-buddy"
@@ -12,7 +12,7 @@ conflicts=('steam-tweaks')
 depends=('python' 'python-bottle' 'python-pyftpdlib' 'python-yaml' 'python-vdf' 'python-inotify-simple' 'python-requests' 'python-beaker' 'python-pygame' 'python-bcrypt' 'python-psutil' 'python-pillow' 'retroarch' 'libretro-genesis-plus-gx' 'libretro-mgba' 'libretro-nestopia' 'libretro-snes9x' 'libretro-mupen64plus-next' 'libretro-beetle-pce-fast' 'libretro-flycast' 'libretro-beetle-psx-hw' 'libretro-play' 'libretro-yabause' 'libretro-dolphin' 'retroarch-autoconfig-udev-git' 'flatpak' 'xdotool' 'ponymix' 'libretro-picodrive' 'legendary' 'ttf-dejavu' 'wyvern' 'innoextract')
 optdepends=('libretro-mame-git' 'libretro-stella2014-git' 'libretro-opera-git' 'srt-live-server') # compiling cores takes a long time, so make them optional
 source=("https://github.com/gamer-os/steam-buddy/archive/$pkgver.tar.gz")
-md5sums=('79c1b9a173e714c877a873b5837ebf01')
+md5sums=('ffa932e838ad4d85debf88ddf261f2eb')
 
 build() {
         cd "$srcdir/$pkgname-$pkgver"
