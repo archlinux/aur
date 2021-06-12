@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=xemu
 pkgname=$_pkgname-git
-pkgver=0.5.2.r16.g68f7e11978
+pkgver=0.5.4.r1.g9eefab0e4a
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
@@ -12,6 +12,7 @@ depends=('libslirp' 'sdl2')
 makedepends=('git' 'glib2' 'glu' 'gtk3' 'libsamplerate' 'meson' 'python')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+options=('lto')
 source=(
 	'git+https://github.com/Cyan4973/xxHash.git'
 	'git+https://github.com/epezent/implot.git'
@@ -38,6 +39,7 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
+	./scripts/gen-license.py > XEMU_LICENSE
 	git submodule init hw/xbox/nv2a/xxHash tests/fp/berkeley-softfloat-3 tests/fp/berkeley-testfloat-3 ui/imgui ui/implot ui/keycodemapdb
 	git config submodule.hw/xbox/nv2a/xxHash.url ../xxHash
 	git config submodule.tests/fp/berkeley-softfloat-3.url ../berkeley-softfloat-3
@@ -69,4 +71,5 @@ package() {
 		install -Dm644 ui/icons/xemu_${size}x${size}.png "$pkgdir"/usr/share/icons/hicolor/${size}x${size}/apps/$_pkgname.png
 	done
 	install -Dm644 ui/icons/xemu.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg
+	install -Dm644 XEMU_LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE.txt
 }
