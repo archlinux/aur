@@ -7,9 +7,9 @@ pkgdesc="A graphical interface to convert and optimize JPEG, PNG and WebP images
 url="https://github.com/flozz/yoga-image-optimizer"
 depends=('python' 'python-cairo' 'python-gobject' 'yoga')
 makedepends=('python-setuptools' 'python-nox' 'gettext')
-license=('GPL')
+license=('GPL3')
 arch=('any')
-source=("${pkgname}-${pggver}.tar.gz::https://github.com/flozz/yoga-image-optimizer/archive/refs/tags/v1.0.0.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/flozz/yoga-image-optimizer/archive/refs/tags/v1.0.0.tar.gz")
 sha256sums=('a7b801fa322aaa9415f57ce21f8ce605f3a92fbfa1e9976639e9c985c792f91b')
 
 build() {

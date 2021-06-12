@@ -4,7 +4,7 @@ pkgbase = yoga-image-optimizer
 	pkgrel = 4
 	url = https://github.com/flozz/yoga-image-optimizer
 	arch = any
-	license = GPL
+	license = GPL3
 	makedepends = python-setuptools
 	makedepends = python-nox
 	makedepends = gettext
@@ -12,7 +12,7 @@ pkgbase = yoga-image-optimizer
 	depends = python-cairo
 	depends = python-gobject
 	depends = yoga
-	source = yoga-image-optimizer-.tar.gz::https://github.com/flozz/yoga-image-optimizer/archive/refs/tags/v1.0.0.tar.gz
+	source = yoga-image-optimizer-1.0.0.tar.gz::https://github.com/flozz/yoga-image-optimizer/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = a7b801fa322aaa9415f57ce21f8ce605f3a92fbfa1e9976639e9c985c792f91b
 
 pkgname = yoga-image-optimizer
