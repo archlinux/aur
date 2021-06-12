@@ -6,7 +6,7 @@
 # Set the next two variables to ANYTHING that is not null to enable them
 
 # Tweak kernel options prior to a build via nconfig
-_makenconfig=
+_makenconfig=y
 
 # Only compile active modules to VASTLY reduce the number of modules built and
 # the build time.
@@ -63,7 +63,7 @@ _localmodcfg=
 #  39. Generic-x86-64-v4 (GENERIC_CPU4) (NEW)
 #  40. Intel-Native optimizations autodetected by GCC (MNATIVE_INTEL) (NEW)
 #  41. AMD-Native optimizations autodetected by GCC (MNATIVE_AMD) (NEW)
-_subarch=17
+_subarch=36
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
@@ -199,7 +199,7 @@ prepare() {
 
 build() {
   cd linux-${pkgver}
-  make -j40 all
+  make all
 }
 
 _package() {
