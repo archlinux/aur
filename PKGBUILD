@@ -2,14 +2,14 @@
 
 pkgname=tree-sitter-fish-git
 pkgver=r99.ff49d86
-pkgrel=1
+pkgrel=2
 pkgdesc="Fish shell grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/krnik/tree-sitter-fish"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('git' 'tree-sitter')
+makedepends=('git' 'tree-sitter' 'npm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url")
@@ -21,6 +21,11 @@ pkgver() {
 	  git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./' ||
 	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
+}
+
+prepare() {
+	cd "$pkgname"
+	tree-sitter generate
 }
 
 build() {
