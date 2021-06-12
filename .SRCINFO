@@ -1,6 +1,6 @@
 pkgbase = bitwarden-git
 	pkgdesc = Bitwarden Desktop Application (development version)
-	pkgver = 1.24.6.r183.g62baff5d
+	pkgver = 1.24.6.r339.g3b4142bd
 	pkgrel = 1
 	url = https://github.com/bitwarden/desktop
 	arch = x86_64
@@ -24,9 +24,8 @@ pkgbase = bitwarden-git
 	source = bitwarden.desktop
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = c2558674711ce2e559e4c42f89600efd6205e0005763d0fa77d3f98f0f60dd87bf628f2e1111db506af574741cbd7c10615db7d7284f1352aef6c70ad1d03be4
+	sha512sums = f222e442655391d267c0d9fb49265fc6ac0f430068b85ab818f37b83bca968cc811ccd9db6a78917e92500f8cef4cfa2dba7eb8240b106b8cc6f5aeb48a1ed51
 	sha512sums = ac220119aa3590858a78f8159c9a055485b9a2b034c99555a2c1b9b140b5f6b9daa615db38dec4b72223dc37d92c3680aeb83d73d8b2a2f16bcd60bf8d833efa
 	sha512sums = 05b771e72f1925f61b710fb67e5709dbfd63855425d2ef146ca3770b050e78cb3933cffc7afb1ad43a1d87867b2c2486660c79fdfc95b3891befdff26c8520fd
 
 pkgname = bitwarden-git
-
