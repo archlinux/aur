@@ -1,15 +1,15 @@
 # Maintainer: luosoy <249799588@qq.com>
 pkgname=com.qq.office.deepin
-_pkgver=2.3.2.21158deepin0-1
-pkgver=2.3.2.21158
+_deepin=8
+pkgver=3.3.5.22018
 pkgrel=0
 epoch=
-pkgdesc="Deepin Wine TIM 2.0.0"
+pkgdesc="Deepin Wine TIM 3.3.5"
 arch=('i686' 'x86_64')
 url="http://office.qq.com/"
 license=('Proprietary')
 groups=()
-depends=('deepin-wine' 'wqy-microhei')
+depends=('deepin-wine5' 'deepin-wine-helper')
 makedepends=('tar')
 checkdepends=()
 optdepends=()
@@ -20,13 +20,13 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/${pkgname}/${pkgname}_${_pkgver}_i386.deb")
-noextract=("${pkgname}_${_pkgver}_i386.deb")
-md5sums=('564446b1227269cbd30c078176c055b0')
+source=("https://home-store-packages.uniontech.com/home/pool/appstore/c/com.qq.office.deepin/${pkgname}_${pkgver}deepin${_deepin}_i386.deb")
+noextract=("${pkgname}_${pkgver}deepin${_deepin}_i386.deb")
+md5sums=('89fe7ee791e4e7bdb8f920241e85f7e7')
 validpgpkeys=()
 
 prepare() {
-	ar -x ${pkgname}_${_pkgver}_i386.deb
+	ar -x ${pkgname}_${pkgver}deepin${_deepin}_i386.deb
 	mkdir ${pkgname}-${pkgver}
 	tar -xf data.tar.xz --directory="${pkgname}-${pkgver}"	
 }

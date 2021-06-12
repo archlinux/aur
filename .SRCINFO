@@ -1,19 +1,18 @@
 pkgbase = com.qq.office.deepin
-	pkgdesc = Deepin Wine TIM 2.0.0
-	pkgver = 2.3.2.21158
+	pkgdesc = Deepin Wine TIM 3.3.5
+	pkgver = 3.3.5.22018
 	pkgrel = 0
 	url = http://office.qq.com/
 	arch = i686
 	arch = x86_64
 	license = Proprietary
 	makedepends = tar
-	depends = deepin-wine
-	depends = wqy-microhei
+	depends = deepin-wine5
+	depends = deepin-wine-helper
 	conflicts = deepin-wine-tim
 	conflicts = deepin.com.qq.office
-	noextract = com.qq.office.deepin_2.3.2.21158deepin0-1_i386.deb
-	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.qq.office.deepin/com.qq.office.deepin_2.3.2.21158deepin0-1_i386.deb
-	md5sums = 564446b1227269cbd30c078176c055b0
+	noextract = com.qq.office.deepin_3.3.5.22018deepin8_i386.deb
+	source = https://home-store-packages.uniontech.com/home/pool/appstore/c/com.qq.office.deepin/com.qq.office.deepin_3.3.5.22018deepin8_i386.deb
+	md5sums = 89fe7ee791e4e7bdb8f920241e85f7e7
 
 pkgname = com.qq.office.deepin
-
