@@ -1,18 +1,14 @@
 pkgbase = haskell-crypto-random-api
 	pkgdesc = Simple random generators API for cryptography related code
 	pkgver = 0.2.0
-	pkgrel = 2
-	url = http://hackage.haskell.org/package/crypto-random-api
-	install = haskell-crypto-random-api.install
-	arch = i686
+	pkgrel = 3
+	url = https://hackage.haskell.org/package/crypto-random-api
 	arch = x86_64
-	license = custom:BSD3
-	depends = ghc
+	license = BSD
+	makedepends = ghc
+	depends = ghc-libs
 	depends = haskell-entropy
-	options = strip
-	options = staticlibs
-	source = http://hackage.haskell.org/packages/archive/crypto-random-api/0.2.0/crypto-random-api-0.2.0.tar.gz
-	md5sums = 503cdf00ea6ed6d734e4f58b74d6c5d8
+	source = https://hackage.haskell.org/packages/archive/crypto-random-api/0.2.0/crypto-random-api-0.2.0.tar.gz
+	sha512sums = 8f7df05e54e053456e3ebe9394b19beb2a37dfed30cfb5fb673f591415dc6fabe105af51e838fbe73ef078906d94562080ca465b0c6b4e1537bd4a6e066244f7
 
 pkgname = haskell-crypto-random-api
-
