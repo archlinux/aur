@@ -3,23 +3,21 @@
 
 _pkgname=vdirsyncer
 pkgname=${_pkgname}-git
-pkgver=0.17.0a2.r15.g69f4e4f
+pkgver=0.18.0a2.dev44+gb0f08e0
 pkgrel=1
 pkgdesc="Synchronize CalDAV and CardDAV."
-arch=("x86_64")
+arch=('any')
 url="https://vdirsyncer.readthedocs.org/"
 license=("BSD")
-depends=("python-click>=5.0" "python-click-log>=0.2.0" "python-click-threading>=0.2"
-         "python-requests>2.9.0" "python-requests-toolbelt>=0.4.0"
+depends=("python-click-log>=0.2.0"
+         "python-click-threading>=0.2"
+         "python-requests-toolbelt>=0.4.0"
          "python-atomicwrites>=0.1.7"
-         "python-requests-oauthlib"
-         "python-shippai"
-         "rust")
+         "python-requests-oauthlib")
 makedepends=("git"
              "python-setuptools-scm"
              "python-sphinx"
-             "python-sphinx_rtd_theme"
-             "python-milksnake")
+             "python-sphinx_rtd_theme")
 checkdepends=("python-hypothesis>=3.1"
               "python-pytest"
               "python-pytest-localserver"
@@ -31,8 +29,8 @@ conflicts=("vdirsyncer")
 provides=("vdirsyncer=${pkgver}")
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  cd "$srcdir/$_pkgname"
+  python setup.py --version
 }
 
 build() {
