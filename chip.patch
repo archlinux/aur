@@ -1,0 +1,4 @@
+--- sixfireusb-0.6.2/chip.c	2013-02-04 03:18:31.000000000 +0100
++++ sixfireusb-0.6.2/chip.c	2021-05-28 19:12:21.308854791 +0100
+@@ -36,1 +36,0 @@
+-MODULE_SUPPORTED_DEVICE("{{TerraTec, DMX 6Fire USB}}");
