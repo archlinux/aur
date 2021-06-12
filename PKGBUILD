@@ -1,4 +1,5 @@
 # Maintainer: fossdd <fossdd@tutanota.com>
+# Contributor: Advaith Madhukar <advaith.madhukar@gmail.com>
 pkgname=argos-translate-git
 _pkgname=argos-translate
 pkgver=r231.8c4e64e
@@ -8,9 +9,9 @@ arch=(any)
 url="https://github.com/argosopentech/argos-translate"
 provides=('argos-translate' 'argos-translate-cli')
 license=(MIT)
-depends=('python' 'python-pip')
+depends=('python' 'python-pip' 'python-requests' 'python-pyqt5' 'python-stanza' 'python-sentencepiece-git' 'ctranslate2-git')
+optdepends=('python-sphinx' 'python-sphinx_rtd_theme')
 makedepends=('python-setuptools' 'git')
-install="argos-translate-git.install"
 source=('git+https://github.com/argosopentech/argos-translate.git')
 sha256sums=('SKIP')
 
@@ -31,4 +32,3 @@ package() {
   cd ${_pkgname}
   python setup.py install --root="$pkgdir/" --optimize=1
 }
-

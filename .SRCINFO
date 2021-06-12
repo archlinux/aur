@@ -3,17 +3,22 @@ pkgbase = argos-translate-git
 	pkgver = r231.8c4e64e
 	pkgrel = 1
 	url = https://github.com/argosopentech/argos-translate
-	install = argos-translate-git.install
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python
 	depends = python-pip
+	depends = python-requests
+	depends = python-pyqt5
+	depends = python-stanza
+	depends = python-sentencepiece-git
+	depends = ctranslate2-git
+	optdepends = python-sphinx
+	optdepends = python-sphinx_rtd_theme
 	provides = argos-translate
 	provides = argos-translate-cli
 	source = git+https://github.com/argosopentech/argos-translate.git
 	sha256sums = SKIP
 
 pkgname = argos-translate-git
-

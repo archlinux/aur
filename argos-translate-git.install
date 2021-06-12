@@ -1,3 +1,0 @@
-post_install() {
-	pip install ctranslate2 sentencepiece stanza
-}
