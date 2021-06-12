@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir"
-        g++ -O3 -pthread ./Console_sudoku/src/*.cpp -lncursesw -o console_sudoku
+        g++ -O3 -pthread ./$_pkgname/src/*.cpp -lncursesw -o console_sudoku
 }
 
 package() {
