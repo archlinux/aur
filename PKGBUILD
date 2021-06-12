@@ -1,4 +1,4 @@
-# Maintainer Joakim Saario <saario.joakim@gmail.com>
+# Maintainer: Joakim Saario <saario.joakim@gmail.com>
 
 pkgname=python-respx
 pkgver=0.17.0
