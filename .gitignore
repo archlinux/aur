@@ -1,0 +1,9 @@
+# makepkg working dirs
+/src
+/pkg
+
+# source files
+*.zip
+
+# built package
+*.pkg.*
