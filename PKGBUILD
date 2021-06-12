@@ -1,7 +1,7 @@
 # Maintainer: Carlos Galindo < arch -at_ cgj.es >
 
 pkgname=nextcloud-app-music
-pkgver=1.0.3
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Music app for Nextcloud and ownCloud"
 arch=('any')
@@ -9,10 +9,9 @@ url="https://github.com/owncloud/music"
 license=('AGPL3')
 depends=('nextcloud')
 makedepends=('npm' 'perl' 'perl-locale-po')
-optdepends=()
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('a7d0a9b302cfa76eab9fa2e53a3916d1cc5da873c7815b08f0af16072b49bfb0199e8e944ccbeb32c082f2d439bd72a63e3aa841eb859923f032755e65ddc4da')
+sha512sums=('abcef5840f8343cc916efd79d5af788356d4e74d08dd608e65402d4a292ebf20da02b48d512c8333437419c049ed202abc76edc48cfb78a2a080ad2d28cc5cf2')
 
 prepare() {
     cd "music-$pkgver/build"
