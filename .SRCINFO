@@ -1,0 +1,24 @@
+pkgbase = jlcpcassit-wine
+	pkgdesc = Wine 嘉立创 PC 端下单助手
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://www.jlc.com/portal/appDownloadsWithConfig.html
+	install = jlcpcassit-wine.install
+	arch = any
+	license = unknow
+	depends = wine
+	depends = winetricks
+	depends = wqy-zenhei
+	depends = unixodbc
+	depends = lib32-unixodbc
+	optdepends = wine-mono-gecko-version-fix: Fix the version numbers of wine-mono and wine-gecko files to solve the dialog box that pops up when starting wine.
+	provides = jlcpcassit-wine
+	conflicts = jlcpcassit-wine
+	conflicts = jlcpcassit
+	options = !strip
+	source = jlcpcassit-wine_3.4.0.zip::https://download.jlc.com/jlchelper/release/3.4.0/JLCPcAssit_setup_3.4.0.zip
+	source = jlcpcassit-wine.install
+	sha256sums = c6f47819c68b28d8661a36905601f33e2cd5ed686e9f2f5f08fbbb2276d42eb6
+	sha256sums = efdc2e692ae8bb6072fdeec51efbf9cc00adcc6d9e29fbbb511a3fb209a358e8
+
+pkgname = jlcpcassit-wine

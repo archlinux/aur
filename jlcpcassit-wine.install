@@ -1,0 +1,21 @@
+# jlcpcassit-wine.post_install
+
+info() {
+    echo -e "Wine 嘉立创 PC 端下单助手"
+    echo -e "1. 通过这个助手客户端，您可以立即获悉嘉立创最新的公告和优惠信息。"
+    echo -e "2. 您在自助平台下单后，无需再苦苦等待嘉立创工作人员的审核。审单结果，会通过这个下单这个下单助手第一时间通知到您，省时！"
+    echo -e "3. 通过下单助手，您可以快速的登录自助平台下单，省事！"
+    echo -e "4. 发货完成后，助手会迅速通知。QC 完成后，发现缺数，助手会及时反馈"
+}
+post_install() {
+    info
+}
+post_upgrade() {
+    info
+    echo "deleting the jlcpcassit bottle..."
+    find /home -maxdepth 2 -name ".jlcpcassit" -exec rm -rf {} \;
+}
+pre_remove() {
+    echo "deleting the jlcpcassit bottle..."
+    find /home -maxdepth 2 -name ".jlcpcassit" -exec rm -rf {} \;
+}
