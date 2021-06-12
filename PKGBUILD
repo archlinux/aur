@@ -1,8 +1,9 @@
 # Maintainer: Robiot <robiot#5485>
 
 pkgname=rustcat
-pkgver=0.0.4
-pkgrel=1
+_binname=rc
+pkgver=0.0.5
+pkgrel=2
 pkgdesc="Rustcat - Like Netcat but in Rust"
 url="https://github.com/robiot/rustcat"
 license=('MIT')
@@ -25,6 +26,6 @@ package() {
     install -d -m755 ${pkgdir}/usr/bin
     install -d -m755 ${pkgdir}/usr/share/${pkgname}
     cp -r . ${pkgdir}/usr/share/${pkgname}
-    ln -s /usr/share/${pkgname}/${pkgname} ${pkgdir}/usr/bin/rc
+    ln -s /usr/share/${pkgname}/${_binname} ${pkgdir}/usr/bin/${_binname}
 }
 md5sums=('SKIP')
