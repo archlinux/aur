@@ -3,9 +3,9 @@
 # Contributor: Alexander Keller <git@nycroth.com>
 pkgname=sinit
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Suckless init"
-url="http://tools.suckless.org/sinit/"
+url="https://core.suckless.org/sinit/"
 arch=('i686' 'x86_64')
 license=('MIT')
 install=sinit.install

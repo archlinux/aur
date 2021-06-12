@@ -1,8 +1,8 @@
 pkgbase = sinit
 	pkgdesc = Suckless init
 	pkgver = 1.1
-	pkgrel = 2
-	url = http://tools.suckless.org/sinit/
+	pkgrel = 3
+	url = https://core.suckless.org/sinit/
 	install = sinit.install
 	arch = i686
 	arch = x86_64
