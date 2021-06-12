@@ -1,13 +1,13 @@
 pkgbase = zfs-linux-rc
-	pkgver = 2.1.0_rc6_5.12.9.arch1.1
+	pkgver = 2.1.0_rc6_5.12.10.arch1.1
 	pkgrel = 1
 	url = https://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-headers=5.12.9.arch1-1
+	makedepends = linux-headers=5.12.10.arch1-1
 	depends = kmod
 	depends = zfs-utils-rc=2.1.0_rc6
-	depends = linux=5.12.9.arch1-1
+	depends = linux=5.12.10.arch1-1
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-2.1.0-rc6/zfs-2.1.0-rc6.tar.gz
 	source = linux-5.12-compat.patch
 	sha256sums = 2ab8ccb911c27ed301865a2321284cc64a61fce1cb61b315138b90a6a8b72445
