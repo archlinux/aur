@@ -2,7 +2,7 @@
 
 pkgname=('yoga-image-optimizer')
 pkgver='1.0.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical interface to convert and optimize JPEG, PNG and WebP images (based on YOGA)"
 url="https://github.com/flozz/yoga-image-optimizer"
 depends=('python' 'yoga')
@@ -21,4 +21,5 @@ package() {
     depends+=()
     cd "${srcdir}/${pkgname}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    linuxpkg/copy-data.sh "${pkgdir}"/usr/
 }
