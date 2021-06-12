@@ -3,16 +3,17 @@
 
 srcname='cryptokit'
 pkgname="ocaml-${srcname}"
-pkgver='1.13'
-pkgrel=2
+pkgver='1.161'
+pkgrel=1
 pkgdesc='Cryptographic primitives for OCaml'
 arch=('i686' 'x86_64')
 url="http://pauillac.inria.fr/~xleroy/software.html#cryptokit"
 license=('LGPL')
 depends=('ocaml' 'zlib' 'ocaml-zarith') # OCaml as depend, or only makedepends?
-makedepends=('ocaml' 'ocaml-findlib' 'ocamlbuild')
-source=("https://github.com/xavierleroy/cryptokit/archive/release113.tar.gz")
-md5sums=('4d726550381af513ccf56dfc94849c89')
+makedepends=('ocaml' 'ocaml-findlib' 'dune')
+source=("https://github.com/xavierleroy/cryptokit/archive/release1161.tar.gz")
+md5sums=('18591fc3f467bc33681be2cede36b8f1')
+sha256=('2c183579f7edbc18f5b3ec8d60e2dfe566d032988a475c22b6c9d450c89cf84f')
 options=('staticlibs')
 
 releaseshort () {
@@ -20,26 +21,15 @@ releaseshort () {
 }
 
 build() {
-    releaseshort
-    cd "$srcdir/${srcname}-release${RELNUM}"
 
+    tar -xzvf release1161.tar.gz
+    cd cryptokit-release1161
     ./configure
 
-    env DESTDIR="$pkgdir" \
-        OCAMLFIND_DESTDIR="$pkgdir/$(ocamlfind printconf destdir)" \
-        make
+    dune build -p cryptokit
 }
 
-
 package() {
-    releaseshort
-    cd "$srcdir/${srcname}-release${RELNUM}"
-
-    mkdir -p "$pkgdir/$(ocamlfind printconf destdir)"
-    mkdir -p "$pkgdir/$(ocamlfind printconf destdir)/stublibs"
-    #cd "$srcdir/${srcname}-${pkgver}"
-    cd "$srcdir/${srcname}-release${RELNUM}"
-    env DESTDIR="$pkgdir" \
-        OCAMLFIND_DESTDIR="$pkgdir/$(ocamlfind printconf destdir)" \
-        make install
+    cd cryptokit-release1161
+    dune install -p cryptokit
 }
