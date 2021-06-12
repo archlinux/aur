@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=ognibuild
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="Detect and invoke build systems"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('breezy' 'python-buildlog-consultant' 'python-requirements-parser'
 makedepends=('git')
 checkdepends=('python-testtools')
 source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('d8abf33097732ef879b4afed5eefda2d599ca34dd08f6fd3069080da5740ff3e')
+sha256sums=('cc68b574c20676187688a31415a16b3bba7ba2e9ab7e6747255bf17767ab5ac2')
 
 build() {
 	cd "$pkgname-$pkgver"
