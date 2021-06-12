@@ -3,7 +3,7 @@
 pkgname=python-pyls-isort
 _name=${pkgname#python-}
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Isort plugin for python-language-server'
 url='https://github.com/paradoxxxzero/pyls-isort'
 arch=('any')
@@ -13,13 +13,15 @@ makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 
 build() {
-  cd $_name-$pkgver
-  python setup.py build
+	cd $_name-$pkgver
+	python setup.py build
 }
 
 package() {
-  cd $_name-$pkgver
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+	cd $_name-$pkgver
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
 
 md5sums=('9861494cb118c309b06709b2aa1361e7')
