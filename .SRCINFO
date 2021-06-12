@@ -9,6 +9,7 @@ pkgbase = swift-language
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
+	makedepends = patch
 	makedepends = python-six
 	makedepends = rsync
 	makedepends = swig
@@ -66,4 +67,3 @@ pkgbase = swift-language
 	md5sums = SKIP
 
 pkgname = swift-language
-
