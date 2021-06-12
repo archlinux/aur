@@ -5,7 +5,8 @@ pkgbase = river-git
 	url = https://github.com/ifreund/river
 	arch = x86_64
 	license = GPL3
-	depends = zig>=0.8.0
+	makedepends = zig>=0.8.0
+	makedepends = scdoc
 	depends = mesa>=21.1.2
 	depends = wayland
 	depends = wayland-protocols
@@ -14,7 +15,6 @@ pkgbase = river-git
 	depends = libevdev
 	depends = pixman
 	depends = xorg-xwayland
-	depends = scdoc
 	provides = river
 	provides = riverctl
 	provides = rivertile

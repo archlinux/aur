@@ -11,9 +11,10 @@ arch=('x86_64')
 url='https://github.com/ifreund/river'
 license=('GPL3')
 depends=(
-	'zig>=0.8.0' 'mesa>=21.1.2' 'wayland' 'wayland-protocols' 'wlroots'
-	'libxkbcommon' 'libevdev' 'pixman' 'xorg-xwayland' 'scdoc'
+	'mesa>=21.1.2' 'wayland' 'wayland-protocols' 'wlroots'
+	'libxkbcommon' 'libevdev' 'pixman' 'xorg-xwayland'
 )
+makedepends=('zig>=0.8.0' 'scdoc')
 provides=('river' 'riverctl' 'rivertile')
 conflicts=('river')
 source=(
