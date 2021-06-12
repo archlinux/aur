@@ -1,25 +1,30 @@
 # Maintainer: Qingxu <me@linioi.com>
 pkgname=switchhosts-appimage
 pkgver=4.0.2
-pkgrel=6057
+_sub-pkgver=6057
+pkgrel=2
 pkgdesc="An App for hosts management & switching."
 arch=('x86_64')
 url="https://github.com/oldj/SwitchHosts"
 license=('Apache')
+conflicts=(
+    'switchhosts-bin'
+    'switchhosts'
+)
 options=(!strip)
 depends=("fuse2")
-source=("SwitchHosts.AppImage::https://github.com/oldj/SwitchHosts/releases/download/v${pkgver}/SwitchHosts_linux_${pkgver}.${pkgrel}.AppImage")
+source=("SwitchHosts.AppImage::https://github.com/oldj/SwitchHosts/releases/download/v${pkgver}/SwitchHosts_linux_${pkgver}.${_sub-pkgver}.AppImage")
 md5sums=("e8828538fb28f95ef3df8f630ef50f70")
 
 prepare() {
     chmod +x "SwitchHosts.AppImage"
-	./"SwitchHosts.AppImage" --appimage-extract "usr/share/icons/hicolor/*/apps/sswitchhosts.png" > /dev/null 2>&1
+    ./"SwitchHosts.AppImage" --appimage-extract "usr/share/icons/hicolor/*/apps/sswitchhosts.png" > /dev/null 2>&1
     ./"SwitchHosts.AppImage" --appimage-extract switchhosts.desktop > /dev/null 2>&1
-	chmod -R a-x+rX squashfs-root/usr
 }
 
 build() {
     sed -i -E "s|Exec=AppRun|Exec=/opt/appimages/SwitchHosts.AppImage|" squashfs-root/switchhosts.desktop
+    chmod -R a-x+rX squashfs-root/usr
 }
 package() {
     # Install AppImage
