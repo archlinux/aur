@@ -1,7 +1,7 @@
 pkgbase = linux-g14
 	pkgdesc = Linux
 	pkgver = 5.12.10.arch1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/
 	arch = x86_64
 	license = GPL2
@@ -21,7 +21,7 @@ pkgbase = linux-g14
 	source = choose-gcc-optimization.sh
 	source = sys-kernel_arch-sources-g14_files_0001-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch
 	source = sys-kernel_arch-sources-g14_files-0003-flow-x13-sound.patch
-	source = sys-kernel_arch-sources-g14_files-0004-5.8+--more-uarches-for-kernel.patch::https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/more-uarches-for-kernel-5.8%2B.patch
+	source = sys-kernel_arch-sources-g14_files-0004-5.8+--more-uarches-for-kernel.patch::https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-5.8+.patch
 	source = sys-kernel_arch-sources-g14_files-0005-lru-multi-generational.patch
 	source = https://gitlab.com/asus-linux/fedora-kernel/-/archive/19ba47dedb21773e0338321928a8580e214409fb/fedora-kernel-19ba47dedb21773e0338321928a8580e214409fb.zip
 	source = sys-kernel_arch-sources-g14_files-0012-acpi-1of2-turn-off-unused.patch::https://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git/patch/?id=4b9ee772eaa82188b0eb8e05bdd1707c2a992004
