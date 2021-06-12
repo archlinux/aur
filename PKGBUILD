@@ -70,6 +70,9 @@ license=(GPL2)
 makedepends=(
   xmlto kmod inetutils bc libelf cpio
 )
+if [ "${_compiler}" = "clang" ]; then
+  makedepends+=(clang llvm)
+fi
 options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 
@@ -128,9 +131,9 @@ prepare() {
 
   # Applying configuration
   cp -vf CONFIGS/xanmod/${_compiler}/config .config
-
-  # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
-  scripts/config --enable CONFIG_STACK_VALIDATION
+  # enable LTO_CLANG_THIN
+  if [ "${_compiler}" = "clang" ]; then
+    scripts/config --disable LTO_CLANG_FULL
 
   # Anbox compatibility
   msg2 "Enabling ashmem and binder modules"
@@ -139,6 +142,12 @@ prepare() {
   scripts/config --enable CONFIG_ANDROID_BINDER_IPC
   scripts/config --enable CONFIG_ANDROID_BINDERFS
   scripts/config --set-str CONFIG_ANDROID_BINDER_DEVICES "binder,hwbinder,vndbinder"
+    scripts/config --enable LTO_CLANG_THIN
+    _LLVM=1
+  fi
+
+  # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
+  scripts/config --enable CONFIG_STACK_VALIDATION
 
   # Enable IKCONFIG following Arch's philosophy
   scripts/config --enable CONFIG_IKCONFIG \
@@ -146,9 +155,11 @@ prepare() {
 
   # User set. See at the top of this file
   if [ "$use_tracers" = "n" ]; then
-    msg2 "Disabling FUNCTION_TRACER/GRAPH_TRACER..."
-    scripts/config --disable CONFIG_FUNCTION_TRACER \
-                   --disable CONFIG_STACK_TRACER
+    msg2 "Disabling FUNCTION_TRACER/GRAPH_TRACER only if we are not compiling with clang..."
+    if [ "${_compiler}" = "gcc" ]; then
+      scripts/config --disable CONFIG_FUNCTION_TRACER \
+                     --disable CONFIG_STACK_TRACER
+    fi
   fi
 
   if [ "$use_numa" = "n" ]; then
@@ -164,7 +175,7 @@ prepare() {
   # If we detect partial file with scripts/config commands, we execute as a script
   # If not, it's a full config, will be replaced
   for _myconfig in "${SRCDEST}/myconfig" "${HOME}/.config/linux-xanmod-anbox/myconfig" "${XDG_CONFIG_HOME}/linux-xanmod-anbox/myconfig" ; do
-    if [ -f "${_myconfig}" ]; then
+    if [ -f "${_myconfig}" ] && [ "$(wc -l <"${_myconfig}")" -gt "0" ]; then
       if grep -q 'scripts/config' "${_myconfig}"; then
         # myconfig is a partial file. Executing as a script
         msg2 "Applying myconfig..."
@@ -179,24 +190,24 @@ prepare() {
     fi
   done
 
-  make olddefconfig
-
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
   if [ "$_localmodcfg" = "y" ]; then
     if [ -f $HOME/.config/modprobed.db ]; then
       msg2 "Running Steven Rostedt's make localmodconfig now"
-      make LSMOD=$HOME/.config/modprobed.db localmodconfig
+      make LLVM=$_LLVM LLVM_IAS=$_LLVM LSMOD=$HOME/.config/modprobed.db localmodconfig
     else
       msg2 "No modprobed.db data found"
       exit
     fi
   fi
 
+  make LLVM=$_LLVM LLVM_IAS=$_LLVM olddefconfig
+
   make -s kernelrelease > version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
 
-  [[ -z "$_makenconfig" ]] || make nconfig
+  [[ -z "$_makenconfig" ]] || make LLVM=$_LLVM LLVM_IAS=$_LLVM nconfig
 
   # save configuration for later reuse
   cat .config > "${SRCDEST}/config.last"
@@ -204,11 +215,7 @@ prepare() {
 
 build() {
   cd linux-${_major}
-  if [ "${_compiler}" = "clang" ]; then
-    make LLVM=1 LLVM_IAS=1 all
-  else
-    make all
-  fi
+  make LLVM=$_LLVM LLVM_IAS=$_LLVM all
 }
 
 _package() {
