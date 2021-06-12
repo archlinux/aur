@@ -1,0 +1,21 @@
+pkgbase = com.jiakaobaodian.deepin
+	pkgdesc = Jia Kao Bao Dian (驾考宝典) Client on Deepin Wine
+	pkgver = 8.2.5
+	pkgrel = 1
+	url = https://www.jiakaobaodian.com/
+	install = wineapps.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = deepin-wine6-stable>=6.0.0.9
+	depends = deepin-wine-helper>=5.1.23
+	depends = p7zip
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	optdepends = ttf-ms-fonts: Microsoft Core fonts
+	optdepends = noto-fonts-cjk: Google Noto CJK fonts
+	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.jiakaobaodian.deepin/com.jiakaobaodian.deepin_8.2.5deepin1_i386.deb
+	sha512sums = 236282cd681d64d177eb12a0120543fcc1c335eef2677f1025a2715fa088c6fade8c2e2c0e7682e4bb1f08b4567dd6742a9a72158450a2fac89b26bbf9c50e4a
+
+pkgname = com.jiakaobaodian.deepin
