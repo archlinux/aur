@@ -4,7 +4,7 @@
 
 pkgname=libuhd3
 pkgver=3.15.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Universal Software Radio Peripheral (USRP) userspace driver"
 arch=('x86_64')
 url="https://files.ettus.com/manual/"
@@ -18,10 +18,12 @@ conflicts=('libuhd>3.15.0.0' 'libuhd-firmware>3.15.0.0')
 
 source=("libuhd-$pkgver.tar.gz::https://github.com/EttusResearch/uhd/archive/v$pkgver.tar.gz"
         "boost-1.73.patch"
-        "gcc-11.1.patch")
+        "gcc-11.1.patch"
+        "boost-1.76.patch")
 sha256sums=('eed4a77d75faafff56be78985950039f8d9d1eb9fcbd58b8862e481dd49825cd'
             '10c2f221dee97418f92d10606f9b9fea1436e3bd0d7120e7b24fc90a95a07fc1'
-            'ccac8a77ffe3c9421076aa3c94ffc1aa92bb4f60de4eec3aec6431446e01db9e')
+            'ccac8a77ffe3c9421076aa3c94ffc1aa92bb4f60de4eec3aec6431446e01db9e'
+            '84365baed4645a7cd0be1f97b896e3e0274eb1cbcfece1afbe9e41555fa1881c')
 
 prepare() {
   cd "$srcdir/uhd-$pkgver"
@@ -33,6 +35,10 @@ prepare() {
   # header dependency changes since GCC 11.1
   # See https://gcc.gnu.org/gcc-11/porting_to.html
   patch --forward --strip=1 --input "$srcdir/gcc-11.1.patch"
+  
+  # Fix missing/misplaced include for boost::math::sign
+  # as emerge since Boost 1.76
+  patch --forward --strip=1 --input "$srcdir/boost-1.76.patch"
 
   cd "$srcdir/uhd-$pkgver/host"
   mkdir build

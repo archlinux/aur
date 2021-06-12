@@ -1,0 +1,46 @@
+Only in a/host: build
+diff -aur a/host/lib/usrp/cores/rx_dsp_core_3000.cpp b/host/lib/usrp/cores/rx_dsp_core_3000.cpp
+--- a/host/lib/usrp/cores/rx_dsp_core_3000.cpp	2021-06-12 07:17:40.663375708 +0200
++++ b/host/lib/usrp/cores/rx_dsp_core_3000.cpp	2021-06-12 07:06:01.870025559 +0200
+@@ -15,6 +15,7 @@
+ #include <boost/assign/list_of.hpp>
+ #include <boost/bind.hpp>
+ #include <boost/math/special_functions/round.hpp>
++#include <boost/math/special_functions/sign.hpp>
+ #include <boost/thread/thread.hpp> //thread sleep
+ #include <algorithm>
+ #include <cmath>
+diff -aur a/host/lib/usrp/cores/rx_frontend_core_3000.cpp b/host/lib/usrp/cores/rx_frontend_core_3000.cpp
+--- a/host/lib/usrp/cores/rx_frontend_core_3000.cpp	2020-01-01 05:21:49.000000000 +0100
++++ b/host/lib/usrp/cores/rx_frontend_core_3000.cpp	2021-06-12 07:04:52.246690548 +0200
+@@ -13,6 +13,7 @@
+ #include <boost/assign/list_of.hpp>
+ #include <boost/bind.hpp>
+ #include <boost/math/special_functions/round.hpp>
++#include <boost/math/special_functions/sign.hpp>
+ 
+ using namespace uhd;
+ 
+diff -aur a/host/lib/usrp/usrp2/usrp2_impl.cpp b/host/lib/usrp/usrp2/usrp2_impl.cpp
+--- a/host/lib/usrp/usrp2/usrp2_impl.cpp	2020-01-01 05:21:49.000000000 +0100
++++ b/host/lib/usrp/usrp2/usrp2_impl.cpp	2021-06-11 21:09:09.120100971 +0200
+@@ -835,6 +835,9 @@
+     }
+ }
+ 
++#include <boost/math/special_functions/round.hpp>
++#include <boost/math/special_functions/sign.hpp>
++
+ double usrp2_impl::set_tx_dsp_freq(
+     const std::string &mb,
+     const double freq_
+@@ -878,9 +881,6 @@
+     );
+ }
+ 
+-#include <boost/math/special_functions/round.hpp>
+-#include <boost/math/special_functions/sign.hpp>
+-
+ void usrp2_impl::update_clock_source(const std::string &mb, const std::string &source){
+     //NOTICE: U2_REG_MISC_CTRL_CLOCK is on the wb clock, and cannot be set from fifo_ctrl
+     //clock source ref 10mhz
