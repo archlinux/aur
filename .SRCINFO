@@ -1,0 +1,24 @@
+pkgbase = stc-isp-bin
+	pkgdesc = STC-ISP 下载编程烧录软件
+	pkgver = v6.88F
+	pkgrel = 1
+	url = http://www.stcmcudata.com
+	install = stc-isp-bin.install
+	arch = any
+	license = unknow
+	makedepends = unarchiver
+	depends = wine
+	depends = wqy-zenhei
+	depends = winetricks
+	optdepends = wine-mono-gecko-version-fix: Fix the version numbers of wine-mono and wine-gecko files to solve the dialog box that pops up when starting wine.
+	provides = stc-isp-bin
+	conflicts = stc-isp-bin
+	conflicts = stc-isp
+	noextract = stc-isp-v6.88F.zip
+	options = !strip
+	source = stc-isp-v6.88F.zip::http://www.stcmcudata.com/STCISP/stc-isp-15xx-v6.88F.zip
+	source = stc-isp-bin.install
+	sha256sums = f5a0499c37048ec1311048b61b0c17c883226133d56708e931496e06dd706e34
+	sha256sums = b2a93211b74f6e23a9c4dd508c65bf374c0a03c11174092f6ccec3e9194e47a6
+
+pkgname = stc-isp-bin
