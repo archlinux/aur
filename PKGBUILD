@@ -1,9 +1,8 @@
 # Maintainer: Yauheni Kirylau <actionless dot loveless AT gmail.com>
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 
-_pkgname=nohang
-pkgname=${_pkgname}-git
-pkgver=0.1.r693.gbcd2899
+pkgname=nohang-git
+pkgver=0.2.0.r8.gb84cf12
 pkgrel=1
 pkgdesc="A sophisticated low memory handler"
 arch=('any')
@@ -15,6 +14,7 @@ source=(
 md5sums=('SKIP')
 depends=(
 	'python'
+	'systemd'
 )
 optdepends=(
 	'libnotify: to show GUI notifications'
@@ -24,7 +24,8 @@ optdepends=(
 makedepends=(
 	'git'
 )
-conflicts=("${_pkgname}")
+provides=('nohang')
+conflicts=('nohang')
 backup=(
 	'etc/nohang/nohang.conf'
 	'etc/nohang/nohang-desktop.conf'
