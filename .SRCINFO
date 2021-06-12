@@ -1,8 +1,8 @@
 pkgbase = hilbish
 	pkgdesc = A shell written in Go and extended with Lua
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
-	url = https://github.com/hilbis/hilbish
+	url = https://github.com/rosettea/hilbish
 	install = hilbish.install
 	arch = x86_64
 	arch = aarch64
@@ -11,8 +11,7 @@ pkgbase = hilbish
 	depends = readline
 	depends = lua51-lunacolors-git
 	optdepends = lua
-	source = hilbish-0.4.0.tar.gz::https://github.com/hilbis/hilbish/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = 5c6e9bc93df00c8225f34dfa51c5dc4f52f526d23b34785854fd6019a3e7d77e
+	source = hilbish-0.5.0.tar.gz::https://github.com/rosettea/hilbish/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 4c0a5608445ea5fc5ee1c7db8825ea7e19e6363624d94e84523a11141f127ba3
 
 pkgname = hilbish
-
