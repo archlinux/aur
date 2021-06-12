@@ -1,9 +1,9 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
-# Maintainer: Edgar Luque <git@edgarluque.com> 
+# Maintainer: Edgar Luque <git@edgarluque.com>
 
 pkgname=ddnet
 pkgver=15.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A Teeworlds modification with a unique cooperative gameplay."
 arch=('x86_64')
 url="https://ddnet.tw"
@@ -25,8 +25,7 @@ sha256sums=('a2e8c6e9780700c3c2967c19758ff8418f088eaab60a9e5d2bd8e4b323167ff3'
 _enable_mysql=0
 
 if [ $_enable_mysql -eq 1 ]; then
-    depends+=('mysql-connector-c++')
-    makedepends+=('boost')
+    depends+=('mariadb')
     _mysql_opt="-DMYSQL=ON"
 fi
 
@@ -51,10 +50,10 @@ check() {
 
 package() {
     DESTDIR="$pkgdir" ninja install -C build
-    install -vDm644 DDNet-$pkgver/license.txt     "$pkgdir/usr/share/licenses/$pkgname/license.txt"
-    install -vDm644 ddnet-server.service          "$pkgdir/usr/lib/systemd/system/ddnet-server.service"
-    install -vDm644 "$srcdir/ddnet-sysusers.conf" "$pkgdir/usr/lib/sysusers.d/ddnet.conf"
-    install -vDm644 "$srcdir/ddnet-tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/ddnet.conf"
+    install -vDm644 DDNet-$pkgver/license.txt      "$pkgdir/usr/share/licenses/$pkgname/license.txt"
+    install -vDm644 "$srcdir/ddnet-server.service" "$pkgdir/usr/lib/systemd/system/ddnet-server.service"
+    install -vDm644 "$srcdir/ddnet-sysusers.conf"  "$pkgdir/usr/lib/sysusers.d/ddnet.conf"
+    install -vDm644 "$srcdir/ddnet-tmpfiles.conf"  "$pkgdir/usr/lib/tmpfiles.d/ddnet.conf"
     sed -i "$pkgdir/usr/share/ddnet/data/autoexec_server.cfg" \
         -e '/sv_test_cmds/s/1/0/' \
         -e 's/myServerconfig.cfg/autoexec_server_maps.cfg/'
