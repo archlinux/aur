@@ -1,7 +1,9 @@
 # Maintainer: Kat Witten <turtlewit@live.com>
+# Maintainer: Ong Yong Xin <ongyongxin2020+github AT gmail DOT com>
+
 pkgname=piskel
 pkgver=0.15.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A free online editor for animated sprites & pixel art."
 arch=('x86_64')
 url="https://github.com/piskelapp/piskel"
@@ -16,7 +18,9 @@ md5sums=('d36081154a7db582016a5ccad8409425'
 
 build() {
 	cd "${pkgname}-${pkgver}"
+	sed -i 's/"grunt":[^,]*/"grunt": "^1.0.0"/' package.json
 	npm install
+	sed -i 's/os.tmpDir/os.tmpdir/g' "node_modules/temp/lib/temp.js"
 	grunt --force desktop
 }
 
