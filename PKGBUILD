@@ -16,8 +16,8 @@ _boost_arch=x86
 _boost_address_model=32
 
 pkgname=android-$_pkg_arch-$_pkgname
-pkgver=1.75.0
-_boostver=${pkgver//./_}
+pkgver=1.76.0
+_srcname=boost_${pkgver//./_}
 pkgrel=1
 url='https://www.boost.org/'
 arch=('any')
@@ -28,13 +28,18 @@ options=(!buildflags staticlibs !strip !emptydirs)
 makedepends=('bzip2' 'zlib' 'android-ndk' 'android-sdk')
 conflicts=("android-$_pkgname-$_android_arch")
 replaces=("android-$_pkgname-$_android_arch")
-source=(https://dl.bintray.com/boostorg/release/${pkgver}/source/boost_${_boostver}.tar.bz2
+source=(https://boostorg.jfrog.io/artifactory/main/release/$pkgver/source/$_srcname.tar.gz
+        $_pkgname-ublas-c++20-iterator.patch::https://github.com/boostorg/ublas/commit/a31e5cffa85f.patch
         no-versioned-shlibs.patch)
-sha256sums=('953db31e016db7bb207f11432bef7df100516eeb746843fa0486a222e3fd49cb'
+sha256sums=('7bd7ddceec1a1dfdcbdb3e609b60d01739c38390a5f956385a12f3122049f0ca'
+            'aa38addb40d5f44b4a8472029b475e7e6aef1c460509eb7d8edf03491dc1b5ee'
             'd82d0f15064812dcabb3456a7bcb1db0e0f6145980e4728e638372e0fd35af23')
 
 prepare() {
-  cd ${_pkgname}_${_boostver}
+  cd ${_srcname}
+  # https://github.com/boostorg/ublas/pull/97
+  patch -Np2 -i ../$_pkgname-ublas-c++20-iterator.patch
+
   patch -i ../no-versioned-shlibs.patch
 }
 
@@ -42,14 +47,10 @@ build() {
   local _stagedir="${srcdir}/stagedir"
   local jobs="$(sed -e 's/.*\(-j *[0-9]\+\).*/\1/' <<< ${MAKEFLAGS})"
   local target_flags=" \
-    --target=$_android_target \
-    --gcc-toolchain=$_android_ndk_path/toolchains/$_andoird_toolchain_dir-4.9/prebuilt/linux-x86_64 \
-    --sysroot=$_android_ndk_path/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr"
+    --target=$_android_target"
   local common_flags=" \
     $target_flags \
-    -isystem $_android_ndk_path/sources/android/support/include \
-    -isystem $_android_ndk_path/sources/cxx-stl/llvm-libc++/include \
-    -isystem $_android_ndk_path/sources/cxx-stl/llvm-libc++abi/include \
+    -isystem $_android_ndk_path/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/c++/v1 \
     -isystem $_android_ndk_path/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include \
     -isystem $_android_ndk_path/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/$_android_toolchain \
     -fexceptions \
@@ -62,10 +63,9 @@ build() {
     $target_flags \
     -fexceptions \
     $_android_ndk_path/sources/cxx-stl/llvm-libc++/libs/$_android_arch/libc++_shared.so \
-    -B$_android_ndk_path/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/$_android_toolchain/$_android_platform \
     -nostdlib++"
 
-  cd ${_pkgname}_${_boostver}
+  cd ${_srcname}
 
   ./bootstrap.sh --with-toolset=gcc
 
@@ -144,7 +144,7 @@ package() {
   install -dm755 "${pkgdir}"$_android_prefix
   cp -a "${_stagedir}"/lib "${pkgdir}"$_android_prefix
 
-  install -Dm644 "${srcdir}/"${_pkgname}_${_boostver}/LICENSE_1_0.txt \
+  install -Dm644 "${srcdir}/"${_srcname}/LICENSE_1_0.txt \
       "${pkgdir}"$_android_prefix/share/licenses/boost/LICENSE_1_0.txt
 
   local strip=$_android_ndk_path/toolchains/$_android_toolchain-4.9/prebuilt/linux-x86_64/bin/$_android_toolchain-strip
