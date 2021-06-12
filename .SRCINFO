@@ -1,13 +1,12 @@
 pkgbase = ttf-sil-abyssinica
 	pkgdesc = Ethiopic script font following calligraphic traditions
-	pkgver = 2.000
-	pkgrel = 5
+	pkgver = 2.100
+	pkgrel = 1
 	url = https://software.sil.org/abyssinica
 	arch = any
 	license = OFL
 	conflicts = ttf-sil-fonts<=6
-	source = https://software.sil.org/downloads/r/abyssinica/AbyssinicaSIL-2.000.zip
-	sha256sums = 274204a53b30f64cca662d78c7199e3c0325ea95ad4109886b47af734c92d0f9
+	source = https://software.sil.org/downloads/r/abyssinica/AbyssinicaSIL-2.100.zip
+	sha256sums = 1a1fc8e82f0c0f2e824f42bff05c1f4a0356330a89dc7ba798c1a20bc3e333e0
 
 pkgname = ttf-sil-abyssinica
-

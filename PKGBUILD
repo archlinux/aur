@@ -3,15 +3,15 @@
 _pkgname=abyssinica
 pkgname=ttf-sil-$_pkgname
 _fname=${_pkgname^}SIL
-pkgver=2.000
-pkgrel=5
+pkgver=2.100
+pkgrel=1
 pkgdesc='Ethiopic script font following calligraphic traditions'
 arch=('any')
 url="https://software.sil.org/$_pkgname"
 license=('OFL')
 conflicts=('ttf-sil-fonts<=6')
 source=("https://software.sil.org/downloads/r/$_pkgname/$_fname-$pkgver.zip")
-sha256sums=('274204a53b30f64cca662d78c7199e3c0325ea95ad4109886b47af734c92d0f9')
+sha256sums=('1a1fc8e82f0c0f2e824f42bff05c1f4a0356330a89dc7ba798c1a20bc3e333e0')
 
 package() {
     cd "$_fname-$pkgver"
