@@ -1,0 +1,15 @@
+info() {
+    echo -e "STC-ISP 下载编程烧录软件"
+}
+post_install() {
+    info
+}
+post_upgrade() {
+    echo "deleting the stc-isp bottle..."
+    find /home -maxdepth 2 -name ".stc-isp" -exec rm -rf {} \;
+    info
+}
+pre_remove() {
+    echo "deleting the stc-isp bottle..."
+    find /home -maxdepth 2 -name ".stc-isp" -exec rm -rf {} \;
+}
