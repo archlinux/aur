@@ -5,13 +5,13 @@
 # Try to make a clean WINEPREFIX, such as by doing “rm -rf ~/.wine”
 
 pkgname=wine-stable
-pkgver=6.0
+pkgver=6.0.1
 pkgrel=1
 
 source=(https://dl.winehq.org/wine/source/6.0/wine-$pkgver.tar.xz{,.sign}
         30-win32-aliases.conf
         wine-binfmt.conf)
-b2sums=('baf0eee582190ede8d210390b51d330c1879cb442100bc2e957052898fbd84bcc047a885065f9bf96ac4f072f92eee44f0e1c3baddc68937286e7cc6f976bd4e'
+b2sums=('2075e59024e75594e0be0851db33981ebfcc57477bb9864055a938db0e39b8480f3c501b1d1fc39a9eee52303ad71ef71d24a0fb546697eecf3bb098f13317f1'
         'SKIP'
         '45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b'
         'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588')
