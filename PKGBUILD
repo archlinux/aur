@@ -10,7 +10,7 @@ depends=('python' 'gtk3' 'libhandy' 'python-gobject' 'python-icalendar' 'libnoti
 makedepends=('meson' 'ninja' 'gobject-introspection' 'git')
 provides=(confy)
 source=("https://git.sr.ht/~fabrixxm/confy/archive/$pkgver.tar.gz")
-md5sums=('7971ee5f29817cb09de6e96bb5232f8e')
+md5sums=('91890fecf4509a2d0a28bdda0831a9fe')
 
 
 build() {
