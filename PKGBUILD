@@ -3,7 +3,7 @@
 
 pkgname=pace
 pkgver=1.4.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple pacman.conf editor'
 arch=('x86_64')
 license=('GPL3')
