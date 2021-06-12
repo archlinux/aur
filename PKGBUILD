@@ -1,13 +1,13 @@
 # Maintainer: Tilman Blumenbach <tilman@ax86.net>
 pkgname=tsocks-tools
 pkgver='1.8beta5'
-pkgrel=3
+pkgrel=4
 pkgdesc='Misc. tools from the tsocks package'
 arch=('i686' 'x86_64')
 url="http://tsocks.sf.net"
 license=('GPL')
 depends=('glibc')
-source=("http://downloads.sf.net/tsocks/tsocks-${pkgver}.tar.gz"
+source=("https://downloads.sf.net/tsocks/tsocks-${pkgver}.tar.gz"
         prognames.patch)
 
 prepare() {
@@ -32,5 +32,5 @@ package() {
     install inspectsocks "${pkgdir}/usr/bin"
 }
 
-md5sums=('51caefd77e5d440d0bbd6443db4fc0f8'
-         '31f3cef79c70578b3dc8d1d8776154c2')
+sha256sums=('849d7ef5af80d03e76cc05ed9fb8fa2bcc2b724b51ebfd1b6be11c7863f5b347'
+            '7d3898529d99ca59d06e44f486e56921532443a8daf0f3da4e4aad63b9a46dcb')
