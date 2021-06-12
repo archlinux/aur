@@ -1,10 +1,10 @@
 # Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
 pkgname=doggo-git
 _pkgname=doggo
-pkgver=r82.45dd2e2
+pkgver=r92.e5acf12
 pkgrel=1
 pkgdesc="Command-line DNS Client for Humans. Written in Golang" 
-arch=('x86_64')
+arch=('any')
 url="https://github.com/mr-karan/doggo"
 license=('GPL3')
 makedepends=('git' 'go')
