@@ -22,7 +22,7 @@ license=('custom')
 # Deps from bitwig-studio package
 #depends=('jack' 'xdg-utils' 'zenity' 'xcb-util-wm' 'libbsd')
 # Deps as suggested by namcap...
-depends=('gtk3' 'xcb-util' 'xcb-util-wm')
+depends=('gtk3' 'lib32-libx11' 'lib32-libxkbcommon' 'libxkbcommon-x11' 'xcb-util' 'xcb-util-wm')
 optdepends=('alsa-lib' 'jack' 'oss' 'ffmpeg: MP3 support')
 provides=('bitwig-studio')
 options=(!strip)
