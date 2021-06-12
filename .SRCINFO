@@ -1,0 +1,17 @@
+pkgbase = tuidoku-git
+	pkgdesc = Play, solve and generate sudoku puzzles in the console
+	pkgver = r146.df126ee
+	pkgrel = 1
+	url = https://github.com/flyingpeakock/tuidoku
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	depends = ncurses
+	depends = git
+	provides = tuidoku
+	replaces = console_sudoku
+	noextract = tuidoku.git
+	source = git+https://github.com/flyingpeakock/tuidoku.git
+	md5sums = SKIP
+
+pkgname = tuidoku-git
