@@ -1,6 +1,6 @@
 pkgbase = python-embit-git
 	pkgdesc = A minimal bitcoin library for MicroPython and Python3 with a focus on embedded systems.
-	pkgver = r76.6047319
+	pkgver = r101.249bd2a
 	pkgrel = 1
 	url = https://github.com/diybitcoinhardware/embit
 	arch = any
@@ -13,4 +13,3 @@ pkgbase = python-embit-git
 	sha256sums = SKIP
 
 pkgname = python-embit-git
-
