@@ -1,8 +1,8 @@
 pkgbase = hilbish-git
 	pkgdesc = A shell written in Go and extended with Lua
-	pkgver = 0.4.0.r21.gda6a4aa
+	pkgver = 0.5.0.r0.g36ea20b
 	pkgrel = 2
-	url = https://github.com/hilbis/hilbish
+	url = https://github.com/rosettea/hilbish
 	install = hilbish-git.install
 	arch = x86_64
 	arch = aarch64
@@ -14,8 +14,7 @@ pkgbase = hilbish-git
 	optdepends = lua
 	provides = hilbish
 	conflicts = hilbish
-	source = hilbish-git::git+https://github.com/hilbis/hilbish
+	source = hilbish-git::git+https://github.com/rosettea/hilbish
 	sha256sums = SKIP
 
 pkgname = hilbish-git
-
