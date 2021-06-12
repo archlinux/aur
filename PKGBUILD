@@ -1,7 +1,7 @@
 # Maintainer: David Li <davidtianli@gmail.com>
 pkgname=pax-mc-bin
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The MC modpack manager for professionals. Binary version"
 arch=('x86_64')
 url="https://github.com/froehlicha/pax"
@@ -12,7 +12,7 @@ conflicts=()
 replaces=()
 changelog=
 source=("pax-${pkgver}::https://github.com/froehlichA/pax/releases/download/v${pkgver}/pax")
-sha256sums=('13a9a6f67f1934c106184bc9e154e19f8711e679863faad0ae45939c3fe7e7a4')
+sha256sums=('79e2c05744e075dbdaa8830b3a8afa2458a3211af6ac57ca87842dd39c722059')
 
 package() {
     install -d -m755 "${pkgdir}/usr/bin"
