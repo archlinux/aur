@@ -1,0 +1,21 @@
+pkgbase = fossil-gemini-git
+	pkgdesc = A simple GTK Gopher/Gemini client written in Vala
+	pkgver = v1.2.r0.g582f6c8
+	pkgrel = 1
+	url = https://github.com/koyuspace/fossil
+	arch = x86_64
+	license = MIT
+	makedepends = gtk3
+	makedepends = vala
+	makedepends = meson
+	makedepends = cmake
+	makedepends = python
+	makedepends = json-glib
+	makedepends = gnutls
+	makedepends = gettext
+	provides = fossil
+	conflicts = fossil
+	source = git+https://github.com/koyuspace/fossil.git
+	sha256sums = SKIP
+
+pkgname = fossil-gemini-git
