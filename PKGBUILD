@@ -1,4 +1,4 @@
-# Maintainer: d0lph1n <scrouthtv [at] gmail [dot] com>
+# Maintainer: scrouthtv <scrouthtv 0x40 gmail 0x2e com>
 # Contributor: eolianoe <eolianoe [at] gmail [DoT] com>
 
 pkgname=findent
