@@ -3,7 +3,7 @@
 _hkgname=ghcid
 pkgname=ghcid
 pkgver=0.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc="GHCi based bare bones IDE"
 arch=("x86_64")
 url="https://github.com/ndmitchell/ghcid"
