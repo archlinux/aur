@@ -1,0 +1,19 @@
+pkgbase = spacenet-git
+	pkgdesc = spacenet is_a non-linear retro sci-fi adventure.
+	pkgver = r98.a115018
+	pkgrel = 1
+	url = https://sonejostudios.github.io/SpaceNET/
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = renpy-sdk
+	source = spacenet-git::git+https://github.com/sonejostudios/SpaceNET.git
+	source = spacenet
+	source = spacenet.desktop
+	source = spacenet.png
+	sha256sums = SKIP
+	sha256sums = 34ca6100f834cf29756eaa0890d3149d052a80d560dd90fda8573f0a44fb38cd
+	sha256sums = 3893354e76daa10ed537089230bfd5e82f75ff09654b11ccbd70b5d5028bb694
+	sha256sums = 1b62266a4cfef3dce256744c694aca60b652a6cd08bdf956c182332fb2857aea
+
+pkgname = spacenet-git

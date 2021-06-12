@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=spacenet
+Comment=spacenet is a non-linear retro sci-fi adventure.
+Icon=spacenet.png
+Exec=/usr/bin/spacenet
+Terminal=false
+Categories=Application;Game;
