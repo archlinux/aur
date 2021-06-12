@@ -1,13 +1,12 @@
 # Maintainer: Popolon <popolon@popolon.org>
 
-pkgbase='yoga'
 pkgname=('yoga')
 _module='yoga'
 pkgver='1.0.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Yummy Optimizer for Gorgeous Assets"
 url="https://github.com/wanadev/yoga"
-depends=(python3 python-cffi python-pillow python-pycparser python-unidecode python-pyguetzli)
+depends=(python3 python-cffi python-pillow python-pycparser python-unidecode python-pyguetzli python--zopflipy)
 makedepends=('python-setuptools')
 license=('Apache')
 arch=('any')
