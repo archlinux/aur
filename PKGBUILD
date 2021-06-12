@@ -3,7 +3,7 @@ pkgbase=python-sphinx-tabs
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Tabbed views for Sphinx"
 arch=('i686' 'x86_64')
@@ -11,9 +11,9 @@ url="https://sphinx-tabs.readthedocs.io"
 license=('MIT')
 makedepends=('python-setuptools')
 #'python-sphinx')
-checkdepends=('python-sphinx' 'python-pygments')
+#checkdepends=('python-sphinx' 'python-pygments')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('41d56de08670ee07b4b56bb35eb02f6e')
+md5sums=('657a75de93b9d58dc0475eabfc78375f')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -23,12 +23,12 @@ build() {
 #   python setup.py build_sphinx
 }
 
-check() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    python setup.py test
-#   pytest #|| warning "Tests failed"
-}
+#check() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+#    python setup.py test
+##   pytest #|| warning "Tests failed"
+#}
 
 package_python-sphinx-tabs() {
     depends=('python-sphinx<5' 'python-pygments')
