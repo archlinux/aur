@@ -1,3 +1,13 @@
-10a11,12
->   list(APPEND cmake_configure_args -DCMAKE_C_FLAGS="-O2")
->   list(APPEND cmake_configure_args -DCMAKE_CXX_FLAGS="-O2")
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e4cf591..54e4852 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -8,6 +8,8 @@ macro(build_mimick)
+ 
+   set(cmake_commands)
+   set(cmake_configure_args -Wno-dev)
++  list(APPEND cmake_configure_args -DCMAKE_C_FLAGS="-O2")
++  list(APPEND cmake_configure_args -DCMAKE_CXX_FLAGS="-O2")
+   list(APPEND cmake_configure_args -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}_install)
+ 
+   if(WIN32)

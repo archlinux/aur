@@ -1,6 +1,0 @@
-18,19c18,19
-<     list(APPEND YAML_C_FLAGS "-w")
-<     list(APPEND YAML_CXX_FLAGS "-std=c++14 -w")
----
->     set(YAML_C_FLAGS "${YAML_C_FLAGS} -w")
->     set(YAML_CXX_FLAGS "${YAML_CXX_FLAGS} -std=c++14 -w")

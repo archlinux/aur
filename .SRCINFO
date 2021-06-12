@@ -1,20 +1,19 @@
-pkgbase = ros2-foxy
+pkgbase = ros2-galactic
 	pkgdesc = A set of software libraries and tools for building robot applications
-	pkgver = 2020.12.11
+	pkgver = 2021.05.23
 	pkgrel = 3
-	url = https://docs.ros.org/en/foxy/
-	install = ros2-foxy.install
+	url = https://docs.ros.org/en/galactic/
+	install = ros2-galactic.install
 	arch = any
 	license = Apache
 	depends = ros2-arch-deps
 	depends = gmock
 	depends = sip4
-	source = ros2::git+https://github.com/ros2/ros2#tag=release-foxy-20201211
+	source = ros2::git+https://github.com/ros2/ros2#tag=release-galactic-20210523
+	source = google_benchmark_vendor.patch
 	source = mimick_vendor.patch
-	source = yaml_cpp_vendor.patch
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 609a5260736192608582c0f0a0fd4da09a9185d95d452a92d9527af38d720f6a
+	sha256sums = 9904000aa5f63e9aa600cb4a07b0caef48444f1dd6179a650242c0634cf5051e
 
-pkgname = ros2-foxy
-
+pkgname = ros2-galactic

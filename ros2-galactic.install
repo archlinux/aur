@@ -1,3 +1,10 @@
+pre_install() {
+    # Create required symlinks (see https://wiki.archlinux.org/index.php/ROS)
+    mkdir -p /usr/share/sip
+    ln -sf /usr/lib/python3.9/site-packages/PyQt5 /usr/share/sip/.
+    ln -sf /usr/lib/python3.9/site-packages/PyQt5/bindings/* /usr/share/sip/PyQt5/.
+}
+
 post_install() {
     printf "
     \e[33m\e[1mIMPORTANT NOTE:\e[0m

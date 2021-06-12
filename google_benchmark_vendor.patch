@@ -1,0 +1,101 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ec8f6e0..207dcab 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -12,7 +12,7 @@ endif()
+ macro(build_benchmark)
+   set(extra_cmake_args)
+ 
+-  set(GOOGLE_BENCHMARK_TARGET_VERSION "1.5.2")
++  set(GOOGLE_BENCHMARK_TARGET_VERSION "1.5.4")
+ 
+   if(DEFINED CMAKE_BUILD_TYPE)
+     list(APPEND extra_cmake_args -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE})
+@@ -66,9 +66,7 @@ macro(build_benchmark)
+       -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}_install
+       ${extra_cmake_args}
+     PATCH_COMMAND
+-      ${CMAKE_COMMAND} -E chdir <SOURCE_DIR> git apply -p1 --ignore-space-change --whitespace=nowarn ${CMAKE_CURRENT_SOURCE_DIR}/thread_safety_attributes.patch &&
+-      ${CMAKE_COMMAND} -E chdir <SOURCE_DIR> git apply -p1 --ignore-space-change --whitespace=nowarn ${CMAKE_CURRENT_SOURCE_DIR}/soversion.patch &&
+-      ${CMAKE_COMMAND} -E chdir <SOURCE_DIR> git apply -p1 --ignore-space-change --whitespace=nowarn ${CMAKE_CURRENT_SOURCE_DIR}/shrink-tz-offset-size.patch
++      ${CMAKE_COMMAND} -E chdir <SOURCE_DIR> git apply -p1 --ignore-space-change --whitespace=nowarn ${CMAKE_CURRENT_SOURCE_DIR}/thread_safety_attributes.patch
+   )
+ 
+   # The external project will install to the build folder, but we'll install that on make install.
+diff --git a/shrink-tz-offset-size.patch b/shrink-tz-offset-size.patch
+deleted file mode 100644
+index 9412e6a..0000000
+--- a/shrink-tz-offset-size.patch
++++ /dev/null
+@@ -1,52 +0,0 @@
+-From 07578d82e0a4f99bdd1546f4f6f1727109f9420d Mon Sep 17 00:00:00 2001
+-From: Chris Lalancette <clalancette@gmail.com>
+-Date: Fri, 9 Apr 2021 12:32:00 -0400
+-Subject: [PATCH] Shrink the tz_offset size to 41. (#1110)
+-MIME-Version: 1.0
+-Content-Type: text/plain; charset=UTF-8
+-Content-Transfer-Encoding: 8bit
+-
+-When building with gcc TSan on, and in Debug mode, we see a warning
+-like:
+-
+-benchmark/src/timers.cc: In function ‘std::string benchmark::LocalDateTimeString()’:
+-src/timers.cc:241:15: warning: ‘char* strncat(char*, const char*, size_t)’ output may be truncated copying 108 bytes from a string of length 127 [-Wstringop-truncation]
+-  241 |   std::strncat(storage, tz_offset, sizeof(storage) - timestamp_len - 1);
+-      |   ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-
+-While this is essentially a false positive (we never expect
+-the number of bytes in tz_offset to be too large), the compiler can't
+-actually tell that.  Shrink the size of tz_offset to a smaller, but still safe
+-size to eliminate this warning.
+-
+-Signed-off-by: Chris Lalancette <clalancette@openrobotics.org>
+----
+- src/timers.cc | 12 ++++++++++--
+- 1 file changed, 10 insertions(+), 2 deletions(-)
+-
+-diff --git a/src/timers.cc b/src/timers.cc
+-index 1d3ab9a..af4767d 100644
+---- a/src/timers.cc
+-+++ b/src/timers.cc
+-@@ -190,8 +190,16 @@ std::string LocalDateTimeString() {
+-   std::size_t timestamp_len;
+-   long int offset_minutes;
+-   char tz_offset_sign = '+';
+--  // Long enough buffers to avoid format-overflow warnings
+--  char tz_offset[128];
+-+  // tz_offset is set in one of three ways:
+-+  // * strftime with %z - This either returns empty or the ISO 8601 time.  The maximum length an
+-+  //   ISO 8601 string can be is 7 (e.g. -03:30, plus trailing zero).
+-+  // * snprintf with %c%02li:%02li - The maximum length is 41 (one for %c, up to 19 for %02li,
+-+  //   one for :, up to 19 %02li, plus trailing zero).
+-+  // * A fixed string of "-00:00".  The maximum length is 7 (-00:00, plus trailing zero).
+-+  //
+-+  // Thus, the maximum size this needs to be is 41.
+-+  char tz_offset[41];
+-+  // Long enough buffer to avoid format-overflow warnings
+-   char storage[128];
+- 
+- #if defined(BENCHMARK_OS_WINDOWS)
+--- 
+-2.26.3
+-
+diff --git a/soversion.patch b/soversion.patch
+deleted file mode 100644
+index 7255fb3..0000000
+--- a/soversion.patch
++++ /dev/null
+@@ -1,13 +0,0 @@
+-diff --git a/CMakeLists.txt b/CMakeLists.txt
+-index db0a6bfb..26ccf1a5 100644
+---- a/CMakeLists.txt	2020-07-15 17:35:35.557813957 -0700
+-+++ b/CMakeLists.txt	2020-07-15 17:36:19.040227189 -0700
+-@@ -79,7 +79,7 @@
+- 
+- # Read the git tags to determine the project version
+- include(GetGitVersion)
+--get_git_version(GIT_VERSION)
+-+#get_git_version(GIT_VERSION)
+- 
+- # Tell the user what versions we are using
+- string(REGEX MATCH "[0-9]+\\.[0-9]+\\.[0-9]+" VERSION ${GIT_VERSION})
