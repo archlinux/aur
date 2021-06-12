@@ -207,10 +207,10 @@ build() {
     ${_extra_build_flags} \
     -Wno-dev
 
-  ninja -C build "${NINJAFLAGS}"
+  ninja -C build ${NINJAFLAGS}
 
   if [[ _build_documentation -eq 1 && _build_bindings -ne 0 ]]; then
-    ninja -C build "${NINJAFLAGS}" ocaml_doc
+    ninja -C build ${NINJAFLAGS} ocaml_doc
   fi
 
 }
@@ -223,13 +223,13 @@ check() {
   )
 
   if [[ _build_tests -eq 1 ]]; then
-    ninja -C build "${NINJAFLAGS}" check-llvm
-    ninja -C build "${NINJAFLAGS}" check-clang
-    ninja -C build "${NINJAFLAGS}" check-clang-tools
-    ninja -C build "${NINJAFLAGS}" check-openmp
-    ninja -C build "${NINJAFLAGS}" check-polly
-    ninja -C build "${NINJAFLAGS}" check-lldb
-    ninja -C build "${NINJAFLAGS}" check-lld
+    ninja -C build ${NINJAFLAGS} check-llvm
+    ninja -C build ${NINJAFLAGS} check-clang
+    ninja -C build ${NINJAFLAGS} check-clang-tools
+    ninja -C build ${NINJAFLAGS} check-openmp
+    ninja -C build ${NINJAFLAGS} check-polly
+    ninja -C build ${NINJAFLAGS} check-lldb
+    ninja -C build ${NINJAFLAGS} check-lld
   fi
 
 }
@@ -256,7 +256,7 @@ package() {
     mkdir -p "${srcdir:?}/llvm-project/build/docs/ocamldoc/html/"
   fi
 
-  DESTDIR="${pkgdir:?}" ninja -C build "${NINJAFLAGS}" install
+  DESTDIR="${pkgdir:?}" ninja -C build ${NINJAFLAGS} install
 
   pushd llvm/utils/lit || (
     echo -e "\E[1;31mpushd utils/lit - Package Failed! \E[0m"
