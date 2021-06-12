@@ -1,16 +1,15 @@
 pkgbase = caffeine
 	pkgdesc = Prevents the desktop becoming idle in full-screen mode.
-	pkgver = 2.9.4
-	pkgrel = 2
+	pkgver = 2.9.8
+	pkgrel = 1
 	url = https://launchpad.net/caffeine
 	arch = any
 	license = GPL3
 	depends = gtk3
 	depends = python-gobject
 	depends = python-ewmh
-	depends = python-setuptools
 	depends = python-xlib
-	optdepends = libappindicator-gtk3: caffeine-indicator (tray applet) support
+	optdepends = libayatana-appindicator: caffeine-indicator (tray applet) support
 	provides = caffeine-bzr
 	provides = caffeine-ng
 	provides = caffeine-oneclick
@@ -21,8 +20,7 @@ pkgbase = caffeine
 	conflicts = caffeine-systray
 	replaces = caffeine-oneclick
 	replaces = caffeine-systray
-	source = https://launchpad.net/~caffeine-developers/+archive/ubuntu/ppa/+files/caffeine_2.9.4.tar.gz
+	source = https://launchpad.net/~caffeine-developers/+archive/ubuntu/ppa/+sourcefiles/caffeine/2.9.8+684~ubuntu21.04.1/caffeine_2.9.8+684~ubuntu21.04.1.tar.xz
 	md5sums = SKIP
 
 pkgname = caffeine
-
