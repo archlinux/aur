@@ -1,7 +1,7 @@
 # Maintainer: Mikołaj "D1SoveR" Banasik <d1sover@gmail.com>
 pkgname='kinect-audio-setup'
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Tools to download and apply USB Audio Class firmware for Kinect and use it as microphone'
 arch=('x86_64' 'i686')
 url='https://git.ao2.it/kinect-audio-setup.git'
@@ -12,16 +12,19 @@ install="${pkgname}.install"
 
 source=("git+${url}#tag=v${pkgver}"
         'improved-fetch.patch'
+        'updated-hash.patch'
         '55-kinect-audio.rules'
         'LICENSE')
 sha256sums=('SKIP'
             'a27b9e1cffd9c5f062fd15c494e12fdf8bc73e5ae590329bf40eabe16f731c79'
+            'b94f922466b5796e09bc22457654b53fffa138c21c5f6045a13b67824a94e4c9'
             '8f9f343eeed07c59c65940f4a03814da5e2018cdbc331664bfacc2c98cd7d549'
             'd23efd383bc03aa8cdeac33be24a9c915f05ad92d20f4070e7160bdcff7f4a8c')
 
 prepare() {
   cd "$pkgname"
   patch -Np1 -i "${srcdir}/improved-fetch.patch"
+  patch -Np1 -i "${srcdir}/updated-hash.patch"
 }
 
 build() {
