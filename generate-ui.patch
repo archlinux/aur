@@ -1,0 +1,12 @@
+diff --unified --recursive --text contrib/generate-ui.sh contrib/generate-ui.sh
+--- contrib/generate-ui.sh	2021-05-26 09:09:24.201859849 -0500
++++ contrib/generate-ui.sh	2021-05-26 09:09:52.895185350 -0500
+@@ -6,7 +6,7 @@
+ for file in *.ui
+ do
+     gen_file=ui_`echo $file| cut -d. -f1`.py
+-    pyside2-uic $file -o $gen_file
++    uic -g python $file -o $gen_file
+     sed -i'' -e 's/raise()/raise_()/g' $gen_file
+ done
+ popd

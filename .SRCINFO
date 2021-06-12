@@ -1,22 +1,26 @@
 pkgbase = python-hwilib
 	pkgdesc = The Bitcoin Hardware Wallet Interface is a Python library and command line tool for interacting with hardware wallets.
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/bitcoin-core/HWI
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = qt5-base
 	depends = python
 	depends = libusb
 	depends = systemd-libs
+	depends = pyside2
+	depends = pyside2-tools
 	depends = python-libusb1
 	depends = python-base58
 	depends = python-bitbox02
 	depends = python-hidapi
 	depends = python-cryptography
 	depends = python-mnemonic
-	source = https://github.com/bitcoin-core/HWI/archive/refs/tags/2.0.1.tar.gz
-	sha256sums = e758f4b83928a4d71b7541958ac6c130cc137e14161942fdec8c812afb2130db
+	source = https://github.com/bitcoin-core/HWI/archive/refs/tags/2.0.2.tar.gz
+	source = generate-ui.patch
+	sha256sums = fe240431f8395e51e078a6688b48384d6118c10f5a3bd44b1c3bb186fd9f1841
+	sha256sums = SKIP
 
 pkgname = python-hwilib
-
