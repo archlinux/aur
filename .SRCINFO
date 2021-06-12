@@ -1,0 +1,15 @@
+pkgbase = genpass-git
+	pkgdesc = A simple yet robust commandline random password generator.
+	pkgver = v0.4.14.r1.bb4af7f
+	pkgrel = 1
+	url = https://sr.ht/~cyplo/genpass
+	arch = x86_64
+	license = AGPL-3.0
+	makedepends = cargo
+	makedepends = rust
+	makedepends = git
+	provides = genpass
+	source = git+https://git.sr.ht/~cyplo/genpass
+	sha256sums = SKIP
+
+pkgname = genpass-git
