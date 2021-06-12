@@ -1,0 +1,41 @@
+From 90f10be7639e99688600792e878f6cad1157352a Mon Sep 17 00:00:00 2001
+From: Alex Deucher <alexander.deucher@amd.com>
+Date: Wed, 17 Mar 2021 10:38:42 -0400
+Subject: [PATCH] platform/x86: force LPS0 functions for AMD
+
+ACPI_LPS0_ENTRY_AMD/ACPI_LPS0_EXIT_AMD are supposedly not
+required for AMD platforms, and on some platforms they are
+not even listed in the function mask but at least some HP
+laptops seem to require it to properly support s0ix.
+
+Based on a patch from Marcin Bachry <hegel666@gmail.com>.
+
+Bug: https://gitlab.freedesktop.org/drm/amd/-/issues/1230
+Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
+Cc: Marcin Bachry <hegel666@gmail.com>
+Reviewed-by: Hans de Goede <hdegoede@redhat.com>
+---
+ drivers/acpi/x86/s2idle.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/drivers/acpi/x86/s2idle.c b/drivers/acpi/x86/s2idle.c
+index 2d7ddb8a8cb6..482e6b23b21a 100644
+--- a/drivers/acpi/x86/s2idle.c
++++ b/drivers/acpi/x86/s2idle.c
+@@ -368,6 +368,13 @@ static int lps0_device_attach(struct acpi_device *adev,
+ 
+ 	ACPI_FREE(out_obj);
+ 
++	/*
++	 * Some HP laptops require ACPI_LPS0_ENTRY_AMD/ACPI_LPS0_EXIT_AMD for proper
++	 * S0ix, but don't set the function mask correctly.  Fix that up here.
++	 */
++	if (acpi_s2idle_vendor_amd())
++		lps0_dsm_func_mask |= (1 << ACPI_LPS0_ENTRY_AMD) | (1 << ACPI_LPS0_EXIT_AMD);
++
+ 	acpi_handle_debug(adev->handle, "_DSM function mask: 0x%x\n",
+ 			  lps0_dsm_func_mask);
+ 
+-- 
+GitLab
+

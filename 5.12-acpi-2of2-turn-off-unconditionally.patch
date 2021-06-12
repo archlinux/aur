@@ -1,0 +1,51 @@
+From 7e4fdeafa61f2b653fcf9678f09935e55756aed2 Mon Sep 17 00:00:00 2001
+From: "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>
+Date: Thu, 18 Mar 2021 19:28:28 +0100
+Subject: ACPI: power: Turn off unused power resources unconditionally
+
+According to the ACPI specification (section 7.2.2 in ACPI 6.4), the
+OS may evaluate the _OFF method of a power resource that is "off"
+already [1], and in particular that can be done in the case of unused
+power resources.
+
+Accordingly, modify acpi_turn_off_unused_power_resources() to
+evaluate the _OFF method for each of the unused power resources
+unconditionally which may help to work around BIOS issues where the
+return value of _STA for a power resource does not reflect the
+actual state of the power resource [2].
+
+Link: https://uefi.org/specs/ACPI/6.4/07_Power_and_Performance_Mgmt/declaring-a-power-resource-object.html#off # [1]
+Link: https://lore.kernel.org/lkml/20210314000439.3138941-1-luzmaximilian@gmail.com/ # [2]
+Tested-by: Wendy Wang <wendy.wang@intel.com>
+Signed-off-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+---
+ drivers/acpi/power.c | 11 +----------
+ 1 file changed, 1 insertion(+), 10 deletions(-)
+
+diff --git a/drivers/acpi/power.c b/drivers/acpi/power.c
+index 46c38627adddb..bacae6d178ff5 100644
+--- a/drivers/acpi/power.c
++++ b/drivers/acpi/power.c
+@@ -1005,18 +1005,9 @@ void acpi_turn_off_unused_power_resources(void)
+ 	mutex_lock(&power_resource_list_lock);
+ 
+ 	list_for_each_entry_reverse(resource, &acpi_power_resource_list, list_node) {
+-		int result, state;
+-
+ 		mutex_lock(&resource->resource_lock);
+ 
+-		result = acpi_power_get_state(resource->device.handle, &state);
+-		if (result) {
+-			mutex_unlock(&resource->resource_lock);
+-			continue;
+-		}
+-
+-		if (state == ACPI_POWER_RESOURCE_STATE_ON
+-		    && !resource->ref_count) {
++		if (!resource->ref_count) {
+ 			dev_info(&resource->device.dev, "Turning OFF\n");
+ 			__acpi_power_off(resource);
+ 		}
+-- 
+cgit 1.2.3-1.el7
+

@@ -1,8 +1,8 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=5.12.4.arch1
-pkgrel=4
+pkgver=5.12.10.arch1
+pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/"
@@ -16,17 +16,29 @@ makedepends=(
 )
 options=('!strip')
 _srcname=archlinux-linux
-_fedora_kernel_commit_id=29f433a6b9ba268b0202ac8200cf2ce38d6071b7
+_fedora_kernel_commit_id=19ba47dedb21773e0338321928a8580e214409fb
 source=(
 	"$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
 	config         # the main kernel config file
-        "choose-gcc-optimization.sh"
-	"sys-kernel_arch-sources-g14_files_6008-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch"
-	"sys-kernel_arch-sources-g14_files-6010-acpi_unused.patch"
-	"https://gitlab.com/asus-linux/fedora-kernel/-/archive/$_fedora_kernel_commit_id/fedora-kernel-$_fedora_kernel_commit_id.zip"
-	"5.12.4--Add-jack-toggle-support-for-headphones-on-Asus-ROG-Z.patch"
-	"5.8+--more-uarches-for-kernel.patch"::"https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/more-uarches-for-kernel-5.8%2B.patch"
+  "choose-gcc-optimization.sh"
+	"sys-kernel_arch-sources-g14_files_0001-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch"
+	#"sys-kernel_arch-sources-g14_files-0002-acpi_unused.patch"
+  "sys-kernel_arch-sources-g14_files-0003-flow-x13-sound.patch"
+	"sys-kernel_arch-sources-g14_files-0004-5.8+--more-uarches-for-kernel.patch"::"https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/more-uarches-for-kernel-5.8%2B.patch"
+  "sys-kernel_arch-sources-g14_files-0005-lru-multi-generational.patch"
+  #"sys-kernel_arch-sources-g14_files-0006-ACPI-PM-s2idle-Add-missing-LPS0-functions.patch"
+  #"sys-kernel_arch-sources-g14_files-0007-ACPI-processor-idle-Fix-up-C-state-latency.patch"
+  #"sys-kernel_arch-sources-g14_files-0008-NVMe-set-some-AMD-PCIe-downstream-storage-device-to-D3-for-s2idle.patch"
+  #"sys-kernel_arch-sources-g14_files-0009-PCI-quirks-Quirk-PCI-d3hot-delay.patch"
+  #"sys-kernel_arch-sources-g14_files-0010-platform-x86-force-LPS0-functions-for-AMD.patch"
+  #"sys-kernel_arch-sources-g14_files-0011-USB-pci-quirks-disable-D3cold-on-s2idle-Renoire.patch"
+
+  "https://gitlab.com/asus-linux/fedora-kernel/-/archive/$_fedora_kernel_commit_id/fedora-kernel-$_fedora_kernel_commit_id.zip"
+  "sys-kernel_arch-sources-g14_files-0012-acpi-1of2-turn-off-unused.patch"::"https://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git/patch/?id=4b9ee772eaa82188b0eb8e05bdd1707c2a992004"
+  "sys-kernel_arch-sources-g14_files-0013-acpi-2of2-turn-off-unconditionally.patch"::"https://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git/patch/?id=7e4fdeafa61f2b653fcf9678f09935e55756aed2"
+  "sys-kernel_arch-sources-g14_files-0014-acpi_unused-v2.patch"
 )
+
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
@@ -34,13 +46,16 @@ validpgpkeys=(
 )
 
 sha256sums=('SKIP'
-            'bcb8a47c2396af9a2afcd26d1200f9424d2af0fa6f6749d3c09417a919f5c60c'
+            '1c48dc71e8dabd48e538b2284ab3b9e2a768e7d80c2c74e552dc1d93239370e2'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
             'd9f5742fed4406396698897aa042d4d5fdbfd7c51add7483a777f9ab41901aac'
-            'c384049787c8f0008accf9c4d053eb407b76242fe522e1aed1fe8a9c59f9d996'
-            'ce2a5e79ed29c701529f0aa2d854bab79d9f5cbdd173e13774f6e1f4e8ae585f'
-            'f52aadc1ebcdc118bb50769e4f5a4c036521c09ffecba48cb34392e1a687ac0a'
-            '9083b94bf9f547cceeed9fe2f37fb201e42d5b00734a86e4ea528447a59d4b9a')
+            '4a9e44dfbc7e9574ae86cf53a896b6c67f03b224e90e18982dfb0e4ba02a6c1b'
+            '9083b94bf9f547cceeed9fe2f37fb201e42d5b00734a86e4ea528447a59d4b9a'
+            'b9e4b11f6ca413fa7fcd1d810215bf3a36e69eedc4570f4209f7c1957083b2f3'
+            'e0977edd01cc1dd9cc8720d3ee2170bb3ba1e8a37eb77fe1c76c0852d580af4a'
+            '5af4796400245fec2e84d6e3f847b8896600558aa85f5e9c4706dd50994a9802'
+            '9cf7519ee1a0544f431c9fe57735aae7b9d150e62abed318837befc3b6af7c5f'
+            '87f133d34d84b8b34b0dad2bfd4cbbd557c6018f413a1852120d650273c628fb')
 
 # notable microarch levels:
 #
@@ -72,6 +87,15 @@ _fedora_kernel_patch_skip_list=(
 
   # patch broken in 5.12.4, updated and included in package sources
   "0001-Add-jack-toggle-support-for-headphones-on-Asus-ROG-Z.patch"
+
+  # applied a new version above in sources
+  "0013-ACPI-idle-override-and-update-c-state-latency-when-n.patch"
+
+  # applied a new version above in sources
+  "0014-usb-pci-quirks-disable-D3cold-on-AMD-xhci-suspend-fo.patch"
+
+  # applied above
+  "0001-GV301QH-Flow-X13-Audio.patch"
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -108,7 +132,7 @@ prepare() {
   # this stops us from applying broken or in-progress patches that are in git but aren't actually in use
 
   local _fkernel_path="../fedora-kernel-${_fedora_kernel_commit_id}"
-  for src in $(awk -F ' ' '/^ApplyOptionalPatch.*patch$/{print $2}' "${_fkernel_path}/kernel.spec"); do
+  for src in $(awk -F ' ' '/^ApplyOptionalPatch.*(patch|diff)$/{print $2}' "${_fkernel_path}/kernel.spec"); do
     src="${src##*/}"
     _fedora_patch_in_skip_list "$src" && continue
     echo "Applying patch $src..."

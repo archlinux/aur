@@ -1,7 +1,7 @@
 pkgbase = linux-g14
 	pkgdesc = Linux
-	pkgver = 5.12.4.arch1
-	pkgrel = 4
+	pkgver = 5.12.10.arch1
+	pkgrel = 1
 	url = https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/
 	arch = x86_64
 	license = GPL2
@@ -16,25 +16,31 @@ pkgbase = linux-g14
 	makedepends = git
 	makedepends = gcc>=11.0
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.12.4-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.12.10-arch1
 	source = config
 	source = choose-gcc-optimization.sh
-	source = sys-kernel_arch-sources-g14_files_6008-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch
-	source = sys-kernel_arch-sources-g14_files-6010-acpi_unused.patch
-	source = https://gitlab.com/asus-linux/fedora-kernel/-/archive/29f433a6b9ba268b0202ac8200cf2ce38d6071b7/fedora-kernel-29f433a6b9ba268b0202ac8200cf2ce38d6071b7.zip
-	source = 5.12.4--Add-jack-toggle-support-for-headphones-on-Asus-ROG-Z.patch
-	source = 5.8+--more-uarches-for-kernel.patch::https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/more-uarches-for-kernel-5.8%2B.patch
+	source = sys-kernel_arch-sources-g14_files_0001-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch
+	source = sys-kernel_arch-sources-g14_files-0003-flow-x13-sound.patch
+	source = sys-kernel_arch-sources-g14_files-0004-5.8+--more-uarches-for-kernel.patch::https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/more-uarches-for-kernel-5.8%2B.patch
+	source = sys-kernel_arch-sources-g14_files-0005-lru-multi-generational.patch
+	source = https://gitlab.com/asus-linux/fedora-kernel/-/archive/19ba47dedb21773e0338321928a8580e214409fb/fedora-kernel-19ba47dedb21773e0338321928a8580e214409fb.zip
+	source = sys-kernel_arch-sources-g14_files-0012-acpi-1of2-turn-off-unused.patch::https://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git/patch/?id=4b9ee772eaa82188b0eb8e05bdd1707c2a992004
+	source = sys-kernel_arch-sources-g14_files-0013-acpi-2of2-turn-off-unconditionally.patch::https://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git/patch/?id=7e4fdeafa61f2b653fcf9678f09935e55756aed2
+	source = sys-kernel_arch-sources-g14_files-0014-acpi_unused-v2.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
-	sha256sums = bcb8a47c2396af9a2afcd26d1200f9424d2af0fa6f6749d3c09417a919f5c60c
+	sha256sums = 1c48dc71e8dabd48e538b2284ab3b9e2a768e7d80c2c74e552dc1d93239370e2
 	sha256sums = 1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee
 	sha256sums = d9f5742fed4406396698897aa042d4d5fdbfd7c51add7483a777f9ab41901aac
-	sha256sums = c384049787c8f0008accf9c4d053eb407b76242fe522e1aed1fe8a9c59f9d996
-	sha256sums = ce2a5e79ed29c701529f0aa2d854bab79d9f5cbdd173e13774f6e1f4e8ae585f
-	sha256sums = f52aadc1ebcdc118bb50769e4f5a4c036521c09ffecba48cb34392e1a687ac0a
+	sha256sums = 4a9e44dfbc7e9574ae86cf53a896b6c67f03b224e90e18982dfb0e4ba02a6c1b
 	sha256sums = 9083b94bf9f547cceeed9fe2f37fb201e42d5b00734a86e4ea528447a59d4b9a
+	sha256sums = b9e4b11f6ca413fa7fcd1d810215bf3a36e69eedc4570f4209f7c1957083b2f3
+	sha256sums = e0977edd01cc1dd9cc8720d3ee2170bb3ba1e8a37eb77fe1c76c0852d580af4a
+	sha256sums = 5af4796400245fec2e84d6e3f847b8896600558aa85f5e9c4706dd50994a9802
+	sha256sums = 9cf7519ee1a0544f431c9fe57735aae7b9d150e62abed318837befc3b6af7c5f
+	sha256sums = 87f133d34d84b8b34b0dad2bfd4cbbd557c6018f413a1852120d650273c628fb
 
 pkgname = linux-g14
 	pkgdesc = The Linux kernel and modules
@@ -51,4 +57,3 @@ pkgname = linux-g14
 pkgname = linux-g14-headers
 	pkgdesc = Headers and scripts for building modules for the Linux kernel
 	depends = pahole
-
