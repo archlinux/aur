@@ -1,0 +1,15 @@
+pkgbase = ket-git
+	pkgdesc = Krathalan's exposure tracker
+	pkgver = r26.01d6ed2
+	pkgrel = 1
+	url = https://github.com/krathalan/ket
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = brotli
+	depends = jq
+	source = ket-git::git+https://github.com/krathalan/ket?signed
+	validpgpkeys = 0C6B73F391FA26F0EBCD1F75C0F9AEE56E47D174
+	sha256sums = SKIP
+
+pkgname = ket-git
