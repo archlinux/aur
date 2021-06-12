@@ -1,0 +1,15 @@
+pkgbase = gematom-git
+	pkgdesc = an atom feed generator for gemini written in rust
+	pkgver = r16.69c66b0
+	pkgrel = 1
+	url = https://sr.ht/~dr_tutut/gematom
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = cargo
+	makedepends = rust
+	makedepends = git
+	provides = gematom
+	source = git+https://git.sr.ht/~dr_tutut/gematom
+	sha256sums = SKIP
+
+pkgname = gematom-git
