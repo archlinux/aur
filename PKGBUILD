@@ -1,8 +1,9 @@
-# Maintainer: Jakob Gruber <jakob.gruber@gmail.com>
+# Contributor: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Jakob Gruber <jakob.gruber@gmail.com>
 
 pkgname=stone-soup-git
 _pkgname=stone-soup
-pkgver=0.18.a0.847.gf95877c
+pkgver=0.26.a0.566.gbc9326e332
 pkgrel=1
 pkgdesc="An open-source, single-player, role-playing roguelike game of exploration and treasure-hunting"
 arch=('i686' 'x86_64' 'ppc')
@@ -55,7 +56,7 @@ package() {
 
     # install crawl license
 
-    install -D -m644 ../licence.txt "${pkgdir}/usr/share/licenses/${_pkgname}/license.txt"
+    #install -D -m644 ../licence.txt "${pkgdir}/usr/share/licenses/${_pkgname}/license.txt"
 
     # install icon and .desktop file
 
