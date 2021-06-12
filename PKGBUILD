@@ -13,7 +13,7 @@
 pkgname=bitwig-studio-beta
 _pkgname=bitwig-studio
 _pkgver=4.0
-pkgver=${_pkgver}beta2
+pkgver=${_pkgver}beta4
 pkgrel=1
 pkgdesc='Digital audio workstation for music production, remixing and live performance'
 arch=('x86_64')
@@ -22,12 +22,12 @@ license=('custom')
 # Deps from bitwig-studio package
 #depends=('jack' 'xdg-utils' 'zenity' 'xcb-util-wm' 'libbsd')
 # Deps as suggested by namcap...
-depends=('jack' 'gtk2' 'gtk3' 'lib32-gcc-libs' 'libbsd' 'xcb-util' 'xcb-util-wm' 'xdg-utils' 'zenity')
-optdepends=('alsa-lib' 'oss' 'ffmpeg: MP3 support')
+depends=('gtk3' 'xcb-util' 'xcb-util-wm')
+optdepends=('alsa-lib' 'jack' 'oss' 'ffmpeg: MP3 support')
 provides=('bitwig-studio')
 options=(!strip)
-source=("$_pkgname-$pkgver.deb::https://www.bitwig.com/dl/?id=440&os=installer_linux")
-b2sums=('71ae6e25efcb174164fc4fe9f0f534eb3700c70543e48541ba33bd463de16ade6f457abdc74e8576f4c77293985016895c31ddbf31e84adae595e637ba0b2273')
+source=("$_pkgname-$pkgver.deb::https://www.bitwig.com/dl/?id=442&os=installer_linux")
+b2sums=('836cf98856346d1f4068f22ee7c986a411f0eed7b4d8b747901d5564185122e62c16eb0daea168005727953613d49373394133d50426064f4917961659506428')
 
 prepare() {
 	msg2 "Unpacking archive contents..."
