@@ -2,7 +2,7 @@
 
 pkgname=alda-bin
 _pkgname=alda
-pkgver=1.2.0
+pkgver=1.4.4
 pkgrel=1
 pkgdesc='A music programming language for musicians. 🎶'
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('alda')
 conflicts=('alda')
 options=('!strip')
 source=("https://github.com/$_pkgname-lang/$_pkgname/releases/download/$pkgver/$_pkgname")
-sha256sums=('9c24d2c5791674cac3bd8b40ff67b17a132713a5d1c32d5e3e944a988e24f142')
+sha256sums=('cc8abc7284a1e01f551ab8b19107e1c922bbaa19451b6a7b3b4b2ebdb89270a6')
 noextract=('alda')
 
 package() {
