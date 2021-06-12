@@ -1,12 +1,11 @@
 pkgbase = netbox
 	pkgdesc = IP address management (IPAM) and data center infrastructure management (DCIM) tool.
-	pkgver = 2.11.0
-	pkgrel = 4
+	pkgver = 2.11.6
+	pkgrel = 1
 	url = https://github.com/digitalocean/netbox
 	install = netbox.install
 	arch = any
-	license = Apache-2.0
-	depends = python
+	license = Apache
 	depends = gunicorn
 	depends = python-django
 	depends = python-django-cacheops
@@ -34,13 +33,13 @@ pkgbase = netbox
 	conflicts = netbox-git
 	replaces = netbox-git
 	backup = etc/netbox/configuration.py
-	source = https://github.com/digitalocean/netbox/archive/v2.11.0.tar.gz
+	source = https://github.com/digitalocean/netbox/archive/v2.11.6.tar.gz
 	source = netbox.service
 	source = netbox-rq.service
 	source = netbox.sysusers
 	source = netbox.tmpfile
 	source = upgrade.sh
-	md5sums = ef794d344ab5a3b2d9c854867580d0cf
+	md5sums = 7db419a8000a0f3d6a084f441e508a76
 	md5sums = 55dcba60ed4cb66b350d3d8f2946aef9
 	md5sums = ad07c0c741a231b8d8012221bee2c167
 	md5sums = b653f7da646e78ad5c69d3960bbafd9c
@@ -48,4 +47,3 @@ pkgbase = netbox
 	md5sums = 97c618de19719135aa84458789b025b1
 
 pkgname = netbox
-
