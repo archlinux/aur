@@ -4,12 +4,13 @@
 pkgname=jamulus
 _pkgname=Jamulus
 pkgver=3.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Internet jam session software"
 arch=('x86_64')
 url='https://jamulus.io/'
 license=('GPL2')
 depends=('glibc' 'gcc-libs' 'qt5-base' 'qt5-translations')
+conflicts=('jamulus-git')
 makedepends=('jack')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jamulussoftware/jamulus/archive/r${pkgver//./_}.tar.gz")
 
