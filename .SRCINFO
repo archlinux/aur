@@ -1,0 +1,17 @@
+pkgbase = metapiga
+	pkgdesc = A robust implementation of stochastic heuristics for large phylogeny inference
+	pkgver = 3.0b0
+	pkgrel = 1
+	url = https://www.metapiga.org/
+	arch = any
+	license = custom
+	makedepends = bash
+	depends = jre-openjdk-headless
+	depends = jre-openjdk
+	depends = jdk-openjdk
+	depends = openjdk-doc
+	depends = openjdk-src
+	source = https://applications.lanevol.org/mp2installers/mp_Unix_Installer.sh
+	sha256sums = e1fa995f4fe8ced7b19f5662d7d3fb61b51bea3bba803432da70e1463fb01e91
+
+pkgname = metapiga
