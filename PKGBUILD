@@ -15,8 +15,7 @@ url="https://www.zwsoft.cn/product/zw3d/linux"
 provides=("zw3d")
 options=('!strip')
 source=("${pkgname}-${pkgver}-${arch}.deb::https://download.zwcad.com/zw3d/3d_linux/preview/${_year}/ZW3D-${_year}-Preview-V1_amd64.deb")
-_sha512sums=$(sha512sum ${pkgname}-${pkgver}-${arch}.deb | cut -d ' ' -f 1)
-sha512sums=("${_sha512sums}")
+sha512sums=('e9f3c062b4f859dee806ba0fc624ebc6b9f813d2bbfd36092705aff1a7daa35fd69ef3249381ea3392df4cc7f1087b9612d094bd4ea1ad899f0d2665a6ab4203')
 
 prepare(){
     cd $srcdir
