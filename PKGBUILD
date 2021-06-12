@@ -14,6 +14,11 @@ makedepends=('cargo')
 source=("$url/archive/$pkgver.tar.gz")
 sha512sums=('c701258f2f09ef923afd75d6270345c255a342d08ab8a12e7b3064264df0a1e014a95b9bd8c059c9bf64306ef415823a76f1e0d9c72dcd41aee2215988632cdc')
 
+prepare() {
+	cd "$reponame-$pkgver"
+	cargo fetch
+}
+
 build() {
 	cd "$reponame-$pkgver"
 	cargo build --release
