@@ -3,15 +3,14 @@ pkgbase = termsaver-git
 	pkgver = r125.5a683f7
 	pkgrel = 1
 	url = http://termsaver.brunobraga.net/
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = python3
+	depends = python-pillow
 	provides = termsaver
 	conflicts = termsaver
 	source = termsaver::git://github.com/brunobraga/termsaver.git
 	md5sums = SKIP
 
 pkgname = termsaver-git
-
