@@ -1,0 +1,16 @@
+pkgbase = cargo-duplicates
+	pkgdesc = Cargo subcommand for displaying when different versions of a same dependency are pulled in
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://crates.io/crates/cargo-duplicates
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = curl
+	source = cargo-duplicates-0.3.2.tar.gz::https://crates.io/api/v1/crates/cargo-duplicates/0.3.2/download
+	sha512sums = 9c3e9fb817f8734359c79423fd6b56bd8be4c980b854dd5bf58737e1810043543620bdf6bc56109d721ac2b433c00f0e798821f61c0509629d19ff54b7960f57
+
+pkgname = cargo-duplicates
