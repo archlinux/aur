@@ -2,13 +2,13 @@
 
 pkgname=tree-sitter-go-git
 pkgver=0.19.1.r6.geb306e6
-pkgrel=1
+pkgrel=2
 pkgdesc="Golang grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/tree-sitter/tree-sitter-go"
 license=('MIT')
 groups=('tree-sitter-grammars')
-makedepends=('git' 'tree-sitter')
+makedepends=('git' 'tree-sitter' 'npm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url")
@@ -17,6 +17,11 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "$pkgname"
 	git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+}
+
+prepare() {
+	cd "$pkgname"
+	tree-sitter generate
 }
 
 build() {

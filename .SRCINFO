@@ -1,13 +1,14 @@
 pkgbase = tree-sitter-go-git
 	pkgdesc = Golang grammar for tree-sitter
 	pkgver = 0.19.1.r6.geb306e6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tree-sitter/tree-sitter-go
 	arch = x86_64
 	groups = tree-sitter-grammars
 	license = MIT
 	makedepends = git
 	makedepends = tree-sitter
+	makedepends = npm
 	provides = tree-sitter-go
 	conflicts = tree-sitter-go
 	source = tree-sitter-go-git::git+https://github.com/tree-sitter/tree-sitter-go
