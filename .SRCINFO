@@ -1,7 +1,7 @@
 pkgbase = fractal-next
 	pkgdesc = GTK4 client for Matrix written in Rust (fractal-next branch)
-	pkgver = r122.145e9bd0
-	pkgrel = 3
+	pkgver = r126.2adec164
+	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Fractal
 	arch = x86_64
 	license = GPL3
