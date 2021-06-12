@@ -1,9 +1,9 @@
+# Maintainer:  Rod Kay              <charlie5 on #ada at freenode.net>
 # Contributor: Sietse van der Molen <sietse@vdmolen.eu>
-# Contributor: Rod Kay              <charlie5 on #ada at freenode.net>
 
 pkgname=florist
-pkgver=2020
-pkgrel=2
+pkgver=2021
+pkgrel=1
 pkgdesc="An open-source implementation of IEEE Standard 1003.5b-1996, the POSIX Ada binding."
 
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/Blady-Com/florist"
 license=('GPL3')
 
 depends=('gcc-ada')
-options=(staticlibs)
+options=(staticlibs !strip)
 
 source=('git+https://github.com/Blady-Com/florist.git')
 sha1sums=(SKIP)
