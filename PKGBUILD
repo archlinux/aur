@@ -2,14 +2,14 @@
 
 pkgname=tree-sitter-bash-git
 pkgver=0.19.0.r3.g7776f24
-pkgrel=3
+pkgrel=4
 pkgdesc="Bash shell grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/tree-sitter/tree-sitter-bash"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('gcc-libs')
-makedepends=('git' 'tree-sitter')
+makedepends=('git' 'tree-sitter' 'npm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url")
@@ -18,6 +18,11 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "$pkgname"
 	git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+}
+
+prepare() {
+	cd "$pkgname"
+	tree-sitter generate
 }
 
 build() {
