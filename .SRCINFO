@@ -1,19 +1,15 @@
 pkgbase = fazua-toolbox
 	pkgdesc = Toolbox to update and control the Fazua evation drive system
-	pkgver = 2.04
+	pkgver = 2.11
 	pkgrel = 1
-	url = https://fazua.com/en/drive-system/software/toolbox-software/
+	url = https://fazua.com/de/support/help-center/toolbox-software/entry-toolbox-software/
 	arch = any
 	license = unknown
-	depends = jre8-openjdk
-	depends = java8-openjfx
-	source = https://fazua.com/documents/827/LINUX_FAZUA_Toolbox_basic_2.04.zip
-	source = fazua-toolbox.sh
+	source = https://fazua.com/documents/991/FAZUA_Toolbox_basic-linux-x86_64-2.11.zip
 	source = fazua-toolbox.desktop
-	source = Fazua_polygon_blue.svg
-	sha256sums = 486b592e868804cc6df1c78987ad44b4d6fb3a0d836c05ca82da301e58cfff76
-	sha256sums = a7a73c69dc9feab8345684fc8c1af07c63223846b03c169649321f98a5aa82d0
+	source = logo-symbol.svg
+	sha256sums = 6387c30f06d5c7955f8f559ce52f1eba5a3cd3ae533aae669830bd5fe67b7d9e
 	sha256sums = 79dfa335817115d25c45fe53904dd41fb225173b1d727d616ed0b38d65fb86b3
-	sha256sums = e874bf65f880aa30cd2fabfeb73262a4ddd0326f99b40b8033c62a343fe49d66
+	sha256sums = 59e35260d3b42927040e6369c483998e7acedd112b26d89d1e226dbd9501169d
 
 pkgname = fazua-toolbox
