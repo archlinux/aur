@@ -1,8 +1,9 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
+# Contributor: ugur
 
 pkgname=esp-idf-git
 _pkgname=esp-idf
-pkgver=r3537.9a26296a
+pkgver=r18070.1d7068e4be
 pkgrel=1
 pkgdesc="ESP specific API/libraries from Espressif"
 arch=('i686' 'x86_64')
@@ -15,6 +16,11 @@ install='esp-idf-git.install'
 # source=(esp-idf::git+https://github.com/espressif/esp-idf.git#commit=9a26296a)
 source=(esp-idf::git+https://github.com/espressif/esp-idf.git)
 md5sums=('SKIP')
+
+prepare() {
+  cd $srcdir/${_pkgname}/
+  ./tools/set-submodules-to-github.sh  > /dev/null
+}
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
