@@ -2,13 +2,13 @@
 pkgname=blissify-git
 _gitname=blissify-rs
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to analyze an MPD audio library and make smart playlists"
 arch=('x86_64')
 url="https://github.com/Polochon-street/blissify-rs"
 license=('GPL')
 depends=()
-makedepends=('cargo')
+makedepends=('cargo' 'nasm' 'clang')
 source=("git://github.com/Polochon-street/blissify-rs")
 sha512sums=('SKIP')
 

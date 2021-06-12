@@ -1,11 +1,13 @@
 pkgbase = blissify-git
 	pkgdesc = A tool to analyze an MPD audio library and make smart playlists
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Polochon-street/blissify-rs
 	arch = x86_64
 	license = GPL
 	makedepends = cargo
+	makedepends = nasm
+	makedepends = clang
 	source = git://github.com/Polochon-street/blissify-rs
 	sha512sums = SKIP
 
