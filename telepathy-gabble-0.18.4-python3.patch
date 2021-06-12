@@ -1,0 +1,416 @@
+diff -up telepathy-gabble-0.18.4/tools/c-constants-gen.py.py3 telepathy-gabble-0.18.4/tools/c-constants-gen.py
+--- telepathy-gabble-0.18.4/tools/c-constants-gen.py.py3	2016-11-15 04:06:40.000000000 -0500
++++ telepathy-gabble-0.18.4/tools/c-constants-gen.py	2019-12-20 10:28:02.467810478 -0500
+@@ -12,7 +12,7 @@ class Generator(object):
+         self.prefix = prefix + '_'
+         self.spec = get_by_path(dom, "spec")[0]
+ 
+-	self.output_base = output_base
++        self.output_base = output_base
+         self.__header = []
+         self.__docs = []
+ 
+@@ -25,10 +25,10 @@ class Generator(object):
+         file_set_contents(self.output_base + '-gtk-doc.h', ''.join(self.__docs))
+ 
+     def write(self, code):
+-        self.__header.append(code.encode('utf-8'))
++        self.__header.append(code)
+ 
+     def d(self, code):
+-        self.__docs.append(code.encode('utf-8'))
++        self.__docs.append(code)
+ 
+     # Header
+     def do_header(self):
+diff -up telepathy-gabble-0.18.4/tools/glib-client-gen.py.py3 telepathy-gabble-0.18.4/tools/glib-client-gen.py
+--- telepathy-gabble-0.18.4/tools/glib-client-gen.py.py3	2016-11-15 04:03:24.000000000 -0500
++++ telepathy-gabble-0.18.4/tools/glib-client-gen.py	2019-12-20 10:27:54.390926615 -0500
+@@ -74,17 +74,17 @@ class Generator(object):
+         self.guard = opts.get('--guard', None)
+ 
+     def h(self, s):
+-        if isinstance(s, unicode):
++        if isinstance(s, str):
+             s = s.encode('utf-8')
+         self.__header.append(s)
+ 
+     def b(self, s):
+-        if isinstance(s, unicode):
++        if isinstance(s, str):
+             s = s.encode('utf-8')
+         self.__body.append(s)
+ 
+     def d(self, s):
+-        if isinstance(s, unicode):
++        if isinstance(s, str):
+             s = s.encode('utf-8')
+         self.__docs.append(s)
+ 
+diff -up telepathy-gabble-0.18.4/tools/glib-client-marshaller-gen.py.py3 telepathy-gabble-0.18.4/tools/glib-client-marshaller-gen.py
+--- telepathy-gabble-0.18.4/tools/glib-client-marshaller-gen.py.py3	2016-11-15 04:06:40.000000000 -0500
++++ telepathy-gabble-0.18.4/tools/glib-client-marshaller-gen.py	2019-12-20 10:28:02.468810464 -0500
+@@ -31,23 +31,23 @@ class Generator(object):
+         for signal in signals:
+             self.do_signal(signal)
+ 
+-        print 'void'
+-        print '%s_register_dbus_glib_marshallers (void)' % self.prefix
+-        print '{'
++        print('void')
++        print('%s_register_dbus_glib_marshallers (void)' % self.prefix)
++        print('{')
+ 
+-        all = self.marshallers.keys()
+-        all.sort()
++        all = list(self.marshallers.keys())
++        sorted(all)
+         for marshaller in all:
+             rhs = self.marshallers[marshaller]
+ 
+-            print '  dbus_g_object_register_marshaller ('
+-            print '      g_cclosure_marshal_generic,'
+-            print '      G_TYPE_NONE,       /* return */'
++            print('  dbus_g_object_register_marshaller (')
++            print('      g_cclosure_marshal_generic,')
++            print('      G_TYPE_NONE,       /* return */')
+             for type in rhs:
+-                print '      G_TYPE_%s,' % type.replace('VOID', 'NONE')
+-            print '      G_TYPE_INVALID);'
++                print('      G_TYPE_%s,' % type.replace('VOID', 'NONE'))
++            print('      G_TYPE_INVALID);')
+ 
+-        print '}'
++        print('}')
+ 
+ 
+ def types_to_gtypes(types):
+diff -up telepathy-gabble-0.18.4/tools/glib-errors-str-gen.py.py3 telepathy-gabble-0.18.4/tools/glib-errors-str-gen.py
+--- telepathy-gabble-0.18.4/tools/glib-errors-str-gen.py.py3	2016-11-15 04:03:24.000000000 -0500
++++ telepathy-gabble-0.18.4/tools/glib-errors-str-gen.py	2019-12-20 10:27:54.390926615 -0500
+@@ -17,17 +17,17 @@ class Generator(object):
+         self.__docs = []
+ 
+     def h(self, s):
+-        if isinstance(s, unicode):
++        if isinstance(s, str):
+             s = s.encode('utf-8')
+         self.__header.append(s)
+ 
+     def b(self, s):
+-        if isinstance(s, unicode):
++        if isinstance(s, str):
+             s = s.encode('utf-8')
+         self.__body.append(s)
+ 
+     def d(self, s):
+-        if isinstance(s, unicode):
++        if isinstance(s, str):
+             s = s.encode('utf-8')
+         self.__docs.append(s)
+ 
+diff -up telepathy-gabble-0.18.4/tools/glib-ginterface-gen.py.py3 telepathy-gabble-0.18.4/tools/glib-ginterface-gen.py
+--- telepathy-gabble-0.18.4/tools/glib-ginterface-gen.py.py3	2016-11-15 04:03:24.000000000 -0500
++++ telepathy-gabble-0.18.4/tools/glib-ginterface-gen.py	2019-12-20 10:27:54.391926600 -0500
+@@ -27,7 +27,7 @@ import os.path
+ import xml.dom.minidom
+ 
+ from libtpcodegen import file_set_contents
+-from libglibcodegen import Signature, type_to_gtype, cmp_by_name, \
++from libglibcodegen import Signature, type_to_gtype, \
+         NS_TP, dbus_gutils_wincaps_to_uscore
+ 
+ 
+@@ -85,18 +85,18 @@ class Generator(object):
+         self.allow_havoc = allow_havoc
+ 
+     def h(self, s):
+-        if isinstance(s, unicode):
+-            s = s.encode('utf-8')
++        if isinstance(s, bytes):
++            s = str(s, 'ascii')
+         self.__header.append(s)
+ 
+     def b(self, s):
+-        if isinstance(s, unicode):
+-            s = s.encode('utf-8')
++        if isinstance(s, bytes):
++            s = str(s, 'ascii')
+         self.__body.append(s)
+ 
+     def d(self, s):
+-        if isinstance(s, unicode):
+-            s = s.encode('utf-8')
++        if isinstance(s, bytes):
++            s = str(s, 'ascii')
+         self.__docs.append(s)
+ 
+     def do_node(self, node):
+@@ -733,7 +733,7 @@ class Generator(object):
+ 
+     def __call__(self):
+         nodes = self.dom.getElementsByTagName('node')
+-        nodes.sort(cmp_by_name)
++        nodes.sort(key=lambda node : node.getAttributeNode('name').nodeValue)
+ 
+         self.h('#include <glib-object.h>')
+         self.h('#include <dbus/dbus-glib.h>')
+@@ -766,7 +766,7 @@ class Generator(object):
+         file_set_contents(self.basename + '-gtk-doc.h', '\n'.join(self.__docs))
+ 
+ def cmdline_error():
+-    print """\
++    print("""\
+ usage:
+     gen-ginterface [OPTIONS] xmlfile Prefix_
+ options:
+@@ -786,7 +786,7 @@ options:
+             void symbol (DBusGMethodInvocation *context)
+         and return some sort of "not implemented" error via
+             dbus_g_method_return_error (context, ...)
+-"""
++""")
+     sys.exit(1)
+ 
+ 
+diff -up telepathy-gabble-0.18.4/tools/glib-gtypes-generator.py.py3 telepathy-gabble-0.18.4/tools/glib-gtypes-generator.py
+--- telepathy-gabble-0.18.4/tools/glib-gtypes-generator.py.py3	2016-11-15 04:03:24.000000000 -0500
++++ telepathy-gabble-0.18.4/tools/glib-gtypes-generator.py	2019-12-20 10:27:54.391926600 -0500
+@@ -68,13 +68,13 @@ class GTypesGenerator(object):
+         self.need_other_arrays = {}
+ 
+     def h(self, code):
+-        self.header.append(code.encode("utf-8"))
++        self.header.append(code)
+ 
+     def c(self, code):
+-        self.body.append(code.encode("utf-8"))
++        self.body.append(code)
+ 
+     def d(self, code):
+-        self.docs.append(code.encode('utf-8'))
++        self.docs.append(code)
+ 
+     def do_mapping_header(self, mapping):
+         members = mapping.getElementsByTagNameNS(NS_TP, 'member')
+diff -up telepathy-gabble-0.18.4/tools/glib-interfaces-gen.py.py3 telepathy-gabble-0.18.4/tools/glib-interfaces-gen.py
+--- telepathy-gabble-0.18.4/tools/glib-interfaces-gen.py.py3	2019-12-20 10:28:22.933516203 -0500
++++ telepathy-gabble-0.18.4/tools/glib-interfaces-gen.py	2019-12-20 10:28:40.075269728 -0500
+@@ -24,13 +24,13 @@ class Generator(object):
+         self.spec = get_by_path(dom, "spec")[0]
+ 
+     def h(self, code):
+-        self.decls.append(code.encode('utf-8'))
++        self.decls.append(code)
+ 
+     def c(self, code):
+-        self.impls.append(code.encode('utf-8'))
++        self.impls.append(code)
+ 
+     def d(self, code):
+-        self.docs.append(code.encode('utf-8'))
++        self.docs.append(code)
+ 
+     def __call__(self):
+         for f in self.h, self.c:
+diff -up telepathy-gabble-0.18.4/tools/gobject-foo.py.py3 telepathy-gabble-0.18.4/tools/gobject-foo.py
+--- telepathy-gabble-0.18.4/tools/gobject-foo.py.py3	2016-11-15 04:03:24.000000000 -0500
++++ telepathy-gabble-0.18.4/tools/gobject-foo.py	2019-12-20 10:27:54.391926600 -0500
+@@ -87,4 +87,4 @@ if __name__ == '__main__':
+ 
+     head, tail = argv
+ 
+-    print '\n'.join(gobject_header(head, tail, as_interface=as_interface))
++    print('\n'.join(gobject_header(head, tail, as_interface=as_interface)))
+diff -up telepathy-gabble-0.18.4/tools/libglibcodegen.py.py3 telepathy-gabble-0.18.4/tools/libglibcodegen.py
+--- telepathy-gabble-0.18.4/tools/libglibcodegen.py.py3	2016-11-15 04:03:24.000000000 -0500
++++ telepathy-gabble-0.18.4/tools/libglibcodegen.py	2019-12-20 10:27:54.391926600 -0500
+@@ -23,7 +23,6 @@ please make any changes there.
+ 
+ from libtpcodegen import NS_TP, \
+                          Signature, \
+-                         cmp_by_name, \
+                          escape_as_identifier, \
+                          get_by_path, \
+                          get_descendant_text, \
+@@ -154,7 +153,7 @@ def type_to_gtype(s):
+         return ("GHashTable *", "DBUS_TYPE_G_STRING_STRING_HASHTABLE", "BOXED", False)
+     elif s[:2] == 'a{':  #some arbitrary hash tables
+         if s[2] not in ('y', 'b', 'n', 'q', 'i', 'u', 's', 'o', 'g'):
+-            raise Exception, "can't index a hashtable off non-basic type " + s
++            raise Exception("can't index a hashtable off non-basic type " + s)
+         first = type_to_gtype(s[2])
+         second = type_to_gtype(s[3:-1])
+         return ("GHashTable *", "(dbus_g_type_get_map (\"GHashTable\", " + first[1] + ", " + second[1] + "))", "BOXED", False)
+@@ -169,4 +168,4 @@ def type_to_gtype(s):
+         return ("GValueArray *", gtype, "BOXED", True)
+ 
+     # we just don't know ..
+-    raise Exception, "don't know the GType for " + s
++    raise Exception("don't know the GType for " + s)
+diff -up telepathy-gabble-0.18.4/tools/libtpcodegen.py.py3 telepathy-gabble-0.18.4/tools/libtpcodegen.py
+--- telepathy-gabble-0.18.4/tools/libtpcodegen.py.py3	2016-11-15 04:03:24.000000000 -0500
++++ telepathy-gabble-0.18.4/tools/libtpcodegen.py	2019-12-20 10:27:54.391926600 -0500
+@@ -167,7 +167,10 @@ class _SignatureIter:
+     def __init__(self, string):
+         self.remaining = string
+ 
+-    def next(self):
++    def __iter__(self):
++        self
++
++    def __next__(self):
+         if self.remaining == '':
+             raise StopIteration
+ 
+diff -up telepathy-gabble-0.18.4/tools/make-release-mail.py.py3 telepathy-gabble-0.18.4/tools/make-release-mail.py
+--- telepathy-gabble-0.18.4/tools/make-release-mail.py.py3	2016-07-02 04:28:17.000000000 -0400
++++ telepathy-gabble-0.18.4/tools/make-release-mail.py	2019-12-20 10:27:54.391926600 -0500
+@@ -28,8 +28,8 @@ def extract_description(package, version
+                 break
+ 
+         # Skip the ====== line, and the first blank line
+-        lines.next()
+-        lines.next()
++        next(lines)
++        next(lines)
+ 
+         got_release_name = False
+ 
+@@ -59,7 +59,7 @@ GIT_URL = 'http://cgit.freedesktop.org/t
+ def main(package, version, news_path):
+     release_name, details = extract_description(package, version, news_path)
+ 
+-    print """
++    print("""
+ %(release_name)s
+ 
+ tarball: %(base_url)s/%(package)s/%(package)s-%(version)s.tar.gz
+@@ -73,14 +73,14 @@ git: %(git_url)s/%(package)s
+         'version': version,
+         'release_name': release_name,
+         'details': details,
+-    }
++    })
+ 
+ if __name__ == '__main__':
+     try:
+         package, version, news_path = sys.argv[1:]
+ 
+         main(package, version, news_path)
+-    except ValueError, e:
++    except ValueError as e:
+         sys.stderr.write(
+             'Usage: %s package-name package.version.number path/to/NEWS\n' %
+             sys.argv[0])
+diff -up telepathy-gabble-0.18.4/tools/manager-file.py.py3 telepathy-gabble-0.18.4/tools/manager-file.py
+--- telepathy-gabble-0.18.4/tools/manager-file.py.py3	2016-07-02 04:28:17.000000000 -0400
++++ telepathy-gabble-0.18.4/tools/manager-file.py	2019-12-20 10:27:54.391926600 -0500
+@@ -87,18 +87,18 @@ gflags = {
+ 
+ def write_manager(f, manager, protos):
+     # pointless backwards compat section
+-    print >> f, '[ConnectionManager]'
+-    print >> f, 'BusName=org.freedesktop.Telepathy.ConnectionManager.' + manager
+-    print >> f, 'ObjectPath=/org/freedesktop/Telepathy/ConnectionManager/' + manager
++    print('[ConnectionManager]', file=f)
++    print('BusName=org.freedesktop.Telepathy.ConnectionManager.' + manager, file=f)
++    print('ObjectPath=/org/freedesktop/Telepathy/ConnectionManager/' + manager, file=f)
+ 
+     # protocols
+-    for proto, params in protos.iteritems():
+-        print >> f
+-        print >> f, '[Protocol %s]' % proto
++    for proto, params in protos.items():
++        print(file=f)
++        print('[Protocol %s]' % proto, file=f)
+ 
+         defaults = {}
+ 
+-        for param, info in params.iteritems():
++        for param, info in params.items():
+             dtype = info['dtype']
+             flags = info.get('flags', '').split()
+             struct_field = info.get('struct_field', param.replace('-', '_'))
+@@ -115,15 +115,15 @@ def write_manager(f, manager, protos):
+             else:
+                 flags = ''
+ 
+-            print >> f, 'param-%s=%s%s' % (param, desktop_string(dtype), flags)
++            print('param-%s=%s%s' % (param, desktop_string(dtype), flags), file=f)
+ 
+-        for param, default in defaults.iteritems():
+-            print >> f, 'default-%s=%s' % (param, default)
++        for param, default in defaults.items():
++            print('default-%s=%s' % (param, default), file=f)
+ 
+ def write_c_params(f, manager, proto, struct, params):
+-    print >> f, "static const TpCMParamSpec %s_%s_params[] = {" % (manager, proto)
++    print("static const TpCMParamSpec %s_%s_params[] = {" % (manager, proto), file=f)
+ 
+-    for param, info in params.iteritems():
++    for param, info in params.items():
+         dtype = info['dtype']
+         flags = info.get('flags', '').split()
+         struct_field = info.get('struct_field', param.replace('-', '_'))
+@@ -146,7 +146,7 @@ def write_c_params(f, manager, proto, st
+         else:
+             struct_offset = 'G_STRUCT_OFFSET (%s, %s)' % (struct, struct_field)
+ 
+-        print >> f, ('''  { %s, %s, %s,
++        print(('''  { %s, %s, %s,
+     %s,
+     %s, /* default */
+     %s, /* struct offset */
+@@ -154,14 +154,14 @@ def write_c_params(f, manager, proto, st
+     %s, /* filter data */
+     %s /* setter data */ },''' %
+                 (c_string(param), c_string(dtype), gtypes[dtype], flags,
+-                    default, struct_offset, filter, filter_data, setter_data))
++                    default, struct_offset, filter, filter_data, setter_data)), file=f)
+ 
+-    print >> f, "  { NULL }"
+-    print >> f, "};"
++    print("  { NULL }", file=f)
++    print("};", file=f)
+ 
+ if __name__ == '__main__':
+     environment = {}
+-    execfile(sys.argv[1], environment)
++    exec(compile(open(sys.argv[1], "rb").read(), sys.argv[1], 'exec'), environment)
+ 
+     filename = '%s/%s.manager' % (sys.argv[2], environment['MANAGER'])
+     try:
+diff -up telepathy-gabble-0.18.4/tools/xincludator.py.py3 telepathy-gabble-0.18.4/tools/xincludator.py
+--- telepathy-gabble-0.18.4/tools/xincludator.py.py3	2016-11-15 04:03:24.000000000 -0500
++++ telepathy-gabble-0.18.4/tools/xincludator.py	2019-12-20 10:27:54.392926586 -0500
+@@ -1,17 +1,17 @@
+ #!/usr/bin/python
+ 
+ from sys import argv, stdout, stderr
+-import codecs, locale
+-import os
++import locale
++import os, sys
+ import xml.dom.minidom
+ 
+-stdout = codecs.getwriter('utf-8')(stdout)
++sys.stdout.reconfigure(encoding='utf-8')
+ 
+ NS_XI = 'http://www.w3.org/2001/XInclude'
+ 
+ def xincludate(dom, base, dropns = []):
+     remove_attrs = []
+-    for i in xrange(dom.documentElement.attributes.length):
++    for i in range(dom.documentElement.attributes.length):
+         attr = dom.documentElement.attributes.item(i)
+         if attr.prefix == 'xmlns':
+             if attr.localName in dropns:
+@@ -35,5 +35,5 @@ if __name__ == '__main__':
+     dom = xml.dom.minidom.parse(argv[0])
+     xincludate(dom, argv[0])
+     xml = dom.toxml()
+-    stdout.write(xml)
+-    stdout.write('\n')
++    sys.stdout.write(xml)
++    sys.stdout.write('\n')
