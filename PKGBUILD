@@ -1,7 +1,7 @@
 # Contributer: abcfy2 <abcfy2@163.com>
 pkgname='deepin-wine5-stable'
-pkgver=5.0.0.19
-pkgrel=2
+pkgver=5.0.0.26
+pkgrel=1
 pkgdesc="Deepin Wine5 stable"
 arch=('i686' 'x86_64')
 url="http://www.deepin.org"
@@ -18,13 +18,13 @@ depends=(
     )
 makedepends=('tar' 'p7zip')
 source=(
-    "https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.youku.deepin/com.youku.deepin_8.0.7.11061deepin2_i386.deb"
+    "https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.wesing.deepin/com.wesing.deepin_2.21.170.0319deepin4_i386.deb"
 )
-sha256sums=('09fae5688383d9706001c72c04f09667215263446ab3f9ee15ddd80de517cb9e')
+sha256sums=('8c7010cf7498aee97bd153bbd0ac749c6d433e05382c6b48e5e207673f74e481')
 
 package() {
 	cd ${srcdir}
 	tar xpvf data.tar.xz --xattrs-include='*' --numeric-owner
 	install -d ${pkgdir}/usr/lib/deepin-wine5-stable
-    7z x -o${pkgdir}/usr/lib/deepin-wine5-stable opt/apps/com.youku.deepin/files/wine_archive.7z
+    7z x -o${pkgdir}/usr/lib/deepin-wine5-stable opt/apps/com.wesing.deepin/files/wine_archive.7z
 }
