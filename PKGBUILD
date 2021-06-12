@@ -1,4 +1,4 @@
-# Contributor: d0lphin <scrouthtv at gmail dot com>
+# Contributor: scrouthtv <scrouthtv 0x40 gmail 0x2e com>
 # Contributor: LinRs <LinRs at users.noreply.github.com>
 # Contributor: Gavin Lloyd <gavinhungry@gmail.com>
 
