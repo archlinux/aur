@@ -3,7 +3,7 @@
 # Contributor: Adam Caldwell <adam dot caldwell at gmail dot com>
 
 pkgname=bwping
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="Tool to measure bandwidth and RTT between two hosts using ICMP"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://bwping.sourceforge.io/"
 license=('BSD')
 depends=('glibc')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/oleg-derevenetz/bwping/archive/RELEASE_${pkgver}.tar.gz")
-sha256sums=('4ee1ad5474b7533b8e31e7e69626e6dfab1042c2a823049b1bb5161e6f9974b1')
+sha256sums=('d7c82dda4dfb6f5e8960a0e5aa7299463ab2799017416d7814ac8406d2d27592')
 
 build() {
   cd "${srcdir}/${pkgname}-RELEASE_${pkgver}"
