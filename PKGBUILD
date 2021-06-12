@@ -1,4 +1,4 @@
-# Contributor: Tilman Blumenbach <tilman@ax86.net>
+# Maintainer: Tilman Blumenbach <tilman@ax86.net>
 pkgname=tsocks-tools
 pkgver='1.8beta5'
 pkgrel=3
