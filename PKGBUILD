@@ -8,7 +8,7 @@ pkgname=mullvad-vpn-beta
 _pkgver=2021.4
 _channel=beta
 pkgver=${_pkgver}.${_channel}1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 url="https://www.mullvad.net"
 arch=('x86_64')
@@ -28,9 +28,9 @@ sha256sums=('SKIP'
             'SKIP'
             'a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
 validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87')
-              # Linus Färnstrand (code signing key) <linus at mullvad dot net>
+              # Linus Färnstrand (code signing key) <linus@mullvad.net>
 #              '8339C7D2942EB854E3F27CE5AEE9DECFD582E984')
-              # David Lönnhager (code signing) <david dot l at mullvad dot net>
+              # David Lönnhager (code signing) <david.l@mullvad.net>
 
 _ensure_local_nvm() {
 	# lets be sure we are starting clean
@@ -158,8 +158,13 @@ package() {
 	install -d "$pkgdir/opt/Mullvad VPN"
 	cp -r dist/linux-unpacked/* "$pkgdir/opt/Mullvad VPN"
 
-	# Install daemon service
-	install -Dm644 dist/linux-unpacked/resources/mullvad-daemon.service -t \
+	# Restrict management socket access to wheel group
+	sed -i '/\[Service\]/a Environment="MULLVAD_MANAGEMENT_SOCKET_GROUP=wheel"' \
+		"$pkgdir/opt/Mullvad VPN/resources/mullvad-daemon.service"
+
+	# Symlink daemon service to correct directory
+	install -d "$pkgdir/usr/lib/systemd/system"
+	ln -s "/opt/Mullvad VPN/resources/mullvad-daemon.service" \
 		"$pkgdir/usr/lib/systemd/system"
 
 	# Install binaries
@@ -189,7 +194,6 @@ package() {
 
 	for icon_size in 16 32 48 64 128 256 512 1024; do
 		icons_dir=usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
-		install -d $pkgdir/$icons_dir
-		install -m644 $icons_dir/${pkgname%-beta}.png -t $pkgdir/$icons_dir
+		install -Dm644 $icons_dir/${pkgname%-beta}.png -t $pkgdir/$icons_dir
 	done
 }
