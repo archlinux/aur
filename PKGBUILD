@@ -2,13 +2,13 @@
 # Maintainer: Edgar Luque <git@edgarluque.com>
 
 pkgname=ddnet
-pkgver=15.5
-pkgrel=3
+pkgver=15.5.1
+pkgrel=1
 pkgdesc="A Teeworlds modification with a unique cooperative gameplay."
 arch=('x86_64')
 url="https://ddnet.tw"
 license=('custom:BSD' 'CCPL:by-nc-sa')
-depends=('sdl2' 'freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'pnglite' 'ffmpeg' 'libnotify' 'miniupnpc' 'sqlite')
+depends=('freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'pnglite' 'ffmpeg' 'libnotify' 'miniupnpc' 'sqlite' 'mariadb-libs')
 makedepends=('cmake' 'ninja' 'python')
 checkdepends=('gmock')
 optdepends=('ddnet-skins: A collection with more than 500 custom tee skins.'
@@ -16,18 +16,10 @@ optdepends=('ddnet-skins: A collection with more than 500 custom tee skins.'
 backup=('usr/share/ddnet/data/autoexec_server.cfg')
 source=("https://ddnet.tw/downloads/DDNet-$pkgver.tar.xz"
         "ddnet-server.service" "ddnet-sysusers.conf" "ddnet-tmpfiles.conf")
-sha256sums=('a2e8c6e9780700c3c2967c19758ff8418f088eaab60a9e5d2bd8e4b323167ff3'
+sha256sums=('455ffe30b05a497e552e5d0de05a45e503d185b90d808431e4f53a1c1bb280e7'
             '9377a9d7c87abae166c8fa98cd79a61c74482f80f80bc930ae043349e9a84965'
             '70034f237270b38bf312238a26cfd322e212ca5714bfea4ae91e80c639ce8738'
             '043452f4de3c86d903973009bb3e59b3492a6669b86d0b1410e59a1476a87369')
-
-# Set 1 to enable MySQL support and add dependencies
-_enable_mysql=0
-
-if [ $_enable_mysql -eq 1 ]; then
-    depends+=('mariadb')
-    _mysql_opt="-DMYSQL=ON"
-fi
 
 build() {
     mkdir -p build
@@ -39,8 +31,8 @@ build() {
         -DANTIBOT=ON                \
         -DVIDEORECORDER=ON          \
         -DUPNP=ON                   \
-        -GNinja                     \
-        $_mysql_opt
+        -DMYSQL=ON                  \
+        -GNinja
     ninja
 }
 
