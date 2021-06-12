@@ -1,19 +1,19 @@
+# Maintainer: fanjiang <prof.fan@foxmail.com>
 # Maintainer: soloturn@gmail.com
 # Contributor: Theo Tosini <theo.tosini@theoduino.me>
 # Contributor: Gábor Sebestyén <segabor@gmail.com>
 # Contributor: Andrew Sun <adsun701@gmail.com>
-# Contributor: fanjiang <prof.fan@foxmail.com>
 
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2021.04.24.a.r4.gc15dde42658
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2021.06.01.a.r333.ga53ab388bbb
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
 url="https://swift.org/"
 license=('apache2')
 depends=('icu' 'libedit' 'libxml2' 'python' 'libbsd' 'ncurses' )
-makedepends=('clang' 'cmake' 'git' 'ninja' 'python-six' 'rsync' 'swig')
+makedepends=('clang' 'cmake' 'git' 'ninja' 'patch' 'python-six' 'rsync' 'swig')
 provides=('swift-language')
 source=(
     'git+https://github.com/apple/swift#branch=main'
