@@ -1,4 +1,4 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Miguel Revilla <yo@miguelrevilla.com>
 # Contributor: Fabian Melters <melters [at] gmail [dot] com>
 
@@ -7,10 +7,10 @@ pkgver=0.7.7.1
 pkgrel=3
 pkgdesc="A remake of the famous DOS racing game 'Stunts'/'4D Sports Driving'."
 arch=('i686' 'x86_64')
-url="http://www.ultimatestunts.nl"
+url="https://www.ultimatestunts.nl/"
 license=('GPL')
 depends=('sdl_image' 'freealut' 'libvorbis' 'libgl')
-source=("http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-srcdata-${pkgver//./}.tar.gz"
+source=("https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-srcdata-${pkgver//./}.tar.gz"
         "$pkgname-metaserver-cpp-add-includes.patch"
         "$pkgname.png"
         "$pkgname.desktop")
