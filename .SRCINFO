@@ -1,7 +1,7 @@
 pkgbase = switchhosts-appimage
 	pkgdesc = An App for hosts management & switching.
 	pkgver = 4.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/oldj/SwitchHosts
 	arch = x86_64
 	license = Apache

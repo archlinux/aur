@@ -2,7 +2,7 @@
 pkgname=switchhosts-appimage
 pkgver=4.0.2
 _subpkgver="6057"
-pkgrel=2
+pkgrel=3
 pkgdesc="An App for hosts management & switching."
 arch=('x86_64')
 url="https://github.com/oldj/SwitchHosts"
@@ -24,7 +24,7 @@ prepare() {
 
 build() {
     sed -i -E "s|Exec=AppRun|Exec=/opt/appimages/SwitchHosts.AppImage|" squashfs-root/switchhosts.desktop
-    chmod -R a-x+rX ${srcdir}/squashfs-root/usr
+    chmod -R a-x+rX squashfs-root/usr
 }
 package() {
     # Install AppImage
