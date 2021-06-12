@@ -1,4 +1,4 @@
-# Maintainer: d0lphin <scrouthtv [at] gmail [dot] com>
+# Maintainer: scrouthtv <scrouthtv 0x40 gmail 0x2e com>
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=pdf2htmlex
