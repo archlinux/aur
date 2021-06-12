@@ -4,14 +4,14 @@
 
 _pkgname=renovate
 pkgname=renovate-git
-pkgver=25.28.0.r0.g7eb2c09b6
+pkgver=25.40.1.r0.gd209bb7f7
 pkgrel=1
-pkgdesc="Universal dependency update tool that fits into your workflows."
+pkgdesc="Renovate - Dependency update tool (Git version)"
 arch=(any)
 url="https://github.com/renovatebot/renovate"
 source=("$pkgname::git+https://github.com/renovatebot/renovate")
 license=('AGPL3')
-makedepends=('yarn')
+makedepends=('git' 'yarn')
 depends=('nodejs')
 sha256sums=('SKIP')
 
