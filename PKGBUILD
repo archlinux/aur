@@ -3,10 +3,10 @@
 pkgname=('yoga')
 _module='yoga'
 pkgver='1.0.0'
-pkgrel=2
+pkgrel=3
 pkgdesc="Yummy Optimizer for Gorgeous Assets"
 url="https://github.com/wanadev/yoga"
-depends=(python3 python-cffi python-pillow python-pycparser python-unidecode python-pyguetzli python--zopflipy)
+depends=(python3 python-cffi python-pillow python-pycparser python-unidecode python-pyguetzli python-zopflipy)
 makedepends=('python-setuptools')
 license=('unknown')
 arch=('any')
