@@ -1,0 +1,21 @@
+pkgbase = com.jisuoffice.deepin
+	pkgdesc = jisuOffice (极速 Office) on wine
+	pkgver = 1.0.1.36093
+	pkgrel = 4
+	url = https://jisuoffice.com/
+	install = wineapps.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = deepin-wine5-stable>=5.0.0.26
+	depends = deepin-wine-helper>=5.1.21
+	depends = p7zip
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	optdepends = ttf-ms-fonts: Microsoft Core fonts
+	optdepends = noto-fonts-cjk: Google Noto CJK fonts
+	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.jisuoffice.deepin/com.jisuoffice.deepin_1.0.1.36093deepin4_i386.deb
+	sha512sums = 78bdc5211143df1cc484595aca375b3f5c9c619da06555a31b405241b92045751c04bdc8d0e4226bbbd3e0ffe60ad0dd235dc399e5c63c3710568477ae0ba1d1
+
+pkgname = com.jisuoffice.deepin
