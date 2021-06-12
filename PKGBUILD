@@ -1,8 +1,8 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=image-roll
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="A simple and fast GTK image viewer with basic image manipulation tools"
 arch=('x86_64')
 url="https://github.com/weclaw1/image-roll"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gtk3')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('b17583c940ea65682855f23c0d947014f35bd43fefb90e7128963010b86b48ef')
+sha256sums=('d56a71eeecde6c821c9321d7f39ebf07ef871c637abcdeafe07f333d1f6e55cd')
 
 build() {
 	cd "$pkgname-$pkgver"
