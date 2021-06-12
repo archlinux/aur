@@ -13,19 +13,20 @@ _productRename='Atelier Photo Fnac'
 _setupFilename='setup_Atelier_Photo_Fnac'
 
 pkgname=cewe-monlivrephoto
-conflicts=('cewe-fotobuch' 'cewe-fotoservice' 'mullerfoto-fotostar_de')
+conflicts=('cewe-fotowelt' 'cewe-fotobuch' 'cewe-fotoservice' 'mullerfoto-fotostar_de' 'mullerfoto-fotostar_cz' 'mullerfoto-fotostar_sk')
 pkgdesc="Création off-line de livres-photos, calendriers, posters…, disponibles ensuite en ligne à l'achat auprès de la FNAC"
 # setup_Atelier_Photo_Fnac (script perl) is versatile too much, so it is better to skip its md5sum :
 md5sums=(SKIP
-         '2a3ccb8cbbb4c45c5b634efce189bcaa'  ## updater.pl
+         'b33d945e4fe6cdf33b8060ae73d83f0a'  ## updater.pl
          '82baecba5be4c2af0cccf0f5bc0e00c7') ## $pkgname.install
 
-pkgver=6.3.7
+pkgver=7.1.3
 pkgrel=1
 url="http://www.livrephoto-cewe.fr/"
 license=("custom:eula")
-depends=('libx11' 'libjpeg' 'curl' 'wget' 'gstreamer0.10-base-plugins' 'snappy')
-makedepends=('unzip')
+#depends=('libx11' 'libjpeg' 'curl' 'wget' 'gstreamer0.10-base-plugins' 'snappy')
+depends=('libx11' 'libjpeg' 'curl' 'wget' 'snappy')
+makedepends=('unzip' 'xdg-utils')
 arch=('i686' 'x86_64')
 source=("http://dls.photoprintit.com/download/Data/$_keyaccount-fr_FR/hps/$_setupFilename.tgz"
 	'updater.pl' "$pkgname.install")
@@ -48,24 +49,26 @@ package() {
 
 	cd $srcdir
 	# don't clear screen, install broken desktop file, or burble
-	sed -i 's/^\(system("clear"\|createDesktopShortcuts(\|printf(\$TRANSLATABLE\).*;//' install.pl
+	sed -i 's/^\s*\(system("clear"\|system("update-mime-database \|createDesktopShortcuts(\|printf(\$TRANSLATABLE\).*;//' install.pl
 
-	# don't show EULA/ask for confirmation if package is already installed
-	which $pkgname &>/dev/null && update='--update'
+	# don't show EULA/ask for confirmation (EULA is addressed in install script)
+	update='--update'
 	# keep packages unless updating from within application
 	[[ -z "$_UPDATING" ]] && keepPackages='-k' || update='--upgrade'
 
 	./install.pl $update $keepPackages --installDir=$_installDir -v
 	install -m644 -b updater.pl $_installDir/updater.pl
 	install -D -m644 $srcdir/EULA.txt $pkgdir/usr/share/licenses/$pkgname/EULA.txt
-        # pixmap for legacy customised mimetypes
+    # pixmap for legacy customised mimetypes
 	install -D -m644 $_installDir/Resources/keyaccount/32.xpm $pkgdir/usr/share/pixmaps/$pkgname.xpm
 
 	# create startup script and desktop file
 	cat > $pkgdir/usr/bin/$pkgname <<-EOF
 		#!/usr/bin/bash
 		cd ${_installDir#$pkgdir}
-		KDEHOME=\$HOME/.kde4 exec ./"$_productUrname" "\$@"
+		# nouveau bug with QT web engine: https://bugreports.qt.io/browse/QTBUG-41242
+		lsmod | grep nouveau && export QT_XCB_FORCE_SOFTWARE_OPENGL=1
+		exec ./"${_productUrname/_/ }" "\$@"
 	EOF
 	cat > $pkgdir/usr/share/applications/$pkgname.desktop <<-EOF
 		[Desktop Entry]
@@ -73,7 +76,7 @@ package() {
 		Name=$_productRename
 		Comment=Offline client for cewe.fr service, french version
 		Exec=$pkgname
-		Icon=hps-$_keyaccount.png
+		Icon=hps-$_keyaccount-$pkgver
 		StartupNotify=true
 		Categories=Graphics;Photography;
 		MimeType=application/x-hps-mcf
