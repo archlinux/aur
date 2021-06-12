@@ -1,0 +1,14 @@
+pkgbase = python-mypy-ls
+	pkgdesc = Mypy plugin for the Python LSP Server.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/paradoxxxzero/pyls-isort
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-lsp-server
+	depends = mypy
+	source = https://files.pythonhosted.org/packages/source/m/mypy-ls/mypy-ls-0.4.0.tar.gz
+	sha256sums = b1071dd451d44d4fdcbc6112689d5b7c5e5d6804370a2a7b5e2e67cc0fa5affb
+
+pkgname = python-mypy-ls
