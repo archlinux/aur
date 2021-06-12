@@ -16,7 +16,7 @@ md5sums=('e7b7ce256e1712b6d22ddbf5892013a5')
 build()
 {
 	cd "$pkgname-$pkgver"
-	./autogen.sh && 0
+	./autogen.sh
 	./configure --prefix=/usr
 	make
 }
