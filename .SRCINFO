@@ -1,6 +1,6 @@
 pkgbase = linode-cli-git
 	pkgdesc = The Linode Command Line Interface (development version)
-	pkgver = 3.2.1.r4.c4a0db5
+	pkgver = 5.4.2.r0.b212eef
 	pkgrel = 1
 	url = https://github.com/linode/linode-cli
 	arch = any
@@ -20,4 +20,3 @@ pkgbase = linode-cli-git
 	md5sums = 0e3a7ea0d402c1a6e59f93fe3de6933a
 
 pkgname = linode-cli-git
-
