@@ -10,7 +10,7 @@ license=('custom')
 depends=('gtk2' 'gconf' 'libxtst' 'nss' 'libxss' 'alsa-lib')
 source=("https://www.megasoftware.net/do_force_download/megax_${pkgver}-1_amd64.deb"
         'MEGA_EUA.pdf::https://www.megasoftware.net/download_eua')
-md5sums=('SKIP'
+md5sums=('3de91f0e856b3ec8a71b9bd6383ddfc7'
          '82f225eaed3a512ca70af54fabaf6690')
 
 package() {

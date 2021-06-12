@@ -14,7 +14,7 @@ pkgbase = megax-bin
 	depends = alsa-lib
 	source = https://www.megasoftware.net/do_force_download/megax_10.2.6-1_amd64.deb
 	source = MEGA_EUA.pdf::https://www.megasoftware.net/download_eua
-	md5sums = SKIP
+	md5sums = 3de91f0e856b3ec8a71b9bd6383ddfc7
 	md5sums = 82f225eaed3a512ca70af54fabaf6690
 
 pkgname = megax-bin
