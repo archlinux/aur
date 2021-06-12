@@ -10,7 +10,7 @@ license=('GPL3')
 url='https://gitlab.com/softwareperonista/pace'
 depends=('gtksourceview4')
 optdepends=('diffutils: diff preview support')
-makedepends=('meson' 'vala')
+makedepends=('meson' 'vala' 'git')
 source=("https://gitlab.com/softwareperonista/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('60e65adf3bf0ecf36a9e9c175971b4b2695d9409a535d1f0e7b51092fbf2b58c')
 

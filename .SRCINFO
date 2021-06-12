@@ -7,10 +7,10 @@ pkgbase = pace
 	license = GPL3
 	makedepends = meson
 	makedepends = vala
+	makedepends = git
 	depends = gtksourceview4
 	optdepends = diffutils: diff preview support
 	source = https://gitlab.com/softwareperonista/pace/-/archive/1.4.1.1/pace-1.4.1.1.tar.gz
 	sha256sums = 60e65adf3bf0ecf36a9e9c175971b4b2695d9409a535d1f0e7b51092fbf2b58c
 
 pkgname = pace
-
