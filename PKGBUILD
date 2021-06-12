@@ -4,10 +4,10 @@
 # Contributor: Adam Wolk <netprobe at gmail dot com>
 
 pkgname=scalpel-git
-pkgver=r24.47815c2
+pkgver=r31.35e1367
 pkgrel=1
 pkgdesc="Recover files based on their headers, footers and internal data structures. This program is based on Foremost."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/sleuthkit/scalpel"
 license=('Apache')
 depends=('tre')
@@ -24,19 +24,19 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  sed -i 's|#define[ \t]*SCALPEL_DEFAULT_CONFIG_FILE[ \t]*"scalpel.conf"|#define SCALPEL_DEFAULT_CONFIG_FILE "/etc/scalpel/scalpel.conf"|' src/scalpel.h 
+  sed -i 's|#define\s*SCALPEL_DEFAULT_CONFIG_FILE\s.*"scalpel.conf"|#define SCALPEL_DEFAULT_CONFIG_FILE "/etc/scalpel/scalpel.conf"|' src/scalpel.h
 }
 
 build() {
   cd $pkgname
   ./bootstrap
-  ./configure --with-pic --prefix=/usr
+  ./configure --with-pic --prefix=/usr CXXFLAGS="${CXXFLAGS} --std=c++14"
   make
 }
 
 package() {
   cd $pkgname
-  make DESTDIR="$pkgdir" install
   install -Dm644 scalpel.conf "$pkgdir/etc/scalpel/scalpel.conf"
+  make DESTDIR="$pkgdir" install
 }
 
