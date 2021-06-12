@@ -1,7 +1,7 @@
 pkgbase = yoga-image-optimizer
 	pkgdesc = A graphical interface to convert and optimize JPEG, PNG and WebP images (based on YOGA)
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/flozz/yoga-image-optimizer
 	arch = any
 	license = GPL3

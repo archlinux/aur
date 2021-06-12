@@ -2,7 +2,7 @@
 
 pkgname=('yoga-image-optimizer')
 pkgver='1.0.0'
-pkgrel=4
+pkgrel=5
 pkgdesc="A graphical interface to convert and optimize JPEG, PNG and WebP images (based on YOGA)"
 url="https://github.com/flozz/yoga-image-optimizer"
 depends=('python' 'python-cairo' 'python-gobject' 'yoga')
