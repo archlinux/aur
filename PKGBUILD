@@ -4,8 +4,8 @@
 
 pkgname=river-git
 _pkgname=${pkgname%-*}
-pkgver=r623.0e9dc08
-pkgrel=3
+pkgver=r632.cab947b
+pkgrel=1
 pkgdesc='A dynamic tiling wayland compositor.'
 arch=('x86_64')
 url='https://github.com/ifreund/river'
