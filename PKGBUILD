@@ -1,6 +1,6 @@
 pkgname=brlcad
 pkgver=7.32.2
-pkgrel=0
+pkgrel=2
 pkgdesc='An extensive 3D solid modeling system.'
 url='https://brlcad.org'
 license=('LGPL' 'BSD' 'custom:BDL')

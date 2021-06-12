@@ -1,7 +1,7 @@
 pkgbase = brlcad
 	pkgdesc = An extensive 3D solid modeling system.
 	pkgver = 7.32.2
-	pkgrel = 0
+	pkgrel = 2
 	url = https://brlcad.org
 	install = brlcad.install
 	arch = i686
@@ -20,4 +20,3 @@ pkgbase = brlcad
 	sha256sums = d025b51bf85e944fc599bce6615b82b01b1f7932adbb6d139b4b2a0056922534
 
 pkgname = brlcad
-

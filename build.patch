@@ -9,3 +9,24 @@
  endforeach(im ${NIST_SAMPLE_MODELS})
  
  CMAKEFILES(
+
+--- src/libbg/earcut.hpp
++++ src/libbg/earcut.hpp
+@@ -24,6 +24,7 @@
+ #include <algorithm>
+ #include <cassert>
+ #include <cmath>
++#include <limits>
+ #include <memory>
+ #include <vector>
+
+--- src/libged/brep/brep.cpp
++++ src/libged/brep/brep.cpp
+@@ -32,6 +32,7 @@
+ #include <fstream>
+ #include <iomanip>
+ #include <iostream>
++#include <limits>
+ #include <list>
+ #include <map>
+ #include <queue>
