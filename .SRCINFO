@@ -1,0 +1,21 @@
+pkgbase = com.cbox.deepin
+	pkgdesc = CBox (央视影音) on Deepin Wine6
+	pkgver = 4.6.7.2
+	pkgrel = 1
+	url = http://cbox.cntv.cn/
+	install = wineapps.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = deepin-wine6-stable>=6.0.0.7
+	depends = deepin-wine-helper>=5.1.15
+	depends = p7zip
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	optdepends = ttf-ms-fonts: Microsoft Core fonts
+	optdepends = noto-fonts-cjk: Google Noto CJK fonts
+	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.cbox.deepin/com.cbox.deepin_4.6.7.2deepin1_i386.deb
+	sha512sums = b4c3c3a93c9bce5cc4e31909ad8e5ceb430808141919980698790de6a95f3d742f865aceaccbf8337e8c6101dec4c3d8c449b9dc6b7d35b821d31cf6384f2043
+
+pkgname = com.cbox.deepin
