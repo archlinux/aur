@@ -1,8 +1,9 @@
 pkgbase = exifcleaner-bin
 	pkgdesc = Desktop app to clean metadata from images, videos, PDFs, and other files.
 	pkgver = 3.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://exifcleaner.com
+	install = ExifCleaner-bin.install
 	arch = x86_64
 	license = MIT
 	depends = nss
