@@ -14,4 +14,3 @@ pkgbase = bonsai.sh-git
 	sha256sums = SKIP
 
 pkgname = bonsai.sh-git
-
