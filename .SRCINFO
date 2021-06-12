@@ -1,0 +1,14 @@
+pkgbase = scdoc-git
+	pkgdesc = Small man page generator
+	pkgver = 1.11.1.r3.gc7cb8be
+	pkgrel = 1
+	url = https://sr.ht/~sircmpwn/scdoc/
+	arch = x86_64
+	license = custom
+	makedepends = make
+	makedepends = clang
+	provides = scdoc
+	source = git+https://git.sr.ht/~sircmpwn/scdoc
+	sha256sums = SKIP
+
+pkgname = scdoc-git
