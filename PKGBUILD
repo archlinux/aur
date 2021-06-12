@@ -1,5 +1,5 @@
 pkgname=mingw-w64-tools
-pkgver=8.0.0
+pkgver=9.0.0
 pkgrel=1
 pkgdesc="MinGW-w64 utilities"
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ groups=(mingw-w64)
 options=(!libtool !emptydirs)
 validpgpkeys=('CAF5641F74F7DFBA88AE205693BDB53CD4EBC740')
 source=(https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/mingw-w64-v${pkgver}.tar.bz2{,.sig})
-sha256sums=('44c740ea6ab3924bc3aa169bad11ad3c5766c5c8459e3126d44eabb8735a5762'
+sha256sums=('1929b94b402f5ff4d7d37a9fe88daa9cc55515a6134805c104d1794ae22a4181'
             'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -38,8 +38,8 @@ package() {
     cd "${srcdir}/widl-${_arch}-build"
     make DESTDIR="${pkgdir}" install
   done
-  install -Dm644 "${srcdir}/mingw-w64-v${pkgver}/mingw-w64-tools/gendef/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.gendef"
-  install -m644 "${srcdir}/mingw-w64-v${pkgver}/mingw-w64-tools/genidl/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.genidl"
-  install -m644 "${srcdir}/mingw-w64-v${pkgver}/mingw-w64-tools/genlib/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.genlib"
-  install -m644 "${srcdir}/mingw-w64-v${pkgver}/mingw-w64-tools/genpeimg/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.genpeimg"
+  install -d "${pkgdir}"/usr/share/licenses/${pkgname}
+  for tool in gendef genidl genlib genpeimg; do
+    install -m644 "${srcdir}/mingw-w64-v${pkgver}/mingw-w64-tools/${tool}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.${tool}"
+  done
 }
