@@ -1,6 +1,6 @@
 pkgbase = confy
 	pkgdesc = Conferences schedule viewer for GNOME
-	pkgver = 0.5.4
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://confy.kirgroup.net/
 	arch = x86_64
@@ -17,8 +17,7 @@ pkgbase = confy
 	depends = python-icalendar
 	depends = libnotify
 	provides = confy
-	source = https://git.sr.ht/~fabrixxm/confy/archive/0.5.4.tar.gz
+	source = https://git.sr.ht/~fabrixxm/confy/archive/0.6.0.tar.gz
 	md5sums = 7971ee5f29817cb09de6e96bb5232f8e
 
 pkgname = confy
-
