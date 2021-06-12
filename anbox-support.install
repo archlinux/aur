@@ -13,7 +13,10 @@ post_install() {
   echo ""
   msg "Enable the session manager now using systemctl --user enable --now anbox-session-manager.service"
   echo ""
-  msg "Also add 'none /dev/binderfs binder nofail 0 0' to /etc/fstab."
+  if ! grep -q 'Anbox' /etc/fstab ; then
+    echo '# Binderfs Anbox' >> /etc/fstab
+    echo 'none /dev/binderfs binder nofail 0 0' >> /etc/fstab
+  fi
   echo ""
 }
 
@@ -23,8 +26,9 @@ post_upgrade() {
   systemctl is-active systemd-networkd >/dev/null || systemctl enable systemd-networkd
 
   echo ""
-  msg "Enable the session manager now using systemctl --user enable --now anbox-session-manager.service"
-  echo ""
-  msg "Also add 'none /dev/binderfs binder nofail 0 0' to /etc/fstab."
+  if ! grep -q 'Anbox' /etc/fstab ; then
+    echo '# Binderfs Anbox' >> /etc/fstab
+    echo 'none /dev/binderfs binder nofail 0 0' >> /etc/fstab
+  fi
   echo ""
 }
