@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-cfclient
-pkgver=2021.1
+pkgver=2021.4
 pkgrel=1
 pkgdesc='Host applications and library for Crazyflie written in Python.'
 arch=('any')
@@ -12,7 +12,7 @@ depends=(python python-cflib python-appdirs python-pyzmq python-pyqtgraph
 optdepends=(crazyflie-udev crazyradio-udev)
 makedepends=(python python-setuptools python-cx_freeze)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bitcraze/crazyflie-clients-python/archive/$pkgver.tar.gz")
-sha256sums=('c1840b4c41f4cc132f5eafc66396d61f59990e8eaf6bfb9410dd33c4b961d06d')
+sha256sums=('82abd98723ad8cc2dd0ab499198f1782a2eeb3e69db4b8fa060f2a494d8c3d7b')
 
 _pkgname=crazyflie-clients-python
 
