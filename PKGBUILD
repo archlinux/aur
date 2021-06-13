@@ -2,24 +2,23 @@
 
 pkgname=libsignal-client
 _libname=libsignal_jni
-pkgver=0.2.3
-_pkgver="java-${pkgver}"
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Library for the Signal Protocol.'
 url="https://github.com/signalapp/${pkgname}"
 makedepends=('rustup' 'cargo' 'gradle' 'git' 'zip' 'protobuf')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
-source=("${pkgname}-${_pkgver}.tar.gz::https://github.com/signalapp/${pkgname}/archive/$_pkgver.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${pkgname}/archive/refs/tags/v$pkgver.tar.gz"
         "fix_gradle_7.patch"
 )
 
-sha512sums=('8bb650fe1ab20401b69990b92aa0906b3d7d3118f4315821b0b947700ef7179e78f8e2297a5863716ead507b97b27f0ebbf098ff7424143aa6b25a8740bb9ad6'
+sha512sums=('1472c83ccd03c96b7a2c92e7bc7617c3cea48d301292434639e8c7af2de56adfcdb86d34164becca4ca2678481994648f8b92cb59e01b8833a5a0bed53366fc9'
             'fdaf7037f0338379701e9669012e4b4e47d17f99a195c70ce057dbdd626c8699abb1c6387fb65d0ab0e32bed5cdceed50db39712f542c150b24606824a3361f5')
 
 prepare() {
-  tar xf "${pkgname}-$_pkgver.tar.gz"
-  cd "${pkgname}-${_pkgver}"
+  tar xf "${pkgname}-$pkgver.tar.gz"
+  cd "${pkgname}-${pkgver}"
 
   # currently nightly is required ... so rustup is required a makedepends
   # # Use the default system rust toolchain
@@ -34,7 +33,7 @@ prepare() {
 }
 
 build() {
-  cd "${pkgname}-${_pkgver}/java"
+  cd "${pkgname}-${pkgver}/java"
 
   ./build_jni.sh desktop
   gradle --no-daemon assemble
@@ -43,7 +42,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-${_pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   install -m755 -d "${pkgdir}/usr/share/java/${pkgname}" "${pkgdir}/usr/lib"
 
