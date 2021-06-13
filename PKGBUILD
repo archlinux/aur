@@ -1,13 +1,13 @@
 # Maintainer: Maarten de Boer <maarten@cloudstek.nl>
 
 pkgname=teleport-git
-pkgver=r6046.e3936e95c
+pkgver=r6397.7443451d5
 pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/gravitational/teleport"
 license=('Apache')
-depends=('bash' 'python')
+depends=()
 makedepends=('go>=1.14.0', 'git')
 provides=('tctl' 'tsh')
 install=teleport.install
@@ -20,7 +20,7 @@ source=("${pkgname}::git+https://github.com/gravitational/teleport.git"
 sha256sums=('SKIP'
             '10ac25cea1b5c193d7f968ca28a1da0e54b847f29c2a0186b46fd853194be38a'
             '4bc17fdde981f91c5d9972ae0555ee5e8b63a6b67e007c28f83ada80823980fd'
-            'cff4e3c69677210bdde9a781146df06fba3a62cef72ed6854cd1923a05444435')
+            'ce2dd61cae3c0c3684e7e629f98b77551e66ddedca2194250a34f0efbc674f3a')
 
 pkgver() {
   cd "$pkgname"
