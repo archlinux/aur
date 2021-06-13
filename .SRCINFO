@@ -16,4 +16,3 @@ pkgbase = python-espnet-tts-frontend-git
 	md5sums = SKIP
 
 pkgname = python-espnet-tts-frontend-git
-
