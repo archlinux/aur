@@ -1,5 +1,6 @@
 # Maintainer: Thor M. K. Høgås <thor alfakrøll roht dott no>
 pkgname=sosi2osm-git
+_pkgname=sosi2osm
 pkgver=2015.01.17.c8465d7
 pkgrel=2
 pkgdesc="SOSI to OSM conversion tool"
@@ -8,6 +9,7 @@ url="https://www.github.com/Gnonthgol/sosi2osm"
 license=('GPL3')
 makedepends=('git' 'libfyba' 'proj')
 depends=('libfyba' 'proj' 'lua')
+provides=("${_pkgname}=${pkgver}")
 source=("$pkgname::git+https://github.com/Gnonthgol/sosi2osm")
 md5sums=('SKIP')
 CPPFLAGS='-I/usr/include/fyba'

@@ -12,8 +12,8 @@ pkgbase = sosi2osm-git
 	depends = libfyba
 	depends = proj
 	depends = lua
+	provides = sosi2osm=2015.01.17.c8465d7
 	source = sosi2osm-git::git+https://github.com/Gnonthgol/sosi2osm
 	md5sums = SKIP
 
 pkgname = sosi2osm-git
-
