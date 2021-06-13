@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-libelf-lfg-win32-git
+	pkgdesc = Subset of FreeBSD modified to compile libelf on Windows (mingw-w64)
+	pkgver = r2.5697f67
+	pkgrel = 1
+	url = https://github.com/LagFreeGames/libelf-lfg-win32
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-meson
+	makedepends = git
+	depends = mingw-w64-crt
+	provides = mingw-w64-libelf
+	conflicts = mingw-w64-libelf
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = git+https://github.com/LagFreeGames/libelf-lfg-win32.git
+	sha256sums = SKIP
+
+pkgname = mingw-w64-libelf-lfg-win32-git
