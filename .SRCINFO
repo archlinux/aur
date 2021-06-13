@@ -1,0 +1,17 @@
+pkgbase = tree-sitter-sql-git
+	pkgdesc = SQL grammar for tree-sitter
+	pkgver = r5.c8f50f7
+	pkgrel = 1
+	url = https://github.com/tjdevries/tree-sitter-sql
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = unknown
+	makedepends = git
+	makedepends = tree-sitter
+	makedepends = npm
+	provides = tree-sitter-sql
+	conflicts = tree-sitter-sql
+	source = tree-sitter-sql-git::git+https://github.com/tjdevries/tree-sitter-sql
+	sha256sums = SKIP
+
+pkgname = tree-sitter-sql-git
