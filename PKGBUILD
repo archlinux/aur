@@ -2,14 +2,17 @@
 # Contributor: Simon Thorpe <simon at hivetechnology dot com dot au>
 pkgname=openmpt
 pkgver=1.29.10.00
-pkgrel=1
-pkgdesc="Audio module tracker formerly known as ModPlug Tracker"
+pkgrel=2
+pkgdesc="Open-source audio module tracker"
 arch=('i686' 'x86_64')
 url="https://openmpt.org/"
 license=('BSD')
-depends=('ccache' 'wine-mono' 'wine_gecko')
+depends=('wine')
 makedepends=('gendesk' 'imagemagick')
-optdepends=('bash-completion: tab completion support')
+optdepends=(
+  'bash-completion: tab completion support'
+  'ccache: for Wine native host support'
+)
 source_i686=("https://download.openmpt.org/archive/openmpt/$(echo $pkgver | grep -Po '^\d+.\d+')/OpenMPT-$pkgver-portable.zip")
 source_x86_64=("https://download.openmpt.org/archive/openmpt/$(echo $pkgver | grep -Po '^\d+.\d+')/OpenMPT-$pkgver-portable-x64.zip")
 sha256sums_i686=('97fbb02e380aee9486d3f28416b6f2752b761a9521fa79d4f508f6958e57ef7f')
@@ -42,3 +45,5 @@ package(){
   # This list of supported file extensions was taken from the features page of the website. There is probably a more complete list somewhere.
   echo "_openmpt() { local cur prev words cword split; _init_completion -s || return; _filedir '@(669|AMF|AMS|DBM|DIGI|DMF|DSM|FAR|GDM|ICE|ST26|IMF|IT|ITP|J2B|M15|STK|MDL|MED|MO3|MOD|MPTM|MT2|MTM|OKT|PLM|PSM|PTM|S3M|STM|ULT|UMX|WOW|XM)'; } && complete -F _openmpt openmpt" >$pkgdir/usr/share/bash-completion/completions/openmpt
 }
+
+# vim:set ts=2 sw=2 et:
