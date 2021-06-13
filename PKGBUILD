@@ -5,7 +5,7 @@ pkgver=13.0.4
 pkgrel=1
 pkgdesc='Zulu Embedded is a certified build of OpenJDK for Armv8/v7/v6 devices.'
 arch=('armv6h' 'armv7h' 'armv8h' 'aarch64' 'i686' 'x86_64')
-url='https://www.azul.com/downloads/#download-openjdk'
+url='https://www.azul.com/downloads/?os=linux'
 license=('custom')
 install=jdk.install
 options=(!strip)
@@ -22,13 +22,13 @@ case "$CARCH" in
     armv?h) _arch='aarch32hf'
         _build=13.33.38
         sha256sums=('9b8bfb5b60bd93a1c724834a805c2e81897bb58b54c89ce0f45712940444e720')
-        source=("https://cdn.azul.com/zulu-embedded/bin/zulu${_build}-ca-jdk${pkgver}-c2-linux_${_arch}.tar.gz")
+        source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-c2-linux_${_arch}.tar.gz")
         ;;
     aarch64) _arch='aarch64'
         _build=16.30.15
         pkgver=16.0.1
         sha256sums=('c19df0f8cd665a14d26b7a2d92d0319ed91d2e4f0e71a70e6e80289e08b9f291')
-        source=("https://cdn.azul.com/zulu-embedded/bin/zulu${_build}-ca-jdk${pkgver}-linux_${_arch}.tar.gz")
+        source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_${_arch}.tar.gz")
         provides=("java-environment=15" "java-runtime=15")
         ;;
     i686) _arch='i686'
