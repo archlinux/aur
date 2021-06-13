@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-dm-tree
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='tree is a library for working with nested data structures'
 arch=('any')
@@ -11,7 +11,7 @@ depends=(python python-six)
 optdepends=()
 makedepends=(python python-setuptools bazel)
 source=("$pkgname-$pkgver::https://pypi.org/packages/source/d/dm-tree/dm-tree-${pkgver}.tar.gz")
-sha256sums=('a951d2239111dfcc468071bc8ff792c7b1e3192cab5a3c94d33a8b2bda3127fa')
+sha256sums=('6776404b23b4522c01012ffb314632aba092c9541577004ab153321e87da439a')
 
 _pkgname=dm-tree
 
