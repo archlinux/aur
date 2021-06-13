@@ -1,18 +1,18 @@
 #!/usr/bin/python2
 
-import sys, pprint
+import importlib, pprint, sys
 
 #sys.path = sys.path + ["/usr/lib/python2.7/site-packages/Pywikipediabot-2.0b1-py2.7.egg"]
 pprint.pprint(sys.path)
 
-names = [
+names = (
     "Pywikipediabot",
     "pywikibot"
-]
+)
 
 for name in names:
     try:
-        import name
+        importlib.import_module(name)
         print("import success: " + name)
     except ImportError:
         print("import error: " + name)
