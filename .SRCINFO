@@ -1,7 +1,7 @@
 pkgbase = grub-libzfs
 	pkgdesc = GNU GRand Unified Bootloader (2) - libzfs support
 	pkgver = 2.04
-	pkgrel = 8
+	pkgrel = 10
 	epoch = 2
 	url = https://www.gnu.org/software/grub/
 	install = grub-libzfs.install
@@ -53,8 +53,8 @@ pkgbase = grub-libzfs
 	source = git+https://git.savannah.gnu.org/git/grub.git#tag=grub-2.04?signed
 	source = git+https://git.savannah.gnu.org/git/grub-extras.git#commit=8a245d5c1800627af4cefa99162a89c7a46d8842
 	source = git+https://git.savannah.gnu.org/git/gnulib.git#commit=be584c56eb1311606e5ea1a36363b97bddb6eed3
-	source = http://unifoundry.com/pub/unifont/unifont-13.0.05/font-builds/unifont-13.0.05.bdf.gz
-	source = http://unifoundry.com/pub/unifont/unifont-13.0.05/font-builds/unifont-13.0.05.bdf.gz.sig
+	source = http://unifoundry.com/pub/unifont/unifont-13.0.06/font-builds/unifont-13.0.06.bdf.gz
+	source = http://unifoundry.com/pub/unifont/unifont-13.0.06/font-builds/unifont-13.0.06.bdf.gz.sig
 	source = 0003-10_linux-detect-archlinux-initramfs.patch
 	source = 0004-add-GRUB_COLOR_variables.patch
 	source = 0005-grub-install-fix-inverted-test-for-NLS-enabled-when-.patch
@@ -66,13 +66,12 @@ pkgbase = grub-libzfs
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = c4e61e9336d8d024479ea72616722c6c47c93f76dc173e8ad3edf9f9e07c3115
+	sha256sums = b7668a5d498972dc4981250c49f83601babce797be19b4fdd0f2f1c6cfbd0fc5
 	sha256sums = SKIP
 	sha256sums = 171415ab075d1ac806f36c454feeb060f870416f24279b70104bba94bd6076d4
 	sha256sums = a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29
 	sha256sums = 06820004912a3db195a76e68b376fce1ba6507ac740129f0b99257ef07aba1ea
 	sha256sums = 55c559b6d8c4a832a43cc35c7635de37402ec9e3e3bfd8b2b7761a06f0bfda02
-	sha256sums = 690adb7943ee9fedff578a9d482233925ca3ad3e5a50fffddd27cf33300a89e3
+	sha256sums = 791fadf182edf8d5bee4b45c008b08adce9689a9624971136527891a8f67d206
 
 pkgname = grub-libzfs
-
