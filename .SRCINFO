@@ -1,14 +1,13 @@
 pkgbase = apricity-icons
 	pkgdesc = Apricity OS icon theme for Gnome or Cinnamon
-	pkgver = 3.36.post
-	pkgrel = 2
+	pkgver = 40.post
+	pkgrel = 1
 	url = https://github.com/dvorapa/apricity-icons/
 	arch = any
 	license = GPLv3
 	depends = gtk-update-icon-cache
-	source = apricity-icons-3.36-post::https://github.com/dvorapa/apricity-icons/archive/3.36-post.tar.gz
-	sha256sums = 93665a72bb635cf52de3c653194a12ba864e0eee0b4b2b87e575b02bea39311c
+	source = apricity-icons-40-post::https://github.com/dvorapa/apricity-icons/archive/40-post.tar.gz
+	sha256sums = 13073f265d311d66e5dd9a95eb41e2368634b0c4e414a4dd24a10e547ab68856
 
 pkgname = apricity-icons
 	optdepends = gnome-tweaks: simple switch
-
