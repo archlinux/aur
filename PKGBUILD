@@ -2,14 +2,14 @@
 
 pkgname=jlcpcassit-wine
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Wine 嘉立创 PC 端下单助手"
 arch=('any')
 url="https://www.jlc.com/portal/appDownloadsWithConfig.html"
 license=('unknow')
 provides=(${pkgname})
 conflicts=(${pkgname} ${pkgname%-wine})
-# replaces=(${pkgname})
+replaces=("jlcpcassit-bin")
 depends=('wine' 'winetricks' 'wqy-zenhei' 'unixodbc' 'lib32-unixodbc')
 optdepends=("wine-mono-gecko-version-fix: Fix the version numbers of wine-mono and wine-gecko files to solve the dialog box that pops up when starting wine.")
 # makedepends=('unarchiver')
@@ -54,6 +54,25 @@ REGEDIT4
 "FontSmoothingType"=dword:00000002
 "FontSmoothingGamma"=dword:00000578
 "FontSmoothingOrientation"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion]
+"RegisteredOrganization"="${pkgname%-wine}"
+"RegisteredOwner"="${pkgname%-wine}"
+
+
+[HKEY_CURRENT_USER\Software\Wine\Dll Overrides]
+"msvcp100"="native,builtin"
+"msvcr100"="native,builtin"
+"vcruntime140"="native,builtin"
+"nim"="native,builtin"
+"nrtc"="native,builtin"
+"libcef"="native,builtin"
+"libEGL"="native,builtin"
+"libGLESv2"="native,builtin"
+"d3dcompiler_43"="native,builtin"
+"d3dcompiler_47"="native,builtin"
+"acge15"="native,builtin"
+
 EOF
 
     export WINEPREFIX="${srcdir}"/tmp/env
@@ -108,10 +127,16 @@ fi
 
 if [ ! -f "$HOME"/.${pkgname%-wine}/regok ] ; then
     touch "$HOME"/.${pkgname%-wine}/regok || exit 1
+
+#     winetricks -q vcrun2010
+
+    cd "/home/taotieren"/.jlcpcassit/ && regsvr32 *.dll
+    wineserver -k
     regedit "$HOME"/.${pkgname%-wine}/wine/regpatch.reg
-    cd "$HOME"/.${pkgname%-wine}/ && regsvr32 *.dll
     wineserver -k
 fi
+
+# WINEDEBUG=+loaddll wine64 "$HOME"/.${pkgname%-wine}/${pkgname%-wine} "$@"
 
 wine "$HOME"/.${pkgname%-wine}/${pkgname%-wine} "$@"
 EOF

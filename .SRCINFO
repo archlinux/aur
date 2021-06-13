@@ -1,7 +1,7 @@
 pkgbase = jlcpcassit-wine
 	pkgdesc = Wine 嘉立创 PC 端下单助手
 	pkgver = 3.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jlc.com/portal/appDownloadsWithConfig.html
 	install = jlcpcassit-wine.install
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = jlcpcassit-wine
 	provides = jlcpcassit-wine
 	conflicts = jlcpcassit-wine
 	conflicts = jlcpcassit
+	replaces = jlcpcassit-bin
 	options = !strip
 	source = jlcpcassit-wine_3.4.0.zip::https://download.jlc.com/jlchelper/release/3.4.0/JLCPcAssit_setup_3.4.0.zip
 	source = jlcpcassit-wine.install
