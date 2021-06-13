@@ -1,8 +1,8 @@
 pkgbase = com.wesing.deepin
-	pkgdesc = WeSing on wine
+	pkgdesc = WeSing (全民k歌) on wine
 	pkgver = 2.21.170.0319
 	pkgrel = 4
-	url = http://cbox.cntv.cn/
+	url = https://kg.qq.com/
 	install = wineapps.install
 	arch = i686
 	arch = x86_64
