@@ -1,5 +1,5 @@
-# Maintainer: spsf64 <at g m a i l  dot com>
-# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota.com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota.com>
+# Contributor: spsf64 <at g m a i l  dot com>
 pkgname=webapp-manager
 pkgver=1.1.3
 pkgrel=1

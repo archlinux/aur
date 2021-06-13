@@ -20,4 +20,3 @@ pkgbase = webapp-manager
 	sha256sums = 060d57cb592148094b9513f1d1adec7297dd216c74130f0b2339765e8590f93b
 
 pkgname = webapp-manager
-
