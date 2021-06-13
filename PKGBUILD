@@ -7,7 +7,7 @@
 pkgname=mtplayer
 _realname=MTPlayer
 pkgver=10
-pkgrel=1
+pkgrel=2
 pkgdesc="Offers access to the Mediathek of different german tv stations (ARD, ZDF, Arte, etc.)"
 arch=('any')
 url="https://www.p2tools.de/mtplayer/"
@@ -27,7 +27,7 @@ package() {
   cp -r $_realname "$pkgdir"/opt
   install -Dm755 "$srcdir"/$pkgname.sh "$pkgdir"/usr/bin/$pkgname
   install -Dm644 "$pkgdir"/opt/$_realname/$_realname.png "$pkgdir"/usr/share/pixmaps/MTPlayer.png
-  install -Dm644 "$srcdir"/$pkgname.desktop "$pkgdir"/usr/share/aplications/$pkgname.desktop
+  install -Dm644 "$srcdir"/$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
   # remove unneeded stuff
   find "$pkgdir" -name "*.exe" -exec rm {} \;
   install -Dm644 "$pkgdir"/opt/$_realname/$_realname.png "$pkgdir"/usr/share/pixmaps/MTPlayer.png
