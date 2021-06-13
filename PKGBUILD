@@ -2,22 +2,20 @@
 # Contributor: Thomas Gatzweiler <thomas.gatzweiler@gmail.com> wsjtx-svn maintainer
 
 pkgname=wsjtx-git
-pkgver=r6921.4c05f80a2
+pkgver=r8835.68a3d410d
 pkgrel=1
 pkgdesc='Software for Amateur Radio Weak-Signal Communication (JT9 and JT65)'
-# change _wsjtx_tag to other versions such as wsjtx-2.1.0-rc5
+# change _wsjtx_tag to other versions such as wsjtx-2.5.0-rc1
 _wsjtx_tag=master
 arch=('i686' 'x86_64')
 url='http://physics.princeton.edu/pulsar/k1jt/wsjtx.html'
 license=('GPL-3')
-depends=('qt5-base' 'qt5-multimedia' 'qt5-serialport' 'libusb' 'libusb-compat' 'fftw' 'hamlib')
+depends=('qt5-base' 'qt5-multimedia' 'qt5-serialport' 'libusb' 'libusb-compat' 'fftw' 'hamlib-git')
 makedepends=('cmake' 'git' 'asciidoctor' 'asciidoc' 'qt5-tools' 'gcc-fortran')
 provides=('wsjtx')
 conflicts=('wsjtx')
-source=("git+https://git.code.sf.net/p/wsjt/wsjtx/#tag=$_wsjtx_tag"
-        "wsjtx.patch")
-md5sums=('SKIP'
-         '4a6220d2a93011fff9057046a15a43c0')
+source=("git+https://git.code.sf.net/p/wsjt/wsjtx/#tag=$_wsjtx_tag")
+md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -25,9 +23,7 @@ pkgver() {
 }
 
 prepare() {
-    cp wsjtx.patch "$srcdir/${pkgname%-git}"
 	cd "$srcdir/${pkgname%-git}"
-    patch -i wsjtx.patch
 }
 
 build() {

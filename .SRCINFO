@@ -1,6 +1,6 @@
 pkgbase = wsjtx-git
 	pkgdesc = Software for Amateur Radio Weak-Signal Communication (JT9 and JT65)
-	pkgver = r6921.4c05f80a2
+	pkgver = r8835.68a3d410d
 	pkgrel = 1
 	url = http://physics.princeton.edu/pulsar/k1jt/wsjtx.html
 	arch = i686
@@ -18,13 +18,10 @@ pkgbase = wsjtx-git
 	depends = libusb
 	depends = libusb-compat
 	depends = fftw
-	depends = hamlib
+	depends = hamlib-git
 	provides = wsjtx
 	conflicts = wsjtx
 	source = git+https://git.code.sf.net/p/wsjt/wsjtx/#tag=master
-	source = wsjtx.patch
 	md5sums = SKIP
-	md5sums = 4a6220d2a93011fff9057046a15a43c0
 
 pkgname = wsjtx-git
-
