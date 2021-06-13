@@ -11,7 +11,7 @@ arch=(x86_64)
 provides=("glibc=${pkgver%%.r*}")
 url='https://www.gnu.org/software/libc'
 license=(GPL LGPL)
-makedepends=(git gd lib32-gcc-libs python)
+makedepends=(git gd lib32-gcc-libs python cpio)
 optdepends=('perl: for mtrace')
 options=(!strip staticlibs)
 conflicts=('glibc')

@@ -9,6 +9,7 @@ pkgbase = glibc-dso
 	makedepends = gd
 	makedepends = lib32-gcc-libs
 	makedepends = python
+	makedepends = cpio
 	optdepends = perl: for mtrace
 	provides = glibc=2.33
 	conflicts = glibc
