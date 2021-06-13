@@ -2,7 +2,7 @@
 # Maintainer: Claudio Netto <nettinhorama@gmail.com>
 
 pkgname=tsuru
-pkgver=1.8.1
+pkgver=1.9.6
 pkgrel=1
 arch=('any')
 
@@ -14,7 +14,7 @@ makedepends=('go')
 provides=("tsuru=${pkgver}")
 
 source=("tsuru-client.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('ccd9b6cb113e97da5203940385c8c1cb3833cb243467e9b8453d90bb49a19a0d')
+sha256sums=('7a93003cc661fe231e49d3e38e0eaf0603b2ed4ddfd3c4314c9e185502085396')
 
 build() {
   make -C ${srcdir}/tsuru-client-${pkgver} build
