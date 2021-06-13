@@ -1,7 +1,7 @@
 pkgbase = paclist
 	pkgdesc = pacman hook to make lists of installed packages.
-	pkgver = r2
-	pkgrel = 2
+	pkgver = r3
+	pkgrel = 1
 	arch = any
 	license = GPL
 	provides = paclist

@@ -1,4 +1,4 @@
-paclist's config
+# paclist's config
 
 # package lists to generate
 lists=(

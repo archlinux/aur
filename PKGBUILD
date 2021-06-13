@@ -1,7 +1,7 @@
 # Maintainer: Ehsan Ghorbannezad <ehsangn@protonmail.ch>
 pkgname=paclist
-pkgver=r2
-pkgrel=2
+pkgver=r3
+pkgrel=1
 pkgdesc='pacman hook to make lists of installed packages.'
 arch=(any)
 license=(GPL)
