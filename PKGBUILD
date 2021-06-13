@@ -1,6 +1,6 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
-# Scene and scene drag & drop was disabled due to this issue
+# Scene and source drag & drop was disabled due to this issue
 # (https://github.com/obsproject/obs-studio/issues/4488)
 # You can take the risk to re-enable it by changing the following variable to 1
 # THIS IS AT YOUR OWN RISK
