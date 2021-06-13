@@ -7,10 +7,10 @@ pkgbase = paclist
 	provides = paclist
 	conflicts = paclist
 	source = paclist.sh
-	source = paclist.conf
 	source = paclist.hook
-	sha256sums = 797cf54f8bf1f2bd471b00dcfbe568c60d1c637783655ffc75b93034b64502a9
+	source = config
+	sha256sums = b2423b71c85c00c5ffccf78dd8ed859edbbacac9f3765fa2ea6cb9662e9736a8
+	sha256sums = 69e6e0389bb29cd491306e8f2c611f59b0e6122007567e8b9f41d7bbda4aebcb
 	sha256sums = 5460135c15426c7845a8cb84a424c1501b12a9f6c4451600d03e1bce266acf45
-	sha256sums = 59d60913b1c473eb4b9d13b833e76d8d4867f200c6a5cb42de8721e06aa44cbb
 
 pkgname = paclist

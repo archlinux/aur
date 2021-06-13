@@ -5,7 +5,7 @@
 export PATH="${PATH}:/usr/bin:/usr/local/bin"
 
 # load and check configuration
-. /etc/paclist/paclist.conf || exit 1
+. /etc/paclist/config || exit 1
 [ ${#lists[@]} -lt 4 ] && exit 1
 [ $(( ${#lists[@]} % 4 )) -ne 0 ] && exit 1
 

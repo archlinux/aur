@@ -5,5 +5,6 @@ Type = Package
 Target = *
 
 [Action]
+Description = Updating package lists...
 When = PostTransaction
 Exec = /bin/sh -c 'paclist <&- >&- 2>&- &'
