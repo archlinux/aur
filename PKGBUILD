@@ -1,7 +1,7 @@
 # Maintainer: Kppqju77 <ju.adde-gmail-com>
 
 pkgname=flutter-beta
-pkgver=2.2.0
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
@@ -16,11 +16,11 @@ backup=("opt/${pkgname%-beta}/packages/${pkgname%-beta}_test/pubspec.yaml" "opt/
 options=("!emptydirs")
 install="${pkgname%-beta}.install"
 source=(
-  "${pkgname%-beta}-${pkgver}.tar.xz::https://storage.googleapis.com/flutter_infra/releases/beta/linux/${pkgname%-beta}_linux_${pkgver/_/-}-beta.tar.xz"
+  "${pkgname%-beta}-${pkgver}.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/beta/linux/${pkgname%-beta}_linux_${pkgver/_/-}-beta.tar.xz"
   "${pkgname%-beta}.sh"
   "${pkgname%-beta}.csh"
 )
-sha256sums=('556c701df540f8838aea8a97f1aa50f9623a6d39760a4fe35ac8e961cf5a5e71'
+sha256sums=('0d89bc31949ff8d00d3784f901539533e4b33b2cd93fb6bf1ab54e47429b3b95'
             '1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a'
             '7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f')
 
