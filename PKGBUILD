@@ -16,12 +16,12 @@ build() {
     cd $_gitname
     cargo build --release
     mkdir -p target/release/man
-    pandoc --standalone -f markdown -t man man/$pkgname.1.md        > "target/release/man/$pkgname.1"
+    pandoc --standalone -f markdown -t man man/${pkgname}.1.md > "target/release/man/${pkgname.1}"
 }
 
 package() {
     cd $_gitname
-    install -Dm755 --no-target-directory "src/args-collector.sh" "$pkgdir/usr/bin/${pkgname}"
-    install -Dm755 --target-directory="$pkgdir/usr/lib/${pkgname}" "target/release/note-manager"
-    install -Dm644 --target-directory="$pkgdir/usr/share/man/man1" "target/release/man/$_pkgname.1" 
+    install -Dm755 --no-target-directory "src/args-collector.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 --target-directory="${pkgdir}/usr/lib/${pkgname}" "target/release/note-manager"
+    install -Dm644 --target-directory="${pkgdir}/usr/share/man/man1" "target/release/man/${pkgname}.1" 
 }
