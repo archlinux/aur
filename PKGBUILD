@@ -1,16 +1,20 @@
 # Maintainer: Emil Lundberg <emil@emlun.se>
 
 pkgname=yubikey-oath-dmenu
-pkgver=0.12.0
-pkgrel=2
+pkgver=0.13.0
+pkgrel=1
 pkgdesc="dmenu interface for getting OATH codes from a YubiKey"
 url="https://github.com/emlun/yubikey-oath-dmenu"
 license=('GPL3')
 arch=('any')
-depends=('dmenu' 'python' 'python-click' 'xclip' 'yubikey-manager>=0.5.0' 'yubikey-manager<4.0.0')
+depends=('dmenu' 'python' 'python-click' 'yubikey-manager>=4.0.0')
 optdepends=(
-  'libnotify: Feedback via notify-send'
-  'xdotool: Type code instead of copying to clipboard'
+  'libnotify: Use --notify for user feedback via notifications'
+  'pinentry: YubiKey OATH password support'
+  'wl-clipboard: Use --clipboard to copy code to clipboard (Wayland)'
+  'wtype: Use --type to type code into focused window (Wayland)'
+  'xclip: Use --clipboard to copy code to clipboard (X11)'
+  'xdotool: Use --type to type code into focused window (X11)'
 )
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/emlun/${pkgname}/archive/v${pkgver}.tar.gz"
