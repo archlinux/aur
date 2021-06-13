@@ -1,0 +1,17 @@
+pkgbase = tree-sitter-jsonc-git
+	pkgdesc = JSONC grammar for tree-sitter
+	pkgver = 0.3.0.r0.g02b0165
+	pkgrel = 1
+	url = https://gitlab.com/whynothugo/tree-sitter-jsonc
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = git
+	makedepends = tree-sitter
+	makedepends = npm
+	provides = tree-sitter-jsonc
+	conflicts = tree-sitter-jsonc
+	source = tree-sitter-jsonc-git::git+https://gitlab.com/whynothugo/tree-sitter-jsonc
+	sha256sums = SKIP
+
+pkgname = tree-sitter-jsonc-git
