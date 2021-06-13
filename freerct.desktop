@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=FREERCT
+Comment=Open Source RollerCoaster Tycoon 1 and 2 implementation
+Exec=freerct
+Icon=freerct
+Terminal=false
+StartupNotify=false
+Categories=Game;
