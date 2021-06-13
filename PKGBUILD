@@ -7,13 +7,13 @@ pkgver=r20.a2d4278
 pkgrel=1
 pkgdesc='Easily connect to a VPN in a country of your choice.'
 arch=('x86_64')
-url="https://github.com/scry3r/autovpn.git"
+url="https://github.com/DevelopedLogic/autovpn.git"
 license=('GPL')
 depends=('openvpn')
 makedepends=('go' 'go-pie')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=('git+https://github.com/scry3r/autovpn.git')
+source=('git+https://github.com/DevelopedLogic/autovpn.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -23,6 +23,8 @@ pkgver() {
 
 build() {
         cd "$srcdir/${_pkgname}"
+	go mod init autovpn.go
+	go mod tidy
         go build -o ${_pkgname}
 }
 
