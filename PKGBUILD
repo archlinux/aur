@@ -19,5 +19,5 @@ package() {
     cd "$srcdir"
     install -Dm755 $pkgname.sh -t "$pkgdir/usr/bin/"
     install -Dm644 config -t "$pkgdir/etc/$pkgname/"
-    install -Dm644 hook -t "$pkgdir/usr/share/libalpm/hooks/"
+    install -Dm644 $pkgname.hook -t "$pkgdir/usr/share/libalpm/hooks/"
 }
