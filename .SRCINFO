@@ -1,16 +1,14 @@
 pkgbase = ketm
 	pkgdesc = kill everything that moves
 	pkgver = 0.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ketm-gg.sf.net
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL
 	depends = sdl
-	source = ftp://ftp.debian.org/debian/pool/main/k/ketm/ketm_0.0.6.orig.tar.gz
-	source = ftp://ftp.debian.org/debian/pool/main/k/ketm/ketm_0.0.6-22.diff.gz
+	source = http://ftp.debian.org/debian/pool/main/k/ketm/ketm_0.0.6.orig.tar.gz
+	source = http://ftp.debian.org/debian/pool/main/k/ketm/ketm_0.0.6-25.debian.tar.xz
 	sha512sums = 30f83911bae02fe48ab288c209b8d18457542c222b60f7a973fe4e3128ceb654b62a495de97453c524c17f4aa43b5210889488a22ab25f8828cdb251a940da24
-	sha512sums = 0629e88f86a9fa2a7d6a1a68e8da3329fd8ec275bda465ba8d044e9191e9bab6888f82a6cfee5264341610155a81cb42f8be663e82c08227840742ee5d485e1d
+	sha512sums = 75add7cebdb81da643549f1819fc167acf64c524f5ddb014eca2697bb8660cfd33200dc596ba802fe4d2f25ae4585c7ba9a2bfc5189abd2ac71f62479b5cbb6d
 
 pkgname = ketm
-
