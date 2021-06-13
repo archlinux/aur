@@ -8,7 +8,7 @@ pkgname=mullvad-vpn-beta
 _pkgver=2021.4
 _channel=beta
 pkgver=${_pkgver}.${_channel}1
-pkgrel=2
+pkgrel=3
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 url="https://www.mullvad.net"
 arch=('x86_64')
@@ -157,10 +157,6 @@ package() {
 	# Install main files
 	install -d "$pkgdir/opt/Mullvad VPN"
 	cp -r dist/linux-unpacked/* "$pkgdir/opt/Mullvad VPN"
-
-	# Restrict management socket access to wheel group
-	sed -i '/\[Service\]/a Environment="MULLVAD_MANAGEMENT_SOCKET_GROUP=wheel"' \
-		"$pkgdir/opt/Mullvad VPN/resources/mullvad-daemon.service"
 
 	# Symlink daemon service to correct directory
 	install -d "$pkgdir/usr/lib/systemd/system"
