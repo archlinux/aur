@@ -51,7 +51,7 @@ pkgbase=linux-cacule-rc
 _major=5.13
 #_minor=1
 #_minorc=$((_minor+1))
-_rcver=rc5
+_rcver=rc6
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 _stablerc=${_major}-${_rcver}
@@ -71,6 +71,7 @@ source=("https://git.kernel.org/torvalds/t/linux-${_stablerc}.tar.gz"
     #    "${_patchsource}/arch-patches-v3/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_patchsource2}/cacule-patches/cacule-5.13.patch"
         "${_patchsource2}/bbr2-5.13.patch"
+        "${_patchsource2}/clearlinux.patch"
         "${_patchsource2}/bfq-5.13.patch"
         "${_patchsource2}/ksm-5.13.patch"
         "${_patchsource2}/cpu-5.13.patch"
@@ -79,6 +80,7 @@ source=("https://git.kernel.org/torvalds/t/linux-${_stablerc}.tar.gz"
         "${_patchsource2}/ntfs3-5.13.patch"
         "${_patchsource2}/v4l2loopback-5.13.patch"
         "${_patchsource2}/futex/1001-futex-513-wait_multiple.patch"
+        "${_patchsource2}/misc/0009-rcu-fixes-next.patch"
         "${_patchsource2}/misc/2002-tune-vm-mm-and-vfs-settings.patch"
         "${_patchsource}/ll-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
         "${_patchsource}/lru-gen/PATCH-v3-00-14-Multigenerational-LRU-Framework.patch"
@@ -102,18 +104,20 @@ source=("https://git.kernel.org/torvalds/t/linux-${_stablerc}.tar.gz"
       #  "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch"
       )
 
-sha512sums=('73f72ae0e8608f8d6b2e3d699f210e03f5e77b67b72ed5256226c92c93517514029c7c98d486ebe6842adc6195cb8bb6da752cfda33e1e01c825e589438ec578'
+sha512sums=('5459101b0ad0d8ecf3799f2793fe5d0734a8e9152ffd4bcfc6304b290130d1365d1e23a50ec9d0ed7025f1c04be78bdeb2ba6abf29423ff386d7ca161fdbd260'
             'a49537a61bd7ca80f456e0618f4c64630651efada8bcc68ee260461370e9638410b0a883e036a3e7777c841d585f91eea9a051e4c93d38b639ebebdff643cf4e'
             '278e045dc5c5ec70087bbb14a4c7d7f2db6dd5bfd0a3f393c85e42a6847dcad2994473ecb3719fbea03261a574d56815d63623ea6c8e07f7afb2c948c87a5bc7'
-            '7b4911737ef22cb1209ad88b894e20b6740ade7e6a44513c5d8555090df77f84d0aa5955b21cafaa6da26f0b7e92eaca60f92662f9e5ae8f3175f908fe416214'
-            '2230a9158069302b63ea7ff7902a8115e6bfb478827550f2974d8e3ee590471a587040e15614ec775d04c5983e228864f2097e757a5b6260f89022db04eed66b'
-            'c1a565d63a679f00fc597ed6d63f0b1568adfbe96c484fe9f816a4aef727ed22dd108b270e4f47b1df72f1415fe645afeede3d71c8c22d9b821175a5c83a135a'
+            'ed5770aa5365d8f040be95ac94d89c86efbb663b5d4b7aa6be4292e8ca740d79dc76f2d6b271df389c2cf5632b2a56e353d10153ba0fa2d08efab49fc36baf5c'
+            '3fa6162a9d694392834ae188ebe33f3554b7ded321ecb3f8553ab9b88997cf03d19491feaf5024c899cf51e1fcc5896285edb2b28ed6375bba8dd814eddeac57'
+            '9fede71b82c3fd268c1454631c0fc9e0d029f428bf165630e4c23f5c62549b8260f9032876ada5b3af18f57ae52c76290716a91546460b425cf67f57533a256a'
+            '784d0af5a3eb351c761c76aefef386385c10cb501da8c72387157c38a88705fc77fe4b4d9f82f569ba3859ed626d727b45a525689bad486ac29505c86357ad88'
             '224fed8f664a779c66959766b15c74f11b13c5484e53ba372b5c12fc3b8885141d8dfdafdc0cd5003de130d7b63d6d786f468ca044ff522b640493a82dca27c4'
-            '8646c34028a563ad4aa2f86c9c267a132504df43134ea804bc893545ac2b14eb805ee42b7954d554a4bd128a6e3a7cd5757c2d3eb7797944fbce7668bc06b37e'
-            '962b0dd7be9e1298a7972680efba445061fa508bdb2d3777fb2b2e3636738654a4bd2e7dd02e7936129e536527145f906a388f65b2f25775ba9be351d1181b82'
+            'ab57c107c8f9c6bf7ee067a59671896539c448e27306876f091a4d86c483aa8d14363d258cc42d7aed3d261d528aef0adf6118b3c918991a84988b102f14633c'
+            '170fbb1baaa1d4dbd9562808c322e20b4198322d7aa3ec272ac2289d8bc9a6a4111bef4cf460e34e321f2a760d4211768b967398a833f0218f8201ae0c811a99'
             '256bedd5de57a4638e8331b0adf01bd1784ed77c4965b2b26c6cdd9eb7db4e0636417d6e9312e57f3d2dd67253cb5e97a383a76f423b5043c51d5e88160a291c'
             'dae7d3a868ca9061552e0a098b448d71f3bf842e3f40b58590d6f8dc4173feed55df6f25c8f71a65fde3478f7671c5a93e8cd0ce825509804c7684b7adf0ee15'
             'd8fbb667096a8d1d84db4d40c361bce5fc55e207c73fab266dba9033c6aff0cc0307c8a854c09fd2dabd99139ce640047bc87e0fd067d12ca1bd8f76f5d10ad3'
+            'bd91f61dd30c25cd37aa25e620583a0d9f3ba2b9f335f571ef41d09404f512df40e8eac559927e06cbdc133f12fbe49a8db264df50b2134f5e68d4ec8456df60'
             'a5e9b9d6a08be2d6bc6b724176c207c052d2271b3b77885b8169ed02c608b89726ea8b3e9664c4bc4c85aab938e88c67fb15de42f9f9a649d54b466b473fcdc5'
             '47f265716ebd268e4296aaba1efe5098df00736b69ec7d0413cace6dbb5cb162c1c952f7527a2a41b246ed76e6e112514c5349e8dc52f4609def30257e18d7aa'
             '341492bf6b899a8fb4a0ef375e5461ec6e49c96755c10dd85d36b3b35a62d4e15a8b2df14aecc6bcc13485a16ad21a360050a091cf69b5aa4fc84a74dee34020'
