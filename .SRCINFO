@@ -1,0 +1,17 @@
+pkgbase = tree-sitter-elixir-git
+	pkgdesc = Elixir grammar for tree-sitter
+	pkgver = r198.7402438
+	pkgrel = 1
+	url = https://github.com/ananthakumaran/tree-sitter-elixir
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = git
+	makedepends = tree-sitter
+	makedepends = npm
+	provides = tree-sitter-elixir
+	conflicts = tree-sitter-elixir
+	source = tree-sitter-elixir-git::git+https://github.com/ananthakumaran/tree-sitter-elixir
+	sha256sums = SKIP
+
+pkgname = tree-sitter-elixir-git
