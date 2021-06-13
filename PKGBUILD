@@ -2,7 +2,7 @@
 
 pkgname=python-pyls-isort-git
 _pkgname=pyls-isort
-pkgver=0.1.1.r2.g5654f98
+pkgver=0.2.2.r0.g7ddf412
 pkgrel=1
 pkgdesc="Isort plugin for python-language-server"
 arch=('any')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

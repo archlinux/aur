@@ -1,6 +1,6 @@
 pkgbase = python-pyls-isort-git
 	pkgdesc = Isort plugin for python-language-server
-	pkgver = 0.1.1.r2.g5654f98
+	pkgver = 0.2.2.r0.g7ddf412
 	pkgrel = 1
 	url = https://github.com/paradoxxxzero/pyls-isort
 	arch = any
