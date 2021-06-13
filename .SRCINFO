@@ -1,10 +1,9 @@
 pkgbase = minecraft-overviewer-git
 	pkgdesc = Render large resolution images of a Minecraft map with a web UI
-	pkgver = 0.15.0.r30.dc6f8cfc
+	pkgver = 0.17.0.r20.c1f1c311
 	pkgrel = 1
 	url = https://github.com/overviewer/Minecraft-Overviewer
 	arch = x86_64
-	arch = i686
 	license = GPL3
 	makedepends = git
 	makedepends = python-sphinx
@@ -21,4 +20,3 @@ pkgname = minecraft-overviewer-git
 pkgname = minecraft-overviewer-docs-git
 	arch = any
 	depends = 
-

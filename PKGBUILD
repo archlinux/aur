@@ -5,10 +5,10 @@
 
 _pkgname=Minecraft-Overviewer
 pkgname=(${_pkgname,,}{,-docs}-git)
-pkgver=0.15.0.r30.dc6f8cfc
+pkgver=0.17.0.r20.c1f1c311
 pkgrel=1
 pkgdesc="Render large resolution images of a Minecraft map with a web UI"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url="https://github.com/overviewer/${_pkgname}"
 license=('GPL3')
 depends=('python' 'python-pillow' 'python-numpy')
