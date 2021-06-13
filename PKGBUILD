@@ -3,7 +3,7 @@
 _gecko_id="jid1-xUfzOsOFlzSOXg@jetpack"
 _name=Reddit-Enhancement-Suite
 pkgname=firefox-extension-reddit-enhancement-suite
-pkgver=5.22.4
+pkgver=5.22.5
 pkgrel=1
 pkgdesc="Suite of modules that enhances your Reddit browsing experience"
 arch=(any)
@@ -13,7 +13,7 @@ groups=(firefox-addons)
 depends=(firefox)
 makedepends=(yarn)
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6091983f1cb4860d87acef7679bfb4edff87af48de99032381f2a5211d553191')
+sha256sums=('fa9385eb50c525b7e69f4274e25d95e6c401b4be8dae6e24b81fd210ce647785')
 
 
 build() {
