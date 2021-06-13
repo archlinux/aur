@@ -1,5 +1,8 @@
 # Maintainer: zoe <chp321 [at] gmail [dot] com>
 # Contributor: Arnaud Sevin <nono31 [at] gmail [dot] com>, repo at https://github.com/nono031/cewe-monlivrephoto.git
+# Contributor: Jozef Riha <jose1711 at gmail dot com>
+# Contributor: ManU	<manolo89 [at] online [dot] de>
+# Contributor: DonJaime	<DonJaime [at] freenet [dot] de>
 # forked from cewe-fotoservice by James Crompton, itself forked from cewe-fotobuch, originally by Jozef Riha, updated by Manuel Conzelmann
 # Updated by Zoe <chp321 at gmail dot com>, for french version
 
@@ -13,16 +16,16 @@ _productRename='Atelier Photo Fnac'
 _setupFilename='setup_Atelier_Photo_Fnac'
 
 pkgname=cewe-monlivrephoto
-conflicts=('cewe-fotowelt' 'cewe-fotobuch' 'cewe-fotoservice' 'mullerfoto-fotostar_de' 'mullerfoto-fotostar_cz' 'mullerfoto-fotostar_sk')
-pkgdesc="Création off-line de livres-photos, calendriers, posters…, disponibles ensuite en ligne à l'achat auprès de la FNAC"
+conflicts=('cewe-monlivrephoto-non-branded' 'cewe-fotowelt' 'cewe-fotobuch' 'cewe-fotoservice' 'mullerfoto-fotostar_de' 'mullerfoto-fotostar_cz' 'mullerfoto-fotostar_sk')
+pkgdesc="Création off-line de livres-photos, calendriers, posters…, disponibles ensuite en ligne à l'achat auprès de la FNAC (France)"
 # setup_Atelier_Photo_Fnac (script perl) is versatile too much, so it is better to skip its md5sum :
 md5sums=(SKIP
-         'b33d945e4fe6cdf33b8060ae73d83f0a'  ## updater.pl
+         '7ecfb4d5942ad421054c0e16e9167dc0'  ## updater.pl
          '82baecba5be4c2af0cccf0f5bc0e00c7') ## $pkgname.install
 
 pkgver=7.1.3
-pkgrel=1
-url="http://www.livrephoto-cewe.fr/"
+pkgrel=2
+url="https://www.cewe.fr/"
 license=("custom:eula")
 #depends=('libx11' 'libjpeg' 'curl' 'wget' 'gstreamer0.10-base-plugins' 'snappy')
 depends=('libx11' 'libjpeg' 'curl' 'wget' 'snappy')
@@ -32,8 +35,7 @@ source=("http://dls.photoprintit.com/download/Data/$_keyaccount-fr_FR/hps/$_setu
 	'updater.pl' "$pkgname.install")
 install=$pkgname.install
 _installDir=/usr/share/$pkgname
-##########################################
-# remaining code shared with cewe-fotoservice
+
 
 pkgver() {
 	grep 'my $HPS_VER' $srcdir/install.pl | grep -Po '[\d\.]+'
