@@ -17,4 +17,3 @@ pkgbase = python-pytorch-wpe-git
 	md5sums = SKIP
 
 pkgname = python-pytorch-wpe-git
-
