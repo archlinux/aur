@@ -1,6 +1,6 @@
 pkgbase = lipsum-git
 	pkgdesc = CLI lorem ipsum generator
-	pkgver = r36.0592929
+	pkgver = r39.61f4f25
 	pkgrel = 1
 	url = https://github.com/hannenz/lipsum
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = lipsum-git
 	optdepends = plank: Plank applet
 	provides = lipsum
 	conflicts = lipsum
-	source = lipsum::git+https://github.com/lelgenio/lipsum.git
+	source = lipsum::git+https://github.com/hannenz/lipsum.git
 	md5sums = SKIP
 
 pkgname = lipsum-git

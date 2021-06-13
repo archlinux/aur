@@ -1,12 +1,10 @@
 # Maintainer: Leonardo Eugênio <lelgenio@disroot.org>
 pkgname=lipsum-git
-pkgver=r36.0592929
+pkgver=r39.61f4f25
 pkgrel=1
 pkgdesc="CLI lorem ipsum generator"
 arch=('x86_64')
 url="https://github.com/hannenz/lipsum"
-# Temporary fork to work with DESTDIR,PREFIX
-_url="https://github.com/lelgenio/lipsum"
 license=('GPL')
 depends=()
 makedepends=('git' 'vala' 'gtk3' 'plank' 'gettext')
@@ -20,7 +18,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=("${pkgname%-git}::git+${_url}.git")
+source=("${pkgname%-git}::git+${url}.git")
 noextract=()
 md5sums=('SKIP')
 
