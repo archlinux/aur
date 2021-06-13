@@ -1,5 +1,5 @@
-# $Id$
-# Maintainer: Antoni Boucher <bouanto at zoho dot com>
+# Maintainer: Lance G. <gero3977 at gmail dot com>
+# Contributor: Antoni Boucher <bouanto at zoho dot com>
 
 pkgname='mobile-config-firefox'
 pkgver=2.0.0
