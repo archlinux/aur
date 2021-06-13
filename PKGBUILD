@@ -1,6 +1,6 @@
 # Maintainer: ransome <ransome@uber.space>
 pkgname="sleek"
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Todo app based on the todo.txt format for Linux, free and open-source"
 arch=("x86_64")
@@ -10,7 +10,7 @@ options=(!strip)
 makedepends=("yarn" "nodejs<16.0.0")
 depends=("electron" "nodejs")
 source=("${url}archive/refs/tags/v${pkgver}.zip" "sleek.desktop" "sleek")
-sha512sums=('81dc9fa6a372e7cfd0476c70031c218cef46f64a81dc4f081b7550ae7abb3e4da2ffe0217a44bf876f3ae1aec1a2164df8e39cb99f71f39f30077422df27571d'
+sha512sums=('732d6033d664e1c745d55e0d55b82d825ec0334fd35f8347f912c956fbe5dd810f55c0c83fa383be93d54324c1edb047d659e42c25c59c8dd793ae77aab7b621'
             '605f49606eb0656846ac5dc3b97eca0acb3a781b07c71aff1e027935d5e8ea569d290c95d67bd7347ddd133c1643e6f3c6fe36bd1b52f49e528b34a458afe316'
             'ea1d322bd56c7944a9eae97f4968a6a2e937b510eb3c1c21266428450c5b2ddcd8576718d0b66b69fbce5694ba94e80a692d04bda1e8c2b24a8d814a5ed50963')
 
@@ -44,5 +44,5 @@ package() {
   for size in 22 24 32 48 64 128 256 512; do
     install -Dm644 "assets/icons/${size}x${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
   done
-  install -Dm644 "assets/icons/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.png"
+  install -Dm644 "assets/icons/512x512.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.png"
 }
