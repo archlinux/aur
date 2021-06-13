@@ -1,0 +1,17 @@
+pkgbase = tree-sitter-r-git
+	pkgdesc = R grammar for tree-sitter
+	pkgver = r64.bcf381c
+	pkgrel = 1
+	url = https://github.com/r-lib/tree-sitter-r
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = git
+	makedepends = tree-sitter
+	makedepends = npm
+	provides = tree-sitter-r
+	conflicts = tree-sitter-r
+	source = tree-sitter-r-git::git+https://github.com/r-lib/tree-sitter-r
+	sha256sums = SKIP
+
+pkgname = tree-sitter-r-git
