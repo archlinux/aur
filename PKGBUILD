@@ -2,7 +2,7 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-rocclr
 pkgver=4.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
 url='https://rocmdocs.amd.com/en/latest/Installation_Guide/HIP.html'
@@ -12,11 +12,15 @@ makedepends=('cmake' 'python' 'git')
 provides=('hip')
 conflicts=('hip')
 _git='https://github.com/ROCm-Developer-Tools/HIP'
+_roctracer='https://github.com/ROCm-Developer-Tools/roctracer'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz"
+        "$pkgname-roctracer-$pkgver.tar.gz::$_roctracer/archive/rocm-$pkgver.tar.gz"
         'amdgpu-targets.patch')
 sha256sums=('ecb929e0fc2eaaf7bbd16a1446a876a15baf72419c723734f456ee62e70b4c24'
+            '62a9c0cb1ba50b1c39a0636c886ac86e75a1a71cbf5fec05801517ceb0e67a37'
             'c1ccea2c6ca3e0e2a5f6449dccab7081386cb224db8c95391b27d8ac6f1d5754')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" ".tar.gz")"
+_dirtracer="$(basename "$_roctracer")-$(basename "${source[1]}" ".tar.gz")"
 
 prepare() {
     cd "$_dirname"
@@ -29,6 +33,7 @@ build() {
         -S "$_dirname" \
         -DCMAKE_INSTALL_PREFIX=/opt/rocm/hip \
         -DCMAKE_PREFIX_PATH=/opt/rocm/lib/cmake \
+        -DPROF_API_HEADER_PATH="$srcdir/$_dirtracer/inc/ext" \
         -DHIP_COMPILER=clang \
         -DHIP_PLATFORM=rocclr \
         -D__HIP_ENABLE_PCH=OFF
