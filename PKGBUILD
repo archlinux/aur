@@ -56,8 +56,8 @@ _minor=10
 _srcname=linux-${_major}
 pkgbase=linux-cacule
 pkgver=${_major}.${_minor}
-pkgrel=1
-pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
+pkgrel=3
+pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
 license=('GPL2')
@@ -69,10 +69,10 @@ _caculepatches="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/maste
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
-  'config'
+  "config"
   "${_patchsource}/arch-patches-v6/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
   "${_caculepatches}/v5.12/cacule-5.12.patch"
-  "${_patchsource}/cpu-patches-v3/0001-cpu-patches.patch"
+  "${_patchsource}/cpu-patches-v4/0001-cpu-patches.patch"
   "${_patchsource}/futex-patches-v2/0001-futex-resync-from-gitlab.collabora.com.patch"
   "${_patchsource}/futex2-stable-patches-v5/0001-futex2-resync-from-gitlab.collabora.com.patch"
   "${_patchsource}/wine-esync-patches/0001-v5.12-winesync.patch"
@@ -81,11 +81,17 @@ source=(
   "${_patchsource}/bfq-patches-v13/0001-bfq-patches.patch"
   "${_patchsource}/block-patches-v5/0001-block-patches.patch"
   "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
+  "${_patchsource}/fixes-miscellaneous/2002-tune-vm-mm-and-vfs-settings.patch"
+  "${_patchsource}/fixes-miscellaneous/objtool-crypto-jp.patch"
+#  "${_patchsource}/fixes-miscellaneous/lrng/lrng-40.patch"
+#  "${_patchsource}/fixes-miscellaneous/lrng/1004-lrng-update-20210607.patch"
   "${_patchsource}/bbr2-patches-v2/0001-bbr2-5.12-introduce-BBRv2.patch"
-  "${_patchsource}/btrfs-patches-v11/0001-btrfs-patches.patch"
+  "${_patchsource}/btrfs-patches-v12/0001-btrfs-patches.patch"
   "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
   "${_patchsource}/pf-patches-v3/0001-pf-patches.patch"
-  "${_patchsource}/lru-patches-v4/0001-lru-patches.patch"
+#  "${_patchsource}/lru-patches-v4/0001-lru-patches.patch"
+  "${_patchsource}/lru-gen/lru_5.12.patch"
+  "${_patchsource}/le9db_patches/le9db1-5.10.patch"
   "${_patchsource}/ntfs3-patches-v2/0001-ntfs3-patches.patch"
   "${_patchsource}/zstd-dev-patches-v3/0001-zstd-dev-patches.patch"
   "${_patchsource}/clearlinux-patches-v3/0001-clearlinux-patches.patch"
@@ -201,11 +207,18 @@ prepare() {
 
 
       ### Enable protect file mappings under memory pressure
+#          if [ -n "$_mm_protect" ]; then
+#          	echo "Enabling protect file mappings under memory pressure..."
+#          	scripts/config --enable CONFIG_UNEVICTABLE_FILE
+#          	scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
+#          	scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
+#          fi
+### Enable protect file mappings under memory pressure
           if [ -n "$_mm_protect" ]; then
           	echo "Enabling protect file mappings under memory pressure..."
-          	scripts/config --enable CONFIG_UNEVICTABLE_FILE
-          	scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
-          	scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
+  #        	scripts/config --enable CONFIG_UNEVICTABLE_FILE
+            scripts/config --set-val CONFIG_CLEAN_LOW_KBYTES 150000
+          	scripts/config --set-val CONFIG_CLEAN_MIN_KBYTES 0
           fi
 
               ### Enable multigenerational LRU
@@ -281,17 +294,17 @@ prepare() {
           scripts/config --module CONFIG_VHBA
           scripts/config --disable CONFIG_GCC_PLUGINS
           # General Setup
-      scripts/config --disable CONFIG_BSD_PROCESS_ACCT
-      scripts/config --disable CONFIG_TASK_XACCT
-      scripts/config --enable CONFIG_PSI
-      scripts/config --disable CONFIG_MEMCG
-      scripts/config --enable CONFIG_CGROUP_CPUACCT
-      scripts/config --disable CONFIG_CGROUP_DEBUG
-      scripts/config --disable CONFIG_CHECKPOINT_RESTORE
-      scripts/config --disable CONFIG_SLAB_MERGE_DEFAULT
-      scripts/config --disable CONFIG_SLAB_FREELIST_HARDENED
-      scripts/config --disable CONFIG_SLUB_CPU_PARTIAL
-      scripts/config --disable CONFIG_PROFILING
+          scripts/config --disable CONFIG_BSD_PROCESS_ACCT
+          scripts/config --disable CONFIG_TASK_XACCT
+          scripts/config --enable CONFIG_PSI
+          scripts/config --disable CONFIG_MEMCG
+          scripts/config --enable CONFIG_CGROUP_CPUACCT
+          scripts/config --disable CONFIG_CGROUP_DEBUG
+          scripts/config --disable CONFIG_CHECKPOINT_RESTORE
+          scripts/config --disable CONFIG_SLAB_MERGE_DEFAULT
+          scripts/config --disable CONFIG_SLAB_FREELIST_HARDENED
+          scripts/config --disable CONFIG_SLUB_CPU_PARTIAL
+          scripts/config --disable CONFIG_PROFILING
 
       # Processor type and features
       scripts/config --disable CONFIG_RETPOLINE
@@ -509,20 +522,23 @@ sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
             'b4e1462213c93a485837a474358d9b85cfc51f058cef7d1133249fcb5fc8251b'
             'b2139a29b0cabfb029e51c81f386c698ef209e43cbd93a3515892785662e4c74'
             'a90ec03375bf97c06bf2ca3f1fd0224deee8408077f71447326b2796b53652a1'
-            'f9f8a53145ab1d048ca728a560e878303af7cbea425c50aa0e49afd67c9a465c'
+            '157c03f5bd1c550c827e703cef1b11b39dcb1cacde4fc9ae869340a6dc0edcb1'
             '4ff5c33785445f103d479196bb33c4f991d6c5f56df5c643ec6d2451368f0605'
             '800bfe1208beeec4265fdfa11b279f9fe99508e3b3ef6a921b17dd61075d9ad7'
-            '034d12a73b507133da2c69a34d61efd2f6b6618549650aa26d748142d22002e1'
+            'f7c68f43599c53ce19a14e6f296e5e0820257e80acb9f52a1dec036d0d9a62ab'
             '9eabd1468635477d9c143e9f59d86cf0dd32583bf6bd926080a6707f86d363ed'
             '5587a2d535dcd7ff09080c27f32a02dc67a0d35145b0b49ae10e8520c906a153'
             '12b36059033201c99e54a0e863c3ded470faff1226d9b984bdb15bd3a8ec4a7c'
             '053a6611dd35293ba741838084818f4b69206e50da3fad13597d4fd2138c7ac0'
             '7cdc6402f6ab8a8b99f7c7c4766a6cf82773ef399903abebf6208bfd2f8b2cf2'
+            'f7a36231b794022d49e53f464d25e48f2eebf6266c2cbe5756c63aa3bf03bae7'
+            '2b261d4845899cfec315c81cfbfd3ba653a0465145e7dad9ac2f6595366ea3c8'
             '59dc35df675221c9e54326e4a2ca57074c955387e1d4cb0b6543424bc84bdb11'
-            'ed59edd4c65c24167f90b28fffd27000cbd58d236934e478e400999831768ee6'
+            '01bb5fc3c0085c5f3eed9cb039f4b61ff30acd289efbebc48dc6458c12c9ac42'
             '42dc3c76534393d1b59ca3f321797566a7637bbb110f604eb9bf584b867a97a4'
             '0b44848f5b8926a9e9db8064aeefbfb53c289923e25779c11ddb2a5b149fdb12'
-            'b3b32e1e79481983b69fbd28fe9a888785d1bc2cb16391af668bce2001c73b81'
+            '4ad652d36fdd3f5142e66407a964e8e0d3c91ab3e7094a368de1ef1b21f6d19a'
+            'd68ed98e7bc5a8f9ebc48c16cd0be47be948578621a70b13fcbb13e280469056'
             '7056565c13628e7885538aca4cdb384f1a2b65c4c02a502ddfe182ddb7ce347e'
             '84c231a4d66726e4ed84807de961e0aa37bc3cb13fda0c3d82f7c23470ca6ecd'
             '5a0c7b01ce8baf4dc480b33eddd203a1620ad4885122a3967f580cb172d0f9b7'
