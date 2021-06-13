@@ -151,9 +151,6 @@ ac_add_options --enable-optimize
 END
 fi
 
-  # Fix build-time error
-  #patch -Np1 -i ${_patches_dir}/builtin_js.patch
-
   # Remove some pre-installed addons that might be questionable
   patch -Np1 -i ${_patches_dir}/remove_addons.patch
 
