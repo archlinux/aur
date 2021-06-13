@@ -1,0 +1,13 @@
+pkgbase = python-piwigo
+	pkgdesc = piwigo description
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/fraoustin/piwigo.git
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/piwigo/piwigo-1.0.0.tar.gz
+	sha256sums = cbef9a3fe0cbcf8ede7ac0e5f1bd2b7a26cf9f74149ced2826981fde653476e0
+
+pkgname = python-piwigo
