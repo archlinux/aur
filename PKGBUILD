@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/ikatyang/tree-sitter-toml"
 license=('MIT')
 groups=('tree-sitter-grammars')
-makedepends=('git' 'tree-sitter')
+makedepends=('git' 'tree-sitter' 'npm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url")
@@ -17,6 +17,12 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "$pkgname"
 	git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+}
+
+prepare() {
+	cd "$pkgname"
+	npm install --cache "$srcdir/npm-cache" regexp-util
+	tree-sitter generate
 }
 
 build() {

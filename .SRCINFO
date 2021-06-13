@@ -8,6 +8,7 @@ pkgbase = tree-sitter-toml-git
 	license = MIT
 	makedepends = git
 	makedepends = tree-sitter
+	makedepends = npm
 	provides = tree-sitter-toml
 	conflicts = tree-sitter-toml
 	source = tree-sitter-toml-git::git+https://github.com/ikatyang/tree-sitter-toml
