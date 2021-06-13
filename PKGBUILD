@@ -19,12 +19,8 @@ sha256sums=('5d967aa1779c79c08f85c7e22aae18ddb791d2aa399f5cf0a0f0b7757075b7d2')
 build() {
     cd "${_name}-${pkgver}"
 
-    # NOTE: --ignore-scripts is here only to skip the 'postinstall' hook from package.json.
-    # The hook installs Husky (a commit linter). It's not needed to build a package (we do
-    # not even check the project repo anyway) and its installation fails if the PKGBUILD
-    # happens to be inside a directory tree that already contains a .git/ directory at the top.
-    yarn install --pure-lockfile --ignore-scripts
-    yarn build
+    export RELEASE_BUILD=1
+    yarn install --pure-lockfile
     yarn package
 }
 
