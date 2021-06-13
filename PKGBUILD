@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-qtm
-pkgver=2.0.6
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Python implementation of the real-time protocol for Qualisys Track
 Manager'
@@ -11,7 +11,7 @@ license=('MIT')
 depends=(python)
 makedepends=(python python-setuptools)
 source=("$pkgname-$pkgver.tar.gz::https://pypi.org/packages/source/q/qtm/qtm-${pkgver}.tar.gz")
-sha256sums=('93cf19bc120edbdd60479c3d346a99994aa17db6f618d323239de941ab0c44c3')
+sha256sums=('40d897aa3d3bd46c7a339c89468c9fafe5fe491a30123fa8b129a2161aa1cbf8')
 
 _pkgname=qtm
 
