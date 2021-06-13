@@ -2,7 +2,7 @@
 # Co-Maintainer: Ricardo Gonçalves <ricardompgoncalves@gmail.com>
 
 pkgname=autenticacao-gov-pt-bin
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) - version with pre compiled binaries"
 arch=('x86_64')
@@ -27,10 +27,10 @@ optdepends=('plugin-autenticacao-gov-pt: Necessário para autenticações online
 conflicts=('cartaodecidadao' 'cartaodecidadao-bin' 'autenticacao-gov-pt')
 replaces=('cartaodecidadao-bin')
 
-source_x86_64=("https://aplicacoes.autenticacao.gov.pt/apps/pteid-mw_ubuntu20_amd64.deb"
+source_x86_64=("https://aplicacoes.autenticacao.gov.pt/apps/pteid-mw_ubuntu21_amd64.deb"
 							 "autenticacao-gov-pt-bin.install")
 
-sha512sums_x86_64=('4a2dbaa7a6e02699d231480b1313bb0e50786c92ce0bb0b223c9e587af42a89a2837ab1f6fb5d027b46c0625a41e33ab52963e44672352470e2511935d9589e1'
+sha512sums_x86_64=('08dc8865149ce0a62e90d75b7ecbdca01e120d52fa4c3f9bcc020d79d6118db7ca4d3f487d6dd1ab748a324a476bf34fe34ac90c9758f9779d61c650260b8a1a'
                    'd38b9748f386fcf64f3f0cb717eccf7936c64f0e7b6370ae3b1b079902015ce56d3057afcf2877ca4eee38776269ac3642701803ba96b24a81cfccc9a4d3245f')
 
 install='autenticacao-gov-pt-bin.install'
@@ -47,4 +47,7 @@ package() {
 	mv "${srcdir}"/usr/local/{share,bin} "${pkgdir}/usr/local/"
 	mv "${srcdir}"/usr/local/* "${pkgdir}/usr/"
 	mv "${srcdir}"/usr/share/* "${pkgdir}/usr/share/"
+  # Fix libzip.so.4 depedency: for now just point to the installed version of libzip
+	cd "${pkgdir}/usr/lib" 
+	ln -s libzip.so libzip.so.4
 }
