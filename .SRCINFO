@@ -1,13 +1,12 @@
 pkgbase = h2o-git
 	pkgdesc = Optimized HTTP server with support for HTTP/1.x and HTTP/2
-	pkgver = 2.2.0.4164
+	pkgver = 2.2.0.5201
 	pkgrel = 1
 	url = https://github.com/h2o/h2o
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	makedepends = ruby
 	depends = libuv
 	depends = libyaml
 	depends = zlib
@@ -32,4 +31,3 @@ pkgbase = h2o-git
 	sha256sums = 7fccdeb1a89134b48674764dc243f8967eb1234679e401af93e210fbf0934b62
 
 pkgname = h2o-git
-
