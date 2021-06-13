@@ -1,25 +1,57 @@
-# -*- coding: utf-8  -*-
+# -*- coding: utf-8 -*-
+from __future__ import absolute_import, division, unicode_literals
 
 # This is an automatically generated file. You can find more configuration
 # parameters in 'config.py' file.
 
-# The family of sites we are working on. wikipedia.py will import
-# families/xxx_family.py so if you want to change this variable,
-# you need to write such a file.
+# The family of sites to work on by default.
+#
+# ‘site.py’ imports ‘families/xxx_family.py’, so if you want to change
+# this variable, you need to use the name of one of the existing family files
+# in that folder or write your own, custom family file.
+#
+# For ‘site.py’ to be able to read your custom family file, you must
+# save it to ‘families/xxx_family.py’, where ‘xxx‘ is the codename of the
+# family that your custom ‘xxx_family.py’ family file defines.
+#
+# You can also save your custom family files to a different folder. As long
+# as you follow the ‘xxx_family.py’ naming convention, you can register your
+# custom folder in this configuration file with the following global function:
+#
+#   register_families_folder(folder_path)
+#
+# Alternatively, you can register particular family files that do not need
+# to follow the ‘xxx_family.py’ naming convention using the following
+# global function:
+#
+#   register_family_file(family_name, file_path)
+#
+# Where ‘family_name’ is the family code (the ‘xxx’ in standard family file
+# names) and ‘file_path’ is the absolute path to the target family file.
+#
+# If you use either of these functions to define the family to work on by
+# default (the ‘family’ variable below), you must place the function call
+# before the definition of the ‘family’ variable.
 family = 'wikipedia'
 
 # The language code of the site we're working on.
 mylang = 'en'
 
 # The dictionary usernames should contain a username for each site where you
-# have a bot account.
-usernames['wikipedia']['en'] = u'myEnglishUsername'
+# have a bot account. If you have a unique username for all languages of a
+# family , you can use '*'
+usernames['wikipedia']['en'] = 'myEnglishUsername'
 
+# The list of BotPasswords is saved in another file. Import it if needed.
+# See https://www.mediawiki.org/wiki/Manual:Pywikibot/BotPasswords to know how
+# use them.
+password_file = None
 
-############## LOGFILE SETTINGS ##############
+# ############# LOGFILE SETTINGS ##############
 
 # Defines for which scripts a logfile should be enabled. Logfiles will be
 # saved in the 'logs' subdirectory.
+#
 # Example:
 #     log = ['interwiki', 'weblinkchecker', 'table2wiki']
 # It is also possible to enable logging for all scripts, using this line:
@@ -45,12 +77,30 @@ logfilesize = 1024
 logfilecount = 5
 # set to 1 (or higher) to generate "informative" messages to terminal
 verbose_output = 0
+# set to True to fetch the pywiki version online
+log_pywiki_repo_version = False
 # if True, include a lot of debugging info in logfile
 # (overrides log setting above)
 debug_log = []
 
+# ############# EXTERNAL SCRIPT PATH SETTINGS ##############
+# Set your own script path to lookup for your script files.
+#
+# Your private script path must be located inside the
+# framework folder, subfolders must be delimited by '.'.
+# every folder must contain an (empty) __init__.py file.
+#
+# The search order is
+# 1. user_script_paths in the given order
+# 2. scripts/userscripts
+# 3. scripts
+# 4. scripts/maintenance
+#
+# sample:
+# user_script_paths = ['scripts.myscripts']
+user_script_paths = []
 
-############## INTERWIKI SETTINGS ##############
+# ############# INTERWIKI SETTINGS ##############
 
 # Should interwiki.py report warnings for missing links between foreign
 # languages?
@@ -60,7 +110,8 @@ interwiki_backlink = True
 interwiki_shownew = True
 
 # Should interwiki.py output a graph PNG file on conflicts?
-# You need pydot for this: http://dkbza.org/pydot.html
+# You need pydot for this:
+# https://pypi.org/project/pydot/
 interwiki_graph = False
 
 # Specifies that the robot should process that amount of subjects at a time,
@@ -82,55 +133,86 @@ interwiki_min_subjects = 100
 interwiki_graph_formats = ['png']
 
 # You can post the contents of your autonomous_problems.dat to the wiki,
-# e.g. to http://de.wikipedia.org/wiki/Wikipedia:Interwiki-Konflikte .
+# e.g. to https://de.wikipedia.org/wiki/Wikipedia:Interwiki-Konflikte .
 # This allows others to assist you in resolving interwiki problems.
 # To help these people, you can upload the interwiki graphs to your
 # webspace somewhere. Set the base URL here, e.g.:
-# 'http://www.example.org/~yourname/interwiki-graphs/'
+# 'https://www.example.org/~yourname/interwiki-graphs/'
 interwiki_graph_url = None
 
 # Save file with local articles without interwikis.
 without_interwiki = False
 
-# Experimental feature:
-# Store the page contents on disk (/cache/ directory) instead of loading
-# them in RAM.
-interwiki_contents_on_disk = False
-
-
-############## SOLVE_DISAMBIGUATION SETTINGS ############
+# ############# SOLVE_DISAMBIGUATION SETTINGS ############
 #
 # Set disambiguation_comment[FAMILY][LANG] to a non-empty string to override
 # the default edit comment for the solve_disambiguation bot.
+#
 # Use %s to represent the name of the disambiguation page being treated.
 # Example:
 #
 # disambiguation_comment['wikipedia']['en'] = \
-#    "Robot-assisted disambiguation ([[WP:DPL|you can help!]]): %s"
+#    'Robot-assisted disambiguation ([[WP:DPL|you can help!]]): %s'
 
+# Sorting order for alternatives. Set to True to ignore case for sorting order.
 sort_ignore_case = False
 
-
-############## IMAGE RELATED SETTINGS ##############
+# ############# IMAGE RELATED SETTINGS ##############
 # If you set this to True, images will be uploaded to Wikimedia
 # Commons by default.
 upload_to_commons = False
 
+# ############# SETTINGS TO AVOID SERVER OVERLOAD ##############
 
-############## TABLE CONVERSION BOT SETTINGS ##############
+# Slow down the robot such that it never requests a second page within
+# 'minthrottle' seconds. This can be lengthened if the server is slow,
+# but never more than 'maxthrottle' seconds. However - if you are running
+# more than one bot in parallel the times are lengthened.
+#
+# 'maxlag' is used to control the rate of server access (see below).
+# Set minthrottle to non-zero to use a throttle on read access.
+minthrottle = 0
+maxthrottle = 60
 
-# will split long paragraphs for better reading the source.
-# only table2wiki.py use it by now
+# Slow down the robot such that it never makes a second page edit within
+# 'put_throttle' seconds.
+put_throttle = 10
+
+# Sometimes you want to know when a delay is inserted. If a delay is larger
+# than 'noisysleep' seconds, it is logged on the screen.
+noisysleep = 3.0
+
+# Defer bot edits during periods of database server lag. For details, see
+# https://www.mediawiki.org/wiki/Maxlag_parameter
+# You can set this variable to a number of seconds, or to None (or 0) to
+# disable this behavior. Higher values are more aggressive in seeking
+# access to the wiki.
+# Non-Wikimedia wikis may or may not support this feature; for families
+# that do not use it, it is recommended to set minthrottle (above) to
+# at least 1 second.
+maxlag = 5
+
+# Maximum of pages which can be retrieved at one time from wiki server.
+# -1 indicates limit by api restriction
+step = -1
+
+# Maximum number of times to retry an API request before quitting.
+max_retries = 15
+# Minimum time to wait before resubmitting a failed API request.
+retry_wait = 5
+# Maximum time to wait before resubmitting a failed API request.
+retry_max = 120
+
+# ############# TABLE CONVERSION BOT SETTINGS ##############
+
+# Will split long paragraphs for better reading the source.
+# Only table2wiki.py use it by now.
 splitLongParagraphs = False
 # sometimes HTML-tables are indented for better reading.
 # That can do very ugly results.
 deIndentTables = True
-# table2wiki.py works quite stable, so you might switch to True
-table2wikiAskOnlyWarnings = True
-table2wikiSkipWarnings = False
 
-
-############## WEBLINK CHECKER SETTINGS ##############
+# ############# WEBLINK CHECKER SETTINGS ##############
 
 # How many external links should weblinkchecker.py check at the same time?
 # If you have a fast connection, you might want to increase this number so
@@ -139,32 +221,49 @@ max_external_links = 50
 
 report_dead_links_on_talk = False
 
+# Don't alert on links days_dead old or younger
+weblink_dead_days = 7
 
-############## DATABASE SETTINGS ##############
+# ############# DATABASE SETTINGS ##############
+# Setting to connect the database or replica of the database of the wiki.
+# db_name_format can be used to manipulate the dbName of site.
+#
+# Example for a pywikibot running on wmflabs:
+# db_hostname = 'enwiki.analytics.db.svc.eqiad.wmflabs'
+# db_name_format = '{0}_p'
+# db_connect_file = user_home_path('replica.my.cnf')
 db_hostname = 'localhost'
-db_username = 'wikiuser'
+db_username = ''
 db_password = ''
+db_name_format = '{0}'
+db_connect_file = user_home_path('.my.cnf')
+# local port for mysql server
+# ssh -L 4711:enwiki.analytics.db.svc.eqiad.wmflabs:3306 \
+#     user@login.tools.wmflabs.org
+db_port = 3306
 
-
-############## SEARCH ENGINE SETTINGS ##############
-
-# Some scripts allow querying Google via the Google Web API. To use this feature,
-# you must install the pyGoogle module from http://pygoogle.sf.net/ and have a
-# Google Web API license key. Note that Google doesn't give out license keys
-# anymore.
-google_key = ''
-
-# Some scripts allow using the Yahoo! Search Web Services. To use this feature,
-# you must install the pYsearch module from http://pysearch.sourceforge.net/
-# and get a Yahoo AppID from http://developer.yahoo.com
+# ############# SEARCH ENGINE SETTINGS ##############
+# Live search web service appid settings.
+#
+# Yahoo! Search Web Services are not operational.
+# See https://phabricator.wikimedia.org/T106085
 yahoo_appid = ''
 
 # To use Windows Live Search web service you must get an AppID from
-# http://search.msn.com/developer
+# http://www.bing.com/dev/en-us/dev-center
 msn_appid = ''
 
+# ############# FLICKR RIPPER SETTINGS ##############
 
-############## COPYRIGHT SETTINGS ##############
+# Using the Flickr api
+flickr = {
+    'api_key': '',  # Provide your key!
+    'api_secret': '',  # Api secret of your key (optional)
+    'review': False,  # Do we use automatically make our uploads reviewed?
+    'reviewer': '',  # If so, under what reviewer name?
+}
+
+# ############# COPYRIGHT SETTINGS ##############
 
 # Enable/disable search engine in copyright.py script
 copyright_google = True
@@ -217,46 +316,102 @@ copyright_show_length = True
 # number of results.
 copyright_economize_query = True
 
+# ############# HTTP SETTINGS ##############
+# Use a persistent http connection. An http connection has to be established
+# only once per site object, making stuff a whole lot faster. Do NOT EVER
+# use this if you share Site objects across threads without proper locking.
+#
+# DISABLED FUNCTION. Setting this variable will not have any effect.
+persistent_http = False
 
-############## FURTHER SETTINGS ##############
+# Default socket timeout in seconds.
+# DO NOT set to None to disable timeouts. Otherwise this may freeze your
+# script.
+# You may assign either a tuple of two int or float values for connection and
+# read timeout, or a single value for both in a tuple (since requests 2.4.0).
+socket_timeout = (6.05, 45)
 
-### Proxy configuration ###
-# assign prox = None to connect directly
-# For proxy support first run: apt-get install python-socks.py
-# then change your user-config.py like:
-# import httplib2
-# import socks
-# proxy = httplib2.ProxyInfo(socks.PROXY_TYPE_HTTP, 'localhost', 8000)
-# The following lines will be printed, but it works:
-# Configuration variable 'httplib2' is defined but unknown. Misspelled?
-# Configuration variable 'socks' is defined but unknown. Misspelled?proxy = None
-proxy = None
 
-### Simulate settings ###
-# Defines what actions the bots are NOT allowed to do (e.g. 'edit') on wikipedia
-# servers. Allows simulation runs of bots to be carried out without changing any
-# page on the server side. This setting may be overridden in user_config.py.
-actions_to_block = ['edit', 'watch', 'move', 'delete', 'undelete', 'protect',
-                    'emailuser']
+# ############# COSMETIC CHANGES SETTINGS ##############
+# The bot can make some additional changes to each page it edits, e.g. fix
+# whitespace or positioning of interwiki and category links.
 
-# Set simulate to True or use -simulate option to block all actions given above.
+# This is an experimental feature; handle with care and consider re-checking
+# each bot edit if enabling this!
+cosmetic_changes = False
+
+# If cosmetic changes are switched on, and you also have several accounts at
+# projects where you're not familiar with the local conventions, you probably
+# only want the bot to do cosmetic changes on your "home" wiki which you
+# specified in config.mylang and config.family.
+# If you want the bot to also do cosmetic changes when editing a page on a
+# foreign wiki, set cosmetic_changes_mylang_only to False, but be careful!
+cosmetic_changes_mylang_only = True
+
+# The dictionary cosmetic_changes_enable should contain a tuple of languages
+# for each site where you wish to enable in addition to your own langlanguage
+# (if cosmetic_changes_mylang_only is set)
+# Please set your dictionary by adding such lines to your user-config.py:
+# cosmetic_changes_enable['wikipedia'] = ('de', 'en', 'fr')
+cosmetic_changes_enable = {}
+
+# The dictionary cosmetic_changes_disable should contain a tuple of languages
+# for each site where you wish to disable cosmetic changes. You may use it with
+# cosmetic_changes_mylang_only is False, but you can also disable your own
+# language. This also overrides the settings in the cosmetic_changes_enable
+# dictionary. Please set your dict by adding such lines to your user-config.py:
+# cosmetic_changes_disable['wikipedia'] = ('de', 'en', 'fr')
+cosmetic_changes_disable = {}
+
+# cosmetic_changes_deny_script is a list of scripts for which cosmetic changes
+# are disabled. You may add additional scripts by appending script names in
+# your user-config.py ("+=" operator is strictly recommended):
+# cosmetic_changes_deny_script += ['your_script_name_1', 'your_script_name_2']
+# Appending the script name also works:
+# cosmetic_changes_deny_script.append('your_script_name')
+cosmetic_changes_deny_script = ['category_redirect', 'cosmetic_changes',
+                                'newitem', 'touch']
+
+# ############# REPLICATION BOT SETTINGS ################
+# You can add replicate_replace to your user-config.py.
+#
+# Use has the following format:
+#
+# replicate_replace = {
+#            'wikipedia:li': {'Hoofdpagina': 'Veurblaad'}
+# }
+#
+# to replace all occurrences of 'Hoofdpagina' with 'Veurblaad' when writing to
+# liwiki. Note that this does not take the origin wiki into account.
+replicate_replace = {}
+
+# ############# FURTHER SETTINGS ##############
+
+# Simulate settings
+
+# Defines what additional actions the bots are NOT allowed to do (e.g. 'edit')
+# on the wiki server. Allows simulation runs of bots to be carried out without
+# changing any page on the server side. Use this setting to add more actions
+# in user-config.py for wikis with extra write actions.
+actions_to_block = []
+
+# Set simulate to True or use -simulate option to block all actions given
+# above.
 simulate = False
 
-# How many pages should be put to a queue in asynchroneous mode.
+# How many pages should be put to a queue in asynchronous mode.
 # If maxsize is <= 0, the queue size is infinite.
 # Increasing this value will increase memory space but could speed up
 # processing. As higher this value this effect will decrease.
 max_queue_size = 64
 
-# Define the line separator. Pages retrieved via API have "\n" whereas
-# pages fetched from screen (mostly) have "\r\n". Interwiki and category
-# separator settings in family files should use multiplied of this.
-# LS is a shortcut alias.
-line_separator = LS = u'\n'
+# Pickle protocol version to use for storing dumps.
+# This config variable is not used for loading dumps.
+# Version 0 is a more or less human-readable protocol
+# Version 2 is common to both Python 2 and 3, and should
+# be used when dumps are accessed by both versions.
+# Version 3 is only available for Python 3
+# Version 4 is only available for Python 3.4+
+# Version 5 was added with Python 3.8
+pickle_protocol = 2
 
-# Settings to enable mwparserfromhell <http://mwparserfromhell.readthedocs.org/en/latest/>
-# Currently used in textlib.extract_templates_and_params
-# This should be more accurate than our current regex, but is currently opt-in.
-use_mwparserfromhell = False
-
-# End of configuration section
