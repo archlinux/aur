@@ -5,14 +5,24 @@
 
 pkgname=prboom-plus
 pkgver=2.6um
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced, Vanilla-compatible Doom engine based on PrBoom'
-url='http://prboom-plus.sourceforge.net/'
+url='https://github.com/coelckers/prboom-plus'
 arch=('x86_64')
 license=('GPL2')
-depends=('fluidsynth' 'glu' 'libmad' 'portmidi' 'sdl_image' 'sdl_mixer' 'sdl_net')
+depends=('sdl2')
+optdepends=('dumb' 
+            'fluidsynth' 
+            'glu' 
+            'libmad' 
+            'libvorbis' 
+            'pcre' 
+            'portmidi'
+            'sdl2_image'
+            'sdl2_mixer'
+            'sdl2_net') 
 makedepends=('cmake')
-conflicts=('prboom-plus-svn')
+conflicts=('prboom-plus-svn' 'prboom-plus-um')
 source=("https://github.com/coelckers/prboom-plus/archive/refs/tags/v$pkgver.tar.gz")
 sha1sums=('cd56bf4751fd48ee2a703d8f99b000925bd6af38')
 
