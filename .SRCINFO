@@ -1,7 +1,7 @@
 pkgbase = mumbledj
 	pkgdesc = Mumble bot for playing audio
 	pkgver = 3.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.roshless.me/~roshless/mumbledj
 	install = mumbledj.install
 	arch = x86_64
@@ -22,4 +22,3 @@ pkgbase = mumbledj
 	md5sums = 60e800293a47a562623cb91166950984
 
 pkgname = mumbledj
-

@@ -1,7 +1,7 @@
 # Maintainer: Roshless <pkg@roshless.com>
 
 pkgname=mumbledj
-pkgrel=2
+pkgrel=3
 pkgver=3.2.0
 pkgdesc='Mumble bot for playing audio'
 url='https://git.roshless.me/~roshless/mumbledj'
@@ -18,23 +18,23 @@ optdepends=('aria2')
 makedepends=('git' 'go')
 
 build() {
-  cd $pkgname-$pkgver
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  go build -o $pkgname .
+	cd $pkgname-$pkgver
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+	go build -o $pkgname .
 }
 
 package() {
-  install -Dm644 $pkgname.service -t "$pkgdir/usr/lib/systemd/system/"
-  install -Dm644 $pkgname.sysusers "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-  install -Dm644 $pkgname.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+	install -Dm644 $pkgname.service -t "$pkgdir/usr/lib/systemd/system/"
+	install -Dm644 $pkgname.sysusers "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+	install -Dm644 $pkgname.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 
-  cd $pkgname-$pkgver
-  install -Dm755 $pkgname -t "$pkgdir/usr/bin/"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/"
+	cd $pkgname-$pkgver
+	install -Dm755 $pkgname -t "$pkgdir/usr/bin/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 md5sums=('373fd5294e954fa855dd38b98b7c2b4c'
