@@ -1,11 +1,11 @@
 pkgbase = prboom-plus
 	pkgdesc = An advanced, Vanilla-compatible Doom engine based on PrBoom
-	pkgver = 2.5.1.4
-	pkgrel = 4
+	pkgver = 2.6um
+	pkgrel = 1
 	url = http://prboom-plus.sourceforge.net/
 	arch = x86_64
-	arch = i686
 	license = GPL2
+	makedepends = cmake
 	depends = fluidsynth
 	depends = glu
 	depends = libmad
@@ -14,8 +14,7 @@ pkgbase = prboom-plus
 	depends = sdl_mixer
 	depends = sdl_net
 	conflicts = prboom-plus-svn
-	source = http://download.sourceforge.net/prboom-plus/prboom-plus-2.5.1.4.tar.gz
-	sha1sums = 73b3b46c36aa693059f2762dcd807bfd0490f130
+	source = https://github.com/coelckers/prboom-plus/archive/refs/tags/v2.6um.tar.gz
+	sha1sums = cd56bf4751fd48ee2a703d8f99b000925bd6af38
 
 pkgname = prboom-plus
-
