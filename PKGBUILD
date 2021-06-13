@@ -1,0 +1,26 @@
+# Maintainer: jackmeima <likepeigen@gmail.com>
+
+pkgname=prettyzoo
+# the versin is from deb package
+pkgver=1.9.2
+pkgrel=0
+pkgdesc="is a GUI for Zookeeper created by JavaFX and Apache Curator Framework."
+arch=("x86_64")
+url="https://github.com/vran-dev/PrettyZoo"
+license=('custom')
+depends=('jdk8-openjdk')
+provides=('prettyzoo' "$pkgname")
+conflicts=("$pkgname")
+source=("https://github.com/vran-dev/PrettyZoo/releases/download/v1.9.2/prettyzoo_1.9.2-1_amd64.deb") 
+
+md5sums=('c35beda0fd906c8b7e26f386d3068827')
+
+package() {
+    tar xf data.tar.xz -C ${pkgdir}/
+    chmod 755 ${pkgdir}"/opt/prettyzoo/" \
+              ${pkgdir}"/opt/prettyzoo/bin/" 
+
+    mkdir -p ${pkgdir}"/usr/share/applications/"
+    cp ${pkgdir}"/opt/prettyzoo/lib/prettyzoo-prettyZoo.desktop"  ${pkgdir}"/usr/share/applications/"
+
+}
