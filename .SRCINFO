@@ -1,0 +1,17 @@
+pkgbase = tree-sitter-clojure-git
+	pkgdesc = Clojure grammar for tree-sitter
+	pkgver = 0.0.8.r2.gf7d100c
+	pkgrel = 1
+	url = https://github.com/sogaiu/tree-sitter-clojure
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = custom:CC0
+	makedepends = git
+	makedepends = tree-sitter
+	makedepends = npm
+	provides = tree-sitter-clojure
+	conflicts = tree-sitter-clojure
+	source = tree-sitter-clojure-git::git+https://github.com/sogaiu/tree-sitter-clojure
+	sha256sums = SKIP
+
+pkgname = tree-sitter-clojure-git
