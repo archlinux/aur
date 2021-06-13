@@ -2,7 +2,7 @@
 pkgname=switchhosts-appimage
 pkgver=4.0.2
 _subpkgver="6057"
-pkgrel=4
+pkgrel=5
 pkgdesc="An App for hosts management & switching."
 arch=('x86_64')
 url="https://github.com/oldj/SwitchHosts"
@@ -35,9 +35,8 @@ package() {
     install -Dm644 "${srcdir}/squashfs-root/switchhosts.desktop" "${pkgdir}/usr/share/applications/switchhosts.desktop"
 
     # Install Icon images
-    install -dm755 "$pkgdir/usr/share/icons"
-    cp -dpr --no-preserve=ownership "squashfs-root/usr/share/icons" "$pkgdir/usr/share"
-    chmod -R 755 "$pkgdir/usr/share/icons"
+    install -dm755 "${pkgdir}/usr/share/"
+    cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
 }
 
 post_install() {
