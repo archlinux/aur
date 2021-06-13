@@ -1,11 +1,11 @@
 [Desktop Entry]
 Name=Fazua Toolbox
-StartupWMClass=toolbox.c
+StartupWMClass=com.fazua.toolbox.core.ServiceToolboxApp
 Comment=Toolbox Software for the Fazua Energy Ride System
 Exec=/usr/bin/fazua-toolbox
 Icon=fazua-toolbox
 Type=Application
 Keywords=e-bike;ebike;pedelec;motor;
 StartupNotify=true
-Categories=Java;Utility;
+Categories=Utility;
 
