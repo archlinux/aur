@@ -1,0 +1,6 @@
+*.tar
+*.gz
+*.zst
+src/
+pkg/
+mkinitcpio-sd-zfs-git
