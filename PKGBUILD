@@ -1,7 +1,7 @@
 # Maintainer: Maarten de Boer <maarten@cloudstek.nl>
 
 pkgname=teleport
-pkgver=6.2.0
+pkgver=6.2.3
 pkgrel=2
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
@@ -20,7 +20,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gravitational/teleport/
         "teleport@.service"
         "teleport.install")
 
-sha256sums=('bf479d580dc0f9187493645b6e3aa7e5458e46ff4c632169fc688946a6265ba2'
+sha256sums=('a24c56c9aa0f9b215655947b9ca56438351b407aacabe2eb8c4c9e5fa128c6d9'
             '14445b0864d759347c1f53dc144a346b1974b8ded49031d7f0b7227f5d49d407'
             '10ac25cea1b5c193d7f968ca28a1da0e54b847f29c2a0186b46fd853194be38a'
             '4bc17fdde981f91c5d9972ae0555ee5e8b63a6b67e007c28f83ada80823980fd'
