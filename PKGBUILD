@@ -20,6 +20,26 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    # This package provides a mechanism to edit the file
+    # config.h before installation.
+
+    if [ -e "$BUILDDIR/config.h" ]
+    then
+        printf "applying configuration\n"
+        cp "$BUILDDIR/config.h" "$srcdir/tuidoku/src/config.h"
+        if [ -e "$srcdir/tuidoku-bin" ]
+        then
+            rm "$srcdir/tuidoku-bin"
+        fi
+    else
+        msg="This package can be configured by editing config.h "
+        msg+="Documentation can be found in the comments."
+        warning $msg
+        cp "$_pkgname/src/config.h" "$BUILDDIR/"
+    fi
+}
+
 build() {
 	cd "$srcdir"
         g++ -O3 -pthread ./tuidoku/src/*.cpp -lncursesw -o tuidoku-bin
