@@ -2,10 +2,10 @@
 
 pkgname=gmni-git
 pkgrel=1
-pkgver=r139.925d9e3
+pkgver=r146.b46b312
 pkgdesc="A Gemini client"
 url="https://git.sr.ht/~sircmpwn/gmni"
-arch=("any")
+arch=('x86_64' 'i686')
 license=("GPL")
 source=("gmni::git+https://git.sr.ht/~sircmpwn/gmni")
 depends=('bearssl')
