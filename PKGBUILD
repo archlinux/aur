@@ -1,5 +1,11 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
+# Scene and scene drag & drop was disabled due to this issue
+# (https://github.com/obsproject/obs-studio/issues/4488)
+# You can take the risk to re-enable it by changing the following variable to 1
+# THIS IS AT YOUR OWN RISK
+REENABLE_DRAGDROP=0
+
 pkgname=obs-studio-tytan652
 pkgver=27.0.1
 pkgrel=1
@@ -63,6 +69,10 @@ prepare() {
   git config submodule.plugins/obs-vst.url $srcdir/obs-vst
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git submodule update
+
+  if [ "$REENABLE_DRAGDROP" = 1 ]; then
+    git revert 457adcedd --no-edit
+  fi
 
   ## libobs/util: Fix loading Python binary modules on *nix (https://github.com/obsproject/obs-studio/pull/3335)
   patch -Np1 < "$srcdir/python_fix.patch"
