@@ -2,7 +2,7 @@
 
 pkgname=h7toolpc-wine
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Wine H7-TOOL 的 PC 上位机，支持串口、CAN、示波器、CMSIS-DAP、DS18B20、RTT Viewer、脱机烧录等"
 arch=('x86_64')
 url="http://www.armbbs.cn/forum.php?mod=viewthread&tid=95468"
@@ -86,6 +86,19 @@ REGEDIT4
 "FontSmoothingGamma"=dword:00000578
 "FontSmoothingOrientation"=dword:00000001
 
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion]
+"RegisteredOrganization"="H7-TOOL"
+"RegisteredOwner"="H7-TOOL"
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\winebus]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\winehid]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\wineusb]
+"Start"=dword:00000002
+
 [HKEY_LOCAL_MACHINE\Software\Wine\Ports]
 "COM1"="/dev/ttyUSB0"
 "COM2"="/dev/ttyUSB1"
@@ -94,6 +107,7 @@ REGEDIT4
 "COM5"="/dev/ttyUSB4"
 "COM6"="/dev/ttyUSB5"
 "COM7"="/dev/ttyACM0"
+
 EOF
 
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-wine}" << EOF
@@ -119,10 +133,13 @@ if [ ! -d "$HOME"/.${pkgname%-wine} ] ; then
     ln -s -T /${armfly}/${pkgname%-wine}/ChangeLog.txt "$HOME"/.${pkgname%-wine}/ChangeLog.txt || exit 1
 fi
 
-if [ ! -f "$HOME"/.${pkgname%-wine}/fontok ] ; then
-    touch "$HOME"/.${pkgname%-wine}/fontok || exit 1
-    regedit "$HOME"/.${pkgname%-wine}/wine/regpatch.reg && wineserver -k
+if [ ! -f "$HOME"/.${pkgname%-wine}/patchok ] ; then
+    touch "$HOME"/.${pkgname%-wine}/patchok || exit 1
+    regedit "$HOME"/.${pkgname%-wine}/wine/regpatch.reg
+    winetricks -q hid
+    wine "$HOME"/.${pkgname%-wine}/Driver/stm32_vcp/VCP_V1.5.0_Setup_W7_x86_32bits.exe /S
     wine "$HOME"/.${pkgname%-wine}/Driver/WinUSB/zadig-2.5.exe
+    wineserver -k
 fi
 
 wine "$HOME"/.${pkgname%-wine}/${pkgname%-wine} -opengl "$@"
@@ -165,8 +182,8 @@ if [ ! -d "$HOME"/.${pkgname%-wine} ] ; then
     ln -s -T /${armfly}/${pkgname%-wine}/ChangeLog.txt "$HOME"/.${pkgname%-wine}/ChangeLog.txt || exit 1
 fi
 
-if [ ! -f "$HOME"/.${pkgname%-wine}/fontok ] ; then
-    touch "$HOME"/.${pkgname%-wine}/fontok || exit 1
+if [ ! -f "$HOME"/.${pkgname%-wine}/patchok ] ; then
+    touch "$HOME"/.${pkgname%-wine}/patchok || exit 1
     cd "$HOME"/.${pkgname%-wine}/wine && regedit regpatch.reg && wineserver -k
 fi
 
@@ -187,24 +204,23 @@ Icon=${pkgname%-wine}.png
 Version=1.44
 EOF
 
-    install -Dm644 /dev/stdin "${pkgdir}/etc/udev/rules.d/10-h7tool.rules" << EOF
+    install -Dm0644 /dev/stdin "${pkgdir}/etc/udev/rules.d/10-h7tool.rules" << EOF
 # Copy this file to /etc/udev/rules.d/ or /usr/lib/udev/rules.d/
 # If rules fail to reload automatically, you can refresh udev rules
 # with the command "sudo udevadm control --reload"
 
-ACTION!="add|change", GOTO="h7tool_rules_end"
+ACTION!="add|change", SUBSYSTEM!="usb_device", GOTO="h7tool_rules_end"
 
-SUBSYSTEM=="gpio", MODE="0660", GROUP="plugdev", TAG+="uaccess"
+# SUBSYSTEM=="gpio", MODE="0666", GROUP="plugdev", TAG+="uaccess"
 
-SUBSYSTEM!="usb|tty|hidraw", GOTO="h7tool_rules_end"
+# SUBSYSTEM!="usb|tty|hidraw", GOTO="h7tool_rules_end"
 
 # Please keep this list sorted by VID:PID
 
 # H7-tool
-ATTRS{idVendor}=="C251", ATTRS{idProduct}=="F00A", MODE="666", GROUP="plugdev", TAG+="uaccess"
-
-# CMSIS-DAP compatible adapters
-ATTRS{product}=="*CMSIS-DAP*", MODE="666", GROUP="plugdev", TAG+="uaccess"
+# ATTRS{idVendor}=="c251", ATTRS{idProduct}=="f00a", MODE="666", GROUP="plugdev", TAG+="uaccess"
+# BUS=='usb',
+ATTRS{manufacturer}=="H7-TOOL By ARMFLY", MODE="0666", GROUP="plugdev", TAG+="uaccess"
 
 LABEL="h7tool_rules_end"
 EOF
