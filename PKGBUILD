@@ -4,7 +4,7 @@
 _pkgname=freerct
 pkgname=${_pkgname}-git
 pkgver=r1793.9a5a6c9b
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Source RollerCoaster Tycoon 1 and 2 implementation"
 arch=('i686' 'x86_64' 'aarch64')
 url="http://freerct.org"
@@ -16,10 +16,12 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=('freerct::git+https://github.com/FreeRCT/FreeRCT.git'
         'freerct.cfg'
-        'freerct.sh')
+        'freerct.sh'
+        'freerct.desktop')
 md5sums=('SKIP'
          '18954cf6a20a8d8b21c62e7c9c27a76d'
-         '1fce36e419ae2d70a28eba03f9cb6fa1')
+         '1fce36e419ae2d70a28eba03f9cb6fa1'
+         '9e3aaa8cef3d81b27b868766b61f74a4')
 
 build() {
   cd "${srcdir}/${_pkgname}"
