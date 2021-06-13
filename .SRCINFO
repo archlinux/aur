@@ -1,6 +1,6 @@
 pkgbase = teleport-bin
 	pkgdesc = Modern SSH server for teams managing distributed infrastructure
-	pkgver = 6.2.0
+	pkgver = 6.2.3
 	pkgrel = 1
 	url = https://github.com/gravitational/teleport
 	install = teleport.install
@@ -8,8 +8,6 @@ pkgbase = teleport-bin
 	arch = armv7h
 	arch = aarch64
 	license = Apache
-	depends = bash
-	depends = python
 	provides = teleport
 	provides = tctl
 	provides = tsh
@@ -19,13 +17,12 @@ pkgbase = teleport-bin
 	source = teleport.install
 	sha256sums = 22fd1ee136e9422458740811c9946de447105f26e87dbbc8daa35d17bd1f3894
 	sha256sums = 21ca4e56c9c5e1ce11570894e85ded853e26e91cc2e16ed9114b3d6a2c5c22ef
-	sha256sums = cff4e3c69677210bdde9a781146df06fba3a62cef72ed6854cd1923a05444435
-	source_x86_64 = teleport-bin-6.2.0-x86_64.tar.gz::https://get.gravitational.com/teleport-v6.2.0-linux-amd64-bin.tar.gz
-	sha256sums_x86_64 = 90e9fd3e39d84b966b601f3979ed288ff82708784f1cf8c44246e0d1db20b70f
-	source_armv7h = teleport-bin-6.2.0-armv7h.tar.gz::https://get.gravitational.com/teleport-v6.2.0-linux-arm-bin.tar.gz
-	sha256sums_armv7h = 2da2fd03b2719af8a0be87a16d9aa0c4873e31cc495abfd39e883283d35b8e67
-	source_aarch64 = teleport-bin-6.2.0-aarch64.tar.gz::https://get.gravitational.com/teleport-v6.2.0-linux-arm64-bin.tar.gz
-	sha256sums_aarch64 = 178d794b75c34ee9b372abe65f09bec1198b627c5d468ac3bc6df0a7ac889464
+	sha256sums = ce2dd61cae3c0c3684e7e629f98b77551e66ddedca2194250a34f0efbc674f3a
+	source_x86_64 = teleport-bin-6.2.3-x86_64.tar.gz::https://get.gravitational.com/teleport-v6.2.3-linux-amd64-bin.tar.gz
+	sha256sums_x86_64 = ccdda458dd4c417f6df7285059895933874a78a5bc1ebe518f69dd3d6811c9fe
+	source_armv7h = teleport-bin-6.2.3-armv7h.tar.gz::https://get.gravitational.com/teleport-v6.2.3-linux-arm-bin.tar.gz
+	sha256sums_armv7h = 8640dfc9746790984bb3c4ffdc0852f299396d48d7e894fa874ad805c912fc45
+	source_aarch64 = teleport-bin-6.2.3-aarch64.tar.gz::https://get.gravitational.com/teleport-v6.2.3-linux-arm64-bin.tar.gz
+	sha256sums_aarch64 = 2240c902591547cd774f652166b74bf560fc9610555e77e461067196ecb5a6f4
 
 pkgname = teleport-bin
-
