@@ -1,0 +1,21 @@
+pkgbase = com.wesing.deepin
+	pkgdesc = WeSing on wine
+	pkgver = 2.21.170.0319
+	pkgrel = 4
+	url = http://cbox.cntv.cn/
+	install = wineapps.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = deepin-wine5-stable>=5.0.0.26
+	depends = deepin-wine-helper>=5.1.21
+	depends = p7zip
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	optdepends = ttf-ms-fonts: Microsoft Core fonts
+	optdepends = noto-fonts-cjk: Google Noto CJK fonts
+	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.wesing.deepin/com.wesing.deepin_2.21.170.0319deepin4_i386.deb
+	sha512sums = 01cb20c78f379a8c4dbd1ac3857448a405213188d0a80cfab1174018679faa2993a8a361fd01906a92035b9f822078e4a9354471ebf5f85ec82294de028b63bb
+
+pkgname = com.wesing.deepin
