@@ -3,7 +3,7 @@
 pkgname=fazua-toolbox
 pkgver=2.11
 pkgrel=1
-pkgdesc="Toolbox to update and control the Fazua evation drive system"
+pkgdesc="Toolbox Software to update and customize the Fazua Energy Ride System"
 arch=('x86_64')
 url="https://fazua.com/de/support/help-center/toolbox-software/entry-toolbox-software/"
 license=('unknown')
@@ -14,7 +14,7 @@ source=("https://fazua.com/documents/991/$_filename-$pkgver.zip"
         'logo-symbol.svg')
 
 sha256sums=('6387c30f06d5c7955f8f559ce52f1eba5a3cd3ae533aae669830bd5fe67b7d9e'
-            '79dfa335817115d25c45fe53904dd41fb225173b1d727d616ed0b38d65fb86b3'
+            '4ccb4ac9cb702c208b76715af6cd125caca655b7378cfb528c103cb55db8b99c'
             '59e35260d3b42927040e6369c483998e7acedd112b26d89d1e226dbd9501169d')
 
 package() {
