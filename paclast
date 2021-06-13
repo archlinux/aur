@@ -1,0 +1,84 @@
+#!/bin/sh
+# list installed pacman packages in chronological order.
+# example usage: $ paclast -r | head
+
+main() {
+    opts="$(getopt -orcp -- "$@")" && eval set -- "$opts" || help
+    r= ; c= ; p=
+    while true; do case "$1" in
+        -r) r='|relative'; shift ;;
+        -c) c='|colorize'; shift ;;
+        -p) p="|${PAGER:-less}"; shift ;;
+        --) break ;;
+         *) help ;;
+    esac; done
+    eval list $r $c $p
+}
+
+list() {
+    list_installed | get_explicitly_installed | sort -rsk1,1 |
+        awk ' BEGIN{FS=OFS=""}
+            {$1=$18=$19=$20=$21=$22=$23=$24=$25=$26="";$12=$27=" "; print $0}'
+}
+
+# print a list of all installed packages and their first install date.
+list_installed() {
+    awk '/installed/ {print $1" "$4}' /var/log/pacman.log | tac | sort -uk2,2
+}
+
+# filter only explicitly installed packages through stdin
+get_explicitly_installed() {
+    awkcmd="$(
+        pacman -Qqe | while IFS= read -r expkg; do
+            printf '$2=="'$expkg'" || '
+        done | rev | cut -c5- | rev
+    )"
+    awk "$awkcmd"
+}
+
+# insert a relative date column in every line.
+relative() {
+    while read -r line; do
+        pkg="$( echo "$line" | cut -d' ' -f3)"
+        time="$(echo "$line" | cut -d' ' -f2)"
+        date="$(echo "$line" | cut -d' ' -f1)"
+        days_ago="$(get_days_ago "$date")"
+        echo "$date $time ($days_ago days ago) $pkg"
+    done
+}
+
+# print how many days ago a given date is.
+# the digit 2 after $given_date indicates the time 02:00:00
+# it's there because if it's omitted, date(1) assumes the time
+# to be 00:00:00, and such time might be invalid because of daylight saving.
+get_days_ago() {
+    given_date="$1"
+    echo $(( ($(date +%s) - $(date -d "$given_date 2" +%s)) / (86400) ))
+}
+
+# colorize the output
+colorize() {
+    while read -r line; do # add nice colors to output.
+        printf "\e[1;32m$line\n"
+        read -r line
+        printf "\e[1;36m$line\n"
+    done
+
+    # revert terminal's text color back to normal.
+    printf "\e[0m"
+}
+
+help() {
+cat << 'eof'
+list installed pacman packages in chronological order.
+Usage: paclast [-rcp]
+Options:
+  -r     print relative times as well.
+  -c     colorize output.
+  -p     show output in pager.
+eof
+exit
+}
+
+main "$@"
+exit
