@@ -1,7 +1,7 @@
 pkgbase = switchhosts-appimage
 	pkgdesc = An App for hosts management & switching.
 	pkgver = 4.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/oldj/SwitchHosts
 	arch = x86_64
 	license = Apache
@@ -9,7 +9,7 @@ pkgbase = switchhosts-appimage
 	conflicts = switchhosts-bin
 	conflicts = switchhosts
 	options = !strip
-	source = SwitchHosts.AppImage::https://github.com/oldj/SwitchHosts/releases/download/v4.0.2/SwitchHosts_linux_4.0.2.6057.AppImage
+	source = SwitchHosts_linux_4.0.2.6057.AppImage::https://github.com/oldj/SwitchHosts/releases/download/v4.0.2/SwitchHosts_linux_4.0.2.6057.AppImage
 	md5sums = e8828538fb28f95ef3df8f630ef50f70
 
 pkgname = switchhosts-appimage

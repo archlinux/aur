@@ -2,7 +2,7 @@
 pkgname=switchhosts-appimage
 pkgver=4.0.2
 _subpkgver="6057"
-pkgrel=3
+pkgrel=4
 pkgdesc="An App for hosts management & switching."
 arch=('x86_64')
 url="https://github.com/oldj/SwitchHosts"
@@ -13,10 +13,11 @@ conflicts=(
 )
 options=(!strip)
 depends=("fuse2")
-source=("SwitchHosts.AppImage::https://github.com/oldj/SwitchHosts/releases/download/v${pkgver}/SwitchHosts_linux_${pkgver}.${_subpkgver}.AppImage")
+source=("SwitchHosts_linux_${pkgver}.${_subpkgver}.AppImage::https://github.com/oldj/SwitchHosts/releases/download/v${pkgver}/SwitchHosts_linux_${pkgver}.${_subpkgver}.AppImage")
 md5sums=("e8828538fb28f95ef3df8f630ef50f70")
 
 prepare() {
+    mv -f "SwitchHosts_linux_${pkgver}.${_subpkgver}.AppImage" "SwitchHosts.AppImage"
     chmod +x "SwitchHosts.AppImage"
     ./"SwitchHosts.AppImage" --appimage-extract "usr/share/icons/hicolor/*/apps/switchhosts.png" > /dev/null 2>&1
     ./"SwitchHosts.AppImage" --appimage-extract switchhosts.desktop > /dev/null 2>&1
