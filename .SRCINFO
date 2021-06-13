@@ -1,0 +1,21 @@
+pkgbase = com.zybstudent.xp.deepin
+	pkgdesc = ZYBStudent-XP (作业帮直播课) Client on Deepin Wine5
+	pkgver = 3.7.0
+	pkgrel = 1
+	url = https://zhibo.zuoyebang.com/
+	install = wineapps.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = deepin-wine5-stable>=5.0.0.25
+	depends = deepin-wine-helper>=5.1.20
+	depends = p7zip
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	optdepends = ttf-ms-fonts: Microsoft Core fonts
+	optdepends = noto-fonts-cjk: Google Noto CJK fonts
+	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.zybstudent.xp.deepin/com.zybstudent.xp.deepin_3.7.0deepin1_i386.deb
+	sha512sums = ffd1af20c3ffe502d6eb938480f17bf02db31d25579227aae0034144e8af9340519febe5f5f574ed82f913121509c94730587557fb6ad416aa3486f55db92ef8
+
+pkgname = com.zybstudent.xp.deepin
