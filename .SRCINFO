@@ -1,17 +1,21 @@
 pkgbase = python-cheetah3-git
-	pkgdesc = A Python 3-powered template engine and code generator
-	pkgver = 3.2.4.r2.g1d7bb27
+	pkgdesc = A Python powered template engine and code generator
+	pkgver = 3.2.6.post1.r9.g856329c
 	pkgrel = 1
 	url = http://www.cheetahtemplate.org
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
-	depends = python
-	optdepends = python-markdown
+	makedepends = python2-setuptools
 	conflicts = python-cheetah3
 	source = cheetah3::git+https://github.com/CheetahTemplate3/cheetah3.git
 	sha512sums = SKIP
 
 pkgname = python-cheetah3-git
+	depends = python
+	optdepends = python-markdown
 
+pkgname = python2-cheetah3-git
+	depends = python2
+	optdepends = python2-markdown
