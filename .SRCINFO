@@ -1,0 +1,13 @@
+pkgbase = python-google_trans_new
+	pkgdesc = A free and unlimited python API for google translate
+	pkgver = 1.1.9
+	pkgrel = 1
+	url = https://github.com/lushan88a/google_trans_new
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/g/google_trans_new/google_trans_new-1.1.9.tar.gz
+	sha256sums = 9f6643420334cc1b94ebd84e03774736e76c0564208efb1bc9c5019b9820e19b
+
+pkgname = python-google_trans_new
