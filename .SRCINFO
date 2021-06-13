@@ -41,4 +41,3 @@ pkgname = openrazer-meta
 	optdepends = polychromatic: frontend
 	optdepends = razergenie: qt frontend
 	optdepends = razercommander: gtk frontend
-
