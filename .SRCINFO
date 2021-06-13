@@ -1,6 +1,6 @@
 pkgbase = mpich
 	pkgdesc = An improved implementation of the Message Passing Interface.
-	pkgver = 3.4.1
+	pkgver = 3.4.2
 	pkgrel = 1
 	url = https://mpich.org
 	install = mpich.install
@@ -18,10 +18,9 @@ pkgbase = mpich
 	optdepends = perl
 	replaces = mpich2
 	options = !libtool
-	source = https://www.mpich.org/static/downloads/3.4.1/mpich-3.4.1.tar.gz
+	source = https://www.mpich.org/static/downloads/3.4.2/mpich-3.4.2.tar.gz
 	source = mpich.profile
-	sha256sums = 8836939804ef6d492bcee7d54abafd6477d2beca247157d92688654d13779727
+	sha256sums = 5c19bea8b84e8d74cca5f047e82b147ff3fba096144270e3911ad623d6c587bf
 	sha256sums = b9716439a544511bf88618edeb40c3eb80f1b5d0d9369c30d750251feed02284
 
 pkgname = mpich
-

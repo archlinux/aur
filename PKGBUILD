@@ -3,7 +3,7 @@
 # Contributor: George Eleftheriou <eleftg>
 
 pkgname=mpich
-pkgver=3.4.1
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="An improved implementation of the Message Passing Interface."
 url="https://mpich.org"
@@ -16,7 +16,7 @@ optdepends=(perl)
 install="${pkgname}.install"
 source=("https://www.mpich.org/static/downloads/${pkgver}/${pkgname}-${pkgver}.tar.gz"
 	"mpich.profile")
-sha256sums=('8836939804ef6d492bcee7d54abafd6477d2beca247157d92688654d13779727'
+sha256sums=('5c19bea8b84e8d74cca5f047e82b147ff3fba096144270e3911ad623d6c587bf'
             'b9716439a544511bf88618edeb40c3eb80f1b5d0d9369c30d750251feed02284')
 options=('!libtool')
 
@@ -26,7 +26,7 @@ build() {
   # CFLAGS etc are normally written into the wrapper compilers.  This
   # gives surprising results, e.g. when the user wants to compile their
   # program without optimization.
-  export MPICHLIB_CFLAGS="${CFLAGS}";      unset CFLAGS
+  export MPICHLIB_CFLAGS="${CFLAGS} -Wno-error=array-bounds";      unset CFLAGS
   export MPICHLIB_CXXFLAGS="${CXXFLAGS}";  unset CXXFLAGS
   export MPICHLIB_CPPFLAGS="${CPPFLAGS}";  unset CPPFLAGS
   export MPICHLIB_FFLAGS="${FFLAGS}";      unset FFLAGS
@@ -38,7 +38,7 @@ build() {
 
   ../configure --prefix=/opt/mpich \
                --with-device=ch4:ucx \
-               --with-hwloc-prefix=/usr \
+               --with-hwloc-prefix=system \
                --without-java \
                --enable-error-checking=runtime \
                --enable-error-messages=all \
