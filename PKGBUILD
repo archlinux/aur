@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-hyperpyyaml-git
-pkgver=1.0.0.r8
+pkgver=1.0.0.r9
 pkgrel=1
 pkgdesc='Extensions to YAML syntax for better python interaction.'
 arch=('any')
