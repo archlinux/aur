@@ -1,0 +1,9 @@
+pkgbase = sysrq-enabler
+	pkgdesc = Enable all magicsysrq options by default
+	pkgver = 1
+	pkgrel = 1
+	url = file:///etc/sysctl.d/99-sysrq.conf
+	install = install
+	arch = any
+
+pkgname = sysrq-enabler

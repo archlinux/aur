@@ -1,0 +1,11 @@
+post_install() {
+	sysctl -w kernel.sysrq=1
+	}
+
+post_upgrade() {
+	sysctl -w kernel.sysrq=1
+	}
+
+post_remove() {
+	sysctl -w kernel.sysrq=0
+	}
