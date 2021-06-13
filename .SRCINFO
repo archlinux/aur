@@ -1,0 +1,20 @@
+pkgbase = lipsum-git
+	pkgdesc = CLI lorem ipsum generator
+	pkgver = r36.0592929
+	pkgrel = 1
+	url = https://github.com/hannenz/lipsum
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = vala
+	makedepends = gtk3
+	makedepends = plank
+	makedepends = gettext
+	optdepends = gtk3: Graphical User Interface
+	optdepends = plank: Plank applet
+	provides = lipsum
+	conflicts = lipsum
+	source = lipsum::git+https://github.com/lelgenio/lipsum.git
+	md5sums = SKIP
+
+pkgname = lipsum-git
