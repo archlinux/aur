@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-gorilla
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='python library that provides a convenient approach to monkey patching'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('python')
 optdepends=()
 makedepends=('python' 'python-setuptools')
 source=("$pkgname-$pkgver::https://github.com/christophercrouzet/gorilla/archive/v$pkgver.tar.gz")
-sha256sums=('4614087a64e5a31d394ced603cc2657fd39a2104f56065ea6cf21e5e59b623e2')
+sha256sums=('d3ddcc5f485fb8bd9015e56f58b69c6c52112573fb0004b076f91978da5d5c0d')
 
 _pkgname=gorilla
 
