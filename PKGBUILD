@@ -15,7 +15,7 @@ optdepends=('vorbis-tools: OGG Vorbis support'
             'vorbisgain: ReplayGain support'
             'aacgain: ReplayGain support'
             'sox: dither support')
-source=("https://github.com/RecursiveForest/whatmp3/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/RecursiveForest/whatmp3/archive/v${pkgver}.tar.gz")
 sha256sums=('0d8ba70a1c72835663a3fde9ba8df0ff7007268ec0a2efac76c896dea4fcf489')
 
 package() {
