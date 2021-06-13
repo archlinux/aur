@@ -1,6 +1,6 @@
 pkgbase = python-sentencepiece-git
 	pkgdesc = Sentencepiece text tokenizer (Python version)
-	pkgver = 0.1.95.r674
+	pkgver = 0.1.95.r676
 	pkgrel = 1
 	url = https://github.com/google/sentencepiece
 	arch = any
@@ -17,4 +17,3 @@ pkgbase = python-sentencepiece-git
 	md5sums = SKIP
 
 pkgname = python-sentencepiece-git
-
