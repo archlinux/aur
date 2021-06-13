@@ -16,7 +16,7 @@ build() {
     cd $_gitname
     cargo build --release
     mkdir -p target/release/man
-    pandoc --standalone -f markdown -t man man/${pkgname}.1.md > "target/release/man/${pkgname.1}"
+    pandoc --standalone -f markdown -t man man/${pkgname}.1.md > "target/release/man/${pkgname}.1"
 }
 
 package() {
