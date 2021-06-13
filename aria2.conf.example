@@ -38,14 +38,14 @@ retry-wait=0
 ## 进度保存相关 ##
 
 # 读取会话
-#input-file=.config/arai2/session.lock
+input-file=.config/aria2/session.lock
 # 保存会话
-#save-session=.config/arai2/session.lock
+save-session=.config/aria2/session.lock
 # 定时保存会话, 0为退出时才保存, 需1.16.1以上版本, 默认:0
 save-session-interval=30
 # 强制保存会话, 即使任务已经完成, 默认:false
 # 较新的版本开启后会在任务完成后依然保留.aria2文件
-force-save=true
+force-save=false
 
 ## RPC相关设置 ##
 

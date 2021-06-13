@@ -1,7 +1,7 @@
 # Maintainer: gogogoghost <491511934@qq.com>
 pkgname=aria2-systemd
-pkgver=1.0
-pkgrel=1
+pkgver=1.1
+pkgrel=2
 pkgdesc="Systemd unit setting a Aria2 Service"
 arch=('any')
 depends=('aria2')
@@ -17,5 +17,5 @@ package() {
     install -Dm755 "$srcdir"/start-daemon.sh "$pkgdir"/etc/aria2/start-daemon.sh
 }
 md5sums=('29dbe4a84d98cdb3824ceb1587236f1b'
-         'ad931e8a6e4989cff16f7196eccca99a'
+         '7b88d722f8b8d4d67b68099d8196d608'
          '20842350316227bbd90fa3925dc7c4e5')

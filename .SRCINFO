@@ -1,15 +1,14 @@
 pkgbase = aria2-systemd
 	pkgdesc = Systemd unit setting a Aria2 Service
-	pkgver = 1.0
-	pkgrel = 1
+	pkgver = 1.1
+	pkgrel = 2
 	arch = any
 	depends = aria2
 	source = aria2.service
 	source = aria2.conf.example
 	source = start-daemon.sh
 	md5sums = 29dbe4a84d98cdb3824ceb1587236f1b
-	md5sums = ad931e8a6e4989cff16f7196eccca99a
+	md5sums = 7b88d722f8b8d4d67b68099d8196d608
 	md5sums = 20842350316227bbd90fa3925dc7c4e5
 
 pkgname = aria2-systemd
-
