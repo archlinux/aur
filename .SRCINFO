@@ -1,8 +1,8 @@
 pkgbase = pology
 	pkgdesc = A framework for custom processing of PO files.
 	pkgver = 0.12
-	pkgrel = 1
-	url = http://techbase.kde.org/Localization/Tools/Pology
+	pkgrel = 2
+	url = https://invent.kde.org/sdk/pology
 	changelog = changelog
 	arch = any
 	license = GPL3
@@ -22,10 +22,9 @@ pkgbase = pology
 	optdepends = apertium: used by the pomtrans script
 	optdepends = git: for processing files under version control
 	optdepends = subversion: for processing files under version control
-	conflicts = pology-svn
+	conflicts = pology-git
 	options = !makeflags
-	source = http://pology.nedohodnik.net/release/pology-0.12.tar.bz2
-	sha256sums = 33fd75b7214fc70882df128b5651d4870cb7d6cc73ca27c5517b4686976de5de
+	source = https://invent.kde.org/sdk/pology/-/archive/v0.12/pology-v0.12.tar.bz2
+	sha256sums = a49396eb854165f82bb22575301e890e1eead04ac86f98fff8533c486d07236a
 
 pkgname = pology
-
