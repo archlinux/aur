@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
         cd "$srcdir/${_pkgname}"
-	go mod init autovpn.go
+	go mod init autovpn.go &> /dev/null
 	go mod tidy
         go build -o ${_pkgname}
 }
