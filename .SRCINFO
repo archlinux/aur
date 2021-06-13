@@ -1,0 +1,21 @@
+pkgbase = com.wymail.deepin
+	pkgdesc = Wymail Client on Deepin Wine6
+	pkgver = 4.15.6.1016
+	pkgrel = 3
+	url = http://cbox.cntv.cn/
+	install = wineapps.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = deepin-wine6-stable>=6.0.0.8
+	depends = deepin-wine-helper>=5.1.22
+	depends = p7zip
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	optdepends = ttf-ms-fonts: Microsoft Core fonts
+	optdepends = noto-fonts-cjk: Google Noto CJK fonts
+	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.wymail.deepin/com.wymail.deepin_4.15.6.1016deepin3_i386.deb
+	sha512sums = ed77ff6d82524eaf207355e5c962cbc8e1bd6279d2e9c3b337d71e38692a79eb10aaad61f85d7a4332eb21da17a7390bbcb7a4c98a2062ffd5326a4c57625635
+
+pkgname = com.wymail.deepin
