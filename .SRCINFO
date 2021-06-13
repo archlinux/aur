@@ -1,8 +1,8 @@
 pkgbase = pology-git
 	pkgdesc = A framework for custom processing of PO files.
-	pkgver = 0.13.r5484.4321df3d
+	pkgver = 0.13.r5504.72c73d7d
 	pkgrel = 1
-	url = http://techbase.kde.org/Localization/Tools/Pology
+	url = https://invent.kde.org/sdk/pology
 	changelog = changelog
 	arch = any
 	license = GPL3
@@ -31,4 +31,3 @@ pkgbase = pology-git
 	sha256sums = SKIP
 
 pkgname = pology-git
-
