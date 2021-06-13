@@ -1,0 +1,14 @@
+pkgbase = emmet-cli
+	pkgdesc = Emmet command line interface
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/Delapouite/emmet-cli
+	arch = any
+	license = ISC
+	makedepends = npm
+	depends = nodejs
+	noextract = emmet-cli-1.2.1.tgz
+	source = https://registry.npmjs.org/emmet-cli/-/emmet-cli-1.2.1.tgz
+	md5sums = 143d40ced6a56a989074987b51a17c52
+
+pkgname = emmet-cli
