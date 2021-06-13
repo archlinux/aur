@@ -2,7 +2,7 @@
 
 pkgname=fabric-installer
 pkgver=0.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Installer for the Minecraft mod loader Fabric'
 arch=('any')
 url='https://fabricmc.net'
@@ -18,7 +18,7 @@ package() {
     _run="${_bin}/fabric-installer"
 
     install -Dm 644 $_filename "${pkgdir}/${_installer}"
-    mkdir -p "$_bin" && echo java -jar $_installer '"$*"' > "$_run"
+    mkdir -p "$_bin" && echo java -jar $_installer '$*' > "$_run"
     chmod 755 "$_run"
 }
 
