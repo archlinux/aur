@@ -1,6 +1,6 @@
 pkgbase = atomrpg
 	pkgdesc = Post-apocalyptic indie game
-	pkgver = 1.073.26991
+	pkgver = 1.177.45160
 	pkgrel = 1
 	url = https://atomrpg.com/
 	arch = i686
@@ -11,10 +11,11 @@ pkgbase = atomrpg
 	depends = glu
 	depends = desktop-file-utils
 	depends = gtk-update-icon-cache
+	makedepends = unzip
 	noextract = atom_rpg_post_apocalyptic_indie_game_1_073_26991.sh
 	source = gog://atom_rpg_post_apocalyptic_indie_game_1_073_26991.sh
 	source = atomrpg.desktop
-	sha256sums = 350bb3877a5a7959e8f0f3a39e49aa616c5adf548f5037de73a92e49f1715b50
+	sha256sums = e4c3f717f813d77d5b90cf9d97b29901a62628d8bc69f9d6a44366ae586ff219
 	sha256sums = 41ac5904f3c913a112d420960aaca0fd4967ac23274eb5161a74e9d967c0349d
 
 pkgname = atomrpg

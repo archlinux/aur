@@ -2,19 +2,19 @@
 
 pkgname=atomrpg
 _pkgname=atom_rpg_post_apocalyptic_indie_game
-pkgver=1.073.26991
+pkgver=1.177.45160
 pkgrel=1
 pkgdesc='Post-apocalyptic indie game'
 url="https://${pkgname}.com/"
 license=('custom:None')
 arch=('i686' 'x86_64')
 depends=('libgl' 'libx11' 'glu' 'desktop-file-utils' 'gtk-update-icon-cache')
-makedepnds=('imagemagick' 'zip' 'unzip')
+makedepends=('unzip')
 noextract=("${_pkgname}_${pkgver//./_}.sh")
 source=("gog://${_pkgname}_${pkgver//./_}.sh"
 "${pkgname}.desktop")
-sha256sums=('350bb3877a5a7959e8f0f3a39e49aa616c5adf548f5037de73a92e49f1715b50'
-			'41ac5904f3c913a112d420960aaca0fd4967ac23274eb5161a74e9d967c0349d')
+sha256sums=('e4c3f717f813d77d5b90cf9d97b29901a62628d8bc69f9d6a44366ae586ff219'
+            '41ac5904f3c913a112d420960aaca0fd4967ac23274eb5161a74e9d967c0349d')
 
 # You need to download the gog.com installer file manually or with lgogdownloader.
 DLAGENTS+=("gog::/usr/bin/echo %u - This is is not a real URL, you need to download the GOG file manually to \"$PWD\" or setup a gog:// DLAGENT. Read this PKGBUILD for more information.")
@@ -31,13 +31,8 @@ prepare(){
     esac
     find -name "*$_notarch" -exec rm -r {} +
 
-    # Unzip will produce an error code because it is unable to unzip the Installer.
-    # Therefore, a conditional into a no-op command will keep the PKGBUILD from failing
-    # Of course, if you have any real problems unzipping the PKGBUILD will not abort.
-	echo "Removing setup scripts from ${_pkgname}_${pkgver//./_}.sh"
-    zip -Fq "${_pkgname}_${pkgver//./_}.sh" --output "${pkgname}-${pkgver}.zip"
 	echo "Extracting game data"
-	unzip -q "${pkgname}-${pkgver}.zip"
+	unzip -qq "${_pkgname}_${pkgver//./_}.sh" || true
 	echo "Data extracted"
 
     cd "${srcdir}"
