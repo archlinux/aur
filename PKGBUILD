@@ -1,45 +1,42 @@
-# Maintainer: Arthur Sonzogni <ftxui at gmail dot com>
+# Maintainer: Arthur Sonzogni <sonzogniarthur+ftxui at gmail dot com>
+# Maintainer: Aditya Gupta <adityag.ug19.cs at  nitp.ac.in>
 pkgname=ftxui-git
-pkgver=r277.4d29dcc
+pkgver=r278.6f87740
 pkgrel=1
-pkgdesc="C++ Functional Terminal User Interface"
-arch=('x86_64' 'amd64' 'arm64' 'armhf' 'i386' 'ppc64el' 's390x')
+pkgdesc="FTXUI is a C++ Functional Terminal User Interface library."
+arch=("any")
 url="https://github.com/ArthurSonzogni/FTXUI"
-license=('MIT')
-depends=('cmake' 'gcc' 'ninja') # ninja is optional, just remove "-G Ninja" from build() too, though its faster if you leave as it is
-makedepends=('git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-install='.install'
-source=("${pkgname%-git}::git+https://github.com/ArthurSonzogni/FTXUI")
-md5sums=('SKIP')
+license=("MIT")
+depends=()
+makedepends=("git" "gcc")
+provides=("ftxui")
+conflicts=("ftxui")
+install=".install"
+source=("ftxui::git+https://github.com/ArthurSonzogni/FTXUI")
+md5sums=("SKIP")
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/ftxui"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	mkdir -p build && cd build
-	cmake -G Ninja \
-		-DFTXUI_BUILD_EXAMPLES=OFF \
-		-DFTXUI_ENABLE_INSTALL=ON \
-		-DFTXUI_BUILD_TESTS=OFF \
-		-DFTXUI_BUILD_DOCS=OFF \
-		.. -DCMAKE_BUILD_TYPE=Release
+  cd "$srcdir/ftxui"
+  mkdir -p build && cd build
+  cmake \
+    -DFTXUI_ENABLE_INSTALL=ON \
+    -DFTXUI_BUILD_EXAMPLES=OFF \
+    -DFTXUI_BUILD_TESTS=OFF \
+    -DFTXUI_BUILD_DOCS=OFF \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    ..
 
-	cmake --build .
-}
-
-check() {
-	cd "$srcdir/${pkgname%-git}"/build
-	# make -k check
+  cmake --build .
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	cd build
-	DESTDIR="$pkgdir/" cmake --install .
+  cd "$srcdir/ftxui"
+  cd build
+  DESTDIR="$pkgdir/" cmake --install .
 }

@@ -1,14 +1,30 @@
-## THIS IS NOT THE OFFICIAL PKGBUILD
+ftxui-git
+=========
 
-PKGBUILD for use on Arch by makepkg.
-Built for simple install and updation of [ftxui](https://github.com/ArthurSonzogni/FTXUI) library.
+This is the [official] [PKGBUILD] for [FTXUI] for use on [Arch Linux] via
+[makepkg].
 
-Just run makepkg in the directory, or see github.com/adig-pkgs/adig-pkgs how to add the custom repo to have it listed by your pacman.
+Run `makepkg` in this directory, or see [adig-pkgs]  to add the custom
+repository to have this listed by your [pacman].
+Just run makepkg in the directory, or see github.com/adig-pkgs/adig-pkgs how to
+add the custom repo to have it listed by your pacman.
 
-### Post Install
+The headers are installed to:
+```
+/usr/local/include/ftxui
+````
+and the libraries: `libcomponent.a`, `libdom.a`, `libscreen.a` into:
+```
+/usr/local/lib/ftxui
+```
 
-The headers are installed to `/usr/local/include/ftxui` and libraries to /usr/local/lib/ftxui, namely `libcomponent.a`, `libdom.a`, `libscreen.a`.
+You will get this message from makepkg too, don't forget to link to these
+libraries.
 
-You will get this message from makepkg too, don't forget to link to these libraries as required :D
-
-
+[Arch Linux]: https://archlinux.org/
+[FTXUI]: https://github.com/ArthurSonzogni/FTXUI
+[PKGBUILD]: https://wiki.archlinux.org/title/PKGBUILD
+[adig-pkgs]: https://github.com/adig-pkgs/adig-pkgs
+[makepkg]: https://wiki.archlinux.org/title/makepkg
+[official]:https://github.com/ArthurSonzogni/FTXUI/issues/110
+[pacman]: https://wiki.archlinux.org/title/pacman
