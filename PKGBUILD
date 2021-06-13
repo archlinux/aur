@@ -3,7 +3,7 @@
 
 pkgname=jpdfbookmarks
 pkgver=2.5.2
-pkgrel=1
+pkgrel=2
 _pkgreal="${pkgname}-${pkgver}"
 pkgdesc="Java PDF bookmarks editor"
 arch=('any')
@@ -11,7 +11,7 @@ url="http://flavianopetrocchi.blogspot.com/"
 license=('GPL3')
 depends=('java-environment' 'hicolor-icon-theme')
 install=jpdfbookmarks.install
-source=("http://downloads.sf.net/sourceforge/${pkgname}/${_pkgreal}.tar.gz"
+source=("https://downloads.sf.net/sourceforge/${pkgname}/${_pkgreal}.tar.gz"
         jpdfbookmarks.desktop)
 md5sums=('035c9cb2f828891cf0bea37323968f7a'
          '0d3d8e406fde4f9cdcb410a241a309b9')
