@@ -1,6 +1,6 @@
 pkgbase = notepac
 	pkgdesc = Make notes about your installed packages
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://gitlab.com/vaba/notepac
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = notepac
 	makedepends = cargo
 	makedepends = pandoc
 	depends = bash
-	source = git+https://gitlab.com/vaba/notepac#tag=v0.2.1
+	source = git+https://gitlab.com/vaba/notepac#tag=v0.2.2
 	md5sums = SKIP
 
 pkgname = notepac
