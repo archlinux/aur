@@ -3,7 +3,7 @@ pkgname="${_pkgname}-git"
 pkgver=r171.0aec91c
 pkgrel=1
 pkgdesc="A easy to use WireGuard dashboard and management tool"
-arch=("x86_64")
+arch=("any")
 url="https://github.com/perara/wg-manager"
 license=("MIT")
 depends=(
@@ -26,11 +26,11 @@ build() {
     npm install
     npm install @angular/cli
     node_modules/@angular/cli/bin/ng build --configuration="production"
-    mv dist "${srcdir}/${_pkgname}/wg_dashboard_backend/build"
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
     mkdir -p "${pkgdir}/opt/"
     mv wg_dashboard_backend "${pkgdir}/opt/wg-manager"
+    mv wg_dashboard_frontend/dist "${pkgdir}/opt/wg-manager/build"
 }
