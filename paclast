@@ -3,7 +3,7 @@
 # example usage: $ paclast -r | head
 
 main() {
-    opts="$(getopt -orcp -- "$@")" && eval set -- "$opts" || help
+    opts="$(getopt -orcph -- "$@")" && eval set -- "$opts" || help
     r= ; c= ; p=
     while true; do case "$1" in
         -r) r='|relative'; shift ;;
@@ -73,9 +73,10 @@ cat << 'eof'
 list installed pacman packages in chronological order.
 Usage: paclast [-rcp]
 Options:
-  -r     print relative times as well.
+  -r     add an 'x days ago' column to output.
   -c     colorize output.
   -p     show output in pager.
+  -h     print this help message.
 eof
 exit
 }
