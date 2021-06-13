@@ -1,7 +1,7 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname=libusrsctp
 pkgver=0.9.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A portable SCTP userland stack"
 arch=(i686 x86_64)
 url=https://github.com/sctplab/usrsctp
@@ -19,13 +19,9 @@ build() {
   cd ${pkgname#lib}-${pkgver}
   ./bootstrap
 
-  eval "$(sed -e '/^CFLAGS=/p' -e d /etc/makepkg.conf)"
-  eval "$(sed -e '/^CXXFLAGS=/p' -e d /etc/makepkg.conf)"
-  eval "$(sed -e '/^LDFLAGS=/p' -e d /etc/makepkg.conf)"
-
-  export CFLAGS="${CFLAGS} ${_EXTRA_FLAGS}"
-  export CXXFLAGS="${CXXFLAGS} ${_EXTRA_FLAGS}"
-  ./configure --prefix=/usr --disable-debug
+  CFLAGS="${CFLAGS} ${_EXTRA_FLAGS}" \
+  CXXFLAGS="${CXXFLAGS} ${_EXTRA_FLAGS}" \
+	  ./configure --prefix=/usr --disable-debug
 
   make
 }
