@@ -3,7 +3,7 @@
 
 pkgname=tile-world
 pkgver=1.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Emulation of the game Chip's Challenge"
 arch=('any')
 url="http://www.muppetlabs.com/~breadbox/software/tworld/"
@@ -16,7 +16,7 @@ source=(
 )
 md5sums=(
   'e3da2220f4ea090111e0300ad901b94e'
-  '50f96edbbc69b8c90a433d1380c4d2ac'
+  'f65ba125d56f7febd11c07d52a0854ad'
   '0406fbaf20ba6bba4cf2d55c2d1c2b3f'
 )
 
