@@ -1,6 +1,6 @@
 pkgbase = python-huggingface-hub-git
 	pkgdesc = Client library to download and publish models on the huggingface.co hub
-	pkgver = 0.0.9.r115
+	pkgver = 0.0.10.r144
 	pkgrel = 1
 	url = https://github.com/huggingface/huggingface_hub
 	arch = any
@@ -19,4 +19,3 @@ pkgbase = python-huggingface-hub-git
 	md5sums = SKIP
 
 pkgname = python-huggingface-hub-git
-
