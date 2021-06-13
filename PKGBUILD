@@ -5,7 +5,7 @@ pkgver=2.11
 pkgrel=2
 pkgdesc="Toolbox Software to update and customize the Fazua Energy Ride System"
 arch=('x86_64')
-url="https://fazua.com/de/support/help-center/toolbox-software/entry-toolbox-software/"
+url="https://fazua.com/en/support/help-center/toolbox-software/entry-toolbox-software/"
 license=('unknown')
 _filename="FAZUA_Toolbox_basic-linux-x86_64"
 
