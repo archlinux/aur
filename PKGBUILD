@@ -3,15 +3,15 @@
 
 _extname=event
 pkgname=php-$_extname
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=1
 pkgdesc='PHP PECL extension providing interface to libevent library'
 arch=('x86_64')
 url="https://pecl.php.net/package/$_extname"
 license=('PHP')
 depends=('php>=7.3' 'libevent>=2.0')
-source=("http://pecl.php.net/get/$_extname-$pkgver.tgz")
-sha256sums=('3d585ec92ae7efc4a9eca0ed015ec0f73ff43d5e3c56cf15b36c904ef71fcb8f')
+source=("https://pecl.php.net/get/$_extname-$pkgver.tgz")
+sha256sums=('2c0df976ff1a54f9a22995156de2b4d46da97b9105b55c7cf6ec24caea40aa60')
 
 prepare() {
 	cd $srcdir/$_extname-$pkgver
