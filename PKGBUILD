@@ -1,11 +1,11 @@
 # Maintainer: Roshless <pkg@roshless.com>
 
 pkgname=gmni-git
-pkgrel=1
+pkgrel=2
 pkgver=r146.b46b312
 pkgdesc="A Gemini client"
 url="https://git.sr.ht/~sircmpwn/gmni"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 license=("GPL")
 source=("gmni::git+https://git.sr.ht/~sircmpwn/gmni")
 depends=('bearssl')
