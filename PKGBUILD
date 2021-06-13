@@ -3,7 +3,7 @@
 # Contributor: Wojtek Gawroński <afronski@gmail.com>
 
 pkgname=nomad-bin
-pkgver=1.0.4
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='A distributed, highly available, datacenter-aware scheduler'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -29,10 +29,10 @@ sha256sums=('85b6938ba13b450f8b7b9ca281178eea57a9409948b9e70b69d6a66a4dbdaa7b'
             'c3650a0f88cb6c511731e26f25dddfe531de3cb833fa1780ec68273faef97c97'
             '1ddf845cfbb2beff7162bd7299705338cf1611fc9f7dfe6a093e4c9cce43e0d2'
             '428c929e205e6ed4da1668534f413fb7e9484ab88c26f8f866d49f8f6ae207e8')
-sha256sums_x86_64=('dbb8b8b1366c8ea9504cc396f2c00a254e043b1fc9f39f39d9ef3398e454e840')
-sha256sums_i686=('dbb8b8b1366c8ea9504cc396f2c00a254e043b1fc9f39f39d9ef3398e454e840')
-sha256sums_armv7h=('dbb8b8b1366c8ea9504cc396f2c00a254e043b1fc9f39f39d9ef3398e454e840')
-sha256sums_aarch64=('dbb8b8b1366c8ea9504cc396f2c00a254e043b1fc9f39f39d9ef3398e454e840')
+sha256sums_x86_64=('cbb4725e3e10b016b1682db8b0b54d1a1f60d84f0258aa488201dc71f20dc75c')
+sha256sums_i686=('4723fc187a4c944f170e37b0bccbdfddb9e26a24da5dbda0f581496aa590c438')
+sha256sums_armv7h=('cbc621f0a60fdf0c86224f3f67f183431de8f3fb10ca16b566aff5c84efca65d')
+sha256sums_aarch64=('6301f9aa2c66edb7442f7b0ce75e96d2d157b378f84aafe1014c8e01c8278d3d')
 
 package() {
   install -Dm0755 nomad "${pkgdir}/usr/bin/nomad"
