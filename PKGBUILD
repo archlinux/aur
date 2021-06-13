@@ -3,13 +3,13 @@
 
 pkgname=piskel
 pkgver=0.15.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A free online editor for animated sprites & pixel art."
 arch=('x86_64')
 url="https://github.com/piskelapp/piskel"
 license=('Apache')
-depends=('gconf' 'gtk2' 'alsa-lib' 'libxss' 'nss' 'libxtst')
-makedepends=('grunt-cli' 'imagemagick' 'npm')
+depends=('gconf' 'gtk2' 'alsa-lib' 'libxss' 'nss' 'libxtst' )
+makedepends=('grunt-cli' 'imagemagick' 'npm' 'phantomjs')
 options=(!strip)
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/piskelapp/piskel/archive/v${pkgver}.tar.gz"
 				"Piskel.desktop")
