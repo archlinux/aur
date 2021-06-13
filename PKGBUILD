@@ -7,6 +7,8 @@
 	source+=("radare2::git+https://github.com/radareorg/radare2")
 	md5sums+=('SKIP')
 	_CMAKE_FLAGS+=(-DIAITO_USE_BUNDLED_RADARE2=ON)
+	conflicts+=('radare2')
+	provides+=('radare2')
 }
 
 
@@ -20,6 +22,7 @@ arch=('x86_64')
 license=('GPL3')
 depends+=('python' 'capstone' 'qt5-base' 'qt5-svg' 'qt5-webengine' 'icu' 'python-shiboken2' 'pyside2' 'graphviz' 'qt5-tools' 'syntax-highlighting')
 makedepends=('git' 'cmake' 'shiboken2' 'meson' 'ninja')
+conflicts+=('radare2-cutter-git')
 optdepends=()
 backup=()
 source+=("${pkgname}::git+https://github.com/radareorg/iaito.git${_fragment}"

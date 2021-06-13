@@ -22,6 +22,7 @@ pkgbase = r2-iaito-git
 	depends = graphviz
 	depends = qt5-tools
 	depends = syntax-highlighting
+	conflicts = radare2-cutter-git
 	source = radare2::git+https://github.com/radareorg/radare2
 	source = r2-iaito-git::git+https://github.com/radareorg/iaito.git
 	source = iaito-translations::git+https://github.com/radareorg/iaito-translations
