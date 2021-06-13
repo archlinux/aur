@@ -3,14 +3,17 @@
 pkgname=ruby-vimgolf
 _gemname=vimgolf
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 provides=('vimgolf')
 conflicts=('python-vimgolf')
 pkgdesc='Real Vim ninjas count every keystroke - do you?'
 arch=('any')
 url='https://github.com/igrigorik/vimgolf'
 license=('MIT')
-depends=('ruby')
+depends=('ruby'
+         'ruby-thor'
+         'ruby-json_pure'
+         'ruby-highline')
 source=(
     "https://rubygems.org/downloads/${_gemname}-$pkgver.gem"
     "https://github.com/igrigorik/vimgolf/raw/v$pkgver/LICENSE"
