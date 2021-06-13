@@ -3,7 +3,7 @@
 
 _pkgname=autovpn
 pkgname=${_pkgname}-git
-pkgver=r20.a2d4278
+pkgver=r18.28b1a87
 pkgrel=1
 pkgdesc='Easily connect to a VPN in a country of your choice.'
 arch=('x86_64')
