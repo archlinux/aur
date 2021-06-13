@@ -2,12 +2,12 @@
 
 pkgname=yubikey-oath-dmenu
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="dmenu interface for getting OATH codes from a YubiKey"
 url="https://github.com/emlun/yubikey-oath-dmenu"
 license=('GPL3')
 arch=('any')
-depends=('dmenu' 'python' 'python-click' 'xclip' 'yubikey-manager>=0.5.0')
+depends=('dmenu' 'python' 'python-click' 'xclip' 'yubikey-manager>=0.5.0' 'yubikey-manager<4.0.0')
 optdepends=(
   'libnotify: Feedback via notify-send'
   'xdotool: Type code instead of copying to clipboard'
