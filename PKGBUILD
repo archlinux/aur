@@ -4,7 +4,7 @@
 pkgbase=openrazer-git
 _pkgbase=openrazer
 pkgname=('python-openrazer-git' 'openrazer-daemon-git' 'openrazer-driver-dkms-git' 'openrazer-meta-git')
-pkgver=2.6.0.r6.g2433ae8
+pkgver=3.0.1.r8.g851c32a5
 pkgrel=1
 pkgdesc="An entirely open source driver and user-space daemon that allows you to manage your Razer peripherals on GNU/Linux."
 arch=('any')
@@ -17,6 +17,16 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$_pkgbase"
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  # Do a sanity check in the environment of the builder so the build process doesn't place files into a wrong directory.
+  # If you think this is incorrect you can always remove this from the PKGBUILD, but then please don't complain if it doesn't work.
+  if [ "$(which python3)" != "/usr/bin/python3" ]; then
+    echo "ERROR: Your 'python3' does not point to /usr/bin/python3 but to $(which python3), likely a custom environment like anaconda."
+    echo "Please build this package in a clean chroot (e.g. with https://wiki.archlinux.org/title/DeveloperWiki:Building_in_a_clean_chroot) or point your PATH variable to prefer /usr/bin/ temporarily."
+    return 1
+  fi
 }
 
 package_python-openrazer-git() {
