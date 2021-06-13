@@ -1,0 +1,25 @@
+From 82b5b06165e630f1245f03e1477ca8dc63a7f21b Mon Sep 17 00:00:00 2001
+From: Antoni Boucher <bouanto@zoho.com>
+Date: Sun, 22 Nov 2020 08:33:35 -0500
+Subject: [PATCH] Update links for ArchLinux
+
+---
+ src/homepage/distro_links.html | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/homepage/distro_links.html b/src/homepage/distro_links.html
+index f0a8527..35c1e78 100644
+--- a/src/homepage/distro_links.html
++++ b/src/homepage/distro_links.html
+@@ -2,6 +2,6 @@
+      SPDX-License-Identifier: GPL-3.0-or-later -->
+ 
+ <p class="distro-links">
+-	<a href="https://postmarketos.org/blog">blog</a> -
+-	<a href="https://wiki.postmarketos.org/">wiki</a>
++    <a href="https://www.archlinux.org/">blog</a> -
++    <a href="https://wiki.archlinux.org/">wiki</a>
+ </p>
+-- 
+2.29.2
+
