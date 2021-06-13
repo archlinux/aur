@@ -8,7 +8,7 @@ REENABLE_DRAGDROP=0
 
 pkgname=obs-studio-tytan652
 pkgver=27.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, working VLC sources and my bind interface and GNOME entry PRs."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -21,6 +21,8 @@ depends=("ffmpeg" "mbedtls" "jack" "gtk-update-icon-cache" "x264" "rnnoise"
 
          # Both needed to load linux-capture, so those two are no longer optional
          "libxcomposite" "pipewire"
+         # Needed to use PipeWire capture
+         "xdg-desktop-portal"
 
          # Needed by obs-browser
          "libxss" "libxrandr" "nss" "at-spi2-atk"
@@ -37,7 +39,6 @@ makedepends=("cmake" "git" "libfdk-aac" "swig" "luajit" "python"
              "cef-minimal-obs=87.1.14")
 optdepends=(
             "libfdk-aac: FDK AAC codec support"
-            "xdg-desktop-portal-impl: PipeWire capture support"
             "libva-intel-driver: Hardware encoding"
             "libva-mesa-driver: Hardware encoding"
             "swig: Scripting"
@@ -81,7 +82,7 @@ prepare() {
   patch -Np1 < "$srcdir/bind_iface.patch"
   # Add translation
   echo -e "\r\n# Bind Network Interface PR translation" >> "$srcdir/obs-studio"/UI/data/locale/en-US.ini
-  echo -e "Basic.Settings.Advanced.Network.BindToInterface=\"Bind to interface\"" >> "$srcdir/obs-studio"/UI/data/locale/en-US.ini
+  echo "Basic.Settings.Advanced.Network.BindToInterface=\"Bind to interface\"" >> "$srcdir/obs-studio"/UI/data/locale/en-US.ini
 
   ## xdg-data: Add a custom desktop entry for Gnome Shell, Phosh and maybe more (https://github.com/obsproject/obs-studio/pull/4496)
   patch -Np1 < "$srcdir/update_desktop_entries.patch"
