@@ -3,7 +3,7 @@ _pkgname=yuzu-mainline
 pkgname="${_pkgname}-bin"
 provides=('yuzu' 'yuzu-cmd')
 conflicts=('yuzu-git' 'yuzu-canary-git' 'yuzu-mainline-git')
-_pkgver=627
+_pkgver=628
 pkgver="0.${_pkgver}"
 pkgrel=1
 pkgdesc="Yuzu emulator 'mainline' branch binaries for Arch Linux"
@@ -13,7 +13,7 @@ license=('GNU General Public License v2.0')
 depends=('shared-mime-info' 'desktop-file-utils' 'sdl2' 'qt5-base' 'qt5-multimedia' 'qt5-tools' 'qt5-webengine' 'libxkbcommon-x11' 'libfdk-aac' 'fmt' 'libzip')
 optdepends=('qt5-wayland: for Wayland support')
 source=("${url}/archive/0-${_pkgver}.tar.gz")
-sha512sums=('9ffda524c2f68c5872a5df1771b25a7858c2ea17e1129b091c09c6ffd6c6ef19bcba0a6a1f6b22bddc66cd2f56c74b7e5ccb39fcc8125e7a3257062b64193e2f')
+sha512sums=('9e6d3c9d09f884d655669d35b654a75fa2f3c9e23dc04c317d8c118e2eea33b4d6b58f24e4545c3817ca815a1d6a4e19cf2c84e18d20a45648bebfe476bc26a0')
 
 package() {
   cd "${srcdir}/arch-${_pkgname}-0-${_pkgver}"
