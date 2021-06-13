@@ -5,7 +5,7 @@ pkgrel=3
 epoch=
 pkgdesc="Wymail (网易邮箱) Client on Deepin Wine6"
 arch=('i686' 'x86_64')
-url="http://cbox.cntv.cn/"
+url="https://mail.163.com/"
 license=('unknown')
 groups=()
 depends=('deepin-wine6-stable>=6.0.0.8' 'deepin-wine-helper>=5.1.22' 'p7zip' 'xdg-utils' 'hicolor-icon-theme')

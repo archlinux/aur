@@ -1,8 +1,8 @@
 pkgbase = com.wymail.deepin
-	pkgdesc = Wymail Client on Deepin Wine6
+	pkgdesc = Wymail (网易邮箱) Client on Deepin Wine6
 	pkgver = 4.15.6.1016
 	pkgrel = 3
-	url = http://cbox.cntv.cn/
+	url = https://mail.163.com/
 	install = wineapps.install
 	arch = i686
 	arch = x86_64
