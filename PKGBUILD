@@ -1,12 +1,12 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-dtw-python-git
 pkgver=1.1.10.r231
-pkgrel=1
+pkgrel=2
 pkgdesc="Python port of R's Comprehensive Dynamic Time Warp algorithm package"
 arch=('any')
 url='https://github.com/DynamicTimeWarping/dtw-python'
 license=('GPL3')
-depends=('python>=3.6' 'python-numpy' 'python-scipy')
+depends=('python>=3.6' 'python-numpy' 'python-scipy' 'cython')
 makedepends=('git' 'python-setuptools')
 provides=('python-dtw-python')
 conflicts=("python-dtw-python" "${pkgname}")
