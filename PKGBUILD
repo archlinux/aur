@@ -7,7 +7,14 @@ url="https://github.com/lockbook/lockbook"
 pkgdesc="A secure, private, minimal, cross-platform document editor."
 license=('BSD-3-Clause')
 makedepends=('rust' 'cargo' 'git')
-depends=('gtksourceview3' 'gtk3' 'pango' 'glib2' 'gdk-pixbuf2' 'atk' 'gobject-introspection-runtime' 'libepoxy')
+depends=('gtksourceview3' 'gtk3' 'pango' 'glib2' 'gdk-pixbuf2' 'atk' 'gobject-introspection-runtime' 'libepoxy' 'gspell')
+optdepends=(
+  'aspell-en: english dictionary for spellcheck'
+  'aspell-es: spanish dictionary for spellcheck'
+  'aspell-fr: french dictionary for spellcheck'
+  'aspell-de: german dictionary for spellcheck'
+  'aspell-ru: russian dictionary for spellcheck'
+)
 provides=('lockbook-desktop')
 conflicts=('lockbook-desktop')
 source=("git+https://github.com/lockbook/aur-lockbook-desktop.git" "git+https://github.com/lockbook/lockbook.git")
@@ -25,10 +32,8 @@ build(){
   cargo build --release --locked
 }
 
-package() {
-  mv "$srcdir/lockbook/clients/linux/target/release/lockbook" "$srcdir/lockbook/clients/linux/target/release/lockbook-desktop" 
-  
-  install -D -m755 "$srcdir/lockbook/clients/linux/target/release/lockbook-desktop" "$pkgdir/usr/bin/lockbook-desktop"
+package() {  
+  install -D -m755 "$srcdir/lockbook/target/release/lockbook-desktop" "$pkgdir/usr/bin/lockbook-desktop"
   install -D -m644 "$srcdir/lockbook/graphics/SVGs/dark-1.svg" "$pkgdir/usr/share/pixmaps/dark-1.svg"
   install -D -m644 "$srcdir/aur-lockbook-desktop/lockbook-desktop.desktop" "$pkgdir/usr/share/applications/lockbook-desktop.desktop"
 }
