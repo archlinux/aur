@@ -11,7 +11,7 @@ pkgbase = mingw-w64-mesa-git
 	depends = mingw-w64-llvm
 	depends = mingw-w64-vulkan-icd-loader
 	depends = mingw-w64-dlfcn
-	depends = mingw-w64-libsystre
+	depends = mingw-w64-regex
 	provides = mingw-w64-mesa
 	conflicts = mingw-w64-mesa
 	options = staticlibs
@@ -21,4 +21,3 @@ pkgbase = mingw-w64-mesa-git
 	sha256sums = SKIP
 
 pkgname = mingw-w64-mesa-git
-
