@@ -1,0 +1,24 @@
+pkgbase = python-pywikibot-git
+	pkgdesc = Python library that interfaces with the MediaWiki API
+	pkgver = 6.3.0.r92.gd4e930c09d
+	pkgrel = 1
+	epoch = 1
+	url = https://www.mediawiki.org/wiki/Manual:Pywikibot
+	install = install
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = git
+	source = python-pywikibot-git::git+https://gerrit.wikimedia.org/r/pywikibot/core.git
+	source = user-config.py
+	sha256sums = SKIP
+	sha256sums = 6a6251e826e7ebcef77dcd57f528c6262fb974594a2d53686cec5412d984cf78
+
+pkgname = python-pywikibot-git
+	depends = python
+	depends = python-requests
+	optdepends = python-mwparserfromhell: improved parser, madatory - choose and install one of the parsers
+	optdepends = python-wikitextparser: improved parser, mandatory - choose and install one of the parsers
+	provides = python-pywikibot
+	conflicts = python-pywikibot

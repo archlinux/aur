@@ -1,0 +1,4 @@
+post_install() {
+  echo '   Default configuration is in: /usr/share/pywikibot/user-config.py'
+  echo '   Copy it to ~/.pywikibot/user-config.py and edit to your needs.'
+}
