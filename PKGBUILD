@@ -3,8 +3,8 @@
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-server
-pkgver=2.2.21
-pkgrel=2
+pkgver=2.2.22
+pkgrel=1
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64')
 url='https://github.com/GNS3/gns3-server'
@@ -38,7 +38,7 @@ optdepends=(
 install="$pkgname".install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname@.service")
-sha256sums=('a54ee2771e546c54e8c684284842ccdfd64ffabb0418da54e619cc187bfc8b75'
+sha256sums=('1156ef1ce52744e1975289524662238f2a1fdd73f98cbaa331a7ee0bc432f8ef'
             'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f')
 
 prepare() {
@@ -46,12 +46,12 @@ prepare() {
     # Arch usually has the latest versions. Patch requirements to allow them.
     sed -i \
         -e 's|^aiohttp==3\.7\.4.*|aiohttp>=3.7.4|' \
-        -e 's|^aiofiles==0\.6\.0$|aiofiles>=0.6.0|' \
-        -e 's|^Jinja2==2\.11\.3$|Jinja2>=2.11.3|' \
-        -e 's|^sentry-sdk==1\.0\.0$|sentry-sdk>=1.0.0|' \
+        -e 's|^aiofiles==0\.7\.0$|aiofiles>=0.7.0|' \
+        -e 's|^Jinja2==3\.0\.1$|Jinja2>=3.0.1|' \
+        -e 's|^sentry-sdk==1\.1\.0$|sentry-sdk>=1.1.0|' \
         -e 's|^psutil==5\.8\.0$|psutil>=5.8.0|' \
         -e 's|^distro==1\.5\.0$|distro>=1.5.0|' \
-        -e 's|^py-cpuinfo==7\.0\.0$|py-cpuinfo>=7.0.0|' \
+        -e 's|^py-cpuinfo==8\.0\.0$|py-cpuinfo>=8.0.0|' \
         requirements.txt
 }
 
