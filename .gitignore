@@ -10,6 +10,6 @@
 /src
 
 # Source files
-10-acmed.rules
+*.rules
 LICENSE-APACHE-2.0.txt
 LICENSE-MIT.txt
