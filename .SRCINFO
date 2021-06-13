@@ -1,14 +1,15 @@
 pkgbase = kineto-git
 	pkgdesc = An HTTP to Gemini proxy
-	pkgver = r6.1074d43
+	pkgver = r21.988a00f
 	pkgrel = 1
 	url = https://git.sr.ht/~sircmpwn/kineto
-	arch = any
+	arch = x86_64
+	arch = i686
 	license = GPL
 	makedepends = git
 	makedepends = go
+	depends = glibc
 	source = kineto-git::git+https://git.sr.ht/~sircmpwn/kineto
 	md5sums = SKIP
 
 pkgname = kineto-git
-

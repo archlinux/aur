@@ -1,12 +1,13 @@
 # Maintainer: Roshless <pkg@roshless.com>
 
 pkgname=kineto-git
-pkgver=r6.1074d43
+pkgver=r21.988a00f
 pkgrel=1
 pkgdesc='An HTTP to Gemini proxy'
 url='https://git.sr.ht/~sircmpwn/kineto'
-arch=('any')
+arch=('x86_64' 'i686')
 license=('GPL')
+depends=('glibc')
 makedepends=('git' 'go')
 source=("kineto-git::git+https://git.sr.ht/~sircmpwn/kineto")
 
