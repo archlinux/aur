@@ -50,6 +50,9 @@ build() {
 
 	patch -p1 -i "$srcdir/deps.patch"
 
+	# set CMake minimal version to 3.9 to set CMP0039 to new
+	sed -i 's/VERSION 2.8.11/VERSION 3.9/g' CMakeLists.txt
+
 	rm -rf deps/brotli
 	mv "$srcdir/brotli-$bver" deps/brotli
 
@@ -68,6 +71,7 @@ build() {
 	# Note that picotls can be turned off,
 	# OpenSSL already supports TLS 1.3
 	cmake \
+		-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
 		-DCMAKE_INSTALL_SYSCONFDIR=/etc \
