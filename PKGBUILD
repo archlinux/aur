@@ -2,7 +2,7 @@
 
 pkgname=teleport
 pkgver=6.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/gravitational/teleport"
@@ -24,7 +24,7 @@ sha256sums=('a24c56c9aa0f9b215655947b9ca56438351b407aacabe2eb8c4c9e5fa128c6d9'
             '14445b0864d759347c1f53dc144a346b1974b8ded49031d7f0b7227f5d49d407'
             '10ac25cea1b5c193d7f968ca28a1da0e54b847f29c2a0186b46fd853194be38a'
             '4bc17fdde981f91c5d9972ae0555ee5e8b63a6b67e007c28f83ada80823980fd'
-            '367253397479419feb4572778f3bd5bbd573058070550bdbcf01d045efa6397a')
+            'ce2dd61cae3c0c3684e7e629f98b77551e66ddedca2194250a34f0efbc674f3a')
 
 prepare() {
     mv "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/${pkgname}"
