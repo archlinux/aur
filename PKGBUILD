@@ -5,14 +5,16 @@
 # Contributor: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
 # Contributor: The_Decryptor
 
+# FIXME: mruby disabled until we figure out how to build with it
+
 pkgname=h2o-git
-pkgver=2.2.0.4164
+pkgver=2.2.0.5201
 pkgrel=1
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64')
 # if you want websocket support, you'll also need aur/wslay
 depends=('libuv' 'libyaml' 'zlib')
-makedepends=('cmake' 'ruby')
+makedepends=('cmake')
 url="https://github.com/h2o/h2o"
 license=('MIT')
 
@@ -69,7 +71,7 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
 		-DCMAKE_INSTALL_SYSCONFDIR=/etc \
-		-DWITH_MRUBY=on \
+		-DWITH_MRUBY=off \
 		-DWITHOUT_LIBS=off \
 		-DBUILD_SHARED_LIBS=off \
 		.
