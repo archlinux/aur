@@ -2,24 +2,29 @@
 # Maintainer: Antoni Boucher <bouanto at zoho dot com>
 
 pkgname='mobile-config-firefox'
-pkgver=1.0.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Mobile and privacy friendly configuration for Firefox"
 url="https://gitlab.com/postmarketOS/mobile-config-firefox"
 license=('GPL')
-arch=('x86_64')
+arch=('x86_64' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
 depends=('firefox')
-source=("git+https://gitlab.com/postmarketOS/mobile-config-firefox"
+source=("https://gitlab.com/postmarketOS/mobile-config-firefox/-/archive/${pkgver}/mobile-config-firefox-${pkgver}.tar.gz"
     "0001-Update-links-for-ArchLinux.patch")
-sha256sums=("SKIP"
-    "SKIP")
+sha256sums=("97da1d1c61bb0730b203629488c00514c5f4672aa9bf3574e6255cb9a42bfa85"
+    "be6c30de864c812edc897c9d7bf4896f646fa73268d945646032eb1a9a8926f0")
 
 prepare() {
     cd $pkgname
     patch --forward --strip=1 --input="${srcdir}/0001-Update-links-for-ArchLinux.patch"
 }
 
+build() {
+    cd $pkgname
+    make DISTRO=ArchLinux
+}
+
 package() {
     cd $pkgname
-    make DISTRO=ArchLinux DESTDIR=$pkgdir install
+    make DESTDIR=$pkgdir install
 }
