@@ -2,7 +2,7 @@
 
 _pkgname="akwaita-theme"
 pkgname="akwaita-theme-git"
-pkgver=0.1.0.r1.g1b59e48
+pkgver=0.1.0.r7.g5c7318d
 pkgrel=1
 pkgdesc="A simple gnome-shell theme base on Adwaita"
 arch=("any")
@@ -24,5 +24,5 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" package
 }
