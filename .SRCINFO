@@ -1,11 +1,10 @@
 pkgbase = jitsi-meet-desktop
 	pkgdesc = Jitsi Meet desktop application
 	pkgver = 2.8.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jitsi.org/jitsi-meet/
 	arch = x86_64
 	arch = aarch64
-	arch = armv7h
 	license = Apache
 	makedepends = coreutils
 	makedepends = git
@@ -14,7 +13,6 @@ pkgbase = jitsi-meet-desktop
 	makedepends = png++
 	makedepends = libxtst
 	makedepends = nvm
-	depends = electron
 	depends = gtk3
 	depends = libxss
 	depends = nss
@@ -26,6 +24,7 @@ pkgbase = jitsi-meet-desktop
 	source = jitsi-meet-desktop.desktop
 	sha256sums = 957654aa5aeca6c201e42a0f8c2c72adbd89adc7546a974f08cc878215f79e8c
 	sha256sums = 36a30a15613d53b2a01626a5551315c6970889ce3c2688bce71e26c3333081a4
+	depends_x86_64 = electron
+	depends_aarch64 = electron12
 
 pkgname = jitsi-meet-desktop
-

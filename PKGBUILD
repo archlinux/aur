@@ -4,18 +4,19 @@
 
 pkgname=jitsi-meet-desktop
 pkgver=2.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Jitsi Meet desktop application"
-arch=('x86_64' 'aarch64' 'armv7h')
+arch=('x86_64' 'aarch64')
 url="https://jitsi.org/jitsi-meet/"
 license=('Apache')
 conflicts=('jitsi-meet-electron-bin'
            'jitsi-meet-electron')
 replaces=('jitsi-meet-electron')
-depends=('electron'
-         'gtk3'
+depends=('gtk3'
          'libxss'
          'nss')
+depends_x86_64=('electron')
+depends_aarch64=('electron12')
 makedepends=('coreutils'
              'git'
              'npm'
@@ -32,10 +33,6 @@ sha256sums=('957654aa5aeca6c201e42a0f8c2c72adbd89adc7546a974f08cc878215f79e8c'
             '36a30a15613d53b2a01626a5551315c6970889ce3c2688bce71e26c3333081a4')
 
 case "$CARCH" in
-        armv7h)
-                _electronbuilderarch='armv7l'
-                _dist_path="linux-${_electronbuilderarch}-unpacked"
-        ;;
         aarch64)
                 _electronbuilderarch='arm64'
                 _dist_path="linux-${_electronbuilderarch}-unpacked"
@@ -55,7 +52,11 @@ prepare() {
 
   cd jitsi-meet-electron-${pkgver}/
 
-  _electron_dist=/usr/lib/electron
+  if [[ "$CARCH" == 'aarch64' ]]; then
+    _electron_dist=/usr/lib/electron12
+  else
+    _electron_dist=/usr/lib/electron
+  fi
   _electron_ver=$(cat ${_electron_dist}/version)
   sed -r 's#("electron": ").*"#\1'${_electron_ver}'"#' -i package.json
 
@@ -81,10 +82,16 @@ package() {
 
   install -Dm644 -- resources/icon.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
+  if [[ "$CARCH" == 'aarch64' ]]; then
+    _electron_bin=electron12
+  else
+    _electron_bin=electron
+  fi
+
   cat << EOF > "$pkgdir"/usr/bin/$pkgname
 #!/bin/sh
 
-NODE_ENV=production ELECTRON_IS_DEV=false exec electron /opt/$pkgname/app.asar "\$@"
+NODE_ENV=production ELECTRON_IS_DEV=false exec $_electron_bin /opt/$pkgname/app.asar "\$@"
 EOF
 
   chmod +x "$pkgdir"/usr/bin/$pkgname
