@@ -1,14 +1,14 @@
 pkgbase = officelife-git
 	pkgdesc = Cover the entire employee lifecycle in a single application
-	pkgver = v0.1.0.alpha.4.r39.g9d692035
+	pkgver = 0.2.0.r53.g8f84294c
 	pkgrel = 1
 	url = https://www.officelife.io/
 	arch = any
 	license = BSD3
 	makedepends = composer
 	makedepends = yarn
-	depends = php>=7.4
-	depends = php-intl>=7.4
+	depends = php>=8.0
+	depends = php-intl>=8.0
 	optdepends = mariadb: database
 	optdepends = mysql: database
 	optdepends = postgresql: database
@@ -23,4 +23,3 @@ pkgbase = officelife-git
 	sha256sums = SKIP
 
 pkgname = officelife-git
-

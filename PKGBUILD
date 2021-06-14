@@ -1,13 +1,13 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="officelife-git"
-pkgver=v0.1.0.alpha.4.r39.g9d692035
+pkgver=0.2.0.r53.g8f84294c
 pkgrel=1
 pkgdesc="Cover the entire employee lifecycle in a single application"
 url="https://www.officelife.io/"
 license=("BSD3")
 arch=("any")
-depends=("php>=7.4" "php-intl>=7.4")
+depends=("php>=8.0" "php-intl>=8.0")
 makedepends=("composer" "yarn")
 optdepends=("mariadb: database"
             "mysql: database"
@@ -24,7 +24,7 @@ options=("!strip")
 
 pkgver(){
  cd "officelife"
- git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
+ git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//"
 }
 
 package(){
