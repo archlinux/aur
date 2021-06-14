@@ -20,6 +20,7 @@ optdepends=('postgresql-libs: PostgreSQL driver'
 groups=(qt6)
 conflicts=(qt6-base)
 provides=(qt6-base)
+options=(!lto)
 _pkgfn="qtbase-everywhere-src-$_qtver"
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
         qt6-base-cflags.patch
