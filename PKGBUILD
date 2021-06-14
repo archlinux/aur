@@ -2,13 +2,14 @@
 
 pkgname=tree-sitter-bibtex-git
 pkgver=r8.ccfd77d
-pkgrel=1
+pkgrel=2
 pkgdesc="LaTex grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/latex-lsp/tree-sitter-bibtex"
 license=('MIT')
 groups=('tree-sitter-grammars')
 makedepends=('git' 'tree-sitter' 'npm')
+optdepends=('texlab' 'tree-sitter-latex')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url")

@@ -1,7 +1,7 @@
 pkgbase = tree-sitter-bibtex-git
 	pkgdesc = LaTex grammar for tree-sitter
 	pkgver = r8.ccfd77d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/latex-lsp/tree-sitter-bibtex
 	arch = x86_64
 	groups = tree-sitter-grammars
@@ -9,6 +9,8 @@ pkgbase = tree-sitter-bibtex-git
 	makedepends = git
 	makedepends = tree-sitter
 	makedepends = npm
+	optdepends = texlab
+	optdepends = tree-sitter-latex
 	provides = tree-sitter-bibtex
 	conflicts = tree-sitter-bibtex
 	source = tree-sitter-bibtex-git::git+https://github.com/latex-lsp/tree-sitter-bibtex
