@@ -1,0 +1,9 @@
+pkgbase = nocode
+	pkgdesc = No code is the best way to write secure and reliable applications. Write nothing; deploy nowhere.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kelseyhightower/nocode
+	arch = any
+	license = Apache-2.0
+
+pkgname = nocode
