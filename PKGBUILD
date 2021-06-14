@@ -2,13 +2,13 @@
 
 pkgname=neovim-range-highlight-git
 pkgver=r59.f1b0e2a
-pkgrel=1
+pkgrel=2
 pkgdesc="Neovim plugin that highlights ranges entered into the command line"
 arch=('any')
 url="https://github.com/winston0410/range-highlight.nvim"
 license=('MIT')
 groups=('neovim-plugins')
-depends=('neovim' 'neovim-cmd-parser')
+depends=('neovim' 'neovim-cmd-parser-git')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

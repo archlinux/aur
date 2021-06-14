@@ -1,7 +1,7 @@
 pkgbase = neovim-range-highlight-git
 	pkgdesc = Neovim plugin that highlights ranges entered into the command line
 	pkgver = r59.f1b0e2a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/winston0410/range-highlight.nvim
 	install = neovim-range-highlight-git.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = neovim-range-highlight-git
 	license = MIT
 	makedepends = git
 	depends = neovim
-	depends = neovim-cmd-parser
+	depends = neovim-cmd-parser-git
 	provides = neovim-range-highlight
 	conflicts = neovim-range-highlight
 	source = neovim-range-highlight-git::git+https://github.com/winston0410/range-highlight.nvim
