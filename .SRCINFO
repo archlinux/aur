@@ -1,7 +1,7 @@
 pkgbase = docker-rootless-extras-bin
 	pkgdesc = Extras to run docker as non-root.
 	pkgver = 20.10.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://docs.docker.com/engine/security/rootless/
 	install = docker-rootless-extras-bin.install
 	arch = x86_64

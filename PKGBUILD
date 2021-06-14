@@ -4,7 +4,7 @@
 
 pkgname=docker-rootless-extras-bin
 pkgver=20.10.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Extras to run docker as non-root."
 arch=('x86_64' 'aarch64')
 url="https://docs.docker.com/engine/security/rootless/"
@@ -38,11 +38,10 @@ sha256sums_aarch64=(
 package() {
 	mkdir -p "$pkgdir/usr/bin/"
 
-	install -Dm755 "$srcdir/docker-rootless-extras/"* "$pkgdir/usr/bin/"
+	install -Dm755 "$srcdir/docker-rootless-extras/dockerd-rootless-setuptool.sh" "$pkgdir/usr/bin/"
+	install -Dm755 "$srcdir/docker-rootless-extras/dockerd-rootless.sh" "$pkgdir/usr/bin/"
+	install -Dm755 "$srcdir/docker-rootless-extras/vpnkit" "$pkgdir/usr/bin/"
 	install -Dm644 "$srcdir/docker.service" "$pkgdir/usr/lib/systemd/user/docker.service"
 	install -Dm644 "$srcdir/docker.socket" "$pkgdir/usr/lib/systemd/user/docker.socket"
 	install -Dm644 "$srcdir/99-docker-rootless.conf" "$pkgdir/usr/lib/sysctl.d/99-docker-rootless.conf"
-
-        # Delete files provided by `rootlesskit`.
-	rm "$pkgdir/usr/bin/rootlessctl" "$pkgdir/usr/bin/rootlesskit"
 }
