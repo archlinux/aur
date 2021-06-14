@@ -2,7 +2,7 @@
 
 pkgname=guile-git-lib
 _pkgname=guile-git
-pkgver=0.4.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Guile bindings for libgit2'
 arch=('x86_64' 'i686' 'armv7h')
@@ -11,24 +11,9 @@ license=('GPL3')
 depends=('guile' 'guile-bytestructures' 'libgit2>=0.28.0')
 makedepends=('git')
 source=(
-	"${pkgname}-${pkgver}.tar.gz::https://gitlab.com/${_pkgname}/${_pkgname}/uploads/2600bb0dfdfb00bfbe46811dccad51d8/${_pkgname}-${pkgver}.tar.gz"
-	"${pkgname}-${pkgver}-id_rsa_client::https://gitlab.com/guile-git/guile-git/-/raw/v${pkgver}/tests/.ssh/id_rsa_client"
-	"${pkgname}-${pkgver}-id_rsa_client.pub::https://gitlab.com/guile-git/guile-git/-/raw/v${pkgver}/tests/.ssh/id_rsa_client.pub"
-	"${pkgname}-${pkgver}-id_rsa_server::https://gitlab.com/guile-git/guile-git/-/raw/v${pkgver}/tests/.ssh/id_rsa_server")
+	"${pkgname}-${pkgver}.tar.gz::https://gitlab.com/${_pkgname}/${_pkgname}/uploads/4ffd7377b0b74da4051356121b46116f/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=(
-	'2ccee3e0520b5db354a1b7070f95e3bbaf0bb0f61c11ca92793728257a7abecf'
-	'e58e37ec6d5916b46b785b9db5ae05498e5dc25b1beaa46eee227bf415fee952'
-	'8a3b18d1d725f69ab778e0badbc43746766b591a54f965ee2e57d82822775d43'
-	'0d49a22bd80c3d1d18061560eecb095c0056ade55fee2fb4c48c290254204641')
-
-prepare() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-	mkdir tests/.ssh
-	local source_file
-	for source_file in "${source[@]:1:3}"; do
-		cp "${srcdir}/${source_file%%::*}" "tests/.ssh/${source_file##*/}"
-	done
-}
+	'65e03731d56683f447b4c7fd0bfbf3467adad11218d5f9789d1ab859bf8e368c')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"

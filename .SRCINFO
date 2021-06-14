@@ -1,6 +1,6 @@
 pkgbase = guile-git-lib
 	pkgdesc = Guile bindings for libgit2
-	pkgver = 0.4.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://gitlab.com/guile-git/guile-git
 	arch = x86_64
@@ -11,14 +11,7 @@ pkgbase = guile-git-lib
 	depends = guile
 	depends = guile-bytestructures
 	depends = libgit2>=0.28.0
-	source = guile-git-lib-0.4.0.tar.gz::https://gitlab.com/guile-git/guile-git/uploads/2600bb0dfdfb00bfbe46811dccad51d8/guile-git-0.4.0.tar.gz
-	source = guile-git-lib-0.4.0-id_rsa_client::https://gitlab.com/guile-git/guile-git/-/raw/v0.4.0/tests/.ssh/id_rsa_client
-	source = guile-git-lib-0.4.0-id_rsa_client.pub::https://gitlab.com/guile-git/guile-git/-/raw/v0.4.0/tests/.ssh/id_rsa_client.pub
-	source = guile-git-lib-0.4.0-id_rsa_server::https://gitlab.com/guile-git/guile-git/-/raw/v0.4.0/tests/.ssh/id_rsa_server
-	sha256sums = 2ccee3e0520b5db354a1b7070f95e3bbaf0bb0f61c11ca92793728257a7abecf
-	sha256sums = e58e37ec6d5916b46b785b9db5ae05498e5dc25b1beaa46eee227bf415fee952
-	sha256sums = 8a3b18d1d725f69ab778e0badbc43746766b591a54f965ee2e57d82822775d43
-	sha256sums = 0d49a22bd80c3d1d18061560eecb095c0056ade55fee2fb4c48c290254204641
+	source = guile-git-lib-0.5.1.tar.gz::https://gitlab.com/guile-git/guile-git/uploads/4ffd7377b0b74da4051356121b46116f/guile-git-0.5.1.tar.gz
+	sha256sums = 65e03731d56683f447b4c7fd0bfbf3467adad11218d5f9789d1ab859bf8e368c
 
 pkgname = guile-git-lib
-
