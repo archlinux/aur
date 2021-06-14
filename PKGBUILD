@@ -6,7 +6,7 @@
 #   gpg --recv-keys 3CE464558A84FDC69DB40CFB090B11993D9AEBB5
 
 pkgname=guix
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='A purely functional package manager for the GNU system'
 arch=('x86_64' 'i686' 'armv7h')
@@ -17,6 +17,7 @@ makedepends=(
   'guile-ssh>=0.13.0'
   'guile-zstd'
   'guile-semver'
+  'guile-lib'
   'bash-completion'
   'fish'
   'help2man'
@@ -25,7 +26,7 @@ depends=(
   'guile>=2.2.4'
   'guile-gcrypt>=0.1.0'
   'guile-sqlite3>=0.1.0'
-  'guile-zlib'
+  'guile-zlib>=0.1.0'
   'guile-lzlib'
   'guile-avahi'
   'guile-git-lib>=0.3.0'
@@ -38,22 +39,17 @@ optdepends=(
   'bash-completion: to enable bash programmable completion'
   'guile-ssh: to offload builds to other machines'
   'guile-zstd: to use and publish zstd substitutes'
-  'guile-semver: to use the crate importer')
+  'guile-semver: to use the crate importer'
+  'guile-lib: to use the go importer')
 source=(
   "https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig}
-  'guix-1.2.0-json-cve-swh.patch'
-  'guix-1.2.0-json-crate.patch'
-  'guix-1.2.0-guile-json-4.5.patch'
-  'guix-1.2.0-revert-verify-swh-certificate.patch')
+  'guix-1.3.0-revert-display-download-progress-tty.patch')
 install="${pkgname}.install"
 sha256sums=(
-  '5ecdf7ced25b1fb0ca7c57e794b7b60c8a7adcb15261dec2af37925c838c6d74'
-  'e278e3aba3fe9acd35aa6586933d940f0c847ccfb6d1370cb5c4f754732d2fb6'
-  '39fba6b74fcc97155f0e81c603d3e0a0dcc17ce8070faa47dec5bd637383aedd'
-  '1b62d816090305ce5e5742813341409aa7b68157cc1c3cfc0b0fff3a583d2762'
-  '837def9c966f14e29291dfac6c8c642d8b64eda46458605bef6416a155d5ba4e'
-  '921c6fd2849c38d93e1f23e5d1f582889e2fc705c1827702bddecede3344088b')
-validpgpkeys=('3CE464558A84FDC69DB40CFB090B11993D9AEBB5')
+  'cb0f461c48d5823dfef7f88879a179737ee14c4dd93732d671932fc4e25053e8'
+  '5c1c724a146e73b0e2b352dda1e1a4eb052e7dc89837f590693f0af23a6c404d'
+  '4e110acfc8b8940b5de880ba782f607be666327a36b2ca2a124e96cc6846a560')
+validpgpkeys=('27D586A4F8900854329FF09F1260E46482E63562')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -103,6 +99,8 @@ package() {
 	make DESTDIR="${pkgdir}" install
 	# Remove unused upstart service files
 	rm -r "${pkgdir}/usr/lib/upstart"
+	# Remove unused openrc service files
+	rm -r "${pkgdir}/etc/openrc"
 	# Remove unused sysvinit service files
 	rm -r "${pkgdir}/etc/init.d"
 	# Remove the empty directory left by sysvinit service files as well
