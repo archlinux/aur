@@ -27,7 +27,8 @@ build() {
 
 package_python-pywikibot-git() {
   depends=(python python-requests)
-  optdepends=("python-mwparserfromhell: improved parser, madatory - choose and install one of the parsers" "python-wikitextparser: improved parser, mandatory - choose and install one of the parsers")
+  optdepends=("python-mwparserfromhell: improved parser, mandatory - choose and install one of the parsers"
+              "python-wikitextparser: improved parser, mandatory - choose and install one of the parsers")
   provides=(python-pywikibot)
   conflicts=(python-pywikibot)
 
