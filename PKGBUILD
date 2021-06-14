@@ -4,7 +4,7 @@ url='https://wiki.ros.org/rqt_image_view'
 pkgname='ros-noetic-rqt-image-view'
 pkgver='0.4.16'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -20,6 +20,7 @@ ros_makedepends=(
 makedepends=(
 	'cmake'
 	'ros-build-tools'
+    'boost'
 	${ros_makedepends[@]}
 	qt5-base
 )
