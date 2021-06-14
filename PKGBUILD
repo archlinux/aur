@@ -4,7 +4,7 @@
 
 pkgname=python2-pywikibot-git
 pkgver=3.0.20200703.r0.ga59bfc6b12
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Python library that interfaces with the MediaWiki API"
 arch=(any)
@@ -35,5 +35,5 @@ package_python2-pywikibot-git() {
   python2 setup.py install --optimize=1 --root="$pkgdir/" --skip-build
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
   cd "$srcdir"
-  install -Dm644 -t "$pkgdir/usr/share/pywikibot" user-config.py
+  install -Dm644 -t "$pkgdir/usr/share/python2-pywikibot" user-config.py
 }
