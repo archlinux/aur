@@ -1,0 +1,9 @@
+*.a
+*.o
+*.log
+lzdoom-*
+*.pkg.tar.*
+*.tar.gz
+/src
+/pkg
+
