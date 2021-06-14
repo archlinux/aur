@@ -1,7 +1,7 @@
 pkgbase = cewe-monlivrephoto-fnac
 	pkgdesc = Création off-line de livres-photos, calendriers, posters…, disponibles ensuite en ligne à l'achat auprès de la FNAC (France)
 	pkgver = 7.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cewe.fr/
 	install = cewe-monlivrephoto-fnac.install
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = cewe-monlivrephoto-fnac
 	conflicts = mullerfoto-fotostar_cz
 	conflicts = mullerfoto-fotostar_sk
 	replaces = cewe-monlivrephoto
-	source = http://dls.photoprintit.com/download/Data/18455-fr_FR/hps/setup_Atelier_Photo_Fnac.tgz
+	source = https://dls.photoprintit.com/download/Data/18455-fr_FR/hps/setup_Atelier_Photo_Fnac.tgz
 	source = updater.pl
 	source = cewe-monlivrephoto-fnac.install
 	md5sums = SKIP

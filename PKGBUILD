@@ -25,14 +25,14 @@ md5sums=(SKIP
          'b6ca9ec99d5f4c6c45ef1c45e5612b3e') ## $pkgname.install
 
 pkgver=7.1.3
-pkgrel=1
+pkgrel=2
 url="https://www.cewe.fr/"
 license=("custom:eula")
 #depends=('libx11' 'libjpeg' 'curl' 'wget' 'gstreamer0.10-base-plugins' 'snappy')
 depends=('libx11' 'libjpeg' 'curl' 'wget' 'snappy')
 makedepends=('unzip' 'xdg-utils')
 arch=('i686' 'x86_64')
-source=("http://dls.photoprintit.com/download/Data/$_keyaccount-fr_FR/hps/$_setupFilename.tgz"
+source=("https://dls.photoprintit.com/download/Data/$_keyaccount-fr_FR/hps/$_setupFilename.tgz"
 	'updater.pl' "$pkgname.install")
 install=$pkgname.install
 _installDir=/usr/share/$pkgname
