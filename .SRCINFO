@@ -6,7 +6,6 @@ pkgbase = python-mkdocs
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = python-wheel
 	depends = python-babel
 	depends = python-click
 	depends = python-ghp-import
@@ -28,4 +27,3 @@ pkgbase = python-mkdocs
 	sha256sums = 4b134ce568f5c6b5ffa80f432b9e7f548a3f33b5fb8033257eb15d17655c22a3
 
 pkgname = python-mkdocs
-

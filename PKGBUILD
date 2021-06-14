@@ -25,7 +25,7 @@ depends=("python-babel"
          "python-packaging"
          "python-yaml"
          "python-watchdog")
-makedepends=("python-setuptools" "python-wheel")
+makedepends=("python-setuptools")
 optdepends=("python-lunr: to prebuild search index")
 source=("https://github.com/mkdocs/mkdocs/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=("4b134ce568f5c6b5ffa80f432b9e7f548a3f33b5fb8033257eb15d17655c22a3")
