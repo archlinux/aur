@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="python-mkdocs-git-authors-plugin-git"
-pkgver=v0.3.3.r0.ge7856bb
+pkgver=0.3.3.r0.ge7856bb
 pkgrel=1
 pkgdesc="MkDocs plugin to display git authors of a page"
 url="https://timvink.github.io/mkdocs-git-authors-plugin/"
@@ -15,7 +15,7 @@ sha256sums=("SKIP")
 
 pkgver(){
  cd "mkdocs-git-authors-plugin"
- git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
+ git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//"
 }
 
 build(){
