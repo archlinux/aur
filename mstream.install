@@ -4,10 +4,10 @@ and replace
             server.listen(program.port, () => {
 with
             server.listen(program.port, '127.0.0.1', () => {
-    
+
 To access the service using a subdirectory, edit \"/usr/lib/node_modules/mstream/modules/defaults.js\"
 and replace
-            rootPath: Joi.string().default('/'),    
+            rootPath: Joi.string().default('/'),
 with
             rootPath: Joi.string().default('/subdirectory'),
 

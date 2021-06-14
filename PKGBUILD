@@ -1,8 +1,8 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="mstream-git"
-pkgver=v4.7.0.r20.gb52fdde
-pkgrel=2
+pkgver=4.7.0.r20.gb52fdde
+pkgrel=1
 pkgdesc="Music player server with a web-based interface"
 url="https://mstream.io"
 license=("GPL3")
@@ -24,11 +24,12 @@ sha256sums=("SKIP"
             "5f2e6aced1707f64ca4ae3ae647fb6a8420f5c2a747ba06fa9174920fd821437"
             "a584c25700c57ffe9df9a1902e44fe2f0ad9b508af748eca540734e3df44bb0f")
 backup=("etc/mstream.json")
+options=("!strip")
 install="mstream.install"
 
 pkgver(){
  cd "mStream"
- git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
+ git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//"
 }
 
 package(){

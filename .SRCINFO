@@ -1,7 +1,7 @@
 pkgbase = mstream-git
 	pkgdesc = Music player server with a web-based interface
-	pkgver = v4.7.0.r20.gb52fdde
-	pkgrel = 2
+	pkgver = 4.7.0.r20.gb52fdde
+	pkgrel = 1
 	url = https://mstream.io
 	install = mstream.install
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = mstream-git
 	depends = nodejs
 	provides = mstream
 	conflicts = nodejs-mstream
+	options = !strip
 	backup = etc/mstream.json
 	source = git+https://github.com/d10n/mStream.git#branch=d10n-master
 	source = mstream.json
@@ -23,4 +24,3 @@ pkgbase = mstream-git
 	sha256sums = a584c25700c57ffe9df9a1902e44fe2f0ad9b508af748eca540734e3df44bb0f
 
 pkgname = mstream-git
-
