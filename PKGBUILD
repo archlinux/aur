@@ -2,7 +2,7 @@
 
 pkgname=python-minecraft-launcher-lib
 pkgver=3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python library for creating a custom minecraft launcher"
 arch=("any")
 url="https://gitlab.com/JakobDev/minecraft-launcher-lib"
@@ -21,6 +21,6 @@ build() {
 package() {
       cd "minecraft-launcher-lib-${pkgver}"
       python setup.py install --root="$pkgdir/" --optimize=1
-      install -Dm644 "doc/_build/man/minecraft-launcher-lib.1.gz" -t "${pkgdir}/usr/share/man/man3"
+      install -Dm644 "doc/_build/man/minecraft-launcher-lib.1.gz" -t "${pkgdir}/usr/share/man/man1"
       install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
