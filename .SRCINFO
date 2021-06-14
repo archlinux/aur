@@ -7,7 +7,6 @@ pkgbase = odoo
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
-	makedepends = python-wheel
 	depends = postgresql
 	depends = wkhtmltopdf-static
 	depends = python-babel
@@ -69,4 +68,3 @@ pkgbase = odoo
 	sha256sums = b6bae94d1a5e51c6cae42987124dd1528626a6f87331c1777c104394c34a95cb
 
 pkgname = odoo
-

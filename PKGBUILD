@@ -12,7 +12,7 @@ arch=("any")
 license=("GPL3")
 conflicts=("openerp")
 replaces=("openerp")
-makedepends=("python-setuptools" "python-wheel")
+makedepends=("python-setuptools")
 depends=("postgresql"
         #"sassc" # not needed
         "wkhtmltopdf-static"
