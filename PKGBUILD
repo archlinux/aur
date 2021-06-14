@@ -2,7 +2,7 @@
 # Contributor: mfgm2 <repom2@airmail.cc>
 pkgname=mnesec
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Generates mnemonic sequences from random bytes from stdin"
 url="https://github.com/yunmikun2/mnesec"
 arch=('i686' 'x86_64')
