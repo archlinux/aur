@@ -1,89 +1,42 @@
-# Maintainer Seva Alekseyev <sevaa@yarxi.ru>
-# Maintainer Stoyan Minaev <stoyan.minaev@gmail.com>
+# Maintainer k4leg <python.bogdan@gmail.com>
 
-pkgbase=pkgbase
-pkgname=yarxi
-pkgver=1.10
+pkgname=texlive-pscyr
+pkgver=0.4d_beta9
 pkgrel=1
-pkgdesc="Japanese-Russian kanji and word dictionary"
-url="http://www.susi.ru/yarxi/"
-license=('custom')
-_source=(
-    "http://www.susi.ru/yarxi/yarxi_${pkgver}-${pkgrel}_amd64.deb"
-    "http://ftp.uk.debian.org/debian/pool/main/q/qt4-x11/libqtcore4_4.8.7+dfsg-11_amd64.deb"
-    "http://ftp.uk.debian.org/debian/pool/main/q/qt4-x11/libqtgui4_4.8.7+dfsg-11_amd64.deb"
-    "http://ftp.uk.debian.org/debian/pool/main/q/qt4-x11/libqt4-network_4.8.7+dfsg-11_amd64.deb"
-)
-arch=('x86_64')
-_md5sums=(
-    '812d2265816ed781751c5c0eb6664d91'
-    'b243ada8569b2b3d4586dc4178fd8d56'
-    '797e351a57c9d56368f710e7cba40f21'
-    'b3cff12767e21d3a76794046557d3df0'
-)
-depends=(
-   ttf-sazanami nas
-)
-
-prepare() {
-    cd $srcdir/
-    echo "Due to 'makepkg' and 'PKGBUILD' specs limitations I need to dowanload sources and validate them by myself"
-    for source_url in ${_source[@]}; do
-        source_filename=${source_url##*/}
-        if [ ! -f "$source_filename" ]; then
-            echo "Downloading next source - $source_filename ..."
-            curl -A DUMMY -O "$source_url";
-        else
-            echo "Found already downloaded source - $source_filename"
-        fi
-    done
-    echo "And now we must validated dowanloaded sources ..."
-    for (( i=0; i<${#_source[@]}; ++i )); do
-        source_url=${_source[i]}
-        source_filename=${source_url##*/}
-        source_expected_md5sum=${_md5sums[i]}
-        source_actual_md5sum=$(md5sum $source_filename | awk '{print $1}')
-        if [ "$source_actual_md5sum" == "$source_expected_md5sum" ]; then
-            echo "Validated next source - $source_filename"
-        else
-            echo "Found corrupted source - $source_filename"; return 1
-        fi
-    done    
-}
-
-build() {
-    cd $srcdir/
-    mkdir -p deb/{$pkgname,qt4core,qt4gui,qt4network}
-    bsdtar xf yarxi_${pkgver}-${pkgrel}_amd64.deb -C deb/$pkgname/
-    bsdtar xf libqtcore4_4.8.7+dfsg-11_amd64.deb -C deb/qt4core/
-    bsdtar xf libqtgui4_4.8.7+dfsg-11_amd64.deb -C deb/qt4gui/
-    bsdtar xf libqt4-network_4.8.7+dfsg-11_amd64.deb -C deb/qt4network/
-    for dir in deb/$pkgname deb/qt4core deb/qt4gui deb/qt4network; do
-        cd $dir; tar xf data.tar.*; cd $srcdir
-    done
-}
+pkgdesc="Type1 cyrillic fonts collection"
+url="ftp://scon155.phys.msu.su/pub/russian/psfonts/"
+license=('LPPL-1.2')
+source=("$url/0.4d-beta/PSCyr-0.4-beta9-tex.tar.gz"
+        "$url/0.4d-beta/PSCyr-0.4-beta9-type1.tar.gz"
+        "$pkgname.maps")
+sha512sums=('2cd1c99b4a85e72cda7824869036374436b82fe787eaa2307263e64237ad5955b22279c33c436e4b1d4c0d065751984f57bbbb91422f1055b1bdff6581631429'
+            'b648a60a768f14102e30dcc6d628d1a0f3cf1e2351d973621d3468c2bdf502726f12089cf0ac2d129ca6fbd694b78a48f184ce02e19d4d5641adebfea2e382f2'
+            '1a4a52a8ef602cdbf2b00328fab3fd31abd5c3dfce71267c1bfe97d7d40434522f9558853643538974afea9f5d5f63d659d051512c4ee0a066d19380ada42a00')
+arch=('any')
+depends=('texlive-core' 'texlive-latexextra' 'texlive-langcyrillic')
+install=texlive-pscyr.install
 
 package() {
-    cd $srcdir/
-    mkdir -p $pkgdir/usr/lib/
-    mkdir -p $pkgdir/usr/bin/
-    mkdir -p $pkgdir/usr/share/
-    mkdir -p $pkgdir/usr/share/applications/
-    mkdir -p $pkgdir/usr/share/doc/$pkgname/
-    mkdir -p $pkgdir/usr/share/icons/hicolor/{16x16/apps,32x32/apps,48x48/apps}/
-    mkdir -p $pkgdir/usr/share/pixmaps/
-    mkdir -p $pkgdir/usr/share/$pkgname/
-    install -m 0755 $srcdir/deb/$pkgname/usr/bin/$pkgname $pkgdir/usr/bin/$pkgname
-    install -m 0755 $srcdir/deb/qt4core/usr/lib/x86_64-linux-gnu/libQtCore.so.4.8.7 $pkgdir/usr/lib/libQtCore.so.4
-    install -m 0755 $srcdir/deb/qt4gui/usr/lib/x86_64-linux-gnu/libQtGui.so.4.8.7 $pkgdir/usr/lib/libQtGui.so.4
-    install -m 0755 $srcdir/deb/qt4network/usr/lib/x86_64-linux-gnu/libQtNetwork.so.4.8.7 $pkgdir/usr/lib/libQtNetwork.so.4
-    install -m 0644 $srcdir/deb/$pkgname/usr/share/applications/seva-yarxi.desktop $pkgdir/usr/share/applications/
-    install -m 0644 $srcdir/deb/$pkgname/usr/share/doc/$pkgname/copyright $pkgdir/usr/share/doc/$pkgname/
-    for icons in 16x16 32x32 48x48; do
-        install -m 0644 $srcdir/deb/$pkgname/usr/share/icons/hicolor/$icons/apps/seva-yarxi.png $pkgdir/usr/share/icons/hicolor/$icons/apps/
+    cd "$srcdir/PSCyr"
+    TEXMF=`kpsewhich -expand-var='$TEXMFMAIN'`
+    for i in {dvipdfm/base,{tex/latex,fonts/{tfm,vf,type1,afm}/public}/pscyr}; do
+        install -dm755 "$pkgdir/$TEXMF/$i"
+        for j in "$i"/*; do
+            install -m644 "$j" "$pkgdir/$TEXMF/$i/"
+        done
     done
-    install -m 0644 $srcdir/deb/$pkgname/usr/share/pixmaps/*.xpm $pkgdir/usr/share/pixmaps/
-    install -m 0644 $srcdir/deb/$pkgname/usr/share/$pkgname/yarxice.db $pkgdir/usr/share/$pkgname/
+    install -dm755 "$pkgdir/var/lib/texmf/arch/installedpkgs"
+    install -m644 "$srcdir/$pkgname.maps" "$pkgdir/var/lib/texmf/arch/installedpkgs/"
+    for i in map enc; do
+        install -dm755 "$pkgdir/$TEXMF/fonts/$i"
+        for j in dvips/pscyr/*."$i"; do
+            install -Dm644 "$j" "$pkgdir/$TEXMF/fonts/$i/${j/*\/}"
+        done
+    done
+    install -dm755 "$pkgdir/$TEXMF/doc/fonts/pscyr"
+    for i in LICENSE doc/README.koi doc/PROBLEMS ChangeLog manifest.txt; do
+        install -Dm644 "$i" "$pkgdir/$TEXMF/doc/fonts/pscyr/${i/*\/}"
+    done
 }
 
-#vim: syntax=sh
+# vim: syntax=sh

@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+
+post_install() {
+    post_upgrade
+}
+
+post_upgrade() {
+    mktexlsr
+    updmap-sys --sys --enable Map=pscyr.map
+    updmap --sys
+}
+
+post_remove() {
+    mktexlsr
+    updmap-sys --disable pscyr.map
+    updmap
+}
