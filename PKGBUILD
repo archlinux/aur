@@ -2,12 +2,12 @@
 
 pkgname=checkra1n-cli
 pkgver=0.12.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A semi-tethered jailbreak, developed primarily by Luca Todesco (qwertyoruiop). It's based on the checkm8 bootrom exploit released by axi0mx. Supports iOS 12.0 and newer."
 license=('unknown')
 url="https://checkra.in"
 depends=('usbmuxd')
-conflicts=('checkra1n' 'checkra1n-gui')
+conflicts=('checkra1n')
 options=('!strip')
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 
