@@ -1,0 +1,16 @@
+pkgbase = nomad-driver-lxc
+	pkgdesc = A nomad taskdriver for lxc containers
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/hashicorp/nomad-driver-lxc
+	arch = x86_64
+	license = MPL2
+	makedepends = go
+	makedepends = git
+	depends = nomad
+	depends = glibc
+	depends = lxc
+	source = nomad-driver-lxc-0.3.0.tar.gz::https://github.com/hashicorp/nomad-driver-lxc/archive/v0.3.0.tar.gz
+	b2sums = 615ec5472597b77e8c1f949eed15a366c2a317fe288a0d29f36860e83e1528e4f9397f4ec30877cca19c7f90d2996f74f8ef988d0ae82da6528745e0fa4dfe20
+
+pkgname = nomad-driver-lxc
