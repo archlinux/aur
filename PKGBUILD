@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=ghost-deps-meta
-pkgver=20210514
+pkgver=20210614
 pkgrel=1
 pkgdesc="Metapkg for cleaning the AUR, provide no longer existing packages for finding pkgbuilds that need a fix"
 arch=(any)
@@ -22,14 +22,18 @@ provides=(tui dbus-core mono-stable msbuild-stable gtk3-print-backends libudev.s
           dri3proto presentproto
           llvm-libs-pypy-stm clang-pypy-stm llvm-pypy-stm nodejs-grunt-cli node-webkit
           perl-data-pond perl-perl6-junction
-          systemd-tools docbook2x jade markdown asp.net-bin yaourt
-          python-sphinx-2 mutagen
+          systemd-tools jade markdown asp.net-bin yaourt
+          python-sphinx-2 mutagen ladspa-plugins spice-glib gcc-multilib gnu-efi-libs
+          libwebkit geoclue2
 )
-# systemd-tools -> replaced by systemd
-# jade          -> replaced by openjade
-# markdown      -> replaced by discount
+# systemd-tools -> systemd
+# jade          -> openjade
+# markdown      -> discount
+# spice-glib    -> spice-gtk
+# mutagen       -> python2-mutagen
 #
-# go-pie gcc-multilib markdown
+# go-pie        -> go
+# gcc-multilib  -> gcc (null)
 # Renamed: geoclue2 libsystemd gnu-efi-libs mime-types libwebkit python-distribute heirloom-mailx
 #
 # Not to provide: udev initramfs opengl-driver smtp-forwarder cron

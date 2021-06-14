@@ -1,6 +1,6 @@
 pkgbase = ghost-deps-meta
 	pkgdesc = Metapkg for cleaning the AUR, provide no longer existing packages for finding pkgbuilds that need a fix
-	pkgver = 20210514
+	pkgver = 20210614
 	pkgrel = 1
 	arch = any
 	license = GPL
@@ -73,13 +73,18 @@ pkgbase = ghost-deps-meta
 	provides = perl-data-pond
 	provides = perl-perl6-junction
 	provides = systemd-tools
-	provides = docbook2x
 	provides = jade
 	provides = markdown
 	provides = asp.net-bin
 	provides = yaourt
 	provides = python-sphinx-2
 	provides = mutagen
+	provides = ladspa-plugins
+	provides = spice-glib
+	provides = gcc-multilib
+	provides = gnu-efi-libs
+	provides = libwebkit
+	provides = geoclue2
 
 pkgname = ghost-deps-meta
 
