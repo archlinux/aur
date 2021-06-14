@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=webapp-manager-git
-pkgver=1.1.2.r0.g9816f8f
+pkgver=1.1.4.r0.g6cc4f29
 pkgrel=1
 pkgdesc="Run websites as if they were apps."
 arch=('x86_64')
@@ -23,9 +23,6 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
-
-	# Fix typo
-	sed -i 's/range(4)/range(5)/g' "usr/lib/${pkgname%-git}/common.py"
 
 	# Fix browser names
 	sed -i 's/brave-browser/brave/g' \
