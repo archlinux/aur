@@ -3,11 +3,11 @@
 
 pkgname=jpdfbookmarks
 pkgver=2.5.2
-pkgrel=2
+pkgrel=3
 _pkgreal="${pkgname}-${pkgver}"
 pkgdesc="Java PDF bookmarks editor"
 arch=('any')
-url="http://flavianopetrocchi.blogspot.com/"
+url="https://flavianopetrocchi.blogspot.com/"
 license=('GPL3')
 depends=('java-environment' 'hicolor-icon-theme')
 install=jpdfbookmarks.install

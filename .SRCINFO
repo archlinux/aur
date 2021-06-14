@@ -1,8 +1,8 @@
 pkgbase = jpdfbookmarks
 	pkgdesc = Java PDF bookmarks editor
 	pkgver = 2.5.2
-	pkgrel = 2
-	url = http://flavianopetrocchi.blogspot.com/
+	pkgrel = 3
+	url = https://flavianopetrocchi.blogspot.com/
 	install = jpdfbookmarks.install
 	arch = any
 	license = GPL3
