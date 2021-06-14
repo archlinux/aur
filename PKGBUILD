@@ -10,7 +10,7 @@ license=("MIT")
 arch=("any")
 provides=("python-materialx" "python-mkdocs-material-extensions")
 depends=("mkdocs" "pymdown-extensions")
-makedepends=("python-setuptools" "python-wheel")
+makedepends=("python-setuptools")
 source=("git+$url")
 sha256sums=("SKIP")
 
