@@ -1,6 +1,6 @@
 pkgbase = shutter-encoder
 	pkgdesc = Converter for all formats video|audio|image professionnals codecs and standards - swiss knife tool for Linux
-	pkgver = 15.0
+	pkgver = 15.1
 	pkgrel = 1
 	url = https://www.shutterencoder.com/
 	arch = x86_64
@@ -16,12 +16,12 @@ pkgbase = shutter-encoder
 	depends = p7zip
 	depends = libcanberra
 	depends = uriparser
-	depends = libutil-linux
+	depends = util-linux-libs
 	depends = expat
 	depends = youtube-dl
 	options = !strip
-	source = https://www.shutterencoder.com/Shutter%20Encoder%2015.0%20Linux%2064bits.deb
-	sha256sums = 11279c49724df6f775d390a9566f7df5443ccaf183753f3b8a044644f8a83ff6
+	source = https://www.shutterencoder.com/Shutter%20Encoder%2015.1%20Linux%2064bits.deb
+	sha256sums = 3c4986ce6e767187ee0557ed0d8cddb1739868b5847c4bdb4e1136d829802e2b
 
 pkgname = shutter-encoder
 
