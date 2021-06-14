@@ -12,14 +12,14 @@ pkgver=0.98.4
 srcrel=1 # Incremented when there is a new release for the same version number
 pkgrel=1
 pkgdesc="An efficient multimedia viewer, browser and converter."
-url="http://www.xnview.com/en/xnviewmp/"
+url="https://www.xnview.com/en/xnviewmp/"
 
 arch=('x86_64')
 license=('custom')
 depends=('qt5-multimedia' 'qt5-svg' 'qt5-webkit' 'qt5-x11extras' 'desktop-file-utils')
 optdepends=('glib2: support for moving files to trash')
 
-source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::http://download.xnview.com/XnViewMP-linux-x64.tgz"
+source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::https://download.xnview.com/XnViewMP-linux-x64.tgz"
         'xnviewmp.desktop')
 sha256sums=('45C21B55FBDCDF2BD026C43059FF34D355ADD87469800B3498963544D307A804'
             'F6B3A4AAA0A55B5F21D9B91AB6F3DA3D6EE077BA7FDD17E7C4AB1C69AD2A9E3A')
