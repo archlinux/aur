@@ -1,4 +1,4 @@
-# Maintainer: kedap <dxhqezk@hi2.in>
+# Maintainer: kedap <kqybspvj@hi2.in>
 
 pkgname=apmpkg-git-dev
 _pkgname=apmpkg
