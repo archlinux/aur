@@ -4,12 +4,12 @@
 _pkgname=freerct
 pkgname=${_pkgname}-git
 pkgver=r1793.9a5a6c9b
-pkgrel=3
+pkgrel=4
 pkgdesc="Open Source RollerCoaster Tycoon 1 and 2 implementation"
 arch=('i686' 'x86_64' 'aarch64')
 url="http://freerct.org"
 license=('GPL2')
-depends=('sdl2' 'sdl2_ttf' 'libzip' 'libpng' 'ttf-freefont')
+depends=('sdl2' 'sdl2_ttf' 'libzip' 'libpng' 'gnu-free-fonts')
 optdepends=('bison' 'flex')
 makedepends=('git' 'cmake')
 conflicts=("${_pkgname}")

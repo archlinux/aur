@@ -1,7 +1,7 @@
 pkgbase = freerct-git
 	pkgdesc = Open Source RollerCoaster Tycoon 1 and 2 implementation
 	pkgver = r1793.9a5a6c9b
-	pkgrel = 3
+	pkgrel = 4
 	url = http://freerct.org
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = freerct-git
 	depends = sdl2_ttf
 	depends = libzip
 	depends = libpng
-	depends = ttf-freefont
+	depends = gnu-free-fonts
 	optdepends = bison
 	optdepends = flex
 	provides = freerct
