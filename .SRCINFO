@@ -1,6 +1,6 @@
 pkgbase = corefreq-git
 	pkgdesc = A CPU monitoring software with BIOS like functionalities
-	pkgver = 1.83.r70.geee893b
+	pkgver = 1.86.3.r0.g99cfa91
 	pkgrel = 1
 	url = https://github.com/cyring/CoreFreq
 	arch = x86_64
@@ -28,4 +28,3 @@ pkgname = corefreq-dkms-git
 	depends = dkms
 	provides = corefreq-dkms
 	conflicts = corefreq-dkms
-
