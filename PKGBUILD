@@ -7,8 +7,9 @@ pkgname=('pipewire-git'
          'pipewire-ffmpeg-git'
          'pipewire-media-session-git'
          'alsa-card-profiles-git'
+         'pipewire-zeroconf-git'
          )
-pkgver=0.3.27.132.gcdfd50e1
+pkgver=0.3.30.82.gb6559289f
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -35,6 +36,7 @@ makedepends=('git'
              'libfdk-aac'
              'libcamera-git'
              'vulkan-headers'
+             'webrtc-audio-processing'
              )
 checkdepends=('desktop-file-utils')
 source=('git+https://gitlab.freedesktop.org/pipewire/pipewire.git')
@@ -103,6 +105,7 @@ package_pipewire-git() {
            'libudev.so'
            'libvulkan.so'
            'libcamera-git'
+           'libwebrtc_audio_processing.so'
            )
   optdepends=('pipewire-docs-git: Documentation'
               'pipewire-jack-git: JACK support'
@@ -111,6 +114,7 @@ package_pipewire-git() {
               'pipewire-ffmpeg-git: ffmpeg support'
               'pipewire-media-session-git: Default session manager'
               'gst-plugin-pipewire-git: gstreamer support'
+              'pipewire-zeroconf-git: Zeroconf support'
               )
   provides=('pipewire'
             "libpipewire-${pkgver:0:3}.so"
@@ -143,6 +147,8 @@ package_pipewire-git() {
 
   _pick ffmpeg usr/lib/spa-0.2/ffmpeg/libspa-ffmpeg.so
 
+  _pick zeroconf "usr/lib/pipewire-${pkgver:0:3}/libpipewire-module-zeroconf-discover.so"
+
 }
 
 package_pipewire-docs-git() {
@@ -152,10 +158,13 @@ package_pipewire-docs-git() {
   arch=('any')
 
   mv docs/* "${pkgdir}"
+
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
 }
 
 package_pipewire-jack-git() {
   pkgdesc+=" - JACK support (GIT version)"
+  license+=('GPL2')  # libjackserver
   depends=('pipewire-media-session'
            "libpipewire-${pkgver:0:3}.so"
            )
@@ -170,6 +179,8 @@ package_pipewire-jack-git() {
             )
 
   mv jack/* "${pkgdir}"
+
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
 }
 
 package_pipewire-pulse-git() {
@@ -189,6 +200,8 @@ package_pipewire-pulse-git() {
   install=pipewire-pulse.install
 
   mv pulse/* "${pkgdir}"
+
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
 }
 
 package_pipewire-alsa-git() {
@@ -205,6 +218,8 @@ package_pipewire-alsa-git() {
     /usr/share/alsa/alsa.conf.d/{50-pipewire,99-pipewire-default}.conf
 
   install -Dm644 /dev/null "${pkgdir}/usr/share/pipewire/media-session.d/with-alsa"
+
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
 }
 
 package_pipewire-ffmpeg-git() {
@@ -217,6 +232,8 @@ package_pipewire-ffmpeg-git() {
   conflicts=('pipewire-ffmpeg')
 
   mv ffmpeg/* "${pkgdir}"
+
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
 }
 
 package_pipewire-media-session-git() {
@@ -234,14 +251,30 @@ package_pipewire-media-session-git() {
   install=pipewire-media-session.install
 
   mv pms/* "${pkgdir}"
-}
 
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
+}
 
 package_alsa-card-profiles-git() {
   pkgdesc+=" - ALSA card profiles (GIT version)"
   provides=('alsa-card-profiles')
   conflicts=('alsa-card-profiles')
+  license=('LGPL')
   arch=('any')
 
   mv acp/* "${pkgdir}"
+
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
+}
+
+package_pipewire-zeroconf-git() {
+  pkgdesc+=" - Zeroconf support (GIT version)"
+  depends=('pipewire'
+           "libpipewire-${pkgver:0:3}.so"
+           libavahi-{client,common}.so
+           )
+
+  mv zeroconf/* "${pkgdir}"
+
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
 }
