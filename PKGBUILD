@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="monica-git"
-pkgver=v3.0.0.r1.g392f9aaa9
+pkgver=3.0.1.r89.g2a36efd0a
 pkgrel=1
 pkgdesc="Personal CRM. Remember everything about your friends, family and business relationships"
 url="https://www.monicahq.com/"
@@ -20,7 +20,7 @@ options=("!strip")
 
 pkgver(){
  cd "monica"
- git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
+ git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//"
 }
 
 package(){
