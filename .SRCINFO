@@ -6,7 +6,6 @@ pkgbase = python-mkdocs-ponylang
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python-wheel
 	depends = mkdocs
 	depends = pymdown-extensions
 	depends = python-pygments
@@ -15,4 +14,3 @@ pkgbase = python-mkdocs-ponylang
 	sha256sums = 3d2ff814f84b32c54975ffef12430428247ee4506105991d42e249ac8a1ac45f
 
 pkgname = python-mkdocs-ponylang
-

@@ -9,7 +9,7 @@ license=("MIT")
 arch=("any")
 depends=("mkdocs" "pymdown-extensions" "python-pygments")
 conflicts=("python-mkdocs-material")
-makedepends=("python-setuptools" "python-wheel")
+makedepends=("python-setuptools")
 source=("$url/archive/$pkgver.tar.gz")
 sha256sums=("3d2ff814f84b32c54975ffef12430428247ee4506105991d42e249ac8a1ac45f")
 
