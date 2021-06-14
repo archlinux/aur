@@ -1,0 +1,16 @@
+pkgbase = appinfo-vdf-git
+	pkgdesc = A command-line utility to parse Steam appinfo.vdf files
+	pkgver = 0.r1.8251f7e
+	pkgrel = 1
+	url = https://github.com/pdfrod/appinfo-vdf
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = appinfo-vdf
+	conflicts = appinfo-vdf
+	source = git+https://github.com/pdfrod/appinfo-vdf.git
+	sha1sums = SKIP
+
+pkgname = appinfo-vdf-git
