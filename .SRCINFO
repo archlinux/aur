@@ -6,7 +6,6 @@ pkgbase = python-mkdocs-material-pymdownx-extras-git
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python-wheel
 	depends = mkdocs-material
 	provides = mkdocs-pymdownx-material-extras
 	provides = python-mkdocs-material-pymdownx-extras
@@ -14,4 +13,3 @@ pkgbase = python-mkdocs-material-pymdownx-extras-git
 	sha256sums = SKIP
 
 pkgname = python-mkdocs-material-pymdownx-extras-git
-
