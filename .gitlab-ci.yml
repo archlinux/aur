@@ -8,8 +8,11 @@ stages:
 
 before_script:
   - sudo pacman -Sy --noconfirm pacman-contrib
-  - git config --global user.email "renovate@devseed.de"
-  - git config --global user.name "Renovate Bot"
+  # Clone the repository via HTTPS inside a new directory
+  - git clone "https://${GITLAB_USERNAME}:${GITLAB_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git" "${CI_COMMIT_SHA}"
+  # Set the displayed user with the commits that are about to be made
+  - git config --global user.email "${GIT_USER_EMAIL:-$GITLAB_USER_EMAIL}"
+  - git config --global user.name "${GIT_USER_NAME:-$GITLAB_USER_NAME}"
 
 test:
   script:
@@ -25,4 +28,4 @@ update_hash:
     - updpkgsums
     - git add PKGBUILD
     - git commit -m "updates hash for AppImage"
-    - git push origin HEAD:$CI_COMMIT_REF_NAME
+    - git push origin "${CI_DEFAULT_BRANCH}" -o ci.skip
