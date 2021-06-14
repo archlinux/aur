@@ -1,0 +1,24 @@
+pkgbase = symmy-git
+	pkgdesc = GPG symmetric encryption frontend
+	pkgver = 156.3ae3fec
+	pkgrel = 1
+	url = https://invent.kde.org/utilities/symmy
+	arch = any
+	license = GPL2
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = kio
+	makedepends = ki18n
+	makedepends = kwidgetsaddons
+	makedepends = gpgme
+	makedepends = qt5-base
+	makedepends = kdelibs4support
+	depends = kio
+	depends = gpgme
+	source = git+https://invent.kde.org/utilities/symmy.git
+	md5sums = SKIP
+
+pkgname = symmy-git
