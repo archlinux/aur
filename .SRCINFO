@@ -1,0 +1,15 @@
+pkgbase = python-mwparserfromhell
+	pkgdesc = Python package that provides an easy-to-use and outrageously powerful parser for MediaWiki wikicode.
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/earwig/mwparserfromhell
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/m/mwparserfromhell/mwparserfromhell-0.6.2.tar.gz
+	sha256sums = d3f74c0101f81ff73c61985b67f2e7048a30dc5f6a578ea1544e69133988d874
+
+pkgname = python-mwparserfromhell
+	depends = python
+	conflicts = python-mwparserfromhell-git
