@@ -4,7 +4,7 @@
 
 pkgname=python-pywikibot-git
 pkgver=6.3.0.r92.gd4e930c09d
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Python library that interfaces with the MediaWiki API"
 arch=(any)

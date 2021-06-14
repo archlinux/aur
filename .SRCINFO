@@ -1,7 +1,7 @@
 pkgbase = python-pywikibot-git
 	pkgdesc = Python library that interfaces with the MediaWiki API
 	pkgver = 6.3.0.r92.gd4e930c09d
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.mediawiki.org/wiki/Manual:Pywikibot
 	install = install
