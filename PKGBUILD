@@ -3,7 +3,7 @@
 # Contributor: Thiago Franco de Moraes <totonixsame@gmail.com>
 
 pkgname=gdcm
-pkgver=3.0.8
+pkgver=3.0.9
 pkgrel=1
 pkgdesc='a C++ library for DICOM medical files'
 arch=('i686' 'x86_64')
@@ -25,8 +25,15 @@ makedepends=('cmake'
              'libogg'
              'libtheora'
 )
-source=("https://github.com/malaterre/GDCM/archive/v$pkgver.tar.gz")
-sha512sums=('78d4958d4cf2615cc81bce8b03ac135de2b9f17bd4dd8dc8a123deb24c4d7cb491628f2e2934d3683f7a32d6982b4efc54136b9782c9d3b1374d43663c58a9d8')
+source=("https://github.com/malaterre/GDCM/archive/v$pkgver.tar.gz"
+        "https://github.com/malaterre/GDCM/commit/1c971ff1697d29c63e404403d345f869768c0bdb.patch")
+sha512sums=('5220ea12ac94d83ee7046a3a070cec7ef83752d2f3d838e7db8d0379b5606d19a94d5bfdc04e8ec4c72e0c3b4397751f54fad49a04a283ee9b760b59183e8f7a'
+            '67ddd28837253bae450b587d36e8f3c08cfa2779593718430e8bda3fb53f336a6e131c96be2808202b84957b445f7cd5998c2cda73a112d86e7c29900acef220')
+
+prepare() {
+  cd "${pkgname^^}-$pkgver"
+  patch -p1 -i "$srcdir/1c971ff1697d29c63e404403d345f869768c0bdb.patch"
+}
 
 build() {
   pysitepackages=$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')
