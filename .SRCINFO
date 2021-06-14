@@ -1,5 +1,5 @@
 pkgbase = dotnet-core-3.1
-	pkgver = 3.1.15.sdk409
+	pkgver = 3.1.16.sdk410
 	pkgrel = 1
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
@@ -7,19 +7,19 @@ pkgbase = dotnet-core-3.1
 	arch = aarch64
 	license = MIT
 	options = staticlibs
-	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/dfbc47b7-4c2c-4e00-989e-a18f6f2e8fe8/5f42a60705fd9122837c68dcbdbbe278/dotnet-sdk-3.1.409-linux-x64.tar.gz
-	sha512sums_x86_64 = 63d24f1039f68abc46bf40a521f19720ca74a4d89a2b99d91dfd6216b43a81d74f672f74708efa6f6320058aa49bf13995638e3b8057efcfc84a2877527d56b6
-	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/58d0ebb7-c06d-4d9a-a69f-22dac06fb278/0ae7881b7007c13a8e325d54a8f87657/dotnet-sdk-3.1.409-linux-arm.tar.gz
-	sha512sums_armv7h = 4908a84951a93acac80c6e7d2dff88b40b90fa079bfc0a02678a70c412a45f1146a3d344c218791edef4bb972d549accadcbfcdc721be0478b07db3a3336cf6d
-	source_aarch64 = https://download.visualstudio.microsoft.com/download/pr/df1fe0a4-487f-4803-b541-4abb2f08ef2d/c905bb3ccc7f584963a45e32d7361d74/dotnet-sdk-3.1.409-linux-arm64.tar.gz
-	sha512sums_aarch64 = edc011e5ee64fc76e8004aa73d439e7cea922ab00be6c70250c5f73cf6838b1935f5d3d3c9aa65f83bfd3923751bc1a6d92be3fba64a0a09a4acb4fd8d6db4c7
+	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/e6ae53a9-8567-4f44-b6ce-684d4f4a0b27/e0c29635c1c2ae9424390a41fecc95f1/dotnet-sdk-3.1.410-linux-x64.tar.gz
+	sha512sums_x86_64 = aef9340008c2002b73171f186a6a167edf3494b740286927fc86f908eca20f5df13289f88ba2a1ef2011c93542d8aefec11d919ed191fb449dcf1b22e0cd74bc
+	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/9f93cdf3-2f04-461b-8c42-dbd84b624878/e69a16b86c90ddaa52775673bde765f4/dotnet-sdk-3.1.410-linux-arm.tar.gz
+	sha512sums_armv7h = 139c9b41a89af44bef74de27df31d4bf50e56e5edd2d76e501bcaab7fc39764c1d74ef142fdd4f077a21c84b550b65038a642a4c65bbe65c0e38c6ce7fb7ac25
+	source_aarch64 = https://download.visualstudio.microsoft.com/download/pr/0d0ad29d-da90-42ce-a88d-94f47f9ddc09/bbfafc31b9a7e36140a74e0e157e9e3e/dotnet-sdk-3.1.410-linux-arm64.tar.gz
+	sha512sums_aarch64 = 58400007d55b122becb229a45d0fa8676890e16e818e229a9b6f5684e6d9133a22e4cb144f3a1af351c01fe9cc70056d43ab8164dca2b841cbdfae96fd7b02db
 
 pkgname = aspnet-runtime-3.1-bin
 	pkgdesc = The ASP.NET Core runtime 3.1 (binary)
 	depends = dotnet-runtime-3.1
-	provides = aspnet-runtime=3.1.15
+	provides = aspnet-runtime=3.1.16
 	provides = aspnet-runtime-3.1
-	conflicts = aspnet-runtime=3.1.15
+	conflicts = aspnet-runtime=3.1.16
 	conflicts = aspnet-runtime-3.1
 
 pkgname = dotnet-runtime-3.1-bin
@@ -33,9 +33,9 @@ pkgname = dotnet-runtime-3.1-bin
 	depends = openssl
 	depends = zlib
 	optdepends = lttng-ust: CoreCLR tracing
-	provides = dotnet-runtime=3.1.15
+	provides = dotnet-runtime=3.1.16
 	provides = dotnet-runtime-3.1
-	conflicts = dotnet-runtime=3.1.15
+	conflicts = dotnet-runtime=3.1.16
 	conflicts = dotnet-runtime-3.1
 
 pkgname = dotnet-sdk-3.1-bin
@@ -45,24 +45,23 @@ pkgname = dotnet-sdk-3.1-bin
 	depends = dotnet-targeting-pack-3.1
 	depends = netstandard-targeting-pack-2.1
 	optdepends = aspnet-targeting-pack-bin: Build ASP.NET Core applications
-	provides = dotnet-sdk=3.1.15.sdk409
+	provides = dotnet-sdk=3.1.16.sdk410
 	provides = dotnet-sdk-3.1
-	conflicts = dotnet-sdk=3.1.15.sdk409
+	conflicts = dotnet-sdk=3.1.16.sdk410
 	conflicts = dotnet-sdk-3.1
 
 pkgname = dotnet-targeting-pack-3.1-bin
 	pkgdesc = The .NET Core targeting pack 3.1 (binary)
 	depends = netstandard-targeting-pack-2.1
-	provides = dotnet-targeting-pack=3.1.15
+	provides = dotnet-targeting-pack=3.1.16
 	provides = dotnet-targeting-pack-3.1
-	conflicts = dotnet-targeting-pack=3.1.15
+	conflicts = dotnet-targeting-pack=3.1.16
 	conflicts = dotnet-targeting-pack-3.1
 
 pkgname = aspnet-targeting-pack-3.1-bin
 	pkgdesc = The ASP.NET Core targeting pack 3.1 (binary)
 	depends = dotnet-targeting-pack-3.1
-	provides = aspnet-targeting-pack=3.1.15
+	provides = aspnet-targeting-pack=3.1.16
 	provides = aspnet-targeting-pack-3.1
-	conflicts = aspnet-targeting-pack=3.1.15
+	conflicts = aspnet-targeting-pack=3.1.16
 	conflicts = aspnet-targeting-pack-3.1
-
