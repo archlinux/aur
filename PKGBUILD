@@ -3,12 +3,14 @@
 
 pkgname=python-miio
 pkgver=0.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library & console tool for controlling Xiaomi smart appliances"
 url="https://github.com/rytilahti/python-miio"
 arch=('any')
 license=('GPL3')
-depends=('python>=3.6' 'python-appdirs' 'python-attrs' 'python-click>=7' 'python-construct' 'python-cryptography' 'python-netifaces' 'python-pytz' 'python-tqdm' 'python-zeroconf')
+depends=('python>=3.6' 'python-appdirs' 'python-attrs' 'python-click>=7'
+         'python-construct' 'python-croniter' 'python-cryptography'
+         'python-netifaces' 'python-pytz' 'python-tqdm' 'python-yaml' 'python-zeroconf')
 optdepends=('python-android-backup-tools: Android backup extraction support')
 makedepends=('python-dephell')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
