@@ -1,7 +1,7 @@
 pkgbase = biniax2
 	pkgdesc = Arcade game : match two similar fruits, and they will disappear, just clear your way and avoid being blocked
 	pkgver = 2.1.30
-	pkgrel = 8
+	pkgrel = 9
 	url = http://biniax.com/
 	install = biniax2.install
 	arch = i686

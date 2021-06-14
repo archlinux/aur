@@ -4,7 +4,7 @@ pkgname=biniax2
 pkgver=2.1.30
 _pkgname=biniax
 _pkgver=1.30
-pkgrel=8
+pkgrel=9
 pkgdesc="Arcade game : match two similar fruits, and they will disappear, just clear your way and avoid being blocked"
 arch=('i686' 'x86_64' 'aarch64')
 url="http://${_pkgname}.com/"
@@ -35,7 +35,7 @@ package() {
 	mkdir -p ${pkgdir}/opt/${pkgname}/
 	mv ${srcdir}/data ${pkgdir}/opt/${pkgname}/data
 	install -DTm755 ${srcdir}/${pkgname}           "${pkgdir}/opt/${pkgname}/${pkgname}"
-	install -DTm644 ${srcdir}/LICENSE.txt          "${pkgdir}/share/licenses/${pkgname}/LICENSE"
+	install -DTm644 ${srcdir}/LICENSE.txt          "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -DTm644 ${startdir}/${pkgname}.png     "${pkgdir}/usr/share/icons/hicolor/32x32/apps/${pkgname}.png"
 	install -DTm644 ${startdir}/${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	install -DTm755 ${startdir}/${pkgname}.sh      "${pkgdir}/usr/bin/${pkgname}"
