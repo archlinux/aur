@@ -9,7 +9,7 @@ license=("MIT")
 arch=("any")
 provides=("python-mkdocs-htmlproofer-plugin")
 depends=("mkdocs" "python-beautifulsoup4" "python-requests")
-makedepends=("python-setuptools" "python-wheel")
+makedepends=("python-setuptools")
 source=("git+$url")
 sha256sums=("SKIP")
 

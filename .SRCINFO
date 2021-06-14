@@ -6,7 +6,6 @@ pkgbase = python-mkdocs-htmlproofer-plugin-git
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python-wheel
 	depends = mkdocs
 	depends = python-beautifulsoup4
 	depends = python-requests
@@ -15,4 +14,3 @@ pkgbase = python-mkdocs-htmlproofer-plugin-git
 	sha256sums = SKIP
 
 pkgname = python-mkdocs-htmlproofer-plugin-git
-
