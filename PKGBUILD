@@ -1,17 +1,17 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Luis Martinez <luis at martinez at tuta dot io>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-pkgname='jello'
-pkgver=1.2.10
-pkgrel=2
+pkgname=jello
+pkgver=1.3.6
+pkgrel=1
 pkgdesc='Filter JSON and JSON Lines data with Python syntax'
 arch=('any')
 url='https://github.com/kellyjonbrazil/jello'
-_url_pypi='https://pypi.org/project/jello'
 license=('MIT')
 depends=('python-pygments')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('0d76e0689ee3811a27642801e0ca63f1adc89c2602c68e776a4fd2c989e6aef2')
+sha256sums=('d4f080385bad91a7fe476c23f867290fc3a588a451ffe6bf4930f7f0b41ee65d')
 
 build() {
   cd "${pkgname}-${pkgver}"
