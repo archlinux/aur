@@ -1,6 +1,6 @@
 # Maintainer: u0_a266 <cagf2emv@anonaddy.me>
 pkgname=ttf-hackgen-nerd
-pkgver=2.3.4
+pkgver=2.3.5
 pkgrel=1
 pkgdesc="HackGen is a composite font of Hack and GenJyuu-Gothic."
 arch=("any")
