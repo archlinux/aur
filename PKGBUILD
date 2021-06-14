@@ -1,15 +1,15 @@
 # Maintainer: zoe <chp321 at gmail dot com>
 pkgname=filecast
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 arch=('any')
 pkgdesc="Zero setup, cross platform desktop to smartphone transfer tool with GUI - Companion app for Raccoon"
-url="http://www.onyxbits.de/filecast"
+url="https://www.onyxbits.de/filecast"
 license=('Apache')
 depends=('java-environment')
 source=('filecast.desktop'
         "https://github.com/onyxbits/FileCast/raw/master/src/main/resources/appicon-64.png"
-        "http://www.onyxbits.de/sites/default/files/download/339/${pkgname}-${pkgver}.jar")
+        "https://www.onyxbits.de/sites/default/files/download/339/${pkgname}-${pkgver}.jar")
 noextract=("${pkgname}-${pkgver}.jar")
 md5sums=('b728f63da5204098d15b9b189d15082a'  #filecast.desktop
          '415293972a77a101ddf2392618d85b74'  #appicon-64.png
