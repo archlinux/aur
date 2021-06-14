@@ -3,7 +3,7 @@
 _name=yocto-cooker
 pkgname=python-yocto-cooker
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 url="https://github.com/cpb-/yocto-cooker"
 pkgdesc="yocto-cooker is a easy yocto manager."
 arch=(any)

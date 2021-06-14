@@ -1,7 +1,7 @@
 pkgbase = python-yocto-cooker
 	pkgdesc = yocto-cooker is a easy yocto manager.
 	pkgver = 1.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/cpb-/yocto-cooker
 	arch = any
 	license = GPL2
