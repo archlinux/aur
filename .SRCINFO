@@ -1,6 +1,6 @@
 pkgbase = python-mkdocs-mermaid2-plugin-git
 	pkgdesc = A Mermaid graphs plugin for MkDocs
-	pkgver = v0.4.1.r16.gb3d84d1
+	pkgver = 0.4.1.r16.gb3d84d1
 	pkgrel = 1
 	url = https://github.com/fralau/mkdocs-mermaid2-plugin
 	arch = any
@@ -14,4 +14,3 @@ pkgbase = python-mkdocs-mermaid2-plugin-git
 	sha256sums = SKIP
 
 pkgname = python-mkdocs-mermaid2-plugin-git
-

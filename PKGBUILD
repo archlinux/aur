@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="python-mkdocs-mermaid2-plugin-git"
-pkgver=v0.4.1.r16.gb3d84d1
+pkgver=0.4.1.r16.gb3d84d1
 pkgrel=1
 pkgdesc="A Mermaid graphs plugin for MkDocs"
 url="https://github.com/fralau/mkdocs-mermaid2-plugin"
@@ -15,7 +15,7 @@ sha256sums=("SKIP")
 
 pkgver(){
  cd "mkdocs-mermaid2-plugin"
- git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
+ git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//"
 }
 
 build(){
