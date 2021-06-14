@@ -11,17 +11,23 @@ arch=(x86_64)
 license=("custom")
 replaces=(mpich2)
 depends=('gcc-fortran' 'libxml2' 'openssh' 'numactl' 'pciutils' 'hwloc' 'bash')
-makedepends=('texlive-core' 'sowing')
+makedepends=(texlive-core sowing autoconf python)
 optdepends=(perl)
 install="${pkgname}.install"
 source=("https://www.mpich.org/static/downloads/${pkgver}/${pkgname}-${pkgver}.tar.gz"
-	"mpich.profile")
+	"mpich.profile"
+	"mpich-3.4.2-flags.diff")
 sha256sums=('5c19bea8b84e8d74cca5f047e82b147ff3fba096144270e3911ad623d6c587bf'
-            'b9716439a544511bf88618edeb40c3eb80f1b5d0d9369c30d750251feed02284')
+            'b9716439a544511bf88618edeb40c3eb80f1b5d0d9369c30d750251feed02284'
+            'ce0b565b11a6abc2771e75b53ba84c17bf6534e7f83d20c0fc226ff468c40bae')
 options=('!libtool')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
+
+  # https://github.com/pmodels/mpich/issues/5360
+  patch -p1 < ${srcdir}/mpich-3.4.2-flags.diff
+  autoreconf -fi
 
   # CFLAGS etc are normally written into the wrapper compilers.  This
   # gives surprising results, e.g. when the user wants to compile their
