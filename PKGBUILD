@@ -3,7 +3,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=steamtinkerlaunch-git
-pkgver=6.8_r293.a9f49c3
+pkgver=6.8.9_r327.77069b3
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
@@ -33,6 +33,8 @@ optdepends=(
 	'jq: optional for extracting game names from the steam api and for sorting available Lutris Wine Versions'
 	'rsync: optional for backing up steamuser files from proton games'
 	'openssl: optional for generating a random hex string for Non-Steam games'
+	'imagemagick: optional to scale a custom installed game header picture and for converting game icons'
+	'appinfo-vdf: optional for converting the binary appinfo.vdf into a parsable format'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

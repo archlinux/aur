@@ -1,6 +1,6 @@
 pkgbase = steamtinkerlaunch-git
 	pkgdesc = Wrapper script for Steam custom launch options
-	pkgver = 6.8_r293.a9f49c3
+	pkgver = 6.8.9_r327.77069b3
 	pkgrel = 1
 	url = https://github.com/frostworx/steamtinkerlaunch
 	arch = any
@@ -37,10 +37,11 @@ pkgbase = steamtinkerlaunch-git
 	optdepends = jq: optional for extracting game names from the steam api and for sorting available Lutris Wine Versions
 	optdepends = rsync: optional for backing up steamuser files from proton games
 	optdepends = openssl: optional for generating a random hex string for Non-Steam games
+	optdepends = imagemagick: optional to scale a custom installed game header picture and for converting game icons
+	optdepends = appinfo-vdf: optional for converting the binary appinfo.vdf into a parsable format
 	provides = steamtinkerlaunch
 	conflicts = steamtinkerlaunch
 	source = git+https://github.com/frostworx/steamtinkerlaunch.git
 	sha1sums = SKIP
 
 pkgname = steamtinkerlaunch-git
-
