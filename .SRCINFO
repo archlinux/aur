@@ -1,11 +1,12 @@
 pkgbase = ntfy
 	pkgdesc = A utility for sending push notifications to different backends (Pushover, Pushbullet, XMPP and various desktop notification systems)
 	pkgver = 2.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dschep/ntfy
 	arch = any
 	license = GPLv3
 	makedepends = python3
+	makedepends = python-setuptools
 	depends = python
 	depends = python-requests
 	depends = python-yaml
