@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="lms-git"
-pkgver=v3.21.0.r0.gb02b8e1
+pkgver=3.26.1.r1.g8231c67
 pkgrel=1
 pkgdesc="Lightweight Music Server. Access your self-hosted music using a web interface"
 url="https://github.com/epoupon/lms"
@@ -28,7 +28,7 @@ backup=("etc/lms.conf")
 
 pkgver(){
  cd "$pkgname"
- git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
+ git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//"
 }
 
 build(){

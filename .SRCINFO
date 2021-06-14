@@ -1,6 +1,6 @@
 pkgbase = lms-git
 	pkgdesc = Lightweight Music Server. Access your self-hosted music using a web interface
-	pkgver = v3.21.0.r0.gb02b8e1
+	pkgver = 3.26.1.r1.g8231c67
 	pkgrel = 1
 	url = https://github.com/epoupon/lms
 	arch = x86_64
@@ -25,4 +25,3 @@ pkgbase = lms-git
 	sha256sums = 32f537bf3480fbe55d0a9929ba633718fbc16887a68e0ba1a2b3b265c400ed41
 
 pkgname = lms-git
-
