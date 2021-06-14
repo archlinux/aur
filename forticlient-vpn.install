@@ -6,7 +6,7 @@ pre_install () {
 
 	# Backup old XML configurations if they exist so they can
 	# be imported on start up if upgrading from an older FCT version
-	if [ -f $FCT_CONFIG ] || [ -f $EC_CONFIG ]; then
+	if [ -f $FCT_CONFIG_DB ] || [ -f $FCT_CONFIG ] || [ -f $EC_CONFIG ]; then
 	    mkdir $BACKUP_DIR && chmod 0600 $BACKUP_DIR
 	else
 	    exit 0
