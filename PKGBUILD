@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-extras
-pkgver=4.0.14
+pkgver=4.0.15
 pkgrel=1
 pkgdesc="Extras DNF Plugins"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('snapper: for snapper plugin'
 backup=('etc/dnf/plugins/rpmconf.conf'
         'etc/dnf/plugins/torproxy.conf')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('0999bc1016f208f08ab82c4072272ffd')
+sha256sums=('2e7c962019675579d638a5c9ab63f0f5ce7fe19869bcfb579dc20860d3ee152b')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -28,8 +28,7 @@ build() {
 	cd "$pkgname-$pkgver"
 
 	cmake -B build \
-	      -DCMAKE_INSTALL_PREFIX=/usr \
-	      -DPYTHON_DESIRED=3
+	      -DCMAKE_INSTALL_PREFIX=/usr
 
 	make -C build
 	make -C build doc-man
