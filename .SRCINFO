@@ -8,7 +8,6 @@ pkgbase = isso-git
 	makedepends = python-libsass
 	makedepends = python-setuptools
 	makedepends = python-sphinx
-	makedepends = python-wheel
 	depends = python-bleach
 	depends = python-cffi
 	depends = python-flask-caching
@@ -33,4 +32,3 @@ pkgbase = isso-git
 	sha256sums = SKIP
 
 pkgname = isso-git
-
