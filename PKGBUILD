@@ -143,6 +143,7 @@ package_pipewire-git() {
   _pick jack usr/share/pipewire/{jack.conf,media-session.d/with-jack}
   _pick jack usr/share/man/man1/pw-jack.1
 
+  _pick pulse "usr/lib/pipewire-${pkgver:0:3}/libpipewire-module-pulse-tunnel.so"
   _pick pulse usr/share/pipewire/media-session.d/with-pulseaudio
 
   _pick ffmpeg usr/lib/spa-0.2/ffmpeg/libspa-ffmpeg.so
