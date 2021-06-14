@@ -1,0 +1,4 @@
+beancount-language-server/
+src/
+pkg/
+*.pkg.tar.zst
