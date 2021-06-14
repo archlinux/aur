@@ -14,7 +14,7 @@ pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
 url='https://pipewire.org'
-license=('LGPL')
+license=('MIT')
 makedepends=('git'
              'meson'
              'doxygen'
@@ -36,8 +36,8 @@ makedepends=('git'
              'libfdk-aac'
              'libcamera-git'
              'vulkan-headers'
-             'webrtc-audio-processing'
              'avahi'
+             'webrtc-audio-processing'
              )
 checkdepends=('desktop-file-utils')
 source=('git+https://gitlab.freedesktop.org/pipewire/pipewire.git')
@@ -50,18 +50,10 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  cd pipewire
-
-  # Reduce docs size
-  printf '%s\n' >> doc/Doxyfile.in \
-    HAVE_DOT=yes DOT_IMAGE_FORMAT=svg INTERACTIVE_SVG=yes
 }
 
 build() {
   cd "${srcdir}/build"
-
-  CFLAGS+=" -Wformat"
 
   arch-meson ../pipewire \
     -D udevrulesdir=/usr/lib/udev/rules.d \
@@ -91,7 +83,7 @@ _pick() {
 }
 
 package_pipewire-git() {
-  depends=('alsa-card-profiles-git'
+  depends=("alsa-card-profiles-git=${pkgver}"
            'rtkit'
            'libasound.so'
            'libbluetooth.so'
@@ -169,7 +161,7 @@ package_pipewire-docs-git() {
 package_pipewire-jack-git() {
   pkgdesc+=" - JACK support (GIT version)"
   license+=('GPL2')  # libjackserver
-  depends=('pipewire-media-session'
+  depends=("pipewire-media-session-git=${pkgver}"
            "libpipewire-${pkgver:0:3}.so"
            )
   backup=('etc/pipewire/jack.conf')
@@ -189,7 +181,7 @@ package_pipewire-jack-git() {
 
 package_pipewire-pulse-git() {
   pkgdesc+=" - PulseAudio replacement (GIT version)"
-  depends=('pipewire-media-session'
+  depends=("pipewire-media-session-git=${pkgver}"
            'libpulse'
            )
   provides=('pipewire-pulse'
@@ -210,7 +202,7 @@ package_pipewire-pulse-git() {
 
 package_pipewire-alsa-git() {
   pkgdesc+=" - ALSA configuration (GIT version)"
-  depends=('pipewire-media-session')
+  depends=("pipewire-media-session-git=${pkgver}")
   provides=('pipewire-alsa'
             'pulseaudio-alsa'
             )
@@ -228,7 +220,7 @@ package_pipewire-alsa-git() {
 
 package_pipewire-ffmpeg-git() {
   pkgdesc+=" - FFmpeg SPA plugin (GIT version)"
-  depends=('pipewire'
+  depends=("pipewire-git=${pkgver}"
            "libpipewire-${pkgver:0:3}.so"
            'ffmpeg'
            )
@@ -241,8 +233,8 @@ package_pipewire-ffmpeg-git() {
 }
 
 package_pipewire-media-session-git() {
-  pkgdesc+=" - Session managerm (GIT version)"
-  depends=('pipewire'
+  pkgdesc+=" - Session manager (GIT version)"
+  depends=("pipewire-git=${pkgver}"
            "libpipewire-${pkgver:0:3}.so"
            )
   provides=('pipewire-media-session')
@@ -273,7 +265,7 @@ package_alsa-card-profiles-git() {
 
 package_pipewire-zeroconf-git() {
   pkgdesc+=" - Zeroconf support (GIT version)"
-  depends=('pipewire'
+  depends=("pipewire-git=${pkgver}"
            "libpipewire-${pkgver:0:3}.so"
            'libavahi-client.so'
            'libavahi-common.so'
