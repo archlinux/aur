@@ -26,4 +26,4 @@ update_hash:
     - updpkgsums
     - git add PKGBUILD
     - git commit -m "updates hash for AppImage"
-    - git push -o ci.skip "https://${GITLAB_USER_NAME}:${RENOVATE_TOKEN}@${CI_REPOSITORY_URL#*@}"
+    - git push -o ci.skip "https://${GITLAB_USER_NAME}:${RENOVATE_TOKEN}@${CI_REPOSITORY_URL#*@}" "HEAD:${CI_COMMIT_BRANCH}"
