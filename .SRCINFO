@@ -148,3 +148,5 @@ pkgname = pipewire-zeroconf-git
 	depends = libpipewire-0.3.so
 	depends = libavahi-client.so
 	depends = libavahi-common.so
+	provides = pipewire-zeroconf
+	conflicts = pipewire-zeroconf

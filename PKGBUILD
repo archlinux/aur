@@ -275,6 +275,8 @@ package_pipewire-zeroconf-git() {
            "libpipewire-${pkgver:0:3}.so"
            libavahi-{client,common}.so
            )
+  provides=('pipewire-zeroconf')
+  conflicts=('pipewire-zeroconf')
 
   mv zeroconf/* "${pkgdir}"
 
