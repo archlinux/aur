@@ -1,0 +1,13 @@
+[Unit]
+Description=prowlarr Service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=prowlarr
+Group=prowlarr
+ExecStart=/usr/lib/prowlarr/bin/Prowlarr -nobrowser -data=/var/lib/prowlarr
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
