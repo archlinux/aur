@@ -3,7 +3,7 @@
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 # Contributor: x-demon
 pkgname=nicotine-plus-git
-pkgver=3.0.7.dev1.r4749.c646b3ca
+pkgver=3.1.0.dev1.r5003.0998e180
 pkgrel=1
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python-gobject' 'gtk3')
 makedepends=('git')
 optdepends=('gspell: for spell checking in chat'
             'libappindicator-gtk3: for tray icon')
-checkdepends=('python-pytest' 'xorg-server-xvfb')
+#checkdepends=('xorg-server-xvfb')
 provides=("${pkgname%-git}" 'nicotine+' 'nicotine')
 conflicts=("${pkgname%-git}" 'nicotine+' 'nicotine')
 source=('git+https://github.com/Nicotine-Plus/nicotine-plus.git')
@@ -30,15 +30,15 @@ build() {
 	python setup.py build
 }
 
-check() {
-	cd "$srcdir/${pkgname%-git}"
+#check() {
+#	cd "$srcdir/${pkgname%-git}"
 
 	# Basic sanity check
-	./nicotine --version | grep Nicotine+
+#	./nicotine --version | grep Nicotine+
 
 	# Perform integration and unit tests
-	xvfb-run pytest
-}
+#	xvfb-run python -m unittest
+#}
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
