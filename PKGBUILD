@@ -2,7 +2,7 @@
 
 pkgname=signald
 pkgver=0.13.1
-pkgrel=2
+pkgrel=3
 pkgdesc='An unofficial daemon that facilitates communication with the Signal messaging app.'
 url='https://gitlab.com/signald/signald'
 license=('GPL3')
@@ -12,14 +12,12 @@ depends=('java-runtime>=11')
 optdepends=('qrencode: display account linking token as QR code')
 conflicts=('signald-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/signald/signald/-/archive/${pkgver}/signald-${pkgver}.tar.gz"
-        'gradle-no-daemon.patch'
-        "${pkgname}.install")
+        'gradle-no-daemon.patch')
 sha512sums=('a413781248a10505294fe8c36772d887ecbbbf63a9a38a93994674e1cad0a23ac3cc5f4d8aae5fe0c0363fd2b96bc881100a06aed38f13bf524b24dd5930d540'
-            'aa2ff9eef6ebd8ad31275a587b7b24e34938e9744b06892c96d43e274b18a15d2f0258f56cea8fea9163e85a754ebde1e66c20781876bcb524960defe02ce535'
-            '17b3a0ddb756f4be0e063dcd94e3dc4b895dba6739d959c54ab52448779d3f37e646052a5505edbe8160caa9fef2411c9d54df35d8696bf42c78dfa7951a07e2')
+            'aa2ff9eef6ebd8ad31275a587b7b24e34938e9744b06892c96d43e274b18a15d2f0258f56cea8fea9163e85a754ebde1e66c20781876bcb524960defe02ce535')
 
 backup=('var/lib/signald/data')
-install="${pkgname}.install"
+#install="${pkgname}.install"
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -46,5 +44,7 @@ package() {
  
     # systemd sysusers https://archlinux.org/todo/switch-to-systemd-sysusers/
     mkdir "${pkgdir}/usr/lib/sysusers.d/"
+    mkdir "${pkgdir}/usr/lib/tmpfiles.d/"
     echo 'u signald - "Signald Daemon User"' > "${pkgdir}/usr/lib/sysusers.d/signald.conf"
+    echo 'Z /var/lib/signald 0700 signald signald - -' > "${pkgdir}/usr/lib/tmpfiles.d/signald.conf"
 }
