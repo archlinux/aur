@@ -1,8 +1,16 @@
+commit 33f456aad9313bfc42e5ae7ef47e7976b0572a71
+Author: Anatol Pomozov <anatol.pomozov@gmail.com>
+Date:   Sun Jan 10 18:58:44 2016 -0800
+
+    Revert "Drop "install" target and documentation."
+    
+    This reverts commit 7c1cd2e5cd3f3d1193ee375b46cfd8afaccb89f7.
+
 diff --git a/Makefile b/Makefile
-index 6929769d..ca06efd7 100644
+index 20f878fa..97f63933 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -23,6 +23,13 @@ PREFIX		?= arm-none-eabi
+@@ -22,6 +22,13 @@ PREFIX		?= arm-none-eabi-
  STYLECHECK      := scripts/checkpatch.pl
  STYLECHECKFLAGS := --no-tree -f --terse --mailback
  
@@ -13,12 +21,12 @@ index 6929769d..ca06efd7 100644
 +SHAREDIR	:= $(DESTDIR)/$(PREFIX)/share/libopencm3/scripts
 +INSTALL		:= install
 +
- space:=
- space+=
- SRCLIBDIR:= $(subst $(space),\$(space),$(realpath lib))
-@@ -70,6 +77,22 @@ $(LIB_DIRS): $(IRQ_DEFN_FILES:=.genhdr)
- lib: $(LIB_DIRS)
- 	$(Q)true
+ TARGETS ?=	stm32/f0 stm32/f1 stm32/f2 stm32/f3 stm32/f4 stm32/f7 \
+ 		stm32/l0 stm32/l1 stm32/l4 \
+ 		stm32/g0 stm32/g4 \
+@@ -80,6 +87,20 @@ lib: $(LIB_DIRS)
+ 	done;
+ 	$(Q)[ -f .stamp_failure_tld ] && cat .stamp_failure_tld && exit 1 || true;
  
 +install: lib
 +	@printf "  INSTALL headers\n"
@@ -32,14 +40,12 @@ index 6929769d..ca06efd7 100644
 +	$(Q)$(INSTALL) -m 0644 lib/*.a $(LIBDIR)
 +	@printf "  INSTALL ldscripts\n"
 +	$(Q)$(INSTALL) -m 0644 lib/*.ld $(LIBDIR)
-+	$(Q)$(INSTALL) -m 0644 lib/*/*.ld $(LIBDIR)
-+	$(Q)$(INSTALL) -m 0644 lib/*/*/*.ld $(LIBDIR)
 +
 +
  html doc:
- 	$(Q)$(MAKE) -C doc html
+ 	$(Q)$(MAKE) -C doc html TARGETS="$(TARGETS)"
  
-@@ -114,4 +137,4 @@ genlinktests.clean:
+@@ -125,4 +146,4 @@ genlinktests.clean:
  	fi;
  
  
