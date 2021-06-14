@@ -4,7 +4,7 @@
 pkgname=vscodium
 # Make sure the pkgver matches the git tags in vscodium and vscode git repo's!
 pkgver=1.57.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free/Libre Open Source Software Binaries of VSCode (git build from latest release)."
 arch=('x86_64' 'aarch64' 'armv7h')
 # The vscodium repo that will be checked out.
@@ -58,14 +58,8 @@ sha256sums=(
     'SKIP'
     '63eccd0977b9dc783a11ff401940f48bbabd0d098b9563b7ef26402495dc9b88'
 )
-provides=('code')
+provides=('codium')
 conflicts=(
-    'code' 
-    'visual-studio-code-bin'
-    'code-git'
-    'visual-studio-code-insiders'
-    'code-stable-git'
-    'vscode'
     'vscodium-git'
     'vscodium-bin'
 )
