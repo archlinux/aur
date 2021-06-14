@@ -1,0 +1,15 @@
+pkgbase = nomad-driver-singularity
+	pkgdesc = A nomad taskdriver for singularity containers
+	pkgver = 1.0.0.alpha2
+	pkgrel = 1
+	url = https://github.com/hpcng/nomad-driver-singularity
+	arch = x86_64
+	license = MPL2
+	makedepends = go
+	makedepends = git
+	depends = nomad
+	depends = singularity-container
+	source = nomad-driver-singularity-1.0.0.alpha2.tar.gz::https://github.com/hpcng/nomad-driver-singularity/archive/v1.0.0-alpha2.tar.gz
+	b2sums = 26624229001ff193167ef93482f5627c09786383a1c357b98a88a1404fbedc401867fcc559f9c58b8981fc121096727e60d087e0cd6d2a1329525b9ab8ad29d8
+
+pkgname = nomad-driver-singularity
