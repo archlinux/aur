@@ -1,7 +1,7 @@
 # Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=mint-y-icons
-pkgver=1.5.0
+pkgver=1.5.8
 pkgrel=1
 pkgdesc='A flat, colorful, and modern theme based on Paper and Moka'
 arch=('any')
@@ -18,7 +18,7 @@ conflicts=(
     mint-y-icons-git
 )
 source=("${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('fd2916cf9bdd6b7db57b194c95cc48a6fa2180f9e6fe908e1e3035ed4de2cc10')
+sha256sums=('5e44b1fe5fd8ed37be1d512f44209eda97ccc13083cc1fd4a46dd56e337033e1')
 
 package() {
   cd "${srcdir}"/"${pkgname}"
