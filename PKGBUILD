@@ -1,0 +1,69 @@
+# Maintainer: AlphaJack <alphajack at tuta dot io>
+
+pkgname="shinobi-git"
+pkgver=r2020.f9a15a7
+pkgrel=1
+pkgdesc="The Open Source CCTV and NVR Solution"
+url="https://shinobi.video/"
+license=("custom") # not free for commercial use
+arch=("any")
+provides=("shinobi")
+depends=("ffmpeg" "mariadb" "nodejs")
+makedepends=("npm")
+source=("git+https://gitlab.com/Shinobi-Systems/Shinobi.git"
+        "shinobi-camera.service"
+        "shinobi-cron.service"
+        "shinobi.target"
+        "shinobi.sysusers"
+        "shinobi.tmpfiles"
+        "conf.json"
+        "super.json")
+sha256sums=("SKIP"
+            "59b51fe6cb3dc5e7e01401b20a1a7e51f649a7fd2292ff1d2d88df2cbdff9d5b"
+            "9794abc97379e84fc688977e6d675d607c1136dda8a428e6c5aa8a9cfac8029c"
+            "60cb5660061fccae12a8ffaf4b1ee2960ab4dc8106b4b95419274a359cd9cd22"
+            "e7c849bfcf8619a093ec75467cf5e44b34cd3621fa0d639bfacf4c88e0bad258"
+            "a0213eb276dfd468ed835cccceece75da92141716afa4c2426e20a06f64b5625"
+            "45c64bdaf8e7c99f14a8467fc3c996fefdaab8c100c9f28f03054c248f62a7d3"
+            "b6f2093025736770ed18141eee36b2cd2507142310bb258bf6365c4740c9aae6")
+backup=("etc/shinobi/conf.json" "etc/shinobi/super.json")
+install="shinobi.install"
+options=("!strip")
+
+pkgver(){
+ cd "Shinobi"
+ printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare(){
+ cd "Shinobi"
+ # avoid hardcode database name
+ sed -i "sql/framework.sql" \
+     -e "s|CREATE DATABASE|/*CREATE DATABASE|" \
+     -e 's|USE `ccio`;|USE `ccio`;*/|'
+}
+
+package(){
+ # no /usr/bin, just systemd files
+ cd "Shinobi"
+ # program files
+ npm install --user root
+ install -d "$pkgdir/usr/share/shinobi"
+ cp -r * "$pkgdir/usr/share/shinobi"
+ # configuration files
+ install -d -m 750 "$pkgdir/etc/shinobi/"
+ install -D -m 660 "$srcdir/conf.json" "$pkgdir/etc/shinobi/conf.json"
+ install -D -m 660 "$srcdir/super.json" "$pkgdir/etc/shinobi/super.json"
+ ln -s "/etc/shinobi/conf.json" "$pkgdir/usr/share/shinobi"
+ ln -s "/etc/shinobi/super.json" "$pkgdir/usr/share/shinobi"
+ # systemd files
+ install -D -m 644 "$srcdir/shinobi-camera.service" "$pkgdir/usr/lib/systemd/system/shinobi-camera.service"
+ install -D -m 644 "$srcdir/shinobi-cron.service" "$pkgdir/usr/lib/systemd/system/shinobi-cron.service"
+ install -D -m 644 "$srcdir/shinobi.target" "$pkgdir/usr/lib/systemd/system/shinobi.target"
+ install -D -m 644 "$srcdir/shinobi.sysusers" "$pkgdir/usr/lib/sysusers.d/shinobi.conf"
+ install -D -m 644 "$srcdir/shinobi.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/shinobi.conf"
+ # custom license
+ install -D -m 644 "LICENSE.md" "$pkgdir/usr/share/licenses/shinobi/LICENSE"
+ # version.json is used by the web server
+ echo '{"Product" : "Shinobi Professional (Pro)" , "Branch" : "master" , "Version" : "'"$(git rev-parse HEAD)"'" , "Date" : "'"$(date)"'" , "Repository" : "https://gitlab.com/Shinobi-Systems/Shinobi"}' > "$pkgdir/usr/share/shinobi/version.json"
+}
