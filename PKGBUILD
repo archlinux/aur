@@ -15,7 +15,7 @@ optdepends=('libqpsd-git: PSB/PSD support'
             'xcftools: XCF support')
 makedepends=('cmake' 'qt5-tools' 'extra-cmake-modules')
 source=(https://photoqt.org/downloads/source/$pkgname-$pkgver.tar.gz)
-sha256sums=('1f092f70d5d0d2667023b7c2823ea3540ec40d665aaebf2418356d940d5fd0cb')
+sha256sums=('3db9292c43147abae660e57592bd0bf04760f164ac38e213bcb4de976fe18826')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
