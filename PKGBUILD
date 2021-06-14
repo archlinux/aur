@@ -1,4 +1,4 @@
-# Maintainer: kedap <dxhqezk@hi2.in>
+# Maintainer: kedap <kqybspvj@hi2.in>
 
 pkgname=apmpkg
 pkgver=1.2.0
