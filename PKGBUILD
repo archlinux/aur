@@ -1,7 +1,7 @@
 # Maintainer: Clemens Hanel <clemens dot hanel at tngtech dot com>
 
 pkgname=python-credstash-git
-pkgver=1.17.1.1.gac2530b
+pkgver=1.17.1.7.gdf24f91
 pkgrel=1
 epoch=1
 pkgdesc='A little utility for managing credentials in the cloud '
