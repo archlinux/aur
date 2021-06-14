@@ -3,13 +3,13 @@
 
 pkgname=kubelive-git
 pkgver=r000g0000000
-pkgrel=1
+pkgrel=2
 pkgdesc='Kubelive is kubectl reinvented to be more reactive and interactive'
 arch=('any')
 url='https://github.com/ameerthehacker/kubelive'
 license=('MIT')
 depends=('nodejs')
-makedepends=('npm' 'jq')
+makedepends=('npm' 'jq' 'nodejs' 'nodejs-nopt' 'node-gyp')
 provides=('kubelive' 'kubelive-git')
 conflicts=('kubelive' 'kubelive-git')
 source=('git://github.com/ameerthehacker/kubelive')

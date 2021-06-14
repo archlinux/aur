@@ -1,12 +1,15 @@
 pkgbase = kubelive-git
 	pkgdesc = Kubelive is kubectl reinvented to be more reactive and interactive
 	pkgver = r000g0000000
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ameerthehacker/kubelive
 	arch = any
 	license = MIT
 	makedepends = npm
 	makedepends = jq
+	makedepends = nodejs
+	makedepends = nodejs-nopt
+	makedepends = node-gyp
 	depends = nodejs
 	provides = kubelive
 	provides = kubelive-git
@@ -16,4 +19,3 @@ pkgbase = kubelive-git
 	sha256sums = SKIP
 
 pkgname = kubelive-git
-
