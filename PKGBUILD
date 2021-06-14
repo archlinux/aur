@@ -14,5 +14,5 @@ md5sums=('4466fc2b73f93e53f01bd71c7b950d2e')
 
 package() {
   mkdir -p "$pkgdir/usr/share/doc/qt"
-  cp "$srcdir"/CMake-$pkgver.qch "$pkgdir/usr/share/doc/qt"
+  cp -v "$srcdir"/CMake-$pkgver.qch "$pkgdir/usr/share/doc/qt/CMake.qch"
 }
