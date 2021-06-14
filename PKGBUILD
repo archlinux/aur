@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=neovim-tree-sitter-git
-pkgver=r1405.d343624
+pkgver=r1408.8e26997
 pkgrel=2
 pkgdesc="Neovim tree-sitter configurations and abstraction layer"
 arch=('any')
@@ -11,17 +11,25 @@ groups=('neovim-plugins')
 depends=('neovim-git' 'tree-sitter')
 makedepends=('git')
 optdepends=('tree-sitter-bash: Bash shell grammar'
+            'tree-sitter-bibtex: BibTeX grammar'
             'tree-sitter-c: C grammar'
+            'tree-sitter-clojure: Clojure grammar'
+            'tree-sitter-commonlisp: Common Lisp grammar'
             'tree-sitter-cpp: C++ grammar'
             'tree-sitter-css: CSS grammar'
             'tree-sitter-c-sharp: C# grammar'
+            'tree-sitter-elixir: Elixir grammar'
+            'tree-sitter-erlang: Erlang grammar'
             'tree-sitter-fish: Fish shell grammar'
             'tree-sitter-go: Golang grammar'
             'tree-sitter-haskell: Haskell grammar'
             'tree-sitter-html: HTML grammar'
             'tree-sitter-java: Java grammar'
             'tree-sitter-javascript: Javascript and JSX grammar'
+            'tree-sitter-jsdoc: JSDoc grammar'
             'tree-sitter-json: JSON grammar'
+            'tree-sitter-jsonc: JSONC grammar'
+            'tree-sitter-julia: Julia grammar'
             'tree-sitter-kotlin: Kotlin grammar'
             'tree-sitter-latex: LaTeX grammar'
             'tree-sitter-make: Makefile grammar'
@@ -29,11 +37,13 @@ optdepends=('tree-sitter-bash: Bash shell grammar'
             'tree-sitter-ocaml: OCaml grammar'
             'tree-sitter-php: PHP grammar'
             'tree-sitter-python: Python grammar'
+            'tree-sitter-r: R grammar'
             'tree-sitter-regex: Regex grammar'
             'tree-sitter-ruby: Ruby grammar'
             'tree-sitter-rust: Rust grammar'
             'tree-sitter-scala: Scala grammar'
             'tree-sitter-swift: Swift grammar'
+            'tree-sitter-sql: SQL grammar'
             'tree-sitter-toml: TOML grammar'
             'tree-sitter-typescript: TypeScript and TSX grammar'
             'tree-sitter-verilog: Verilog grammar'
