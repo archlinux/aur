@@ -1,3 +1,4 @@
+# Maintainer : Maxim Fomin <maxim@fomin.one>
 # Maintainer : Christian Hesse <mail@eworm.de>
 # Maintainer : Ronald van Haren <ronald.archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
@@ -12,7 +13,7 @@ _GRUB_EMU_BUILD="0"
 
 _GRUB_EXTRAS_COMMIT="f2a079441939eee7251bf141986cdd78946e1d20"
 
-_UNIFONT_VER="12.1.02"
+_UNIFONT_VER="13.0.06"
 
 [[ "${CARCH}" == "x86_64" ]] && _EFI_ARCH="x86_64"
 [[ "${CARCH}" == "i686" ]] && _EFI_ARCH="i386"
@@ -23,17 +24,14 @@ _UNIFONT_VER="12.1.02"
 _pkgname="grub"
 pkgname="grub-luks-keyfile"
 pkgdesc="GNU GRand Unified Bootloader (2) with crypto extensions to support for DMCrypt and LUKS volumes with detached headers and key files."
-pkgver=2.04
+pkgver=2.06
 pkgrel=1
 epoch=2
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64')
 license=('GPL3')
-backup=('boot/grub/grub.cfg'
-        'etc/default/grub'
-        'etc/grub.d/40_custom')
-install="${_pkgname}.install"
 options=('!makeflags')
+backup=('etc/default/grub')
 
 conflicts=('grub' 'grub-common' 'grub-bios' 'grub-emu' "grub-efi-${_EFI_ARCH}" 'grub-legacy')
 replaces=('grub' 'grub-common' 'grub-bios' 'grub-emu' "grub-efi-${_EFI_ARCH}")
@@ -63,8 +61,8 @@ validpgpkeys=('E53D497F3FA42AD8C9B4D1E835A93B74E82E4209'  # Vladimir 'phcoder' S
 source=("https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"{,.sig}
         "https://git.savannah.nongnu.org/cgit/grub-extras.git/snapshot/grub-extras-${_GRUB_EXTRAS_COMMIT}.tar.gz"
         "https://ftp.gnu.org/gnu/unifont/unifont-${_UNIFONT_VER}/unifont-${_UNIFONT_VER}.bdf.gz"{,.sig}
-        '0003-10_linux-detect-archlinux-initramfs.patch'
-        '0004-add-GRUB_COLOR_variables.patch'
+        '0001-00_header-add-GRUB_COLOR_-variables.patch'
+        '0002-10_linux-detect-archlinux-initramfs.patch'
         '0001-Cryptomount-support-LUKS-detached-header.patch'
         '0002-Cryptomount-support-key-files.patch'
         '0003-Cryptomount-luks-allow-multiple-passphrase-attempts.patch'
@@ -73,41 +71,48 @@ source=("https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"{,.sig
         '0006-Cryptomount-support-for-using-whole-device-as-keyfile.patch'
         'grub.default')
 
-sha256sums=('e5292496995ad42dabe843a0192cf2a2c502e7ffcc7479398232b10a472df77d'
+sha256sums=('b79ea44af91b93d17cd3fe80bdae6ed43770678a9a5ae192ccea803ebb657ee1'
             'SKIP'
             '2844601914cea6b1231eca0104853a93c4d67a5209933a0766f1475953300646'
-            '04d652be1e28a6d464965c75c71ac84633085cd0960c2687466651c34c94bd89'
+            'b7668a5d498972dc4981250c49f83601babce797be19b4fdd0f2f1c6cfbd0fc5'
             'SKIP'
-            'b41e4438319136b5e74e0abdfcb64ae115393e4e15207490272c425f54026dd3'
-            'a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29'
+            'ef87b27e4cef6f83c41c8a1a0401f41e22a89a130baaef8c5a832a6c99bb2683'
+            'ce7e24acec78989169a136e989e07369def3dd7c727788d5038a255409ec3c35'
             'b9d737d1b403b540a00a8e9c25240a06bb371da7588d3e665af8543397724698'
             '5d7060fbe9738764d2f8ebc96b43cc0bb8939c2e4e4e78b7a82a1a149ea6e837'
-            'd2ad15610f5b683ca713329bbe25d43963af9386c9c8732b61cdc135843715f1'
-            'e47409d04f740a71360775af25c53662386a49ea7f93ada39ed636b9ae8a0a22'
-            '7b9ff45ba6e6c1ad45e6984580393e3801ef86144e48dbe5fe97d4aa8b90706e'
-            '4d2b6f5e1a50a01b127602d8537fca1152b2d1799918faaa94dc98cf7b854513'
-            '74e5dd2090a153c10a7b9599b73bb09e70fddc6a019dd41641b0f10b9d773d82')
+            '3e373bcb7847326ae14365e7443f900559f35f4f9ba2e5e69d034f4423fc45bb'
+            '9ff4aba657d3826a510c57ce44d7582c4e4c72eb32a59ffd2b09e923202750ed'
+            '6f58b01eb9adcc6864e09a4ecaa728f19ee2c9a7ecf4cf20fd17fc5ec327f19c'
+            '4739a472c609df2528ac30e502a9f1b77fd1517af551c6bcbd35ba57b81da827'
+            'ba476142f65b4b7c94bedeba55bf2aa0303a9247c4708e99abaeca22941bf20d')
 
 prepare() {
 	cd "${srcdir}/grub-${pkgver}/"
 
-	msg "Patch to detect of Arch Linux initramfs images by grub-mkconfig"
-	patch -Np1 -i "${srcdir}/0003-10_linux-detect-archlinux-initramfs.patch"
-	echo
+	echo "Patch to detect of Arch Linux initramfs images by grub-mkconfig..."
+	patch -Np1 -i "${srcdir}/0002-10_linux-detect-archlinux-initramfs.patch"
 
-	msg "Patch to enable GRUB_COLOR_* variables in grub-mkconfig"
+	echo "Patch to enable GRUB_COLOR_* variables in grub-mkconfig..."
 	## Based on http://lists.gnu.org/archive/html/grub-devel/2012-02/msg00021.html
-	patch -Np1 -i "${srcdir}/0004-add-GRUB_COLOR_variables.patch"
-	echo
-
-	msg "Patch for adding support for DMCrypt and LUKS volumes with detached headers and key files"
+	patch -Np1 -i "${srcdir}/0001-00_header-add-GRUB_COLOR_-variables.patch"
+	
+	echo "Patch to enable LUKS detached header support..."
 	patch -Np1 -i "${srcdir}/0001-Cryptomount-support-LUKS-detached-header.patch"
+	
+	echo "Patch to enable LUKS key files support ..."
 	patch -Np1 -i "${srcdir}/0002-Cryptomount-support-key-files.patch"
+	
+	echo "Patch to enable multiple passphrase attempts support..."
 	patch -Np1 -i "${srcdir}/0003-Cryptomount-luks-allow-multiple-passphrase-attempts.patch"
+	
+	echo "Patch to enable plain dm-crypt mode support..."
 	patch -Np1 -i "${srcdir}/0004-Cryptomount-support-plain-dm-crypt.patch"
+	
+	echo "Patch to enable hyphens in UUID support..."
 	patch -Np1 -i "${srcdir}/0005-Cryptomount-support-for-hyphens-in-UUID.patch"
+	
+	echo "Patch to enable whole device as keyfile support ..."
 	patch -Np1 -i "${srcdir}/0006-Cryptomount-support-for-using-whole-device-as-keyfile.patch"
-	echo
 
 	msg "Fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme"
 	sed 's|/usr/share/fonts/dejavu|/usr/share/fonts/dejavu /usr/share/fonts/TTF|g' -i "configure.ac"

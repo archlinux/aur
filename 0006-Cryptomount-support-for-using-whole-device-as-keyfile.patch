@@ -71,7 +71,7 @@ index d0388c6d1..c5d8021ba 100644
 +                  goto cleanup_keydisk_name;
 +                }
 +
-+              total_sectors = grub_disk_get_size (keydisk);
++              total_sectors = grub_disk_native_sectors (keydisk);
 +              if (total_sectors == GRUB_DISK_SIZE_UNKNOWN)
 +                {
 +                  grub_printf (N_("Unable to determine size of disk %s\n"), keydisk_name);
