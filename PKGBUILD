@@ -128,7 +128,7 @@ package_pipewire-git() {
 
   DESTDIR="${pkgdir}" meson install -C build
 
-  cd "${pkgdir}"
+  (cd "${pkgdir}"
 
   _pick acp usr/lib/udev
   _pick acp usr/share/alsa-card-profile
@@ -150,7 +150,9 @@ package_pipewire-git() {
   _pick ffmpeg usr/lib/spa-0.2/ffmpeg/libspa-ffmpeg.so
 
   _pick zeroconf "usr/lib/pipewire-${pkgver:0:3}/libpipewire-module-zeroconf-discover.so"
+  )
 
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
 }
 
 package_pipewire-docs-git() {
@@ -273,7 +275,8 @@ package_pipewire-zeroconf-git() {
   pkgdesc+=" - Zeroconf support (GIT version)"
   depends=('pipewire'
            "libpipewire-${pkgver:0:3}.so"
-           libavahi-{client,common}.so
+           'libavahi-client.so'
+           'libavahi-common.so'
            )
   provides=('pipewire-zeroconf')
   conflicts=('pipewire-zeroconf')
