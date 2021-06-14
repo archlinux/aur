@@ -60,8 +60,8 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.11.22.arch1.r984980.e3a7cee5034f
-_srcver_tag=v5.11.22.arch1
+pkgver=.r999152.a881a9c48a63
+_srcver_tag_arch=v5.12.10.arch1
 pkgrel=1
 pkgdesc="Linux"
 url="https://github.com/koverstreet/bcachefs"
@@ -98,7 +98,6 @@ source=(
     "${_reponame}::git+${_repo_url}#branch=master"
     "git+${_repo_url_kernel_patch}"
     config # kernel config file
-    arch_patches.patch
 )
 validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
@@ -106,8 +105,7 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '6271420ca5c5957b348b37861fe4b8b1f56d7896dc88b0040690500567d90a2be104e1cd08a9fbc65ae1010a9f8984545117c53ed82ce655d17855d75889f543'
-            '9ffd4c18a72eeb6c52bd42fee2b1ab2b122a59cb079a1bc78417a721df81ce1179b2dbf6ac2313e24afb971e9adefd18e73858c5ea360af54fe420ae7c73c410')
+            '4ac4f9e6859d70e57ad5defdff4722b867a8d098c2c56e728e4d1cd115d1968e1164615f38a7d7077f472bcae4417635ec24012082b9c89247d1a978a81ebdf8')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -121,19 +119,18 @@ prepare() {
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
-    #msg2 "Fetch and merge stable tag from Arch vanilla kernel repository..."
-    #git remote add arch_stable "https://git.archlinux.org/linux.git" || true
-    #git fetch arch_stable "${_srcver_tag_arch%.*}-${_srcver_tag_arch##*.}"
-    #git merge --no-edit --no-commit FETCH_HEAD
-
-    msg2 "Fetch and merge tag ${_srcver_tag//.arch*/} from Linux stable upstream repository..."
-    git remote add upstream_stable "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git" || true
-    git fetch upstream_stable ${_srcver_tag//.arch*/}
+    msg2 "Fetch and merge stable tag from Arch vanilla kernel repository..."
+    git remote add arch_stable "https://git.archlinux.org/linux.git" || true
+    git fetch arch_stable "${_srcver_tag_arch%.*}-${_srcver_tag_arch##*.}"
     git merge --no-edit --no-commit FETCH_HEAD
+
+    #msg2 "Fetch and merge tag ${_srcver_tag//.arch*/} from Linux stable upstream repository..."
+    #git remote add upstream_stable "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git" || true
+    #git fetch upstream_stable ${_srcver_tag//.arch*/}
+    #git merge --no-edit --no-commit FETCH_HEAD
 
     PatchesArray=(
         $_reponame_kernel_patch/$_kernel_patch_name
-        arch_patches.patch
     )
 
     for MyPatch in "${PatchesArray[@]}"
