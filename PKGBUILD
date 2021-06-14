@@ -2,8 +2,8 @@
 
 pkgname=tree-sitter-bibtex-git
 pkgver=r8.ccfd77d
-pkgrel=2
-pkgdesc="LaTex grammar for tree-sitter"
+pkgrel=3
+pkgdesc="BibTeX grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/latex-lsp/tree-sitter-bibtex"
 license=('MIT')
