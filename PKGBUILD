@@ -1,12 +1,12 @@
 # Maintainer: Zoe <chp321@gmail.com>
 pkgname=wavsplit
 pkgver=1.2.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Splits large WAV files at given time positions'
 arch=('i686' 'x86_64')
-url="http://download.tuxfamily.org/xcfaudio/WavSplit/"
+url="https://download.tuxfamily.org/xcfaudio/WavSplit/"
 license=('GPL2')
-source=(http://download.tuxfamily.org/xcfaudio/WavSplit/${pkgname}-${pkgver}.tar.gz)
+source=("https://download.tuxfamily.org/xcfaudio/WavSplit/${pkgname}-${pkgver}.tar.gz")
 md5sums=('624ba5aa7d66bddb9003820014bf545b')
 
 build() {
