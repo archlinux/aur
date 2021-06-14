@@ -1,7 +1,7 @@
 pkgbase = harmonist
 	pkgdesc = A stealth coffee-break roguelike game.
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://harmonist.tuxfamily.org/index.html
 	arch = x86_64
 	license = ISC

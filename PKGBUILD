@@ -2,7 +2,7 @@
 pkgname=('harmonist' 'harmonist-tiles')
 pkgbase=harmonist
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A stealth coffee-break roguelike game."
 arch=('x86_64')
 url='https://harmonist.tuxfamily.org/index.html'
@@ -44,7 +44,7 @@ package_harmonist-tiles() {
     pkgdesc="$pkgdesc (Tiles version)"
     replaces=('harmonist-tk')
     cd "$srcdir/${pkgbase}-$pkgver"
-    install -Dm644 ${pkgbase}.6 "$pkgdir/usr/share/man/man6/${pkgbase}.6"
+    install -Dm644 ${pkgbase}.6 "$pkgdir/usr/share/man/man6/${pkgname[1]}.6"
     install -Dm755 build/${pkgname[1]} "$pkgdir/usr/bin/${pkgname[1]}"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname[1]}/LICENSE"
     install -Dm644 "$srcdir/${pkgname[1]}.desktop" \
