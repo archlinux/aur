@@ -9,7 +9,7 @@
 
 pkgname=popcorntime
 pkgver=0.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=(i686 x86_64)
 url="https://popcorntime.app/"
@@ -20,9 +20,9 @@ optdepends=('net-tools: vpn.ht client')
 options=('!strip')
 #install="popcorntime.install"
 # Needed variables for sources downloads
-# Commit SHA256 updated on date: 2020-04-16
+# Commit SHA256 updated on date: 2021-06-14
 # v0.4.4 but with extra stuff
-_commit_hash="commit=b20073444f0d442d9c2cd1c09de23740dd091b8b"
+_commit_hash="commit=88b8c63138e62a94356ff242194fcff71b5694f1"
 _pkgname="popcorn-desktop"
 
 # NW.js version to use while building
@@ -44,13 +44,13 @@ source=(
 )
 sha256sums=('SKIP'
             '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334'
-            '3596ed22e0f140bb0873770ed93585801d66327f7a3e2f5c0b17f7c4cf186610')
+            'b805f400b476f181028d88569fd4e2c22daa7888e40655470e34f1143ee97414')
 
 # Building the package
 prepare() {
     cd "${srcdir}/${_srcdir}"
 
-    msg2 "Apply Gulpfile fixes ..."
+    echo "--> Apply Gulpfile fixes ..."
     git apply "$srcdir/gulp-fixes.patch"
 
     # Thanks to Eschwartz for the tip! yarn edition
@@ -62,21 +62,21 @@ prepare() {
     #sed -E 's|(.*vodo.*)",|\1#f61e70217711b4a29ff50618d28e8d4170d63fe5",|' -i package.json
 
     # Actually install the stuff
-    msg2 "Installing normal dependencies"
+    echo "--> Installing normal dependencies"
     yarn install
 
-    msg2 "Install missing dependencies, if any ..."
+    echo "-->Install missing dependencies, if any ..."
     # Here specific version of the packages will be installed
     for package in $_missing_deps
     do
-        msg2 "Installing missing dependency $package"
+        echo "-->Installing missing dependency $package"
         yarn install "$package"
     done
 
     # Change NW.js version, if defined
     if [ -n "$_nwjs" ]
     then
-        msg2 "Changing NW.js version to $_nwjs ..."
+        echo "-->Changing NW.js version to $_nwjs ..."
         sed -i "s|\(const nwVersion = '\)[0-9.]\+|\1$_nwjs|" gulpfile.js
     fi
 }
@@ -96,7 +96,7 @@ package() {
     mkdir -p "${pkgdir}/usr/share/${pkgname}"
     mkdir -p "${pkgdir}/usr/bin"
 
-    find . -type f -exec install -D {} ${pkgdir}/usr/share/${pkgname}/{} \;
+    cp -a . "${pkgdir}/usr/share/${pkgname}"
 
     install -Dm644 "${srcdir}/${_srcdir}/src/app/images/icon.png" "${pkgdir}/usr/share/pixmaps/popcorntime.png"
     chmod +x "${pkgdir}/usr/share/${pkgname}/Popcorn-Time"
