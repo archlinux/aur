@@ -4,7 +4,7 @@
 # Contributor: hexchain <i@hexchain.org>
 pkgname=telegram-desktop-userfonts
 pkgver=2.7.4
-pkgrel=1
+pkgrel=2
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
 pkgdesc='Official Telegram Desktop client, with your fonts as set by fontconfig'
@@ -15,8 +15,12 @@ depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-
          'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'gtk3' 'glibmm' 'webkit2gtk')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'libtg_owt')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
+        https://github.com/telegramdesktop/tdesktop/commit/71deaa48afab2bcf9df67b9b347b1f44aad3a9ce.patch
+        https://github.com/telegramdesktop/tdesktop/commit/a8807bc915f2439acc7c84f06d931d96d6ca602a.patch
         "fix-webview-includes.patch")
 sha512sums=('0a796d7a8c5e5982bc60f19c41da53996a609bf794fad224e7beea5fc3816b5cf35f16b0ec2cc7279085c69996063a44085f48e1596dfe746d260a2e8f1b2d14'
+            'cabdadddc7a6873c7c6fc8128ceddf2712c0c73d3316520482162e5c67937bda2a627ddb2f078558a52e812c2a876351196488a5a75381d84a43815b873bac5b'
+            '72ef9bddef1f40e09b9c4334153f1ab8aaddf63d95d9f25dc1b0a0826b7f2ae24f7c5fc4cb5ce90aae2c3144a5d52c4cb870d643f447d654190c4a2c78079354'
             '5492c73f0b984da1e2d1f21c3a36c11c4b9ad511522dccd4d6440681f68d6ebc9e672806a534b1e551f736f080d3ef307c8ddd012e4646bd84d09c5e8fa85a40')
 
 prepare() {
@@ -33,6 +37,10 @@ prepare() {
     echo "target_link_libraries(external_webrtc INTERFACE jpeg)" | tee -a external/webrtc/CMakeLists.txt
     cd ../Telegram/lib_webview
     patch -Np1 -i "$srcdir"/fix-webview-includes.patch
+
+    cd ..
+    patch -Np2 -i "$srcdir"/71deaa48afab2bcf9df67b9b347b1f44aad3a9ce.patch
+    patch -Np2 -i "$srcdir"/a8807bc915f2439acc7c84f06d931d96d6ca602a.patch
 }
 
 build() {
