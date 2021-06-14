@@ -2,7 +2,7 @@
 # This package requires rust in order to build, but since arch users may have rustup
 # installed instead, the makedepends has been omitted for now
 pkgname=helix-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A text editor written in rust"
 url="https://helix-editor.com"
@@ -10,7 +10,7 @@ arch=(x86_64)
 makedepends=()
 depends=()
 source=("https://github.com/helix-editor/helix/releases/download/v${pkgver}/helix-v${pkgver}-${arch}-linux.tar.xz")
-sha256sums=('cff7eea50f8ac8fce8eaa116781a0dd7d4df85cdf5ddcb2213fa990519ad91d9')
+sha256sums=('be89c95f614afd4690af1d6b9f7626eb97bc4a7983746085b9dfd56e4aa4b33e')
 
 prepare() {
 	cat > "hx" << EOF
