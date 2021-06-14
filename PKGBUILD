@@ -1,8 +1,8 @@
 # Maintainer: Pavel Dvorak <dvorapa~seznam~cz>
 
 pkgname=python-wikitextparser-git
-pkgver=v0.47.5.r1.g4322e6b
-pkgrel=1
+pkgver=0.47.5.r0.gd61e791
+pkgrel=2
 pkgdesc="A simple to use WikiText parsing library for MediaWiki."
 arch=(any)
 url=https://pypi.org/project/wikitextparser/
@@ -13,7 +13,7 @@ sha256sums=(SKIP)
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
+  git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//"
 }
 
 build() {
