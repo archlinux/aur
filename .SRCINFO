@@ -1,0 +1,15 @@
+pkgbase = neovim-cmd-parser-git
+	pkgdesc = Command line parser for Neovim plugin authors
+	pkgver = r10.70813af
+	pkgrel = 1
+	url = https://github.com/winston0410/cmd-parser.nvim
+	arch = any
+	groups = neovim-plugins
+	license = unknown
+	makedepends = git
+	provides = neovim-cmd-parser
+	conflicts = neovim-cmd-parser
+	source = neovim-cmd-parser-git::git+https://github.com/winston0410/cmd-parser.nvim
+	sha256sums = SKIP
+
+pkgname = neovim-cmd-parser-git
