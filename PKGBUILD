@@ -9,7 +9,7 @@ license=("MIT")
 arch=("any")
 provides=("python-django-bootstrap-breadcrumbs")
 depends=("python-django")
-makedepends=("python-setuptools" "python-wheel")
+makedepends=("python-setuptools")
 source=("git+$url")
 sha256sums=("SKIP")
 
