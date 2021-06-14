@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="python-mkdocs-with-pdf-git"
-pkgver=v0.8.2.r5.g75548c2
+pkgver=0.9.0.r0.gccb3eb92
 pkgrel=1
 pkgdesc="Plugin to generate a single PDF file from a MkDocs repository"
 url="https://github.com/orzih/mkdocs-with-pdf"
@@ -15,7 +15,7 @@ sha256sums=("SKIP")
 
 pkgver(){
  cd "mkdocs-with-pdf"
- git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
+ git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//"
 }
 
 build(){
