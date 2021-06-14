@@ -41,7 +41,7 @@ package() {
     DESTDIR="$pkgdir" meson install -C build-${_arch}
     install -d "$pkgdir"/usr/${_arch}/include/sys
     install -m644 contrib/elftoolchain/libelf/libelf.h contrib/elftoolchain/libelf/gelf.h "$pkgdir"/usr/${_arch}/include
-    install -m644 sys/sys/elf32.h sys/sys/elf64.h "$pkgdir"/usr/${_arch}/include/sys
+    install -m644 sys/sys/elf32.h sys/sys/elf64.h sys/elf_common.h "$pkgdir"/usr/${_arch}/include/sys
     #${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
