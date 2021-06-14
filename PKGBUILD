@@ -3,21 +3,21 @@
 # Contributor: Christian Wygoda <accounts@wygoda.net>
 
 pkgname=ossim
-_pkgname=OrchidIsland
-pkgver=2.11.1
+_pkgname=ossim
+pkgver=2.12.0
 pkgrel=1
 pkgdesc="OSSIM is a powerful suite of geospatial libraries and applications used to process imagery, maps, terrain, and vector data."
 url="http://www.ossim.org"
 license=('LGPL')
 arch=('i686' 'x86_64')
 depends=('freetype2' 'gdal' 'libgeotiff' 'libjpeg' 'libtiff' 'openthreads' 'openjpeg'  'doxygen' 
-'hdf5-cpp-fortran' 'minizip' 'expat' 'ffmpeg' 'qt4' 'podofo' 'bzip2' 'freetype2' 'pdal')
+'hdf5-cpp-fortran' 'minizip' 'expat' 'ffmpeg' 'qt5-base' 'podofo' 'bzip2' 'freetype2' 'pdal')
 makedepends=('cmake')
 optdepends=( 'java-environment-common' 'openmpi' 'gpstk-bin' )
-source=(https://github.com/ossimlabs/ossim/archive/${_pkgname}-${pkgver}.tar.gz
+source=(https://github.com/ossimlabs/ossim/archive/${pkgver}.tar.gz
         ossim.sh )
 install=ossim.install
-md5sums=('7a24fe73e990e0d0f286b5675c0ab6e7'
+md5sums=('6b5930d3eca47555f4031480f8dc8847'
          'cb85c216a099b10f057cddeeae4a57fb')
 
 build() {
@@ -31,8 +31,8 @@ build() {
   mkdir $srcdir/build
   cd $srcdir/build
 
-  OSSIM_DEV_HOME="$srcdir/${pkgname}-${_pkgname}-${pkgver}";
-  buildir="$srcdir/${pkgname}-${_pkgname}-${pkgver}";
+  OSSIM_DEV_HOME="$srcdir/${pkgname}-${pkgver}";
+  buildir="$srcdir/${pkgname}-${pkgver}";
 
   cmake -G "Unix Makefiles" \
   -DCMAKE_BUILD_TYPE=Release \
@@ -56,16 +56,16 @@ build() {
   -DBUILD_OSSIM_WMS=ON \
   -DBUILD_SHARED_LIBS=ON \
   -DBUILD_PDAL_PLUGIN=ON \
-  $srcdir/${pkgname}-${_pkgname}-${pkgver} \
+  $buildir \
 
-  make
+  make -j$(nproc)
 }
 
 
 package() {
 
   cd $srcdir/build
-  buildir="$srcdir/${pkgname}-${_pkgname}-${pkgver}";
+  buildir="$srcdir/${pkgname}-${pkgver}";
   make DESTDIR=${pkgdir} install || return 1  
 
   sed -i -e 's|epsg_database_file1: $(OSSIM_DATA)/ossim/share/ossim/projection/ossim_epsg_projections-v7_4.csv|epsg_database_file1: $(OSSIM_DATA)/projection/ossim_epsg_projections-v7_4.csv|g' \
