@@ -1,7 +1,7 @@
 # Maintainer: vaba <aur.demifusion@8shield.net>
 pkgname=notepac
 _gitname=notepac
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Make notes about your installed packages"
 url="https://gitlab.com/vaba/notepac"
