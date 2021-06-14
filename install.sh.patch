@@ -1,0 +1,92 @@
+--- xp-pen-pentablet-3.1.4.210605-1.x86_64/install.sh	2021-05-17 08:06:23.000000000 +0200
++++ patch/install.sh	2021-06-14 11:43:08.834793268 +0200
+@@ -9,6 +9,20 @@
+ echo $dirname
+ cd "$dirname"
+ 
++
++
++rootDir="$1"
++if [ -n "${rootDir}" ]; then
++	if [ -d "${rootDir}" ]; then
++		rootDir="$(realpath "${rootDir}")"
++	else
++		echo "'${rootDir}' is not a directory"
++		exit 1
++	fi
++else
++	rootDir=""
++fi
++
+ # close driver if it running
+ AppName=pentablet
+ AppDir=pentablet
+@@ -37,8 +51,8 @@
+ fi
+ 
+ #Copy rule
+-sysRuleDir="/lib/udev/rules.d"
+-appRuleDir=./App$sysRuleDir
++sysRuleDir="${rootDir}/usr/lib/udev/rules.d"
++appRuleDir=./App/lib/udev/rules.d
+ ruleName="10-xp-pen.rules"
+ 
+ #echo "$appRuleDir/$ruleName"
+@@ -55,8 +69,8 @@
+ fi
+ 
+ #install app
+-sysAppDir="/usr/lib"
+-appAppDir=./App$sysAppDir/$AppName
++sysAppDir="${rootDir}/usr/lib"
++appAppDir=./App/usr/lib/$AppName
+ exeShell="pentablet.sh"
+ 
+ #echo $sysAppDir
+@@ -97,13 +111,13 @@
+ fi
+ 
+ # install shortcut
+-sysDesktopDir=/usr/share/applications
+-sysAppIconDir=/usr/share/icons
+-sysAutoStartDir=/etc/xdg/autostart
+-
+-appDesktopDir=./App$sysDesktopDir
+-appAppIconDir=./App$sysAppIconDir
+-appAutoStartDir=./App$sysAutoStartDir
++sysDesktopDir="${rootDir}/usr/share/applications"
++sysAppIconDir="${rootDir}/usr/share/icons"
++sysAutoStartDir="${rootDir}/etc/xdg/autostart"
++
++appDesktopDir=./App/usr/share/applications
++appAppIconDir=./App/usr/share/icons
++appAutoStartDir=./App/etc/xdg/autostart
+ 
+ appDesktopName=xp$AppName.desktop
+ appIconName=$AppName.png
+@@ -144,9 +158,9 @@
+ fi
+ 
+ #Copy config files
+-chmod +x /usr/lib/pentablet/pentablet
+-chmod +x /usr/lib/pentablet/pentablet.sh
+-confPath="/usr/lib/pentablet/conf/xppen"
++chmod +x "${rootDir}/usr/lib/pentablet/pentablet"
++chmod +x "${rootDir}/usr/lib/pentablet/pentablet.sh"
++confPath="${rootDir}/usr/lib/pentablet/conf/xppen"
+ 
+ chmod +0777 $confPath
+ 
+@@ -162,9 +176,9 @@
+ 	chmod +0666 $confPath/name_config.ini
+ fi
+ 
+-if [ -f "/etc/xdg/autostart/pentablet.desktop" ]; then
+-	rm /etc/xdg/autostart/ugee-pentablet.desktop
++if [ -f "${rootDir}/etc/xdg/autostart/pentablet.desktop" ]; then
++	rm "${rootDir}/etc/xdg/autostart/ugee-pentablet.desktop"
+ fi
+ 
+-echo "Installation successful!"
++#echo "Installation successful!"
+ echo "If you are installing for the first time, please use it after restart."
