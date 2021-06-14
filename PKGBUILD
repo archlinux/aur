@@ -2,7 +2,7 @@
 pkgname=dolmenls
 pkgver=0.6
 pkgrel=0
-pkgdesc="LSP server for Dolmen"
+pkgdesc="LSP server for Dolmen, a tool for logic and theorem proving."
 arch=('x86_64')
 url="https://github.com/gbury/dolmen"
 license=('BSD-2-Clauses')
