@@ -1,13 +1,13 @@
 # Maintainer: jzbor <zborof at posteo dot de>
 pkgname=moonwm-git
-pkgver=6.2.r2118.beddd43
+pkgver=6.2.r2133.aca090e
 pkgrel=1
 pkgdesc="My own outstandingly named Window Manager (a dynamic window manager)"
 arch=(x86_64 i686)
 url="https://github.com/jzbor/moonwm"
 license=('MIT')
 groups=()
-depends=(libx11 libxcb libxinerama slop xmenu  arandr dmenu ffmpeg geoclue i3lock imagemagick libnotify light network-manager-applet notification-daemon otf-nerd-fonts-fira-code pamixer picom polkit-gnome skippy-xd xfce4-power-manager xorg-setxkbmap xorg-xrandr xorg-xrdb xwallpaper)
+depends=(libx11 libxcb libxinerama slop xmenu  arandr dmenu ffmpeg geoclue i3lock imagemagick libnotify light network-manager-applet notification-daemon otf-nerd-fonts-fira-code pamixer picom polkit-gnome xfce4-power-manager xorg-setxkbmap xorg-xrandr xorg-xrdb xwallpaper)
 # temporarily removed:
 makedepends=(git make)
 checkdepends=()
