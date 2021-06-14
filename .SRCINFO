@@ -6,10 +6,8 @@ pkgbase = python-onetimepass
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python-wheel
 	depends = python-six
 	source = https://github.com/tadeck/onetimepass/archive/refs/tags/v1.0.1.tar.gz
 	sha256sums = 2dbeec63eed7866a5b3d297ce7a05b081a7e10153f88020e1530b033ff13f123
 
 pkgname = python-onetimepass
-

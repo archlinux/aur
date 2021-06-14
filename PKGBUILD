@@ -10,7 +10,7 @@ url="https://github.com/tadeck/onetimepass"
 license=("MIT")
 arch=("any")
 depends=("python-six")
-makedepends=("python-setuptools" "python-wheel")
+makedepends=("python-setuptools")
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('2dbeec63eed7866a5b3d297ce7a05b081a7e10153f88020e1530b033ff13f123')
 
