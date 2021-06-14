@@ -6,7 +6,6 @@ pkgbase = python-degiro-connector-git
 	arch = any
 	license = BSD-3
 	makedepends = python-setuptools
-	makedepends = python-wheel
 	depends = python-grpcio
 	depends = python-onetimepass
 	depends = python-pandas
@@ -19,4 +18,3 @@ pkgbase = python-degiro-connector-git
 	sha256sums = SKIP
 
 pkgname = python-degiro-connector-git
-
