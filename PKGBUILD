@@ -1,5 +1,5 @@
 pkgname=dnf
-pkgver=4.7.0
+pkgver=4.8.0
 pkgrel=1
 pkgdesc="Package manager forked from Yum, using libsolv as a dependency resolver"
 arch=('any')
@@ -18,7 +18,7 @@ backup=("etc/$pkgname/automatic.conf"
         "etc/logrotate.d/$pkgname")
 options=('!emptydirs')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('ae860b226c03774a174ed0bf8646d062')
+sha256sums=('85bf82c8a044a4932518451dfd018092c7ac6793affce9e0209fb6b1f3a111ed')
 
 prepare() {
 	cd "$pkgname-$pkgver"
