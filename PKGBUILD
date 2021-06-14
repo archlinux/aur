@@ -2,7 +2,7 @@
 
 _name=yocto-cooker
 pkgname=python-yocto-cooker
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=3
 url="https://github.com/cpb-/yocto-cooker"
 pkgdesc="yocto-cooker is a easy yocto manager."
@@ -10,8 +10,8 @@ arch=(any)
 depends=(python python-jsonschema python-urllib3)
 makedepends=(python-setuptools)
 
-source=("${pkgname}-${pkgver}.zip::https://codeload.github.com/cpb-/yocto-cooker/zip/1.0.1")
-md5sums=('2d3b50f74ce94c1d7aa0b6b8c680c3bf')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cpb-/yocto-cooker/archive/refs/tags/${pkgver}.tar.gz")
+md5sums=('6aea6280c0ae3466428d7c9cad3ff9dc')
 license=('GPL2')
 
 build() {
