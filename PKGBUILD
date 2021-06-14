@@ -2,7 +2,7 @@
 # Based off of: https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
 
 _pkgname="among-us-dumpy-gif-maker"
-_pkgver="1.7.2"
+_pkgver="2.0.2"
 _jar="Among-Us-Dumpy-Gif-Maker-${_pkgver}-all.jar"
 
 pkgname="${_pkgname}"
