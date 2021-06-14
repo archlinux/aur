@@ -1,4 +1,4 @@
-# Maintainer: Kedap <dxhqezk@hi2.in>
+# Maintainer: Kedap <kqybspvj@hi2.in>
 pkgname=kali-archive-keyring
 _pkgname=kali-archive-keyring-kali-master
 pkgver=07d.6d757
