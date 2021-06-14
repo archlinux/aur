@@ -13,7 +13,6 @@ provides=('python2-pafy')
 
 makedepends=('git' 'python2-setuptools')
 depends=('python2' 'python2-youtube-dl')
-conflicts=('')
 
 source=("$_pkgname::git+https://github.com/mps-youtube/pafy.git")
 md5sums=('SKIP')
