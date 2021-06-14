@@ -1,9 +1,10 @@
 # Maintainer: zoe <chp321 at gmail dot com>
 
 pkgname=turtlesport
-pkgver=2.0
-pkgrel=1
+pkgver=2.1
+pkgrel=2
 pkgdesc="Java application to communicate with GPS devices for fitness (Garmin, Suunto...)."
+# https is not available :
 url="http://turtlesport.sourceforge.net/EN/home.html"
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -12,8 +13,9 @@ optdepends=('gpsd: for data downloads directly from your device')
 #makedepends=('tar')
 #makedepends=('rpmextract')
 #source=("http://netix.dl.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}_${pkgver}-1_all.deb")
-source=("http://netix.dl.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}-1.all.rpm")
-md5sums=('f4fbb1d3e3b48bd8722db12c049a512b')
+#source=("https://phoenixnap.dl.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}-1.all.rpm")
+source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}-1.all.rpm")         
+md5sums=('aa3e7cd25ec82d2b8495947ac158e74b')
 
 package() {
   cd $srcdir
