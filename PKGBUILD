@@ -3,7 +3,7 @@
 _name=google-resumable-media
 
 pkgname=python-google-resumable-media
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Utilities for Google Media Downloads and Resumable Uploads"
 arch=('any')
@@ -24,7 +24,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz"
 )
 sha256sums=(
-  'ee98b1921e5bda94867a08c864e55b4763d63887664f49ee1c231988f56b9d43'
+  '030a650e6dd18faad1b86c8f64be8b6cd59a90dbc22937d25631576f0c23a305'
 )
 
 build() {

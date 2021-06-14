@@ -1,6 +1,6 @@
 pkgbase = python-google-resumable-media
 	pkgdesc = Utilities for Google Media Downloads and Resumable Uploads
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://pypi.org/project/google-resumable-media/
 	arch = any
@@ -12,8 +12,7 @@ pkgbase = python-google-resumable-media
 	optdepends = python-requests>=2.18.0: for requests support
 	optdepends = python-aiohttp>=3.6.2: for aiohttp support
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/g/google-resumable-media/google-resumable-media-1.2.0.tar.gz
-	sha256sums = ee98b1921e5bda94867a08c864e55b4763d63887664f49ee1c231988f56b9d43
+	source = https://files.pythonhosted.org/packages/source/g/google-resumable-media/google-resumable-media-1.3.0.tar.gz
+	sha256sums = 030a650e6dd18faad1b86c8f64be8b6cd59a90dbc22937d25631576f0c23a305
 
 pkgname = python-google-resumable-media
-
