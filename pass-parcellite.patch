@@ -1,13 +1,13 @@
-diff --unified --recursive --text password-store-1.7.3.orig/src/password-store.sh password-store-1.7.3.new/src/password-store.sh
---- password-store-1.7.3.orig/src/password-store.sh	2018-08-03 15:32:48.000000000 +1200
-+++ password-store-1.7.3.new/src/password-store.sh	2019-04-20 15:17:19.671661200 +1200
-@@ -172,6 +172,9 @@
+diff --unified --recursive --text password-store-1.7.4.orig/src/password-store.sh password-store-1.7.4.new/src/password-store.sh
+--- password-store-1.7.4.orig/src/password-store.sh	2021-06-12 04:49:06.000000000 +1200
++++ password-store-1.7.4.new/src/password-store.sh	2021-06-14 21:35:10.278054298 +1200
+@@ -192,6 +192,9 @@
  		# so we axe it here:
  		qdbus org.kde.klipper /klipper org.kde.klipper.klipper.clearClipboardHistory &>/dev/null
  
 +		# Clear Parcellite clipboard history
 +		echo -n "clear_all" > "$HOME"/.local/share/parcellite/fifo_cmd 2>/dev/null
 +
- 		echo "$before" | $BASE64 -d | xclip -selection "$X_SELECTION"
+ 		echo "$before" | $BASE64 -d | "${copy_cmd[@]}"
  	) >/dev/null 2>&1 & disown
  	echo "Copied $2 to clipboard. Will clear in $CLIP_TIME seconds."

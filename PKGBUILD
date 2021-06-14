@@ -3,8 +3,8 @@
 # Contributor: Simon Zimmermann <simon@insmo.com>
 
 pkgname=pass-parcellite
-pkgver=1.7.3
-pkgrel=7
+pkgver=1.7.4
+pkgrel=1
 pkgdesc='Stores, retrieves, generates, and synchronizes passwords securely (Parcellite support)'
 arch=('any')
 url="https://www.passwordstore.org/"
@@ -27,8 +27,8 @@ conflicts=('passmenu'
 	   'pass')
 source=("https://git.zx2c4.com/password-store/snapshot/password-store-${pkgver}.tar.xz"
 	'pass-parcellite.patch')
-sha256sums=('2b6c65846ebace9a15a118503dcd31b6440949a30d3b5291dfb5b1615b99a3f4'
-            '451a0e4b09cb56fa57382a6ee30f646fe7734658c709dbe6e2411cafe75af155')
+sha256sums=('cfa9faf659f2ed6b38e7a7c3fb43e177d00edbacc6265e6e32215ff40e3793c0'
+            '111ec13bdcbc691bdfca7134dfba3e01672d0900cdc9810bec5a5da487cb5d6f')
 
 prepare() {
   cd "${srcdir}/password-store-$pkgver/"
