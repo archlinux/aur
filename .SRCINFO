@@ -28,6 +28,7 @@ pkgbase = qt5-base-headless
 	provides = qt5-base
 	conflicts = qtchooser
 	conflicts = qt5-base
+	options = !lto
 	source = git+https://invent.kde.org/qt/qt/qtbase#commit=2a2f3cd61f59ccec0eecb09e4a8795d7322edfcb
 	source = qt5-base-cflags.patch
 	source = qt5-base-nostrip.patch
@@ -36,4 +37,3 @@ pkgbase = qt5-base-headless
 	sha256sums = 4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094
 
 pkgname = qt5-base-headless
-

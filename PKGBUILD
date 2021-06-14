@@ -21,6 +21,7 @@ optdepends=('postgresql-libs: PostgreSQL driver'
             'shared-mime-info: Freedesktop.org Shared MIME Info')
 conflicts=('qtchooser' 'qt5-base')
 provides=('qt5-base')
+options=(!lto)
 _pkgfqn=qtbase
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         qt5-base-cflags.patch
