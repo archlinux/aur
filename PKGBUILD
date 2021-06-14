@@ -3,7 +3,7 @@
 
 pkgname=('python-telegram-bot-git')
 epoch=1
-pkgver=13.3.r0.e9c01c77
+pkgver=13.6.r3.52ce0392
 pkgrel=1
 pkgdesc="A Python wrapper around the Telegram Bot API"
 arch=('any')
@@ -13,8 +13,9 @@ license=('LGPL3')
 depends=(
     'python-certifi'
     'python-tornado>=5.1'
-    'python-apscheduler'
+    'python-apscheduler>=3.6.3'  # requirements.txt forces this to be ==3.6.3
     'python-pytz>=2018.6'
+    'python-cachetools>=4.2.2'  # requirements.txt forces this to be ==4.2.2
 )
 makedepends=(
     'git'
@@ -23,7 +24,7 @@ makedepends=(
 optdepends=(
     'python-pysocks: SOCKS or HTTP proxy support'
     'python-ujson: Ultra fast JSON parsing'
-    'python-cryptography: Telegram Passport support'  # [extra]: 3.3.1, [testing]: 3.4.6
+    'python-cryptography: Telegram Passport support'
 )
 provides=($_provide)
 conflicts=($_provide)
@@ -44,6 +45,8 @@ prepare() {
     cp ./CHANGES.rst ../../
     msg2 "Unpinning python-apscheduler..."
     sed -i 's/APScheduler==.*$/APScheduler/' requirements.txt
+    msg2 "Unpinning python-cachetools..."  # just in case
+    sed -i 's/cachetools==.*$/cachetools/' requirements.txt
 }
 
 pkgver() {
