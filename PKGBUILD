@@ -68,8 +68,6 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}/build"
   make DESTDIR="${pkgdir}" install
 
-  ln -sf mpiexec.hydra "${pkgdir}/opt/mpich/bin/mpiexec"
-  ln -sf mpiexec "${pkgdir}/opt/mpich/bin/mpirun"
   ln -sf mpiexec.hydra "${pkgdir}/opt/mpich/bin/mpirun.hydra"
 
   install -D -m644 "${srcdir}/${pkgname}-${pkgver}/COPYRIGHT" "${pkgdir}/usr/share/licenses/mpich/license.txt"
