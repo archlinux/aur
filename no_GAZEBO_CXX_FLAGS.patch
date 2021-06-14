@@ -1,9 +1,0 @@
---- gazebo_dev/cmake/gazebo_dev-extras.cmake	2021-04-21 19:17:36.000000000 +0100
-+++ gazebo_dev/cmake/gazebo_dev-extras.cmake	2021-05-26 13:10:29.738015844 +0100
-@@ -8,6 +8,3 @@
- set(gazebo_dev_INCLUDE_DIRS ${GAZEBO_INCLUDE_DIRS})
- set(gazebo_dev_LIBRARY_DIRS ${GAZEBO_LIBRARY_DIRS})
- set(gazebo_dev_LIBRARIES ${GAZEBO_LIBRARIES})
--
--# Append gazebo CXX_FLAGS to CMAKE_CXX_FLAGS (c++11)
--set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GAZEBO_CXX_FLAGS}")
