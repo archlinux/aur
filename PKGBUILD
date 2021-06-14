@@ -53,7 +53,7 @@ prepare() {
 build() {
     cd "${srcdir}/$_fullname/build"
     cmake -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_BUILD_TYPE='Release' -DCMAKE_SKIP_RPATH=1 \
-          -DFULL_GIT_REVISION="$_gitver" -DQTROOT='/usr' \
+          -DFULL_GIT_REVISION="$_gitver" -DLINUX_X11POWER=on -DQTROOT='/usr' \
           ..
     make
 }
