@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota.com>
 # Contributor: spsf64 <at g m a i l  dot com>
 pkgname=webapp-manager
-pkgver=1.1.3
-pkgrel=2
+pkgver=1.1.4
+pkgrel=1
 pkgdesc="Run websites as if they were apps"
 arch=('x86_64')
 url="https://github.com/linuxmint/webapp-manager"
@@ -12,13 +12,10 @@ depends=('python-beautifulsoup4' 'python-configobj' 'python-gobject' 'python-pil
 makedepends=('git')
 conflicts=('ice-ssb' 'ice-dev')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('060d57cb592148094b9513f1d1adec7297dd216c74130f0b2339765e8590f93b')
+sha256sums=('33d2249b7ea445c98e7caee8092c977ff4cffb3c935440ee5ce5e6d3faa20193')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
-
-	# Fix typo
-	sed -i 's/range(4)/range(5)/g' "usr/lib/${pkgname%-git}/common.py"
 
 	# Fix browser names
 	sed -i 's/brave-browser/brave/g' \
