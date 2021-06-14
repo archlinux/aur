@@ -6,10 +6,8 @@ pkgbase = python-django-sortedm2m
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = python-wheel
 	depends = python-django
 	source = https://github.com/jazzband/django-sortedm2m/archive/refs/tags/3.0.2.tar.gz
 	sha256sums = f14b86ab4f610de42937c11058664b2f8e9b722ae42f0197c448125eb9895777
 
 pkgname = python-django-sortedm2m
-
