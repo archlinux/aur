@@ -1,0 +1,12 @@
+pkgbase = dolmenls
+	pkgdesc = LSP server for Dolmen
+	pkgver = 0.6
+	pkgrel = 0
+	url = https://github.com/gbury/dolmen
+	arch = x86_64
+	license = BSD-2-Clauses
+	source = https://github.com/Gbury/dolmen/releases/download/v0.6/dolmenls-linux-amd64
+	md5sums = 17264149b92f056676cb1884c8dcdd22
+
+pkgname = dolmenls
+
