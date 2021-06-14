@@ -6,7 +6,6 @@ pkgbase = python-mkdocs-material
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python-wheel
 	depends = mkdocs
 	depends = pymdown-extensions
 	depends = python-pygments
