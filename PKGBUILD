@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="python-mkdocs-macros-plugin-git"
-pkgver=v0.5.0.r18.g5284916
+pkgver=0.5.12.r0.g4bf847b
 pkgrel=1
 pkgdesc="MkDocs plugin to use variables and macros in markdown files"
 url="https://github.com/fralau/mkdocs_macros_plugin"
@@ -15,7 +15,7 @@ sha256sums=("SKIP")
 
 pkgver(){
  cd "mkdocs_macros_plugin"
- git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
+ git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//"
 }
 
 build(){
