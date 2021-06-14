@@ -1,5 +1,6 @@
 pre_install () {
 	BACKUP_DIR=/etc/forticlient/.old
+	FCT_CONFIG_DB=/etc/forticlient/config.db
 	FCT_CONFIG=/etc/forticlient/config.xml
 	EC_CONFIG=/opt/forticlient/XMLs/ecdata.xml
 
@@ -11,6 +12,10 @@ pre_install () {
 	    exit 0
 	fi
 
+	if [ -d $BACKUP_DIR ] && [ $(stat -c "%a" $BACKUP_DIR) -eq 600 ] && [ -f $FCT_CONFIG_DB ]; then
+	    cp $FCT_CONFIG_DB $BACKUP_DIR
+	fi
+	
 	if [ -d $BACKUP_DIR ] && [ $(stat -c "%a" $BACKUP_DIR) -eq 600 ] && [ -f $FCT_CONFIG ]; then
 	    cp $FCT_CONFIG $BACKUP_DIR
 	fi
@@ -105,7 +110,7 @@ post_install() {
 post_upgrade() {
 cat << EOF
 
-==> After upgrade, to restore your config, copy XML file from /etc/forticlient/.old/ to /etc/forticlient/config.xml
+==> After upgrade, to restore your config, copy old file from /etc/forticlient/.old/ to /etc/forticlient/
 
 EOF
 }
