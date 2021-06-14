@@ -5,7 +5,7 @@
 pkgname=code-git
 pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - git latest'
 _electron=electron
-pkgver=1.53.0.r76027.gd045bc6ed1d
+pkgver=1.58.0.r83645.g84220dfa803
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/microsoft/vscode'
@@ -14,7 +14,7 @@ depends=("$_electron" 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
 optdepends=('bash-completion: Bash completions'
             'zsh-completions: ZSH completitons'
             'x11-ssh-askpass: SSH authentication')
-makedepends=('git' 'gulp' 'npm' 'python2' 'yarn' 'nodejs-lts-fermium')
+makedepends=('git' 'gulp' 'npm' 'python2' 'yarn' 'nodejs-lts-erbium')
 conflicts=('visual-studio-code-git')
 provides=('visual-studio-code-git')
 
@@ -65,10 +65,12 @@ prepare() {
 
     # Change electron binary name to the target electron
     sed -i "s|exec electron |exec $_electron |" ../code-git.sh
+    sed -i "s|#!/usr/bin/electron|#!/usr/bin/$_electron|" ../code-git.js
 
     # This patch no longer contains proprietary modifications.
     # See https://github.com/Microsoft/vscode/issues/31168 for details.
     patch -p0 -i "${srcdir}/product_json.diff"
+
     # Set the commit and build date
     local _commit=$(git rev-parse HEAD)
     local _datestamp=$(date -u -Is | sed 's/\+00:00/Z/')
@@ -98,6 +100,7 @@ prepare() {
 
     # Patch completitions with correct names
     sed -i 's|@@APPNAME@@|code-git|g' resources/completions/{bash/code,zsh/_code}
+
     # Fix bin path
     sed -i "s|return path.join(path.dirname(execPath), 'bin', \`\${product.applicationName}\`);|return '/usr/bin/code-git';|g
             s|return path.join(appRoot, 'scripts', 'code-cli.sh');|return '/usr/bin/code-git';|g" \
