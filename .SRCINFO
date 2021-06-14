@@ -1,20 +1,21 @@
 pkgbase = harmonist
 	pkgdesc = A stealth coffee-break roguelike game.
-	pkgver = 0.3.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://harmonist.tuxfamily.org/index.html
 	arch = x86_64
 	license = ISC
 	makedepends = go
-	depends = tk
-	source = https://download.tuxfamily.org/harmonist/releases/harmonist-0.3.0.tar.gz
-	source = harmonist-tk.desktop
-	sha256sums = 95a294ea9a3d96d81e6a137f72411cdf05e426d58b0c9b0267fceb83ff277099
-	sha256sums = 9c2fd2630d6db891b975c4ceb2eaa0be1d84af714f7506ca3df8e081f47d24f0
+	depends = sdl2
+	source = https://download.tuxfamily.org/harmonist/releases/harmonist-0.4.1.tar.gz
+	source = harmonist-tiles.desktop
+	sha256sums = 9adbef7629b408db5d33efd55368fe144da82e9b744f3d7fb4d4daf47fc54ba5
+	sha256sums = d9bc5d56e9209ae19504185f9aea92ea47d6a9009f242041f5a3be9973c37e26
 
 pkgname = harmonist
 	depends = glibc
 
-pkgname = harmonist-tk
-	pkgdesc = A stealth coffee-break roguelike game. (Graphical version)
+pkgname = harmonist-tiles
+	pkgdesc = A stealth coffee-break roguelike game. (Tiles version)
+	replaces = harmonist-tk
 

@@ -4,5 +4,5 @@ Version=1.0
 Type=Application
 Name=Harmonist
 Comment=A stealth coffee-break roguelike game.
-Exec=/usr/bin/harmonist-tk
+Exec=/usr/bin/harmonist-tiles
 Categories=Game;AdventureGame
