@@ -28,6 +28,7 @@ pkgbase = pipewire-git
 	makedepends = libcamera-git
 	makedepends = vulkan-headers
 	makedepends = webrtc-audio-processing
+	makedepends = avahi
 	source = git+https://gitlab.freedesktop.org/pipewire/pipewire.git
 	sha256sums = SKIP
 

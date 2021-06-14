@@ -37,6 +37,7 @@ makedepends=('git'
              'libcamera-git'
              'vulkan-headers'
              'webrtc-audio-processing'
+             'avahi'
              )
 checkdepends=('desktop-file-utils')
 source=('git+https://gitlab.freedesktop.org/pipewire/pipewire.git')
