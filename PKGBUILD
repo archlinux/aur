@@ -35,5 +35,5 @@ package_python-pywikibot-git() {
   python setup.py install --optimize=1 --root="$pkgdir/" --skip-build
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
   cd "$srcdir"
-  install -Dm644 -t "$pkgdir/usr/share/pywikibot" user-config.py
+  install -Dm644 -t "$pkgdir/usr/share/python-pywikibot" user-config.py
 }
