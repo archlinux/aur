@@ -2,7 +2,7 @@
 
 pkgname=ghost-deps-meta
 pkgver=20210614
-pkgrel=1
+pkgrel=2
 pkgdesc="Metapkg for cleaning the AUR, provide no longer existing packages for finding pkgbuilds that need a fix"
 arch=(any)
 url=""
@@ -23,17 +23,25 @@ provides=(tui dbus-core mono-stable msbuild-stable gtk3-print-backends libudev.s
           llvm-libs-pypy-stm clang-pypy-stm llvm-pypy-stm nodejs-grunt-cli node-webkit
           perl-data-pond perl-perl6-junction
           systemd-tools jade markdown asp.net-bin yaourt
-          python-sphinx-2 mutagen ladspa-plugins spice-glib gcc-multilib gnu-efi-libs
-          libwebkit geoclue2
+          mutagen ladspa-plugins spice-glib gcc-multilib gnu-efi-libs
+          libwebkit libsystemd heirloom-mailx mailx mailx-heirloom
 )
 # systemd-tools -> systemd
 # jade          -> openjade
 # markdown      -> discount
 # spice-glib    -> spice-gtk
 # mutagen       -> python2-mutagen
+# gnu-efi-libs  -> gnu-efi
+# libwebkit     -> webkitgtk2
+# heirloom-mailx-> s-nail
+# mailx         -> s-nail
+# mailx-heirloom-> s-nail
 #
+# geoclue2      -> geoclue
 # go-pie        -> go
 # gcc-multilib  -> gcc (null)
-# Renamed: geoclue2 libsystemd gnu-efi-libs mime-types libwebkit python-distribute heirloom-mailx
+# mime-types    -> mailcap
+# python-distribute -> python-setuptools
+# python-sphinx-2 - old version of python-sphinx
 #
-# Not to provide: udev initramfs opengl-driver smtp-forwarder cron
+# Not to provide: udev initramfs opengl-driver libgl smtp-forwarder cron
