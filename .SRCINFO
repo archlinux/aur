@@ -1,7 +1,7 @@
 pkgbase = ghost-deps-meta
 	pkgdesc = Metapkg for cleaning the AUR, provide no longer existing packages for finding pkgbuilds that need a fix
 	pkgver = 20210614
-	pkgrel = 2
+	pkgrel = 3
 	arch = any
 	license = GPL
 	optdepends = dmenu
@@ -87,6 +87,10 @@ pkgbase = ghost-deps-meta
 	provides = heirloom-mailx
 	provides = mailx
 	provides = mailx-heirloom
+	provides = fsharp-mono-bin
+	provides = monodevelop-stable
+	provides = python2-gtkspell
+	provides = opentk
 
 pkgname = ghost-deps-meta
 

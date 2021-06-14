@@ -2,7 +2,7 @@
 
 pkgname=ghost-deps-meta
 pkgver=20210614
-pkgrel=2
+pkgrel=3
 pkgdesc="Metapkg for cleaning the AUR, provide no longer existing packages for finding pkgbuilds that need a fix"
 arch=(any)
 url=""
@@ -25,6 +25,7 @@ provides=(tui dbus-core mono-stable msbuild-stable gtk3-print-backends libudev.s
           systemd-tools jade markdown asp.net-bin yaourt
           mutagen ladspa-plugins spice-glib gcc-multilib gnu-efi-libs
           libwebkit libsystemd heirloom-mailx mailx mailx-heirloom
+          fsharp-mono-bin monodevelop-stable python2-gtkspell opentk
 )
 # systemd-tools -> systemd
 # jade          -> openjade
@@ -33,10 +34,12 @@ provides=(tui dbus-core mono-stable msbuild-stable gtk3-print-backends libudev.s
 # mutagen       -> python2-mutagen
 # gnu-efi-libs  -> gnu-efi
 # libwebkit     -> webkitgtk2
+# libsystemd    -> systemd-libs
 # heirloom-mailx-> s-nail
 # mailx         -> s-nail
 # mailx-heirloom-> s-nail
 #
+# python2-gtkspell -> python2-gtkspellcheck
 # geoclue2      -> geoclue
 # go-pie        -> go
 # gcc-multilib  -> gcc (null)
@@ -44,4 +47,7 @@ provides=(tui dbus-core mono-stable msbuild-stable gtk3-print-backends libudev.s
 # python-distribute -> python-setuptools
 # python-sphinx-2 - old version of python-sphinx
 #
-# Not to provide: udev initramfs opengl-driver libgl smtp-forwarder cron
+# fsharp-mono-bin - wrong name -> fsharp-4.5-bin
+# monodevelop-stable - wrong name -> monodevelop-8.4
+#
+# Not to provide: udev initramfs opengl-driver libgl smtp-forwarder cron libjpeg
