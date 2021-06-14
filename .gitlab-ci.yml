@@ -10,7 +10,6 @@ before_script:
   - sudo pacman -Sy --noconfirm pacman-contrib
   - git config --global user.email "${GIT_USER_EMAIL:-$GITLAB_USER_EMAIL}"
   - git config --global user.name "${GIT_USER_NAME:-$GITLAB_USER_NAME}"
-  - git remote add api-origin https://oauth2:${RENOVATE_TOKEN}@gitlab.com/${CI_PROJECT_PATH}
 
 
 test:
@@ -27,4 +26,4 @@ update_hash:
     - updpkgsums
     - git add PKGBUILD
     - git commit -m "updates hash for AppImage"
-    - git push origin "${CI_DEFAULT_BRANCH}" -o ci.skip
+    - git push -o ci.skip "https://${GITLAB_USER_NAME}:${RENOVATE_TOKEN}@${CI_REPOSITORY_URL#*@}"
