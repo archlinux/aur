@@ -95,6 +95,19 @@ post_install() {
 	if [ -f /usr/share/icons/hicolor/48x48/apps/forticlient.png ]; then
 	    gtk-update-icon-cache -f /usr/share/icons/hicolor || true
 	fi
+	
+	# Setup forticlient protocol handler
+	if [ -f /usr/share/applications/forticlient-register.desktop ]; then
+	    update-desktop-database
+	fi
+}
+
+post_upgrade() {
+cat << EOF
+
+==> After upgrade, to restore your config, copy XML file from /etc/forticlient/.old/ to /etc/forticlient/config.xml
+
+EOF
 }
 
 pre_remove() {
@@ -109,11 +122,25 @@ pre_remove() {
 	    echo "terminate" > /tmp/.forticlient/fortitraylauncher || true
 	fi
 
+	# Remove ZTNA browser certificates
+	if [ -f /usr/bin/certutil ]; then
+	    find /home /root -regextype posix-extended \
+		-regex '(/home/[^/]*|/root)/(.pki/nssdb|.mozilla/firefox/[^/]*default(-release)?)' \
+		-maxdepth 5 -print0 2>/dev/null |
+	    while IFS= read -r -d $'\0' p; do
+		/usr/bin/certutil -F -n FCT_ZTNA    -d sql:"$p" 2>/dev/null || true;
+		/usr/bin/certutil -D -n FCT_ZTNA_CA -d sql:"$p" 2>/dev/null || true;
+	    done
+	fi
+
 	pkill -f /opt/forticlient
 	exit 0
 }
 
 post_remove() {
+	# Remove shared memory
+	rm -rf /var/run/fctc.s || true
+
 	# Remove fortitraylauncher fifo
 	rm -rf /tmp/.forticlient/fortitraylauncher || true
 }

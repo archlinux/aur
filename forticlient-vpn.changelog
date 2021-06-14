@@ -1,7 +1,12 @@
+## forticlient-vpn - 7.0.0.0018 - 2021-06-13
+* forticlient-vpn - 7.0.0.0018 - `release 1`
+  + libappindicator-gtk2 moved to `depends`
+  + added message to restore config after upgrade
+
 ## forticlient-vpn - 6.4.3.0959 - 2021-04-07
-* `release 1`
-  + add `depends`, `optdepends`, `install` and `changelog` to PKGBUILD
-  + included symbolyc launchers to /etc/xdg/autostart
-  + alter symbolyc binary to lowercase 
-  + add `forticlient-vpn.install` to tree
-  + add `forticlient-vpn.changelog` to tree
+* forticlient-vpn - 6.4.3.0959 - `release 1`
+  + added `depends`, `optdepends`, `install` and `changelog` to PKGBUILD
+  + symbolyc launchers included into /etc/xdg/autostart
+  + symbolyc binary altered to lowercase 
+  + added `forticlient-vpn.install` to tree
+  + added `forticlient-vpn.changelog` to tree

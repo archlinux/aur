@@ -1,25 +1,24 @@
 # Maintainer: Douglas Iuri Medeiros Cabral <douglasimc at outlook dot com>
 pkgname=forticlient-vpn
-pkgver=6.4.3.0959
+pkgver=7.0.0.0018
 pkgrel=1
 pkgdesc="Build through the official package of FortiClient VPN"
 arch=("x86_64")
-url="https://forticlient.com/"
+url="https://www.fortinet.com/support/product-downloads"
 license=('custom:fortinet')
-depends=('nss' 'gtk3' 'libxss' 'polkit' 'openssl' 'libnotify' 'org.freedesktop.secrets')
+depends=('nss' 'gtk3' 'libxss' 'polkit' 'openssl' 'libnotify' 'org.freedesktop.secrets' 'libappindicator-gtk2')
 optdepends=(
-	'libappindicator-gtk2: for show trayicon'
-	'mate-polkit: for polkit authentication'
-	'polkit-gnome: for polkit authentication'
-	'polkit-kde-agent: for polkit authentication'
-	'deepin-polkit-agent: for polkit authentication'
-	'pantheon-polkit-agent: for polkit authentication'
-	'lxqt-policykit: for polkit authentication'
+	'mate-polkit: for polkit authentication for the MATE'
+	'polkit-gnome: for polkit authentication for the GNOME'
+	'polkit-kde-agent: for polkit authentication for the KDE'
+	'deepin-polkit-agent: for polkit authentication for the Deepin'
+	'pantheon-polkit-agent: for polkit authentication for the Pantheon'
+	'lxqt-policykit: for polkit authentication for the LXQt'
 )
 provides=('fortivpn' 'FortiClient')
 install='forticlient-vpn.install'
-source=("https://fortinetweb.s3.amazonaws.com/forticlient/downloads/FortiClientFullVPNInstaller_${pkgver}_amd64.deb")
-sha256sums=('728a416b93ff4944b9c1d5974ac29eefad2d5fca33efd48a2967db23fd7450ea')
+source=("https://filestore.fortinet.com/forticlient/downloads/forticlient_vpn_${pkgver}_amd64.deb")
+sha256sums=('82e5817048a60ff95d2e88b4a95512f9f0035fa37240ce57580c203b5a8a79c9')
 
 
 package() {
