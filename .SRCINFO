@@ -1,7 +1,7 @@
 pkgbase = serialtool-git
 	pkgdesc = A practical Serial-Port/TCP/UDP debugging tool.
 	pkgver = v1.5.5.r0.ge7c9f72
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HoGC/SerialTool
 	install = serialtool-git.install
 	arch = any
@@ -22,6 +22,8 @@ pkgbase = serialtool-git
 	conflicts = serialtool
 	options = !strip
 	source = SerialTool::git+https://github.com/HoGC/SerialTool.git
+	source = serialtool-git.install
 	sha256sums = SKIP
+	sha256sums = 303f34246c0d341e1093d6e486e2cbfdbbb0d122d751de649f562ebac37777b4
 
 pkgname = serialtool-git

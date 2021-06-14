@@ -2,7 +2,7 @@
 _pkgname=SerialTool
 pkgname=serialtool-git
 pkgver=v1.5.5.r0.ge7c9f72
-pkgrel=1
+pkgrel=2
 pkgdesc="A practical Serial-Port/TCP/UDP debugging tool."
 arch=('any')
 url="https://github.com/HoGC/SerialTool"
@@ -43,10 +43,9 @@ package() {
 
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-git}" << EOF
 #!/bin/env bash
-# add lib path
-APP_PATH=/usr/share/serialtool
-cd $APP_PATH
-./SerialTool
+
+cd /usr/share/${pkgname%-git}
+./${_pkgname}
 EOF
     install -Dm0644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
     install -Dm0644 "${srcdir}/${_pkgname}/${_pkgname}/pkg/io.github.skiars.${pkgname%-git}.desktop" "${pkgdir}/usr/share/applications/io.github.skiars.${pkgname%-git}.desktop"
