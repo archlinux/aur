@@ -1,4 +1,5 @@
-# Maintainer : Frederic Bezies < fredbezies at gmail dot com>
+# Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Frederic Bezies < fredbezies at gmail dot com>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Christoph Zeiler <rabyte*gmail>
 # Contributor: arjan <arjan@archlinux.org>
@@ -6,16 +7,22 @@
 
 pkgname=penguin-command
 pkgver=1.6.11
-pkgrel=3
+pkgrel=4
 pkgdesc="A clone of the classic Missile Command game with improved graphics and sound"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="http://www.linux-games.com/penguin-command/"
 license=('GPL')
 depends=('sdl_image' 'sdl_mixer')
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
-        "${pkgname}.desktop")
+        "${pkgname}.desktop"
+				"config.guess.patch")
 md5sums=('4dcf0073d62f28e47af18a922a1badc3'
-         'f7602eba82c14ddbeb76f7da89c78044')
+         'f7602eba82c14ddbeb76f7da89c78044'
+         '1bcf77f66079f48f7f37a35a64ac79ab')
+
+prepare() {
+	patch "${srcdir}/${pkgname}-${pkgver}/config.guess" < "${startdir}/config.guess.patch"
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

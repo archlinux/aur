@@ -1,0 +1,12 @@
+--- config.guess.orig	2007-03-18 16:21:10.000000000 +0100
++++ config.guess	2021-06-14 13:19:29.536508424 +0200
+@@ -815,6 +815,9 @@
+     i*86:Minix:*:*)
+ 	echo ${UNAME_MACHINE}-pc-minix
+ 	exit 0 ;;
++    aarch64*:Linux:*:*)
++	echo ${UNAME_MACHINE}-unknown-linux-gnu
++	exit 0 ;;
+     arm*:Linux:*:*)
+ 	echo ${UNAME_MACHINE}-unknown-linux-gnu
+ 	exit 0 ;;
