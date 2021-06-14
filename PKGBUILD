@@ -1,7 +1,7 @@
 # Maintainer: Philip Johansson <philipphuket at gmail dotcom>
 pkgname=tuidoku-git
 _pkgname=tuidoku
-pkgver=r148.20d4dbe
+pkgver=r150.f6afa2c
 pkgrel=1
 pkgdesc="Play, solve and generate sudoku puzzles in the console"
 arch=('x86_64')
