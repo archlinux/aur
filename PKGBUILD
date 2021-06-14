@@ -2,15 +2,15 @@
 
 pkgname=bikexperience
 pkgver=5.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Software for outdoor training planning and gpx-track-management"
 arch=('any')
-url="http://www.bikexperience.de/"
+url="https://www.bikexperience.de/"
 license=('GPL')
 depends=('java-runtime>=7' 'unzip')
 optdepends=('rxtx: for serial connection with bike computers')
 source=(
-"http://www.bikexperience.de/download/bXp-${pkgver}-common-install.zip"
+"https://www.bikexperience.de/download/bXp-${pkgver}-common-install.zip"
 "bikeXperience.desktop"
 "bikeXperience")
 
