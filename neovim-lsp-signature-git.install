@@ -1,0 +1,8 @@
+post_install() {
+	echo ':: This plugin requires manual setup in an init.lua or init.vim.'
+	echo ':: Please consult upstream documentation for more details.'
+}
+
+post_remove() {
+	echo ':: Remember to remove any require statements made in your config that reference this plugin.'
+}
