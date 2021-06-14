@@ -1,7 +1,7 @@
-# Exclude makepkg generated data
-pkg/
-src/
+* 
 
-# Exclude downloaded/generated files
-exifcleaner-bin-*
-LICENSE
+!.gitignore
+!.shellcheckrc
+!.SRCINFO
+!Exifcleaner-bin.install
+!PKGBUILD
