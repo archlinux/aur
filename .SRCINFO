@@ -1,6 +1,6 @@
 pkgbase = tuidoku-git
 	pkgdesc = Play, solve and generate sudoku puzzles in the console
-	pkgver = r150.f6afa2c
+	pkgver = r155.de71a18
 	pkgrel = 1
 	url = https://github.com/flyingpeakock/tuidoku
 	arch = x86_64
