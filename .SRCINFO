@@ -1,6 +1,6 @@
 pkgbase = bcachefs-tools-git
 	pkgdesc = BCacheFS filesystem utilities
-	pkgver = 689
+	pkgver = 714
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs-tools
 	install = bcachefs-tools-git.install
@@ -41,4 +41,3 @@ pkgbase = bcachefs-tools-git
 	sha512sums = e75e0fc9576990d910acf5a3eafb1f83ab7d407bddcc210c9926b048ceb3ef018749654ca6a6ebdfab45a3e00031f6bb3537d2f3f19e3a7ec3be7c470d4ce7df
 
 pkgname = bcachefs-tools-git
-
