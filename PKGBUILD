@@ -2,17 +2,17 @@
 # Contributor: zoe <chp321 [at] gmail [dot] com>
 
 pkgname=nmapsi4
-pkgver=0.5.alpha1
-_pkgver=0.5-alpha1
+pkgver=0.5.alpha2
+_pkgver=0.5-alpha2
 pkgrel=1
 pkgdesc="Qt5-based Gui for nmap"
 arch=('i686' 'x86_64')
-url="http://www.nmapsi4.org/"
+url="https://github.com/nmapsi4/nmapsi4"
 license=('GPL2')
 depends=('nmap>=6.00' 'bind-tools')
-makedepends=('cmake>=2.8.2' 'qt5-webkit>=5.2')
-source=(http://sourceforge.net/projects/nmapsi/files/${pkgname}-0.5/${pkgname}-${_pkgver}.tar.xz)
-sha1sums=('b2e69e50c4deefb983cca10934d660cbe290e4fd')
+makedepends=('cmake>=2.8.2' 'qt5-webkit>=5.7')
+source=("https://iweb.dl.sourceforge.net/project/nmapsi/${pkgname}-0.5/${pkgname}-${_pkgver}.tar.xz")
+md5sums=('b098a4793d5b715b6650a19bbae9eeae')
 
 build() {
     cd "${srcdir}/${pkgname}-${_pkgver}/tools"
