@@ -3,7 +3,7 @@
 pkgname=python-biliass
 _pypiname=biliass
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='将 B 站 XML 弹幕转换为 ASS 弹幕'
 arch=('any')
 url='https://github.com/ShigureLab/biliass'
@@ -21,4 +21,5 @@ build() {
 package() {
     cd "$_pypiname-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    rm -rf "$pkgdir/*/site-packages/tests" || true
 }
