@@ -6,6 +6,7 @@ pkgbase = python-mkdocs-rss-plugin-git
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = git
 	depends = mkdocs
 	depends = python-jinja
 	depends = python-gitpython

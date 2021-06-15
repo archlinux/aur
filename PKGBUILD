@@ -9,7 +9,7 @@ license=("MIT")
 arch=("any")
 provides=("python-mkdocs-rss-plugin")
 depends=("mkdocs" "python-jinja" "python-gitpython")
-makedepends=("python-setuptools")
+makedepends=("python-setuptools" "git")
 source=("git+https://github.com/Guts/mkdocs-rss-plugin.git")
 sha256sums=("SKIP")
 
