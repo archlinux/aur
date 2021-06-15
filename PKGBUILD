@@ -1,8 +1,10 @@
-# Maintainer: Christoph J. Thompson <thompsonc at protonmail dot ch>
+# Maintainer: Deposite Pirate <dpirate at metalpunks dot info>
+#
+# Upstream: https://git.metalpunks.info/arch-ports
 
 _pkgname=my_basic
 pkgname=$_pkgname-git
-pkgver=r1035.g685d352
+pkgver=r1057.g789019f
 pkgrel=1
 pkgdesc="BASIC interpreter"
 arch=('i686' 'x86_64')
