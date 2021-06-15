@@ -24,10 +24,6 @@ noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
-prepare(){
-	mkdir "$pkgname-$pkgver"
-}
-
 get_latest_release() {
 	curl --silent "https://api.github.com/repos/gexclaude/aaregurucli/releases/latest" |
 	grep '"tag_name":' |
@@ -41,13 +37,13 @@ pkgver() {
 }
 
 build() {
-	cd "$pkgname-$pkgver"
-	go build ../..
+	cd aaregurucli
+	go build .
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd aaregurucli
 	install -Dm755 aaregurucli "${pkgdir}"/usr/bin/aaregurucli
-	install -Dm644 ../../LICENSE "${pkgdir}/usr/share/licenses/{pkgname}/LICENSE"
-	install -Dm644 ../../README.md "${pkgdir}/usr/share/doc/{pkgname}/README.md"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/{pkgname}/LICENSE"
+	install -Dm644 README.md "${pkgdir}/usr/share/doc/{pkgname}/README.md"
 }
