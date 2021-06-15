@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/HurricanePootis/qvtf"
 license=('GPL')
 depends=('libtxc_dxtn' 'libvtflib-git')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 source=("git+https://github.com/HurricanePootis/qvtf.git")
 md5sums=('SKIP')
 

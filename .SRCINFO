@@ -6,10 +6,10 @@ pkgbase = qvtf-git
 	arch = any
 	license = GPL
 	makedepends = cmake
+	makedepends = git
 	depends = libtxc_dxtn
 	depends = libvtflib-git
 	source = git+https://github.com/HurricanePootis/qvtf.git
 	md5sums = SKIP
 
 pkgname = qvtf-git
-
