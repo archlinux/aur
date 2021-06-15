@@ -5,15 +5,16 @@
 
 # Maintainer: WithTheBraid <the-one@with-the-braid.cr>
 pkgname=yubihibernate
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Hibernate (or whatever) your computer as soon as your Yubikey is unplugged."
 url="https://gitlab.com/TheOneWithTheBraid/yubihibernate/"
 arch=(any)
 license=('EUPL-1.2')
 depends=('usbutils')
+backup=('etc/yubihibernate/device.conf')
 source=("https://gitlab.com/TheOneWithTheBraid/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=("0624c1d567684f7d1f2cf3f5c23cc38bf36f160e55a016c645f00a7af70e0e63")
+sha256sums=("d961c921691a6a909ccbed9772451deb7685580c7e6b3f9a5563c56748e979b1")
 
 
 package() {
