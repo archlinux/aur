@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="shinobi-git"
-pkgver=r2020.f9a15a7
+pkgver=r2023.f260011
 pkgrel=1
 pkgdesc="The Open Source CCTV and NVR Solution"
 url="https://shinobi.video/"
