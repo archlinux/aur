@@ -20,7 +20,8 @@ optdepends=('dcraw: base curve script'
             'imagemagick: base curve and noise profile scripts'
             'ghostscript: noise profile script'
             'gnuplot: noise profile script')
-makedepends=(git cmake intltool desktop-file-utils llvm clang python-jsonschema libwebp)
+# Temporarily depend on gcc10: https://github.com/darktable-org/darktable/issues/9002
+makedepends=(git cmake intltool desktop-file-utils llvm clang python-jsonschema libwebp gcc10)
 conflicts=(darktable)
 provides=(darktable)
 install=darktable.install
@@ -69,7 +70,9 @@ build() {
         -DUSE_COLORD=ON \
         -DBUILD_CURVE_TOOLS=ON \
         -DBUILD_NOISE_TOOLS=ON \
-        -DRAWSPEED_ENABLE_LTO=ON
+        -DRAWSPEED_ENABLE_LTO=ON \
+        -DCMAKE_C_COMPILER=/usr/bin/gcc-10 \
+        -DCMAKE_CXX_COMPILER=/usr/bin/g++-10
   make -C build
 
 }
