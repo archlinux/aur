@@ -1,14 +1,14 @@
 # Maintainer: jzbor <zborof at posteo dot de>
 pkgname=moonwm
 _pkgname=MoonWM
-pkgver=7.0.4
-pkgrel=3
+pkgver=7.1.0
+pkgrel=1
 pkgdesc="My own outstandingly named Window Manager (a dynamic window manager)"
 arch=(x86_64 i686)
 url="https://github.com/jzbor/moonwm"
 license=('MIT')
 groups=()
-depends=(libx11 libxcb libxinerama slop xmenu xorg-xsetroot  arandr dmenu ffmpeg geoclue i3lock imagemagick libnotify light network-manager-applet notification-daemon otf-nerd-fonts-fira-code pamixer picom polkit-gnome skippy-xd wmname xdotool xfce4-power-manager xorg-setxkbmap xorg-xrandr xorg-xrdb xwallpaper)
+depends=(libx11 libxcb libxinerama slop xmenu xorg-xsetroot  arandr dmenu ffmpeg geoclue i3lock imagemagick libnotify light network-manager-applet notification-daemon otf-nerd-fonts-fira-code pamixer picom polkit-gnome sound-theme-freedesktop xfce4-power-manager xorg-setxkbmap xorg-xrandr xorg-xrdb xwallpaper)
 makedepends=()
 checkdepends=()
 optdepends=(\
@@ -25,7 +25,7 @@ backup=()
 options=()
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
 noextract=()
-md5sums=('eca04d0ee5e6cf3852742db72cff0fb2')
+sha256sums=('7536e6efe3b71b423f44f857eee5bc50dcce2e58a5403295f8f2a3a47c157842')
 validpgpkeys=()
 
 build() {
