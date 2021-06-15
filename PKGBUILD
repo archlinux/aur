@@ -4,7 +4,7 @@
 pkgname=python2-tmdb3
 _realname=tmdb3
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="TheMovieDB.org APIv3 interface"
 url="https://pypi.python.org/pypi/tmdb3"
 arch=('any')
@@ -14,7 +14,12 @@ makedepends=('python2-setuptools')
 source=("https://pypi.python.org/packages/source/t/tmdb3/$_realname-$pkgver.tar.gz")
 md5sums=('c712bca4934230a16a8b1a41dcb987cf')
 
+build() {
+  cd "$_realname-$pkgver"
+  python2 setup.py build
+}
+
 package(){
   cd "$_realname-$pkgver"
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
