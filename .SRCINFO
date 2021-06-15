@@ -1,7 +1,7 @@
 pkgbase = moonwm
 	pkgdesc = My own outstandingly named Window Manager (a dynamic window manager)
-	pkgver = 7.0.4
-	pkgrel = 3
+	pkgver = 7.1.0
+	pkgrel = 1
 	url = https://github.com/jzbor/moonwm
 	arch = x86_64
 	arch = i686
@@ -26,9 +26,7 @@ pkgbase = moonwm
 	depends = pamixer
 	depends = picom
 	depends = polkit-gnome
-	depends = skippy-xd
-	depends = wmname
-	depends = xdotool
+	depends = sound-theme-freedesktop
 	depends = xfce4-power-manager
 	depends = xorg-setxkbmap
 	depends = xorg-xrandr
@@ -42,8 +40,7 @@ pkgbase = moonwm
 	optdepends = xfce4-notifyd: a good default notification-daemon
 	provides = moonwm
 	conflicts = moonwm
-	source = https://github.com/jzbor/moonwm/archive/refs/tags/7.0.4.tar.gz
-	md5sums = eca04d0ee5e6cf3852742db72cff0fb2
+	source = https://github.com/jzbor/moonwm/archive/refs/tags/7.1.0.tar.gz
+	sha256sums = 7536e6efe3b71b423f44f857eee5bc50dcce2e58a5403295f8f2a3a47c157842
 
 pkgname = moonwm
-
