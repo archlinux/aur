@@ -7,6 +7,7 @@ pkgbase = python-mkdocs-jinja2-filters-plugin-git
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = git
 	depends = mkdocs
 	depends = python-jinja
 	provides = python-mkdocs-jinja2-filters-plugin
