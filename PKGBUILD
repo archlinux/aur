@@ -1,7 +1,7 @@
 # Maintainer: Wojciech Kępka (wojciech@wkepka.dev) 
 pkgname=helix
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="A text editor written in rust"
 url="https://helix-editor.com"
 arch=(x86_64)
