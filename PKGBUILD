@@ -45,6 +45,5 @@ package() {
 	# install -Dm644 -v example/config.json "${pkgdir}/usr/share/doc/${pkgname}/config.json"
 
 	# Creating the config directory & copying the example config
-	mkdir $HOME/.config/appnotex
 	install -Dm644 -v example/config.json "$HOME/.config/appnotex/config.json"
 }
