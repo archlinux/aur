@@ -8,6 +8,7 @@ pkgbase = python-fontools
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pyfnutils
+	depends = python-pyfaidx
 	source = https://github.com/vejnar/fontools/archive/refs/tags/v0.1.tar.gz
 	sha1sums = d6e79e169f71d76165c1a2746ceb0312880919d6
 
