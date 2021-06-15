@@ -1,6 +1,6 @@
 pkgname=cminpack
 pkgver=1.3.8
-pkgrel=2
+pkgrel=3
 pkgdesc="A C/C++ rewrite of the MINPACK software"
 arch=('x86_64')
 url='http://devernay.free.fr/hacks/cminpack/cminpack.html'
@@ -12,6 +12,9 @@ sha256sums=('3ea7257914ad55eabc43a997b323ba0dfee0a9b010d648b6d5b0c96425102d0e')
 
 prepare() {
   cd $srcdir/cminpack-${pkgver}
+  # mkl detection
+  curl -L https://github.com/devernay/cminpack/pull/51.patch | patch -p1
+  curl -L https://github.com/devernay/cminpack/pull/52.patch | patch -p1
 }
 
 build() {
