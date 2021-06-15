@@ -1,6 +1,6 @@
 pkgbase = glib2-patched-thumbnailer
 	pkgdesc = GLib2 patched with ahodesuka's thumbnailer patch.
-	pkgver = 2.68.2
+	pkgver = 2.68.3
 	pkgrel = 1
 	url = https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = glib2-patched-thumbnailer
 	depends = libmount.so
 	optdepends = python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report
 	optdepends = libelf: gresource inspection tool
-	provides = glib2=2.68.2
+	provides = glib2=2.68.3
 	provides = libgio-2.0.so
 	provides = libglib-2.0.so
 	provides = libgmodule-2.0.so
@@ -31,7 +31,7 @@ pkgbase = glib2-patched-thumbnailer
 	provides = libgthread-2.0.so
 	conflicts = glib2
 	options = !docs
-	source = git+https://gitlab.gnome.org/GNOME/glib.git?signed#tag=2.68.2
+	source = git+https://gitlab.gnome.org/GNOME/glib.git?signed#tag=2.68.3
 	source = noisy-glib-compile-schemas.diff
 	source = glib-thumbnailer.patch
 	source = glib-compile-schemas.hook
@@ -48,4 +48,3 @@ pkgbase = glib2-patched-thumbnailer
 	sha256sums = 92d08db5aa30bda276bc3d718e7ff9dd01dc40dcab45b359182dcc290054e24e
 
 pkgname = glib2-patched-thumbnailer
-
