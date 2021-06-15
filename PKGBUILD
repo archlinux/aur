@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=qvtf-git
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="QImageIO plugin to load Valve Texture Files in QT Programs (View VTF in QT Programs)"
 arch=('any')
 url="https://github.com/HurricanePootis/qvtf"
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 build() {
 	cd qvtf
 	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr"
-	make -j`nproc`
+	make
 }
 
 package() {
