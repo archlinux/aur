@@ -2,14 +2,14 @@
 
 pkgname=apmpkg
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Un administrador de paquetes universal para linux como modelo: PKGBUILD"
 arch=('x86_64')
 url="https://github.com/Kedap/apmpkg"
 license=('Apache')
-optdepends=('flatpak: for install dependencies
-  snap: for install dependencies
-  npm: for install dependencies')
+optdepends=('flatpak: for install dependencies'
+  'snap: for install dependencies'
+  'npm: for install dependencies')
 depends=('git' 'python-pip' 'python2-pip' 'wget' 'fakeroot' 'ruby-bundler' 'rsync')
 makedepends=('cargo')
 conflicts=('apmpkg-git-dev')
