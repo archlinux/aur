@@ -5,7 +5,6 @@ pkgbase = openvtuber
 	url = https://github.com/1996scarlet/OpenVtuber
 	arch = any
 	license = GPL3
-	makedepends = git
 	depends = npm
 	depends = python
 	depends = python-bidict
@@ -15,7 +14,7 @@ pkgbase = openvtuber
 	depends = python-tensorflow
 	depends = python-websocket-client
 	depends = yarn
-	source = openvtuber::git+https://github.com/1996scarlet/OpenVtuber.git#tag=v1.0-2019
+	source = https://github.com/1996scarlet/OpenVtuber/archive/refs/tags/v1.0-2019.tar.gz
 	sha256sums = SKIP
 
 pkgname = openvtuber
