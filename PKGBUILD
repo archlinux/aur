@@ -1,19 +1,14 @@
 # Maintainer: ml <>
 pkgname=kind
 pkgver=0.11.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Kubernetes IN Docker - local clusters for testing Kubernetes'
 arch=('x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
 url='https://kind.sigs.k8s.io/'
 license=('Apache')
-depends=('glibc')
+depends=('podman' 'podman-dnsname' 'dnsmasq' 'kubectl')
 makedepends=('go' 'git')
-optdepends=(
-  'docker: container engine'
-  'podman: container engine'
-
-  'kubectl: for managing Kubernetes clusters'
-)
+optdepends=('docker: container engine')
 install=kind.install
 source=("https://github.com/kubernetes-sigs/kind/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
         modules-load.conf
@@ -41,8 +36,8 @@ build() {
 }
 
 package() {
-  install -Dm755 modules-load.conf -t "$pkgdir/etc/modules-load.d"
-  install -Dm755 registry-aliases.conf -t "$pkgdir/etc/containers/registries.conf.d/kind.conf"
+  install -Dm644 modules-load.conf "$pkgdir/etc/modules-load.d/kind.conf"
+  install -Dm644 registry-aliases.conf "$pkgdir/etc/containers/registries.conf.d/kind.conf"
 
   cd "$pkgname-$pkgver"
   install -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
