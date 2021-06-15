@@ -9,7 +9,7 @@ license=("MIT")
 arch=("any")
 provides=("python-mkdocs-mermaid2-plugin")
 depends=("mkdocs" "python-jsbeautifier")
-makedepends=("python-setuptools")
+makedepends=("python-setuptools" "git")
 source=("git+$url")
 sha256sums=("SKIP")
 

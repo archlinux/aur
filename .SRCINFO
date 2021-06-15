@@ -6,6 +6,7 @@ pkgbase = python-mkdocs-mermaid2-plugin-git
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = git
 	depends = mkdocs
 	depends = python-jsbeautifier
 	provides = python-mkdocs-mermaid2-plugin
