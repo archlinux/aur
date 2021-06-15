@@ -1,7 +1,7 @@
 # Maintainer: ml <>
 pkgname=kind
 pkgver=0.11.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Kubernetes IN Docker - local clusters for testing Kubernetes'
 arch=('x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
 url='https://kind.sigs.k8s.io/'
@@ -16,9 +16,11 @@ optdepends=(
 )
 install=kind.install
 source=("https://github.com/kubernetes-sigs/kind/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
-        iptables.conf)
+        modules-load.conf
+        registry-aliases.conf)
 sha256sums=('95ce0e7b01c00be149e5bd777936cef3f79ba7f1f3e5872e7ed60595858a2491'
-            'fac7413afb24af54abd8cbe5e1424723ea6bccf0c26205670b7f3f4fe0f98f0d')
+            '87bc2d0263e7393c66d540375efa9b68f2e3fdd72d5b12688587e0c3d6b99d88'
+            '0a1fb437511953ca2416aeebe954fb68189dfb493ce41f99d021eb4f142ffb2e')
 
 build() {
   local _commit
@@ -39,7 +41,8 @@ build() {
 }
 
 package() {
-  install -Dm755 iptables.conf -t "$pkgdir/etc/modules-load.d"
+  install -Dm755 modules-load.conf -t "$pkgdir/etc/modules-load.d"
+  install -Dm755 registry-aliases.conf -t "$pkgdir/etc/containers/registries.conf.d/kind.conf"
 
   cd "$pkgname-$pkgver"
   install -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
