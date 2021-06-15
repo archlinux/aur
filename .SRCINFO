@@ -1,7 +1,7 @@
 pkgbase = qvtf-git
-	pkgdesc = QImageIO plugin to load Valve Texture Files in QT Programs (View VTF in QT Programs)
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgdesc = QImageIO plugin to load Valve Texture Files in QT 4 Programs (View VTF in QT 4 Programs)
+	pkgver = r21.bd8fd96
+	pkgrel = 1
 	url = https://github.com/HurricanePootis/qvtf
 	arch = any
 	license = GPL
