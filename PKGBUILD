@@ -2,7 +2,7 @@
 # Maintainer: Abir-Tx <abirtx@yandex.com>
 pkgname=appnotex
 pkgver=1.1.1
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc="Quick terminal based note keeper for Linux Apps"
 arch=(x86_64)
 url="https://github.com/Abir-Tx/AppNotEx.git"
