@@ -1,6 +1,6 @@
 pkgbase = azure-cli
 	pkgdesc = Command-line tools for Azure.
-	pkgver = 2.24.2
+	pkgver = 2.25.0
 	pkgrel = 1
 	url = https://github.com/Azure/azure-cli
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = azure-cli
 	depends = python
 	conflicts = python-azure-cli
 	options = !strip
-	source = install-2.24.2.py::https://raw.githubusercontent.com/Azure/azure-cli/azure-cli-2.24.2/scripts/curl_install_pypi/install.py
+	source = install-2.25.0.py::https://raw.githubusercontent.com/Azure/azure-cli/azure-cli-2.25.0/scripts/curl_install_pypi/install.py
 	source = install.response
 	source = az
 	sha256sums = c5107b96cfe881c46c8d8d9f401fcf931aab2b769a20fda58626b6e6e907219b
@@ -16,4 +16,3 @@ pkgbase = azure-cli
 	sha256sums = 990f70efec828c1e1f3f57748fc6e40f9705f2223dc96683e8e29d118daac116
 
 pkgname = azure-cli
-
