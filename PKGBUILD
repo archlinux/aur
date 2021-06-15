@@ -1,9 +1,9 @@
 # Maintainer: Philipp Hochmann <phil.hochmann[at]gmail[dot]com>
 pkgname=ccalc
-pkgver=1.6.2
+pkgver=1.6.5
 pkgrel=0
 epoch=
-pkgdesc="Scientific calculator in which you can define new functions and constants"
+pkgdesc="Calculator with expression simplification that lets you define new functions and constants "
 arch=('x86_64')
 url="https://github.com/PhilippHochmann/ccalc"
 license=('GPL3')
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('6fb638a5eb69d4b925572209423feb91')
+md5sums=('ebaeccf411be2bb887de2353259d31d0')
 validpgpkeys=()
 
 build() {
