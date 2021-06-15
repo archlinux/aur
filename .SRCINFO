@@ -10,6 +10,7 @@ pkgbase = lms-git
 	makedepends = cmake
 	makedepends = graphicsmagick
 	makedepends = pstreams
+	makedepends = git
 	depends = ffmpeg
 	depends = libconfig
 	depends = libtaginfo

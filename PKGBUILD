@@ -7,15 +7,8 @@ pkgdesc="Lightweight Music Server. Access your self-hosted music using a web int
 url="https://github.com/epoupon/lms"
 license=("GPL3")
 arch=("x86_64" "armv7h")
-depends=("ffmpeg"
-        "libconfig"
-        "libtaginfo"
-        "wt")
-makedepends=(
-        "boost"
-        "cmake"
-        "graphicsmagick"
-        "pstreams")
+depends=("ffmpeg" "libconfig" "libtaginfo" "wt")
+makedepends=("boost" "cmake" "graphicsmagick" "pstreams" "git")
 source=("$pkgname::git+$url.git"
         "lms.sysusers"
         "lms.service"
