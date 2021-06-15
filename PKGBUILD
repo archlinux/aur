@@ -2,8 +2,8 @@
 
 pkgname=skaffold-bin
 _pkgname="${pkgname%-bin}"
-pkgver=1.26.0
-pkgrel=2
+pkgver=1.26.1
+pkgrel=1
 pkgdesc='Command line tool that facilitates continuous development for Kubernetes applications'
 arch=('x86_64')
 _goos='linux'
@@ -17,7 +17,7 @@ conflicts=(
 	"$_pkgname-git"
 )
 source=("$pkgname-$pkgver::https://storage.googleapis.com/$_pkgname/releases/v$pkgver/$_pkgname-$_goos-$_goarch")
-b2sums=(73df8c2db2d0f4b950334ae1510065822b699a0a34069de2279b1089238d7c271a4b0e8e1372ddabd0bb4b29bf56c299f68ceed9b9a77b25520766bc6febcc48)
+b2sums=(a71745b5963bd3408dd6ef42e897fafd09b32ebc54909575bb5cc3ff6f8e61736efedc369c3b606613cebb1dc8254cf84f4cdf69f367e4593af814182d10f86d)
 
 package() {
 	install -Dm 755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
