@@ -4,7 +4,7 @@
 
 _pkgname=ncgopher
 pkgname=ncgopher-git
-pkgver=v0.1.5.r32.g16c9515
+pkgver=v0.2.0.r4.gd945744
 pkgrel=1
 pkgdesc="A gemini and gopher console client"
 arch=('i686' 'x86_64')
