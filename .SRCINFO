@@ -1,0 +1,24 @@
+pkgbase = ky
+	pkgdesc = Simple and Secure password manager written in rust
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/numToStr/ky
+	arch = x86_64
+	arch = aarch64
+	arch = armv7
+	license = MIT
+	depends = pacman<6
+	depends = sudo
+	depends = git
+	depends = tar
+	provides = ky
+	conflicts = ky
+	source_x86_64 = https://github.com/numToStr/ky/releases/download/v0.0.1/ky-x86_64-unknown-linux-gnu.tar.gz
+	md5sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/numToStr/ky/releases/download/v0.0.1/ky-aarch64-unknown-linux-gnu.tar.gz
+	md5sums_aarch64 = SKIP
+	source_armv7 = https://github.com/numToStr/ky/releases/download/v0.0.1/ky-armv7-unknown-linux-gnueabihf.tar.gz
+	md5sums_armv7 = SKIP
+
+pkgname = ky
+
