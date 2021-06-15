@@ -1,8 +1,8 @@
 ## TODO Looks like, AUR bug - need to rename to docker-registry-git: name busy, hidden+abandoned pkgbuild.
 pkgname=docker-registry2-git
 __gitroot=github.com/distribution/distribution
-pkgver=r2916.a01c71e2
-pkgrel=2
+pkgver=r2956.af8ac809
+pkgrel=1
 pkgdesc="Docker Registry 2.0 (aka docker-distibution) implementation to pack, ship, store, and deliver docker images (git version)."
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h' 'arm')
 url="https://${__gitroot}"
