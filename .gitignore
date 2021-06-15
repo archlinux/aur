@@ -1,0 +1,6 @@
+*.jar
+LICENSE
+NOTICE
+*.tar.zst
+src
+pkg
