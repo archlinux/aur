@@ -10,7 +10,7 @@ arch=("any")
 provides=("degiro-connector" "python-degiro-connector")
 # not adding "python-orjson" because it is not compatible with ARM architectures yet
 depends=("python-grpcio" "python-onetimepass" "python-pandas" "python-protobuf" "python-requests" "python-wrapt")
-makedepends=("python-setuptools")
+makedepends=("python-setuptools" "git")
 source=("git+$url")
 sha256sums=("SKIP")
 
