@@ -3,11 +3,11 @@
 
 _pkgname=thinc
 pkgname=python-${_pkgname}
-pkgver=8.0.3
+pkgver=8.0.4
 pkgrel=1
-pkgdesc="Practical Machine Learning for NLP"
-arch=(i686 x86_64 armv7h aarch64)
-url="https://github.com/explosion/thinc"
+pkgdesc='Practical Machine Learning for NLP'
+arch=(x86_64 aarch64)
+url='https://github.com/explosion/thinc'
 license=(MIT)
 depends=(
 	python-blis
@@ -28,7 +28,7 @@ depends=(
 )
 makedepends=(python-setuptools cython)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('c370a7a46d01b588d8d5f99d8d5e36b3cbac4512638356fa430f7f52bb3a8897')
+sha256sums=('32016a5be62a2c4b5f86954ae30f8da78bacaa5966ea3ce56886cf9d7c7dcbe6')
 
 build() {
 	cd "thinc-${pkgver}"
