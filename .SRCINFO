@@ -1,0 +1,14 @@
+pkgbase = python-pyfnutils
+	pkgdesc = Small utility functions for Python.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://gitlab.com/vejnar/pyfnutils
+	arch = any
+	license = MPLv2
+	makedepends = python-setuptools
+	depends = python
+	source = https://gitlab.com/vejnar/pyfnutils/-/archive/v1.1/pyfnutils-v1.1.tar.gz
+	sha1sums = 366875df4b91f89f4786810102560ed27c94ff27
+
+pkgname = python-pyfnutils
+
