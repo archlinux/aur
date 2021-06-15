@@ -1,0 +1,16 @@
+pkgbase = python-pydataverse
+	pkgdesc = a Python module for Dataverse.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/gdcc/pyDataverse
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests>=2.12.0
+	depends = python-jsonschema>=3.2.0
+	depends = curl
+	source = https://github.com/gdcc/pyDataverse/archive/refs/tags/0.3.1.tar.gz
+	sha256sums = fcdbac27a91debb831c4a6ed3bd7fd77653db4bd562ca9d350d3a825a2048679
+
+pkgname = python-pydataverse
