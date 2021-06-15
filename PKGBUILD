@@ -10,7 +10,7 @@ arch=("any")
 provides=("mstream")
 conflicts=("nodejs-mstream")
 depends=("nodejs")
-makedepends=("npm")
+makedepends=("npm" "git")
 #source=("git+https://github.com/IrosTheBeggar/mStream.git"
 # using this branch because it supports relative URLs (pull request pending)
 source=("git+https://github.com/d10n/mStream.git#branch=d10n-master"
