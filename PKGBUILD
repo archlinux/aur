@@ -9,7 +9,7 @@ pkgdesc='Supplement Library for Introductory Programming Courses'
 arch=(any)
 url='https://github.com/ivanpribela/svetovid-lib'
 license=('APACHE')
-depends=('java-runtime>=7')
+depends=('java-runtime')
 source=("https://github.com/ivanpribela/${_name}/releases/download/v${_ghver}/svetovid-lib.jar"
         "https://github.com/ivanpribela/${_name}/blob/v${_ghver}/LICENSE"
 				"https://github.com/ivanpribela/${_name}/blob/v${_ghver}/NOTICE")
