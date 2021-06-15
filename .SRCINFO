@@ -1,22 +1,13 @@
 pkgbase = supertabbar-git
 	pkgdesc = SuperTabbar 超级标签栏
-	pkgver = dafb5af
+	pkgver = 6c8dc30
 	pkgrel = 1
 	url = https://gitee.com/Limexb/SuperTabbar
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = qt5-virtualkeyboard
 	makedepends = qconf
-	makedepends = qt5-tools
-	makedepends = dtkwidget
-	makedepends = libx11
-	makedepends = dtkgui
-	depends = qt5-virtualkeyboard
-	depends = qconf
-	depends = qt5-tools
 	depends = dtkwidget
-	depends = libx11
 	depends = dtkgui
 	provides = supertabbar-git
 	conflicts = supertabbar-git
@@ -26,4 +17,3 @@ pkgbase = supertabbar-git
 	sha256sums = SKIP
 
 pkgname = supertabbar-git
-

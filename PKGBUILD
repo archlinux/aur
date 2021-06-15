@@ -2,8 +2,7 @@
 
 _pkgname=SuperTabbar
 pkgname=supertabbar-git
-_softname=supertabbar
-pkgver=dafb5af
+pkgver=6c8dc30
 pkgrel=1
 pkgdesc="SuperTabbar 超级标签栏"
 arch=('any')
@@ -12,8 +11,8 @@ license=('GPL3')
 provides=(${pkgname})
 conflicts=(${pkgname} 'supertabber')
 #replaces=(${pkgname})
-depends=('qt5-virtualkeyboard' 'qconf' 'qt5-tools' 'dtkwidget' 'libx11' 'dtkgui')
-makedepends=('git' 'qt5-virtualkeyboard' 'qconf' 'qt5-tools' 'dtkwidget' 'libx11' 'dtkgui')
+depends=('dtkwidget' 'dtkgui')
+makedepends=('git' 'qconf')
 backup=()
 options=('!strip')
 #install=${pkgname}.install
@@ -23,16 +22,18 @@ sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${_pkgname}"
     git describe --always | sed 's|-|.|g'
+#     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    qmake && make
+    qmake ./${_pkgname}.pro -spec linux-g++ CONFIG+=qtquickcompiler -o build/
+    make -C ./build
 }
 
 package() {
-    install -Dm755 "${srcdir}/${_pkgname}/${_softname}" "${pkgdir}/usr/bin/${_softname}"
-    install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_softname}/LICENSE"
-    install -Dm644 "${srcdir}/${_pkgname}/debian/top.yzzi.${_softname}.desktop" "${pkgdir}/usr/share/applications/top.yzzi.${_softname}.desktop"
-    install -Dm644 "${srcdir}/${_pkgname}/debian/top.yzzi.${_softname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/top.yzzi.${_softname}.svg"
+    install -Dm0755 "${srcdir}/${_pkgname}/build/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-git}"
+    install -Dm0644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+    install -Dm0644 "${srcdir}/${_pkgname}/debian/top.yzzi.${pkgname%-git}.desktop" "${pkgdir}/usr/share/applications/top.yzzi.${pkgname%-git}.desktop"
+    install -Dm0644 "${srcdir}/${_pkgname}/debian/top.yzzi.${pkgname%-git}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/top.yzzi.${pkgname%-git}.svg"
 }
