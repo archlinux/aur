@@ -1,6 +1,6 @@
 pkgbase = ghidra-git
 	pkgdesc = Software reverse engineering framework (git)
-	pkgver = 10.0.BETA.r25.52d07a8e6
+	pkgver = 10.0.BETA.r132.722256e1c
 	pkgrel = 1
 	url = https://www.nsa.gov/ghidra
 	arch = x86_64
@@ -14,6 +14,8 @@ pkgbase = ghidra-git
 	depends = polkit
 	provides = ghidra
 	conflicts = ghidra
+	conflicts = ghidra-dev
+	conflicts = ghidra-desktop
 	source = git+https://github.com/NationalSecurityAgency/ghidra
 	source = ghidra.desktop
 	source = ghidra-root.desktop

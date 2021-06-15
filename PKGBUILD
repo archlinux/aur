@@ -4,14 +4,18 @@
 # Contributor: Danny Bautista <pyrolagus@gmail.com>
 
 pkgname=ghidra-git
-pkgver=10.0.BETA.r25.52d07a8e6
-pkgrel=1
+pkgver=10.0.BETA.r132.722256e1c
+pkgrel=2
 pkgdesc='Software reverse engineering framework (git)'
 arch=('x86_64')
 url='https://www.nsa.gov/ghidra'
 license=(Apache)
 provides=('ghidra')
-conflicts=('ghidra')
+conflicts=(
+  'ghidra'
+  'ghidra-dev'
+  'ghidra-desktop'
+)
 depends=(
   'bash'
   'java-environment>=11'
@@ -35,7 +39,7 @@ sha512sums=(
   'c717029cf31860e27b5563c3ff4b2740d4b1997bc50481214e24c38f12d9acbfa9ca2cbfe594d43071fbf8420ac8f022119c2c23ddef0c717d96860e22eb35c3'
   '0a35f58b1820ac65ce37d09b0a6904ab7018c773c73ecd29bcfda37cbd27f34af868585084b5cd408b1066b7956df043cb1573a1e3d890e173be737d2de51401'
 )
-_pkgname="${pkgname/-*/}"
+_pkgname="${pkgname/-git/}"
 _stop='\e[m'
 _color="\e[33m"
 _bold='\e[1m'
@@ -50,6 +54,13 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
+
+  # Check Java version (thanks @ignapk)
+  JDK_VERSION=$(java -version 2>&1)
+  if [[ ! $JDK_VERSION =~ 11\.0 ]]; then
+    echo "FAILURE: You seem to have jdk11 installed correctly but your system defaults to another java version. To enable jdk11 please type: sudo archlinux-java set java-11-openjdk"
+    exit 1
+  fi
 
   # DEPRECATED PATCH - GP-793 corrected missing IP info - https://github.com/NationalSecurityAgency/ghidra/commit/70675fce99a4c6e6e650729e5dda6ccbbbbbd40d
 #  echo -e "${_prefix}[PATCH] - GP-793 corrected missing IP info (https://github.com/NationalSecurityAgency/ghidra/commit/70675fce99a4c6e6e650729e5dda6ccbbbbbd40d)"
