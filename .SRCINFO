@@ -1,9 +1,16 @@
 pkgbase = bearssl
 	pkgdesc = Implementation of the SSL/TLS protocol (RFC 5246) written in C
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bearssl.org
+	arch = i486
+	arch = i686
+	arch = pentium4
 	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = MIT
 	depends = glibc
 	source = https://bearssl.org/bearssl-0.6.tar.gz
