@@ -6,6 +6,7 @@ pkgbase = python-mkdocs-material-pymdownx-extras-git
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = git
 	depends = mkdocs-material
 	provides = mkdocs-pymdownx-material-extras
 	provides = python-mkdocs-material-pymdownx-extras
