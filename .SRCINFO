@@ -5,7 +5,7 @@ pkgbase = svetovid-lib-bin
 	url = https://github.com/ivanpribela/svetovid-lib
 	arch = any
 	license = APACHE
-	depends = java-runtime
+	depends = java-runtime>=7
 	source = https://github.com/ivanpribela/svetovid-lib/releases/download/v0.5/svetovid-lib.jar
 	source = https://github.com/ivanpribela/svetovid-lib/blob/v0.5/LICENSE
 	source = https://github.com/ivanpribela/svetovid-lib/blob/v0.5/NOTICE
