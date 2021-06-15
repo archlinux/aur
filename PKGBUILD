@@ -9,7 +9,7 @@ license=("MIT")
 arch=("any")
 provides=("python-mkdocs-macros-plugin")
 depends=("mkdocs")
-makedepends=("python-setuptools")
+makedepends=("python-setuptools" "git")
 source=("git+$url")
 sha256sums=("SKIP")
 

@@ -6,6 +6,7 @@ pkgbase = python-mkdocs-macros-plugin-git
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = git
 	depends = mkdocs
 	provides = python-mkdocs-macros-plugin
 	source = git+https://github.com/fralau/mkdocs_macros_plugin
