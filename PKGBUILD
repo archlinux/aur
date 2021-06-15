@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-no-extras
-pkgver=91.0.4472.77
+pkgver=91.0.4472.106
 pkgrel=1
 _pkgname=chromium
 _launcher_ver=7
@@ -30,20 +30,18 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
         fix-crash-in-ThemeService.patch
         unbundle-use-char16_t-as-UCHAR_TYPE.patch
-        add-clang-nomerge-attribute-to-CheckError.patch
+        extend-enable-accelerated-video-decode-flag.patch
         sql-make-VirtualCursor-standard-layout-type.patch
         chromium-glibc-2.33.patch
-        unexpire-accelerated-video-decode-flag.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('45d5a43ef798d20313c78fa8a075be0c22055e39c8481eb53eabda81df901b31'
+sha256sums=('545e38cd7dce0008c16ab5736ac9764655149e65d353630adac601da040dbebb'
             '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
             '171525009003a9ed1182cfcb6f407d7169d9a731a474304e263029376719f55a'
             '3cfe46e181cb9d337c454b5b5adbf5297052f29cd617cdee4380eeb1943825d8'
             '59a59a60a08b335fe8647fdf0f9d2288d236ebf2cc9626396d0c4d032fd2b25d'
-            '50133dd196d288ad538bb536aa51dccd6cb4aacfd9a60160f77e8fb16034b460'
+            '66db9132d6f5e06aa26e5de0924f814224a76a9bdf4b61afce161fb1d7643b22'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
             '2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b'
-            '82a85105fc33b92a84dabb7ed6725ccbb56f1075c11f9f3f43bb8ff724f88847'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -98,18 +96,13 @@ prepare() {
   # runtime -- this allows signing into Chromium without baked-in values
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
-  # https://crbug.com/1207478
-  patch -Np0 -i ../unexpire-accelerated-video-decode-flag.patch
-
   # https://crbug.com/1164975
   patch -Np1 -i ../chromium-glibc-2.33.patch
 
   # Upstream fixes
   patch -Np1 -i ../fix-crash-in-ThemeService.patch
   patch -Np1 -i ../unbundle-use-char16_t-as-UCHAR_TYPE.patch
-
-  # Revert addition of [[clang::nomerge]] attribute; not supported by clang 11
-  patch -Rp1 -i ../add-clang-nomerge-attribute-to-CheckError.patch
+  patch -Np1 -i ../extend-enable-accelerated-video-decode-flag.patch
 
   # https://chromium-review.googlesource.com/c/chromium/src/+/2862724
   patch -Np1 -i ../sql-make-VirtualCursor-standard-layout-type.patch
@@ -143,9 +136,8 @@ prepare() {
 }
 
 build() {
-  # optionally hard code makepkg defaults/modify to fit your specific hardware
-  #unset CFLAGS CXXFLAGS
-  #CFLAGS="-march=haswell -O2 -pipe -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=2,-D_GLIBCXX_ASSERTIONS -Wformat -Werror=format-security -fstack-clash-protection -fcf-protection"
+  # optionally modify to fit your specific hardware
+  #CFLAGS=" -march=haswell -mtune=haswell"
   #CXXFLAGS="${CFLAGS}"
 
   make -C chromium-launcher-$_launcher_ver
@@ -162,7 +154,6 @@ build() {
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
     'clang_use_chrome_plugins=false'
     'is_official_build=true' # implies is_cfi=true on x86_64
-    'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
     'treat_warnings_as_errors=false'
     'fieldtrial_testing_like_official_build=true'
     'ffmpeg_branding="Chrome"'
