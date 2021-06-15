@@ -1,0 +1,77 @@
+diff --git a/GNUmakefile b/GNUmakefile
+index 8282ff4..a4c8ae7 100644
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -47,21 +47,21 @@ endif
+ all : $(TARGET)
+ 
+ $(TARGET) : $(OBJS)
+-	g++ -o $@ $(OBJS) $(LIBS)
++	$(TOOLCHAIN)g++ -o $@ $(OBJS) $(LIBS)
+ 
+ .c.o :
+-	gcc -c $(CFLAGS) -I. $< -o $@
++	$(TOOLCHAIN)gcc -c $(CFLAGS) -I. $< -o $@
+ 
+ .cpp.o :
+-	g++ -c $(CFLAGS) -I. $< -o $@
++	$(TOOLCHAIN)g++ -c $(CFLAGS) -I. $< -o $@
+ 
+ src/res.o : src/res.rc src/lang/*.rc src/lang/*.dlg
+-	windres -DNOWINRES -I. -i src/res.rc -o src/res.o
++	$(TOOLCHAIN)windres -DNOWINRES -I. -i src/res.rc -o src/res.o
+ 
+ clean :
+ 	rm -f $(OBJS) $(TARGET)
+ 
+ depend:
+-	gcc -E -MM -w src/*.c > Makefile.depends
++	$(TOOLCHAIN)gcc -E -MM -w src/*.c > Makefile.depends
+ 
+ -include Makefile.depends
+diff --git a/src/res.rc b/src/res.rc
+index 3edbb41..46cc506 100644
+--- a/src/res.rc
++++ b/src/res.rc
+@@ -137,9 +137,9 @@ CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "winfile.exe.manifest"
+ 
+ //Language includes
+ #pragma code_page(65001) //UTF-8
+-#include "lang\res_en-US.rc"
+-#include "lang\res_zh-CN.rc"
+-#include "lang\res_ja-JP.rc"
+-#include "lang\res_pl-PL.rc"
+-#include "lang\res_he-IL.rc"
+-#include "lang\res_de-DE.rc"
++#include "lang/res_en-US.rc"
++#include "lang/res_zh-CN.rc"
++#include "lang/res_ja-JP.rc"
++#include "lang/res_pl-PL.rc"
++#include "lang/res_he-IL.rc"
++#include "lang/res_de-DE.rc"
+diff --git a/src/suggest.c b/src/suggest.c
+index 8469bef..b90f286 100644
+--- a/src/suggest.c
++++ b/src/suggest.c
+@@ -16,7 +16,7 @@
+ //
+ #define SUGGEST(id,err,flags,str) err, flags, id+IDS_SUGGESTBEGIN,
+ DWORD adwSuggest[][3] = {
+-#include "lang\suggest_en-US.db"
++#include "lang/suggest_en-US.db"
+    0,0,0
+ };
+ #undef SUGGEST
+diff --git a/src/winfile.h b/src/winfile.h
+index 782f80b..4b30045 100644
+--- a/src/winfile.h
++++ b/src/winfile.h
+@@ -15,7 +15,7 @@
+ #define NTFS
+ 
+ #include <windows.h>
+-#include <windowsX.h>
++#include <windowsx.h>
+ #include <setjmp.h>
+ #include <string.h>
+ #include <memory.h>

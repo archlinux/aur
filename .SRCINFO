@@ -1,0 +1,20 @@
+pkgbase = winfile
+	pkgdesc = Original Windows File Manager (winfile) with enhancements
+	pkgver = 10.1.4.0
+	pkgrel = 1
+	url = https://github.com/microsoft/winfile
+	arch = x86_64
+	license = custom
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-headers
+	depends = mingw-w64-crt
+	source = src::git+https://github.com/microsoft/winfile.git
+	source = mingw_compile.patch
+	source = https://patch-diff.githubusercontent.com/raw/microsoft/winfile/pull/262.patch
+	source = winfile
+	sha256sums = SKIP
+	sha256sums = 920e92250a36d96e232d8ca1e556531c166e5cb9137e618396ff1790eb86eced
+	sha256sums = 6ff49930b6e473e66e506444643edd99bd0f46278d091df22aeb9f95f7f6eacc
+	sha256sums = e323e64c3cc2cfc20af3d6aa1d5794ab09c2a21643d45ad7ca9c6fa111c5110e
+
+pkgname = winfile
