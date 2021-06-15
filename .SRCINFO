@@ -1,6 +1,6 @@
 pkgbase = castor-git
 	pkgdesc = A gemini, gopher and finger graphical client
-	pkgver = 0.8.13.r0.gcb7d09b
+	pkgver = 0.8.15.r16.g9db62db
 	pkgrel = 1
 	url = https://git.sr.ht/~julienxx/castor
 	arch = i686
@@ -22,4 +22,3 @@ pkgbase = castor-git
 	sha256sums = 5ac7e5460d00176db71ec0d7972af1adee58c57dd9d7dff29ddecbadb07f4ee9
 
 pkgname = castor-git
-

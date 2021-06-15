@@ -4,7 +4,7 @@
 
 _pkgname=castor
 pkgname=castor-git
-pkgver=0.8.13.r0.gcb7d09b
+pkgver=0.8.15.r16.g9db62db
 pkgrel=1
 pkgdesc="A gemini, gopher and finger graphical client"
 arch=('i686' 'x86_64')
