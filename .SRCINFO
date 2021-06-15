@@ -6,6 +6,7 @@ pkgbase = plymouth-theme-logo-spinner-git
 	arch = any
 	license = unknown
 	makedepends = git
+	depends = plymouth
 	source = git+https://github.com/f1rstlady/plymouth-theme-logo-spinner.git
 	sha256sums = SKIP
 

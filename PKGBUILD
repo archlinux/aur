@@ -7,6 +7,7 @@ pkgdesc="A simple plymouth theme with a logo and a spinner"
 arch=('any')
 url="https://github.com/f1rstlady/plymouth-theme-logo-spinner"
 license=('unknown')
+depends=('plymouth')
 makedepends=('git')
 source=("git+https://github.com/f1rstlady/plymouth-theme-logo-spinner.git")
 sha256sums=('SKIP')
