@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-rosbridge-server
 	pkgdesc = ROS - A WebSocket interface to rosbridge.
-	pkgver = 0.11.9
+	pkgver = 0.11.13
 	pkgrel = 1
 	url = https://wiki.ros.org/rosbridge_server
 	arch = any
@@ -16,8 +16,7 @@ pkgbase = ros-noetic-rosbridge-server
 	depends = python-autobahn
 	depends = python-tornado
 	depends = python-twisted
-	source = ros-noetic-rosbridge-server-0.11.9.tar.gz::https://github.com/RobotWebTools/rosbridge_suite/archive/0.11.9.tar.gz
-	sha256sums = 69b723a4ca43da1ea3f0c82ada120ff277d0a1cd736420681945ee82fbe13bd7
+	source = ros-noetic-rosbridge-server-0.11.13.tar.gz::https://github.com/RobotWebTools/rosbridge_suite/archive/0.11.13.tar.gz
+	sha256sums = e4989b48efce2f101aca6761102b0f9618ecc31a590039b641b35a08fc91d6db
 
 pkgname = ros-noetic-rosbridge-server
-
