@@ -2,7 +2,7 @@
 
 pkgbase='pokete-git'
 pkgname='pokete-git'
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="A small terminal based game in the style of a very popular and old game from gamefreak."
 arch=(any)
@@ -17,6 +17,11 @@ md5sums=('SKIP')
 pkgver() {
   cd "$pkgbase"
   git describe --tags --always | sed -r 's|release-||g;s/([^-]*-g)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "${srcdir}/$pkgbase"
+  ./gen-wiki.py
 }
 
 package() {
