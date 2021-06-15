@@ -1,6 +1,6 @@
 pkgbase = matray
 	pkgdesc = A Manjaro Linux announcements notification app
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/moson-mo/matray
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = matray
 	depends = glib2
 	depends = json-glib
 	conflicts = mntray
-	source = https://github.com/moson-mo/matray/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 6806b28132c7996cfa72cf97845e928e18c79244df9e8918ffd158aee466d75a
+	source = https://github.com/moson-mo/matray/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = c534f21ce6baf497b5773d9af281a572701e0239989ffb6223cc19392f94dc1d
 
 pkgname = matray
