@@ -1,10 +1,11 @@
 pkgbase = java-bytecode-editor
 	pkgdesc = Java Bytecode Editor
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zzy-ac/Java_Bytecode_Editor
 	arch = x86_64
 	license = GPL
+	depends = jdk8-openjdk
 	source = https://raw.githubusercontent.com/zzy-ac/Java_Bytecode_Editor/main/Java_Bytecode_Editor.tar.gz
 	md5sums = 0107c87f5fbec0ea393e0b521c2205fe
 
