@@ -11,6 +11,7 @@ pkgbase = betterww-git
 	depends = pyside2
 	depends = python-pyaml
 	depends = python-pillow
+	depends = python-pyqt5
 	source = git+https://github.com/WideBoner/betterww.git
 	source = betterww-launcher
 	md5sums = SKIP
