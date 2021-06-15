@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=qvtf-git
 pkgver=r21.bd8fd96
-pkgrel=2
+pkgrel=3
 pkgdesc="QImageIO plugin to load Valve Texture Files in QT 5 Programs (View VTF in QT 5 Programs)"
 arch=('any')
 url="https://github.com/HurricanePootis/qvtf"
@@ -26,4 +26,6 @@ build() {
 package() {
 	cd "$srcdir/qvtf"
 	make install DESTDIR="$pkgdir"
+	cd "$pkgdir/usr/lib"
+	mv qt5 qt
 }
