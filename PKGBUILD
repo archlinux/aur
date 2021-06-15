@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-aiofile
 _name=${pkgname#python-}
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Real asynchronous file operations with asyncio support"
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('python-caio')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('cc9fb394e8c0ad1d2b9014a9b4bdaa3535f098c5881bd3ba220350b198c12727')
+sha256sums=('7680bc9ef71cede0c73591d7870a227e6417845da322006e542762165329d1e0')
 
 build() {
 	cd "$_name-$pkgver"
