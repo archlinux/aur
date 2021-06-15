@@ -1,13 +1,13 @@
 # Maintainer: skydrome <skydrome at@at proton mail dot com>
 # Contributors: Thynix
 
-_fred=build01489
+_fred=build01491
 _wot=next
 
 _plugins=('WebOfTrust')
 
 pkgname=freenet
-pkgver=0.7.5.1490
+pkgver=0.7.5.1491
 pkgrel=1
 pkgdesc="A peer-to-peer platform for censorship-resistant communication and publishing"
 url="https://freenetproject.org"
@@ -24,14 +24,14 @@ validpgpkeys=('B30C3D91069F81ECFEFED0B1B41A6047FD6C57F9')
 source=("git+https://github.com/freenet/fred.git?signed#tag=$_fred"
         "git+https://github.com/xor-freenet/plugin-WebOfTrust.git#branch=$_wot"
         "git+https://github.com/freenet/seedrefs.git"
-        "IpToCountry.dat::http://software77.net/geo-ip/?DL=4"
+        #"IpToCountry.dat::http://software77.net/geo-ip/?DL=4"
         'run.sh' 'wrapper.config' freenet.{ini.dist,service,tmpfiles})
 
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        '1eb5ed6d92a3ab8a825dd715fd2418c253ef5a431943dc6f0bdf6c70252a2f945ea89d6c0b412cdb7b7898262add0d1dd36050c1be2386a263153608ff7ff791'
+        #'1eb5ed6d92a3ab8a825dd715fd2418c253ef5a431943dc6f0bdf6c70252a2f945ea89d6c0b412cdb7b7898262add0d1dd36050c1be2386a263153608ff7ff791'
         '4a1f5d25e2ee0dd80cc3c86ecdbedeb738b63eda7495675bbba9beefa9b1176b51ac059c66050ae2c927a93cf169b5715b3e9f7c382c0e70b0a0dbb33494c8aa'
         'eb37bafeca92f454a5e8940667927bdfd1ef880cf33175335054ae4fdb5b4a04d4e977f7d29425d24574e14a6c799c90bb27c8697797ef87a028d0a3a3b039ef'
         '540c911bbccea18ed2b5ad22864040b83674833746536e869ec8491974f0265239c7b4c12fb1e43f27126320adc9206d81249c5e0c9e7ce6ef2aeb46b8f9cf5b'
@@ -47,7 +47,7 @@ prepare() {
     cd fred
 
     # Java 15 support
-    git pull -r -v https://github.com/skydrome/fred.git gradle-7.0-aur -q
+    git pull -r -v https://github.com/skydrome/fred.git gradle-7.1-aur -q
 
     rm -f seednodes.fref
     for node in "$srcdir"/seedrefs/0* ;do
@@ -93,7 +93,7 @@ package() {
 
     # install freenet
     install -m755  "$srcdir"/run.sh                           "$pkgdir"/usr/bin/freenet
-    install -m640  "$srcdir"/{wrapper.config,IpToCountry.dat} "$pkgdir"/opt/freenet
+    install -m640  "$srcdir"/wrapper.config                   "$pkgdir"/opt/freenet
     install -m640  "$srcdir"/freenet.ini.dist                 "$pkgdir"/opt/freenet/conf
     install -m640  "$srcdir"/fred/seednodes.fref              "$pkgdir"/opt/freenet/noderef
     install -m640  "$srcdir"/fred/build/output/*.jar          "$pkgdir"/opt/freenet/lib

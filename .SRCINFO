@@ -1,6 +1,6 @@
 pkgbase = freenet
 	pkgdesc = A peer-to-peer platform for censorship-resistant communication and publishing
-	pkgver = 0.7.5.1490
+	pkgver = 0.7.5.1491
 	pkgrel = 1
 	url = https://freenetproject.org
 	install = freenet.install
@@ -16,10 +16,9 @@ pkgbase = freenet
 	depends = nss
 	depends = java-service-wrapper
 	backup = opt/freenet/wrapper.config
-	source = git+https://github.com/freenet/fred.git?signed#tag=build01489
+	source = git+https://github.com/freenet/fred.git?signed#tag=build01491
 	source = git+https://github.com/xor-freenet/plugin-WebOfTrust.git#branch=next
 	source = git+https://github.com/freenet/seedrefs.git
-	source = IpToCountry.dat::http://software77.net/geo-ip/?DL=4
 	source = run.sh
 	source = wrapper.config
 	source = freenet.ini.dist
@@ -30,11 +29,9 @@ pkgbase = freenet
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = 1eb5ed6d92a3ab8a825dd715fd2418c253ef5a431943dc6f0bdf6c70252a2f945ea89d6c0b412cdb7b7898262add0d1dd36050c1be2386a263153608ff7ff791
 	b2sums = 4a1f5d25e2ee0dd80cc3c86ecdbedeb738b63eda7495675bbba9beefa9b1176b51ac059c66050ae2c927a93cf169b5715b3e9f7c382c0e70b0a0dbb33494c8aa
 	b2sums = eb37bafeca92f454a5e8940667927bdfd1ef880cf33175335054ae4fdb5b4a04d4e977f7d29425d24574e14a6c799c90bb27c8697797ef87a028d0a3a3b039ef
 	b2sums = 540c911bbccea18ed2b5ad22864040b83674833746536e869ec8491974f0265239c7b4c12fb1e43f27126320adc9206d81249c5e0c9e7ce6ef2aeb46b8f9cf5b
 	b2sums = 54828750ac0283e4328635bb61d0edd695391d433d85a6612b2288520a58b40b312d5759b38487e093e150aedee3659e6bed3827d936171d2d252aea2cbced1d
 
 pkgname = freenet
-
