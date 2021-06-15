@@ -2,11 +2,12 @@
 
 pkgname=refind-theme-simple-git
 pkgver=r1.407eb6a
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple theme for the rEFInd boot manager"
 arch=('any')
 url="https://github.com/f1rstlady/refind-theme-simple"
 license=('unknown')
+depends=('refind')
 makedepends=('git')
 source=("git+https://github.com/f1rstlady/refind-theme-simple.git")
 sha256sums=('SKIP')
