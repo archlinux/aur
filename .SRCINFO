@@ -6,6 +6,7 @@ pkgbase = python-django-bootstrap-breadcrumbs-git
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python-django
 	provides = python-django-bootstrap-breadcrumbs
 	source = git+https://github.com/prymitive/bootstrap-breadcrumbs/
