@@ -1,7 +1,7 @@
 pkgbase = moonwm
 	pkgdesc = My own outstandingly named Window Manager (a dynamic window manager)
 	pkgver = 7.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jzbor/moonwm
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,6 @@ pkgbase = moonwm
 	depends = libxinerama
 	depends = slop
 	depends = xmenu
-	depends = xorg-xsetroot
 	depends = arandr
 	depends = dmenu
 	depends = ffmpeg
