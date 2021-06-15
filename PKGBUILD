@@ -1,7 +1,7 @@
 #Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=betterww-git
 pkgver=1.4.r16.g640a2a4
-pkgrel=3
+pkgrel=4
 pkgdesc="Modding tool for Wind Waker For Gamecube"
 arch=('any')
 url="https://github.com/WideBoner/betterww"
@@ -14,7 +14,7 @@ source=("git+https://github.com/WideBoner/betterww.git"
 md5sums=('SKIP'
          'da327ef65dbc01172d1c62812ce117d1')
 pkgver() {  
-  cd betterww
+  cd "$srcdir/betterww"
   git describe --long --tags | sed -r "s/([^-]*-g)/r\1/;s/-/./g" 
 } 
 
