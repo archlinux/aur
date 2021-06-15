@@ -7,9 +7,9 @@ pkgbase = libzbc
 	arch = x86_64
 	license = GPL3
 	makedepends = autoconf-archive
-	depends = gtk3
+	depends = glibc
+	optdepends = gtk3
 	source = libzbc-5.9.0.tar.gz::https://github.com/westerndigitalcorporation/libzbc/archive/refs/tags/v5.9.0.tar.gz
 	md5sums = ce22f170e9fd414685d3293114207e62
 
 pkgname = libzbc
-
