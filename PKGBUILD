@@ -9,7 +9,7 @@ license=("MIT")
 arch=("any")
 provides=("python-mkdocs-with-pdf")
 depends=("mkdocs" "python-libsass" "python-weasyprint")
-makedepends=("python-setuptools")
+makedepends=("python-setuptools" "git")
 source=("git+$url")
 sha256sums=("SKIP")
 

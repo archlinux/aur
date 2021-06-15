@@ -6,6 +6,7 @@ pkgbase = python-mkdocs-with-pdf-git
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = git
 	depends = mkdocs
 	depends = python-libsass
 	depends = python-weasyprint
