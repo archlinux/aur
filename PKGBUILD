@@ -1,7 +1,11 @@
 # Maintainer: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
+# Contributor: FabioLolix <fabio.loli@disroot.org>
+# Contributor: cobaltspace <cobaltspace@protonmail.com>
 
+_pkgname=OpenVtuber
 pkgname=openvtuber
-pkgver=1.0
+_pkgver=1.0-2019
+pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc='Real-time face and gaze analyzation via deep neural networks.'
 arch=('any')
@@ -12,11 +16,11 @@ depends=('npm' 'python' 'python-bidict' 'python-engineio' 'python-opencv'
          'yarn')
 optdepends=()
 makedepends=()
-source=("$pkgname::git+$url.git#tag=v$pkgver-2019")
+source=("$url/archive/refs/tags/v$_pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd "${pkgname}"
+  cd "$srcdir/$_pkgname-$_pkgver"
   cd NodeServer
   yarn
   cd ..
@@ -24,7 +28,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname}"
+  cd "$srcdir/$_pkgname-$_pkgver"
 
   mkdir -p $pkgdir/lib/openvtuber
   mkdir -p $pkgdir/share/openvtuber
