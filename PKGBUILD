@@ -4,7 +4,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=5.3.1
-pkgrel=2
+pkgrel=3
 _wwwpkgname=AdminLTE
 _wwwpkgver=5.5
 _now=`date +%N`
@@ -54,7 +54,7 @@ sha256sums=('19c856584f180b2ed5b3d0500cd3567f00e37fa9c493282bc119be8276cdddd9'
             '88e3c78bbeaf5dc1100df65202ded8207877954a96bdf1b0ab3d9990d9fa759f'
             'ff507ce58c9492cce57e947696e1b814469fc2d856a1e303c6e68f98c62ebf46'
             '6d9dd12ab22a5708f382e7c3033fe15ef6bc7789928b1e2e044580c3e8d87ef6'
-            'fa8d91d07b75f21076e5334c46d323cbc3dcf9a33fe9b8b4e032dbc5c979a6d2'
+            '2dd900fa9ddae977e987321fc86b8c90b66e30bc31337b512e0ebda51145e744'
             '69a71c29dbe42ef0cbd3655fd7ce5cf04e8a77e27a5b2c3a1fcce0b544223309')
 
 prepare() {
