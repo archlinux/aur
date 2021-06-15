@@ -1,15 +1,14 @@
 pkgbase = python-bson
 	pkgdesc = BSON codec for Python
-	pkgver = 0.5.8
+	pkgver = 0.5.10
 	pkgrel = 1
 	url = http://github.com/py-bson/bson
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/b/bson/bson-0.5.8.tar.gz
-	sha256sums = 13fb1e5486a611374a06177663c2ab878f0c192c8fc8765a63dfef86859006c9
+	source = https://files.pythonhosted.org/packages/source/b/bson/bson-0.5.10.tar.gz
+	sha256sums = d6511b2ab051139a9123c184de1a04227262173ad593429d21e443d6462d6590
 
 pkgname = python-bson
 	depends = python
-

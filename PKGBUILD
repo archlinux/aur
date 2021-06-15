@@ -1,10 +1,11 @@
-# Mantainer: MCMic <come@chilliet.eu>
+# Maintainer: acxz
+# Contributor: MCMic <come@chilliet.eu>
 # Generated with pip2pkgbuild
 
 pkgbase='python-bson'
 pkgname=('python-bson')
 _module='bson'
-pkgver='0.5.8'
+pkgver='0.5.10'
 pkgrel=1
 pkgdesc="BSON codec for Python"
 url="http://github.com/py-bson/bson"
@@ -13,7 +14,7 @@ makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('13fb1e5486a611374a06177663c2ab878f0c192c8fc8765a63dfef86859006c9')
+sha256sums=('d6511b2ab051139a9123c184de1a04227262173ad593429d21e443d6462d6590')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
