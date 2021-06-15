@@ -1,6 +1,7 @@
 post_install() {
     mkdir -p /etc/slurm-llnl/plugstack.conf.d
     ln -s /usr/share/pyxis/pyxis.conf /etc/slurm-llnl/plugstack.conf.d/pyxis.conf
+    systemctl restart slurmd
 }
 
 post_upgrade() {
@@ -8,4 +9,5 @@ post_upgrade() {
   	then
   		post_install
   	fi
+    systemctl restart slurmd
 }
