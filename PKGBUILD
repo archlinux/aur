@@ -8,7 +8,7 @@ url="https://www.officelife.io/"
 license=("BSD3")
 arch=("any")
 depends=("php>=8.0" "php-intl>=8.0")
-makedepends=("composer" "yarn")
+makedepends=("composer" "yarn" "git")
 optdepends=("mariadb: database"
             "mysql: database"
             "postgresql: database"
