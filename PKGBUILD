@@ -3,7 +3,7 @@
 pkgbase=python-pysimplegui
 pkgname=('python-pysimplegui')
 _module='PySimpleGUI'
-pkgver=4.43.0
+pkgver=4.44.0
 pkgrel=1
 pkgdesc='Super-simple to create custom GUI'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python' 'tk')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest-runner')
 source=(${pkgbase}-${pkgver}.tar.gz::https://pypi.python.org/packages/source/P/PySimpleGUI/PySimpleGUI-${pkgver}.tar.gz)
-sha256sums=('eecce0e88d42798d2aa6839c9d4266070b772182bc33908a67500e3789cd42ed')
+sha256sums=('94aba97bec313d9041c8ff0ccbcf584ecfb187834d5ed3dc9b9e8264ef8451fe')
 
 build() {
   cd "$srcdir"/${_module}-$pkgver
