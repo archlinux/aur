@@ -6,13 +6,13 @@
 
 pkgname=allusion-appimage
 pkgver=1.0.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Allusion is a tool built for artists, aimed to help you organize your Visual Library – A single place that contains your entire collection of references, inspiration and any other kinds of images."
 arch=('x86_64')
 url='https://allusion-app.github.io'
 license=('GNU')
 makedepends=('curl' 'sed')
-depends=('glibc' 'zlib')
+depends=('glibc' 'zlib' 'fuse2')
 options=(!strip)
 gittag=$(curl -s https://github.com/allusion-app/Allusion/releases | sed -n -e "s/^.*releases\/download\/v${pkgver}\(.*\)\/.*.AppImage\".*/\1/p" | head -n1)
 gitver="${pkgver}${gittag}"
