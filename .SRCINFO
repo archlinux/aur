@@ -1,0 +1,12 @@
+pkgbase = plymouth-theme-logo-spinner-git
+	pkgdesc = A simple plymouth theme with a logo and a spinner
+	pkgver = r1.bc5daf8
+	pkgrel = 1
+	url = https://github.com/f1rstlady/plymouth-theme-logo-spinner
+	arch = any
+	license = unknown
+	makedepends = git
+	source = git+https://github.com/f1rstlady/plymouth-theme-logo-spinner.git
+	sha256sums = SKIP
+
+pkgname = plymouth-theme-logo-spinner-git
