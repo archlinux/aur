@@ -7,6 +7,7 @@ pkgbase = shinobi-git
 	arch = any
 	license = custom
 	makedepends = npm
+	makedepends = git
 	depends = ffmpeg
 	depends = mariadb
 	depends = nodejs

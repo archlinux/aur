@@ -9,7 +9,7 @@ license=("custom") # not free for commercial use
 arch=("any")
 provides=("shinobi")
 depends=("ffmpeg" "mariadb" "nodejs")
-makedepends=("npm")
+makedepends=("npm" "git")
 source=("git+https://gitlab.com/Shinobi-Systems/Shinobi.git"
         "shinobi-camera.service"
         "shinobi-cron.service"
