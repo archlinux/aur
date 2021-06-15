@@ -1,6 +1,6 @@
 pkgbase = librime-git
 	pkgdesc = Rime input method engine (mainline GIT version)
-	pkgver = 1.7.3.r3.g0ee64d45
+	pkgver = 1.7.3.r6.ga1203fce
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/rime/librime
@@ -33,4 +33,3 @@ pkgbase = librime-git
 	sha512sums = 6670a2b089479cf4fb23012e61675065d483ab6123f6dcad136b226dbe361a16bc8f33caece2e139c8d89161a73a2126afe2bed3759996153de6e4888a95a430
 
 pkgname = librime-git
-

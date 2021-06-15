@@ -4,7 +4,7 @@
 
 _pkgname=librime
 pkgname=$_pkgname-git
-pkgver=1.7.3.r3.g0ee64d45
+pkgver=1.7.3.r6.ga1203fce
 _octagramcommit=f92e083052b9983ee3cbddcda5ed60bb3c068e24
 _luacommit=d45a41af2f9d731e3c1516a191cc3160e3cb8377
 _charcodecommit=b569184772b12965e3ebe1dfd431026951fed81c
