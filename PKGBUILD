@@ -1,7 +1,7 @@
 # Maintainer: Plaunarome <plaunarome@protonmail.com>
 
 pkgname=firefox-tosdr
-pkgver=4.0.8
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Get informed instantly about websites' terms and privacy policies"
 arch=("any")
@@ -10,7 +10,7 @@ license=("AGPL3")
 groups=("firefox-addons")
 makedepends=("jq" "zip")
 source=("https://github.com/tosdr/browser-extensions/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('b6c80658718d5fa7f2449d2ced994f5511be249571f830e8f0f3f29d0f93b914a64d5dbe375670f840d38859af4625dc8d0ea6ee3177e2e75b01055f2350bfa4')
+sha512sums=('d551e5be8b64fb42ea916cc64ec10b7318a83a74ce6ff332c53d99a5883db7cb4bbddefff1e4eb4820ce1d43deb5e0ec0386916e726848e040271bf2811cd631')
 
 build() {
 	rm --force --recursive build
