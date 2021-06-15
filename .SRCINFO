@@ -8,6 +8,7 @@ pkgbase = winfile
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-headers
 	depends = mingw-w64-crt
+	depends = wine
 	source = src::git+https://github.com/microsoft/winfile.git
 	source = mingw_compile.patch
 	source = https://patch-diff.githubusercontent.com/raw/microsoft/winfile/pull/262.patch
