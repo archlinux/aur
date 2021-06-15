@@ -1,8 +1,8 @@
 # Maintainer: termuellinator
 
 pkgname=proton-community-updater
-pkgver=1.0
-pkgrel=3
+pkgver=1.1
+pkgrel=1
 pkgdesc="Script to download and manage Community Proton builds"
 arch=('any')
 depends=('bash' 'coreutils' 'curl' 'xz')
@@ -15,7 +15,7 @@ source=(
     'proton-community-updater.desktop'
 )
 sha256sums=(
-    '8d923a42e097c2d7769664a1a0f5a3f8a70719d1badc6993926ebcba06111a48'
+    '4bcc9661e2ad27ddbe640e50c717e0e8564a86f5bc6e15c3247b131207e297de'
     '07fcec5276fd0ad227fdedf5ea8dab3b054beb8a094ccda60b2c80ed4ea8411d'
 )
 
