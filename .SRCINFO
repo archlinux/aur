@@ -15,5 +15,4 @@ pkgbase = python-pydata-sphinx-theme
 pkgname = python-pydata-sphinx-theme
 	depends = python-sphinx
 	depends = python-beautifulsoup4
-	depends = python-docutils<0.17
-
+	depends = python-docutils
