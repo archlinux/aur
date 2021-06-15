@@ -30,7 +30,7 @@ pkgver() {
 build() {
 	cd "${pkgname}"
 	local files=(./*.js interfaces-xml/*.xml)
-	gnome-extensions pack --force --podir=locale  ${files[@]/#/--extra-source=}
+	gnome-extensions pack --force --podir=locale  "${files[@]/#/--extra-source=}"
 }
 
 package() {
