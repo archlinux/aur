@@ -1,22 +1,22 @@
-# Maintainer: Michael Riegert <michael at eowyn net>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Michael Riegert <michael at eowyn net>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Daniel M. Capella <polyzen@archlinux.info>
 # Contributor: Morten Linderud <morten@linderud.pw>
 
 pkgname=python-pychromecast
-_name=${pkgname#python-}
-pkgver=9.1.2
+_name=PyChromecast
+pkgver=9.2.0
 pkgrel=1
 pkgdesc='Library for Python 3 to communicate with the Google Chromecast'
 arch=('any')
 url="https://github.com/home-assistant-libs/pychromecast"
 license=('MIT')
-depends=('python' 'python-protobuf' 'python-requests' 'python-zeroconf' 'python-six' 'python-setuptools' 'python-casttube')
+depends=('python-protobuf' 'python-zeroconf' 'python-casttube')
 makedepends=('python-setuptools')
-source=("${pkgname}"-"${pkgver}".tar.gz::${url}/archive/$pkgver.tar.gz)
-sha512sums=('061322c3e4b1e485de88335fa71d74a5d9de406b7950b644bacc4adc94b872ed8502fb3ab5aa4783396583bf0c76ab9b1c3deaf4c7dbe6d82a0df6a3fe6996a6')
-conflicts=('python-pychromecast6')
+source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('6d34593575cf77565df47af4c75dd47c6a65831ec18a8c10b5367b2f1c172f0a')
 
 build() {
   cd "$_name-$pkgver"
@@ -24,9 +24,9 @@ build() {
 }
 
 package() {
-  cd "$_name-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
+	cd "$_name-$pkgver"
+	export PYTHONHASHSEED=0
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
-# vim:set ts=2 sw=2 et:
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+}
