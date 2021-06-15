@@ -7,6 +7,7 @@ pkgdesc="A keyboard sound software for Linux "
 license=("MIT")
 arch=("x86_64")
 url="https://github.com/fgheng/keysound"
+makedepends=("git")
 depends=("libpulse")
 optdepends=("sdl2: SDL2 backend")
 source=("git+$url")
