@@ -1,7 +1,7 @@
 pkgbase = bearssl
 	pkgdesc = Implementation of the SSL/TLS protocol (RFC 5246) written in C
 	pkgver = 0.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://bearssl.org
 	arch = i486
 	arch = i686
