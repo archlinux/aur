@@ -6,6 +6,7 @@ pkgbase = monica-git
 	arch = any
 	license = AGPL3
 	makedepends = composer
+	makedepends = git
 	depends = php>=7.2
 	optdepends = mariadb: database
 	optdepends = apache: web server

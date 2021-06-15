@@ -8,7 +8,7 @@ url="https://www.monicahq.com/"
 license=("AGPL3")
 arch=("any")
 depends=("php>=7.2")
-makedepends=("composer")
+makedepends=("composer" "git")
 optdepends=("mariadb: database"
             "apache: web server"
             "nginx: web server"
