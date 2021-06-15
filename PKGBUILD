@@ -15,7 +15,7 @@ arch=("any")
 provides=("isso")
 conflicts=("isso")
 depends=("python-bleach" "python-cffi" "python-flask-caching" "python-gevent" "python-html5lib" "python-itsdangerous" "python-jinja" "python-misaka" "python-six" "python-werkzeug" "sqlite")
-makedepends=("python-libsass" "python-setuptools" "python-sphinx")
+makedepends=("python-libsass" "python-setuptools" "python-sphinx" "git")
 source=("isso.service"
         "isso.sysusers"
         "isso.tmpfiles"

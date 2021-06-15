@@ -8,6 +8,7 @@ pkgbase = isso-git
 	makedepends = python-libsass
 	makedepends = python-setuptools
 	makedepends = python-sphinx
+	makedepends = git
 	depends = python-bleach
 	depends = python-cffi
 	depends = python-flask-caching
