@@ -1,12 +1,13 @@
 #Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=betterww-git
 pkgver=1.4.r16.g640a2a4
-pkgrel=2
+pkgrel=3
 pkgdesc="Modding tool for Wind Waker For Gamecube"
 arch=('any')
 url="https://github.com/WideBoner/betterww"
 license=('MIT')
 depends=("python" "pyside2" "python-pyaml" "python-pillow")
+makedepends=("git")
 install=.INSTALL
 source=("git+https://github.com/WideBoner/betterww.git"
 	"betterww-launcher")
