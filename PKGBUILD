@@ -9,7 +9,7 @@ license=("BSD3")
 arch=("any")
 provides=("python-django-recaptcha")
 depends=("python-django")
-makedepends=("python-setuptools")
+makedepends=("python-setuptools" "git")
 source=("git+$url")
 sha256sums=("SKIP")
 

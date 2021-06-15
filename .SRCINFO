@@ -6,6 +6,7 @@ pkgbase = python-django-recaptcha-git
 	arch = any
 	license = BSD3
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python-django
 	provides = python-django-recaptcha
 	source = git+https://github.com/praekelt/django-recaptcha
