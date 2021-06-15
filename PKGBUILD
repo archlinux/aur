@@ -19,7 +19,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Loara/StringSuite/archi
 noextract=()
 sha256sums=('09aa1400029627d76fe2ae34c0e696756f9cca5dbda0029369d1978581ab25bf')
 
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
+#  Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
 # a description of each element in the source array.
 
 build() {
