@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("src::git+https://github.com/microsoft/winfile.git"
+source=("srcgit::git+https://github.com/microsoft/winfile.git"
 "mingw_compile.patch"
 "https://patch-diff.githubusercontent.com/raw/microsoft/winfile/pull/262.patch"
 "winfile")
@@ -31,7 +31,7 @@ sha256sums=('SKIP'
 validpgpkeys=()
 
 prepare() {
-	cd "$srcdir/src"
+	cd "$srcdir/srcgit"
 	git checkout v$pkgver
 	# Fix some issues compiling on *nix (e.g. directory separator, toolchain location, header names, etc)
 	git apply ../mingw_compile.patch
@@ -40,12 +40,12 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/src"
+	cd "$srcdir/srcgit"
 	TOOLCHAIN=x86_64-w64-mingw32- make
 }
 
 package() {
-	cd "$srcdir/src"
+	cd "$srcdir/srcgit"
 	mkdir -p "$pkgdir"/usr/share/$pkgname
 	mkdir -p "$pkgdir"/usr/share/licenses/$pkgname
 	mkdir -p "$pkgdir"/usr/bin

@@ -2,3 +2,4 @@ src/
 pkg/
 *.zst
 262.patch
+srcgit/
