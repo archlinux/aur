@@ -9,7 +9,7 @@ license=("BSD")
 arch=("any")
 provides=("python-secure-cookie")
 depends=("python")
-makedepends=("python-setuptools")
+makedepends=("python-setuptools" "git")
 source=("git+$url")
 sha256sums=("SKIP")
 

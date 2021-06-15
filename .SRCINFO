@@ -6,6 +6,7 @@ pkgbase = python-secure-cookie-git
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python
 	provides = python-secure-cookie
 	source = git+https://github.com/pallets/secure-cookie
