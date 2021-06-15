@@ -19,7 +19,7 @@ md5sums=(
 prepare() {
   NODEVERSION=$(node --version)
   if [[ $NODEVERSION == "v16"* ]]; then
-    printf "\n\n\033[0;31mMJML-APP is not compatible with NodeJS v16.  Please install an older version of NodeJS or use NVM to use set an older version of NodeJS prior to making this package.\n\n"
+    printf "\n\n\033[0;31mMJML-APP is not compatible with NodeJS v16.  Please install an older version of NodeJS or use NVM to set an older version of NodeJS prior to making this package.\n\n"
     exit 1
   fi
 }
