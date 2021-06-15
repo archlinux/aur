@@ -1,7 +1,7 @@
 # Maintainer: Pranav Jerry <libreinator at disroot dot org>
 _basename=naxalnet
 pkgname="$_basename-git"
-pkgver=r29.55a5444
+pkgver=r30.eb51df8
 pkgrel=1
 pkgdesc="Python script to create a batman-adv mesh network"
 arch=("any")
