@@ -4,7 +4,7 @@ pkgdesc="ROS - This ROS package wraps documentation tools like doxygen, sphinx, 
 url='http://wiki.ros.org/rosdoc_lite'
 
 pkgname='ros-melodic-rosdoc-lite'
-pkgver='0.2.9'
+pkgver='0.2.10'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -26,7 +26,7 @@ depends=(${ros_depends[@]}
 
 _dir="rosdoc_lite-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-infrastructure/rosdoc_lite/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('e53a232dac14c7737a963d8043f080a91b97b122697e15c27e441475ca573e8b')
+sha256sums=('91f81eb47dd835fe5e69e5584a5adf2bc0b7d85831bb5c777ef72fd85e07adfa')
 
 
 build() {
