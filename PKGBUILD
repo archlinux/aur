@@ -1,7 +1,7 @@
 # Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=r339.580ad45
+pkgver=r367.409b1f2
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c"
 arch=("any")
@@ -9,6 +9,7 @@ url="https://github.com/LinusDierheimer/fastfetch"
 license=("MIT")
 depends=()
 makedepends=(
+  "git"
   "cmake"
   "pciutils"
   "libxrandr" # Depends on libX11, which headers are also needed
@@ -26,7 +27,13 @@ optdepends=(
   "xfconf: XFWM theme + xfce-terminal font"
   "sqlite: rpm package count"
 )
-provides=("flashfetch=${pkgver}")
+_provides_and_conflicts=(
+  "fastfetch"
+  "fastfetch-garuda"
+  "flashfetch"
+)
+provides=("${_provides_and_conflicts[@]}")
+conflicts=("${_provides_and_conflicts[@]}")
 source=("git+https://github.com/LinusDierheimer/fastfetch.git")
 sha256sums=("SKIP")
 

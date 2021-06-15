@@ -1,10 +1,11 @@
 pkgbase = fastfetch-git
 	pkgdesc = Like neofetch, but much faster because written in c
-	pkgver = r339.580ad45
+	pkgver = r367.409b1f2
 	pkgrel = 1
 	url = https://github.com/LinusDierheimer/fastfetch
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = cmake
 	makedepends = pciutils
 	makedepends = libxrandr
@@ -19,7 +20,12 @@ pkgbase = fastfetch-git
 	optdepends = dconf: Output for values that are only stored in DConf
 	optdepends = xfconf: XFWM theme + xfce-terminal font
 	optdepends = sqlite: rpm package count
-	provides = flashfetch=r339.580ad45
+	provides = fastfetch
+	provides = fastfetch-garuda
+	provides = flashfetch
+	conflicts = fastfetch
+	conflicts = fastfetch-garuda
+	conflicts = flashfetch
 	source = git+https://github.com/LinusDierheimer/fastfetch.git
 	sha256sums = SKIP
 
