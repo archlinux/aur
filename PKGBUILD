@@ -24,7 +24,7 @@ build() {
 package() {
   cd ${pkgname}-${pkgver}
   make DESTDIR="$pkgdir" install
-  install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
