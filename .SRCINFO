@@ -1,7 +1,7 @@
 pkgbase = python-mkdocs
 	pkgdesc = Project documentation with Markdown
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mkdocs.org
 	arch = any
 	license = BSD
@@ -17,6 +17,7 @@ pkgbase = python-mkdocs
 	depends = python-mergedeep
 	depends = python-mdx-gh-links
 	depends = python-packaging
+	depends = python-pyyaml-env-tag
 	depends = python-yaml
 	depends = python-watchdog
 	optdepends = python-lunr: to prebuild search index
