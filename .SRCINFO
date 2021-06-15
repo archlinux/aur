@@ -1,7 +1,7 @@
 pkgbase = firefox-session-manager
 	pkgdesc = Manager for your Firefox sessions
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/Arisa_Snowbell/firefox-session-manager
 	arch = i686
 	arch = x86_64

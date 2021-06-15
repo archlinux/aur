@@ -1,7 +1,7 @@
 # Maintainer: Arisa Snowbell (goddess@chizuru.space)
 pkgname=firefox-session-manager
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 makedepends=('cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Manager for your Firefox sessions"
@@ -19,5 +19,5 @@ build() {
 package() {
     cd "$srcdir/$pkgname-v$pkgver"
 
-    install -Dm755 target/release/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 target/release/${pkgname} "${pkgdir}/usr/bin/fsm"
 }
