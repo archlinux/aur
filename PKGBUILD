@@ -11,8 +11,8 @@ pkgver() {
     "$(git tag -l | sed -r 's/v?([0-9\.]+)(-.+)?/\1/g' | sort -Vr | sed 1q)" \
     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=6.16.r490.bd8cce9
-pkgrel=2
+pkgver=6.17.r504.78375eb
+pkgrel=1
 
 pkgdesc='POP3 mail retriever with reliable Maildir and command delivery; Python 3 port'
 arch=('any')
