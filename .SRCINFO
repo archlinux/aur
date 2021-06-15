@@ -1,6 +1,6 @@
 pkgbase = python-panflute-git
 	pkgdesc = A Pythonic alternative to John MacFarlane’s pandocfilters
-	pkgver = 2.1.1.r1.gfa17590
+	pkgver = 2.1.1.r5.g8e9e98c
 	pkgrel = 1
 	url = https://github.com/sergiocorreia/panflute
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python-panflute-git
 	depends = python
 	depends = python-click
 	depends = python-yaml
-	provides = python-panflute=2.1.1.r1.gfa17590
-	provides = pandoc-panflute=2.1.1.r1.gfa17590
+	provides = python-panflute=2.1.1.r5.g8e9e98c
+	provides = pandoc-panflute=2.1.1.r5.g8e9e98c
 	conflicts = python-panflute
 	conflicts = pandoc-panflute
 	replaces = python-panflute-git

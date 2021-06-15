@@ -3,7 +3,7 @@
 
 _py_name=panflute
 pkgname=python-$_py_name-git
-pkgver=2.1.1.r1.gfa17590
+pkgver=2.1.1.r5.g8e9e98c
 pkgrel=1
 pkgdesc='A Pythonic alternative to John MacFarlane’s pandocfilters'
 url="https://github.com/sergiocorreia/$_py_name"
@@ -24,11 +24,6 @@ pkgver() {
 	cd "$pkgname"
 	git describe --long --always --tags --abbrev=7 HEAD |
 		sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-	cd "$pkgname"
-	sed -i -e '/click/s/<8/<9/' setup.py
 }
 
 build() {
