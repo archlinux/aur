@@ -1,0 +1,16 @@
+pkgbase = firefox-session-manager
+	pkgdesc = Manager for your Firefox sessions
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/Arisa_Snowbell/firefox-session-manager
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	makedepends = cargo
+	source = https://gitlab.com/Arisa_Snowbell/firefox-session-manager/-/archive/v0.1.0/firefox-session-manager-v0.1.0.tar.gz
+	sha256sums = bba688cc8949ee52515d43deb2d62fc73eadaedcb669260ace29e37b7d2f2bcf
+
+pkgname = firefox-session-manager
+
