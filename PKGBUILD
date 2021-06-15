@@ -12,7 +12,7 @@ depends=('npm' 'python' 'python-bidict' 'python-engineio' 'python-opencv'
          'python-socketio' 'python-tensorflow' 'python-websocket-client'
          'yarn')
 optdepends=()
-makedepends=()
+makedepends=('git')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
@@ -29,15 +29,15 @@ build() {
 
 package() {
 
-  mkdir -p $pkgdir/lib/openvtuber
-  mkdir -p $pkgdir/share/openvtuber
-  cp -r $pkgname/* $pkgdir/lib/openvtuber/
+  mkdir -p $pkgdir/usr/lib/openvtuber
+  mkdir -p $pkgdir/usr/share/openvtuber
+  cp -r $pkgname/* $pkgdir/usr/lib/openvtuber/
   chmod -R 644 $pkgdir
 
   cd $pkgname
 
-  install -m 644 LICENSE $pkgdir/share/openvtuber
-  install -m 644 Readme.md $pkgdir/share/openvtuber/Readme.md
+  install -m 644 LICENSE $pkgdir/usr/share/openvtuber
+  install -m 644 Readme.md $pkgdir/usr/share/openvtuber/Readme.md
 }
 
 # vim: ts=2 sw=2 et:

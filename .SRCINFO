@@ -5,6 +5,7 @@ pkgbase = openvtuber-git
 	url = https://github.com/1996scarlet/OpenVtuber
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = npm
 	depends = python
 	depends = python-bidict
@@ -18,4 +19,3 @@ pkgbase = openvtuber-git
 	sha256sums = SKIP
 
 pkgname = openvtuber-git
-
