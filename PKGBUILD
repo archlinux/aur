@@ -2,8 +2,8 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname=mstflint
-pkgver=4.15.0.1
-_pkgver=4.15.0-1
+pkgver=4.16.0.2
+_pkgver=4.16.0-2
 pkgrel=1
 pkgdesc='OpenFabrics Alliance firmware burning application for Mellanox HCA/NIC cards (without inband support)'
 arch=('x86_64' 'i686')
@@ -42,5 +42,5 @@ package() {
   cd "${srcdir}/${pkgname}"
   make DESTDIR="${pkgdir}" install
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 README "${pkgdir}/usr/share/docs/${pkgname}/README"
+  install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
