@@ -1,9 +1,2 @@
-src
-pkg
-*.zip
-*.log
-*.deb
-*.rpm
-*.AppImage
-*.pkg.tar.xz
-*.pkg.tar.zst
+*
+*.*

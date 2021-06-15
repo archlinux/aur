@@ -1,29 +1,22 @@
 pkgbase = spark-store
 	pkgdesc = 生态构建需要的不是某一方的单打独斗，而是人人行动起来，汇聚星火，产生燎原之势
-	pkgver = 3.0
-	pkgrel = 2
+	pkgver = 3.0.2
+	pkgrel = 1
 	url = https://gitee.com/deepin-community-store/spark-store
 	arch = x86_64
 	license = GPL3
-	makedepends = unzip
-	makedepends = dpkg
-	makedepends = qconf
-	makedepends = dtkwidget
+	makedepends = git
 	makedepends = qt5-webengine
+	makedepends = dtkwidget
 	makedepends = libnotify
-	depends = dpkg
-	depends = qconf
-	depends = dtkwidget
 	depends = qt5-webengine
+	depends = dtkwidget
 	depends = libnotify
 	provides = spark-store
 	conflicts = spark-store
 	replaces = spark-store
 	options = !strip
-	source = spark-store.zip::https://gitee.com/deepin-community-store/spark-store/repository/archive/3.0?format=zip
-	sha256sums = 33992fc6f3b012e40a8b3014f877fd6144c8df718c98ad002430fe28794e5237
-	source_x86_64 = spark-store.deb::https://gitee.com/deepin-community-store/spark-store/attach_files/552251/download/spark-store_3.0_amd64.deb
-	sha256sums_x86_64 = c6004d4e48ab7b81ee78fef31863f4c31e82dd8d7256184173e746e21a6f985a
+	source = spark-store::git+https://gitee.com/deepin-community-store/spark-store.git
+	sha256sums = SKIP
 
 pkgname = spark-store
-
