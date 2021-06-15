@@ -1,7 +1,7 @@
 pkgbase = spark-store
 	pkgdesc = 生态构建需要的不是某一方的单打独斗，而是人人行动起来，汇聚星火，产生燎原之势
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitee.com/deepin-community-store/spark-store
 	arch = x86_64
 	license = GPL3

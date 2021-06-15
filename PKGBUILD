@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 pkgname=spark-store
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="生态构建需要的不是某一方的单打独斗，而是人人行动起来，汇聚星火，产生燎原之势"
 arch=('x86_64')
 url="https://gitee.com/deepin-community-store/spark-store"
@@ -35,7 +35,12 @@ package() {
     ar -x *.deb
     tar -xf "${srcdir}/data.tar.xz" --xattrs-include='*' --numeric-owner -C "${pkgdir}"
 
+    find "${pkgdir}/" -type f -exec chmod 644 "{}" \;
+    find "${pkgdir}/" -type d -exec chmod 755 "{}" \;
+
+    chmod 1777 "${pkgdir}/tmp"
+
     install -Dm0755 "${srcdir}/${pkgname}/build/src/${pkgname}" "${pkgdir}/opt/durapps/${pkgname}/bin/${pkgname}"
-    install -dm0644 "${pkgdir}/usr/bin"
+    install -dm0755 "${pkgdir}/usr/bin"
     ln -sf "/opt/durapps/${pkgname}/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
