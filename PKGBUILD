@@ -1,7 +1,7 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=web-eid
-pkgver=1.0.0.354
-_rls_tag=1.0.0-rc1
+pkgver=1.0.0.511
+_rls_tag=1.0.0-rc2
 pkgrel=1
 pkgdesc="Web eID browser extension for chromium and native application"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://web-eid.eu/"
 license=('MIT')
 depends=('qt5-base' 'pcsclite')
 makedepends=('git' 'qt5-tools' 'gtest' 'gmock')
-source=("$pkgname::git+https://github.com/web-eid/web-eid-app.git#tag=$_rls_tag"
+source=("$pkgname::git+https://github.com/web-eid/web-eid-app.git?signed#tag=$_rls_tag"
         "web-eid-libelectronic-id::git+https://github.com/web-eid/libelectronic-id.git"
         "web-eid-libpcsc-cpp::git+https://github.com/web-eid/libpcsc-cpp.git"
         "web-eid-libpcsc-mock::git+https://github.com/web-eid/libpcsc-mock.git")
