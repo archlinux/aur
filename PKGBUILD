@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/panzi/VTFLib"
 license=('GPL')
 depends=('libtxc_dxtn')
+makedepends=("git")
 makedepends=('cmake')
 source=("git+https://github.com/panzi/VTFLib.git")
 md5sums=('SKIP')
