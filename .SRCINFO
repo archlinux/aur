@@ -1,7 +1,7 @@
 pkgbase = keepassxc-git
 	pkgdesc = Cross-platform community-driven port of KeePass Password Safe
-	pkgver = 2.6.3.r108.ged0ece30
-	pkgrel = 2
+	pkgver = 2.6.3.r144.g724f691e
+	pkgrel = 3
 	url = https://github.com/keepassxreboot/keepassxc
 	arch = i686
 	arch = x86_64
@@ -28,6 +28,7 @@ pkgbase = keepassxc-git
 	depends = zlib
 	depends = botan
 	provides = org.freedesktop.secrets
+	provides = keepassxc=2.6.3.r144.g724f691e
 	conflicts = keepassxc
 	replaces = keepassx-http
 	replaces = keepassx-reboot-git
@@ -36,4 +37,3 @@ pkgbase = keepassxc-git
 	md5sums = SKIP
 
 pkgname = keepassxc-git
-
