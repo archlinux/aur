@@ -1,0 +1,43 @@
+This patch removes trivial and duplicate codes.
+diff '--color=auto' -u0 -r old/modules/config.js new/modules/config.js
+--- old/modules/config.js	2021-05-14 18:15:46.000000000 -0700
++++ new/modules/config.js	2021-06-15 04:10:20.882275457 -0700
+@@ -90,4 +89,0 @@
+-  get urlblacklist() {
+-    return /(gov.cn|edu.cn)/
+-  }
+-
+diff '--color=auto' -u0 -r old/modules/database.js new/modules/database.js
+--- old/modules/database.js	2021-05-14 18:15:46.000000000 -0700
++++ new/modules/database.js	2021-06-15 04:15:31.177348333 -0700
+@@ -148,4 +147,0 @@
+-    if (opts.base['url'].match(CONF.urlblacklist)) {
+-      event.returnValue = "Blacklist URL"
+-      return
+-    }
+@@ -192,4 +187,0 @@
+-    if (_new.base['url'].match(CONF.urlblacklist)) {
+-      event.returnValue = "Blacklist URL"
+-      return
+-    }
+diff '--color=auto' -u0 -r old/modules/request.js new/modules/request.js
+--- old/modules/request.js	2021-05-14 18:15:46.000000000 -0700
++++ new/modules/request.js	2021-06-15 04:26:08.089386230 -0700
+@@ -74,5 +73,0 @@
+-    if (opts['url'].match(CONF.urlblacklist)) {
+-      return event
+-        .sender
+-        .send('request-error-' + opts['hash'], "Blacklist URL");
+-    }
+@@ -108,5 +102,0 @@
+-    if (opts['url'].match(CONF.urlblacklist)) {
+-      return event
+-        .sender
+-        .send('request-error-' + opts['hash'], "Blacklist URL");
+-    }
+@@ -284,5 +273,0 @@
+-    if (opts['url'].match(CONF.urlblacklist)) {
+-      return event
+-        .sender
+-        .send('request-error-' + opts['hash'], "Blacklist URL");
+-    }

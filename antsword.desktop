@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=AntSword
+Comment=The most popular cross-platform webshell management toolkit.
+Exec=antsword %U
+Terminal=false
+Type=Application
+Icon=antsword
+StartupWMClass=AntSword
+Categories=Network;
+GenericName=WebShell manager.
+Keywords=hack;encrypt;rce;shell
+MimeType=x-scheme-handler/antsword
+Version=1.1
+X-Desktop-File-Install-Version=0.26
