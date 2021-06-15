@@ -1,0 +1,14 @@
+pkgbase = python-bloom
+	pkgdesc = Bloom is a release automation tool.
+	pkgver = 0.10.7
+	pkgrel = 1
+	url = http://www.ros.org/wiki/bloom
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/b/bloom/bloom-0.10.7.tar.gz
+	sha256sums = 7038093de4448e0d8f172d0334c3089f77cbe7f7151ea59e2b7c0d9ea4033e8e
+
+pkgname = python-bloom
+	depends = python
