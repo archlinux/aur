@@ -6,6 +6,7 @@ pkgbase = python-mkdocs-ezlinks-plugin-git
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = git
 	depends = mkdocs
 	provides = python-mkdocs-ezlinks-plugin
 	source = git+https://github.com/orbikm/mkdocs-ezlinks-plugin
