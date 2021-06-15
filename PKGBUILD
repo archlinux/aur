@@ -2,7 +2,7 @@
 # pkg: pypi trakt-scrobbler poetry
 pkgname=trakt-scrobbler
 pkgver=1.2.1
-pkgrel=8
+pkgrel=9
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
 arch=(any)
@@ -10,20 +10,6 @@ url=https://github.com/iamkroot/trakt-scrobbler
 license=(GPL2)
 depends=(
     "systemd"
-	'python-appdirs<2.0.0' #auto-deps
-	'python-appdirs>=1.4.3' #auto-deps
-	'python-cleo<1.0.0' #auto-deps
-	'python-cleo>=0.7.6' #auto-deps
-	'python-confuse<2.0.0' #auto-deps
-	'python-confuse>=1.3.0' #auto-deps
-	'python-guessit<4.0.0' #auto-deps
-	'python-guessit>=3.1.0' #auto-deps
-	'python-jeepney<1.0.0' #auto-deps
-	'python-jeepney>=0.6.0' #auto-deps
-	'python-pysocks<2.0.0' #auto-deps
-	'python-pysocks>=1.7.1' #auto-deps
-	'python-requests<3.0.0' #auto-deps
-	'python-requests>=2.22.0' #auto-deps
 )
 
 makedepends=(
