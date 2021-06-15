@@ -25,7 +25,8 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 prepare(){
-  cd "$pkgname-$pkgver"
+	mkdir "$pkgname-$pkgver"
+  	cd "$pkgname-$pkgver"
 }
 
 get_latest_release() {
