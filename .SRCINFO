@@ -1,7 +1,7 @@
 pkgbase = mautrix-telegram
 	pkgdesc = A Matrix-Telegram hybrid puppeting/relaybot bridge.
-	pkgver = 0.9.0
-	pkgrel = 10
+	pkgver = 0.10.0
+	pkgrel = 1
 	url = https://github.com/tulir/mautrix-telegram
 	install = mautrix-telegram.install
 	arch = any
@@ -16,8 +16,10 @@ pkgbase = mautrix-telegram
 	depends = python-commonmark
 	depends = python-aiohttp
 	depends = python-yarl
-	depends = python-mautrix<0.9
-	depends = python-telethon<1.18
+	depends = python-mautrix>=0.9.3
+	depends = python-mautrix<0.10
+	depends = python-telethon>=1.20
+	depends = python-telethon<1.22
 	depends = python-telethon-session-sqlalchemy
 	optdepends = python-cryptg: faster encryption
 	optdepends = python-cchardet: faster encoding detection
@@ -34,11 +36,11 @@ pkgbase = mautrix-telegram
 	optdepends = python-unpaddedbase64: end-to-bridge encryption support
 	backup = etc/mautrix-telegram/config.yaml
 	backup = etc/mautrix-telegram/registration.yaml
-	source = https://github.com/tulir/mautrix-telegram/archive/v0.9.0.tar.gz
+	source = https://github.com/tulir/mautrix-telegram/archive/v0.10.0.tar.gz
 	source = mautrix-telegram.service
 	source = mautrix-telegram.sysusers
 	source = mautrix-telegram.tmpfiles
-	sha256sums = e0fb30bf448f1bec6f27f73662c1dcddd36986367dcbe4f34509b23af67142a9
+	sha256sums = a9d09d6cd1f13074aa844114db9939dfb75ca1dc898467535d66208c7568209f
 	sha256sums = a419168bff80e469f2f4e26279afae77d92e6ae86c2457696e1ca9fc6ba1cb12
 	sha256sums = fce0a4f792e62d9440fe431fb6ab6c458139bcc801bc2b02bc1b3d8f2ff9fcbf
 	sha256sums = 2f5c45f6b0a9d1ae5237a91bdcb527609d262bc27cb7fa1dc736b4103ee230e5

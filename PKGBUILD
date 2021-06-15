@@ -1,12 +1,13 @@
 # Maintainer: BrainDamage
 pkgname=mautrix-telegram
-pkgver=0.9.0
-pkgrel=10
+pkgver=0.10.0
+pkgrel=1
 pkgdesc="A Matrix-Telegram hybrid puppeting/relaybot bridge."
 url="https://github.com/tulir/mautrix-telegram"
 depends=('python' 'python-sqlalchemy' 'python-alembic' 'python-ruamel-yaml'
 	'python-magic-ahupp' 'python-commonmark' 'python-aiohttp' 'python-yarl'
-	'python-mautrix<0.9' 'python-telethon<1.18' 'python-telethon-session-sqlalchemy')
+	'python-mautrix>=0.9.3' 'python-mautrix<0.10' 'python-telethon>=1.20'
+	'python-telethon<1.22' 'python-telethon-session-sqlalchemy')
 makedepends=('python-setuptools' 'python-pytest-runner')
 optdepends=('python-cryptg: faster encryption'
 	'python-cchardet: faster encoding detection'
@@ -24,7 +25,7 @@ optdepends=('python-cryptg: faster encryption'
 license=('AGPLv3')
 arch=('any')
 source=("${url}/archive/v${pkgver}.tar.gz" "${pkgname}.service" "${pkgname}.sysusers" "${pkgname}.tmpfiles")
-sha256sums=('e0fb30bf448f1bec6f27f73662c1dcddd36986367dcbe4f34509b23af67142a9'
+sha256sums=('a9d09d6cd1f13074aa844114db9939dfb75ca1dc898467535d66208c7568209f'
             'a419168bff80e469f2f4e26279afae77d92e6ae86c2457696e1ca9fc6ba1cb12'
             'fce0a4f792e62d9440fe431fb6ab6c458139bcc801bc2b02bc1b3d8f2ff9fcbf'
             '2f5c45f6b0a9d1ae5237a91bdcb527609d262bc27cb7fa1dc736b4103ee230e5')
@@ -37,6 +38,8 @@ prepare() {
 	# the author makes liberal usage of max version for requirements without a real need
 	# we'll strip them and re-introduce in the deps/optdeps array if truly necessary
 	# to prevent a nightmare during updates while tracking stable releases
+	cp requirements.txt ../requirements.txt.orig
+	cp optional-requirements.txt  ../optional-requirements.txt.orig
 	sed -i -E 's/,?<[[:digit:]]*\.?[[:digit:]]+,?//g' requirements.txt
 	sed -i -E 's/,?<[[:digit:]]*\.?[[:digit:]]+,?//g' optional-requirements.txt
 	# create an empty registration file so that permissions get written properly from the get go
@@ -59,6 +62,10 @@ package() {
 	# it's a semi-common failure for python packages to install tests in the main dir
 	# which would make them conflict eachother
 	rm -rf "${pkgdir}$(python -c 'import site; print(site.getsitepackages()[0])')/tests"
+
+	# install the original requirements file, useful as documentation
+	install -Dvm 644 "${srcdir}/requirements.txt.orig" "$(find ${pkgdir} -name 'requires.txt' -printf '%h')"
+	install -Dvm 644 "${srcdir}/optional-requirements.txt.orig" "$(find ${pkgdir} -name 'requires.txt' -printf '%h')"
 
 	# adjust alembic script dir location so that by using an abs path it can be used in CWD
 	sed -i -e "s|script_location = alembic|script_location = ${_shared_dir}/alembic/|" "${pkgdir}${_shared_dir}/alembic.ini"
