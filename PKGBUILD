@@ -11,6 +11,8 @@ license=('GPL3')
 depends=('npm' 'python' 'python-bidict' 'python-engineio' 'python-opencv'
          'python-socketio' 'python-tensorflow' 'python-websocket-client'
          'yarn')
+provides=($_pkgname)
+conflicts=($_pkgname)
 optdepends=()
 makedepends=('git')
 source=("$pkgname::git+$url.git")
