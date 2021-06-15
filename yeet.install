@@ -1,0 +1,5 @@
+post_install() {
+	echo
+	echo -e "\e[1;34m ==> yeet has been successfully installed! Thanks for using it.\e[0m"
+	echo
+}
