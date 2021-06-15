@@ -1,7 +1,7 @@
 # Maintainer: Gregory G Danielson III <gregdan3@protonmail.com>
 
 pkgname=doppler-cli-bin
-pkgver=3.26.3
+pkgver=3.26.4
 pkgrel=1
 pkgdesc="A CLI utility for Doppler, environment and secrets manager."
 arch=("x86_64")
