@@ -25,7 +25,7 @@ package() {
   cd ${pkgname}-${pkgver}
   make DESTDIR="$pkgdir" install
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm 644 README.md ChangeLog HISTORY "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 README.md ChangeLog HISTORY -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
