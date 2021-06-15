@@ -1,6 +1,6 @@
 pkgbase = pacmanlogger
 	pkgdesc = A scala application that makes reading pacman's logs easier
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/carlocastoldi/PacmanLogger
 	arch = any
@@ -10,10 +10,9 @@ pkgbase = pacmanlogger
 	depends = java-runtime>=8
 	provides = pacmanlogger
 	conflicts = pacmanlogger
-	source = pacmanlogger-0.1.4::https://github.com/carlocastoldi/PacmanLogger/archive/0.1.4.tar.gz
+	source = pacmanlogger-0.1.5::https://github.com/carlocastoldi/PacmanLogger/archive/0.1.5.tar.gz
 	source = pacmanlogger.sh
-	md5sums = 013aa5496ff818f3632e377ed004889c
+	md5sums = 327e2240864fae0d6ed201c861122350
 	md5sums = abe1b34cb77dfd99a1bf726afb689e96
 
 pkgname = pacmanlogger
-

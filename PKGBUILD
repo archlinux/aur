@@ -1,8 +1,8 @@
-# Maintainer: Morgana <morganamilo@gmail.com>
+# Maintainer: Morganamilo <morganamilo@gmail.com>
 
 _pkgname=PacmanLogger
 pkgname=pacmanlogger
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="A scala application that makes reading pacman's logs easier"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('java-runtime>=8')
 makedepends=('sbt' 'java-environment>=8')
 provides=('pacmanlogger')
 source=("$pkgname-$pkgver::https://github.com/carlocastoldi/PacmanLogger/archive/$pkgver.tar.gz" "pacmanlogger.sh")
-md5sums=('013aa5496ff818f3632e377ed004889c'
+md5sums=('327e2240864fae0d6ed201c861122350'
          'abe1b34cb77dfd99a1bf726afb689e96')
 
 build() {
