@@ -2,8 +2,8 @@
 
 pkgname=wedder
 pkgdesc="Current weather info for status bars like polybar"
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 
 depends=("openssl-1.0")
 arch=("x86_64")
@@ -17,9 +17,9 @@ source=(
 	"https://raw.githubusercontent.com/awersching/wedder/${pkgver}/LICENSE"
 )
 sha256sums=(
-	"8ae6e42353ea1c752e609032bf9884667dd13fe79137185b6e321cdd50454d71"
-	"237d445784d8c53c152554f2d3ea0d7a83961f3bc8c4400d2a6af0fd557b28ca"
-	"10c6eb440ab29c7df846dbc0056b225d4a94ebba3a1e77ca3f3bf7d28e879eb7"
+	'd31e0bd305ac7346e840c012c8351d749ea4b7ff06fa873472ba08bd61e6944d'
+	'ceda7ab71b1f5e934c6e97653a1d52424723078af03bdaa6467c886574dd17b2'
+	'10c6eb440ab29c7df846dbc0056b225d4a94ebba3a1e77ca3f3bf7d28e879eb7'
 )
 
 package() {
