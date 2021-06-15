@@ -1,22 +1,29 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
+# Contributor: Matthew Gamble <git@matthewgamble.net>
 
 pkgname="monica-git"
-pkgver=3.0.1.r89.g2a36efd0a
+pkgver=3.0.1.r93.gc4c63bc5c
 pkgrel=1
 pkgdesc="Personal CRM. Remember everything about your friends, family and business relationships"
 url="https://www.monicahq.com/"
 license=("AGPL3")
 arch=("any")
-depends=("php>=7.2")
-makedepends=("composer" "git")
-optdepends=("mariadb: database"
-            "apache: web server"
+depends=("php>=7.4" "php-intl" "mariadb")
+makedepends=("composer" "yarn" "git")
+optdepends=("apache: web server"
+            "caddy: web server"
             "nginx: web server"
-            "redis: cache and session driver")
-source=("git+https://github.com/monicahq/monica.git")
-sha256sums=("SKIP")
+            "redis: cache and session driver"
+            "php-redis: cache and session driver")
+source=("git+https://github.com/monicahq/monica.git"
+        "monica-scheduler.service"
+        "monica-scheduler.timer")
+sha256sums=('SKIP'
+            '18eafdbf815189d00ac3d79ced030903b4b599492a16d2553d6759ed4f13ff30'
+            '702ca06bf7922996aebb862fe962f137489fb92cdd99fb2cc25e8bb120f55755')
 backup=("etc/webapps/monica/config.env")
 options=("!strip")
+install="monica.install"
 
 pkgver(){
  cd "monica"
@@ -47,4 +54,7 @@ package(){
  ln -s "/var/lib/monica" "$pkgdir/usr/share/webapps/monica/storage"
  chown -R http: "$pkgdir/var/lib/monica"
  chmod 750 "$pkgdir/var/lib/monica"
+
+ install -D -m 644 "$srcdir/monica-scheduler.service" "$pkgdir/usr/lib/systemd/system/monica-scheduler.service"
+ install -D -m 644 "$srcdir/monica-scheduler.timer" "$pkgdir/usr/lib/systemd/system/monica-scheduler.timer"
 }

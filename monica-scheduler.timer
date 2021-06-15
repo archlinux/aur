@@ -1,0 +1,9 @@
+[Unit]
+Description=Monica scheduler timer
+
+[Timer]
+# every ten minutes
+OnCalendar=*:0/10
+
+[Install]
+WantedBy=timers.target

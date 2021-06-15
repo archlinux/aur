@@ -1,0 +1,10 @@
+post_install(){
+ cat << INFO
+
+Monica comes with a systemd unit that performs asynchronous tasks like sending reminder emails.
+Run the following command with elevate privileges to activate it:
+
+    systemctl enable --now monica-scheduler.timer
+
+INFO
+}
