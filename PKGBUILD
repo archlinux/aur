@@ -1,14 +1,14 @@
 # Maintainer: bkacjios < blackops7799 at gmail dot com >
 
 pkgname=inav-configurator
-pkgver=2.6.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Crossplatform configuration tool for the INAV flight control system"
 arch=('i686' 'x86_64')
 url="https://github.com/iNavFlight/inav-configurator"
-source=(https://github.com/iNavFlight/inav-configurator/archive/2.6.1.zip
+source=(https://github.com/iNavFlight/inav-configurator/archive/3.0.0.zip
         inav-configurator.desktop)
-md5sums=('7142f2bb6afc2335865a0271304b9389'
+md5sums=('1354ca6571f22563d5907fc2167d5011'
          'SKIP')
 provides=('inav-configurator')
 conflicts=('inav-configurator')
@@ -41,7 +41,7 @@ package() {
 	install -Dm644 "$srcdir/$pkgname-$pkgver/images/inav_icon_128.png" "$pkgdir/opt/inav/inav-configurator/icon/inav_icon_128.png"
 
 	install -d "$pkgdir/usr/bin/"
-	ln -s /opt/inav/inav-configurator/inav-configurator "$pkgdir/usr/bin/inav-configurator"
+	ln -s "$pkgdir/opt/inav/inav-configurator/inav-configurator" "$pkgdir/usr/bin/inav-configurator"
 
-	echo 'Dont forget to add your user into uucp group "sudo usermod -aG uucp YOUR_USERNAME" for serial access'
+	echo "Dont forget to add your user into uucp group \"sudo usermod -aG uucp $USER\" for serial access"
 }
