@@ -2,7 +2,7 @@
 
 pkgname=plymouth-theme-logo-spinner-git
 pkgver=r1.bc5daf8
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple plymouth theme with a logo and a spinner"
 arch=('any')
 url="https://github.com/f1rstlady/plymouth-theme-logo-spinner"
