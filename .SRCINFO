@@ -1,0 +1,15 @@
+pkgbase = chimerax
+	pkgdesc = UCSF ChimeraX (or simply ChimeraX) is the next-generation molecular visualization program from the Resource for Biocomputing, Visualization, and Informatics (RBVI), following UCSF Chimera.
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://www.cgl.ucsf.edu/chimerax/
+	arch = x86_64
+	license = custom
+	depends = libffi6
+	options = !strip
+	source = local://ChimeraX-1.2.5.tar.gz
+	source = LICENSE
+	sha256sums = 5678f2d627b7acc28427cb9fb7b73b9d8289e862791b1b5335999e3dc4e69af7
+	sha256sums = SKIP
+
+pkgname = chimerax
