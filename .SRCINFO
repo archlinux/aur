@@ -6,6 +6,7 @@ pkgbase = python-mkdocs-git-authors-plugin-git
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = git
 	depends = mkdocs
 	provides = python-mkdocs-git-authors-plugin
 	source = git+https://github.com/timvink/mkdocs-git-authors-plugin.git

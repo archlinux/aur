@@ -9,7 +9,7 @@ license=("MIT")
 arch=("any")
 provides=("python-mkdocs-git-authors-plugin")
 depends=("mkdocs")
-makedepends=("python-setuptools")
+makedepends=("python-setuptools" "git")
 source=("git+https://github.com/timvink/mkdocs-git-authors-plugin.git")
 sha256sums=("SKIP")
 
