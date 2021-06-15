@@ -8,9 +8,9 @@ pkgdesc='Real-time face and gaze analyzation via deep neural networks.'
 arch=('any')
 url='https://github.com/1996scarlet/OpenVtuber'
 license=('GPL3')
-depends=('npm' 'python' 'python-bidict' 'python-engineio' 'python-opencv'
+depends=('npm' 'opencv' 'python' 'python-bidict' 'python-engineio'
          'python-socketio' 'python-tensorflow' 'python-websocket-client'
-         'yarn')
+         'tensorboard' 'yarn')
 provides=($_pkgname)
 conflicts=($_pkgname)
 optdepends=()
@@ -33,8 +33,9 @@ package() {
 
   mkdir -p $pkgdir/usr/lib/openvtuber
   mkdir -p $pkgdir/usr/share/openvtuber
-  cp -r $pkgname/* $pkgdir/usr/lib/openvtuber/
-  chmod -R 644 $pkgdir
+  cp -r $pkgname/* $pkgdir/usr/lib/openvtuber
+  chmod -R 755 $pkgdir
+  chmod 755 $pkgdir/usr/lib/openvtuber
 
   cd $pkgname
 
