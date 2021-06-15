@@ -1,0 +1,15 @@
+pkgbase = kubectl-tree
+	pkgdesc = Browse object hierarchies as a tree
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/ahmetb/kubectl-tree
+	arch = x86_64
+	arch = aarch64
+	groups = kubectl-plugins
+	license = Apache
+	makedepends = go
+	depends = kubectl
+	source = https://github.com/ahmetb/kubectl-tree/archive/v0.4.0/kubectl-tree-0.4.0.tar.gz
+	sha256sums = fcea81b6c54a524ea15f7169c8750a7349258f966079fd6c29115aa04133c9db
+
+pkgname = kubectl-tree
