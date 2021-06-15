@@ -3,7 +3,7 @@
 
 pkgbase=shadowsocks-uri-generator-git
 pkgname=(ss-uri-gen-git ss-uri-gen-chatbot-telegram-git ss-uri-gen-rescue-git)
-pkgver=v4.1.r15.b305ff1
+pkgver=v4.2.r5.b09be0d
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/database64128/shadowsocks-uri-generator"
@@ -40,7 +40,7 @@ _build() {
 }
 
 package_ss-uri-gen-git() {
-	pkgdesc="CLI for managing federated Shadowsocks servers, automating deployments of Outline servers, and SIP008 online config"
+	pkgdesc="Light-weight command line automation tool for managing federated Shadowsocks servers, automating deployments of Outline servers, and delivering configurations to users with Open Online Config (OOC)."
 	provides=(ss-uri-gen)
 	conflicts=(ss-uri-gen)
 	install -Dm755 -t $pkgdir/usr/bin/ $srcdir/$pkgbase/ShadowsocksUriGenerator.CLI/bin/Release/net5.0/linux-x64/publish/ss-uri-gen

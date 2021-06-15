@@ -1,5 +1,5 @@
 pkgbase = shadowsocks-uri-generator-git
-	pkgver = v4.1.r15.b305ff1
+	pkgver = v4.2.r5.b09be0d
 	pkgrel = 1
 	url = https://github.com/database64128/shadowsocks-uri-generator
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = shadowsocks-uri-generator-git
 	b2sums = SKIP
 
 pkgname = ss-uri-gen-git
-	pkgdesc = CLI for managing federated Shadowsocks servers, automating deployments of Outline servers, and SIP008 online config
+	pkgdesc = Light-weight command line automation tool for managing federated Shadowsocks servers, automating deployments of Outline servers, and delivering configurations to users with Open Online Config (OOC).
 	provides = ss-uri-gen
 	conflicts = ss-uri-gen
 
