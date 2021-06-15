@@ -1,7 +1,7 @@
 # Maintainer: steadfasterX <steadfasterX [at] binbash -dot- rocks>
 pkgname=easy-installer
-pkgver=0.11.1
-pkgrel=4
+pkgver=0.12.3
+pkgrel=1
 pkgdesc="The Easy Installer is a desktop application which helps users install Android /e/ (https://doc.e.foundation/what-s-e) on supported devices."
 arch=('x86_64')
 url="https://gitlab.e.foundation/e/tools/${pkgname}"
@@ -13,23 +13,13 @@ makedepends=('git' 'gradle' "java-environment-openjdk=${_reqjava}" 'java-runtime
 optdepends=()
 backup=()
 source=("${pkgname}-${pkgver}::git+https://gitlab.e.foundation/e/tools/${pkgname}.git#tag=v${pkgver}-beta"
-        "${pkgname}-${pkgver}_fixbuild.patch"
-        "${pkgname}-${pkgver}_fixlog.patch"
         "${pkgname}.8.md")
 md5sums=('SKIP'
-         'd6b12a412e1cbeba347727a84851c8d8'
-         'c6abbaa5cc677ae827317451682dafd5'
          'bc6e92b53daabcee25e57904b3eb1bb6')
 BINFIX=usr/local/bin
 MANDIR=usr/share/man
 MAN8DIR=${MANDIR}/man8
 MAN8PAGE=${pkgname}.8
-
-prepare(){
-    cd "$pkgname-$pkgver"
-    patch -p1 < "$srcdir/${pkgname}-${pkgver}_fixbuild.patch"
-    patch -p1 < "$srcdir/${pkgname}-${pkgver}_fixlog.patch"
-}
 
 build(){
     cd "$pkgname-$pkgver"
