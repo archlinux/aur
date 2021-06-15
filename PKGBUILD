@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libbacktrace-git
-pkgver=r22.559ab7c
+pkgver=r60.d0f5e95
 pkgrel=1
 pkgdesc="Library to produce symbolic backtraces"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/ianlancetaylor/libbacktrace"
 license=('BSD')
 depends=('gcc-libs' 'zlib')
 makedepends=('git' 'libunwind')
-provides=('libbacktrace')
+provides=('libbacktrace' 'libbacktrace.so')
 conflicts=('libbacktrace')
 options=('staticlibs')
 source=("git+https://github.com/ianlancetaylor/libbacktrace.git")
