@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=automedia-git
-pkgver=r132.3757fe
+pkgver=r133.fee89c4
 pkgrel=1
 pkgdesc='Automatically track new releases of media and download them. Supports torrents using rss (nyaa.si) and manga sites using html.'
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=('python' 'python-lxml' 'python-requests' 'python-pure-protobuf' 'curl' 
 optdepends=('libnotify')
 provides=('automedia')
 conflicts=('automedia')
-source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/AutoMedia.git.r132.3757fe8.tar.gz")
-sha512sums=('984a94ccc7b875805717807910afad721aa004782f44605947739bf2248ff1673942fc345cf9556935a20e06eaecc57e953dbcec64017961da2bfa7297270c68')
+source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/AutoMedia.git.r133.fee89c4.tar.gz")
+sha512sums=('4505a23ed8ffee9dc45f95f339ce7f94c643fed2c26b48f7b2a81f146d60ab6b821e3406e59ede735d3c12be69eec6383553790ad62928ceb55a4b3775905bf8')
 
 package() {
   cd "$srcdir"
