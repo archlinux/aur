@@ -2,8 +2,8 @@
 # Contributor: Jeff Parent <jecxjo@sdf.lonestar.org>
 
 pkgname=openrdate
-pkgver=1.10
-pkgrel=3
+pkgver=1.10.1
+pkgrel=1
 pkgdesc="Set the system's date from a remote host"
 arch=('i686' 'x86_64' 'arm' 'armv6h')
 url="https://github.com/resurrecting-open-source-projects/openrdate"
@@ -12,7 +12,7 @@ depends=('libbsd')
 makedepends=('autoconf' 'automake')
 conflicts=('rdate')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('8a29eed664e1ba3f628ac16227da2f872d595ddf0be2daee23fbc9da7fc7846a')
+sha256sums=('ee2fc314fcc46d0fe489b3723d5118a36d89181d958dd19735fe07703cc4f7ae')
 
 build() {
   cd ${pkgname}-${pkgver}
