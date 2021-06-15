@@ -9,7 +9,8 @@ license=("GPL3")
 changelog=$pkgname.changelog
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/westerndigitalcorporation/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 md5sums=("ce22f170e9fd414685d3293114207e62")
-depends=("gtk3")
+depends=("glibc")
+optdepends=("gtk3")
 makedepends=("autoconf-archive")
 
 build() {
