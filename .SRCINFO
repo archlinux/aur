@@ -1,0 +1,14 @@
+pkgbase = lxd-snapper
+	pkgdesc = A tool that automates creating & removing LXD snapshots
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/Patryk27/lxd-snapper
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = lxd
+	depends = gcc-libs
+	source = lxd-snapper-1.1.tar.gz::https://github.com/Patryk27/lxd-snapper/archive/v1.1.tar.gz
+	b2sums = 93322f96499426495df1191efc26f36881ad259c7445e7cdbfeea16be043a92af5103368e781a2ea45e9de93db02068adea18161b595e28253a37ca937f2c77a
+
+pkgname = lxd-snapper
