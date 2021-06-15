@@ -7,6 +7,7 @@ pkgbase = roundcubemail-plugin-carddav-git
 	license = GPL2
 	makedepends = composer
 	makedepends = systemd
+	makedepends = git
 	depends = roundcubemail
 	provides = roundcubemail-plugin-carddav
 	conflicts = roundcube-rcmcarddav
