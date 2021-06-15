@@ -18,5 +18,7 @@ pkgbase = spark-store
 	options = !strip
 	source = spark-store::git+https://gitee.com/deepin-community-store/spark-store.git
 	sha256sums = SKIP
+	source_x86_64 = https://gitee.com/deepin-community-store/spark-storeattach_files/736583/download/spark-store_3.0.2_amd64.deb
+	sha256sums_x86_64 = 4e49218a301d18fdeec07eb1f5c1800e644d62492765d59f78e6194ce6f09067
 
 pkgname = spark-store
