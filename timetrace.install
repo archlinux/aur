@@ -1,3 +1,10 @@
 post_install()  {
-  printf ":: You can create a custom config under \$HOME/.timetrace/config.yaml\n"
+	echo ":: You can create a custom config under \$HOME/.timetrace/config.yaml"
+	echo ":: Check upstream documentation for more information."
+	echo ":: A copy has been installed under /usr/share/doc/timetrace/README.md for your reference."
+}
+
+post_upgrade() {
+	echo ":: Don't forget to check the changelog for any possible breaking changes!"
+	echo ":: You can do so with 'pacman -Qc timeshift'"
 }
