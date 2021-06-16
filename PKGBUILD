@@ -6,7 +6,7 @@ pkgver=0.98.4
 srcrel=1 # Incremented when there is a new release for the same version number
 pkgrel=1
 pkgdesc="An efficient multimedia viewer, browser and converter (using system libraries)."
-url="http://www.xnview.com/en/xnviewmp/"
+url="https://www.xnview.com/en/xnviewmp/"
 
 arch=('x86_64')
 license=('custom')
@@ -21,7 +21,7 @@ depends=(
 optdepends=('glib2: support for moving files to trash')
 conflicts=('xnviewmp')
 
-source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::http://download.xnview.com/XnViewMP-linux-x64.tgz"
+source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::https://download.xnview.com/XnViewMP-linux-x64.tgz"
         'xnview.sh'
         'xnviewmp.desktop'
         'qt5_std_fun_forwarder.S'
