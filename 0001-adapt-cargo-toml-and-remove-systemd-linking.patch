@@ -52,6 +52,15 @@ index 283453e7..29db166d 100644
  #pxar = { path = "../pxar", features = [ "tokio-io" ] }
  regex = "1.2"
  rustyline = "7"
+@@ -81,7 +81,7 @@ zstd = { version = "0.4", features = [ "bindgen" ] }
+ nom = "5.1"
+ crossbeam-channel = "0.5"
+ 
+-proxmox-acme-rs = "0.2.1"
++proxmox-acme-rs = { version = "0.2.2", git = "git://git.proxmox.com/git/proxmox-acme-rs.git", rev = "ee7fe8f93c9ca5823ec65ce87dc301f2d8c6a55c" }
+ 
+ [features]
+ default = []
 diff --git a/src/tools/daemon.rs b/src/tools/daemon.rs
 index 6bb4a41b..9b358d78 100644
 --- a/src/tools/daemon.rs
