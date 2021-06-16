@@ -1,6 +1,6 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=heaptrack-git
-pkgver=682.c6ef628
+pkgver=1121.66a7ba4
 pkgrel=1
 pkgdesc="A heap memory profiler"
 arch=('i686' 'x86_64')
