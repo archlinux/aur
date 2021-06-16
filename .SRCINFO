@@ -1,7 +1,7 @@
 pkgbase = vscodium-git
 	pkgdesc = Free/Libre Open Source Software Binaries of VSCode (git build from latest commit).
-	pkgver = 1.57.0.r0.g6324481
-	pkgrel = 2
+	pkgver = 1.57.0.r3.g8bb2491
+	pkgrel = 1
 	url = https://github.com/VSCodium/vscodium.git
 	arch = x86_64
 	arch = aarch64
@@ -33,7 +33,7 @@ pkgbase = vscodium-git
 	optdepends = gvfs: For move to trash functionality
 	optdepends = libdbusmenu-glib: For KDE global menu
 	provides = codium
-	conflicts = vscodium-git
+	conflicts = vscodium
 	conflicts = vscodium-bin
 	source = git+https://github.com/VSCodium/vscodium.git#branch=master
 	source = git+https://github.com/microsoft/vscode.git#tag=1.57.0
