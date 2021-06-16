@@ -1,4 +1,4 @@
-# Maintainer: kedap <kqybspvj@hi2.in>
+# Maintainer: kedap <kedap.dev@protonmail.com>
 
 pkgname=apmpkg-git-dev
 _pkgname=apmpkg
