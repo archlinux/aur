@@ -1,0 +1,14 @@
+pkgbase = libavl
+	pkgdesc = GNU library working with binary trees
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://git.savannah.gnu.org/git/avl.git
+	arch = i686
+	arch = x86_64
+	license = GNU
+	makedepends = git
+	provides = libavl
+	source = git+https://git.savannah.gnu.org/git/libavl.git#branch=master
+	md5sums = SKIP
+
+pkgname = libavl
