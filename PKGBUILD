@@ -1,20 +1,20 @@
 # Maintainer: Daniel Scheiermann  <daniel.scheiermann@stud.uni-hannover.de>
 _name=supersolids
 pkgname=python-${_name}
-pkgver=0.1.31
+pkgver=0.1.32
 pkgrel=1
 pkgdesc="Simulate and animate supersolids by solving the Schrödinger equation"
 url="https://github.com/Scheiermann/${_name}"
 arch=(any)
 license=("MIT")
-depends=("ffmpeg" "python-dill" "python-ffmpeg" "python-matplotlib" "python-numpy"
+depends=("ffmpeg" "python-dill" "python-ffmpeg" "python-matplotlib" "python-numpy" "python-psutil"
          "python-pyqt5" "python-scipy" "python-sphinx-autoapi" "python-sphinx_rtd_theme"
          "mayavi"
          )
 makedepends=("python-setuptools")
 optdepends=("")
 source=(${_name}-$pkgver.tar.gz::"https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name}-$pkgver.tar.gz")
-sha256sums=("SKIP")
+sha256sums=('e896d04e686665268210044b9061800b5e0ea6324e15320eea55e893930f06a4')
 
 build() {
   cd "$srcdir/${_name}-$pkgver"
