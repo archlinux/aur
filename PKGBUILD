@@ -2,19 +2,19 @@
 # Contributor: Utsob Roy <uroybd(at)gmail(dot)com>
 
 pkgname=franz-bin
-pkgver=5.6.1
+pkgver=5.7.0
 pkgrel=1
 pkgdesc='Franz is a free messaging app for services like WhatsApp, Slack, Messenger and many more'
 arch=('x86_64')
 url='https://meetfranz.com'
 license=('Apache')
-depends=('alsa-lib' 'gtk3' 'libsecret' 'libxss' 'libxtst' 'nss')
-optdepends=('org.freedesktop.secrets')
+depends=('gtk3' 'libxss' 'nss')
+optdepends=('org.freedesktop.secrets: Keyring password store support')
 conflicts=('franz')
 options=('!strip' '!emptydirs')
 source=("https://github.com/meetfranz/franz/releases/download/v${pkgver//_/-}/franz_${pkgver//_/-}_amd64.deb"
         "${pkgname}.patch")
-sha256sums=('f7c03bc9c10b70e750551a3a255396ec7854b5c15efb7e6dd34f7c9361b0c0be'
+sha256sums=('862b7e8f5ec5c9237008fb59e38ab2eb6ea5dc18363525a8f246338137ac10bf'
             'a5a35da27f2cb51bc07e973b443437e4d4cfae4a081f6d2a264363ce550a6be0')
 
 package() {
