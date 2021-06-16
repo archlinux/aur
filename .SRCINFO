@@ -1,17 +1,19 @@
 pkgbase = yamagi-quake2-git
 	pkgdesc = Enhanced Quake II engine optimized for modern systems (development version)
-	pkgver = 7.40.r3.g8c60939b
+	pkgver = 8.00.r0.gf6483786
 	pkgrel = 1
 	url = http://www.yamagi.org/quake2/
 	install = yamagi-quake2.install
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = custom: Info-ZIP
 	license = GPL2
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = openal
 	makedepends = mesa
+	makedepends = curl
 	depends = sdl2
 	optdepends = quake2-demo: shareware data files
 	optdepends = openal: alternative audio backend
@@ -24,4 +26,3 @@ pkgbase = yamagi-quake2-git
 	sha256sums = 7049a1798e38a263fb2660b94fb70f5154fad1f807259d41649e12cea1a6757c
 
 pkgname = yamagi-quake2-git
-

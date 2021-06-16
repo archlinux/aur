@@ -1,17 +1,17 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=yamagi-quake2-git
-pkgver=7.40.r3.g8c60939b
+pkgver=8.00.r0.gf6483786
 pkgrel=1
 pkgdesc="Enhanced Quake II engine optimized for modern systems (development version)"
 url="http://www.yamagi.org/quake2/"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 license=('custom: Info-ZIP' 'GPL2')
 depends=('sdl2')
 optdepends=('quake2-demo: shareware data files'
             'openal: alternative audio backend'
             'curl: http download support')
-makedepends=('cmake' 'ninja' 'openal' 'mesa')
+makedepends=('cmake' 'ninja' 'openal' 'mesa' 'curl')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 install=${pkgname%-*}.install
@@ -49,6 +49,10 @@ package() {
   # game libraries
   install -m644 release/*.so "$pkgdir"/usr/lib/${pkgname%-*}
   install -Dm644 release/baseq2/game.so "$pkgdir"/usr/lib/${pkgname%-*}/baseq2/game.so
+
+  # shared game directory
+  install -d "$pkgdir"/usr/share/games/quake2
+  echo "You can put Quake 2 game files here." > "$pkgdir"/usr/share/games/quake2/README
 
   cd ../${pkgname%-*}
 
