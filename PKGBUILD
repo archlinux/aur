@@ -1,7 +1,7 @@
 # Maintainer: hamki <hamki.do2000@gmail.com>
 pkgname=nordic-darker-theme
 _pkgname=Nordic-darker
-pkgver=1.9.0
+pkgver=2.0.0
 pkgrel=1
 epoch=
 pkgdesc="Nordic is a Gtk3.20+ theme created using the awesome Nord color pallete."
@@ -20,10 +20,10 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/EliverLara/Nordic/releases/download/v$pkgver/$_pkgname.tar.xz"
+source=("https://github.com/EliverLara/Nordic/releases/download/$pkgver/$_pkgname.tar.xz"
 )
 noextract=()
-sha256sums=(63f4a3d634507b28660072c42fca6aa8eb51573e5b1d5307bd2a2e789c04373b)
+sha256sums=(fb9057fbb419cb0e598ec984e93bb2289909fe57e35e40a9833da226dbd5a774)
 
 package() {
   cd "${_pkgname}"
