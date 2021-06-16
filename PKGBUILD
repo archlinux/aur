@@ -3,15 +3,15 @@
 
 pkgname='python-django-storages'
 _module='django-storages'
-pkgver='1.10.1'
-pkgrel=2
+pkgver='1.11.1'
+pkgrel=1
 pkgdesc="Support for many storage backends (S3, Libcloud, etc) in Django."
 url="https://github.com/jschneier/django-storages"
 makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/d/django-storages/django-storages-${pkgver}.tar.gz")
-sha256sums=('652275ab7844538c462b62810276c0244866f345878256a9e0e86f5b1283ae18')
+sha256sums=('c823dbf56c9e35b0999a13d7e05062b837bae36c518a40255d522fbe3750fbb4')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
