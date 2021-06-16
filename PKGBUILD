@@ -2,7 +2,7 @@
 # pkg: pypi trakt-scrobbler poetry
 pkgname=trakt-scrobbler
 pkgver=1.2.1
-pkgrel=10
+pkgrel=11
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
 arch=(any)
@@ -24,8 +24,6 @@ depends=(
 	'python-jeepney>=0.6' #auto-deps
 	'python-filelock<4.0.0' #auto-deps
 	'python-filelock>=3.0.12' #auto-deps
-	'python>=3.7' #auto-deps
-	'python<4.0' #auto-deps
 )
 
 makedepends=(
