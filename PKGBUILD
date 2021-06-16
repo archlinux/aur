@@ -5,14 +5,14 @@ pkgname='gord-bin'
 pkgdesc='Discord TUI client - Fork of cordless'
 url="https://github.com/cainy-a/$_pkgname/"
 license=('BSD')
-pkgver=2021_05_06
+pkgver=2021_06_16
 pkgrel=1
 
 _pkgver=${pkgver//_/-}
 _tarname="${_pkgname}_${_pkgver}_linux_amd64"
 
-source=("https://github.com/cainy-a/$_pkgname/releases/download/${_pkgver}/$_tarname.tar.gz")
-md5sums=('39b63c47f782219c365a6b8712653c70')
+source=("https://github.com/yellowsink/$_pkgname/releases/download/${_pkgver}/$_tarname.tar.gz")
+md5sums=('5f7eca2c89fecbb78a5a9d2c6f7c2143')
 provides=('gord')
 conflicts=('gord-git')
 depends=('glibc')
