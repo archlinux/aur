@@ -1,6 +1,6 @@
 pkgbase = tachidesk
 	pkgdesc = A free and open source manga reader that runs extensions built for Tachiyomi
-	pkgver = 0.4.2_r645
+	pkgver = 0.4.3_r670
 	pkgrel = 2
 	url = https://github.com/Suwayomi/Tachidesk
 	arch = any
@@ -8,15 +8,14 @@ pkgbase = tachidesk
 	depends = java-runtime>=8
 	provides = tachidesk
 	conflicts = tachidesk-preview
-	noextract = Tachidesk-v0.4.2-r645.jar
-	source = https://github.com/Suwayomi/Tachidesk/releases/download/v0.4.2/Tachidesk-v0.4.2-r645.jar
+	noextract = Tachidesk-v0.4.3-r670.jar
+	source = https://github.com/Suwayomi/Tachidesk/releases/download/v0.4.3/Tachidesk-v0.4.3-r670.jar
 	source = tachidesk.desktop
 	source = tachidesk.png
 	source = tachidesk.sh
-	sha256sums = 9c6a4371e4c96611d975df871911728cf860a12c0e333dd0eab02733e492dff2
+	sha256sums = SKIP
 	sha256sums = 22a6a9a8c8198985759f66b35377d87bce82d46dbf7a4a7505b55621a9c5487e
 	sha256sums = 7528715b5b8d8360a9fd7dc096b51fd52bf3da671167e224b6cb637437fc4831
 	sha256sums = 3ac5c813b88f2dd4f38fac5dcd344f1f54dd9929fbb8faba758a972015d12c19
 
 pkgname = tachidesk
-
