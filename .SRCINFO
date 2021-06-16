@@ -1,6 +1,6 @@
 pkgbase = tess-git
 	pkgdesc = Tess hackable, simple, rapid and beautiful terminal for the new era
-	pkgver = 1.2r181.bd9728a
+	pkgver = 1.2r183.0bf1765
 	pkgrel = 1
 	url = https://github.com/SquitchYT/Tess.git
 	arch = x86_64
