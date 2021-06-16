@@ -1,7 +1,7 @@
 # Maintainer: hamki <hamki.do2000@gmail.com>
 pkgname=nordic-bluish-accent-theme
 _pkgname=Nordic-bluish-accent
-pkgver=1.9.0
+pkgver=2.0.0
 pkgrel=1
 epoch=
 pkgdesc="Nordic is a Gtk3.20+ theme created using the awesome Nord color pallete."
@@ -20,10 +20,10 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/EliverLara/Nordic/releases/download/v$pkgver/$_pkgname.tar.xz"
+source=("https://github.com/EliverLara/Nordic/releases/download/$pkgver/$_pkgname.tar.xz"
 )
 noextract=()
-sha256sums=(39518893d8a4f02a7d5c55bf04181c9cff3fe3fd4a822cbc1222c7ad78a3cd7e)
+sha256sums=(ce6f4b582a256502662ef9d939b6dd4d8eb43301555ffa038c0ee54545f87e86)
 
 package() {
   cd "${_pkgname}"

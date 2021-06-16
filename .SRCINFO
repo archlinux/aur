@@ -1,13 +1,12 @@
 pkgbase = nordic-bluish-accent-theme
 	pkgdesc = Nordic is a Gtk3.20+ theme created using the awesome Nord color pallete.
-	pkgver = 1.9.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/EliverLara/Nordic
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	source = https://github.com/EliverLara/Nordic/releases/download/v1.9.0/Nordic-bluish-accent.tar.xz
-	sha256sums = 39518893d8a4f02a7d5c55bf04181c9cff3fe3fd4a822cbc1222c7ad78a3cd7e
+	source = https://github.com/EliverLara/Nordic/releases/download/2.0.0/Nordic-bluish-accent.tar.xz
+	sha256sums = ce6f4b582a256502662ef9d939b6dd4d8eb43301555ffa038c0ee54545f87e86
 
 pkgname = nordic-bluish-accent-theme
-
