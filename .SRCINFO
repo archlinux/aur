@@ -21,4 +21,3 @@ pkgbase = xkb-switch-i3-git
 	sha1sums = SKIP
 
 pkgname = xkb-switch-i3-git
-
