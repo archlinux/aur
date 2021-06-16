@@ -15,7 +15,7 @@ noextract=($pkgname-$pkgver.tar.gz)
 _source=https://github.com/copasi/COPASI/releases/download/Build-$_pkgver
 source_i686=($pkgname-$pkgver.sh::$_source/COPASI-$pkgver-Linux-32bit.sh)
 source_x86_64=($pkgname-$pkgver.sh::$_source/COPASI-$pkgver-Linux-64bit.sh)
-sha256sums=('9f699f8a9864389951fa367d0cb0ff260a4cd309c3f73335f6f627b0b4b1bd44')
+sha256sums=('9576e4a9b2c7e74c91d0e1c0b39fcb20531e8fb4f21c5e8ac95b048609702923')
 sha256sums_i686=('b0368710ec6318d32b062768b2911b42ac2cd22d3da3782cf458fe49d98c9033')
 sha256sums_x86_64=('d765272424fbac69ff1c1f6430e44f1f728a9dbf65758fc2570b870996cf28e7')
 
