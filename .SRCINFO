@@ -1,18 +1,23 @@
 pkgbase = dirsearch-git
 	pkgdesc = Web path scanner/fuzzer, written in Python
-	pkgver = 0.4.1.alpha_2.r81.be2828a
+	pkgver = 0.4.2.beta1.r0.1f3fc77
 	pkgrel = 1
 	url = https://github.com/maurosoria/dirsearch
 	changelog = CHANGELOG.md
 	arch = any
 	license = GPL2
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
+	depends = python-certifi
+	depends = python-chardet
+	depends = python-urllib3
+	depends = python-cryptography
+	depends = python-pysocks
+	depends = python-cffi
 	provides = dirsearch
 	conflicts = dirsearch
-	backup = usr/lib/dirsearch/default.conf
 	source = git+https://github.com/maurosoria/dirsearch.git
 	sha256sums = SKIP
 
 pkgname = dirsearch-git
-

@@ -1,8 +1,9 @@
 # Changelog
 
-Currently working...
+v0.4.2 (2021.7.21)
 ---------
 - Fixed critical bugs from v0.4.1
+- More accurate
 - Exclude responses by redirects
 - URLs from STDIN
 - Fixed the CSV Injection vulnerability (https://www.exploit-db.com/exploits/49370)
@@ -11,8 +12,9 @@ Currently working...
 - Added max-runtime option
 - Recursion on specified status codes
 - Max request rate
-- Support basic authentication
+- Support several authentication types
 - Deep recursive scan
+- HTML report format
 - Option to force recurse on all found paths (not just the ones end with /)
 - Option to skip target by specified status codes
 
