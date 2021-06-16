@@ -1,4 +1,4 @@
-# Maintainer: kedap <kqybspvj@hi2.in>
+# Maintainer: kedap <kedap.dev@protonmail.com>
 
 pkgname=apmpkg
 pkgver=1.3.0
