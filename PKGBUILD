@@ -1,7 +1,7 @@
 # Maintainer: LightDot <lightdot -a-t- g m a i l>
 
 pkgname=tg
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="An advanced cross-platform solution for timing mechanical watches, a timegrapher. Also known as tg-timer."
 arch=('x86_64')
@@ -11,8 +11,8 @@ url="https://github.com/xyzzy42/tg"
 license=('GPL2')
 depends=('gtk3' 'portaudio' 'fftw')
 provides=('tg-timer')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xyzzy42/tg/archive/v0.5.2.tar.gz")
-sha256sums=('41077edc0cdd262e70ade0f59ea31cfa7947fcd2e3bf02fe6694034ec4ec2f25')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xyzzy42/tg/archive/tg-0.6.0-tpiepho.tar.gz")
+sha256sums=('f904a995e5d3ba3c61fcbab5603a8a9565c6b8e9efd14130e06e5854dd8adf06')
 
 build() {
     cd "${pkgname}-${pkgver}"
