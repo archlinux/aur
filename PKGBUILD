@@ -15,13 +15,13 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xyzzy42/tg/archive/v0.6
 sha256sums=('f904a995e5d3ba3c61fcbab5603a8a9565c6b8e9efd14130e06e5854dd8adf06')
 
 build() {
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver}-tpiepho"
     ./autogen.sh
     ./configure --prefix=/usr
     make
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver}-tpiepho"
     make DESTDIR="${pkgdir}" install
 }
