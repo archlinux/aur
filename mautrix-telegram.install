@@ -4,7 +4,7 @@ post_install() {
 		the original files have been installed as well to act as documentation in the case a user finds compatibility problems
 
 		after editing /etc/mautrix-telegram/config.yaml, generate a registration file using:
-		# mautrix-telegram -b /usr/share/mautrix-telegram/example-config.yaml -c /etc/mautrix-telegram/config.yaml -r /etc/mautrix-telegram/registration.yaml -g
+		# python -m mautrix_telegram -b /usr/share/mautrix-telegram/example-config.yaml -c /etc/mautrix-telegram/config.yaml -r /etc/mautrix-telegram/registration.yaml -g
 
 		this is the last version of mautrix-telegram supporting sqlite, please refer to the release notes for db migration: https://github.com/tulir/mautrix-telegram/releases/tag/v0.10.0
 	EOF
