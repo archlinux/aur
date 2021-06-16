@@ -19,13 +19,11 @@ depends=('alsa-lib' 'gtk3' 'jack' 'libpulse' 'ttf-charis-sil' 'ttf-sil-doulos')
 optdepends=('ttf-sil-fonts')
 _url="https://github.com/$pkgname/$pkgname"
 source=("$pkgname-$pkgver.tar.gz::$_url/archive/v$pkgver.tar.gz"
-        "$pkgname-$pkgver-$pkgrel-gcc.patch::$_url/commit/e4aca10.patch"
         "$pkgname.1"
         "$pkgname.desktop"
         "$pkgname.svg"
         "$pkgname.xpm")
 sha256sums=('85447305f82f5fbac1bee4a3b428a9946e98d1101005eaff5616862877b2437d'
-            '4cff8173be94c6b9f8a4745d12da73565a6333fb74296759140ca4aaf128e50f'
             '21ee03cae45be634c57c167c2dfbdfd9d9b7feadb98e0124413d9426c199e81c'
             '94720aedc8e9c9e9d53b3230d79ccaae551b5bc5e6986528664311d55f3cce5a'
             'db6c7568f6e13b4ce7c37bd9fcf289832867f79ba7d7fc48c4f13f0045ad98f1'
@@ -34,7 +32,6 @@ sha256sums=('85447305f82f5fbac1bee4a3b428a9946e98d1101005eaff5616862877b2437d'
 prepare() {
     cd "$pkgname-$pkgver"
     cp makefiles/makefile.defs.linux.pulse makefile.defs
-    patch -p1 < "../$pkgname-$pkgver-$pkgrel-gcc.patch"
 }
 
 build() {
