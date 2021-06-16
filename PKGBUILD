@@ -1,9 +1,10 @@
+# Maintainer: Sylvain POULAIN <sylvain.poulain at giscan dot com>
 # Maintainer: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Hannes Graeuler < hgraeule [at] uos [dot] de >
 
 pkgname=sfcgal
-pkgver=1.3.9
-pkgrel=2
+pkgver=1.3.10
+pkgrel=1
 pkgdesc="Wrapper around the CGAL library that intents to implement 2D and 3D operations on OGC standards models"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/Oslandia/SFCGAL"
@@ -12,7 +13,7 @@ provides=('sfcgal')
 depends=('cgal>=4.1' 'boost' 'gmp' 'mpfr' 'openscenegraph')
 makedepends=('git' 'cmake')
 source=("https://gitlab.com/Oslandia/SFCGAL/-/archive/v${pkgver}/SFCGAL-v${pkgver}.tar.gz")
-sha256sums=('2451cb6df24853c7e59173eec0068e3263ab625fcf61add4624f8bf8366ae4e3')
+sha256sums=('4e39b3b2adada6254a7bdba6d297bb28e1a9835a9f879b74f37e2dab70203232')
 
 build() {
   cd "${srcdir}/SFCGAL-v${pkgver}"
