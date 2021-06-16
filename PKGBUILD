@@ -1,35 +1,42 @@
-# Maintainer: Jun Bo Bi <jambonmcyeah@gmail.com>
+# Maintainer: tytan652 <tytan652 at tytanium dot xyz>
+# Contributor: Jun Bo Bi <jambonmcyeah@gmail.com>
 
 pkgname=netcoredbg
-pkgver=latest
-pkgrel=2
+_ver=1.2.0-786
+pkgver=`echo "$_ver" | tr - _`
+pkgrel=1
 pkgdesc='Debugger for .NET Core runtime'
 url='https://github.com/Samsung/netcoredbg'
-license=(MIT)
-arch=(x86_64)
-depends=(dotnet-host dotnet-runtime dotnet-sdk)
-makedepends=(git cmake ninja clang)
+license=("MIT")
+arch=("x86_64")
+depends=("dotnet-host>=3.1" "dotnet-runtime>=3.1")
+makedepends=("git" "cmake" "clang" "dotnet-sdk>=3.1")
 optdepends=()
-source=("${url}/archive/${pkgver}.tar.gz" "fix.patch")
-sha256sums=('SKIP' "d4f18980c86dd91511616b3dcbd9da806f7e355ec4d2b66edeede7465037d023")
-
-prepare() {
-  cd "netcoredbg-${pkgver}"
-  patch -p1 < ${srcdir}/fix.patch
-  mkdir -p "${srcdir}/build"
-}
+source=(
+    "$pkgname-$_ver.tar.gz::https://github.com/Samsung/netcoredbg/archive/refs/tags/$_ver.tar.gz"
+)
+sha256sums=(
+    "818c2df57f3f691d758829c22f532eb96212c63cd9504b4843eb068ee655c2da"
+)
 
 build() {
-  cd "${srcdir}/build"
-  CC=clang CXX=clang++ \
-  cmake "${srcdir}/netcoredbg-${pkgver}" \
-    -GNinja \
+  cd "$pkgname-$_ver"
+  mkdir -p build; cd build
+
+  export CC=clang
+  export CXX=clang++
+
+  cmake \
     -DDOTNET_DIR=/usr/share/dotnet \
-    -DCMAKE_INSTALL_PREFIX=/usr/bin
-  ninja
+    -DCMAKE_INSTALL_PREFIX=/usr/bin ..
+
+  make
 }
 
 package() {
+  cd "$pkgname-$_ver"
+  install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  
   cd build
-  DESTDIR="$pkgdir" ninja install
+  make install DESTDIR="$pkgdir"
 }
