@@ -1,14 +1,14 @@
 pkgbase = clight-gui-git
 	pkgdesc = Qt GUI for Clight
 	pkgver = r61.48c9579
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nullobsi/clight-gui
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
 	makedepends = qt5-tools
-	depends = clight-git
+	depends = clight
 	depends = qt5-charts
 	provides = clight-gui
 	conflicts = clight-gui
@@ -18,4 +18,3 @@ pkgbase = clight-gui-git
 	sha256sums = 73affb7c39501d2ade8f517b07f8a2ea6e229dab0f9c28b6bd6c25b65b5f9ec2
 
 pkgname = clight-gui-git
-

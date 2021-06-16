@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=clight-gui-git
 pkgver=r61.48c9579
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt GUI for Clight"
 arch=('x86_64')
 url="https://github.com/nullobsi/clight-gui"
 license=('GPL3')
-depends=('clight-git' 'qt5-charts')
+depends=('clight' 'qt5-charts')
 makedepends=('git' 'cmake' 'qt5-tools')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
