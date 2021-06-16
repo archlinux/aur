@@ -8,7 +8,7 @@ pkgbase = libavl
 	license = GNU
 	makedepends = git
 	provides = libavl
-	source = git+https://git.savannah.gnu.org/git/libavl.git#branch=master
+	source = git+https://git.savannah.gnu.org/git/avl.git#branch=master
 	md5sums = SKIP
 
 pkgname = libavl

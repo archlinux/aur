@@ -18,5 +18,5 @@ package() {
   cd "${srcdir}/${_gitrepository}"
   CC='cc -fPIC' make programs
   gcc -shared -o libavl.so avl.o bst.o bsts.o pavl.o pbst.o prb.o rb.o rtavl.o rtbst.o rtrb.o slr.o tavl.o tbst.o trb.o
-  install -D -m755 libavl.so "${pkgdir}/usr/local/lib"
+  install -D -m755 libavl.so "${pkgdir}/usr/local/lib/libavl.so"
 }
