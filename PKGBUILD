@@ -1,12 +1,12 @@
 # Maintainer: Daniil "danogentili" Gentili <daniil@daniil.it>
 pkgname=plotframes
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Node.js frame plotter inspired by FFmpeg plotframes"
 arch=(any)
 url="https://github.com/rodrigopolo/plotframes"
 license=('MIT')
-depends=('nodejs')
+depends=('nodejs' 'gnuplot')
 makedepends=('npm')
 
 source=("https://github.com/danog/plotframes/archive/refs/tags/v${pkgver}.tar.gz")
