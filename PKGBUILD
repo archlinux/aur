@@ -3,7 +3,7 @@
 pkgname=ipe
 _dirver=7.2
 pkgver=7.2.24
-pkgrel=2
+pkgrel=3
 pkgdesc="The extensible drawing editor"
 url="http://ipe.otfried.org/"
 depends=('lua53' 'qt5-base' 'qt5-svg' 'freetype2' 'zlib' 'poppler' 'hicolor-icon-theme' 'gsl' 'libspiro')
@@ -14,6 +14,7 @@ source=("https://github.com/otfried/$pkgname/releases/download/v$pkgver/$pkgname
         "ipe.bash-completion"
         "config.patch"
         "ipe.desktop"
+        "issue396.patch"
         )
 
 prepare() {
@@ -24,9 +25,12 @@ prepare() {
   sed -i -e 's/"ipefonts.h"/<ipefonts.h>/' ipepresenter/ipepresenter.h
   sed -i -e 's/"ipethumbs.h"/<ipethumbs.h>/' ipepresenter/ipepresenter_qt.cpp
 
-  # https://github.com/otfried/ipe-issues/issues/392
   # TODO: remove after 7.2.25
+  # https://github.com/otfried/ipe-issues/issues/392
   sed -i -e 's/(\*ui)->setBookmarks(no, &bm\[0\]);/(*ui)->setBookmarks(no, bm.data());/' ipe/uilua.cpp
+
+  # https://github.com/otfried/ipe-issues/issues/396
+  patch -p2 -l < "$srcdir/issue396.patch"
 }
 
 build() {
@@ -71,4 +75,5 @@ package() {
 md5sums=('79a9e7d1fc0cca08e250c3043333fe18'
          '694f0d5402655901be385647e5d8d6e3'
          'd4e289bce01302a8b76a0df294c7de40'
-         '19fd2cac2564125afa0149105d00d3dd')
+         '19fd2cac2564125afa0149105d00d3dd'
+         '1ccc2c144f39b9fa424ed2e9bb8b162e')
