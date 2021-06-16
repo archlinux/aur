@@ -6,7 +6,7 @@ pkgdesc="File::Scan::ClamAV - Connect to a local Clam Anti-Virus clamd service"
 url="https://metacpan.org/release/$_dist"
 
 pkgver=1.95
-pkgrel=4
+pkgrel=5
 
 arch=('any')
 license=('PerlArtistic')
