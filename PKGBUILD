@@ -2,12 +2,12 @@
 
 pkgname="kindleforpc"
 pkgver="1.31.60170"
-pkgrel=1
+pkgrel=2
 pkgdesc="Kindle for PC using wine"
 arch=(i686 x86_64)
-url="amazon.ca"
+url="amazon.com"
 license=('custom')
-depends=(wine desktop-file-utils)
+depends=(wine lib32-gnutls wine-gecko wine-mono desktop-file-utils)
 makedepends=(p7zip)
 source=(
 	"https://s3.amazonaws.com/kindleforpc/$(echo ${pkgver} | cut -d "." -f 3)/KindleForPC-installer-${pkgver}.exe"
