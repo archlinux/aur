@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=JJazzLab-X
+Comment=A Midi-based framework dedicated to backing tracks generation
+Exec=jjazzlab
+Terminal=false
+StartupNotify=true
+Categories=Audio;Sequencer;Midi;AudioVideoEditing;Music;AudioVideo;
