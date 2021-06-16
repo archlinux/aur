@@ -2,7 +2,7 @@ pkgbase = escapegoat
 	pkgdesc = Escape Goat is a puzzle platformer about a goat
 	pkgver = 20131018
 	pkgrel = 1
-	url = http://www.magicaltimebean.com/escape-goat/
+	url = https://www.magicaltimebean.com/escape-goat/
 	arch = i686
 	arch = x86_64
 	license = custom:commercial
@@ -17,4 +17,3 @@ pkgbase = escapegoat
 	md5sums = 0f5dc590a0f437ebccc770ca9f2a16c4
 
 pkgname = escapegoat
-
