@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-audio-common
 	pkgdesc = ROS - Common code for working with audio in ROS.
-	pkgver = 0.3.6
+	pkgver = 0.3.11
 	pkgrel = 1
 	url = https://wiki.ros.org/audio_common
 	arch = any
@@ -12,8 +12,7 @@ pkgbase = ros-noetic-audio-common
 	depends = ros-noetic-audio-common-msgs
 	depends = ros-noetic-audio-play
 	depends = ros-noetic-sound-play
-	source = ros-noetic-audio-common-0.3.6.tar.gz::https://github.com/ros-drivers/audio_common/archive/0.3.6.tar.gz
-	sha256sums = f70381cc4be7b359e9dd7fdf39a397d6fb7be8046d891a8e7be4656fb96f5950
+	source = ros-noetic-audio-common-0.3.11.tar.gz::https://github.com/ros-drivers/audio_common/archive/0.3.11.tar.gz
+	sha256sums = 0c72196d0d551bb1b9a1c9c134bbfd1b3073529c93a495c4d829911c38db3b1d
 
 pkgname = ros-noetic-audio-common
-

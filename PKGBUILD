@@ -2,7 +2,7 @@ pkgdesc="ROS - Common code for working with audio in ROS."
 url='https://wiki.ros.org/audio_common'
 
 pkgname='ros-noetic-audio-common'
-pkgver='0.3.6'
+pkgver='0.3.11'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -28,7 +28,7 @@ depends=(
 
 _dir="audio_common-${pkgver}/audio_common"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/audio_common/archive/${pkgver}.tar.gz")
-sha256sums=('f70381cc4be7b359e9dd7fdf39a397d6fb7be8046d891a8e7be4656fb96f5950')
+sha256sums=('0c72196d0d551bb1b9a1c9c134bbfd1b3073529c93a495c4d829911c38db3b1d')
 
 build() {
   # Use ROS environment variables
