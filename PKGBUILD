@@ -1,7 +1,7 @@
 # Maintainer: hamki <hamki.do2000@gmail.com>
 pkgname=nordic-darker-standard-buttons-theme
 _pkgname=Nordic-darker-standard-buttons
-pkgver=1.9.0
+pkgver=2.0.0
 pkgrel=1
 epoch=
 pkgdesc="Nordic is a Gtk3.20+ theme created using the awesome Nord color pallete."
@@ -20,10 +20,10 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/EliverLara/Nordic/releases/download/v$pkgver/$_pkgname.tar.xz"
+source=("https://github.com/EliverLara/Nordic/releases/download/$pkgver/$_pkgname.tar.xz"
 )
 noextract=()
-sha256sums=(8b947c2428af5df7c39f1e5b430819752be2f6bb5bee8eebd714e099b2d42e3f)
+sha256sums=(11b42aaada541eef69fd223aff66488c8180003db4c4894521e100a5f3a0b960)
 
 package() {
   cd "${_pkgname}"
