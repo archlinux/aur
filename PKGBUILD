@@ -1,19 +1,17 @@
 # Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=ti99sim
-pkgver=0.15.0
-pkgrel=4
+pkgver=0.16.0
+pkgrel=1
 pkgdesc='Texas Instruments TI-99/4A Home Computer Emulator'
 arch=('i686' 'x86_64')
 url='http://www.mrousseau.org/programs/ti99sim'
 license=('GPL')
 makedepends=('sdl')
 depends=('sdl')
-
 source=("${url}/archives/${pkgname}-${pkgver}.src.tar.xz"
         "https://www.99er.net/files/TIMRaD2.Zip") # Zip [sic]
-
-sha256sums=('deb74cf88956434ea3058f80bddb3eb3674d9773155f6d5aa1533feebb8ba88e'
+sha256sums=('14bd72f372fe1a253c3a25bca579d29b5c3e47aff2f22622188dc4023576b159'
             'bf01737f996a335f4be84d2b170d2e16704b8242bd8447c5b6debb5b4f959b55')
 
 build() {
