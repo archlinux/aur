@@ -18,6 +18,7 @@ pkgbase = enlightenment-git-asan
 	makedepends = binutils
 	makedepends = fakeroot
 	makedepends = ccache
+	makedepends = wayland-protocols
 	depends = efl-git
 	depends = udisks2
 	depends = wayland
@@ -48,4 +49,3 @@ pkgbase = enlightenment-git-asan
 	sha256sums = SKIP
 
 pkgname = enlightenment-git-asan
-
