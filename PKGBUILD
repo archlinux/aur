@@ -2,7 +2,7 @@
 # Maintainer (core/linux): Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-x32
-pkgver=5.12.10.arch1
+pkgver=5.12.11.arch1
 pkgrel=1
 pkgdesc='Linux with x32 ABI'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -26,7 +26,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '0d0691aa0f80fea0d9d204c05a845416dd443f3bb629cbb68e098e4d19cc841d'
+            'df41f6d2cc9f9edad4cb3aa4c9fe74790110320d0beb40323f4ff40df48c6940'
             'ef2be62540e48cc1d2343c619b9c8b7791db5e2f966e1a0bb8c86f5c7de74562')
 
 export KBUILD_BUILD_HOST=archlinux
