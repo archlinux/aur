@@ -2,8 +2,8 @@
 
 pkgbase=linux-amd-znver2
 _srcname=linux
-gitver=v5.12.10
-pkgver=5.12.v.10
+gitver=v5.12.11
+pkgver=5.12.v.11
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -20,20 +20,16 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
         'linux.install'
 	# patch from our gentoo overlords
 	'5010_enable-cpu-optimizations-universal.patch'
-	# drm-amd patch to fix suspend/c3 on certain laptop models
-	'suspend.patch'
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '68ece343aca64442127bb723b1f0e9aba21030b51ba30686f6b8922beb2944ce'
+            'cd3262b806627ae00fd7887b67c68536b1dc6402c3ccd18d7a0317a7669cf277'
             #.preset file
             '60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c'
             #linux install file
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             #gentoopatch
             '9083b94bf9f547cceeed9fe2f37fb201e42d5b00734a86e4ea528447a59d4b9a'
-            #suspendpatch
-            '8092380ed739336dd5876f181778ef22c643b00795132d2e3e8aa51dc2e662fd'
 )
 
 _kernelname=${pkgbase#linux}
