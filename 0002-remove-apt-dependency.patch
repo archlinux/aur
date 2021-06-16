@@ -34,17 +34,17 @@ index 6c3e7967..32760e65 100644
  use crate::tools::ticket::{self, Empty, Ticket};
  
 -pub mod apt;
+ pub mod certificates;
+ pub mod config;
  pub mod disks;
- pub mod dns;
- pub mod network;
 @@ -306,7 +305,6 @@ fn upgrade_to_websocket(
  }
  
  pub const SUBDIRS: SubdirMap = &[
 -    ("apt", &apt::ROUTER),
+     ("certificates", &certificates::ROUTER),
+     ("config", &config::ROUTER),
      ("disks", &disks::ROUTER),
-     ("dns", &dns::ROUTER),
-     ("journal", &journal::ROUTER),
 diff --git a/src/tools.rs b/src/tools.rs
 index 08f9d22f..efb63309 100644
 --- a/src/tools.rs

@@ -18,14 +18,12 @@ source=(
     "$pkgname-$pkgver::git://git.proxmox.com/git/proxmox-backup.git#tag=v$pkgver"
     "0001-adapt-cargo-toml-and-remove-systemd-linking.patch"
     "0002-remove-apt-dependency.patch"
-    "0003-server-rest-fix-new-type-ambiguity.patch"
     "elf-strip-unused-dependencies.sh"
 )
 sha512sums=(
     'SKIP'
     '84bf8e7136186f66345fb00b111c3a67fdc716441d33b59b3ed5cbf2386378e3e91d53973f36a35ee1928321c4e5563440717382a4f4007c0410ace31b65dfe4'
-    '35e3aa7369c481dde640ba8a97f0d4e95a73907f2a985382a5ed230d762e5b645a81a72c9fdd19e2dead7de51c5f7d051379ad6340cbbc245890e71398e45381'
-    '62c2173777fe8b85bb1c3d0517b8e262e3b864eef38a22880e6d44a365658ab1e6ce0811a17fea9299657786ed56378cbf4a78e116e2ff772d593ed3e25a6b6a'
+    'f2e800ff3fddc71a6812a7b6513a19c7cbcab963dd8cb7acc482c99fb7a05aeb9a2affbfbc970b870962c56d1936b8ceec51722b07b33f910cbfbed0b7890083'
     '8ebadc9854ff8bcd4e1e2e849728ef5724164b834793d0dda989e72ff0180d44b1318fdd6a4c1bf29b6d93bb8241c8dc47839d7d6a4b9f59a8a03f7e208e9991'
 )
 
@@ -38,7 +36,6 @@ prepare() {
   cd "$pkgname-$pkgver"
   _apply "0001-adapt-cargo-toml-and-remove-systemd-linking.patch"
   _apply "0002-remove-apt-dependency.patch"
-  _apply "0003-server-rest-fix-new-type-ambiguity.patch"
   rm src/api2/node/apt.rs src/tools/apt.rs src/bin/proxmox-daily-update.rs # belongs to patch 0002
 }
 
