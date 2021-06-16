@@ -1,6 +1,6 @@
 pkgbase = libclc12-git
 	pkgdesc = Library requirements of the OpenCL C programming language
-	pkgver = 12.0.1_rc1.19.g5b149c437194
+	pkgver = 12.0.1_rc1+30+gf78f530bd384
 	pkgrel = 1
 	url = https://libclc.llvm.org/
 	arch = any

@@ -1,5 +1,5 @@
 pkgname=libclc12-git
-pkgver=12.0.1_rc1.19.g5b149c437194
+pkgver=12.0.1_rc1+30+gf78f530bd384
 pkgrel=1
 pkgdesc="Library requirements of the OpenCL C programming language"
 arch=('any')
@@ -23,9 +23,9 @@ pkgver() {
 
   _gitdesc=$(git describe --long --tags)
   if [[ "${_gitdesc}" =~ "rc" ]]; then
-    _gitdesc=$(echo "${_gitdesc}" | cut -f3-5 -d- | tr '-' '.')
+    _gitdesc="_$(echo "${_gitdesc}" | cut -f3-5 -d- | tr '-' '+')"
   else
-    _gitdesc="r$(echo "${_gitdesc}" | cut -f3-4 -d- | tr '-' '.')"
+    _gitdesc="+$(echo "${_gitdesc}" | cut -f3-4 -d- | tr '-' '+')"
   fi
 
   echo "$(
@@ -33,7 +33,7 @@ pkgver() {
       llvm/CMakeLists.txt |
       grep -oP "\d+" |
       xargs | tr ' ' '.'
-  )_${_gitdesc}"
+  )${_gitdesc}"
 
 }
 
@@ -59,6 +59,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
   ninja
+
 }
 
 package() {
