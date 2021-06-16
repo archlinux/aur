@@ -1,7 +1,7 @@
 # Maintainer: Antoine Martin <antoine.martin@protonmail.com>
 
 pkgname="kindleforpc"
-pkgver="1.20.47037"
+pkgver="1.31.60170"
 pkgrel=1
 pkgdesc="Kindle for PC using wine"
 arch=(i686 x86_64)
@@ -17,7 +17,7 @@ source=(
 	"kindleforpc.png"
 	)
 sha256sums=(
-	"cb20581d3455d458c7ac4bafa5c67dcfc5186c7b35951168efcf5a8263706b47"
+	"3c5eaace1a3db0e67231791181b24174fa2978b2b37ff6a25d238299c1cb29da"
 	"de87f83a4c9b165ba1d225b28359fc9aaf0c8b449340a041ce75ae35776fbde7"
 	"1d80da4ee0f78c37ebed19c2e0aff459eba3eac4bb80133170e029a6c831a1cd"
 	"db8df5930d4a63ee1298450c8702d2ebba0f0794e1232abb9a69f79227c5eeac"
