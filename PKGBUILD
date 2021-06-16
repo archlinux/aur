@@ -6,7 +6,7 @@ _name="${pkgname%-git}"
 
 pkgver() { git -C "$_name" describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g;s/\(alpha\)\([0-9]\+\)/\1_\2/'; }
 pkgver=0.4.2.beta1.r0.1f3fc77
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Web path scanner/fuzzer, written in Python'
 arch=('any')
@@ -28,7 +28,6 @@ sha256sums=('SKIP')
 package() {
   cd "$_name"
   PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1
-  install -dm755 "$pkgdir/usr/lib/$_name"
   install -Dm644 *.md -t"$pkgdir/usr/share/doc/$_name/"
 }
 
