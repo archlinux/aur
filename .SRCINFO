@@ -1,0 +1,16 @@
+pkgbase = python-cleo
+	pkgdesc = create beautiful and testable command-line interfaces
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/sdispater/cleo
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	depends = python>=3.5
+	provides = python-cleo=0.8.1
+	conflicts = python-cleo
+	source = cleo-0.8.1.tar.gz::https://files.pythonhosted.org/packages/source/c/cleo/cleo-0.8.1.tar.gz
+	sha256sums = 3d0e22d30117851b45970b6c14aca4ab0b18b1b53c8af57bed13208147e4069f
+
+pkgname = python-cleo
