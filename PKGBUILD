@@ -56,7 +56,7 @@ _minor=11
 _srcname=linux-${_major}
 pkgbase=linux-cacule-rdb
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -73,7 +73,7 @@ source=(
   "${_patchsource}/arch-patches-v6/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
   "${_caculepaches}/v5.12/cacule-5.12.patch"
   "${_caculepaches}/v5.12/rdb-5.12.patch"
-  "${_patchsource}/cpu-patches-v3/0001-cpu-patches.patch"
+  "${_patchsource}/cpu-patches-v5/0001-cpu-patches.patch"
   "${_patchsource}/futex-patches-v2/0001-futex-resync-from-gitlab.collabora.com.patch"
   "${_patchsource}/futex2-stable-patches-v6/0001-futex2-resync-from-gitlab.collabora.com.patch"
   "${_patchsource}/wine-esync-patches/0001-v5.12-winesync.patch"
@@ -263,8 +263,8 @@ prepare() {
           scripts/config --enable CONFIG_CONTEXT_TRACKING
           scripts/config --disable CONFIG_CONTEXT_TRACKING_FORCE
           echo "Enabling KBUILD_CFLAGS -O3..."
-          scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
-          scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
+          scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
+          scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
           echo "Enable PREEMPT"
           scripts/config --disable CONFIG_PREEMPT_NONE
           scripts/config --disable CONFIG_PREEMPT_VOLUNTARY
@@ -527,7 +527,7 @@ sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
             'b2139a29b0cabfb029e51c81f386c698ef209e43cbd93a3515892785662e4c74'
             'a90ec03375bf97c06bf2ca3f1fd0224deee8408077f71447326b2796b53652a1'
             '7d0fc1b08da8d9a1aa3b2787dbfab46723dfa28bd7f72990baa91eb501cb7db6'
-            'f9f8a53145ab1d048ca728a560e878303af7cbea425c50aa0e49afd67c9a465c'
+            '41e44b0fc80cf2e60e23addccdcf23e0aea66a9d9f9d4d1bfe9440dfec6be1ea'
             '4ff5c33785445f103d479196bb33c4f991d6c5f56df5c643ec6d2451368f0605'
             'db4707a6430a80447fabc2517e554cf9e055a4039b362f683bd9dd7f04d7a667'
             'f7c68f43599c53ce19a14e6f296e5e0820257e80acb9f52a1dec036d0d9a62ab'
