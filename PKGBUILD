@@ -5,7 +5,7 @@
 
 pkgname=antsword
 pkgver=2.1.12
-pkgrel=2
+pkgrel=3
 pkgdesc="AntSword is a cross-platform webshell management toolkit."
 arch=('any')
 url="https://www.yuque.com/antswordproject"
@@ -26,7 +26,7 @@ sha256sums=("e590e98deea1130932e702056ad13ed7a6805e45c0f3695ae6e76f1088c356f9"
         "93fb7eb6f00647f0f2bdb82a86176a8413d0a986a37ce7972799fb95d4f02b01")
 
 prepare() {
-	find -iname "$pkgname-$pkgver" -exec mv {} "$pkgname-$pkgver" \;
+	find . -depth -type d -iname "$pkgname-$pkgver" -exec mv {} "$pkgname-$pkgver" \;
 	cd "$pkgname-$pkgver"
 	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
 	rm -rf node_modules
@@ -34,15 +34,26 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-	convert "$srcdir/$pkgname.png" -resize 512x512 "$srcdir/512x512.png"
-	convert "$srcdir/$pkgname.png" -resize 32x32 "$srcdir/32x32.png"
+	# Convet icons
+	local res
+	for res in 32x32 256x256; do
+		convert "$srcdir/$pkgname.png" -resize 512x512 "$srcdir/$res.png"
+	done
 	npm install
 }
 
 package() {
-	install -Dt  "$pkgdir/usr/lib/antsword" "$pkgname-$pkgver"
-	install -Dm 444 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications"
+	# Place files
+	install -d "$pkgdir/usr/lib"
+	cp -a "$srcdir/$pkgname-$pkgver" "$pkgdir/usr/lib/$pkgname"
+
+	# Place launcher script
 	install -Dm 551 "$srcdir/$pkgname" "$pkgdir/usr/bin"
-	install -DT "$srcdir/512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
-	install -DT "$srcdir/32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
+
+	# Place desktop entry and icon
+	desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications" "$srcdir/$pkgname.desktop"
+	local res
+	for res in 32x32 256x256; do
+		install -DT "$srcdir/$res.png" "$pkgdir/usr/share/icons/hicolor/$res/apps/$pkgname.png"
+	done
 }
