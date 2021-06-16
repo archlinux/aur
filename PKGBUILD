@@ -3,7 +3,7 @@
 
 _pkgname=gns3-gui
 pkgname="$_pkgname"-git
-pkgver=v2.2.20.r0.gf90267b4
+pkgver=v2.2.22.r0.g963bbb7b
 pkgrel=1
 pkgdesc='GNS3 network simulator. Graphical user interface package.'
 arch=('any')
@@ -43,6 +43,7 @@ prepare() {
     # Arch usually has the latest versions. Patch requirements to allow them.
     sed -i \
         -e 's|^psutil==5\.8\.0$|psutil>=5.8.0|' \
+        -e 's|^sentry-sdk==1\.1\.0$|sentry-sdk>=1.1.0|' \
         -e 's|^distro==1\.5\.0$|distro>=1.5.0|' \
         requirements.txt
 }
