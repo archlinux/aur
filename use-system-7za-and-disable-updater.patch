@@ -1,5 +1,5 @@
 diff --git i/src/app/desktop/utils/index.js w/src/app/desktop/utils/index.js
-index 9d23894..37ae04d 100644
+index 343d5ad8..45d5a927 100644
 --- i/src/app/desktop/utils/index.js
 +++ w/src/app/desktop/utils/index.js
 @@ -5,7 +5,6 @@ import { extractFull } from 'node-7z';
@@ -10,7 +10,7 @@ index 9d23894..37ae04d 100644
  import path from 'path';
  import crypto from 'crypto';
  import { exec, spawn } from 'child_process';
-@@ -301,14 +301,7 @@ export const isLatestJavaDownloaded = async (meta, userData, retry) => {
+@@ -301,14 +300,7 @@ export const isLatestJavaDownloaded = async (meta, userData, retry) => {
    return isValid;
  };
  
@@ -27,7 +27,7 @@ index 9d23894..37ae04d 100644
  export const extractNatives = async (libraries, instancePath) => {
    const extractLocation = path.join(instancePath, 'natives');
 diff --git i/public/electron.js w/public/electron.js
-index 38ac891..8113d39 100644
+index 800a66f8..58bfb998 100644
 --- i/public/electron.js
 +++ w/public/electron.js
 @@ -12,7 +12,6 @@ const {
@@ -38,7 +38,7 @@ index 38ac891..8113d39 100644
  const log = require('electron-log');
  const fss = require('fs');
  const { promisify } = require('util');
-@@ -149,43 +148,6 @@ log.log(process.env.REACT_APP_RELEASE_TYPE, app.getVersion());
+@@ -179,43 +178,6 @@ log.log(process.env.REACT_APP_RELEASE_TYPE, app.getVersion());
  
  const isDev = process.env.NODE_ENV === 'development';
  
@@ -47,7 +47,7 @@ index 38ac891..8113d39 100644
 -
 -  let zipLocationAsar = path.join(baseDir, 'linux', 'x64', '7za');
 -  if (process.platform === 'darwin') {
--    zipLocationAsar = path.join(baseDir, 'mac', '7za');
+-    zipLocationAsar = path.join(baseDir, 'mac', 'x64', '7za');
 -  }
 -  if (process.platform === 'win32') {
 -    zipLocationAsar = path.join(baseDir, 'win', 'x64', '7za.exe');
@@ -82,7 +82,7 @@ index 38ac891..8113d39 100644
  function createWindow() {
    mainWindow = new BrowserWindow({
      width: 1100,
-@@ -539,79 +501,3 @@ ipcMain.handle('calculateMurmur2FromPath', (e, filePath) => {
+@@ -609,79 +571,3 @@ ipcMain.handle('calculateMurmur2FromPath', (e, filePath) => {
      });
    });
  });
