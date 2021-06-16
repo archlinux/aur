@@ -1,13 +1,13 @@
 pkgbase = tfsec
 	pkgdesc = Static analysis powered security scanner for your terraform code
-	pkgver = 0.40.2
+	pkgver = 0.40.3
 	pkgrel = 1
 	url = https://github.com/tfsec/tfsec
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = v0.40.2-1.zip::https://github.com/tfsec/tfsec/archive/refs/tags/v0.40.2.zip
-	sha256sums = c5e682bf722495cf160cf0ad0ac48f9d758586ca2def87311d717d4dafe103fb
+	source = v0.40.3-1.zip::https://github.com/tfsec/tfsec/archive/refs/tags/v0.40.3.zip
+	sha256sums = 09e288f4d0e326c6057214d73d58f01e7d0df45cf0e305b057d80af79432cd9a
 
 pkgname = tfsec
