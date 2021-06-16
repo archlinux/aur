@@ -3,9 +3,9 @@
 
 pkgname=dirsearch
 
-_ver=0.4.1-alpha2
+_ver=0.4.2-beta1
 pkgver() { sed 's/\(alpha\)\([0-9]\+\)/\1_\2/' <<<"${_ver/-/.}"; }
-pkgver=0.4.1.alpha_2
+pkgver=0.4.2.beta1
 pkgrel=1
 
 pkgdesc='Web path scanner/fuzzer, written in Python'
@@ -17,8 +17,8 @@ depends=('python')
 
 changelog=CHANGELOG.md
 backup=("usr/lib/$pkgname/default.conf")
-source=("$pkgname-$_ver.tgz::$url/archive/v$_ver.tar.gz")
-b2sums=('6108556cf110073c30783d90b18f6dafb992042af70ec180b6b750057f538f2fc8a42543bcca4dd651196392057e9f9ca5319c6eb9bae0bb783b3a1c62ff1f69')
+source=("$pkgname-$_ver.tgz::$url/archive/refs/tags/v$_ver.tar.gz")
+b2sums=('b427e2229fb0c509eb11af6f5f217c9d46e0af2e58bc4b65f8d9eb44705a9eb548d47bce73d678e445b1fc1216906f7769cc22c3e19034dc92304a3948d80628')
 
 
 prepare() {
