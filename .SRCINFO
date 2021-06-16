@@ -1,0 +1,20 @@
+pkgbase = obs-rtspserver-git
+	pkgdesc = RTSP server plugin for obs-studio
+	pkgver = 0.r432
+	pkgrel = 1
+	url = https://github.com/iamscottxu/obs-rtspserver
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = obs-studio>=24.0.0
+	provides = obs-rtspserver
+	conflicts = obs-rtspserver
+	source = obs-rtspserver-git::git+https://github.com/iamscottxu/obs-rtspserver
+	source = obs-studio-27.0.1.tar.gz::https://github.com/obsproject/obs-studio/archive/27.0.1.tar.gz
+	sha512sums = SKIP
+	sha512sums = c15dda62c1f212f623914e61a90c6b1e035720fb84d64726c14f43d77ae7569777a23d04221db34347ce610e7c3407c29e726ae36412e98e34ea2ddb2072b7f3
+
+pkgname = obs-rtspserver-git
