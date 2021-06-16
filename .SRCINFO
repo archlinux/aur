@@ -1,12 +1,12 @@
 pkgbase = gotestsum
 	pkgdesc = run go tests with formatted test output and a summar of the test run
 	pkgver = 1.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gotestyourself/gotestsum
 	arch = x86_64
 	license = Apache-2.0
 	depends = go
 	source = https://github.com/gotestyourself/gotestsum/archive/v1.6.4.tar.gz
-	sha512sums = ae4f776c516e3e289a26456f439234a3f6be854f1be40220cfb71320953447cbc21f0fda2e9043fc73f3ac388ac5a9bd7eeb2bacdce2c3f50cb5df60227ac37a
+	b2sums = 147f97e3f595de6175866f4b43e76282206b98b2764853559411ac7701070475289b27bb5a1941886232af2a38df252b1a9ad57cc04b3851f3b5e929bdd95400
 
 pkgname = gotestsum
