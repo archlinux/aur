@@ -1,0 +1,27 @@
+pkgbase = luatools-wine
+	pkgdesc = Wine LuatTools 是合宙的 Lua 调试工具
+	pkgver = 2_1_17
+	pkgrel = 1
+	url = https://doc.openluat.com/wiki/3?wiki_page_id=694
+	install = luatools-wine.install
+	arch = any
+	license = unknow
+	depends = wine
+	depends = winetricks
+	depends = wqy-zenhei
+	optdepends = wine-mono-gecko-version-fix: Fix the version numbers of wine-mono and wine-gecko files to solve the dialog box that pops up when starting wine.
+	provides = luatools-wine
+	conflicts = luatools-wine
+	conflicts = luatools
+	replaces = jlcpcassit-bin
+	options = !strip
+	source = luatools.exe::http://cdndownload.openluat.com/Luat_tool_src/v2tools/exe/exe_2_1_17.exe
+	source = http://www.openluat.com/Product/file/asr1802/AirM2M_USB_Download&Com_Driver_for_4G_V1.0.0.4.7z
+	source = luatools.svg::https://www.openluat.com/static/logo.0ced3f97.svg
+	source = luatools-wine.install
+	sha256sums = 4653eb360899714cdcf9d466a38a5378bac1b21e0e99e37cb88b189fd768421b
+	sha256sums = d68a23e640ae125b8a70821f3ff4b4aa998031c9373cae1b54bf34d11c316f2a
+	sha256sums = ba8836a40c11d432e6cabfee2a8792d44b1f3b56f0db77680a4f73511da1899c
+	sha256sums = 025d5f294f258a9d36334a610a0348ef3f084bba1e70c61cb0f7fea4b43f8e5a
+
+pkgname = luatools-wine

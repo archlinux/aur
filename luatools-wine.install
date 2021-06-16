@@ -1,0 +1,17 @@
+# luatools-wine.post_install
+
+info() {
+    echo -e "Wine LuatTools 是合宙的 Lua 调试工具"
+}
+post_install() {
+    info
+}
+post_upgrade() {
+    info
+    echo "deleting the luatools bottle..."
+    find /home -maxdepth 2 -name ".luatools" -exec rm -rf {} \;
+}
+pre_remove() {
+    echo "deleting the luatools bottle..."
+    find /home -maxdepth 2 -name ".luatools" -exec rm -rf {} \;
+}
