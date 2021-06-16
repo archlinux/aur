@@ -1,0 +1,114 @@
+From 2e68d15d0a146e9b13bfbaba5f260c82b8c3d049 Mon Sep 17 00:00:00 2001
+From: Mike Rapoport <rppt@linux.ibm.com>
+Date: Tue, 1 Jun 2021 10:53:53 +0300
+Subject: [PATCH 6/8] x86/setup: remove CONFIG_X86_RESERVE_LOW and reservelow
+ options
+
+The CONFIG_X86_RESERVE_LOW build time and reservelow command line option
+allowed to control the amount of memory under 1M that would be reserved at
+boot to avoid using memory that can be potentially clobbered by BIOS.
+
+Since the entire range under 1M is always reserved there is no need for
+these options and they can be removed.
+
+Signed-off-by: Mike Rapoport <rppt@linux.ibm.com>
+---
+ .../admin-guide/kernel-parameters.txt         |  5 ----
+ arch/x86/Kconfig                              | 29 -------------------
+ arch/x86/kernel/setup.c                       | 24 ---------------
+ 3 files changed, 58 deletions(-)
+
+diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
+index 835f810f2f26..479cc44cc4e2 100644
+--- a/Documentation/admin-guide/kernel-parameters.txt
++++ b/Documentation/admin-guide/kernel-parameters.txt
+@@ -4623,11 +4623,6 @@
+ 			Reserves a hole at the top of the kernel virtual
+ 			address space.
+ 
+-	reservelow=	[X86]
+-			Format: nn[K]
+-			Set the amount of memory to reserve for BIOS at
+-			the bottom of the address space.
+-
+ 	reset_devices	[KNL] Force drivers to reset the underlying device
+ 			during initialization.
+ 
+diff --git a/arch/x86/Kconfig b/arch/x86/Kconfig
+index 861b1b794697..fc91be3b1bd1 100644
+--- a/arch/x86/Kconfig
++++ b/arch/x86/Kconfig
+@@ -1688,35 +1688,6 @@ config X86_BOOTPARAM_MEMORY_CORRUPTION_CHECK
+ 	  Set whether the default state of memory_corruption_check is
+ 	  on or off.
+ 
+-config X86_RESERVE_LOW
+-	int "Amount of low memory, in kilobytes, to reserve for the BIOS"
+-	default 64
+-	range 4 640
+-	help
+-	  Specify the amount of low memory to reserve for the BIOS.
+-
+-	  The first page contains BIOS data structures that the kernel
+-	  must not use, so that page must always be reserved.
+-
+-	  By default we reserve the first 64K of physical RAM, as a
+-	  number of BIOSes are known to corrupt that memory range
+-	  during events such as suspend/resume or monitor cable
+-	  insertion, so it must not be used by the kernel.
+-
+-	  You can set this to 4 if you are absolutely sure that you
+-	  trust the BIOS to get all its memory reservations and usages
+-	  right.  If you know your BIOS have problems beyond the
+-	  default 64K area, you can set this to 640 to avoid using the
+-	  entire low memory range.
+-
+-	  If you have doubts about the BIOS (e.g. suspend/resume does
+-	  not work or there's kernel crashes after certain hardware
+-	  hotplug events) then you might want to enable
+-	  X86_CHECK_BIOS_CORRUPTION=y to allow the kernel to check
+-	  typical corruption patterns.
+-
+-	  Leave this to the default value of 64 if you are unsure.
+-
+ config MATH_EMULATION
+ 	bool
+ 	depends on MODIFY_LDT_SYSCALL
+diff --git a/arch/x86/kernel/setup.c b/arch/x86/kernel/setup.c
+index d7cfb927864f..fbda4bbf75c1 100644
+--- a/arch/x86/kernel/setup.c
++++ b/arch/x86/kernel/setup.c
+@@ -695,30 +695,6 @@ static void __init e820_add_kernel_range(void)
+ 	e820__range_add(start, size, E820_TYPE_RAM);
+ }
+ 
+-static unsigned reserve_low = CONFIG_X86_RESERVE_LOW << 10;
+-
+-static int __init parse_reservelow(char *p)
+-{
+-	unsigned long long size;
+-
+-	if (!p)
+-		return -EINVAL;
+-
+-	size = memparse(p, &p);
+-
+-	if (size < 4096)
+-		size = 4096;
+-
+-	if (size > 640*1024)
+-		size = 640*1024;
+-
+-	reserve_low = size;
+-
+-	return 0;
+-}
+-
+-early_param("reservelow", parse_reservelow);
+-
+ static void __init early_reserve_memory(void)
+ {
+ 	/*
+-- 
+2.32.0
+
