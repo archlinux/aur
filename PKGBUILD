@@ -1,18 +1,19 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo
-pkgver=2.0.4
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Fully featured and highly configurable SFTP server with optional FTP/S and WebDAV support. It can serve local filesystem, S3, GCS, Azure Blob, SFTP'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/drakkan/${pkgname}"
-license=('GPL3')
+license=('AGPLv3')
 depends=('glibc')
 makedepends=('gcc' 'git' 'go' 'gzip')
 optdepends=(
   "sqlite: to use SQLite provider"
   "postgresql: to use PostgreSQL provider"
   "mariadb: to use MySQL provider"
+  "cockroachdb: to use CockroachDB provider"
 )
 backup=("etc/${pkgname}/sftpgo.json")
 install=${pkgname}.install
@@ -21,7 +22,7 @@ source=("git+https://github.com/drakkan/${pkgname}#tag=v${pkgver}"
   "sftpgo.json"
   "sftpgo.sysusers")
 sha256sums=('SKIP'
-  '75008457de7bf3e5c6b673a29d79853f75e934d80907c40859ec963bb134a99d'
+  '6f1fbbf9d19a10b09bd37f293bcae5a807bfd7bc12552f7b2a5d19eb87afa0dc'
   '44658210043f805057c2e4b473653637a91204e4da17954b08081292c72edcb8')
 
 _uid_sftpgo=315
@@ -29,7 +30,7 @@ _gid_sftpgo=315
 
 build() {
   cd "${pkgname}"
-  go build -ldflags "-s -w -X github.com/drakkan/sftpgo/version.commit=`git describe --always --dirty` -X github.com/drakkan/sftpgo/version.date=`date --utc +%FT%TZ`" -o sftpgo
+  go build -trimpath -ldflags "-s -w -X github.com/drakkan/sftpgo/version.commit=`git describe --always --dirty` -X github.com/drakkan/sftpgo/version.date=`date --utc +%FT%TZ`" -o sftpgo
   ./sftpgo gen completion bash > sftpgo-completion.bash
   ./sftpgo gen man -d man1
   gzip man1/*
