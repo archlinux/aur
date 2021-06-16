@@ -8,7 +8,7 @@ license=('MIT')
 depends=('ffmpeg' 'cmake' 'fftw')
 source=('git://github.com/Polochon-street/bliss')
 md5sums=('SKIP')
-url='https://lelele.io/bliss.html'
+url='https://lelele.io/bliss_old.html'
  
 prepare() {
     cd "$srcdir/$_gitname"
