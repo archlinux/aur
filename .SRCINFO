@@ -1,6 +1,6 @@
 pkgbase = esphomeyaml
 	pkgdesc = Solution for your ESP8266/ESP32 projects with Home Assistant
-	pkgver = 1.18.0
+	pkgver = 1.19.0
 	pkgrel = 1
 	url = https://github.com/esphome/ESPHome
 	arch = any
@@ -20,8 +20,7 @@ pkgbase = esphomeyaml
 	depends = platformio
 	depends = esptool
 	replaces = esphomeyaml
-	source = https://github.com/esphome/ESPHome/archive/v1.18.0.tar.gz
-	sha256sums = e2d18da97018586f38c05b9954a0a1ad2f7024bc606301517e1893b394121c78
+	source = https://github.com/esphome/ESPHome/archive/v1.19.0.tar.gz
+	sha256sums = af7d7375e062bc9e86a295661cc0ca361e4751a0bcb45a759d6d6fc8157e97a3
 
 pkgname = esphome
-
