@@ -1,7 +1,7 @@
 # Maintainer: hamki <hamki.do2000@gmail.com>
 pkgname=nordic-bluish-accent-standard-buttons-theme
 _pkgname=Nordic-bluish-accent-standard-buttons
-pkgver=1.9.0
+pkgver=2.0.0
 pkgrel=1
 epoch=
 pkgdesc="Nordic is a Gtk3.20+ theme created using the awesome Nord color pallete."
@@ -20,10 +20,10 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/EliverLara/Nordic/releases/download/v$pkgver/$_pkgname.tar.xz"
+source=("https://github.com/EliverLara/Nordic/releases/download/$pkgver/$_pkgname.tar.xz"
 )
 noextract=()
-sha256sums=(07fc4db78e5c895982e7c7a7b21fa1572da75939acc23e203dd037dbb6132dad)
+sha256sums=(6bc68c1ec4d2dcafa12dbf9eebd81490af5ed4389eb3f4139934ee230eaacc66)
 
 package() {
   cd "${_pkgname}"
