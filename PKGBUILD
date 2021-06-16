@@ -14,7 +14,7 @@ makedepends=('git' 'extra-cmake-modules' 'boost' 'sparsehash')
 #makedepends=('git' 'cmake' 'boost')
 provides=('heaptrack')
 conflicts=('heaptrack')
-source=('git+git://anongit.kde.org/heaptrack')
+source=('heaptrack::git+https://invent.kde.org/sdk/heaptrack.git')
 md5sums=('SKIP')
 
 pkgver() {
