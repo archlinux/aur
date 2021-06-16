@@ -8,8 +8,8 @@ pkgbase = bliss-git
 	license = MIT
 	depends = ffmpeg
 	depends = cmake
+	depends = fftw
 	source = git://github.com/Polochon-street/bliss
 	md5sums = SKIP
 
 pkgname = bliss-git
-
