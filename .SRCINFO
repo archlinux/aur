@@ -1,0 +1,22 @@
+pkgbase = mozilla-vpn-client-git
+	pkgdesc = Mozilla VPN from git
+	pkgver = 2.4.0
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/mozilla-mobile/mozilla-vpn-client
+	arch = x86_64
+	license = MPL2
+	makedepends = git
+	makedepends = python-pip
+	depends = qt5-quickcontrols
+	depends = qt5-charts
+	depends = qt5-networkauth
+	depends = polkit>=0.105
+	depends = wireguard-tools>=1.0.20200513
+	depends = resolvconf
+	depends = python3
+	source = mozilla-vpn-client::git+https://github.com/mozilla-mobile/mozilla-vpn-client.git
+	sha256sums = SKIP
+
+pkgname = mozilla-vpn-client-git
+
