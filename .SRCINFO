@@ -1,0 +1,13 @@
+pkgbase = strace-parser-bin
+	pkgdesc = Strace parser written in Rust
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://gitlab.com/gitlab-com/support/toolbox/strace-parser
+	arch = x86_64
+	license = MIT
+	provides = strace-parser
+	conflicts = strace-parser
+	source = https://gitlab.com/gitlab-com/support/toolbox/strace-parser/uploads/aeec995aa6d28ce0ddc5e8dab3952278/strace-parser_0-7-2_linux_musl.tar.gz
+	sha256sums = 885dfc3ea2b5dcbef16a71c33ef992d858abd9a64a1dc59375f5d425e86b1a05
+
+pkgname = strace-parser-bin
