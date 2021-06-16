@@ -13,7 +13,6 @@ pkgbase = blueman-git
 	makedepends = libtool
 	depends = bluez
 	depends = dbus-glib
-	depends = gconf
 	depends = gtk3
 	depends = notification-daemon
 	depends = libnotify
@@ -32,4 +31,3 @@ pkgbase = blueman-git
 	sha1sums = SKIP
 
 pkgname = blueman-git
-

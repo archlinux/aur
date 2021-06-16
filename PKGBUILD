@@ -9,7 +9,7 @@ pkgdesc="A GTK+ Bluetooth Manager (BlueZ 5) - git"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://github.com/blueman-project/blueman"
-depends=('bluez' 'dbus-glib' 'gconf' 'gtk3' 'notification-daemon' 'libnotify'
+depends=('bluez' 'dbus-glib' 'gtk3' 'notification-daemon' 'libnotify'
          'polkit' 'python-cairo' 'python-dbus' 'python-gobject'
          'python-pybluez' 'startup-notification')
 optdepends=('dnsmasq: DHCP server for Network Access Point'
