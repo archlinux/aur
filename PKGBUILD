@@ -2,7 +2,7 @@
 
 pkgname=lockdoor
 _pkgname=lockdoor-framework
-pkgver=2.2.4
+pkgver=2.3
 pkgrel=1
 pkgdesc="A penetration testing framework with cyber security resources"
 url="http://github.com/SofianeHamlaoui/Lockdoor-Framework"

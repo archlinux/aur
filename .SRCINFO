@@ -1,6 +1,6 @@
 pkgbase = lockdoor
 	pkgdesc = A penetration testing framework with cyber security resources
-	pkgver = 2.2.4
+	pkgver = 2.3
 	pkgrel = 1
 	url = http://github.com/SofianeHamlaoui/Lockdoor-Framework
 	arch = any
@@ -33,4 +33,3 @@ pkgbase = lockdoor
 	sha256sums = SKIP
 
 pkgname = lockdoor
-
