@@ -30,5 +30,5 @@ package()
 {
     cd "$srcdir/$_name-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-    install -m644 LICENSE"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
