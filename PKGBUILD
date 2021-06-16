@@ -6,12 +6,11 @@ pkgdesc="A heap memory profiler"
 arch=('i686' 'x86_64')
 url="http://milianw.de/tag/heaptrack"
 license=('APACHE')
-# dependencies with GUI enabled
-depends=('kdiagram' 'threadweaver' 'kitemmodels' 'kio' 'boost-libs')
-makedepends=('git' 'extra-cmake-modules' 'boost' 'sparsehash')
-# minimal dependencies
-#depends=('libunwind' 'boost-libs')
-#makedepends=('git' 'cmake' 'boost')
+depends=('libunwind' 'boost-libs' 'hicolor-icon-theme')
+optdepends=('kdiagram: GUI support - heaptrack_gui'
+            'kio: GUI support - heaptrack_gui'
+            'threadweaver: GUI support - heaptrack_gui')
+makedepends=('git' 'extra-cmake-modules' 'boost' 'sparsehash' 'kdiagram' 'threadweaver' 'kitemmodels' 'kio')
 provides=('heaptrack')
 conflicts=('heaptrack')
 source=('heaptrack::git+https://invent.kde.org/sdk/heaptrack.git')
