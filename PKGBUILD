@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=sdl2_sound-hg
-pkgver=1.0.3.r105.9262f9205898
+pkgver=1.0.3.r275.85186703b413
 pkgrel=1
 pkgdesc="A library to decode several popular sound file formats (Version 2, development version)"
 arch=('i686' 'x86_64')
@@ -23,24 +23,19 @@ pkgver() {
   printf "%s.r%s.%s" "${_lasttag/release-}" "$_commits" "$_hash"
 }
 
-prepare() {
-  rm -rf build
-  mkdir build
-
-  # fixup an oversight (wrong path)
-  sed 's|FILES SDL_sound.h|FILES src/SDL_sound.h|' -i ${pkgname%-*}/CMakeLists.txt
-}
-
 build() {
-  cd build
-
-  cmake ../${pkgname%-*} -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
+  rm -rf build
+  cmake -Bbuild ${pkgname%-*} \
+    -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DSDLSOUND_BUILD_STATIC=FALSE \
     -DSDL2_INCLUDE_DIRS=/usr/include/SDL2 -DSDL2_LIBRARIES=/usr/lib/libSDL2.so
-  make
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir/" cmake --install build
+
+  # handle conflict with sdl_sound
+  mv "$pkgdir"/usr/bin/playsound{,-sdl2}
 
   # docs
   install -d "$pkgdir"/usr/share/doc/${pkgname%-*}

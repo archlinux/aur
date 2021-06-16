@@ -1,6 +1,6 @@
 pkgbase = sdl2_sound-hg
 	pkgdesc = A library to decode several popular sound file formats (Version 2, development version)
-	pkgver = 1.0.3.r105.9262f9205898
+	pkgver = 1.0.3.r275.85186703b413
 	pkgrel = 1
 	url = http://icculus.org/SDL_sound/
 	arch = i686
@@ -14,4 +14,3 @@ pkgbase = sdl2_sound-hg
 	md5sums = SKIP
 
 pkgname = sdl2_sound-hg
-
