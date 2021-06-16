@@ -1,6 +1,6 @@
 pkgbase = gitgudcli-git
-	pkgdesc = Brings pokemon to the terminal using the power of cowsay.
-	pkgver = 1.0.2
+	pkgdesc = An easy to use CLI for the GitGud modular Git model.
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/HRKings/GitGudCLI.git
 	arch = any

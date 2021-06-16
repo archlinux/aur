@@ -1,9 +1,9 @@
 # Maintainer: HRKings <hrkings@***.com>
 pkgname=gitgudcli-git
 _pkgname=GitGudCLI
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="Brings pokemon to the terminal using the power of cowsay."
+pkgdesc="An easy to use CLI for the GitGud modular Git model."
 arch=(any)
 url="https://github.com/HRKings/GitGudCLI.git"
 license=('unknown')
