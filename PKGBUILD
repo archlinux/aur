@@ -1,7 +1,7 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
 # pkg: pypi cleo
 _name=cleo
-pkgname=python-$_name
+pkgname=python-$_name-latest
 pkgver=0.8.1
 pkgrel=2
 pkgdesc='create beautiful and testable command-line interfaces'
