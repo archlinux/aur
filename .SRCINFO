@@ -1,7 +1,7 @@
 pkgbase = libavl
 	pkgdesc = GNU library working with binary trees
 	pkgver = 2.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.savannah.gnu.org/git/avl.git
 	arch = i686
 	arch = x86_64
