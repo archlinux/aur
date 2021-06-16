@@ -16,9 +16,8 @@ depends=('curl' 'fontconfig' 'fribidi' 'harfbuzz'
          'libpng' 'libtiff' 'giflib' 'lz4' 'zlib' 'systemd-libs' 'openssl'
          'glibc' 'libutil-linux' 'dbus'
          'shared-mime-info' 'mailcap' 'ttf-font' 'scim'
-         'wayland' 'wayland-protocols' 'libxkbcommon-x11'
-         'pulseaudio')
-makedepends=('git' 'meson' 'ninja' 'pkgconf' 'gcc' 'binutils' 'fakeroot' 'procps-ng' 'ccache')
+         'wayland' 'libxkbcommon-x11' 'pulseaudio')
+makedepends=('git' 'meson' 'ninja' 'pkgconf' 'gcc' 'binutils' 'fakeroot' 'procps-ng' 'ccache' 'wayland-protocols')
 optdepends=('gst-plugins-base: Video and thumbnail codecs'
             'gst-plugins-good: Video and thumbnail codecs'
             'gst-plugins-bad: Video and thumbnail codecs'
