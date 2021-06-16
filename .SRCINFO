@@ -23,6 +23,7 @@ pkgbase = efl-git-asan
 	makedepends = fakeroot
 	makedepends = procps-ng
 	makedepends = ccache
+	makedepends = wayland-protocols
 	depends = curl
 	depends = fontconfig
 	depends = fribidi
@@ -63,7 +64,6 @@ pkgbase = efl-git-asan
 	depends = ttf-font
 	depends = scim
 	depends = wayland
-	depends = wayland-protocols
 	depends = libxkbcommon-x11
 	depends = pulseaudio
 	optdepends = gst-plugins-base: Video and thumbnail codecs
@@ -91,4 +91,3 @@ pkgbase = efl-git-asan
 	sha256sums = SKIP
 
 pkgname = efl-git-asan
-
