@@ -3,24 +3,25 @@
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Dave Reisner <dreisner@archlinux.org>
 # Contributor: milomouse <vincent[at]fea.st>
-# Contributor: judd <jvinet[at]zeroflux.org>
+# Contributor: judd <jvinet@zeroflux.org>
 
 _basename=util-linux
 pkgbase=util-linux-aes
 pkgname=(util-linux-aes util-linux-libs-aes)
-_pkgmajor=2.36
-pkgver=${_pkgmajor}.2
-pkgrel=1.4
+_pkgmajor=2.37
+_realver=${_pkgmajor}
+pkgver=${_realver/-/}
+pkgrel=3
 pkgdesc='Miscellaneous system utilities for Linux, with loop-AES support'
 url='https://github.com/karelzak/util-linux'
 #url="http://sourceforge.net/projects/loop-aes/"
 arch=('x86_64')
-makedepends=('systemd' 'python' 'libcap-ng' 'libxcrypt' 'gtk-doc')
+makedepends=('asciidoctor' 'libcap-ng' 'libxcrypt' 'python' 'systemd' 'gtk-doc')
 license=('GPL2')
 options=('strip')
 install=${pkgname}.install
 validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
-source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/${_basename}-$pkgver.tar."{xz,sign}
+source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/${_basename}-${_realver}.tar."{xz,sign}
         "${_basename}-${pkgver}.diff"
         "${pkgname}.modules"
         pam-{login,common,runuser,su}
@@ -28,15 +29,15 @@ source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/${_basena
         '60-rfkill.rules'
         'rfkill-unblock_.service'
         'rfkill-block_.service')
-sha256sums=('f7516ba9d8689343594356f0e5e1a5f0da34adfbc89023437735872bb5024c5f'
+sha256sums=('bd07b7e98839e0359842110525a3032fdb8eaf3a90bedde3dd1652d32d15cce5'
             'SKIP'
-            '7eb2693de4bb1b11198f3a873f061d69511a5f965f1ecedeeeff98a7d772d995'
+            '55de199d09f62a843176608538d65bfc1b591ce927c19298eeb1d2a636485f0f'
             '560ca858961eb997a216ce6b419d900e84688591abf4584ef30c9323ba06fffd'
-            '993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92'
-            'fc6807842f92e9d3f792d6b64a0d5aad87995a279153ab228b1b2a64d9f32f20'
-            '95b7cdc4cba17494d7b87f37f8d0937ec54c55de0e3ce9d9ab05ad5cc76bf935'
-            '51eac9c2a2f51ad3982bba35de9aac5510f1eeff432d2d63c6362e45d620afc0'
-            'a3980e33ef3a8d356379b4964c9730fd525d46e5b28cded5d0b50d6dc8a5563c'
+            '99cd77f21ee44a0c5e57b0f3670f711a00496f198fc5704d7e44f5d817c81a0f'
+            '57e057758944f4557762c6def939410c04ca5803cbdd2bfa2153ce47ffe7a4af'
+            '48d6fba767631e3dd3620cf02a71a74c5d65a525d4c4ce4b5a0b7d9f41ebfea1'
+            '3f54249ac2db44945d6d12ec728dcd0d69af0735787a8b078eacd2c67e38155b'
+            '10b0505351263a099163c0d928132706e501dd0a008dac2835b052167b14abe3'
             '7423aaaa09fee7f47baa83df9ea6fef525ff9aec395c8cbd9fe848ceb2643f37'
             '8ccec10a22523f6b9d55e0d6cbf91905a39881446710aa083e935e8073323376'
             'a22e0a037e702170c7d88460cc9c9c2ab1d3e5c54a6985cd4a164ea7beff1b36')
@@ -48,13 +49,7 @@ prepare() {
 }
 
 build() {
-  cd "$_basename-$pkgver"
-
-  # We ship Debian's hardlink in package 'hardlink', Fedora's hardlink was
-  # merged in util-linux. For now we disable the latter, but let's dicuss
-  # the details:
-  # https://bugs.archlinux.org/task/62896
-  # https://github.com/karelzak/util-linux/issues/808
+  cd "${_basename}-${_realver}"
 
   ./configure \
     --prefix=/usr \
@@ -70,16 +65,15 @@ build() {
     --enable-chfn-chsh \
     --enable-write \
     --enable-mesg \
-    --disable-hardlink \
     --with-python=3
 
   make
 }
 
 package_util-linux-aes() {
-  conflicts=('rfkill' "${_basename}")
-  provides=('rfkill' "${_basename}=2.36")
-  replaces=('rfkill')
+  conflicts=('rfkill' 'hardlink' "${_basename}")
+  provides=('rfkill' 'hardlink' "${_basename}=2.37")
+  replaces=('rfkill' 'hardlink')
   depends=('pam' 'shadow' 'coreutils' 'systemd-libs' 'libsystemd.so'
            'libudev.so' 'libcap-ng' 'libxcrypt' 'libcrypt.so' 'util-linux-libs-aes'
            'libmagic.so' 'libncursesw.so' 'libreadline.so')
@@ -93,45 +87,45 @@ package_util-linux-aes() {
           etc/pam.d/su
           etc/pam.d/su-l)
 
-  cd "$_basename-$pkgver"
+  cd "${_basename}-${_realver}"
 
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="${pkgdir}" install
 
   # setuid chfn and chsh
-  chmod 4755 "$pkgdir"/usr/bin/{newgrp,ch{sh,fn}}
+  chmod 4755 "${pkgdir}"/usr/bin/{newgrp,ch{sh,fn}}
 
   # install PAM files for login-utils
-  install -Dm0644 "$srcdir/pam-common" "$pkgdir/etc/pam.d/chfn"
-  install -m0644 "$srcdir/pam-common" "$pkgdir/etc/pam.d/chsh"
-  install -m0644 "$srcdir/pam-login" "$pkgdir/etc/pam.d/login"
-  install -m0644 "$srcdir/pam-runuser" "$pkgdir/etc/pam.d/runuser"
-  install -m0644 "$srcdir/pam-runuser" "$pkgdir/etc/pam.d/runuser-l"
-  install -m0644 "$srcdir/pam-su" "$pkgdir/etc/pam.d/su"
-  install -m0644 "$srcdir/pam-su" "$pkgdir/etc/pam.d/su-l"
+  install -Dm0644 "${srcdir}/pam-common" "${pkgdir}/etc/pam.d/chfn"
+  install -m0644 "${srcdir}/pam-common" "${pkgdir}/etc/pam.d/chsh"
+  install -m0644 "${srcdir}/pam-login" "${pkgdir}/etc/pam.d/login"
+  install -m0644 "${srcdir}/pam-runuser" "${pkgdir}/etc/pam.d/runuser"
+  install -m0644 "${srcdir}/pam-runuser" "${pkgdir}/etc/pam.d/runuser-l"
+  install -m0644 "${srcdir}/pam-su" "${pkgdir}/etc/pam.d/su"
+  install -m0644 "${srcdir}/pam-su" "${pkgdir}/etc/pam.d/su-l"
 
   # TODO(dreisner): offer this upstream?
-  sed -i '/ListenStream/ aRuntimeDirectory=uuidd' "$pkgdir/usr/lib/systemd/system/uuidd.socket"
+  sed -i '/ListenStream/ aRuntimeDirectory=uuidd' "${pkgdir}/usr/lib/systemd/system/uuidd.socket"
 
   # adjust for usrmove
   # TODO(dreisner): fix configure.ac upstream so that this isn't needed
-  cd "$pkgdir"
+  cd "${pkgdir}"
   mv usr/sbin/* usr/bin
   rmdir usr/sbin
 
   ### runtime libs are shipped as part of util-linux-libs
-  rm "$pkgdir"/usr/lib/lib*.{a,so}*
+  rm "${pkgdir}"/usr/lib/lib*.{a,so}*
 
   ### install systemd-sysusers
-  install -Dm0644 "$srcdir/util-linux-aes.sysusers" \
-    "$pkgdir/usr/lib/sysusers.d/util-linux-aes.conf"
+  install -Dm0644 "${srcdir}/util-linux-aes.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/util-linux-aes.conf"
 
-  install -Dm0644 "$srcdir/60-rfkill.rules" \
-    "$pkgdir/usr/lib/udev/rules.d/60-rfkill.rules"
+  install -Dm0644 "${srcdir}/60-rfkill.rules" \
+    "${pkgdir}/usr/lib/udev/rules.d/60-rfkill.rules"
 
-  install -Dm0644 "$srcdir/rfkill-unblock_.service" \
-    "$pkgdir/usr/lib/systemd/system/rfkill-unblock@.service"
-  install -Dm0644 "$srcdir/rfkill-block_.service" \
-    "$pkgdir/usr/lib/systemd/system/rfkill-block@.service"
+  install -Dm0644 "${srcdir}/rfkill-unblock_.service" \
+    "${pkgdir}/usr/lib/systemd/system/rfkill-unblock@.service"
+  install -Dm0644 "${srcdir}/rfkill-block_.service" \
+    "${pkgdir}/usr/lib/systemd/system/rfkill-block@.service"
 
   # install modules
   install -Dm644 "${srcdir}/${pkgname}.modules" "${pkgdir}/etc/modules-load.d/${pkgname}.conf"
@@ -139,9 +133,9 @@ package_util-linux-aes() {
 
 package_util-linux-libs-aes() {
   pkgdesc="util-linux runtime libraries"
-  provides=('libutil-linux' 'libblkid.so' 'libfdisk.so' 'libmount.so' 'libsmartcols.so' 'libuuid.so' "${_basename}-libs=2.36")
+  provides=('libutil-linux' 'libblkid.so' 'libfdisk.so' 'libmount.so' 'libsmartcols.so' 'libuuid.so' "${_basename}-libs=2.37")
   conflicts=('libutil-linux' "${_basename}-libs")
   replaces=('libutil-linux')
 
-  make -C "$_basename-$pkgver" DESTDIR="$pkgdir" install-usrlib_execLTLIBRARIES
+  make -C "${_basename}-${_realver}" DESTDIR="${pkgdir}" install-usrlib_execLTLIBRARIES
 }
