@@ -3,7 +3,7 @@
 _name=cleo
 pkgname=python-$_name
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='create beautiful and testable command-line interfaces'
 provides=("python-cleo=$pkgver")
 conflicts=("python-cleo")
@@ -13,6 +13,8 @@ url=https://github.com/sdispater/cleo
 license=(MIT)
 depends=(
     'python>=3.5'
+	'python-clikit<0.7.0' #auto-deps
+	'python-clikit>=0.6.0' #auto-deps
 )
 
 makedepends=(python-setuptools python2-setuptools)
