@@ -1,7 +1,7 @@
 pkgbase = antsword
 	pkgdesc = AntSword is a cross-platform webshell management toolkit.
 	pkgver = 2.1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.yuque.com/antswordproject
 	arch = any
 	license = MIT
