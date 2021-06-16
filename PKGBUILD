@@ -1,14 +1,18 @@
 # Maintainer: ml <>
 pkgname=kind
 pkgver=0.11.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Kubernetes IN Docker - local clusters for testing Kubernetes'
-arch=('x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'aarch64')
 url='https://kind.sigs.k8s.io/'
 license=('Apache')
-depends=('podman' 'podman-dnsname' 'dnsmasq' 'kubectl')
+depends=('kubectl')
 makedepends=('go' 'git')
-optdepends=('docker: container engine')
+optdepends=(
+  'podman: provider podman '
+  'podman-dnsname: provider podman'
+  'dnsmasq: provider podman'
+  'docker: provider docker')
 install=kind.install
 source=("https://github.com/kubernetes-sigs/kind/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
         modules-load.conf
