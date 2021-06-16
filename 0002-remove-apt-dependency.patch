@@ -45,6 +45,27 @@ index 6c3e7967..32760e65 100644
      ("certificates", &certificates::ROUTER),
      ("config", &config::ROUTER),
      ("disks", &disks::ROUTER),
+diff --git a/src/api2/node/config.rs b/src/api2/node/config.rs
+index 6c3e7967..32760e65 100644
+--- a/src/api2/node/config.rs
++++ b/src/api2/node/config.rs
+@@ -4,7 +4,6 @@ use proxmox::api::schema::Updatable;
+ use proxmox::api::{api, Permission, Router, RpcEnvironment};
+ 
+ use crate::api2::types::NODE_SCHEMA;
+-use crate::api2::node::apt::update_apt_proxy_config;
+ use crate::config::acl::{PRIV_SYS_AUDIT, PRIV_SYS_MODIFY};
+ use crate::config::node::{NodeConfig, NodeConfigUpdater};
+ 
+@@ -81,7 +80,5 @@ pub fn update_node_config(
+ 
+     crate::config::node::save_config(&config)?;
+ 
+-    update_apt_proxy_config(config.http_proxy().as_ref())?;
+-
+     Ok(())
+ }
+ 
 diff --git a/src/tools.rs b/src/tools.rs
 index 08f9d22f..efb63309 100644
 --- a/src/tools.rs
