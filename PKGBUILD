@@ -3,7 +3,7 @@
 _name=cleo
 pkgname=python-$_name-latest
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc='create beautiful and testable command-line interfaces'
 provides=("python-cleo=$pkgver")
 conflicts=("python-cleo")
