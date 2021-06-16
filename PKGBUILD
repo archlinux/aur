@@ -5,7 +5,7 @@
 
 pkgname=gnome-shell-extension-appindicator-git
 pkgver=40+1+g4463b84
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='AppIndicator/KStatusNotifierItem support for GNOME Shell'
 url='https://github.com/ubuntu/gnome-shell-extension-appindicator'
@@ -13,9 +13,8 @@ license=('GPL')
 arch=('any')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-makedepends=('git')
 depends=('gnome-shell>=3.34')
-makedepends=('jq' 'meson')
+makedepends=('git' 'jq' 'meson')
 optdepends=(
   'libappindicator-gtk2: support GTK+2 applications'
   'libappindicator-gtk3: support GTK+3 applications'
