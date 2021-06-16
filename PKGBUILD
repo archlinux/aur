@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=hilbish
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A shell written in Go and extended with Lua"
 arch=('x86_64' 'aarch64')
@@ -9,10 +9,9 @@ url="https://github.com/rosettea/hilbish"
 license=('MIT')
 depends=('readline' 'lua51-lunacolors-git')
 makedepends=('go>=1.16')
-optdepends=('lua')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4c0a5608445ea5fc5ee1c7db8825ea7e19e6363624d94e84523a11141f127ba3')
+sha256sums=('3fc4dca2662b9e50d55dce6beb96d1ddb1892d599b742efbc2f2190a7d858e36')
 
 prepare() {
   cd "Hilbish-$pkgver"
