@@ -3,10 +3,10 @@
 
 _pkgname=gns3-server
 pkgname=$_pkgname-git
-pkgver=v2.2.20.r4.g4e61cc81
+pkgver=v2.2.22.r0.g10daab21
 pkgrel=1
 pkgdesc='GNS3 network simulator, Server package'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/GNS3/gns3-server'
 license=('GPL3')
 groups=('gns3')
@@ -53,9 +53,12 @@ prepare() {
     # Arch usually has the latest versions. Patch requirements to allow them.
     sed -i \
         -e 's|^aiohttp==3\.7\.4.*|aiohttp>=3.7.4|' \
-        -e 's|^aiofiles==0\.6\.0$|aiofiles>=0.6.0|' \
+        -e 's|^aiofiles==0\.7\.0$|aiofiles>=0.7.0|' \
+        -e 's|^Jinja2==3\.0\.1$|Jinja2>=3.0.1|' \
+        -e 's|^sentry-sdk==1\.1\.0$|sentry-sdk>=1.1.0|' \
         -e 's|^psutil==5\.8\.0$|psutil>=5.8.0|' \
         -e 's|^distro==1\.5\.0$|distro>=1.5.0|' \
+        -e 's|^py-cpuinfo==8\.0\.0$|py-cpuinfo>=8.0.0|' \
         requirements.txt
 }
 
