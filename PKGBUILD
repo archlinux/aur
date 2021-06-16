@@ -1,15 +1,16 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=strace-parser
-pkgver=0.7.0
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='A tool to analyze raw strace data'
 arch=(i686 x86_64)
 url=https://gitlab.com/gitlab-com/support/toolbox/strace-parser
 license=(MIT)
+depends=(gcc-libs)
 makedepends=(cargo)
 source=($pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
-sha512sums=('38078cca5e5c75eae5ea504b186c62e019e43c357ddd2e913565af04b687613f25c4c73d8ff3605a197a4c3d75dc4939d94daeec67cd84650d4d1267dc671fa4')
+sha512sums=('0cb2250127b35453c22469cff2e2ca9a093761019497b6ba7a2fa3de59bde0f0b9fad55ae03e3a707e5047e8873fa4af8cf46d7dcd7367e1a6bd2fa3fb2167b5')
 
 build() {
   cd $pkgname-v$pkgver
