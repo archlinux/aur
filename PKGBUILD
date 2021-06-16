@@ -29,11 +29,16 @@ sha512sums=(
     '8ebadc9854ff8bcd4e1e2e849728ef5724164b834793d0dda989e72ff0180d44b1318fdd6a4c1bf29b6d93bb8241c8dc47839d7d6a4b9f59a8a03f7e208e9991'
 )
 
+_apply() {
+  echo "applying patch '$1'"
+  patch --forward --strip=1 --input="${srcdir}/$1"
+}
+
 prepare() {
   cd "$pkgname-$pkgver"
-  patch --forward --strip=1 --input="${srcdir}/0001-adapt-cargo-toml-and-remove-systemd-linking.patch"
-  patch --forward --strip=1 --input="${srcdir}/0002-remove-apt-dependency.patch"
-  patch --forward --strip=1 --input="${srcdir}/0003-server-rest-fix-new-type-ambiguity.patch"
+  _apply "0001-adapt-cargo-toml-and-remove-systemd-linking.patch"
+  _apply "0002-remove-apt-dependency.patch"
+  _apply "0003-server-rest-fix-new-type-ambiguity.patch"
   rm src/api2/node/apt.rs src/tools/apt.rs src/bin/proxmox-daily-update.rs # belongs to patch 0002
 }
 
