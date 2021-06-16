@@ -1,6 +1,6 @@
 pkgbase = teamspeak
 	pkgdesc = Software for quality voice communication via the Internet
-	pkgver = 5.0.0beta56
+	pkgver = 5.0.0beta57
 	pkgrel = 1
 	url = http://www.teamspeak.com
 	arch = x86_64
@@ -65,9 +65,9 @@ pkgbase = teamspeak
 	optdepends = libpulse
 	source = teamspeak.desktop
 	source = teamspeak.svg
-	source = teamspeak-client-5.0.0beta56.tar.xz::http://update.teamspeak.com/linux/x64/latest/0-1623148575.patch
+	source = teamspeak-client-5.0.0beta57.tar.xz::http://update.teamspeak.com/linux/x64/latest/0-1623800045.patch
 	sha512sums = 57c618d386023d27fcb5f6b7e5ce38fe7012680988aff914eeb6c246d855b190689bbad08d9824c864c1776af322e8df34019234128beb306a09b114673b37c9
 	sha512sums = 3b0c7fe2e71eb207a9874c3fba31c18067867481d81c7a8a2a9fef5956f04cfbd559186f6996e2e3d79292d1aaaae443ab6ea6272d0f6b3205fdd12387de27b0
-	sha512sums = 8dab6c5648eb14808eb24fa608813c604685b3246633f1cc3117c63d6d278301bb4304922aad9e4b48d9d3a1c9112c4a89e9e7814aeaf38c84513a96d571dc17
+	sha512sums = 2b7bf8599f873fa417e770a3d71efada99fc73c5f74d16477c52f917a4a94481a58b5255f1ef4663899839ffb3685e49e157cb4076b902531af49e8c9994f9c8
 
 pkgname = teamspeak
