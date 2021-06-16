@@ -1,8 +1,8 @@
 # Maintainer: Brodi <me@brodi.space>
 _pkgname=aretext
-pkgname=aretext-git
+pkgname=${_pkgname}-git
 pkgver=0.r685
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimalist text editor that never slows you down."
 arch=('any')
 url="https://github.com/aretext/aretext"
