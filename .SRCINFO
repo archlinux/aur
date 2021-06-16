@@ -12,4 +12,3 @@ pkgbase = rustotpony-bin
 	sha256sums = 0d81343de559a4b75a5c254eade829aca2ba6f4a418b7d403207d7e48740ea66
 
 pkgname = rustotpony-bin
-
