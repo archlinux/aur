@@ -1,14 +1,14 @@
 # Maintainer: David Li <davidtianli@gmail.com>
 pkgname=pax-mc-bin
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The MC modpack manager for professionals. Binary version"
 arch=('x86_64')
 url="https://github.com/froehlicha/pax"
 license=('MIT')
 depends=()
 provides=('pax-mc')
-conflicts=()
+conflicts=('pax-mc' 'pax-mc-git')
 replaces=()
 changelog=
 source=("pax-${pkgver}::https://github.com/froehlichA/pax/releases/download/v${pkgver}/pax")

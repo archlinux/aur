@@ -1,11 +1,13 @@
 pkgbase = pax-mc-bin
 	pkgdesc = The MC modpack manager for professionals. Binary version
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/froehlicha/pax
 	arch = x86_64
 	license = MIT
 	provides = pax-mc
+	conflicts = pax-mc
+	conflicts = pax-mc-git
 	source = pax-1.2.0::https://github.com/froehlichA/pax/releases/download/v1.2.0/pax
 	sha256sums = 79e2c05744e075dbdaa8830b3a8afa2458a3211af6ac57ca87842dd39c722059
 
