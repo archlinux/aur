@@ -5,44 +5,52 @@
 
 _pkgname=wireplumber
 pkgname="${_pkgname}-git"
-pkgver=0
-pkgrel=22
+pkgver=0.4.0.r8.g1075d23
+pkgrel=1
 pkgdesc="Session / policy manager implementation for PipeWire"
 arch=('x86_64')
 url="https://gitlab.freedesktop.org/pipewire/wireplumber"
 license=('MIT')
-depends=('glib2' 'lua53')
-makedepends=('cmake' 'cpptoml' 'glib2' 'gobject-introspection' 'meson' 'pipewire')
+depends=('gcc-libs' 'glibc' 'lua53' 'libgio-2.0.so' 'libglib-2.0.so'
+  'libgmodule-2.0.so' 'libgobject-2.0.so' 'libpipewire-0.3.so')
+makedepends=('cmake' 'cpptoml' 'glib2' 'gobject-introspection' 'meson' 'pipewire'
+  'doxygen' 'glib2'  'hotdoc' 'python-breathe' 'python-sphinx_rtd_theme'
+  'python-sphinx' 'systemd' 'git' 'python-lxml')
 checkdepends=('pipewire-alsa' 'pipewire-jack' 'pipewire-pulse')
-provides=('wireplumber' 'libwireplumber-0.3.so')
+provides=('wireplumber' 'libwireplumber-0.4.so')
 conflicts=('wireplumber')
 source=("git+$url.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  git -C "$_pkgname" describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgname"
+
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd "$_pkgname"
-  arch-meson --wrap-mode nodownload \
-    -D doc=disabled \
-    -D introspection=enabled \
-    -D system-lua=true \
+
+  arch-meson \
+    -Dsystem-lua=true \
+    -Dsystemd-system-service=true \
+    -Dsystemd-user-service=true \
     build
+
   ninja -C build
 }
 
 check() {
   cd "$_pkgname"
+
   ninja -C build test || echo "Known to fail: https://gitlab.freedesktop.org/pipewire/wireplumber/-/issues/18"
 }
 
 package() {
-  depends+=('libgio-2.0.so' 'libglib-2.0.so' 'libgmodule-2.0.so'
-  'libgobject-2.0.so' 'libpipewire-0.3.so')
   cd "$_pkgname"
+
   DESTDIR="${pkgdir}" meson install -C build
   install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -vDm 644 {NEWS,README}.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -vDm 644 {NEWS,README}.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
+
