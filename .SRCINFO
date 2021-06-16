@@ -1,0 +1,12 @@
+pkgbase = vegalinux64
+	pkgdesc = Chess tournament administration sorfware
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.vegachess.com
+	arch = x86_64
+	license = Custom
+	depends = jre8-openjdk
+	source = http://www.vegachess.com/download/vegalinux64.tar.gz
+	sha256sums = 6f9ba9ee0da41b412b2e3be18ae7b02710abe6672d38c5a56ae54ca466d78e5a
+
+pkgname = vegalinux64
