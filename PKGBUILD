@@ -1,8 +1,9 @@
-# Maintainer: Mathias Walters <waltersm@protonmail.com>
+# Maintainer: Snehit Sah <snehitsah@protonmail.com>
+# Contributor: Mathias Walters <waltersm@protonmail.com>
 
 pkgname=maptool-bin
 _pkgname=maptool
-pkgver=1.8.5
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="An open source virtual tabletop program"
 arch=('x86_64')
@@ -12,7 +13,7 @@ optdepends=('gvfs: access virtual filesystem')
 provides=('maptool')
 conflicts=('maptool')
 source=("https://github.com/RPTools/maptool/releases/download/${pkgver}/maptool_${pkgver}-amd64.deb")
-sha256sums=('3fb7b9e4143dd9c5ee4ffb75ae06d37dec7ffc306332c4d0a597a812c74acc95')
+sha256sums=('0b755b264edbea18b142577a896ca543aedd4704248ac1446a8a0a9a50ddc02e')
 
 package() {
 
