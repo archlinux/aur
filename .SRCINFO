@@ -1,0 +1,15 @@
+pkgbase = puncover-git
+	pkgdesc = Analyses C/C++ build output for code size, static variables, and stack usage
+	pkgver = r74.706dcc5
+	pkgrel = 1
+	url = https://github.com/HBehrens/puncover
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python-flask
+	provides = puncover
+	conflicts = puncover
+	source = puncover::git+https://github.com/HBehrens/puncover.git
+	md5sums = SKIP
+
+pkgname = puncover-git
