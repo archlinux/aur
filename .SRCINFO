@@ -1,0 +1,14 @@
+pkgbase = sbcl-git
+	pkgdesc = SBCL from project GIT repo
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = automake
+	depends = gcc
+	depends = sbcl
+	provides = sbcl
+	conflicts = sbcl
+
+pkgname = sbcl-git
