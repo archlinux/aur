@@ -2,7 +2,7 @@
 
 pkgname=jlcpcassit-wine
 pkgver=3.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Wine 嘉立创 PC 端下单助手"
 arch=('any')
 url="https://www.jlc.com/portal/appDownloadsWithConfig.html"
@@ -11,8 +11,8 @@ provides=(${pkgname})
 conflicts=(${pkgname} ${pkgname%-wine})
 replaces=("jlcpcassit-bin")
 depends=('wine' 'winetricks' 'wqy-zenhei' 'unixodbc' 'lib32-unixodbc')
+# makedepends=('innoextract')
 optdepends=("wine-mono-gecko-version-fix: Fix the version numbers of wine-mono and wine-gecko files to solve the dialog box that pops up when starting wine.")
-# makedepends=('unarchiver')
 backup=()
 options=('!strip')
 install=${pkgname}.install
@@ -23,12 +23,12 @@ sha256sums=('c6f47819c68b28d8661a36905601f33e2cd5ed686e9f2f5f08fbbb2276d42eb6'
 #noextract=("${pkgname-wine}_${pkgver}.zip")
 
 prepare() {
-#    unar -e GBK "${srcdir}/${pkgname-wine}_${pkgver}.zip"
+#    innoextract -e "${srcdir}/setup.exe"
 
-    install -m755 -d "${srcdir}"/tmp "${srcdir}"/tmp/env "${srcdir}"/tmp/local
+#     install -m755 -d "${srcdir}"/tmp "${srcdir}"/tmp/env "${srcdir}"/tmp/local
 
     _ftname="wqy-zenhei.ttc"
-    install -Dm0644 /dev/stdin "${srcdir}/tmp/env/regpatch.reg" << EOF
+    install -Dm0644 /dev/stdin "${srcdir}/regpatch.reg" << EOF
 REGEDIT4
 
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\FontLink\SystemLink]
@@ -63,6 +63,8 @@ REGEDIT4
 [HKEY_CURRENT_USER\Software\Wine\Dll Overrides]
 "msvcp100"="native,builtin"
 "msvcr100"="native,builtin"
+"msvcp120"="native,builtin"
+"msvcr120"="native,builtin"
 "vcruntime140"="native,builtin"
 "nim"="native,builtin"
 "nrtc"="native,builtin"
@@ -71,33 +73,70 @@ REGEDIT4
 "libGLESv2"="native,builtin"
 "d3dcompiler_43"="native,builtin"
 "d3dcompiler_47"="native,builtin"
+"Log4cxx2_vc140x_mt"="native,builtin"
+"CryptTool_vc140x_mt"="native,builtin"
+"Log4cxxx_vc140x_mt"="native,builtin"
+"DuiLib_vc140x_mt"="native,builtin"
+"MemoryBuffer_vc140x_mt"="native,builtin"
+"ExtractTool_vc140x_mt"="native,builtin"
+"GerberDll_vc140x_mt"="native,builtin"
+"HookFlash_vc140x_mt"="native,builtin"
+"RarExt"="native,builtin"
+"SmtCheckTools_vc140x_mt"="native,builtin"
 "acge15"="native,builtin"
-
+"acge18"="native,builtin"
+"chrome_elf"="native,builtin"
+"SmtCheckTools_vc140x_mt"="native,builtin"
+"zextract_vc140x_mt"="native,builtin"
+"zlibwapi_vc140x_mt"="native,builtin"
+"nim_audio"="native,builtin"
+"nim_audio_hook"="native,builtin"
+"nim_chatroom"="native,builtin"
+"nim_tools_http"="native,builtin"
+"nrtc"="native,builtin"
+"nrtc_audio_process"="native,builtin"
+"libcef"="native,builtin"
+"log4cxx_vc140x_mt"="native,builtin"
+"mmpool_vc140x_mt"="native,builtin"
+"libGLESv2"="native,builtin"
+"libEGL"="native,builtin"
+"importODB_vc140x_mt"="native,builtin"
+"importExcellon_vc140x_mt"="native,builtin"
+"import274x_vc140x_mt"="native,builtin"
+"image_ole"="native,builtin"
 EOF
 
-    export WINEPREFIX="${srcdir}"/tmp/env
-    export XDG_DATA_HOME="${srcdir}"/tmp/local
-
-    regedit "${srcdir}/tmp/env/regpatch.reg"
-    wine "${srcdir}"/setup.exe /silent
+#     export WINEPREFIX="${srcdir}"/tmp/env
+#     export XDG_DATA_HOME="${srcdir}"/tmp/local
+#
+#     regedit "${srcdir}/tmp/env/regpatch.reg"
+#     wine "${srcdir}"/setup.exe /silent
 }
 
 package() {
     export LC_CTYPE="zh_CN.UTF-8"
 
-    _jlc="opt/SZJLC/JLC_PC_Assit"
+    _jlc="opt/SZJLC"
     _pc="PcAssit"
 
-    install -dm0755 "${pkgdir}/opt"
+    install -dm0755 "${pkgdir}/${_jlc}" \
+                    "${pkgdir}/usr/share/pixmaps"
 
-    install -Dm0644 "${srcdir}/tmp/local/icons/hicolor/64x64/apps/54AE_PcAssit.0.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${pkgname%-wine}.png"
+    cp -r "${srcdir}/setup.exe" "${pkgdir}/${_jlc}/${_pc}.exe"
+#     cp -r "${srcdir}/app/${_pc}" "${pkgdir}/${_jlc}"
+#     cp -r "${srcdir}/app/update" "${pkgdir}/${_jlc}"
 
-    cp -r "${srcdir}"/tmp/env/drive_c/Program\ Files/SZJLC "${pkgdir}/opt"
+    cp -r "${srcdir}/regpatch.reg" "${pkgdir}/${_jlc}/regpatch.reg"
 
-    cp -r "${srcdir}/tmp/env/regpatch.reg" "${pkgdir}/${_jlc}/regpatch.reg"
-
-    find "${pkgdir}/${_jlc}" -type f -exec chmod 644 "{}" \;
-    find "${pkgdir}/${_jlc}" -type d -exec chmod 755 "{}" \;
+#     find "${pkgdir}/${_jlc}" -type f -exec chmod 644 "{}" \;
+#     find "${pkgdir}/${_jlc}" -type d -exec chmod 755 "{}" \;
+#
+#     cd "${pkgdir}/${_jlc}/${_pc}/" && chmod 0755 *.exe
+#     cd "${pkgdir}/${_jlc}/update/" && chmod 0755 *.exe
+#
+#     cp -r "${srcdir}/VisualBasic6-KB896559-v1-ENU.exe" "${pkgdir}/${_jlc}/VisualBasic6-KB896559-v1-ENU.exe"
+#
+#     ln -sf "/${_jlc}/${_pc}/browser.ico" "${pkgdir}/usr/share/pixmaps/${pkgname%-wine}.ico"
 
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-wine}" << EOF
 #!/bin/bash
@@ -106,39 +145,52 @@ export WINEARCH=win32 WINEPREFIX="$HOME/.${pkgname%-wine}/wine"
 if [ ! -d "$HOME"/.${pkgname%-wine} ] ; then
     mkdir -p "$HOME"/.${pkgname%-wine}/wine || exit 1
 
-    cp -r /${_jlc}/${_pc}/config "$HOME"/.${pkgname%-wine}/config || exit 1
-    cp -r /${_jlc}/${_pc}/nim_conf "$HOME"/.${pkgname%-wine}/nim_conf || exit 1
+#     cp -r /${_jlc}/${_pc}/config "$HOME"/.${pkgname%-wine}/config || exit 1
+#     cp -r /${_jlc}/${_pc}/nim_conf "$HOME"/.${pkgname%-wine}/nim_conf || exit 1
     cp -r /${_jlc}/regpatch.reg "$HOME"/.${pkgname%-wine}/wine || exit 1
 
-    ln -s /${_jlc}/${_pc}/${_pc}.exe "$HOME"/.${pkgname%-wine}/${pkgname%-wine} || exit 1
-    ln -s -T /${_jlc}/${_pc}/loaderr "$HOME"/.${pkgname%-wine}/loaderr || exit 1
-    ln -s -T /${_jlc}/${_pc}/locales "$HOME"/.${pkgname%-wine}/locales || exit 1
-    ln -s -T /${_jlc}/${_pc}}/ppflash "$HOME"/.${pkgname%-wine}/ppflash || exit 1
-    ln -s -T /${_jlc}/${_pc}}/skin "$HOME"/.${pkgname%-wine}/skin || exit 1
+    ln -s /${_jlc}/${_pc}.exe "$HOME"/.${pkgname%-wine}/${_pc}.exe || exit 1
+#     ln -s /${_jlc}/${_pc}/VisualBasic6-KB896559-v1-ENU.exe "$HOME"/.${pkgname%-wine}/VisualBasic6-KB896559-v1-ENU.exe || exit 1
+#     ln -s /${_jlc}/${_pc}/${_pc}.exe "$HOME"/.${pkgname%-wine}/${pkgname%-wine} || exit 1
+#     ln -s /${_jlc}/${_pc}/${_pc}.Launcher.exe "$HOME"/.${pkgname%-wine}/${pkgname/-wine/-launcher} || exit 1
+#     ln -s -T /${_jlc}/${_pc}/loaderr "$HOME"/.${pkgname%-wine}/loaderr || exit 1
+#     ln -s -T /${_jlc}/${_pc}/locales "$HOME"/.${pkgname%-wine}/locales || exit 1
+#     ln -s -T /${_jlc}/${_pc}}/ppflash "$HOME"/.${pkgname%-wine}/ppflash || exit 1
+#     ln -s -T /${_jlc}/${_pc}}/skin "$HOME"/.${pkgname%-wine}/skin || exit 1
+#
+#     cp -r /${_jlc}/${_pc}/*.exe "$HOME"/.${pkgname%-wine} || exit 1
+#     cp -r /${_jlc}/${_pc}/*.dll "$HOME"/.${pkgname%-wine} || exit 1
+#     cp -r /${_jlc}/${_pc}/*.dat "$HOME"/.${pkgname%-wine} || exit 1
+#     cp -r /${_jlc}/${_pc}/*.bin "$HOME"/.${pkgname%-wine} || exit 1
+#     cp -r /${_jlc}/${_pc}/*.pak "$HOME"/.${pkgname%-wine} || exit 1
+#     cp -r /${_jlc}/${_pc}/*.ico "$HOME"/.${pkgname%-wine} || exit 1
 
-    cp -r /${_jlc}/${_pc}/*.exe "$HOME"/.${pkgname%-wine} || exit 1
-    cp -r /${_jlc}/${_pc}/*.dll "$HOME"/.${pkgname%-wine} || exit 1
-    cp -r /${_jlc}/${_pc}/*.dat "$HOME"/.${pkgname%-wine} || exit 1
-    cp -r /${_jlc}/${_pc}/*.bin "$HOME"/.${pkgname%-wine} || exit 1
-    cp -r /${_jlc}/${_pc}/*.pak "$HOME"/.${pkgname%-wine} || exit 1
-    cp -r /${_jlc}/${_pc}/*.ico "$HOME"/.${pkgname%-wine} || exit 1
-
-fi
-
-if [ ! -f "$HOME"/.${pkgname%-wine}/regok ] ; then
-    touch "$HOME"/.${pkgname%-wine}/regok || exit 1
-
+#     winetricks -q comctl32
+#     winetricks -q comctl32ocx
+#     winetricks -q comdlg32ocx
+#     winetricks -q vb6run
+#    wine "$HOME"/.${pkgname%-wine}/VisualBasic6-KB896559-v1-ENU.exe /q
+#     winetricks -q msvcirt
+#     winetricks -q richtx32
+#     winetricks -q tabctl32
+#     winetricks -q vcrun6sp6
+winetricks -q richtx32
+# winetricks fakechinese
+winetricks mimeassoc=on
+wineserver -k
+wineboot --update
 #     winetricks -q vcrun2010
-
-    cd "/home/taotieren"/.jlcpcassit/ && regsvr32 *.dll
-    wineserver -k
     regedit "$HOME"/.${pkgname%-wine}/wine/regpatch.reg
+    wine "$HOME"/.${pkgname%-wine}/${_pc}.exe /silent
+    ln -s "$HOME"/.${pkgname%-wine}/wine/drive_c/Program Files/SZJLC/JLC_PC_Assit/PcAssit/PcAssit.exe "$HOME"/.${pkgname%-wine}/${pkgname%-wine} || exit 1
+#     cd "$HOME"/.jlcpcassit/ && regsvr32 *.dll
     wineserver -k
+#     wine --check-libs
 fi
 
-# WINEDEBUG=+loaddll wine64 "$HOME"/.${pkgname%-wine}/${pkgname%-wine} "$@"
+WINEDEBUG=+loaddll wine "$HOME"/.${pkgname%-wine}/${pkgname%-wine} "\$@"
 
-wine "$HOME"/.${pkgname%-wine}/${pkgname%-wine} "$@"
+# wine "$HOME"/.${pkgname%-wine}/${pkgname%-wine} "\$@"
 EOF
 
     install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname%-wine}.desktop" << EOF
@@ -151,7 +203,7 @@ Type=Application
 StartupNotify=true
 Categories=Tool;
 Terminal=false
-Icon=${pkgname%-wine}.png
+Icon=${pkgname%-wine}.ico
 Version=${pkgver}
 EOF
 
@@ -166,6 +218,7 @@ if [ ! -d "$HOME"/.${pkgname%-wine} ] ; then
     cp -r /${_jlc}/${_pc}/nim_conf "$HOME"/.${pkgname%-wine}/nim_conf || exit 1
     cp -r /${_jlc}/regpatch.reg "$HOME"/.${pkgname%-wine}/wine || exit 1
 
+    ln -s /${_jlc}/${_pc}/${_pc}.exe "$HOME"/.${pkgname%-wine}/${pkgname%-wine} || exit 1
     ln -s /${_jlc}/${_pc}/${_pc}.Launcher.exe "$HOME"/.${pkgname%-wine}/${pkgname/-wine/-launcher} || exit 1
 #     ln -s -T /${_jlc}/${_pc}/*.exe "$HOME"/.${pkgname%-wine} || exit 1
 #     ln -s -T /${_jlc}/${_pc}/*.dll "$HOME"/.${pkgname%-wine} || exit 1
@@ -191,7 +244,7 @@ if [ ! -f "$HOME"/.${pkgname%-wine}/regok ] ; then
     cd "$HOME"/.${pkgname%-wine}/wine && regedit regpatch.reg
 fi
 
-wine "$HOME"/.${pkgname%-wine}/${pkgname/-wine/-launcher} "$@"
+wine "$HOME"/.${pkgname%-wine}/${pkgname/-wine/-launcher} "\$@"
 EOF
 
     install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname/-wine/-launcher}.desktop" << EOF
@@ -204,7 +257,7 @@ Type=Application
 StartupNotify=true
 Categories=Tool;
 Terminal=false
-Icon=${pkgname%-wine}.png
+Icon=${pkgname%-wine}.ico
 Version=${pkgver}
 EOF
 }
