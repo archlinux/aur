@@ -31,7 +31,7 @@ pkgbase = wireplumber-git
 	depends = libgmodule-2.0.so
 	depends = libgobject-2.0.so
 	depends = libpipewire-0.3.so
-	provides = wireplumber
+	provides = wireplumber=0.4.0.r8.g1075d23
 	provides = libwireplumber-0.4.so
 	conflicts = wireplumber
 	source = git+https://gitlab.freedesktop.org/pipewire/wireplumber.git

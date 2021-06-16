@@ -2,6 +2,7 @@
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 # Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Pedro Lara Campos <root@pedrohlc.com>
+# Contributor: Eduard Tolosa <edu4rdshl@protonmail.com>
 
 _pkgname=wireplumber
 pkgname="${_pkgname}-git"
@@ -17,7 +18,7 @@ makedepends=('cmake' 'cpptoml' 'glib2' 'gobject-introspection' 'meson' 'pipewire
   'doxygen' 'glib2'  'hotdoc' 'python-breathe' 'python-sphinx_rtd_theme'
   'python-sphinx' 'systemd' 'git' 'python-lxml')
 checkdepends=('pipewire-alsa' 'pipewire-jack' 'pipewire-pulse')
-provides=('wireplumber' 'libwireplumber-0.4.so')
+provides=("wireplumber=${pkgver}" 'libwireplumber-0.4.so')
 conflicts=('wireplumber')
 source=("git+$url.git")
 sha512sums=('SKIP')
