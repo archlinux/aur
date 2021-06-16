@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-sound-play
 	pkgdesc = ROS - sound_play provides a ROS node that translates commands on a ROS topic (robotsound) into sounds.
-	pkgver = 0.3.6
+	pkgver = 0.3.11
 	pkgrel = 1
 	url = https://wiki.ros.org/sound_play
 	arch = i686
@@ -34,8 +34,7 @@ pkgbase = ros-noetic-sound-play
 	depends = gst-plugins-good
 	depends = festival
 	depends = festival-english
-	source = ros-noetic-sound-play-0.3.6.tar.gz::https://github.com/ros-drivers/audio_common/archive/0.3.6.tar.gz
-	sha256sums = f70381cc4be7b359e9dd7fdf39a397d6fb7be8046d891a8e7be4656fb96f5950
+	source = ros-noetic-sound-play-0.3.11.tar.gz::https://github.com/ros-drivers/audio_common/archive/0.3.11.tar.gz
+	sha256sums = 0c72196d0d551bb1b9a1c9c134bbfd1b3073529c93a495c4d829911c38db3b1d
 
 pkgname = ros-noetic-sound-play
-
