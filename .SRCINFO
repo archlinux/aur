@@ -1,16 +1,15 @@
 pkgbase = python-portalocker
 	pkgdesc = Easy, portable file locking API.
-	pkgver = 2.2.1
-	pkgrel = 2
+	pkgver = 2.3.0
+	pkgrel = 1
 	url = https://github.com/WoLpH/portalocker
 	arch = any
 	license = PSF
 	makedepends = python-setuptools
 	optdepends = python-redis
 	optdepends = redis
-	source = https://pypi.python.org/packages/source/p/portalocker/portalocker-2.2.1.tar.gz
-	sha256sums = e5f6ffb2f360e9aef615a7c284143d2a93bb640c62e8e45a703e6083fc5aa114
+	source = https://pypi.python.org/packages/source/p/portalocker/portalocker-2.3.0.tar.gz
+	sha256sums = 4e913d807aa6598c320e8a50c50e2ee0602bc45240b485e3f8bc06f13060084c
 
 pkgname = python-portalocker
 	depends = python
-
