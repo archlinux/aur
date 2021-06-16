@@ -5,7 +5,7 @@ url='https://wiki.ros.org/robot_localization'
 pkgname='ros-melodic-robot-localization'
 pkgver='2.6.10'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-tf2-ros
@@ -54,15 +54,8 @@ depends=(${ros_depends[@]}
   yaml-cpp)
 
 _dir="robot_localization-${pkgver}/"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/cra-ros-pkg/robot_localization/archive/${pkgver}.tar.gz"
-geographiclib.patch)
-sha256sums=('1b1a6bc525ed6496e5efecd0c035913f2cb3276069f5c8207382f62c9cb5c4c3'
-            '7efe1f393789f127bcc7e875f19153dbc1762a451c27db1edcb6ac82276c7d16')
-
-prepare() {
-  cd ${srcdir}/${_dir}
-  patch -uN CMakeLists.txt ${srcdir}/geographiclib.patch || return 1
-}
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/cra-ros-pkg/robot_localization/archive/${pkgver}.tar.gz")
+sha256sums=('1b1a6bc525ed6496e5efecd0c035913f2cb3276069f5c8207382f62c9cb5c4c3')
 
 build() {
   # Use ROS environment variables
