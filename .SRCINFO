@@ -14,6 +14,6 @@ pkgbase = perl-file-scan-clamav
 	source = https://cpan.metacpan.org/authors/id/E/ES/ESAYM/File-Scan-ClamAV-1.95.tar.gz
 	source = streamscan-new-eicar-signature.patch
 	sha256sums = d2418fcc8022fb541da609df47393219514b02c4968bd92d6372d2f836639f85
-	sha256sums = 8f6fb96274a67c322c26a8a19be25e7d0ea3befd5d51015f5f996280479db191
+	sha256sums = 8483ba0cdbdf0992c053b476fc82b9cbbea56e86f301464ffc38bc942e548233
 
 pkgname = perl-file-scan-clamav
