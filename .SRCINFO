@@ -1,9 +1,10 @@
 pkgbase = monyhar-lite
 	pkgdesc = 梦弘浏览器 自主研发版本 - 完全自主研发，打破国外垄断，比 Chrome 快 600%。缺少上网功能。
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/monyhar/monyhar-lite
 	arch = any
+	makedepends = gcc
 	source = https://github.com/monyhar/monyhar-lite/raw/master/main.c
 	md5sums = 6a13de1ac87f7e01ad496f372b7b141b
 
