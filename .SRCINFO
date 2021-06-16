@@ -18,4 +18,3 @@ pkgname = dxvk-bin
 	depends = vulkan-icd-loader
 	depends = wine>=3.10
 	depends = lib32-vulkan-icd-loader
-
