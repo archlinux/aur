@@ -5,7 +5,7 @@
 # Upstream URL: https://github.com/Shopify/themekit
 
 pkgname=shopify-themekit-bin-noconflict
-pkgver=1.1.4
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A cross-platform tool for building Shopify Themes - renamed binary to theme-shopify"
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('shopify-themekit')
 conflicts=('shopify-themekit')
 
 source=("theme-${CARCH}-${pkgver}::https://shopify-themekit.s3.amazonaws.com/v${pkgver}/linux-amd64/theme")
-sha256sums=('f8a7850392066336498715a4510f7ce2c4e35496271902eca522582ff0ffc761')
+sha256sums=('2060a7e6f87516fb2aced3a1063829edee4ac9dd33d0c08ea49b224164fab870')
 
 package() {
   install -Dm0755 "${srcdir}/theme-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/theme-shopify"
