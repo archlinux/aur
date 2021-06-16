@@ -2,8 +2,8 @@
 
 pkgname=joplin-appimage
 pkgver=2.0.11
-pkgrel=1
-pkgdesc="The latest pre-released AppImage of Joplin - a cross-platform note taking and to-do app"
+pkgrel=2
+pkgdesc="The latest stable AppImage of Joplin - a cross-platform note taking and to-do app"
 arch=('x86_64')
 url="https://github.com/laurent22/joplin"
 license=('MIT')
