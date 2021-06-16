@@ -2,7 +2,7 @@
 
 pkgname=dxvk-mingw
 pkgver=1.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
 url="https://github.com/doitsujin/dxvk"
@@ -27,6 +27,15 @@ sha256sums=(
 
 prepare() {
     cd dxvk
+
+    # Export CFLAGS used by proton
+    # -O2 is adjusted to -O3 since AVX is disabled
+    # This overrides CFLAGS from makepkg.conf, if you comment these you are on your own
+    # If you want the "best" possbile optimizations for your system you can use
+    # `-march=native` and remove the `-mtune=core-avx2` option.
+    export CFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
+    export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
+
     # Uncomment to enable dxvk async patch.
     # Enable at your own risk. If you don't know what it is,
     # and its implications, leave it as is. You have been warned.
@@ -62,8 +71,8 @@ prepare() {
     dxvk64_cflags="$dxvk_cflags -mno-avx"
     dxvk32_cflags="$dxvk_cflags -mno-avx"
     # These flags are taken from Proton, I don't know if there are issues with Arch wine.
-    #dxvk64_cflags="$dxvk_cflags -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf"
-    #dxvk32_cflags="$dxvk_cflags -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf"
+    dxvk64_cflags="$dxvk_cflags -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf"
+    dxvk32_cflags="$dxvk_cflags -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf"
     dxvk_ldflags="$dxvk_ldflags -Wl,--file-alignment,4096"
 
     sed -i build-win64.txt \
