@@ -4,9 +4,9 @@
 # Contributor: Konsta Kokkinen <kray@tsundere.fi>
 pkgname=minetest-git-leveldb
 _pkgname=minetest
-pkgver=20210421.3e2145d66
+pkgver=20210612.dc165fe94
 pkgrel=1
-pkgdesc='Minecraft-inspired building game (with LuaJIT, LevelDB and Redis support)'
+pkgdesc='Voxel-based sandbox game engine (Git version with LevelDB support)'
 url='http://www.minetest.net/'
 license=('GPL')
 arch=('i686' 'x86_64')
