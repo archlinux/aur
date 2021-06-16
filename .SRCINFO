@@ -1,0 +1,19 @@
+pkgbase = spotmachine-git
+	pkgdesc = A program to record and sequentially play audio spots (git)
+	pkgver = r61.143083d
+	pkgrel = 1
+	url = https://github.com/pryds/spotmachine
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = java-environment
+	depends = java-runtime
+	conflicts = spotmachine
+	source = spotmachine-git::git+https://github.com/pryds/spotmachine.git
+	source = spotmachine.sh
+	source = spotmachine.desktop
+	md5sums = SKIP
+	md5sums = 4062ac402e5195f91962b79c59759225
+	md5sums = 40575314e378701e968988bb7b07a711
+
+pkgname = spotmachine-git
