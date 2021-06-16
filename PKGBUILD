@@ -42,8 +42,8 @@ _use_current=
 
 pkgbase=linux-cacule-rt
 _major=5.10
-_minor=43
-_srcname=linux-${_major}
+_minor=44
+_srcname=linux-${_major}.${_minor}
 pkgver=${_major}.${_minor}
 pkgrel=1
 pkgdesc='Linux-Cacule-RDB-RT'
@@ -58,8 +58,7 @@ options=('!strip')
 _patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.10"
 _caculepatches="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/CacULE"
 source=(
-  "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
-  "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
+  "https://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
   "config"         # the main kernel config file
   "${_caculepatches}/v5.10/cacule-5.10-rt.patch"
   "${_patchsource}/bbr2-patches-v3/0001-bbr2-5.10-introduce-BBRv2.patch"
@@ -82,9 +81,6 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 prepare() {
     cd ${_srcname}
 
-    ### Add upstream patches
-    echo "Add upstream patches"
-    patch -Np1 -i ../patch-${pkgver}
 
     ### Setting version
     echo "Setting version..."
@@ -322,10 +318,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('95bc137d0cf9148da6a9d1f1a878698dc27b40f68e22c597544010a6c591ce1b256f083489d3ff45ff77753289b535135590194d88ef9f007d0ddab3d74de70e'
-            'fb1e6d753de74058fa0ce19f5e00b0f9edbe7538a755e322a7b9e05f5436aed9f61cfdbafe5fc5de187b5c486258d0a4441e16c55906003341ef658328cc044e'
+sha512sums=('444f4a57ebf77ad5a856c6fa2563948c594f4b2238ac1b3c78eddb89084fc888f634f9f61af309b6d146216dbdb4c10bbc06dfab4ccde0c1ce69ffa580558fbc'
             'd6cab26d1dff098696ef434859e39aa99b464e30ea89d6a64fc87fbee27e9887e869cf8fb4e1654ffa1acec8261a6c2abce8d2cf0dd60acf82dbae51b85050bf'
-            '0725167cf8b70b6efb000f07c1ce2711af458fdc97907a5da3e1b7c7b2503ba9e63d6f89d120b469e72ed32aa6702ea5b2fd6f27679c5cccb5c046a304849f6c'
+            'bd82dfd2efea454c42951650b7d454d74d8197262dd8bbabe4cf25b46972fb669e6098c2ad4947f739407369cfb9806d3b95249a258b73221d66a5e7b17093f3'
             '1ecbd7a28489ce68939a78eeeafd0a4b0064b26dd68cd8df661effa3729fa9c087211c1758db98289d3ec6f9f9071fea0f815ed57fa6188ef5fcca3f85ef6e9d'
             'cc33f1db2b449e1e277100fd87e099a4addbfef69e8ba77f92f30b5e2273aee31d04a09c26a3175ad1d2b269764df57934107d55cc615f121529ed0a42c34524'
             'f649ffc0c4ecdc0168aaa852751336209f4166976470a47f912550e64bbe0e0c128fc3ab7dc23d6f0fcdce56bcc2562d1e11826c5be866811eb58f5b15a5c1fd'
