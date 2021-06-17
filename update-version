@@ -1,0 +1,182 @@
+#!/bin/bash
+
+## UPDATE VERSION SCRIPT
+## ---------------------
+
+# Update the version and hash in the PKGBUILD and upload it
+
+## CREDITS
+# ASCII art using the figlet CLI from AUR (https://aur.archlinux.org/packages/figlet) and the pagga font from the figlet-fonts-extra package from AUR (https://aur.archlinux.org/packages/figlet-fonts-extra_)
+
+## DEPENDENCIES
+# git
+# pacman
+# namcap
+# base-devel (group)
+
+## SETUP
+# Unalias everything to prevent weirdness
+unalias -a
+# Fail and exit when the first error occurs
+set -e
+# Enable globs
+shopt -s nullglob
+# For debbuging
+#set -xv
+
+## UTILITY
+# Print messages in colour
+# Green text
+function printg {
+	echo -e "\e[1;32m$*\e[0m"
+}
+# Blue text
+function printb {
+	echo -e "\e[1;34m$*\e[0m"
+}
+# Magenta text
+function printm {
+	echo -e "\e[1;35m$*\e[0m"
+}
+# Yellow text
+function printw {
+	echo -e "\e[1;33m$*\e[0m"
+}
+# Red text
+function printr {
+	echo -e "\e[1;31m$*\e[0m"
+}
+# Join elements of an array (taken from SO - https://stackoverflow.com/a/17841619; thank you to the answerer)
+function join_by {
+	local d=${1-} f=${2-}
+	if shift 2; then
+		printf %s "$f" "${@/#/$d}"
+	fi
+}
+# Print the logo
+function print_logo {
+	printw ""
+	printw "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░"
+	printw "░█▀▄░█░█░█▄█░█▀█░░░█░█░█▀▀░█▀▄░█▀▀░▀█▀░█▀█░█▀█░"
+	printw "░█▀▄░█░█░█░█░█▀▀░░░▀▄▀░█▀▀░█▀▄░▀▀█░░█░░█░█░█░█░"
+	printw "░▀▀░░▀▀▀░▀░▀░▀░░░░░░▀░░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░"
+	printw "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░"
+	printw ""
+}
+
+## CONFIG
+# Set variables
+[[ -z "$PKGBUILD_PATH" ]] && export PKGBUILD_PATH=./PKGBUILD
+[[ -z "$SRCINFO_PATH" ]] && export SRCINFO_PATH=./.SRCINFO
+[[ -z "$INSTALL_HOOKS_PATH" ]] && export INSTALL_HOOKS_PATH=./yeet.install
+
+[[ -z "$TEMP_DIR" ]] && mkdir -p /tmp/pkgupdate/ && export TEMP_DIR=/tmp/pkgupdate/
+
+[[ -z "$PACMAN_BIN" ]] && export PACMAN_BIN=/usr/bin/pacman
+[[ -z "$SUDO_BIN" ]] && export SUDO_BIN=/usr/bin/sudo
+
+[[ -z "$GIT_MESSAGE" ]] && export GIT_MESSAGE="$1"
+[[ -z "$GIT_FILES" ]] && export GIT_FILES="$PKGBUILD_PATH $SRC_INFO_PATH $INSTALL_HOOKS_PATH"
+
+# Source the PKGBUILD so we can access its fields
+source "$PKGBUILD_PATH"
+
+## UI
+# Print the logo
+print_logo
+
+## MAIN
+# Update the version first
+printm "==> Bump version"
+if [[ -z "$1" ]]; then
+	printr "ERR No new version specified; aborting"
+	exit 1
+else
+	printb "==> Updating version to $1"
+	new_version="$1"
+	# Replace it with the new version
+	sed -i "s/pkgver=.*/pkgver=$new_version/g" "$PKGBUILD_PATH"
+fi
+
+# Update the pkgrel next (if needed)
+printm "==> Bump PKGREL"
+if [[ -z "$2" ]]; then
+	printw "==> No PKGREL specified, skipping"
+else
+	printb "==> Updating PKGREL to $2"
+	new_rel="$2"
+	# Replace the old pkgrel with the new pkgrel
+	sed -i "s/pkgrel=.*/pkgrel=$new_rel/g" "$PKGBUILD_PATH"
+fi
+
+printm "==> Update checksums"
+# Now download the sources and get their SHA256SUMS
+printb "==> Retrieving sources and generating SHA256 checksums..."
+# First make a tmp directory for the files
+mkdir -p ""$TEMP_DIR""
+# Array of generated checksums
+generated_checksums=()
+# Then retrieve them
+for source_file_or_url in "${source[@]}"; do
+	# Ensure they are files to be downloaded, not local ones
+	if echo $source_file_or_url | grep -q '::' ; then
+		# Parse the URL and file
+		source_url=$(echo $source_file_or_url | awk -F '::' '{ print $2 }')
+		source_file=$(echo $source_file_or_url | awk -F '::' '{ print $1 }')
+		# Get the file
+		printb "==> Found source $source_file; retrieving from $source_url using cURL"
+		curl -L -o "$TEMP_DIR/$source_file" "$source_url"
+		printg "==> Succesfully retrieved $source_file!"
+		# Generate the checksum
+		printb "==> Generating SHA256 checksum for $source_file..."
+		sha256_checksum=$(sha256sum ""$TEMP_DIR"$source_file" | awk '{ print $1 }')
+		generated_checksums+=($sha256_checksum)
+		printg "==> Checksum generated: $sha256_checksum"
+	else
+		# It is a local file, generate a checksum
+		source_file=$source_file_or_url
+		printg "==> Found local source file $source_file"
+		# Generate the checksum
+		printb "==> Generating SHA256 checksum for $source_file..."
+		sha256_checksum=$(sha256sum "$TEMP_DIR/$source_file" | awk '{ print $1 }')
+		generated_checksums+=($sha256_checksum)
+		printg "==> Checksum generated: $sha256_checksum"
+	fi
+done
+# Replace the checksums in the file
+sed -i "s/sha256sums=.*/sha256sums=('$(join_by ' ' $generated_checksums)')/g" "$PKGBUILD_PATH"
+printg "==> Updated checksums succesfully!"
+
+# Print out .SRCINFO
+printm "==> Update .SRCINFO"
+printb "==> Updating .SRCINFO..."
+cp "$SRCINFO_PATH" "$TEMP_DIR/.SRCINFO.bak"
+makepkg --printsrcinfo > "$SRCINFO_PATH"
+printg "==> Updated .SRCINFO succesfully!"
+
+# Run checks
+# - `namcap` should pass
+# - `makepkg` should exit succesfully
+printm "==> Run checks (namcap, makepkg)"
+# Run namcap
+printb "==> Running namcap..."
+namcap_output=$(namcap "$PKGBUILD_PATH")
+if [[ -z $namcap_output ]]; then
+	printg "==> namcap successful!"
+else
+	printr "ERR namcap check failed: $namcap_output"
+fi
+# Run makepkg
+printb "==> Running makepkg..."
+BUILDDIR="$TEMP_DIR" makepkg -p "$PKGBUILD_PATH"
+printg "==> makepkg successful!"
+
+# Pushing to git
+printm "==> Push to AUR"
+# Run git add, commit, push
+git add $GIT_FILES
+git commit -m "$GIT_MESSAGE"
+git push
+
+# We're done!
+printg "==> Succesfully updated package!"
