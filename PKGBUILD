@@ -9,7 +9,6 @@ license=('GPL3')
 depends=('elementary-icon-theme' 'evolution-data-server' 'granite'
          'gtk-theme-elementary' 'libgee' 'libhandy' 'libpeas' 'libsoup' 'webkit2gtk' )
 makedepends=('meson' 'vala' 'gobject-introspection')
-makedepends=('git' 'meson' 'vala' 'gobject-introspection')
 provides=("${pkgname%-git}" 'planner')
 conflicts=("${pkgname%-git}" 'planner')
 source=('git+https://github.com/alainm23/planner.git')
@@ -24,6 +23,11 @@ build() {
 	arch-meson planner build
 	meson compile -C build
 }
+
+# No tests defined
+#check() {
+#	meson test -C build --print-errorlogs
+#}
 
 package() {
 	DESTDIR="$pkgdir" meson install -C build
