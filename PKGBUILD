@@ -25,12 +25,12 @@ _enable_plasmoid=${SYNCTHING_TRAY_ENABLE_PLASMOID:-1}
 _reponame=syncthingtray
 pkgname=syncthingtray-git
 _name=${pkgname%-git}
-pkgver=864.133dbac
-pkgrel=2
+pkgver=1062.303cea3
+pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing'
 license=('GPL')
-depends=('qtutilities-git' 'qt5-svg' 'openssl' 'desktop-file-utils' 'xdg-utils')
+depends=('qtutilities-git' 'boost-libs' 'qt5-svg' 'openssl' 'desktop-file-utils' 'xdg-utils')
 [[ $_webview_provider == none ]] && [[ $_js_provider == none ]] && depends+=('qt5-base')
 [[ $_webview_provider == webkit ]] && depends+=('qt5-webkit')
 [[ $_webview_provider == webengine ]] && depends+=('qt5-webengine')
@@ -38,7 +38,7 @@ depends=('qtutilities-git' 'qt5-svg' 'openssl' 'desktop-file-utils' 'xdg-utils')
 [[ $_js_provider == qml ]] && depends+=('qt5-declarative')
 [[ $_enable_kio_plugin ]] && optdepends+=('kio: KIO plugin for Syncthing actions in Dolphin')
 [[ $_enable_plasmoid ]] && optdepends+=('plasma-workspace: Plasmoid for Plasma 5 desktop')
-makedepends=('cmake' 'ninja' 'qt5-tools' 'git' 'mesa')
+makedepends=('cmake' 'ninja' 'qt5-tools' 'git' 'mesa' 'boost')
 checkdepends=('cppunit' 'syncthing' 'iproute2')
 [[ $_enable_kio_plugin ]] && makedepends+=('kio')
 [[ $_enable_plasmoid ]] && makedepends+=('plasma-framework' 'extra-cmake-modules')
@@ -79,6 +79,8 @@ build() {
     -DWEBVIEW_PROVIDER="${_webview_provider}" \
     -DJS_PROVIDER="${_js_provider}" \
     -DSYSTEMD_SUPPORT=ON \
+    -DBUILTIN_TRANSLATIONS:BOOL=ON \
+    -DBUILTIN_TRANSLATIONS_OF_QT:BOOL=OFF \
     $additional_args \
     .
   ninja

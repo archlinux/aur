@@ -1,7 +1,7 @@
 pkgbase = syncthingtray-git
 	pkgdesc = Tray application for Syncthing
-	pkgver = 864.133dbac
-	pkgrel = 2
+	pkgver = 1062.303cea3
+	pkgrel = 1
 	url = https://github.com/Martchus/syncthingtray
 	arch = i686
 	arch = x86_64
@@ -17,10 +17,12 @@ pkgbase = syncthingtray-git
 	makedepends = qt5-tools
 	makedepends = git
 	makedepends = mesa
+	makedepends = boost
 	makedepends = kio
 	makedepends = plasma-framework
 	makedepends = extra-cmake-modules
 	depends = qtutilities-git
+	depends = boost-libs
 	depends = qt5-svg
 	depends = openssl
 	depends = desktop-file-utils
@@ -34,4 +36,3 @@ pkgbase = syncthingtray-git
 	sha256sums = SKIP
 
 pkgname = syncthingtray-git
-
