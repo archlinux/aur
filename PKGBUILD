@@ -1,8 +1,8 @@
 # Maintainer: Vedant K (gamemaker1) <gamemaker0042 at gmail dot com>
 
 pkgname=yeet
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.4.0
+pkgrel=3
 epoch=
 pkgdesc="A minimalistic pacman wrapper written in bash"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=()
 optdepends=('ranger: for editing build files')
 install=yeet.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gamemaker1/yeet/archive/v$pkgver.tar.gz")
-sha256sums=('d1d35e4e767cc360893eb76126de55a207bc659e01a8225676e59d5f38f2cdda')
+sha256sums=('fdc43f90b309bf91bb2b18e8cd5457e15993d519a58efb49f6b3bf9bba6eefe6')
 
 package() {
 	install -Dm775 "$srcdir/$pkgname-$pkgver/source/yeet" "$pkgdir/usr/bin/yeet"

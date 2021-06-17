@@ -3,3 +3,22 @@ post_install() {
 	echo -e "\e[1;34m ==> yeet has been successfully installed! Thanks for using it.\e[0m"
 	echo
 }
+
+post_upgrade() {
+	echo
+
+	echo -e "\e[1;34m ==> Checking for config file...\e[0m"
+	user=$(who | awk '{ print $1 }')
+	CONFIG_FILE_PATH="/home/$user/.config/yeet/yeet.conf"
+	if [[ -f "$CONFIG_FILE_PATH" ]]; then
+		echo -e "\e[1;32m ==> Found config file at $CONFIG_FILE_PATH\e[0m"
+		echo -e "\e[1;34m ==> Updating config vars (BREAKING 0.3.0 => 0.4.0) (YEET_CACHE_DIR => CACHE_DIR; AUR_URL => AUR_BASE_URL)\e[0m"
+		sed -i 's/YEET_CACHE_DIR/CACHE_DIR/g' "$CONFIG_FILE_PATH"
+		sed -i 's/AUR_URL/AUR_BASE_URL/g' "$CONFIG_FILE_PATH"
+		echo -e "\e[1;32m ==> Updated successfully!\e[0m"
+	else
+		echo -e "\e[1;31m ==> Did not find config file at $CONFIG_FILE_PATH; skipping config file patch\e[0m"
+	fi
+
+	echo
+}
