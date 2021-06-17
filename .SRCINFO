@@ -1,5 +1,5 @@
 pkgbase = git-vfs
-	pkgdesc = the fast distributed version control system
+	pkgdesc = Microsoft fork of git including gvfs and scalar
 	pkgver = 2.32.0.vfs.0.2
 	pkgrel = 1
 	url = https://git-scm.com/

@@ -5,7 +5,7 @@
 pkgname=git-vfs
 pkgver=2.32.0.vfs.0.2
 pkgrel=1
-pkgdesc='the fast distributed version control system'
+pkgdesc='Microsoft fork of git including gvfs and scalar'
 arch=('x86_64')
 url='https://git-scm.com/'
 license=('GPL2')
