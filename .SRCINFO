@@ -7,6 +7,7 @@ pkgbase = rtl8189es-dkms-git
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = GPL2
 	makedepends = git
 	depends = dkms
@@ -18,4 +19,3 @@ pkgbase = rtl8189es-dkms-git
 	md5sums = 55768e22479838074a6985f08796739d
 
 pkgname = rtl8189es-dkms-git
-
