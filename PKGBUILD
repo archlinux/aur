@@ -1,8 +1,8 @@
-# Maintainer: Pawel Mosakowski <pawel at mosakowski dot net>
 # Maintainer: Fredy García <frealgagu at gmail dot com>
+# Contributor: Pawel Mosakowski <pawel at mosakowski dot net>
 
 pkgname=appgate-sdp
-pkgver=5.4.0
+pkgver=5.4.2
 pkgrel=1
 pkgdesc="Appgate SDP (Software Defined Perimeter) desktop client"
 arch=("x86_64")
@@ -11,15 +11,13 @@ license=("custom" "custom:commercial")
 depends=("dnsmasq" "gtk3" "libsecret" "libxss" "nodejs" "nss" "python-dbus" "python-distro")
 optdepends=("gnome-keyring: saves the endpoint certificate between sessions")
 provides=("${pkgname}")
-conflicts=()
-replaces=("${pkgname}-${pkgver%%.*}")
-options=(staticlibs)
+options=(staticlibs !strip !emptydirs)
 source=(
   "https://bin.${pkgname}.com/${pkgver%.*}/client/${pkgname}_${pkgver}_amd64.deb"
-  "${pkgname}-${pkgname%%-*}driver.service.patch"
+  "${pkgname%%-*}driver.service.patch"
 )
 sha256sums=(
-  "d83cd9e499c518179a1ed0dfec20176ffaafea4548fac60c5b935cdb913778d0"
+  "c0085c4d13bf09de0c1b595f3cd0eaf76c8672edcd39fca6b9c75dcbdd95697a"
   "0789aa07d6a7af44187e407696d930e78c50370c19b8399722ebecb0655ffcdb"
 )
 
@@ -29,7 +27,7 @@ prepare() {
 
   bsdtar -xf "${srcdir}/data.tar.xz" -C .
 
-  patch -Np1 -i "${srcdir}/${pkgname}-${pkgname%%-*}driver.service.patch"
+  patch -Np1 -i "${srcdir}/${pkgname%%-*}driver.service.patch"
 
   # Remove unnecessary .deb related directory
   rm -rf "${srcdir}/${pkgname}/etc/init.d"
@@ -37,14 +35,14 @@ prepare() {
 
 package() {
   # Install application files
-  cp -dpr "${srcdir}/${pkgname}/"{opt,usr,etc} "${pkgdir}"
+  cp -dpr "${srcdir}/${pkgname}/"{etc,opt,usr} "${pkgdir}"
 
   # Install service files
   install -dm755 "${pkgdir}/usr/lib/systemd/system"
   install -Dm644 "${srcdir}/${pkgname}/lib/systemd/system/"* "${pkgdir}/usr/lib/systemd/system/"
 
   # Install license files
-  install -Dm644 "${srcdir}/${pkgname}/usr/share/doc/${pkgname%%-*}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/copyright"
-  install -Dm644 "${srcdir}/${pkgname}/usr/share/doc/${pkgname%%-*}/LICENSE.github" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.github"
-  install -Dm644 "${srcdir}/${pkgname}/usr/share/doc/${pkgname%%-*}/LICENSES.chromium.html.bz2" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html.bz2"
+  install -Dm644 "${srcdir}/${pkgname}/usr/share/doc/${pkgname/-sdp/}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/copyright"
+  install -Dm644 "${srcdir}/${pkgname}/usr/share/doc/${pkgname/-sdp/}/LICENSE.github" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.github"
+  install -Dm644 "${srcdir}/${pkgname}/usr/share/doc/${pkgname/-sdp/}/LICENSES.chromium.html.bz2" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html.bz2"
 }
