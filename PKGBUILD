@@ -3,7 +3,7 @@
 
 pkgname=mopidy-mpris
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Mopidy extension for controlling Mopidy through the MPRIS D-Bus interface"
 arch=('any')
 url="http://www.mopidy.com"
@@ -15,7 +15,7 @@ depends=(
   'python-setuptools'
 )
 provides=('mopidy-mpris')
-source=("https://github.com/mopidy/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mopidy/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('3c544233c2f55ac1995f18f1b916e67edc1628728e97b5b0a8fad0f8db473581')
 
 package() {
