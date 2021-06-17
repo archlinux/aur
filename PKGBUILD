@@ -3,13 +3,13 @@
 # Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=ttf-typicons
-pkgver=2.0.9
-pkgrel=2
+pkgver=2.1.2
+pkgrel=1
 pkgdesc="336 pixel perfect, all-purpose vector icons in a web-font kit"
 arch=('any')
 license=("CC BY-SA 3.0")
 source=(https://github.com/stephenhutchings/typicons.font/archive/v${pkgver}.tar.gz)
-md5sums=('4c434d77a88e7bad125faa1f49bd0283')
+md5sums=('76e85cf4721c7e1be205087f89b8b657')
 url="http://typicons.com/"
 
 package() {
