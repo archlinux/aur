@@ -1,0 +1,17 @@
+diff --git a/dropbox-cli.py b/dropbox-cli.py
+index 99830c3..5925761 100644
+--- a/dropbox-cli.py
++++ b/dropbox-cli.py
+@@ -74,6 +74,12 @@ DROPBOX_DIST_PATH = "%s/.dropbox-dist" % PARENT_DIR
+ DROPBOXD_PATH = os.path.join(DROPBOX_DIST_PATH, "dropboxd")
+ DESKTOP_FILE = "/usr/share/applications/dropbox.desktop"
+ 
++# DROPBOX_DIST_PATH and DROPBOXD_PATH are reassigned to /opt/dropbox and /opt/dropbox/dropboxd if path does not exist
++DROPBOX_INSTALL_PATH = "/opt/dropbox"
++if not os.path.exists(DROPBOXD_PATH) and os.path.exists(os.path.join(DROPBOX_INSTALL_PATH, "dropboxd")):
++    DROPBOX_DIST_PATH = DROPBOX_INSTALL_PATH
++    DROPBOXD_PATH = os.path.join(DROPBOX_DIST_PATH, "dropboxd")
++
+ enc = locale.getpreferredencoding()
+ 
+ # Available from https://linux.dropbox.com/fedora/rpm-public-key.asc
