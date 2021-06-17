@@ -2,7 +2,7 @@
 
 pkgname=('python-plasmalights' 'python2-plasmalights')
 _name=${pkgname#python-}
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Plasma LED driver, FX Sequencer and plugins for Pimoroni."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 
-sha512sums=('e1af028350ed3cd1c886866f501cff510ec0830697fdce86c96bd0ef7e2f60789455320f9734b7f7ea9ecc19f11bf34a6aae365bdbdeecc33b0b62c5617749aa')
+sha512sums=('ad60d5a579948644f4d52ca705e2c028226eb8340ecbf24b523da8dc7c8012533d73bc3c279b4f7c00c88e0745f629b6bfd65cc436d6d2f3c808c71c8f5d1ab0')
 
 prepare() {
   cp -a plasmalights-$pkgver{,-py2}
