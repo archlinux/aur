@@ -1,0 +1,12 @@
+diff --color -Naur midieditor-3.3.2.orig/src/midi/MidiFile.cpp midieditor-3.3.2/src/midi/MidiFile.cpp
+--- midieditor-3.3.2.orig/src/midi/MidiFile.cpp	2021-06-17 10:56:52.530558603 +0200
++++ midieditor-3.3.2/src/midi/MidiFile.cpp	2021-06-17 10:57:56.415516316 +0200
+@@ -1770,7 +1770,7 @@
+ void MidiFile::printLog(QStringList* log)
+ {
+     foreach (QString str, *log) {
+-        qWarning(str.toUtf8().constData());
++        qWarning("%s", str.toUtf8().constData());
+     }
+ }
+ 
