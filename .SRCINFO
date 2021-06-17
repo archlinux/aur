@@ -1,6 +1,6 @@
 pkgbase = pymedusa
 	pkgdesc = Automatic Video Library Manager for TV Shows. It watches for new episodes of your favorite shows, and when they are posted it does its magic.
-	pkgver = 0.5.12
+	pkgver = 0.5.13
 	pkgrel = 1
 	url = https://github.com/pymedusa/Medusa
 	install = pymedusa.install
@@ -12,14 +12,13 @@ pkgbase = pymedusa
 	optdepends = openssl
 	optdepends = unrar
 	options = !strip
-	source = https://github.com/pymedusa/Medusa/archive/v0.5.12.tar.gz
+	source = https://github.com/pymedusa/Medusa/archive/v0.5.13.tar.gz
 	source = pymedusa.service
 	source = pymedusa.sysusers
 	source = pymedusa.tmpfiles
-	sha256sums = 337dda9b995a5651f0a47225cfca22059c65b39c0d3858e33c09fa7b75ee37cd
+	sha256sums = 0e4e1afda4f4a9564c7a93b2bb412f47c123d93bcbe5a3a412b63db0553d3bd5
 	sha256sums = 413f2788b6d98d7090c25e226894a68de89bdde16fd94dcb7a3abf74db7b70b8
 	sha256sums = 2353be80d2ba3ddf6a81c039acfab4f9f13b058d7df99f506d51434a76dc8a37
 	sha256sums = aab2c27aa38db65175e58dd9f50558a91b8a5b8d6fd07120877e47ea1b97764e
 
 pkgname = pymedusa
-
