@@ -1,24 +1,24 @@
 pkgbase = python-agate
 	pkgdesc = A data analysis library that is optimized for humans instead of machines
-	pkgver = 1.6.1
-	pkgrel = 4
+	pkgver = 1.6.2
+	pkgrel = 1
 	url = https://agate.readthedocs.org/
 	arch = any
 	license = MIT
 	checkdepends = python-cssselect
 	makedepends = python-setuptools
-	makedepends = python-sphinx>=1.2.2
+	makedepends = python-sphinx
 	depends = python
-	depends = python-babel>=2.0
-	depends = python-isodate>=0.5.4
-	depends = python-leather>=0.3.2
-	depends = python-parsedatetime>=2.1
-	depends = python-pytimeparse>=1.1.5
-	depends = python-six>=1.9.0
-	depends = python-slugify>=1.2.1
-	depends = python-sphinx_rtd_theme>=0.1.6
-	source = agate-1.6.1.tar.gz::https://github.com/wireservice/agate/archive/1.6.1.tar.gz
-	sha256sums = 0397d3dcc6ae78b8289294b3bca15b2a7328b9015aed8841bc650700fe2a6cad
+	depends = python-babel
+	depends = python-isodate
+	depends = python-leather
+	depends = python-parsedatetime
+	depends = python-pyicu
+	depends = python-pytimeparse
+	depends = python-six
+	depends = python-slugify
+	depends = python-sphinx_rtd_theme
+	source = https://files.pythonhosted.org/packages/source/a/agate/agate-1.6.2.tar.gz
+	sha256sums = 8dbd4a57a2cffecfa2d8109ef5993ec4be12a8a7c81fbc0c8c79d96d4c4399ed
 
 pkgname = python-agate
-
