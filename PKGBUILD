@@ -11,7 +11,7 @@
 
 pkgname=thunderbird-localized-beta-bin
 pkgver=90.0b1
-pkgrel=1
+pkgrel=2
 pkgdesc='Standalone mail and news reader from mozilla.org'
 arch=('i686' 'x86_64')
 url="https://www.mozilla.org/thunderbird"
@@ -74,11 +74,9 @@ source=("${pkgname}.desktop")
 # with each release, everything is done automatically! Leave them like this!  #
 ###############################################################################
 sha256sums=('4890cc98cc21f3f2dbf4134627217b11167c73954a549fbe7ca0bbc8ca79b2d4')
-sha256sums_i686=('218d32c3fb257de2ae890d7768ef9282184fd33c16468ac70d79fb5ee3e49e8b'
+sha256sums_i686=($(_dist_checksum "${_arch32}")
                  'SKIP')
-sha256sums_x86_64=('218d32c3fb257de2ae890d7768ef9282184fd33c16468ac70d79fb5ee3e49e8b'
-                   'SKIP')
-                 'SKIP')
+sha256sums_x86_64=($(_dist_checksum "${_arch64}")
                    'SKIP')
 
 prepare() {
