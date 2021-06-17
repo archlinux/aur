@@ -178,6 +178,7 @@ printb "==> Files to commit: $GIT_FILES"
 printb "==> Commit message: $GIT_MESSAGE"
 # Ask for confirmation
 read -p $'\e[1;33m ==> Push to AUR?\e[0m [\e[1;32my\e[0m/\e[1;31mN\e[0m] ' -n 1 -r
+printb ""
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 	printb "==> Pushing files..."
 	git add $GIT_FILES
