@@ -11,7 +11,7 @@
 
 pkgname=tectonic-bin
 _pkgname=tectonic
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc='Modernized, complete, self-contained TeX/LaTeX engine, powered by XeTex and TeXLive (binary release)'
 arch=('x86_64' 'i686' 'armv7h')
@@ -25,9 +25,9 @@ source_x86_64=("$_pkgname-$pkgver.tar.gz::$url/releases/download/$_pkgname%40$pk
 source_i686=("$_pkgname-$pkgver.tar.gz::$url/releases/download/$_pkgname%40$pkgver/$_pkgname-$pkgver-i686-unknown-linux-gnu.tar.gz")
 source_armv7h=("$_pkgname-$pkgver.tar.gz::$url/releases/download/$_pkgname%40$pkgver/$_pkgname-$pkgver-arm-unknown-linux-musleabihf.tar.gz")
 sha512sums=('5d2f16e9171ba223b0d9d12b0c022718e02b2a8738ec4a664b9eb2ca19d7b67f178f6606edd75a8201e1ab99a88937b9e4c4d01e4a3cdf0ccfedb536207db0a3')
-sha512sums_x86_64=('63e48355039d0c99b9b8121884311ab88ddb9f1ef52577442d4a6ff426767d6cab4405243d802f503e11d4260b43666765dad1f71c2e1657d065f734bbcfd5fe')
-sha512sums_i686=('7914aa7e0354b31cc733eb91da7e51385258c24ace3cf6c8b0e98bd1846b16124e13f12c23b16ef9a63be0035b1b2ce3f03d8cf3bd8f0b9e0977074263d68f5f')
-sha512sums_armv7h=('a4b797b30c4e1592ab0ba43a18dfc9e36c174deb72086fef62918864c3f489d83cde730355674352e1ded409f8f8aeac6353dcaf711f7074d1bd89bfdce65a07')
+sha512sums_x86_64=('26759258977130e2f395d885c784476b560d689b8cdefa2dc9b001c56fda3439ec1036651d4ef9cb12ece4356c213c082a4c3b541daf4b6b178f9397f3634fdc')
+sha512sums_i686=('17120f4cdbfb6d9b4e7e8710fa3dbf9802fbe9881b55d29800c77bb074a311dbc2881648d8ee9b25a7d4d3d30d9a119ad1bc2b3df20746c630958c6a86d25654')
+sha512sums_armv7h=('7107ce5f56fe8a844dec7394b7998a4f4e538c069f666442d25dfdf0a5916decb96ef14dba19dd7c2233a654b57e550d59ebbb5d42381674f276f807a5715c06')
 
 package() {
   install -Dm755 tectonic -t "$pkgdir/usr/bin/"
