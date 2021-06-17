@@ -7,7 +7,7 @@
 
 pkgname=firebase-tools
 pkgver=9.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Firebase Command Line Tools"
 arch=('any')
 url="https://github.com/firebase/firebase-tools"
@@ -26,7 +26,6 @@ package() {
   # encountered, be sure to remove the output redirection in order to debug.
   npm install \
     --global \
-    --user root \
     --prefix "${pkgdir}/usr" \
     "${srcdir}/${pkgname}-${pkgver}.tgz" &> /dev/null
   
