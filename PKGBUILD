@@ -1,6 +1,6 @@
 # Maintainer: Syping <aur@syping.de>
 pkgname=gta5view
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 epoch=
 pkgdesc="Open Source Snapmatic and Savegame viewer/editor for GTA V"
@@ -11,7 +11,7 @@ depends=(qt5-base qt5-svg qt5-translations)
 makedepends=(cmake gcc git make qt5-base qt5-svg qt5-tools qt5-translations)
 provides=("$pkgname")
 source=("https://github.com/SyDevTeam/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=("2231afbebbf4a603a214ece08c1d1ef3b7a3d5e998e4165caf2682e7517ce58b")
+sha256sums=("ecb0e723fc0325a35dd2f8d8e918c142bcd6dc65ce76913cf1d3063f5e476a14")
 
 build() {
     mkdir -p "$pkgname-$pkgver.build"
