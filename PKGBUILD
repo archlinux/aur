@@ -1,7 +1,7 @@
 # Maintainer: Stephen Checkley <scheckley at gmail dot com>
 # Contributor: jrohwer 
 pkgname=copasi-bin
-pkgver=4.32.245
+pkgver=4.33.246
 _pkgver=${pkgver##*.}
 pkgrel=1
 pkgdesc="COmplex PAthway SImulator for analysis of biochemical networks and their dynamics"
@@ -16,8 +16,8 @@ _source=https://github.com/copasi/COPASI/releases/download/Build-$_pkgver
 source_i686=($pkgname-$pkgver.sh::$_source/COPASI-$pkgver-Linux-32bit.sh)
 source_x86_64=($pkgname-$pkgver.sh::$_source/COPASI-$pkgver-Linux-64bit.sh)
 sha256sums=('9576e4a9b2c7e74c91d0e1c0b39fcb20531e8fb4f21c5e8ac95b048609702923')
-sha256sums_i686=('b0368710ec6318d32b062768b2911b42ac2cd22d3da3782cf458fe49d98c9033')
-sha256sums_x86_64=('d765272424fbac69ff1c1f6430e44f1f728a9dbf65758fc2570b870996cf28e7')
+sha256sums_i686=('c9de242cc61ca43d99b8c371346cfb1ee8c07334ea3f3c5ce59718e26a425a3a')
+sha256sums_x86_64=('dad0301c47d21844c48878b44222716bf656b596ccd6f5cf2b125b92a1ec19ee')
 
 package() {
 
