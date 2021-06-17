@@ -12,6 +12,8 @@ arch=('any')
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
+conflicts=('thelounge')
+provides=('thelounge')
 backup=('etc/thelounge/config.js')
 source=(
     "https://registry.npmjs.org/$_pkgname/-/$_pkgname-$_pkgver.tgz"
