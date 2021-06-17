@@ -35,7 +35,7 @@ package() {
   install -D -m644 99-apparmor-profiles.hook "${pkgdir}/usr/share/libalpm/hooks/99-apparmor-profiles.hook"
 
   cd "${srcdir}/${pkgname}" || exit
-  install -D -m755 kavp "${pkgdir}/usr/bin/kavp"
+  install -D -m755 kapvc "${pkgdir}/usr/bin/kapvc"
 
   cd "profiles" || exit
   for profile in ./*; do
