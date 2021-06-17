@@ -1,11 +1,11 @@
 pkgbase = tachidesk-jui
 	pkgdesc = A free and open source manga reader that runs extensions built for Tachiyomi
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Suwayomi/TachideskJUI
 	arch = x86_64
 	license = MPL2
-	depends = jre-openjdk=15
+	depends = jre-openjdk>=15
 	provides = tachidesk-jui
 	noextract = TachideskJUI-linux-x64-1.0.1.jar
 	source = https://github.com/Suwayomi/TachideskJUI/releases/download/v1.0.1/TachideskJUI-linux-x64-1.0.1.jar
