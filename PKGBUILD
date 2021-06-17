@@ -2,7 +2,7 @@
 
 pkgname=traitor-bin
 _pkgname=traitor
-pkgver=0.0.3
+pkgver=0.0.6
 pkgrel=1
 pkgdesc='Automatic Linux privesc via exploitation of low-hanging fruit.'
 arch=('x86_64')
@@ -13,8 +13,8 @@ source=(
   "${url}/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  'd8309dbfb648a5f80ac88634ffaa3a9d613cd31a785b9902a687edbc2d71d73b'
-  'bd63765246691d63235486d156e563ae0264cd6804949f54a1917c1408703fc5'
+  '73e0810037eaca1b0a643396b61a0b6462582d89d952c0c20f96f800dbf5e2e5'
+  'fe6f7eaad32d471d3eb8b7379b3f8f0caddf605a79b687f9f1dd2ad5c92c3592'
 )
 
 package() {
