@@ -67,20 +67,16 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.12.10
+pkgver=5.12.11
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
 arch=(x86_64)
 license=(GPL2)
-makedepends=(
-  bc kmod libelf pahole cpio
-  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
-  git
-)
+makedepends=(bc kmod libelf pahole cpio xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick git)
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=ee10682e410082894b0f231281b8d00c009c9c2c
+_arch_config_commit=e9fcaef238dca17aff523cae8dc8ebd768859ac2
 _bmqversion=5.12-r1
 _bmq_patch="prjc_v${_bmqversion}.patch"
 _gcc_more_v=20210610
@@ -89,18 +85,32 @@ source=(
   "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=b4bb436f8b60a9974455ba93464c88fab0221442"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=fa17daad7209d62169553ce6336ef29ba4748049"
+  "0002-x86-setup-Consolidate-early-memory-reservations.patch::https://git.archlinux.org/linux.git/patch/?id=56e6bb0fe2b790adda81851794409faa533e521c"
+  "0003-x86-setup-Merge-several-reservations-of-start-of-mem.patch::https://git.archlinux.org/linux.git/patch/?id=e63cb4a867fe803dc90376af8b268ba1549ec36e"
+  "0004-x86-setup-Move-trim_snb_memory-later-in-setup_arch-t.patch::https://git.archlinux.org/linux.git/patch/?id=c4b5e4bc8317ccb0a822429d87288d9f90453a04"
+  "0005-x86-setup-always-reserve-the-first-1M-of-RAM.patch::https://git.archlinux.org/linux.git/patch/?id=3ffe8ae29143ee20e01b0bc4a63774182b59daf9"
+  "0006-x86-setup-remove-CONFIG_X86_RESERVE_LOW-and-reservel.patch::https://git.archlinux.org/linux.git/patch/?id=2e68d15d0a146e9b13bfbaba5f260c82b8c3d049"
+  "0007-x86-crash-remove-crash_reserve_low_1M.patch::https://git.archlinux.org/linux.git/patch/?id=bb4c1200fdfd6c17fff64e159e625c3678342b87"
+  "prjc-fix-compilation-error.patch::https://gitlab.com/alfredchen/linux-prjc/uploads/b1121adfd2d2a2c610a1a8d611947d8c/0001-prjc-fix-compilation-error.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('b40ef5a11ca435299899e8131fa72af147455cd8ebee4c0e187572b1f628e66d2b6fbb318308bc911a598d8303d1ab3622d52966deaa5c48d59dcd65f4f58687'
+b2sums=('b5955fc1dc1ae416ef90c44d871f109d6a9130e5fc8b60f73cf98e14f4ce48b0030c79053d88c335c43ac6ab6f5786f9f054577f76c30f5505ed2d70e62d9aa0'
         'SKIP'
-        '18d9f071699c9e9bb4c7d340f4d688554b818a4f7fdcefeee24b8b39fc9328737c6967cfd7e884b518e0c87cfb64ac7a10368ac82436d73f96f0881b5c201099'
+        '9d38db65163a640071539e20a2ac4d8352e07cee26cfb997e6d0e9951bcbe2184c3be4f41a6a4073080e73b743dd86690a056cf6aa1aa607c967e37fa470a8cf'
         '77a1646ffbc67ed88af564b73cf63f0374772bdc1075e771a93ee4fe257b94cb3766a4842898b48f4343458d0b507229182220c7daeb5532df610b964c6640e7'
         '30d1df754608bb423cbc99c2097ad521baa091b9a3b39df4bd5c2d50c57eec54d8fa0e4a4a04b847c3d1b87ba682cadc8db45fabeefdc9ad7caaf8e77b96e41a'
-        '337d29515a3bfa2d0923625bcd4b7e67221e01f95b2b3534a39dc58a87a54dfe90ee9632c79a1e54452084886160d9af37cbb52233b849ecda5699c49a7526ed')
+        'f6e2312f7fa59c3f9e860a0f336e32650b027e6e0b77f51d169d798a60a60a781850cb0d3597e1714a529d1c9c8c0513f7b83306ca540f9e3eabad8e15f60899'
+        'c7914769d8f0ff6fb8e3ec8e6fecbb8ac888a63a1fdbf1b45ac6df34609646a3b441646a4e1067fb05c872c75fba54e754a0785c17187148c6b3e33238bf1427'
+        '6df7a8227f51ede70c3a64f3cbb3c40066063bfd73b76f4e9c3b6ab825fd92898168182ff4268ec699871df1dcb0ba25154f1efa928505c7b0d945d13778ac98'
+        '18bdf0af0ee95464616f8584d6dc0bb26bee11d38c200314bd1a074358f9e580d172b143bceefc0a4f3c8b6b46884a89320b472cd66fc3ac905fff2c8fcd98d7'
+        '3962b46a615f3d2502d742998ef7be8a8cafeb6b979c9e5d6ea7142f37be8071e48761528fbef73884a5dc9bb3b4b0837840916aae39634dd38724dc6f32ca6e'
+        '0a8da6d79c4ea5208379b30b2d7d69bf2f58b18781b89942911ba427aea8667e2551ab84f99e0c8ff77c23addcf2e917843a43b6c49aed9807932c76c935a783'
+        'eddb03c1d53fff69e4b8f1f7bffb7473119cefa89900404e3908d808ea202c6bc0be565531cb1c69dd74847ac8a952cf0b658f0b1156fbbf19e76acf0911f50f'
+        '8bfdf114f40a4d4851c511003d0454b450ad1cffc59f360bef53b7cff9272a743e59da42e8ca067e2f48c1abd89dd4e03dcb681f9fb7a3180eff260cfed713ee')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
@@ -152,6 +162,7 @@ prepare() {
 
   echo "Applying patch ${_bmq_patch}..."
   patch -Np1 -i "$srcdir/${_bmq_patch}"
+  patch -Np1 -i "$srcdir/prjc-fix-compilation-error.patch"
 
   # non-interactively apply gc default options
   # this isn't redundant if we want a clean selection of subarch below
