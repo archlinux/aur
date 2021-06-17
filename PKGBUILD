@@ -23,6 +23,7 @@ package() {
 	mkdir -p ${pkgdir}/usr/share/icons/
 	tar -xf ${srcdir}/Megacubo_${pkgver}_linux_*.tar.gz -C ${pkgdir}/opt/$pkgname
 	mv -uf $pkgname.desktop ${pkgdir}/usr/share/applications/
+	chmod 755 ${pkgdir}/usr/share/applications/$pkgname.desktop
 	cp ${pkgdir}/opt/megacubo/package.nw/default_icon.png ${pkgdir}/usr/share/icons/megacubo.png
 	
 }
