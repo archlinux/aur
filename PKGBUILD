@@ -5,7 +5,7 @@
 
 pkgname=antsword
 pkgver=2.1.12
-pkgrel=3
+pkgrel=4
 pkgdesc="AntSword is a cross-platform webshell management toolkit."
 arch=('any')
 url="https://www.yuque.com/antswordproject"
@@ -48,7 +48,7 @@ package() {
 	cp -a "$srcdir/$pkgname-$pkgver" "$pkgdir/usr/lib/$pkgname"
 
 	# Place launcher script
-	install -Dm 551 "$srcdir/$pkgname" "$pkgdir/usr/bin"
+	install -Dm 551 "$srcdir/$pkgname" -t "$pkgdir/usr/bin"
 
 	# Place desktop entry and icon
 	desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications" "$srcdir/$pkgname.desktop"
