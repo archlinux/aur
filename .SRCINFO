@@ -1,0 +1,15 @@
+pkgbase = jack-xruntotal-git
+	pkgdesc = Simple xrun counter for jack, useful for status bars
+	pkgver = r13.adba33d
+	pkgrel = 1
+	url = https://github.com/madskjeldgaard/jack_xruntotal
+	arch = any
+	groups = pro-audio
+	license = GPL
+	makedepends = git
+	depends = jack
+	source = jack-xruntotal-git-r13.adba33d::git+https://github.com/madskjeldgaard/jack_xruntotal.git
+	md5sums = SKIP
+
+pkgname = jack-xruntotal-git
+
