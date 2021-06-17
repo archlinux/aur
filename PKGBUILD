@@ -8,8 +8,8 @@ url="https://github.com/jwiegley/use-package"
 arch=('any')
 license=('GPL3')
 depends=('emacs')
-makedepends=('emacs')
-provides=('emacs-use-package')
+makedepends=()
+provides=()
 source=("https://github.com/jwiegley/use-package/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('d4f702e79438ce2712b943b3c551d320171c1cf65325c184b2d456e99aaa0051')
 
