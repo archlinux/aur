@@ -15,16 +15,16 @@ conflicts=("${pkgname%-git}"
 source=("${pkgname%-git}::git+https://github.com/bilelmoussaoui/nautilus-git")
 sha256sums=('SKIP')
 
+pkgver() {
+	cd "$srcdir/${pkgname%-git}"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
 
 	# Disable post_install, not available in meson-options
 	sed -i '37,38d' meson.build
-}
-
-pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
