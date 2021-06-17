@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('python-mutagen' 'python-cairo' 'python-musicbrainzngs'
          'python-pylyrics' 'python-gobject' 'python-pillow')
 makedepends=('meson')
-checkdepends=('appstream')
+checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('396add7d55f1296e7561495a404bad02b528b2169e1030d0e2edd6ec245b0214')
 

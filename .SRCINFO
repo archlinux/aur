@@ -5,7 +5,7 @@ pkgbase = gabtag
 	url = https://github.com/lachhebo/GabTag
 	arch = x86_64
 	license = GPL3
-	checkdepends = appstream
+	checkdepends = appstream-glib
 	makedepends = meson
 	depends = python-mutagen
 	depends = python-cairo
@@ -17,4 +17,3 @@ pkgbase = gabtag
 	sha256sums = 396add7d55f1296e7561495a404bad02b528b2169e1030d0e2edd6ec245b0214
 
 pkgname = gabtag
-
