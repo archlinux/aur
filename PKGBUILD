@@ -5,7 +5,7 @@ _pkgname="mitsuba"
 _pkgver="0.6.0"
 pkgname="${_pkgname}-git"
 pkgver=0.6.0.r2172.cfeb7766
-pkgrel=2
+pkgrel=3
 pkgdesc="Mitsuba physically based renderer."
 url="http://mitsuba-renderer.org/"
 license=("GPL3")
@@ -53,9 +53,13 @@ prepare() {
 
     # Scons doesn't honor environment variables
     # user has to export then manually in Sconscript file.
+    export CXXFLAGS+=" -std=gnu++14"
     sed -E -i "s/^(SH)?LINKFLAGS[ ]*= \[/&\'${LDFLAGS}\', /g" config.py
     sed -i "s/^CFLAGS[ ]*= \[/&\'${CFLAGS// /\',\'}\', /g" config.py
     sed -i "s/^CXXFLAGS[ ]*= \[/&\'${CXXFLAGS// /\',\'}\', /g" config.py
+
+    # Fix openexr:v3
+    sed -i "s/^OEXRLIB.*/OEXRLIB = ['OpenEXR']/g" config.py
 
     git apply -v ${srcdir}/{python3.9,boost_107400}.patch
 }
