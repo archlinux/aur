@@ -1,27 +1,29 @@
 pkgbase = appgate-sdp-headless
-	pkgdesc = Software Defined Perimeter - headless client. Does not support 2FA.
-	pkgver = 4.2.2
+	pkgdesc = Appgate SDP (Software Defined Perimeter) headless client (It does not support 2FA.)
+	pkgver = 5.4.2
 	pkgrel = 1
-	url = https://www.cyxtera.com/essential-defense/appgate-sdp/support
+	url = https://www.appgate.com/support/software-defined-perimeter-support
 	arch = x86_64
 	license = custom
-	depends = glib2>=2.31.8
-	depends = iptables
-	depends = libsecret>=0.18
-	depends = python-dbus
-	depends = zlib>=1.1.4
+	license = custom:commercial
 	depends = dnsmasq
-	optdepends = bash-completion>=1.18
+	depends = libsecret
+	depends = libxss
+	depends = nodejs
+	depends = nss
+	depends = python-dbus
+	depends = python-distro
+	optdepends = bash-completion: allows bash completion for scripts
 	provides = appgate-sdp
 	conflicts = appgate-sdp
+	options = staticlibs
 	options = !strip
 	options = !emptydirs
 	backup = etc/appgate.conf
 	backup = etc/dbus-1/system.d/appgate.conf
-	source = https://sdpdownloads.cyxtera.com/AppGate-SDP-4.2/clients/appgate-sdp-headless_4.2.2_amd64.deb
-	source = appgatedriver.service
-	md5sums = e33a92ae63f795667532cbe707b30a00
-	md5sums = b5946b4a978c39467714f58e04726491
+	source = https://bin.appgate-sdp.com/5.4/client/appgate-sdp-headless_5.4.2_amd64.deb
+	source = appgatedriver.service.patch
+	sha256sums = a507abc3f3be149b9dc34a0db774b92b005c1713bb43704087e1693b410e96e0
+	sha256sums = 0789aa07d6a7af44187e407696d930e78c50370c19b8399722ebecb0655ffcdb
 
 pkgname = appgate-sdp-headless
-

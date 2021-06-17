@@ -1,4 +1,9 @@
-*.pkg.tar.xz
-*.deb
+appgate-sdp-headless-*.pkg.tar.zst
+appgate-sdp-headless-*.pkg.tar.xz
+appgate-sdp-headless*.deb
+appgate-sdp-headless*.rpm
+appgate-sdp-headless_*/
+appgate-sdp-headless-*.log
+PKGBUILD-namcap.log
 pkg/
 src/
