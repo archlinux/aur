@@ -1,6 +1,6 @@
 pkgbase = wayfetch-git
 	pkgdesc = A CLI system information tool written in C. A neofetch clone.
-	pkgver = 0.00.01
+	pkgver = 0.00.01.e9b0693d
 	pkgrel = 1
 	url = https://github.com/PalanixYT/wayfetch
 	arch = x86_64

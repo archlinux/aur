@@ -2,7 +2,7 @@
 
 pkgname=wayfetch-git
 _pkgname=wayfetch
-pkgver=0.00.01
+pkgver=0.00.01.e9b0693d
 pkgrel=1
 pkgdesc="A CLI system information tool written in C. A neofetch clone."
 arch=('x86_64')
