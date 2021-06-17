@@ -1,6 +1,6 @@
 pkgbase = solana-bin
 	pkgdesc = Binaries for the Solana blockchain
-	pkgver = 1.6.12
+	pkgver = 1.6.13
 	pkgrel = 1
 	url = https://github.com/solana-labs/solana
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = solana-bin
 	provides = solana
 	conflicts = solana
 	options = !strip
-	source = solana-bin-1.6.12.tar.bz2::https://github.com/solana-labs/solana/releases/download/v1.6.12/solana-release-x86_64-unknown-linux-gnu.tar.bz2
-	md5sums = 51a77ac3df6457e23d86d327ca744c69
+	source = solana-bin-1.6.13.tar.bz2::https://github.com/solana-labs/solana/releases/download/v1.6.13/solana-release-x86_64-unknown-linux-gnu.tar.bz2
+	md5sums = f7a18714f17c24dd82c4a298d3a5e804
 
 pkgname = solana-bin
