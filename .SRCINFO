@@ -1,0 +1,11 @@
+pkgbase = ttf-firge
+	pkgdesc = Firge, a programming font that is a combination of Fira Mono and Genshin Gothic.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/yuru7/Firge
+	arch = any
+	license = custom:SIL
+	source = https://github.com/yuru7/Firge/releases/download/v0.0.2/Firge_v0.0.2.zip
+	sha256sums = 136c4b32aa862db3b6963dfdf73fb56a3aa70fe6fa37b1d304349ee3cef3d2a1
+
+pkgname = ttf-firge
