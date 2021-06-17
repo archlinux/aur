@@ -2,12 +2,11 @@
 
 pkgbase=vault-bin
 pkgname=('vault-bin' 'vault-cli-bin')
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 url='https://vaultproject.io/'
 license=('MPL')
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
-depends=('glibc')
 source=('vault.tmpfiles'
         'vault.sysusers'
         'vault.service'
@@ -22,10 +21,10 @@ sha512sums=('aa56041c53434195dbf544ce9bf18d7bfb530bf65c9b692163621185b0a46035273
             'a97d10208fd99b29cf532c9b5882fe1bbb3faee1d1d706f95a9c379fef461c65a9f16c8530438920024e69871ebd8c7329e6b65025ad65092950bfb74ce393b3'
             '8f8769f2c285f77b10c1f96e43acb233c70509ca657a8113f9d1f13a73ba55de6acdc6984597a4e1da19d6a7748e05f3523461a3b4bce10b9541aa5340400dd6'
             'dd6de68678d972517c135992217f625a3bc728a6495e1f6052df9926cf9cbc212dfa2a612be5a25d7ce5eeeef41e2b12f0d82af6176a6e0ca043b43c622c6347')
-sha256sums_i686=('675d874af68d7de894dbacc362c3f7a66ab72ce0d7b1e7bd1d1af8e8e6ece71c')
-sha256sums_x86_64=('5ee6bb8119b55c27cd3864c982177714a0a4a3813927ccafdb262e78e4bb67bc')
-sha256sums_armv7h=('38782995fecb298f4a6c55e5568a7ea54a8516a7ea4ebaf25bb7caf0f6111c4a')
-sha256sums_aarch64=('2bb9d49b253893ffa2149ee85ce2f2bc72360a2c14ac8775155f34c572344533')
+sha256sums_i686=('bc68f2e611097e08f1d6c045a787036383085b51b85073c8f0a78ae5dc5f8b0b')
+sha256sums_x86_64=('8453132a93b755c0a89dd4b2f1a99bd4af06f8167b81917f117080839031e03f')
+sha256sums_armv7h=('fe898b477161b0152c0b0f2ad62a458e7a98b25d8f35ed1efcf947dc7b05a57e')
+sha256sums_aarch64=('23092f60d8bc96b5c40cec71fec933e76e14afb952c5cd1b8d58354590015c30')
 
 package_vault-bin () {
   pkgdesc='A tool for managing secrets'
