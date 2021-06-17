@@ -3,9 +3,9 @@
 _pkgname=cuberite
 pkgname=cuberite-bin
 _pkgver=1.12.2
-_build_i686=247
-_build_x86_64=236
-_build_armv7h=236
+_build_i686=252
+_build_x86_64=241
+_build_armv7h=241
 pkgver="${_pkgver}b${_build_x86_64}"
 pkgrel=1
 pkgdesc="A Minecraft-compatible multiplayer game server that is written in C++ and designed to be efficient with memory and CPU, as well as having a flexible Lua Plugin API. It is compatible with the vanilla Minecraft client."
@@ -35,10 +35,10 @@ sha512sums=('4b4161558343dd2ec4d6b2be41b958e061df2a41961d9476ac1d38f28530043f997
             '0e82acfe3e907f3976e96aebb146d12f076a26e4478f3330d4f0ded44956624094abc35e56402f6a994fb5852fbc7e901e4e2b8f1ae31f3e82224e6bc15eba0b'
             '09047f4df9591b2d61885c842cbd9abde590b0069945f2e10fd402ad93f0f0abd3c2557e61200388038708960f5d82e22d332efe83cf1acf0895f56dd2e5d5d0'
             '9282301a67a612a4b757324274b6deea16d57e919b3c367a92414d7b74fe0ec4f5e54748ccf0ff14f6c62e8dbc5cb211afebfff8ad5abe63945afccf9484378f'
-            '7fbf77803df26e96e68ffeafb1ebef591c433503faa039dc47a741e2cded7d56445f0ec20ebc73ffd3bc7df123db23dff8b54d97652253fbc79dbf70257b0deb')
-sha512sums_i686=('3a0329525b641b1429ded042ca7f50f8307787bffc3dae45bb493f212a4200fb2604051a103a07601bcf4b8eb21aeeeb1345bb546e40f6aea34baa5fc18c14cf')
-sha512sums_x86_64=('75ef6291513e605590bea82efe0b6581fa75dbaee3cb24bdcd2cd021a9817cbfcbec2d5a17b6df15c2a8b7e480b4a9849542bba9d89f726c50d5b09c79b6310a')
-sha512sums_armv7h=('a7a242ff4b180c46e68a70d1c53bd28d488c685b2e126524c9631b1c9ffca60df3acc93eec85ab78c1dea0ecbf0d5b8ed90c4a2f4c51eedfaa1236e7c0396c80')
+            'ee9c0fdcae1b104688ba90eb3173968be548240067b22272ccb1da0512c3773fde33ee23d5cb4cb27e08b21638a4d3007c26c0878d3d0c35fb2daf4b5e1dd79b')
+sha512sums_i686=('13842a91eeac3feb73b4e9ca0d9678ba178cf4cafbfcd1ff88d820bbe1e1d7405999a8419306b54332695d3ebc11a9d0437625fafba461768974334bfe52158e')
+sha512sums_x86_64=('463fc9af87701cf2daeafa083ff2b9928c2b00b14bed5d2c6e1ddad1b55075bc17e6f4b610944c328a4c76d24b539b39b766c15f655529565ad326001336069c')
+sha512sums_armv7h=('b16f11de8aaf48fbbcc071bf8b8391baa5edf58c3f66aba306940429a2f55edbc8e729e46355b1d5160c51a6bdf8f3a359fa0389bbdd7603166d873fdaaae7aa')
 noextract=("Cuberite.b${_build_i686}_i686.tar.gz"
 	"Cuberite.b${_build_x86_64}_x86_64.tar.gz"
 	"Cuberite.b${_build_armv7h}_armv7h.tar.gz")
