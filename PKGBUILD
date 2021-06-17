@@ -50,6 +50,11 @@ build() {
 	meson compile -C build
 }
 
+# No tests defined
+#check() {
+#	meson test -C build --print-errorlogs
+#}
+
 package() {
 	DESTDIR="$pkgdir" meson install -C build
 
