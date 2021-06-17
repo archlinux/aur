@@ -3,7 +3,7 @@
 
 _pkgname=electrum
 pkgname="${_pkgname}"-appimage
-pkgver=4.1.2
+pkgver=4.1.3
 pkgrel=1
 pkgdesc="Electrum Bitcoin wallet with bundled libraries"
 arch=('x86_64')
@@ -15,10 +15,12 @@ options=(!strip)
 _appimage="${_pkgname}-${pkgver}-${arch}.AppImage"
 validpgpkeys=('6694D8DE7BE8EE5631BED9502BD5824B7F9470E6')
 
-source=("https://download.electrum.org/${pkgver}/${_appimage}"{,.asc} 
-        "${_pkgname}-${pkgver}-LICENCE::https://raw.githubusercontent.com/spesmilo/${_pkgname}/${pkgver}/LICENCE")
+source=("https://download.electrum.org/${pkgver}/${_appimage}"
+        "${_appimage}.asc::https://download.electrum.org/${pkgver}/${_appimage}.ThomasV.asc"
+        "${_pkgname}-${pkgver}-LICENCE::https://raw.githubusercontent.com/spesmilo/${_pkgname}/${pkgver}/LICENCE"
+        )
 
-b2sums=('e3e2aa1c32292e93f61869a3223229e2fb4a9611e2eade4a4f3cc12e74b99935bf29a5ae7e971ea9e80261cc79b4ea358ca7e152c75ed467f3b886c20f8ee97b' 
+b2sums=('98040f92d877718e85f11b3161037cdbd6c8d917dfc436525a4f2c0e0c6ccd0ff9f893f9b0c9f9a08befe63a5e41cef20ef7ef9f7e8793fba81610b1fc2fabc3' 
         'SKIP' 
         'a70dea849f4af001369ba2d35bc79c86d8212f0511f86d6f86f88ba0372ba72ef2ef9e2cee176ca5c85cd8c7fd65a95ed388d11cfb8314252d9c8a7ab66c6110')
 
