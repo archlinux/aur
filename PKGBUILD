@@ -4,23 +4,30 @@
 pkgname=orocos-kdl-python
 _dir=orocos_kinematics_dynamics
 _pkgname=python_orocos_kdl
-pkgver=1.4.0
-pkgrel=4
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="The Kinematics and Dynamics Library is a framework for modelling and computation of kinematic chains (Python binding)"
 arch=('i686' 'x86_64')
 url="https://www.orocos.org/kdl"
 license=('GPL')
 depends=('orocos-kdl' 'python-sip4')
 makedepends=('cmake' 'sip4')
-source=(https://github.com/orocos/${_dir}/archive/v${pkgver}.tar.gz
-        declare-assignment-operator-private-for-SIP.patch)
-sha512sums=('7156465e2aff02f472933617512069355836a03a02d4587cfe03c1b1d667a9762a4e3ed6e055b2a44f1fce1b6746179203c7204389626a7b458dcab1b28930d8'
-            '61a2abc5bce5e59dc3b9d6c3b4e10575053a730d08de5984da66bebcfdb4b0a7c5b5f3330974f7c44455012ba306768b8ea20b9f2e3e8a3ba0295339ce696feb')
+
+# Git commit has for version-specific submodules
+pkgver_pybind11='8de7772cc72daca8e947b79b83fea46214931604' # {_pkgname}/pybind11
+
+source=("https://github.com/orocos/${_dir}/archive/v${pkgver}.tar.gz"
+        "pybind11.tar.gz::https://github.com/pybind/pybind11/archive/${pkgver_pybind11}.tar.gz"
+)
+sha512sums=('5fc9c336d6ed31ad59a5bdf6ee06444cac29beae090b9026b34f35a3cb4cdf1cd6c33af621205b8d6a5201070e679531c8b5bbdeb8a91cd1d8061153b0e47e49'
+            '9bb688209791bd5f294fa316ab9a8007f559673a733b796e76e223fe8653d048d3f01eb045b78aa1843f7eacf97f6e2ee090ac68fed2b43856eb0c4813583204')
 
 prepare() {
-  cd "${srcdir}/${_dir}-${pkgver}/${_pkgname}"
+  pybinddir="pybind11-${pkgver_pybind11}"
 
-  patch -Np1 -i "$srcdir/declare-assignment-operator-private-for-SIP.patch"
+  # Copy in the pybind11 source
+  rm -rf "${srcdir}/${_dir}-${pkgver}/${_pkgname}/pybind11"
+  cp -R "${srcdir}/${pybinddir}" "${srcdir}/${_dir}-${pkgver}/${_pkgname}/pybind11"
 }
 
 build() {
