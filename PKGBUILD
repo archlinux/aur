@@ -34,6 +34,7 @@ build() {
 	meson compile -C build
 }
 
+# tests/borg_integration.rs fails
 #check() {
 #	meson test -C build --print-errorlogs
 #}

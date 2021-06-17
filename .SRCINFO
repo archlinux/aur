@@ -19,4 +19,3 @@ pkgbase = pika-backup
 	sha256sums = 92f89123e206a02f614faab838ca5bc4524f72283275630c07c8fa9f3aa4f3f6
 
 pkgname = pika-backup
-
