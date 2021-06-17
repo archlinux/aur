@@ -75,7 +75,7 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.12
-_minor=10
+_minor=11
 _srcname=linux-${_major}
 
 pkgbase=linux-mini
@@ -92,7 +92,7 @@ makedepends=(
   'git'
 )
 options=('!strip')
-_gcc_more_v='20210610'
+_gcc_more_v='20210616'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
@@ -108,9 +108,9 @@ validpgpkeys=(
 sha256sums=(
   '7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
   '39045607567d69f84424b224e4fa6bf8f97a21a06ac9d6396acab16a18c4bcd3'
-  '034eb39ad49f3a26fc1b4ef799ef481ce35fe03e2b24131e9cd3d2805a99ad19'
-  '49750c51711e011786888a501fb8deef26da8bcabfa71e9ad3e85ed01e2f60ef'
-  '0d0691aa0f80fea0d9d204c05a845416dd443f3bb629cbb68e098e4d19cc841d')
+  '2f9bfb09efb00633ccf425b72c573329d62b6d140403682d1aa87db06de88f62'
+  'e5b449ef1cd5fef9f24f55250afc2fad85df4fd7371db666f7c7f20eff91c33d'
+  'df41f6d2cc9f9edad4cb3aa4c9fe74790110320d0beb40323f4ff40df48c6940')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
