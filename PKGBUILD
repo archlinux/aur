@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 #url='http://www.atheme.org/project/mcs'
 url="https://github.com/atheme-legacy/${pkgname}"
 license=('BSD')
-depends=('libmowgli')
+depends=('libmowgli>=2.1.3')
 #source=("http://distfiles.atheme.org/libmcs-${pkgver}.tbz2")
 source=("https://github.com/atheme-legacy/libmcs/archive/refs/tags/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('7104eeff9b1fa375a5bda55fe4141158c251873e8a086cf08e57a1cf5d70e329')
