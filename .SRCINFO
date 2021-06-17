@@ -1,7 +1,7 @@
 pkgbase = gnupg-scdaemon-shared-access
 	pkgdesc = This package adds shared-access option that uses PCSC_SHARE_SHARED for pcsc_connect in scdaemon when using pcsc backend for smartcard access
 	pkgver = 2.2.27
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnupg.org/
 	install = notify.install
 	arch = x86_64

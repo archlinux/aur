@@ -1,5 +1,5 @@
 post_install() {
-	echo "   >> shared-access.patch has been integrated into upstream 2.2.28 and 2.3 as pcsd-shared option"
+	echo "   >> shared-access.patch has been integrated into upstream 2.2.28 and 2.3 as pcsc-shared option"
 	echo "   >> Please install upstream GnuPG with 'pacman -S gnupg'"
 	echo "   >> This package will no longer receive updates"
 }
