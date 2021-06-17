@@ -2,7 +2,7 @@
 
 pkgname=cuberite
 _pkgver=1.12.2
-_commit=04cb4996
+_commit=4e48464
 pkgver="${_pkgver}c0_${_commit}"
 pkgrel=1
 pkgdesc="A Minecraft-compatible multiplayer game server that is written in C++ and designed to be efficient with memory and CPU, as well as having a flexible Lua Plugin API. It is compatible with the vanilla Minecraft client."
@@ -17,22 +17,22 @@ provides=("minecraft-server=${_pkgver%_*}" "spigot=${_pkgver%_*}")
 backup=('etc/conf.d/cuberite')
 install="${pkgname}.install"
 source=("git+https://github.com/cuberite/cuberite#commit=${_commit}"
-	"git+https://github.com/cuberite/Core#commit=eb88dff"
-	"git+https://github.com/cuberite/ProtectionAreas#commit=5cc1171"
-	"git+https://github.com/cuberite/ChatLog#commit=cc04da3"
-	"git+https://github.com/cuberite/SQLiteCpp#commit=a25ffb5"
-	"git+https://github.com/cuberite/libevent#commit=bbc5fd6"
-	"git+https://github.com/open-source-parsers/jsoncpp#commit=375a111"
-	"git+https://github.com/cuberite/TCLAP#commit=0747261"
-	"git+https://github.com/cuberite/cmake-coverage#commit=25af3c6"
-	"git+https://github.com/cuberite/expat#commit=e87c790"
-	"git+https://github.com/cuberite/lua#commit=935fe91"
-	"git+https://github.com/cuberite/luaexpat#commit=368e292"
-	"git+https://github.com/cuberite/sqlite#commit=4435d7e"
-	"git+https://github.com/cuberite/toluapp#commit=4d24aa3"
-	"git+https://github.com/fmtlib/fmt#commit=9976869"
-	"git+https://github.com/grafi-tt/lunajson#commit=1dcf3fa"
-	"git+https://github.com/cuberite/libdeflate#commit=cb15020"
+	"git+https://github.com/cuberite/Core"
+	"git+https://github.com/cuberite/ProtectionAreas"
+	"git+https://github.com/cuberite/ChatLog"
+	"git+https://github.com/cuberite/SQLiteCpp"
+	"git+https://github.com/cuberite/libevent"
+	"git+https://github.com/open-source-parsers/jsoncpp"
+	"git+https://github.com/cuberite/TCLAP"
+	"git+https://github.com/cuberite/cmake-coverage"
+	"git+https://github.com/cuberite/expat"
+	"git+https://github.com/cuberite/lua"
+	"git+https://github.com/cuberite/luaexpat"
+	"git+https://github.com/cuberite/sqlite"
+	"git+https://github.com/cuberite/toluapp"
+	"git+https://github.com/fmtlib/fmt"
+	"git+https://github.com/grafi-tt/lunajson"
+	"git+https://github.com/cuberite/libdeflate"
 	"${pkgname}-backup.service"
 	"${pkgname}-backup.timer"
 	"${pkgname}.service"
@@ -64,7 +64,7 @@ sha512sums=('SKIP'
             '0e82acfe3e907f3976e96aebb146d12f076a26e4478f3330d4f0ded44956624094abc35e56402f6a994fb5852fbc7e901e4e2b8f1ae31f3e82224e6bc15eba0b'
             '09047f4df9591b2d61885c842cbd9abde590b0069945f2e10fd402ad93f0f0abd3c2557e61200388038708960f5d82e22d332efe83cf1acf0895f56dd2e5d5d0'
             '9282301a67a612a4b757324274b6deea16d57e919b3c367a92414d7b74fe0ec4f5e54748ccf0ff14f6c62e8dbc5cb211afebfff8ad5abe63945afccf9484378f'
-            '7fbf77803df26e96e68ffeafb1ebef591c433503faa039dc47a741e2cded7d56445f0ec20ebc73ffd3bc7df123db23dff8b54d97652253fbc79dbf70257b0deb')
+            'ee9c0fdcae1b104688ba90eb3173968be548240067b22272ccb1da0512c3773fde33ee23d5cb4cb27e08b21638a4d3007c26c0878d3d0c35fb2daf4b5e1dd79b')
 
 _game="cuberite"
 _server_root="/srv/cuberite"
