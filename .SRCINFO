@@ -1,6 +1,6 @@
 pkgbase = sonarr
 	pkgdesc = TV download automation for usenet and torrents.
-	pkgver = 3.0.6.1196
+	pkgver = 3.0.6.1265
 	pkgrel = 1
 	url = https://sonarr.tv/
 	arch = any
@@ -16,16 +16,15 @@ pkgbase = sonarr
 	optdepends = deluge: torrent downloader
 	optdepends = rtorrent: torrent downloader
 	optdepends = jackett: torrent indexer proxy
-	source = https://download.sonarr.tv/v3/main/3.0.6.1196/Sonarr.main.3.0.6.1196.linux.tar.gz
+	source = https://download.sonarr.tv/v3/main/3.0.6.1265/Sonarr.main.3.0.6.1265.linux.tar.gz
 	source = sonarr.service
 	source = sonarr.sysusers
 	source = sonarr.tmpfiles
 	source = package_info
-	sha256sums = d521a47d9fe5078e8713ae031bbb6a0f01e82c581984526e04b24aaf822ed581
+	sha256sums = 87098971b27d383b4502f9350dbc919d94f3486b93514b98ba7fde67dc83018b
 	sha256sums = cafc9dfea7d6f941d7c481d35d83e3228ac35f51ad78a220e2eb1e1bd3652d62
 	sha256sums = cc3c69f719fa64335f4c5b41b2588f1ec56865fb2202f5919d3668b50b8f398e
 	sha256sums = 7bf87304383b7d58ecab59b3686d00a8f1b6fbe4af3a86da35a887e4cebee411
 	sha256sums = 19112dc0051224b4de66f28077c93b6ee06e163b5194e6aecf62dedf66ff45a9
 
 pkgname = sonarr
-
