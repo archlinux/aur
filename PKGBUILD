@@ -6,7 +6,7 @@
 # G.R.E.A - Grupo Recifense de Estudos do Archlinux (recife's group of archlinux research)
 
 pkgname=sooperlooper
-pkgver=1.7.7
+pkgver=1.7.8
 pkgrel=1
 pkgdesc="Live looping sampler capable of immediate loop recording"
 arch=('i686' 'x86_64')
@@ -16,8 +16,8 @@ depends=('gcc-libs' 'glibc' 'libsigc++' 'wxgtk2')
 makedepends=('alsa-lib' 'autoconf-archive' 'gendesk' 'imagemagick' 'jack'
 'liblo' 'libsamplerate' 'libsndfile' 'libxml2' 'ncurses' 'rubberband')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/essej/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('eea3c8549c177a9fb15c4848220515f4534ca05f0b863155e0744d3e6871002a2365f090b01003d06a0f5cc21ca58aacfb4cf81622b731e5a538677e5aa751cd')
-b2sums=('927cdc0940f3caf907f25d5b1547cbcb025d394fd117a72910d6536c23191aa2808e8bb1b93ade1b771493db49b819bb3f8d43165af6ef63649311dbcc55966b')
+sha512sums=('875d9fd88a1d1646572ea32585b18e78fd1fa96566869ab9921756c62de1f224befceb80b8d11a3efdf3c8860ac63f5f18d64d8d2a8132219d47cf0a37be8bfe')
+b2sums=('4413a0b0fdc0f455188865068cd64d176928bac3df0f5eeccf19b080442448649db8d0995e2524f48f647039a8e16f612042cbfc02be2a7e1d7bc2b372f3f1a5')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
