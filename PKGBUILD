@@ -1,8 +1,9 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 
 pkgname=flac2all
+_commit=ffc9dc6762c1cb5249f497e20378081d40f60f85
 pkgver=5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-threaded audio converter of FLAC to either Ogg Vorbis or MP3 retaining all tags and metadata."
 arch=('any')
 url="https://github.com/ZivaVatra/flac2all"
@@ -18,26 +19,21 @@ optdepends=(
 'python-pyzmq: for clustering'
 'vorbis-tools: for ogg support'
 )
-_pkgver=test.v5.5
-#source=("$pkgname-$pkgver.tar.gz::https://github.com/ZivaVatra/$pkgname/archive/v$pkgver.tar.gz"
-source=("$pkgname-5.5.tar.gz::https://github.com/ZivaVatra/$pkgname/archive/$_pkgver.tar.gz"
-pr51.patch::https://patch-diff.githubusercontent.com/raw/ZivaVatra/flac2all/pull/51.patch
+source=("https://github.com/ZivaVatra/$pkgname/archive/$_commit.tar.gz"
 )
-sha256sums=('b5299f5e079a4c882de48c9c8353d648afaa0f403dde851b333ad3a8aa19e271'
-            'fdf5692be972e83d1a803a10007227dad7d039d3c2b97deec2ef4ddc067693e9')
+sha256sums=('c05b5c8e8ba104cb186ffc00a247908f312fdcf193f696b0361d91519c63146d')
 
 prepare() {
-  cd "$pkgname-$_pkgver"
-  patch -Np1 -i ../pr51.patch
+  cd "$pkgname-$_commit"
 }
 
 build() {
-  cd "$pkgname-$_pkgver"
+  cd "$pkgname-$_commit"
   python setup.py build
 }
 
 package() {
-  cd "$pkgname-$_pkgver"
+  cd "$pkgname-$_commit"
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
