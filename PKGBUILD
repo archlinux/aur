@@ -1,17 +1,17 @@
-# Maintainer: Poscat <poscat@mail.poscat.moe>
+# Maintainer: hamki <hamki.do2000@gmail.com>
 
 pkgname=emacs-use-package
-pkgver=2.4
-pkgrel=12
+pkgver=2.4.1
+pkgrel=1
 pkgdesc="A use-package declaration for simplifying your .emacs"
 url="https://github.com/jwiegley/use-package"
 arch=('any')
-license=('GPL2')
+license=('GPL3')
 depends=('emacs')
-makedepends=('git')
+makedepends=('emacs')
 provides=('emacs-use-package')
-source=("https://github.com/jwiegley/use-package/archive/${pkgver}.tar.gz")
-sha256sums=('f26f1b35e47612c8b5ccc956cc0288b581a59bcc9cdcb8370123c904d7b17a3a')
+source=("https://github.com/jwiegley/use-package/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('d4f702e79438ce2712b943b3c551d320171c1cf65325c184b2d456e99aaa0051')
 
 build() {
   cd "${srcdir}/use-package-${pkgver}"

@@ -1,15 +1,14 @@
 pkgbase = emacs-use-package
 	pkgdesc = A use-package declaration for simplifying your .emacs
-	pkgver = 2.4
-	pkgrel = 12
+	pkgver = 2.4.1
+	pkgrel = 1
 	url = https://github.com/jwiegley/use-package
 	arch = any
-	license = GPL2
-	makedepends = git
+	license = GPL3
+	makedepends = emacs
 	depends = emacs
 	provides = emacs-use-package
-	source = https://github.com/jwiegley/use-package/archive/2.4.tar.gz
-	sha256sums = f26f1b35e47612c8b5ccc956cc0288b581a59bcc9cdcb8370123c904d7b17a3a
+	source = https://github.com/jwiegley/use-package/archive/refs/tags/2.4.1.tar.gz
+	sha256sums = d4f702e79438ce2712b943b3c551d320171c1cf65325c184b2d456e99aaa0051
 
 pkgname = emacs-use-package
-
