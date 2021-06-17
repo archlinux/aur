@@ -16,7 +16,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs' 'pipewire'
-             'java-runtime-headless' 'python2' 'python2-setuptools')
+             'java-runtime-headless' 'python2')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
@@ -26,6 +26,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
         fix-crash-in-ThemeService.patch
         unbundle-use-char16_t-as-UCHAR_TYPE.patch
+        make-dom-distiller-protoc-plugin-call-py2.7.patch
         extend-enable-accelerated-video-decode-flag.patch
         sql-make-VirtualCursor-standard-layout-type.patch
         chromium-glibc-2.33.patch
@@ -35,6 +36,7 @@ sha256sums=('545e38cd7dce0008c16ab5736ac9764655149e65d353630adac601da040dbebb'
             '171525009003a9ed1182cfcb6f407d7169d9a731a474304e263029376719f55a'
             '3cfe46e181cb9d337c454b5b5adbf5297052f29cd617cdee4380eeb1943825d8'
             '59a59a60a08b335fe8647fdf0f9d2288d236ebf2cc9626396d0c4d032fd2b25d'
+            '76ceebd14c9a6f1ea6a05b1613e64d1e2aca595e0f0b3e9497e3eeee33ed756c'
             '66db9132d6f5e06aa26e5de0924f814224a76a9bdf4b61afce161fb1d7643b22'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
             '2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b'
@@ -98,6 +100,7 @@ prepare() {
   # Upstream fixes
   patch -Np1 -i ../fix-crash-in-ThemeService.patch
   patch -Np1 -i ../unbundle-use-char16_t-as-UCHAR_TYPE.patch
+  patch -Np1 -i ../make-dom-distiller-protoc-plugin-call-py2.7.patch
   patch -Np1 -i ../extend-enable-accelerated-video-decode-flag.patch
 
   # https://chromium-review.googlesource.com/c/chromium/src/+/2862724
@@ -105,9 +108,6 @@ prepare() {
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../patches/chromium-90-ruy-include.patch
-
-  # Force script incompatible with Python 3 to use /usr/bin/python2
-  sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
 
   # Link to system tools required by the build
   mkdir -p third_party/node/linux/node-linux-x64/bin
