@@ -1,12 +1,13 @@
 pkgbase = electron-qq
 	pkgdesc = A cross-platform QQ made with Electron
 	pkgver = 1.5.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Clansty/electron-qq
 	arch = any
 	license = GPL
 	depends = electron
 	optdepends = mongodb-bin: provides faster storage
+	optdepends = redis: provides faster storage
 	source = app-1.5.5.asar::https://github.com/Clansty/electron-qq/releases/download/v1.5.5/app.asar
 	source = 512x512.png
 	source = electron-qq.desktop

@@ -1,11 +1,12 @@
 # Maintainer: Clansty <i@gao4.pw>
 pkgname=electron-qq
 pkgver=1.5.5
-pkgrel=3
+pkgrel=4
 pkgdesc='A cross-platform QQ made with Electron'
 license=('GPL')
 depends=('electron')
-optdepends=('mongodb-bin: provides faster storage')
+optdepends=('mongodb-bin: provides faster storage'
+            'redis: provides faster storage')
 arch=('any')
 url="https://github.com/Clansty/electron-qq"
 source=("app-${pkgver}.asar::https://github.com/Clansty/${pkgname}/releases/download/v${pkgver}/app.asar"
