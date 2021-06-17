@@ -1,0 +1,15 @@
+pkgbase = granex-git
+	pkgdesc = Vanity address generator for TOR onion v3 (ed25519)
+	pkgver = r1.c16d188
+	pkgrel = 1
+	url = https://github.com/dotcypress/granex
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = rust-nightly
+	makedepends = git
+	provides = granex
+	source = git+https://github.com/dotcypress/granex
+	sha256sums = SKIP
+
+pkgname = granex-git
