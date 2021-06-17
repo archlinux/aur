@@ -8,7 +8,7 @@ arch=("any")
 url="http://vicr123.github.io/contemporary"
 license=('cc-by-sa-4.0')
 depends=()
-makedepends=()
+makedepends=('git')
 source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/contemporary-cursors.git')
 sha256sums=('SKIP')
 

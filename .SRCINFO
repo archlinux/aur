@@ -5,8 +5,8 @@ pkgbase = contemporary-cursors
 	url = http://vicr123.github.io/contemporary
 	arch = any
 	license = cc-by-sa-4.0
+	makedepends = git
 	source = contemporary-cursors-1.0::git+https://github.com/vicr123/contemporary-cursors.git
 	sha256sums = SKIP
 
 pkgname = contemporary-cursors
-
