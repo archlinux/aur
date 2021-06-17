@@ -8,7 +8,8 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://github.com/bilelmoussaoui/nautilus-folder-icons"
 depends=('gtk3' 'python-nautilus')
-makedepends=('gnome-common' 'meson')
+makedepends=('meson')
+#checkdepends=('appstream-glib')
 conflicts=('nautilus-ext-git' 'nautilus-compare')
             # See https://github.com/bilelmoussaoui/nautilus-folder-icons/issues/34
 options=('!emptydirs')
@@ -24,6 +25,11 @@ build() {
 	arch-meson build "$pkgname-$pkgver" -Dfile_manager=nautilus
 	meson compile -C build
 }
+
+# unitteststest_utils.py & Validate appdata file fails
+#check() {
+#	meson test -C build --print-errorlogs
+#}
 
 package() {
 	DESTDIR="$pkgdir" meson install -C build
