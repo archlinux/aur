@@ -13,40 +13,139 @@ pkgname=()
 [ "$_build_opt" -eq 1 ]    && pkgname+=("python-pytorch-opt-rocm")
 
 _pkgname="pytorch"
-pkgver=1.7.1
-_pkgver=1.7.1
-pkgrel=7
+pkgver=1.8.1
+_pkgver=1.8.1
+pkgrel=1
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD')
 depends=('google-glog' 'gflags' 'opencv' 'openmp' 'rccl' 'pybind11' 'python' 'python-yaml' 'libuv'
-         'python-numpy' 'protobuf' 'ffmpeg' 'python-future' 'qt5-base' 'onednn' 'intel-mkl')
+         'python-numpy' 'protobuf' 'ffmpeg' 'python-future' 'qt5-base' 'onednn' 'intel-mkl'
+         'python-typing_extensions')
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'rocm'
              'rocm-libs' 'miopen' 'git' 'ninja' 'pkgconfig' 'doxygen')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
+        # generated using parse-submodules
+        "${pkgname}-ios-cmake::git+https://github.com/Yangqing/ios-cmake.git"
+        "${pkgname}-pthreadpool::git+https://github.com/Maratyszcza/pthreadpool.git"
+        "${pkgname}-FP16::git+https://github.com/Maratyszcza/FP16.git"
+        "${pkgname}-NNPACK::git+https://github.com/Maratyszcza/NNPACK.git"
+        "${pkgname}-FXdiv::git+https://github.com/Maratyszcza/FXdiv.git"
+        "${pkgname}-PeachPy::git+https://github.com/Maratyszcza/PeachPy.git"
+        "${pkgname}-cub::git+https://github.com/NVlabs/cub.git"
+        "${pkgname}-psimd::git+https://github.com/Maratyszcza/psimd.git"
+        "${pkgname}-cpuinfo::git+https://github.com/pytorch/cpuinfo.git"
+        "${pkgname}-enum34::git+https://github.com/PeachPy/enum34.git"
+        "${pkgname}-ideep::git+https://github.com/intel/ideep"
+        "${pkgname}-QNNPACK::git+https://github.com/pytorch/QNNPACK"
+        "${pkgname}-foxi::git+https://github.com/houseroad/foxi.git"
+        "${pkgname}-ARM_NEON_2_x86_SSE::git+https://github.com/intel/ARM_NEON_2_x86_SSE.git"
+        "${pkgname}-six::git+https://github.com/benjaminp/six.git"
+        "${pkgname}-eigen-git-mirror::git+https://github.com/eigenteam/eigen-git-mirror.git"
+        "${pkgname}-gloo::git+https://github.com/facebookincubator/gloo"
+        "${pkgname}-nccl::git+https://github.com/NVIDIA/nccl"
+        "${pkgname}-gemmlowp::git+https://github.com/google/gemmlowp.git"
+        "${pkgname}-kineto::git+https://github.com/pytorch/kineto"
+        "${pkgname}-sleef::git+https://github.com/shibatch/sleef"
+        "${pkgname}-onnx-tensorrt::git+https://github.com/onnx/onnx-tensorrt"
+        "${pkgname}-benchmark::git+https://github.com/google/benchmark.git"
+        "${pkgname}-tbb::git+https://github.com/01org/tbb"
+        "${pkgname}-XNNPACK::git+https://github.com/malfet/XNNPACK.git"
+        "${pkgname}-fbjni::git+https://github.com/facebookincubator/fbjni.git"
+        "${pkgname}-tensorpipe::git+https://github.com/pytorch/tensorpipe.git"
+        "${pkgname}-pybind11::git+https://github.com/pybind/pybind11.git"
+        "${pkgname}-fbgemm::git+https://github.com/pytorch/fbgemm"
+        "${pkgname}-googletest::git+https://github.com/google/googletest.git"
+        "${pkgname}-zstd::git+https://github.com/facebook/zstd.git"
+        "${pkgname}-onnx::git+https://github.com/onnx/onnx.git"
+        "${pkgname}-protobuf::git+https://github.com/protocolbuffers/protobuf.git"
+        "${pkgname}-fmt::git+https://github.com/fmtlib/fmt.git"
         fix_include_system.patch
         use-system-libuv.patch
-        use-system-libuv2.patch
-        nccl_version.patch
-        disable_non_x86_64.patch
-        "find-hsa-runtime.patch::https://patch-diff.githubusercontent.com/raw/pytorch/pytorch/pull/45550.patch")
+        fix-building-for-torchvision.patch
+        disable_non_x86_64.patch)
 sha256sums=('SKIP'
-            '83c81ec6a461110da6ae6182529f58100986b068c5182ca62cd53c648b4e4fb0'
-            '26b1dd596f1e21a011ee18cab939924483d6c6d4d98e543bf76f5a9312d54d67'
-            '7b65c3b209fc39f92ba58a58be6d3da40799f1922910b1171ccd9209eda1f9eb'
-            'e4a96887b41cbdfd4204ce5f16fcb16a23558d23126331794ab6aa30a66f2e0d'
-            'd3ef8491718ed7e814fe63e81df2f49862fffbea891d2babbcb464796a1bd680'
-            'SKIP')
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '557761502bbd994d9795bef46779e4b8c60ba0b45e7d60841f477d3b7f28a00a'
+            'cd9ac4aaa9f946ac5eafc57cf66c5c16b3ea7ac8af32c2558fad0705411bb669'
+            'f4959cde995382c55ba28c8496321b0bb0a5c0f3f46abcce2e88521004993846'
+            'd3ef8491718ed7e814fe63e81df2f49862fffbea891d2babbcb464796a1bd680')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
 
-  # This is the lazy way since pytorch has sooo many submodules and they keep
-  # changing them around but we've run into more problems so far doing it the
-  # manual than the lazy way. This lazy way (not explicitly specifying all
-  # submodules) will make building inefficient but for now I'll take it.
-  # It will result in the same package, don't worry.
+  # generated using parse-submodules
+  git submodule init
+
+  git config submodule."third_party/pybind11".url "${srcdir}/${pkgname}"-pybind11
+  git config submodule."third_party/cub".url "${srcdir}/${pkgname}"-cub
+  git config submodule."third_party/eigen".url "${srcdir}/${pkgname}"-eigen-git-mirror
+  git config submodule."third_party/googletest".url "${srcdir}/${pkgname}"-googletest
+  git config submodule."third_party/benchmark".url "${srcdir}/${pkgname}"-benchmark
+  git config submodule."third_party/protobuf".url "${srcdir}/${pkgname}"-protobuf
+  git config submodule."third_party/ios-cmake".url "${srcdir}/${pkgname}"-ios-cmake
+  git config submodule."third_party/NNPACK".url "${srcdir}/${pkgname}"-NNPACK
+  git config submodule."third_party/gloo".url "${srcdir}/${pkgname}"-gloo
+  git config submodule."third_party/NNPACK_deps/pthreadpool".url "${srcdir}/${pkgname}"-pthreadpool
+  git config submodule."third_party/NNPACK_deps/FXdiv".url "${srcdir}/${pkgname}"-FXdiv
+  git config submodule."third_party/NNPACK_deps/FP16".url "${srcdir}/${pkgname}"-FP16
+  git config submodule."third_party/NNPACK_deps/psimd".url "${srcdir}/${pkgname}"-psimd
+  git config submodule."third_party/zstd".url "${srcdir}/${pkgname}"-zstd
+  git config submodule."third-party/cpuinfo".url "${srcdir}/${pkgname}"-cpuinfo
+  git config submodule."third_party/python-enum".url "${srcdir}/${pkgname}"-enum34
+  git config submodule."third_party/python-peachpy".url "${srcdir}/${pkgname}"-PeachPy
+  git config submodule."third_party/python-six".url "${srcdir}/${pkgname}"-six
+  git config submodule."third_party/onnx".url "${srcdir}/${pkgname}"-onnx
+  git config submodule."third_party/onnx-tensorrt".url "${srcdir}/${pkgname}"-onnx-tensorrt
+  git config submodule."third_party/sleef".url "${srcdir}/${pkgname}"-sleef
+  git config submodule."third_party/ideep".url "${srcdir}/${pkgname}"-ideep
+  git config submodule."third_party/nccl/nccl".url "${srcdir}/${pkgname}"-nccl
+  git config submodule."third_party/gemmlowp/gemmlowp".url "${srcdir}/${pkgname}"-gemmlowp
+  git config submodule."third_party/QNNPACK".url "${srcdir}/${pkgname}"-QNNPACK
+  git config submodule."third_party/neon2sse".url "${srcdir}/${pkgname}"-ARM_NEON_2_x86_SSE
+  git config submodule."third_party/fbgemm".url "${srcdir}/${pkgname}"-fbgemm
+  git config submodule."third_party/foxi".url "${srcdir}/${pkgname}"-foxi
+  git config submodule."third_party/tbb".url "${srcdir}/${pkgname}"-tbb
+  git config submodule."android/libs/fbjni".url "${srcdir}/${pkgname}"-fbjni
+  git config submodule."third_party/XNNPACK".url "${srcdir}/${pkgname}"-XNNPACK
+  git config submodule."third_party/fmt".url "${srcdir}/${pkgname}"-fmt
+  git config submodule."third_party/tensorpipe".url "${srcdir}/${pkgname}"-tensorpipe
+  git config submodule."third_party/kineto".url "${srcdir}/${pkgname}"-kineto
+
   git submodule update --init --recursive
 
   # https://bugs.archlinux.org/task/64981
@@ -55,14 +154,14 @@ prepare() {
   # Use system libuv
   patch -Np1 -i "${srcdir}"/use-system-libuv.patch
 
-  # FindNCCL patch to export correct nccl version
-  # patch -Np1 -i "${srcdir}"/nccl_version.patch
-
-  # https://github.com/pytorch/pytorch/pull/45550
-  patch -Np1 -i "${srcdir}"/find-hsa-runtime.patch
+  # fix https://github.com/pytorch/vision/issues/3695
+  patch -Np1 -i "${srcdir}/fix-building-for-torchvision.patch"
 
   # remove local nccl
   rm -rf third_party/nccl/nccl
+
+  # fix build with google-glog 0.5 https://github.com/pytorch/pytorch/issues/58054
+  sed -e '/namespace glog_internal_namespace_/d' -e 's|::glog_internal_namespace_||' -i c10/util/Logging.cpp
 
   cd ..
 
@@ -97,8 +196,8 @@ prepare() {
 build() {
   if [ "$_build_no_opt" -eq 1 ]; then
     echo "Building with rocm and without non-x86-64 optimizations"
-    export USE_CUDA=OFF
-    export USE_ROCM=ON
+    export USE_CUDA=0
+    export USE_ROCM=1
     cd "${srcdir}/${_pkgname}-${pkgver}-rocm"
     patch -Np1 -i "${srcdir}/disable_non_x86_64.patch"
     echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
@@ -115,8 +214,8 @@ build() {
 
   if [ "$_build_opt" -eq 1 ]; then
     echo "Building with rocm and with non-x86-64 optimizations"
-    export USE_CUDA=OFF
-    export USE_ROCM=ON
+    export USE_CUDA=0
+    export USE_ROCM=1
     cd "${srcdir}/${_pkgname}-${pkgver}-opt-rocm"
     echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
 
