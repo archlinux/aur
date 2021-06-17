@@ -4,7 +4,7 @@
 
 pkgname=jaxx-liberty-appimage
 pkgver=2.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform Blockchain Wallet"
 arch=('x86_64')
 url="https://jaxx.io/"
@@ -14,8 +14,8 @@ depends=(nss gdk-pixbuf2 gtk3 fuse2)
 conflicts=(jaxx)
 source=("https://download-liberty.jaxx.io/Jaxx.Liberty-${pkgver}.AppImage" jaxx.png jaxx.desktop)
 sha512sums=('ecabe0e7fd1a12b06c2d16af141c1c81fad6761f056b734f13a2189bad6c57cda90eb69228f8eddc406d3f610321796c449943d391bef1146434755a35ea9eca'
-            '5314ae9a0b8054cb8709254ab2f95efd74bf0c4301e6014f9f4676c42c09617da777143b6027843641c54f71abfe4a7c3f9dcc78e32ff807b2e9e92e85a6a7f8'
-            '9d0724bdea05a94646df202039eac0ab0b6bace5641496d2b8047cd9e4ea26aa79a378b66f9c5ed9ed62807a1ddb36ee1f2bb8c4c23cf9489d963d8074a11331')
+            '86ae3c693efa0f7f9e5c4ecd04ca973ec2293c1b98396cbd72783ddb90880a56cab4100e8fabeee141f2d65828e4c93adac50c5d08996cf242f0dc45fc2dbd0b'
+            '49c93c483b8355709f3f512ced58781e21f55db5a614ed833b98b6ea0a3fb11f6b3c0dab6f9999537e40081ea3dce87ba65812dee00ad3c79b247fe00c1bc370')
 
 package() {
         mkdir -p $pkgdir/opt/$pkgname
