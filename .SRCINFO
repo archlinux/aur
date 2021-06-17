@@ -1,6 +1,6 @@
 pkgbase = weasis-bin
 	pkgdesc = Weasis is a multipurpose DICOM viewer with a highly modular architecture
-	pkgver = 3.6.1
+	pkgver = 3.7.1
 	pkgrel = 1
 	url = https://nroduit.github.io/
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = weasis-bin
 	license = EPL-2.0
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/nroduit/Weasis/releases/download/v3.6.1/weasis_3.6.1-1_amd64.deb
-	sha512sums = 2fd4a8ae1cdafb6643fbeded1c97491f2f8cb6273540af03e223ff17686f5cf1f5712448afbe3e6a997250b0e8bfd24945622ceb384955cb6053b54b4789d532
+	source = https://github.com/nroduit/Weasis/releases/download/v3.7.1/weasis_3.7.1-1_amd64.deb
+	sha512sums = 8ac0c4daed155ba6b8ca1d253376254a9b11b8c1b6018c4c24f4bbb149b66d2ebeb4f3ec3a9f43fa1f955ce4eb488ab3be79665c2c734e34e1870ab06c060e45
 
 pkgname = weasis-bin
-
