@@ -1,14 +1,13 @@
 pkgbase = libmcs
 	pkgdesc = Library which abstracts the storage of configuration settings
 	pkgver = 0.7.2
-	pkgrel = 2
-	url = http://www.atheme.org/project/mcs
+	pkgrel = 3
+	url = https://github.com/atheme-legacy/libmcs
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = libmowgli
-	source = http://distfiles.atheme.org/libmcs-0.7.2.tbz2
-	sha1sums = 20c30bf7d4b3043848b5180de4c2cb61f7e0154c
+	source = https://github.com/atheme-legacy/libmcs/archive/refs/tags/libmcs-0.7.2.tar.gz
+	sha256sums = 7104eeff9b1fa375a5bda55fe4141158c251873e8a086cf08e57a1cf5d70e329
 
 pkgname = libmcs
-
