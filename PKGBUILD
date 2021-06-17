@@ -1,6 +1,6 @@
 # Maintainer: Brian Smith
 pkgname=foundationdb-clients-bin
-pkgver=6.2.29
+pkgver=6.3.13
 pkgrel=1
 pkgdesc="FoundationDB clients and library. FoundationDB is a scalable, fault-tolerant, ordered key-value store with full ACID transactions. This package contains client utilities and libraries."
 arch=('x86_64')
@@ -13,7 +13,7 @@ install=${pkgname}.install
 # Remove DLAGENTS once apple can fix their stuff https://bbs.archlinux.org/viewtopic.php?id=262737
 DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 source_x86_64=("https://www.foundationdb.org/downloads/${pkgver}/ubuntu/installers/foundationdb-clients_${pkgver}-${pkgrel}_amd64.deb")
-sha256sums_x86_64=('0e64b5e78bd22803b18aeaca85dccec8a7d027cc30da0eaadb436e6b68f6f9ac')
+sha256sums_x86_64=('e9e1be79773c3e23347d04c3885d9199ca3ca32425049968fd00b2505dece830')
 
 package(){
 
