@@ -26,12 +26,15 @@ prepare() {
 	cd "${pkgname#ooni}-$pkgver"
 
 	# Disable downloading probe-cli & remove other platforms
-	sed -i "s/'darwin_amd64', 'linux_amd64', 'windows_amd64'/'linux_amd64'/g" scripts/download-bin.js
+	sed -i "s/'darwin_amd64', 'linux_amd64', 'windows_amd64'/'linux_amd64'/g" \
+		scripts/download-bin.js
 
 	# Place files for verification
 	mkdir -p build/probe-cli/linux_amd64
-	cp "$srcdir/${pkgname%-desktop}-cli-$_cliver.tar.gz" "build/probe-cli/${pkgname%-desktop}_linux_amd64.tar.gz"
-	cp "$srcdir/${pkgname%-desktop}-cli-$_cliver.tar.gz.asc" "build/probe-cli/${pkgname%-desktop}_linux_amd64.tar.gz.asc"
+	cp "$srcdir/${pkgname%-desktop}-cli-$_cliver.tar.gz" \
+		"build/probe-cli/${pkgname%-desktop}_linux_amd64.tar.gz"
+	cp "$srcdir/${pkgname%-desktop}-cli-$_cliver.tar.gz.asc" \
+		"build/probe-cli/${pkgname%-desktop}_linux_amd64.tar.gz.asc"
 }
 
 build() {
