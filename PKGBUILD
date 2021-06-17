@@ -3,7 +3,7 @@
 
 _pkgname=amidst
 pkgname=${_pkgname}-beta
-_version='4.6'
+_version='4.7'
 pkgver=${_version//-/_}
 _jarver="v${_version}"
 _jarfile="${_pkgname}-${_jarver/./-}.jar"
@@ -20,7 +20,7 @@ noextract=("$_jarfile")
 changelog=ChangeLog
 source=("https://github.com/toolbox4minecraft/amidst/releases/download/$_jarver/$_jarfile"
         amidst.desktop)
-b2sums=('10bc4fe95bb099d581c47c6f380a289593a0fd9d378330fe62a45a83b2c7b632cc30d995a6f2ba40f0f9153ba226b8c323f3db410ace070fdde781164e44b46e'
+b2sums=('f23510c32b970206593acd430e6efaf656df012630b72577e438af67be1e0d32d6d5308c1da04cb23e5823aef3b7a91c59046d07c0df5a56e6554ebdb09e2e5c'
         'e20cb58407016cbec9433191f39de3d890c6bbc7b6f38fc73525cb94c83b6ed1e136a4f1ddc8ac2c82cb72d674d0f95dc04be1911b254260e2ef130a8eefb758')
 
 prepare() {
