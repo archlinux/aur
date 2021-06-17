@@ -2,7 +2,7 @@
 
 _pkgname=mypy-zope
 pkgname=python-mypy-zope
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Plugin for mypy to support zope.interface"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-setuptools' 'mypy' 'python-zope-interface' 'python-zope-schema')
 checkdepends=('python-pytest' 'python-lxml')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('7a0af9494c9527a044a6a614aeaece73c48f44d34c59c424d1662eb6c53d1725')
+sha256sums=('ad24e4297ddb12bd60deaefc8742cf36ad13680c0e9f879a13f2b96dc565d49e')
 
 # Tests only work with installed package:
 # https://github.com/Shoobx/mypy-zope/issues/25
