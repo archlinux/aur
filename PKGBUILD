@@ -137,8 +137,8 @@ prepare() {
 
 build() {
   # optionally modify to fit your specific hardware
-  #CFLAGS=" -march=haswell -mtune=haswell"
-  #CXXFLAGS="${CFLAGS}"
+  #export CFLAGS+=" -march=haswell -mtune=haswell"
+  #export CXXFLAGS="${CFLAGS}"
 
   make -C chromium-launcher-$_launcher_ver
 
