@@ -13,6 +13,8 @@ pkgbase = gdm-tools-git
 	provides = set-gdm-theme
 	provides = gnomeconf2gdm
 	conflicts = gdm-tools
+	backup = etc/gdm-tools/set-gdm-theme.conf
+	backup = etc/gdm-tools/custom.css
 	source = gdm-tools-git::git+https://github.com/realmazharhussain/gdm-tools.git
 	md5sums = SKIP
 
