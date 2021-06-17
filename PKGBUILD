@@ -1,7 +1,8 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 # Contributor: Reto Brunner <brunnre8@gmail.com>
 # Contributor: Maxime Poulin <maxpoulin64@gmail.com>
-pkgname=thelounge
+_pkgname=thelounge
+pkgname=thelounge-beta
 _pkgver=4.3.0-pre.2
 pkgver=${_pkgver/-/}
 pkgrel=1
@@ -13,13 +14,13 @@ depends=('nodejs')
 makedepends=('npm')
 backup=('etc/thelounge/config.js')
 source=(
-    "https://registry.npmjs.org/$pkgname/-/$pkgname-$_pkgver.tgz"
+    "https://registry.npmjs.org/$_pkgname/-/$_pkgname-$_pkgver.tgz"
     'system.service'
     'user.service'
     'sysusers.d'
     'tmpfiles.d'
 )
-noextract=("$pkgname-$_pkgver.tgz")
+noextract=("$_pkgname-$_pkgver.tgz")
 sha256sums=('0d55889e1f61f0250712ec6145835cedeb9a6706bcb47166004144b713e2feb0'
             'c92210f6ac8f01c1cd01b6b26793094cd2feea583ed21fab3564d6bcafdc7a20'
             'c609f3309f54bd6285e99ff29ca2464828bec7bbbca67243ee688bd2d605dbf0'
@@ -29,16 +30,16 @@ sha256sums=('0d55889e1f61f0250712ec6145835cedeb9a6706bcb47166004144b713e2feb0'
 package() {
     export NODE_ENV=production
 
-    npm install -g --user root --prefix "$pkgdir/usr" "$pkgname-$_pkgver.tgz" --cache "${srcdir}/npm-cache"
+    npm install -g --user root --prefix "$pkgdir/usr" "$_pkgname-$_pkgver.tgz" --cache "${srcdir}/npm-cache"
 
-    echo /etc/thelounge > "$pkgdir/usr/lib/node_modules/$pkgname/.thelounge_home"
+    echo /etc/thelounge > "$pkgdir/usr/lib/node_modules/$_pkgname/.thelounge_home"
 
     # add default config
-    install -Dm 644 "$pkgdir/usr/lib/node_modules/$pkgname/defaults/config.js" "$pkgdir/etc/thelounge/config.js"
+    install -Dm 644 "$pkgdir/usr/lib/node_modules/$_pkgname/defaults/config.js" "$pkgdir/etc/thelounge/config.js"
 
     # services
-    install -Dm644 "$srcdir/system.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-    install -Dm644 "$srcdir/user.service" "$pkgdir/usr/lib/systemd/user/$pkgname.service"
+    install -Dm644 "$srcdir/system.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
+    install -Dm644 "$srcdir/user.service" "$pkgdir/usr/lib/systemd/user/$_pkgname.service"
 
     # setting up system user
     install -Dm644 "${srcdir}/sysusers.d" "${pkgdir}/usr/lib/sysusers.d/thelounge.conf"
