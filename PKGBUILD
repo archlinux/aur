@@ -5,14 +5,14 @@
 
 pkgname=lightzone
 pkgver=4.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source professional-level digital darkroom software"
 url="http://lightzoneproject.org/"
 license=("custom:BSD-3-Clause")
 arch=("x86_64")
 conflicts=('lightzone-git')
 provides=('lightzone')
-depends=('java-runtime=15'
+depends=('java-runtime'
     'java-openjfx'
     'javahelp2'
     'lcms2'
@@ -20,7 +20,7 @@ depends=('java-runtime=15'
     'libjpeg-turbo'
     'libtiff'
     'libxml2')
-makedepends=('java-environment=15'
+makedepends=('java-environment'
     'ant'
     'autoconf'
     'gcc'
