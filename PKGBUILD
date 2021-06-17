@@ -2,7 +2,7 @@
 
 pkgname=stretchly-git
 _pkgname=${pkgname%-git}
-pkgver=941.7079100
+pkgver=960.86c901e
 pkgrel=1
 pkgdesc="The break time reminder app"
 arch=('any')
@@ -21,10 +21,19 @@ pkgver() {
         "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+_ensure_local_nvm() {
+    if type nvm >/dev/null; then
+        nvm deactivate
+        nvm unload
+    fi
+    unset npm_config_prefix
+    export NVM_DIR=${srcdir}/.nvm
+    . /usr/share/nvm/init-nvm.sh
+}
+
 prepare() {
     cd "${srcdir}/${_pkgname}"
-    unset npm_config_prefix
-    . /usr/share/nvm/init-nvm.sh
+    _ensure_local_nvm
     _node_version=$(jq -r '.engines.node' package.json)
     nvm ls "$_node_version" &>/dev/null || nvm install "$_node_version"
     nvm exec "$_node_version" npm install \
@@ -33,6 +42,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
+    _ensure_local_nvm
     # electron-builder only generates /usr/share/* assets for target package
     # types 'apk', 'deb', 'freebsd', 'p5p', 'pacman', 'rpm' and 'sh', so build a
     # pacman package and unpack it
@@ -48,10 +58,11 @@ build() {
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    local _unpackdir=${srcdir}/${_pkgname}.unpacked _appname
+    local _unpackdir=${srcdir}/${_pkgname}.unpacked _appname _electron
     _appname=$(jq -r .name package.json)
-    # Delete electron binary
-    rm "${_unpackdir}/opt/${_appname}/${_pkgname}"
+    _electron=${_unpackdir}/opt/${_appname}/${_pkgname}
+    echo "Deleting Electron ($(du -h "$_electron" | awk '{print $1}'))..." >&2
+    rm -v "$_electron"
     # Replace absolute path in desktop entry
     sed -Ei "s/^(Exec=).*/\1stretchly/" \
         "${_unpackdir}/usr/share/applications/${_pkgname}.desktop"
