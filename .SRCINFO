@@ -1,6 +1,6 @@
 pkgbase = ada_language_server
 	pkgdesc = High performance syntactic and semantic engine for the Ada programming language
-	pkgver = 22.0.7
+	pkgver = 22.0.8
 	pkgrel = 1
 	url = https://github.com/AdaCore/ada_language_server/
 	arch = x86_64
@@ -29,12 +29,12 @@ pkgbase = ada_language_server
 	conflicts = ada_language_server-git
 	conflicts = libvss
 	conflicts = libadalang
-	source = ada_language_server-22.0.7.tar.gz::https://github.com/AdaCore/ada_language_server/archive/22.0.7.tar.gz
-	source = git+https://github.com/AdaCore/VSS.git#commit=d7dcb28
-	source = git+https://github.com/AdaCore/langkit.git#commit=5d83c8b
-	source = git+https://github.com/AdaCore/libadalang.git#commit=9e2bf8b
-	source = git+https://github.com/AdaCore/libadalang-tools.git#commit=34a8a64
-	source = git+https://github.com/AdaCore/spawn.git#commit=9cbd84e
+	source = ada_language_server-22.0.8.tar.gz::https://github.com/AdaCore/ada_language_server/archive/22.0.8.tar.gz
+	source = git+https://github.com/AdaCore/VSS.git#commit=0709cab
+	source = git+https://github.com/AdaCore/langkit.git#commit=cbd7542
+	source = git+https://github.com/AdaCore/libadalang.git#commit=cb8f782
+	source = git+https://github.com/AdaCore/libadalang-tools.git#commit=7cc5d58
+	source = git+https://github.com/AdaCore/spawn.git#commit=725a42d
 	source = libadalang-tools.patch
 	source = VSS.patch
 	source = ada_language_server.patch
@@ -49,4 +49,3 @@ pkgbase = ada_language_server
 	sha1sums = ee3bc8ed18ef9f1c94361aa91acae4f6c1364a25
 
 pkgname = ada_language_server
-
