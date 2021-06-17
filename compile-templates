@@ -44,7 +44,10 @@ templates.each do |templateFilename|
 
     templateFilenameWithoutSuffix = templateFilename.delete_suffix('.erb')
     outputFilename = templateFilenameWithoutSuffix.sub 'PKGNAME', templateVariables.pkgname
+
     output = File.new(outputFilename, 'w')
     output.puts(rendered)
     output.close
+
+    puts "compiled template \"#{templateFilename}\" to \"#{outputFilename}\""
 end

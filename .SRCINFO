@@ -1,16 +1,20 @@
-pkgbase = oragono
+pkgbase = ergochat
 	pkgdesc = A modern IRC server written in Go
-	pkgver = 2.6.1
-	pkgrel = 2
-	url = https://github.com/oragono/oragono
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = https://github.com/ergochat/ergo
 	install = install
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = git
 	depends = glibc
+	provides = oragono
+	conflicts = oragono
+	replaces = oragono
 	backup = etc/oragono.conf
-	source = git+https://github.com/oragono/oragono#tag=v2.6.1
+	backup = etc/ergochat.conf
+	source = git+https://github.com/ergochat/ergo#tag=v2.7.0
 	source = PKGNAME.service.erb
 	source = PKGNAME.sysusers.erb
 	source = path.patch.erb
@@ -19,8 +23,8 @@ pkgbase = oragono
 	sha256sums = SKIP
 	sha256sums = 5df46fc5cb324fa362f30baf550d06e3b9d80056c047e9fe7b3db698eddb7c24
 	sha256sums = db0d2e965a2afb352afdc6062db83b657ee61c30f90df37aaf1982426e985d08
-	sha256sums = 617b6d0ba9efd84b27fbca1c5532305518e53605e79e2e4fa28548ffdc0f06d9
+	sha256sums = ffd050bdecfd0b010d5b8e9cfc27f775eff3a672451e0d938f1fdea507b74fa1
 	sha256sums = 7e490cb211b013449041ac345175c7e540108c8149c196462f1c4bcf965d138a
-	sha256sums = 897383fce9fc75e4df1c0281495504d23d638b849d20c963f49eb7f8130f82b7
+	sha256sums = 8cc173f3c9693edb3575fdf648bd671bbf13f7611ed8b11addaff50145051677
 
-pkgname = oragono
+pkgname = ergochat

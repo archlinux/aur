@@ -12,6 +12,8 @@ post_install() {
 		EOF
         mkcert_howto
     fi
+
+    oragono_rename_info
 }
 
 ## arg 1:  the new package version
@@ -30,14 +32,7 @@ post_upgrade() {
     fi
 
     if (( "$(vercmp "$2" 2.7.0)" < 0 )); then
-        cat <<-EOF
-			==> The package name, filenames, paths, and system service user have changed.
-			    /etc/oragono.conf -> /etc/<%= pkgname %>.conf
-			    /var/lib/oragono/ -> /var/lib/<%= pkgname %>/
-			    sysuser oragono -> <%= pkgname %>
-
-			Please take care to migrate your config and data.
-		EOF
+        oragono_rename_info
     fi
 }
 
@@ -46,5 +41,17 @@ mkcert_howto() {
 		    cd /var/lib/<%= pkgname %>
 		    sudo -u <%= pkgname %> /usr/bin/<%= pkgname %> mkcerts --conf /etc/<%= pkgname %>.conf
 		    sudo -u <%= pkgname %> /usr/bin/<%= pkgname %> initdb --conf /etc/<%= pkgname %>.conf
+	EOF
+}
+
+oragono_rename_info() {
+    cat <<-EOF
+		==> The oragono project has been renamed to ergo (here on the AUR, ergochat, due to a name collision). The package name, filenames, paths, and system service user have changed.
+		    /etc/oragono.conf -> /etc/<%= pkgname %>.conf
+		    /var/lib/oragono/ -> /var/lib/<%= pkgname %>/
+		    sysuser oragono -> <%= pkgname %>
+		    etc...
+
+		Please take care to migrate your config and data.
 	EOF
 }

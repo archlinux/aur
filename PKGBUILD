@@ -1,12 +1,13 @@
 # Maintainer: Jason Papakostas <vithos@gmail.com>
 # Contributor: Sean Enck <enckse@gmail.com>
 
-pkgname=oragono
-pkgver=2.6.1
-pkgrel=2
+pkgname=ergochat
+_upstream_pkgname=ergo
+pkgver=2.7.0
+pkgrel=1
 pkgdesc="A modern IRC server written in Go"
 arch=('x86_64')
-url="https://github.com/oragono/oragono"
+url="https://github.com/ergochat/ergo"
 license=('MIT')
 install=install
 depends=('glibc')
@@ -20,21 +21,24 @@ source=("git+$url#tag=v$pkgver"
 sha256sums=('SKIP'
             '5df46fc5cb324fa362f30baf550d06e3b9d80056c047e9fe7b3db698eddb7c24'
             'db0d2e965a2afb352afdc6062db83b657ee61c30f90df37aaf1982426e985d08'
-            '617b6d0ba9efd84b27fbca1c5532305518e53605e79e2e4fa28548ffdc0f06d9'
+            'ffd050bdecfd0b010d5b8e9cfc27f775eff3a672451e0d938f1fdea507b74fa1'
             '7e490cb211b013449041ac345175c7e540108c8149c196462f1c4bcf965d138a'
-            '897383fce9fc75e4df1c0281495504d23d638b849d20c963f49eb7f8130f82b7')
-backup=("etc/$pkgname.conf")
+            '8cc173f3c9693edb3575fdf648bd671bbf13f7611ed8b11addaff50145051677')
+backup=("etc/oragono.conf" "etc/$pkgname.conf")
+replaces=("oragono")
+conflicts=("oragono")
+provides=("oragono")
 
 prepare() {
-    cd "${srcdir}"
+    cd "${srcdir}" || exit
     ./compile-templates --pkgname="$pkgname" --pkgdesc="$pkgdesc" ../install.erb PKGNAME.service.erb PKGNAME.sysusers.erb PKGNAME.tmpfiles.erb path.patch.erb
-    cd "${srcdir}/$pkgname"
+    cd "${srcdir}/$_upstream_pkgname" || exit
     patch < ../path.patch
 }
 
 build() {
     export GOPATH=$(pwd)/..
-    cd "${srcdir}/$pkgname"
+    cd "${srcdir}/$_upstream_pkgname" || exit
 
     GIT_COMMIT="$(git rev-parse HEAD 2> /dev/null)"
 
@@ -56,7 +60,7 @@ build() {
 
 check() {
     export GOPATH=$(pwd)/..
-    cd "${srcdir}/$pkgname"
+    cd "${srcdir}/$_upstream_pkgname" || exit
 
     go test ./...
 }
@@ -66,11 +70,11 @@ package() {
     install -Dm644 "$srcdir/$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
     install -Dm644 "$srcdir/$pkgname.tmpfiles" "${pkgdir}"/usr/lib/tmpfiles.d/$pkgname.conf
 
-    cd "${srcdir}/$pkgname"
+    cd "${srcdir}/$_upstream_pkgname" || exit
     install -Dm755 -d "$pkgdir/usr/share/$pkgname/i18n"
     cp languages/* "$pkgdir/usr/share/$pkgname/i18n/"
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-    install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 $_upstream_pkgname "$pkgdir/usr/bin/$pkgname"
     install -Dm644 default.yaml "$pkgdir/etc/$pkgname.conf"
-    install -Dm644 $pkgname.motd "$pkgdir/usr/share/$pkgname/default.motd"
+    install -Dm644 $_upstream_pkgname.motd "$pkgdir/usr/share/$pkgname/default.motd"
 }

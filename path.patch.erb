@@ -19,16 +19,16 @@
 -        #         key: privkey.pem
 +        #         cert: /var/lib/<%= pkgname %>/fullchain.pem
 +        #         key: /var/lib/<%= pkgname %>/privkey.pem
- 
+
      # sets the permissions for Unix listen sockets. on a typical Linux system,
      # the default is 0775 or 0755, which prevents other users/groups from connecting
 @@ -166,7 +166,7 @@
- 
+
      # motd filename
      # if you change the motd, you should move it to ircd.motd
--    motd: oragono.motd
+-    motd: ergo.motd
 +    motd: /var/lib/<%= pkgname %>/ircd.motd
- 
+
      # motd formatting codes
      # if this is true, the motd is escaped using formatting codes like $c, $b, and $i
 @@ -714,7 +714,7 @@
@@ -37,15 +37,15 @@
      # path to the datastore
 -    path: ircd.db
 +    path: /var/lib/<%= pkgname %>/ircd.db
- 
+
      # if the database schema requires an upgrade, `autoupgrade` will attempt to
      # perform it automatically on startup. the database will be backed
 @@ -743,7 +743,7 @@
      default: en
- 
+
      # which directory contains our language files
 -    path: languages
 +    path: /usr/share/<%= pkgname %>/i18n/
- 
+
  # limits - these need to be the same across the network
  limits:
