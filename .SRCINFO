@@ -1,7 +1,7 @@
 pkgbase = pulseeffects-legacy-git
 	pkgdesc = Audio Effects for Pulseaudio applications
-	pkgver = 4.8.4.r10.gc63827fc
-	pkgrel = 3
+	pkgver = 4.8.5.r1.g4ec1f83b
+	pkgrel = 1
 	url = https://github.com/wwmm/pulseeffects
 	arch = x86_64
 	arch = i686
@@ -10,11 +10,11 @@ pkgbase = pulseeffects-legacy-git
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
+	checkdepends = appstream-glib
 	makedepends = git
 	makedepends = meson
 	makedepends = boost
 	makedepends = itstool
-	makedepends = appstream-glib
 	makedepends = zam-plugins
 	makedepends = rubberband
 	makedepends = rnnoise
@@ -76,4 +76,3 @@ pkgname = gst-plugins-pulseeffects-legacy-git
 	provides = libgstpeadapter.so
 	conflicts = gst-plugins-pulseeffects-legacy
 	conflicts = gst-plugins-pulseeffects
-

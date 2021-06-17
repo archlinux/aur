@@ -10,8 +10,8 @@
 
 pkgname=('pulseeffects-legacy-git' 'gst-plugins-pulseeffects-legacy-git')
 pkgbase=pulseeffects-legacy-git
-pkgver=4.8.4.r10.gc63827fc
-pkgrel=3
+pkgver=4.8.5.r1.g4ec1f83b
+pkgrel=1
 pkgdesc='Audio Effects for Pulseaudio applications'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/wwmm/pulseeffects"
@@ -19,8 +19,9 @@ license=('GPL3')
 depends=('gtk3' 'gtkmm3' 'glibmm' 'pulseaudio' 'gstreamer' 'gst-plugin-gtk'
          'gst-plugins-bad' 'lilv' 'boost-libs' 'libsigc++' 'libsndfile'
          'libsamplerate' 'zita-convolver' 'libebur128')
-makedepends=('git' 'meson' 'boost' 'itstool' 'appstream-glib' 'zam-plugins'
+makedepends=('git' 'meson' 'boost' 'itstool' 'zam-plugins'
              'rubberband' 'rnnoise')
+checkdepends=('appstream-glib')
 source=('git+https://github.com/wwmm/pulseeffects.git#branch=pulseaudio-legacy')
 sha256sums=('SKIP')
 
@@ -32,6 +33,10 @@ pkgver() {
 build() {
 	arch-meson pulseeffects build
 	meson compile -C build
+}
+
+check() {
+	meson test -C build --print-errorlogs
 }
 
 package_pulseeffects-legacy-git() {
