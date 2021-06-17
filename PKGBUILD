@@ -22,7 +22,7 @@ sha256sums=('593824412a208a1b75d5b15745a271dc3eba330d41f7718f4826567d04bcbb9b'
 
 build() {
     cd $_pkgname-$pkgver
-    git apply bugfix.diff
+    git apply ../bugfix.diff
     xmkmf
     make
 }
