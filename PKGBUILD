@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=ooniprobe-desktop
-pkgver=3.4.0
-_cliver=3.9.2
+pkgver=3.5.1
+_cliver=3.10.0-beta.3
 pkgrel=1
 pkgdesc="The next generation OONI Probe desktop app"
 arch=('x86_64')
@@ -12,31 +12,26 @@ makedepends=('yarn')
 conflicts=("${pkgname%-desktop}")
 replaces=("${pkgname%-desktop}")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ooni/probe-desktop/archive/v$pkgver.tar.gz"
-        "https://github.com/ooni/probe-cli/releases/download/v$_cliver/ooniprobe_v${_cliver}_linux_amd64.tar.gz"
-        "ooniprobe_checksums_${_cliver}.txt::https://github.com/ooni/probe-cli/releases/download/v$_cliver/ooniprobe_checksums.txt"
+        "${pkgname%-desktop}-cli-$_cliver.tar.gz::https://github.com/ooni/probe-cli/releases/download/v$_cliver/ooniprobe_linux_amd64.tar.gz"
+        "${pkgname%-desktop}-cli-$_cliver.tar.gz.asc::https://github.com/ooni/probe-cli/releases/download/v$_cliver/ooniprobe_linux_amd64.tar.gz.asc"
         "$pkgname.desktop")
-noextract=("ooniprobe_v${_cliver}_linux_amd64.tar.gz")
-sha256sums=('2794e5099c861e7b22c591ea197bbe95a96b05cb4de3d022ee4ab35754614ead'
-            'a13bd22a5845328b646e240f7bb2f7839129914b242b0798092ddbce56345baf'
-            '051f2201d1c4dfbadefceadb6cd131e266c1f92fbd0548a94a6dc4852467db9d'
+noextract=("${pkgname%-desktop}-cli-$_cliver.tar.gz")
+sha256sums=('ebcb4b88a2b08b4d9481e0282adcfeb42749b2bfd9df79fdd4372da77ad9d18c'
+            'bcd72321de6b703f6103df9c5994040113d19cf1253d41f4d1dfc58a4ec44a67'
+            'SKIP'
             'baaf4f3cca079dddc0b4e048c8778c6cc84786bb88fd9d218424b7b9f04f1135')
+validpgpkeys=('738877AA6C829F26A431C5F480B691277733D95B') # Simone Basso <bassosimone@gmail.com>
 
 prepare() {
 	cd "${pkgname#ooni}-$pkgver"
 
 	# Disable downloading probe-cli & remove other platforms
-	sed -i 's/darwin|linux|windows/linux/g' scripts/download-bin.js
-	sed -i '/execSync(`curl/d' scripts/download-bin.js
+	sed -i "s/'darwin_amd64', 'linux_amd64', 'windows_amd64'/'linux_amd64'/g" scripts/download-bin.js
 
 	# Place files for verification
 	mkdir -p build/probe-cli/linux_amd64
-	cp "$srcdir/ooniprobe_v${_cliver}_linux_amd64.tar.gz" build/probe-cli
-	cp "$srcdir/ooniprobe_checksums_${_cliver}.txt" \
-		build/probe-cli/ooniprobe_checksums.txt
-
-	# Remove checksums for other platforms
-	sed -i '1,2d' build/probe-cli/ooniprobe_checksums.txt
-	sed -i '2,5d' build/probe-cli/ooniprobe_checksums.txt
+	cp "$srcdir/${pkgname%-desktop}-cli-$_cliver.tar.gz" "build/probe-cli/${pkgname%-desktop}_linux_amd64.tar.gz"
+	cp "$srcdir/${pkgname%-desktop}-cli-$_cliver.tar.gz.asc" "build/probe-cli/${pkgname%-desktop}_linux_amd64.tar.gz.asc"
 }
 
 build() {
