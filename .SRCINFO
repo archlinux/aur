@@ -1,6 +1,6 @@
 pkgbase = mma
 	pkgdesc = Musical MIDI Accompaniment (MMA) is an accompaniment generator
-	pkgver = 20.02
+	pkgver = 20.12
 	pkgrel = 1
 	url = http://www.mellowood.ca/mma/
 	install = mma.install
@@ -10,10 +10,9 @@ pkgbase = mma
 	optdepends = timidity++: Synthesize MIDI files
 	options = !strip
 	backup = etc/mmarc
-	source = http://www.mellowood.ca/mma/mma-bin-20.02.tar.gz
+	source = http://www.mellowood.ca/mma/mma-bin-20.12.tar.gz
 	source = mmarc
-	sha1sums = 51e261941b610b529aba8a1e3c7e3917d52db4bd
+	sha1sums = 35ea29ce7c44547a59c2b3587ff7cabb3d053656
 	sha1sums = 3c03107c2a1b380f66ed68458d9b9def8371c0f6
 
 pkgname = mma
-

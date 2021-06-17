@@ -7,18 +7,16 @@ post_install() {
 # arg 1:  the new package version
 # arg 2:  the old package version
 post_upgrade() {
-  rm /usr/share/mma/lib/stdlib/.mmaDB
-  rm /usr/share/mma/lib/yamaha/.mmaDB
-  rm /usr/share/mma/lib/kara/.mmaDB
-  post_install $1
+  rm -f /usr/share/mma/lib/{stdlib,yamaha,kara}/.mmaDB
+  rm -f /usr/share/mma/MMA/*.py{c,o}
+  rm -fr /usr/share/mma/MMA/__pycache__
 }
 
 # arg 1:  the old package version
 pre_remove() {
-  rm /usr/share/mma/lib/stdlib/.mmaDB
-  rm /usr/share/mma/lib/yamaha/.mmaDB
-  rm /usr/share/mma/lib/kara/.mmaDB
-  rm /usr/share/mma/MMA/*.pyc
+  rm -f /usr/share/mma/lib/{stdlib,yamaha,kara}/.mmaDB
+  rm -f /usr/share/mma/MMA/*.py{c,o}
+  rm -fr /usr/share/mma/MMA/__pycache__
 }
 
 op=$1

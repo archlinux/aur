@@ -4,7 +4,7 @@
 # Contributor: Uwe Koloska <kolewu@koloro.de>
 
 pkgname=mma
-pkgver=20.02
+pkgver=20.12
 pkgrel=1
 pkgdesc="Musical MIDI Accompaniment (MMA) is an accompaniment generator"
 url="http://www.mellowood.ca/mma/"
@@ -16,7 +16,7 @@ install=mma.install
 DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 --user-agent Mozilla/4.0 -o %o %u')
 source=("http://www.mellowood.ca/mma/mma-bin-$pkgver.tar.gz"
   mmarc)
-sha1sums=('51e261941b610b529aba8a1e3c7e3917d52db4bd'
+sha1sums=('35ea29ce7c44547a59c2b3587ff7cabb3d053656'
           '3c03107c2a1b380f66ed68458d9b9def8371c0f6')
 options=(!strip)
 backup=(etc/mmarc)
@@ -38,7 +38,7 @@ package () {
   cp util/mup2mma.py "$pkgdir"/usr/bin/mup2mma
   cp util/pg2mma.py "$pkgdir"/usr/bin/pg2mma
   cp util/synthsplit.py "$pkgdir"/usr/bin/mma-synthsplit
-  cp -r {docs,egs,includes,lib,MMA,text} "$pkgdir"/usr/share/mma
+  cp -r {docs,egs,includes,lib,MMA,plugins,text} "$pkgdir"/usr/share/mma
   rmdir "$pkgdir"/usr/share/mma/includes/aria
 
   cp util/README.* "$pkgdir"/usr/share/mma/docs
