@@ -1,3 +1,17 @@
+2021-06-17 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+
+	* 4.7-2 :
+	Add ChangeLog entry for 4.7-1.
+
+	* 4.7-1 :
+	Version bump.
+
+	Upstream changelog:
+	- Add support for Minecraft 1.17
+	- Add support for old Minecraft beta world generation (< beta 1.8)
+	- Improve multithreading code
+	- Fix some structure detection bugs for Pillager Outposts and Strongholds
+
 2021-01-19 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 
 	* 4.6-1 :
