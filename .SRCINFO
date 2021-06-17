@@ -8,6 +8,7 @@ pkgbase = rtl8189es-git
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = GPL2
 	makedepends = git
 	makedepends = make
@@ -23,4 +24,3 @@ pkgbase = rtl8189es-git
 	md5sums = 967d0e1b4f7e7cc17949113faf67f89b
 
 pkgname = rtl8189es-git
-

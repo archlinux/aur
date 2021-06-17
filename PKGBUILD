@@ -4,7 +4,7 @@ _pkgver="4.3.18.1"
 pkgver=4.3.18.1.57.03ac413
 pkgrel=1
 pkgdesc="RTL8189ES / RTL8189ETV modules"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/jwrdegoede/rtl8189ES_linux"
 license=('GPL2')
 #depends=('linux'=$kernelver)
