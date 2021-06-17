@@ -2,7 +2,7 @@
 Type=Application
 Name=TachideskJUI
 Comment=Manga Reader
-Exec=/usr/lib/jvm/java-15-openjdk/bin/java -jar /usr/share/java/tachidesk-jui/tachidesk-jui.jar "\\$@"
+Exec=/usr/bin/tachidesk-jui "\\$@"
 Icon=tachidesk-jui
 Terminal=false
 Categories=Network;
