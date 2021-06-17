@@ -12,7 +12,7 @@ depends=('hicolor-icon-theme' 'dconf' 'python' 'libhandy' 'gtk3' 'python-gobject
 optdepends=('wine')
 makedepends=('meson' 'ninja')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bottlesdevs/Bottles/archive/${pkgver}.tar.gz")
-sha256sums=('ecebf7cb78b0843b903dcff8c712ddcef1409230ebd1a7c08d0e56362c3538c3')
+sha256sums=('cf56a681f2b23455ef5cdf371a26f65068b35ad7e6e138bb9f3ed66e55927a04')
 
 build() {
   cd "Bottles-${pkgver}"
