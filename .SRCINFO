@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-controller-manager-msgs
 	pkgdesc = ROS - Messages and services for the controller manager.
-	pkgver = 0.18.3
+	pkgver = 0.18.4
 	pkgrel = 1
 	url = https://github.com/ros-controls/ros_control/wiki
 	arch = any
@@ -12,8 +12,7 @@ pkgbase = ros-melodic-controller-manager-msgs
 	makedepends = ros-melodic-std-msgs
 	depends = ros-melodic-message-runtime
 	depends = ros-melodic-std-msgs
-	source = ros-melodic-controller-manager-msgs-0.18.3.tar.gz::https://github.com/ros-controls/ros_control/archive/0.18.3.tar.gz
-	sha256sums = d3dfc0a3ee8ef33b7e3302f14a8ec4a16c1e5b7baf9010ba20f0d204fc0aa5d8
+	source = ros-melodic-controller-manager-msgs-0.18.4.tar.gz::https://github.com/ros-controls/ros_control/archive/0.18.4.tar.gz
+	sha256sums = c4e289e2bfafb418c22cf31f8fb656b697b1629a51631bdc12a3f3ed4e59af20
 
 pkgname = ros-melodic-controller-manager-msgs
-
