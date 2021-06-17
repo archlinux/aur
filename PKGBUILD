@@ -10,7 +10,6 @@ license=('GPL3')
 depends=('elementary-icon-theme' 'evolution-data-server' 'granite'
          'gtk-theme-elementary' 'libgee' 'libhandy' 'libpeas' 'libsoup' 'webkit2gtk' )
 makedepends=('meson' 'vala' 'gobject-introspection')
-makedepends=('meson' 'vala' 'gobject-introspection')
 provides=('planner')
 conflicts=('planner')
 source=("planner-$pkgver.tar.gz::https://github.com/alainm23/planner/archive/$pkgver.tar.gz")
@@ -20,6 +19,11 @@ build() {
 	arch-meson planner-$pkgver build
 	meson compile -C build
 }
+
+# No tests defined
+#check() {
+#	meson test -C build --print-errorlogs
+#}
 
 package() {
 	DESTDIR="$pkgdir" meson install -C build
