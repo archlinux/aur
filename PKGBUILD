@@ -1,7 +1,7 @@
 # Maintainer: Salvaje <keystroke33@gmail.com>
 pkgname=redpaper-git
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Wallpaper downloader and setter that fetches from Reddit"
 arch=('any')
 url="https://github.com/keystroke3/redpaper"
@@ -20,7 +20,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "${_pkgname}"
-    printf "0.1.3.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "0.2.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 package() {
     cd $pkgname
