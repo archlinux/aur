@@ -1,7 +1,7 @@
 # Maintainer: Clansty <i@gao4.pw>
 pkgname=electron-qq
-pkgver=1.5.0
-pkgrel=1
+pkgver=1.5.5
+pkgrel=3
 pkgdesc='A cross-platform QQ made with Electron'
 license=('GPL')
 depends=('electron')
@@ -20,7 +20,7 @@ package() {
   install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 } 
 
-md5sums=('cbdecf0e82520ec6965eb399bfa5de64'
+md5sums=('a7c525c9f8dc4a6ffec5ff80732c9f5d'
          'f6edfa276c96b746048458413b8c26ce'
          '77bdf165bded76c2bac542402e8fe35c'
          'f88f67ee85da8a00d21770ef73b02915')
