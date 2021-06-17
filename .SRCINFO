@@ -1,7 +1,7 @@
 pkgbase = wootility-lekker-beta-appimage
 	pkgdesc = Utility for configuring Wooting keyboards (binary AppImage version)
-	pkgver = 4.1.2
-	pkgrel = 3
+	pkgver = 4.2.2
+	pkgrel = 1
 	url = https://wooting.io/wootility
 	arch = x86_64
 	license = unknown
@@ -9,14 +9,13 @@ pkgbase = wootility-lekker-beta-appimage
 	provides = wootility
 	conflicts = wootility
 	options = !strip
-	source = https://s3.eu-west-2.amazonaws.com/wooting-update/wootility-lekker-linux-beta/wootility-lekker-beta-4.1.2-beta.AppImage
+	source = https://s3.eu-west-2.amazonaws.com/wooting-update/wootility-lekker-linux-beta/wootility-lekker-beta-4.2.2-beta.AppImage
 	source = 70-wooting.rules
-	source = wooting-xinput@.service
-	source = wooting-lekker-xinput@.service
-	sha512sums = 02a6485f4476b648bb12f1c8d7480bac4d99d2789e0e1eab5881a914f87a648e5ee001c68e61df286f159fa702c8f1bbe91f176da69bfc67bd806f001b04adb6
-	sha512sums = 5e07a4309aa12cdae1227d438c27261a00c979b4081cd7280a95fe651e550608be8cabda826408c73f40ec10cf8c427187f7c0001c0ec13c3871e587377f2e99
+	source = wooting-one-xinput@.service
+	source = wooting-two-xinput@.service
+	sha512sums = c071abeb614474114ec4b2fcef7b2bd9301d955f3d45851156a72480ce7f9a4c8de9f3aad9025fca45d8e0c61293a564a8242b301136f6d82aedd90cc9dcb5e8
+	sha512sums = 9e88d72ff31fbc4d59e9624e43c9956a27ffa45fd545bb364533872120e5825e6b59984dd3aed9abef8dcacedca152910ee091a82ea1d88216833f39e851da8e
 	sha512sums = 144506d0ba6d4ddad451274a99493458ebf3136c1b5a37dfcea8e5bededa355184bf7b760854342acb5e34182ef2520cccc1cd4b61a0e1cc539004f397236972
 	sha512sums = b9327e2565592804a88e58c4f87fb58417327d0ed37628d6f6797b643afe0d9070966c9fcea13857c7fcfb04642b46ac694694a1978381778539fd8e3e6ed456
 
 pkgname = wootility-lekker-beta-appimage
-

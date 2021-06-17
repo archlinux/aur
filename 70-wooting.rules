@@ -1,23 +1,23 @@
 # Wooting One
-# Wootility/Xinput
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="ff01", MODE:="0660", GROUP="input", TAG+="systemd", ENV{SYSTEMD_WANTS}="wooting-xinput@ff01"
-# Analog/RGB SDK
-SUBSYSTEM=="usb", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="ff01", MODE:="0660", GROUP="input"
 # Update Mode
 SUBSYSTEM=="hidraw", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2402", MODE:="0660", GROUP="input"
+# Wootility/Xinput
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="ff01", MODE:="0660", GROUP="input", TAG+="systemd", ENV{SYSTEMD_WANTS}="wooting-one-xinput@ff01"
+# Analog/RGB SDK
+SUBSYSTEM=="usb", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="ff01", MODE:="0660", GROUP="input"
 
 # Wooting Two
-# Wootility/Xinput
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="ff02", MODE:="0660", GROUP="input", TAG+="systemd", ENV{SYSTEMD_WANTS}="wooting-xinput@ff02"
-# Analog/RGB SDK
-SUBSYSTEM=="usb", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="ff02", MODE:="0660", GROUP="input"
 # Update Mode
 SUBSYSTEM=="hidraw", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2403", MODE:="0660", GROUP="input"
+# Wootility/Xinput
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="ff02", MODE:="0660", GROUP="input", TAG+="systemd", ENV{SYSTEMD_WANTS}="wooting-one-xinput@ff02"
+# Analog/RGB SDK
+SUBSYSTEM=="usb", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="ff02", MODE:="0660", GROUP="input"
 
 # Wooting Two Lekker Edition
-# Wootility/Xinput
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="31e3", ATTRS{idProduct}=="1210", MODE:="0660", GROUP="input", TAG+="systemd", ENV{SYSTEMD_WANTS}="wooting-lekker-xinput@1210"
-# Analog/RGB SDK
-SUBSYSTEM=="usb", ATTRS{idVendor}=="31e3", ATTRS{idProduct}=="1210", MODE:="0660", GROUP="input"
 # Update Mode
 SUBSYSTEM=="hidraw", ATTRS{idVendor}=="31e3", ATTRS{idProduct}=="121f", MODE:="0660", GROUP="input"
+# Wootility/Xinput
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="31e3", ATTRS{idProduct}=="1210", MODE:="0660", GROUP="input", TAG+="systemd", ENV{SYSTEMD_WANTS}="wooting-two-xinput@1210"
+# Analog/RGB SDK
+SUBSYSTEM=="usb", ATTRS{idVendor}=="31e3", ATTRS{idProduct}=="1210", MODE:="0660", GROUP="input"
