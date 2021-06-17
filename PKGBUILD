@@ -1,6 +1,6 @@
 # Maintainer: Syping <aur@syping.de>
 pkgname=gta5view-bin
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 epoch=
 pkgdesc="Open Source Snapmatic and Savegame viewer/editor for GTA V"
@@ -13,7 +13,7 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("https://github.com/SyDevTeam/${pkgname%-bin}/releases/download/$pkgver/${pkgname%-bin}_$pkgver-${pkgrel}_amd64.deb")
 noextract=("${pkgname%-bin}_$pkgver-${pkgrel}_amd64.deb")
-sha256sums=("446c98dd84074d3060c8d4b54580e5d5ce4b5c19656b9c5947ab2a55b477750d")
+sha256sums=("8ac5db85eab533e3b07567f62be1c1665db3052bb68a10967f56ce2d3233c5a9")
 
 prepare() {
     ar x ${pkgname%-bin}_$pkgver-${pkgrel}_amd64.deb
