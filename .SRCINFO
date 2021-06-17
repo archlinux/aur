@@ -1,0 +1,15 @@
+pkgbase = openssh-socket-activation
+	pkgdesc = systemd socket activation for openssh server
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.openssh.com/portable.html
+	arch = any
+	license = GPL
+	depends = openssh
+	depends = systemd
+	source = sshd@.service
+	source = sshd.socket
+	sha256sums = 3a0845737207f4eda221c9c9fb64e766ade9684562d8ba4f705f7ae6826886e5
+	sha256sums = de14363e9d4ed92848e524036d9e6b57b2d35cc77d377b7247c38111d2a3defd
+
+pkgname = openssh-socket-activation
