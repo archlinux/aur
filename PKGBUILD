@@ -18,5 +18,6 @@ sha256sums=('92ac6d575fb221679b326516a7ad7e3b40fb691837c07a210a1dcb445e5c5d4f')
 
 package() {
 	install -Dm775 "$srcdir/$pkgname-$pkgver/source/yeet" "$pkgdir/usr/bin/yeet"
+	install -Dm644 "$srcdir/$pkgname-$pkgver/assets/package/yeet.8" "$pkgdir/usr/share/man/man8/yeet.8"
 	install -Dm644 "$srcdir/$pkgname-$pkgver/assets/package/yeet.example.conf" "$pkgdir/usr/share/yeet/yeet.conf"
 }
