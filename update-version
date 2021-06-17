@@ -76,7 +76,7 @@ function print_logo {
 [[ -z "$SUDO_BIN" ]] && export SUDO_BIN=/usr/bin/sudo
 
 [[ -z "$GIT_MESSAGE" ]] && export GIT_MESSAGE="$1"
-[[ -z "$GIT_FILES" ]] && export GIT_FILES="$PKGBUILD_PATH $SRC_INFO_PATH $INSTALL_HOOKS_PATH ./update-version"
+[[ -z "$GIT_FILES" ]] && export GIT_FILES="$PKGBUILD_PATH $SRCINFO_PATH $INSTALL_HOOKS_PATH ./update-version"
 
 # Source the PKGBUILD so we can access its fields
 source "$PKGBUILD_PATH"
