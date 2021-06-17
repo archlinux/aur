@@ -2,7 +2,7 @@
 # Maintainer: Tyr Heimdal <tyr.heimdal@warning.no>
 
 pkgname=jeveassets
-pkgver=6.9.1
+pkgver=6.9.2
 pkgrel=1
 pkgdesc="Out-of-game asset manager for Eve-Online, written in Java"
 arch=('any')
@@ -21,8 +21,8 @@ source=(
         "${pkgname}_64x64.png"
         "$pkgname.sh")
 
-sha256sums=('c6772522b7be48334235183aa64bf5ad89d6977c6f8f73d144183dfa91fdab77'
-            '0b5085731e8893409a3cb7cb96c1a305216995444dd8cc27901e82f4a244f203'
+sha256sums=('1469117f2535e91d7ce3912649743c4f85a8f1ca18121e8798602ddfb6ea4138'
+            '555584ba8c9005914d800c68706f831ce35c908df7cecd8ddff0d528684daca8'
             '0203673802ba5102e8acae19c463ab1cd79663653cce38431362367d220f951e'
             '99dd564f33ea7e7a71980b829125207a53a18c2c31f5907d1e8842b64217d69b'
             '23ff2740653dddaafc0a40dcdadfa667a55d28389088dda8bc6eca1c66298150'
