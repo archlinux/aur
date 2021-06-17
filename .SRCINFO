@@ -1,0 +1,16 @@
+pkgbase = auralux-visualizer-git
+	pkgdesc = Visualizer for the Auralux strategy game
+	pkgver = r8.8ead45c
+	pkgrel = 1
+	url = https://github.com/skorja/AuraluxVisualizer
+	arch = any
+	license = MIT
+	depends = qt5-base
+	source = auralux-visualizer-git::git+https://github.com/skorja/AuraluxVisualizer.git
+	source = auralux-visualizer-config
+	source = auralux-visualizer
+	sha256sums = SKIP
+	sha256sums = e95a9e7ec253da4510ce68224d4896c99f21d0fdac99349d39bb630aedb5e2ee
+	sha256sums = f4b42c9f7853534a159c1f27ac55b4e719bc1d2bc15d66f8298c4f447f0cc76a
+
+pkgname = auralux-visualizer-git

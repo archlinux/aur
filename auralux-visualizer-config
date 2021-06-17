@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ -z ${VISUAL+x} ]; then
+	if [ -z ${EDITOR+x} ]; then
+		echo 'Please set the VISUAL or EDITOR environment variable'
+	else
+		$EDITOR /etc/auralux-visualizer-git/viz.conf
+	fi
+else
+	$VISUAL /etc/auralux-visualizer-git/viz.conf
+fi
