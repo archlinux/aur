@@ -1,31 +1,30 @@
 pkgbase = wasmer-bin
 	pkgdesc = Universal WebAssembly runtime
-	pkgver = 1.0.2
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://wasmer.io/
 	arch = x86_64
 	license = MIT
 	depends = bash
 	provides = wasmer
+	provides = wasmer-headless
 	provides = wapm
 	provides = wasm.h
 	provides = wasmer_wasm.h
 	provides = wasmer.h
-	provides = wasmer.hh
 	provides = libwasmer.a
-	provides = libwasmer.so.1.0.2
-	provides = libwasmer.so.1.0
-	provides = libwasmer.so.1
-	provides = libwamser.so=1.0.2
+	provides = libwasmer.so.2.0.0
+	provides = libwasmer.so.2.0
+	provides = libwasmer.so.2
+	provides = libwamser.so=2.0.0
 	conflicts = wasmer
 	conflicts = wapm
 	options = strip
 	options = libtool
 	options = staticlibs
-	source = wasmer-linux-amd64-1.0.2.tar.gz::https://github.com/wasmerio/wasmer/releases/download/1.0.2/wasmer-linux-amd64.tar.gz
-	source = https://raw.githubusercontent.com/wasmerio/wasmer/1.0.2/LICENSE
+	source = wasmer-linux-amd64-2.0.0.tar.gz::https://github.com/wasmerio/wasmer/releases/download/2.0.0/wasmer-linux-amd64.tar.gz
+	source = https://raw.githubusercontent.com/wasmerio/wasmer/2.0.0/LICENSE
 	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = wasmer-bin
-

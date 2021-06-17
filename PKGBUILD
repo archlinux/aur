@@ -1,7 +1,7 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname='wasmer-bin'
-pkgver='1.0.2'
+pkgver='2.0.0'
 _shortver="${pkgver%.*}"
 _majorver="${_shortver%.*}"
 pkgrel='1'
@@ -17,11 +17,11 @@ conflicts=(
 )
 provides=(
   'wasmer'
+  'wasmer-headless'
   'wapm'
   'wasm.h'
   'wasmer_wasm.h'
   'wasmer.h'
-  'wasmer.hh'
   'libwasmer.a'
   "libwasmer.so.$pkgver"
   "libwasmer.so.$_shortver"
@@ -60,7 +60,7 @@ package() {
   done
 
   msg2 'Installing libraries...'
-  for name in wasm.h wasmer_wasm.h wasmer.h wasmer.hh; do
+  for name in wasm.h wasmer_wasm.h wasmer.h; do
     install -Dm644 "include/$name" "$pkgdir/usr/include/$name"
   done
   install -Dm644 lib/libwasmer.a "$pkgdir/usr/lib/libwasmer.a"
