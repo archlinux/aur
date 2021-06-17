@@ -2,7 +2,7 @@
 
 pkgname=neopo-git
 _gitname="neopo"
-pkgver=r334.970c5fd
+pkgver=r337.5951e27
 pkgrel=1
 pkgdesc="A lightweight solution for local Particle development."
 arch=("x86_64" "aarch64")
