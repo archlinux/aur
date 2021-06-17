@@ -1,6 +1,6 @@
 pkgbase = inform-git
 	pkgdesc = Interactive fiction compiler (git version)
-	pkgver = 6.34.6.12.4.1.54.g1dc8741
+	pkgver = 6.34.6.12.4.1.55.g9d8858e
 	pkgrel = 1
 	url = http://www.inform-fiction.org/
 	arch = i686
