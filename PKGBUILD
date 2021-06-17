@@ -10,9 +10,7 @@
 #
 
 pkgname=thunderbird-localized-beta-bin
-_pkgname=thunderbird-beta
-_product=thunderbird
-pkgver=89.0b4
+pkgver=90.0b1
 pkgrel=1
 pkgdesc='Standalone mail and news reader from mozilla.org'
 arch=('i686' 'x86_64')
@@ -23,8 +21,8 @@ depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib als
 optdepends=('hunspell: Spell checking'
             'hyphen: Hyphenation'
             'libcanberra: Sound support')
-provides=("$_product=$pkgver" "$_pkgname=$pkgver")
-conflicts=("$_pkgname" "$_pkgname-bin")
+provides=("thunderbird=$pkgver" "thunderbird-beta=$pkgver")
+conflicts=("thunderbird-beta" "thunderbird-beta-bin")
 install=$pkgname.install
 
 _arch32='linux-i686'
@@ -48,9 +46,9 @@ _localemoz() {
   local _fulllocale="$(locale | grep LANG | cut -d= -f2 | cut -d. -f1 | sed s/_/\-/)"
   local _shortlocale="$(locale | grep LANG | cut -d= -f2 | cut -d_ -f1)"
 
-  if curl --output /dev/null --silent --head --fail "${_urlbase}/${_archstr}/${_fulllocale}/${_product}-${pkgver}.tar.bz2"; then
+  if curl --output /dev/null --silent --head --fail "${_urlbase}/${_archstr}/${_fulllocale}/thunderbird-${pkgver}.tar.bz2"; then
     echo -n "${_fulllocale}"
-  elif curl --output /dev/null --silent --head --fail "${_urlbase}/${_archstr}/${_shortlocale}/${_product}-${pkgver}.tar.bz2"; then
+  elif curl --output /dev/null --silent --head --fail "${_urlbase}/${_archstr}/${_shortlocale}/thunderbird-${pkgver}.tar.bz2"; then
     echo -n "${_shortlocale}"
   else
     echo -n 'en-US'
@@ -64,21 +62,23 @@ validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353')
 
 # Syntax: _dist_checksum 'linux-i686'/'linux-x86_64'
 _dist_checksum() {
-  curl --silent --fail "${_urlbase}/SHA256SUMS" | grep "${1}\/${_language}\/${_product}-${pkgver}.tar.bz2" | cut -d ' ' -f1
+  curl --silent --fail "${_urlbase}/SHA256SUMS" | grep "${1}\/${_language}\/thunderbird-${pkgver}.tar.bz2" | cut -d ' ' -f1
 }
 
-source_i686=("${_urlbase}/${_arch32}/${_language}/${_product}-${pkgver}.tar.bz2"{,.asc})
-source_x86_64=("${_urlbase}/${_arch64}/${_language}/${_product}-${pkgver}.tar.bz2"{,.asc})
+source_i686=("${_urlbase}/${_arch32}/${_language}/thunderbird-${pkgver}.tar.bz2"{,.asc})
+source_x86_64=("${_urlbase}/${_arch64}/${_language}/thunderbird-${pkgver}.tar.bz2"{,.asc})
 source=("${pkgname}.desktop")
 
 ### IMPORTANT #################################################################
 # No need for `makepkg -g`: the following sha256sums¸don't need to be updated #
 # with each release, everything is done automatically! Leave them like this!  #
 ###############################################################################
-sha256sums=('9f368f9b74665c1dd6629b30a68dcd01524ea363aae657d97ee319864ea21a9e')
-sha256sums_i686=($(_dist_checksum "${_arch32}")
+sha256sums=('4890cc98cc21f3f2dbf4134627217b11167c73954a549fbe7ca0bbc8ca79b2d4')
+sha256sums_i686=('218d32c3fb257de2ae890d7768ef9282184fd33c16468ac70d79fb5ee3e49e8b'
                  'SKIP')
-sha256sums_x86_64=($(_dist_checksum "${_arch64}")
+sha256sums_x86_64=('218d32c3fb257de2ae890d7768ef9282184fd33c16468ac70d79fb5ee3e49e8b'
+                   'SKIP')
+                 'SKIP')
                    'SKIP')
 
 prepare() {
@@ -120,14 +120,14 @@ package() {
 
   msg2 "Moving stuff in place..."
   # Install
-  cp -r thunderbird/ "$pkgdir"/opt/$_pkgname
+  cp -r thunderbird/ "$pkgdir"/opt/thunderbird-beta
 
   # Launchers
-  ln -s /opt/$_pkgname/thunderbird "$pkgdir"/usr/bin/$_pkgname
+  ln -s /opt/thunderbird-beta/thunderbird "$pkgdir"/usr/bin/thunderbird-beta
   # breaks application as of 68.0b1
-  # ln -sf thunderbird "$pkgdir"/opt/$_pkgname/thunderbird-bin
+  # ln -sf thunderbird "$pkgdir"/opt/thunderbird-beta/thunderbird-bin
 
-  _vendorjs="$pkgdir/opt/$_pkgname/defaults/preferences/vendor.js"
+  _vendorjs="$pkgdir/opt/thunderbird-beta/defaults/preferences/vendor.js"
   install -Dm644 /dev/stdin "$_vendorjs" <<END
 // Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
@@ -143,7 +143,7 @@ pref("extensions.autoDisableScopes", 11);
 pref("extensions.shownSelectionUI", true);
 END
 
-  _distini="$pkgdir/opt/$_pkgname/distribution/distribution.ini"
+  _distini="$pkgdir/opt/thunderbird-beta/distribution/distribution.ini"
   install -Dm644 /dev/stdin "$_distini" <<END
 [Global]
 id=archlinux
@@ -157,23 +157,23 @@ END
 
   for i in 16 22 24 32 48 64 128 256; do
     install -d "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/
-    ln -s /opt/$_pkgname/chrome/icons/default/default$i.png \
-          "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png
+    ln -s /opt/thunderbird-beta/chrome/icons/default/default$i.png \
+          "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/thunderbird-beta.png
   done
   
   install -Dm644 $srcdir/$pkgname.desktop \
     "$pkgdir/usr/share/applications"
 
   # Use system-provided dictionaries
-  ln -Ts /usr/share/hunspell "$pkgdir"/opt/$_pkgname/dictionaries
-  ln -Ts /usr/share/hyphen "$pkgdir"/opt/$_pkgname/hyphenation
+  ln -Ts /usr/share/hunspell "$pkgdir"/opt/thunderbird-beta/dictionaries
+  ln -Ts /usr/share/hyphen "$pkgdir"/opt/thunderbird-beta/hyphenation
 
   # Install a wrapper to avoid confusion about binary path
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
 #!/bin/sh
-exec /opt/$_pkgname/thunderbird "\$@"
+exec /opt/thunderbird-beta/thunderbird "\$@"
 END
 
   # Use system certificates
-  ln -sf /usr/lib/libnssckbi.so "$pkgdir"/opt/$_pkgname/libnssckbi.so
+  ln -sf /usr/lib/libnssckbi.so "$pkgdir"/opt/thunderbird-beta/libnssckbi.so
 }
