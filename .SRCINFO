@@ -1,14 +1,13 @@
 pkgbase = afetch
 	pkgdesc = A fetch program written in C
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/13-CF/afetch
 	arch = x86_64
 	arch = aarch64
 	arch = armv7l
 	license = GPL3
-	source = afetch-2.1.0.tar.gz::https://github.com/13-CF/afetch/archive/refs/tags/V2.1.0.tar.gz
-	sha256sums = cd6a6abdabf954395c1434f79e7d71646a015451fa3d69ba8d102d994eb8071e
+	source = afetch-2.2.0.tar.gz::https://github.com/13-CF/afetch/archive/refs/tags/V2.2.0.tar.gz
+	sha256sums = e1f4630b2f8aea0edb76676afbfba9b92c819c6df5da68eb5b89da9c330e2fcd
 
 pkgname = afetch
-
