@@ -168,15 +168,23 @@ else
 fi
 # Run makepkg
 printb "==> Running makepkg..."
-BUILDDIR="$TEMP_DIR" makepkg -p "$PKGBUILD_PATH"
+BUILDDIR="$TEMP_DIR" makepkg -fp "$PKGBUILD_PATH"
 printg "==> makepkg successful!"
 
 # Pushing to git
 printm "==> Push to AUR"
 # Run git add, commit, push
-git add $GIT_FILES
-git commit -m "$GIT_MESSAGE"
-git push
-
-# We're done!
-printg "==> Succesfully updated package!"
+printb "==> Files to commit: $GIT_FILES"
+printb "==> Commit message: $GIT_MESSAGE"
+# Ask for confirmation
+read -p $'\e[1;33m ==> Push to AUR?\e[0m [\e[1;32my\e[0m/\e[1;31mN\e[0m] ' -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+	printb "==> Pushing files..."
+	git add $GIT_FILES
+	git commit -m "$GIT_MESSAGE"
+	git push
+	# We're done!
+	printg "==> Succesfully updated package!"
+else
+	printr "ERR Aborting push; cancelled by user"
+fi
