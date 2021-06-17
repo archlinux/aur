@@ -9,8 +9,8 @@
 pkgname='dashcore-git'
 _gitname='dash'
 _gitbranch='master'
-pkgver=0.17.0.2.r0.g79a1b1aa47
-pkgrel=3
+pkgver=0.17.0.3.r0.geaca69b22c
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/dashpay/dash"
 depends=('qt5-base' 'boost' 'boost-libs' 'miniupnpc' 'protobuf' 'db4.8' 'zeromq' 'libevent' 'qrencode' 'libbacktrace-git')
