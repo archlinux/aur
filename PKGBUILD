@@ -1,46 +1,50 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=lincity-ng-git
-pkgver=2.9.beta.r1834.3e94c18
+pkgver=2.9.beta.r102.gd35c3bee
 pkgrel=1
 pkgdesc="A city simulation game (development version)"
 arch=('i686' 'x86_64')
-url="https://code.google.com/p/lincity-ng/"
+url="https://github.com/lincity-ng/lincity-ng"
 license=('GPL2')
 conflicts=("${pkgname%-*}")
 provides=("${pkgname%-*}=${pkgver%.r*}")
-depends=('sdl_mixer' 'sdl_image' 'sdl_ttf' 'sdl_gfx' 'physfs' 'libxml2' 'libgl')
+depends=('sdl2_mixer' 'sdl2_image' 'sdl2_ttf' 'sdl2_gfx' 'physfs' 'libxml2' 'libgl')
 makedepends=('git' 'ftjam' 'mesa' 'glu')
 source=("git+https://github.com/lincity-ng/lincity-ng.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname%-*}
+  cd lincity-ng
 
-  # get version from autotools
-  local _ver="$(grep 'AC_INIT(.*)' configure.ac | cut -d',' -f2 | tr -d ' []')"
-  printf "%s.r%s.%s" "$_ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^lincity-ng-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd ${pkgname%-*}
+  cd lincity-ng
 
   # generate CREDITS file
   eval $(grep -m1 CREDITS makerelease.sh)
 }
 
 build () {
-  cd ${pkgname%-*}
+  cd lincity-ng
 
   ./autogen.sh
   ./configure --prefix=/usr
-  jam
+  jam -j2 # assume dual core machine at least
 }
 
 package () {
-  cd ${pkgname%-*}
+  cd lincity-ng
 
-  jam -sprefix="$pkgdir/usr" install
+  jam -j2 -sprefix="$pkgdir/usr" install
+
+  # fixup man
+  install -Dm644 doc/lincity-ng.6 "$pkgdir"/usr/share/man/man6/lincity-ng.6
+
+  # fixup doc dir
+  mv "$pkgdir"/usr/share/doc/{lincity-ng*,lincity-ng}
 
   # licenses
   install -Dm644 COPYING-data.txt "$pkgdir"/usr/share/licenses/$pkgname/COPYING-data.txt
