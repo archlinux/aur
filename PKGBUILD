@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-scrapelib
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc='a library for scraping things'
 arch=('any')
@@ -9,8 +9,8 @@ url='https://scrapelib.readthedocs.io/en/stable/'
 license=('BSD-2-Clause')
 depends=('python' 'python-requests')
 makedepends=('python' 'python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/22/f5/a7abe9e85e835246403bf0e4d1c9dc5a49a36fb6c16896f40a17d1d4e8ce/scrapelib-2.0.4.tar.gz")
-sha256sums=('460d6b620e35ee36f0e37f6e8c6a5a27f38c08f9293ad9b7ed139ac3fa191eb2')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/cc/54/e0e10c4d9ed85c0a67518f4588216517ac207ac4d5f59b6d811d1e8d9ece/scrapelib-2.0.5.tar.gz")
+sha256sums=('fbfc520c7ac4cf8cfbf859b7bddf78be6b47bb4dcb07aec899dc26af9d128928')
 
 _pkgname=scrapelib
 
