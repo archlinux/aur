@@ -1,7 +1,7 @@
 pkgbase = mozillavpn
 	pkgdesc = A fast, secure and easy to use VPN. Built by the makers of Firefox.
 	pkgver = 2.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://vpn.mozilla.org/
 	arch = i686
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = mozillavpn
 	depends = hicolor-icon-theme
 	depends = wireguard-tools
 	depends = WIREGUARD-MODULE
-	source = https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/2.3.1-groovy1/mozillavpn_2.3.1.orig.tar.gz
-	source = mozillavpn.service::https://raw.githubusercontent.com/mozilla-mobile/mozilla-vpn-client/main/linux/debian/mozillavpn.service
+	source = https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/2.3.1-hirsute1/mozillavpn_2.3.1.orig.tar.gz
+	source = https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/2.3.1-hirsute1/mozillavpn_2.3.1-hirsute1.debian.tar.xz
 	sha256sums = 4278edc2b7fe4c19a54ea2a08272d9bb6b1e910083feb78da1d41cb76128c92f
-	sha256sums = d51c81b06f38bef502113a59930302c27652b76215a7933e3632ea16923200e3
+	sha256sums = af3ff4ea259e8d23c040671345c323b77e352d7c3c65c4b6384ca21efae73960
 
 pkgname = mozillavpn
