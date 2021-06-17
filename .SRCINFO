@@ -5,6 +5,7 @@ pkgbase = apostrophe
 	url = https://somas.pages.gitlab.gnome.org/apostrophe
 	arch = any
 	license = GPL3
+	checkdepends = appstream-glib
 	makedepends = meson
 	makedepends = gobject-introspection
 	depends = webkit2gtk
@@ -23,4 +24,3 @@ pkgbase = apostrophe
 	sha256sums = c5c7d1a98cbdb850f61294357a30215d086ec20bd494319e29e64ea3197301c7
 
 pkgname = apostrophe
-

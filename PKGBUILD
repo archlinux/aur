@@ -11,6 +11,7 @@ depends=('webkit2gtk' 'gspell' 'python-pypandoc' 'python-regex' 'python-levensht
 makedepends=('meson' 'gobject-introspection')
 optdepends=('texlive-latexextra: for the pdftex module'
             'mathjax: for formula preview')
+checkdepends=('appstream-glib')
 source=("https://gitlab.gnome.org/somas/apostrophe/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 sha256sums=('c5c7d1a98cbdb850f61294357a30215d086ec20bd494319e29e64ea3197301c7')
 
