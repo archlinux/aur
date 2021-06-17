@@ -14,6 +14,7 @@ pkgbase = gpodder-adaptive-git
 	depends = python-mygpoclient
 	depends = python-podcastparser
 	depends = python-requests
+	depends = libhandy
 	optdepends = libnotify: Gtk+ Desktop Notifications extension
 	optdepends = python-mutagen: Tag downloaded files, Remove cover art from OGG files extensions
 	optdepends = webkit2gtk: HTML show notes

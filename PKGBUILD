@@ -10,7 +10,7 @@ provides=('gpodder')
 conflicts=('gpodder' 'gpodder-git')
 license=('GPL3')
 depends=('gtk3' 'python-cairo' 'dbus-python' 'python-gobject' 'python-mygpoclient'
-         'python-podcastparser' 'python-requests')
+         'python-podcastparser' 'python-requests' 'libhandy')
 makedepends=('intltool' 'git')
 optdepends=('libnotify: Gtk+ Desktop Notifications extension'
             'python-mutagen: Tag downloaded files, Remove cover art from OGG files extensions'
