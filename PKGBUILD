@@ -14,9 +14,9 @@ pkgname=()
 [ "$_build_no_opt" -eq 1 ] && pkgname+=(tensorflow-rocm python-tensorflow-rocm)
 [ "$_build_opt" -eq 1 ] && pkgname+=(tensorflow-opt-rocm python-tensorflow-opt-rocm)
 
-pkgver=2.4.0
-_pkgver=2.4.0
-pkgrel=4
+pkgver=2.5.0
+_pkgver=2.5.0
+pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -28,18 +28,35 @@ makedepends=('bazel' 'python-numpy' 'rocm' 'rocm-libs' 'miopen' 'rccl' 'git'
              'cython')
 optdepends=('tensorboard: Tensorflow visualization toolkit')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tensorflow/tensorflow/archive/v${_pkgver}.tar.gz"
-        fix-h5py3.0.patch
+        https://patch-diff.githubusercontent.com/raw/tensorflow/tensorflow/pull/48935.patch
+        fix-c++17-compat.patch
         build-against-actual-mkl.patch)
 
-sha512sums=('4860c148fd931c4dc7c558128e545e2b6384e590a3fbc266a5bfe842a8307f23f1f7e0103bda3a383e7c77edad2bb76dec02da8be400a40956072df19c5d4dbd'
-            '9d7b71fed280ffaf4dfcd4889aa9ab5471874c153259f3e77ed6e6efa745e5c5aa8507d3d1f71dead5b6f4bea5f8b1c10c543929f37a6580c3f4a7cbec338a6a'
+sha512sums=('637c63b1bed1c0eb7bb018f1ff7f29f7f0d78e75dac384df4ecb5dfb92bbcb28209e3d3d2204145abddf88e3247d8c31bbb4cea032a73b7122b2ef3eb0d2b947'
+            'SKIP'
+            'a39f4adff91a60b05c18c4c1ef99b65375887bbea5991610eb162a3c6e3562f8d4438f9f1e1910b672f6094235b5b70dea633578f7f6b5b931f221ca2805152a'
             'e51e3f3dced121db3a09fbdaefd33555536095584b72a5eb6f302fa6fa68ab56ea45e8a847ec90ff4ba076db312c06f91ff672e08e95263c658526582494ce08')
+
+# consolidate common dependencies to prevent mishaps
+_common_py_depends=(python-termcolor python-astor python-gast03 python-numpy python-protobuf absl-py python-h5py python-keras-applications python-keras-preprocessing python-tensorflow-estimator python-opt_einsum python-astunparse python-pasta python-flatbuffers)
 
 get_pyver () {
   python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
 }
 
 check_dir() {
+  # first make sure we do not break parsepkgbuild
+  if ! command -v cp &> /dev/null; then
+    >&2 echo "'cp' command not found. PKGBUILD is probably being checked by parsepkgbuild."
+    if ! command -v install &> /dev/null; then
+      >&2 echo "'install' command also not found. PKGBUILD must be getting checked by parsepkgbuild."
+      >&2 echo "Cannot check if directory '${1}' exists. Ignoring."
+      >&2 echo "If you are not running nacmap or parsepkgbuild, please make sure the PATH is correct and try again."
+      >&2 echo "PATH should not be '/dummy': PATH=$PATH"
+      return 0
+    fi
+  fi
+  # if we are running normally, check the given path
   if [ -d "${1}" ]; then
     return 0
   else
@@ -56,12 +73,7 @@ prepare() {
   # See https://github.com/intel/mkl-dnn/issues/102
   # MKLML version that Tensorflow wants to use is https://github.com/intel/mkl-dnn/releases/tag/v0.21
   # patch -Np1 -d tensorflow-${_pkgver} -i "$srcdir"/build-against-actual-mkl.patch
-
-  # Compile with C++17 by default (FS#65953)
-  #sed -i "s/c++14/c++17/g" tensorflow-${_pkgver}/.bazelrc
-
-  # FS#68488
-  patch -Np1 -d tensorflow-${_pkgver} -i "$srcdir"/fix-h5py3.0.patch
+  # patch -Np1 -d tensorflow-${_pkgver} -i "$srcdir"/48935.patch
 
   # Get rid of hardcoded versions. Not like we ever cared about what upstream
   # thinks about which versions should be used anyway. ;) (FS#68772)
@@ -69,10 +81,6 @@ prepare() {
 
   cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-rocm
   cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-opt-rocm
-
-}
-
-build() {
 
   # These environment variables influence the behavior of the configure call below.
   export PYTHON_BIN_PATH=/usr/bin/python
@@ -98,13 +106,13 @@ build() {
   export TF_SYSTEM_LIBS="boringssl,curl,cython,gif,icu,libjpeg_turbo,lmdb,nasm,pcre,png,pybind11,zlib"
   export TF_SET_ANDROID_WORKSPACE=0
   export TF_DOWNLOAD_CLANG=0
-  export TF_NCCL_VERSION=2.7
+  export TF_NCCL_VERSION=$(pkg-config nccl --modversion | grep -Po '\d+\.\d+')
   export TF_IGNORE_MAX_BAZEL_VERSION=1
   export TF_MKL_ROOT=/opt/intel/mkl
   export NCCL_INSTALL_PATH=/usr
-  export GCC_HOST_COMPILER_PATH=/usr/bin/gcc
-  export HOST_C_COMPILER=/usr/bin/gcc
-  export HOST_CXX_COMPILER=/usr/bin/g++
+  export GCC_HOST_COMPILER_PATH=/usr/bin/gcc-10
+  export HOST_C_COMPILER=/usr/bin/gcc-10
+  export HOST_CXX_COMPILER=/usr/bin/g++-10
   export TF_CUDA_CLANG=0  # Clang currently disabled because it's not compatible at the moment.
   export CLANG_CUDA_COMPILER_PATH=/usr/bin/clang
   export TF_CUDA_PATHS=/opt/cuda,/usr/lib,/usr
@@ -112,16 +120,13 @@ build() {
   export TF_CUDNN_VERSION=$(sed -n 's/^#define CUDNN_MAJOR\s*\(.*\).*/\1/p' /usr/include/cudnn_version.h)
   export TF_CUDA_COMPUTE_CAPABILITIES=5.2,5.3,6.0,6.1,6.2,7.0,7.2,7.5,8.0,8.6
 
-  # Required until https://github.com/tensorflow/tensorflow/issues/39467 is fixed.
-  export CC=gcc
-  export CXX=g++
+  export CC=gcc-10
+  export CXX=g++-10
 
   export BAZEL_ARGS="--config=mkl -c opt --copt=-I/usr/include/openssl-1.0 --host_copt=-I/usr/include/openssl-1.0 --linkopt=-l:libssl.so.1.0.0 --linkopt=-l:libcrypto.so.1.0.0 --host_linkopt=-l:libssl.so.1.0.0 --host_linkopt=-l:libcrypto.so.1.0.0"
+}
 
-  # Workaround for gcc 10+ warnings related to upb.
-  # See https://github.com/tensorflow/tensorflow/issues/39467
-  export BAZEL_ARGS="$BAZEL_ARGS --host_copt=-Wno-stringop-truncation"
-
+build() {
   if [ "$_build_no_opt" -eq 1 ]; then
     echo "Building with rocm and without non-x86-64 optimizations"
     cd "${srcdir}"/tensorflow-${_pkgver}-rocm
@@ -146,7 +151,6 @@ build() {
     export CC_OPT_FLAGS="-march=haswell -O3"
     export TF_NEED_CUDA=0
     export TF_NEED_ROCM=1
-    export TF_CUDA_CLANG=0
     ./configure
     bazel \
       build --config=avx2_linux \
@@ -176,6 +180,13 @@ _package() {
   rm -rf "${pkgdir}"/usr/bin
   rm -rf "${pkgdir}"/usr/lib
   rm -rf "${pkgdir}"/usr/share
+  # make sure no lib objects are outside valid paths
+  local _so_srch_path="${pkgdir}/usr/include"
+  check_dir "${_so_srch_path}"  # we need to quit on broken search paths
+  find "${_so_srch_path}" -type f,l \( -iname "*.so" -or -iname "*.so.*" \) -print0 | while read -rd $'\0' _so_file; do
+    # check if file is a dynamic executable
+    ldd "${_so_file}" &>/dev/null && rm -rf "${_so_file}"
+  done
 
   # install the rest of tensorflow
   tensorflow/c/generate-pc.sh --prefix=/usr --version=${pkgver}
@@ -238,7 +249,7 @@ package_tensorflow-opt-rocm() {
 
 package_python-tensorflow-rocm() {
   pkgdesc="Library for computation using data flow graphs for scalable machine learning (with ROCM)"
-  depends+=(tensorflow-rocm python-termcolor python-astor python-gast03 python-numpy rocm rocm-libs miopen python-protobuf absl-py rccl python-h5py python-keras-applications python-keras-preprocessing python-tensorflow-estimator python-opt_einsum python-astunparse python-pasta python-flatbuffers)
+  depends+=(tensorflow-rocm rocm rocm-libs miopen rccl "${_common_py_depends[@]}")
   conflicts=(python-tensorflow)
   provides=(python-tensorflow)
 
@@ -248,7 +259,7 @@ package_python-tensorflow-rocm() {
 
 package_python-tensorflow-opt-rocm() {
   pkgdesc="Library for computation using data flow graphs for scalable machine learning (with ROCM and AVX2 CPU optimizations)"
-  depends+=(tensorflow-opt-rocm python-termcolor python-astor python-gast03 python-numpy rocm rocm-libs miopen python-protobuf absl-py rccl python-h5py python-keras-applications python-keras-preprocessing python-tensorflow-estimator python-opt_einsum python-astunparse python-pasta python-flatbuffers)
+  depends+=(tensorflow-rocm rocm rocm-libs miopen rccl "${_common_py_depends[@]}")
   conflicts=(python-tensorflow)
   provides=(python-tensorflow python-tensorflow-rocm)
 
