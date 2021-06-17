@@ -8,21 +8,21 @@ pkgname=cro-chain-desktop-bin
 pkgdesc='Crypto.org Chain desktop wallet'
 license=('Apache')
 url='https://github.com/crypto-com/chain-desktop-wallet'
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 arch=('x86_64')
-package="chain-desktop-wallet-${pkgver}-${arch}.AppImage"
+_package="chain-desktop-wallet-${pkgver}-${arch}.AppImage"
 source=(
-  "${package}::${url}/releases/download/v${pkgver}/${package}"
+  "${_package}::${url}/releases/download/v${pkgver}/${_package}"
   "LICENSE::https://raw.githubusercontent.com/crypto-com/chain-desktop-wallet/v${pkgver}/LICENSE"
 )
-sha512sums=('0f00c58701bd7ce0af3647912f04fd5c461961be84402dc6c6ac60cb821ea513c932f224cec4916e89005ac73824dbde4e37c7d94ad0ce64af5db5b15b5a5a18'
+sha512sums=('d803514a2f3febf42fa523ab8a6bfe5db74cbc2ba823b610f213b2c4f258c3743e7aeab3ad51d77b30d8e94e6194fa8301df61da9c421cc2bf2dce9809cfb0c4'
             '1a75d1990776c2c5cbc25b0d6381a67082c48ec3e7f18a4ad66caf55987548e5a622c1c8e330a1efaaf74e9c71aaad6d5a260062b50c5df9b26352c8efc6dd47')
 
 build() {
   # Extract files
-  chmod +x "$srcdir/$package"
-  $srcdir/$package --appimage-extract
+  chmod +x "$srcdir/$_package"
+  $srcdir/$_package --appimage-extract
 
   # Correct .desktop, icon
   mv -f "$srcdir/squashfs-root/usr/share/icons/hicolor/0x0" "$srcdir/squashfs-root/usr/share/icons/hicolor/512x512"
