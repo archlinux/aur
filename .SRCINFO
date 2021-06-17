@@ -1,7 +1,7 @@
 pkgbase = auralux-visualizer-git
 	pkgdesc = Visualizer for the Auralux strategy game
 	pkgver = r8.8ead45c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/skorja/AuraluxVisualizer
 	arch = any
 	license = MIT

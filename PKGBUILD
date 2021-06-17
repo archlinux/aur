@@ -1,6 +1,6 @@
 pkgname=auralux-visualizer-git
 pkgver=r8.8ead45c
-pkgrel=1
+pkgrel=2
 pkgdesc="Visualizer for the Auralux strategy game"
 arch=('any')
 url="https://github.com/skorja/AuraluxVisualizer"
@@ -31,5 +31,5 @@ package() {
   install -Dm644 "$srcdir/$pkgname/viz.conf" "$pkgdir/etc/$pkgname/viz.conf"
   install -Dm755 "$srcdir/auralux-visualizer-config" "$pkgdir/usr/bin/auralux-visualizer-config"
   install -Dm755 "$srcdir/auralux-visualizer" "$pkgdir/usr/bin/auralux-visualizer"
-  ln -s "$pkgdir/etc/$pkgname/viz.conf" "$pkgdir/usr/share/$pkgname/viz.conf"
+  ln -s "/etc/$pkgname/viz.conf" "$pkgdir/usr/share/$pkgname/viz.conf"
 }
