@@ -6,6 +6,7 @@ pkgdesc="Adds a 'Create web link...' menu item to Nautilus, which makes it simpl
          create URL shortcut files in directories"
 arch=('any')
 url="https://gitlab.gnome.org/sthursfield/gnome-web-shortcuts-extension"
+license=('unknown')
 depends=('nautilus' 'firefox')
 makedepends=('git' 'meson')
 provides=("${pkgname%-git}")
@@ -20,12 +21,15 @@ pkgver() {
 }
 
 build() {
-	cd "${pkgname%-git}"
-	arch-meson . build
-	ninja -C build
+	arch-meson "${pkgname%-git}" build
+	meson compile -C build
 }
 
+# No tests defined
+#check() {
+#	meson test -C build
+#}
+
 package() {
- 	cd "${pkgname%-git}"
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" meson install -C build
 }
