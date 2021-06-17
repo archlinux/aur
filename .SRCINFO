@@ -1,6 +1,6 @@
 pkgbase = dash
 	pkgdesc = Dash peer-to-peer network based digital currency
-	pkgver = 0.17.0.2
+	pkgver = 0.17.0.3
 	pkgrel = 1
 	url = http://www.dash.org/
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = dash
 	depends = libbacktrace-git
 	optdepends = miniupnpc: Firewall-jumping support
 	optdepends = db4.8: Wallet storage and wallet portability
-	source = dash-daemon-0.17.0.2.tar.gz::https://github.com/dashpay/dash/archive/v0.17.0.2.tar.gz
+	source = dash-daemon-0.17.0.3.tar.gz::https://github.com/dashpay/dash/archive/v0.17.0.3.tar.gz
 	source = dashd@.service
 	source = deque.patch
 	source = qpainterpath.patch::https://github.com/bitcoin/bitcoin/commit/79b0a69e09c1a912122e6431ea3c530cc292c690.patch
-	sha512sums = 605221dd538e8554b6d97a939ce6c332642a58518ec66494086c75dd2bedd0e190fac898cc91a42c78c114bce3ab977b2e8b86642bf38ce35197278fac17ca20
+	sha512sums = c7a233f2c90e15a2a1f41fdccc23dd44a8772242a2c4cddd31242acdc8d910f980a39be9971676b08a7abf93604797d51d1109373841024e84cceb73a5fe7df8
 	sha512sums = b5c59efacbe85de0292590af12e35d8c001c2b71eebda9829754be48e61a70ad7e8ed99662ed4e8da53006eb72e1994c435813b35c16a9c566ddf455efe81b5b
 	sha512sums = f558e938285fbf14c2f1773b2b23018e52ee03d4d2c89c2e1c73dc5f84180b77acc229a2c041f2f058e3a0ea329302d3bd9ef683c5c88570f3d2c4ab5a7050a6
 	sha512sums = 6c3df861832926e72dfd820af42bb89c1c3bb556c3f8e2fd06544f76bf5369c992a556e717653e230e062e89b8f2ee4f5d02313f35672f8174deae48c3306a0d
@@ -38,4 +38,3 @@ pkgname = dash-qt
 	depends = miniupnpc
 	optdepends = protobuf: Data interchange format used for payment protocol
 	optdepends = qrencode: Optional for generating QR codes
-
