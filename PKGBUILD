@@ -1,25 +1,25 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-_pipname=exif
-pkgname=python-$_pipname
-pkgver=1.2.2
+_py_name=exif
+pkgname=python-$_py_name
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Read and modify image EXIF metadata'
-arch=('any')
-url="https://gitlab.com/TNThieding/$_pipname"
-license=('MIT')
-_py_deps=('plum')
-depends=('python'
-         "${_py_deps[@]/#/python-}")
-source=("https://files.pythonhosted.org/packages/source/${_pipname::1}/$_pipname/$_pipname-$pkgver.tar.gz")
-sha256sums=('53d3d491dc7dc587ac636e72b00ffd724e4b07d24c8db7d9a1a1557d992edb96')
+arch=(any)
+url="https://gitlab.com/TNThieding/$_py_name"
+license=(MIT)
+_py_deps=(plum)
+depends=(python "${_py_deps[@]/#/python-}")
+_pkgdir="$_py_name-$pkgver"
+source=("https://files.pythonhosted.org/packages/source/${_py_name::1}/$_py_name/$_pkgdir.tar.gz")
+sha256sums=('f772e849a0e14bb572ef151840e160f55c6602c50992e0f9781502cba1ee65a2')
 
 build() {
-    cd "$_pipname-$pkgver"
+    cd "$_pkgdir"
     python setup.py build
 }
 
 package() {
-    cd "$_pipname-$pkgver"
+    cd "$_pkgdir"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
