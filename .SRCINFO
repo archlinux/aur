@@ -1,15 +1,15 @@
 pkgbase = goshimmer-bin
 	pkgdesc = GoShimmer implementation of Coordicide (official precompiled binary)
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/iotaledger/goshimmer
 	install = goshimmer.install
 	arch = x86_64
 	license = Apache
 	backup = etc/goshimmer/config.json
-	source = https://github.com/iotaledger/goshimmer/releases/download/v0.7.0/goshimmer-0.7.0_Linux_x86_64.tar.gz
+	source = https://github.com/iotaledger/goshimmer/releases/download/v0.7.1/goshimmer-0.7.1_Linux_x86_64.tar.gz
 	source = goshimmer.service
-	sha256sums = c723adfec2a3c2955605516ed4dbfd7cdfe17e26537f8ef3520664537a4222cd
+	sha256sums = defb084548c4aa0777e69806b4c506a7ce925c76754e788e00c464e92efc44f4
 	sha256sums = 37e021ce73e05f1878896de42c76877a68fe6a678294bda0de3934b1f5a0d9c8
 
 pkgname = goshimmer-bin

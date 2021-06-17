@@ -1,7 +1,7 @@
 # Maintainer: setBoolean <setboolean@icloud.com>
 pkgname="goshimmer-bin"
 _pkgname="goshimmer"
-pkgver="0.7.0"
+pkgver="0.7.1"
 pkgrel="1"
 pkgdesc="GoShimmer implementation of Coordicide (official precompiled binary)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/iotaledger/goshimmer"
 license=("Apache")
 source=("https://github.com/iotaledger/goshimmer/releases/download/v${pkgver}/${_pkgname}-${pkgver}_Linux_x86_64.tar.gz"
 		"${_pkgname}.service")
-sha256sums=('c723adfec2a3c2955605516ed4dbfd7cdfe17e26537f8ef3520664537a4222cd'
+sha256sums=('defb084548c4aa0777e69806b4c506a7ce925c76754e788e00c464e92efc44f4'
             '37e021ce73e05f1878896de42c76877a68fe6a678294bda0de3934b1f5a0d9c8')
 backup=('etc/goshimmer/config.json')
 install=${_pkgname}.install
