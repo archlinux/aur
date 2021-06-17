@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=nautilus-ext-git-git
 pkgver=1.3.r16.g5389549
-pkgrel=5
+pkgrel=6
 pkgdesc="Nautilus extension to add important information about the current git directory"
 arch=('i686' 'x86_64')
 url="https://github.com/bilelmoussaoui/nautilus-git"
 license=('GPL3')
-depends=('git' 'gobject-introspection' 'gtk3' 'python-nautilus')
-makedepends=('gnome-common' 'meson' 'intltool')
+depends=('git' 'gtk3' 'python-nautilus')
+makedepends=('meson')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}"
            'nautilus-folder-icons' 'nautilus-compare')
@@ -31,6 +31,11 @@ build() {
 	arch-meson "${pkgname%-git}" build -Dfile_manager=nautilus
 	meson compile -C build
 }
+
+# No tests defined
+#check() {
+#	meson test -C build --print-errorlogs
+#}
 
 package() {
 	DESTDIR="$pkgdir" meson install -C build
