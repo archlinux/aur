@@ -1,5 +1,22 @@
 
+del_seed() {
+	seed_date=$(date -r var/lib/lokinet/bootstrap.signed +%s 2>/dev/null || :)
+	if [ -z "$seed_date" ]
+	then
+		# no seed
+		return
+	fi
+
+	if [ "$seed_date" -lt 1623964915 ]
+	then
+		# remove old seed because it changed at some point
+		rm -f var/lib/lokinet/bootstrap.signed
+	fi
+}
+
 post_install() {
+	del_seed
+
 	cat <<-EOF
 		  To generate default config (optional, will be invoked by lokinet service if needed):
 		    systemctl start lokinet-default-config
@@ -10,4 +27,8 @@ post_install() {
 		  Alternatively, replace /etc/resolv.conf contents with:
 		    nameserver 127.3.2.1
 		EOF
+}
+
+post_upgrade() {
+	del_seed
 }
