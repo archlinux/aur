@@ -1,8 +1,8 @@
 pkgbase = steam-buddy
 	pkgdesc = Configure and manage games in Steam
-	pkgver = 0.11.1
+	pkgver = 0.11.2
 	pkgrel = 1
-	url = https://github.com/gamer-os/steam-buddy
+	url = https://github.com/chimeraos/chimera
 	arch = any
 	license = MIT
 	depends = python
@@ -44,7 +44,7 @@ pkgbase = steam-buddy
 	optdepends = srt-live-server
 	provides = steam-tweaks
 	conflicts = steam-tweaks
-	source = https://github.com/gamer-os/steam-buddy/archive/0.11.1.tar.gz
-	md5sums = ffa932e838ad4d85debf88ddf261f2eb
+	source = https://github.com/gamer-os/steam-buddy/archive/0.11.2.tar.gz
+	md5sums = f06acfcc4f465120ca0ee46325c385b7
 
 pkgname = steam-buddy
