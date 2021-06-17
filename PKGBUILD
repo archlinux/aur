@@ -2,7 +2,7 @@
 # Co-Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=steamtinkerlaunch
-pkgver=6.8
+pkgver=6.10
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
@@ -31,10 +31,12 @@ optdepends=(
     'jq: optional for extracting game names from the steam api and for sorting available Lutris Wine Versions'
     'rsync: optional for backing up steamuser files from proton games'
     'openssl: optional for generating a random hex string for Non-Steam games'
+	'imagemagick: optional to scale a custom installed game header picture and for converting game icons'
+	'appinfo-vdf: optional for converting the binary appinfo.vdf into a parsable format'
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('45179feaeb67dd2f0a44fb03e4e7bbaac0e7ec67cdb9dc9a36d592786e56360e')
+sha256sums=('f0f20b117f36b289eb950b4fa30753c3610f49ce3c1c39046683ebd8e749faa3')
 
 package() {
     cd "$srcdir/$pkgname-${pkgver}"
