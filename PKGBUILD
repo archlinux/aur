@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Balló György
 # Contributor: Artem Vorotnikov <artem at vorotnikov dot me>
 pkgname=gxml
