@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-ea-bin
 	pkgdesc = Java OpenJDK 17 Early-Access Build
-	pkgver = 17b26
+	pkgver = 17b27
 	pkgrel = 1
 	url = https://jdk.java.net/17
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = java-openjdk-ea-bin
 	provides = java-runtime-openjdk=17
 	provides = java-runtime-headless=17
 	provides = java-runtime-headless-openjdk=17
-	source = https://download.java.net/java/early_access/jdk17/26/GPL/openjdk-17-ea+26_linux-x64_bin.tar.gz
-	sha256sums = 9efe9a6b68a24e16a2a2e34b0f33c25fe17dcdace07970840e2a9bd014d13c30
+	source = https://download.java.net/java/early_access/jdk17/27/GPL/openjdk-17-ea+27_linux-x64_bin.tar.gz
+	sha256sums = 7e1042e3daf741aad75ebda0ea38650111475a810be8fedf38f554732d7750f4
 
 pkgname = java-openjdk-ea-bin
