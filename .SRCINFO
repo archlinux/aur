@@ -17,4 +17,3 @@ pkgbase = meteo-gtk
 	sha256sums = 22d8132e9c3bc62b3ec090275abd8b211d9d99b89812dc69e987cd315f898d0d
 
 pkgname = meteo-gtk
-
