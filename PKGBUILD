@@ -3,11 +3,11 @@
 
 pkgname=thunderbird-beta
 _pkgname=thunderbird
-_pkgver=89.0
-_beta=4
+_pkgver=90.0
+_beta=1
 pkgver="${_pkgver}b${_beta}"
 pkgrel=1
-pkgdesc='Standalone mail and news reader from mozilla.org - Bleeding edge version'
+pkgdesc='Standalone mail and news reader from mozilla.org — Beta version'
 url='https://www.mozilla.org/thunderbird/'
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -104,9 +104,9 @@ END
     "$pkgdir/usr/lib/$pkgname/thunderbird-bin"
 }
 
-sha256sums=('fedcadce2ff1cc4610fbd7a64d492a89aa4bbb82f75a6ac6f838c5415e41b193'
+sha256sums=('10f577c43663f72aa5d270f810d081c88b7edd9784e37cb61e877979809c8637'
             'SKIP'
-            'd7aa1bd77f74c255446eec4171e4360c7a6215dac1d29c8ee71ec1f2a03bda3d'
+            '4c8cc465953be36639a2bff7544c42cc45cc56c460a1a350d0656b43cc7b2eea'
             'fa11b4736bbf53ec015f71cd42b1040b22d1a855c562b76927b3f0eccb925c85'
             'bc3aae2cc00dc9806f54606f98d967366a2ba7223f6a3ad1c658a653ebff5569'
-            '7b4d87f55bf23798023421e6918d314a5c81b7d80084afd8a59581d0bf55fe4d')
+            '81fcdc2417b6d5d028cba664758ced262bbabbe252825aeb1fa3905d42fcb0ad')
