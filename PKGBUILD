@@ -1,7 +1,7 @@
 # Maintainer: Neeraj <neeraj.a4353@gmail.com | gmail>
 
 pkgname=lightdm-webkit2-theme-reactive
-pkgver=0.4.2
+pkgver=0.4.4
 pkgrel=2
 pkgdesc="Reactive, A Simple and fast lightdm webkit2 theme for linux"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/gitneeraj/$pkgname"
 license=('MIT')
 depends=('lightdm-webkit2-greeter')
 source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('ea6fb7bb6b2876010f064b4f66c824c1242cf7da95225f36386871e3dddaf947606753b898891f5601ab422a81b9c8bc562d4626859d1c52a1d9a597f02948ce')
+sha512sums=('8c9f6099db430e3fe4869dcb5cddac93d438e4d79b8b2dccabba8839981d9e5e5e3687b939561ef2474742f3333aaaf11b53adc50fe2e70276a7a560d387765a')
 
 package() {
 	cd "$pkgdir"
