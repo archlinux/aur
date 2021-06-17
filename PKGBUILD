@@ -1,7 +1,7 @@
 # Maintainer: suliman altassan <suliman.p2019@gmail.com>
 
 pkgname=webui
-pkgver=1.0.8
+pkgver=1.0.13
 pkgrel=2
 pkgdesc="Open source project to use web browsers as UI."
 arch=('x86_64')
@@ -13,7 +13,7 @@ md5sums=('SKIP')
 
 prepare() {
     cd $srcdir/$pkgname-$pkgver
-    git reset 0ae148032b
+    git reset 35ad7009388eb6c13a852f96538f040a6237369f
 }
 
 build() {
