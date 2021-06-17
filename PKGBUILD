@@ -68,7 +68,7 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck-uksm-cjktty
-pkgver=5.12.10
+pkgver=5.12.11
 pkgrel=1
 _major=5.12
 _ckpatchversion=1
@@ -87,19 +87,31 @@ source=(
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "http://ck.kolivas.org/patches/5.0/5.12/5.12-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-UKSM.patch
-  "0003-CJKTTY.patch::https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v5.x/cjktty-${_major}.patch"
+  0002-x86-setup-Consolidate-early-memory-reservations.patch
+  0003-x86-setup-Merge-several-reservations-of-start-of-mem.patch
+  0004-x86-setup-Move-trim_snb_memory-later-in-setup_arch-t.patch
+  0005-x86-setup-always-reserve-the-first-1M-of-RAM.patch
+  0006-x86-setup-remove-CONFIG_X86_RESERVE_LOW-and-reservel.patch
+  0007-x86-crash-remove-crash_reserve_low_1M.patch
+  0008-UKSM.patch
+  "0009-CJKTTY.patch::https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v5.x/cjktty-${_major}.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('b40ef5a11ca435299899e8131fa72af147455cd8ebee4c0e187572b1f628e66d2b6fbb318308bc911a598d8303d1ab3622d52966deaa5c48d59dcd65f4f58687'
+b2sums=('b5955fc1dc1ae416ef90c44d871f109d6a9130e5fc8b60f73cf98e14f4ce48b0030c79053d88c335c43ac6ab6f5786f9f054577f76c30f5505ed2d70e62d9aa0'
         'SKIP'
-        '4c5b83d2f8ab66458ef984386589c9305d21a320aab4f218ebaad7e132d7f05b2ae36812dcbb37a3261d05c7d05ee3d043482adfd55cd81f63593ddff8c332da'
+        '05c0d7c2d2800b7e7d5e149c3b13653497119dc4445b20b450e10f1bdb0b442e672bb05962d3aabc0b622c8e51f9db05cf7994442a6ea45bbaa886825ca96e32'
         '30d1df754608bb423cbc99c2097ad521baa091b9a3b39df4bd5c2d50c57eec54d8fa0e4a4a04b847c3d1b87ba682cadc8db45fabeefdc9ad7caaf8e77b96e41a'
         'c9f729ba1efe6f04e7b2c57d3999bc9675b577596dccb2f227e5b6e444285e1fdd270bf67c0fcf9f5808a4c3a4b1c7a5c13a76f754ad9b9447243ccbaf2ce6a3'
-        'e1eccb5b6b728e3852ade55dae7a53b8b6bd5f0fb2a330b99e85bfa64abaa430cb714d301ed169df14a1f302a75d952992f0d8fa6ab02fa6716165bdf23b63aa'
+        'dda152592dec643bce44754bf5d2d43a5897cc57f8dc258b87857055a45abf903d619aba1de389228cb086a17fedea5458f8fe2c0993fa20213bb7c5bca331c8'
+        '13330cf57b5c6b928ea73bd30479010688cf8d2003107b041a7fdad33c1ac225c8c905bef235cd762d6ea76be754b5db6be769526bacf7333298f72d6afff535'
+        '381e0f177faa3090d1abf4d11a97db535712840870265dea167d7692dee7733a226d09c103d01705d5c0809fa66c7a23efea9da2473da672644b06e31db77083'
+        'cd9da0dee048fc52a3032343f122c2055081eeedfc8a3e5227218f0f63fc7618e8fe744c8caa7e3a2ca844f4aaf7314b57a306d0d3b1849e97b24687b8c5a501'
+        '1810832172e1b006a5471d8e317573343884feed9abc9e7380a32d83c958b0e6aa68adf9a647c9b7b714783997591f5d80e754c6e7357279661eee998f22864c'
+        '4e7cb958f95d99bba9810e675d4f1b0b3c171f78e9fe96ff9d265f792f4ceb1367f2f4d238f36b5ca1c395e14abdabbf0f8ce2dc07c4fe567d822a8b629dfa05'
+        '2251f8bf84e141b4661f84cc2ce7b21783ac0a349b2651477dfcbc5383b796b2e588d85ee411398b15c820cb3672256be8ed281c8bccfad252c9dd5b0e1e0cd5'
         '62147c71b76b9986b60df333267882f089c89997cef430c8864e521536d76a6d7679733cbbea163c31341a48ad589c11b98231f71aafe0eaf87f0a3a84add429'
         '1f140c293d1ffdb13a38af1f636cf591ee1034702c9e3825ef7a12fff3ead79c6b9da1e2e099497c68b23cc7c690ce14bafb26d03c75648e27ab22b347f474a4')
 
