@@ -7,11 +7,12 @@
 pkgname=todotxt
 #pkgver=2.12.0
 pkgver=2.12.0.post1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and extensible shell script for managing your todo.txt file"
 arch=('any')
 url="https://github.com/todotxt/todo.txt-cli"
 license=('GPL3')
+makedepends=('git')
 install=$pkgname.install
 #source=(https://github.com/todotxt/todo.txt-cli/releases/download/v$pkgver/$_srcname-$pkgver.tar.gz)
 #source=($_srcname-$pkgver::https://github.com/todotxt/$_srcname/archive/refs/tags/v$pkgver.tar.gz)

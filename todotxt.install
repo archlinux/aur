@@ -1,7 +1,4 @@
-# arg 1:  the new package version
 post_install() {
-  echo
-  echo "Please copy the file /usr/share/todotxt/todo.cfg to ~/.todo/config"
-  echo "and then edit the TODO_DIR path in that file to your desired todo data directory."
-  echo
+  echo "==> To change the default configuration, copy /etc/todo/config to, for example,"
+  echo "    ~/.config/todo/config or ~/.todo/config and modify the file."
 }
