@@ -10,6 +10,7 @@ depends=('gst-python' 'python-gobject' 'gst-plugin-gtk' 'gst-plugins-good' 'libn
          'python-pillow' 'python-logbook' 'python-single-version' 'zbar'
          'python-kiss-headers')
 makedepends=('git' 'meson' 'gobject-introspection')
+checkdepends=('appstream-glib')
 _commit='e42a50eb9fe4dbde3450faef76178bf349c722b1'
 source=("$pkgname::git+https://github.com/hongquan/CoBang.git#commit=$_commit")
 sha256sums=('SKIP')

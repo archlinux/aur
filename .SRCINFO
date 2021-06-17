@@ -5,6 +5,7 @@ pkgbase = cobang
 	url = https://github.com/hongquan/CoBang
 	arch = any
 	license = GPL3
+	checkdepends = appstream-glib
 	makedepends = git
 	makedepends = meson
 	makedepends = gobject-introspection
@@ -22,4 +23,3 @@ pkgbase = cobang
 	sha256sums = SKIP
 
 pkgname = cobang
-
