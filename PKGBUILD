@@ -3,7 +3,7 @@
 # Contributor: onestep_ua <onestep at ukr dot net>
 
 pkgname=libg15render
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="A small graphics library optimised for drawing on an LCD"
 arch=('x86_64')
@@ -11,11 +11,11 @@ url="https://gitlab.com/menelkir/libg15render"
 license=('GPL')
 depends=('libg15')
 source=(https://gitlab.com/menelkir/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.bz2)
-sha512sums=('fd1e21abf00da5e80d55090ba0b94976d6f201a72048ccbdb9ce34092f616e355b0b72c5da3989a9e2b82e9c0eae218accba5bca8bfa5119d3a6f94c46b3fecd')
+sha512sums=('f11470b4c8709b7cab8747d8eca4d55ddf88f6dd0a46f11de78612d6070c8b5ea7188ec1ea0236edbb0e5904e6dffd7c75831d5e00564b3cebf8b9dc58b0100e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr --disable-static
+  ./configure --prefix=/usr
   make
 }
 
