@@ -1,0 +1,13 @@
+diff --git a/demineur.c b/demineur.c
+index 9fdb72f..68f6572 100644
+--- a/demineur.c
++++ b/demineur.c
+@@ -298,6 +298,8 @@ void demineur_play ( int row , int column )
+          state = LOST ;
+          demineur_stop_timer ( ) ;
+          xdemineur_display ( ) ;
++
++         return;
+       }
+       else if ( board.board[row][column].around == 0 )
+       {
