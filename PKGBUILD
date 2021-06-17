@@ -3,7 +3,7 @@
 _name=cleo
 pkgname=python-$_name-pypi
 pkgver=0.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc='create beautiful and testable command-line interfaces'
 provides=("python-cleo=$pkgver")
 conflicts=("python-cleo")
@@ -30,5 +30,5 @@ package()
 {
     cd "$srcdir/$_name-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-    install -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
