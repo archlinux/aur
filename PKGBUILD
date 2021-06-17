@@ -2,7 +2,7 @@
 # Contributor: CubeTheThird <cubethethird@gmail.com>
 
 pkgname=amidst
-_version='4.6'
+_version='4.7'
 pkgver=${_version//_/-}
 _jarver="v${_version}"
 _jarfile="${pkgname}-${_jarver/./-}.jar"
@@ -17,8 +17,8 @@ noextract=("$_jarfile")
 changelog=ChangeLog
 source=("https://github.com/toolbox4minecraft/amidst/releases/download/$_jarver/$_jarfile"
         amidst.desktop)
-md5sums=('401d9d2de09661ccde32dddfa7e5451d'
-         'b56a5d2ba2e3c71ca2c7824d2434d823')
+b2sums=('f23510c32b970206593acd430e6efaf656df012630b72577e438af67be1e0d32d6d5308c1da04cb23e5823aef3b7a91c59046d07c0df5a56e6554ebdb09e2e5c'
+        '03c585137d786adbb07c311c9d1002161a7ad56b1a327c8c04eac8907c9d102c48e9434ee48de37b3cb91bdffcdcf053e8e57b3c852a2129c7795b70042d6f35')
 
 prepare() {
     bsdcpio -i -m --quiet --make-directories '*/amidst-*.png' < "$_jarfile"
