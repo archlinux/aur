@@ -8,8 +8,9 @@ pkgdesc='Nemo extension that makes changing folders icons easy!'
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://github.com/bilelmoussaoui/nautilus-folder-icons"
-depends=('gobject-introspection' 'gtk3' 'nemo-python')
-makedepends=('gnome-common' 'meson')
+depends=('gtk3' 'nemo-python')
+makedepends=('meson')
+#checkdepends=('appstream-glib')
 conflicts=('nemo-ext-git' 'nemo-compare')
             # See https://github.com/bilelmoussaoui/nautilus-folder-icons/issues/34
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
@@ -24,6 +25,11 @@ build() {
 	arch-meson "$_gitname-$pkgver" build -Dfile_manager=nemo
 	meson compile -C build
 }
+
+# unitteststest_utils.py & Validate appdata file fails
+#check() {
+#	meson test -C build --print-errorlogs
+#}
 
 package() {
 	DESTDIR="$pkgdir" meson install -C build

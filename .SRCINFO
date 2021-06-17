@@ -6,9 +6,7 @@ pkgbase = nemo-folder-icons
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = gnome-common
 	makedepends = meson
-	depends = gobject-introspection
 	depends = gtk3
 	depends = nemo-python
 	conflicts = nemo-ext-git
@@ -17,4 +15,3 @@ pkgbase = nemo-folder-icons
 	sha256sums = 25fa6f164f50ed84ee6fa6d7a6004cb5190051847a5c3895f41bf1b426ad2565
 
 pkgname = nemo-folder-icons
-
