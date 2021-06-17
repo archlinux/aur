@@ -25,7 +25,7 @@ validpgpkeys=('738877AA6C829F26A431C5F480B691277733D95B') # Simone Basso <bassos
 prepare() {
 	cd "${pkgname#ooni}-$pkgver"
 
-	# Disable downloading probe-cli & remove other platforms
+	# Disable downloading probe-cli for other platforms
 	sed -i "s/'darwin_amd64', 'linux_amd64', 'windows_amd64'/'linux_amd64'/g" \
 		scripts/download-bin.js
 
