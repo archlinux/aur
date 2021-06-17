@@ -1,0 +1,15 @@
+[Unit]
+Description=<%= pkgdesc %>
+After=network.target
+
+[Service]
+Type=simple
+User=<%= pkgname %>
+Group=<%= pkgname %>
+WorkingDirectory=/var/lib/<%= pkgname %>
+ExecStart=/usr/bin/<%= pkgname %> run --conf /etc/<%= pkgname %>.conf
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

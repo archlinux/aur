@@ -1,0 +1,51 @@
+--- default.yaml.orig	2021-02-01 15:50:27.556589528 +0000
++++ default.yaml	2021-02-01 15:52:59.786583877 +0000
+@@ -50,8 +50,8 @@
+         # The standard SSL/TLS port for IRC is 6697. This will listen on all interfaces:
+         ":6697":
+             tls:
+-                cert: fullchain.pem
+-                key: privkey.pem
++                cert: /var/lib/<%= pkgname %>/fullchain.pem
++                key: /var/lib/<%= pkgname %>/privkey.pem
+             # 'proxy' should typically be false. It's for cloud load balancers that
+             # always send a PROXY protocol header ahead of the connection. See the
+             # manual ("Reverse proxies") for more details.
+@@ -70,8 +70,8 @@
+         # ":8097":
+         #     websocket: true
+         #     tls:
+-        #         cert: fullchain.pem
+-        #         key: privkey.pem
++        #         cert: /var/lib/<%= pkgname %>/fullchain.pem
++        #         key: /var/lib/<%= pkgname %>/privkey.pem
+ 
+     # sets the permissions for Unix listen sockets. on a typical Linux system,
+     # the default is 0775 or 0755, which prevents other users/groups from connecting
+@@ -166,7 +166,7 @@
+ 
+     # motd filename
+     # if you change the motd, you should move it to ircd.motd
+-    motd: oragono.motd
++    motd: /var/lib/<%= pkgname %>/ircd.motd
+ 
+     # motd formatting codes
+     # if this is true, the motd is escaped using formatting codes like $c, $b, and $i
+@@ -714,7 +714,7 @@
+ # datastore configuration
+ datastore:
+     # path to the datastore
+-    path: ircd.db
++    path: /var/lib/<%= pkgname %>/ircd.db
+ 
+     # if the database schema requires an upgrade, `autoupgrade` will attempt to
+     # perform it automatically on startup. the database will be backed
+@@ -743,7 +743,7 @@
+     default: en
+ 
+     # which directory contains our language files
+-    path: languages
++    path: /usr/share/<%= pkgname %>/i18n/
+ 
+ # limits - these need to be the same across the network
+ limits:

@@ -1,0 +1,50 @@
+#!/usr/bin/env ruby
+require 'optparse'
+require 'erb'
+
+options = {}
+OptionParser.new do |parser|
+    parser.banner = "Usage: compile-templates.rb [options] <template-files...>"
+
+    parser.on("--pkgname=PKGNAME", "Name of package") do |v|
+        options[:pkgname] = v
+    end
+
+    parser.on("--pkgdesc=PKGDESC", "Description of package") do |v|
+        options[:pkgdesc] = v
+    end
+end.parse!
+
+raise 'pkgname not provided' unless options.has_key?(:pkgname)
+raise 'pkgdesc not provided' unless options.has_key?(:pkgdesc)
+
+templates = ARGV
+
+raise 'templates not provided' unless templates.length > 0
+
+class TemplateVariables
+    attr_reader :pkgname, :pkgdesc
+
+    def initialize(pkgname, pkgdesc)
+        @pkgname = pkgname
+        @pkgdesc = pkgdesc
+    end
+
+    def get_binding
+        binding()
+    end
+end
+
+templateVariables = TemplateVariables.new(options[:pkgname], options[:pkgdesc])
+
+templates.each do |templateFilename|
+    template = File.read(templateFilename)
+    renderer = ERB.new(template)
+    rendered = renderer.result(templateVariables.get_binding)
+
+    templateFilenameWithoutSuffix = templateFilename.delete_suffix('.erb')
+    outputFilename = templateFilenameWithoutSuffix.sub 'PKGNAME', templateVariables.pkgname
+    output = File.new(outputFilename, 'w')
+    output.puts(rendered)
+    output.close
+end
