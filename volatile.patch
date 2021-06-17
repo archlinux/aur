@@ -1,0 +1,39 @@
+diff --git a/Source/WebCore/accessibility/atk/WebKitAccessibleHyperlink.cpp b/Source/WebCore/accessibility/atk/WebKitAccessibleHyperlink.cpp
+index 0e4a0c8..2a8296d 100644
+--- a/Source/WebCore/accessibility/atk/WebKitAccessibleHyperlink.cpp
++++ b/Source/WebCore/accessibility/atk/WebKitAccessibleHyperlink.cpp
+@@ -390,7 +390,7 @@ static void webkitAccessibleHyperlinkInit(AtkHyperlink* link)
+ 
+ GType webkitAccessibleHyperlinkGetType()
+ {
+-    static volatile gsize typeVolatile = 0;
++    static gsize typeVolatile = 0;
+ 
+     if (g_once_init_enter(&typeVolatile)) {
+         static const GTypeInfo tinfo = {
+diff --git a/Source/WebCore/accessibility/atk/WebKitAccessibleWrapperAtk.cpp b/Source/WebCore/accessibility/atk/WebKitAccessibleWrapperAtk.cpp
+index 79eb46d..f4b0270 100644
+--- a/Source/WebCore/accessibility/atk/WebKitAccessibleWrapperAtk.cpp
++++ b/Source/WebCore/accessibility/atk/WebKitAccessibleWrapperAtk.cpp
+@@ -1015,7 +1015,7 @@ static void webkitAccessibleClassInit(AtkObjectClass* klass)
+ GType
+ webkitAccessibleGetType(void)
+ {
+-    static volatile gsize typeVolatile = 0;
++    static gsize typeVolatile = 0;
+ 
+     if (g_once_init_enter(&typeVolatile)) {
+         static const GTypeInfo tinfo = {
+diff --git a/Source/WebKit2/UIProcess/API/gtk/WebKitPrivate.h b/Source/WebKit2/UIProcess/API/gtk/WebKitPrivate.h
+index bd060ed..f003e8a 100644
+--- a/Source/WebKit2/UIProcess/API/gtk/WebKitPrivate.h
++++ b/Source/WebKit2/UIProcess/API/gtk/WebKitPrivate.h
+@@ -98,7 +98,7 @@ static void type_name##_init(TypeName* self) \
+ }\
+ GType type_name##_get_type(void) \
+ { \
+-    static volatile gsize g_define_type_id__volatile = 0; \
++    static gsize g_define_type_id__volatile = 0; \
+     if (g_once_init_enter(&g_define_type_id__volatile)) { \
+         GType g_define_type_id = \
+             g_type_register_static_simple( \

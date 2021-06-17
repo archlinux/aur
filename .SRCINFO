@@ -1,7 +1,7 @@
 pkgbase = webkitgtk
 	pkgdesc = Legacy Web content engine for GTK+ 3
 	pkgver = 2.4.11
-	pkgrel = 24
+	pkgrel = 25
 	epoch = 3
 	url = https://webkitgtk.org/
 	install = webkitgtk.install
@@ -12,7 +12,6 @@ pkgbase = webkitgtk
 	makedepends = gobject-introspection
 	makedepends = gperf
 	makedepends = gtk2
-	makedepends = gtk3
 	makedepends = mesa
 	makedepends = python2
 	makedepends = ruby
@@ -46,6 +45,7 @@ pkgbase = webkitgtk
 	source = gtk-doc.patch
 	source = grammar.patch
 	source = glib-2.68.0.patch
+	source = volatile.patch
 	sha256sums = 588aea051bfbacced27fdfe0335a957dca839ebe36aa548df39c7bbafdb65bf7
 	sha256sums = e40f1e08665e1646ebc490141678f26c9c4a2792207fdf7c05978547eae9f61c
 	sha256sums = 7e37e059f071aaef93e387675de1a0c6a3dcf61ef67a3221a078caca69e22079
@@ -55,6 +55,6 @@ pkgbase = webkitgtk
 	sha256sums = 7341eb4c229656046be6ac526f94b9f4a742a66178412caf22a988677f5bf9d9
 	sha256sums = 5a62fbd0df69c6951562e72cd7b3c58cae7f2807338ced7b4a1973440b3dd193
 	sha256sums = db202fedd72a21318646c561afcd76656ea8ba6b1d641363fc7b69ae5687aa28
+	sha256sums = 013bf12e0ab79664c74f1ef3c299f564cd1f47feab2a3daa5ab80db1c5aebfa1
 
 pkgname = webkitgtk
-

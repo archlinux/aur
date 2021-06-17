@@ -6,7 +6,7 @@
 
 pkgname=webkitgtk
 pkgver=2.4.11
-pkgrel=24
+pkgrel=25
 epoch=3
 pkgdesc="Legacy Web content engine for GTK+ 3"
 arch=("armv7h" "i686" "x86_64")
@@ -19,7 +19,7 @@ optdepends=(
   "gst-plugins-good: media decoding"
   "gtk2: Netscape plugin support"
 )
-makedepends=("gobject-introspection" "gperf" "gtk2" "gtk3" "mesa" "python2" "ruby")
+makedepends=("gobject-introspection" "gperf" "gtk2" "mesa" "python2" "ruby")
 provides=("${pkgname}3=${pkgver}" "libwebkit3=${pkgver}")
 conflicts=("${pkgname}3" "libwebkit3")
 replaces=("${pkgname}3" "libwebkit3")
@@ -35,6 +35,7 @@ source=(
   "gtk-doc.patch"
   "grammar.patch"
   "glib-2.68.0.patch"
+  "volatile.patch"
 )
 sha256sums=(
   "588aea051bfbacced27fdfe0335a957dca839ebe36aa548df39c7bbafdb65bf7"
@@ -46,6 +47,7 @@ sha256sums=(
   "7341eb4c229656046be6ac526f94b9f4a742a66178412caf22a988677f5bf9d9"
   "5a62fbd0df69c6951562e72cd7b3c58cae7f2807338ced7b4a1973440b3dd193"
   "db202fedd72a21318646c561afcd76656ea8ba6b1d641363fc7b69ae5687aa28"
+  "013bf12e0ab79664c74f1ef3c299f564cd1f47feab2a3daa5ab80db1c5aebfa1"
 )
 
 prepare() {
@@ -69,6 +71,9 @@ prepare() {
 
   # glib>=2.68.0
   patch -Np1 -i "${srcdir}/glib-2.68.0.patch"
+
+  # gcc11+ compiler volatile patch
+  patch -Np1 -i "${srcdir}/volatile.patch"
 }
 
 build() (
