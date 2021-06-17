@@ -92,7 +92,7 @@ makedepends=(
   'git'
 )
 options=('!strip')
-_gcc_more_v='20210412'
+_gcc_more_v='20210610'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
@@ -109,7 +109,7 @@ sha256sums=(
   '7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
   '39045607567d69f84424b224e4fa6bf8f97a21a06ac9d6396acab16a18c4bcd3'
   '034eb39ad49f3a26fc1b4ef799ef481ce35fe03e2b24131e9cd3d2805a99ad19'
-  'f1f62b6d2cd89d0ab15f8d7311f5bb775dfc97ff39f93bc77f6f733f75fa7558'
+  '49750c51711e011786888a501fb8deef26da8bcabfa71e9ad3e85ed01e2f60ef'
   '0d0691aa0f80fea0d9d204c05a845416dd443f3bb629cbb68e098e4d19cc841d')
 
 export KBUILD_BUILD_HOST=archlinux
