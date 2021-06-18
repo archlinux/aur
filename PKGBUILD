@@ -1,8 +1,9 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer:  Joel Almeida <aullidolunar at gmail d0t k0m>
 
 pkgname=python-ebooklib
 pkgver=0.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Python E-book library for handling books in EPUB2/EPUB3 format'
 arch=('any')
 url="https://ebooklib.readthedocs.io"
