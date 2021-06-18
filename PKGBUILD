@@ -9,7 +9,7 @@ arch=(any)
 url="https://github.com/google/tsunami-security-scanner-plugins"
 license=('Apache')
 makedepends=('git')
-depends=('java-runtime') 
+depends=('jre11-openjdk')
 source=("git+${url}.git")
 
 sha256sums=('SKIP')
