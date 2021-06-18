@@ -1,7 +1,7 @@
 # Maintainer: tuxifreund <kaiser.barbarossa@yandex.com>
 pkgname=mybrowse
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple WebKit browser written in Python3 and using GTK3"
 arch=('any')
 url="https://github.com/KaiserBarbarossa/MyBrowse"
@@ -15,6 +15,6 @@ package() {
 	cd "MyBrowse-$pkgver"
 	mkdir -p $pkgdir/usr/bin
 	mkdir -p $pkgdir/usr/share/applications
-	cp mybrowse $pkgdir/usr/bin
-	cp mybrowse.desktop $pkgdir/usr/share/applications
+	install -Dm755 mybrowse $pkgdir/usr/bin
+	install -Dm644 mybrowse.desktop $pkgdir/usr/share/applications
 }
