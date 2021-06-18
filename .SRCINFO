@@ -1,0 +1,19 @@
+pkgbase = geneanet
+	pkgdesc = Software to upload a GEDCOM and its associated media to Geneanet
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://geneanet.org
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	depends = electron9
+	source = https://geneanet.org/public/geneanet-upload/geneanet-upload-last-linux-x64.deb
+	source = geneanet
+	md5sums = 878afae457df7d32beca45f38c0047f4
+	md5sums = 3026da3541de8be19b187849693973d8
+	sha512sums = ad80246b773146ea3e0f4484c8d890ce53a6c8da59e1a991d4934272f0fb8569930cb9bb178b70f4417de008cae7dbb2a4726ae7cc4b7d730a31c4a09e8321cf
+	sha512sums = ff01b1e554c7f98a23e71574d88c6bcc68ecae15cc3b3ea20842f39f6ac9a8c4f0f955e88a648bc9a24cc9a4132a6d470f4e75c0f34007dbacc17527af3da79e
+	b2sums = 566b6431027263883235e3b3067edf9748e4cff9a396c72fb664bb87c9b96a75fc4b6c0be849adc4dfbe08ba7c5048167898d630b7d028ddc270d82729aa37a4
+	b2sums = d93257b74f68afb71fd473bd37b12cc3cae647542544e964ee48c797fbbc4aec828aa723a9a287119175a4ee33feda674b301efbf8dcefaf7ffd9ddfd24f6bd6
+
+pkgname = geneanet

@@ -1,0 +1,2 @@
+#!/bin/env sh
+electron9 /opt/Geneanet\ Upload/app.asar
