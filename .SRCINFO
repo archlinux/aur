@@ -1,7 +1,7 @@
 pkgbase = fluffychat-git
 	pkgdesc = Chat with your friends
-	pkgver = v0.28.0.r0.g0b1cf62
-	pkgrel = 2
+	pkgver = v0.32.0.r0.gcf37d567
+	pkgrel = 1
 	url = https://fluffychat.im/
 	arch = x86_64
 	license = AGPL3
@@ -11,10 +11,11 @@ pkgbase = fluffychat-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = gtk3
+	depends = libolm
+	depends = xdg-user-dirs
 	provides = fluffychat
 	conflicts = fluffychat
 	source = git+https://gitlab.com/famedly/fluffychat.git
 	sha256sums = SKIP
 
 pkgname = fluffychat-git
-

@@ -2,12 +2,13 @@
 
 pkgname=fluffychat-git
 _name=fluffychat
-pkgver=v0.28.0.r0.g0b1cf62
-pkgrel=2
+pkgver=v0.32.0.r0.gcf37d567
+pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('x86_64')
 url="https://fluffychat.im/"
 license=('AGPL3')
+depends=('libolm' 'xdg-user-dirs')
 makedepends=('clang'
              'ninja'
              'flutter'
@@ -29,7 +30,6 @@ prepare() {
   flutter config --no-analytics
   cd ${_name}
   git submodule update --init --recursive
-  #echo "dependency_overrides:\n  intl: 0.17.0-nullsafety.2" >> pubspec.yaml
 }
 
 build() {
@@ -43,14 +43,14 @@ build() {
 package() {
   # install
   install -dm755 ${pkgdir}/opt
-  mv ${_name}/build/linux/release/bundle ${pkgdir}/opt/${_name}
+  mv ${_name}/build/linux/x64/release/bundle ${pkgdir}/opt/${pkgname}
   
   # link
   install -dm755 ${pkgdir}/usr/bin
-  ln -s /opt/${_name}/${_name} ${pkgdir}/usr/bin/${_name}
+  ln -s /opt/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 
   # icon
-  install -Dm 644 ${_name}/assets/favicon.png ${pkgdir}/usr/share/pixmaps/${_name}.png
+  install -Dm 644 ${pkgdir}/opt/${pkgname}/data/flutter_assets/assets/favicon.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
 
   # desktop entry
 
