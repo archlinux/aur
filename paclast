@@ -1,6 +1,6 @@
 #!/bin/sh
 # list installed pacman packages in chronological order.
-# example usage: $ paclast -r | head
+# example usage: $ paclast -tc | head
 
 main() {
     opts="$(getopt -otcph -- "$@")" && eval set -- "$opts" || help
