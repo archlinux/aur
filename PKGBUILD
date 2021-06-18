@@ -4,7 +4,7 @@
 # Contributor: Erhan SAHIN <erhan@ssahin.net>
 _projectname='fasteners'
 pkgname="python2-$_projectname"
-pkgver='0.16.2'
+pkgver='0.16.3'
 pkgrel='1'
 pkgdesc='A python package that provides useful locks - python2 version'
 arch=('any')
@@ -13,7 +13,7 @@ license=('Apache')
 depends=('python2' 'python2-monotonic>=0.1' 'python2-six')
 makedepends=('python2-setuptools')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('4f1d60528fe43a3ed4da239ab1ea1d0d87ad6506d9ea54cee3adcda9872c9377')
+sha256sums=('76db20e2709151a3b689a9e571f4d65f60880812972f89c24a13640937ca11c7')
 
 _sourcedirectory="$_projectname-$pkgver"
 
