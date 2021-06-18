@@ -5,7 +5,7 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=89.0
+pkgver=89.0.1
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
@@ -26,14 +26,14 @@ backup=('usr/lib/librewolf/librewolf.cfg'
 options=(!emptydirs !makeflags !strip)
 _arch_svn=https://git.archlinux.org/svntogit/packages.git/plain/trunk
 _common_tag="v${pkgver}-${pkgrel}"
-_settings_tag='1.0'
+_settings_tag='1.1'
 install='librewolf.install'
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
         $pkgname.desktop
         "git+https://gitlab.com/${pkgname}-community/browser/common.git#tag=${_common_tag}"
         "git+https://gitlab.com/${pkgname}-community/settings.git#tag=${_settings_tag}")
 source_aarch64=("${pkgver}-${pkgrel}_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch")
-sha256sums=('db43d7d5796455051a5b847f6daa3423393803c9288c8b6d7f1186f5e2e0a90a'
+sha256sums=('3110f0b70fad1af3a306f752d561c4074238c1816698919fe8530c258290401c'
             '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
             'SKIP'
             'SKIP')
@@ -129,7 +129,7 @@ fi
 
   # Debian patch to enable global menubar
   # disabled for the default build, as it seems to cause issues in some configurations
-  # patch -Np1 -i ../{_patches_dir}/unity-menubar.patch
+  # patch -Np1 -i ${_patches_dir}/unity-menubar.patch
 
   # Disabling Pocket
   patch -Np1 -i ${_patches_dir}/sed-patches/disable-pocket.patch
@@ -153,6 +153,13 @@ fi
   patch -Np1 -i ${_patches_dir}/context-menu.patch
   patch -Np1 -i ${_patches_dir}/browser-confvars.patch
   patch -Np1 -i ${_patches_dir}/urlbarprovider-interventions.patch
+
+
+  # allow overriding the color scheme light/dark preference with RFP
+  patch -Np1 -i ${_patches_dir}/allow_dark_preference_with_rfp.patch
+
+  # fix an URL in 'about' dialog
+  patch -Np1 -i ${_patches_dir}/about-dialog.patch
 
   rm -f ${srcdir}/common/source_files/mozconfig
   cp -r ${srcdir}/common/source_files/* ./
