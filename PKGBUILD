@@ -1,7 +1,7 @@
 # Maintainer: Jonathon Fernyhough <jonathon+m2+dev>
 
 pkgname=lily
-pkgver=1.15
+pkgver=1.16
 pkgrel=1
 pkgdesc='An interpreted language with a focus on expressiveness and type safety'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(glibc)
 makedepends=('cmake>=3.0.0')
 source=($pkgname-$pkgver.tar.gz::https://gitlab.com/FascinatedBox/lily/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
-sha256sums=('9ff59e64cb168bd9c476278c1c26015235d1513565f6bc64fd0cb3fae471d13a')
+sha256sums=('42f0a63c7e4897d0cd46386c75681c0741688a2ab6cd5271bdb1067d3ab567a2')
 changelog=lily.changelog
 
 _update_changelog() {
