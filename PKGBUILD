@@ -3,7 +3,7 @@
 
 pkgbase=linux-pf-git
 pkgdesc="Linux pf-kernel (git version)"
-pkgver=5.13.rc3.r50.g3be5571764f1
+pkgver=5.13.rc6.r51.g34d4f037cf69
 _kernel_rel=5.13
 _branch=pf-${_kernel_rel}
 _product="${pkgbase%-git}"
@@ -23,7 +23,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '044dc5b5a73695040475cb5291cef657e6c04e0082f3e3d9a0b9eed2b985785f')
+            'eead3bcabfca90b9c9a06439e1f347d142f600dc142ed502aa62da2ce74aaae7')
 
 pkgver() {
   cd "${_srcname}"
