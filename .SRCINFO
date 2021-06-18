@@ -1,0 +1,12 @@
+pkgbase = emacs-pg
+	pkgdesc = pg.el is an Emacs Lisp interface for PostgreSQL
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://github.com/cbbrowne/pg.el
+	arch = any
+	license = GPL3
+	depends = emacs
+	source = emacs-pg::git+https://github.com/cbbrowne/pg.el
+	sha256sums = SKIP
+
+pkgname = emacs-pg
