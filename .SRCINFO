@@ -1,0 +1,16 @@
+pkgbase = entr-git
+	pkgdesc = Run arbitrary commands when files change.
+	pkgver = r503.4482030
+	pkgrel = 1
+	url = http://eradman.com/entrproject
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	provides = entr
+	conflicts = entr
+	source = git+https://github.com/eradman/entr.git
+	sha256sums = SKIP
+
+pkgname = entr-git
