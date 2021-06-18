@@ -12,4 +12,3 @@ pkgbase = emacs-f
 	sha256sums = 12aeec6c4e8b85fc9ab840365bce379d10257c383a1450d78f6fb1475f1b11da
 
 pkgname = emacs-f
-

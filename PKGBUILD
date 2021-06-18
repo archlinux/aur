@@ -1,6 +1,6 @@
 # Contributor: Alex Whitt <alex.joseph.whitt@gmail.com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
-
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: hamki <hamki.do2000@gmail.com>
 _pkgsrcname=f.el
 _pkgmaintainer=rejeep
 pkgver=0.20.0
