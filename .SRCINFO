@@ -1,6 +1,6 @@
 pkgbase = lfutils-git
 	pkgdesc = Scripts and utilities for lf file manager.
-	pkgver = r16.dd324a1
+	pkgver = r17.ad64e62
 	pkgrel = 1
 	url = https://github.com/soystemd/lfutils
 	arch = x86_64
