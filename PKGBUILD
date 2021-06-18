@@ -4,7 +4,7 @@
 # pkg: git
 
 pkgname=anbox-image-nocsd-gapps
-pkgver=r56.a0889ef0
+pkgver=r57.60ffa553
 pkgrel=1
 pkgdesc="Android image for running in Anbox, with no-csd patch, OpenGApps and Houdini"
 arch=('x86_64')
@@ -23,6 +23,7 @@ _gapps_list=(
 
 _anbox_rel="$(curl --config /dev/null -o /dev/null -Ls https://github.com/thdaemon/anbox/releases/latest -w '%{url_effective}\n'|xargs basename)"
 _gapps_rel="$(curl -s -L https://api.opengapps.org/list | sed -r 's/.*-x86_64-7.1-pico-([0-9]+).zip'\"'.*/\1/')"
+_gapps_md5="$(curl -s "https://downloads.sourceforge.net/project/opengapps/x86_64/$_gapps_rel/open_gapps-x86_64-7.1-pico-$_gapps_rel.zip.md5"|sed -E 's/^([[:alnum:]]+)\s.*/\1/g')"
 source=(
   "android_amd64.img::https://github.com/thdaemon/anbox/releases/download/$_anbox_rel/android.img"
   "houdini_y.sfs::https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_y.sfs"
@@ -41,7 +42,7 @@ md5sums=('6c31bf493856f982da3d7d78b6e23b85'
          '2c96f31ead428ee2d1fbd2a65dd6962d'
          '9f0dd33e444d816ab62fe8e8514a0c0e'
          '0a59e1a43891f21a09fe06f18f0f5feb'
-         'd68e325e0d9d6a7bb10818d2115bc663')
+         '74d59851db9f30887d21a19ff926523d')
 
 pkgver () {
   local _pkgver _sha __sha
