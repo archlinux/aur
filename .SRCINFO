@@ -1,0 +1,15 @@
+pkgbase = emacs-libegit2-git
+	pkgdesc = A set of keybindings for evil-mode
+	pkgver = r462.2e19b7c
+	pkgrel = 1
+	url = https://github.com/magit/libegit2
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	depends = emacs
+	provides = emacs-libegit2
+	conflicts = emacs-libegit2
+	source = git+https://github.com/magit/libegit2.git
+	sha256sums = SKIP
+
+pkgname = emacs-libegit2-git
