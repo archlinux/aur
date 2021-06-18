@@ -1,0 +1,12 @@
+pkgbase = emacs-yasnippet-snippets
+	pkgdesc = This repository contains the official collection of snippets for yasnippet.
+	pkgver = 0.24
+	pkgrel = 1
+	url = https://github.com/AndreaCrotti/yasnippet-snippets
+	arch = any
+	license = GPL3
+	depends = emacs
+	source = https://github.com/AndreaCrotti/yasnippet-snippets/archive/refs/tags/0.24.tar.gz
+	sha256sums = c971fd201179c6e089f11abedddd03b689266524ce5ecd1dfc9a092478c46319
+
+pkgname = emacs-yasnippet-snippets
