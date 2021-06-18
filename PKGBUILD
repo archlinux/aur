@@ -47,7 +47,8 @@ package() {
   DESTDIR="$pkgdir" ninja -C build install
 
   # actual binary is not installed by default
-  install -m755 "$srcdir/openmw/build/openmw_vr" "$pkgdir"/usr/bin/openmw_vr
+  install -m755 "$srcdir"/openmw/build/openmw_vr "$pkgdir"/usr/bin/openmw_vr
+  install "$srcdir"/openmw/build/settings-overrides-vr.cfg "$pkgdir"/etc/openmw/settings-overrides-vr.cfg
 
   # install target shouldn't install openxr loader
   rm -rf "$pkgdir"/usr/include/openxr
