@@ -17,7 +17,7 @@ provides=($pkgname)
 conflicts=($pkgname)
 
 build() {
-    cd "${pkgname}-${pkgver}"
+    cd "$pkgname-$pkgver"
 
     export CGO_LDFLAGS="${LDFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
@@ -29,7 +29,7 @@ build() {
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
-    install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
+    cd "$pkgname-$pkgver"
+    install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
