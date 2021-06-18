@@ -1,8 +1,9 @@
 pkgbase = cloudflare-warp-bin
 	pkgdesc = Cloudflare Warp Client
-	pkgver = 2021.5.0
-	pkgrel = 2
+	pkgver = 2021.6.1
+	pkgrel = 1
 	url = https://developers.cloudflare.com/warp-client/
+	install = cloudflare-warp-bin.install
 	arch = x86_64
 	license = custom
 	depends = glibc
@@ -13,4 +14,3 @@ pkgbase = cloudflare-warp-bin
 	sha256sums = 7a522a342b7a908e4d7a258e1e04e03291d0856a84f9f6630306b0935bcf85e6
 
 pkgname = cloudflare-warp-bin
-
