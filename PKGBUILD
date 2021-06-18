@@ -12,9 +12,9 @@ depends=("glibc")
 arch=('x86_64')
 provides=('warp-cli' 'warp-diag' 'warp-svc')
 
-source=("http://pkg.cloudflare.com/pool/buster/main/c/cloudflare-warp/cloudflare-warp_2021.5.0-1_amd64.deb")
+source=("http://pkg.cloudflareclient.com/pool/main/cloudflare_warp_2021_6_1_1_amd64_09b03be4bb_amd64.deb")
 
-sha256sums=('7a522a342b7a908e4d7a258e1e04e03291d0856a84f9f6630306b0935bcf85e6')
+sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 install=$pkgname.install
 
 package() {
