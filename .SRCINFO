@@ -26,6 +26,8 @@ pkgbase = vim-youcompleteme-git
 	optdepends = jdtls: Java semantic completion
 	optdepends = abseil-cpp: if setting _use_system_abseil ON
 	source = git+https://github.com/ycm-core/YouCompleteMe.git
+	source = git+https://github.com/ycm-core/ycmd.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = vim-youcompleteme-git
