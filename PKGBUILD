@@ -1,4 +1,5 @@
-# Maintainer: LinRs <LinRs AT users.noreply.github.com>
+# Maintainer: hamki <hamki.do2000@gmail.com>
+# Contributor: LinRs <LinRs AT users.noreply.github.com>
 # Contributor: sballert <sballert@posteo.de>
 
 _gituser="jwiegley"
