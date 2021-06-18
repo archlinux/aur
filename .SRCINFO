@@ -6,6 +6,8 @@ pkgbase = hxl-git
 	arch = x86_64
 	license = BSD
 	makedepends = git
+	provides = hxl
+	conflicts = hxl
 	source = hxl-git::git+https://github.com/sjmulder/hxl
 	sha256sums = SKIP
 

@@ -8,6 +8,8 @@ arch=('x86_64')
 url="https://github.com/sjmulder/hxl"
 license=('BSD')
 makedepends=('git')
+provides=('hxl')
+conflicts=('hxl')
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
