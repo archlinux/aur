@@ -1,6 +1,6 @@
 pkgbase = mhwd-nvidia
 	pkgdesc = mhwd-nvidia pci id
-	pkgver = 465.27
+	pkgver = 465.31
 	pkgrel = 1
 	url = https://garudalinux.org/
 	arch = any
@@ -12,4 +12,3 @@ pkgbase = mhwd-nvidia
 	sha256sums = 738749f5ada14afac3085d10fac351c55d423674228eea1dae8e41b935d1497c
 
 pkgname = mhwd-nvidia
-
