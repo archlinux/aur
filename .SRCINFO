@@ -1,12 +1,12 @@
 pkgbase = secondfaqtor
 	pkgdesc = Two-Factor Authenticator
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://realityripple.com/Software/Applications/SecondFactor/For-Linux/
 	changelog = ChangeLog
 	arch = any
 	license = Unlicense
-	makedepends = gambas3-devel
+	makedepends = gambas3-dev-tools
 	depends = gambas3-gb-image>=3.15
 	depends = gambas3-gb-image<=3.99.0
 	depends = gambas3-gb-qt5>=3.15
