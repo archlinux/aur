@@ -14,7 +14,7 @@ pkgbase = vscode-transparent-insiders
 	makedepends = python2
 	makedepends = yarn
 	makedepends = nodejs-lts-fermium
-	depends = electron
+	depends = electron12
 	depends = libsecret
 	depends = libx11
 	depends = libxkbfile
@@ -24,7 +24,7 @@ pkgbase = vscode-transparent-insiders
 	optdepends = x11-ssh-askpass: SSH authentication
 	provides = code
 	conflicts = code
-	source = code::git+https://github.com/microsoft/vscode.git#commit=a19565da7dfc739fa26e36aae96113e19fe3806f
+	source = code::git+https://github.com/microsoft/vscode.git#commit=54d33cf14cf6c0e86880b5b74a5a3628de42bce9
 	source = code.js
 	source = code.sh
 	source = transparency.diff
@@ -38,4 +38,3 @@ pkgbase = vscode-transparent-insiders
 	sha512sums = a9f2f3e07f8ffe9def036cb2aa6d587444ea1cf9d9e1b29637b3d86ccf98e3ee2c50d219405155449c06654f753a296a820b11bdab48928baf25043217f149a0
 
 pkgname = vscode-transparent-insiders
-

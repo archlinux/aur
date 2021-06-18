@@ -6,8 +6,8 @@
 pkgname=vscode-transparent-insiders
 pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - with transparency enabled - based on insiders commit'
 _pkgname=code
-_electron=electron
-_commit=a19565da7dfc739fa26e36aae96113e19fe3806f
+_electron=electron12
+_commit=54d33cf14cf6c0e86880b5b74a5a3628de42bce9
 pkgver=1.57.0_insiders
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
