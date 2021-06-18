@@ -17,7 +17,7 @@ optdepends=(
     'ueberzug: thumbnails image preview'
 )
 source=("https://github.com/thatonecalculator/ytfzfim/archive/v${pkgver}.tar.gz")
-sha256sums=('5296143fe77be3cc89d06660c1563b51b0a328ce27978ab93ea7f0c38d1e946f')
+sha256sums=('SKIP')
 
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
