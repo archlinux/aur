@@ -1,6 +1,6 @@
 pkgbase = kali-archive-keyring
 	pkgdesc = GnuPG archive keys of the Kali archive
-	pkgver = 07d.6d757
+	pkgver = 2020.2
 	pkgrel = 1
 	url = https://pkg.kali.org/pkg/kali-archive-keyring
 	arch = any
@@ -10,4 +10,3 @@ pkgbase = kali-archive-keyring
 	sha256sums = c36a241cffc6f3999af05cedb8bd6f556f80abc492b75466cc6e9f7f203963b0
 
 pkgname = kali-archive-keyring
-

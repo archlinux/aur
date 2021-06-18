@@ -1,7 +1,7 @@
 # Maintainer: Kedap <kedap.dev@protonmail.com>
 pkgname=kali-archive-keyring
 _pkgname=kali-archive-keyring-kali-master
-pkgver=07d.6d757
+pkgver=2020.2
 pkgrel=1
 pkgdesc="GnuPG archive keys of the Kali archive"
 arch=('any')
