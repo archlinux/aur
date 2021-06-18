@@ -14,7 +14,7 @@ makedepends=()
 optdepends=('ranger: for editing build files')
 install=yeet.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gamemaker1/yeet/archive/v$pkgver.tar.gz")
-sha256sums=('94c18536f34a4204e11549e33b613fb2828173498ac723e78dcd3a4df70e4bac')
+sha256sums=('d88230f773575b7b6559cac8732c85f240e13a9a3192e332742d1853314969ad')
 
 package() {
 	install -Dm775 "$srcdir/$pkgname-$pkgver/source/yeet" "$pkgdir/usr/bin/yeet"

@@ -11,6 +11,6 @@ pkgbase = yeet
 	depends = pacman
 	optdepends = ranger: for editing build files
 	source = yeet-0.4.2.tar.gz::https://github.com/gamemaker1/yeet/archive/v0.4.2.tar.gz
-	sha256sums = 94c18536f34a4204e11549e33b613fb2828173498ac723e78dcd3a4df70e4bac
+	sha256sums = d88230f773575b7b6559cac8732c85f240e13a9a3192e332742d1853314969ad
 
 pkgname = yeet
