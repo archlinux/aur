@@ -3,7 +3,7 @@
 _srcname=koka
 
 pkgname=koka-bin
-pkgver=2.1.6
+pkgver=2.1.8
 pkgrel=1
 pkgdesc="Koka: a function-oriented language with effect inference"
 arch=('x86_64')
@@ -18,14 +18,14 @@ optdepends=(
 provides=('koka')
 conflicts=('koka')
 source=(
-  "https://github.com/koka-lang/koka/releases/download/v${pkgver}/koka-v${pkgver}-linux-amd64.tar.gz"
+  "https://github.com/koka-lang/koka/releases/download/v${pkgver}/koka-v${pkgver}-linux-x64.tar.gz"
 )
-noextract=("koka-v${pkgver}-linux-amd64.tar.gz")
+noextract=("koka-v${pkgver}-linux-x64.tar.gz")
 sha256sums=(
-  '59b7e03be9c74d16931bbb660248c20316a503373e44b7fb5c98d3f233d59360'
+  'bb36187ecd1619c4560373a3b245e489ff0a4586e56c3faf2a6840dce4725fe0'
 )
 
 package() {
   install -d "${pkgdir}/usr"
-  tar -xzf koka-v${pkgver}-linux-amd64.tar.gz -C "${pkgdir}/usr"
+  tar -xzf koka-v${pkgver}-linux-x64.tar.gz -C "${pkgdir}/usr"
 }
