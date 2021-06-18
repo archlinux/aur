@@ -1,1 +1,2 @@
-java -jar /usr/share/scala/pacmanlogger/pacmanlogger.jar
+#!/bin/sh
+java -jar /usr/share/scala/pacmanlogger/pacmanlogger.jar "$@"

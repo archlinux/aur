@@ -1,10 +1,11 @@
 pkgbase = pacmanlogger-git
 	pkgdesc = A scala application that makes reading pacman's logs easier
-	pkgver = 0.1.2.r0.g1cfa221
+	pkgver = 0.1.5.r0.g5106c75
 	pkgrel = 1
 	url = https://github.com/carlocastoldi/PacmanLogger
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = sbt
 	makedepends = java-environment>=8
 	depends = java-runtime>=8
@@ -12,8 +13,7 @@ pkgbase = pacmanlogger-git
 	conflicts = pacmanlogger
 	source = pacmanlogger::git+https://github.com/carlocastoldi/PacmanLogger
 	source = pacmanlogger.sh
-	md5sums = SKIP
-	md5sums = abe1b34cb77dfd99a1bf726afb689e96
+	sha256sums = SKIP
+	sha256sums = cb28e3ca670cdfd5966b21f33c57518c8c5e9751bcbe8c0051f5d720c26ae984
 
 pkgname = pacmanlogger-git
-
