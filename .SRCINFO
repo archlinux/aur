@@ -1,6 +1,6 @@
 pkgbase = loop-bin
 	pkgdesc = Lightning Loop is a non-custodial service offered by Lightning Labs that makes it easy to move bitcoin into and out of the Lightning Network.
-	pkgver = 0.14.0_beta
+	pkgver = 0.14.1_beta
 	pkgrel = 3
 	url = https://github.com/lightninglabs/loop
 	arch = any
@@ -8,14 +8,15 @@ pkgbase = loop-bin
 	depends = lnd
 	provides = loop
 	provides = loopd
-	source = loop-linux-amd64-v0.14.0-beta.tar.gz::https://github.com/lightninglabs/loop/releases/download/v0.14.0-beta/loop-linux-amd64-v0.14.0-beta.tar.gz
-	source = manifest-v0.14.0-beta.txt.sig::https://github.com/lightninglabs/loop/releases/download/v0.14.0-beta/manifest-v0.14.0-beta.txt.sig
-	source = manifest-v0.14.0-beta.txt::https://github.com/lightninglabs/loop/releases/download/v0.14.0-beta/manifest-v0.14.0-beta.txt
+	source = loop-linux-amd64-v0.14.1-beta.tar.gz::https://github.com/lightninglabs/loop/releases/download/v0.14.1-beta/loop-linux-amd64-v0.14.1-beta.tar.gz
+	source = manifest-v0.14.1-beta.txt.sig::https://github.com/lightninglabs/loop/releases/download/v0.14.1-beta/manifest-v0.14.1-beta.txt.sig
+	source = manifest-v0.14.1-beta.txt::https://github.com/lightninglabs/loop/releases/download/v0.14.1-beta/manifest-v0.14.1-beta.txt
 	validpgpkeys = F4FC70F07310028424EFC20A8E4256593F177720
 	validpgpkeys = E4D85299674B2D31FAA1892E372CBD7633C61696
 	validpgpkeys = DE23E73BFA8A0AD5587D2FCDE80D2F3F311FD87E
-	sha256sums = c05803d8c2b78b1719f69191d3b4bf294f1b97045734f97236cce5a652e3fefd
+	sha256sums = 2dea1c91d2b515822a9523576aa625a63f31cad51a1cc9241d59cb1b92835046
 	sha256sums = SKIP
-	sha256sums = d6b0167a251c22e3a29cf22b08769bb5ac0183a8008a6f4d10a6f00da3f7f9bf
+	sha256sums = 35dd3974b316eddb6349333a53055ea421c4cfce0a2dccf7a22de3782bb516bc
 
 pkgname = loop-bin
+
