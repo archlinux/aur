@@ -3,7 +3,7 @@
 # Contributor: Nils Czernia <nils at czserver dot de>
 
 pkgname=grav
-pkgver=1.7.16
+pkgver=1.7.17
 pkgrel=1
 pkgdesc='Modern, Crazy Fast, Ridiculously Easy and Amazingly Powerful Flat-File CMS'
 arch=('any')
@@ -17,8 +17,7 @@ optdepends=('php-apcu: Userland caching module for PHP'
             'apache: High performance Unix-based HTTP server' 
             'nginx: Lightweight HTTP server and IMAP/POP3 proxy server'
             'uwsgi: Fast and highly tuneable application server'
-            'uwsgi-plugin-php: uwsgi plugin for PHP'
-            'xdebug: PHP debugging extension' )
+            'uwsgi-plugin-php: uwsgi plugin for PHP')
 install=grav.install
 source=("${pkgname}-${pkgver}.zip::https://github.com/getgrav/grav/releases/download/${pkgver}/${pkgname}-v${pkgver}.zip"
         "grav.patch"
@@ -29,7 +28,7 @@ source=("${pkgname}-${pkgver}.zip::https://github.com/getgrav/grav/releases/down
         "grav.php-fpm.ini"
         "grav.php-fpm.d.grav.conf"
         "grav.php-fpm.service.d.override.conf")
-sha256sums=('0371a02398f4431b3b044f348df5fc79ff0a3baecdd73c24586c8dbb7f79a2f6'
+sha256sums=('d21bffc8443092ab57e9305c3889931a03f1e7f4f2c210ec771fa3d9ba101ef6'
             'c93008057d3c3f224ecebc93b5b835c5b46c4b16f0caf821c75fcac4b7c20d4f'
             '125e08820ed477582d7ae716dac6495bca4eac485fa4d4263b11f2505fc355db'
             'ced168231a98be4816afc0a1928b54218c4ce4081be7b49acd704e2a9325f9db'
