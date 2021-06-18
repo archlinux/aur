@@ -3,7 +3,7 @@
 
 pkgname=xfce-classiclooks
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Xfce Evolution theme attempts to rid the Xfce desktop of visual distractions by providing a more consistent look (buttons, scrollbars, menus, etc) across older and newer applications."
 arch=('any')
 url="https://sourceforge.net/projects/classiclooks/"
