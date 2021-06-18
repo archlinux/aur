@@ -8,8 +8,8 @@ pkgdesc="A scala application that makes reading pacman's logs easier"
 arch=('any')
 url="https://github.com/carlocastoldi/PacmanLogger"
 license=('MIT')
-depends=('java-runtime>=8')
-makedepends=('git' 'sbt' 'java-environment>=8')
+depends=('java-runtime')
+makedepends=('git' 'sbt' 'java-environment')
 provides=('pacmanlogger')
 conflicts=('pacmanlogger')
 source=("$_pkgname::git+https://github.com/carlocastoldi/PacmanLogger" "pacmanlogger.sh")
