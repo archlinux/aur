@@ -1,7 +1,7 @@
 pkgbase = audacity-3.0.2
 	pkgdesc = A program that lets you manipulate digital audio waveforms
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.audacityteam.org/
 	arch = i686
 	arch = x86_64
@@ -37,6 +37,8 @@ pkgbase = audacity-3.0.2
 	depends = libsoxr
 	depends = soundtouch
 	optdepends = ffmpeg: additional import/export capabilities
+	provides = audacity
+	conflicts = audacity
 	source = git+https://github.com/audacity/audacity.git#tag=Audacity-3.0.2
 	sha256sums = SKIP
 

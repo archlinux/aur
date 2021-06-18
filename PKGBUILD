@@ -4,7 +4,7 @@
 
 pkgname=audacity-3.0.2
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A program that lets you manipulate digital audio waveforms"
 arch=(i686 x86_64)
 url="https://www.audacityteam.org/"
@@ -16,6 +16,8 @@ makedepends=(git cmake clang sdl2 libsoup libnotify gstreamer gst-plugins-bad-li
              ffmpeg jack nasm)
 # can't find system lame portmidi
 optdepends=('ffmpeg: additional import/export capabilities')
+provides=(audacity)
+conflicts=(audacity)
 source=("git+https://github.com/audacity/audacity.git#tag=Audacity-${pkgver}")
 sha256sums=('SKIP')
 
