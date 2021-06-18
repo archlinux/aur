@@ -2,25 +2,27 @@
 # thanks to celogeek, sseneca, dr460nf1r3, dr460nf1r3 and AverytheFurry for pointing out multiple things
 
 pkgname=fluffychat
-pkgver=0.31.3
-_flutterversion=2.2.1-stable
+pkgver=0.32.0
+_flutterversion=2.2.2-stable
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('x86_64')
 url="https://fluffychat.im/"
 license=('AGPL3')
-depends=('libolm')
+depends=('libolm' 'xdg-user-dirs')
 makedepends=('clang'
              'ninja'
              'cmake'
              'git'
              'unzip'
              'gtk3')
+provides=("$pkgname")
+conflicts=("$pkgname")
 source=(
-    "flutter-${_flutterversion}.tar.xz::https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_${_flutterversion}.tar.xz"
+    "flutter-${_flutterversion}.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${_flutterversion}.tar.xz"
     "fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v${pkgver}/fluffychat-v${pkgver}.tar.gz")
-sha256sums=('e01951cc136460c1c622290d1c139eb573010202ffcab7e203e16bc5c4e43701'
-            'dd1f055ba005949cfd7be5d91cdd49c05df159d43f8e24c344c0f644d5c439be')
+sha256sums=('da1ebc597563b5d3e46d8fd5bb505cae645443c1b653d7b4fbed7c083f4d498a'
+            'd1ee79e23723a0b043866148fb65a18e161fd4147054c90530093ee95ae8d085')
 
 prepare() {
   export PATH="${srcdir}/flutter/bin:$PATH"
