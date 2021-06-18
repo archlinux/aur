@@ -9,6 +9,8 @@ arch=('x86_64')
 url='https://github.com/axllent/wireguard-vanity-keygen'
 license=('custom')
 depends=('glibc')
+provides=('wireguard-vanity-keygen')
+conflicts=('wireguard-vanity-keygen')
 source=("https://raw.githubusercontent.com/axllent/wireguard-vanity-keygen/${pkgver}/LICENSE"
         "https://github.com/axllent/wireguard-vanity-keygen/releases/download/${pkgver}/${_shortname}_${pkgver}_linux_amd64.bz2")
 sha256sums=('2cb653ca639b18430adce010d0e294db83c120c83fa32d13ea1abb17cca98c32'
