@@ -1,6 +1,6 @@
 pkgbase = shiromino
 	pkgdesc = A fast-paced puzzle game with roots in the arcade
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/shiromino/shiromino
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = shiromino
 	depends = sqlite
 	conflicts = shiromino-git
 	backup = etc/shiromino.ini
-	source = shiromino-0.1.1.tar.gz::https://github.com/shiromino/shiromino/archive/0.1.1.tar.gz
-	sha256sums = c2867c118e3106c724496efa6b62a2207ce62108f9d4e1b8cf861609641ea985
+	source = shiromino-0.2.0.tar.gz::https://github.com/shiromino/shiromino/archive/0.2.0.tar.gz
+	sha256sums = e610fe2fe388788f3d4e8517602c7a7da00dbd4a726501776c7fdaa328fc125f
 
 pkgname = shiromino
