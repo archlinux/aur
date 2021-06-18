@@ -80,7 +80,6 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}"/YouCompleteMe || exit
-  # TODO refer these submodules into the source array
   git submodule init third_party/ycmd
   git config submodule.ycmd.url "$srcdir"/ycmd
   git submodule update third_party/ycmd
@@ -173,5 +172,6 @@ package() {
 
   find "${pkgdir}" \( -name .git -or -name 'test*' -or -name 'run_tests.py' \) -exec rm -fr {} +
 
+  python -m compileall -d /usr/share/vim/vimfiles "${pkgdir}/usr/share/vim/vimfiles"
   python -O -m compileall -d /usr/share/vim/vimfiles "${pkgdir}/usr/share/vim/vimfiles"
 }
