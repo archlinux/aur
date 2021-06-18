@@ -1,0 +1,13 @@
+diff --unified --recursive --text mesa.org/src/gallium/auxiliary/gallivm/lp_bld_misc.cpp mesa.new/src/gallium/auxiliary/gallivm/lp_bld_misc.cpp
+--- mesa.org/src/gallium/auxiliary/gallivm/lp_bld_misc.cpp	2021-06-18 12:47:17.096083970 +0200
++++ mesa.new/src/gallium/auxiliary/gallivm/lp_bld_misc.cpp	2021-06-18 12:51:39.656887107 +0200
+@@ -351,7 +351,8 @@
+     */
+    TargetOptions options;
+ #if defined(PIPE_ARCH_X86)
+-   options.StackAlignmentOverride = 4;
++   //  options.StackAlignmentOverride = 4; 
++   // fails with llvm 13 , see https://gitlab.freedesktop.org/mesa/mesa/-/issues/4906
+ #endif
+ 
+    builder.setEngineKind(EngineKind::JIT)
