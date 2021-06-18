@@ -1,5 +1,5 @@
 # Maintainer: Jack Maguire <jackmaguire1234 at gmail dot com>
-pkgname=conway-gol
+pkgname=conway-gol-git
 pkgver=0.5.0.r59.cdd3494
 pkgrel=1
 pkgdesc="Personal implementation of Conway's Game Of Life. See the README for more info."
