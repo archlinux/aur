@@ -1,6 +1,6 @@
 # Contributor: Swift Geek <swiftgeek «at» gmail.com>
 pkgname=perl-extutils-makemaker-aur
-pkgver=7.58
+pkgver=7.62
 pkgrel=1
 pkgdesc="ExtUtils::MakeMaker - Create a module Makefile"
 arch=('any')
@@ -15,7 +15,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("http://www.cpan.org/authors/id/B/BI/BINGOS/ExtUtils-MakeMaker-${pkgver}.tar.gz")
-md5sums=('3b12c2ea318cda1f19d8da02c72cc94d')
+md5sums=('a42e4eb0c1def8ac045a700809fd3040')
 _src_dir='$srcdir/ExtUtils-MakeMaker-$pkgver'
 
 build() {
