@@ -5,10 +5,13 @@
 # Contributor: Alexander Hunziker <alex.hunziker@gmail.com>
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
 
+# Configuration
+_fragment="${FRAGMENT:-#branch=master}"
+
 pkgname=gimp-develop-git
 _pkgname=${pkgname%-develop-git}
 epoch=1
-pkgver=2.99.5.r271.b1e16dbf67
+pkgver=2.99.5.r184.1e76829989
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program (non-conflicting git version)"
 arch=('i686' 'x86_64')
@@ -58,7 +61,7 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
             'gjs: JavaScript scripting support'
             'luajit: LUA scripting support'
             )
-source=('git+https://gitlab.gnome.org/GNOME/gimp.git'
+source=("git+https://gitlab.gnome.org/GNOME/gimp.git${_fragment}"
         'linux.gpl')
 sha512sums=('SKIP'
             '6f33d57f242fa8ce04b65e06a712bd54677306a45b22cb853fbe348089cd4673bd4ed91073074fe067166fe8951c370f8bbbc386783e3ed5170d52e9062666fe')
