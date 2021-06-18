@@ -52,11 +52,11 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.12
-_minor=11
+_minor=12
 _srcname=linux-${_major}
 pkgbase=linux-cacule
 pkgver=${_major}.${_minor}
-pkgrel=3
+pkgrel=1
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -518,7 +518,7 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
-            '2f9bfb09efb00633ccf425b72c573329d62b6d140403682d1aa87db06de88f62'
+            '742e13b424c618689734c3c41a14c5cda5a09d8546ed5b1433153d4619524dfe'
             'b4e1462213c93a485837a474358d9b85cfc51f058cef7d1133249fcb5fc8251b'
             'dd89db0483301a62cef23ba797fee1fb9804f570f952df87fe418ee22e353227'
             'a90ec03375bf97c06bf2ca3f1fd0224deee8408077f71447326b2796b53652a1'
