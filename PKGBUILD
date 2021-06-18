@@ -2,7 +2,7 @@
 
 pkgname=fcp-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A significantly faster alternative to the classic Unix cp(1) command."
 url="https://github.com/svetlitski/fcp/"
 provides=('fcp')
