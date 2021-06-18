@@ -1,8 +1,8 @@
 # Maintainer: Morganamilo <morganamilo@gmail.com>
 pkgname=pacdiffviewer
 pkgver=0.3.0
-pkgrel=1
-pkgdesc="Pacfiles manager."
+pkgrel=2
+pkgdesc="Pacfiles manager"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/Morganamilo/pacdiffviewer"
 license=('GPL3')
@@ -28,9 +28,9 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
 
-  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
 
-  install -Dm644 target/$pkgname.bash "$pkgdir/usr/share/bash-completion/completions/$pkgname.bash"
-  install -Dm644 target/$pkgname.fish "$pkgdir/usr/share/fish/completions/$pkgname.fish"
-  install -Dm644 target/_$pkgname "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+  install -Dm644 target/$pkgname.bash -t "$pkgdir/usr/share/bash-completion/completions"
+  install -Dm644 target/$pkgname.fish -t "$pkgdir/usr/share/fish/completions"
+  install -Dm644 target/_$pkgname -t "$pkgdir/usr/share/zsh/site-functions"
 }
