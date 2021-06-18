@@ -1,15 +1,15 @@
 pkgbase = qmasterpassword
-	pkgdesc = stateless Master Password Manager
+	pkgdesc = Stateless Master Password Manager
 	pkgver = 1.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bkueng/qMasterPassword
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	depends = qt5-base
 	depends = libscrypt
 	depends = libxtst
-	source = https://github.com/bkueng/qMasterPassword/archive/v1.2.2.tar.gz
-	md5sums = 3ff8f256a81c30518bce959ea88f3c3d
+	depends = hicolor-icon-theme
+	source = -1.2.2::https://github.com/bkueng/qMasterPassword/archive/v1.2.2.tar.gz
+	sha256sums = daeb8055a689c770eae197356e43adf43b2e3de386e927522c90b55bdc01642e
 
 pkgname = qmasterpassword
-
