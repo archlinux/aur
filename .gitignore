@@ -1,0 +1,8 @@
+*.tar.gz
+*.tar.xz
+wireguard*
+LICENSE
+pkg
+deb
+src
+*.orig
