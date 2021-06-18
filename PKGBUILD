@@ -1,7 +1,7 @@
 # Maintainer: Arisa Snowbell (goddess@chizuru.space)
 pkgname=firefox-session-manager
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 makedepends=('cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Manager for your Firefox sessions"
