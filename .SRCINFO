@@ -1,6 +1,6 @@
 pkgbase = nextcloud-client-git
 	pkgdesc = Nextloud client for linux
-	pkgver = 3.1.0.rc2.70dbbbeaa
+	pkgver = 3.2.2.959e450d6
 	pkgrel = 1
 	url = https://nextcloud.com/
 	arch = i686
@@ -8,7 +8,6 @@ pkgbase = nextcloud-client-git
 	license = GPL2
 	makedepends = doxygen
 	makedepends = extra-cmake-modules
-	makedepends = kio
 	makedepends = python-sphinx
 	makedepends = qt5-tools
 	makedepends = git
@@ -23,6 +22,7 @@ pkgbase = nextcloud-client-git
 	depends = libcloudproviders
 	depends = qt5-graphicaleffects
 	depends = qt5-quickcontrols2
+	depends = qt5-websockets
 	optdepends = kio: integration with Dolphin
 	optdepends = nemo-python: integration with Nemo
 	optdepends = python-nautilus: integration with Nautilus
@@ -41,4 +41,3 @@ pkgbase = nextcloud-client-git
 	sha256sums = SKIP
 
 pkgname = nextcloud-client-git
-
