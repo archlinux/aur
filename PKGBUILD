@@ -6,7 +6,7 @@
 
 pkgname=palemoon-gtk3-bin
 pkgver=29.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('x86_64')
 url="https://linux.palemoon.org/"
