@@ -1,14 +1,14 @@
 pkgbase = godbledger-bin
 	pkgdesc = Accounting Software with GRPC endpoints and SQL Backends
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://www.godbledger.com
 	arch = x86_64
 	license = GPL3
 	depends = glibc
 	provides = godbledger
-	source = godbledger-bin-0.5.0.tar.gz::https://github.com/darcys22/godbledger/releases/download/v0.5.0/godbledger-linux-x64-v0.5.0.tar.gz
-	sha256sums = bf5730563abaec6fbc17602f0a1169f64c1735c4210c49ff775a20c88097f8bd
+	source = godbledger-bin-0.6.0.tar.gz::https://github.com/darcys22/godbledger/releases/download/v0.5.0/linux-amd64-v0.6.0.tar.gz
+	sha256sums = bae9912c2a530607d6658717cc22aec59e0caa69166fa4df57955e8361f7d69c
 
 pkgname = godbledger-bin
 
