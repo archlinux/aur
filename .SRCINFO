@@ -1,0 +1,12 @@
+pkgbase = emacs-emacsql
+	pkgdesc = EmacSQL is a high-level Emacs Lisp front-end for SQLite (primarily), PostgreSQL, MySQL, and potentially other SQL databases.
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/skeeto/emacsql
+	arch = any
+	license = GPL3
+	depends = emacs
+	source = https://github.com/skeeto/emacsql/archive/refs/tags/3.0.0.tar.gz
+	sha256sums = 9d94be00518591c68cb0ed1de9dab885e35079f581fb0ae52af5af139a0f1088
+
+pkgname = emacs-emacsql
