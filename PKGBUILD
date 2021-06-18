@@ -2,7 +2,7 @@
 
 pkgname=librespot
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source client library for Spotify"
 arch=(x86_64 aarch64)
 url="https://github.com/librespot-org/librespot"
@@ -28,6 +28,8 @@ build() {
 
 package() {
 	cd "${pkgname}-${pkgver}"
-	cargo install --no-track --locked --all-features --root "$pkgdir/usr/" --path .
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cargo install --no-track --locked --all-features --root "${pkgdir}/usr/" --path .
+	install -Dm644 contrib/librespot.service ${pkgdir}/usr/lib/systemd/system/librespot.service
+	# install -Dm644 contrib/librespot.user.service ${pkgdir}/usr/lib/systemd/user/librespot.user.service
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
