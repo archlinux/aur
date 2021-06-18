@@ -1,12 +1,12 @@
-# Maintainer: Anna <morganamilo@gmail.com>
+# Maintainer: Morganamilo <morganamilo@gmail.com>
 pkgname=pacdiffviewer
 pkgver=0.3.0
 pkgrel=1
 pkgdesc="Pacfiles manager."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/Morganamilo/pacdiffviewer"
-license=('GPL')
-depends=('pacman')
+license=('GPL3')
+depends=('pacman' 'glibc')
 makedepends=('cargo')
 optdepends=("vim: view via 'vim -f'"
   "git: view via 'git diff'"
