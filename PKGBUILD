@@ -1,27 +1,29 @@
-# Maintainer: Anna <morganamilo@gmail.com>
+# Maintainer: Morganamilo <morganamilo@gmail.com>
 
-pkgnamebase=vk9-bin
 pkgname=(vk9-bin lib32-vk9-bin)
 pkgver=0.29.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Direct3D 9 compatibility layer using Vulkan'
 arch=('x86_64' 'i686')
 url='https://github.com/disks86/VK9'
-license=('custom:zlib/libpng')
+license=('custom:zlib')
+makedepends=('unzip')
 options=(!strip)
 source=(
 	"$pkgname-$pkgver-x86_64.zip::https://github.com/disks86/VK9/releases/download/$pkgver/$pkgver-bin-x86_64-Release.zip"
 	"$pkgname-$pkgver-i686.zip::https://github.com/disks86/VK9/releases/download/$pkgver/$pkgver-bin-x86-Release.zip"
 	setup_vk9-{x86_64,i686}.verb
-	setup_vk9{,-32})
+	setup_vk9{,-32}
+	"$pkgname-$pkgver-LICENSE"::https://raw.githubusercontent.com/disks86/VK9/$pkgver/LICENSE.md)
 noextract=("$pkgname-$pkgver-i686.zip")
 
-md5sums=('808d09e34c5aeae5971a2259423fc01a'
-         '2086a2ab04aa27e6101463723695e3b6'
-         '6600eabb853962260068f86d9a70aed1'
-         'aaf4cb6c959a9dfcab2ec8ec8f802909'
-         '42de90e0a79a9eef2410799044521f39'
-         'c4d6aafd335443ddc5d0cc5495511db3')
+sha256sums=('26370c1444268ad5ac8b36d35fc6a723e8274b5d8ca81793984fff1b2a65d21c'
+            'fbbfebf849c08665311ccf8ca52576d5076deef28097dca54e3209234deb97ab'
+            '13e6128f9ee92707e70503dbdd97c44644debbe7923aeb20cec21a54430c2284'
+            '67b2df7679df7f9a0f915612e2121f98fe7794cef37ee12dc3382be6d3a24303'
+            'd2eeac1250303bb2314e0fc7897247bd1c3902292e9ac24bc0275e8b4ed5f439'
+            '152d177355e42bbc0a1f8b9f4ad80710fc4afccc8d14f5327636a9710b6b51f9'
+            '43f8589a138d048786b5a8529a33fd98bc1d7319ea2aebb606ca3ab4510a7507')
 
 prepare() {
 	mkdir -p 32
@@ -42,6 +44,8 @@ package_vk9-bin() {
 
 	install -Dm755 "setup_vk9" "$pkgdir/usr/bin/setup_vk9"
 	install -Dm644 "setup_vk9-$CARCH.verb" "$pkgdir/usr/share/vk9/setup_vk9.verb"
+	install -Dm644 "setup_vk9-$CARCH.verb" "$pkgdir/usr/share/vk9/setup_vk9.verb"
+	install -Dm644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 
@@ -54,5 +58,5 @@ package_lib32-vk9-bin() {
 
 	install -Dm644 "32/d3d9.dll" "$pkgdir/usr/lib32/d3d9.dll"
 	install -Dm755 "setup_vk9-32" "$pkgdir/usr/bin/setup_vk9-32"
-	install -Dm644 "setup_vk9-i686.verb" "$pkgdir/usr/share/lib32-vk9/setup_vk9.verb"
+	install -Dm644 "$pkgbase-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

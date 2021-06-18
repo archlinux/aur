@@ -1,1 +1,2 @@
+#!/bin/sh
 winetricks --force /usr/share/lib32-vk9/setup_vk9.verb
