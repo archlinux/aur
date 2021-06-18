@@ -6,6 +6,7 @@ pkgbase = openexr2
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
+	makedepends = patchelf
 	makedepends = python
 	makedepends = boost
 	makedepends = freeglut
@@ -20,4 +21,3 @@ pkgbase = openexr2
 	sha256sums = 59e98361cb31456a9634378d0f653a2b9554b8900f233450f2396ff495ea76b3
 
 pkgname = openexr2
-

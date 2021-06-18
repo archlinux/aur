@@ -8,7 +8,7 @@ url="https://www.openexr.com/"
 arch=('x86_64')
 license=('BSD')
 depends=('zlib')
-makedepends=('cmake' 'python' 'boost' 'freeglut' 'python-numpy' 'chrpath')
+makedepends=('cmake' 'patchelf' 'python' 'boost' 'freeglut' 'python-numpy' 'chrpath')
 optdepends=('boost-libs: python support' 'python: python support') 
 conflicts=('openexr')
 provides=("openexr=${pkgver}")
@@ -23,9 +23,10 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
-  install -D -m644 ${pkgname%2}-$pkgver/LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname%2}"
+  install -D -m644 ${pkgname%2}-$pkgver/LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
 # Install missing python module
   _pythonpath=`python -c "from sysconfig import get_path; print(get_path('platlib'))"`
-  install -Dm755 build/python3*/imathnumpy.so -t "$pkgdir"/$_pythonpath 
+  install -Dm755 build/python3*/imathnumpy.so -t "$pkgdir"/$_pythonpath
+  patchelf --remove-rpath "${pkgdir}"/$_pythonpath/imathnumpy.so
 }
