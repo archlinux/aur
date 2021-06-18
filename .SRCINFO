@@ -1,0 +1,15 @@
+pkgbase = traitor-git
+	pkgdesc = Automatic Linux privesc via exploitation of low-hanging fruit
+	pkgver = 0.0.6.r2.g3e1a3e3
+	pkgrel = 1
+	url = https://github.com/liamg/traitor
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = traitor
+	conflicts = traitor
+	conflicts = traitor-bin
+	source = traitor::git+https://github.com/liamg/traitor.git
+	sha256sums = SKIP
+
+pkgname = traitor-git
