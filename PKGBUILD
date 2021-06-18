@@ -3,7 +3,7 @@
 
 pkgbase=docspell
 pkgname=('docspell-joex' 'docspell-restserver' 'docspell-tools')
-pkgver=0.23.0
+pkgver=0.24.0
 pkgrel=1
 changelog=.CHANGELOG
 arch=('any')
@@ -20,9 +20,9 @@ source=("$pkgbase-$pkgver-restserver.zip::https://github.com/eikek/$pkgbase/rele
         "${pkgname[1]}.service"
         "$pkgbase.sysusers"
         "$pkgbase.tmpfiles")
-sha512sums=('49c3676c38f064763817c2e56aae9605fcec1fbaa4e3cfa0c5b975c6f8f1b7004fe02db688bcff189bf7038e0e2b4d9e1be483a232a72d01142aeefe8a9495fd'
-            '329d1d7ef678121f0a6d46bddd8a84c614e8217334f2b516a659cfdb2baa5a40ca5f87906c262c7538f08ef3dae435ce93c5482f078ad6dc9e247ed226084475'
-            '8fa8664c8303112feac564e8d52512cd329d0558b3701afd4bd53063491ab9f212022ea86ff6b9ce322e5dc9460a0ff626e27d0cd8414364b80f75c1f11b2e58'
+sha512sums=('c07461c803ad79f71a54162000e53451ab7d8c9c58e80cf6003c5bd33fcc9974daf2b21a9f335d77377c6b0db0798fe2813097a8a1e08aa11e95b5503e858980'
+            'd29dbfbb5cd4959381b41b4eacb6a7b5fa3b30c6693f18fe8af827ada002783421edf5f28ae83db8b8d7dbd3f91908f28f5b56ab11050ca815b5a76c44e5be80'
+            'a7be6c0e8f4a930ffac84d6a3835c576096342e722ba8043739e364a897c6adbca868b332c50fbd61aa9a60948a352e7721822ddc754dca614ebf28946f2a467'
             '6ab8b24eb76f02b68e4fa4194b8771ef4f57c8375b34bf7bf914563528e347ea127beb5547e432910911d4fd15982cccdd1df50aeb76058129b909824ce49093'
             '0b8b08f47f1cb46a3bfc16df4b0574cebfb4a851562d134fcba3c4bf80fb011443499a549c3a04480456c048346d09f36fbcbc9d792810001c9c8b370d3926a8'
             'c1a7a9cb942413d0febb083554a15ded0ead5c7124624f0ec5fe43d3bc73a1637f89bc27f7b6e0bbdbd0d886799e5331beb5f45f476db70b69ae17c0d803f004'
