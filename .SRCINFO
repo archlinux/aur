@@ -1,0 +1,12 @@
+pkgbase = emacs-annalist
+	pkgdesc = annalist.el is a library that can be used to record information and later print that information using org-mode headings and tables.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/noctuid/annalist.el
+	arch = any
+	license = GPL3
+	depends = emacs
+	source = https://github.com/noctuid/annalist.el/archive/refs/tags/1.0.1.tar.gz
+	sha256sums = cd6d8fffaa717c5384b8be68d78eda96cc31f94405a368c1ad68ac683107084f
+
+pkgname = emacs-annalist
