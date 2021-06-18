@@ -1,6 +1,6 @@
 pkgbase = emacs-async-git
 	pkgdesc = Asynchronous processing in Emacs
-	pkgver = v1.9.3.r12.g81dc034
+	pkgver = v1.9.4.r33.g9a8cd0c
 	pkgrel = 1
 	url = https://github.com/jwiegley/emacs-async
 	arch = any
@@ -13,4 +13,3 @@ pkgbase = emacs-async-git
 	sha256sums = SKIP
 
 pkgname = emacs-async-git
-

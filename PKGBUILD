@@ -6,7 +6,7 @@ _gitrepo="emacs-async"
 
 pkgname=emacs-async-git
 _pkgname=async
-pkgver=v1.9.3.r12.g81dc034
+pkgver=v1.9.4.r33.g9a8cd0c
 pkgrel=1
 pkgdesc="Asynchronous processing in Emacs"
 url="https://github.com/${_gituser}/${_gitrepo}"
