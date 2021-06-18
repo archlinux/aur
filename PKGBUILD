@@ -1,9 +1,10 @@
 # Contributor: Feufochmar <feufochmar dot gd at gmail dot com>
 # Contributor: Joao Cordeiro <jlcordeiro at gmail dot com>
 # Contributor: SirClueless
+# Contributor: jiornojiovanni <gianni00palmieri at gmail dot com>
 
 pkgname=libtcod
-pkgver=1.15.1
+pkgver=1.18.1
 pkgrel=1
 pkgdesc="Roguelike graphics/utility library"
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ license=('BSD')
 depends=('sdl2')
 makedepends=('python')
 source=("https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('909fdab63c4467dd7e73ba2056d8f6e1')
+md5sums=('c6569b15af053f9d35d99de786adfeab')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver/buildsys/autotools"
