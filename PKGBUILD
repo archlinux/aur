@@ -1,7 +1,7 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=proaudio-meta
-pkgver=2021.04.05
+pkgver=2021.06.19
 pkgrel=1
 pkgdesc="Metapackage for most useful audio production software"
 arch=("x86_64")
@@ -9,7 +9,6 @@ install="${pkgname}.install"
 url="https://github.com/Bleuzen/archlinux-packages"
 depends=("jack2"
          "realtime-privileges"
-         "cadence"
          "carla"
          "non-mixer"
          "aj-snapshot"
@@ -39,4 +38,5 @@ depends=("jack2"
          "noise-repellent"
          "guitarix" "gxplugins.lv2")
 optdepends=("pulseaudio-jack"
-            "pipewire" "pipewire-alsa" "pipewire-jack" "pipewire-pulse")
+            "pipewire" "pipewire-alsa" "pipewire-jack" "pipewire-pulse"
+            "cadence")

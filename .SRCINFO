@@ -1,13 +1,12 @@
 pkgbase = proaudio-meta
 	pkgdesc = Metapackage for most useful audio production software
-	pkgver = 2021.04.05
+	pkgver = 2021.06.19
 	pkgrel = 1
 	url = https://github.com/Bleuzen/archlinux-packages
 	install = proaudio-meta.install
 	arch = x86_64
 	depends = jack2
 	depends = realtime-privileges
-	depends = cadence
 	depends = carla
 	depends = non-mixer
 	depends = aj-snapshot
@@ -45,6 +44,6 @@ pkgbase = proaudio-meta
 	optdepends = pipewire-alsa
 	optdepends = pipewire-jack
 	optdepends = pipewire-pulse
+	optdepends = cadence
 
 pkgname = proaudio-meta
-
