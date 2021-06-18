@@ -1,6 +1,6 @@
 pkgbase = audacity-git
 	pkgdesc = A program that lets you manipulate digital audio waveforms
-	pkgver = 3.0.2.r126.g90903d237
+	pkgver = 3.0.2.r299.ge6e81399f
 	pkgrel = 1
 	url = https://www.audacityteam.org/
 	arch = i686
@@ -19,6 +19,7 @@ pkgbase = audacity-git
 	makedepends = ffmpeg
 	makedepends = jack
 	makedepends = nasm
+	makedepends = conan
 	depends = alsa-lib
 	depends = libx11
 	depends = gtk3
