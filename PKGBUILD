@@ -7,7 +7,7 @@ pkgdesc="EmacSQL is a high-level Emacs Lisp front-end for SQLite (primarily), Po
 arch=('any')
 url="https://github.com/skeeto/emacsql"
 license=('GPL3')
-depends=('emacs')
+depends=('emacs' 'emacs-pg')
 source=("https://github.com/skeeto/emacsql/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('9d94be00518591c68cb0ed1de9dab885e35079f581fb0ae52af5af139a0f1088')
 
