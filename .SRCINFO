@@ -1,0 +1,20 @@
+pkgbase = qcoro-git
+	pkgdesc = C++ Coroutine library for Qt
+	pkgver = r82.3147d44
+	pkgrel = 1
+	url = https://qcoro.dvratil.cz/
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	provides = qcoro
+	conflicts = qcoro
+	source = git+https://github.com/danvratil/qcoro.git
+	sha256sums = SKIP
+
+pkgname = qcoro-git
+
