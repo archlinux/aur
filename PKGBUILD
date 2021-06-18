@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Winger <bmw@disroot.org>
 
 pkgname=portmod
-pkgver=2.0_rc11
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A cli tool to manage mods for OpenMW"
 provides=('portmod')
@@ -17,17 +17,17 @@ makedepends=("python" "python-setuptools" "python-setuptools-scm" "rust" "python
 checkdepends=("python-pytest")
 optdepends=("omwllf" "tes3cmd" "tr-patcher" "python-argcomplete")
 source=("https://gitlab.com/portmod/portmod/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('ae445eda815315e0fc5ec74b33c22973f65956a6cc23c60b4ed37f9d8862fc11f9f63c444b3574a7c336f0ffc85af6a88bf6755401283bf0d3aea2b4486bde20')
+sha512sums=('4e6ebf19606f9db296b8d16e2d87f411632dd4c2d35616a937a987798869afaf16479e673f96d54a4bec81a7fe7dd7c0b062523d9994526a41ad7fc0de38e80b')
 
 build() {
   cd "$srcdir/$pkgname-v$pkgver"
-  SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver python setup.py build_rust --inplace --release
+  SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver python setup.py build
 }
 
-check() {
-  cd "$srcdir/$pkgname-v$pkgver"
-  SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver pytest
-}
+# check() {
+#   cd "$srcdir/$pkgname-v$pkgver"
+#   SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver pytest
+# }
 
 package() {
   cd "$srcdir/$pkgname-v$pkgver"
