@@ -1,0 +1,12 @@
+pkgbase = emacs-exwm
+	pkgdesc = Use emacs as windowmanager
+	pkgver = 0.23
+	pkgrel = 1
+	url = https://github.com/ch11ng/exwm.git
+	arch = any
+	license = GPL
+	depends = emacs-xelb
+	source = https://github.com/ch11ng/exwm/archive/refs/tags/0.23.tar.gz
+	sha256sums = 2ac055844bf7a91dab3a8a84f0089d16102424f5cd57c39eb1231bca2fd57a15
+
+pkgname = emacs-exwm
