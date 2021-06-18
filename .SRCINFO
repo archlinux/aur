@@ -1,7 +1,7 @@
 pkgbase = wasmer
 	pkgdesc = Universal Binaries Powered by WebAssembly
-	pkgver = 1.0.2
-	pkgrel = 3
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/wasmerio/wasmer
 	arch = x86_64
 	license = MIT
@@ -14,8 +14,7 @@ pkgbase = wasmer
 	depends = zlib
 	depends = ncurses
 	options = staticlibs
-	source = wasmer-1.0.2.tar.gz::https://github.com/wasmerio/wasmer/archive/1.0.2.tar.gz
-	sha512sums = f8058cbd5a8a807cd84b4a839c87ff76dae5475c655e804b27262cd5cb22ddb6c43da3a01b6cdbed29502afc38aa9ee589022f67fab27b189453f2500478c4a9
+	source = wasmer-2.0.0.tar.gz::https://github.com/wasmerio/wasmer/archive/2.0.0.tar.gz
+	sha512sums = c02b97075212a496a4c30a9cfcd6b8ef89cb08bf3e5f9f20bf5f83c63bedb5744e4976ee3641310f6a44d911d670285c8b67c3cb9725acdd632ef5f8880ba4b9
 
 pkgname = wasmer
-
