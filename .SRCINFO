@@ -1,6 +1,6 @@
 pkgbase = ferdi-git
 	pkgdesc = A messaging browser that allows you to combine your favorite messaging services into one application - git version
-	pkgver = 5.6.0.beta.5.r266.g9d863a62
+	pkgver = 5.6.0.beta.5.r311.g1dc20272
 	pkgrel = 1
 	url = https://getferdi.com
 	arch = x86_64
