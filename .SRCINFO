@@ -1,13 +1,13 @@
 pkgbase = vim-gnupg
 	pkgdesc = Plugin for transparent editing of gpg encrypted files
 	pkgver = 2.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.vim.org/scripts/script.php?script_id=3645
 	arch = any
 	groups = vim-plugins
 	license = GPL2
 	depends = vim
-	source = gnupg.vim::https://www.vim.org/scripts/download_script.php?src_id=27359
+	source = gnupg.zip::https://www.vim.org/scripts/download_script.php?src_id=27359
 	sha256sums = 4c6731e3bbf00231096b9c09c38c517e22451eb408378e3206e70f601d75d56c
 
 pkgname = vim-gnupg
