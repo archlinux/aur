@@ -1,0 +1,19 @@
+#!/bin/sh
+
+function print_help {
+  echo -e "GoDBLedger - The Open Source Accounting System\n"
+  echo "Usage:"
+  echo -e "\t$0 verb [global options] sub-command [sub-command options] [arguments...]\n"
+  echo "Supported Verbs:"
+  echo -e "\tserver [s] Start GoDBLedger Database Server"
+  echo -e "\treport [r] Extracts GL and TB reports from a GoDBLedger database"
+  echo -e "\tclient [c] Command line for GoDBLedger gRPC"
+}
+
+args=("$@")
+case "${args[0]}" in
+  "server"|"s") unset args[0]; godbledger "${args[*]}" ;;
+  "report"|"r") unset args[0]; reporter "${args[*]}" ;;
+  "client"|"c") unset args[0]; ledger-cli "${args[*]}" ;;
+  *) print_help ;;
+esac

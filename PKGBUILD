@@ -14,7 +14,5 @@ sha256sums=('bae9912c2a530607d6658717cc22aec59e0caa69166fa4df57955e8361f7d69c')
 
 package() {
   cd linux-amd64
-  install -Dm755 reporter -t "${pkgdir}/usr/bin"
-  install -Dm755 godbledger -t "${pkgdir}/usr/bin"
-  install -Dm755 ledger-cli -t "${pkgdir}/usr/bin"
+  install -Dm755 -t "${pkgdir}/usr/bin" reporter godbledger ledger-cli ../../goledger
 }
