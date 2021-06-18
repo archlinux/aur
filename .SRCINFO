@@ -1,6 +1,6 @@
 pkgbase = vscodium-git
 	pkgdesc = Free/Libre Open Source Software Binaries of VSCode (git build from latest commit).
-	pkgver = 1.57.0.r3.g8bb2491
+	pkgver = 1.57.1.r0.g8bb2491
 	pkgrel = 1
 	url = https://github.com/VSCodium/vscodium.git
 	arch = x86_64
@@ -36,11 +36,10 @@ pkgbase = vscodium-git
 	conflicts = vscodium
 	conflicts = vscodium-bin
 	source = git+https://github.com/VSCodium/vscodium.git#branch=master
-	source = git+https://github.com/microsoft/vscode.git#tag=1.57.0
+	source = git+https://github.com/microsoft/vscode.git#tag=1.57.1
 	source = vscodium.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 33ea43092cc895b9e6eea9056d72fbe462a450d41b6a1465da22566912110d69
 
 pkgname = vscodium-git
-
