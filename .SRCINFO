@@ -1,6 +1,6 @@
 pkgbase = putils-git
 	pkgdesc = Utilities for working with pipes
-	pkgver = r3.1e54e08
+	pkgver = r3.7f4ccee
 	pkgrel = 1
 	url = https://github.com/Morganamilo/putils
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = putils-git
 	makedepends = git
 	makedepends = go
 	makedepends = asciidoc
+	depends = glibc
 	provides = putils
 	conflicts = putils
 	source = git+https://github.com/Morganamilo/putils
 	md5sums = SKIP
 
 pkgname = putils-git
-
