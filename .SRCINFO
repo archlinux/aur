@@ -1,16 +1,15 @@
 pkgbase = networkmanager-iwd
 	pkgdesc = Network connection manager and user applications; using iwd backend instead of wpa_supplicant
-	pkgver = 1.30.4
-	pkgrel = 2
+	pkgver = 1.32.0
+	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/NetworkManager
 	arch = x86_64
-	license = GPL2
-	license = LGPL2.1
+	license = GPL
 	checkdepends = libx11
 	checkdepends = python-dbus
 	makedepends = intltool
 	makedepends = dhclient
-	makedepends = iptables
+	makedepends = iptables-nft
 	makedepends = gobject-introspection
 	makedepends = gtk-doc
 	makedepends = ppp=2.4.9
@@ -25,6 +24,7 @@ pkgbase = networkmanager-iwd
 	makedepends = libnewt
 	makedepends = libndp
 	makedepends = libteam
+	makedepends = nftables
 	makedepends = vala
 	makedepends = perl-yaml
 	makedepends = python-gobject
@@ -39,14 +39,13 @@ pkgbase = networkmanager-iwd
 	makedepends = libpsl
 	makedepends = audit
 	makedepends = meson
-	source = git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=a3e45da9f984d58e3b76d6ca064033541d819eca
+	source = git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=d9c0d43879e8420dda6482b05341dcfeedf7be43
 	source = networkmanager-iwd.install
 	sha256sums = SKIP
 	sha256sums = 6f77a626ec3fd7583beb45ffcac236cdc1fe2b5e5b8ccc5d90983312a265e818
 
 pkgname = networkmanager-iwd
 	install = networkmanager-iwd.install
-	groups = gnome
 	depends = libnm-iwd
 	depends = iproute2
 	depends = polkit
@@ -61,30 +60,31 @@ pkgname = networkmanager-iwd
 	depends = audit
 	depends = mobile-broadband-provider-info
 	optdepends = dnsmasq: connection sharing
+	optdepends = nftables: connection sharing
+	optdepends = iptables: connection sharing
 	optdepends = bluez: Bluetooth support
 	optdepends = ppp: dialup connection support
 	optdepends = modemmanager: cellular network support
 	optdepends = dhclient: alternative DHCP client
 	optdepends = dhcpcd: alternative DHCP client
 	optdepends = openresolv: alternative resolv.conf manager
-	optdepends = firewalld: Firewall support
+	optdepends = firewalld: firewall support
 	provides = networkmanager
 	conflicts = networkmanager
 	backup = etc/NetworkManager/NetworkManager.conf
 
 pkgname = libnm-iwd
 	pkgdesc = NetworkManager client library with iwd backend
+	license = LGPL
 	depends = glib2
 	depends = nss
 	depends = util-linux-libs
 	depends = jansson
 	depends = systemd-libs
-	provides = libnm
-	conflicts = libnm
+	provides = libnm.so
 
 pkgname = nm-iwd-cloud-setup
 	pkgdesc = Automatically configure NetworkManager with iwd backend in cloud
 	depends = networkmanager-iwd
 	provides = nm-cloud-setup
 	conflicts = nm-cloud-setup
-
