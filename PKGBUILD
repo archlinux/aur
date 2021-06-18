@@ -26,8 +26,11 @@ prepare() {
 	cd "$srcdir/${pkgname%-git}"
 
 	# Fix hard-coded libexec dir
-	sed -i 's/libexec/lib/g' "bin/${pkgname%-git}.in" "data/org.x.${pkgname%-git}.policy.in.in"
-	sed -i 's/libexecdir="@libexecdir@"/libexecdir="@libdir@"/g' src/config.py.in
+	sed -i 's/libexec/lib/g' \
+		"bin/${pkgname%-git}.in" \
+		"data/org.x.${pkgname%-git}.policy.in.in" \
+		install-scripts/download_zeroconf.py
+	sed -i 's/@libexecdir@/@libdir@/g' src/config.py.in
 }
 
 build() {
