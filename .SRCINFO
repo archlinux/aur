@@ -1,7 +1,7 @@
 pkgbase = mint
 	pkgdesc = A refreshing language for the front-end web
 	pkgver = 0.13.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/mint-lang/mint
 	arch = x86_64
 	license = BSD
