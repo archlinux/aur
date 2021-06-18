@@ -1,0 +1,21 @@
+pkgbase = blosc2
+	pkgdesc = Next generation c-blosc
+	pkgver = 2.0.0_rc2
+	pkgrel = 1
+	url = https://blosc-doc.readthedocs.io/en/latest/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = glibc
+	depends = lz4
+	depends = snappy
+	depends = zlib
+	depends = zstd
+	options = staticlibs
+	source = https://github.com/Blosc/c-blosc2/archive/refs/tags/v2.0.0-rc2.tar.gz
+	sha256sums = d07aa234f48123a4c4cb66b6936adc6e2144e7e5e7ec19f806739439733af4f1
+
+pkgname = blosc2
