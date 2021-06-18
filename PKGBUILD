@@ -30,9 +30,20 @@ build() {
     make -C "${srcdir}/wren-cli-${pkgver}/projects/make"
 }
 
+check() {
+    pushd "${srcdir}/wren-${pkgver}"
+    echo "======== Testing Wren ========"
+    python3 util/test.py
+    popd
+    echo "====== Testing Wren CLI ======" 
+    pushd "${srcdir}/wren-cli-${pkgver}"
+    python3 util/test.py
+    popd
+}
+
 package() {
     pushd "${srcdir}/wren-${pkgver}"
-    install -Dm755 ./bin/wren_test "$pkgdir/usr/bin/wren_test"
+    rm ./bin/wren_test # NOTE: We don't need the language tests installed ;)
     install -Dm644 ./src/include/wren.h "$pkgdir/usr/include/wren.h"
     install -Dm755 ./lib/libwren.so "$pkgdir/usr/lib/libwren.so"
     install -Dm644 ./lib/libwren.a "$pkgdir/usr/lib/libwren.a"
