@@ -1,17 +1,15 @@
 pkgbase = nginx-mainline-mod-dynamic-etag-git
 	pkgdesc = Module empowers your dynamic content with automatic ETag header.
 	pkgver = r44.c7ee492
-	pkgrel = 4
+	pkgrel = 6
 	url = https://github.com/dvershinin/ngx_dynamic_etag
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
+	makedepends = nginx-mainline-src
 	depends = nginx-mainline
-	source = https://nginx.org/download/nginx-1.19.8.tar.gz
 	source = git+https://github.com/dvershinin/ngx_dynamic_etag.git
-	sha256sums = 308919b1a1359315a8066578472f998f14cb32af8de605a3743acca834348b05
 	sha256sums = SKIP
 
 pkgname = nginx-mainline-mod-dynamic-etag-git
-
