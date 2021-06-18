@@ -1,0 +1,14 @@
+pkgbase = conway-gol
+	pkgdesc = Personal implementation of Conway's Game Of Life. See the README for more info.
+	pkgver = 0.5.0.r59.cdd3494
+	pkgrel = 1
+	url = https://gitlab.com/Epacnoss/conway-gol.git
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	provides = conway-gol-git
+	conflicts = conway-gol-git
+	replaces = {pkgname}-git
+
+pkgname = conway-gol
