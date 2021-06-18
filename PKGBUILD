@@ -3,7 +3,7 @@
 
 _pkgname=sunshine
 pkgname=${_pkgname}-git
-pkgver=0.7.0.454.4024378
+pkgver=0.7.1.456.ac862f9
 pkgrel=1
 pkgdesc="Open source implementation of NVIDIA's GameStream, as used by the NVIDIA Shield"
 url="https://github.com/loki-47-6F-64/sunshine"
