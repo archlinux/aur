@@ -5,7 +5,7 @@
 
 pkgname="ices0"
 pkgver=0.4.11
-pkgrel=5
+pkgrel=6
 pkgdesc="A source client for broadcasting in MP3, FLAC, AAC and OGG Vorbis formats to an icecast2 server"
 license=("GPL2")
 arch=("i686" "x86_64" "armv7h")

@@ -1,7 +1,7 @@
 pkgbase = ices0
 	pkgdesc = A source client for broadcasting in MP3, FLAC, AAC and OGG Vorbis formats to an icecast2 server
 	pkgver = 0.4.11
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/Moonbase59/ices0
 	install = ices0.install
 	arch = i686
@@ -26,4 +26,3 @@ pkgbase = ices0
 	sha256sums = 9179496149e763a75fea37bf6ec12947cad4bdb868b401d34728b353b836047a
 
 pkgname = ices0
-
