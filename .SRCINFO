@@ -1,0 +1,12 @@
+pkgbase = hxl-git
+	pkgdesc = Small, optimized terminal hex viewer
+	pkgver = 1.0.r7.g6f3218e
+	pkgrel = 1
+	url = https://github.com/sjmulder/hxl
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	source = hxl-git::git+https://github.com/sjmulder/hxl
+	sha256sums = SKIP
+
+pkgname = hxl-git
