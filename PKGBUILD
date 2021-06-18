@@ -1,21 +1,21 @@
 pkgname=qutebrowser-not-only-latin-git
-pkgver=1.14.0.r3.g6807ff569
+pkgver=2.2.3.r5.g45b1a9d43
 pkgrel=1
 pkgdesc="A keyboard-driven, vim-like browser based on PyQt5. 
 Fork to support commands in not only Latin keyboard layout"
 arch=("any")
 url="https://www.qutebrowser.org/"
 license=("GPL")
-depends=("python-attrs" "python-jinja" "python-pygments" "python-pypeg2"
-         "python-pyqt5" "python-yaml" "qt5-base" "python-pyqtwebengine"
-         "python-setuptools")
-makedepends=("asciidoc" "pygmentize" "git")
-optdepends=("gst-libav: media playback with qt5-webkit backend"
+depends=("python-jinja" "python-pyqt5" "python-yaml" "qt5-base" "python-pyqtwebengine")
+makedepends=("asciidoc" "pygmentize" "git" "python-setuptools")
+optdepends=("python-adblock: ABP-style adblocking"
+            "pdfjs: displaying PDF in-browser"
+            "gst-libav: media playback with qt5-webkit backend"
             "gst-plugins-base: media playback with qt5-webkit backend"
             "gst-plugins-good: media playback with qt5-webkit backend"
             "gst-plugins-bad: media playback with qt5-webkit backend"
             "gst-plugins-ugly: media playback with qt5-webkit backend"
-            "pdfjs: displaying PDF in-browser"
+            "python-pygments: :view-source with qt5-webkit backend" 
             "qt5-webkit: alternative backend")
 options=(!emptydirs)
 conflicts=('qutebrowser')
