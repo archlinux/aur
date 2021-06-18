@@ -1,6 +1,6 @@
 # Maintainer:   AstroFloyd  < AstroFloyd [at] gmail >
 pkgname=pg2plplot
-pkgver=0.4.1
+pkgver=5.13.0
 pkgrel=1
 pkgdesc="Assist the transition from PGPlot to PLplot in Fortran programs"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('cmake' 'gcc-fortran' 'plplot')
 changelog=ChangeLog
 source=("http://sourceforge.net/projects/$pkgname/files/$pkgname-$pkgver.tar.gz")
-sha512sums=('8f7f544310b495571588ed82cfd295f5533ea68336aa380076b7ee588ce81ad64ec79e217c501055f10aa949292d13688ecbba0c516d609e86d619a9f6fe6780')
+sha512sums=('38261e2bed8b2700c2b797a6d220a9ede0f18ddfb00260ef1eccfcdf3c7f8bef23918d659927650644e10976a4a7cb7855a01aa6da0b033dace8bb356b141345')
 
 build() {
 	mkdir -p "$pkgname-$pkgver"/build
