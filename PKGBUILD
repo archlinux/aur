@@ -4,7 +4,7 @@ pkgname1=wings
 githuborg=pterodactyl
 pkgdesc="Open-source server control and management daemon for pterodactyl-panel ($pkgname1)."
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://github.com/$githuborg/$pkgname1"
 license=('MIT')
@@ -25,6 +25,6 @@ sha256sums_aarch64=(
 
 package() {
     mkdir -p "$pkgdir/etc/pterodactyl"
-    install -Dm755 "$pkgname1-$pkgver-$CARCH" "$pkgdir/usr/local/bin/$pkgname1"
+    install -Dm755 "$pkgname1-$pkgver-$CARCH" "$pkgdir/usr/bin/$pkgname1"
 	install -Dm644 "$pkgname1.service" -t "$pkgdir/usr/lib/systemd/system/"
 }
