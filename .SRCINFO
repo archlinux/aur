@@ -2,7 +2,7 @@ pkgbase = apostrophe-git
 	pkgdesc = A distraction free Markdown editor for GNU/Linux made with GTK+
 	pkgver = 2.4.r19.g944d798
 	pkgrel = 1
-	url = https://somas.pages.gitlab.gnome.org/apostrophe
+	url = https://gitlab.gnome.org/World/apostrophe
 	arch = any
 	license = GPL3
 	checkdepends = appstream-glib
@@ -24,8 +24,7 @@ pkgbase = apostrophe-git
 	optdepends = mathjax: for formula preview
 	provides = apostrophe
 	conflicts = apostrophe
-	source = git+https://gitlab.gnome.org/somas/apostrophe.git
+	source = git+https://gitlab.gnome.org/World/apostrophe.git
 	sha256sums = SKIP
 
 pkgname = apostrophe-git
-

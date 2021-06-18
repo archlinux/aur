@@ -6,7 +6,7 @@ pkgver=2.4.r19.g944d798
 pkgrel=1
 pkgdesc="A distraction free Markdown editor for GNU/Linux made with GTK+"
 arch=('any')
-url="https://somas.pages.gitlab.gnome.org/apostrophe"
+url="https://gitlab.gnome.org/World/apostrophe"
 license=('GPL3')
 depends=('webkit2gtk' 'gspell' 'python-pypandoc' 'python-regex' 'python-levenshtein'
          'python-pyenchant' 'python-gobject' 'python-cairo' 'otf-fira-mono' 'libhandy')
@@ -16,7 +16,7 @@ optdepends=('texlive-latexextra: for the pdftex module'
             'mathjax: for formula preview')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://gitlab.gnome.org/somas/apostrophe.git')
+source=('git+https://gitlab.gnome.org/World/apostrophe.git')
 sha256sums=('SKIP')
 
 pkgver() {
