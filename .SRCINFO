@@ -1,14 +1,14 @@
 pkgbase = forge-gui-desktop
 	pkgdesc = Implementation of Magic the Gathering that lets you play against a computer AI
-	pkgver = 1.6.40
+	pkgver = 1.6.42
 	pkgrel = 1
 	url = https://www.slightlymagic.net/wiki/Forge
 	arch = any
 	license = GPL3
 	depends = jre8-openjdk
-	source = https://releases.cardforge.org/forge/forge-gui-desktop/1.6.40/forge-gui-desktop-1.6.40.tar.bz2
+	source = https://releases.cardforge.org/forge/forge-gui-desktop/1.6.42/forge-gui-desktop-1.6.42.tar.bz2
 	source = https://git.cardforge.org/core-developers/forge/raw/master/AppIcon.png
-	sha1sums = 0e4057014c98810c20aebf46c471b9b8bae21c13
+	sha1sums = f03b96e4af2393c2dadcf3f77d169e1225f0a8d9
 	sha1sums = 9a957969da65cf281ceb31a3737bb3b8b799f14b
 
 pkgname = forge-gui-desktop
