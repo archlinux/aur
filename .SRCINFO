@@ -1,0 +1,18 @@
+pkgbase = android-sdk-cmake-3.10
+	pkgdesc = CMake from Google Android SDK
+	pkgver = 3.10.2.4988404
+	pkgrel = 1
+	url = https://developer.android.com/studio/index.html
+	install = android-sdk-cmake.install
+	arch = x86_64
+	license = custom:android-sdk-license
+	makedepends = libxml2
+	depends = bash
+	conflicts = android-sdk-cmake<=3.10.2.4988404
+	options = !strip
+	source = https://dl-ssl.google.com/android/repository/cmake-3.10.2-linux-x86_64.zip
+	source = package.xml.in
+	sha1sums = 439e8799bf59f724f104bf62784b2985f1bfe561
+	sha1sums = 224baf4d7288d510556d149c165a2472c3c49072
+
+pkgname = android-sdk-cmake-3.10
