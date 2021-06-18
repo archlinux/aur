@@ -1,0 +1,13 @@
+pkgbase = emacs-emacsql-sqlite3
+	pkgdesc = This is yet another EmacSQL backend for SQLite, which use official sqlite3 executable to access SQL database.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/cireu/emacsql-sqlite3
+	arch = any
+	license = GPL3
+	depends = emacs
+	depends = emacs-emacsql
+	source = https://github.com/cireu/emacsql-sqlite3/archive/refs/tags/1.0.2.tar.gz
+	sha256sums = 10cd12382bbb9cbbf36d45382b2aff1a679c3af70574954561ed1caf5fc328f7
+
+pkgname = emacs-emacsql-sqlite3
