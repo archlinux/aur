@@ -1,32 +1,33 @@
-# Maintainer: Morgana <morganamilo@gmail.com>
+# Maintainer: Morganamilo <morganamilo@gmail.com>
 
 pkgname=pep8-asm-git
 _pkgname=pep8
-pkgver=8.1.3.r478.5af5c3d
+pkgver=8.3.r0.g1fd697c
 pkgrel=1
+epoch=1
 pkgdesc="Pep/8 assembler and simulator"
 arch=("x86_64")
 url="http://computersystemsbook.com/4th-edition/pep8/"
-license=('GPL')
+license=('GPL3')
 depends=('qt5-base' 'qt5-webengine')
-source=("git+https://github.com/StanWarford/${_pkgname}")
+makedepends=('git')
 provides=('pep8-asm')
+conflicts=('pep8-asm')
+source=("git+https://github.com/StanWarford/${_pkgname}")
 md5sums=('SKIP')
 
 build() {
-	cd "${srcdir}/${_pkgname}"
+	cd "${_pkgname}"
 	qmake pep8.pro
 	make
 }
 
+package() {
+	cd "${_pkgname}"
+	install -Dm755 Pep8 "${pkgdir}/usr/bin/pep8"
+}
+
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	printf "%s.r%s.%s" "$(grep -om1 'version [0-9\.]\+' aboutpep.ui | cut -d " " -f 2)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
-package() {
-	cd "${srcdir}/${_pkgname}"
-	install -Dm755 Pep8 "${pkgdir}/usr/bin/pep8"
-	install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-}
-
