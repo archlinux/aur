@@ -1,16 +1,17 @@
-# Maintainer: sballert <sballert@posteo.de>
+# Maintainer: hamki <hamki.do2000@gmail.com>
+# Contributor: sballert <sballert@posteo.de>
 
 _gituser="emacs-evil"
 _gitrepo="evil-collection"
 
 pkgname=emacs-evil-collection-git
-pkgver=r610.04a3e5c
+pkgver=r1017.2849c80
 pkgrel=1
 pkgdesc="A set of keybindings for evil-mode"
 url="https://github.com/${_gituser}/${_gitrepo}"
 arch=('any')
 license=('GPL3')
-depends=('emacs' 'emacs-evil')
+depends=('emacs' 'emacs-evil' 'emacs-annalist')
 makedepends=('git')
 provides=('emacs-evil-collection')
 conflicts=('emacs-evil-collection')
