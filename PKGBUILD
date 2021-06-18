@@ -2,7 +2,7 @@
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 
 pkgname=qemu-arm-static
-pkgver=6.0.0r3
+pkgver=6.0.0r4
 _pkgver=${pkgver/r/-r}
 pkgrel=1
 pkgdesc='Statically linked qemu-arm, qemu-armeb and qemu-aarch64 executables from Alpine'
@@ -25,9 +25,9 @@ package() {
   done
 }
 
-sha256sums=('de28016ca5ab21cb431e3aef8ee4c0421f3761d349f958476800ebc18076c2c9'
-            '2826aba5b239b5cfd397acf579ca6761eb59b716644a5ab6a0bcbef680f0509e'
-            '794e79c557b3cd80e77c922d616581d7f81e78538ad0c13731b0658778a99323'
+sha256sums=('1ba633cca4d230980ad3f65f42be2f92e110934424bc9cc0f93331a743ab9a4a'
+            '9333bc8fa17e940edc2e2ffa38da73d3847e9fd13afa090d2a90b14f7613738d'
+            '9450be63889b9cbca3e734e6790913aca04f8a26c4c02c8b2d7855ff9dd34eff'
             '234e4d432d03324c44c33b12b7e047ff8bb52e86002ea68029c9ec57057fac19'
             'd41900da17c56d7dddea5c0a908b97944502cc5b67fbd1eb9106734a0731b578'
             'b95b705037bce2176ff84812dfe00e67ddd5e03e244e81301131419576b03f6b')
