@@ -13,12 +13,12 @@
 
 pkgname=jitsi-meet-electron
 pkgver=2.8.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Jitsi Meet desktop application powered by Electron. Uses npm version of electron"
 arch=('any')
 url="https://github.com/jitsi/jitsi-meet-electron"
 license=('APACHE-2.0')
-depends=('npm')
+depends=('npm' 'libx11' 'zlib' 'libpng' 'libxtst')
 optdepends=(
     'nodejs-webpack: build-time dependency, to avoid re-downloading it'
     'nodejs-webpack-cli: build-time dependency, to avoid re-downloading it'
