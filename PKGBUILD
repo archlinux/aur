@@ -3,6 +3,7 @@
 pkgname=('llvm13')
 pkgver=13.0.0_r383356.972b6a3a3471
 pkgrel=1
+pkgdesc="Low Level Virtual Machine 13 for clasp"
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')

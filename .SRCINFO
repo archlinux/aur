@@ -1,4 +1,5 @@
 pkgbase = llvm13
+	pkgdesc = Low Level Virtual Machine 13 for clasp
 	pkgver = 13.0.0_r383356.972b6a3a3471
 	pkgrel = 1
 	url = https://llvm.org/
