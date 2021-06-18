@@ -2,17 +2,11 @@
 
 pkgname=ttf-code2000
 pkgver=1.171
-pkgrel=5
+pkgrel=6
 pkgdesc="Unicode TT font with extensive glyph coverage"
 arch=('any')
 url="https://web.archive.org/web/20101122141939/http://code2000.net/"
 license=('custom')
-depends=(
-    'fontconfig'
-    'xorg-fonts-encodings'
-    'xorg-mkfontscale'
-    'xorg-mkfontdir'
-)
 source=('https://web.archive.org/web/20101122142710/http://code2000.net/CODE2000.ZIP')
 md5sums=('1fa4e4b61d7ac0980b038e9260667a77')
 sha256sums=('af00db49179aaea66494a6b9cad3ae7f2b822bf650df3133c07f9c3209cbc8e2')
