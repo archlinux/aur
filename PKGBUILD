@@ -2,7 +2,7 @@
 # Contributor: 0xAA <0xaa at dmg dot sx>
 # Contributor: bratus <szczepaniak.bartek plus github at gmail dot com>
 pkgname=radare2-git
-pkgver=5.1.0.r25401.89ff9aaf6e
+pkgver=5.4.0.r26148.86f8c9dce6
 pkgrel=1
 pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files"
 arch=('i686' 'x86_64')
@@ -26,6 +26,8 @@ build() {
   # this is actually needed to prevent linking against old system-wide r2 libs
   # you can comment this out, if you build in a clean environment
   export PKG_CONFIG_PATH="${srcdir}/${pkgname}/pkgcfg:${PKG_CONFIG_PATH}"
+
+  CFLAGS="${CFLAGS//-fPIE -pie}"
 
   cd ${srcdir}/${pkgname}
   touch libr/config.mk
