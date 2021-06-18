@@ -3,16 +3,16 @@
 # example usage: $ paclast -r | head
 
 main() {
-    opts="$(getopt -orcph -- "$@")" && eval set -- "$opts" || help
+    opts="$(getopt -otcph -- "$@")" && eval set -- "$opts" || help
     r= ; c= ; p=
     while true; do case "$1" in
-        -r) r='|relative'; shift ;;
+        -t) t='|relative'; shift ;;
         -c) c='|colorize'; shift ;;
         -p) p="|${PAGER:-less}"; shift ;;
         --) break ;;
          *) help ;;
     esac; done
-    eval list $r $c $p
+    eval list $t $c $p
 }
 
 list() {
@@ -71,12 +71,11 @@ colorize() {
 help() {
 cat << 'eof'
 list installed pacman packages in chronological order.
-Usage: paclast [-rcp]
+Usage: paclast [-tcp]
 Options:
-  -r     add an 'x days ago' column to output.
+  -t     add an 'x days ago' column to output.
   -c     colorize output.
   -p     show output in pager.
-  -h     print this help message.
 eof
 exit
 }
