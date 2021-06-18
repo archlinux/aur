@@ -4,7 +4,7 @@
 
 
 _pkgsrcname=anzu
-_pkgmaintainer=syohex
+_pkgmaintainer=emacsorphanage
 _pkgdestdirname=anzu
 _versionprefix=
 pkgver=0.64
