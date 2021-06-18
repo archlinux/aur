@@ -1,11 +1,11 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 # NOTE This "PIP install" package is similar to a VCS package:
-#      it has a pkgver() function and to update do a reinstall.
+#      it has a pkgver() function and a reinstall will update the package.
 #      That is the only reason why this package ends on -git.
 
 pkgname=sickchill-git
-pkgver=2021.5.10.1.r0
+pkgver=2021.6.16.r0
 pkgrel=1
 pkgdesc="Automatic video library manager for TV shows"
 arch=('any')
@@ -31,13 +31,12 @@ pkgver() {
 }
 
 build() {
-  set -x
   #python -m venv build
-  virtualenv --quiet build
-  build/bin/pip install --isolated --no-warn-script-location --root=build --prefix=. --default-timeout=60 sickchill
+  export XDG_CACHE_HOME=cache/pip
+  VIRTUALENV_OVERRIDE_APP_DATA=cache/virtualenv virtualenv build
+  build/bin/pip install --isolated --no-warn-script-location --prefix=. --root=build --cache-dir=cache --default-timeout=60 --progress-bar=off sickchill
 
   sed -i '1s|.*|#!/opt/sickchill/app/bin/python|' build/bin/SickChill.py
-  set +x
 }
 
 package() {
