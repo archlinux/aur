@@ -1,11 +1,12 @@
 pkgname=libcamera-git
 _pkgname=libcamera
-pkgver=r2509.d4043011
-pkgrel=2
+pkgver=r2566.99feb66d
+pkgrel=1
 pkgdesc='A complex camera support library for Linux, Android, and ChromeOS'
 arch=('x86_64' 'i686')
 url='http://libcamera.org/'
 makedepends=(
+    "boost"
     "gcc"
     "git"
     "gnutls"
@@ -17,7 +18,6 @@ makedepends=(
     "lttng-ust"
 )
 optdepends=(
-    "boost"
     "udev"
     "python-sphinx"
     "doxygen"
