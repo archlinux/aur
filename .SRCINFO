@@ -1,0 +1,40 @@
+pkgbase = alsa-plugins-git
+	pkgdesc = Additional ALSA plugins
+	pkgver = 1.2.5.r27.g873d962
+	pkgrel = 1
+	epoch = 1
+	url = https://www.alsa-project.org
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = alsa-lib
+	makedepends = dbus
+	makedepends = jack
+	makedepends = libavtp
+	makedepends = libpulse
+	makedepends = libsamplerate
+	makedepends = speexdsp
+	makedepends = ffmpeg
+	provides = alsa-plugins=1.2.5
+	conflicts = alsa-plugins
+	source = git+https://github.com/alsa-project/alsa-plugins.git
+	source = pulse-sysdefault.diff
+	sha512sums = SKIP
+	sha512sums = b8c8e55f4da0ae87cc44d75a906d00b4f1e2304e6bc10419c6e0913c8f7d29599a3f3d41733decbe412a4669ea0d5af2a57f85b1655fba3625fbbd33c956f3f9
+	b2sums = SKIP
+	b2sums = 83c16b77c1737b2b59b60302be22b63e53026a366799fd97fe3c03b86756063d1b9689d5ffc7c793b40db55bdb79a5b6d72a17e0c8aa32364d6e639cf7ad3ce0
+
+pkgname = alsa-plugins-git
+	depends = glibc
+	depends = libasound.so
+	optdepends = dbus: for maemo plugin
+	optdepends = jack: for pcm_jack plugin
+	optdepends = libavtp: for pcm_aaf plugin
+	optdepends = libsamplerate: for rate_samplerate plugin
+	optdepends = libpulse: for conf_pulse, ctl_pulse and pcm_pulse plugins
+	optdepends = speexdsp: for pcm_speex and rate_speexrate plugins
+	optdepends = ffmpeg: for pcm_a52 plugin
+
+pkgname = pulseaudio-alsa-git
+	pkgdesc = ALSA Configuration for PulseAudio
+	depends = alsa-plugins>=1.2.2-2
+	depends = pulseaudio
