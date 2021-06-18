@@ -3,7 +3,7 @@
 pkgname=('yoga')
 _module='yoga'
 pkgver='1.0.0'
-pkgrel=5
+pkgrel=6
 pkgdesc="Yummy Optimizer for Gorgeous Assets"
 url="https://github.com/wanadev/yoga"
 depends=(python3 python-cffi python-pillow python-pycparser python-unidecode python-pyguetzli python-zopflipy assimp)
@@ -16,12 +16,12 @@ sha256sums=('a4e7010969602b42af2ca74c95126ee533e3cf9ea9fdaa0c5c316eec7d985f53')
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
     sed -i 's/--std=c++11/-Wno-error=stringop-overflow -Wno-error=array-bounds/' setup.py
-    python3 setup.py build_py
-    python3 yoga/model/assimp_build.py
+    #python3 setup.py build_py
+    #python3 yoga/model/assimp_build.py
 }
 
 package() {
     depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
-    python3 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python3 setup.py install --root="${pkgdir}" --optimize=1 #--skip-build
 }

@@ -1,7 +1,7 @@
 pkgbase = yoga
 	pkgdesc = Yummy Optimizer for Gorgeous Assets
 	pkgver = 1.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/wanadev/yoga
 	arch = any
 	license = unknown
