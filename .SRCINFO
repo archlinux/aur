@@ -1,0 +1,11 @@
+pkgbase = hxl
+	pkgdesc = Small, optimized terminal hex viewer
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/sjmulder/hxl
+	arch = x86_64
+	license = BSD
+	source = hxl-1.0.tar.gz::https://github.com/sjmulder/hxl/archive/refs/tags/1.0.tar.gz
+	sha256sums = 819bfa6a3754ed3ddba7190656d12692a27d90c32c6fc5d13546f70563aa054b
+
+pkgname = hxl
