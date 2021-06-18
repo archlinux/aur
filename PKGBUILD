@@ -3,7 +3,7 @@
 
 pkgname=mint
 pkgver=0.13.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A refreshing language for the front-end web'
 arch=('x86_64')
 url='https://github.com/mint-lang/mint'
