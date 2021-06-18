@@ -1,6 +1,6 @@
 pkgbase = ccl
 	pkgdesc = A Common Lisp implementation.
-	pkgver = 1.12
+	pkgver = 1.12.1
 	pkgrel = 1
 	url = http://ccl.clozure.com
 	arch = x86_64
@@ -9,16 +9,7 @@ pkgbase = ccl
 	provides = ccl
 	conflicts = ccl-bin
 	conflicts = ccl-git
-	source = https://github.com/Clozure/ccl/releases/download/v1.12/ccl-1.12-linuxx86.tar.gz
-	source = 0001.patch
-	source = 0002.patch
-	source = 0003.patch
-	source = 0004.patch
-	sha256sums = 84a95aaf1d1abafba586e9ff079343b04fe374b98b38ed24d830f1fb7ed4ab34
-	sha256sums = 173f5ce2b7f72ea4b91b798d812d851d4d240e2e470d0942235cf5908d8555ec
-	sha256sums = 65deb1b12ceb15dad11a5db9f1e3f83ebb2db99820cf93da63765bd7c5fddf86
-	sha256sums = 3032b1bc0516318fc030588c2bfde017dff8493d064985be2546ac723035e1d6
-	sha256sums = 688d33fb905ed96761f73f65181027c1d00dfc6e0e9c086b3520bbd3c1c3eb19
+	source = https://github.com/Clozure/ccl/releases/download/v1.12.1/ccl-1.12.1-linuxx86.tar.gz
+	sha256sums = 923f2979144e96306cf5124800444e1c5cc0295fa9babb3ffc47a5631344b0aa
 
 pkgname = ccl
-
