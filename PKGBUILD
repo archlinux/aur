@@ -3,7 +3,7 @@
 pkgname=boolr
 _pkgname=BOOLR
 pkgver=v1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A digital logic simulator"
 arch=('x86_64')
 url="https://github.com/GGBRW/BOOLR"
@@ -13,7 +13,8 @@ depends=('alsa-lib'
          'gtk2'
          'nss'
          'libxss'
-         'libxtst')
+         'libxtst'
+         'pango-legacy')
 source=("$url/releases/download/$pkgver/BOOLR-$pkgver-linux-x86_64.zip"
         boolr.desktop)
 sha256sums=('94fa88d65442687aa6aa4ac2d3f5a0c76ed13d45adf98bcc6609f3118c90bb29'
@@ -34,6 +35,10 @@ package() {
 
   install -Dm644 $srcdir/BOOLR-linux-x64/resources/app/app/LINCENCE $pkgdir/usr/share/licenses/$pkgname/LICENSE
   install -Dm644 $srcdir/BOOLR-linux-x64/LICENSES.chromium.html $pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html
+
+  mkdir $pkgdir/opt/boolr/lib/
+  ln -s /opt/pango-legacy/usr/lib/libpango-1.0.so.0    $pkgdir/opt/boolr/lib/
+  ln -s /opt/pango-legacy/usr/lib/libpangoft2-1.0.so.0 $pkgdir/opt/boolr/lib/
 
   ln -s /opt/boolr/BOOLR $pkgdir/usr/bin/$pkgname
 }
