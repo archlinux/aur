@@ -56,7 +56,7 @@ _minor=12
 _srcname=linux-${_major}
 pkgbase=linux-cacule-rdb
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -80,7 +80,7 @@ source=(
   "${_patchsource}/zen-patches-v2/0001-zen-patches.patch"
   "${_patchsource}/lqx-patches-v3/0001-zen-Allow-MSR-writes-by-default.patch"
   "${_patchsource}/bfq-patches-v13/0001-bfq-patches.patch"
-  "${_patchsource}/block-patches-v5/0001-block-patches.patch"
+  "${_patchsource}/block-patches-v6/0001-block-patches.patch"
   "${_patchsource}/ll-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
   "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
   "${_patchsource}/fixes-miscellaneous/2002-tune-vm-mm-and-vfs-settings.patch"
@@ -523,7 +523,7 @@ done
 
 sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
             '742e13b424c618689734c3c41a14c5cda5a09d8546ed5b1433153d4619524dfe'
-            'f9d9550322d33b9146f1b9a89488d32ba686a7f278ecbb3edfaba32892504296'
+            '075693810fd85c0733b0f551f861b928c8383922076818801de04f962afd3cff'
             'dd89db0483301a62cef23ba797fee1fb9804f570f952df87fe418ee22e353227'
             'a90ec03375bf97c06bf2ca3f1fd0224deee8408077f71447326b2796b53652a1'
             '7d0fc1b08da8d9a1aa3b2787dbfab46723dfa28bd7f72990baa91eb501cb7db6'
@@ -534,7 +534,7 @@ sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
             '9eabd1468635477d9c143e9f59d86cf0dd32583bf6bd926080a6707f86d363ed'
             '5587a2d535dcd7ff09080c27f32a02dc67a0d35145b0b49ae10e8520c906a153'
             '12b36059033201c99e54a0e863c3ded470faff1226d9b984bdb15bd3a8ec4a7c'
-            '053a6611dd35293ba741838084818f4b69206e50da3fad13597d4fd2138c7ac0'
+            '8c892547828704e05cd480e58944327029bf50f81258ae0501a4872b465b20b9'
             '947fa68285a060100d375548a8e8608271b5af18d0bb13139e3a691450f6b630'
             '7cdc6402f6ab8a8b99f7c7c4766a6cf82773ef399903abebf6208bfd2f8b2cf2'
             'f7a36231b794022d49e53f464d25e48f2eebf6266c2cbe5756c63aa3bf03bae7'
