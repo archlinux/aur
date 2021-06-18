@@ -1,7 +1,7 @@
 # Maintainer: ThatOneCalculator (kainoa@t1c.dev)
 
 pkgname=ytfzfim
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="Slightly improved fork of ytfzf"
 arch=('any')
