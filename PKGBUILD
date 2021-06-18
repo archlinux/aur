@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Kyle Laker <kyle@laker.email>
 pkgname=warpinator-git
-pkgver=1.2.0.r1.g471c893
-pkgrel=3
+pkgver=1.2.2.r0.gc066c5f
+pkgrel=1
 pkgdesc="Share files across the LAN"
 arch=('any')
 url="https://github.com/linuxmint/warpinator"
@@ -10,9 +10,8 @@ license=('GPL3')
 depends=('gtk3' 'libnm' 'python-cryptography' 'python-gobject' 'python-grpcio'
          'python-netaddr' 'python-netifaces' 'python-protobuf' 'python-pynacl'
          'python-setproctitle' 'python-zeroconf' 'python-xapp' 'xapps')
-makedepends=('git' 'meson' 'gobject-introspection')
-optdepends=('polkit: Open a firewall port'
-            'ufw: Configure firewall rules')
+makedepends=('git' 'meson' 'polkit')
+optdepends=('ufw: Configure firewall rules')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/linuxmint/warpinator.git')
@@ -35,6 +34,11 @@ build() {
 	arch-meson  "${pkgname%-git}" build -Dbundle-zeroconf=false
 	meson compile -C build
 }
+
+# No tests defined
+#check() {
+#	meson test -C build --print-errorlogs
+#}
 
 package() {
 	DESTDIR="$pkgdir" meson install -C build
