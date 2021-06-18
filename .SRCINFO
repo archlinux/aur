@@ -1,14 +1,13 @@
 pkgbase = emacs-anzu
 	pkgdesc = Minor mode which displays current match and total matches information in the mode-line
-	pkgver = 0.62
-	pkgrel = 2
-	url = https://github.com/syohex/emacs-anzu
+	pkgver = 0.64
+	pkgrel = 1
+	url = https://github.com/syohex/anzu
 	install = emacs-anzu.install
 	arch = any
 	license = GPL3
 	depends = emacs
-	source = emacs-anzu-0.62.tar.gz::https://github.com/syohex/emacs-anzu/archive/0.62.tar.gz
-	sha256sums = 9f91077d12bffc2d30640dfc5a5b627139d03c06bee9335f5df6977e121a8f99
+	source = emacs-anzu-0.64.tar.gz::https://github.com/syohex/anzu/archive/0.64.tar.gz
+	sha256sums = 19556e888a47e43d8d917b427e484517fa668dcdd4d6d7bbbfe13f2118520b6e
 
 pkgname = emacs-anzu
-

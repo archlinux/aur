@@ -1,12 +1,14 @@
+# Maintainer: hamki <hamki.do2000@gmail.com>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Alex Whitt <alex.joseph.whitt@gmail.com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
-_pkgsrcname=emacs-anzu
+
+_pkgsrcname=anzu
 _pkgmaintainer=syohex
 _pkgdestdirname=anzu
 _versionprefix=
-pkgver=0.62
-pkgrel=2
+pkgver=0.64
+pkgrel=1
 pkgdesc="Minor mode which displays current match and total matches information in the mode-line"
 pkgname=emacs-${_pkgdestdirname}
 arch=('any')
@@ -14,7 +16,7 @@ url="https://github.com/${_pkgmaintainer}/${_pkgsrcname}"
 license=('GPL3')
 depends=('emacs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${_versionprefix}${pkgver}.tar.gz")
-sha256sums=('9f91077d12bffc2d30640dfc5a5b627139d03c06bee9335f5df6977e121a8f99')
+sha256sums=('19556e888a47e43d8d917b427e484517fa668dcdd4d6d7bbbfe13f2118520b6e')
 install=${pkgname}.install
 
 build() {
