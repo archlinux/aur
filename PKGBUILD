@@ -3,11 +3,10 @@
 
 pkgname=android-sdk-cmake
 _major=3
-_minor=10
-_micro=2
-_build=4988404
-_urlver=$_major.$_minor.$_micro
-pkgver=$_major.$_minor.$_micro.$_build
+_minor=18
+_micro=1
+pkgver=$_major.$_minor.$_micro
+_magic=ba34c321f92f6e6fd696c8354c262c122f56abf8
 pkgrel=1
 pkgdesc='CMake from Google Android SDK'
 arch=('x86_64')
@@ -15,12 +14,12 @@ url="https://developer.android.com/studio/index.html"
 license=('custom:android-sdk-license')
 depends=('bash')
 makedepends=('libxml2') # xmllint
-source=("https://dl-ssl.google.com/android/repository/cmake-${_urlver}-linux-x86_64.zip"
+source=("https://dl-ssl.google.com/android/repository/cmake-${pkgver}-linux.zip"
         package.xml.in)
 install=android-sdk-cmake.install
 # sha1sum is from https://dl.google.com/android/repository/repository2-1.xml
-sha1sums=('439e8799bf59f724f104bf62784b2985f1bfe561'
-          '224baf4d7288d510556d149c165a2472c3c49072')
+sha1sums=('9435bbe2120763871c75c37a365451b48c007fed'
+          'd91d32704e0f74a0950f97b86b6420557de68bb1')
 options=('!strip')
 
 build() {
@@ -30,7 +29,7 @@ build() {
 
 package() {
   install -Ddm755 "$pkgdir"/opt/android-sdk/cmake/$pkgver
-  cp -dr --no-preserve=ownership "$srcdir"/{bin,share,doc,android.toolchain.cmake,source.properties} \
+  cp -dr --no-preserve=ownership "$srcdir"/{bin,doc,share,source.properties} \
     "$pkgdir"/opt/android-sdk/cmake/$pkgver
   # This is required for sdkmanager to recognize this package
   install -Dm644 "$srcdir"/package.xml "$pkgdir"/opt/android-sdk/cmake/$pkgver/package.xml

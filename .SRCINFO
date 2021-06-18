@@ -1,6 +1,6 @@
 pkgbase = android-sdk-cmake
 	pkgdesc = CMake from Google Android SDK
-	pkgver = 3.10.2.4988404
+	pkgver = 3.18.1
 	pkgrel = 1
 	url = https://developer.android.com/studio/index.html
 	install = android-sdk-cmake.install
@@ -9,10 +9,9 @@ pkgbase = android-sdk-cmake
 	makedepends = libxml2
 	depends = bash
 	options = !strip
-	source = https://dl-ssl.google.com/android/repository/cmake-3.10.2-linux-x86_64.zip
+	source = https://dl-ssl.google.com/android/repository/cmake-3.18.1-linux.zip
 	source = package.xml.in
-	sha1sums = 439e8799bf59f724f104bf62784b2985f1bfe561
-	sha1sums = 224baf4d7288d510556d149c165a2472c3c49072
+	sha1sums = 9435bbe2120763871c75c37a365451b48c007fed
+	sha1sums = d91d32704e0f74a0950f97b86b6420557de68bb1
 
 pkgname = android-sdk-cmake
-
