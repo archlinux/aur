@@ -10,7 +10,7 @@
 
 ## DEPENDENCIES
 # git
-# pacman
+# sha256sum
 # namcap
 # base-devel (group)
 
@@ -71,9 +71,6 @@ function print_logo {
 [[ -z "$INSTALL_HOOKS_PATH" ]] && export INSTALL_HOOKS_PATH=./yeet.install
 
 [[ -z "$TEMP_DIR" ]] && mkdir -p /tmp/pkgupdate/ && export TEMP_DIR=/tmp/pkgupdate/
-
-[[ -z "$PACMAN_BIN" ]] && export PACMAN_BIN=/usr/bin/pacman
-[[ -z "$SUDO_BIN" ]] && export SUDO_BIN=/usr/bin/sudo
 
 [[ -z "$GIT_MESSAGE" ]] && export GIT_MESSAGE="$1"
 [[ -z "$GIT_FILES" ]] && export GIT_FILES="$PKGBUILD_PATH $SRCINFO_PATH $INSTALL_HOOKS_PATH ./update-version"
