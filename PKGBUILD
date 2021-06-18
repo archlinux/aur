@@ -17,9 +17,11 @@ build() {
 	meson compile -C build
 }
 
-#check() {
-#	meson test -C build --print-errorlogs
-#}
+check() {
+
+	# Validate appstream file fails, only validate desktop & schema files
+	meson test 'Validate desktop file' 'Validate schema file' -C build --print-errorlogs
+}
 
 package() {
 	DESTDIR="$pkgdir" meson install -C build
