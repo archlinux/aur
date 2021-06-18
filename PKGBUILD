@@ -14,7 +14,7 @@ provides=('warp-cli' 'warp-diag' 'warp-svc')
 
 source=("http://pkg.cloudflareclient.com/pool/main/cloudflare_warp_2021_6_1_1_amd64_09b03be4bb_amd64.deb")
 
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('213777f19b7afd27d64579b32b63f5683d9541d1defaddafcfbafa05e9ce91e2')
 install=$pkgname.install
 
 package() {
