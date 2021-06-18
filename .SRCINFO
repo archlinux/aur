@@ -1,6 +1,6 @@
 pkgbase = chromium-no-extras
 	pkgdesc = Chromium without hangout services, widevine, pipewire, or chromedriver
-	pkgver = 91.0.4472.106
+	pkgver = 91.0.4472.114
 	pkgrel = 1
 	url = https://www.chromium.org/Home
 	arch = x86_64
@@ -47,9 +47,9 @@ pkgbase = chromium-no-extras
 	optdepends = kdialog: support for native dialogs in Plasma
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
-	provides = chromium=91.0.4472.106
+	provides = chromium=91.0.4472.114
 	conflicts = chromium
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-91.0.4472.106.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-91.0.4472.114.tar.xz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v7/chromium-launcher-7.tar.gz
 	source = https://github.com/stha09/chromium-patches/releases/download/chromium-91-patchset-5/chromium-91-patchset-5.tar.xz
 	source = fix-crash-in-ThemeService.patch
@@ -59,7 +59,7 @@ pkgbase = chromium-no-extras
 	source = sql-make-VirtualCursor-standard-layout-type.patch
 	source = chromium-glibc-2.33.patch
 	source = use-oauth2-client-switches-as-default.patch
-	sha256sums = 545e38cd7dce0008c16ab5736ac9764655149e65d353630adac601da040dbebb
+	sha256sums = c1c7fe783f3250978503d4bd53144039bd818de8a6e89de493f27dd5168f7e71
 	sha256sums = 86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f
 	sha256sums = 171525009003a9ed1182cfcb6f407d7169d9a731a474304e263029376719f55a
 	sha256sums = 3cfe46e181cb9d337c454b5b5adbf5297052f29cd617cdee4380eeb1943825d8
