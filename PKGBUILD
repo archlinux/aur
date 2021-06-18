@@ -2,20 +2,19 @@
 
 pkgname=fluffychat-bin
 _pkgname=fluffychat
-_file_version=11315923
-pkgver=0.31.3
+pkgver=0.32.0
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('x86_64')
 url="https://fluffychat.im/"
 license=('AGPL3')
-depends=('libolm')
+depends=('libolm' 'xdg-user-dirs')
 makedepends=('unzip')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
-    "fluffychat-${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/package_files/${_file_version}/download")
-sha256sums=('69da9af832355da6c71a5735bad5c5f46cc0f79966ca2525d74fa66572e1946b')
+    "fluffychat-${pkgver}.tar.gz::https://gitlab.com/api/v4/projects/16112282/packages/generic/fluffychat/${pkgver}/fluffychat-linux-x86.tar.gz")
+sha256sums=('bdb81186b07dbf094f14e3b59d1c6cbf7d3ace881ec3f4d466b2906435315966')
 
 
 package() {  
