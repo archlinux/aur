@@ -1,7 +1,7 @@
 pkgbase = kazbek
-	pkgdesc = Kazbek Sample Library (VST Plugin).
+	pkgdesc = Kazbek Sample Library (VST Plugin)
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://librewave.com/product/kazbek/
 	arch = x86_64
 	groups = pro-audio
@@ -10,8 +10,6 @@ pkgbase = kazbek
 	makedepends = xdg-user-dirs
 	makedepends = unzip
 	depends = libcurl-gnutls
-	source = Kazbek.desktop
-	md5sums = 3983051b7c8e780a3511eda87148b767
+	depends = glibc
 
 pkgname = kazbek
-
