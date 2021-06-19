@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-k2-git
-pkgver=0.3.5.dev20210613+cuda11.3.torch1.8.1.r658
+pkgver=1.0.r664
 pkgrel=1
 pkgdesc='FSA/FST algorithms, differentiable, with PyTorch compatibility'
 arch=('any')
@@ -19,18 +19,14 @@ md5sums=(
 
 pkgver() {
     cd "${pkgname}"
+    # To obtain a version number compatible with PEP 440
+    export K2_IS_STABLE=1
     printf "%s.r%s" "$(python setup.py --version)" "$(git rev-list --count HEAD)"
 }
 
 
 build() {
     cd "${pkgname}"
-    # old build method - may be included later
-#    mkdir -p cbuild ; cd cbuild
-#    cmake -DCMAKE_BUILD_TYPE=Release ..
-#    make _k2
-#    cd ..
-#    chrpath -r '$ORIGIN' cbuild/lib/*.so
     python setup.py build
 }
 
