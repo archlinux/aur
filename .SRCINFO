@@ -1,0 +1,16 @@
+pkgbase = lualine-envy-git
+	pkgdesc = Envy colorscheme for Lualine
+	pkgver = r2.9ee2960
+	pkgrel = 1
+	url = https://git.sr.ht/~lmartinez/lualine-envy
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	makedepends = git
+	depends = neovim-lualine
+	provides = lualine-envy
+	conflicts = lualine-envy
+	source = lualine-envy-git::git+https://git.sr.ht/~lmartinez/lualine-envy
+	sha256sums = SKIP
+
+pkgname = lualine-envy-git
