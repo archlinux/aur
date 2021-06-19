@@ -10,7 +10,7 @@
 pkgname=firedragon-hg
 _pkgname=FireDragon
 __pkgname=firedragon
-pkgver=91.0a1.r650415
+pkgver=91.0a1.r652407
 pkgrel=1
 pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled."
 arch=(x86_64 aarch64)
@@ -97,10 +97,6 @@ prepare() {
   patch -Np1 -i ${_patches_dir}/librewolf/context-menu.patch
   patch -Np1 -i ${_patches_dir}/librewolf/browser-confvars.patch
   patch -Np1 -i ${_patches_dir}/librewolf/urlbarprovider-interventions.patch
-
-  # Fix build-time error
-  echo "---- Fix some things"
-  patch -Np1 -i ${_patches_dir}/misc/builtin_js.patch
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
