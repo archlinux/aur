@@ -2,8 +2,8 @@
 # Maintainer: Mike Yuan <me@yhndnzj.com>
 
 pkgname=hexo-cli
-pkgver=4.2.0
-pkgrel=2
+pkgver=4.3.0
+pkgrel=1
 pkgdesc="Command line interface for Hexo"
 arch=('any')
 url="https://www.npmjs.com/package/$pkgname"
@@ -13,7 +13,7 @@ makedepends=('npm')
 conflicts=('nodejs-hexo')
 source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
-sha256sums=('f169b782712f88eb4ebfc7498a359a0535852c2166e7f58193b85caee8f992e9')
+sha256sums=('933c8495faa4393cf9cf2e120e49e33495820605b75738813918a086605ca20d')
 
 package() {
   npm install --global --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
