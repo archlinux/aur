@@ -5,8 +5,8 @@
       options.security.pki.dn42.enable =
         lib.mkEnableOption "dn42 root certificates";
 
-      security.pki.certificateFiles =
-        lib.mkIf config.options.security.pki.dn42.enable [ ./dn42.crt ];
+      config.security.pki.certificateFiles =
+        lib.mkIf config.security.pki.dn42.enable [ ./dn42.crt ];
     };
   };
 }
