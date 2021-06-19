@@ -1,0 +1,17 @@
+pkgbase = python-pygtrie-git
+	pkgdesc = Python library implementing a trie data structure. Only builds the Python 3 version
+	pkgver = 2.2.r1.g64ee083
+	pkgrel = 1
+	url = https://github.com/google/pygtrie
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	provides = python-pygtrie
+	provides = python-pygtrie-git
+	conflicts = python-pygtrie
+	source = git+https://github.com/google/pygtrie
+	sha256sums = SKIP
+
+pkgname = python-pygtrie-git
