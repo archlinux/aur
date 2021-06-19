@@ -5,7 +5,7 @@ pkgname=simplenote-electron-arm-bin
 _pkgname=${pkgname%-electron-arm-bin}
 pkgver=2.13.0
 _appimage="simplenote-electron-${pkgver}-${CARCH}.AppImage"
-pkgrel=1
+pkgrel=2
 pkgdesc='The simplest way to keep notes'
 arch=('armv7h' 'aarch64')
 url='https://github.com/Automattic/simplenote-electron'
@@ -45,7 +45,7 @@ prepare() {
 
 	## Modify Desktop File ##
 	sed -i \
-	-e "s|^Exec=AppRun$|Exec=${_pkgname}|" \
+	-e "s|^Exec=.*|Exec=${_pkgname}|" \
 	-e '/^TryExec=.*/d' \
 	-e '/^X-AppImage-Version=.*/d' \
 	squashfs-root/${_pkgname}.desktop
