@@ -1,7 +1,7 @@
 # Maintainer: ransome <ransome@uber.space>
 pkgname="sleek"
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Todo app based on the todo.txt format for Linux, free and open-source"
 arch=("x86_64")
 url="https://github.com/ransome1/sleek/"
@@ -9,22 +9,22 @@ license=("MIT")
 options=(!strip)
 makedepends=("yarn" "nodejs<16.0.0")
 depends=("electron" "nodejs")
-source=("${url}archive/refs/tags/v${pkgver}.zip" "sleek.desktop" "sleek")
-sha512sums=('732d6033d664e1c745d55e0d55b82d825ec0334fd35f8347f912c956fbe5dd810f55c0c83fa383be93d54324c1edb047d659e42c25c59c8dd793ae77aab7b621'
+source=("${url}archive/refs/tags/v${pkgver}-2.zip" "sleek.desktop" "sleek")
+sha512sums=('d6f6736f5cbeab6c9225a8ddd4f0df6e9acdfad4522c9546eb6c11e958111e570e47fab38bedf6dd99a5d30fea1f0ab9a6eed58e1e958aaf39c6b78827d74420'
             '605f49606eb0656846ac5dc3b97eca0acb3a781b07c71aff1e027935d5e8ea569d290c95d67bd7347ddd133c1643e6f3c6fe36bd1b52f49e528b34a458afe316'
             'ea1d322bd56c7944a9eae97f4968a6a2e937b510eb3c1c21266428450c5b2ddcd8576718d0b66b69fbce5694ba94e80a692d04bda1e8c2b24a8d814a5ed50963')
 
 build() {
-  msg2 "Unzipping v${pkgver}.zip"
-  unzip -o "v${pkgver}.zip"
-  cd "$srcdir/$pkgname-${pkgver}"
+  msg2 "Unzipping v${pkgver}-2.zip"
+  unzip -o "v${pkgver}-2.zip"
+  cd "$srcdir/$pkgname-${pkgver}-2"
 
   msg2 "Installing node modules"
   yarn install
 }
 
 package() {
-  cd "$srcdir/$pkgname-${pkgver}"
+  cd "$srcdir/$pkgname-${pkgver}-2"
 
   msg2 "Building sleek with packaged Electron"
   yarn run pack
