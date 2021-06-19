@@ -5,7 +5,7 @@ post_install() {
 	echo -e "* use the appropriate init system command           *"
 	echo -e "* to start vnstat daemon; i.e.,                     *"
 	echo -e "*                                                   *"
-	echo -e "* systemctl enable --nows vnstat                    *"
+	echo -e "* systemctl enable --now vnstat                    *"
 	echo -e "*                                                   *"
 	echo -e "*****************************************************"
 	echo -e -n ""
