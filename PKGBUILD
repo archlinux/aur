@@ -1,7 +1,8 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
-pkgname=gnome-control-center-x11-scaling
+_pkgname=gnome-control-center
+pkgname=$_pkgname-x11-scaling
 pkgver=40.0
 pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop (with X11 fractional scaling patches)"
@@ -21,8 +22,8 @@ optdepends=('system-config-printer: Printer settings'
             'rygel: media sharing'
             'openssh: remote login')
 groups=(gnome)
-conflicts=('gnome-control-center')
-provides=('gnome-control-center')
+conflicts=($_pkgname)
+provides=($_pkgname)
 _commit=49d71c07b5b3ce59e035b785310cba4fcf903868  # tags/40.0^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
@@ -34,12 +35,12 @@ sha256sums=('SKIP'
             'a048a64afe1f258c64f22d170f494149dcdaeedfbfc8a39309c16acfa803951f')
 
 pkgver() {
-  cd $pkgname
+  cd $_pkgname
   git describe --tags | sed 's/^GNOME_CONTROL_CENTER_//;s/_/./g;s/-/+/g'
 }
 
 prepare() {
-  cd $pkgname
+  cd $_pkgname
   git submodule init
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
   git submodule update
@@ -53,7 +54,7 @@ prepare() {
 
 
 build() {
-  arch-meson $pkgname build -D documentation=true
+  arch-meson $_pkgname build -D documentation=true
   meson compile -C build
 }
 
