@@ -3,14 +3,14 @@
 
 pkgname=nextcloud-client-git
 _name=${pkgname/\-git/}
-pkgver=3.2.2.959e450d6
+pkgver=3.2.2.636e7159c
 pkgrel=1
 pkgdesc="Nextloud client for linux"
 arch=('i686' 'x86_64')
 url="https://nextcloud.com/"
 license=('GPL2')
 depends=(openssl sqlite qtkeychain qt5-svg qt5-webengine xdg-utils qt5-webkit
-    libcloudproviders qt5-graphicaleffects qt5-quickcontrols2 qt5-websockets)
+    libcloudproviders qt5-graphicaleffects qt5-quickcontrols2 qt5-websockets inkscape)
 makedepends=(doxygen extra-cmake-modules python-sphinx qt5-tools git cmocka)
 optdepends=(
     'kio: integration with Dolphin'
@@ -25,12 +25,12 @@ source=("${_name}::git+https://github.com/nextcloud/desktop.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd ${_name}
+    cd ${srcdir}/${_name}
     echo $(git describe --tags $(git rev-list --tags --max-count=1) | sed 's/v//g;s/-/./g').$(git rev-parse --short HEAD)
 }
 
 prepare() {
-    cd ${_name}
+    cd ${srcdir}/${_name}
     if [[ -n "${_version}" ]]; then
         git checkout "v${_version}"
     fi
@@ -39,7 +39,7 @@ prepare() {
 }
 
 build() {
-    cd ${_name}/build
+    cd ${srcdir}/${_name}/build
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE="Release" \
