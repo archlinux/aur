@@ -2,7 +2,7 @@
 
 pkgname=anbox-support
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://gitlab.com/garuda-linux/themes-and-settings/settings/$pkgname"
 license=('GPL')
