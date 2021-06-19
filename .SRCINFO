@@ -1,6 +1,6 @@
 pkgbase = rvxx-amp
-	pkgdesc = RVXX Aggressive Guitar Amplifier (VST Plugin).
-	pkgver = 20210306
+	pkgdesc = RVXX Aggressive Guitar Amplifier (VST Plugin)
+	pkgver = 20210619
 	pkgrel = 1
 	url = https://audio-assault.com/rvxx.php
 	arch = x86_64
@@ -10,8 +10,6 @@ pkgbase = rvxx-amp
 	makedepends = xdg-user-dirs
 	makedepends = unzip
 	depends = libcurl-gnutls
-	source = RVXX.desktop
-	md5sums = f75327e2917268d49b3d9be2414c7f96
+	depends = glibc
 
 pkgname = rvxx-amp
-
