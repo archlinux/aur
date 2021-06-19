@@ -1,17 +1,16 @@
 pkgbase = perl-yaml-merge-simple
 	pkgdesc = Recursively merge two or more YAMLs, simply
 	pkgver = 0.01
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/andrefs/YAML-Merge-Simple
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	depends = perl
 	depends = perl-hash-merge-simple
 	depends = perl-yaml-libyaml
-	depends = perl>=5.006
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/A/AN/ANDREFS/YAML-Merge-Simple-0.01_01.tar.gz
 	sha256sums = 01ccfbd91b1ff3a3b1edd14f343cf61f6470c4036456a8bfa350eb211c9d0517
 
 pkgname = perl-yaml-merge-simple
-
