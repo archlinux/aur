@@ -2,7 +2,7 @@
 
 pkgname='python-ufo2ft'
 _pkgname='ufo2ft'
-pkgver='2.20.0'
+pkgver='2.21.0'
 pkgrel=1
 pkgdesc="A bridge from UFOs to FontTools objects."
 url="https://github.com/googlefonts/ufo2ft"
