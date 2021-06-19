@@ -4,7 +4,7 @@ pkgver=1.0.0.A5
 
 _cyanversion=1.0.0.A14 # Needed to find the right version ZIP
 
-pkgrel=1
+pkgrel=2
 pkgdesc="CTC -- Cyan Trust Container CLI, frontend for creating CTC trust containers"
 arch=( 'any' )
 url=""
@@ -25,14 +25,30 @@ noextract=()
 md5sums=( "db275ac7a438639381304da44fffd24f" )
 
 build() {
+    rm settings.lite.gradle
+    echo "
+rootProject.name = 'LiteCyan'
+
+include('CCFG')
+include('CyanComponents')
+include('CyanCore')
+include('CyanUtil')
+include('MTK')
+include('Fluid')
+include('Cornflower')
+include('MtkCLI')
+include('ClassTrust')
+include('../TrustExplorer')
+    " > settings.lite.gradle
+    
     cd CyanComponents
-    gradle jar -PnoClient=true -PnoServer=true -PuncheckedClient=true
+    gradle jar -PnoClient=true -PnoServer=true -PuncheckedClient=true -c ../settings.lite.gradle
     cd ../CyanUtil
-    gradle jar -PnoClient=true -PnoServer=true -PuncheckedClient=true
+    gradle jar -PnoClient=true -PnoServer=true -PuncheckedClient=true -c ../settings.lite.gradle
     cd ../ClassTrust
-    gradle jar -PnoClient=true -PnoServer=true -PuncheckedClient=true
+    gradle jar -PnoClient=true -PnoServer=true -PuncheckedClient=true -c ../settings.lite.gradle
     cd ../TrustExplorer
-    gradle jar -PnoClient=true -PnoServer=true -PuncheckedClient=true
+    gradle jar -PnoClient=true -PnoServer=true -PuncheckedClient=true -c ../settings.lite.gradle
 }
 
 package() {
