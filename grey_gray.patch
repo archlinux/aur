@@ -1,0 +1,20 @@
+diff -aur src.orig/image-match-1.1.2/image_match/goldberg.py src/image-match-1.1.2/image_match/goldberg.py
+--- src.orig/image-match-1.1.2/image_match/goldberg.py	2021-06-19 21:51:16.571907761 +0200
++++ src/image-match-1.1.2/image_match/goldberg.py	2021-06-19 21:52:00.765352972 +0200
+@@ -234,14 +234,14 @@
+             img = img.convert('RGB')
+             return rgb2gray(np.asarray(img, dtype=np.uint8))
+         elif type(image_or_path) is str:
+-            return imread(image_or_path, as_grey=True)
++            return imread(image_or_path, as_gray=True)
+         elif type(image_or_path) is bytes:
+             try:
+                 img = Image.open(image_or_path)
+                 arr = np.array(img.convert('RGB'))
+             except IOError:
+                 # try again due to PIL weirdness
+-                return imread(image_or_path, as_grey=True)
++                return imread(image_or_path, as_gray=True)
+             if handle_mpo:
+                 # take the first images from the MPO
+                 if arr.shape == (2,) and isinstance(arr[1].tolist(), MpoImageFile):
