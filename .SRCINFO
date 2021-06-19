@@ -1,13 +1,14 @@
 pkgbase = python-mkdocs-ezlinks-plugin-git
 	pkgdesc = MkDocs plugin to automagically generate relative links between markdown pages
 	pkgver = 0.1.11.r0.gc924471
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/orbikm/mkdocs-ezlinks-plugin
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = git
 	depends = mkdocs
+	depends = python-pygtrie-git
 	provides = python-mkdocs-ezlinks-plugin
 	source = git+https://github.com/orbikm/mkdocs-ezlinks-plugin
 	sha256sums = SKIP
