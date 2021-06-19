@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('BSD')
 depends=('zlib')
 makedepends=('cmake' 'patchelf' 'python' 'boost' 'freeglut' 'python-numpy' 'chrpath')
-optdepends=('boost-libs: python support' 'python: python support') 
+optdepends=('boost-libs: python support' 'python: python support' 'python2: python2 support')
 conflicts=('openexr')
 provides=("openexr=${pkgver}")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/openexr/openexr/archive/v$pkgver.tar.gz")
@@ -29,4 +29,11 @@ package() {
   _pythonpath=$(python -c "from sysconfig import get_path; print(get_path('platlib'))")
   install -Dm755 build/python3*/imathnumpy.so -t "$pkgdir/$_pythonpath"
   patchelf --set-rpath "" "${pkgdir}/$_pythonpath"/imathnumpy.so
+
+# Install optional python2 module
+  compgen -G "build/python2*/imathnumpy.so" && {
+    _python2path=$(python2 -c "from sysconfig import get_path; print(get_path('platlib'))")
+    install -Dm755 build/python2*/imathnumpy.so -t "$pkgdir/$_python2path"
+    patchelf --set-rpath "" "${pkgdir}/$_python2path"/imathnumpy.so
+  }
 }
