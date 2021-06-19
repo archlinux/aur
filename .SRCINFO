@@ -13,6 +13,6 @@ pkgbase = krunner-vscodeprojects-git
 	provides = krunner-vscodeprojects
 	conflicts = krunner-vscodeprojects
 	source = git+https://github.com/alex1701c/krunner-vscodeprojects.git
-	sha256sums = SKIP
+	md5sums = SKIP
 
 pkgname = krunner-vscodeprojects-git

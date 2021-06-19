@@ -1,11 +1,12 @@
 # Maintainer: sergeyshevch <sergeyshevchdevelop@gmail.com>
-
-pkgname=krunner-vscodeprojects-git
 _pkgname=krunner-vscodeprojects
+pkgname=$_pkgname-git
 pkgver=r28.c5da093
 pkgrel=1
 pkgdesc="Open VSCode Project Manager projects from Krunner (git)"
 arch=('any')
+url="https://github.com/alex1701c/$_pkgname.git"
+groups=()
 depends=(
   krunner
   kservice
@@ -16,12 +17,11 @@ makedepends=(
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-url="https://github.com/alex1701c/$_pkgname.git"
 install="${_pkgname}.install"
 license=(LGPL3)
 options=()
 source=("git+$url")
-sha256sums=('SKIP')
+md5sums=('SKIP')
 
 pkgver() {
   cd $_pkgname || exit 1
