@@ -61,9 +61,12 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  # Remove file conflicting with host binutils and manpages for MS Windows tools
+  # Remove manpages for MS Windows tools
   rm "$pkgdir"/usr/share/man/man1/$_target-{dlltool,windres,windmc}*
 
   # Remove info documents that conflict with host version
   rm -r "$pkgdir"/usr/share/info
+
+  # Remove .so that conflict with host version
+  rm -r "$pkgdir"/usr/lib
 }
