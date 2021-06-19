@@ -1,0 +1,18 @@
+pkgbase = krunner-vscodeprojects-git
+	pkgdesc = Open VSCode Project Manager projects from Krunner (git)
+	pkgver = r28.c5da093
+	pkgrel = 1
+	url = https://github.com/alex1701c/krunner-vscodeprojects.git
+	install = krunner-vscodeprojects.install
+	arch = any
+	license = LGPL3
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = krunner
+	depends = kservice
+	provides = krunner-vscodeprojects
+	conflicts = krunner-vscodeprojects
+	source = git+https://github.com/alex1701c/krunner-vscodeprojects.git
+	sha256sums = SKIP
+
+pkgname = krunner-vscodeprojects-git
