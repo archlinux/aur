@@ -1,0 +1,16 @@
+pkgbase = vim-toast-git
+	pkgdesc = A colorful, medium-contrast colorscheme based on Tomorrow
+	pkgver = r22.6ef5cea
+	pkgrel = 1
+	url = https://github.com/jsit/toast.vim
+	arch = any
+	groups = vim-plugins
+	license = unknown
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-toast
+	conflicts = vim-toast
+	source = vim-toast-git::git+https://github.com/jsit/toast.vim
+	sha256sums = SKIP
+
+pkgname = vim-toast-git
