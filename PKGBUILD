@@ -2,13 +2,13 @@
 
 _pkgbase=zenmonitor
 pkgname=zenmonitor3-git
-pkgver=56.26d4f9e
+pkgver=77.f8e029c
 pkgrel=1
 pkgdesc="Zenmonitor3 is monitoring software for AMD Zen-based CPUs, now with Zen 3 support! "
 arch=('x86_64' 'i686')
 url="https://github.com/Ta180m/zenmonitor3"
 license=('GPL')
-depends=('zenpower-zen3-dkms' 'gtk3')
+depends=('zenpower3-dkms' 'gtk3')
 optdepends=('polkit: support application shortcut to launch Zen monitor as root')
 makedepends=('git')
 provides=('zenmonitor')
