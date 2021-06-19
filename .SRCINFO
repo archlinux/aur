@@ -1,0 +1,19 @@
+pkgbase = supercollider-mkfaustplugins-git
+	pkgdesc = SuperCollider plugins written in Faust
+	pkgver = r12.15969fd
+	pkgrel = 1
+	url = https://github.com/madskjeldgaard/mkfaustplugins
+	arch = any
+	groups = pro-audio
+	groups = supercollider-plugins
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = faust
+	makedepends = ruby-rexml
+	depends = supercollider
+	source = supercollider-mkfaustplugins-git-r12.15969fd::git+https://github.com/madskjeldgaard/mkfaustplugins.git
+	md5sums = SKIP
+
+pkgname = supercollider-mkfaustplugins-git
+
