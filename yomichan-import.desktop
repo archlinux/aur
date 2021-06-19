@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.4
+Type=Application
+Name=Yomichan Import
+Comment=External dictionary importer for Yomichan
+Icon=yomichan
+TryExec=yomichan-gtk
+Exec=yomichan-gtk
+Categories=Utility;
