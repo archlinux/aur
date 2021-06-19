@@ -1,7 +1,7 @@
 # Maintainer: Philip Nelson <7PMNelson@gmail.com>
 _pkgname=mwcleric
 pkgname=python-mwcleric-git
-pkgdesc="A library is a client for connecting to, and occasionally editing, the Fandom/Gamepedia esports wikis"
+pkgdesc="General purpose tools for MediaWiki editing using Python"
 pkgver=0e94b5c
 pkgrel=1
 arch=('any')
