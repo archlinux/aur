@@ -1,6 +1,6 @@
 --- a/Makefile
 +++ b/Makefile
-@@ -50,10 +50,10 @@ build: $(CLI)
+@@ -43,10 +43,10 @@ build: $(CLI)
  
  
  $(XD): webui
@@ -13,7 +13,7 @@
  
  $(CLI): $(XD)
  	$(RM) $(CLI)
-@@ -88,7 +88,7 @@ webui: $(WEBUI_CORE)
+@@ -81,7 +81,7 @@ webui: $(WEBUI_CORE)
  	$(CP) $(WEB_FILES) $(REPO)/lib/rpc/assets/
  
  no-webui:
