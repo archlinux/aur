@@ -1,0 +1,8 @@
+[Unit]
+Description=Monitor to Load-On-Demand the VMware USB Arbitrator
+
+[Path]
+PathModified=/run/vmware
+
+[Install]
+WantedBy=paths.target

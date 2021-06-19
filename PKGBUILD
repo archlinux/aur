@@ -17,7 +17,7 @@ pkgname=vmware-workstation
 pkgver=16.1.2
 _buildver=17966106
 _pkgver=${pkgver}_${_buildver}
-pkgrel=1
+pkgrel=2
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -66,6 +66,8 @@ source=(
   'vmware-networks-configuration.service'
   'vmware-networks.service'
   'vmware-usbarbitrator.service'
+  'vmware-networks.path'
+  'vmware-usbarbitrator.path'
 
   'dkms.conf.in'
   'Makefile'
@@ -84,6 +86,8 @@ sha256sums=(
   '9b4fbe0ba83f761a2eb9ecd05d48428f8b0a5b3abd8404ccbd928408e682f02b'
   'c0a5aea785db06921fb350d36d5e0fd9a14f5eee0c835686ec6fea1af8c92245'
   'd7a9fbf39a0345ae2f14f7f389f30b1110f605d187e0c241e99bbb18993c250d'
+  '7772e6860f055bf4fc0f6233a6ae61cdb3ee34817490319de811c1a42505b170'
+  '2e2b1780ad08bcac2f3bc216e0c19bb0cd90ec8dd885b57df8fef3cd13aaaf14'
 
   '10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e'
   '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
@@ -283,7 +287,9 @@ fi
   for service_file in \
     vmware-networks-configuration.service \
     vmware-networks.service \
-    vmware-usbarbitrator.service
+    vmware-usbarbitrator.service \
+    vmware-networks.path \
+    vmware-usbarbitrator.path
   do
     install -Dm 644 \
       "$srcdir/$service_file" \
