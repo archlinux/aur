@@ -1,6 +1,6 @@
 pkgbase = chicago95-git
 	pkgdesc = Windows 95 inspired theme
-	pkgver = 2.0.1.r65.g410d59f
+	pkgver = 2.0.1.r70.gc97678a
 	pkgrel = 1
 	url = https://github.com/grassmunk/Chicago95
 	arch = any
@@ -24,4 +24,3 @@ pkgname = xcursor-chicago95-git
 	pkgdesc = Windows 95 inspired cursors
 	provides = xcursor-chicago95
 	conflicts = xcursor-chicago95
-
