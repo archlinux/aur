@@ -1,0 +1,11 @@
+pkgbase = brainfuck-interp
+	pkgdesc = a brainfuck interpreter written in rust
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = gtk3
+	source = https://gitlab.sokoll.com/moritz/brainfuck/-/archive/master/brainfuck-master.tar.gz
+	sha256sums = 75491f1acdb3d8356d9666f1d6d0ed9ef7f80cb10976ca8564342e35a0a8f212
+
+pkgname = brainfuck-interp
