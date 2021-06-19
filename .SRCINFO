@@ -1,7 +1,7 @@
 pkgbase = nodejs-mapscii
 	pkgdesc = Map+Ascii -> MapSCII! Console Map Viewer.
 	pkgver = 0.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/rastapasta/mapscii#readme
 	arch = any
 	license = MIT
@@ -13,4 +13,3 @@ pkgbase = nodejs-mapscii
 	sha1sums = fecb9e96de9408effa8819cf83e5a5d379324198
 
 pkgname = nodejs-mapscii
-

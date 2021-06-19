@@ -1,12 +1,12 @@
 _npmname=mapscii
 _npmver=0.3.1
 pkgname=nodejs-mapscii
-pkgver=0.3.1
-pkgrel=3
+pkgver=$_npmver
+pkgrel=4
 pkgdesc="Map+Ascii -> MapSCII! Console Map Viewer."
 arch=(any)
 url="https://github.com/rastapasta/mapscii#readme"
-license=(MIT)
+license=('MIT')
 depends=('nodejs')
 makedepends=('npm' 'jq')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
@@ -14,7 +14,7 @@ noextract=($_npmname-$_npmver.tgz)
 sha1sums=(fecb9e96de9408effa8819cf83e5a5d379324198)
 
 package() {
-  npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
+  npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
 
   # Non-deterministic race in npm gives 777 permissions to random directories.
   # See https://github.com/npm/cli/issues/1103 for details.
