@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-sentencepiece-git
-pkgver=0.1.95.r676
+pkgver=0.1.96.r693
 pkgrel=1
 pkgdesc='Sentencepiece text tokenizer (Python version)'
 arch=('any')
