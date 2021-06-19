@@ -15,6 +15,6 @@ pkgbase = python-ufo2ft
 	depends = python-fonttools>=4.21.1
 	optdepends = python-compreffor
 	source = https://pypi.org/packages/source/u/ufo2ft/ufo2ft-2.21.0.zip
-	sha256sums = 9185b5cbd299adac7aa9c41a917797b3797e98bd801eba293a3ce9514cd4104f
+	sha256sums = 8387241b9a36ed906a0b99afc80d58cee72ea5266ec0016f17456f765be73300
 
 pkgname = python-ufo2ft

@@ -13,7 +13,7 @@ optdepends=('python-compreffor')
 license=('MIT')
 arch=('any')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.zip")
-sha256sums=('9185b5cbd299adac7aa9c41a917797b3797e98bd801eba293a3ce9514cd4104f')
+sha256sums=('8387241b9a36ed906a0b99afc80d58cee72ea5266ec0016f17456f765be73300')
 
 package() {
     cd "${_pkgname}-${pkgver}"
