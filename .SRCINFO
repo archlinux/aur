@@ -1,6 +1,6 @@
 pkgbase = conway-gol-git
 	pkgdesc = Personal implementation of Conway's Game Of Life. See the README for more info.
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://gitlab.com/Epacnoss/conway-gol.git
 	arch = x86_64
