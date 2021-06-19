@@ -20,7 +20,7 @@ source=(
   "https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-headers-current-${_target}_${_armbver}-trunk.${_armbrel}_arm64.deb"
 )
 sha512sums=(
-  'aca591b5a2e838754e3c5fd2c0e50098ad54c2d0f990de5bf9cff8608e881daf0e37132294ed1a0e0a7b9e1c194c0b89f95da001d94febdb25a01c409060e3ac'
+  'f01e7925b262d2874a8a991b1f27d057356a2a384d2012b61be5a631d4e4d7cf87461c8fb9e7f183831f5a829ad204897f1f0545a52df6288a0e04a5c2e31b96'
   'SKIP'
   'SKIP'
   'SKIP'
