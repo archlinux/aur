@@ -1,11 +1,12 @@
 pkgbase = perl-test-most
 	pkgdesc = Most commonly needed test functions and features
 	pkgver = 0.37
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Test-Most
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	depends = perl
 	depends = perl-exception-class
 	depends = perl-test-deep
 	depends = perl-test-differences
@@ -15,4 +16,3 @@ pkgbase = perl-test-most
 	sha256sums = 533370141eb9f18cf4ac380f6ded2ab57802a6e184008a80fd2304bfcc474fc7
 
 pkgname = perl-test-most
-
