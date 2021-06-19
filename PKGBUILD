@@ -2,7 +2,7 @@
 
 _pkgname=wirerope
 pkgname=python-wirerope
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Wrapper interface for python callable"
 url="https://pypi.python.org/pypi/wirerope/"
@@ -13,7 +13,7 @@ license=('BSD')
 arch=('any')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/youknowone/${_pkgname}/archive/${pkgver}.tar.gz")
 
-sha256sums=('48b7733ac4a2680e93c939099aad1e50a495373fde29c34e86f6425de5121f5a')
+sha256sums=('d2584179b62a1c6861aaa5ff8985fbe18a59ae16951c7f1042f03b930f42c2a1')
 
 check() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
