@@ -1,6 +1,6 @@
 # Maintainer: Mads Kjeldgaard<mail@madskjeldgaard.dk>
 pkgname=supercollider-vstplugin-git
-pkgver=r1714.13447dd
+pkgver=r1785.eb2e682
 pkgrel=1
 pkgdesc='The IEM vstplugin plugin for SuperCollider'
 arch=('x86_64')
@@ -26,7 +26,6 @@ build() {
 
 		cd "$srcdir/$pkgname-$pkgver"
 		git submodule update --init --recursive
-		git checkout develop
 
 		# Get VST2
 		.git-ci/get_vst2.sh

@@ -1,6 +1,6 @@
 pkgbase = supercollider-vstplugin-git
 	pkgdesc = The IEM vstplugin plugin for SuperCollider
-	pkgver = r1714.13447dd
+	pkgver = r1785.eb2e682
 	pkgrel = 1
 	url = https://git.iem.at/pd/vstplugin
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = supercollider-vstplugin-git
 	depends = supercollider
 	depends = lib32-libx11
 	conflicts = supercollider-vstplugin
-	source = supercollider-vstplugin-git-r1714.13447dd::git+https://git.iem.at/pd/vstplugin.git
+	source = supercollider-vstplugin-git-r1785.eb2e682::git+https://git.iem.at/pd/vstplugin.git
 	md5sums = SKIP
 
 pkgname = supercollider-vstplugin-git
