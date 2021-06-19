@@ -2,10 +2,10 @@
 
 pkgname=python-opensubtitlesdownload
 _pkgname=OpenSubtitlesDownload
-pkgver=4.1
-pkgrel=2
+pkgver=5.0
+pkgrel=1
 arch=('any')
-pkgdesc="Python nautilus-compatible script to download subtitles form opensubtitles.org"
+pkgdesc="An application to help you quickly find and download subtitles for your favorite videos"
 url="https://emeric.io/OpenSubtitlesDownload"
 license=('GPL3')
 provides=('OpenSubtitlesDownload')
@@ -15,7 +15,7 @@ optdepends=(
     'kdialog: only needed for KDE based desktop environments'
 )
 source=("$_pkgname-$pkgver::https://github.com/emericg/$_pkgname/archive/v$pkgver.tar.gz")
-md5sums=('ada08ad3bd6e0fc18212bb98ee6e5d4f')
+md5sums=('a1f27ddedfeebbbadfb7456d31fa4d78')
 
 prepare() {
   sed 's/"%F"/%F/' -i "$_pkgname-$pkgver/desktop-files/$_pkgname-gnome.desktop"
