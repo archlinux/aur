@@ -1,7 +1,7 @@
 pkgbase = mconnect-git
 	pkgdesc = KDE Connect protocol implementation in Vala/C for non-KDE desktops
 	pkgver = 409.210b435
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bboozzoo/mconnect
 	install = mconnect-git.install
 	arch = i686
@@ -21,8 +21,10 @@ pkgbase = mconnect-git
 	depends = libnotify
 	provides = mconnect
 	conflicts = mconnect
+	options = !emptydirs
 	source = mconnect::git+https://github.com/bboozzoo/mconnect.git#branch=master
-	md5sums = SKIP
+	source = mconnect_utils.patch
+	sha256sums = SKIP
+	sha256sums = 11a8e281a405e3d49c0b504dae03fcd33d1dbb5d278609d0163ecfec88b1ae1d
 
 pkgname = mconnect-git
-
