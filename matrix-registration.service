@@ -5,6 +5,7 @@ Requires=network-online.target
 
 [Service]
 Type=simple
+ExecStartPre=/usr/bin/alembic -c /etc/matrix-registration/alembic.ini -x config=/etc/matrix-registration/config.yaml upgrade head
 ExecStart=/usr/bin/matrix-registration --config-path /etc/matrix-registration/config.yaml serve
 WorkingDirectory=/var/lib/matrix-registration
 DynamicUser=true
