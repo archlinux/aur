@@ -1,7 +1,8 @@
-# Maintainer: b6b <b6bb at pm dot me>
+# Maintainer: John Gerritse <tyrannis dot hawk at gmail dot com>
 
 pkgname=python-pysubs2
-pkgver=0.2.4
+_name=${pkgname#python-}
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='A Python library for editing subtitle files'
 arch=(any)
@@ -9,8 +10,8 @@ url=https://pypi.org/project/pysubs2
 license=(MIT)
 depends=(python)
 makedepends=(python-setuptools)
-source=("https://files.pythonhosted.org/packages/8a/83/5ebaf5a1d6f04ae21c2bdc16dcdba4a950b1c0b10f0fe83e71f9c5738e33/pysubs2-$pkgver.tar.gz")
-sha256sums=(07f9bb5da0efe8238b88c9ee35cc42ad8c6a3ffc2e4bf8f3bff6d463d02a4b6f)
+source=('https://files.pythonhosted.org/packages/0c/5d/ea6cb4fda284b18a034008e08650e68885cd5fca90dc17f45886ce15320d/pysubs2-$pkgver.tar.gz')
+sha256sums=('6bac5307455eb1f63e1c1d696a4c4d78615765ecada83c323e28507e9bd9d887')
 
 build() {
   cd "${srcdir}/pysubs2-${pkgver}"
