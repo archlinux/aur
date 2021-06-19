@@ -1,6 +1,6 @@
 pkgbase = python-javaobj-py3
 	pkgdesc = Module for reading and writing serialized java objects
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://pypi.org/project/javaobj-py3/
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = python-javaobj-py3
 	checkdepends = maven
 	makedepends = python-setuptools
 	depends = python
-	source = python-javaobj-py3-0.4.2.tar.gz::https://github.com/tcalmant/python-javaobj/archive/0.4.2.tar.gz
-	sha256sums = 056cee21aa8297e66b9381e5e0b04b6c9427bd022a67edc711d89ba677f3f8af
+	source = python-javaobj-py3-0.4.3.tar.gz::https://github.com/tcalmant/python-javaobj/archive/0.4.3.tar.gz
+	sha256sums = 49c1a55228d7709f2c537e6684ebd1a3f8faf25d2fe6979104054f0e811bf452
 
 pkgname = python-javaobj-py3
-
