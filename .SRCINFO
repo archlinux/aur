@@ -1,0 +1,25 @@
+pkgbase = caterva-git
+	pkgdesc = open source C library specially designed to deal with large multidimensional, chunked, compressed datasets
+	pkgver = 0.4.0.r142.g6681f3e
+	pkgrel = 1
+	url = https://caterva.readthedocs.io/en/latest
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = lz4
+	depends = zlib
+	depends = zstd
+	provides = caterva
+	conflicts = caterva
+	options = staticlibs
+	source = git+https://github.com/Blosc/caterva.git
+	sha256sums = SKIP
+
+pkgname = caterva-git
