@@ -4,7 +4,7 @@
 
 _pkgname=fcp
 pkgname=fcp-git
-pkgver=v0.1.0.r0.ga1e61f7
+pkgver=v0.1.0.r2.g24dc2cb
 pkgrel=1
 pkgdesc="A faster rust cp command"
 arch=('i686' 'x86_64')
@@ -12,6 +12,8 @@ url="https://github.com/Svetlitski/fcp"
 license=('BSD')
 depends=('glibc' )
 makedepends=('git' 'rust' 'cargo')
+provides=('fcp')
+conflicts=('fcp')
 source=("${_pkgname}::git+${url}")
 sha256sums=('SKIP')
 
