@@ -2,7 +2,7 @@
 
 _pkgname=weblate_schemas
 pkgname=python-weblate_schemas
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="Schemas used in Weblate"
 url="https://github.com/WeblateOrg/weblate_schemas"
@@ -13,7 +13,7 @@ license=('MIT')
 arch=('any')
 source=("https://github.com/WeblateOrg/${_pkgname}/archive/${pkgver}.tar.gz")
 
-sha256sums=('bcc78efc57bc128c7aa48de0db1022ef84bcd8ab74ca960ddf2327fdfe302078')
+sha256sums=('c6662e802d4a8208db091db4907e2900a0b014b64a6f09b6919a4bc73573a016')
 
 check() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
