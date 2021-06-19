@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p
-pkgver=20210610
+pkgver=20210613
 pkgrel=1
 pkgdesc='Mupen64Plus with custom plugins and Qt5 GUI'
 arch=('x86_64')
@@ -65,7 +65,5 @@ package() {
     
     # other plugins and components
     install -D -m644 m64p/mupen64plus/libdiscord_game_sdk.so -t "${pkgdir}/usr/lib"
-    install -D -m644 m64p/mupen64plus/mupen64plus-input-qt.so -t "${pkgdir}/usr/lib/mupen64plus"
-    install -D -m644 m64p/mupen64plus/mupen64plus-rsp-parallel.so -t "${pkgdir}/usr/lib/mupen64plus"
-    install -D -m644 m64p/mupen64plus/mupen64plus-video-parallel.so -t "${pkgdir}/usr/lib/mupen64plus"
+    install -D -m644 m64p/mupen64plus/mupen64plus-{input-qt,{rsp,video}-parallel}.so -t "${pkgdir}/usr/lib/mupen64plus"
 }
