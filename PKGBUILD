@@ -2,7 +2,7 @@
 # Contributor: Mirko Brombin <send@mirko.pm>
 
 pkgname=amusiz
-pkgver=1.2.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='A GTK Amazon Music client for Linux'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('hicolor-icon-theme' 'dconf' 'python' 'libhandy' 'gtk3' 'python-gobject' 'webkit2gtk' 'gst-plugins-good' 'gst-plugins-base' 'gst-libav' )
 makedepends=('meson' 'ninja')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mirkobrombin/Amusiz/archive/${pkgver}.tar.gz")
-sha256sums=('0fc483073ffd0a983a0ba3ceda6ecd8d9c9785f8ce254125be78dd48babcc07b')
+sha256sums=('197d269c73e0b10b52d4150926334f6760c4bcb240864f72273530a62138280d')
 
 build() {
   cd "Amusiz-${pkgver}"
