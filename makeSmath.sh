@@ -1,8 +1,8 @@
 #!/bin/bash
 
-_pkgcode=5TGzK
-pkgver=0_99_7030
-pkgrel=2
+_pkgcode=oVRx7
+pkgver=0_99_7822
+pkgrel=1
 
 wget --post-data "RefMem=&PostBack=${_pkgcode}" https://smath.com/file/${_pkgcode}/SMathStudioDesktop.${pkgver}.Mono.tar.gz
 
@@ -17,8 +17,8 @@ sed -i "23s/.*/md5sums=\(\'${_pkgmd5sum}\'\)/" PKGBUILD
 rm SMathStudioDesktop.${pkgver}.Mono.tar.gz
 
 makepkg --printsrcinfo > .SRCINFO
-#First do the git commit by hand
-git add PKGBUILD .SRCINFO
+
+git add PKGBUILD .SRCINFO makeSmath.sh
 git commit -m "Update to ${pkgver} rel=${pkgrel}"
 # git push
 
