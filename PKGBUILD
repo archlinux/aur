@@ -3,13 +3,15 @@
 _npmname=dockerfile-language-server-nodejs
 pkgname=nodejs-dockerfile-language-server-nodejs
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A language server for Dockerfiles powered by Node.js, TypeScript, and VSCode technologies.'
 arch=('any')
 url='https://github.com/rcjsuen/dockerfile-language-server-nodejs'
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
+provides=('dockerfile-language-server')
+conflicts=('dockerfile-language-server-bin')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 sha256sums=('c0c63ba24b1f97b2242719c30fccc0b9bf82bb05a1e20464ddadb3b60dcf1746')
 noextract=("${pkgname}-${pkgver}.tgz")
