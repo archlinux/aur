@@ -1,7 +1,7 @@
 pkgbase = omalleys-irish-whistles
 	pkgdesc = Omalleys Irish Whistles Sample Library (VST Plugin).
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://librewave.com/product/omalleys-irish-whistles/
 	arch = x86_64
 	groups = pro-audio
@@ -10,8 +10,6 @@ pkgbase = omalleys-irish-whistles
 	makedepends = xdg-user-dirs
 	makedepends = unzip
 	depends = libcurl-gnutls
-	source = OMalleys Irish Whistles.desktop
-	md5sums = 748d7a85b4069cc877452efc035ba2af
+	depends = glibc
 
 pkgname = omalleys-irish-whistles
-
