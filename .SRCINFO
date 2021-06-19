@@ -11,9 +11,7 @@ pkgbase = ros2-galactic
 	depends = sip4
 	source = ros2::git+https://github.com/ros2/ros2#tag=release-galactic-20210523
 	source = google_benchmark_vendor.patch
-	source = mimick_vendor.patch
 	sha256sums = SKIP
 	sha256sums = 609a5260736192608582c0f0a0fd4da09a9185d95d452a92d9527af38d720f6a
-	sha256sums = 9904000aa5f63e9aa600cb4a07b0caef48444f1dd6179a650242c0634cf5051e
 
 pkgname = ros2-galactic

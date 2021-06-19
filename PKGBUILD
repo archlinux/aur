@@ -17,12 +17,10 @@ depends=(
 source=(
 	"ros2::git+https://github.com/ros2/ros2#tag=release-galactic-20210523"
 	"google_benchmark_vendor.patch"
-	"mimick_vendor.patch"
 )
 sha256sums=(
 	'SKIP'
 	"609a5260736192608582c0f0a0fd4da09a9185d95d452a92d9527af38d720f6a"
-	"9904000aa5f63e9aa600cb4a07b0caef48444f1dd6179a650242c0634cf5051e"
 )
 install=ros2-galactic.install
 
@@ -40,9 +38,6 @@ prepare() {
 	vcs import $srcdir/ros2/src < $srcdir/ros2/ros2.repos
 
 	# Fix some issues in the code (TODO: Gradually move to upstream)
-	## mimick_vendor:
-	git -C $srcdir/ros2/src/ros2/mimick_vendor checkout .
-	git -C $srcdir/ros2/src/ros2/mimick_vendor apply $srcdir/mimick_vendor.patch
 	## google_benchmark_vendor
 	git -C $srcdir/ros2/src/ament/google_benchmark_vendor checkout .
 	git -C $srcdir/ros2/src/ament/google_benchmark_vendor apply $srcdir/google_benchmark_vendor.patch
