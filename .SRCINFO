@@ -7,18 +7,11 @@ pkgbase = vim-colors-pencil-git
 	groups = vim-plugins
 	license = MIT
 	makedepends = git
+	depends = vim-plugin-runtime
+	optdepends = vim-airline
+	provides = vim-colors-pencil
+	conflicts = vim-colors-pencil
 	source = vim-colors-pencil-git::git+https://github.com/preservim/vim-colors-pencil
 	md5sums = SKIP
 
 pkgname = vim-colors-pencil-git
-	depends = vim-plugin-runtime
-	provides = vim-colors-pencil
-	conflicts = vim-colors-pencil
-
-pkgname = vim-airline-pencil-git
-	depends = vim-airline
-	depends = vim-plugin-runtime
-	optdepends = vim-colors-pencil: Base vim colorscheme
-	provides = vim-airline-pencil
-	conflicts = vim-airline-pencil
-
