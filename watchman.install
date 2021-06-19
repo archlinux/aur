@@ -1,0 +1,16 @@
+post_install() {
+  # Enable socket by default
+  systemctl --global enable watchman.socket
+}
+
+post_upgrade() {
+  if (( $(vercmp $2 2021.05.24.00-1) < 0)); then
+    systemctl --global enable watchman.socket
+  fi
+}
+
+pre_remove() {
+  systemctl --global disable watchman.socket
+}
+
+# vim:set sw=2 et:
