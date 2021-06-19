@@ -1,5 +1,6 @@
-# Maintainer: Étienne Deparis <etienne@depar.is>
-# Maintainer:xgdgsc <xgdgsc@gmail.com>
+# Maintainer: hamki <hamki.do2000@gmail.com>
+# Contribtor: Étienne Deparis <etienne@depar.is>
+# Contribtor: xgdgsc <xgdgsc@gmail.com>
 
 pkgname=emacs-multiple-cursors
 _pkgname=multiple-cursors
@@ -11,7 +12,7 @@ url="https://github.com/magnars/multiple-cursors.el"
 license=("GPL3")
 install=$pkgname.install
 depends=("emacs")
-source=("https://github.com/magnars/$_pkgname.el/archive/$pkgver.tar.gz")
+source=("https://github.com/magnars/$_pkgname.el/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('33a1c193cf8bcb0c80f71a154cbbc1956ee80a79ec63ebcaf3ea6fb6298c3042')
 
 build() {
