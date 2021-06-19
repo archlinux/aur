@@ -2,19 +2,19 @@
 
 pkgname=ultra_outliner
 pkgver=0.9.13b1849
-pkgrel=2
+pkgrel=3
 pkgdesc='Card-based outlining software for screenwriters, novelists and all story writers.'
 url='http://ultraoutliner.com'
 license=('custom')
 arch=('x86_64')
 depends=('libgl' 'libutil-linux' 'libxi')
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://gitlab.com/ultrablox/ultraoutliner//uploads/f75871d486e701c949f5c7f1e6ee4448/ultraoutliner-ubuntu-x64-v.${pkgver}-SNAPSHOT.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://gitlab.com/ultrablox/ultraoutliner//uploads/0b4fc8e91d43ded8430c214b3e9ca139/ultraoutliner-ubuntu-x86-v.${pkgver}-SNAPSHOT.tar.gz"
   "${pkgname}.desktop"
   "${pkgname}.png"
   "${pkgname}.sh"
 )
-md5sums=('8674128542b1eead8f997431cbb68d96'
+md5sums=('aea75e1862fd6620605b825cbc9f816d'
          'abd3a8d54712bde87cc044412f9da39e'
          '8bd89e964ec628dfb171f44484ae3c6a'
          'a68d14e71ab99b40fd2be80f6907cce8')
