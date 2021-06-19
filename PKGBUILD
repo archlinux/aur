@@ -6,9 +6,9 @@
 pkgname='multiload-ng-common'
 pkgdesc='Modern graphical system monitor, common files'
 pkgver=1.5.2
-pkgrel=3
+pkgrel=4
 
-makedepends=('intltool')
+makedepends=('intltool' 'gtk3')
 depends=()
 
 conflicts=('multiload-ng-common-git')
@@ -25,7 +25,7 @@ build() {
     cd "multiload-ng-$pkgver"
     patch -p1 -i $srcdir/build-fix.patch
     ./autogen.sh
-    ./configure --prefix=/usr --with-gtk=2.0 --without-awn --without-indicator --without-lxpanel --without-mate --without-standalone --without-systray --without-xfce4
+    ./configure --prefix=/usr --with-gtk=3.0 --without-awn --without-indicator --without-lxpanel --without-mate --without-standalone --without-systray --without-xfce4
     make
 } 
 
