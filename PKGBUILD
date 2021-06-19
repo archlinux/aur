@@ -4,6 +4,7 @@ pkgname=bdf2psf
 pkgdesc='Debian utility to convert BDF font files to PSF format.'
 pkgver=1.193~deb10u1
 pkgrel=1
+epoch=1
 arch=('any')
 license=('GPL2+')
 url='https://packages.debian.org/sid/bdf2psf'
