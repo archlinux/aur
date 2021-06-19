@@ -1,4 +1,4 @@
-pkgbase = python-mwrogue
+pkgbase = python-mwrogue-git
 	pkgdesc = A library is a client for connecting to, and occasionally editing, the Fandom/Gamepedia esports wikis
 	pkgver = dcadb82
 	pkgrel = 1
@@ -16,4 +16,4 @@ pkgbase = python-mwrogue
 	source = git://github.com/RheingoldRiver/mwrogue
 	md5sums = SKIP
 
-pkgname = python-mwrogue
+pkgname = python-mwrogue-git

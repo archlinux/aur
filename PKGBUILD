@@ -1,6 +1,6 @@
 # Maintainer: Philip Nelson <7PMNelson@gmail.com>
 _pkgname=mwrogue 
-pkgname=python-mwrogue
+pkgname=python-mwrogue-git
 pkgdesc="A library is a client for connecting to, and occasionally editing, the Fandom/Gamepedia esports wikis"
 pkgver=dcadb82
 pkgrel=1
