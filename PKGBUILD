@@ -3,7 +3,7 @@
 pkgname=python-pyspellchecker
 _pkgname=pyspellchecker
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Pure python spell checker based on work by Peter Norvig"
 arch=('any')
 url="https://github.com/barrust/pyspellchecker"
@@ -22,4 +22,5 @@ build() {
 package() {
     cd "${_pkgname}-${pkgver}"
     LANG=en_US.UTF-8 python setup.py install --root=$pkgdir --optimize=1 --skip-build
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
