@@ -3,8 +3,8 @@
 pkgname=apnotes
 pkgver=0.3.5
 pkgrel=1
-pkgdesc='Interface for Linux to View, Edit, Create, Backup and Sync Notes from apple devices'
-url='https://github.com/findus/apple-notes-bridge'
+pkgdesc='Interface for Linux to View, Edit, Create and Sync Notes written on apple devices'
+url='https://github.com/findus/apnotes'
 arch=('x86_64')
 license=('MIT')
 makedepends=('rust')
