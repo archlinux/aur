@@ -103,12 +103,6 @@ export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_
 prepare() {
   cd linux-${_major}
 
-  # hacky work around for xz not getting extracted
-  # https://bbs.archlinux.org/viewtopic.php?id=265115
-  if [[ ! -f "$srcdir/patch-${pkgver}-xanmod${xanmod}" ]]; then
-    xz -dc "$SRCDEST/patch-${pkgver}-xanmod${xanmod}.xz" > "$srcdir/patch-${pkgver}-xanmod${xanmod}"
-  fi
-
   # Apply Xanmod patch
   patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}
 
