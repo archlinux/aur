@@ -1,10 +1,10 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="python-pygtrie-git"
-pkgver=2.2.r1.g64ee083
+pkgver=2.4.2.r0.g0c8b2b6
 pkgrel=1
 pkgdesc="Python library implementing a trie data structure. Only builds the Python 3 version"
-url="https://github.com/google/pygtrie"
+url="https://github.com/mina86/pygtrie"
 license=("Apache")
 arch=("any")
 provides=("python-pygtrie" "python-pygtrie-git")
