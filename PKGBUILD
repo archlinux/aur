@@ -2,7 +2,7 @@
 
 _pkgbase=rtw89
 pkgname=${_pkgbase}-dkms
-pkgver=r66.ad12cc7
+pkgver=r69.b0ad99f
 pkgrel=1
 _srcver=${pkgver#*.}
 pkgdesc="Driver for Realtek 8852AE, an 802.11ax device"
@@ -13,7 +13,7 @@ depends=('dkms')
 conflicts=("${_pkgbase}")
 source=("https://github.com/lwfinger/rtw89/archive/${_srcver}.tar.gz"
         'dkms.conf')
-sha256sums=('486dbb22358931c36b234f213a55076eb5c3e8da917eab184e2dd434accc89b0'
+sha256sums=('af102e5406ed1f7625bc00e7ac38ea9e4b7219e81b85e1b2ad382f1728d878aa'
             'd4015a9c63b86baa120b558f4acc19c60fe5cbea7ded338173e08cec47327b40')
 
 package() {
