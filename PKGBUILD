@@ -1,10 +1,10 @@
 # Maintainer: Stefan Eekhof <stefaneekhof@gmail.com>
 pkgname=ctc
-pkgver=1.0.0.A4
+pkgver=1.0.0.A5
 
-_cyanversion=1.0.0.A13 # Needed to find the right version ZIP
+_cyanversion=1.0.0.A14 # Needed to find the right version ZIP
 
-pkgrel=7
+pkgrel=1
 pkgdesc="CTC -- Cyan Trust Container CLI, frontend for creating CTC trust containers"
 arch=( 'any' )
 url=""
@@ -22,17 +22,17 @@ install=
 changelog=
 source=("https://aerialworks.ddns.net/maven/org/asf/cyan/CyanLoader-Sources/$_cyanversion/CyanLoader-Sources-$_cyanversion-full.zip")
 noextract=()
-md5sums=( "8064e2a0b9b1aaf4ef880694e4ae1709" )
+md5sums=( "db275ac7a438639381304da44fffd24f" )
 
 build() {
     cd CyanComponents
-    gradle jar
+    gradle jar -PnoClient=true -PnoServer=true -PuncheckedClient=true
     cd ../CyanUtil
-    gradle jar
+    gradle jar -PnoClient=true -PnoServer=true -PuncheckedClient=true
     cd ../ClassTrust
-    gradle jar
+    gradle jar -PnoClient=true -PnoServer=true -PuncheckedClient=true
     cd ../TrustExplorer
-    gradle jar
+    gradle jar -PnoClient=true -PnoServer=true -PuncheckedClient=true
 }
 
 package() {
