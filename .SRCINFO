@@ -1,0 +1,19 @@
+pkgbase = python-mwrogue
+	pkgdesc = A library is a client for connecting to, and occasionally editing, the Fandom/Gamepedia esports wikis
+	pkgver = dcadb82
+	pkgrel = 1
+	url = https://github.com/RheingoldRiver/mwrogue
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-mwparserfromhell
+	depends = python-pytz
+	depends = python-mwclient
+	depends = python-mwcleric-git
+	depends = python-unidecode
+	source = git://github.com/RheingoldRiver/mwrogue
+	md5sums = SKIP
+
+pkgname = python-mwrogue
