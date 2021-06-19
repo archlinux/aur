@@ -2,7 +2,8 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
-pkgname=mutter-x11-scaling
+_pkgname=mutter
+pkgname=$_pkgname-x11-scaling
 pkgver=40.2.1
 pkgrel=1
 pkgdesc="A window manager for GNOME (with X11 fractional scaling patch)"
@@ -15,8 +16,8 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          xorg-xwayland graphene libxkbfile)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server)
 checkdepends=(xorg-server-xvfb pipewire-media-session)
-conflicts=(mutter)
-provides=(mutter libmutter-8.so)
+conflicts=($_pkgname)
+provides=($_pkgname libmutter-8.so)
 groups=(gnome)
 install=mutter.install
 _commit=69f35b84b22e15cab617ab4f2bbcfc60589a5382  # tags/40.2.1^0
@@ -26,12 +27,12 @@ sha256sums=('SKIP'
             '19de314590e3311563b11da3305d8e9c8ba1f859fe65db668ccd0457250a9ca5')
 
 pkgver() {
-  cd $pkgname
+  cd $_pkgname
   git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
-  cd $pkgname
+  cd $_pkgname
 
   # Add scaling support using randr under x11 (Marco Trevisan)
   patch -p1 -i ../x11-Add-support-for-fractional-scaling-using-Randr.patch
@@ -40,7 +41,7 @@ prepare() {
 build() {
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
   LDFLAGS+=" -Wl,-Bsymbolic-functions"
-  arch-meson $pkgname build \
+  arch-meson $_pkgname build \
     -D egl_device=true \
     -D wayland_eglstream=true \
     -D installed_tests=false \
