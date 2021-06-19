@@ -1,13 +1,11 @@
-# Maintainer Alexander Mcmillan <linuxguy93@gmail.com>
-
 pkgname=ctrecordings-plugin-collection
 pkgver=$(date +%Y%m%d)
 pkgrel=1
-pkgdesc="Cut Through Recordings Plugin Collection."
+pkgdesc="Cut Through Recordings Plugin Collection"
 arch=('x86_64')
 url="https://www.cutthroughrecordings.com/downloads"
 license=('EULA')
-groups=('pro-audio' 'vst-plugins' 'lv2-plugins')
+groups=('lv2-plugins' 'pro-audio' 'vst-plugins' 'vst3-plugins')
 depends=('glibc' 'libcurl-gnutls')
 makedepends=('xdg-user-dirs' 'unzip')
 

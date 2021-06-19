@@ -1,12 +1,13 @@
 pkgbase = ctrecordings-plugin-collection
-	pkgdesc = Cut Through Recordings Plugin Collection.
-	pkgver = 20210306
+	pkgdesc = Cut Through Recordings Plugin Collection
+	pkgver = 20210619
 	pkgrel = 1
 	url = https://www.cutthroughrecordings.com/downloads
 	arch = x86_64
+	groups = lv2-plugins
 	groups = pro-audio
 	groups = vst-plugins
-	groups = lv2-plugins
+	groups = vst3-plugins
 	license = EULA
 	makedepends = xdg-user-dirs
 	makedepends = unzip
@@ -14,4 +15,3 @@ pkgbase = ctrecordings-plugin-collection
 	depends = libcurl-gnutls
 
 pkgname = ctrecordings-plugin-collection
-
