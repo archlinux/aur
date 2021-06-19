@@ -8,7 +8,7 @@
 pkgname=netcat-cpi-dkms-git
 _pkgname=netcat-cpi
 pkgver=r86.c8798d6
-pkgrel=1
+pkgrel=2
 pkgdesc="netcats 'cycles per instruction' album as a dkms kernel module."
 arch=('i686' 'x86_64')
 url="http://netcat.co"
@@ -47,7 +47,7 @@ pkgver()
 
 package() {
   cd "$_pkgname"
-  install -Dt "$pkgdir/usr/src/${_pkgname}-$pkgver" -m644 Makefile netcat.h netcat_main.c ../../dkms.conf
+  install -Dt "$pkgdir/usr/src/${_pkgname}-$pkgver" -m644 Makefile netcat.h netcat_main.c "$srcdir/dkms.conf"
   install -Dt "$pkgdir/usr/src/${_pkgname}-$pkgver/tracks" tracks/*
 }
 

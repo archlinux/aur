@@ -1,7 +1,7 @@
 pkgbase = netcat-cpi-dkms-git
 	pkgdesc = netcats 'cycles per instruction' album as a dkms kernel module.
 	pkgver = r86.c8798d6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://netcat.co
 	install = cpi.install
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = netcat-cpi-dkms-git
 	makedepends = linux-headers
 	depends = dkms
 	optdepends = vorbis-tools: contains a convenient player (ogg123)
-	provides = netcat-cpi-git=r86.c8798d6-1
+	provides = netcat-cpi-git=r86.c8798d6-2
 	conflicts = netcat-cpi-git
 	source = netcat-cpi::git+https://github.com/usrbinnc/netcat-cpi-kernel-module.git
 	source = cpi.install
@@ -23,4 +23,3 @@ pkgbase = netcat-cpi-dkms-git
 	sha256sums = 6c5031ba4355fc1cfcba973b5f88ba21a1a0877c4155eebb661a61686f3b302a
 
 pkgname = netcat-cpi-dkms-git
-
