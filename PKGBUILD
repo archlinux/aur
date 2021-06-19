@@ -3,7 +3,7 @@
 pkgname=containers-common-git
 _pkgname=containers-common
 _gitpkgname=common
-pkgver=0.40.1_dev.r0.g3c56250
+pkgver=0.40.2_dev.r1140.ga60e2d0
 pkgrel=1
 pkgdesc="Configuration files and manpages for containers (git)"
 arch=('any')
@@ -39,9 +39,9 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$_gitpkgname" || exit 1
-  commit=$(git rev-parse --short HEAD)
+  commit=$(printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
   ver=$(grep const version/version.go | sed -re 's|.*"(.*)"$|\1|g')
-  echo "${ver//-/_}.r0.g${commit}"
+  echo "${ver//-/_}.${commit}"
 }
 
 prepare() {
