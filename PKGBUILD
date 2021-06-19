@@ -26,5 +26,5 @@ package() {
 	install -dm755 ${pkgdir}/usr/include/raknet/
 	install -m644 *.h ${pkgdir}/usr/include/raknet/
 
-	install -m644 ../LICENSE ${pkgdir}/usr/share/licenses/raknet
+	install -Dm644 ../LICENSE ${pkgdir}/usr/share/licenses/raknet
 } 
