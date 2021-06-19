@@ -22,11 +22,10 @@ install=ros2-foxy.install
 
 prepare() {
     # Check locale
-    locale | grep LANG | grep UTF-8
-    if [[ $? -ne 0 ]]; then
-        printf "Locale must support UTF-8. See https://wiki.archlinux.org/index.php/locale
-        or https://wiki.archlinux.org/index.php/locale ."
-        exit 1
+    if [[ "$(locale | grep LANG | grep UTF-8)" == "" ]]; then
+      msg2 "ERROR: Locale must support UTF-8. See https://wiki.archlinux.org/index.php/locale or https://wiki.archlinux.org/index.php/locale";
+
+      exit 1;
     fi
 
     # Create required symlinks (see https://wiki.archlinux.org/index.php/ROS)
