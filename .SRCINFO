@@ -1,10 +1,10 @@
 pkgbase = ruby-debug
 	pkgdesc = Debugging functionality for Ruby
 	pkgver = 1.0.0.beta5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ruby/debug
 	arch = any
-	license = MIT
+	license = BSD-2
 	depends = ruby>=2.6.0
 	depends = ruby-irb
 	provides = bake

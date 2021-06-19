@@ -3,12 +3,12 @@
 _gemname=debug
 pkgname=ruby-$_gemname
 pkgver=1.0.0.beta5
-pkgrel=1
+pkgrel=2
 pkgdesc='Debugging functionality for Ruby'
 provides=(bake)
 arch=(any)
 url='https://github.com/ruby/debug'
-license=(MIT)
+license=(BSD-2)
 depends=(
   'ruby>=2.6.0'
   'ruby-irb'
