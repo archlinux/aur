@@ -48,7 +48,7 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.10
-_minor=43
+_minor=45
 _srcname=linux-${_major}
 pkgbase=linux-cacule-lts
 pkgver=${_major}.${_minor}
@@ -483,8 +483,8 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
-            '3985b7a55cb603a45003996cb04b5d87b33b6f4c33b172a54da2da26647a1da0'
-            'e78e683b9a8c15003d91f810cfe576c6266f330f3b8fe13eb52226c50070e87f'
+            'bbbd96cf9a52277334c87b239e6ff30cafbafef1a83cae2fbfa736b98285867b'
+            '88adf490e0873089316a33e3d21ead7397bb73341d07a5f85161763523d363ad'
             '9ec9ac50a8bdd645c456feab4a0ca9b7ffe6dcd0933a89ba96112f8bdedbf0ae'
             '628349c0da28c58dd4526c43aa959682d81b2f1733a755e78453b3d471b6e819'
             '152e251586eec29990fa4cc30c561b7e49acb765434b70634501b398e4c1fe2e'
