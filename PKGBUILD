@@ -5,14 +5,14 @@
 pkgname=maltego
 
 pkgver=4.2.18.13878
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Information gathering software by Paterva'
 url="https://www.$pkgname.com"
 arch=('any')
 license=('custom')
 
-depends=('java-runtime' 'sh')
+depends=('java-runtime<=15' 'sh')
 
 install="$pkgname.install"
 source=("https://$pkgname-downloads.s3.us-east-2.amazonaws.com/linux/Maltego.v$pkgver.deb"

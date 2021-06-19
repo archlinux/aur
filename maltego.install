@@ -7,7 +7,8 @@ post_install() {
 	>>> This application isn't functional until you obtain a Maltego Community Edition activation code and account.
 	>>> Register a FREE account for Maltego Community Editon: 'https://www.paterva.com/web7/community/community.php'.
 
-	>>> This has been tested to work with jre14-openjdk and jre15-openjdk.
+	>>> This package is known to work with jre8-openjdk, jre11-openjdk and jre15-openjdk.
+    >>> Please note that it currently doesn't work with jre-openjdk (Java 16).
 
 	EOT
 }
