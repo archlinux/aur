@@ -2,7 +2,7 @@
 
 pkgname=skopeo-git
 _pkgname=skopeo
-pkgver=1.3.1_dev.r0.g2fee990a
+pkgver=1.3.1_dev.r1772.gccdaf6e0
 pkgrel=1
 pkgdesc="A command line utility for various operations on container images and image repositories (git)"
 arch=('any')
@@ -18,9 +18,9 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname" || exit 1
-  commit=$(git rev-parse --short HEAD)
+  commit=$(printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
   ver=$(grep const version/version.go | sed -re 's|.*"(.*)"$|\1|g')
-  echo "${ver//-/_}.r0.g${commit}"
+  echo "${ver//-/_}.${commit}"
 }
 
 build() {
