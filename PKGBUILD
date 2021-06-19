@@ -4,7 +4,7 @@
 pkgname=gmt6
 _pkgname=gmt
 pkgver=6.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic Mapping Tools: Tools for manipulating and plotting geographic and Cartesian data"
 arch=(x86_64)
 url="https://www.generic-mapping-tools.org"

@@ -1,7 +1,7 @@
 pkgbase = gmt6
 	pkgdesc = Generic Mapping Tools: Tools for manipulating and plotting geographic and Cartesian data
 	pkgver = 6.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.generic-mapping-tools.org
 	install = gmt.install
 	arch = x86_64
