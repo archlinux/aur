@@ -1,0 +1,11 @@
+pkgbase = libuninum
+	pkgdesc = Converts Unicode strings to numbers and numbers to Unicode strings
+	pkgver = 2.7
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	depends = gmp
+	source = http://billposer.org/Software/Downloads/libuninum-2.7.tar.bz2
+	sha256sums = e704983c3c00e9b76bd836b8b83ce31bfe4eb1752eee8be123cf97c1275076ea
+
+pkgname = libuninum
