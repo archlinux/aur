@@ -58,7 +58,7 @@ _makenconfig=
 
 pkgbase=linux-xanmod-cacule
 _major=5.12
-pkgver=${_major}.11
+pkgver=${_major}.12
 _branch=5.x
 xanmod=1
 pkgrel=${xanmod}
@@ -93,7 +93,7 @@ done
 
 sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
             'SKIP'
-            '6ac628f3841735e53d501b998c73d61138d6b8be18f3094d25097a3c34a0cfe7'
+            '4d39eb1a27ecf4006fa1765e462b4879296b0f4a0b15b5680427808a5098b3f9'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
 
@@ -103,12 +103,6 @@ export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_
 
 prepare() {
   cd linux-${_major}
-
-  # hacky work around for xz not getting extracted
-  # https://bbs.archlinux.org/viewtopic.php?id=265115
-  if [[ ! -f "$srcdir/patch-${pkgver}-xanmod${xanmod}-cacule" ]]; then
-    xz -dc "$startdir/patch-${pkgver}-xanmod${xanmod}-cacule.xz" > "$srcdir/patch-${pkgver}-xanmod${xanmod}-cacule"
-  fi
 
   # Apply Xanmod patch
   patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}-cacule
