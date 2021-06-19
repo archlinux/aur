@@ -1,6 +1,6 @@
 pkgname="deskx-git"
 _pkgname="deskx"
-pkgver=r20.b16ae8a
+pkgver=r42.74a9400
 pkgrel=1
 pkgdesc="A very small program to remotely control a computer in a local network (X11-only). "
 arch=("x86_64")
@@ -24,12 +24,12 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname/src"
-  make
+  cd "$srcdir/$_pkgname"
+  make server client
 }
 
 package() {
   cd "$srcdir"
-  install -Dm755 "$_pkgname/src/dxc" "$pkgdir"/usr/bin/dxc
-  install -Dm755 "$_pkgname/src/dxs" "$pkgdir"/usr/bin/dxs
+  install -Dm755 "$_pkgname/src/dxc" "$pkgdir/usr/bin/dxc"
+  install -Dm755 "$_pkgname/src/dxs" "$pkgdir/usr/bin/dxs"
 }
