@@ -10,7 +10,6 @@ url='https://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=(glibc zlib elfutils)
 makedepends=(elfutils)
-options=(!distcc !ccache)
 source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig})
 sha256sums=(5788292cc5bbcca0848545af05986f6b17058b105be59e99ba7d0f9eb5336fb8
             e8b37d3f09146ca5bfa21c99151bca3ae90748f4279d7abb2a026b6d46247df8)
