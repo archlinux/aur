@@ -1,14 +1,14 @@
 # Maintainer: hazelnot
 
 pkgname=bsnes-hd
-_gitver=beta_10_5
-pkgver=beta_10_5.r0.gd2d7815
+_gitver=beta_10_6
+pkgver=beta_10_6
 pkgrel=1
 pkgdesc='Nintendo SNES emulator, featuring HD Mode 7 and Widescreen.'
 arch=('x86_64')
 url='https://github.com/DerKoun/bsnes-hd'
 license=('GPL3')
-depends=('alsa-lib' 'cairo' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk2' 'gtksourceview2' 'libao' 'libgl' 'libpulse' 'libx11' 'libxext' 'libxv' 'openal' 'pango' 'sdl' 'libudev.so' 'sdl2')
+depends=('alsa-lib' 'cairo' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk2' 'libao' 'libgl' 'libpulse' 'libx11' 'libxext' 'libxv' 'openal' 'pango' 'sdl' 'libudev.so' 'sdl2')
 makedepends=('git')
 conflicts=('bsnes' 'bsnes-classic-git' 'bsnes-plus-git' 'bsnes-qt5')
 source=(git+https://github.com/DerKoun/bsnes-hd.git)
