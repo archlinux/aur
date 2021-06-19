@@ -1,7 +1,7 @@
 pkgname="deskx-git"
 _pkgname="deskx"
 pkgver=r42.74a9400
-pkgrel=1
+pkgrel=2
 pkgdesc="A very small program to remotely control a computer in a local network (X11-only). "
 arch=("x86_64")
 url="https://github.com/DeskX11/DeskX"
@@ -30,6 +30,6 @@ build() {
 
 package() {
   cd "$srcdir"
-  install -Dm755 "$_pkgname/src/dxc" "$pkgdir/usr/bin/dxc"
-  install -Dm755 "$_pkgname/src/dxs" "$pkgdir/usr/bin/dxs"
+  install -Dm755 "$_pkgname/dxc" "$pkgdir/usr/bin/dxc"
+  install -Dm755 "$_pkgname/dxs" "$pkgdir/usr/bin/dxs"
 }
