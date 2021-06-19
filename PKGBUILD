@@ -3,14 +3,14 @@
 
 pkgname=hexo-cli
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line interface for Hexo"
 arch=('any')
 url="https://www.npmjs.com/package/$pkgname"
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
-conflicts=('nodejs-hexo')
+conflicts=('nodejs-hexo' 'nodejs-hexo-cli')
 replaces=('nodejs-hexo-cli')
 source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
