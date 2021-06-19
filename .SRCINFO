@@ -1,10 +1,11 @@
 pkgbase = cabbage
 	pkgdesc = A framework for audio software development
-	pkgver = 2.5.15.git
+	pkgver = 2.7.0.git
 	pkgrel = 1
 	url = http://cabbageaudio.com/
 	arch = x86_64
 	license = GPLv3
+	makedepends = zip
 	depends = csound
 	depends = csound-doc
 	depends = steinberg-vst36
@@ -23,17 +24,16 @@ pkgbase = cabbage
 	provides = cabbage
 	conflicts = cabbage
 	source = git+https://github.com/rorywalsh/cabbage.git#branch=develop
-	source = git+https://github.com/WeAreROLI/JUCE.git#commit=1e71c07a492f01022f9064560c95c2bcd938847c
+	source = git+https://github.com/WeAreROLI/JUCE.git#tag=5.4.7
 	source = http://cabbageaudio.com/beta/CabbageManual.zip
 	source = cabbage.png
 	source = Cabbage.desktop
 	source = CabbageLite.desktop
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = 16c823a916999fcd182eda09101e1c7f
+	md5sums = b7429b59c5ea8c4e7d968278c8afac36
 	md5sums = c3c8e35dd46c86f22a3565aa4dd828a8
 	md5sums = 35cfc89844c90769f4dc4f8309b340b1
 	md5sums = a5c00e068980cb9099bb6fa758f10388
 
 pkgname = cabbage
-

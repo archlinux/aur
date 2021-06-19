@@ -1,29 +1,28 @@
 # Maintainer: Lorien Dunn <loriendunn@gmail.com>
 # based on Eugene Cherny's PKGBUILD
-# builds the develop branch of cabbage against the last JUCE version 5 commit
+# builds the develop branch of cabbage against the last JUCE version 5.4.7
 pkgname=cabbage
 pkgrel=1
-pkgver=2.5.15.git
-juceCommit=1e71c07a492f01022f9064560c95c2bcd938847c
+pkgver=2.7.0.git
 pkgdesc='A framework for audio software development'
 arch=('x86_64')
 url="http://cabbageaudio.com/"
 license=('GPLv3')
-makedepends=()
+makedepends=('zip')
 depends=('csound' 'csound-doc' 'steinberg-vst36' 'curl'
         'libx11' 'libxinerama' 'mesa' 'gtk3' 'vim' 'webkit2gtk'
         'freeglut' 'jack' 'libxcomposite' 'libxrandr' 'libxcursor')
 conflicts=('cabbage')
 provides=('cabbage')
 source=('git+https://github.com/rorywalsh/cabbage.git#branch=develop'
-        'git+https://github.com/WeAreROLI/JUCE.git#commit'=$juceCommit
+        'git+https://github.com/WeAreROLI/JUCE.git#tag=5.4.7'
         'http://cabbageaudio.com/beta/CabbageManual.zip'
         'cabbage.png'
         'Cabbage.desktop'
         'CabbageLite.desktop')
 md5sums=('SKIP'
          'SKIP'
-         '16c823a916999fcd182eda09101e1c7f'
+         'b7429b59c5ea8c4e7d968278c8afac36'
          'c3c8e35dd46c86f22a3565aa4dd828a8'         
          '35cfc89844c90769f4dc4f8309b340b1'
          'a5c00e068980cb9099bb6fa758f10388' )
@@ -38,7 +37,6 @@ prepare() {
 
 build() {
   # Projucer
-
   sed -i -e "s/JUCER_ENABLE_GPL_MODE 0/JUCER_ENABLE_GPL_MODE 1/" \
             "${srcdir}/JUCE/extras/Projucer/JuceLibraryCode/AppConfig.h"
   cd "${srcdir}/JUCE/extras/Projucer/Builds/LinuxMakefile/"
