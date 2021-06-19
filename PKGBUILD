@@ -2,7 +2,7 @@
 
 pkgname=system76-power
 pkgver=1.1.16
-pkgrel=3
+pkgrel=4
 pkgdesc="System76 Power Management"
 arch=('any')
 url="https://github.com/pop-os/system76-power"
@@ -39,20 +39,11 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  # Build and install base package
-  cargo build --release
+  make
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  # Install daemons
-  install -Dm755 target/release/system76-power "${pkgdir}/usr/bin/system76-power"
-
-  # Install systemd unit files
-  install -Dm644 debian/system76-power.service "${pkgdir}/usr/lib/systemd/system/system76-power.service"
-
-  # Install scripts and configuration
-  install -Dm644 data/system76-power.conf "${pkgdir}/usr/share/dbus-1/system.d/system76-power.conf"
-  install -Dm644 data/com.system76.powerdaemon.policy "${pkgdir}/usr/share/polkit-1/actions/com.system76.powerdaemon.policy"
+  make sysconfdir="/usr/lib" DESTDIR="${pkgdir}" install
 }
