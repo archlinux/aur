@@ -1,6 +1,6 @@
 # Maintainer: Riccardo Sacchetto <rsacchetto@nexxontech.it>
 pkgname=antares-sql
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="Open source and cross platform SQL client made to be simple and complete"
 arch=('x86_64')
@@ -11,13 +11,12 @@ makedepends=('nodejs' 'npm' 'yarn' 'python')
 source=("https://github.com/Fabio286/antares/archive/refs/tags/v${pkgver}.tar.gz"
         "antares-sql.desktop"
         "antares-sql.sh")
-sha256sums=("52a5b20759f76d15ba2f9c0d200c539bf37ec836396736202f5c48ec9b8e96a9"
+sha256sums=("f4244b24ef5b526209dadef76dbaab92b3bbafdabd9f96650112930da4201d08"
             "f6a6896f073999658505f18c4d0c22dbff8c66de580dbe7c7130e2497c150df3"
             "a67082f950744166c8edf5eac8f7573e9d8c6e61ff0ca5bfd67a652721de9f9f")
 
 prepare() {
 	cd "${srcdir}/antares-${pkgver}"
-	sed -i 's/"electron-builder": "[0-9]*\.[0-9]*\.[0-9]*",/"electron-builder": "22.11.5",/' package.json
     yarn install
 }
 
