@@ -1,0 +1,16 @@
+pkgbase = python-reusables
+	pkgdesc = Commonly Consumed Code Commodities
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = https://github.com/cdgriffith/Reusables
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-rarfile
+	depends = python-scandir
+	source = python-reusables-0.9.6.tar.gz::https://github.com/cdgriffith/Reusables/archive/refs/tags/0.9.6.tar.gz
+	sha256sums = df04af4916a3bc829de0f9bace276babbe66da3caa5a4fcbe2cb01c36cccbc00
+
+pkgname = python-reusables
+
