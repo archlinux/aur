@@ -8,3 +8,4 @@ pkg*.xz
 *.sh
 TODO
 lost+found/
+set-source-mirror.sh
