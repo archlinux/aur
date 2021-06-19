@@ -25,7 +25,4 @@ package() {
   # npm gives ownership of ALL FILES to build user
   # https://bugs.archlinux.org/task/63396
   chown --recursive root:root "${pkgdir}"
-
-  install --directory "$pkgdir"/usr/share/licenses/$pkgname
-  ln --symbolic ../../../lib/node_modules/$_pkgname/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
