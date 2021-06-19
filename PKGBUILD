@@ -1,22 +1,22 @@
+# Maintainer: liolok <aur@liolok.com>
 # Maintainer: Mike Yuan <me@yhndnzj.com>
 
-pkgname=nodejs-hexo-cli
-_pkgname=${pkgname#nodejs-}
+pkgname=hexo-cli
 pkgver=4.2.0
 pkgrel=2
 pkgdesc="Command line interface for Hexo"
 arch=('any')
-url="https://www.npmjs.com/package/$_pkgname"
+url="https://www.npmjs.com/package/$pkgname"
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 conflicts=('nodejs-hexo')
-source=(https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz)
-noextract=($_pkgname-$pkgver.tgz)
+source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
+noextract=($pkgname-$pkgver.tgz)
 sha256sums=('f169b782712f88eb4ebfc7498a359a0535852c2166e7f58193b85caee8f992e9')
 
 package() {
-  npm install -g --prefix "$pkgdir/usr" "$srcdir/$_pkgname-$pkgver.tgz"
+  npm install --global --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
 
   # Non-deterministic race in npm gives 777 permissions to random directories.
   # See https://github.com/npm/cli/issues/1103 for details.
