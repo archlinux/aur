@@ -4,7 +4,7 @@
 
 pkgname=ros2-foxy
 pkgver=2020.12.11
-pkgrel=3
+pkgrel=4
 pkgdesc="A set of software libraries and tools for building robot applications"
 url="https://docs.ros.org/en/foxy/"
 arch=('any')

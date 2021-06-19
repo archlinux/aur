@@ -1,7 +1,7 @@
 pkgbase = ros2-foxy
 	pkgdesc = A set of software libraries and tools for building robot applications
 	pkgver = 2020.12.11
-	pkgrel = 3
+	pkgrel = 4
 	url = https://docs.ros.org/en/foxy/
 	install = ros2-foxy.install
 	arch = any
@@ -17,4 +17,3 @@ pkgbase = ros2-foxy
 	sha256sums = SKIP
 
 pkgname = ros2-foxy
-
