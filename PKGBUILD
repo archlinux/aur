@@ -1,5 +1,3 @@
-# Maintainer Alexander Mcmillan <linuxguy93@gmail.com>
-
 pkgname=gvst-plugins
 pkgver=$(date +%Y%m%d)
 pkgrel=1
