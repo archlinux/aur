@@ -32,7 +32,9 @@ pkgbase = mutter-x11-scaling
 	depends = xorg-xwayland
 	depends = graphene
 	depends = libxkbfile
+	provides = mutter
 	provides = libmutter-8.so
+	conflicts = mutter
 	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=69f35b84b22e15cab617ab4f2bbcfc60589a5382
 	source = https://salsa.debian.org/gnome-team/mutter/-/raw/91d9bdafd5d624fe1f40f4be48663014830eee78/debian/patches/x11-Add-support-for-fractional-scaling-using-Randr.patch
 	sha256sums = SKIP

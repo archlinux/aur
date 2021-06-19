@@ -15,7 +15,8 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          xorg-xwayland graphene libxkbfile)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server)
 checkdepends=(xorg-server-xvfb pipewire-media-session)
-provides=(libmutter-8.so)
+conflicts=(mutter)
+provides=(mutter libmutter-8.so)
 groups=(gnome)
 install=mutter.install
 _commit=69f35b84b22e15cab617ab4f2bbcfc60589a5382  # tags/40.2.1^0
