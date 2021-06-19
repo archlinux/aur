@@ -1,7 +1,7 @@
 # Maintainer: Ali Najafian <AliNajafian81@gmail.com>
 pkgname=circuitjs-bin
-pkgver=2.4.7
-pkgrel=3
+pkgver=2.4.8
+pkgrel=1
 pkgdesc="Falstad Circuit Simulator for Linux. (Real and offline version)"
 arch=(x86_64)
 url="https://www.falstad.com/circuit/"
