@@ -1,17 +1,16 @@
 pkgbase = nodejs-cmake-js
-	pkgdesc = A fast, simple & powerful blog framework, powered by Node.js.
+	pkgdesc = CMake.js - a Node.js native addon build tool
 	pkgver = 6.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cmake-js/cmake-js
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
 	depends = cmake
-	noextract = ${pkgver}.tar.gz
+	noextract = nodejs-cmake-js-6.1.0.tgz
 	options = !strip
-	source = https://github.com/cmake-js/cmake-js/archive/v6.1.0.tar.gz
-	sha256sums = bb0defbf3f0492f8bbeaed8cd01d08d5b431a23e0ea79afe890cc4beec2536d2
+	source = https://registry.npmjs.org/cmake-js/-/cmake-js-6.1.0.tgz
+	sha256sums = 2e6f50acd31e38493e5047174f8de0398fc4157d7b861f00f81a48d41fd91349
 
 pkgname = nodejs-cmake-js
-
