@@ -1,7 +1,7 @@
 pkgbase = vscode-css-languageserver-bin
 	pkgdesc = Binary version published on npm of vscode-css-languageserver extracted from VSCode tree
 	pkgver = 1.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/vscode-langservers/vscode-css-languageserver-bin
 	arch = any
 	license = MIT
