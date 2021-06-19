@@ -2,7 +2,7 @@
 
 _pkgname=methodtools
 pkgname=python-methodtools
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Expand functools features to methods, classmethods, staticmethods."
 url="https://pypi.python.org/pypi/methodtools/"
@@ -13,7 +13,7 @@ license=('BSD')
 arch=('any')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/youknowone/${_pkgname}/archive/${pkgver}.tar.gz")
 
-sha256sums=('084e8cc6dc1e261938ea6d4240897677a048eae0214e1576673ee3be94e0ec92')
+sha256sums=('511099477b237e222f591edbf03c9eff935a33ca495d56c5ae95f95fc2cded3a')
 
 check() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
