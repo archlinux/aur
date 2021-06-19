@@ -5,7 +5,7 @@ pkgname=( python-$_name python2-$_name )
 pkgbase=python-$_name
 
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Python bindings for jq'
 
 arch=('x86_64')
@@ -18,7 +18,12 @@ source=(
 )
 sha256sums=('f9ec1dfa7f9875b04495f3e08e85ee96f37a3b843e5bca738a3300732865dde7'
             '6663bbd049205d38a496ccacb412a151980b444627d38de218b3b809aef330f1')
-makedepends=(python-setuptools python2-setuptools)
+makedepends=(
+    'python-setuptools'
+    'python2-setuptools'
+    'python-requests'
+    'python2-requests'
+)
 
 prepare() {
     # copy folder, so we can cleanly build for both python versions
