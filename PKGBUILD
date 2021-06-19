@@ -1,14 +1,14 @@
-# Maintainer: Alexander Mcmillan <linuxguy93@gmail.com>
 pkgname=tal-chorus-lx
-pkgver=2.3.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A Simple Algorithmic Chorus By TAL Software."
 arch=('x86_64')
 url="https://tal-software.com"
 license=('EULA')
-groups=('pro-audio' 'vst-plugins')
+depends=('libcurl-gnutls' 'glibc')
+groups=('pro-audio' 'vst-plugins' 'vst3-plugins')
 source=('https://tal-software.com/downloads/plugins/Tal-Chorus-LX_64_linux.zip')
-md5sums=('1717db55feddb28dde60e4b79c641dbc')
+md5sums=('df5e26e04676c8b70fdbc4aa61fd6281')
 
 package() {
   mkdir -p $pkgdir/usr/lib/vst3
