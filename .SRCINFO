@@ -1,6 +1,6 @@
 pkgbase = anbox-support
 	pkgdesc = Metapkg with for Anbox & needed configs
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://gitlab.com/garuda-linux/themes-and-settings/settings/anbox-support
 	install = anbox-support.install
@@ -9,7 +9,7 @@ pkgbase = anbox-support
 	makedepends = coreutils
 	depends = anbox-git
 	depends = android-tools
-	source = anbox-support-1.0.2.tar.gz::https://gitlab.com/garuda-linux/themes-and-settings/settings/anbox-support/-/archive/1.0.2/anbox-support-1.0.2.tar.gz
+	source = anbox-support-1.1.0.tar.gz::https://gitlab.com/garuda-linux/themes-and-settings/settings/anbox-support/-/archive/1.1.0/anbox-support-1.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = anbox-support

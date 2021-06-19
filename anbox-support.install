@@ -9,21 +9,19 @@ msg() {
 post_install() {
   systemctl enable --now anbox-container-manager.service
   systemctl enable --now systemd-networkd
+  systemctl --global enable --now anbox-session-manager
 
-  echo ""
-  msg "Enable the session manager now using systemctl --user enable --now anbox-session-manager.service"
-  echo ""
   if ! grep -q 'Anbox' /etc/fstab ; then
     echo '# Binderfs Anbox' >> /etc/fstab
     echo 'none /dev/binderfs binder nofail 0 0' >> /etc/fstab
   fi
-  echo ""
 }
 
 post_upgrade() {
   msg "Attempting to enable services..."
   systemctl is-active anbox-container-manager.service >/dev/null || systemctl enable anbox-container-manager.service
   systemctl is-active systemd-networkd >/dev/null || systemctl enable systemd-networkd
+  systemctl --global is-active anbox-session-manager >/dev/null || systemctl --global enable --now anbox-session-manager
 
   echo ""
   if ! grep -q 'Anbox' /etc/fstab ; then
