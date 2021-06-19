@@ -3,7 +3,7 @@
 
 _gitname=doctrina
 pkgname=${_gitname}-git
-pkgver=0.1.12.r1.g69588c4
+pkgver=0.1.13.r0.g74ec8aa
 pkgrel=1
 pkgdesc='The library of Software Peronista'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 url='https://git.softwareperonista.com.ar/cdp/doctrina'
 conflicts=('doctrina')
 provides=('doctrina')
-depends=('gtk3')
+depends=('gtk4')
 makedepends=('meson' 'vala' 'git')
 source=("${pkgname}::git+https://gitlab.com/softwareperonista/${_gitname}.git")
 sha256sums=('SKIP')
