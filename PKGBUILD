@@ -1,6 +1,6 @@
 # Maintainer: Thermi <noel at familie - kuntze dot de>
 pkgname=libqcow
-pkgver=20200729
+pkgver=20210419
 pkgrel=1
 pkgdesc="Library and tools to support QEMU copy-on-write image format (QCOW, QCOW2), including a FUSE-based mount utility"
 url="https://github.com/libyal/libqcow/"
@@ -12,7 +12,7 @@ source=("https://github.com/libyal/libqcow/releases/download/${pkgver}/${pkgname
         "https://github.com/libyal/libqcow/releases/download/${pkgver}/${pkgname}-alpha-${pkgver}.tar.gz.asc")
 
 validpgpkeys=('0ED9020DA90D3F6E70BD3945D9625E5D7AD0177E')
-sha256sums=('87ff508ba897c904c7df7615bc20dbd68d746033cd5e12b63f539d4e578be2f5'
+sha256sums=('354275bfa9e40f6bf03138d6b939c3a8e290e2f594b13873973ee8660f612051'
             'SKIP')
 
 build(){
