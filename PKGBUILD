@@ -12,17 +12,17 @@ depends=(
 	'gnupg'
 	'zenity'
 )
-source=("${pkgname}.tar.gz::https://github.com/StratusFearMe21/yupass/archive/refs/tags/v0.1.0.tar.gz")
+source=("${pkgname}.tar.gz::https://github.com/StratusFearMe21/yupass/archive/refs/tags/v${pkgver}.tar.gz")
 conflicts=("${pkgname}" "${pkgname}-bin" "${pkgname}-git")
 
 build() {
 	rustup update stable
-	cd "${srcdir}/yupass-master/"
+	cd "${srcdir}/yupass-v${pkgver}/"
 	cargo build --release
 }
 
 package() {
-	cd "${srcdir}/yupass-master/target/release/"
+	cd "${srcdir}/yupass-v${pkgver}/target/release/"
 	install -d -m755 ${pkgdir}/usr/bin
 	cp -r ./yupass ${pkgdir}/usr/bin/
 }
