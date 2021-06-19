@@ -1,6 +1,6 @@
 pkgname=yupass
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="This is a password manager powered by the YubiKey"
 url="https://github.com/StratusFearMe21/yupass"
 license=('GPT-3')
@@ -12,7 +12,7 @@ depends=(
 	'gnupg'
 	'zenity'
 )
-source=("${pkgname}.tar.gz::https://github.com/StratusFearMe21/yupass/archive/refs/heads/master.tar.gz")
+source=("${pkgname}.tar.gz::https://github.com/StratusFearMe21/yupass/archive/refs/tags/v0.1.0.tar.gz")
 conflicts=("${pkgname}" "${pkgname}-bin" "${pkgname}-git")
 
 build() {
