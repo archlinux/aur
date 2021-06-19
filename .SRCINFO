@@ -1,7 +1,7 @@
 pkgbase = nodejs-unblockneteasemusic
 	pkgdesc = Revive unavailable songs for Netease Cloud Music
 	pkgver = 0.25.3
-	pkgrel = 4
+	pkgrel = 6
 	url = https://github.com/nondanee/UnblockNeteaseMusic
 	arch = any
 	license = MIT
@@ -18,4 +18,3 @@ pkgbase = nodejs-unblockneteasemusic
 	sha512sums = bbf170413150b9eab5fe996f213ca2e454f7acac7ce64c39a70e8ae4a2e2fb5a467b5a253898e0f488a272dfde2060310d7ebff958390dd918510bda764a65be
 
 pkgname = nodejs-unblockneteasemusic
-
