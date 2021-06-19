@@ -1,4 +1,4 @@
-# Maintainer Frikilinux <frikilinux@gmail.com>
+# Maintainer: Frikilinux <frikilinux@gmail.com>
 
 pkgname=breezex-cursor-theme
 pkgver=1.0.1
@@ -17,5 +17,5 @@ package() {
   install -d "${pkgdir}/usr/share/icons"
   cp -r BreezeX-{Dark,Light} "${pkgdir}/usr/share/icons"
   find ${pkgdir} -type f -exec chmod 644 {} \;
-	find ${pkgdir} -type d -exec chmod 755 {} \;
+  find ${pkgdir} -type d -exec chmod 755 {} \;
 }
