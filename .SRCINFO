@@ -1,8 +1,8 @@
 pkgbase = python-mkdocs
 	pkgdesc = Project documentation with Markdown
 	pkgver = 1.2.1
-	pkgrel = 2
-	url = http://www.mkdocs.org
+	pkgrel = 3
+	url = https://www.mkdocs.org
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
@@ -23,7 +23,6 @@ pkgbase = python-mkdocs
 	optdepends = python-lunr: to prebuild search index
 	provides = mkdocs
 	conflicts = mkdocs
-	replaces = mkdocs
 	source = https://github.com/mkdocs/mkdocs/archive/refs/tags/1.2.1.tar.gz
 	sha256sums = 4b134ce568f5c6b5ffa80f432b9e7f548a3f33b5fb8033257eb15d17655c22a3
 

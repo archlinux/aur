@@ -4,14 +4,13 @@
 
 pkgname="python-mkdocs"
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Project documentation with Markdown"
-url="http://www.mkdocs.org"
+url="https://www.mkdocs.org"
 license=("BSD")
 arch=("any")
 provides=("mkdocs")
 conflicts=("mkdocs")
-replaces=("mkdocs")
 depends=("python-babel"
          "python-click"
          "python-ghp-import"
