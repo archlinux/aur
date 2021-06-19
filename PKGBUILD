@@ -1,7 +1,7 @@
 # Maintainer: Mark Stenglein <aur@markstenglein.com>
 
 pkgname=slides
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Terminal based presentation tool'
 arch=('x86_64')
@@ -23,12 +23,10 @@ build() {
     go build -buildmode=pie -trimpath -ldflags "-linkmode external -X main.Version=${pkgver} -s -w"
 }
 
-# Can't add until a `go vet` issue is addressed.
-#   https://github.com/maaslalani/slides/issues/14
-#check() {
-#    cd $pkgname
-#    go test ./...
-#}
+check() {
+    cd $pkgname
+    go test ./...
+}
 
 package() {
     cd $pkgname

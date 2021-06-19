@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0-1] - 2021-06-13
+
+### Added
+
+- Execute code blocks for supported languages (bash, go, ruby, python)
+- User customizable themes.
+
 ## [0.1.2-1] - 2021-06-09
 
 ### Added
