@@ -56,7 +56,7 @@ _minor=12
 _srcname=linux-${_major}
 pkgbase=linux-cacule-rdb
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -73,7 +73,7 @@ source=(
   "${_patchsource}/arch-patches-v7/0001-arch-patches.patch"
   "${_caculepaches}/v5.12/cacule-5.12.patch"
   "${_caculepaches}/v5.12/rdb-5.12.patch"
-  "${_patchsource}/cpu-patches-v5/0001-cpu-patches.patch"
+  "${_patchsource}/cpu-patches-v6/0001-cpu-patches.patch"
   "${_patchsource}/futex-patches-v2/0001-futex-resync-from-gitlab.collabora.com.patch"
   "${_patchsource}/futex2-stable-patches-v6/0001-futex2-resync-from-gitlab.collabora.com.patch"
   "${_patchsource}/wine-esync-patches/0001-v5.12-winesync.patch"
@@ -527,7 +527,7 @@ sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
             'dd89db0483301a62cef23ba797fee1fb9804f570f952df87fe418ee22e353227'
             'a90ec03375bf97c06bf2ca3f1fd0224deee8408077f71447326b2796b53652a1'
             '7d0fc1b08da8d9a1aa3b2787dbfab46723dfa28bd7f72990baa91eb501cb7db6'
-            '41e44b0fc80cf2e60e23addccdcf23e0aea66a9d9f9d4d1bfe9440dfec6be1ea'
+            'd50836cb16ef209b4bdd7bef792485b8f0ff847a96d2b6eca109da0b7e05f79b'
             '4ff5c33785445f103d479196bb33c4f991d6c5f56df5c643ec6d2451368f0605'
             'db4707a6430a80447fabc2517e554cf9e055a4039b362f683bd9dd7f04d7a667'
             'f7c68f43599c53ce19a14e6f296e5e0820257e80acb9f52a1dec036d0d9a62ab'
