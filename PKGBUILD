@@ -1,19 +1,28 @@
-# Maintainer: xylzq
+# Maintainer: fansuregrin <quarlong@qq.com>
 pkgname=cnkiexpress
-pkgver=0.0.10
+_pkgname=$pkgname
+pkgver=0.0.11
 pkgrel=1
-pkgdesc="cnki for arch"
-arch=('i686' 'x86_64')
-url="http://cajviewer.cnki.net/download.html"
-license=('GPL')
-groups=(cnkiexpress)
-depends=(at-spi2-core  desktop-file-utils  gtk3  hicolor-icon-theme libappindicator-gtk3  libnotify  libsecret  libxss  libxtst  nss util-linux-libs  xdg-utils) 
-makedepends=(yay debtap wget)
-source=("https://download.cnki.net/"$pkgname"/"$pkgname"_"$pkgver"_amd64.deb")
-sha512sums=("SKIP")
-package() {
-	cd "$pkgname-$pkgver"
-	sudo debtap -u
-	sudo debtap "$pkgname"_"$pkgver"_amd64.deb
-	sudo pacman -U "$pkgname"_"$pkgver"-1-x86_64.pkg.tar.zst
+pkgdesc="A reading software for academic research articles developed by CNKI"
+arch=("x86_64")
+url="https://cajviewer.cnki.net"
+license=('custom')
+depends=('zlib' 'hicolor-icon-theme')
+makedepends=('sed')
+source=("https://download.cnki.net/cnkiexpress/cnkiexpress_0.0.11_amd64.deb")
+sha256sums=('9a93e9a95454ea09cbec770e2be139339f0bffa9f703e23826807557389a2c9a')
+options=(!strip)
+
+package(){
+	cd ${srcdir}	
+	tar -xJf data.tar.xz
+	install -Dm755 "opt/$_pkgname/$_pkgname.AppImage" "$pkgdir/opt/$_pkgname/$_pkgname.AppImage"	
+	install -Dm644 "usr/share/mime/packages/$_pkgname.xml" "$pkgdir/usr/share/mime/packages/$_pkgname.xml" 
+	install -Dm644 "usr/share/applications/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+	sed -i "s/Name/Name[zh_CN]/g" "$pkgdir/usr/share/applications/$_pkgname.desktop" 
+	sed -i "/Name/i\Name=CNKI Express" "$pkgdir/usr/share/applications/$_pkgname.desktop" 
+	mkdir -p "$pkgdir/usr/bin"
+	mkdir -p "$pkgdir/usr/share/icons/hicolor"
+	cp -R "usr/share/icons/hicolor" "$pkgdir/usr/share/icons"	
+	ln -sf "/opt/$_pkgname/$_pkgname.AppImage" "$pkgdir/usr/bin/$_pkgname"
 }
