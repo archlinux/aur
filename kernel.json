@@ -1,0 +1,10 @@
+{
+  "argv": [
+    "ijskernel",
+    "--hide-undefined",
+    "{connection_file}",
+    "--protocol=5.1"
+  ],
+  "display_name": "Javascript (Node.js)",
+  "language": "javascript"
+}
