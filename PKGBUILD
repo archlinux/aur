@@ -35,8 +35,6 @@ build() {
     --with-sysroot=/usr/$_target \
     --prefix=/usr \
     --enable-deterministic-archives \
-    --enable-gold \
-    --enable-ld=default \
     --enable-lto \
     --enable-plugins \
     --enable-relro \
