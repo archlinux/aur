@@ -1,9 +1,7 @@
-# Maintainer Alexander Mcmillan <linuxguy93@gmail.com>
-
 pkgname=ava-plugins
 pkgver=$(date +%Y%m%d)
 pkgrel=1
-pkgdesc="Harrison Consoles VST AVA Plugin Suite."
+pkgdesc="Harrison Consoles VST AVA Plugin Suite"
 arch=('x86_64')
 url="https://www.harrisonconsoles.com/site/ava-plugins.html"
 license=('EULA')
@@ -13,14 +11,14 @@ makedepends=('xdg-user-dirs' 'unzip')
 
 prepare () {
 	## Extract AVA Plugins Archive
-	_archive=`xdg-user-dir DOWNLOAD`/Harrison-AVA-linux-64bit.tar.gz
+	_archive="`xdg-user-dir DOWNLOAD`/Harrison-AVA-linux-64bit.tar.gz"
 	ln -srf ${_archive} "$srcdir/`basename ${_archive}`"
 	tar -xvzf "$srcdir/`basename ${_archive}`"
 }
 
 package() {
 	## Install Plugins
-	for plugin in BF DS LegacyQ MC ME SC VF; do
+	for plugin in BF DS LegacyQ MC ME SC DF VF; do
 		if [ -f $srcdir/Harrison_AVA/vst/AVA-$plugin.so ]; then
 			install -Dm755 "$srcdir/Harrison_AVA/vst/AVA-$plugin.so" "$pkgdir/usr/lib/vst/AVA-$plugin.so"
 		fi
@@ -30,7 +28,7 @@ package() {
 	install -Dm644 "$srcdir/Harrison_AVA/EULA.txt" "$pkgdir/usr/share/licenses/$pkgname/EULA.txt"
 
 	## Where To Put License Files
-	for _license in bf ds legacyq mc me sc vf; do
+	for _license in bf ds legacyq mc me sc df vf; do
 		if [ -f `xdg-user-dir DOWNLOAD`/license_key_harrison_ava_${_license}.txt ]; then
 			install -Dm644 "`xdg-user-dir DOWNLOAD`/license_key_harrison_ava_${_license}.txt" "$pkgdir/usr/local/share/license_key_harrison_ava_${_license}.txt"
 		else

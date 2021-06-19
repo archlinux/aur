@@ -1,6 +1,6 @@
 pkgbase = ava-plugins
-	pkgdesc = Harrison Consoles VST AVA Plugin Suite.
-	pkgver = 20210306
+	pkgdesc = Harrison Consoles VST AVA Plugin Suite
+	pkgver = 20210619
 	pkgrel = 1
 	url = https://www.harrisonconsoles.com/site/ava-plugins.html
 	arch = x86_64
@@ -13,4 +13,3 @@ pkgbase = ava-plugins
 	depends = libcurl-gnutls
 
 pkgname = ava-plugins
-
