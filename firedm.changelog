@@ -1,3 +1,12 @@
+2021.6.18:
+- add options to disable popup windows, issue #231.
+- Add AppIndicator to systray, which fix systray under Gnome, issues(#96, #180, and #232).
+- ignore player log output in terminal when playing video files.
+- fix resume and stop selected items in right click menu.
+- workaround for ibus bug (issue #256), to fix FireDM loading delay.
+- fix some items showed cancelled status when its already completed on disk.
+- Fix pending items handler.
+
 2021.6.4:
 - Add tooltip for some buttons.
 - use alternative file choosers (GTK, zenity, or kdialog) on linux instead of tkinter filechooser, issue #236
