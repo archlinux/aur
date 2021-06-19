@@ -1,13 +1,13 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=plasmatube-git
-pkgver=r77.788e68c
+pkgver=r94.bca43c8
 pkgrel=1
 pkgdesc="Kirigami YouTube video player based on libmpv and youtube-dl"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://invent.kde.org/plasma-mobile/plasmatube"
 license=(GPL3)
-depends=('ki18n' 'kirigami2' 'youtube-dl' 'mpv')
+depends=('ki18n' 'kirigami2' 'youtube-dl' 'mpv' 'gst-libav' 'gst-plugins-bad')
 makedepends=('git' 'extra-cmake-modules' 'qt5-svg' 'qt5-tools')
 provides=('plasmatube')
 conflicts=('plasmatube')
