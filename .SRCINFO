@@ -1,7 +1,7 @@
 pkgbase = air-impulse-loader
-	pkgdesc = AIR Impulse Response Loader (VST Plugin).
+	pkgdesc = AIR Impulse Response Loader (VST Plugin)
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 1
 	url = https://audio-assault.com/air.php
 	arch = x86_64
 	groups = pro-audio
@@ -10,8 +10,6 @@ pkgbase = air-impulse-loader
 	makedepends = xdg-user-dirs
 	makedepends = unzip
 	depends = libcurl-gnutls
-	source = AIR Impulse Loader.desktop
-	md5sums = d07c3b4ce6b585e0cdb59a4dce50545c
+	depends = glibc
 
 pkgname = air-impulse-loader
-
