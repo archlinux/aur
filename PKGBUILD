@@ -1,18 +1,22 @@
 # Maintainer: samarthj <dev@samarthj.com>
 
+# shellcheck disable=2034
+
 pkgname=podman-git
 _pkgname=podman
-pkgver=3.3.0_dev.r0.gce04a3e17
+pkgver=3.3.0_dev.r12094.g48db8d986
 pkgrel=1
 pkgdesc="Tool and library for running OCI-based containers in pods (git)"
 arch=('any')
 depends=(cni-plugins conmon containers-common device-mapper iptables
   runc slirp4netns libsystemd fuse-overlayfs)
 optdepends=('podman-docker: for Docker-compatible CLI'
+  'libapparmor.so: support for apparmor'
+  'libselinux: support for selinux'
   'btrfs-progs: support btrfs backend devices'
   'catatonit: --init flag support'
   'crun: support for unified cgroupsv2')
-makedepends=(btrfs-progs go go-md2man git gpgme systemd)
+makedepends=(go go-md2man git)
 backup=('etc/cni/net.d/87-podman-bridge.conflist')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -23,13 +27,12 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname" || exit 1
-  commit=$(git rev-parse --short HEAD)
+  commit=$(printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
   ver=$(./hack/get_release_info.sh VERSION)
-  echo "${ver//-/_}.r0.g${commit}"
+  echo "${ver//-/_}.${commit}"
 }
 
 build() {
-  export BUILDTAGS='seccomp apparmor'
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -41,7 +44,7 @@ build() {
 }
 
 package() {
-  depends+=('libseccomp.so' 'libdevmapper.so' 'libgpgme.so')
+  depends+=('libseccomp.so' 'libgpgme.so')
 
   cd $_pkgname || exit 1
   make install install.completions DESTDIR="$pkgdir" PREFIX=/usr
