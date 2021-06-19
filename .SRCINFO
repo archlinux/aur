@@ -13,7 +13,6 @@ pkgbase = amusiz
 	depends = libhandy
 	depends = gtk3
 	depends = python-gobject
-	depends = wine
 	depends = webkit2gtk
 	depends = gst-plugins-good
 	depends = gst-plugins-base
