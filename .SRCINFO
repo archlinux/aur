@@ -14,6 +14,7 @@ pkgbase = matrix-registration
 	depends = python-flask-httpauth
 	depends = python-flask-limiter
 	depends = python-waitress
+	depends = python-alembic
 	depends = python-dateutil
 	depends = python-yaml
 	depends = python-requests

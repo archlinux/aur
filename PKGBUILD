@@ -10,7 +10,7 @@ arch=('any')
 license=('MIT')
 
 depends=('python-appdirs' 'python-flask' 'python-flask-sqlalchemy' 'python-flask-cors'
-         'python-flask-httpauth' 'python-flask-limiter' 'python-waitress'
+         'python-flask-httpauth' 'python-flask-limiter' 'python-waitress' 'python-alembic'
          'python-dateutil' 'python-yaml' 'python-requests' 'python-wtforms' 'systemd')
 checkdepends=('python-parameterized')
 
