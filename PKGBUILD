@@ -3,7 +3,7 @@
 
 pkgname=orocos-kdl
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Kinematics and Dynamics Library is a framework for modelling and computation of kinematic chains"
 arch=('i686' 'x86_64')
 url="https://www.orocos.org/kdl"
@@ -26,4 +26,5 @@ build() {
 package() {
   cd "${srcdir}/${_dir}-${pkgver}/${_pkgname}"
   make DESTDIR="${pkgdir}" install
+  find ${pkgdir}/usr -maxdepth 1 -type f -exec rm {} \;
 }
