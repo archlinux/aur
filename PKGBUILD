@@ -1,13 +1,14 @@
-# Maintainer: Mario Finelli <mario at finel dot li>
+# Maintainer: Yufan You <ouuansteve at gmail>
+# Contributor: Mario Finelli <mario at finel dot li>
 # Contributor: Daniel Nagy <danielnagy at gmx de>
 # Contributor: TJ Holowaychuk <tj at vision-media dot ca>
 # Contributor: Travis Jeffery <tj at travisjeffery dot com>
 
 _npmname=mocha
-pkgname=nodejs-$_npmname
-pkgver=7.1.2
+pkgname=nodejs-mocha
+pkgver=9.0.1
 pkgrel=1
-pkgdesc="Simple, flexible, fun test framework."
+pkgdesc="Simple, flexible, fun JavaScript test framework for Node.js & The Browser"
 arch=(any)
 url="https://mochajs.org"
 license=('MIT')
@@ -15,16 +16,14 @@ depends=('nodejs')
 makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('fb780a77a7189f9ce732c7032dc7ff101ca20940b7fa34bb1091d01cfd79ce89')
+sha256sums=('a28e7f2f2e98c54b4ac567f800e98d29075e803072d312840a29e21335193572')
 
 package() {
-  npm install \
-    --user root --global \
-    --prefix "$pkgdir/usr" \
-    "$srcdir"/$_npmname-$pkgver.tgz
-
-  find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
-
-  install -Dm0644 "$pkgdir/usr/lib/node_modules/$_npmname/LICENSE" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "$srcdir"
+    local _npmdir="$pkgdir/usr/lib/node_modules/"
+    mkdir -p "$_npmdir"
+    cd "$_npmdir"
+    npm install -g --prefix "$pkgdir/usr" "$_npmname@$pkgver"
+    install -Dm644 "$_npmdir/$_npmname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    chown -R root:root "${pkgdir}"
 }
