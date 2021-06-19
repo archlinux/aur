@@ -3,38 +3,46 @@
 # Contributor: Carl George < arch at cgtx dot us >
 
 pkgname="mkdocs"
-pkgver=1.1.2
-pkgrel=2
-pkgdesc="Project documentation with Markdown."
-arch=("any")
-url="http://www.mkdocs.org"
+pkgver=1.2.1
+pkgrel=1
+pkgdesc="Project documentation with Markdown"
+url="https://www.mkdocs.org"
 license=("BSD")
+arch=("any")
 provides=("mkdocs")
 conflicts=("python-mkdocs")
+depends=("python-babel"
+         "python-click"
+         "python-ghp-import"
+         "python-jinja"
+         "python-importlib-metadata"
+         "python-livereload"
+         "python-markdown"
+         "python-markupsafe"
+         "python-mergedeep"
+         "python-mdx-gh-links"
+         "python-packaging"
+         "python-pyyaml-env-tag"
+         "python-yaml"
+         "python-watchdog")
 makedepends=("python-setuptools")
-depends=(
-        "python-click>=7.0"
-        "python-jinja>=2.10.3"
-        "python-livereload>=2.6.1"
-        "python-markdown>=3.2.1"
-        "python-yaml>=5.2"
-        "python-tornado>=5.1.1"
-        "python-mdx-gh-links>=0.2"
-        "python-lunr>=0.5.2"
-    )
-source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz"
-        "$pkgname.bash_completion")
-sha256sums=('f0b61e5402b99d7789efa032c7a74c90a20220a9c81749da06dbfbcbd52ffb39'
-            '66edd841378428e23fd617ff046fd8ea50b5cc5b70f3f3d50ac29bd5d33fd11f')
+optdepends=("python-lunr: to prebuild search index")
+source=("https://github.com/mkdocs/mkdocs/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=("4b134ce568f5c6b5ffa80f432b9e7f548a3f33b5fb8033257eb15d17655c22a3")
 
-build() {
-    cd "$srcdir/$pkgname-$pkgver"
-    python setup.py build
+prepare(){
+ # the package wants 2.0, but repo (and pypi) use 0.10
+ cd "mkdocs-$pkgver"
+ sed -i "setup.py" \
+     -e "s/'watchdog>=2.0',/'watchdog',/"
 }
 
-package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    python setup.py install --skip-build --root="$pkgdir" --optimize=1
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 "$srcdir/$pkgname.bash_completion" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+build(){
+ cd "mkdocs-$pkgver"
+ python setup.py build
+}
+
+package(){
+ cd "mkdocs-$pkgver"
+ python setup.py install --skip-build --root="$pkgdir" --optimize=1
 }
