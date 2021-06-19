@@ -1,18 +1,18 @@
 # Maintainer: Stefan Eekhof <stefaneekhof@gmail.com>
 pkgname=cq
-pkgver=1.0.0.A16
+pkgver=1.0.0.A17
 
-_cyanversion=1.0.0.A13 # Needed to find the right version ZIP
+_cyanversion=1.0.0.A14 # Needed to find the right version ZIP
 _aosutilverion=0.0.0.13 # Needed for CCFG
 
-pkgrel=9
+pkgrel=1
 pkgdesc="CQ -- CCFG Command Line Inteface (Cyan Configurations)"
 arch=( 'any' )
 url=""
 license=('GPL')
 groups=()
 depends=( 'java-environment' )
-makedepends=( 'gradle>=6.7' )
+makedepends=( 'gradle>=7.0' )
 optdepends=()
 provides=()
 conflicts=()
@@ -23,7 +23,7 @@ install=
 changelog=
 source=("https://aerialworks.ddns.net/maven/org/asf/cyan/CyanLoader-Sources/$_cyanversion/CyanLoader-Sources-$_cyanversion-full.zip" "https://aerialworks.ddns.net/maven/org/asf/aos/util/service/aosutil-service-SLIB-UTIL/$_aosutilverion/aosutil-service-SLIB-UTIL-$_aosutilverion.jar")
 noextract=()
-md5sums=( "8064e2a0b9b1aaf4ef880694e4ae1709" "c725e9bee57d6a63ce27b829cfa1a03e" )
+md5sums=( "db275ac7a438639381304da44fffd24f" "c725e9bee57d6a63ce27b829cfa1a03e" )
 
 build() {
     cd CCFG
