@@ -4,7 +4,7 @@ pkgver=1.0.0.A5
 
 _cyanversion=1.0.0.A14 # Needed to find the right version ZIP
 
-pkgrel=2
+pkgrel=3
 pkgdesc="CTC -- Cyan Trust Container CLI, frontend for creating CTC trust containers"
 arch=( 'any' )
 url=""
@@ -26,8 +26,7 @@ md5sums=( "db275ac7a438639381304da44fffd24f" )
 
 build() {
     rm settings.lite.gradle
-    echo "
-rootProject.name = 'LiteCyan'
+    echo "rootProject.name = 'LiteCyan'
 
 include('CCFG')
 include('CyanComponents')
@@ -38,7 +37,7 @@ include('Fluid')
 include('Cornflower')
 include('MtkCLI')
 include('ClassTrust')
-include('../TrustExplorer')
+include('TrustExplorer')
     " > settings.lite.gradle
     
     cd CyanComponents
