@@ -1,7 +1,7 @@
 pkgbase = michaelas-harp
-	pkgdesc = Michaelas Harp Sample Library (VST Plugin).
+	pkgdesc = Michaelas Harp Sample Library (VST Plugin)
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://librewave.com/product/michaelas-harp/
 	arch = x86_64
 	groups = pro-audio
@@ -10,8 +10,6 @@ pkgbase = michaelas-harp
 	makedepends = xdg-user-dirs
 	makedepends = unzip
 	depends = libcurl-gnutls
-	source = Michaelas Harp.desktop
-	md5sums = 1fc5f8dc486ab5f7779d4b6b71b6b064
+	depends = glibc
 
 pkgname = michaelas-harp
-
