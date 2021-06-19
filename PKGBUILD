@@ -20,9 +20,9 @@ groups=(gnome)
 install=mutter.install
 _commit=69f35b84b22e15cab617ab4f2bbcfc60589a5382  # tags/40.2.1^0
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-        https://salsa.debian.org/gnome-team/mutter/-/blob/91d9bdafd5d624fe1f40f4be48663014830eee78/debian/patches/x11-Add-support-for-fractional-scaling-using-Randr.patch)
+        https://salsa.debian.org/gnome-team/mutter/-/raw/91d9bdafd5d624fe1f40f4be48663014830eee78/debian/patches/x11-Add-support-for-fractional-scaling-using-Randr.patch)
 sha256sums=('SKIP'
-            '9ed3aa573565a7cbcc8af1de9321fde0027ab68ebc418039cb8113c1a6bac94f')
+            '19de314590e3311563b11da3305d8e9c8ba1f859fe65db668ccd0457250a9ca5')
 
 pkgver() {
   cd $pkgname
