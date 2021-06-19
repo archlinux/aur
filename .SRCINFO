@@ -1,0 +1,13 @@
+pkgbase = breezex-cursor-theme
+	pkgdesc = Extended KDE Cursor theme, Highly inspired on KDE Breeze
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/ful1e5/BreezeX_Cursor
+	arch = any
+	license = GPL
+	source = https://github.com/ful1e5/BreezeX_Cursor/releases/download/v1%2C0.1/BreezeX-Light.tar.gz
+	source = https://github.com/ful1e5/BreezeX_Cursor/releases/download/v1%2C0.1/BreezeX-Dark.tar.gz
+	sha256sums = c9d352ed746f78ced486dc0ef8d6d99c973558366fb3cc55df439850e9ae73f8
+	sha256sums = 971fd634e99b023f47cb0baf16ebbc218bb4dc9158f454eee5daf77d9c2e2032
+
+pkgname = breezex-cursor-theme
