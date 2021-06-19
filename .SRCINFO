@@ -1,11 +1,13 @@
 pkgbase = audiotube-git
 	pkgdesc = Client for YouTube Music
-	pkgver = r87.cf76238
+	pkgver = v0.1.r56.g0420a69
 	pkgrel = 1
 	url = https://invent.kde.org/jbbgameich/audiotube
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
+	makedepends = fakeroot
+	makedepends = binutils
 	makedepends = git
 	makedepends = extra-cmake-modules
 	makedepends = pybind11
@@ -14,10 +16,11 @@ pkgbase = audiotube-git
 	depends = kirigami2
 	depends = python-ytmusicapi
 	depends = youtube-dl
+	depends = gst-plugins-good
+	depends = qt5-imageformats
 	provides = audiotube
 	conflicts = audiotube
 	source = git+https://invent.kde.org/jbbgameich/audiotube.git
 	sha256sums = SKIP
 
 pkgname = audiotube-git
-
