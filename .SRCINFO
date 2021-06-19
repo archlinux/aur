@@ -1,0 +1,17 @@
+pkgbase = amplex-vst
+	pkgdesc = Amplex Guitar Amp
+	pkgver = 4.0
+	pkgrel = 1
+	url = https://nalexsoft.blogspot.com/2020/07/amplex-multiamp.html
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = EULA
+	depends = curl
+	depends = freetype2
+	depends = libcurl-gnutls
+	depends = libglvnd
+	depends = glibc
+	optdepends = ttf-dejavu: proper font rendering
+
+pkgname = amplex-vst
