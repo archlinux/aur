@@ -1,6 +1,6 @@
 pkgbase = python-titlecase
 	pkgdesc = Python Port of John Gruber's titlecase.pl
-	pkgver = 2.0.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/ppannuto/python-titlecase
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = python-titlecase
 	makedepends = python-setuptools
 	depends = python
 	depends = python-regex
-	source = https://files.pythonhosted.org/packages/source/t/titlecase/titlecase-2.0.0.tar.gz
-	md5sums = e5dac8b831203247997ba5db0f2f2dd6
+	source = https://files.pythonhosted.org/packages/source/t/titlecase/titlecase-2.2.0.tar.gz
+	md5sums = a59fb1a51596c6aacf983442ac5947aa
 
 pkgname = python-titlecase
-
