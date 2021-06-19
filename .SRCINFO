@@ -1,5 +1,5 @@
 pkgbase = clash-premium-tun
-	pkgdesc = A rule-based tunnel in Go
+	pkgdesc = A rule-based tunnel in Go for Linux with TUN
 	pkgver = 2021.05.08
 	pkgrel = 1
 	url = https://github.com/Dreamacro/clash
