@@ -1,0 +1,30 @@
+post_install() {
+    systemctl daemon-reload
+    echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+	echo "+  Install successfully                                         +"
+    echo "+                                                               +"
+    echo "+  Home directory at /etc/clash                                 +"
+    echo "+                                                               +"
+    echo "+  All dns traffic will be redirected to 1.0.0.1:53             +"
+    echo "+  Please use clash core's 'tun.dns-hijack' to handle it        +"
+    echo "+                                                               +"
+    echo "+  Use 'systemctl start clash' to start                         +"
+    echo "+  Use 'systemctl enable clash' to enable auto-restart on boot  +"
+	echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+	systemctl stop clash
+    systemctl disable clash
+	if [ -f /etc/clash/config.yaml ]; then
+      mv /etc/clash/config.yaml /etc/clash/config.yaml.bak
+    fi
+}
+
+post_remove() {
+	systemctl daemon-reload
+}
