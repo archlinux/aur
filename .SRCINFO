@@ -1,0 +1,13 @@
+pkgbase = emacs-helm-ag
+	pkgdesc = helm-ag.el provides interfaces of The Silver Searcher with helm.
+	pkgver = 0.64
+	pkgrel = 1
+	url = https://github.com/emacsorphanage/helm-ag
+	arch = any
+	license = GPL3
+	depends = emacs-helm
+	depends = the_silver_searcher
+	source = https://github.com/emacsorphanage/helm-ag/archive/refs/tags/0.64.tar.gz
+	sha256sums = 85ab7836049b58566824703eacde10d0cddbe0c71fac88977460da56ff7a1ee2
+
+pkgname = emacs-helm-ag
