@@ -1,6 +1,6 @@
 # Maintainer: YSTYLE <lxy5266@live.com>
 pkgname=kaf-cli
-pkgver=v1.1.12
+pkgver=v1.1.13
 pkgrel=1
 epoch=
 pkgdesc="把txt文本转成epub与mobi电子书的命令行工具"
