@@ -4,13 +4,12 @@
 
 pkgname=doublecmd-gtk2-alpha-bin
 _pkgname=doublecmd
-pkgver=1.0.0.svn.r9807
-_pkgver=1.0.0~0+svn9807+git011e92030-1
+pkgver=1.0.0.svn.r9830
+_pkgver=1.0.0+svn9830+gitbe799e0f5-220
 pkgrel=1
 pkgdesc="A file manager with two panels side by side"
 arch=('x86_64')
 url='https://doublecmd.sourceforge.io'
-# https://launchpad.net/~alexx2000/+archive/doublecmd-svn
 depends=('gtk2')
 optdepends=('lua: scripting' 'p7zip: support for 7zip archives' 'libunrar: support for rar archives'
             'pmount: mount removable devices' 'imagemagick: speed up thumbnail view' 'ffmpegthumbnailer: video thumbnails')
@@ -20,41 +19,19 @@ conflicts=('doublecmd-gtk2' 'doublecmd-qt5-svn' 'doublecmd-qt5' 'doublecmd-gtk2-
 license=('GPL2')
 options=('!strip')
 
-_bldarch=amd64
-# [[ $CARCH = i686 ]] && _bldarch=i386
-
-_url=https://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/xUbuntu_20.10
-source=(${_url}/all/${_pkgname}-common_${_pkgver}_all.deb)
-#source_i686+=(${_url}/i386/${_pkgname}-gtk_${_pkgver}_i386.deb
-#        ${_url}/i386/${_pkgname}-plugins_${_pkgver}_i386.deb)
-source_x86_64+=(${_url}/amd64/${_pkgname}-gtk_${_pkgver}_amd64.deb
-        ${_url}/amd64/${_pkgname}-plugins_${_pkgver}_amd64.deb)
-sha256sums=('03122f77e97fbb46a23c6957580dde20b57f96b2adf5e2bcece00fe438b7233f')
-sha256sums_x86_64=('9114acd347cc86b32b9d757766bba03f7dfeff6d0374a4b8477d5c9f16277d14'
-                   'd89d699f8f7d213a917a9890c9659619507adde73316f0d509d0c46441c56e53')
-#sha256sums_i686=('8c37694b5c0623511104d8dc584fb9a904b4368919cd6a2ac5b5cdbef4266f0e'
-#                 'd7379824666e9152cd99b02bc626cf6815af096aad2e6e5bf1d99e7c523ccb9c')
-
-noextract=(
-   ${_pkgname}-gtk_${_pkgver}_${_bldarch}.deb
-   ${_pkgname}-plugins_${_pkgver}_${_bldarch}.deb
-   ${_pkgname}-common_${_pkgver}_all.deb
-)
+source=("https://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/openSUSE_Tumbleweed/x86_64/${_pkgname}-gtk-${_pkgver}.1.x86_64.rpm")
+sha512sums=('598aa072a18a16b86465b111173855c4b1f32507462b49c9bb85d3c2eec865a180361daa660090e4a473de95a646e19339054c16aafd7849a965a016b8561320')
 
 
+prepare() {
+  ln -sfn ../lib/doublecmd/doublecmd usr/bin/doublecmd
+}
 
 package() {
-    msg2 "Extracting files..."
-    cd "$srcdir"
-    ar x ${_pkgname}-gtk_${_pkgver}_${_bldarch}.deb
-    tar xf data.tar.xz --exclude lintian -C $pkgdir
-    rm -f data.tar.xz
-    ar x ${_pkgname}-plugins_${_pkgver}_${_bldarch}.deb
-    tar xf data.tar.xz --exclude lintian -C $pkgdir
-    rm -f data.tar.xz
-    ar x ${_pkgname}-common_${_pkgver}_all.deb
-    tar xf data.tar.xz --exclude lintian -C $pkgdir
-    rm -f data.tar.xz
-
+   install -dm755 "$pkgdir/usr"
+   #install -Dm755 "$srcdir/usr/bin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+   cp -a usr/bin   "$pkgdir/usr/"
+   cp -a usr/share "$pkgdir/usr/"
+   cp -a usr/lib64 "$pkgdir/usr/lib"
 }
 
