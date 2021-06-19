@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=vim-wiki
-pkgver=0.1
+pkgver=0.4
 pkgrel=1
 pkgdesc="A wiki plugin for Vim"
 arch=('any')
@@ -11,8 +11,9 @@ groups=('vim-plugins')
 depends=('vim-plugin-runtime')
 optdepends=('vim-wiki-ft: Wiki filetype plugin')
 provides=('vim-ctrlp-wiki' 'vim-coc-wiki' 'vim-unite-wiki')
+install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c709acf7b2c3b834c39cf496a5a6a1ee908b125e6a3419968d013ee9b9a0c963')
+sha256sums=('673c90ca0928081ce67fe240a94ce9ee0849b013e1af50c25b95bc8f1fa9294a')
 
 package() {
   cd "wiki.vim-$pkgver"
