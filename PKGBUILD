@@ -16,8 +16,6 @@ sha256sums=(e81d9edf373f193af428a0f256674aea62a9d74dfe93f65192d4eae030b0f3b0
 validpgpkeys=(3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F)  # Nick Clifton <nickc@redhat.com>
 
 prepare() {
-  mkdir -p binutils-build
-
   cd binutils-$pkgver
 
   # Turn off development mode (-Werror, gas run-time checks, date in sonames)
@@ -28,9 +26,9 @@ prepare() {
 }
 
 build() {
-  cd binutils-build
+  cd binutils-$pkgver
 
-  "$srcdir/binutils-$pkgver/configure" \
+  ./configure \
     --target=$_target \
     --with-sysroot=/usr/$_target \
     --prefix=/usr \
@@ -46,7 +44,7 @@ build() {
 }
 
 check() {
-  cd binutils-build
+  cd binutils-$pkgver
 
   # unset LDFLAGS as testsuite makes assumptions about which ones are active
   # do not abort on errors - manually check log files
@@ -54,7 +52,7 @@ check() {
 }
 
 package() {
-  cd binutils-build
+  cd binutils-$pkgver
 
   make DESTDIR="$pkgdir" install
 
