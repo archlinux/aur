@@ -68,7 +68,7 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck-uksm-cjktty
-pkgver=5.12.11
+pkgver=5.12.12
 pkgrel=1
 _major=5.12
 _ckpatchversion=1
@@ -100,7 +100,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('b5955fc1dc1ae416ef90c44d871f109d6a9130e5fc8b60f73cf98e14f4ce48b0030c79053d88c335c43ac6ab6f5786f9f054577f76c30f5505ed2d70e62d9aa0'
+b2sums=('f9aef3da2f65916cc30da9a066217d3379036e6a32a732224da7fee86c80810315484f48132b50b8cf8eb5e0b055ad1b7bbe63dadd0eb54b0b0626bc57c20963'
         'SKIP'
         '05c0d7c2d2800b7e7d5e149c3b13653497119dc4445b20b450e10f1bdb0b442e672bb05962d3aabc0b622c8e51f9db05cf7994442a6ea45bbaa886825ca96e32'
         '30d1df754608bb423cbc99c2097ad521baa091b9a3b39df4bd5c2d50c57eec54d8fa0e4a4a04b847c3d1b87ba682cadc8db45fabeefdc9ad7caaf8e77b96e41a'
