@@ -1,14 +1,14 @@
-# Maintainer: Alexander Mcmillan <linuxguy93@gmail.com>
 pkgname=tal-reverb4
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A Simple Algorithmic Reverb By TAL Software."
 arch=('x86_64')
 url="https://tal-software.com"
 license=('EULA')
-groups=('pro-audio' 'vst-plugins')
+depends=('libcurl-gnutls' 'glibc')
+groups=('pro-audio' 'vst-plugins' 'vst3-plugins')
 source=('https://tal-software.com/downloads/plugins/TAL-Reverb-4_64_linux.zip')
-md5sums=('aaac8dfd891774a80ab1334f928a2753')
+md5sums=('5da6f0cc5b42d7a5d5f7523c16cbd40c')
 
 package() {
   mkdir -p $pkgdir/usr/lib/vst3
