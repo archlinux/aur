@@ -2,7 +2,7 @@
 pkgbase=python-sunpy-sphinx-theme
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=1.2.25
+pkgver=1.2.27
 pkgrel=1
 pkgdesc="The sphinx theme for the SunPy website and documentation"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=('python-setuptools-scm')
 checkdepends=('python-pytest' 'python-sphinx' 'python-sphinx-bootstrap-theme')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('4639f5c85bc45baaaac4376e96178920')
+md5sums=('5d71c9fe0f7b2e1d9a773e84036e26fe')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
