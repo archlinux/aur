@@ -1,15 +1,14 @@
 pkgbase = vscode-css-languageserver-bin
-	pkgdesc = Language server implementation for CSS
+	pkgdesc = Binary version published on npm of vscode-css-languageserver extracted from VSCode tree
 	pkgver = 1.4.0
-	pkgrel = 1
-	url = https://www.npmjs.com/package/vscode-css-languageserver-bin
+	pkgrel = 2
+	url = https://github.com/vscode-langservers/vscode-css-languageserver-bin
 	arch = any
 	license = MIT
+	makedepends = npm
 	depends = nodejs
-	depends = npm
 	noextract = vscode-css-languageserver-bin-1.4.0.tgz
 	source = https://registry.npmjs.org/vscode-css-languageserver-bin/-/vscode-css-languageserver-bin-1.4.0.tgz
-	md5sums = d5e0e16469b1897dcb50a318f35a6fbe
+	sha256sums = daa006f74a6baa265e743811bf224003048144c805bc3a9dd3f8175d4815bced
 
 pkgname = vscode-css-languageserver-bin
-
