@@ -4,7 +4,7 @@
 _npmname=vscode-css-languageserver-bin
 pkgname=vscode-css-languageserver-bin
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Binary version published on npm of vscode-css-languageserver extracted from VSCode tree'
 arch=('any')
 url='https://github.com/vscode-langservers/vscode-css-languageserver-bin'
