@@ -1,6 +1,6 @@
 pkgname=yupass
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="This is a password manager powered by the YubiKey"
 url="https://github.com/StratusFearMe21/yupass"
 license=('GPT-3')
