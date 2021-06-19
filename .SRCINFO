@@ -1,0 +1,18 @@
+pkgbase = safeplugins
+	pkgdesc = Semantic Audio Feature Extraction VST plugins (Stable Branch)
+	pkgver = 1.32
+	pkgrel = 1
+	url = http://www.semanticaudio.co.uk
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = GPL3
+	depends = libglvnd
+	depends = curl
+	depends = freetype2
+	depends = libcurl-gnutls
+	depends = glibc
+	source = https://github.com/semanticaudio/SAFE/releases/download/1.32/SAFEPlugins-1.32-LinuxVST-64Bit.tar.gz
+	md5sums = c59d0b238f70e01fd2d8b84324f6d467
+
+pkgname = safeplugins
