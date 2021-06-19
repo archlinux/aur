@@ -50,7 +50,14 @@ prepare() {
 }
 
 build() {
-	colcon build --merge-install
+	# Disable parallel build if RAM is low
+	if [[ $(free | grep -Po "Mem:\s+\K\d+") < 16000000 ]]; then
+		printf "\nRAM is smaller than 16 GB. Parallel build will be disabled for stability.\n\n"
+		export COLCON_EXTRA_ARGS="${COLCON_EXTRA_ARGS} --executor sequential"
+	fi
+
+	# Build
+	colcon build --merge-install ${COLCON_EXTRA_ARGS}
 }
 
 package() {
