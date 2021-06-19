@@ -1,7 +1,7 @@
 pkgbase = marp-cli
 	pkgdesc = A CLI interface for Marp and Marpit based converters
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marp-team/marp-cli
 	arch = x86_64
 	license = MIT
@@ -18,4 +18,3 @@ pkgbase = marp-cli
 	sha256sums = 62711d9298f96a9634020d31a05561ad076e59e06749b0be643a20ccb8533770
 
 pkgname = marp-cli
-

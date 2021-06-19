@@ -3,7 +3,7 @@
 
 pkgname=marp-cli
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI interface for Marp and Marpit based converters"
 arch=('x86_64')
 url="https://github.com/marp-team/marp-cli"
@@ -24,7 +24,7 @@ source=("https://registry.npmjs.org/@marp-team/$pkgname/-/$pkgname-$pkgver.tgz")
 sha256sums=('62711d9298f96a9634020d31a05561ad076e59e06749b0be643a20ccb8533770')
 
 package() {
-    npm install -g --user root --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
+    npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
     #    chmod -R go-w "$pkgdir/usr"
     find "${pkgdir}/usr" -type d -exec chmod 755 {} +
     chown -R root:root "$pkgdir/usr"
