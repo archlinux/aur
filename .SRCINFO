@@ -1,15 +1,16 @@
 pkgbase = tuxedo-backlight-control-git
 	pkgdesc = GUI utility built on top of TUXEDO Keyboard. Provides a bash CLI (backlight) and a minimal Python UI.
-	pkgver = 0.7.r9.g05940fb
-	pkgrel = 1
+	pkgver = 0.7.r14.gde724d7
+	pkgrel = 2
 	url = https://github.com/webketje/tuxedo-backlight-control
 	arch = x86_64
 	license = MIT
 	depends = python
 	depends = tk
 	depends = polkit
+	depends = tuxedo-keyboard
 	makedepends = git
-	source = git+https://github.com/webketje/tuxedo-backlight-control#branch=feature/aur-pkg
+	source = git+https://github.com/webketje/tuxedo-backlight-control
 	sha256sums = SKIP
 	sha512sums = SKIP
 

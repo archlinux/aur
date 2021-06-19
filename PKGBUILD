@@ -1,17 +1,20 @@
-# Maintainer: Nigel <nigelwestland@gmail.com>
+# Maintainer: Matt Gray <Buddy.Matt1984@Gmail.com>
+# Contributor: Nigel <nigelwestland@gmail.com>
+# Contributor: Steven Seifried <gitlab@canox.net>
+# Contributor: Kevin Van Lierde <kevin.van.lierde@gmail.com>
 
 _pkgname='tuxedo-backlight-control'
 pkgname="${_pkgname}-git"
-pkgver=0.7.r9.g05940fb
-pkgrel=1
+pkgver=0.7.r14.gde724d7
+pkgrel=2
 arch=('x86_64')
 license=('MIT')
 url=https://github.com/webketje/tuxedo-backlight-control
-source=('git+https://github.com/webketje/tuxedo-backlight-control#branch=feature/aur-pkg')
+source=('git+https://github.com/webketje/tuxedo-backlight-control')
 sha256sums=('SKIP')
 sha512sums=('SKIP')
 pkgdesc='GUI utility built on top of TUXEDO Keyboard. Provides a bash CLI (backlight) and a minimal Python UI.'
-depends=('python' 'tk' 'polkit')
+depends=('python' 'tk' 'polkit' 'tuxedo-keyboard')
 makedepends=('git')
 
 pkgver() {
