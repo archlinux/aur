@@ -2,7 +2,7 @@
 # Contributor: Romain Gallet <rgallet@grumlimited.co.uk>
 _packager="Romain Gallet <rgallet@grumlimited.co.uk>"
 _deb_pkgname=stacks-wallet.mainnet
-pkgver=4.2.0
+pkgver=4.3.0
 pkgname=stacks-wallet.mainnet-bin
 pkgrel=1
 pkgdesc='Stacks Wallet is everything you need to manage your tokens and collectibles and will protect your tokens when you use apps.'
@@ -20,7 +20,7 @@ backup=()
 options=()
 install=stacks-wallet.mainnet-bin.install
 source=("$url/releases/download/v$pkgver/stacks-wallet.mainnet.v$pkgver.deb")
-md5sums=('b203ee6a90a9a84451b6981e1d07613b')
+md5sums=('3f5bdf9170d0783106e312f73f397d21')
 noextract=()
 
 build() {
