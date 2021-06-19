@@ -1,6 +1,6 @@
 pkgbase = vivaldi-arm-bin
 	pkgdesc = An advanced browser made with the power user in mind
-	pkgver = 4.0.2312.27
+	pkgver = 4.0.2312.33
 	pkgrel = 1
 	url = https://vivaldi.com
 	install = update-ffmpeg.install
@@ -22,11 +22,11 @@ pkgbase = vivaldi-arm-bin
 	provides = www-browser
 	options = !emptydirs
 	options = !strip
-	source_armv6h = https://downloads.vivaldi.com/stable/vivaldi-stable_4.0.2312.27-1_armhf.deb
-	b2sums_armv6h = 7d77d47ea4b25df635f85f7a0407ad106e605f5bfbc02605d80deccb0af3cb65f68ebd499e85be85bc4835ab788665b4a5791a6a4e457359b079d9a3706015e1
-	source_armv7h = https://downloads.vivaldi.com/stable/vivaldi-stable_4.0.2312.27-1_armhf.deb
-	b2sums_armv7h = 7d77d47ea4b25df635f85f7a0407ad106e605f5bfbc02605d80deccb0af3cb65f68ebd499e85be85bc4835ab788665b4a5791a6a4e457359b079d9a3706015e1
-	source_aarch64 = https://downloads.vivaldi.com/stable/vivaldi-stable_4.0.2312.27-1_arm64.deb
-	b2sums_aarch64 = 02c80f783548639f9514f8c0b3c2979b3e1752d6d4ff5363b148173ba4023ca83acf5492307b3ea55cea8dddf0f8a241ceb51f1474aa083824007edc6853439c
+	source_armv6h = https://downloads.vivaldi.com/stable/vivaldi-stable_4.0.2312.33-1_armhf.deb
+	b2sums_armv6h = 63a3420e89d75ca1491eae66c4a7927e64d631fa45b3b5016f161c7730d75886872c54e0d9c6bbdaaed1a3ac0d1632b32ee62785f3f45da1d20ce6740bf096f3
+	source_armv7h = https://downloads.vivaldi.com/stable/vivaldi-stable_4.0.2312.33-1_armhf.deb
+	b2sums_armv7h = 63a3420e89d75ca1491eae66c4a7927e64d631fa45b3b5016f161c7730d75886872c54e0d9c6bbdaaed1a3ac0d1632b32ee62785f3f45da1d20ce6740bf096f3
+	source_aarch64 = https://downloads.vivaldi.com/stable/vivaldi-stable_4.0.2312.33-1_arm64.deb
+	b2sums_aarch64 = 8161941f9ab7dd427f9b117f51d60b84b16c6114ae6fadcf016d4dd87f0002a5f33eafb613e5c31cf97fdbdc00b5665a8f8226fd6232a4396fce5fd53ff58a3d
 
 pkgname = vivaldi-arm-bin
