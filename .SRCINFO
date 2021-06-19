@@ -1,0 +1,15 @@
+pkgbase = vim-lists
+	pkgdesc = A lists plugin for Vim
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/lervag/lists.vim
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	depends = vim-plugin-runtime
+	optdepends = vim-wiki: Original companion plugin
+	optdepends = vim-wiki-ft: Wiki filetype plugin
+	source = vim-lists-1.0.tar.gz::https://github.com/lervag/lists.vim/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 2676d66e8f95d1b9726551d0f16f18f3216b51b00b344b445cff597414b39724
+
+pkgname = vim-lists
