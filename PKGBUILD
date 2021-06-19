@@ -1,4 +1,4 @@
-pkgname=iscfpc
+pkgname=iscfpcx
 pkgver=1.0.9
 pkgrel=18
 pkgdesc="project maintain tool for FreePascal"
