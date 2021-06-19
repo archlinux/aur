@@ -2,7 +2,7 @@
 maintaner="Milkii Brewster <milkii on Freenode IRC>"
 pkgname=zplugins.lv2-git
 pkgdesc="Zrythm plugins for audio, MIDI and CV, including ZLFO, ZSaw, ZVerb and ZChordz"
-pkgver=r36.444ae2d
+pkgver=r73.e5273db
 pkgrel=1
 epoch=
 arch=(x86_64)
@@ -20,7 +20,7 @@ backup=()
 options=(debug !strip)
 install=
 changelog=
-source=(zplugins::git+https://git.zrythm.org/git/zplugins)
+source=(zplugins::git+https://git.zrythm.org/zrythm/zplugins)
 noextract=()
 md5sums=('SKIP')
 
