@@ -1,0 +1,16 @@
+pkgbase = vim-envy-git
+	pkgdesc = Light colorscheme for Vim with comfortable contrast
+	pkgver = r47.e1afb0c
+	pkgrel = 1
+	url = https://github.com/kkga/vim-envy
+	arch = any
+	groups = vim-plugins
+	license = MPL2
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-envy
+	conflicts = vim-envy
+	source = vim-envy-git::git+https://github.com/kkga/vim-envy
+	md5sums = SKIP
+
+pkgname = vim-envy-git
