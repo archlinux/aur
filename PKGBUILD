@@ -3,25 +3,25 @@
 
 _target=mips64-elf
 pkgname=${_target}-gcc
-pkgver=10.2.0
-_islver=0.22
+pkgver=11.1.0
+_islver=0.24
 pkgrel=1
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=('x86_64')
-license=('GPL' 'LGPL' 'FDL')
+license=('GPL' 'LGPL' 'FDL' 'custom')
 url="http://www.gnu.org/software/gcc/"
 depends=('libmpc' 'zstd' "${_target}-newlib")
 makedepends=('gmp' 'mpfr' "${_target}-binutils")
-options=('!emptydirs' '!strip')
+options=('!emptydirs' '!distcc' '!strip')
 conflicts=("${_target}-gcc-stage1")
 provides=("${_target}-gcc-stage1")
 replaces=("${_target}-gcc-stage1")
 source=("http://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
-		"http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
-    "mabi32.patch")
-sha256sums=('b8dd4368bb9c7f0b98188317ee0254dd8cc99d1e3a18d0ff146c855fe16c1d8c'
-            '6c8bc56c477affecba9c59e2c9f026967ac8bad01b51bdd07916db40a517b9fa'
-            '368e2287adba14718dbd84dc75b2a7a2f65cb907e988b56813640ea8d9d2e951')
+        "http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
+        "mabi32.patch")
+sha256sums=('4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf'
+            '043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad'
+            '86c06dfb12295e665204441ca17440d4e597da24b6cffad052c94268ec562169')
 
 prepare() {
   cd gcc-${pkgver}
@@ -29,25 +29,28 @@ prepare() {
   # link isl for in-tree builds
   ln -s ../isl-$_islver isl
 
-  echo ${pkgver} > gcc/BASE-VER
+  # Do not run fixincludes
+  sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
 
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
 
-  mkdir "${srcdir}"/build-gcc
-
   # patch multilib support for mabi=32
-  patch --strip=2 --input=${srcdir}/mabi32.patch
+  patch --strip=1 --input="${srcdir}"/mabi32.patch
 }
 
 build() {
+  mkdir -p "${srcdir}"/build-gcc
   cd build-gcc
+
+  CFLAGS=${CFLAGS/-Werror=format-security/}
+  CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
   "${srcdir}"/gcc-${pkgver}/configure \
     --prefix=/usr \
     --target=${_target} \
-    --host=$CHOST \
-    --build=$CHOST \
+    --host="$CHOST" \
+    --build="$CHOST" \
     --with-arch=from-abi \
     --with-sysroot=/usr/${_target} \
     --libdir=/usr/lib \
