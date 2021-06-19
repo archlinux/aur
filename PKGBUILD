@@ -1,6 +1,6 @@
 pkgname=screego-server
 _pkgname=screego-server
-pkgver=1.3.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='screen sharing for developers'
 arch=('x86_64' 'arm64')
@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	"tmpfiles.conf"
 	"sysusers.conf"
 )
-sha256sums=('8aa89c23175ccc929a628e730f5abce783868d9a0d19ebc91252a83f28b37b5d'
+sha256sums=('7df4135f7cc0df5808aa1141a801c997d03ce63465ef57222aaed75c4cfefaae'
             '7467398db76e4c14f7c4bd402b8dc1dce71866856ac9ae3d54cec6e5ce93155c'
             '1d4494d5328700b304b0837dafc7a5772b8abe3435a0a24337a89f25ad5acd1b'
             '5804e54e4af5704fd5066c45313d7635798bd4389cd8312ee965c911d9d75e85')
