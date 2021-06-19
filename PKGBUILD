@@ -9,8 +9,8 @@
 pkgname=librewolf-hg
 _pkgname=librewolf-nightly
 __pkgname="Librewolf Nightly"
-pkgver=r648231.f1a61b8e8e7c
-pkgrel=2
+pkgver=91.0a1.r652599.2b20b560fe61
+pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom. (nightly edition)"
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
@@ -27,6 +27,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English'
+            'xdg-desktop-portal: Screensharing with Wayland'
             'libappindicator-gtk3: Global menu support for GTK apps'
             'appmenu-gtk-module: Appmenu for GTK only'
             'plasma5-applets-window-appmenu: Appmenu for Plasma only')
@@ -46,7 +47,8 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd mozilla-unified
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)" | sed 's/\+//g'
+  _pkgver=$(cat browser/config/version.txt)
+  printf "${_pkgver}.r%s.%s" "$(hg identify -n)" "$(hg identify -i)" | sed 's/\+//g'
 }
 
 prepare() {
@@ -166,6 +168,9 @@ fi
   # allow SearchEngines option in non-ESR builds
   patch -Np1 -i ${_patches_dir}/sed-patches/allow-searchengines-non-esr.patch
 
+  # remove search extensions (experimental)
+  patch -Np1 -i ${_patches_dir}/search-config.patch
+
   # stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)
   patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
 
@@ -173,6 +178,12 @@ fi
   patch -Np1 -i ${_patches_dir}/context-menu.patch
   patch -Np1 -i ${_patches_dir}/browser-confvars.patch
   patch -Np1 -i ${_patches_dir}/urlbarprovider-interventions.patch
+
+  # allow overriding the color scheme light/dark preference with RFP
+  patch -Np1 -i ${_patches_dir}/allow_dark_preference_with_rfp.patch
+
+  # fix an URL in 'about' dialog
+  patch -Np1 -i ${_patches_dir}/about-dialog.patch
 
   rm -f ${srcdir}/librewolf-common/source_files/mozconfig
   cp -r ${srcdir}/librewolf-common/source_files/* ./

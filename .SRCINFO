@@ -1,7 +1,7 @@
 pkgbase = librewolf-hg
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom. (nightly edition)
-	pkgver = r648231.f1a61b8e8e7c
-	pkgrel = 2
+	pkgver = 91.0a1.r652599.2b20b560fe61
+	pkgrel = 1
 	url = https://librewolf-community.gitlab.io/
 	install = librewolf-nightly.install
 	arch = x86_64
@@ -55,6 +55,7 @@ pkgbase = librewolf-hg
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
+	optdepends = xdg-desktop-portal: Screensharing with Wayland
 	optdepends = libappindicator-gtk3: Global menu support for GTK apps
 	optdepends = appmenu-gtk-module: Appmenu for GTK only
 	optdepends = plasma5-applets-window-appmenu: Appmenu for Plasma only
