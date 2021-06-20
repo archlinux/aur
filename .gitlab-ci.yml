@@ -29,7 +29,6 @@ update_hash:
 
 makepkg:
   stage: build
-  needs: ["update_hash"]
   script:
     # Test building a source package
     - sudo -u builder makepkg -C -S --log --noconfirm
@@ -42,6 +41,6 @@ push:
     - git add PKGBUILD
     - git diff-index --quiet HEAD || git commit -m "updates hash for AppImage"
     - git push -o ci.skip "https://${GITLAB_USER_NAME}:${RENOVATE_TOKEN}@${CI_REPOSITORY_URL#*@}" "HEAD:${CI_COMMIT_BRANCH}"
-  only: 
+  only:
     refs:
       - merge_requests
