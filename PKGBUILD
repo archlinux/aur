@@ -8,9 +8,9 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
          python-buildbot-www python-buildbot-waterfall-view
          python-buildbot-console-view python-buildbot-grid-view
          python-buildbot-wsgi-dashboards python-buildbot-badges)
-pkgver=3.1.1
+pkgver=3.2.0
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
-pkgrel=2
+pkgrel=1
 arch=(any)
 url='https://buildbot.net'
 license=(GPL2)
@@ -18,7 +18,7 @@ checkdepends=(python-boto3 python-ldap3 python-lz4 python-treq python-txrequests
               python-moto python-docker python-parameterized python-mock python-subunit
               python-graphql-core python-unidiff
               openssh chromium)
-makedepends=(python-twisted python-jinja python-zope-interface python-sqlalchemy1.3
+makedepends=(python-twisted python-jinja python-zope-interface python-sqlalchemy
              python-sqlalchemy-migrate python-dateutil python-txaio
              python-autobahn python-pyjwt python-yaml
              python-setuptools python-future
@@ -29,7 +29,7 @@ source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbo
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
         "subunit-tests.diff"
         "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch")
-sha256sums=('ffa127b06f375908c7882c246402171d461eb92f4036023282328c0ed53f0db3'
+sha256sums=('b94c62cb92398d1e32d5796f493711ecc568b2430efc856d48912f05ea8afb09'
             'SKIP'
             'SKIP'
             'cd66bf65e45fa0a5916a6e0201dcebc4db001e4f47da856afbffc58a04356d55'
@@ -134,7 +134,7 @@ export PYTHONHASHSEED=0
 package_buildbot() {
   pkgdesc='The Continuous Integration Framework'
   # include setuptools as plugins are enumerated via pkg_resources
-  depends=(buildbot-common python-twisted python-jinja python-zope-interface python-sqlalchemy1.3
+  depends=(buildbot-common python-twisted python-jinja python-zope-interface python-sqlalchemy
            python-sqlalchemy-migrate python-dateutil python-txaio
            python-autobahn python-pyjwt python-yaml python-setuptools)
   optdepends=(
