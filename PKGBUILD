@@ -2,7 +2,7 @@
 # Maintainer: Gustav Sörnäs <gustav at sornas dot net>
 
 pkgname=mum-git
-pkgver=r150.1c18f57
+pkgver=r650.24b3b57
 pkgrel=1
 pkgdesc="A mumble client/daemon pair"
 arch=('x86_64')
@@ -25,9 +25,9 @@ build() {
     cd "${srcdir}/${pkgname%-git}"
     RUSTFLAGS="--remap-path-prefix=$(pwd)=" cargo build --locked --release --target-dir=target
 
-    which bash &>/dev/null && ./target/release/mumctl completions --bash > mumctl.bash
-    which fish &>/dev/null && ./target/release/mumctl completions --fish > mumctl.fish
-    which zsh &>/dev/null && ./target/release/mumctl completions --zsh > mumctl.zsh
+    which bash &>/dev/null && ./target/release/mumctl completions bash > mumctl.bash
+    which fish &>/dev/null && ./target/release/mumctl completions fish > mumctl.fish
+    which zsh &>/dev/null && ./target/release/mumctl completions zsh > mumctl.zsh
 }
 
 check() {
