@@ -1,4 +1,6 @@
-# Maintainer: Randy Heydon <randy dot heydon at clockworklab dot net>
+#!/bin/hint/bash
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+# Contributor: Randy Heydon <randy dot heydon at clockworklab dot net>
 # Contributor: saxonbeta <saxonbeta at gmail __com
 pkgname=elmerfem-git
 _pkgname=elmerfem
