@@ -1,16 +1,12 @@
 #!/bin/sh
 pre_upgrade() {
 	if [ -f /etc/bieaz.cfg ]; then
-		mv /etc/bieaz.cfg /etc/bieaz.cfg.old
+		mv /etc/bieaz.cfg /etc/bieaz.cfg.pacold
+		echo 'old config moved to /etc/bieaz.cfg.pacold'
 	fi
 };
 post_upgrade() {
 	bieaz menu -g
-	if [ -f /etc/bieaz.cfg.old ]; then
-		mv /etc/bieaz.cfg /etc/bieaz.cfg.pacnew
-		mv /etc/bieaz.cfg.old /etc/bieaz.cfg
-		echo 'newer bieaz configuration has been installed to /etc/bieaz.cfg.pacnew'
-	fi
 }
 
 post_install() {
