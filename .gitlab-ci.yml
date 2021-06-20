@@ -11,6 +11,12 @@ before_script:
   - git config --global user.email "${GIT_USER_EMAIL:-$GITLAB_USER_EMAIL}"
   - git config --global user.name "${GIT_USER_NAME:-$GITLAB_USER_NAME}"
 
+namcap:
+  stage: check
+  script:
+    - namcap -i PKGBUILD
+  allow_failure: true
+
 update_hash:
   stage: check
   script:
