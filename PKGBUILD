@@ -3,7 +3,7 @@
 
 pkgname=pacman-hook-kernel-install
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Pacman hooks for kernel-install."
 url='https://man.archlinux.org/man/kernel-install.8'
 arch=('any')
