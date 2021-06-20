@@ -42,10 +42,10 @@ main()
         esac
     done
 
-    mkdir -p "$trash" || exit 1
+    mkdir -p "$trash_dir" || exit 1
 
-    must_trash="$(getold $tmp_dir $trash_older_than)"
-    must_purge="$(getold $trash_dir $purge_older_than)"
+    must_trash="$(getold "$tmp_dir" $trash_older_than)"
+    must_purge="$(getold "$trash_dir" $purge_older_than)"
 
     echo "$must_trash" | trash
     echo "$must_purge" | purge
@@ -57,7 +57,7 @@ main()
 trash()
 {
     while IFS= read -r file; do
-        [ -e "$file" ] && mv -fv "$file" "$trash"
+        [ -e "$file" ] && mv -fv "$file" "$trash_dir"
     done
 }
 
@@ -71,7 +71,7 @@ purge()
 getold()
 {
     find "$1" -mindepth 1 -maxdepth 1 -type f -mtime +$2
-    find "$1" -mindepth 1 -maxdepth 1 -type d -mtime +$2 -not -path "*${trash}*" |
+    find "$1" -mindepth 1 -maxdepth 1 -type d -mtime +$2 -not -path "*${trash_dir}*" |
         while IFS= read -r dir; do
             test "$(find "$dir" -type f -mtime -$2 -quit)" || printf '%s\n' "$dir"
         done
@@ -86,7 +86,7 @@ log()
 
 summary()
 {
-    echo "moved $(line_count "$must_trash") tmpfiles to trash ($trash)."
+    echo "moved $(line_count "$must_trash") tmpfiles to trash ($trash_dir)."
     echo "purged $(line_count "$must_purge") tmpfiles from trash."
 }
 
