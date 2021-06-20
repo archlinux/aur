@@ -6,7 +6,7 @@
 # Maintainer: Tsingv <tsingv@outlook.com>
 pkgname=omniedge-cli
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A reliable and painless connectivity to all your devices in one click."
 arch=('x86_64')
