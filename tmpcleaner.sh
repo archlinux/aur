@@ -37,7 +37,7 @@ main()
     echo "$must_purge" | purge
 
     summary
-    log
+    log >> "$log"
 }
 
 trash()
@@ -65,8 +65,9 @@ getold()
 
 log()
 {
-    date "+%F %T" >> "$log"
-    summary | tr '\n' ' ' >> "$log"
+    date "+%F %T" | tr '\n' ' '
+    summary | tr '\n' ' '
+    echo
 }
 
 summary()
