@@ -34,5 +34,5 @@ push:
   stage: release
   script:
     - git add PKGBUILD
-    - git commit -m "updates hash for AppImage"
+    - git diff-index --quiet HEAD || git commit -m "updates hash for AppImage"
     - git push -o ci.skip "https://${GITLAB_USER_NAME}:${RENOVATE_TOKEN}@${CI_REPOSITORY_URL#*@}" "HEAD:${CI_COMMIT_BRANCH}"
