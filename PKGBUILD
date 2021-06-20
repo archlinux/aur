@@ -49,7 +49,7 @@ package() {
     src/picker/docs/${pkgname%-git}.1
 
   # https://github.com/FFY00/python-install/pull/6
-  chmod +x "$pkgdir"/usr/bin/${pkgname%-git}
+  chmod +x "$pkgdir"/usr/bin/*
 
   # Symlink license file
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
