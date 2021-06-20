@@ -1,0 +1,33 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 883a4a5a..ebe190c1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -397,9 +397,10 @@ MESSAGE(STATUS "------------------------------------------------")
+ # MPI and LAPACK
+ FIND_PACKAGE(BLAS REQUIRED)
+ FIND_PACKAGE(LAPACK REQUIRED)
++FIND_PACKAGE(ARPACK-NG REQUIRED)
+ # BLAS and LAPACK libraries may be needed for testing
+ SET(CMAKE_REQUIRED_LIBRARIES 
+-  ${CMAKE_REQUIRED_LIBRARIES} ${BLAS_LIBRARIES} ${LAPACK_LIBRARIES})
++  ${CMAKE_REQUIRED_LIBRARIES} ${BLAS_LIBRARIES} ${LAPACK_LIBRARIES} ${ARPACK-NG_LIBRARIES})
+ 
+ IF(MPI_FOUND)
+   # Mumps
+diff --git a/mathlibs/src/CMakeLists.txt b/mathlibs/src/CMakeLists.txt
+index 9f2701d3..bda3c341 100644
+--- a/mathlibs/src/CMakeLists.txt
++++ b/mathlibs/src/CMakeLists.txt
+@@ -6,7 +6,9 @@ IF(NOT LAPACK_FOUND)
+   ADD_SUBDIRECTORY(lapack)
+ ENDIF()
+ 
+-ADD_SUBDIRECTORY(arpack)
+-IF(MPI_FOUND)
+-  ADD_SUBDIRECTORY(parpack)
++IF(NOT ARPACK-NG_FOUND)
++  ADD_SUBDIRECTORY(arpack)
++  IF(MPI_FOUND)
++    ADD_SUBDIRECTORY(parpack)
++  ENDIF()
+ ENDIF()

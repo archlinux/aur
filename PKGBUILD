@@ -47,10 +47,12 @@ conflicts=('elmerfem')
 options=(!emptydirs !staticlibs)
 
 source=('git+https://github.com/ElmerCSC/elmerfem.git'
-        "$_pkgname.desktop")
+        "$_pkgname.desktop"
+        "arpack.patch")
 
 sha256sums=('SKIP'
-            'f4b39389e5f258c7860b8d7a6b171fb54bf849dc772f640ac5e7a12c7a384aca')
+            'f4b39389e5f258c7860b8d7a6b171fb54bf849dc772f640ac5e7a12c7a384aca'
+            '04e73a99d7e8d501a2c7c5211a83257137a30a8b1b5c2f7c7ff6304e0e0a6da9')
 
 pkgver() {
   git -C "${srcdir}/${_pkgname}" describe --long --tag| sed -r 's/^release-//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -60,6 +62,7 @@ prepare() {
   cd "$srcdir/$_pkgname"
   sed -i 's/1 depth/1 ${depth}/g' fem/tests/CMakeLists.txt
   sed -i 's/FALSE/false/g' ElmerGUI/Application/vtkpost/matc.cpp
+  git apply -v "${srcdir}"/arpack.patch
 }
 
 build() {
@@ -80,7 +83,7 @@ package() {
   cd "$pkgdir/usr"
 
   # Remove unecessary libraries
-  rm -rf -- lib/{*.a,*arpack.so,ElmerGUI}
+  rm -rf -- lib/{*.a,ElmerGUI}
 
   #Create directories
   install -dv share/applications
