@@ -2,7 +2,7 @@
 
 pkgname=python-runlike
 _pkgname=runlike
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Given an existing docker container, prints the command line necessary to run a copy of it"
 arch=("any")
@@ -12,7 +12,7 @@ depends=('python-click')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "${url}/raw/master/LICENSE.txt")
-sha256sums=('d4fba12ba38081b197fb8f4123a310c176b8ca564043cf24268484f44988f36c'
+sha256sums=('b76aa112943d35ac4aead4da4f0203d381afc75361fc5c2c5bd7033d5ea8945e'
             '4daf3259296ec4d1725cb4a3061d1493e48abe29a83d9e0243298d90cd5dfe09')
 
 build() {
