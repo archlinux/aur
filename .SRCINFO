@@ -1,0 +1,18 @@
+pkgbase = seq192-git
+	pkgdesc = MIDI sequencer based on seq24 with less features and more swag
+	pkgver = 228.c74835d
+	pkgrel = 1
+	url = https://github.com/jean-emmanuel/seq192
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = nlohmann-json
+	depends = gtkmm3
+	depends = jack
+	depends = liblo
+	provides = seq192
+	conflicts = seq192
+	source = git://github.com/jean-emmanuel/seq192.git
+	sha512sums = SKIP
+
+pkgname = seq192-git
