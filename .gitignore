@@ -1,4 +1,4 @@
 # Ignore everything
 pkg/*
 src/*
-*/*pkg.tar*
+*pkg.tar*
