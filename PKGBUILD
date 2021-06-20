@@ -1,8 +1,8 @@
-# Contributor: BluePeril <blueperil (at) blueperil _dot_ de>
+# Contributor: BluePeril <blueperil@blueperil.de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-mojolicious-plugin-authentication'
-pkgver='1.36'
+pkgver='1.37'
 pkgrel='1'
 pkgdesc="A plugin to make authentication a bit easier"
 arch=('any')
@@ -12,8 +12,8 @@ depends=('perl-mojolicious>=8.0' 'perl>=5.016')
 makedepends=()
 url='https://metacpan.org/release/Mojolicious-Plugin-Authentication'
 source=("http://search.cpan.org/CPAN/authors/id/J/JJ/JJATRIA/Mojolicious-Plugin-Authentication-${pkgver}.tar.gz")
-md5sums=('7eda1fadc272de097aa8d58abb9197ad')
-sha512sums=('2c355ab8501c5005230888c38706a1507c49ba73f42721b8cd2af1d6e75b23c5c977b54b1374197b0f51b86f16d8cf4b7bdde3402cc37febf0482330d00c7e5c')
+md5sums=('c475f2d3962441698b178ad1bd7d2e29')
+sha512sums=('f0b5cc37a0d66cf45e907727b72caee94f101b32ae82263bc052c40912ea773d7d0db3a94f7f862a95b9a05b9ca1634f0bca075a3af8b4891f70e0928873068a')
 _distdir="Mojolicious-Plugin-Authentication-${pkgver}"
 
 build() {
