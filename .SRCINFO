@@ -1,7 +1,7 @@
 pkgbase = usbbootgui
 	pkgdesc = GUI for booting a Raspberry Pi device like Pi Zero or compute module as a device
 	pkgver = 1e9cc0f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/raspberrypi/usbbootgui
 	arch = any
 	license = 
