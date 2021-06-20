@@ -67,7 +67,7 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.12.11
+pkgver=5.12.12
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -76,7 +76,7 @@ license=(GPL2)
 makedepends=(bc kmod libelf pahole cpio xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick git)
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=e9fcaef238dca17aff523cae8dc8ebd768859ac2
+_arch_config_commit=17c6883dfda0ee7f58cb11c7fa4063ccf0c00af7
 _bmqversion=5.12-r1
 _bmq_patch="prjc_v${_bmqversion}.patch"
 _gcc_more_v=20210610
@@ -85,31 +85,31 @@ source=(
   "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=fa17daad7209d62169553ce6336ef29ba4748049"
-  "0002-x86-setup-Consolidate-early-memory-reservations.patch::https://git.archlinux.org/linux.git/patch/?id=56e6bb0fe2b790adda81851794409faa533e521c"
-  "0003-x86-setup-Merge-several-reservations-of-start-of-mem.patch::https://git.archlinux.org/linux.git/patch/?id=e63cb4a867fe803dc90376af8b268ba1549ec36e"
-  "0004-x86-setup-Move-trim_snb_memory-later-in-setup_arch-t.patch::https://git.archlinux.org/linux.git/patch/?id=c4b5e4bc8317ccb0a822429d87288d9f90453a04"
-  "0005-x86-setup-always-reserve-the-first-1M-of-RAM.patch::https://git.archlinux.org/linux.git/patch/?id=3ffe8ae29143ee20e01b0bc4a63774182b59daf9"
-  "0006-x86-setup-remove-CONFIG_X86_RESERVE_LOW-and-reservel.patch::https://git.archlinux.org/linux.git/patch/?id=2e68d15d0a146e9b13bfbaba5f260c82b8c3d049"
-  "0007-x86-crash-remove-crash_reserve_low_1M.patch::https://git.archlinux.org/linux.git/patch/?id=bb4c1200fdfd6c17fff64e159e625c3678342b87"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=5681b74293d983752bf033fbadd190e9a1265825"
+  "0002-x86-setup-Consolidate-early-memory-reservations.patch::https://git.archlinux.org/linux.git/patch/?id=d95db8299235d164f12f11b0ea8acd60c7e13dcf"
+  "0003-x86-setup-Merge-several-reservations-of-start-of-mem.patch::https://git.archlinux.org/linux.git/patch/?id=a3a4cc7df405aeff7d70a11ee4e90965809ed09e"
+  "0004-x86-setup-Move-trim_snb_memory-later-in-setup_arch-t.patch::https://git.archlinux.org/linux.git/patch/?id=0ad14408305e590f26efe4437f925b40d283e67d"
+  "0005-x86-setup-always-reserve-the-first-1M-of-RAM.patch::https://git.archlinux.org/linux.git/patch/?id=d95f872247541176d4edf5664198ed9edb12f134"
+  "0006-x86-setup-remove-CONFIG_X86_RESERVE_LOW-and-reservel.patch::https://git.archlinux.org/linux.git/patch/?id=f42fcdafbd9c6232c086bd717fa29f1664ccaadb"
+  "0007-x86-crash-remove-crash_reserve_low_1M.patch::https://git.archlinux.org/linux.git/patch/?id=74d8a788eff7fd6cfed8aa5901a6abf3d6b5be7f"
   "prjc-fix-compilation-error.patch::https://gitlab.com/alfredchen/linux-prjc/uploads/b1121adfd2d2a2c610a1a8d611947d8c/0001-prjc-fix-compilation-error.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('b5955fc1dc1ae416ef90c44d871f109d6a9130e5fc8b60f73cf98e14f4ce48b0030c79053d88c335c43ac6ab6f5786f9f054577f76c30f5505ed2d70e62d9aa0'
+b2sums=('f9aef3da2f65916cc30da9a066217d3379036e6a32a732224da7fee86c80810315484f48132b50b8cf8eb5e0b055ad1b7bbe63dadd0eb54b0b0626bc57c20963'
         'SKIP'
         '9d38db65163a640071539e20a2ac4d8352e07cee26cfb997e6d0e9951bcbe2184c3be4f41a6a4073080e73b743dd86690a056cf6aa1aa607c967e37fa470a8cf'
         '77a1646ffbc67ed88af564b73cf63f0374772bdc1075e771a93ee4fe257b94cb3766a4842898b48f4343458d0b507229182220c7daeb5532df610b964c6640e7'
         '30d1df754608bb423cbc99c2097ad521baa091b9a3b39df4bd5c2d50c57eec54d8fa0e4a4a04b847c3d1b87ba682cadc8db45fabeefdc9ad7caaf8e77b96e41a'
-        'f6e2312f7fa59c3f9e860a0f336e32650b027e6e0b77f51d169d798a60a60a781850cb0d3597e1714a529d1c9c8c0513f7b83306ca540f9e3eabad8e15f60899'
-        'c7914769d8f0ff6fb8e3ec8e6fecbb8ac888a63a1fdbf1b45ac6df34609646a3b441646a4e1067fb05c872c75fba54e754a0785c17187148c6b3e33238bf1427'
-        '6df7a8227f51ede70c3a64f3cbb3c40066063bfd73b76f4e9c3b6ab825fd92898168182ff4268ec699871df1dcb0ba25154f1efa928505c7b0d945d13778ac98'
-        '18bdf0af0ee95464616f8584d6dc0bb26bee11d38c200314bd1a074358f9e580d172b143bceefc0a4f3c8b6b46884a89320b472cd66fc3ac905fff2c8fcd98d7'
-        '3962b46a615f3d2502d742998ef7be8a8cafeb6b979c9e5d6ea7142f37be8071e48761528fbef73884a5dc9bb3b4b0837840916aae39634dd38724dc6f32ca6e'
-        '0a8da6d79c4ea5208379b30b2d7d69bf2f58b18781b89942911ba427aea8667e2551ab84f99e0c8ff77c23addcf2e917843a43b6c49aed9807932c76c935a783'
-        'eddb03c1d53fff69e4b8f1f7bffb7473119cefa89900404e3908d808ea202c6bc0be565531cb1c69dd74847ac8a952cf0b658f0b1156fbbf19e76acf0911f50f'
+        'b98e3f25f462229b14d7127f2c12e7e1981ace66c21db82daa2e58e0915ee25fc714395975a2067bd0f80c62bc2edd3c7168697fa5f7ba77d572a9c859cae948'
+        '3a1a77419b060c8da3cd1357f4d62675f61f271a328ac3c8e7d2d202b430e4aed8183431e23d159e01c0b35a10ffb0da8fedebe5e446d276614bb447e84caf15'
+        '018651b7c5ba0010b134d032995ac6c2ed2b0262394a2d4811d6c0350c4cdf04aaeea0126dd5a79f79859988c320c0f22164a3f58e7f0a9e54981215f147b33a'
+        'b6ea62d9bbbc9852bc6869bdaada00077d77a9120e5884c3386a73ddd56a2d2443c666fba1febcf2f810b148d32a21b55f8701f5813da9374a958d9de4d6df31'
+        '1f352876f4f6eddd9ec8991c3fea3c21f568f2818a7d0633893b64ca1d7cdb56644adf7fef2bbc6176e29920c2860a3c49c1e390905cbe4d2b2be4dda9c4693f'
+        '18d680cc1cb4980822754ca7f679035fa06e9077c35ac2b41acd953ca48cdc3f96224336624033ae9a1adcd886773ca8fa06c2e083cc65885da4bb7c755bd950'
+        '067a8587ff19b2fd29b24f3603348d71999a19e0551bc65f54521991cfcd4121bdd707b14438858639f4533e50323e0b0960f12e9980a1b086508c29a6a5fc2d'
         '8bfdf114f40a4d4851c511003d0454b450ad1cffc59f360bef53b7cff9272a743e59da42e8ca067e2f48c1abd89dd4e03dcb681f9fb7a3180eff260cfed713ee')
 
 _kernelname=${pkgbase#linux}
