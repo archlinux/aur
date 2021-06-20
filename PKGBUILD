@@ -2,22 +2,17 @@
 
 # shellcheck disable=2034,2154
 
-pkgname=podman-git
+pkgbase=podman-git
+pkgname=(podman-git podman-docker-git)
 _pkgname=podman
+_pkgname_docker=podman-docker
 pkgver=3.3.0_dev.r12096.gd8cd20547
 pkgrel=1
 pkgdesc="Tool and library for running OCI-based containers in pods (git)"
 arch=('any')
 depends=(cni-plugins conmon containers-common device-mapper iptables
   runc slirp4netns libsystemd fuse-overlayfs)
-optdepends=('podman-docker: for Docker-compatible CLI'
-  'libapparmor.so: support for apparmor'
-  'libselinux: support for selinux'
-  'btrfs-progs: support btrfs backend devices'
-  'catatonit: --init flag support'
-  'crun: support for unified cgroupsv2')
 makedepends=(go go-md2man git)
-backup=('etc/cni/net.d/87-podman-bridge.conflist')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 url="https://github.com/containers/$_pkgname.git"
@@ -43,12 +38,30 @@ build() {
   make EXTRA_LDFLAGS='-s -w -linkmode=external'
 }
 
-package() {
+package_podman-git() {
   depends+=('libseccomp.so' 'libgpgme.so')
+  optdepends+=('podman-docker: for Docker-compatible CLI'
+    'libapparmor.so: support for apparmor'
+    'libselinux: support for selinux'
+    'btrfs-progs: support btrfs backend devices'
+    'catatonit: --init flag support'
+    'crun: support for unified cgroupsv2')
+  backup+=('etc/cni/net.d/87-podman-bridge.conflist')
 
   cd $_pkgname || exit 1
   make install install.completions DESTDIR="$pkgdir" PREFIX=/usr
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname[0]}/LICENSE"
   # remove man pages provided by containers-common
   rm -rvf "${pkgdir}/usr/share/man/man5"
+}
+
+package_podman-docker-git() {
+  pkgdesc='Emulate Docker CLI using podman'
+  depends=(podman)
+  conflicts=(docker)
+  provides=(docker)
+
+  cd $_pkgname || exit 1
+  make install.docker-full DESTDIR="$pkgdir" PREFIX=/usr
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname[1]}/LICENSE"
 }
