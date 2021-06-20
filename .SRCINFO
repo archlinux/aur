@@ -1,6 +1,6 @@
 pkgbase = gtkwave-gtk3
 	pkgdesc = A wave viewer which reads LXT, LXT2, VZT, GHW and VCD/EVCD files (gtk3 version)
-	pkgver = 3.3.109
+	pkgver = 3.3.110
 	pkgrel = 1
 	url = https://gtkwave.sourceforge.net
 	arch = x86_64
@@ -24,8 +24,7 @@ pkgbase = gtkwave-gtk3
 	depends = libpangocairo-1.0.so
 	provides = gtkwave
 	conflicts = gtkwave
-	source = http://gtkwave.sourceforge.net/gtkwave-gtk3-3.3.109.tar.gz
-	sha256sums = 35461eccd9b8b4470caa78ab9a8f14ecacbcc9eff63033d8dce58093e786deb7
+	source = http://gtkwave.sourceforge.net/gtkwave-gtk3-3.3.110.tar.gz
+	sha256sums = 2aedb92156bca2ddd25b138378cace6b1058e57d36d939ef0f79769006b759aa
 
 pkgname = gtkwave-gtk3
-
