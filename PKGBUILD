@@ -1,47 +1,26 @@
-# Maintainer: Sam Whited <sam@samwhited.com>
+# Maintainer: Yufan You <ouuansteve at gmail>
+# Contributor: Sam Whited <sam@samwhited.com>
 # Contributor: j605
 
 _npmname=triton
-pkgname=nodejs-$_npmname
-pkgver=7.4.0
+pkgname=nodejs-triton
+pkgver=7.15.0
 pkgrel=1
-pkgdesc="triton is a CLI tool for working with the CloudAPI for Joyent's Triton Public Cloud and Private Cloud"
+pkgdesc="Triton client tool and node.js library"
 arch=('any')
 url="https://github.com/joyent/node-triton"
 license=('MPL')
 depends=('nodejs')
-makedepends=('npm' 'jq')
-source=($pkgname-$pkgver.tar.gz::"https://github.com/joyent/node-triton/archive/$pkgver.tar.gz")
-noextract=("$pkgname-$pkgver.tar.gz")
-sha256sums=('7d0e4622d0ab0d4dd6917d3c8a6f2353c75b38c3cedaedf608f315a874d86acd')
+makedepends=('npm')
+source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
+noextract=($_npmname-$pkgver.tgz)
+sha256sums=('96d2f68caf6bb68187da619ccfa305f8d85126a2e5199b2830255a6b1fc9a67c')
 
 package() {
-  npm install --cache "${srcdir}"/npm-cache --no-optional -g --user root --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tar.gz"
-
-  install -dm755 "${pkgdir}"/etc/bash_completion.d
-  "${pkgdir}"/usr/bin/triton completion > "${pkgdir}"/etc/bash_completion.d/triton
-
-  # Non-deterministic race in npm gives 777 permissions to random directories.
-  # See https://github.com/npm/npm/issues/9359 for details.
-  find "${pkgdir}"/usr -type d -exec chmod 755 {} +
-  chown -R root:root "${pkgdir}"
-
-  # Remove references to $pkgdir
-  find "$pkgdir" -type f -name package.json -print0 | xargs -0 sed -i '/_where/d'
-  for pkgjson in `find "$pkgdir" -type f -name package.json`; do
-    local tmppackage="$(mktemp)"
-    jq '.|=with_entries(select(.key|test("man")|not))' "$pkgjson" > "$tmppackage"
-    mv "$tmppackage" "$pkgjson"
-    chmod 644 "$pkgjson"
-  done
-
-  # Remove references to $srcdir
-  for pkgjson in `find "$pkgdir" -type f -name package.json`; do
-    local tmppackage="$(mktemp)"
-    jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
-    mv "$tmppackage" "$pkgjson"
-    chmod 644 "$pkgjson"
-  done
+    cd "$srcdir"
+    local _npmdir="$pkgdir/usr/lib/node_modules/"
+    mkdir -p "$_npmdir"
+    cd "$_npmdir"
+    npm install -g --prefix "$pkgdir/usr" "$_npmname@$pkgver"
+    chown -R root:root "${pkgdir}"
 }
-
-# vim: ts=2 sw=2 et:
