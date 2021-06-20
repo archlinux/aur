@@ -1,7 +1,7 @@
 pkgbase = python-birdseye
 	pkgdesc = Graphical Python debugger which lets you view the values of all evaluated expressions
 	pkgver = 0.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/alexmojaki/birdseye
 	arch = any
 	license = MIT
@@ -20,4 +20,3 @@ pkgbase = python-birdseye
 	sha256sums = c24bbce229b52104554148153bf62cc63096a2cb2b19d4093bb677cd841a9335
 
 pkgname = python-birdseye
-

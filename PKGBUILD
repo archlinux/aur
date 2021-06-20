@@ -3,7 +3,7 @@
 pkgname=python-birdseye
 _module=birdseye
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Graphical Python debugger which lets you view the values of all evaluated expressions"
 url="http://github.com/alexmojaki/birdseye"
 depends=(python-littleutils python-flask-humanize python-humanize python-flask-humanize python-cheap_repr python-outdated python-sqlalchemy python-cached-property python-future python-asttokens)
@@ -21,5 +21,5 @@ build() {
 package() {
   cd "${srcdir}/${_module}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${birdseye}/LICENSE"
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
