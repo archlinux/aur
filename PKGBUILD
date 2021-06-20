@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 _pluginname=move-transition
 pkgname=obs-$_pluginname
-pkgver=2.4.3
+pkgver=2.4.4
 _obsver=27.0.0
 pkgrel=1
 pkgdesc="Plugin for OBS Studio to move sources to a new position during scene transition"
@@ -24,7 +24,7 @@ prepare() {
 
   cd "obs-studio-$_obsver"/plugins
   cp -r "$srcdir/$pkgname-$pkgver" .
-  echo "add_subdirectory($pkgname-$pkgver)" | tee -a CMakeLists.txt >/dev/null
+  echo "add_subdirectory($pkgname-$pkgver)" >> CMakeLists.txt
 }
 
 # Need to compile plugin in OBS compilation process
