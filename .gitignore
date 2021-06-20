@@ -1,6 +1,8 @@
 # Ignore everything, then whitelist specific files.
 *
 
+!check-and-update-new-version.sh
+
 !.SRCINFO
 !.gitignore
 !PKGBUILD
