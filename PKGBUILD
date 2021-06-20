@@ -2,7 +2,7 @@
 
 pkgname=whatsdesk-git
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="unofficial client of whatsapp"
 arch=('x86_64')
 url="https://zerkc.gitlab.io/whatsdesk"
@@ -31,7 +31,7 @@ build() {
 
 package() {
   ar xv ${srcdir}/whatsdesk-master/dist/whatsdesk_"$pkgver"_amd64.deb
-  bsdtar -xv -C "${pkgdir}" -f "${srcdir}/whatsdesk-master/dist/data.tar.xz"
+  bsdtar -xv -C "${pkgdir}" -f "${srcdir}/data.tar.xz"
   mkdir -p "${pkgdir}/usr/bin/"
   ln -s "/opt/whatsdesk/whatsdesk" "${pkgdir}/usr/bin"
   install -Dm644 "$srcdir/whatsdesk-master/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
