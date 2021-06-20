@@ -19,7 +19,7 @@ source=("git+https://github.com/Kr328/clash-premium-installer.git#commit=e729951
         "config.yaml")
 sha256sums=('SKIP'
             '82e640ffd2ea50f948fb4899aca9659e46dc0b648b739c431ae4b107554e4301'
-            '1552736c573d6722ed11654646a7ec2ea30b5ed3f4f2d3e9bbfb61227ad37026')
+            '267f63b7b35ff59c0a183449d5a4c1bc5e5d3637f9a92389e60cd098bfeb5d32')
 
 prepare() {
 	cd "${srcdir}"/clash-premium-installer/scripts
