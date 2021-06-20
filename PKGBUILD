@@ -27,7 +27,7 @@ fi
 ##
 
 pkgname=brave
-pkgver=1.25.70
+pkgver=1.25.73
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -41,7 +41,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kwallet: support for storing passwords in KWallet on Plasma'
             'sccache: For faster builds')
 chromium_base_ver="91"
-patchset="5"
+patchset="6"
 patchset_name="chromium-${chromium_base_ver}-patchset-${patchset}"
 _launcher_ver=7
 source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
@@ -75,7 +75,7 @@ sha256sums=('SKIP'
             '725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
             '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
-            '171525009003a9ed1182cfcb6f407d7169d9a731a474304e263029376719f55a'
+            'deea179eb2c92925b0a46ce3f71d28cbdba9d884f6ba284e2c1cc7758bb53839'
             'ea3446500d22904493f41be69e54557e984a809213df56f3cdf63178d2afb49e'
             '3cfe46e181cb9d337c454b5b5adbf5297052f29cd617cdee4380eeb1943825d8'
             '59a59a60a08b335fe8647fdf0f9d2288d236ebf2cc9626396d0c4d032fd2b25d'
