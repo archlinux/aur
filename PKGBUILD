@@ -3,7 +3,7 @@
 _gecko_id="{59812185-ea92-4cca-8ab7-cfcacee81281}"
 _name="rikaichamp"
 pkgname=firefox-extension-rikaichamp
-pkgver=0.5.8
+pkgver=0.5.14
 pkgrel=1
 pkgdesc="Translate Japanese by hovering over words"
 arch=('any')
@@ -13,7 +13,7 @@ groups=("firefox-addons")
 depends=("firefox")
 makedepends=("yarn" "nodejs>=12")
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5d967aa1779c79c08f85c7e22aae18ddb791d2aa399f5cf0a0f0b7757075b7d2')
+sha256sums=('f2b4d1c88fa45173459825e55708f441f6eda17c3a4257d19f0c1c2f10924517')
 
 
 build() {
@@ -21,7 +21,7 @@ build() {
 
     export RELEASE_BUILD=1
     yarn install --pure-lockfile
-    yarn package
+    yarn package:firefox
 }
 
 check() {

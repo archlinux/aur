@@ -1,6 +1,6 @@
 pkgbase = firefox-extension-rikaichamp
 	pkgdesc = Translate Japanese by hovering over words
-	pkgver = 0.5.8
+	pkgver = 0.5.14
 	pkgrel = 1
 	url = https://github.com/birtles/rikaichamp
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = firefox-extension-rikaichamp
 	makedepends = yarn
 	makedepends = nodejs>=12
 	depends = firefox
-	source = rikaichamp-0.5.8.tar.gz::https://github.com/birtles/rikaichamp/archive/refs/tags/v0.5.8.tar.gz
+	source = rikaichamp-0.5.14.tar.gz::https://github.com/birtles/rikaichamp/archive/refs/tags/v0.5.14.tar.gz
 	sha256sums = 5d967aa1779c79c08f85c7e22aae18ddb791d2aa399f5cf0a0f0b7757075b7d2
 
 pkgname = firefox-extension-rikaichamp
