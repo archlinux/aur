@@ -2,7 +2,7 @@
 _appname=firefox-profile-switcher-connector
 pkgname=${_appname}-bin
 pkgdesc="Native connector software for the 'Profile Switcher for Firefox' extension."
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=2
 arch=('x86_64' 'i686')
 url="https://github.com/null-dev/firefox-profile-switcher-connector"
@@ -12,8 +12,8 @@ conflicts=("${_appname}")
 # depends=('firefox') We don't specify this as not all firefox packages provide firefox currently
 source_x86_64=("$pkgname-$pkgver-x86_64.rpm::$url/releases/download/v$pkgver/linux-x64.rpm")
 source_i686=("$pkgname-$pkgver-i686.rpm::$url/releases/download/v$pkgver/linux-x86.rpm")
-sha256sums_x86_64=('a6c9cf67a30645464fb607e637966c5771321d1d2167dfd31d240d9c390505fe')
-sha256sums_i686=('c85eb16096f7adb5604525560c6edb0750ba15cb8cf2f9ef7e25df995f8432ce')
+sha256sums_x86_64=('bcf24236fc43e935d1822c00cd7bc790961f02b930d161f5aa2712be15a3eaba')
+sha256sums_i686=('bb993f682b92dd4bab883632f8d1a9298840d4e1de687fa02fff2c1f7a66b18b')
 
 package() {
     mkdir -p "$pkgdir/usr/bin/"
