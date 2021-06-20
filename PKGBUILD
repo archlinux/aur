@@ -4,8 +4,8 @@
 # Contributor: saxonbeta <saxonbeta at gmail __com
 pkgname=elmerfem-git
 _pkgname=elmerfem
-pkgver=20200517.61b7f5cd
-pkgrel=2
+pkgver=9.0.r423.gb943299d
+pkgrel=1
 pkgdesc="A finite element software for multiphysical problems"
 arch=('x86_64')
 url="http://www.elmerfem.org"
@@ -23,8 +23,7 @@ sha256sums=('SKIP'
             'f4b39389e5f258c7860b8d7a6b171fb54bf849dc772f640ac5e7a12c7a384aca')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    (git log -1 --format='%cd.%h' --date=short | tr -d -)
+  git -C "${srcdir}/${_pkgname}" describe --long --tag| sed -r 's/^release-//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
