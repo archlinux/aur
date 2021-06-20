@@ -1,28 +1,27 @@
-# Maintainer: Mario Finelli <mario at finel dot li>
+# Maintainer: Yufan You <ouuansteve at gmail>
+# Contributor: Mario Finelli <mario at finel dot li>
 # Contributor: Mark Pustjens <pustjens at dds dot nl>
 
 _npmname=express
-pkgname=nodejs-$_npmname
-pkgver=4.16.3
+pkgname=nodejs-express
+pkgver=4.17.1
 pkgrel=1
-pkgdesc="Fast, unopinionated, minimalist web framework."
+pkgdesc="Fast, unopinionated, minimalist web framework for node."
 arch=('any')
-url="https://expressjs.com"
+url="https://github.com/expressjs/express"
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('7e6e24c704d81f81b24f19e6faf1613b3eca752363b755e61debe02ef77a0ca8')
+sha256sums=('2600b551c4e3f56d1bd5e28505d4ecfe3e73e58cc3a0ad5be08c0bf395aa02a9')
 
 package() {
-  npm install \
-    --user root --global \
-    --prefix "$pkgdir/usr" \
-    "$srcdir"/$_npmname-$pkgver.tgz
-
-  find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
-
-  install -Dm0644 "$pkgdir/usr/lib/node_modules/$_npmname/LICENSE" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "$srcdir"
+    local _npmdir="$pkgdir/usr/lib/node_modules/"
+    mkdir -p "$_npmdir"
+    cd "$_npmdir"
+    npm install -g --prefix "$pkgdir/usr" "$_npmname@$pkgver"
+    install -Dm644 "$_npmdir/$_npmname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    chown -R root:root "${pkgdir}"
 }
