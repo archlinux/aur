@@ -1,10 +1,18 @@
 #!/bin/sh
+# author: Ehsan Ghorbannezhad <ehsangn@protonmail.ch>
+# brief: remove/trash old files/directories from /tmp.
+#
+# this script removes/trashes top-level files in /tmp that are
+# older than the specified amount of time.
+# it also removes top-level directories in /tmp that
+# are older than the specified amount of time, and don't
+# contain any files newer than that time.
 
 # clean files older than how many days:
 trash_older_than=30
 purge_older_than=90
 
-# where to put old tmp files:
+# paths
 tmp=/tmp
 trash=/tmp/OLD_TMP_FILES
 log=/var/log/tmpcleaner.log
@@ -18,40 +26,59 @@ if [ "$1" != -s ]; then
     exit
 fi
 
-main() {
+main()
+{
     mkdir -p "$trash" || exit 1
-    before=$(numberof_files_in_trash)
-    move_old_tmpfiles_to_trash
-    after_trashing=$(numberof_files_in_trash)
-    purge_older_tmpfiles_from_trash
-    after_purging=$(numberof_files_in_trash)
-    trashed_count=$(( after_trashing - before ))
-    purged_count=$(( after_trashing - after_purging ))
-    print_date >> "$log"
-    print_summary "$trashed_count" "$purged_count" | tee -a "$log"
-    echo >> "$log"
+
+    must_trash="$(getold $tmp $trash_older_than)"
+    must_purge="$(getold $trash $purge_older_than)"
+
+    echo "$must_trash" | trash
+    echo "$must_purge" | purge
+
+    summary
+    log
 }
 
-move_old_tmpfiles_to_trash() {
-    find "$tmp" -type f -not -path "${trash}*" -mtime +${trash_older_than} \
-        -exec mv -f {} "$trash" \;
+trash()
+{
+    while IFS= read -r file; do
+        [ -e "$file" ] && mv -fv "$file" "$trash"
+    done
 }
 
-purge_older_tmpfiles_from_trash() {
-    find "$trash" -type f -mtime +${purge_older_than} -delete
+purge()
+{
+    while IFS= read -r file; do
+        [ -e "$file" ] && rm -rfv "$file"
+    done
 }
 
-numberof_files_in_trash() {
-    find "$trash" -mindepth 1 -maxdepth 1 | wc -l
+getold()
+{
+    find "$1" -mindepth 1 -maxdepth 1 -type f -mtime +$2
+    find "$1" -mindepth 1 -maxdepth 1 -type d -mtime +$2 -not -path "*${trash}*" |
+        while IFS= read -r dir; do
+            test "$(find "$dir" -type f -mtime -$2 -quit)" || printf '%s\n' "$dir"
+        done
 }
 
-print_summary() {
-    echo "moved $1 tmpfiles to trash (${trash})."
-    echo "purged $2 tmpfiles from trash."
+log()
+{
+    date "+%F %T" >> "$log"
+    summary | tr '\n' ' ' >> "$log"
 }
 
-print_date() {
-    date "+%F %T :"
+summary()
+{
+    echo "moved $(line_count "$must_trash") tmpfiles to trash ($trash)."
+    echo "purged $(line_count "$must_purge") tmpfiles from trash."
+}
+
+line_count()
+{
+    [ -z "$1" ] && echo 0 && return
+    echo "$1" | wc -l
 }
 
 main "$@"

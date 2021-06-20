@@ -9,7 +9,7 @@ source=($pkgname.sh $pkgname.cron)
 provides=($pkgname)
 conflicts=($pkgname)
 
-sha256sums=('862e4357074e6b9ca8ce05f714249c0f886688d8dfb11c8a8a522150fffe2377'
+sha256sums=('e9bd77559ef22188564b24b8f2c6e744532c6532950183eb9aeb350294a7b917'
             '9e716da422b70bfdb212c2974442261485284d3ba609a837cad705c936e8fa37')
 
 package() {
