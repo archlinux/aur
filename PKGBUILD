@@ -33,5 +33,5 @@ package() {
     install -d "${pkgdir}/opt/${pkgname}"
     install -d "${pkgdir}/usr/bin"
     install -D -m 0755 omniedge "${pkgdir}/opt/${pkgname}/omniedge-cli"
-    ln -sf "${pkgdir}/opt/${pkgname}/omniedge-cli" "${pkgdir}/usr/bin/omniedge-cli"
+    ln -sf "/opt/${pkgname}/omniedge-cli" "${pkgdir}/usr/bin/omniedge-cli"
 }
