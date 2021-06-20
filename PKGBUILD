@@ -2,7 +2,7 @@
 
 pkgname=python-termplotlib
 _name=termplotlib
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="Plotting on the command line"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 makedepends=('python'
 	'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('b1ebe3b31ac554db249c2b4cf042b7ba5363f49eeb36c4d1c5e4f15db9fc20ea')
+sha256sums=('d99d6620a945ed377a4d54c34855c816b54de0e7ba5d6816c2a620abdef46b6d')
 
 build() {
 	cd "$srcdir/$_name-$pkgver"
