@@ -13,4 +13,3 @@ pkgbase = gnome-shell-extension-wintile
 	sha512sums = SKIP
 
 pkgname = gnome-shell-extension-wintile
-
