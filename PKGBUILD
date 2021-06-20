@@ -8,6 +8,7 @@ pkgrel=1
 pkgdesc="Zotero is a free, easy-to-use tool to help you collect, organize, cite, and share research."
 arch=('x86_64')
 url="https://www.zotero.org/support/dev_builds"
+conflicts=('zotero' 'zotero-dev-bin' 'zotero-dev' 'jurism' 'zotero-git')
 license=('AGPL3')
 depends=(
 	'aarch64-linux-gnu-gcc'
