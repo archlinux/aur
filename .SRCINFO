@@ -1,15 +1,14 @@
 pkgbase = nodejs-wintersmith
 	pkgdesc = A flexible static site generator.
-	pkgver = 2.4.1
+	pkgver = 2.5.0
 	pkgrel = 1
-	url = https://wintersmith.io
+	url = https://github.com/jnordberg/wintersmith
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = wintersmith-2.4.1.tgz
-	source = https://registry.npmjs.org/wintersmith/-/wintersmith-2.4.1.tgz
-	sha256sums = d6c6116cf36550c4f691c40258e68ab006a357c6afe9e29fa774adad7e5c2267
+	noextract = wintersmith-2.5.0.tgz
+	source = https://registry.npmjs.org/wintersmith/-/wintersmith-2.5.0.tgz
+	sha256sums = 6232c6dfa128dc4d8fea2cef4aff55eb8b4fd3dc56d2d728a38f814c32475e83
 
 pkgname = nodejs-wintersmith
-
