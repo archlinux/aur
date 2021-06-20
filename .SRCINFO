@@ -5,6 +5,7 @@ pkgbase = libvss
 	url = https://github.com/AdaCore/VSS
 	arch = x86_64
 	license = GPL3
+	license = custom
 	makedepends = git
 	makedepends = gcc-ada
 	makedepends = gprbuild
