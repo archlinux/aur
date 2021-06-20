@@ -7,6 +7,9 @@
 # it also removes top-level directories in /tmp that
 # are older than the specified amount of time, and don't
 # contain any files newer than that time.
+#
+# the -l option instructs tmpcleaner to
+# log the summary to a log file.
 
 # clean files older than how many days:
 trash_older_than=30
@@ -22,8 +25,10 @@ export PATH="${PATH}:/usr/bin:/usr/local/bin"
 
 # run with root priviliges
 if [ "$1" != -s ]; then
-    sudo tmpcleaner -s
+    sudo tmpcleaner -s "$@"
     exit
+else
+    shift
 fi
 
 main()
@@ -37,7 +42,7 @@ main()
     echo "$must_purge" | purge
 
     summary
-    log >> "$log"
+    [ "$1" = -l ] && log >> "$log"
 }
 
 trash()

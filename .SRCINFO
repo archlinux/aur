@@ -1,6 +1,6 @@
 pkgbase = tmpcleaner
 	pkgdesc = simple script and cron.daily entry for cleaning old /tmp files.
-	pkgver = r4
+	pkgver = r5
 	pkgrel = 1
 	arch = any
 	license = GPL
@@ -8,7 +8,7 @@ pkgbase = tmpcleaner
 	conflicts = tmpcleaner
 	source = tmpcleaner.sh
 	source = tmpcleaner.cron
-	sha256sums = b4819bd2658b1c4b5823f0ef555070d5e24b439bf404365e67eacf18418d9393
+	sha256sums = c631b80eb706a29db18667fe1221de66929f93dc7bbe393b3f8d77bac4509fdd
 	sha256sums = 9e716da422b70bfdb212c2974442261485284d3ba609a837cad705c936e8fa37
 
 pkgname = tmpcleaner
