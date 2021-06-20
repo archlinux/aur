@@ -53,9 +53,9 @@ build() {
   meson compile -C build
 }
 
-#check() {
-#  meson test -C build --print-errorlogs
-#}
+check() {
+  meson test -C build --print-errorlogs
+}
 
 _pick() {
   local p="$1" f d; shift
