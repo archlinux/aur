@@ -2,7 +2,7 @@
 
 pkgname=perl-sqlite-db
 pkgver=0.04
-pkgrel=2
+pkgrel=3
 pkgdesc="SQLite::DB provides an object oriented wrapper to SQLite databases using DBI and DBD::SQLite modules."
 arch=('any')
 url="https://metacpan.org/pod/SQLite::DB"

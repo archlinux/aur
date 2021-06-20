@@ -1,7 +1,7 @@
 pkgbase = perl-sqlite-db
 	pkgdesc = SQLite::DB provides an object oriented wrapper to SQLite databases using DBI and DBD::SQLite modules.
 	pkgver = 0.04
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/pod/SQLite::DB
 	arch = any
 	license = PerlArtistic
