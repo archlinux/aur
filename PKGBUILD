@@ -1,24 +1,37 @@
-# Maintainer: Marc Plano-Lesay <kernald@enoent.fr>
-_pipname=url-normalize
-pkgname=python-$_pipname
-pkgver=1.4.3
-pkgrel=1
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Marc Plano-Lesay <kernald@enoent.fr>
+_base=url-normalize
+pkgname=python-${_base}
 pkgdesc="URL normalization for Python"
-arch=("any")
-url="https://pypi.python.org/pypi/$_pipname"
-license=("MIT")
-depends=("python")
-makedepends=("python-setuptools")
-conflicts=("${pkgname}" "${pkgname}-git")
-source=("https://files.pythonhosted.org/packages/ec/ea/780a38c99fef750897158c0afb83b979def3b379aaac28b31538d24c4e8f/$_pipname-$pkgver.tar.gz")
-sha256sums=('d23d3a070ac52a67b83a1c59a0e68f8608d1cd538783b401bc9de2c0fac999b2')
+pkgver=1.4.3
+pkgrel=2
+arch=('x86_64')
+url="https://github.com/niksite/${_base}"
+license=(MIT)
+depends=(python)
+makedepends=(
+  python-pip
+  python-poetry
+)
+checkdepends=(
+  python-pytest
+  python-tox
+)
+source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
+sha512sums=('46eaa1753b37e89d56cb19818144a7cf5b38653811720eb506732c35bb3732ef0c556420b22a9ee2c08e70e5b408aab7f44cea5e15d1ebe3d717c0c77706bfb8')
 
 build() {
-  cd "${srcdir}/${_pipname}-${pkgver}"
-  python setup.py build
+  cd "${_base}-${pkgver}"
+  poetry build --format wheel
+}
+
+check() {
+  cd "${_base}-${pkgver}"
+  tox -e py39
 }
 
 package() {
-  cd "${srcdir}/${_pipname}-${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1 || return 1
+  cd "${_base}-${pkgver}"
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}" --ignore-installed --no-deps dist/*.whl
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

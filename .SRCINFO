@@ -1,16 +1,16 @@
 pkgbase = python-url-normalize
 	pkgdesc = URL normalization for Python
 	pkgver = 1.4.3
-	pkgrel = 1
-	url = https://pypi.python.org/pypi/url-normalize
-	arch = any
+	pkgrel = 2
+	url = https://github.com/niksite/url-normalize
+	arch = x86_64
 	license = MIT
-	makedepends = python-setuptools
+	checkdepends = python-pytest
+	checkdepends = python-tox
+	makedepends = python-pip
+	makedepends = python-poetry
 	depends = python
-	conflicts = python-url-normalize
-	conflicts = python-url-normalize-git
-	source = https://files.pythonhosted.org/packages/ec/ea/780a38c99fef750897158c0afb83b979def3b379aaac28b31538d24c4e8f/url-normalize-1.4.3.tar.gz
-	sha256sums = d23d3a070ac52a67b83a1c59a0e68f8608d1cd538783b401bc9de2c0fac999b2
+	source = python-url-normalize-1.4.3.tar.gz::https://github.com/niksite/url-normalize/archive/1.4.3.tar.gz
+	sha512sums = 46eaa1753b37e89d56cb19818144a7cf5b38653811720eb506732c35bb3732ef0c556420b22a9ee2c08e70e5b408aab7f44cea5e15d1ebe3d717c0c77706bfb8
 
 pkgname = python-url-normalize
-
