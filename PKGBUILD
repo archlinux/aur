@@ -8,7 +8,7 @@ license=('MPL')
 depends=()
 source=("http://yugioh.vip:9000/static/$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('54efd48506da9e5f31b513cba28e4435')
+md5sums=('5716bd8d1696503f99cdbc61b55c4d08')
 validpgpkeys=()
 
 package() {
