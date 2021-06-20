@@ -5,3 +5,5 @@
 !.gitignore
 !PKGBUILD
 !mkgmap
+
+!check-and-publish-new-version.sh
