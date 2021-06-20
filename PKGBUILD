@@ -1,25 +1,27 @@
+# Maintainer: Yufan You <ouuansteve at gmail>
 # Contributor: Nicola Squartini <tensor5@gmail.com>
-# Maintainer: Jian Zeng <anonymousknight96+aur AT gmail.com>
+# Contributor: Jian Zeng <anonymousknight96+aur AT gmail.com>
 
+_npmname=ts-node
 pkgname=nodejs-ts-node
-pkgver=5.0.0
+pkgver=10.0.0
 pkgrel=1
-pkgdesc='TypeScript execution environment and REPL for node'
+pkgdesc='TypeScript execution and REPL for node.js'
 arch=('any')
 url='https://github.com/TypeStrong/ts-node'
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
-options=(!emptydirs)
+source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
+noextract=($_npmname-$pkgver.tgz)
+sha256sums=('43b5ebb7a1d20d0802ef954675a855a3797a4b5c2e0d632456ae0993eabfb639')
 
 package() {
-    npm install --user root -g --prefix="${pkgdir}"/usr ts-node@${pkgver}
-
-    install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-    ln -s ../../../lib/node_modules/ts-node/LICENSE \
-        "${pkgdir}/usr/share/licenses/${pkgname}"
-
-    find "${pkgdir}" -name "package.json" -exec sed -e "s|${pkgdir}||" -i {} \;
-    sed -e "s|${srcdir}|/|" \
-        -i "${pkgdir}"/usr/lib/node_modules/ts-node/package.json
+    cd "$srcdir"
+    local _npmdir="$pkgdir/usr/lib/node_modules/"
+    mkdir -p "$_npmdir"
+    cd "$_npmdir"
+    npm install -g --prefix "$pkgdir/usr" "$_npmname@$pkgver"
+    install -Dm644 "$_npmdir/$_npmname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    chown -R root:root "${pkgdir}"
 }

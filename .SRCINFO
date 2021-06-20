@@ -1,13 +1,14 @@
 pkgbase = nodejs-ts-node
-	pkgdesc = TypeScript execution environment and REPL for node
-	pkgver = 5.0.0
+	pkgdesc = TypeScript execution and REPL for node.js
+	pkgver = 10.0.0
 	pkgrel = 1
 	url = https://github.com/TypeStrong/ts-node
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	options = !emptydirs
+	noextract = ts-node-10.0.0.tgz
+	source = https://registry.npmjs.org/ts-node/-/ts-node-10.0.0.tgz
+	sha256sums = 43b5ebb7a1d20d0802ef954675a855a3797a4b5c2e0d632456ae0993eabfb639
 
 pkgname = nodejs-ts-node
-
