@@ -1,0 +1,47 @@
+Index: ada_libfswatch/Makefile
+===================================================================
+--- ada_libfswatch.orig/Makefile
++++ ada_libfswatch/Makefile
+@@ -3,16 +3,12 @@ DESTDIR=
+ all: generated
+ 	gprbuild -p -P ada_libfswatch
+ 
+-# warn if libfswatch/ is not populated
+-libfswatch:
+-	@echo "you need to install the libfswatch library in libfswatch/"
+-	@exit 1
+-
+ # generate the Ada binding
+-generated: libfswatch
+-	(mkdir -p generated; cd libfswatch/include/libfswatch/c/ ; \
+-		gcc -C -fdump-ada-spec libfswatch.h -D_TIMEZONE_DEFINED; \
+-	       	mv *.ads ../../../../generated/)
++generated:
++	(mkdir -p generated; cd generated ; \
++		gcc -C -fdump-ada-spec /usr/include/libfswatch/c/libfswatch.h -D_TIMEZONE_DEFINED ; \
++        rename 'libfswatch_c_' '' *.ads ; \
++        sed -i 's/libfswatch_c_//g' *.ads)
+ 
+ clean:
+ 	gprclean -P ada_libfswatch
+Index: ada_libfswatch/c_lib/c_libfswatch.gpr
+===================================================================
+--- ada_libfswatch.orig/c_lib/c_libfswatch.gpr
++++ ada_libfswatch/c_lib/c_libfswatch.gpr
+@@ -1,6 +1,6 @@
+ library project C_Libfswatch is
+ 
+-   libfswatch_prefix := External("LIBFSWATCH_PREFIX", "../libfswatch");
++   libfswatch_prefix := External("LIBFSWATCH_PREFIX", "/usr");
+ 
+    type OS_Type is ("unix", "Windows_NT");
+    OS : OS_Type := External ("OS", "unix");
+@@ -10,7 +10,7 @@ library project C_Libfswatch is
+    for Externally_Built use "true";
+    for Library_Name use "fswatch";
+    for Library_Dir use libfswatch_prefix & "/lib";
+-   for Library_Kind use "static";
++   for Library_Kind use "dynamic";
+ 
+    package Linker is
+       case OS is

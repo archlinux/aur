@@ -1,0 +1,19 @@
+pkgbase = ada-libfswatch
+	pkgdesc = An Ada binding to the libfswatch library in the fswatch project
+	pkgver = r16.94c0a5f
+	pkgrel = 1
+	url = https://github.com/AdaCore/ada_libfswatch
+	arch = x86_64
+	license = GPL3
+	license = custom
+	makedepends = git
+	makedepends = gcc-ada
+	makedepends = gprbuild
+	depends = gcc-libs
+	depends = fswatch
+	source = git+https://github.com/AdaCore/ada_libfswatch.git#commit=94c0a5f137b88113a791a148b60e5e7d019d6fa1
+	source = ada-libfswatch.patch
+	sha1sums = SKIP
+	sha1sums = cb3ddf5c8e8c5988c2f60111dfc18e132db00617
+
+pkgname = ada-libfswatch
