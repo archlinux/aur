@@ -3,10 +3,10 @@
 
 pkgname=nginx-mainline-mod-vts
 pkgver=0.1.18
-pkgrel=28
+pkgrel=30
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.19.9
+_nginxver=1.21.0
 
 pkgdesc='Nginx virtual host traffic status module (module for mainline nginx)'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=(
 	$pkgname-$pkgver.tar.gz::https://github.com/vozlt/nginx-module-vts/archive/v$pkgver.tar.gz
 )
 
-sha256sums=('2e35dff06a9826e8aca940e9e8be46b7e4b12c19a48d55bfc2dc28fc9cc7d841'
+sha256sums=('fe192a4bac2bd3a769e8695cb9fe14a00e57eaceb919095347a83b5b2afc0771'
             '17ea41d4083f6d1ab1ab83dad9160eeca66867abe16c5a0421f85a39d7c84b65')
 
 build() {
