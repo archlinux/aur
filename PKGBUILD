@@ -1,6 +1,6 @@
 pkgname=website-stalker-bin
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Track changes on websites via git"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/EdJoPaTo/${pkgname/-bin/}"

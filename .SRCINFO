@@ -1,7 +1,7 @@
 pkgbase = website-stalker-bin
-	pkgdesc = Subscribe to a MQTT Topic or publish something quickly from the terminal
+	pkgdesc = Track changes on websites via git
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/EdJoPaTo/website-stalker
 	arch = x86_64
 	arch = aarch64
