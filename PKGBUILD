@@ -3,7 +3,7 @@
 _npmname=vscode-json-languageserver-bin
 pkgname=vscode-json-languageserver-bin
 pkgver="1.0.1"
-pkgrel=1
+pkgrel=2
 pkgdesc="Language server implementation for JSON"
 arch=('any')
 url="https://www.npmjs.com/package/vscode-json-languageserver-bin"
@@ -18,5 +18,6 @@ package() {
     local _npmdir="${pkgdir}/usr/lib/node_modules/"
     mkdir -p "${_npmdir}"
     cd "${_npmdir}"
-    npm install --user root -g --prefix "${pkgdir}/usr" "${_npmname}@${_npmver}"
+    npm install -g --prefix "${pkgdir}/usr" "${_npmname}@${_npmver}"
+    chown -R root:root "${pkgdir}"
 }
