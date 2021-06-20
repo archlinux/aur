@@ -1,7 +1,7 @@
 pkgbase = nodejs-wildduck
 	pkgdesc = Opinionated email server
 	pkgver = 1.33.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nodemailer/wildduck
 	arch = any
 	license = custom:EUPL

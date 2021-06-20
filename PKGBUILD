@@ -4,7 +4,7 @@
 _npmname=wildduck
 pkgname=nodejs-wildduck
 pkgver=1.33.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Opinionated email server'
 arch=(any)
 url=https://github.com/nodemailer/wildduck
@@ -24,5 +24,10 @@ package() {
     cd "$_npmdir"
     npm install -g --prefix "$pkgdir/usr" "$_npmname@$pkgver"
     install -Dm644 "$_npmdir/$_npmname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    # Remove the files that contain references to $pkgdir
+    rm "$pkgdir/usr/lib/node_modules/$_npmname/node_modules/dtrace-provider/build/Makefile"
+    rm "$pkgdir/usr/lib/node_modules/$_npmname/node_modules/dtrace-provider/build/config.gypi"
+
     chown -R root:root "${pkgdir}"
 }
