@@ -1,6 +1,6 @@
 pkgbase = update-efi-entry
-	pkgdesc = Script for easy EFISTUB entry setup and management.
-	pkgver = r14.8dd14fc
+	pkgdesc = Simple EFISTUB entry setup and management script.
+	pkgver = r27.1f6d088
 	pkgrel = 1
 	url = https://github.com/alex4401/update-efi-entry
 	arch = any
@@ -11,8 +11,9 @@ pkgbase = update-efi-entry
 	depends = efibootmgr
 	depends = ncurses
 	depends = util-linux
+	backup = etc/boot/entry
+	backup = etc/boot/kernel-parameters
 	source = git+https://github.com/alex4401/update-efi-entry.git
 	sha256sums = SKIP
 
 pkgname = update-efi-entry
-
