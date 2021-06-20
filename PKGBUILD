@@ -4,11 +4,11 @@ _base=url-normalize
 pkgname=python-${_base}
 pkgdesc="URL normalization for Python"
 pkgver=1.4.3
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/niksite/${_base}"
 license=(MIT)
-depends=(python)
+depends=(python-six)
 makedepends=(
   python-pip
   python-poetry
