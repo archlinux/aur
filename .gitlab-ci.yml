@@ -16,6 +16,10 @@ update_hash:
   script:
     # update package hash for integrity check
     - updpkgsums
+  cache:
+    key: 
+      files:
+        - PKGBUILD
 
 makepkg:
   stage: build
