@@ -6,13 +6,13 @@
 #              WorMzy Tykashi <wormzy.tykashi@gmail.com>
 pkgname=steamos-compositor-plus
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Compositor used by SteamOS with some added tweaks and fixes"
 arch=('i686' 'x86_64')
 url="https://github.com/gamer-os/steamos-compositor-plus"
 license=('custom')
 depends=('libxfixes' 'libxext' 'libxcomposite' 'libxdamage' 'libxrender' 'libxxf86vm' 'sdl_image' 'libgl' 'lsb-release' 'ttf-dejavu' 'xorg-xrandr' 'steam')
-optdepends=('sxhkd')
+optdepends=('sxhkd' 'alsa-utils')
 makedepends=('mesa')
 conflicts=('steamos-compositor')
 _msver=1.10
