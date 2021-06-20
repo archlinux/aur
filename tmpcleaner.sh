@@ -16,9 +16,9 @@ trash_older_than=30
 purge_older_than=90
 
 # paths
-tmp=/tmp
-trash=/tmp/OLD_TMP_FILES
-log=/var/log/tmpcleaner.log
+tmp_dir=/tmp
+trash_dir=/tmp/OLD_TMP_FILES
+log_file=/var/log/tmpcleaner.log
 
 # add typical bin dirs to PATH
 export PATH="${PATH}:/usr/bin:/usr/local/bin"
@@ -33,16 +33,25 @@ fi
 
 main()
 {
+    while true; do
+        case "$1" in
+            -l) log=true; shift ;;
+            -h | --help) echo "remove old files and dirs in /tmp."; exit ;;
+            "") break ;;
+            *) echo "unrecognized argument: $1" >&2; exit 1 ;;
+        esac
+    done
+
     mkdir -p "$trash" || exit 1
 
-    must_trash="$(getold $tmp $trash_older_than)"
-    must_purge="$(getold $trash $purge_older_than)"
+    must_trash="$(getold $tmp_dir $trash_older_than)"
+    must_purge="$(getold $trash_dir $purge_older_than)"
 
     echo "$must_trash" | trash
     echo "$must_purge" | purge
 
     summary
-    [ "$1" = -l ] && log >> "$log"
+    [ "$log" = true ] && log >> "$log_file"
 }
 
 trash()

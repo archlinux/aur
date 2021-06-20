@@ -1,6 +1,6 @@
 # Maintainer: Ehsan Ghorbannezad <ehsangn@protonmail.ch>
 pkgname=tmpcleaner
-pkgver=r5
+pkgver=r6
 pkgrel=1
 pkgdesc='simple script and cron.daily entry for cleaning old /tmp files.'
 arch=(any)
@@ -9,8 +9,8 @@ source=($pkgname.sh $pkgname.cron)
 provides=($pkgname)
 conflicts=($pkgname)
 
-sha256sums=('c631b80eb706a29db18667fe1221de66929f93dc7bbe393b3f8d77bac4509fdd'
-            '9e716da422b70bfdb212c2974442261485284d3ba609a837cad705c936e8fa37')
+sha256sums=('8b1573d2e230e193556b3eb2cb4f04bd3f98da06dac10a28348d81c998148d74'
+            'cc1d51f6762e639d5dc2191cfd70d70e4ea77e026f523c26a53b8387ef251607')
 
 package() {
     cd "$srcdir"
