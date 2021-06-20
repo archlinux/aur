@@ -5,7 +5,7 @@
 
 _pkgname=vokoscreenNG
 pkgname=vokoscreen-git
-pkgver=3.0.7.r46.g600669e0
+pkgver=3.0.9.r43.ga4e3f291
 pkgrel=1
 epoch=1
 pkgdesc='An easy to use screencast creator. Development version.'
@@ -19,12 +19,18 @@ optdepends=('gst-plugins-ugly: for x264 video codec'
 	   'gst-plugins-bad: for faac')
 provides=("${_pkgname%NG}=${pkgver}")
 conflicts=("${_pkgname%NG}")
-source=("git+https://github.com/vkohaupt/${_pkgname}.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/vkohaupt/${_pkgname}.git" QtPainterPath.patch)
+sha256sums=('SKIP'
+            'e2088c1e461e86d96c77f3014ffa88ed1b2f90595d909248bb176da3efafb61f')
 
 pkgver() {
   cd ${_pkgname}
   git describe --long --tags 2>/dev/null | sed -r 's/-/.r/' | tr - .
+}
+
+prepare() {
+  cd ${_pkgname}
+  git apply "$srcdir"/QtPainterPath.patch
 }
 
 build() {
@@ -35,7 +41,7 @@ build() {
 	    QMAKE_CXXFLAGS="${CXXFLAGS}" \
 	    QMAKE_LDFLAGS="${LDFLAGS} -lbz2" \
 	    CONFIG+=release \
-	    CONFIG+=c++14 
+	    CONFIG+=c++14
   make
 }
 

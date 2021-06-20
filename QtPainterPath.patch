@@ -1,0 +1,12 @@
+diff --git a/src/spezialCheckBox/QvkSpezialCheckbox.h b/src/spezialCheckBox/QvkSpezialCheckbox.h
+index 51322246..389f4dd5 100644
+--- a/src/spezialCheckBox/QvkSpezialCheckbox.h
++++ b/src/spezialCheckBox/QvkSpezialCheckbox.h
+@@ -4,6 +4,7 @@
+ 
+ #include <QWidget>
+ #include <QPainter>
++#include <QPainterPath>
+ 
+ class QvkSpezialCheckbox : public QWidget
+ {
