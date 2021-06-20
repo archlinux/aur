@@ -1,16 +1,16 @@
 # Maintainer: Martin Montane <martinmontane6@gmail.com>
 
 pkgname=cmus-notify
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A notification script for cmus"
 arch=('any')
 url="https://github.com/AntoineGagne/cmus-notify"
 license=('MIT')
-depends=('python>=3.5' 'python-notify2')
+depends=('python>=3.5' 'python-notify2' 'libnotify')
 
-source=("https://files.pythonhosted.org/packages/68/92/15258efc93381715bb1db4ad1391b291efe3682bf06ac632e86dbde1d4d8/cmus-notify-1.4.0.tar.gz")
-md5sums=('e4813a1f3b566cbed03795516e40f43c')
+source=("https://pypi.io/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('8ac845a6596c259286802fd983c34ab3cee9345b5892cf936448e43fc7bd8380')
 
 package() {
     cd "$pkgname-$pkgver"
