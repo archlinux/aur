@@ -1,7 +1,7 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 _pkgname=ignite
 pkgname=python-pytorch-ignite
-pkgver=0.4.4.post1
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="High-level library to help with training neural networks in PyTorch"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-pytorch')
 conflicts=('python-pytorch-ignite-git')
 makedepends=('python-setuptools')
 source=("https://github.com/pytorch/ignite/archive/v${pkgver}.tar.gz")
-sha256sums=('61b59d5655a334e4253a522ac49a324c9ad8d8a462339d5a962e46ed31e5e224')
+sha256sums=('99254fc26b446f5ce0f08e2689c63f06860f40b7797ddf41871798b1d6c6720b')
 
 package() {
 	cd "$srcdir/$_pkgname-$pkgver"
