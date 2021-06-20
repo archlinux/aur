@@ -1,8 +1,8 @@
 image: "registry.devseed.de/all-the-things/docker-archlinux"
 
 stages:
-  - test
-  - update_hash
+  - check
+  - build
   - release
 
 
@@ -11,19 +11,28 @@ before_script:
   - git config --global user.email "${GIT_USER_EMAIL:-$GITLAB_USER_EMAIL}"
   - git config --global user.name "${GIT_USER_NAME:-$GITLAB_USER_NAME}"
 
-
-test:
+update_hash:
+  stage: check
   script:
     # update package hash for integrity check
     - updpkgsums
+  cache:
+    key: pkgbuild
+    paths:
+      - PKGBUILD
+
+makepkg:
+  stage: build
+  needs: ["update_hash"]
+  script:
     # Test building a source package
     - sudo -u builder makepkg -C -S --log --noconfirm
     # Test building and installing the package
     - sudo -u builder makepkg -C -i --log --noconfirm
 
-update_hash:
+push:
+  stage: release
   script:
-    - updpkgsums
     - git add PKGBUILD
-    - git commit -m "updates hash for AppImage"
+    - git diff-index --quiet HEAD || git commit -m "updates hash for AppImage"
     - git push -o ci.skip "https://${GITLAB_USER_NAME}:${RENOVATE_TOKEN}@${CI_REPOSITORY_URL#*@}" "HEAD:${CI_COMMIT_BRANCH}"
