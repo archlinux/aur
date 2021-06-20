@@ -10,7 +10,7 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
          python-buildbot-wsgi-dashboards python-buildbot-badges)
 pkgver=3.2.0
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://buildbot.net'
 license=(GPL2)
@@ -18,7 +18,7 @@ checkdepends=(python-boto3 python-ldap3 python-lz4 python-treq python-txrequests
               python-moto python-docker python-parameterized python-mock python-subunit
               python-graphql-core python-unidiff
               openssh chromium)
-makedepends=(python-twisted python-jinja python-zope-interface python-sqlalchemy
+makedepends=(python-twisted python-jinja python-zope-interface python-sqlalchemy1.3
              python-sqlalchemy-migrate python-dateutil python-txaio
              python-autobahn python-pyjwt python-yaml
              python-setuptools python-future
@@ -134,7 +134,7 @@ export PYTHONHASHSEED=0
 package_buildbot() {
   pkgdesc='The Continuous Integration Framework'
   # include setuptools as plugins are enumerated via pkg_resources
-  depends=(buildbot-common python-twisted python-jinja python-zope-interface python-sqlalchemy
+  depends=(buildbot-common python-twisted python-jinja python-zope-interface python-sqlalchemy1.3
            python-sqlalchemy-migrate python-dateutil python-txaio
            python-autobahn python-pyjwt python-yaml python-setuptools)
   optdepends=(
