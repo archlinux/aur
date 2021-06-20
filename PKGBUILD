@@ -1,22 +1,22 @@
 # Maintainer: Rojikku <RojikkuNoKami at gmail dot com>
 # Contributor: Beej Jorgensen <beej@beej.us>
 pkgname=umoria
-pkgver=5.7.14
+pkgver=5.7.15
 pkgrel=1
 pkgdesc="Rogue-like dungeon crawler"
 arch=('i686' 'x86_64')
 url="https://umoria.org"
 license=('GPL')
 depends=('ncurses')
-makedepends=('gzip' 'cmake')
+makedepends=('gzip' 'cmake' 'gcc10')
 backup=("usr/share/${pkgname}/files/scores")
 source=(
   "${pkgname}-${pkgver}-aur.patch"
   ${pkgname}-${pkgver}.tar.gz::https://github.com/dungeons-of-moria/${pkgname}/archive/v${pkgver}.tar.gz
 )
 install=${pkgname}.install
-sha512sums=('281275858ce39b5fe07f856e4e126f80fa6a864ada259d1d30c8d97e4dc853ffa6efa805bc1950ab2abd49d1cf0b4f54d60384ffa67f70fa93845628ece145e8'
-            '5c99ed314a29684d2fc18a1429fb7609553a78fd053eac8d61189e0af8c72777d481910153514dfe544a8939be24ed9725fc2b31e89e5d6e26f0b1df5ad4c3e0')
+sha512sums=('5e5daf79b076b8784ee22bd1c18b901a9f837d32a617f1fef066c2985a426bd63854ba022d8cc759b9be0cde1d4c81ff3909a06213abee5bdfda16b0fb031f66'
+            '9ef9723eb120e5180640d8aa52073df638e506e0c842dac7173643bebfd84c51ec1fe6e2b1fa84ad1dcef29dc6607639e6a19ac4fd47000c6ba241691c1c720c')
 
 prepare() {
   cd "$srcdir/${pkgname}-$pkgver"
@@ -25,6 +25,8 @@ prepare() {
 
 build() {
   cd "$srcdir/${pkgname}-$pkgver"
+  export CC=$(which gcc-10)
+  export CXX=$(which g++-10)
   cmake .
   make
 }
