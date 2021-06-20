@@ -4,8 +4,8 @@
 
 pkgname=doublecmd-gtk2-alpha-bin
 _pkgname=doublecmd
-pkgver=1.0.0.svn.r9831
-_pkgver=1.0.0+svn9831+git4b2030e61-221
+pkgver=1.0.0.svn.r9833
+_pkgver=1.0.0+svn9833+git855cd54d4-222
 pkgrel=1
 pkgdesc="A file manager with two panels side by side"
 arch=('x86_64')
@@ -20,7 +20,7 @@ license=('GPL2')
 options=('!strip')
 
 source=("https://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/openSUSE_Tumbleweed/x86_64/${_pkgname}-gtk-${_pkgver}.1.x86_64.rpm")
-sha512sums=('1f4e87036c00e0d6b4281a291e80c56d40042d341baf8ee9c96009f45818f3339db1c641575f2969a3e9aa4c66267ca85c644e3fdb4a379c78d04d0bca6005b6')
+sha512sums=('b1e35ed2ac405545cf90f33d128360f52b1dccf40ed65fc55f705554bb26e59f0059038f4c3552ee9c3358ea88c9e6016a4b2b8a77f9acc9464add62ec5a4b66')
 
 
 prepare() {
