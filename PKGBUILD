@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname%-git}"
-    cargo build --locked --release --target-dir=target
+    RUSTFLAGS="--remap-path-prefix=$(pwd)=" cargo build --locked --release --target-dir=target
 
     which bash &>/dev/null && ./target/release/mumctl completions --bash > mumctl.bash
     which fish &>/dev/null && ./target/release/mumctl completions --fish > mumctl.fish
