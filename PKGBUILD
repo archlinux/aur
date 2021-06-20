@@ -1,7 +1,7 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=ipfs-desktop
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for the InterPlanetary File System"
 arch=(x86_64)
 url="https://github.com/ipfs-shipyard/$pkgname"
@@ -27,4 +27,6 @@ package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	mv "$pkgdir/opt/IPFS Desktop/LICENSE.electron.txt" "$pkgdir/usr/share/licenses/$pkgname"
 	mv "$pkgdir/opt/IPFS Desktop/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/$pkgname"
+	mkdir -p "$pkgdir/usr/bin"
+	ln -s '/opt/IPFS Desktop/ipfs-desktop' "$pkgdir/usr/bin/ipfs-desktop"
 }
