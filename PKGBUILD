@@ -23,6 +23,9 @@ sha256sums=('ed152f0f1f52eb0104947527ae92180a8858738ffff19a282b7c95d7a219bfb8'
 prepare() {
   cd SRB2-SRB2_release_$pkgver/src
 
+  # fix error with `endef` not being recognized
+  sed -i 's/\tendef/  endef/' Makefile.cfg
+
   # Fix compilation issue with gcc 10
   sed '1iCFLAGS=-fcommon' -i Makefile
 
