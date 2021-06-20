@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Unigine Valley
+Comment=Interactive Unigine Benchmark - a siberian valley
+Path=/usr/bin
+Exec=unigine-valley
+Icon=jmemorize
+Terminal=false
+Categories=Game
