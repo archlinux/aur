@@ -44,7 +44,7 @@ depends+=('arpack' 'blas' 'qt5-script' 'python-pyqt5' 'qwt' 'netcdf-fortran-open
 makedepends=('git' 'gcc-fortran' 'cmake')
 provides=('elmerfem')
 conflicts=('elmerfem')
-options=(!emptydirs !makeflags)
+options=(!emptydirs !staticlibs)
 
 source=('git+https://github.com/ElmerCSC/elmerfem.git'
         "$_pkgname.desktop")
