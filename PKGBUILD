@@ -1,7 +1,7 @@
 # Maintainer: Andy Bao <contact at andybao dot me>
 pkgname=firefox-profile-switcher-connector
 pkgdesc="Native connector software for the 'Profile Switcher for Firefox' extension."
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 arch=('x86_64' 'i686' 'pentium4' 'aarch64' 'armv7h' 'armv6h')
 url="https://github.com/null-dev/firefox-profile-switcher-connector"
@@ -9,7 +9,7 @@ license=('GPL3')
 # depends=('firefox') We don't specify this as not all firefox packages provide firefox currently
 makedepends=('cargo')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('40f0429f2aeebd128072a75674e132477ef1f16ce03d77704fa55395624a62fc')
+sha256sums=('1fe2075e2a5bd42455b07771f3e6a08cdee6945e859a304ce715899d505555d6')
 
 build() {
     cd "$pkgname-$pkgver"
