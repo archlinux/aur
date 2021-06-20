@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='High level string and text processing library for Ada'
 url='https://github.com/AdaCore/VSS'
 arch=('x86_64')
-license=('GPL3')
+license=('GPL3' 'custom')
 makedepends=('git' 'gcc-ada' 'gprbuild')
 source=('git+https://github.com/AdaCore/VSS.git#commit=9ff8f49b9f1c801b9ff66cb538fbbf447bc1244e')
 sha1sums=('SKIP')
@@ -29,4 +29,14 @@ package() {
     gprinstall -p -P gnat/vss_gnat.gpr -XBUILD_MODE=prod --prefix="$pkgdir/usr"
     gprinstall -p -P gnat/vss_text.gpr -XBUILD_MODE=prod --prefix="$pkgdir/usr"
     gprinstall -p -P gnat/vss_json.gpr -XBUILD_MODE=prod --prefix="$pkgdir/usr"
+
+    # Install the license.
+    install -D -m644     \
+       "COPYING3"        \
+       "$pkgdir/usr/share/licenses/libvss/COPYING3"
+
+    # Install the custom license.
+    install -D -m644     \
+       "COPYING.RUNTIME" \
+       "$pkgdir/usr/share/licenses/libvss/COPYING.RUNTIME"
 }
