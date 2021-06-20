@@ -1,0 +1,30 @@
+diff --git a/Makefile b/Makefile
+index 32b9c1d..736e964 100644
+--- a/Makefile
++++ b/Makefile
+@@ -18,8 +18,11 @@ ifneq ($(OS),Windows_NT)
+ endif
+ 
+ all:
++	export LIBRARY_TYPE=relocateable
+ 	gprbuild $(GPRBUILD_FLAGS) -P gnat/spawn.gpr
+ 	gprbuild $(GPRBUILD_FLAGS) -P gnat/spawn_tests.gpr
++	gprbuild $(GPRBUILD_FLAGS) -P gnat/spawn_glib.gpr
++	gprbuild $(GPRBUILD_FLAGS) -P gnat/spawn_glib_tests.gpr
+ check:
+ 	export LD_LIBRARY_PATH=.libs/spawn/relocatable; \
+ 	for TEST in ${SPAWN_TESTS}; do \
+@@ -27,7 +30,13 @@ check:
+ 	done
+ 
+ install:
++	export LIBRARY_TYPE=relocateable
+ 	gprinstall $(GPRINSTALL_FLAGS) -p -P gnat/spawn.gpr
++
++install-glib:
++	export LIBRARY_TYPE=relocateable
++	gprinstall $(GPRINSTALL_FLAGS) -p -P gnat/spawn_glib.gpr
++
+ clean:
+ 	gprclean -q -P gnat/spawn.gpr
+ 

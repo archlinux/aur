@@ -1,0 +1,17 @@
+pkgbase = ada_spawn
+	pkgdesc = A simple Ada API to spawn processes and communicate with them.
+	pkgver = r69.725a42d
+	pkgrel = 1
+	url = https://github.com/AdaCore/spawn
+	arch = x86_64
+	license = GPL3
+	license = custom
+	makedepends = git
+	makedepends = gcc-ada
+	makedepends = gprbuild
+	source = git+https://github.com/AdaCore/spawn.git#commit=725a42d9511ac414147dc9d7a2e16a6743e0f779
+	source = Makefile.patch
+	sha1sums = SKIP
+	sha1sums = b77624236aa8988085ae6bddd4ca18c5d2e11cb8
+
+pkgname = ada_spawn
