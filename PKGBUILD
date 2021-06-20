@@ -4,7 +4,7 @@
 _npmname=zone-mta
 pkgname=nodejs-zone-mta
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Modern outbound MTA cross platform and extendable server application'
 arch=(any)
 url=https://github.com/zone-eu/zone-mta
@@ -23,7 +23,8 @@ package() {
     npm install -g --prefix "$pkgdir/usr" "$_npmname@$pkgver"
 
     # Remove the files that contain references to $pkgdir
-    rm -rf "$pkgdir/usr/lib/node_modules/$_npmname/node_modules/dtrace-provider/build"
+    rm "$pkgdir/usr/lib/node_modules/$_npmname/node_modules/dtrace-provider/build/Makefile"
+    rm "$pkgdir/usr/lib/node_modules/$_npmname/node_modules/dtrace-provider/build/config.gypi"
 
     install -Dm644 "$_npmdir/$_npmname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     chown -R root:root "${pkgdir}"
