@@ -2,6 +2,32 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 # Contributor: Randy Heydon <randy dot heydon at clockworklab dot net>
 # Contributor: saxonbeta <saxonbeta at gmail __com
+
+# Configuration.
+_CMAKE_FLAGS+=(
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DELMER_INSTALL_LIB_DIR=/usr/lib \
+        -DWITH_CONTRIB=ON \
+        -DWITH_ELMERGUI=ON \
+        -DWITH_ELMERGUILOGGER=OFF \
+        -DWITH_ELMERGUITESTER=OFF \
+        -DWITH_ElmerIce=ON \
+        -DPHDF5HL_LIBRARY=/usr/lib/libhdf5_hl.so \
+        -DWITH_LUA=ON \
+        -DWITH_MATC=OFF \
+        -DWITH_MPI=ON \
+        -DWITH_OpenMP=ON \
+        -DWITH_QT5=ON \
+        -DWITH_Mumps=ON \
+        -DWITH_Hypre=ON \
+        -DWITH_OCC=ON \
+        -DWITH_VTK=ON \
+        -DNN_INCLUDE_DIR=/usr/include \
+        -DHYPRE_INCLUDE_DIR=/usr/include/hypre \
+        -DWITH_ScatteredDataInterpolator=ON \
+        -DWITH_PARAVIEW=ON
+)
+
 pkgname=elmerfem-git
 _pkgname=elmerfem
 pkgver=9.0.r423.gb943299d
@@ -28,41 +54,15 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
-  if [[ ! -d ../build ]]
-  then
-    mkdir ../build
-  fi
   sed -i 's/1 depth/1 ${depth}/g' fem/tests/CMakeLists.txt
   sed -i 's/FALSE/false/g' ElmerGUI/Application/vtkpost/matc.cpp
 }
 
 build() {
-  cd "$srcdir/build"
   export FFLAGS+=" -fallow-argument-mismatch"
-  cmake ../$_pkgname \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DELMER_INSTALL_LIB_DIR=/usr/lib \
-        -DWITH_CONTRIB=ON \
-        -DWITH_ELMERGUI=ON \
-        -DWITH_ELMERGUILOGGER=OFF \
-        -DWITH_ELMERGUITESTER=OFF \
-        -DWITH_ElmerIce=ON \
-        -DPHDF5HL_LIBRARY=/usr/lib/libhdf5_hl.so \
-        -DWITH_LUA=ON \
-        -DWITH_Trilinos=ON \
-        -DWITH_MATC=OFF \
-        -DWITH_MPI=ON \
-        -DWITH_OpenMP=ON \
-        -DWITH_QT5=ON \
-        -DWITH_Mumps=ON \
-        -DWITH_Hypre=ON \
-        -DWITH_OCC=ON \
-        -DWITH_VTK=ON \
-        -DNN_INCLUDE_DIR=/usr/include \
-        -DHYPRE_INCLUDE_DIR=/usr/include/hypre \
-        -DWITH_ScatteredDataInterpolator=ON \
-        -DWITH_PARAVIEW=ON
-  make all
+  cmake -S "${srcdir}"/$_pkgname -B build \
+        "${_CMAKE_FLAGS[@]}"
+  make -C build all
 }
 
 # check() {
@@ -72,10 +72,9 @@ build() {
 # }
 
 package() {
-  cd "$srcdir/$_pkgdir/build"
-  make DESTDIR="$pkgdir" install
+  make -C build DESTDIR="$pkgdir" install
   cd "$pkgdir/usr"
-  
+
   # Remove unecessary libraries
   rm -rf -- lib/{*.a,*arpack.so,ElmerGUI}
 
