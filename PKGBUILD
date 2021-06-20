@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=thumbs
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Copy/pasting like vimium/vimperator'
 arch=('x86_64')
@@ -13,8 +13,8 @@ optdepends=('bash: for tmux integration'
             'tmux: for tmux integration')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate"
         '0001-Global-install.patch')
-b2sums=('9e62fd3d68803cc502ea54789eaf637a34b74d7c816d1b0d23b5d710a0a18b785b6f87010005c6fd28b2847c0ed18e06dea7fe487e70380ad192e2e560ad5be3'
-        '0f1f7f9bfe0e44cd3d1851978189c21a8f22b27f90e75d8d5f75f6ca6b80aad334b9df71cc272e11fff55dc2767960ce60c74d93df3194e552fab331d4467dc0')
+b2sums=('706833eba52a29ddde6d8fc400de547c90c6a7552eca82392d026a4cb535f166c7065804ea39fed7099f45c6f9c7ffcdc02e1594a73f441dbf4d446bcc4197e8'
+        '2161a433de291d3b6bce06e96750f44fbbb042fb26a568f022cf4fd1dfc7af2ecb2b1452032a6447b6459f4b80a7f6bee739d8af1769bd0e5c75cd318fd2682a')
 
 prepare() {
   cd $pkgname-$pkgver

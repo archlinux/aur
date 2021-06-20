@@ -1,4 +1,4 @@
-From 99c1b8cb71c85e9f26e73fdaebf6405f2c0e66f7 Mon Sep 17 00:00:00 2001
+From 02ef06f34e702cb6c728d102ccca7817bc189392 Mon Sep 17 00:00:00 2001
 From: "Daniel M. Capella" <polyzen@archlinux.org>
 Date: Tue, 4 Aug 2020 18:30:54 -0400
 Subject: [PATCH] Global install
@@ -10,7 +10,7 @@ Subject: [PATCH] Global install
  3 files changed, 4 insertions(+), 22 deletions(-)
 
 diff --git a/src/swapper.rs b/src/swapper.rs
-index 49da403..21aa815 100644
+index cce19e0..e2fc3d8 100644
 --- a/src/swapper.rs
 +++ b/src/swapper.rs
 @@ -57,7 +57,6 @@ fn dbg(msg: &str) {
@@ -20,24 +20,24 @@ index 49da403..21aa815 100644
 -  dir: String,
    command: String,
    upcase_command: String,
-   osc52: bool,
-@@ -73,7 +72,6 @@ pub struct Swapper<'a> {
+   multi_command: String,
+@@ -74,7 +73,6 @@ pub struct Swapper<'a> {
  impl<'a> Swapper<'a> {
    fn new(
      executor: Box<&'a mut dyn Executor>,
 -    dir: String,
      command: String,
      upcase_command: String,
-     osc52: bool,
-@@ -85,7 +83,6 @@ impl<'a> Swapper<'a> {
+     multi_command: String,
+@@ -87,7 +85,6 @@ impl<'a> Swapper<'a> {
  
      Swapper {
        executor,
 -      dir,
        command,
        upcase_command,
-       osc52,
-@@ -210,11 +207,10 @@ impl<'a> Swapper<'a> {
+       multi_command,
+@@ -213,11 +210,10 @@ impl<'a> Swapper<'a> {
      };
  
      let pane_command = format!(
@@ -50,38 +50,38 @@ index 49da403..21aa815 100644
          tmp = TMP_FILE,
          args = args.join(" "),
          zoom_command = zoom_command,
-@@ -421,7 +417,6 @@ mod tests {
-       Box::new(&mut executor),
+@@ -447,7 +443,6 @@ mod tests {
        "".to_string(),
-       "".to_string(),
--      "".to_string(),
-       false,
-     );
- 
-@@ -443,7 +438,6 @@ mod tests {
-       Box::new(&mut executor),
        "".to_string(),
        "".to_string(),
 -      "".to_string(),
        false,
      );
  
-@@ -465,7 +459,6 @@ mod tests {
-     let upcase_command = "open \"{}\"".to_string();
+@@ -470,7 +465,6 @@ mod tests {
+       "".to_string(),
+       "".to_string(),
+       "".to_string(),
+-      "".to_string(),
+       false,
+     );
+ 
+@@ -493,7 +487,6 @@ mod tests {
+     let multi_command = "open \"{}\"".to_string();
      let mut swapper = Swapper::new(
        Box::new(&mut executor),
 -      "".to_string(),
        user_command,
        upcase_command,
-       false,
-@@ -542,7 +535,6 @@ fn main() -> std::io::Result<()> {
+       multi_command,
+@@ -578,7 +571,6 @@ fn main() -> std::io::Result<()> {
    let mut executor = RealShell::new();
    let mut swapper = Swapper::new(
      Box::new(&mut executor),
 -    dir.to_string(),
      command.to_string(),
      upcase_command.to_string(),
-     osc52,
+     multi_command.to_string(),
 diff --git a/tmux-thumbs.sh b/tmux-thumbs.sh
 index 92d5625..f1e0a26 100755
 --- a/tmux-thumbs.sh
@@ -133,5 +133,5 @@ index 4fc9355..dc03d1d 100755
 -fi
 +tmux bind-key "${THUMBS_KEY}" run-shell -b /usr/share/thumbs/tmux-thumbs.sh
 -- 
-2.30.0
+2.32.0
 
