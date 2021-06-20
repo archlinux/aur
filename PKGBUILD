@@ -1,13 +1,13 @@
 pkgname=mqttui-bin
 pkgver=0.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Subscribe to a MQTT Topic or publish something quickly from the terminal"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
-url="https://github.com/EdJoPaTo/mqttui"
+url="https://github.com/EdJoPaTo/${pkgname/-bin/}"
 license=('GPL-3.0-or-later')
 depends=()
-provides=('mqttui')
-conflicts=('mqttui')
+provides=("${pkgname/-bin/}")
+conflicts=("${pkgname/-bin/}")
 
 source_x86_64=("$url/releases/download/v${pkgver}/${pkgname/-bin/}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$url/releases/download/v${pkgver}/${pkgname/-bin/}-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
