@@ -2,7 +2,7 @@
 pkgname=fzpac-git
 _pkgname=fzpac
 pkgver=r97.932773c
-pkgrel=1
+pkgrel=2
 pkgdesc="Arch Linux (pacman) package finder with fzf "
 arch=("any")
 url="https://github.com/sheepla/fzpac"
@@ -17,15 +17,10 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-	cd "$_pkgname"
-	sed -i -e "s|/local||" Makefile
-}
-
 package() {
 	cd "$_pkgname"
 	export DESTDIR="$pkgdir"
-	make install
+	PREFIX=/usr make install
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENCE"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
 }
