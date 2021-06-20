@@ -2,7 +2,7 @@
 # Contributor: Daniel Haß <aur@hass.onl>
 pkgname=standardnotes-desktop
 _pkgname=desktop
-pkgver=3.7.1
+pkgver=3.8.6
 pkgrel=1
 pkgdesc="A standard notes app with an un-standard focus on longevity, portability, and privacy."
 arch=('x86_64') # 'aarch64'
@@ -13,14 +13,12 @@ depends=('electron')
 makedepends=('npm' 'node-gyp' 'git' 'jq' 'python2' 'yarn' 'nvm')
 _nodeversion=14
 source=("git://github.com/standardnotes/desktop.git"
-        "git://github.com/standardnotes/web.git#commit=26732f5b8d54aa2f098880f1c9a8e968b0cc0670"
+        "git://github.com/standardnotes/web.git#commit=9d258ffcee1559cb71f796e51d5b3a3e98f7f39a"
         "git://github.com/sn-extensions/extensions-manager.git#commit=c8a614bf093a3d6ab95ea8eb5e7507b152ed49e2"
-        "git://github.com/sn-extensions/batch-manager.git#commit=2d1ba6ac9f09193e40c4241a70605ecb3c15d3c7"
         'webpack.patch'
         'standardnotes-desktop.desktop'
         'standardnotes-desktop.js')
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'a0b2b5e95750b5c58fd65bbe7e9797b8560d1fa61b5d0164e160cdd74ecc883d'
@@ -33,7 +31,6 @@ prepare() {
   git submodule init
   git config submodule.web.url $srcdir/web
   git config submodule.extensions-manager.url $srcdir/extensions-manager
-  git config submodule.batch-manager.url $srcdir/batch-manager
   git submodule update
 
   cp .env.sample .env
