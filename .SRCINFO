@@ -6,7 +6,7 @@ pkgbase = python-mkdocs-minify-plugin
 	arch = i686
 	arch = x86_64
 	license = MIT
-	checkdepends = python-mkdocs>=1.0.4
+	checkdepends = mkdocs
 	checkdepends = python-htmlmin>=0.1.4
 	checkdepends = python-jsmin>=2.2.2
 	makedepends = python-setuptools
@@ -17,6 +17,6 @@ pkgbase = python-mkdocs-minify-plugin
 
 pkgname = python-mkdocs-minify-plugin
 	depends = python>=3.4
-	depends = python-mkdocs>=1.0.4
+	depends = mkdocs
 	depends = python-htmlmin>=0.1.4
 	depends = python-jsmin>=2.2.2
