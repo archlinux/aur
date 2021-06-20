@@ -12,7 +12,7 @@ pkgver=1.01
 pkgrel=2
 pkgdesc="Pacman hooks metapackage"
 arch=('any')
-url='https://github.com/grigorii-horos/breeze-icons-extra'
+url='https://github.com/grigorii-horos/pacman-hooks'
 license=('LGPL')
 
 source=()
