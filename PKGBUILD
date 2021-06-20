@@ -10,7 +10,7 @@ license=('PerlArtistic')
 source=("https://cpan.metacpan.org/authors/id/V/VX/VXX/SQLite-DB-0.04.tar.gz")
 md5sums=('1a3ac853de79f7d09a321092a3819d1d')
 sha256sums=('284ede206c3a97e8501e6f7bda51b0137bc417ef06f4c4d62a107ef21f647614')
-depends=('perl' 'sqlite')
+depends=('perl' 'perl-dbi' 'perl-dbd-sqlite' 'sqlite')
 makedepends=('perl-module-build')
 options=(!emptydirs)
 
