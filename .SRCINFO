@@ -1,0 +1,19 @@
+pkgbase = artery32-iap-programmer-mono
+	pkgdesc = AT32 IAP Programmer (Developed with C#, based on dotnet 4.0)
+	pkgver = v1.2.6
+	pkgrel = 1
+	url = https://bbs.21ic.com/icview-3128878-1-1.html
+	arch = any
+	license = unkown
+	makedepends = unarchiver
+	depends = mono
+	provides = artery32-iap-programmer-mono
+	conflicts = artery32-iap-programmer-mono
+	conflicts = artery32-iap-programmer-mono-git
+	replaces = at32-iap-programer-mono
+	noextract = artery32-iap-programmer-mono-v1.2.6.rar
+	options = !strip
+	source = artery32-iap-programmer-mono-v1.2.6.rar::http://bbs.21ic.com/forum.php?mod=attachment&aid=MTY2Njg4NHw3MmMxOGYxOHwxNjI0MTg3MzYwfDE3MTY4ODR8MzEyODg3OA%3D%3D
+	sha256sums = bab02636e5875ee66df39fd7c1f37acc4ef0a591a4ad201ff29848eb9230bd02
+
+pkgname = artery32-iap-programmer-mono
