@@ -4,35 +4,32 @@ pkgname=quine-relay
 pkgver=r122.73e4544
 pkgrel=1
 pkgdesc='Uroboros program with 100 programming languages (50 language branch)'
-arch=('x86_64' 'i686')
+arch=(x86_64)
 url='http://github.com/mame/quine-relay'
-license=('MIT')
-depends=('algol68g' 'bash' 'boo' 'chicken' 'clisp' 'clojure' 'fpc' 'gawk' 'gcc'
-         'gcc-fortran' 'ghc' 'go' 'groovy' 'llvm' 'make' 'mono' 'nodejs' 'ocaml'
-         'octave' 'parrot' 'perl' 'php' 'python' 'r' 'ruby' 'scala' 'tcl'
-         'ucblogo' 'vala' 'c-intercal' 'coffee-script' 'f2c' 'gforth' 'icon'
-         'iverilog' 'gnu-cobol' 'pike' 'regina-rexx-das' 'swi-prolog'
-         'smalltalk' 'beef' 'jasmin' 'gcc-objc' 'gcc-ada' 'scilab' 'lci-git'
-         'spl' 'maxima' 'slang' 'fpiet' 'neko' 'nickle' 'pari' 'bsd-games'
-         'ratfor' 'gambas3-script' 'mlton' 'thue' 'mono-basic' 'zoem' 'yorick')
+license=(MIT)
+conflicts=('quine-relay-git')
+replaces=('quine-relay-git')
+depends=('algol68g' 'bash' 'beef' 'boo' 'bsd-games' 'c-intercal' 'chicken'
+         'clisp' 'clojure' 'coffeescript' 'f2c' 'fpc' 'fpiet' 'gambas3-script'
+         'gawk' 'gcc' 'gcc-ada' 'gcc-fortran' 'gcc-objc' 'gforth' 'ghc'
+         'gnucobol' 'go' 'groovy' 'icon' 'iverilog' 'jasmin' 'lci-git' 'llvm'
+         'make' 'maxima' 'mlton' 'mono' 'mono-basic' 'neko' 'nickle' 'nodejs'
+         'ocaml' 'octave' 'pari' 'parrot' 'perl' 'php' 'pike' 'python' 'r'
+         'ratfor' 'regina-rexx-das' 'ruby' 'scala' 'scilab' 'slang' 'smalltalk'
+         'spl' 'swi-prolog' 'tcl' 'thue' 'ucblogo' 'vala' 'yorick' 'zoem')
 optdepends=('advancecomp: For generating langs.png'
             'optipng: For generating langs.png')
 source=('quine-relay::git://github.com/mame/quine-relay.git#branch=50'
         'quine-relay.sh')
-sha256sums=('SKIP'
-            '2409f6ccaed7070143b365fb1e276ff73620d9651f12d5058c2291b3d093be95')
-conflicts=('quine-relay-git')
-replaces=('quine-relay-git')
-
+b2sums=('SKIP'
+        '143a883a909cfd01b5b22dc6b9478841ab9ade06d6907482cc2ab4244e5c5876d63befd83186613e69ea0d774541d4962748940195bfdea6ea9f2d531b8baedb')
 pkgver() {
-  cd "$pkgname"
-
+  cd $pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$pkgname"
-
+  cd $pkgname
   <README.md tail -22 > LICENSE
 
   # lolcode is available in Arch Linux
@@ -46,12 +43,9 @@ prepare() {
 }
 
 package() {
-  cd "$pkgname"
-
+  cd $pkgname
   install -d "$pkgdir/usr/share/quine-relay"
   cp -r * "$pkgdir/usr/share/quine-relay"
   install -Dm755 ../quine-relay.sh "$pkgdir/usr/bin/quine-relay"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
