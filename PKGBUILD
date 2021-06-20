@@ -1,12 +1,12 @@
 # Maintainer: Sarisan <sekoohaka.sarisan@gmail.com>
 pkgname=tl-launcher
-pkgver=1.120.3
+pkgver=1.122.9
 pkgrel=1
 pkgdesc="One of the best simple Minecraft launchers"
 arch=('x86_64')
 url="http://tlaun.ch/"
 license=('custom')
-depends=('alsa-lib' 'at-spi2-atk' 'at-spi2-core' 'atk' 'dbus' 'expat' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libcups' 'libdrm' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxrandr' 'mesa' 'nspr' 'nss' 'pango' 'util-linux-libs' 'zlib' 'java-runtime=8' 'xorg-xrandr')
+depends=('alsa-lib' 'at-spi2-atk' 'at-spi2-core' 'atk' 'dbus' 'expat' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libcups' 'libdrm' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxrandr' 'mesa' 'nspr' 'nss' 'pango' 'util-linux-libs' 'zlib' 'java-runtime' 'xorg-xrandr')
 optdepends=('flite: narrator support')
 source=(
     'tl-launcher.jar::http://tlaun.ch/jar'

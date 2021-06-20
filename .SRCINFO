@@ -1,6 +1,6 @@
 pkgbase = tl-launcher
 	pkgdesc = One of the best simple Minecraft launchers
-	pkgver = 1.120.3
+	pkgver = 1.122.9
 	pkgrel = 1
 	url = http://tlaun.ch/
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = tl-launcher
 	depends = pango
 	depends = util-linux-libs
 	depends = zlib
-	depends = java-runtime=8
+	depends = java-runtime
 	depends = xorg-xrandr
 	optdepends = flite: narrator support
 	source = tl-launcher.jar::http://tlaun.ch/jar
