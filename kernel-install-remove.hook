@@ -1,0 +1,13 @@
+[Trigger]
+Operation = Upgrade
+Operation = Remove
+Type = File
+Target = usr/lib/modules/*/vmlinuz
+
+[Action]
+Description = Removing kernel and initrd from $BOOT (kernel-install)
+When = PreTransaction
+Exec = /bin/bash -c 'shopt -s extglob && . /usr/lib/initcpio/functions && while read -r vmlinuz; do kver="$(kver "${vmlinuz}")" && msg "Removing ${kver}" && kernel-install remove "${kver}"; done'
+Depends = bash
+Depends = systemd
+NeedsTargets
