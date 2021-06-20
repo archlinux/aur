@@ -72,11 +72,11 @@ build() {
   make -C build all
 }
 
-# check() {
-#   cd "$srcdir/build"
-#   export PATH=$PATH:$PWD/fem/src
-#   ctest -j$( grep -c ^processor /proc/cpuinfo )
-# }
+check() {
+  cd "$srcdir/build"
+  export PATH=$PATH:$PWD/fem/src
+  ctest $(grep -oP -- "-j\s*[0-9]+" <<< "${MAKEFLAGS}") || true
+}
 
 package() {
   make -C build DESTDIR="$pkgdir" install
