@@ -4,14 +4,14 @@
 _npmname=dockerfile-language-server-nodejs
 pkgname=dockerfile-language-server
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A language server for Dockerfiles'
 arch=('any')
 url='https://github.com/rcjsuen/dockerfile-language-server-nodejs'
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
-conflicts=('dockerfile-language-server-bin')
+replaces=('dockerfile-language-server-bin' 'nodejs-dockerfile-language-server-nodejs')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 sha256sums=('c0c63ba24b1f97b2242719c30fccc0b9bf82bb05a1e20464ddadb3b60dcf1746')
 noextract=("${pkgname}-${pkgver}.tgz")
