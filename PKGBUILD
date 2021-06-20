@@ -6,14 +6,13 @@
 
 pkgname=rubyripper
 pkgver=0.8.0rc3
-pkgrel=1
+pkgrel=2
 pkgdesc='Secure audiodisc ripper'
 arch=('any')
-url='http://code.google.com/p/rubyripper/'
+url='https://github.com/bleskodev/rubyripper'
 license=('GPL3')
-depends=('cdparanoia' 'gtk3' 'ruby-iconv' 'ruby-rexml')
-optdepends=('ruby-gtk3: GTK+ GUI'
-            'ruby-gettext: Translations'
+depends=('cdparanoia' 'gtk3' 'ruby-iconv' 'ruby-rexml' 'ruby-gtk3')
+optdepends=('ruby-gettext: Translations'
             'cd-discid: Gnudb support'
             'lame: MP3 encoding support'
             'vorbis-tools: Ogg Vorbis encoding support'
@@ -28,7 +27,7 @@ optdepends=('ruby-gtk3: GTK+ GUI'
             'wavpack: WavPack encoding and ReplayGain support'
             'opus-tools: Opus encoding support'
             'neroaacenc-bin: Nero AAC encoding support')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bleskodev/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('f109ed5455f5a616cbd392c2a71efd59ffa2d207c3c3c3ad41873e20430b80c0')
 
 build() {

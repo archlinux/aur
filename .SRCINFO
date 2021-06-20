@@ -1,15 +1,15 @@
 pkgbase = rubyripper
 	pkgdesc = Secure audiodisc ripper
 	pkgver = 0.8.0rc3
-	pkgrel = 1
-	url = http://code.google.com/p/rubyripper/
+	pkgrel = 2
+	url = https://github.com/bleskodev/rubyripper
 	arch = any
 	license = GPL3
 	depends = cdparanoia
 	depends = gtk3
 	depends = ruby-iconv
 	depends = ruby-rexml
-	optdepends = ruby-gtk3: GTK+ GUI
+	depends = ruby-gtk3
 	optdepends = ruby-gettext: Translations
 	optdepends = cd-discid: Gnudb support
 	optdepends = lame: MP3 encoding support
@@ -29,4 +29,3 @@ pkgbase = rubyripper
 	sha256sums = f109ed5455f5a616cbd392c2a71efd59ffa2d207c3c3c3ad41873e20430b80c0
 
 pkgname = rubyripper
-
