@@ -1,16 +1,14 @@
 pkgbase = nodejs-lua-fmt
 	pkgdesc = A pretty-printer for Lua code
 	pkgver = 2.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trixnz/lua-fmt
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
 	noextract = lua-fmt-2.6.0.tgz
 	source = https://registry.npmjs.org/lua-fmt/-/lua-fmt-2.6.0.tgz
-	sha512sums = 2780fb4caf8185227d78f40fa593e5bbf6871375fda2337e0fb0cdbf51d764faf2049ef85d65665e9457faa71e5dd135e5352c4110a3f70f35c1a54e38585f58
+	sha256sums = 2b7f826dfb038569d37421dbc9f12cb2f7ecc4643a914647f0e379676c77ef7a
 
 pkgname = nodejs-lua-fmt
-

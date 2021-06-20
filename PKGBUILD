@@ -1,19 +1,26 @@
-# Maintainer: sum01 <sum01@protonmail.com>
+# Maintainer: Yufan You <ouuansteve at gmail>
+# Contributor: sum01 <sum01@protonmail.com>
+
 pkgname=nodejs-lua-fmt
-_srcname="lua-fmt"
+_npmname="lua-fmt"
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A pretty-printer for Lua code"
-arch=('i686' 'x86_64')
+arch=(any)
 url="https://github.com/trixnz/lua-fmt"
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
-source=("https://registry.npmjs.org/$_srcname/-/$_srcname-$pkgver.tgz")
-noextract=($_srcname-$pkgver.tgz)
-sha512sums=('2780fb4caf8185227d78f40fa593e5bbf6871375fda2337e0fb0cdbf51d764faf2049ef85d65665e9457faa71e5dd135e5352c4110a3f70f35c1a54e38585f58')
+source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
+noextract=($_npmname-$pkgver.tgz)
+sha256sums=('2b7f826dfb038569d37421dbc9f12cb2f7ecc4643a914647f0e379676c77ef7a')
+
 package() {
-  npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_srcname-$pkgver.tgz"
-  rm -rf "$pkgdir/usr/etc"
-  install -Dm644 "$pkgdir/usr/lib/node_modules/$_srcname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "$srcdir"
+    local _npmdir="$pkgdir/usr/lib/node_modules/"
+    mkdir -p "$_npmdir"
+    cd "$_npmdir"
+    npm install -g --prefix "$pkgdir/usr" "$_npmname@$pkgver"
+    install -Dm644 "$_npmdir/$_npmname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    chown -R root:root "${pkgdir}"
 }
