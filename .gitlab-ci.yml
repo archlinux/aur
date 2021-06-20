@@ -18,6 +18,7 @@ update_hash:
 
 makepkg:
   stage: build
+  needs: ["update_hash"]
   script:
     # Test building a source package
     - sudo -u builder makepkg -C -S --log --noconfirm
