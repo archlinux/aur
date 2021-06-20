@@ -1,16 +1,16 @@
 # Maintainer: MithicSpirit <rpc01234 at gmail dot com>
 # Contributor: SuchBlue
 pkgname=salad
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 epoch=
-pkgdesc="Salad allows gamers to mine crypto in their downtime. We turn your GPU power into credits you can spend on items like subscriptions, games, gift cards, and more from our curated storefront."
+pkgdesc="Salad allows gamers to mine crypto in their downtime."
 arch=(x86_64)
-url=""
+url="https://salad.com/"
 license=('MIT')
 groups=()
 depends=(nodejs npm)
-makedepends=(unzip wget sudo sed)
+makedepends=(unzip wget sed tar)
 checkdepends=()
 optdepends=()
 provides=(salad)
