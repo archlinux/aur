@@ -3,7 +3,7 @@
 _npmname=typescript-language-server
 pkgname=typescript-language-server-bin
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Language server implementation for JavaScript / TypeScript"
 arch=('any')
 url="https://www.npmjs.com/package/typescript-language-server"
@@ -18,5 +18,6 @@ package() {
     local _npmdir="${pkgdir}/usr/lib/node_modules/"
     mkdir -p "${_npmdir}"
     cd "${_npmdir}"
-    npm install --user root -g --prefix "${pkgdir}/usr" "${_npmname}@${_npmver}"
+    npm install -g --prefix "${pkgdir}/usr" "${_npmname}@${_npmver}"
+    chown -R root:root "${pkgdir}"
 }
