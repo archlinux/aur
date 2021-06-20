@@ -1,8 +1,8 @@
 # Maintainer: Felix Kauselmann <licorn at gmail dot com>
 pkgname=(yacreader yacreaderlibraryserver)
 pkgbase=yacreader
-pkgver=9.8.1
-_pkgext=2106024
+pkgver=9.8.2
+_pkgext=2106195
 pkgrel=1
 pkgdesc="Comic reader for cross-platform reading and managing your digital comic collection."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ optdepends=(
 conflicts=('yacreader-bin' 'yacreaderlibraryserver-standalone' 'yacreader-git')
 install='yacreader.install'
 source=( "https://github.com/YACReader/yacreader/releases/download/${pkgver}/yacreader-${pkgver}.${_pkgext}-src.tar.xz")
-sha256sums=('02e04cc1155edd277cc6af4051e3e8b0da21132bd342a92c7a9cafa99b9ebd16')
+sha256sums=('ce7e13636a6628827fa33522fcb4ff229aa7de7dfb55b0ab03aec266882a181a')
 
 build() {
   cd $srcdir/$pkgbase-$pkgver.${_pkgext}/
