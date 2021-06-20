@@ -1,7 +1,7 @@
 # Maintainer: Limgmk <limgmkgm@gmail.com>
 
 pkgname=leedns-git
-pkgver=0.1.0.r2.gd51a001
+pkgver=0.0.1.r0.g215c667
 pkgrel=1
 pkgdesc="A dns server and client which support udp, tcp, dot and doh"
 arch=('any')
@@ -14,7 +14,7 @@ backup=('etc/leedns/config.yaml')
 options=()
 
 source=("$pkgname::git+${url}.git"
-	"leedns.service::https://file.limgmk.com/leedns.service")
+	"leedns.service::https://files.limgmk.com/leedns.service")
 
 md5sums=('SKIP' '7ee04c2df32948b8a1855bf7230edaa7')
 
