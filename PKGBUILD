@@ -5,7 +5,7 @@
 
 # Maintainer: Moritz Sokoll <moritz@sokoll.com>
 pkgname=brainfuck-interp
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 epoch=
 pkgdesc="a brainfuck interpreter written in rust"
@@ -25,7 +25,7 @@ install=
 changelog=
 source=("https://gitlab.sokoll.com/moritz/brainfuck/-/archive/master/brainfuck-master.tar.gz")
 noextract=()
-sha256sums=("75491f1acdb3d8356d9666f1d6d0ed9ef7f80cb10976ca8564342e35a0a8f212")
+sha256sums=("e13e1a831275929d227e0e46e174eee09688bd2f0e5eb8ca30f0e69ebec1d65a")
 validpgpkeys=()
 
 build() {
