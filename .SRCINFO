@@ -1,0 +1,12 @@
+pkgbase = usbboot
+	pkgdesc = GUI for booting a Raspberry Pi device like Pi Zero or compute module as a device
+	pkgver = 2048ae6
+	pkgrel = 1
+	url = https://github.com/raspberrypi/usbboot
+	arch = any
+	license = 
+	depends = libusb
+	source = git+https://github.com/raspberrypi/usbboot.git
+	sha256sums = SKIP
+
+pkgname = usbboot-git
