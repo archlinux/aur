@@ -12,7 +12,7 @@ depends=('neovim-git')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-install=
+install="$pkgname.install"
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
