@@ -1,8 +1,8 @@
 pkgbase = umit
 	pkgdesc = A powerful nmap frontend.
 	pkgver = 1.0
-	pkgrel = 1
-	url = http://www.umitproject.org/
+	pkgrel = 2
+	url = https://sourceforge.net/projects/umit/
 	arch = i686
 	arch = x86_64
 	arch = ppc
@@ -12,10 +12,9 @@ pkgbase = umit
 	depends = pygtk
 	depends = nmap
 	depends = python2-pysqlite
-	source = http://downloads.sourceforge.net/umit/umit-1.0.tar.bz2
+	source = https://downloads.sourceforge.net/umit/umit-1.0.tar.bz2
 	source = setup.patch
 	md5sums = 68412d8d50dafd53e0392f71ed62dcfc
 	md5sums = a1e1b57443c92e716b881bdb347fe091
 
 pkgname = umit
-
