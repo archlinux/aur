@@ -1,4 +1,5 @@
-# Maintainer: Jeremy Audet <jerebear@protonmail.com>
+# Maintainer: googol42
+# Contributor: Jeremy Audet <jerebear@protonmail.com>
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Arnaud Durand-Favreau <biginoz at FREE point FR>
 #
