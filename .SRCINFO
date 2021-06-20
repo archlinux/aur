@@ -1,0 +1,15 @@
+pkgbase = firefox-extension-keepassxc-browser-git
+	pkgdesc = Official browser plugin for the KeePassXC password manager.
+	pkgver = 1.7.8.1.r21.g3db23e9
+	pkgrel = 1
+	url = https://addons.mozilla.org/en-US/firefox/addon/keepassxc-browser/
+	arch = any
+	license = GPL
+	makedepends = npm
+	makedepends = git
+	depends = firefox>=67
+	depends = keepassxc
+	source = git+https://github.com/keepassxreboot/keepassxc-browser
+	md5sums = SKIP
+
+pkgname = firefox-extension-keepassxc-browser-git
