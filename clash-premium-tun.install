@@ -1,3 +1,9 @@
+pre_install() {
+	if [-f /etc/clash/config.yaml ]; then
+		mv /etc/clash/config.yaml /etc/clash/config.yaml.bak
+	fi
+}
+
 post_install() {
     systemctl daemon-reload
     echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
@@ -13,8 +19,17 @@ post_install() {
 	echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 }
 
+pre_upgrade() {
+	if [ -f /etc/clash/config.yaml ]; then
+		mv /etc/clash/config.yaml /etc/clash/config.yaml.user
+	fi
+}
+
 post_upgrade() {
-    post_install
+    if [ -f /etc/clash/config.yaml.old ]; then
+		mv /etc/clash/config.yaml.user /etc/clash/config.yaml
+	fi
+	systemctl restart clash
 }
 
 pre_remove() {
