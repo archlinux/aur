@@ -3,7 +3,7 @@
 _npmname=yaml-language-server
 pkgname=yaml-language-server-bin
 pkgver=0.19.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Language server implementation for YAML files and optional schema support"
 arch=('any')
 url="https://github.com/redhat-developer/yaml-language-server"
@@ -23,4 +23,5 @@ package() {
     cd "${_npmdir}"
     npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${_npmname}@${_npmver}"
     mkdir -p "${pkgdir}/usr/bin"
+    chown -R root:root "${pkgdir}"
 }

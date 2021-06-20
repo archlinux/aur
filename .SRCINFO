@@ -1,7 +1,7 @@
 pkgbase = yaml-language-server-bin
 	pkgdesc = Language server implementation for YAML files and optional schema support
 	pkgver = 0.19.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/redhat-developer/yaml-language-server
 	arch = any
 	license = MIT
