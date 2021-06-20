@@ -17,12 +17,15 @@
 # Original credits go to Edgar Hucek <gimli at dark-green dot com>
 # for his xbmc-vdpau-vdr PKGBUILD at https://archvdr.svn.sourceforge.net/svnroot/archvdr/trunk/archvdr/xbmc-vdpau-vdr/PKGBUILD
 
+# set this to anything to build with clang rather than with gcc
+_clangbuild=
+
 pkgbase=kodi-matrix-git
 pkgname=(
   "$pkgbase-common" "$pkgbase-x11" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-pkgver=r57264.85e05228b44
+pkgver=r57313.40360ae2cea
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -41,10 +44,10 @@ makedepends=(
   # gbm
   'libinput'
 )
+[[ -n "$_clangbuild" ]] && makedepends+=('clang' 'lld' 'llvm')
 
 _gitname='xbmc'
 _codename=Matrix
-
 _sse_workaround=1
 
 # Found on their respective github release pages. One can check them against
@@ -61,7 +64,7 @@ _sse_workaround=1
 _libdvdcss_version="1.4.2-Leia-Beta-5"
 _libdvdnav_version="6.0.0-Leia-Alpha-3"
 _libdvdread_version="6.0.0-Leia-Alpha-3"
-_ffmpeg_version="4.3.2-$_codename-19.1"
+_ffmpeg_version="4.3.2-$_codename-19.2"
 _fmt_version="6.1.2"
 _spdlog_version="1.5.0"
 _crossguid_version="8f399e8bd4"
@@ -100,7 +103,7 @@ b2sums=('SKIP'
         '283aa2cec0a2200d3569bc280cb9659e9224a6b3a77db8a35b269cd8caf1337ac9d8b92b806df66f63ef7458a46bd6261f0b8b14678b10e26644a79dcbeea5da'
         '7573434a0ae8e8ccabf48173f81fcde29074eb138e119a2ae9156cde3c3d8bfd716f5d0e605b97f2dcac21f570781137c8533c5ae306b51e3905822fda318355'
         '0c206acdaf0776841ab792c74e023af07d9539eb72e03ae164382a31ed950f60e5e15f1d055979d28f1398924471b294d11f064b11b8373353b3962a3777ff3c'
-        '90007f2c4bac0e0a52b419d9333cf75b00e291f1ea7447cbdc579ee2f860de7c436c924253600f3fbd6e3faaabe97aaf46db083a5bbd2f5f03badcca5d643e89'
+        '60299be16d73fb689b698f5b322d9cd38093894222070d2f1c28a37477a338405938959440a3f5646d946f3c2287072fdfa582b644a36f3a23e7d637b51113fc'
         '36e7451a8732c62dcbf47e6d287ea582827b6196a468b8648803ea1bc9a37a5f681d87488f748d749183d97783ac7fb47a3f2aeed64fc6a684f9ee85b67ae28d'
         'e6f1f495adf541102e3b5ac11dfd14b770a52e23ef9d613bc6204f6493ff4df4da9ba290ad6c3a7e5c7fcf159cafdf355bfe668a4ddceb4329df934c65966d19'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
@@ -124,6 +127,15 @@ prepare() {
   [[ "$_sse_workaround" -eq 1 ]] && patch -p1 -i "$srcdir/cheat-sse-build.patch"
 
   patch -p1 -i "$srcdir/0001-allow-separate-windowing-binaries-being-launched-fro.patch"
+
+  if [[ -n "$_clangbuild" ]]; then
+    git cherry-pick --no-commit -n bfb08a4a32e31349f7578efd2de78a8e394a2946
+    git cherry-pick --no-commit -n f5512d575dfc872d51632c9bf79d58e39be60cfb
+    git cherry-pick --no-commit -n 94a934227b234bfbbe1e3cdfdb71dc7d39ac0e7a
+    git cherry-pick --no-commit -n e32eeb6a4897ea6ff7ac461b848e60f7794037c2
+    msg "Building with clang"
+    export CC=clang CXX=clang++
+  fi
 }
 
 build() {
@@ -137,6 +149,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
     -DUSE_LTO=$(nproc)
+    -DVERBOSE=ON
     -DENABLE_LDGOLD=OFF
     -DENABLE_EVENTCLIENTS=ON
     -DENABLE_INTERNAL_FFMPEG=ON
@@ -185,6 +198,8 @@ package_kodi-matrix-git-common() {
     'python-pillow' 'python-pycryptodomex' 'python-simplejson'
     'shairplay' 'smbclient' 'sqlite' 'taglib' 'tinyxml'
   )
+  [[ -n "$_clangbuild" ]] && depends+=('glu')
+
   optdepends=(
     'afpfs-ng: Apple shares support'
     'bluez: Blutooth support'
