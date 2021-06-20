@@ -17,7 +17,7 @@ update_hash:
     # update package hash for integrity check
     - updpkgsums
   cache:
-    key: 
+    key:
       files:
         - PKGBUILD
 
