@@ -11,7 +11,7 @@ pkgdesc='Secure audiodisc ripper'
 arch=('any')
 url='https://github.com/bleskodev/rubyripper'
 license=('GPL3')
-depends=('cdparanoia' 'gtk3' 'ruby-iconv' 'ruby-rexml' 'ruby-gtk3')
+depends=('cdparanoia' 'ruby-iconv' 'ruby-rexml' 'ruby-gtk3')
 optdepends=('ruby-gettext: Translations'
             'cd-discid: Gnudb support'
             'lame: MP3 encoding support'

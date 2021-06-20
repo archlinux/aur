@@ -6,7 +6,6 @@ pkgbase = rubyripper
 	arch = any
 	license = GPL3
 	depends = cdparanoia
-	depends = gtk3
 	depends = ruby-iconv
 	depends = ruby-rexml
 	depends = ruby-gtk3
