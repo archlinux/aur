@@ -5,7 +5,7 @@ _sub_name="lib"
 
 pkgname=${_group_name}-${_sub_name}
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The SWC-DB library"
 arch=("x86_64")
 
@@ -40,7 +40,7 @@ changelog=
 
 
 source=(
-  $pkgname-$pkgver-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v$pkgver
+  $pkgname-$pkgver-source::git+https://github.com/kashirin-alex/swc-db.git#commit=d7f02bc2802e271914b02daec958388a558cb1ff
 )
 sha256sums=('SKIP')
 
