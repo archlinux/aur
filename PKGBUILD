@@ -18,14 +18,14 @@
 # for his xbmc-vdpau-vdr PKGBUILD at https://archvdr.svn.sourceforge.net/svnroot/archvdr/trunk/archvdr/xbmc-vdpau-vdr/PKGBUILD
 
 # set this to anything to build with clang rather than with gcc
-_clangbuild=
+_clangbuild=1
 
 pkgbase=kodi-git
 pkgname=(
   "$pkgbase-common" "$pkgbase-x11" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-pkgver=r57879.9b7e77c70d6
+pkgver=r57875.f14affe3ac9
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -128,7 +128,9 @@ prepare() {
   patch -p1 -i "$srcdir/0001-allow-separate-windowing-binaries-being-launched-fro.patch"
 
   if [[ -n "$_clangbuild" ]]; then
-    EMAIL="someone@somewhere.net" git pull --no-rebase origin pull/19892/head
+    git cherry-pick --no-commit -n f5512d575dfc872d51632c9bf79d58e39be60cfb
+    git cherry-pick --no-commit -n 94a934227b234bfbbe1e3cdfdb71dc7d39ac0e7a
+    git cherry-pick --no-commit -n e32eeb6a4897ea6ff7ac461b848e60f7794037c2
     msg "Building with clang"
     export CC=clang CXX=clang++
   fi
