@@ -1,7 +1,7 @@
 # Maintainer: Harvey Tindall <hrfee@protonmail.ch>
 pkgname=jfa-go-git
 _pkgname=jfa-go
-pkgver=r601.2687af3
+pkgver=r827.2d83e9f
 pkgrel=1
 pkgdesc="A web app for managing users on Jellyfin"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
@@ -36,7 +36,7 @@ prepare() {
 build() {
 	cd ${pkgname}
     export GOPATH="$(go env GOPATH)"
-	make typescript bundle-css GOESBUILD=on INTERNAL=off
+	make typescript bundle-css inline GOESBUILD=on INTERNAL=off
     "${GOPATH}"/bin/swag init -g main.go
     make copy INTERNAL=off
     make compile INTERNAL=off
