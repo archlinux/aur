@@ -17,12 +17,15 @@
 # Original credits go to Edgar Hucek <gimli at dark-green dot com>
 # for his xbmc-vdpau-vdr PKGBUILD at https://archvdr.svn.sourceforge.net/svnroot/archvdr/trunk/archvdr/xbmc-vdpau-vdr/PKGBUILD
 
+# set this to anything to build with clang rather than with gcc
+_clangbuild=
+
 pkgbase=kodi-git
 pkgname=(
   "$pkgbase-common" "$pkgbase-x11" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-pkgver=r57584.8cbbb961201
+pkgver=r57879.9b7e77c70d6
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -41,6 +44,7 @@ makedepends=(
   # gbm
   'libinput'
 )
+[[ -n "$_clangbuild" ]] && makedepends+=('clang' 'lld' 'llvm')
 
 _gitname='xbmc'
 _sse_workaround=1
@@ -122,6 +126,12 @@ prepare() {
   [[ "$_sse_workaround" -eq 1 ]] && patch -p1 -i "$srcdir/cheat-sse-build.patch"
 
   patch -p1 -i "$srcdir/0001-allow-separate-windowing-binaries-being-launched-fro.patch"
+
+  if [[ -n "$_clangbuild" ]]; then
+    EMAIL="someone@somewhere.net" git pull --no-rebase origin pull/19892/head
+    msg "Building with clang"
+    export CC=clang CXX=clang++
+  fi
 }
 
 build() {
@@ -135,6 +145,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
     -DUSE_LTO=$(nproc)
+    -DVERBOSE=ON
     -DENABLE_LDGOLD=OFF
     -DENABLE_EVENTCLIENTS=ON
     -DENABLE_INTERNAL_FFMPEG=ON
@@ -183,6 +194,8 @@ package_kodi-git-common() {
     'python-pillow' 'python-pycryptodomex' 'python-simplejson'
     'shairplay' 'smbclient' 'sqlite' 'taglib' 'tinyxml'
   )
+  [[ -n "$_clangbuild" ]] && depends+=('glu')
+
   optdepends=(
     'afpfs-ng: Apple shares support'
     'bluez: Blutooth support'
