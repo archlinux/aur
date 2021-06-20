@@ -3,7 +3,7 @@
 pkgname=backlight-dbus-git
 pkgver=r6.71546b1
 pkgrel=1
-pkgdesc="C library for handling multi-dimensional, compressed datasets"
+pkgdesc="a backlight controller using DBus"
 arch=('armv7h' 'aarch64' 'i686' 'x86_64')
 url="https://github.com/maxerenberg/backlight-dbus"
 license=('MIT')

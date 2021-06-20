@@ -1,5 +1,5 @@
 pkgbase = backlight-dbus-git
-	pkgdesc = C library for handling multi-dimensional, compressed datasets
+	pkgdesc = a backlight controller using DBus
 	pkgver = r6.71546b1
 	pkgrel = 1
 	url = https://github.com/maxerenberg/backlight-dbus
