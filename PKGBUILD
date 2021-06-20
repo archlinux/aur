@@ -2,7 +2,7 @@
 
 pkgname=system76-power
 pkgver=1.1.16
-pkgrel=4
+pkgrel=5
 pkgdesc="System76 Power Management"
 arch=('any')
 url="https://github.com/pop-os/system76-power"
@@ -23,10 +23,12 @@ makedepends=('rust')
 source=(
 "https://github.com/pop-os/${pkgname}/archive/${pkgver}.tar.gz"
 'use-mkinitcpio.patch'
+'makefile.patch'
 )
 sha256sums=(
 '56b33e6d41dd07892b73aca8d1da32a552bf644e986c657abbddd83e2071ea79'
 '6d59cb091858b65a0ad6682dda29ec1d970066f67a7b50430960989f6c428891'
+'97deb1f9cf6a312e8378bb96a4a83dae2498a4936c130e2ef5b125d13b92bb65'
 )
 
 prepare() {
@@ -34,6 +36,8 @@ prepare() {
 
   # use mkinitcpio -P inplace of update-initramfs -u
   patch --no-backup-if-mismatch -Np1 -i "${srcdir}"/use-mkinitcpio.patch
+  # fix makefile
+  patch --no-backup-if-mismatch -Np1 -i "${srcdir}"/makefile.patch
 }
 
 build() {
