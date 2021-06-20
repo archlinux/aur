@@ -1,7 +1,7 @@
 pkgbase = mqtt-explorer
 	pkgdesc = A comprehensive and easy-to-use MQTT Client
 	pkgver = 0.3.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mqtt-explorer.com/
 	arch = any
 	license = CCPL:by-nd
