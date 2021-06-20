@@ -1,27 +1,29 @@
+# Maintainer: Tomasz Maciej Nowak <com[dot]gmail[at]tmn505>
 # Contributor: Lex Black <autumn-wind@web.de>
 # Contributor: Gavin Lloyd <gavinhungry@gmail.com>
 
+# All my PKGBUILDs are managed at https://github.com/tmn505/AUR
+
 pkgname=platformflashtoollite
-pkgver=5.8.4.0
+pkgver=5.8.9.0
 pkgrel=1
 pkgdesc='Flashes firmware and OS images onto Intel-based devices'
 arch=('x86_64')
-url='https://01.org/android-ia/downloads/intel-platform-flash-tool-lite'
+url='https://01.org/projectceladon'
 license=('custom')
-source=("https://download.01.org/android-ia/tools/platformflashtool-lite/${pkgver}/${pkgname}_${pkgver}_linux_x86_64.deb")
-sha256sums=('715a0e817fcaa97b41b3e58d1a1dc3d26bf7c871ce46b1b6e9ebf4d2f4d2842a')
-
-
-prepare() {
-  tar xvf data.tar.gz
-}
+depends=('libudev0-shim')
+source=("https://github.com/projectceladon/tools/raw/master/platform_flash_tool_lite/latest/${pkgname}_${pkgver}_linux_x86_64.rpm")
+sha256sums=('7105119c33e61e68377410ee83f68385a951a37db5266fb30ba73be3ef6f785b')
 
 package() {
+  sed -e 's,Application;,Qt;Development;,' -i "usr/share/applications/${pkgname}.desktop"
+
   for i in {etc,opt,usr}
   do
     cp -dpr --no-preserve=ownership $i "${pkgdir}"
   done
 
-  install -Dm644 "${srcdir}/opt/intel/${pkgname}/Licenses/Intel_Development_Tools_Limited_License_Agreement.txt" \
-        "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -d -m 755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s "/opt/intel/${pkgname}/Licenses/Intel_Development_Tools_Limited_License_Agreement.txt" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

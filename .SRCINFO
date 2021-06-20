@@ -1,12 +1,12 @@
 pkgbase = platformflashtoollite
 	pkgdesc = Flashes firmware and OS images onto Intel-based devices
-	pkgver = 5.8.4.0
+	pkgver = 5.8.9.0
 	pkgrel = 1
-	url = https://01.org/android-ia/downloads/intel-platform-flash-tool-lite
+	url = https://01.org/projectceladon
 	arch = x86_64
 	license = custom
-	source = https://download.01.org/android-ia/tools/platformflashtool-lite/5.8.4.0/platformflashtoollite_5.8.4.0_linux_x86_64.deb
-	sha256sums = 715a0e817fcaa97b41b3e58d1a1dc3d26bf7c871ce46b1b6e9ebf4d2f4d2842a
+	depends = libudev0-shim
+	source = https://github.com/projectceladon/tools/raw/master/platform_flash_tool_lite/latest/platformflashtoollite_5.8.9.0_linux_x86_64.rpm
+	sha256sums = 7105119c33e61e68377410ee83f68385a951a37db5266fb30ba73be3ef6f785b
 
 pkgname = platformflashtoollite
-
