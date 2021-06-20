@@ -1,14 +1,14 @@
 pkgbase = nodejs-winston
-	pkgdesc = A multi-transport async logging library for Node.js
-	pkgver = 3.2.1
+	pkgdesc = A logger for just about everything.
+	pkgver = 3.3.3
 	pkgrel = 1
 	url = https://github.com/flatiron/winston
 	arch = any
 	license = MIT
+	makedepends = npm
 	depends = nodejs
-	noextract = winston-3.2.1.tgz
-	source = http://registry.npmjs.org/winston/-/winston-3.2.1.tgz
-	sha256sums = 85b9340c1b3c4b2b96925fb7589c053ef74f617a847f4d5b0da658af68c53ce7
+	noextract = winston-3.3.3.tgz
+	source = http://registry.npmjs.org/winston/-/winston-3.3.3.tgz
+	sha256sums = b0f210ced402354740f66f294406d652ccc6db9e21a0a7f72f2922270a742274
 
 pkgname = nodejs-winston
-
