@@ -22,4 +22,3 @@ pkgbase = srb2
 	makedepends_i686 = nasm
 
 pkgname = srb2
-

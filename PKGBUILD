@@ -5,7 +5,7 @@
 pkgname=srb2
 pkgver=2.2.9
 _dataver=2.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A 3D Sonic fan game based off of Doom Legacy (aka "Sonic Robo Blast 2")'
 arch=('i686' 'x86_64')
 license=('GPL')
