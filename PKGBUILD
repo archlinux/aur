@@ -3,7 +3,7 @@
 pkgname="python-subsync"
 _pkgname="ffsubsync"
 pkgver=0.4.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Automagically synchronize subtitles with video'
 arch=('any')
 url="https://github.com/smacke/ffsubsync"
@@ -26,6 +26,9 @@ depends=(
     'python-rich'
     'python-pysubs2'
     'python-auditok'
+)
+makedepends=(
+    'python-coverage'
 )
 
 build() {
