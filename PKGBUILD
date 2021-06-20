@@ -30,6 +30,8 @@ sha256sums=('8e72bad059363a2303c05bfbc338508b4dceb24fd01c13956b519cf181230e75')
 validpgpkeys=()
 
 package() {
-    # install -d "${pkgdir}/opt/${pkgname}"
-    install -D -m 0755 omniedge "${pkgdir}/opt/${pkgname}"
+    install -d "${pkgdir}/opt/${pkgname}"
+    install -d "${pkgdir}/usr/bin"
+    install -D -m 0755 omniedge "${pkgdir}/opt/${pkgname}/omniedge-cli"
+    ln -sf "${pkgdir}/opt/${pkgname}/omniedge-cli" "${pkgdir}/usr/bin/omniedge-cli"
 }
