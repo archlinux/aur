@@ -1,7 +1,7 @@
 pkgbase = vim-wiki
 	pkgdesc = A wiki plugin for Vim
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lervag/wiki.vim
 	install = vim-wiki.install
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = vim-wiki
 	license = MIT
 	depends = vim-plugin-runtime
 	optdepends = vim-wiki-ft: Wiki filetype plugin
+	optdepends = pandoc: WikiExport support
 	provides = vim-ctrlp-wiki
 	provides = vim-coc-wiki
 	provides = vim-unite-wiki

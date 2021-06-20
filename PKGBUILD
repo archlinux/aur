@@ -2,14 +2,15 @@
 
 pkgname=vim-wiki
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A wiki plugin for Vim"
 arch=('any')
 url="https://github.com/lervag/wiki.vim"
 license=('MIT')
 groups=('vim-plugins')
 depends=('vim-plugin-runtime')
-optdepends=('vim-wiki-ft: Wiki filetype plugin')
+optdepends=('vim-wiki-ft: Wiki filetype plugin'
+            'pandoc: WikiExport support')
 provides=('vim-ctrlp-wiki' 'vim-coc-wiki' 'vim-unite-wiki')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
