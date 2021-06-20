@@ -1,0 +1,69 @@
+diff -ur klein-20.6.0.orig/src/klein/test/_strategies.py klein-20.6.0/src/klein/test/_strategies.py
+--- klein-20.6.0.orig/src/klein/test/_strategies.py	2020-06-08 10:52:04.000000000 +0800
++++ klein-20.6.0/src/klein/test/_strategies.py	2021-06-20 18:35:54.019437139 +0800
+@@ -24,7 +24,6 @@
+ 
+ from idna import IDNAError, check_label, encode as idna_encode
+ 
+-from twisted.python.compat import _PY3, unicode
+ 
+ 
+ __all__ = ()
+@@ -34,8 +33,9 @@
+ DrawCallable = Callable[[Callable[..., T]], T]
+ 
+ 
+-if _PY3:
++if True:
+     unichr = chr
++    unicode = str
+ 
+ 
+ def idna_characters():  # pragma: no cover
+diff -ur klein-20.6.0.orig/src/klein/test/test_resource.py klein-20.6.0/src/klein/test/test_resource.py
+--- klein-20.6.0.orig/src/klein/test/test_resource.py	2020-06-08 10:52:04.000000000 +0800
++++ klein-20.6.0/src/klein/test/test_resource.py	2021-06-20 18:42:53.065083517 +0800
+@@ -13,7 +13,6 @@
+ from twisted.internet.defer import CancelledError, Deferred, fail, succeed
+ from twisted.internet.error import ConnectionLost
+ from twisted.internet.unix import Server
+-from twisted.python.compat import _PY3, unicode
+ from twisted.trial.unittest import SynchronousTestCase
+ from twisted.web import server
+ from twisted.web.http_headers import Headers
+@@ -34,6 +33,8 @@
+     ensure_utf8_bytes,
+ )
+ 
++unicode = str
++
+ 
+ def requestMock(
+     path,
+@@ -610,7 +611,7 @@
+         request.setHeader.assert_has_calls(
+             [
+                 call(b"Content-Type", b"text/html; charset=utf-8"),
+-                call(b"Content-Length", b"259"),
++                call(b"Content-Length", b"258"),
+                 call(b"Location", b"http://localhost:8080/foo/"),
+             ]
+         )
+@@ -1116,7 +1117,7 @@
+             repr(_URLDecodeError(ValueError)),
+         )
+ 
+-    if _PY3:
++    if True:
+         test_urlDecodeErrorReprPy2.skip = "Only works on Py2"  # type: ignore
+     else:
+         test_urlDecodeErrorReprPy3.skip = "Only works on Py3"  # type: ignore
+@@ -1319,7 +1320,7 @@
+         self.assertIdentical(resource.ensure_utf8_bytes, ensure_utf8_bytes)
+ 
+ 
+-if _PY3:
++if True:
+     import sys
+ 
+     if sys.version_info >= (3, 5):
