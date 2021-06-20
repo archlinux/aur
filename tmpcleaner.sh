@@ -19,6 +19,7 @@ if [ "$1" != -s ]; then
 fi
 
 main() {
+    mkdir -p "$trash" || exit 1
     before=$(numberof_files_in_trash)
     move_old_tmpfiles_to_trash
     after_trashing=$(numberof_files_in_trash)
@@ -41,7 +42,7 @@ purge_older_tmpfiles_from_trash() {
 }
 
 numberof_files_in_trash() {
-    ls -a1 "$trash" | wc -l
+    find "$trash" -mindepth 1 -maxdepth 1 | wc -l
 }
 
 print_summary() {
