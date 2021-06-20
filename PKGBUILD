@@ -11,7 +11,7 @@ pkgname=(util-linux-aes util-linux-libs-aes)
 _pkgmajor=2.37
 _realver=${_pkgmajor}
 pkgver=${_realver/-/}
-pkgrel=3
+pkgrel=3.1
 pkgdesc='Miscellaneous system utilities for Linux, with loop-AES support'
 url='https://github.com/karelzak/util-linux'
 #url="http://sourceforge.net/projects/loop-aes/"
@@ -22,7 +22,8 @@ options=('strip')
 install=${pkgname}.install
 validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
 source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/${_basename}-${_realver}.tar."{xz,sign}
-        "${_basename}-${pkgver}.diff"
+        #"${_basename}-${pkgver}.diff"
+        http://loop-aes.sourceforge.net/updates/${_basename}-${pkgver}-20210620.diff.bz2{,.sign}
         "${pkgname}.modules"
         pam-{login,common,runuser,su}
         'util-linux-aes.sysusers'
@@ -31,7 +32,8 @@ source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/${_basena
         'rfkill-block_.service')
 sha256sums=('bd07b7e98839e0359842110525a3032fdb8eaf3a90bedde3dd1652d32d15cce5'
             'SKIP'
-            '55de199d09f62a843176608538d65bfc1b591ce927c19298eeb1d2a636485f0f'
+            '0a78ea9a05191b1ddaeedc8c8d8ae053f9ed4e7cd2f39ef4b3bc356e552c98a2'
+            'SKIP'
             '560ca858961eb997a216ce6b419d900e84688591abf4584ef30c9323ba06fffd'
             '99cd77f21ee44a0c5e57b0f3670f711a00496f198fc5704d7e44f5d817c81a0f'
             '57e057758944f4557762c6def939410c04ca5803cbdd2bfa2153ce47ffe7a4af'
@@ -44,7 +46,8 @@ sha256sums=('bd07b7e98839e0359842110525a3032fdb8eaf3a90bedde3dd1652d32d15cce5'
 
 prepare() {
   cd "$_basename-$pkgver"
-  patch -Np1 -i "../${_basename}-${pkgver}.diff"
+  #patch -Np1 -i "../${_basename}-${pkgver}.diff"
+  patch -Np1 -i "../${_basename}-${pkgver}-20210620.diff"
   autoreconf -i
 }
 

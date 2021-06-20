@@ -1,10 +1,5 @@
-UNOFFICIAL PATCH FOR UTIL-LINUX 2.37
-All doc is lost
-May not work at all
-USE AT OWN RISK
-
 If this patch does not apply cleanly to newer version of util-linux, try
-replacing original sys-utils/losetup.8 with version from util-linux that the
+replacing original sys-utils/losetup.8.adoc with version from util-linux that the
 patch is for. And then apply this patch.
 
 To compile this software, you need recent versions of autohell tools
@@ -24,11 +19,10 @@ to programs, like this:
     make
 
 
-diff --git a/include/Makemodule.am b/include/Makemodule.am
-index 417125bcf..b7f357694 100644
---- a/include/Makemodule.am
-+++ b/include/Makemodule.am
-@@ -50,6 +50,7 @@ dist_noinst_HEADERS += \
+diff -urN util-linux-2.37/include/Makemodule.am util-linux-2.37-AES/include/Makemodule.am
+--- util-linux-2.37/include/Makemodule.am	2021-05-06 13:55:46.879423500 +0300
++++ util-linux-2.37-AES/include/Makemodule.am	2021-06-20 14:51:07.588871129 +0300
+@@ -50,6 +50,7 @@
  	include/procutils.h \
  	include/pt-bsd.h \
  	include/pt-mbr.h \
@@ -36,11 +30,9 @@ index 417125bcf..b7f357694 100644
  	include/pt-mbr-partnames.h \
  	include/pt-gpt-partnames.h \
  	include/pt-sgi.h \
-diff --git a/include/xgetpass.h b/include/xgetpass.h
-new file mode 100644
-index 000000000..b5a3c87de
---- /dev/null
-+++ b/include/xgetpass.h
+diff -urN util-linux-2.37/include/xgetpass.h util-linux-2.37-AES/include/xgetpass.h
+--- util-linux-2.37/include/xgetpass.h	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.37-AES/include/xgetpass.h	2021-06-20 14:51:07.589871138 +0300
 @@ -0,0 +1,6 @@
 +#ifndef UTIL_LINUX_XGETPASS_H
 +#define UTIL_LINUX_XGETPASS_H
@@ -48,25 +40,20 @@ index 000000000..b5a3c87de
 +extern char *xgetpass(int pfd, const char *prompt);
 +
 +#endif /* UTIL_LINUX_XGETPASS_H */
-diff --git a/lib/Makemodule.am b/lib/Makemodule.am
-index 5d95b37ea..a50d129b7 100644
---- a/lib/Makemodule.am
-+++ b/lib/Makemodule.am
-@@ -36,7 +36,8 @@ libcommon_la_SOURCES = \
+diff -urN util-linux-2.37/lib/Makemodule.am util-linux-2.37-AES/lib/Makemodule.am
+--- util-linux-2.37/lib/Makemodule.am	2021-05-26 14:32:10.616108206 +0300
++++ util-linux-2.37-AES/lib/Makemodule.am	2021-06-20 14:51:07.589871138 +0300
+@@ -32,6 +32,7 @@
+ 	lib/pwdutils.c \
+ 	lib/randutils.c \
+ 	lib/sha1.c \
++	lib/xgetpass.c \
+ 	lib/signames.c \
  	lib/strutils.c \
  	lib/strv.c \
- 	lib/timeutils.c \
--	lib/ttyutils.c
-+	lib/ttyutils.c \
-+	lib/xgetpass.c
- 
- if LINUX
- libcommon_la_SOURCES += \
-diff --git a/lib/xgetpass.c b/lib/xgetpass.c
-new file mode 100644
-index 000000000..5d9dbc954
---- /dev/null
-+++ b/lib/xgetpass.c
+diff -urN util-linux-2.37/lib/xgetpass.c util-linux-2.37-AES/lib/xgetpass.c
+--- util-linux-2.37/lib/xgetpass.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.37-AES/lib/xgetpass.c	2021-06-20 14:51:07.590871146 +0300
 @@ -0,0 +1,64 @@
 +/*
 + * A function to read the passphrase either from the terminal or from
@@ -132,11 +119,10 @@ index 000000000..5d9dbc954
 +	if(p) p[y] = 0;
 +	return p;
 +}
-diff --git a/libmount/src/Makemodule.am b/libmount/src/Makemodule.am
-index c2579b0ac..1a7e39afe 100644
---- a/libmount/src/Makemodule.am
-+++ b/libmount/src/Makemodule.am
-@@ -27,7 +27,10 @@ libmount_la_SOURCES = \
+diff -urN util-linux-2.37/libmount/src/Makemodule.am util-linux-2.37-AES/libmount/src/Makemodule.am
+--- util-linux-2.37/libmount/src/Makemodule.am	2021-05-31 18:31:47.951009645 +0300
++++ util-linux-2.37-AES/libmount/src/Makemodule.am	2021-06-20 14:51:07.590871146 +0300
+@@ -27,7 +27,10 @@
  if LINUX
  libmount_la_SOURCES += \
  	libmount/src/context.c \
@@ -148,11 +134,9 @@ index c2579b0ac..1a7e39afe 100644
  	libmount/src/context_veritydev.c \
  	libmount/src/context_mount.c \
  	libmount/src/context_umount.c \
-diff --git a/libmount/src/aes.c b/libmount/src/aes.c
-new file mode 100644
-index 000000000..698357684
---- /dev/null
-+++ b/libmount/src/aes.c
+diff -urN util-linux-2.37/libmount/src/aes.c util-linux-2.37-AES/libmount/src/aes.c
+--- util-linux-2.37/libmount/src/aes.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.37-AES/libmount/src/aes.c	2021-06-20 14:51:07.591871154 +0300
 @@ -0,0 +1,299 @@
 +// I retain copyright in this code but I encourage its free use provided
 +// that I don't carry any responsibility for the results. I am especially 
@@ -453,11 +437,9 @@ index 000000000..698357684
 +
 +    state_out(out_blk, b0);
 +}
-diff --git a/libmount/src/aes.h b/libmount/src/aes.h
-new file mode 100644
-index 000000000..660e8cec7
---- /dev/null
-+++ b/libmount/src/aes.h
+diff -urN util-linux-2.37/libmount/src/aes.h util-linux-2.37-AES/libmount/src/aes.h
+--- util-linux-2.37/libmount/src/aes.h	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.37-AES/libmount/src/aes.h	2021-06-20 14:51:07.591871154 +0300
 @@ -0,0 +1,97 @@
 +// I retain copyright in this code but I encourage its free use provided
 +// that I don't carry any responsibility for the results. I am especially 
@@ -556,11 +538,10 @@ index 000000000..660e8cec7
 +// if their parameters have not changed.
 +
 +#endif  // _AES_H
-diff --git a/libmount/src/context.c b/libmount/src/context.c
-index ccd050130..da2653751 100644
---- a/libmount/src/context.c
-+++ b/libmount/src/context.c
-@@ -102,7 +102,6 @@ void mnt_free_context(struct libmnt_context *cxt)
+diff -urN util-linux-2.37/libmount/src/context.c util-linux-2.37-AES/libmount/src/context.c
+--- util-linux-2.37/libmount/src/context.c	2021-05-06 13:55:46.900423396 +0300
++++ util-linux-2.37-AES/libmount/src/context.c	2021-06-20 14:51:07.592871163 +0300
+@@ -102,7 +102,6 @@
  	mnt_unref_fs(cxt->fs);
  	mnt_unref_fs(cxt->fs_template);
  
@@ -568,7 +549,7 @@ index ccd050130..da2653751 100644
  	mnt_free_lock(cxt->lock);
  	mnt_free_update(cxt->update);
  
-@@ -145,6 +144,8 @@ int mnt_reset_context(struct libmnt_context *cxt)
+@@ -145,6 +144,8 @@
  	DBG(CXT, ul_debugobj(cxt, "<---- reset [status=%d] ---->",
  				mnt_context_get_status(cxt)));
  
@@ -577,11 +558,9 @@ index ccd050130..da2653751 100644
  	fl = cxt->flags;
  
  	mnt_unref_fs(cxt->fs);
-diff --git a/libmount/src/context_loopdev1.c b/libmount/src/context_loopdev1.c
-new file mode 100644
-index 000000000..21cc53f31
---- /dev/null
-+++ b/libmount/src/context_loopdev1.c
+diff -urN util-linux-2.37/libmount/src/context_loopdev1.c util-linux-2.37-AES/libmount/src/context_loopdev1.c
+--- util-linux-2.37/libmount/src/context_loopdev1.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.37-AES/libmount/src/context_loopdev1.c	2021-06-20 14:51:07.593871171 +0300
 @@ -0,0 +1,1525 @@
 +/*
 + * Copyright (C) 2011 Karel Zak <kzak@redhat.com>
@@ -2108,11 +2087,10 @@ index 000000000..21cc53f31
 +	cxt->loopdev_fd = -1;
 +	return 0;
 +}
-diff --git a/libmount/src/context_umount.c b/libmount/src/context_umount.c
-index 57eda75be..a6c59025c 100644
---- a/libmount/src/context_umount.c
-+++ b/libmount/src/context_umount.c
-@@ -390,11 +390,12 @@ static int lookup_umount_fs(struct libmnt_context *cxt)
+diff -urN util-linux-2.37/libmount/src/context_umount.c util-linux-2.37-AES/libmount/src/context_umount.c
+--- util-linux-2.37/libmount/src/context_umount.c	2021-05-06 13:55:46.901423390 +0300
++++ util-linux-2.37-AES/libmount/src/context_umount.c	2021-06-20 14:51:07.593871171 +0300
+@@ -390,11 +390,12 @@
   */
  static int is_associated_fs(const char *devname, struct libmnt_fs *fs)
  {
@@ -2127,7 +2105,7 @@ index 57eda75be..a6c59025c 100644
  
  	/* check if it begins with /dev/loop */
  	if (strncmp(devname, _PATH_DEV_LOOP, sizeof(_PATH_DEV_LOOP) - 1) != 0)
-@@ -406,16 +407,16 @@ static int is_associated_fs(const char *devname, struct libmnt_fs *fs)
+@@ -406,16 +407,16 @@
  
  	/* check for the offset option in @fs */
  	optstr = mnt_fs_get_user_options(fs);
@@ -2138,14 +2116,15 @@ index 57eda75be..a6c59025c 100644
 -
 -		if (mnt_parse_offset(val, valsz, &offset) != 0)
 -			return 0;
+-	}
+-
+-	return loopdev_is_used(devname, src, offset, 0, flags);
 +	if (optstr) {
 +		if(mnt_optstr_get_option(optstr, "offset", &val, &valsz) == 0 && val && valsz)
 +			offsetStr = strndup(val, valsz);
 +		if(mnt_optstr_get_option(optstr, "sizelimit", &val, &valsz) == 0 && val && valsz)
 +			sizelimitStr = strndup(val, valsz);
- 	}
--
--	return loopdev_is_used(devname, src, offset, 0, flags);
++	}
 +	r = __loDev_is_loop_active_same_back((char *) devname, (char *) src, offsetStr, sizelimitStr);
 +	if(offsetStr) free(offsetStr);
 +	if(sizelimitStr) free(sizelimitStr);
@@ -2153,7 +2132,7 @@ index 57eda75be..a6c59025c 100644
  }
  
  static int prepare_helper_from_options(struct libmnt_context *cxt,
-@@ -981,7 +982,7 @@ int mnt_context_prepare_umount(struct libmnt_context *cxt)
+@@ -981,7 +982,7 @@
  	if (!rc && mnt_context_is_loopdel(cxt) && cxt->fs) {
  		const char *src = mnt_fs_get_srcpath(cxt->fs);
  
@@ -2162,11 +2141,10 @@ index 57eda75be..a6c59025c 100644
  			mnt_context_enable_loopdel(cxt, FALSE);
  	}
  
-diff --git a/libmount/src/optmap.c b/libmount/src/optmap.c
-index 49e8113d2..e3602f7f4 100644
---- a/libmount/src/optmap.c
-+++ b/libmount/src/optmap.c
-@@ -172,10 +172,19 @@ static const struct libmnt_optmap userspace_opts_map[] =
+diff -urN util-linux-2.37/libmount/src/optmap.c util-linux-2.37-AES/libmount/src/optmap.c
+--- util-linux-2.37/libmount/src/optmap.c	2021-05-06 13:55:46.903423381 +0300
++++ util-linux-2.37-AES/libmount/src/optmap.c	2021-06-20 14:51:07.593871171 +0300
+@@ -172,10 +172,19 @@
     { "x-",      MNT_MS_XCOMMENT,   MNT_NOHLPS | MNT_PREFIX },              /* persistent comments (utab) */
     { "X-",      MNT_MS_XFSTABCOMM, MNT_NOHLPS | MNT_NOMTAB | MNT_PREFIX }, /* fstab only comments */
  
@@ -2188,11 +2166,9 @@ index 49e8113d2..e3602f7f4 100644
  
     { "nofail",  MNT_MS_NOFAIL, MNT_NOMTAB },               /* Do not fail if ENOENT on dev */
  
-diff --git a/libmount/src/rmd160.c b/libmount/src/rmd160.c
-new file mode 100644
-index 000000000..db2b6c491
---- /dev/null
-+++ b/libmount/src/rmd160.c
+diff -urN util-linux-2.37/libmount/src/rmd160.c util-linux-2.37-AES/libmount/src/rmd160.c
+--- util-linux-2.37/libmount/src/rmd160.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.37-AES/libmount/src/rmd160.c	2021-06-20 14:51:07.593871171 +0300
 @@ -0,0 +1,532 @@
 +/* rmd160.c  -	RIPE-MD160
 + *	Copyright (C) 1998 Free Software Foundation, Inc.
@@ -2726,11 +2702,9 @@ index 000000000..db2b6c491
 +    rmd160_final( &hd );
 +    memcpy( outbuf, hd.buf, 20 );
 +}
-diff --git a/libmount/src/rmd160.h b/libmount/src/rmd160.h
-new file mode 100644
-index 000000000..d83444fa0
---- /dev/null
-+++ b/libmount/src/rmd160.h
+diff -urN util-linux-2.37/libmount/src/rmd160.h util-linux-2.37-AES/libmount/src/rmd160.h
+--- util-linux-2.37/libmount/src/rmd160.h	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.37-AES/libmount/src/rmd160.h	2021-06-20 14:51:07.593871171 +0300
 @@ -0,0 +1,9 @@
 +#ifndef RMD160_H
 +#define RMD160_H
@@ -2741,11 +2715,9 @@ index 000000000..d83444fa0
 +#endif /*RMD160_H*/
 +
 +
-diff --git a/libmount/src/sha512.c b/libmount/src/sha512.c
-new file mode 100644
-index 000000000..25a03ba44
---- /dev/null
-+++ b/libmount/src/sha512.c
+diff -urN util-linux-2.37/libmount/src/sha512.c util-linux-2.37-AES/libmount/src/sha512.c
+--- util-linux-2.37/libmount/src/sha512.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.37-AES/libmount/src/sha512.c	2021-06-20 14:51:07.594871180 +0300
 @@ -0,0 +1,432 @@
 +/*
 + *  sha512.c
@@ -3179,11 +3151,9 @@ index 000000000..25a03ba44
 +    memset(&ctx, 0, sizeof(ctx));
 +}
 +#endif
-diff --git a/libmount/src/sha512.h b/libmount/src/sha512.h
-new file mode 100644
-index 000000000..3bbd2b01a
---- /dev/null
-+++ b/libmount/src/sha512.h
+diff -urN util-linux-2.37/libmount/src/sha512.h util-linux-2.37-AES/libmount/src/sha512.h
+--- util-linux-2.37/libmount/src/sha512.h	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.37-AES/libmount/src/sha512.h	2021-06-20 14:51:07.594871180 +0300
 @@ -0,0 +1,45 @@
 +/*
 + *  sha512.h
@@ -3230,11 +3200,10 @@ index 000000000..3bbd2b01a
 +/* no sha384_write(), use sha512_write() */
 +/* no sha384_final(), use sha512_final(), result in ctx->sha_out[0...47]  */
 +extern void __loDev_sha384_hash_buffer(unsigned char *, int, unsigned char *, int);
-diff --git a/sys-utils/Makemodule.am b/sys-utils/Makemodule.am
-index 7f6b5f882..f852281eb 100644
---- a/sys-utils/Makemodule.am
-+++ b/sys-utils/Makemodule.am
-@@ -291,7 +291,7 @@ if BUILD_LOSETUP
+diff -urN util-linux-2.37/sys-utils/Makemodule.am util-linux-2.37-AES/sys-utils/Makemodule.am
+--- util-linux-2.37/sys-utils/Makemodule.am	2021-05-24 14:39:52.785045175 +0300
++++ util-linux-2.37-AES/sys-utils/Makemodule.am	2021-06-20 14:51:07.594871180 +0300
+@@ -291,7 +291,7 @@
  sbin_PROGRAMS += losetup
  MANPAGES += sys-utils/losetup.8
  dist_noinst_DATA += sys-utils/losetup.8.adoc
@@ -3243,7 +3212,7 @@ index 7f6b5f882..f852281eb 100644
  losetup_LDADD = $(LDADD) libcommon.la libsmartcols.la
  losetup_CFLAGS = $(AM_CFLAGS) -I$(ul_libsmartcols_incdir)
  
-@@ -398,6 +398,8 @@ MANLINKS += sys-utils/swapoff.8
+@@ -398,6 +398,8 @@
  
  swapon_SOURCES = \
  	sys-utils/swapon.c \
@@ -3252,7 +3221,7 @@ index 7f6b5f882..f852281eb 100644
  	sys-utils/swapon-common.c \
  	sys-utils/swapon-common.h \
  	lib/swapprober.c \
-@@ -414,6 +416,7 @@ swapon_LDADD = $(LDADD) \
+@@ -414,6 +416,7 @@
  
  swapoff_SOURCES = \
  	sys-utils/swapoff.c \
@@ -3260,11 +3229,9 @@ index 7f6b5f882..f852281eb 100644
  	sys-utils/swapon-common.c \
  	sys-utils/swapon-common.h \
  	lib/swapprober.c \
-diff --git a/sys-utils/loop.c b/sys-utils/loop.c
-new file mode 100644
-index 000000000..fef091695
---- /dev/null
-+++ b/sys-utils/loop.c
+diff -urN util-linux-2.37/sys-utils/loop.c util-linux-2.37-AES/sys-utils/loop.c
+--- util-linux-2.37/sys-utils/loop.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.37-AES/sys-utils/loop.c	2021-06-20 14:51:07.594871180 +0300
 @@ -0,0 +1,221 @@
 +/*
 + *  loop.c
@@ -3487,11 +3454,9 @@ index 000000000..fef091695
 +	loopinfo->lo_encrypt_type = 18; /* LO_CRYPT_CRYPTOAPI */
 +	return(loop_set_status64_ioctl(fd, loopinfo));
 +}
-diff --git a/sys-utils/loop.h b/sys-utils/loop.h
-new file mode 100644
-index 000000000..cc9097bdf
---- /dev/null
-+++ b/sys-utils/loop.h
+diff -urN util-linux-2.37/sys-utils/loop.h util-linux-2.37-AES/sys-utils/loop.h
+--- util-linux-2.37/sys-utils/loop.h	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.37-AES/sys-utils/loop.h	2021-06-20 14:51:07.594871180 +0300
 @@ -0,0 +1,87 @@
 +/*
 + *  loop.h
@@ -3580,11 +3545,271 @@ index 000000000..cc9097bdf
 +extern int try_cryptoapi_loop_interface(int, struct loop_info64 *, char *);
 +
 +#endif
-diff --git a/sys-utils/losetup1.c b/sys-utils/losetup1.c
-new file mode 100644
-index 000000000..059832de3
---- /dev/null
-+++ b/sys-utils/losetup1.c
+diff -urN util-linux-2.37/sys-utils/losetup.8.adoc util-linux-2.37-AES/sys-utils/losetup.8.adoc
+--- util-linux-2.37/sys-utils/losetup.8.adoc	2021-05-06 13:55:47.027422763 +0300
++++ util-linux-2.37-AES/sys-utils/losetup.8.adoc	2021-06-20 14:51:07.595871188 +0300
+@@ -12,159 +12,135 @@
+ 
+ == SYNOPSIS
+ 
+-Get info:
++*losetup* [options] _loop_device_ file
+ 
+-*losetup* [_loopdev_]
++*losetup* *-F* [options] _loop_device_ [file]
+ 
+-*losetup* *-l* [*-a*]
++*losetup* [ *-d* ] _loop_device_
+ 
+-*losetup* *-j* _file_ [*-o* _offset_]
++*losetup* *-a*
+ 
+-Detach a loop device:
++*losetup* *-f*
+ 
+-*losetup* *-d* _loopdev_ ...
+-
+-Detach all associated loop devices:
+-
+-*losetup* *-D*
+-
+-Set up a loop device:
+-
+-*losetup* [*-o* _offset_] [*--sizelimit* _size_] [*--sector-size* _size_] [*-Pr*] [*--show*] *-f* _loopdev file_
+-
+-Resize a loop device:
+-
+-*losetup* *-c* _loopdev_
++*losetup* *-R* _loop_device_
+ 
+ == DESCRIPTION
+ 
+-*losetup* is used to associate loop devices with regular files or block devices, to detach loop devices, and to query the status of a loop device. If only the _loopdev_ argument is given, the status of the corresponding loop device is shown. If no option is given, all loop devices are shown.
+-
+-Note that the old output format (i.e., *losetup -a*) with comma-delimited strings is deprecated in favour of the *--list* output format.
+-
+-It's possible to create more independent loop devices for the same backing file. *This setup may be dangerous, can cause data loss, corruption and overwrites.* Use *--nooverlap* with *--find* during setup to avoid this problem.
+-
+-The loop device setup is not an atomic operation when used with *--find*, and *losetup* does not protect this operation by any lock. The number of attempts is internally restricted to a maximum of 16. It is recommended to use for example flock1 to avoid a collision in heavily parallel use cases.
++*losetup* is used to associate loop devices with regular files or block devices, to detach loop devices and to query the status of a loop device. If only the loop_device argument is given, the status of the corresponding loop device is shown.
+ 
+ == OPTIONS
+ 
+-The _size_ and _offset_ arguments may be followed by the multiplicative suffixes KiB (=1024), MiB (=1024*1024), and so on for GiB, TiB, PiB, EiB, ZiB and YiB (the "iB" is optional, e.g., "K" has the same meaning as "KiB") or the suffixes KB (=1000), MB (=1000*1000), and so on for GB, TB, PB, EB, ZB and YB.
+-
+-*-a*, *--all*::
+-Show the status of all loop devices. Note that not all information is accessible for non-root users. See also *--list*. The old output format (as printed without *--list)* is deprecated.
+-
+-*-d*, *--detach* _loopdev_...::
+-Detach the file or device associated with the specified loop device(s). Note that since Linux v3.7 kernel uses "lazy device destruction". The detach operation does not return *EBUSY* error anymore if device is actively used by system, but it is marked by autoclear flag and destroyed later.
+-
+-*-D*, *--detach-all*::
+-Detach all associated loop devices.
+-
+-*-f*, *--find* [_file_]::
+-Find the first unused loop device. If a _file_ argument is present, use the found device as loop device. Otherwise, just print its name.
+-
+-*--show*::
+-Display the name of the assigned loop device if the *-f* option and a _file_ argument are present.
+-
+-*-L*, *--nooverlap*::
+-Check for conflicts between loop devices to avoid situation when the same backing file is shared between more loop devices. If the file is already used by another device then re-use the device rather than a new one. The option makes sense only with *--find*.
+-
+-*-j*, *--associated* _file_ [*-o* _offset_]::
+-Show the status of all loop devices associated with the given _file_.
+-
+-*-o*, *--offset* _offset_::
+-The data start is moved _offset_ bytes into the specified file or device. The _offset_ may be followed by the multiplicative suffixes; see above.
+-
+-*--sizelimit* _size_::
+-The data end is set to no more than _size_ bytes after the data start. The _size_ may be followed by the multiplicative suffixes; see above.
++*-a*::
++Show status of all loop devices.
+ 
+-*-b*, *--sector-size* _size_::
+-Set the logical sector size of the loop device in bytes (since Linux 4.14). The option may be used when create a new loop device as well as stand-alone command to modify sector size of the already existing loop device.
++*-C* itercountk::
++Runs hashed passphrase through itercountk thousand iterations of AES-256 before using it for loop encryption. This consumes lots of CPU cycles at loop setup/mount time but not thereafter. In combination with passphrase seed this slows down dictionary attacks. Iteration is not done in multi-key mode.
+ 
+-*-c*, *--set-capacity* _loopdev_::
+-Force the loop driver to reread the size of the file associated with the specified loop device.
++*-d*::
++Detach the file or device associated with the specified loop device.
+ 
+-*-P*, *--partscan*::
+-Force the kernel to scan the partition table on a newly created loop device. Note that the partition table parsing depends on sector sizes. The default is sector size is 512 bytes, otherwise you need to use the option *--sector-size* together with *--partscan*.
++*-e* encryption::
++Enable data encryption. Following encryption types are recognized:
+++
++NONE - Use no encryption (default).
+++
++XOR - Use a simple XOR encryption.
+++
++AES128 AES - Use 128 bit AES encryption. Passphrase is hashed with SHA-256 by default.
+++
++AES192 - Use 192 bit AES encryption. Passphrase is hashed with SHA-384 by default.
+++
++AES256 - Use 256 bit AES encryption. Passphrase is hashed with SHA-512 by default.
+++
++twofish128 twofish160 twofish192 twofish256 blowfish128 blowfish160 blowfish192 blowfish256 serpent128 serpent192 serpent256 mars128 mars192 mars256 rc6-128 rc6-192 rc6-256 tripleDES - These encryption types are available if they are enabled in kernel configuration or corresponding modules have been loaded to kernel.
++
++*-f*::
++Find and show next unused loop device.
++
++*-F*::
++Reads and uses mount options from /etc/fstab that match specified loop device, including offset= sizelimit= encryption= pseed= phash= loinit= gpgkey= gpghome= cleartextkey= itercountk= and looped to device/file name. loop= option in /etc/fstab must match specified loop device name. Command line options take precedence in case of conflict.
++
++*-G* gpghome::
++Set gpg home directory to gpghome, so that gpg uses public/private keys on gpghome directory. This is only used when gpgkey file needs to be decrypted using public/private keys. If gpgkey file is encrypted with symmetric cipher only, public/private keys are not required and this option has no effect.
++
++*-H* phash::
++Uses phash function to hash passphrase. Available hash functions are sha256, sha384, sha512 and rmd160. unhashed1 and unhashed2 functions also exist for compatibility with some obsolete implementations.
+++
++Hash function random does not ask for passphrase but sets up random keys and attempts to put loop to multi-key mode. When random/1777 hash type is used as mount option for mount program, mount program will create new file system on the loop device and construct initial permissions of file system root directory from octal digits that follow the slash character.
+++
++WARNING! DO NOT USE RANDOM HASH TYPE ON PARTITION WITH EXISTING IMPORTANT DATA ON IT. RANDOM HASH TYPE WILL DESTROY YOUR DATA.
++
++*-I* loinit::
++Passes a numeric value of loinit as a parameter to cipher transfer function. Cipher transfer functions are free to interpret value as they want.
++
++*-K* gpgkey::
++Passphrase is piped to gpg so that gpg can decrypt file gpgkey which contains the real keys that are used to encrypt loop device. If decryption requires public/private keys and gpghome is not specified, all users use their own gpg public/private keys to decrypt gpgkey. Decrypted gpgkey should contain 1 or 64 or 65 keys, each key at least 20 characters and separated by newline. If decrypted gpgkey contains 64 or 65 keys, then loop device is put to multi-key mode. In multi-key mode first key is used for first sector, second key for second sector, and so on. 65th key, if present, is used as additional input to MD5 IV computation.
++
++*-o* offset::
++The data start is moved offset bytes into the specified file or device. Normally offset is included in IV (initialization vector) computations. If offset is prefixed with @ character, then offset is not included in IV computations. @ prefix functionality may not be supported on some older kernels and/or loop drivers.
++
++*-p* passwdfd::
++Read the passphrase from file descriptor passwdfd instead of the terminal. If -K option is not being used (no gpg key file), then losetup attempts to read 65 keys from passwdfd, each key at least 20 characters and separated by newline. If losetup successfully reads 64 or 65 keys, then loop device is put to multi-key mode. If losetup encounters end-of-file before 64 keys are read, then only first key is used in single-key mode.
+++
++echo SecretPassphraseHere | losetup -p0 -K foo.gpg -e AES128 ...
+++
++In above example, losetup reads passphrase from file descriptor 0 (stdin).
++
++*-P* cleartextkey::
++Read the passphrase from file cleartextkey instead of the terminal. If -K option is not being used (no gpg key file), then losetup attempts to read 65 keys from cleartextkey, each key at least 20 characters and separated by newline. If losetup successfully reads 64 or 65 keys, then loop device is put to multi-key mode. If losetup encounters end-of-file before 64 keys are read, then only first key is used in single-key mode. If both -p and -P options are used, then -p option takes precedence. These are equivalent:
+++
++losetup -p3 -K foo.gpg -e AES128 ...   3<someFileName
+++
++losetup -P someFileName -K foo.gpg -e AES128 ...
+++
++In first line of above example, in addition to normal open file descriptors (0==stdin 1==stdout 2==stderr), shell opens the file and passes open file descriptor to started losetup program. In second line of above example, losetup opens the file itself.
++
++*-r*::
++Read-only mode.
++
++*-R*::
++Resize existing, already set up loop device, to new changed underlying device size. This option is for changing mounted live file system size on LVM volume. This functionality may not be supported on some older kernels and/or loop drivers.
++
++*-s* sizelimit::
++Size of loop device is limited to sizelimit bytes. If unspecified or set to zero, loop device size is set to maximum available (file size minus offset). This option may not be supported on some older kernels and/or loop drivers.
+ 
+-*-r*, *--read-only*::
+-Set up a read-only loop device.
++*-S* pseed::
++Sets encryption passphrase seed pseed which is appended to user supplied passphrase before hashing. Using different seeds for different partitions makes dictionary attacks slower but does not prevent them if user supplied passphrase is guessable. Seed is not used in multi-key mode.
+ 
+-*--direct-io*[**=on**|*off*]::
+-Enable or disable direct I/O for the backing file. The optional argument can be either *on* or *off*. If the argument is omitted, it defaults to *off*.
++*-T*::
++Asks passphrase twice.
+ 
+-*-v*, *--verbose*::
++*-v*::
+ Verbose mode.
+ 
+-*-l*, *--list*::
+-If a loop device or the *-a* option is specified, print the default columns for either the specified loop device or all loop devices; the default is to print info about all devices. See also *--output*, *--noheadings*, *--raw*, and *--json*.
+-
+-*-O*, *--output* _column_[,_column_]...::
+-Specify the columns that are to be printed for the *--list* output. Use *--help* to get a list of all supported columns.
+-
+-*--output-all*::
+-Output all available columns.
+-
+-*-n*, *--noheadings*::
+-Don't print headings for *--list* output format.
+-
+-*--raw*::
+-Use the raw *--list* output format.
+-
+-*-J*, *--json*::
+-Use JSON format for *--list* output.
+-
+-*-V*, *--version*::
+-Display version information and exit.
+-
+-*-h*, *--help*::
+-Display help text and exit.
+-
+-== ENCRYPTION
+-
+-*Cryptoloop is no longer supported in favor of dm-crypt.* For more details see *cryptsetup*(8).
+-
+ == EXIT STATUS
+ 
+-*losetup* returns 0 on success, nonzero on failure. When *losetup* displays the status of a loop device, it returns 1 if the device is not configured and 2 if an error occurred which prevented determining the status of the device.
+-
+-== NOTES
+-
+-Since version 2.37 *losetup* uses *LOOP_CONFIGURE* ioctl to setup a new loop device by one ioctl call. The old versions use *LOOP_SET_FD* and *LOOP_SET_STATUS64* ioctls to do the same.
+-
+-== ENVIRONMENT
+-
+-LOOPDEV_DEBUG=all::
+-enables debug output.
++*losetup* returns 0 on success, nonzero on failure. When *losetup* displays the status of a loop device, it returns 1 if the device is not configured and 2 if an error occurred which prevented *losetup* from determining the status of the device.
+ 
+ == FILES
+ 
+-_/dev/loop[0..N]_::
+-loop block devices
+-
+-_/dev/loop-control_::
+-loop control device
++/dev/loop0,/dev/loop1,... loop devices (major=7)
+ 
+ == EXAMPLE
+ 
+ The following commands can be used as an example of using the loop device.
++ 
++ dd if=/dev/zero of=/file bs=1k count=500
++ head -c 3705 /dev/random | uuencode -m - | head -n 66 \
++     | tail -n 65 | gpg --symmetric -a >/etc/fskey9.gpg
++ losetup -e AES128 -K /etc/fskey9.gpg /dev/loop0 /file
++ mkfs -t ext2 /dev/loop0
++ mount -t ext2 /dev/loop0 /mnt
++  ...
++ umount /dev/loop0
++ losetup -d /dev/loop0
+ 
+- # dd if=/dev/zero of=~/file.img bs=1024k count=10
+- # losetup --find --show ~/file.img
+- /dev/loop0
+- # mkfs -t ext2 /dev/loop0
+- # mount /dev/loop0 /mnt
+- ...
+- # umount /dev/loop0
+- # losetup --detach /dev/loop0
+-
+-== AUTHORS
++== RESTRICTION
+ 
+-mailto:kzak@redhat.com[Karel Zak], based on the original version from mailto:tytso@athena.mit.edu[Theodore Ts'o].
++XOR encryption is terribly weak.
+ 
+-include::man-common/bugreports.adoc[]
++== AUTHORS
+ 
+-include::man-common/footer.adoc[]
++Original version: Theodore Ts'o <tytso@athena.mit.edu>
+ 
+-ifdef::translation[]
+-include::man-common/translation.adoc[]
+-endif::[]
++AES support: Jari Ruusu
+diff -urN util-linux-2.37/sys-utils/losetup1.c util-linux-2.37-AES/sys-utils/losetup1.c
+--- util-linux-2.37/sys-utils/losetup1.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.37-AES/sys-utils/losetup1.c	2021-06-20 14:51:07.595871188 +0300
 @@ -0,0 +1,1281 @@
 +/* Taken from Ted's losetup.c - Mitch <m.dsouza@mrc-apu.cam.ac.uk> */
 +/* Added vfs mount options - aeb - 960223 */
@@ -4867,10 +5092,33 @@ index 000000000..059832de3
 +	}
 +	return res;
 +}
-diff --git a/sys-utils/mount.c b/sys-utils/mount.c
-index 0a85a2345..679e939c2 100644
---- a/sys-utils/mount.c
-+++ b/sys-utils/mount.c
+diff -urN util-linux-2.37/sys-utils/mount.8.adoc util-linux-2.37-AES/sys-utils/mount.8.adoc
+--- util-linux-2.37/sys-utils/mount.8.adoc	2021-05-24 14:39:52.787045165 +0300
++++ util-linux-2.37-AES/sys-utils/mount.8.adoc	2021-06-20 14:51:07.595871188 +0300
+@@ -374,6 +374,9 @@
+ *--options-source-force*::
+ Use options from _fstab_/_mtab_ even if both _device_ and _dir_ are specified.
+ 
++*-p*, *--pass-fd* _num_::
++In case of a loop mount with encryption, read the passphrase from file descriptor _num_ instead of from the terminal.
++
+ *-R*, *--rbind*::
+ Remount a subtree and all possible submounts somewhere else (so that its contents are available in both places). See above, the subsection *Bind mounts*.
+ 
+@@ -1344,7 +1347,9 @@
+ *mount -t ext4 /tmp/disk.img /mnt*
+ ____
+ 
+-This type of mount knows about three options, namely *loop*, *offset* and *sizelimit*, that are really options to *losetup*(8). (These options can be used in addition to those specific to the filesystem type.)
++This type of mount knows about 11 options, namely *loop*, *offset*, *sizelimit*, *encryption*, *pseed*, *phash*, *loinit*, *gpgkey*, *gpghome*, *cleartextkey* and *itercountk* , that are really options to *losetup*(8). (These options can be used in addition to those specific to the filesystem type.)
++
++If the mount requires a passphrase, you will be prompted for one unless you specify a file descriptor to read from instead with the *-p* command line option, or specify a file name with *cleartextkey* mount option.
+ 
+ Since Linux 2.6.25 auto-destruction of loop devices is supported, meaning that any loop device allocated by *mount* will be freed by *umount* independently of _/etc/mtab_.
+ 
+diff -urN util-linux-2.37/sys-utils/mount.c util-linux-2.37-AES/sys-utils/mount.c
+--- util-linux-2.37/sys-utils/mount.c	2021-05-06 13:55:47.032422739 +0300
++++ util-linux-2.37-AES/sys-utils/mount.c	2021-06-20 14:51:07.596871196 +0300
 @@ -36,6 +36,7 @@
  #include "c.h"
  #include "env.h"
@@ -4879,15 +5127,15 @@ index 0a85a2345..679e939c2 100644
  #include "closestream.h"
  #include "canonicalize.h"
  
-@@ -45,6 +46,7 @@
- #define OPTUTILS_EXIT_CODE MNT_EX_USAGE
- #include "optutils.h"
+@@ -47,6 +48,7 @@
  
-+static int passfd = -1;
  static struct ul_env_list *envs_removed;
  
++static int passfd = -1;
  static int mk_exit_code(struct libmnt_context *cxt, int rc);
-@@ -105,6 +107,32 @@ static int table_parser_errcb(struct libmnt_table *tb __attribute__((__unused__)
+ 
+ static void suid_drop(struct libmnt_context *cxt)
+@@ -105,6 +107,32 @@
  	return 1;
  }
  
@@ -4920,7 +5168,7 @@ index 0a85a2345..679e939c2 100644
  /*
   * Replace control chars with '?' to be compatible with coreutils. For more
   * robust solution use findmnt(1) where we use \x?? hex encoding.
-@@ -477,6 +505,7 @@ static void __attribute__((__noreturn__)) usage(void)
+@@ -477,6 +505,7 @@
  	fprintf(out, _(
  	" -o, --options <list>    comma-separated list of mount options\n"
  	" -O, --test-opts <list>  limit the set of filesystems (use with -a)\n"
@@ -4928,7 +5176,7 @@ index 0a85a2345..679e939c2 100644
  	" -r, --read-only         mount the filesystem read-only (same as -o ro)\n"
  	" -t, --types <list>      limit the set of filesystem types\n"));
  	fprintf(out, _(
-@@ -676,7 +705,7 @@ int main(int argc, char **argv)
+@@ -676,7 +705,7 @@
  
  	mnt_context_set_tables_errcb(cxt, table_parser_errcb);
  
@@ -4937,7 +5185,7 @@ index 0a85a2345..679e939c2 100644
  					longopts, NULL)) != -1) {
  
  		/* only few options are allowed for non-root users */
-@@ -736,6 +765,10 @@ int main(int argc, char **argv)
+@@ -736,6 +765,10 @@
  			if (mnt_context_set_options_pattern(cxt, optarg))
  				err(MNT_EX_SYSERR, _("failed to set options pattern"));
  			break;
@@ -4948,7 +5196,7 @@ index 0a85a2345..679e939c2 100644
  		case 'L':
  			xasprintf(&srcbuf, "LABEL=\"%s\"", optarg);
  			mnt_context_disable_swapmatch(cxt, 1);
-@@ -908,6 +941,8 @@ int main(int argc, char **argv)
+@@ -908,6 +941,8 @@
  	else if (types)
  		mnt_context_set_fstype(cxt, types);
  
@@ -4957,10 +5205,9 @@ index 0a85a2345..679e939c2 100644
  	if (all) {
  		/*
  		 * A) Mount all
-diff --git a/sys-utils/swapoff.c b/sys-utils/swapoff.c
-index 7bfb90a3e..a53c0c7ad 100644
---- a/sys-utils/swapoff.c
-+++ b/sys-utils/swapoff.c
+diff -urN util-linux-2.37/sys-utils/swapoff.c util-linux-2.37-AES/sys-utils/swapoff.c
+--- util-linux-2.37/sys-utils/swapoff.c	2021-05-06 13:55:47.035422724 +0300
++++ util-linux-2.37-AES/sys-utils/swapoff.c	2021-06-20 14:51:07.596871196 +0300
 @@ -1,4 +1,9 @@
  #include <stdio.h>
 +#include <sys/types.h>
@@ -4979,7 +5226,7 @@ index 7bfb90a3e..a53c0c7ad 100644
  #include "c.h"
  #include "xalloc.h"
  #include "closestream.h"
-@@ -162,6 +168,45 @@ static void __attribute__((__noreturn__)) usage(void)
+@@ -162,6 +168,45 @@
  	exit(SWAPOFF_EX_OK);
  }
  
@@ -5025,7 +5272,7 @@ index 7bfb90a3e..a53c0c7ad 100644
  static int swapoff_all(void)
  {
  	int nerrs = 0, nsucc = 0;
-@@ -196,8 +241,30 @@ static int swapoff_all(void)
+@@ -196,8 +241,30 @@
  	mnt_reset_iter(itr, MNT_ITER_FORWARD);
  
  	while (tb && mnt_table_find_next_fs(tb, itr, match_swap, NULL, &fs) == 0) {
@@ -5058,10 +5305,21 @@ index 7bfb90a3e..a53c0c7ad 100644
  	}
  
  	mnt_free_iter(itr);
-diff --git a/sys-utils/swapon.c b/sys-utils/swapon.c
-index 0f47d8516..93ce2a807 100644
---- a/sys-utils/swapon.c
-+++ b/sys-utils/swapon.c
+diff -urN util-linux-2.37/sys-utils/swapon.8.adoc util-linux-2.37-AES/sys-utils/swapon.8.adoc
+--- util-linux-2.37/sys-utils/swapon.8.adoc	2021-05-06 13:55:47.036422718 +0300
++++ util-linux-2.37-AES/sys-utils/swapon.8.adoc	2021-06-20 14:51:07.596871196 +0300
+@@ -26,6 +26,8 @@
+ 
+ *swapoff* disables swapping on the specified devices and files. When the *-a* flag is given, swapping is disabled on all known swap devices and files (as found in _/proc/swaps_ or _/etc/fstab_).
+ 
++If *loop=/dev/loop?* and *encryption=AES128* options are present in _/etc/fstab_ then *swapon -a* will set up loop devices using random keys, run *mkswap* on them, and enable encrypted swap on specified loop devices. Encrypted loop devices are set up with page size offset so that unencrypted swap signatures on first page of swap devices are not touched. *swapoff -a* will tear down such loop devices.
++
+ == OPTIONS
+ 
+ *-a*, *--all*::
+diff -urN util-linux-2.37/sys-utils/swapon.c util-linux-2.37-AES/sys-utils/swapon.c
+--- util-linux-2.37/sys-utils/swapon.c	2021-05-06 13:55:47.036422718 +0300
++++ util-linux-2.37-AES/sys-utils/swapon.c	2021-06-20 14:51:07.596871196 +0300
 @@ -8,6 +8,8 @@
  #include <unistd.h>
  #include <sys/types.h>
@@ -5080,7 +5338,7 @@ index 0f47d8516..93ce2a807 100644
  #include "bitops.h"
  #include "blkdev.h"
  #include "pathnames.h"
-@@ -734,6 +738,227 @@ static int parse_options(struct swap_prop *props, const char *options)
+@@ -734,6 +738,227 @@
  }
  
  
@@ -5308,7 +5566,7 @@ index 0f47d8516..93ce2a807 100644
  static int swapon_all(struct swapon_ctl *ctl)
  {
  	struct libmnt_table *tb = get_fstab();
-@@ -751,6 +976,9 @@ static int swapon_all(struct swapon_ctl *ctl)
+@@ -751,6 +976,9 @@
  	while (mnt_table_find_next_fs(tb, itr, match_swap, NULL, &fs) == 0) {
  		/* defaults */
  		const char *opts;
@@ -5318,7 +5576,7 @@ index 0f47d8516..93ce2a807 100644
  		const char *device;
  		struct swap_prop prop;		/* per device setting */
  
-@@ -759,6 +987,10 @@ static int swapon_all(struct swapon_ctl *ctl)
+@@ -759,6 +987,10 @@
  				warnx(_("%s: noauto option -- ignored"), mnt_fs_get_source(fs));
  			continue;
  		}
@@ -5329,7 +5587,7 @@ index 0f47d8516..93ce2a807 100644
  
  		/* default setting */
  		prop = ctl->props;
-@@ -773,23 +1005,38 @@ static int swapon_all(struct swapon_ctl *ctl)
+@@ -773,23 +1005,38 @@
  		if (!device) {
  			if (!prop.no_fail)
  				status |= cannot_find(mnt_fs_get_source(fs));
