@@ -1,10 +1,10 @@
 # Maintainer: samarthj <dev@samarthj.com>
 
-# shellcheck disable=2034
+# shellcheck disable=2034,2154
 
 pkgname=podman-git
 _pkgname=podman
-pkgver=3.3.0_dev.r12094.g48db8d986
+pkgver=3.3.0_dev.r12096.gd8cd20547
 pkgrel=1
 pkgdesc="Tool and library for running OCI-based containers in pods (git)"
 arch=('any')
