@@ -7,7 +7,6 @@ pkgbase = keepassxc-minimal
 	license = GPL
 	makedepends = qt5-base
 	makedepends = qt5-tools
-	makedepends = base-devel
 	makedepends = zlib
 	makedepends = argon2
 	makedepends = qt5-x11extras
