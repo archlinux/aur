@@ -2,15 +2,15 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=lariza
-pkgver=21.01
-pkgrel=2
+pkgver=21.06
+pkgrel=1
 pkgdesc="Simple WebKit2GTK+ Browser"
 arch=('i686' 'x86_64')
 url="https://www.uninformativ.de/git/lariza"
 license=('custom:MIT')
 depends=('webkit2gtk')
 source=("$url/archives/$pkgname-v$pkgver.tar.gz")
-sha256sums=('0e98b5b381bd0af6a259b641e832bf13d1d0aecf987a588ff3618380a1390e99')
+sha256sums=('9faf06a8f4d87b3a63eb3c1e22dcbc7d8361c054357637ae7e870b9212372a13')
 
 build() {
   cd $pkgname-v$pkgver
