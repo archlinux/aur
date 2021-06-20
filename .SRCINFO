@@ -1,6 +1,6 @@
 pkgbase = sad
 	pkgdesc = Space Age seD
-	pkgver = 0.4.7
+	pkgver = 0.4.8
 	pkgrel = 1
 	url = https://github.com/ms-jpq/sad
 	arch = x86_64
@@ -10,9 +10,7 @@ pkgbase = sad
 	optdepends = fzf: for tui usage
 	optdepends = diff-so-fancy: diff colourizer
 	optdepends = git-delta-git: diff colourizer
-	source = sad-0.4.7.tar.gz::https://github.com/ms-jpq/sad/archive/0.4.7.tar.gz
-	source = lockfile.patch
-	sha256sums = 241d6161a1f26323a2cb07774db95b47df794e8bdcd7254905f6971be7def987
-	sha256sums = 571cd53cfe3b4a9af3356067f00347f96f599146274c9f7ec65d89d070fb062e
+	source = sad-0.4.8.tar.gz::https://github.com/ms-jpq/sad/archive/0.4.8.tar.gz
+	sha256sums = b242359e9983e98c371e4bf9115437f746344edd45f6bae376b197e05a15b995
 
 pkgname = sad
