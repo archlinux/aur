@@ -10,7 +10,7 @@ url="https://github.com/timvink/mkdocs-git-revision-date-localized-plugin"
 license=('MIT')
 makedepends=('python-setuptools')
 #checkdepends=('mkdocs>=1.0' 'python-gitpython' 'python-babel>=2.7.0')
-checkdepends=('python-pytest' 'python-mkdocs' 'python-gitpython' 'python-babel')
+checkdepends=('python-pytest' 'mkdocs' 'python-gitpython' 'python-babel')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/timvink/mkdocs-git-revision-date-localized-plugin/master/LICENSE"
         'fix_setupy_deps.patch')
@@ -38,7 +38,7 @@ check() {
 }
 
 package() {
-    depends=('python>=3.6' 'python-mkdocs>=1.0' 'python-gitpython' 'python-babel>=2.7.0')
+    depends=('python>=3.6' 'mkdocs' 'python-gitpython' 'python-babel>=2.7.0')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/LICENSE"

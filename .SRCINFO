@@ -7,7 +7,7 @@ pkgbase = python-mkdocs-git-revision-date-localized-plugin
 	arch = x86_64
 	license = MIT
 	checkdepends = python-pytest
-	checkdepends = python-mkdocs
+	checkdepends = mkdocs
 	checkdepends = python-gitpython
 	checkdepends = python-babel
 	makedepends = python-setuptools
@@ -20,6 +20,6 @@ pkgbase = python-mkdocs-git-revision-date-localized-plugin
 
 pkgname = python-mkdocs-git-revision-date-localized-plugin
 	depends = python>=3.6
-	depends = python-mkdocs>=1.0
+	depends = mkdocs
 	depends = python-gitpython
 	depends = python-babel>=2.7.0
