@@ -8,6 +8,7 @@ pkgbase = elmerfem-git
 	makedepends = git
 	makedepends = gcc-fortran
 	makedepends = cmake
+	depends = trilinos
 	depends = arpack
 	depends = blas
 	depends = qt5-script

@@ -4,6 +4,10 @@
 # Contributor: saxonbeta <saxonbeta at gmail __com
 
 # Configuration.
+if (( DISABLE_TRILINOS ))
+  then _CMAKE_FLAGS+=(-DWITH_Trilinos=OFF)
+  else depends+=('trilinos'); _CMAKE_FLAGS+=(-DWITH_Trilinos=ON)
+fi
 _CMAKE_FLAGS+=(
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DELMER_INSTALL_LIB_DIR=/usr/lib \
@@ -36,7 +40,7 @@ pkgdesc="A finite element software for multiphysical problems"
 arch=('x86_64')
 url="http://www.elmerfem.org"
 license=('GPL')
-depends=('arpack' 'blas' 'qt5-script' 'python-pyqt5' 'qwt' 'netcdf-fortran-openmpi' 'paraview-opt' 'mumps-par' 'oce' 'vtk' 'hypre' 'mmg3d' 'libnn-git' 'libcsa-git' 'scalapack')
+depends+=('arpack' 'blas' 'qt5-script' 'python-pyqt5' 'qwt' 'netcdf-fortran-openmpi' 'paraview-opt' 'mumps-par' 'oce' 'vtk' 'hypre' 'mmg3d' 'libnn-git' 'libcsa-git' 'scalapack')
 makedepends=('git' 'gcc-fortran' 'cmake')
 provides=('elmerfem')
 conflicts=('elmerfem')
