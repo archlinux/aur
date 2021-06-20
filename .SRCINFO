@@ -1,14 +1,14 @@
 pkgbase = piwigo-import-tree-git
 	pkgdesc = Perl script to import a tree of image albums into Piwigo
-	pkgver = r3.5fa9c8b
+	pkgver = r4.252844f
 	pkgrel = 1
-	url = https://github.com/linux-wizard/piwigo_import_tree
+	url = https://github.com/jose1711/piwigo-import-tree
 	arch = any
 	license = unlicense
 	depends = perl-json
 	provides = piwigo-import-tree
 	conflicts = piwigo-import-tree
-	source = git+https://github.com/linux-wizard/piwigo_import_tree
+	source = git+https://github.com/jose1711/piwigo-import-tree
 	md5sums = SKIP
 
 pkgname = piwigo-import-tree-git
