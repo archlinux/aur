@@ -1,0 +1,13 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = File
+Target = usr/*
+Target = opt/*
+
+[Action]
+Description = Optimize images
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/optimize-images
+NeedsTargets
+

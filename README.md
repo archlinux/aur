@@ -1,0 +1,2 @@
+# pacman-hooks
+Pacman hooks

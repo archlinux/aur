@@ -1,0 +1,30 @@
+pkgbase = pacman-hooks-ghmeta
+	pkgdesc = Pacman hooks metapackage
+	pkgver = 1.01
+	pkgrel = 1
+	url = https://github.com/grigorii-horos/breeze-icons-extra
+	arch = any
+	license = LGPL
+
+pkgname = pacman-hooks-ghmeta
+	optdepends = pacman-hook-sync: Pacman hook who will sync all filesystems
+	optdepends = pacman-hook-zsh: Pacman hook who will optimize zsh scripts
+	optdepends = pacman-hook-remove-locales: Pacman hook who will remove unuseful locales
+	optdepends = pacman-hook-remove-headers: Pacman hook who will remove headers
+	optdepends = pacman-hook-remove-documentation: Pacman hook who will remove documentation
+	optdepends = pacman-hook-optimize-images: Pacman hook who will optimize all images in package
+	optdepends = pacman-hook-cleanup: Pacman hook who will remove old packages from cache
+
+pkgname = pacman-hook-sync
+
+pkgname = pacman-hook-zsh
+
+pkgname = pacman-hook-remove-locales
+
+pkgname = pacman-hook-remove-headers
+
+pkgname = pacman-hook-remove-documentation
+
+pkgname = pacman-hook-optimize-images
+
+pkgname = pacman-hook-cleanup

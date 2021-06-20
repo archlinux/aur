@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+
+while read line; do
+
+	if [[ -f "$line" ]]; then
+		
+			if [[ "$line" = usr/share/locale/* ]]; then
+				if [[ "$line" != usr/share/locale/en* ]]; then
+					echo -n > "$line"
+				fi
+			fi
+		
+			if [[ "$line" = usr/share/smplayer/translations/* ]]; then
+				if [[ "$line" != usr/share/smplayer/translations/smplayer_en* ]]; then
+					echo -n > "$line"
+				fi
+			fi
+			
+			if [[ "$line" = usr/lib/chromium/locales/* ]]; then
+				if [[ "$line" != usr/lib/chromium/locales/en* ]]; then
+					echo -n > "$line"
+				fi
+			fi
+
+			if [[ "$line" = opt/google/chrome/locales/* ]]; then
+				if [[ "$line" != opt/google/chrome/locales/en* ]]; then
+					echo -n > "$line"
+				fi
+			fi
+
+			if [[ "$line" = usr/share/skypeforlinux/locales/* ]]; then
+				if [[ "$line" != usr/share/skypeforlinux/locales/en* ]]; then
+					echo -n > "$line"
+				fi
+			fi
+
+			if [[ "$line" = opt/visual-studio-code*/locales/* ]]; then
+				if [[ "$line" != opt/visual-studio-code*/locales/en* ]]; then
+					echo -n > "$line"
+				fi
+			fi
+
+			if [[ "$line" = opt/viber/translations/* ]]; then
+				if [[ "$line" != opt/viber/translations/*_en*.qm && "$line" != opt/viber/translations/*/en*.pak ]]; then
+					echo -n > "$line"
+				fi
+			fi
+			
+			if [[ "$line" = usr/share/vim/vim*/lang/menu_* ]]; then
+				if [[ "$line" != usr/share/vim/vim*/lang/menu_en* ]]; then
+					echo -n > "$line"
+				fi
+			fi
+			
+			if [[ "$line" = usr/share/vim/vim*/lang/*/* ]]; then
+				if [[ "$line" != usr/share/vim/vim*/lang/en* ]]; then
+					echo -n > "$line"
+				fi
+			fi
+			
+			if [[ "$line" = usr/share/X11/locale/*/* ]]; then
+				if [[ "$line" != usr/share/X11/locale/en*/* && "$line" != usr/share/X11/locale/C/* ]]; then
+					echo -n > "$line"
+				fi
+			fi
+			
+			if [[ "$line" = usr/share/ibus/dicts/* ]]; then
+				if [[ "$line" != usr/share/ibus/dicts/*en* ]]; then
+					echo -n > "$line"
+				fi
+			fi
+
+			if [[ "$line" = usr/share/qt/translations/*/* ]]; then
+				if [[ "$line" != usr/share/qt/translations/*/en* ]]; then
+					echo -n > "$line"
+				fi
+			fi
+			
+	fi
+
+done

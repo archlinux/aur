@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = File
+Target = *
+
+[Action]
+Description = Remove headers
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/remove-headers
+NeedsTargets

@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = File
+Target = *
+
+[Action]
+Description = Remove documentation
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/remove-documentation
+NeedsTargets
+

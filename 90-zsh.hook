@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = File
+Target = usr/share/zsh/*
+
+[Action]
+Description = Optimize zsh scripts
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/zsh
+NeedsTargets
+

@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+while read line; do
+	if [[ -f "$line" ]]; then
+
+			if [[ "$line" = usr/share/doc/* ]]; then
+					echo -n > "$line"
+			fi
+		
+			if [[ "$line" = usr/share/man/* ]]; then
+					echo -n > "$line"
+			fi
+		
+			if [[ "$line" = usr/share/info/* ]]; then
+					echo -n > "$line"
+			fi
+		
+			if [[ "$line" = usr/share/help/* ]]; then
+					echo -n > "$line"
+			fi
+		
+			if [[ "$line" = usr/share/gtk-doc/* ]]; then
+					echo -n > "$line"
+			fi
+		
+			if [[ "$line" = usr/lib/libreoffice/help/* ]]; then
+					echo -n > "$line"
+			fi
+		
+			if [[ "$line" = usr/share/licenses/* ]]; then
+					echo -n > "$line"
+			fi	
+
+			if [[ "$line" = usr/share/zsh/*.*/help/* ]]; then
+					echo -n > "$line"
+			fi
+		
+	fi
+done

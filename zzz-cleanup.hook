@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Remove old packages from cache
+Depends = coreutils
+When = PostTransaction
+Exec = /usr/bin/paccache -rvk0

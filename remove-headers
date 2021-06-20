@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+while read line; do
+	if [[ -f "$line" ]]; then
+
+			if [[ "$line" = usr/include/* ]]; then
+					echo -n > "$line"
+			fi
+		
+			if [[ "$line" = usr/share/cmake* ]]; then
+					echo -n > "$line"
+			fi
+
+			if [[ "$line" = usr/share/mesa-demos/* ]]; then
+					echo -n > "$line"
+			fi
+
+			if [[ "$line" = usr/share/pkgconfig/* ]]; then
+					echo -n > "$line"
+			fi
+
+			if [[ "$line" = usr/lib/pkgconfig/* ]]; then
+					echo -n > "$line"
+			fi
+	fi
+done

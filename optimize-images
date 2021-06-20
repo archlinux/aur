@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+while read line; do
+  if [[ -s "$line" ]]; then
+    if [[ "$line" = *.jpg || "$line" = *.svg || "$line" = *.png ]]; then
+      input=`wc -c $line | cut -d' ' -f1`
+
+      if [[ "$line" == *.jpg || "$line" == *.png ]]; then
+        orig_colors=$(identify -format %k "$line")
+
+        if (( $orig_colors < 25 )); then
+          colors=$orig_colors
+        elif (( $orig_colors < 1000 )); then
+          colors=$(awk "BEGIN {print int(${orig_colors}**0.6 )}" )
+        else
+          colors=$(awk "BEGIN {print int(${orig_colors}**0.52 )}" )
+        fi
+
+        convert "$line" -colors "${colors}" "$line"
+      fi
+
+
+      if [[ "$line" = *.jpg ]]; then
+        jpegoptim --quiet --strip-all -m60 "$line" 2>/dev/null
+      fi
+
+      if [[ "$line" = *.png ]]; then
+        optipng -strip all -o3 "$line" 2>/dev/null
+      fi
+
+
+      if [[ "$line" = *.svg ]]; then
+        svgcleaner --remove-gradient-attributes=true \
+          --join-style-attributes=all --apply-transform-to-paths=true  \
+          --coordinates-precision=5 --properties-precision=5 \
+          --transforms-precision=7 --paths-coordinates-precision=7 \
+          --multipass --quiet \
+          "$line" "$line" 2>/dev/null
+      fi
+
+      output=`wc -c $line | cut -d' ' -f1`
+
+      echo "=> /$line $(numfmt --to=si --format="%.1f" $input)/$(numfmt --to=si --format="%.1f" $output)"
+
+    fi
+  fi
+done
