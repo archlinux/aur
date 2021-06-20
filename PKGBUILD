@@ -1,14 +1,15 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=rofimoji-git
-pkgver=5.1.0.r8.g7641ab2
+pkgver=5.2.0.r0.g540ae53
 pkgrel=1
 pkgdesc='Character picker for rofi'
 arch=('any')
 url=https://github.com/fdw/rofimoji
 license=('MIT')
 depends=('python-configargparse')
-makedepends=('git' 'python-pip' 'python-wheel')
+makedepends=('git' 'python-build' 'python-install' 'python-setuptools'
+             'python-wheel')
 optdepends=('emoji-font: for the emojis character file'
             'nerd-fonts: for the nerd_font character file'
             'rofi: for the X.Org selector'
@@ -18,43 +19,42 @@ optdepends=('emoji-font: for the emojis character file'
             'wofi: for the Wayland selector'
             'wl-clipboard: for the Wayland clipboarder'
             'wtype: for the Wayland typer')
-provides=('rofimoji')
-conflicts=('rofimoji')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 install=$pkgname.install
 source=("git+$url.git")
 b2sums=('SKIP')
 
 pkgver() {
-  cd rofimoji
+  cd ${pkgname%-git}
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd rofimoji
-  # Avoid installing files directly under site-packages/
+  cd ${pkgname%-git}
+  # Remove data_files section https://github.com/pypa/wheel/issues/92
   sed -i '/\[options.data_files\]/,/^$/d' setup.cfg
 }
 
 build() {
-  cd rofimoji
-  export PIP_CONFIG_FILE=/dev/null
-  pip wheel --isolated --no-deps .
+  cd ${pkgname%-git}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
-  cd rofimoji
+  cd ${pkgname%-git}
   export PYTHONHASHSEED=0
-  export PIP_CONFIG_FILE=/dev/null
-  pip install --isolated \
-              --no-deps \
-              --root="$pkgdir" \
-              --ignore-installed \
-              --no-warn-script-location *.whl
-  install -Dm644 -t "$pkgdir"/usr/share/man/man1 src/picker/docs/rofimoji.1
+  python -m install --optimize=1 --destdir="$pkgdir" dist/*.whl
+  install -Dm644 -t "$pkgdir"/usr/share/man/man1 \
+    src/picker/docs/${pkgname%-git}.1
 
+  # https://github.com/FFY00/python-install/pull/6
+  chmod +x "$pkgdir"/usr/bin/${pkgname%-git}
+
+  # Symlink license file
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   install -d "$pkgdir"/usr/share/licenses/$pkgname
-  ln -s $site_packages/rofimoji-${pkgver%%.r*}.dist-info/LICENSE \
+  ln -s $site_packages/${pkgname%-git}-${pkgver%%.r*}.dist-info/LICENSE \
     "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
