@@ -1,6 +1,6 @@
 pkgbase = tmpcleaner
 	pkgdesc = simple script and cron.daily entry for cleaning old /tmp files.
-	pkgver = r2
+	pkgver = r3
 	pkgrel = 1
 	arch = any
 	license = GPL
