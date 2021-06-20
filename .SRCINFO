@@ -1,7 +1,7 @@
 pkgbase = grub-libzfs
 	pkgdesc = GNU GRand Unified Bootloader (2) - libzfs support
-	pkgver = 2.04
-	pkgrel = 10
+	pkgver = 2.06
+	pkgrel = 1
 	epoch = 2
 	url = https://www.gnu.org/software/grub/
 	install = grub-libzfs.install
@@ -50,28 +50,22 @@ pkgbase = grub-libzfs
 	options = !makeflags
 	backup = etc/default/grub
 	backup = etc/grub.d/40_custom
-	source = git+https://git.savannah.gnu.org/git/grub.git#tag=grub-2.04?signed
-	source = git+https://git.savannah.gnu.org/git/grub-extras.git#commit=8a245d5c1800627af4cefa99162a89c7a46d8842
+	source = git+https://git.savannah.gnu.org/git/grub.git#tag=53c5000739db114c229fe69ec3d4b76b92441098?signed
 	source = git+https://git.savannah.gnu.org/git/gnulib.git#commit=be584c56eb1311606e5ea1a36363b97bddb6eed3
-	source = http://unifoundry.com/pub/unifont/unifont-13.0.06/font-builds/unifont-13.0.06.bdf.gz
-	source = http://unifoundry.com/pub/unifont/unifont-13.0.06/font-builds/unifont-13.0.06.bdf.gz.sig
-	source = 0003-10_linux-detect-archlinux-initramfs.patch
-	source = 0004-add-GRUB_COLOR_variables.patch
-	source = 0005-grub-install-fix-inverted-test-for-NLS-enabled-when-.patch
-	source = 0006-BootHole.patch
+	source = https://ftp.gnu.org/gnu/unifont/unifont-13.0.06/unifont-13.0.06.bdf.gz
+	source = https://ftp.gnu.org/gnu/unifont/unifont-13.0.06/unifont-13.0.06.bdf.gz.sig
+	source = 0001-00_header-add-GRUB_COLOR_-variables.patch
+	source = 0002-10_linux-detect-archlinux-initramfs.patch
 	source = grub.default
 	validpgpkeys = E53D497F3FA42AD8C9B4D1E835A93B74E82E4209
 	validpgpkeys = BE5C23209ACDDACEB20DB0A28C8189F1988C2166
 	validpgpkeys = 95D2E9AB8740D8046387FD151A09227B1F435A33
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = b7668a5d498972dc4981250c49f83601babce797be19b4fdd0f2f1c6cfbd0fc5
 	sha256sums = SKIP
-	sha256sums = 171415ab075d1ac806f36c454feeb060f870416f24279b70104bba94bd6076d4
-	sha256sums = a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29
-	sha256sums = 06820004912a3db195a76e68b376fce1ba6507ac740129f0b99257ef07aba1ea
-	sha256sums = 55c559b6d8c4a832a43cc35c7635de37402ec9e3e3bfd8b2b7761a06f0bfda02
+	sha256sums = 5dee6628c48eef79812bb9e86ee772068d85e7fcebbd2b2b8d1e19d24eda9dab
+	sha256sums = 8488aec30a93e8fe66c23ef8c23aefda39c38389530e9e73ba3fbcc8315d244d
 	sha256sums = 791fadf182edf8d5bee4b45c008b08adce9689a9624971136527891a8f67d206
 
 pkgname = grub-libzfs

@@ -4,6 +4,5 @@
 *.sig
 /gnulib
 /grub
-/grub-extras
 /src
 /pkg
