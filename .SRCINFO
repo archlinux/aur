@@ -1,6 +1,6 @@
 pkgbase = pacman-hook-kernel-install
 	pkgdesc = Pacman hooks for kernel-install.
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://man.archlinux.org/man/kernel-install.8
 	arch = any

@@ -7,7 +7,7 @@ Target = usr/lib/modules/*/vmlinuz
 [Action]
 Description = Installing kernel and initrd to $BOOT (kernel-install)
 When = PostTransaction
-Exec = /bin/bash -c 'shopt -s extglob && . /usr/lib/initcpio/functions && while read -r vmlinuz; do kver="$(kver "${vmlinuz}")" && msg "kernel-install add ${kver} ${vmlinuz}" && kernel-install add "${kver}" "${vmlinuz}"; done'
+Exec = /bin/bash -c 'shopt -s extglob && while read -r vmlinuz; do kver="$(basename "$(dirname "${vmlinuz}")")" && echo "==> kernel-install add ${kver} ${vmlinuz}" && kernel-install add "${kver}" "${vmlinuz}"; done'
 Depends = bash
 Depends = systemd
 NeedsTargets
