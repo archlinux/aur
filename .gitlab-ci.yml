@@ -1,6 +1,7 @@
 image: "registry.devseed.de/all-the-things/docker-archlinux"
 
 stages:
+  - check
   - build
   - release
 
@@ -11,7 +12,7 @@ before_script:
   - git config --global user.name "${GIT_USER_NAME:-$GITLAB_USER_NAME}"
 
 update_hash:
-  stage: build
+  stage: check
   script:
     # update package hash for integrity check
     - updpkgsums
