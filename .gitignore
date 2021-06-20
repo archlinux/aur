@@ -1,0 +1,4 @@
+src/
+pkg/
+*.pkg.tar.*
+m8c*.tar.gz
