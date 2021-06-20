@@ -1,16 +1,13 @@
 pkgbase = pycdc-git
-	pkgdesc = C++ python bytecode disassembler and decompiler
-	pkgver = 180.32a14d5
+	pkgdesc = C++ python bytecode disassembler and decompiler.
+	pkgver = r340.fbf9d24
 	pkgrel = 1
 	url = https://github.com/zrax/pycdc
 	arch = x86_64
-	arch = i686
-	license = GPL3
-	makedepends = git
+	license = GPL
 	makedepends = cmake
-	options = !buildflags
-	source = git+https://github.com/zrax/pycdc.git
-	sha1sums = SKIP
+	conflicts = pycdc
+	source = pycdc-git::git+https://github.com/zrax/pycdc.git
+	b2sums = SKIP
 
 pkgname = pycdc-git
-
