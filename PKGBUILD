@@ -5,7 +5,7 @@
 #              Christoph Haag <haagch@studi,informatik.uni-stuttgart.de>
 #              WorMzy Tykashi <wormzy.tykashi@gmail.com>
 pkgname=steamos-compositor-plus
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Compositor used by SteamOS with some added tweaks and fixes"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ conflicts=('steamos-compositor')
 _msver=1.10
 source=("https://github.com/gamer-os/steamos-compositor-plus/archive/${pkgver}.tar.gz"
         "https://repo.steampowered.com/steamos/pool/main/s/steamos-modeswitch-inhibitor/steamos-modeswitch-inhibitor_${_msver}.tar.xz")
-md5sums=('0e2e72541dbfbb122ef0711df10f1d64'
+md5sums=('0a8745992ea0ef3ca38d266a4707d5f8'
          'ab8b731fb917aff183aa338bf3298495')
 
 prepare() {
@@ -44,8 +44,14 @@ package() {
   sed -i "s|lib/i386-linux-gnu/|lib32/|g" "$pkgdir/usr/bin/steamos-session"
   mkdir -p "$pkgdir/usr/share/steamos-compositor-plus/bin" "$pkgdir/usr/share/xsessions" "$pkgdir/usr/share/icons/steam" "$pkgdir/usr/share/pixmaps" "$pkgdir/usr/lib/systemd/user" "$pkgdir/etc/steamos-compositor-plus"
   install -m 644 "etc/steamos-compositor-plus/sxhkdrc" "$pkgdir/etc/steamos-compositor-plus/sxhkdrc"
-  install -m 755 "usr/share/steamos-compositor-plus/bin/set_hd_mode.sh" "$pkgdir/usr/share/steamos-compositor-plus/bin/set_hd_mode.sh"
-  install -m 755 "usr/share/steamos-compositor-plus/bin/dpkg-query" "$pkgdir/usr/share/steamos-compositor-plus/bin/dpkg-query"
+  install -m 755 "usr/share/steamos-compositor-plus/bin/set_hd_mode.sh" "$pkgdir/usr/share/steamos-compositor-plus/bin"
+  install -m 755 "usr/share/steamos-compositor-plus/bin/audio_mute.sh" "$pkgdir/usr/share/steamos-compositor-plus/bin"
+  install -m 755 "usr/share/steamos-compositor-plus/bin/audio_voldown.sh" "$pkgdir/usr/share/steamos-compositor-plus/bin"
+  install -m 755 "usr/share/steamos-compositor-plus/bin/audio_volup.sh" "$pkgdir/usr/share/steamos-compositor-plus/bin"
+  install -m 755 "usr/share/steamos-compositor-plus/bin/brightness_down.sh" "$pkgdir/usr/share/steamos-compositor-plus/bin"
+  install -m 755 "usr/share/steamos-compositor-plus/bin/brightness_up.sh" "$pkgdir/usr/share/steamos-compositor-plus/bin"
+  install -m 755 "usr/share/steamos-compositor-plus/bin/screen_toggle.sh" "$pkgdir/usr/share/steamos-compositor-plus/bin"
+  install -m 755 "usr/share/steamos-compositor-plus/bin/dpkg-query" "$pkgdir/usr/share/steamos-compositor-plus/bin"
   install -m 644 "usr/share/xsessions/steamos.desktop" "$pkgdir/usr/share/xsessions"
   install -m 644 "usr/share/icons/steam/arrow.png" "$pkgdir/usr/share/icons/steam"
   install -m 644 "usr/share/pixmaps/steam-bootstrapper.jpg" "$pkgdir/usr/share/pixmaps"
