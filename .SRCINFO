@@ -1,0 +1,23 @@
+pkgbase = python-maxfield-git
+	pkgdesc = An Ingress Linking and Fielding Strategy Generator
+	pkgver = 4.0.r18.gc12493f
+	pkgrel = 1
+	url = https://github.com/tvwenger/maxfield
+	arch = any
+	license = GPL3
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-numpy
+	depends = python-networkx
+	depends = python-scipy
+	depends = python-or-tools
+	depends = python-matplotlib
+	depends = python-imageio
+	depends = python-gifsicle
+	provides = python-maxfield
+	conflicts = python-maxfield
+	source = git+https://github.com/tvwenger/maxfield.git
+	sha256sums = SKIP
+
+pkgname = python-maxfield-git
