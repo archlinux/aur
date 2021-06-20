@@ -9,7 +9,7 @@ pkgbase = pacman-hook-kernel-install
 	depends = systemd
 	source = kernel-install-add.hook
 	source = kernel-install-remove.hook
-	sha256sums = 5dc144ce6fb228d25f93f5ea5782575052a28ecc40f5fb261d94158f95ce965a
-	sha256sums = 902833c085cdb80eceb9ee7f34a117bea89ea1cc79aa5f4dbae1e184e5b43fd5
+	sha256sums = a2b5181c48d0891094e1aff85057de48cf4e7db619a9d073cf20b3e20a35785c
+	sha256sums = 9e5c1141acc66205d358b50328266e47f180e16f09f11d411a8bc2382865809d
 
 pkgname = pacman-hook-kernel-install
