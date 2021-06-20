@@ -3,7 +3,7 @@
 _npmname=dockerfile-language-server-nodejs
 pkgname=dockerfile-language-server-bin
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Language server implementation for Dockerfiles"
 arch=('any')
 url="https://www.npmjs.com/package/dockerfile-language-server-nodejs"
@@ -20,5 +20,6 @@ package() {
     local _npmdir="${pkgdir}/usr/lib/node_modules/"
     mkdir -p "${_npmdir}"
     cd "${_npmdir}"
-    npm install --user root -g --prefix "${pkgdir}/usr" "${_npmname}@${_npmver}"
+    npm install -g --prefix "${pkgdir}/usr" "${_npmname}@${_npmver}"
+    chown -R root:root "${pkgdir}"
 }
