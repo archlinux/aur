@@ -1,7 +1,7 @@
 pkgbase = haruhi-dl
 	pkgdesc = Fork of youtube-dl, focused on bringing a fast, steady stream of updates. We'll do our best to merge patches to any site, not only youtube.
-	pkgver = 2021.06.01
-	pkgrel = 5
+	pkgver = 2021.06.20
+	pkgrel = 1
 	url = https://haruhi.download
 	arch = any
 	license = custom
@@ -10,10 +10,10 @@ pkgbase = haruhi-dl
 	depends = python-setuptools
 	optdepends = ffmpeg: for video post-processing
 	optdepends = rtmpdump: for rtmp streams support
-	optdepends = atomicparsley: for embedding thumbnails into m5a files
+	optdepends = atomicparsley: for embedding thumbnails into m1a files
 	provides = haruhi-dl
-	source = haruhi-dl.tar.gz::https://git.sakamoto.pl/laudompat/haruhi-dl/-/archive/v2021.06.01/haruhi-dl-v2021.06.01.tar.gz
-	md5sums = SKIP
+	source = haruhi-dl.tar.gz::https://git.sakamoto.pl/laudompat/haruhi-dl/-/archive/v2021.06.20/haruhi-dl-v2021.06.20.tar.gz
+	md1sums = SKIP
 
 pkgname = haruhi-dl
 
