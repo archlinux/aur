@@ -1,6 +1,6 @@
 pkgbase = blender-3.0-bin
 	pkgdesc = A fully integrated 3D graphics creation suite
-	pkgver = 3.0.210525.0606a37e1a8c
+	pkgver = 3.0.210620.3da25dc625c8
 	pkgrel = 1
 	url = https://www.blender.org
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = blender-3.0-bin
 	depends = python
 	depends = desktop-file-utils
 	depends = python-requests
+	depends = potrace
 	depends = shared-mime-info
 	depends = hicolor-icon-theme
 	depends = xdg-utils
@@ -25,6 +26,7 @@ pkgbase = blender-3.0-bin
 	depends = boost-libs
 	depends = opencollada
 	depends = alembic
+	depends = openxr
 	depends = openimageio
 	depends = libsndfile
 	depends = jack
@@ -40,8 +42,7 @@ pkgbase = blender-3.0-bin
 	depends = sdl2
 	depends = embree
 	optdepends = cuda: cycles renderer cuda support
-	source = daily.210525.html::https://builder.blender.org/download/
+	source = daily.210619.html::https://builder.blender.org/download/
 	md5sums = SKIP
 
 pkgname = blender-3.0-bin
-
