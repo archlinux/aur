@@ -2,7 +2,7 @@
 
 _name=sticky-window-snapping
 pkgname=kwin-scripts-${_name}-git
-pkgver=r52.3833af8
+pkgver=r69.a0d500d
 pkgrel=1
 pkgdesc="KWin script that makes window edges sticky while resizing."
 arch=('any')
@@ -23,7 +23,7 @@ pkgver() {
 }
 
 package() {
-  cd ${pkgname}
+  cd ${pkgname}/package
   mkdir -p "$pkgdir"/usr/share/kwin/scripts
   mkdir -p "$pkgdir"/usr/share/kservices5
   plasmapkg2 --type KWin/Script --packageroot "$pkgdir"/usr/share/kwin/scripts --install .
