@@ -1,0 +1,15 @@
+pkgbase = backlight-dbus-git
+	pkgdesc = C library for handling multi-dimensional, compressed datasets
+	pkgver = r6.71546b1
+	pkgrel = 1
+	url = https://github.com/maxerenberg/backlight-dbus
+	arch = armv7h
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = systemd-libs
+	source = git+https://github.com/maxerenberg/backlight-dbus
+	sha256sums = SKIP
+
+pkgname = backlight-dbus-git
