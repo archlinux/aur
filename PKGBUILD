@@ -1,4 +1,5 @@
 # Maintainer: Matteo Bonora <bonora.matteo@gmail.com>
+# Contributor: Grigoris Pavlakis (aur.archlinux.org/account/lightspot21)
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Nick B <Shirakawasuna at gmail _dot_ com>
 # Contributor: Dany Martineau <dany.luc.martineau at gmail.com>
@@ -12,14 +13,23 @@ url="http://www.happypenguin.org/show?Virus%20Killer"
 license=('GPL')
 depends=('gcc-libs' 'hicolor-icon-theme' 'sdl_image' 'sdl_mixer' 'sdl_net' 'sdl_ttf')
 install="${pkgname}.install"
-source=("http://ftp.frugalware.org/pub/archive/frugalware-1.9/source/games-extra/viruskiller/viruskiller-1.03-1.tar.gz"
-        "${pkgname}.patch")
-md5sums=('ac74f8a49d249a87e3e77cadd9aa6fa9'
-         '634374b2c8d57360126b22fc33dfe217')
+source=("https://ftp.lysator.liu.se/pub/opensuse/source/tumbleweed/repo/oss/src/${pkgname}-${pkgver}-2.12.src.rpm"
+        "${pkgname}.patch"
+	"fix-warnings.patch")
+sha256sums=('456fa53eeed954a2528e7c2580970e1871aff8926be784ac0ad41a0477d00cb6'
+            '1aa8f806bf15737404e71f94d0b3d7b170d52484c1618c36374433963441e642'
+	    'e6d35b7c288e120055823f97df17e2c4f575bcf77899ff346e9ba1fdfde6cdbf')
+
+prepare() {
+  bsdtar -xf "${pkgname}-${pkgver}-2.12.src.rpm"
+  bsdtar -xf "${pkgname}-${pkgver}.tar.gz"
+}
+
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   patch -Np1 -i "../${pkgname}.patch"
+  patch -Np1 -i "../fix-warnings.patch"
   make
 }
 

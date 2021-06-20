@@ -1,0 +1,225 @@
+From b8c4e7986adb49742c382caad5bc8ce6f58e027f Mon Sep 17 00:00:00 2001
+From: Grigoris Pavlakis <aur.archlinux.org/account/lightspot21>
+Date: Sat, 19 Jun 2021 23:26:58 +0300
+Subject: [PATCH 1/5] Fix warnings
+
+---
+ src/CAudio.cpp    | 2 +-
+ src/CEngine.cpp   | 2 +-
+ src/CGraphics.cpp | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/CAudio.cpp b/src/CAudio.cpp
+index 04cbb74..df4551b 100644
+--- a/src/CAudio.cpp
++++ b/src/CAudio.cpp
+@@ -89,7 +89,7 @@ bool Audio::loadSound(int i, const char *filename)
+ 
+ bool Audio::loadMusic(const char *filename)
+ {
+-	char tempPath[PATH_MAX];
++	char tempPath[PATH_MAX + 9]; // to accommodate the filename
+ 	
+ 	sprintf(tempPath, "%smusic.mod", engine->userHomeDirectory);
+ 	
+diff --git a/src/CEngine.cpp b/src/CEngine.cpp
+index b02305a..186ae68 100644
+--- a/src/CEngine.cpp
++++ b/src/CEngine.cpp
+@@ -304,7 +304,7 @@ bool Engine::unpack(const char *filename, int fileType)
+ 
+ 	if ((fileType == PAK_MUSIC) || (fileType == PAK_FONT))
+ 	{
+-		char tempPath[PATH_MAX];
++		char tempPath[PATH_MAX + 9]; // to accommodate the file name
+ 
+ 		FILE *fp = NULL;
+ 
+diff --git a/src/CGraphics.cpp b/src/CGraphics.cpp
+index 8bfde6c..a07569a 100644
+--- a/src/CGraphics.cpp
++++ b/src/CGraphics.cpp
+@@ -427,7 +427,7 @@ void Graphics::loadFont(int i, const char *filename, int pixelSize)
+ 		TTF_CloseFont(font[i]);
+ 	}
+ 	
+-	char tempPath[PATH_MAX];
++	char tempPath[PATH_MAX + 8]; // accommodate filename
+ 	
+ 	sprintf(tempPath, "%sfont.ttf", engine->userHomeDirectory);
+ 
+-- 
+2.32.0
+
+
+From cd547df641b59fdcf346d3fbe32b14ece13c1195 Mon Sep 17 00:00:00 2001
+From: Grigoris Pavlakis <aur.archlinux.org/account/lightspot21>
+Date: Sat, 19 Jun 2021 23:34:05 +0300
+Subject: [PATCH 2/5] Add virtual destructor to fix possible undefined behavior
+ warning
+
+---
+ src/CGameObject.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/CGameObject.h b/src/CGameObject.h
+index 80625af..c1d1b25 100644
+--- a/src/CGameObject.h
++++ b/src/CGameObject.h
+@@ -25,6 +25,7 @@ class GameObject {
+ 		GameObject *next;
+ 
+ 	GameObject();
++	virtual ~GameObject() = default;
+ 	virtual void destroy();
+ 
+ };
+-- 
+2.32.0
+
+
+From 5768c30acde83ca8562bbaf10e652110e3e9f6fd Mon Sep 17 00:00:00 2001
+From: Grigoris Pavlakis <aur.archlinux.org/account/lightspot21>
+Date: Sat, 19 Jun 2021 23:36:06 +0300
+Subject: [PATCH 3/5] Fix typo causing possible undefined behavior
+
+---
+ src/CParticle.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/CParticle.cpp b/src/CParticle.cpp
+index 9d34850..abffbdd 100644
+--- a/src/CParticle.cpp
++++ b/src/CParticle.cpp
+@@ -23,7 +23,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ Particle::Particle()
+ {
+ 	x = y = 0;
+-	dy = dy = 0;
++	dx = dy = 0;
+ 	color = 0;
+ 	health = 0;
+ }
+-- 
+2.32.0
+
+
+From b886eed3dcaba994c88245b9f623d460b994eb89 Mon Sep 17 00:00:00 2001
+From: Grigoris Pavlakis <aur.archlinux.org/account/lightspot21>
+Date: Sat, 19 Jun 2021 23:42:54 +0300
+Subject: [PATCH 4/5] Fix warnings regarding too small buffer
+
+---
+ src/init.cpp | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/init.cpp b/src/init.cpp
+index c8d2c50..c19e91f 100644
+--- a/src/init.cpp
++++ b/src/init.cpp
+@@ -131,7 +131,7 @@ void initMedalService()
+ 	graphics.drawString(400, 520, true, graphics.screen, "Contacting Medal Server - %s:%d", MEDAL_SERVER_HOST, MEDAL_SERVER_PORT);
+ 	graphics.updateScreen();
+ 	
+-	char keyPath[PATH_MAX];
++	char keyPath[PATH_MAX + 8]; // accommodate the "medalKey" filename
+ 	char privateKey[20];
+ 
+ 	sprintf(keyPath, "%smedalKey", engine.userHomeDirectory);
+@@ -160,7 +160,7 @@ void initMedalService()
+ 
+ bool loadConfig()
+ {
+-	char configPath[PATH_MAX];
++	char configPath[PATH_MAX + 6]; // fit "config" filename 
+ 
+ 	sprintf(configPath, "%sconfig", engine.userHomeDirectory);
+ 
+@@ -193,7 +193,7 @@ bool loadConfig()
+ 
+ void saveConfig()
+ {
+-	char configPath[PATH_MAX];
++	char configPath[PATH_MAX + 6]; // fit "config" filename
+ 
+ 	sprintf(configPath, "%sconfig", engine.userHomeDirectory);
+ 
+@@ -282,7 +282,7 @@ void initSystem()
+ 	
+ 	#if USEPAK
+ 			
+-		char tempPath[PATH_MAX];
++		char tempPath[PATH_MAX + 8]; // fit "font.ttf" filename in buffer
+ 		sprintf(tempPath, "%sfont.ttf", engine.userHomeDirectory);	
+ 		remove(tempPath);
+ 		
+@@ -337,7 +337,7 @@ atexit();
+ */
+ void cleanup()
+ {
+-	char tempPath[PATH_MAX];
++	char tempPath[PATH_MAX + 9]; // fit the biggest filename "music.mod"
+ 	
+ 	debug(("Cleaning Up...\n"));
+ 
+-- 
+2.32.0
+
+
+From 383ddb0c5d9956e7076e0024e96f8b901535641f Mon Sep 17 00:00:00 2001
+From: Grigoris Pavlakis <aur.archlinux.org/account/lightspot21>
+Date: Sun, 20 Jun 2021 00:08:35 +0300
+Subject: [PATCH 5/5] Fix yet more warnings
+
+---
+ src/viruses.cpp | 3 ---
+ src/widgets.cpp | 5 +++--
+ 2 files changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/src/viruses.cpp b/src/viruses.cpp
+index 4457a05..2e27b64 100644
+--- a/src/viruses.cpp
++++ b/src/viruses.cpp
+@@ -70,7 +70,6 @@ void addViruses(int amount)
+ 
+ 	Virus *virus;
+ 
+-	int place;
+ 	int chompChance = 10 - (gameData.level);
+ 	int destroyChance = 20 - (gameData.level);
+ 	
+@@ -79,8 +78,6 @@ void addViruses(int amount)
+ 
+ 	for (int i = 0 ; i < amount ; i++)
+ 	{
+-		place = rand() % 4;
+-
+ 		virus = new Virus();
+ 
+ 		if (gameData.skill < 3)
+diff --git a/src/widgets.cpp b/src/widgets.cpp
+index cda06ee..aeb53f7 100644
+--- a/src/widgets.cpp
++++ b/src/widgets.cpp
+@@ -28,7 +28,7 @@ void drawOptions(Widget *widget, int maxWidth)
+ 
+ 	char *c = widget->options;
+ 
+-	char token[100];
++	char token[100 + 2]; // fit c and null-termination
+ 	strcpy(token, "");
+ 	
+ 	SDL_Surface *text;
+@@ -61,7 +61,8 @@ void drawOptions(Widget *widget, int maxWidth)
+ 		}
+ 		else
+ 		{
+-			sprintf(token, "%s%c", token, *c);
++			strncat(token, c, 1);
++			//sprintf(token, "%s%c", token, *c);
+ 		}
+ 
+ 		*c++;
+-- 
+2.32.0
+

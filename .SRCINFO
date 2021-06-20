@@ -13,10 +13,11 @@ pkgbase = viruskiller
 	depends = sdl_mixer
 	depends = sdl_net
 	depends = sdl_ttf
-	source = http://ftp.frugalware.org/pub/archive/frugalware-1.9/source/games-extra/viruskiller/viruskiller-1.03-1.tar.gz
+	source = https://ftp.lysator.liu.se/pub/opensuse/source/tumbleweed/repo/oss/src/viruskiller-1.03-2.12.src.rpm
 	source = viruskiller.patch
-	md5sums = ac74f8a49d249a87e3e77cadd9aa6fa9
-	md5sums = 634374b2c8d57360126b22fc33dfe217
+	source = fix-warnings.patch
+	sha256sums = 456fa53eeed954a2528e7c2580970e1871aff8926be784ac0ad41a0477d00cb6
+	sha256sums = 1aa8f806bf15737404e71f94d0b3d7b170d52484c1618c36374433963441e642
+	sha256sums = e6d35b7c288e120055823f97df17e2c4f575bcf77899ff346e9ba1fdfde6cdbf
 
 pkgname = viruskiller
-
