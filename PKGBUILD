@@ -5,10 +5,10 @@ pkgname=tlauncher
 pkgver=1.120.2
 pkgrel=1
 epoch=1
-pkgdesc='TLauncher Legacy is freeware launcher of Minecraft.'
+pkgdesc='TL (Legacy) is freeware launcher of Minecraft.'
 url='https://tlaun.ch'
 arch=('any')
-license=('GPLv3')
+license=('custom')
 depends=('java-runtime>=8')
 optdepends=('xorg-xrandr: Required for some old Minecraft versions')
 

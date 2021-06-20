@@ -1,12 +1,12 @@
 pkgbase = tlauncher
-	pkgdesc = TLauncher Legacy is freeware launcher of Minecraft.
+	pkgdesc = TL (Legacy) is freeware launcher of Minecraft.
 	pkgver = 1.120.2
 	pkgrel = 1
 	epoch = 1
 	url = https://tlaun.ch
 	install = tlauncher.install
 	arch = any
-	license = GPLv3
+	license = custom
 	depends = java-runtime>=8
 	optdepends = xorg-xrandr: Required for some old Minecraft versions
 	noextract = e04f195ab2bdb4768e3d325a01d9fd5c2f92a964fca584943e787419e2e37369.jar
@@ -115,4 +115,3 @@ pkgbase = tlauncher
 	sha256sums = 0b31e2afee3a709c74daa0df9345d15c01ea361f8beee26e6cfac2a3b518aa23
 
 pkgname = tlauncher
-
