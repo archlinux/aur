@@ -1,7 +1,7 @@
 pkgbase = quasar-cli
 	pkgdesc = CLI management tool for development with the Quasar framework
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://quasar.dev
 	arch = any
 	license = MIT

@@ -7,7 +7,7 @@ _npmid="@$_npmscope/$_npmname"
 
 pkgname="${_npmscope}-${_npmname}"
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI management tool for development with the Quasar framework'
 arch=('any')
 url=https://quasar.dev
@@ -23,7 +23,7 @@ sha1sums=('4a6d395648f70446158f90479ba069a837ef037f')
 
 package() {
  # Setting temporary cache
-  npm install -g --user root --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "${source[@]%%::*}"
+  npm install -g --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "${source[@]%%::*}"
 
   # Non-deterministic race in npm gives 777 permissions to random directories.
   # See https://github.com/npm/npm/issues/9359 for details.
