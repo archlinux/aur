@@ -1,0 +1,23 @@
+pkgbase = website-stalker-bin
+	pkgdesc = Subscribe to a MQTT Topic or publish something quickly from the terminal
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/EdJoPaTo/website-stalker
+	arch = x86_64
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	license = LGPL-2.1-or-later
+	depends = git
+	provides = website-stalker
+	conflicts = website-stalker
+	source_x86_64 = https://github.com/EdJoPaTo/website-stalker/releases/download/v0.6.0/website-stalker-v0.6.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = beaff028c52e4c13aa394cbd8d81a3b6e82efd298e1962f3d147e6d6cb239278
+	source_aarch64 = https://github.com/EdJoPaTo/website-stalker/releases/download/v0.6.0/website-stalker-v0.6.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = bd6697d6be73f42135c7890ff4a3e2d1f6bb291b3fe7c6a9ede07183bbb4f3af
+	source_armv6h = https://github.com/EdJoPaTo/website-stalker/releases/download/v0.6.0/website-stalker-v0.6.0-arm-unknown-linux-gnueabihf.tar.gz
+	sha256sums_armv6h = eb3525fbe722a58a445b1d1d5f61605faa4cd41f75d3e0570a2ec8f17542d438
+	source_armv7h = https://github.com/EdJoPaTo/website-stalker/releases/download/v0.6.0/website-stalker-v0.6.0-armv7-unknown-linux-gnueabihf.tar.gz
+	sha256sums_armv7h = fa8066ea373eaf99e6a8cbfe238b3fbee8a0b3d8950458e4cb8315efcba75e07
+
+pkgname = website-stalker-bin
