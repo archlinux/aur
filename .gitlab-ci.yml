@@ -17,9 +17,9 @@ update_hash:
     # update package hash for integrity check
     - updpkgsums
   cache:
-    key:
-      files:
-        - PKGBUILD
+    key: pkgbuild
+    paths:
+      - PKGBUILD
 
 makepkg:
   stage: build
