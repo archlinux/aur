@@ -1,6 +1,6 @@
 pkgbase = pipewire-full-git
 	pkgdesc = Low-latency audio/video router and processor
-	pkgver = 0.3.30.r35.g1b5ffa78
+	pkgver = 0.3.30.r143.ga19ab4a2
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
