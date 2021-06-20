@@ -1,0 +1,12 @@
+pkgbase = tiger1
+	pkgdesc = Identifying rapidly-evolving characters in evolutionary data
+	pkgver = 1.02
+	pkgrel = 1
+	url = http://mcinerneylab.com/software/tiger/,
+	arch = x86_64
+	license = GPL3
+	depends = python2>=2.6
+	source = https://github.com/starsareintherose/tiger/releases/download/1.02/tiger_unix_1.02.zip
+	md5sums = a9984eb7fcf41b0f6ea63b8a49e7b6a9
+
+pkgname = tiger1
