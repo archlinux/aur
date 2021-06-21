@@ -2,7 +2,7 @@
 
 pkgname=java-language-server
 pkgver=0.2.32
-pkgrel=2
+pkgrel=3
 pkgdesc="Java language server using the Java compiler API"
 arch=(any)
 url="https://github.com/georgewfraser/java-language-server"
@@ -16,7 +16,7 @@ sha256sums=('82c64762bf5ef1919966c004abd0878487e2e387f8de2b03bb6c02e3cf4d81d5'
             '26eb4214d744c16cd4e8976e495f6cad8c7c98d4ffad3ec79b71b6241e0a1bbf')
 
 build() {
-    export JAVA_HOME="/usr/lib/jvm/java-15-openjdk"
+    export JAVA_HOME="/usr/lib/jvm/java-16-openjdk"
     cd "${srcdir}/${pkgname}-${pkgver}"
     ./scripts/link_linux.sh
     mvn package -DskipTests
