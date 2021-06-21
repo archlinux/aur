@@ -1,4 +1,5 @@
 pkgbase = r-xfun
+	pkgdesc = Supporting Functions for Packages Maintained by "Yihui Xie"
 	pkgver = 0.24
 	pkgrel = 1
 	url = https://cran.r-project.org/package=xfun
