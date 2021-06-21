@@ -6,7 +6,7 @@
 
 _pkgname='gnome-terminal'
 pkgname="${_pkgname}-fedora"
-pkgver=3.40.1
+pkgver=3.40.2
 pkgrel=1
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 arch=('i686'
@@ -16,13 +16,9 @@ license=('GPL')
 depends=('vte3-notification>=0.64.0'
          'gsettings-desktop-schemas')
 makedepends=('git'
-             'appstream-glib'
              'docbook-xsl'
-             'intltool'
-             'itstool'
              'libnautilus-extension'
              'gnome-shell'
-             'vala'
              'yelp-tools')
 optdepends=('gconf: for gnome-terminal-migration'
             'libnautilus-extension: for "Open Terminal Here" in GNOME Files')
@@ -34,7 +30,7 @@ groups=('gnome')
 # Fedora patches: https://src.fedoraproject.org/cgit/rpms/gnome-terminal.git/tree/
 _frepourl='https://src.fedoraproject.org/rpms/gnome-terminal'
 _frepobranch='rawhide'
-_fcommit='6a2bc659a7e17400c8b3346cff6fbf669b84e1a5'
+_fcommit='20c8ae0c81509876966af004f9b8510adb255954'
 _fpatchfile100='0001-build-Don-t-treat-warnings-as-errors.patch'
 _fpatchfile101='gnome-terminal-cntr-ntfy-autottl-ts.patch'
 _fpatchfile000='gnome-terminal-backports-from-upstream.patch'
@@ -44,13 +40,13 @@ source=(
 	"https://download.gnome.org/sources/${_pkgname}/${pkgver::4}/${_pkgname}-${pkgver}.tar.xz"
 	"${_fpatchfile100}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile100}"
 	"${_fpatchfile101}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile101}"
-	"${_fpatchfile000}-${_fcommit}::${_frepourl}/raw/${_frepobranch}/f/${_fpatchfile000}"
+	"${_fpatchfile000}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile000}"
 	"${_fgsoverridefile}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fgsoverridefile}"
 )
-sha256sums=('0770cc7320d737fb2eaf9e4cf5ecc6a741f120b17b192f061f683e14b869d8e4'
+sha256sums=('4c79af8ffe8bd3a5daca1911ea2c0acd6872860a1dd5d7eea219f4ab4ae556ac'
             '672615edf1f8e5ede72bdfa2e671ad35d355a1df64f349762899ad7bc7254769'
-            '5e3bd6238c1e33038ed5c43f130a14ad60e118e0f6a2fb29a119fbf6b441f992'
-            '71e32b4db4c07dc3db0d8884f4f818abc6c9ada8f5f3609b0a2d3f8cd8919299'
+            'ecddc88378946a22e71fa1957d74fa6083e70cba512d4a3cbcce34a3289198af'
+            'f86490a61bc76d4a7e63f1ae9f8eb9ce280831c8d7bc252a59a6853c701566dc'
             'a4a22834d6524fb697a8edf91c9489617d5ab2e513413fc84c6b8575320938f9')
 
 prepare () {

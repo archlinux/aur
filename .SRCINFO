@@ -1,6 +1,6 @@
 pkgbase = gnome-terminal-fedora
 	pkgdesc = The GNOME Terminal Emulator with Fedora patches
-	pkgver = 3.40.1
+	pkgver = 3.40.2
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Terminal
 	arch = i686
@@ -10,29 +10,24 @@ pkgbase = gnome-terminal-fedora
 	depends = vte3-notification>=0.64.0
 	depends = gsettings-desktop-schemas
 	makedepends = git
-	makedepends = appstream-glib
 	makedepends = docbook-xsl
-	makedepends = intltool
-	makedepends = itstool
 	makedepends = libnautilus-extension
 	makedepends = gnome-shell
-	makedepends = vala
 	makedepends = yelp-tools
 	optdepends = gconf: for gnome-terminal-migration
 	optdepends = libnautilus-extension: for "Open Terminal Here" in GNOME Files
-	provides = gnome-terminal=3.40.1
+	provides = gnome-terminal=3.40.2
 	conflicts = gnome-terminal
 	options = !emptydirs
-	source = https://download.gnome.org/sources/gnome-terminal/3.40/gnome-terminal-3.40.1.tar.xz
-	source = 0001-build-Don-t-treat-warnings-as-errors.patch-9bd56a2bc659a7e17400c8b3346cff6fbf669b84e1a5071a07c839d3ab0571e361be1bcadea4a70a::https://src.fedoraproject.org/rpms/gnome-terminal/raw/6a2bc659a7e17400c8b3346cff6fbf669b84e1a5/f/0001-build-Don-t-treat-warnings-as-errors.patch
-	source = gnome-terminal-cntr-ntfy-autottl-ts.patch-6a2bc659a7e17400c8b3346cff6fbf669b84e1a5::https://src.fedoraproject.org/rpms/gnome-terminal/raw/6a2bc659a7e17400c8b3346cff6fbf669b84e1a5/f/gnome-terminal-cntr-ntfy-autottl-ts.patch
-	source = gnome-terminal-backports-from-upstream.patch-6a2bc659a7e17400c8b3346cff6fbf669b84e1a5::https://src.fedoraproject.org/rpms/gnome-terminal/raw/6a2bc659a7e17400c8b3346cff6fbf669b84e1a5/f/gnome-terminal-backports-from-upstream.patch
-	source = org.gnome.Terminal.gschema.override-6a2bc659a7e17400c8b3346cff6fbf669b84e1a5::https://src.fedoraproject.org/rpms/gnome-terminal/raw/6a2bc659a7e17400c8b3346cff6fbf669b84e1a5/f/org.gnome.Terminal.gschema.override
-	sha256sums = 0770cc7320d737fb2eaf9e4cf5ecc6a741f120b17b192f061f683e14b869d8e4
+	source = https://download.gnome.org/sources/gnome-terminal/3.40/gnome-terminal-3.40.2.tar.xz
+	source = 0001-build-Don-t-treat-warnings-as-errors.patch-20c8ae0c81509876966af004f9b8510adb255954::https://src.fedoraproject.org/rpms/gnome-terminal/raw/20c8ae0c81509876966af004f9b8510adb255954/f/0001-build-Don-t-treat-warnings-as-errors.patch
+	source = gnome-terminal-cntr-ntfy-autottl-ts.patch-20c8ae0c81509876966af004f9b8510adb255954::https://src.fedoraproject.org/rpms/gnome-terminal/raw/20c8ae0c81509876966af004f9b8510adb255954/f/gnome-terminal-cntr-ntfy-autottl-ts.patch
+	source = gnome-terminal-backports-from-upstream.patch-20c8ae0c81509876966af004f9b8510adb255954::https://src.fedoraproject.org/rpms/gnome-terminal/raw/20c8ae0c81509876966af004f9b8510adb255954/f/gnome-terminal-backports-from-upstream.patch
+	source = org.gnome.Terminal.gschema.override-20c8ae0c81509876966af004f9b8510adb255954::https://src.fedoraproject.org/rpms/gnome-terminal/raw/20c8ae0c81509876966af004f9b8510adb255954/f/org.gnome.Terminal.gschema.override
+	sha256sums = 4c79af8ffe8bd3a5daca1911ea2c0acd6872860a1dd5d7eea219f4ab4ae556ac
 	sha256sums = 672615edf1f8e5ede72bdfa2e671ad35d355a1df64f349762899ad7bc7254769
-	sha256sums = 5e3bd6238c1e33038ed5c43f130a14ad60e118e0f6a2fb29a119fbf6b441f992
-	sha256sums = 71e32b4db4c07dc3db0d8884f4f818abc6c9ada8f5f3609b0a2d3f8cd8919299
+	sha256sums = ecddc88378946a22e71fa1957d74fa6083e70cba512d4a3cbcce34a3289198af
+	sha256sums = f86490a61bc76d4a7e63f1ae9f8eb9ce280831c8d7bc252a59a6853c701566dc
 	sha256sums = a4a22834d6524fb697a8edf91c9489617d5ab2e513413fc84c6b8575320938f9
 
 pkgname = gnome-terminal-fedora
-
