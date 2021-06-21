@@ -4,9 +4,15 @@ stages:
   - build
   - check
   - release
+  - publish
 
 
 before_script:
+  - command -v ssh-agent >/dev/null || ( sudo pacman -Sy openssh )
+  - eval $(ssh-agent -s)
+  - echo "$AUR_SSH_KEY" | tr -d '\r' | ssh-add -
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
   - git config --global user.email "${GIT_USER_EMAIL:-$GITLAB_USER_EMAIL}"
   - git config --global user.name "${GIT_USER_NAME:-$GITLAB_USER_NAME}"
 
@@ -46,3 +52,9 @@ push:
   rules:
     - if: '$CI_PIPELINE_SOURCE != "merge_request_event"'
       when: never
+
+publish:
+  stage: publish
+  script:
+    - git remote add aur-defi-app-bin ssh://aur@aur.archlinux.org/defi-app-bin.git
+    - git push aur
