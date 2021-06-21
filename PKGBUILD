@@ -2,7 +2,7 @@
 # Contributor: Oliver Rümpelein <arch@pheerai.de>
 
 pkgname=mergerfs
-pkgver=2.32.4
+pkgver=2.32.5
 pkgrel=1
 pkgdesc="FUSE based union filesystem"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('git')
 optdepends=('fuse2: for mounting via fstab')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 #source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('3800c0c64f7b56df21782a781fd04d86')
+md5sums=('82f2e622c471e9e45788c297bb6dabfb')
 
 prepare() {
   cd $pkgname-$pkgver
