@@ -1,10 +1,12 @@
 pkgbase = scrap_engine-git
-	pkgver = 0.1.0.r5.g489e59d
+	pkgver = 0.1.3.r2.gdb0d586
 	pkgrel = 1
 	url = https://github.com/lxgr-linux/scrap_engine
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	source = scrap_engine-git::git+https://github.com/lxgr-linux/scrap_engine
 	md5sums = SKIP
@@ -19,4 +21,3 @@ pkgname = lil_t-git
 	depends = python
 	depends = python-scrap_engine-git
 	provides = lil_t
-

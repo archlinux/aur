@@ -2,13 +2,13 @@
 
 pkgbase=scrap_engine-git
 pkgname=('python-scrap_engine-git' 'lil_t-git')
-pkgver=0.1.0.r5.g489e59d
+pkgver=0.1.3.r2.gdb0d586
 pkgrel=1
 arch=(any)
 url="https://github.com/lxgr-linux/scrap_engine"
 license=('GPL3')
 depends=('python')
-makedepends=('git')
+makedepends=('git' 'python-setuptools' 'python-wheel')
 source=("$pkgbase"::'git+https://github.com/lxgr-linux/scrap_engine')
 md5sums=('SKIP')
 
@@ -22,7 +22,7 @@ package_python-scrap_engine-git() {
   depends=('python')
   pkgdesc="Python scrap_engine module"
   cd "${srcdir}/$pkgbase"
-  python setup.py install --root="$pkgdir"
+  python setup.py install --root="$pkgdir" --optimize=1
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/scrap_engine/LICENSE"
 }
 
