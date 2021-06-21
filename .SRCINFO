@@ -1,15 +1,15 @@
 pkgbase = qspec-git
 	pkgdesc = A GUI testing library for Qt desktop applications
-	pkgver = v0.2.r115.gaaae422
+	pkgver = v0.2.r121.gd1b04ad
 	pkgrel = 1
 	url = http://ugene.unipro.ru/
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = qt5-base
+	depends = qt5-webkit
 	depends = libxtst
 	source = qspec::git+https://github.com/ugeneunipro/QSpec.git
 	sha256sums = SKIP
 
 pkgname = qspec-git
-

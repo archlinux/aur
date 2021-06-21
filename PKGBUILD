@@ -1,12 +1,12 @@
 # Maintainer: Jens Staal <staal1978@gmail.com>
 pkgname=qspec-git
-pkgver=v0.2.r115.gaaae422
+pkgver=v0.2.r121.gd1b04ad
 pkgrel=1
 pkgdesc="A GUI testing library for Qt desktop applications"
 arch=('x86_64')
 url="http://ugene.unipro.ru/"
 license=('GPL')
-depends=('qt5-base' 'libxtst')
+depends=('qt5-base' 'qt5-webkit' 'libxtst')
 makedepends=('git')
 source=('qspec::git+https://github.com/ugeneunipro/QSpec.git')
 sha256sums=('SKIP')
