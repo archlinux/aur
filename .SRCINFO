@@ -1,6 +1,6 @@
 pkgbase = java-language-server-git
 	pkgdesc = Java language server using the Java compiler API
-	pkgver = 0.2.33.r1625.43ffea43
+	pkgver = 0.2.38.r1631.7fffb6c5
 	pkgrel = 1
 	url = https://github.com/georgewfraser/java-language-server.git
 	arch = any
@@ -17,4 +17,3 @@ pkgbase = java-language-server-git
 	sha256sums = 26eb4214d744c16cd4e8976e495f6cad8c7c98d4ffad3ec79b71b6241e0a1bbf
 
 pkgname = java-language-server-git
-

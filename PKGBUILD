@@ -2,7 +2,7 @@
 
 pkgname=java-language-server-git
 _pkgname=java-language-server
-pkgver=0.2.33.r1625.43ffea43
+pkgver=0.2.38.r1631.7fffb6c5
 pkgrel=1
 pkgdesc="Java language server using the Java compiler API"
 arch=('any')
@@ -27,7 +27,7 @@ pkgver() {
 }
 
 build() {
-    export JAVA_HOME="/usr/lib/jvm/java-15-openjdk"
+    export JAVA_HOME="/usr/lib/jvm/java-16-openjdk"
     cd "${srcdir}/${_pkgname}"
     ./scripts/link_linux.sh
     mvn package -DskipTests
