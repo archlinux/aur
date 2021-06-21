@@ -1,15 +1,13 @@
 pkgbase = adlmflexnetclient
-	pkgdesc = Autodesk Licensing Client Software
-	pkgver = 17.0.49
+	pkgdesc = Autodesk Network Licensing Client (Deprcate on August 7, 2021)
+	pkgver = 23.0.21
 	pkgrel = 1
 	url = https://www.autodesk.com/
 	arch = x86_64
 	license = custom
 	depends = gcc-libs
-	depends = glibc
 	options = !strip
-	source = manual://adlmflexnetclient-17.0.49-0.x86_64.rpm
-	sha256sums = 0f4864b1351c15d398bfd8106b65b92c8300f4824ac69f7d38278ebdeb325f18
+	source = manual://adlmflexnetclient-23.0.21-0.x86_64.rpm
+	sha256sums = db1df02db7d3c42c65a808d6cce6262da4587515161dfd5fc55d179bdf128ac7
 
 pkgname = adlmflexnetclient
-
