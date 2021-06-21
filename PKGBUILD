@@ -4,13 +4,12 @@ pkgname=biniax2
 pkgver=2.1.30
 _pkgname=biniax
 _pkgver=1.30
-pkgrel=9
+pkgrel=10
 pkgdesc="Arcade game : match two similar fruits, and they will disappear, just clear your way and avoid being blocked"
 arch=('i686' 'x86_64' 'aarch64')
 url="http://${_pkgname}.com/"
 license=('Zlib license')
 depends=('sdl' 'sdl_image' 'sdl_mixer')
-makedepends=('make' 'patch')
 install=${pkgname}.install
 source=("https://www.tuzsuzov.com/${_pkgname}/${pkgname}-${_pkgver}-fullsrc.tar.gz"
         "${pkgname}.desktop"
