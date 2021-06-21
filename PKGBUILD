@@ -6,11 +6,11 @@
 pkgname=gprbuild-bootstrap
 epoch=1
 pkgver=21.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Static GPRbuild to bootstrap XML/Ada and GPRbuild itself"
 arch=('i686' 'x86_64')
 url='https://github.com/AdaCore/gprbuild/'
-license=('GPL3')
+license=('GPL3' 'custom')
 depends=('gcc-ada')
 
 source=(
@@ -52,6 +52,16 @@ package() {
         --prefix=/usr \
         --libexecdir=/lib \
         --install
+
+    # Install the license.
+    install -D -m644     \
+       "COPYING3"        \
+       "$pkgdir/usr/share/licenses/$pkgname/COPYING3"
+
+    # Install the custom license.
+    install -D -m644     \
+       "COPYING.RUNTIME" \
+       "$pkgdir/usr/share/licenses/$pkgname/COPYING.RUNTIME"
 }
 
 # vim: set et ts=4:

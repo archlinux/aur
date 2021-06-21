@@ -1,12 +1,13 @@
 pkgbase = gprbuild-bootstrap
 	pkgdesc = Static GPRbuild to bootstrap XML/Ada and GPRbuild itself
 	pkgver = 21.0.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/AdaCore/gprbuild/
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	license = custom
 	depends = gcc-ada
 	source = gprbuild-21.0.0.tar.gz::https://github.com/AdaCore/gprbuild/archive/v21.0.0.tar.gz
 	source = xmlada-21.0.0.tar.gz::https://github.com/AdaCore/xmlada/archive/v21.0.0.tar.gz
@@ -16,4 +17,3 @@ pkgbase = gprbuild-bootstrap
 	sha256sums = 2aec26afad5bb1a4685d9c041c9c797ff5beda211a5e81f2a97452d2ceabc557
 
 pkgname = gprbuild-bootstrap
-
