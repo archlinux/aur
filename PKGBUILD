@@ -15,7 +15,7 @@ optdepends=('ffmpeg: for video post-processing'
             'atomicparsley: for embedding thumbnails into m3a files')
 provides=("haruhi-dl")
 source=("haruhi-dl.tar.gz::https://git.sakamoto.pl/laudompat/haruhi-dl/-/archive/v$pkgver/$_name.tar.gz")
-md3sums=('SKIP')
+md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_name"

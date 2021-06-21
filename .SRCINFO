@@ -13,7 +13,7 @@ pkgbase = haruhi-dl
 	optdepends = atomicparsley: for embedding thumbnails into m1a files
 	provides = haruhi-dl
 	source = haruhi-dl.tar.gz::https://git.sakamoto.pl/laudompat/haruhi-dl/-/archive/v2021.06.20/haruhi-dl-v2021.06.20.tar.gz
-	md1sums = SKIP
+	md5sums = SKIP
 
 pkgname = haruhi-dl
 
