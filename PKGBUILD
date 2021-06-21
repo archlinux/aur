@@ -1,14 +1,14 @@
 # Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
 _pkgname=ambpack
 pkgname=${_pkgname}-svn
-pkgver=r119
+pkgver=r121
 pkgrel=1
 pkgdesc='AMB stands for Ancient Machines Book. It is an extremely lightweight file format meant to store any kind of hypertext documentation '
 url='http://ambook.sourceforge.net/'
 license=('MIT')
 arch=('x86_64' 'aarch64')
 conflicts=(${_pkgname})
-makedepends=('subversion' 'tar' 'make' 'gcc' 'sed') 
+makedepends=('subversion') 
 source=("svn+https://svn.code.sf.net/p/ambook/code/${_pkgname}/trunk")
 sha512sums=('SKIP')
 
@@ -31,6 +31,6 @@ build() {
 package() {
 	mkdir -p "${pkgdir}/usr/bin/"
 	cd ${srcdir}"/trunk/"
-	mv ${_pkgname}	${pkgdir}/usr/bin/
+	mv ${_pkgname} ${pkgdir}/usr/bin/
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
