@@ -1,14 +1,21 @@
 pkgbase = standardnotes-bin
-	pkgdesc = Standard Notes
-	pkgver = 3.8.2
-	pkgrel = 1
+	pkgdesc = A free, open-source and completely encrypted notes app
+	pkgver = 3.8.6
+	pkgrel = 2
 	url = https://standardnotes.org
 	arch = x86_64
+	arch = i686
 	license = AGPL3
+	makedepends = asar
 	depends = hicolor-icon-theme
+	provides = standardnotes-desktop
 	conflicts = standardnotes-desktop
 	options = !strip
-	source = standardnotes-bin-3.8.2-1.AppImage::https://github.com/standardnotes/desktop/releases/download/v3.8.2/standard-notes-3.8.2-linux-x86_64.AppImage
-	sha256sums = d6f74813c10f89a75aa463991806104013d0b11b1f3693a3934799f9b72ed918
+	source = standard-notes.sh
+	sha256sums = 71f0811526d428b541ef39ee804b257ed60b1b9b5d620436c79ed77e17eb4d16
+	source_x86_64 = standardnotes-bin-3.8.6-x86_64.AppImage::https://github.com/standardnotes/desktop/releases/download/v3.8.6/standard-notes-3.8.6-linux-x86_64.AppImage
+	sha256sums_x86_64 = 2fbe46d785d38d1c2274902d71856cf52582f33120cd9bfff48522d2ed4cb5f3
+	source_i686 = standardnotes-bin-3.8.6-i686.AppImage::https://github.com/standardnotes/desktop/releases/download/v3.8.6/standard-notes-3.8.6-linux-i386.AppImage
+	sha256sums_i686 = 5866173d4e8aad9c307dc256db5ea3738e1cc26ac9b94f1f1f40c6120185d858
 
 pkgname = standardnotes-bin
