@@ -8,12 +8,12 @@ pkgname=${_target}-${_compiler_name}-bin
 pkgver=7.5
 pkgrel=0
 epoch=
-pkgdesc="The GNU Compiler Collection - cross compiler for ARM EABI hard float target. (for armV7 target, Linux host)"
+pkgdesc="The GNU Compiler Collection - cross compiler for ARMv7 EABI hard float target."
 arch=('x86_64')
 url="http://releases.linaro.org/components/toolchain/binaries"
 license=('GPL' 'LGPL')
 groups=(${_target}-toolchain-linaro-bin)
-depends=()
+depends=("${_target}-binutils>=2.36.1-1" "${_target}-glibc>=2.33-3" libmpc elfutils zlib)
 makedepends=()
 checkdepends=()
 optdepends=()
