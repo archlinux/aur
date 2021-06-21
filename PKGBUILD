@@ -3,15 +3,20 @@
 
 pkgname=termscp
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A feature rich terminal UI file transfer and explorer"
 url="https://github.com/veeso/termscp"
 license=("MIT")
 arch=("any")
-depends=('gcc-libs' 'zlib' 'openssl')
-makedepends=('cargo')
+depends=('gcc-libs' 'glibc' 'zlib' 'openssl')
+makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('016fdad4d4bebaef788d582020f5233a3cfbe4c1801ff6dcfa88a67a19d10a74')
+
+prepare() {
+   cd "$pkgname-$pkgver"
+   cargo fetch --locked
+}
 
 build() {
    cd "$pkgname-$pkgver"
@@ -24,7 +29,11 @@ check() {
 
 package() {
    cd "$pkgname-$pkgver"
-   install -Dm755 target/release/termscp -t "$pkgdir/usr/bin/"
+   cargo install \
+      --locked \
+      --no-track \
+      --path . \
+      --root "${pkgdir}"/usr
    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
