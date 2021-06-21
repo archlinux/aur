@@ -1,0 +1,6 @@
+src/
+pkg/
+java-language-server/
+*.pkg.tar
+*.tar.gz
+*.tar.zst
