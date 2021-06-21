@@ -8,7 +8,7 @@
 
 pkgname=peazip-qt5-bin
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="File and archive manager, 7Z BR RAR TAR ZST ZIP files extraction utility"
 arch=('x86_64')
 url='https://peazip.github.io/peazip-linux.html'
@@ -29,4 +29,5 @@ package() {
   install -Dm644 "${pkgdir}/${_opt_dir}/copying.txt" -t "${pkgdir}/usr/share/licenses/peazip"
   install -Dm644 "${pkgdir}/${_freedesktop_dir}/peazip.desktop" -t "${pkgdir}/usr/share/applications"
   install -Dm644 "${pkgdir}/${_freedesktop_dir}/peazip.png" -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+  sed -i 's/^same/appdata/' "${pkgdir}/${_opt_dir}/res/altconf.txt"
 }

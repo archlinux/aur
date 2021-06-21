@@ -1,7 +1,7 @@
 pkgbase = peazip-qt5-bin
 	pkgdesc = File and archive manager, 7Z BR RAR TAR ZST ZIP files extraction utility
 	pkgver = 8.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://peazip.github.io/peazip-linux.html
 	arch = x86_64
 	license = LGPL3
