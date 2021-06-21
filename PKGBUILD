@@ -1,4 +1,4 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Robert R Miller <robertrmiller@outlook.com>
 # Contributor: June Tate-Gans <june@theonelab.com>
 
 pkgname=libfixposix
