@@ -8,7 +8,7 @@ stages:
 
 
 before_script:
-  - command -v ssh-agent >/dev/null || ( sudo pacman -Sy openssh )
+  - command -v ssh-agent >/dev/null || ( sudo pacman -Sy --noconfirm openssh )
   - eval $(ssh-agent -s)
   - echo "$AUR_SSH_KEY" | tr -d '\r' | ssh-add -
   - mkdir -p ~/.ssh
