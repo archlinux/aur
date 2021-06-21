@@ -4,9 +4,9 @@ pkgbase = zamonia-bin
 	pkgrel = 1
 	url = https://github.com/Luc-Saccoccio/zamonia
 	arch = x86_64
-	license = MIT
+	license = custom
 	depends = gmp
 	source = zamonia-bin-0.1.0.0.tar.gz::https://github.com/Luc-Saccoccio/zamonia/releases/download/v0.1.0.0/zamonia-0.1.0.0.tar.gz
-	sha512sums = b247dcc2672eeadb87cb1f75a5429fa8f0246a648389087ce2bc544ff00e2724fa485ccdd2beac1aaa324a4490872f22150999c2142f56f661b13640a8c5bc8d
+	sha512sums = 32a95f19ef8bdd8dde5e0e442cf3368067bc991c56bd274c8c22080e459c7e9841fa36ef88db09e128edbce4d3cd5a7922f5cf4e664fca91bbaee90b8692c716
 
 pkgname = zamonia-bin
