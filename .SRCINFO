@@ -1,15 +1,14 @@
 pkgbase = thes-bin
-	pkgdesc = A Completely Offline Thesaurus CLI Tool (Written in Rust)
-	pkgver = 0.1.2
-	pkgrel = 2
+	pkgdesc = A CLI tool that finds the location of IP addresses.
+	pkgver = 0.1.3
+	pkgrel = 1
 	url = https://github.com/DefunctLizard/thes
 	arch = x86_64
-	license = APACHE-2.0
+	license = GPL-3.0
 	makedepends = rust
 	makedepends = git
 	depends = glibc
-	source = https://github.com/DefunctLizard/thes/releases/download/0.1.2/thes-linux.x86_64
+	source = https://github.com/DefunctLizard/thes/releases/download/0.1.3/thes-linux.x86_64
 	md5sums = SKIP
 
 pkgname = thes-bin
-

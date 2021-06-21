@@ -2,15 +2,15 @@
 
 _pkgname='thes'
 pkgname=${_pkgname}-bin
-pkgver=0.1.2
-pkgrel=2
-pkgdesc="A Completely Offline Thesaurus CLI Tool (Written in Rust)"
+pkgver=0.1.3
+pkgrel=1
+pkgdesc="A CLI tool that finds the location of IP addresses."
 arch=('x86_64')
 url="https://github.com/DefunctLizard/thes"
-license=('APACHE-2.0')
+license=('GPL-3.0')
 depends=('glibc')
 makedepends=('rust' 'git')
-source=("https://github.com/DefunctLizard/thes/releases/download/0.1.2/thes-linux.x86_64")
+source=("https://github.com/DefunctLizard/thes/releases/download/0.1.3/thes-linux.x86_64")
 md5sums=('SKIP')
 
 package() {
