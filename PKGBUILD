@@ -2,13 +2,14 @@
 pkgname=python-pywikibot
 _module='pywikibot'
 pkgver=6.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python MediaWiki Bot Framework"
 url="https://www.mediawiki.org/wiki/Pywikibot"
 depends=('python' 'python-requests')
 optdepends=(
   'python-mwoauth: authentication'
-  'python-mwparserfromhell: parsing MediaWiki wikicode'
+  'python-mwparserfromhell: parsing MediaWiki wikicode (either mwparserfromhell or wikitextparser is required)'
+  'python-wikitextparser: parsing MediaWiki wikicode (either mwparserfromhell or wikitextparser is required)'
   'python-stdnum: cosmetic changes for numbers'
 )
 makedepends=('python-setuptools')
