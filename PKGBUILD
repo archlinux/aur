@@ -1,19 +1,16 @@
-# Maintainer: Mark Kostovetskyy <mark@sgtxd.de>
+# Maintainer: Mark Kostovetskyy <mark at sgtxd dot de >
 pkgname='ani-cli-git'
 _pkgname='ani-cli'
-pkgver='r23.986d561'
-pkgrel=1
+pkgver='r29.c03055d'
+pkgrel=2
 pkgdesc="A cli to browse and watch anime."
-arch=('x86_64')
+arch=('any')
 url="https://github.com/pystardust/ani-cli"
-license=('GPL')
+license=('GPL3')
 depends=('grep' 'curl' 'sed' 'mpv')
 makedepends=('git')
 source=('ani-cli::git://github.com/pystardust/ani-cli.git')
 md5sums=('SKIP')
-
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
@@ -24,3 +21,4 @@ package() {
 	cd "$srcdir/${_pkgname%-VCS}"
 	install -Dm755 ./ani-cli "$pkgdir/usr/bin/ani-cli"
 }
+
