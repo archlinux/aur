@@ -14,7 +14,6 @@ license=('GPL3' 'custom')
 depends=('libgpr')
 makedepends=('gprbuild')
 
-provides=('gnatcoll-core')
 conflicts=('gnatcoll' 'gnatcoll-core-git')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
