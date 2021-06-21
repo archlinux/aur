@@ -2,14 +2,14 @@
 
 _pkgname=dungeonrush
 pkgname=${_pkgname}-git
-pkgver=r101.136d3cb
+pkgver=r123.2b45a05
 pkgrel=1
 pkgdesc="A opensource game inspired by Snake with RPG elements, written in pure C with SDL"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Rapiz1/DungeonRush.git"
 license=('MIT')
 depends=('sdl2' 'sdl2_mixer' 'sdl2_ttf' 'sdl2_net' 'sdl2_image')
-makedepends=('sed' 'git' 'cmake' 'sdl2' 'sdl2_mixer' 'sdl2_ttf' 'sdl2_net' 'sdl2_image')
+makedepends=('git' 'cmake')
 source=("${pkgname%-*}::git+https://github.com/Rapiz1/DungeonRush.git")
 sha1sums=('SKIP')
 
