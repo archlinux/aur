@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="roundcubemail-plugin-carddav-git"
-pkgver=4.1.1.r2.g6e87d83
+pkgver=4.1.2.r1.gf18b131
 pkgrel=1
 pkgdesc="CardDAV plugin for RoundCube Webmailer"
 url="https://github.com/mstilkerich/rcmcarddav"
