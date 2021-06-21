@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=SNKRX
+Exec=SNKRX
+Icon=/usr/share/SNKRX/assets/images/icon.png
+Terminal=false
+Type=Application
+Categories=Game
+Comment=A replayable arcade shooter where you control a snake of heroes.
