@@ -1,8 +1,8 @@
 # Maintainer: Andrew Sun <adsun701 at gmail dot com>
-# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
+# Contributor: Alexander F. Rødseth <xyproto at archlinux dot org>
 
 pkgname=python-cma
-pkgver=3.0.3
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='The Covariance Matrix Adaptation Evolution Strategy'
 arch=(any)
