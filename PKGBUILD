@@ -2,8 +2,8 @@
 # Contributor: Plague-doctor <plague at privacyrequired dot com>
 
 pkgname=standardnotes-bin
-pkgver=3.8.6
-pkgrel=2
+pkgver=3.8.7
+pkgrel=1
 pkgdesc='A free, open-source and completely encrypted notes app'
 arch=('x86_64' 'i686')
 url='https://standardnotes.org'
@@ -20,8 +20,8 @@ source=("$_shortname.sh")
 source_x86_64=("$pkgname-$pkgver-x86_64.AppImage::$_dlurl/$_shortname-$pkgver-linux-x86_64.AppImage")
 source_i686=("$pkgname-$pkgver-i686.AppImage::$_dlurl/$_shortname-$pkgver-linux-i386.AppImage")
 sha256sums=('71f0811526d428b541ef39ee804b257ed60b1b9b5d620436c79ed77e17eb4d16')
-sha256sums_x86_64=('2fbe46d785d38d1c2274902d71856cf52582f33120cd9bfff48522d2ed4cb5f3')
-sha256sums_i686=('5866173d4e8aad9c307dc256db5ea3738e1cc26ac9b94f1f1f40c6120185d858')
+sha256sums_x86_64=('be69a0928641a5b8be957d3beebe27537bd9c0bc773c55852ee96a8c57f18ccf')
+sha256sums_i686=('37e6707b935f7f6e920a0652041df0257cec9dc4a635eb22e692eb18fead03c5')
 
 prepare() {
 	chmod +x "$pkgname-$pkgver-$CARCH.AppImage"
@@ -41,5 +41,5 @@ package() {
 
 	sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/$_shortname|" "squashfs-root/$_shortname.desktop"
 	ln -s "/opt/$pkgname/$_shortname.desktop" "$pkgdir/usr/share/applications/"
-	ln -s "/opt/$pkgname/$_shortname.png" "$pkgdir/usr/share/icons/hicolor/512x512/"
+	ln -s "/opt/$pkgname/$_shortname.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
 }
