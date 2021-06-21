@@ -2,12 +2,12 @@
 pkgname=python-rasterio
 _pyname=rasterio
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Python library for reading and writing geospatial raster data.'
 url='https://rasterio.readthedocs.io/en/stable/'
 arch=('x86_64')
 license=('MIT')
-depends=('python' 'gdal' 'python-numpy' 'python-affine' 'python-attrs' 'python-cligj' 'python-snuggs' 'python-click-plugins')
+depends=('python' 'gdal' 'python-numpy' 'python-affine' 'python-attrs' 'python-cligj' 'python-snuggs' 'python-click' 'python-click-plugins' 'python-certifi')
 makedepends=('python-setuptools' 'cython' 'python-pytest' 'python-hypothesis' 'python-boto3')
 source=("https://files.pythonhosted.org/packages/source/r/$_pyname/$_pyname-$pkgver.tar.gz")
 
