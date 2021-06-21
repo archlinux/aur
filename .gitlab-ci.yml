@@ -23,10 +23,13 @@ makepkg:
     - sudo -u builder makepkg -C -S --log --noconfirm
     # Test building and installing the package
     - sudo -u builder makepkg -C -i --log --noconfirm
+    # generate SRCINFO
+    - sudo -u builder makepkg --printsrcinfo > .SRCINFO
   cache:
-    key: pkgbuild
+    key: makepkg
     paths:
       - PKGBUILD
+      - .SRCINFO
 
 namcap:
   tags:
@@ -45,6 +48,8 @@ push:
   script:
     - git add PKGBUILD
     - git diff-index --quiet HEAD || git commit -m "updates hash for AppImage"
+    - git add .SRCINFO
+    - git diff-index --quiet HEAD || git commit -m "updates .SRCINFO"
     - git push -o ci.skip "https://${GITLAB_USER_NAME}:${RENOVATE_TOKEN}@${CI_REPOSITORY_URL#*@}" "HEAD:${CI_COMMIT_BRANCH}"
   rules:
     - if: '$CI_PIPELINE_SOURCE != "merge_request_event"'
