@@ -9,7 +9,7 @@ pkgrel=2
 pkgdesc='Gnat components collection - Core packages.'
 url='https://github.com/AdaCore/gnatcoll-core/'
 arch=('i686' 'x86_64')
-license=('GPL')
+license=('GPL3' 'custom')
 
 depends=('libgpr')
 makedepends=('gprbuild')
@@ -35,4 +35,15 @@ package()
     # Make one install at a time to avoid GPRinstall reading/writing to
     # the same installed project files at the same time.
     make prefix="$pkgdir/usr" install -j1
+    
+    # Install the license.
+    install -D -m644     \
+       "COPYING3"        \
+       "$pkgdir/usr/share/licenses/$pkgname/COPYING3"
+
+    # Install the custom license.
+    install -D -m644     \
+       "COPYING.RUNTIME" \
+       "$pkgdir/usr/share/licenses/$pkgname/COPYING.RUNTIME"
+    
 }
