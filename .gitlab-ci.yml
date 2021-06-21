@@ -8,10 +8,6 @@ stages:
 
 
 before_script:
-  - command -v ssh-agent >/dev/null || ( sudo pacman -Sy --noconfirm openssh )
-  - eval $(ssh-agent -s)
-  - mkdir -p ~/.ssh
-  - chmod 700 ~/.ssh
   - git config --global user.email "${GIT_USER_EMAIL:-$GITLAB_USER_EMAIL}"
   - git config --global user.name "${GIT_USER_NAME:-$GITLAB_USER_NAME}"
 
@@ -59,6 +55,10 @@ publish:
     - archlinux
   stage: publish
   script:
+    - command -v ssh-agent >/dev/null || ( sudo pacman -Sy --noconfirm openssh )
+    - eval $(ssh-agent -s)
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
     - echo "$AUR_SSH_KEY" | tr -d '\r' | ssh-add -
-    - git remote add aur-defi-app-bin ssh://aur@aur.archlinux.org/defi-app-bin.git
+    - git remote add aur-defi-app-bin ssh://aur@aur.archlinux.org/defi-app-bin.git || true
     - git push aur HEAD:master
