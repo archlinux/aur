@@ -1,6 +1,6 @@
-# Maintainer: Siavash Askari Nasr <siavash dot askari dot nasr at gmail dot com>
+# Maintainer: Siavash Askari Nasr <ciavash@protonmail.com>
 pkgname=rakudo-bin
-pkgver=2021.05_01
+pkgver=2021.06_01
 pkgrel=1
 pkgdesc="Raku compiler for MoarVM"
 arch=('x86_64')
@@ -13,7 +13,7 @@ install="${pkgname}.install"
 source=("https://rakudo.org/dl/${pkgname%-bin}/${pkgname%-bin}-moar-${pkgver//_/-}-linux-x86_64-gcc.tar.gz"
         "https://rakudo.org/dl/${pkgname%-bin}/${pkgname%-bin}-moar-${pkgver//_/-}-linux-x86_64-gcc.tar.gz.asc")
 validpgpkeys=('EF976EC69E7BB4634E99A56245BEAFAD5BCDBB01')
-sha256sums=('7050941d47f7c3bd9d8bf9a7fe6474a745d2a5fc9a455e9f05f77733ef79e18c'
+sha256sums=('c5be738041d27d747d7e6bc955ee37cd3be371787eb88bdb2610e1a135963db3'
             'SKIP')
 
 package() {
@@ -29,4 +29,3 @@ package() {
     install -Dm644 README.md ${pkgdir}/usr/share/doc/${pkgname%-bin}/README.md
     install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE
 }
-
