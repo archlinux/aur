@@ -2,7 +2,7 @@
 
 _pkgname=koifarm
 pkgname=${_pkgname}-git
-pkgver=r1027.acb16a5
+pkgver=r1043.4bba78a
 pkgrel=1
 pkgdesc="Koi Farm, the koi breeding game"
 arch=('x86_64')
@@ -42,8 +42,8 @@ package() {
   chmod 777 ${pkgdir}/usr/share/games/${_pkgname}/save
   mkdir -p ${pkgdir}/usr/bin/
   mkdir -p ${pkgdir}/usr/share/icons/hicolor/64x64/apps/
-  install -Dm644 "${srcdir}/../${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  cp "${srcdir}/../${_pkgname}.png" ${pkgdir}/usr/share/icons/hicolor/64x64/apps/${_pkgname}.png
+  install -Dm644 "${startdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  cp "${startdir}/${_pkgname}.png" ${pkgdir}/usr/share/icons/hicolor/64x64/apps/${_pkgname}.png
   cp -ar ${srcdir}/${_pkgname}/KoiFarm-linux-x64/* ${pkgdir}/usr/share/games/${_pkgname}/
   echo -e "#!/bin/sh\ncd /usr/share/games/${_pkgname}\n./KoiFarm" > ${pkgdir}/usr/bin/${_pkgname}
   chmod +x ${pkgdir}/usr/bin/${_pkgname}

@@ -1,6 +1,6 @@
 pkgbase = koifarm-git
 	pkgdesc = Koi Farm, the koi breeding game
-	pkgver = r1027.acb16a5
+	pkgver = r1043.4bba78a
 	pkgrel = 1
 	url = https://jobtalle.itch.io/koifarm
 	arch = x86_64
@@ -18,4 +18,3 @@ pkgbase = koifarm-git
 	sha256sums = c7bb9e77f83ac92f77611d4fc3310ab1a00e4bd2bb2e652881babe9977570ba2
 
 pkgname = koifarm-git
-
