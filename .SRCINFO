@@ -1,6 +1,6 @@
 pkgbase = xcursor-pro-cursor-theme
 	pkgdesc = Modern X11 Cursor Theme
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://www.pling.com/p/1481466
 	arch = any
@@ -8,11 +8,10 @@ pkgbase = xcursor-pro-cursor-theme
 	makedepends = python-clickgen
 	depends = libxcursor
 	depends = libpng
-	noextract = xcursor-pro-cursor-theme-bitmaps-1.1.1.zip
-	source = xcursor-pro-cursor-theme-1.1.1.tar.gz::https://github.com/ful1e5/XCursor-pro/archive/v1.1.1.tar.gz
-	source = xcursor-pro-cursor-theme-bitmaps-1.1.1.zip::https://github.com/ful1e5/XCursor-pro/releases/download/v1.1.1/bitmaps.zip
-	sha256sums = d545af2c75120425b65ba0cbf6d83931c289c1d2dddd9ce178f41db7285b0415
-	sha256sums = c0377c224623dc50be7428257a4cd1cc3e44dbdf4b16532f0a927bb58bc7eb50
+	noextract = xcursor-pro-cursor-theme-bitmaps-1.1.2.zip
+	source = xcursor-pro-cursor-theme-1.1.2.tar.gz::https://github.com/ful1e5/XCursor-pro/archive/v1.1.2.tar.gz
+	source = xcursor-pro-cursor-theme-bitmaps-1.1.2.zip::https://github.com/ful1e5/XCursor-pro/releases/download/v1.1.2/bitmaps.zip
+	sha256sums = 09405c4f861f30510978ffcacc9bf4a23af8d073b171dce5af7fd5bfc4d6db01
+	sha256sums = f610b132323cc1458180a9aa67da90c13c2a3c8460499609ba09ccc538931eca
 
 pkgname = xcursor-pro-cursor-theme
-

@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=xcursor-pro-cursor-theme
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Modern X11 Cursor Theme"
 arch=('any')
@@ -11,8 +11,8 @@ makedepends=('python-clickgen')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ful1e5/XCursor-pro/archive/v$pkgver.tar.gz"
         "$pkgname-bitmaps-$pkgver.zip::https://github.com/ful1e5/XCursor-pro/releases/download/v$pkgver/bitmaps.zip")
 noextract=("$pkgname-bitmaps-$pkgver.zip")
-sha256sums=('d545af2c75120425b65ba0cbf6d83931c289c1d2dddd9ce178f41db7285b0415'
-            'c0377c224623dc50be7428257a4cd1cc3e44dbdf4b16532f0a927bb58bc7eb50')
+sha256sums=('09405c4f861f30510978ffcacc9bf4a23af8d073b171dce5af7fd5bfc4d6db01'
+            'f610b132323cc1458180a9aa67da90c13c2a3c8460499609ba09ccc538931eca')
 
 prepare() {
   cd XCursor-pro-$pkgver
