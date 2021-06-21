@@ -11,7 +11,7 @@ pkgrel=2
 pkgdesc="Builder for multi-language systems"
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/gprbuild/"
-license=('GPL3')
+license=('GPL3' 'custom')
 makedepends=('gprbuild-bootstrap' 'xmlada')
 
 source=(
@@ -55,6 +55,20 @@ build() {
     make GPRBUILD_OPTIONS="$GPRBUILD_OPTIONS" build
 }
 
+_install_licenses() {
+    cd "$srcdir/$pkgbase-$pkgver"
+
+    # Install the license.
+    install -D -m644     \
+       "COPYING3"        \
+       "$pkgdir/usr/share/licenses/$pkgname/COPYING3"
+
+    # Install the custom license.
+    install -D -m644     \
+       "COPYING.RUNTIME" \
+       "$pkgdir/usr/share/licenses/$pkgname/COPYING.RUNTIME"
+}
+
 package_libgpr() {
     pkgdesc="Ada library to handle GPRbuild project files"
     depends=('xmlada')
@@ -65,6 +79,7 @@ package_libgpr() {
     cd "$srcdir/$pkgbase-$pkgver"
 
     make prefix="$pkgdir/usr" libgpr.install
+    _install_licenses
 }
 
 package_gprbuild() {
@@ -74,6 +89,7 @@ package_gprbuild() {
     cd "$srcdir/$pkgbase-$pkgver"
 
     make prefix="$pkgdir/usr" install
+    _install_licenses
 
     # We don't need to distribute the installation script
     rm -f -- "$pkgdir/usr/doinstall"
