@@ -4,7 +4,7 @@
 
 pkgname=transifex-client
 pkgver=0.14.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Transifex command-line tool to download and upload translations from Transifex"
 arch=('any')
 url="http://pypi.python.org/pypi/transifex-client"
@@ -13,6 +13,11 @@ depends=('python-distribute' 'python-urllib3' 'python-six' 'python-requests'
          'python-slugify' 'python-gitpython')
 source=("https://pypi.io/packages/source/t/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('b458c56d6d07d2d8269b43d5049026304ed9a34d31bdf655d9e1864807e7555b')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  sed -i 's#python-slugify<5.0.0#python-slugify#' requirements.txt
+}
 
 build() {
   cd "${pkgname}-${pkgver}"

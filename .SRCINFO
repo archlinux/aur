@@ -1,7 +1,7 @@
 pkgbase = transifex-client
 	pkgdesc = The Transifex command-line tool to download and upload translations from Transifex
 	pkgver = 0.14.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pypi.python.org/pypi/transifex-client
 	arch = any
 	license = GPL2
