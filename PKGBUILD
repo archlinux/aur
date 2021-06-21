@@ -4,7 +4,7 @@
 
 pkgname=jitsi-meet-desktop
 pkgver=2.8.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Jitsi Meet desktop application"
 arch=('x86_64' 'aarch64')
 url="https://jitsi.org/jitsi-meet/"
@@ -15,8 +15,7 @@ replaces=('jitsi-meet-electron')
 depends=('gtk3'
          'libxss'
          'nss')
-depends_x86_64=('electron')
-depends_aarch64=('electron12')
+depends=('electron12')
 makedepends=('coreutils'
              'git'
              'npm'
@@ -52,11 +51,7 @@ prepare() {
 
   cd jitsi-meet-electron-${pkgver}/
 
-  if [[ "$CARCH" == 'aarch64' ]]; then
-    _electron_dist=/usr/lib/electron12
-  else
-    _electron_dist=/usr/lib/electron
-  fi
+  _electron_dist=/usr/lib/electron12
   _electron_ver=$(cat ${_electron_dist}/version)
   sed -r 's#("electron": ").*"#\1'${_electron_ver}'"#' -i package.json
 
@@ -82,16 +77,11 @@ package() {
 
   install -Dm644 -- resources/icon.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
-  if [[ "$CARCH" == 'aarch64' ]]; then
-    _electron_bin=electron12
-  else
-    _electron_bin=electron
-  fi
 
   cat << EOF > "$pkgdir"/usr/bin/$pkgname
 #!/bin/sh
 
-NODE_ENV=production ELECTRON_IS_DEV=false exec $_electron_bin /opt/$pkgname/app.asar "\$@"
+NODE_ENV=production ELECTRON_IS_DEV=false exec electron12 /opt/$pkgname/app.asar "\$@"
 EOF
 
   chmod +x "$pkgdir"/usr/bin/$pkgname
