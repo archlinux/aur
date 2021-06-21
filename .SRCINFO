@@ -1,7 +1,7 @@
 pkgbase = kind
 	pkgdesc = Kubernetes IN Docker - local clusters for testing Kubernetes
 	pkgver = 0.11.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://kind.sigs.k8s.io/
 	install = kind.install
 	arch = x86_64
@@ -19,6 +19,6 @@ pkgbase = kind
 	source = registry-aliases.conf
 	sha256sums = 95ce0e7b01c00be149e5bd777936cef3f79ba7f1f3e5872e7ed60595858a2491
 	sha256sums = 87bc2d0263e7393c66d540375efa9b68f2e3fdd72d5b12688587e0c3d6b99d88
-	sha256sums = 0a1fb437511953ca2416aeebe954fb68189dfb493ce41f99d021eb4f142ffb2e
+	sha256sums = 82b71230a61f9b1f5072c841bb637aac200272a9cbbddcfc6fd01c308dbb5923
 
 pkgname = kind
