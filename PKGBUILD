@@ -2,7 +2,7 @@
 # Contributer: Aloxaf <aloxafx@gmail.com>
 
 pkgname=python-playwright-git
-pkgver=v1.11.0_19_gf39f058
+pkgver=v1.12.0_3_e05ab07
 pkgrel=1
 pkgdesc="a Python library to automate Chromium, Firefox and WebKit browsers with a single API"
 arch=(x86_64 aarch64)
@@ -15,7 +15,7 @@ source=(${pkgname}::git+${url})
 sha256sums=('SKIP')
 pkgver() {
   cd ${srcdir}/${pkgname}
-  echo $(git describe --tags | sed "s/-/_/g")_$(git rev-parse --short HEAD)
+  git describe --tags | sed "s/-/_/g;s/g//"
 }
 package() {
   cd ${srcdir}/${pkgname}
