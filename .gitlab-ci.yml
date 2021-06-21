@@ -10,7 +10,6 @@ stages:
 before_script:
   - command -v ssh-agent >/dev/null || ( sudo pacman -Sy --noconfirm openssh )
   - eval $(ssh-agent -s)
-  - echo "$AUR_SSH_KEY" | tr -d '\r' | ssh-add -
   - mkdir -p ~/.ssh
   - chmod 700 ~/.ssh
   - git config --global user.email "${GIT_USER_EMAIL:-$GITLAB_USER_EMAIL}"
@@ -56,5 +55,6 @@ push:
 publish:
   stage: publish
   script:
+    - echo "$AUR_SSH_KEY" | tr -d '\r' | ssh-add -
     - git remote add aur-defi-app-bin ssh://aur@aur.archlinux.org/defi-app-bin.git
     - git push aur
