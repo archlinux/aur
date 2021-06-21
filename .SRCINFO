@@ -1,12 +1,13 @@
 pkgbase = gprbuild
 	pkgdesc = Builder for multi-language systems
 	pkgver = 21.0.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/AdaCore/gprbuild/
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	license = custom
 	makedepends = gprbuild-bootstrap
 	makedepends = xmlada
 	source = gprbuild-21.0.0.tar.gz::https://github.com/AdaCore/gprbuild//archive/v21.0.0.tar.gz
@@ -19,7 +20,7 @@ pkgbase = gprbuild
 	sha256sums = 3fe0fd1df3156c9a8488d98ee6e7e822ae904ce410838661c8fc14c29abe2620
 
 pkgname = libgpr
-	pkgdesc = Ada library to handle GPRbuild project files
+	pkgdesc = Ada library to handle Gnat project files
 	depends = xmlada
 	conflicts = grpc
 
@@ -28,4 +29,3 @@ pkgname = gprbuild
 	depends = xmlada
 	provides = gprbuild-bootstrap
 	conflicts = gprbuild-bootstrap
-
