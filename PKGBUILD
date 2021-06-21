@@ -1,26 +1,31 @@
+# Maintainer: Jeremy MountainJohnson <jay@jskier.com>
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=suricata
-pkgver=4.1.5
+pkgver=5.0.6
 pkgrel=1
 pkgdesc="An Open Source Next Generation Intrusion Detection and Prevention Engine"
 arch=('i686' 'x86_64')
 url="http://suricata-ids.org/"
 license=('GPL2')
-depends=('libcap-ng' 'libnet' 'libpcap' 'libyaml' 'pcre')
-optdepends=('snort: suricata can use rulesets provided by snort')
+depends=('libcap-ng' 'libnet' 'jansson' 'libpcap' 'libyaml' 'pcre' 'rust' 'geoip' 'lua')
+optdepends=('hyperscan' 'geoipupdate')
+conflicts=('python-sphinx') # Issue with doc generation at compile time - https://github.com/OISF/suricata/pull/6123
 backup=('etc/suricata/suricata.yaml'
         'etc/suricata/classification.config'
-        'etc/suricata/reference.config')
-source=(http://openinfosecfoundation.org/download/$pkgname-$pkgver.tar.gz{,.sig})
-validpgpkeys=('801C7171DAC74A6D3A61ED81F7F9B0A300C1B70D') # Open Information Security Foundation
-sha256sums=('cee5f6535cd7fe63fddceab62eb3bc66a63fc464466c88ec7a41b7a1331ac74b'
-            'SKIP')
+        'etc/suricata/reference.config'
+        'etc/suricata/threshold.config')
+source=(http://openinfosecfoundation.org/download/$pkgname-$pkgver.tar.gz{,.sig}
+        suricata-update.{service,timer})
+sha256sums=('d2045c7fbdbd56d1bed15aa8d48a2b3a46e4052599ac7ab89bf2fc3d6a08b491'
+            'SKIP'
+            'fccd413fabdf6e46e666029c8c960c3402b2de4e0a98e3154aba4f3b50b798c2'
+            '330c93e72a02f4f80972ab1641ee550b32cfdc2f40c78331294bcc009af06d71')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
-
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+	      --enable-lua --enable-geoip
   make
 }
 
@@ -31,10 +36,20 @@ package() {
 
   install -d "${pkgdir}"/var/log/$pkgname
 
-  install -Dm644 $pkgname.yaml "${pkgdir}"/etc/$pkgname/$pkgname.yaml
-  install -Dm644 classification.config "${pkgdir}"/etc/$pkgname/classification.config
-  install -Dm644 reference.config "${pkgdir}"/etc/$pkgname/reference.config
- 
+  install -Dm644 -t "${pkgdir}/etc/${pkgname}" "${pkgname}".yaml threshold.config etc/{classification.config,reference.config}
+  install -Dm644 "${pkgname}".yaml "${pkgdir}/etc/${pkgname}/${pkgname}.yaml.default"
+  install -Dm644 -t "${pkgdir}"/usr/lib/systemd/system etc/"${pkgname}".service "${srcdir}"/suricata-update.{service,timer}
+  sed -i -e 's:/var/run:/run:g' \
+    -e 's:^Description=.*:Description=Suricata IDS/IPS daemon:g' \
+    -e 's:^After=.*:After=network.target:g' \
+    -e 's:^ExecStartPre=.*:PIDFile=suricata/suricata.pid:g' \
+    -e 's:^ExecStart=.*:ExecStart=/usr/bin/suricata -c /etc/suricata/suricata.yaml --af-packet --pidfile /run/suricata/suricata.pid :g' \
+    "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+
+  install -Dm644 etc/"${pkgname}".logrotate "${pkgdir}/etc/logrotate.d/${pkgname}"
+  sed -i -e 's:/var/run:/run:g' \
+  "${pkgdir}/etc/logrotate.d/${pkgname}"
+
   install -d "${pkgdir}"/etc/$pkgname/rules
   install -Dm644 rules/*.rules "${pkgdir}"/etc/$pkgname/rules/
 }
