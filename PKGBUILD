@@ -3,14 +3,14 @@
 pkgname=pmemd
 pkgver=20
 _toolsver=21
-pkgrel=7
+pkgrel=8
 pkgdesc="PMEMD module of AMBER software package"
 url="http://ambermd.org/"
 license=(custom)
 arch=(x86_64)
 depends=(ambertools)
-makedepends=('cmake>=3.10' make gcc flex bison patch tcsh imake openmpi 'cuda>=11.1')
-optdepends=('openmpi: MPI support'
+makedepends=('cmake>=3.10' make gcc10 gcc10-fortran flex bison patch tcsh imake openmpi-gcc10 'cuda>=11.1')
+optdepends=('openmpi-gcc10: MPI support'
             'cuda: GPU acceleration support'
             'plumed: metadynamics support'
             'plumed-mpi: metadynamics support with MPI'
@@ -27,10 +27,10 @@ source=("local://AmberTools${_toolsver}.tar.bz2"
         "pmemd.cuda.MPI")
 sha256sums=('f55fa930598d5a8e9749e8a22d1f25cab7fcf911d98570e35365dd7f262aaafd'
             'a4c53639441c8cc85adee397933d07856cc4a723c82c6bea585cd76c197ead75'
-            '2c954683c1176f49f29c4899208ef3ae7ec4b050dd1f891c71998f4f27b1cd5a'
-            '41f59ec0c13cdda7584f351d83d2238060cf22b95fb53ea476152664116bfcae'
-            '11f0225dd52ebfa214cc88ac34a2e037924551e2c1f715876b167e2782c187d8'
-            '8cbdffefa5ac731283d10d9b1daa32d2e20ffe4c5aec34525042c36f664cf766')
+            '2e7418cf146654c31f524a4e88afdc7a15d6151246beaad25c564676df492670'
+            '340c9dcfc5eddf05aeb30681f9e3ea422601f95f5d73c528b58296c3f3cbf8d2'
+            'ec3051b823c01d34c04096f5babc74d1619abb8cf4ea8e78139af4fb66e11b34'
+            'e776cd7b01f6f7bbb2668c3d9822de6f842c1ce963f24f017829a50e47a90fad')
 
 prepare() {
   cd ${srcdir}/amber${pkgver}_src
@@ -44,10 +44,10 @@ build() {
 
   export AMBER_PREFIX="${srcdir}"
 
-  cmake $AMBER_PREFIX/amber${pkgver}_src \
+  CC=gcc-10 CXX=g++-10 FC=gfortran-10 cmake $AMBER_PREFIX/amber${pkgver}_src \
       -DCMAKE_INSTALL_PREFIX=/opt/amber \
       -DCHECK_UPDATES=FALSE \
-      -DCOMPILER=GNU  \
+      -DCOMPILER=MANUAL \
       -DMPI=TRUE -DCUDA=TRUE \
       -DOPENMP=TRUE \
       -DINSTALL_TESTS=FALSE \
