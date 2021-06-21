@@ -98,6 +98,12 @@ prepare() {
   patch -Np1 -i ${_patches_dir}/librewolf/browser-confvars.patch
   patch -Np1 -i ${_patches_dir}/librewolf/urlbarprovider-interventions.patch
 
+  # Allow overriding the color scheme light/dark preference with RFP
+  patch -Np1 -i ${_patches_dir}/librewolf/allow_dark_preference_with_rfp.patch
+
+  # Fix an URL in 'about' dialog
+  patch -Np1 -i ${_patches_dir}/librewolf/about-dialog.patch  
+  
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
