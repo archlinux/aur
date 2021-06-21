@@ -43,6 +43,8 @@ namcap:
       allow_failure: true
 
 push:
+  tags:
+    - archlinux
   stage: release
   script:
     - git add PKGBUILD
@@ -53,6 +55,8 @@ push:
       when: never
 
 publish:
+  tags:
+    - archlinux
   stage: publish
   script:
     - echo "$AUR_SSH_KEY" | tr -d '\r' | ssh-add -
