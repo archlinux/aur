@@ -3,7 +3,7 @@
 pkgname=haruhi-dl
 pkgver=2021.06.20
 _name="haruhi-dl-v$pkgver"
-pkgrel=8
+pkgrel=9
 pkgdesc="Fork of youtube-dl, focused on bringing a fast, steady stream of updates. We'll do our best to merge patches to any site, not only youtube."
 arch=('any')
 url="https://haruhi.download"
@@ -35,7 +35,7 @@ build() {
 
 package() {
   cd "$srcdir/$_name"
-  python setup.py install --root="${pkgdir}/" --optimize=3
+  python setup.py install --root="${pkgdir}/" --optimize=1
   install -Dm644 haruhi-dl.plugin.zsh "${pkgdir}/usr/share/zsh/site-functions/_haruhi-dl"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
