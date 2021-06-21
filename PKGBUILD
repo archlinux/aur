@@ -7,7 +7,7 @@ _srcname=linux-5.12
 _major=5.12
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=9
+_minor=12
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -30,17 +30,29 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-x86-setup-Consolidate-early-memory-reservations.patch
+  0003-x86-setup-Merge-several-reservations-of-start-of-mem.patch
+  0004-x86-setup-Move-trim_snb_memory-later-in-setup_arch-t.patch
+  0005-x86-setup-always-reserve-the-first-1M-of-RAM.patch
+  0006-x86-setup-remove-CONFIG_X86_RESERVE_LOW-and-reservel.patch
+  0007-x86-crash-remove-crash_reserve_low_1M.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('391ff48c0c59316fe362d493689839e62b9e38050a87b977402a195b79f70e99bdcc4cd8fb77de5edf32c073f56cd54326be63b7d718cf99064ae208bbc1959f'
+b2sums=('2baef27303c676d82dada549076c29bbf25bb2db1d957a4e292d32dff1647f14b235a691468be0e8d36663ee137d14fe3aeaaa95db2e3592e2eada523b567641'
         'SKIP'
-        'c4ba5b7da3e7af4edb3511b63a21f3d6ca8138f4a5fa77714f49a97f7c06db21daf3df66bb905561d6975b6652bf5b517e995f5e673328b9df3415f37ac01fd0'
+        'f9aef3da2f65916cc30da9a066217d3379036e6a32a732224da7fee86c80810315484f48132b50b8cf8eb5e0b055ad1b7bbe63dadd0eb54b0b0626bc57c20963'
         'SKIP'
-        '18d9f071699c9e9bb4c7d340f4d688554b818a4f7fdcefeee24b8b39fc9328737c6967cfd7e884b518e0c87cfb64ac7a10368ac82436d73f96f0881b5c201099'
-        'e43852e13fad5cdf3ce47ed698579bf019ea5c4f2f63191f417e226733b70b984c892bf2fd64bdca89aaa44dfd6b06e01f169bc784d7bf61e6189427e24c8b0a')
+        '83aa7f127d34a247a8275358d52a510d4895c790211d98ac51ed7df75c881e9071cfe3d03f137f7edff3fe8b46e7f77fd9bfd0ef1b163a9c70dac5b4f3cc9693'
+        'dda152592dec643bce44754bf5d2d43a5897cc57f8dc258b87857055a45abf903d619aba1de389228cb086a17fedea5458f8fe2c0993fa20213bb7c5bca331c8'
+        '13330cf57b5c6b928ea73bd30479010688cf8d2003107b041a7fdad33c1ac225c8c905bef235cd762d6ea76be754b5db6be769526bacf7333298f72d6afff535'
+        '381e0f177faa3090d1abf4d11a97db535712840870265dea167d7692dee7733a226d09c103d01705d5c0809fa66c7a23efea9da2473da672644b06e31db77083'
+        'cd9da0dee048fc52a3032343f122c2055081eeedfc8a3e5227218f0f63fc7618e8fe744c8caa7e3a2ca844f4aaf7314b57a306d0d3b1849e97b24687b8c5a501'
+        '1810832172e1b006a5471d8e317573343884feed9abc9e7380a32d83c958b0e6aa68adf9a647c9b7b714783997591f5d80e754c6e7357279661eee998f22864c'
+        '4e7cb958f95d99bba9810e675d4f1b0b3c171f78e9fe96ff9d265f792f4ceb1367f2f4d238f36b5ca1c395e14abdabbf0f8ce2dc07c4fe567d822a8b629dfa05'
+        '2251f8bf84e141b4661f84cc2ce7b21783ac0a349b2651477dfcbc5383b796b2e588d85ee411398b15c820cb3672256be8ed281c8bccfad252c9dd5b0e1e0cd5')
 
 
 export KBUILD_BUILD_HOST=archlinux
