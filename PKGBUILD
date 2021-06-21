@@ -4,13 +4,15 @@
 # Contributor: Bo Davidson <bo.davidson@go.tarleton.edu>
 pkgname=openrgb-bin
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source RGB lighting control that doesn't depend on manufacturer software. Precompiled binary"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/CalcProgrammer1/OpenRGB"
 license=('GPL2')
 depends=('qt5-base' 'libusb' 'hidapi')
 optdepends=('i2c-tools: Motherboard & RAM access')
+conflicts=('openrgb')
+provides=('openrgb')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_i686=("https://openrgb.org/releases/release_0.6/openrgb_0.6_i386_405ff7f.deb")
