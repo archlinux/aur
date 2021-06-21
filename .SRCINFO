@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-gnutls
 	pkgdesc = A library which provides a secure layer over a reliable transport layer (mingw-w64)
-	pkgver = 3.6.14
+	pkgver = 3.7.2
 	pkgrel = 1
 	url = http://www.gnu.org/software/gnutls
 	arch = any
@@ -20,15 +20,12 @@ pkgbase = mingw-w64-gnutls
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/gnutls-3.6.14.tar.xz
-	source = https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/gnutls-3.6.14.tar.xz.sig
+	source = https://www.gnupg.org/ftp/gcrypt/gnutls/v3.7/gnutls-3.7.2.tar.xz
+	source = https://www.gnupg.org/ftp/gcrypt/gnutls/v3.7/gnutls-3.7.2.tar.xz.sig
 	source = gnutls-fix-external-libtasn1-detection.patch
-	validpgpkeys = 0424D4EE81A0E3D119C6F835EDA21E94B565716F
-	validpgpkeys = 1F42418905D8206AA754CCDC29EE58B996865171
 	validpgpkeys = 462225C3B46F34879FC8496CD605848ED7E69871
-	sha256sums = 5630751adec7025b8ef955af4d141d00d252a985769f51b4059e5affa3d39d63
+	sha256sums = 646e6c5a9a185faa4cea796d378a1ba8e1148dbb197ca6605f95986a25af2752
 	sha256sums = SKIP
 	sha256sums = 8525da75852a516be0cb05df0a770daf19ce0583033260d6cac03a1e40fd2072
 
 pkgname = mingw-w64-gnutls
-

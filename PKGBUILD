@@ -1,7 +1,7 @@
 # Maintainer: Martchus <martchus@gmx.net>
 
 pkgname=mingw-w64-gnutls
-pkgver=3.6.14
+pkgver=3.7.2
 pkgrel=1
 pkgdesc='A library which provides a secure layer over a reliable transport layer (mingw-w64)'
 arch=('any')
@@ -14,12 +14,10 @@ options=(staticlibs !strip !buildflags)
 optdepends=("mingw-w64-openssl: libgnutls-openssl")
 source=(https://www.gnupg.org/ftp/gcrypt/gnutls/v${pkgver%.*}/${pkgname#mingw-w64-}-${pkgver}.tar.xz{,.sig}
         'gnutls-fix-external-libtasn1-detection.patch')
-sha256sums=('5630751adec7025b8ef955af4d141d00d252a985769f51b4059e5affa3d39d63'
+sha256sums=('646e6c5a9a185faa4cea796d378a1ba8e1148dbb197ca6605f95986a25af2752'
             'SKIP'
             '8525da75852a516be0cb05df0a770daf19ce0583033260d6cac03a1e40fd2072')
-validpgpkeys=('0424D4EE81A0E3D119C6F835EDA21E94B565716F')  # "Simon Josefsson <simon@josefsson.org>"
-validpgpkeys+=('1F42418905D8206AA754CCDC29EE58B996865171') # "Nikos Mavrogiannopoulos <nmav@gnutls.org>
-validpgpkeys+=('462225C3B46F34879FC8496CD605848ED7E69871') # "Daiki Ueno <ueno@unixuser.org>"
+validpgpkeys=('462225C3B46F34879FC8496CD605848ED7E69871') # "Daiki Ueno <ueno@unixuser.org>"
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -45,7 +43,6 @@ build() {
       --disable-gtk-doc \
       --disable-guile \
       --disable-full-test-suite \
-      --with-zlib \
       --with-libiconv-prefix=/usr/$_arch \
       --with-regex-libs=-lsystre \
       --enable-nls \
@@ -70,11 +67,6 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/gnutls-${pkgver}/build-${_arch}"
     make DESTDIR="$pkgdir" install
-
-    # remove libraries which conflict with libraries provided by mingw-w64-crt
-    # (those libs are likely only mocks for the testsuite)
-    rm "$pkgdir"/usr/${_arch}/lib/crypt32{.a,.dll.a,.dll}
-    rm "$pkgdir"/usr/${_arch}/lib/ncrypt{.a,.dll.a,.dll}
 
     ${_arch}-strip --strip-all "$pkgdir"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
