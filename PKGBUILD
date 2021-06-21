@@ -8,7 +8,7 @@ pkgrel=1
 
 pkgdesc='POP3 mail retriever with reliable Maildir and command delivery; Python 3 port'
 arch=('any')
-url="http://$pkgname.org"
+url="https://$pkgname.org"
 license=('GPL2')
 
 provides=("getmail=$pkgver")
