@@ -11,8 +11,8 @@ pkgdesc='The Open Source build of Visual Studio Code (vscode) editor, with ozone
 #   - erbium: 12
 #   - fermium: 14
 # Important: Remember to check https://github.com/microsoft/vscode/blob/master/.yarnrc (choose correct tag) for target electron version
-_electron=electron # 12
-pkgver=1.55.2
+_electron=electron12
+pkgver=1.57.1
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/microsoft/vscode'
@@ -27,17 +27,11 @@ conflicts=('code')
 source=("$pkgname::git+$url.git#tag=$pkgver"
         'code.js'
         'code.sh'
-        '0001-patch-product.json-to-enable-all-extensions.patch'
-	'0001-chore-bump-electron-12.0.2.patch'
-	'0002-chore-bump-electron-12.0.3.patch'
-	'0003-chore-bump-electron-12.0.4.patch')
+        '0001-patch-product.json-to-enable-all-extensions.patch')
 sha512sums=('SKIP'
-            '814c9554427183cd893a33cd2cbe91f6e0ea71921ef0717c86217b1d3058d265f9ff7a9ace3e7b76f122e60b7686475cf4d999e581a1845face3033afb9f745f'
-            'aec825628bf1911731fbe79cf8cc4c1b61cbb956567e1d6616ff187668ad986324551d29a7ff7462b9d5a1f91d236dd0fea2c39ca36aeae88917c07303aaf2d2'
-            'e97fb3793db67ee82d497a09b78d77107b5035676559973927c6011bd8fdf5c59557f69b32d621b1a8bd2887ca03b635fe82e6ec37e8d687c2802621aed8fc1e'
-            '94f983b065339544a8ea7c07da29923b3d060f57a0bc8b14116c914060fc7722b9fdbe80e063e92261442cff44e37523908087d9f02abfca00da4b61b6952844'
-            '8fff0a9488aae5962e035846e40d407bbddfbfed52008f8ac06327a01ddf34dd6c8539ceabf9d1843d6bc30f90e39be19105e5de763e12876956cd977deee00d'
-            '99757b81ac590397904d45c7fb5de605c2101e6e4d8a42e6d5fcc974917c50bd9e3d26f6241b65d032e08ff840a7ec3b61fb505ac71d6d9a1d8eb738864c6917')
+            '6e8ee1df4dd982434a8295ca99e786a536457c86c34212546e548b115081798c5492a79f99cd5a3f1fa30fb71d29983aaabc2c79f4895d4a709d8354e9e2eade'
+            'de6a39384ec1e101d07923544339a5e2d9c9a5b96cdca0f1bfd4fa97115a52678e5c8fe207471e8427bf6593f0495b44cbd7f729a283873c347a5a06e7e435f4'
+            'c3e32bfb1fe75b7cdbb6e341335a1ddf8096f364e9b5d36dd8f84dc129dc0951b1ea7a06f5bf57fa12b6e0bb3e02e9a52c664cb22eeca61df9c9ba673950f14d')
 
 # Even though we don't officially support other archs, let's
 # allow the user to use this PKGBUILD to compile the package
@@ -63,13 +57,10 @@ prepare() {
 
   # Change electron binary name to the target electron
   sed -i "s|exec electron |exec $_electron |" ../code.sh
+  sed -i "s|#!/usr/bin/electron|#!/usr/bin/$_electron|" ../code.js
 
   # Make extensions and live share work
   patch -Np1 -i ../0001-patch-product.json-to-enable-all-extensions.patch
-
-  patch -Np1 -i ../0001-chore-bump-electron-12.0.2.patch
-  patch -Np1 -i ../0002-chore-bump-electron-12.0.3.patch
-  patch -Np1 -i ../0003-chore-bump-electron-12.0.4.patch
 
   # Set the commit and build date
   local _commit=$(git rev-parse HEAD)

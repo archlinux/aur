@@ -1,4 +1,5 @@
 #!/usr/bin/electron
+// don't edit the electron binary name here! simply change the variable in the PKGBUILD and we will sed it into the correct one :)
 
 const name = 'code-oss';
 
