@@ -1,0 +1,20 @@
+pkgbase = foxtelgo-git
+	pkgdesc = Unofficial Foxtel Go desktop app.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/foxtelgo/application
+	arch = x86_64
+	license = GPL
+	makedepends = npm
+	makedepends = git
+	makedepends = unzip
+	depends = nss
+	depends = gtk3
+	depends = libxss
+	provides = foxtelgo-git
+	conflicts = FoxtelGO-bin
+	source = git+https://gitlab.com/foxtelgo/application.git
+	sha256sums = SKIP
+
+pkgname = foxtelgo-git
+
