@@ -57,4 +57,4 @@ publish:
   script:
     - echo "$AUR_SSH_KEY" | tr -d '\r' | ssh-add -
     - git remote add aur-defi-app-bin ssh://aur@aur.archlinux.org/defi-app-bin.git
-    - git push aur
+    - git push aur HEAD:master
