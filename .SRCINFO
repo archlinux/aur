@@ -1,0 +1,15 @@
+pkgbase = ssh-import-id
+	pkgdesc = Import SSH public keys from Launchpad or other URLs
+	pkgver = 5.11
+	pkgrel = 1
+	url = https://launchpad.net/ssh-import-id
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = python
+	makedepends = python-setuptools
+	source = ssh-import-id::git+https://git.launchpad.net/ssh-import-id?signed#tag=5.11
+	validpgpkeys = D98F377EB47CC6DD257A9A07E564B9C275BDD52E
+	sha256sums = SKIP
+
+pkgname = ssh-import-id
