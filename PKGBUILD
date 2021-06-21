@@ -5,32 +5,29 @@
 #
 _pkgname="mconnect"
 pkgname="${_pkgname}-git"
-pkgver=409.210b435
-pkgrel=2
+pkgver=v0.3.r46.g81dc247
+pkgrel=1
 pkgdesc="KDE Connect protocol implementation in Vala/C for non-KDE desktops"
 arch=('i686' 'x86_64')
 depends=('gtk3' 'libgee' 'gnutls' 'json-glib' 'libnotify')
-makedepends=('at-spi2-atk' 'git' 'vala' 'json-glib' 'glib2' 'gobject-introspection' 'meson')
-url="https://github.com/bboozzoo/mconnect"
+makedepends=('at-spi2-atk' 'gdb' 'git' 'vala' 'json-glib' 'glib2' 'gobject-introspection' 'meson')
+url="https://github.com/grimpy/mconnect"
 license=('GPL2')
 install="${pkgname}.install"
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!emptydirs')
-source=("mconnect::git+${url}.git#branch=master"
-        'mconnect_utils.patch')
-sha256sums=('SKIP'
-            '11a8e281a405e3d49c0b504dae03fcd33d1dbb5d278609d0163ecfec88b1ae1d')
+source=("mconnect::git+${url}.git#branch=master")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${_pkgname}"
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    echo $(git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
 }
 
 prepare() {
     cd "${_pkgname}"
     mkdir build
-    patch -Np1 --input="${srcdir}/mconnect_utils.patch"
 }
 
 build() {
