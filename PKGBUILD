@@ -1,46 +1,32 @@
-# Maintainer: EatMyVenom <eat.my.venomm@gmail.com>
+# Maintainer: Siavash Askari Nasr <ciavash@protonmail.com>
+# Contributor: EatMyVenom <eat.my.venomm@gmail.com>
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 # Contributor: Limao Luo <luolimao+AUR@gmail.com>
 # Contributor: TuxSpirit <tuxspirit@archlinux.fr>
 # Contributor: Jamesjon <universales@protonmail.com>
 
-pkgname=peazip-qt-bin
-pkgver=7.8.0
+pkgname=peazip-qt5-bin
+pkgver=8.0.0
 pkgrel=1
-pkgdesc="File and archive manager, 7Z BR RAR TAR ZST ZIP files extraction utility
-"
-arch=('i686' 'x86_64')
-url='http://www.peazip.org/peazip-linux.html'
+pkgdesc="File and archive manager, 7Z BR RAR TAR ZST ZIP files extraction utility"
+arch=('x86_64')
+url='https://peazip.github.io/peazip-linux.html'
 license=('LGPL3')
-depends=('lib32-curl'
-         'lib32-gmp4'
-         'lib32-qt4pas'
-         'lib32-ncurses'
-         'balz'
-         'paq8o'
-         'p7zip'
-         'upx'
-         'zpaq'
-         'lib32-gcc-libs'
-         'lib32-xz'
-         'lib32-libx11'
-         'lib32-zlib')
-options=('!emptydirs' '!strip')
-optdepends=('quad: A ROLZ-based file compressor' 
-            'unace: Support for ace files'
-            'arc: Support for arc files')
 provides=('peazip')
-conflicts=('peazip'
-           'peazip-qt'
-           'peazip-qt-opensuse-latest')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/giorgiotani/PeaZip/releases/download/${pkgver}/peazip_portable-${pkgver}.LINUX.Qt.tar.gz")
-sha256sums=('8780a614c04ca9d32c7585f6079b7c75a47ffb2dd5f30822b65caf64259829ce')
+conflicts=('peazip')
+depends=('qt5pas')
+options=('!strip')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/peazip/PeaZip/releases/download/${pkgver}/peazip_portable-${pkgver}.LINUX.x86_64.Qt5.tar.gz")
+sha256sums=('4dd2f46d709d2d2b1854110283546c0813860939da58dbea04f8db9ace1c2563')
 
 package() {
+  _opt_dir="/opt/peazip-qt5-bin"
+  _freedesktop_dir="${_opt_dir}/FreeDesktop_integration"
   install -d "${pkgdir}/opt" "${pkgdir}/usr/bin"
-  mv peazip_portable-${pkgver}.LINUX.Qt "${pkgdir}/opt/peazip-qt"
-  ln -s /opt/peazip-qt/peazip "${pkgdir}/usr/bin"
-  install -Dm644 "${pkgdir}/opt/peazip-qt/FreeDesktop_integration/peazip.desktop" -t "${pkgdir}/usr/share/applications"
-  install -Dm644 "${pkgdir}/opt/peazip-qt/FreeDesktop_integration/peazip.png" -t "${pkgdir}/usr/share/pixmaps"
+  mv peazip_portable-${pkgver}.LINUX.x86_64.Qt5 "${pkgdir}/${_opt_dir}"
+  ln -s "${_opt_dir}/peazip" "${pkgdir}/usr/bin"
+  install -Dm644 "${pkgdir}/${_opt_dir}/copying.txt" -t "${pkgdir}/usr/share/licenses/peazip"
+  install -Dm644 "${pkgdir}/${_freedesktop_dir}/peazip.desktop" -t "${pkgdir}/usr/share/applications"
+  install -Dm644 "${pkgdir}/${_freedesktop_dir}/peazip.png" -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
 }
