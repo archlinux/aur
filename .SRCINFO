@@ -1,14 +1,15 @@
 pkgbase = ijavascript
 	pkgdesc = IJavascript is a JavaScript kernel for the Jupyter notebook
 	pkgver = 5.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/n-riesco/ijavascript
 	arch = any
 	license = BSD-3-Clause
 	makedepends = npm
 	depends = nodejs
 	depends = jupyter
-	depends = jupyter-notebook
+	optdepends = jupyterlab: JupyterLab support
+	optdepends = jupyter-notebook: Jupyter Notebook support
 	source = https://registry.npmjs.org/ijavascript/-/ijavascript-5.2.0.tgz
 	source = kernel.json
 	source = binding.gyp
