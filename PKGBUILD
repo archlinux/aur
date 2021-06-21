@@ -41,7 +41,6 @@ prepare() {
         "$srcdir/gprconfig_kb-$pkgver/db/compilers.xml" \
         "$srcdir/gprconfig_kb-$pkgver/db/linker.xml" \
         "$srcdir/gprconfig_kb-$pkgver/db/gnat.xml"
-
 }
 
 build() {
@@ -70,7 +69,7 @@ _install_licenses() {
 }
 
 package_libgpr() {
-    pkgdesc="Ada library to handle GPRbuild project files"
+    pkgdesc="Ada library to handle Gnat project files"
     depends=('xmlada')
 
     # both provide /usr/lib/libgpr.so
