@@ -1,7 +1,7 @@
 # Maintainer: jxir <aur@jxir.de>
 
 pkgname=mucalc
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="Convenient calculator for the command line"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('muparser' 'readline')
 makedepends=('cmake')
 source=("https://marlam.de/$pkgname/releases/$pkgname-$pkgver.tar.gz")
-sha256sums=('0fc049eb44cc4de525286c40981e3195530bc094e8b822b1b982affee463eedd')
+sha256sums=('c7d4d13ebc2935bcd6cbef6a697aae572597f99f29c661995510e85fbd5ce58c')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
