@@ -1,0 +1,6 @@
+src/
+pkg/
+kotlin-language-server/
+*.pkg.tar
+*.tar.gz
+*.tar.zst
