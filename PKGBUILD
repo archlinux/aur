@@ -8,7 +8,7 @@
 #
 pkgname=rstudio-server-git
 _gitname="rstudio"
-pkgver=v1.3.1073.r4250.gbdf0b8b38b
+pkgver=v1.4.1717.r350.g0c2d46e04b
 _gwtver=2.8.2
 _ginver=2.1.2
 _nodever=10.19.0
@@ -17,7 +17,7 @@ pkgdesc="A new integrated development environment (IDE) for R programming langua
 arch=('i686' 'x86_64')
 url="http://www.rstudio.org/"
 license=('AGPL3')
-depends=('r>=3.0.1' 'boost-libs>=1.69' 'openssl' 'mathjax2' 'pandoc' 'clang' 'postgresql-libs' 'sqlite3' 'soci' 'yaml-cpp')
+depends=('r>=3.0.1' 'boost-libs>=1.69' 'openssl' 'mathjax2' 'pandoc' 'clang' 'postgresql-libs' 'sqlite3' 'soci' 'yaml-cpp' 'hunspell-en_US')
 makedepends=('git' 'cmake>=3.4.3' 'boost>=1.69' 'jdk8-openjdk' 'apache-ant' 'unzip' 'bzip2' 'pango' 'pam' 'zlib' 'wget' 'yarn')
 install="${pkgname}.install"
 conflicts=('rstudio-server')
@@ -55,12 +55,12 @@ prepare () {
 
 	    cd "${srcdir}/${_gitname}/dependencies/common"
 	    _pandocver=$(grep -oP "(?<=PANDOC_VERSION=\").*(?=\"$)" install-pandoc)
-	    install -d pandoc /${_pandocver}
+	    install -d pandoc/${_pandocver}
 
 	    ln -sfT "/usr/share/myspell/dicts" dictionaries
 	    ln -sfT "/usr/share/mathjax2" mathjax-27
 	    ln -sfT "/usr/bin/pandoc" pandoc/${_pandocver}/pandoc
-	    ln -sfT "/usr/bin/pandoc-citeproc" pandoc/pandoc-citeproc
+	    ln -sfT "/usr/bin/pandoc-citeproc" pandoc/${_pandocvec}/pandoc-citeproc
 
 	    # Nodejs
 	    install -d node/${_nodever}
@@ -83,8 +83,6 @@ prepare () {
 
 
 build() {
-  cd "${srcdir}/$_gitname/dependencies/common"
-
   # Small hack
   # unset user Rprofile.r variable for building
   if [ -n $R_PROFILE_USER ]; then
