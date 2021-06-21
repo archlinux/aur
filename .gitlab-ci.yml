@@ -23,10 +23,13 @@ makepkg:
     - sudo -u builder makepkg -C -S --log --noconfirm
     # Test building and installing the package
     - sudo -u builder makepkg -C -i --log --noconfirm
+    # generate SRCINFO
+    - sudo -u builder makepkg --printsrcinfo > .SRCINFO
   cache:
-    key: pkgbuild
+    key: makepkg
     paths:
       - PKGBUILD
+      - .SRCINFO
 
 namcap:
   tags:
@@ -39,10 +42,14 @@ namcap:
       allow_failure: true
 
 push:
+  tags:
+    - archlinux
   stage: release
   script:
     - git add PKGBUILD
     - git diff-index --quiet HEAD || git commit -m "updates hash for AppImage"
+    - git add .SRCINFO
+    - git diff-index --quiet HEAD || git commit -m "updates .SRCINFO"
     - git push -o ci.skip "https://${GITLAB_USER_NAME}:${RENOVATE_TOKEN}@${CI_REPOSITORY_URL#*@}" "HEAD:${CI_COMMIT_BRANCH}"
   rules:
     - if: '$CI_PIPELINE_SOURCE != "merge_request_event"'
@@ -50,13 +57,18 @@ push:
 
 publish:
   tags:
-  - archlinux
+    - archlinux
   stage: publish
   script:
     - command -v ssh-agent >/dev/null || ( sudo pacman -Sy --noconfirm openssh )
     - eval $(ssh-agent -s)
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
+    - ssh-keyscan aur.archlinux.org >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
     - echo "$AUR_SSH_KEY" | tr -d '\r' | ssh-add -
-    - git remote add aur-defi-app-bin ssh://aur@aur.archlinux.org/defi-app-bin.git
-    - git push aur
+    - git remote add aur-defi-app-bin ssh://aur@aur.archlinux.org/defi-app-bin.git || true
+    - git push aur-defi-app-bin HEAD:master
+  rules:
+    - if: '$CI_PIPELINE_SOURCE != "merge_request_event"'
+      when: never
