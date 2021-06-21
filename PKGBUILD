@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/libadalang"
 license=('GPL3' 'custom')
 
-depends=("gnatcoll-core" "gnatcoll-iconv" "gnatcoll-gmp")
+depends=("gnatcoll-iconv" "gnatcoll-gmp")
 makedepends=('gprbuild' 'python-setuptools' 'python-mako' 'python-funcy' 'python-e3-core' 'python-docutils')
 
 source=(
