@@ -14,10 +14,9 @@ license=('GPL3' 'custom')
 depends=("gnatcoll-iconv" "gnatcoll-gmp")
 makedepends=('gprbuild' 'python-setuptools' 'python-mako' 'python-funcy' 'python-e3-core' 'python-docutils')
 
-source=(
-	"libadalang-$pkgver.tar.gz::https://github.com/AdaCore/libadalang/archive/v$pkgver.tar.gz"
-	"langkit-$pkgver.tar.gz::https://github.com/AdaCore/langkit/archive/v$pkgver.tar.gz"
-)
+source=("libadalang-$pkgver.tar.gz::https://github.com/AdaCore/libadalang/archive/v$pkgver.tar.gz"
+        "langkit-$pkgver.tar.gz::https://github.com/AdaCore/langkit/archive/v$pkgver.tar.gz")
+
 noextract=()
 sha256sums=('afc4b54619d5ee003ba2828969071fa38ced4f68319cc5aeee4736981258b935'
             '534d1e56f03961a6f28d248956b040b31429e602640c07f1b5ff89f76e9fcf5f')
