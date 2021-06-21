@@ -11,6 +11,7 @@ pkgbase = keysmith
 	makedepends = gcc
 	makedepends = kirigami2
 	makedepends = libsodium
+	makedepends = make
 	makedepends = qt5-base
 	makedepends = qt5-quickcontrols2
 	conflicts = keysmith-git
