@@ -51,9 +51,6 @@ push:
     - git add .SRCINFO
     - git diff-index --quiet HEAD || git commit -m "updates .SRCINFO"
     - git push -o ci.skip "https://${GITLAB_USER_NAME}:${RENOVATE_TOKEN}@${CI_REPOSITORY_URL#*@}" "HEAD:${CI_COMMIT_BRANCH}"
-  rules:
-    - if: '$CI_PIPELINE_SOURCE != "merge_request_event"'
-      when: never
 
 publish:
   tags:
