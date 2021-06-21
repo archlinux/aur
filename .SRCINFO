@@ -1,7 +1,7 @@
 pkgbase = dcmtk
 	pkgdesc = A collection of libraries and applications implementing large parts the DICOM standard
 	pkgver = 3.6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dicom.offis.de/dcmtk
 	arch = i686
 	arch = x86_64
@@ -19,4 +19,3 @@ pkgbase = dcmtk
 	sha512sums = 2bba96eac5908012eec7f510e05e7e426b3f1d2454fcdec056a3de9eb724b04d9d12f3cd0088b1f3be9c32430367600abdf30514d0f62c2f017f7740d1008b63
 
 pkgname = dcmtk
-
