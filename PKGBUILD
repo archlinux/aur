@@ -1,28 +1,32 @@
-# Maintainer: katt <magunasu.b97@gmail.com>
-# Contributor: Mitchell Renouf <mitchellarenouf@gmail.com>
+# Maintainer: Kicker0429 <kicker0429@yahoo.com>
+# Contributor: katt <magunasu.b97@gmail.com>
 
 pkgname=libopenaptx-git
-pkgver=0.2.0.r1.g99b0921
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Open Source implementation of Audio Processing Technology codec (aptX)'
 arch=(x86_64)
 url='https://github.com/pali/libopenaptx'
-license=(LGPL2.1)
+license=(GPL3)
 depends=(glibc)
 makedepends=(git)
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=(git+"${url}".git)
-sha512sums=(SKIP)
+provides=(libopenaptx.so)
+conflicts=(libopenaptx)
+_commit=811bc18586d634042618d633727ac0281d4170b8  # tags/0.2.1
+source=("git+$url#commit=$_commit")
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "${pkgname%-git}"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --tags | sed 's/-/+/g'
 }
 
 build() {
 	cd "${pkgname%-git}"
-	make
+	make CPPFLAGS="$CPPFLAGS" \
+	CFLAGS="-O3 -mavx2 $CFLAGS" \
+	LDFLAGS="$LDFLAGS" \
+    PREFIX=/usr "$@"
 }
 
 package() {
