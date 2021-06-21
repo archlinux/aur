@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-pcre
 pkgver=8.44
-pkgrel=1
+pkgrel=2
 pkgdesc="A library that implements Perl 5-style regular expressions (mingw-w64)"
 arch=(any)
 url="http://www.pcre.org/"
@@ -39,9 +39,13 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/pcre-$pkgver/build-${_arch}"
     make DESTDIR="$pkgdir" install
+    rm -r "$pkgdir/usr/${_arch}/share/"{man,doc}
     find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
+    if [[ $NO_EXECUTABLES ]]; then
+      find "${pkgdir}/usr/${_arch}" -name '*.exe' -delete
+    fi
   done
 }
 
