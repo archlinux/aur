@@ -6,14 +6,14 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=9.3.r0.gd6c5cd9be7
+pkgver=9.4.beta2.r0.g46c5c53b4d
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
 url='http://www.sagemath.org'
 license=(GPL)
-depends=(ipython palp brial cliquer maxima-ecl gfan sympow nauty python-rpy2 python-fpylll python-psutil python-cypari2
-  python-matplotlib python-scipy python-sympy python-networkx python-pillow python-pplpy python-sphinx python-ipywidgets
+depends=(palp brial cliquer maxima-ecl gfan sympow nauty python-rpy2 python-fpylll python-psutil python-cypari2
+  python-matplotlib python-scipy python-sympy python-networkx python-pplpy python-sphinx python-ipywidgets python-memory-allocator
   gap flintqs lcalc lrcalc arb eclib zn_poly gd python-cvxopt pynac linbox m4rie pari-galdata pari-seadata-small planarity rankwidth tachyon
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials
   iml giac libhomfly libbraiding symmetrica threejs-sage)
@@ -49,7 +49,7 @@ sha256sums=('SKIP'
             'c100a61c8dfade43bebc622a363abcb3d935a2f40958371ad87a9eb00689f8b0'
             '88e944f23c3b2391dc2e9f9be8e1131152d837dc8c829dfc714663869a272e81'
             'af984186f852d2847d770a18fb6822296c50a652dbf55a1ed59d27517c3d3ee4'
-            '32d586609dd6970f103574f75287bb641eb0a93618e84a1f671a2816e9420012'
+            '3797d5eb941b947968f6f118b92f7b1f309f3a27143785cdb6cab844402c0bdb'
             '240ac4c29d96d56407a20e1b7f9846e342a7eb2bb4edd6e5c86b3b5a8ff462f9'
             'e7b31f5e7ea88681c6eda41e5a74a2859a12dd128e75c00db3cfbd1d8ddf080d'
             '5e6f919a386e1a9e9caf7528088a3a3f3f3fc51b158a4daf435771afb1212384')

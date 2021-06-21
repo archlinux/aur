@@ -20,10 +20,10 @@ index 25cce6b355..94f15e9cc3 100644
 +2.13.1
 diff --git a/build/pkgs/pari/patches/pari-rnfdisc.patch b/build/pkgs/pari/patches/pari-rnfdisc.patch
 new file mode 100644
-index 0000000000..3a26e96687
+index 0000000000..39d325911e
 --- /dev/null
 +++ b/build/pkgs/pari/patches/pari-rnfdisc.patch
-@@ -0,0 +1,19 @@
+@@ -0,0 +1,35 @@
 +From 3edb98db78dd49bb8b4137b46781a7cd570c2556 Mon Sep 17 00:00:00 2001
 +From: Bill Allombert <Bill.Allombert@math.u-bordeaux.fr>
 +Date: Sun, 28 Mar 2021 13:27:24 +0200
@@ -42,7 +42,23 @@ index 0000000000..3a26e96687
 +   pol = nfX_to_monic(nf, pol, NULL);
 +   fa = idealfactor_partial(nf, disc, lim);
 +   P = gel(fa,1); l = lg(P);
-+
++diff --git a/src/test/32/rnf b/src/test/32/rnf
++index 6bd4585..d24e1ce 100644 (file)
++--- a/src/test/32/rnf
+++++ b/src/test/32/rnf
++@@ -832,9 +832,9 @@ error("inconsistent dimensions in idealtwoelt.")
++ 0
++ 0
++ 1
++-[[7361, 3786, 318, 5823; 0, 1, 0, 0; 0, 0, 1, 0; 0, 0, 0, 1], [-3, 6, -2, 0]
++-~]
++-[2, -1]
+++[[433, 322, 318, 1318/17; 0, 1, 0, 12/17; 0, 0, 1, 5/17; 0, 0, 0, 1/17], [25
+++/17, -12/17, 12/17, 16/17]~]
+++[1, -1]
++   ***   at top-level: rnfdedekind(nf,P,pr2,1)
++   ***                 ^-----------------------
++   *** rnfdedekind: sorry, Dedekind in the difficult case is not yet implemented.
 diff --git a/build/pkgs/pari/patches/prot_none_cygwin.patch b/build/pkgs/pari/patches/prot_none_cygwin.patch
 index 5cb7438b14..16340dd492 100644
 --- a/build/pkgs/pari/patches/prot_none_cygwin.patch
@@ -89,7 +105,7 @@ index 5cb7438b14..16340dd492 100644
  +#endif
   }
 diff --git a/build/pkgs/pari/spkg-configure.m4 b/build/pkgs/pari/spkg-configure.m4
-index 9a1b0c7db8..719b8089ee 100644
+index 9a1b0c7db8..d0fbb8f073 100644
 --- a/build/pkgs/pari/spkg-configure.m4
 +++ b/build/pkgs/pari/spkg-configure.m4
 @@ -1,6 +1,6 @@
@@ -100,36 +116,46 @@ index 9a1b0c7db8..719b8089ee 100644
    SAGE_SPKG_DEPCHECK([gmp mpir readline], [
      AC_PATH_PROG([GP], [gp])
      if test x$GP = x; then dnl GP test
-@@ -78,8 +78,8 @@ SAGE_SPKG_CONFIGURE([pari], [
-            sage_spkg_install_pari=yes
+@@ -66,33 +66,11 @@ SAGE_SPKG_CONFIGURE([pari], [
+             AC_MSG_NOTICE([Otherwise Sage will build its own pari/GP.])
+             sage_spkg_install_pari=yes
          fi
-         AC_MSG_CHECKING([whether bnfisunit bug of pari 2.11.3 is fixed])
+-        AC_MSG_CHECKING([whether hyperellcharpoly bug is fixed])
+-        bug_check=`echo "hyperellcharpoly(Mod(1,3)*(x^10 + x^9 + x^8 + x))" | $GP -qf 2>> config.log`
+-        expected="x^8 + 2*x^7 + 6*x^6 + 9*x^5 + 18*x^4 + 27*x^3 + 54*x^2 + 54*x + 81"
++        AC_MSG_CHECKING([whether rnfdisc bug of pari 2.13.1 is fixed])
++        bug_check=`echo "K = nfinit(y^4-10*y^2+1); disc = rnfdisc(K,x^2-(y^3/2+y^2-5*y/2+1)); idealnorm(K,disc)" | $GP -qf 2>> config.log`
++        expected="2304"
+         if test x"$bug_check" = x"$expected"; then
+-           AC_MSG_RESULT([yes])
+-        else
+-           AC_MSG_RESULT([no; cannot use system pari/GP with known bug])
+-           AC_MSG_NOTICE([Upgrade your system package and reconfigure.])
+-           AC_MSG_NOTICE([Otherwise Sage will build its own pari/GP.])
+-           sage_spkg_install_pari=yes
+-        fi
+-        AC_MSG_CHECKING([whether bnfisunit bug of pari 2.11.3 is fixed])
 -        bug_check=`echo "bnf = bnfinit(y^4-y-1); bnfisunit(bnf,-y^3+2*y^2-1)" | $GP -qf 2>> config.log`
 -        expected="[[0, 2, Mod(0, 2)]]~"
-+        bug_check=`echo "bnf = bnfinit(y^4-y-1); bnfisunit(bnf,-y^3+2*y^2-1)==[[0,2,0]]~" | $GP -qf 2>> config.log`
-+        expected="1"
-         if test x"$bug_check" = x"$expected"; then
-            AC_MSG_RESULT([yes])
-         else
-@@ -99,6 +99,16 @@ SAGE_SPKG_CONFIGURE([pari], [
-            AC_MSG_NOTICE([Otherwise Sage will build its own pari/GP.])
-            sage_spkg_install_pari=yes
-         fi
-+        AC_MSG_CHECKING([whether rnfdisc bug of pari 2.13.1 is fixed])
-+        bug_check=`echo "K = nfinit(y^4-10*y^2+1); disc = rnfdisc(K,x^2-(y^3/2+y^2-5*y/2+1)); idealnorm(K,disc)" | $GP -qf 2 >> config.log`
-+        expected="2304"
-+        if test x"$bug_check" = x"$expected"; then
+-        if test x"$bug_check" = x"$expected"; then
+-           AC_MSG_RESULT([yes])
+-        else
+-           AC_MSG_RESULT([no; cannot use system pari/GP with known bug])
+-           AC_MSG_NOTICE([Upgrade your system package and reconfigure.])
+-           AC_MSG_NOTICE([Otherwise Sage will build its own pari/GP.])
+-           sage_spkg_install_pari=yes
+-        fi
+-        AC_MSG_CHECKING([whether qfisom bug of pari 2.11.2 is fixed])
+-        bug_check=`echo "qfisom([[16,6;6,10]],[[4,3;3,10]])" | $GP -qf 2>> config.log`
+-        expected="0"
+-        if test x"$bug_check" = x"$expected"; then
+-           AC_MSG_RESULT([yes])
 +          AC_MSG_RESULT([yes])
-+        else
-+           AC_MSG_RESULT([no; cannot use system pari/GP with known bug])
-+           AC_MSG_NOTICE([Upgrade your system package and reconfigure.])
-+           AC_MSG_NOTICE([Otherwise Sage will build its own pari/GP.])
-+        fi
-     fi dnl end GP test
- 
-       if test x$sage_spkg_install_pari = xno; then dnl main PARI test
+         else
+            AC_MSG_RESULT([no; cannot use system pari/GP with known bug])
+            AC_MSG_NOTICE([Upgrade your system package and reconfigure.])
 diff --git a/src/doc/en/thematic_tutorials/explicit_methods_in_number_theory/nf_galois_groups.rst b/src/doc/en/thematic_tutorials/explicit_methods_in_number_theory/nf_galois_groups.rst
-index 07e84de55e..1d78922865 100644
+index e1ed2b11f7..4832272f1c 100644
 --- a/src/doc/en/thematic_tutorials/explicit_methods_in_number_theory/nf_galois_groups.rst
 +++ b/src/doc/en/thematic_tutorials/explicit_methods_in_number_theory/nf_galois_groups.rst
 @@ -305,7 +305,7 @@ ideal classes containing :math:`(5,\sqrt{-30})` and
@@ -243,7 +269,7 @@ index 75ac904ec5..7dd7091415 100644
          [    0     0 -1658  1658]
  
 diff --git a/src/sage/arith/misc.py b/src/sage/arith/misc.py
-index 173baa3b79..62977f095e 100644
+index b0861d9b20..a2096367ec 100644
 --- a/src/sage/arith/misc.py
 +++ b/src/sage/arith/misc.py
 @@ -1458,13 +1458,13 @@ def divisors(n):
@@ -507,10 +533,10 @@ index 79c75ad784..5b2326a8e7 100644
  
          Not a strictly convex cone::
 diff --git a/src/sage/geometry/fan.py b/src/sage/geometry/fan.py
-index c5c3eb646e..2380086903 100644
+index 4a28419762..df4c8174f4 100644
 --- a/src/sage/geometry/fan.py
 +++ b/src/sage/geometry/fan.py
-@@ -3008,8 +3008,8 @@ class RationalPolyhedralFan(IntegralRayCollection, Callable, Container):
+@@ -3087,8 +3087,8 @@ class RationalPolyhedralFan(IntegralRayCollection, Callable, Container):
  
              sage: f = Fan([Cone([(1,0,1,0), (0,1,1,0)])])
              sage: f.virtual_rays()
@@ -521,7 +547,7 @@ index c5c3eb646e..2380086903 100644
              in 4-d lattice N
  
              sage: f.rays()
-@@ -3018,14 +3018,14 @@ class RationalPolyhedralFan(IntegralRayCollection, Callable, Container):
+@@ -3097,14 +3097,14 @@ class RationalPolyhedralFan(IntegralRayCollection, Callable, Container):
              in 4-d lattice N
  
              sage: f.virtual_rays([0])
@@ -664,10 +690,10 @@ index 4444d662be..4d8ef3fba6 100644
      TESTS::
  
 diff --git a/src/sage/groups/abelian_gps/abelian_group.py b/src/sage/groups/abelian_gps/abelian_group.py
-index e6d8e16903..a493506524 100644
+index 49e4192cc6..6567ac6c18 100644
 --- a/src/sage/groups/abelian_gps/abelian_group.py
 +++ b/src/sage/groups/abelian_gps/abelian_group.py
-@@ -1523,7 +1523,7 @@ class AbelianGroup_class(UniqueRepresentation, AbelianGroupBase):
+@@ -1525,7 +1525,7 @@ class AbelianGroup_class(UniqueRepresentation, AbelianGroupBase):
              generated by {f0, f0*f1^2}
              sage: AbelianGroup([4,4]).subgroup_reduced( [ [1,0], [1,2] ])
              Multiplicative Abelian subgroup isomorphic to C2 x C4
@@ -817,27 +843,30 @@ index f810157b3e..f621b57c67 100644
      .. RUBRIC:: Number field
  
 diff --git a/src/sage/libs/pari/__init__.py b/src/sage/libs/pari/__init__.py
-index 77eda66097..e9112b2e3e 100644
+index 77eda66097..507b98c509 100644
 --- a/src/sage/libs/pari/__init__.py
 +++ b/src/sage/libs/pari/__init__.py
-@@ -161,12 +161,12 @@ exact object. Therefore, you should set the precision for each method
+@@ -161,12 +161,14 @@ exact object. Therefore, you should set the precision for each method
  call individually::
  
      sage: e = pari([0,0,0,-82,0]).ellinit()
 -    sage: eta1 = e.elleta(precision=100)[0]
 +    sage: eta1 = e.elleta(precision=50)[0]
      sage: eta1.sage()
-     3.6054636014326520859158205642077267748
+-    3.6054636014326520859158205642077267748
 -    sage: eta1 = e.elleta(precision=180)[0]
++    3.6054636014326520859158205642077267748 # 64-bit
++    3.605463601432652085915820564           # 32-bit
 +    sage: eta1 = e.elleta(precision=150)[0]
      sage: eta1.sage()
 -    3.60546360143265208591582056420772677481026899659802474544
-+    3.605463601432652085915820564207726774810268996598024745444380641429820491740
++    3.605463601432652085915820564207726774810268996598024745444380641429820491740 # 64-bit
++    3.60546360143265208591582056420772677481026899659802474544                    # 32-bit
  
  """
  
 diff --git a/src/sage/libs/pari/tests.py b/src/sage/libs/pari/tests.py
-index dd7f8e9bf8..2aa382269a 100644
+index dd7f8e9bf8..f34b30146d 100644
 --- a/src/sage/libs/pari/tests.py
 +++ b/src/sage/libs/pari/tests.py
 @@ -135,7 +135,7 @@ Some more exotic examples::
@@ -920,22 +949,26 @@ index dd7f8e9bf8..2aa382269a 100644
      sage: pari(-12).quadhilbert()   # Not fundamental
      Traceback (most recent call last):
      ...
-@@ -1760,12 +1760,12 @@ These are some doctests that used to be part of Sage and were removed from the c
+@@ -1760,13 +1760,14 @@ These are some doctests that used to be part of Sage and were removed from the c
  library::
  
      sage: e = pari([0,0,0,-82,0]).ellinit()
 -    sage: eta1 = e.elleta(precision=100)[0]
 +    sage: eta1 = e.elleta(precision=50)[0]
      sage: eta1.sage()
-     3.6054636014326520859158205642077267748
+-    3.6054636014326520859158205642077267748
 -    sage: eta1 = e.elleta(precision=180)[0]
++    3.6054636014326520859158205642077267748 # 64-bit
++    3.605463601432652085915820564           # 32-bit
 +    sage: eta1 = e.elleta(precision=150)[0]
      sage: eta1.sage()
 -    3.60546360143265208591582056420772677481026899659802474544
-+    3.605463601432652085915820564207726774810268996598024745444380641429820491740
- 
+-
++    3.605463601432652085915820564207726774810268996598024745444380641429820491740 # 64-bit
++    3.60546360143265208591582056420772677481026899659802474544                    # 32-bit 
      sage: from cypari2 import Pari
      sage: pari = Pari()
+ 
 diff --git a/src/sage/matrix/matrix_integer_dense.pyx b/src/sage/matrix/matrix_integer_dense.pyx
 index 5c2d94bab2..2fdcf65ac6 100644
 --- a/src/sage/matrix/matrix_integer_dense.pyx
@@ -1112,21 +1145,257 @@ index 91bfd2448d..f629bc659b 100644
  
          sage: A = matrix(Zmod(7), 2, [1,0,0,1])
          sage: L = lift_for_SL(A)
+diff --git a/src/sage/modular/local_comp/local_comp.py b/src/sage/modular/local_comp/local_comp.py
+index aa74ea7889..a00268ee91 100644
+--- a/src/sage/modular/local_comp/local_comp.py
++++ b/src/sage/modular/local_comp/local_comp.py
+@@ -24,6 +24,7 @@ from sage.rings.all                 import ZZ, QQbar, PolynomialRing, polygen
+ from sage.misc.abstract_method      import abstract_method
+ from sage.misc.cachefunc            import cached_method
+ from sage.misc.verbose              import verbose
++from sage.misc.flatten              import flatten
+ from sage.modular.modform.element   import Newform
+ from sage.structure.sequence        import Sequence
+ 
+@@ -73,11 +74,9 @@ def LocalComponent(f, p, twist_factor=None):
+         Character of Q_7*, of level 0, mapping 7 |--> 1
+         sage: Pi.species()
+         'Supercuspidal'
+-        sage: Pi.characters()
+-        [
+-        Character of unramified extension Q_7(s)* (s^2 + 6*s + 3 = 0), of level 1, mapping s |--> d, 7 |--> 1,
+-        Character of unramified extension Q_7(s)* (s^2 + 6*s + 3 = 0), of level 1, mapping s |--> -d, 7 |--> 1
+-        ]
++        sage: set(Pi.characters())
++        {Character of unramified extension Q_7(s)* (s^2 + 6*s + 3 = 0), of level 1, mapping s |--> -d, 7 |--> 1,
++         Character of unramified extension Q_7(s)* (s^2 + 6*s + 3 = 0), of level 1, mapping s |--> d, 7 |--> 1}
+     """
+     p = ZZ(p)
+     if not p.is_prime():
+@@ -635,11 +634,9 @@ class PrimitiveSupercuspidal(PrimitiveLocalComponent):
+ 
+             sage: f = Newform('50a')
+             sage: Pi = LocalComponent(f, 5)
+-            sage: chars = Pi.characters(); chars
+-            [
+-            Character of unramified extension Q_5(s)* (s^2 + 4*s + 2 = 0), of level 1, mapping s |--> d, 5 |--> 1,
+-            Character of unramified extension Q_5(s)* (s^2 + 4*s + 2 = 0), of level 1, mapping s |--> -d - 1, 5 |--> 1
+-            ]
++            sage: chars = Pi.characters(); set(chars)
++            {Character of unramified extension Q_5(s)* (s^2 + 4*s + 2 = 0), of level 1, mapping s |--> -d - 1, 5 |--> 1,
++             Character of unramified extension Q_5(s)* (s^2 + 4*s + 2 = 0), of level 1, mapping s |--> d, 5 |--> 1}
+             sage: chars[0].base_ring()
+             Number Field in d with defining polynomial x^2 + x + 1
+ 
+@@ -653,13 +650,11 @@ class PrimitiveSupercuspidal(PrimitiveLocalComponent):
+             sage: f = Newforms(GammaH(25, [6]), 3, names='j')[0]; f
+             q + j0*q^2 + 1/3*j0^3*q^3 - 1/3*j0^2*q^4 + O(q^6)
+             sage: Pi = LocalComponent(f, 5)
+-            sage: Pi.characters()
+-            [
+-            Character of unramified extension Q_5(s)* (s^2 + 4*s + 2 = 0), of level 1, mapping s |--> d, 5 |--> 5,
+-            Character of unramified extension Q_5(s)* (s^2 + 4*s + 2 = 0), of level 1, mapping s |--> -d - 1/3*j0^3, 5 |--> 5
+-            ]
++            sage: set(Pi.characters())
++            {Character of unramified extension Q_5(s)* (s^2 + 4*s + 2 = 0), of level 1, mapping s |--> 1/3*j0^2*d - 1/3*j0^3, 5 |--> 5,
++             Character of unramified extension Q_5(s)* (s^2 + 4*s + 2 = 0), of level 1, mapping s |--> -1/3*j0^2*d, 5 |--> 5}
+             sage: Pi.characters()[0].base_ring()
+-            Number Field in d with defining polynomial x^2 + 1/3*j0^3*x - 1/3*j0^2 over its base field
++            Number Field in d with defining polynomial x^2 - j0*x + 1/3*j0^2 over its base field
+ 
+         .. warning::
+ 
+@@ -672,11 +667,9 @@ class PrimitiveSupercuspidal(PrimitiveLocalComponent):
+ 
+             sage: f = Newform('81a', names='j'); f
+             q + j0*q^2 + q^4 - j0*q^5 + O(q^6)
+-            sage: LocalComponent(f, 3).characters()  # long time (12s on sage.math, 2012)
+-            [
+-            Character of unramified extension Q_3(s)* (s^2 + 2*s + 2 = 0), of level 2, mapping -2*s |--> 2*d + j0, 4 |--> 1, 3*s + 1 |--> j0*d + 1, 3 |--> 1,
+-            Character of unramified extension Q_3(s)* (s^2 + 2*s + 2 = 0), of level 2, mapping -2*s |--> -2*d - j0, 4 |--> 1, 3*s + 1 |--> -j0*d - 2, 3 |--> 1
+-            ]
++            sage: set(LocalComponent(f, 3).characters())  # long time (12s on sage.math, 2012)
++            {Character of unramified extension Q_3(s)* (s^2 + 2*s + 2 = 0), of level 2, mapping -2*s |--> -2*d + j0, 4 |--> 1, 3*s + 1 |--> -j0*d + 1, 3 |--> 1,
++             Character of unramified extension Q_3(s)* (s^2 + 2*s + 2 = 0), of level 2, mapping -2*s |--> 2*d - j0, 4 |--> 1, 3*s + 1 |--> j0*d - 2, 3 |--> 1}
+ 
+         Some ramified examples::
+ 
+@@ -706,11 +699,9 @@ class PrimitiveSupercuspidal(PrimitiveLocalComponent):
+             Character of unramified extension Q_2(s)* (s^2 + s + 1 = 0), of level 3, mapping s |--> 1, 2*s + 1 |--> 1/2*a0, 4*s + 1 |--> 1, -1 |--> 1, 2 |--> 1,
+             Character of unramified extension Q_2(s)* (s^2 + s + 1 = 0), of level 3, mapping s |--> 1, 2*s + 1 |--> 1/2*a0, 4*s + 1 |--> -1, -1 |--> 1, 2 |--> 1
+             ]
+-            sage: Newform('243a',names='a').local_component(3).characters() # long time
+-            [
+-            Character of ramified extension Q_3(s)* (s^2 - 6 = 0), of level 4, mapping -s - 1 |--> 1, 4 |--> 1, 3*s + 1 |--> d, s |--> 1,
+-            Character of ramified extension Q_3(s)* (s^2 - 6 = 0), of level 4, mapping -s - 1 |--> 1, 4 |--> 1, 3*s + 1 |--> -d - 1, s |--> 1
+-            ]
++            sage: set(Newform('243a',names='a').local_component(3).characters()) # long time
++            {Character of ramified extension Q_3(s)* (s^2 - 6 = 0), of level 4, mapping -2*s - 1 |--> -d - 1, 4 |--> 1, 3*s + 1 |--> -d - 1, s |--> 1,
++             Character of ramified extension Q_3(s)* (s^2 - 6 = 0), of level 4, mapping -2*s - 1 |--> d, 4 |--> 1, 3*s + 1 |--> d, s |--> 1}
+         """
+         T = self.type_space()
+         p = self.prime()
+@@ -736,7 +727,9 @@ class PrimitiveSupercuspidal(PrimitiveLocalComponent):
+                 F = self.coefficient_field().extension(theta_poly, "d")
+                 G = G.base_extend(F)
+ 
+-            gvals = [x[0] for x in theta_poly.roots(G.base_ring())]
++            # roots with repetitions allowed
++            gvals = flatten([[y[0]]*y[1] for y in theta_poly.roots(G.base_ring())])
++
+             if len(gs) == 1:
+                 # This is always the case if p != 2
+                 chi1, chi2 = [G.extend_character(n, self.central_character(), [x]) for x in gvals]
+@@ -747,18 +740,18 @@ class PrimitiveSupercuspidal(PrimitiveLocalComponent):
+                 g0 = gs[0]
+                 try:
+                     G._reduce_Qp(1, g0)
+-                    raise ZeroDivisionError
++                    raise ArithmeticError("Bad generators returned")
+                 except ValueError:
+                     pass
+ 
+                 tr = (~T.rho(g0.matrix().list())).trace()
+                 X = polygen(G.base_ring())
+-                theta_poly = X**2 - (-1)**n*tr*X + self.central_character()(g0.norm())
++                theta0_poly = X**2 - (-1)**n*tr*X + self.central_character()(g0.norm())
+                 verbose("theta_poly for %s is %s" % (g0, theta_poly), level=1)
+-                if theta_poly.is_irreducible():
+-                    F = theta_poly.base_ring().extension(theta_poly, "e")
++                if theta0_poly.is_irreducible():
++                    F = theta0_poly.base_ring().extension(theta_poly, "e")
+                     G = G.base_extend(F)
+-                g0vals = [y[0] for y in theta_poly.roots(G.base_ring())]
++                g0vals = flatten([[y[0]]*y[1] for y in theta0_poly.roots(G.base_ring())])
+ 
+                 pairA = [ [g0vals[0], gvals[0]], [g0vals[1], gvals[1]] ]
+                 pairB = [ [g0vals[0], gvals[1]], [g0vals[1], gvals[0]] ]
+@@ -774,26 +767,35 @@ class PrimitiveSupercuspidal(PrimitiveLocalComponent):
+                 except ValueError:
+                     B_fail = 1
+ 
++                if chisA == chisB or chisA == reversed(chisB):
++                    # repeated roots -- break symmetry arbitrarily
++                    B_fail = 1
++
+                 # check the character relation from LW12
+                 if (not A_fail and not B_fail):
+                     for x in G.ideal(n).invertible_residues():
+                         try:
+                             # test if G mod p is in Fp
+-                            G._reduce_Qp(1, x)
++                            flag = G._reduce_Qp(1, x)
+                         except ValueError:
+-                            verbose("testing x = %s" % x, level=1)
+-                            ti = (-1)**n * (~T.rho(x.matrix().list())).trace()
+-                            verbose("  trace of matrix is %s" % ti, level=1)
+-                            if ti != chisA[0](x) + chisA[1](x):
+-                                verbose("  chisA FAILED", level=1)
+-                                A_fail = 1
+-                                break
+-                            if ti != chisB[0](x) + chisB[1](x):
+-                                verbose("  chisB FAILED", level=1)
+-                                B_fail = 1
+-                                break
+-                            else:
+-                                verbose("  Trace identity check works for both", level=1)
++                            flag = None
++                        if flag is not None: 
++                            verbose("skipping x=%s as congruent to %s mod p" % (x, flag))
++                            continue
++
++                        verbose("testing x = %s" % x, level=1)
++                        ti = (-1)**n * (~T.rho(x.matrix().list())).trace()
++                        verbose("  trace of matrix is %s" % ti, level=1)
++                        if ti != chisA[0](x) + chisA[1](x):
++                            verbose("  chisA FAILED", level=1)
++                            A_fail = 1
++                            break
++                        if ti != chisB[0](x) + chisB[1](x):
++                            verbose("  chisB FAILED", level=1)
++                            B_fail = 1
++                            break
++                        else:
++                            verbose("  Trace identity check works for both", level=1)
+ 
+                 if B_fail and not A_fail:
+                     chi1, chi2 = chisA
+@@ -851,7 +853,6 @@ class PrimitiveSupercuspidal(PrimitiveLocalComponent):
+             if theta_poly.is_irreducible():
+                 F = self.coefficient_field().extension(theta_poly, "d")
+                 G = G.base_extend(F)
+-            from sage.misc.flatten import flatten
+             c1q, c2q = flatten([[x]*e for x,e in theta_poly.roots(G.base_ring())])
+ 
+             if len(qs) == 1:
 diff --git a/src/sage/modular/local_comp/smoothchar.py b/src/sage/modular/local_comp/smoothchar.py
-index 8bb3d46a00..3bce61f4eb 100644
+index e54d5ad1d4..92135f7f71 100644
 --- a/src/sage/modular/local_comp/smoothchar.py
 +++ b/src/sage/modular/local_comp/smoothchar.py
-@@ -1624,8 +1624,8 @@ class SmoothCharacterGroupRamifiedQuadratic(SmoothCharacterGroupGeneric):
+@@ -1131,9 +1131,8 @@ class SmoothCharacterGroupQuadratic(SmoothCharacterGroupGeneric):
+             sage: from sage.modular.local_comp.smoothchar import SmoothCharacterGroupRamifiedQuadratic
              sage: G = SmoothCharacterGroupRamifiedQuadratic(3, 1, QQ)
              sage: s = G.number_field().gen()
-             sage: G.discrete_log(4, 3 + 2*s)
--            [5, 1, 1, 1]
--            sage: gs = G.unit_gens(4); gs[0]^5 * gs[1] * gs[2] * gs[3] - (3 + 2*s) in G.ideal(4)
-+            [1, 2, 2, 1]
-+            sage: gs = G.unit_gens(4); gs[0] * gs[1]^2 * gs[2]^2 * gs[3] - (3 + 2*s) in G.ideal(4)
+-            sage: G.discrete_log(4, 3 + 2*s)
+-            [1, 2, 2, 1]
+-            sage: gs = G.unit_gens(4); gs[0] * gs[1]^2 * gs[2]^2 * gs[3] - (3 + 2*s) in G.ideal(4)
++            sage: dl = G.discrete_log(4, 3 + 2*s)
++            sage: gs = G.unit_gens(4); gs[0]^dl[0] * gs[1]^dl[1] * gs[2]^dl[2] * gs[3]^dl[3] - (3 + 2*s) in G.ideal(4)
              True
+ 
+         An example with a custom generating set::
+@@ -1191,11 +1190,11 @@ class SmoothCharacterGroupQuadratic(SmoothCharacterGroupGeneric):
+             sage: from sage.modular.local_comp.smoothchar import SmoothCharacterGroupUnramifiedQuadratic
+             sage: G = SmoothCharacterGroupUnramifiedQuadratic(7,QQ)
+             sage: G.quotient_gens(1)
+-            [s]
++            [2*s - 2]
+             sage: G.quotient_gens(2)
+-            [23*s - 16]
++            [15*s + 21]
+             sage: G.quotient_gens(3)
+-            [-124*s - 2]
++            [-75*s + 33]
+ 
+         A ramified case::
+ 
+@@ -1208,11 +1207,11 @@ class SmoothCharacterGroupQuadratic(SmoothCharacterGroupGeneric):
+ 
+             sage: G = SmoothCharacterGroupUnramifiedQuadratic(2,QQ)
+             sage: G.quotient_gens(1)
+-            [s]
++            [s + 1]
+             sage: G.quotient_gens(2)
+-            [-s + 1]
++            [-s + 2]
+             sage: G.quotient_gens(3)
+-            [7*s + 5, -s + 3]
++            [-17*s - 14, 3*s - 2]
          """
-         x = self.number_field().coerce(x)
+ 
+         # silly special case
+@@ -1327,18 +1326,18 @@ class SmoothCharacterGroupQuadratic(SmoothCharacterGroupGeneric):
+             sage: G.extend_character(3, chi, [1])
+             Character of unramified extension Q_5(s)* (s^2 + 4*s + 2 = 0), of level 0, mapping 5 |--> 7
+             sage: K.<z> = CyclotomicField(6); G.base_extend(K).extend_character(1, chi, [z])
+-            Character of unramified extension Q_5(s)* (s^2 + 4*s + 2 = 0), of level 1, mapping s |--> z, 5 |--> 7
++            Character of unramified extension Q_5(s)* (s^2 + 4*s + 2 = 0), of level 1, mapping s |--> -z + 1, 5 |--> 7
+ 
+         We extend the nontrivial quadratic character::
+ 
+             sage: chi = SmoothCharacterGroupQp(5, QQ).character(1, [-1, 7])
+             sage: K.<z> = CyclotomicField(24); G.base_extend(K).extend_character(1, chi, [z^6])
+-            Character of unramified extension Q_5(s)* (s^2 + 4*s + 2 = 0), of level 1, mapping s |--> z^6, 5 |--> 7
++            Character of unramified extension Q_5(s)* (s^2 + 4*s + 2 = 0), of level 1, mapping s |--> -z^6, 5 |--> 7
+ 
+         Extensions of higher level::
+ 
+             sage: K.<z> = CyclotomicField(20); rho = G.base_extend(K).extend_character(2, chi, [z]); rho
+-            Character of unramified extension Q_5(s)* (s^2 + 4*s + 2 = 0), of level 2, mapping 11*s - 10 |--> -z^5, 6 |--> 1, 5*s + 1 |--> z^4, 5 |--> 7
++            Character of unramified extension Q_5(s)* (s^2 + 4*s + 2 = 0), of level 2, mapping 11*s - 10 |--> z^5, 6 |--> 1, 5*s + 1 |--> z^4, 5 |--> 7
+             sage: rho(3)
+             -1
+ 
 diff --git a/src/sage/modular/modform/find_generators.py b/src/sage/modular/modform/find_generators.py
 index 18055ef00f..40f4f7c858 100644
 --- a/src/sage/modular/modform/find_generators.py
@@ -1668,10 +1937,10 @@ index 92102fcbd1..85abc20a86 100644
      """
      ## 0. If a split local cover already exists, then return it.
 diff --git a/src/sage/rings/finite_rings/finite_field_base.pyx b/src/sage/rings/finite_rings/finite_field_base.pyx
-index 972f07e6de..124d9cfd56 100644
+index 9b029a4dd6..caff023cbd 100644
 --- a/src/sage/rings/finite_rings/finite_field_base.pyx
 +++ b/src/sage/rings/finite_rings/finite_field_base.pyx
-@@ -1621,14 +1621,14 @@ cdef class FiniteField(Field):
+@@ -1638,14 +1638,14 @@ cdef class FiniteField(Field):
  
          We check that :trac:`23801` is resolved::
  
@@ -1691,7 +1960,7 @@ index 972f07e6de..124d9cfd56 100644
  
          There is no coercion since we can't ensure compatibility with larger
          fields in this case::
-@@ -1639,7 +1639,7 @@ cdef class FiniteField(Field):
+@@ -1656,7 +1656,7 @@ cdef class FiniteField(Field):
          But there is still a compatibility among the generators chosen for the subfields::
  
              sage: ll, iinc = k.subfield(12, 'w', map=True)
@@ -1701,10 +1970,10 @@ index 972f07e6de..124d9cfd56 100644
              True
  
 diff --git a/src/sage/rings/finite_rings/finite_field_constructor.py b/src/sage/rings/finite_rings/finite_field_constructor.py
-index 04073fc52a..48c5a78302 100644
+index e05b7fc9fa..219b4a778a 100644
 --- a/src/sage/rings/finite_rings/finite_field_constructor.py
 +++ b/src/sage/rings/finite_rings/finite_field_constructor.py
-@@ -284,14 +284,14 @@ class FiniteFieldFactory(UniqueFactory):
+@@ -285,14 +285,14 @@ class FiniteFieldFactory(UniqueFactory):
      (a generator of the multiplicative group), use
      ``modulus="primitive"`` if you need this::
  
@@ -1799,10 +2068,10 @@ index cd4c2212c3..007a68e4c0 100644
              sage: c = OK(a)
              sage: b = k(a); b
 diff --git a/src/sage/rings/integer.pyx b/src/sage/rings/integer.pyx
-index a2f913df7f..0bae1cc505 100644
+index 56cf1161d0..14eec0c8c3 100644
 --- a/src/sage/rings/integer.pyx
 +++ b/src/sage/rings/integer.pyx
-@@ -5474,7 +5474,7 @@ cdef class Integer(sage.structure.element.EuclideanDomainElement):
+@@ -5483,7 +5483,7 @@ cdef class Integer(sage.structure.element.EuclideanDomainElement):
              sage: 3._bnfisnorm(QuadraticField(-1, 'i'))
              (1, 3)
              sage: 7._bnfisnorm(CyclotomicField(7))
@@ -1921,10 +2190,10 @@ index 46d0ca8c9d..1ad6d583a8 100644
          if isinstance(args[0], FractionalIdealClass):
              return self.element_class(self, None, self._number_field.ideal(args[0].ideal()))
 diff --git a/src/sage/rings/number_field/number_field.py b/src/sage/rings/number_field/number_field.py
-index f4cdb9e4f3..70a142ba5c 100644
+index fe02c6e824..ca6fee5532 100644
 --- a/src/sage/rings/number_field/number_field.py
 +++ b/src/sage/rings/number_field/number_field.py
-@@ -3590,7 +3590,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -3592,7 +3592,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
              sage: L.<b> = K.extension(x^2 - 3, x^2 + 1)
              sage: M.<c> = L.extension(x^2 + 1)
              sage: L.ideal(K.ideal(2, a))
@@ -1933,7 +2202,7 @@ index f4cdb9e4f3..70a142ba5c 100644
              sage: M.ideal(K.ideal(2, a)) == M.ideal(a*(b - c)/2)
              True
  
-@@ -4758,7 +4758,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -4760,7 +4760,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
               1/13*a^2 + 7/13*a - 332/13,
               -1/13*a^2 + 6/13*a + 345/13,
               -1,
@@ -1942,7 +2211,7 @@ index f4cdb9e4f3..70a142ba5c 100644
              sage: units[5] in (1/13*a^2 - 19/13*a - 7/13, 1/13*a^2 + 20/13*a - 7/13)
              True
              sage: len(units) == 6
-@@ -4800,8 +4800,8 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -4802,8 +4802,8 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
              sage: K.<a> = QuadraticField(-105)
              sage: K._S_class_group_quotient_matrix((K.ideal(11, a + 4),))
              [0 0]
@@ -1952,7 +2221,7 @@ index f4cdb9e4f3..70a142ba5c 100644
  
          TESTS:
  
-@@ -4938,7 +4938,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -4948,7 +4948,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
               1/13*a^2 + 7/13*a - 332/13,
               -1/13*a^2 + 6/13*a + 345/13,
               -1,
@@ -1961,7 +2230,7 @@ index f4cdb9e4f3..70a142ba5c 100644
              sage: gens[5] in (1/13*a^2 - 19/13*a - 7/13, 1/13*a^2 + 20/13*a - 7/13)
              True
              sage: gens[6] in (-1/13*a^2 + 45/13*a - 97/13, 1/13*a^2 - 45/13*a + 97/13)
-@@ -6115,28 +6115,37 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -6234,28 +6234,37 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
          try:
              return self._integral_basis_dict[v]
          except (AttributeError, KeyError):
@@ -2019,7 +2288,7 @@ index f4cdb9e4f3..70a142ba5c 100644
  
      def reduced_basis(self, prec=None):
          r"""
-@@ -6763,7 +6772,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -6882,7 +6891,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
              sage: A = x^4 - 10*x^3 + 20*5*x^2 - 15*5^2*x + 11*5^3
              sage: K = NumberField(A, 'a')
              sage: K.units()
@@ -2028,7 +2297,7 @@ index f4cdb9e4f3..70a142ba5c 100644
  
          For big number fields, provably computing the unit group can
          take a very long time.  In this case, one can ask for the
-@@ -6774,14 +6783,14 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -6893,14 +6902,14 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
              sage: K.units(proof=True)  # takes forever, not tested
              ...
              sage: K.units(proof=False)  # result not independently verified
@@ -2049,7 +2318,7 @@ index f4cdb9e4f3..70a142ba5c 100644
  
          TESTS:
  
-@@ -6790,7 +6799,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -6909,7 +6918,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
  
              sage: K.<a> = NumberField(1/2*x^2 - 1/6)
              sage: K.units()
@@ -2058,7 +2327,7 @@ index f4cdb9e4f3..70a142ba5c 100644
          """
          proof = proof_flag(proof)
  
-@@ -6869,7 +6878,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -6988,7 +6997,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
              sage: U.gens()
              (u0, u1, u2, u3, u4, u5, u6, u7, u8)
              sage: U.gens_values()  # result not independently verified
@@ -2067,7 +2336,7 @@ index f4cdb9e4f3..70a142ba5c 100644
          """
          proof = proof_flag(proof)
  
-@@ -7057,7 +7066,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -7177,7 +7186,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
  
              sage: solutions, bound = K.S_unit_solutions(S, prec=100, include_bound=True)
              sage: bound
@@ -2076,7 +2345,7 @@ index f4cdb9e4f3..70a142ba5c 100644
          """
          from .S_unit_solver import solve_S_unit_equation
          return solve_S_unit_equation(self, S, prec, include_exponents, include_bound, proof)
-@@ -10877,9 +10886,9 @@ class NumberField_cyclotomic(NumberField_absolute):
+@@ -10997,9 +11006,9 @@ class NumberField_cyclotomic(NumberField_absolute):
          EXAMPLES::
  
              sage: k5.<z> = CyclotomicField(5)
@@ -2088,7 +2357,7 @@ index f4cdb9e4f3..70a142ba5c 100644
              sage: z^7 + 3
              z^2 + 3
              sage: k5(w) # indirect doctest
-@@ -10890,7 +10899,7 @@ class NumberField_cyclotomic(NumberField_absolute):
+@@ -11010,7 +11019,7 @@ class NumberField_cyclotomic(NumberField_absolute):
  
              sage: F = CyclotomicField(8)
              sage: z = F.gen()
@@ -2097,7 +2366,7 @@ index f4cdb9e4f3..70a142ba5c 100644
              E(8)-E(8)^3
              sage: F(a)
              -zeta8^3 + zeta8
-@@ -10904,6 +10913,7 @@ class NumberField_cyclotomic(NumberField_absolute):
+@@ -11024,6 +11033,7 @@ class NumberField_cyclotomic(NumberField_absolute):
  
          It also works with the old pexpect interface to GAP::
  
@@ -2133,7 +2402,7 @@ index 29932830f3..35e2857d96 100644
              3
  
 diff --git a/src/sage/rings/number_field/number_field_ideal.py b/src/sage/rings/number_field/number_field_ideal.py
-index 01e5d47902..2478fdb009 100644
+index 5277a9b06c..e75e61d161 100644
 --- a/src/sage/rings/number_field/number_field_ideal.py
 +++ b/src/sage/rings/number_field/number_field_ideal.py
 @@ -231,7 +231,7 @@ class NumberFieldIdeal(Ideal_generic):
@@ -2189,7 +2458,7 @@ index 01e5d47902..2478fdb009 100644
              HNF = self.pari_hnf()
              # Check whether the ideal is generated by an integer, i.e.
              # whether HNF is a multiple of the identity matrix
-@@ -840,7 +842,8 @@ class NumberFieldIdeal(Ideal_generic):
+@@ -841,7 +843,8 @@ class NumberFieldIdeal(Ideal_generic):
              else:
                  a, alpha = K.pari_nf().idealtwoelt(HNF)
              self.__two_generators = (K(a), K(alpha))
@@ -2199,7 +2468,7 @@ index 01e5d47902..2478fdb009 100644
  
      def integral_basis(self):
          r"""
-@@ -1030,7 +1033,7 @@ class NumberFieldIdeal(Ideal_generic):
+@@ -1031,7 +1034,7 @@ class NumberFieldIdeal(Ideal_generic):
             raise ValueError("%s is not a prime ideal" % self)
          return self._pari_prime
  
@@ -2208,7 +2477,7 @@ index 01e5d47902..2478fdb009 100644
          r"""
          This function is essentially the implementation of
          :meth:`is_principal`, :meth:`gens_reduced` and
-@@ -1042,9 +1045,8 @@ class NumberFieldIdeal(Ideal_generic):
+@@ -1043,9 +1046,8 @@ class NumberFieldIdeal(Ideal_generic):
  
          - ``proof`` -- proof flag.  If ``proof=False``, assume GRH.
  
@@ -2220,7 +2489,7 @@ index 01e5d47902..2478fdb009 100644
  
          OUTPUT:
  
-@@ -1052,6 +1054,15 @@ class NumberFieldIdeal(Ideal_generic):
+@@ -1053,6 +1055,15 @@ class NumberFieldIdeal(Ideal_generic):
          ``_ideal_class_log`` (see :meth:`ideal_class_log`),
          ``_is_principal`` (see :meth:`is_principal`) and
          ``_reduced_generators``.
@@ -2236,7 +2505,7 @@ index 01e5d47902..2478fdb009 100644
          """
          # Since pari_bnf() is cached, this call to pari_bnf() should not
          # influence the run-time much.  Also, this simplifies the handling
-@@ -1063,29 +1074,33 @@ class NumberFieldIdeal(Ideal_generic):
+@@ -1064,29 +1075,33 @@ class NumberFieldIdeal(Ideal_generic):
  
          # If we already have _reduced_generators, no need to compute them again
          if hasattr(self, "_reduced_generators"):
@@ -2287,7 +2556,31 @@ index 01e5d47902..2478fdb009 100644
                  self._reduced_generators = self.gens_two()
  
      def is_principal(self, proof=None):
-@@ -3118,7 +3133,7 @@ class NumberFieldFractionalIdeal(MultiplicativeGroupElement, NumberFieldIdeal):
+@@ -2176,6 +2191,14 @@ class NumberFieldFractionalIdeal(MultiplicativeGroupElement, NumberFieldIdeal):
+             sage: len(list(K.primes_above(3)[0].invertible_residues()))
+             80
+ 
++        TESTS:
++
++        Check that the integrality is not lost,  cf. :trac:`30801`::
++
++            sage: K.<a> = NumberField(x^2 + x + 1)
++            sage: list(K.ideal(8).invertible_residues())[:5]
++            [1, a - 1, -3*a, -2*a + 3, -a - 1]
++
+         AUTHOR: John Cremona
+         """
+         return self.invertible_residues_mod(subgp_gens=None, reduce=reduce)
+@@ -2262,7 +2285,7 @@ class NumberFieldFractionalIdeal(MultiplicativeGroupElement, NumberFieldIdeal):
+         A, U, V = M.smith_form()
+ 
+         V = V.inverse()
+-        new_basis = [prod([g[j]**V[i, j] for j in range(n)]) for i in range(n)]
++        new_basis = [prod([g[j]**(V[i, j] % invs[j]) for j in range(n)]) for i in range(n)]
+ 
+         if reduce:
+             combo = lambda c: self.small_residue(prod(new_basis[i] ** c[i]
+@@ -3121,7 +3144,7 @@ class NumberFieldFractionalIdeal(MultiplicativeGroupElement, NumberFieldIdeal):
              sage: K.<a> = NumberField(x^5 + 2); K
              Number Field in a with defining polynomial x^5 + 2
              sage: f = K.factor(19); f
@@ -2589,6 +2882,22 @@ index d0508258a0..6dd6b68cb3 100644
             sage: SUK.log(u)
             (3, 1, 4, 1, 5, 9, 2)
             sage: SUK.log(u) == v
+diff --git a/src/sage/rings/padics/relaxed_template.pxi b/src/sage/rings/padics/relaxed_template.pxi
+index ba15d4f5d3..9ef4ea4e70 100644
+--- a/src/sage/rings/padics/relaxed_template.pxi
++++ b/src/sage/rings/padics/relaxed_template.pxi
+@@ -2637,9 +2637,9 @@ cdef class RelaxedElement_random(RelaxedElementWithDigits):
+ 
+         It is guaranteed that `a` and `b` are equal at any precision::
+ 
+-            sage: a[:30]
++            sage: a[:30]   # random
+             ...?343214211432220241412003314311
+-            sage: b[:30]
++            sage: b[:30]   # random
+             ...?343214211432220241412003314311
+ 
+             sage: a == b
 diff --git a/src/sage/rings/polynomial/polynomial_element.pyx b/src/sage/rings/polynomial/polynomial_element.pyx
 index 570c148e72..17f3ec8da9 100644
 --- a/src/sage/rings/polynomial/polynomial_element.pyx
@@ -2603,10 +2912,10 @@ index 570c148e72..17f3ec8da9 100644
              [(-2.8510609648967059?e-452, 1)]
              sage: p.roots(ring=QQbar)
 diff --git a/src/sage/rings/polynomial/polynomial_quotient_ring.py b/src/sage/rings/polynomial/polynomial_quotient_ring.py
-index 699e0ac285..046180445f 100644
+index bc65b286e8..315716afbc 100644
 --- a/src/sage/rings/polynomial/polynomial_quotient_ring.py
 +++ b/src/sage/rings/polynomial/polynomial_quotient_ring.py
-@@ -1307,7 +1307,7 @@ class PolynomialQuotientRing_generic(CommutativeRing):
+@@ -1324,7 +1324,7 @@ class PolynomialQuotientRing_generic(CommutativeRing):
          `x^2 + 31` from 12 to 2, i.e. we lose a generator of order 6 (this was
          fixed in :trac:`14489`)::
  
@@ -2822,7 +3131,7 @@ index 29316bebeb..ccfa33915a 100644
  
          ::
 diff --git a/src/sage/schemes/elliptic_curves/ell_rational_field.py b/src/sage/schemes/elliptic_curves/ell_rational_field.py
-index eea4c88330..31db08b9fa 100644
+index 1ce8323e1b..5a6bcdf7ee 100644
 --- a/src/sage/schemes/elliptic_curves/ell_rational_field.py
 +++ b/src/sage/schemes/elliptic_curves/ell_rational_field.py
 @@ -4082,7 +4082,7 @@ class EllipticCurve_rational_field(EllipticCurve_number_field):
