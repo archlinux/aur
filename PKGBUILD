@@ -2,7 +2,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=openxlsx
-_cranver=4.2.3
+_cranver=4.2.4
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(MIT)
 depends=('r>=3.3.0' r-rcpp r-zip r-stringi)
 optdepends=(r-knitr r-testthat r-roxygen2 r-rmarkdown)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('cdef89d826e50bef772af3e5eae935ca0316626a6e22f55f7631eac733b5e46f')
+sha256sums=('af571b3c60cea2a5975f6a394469f1c50266d4a5c5c91896b991b1b3ba8bc86e')
 
 build() {
   cd "${srcdir}"
