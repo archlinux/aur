@@ -1,19 +1,28 @@
 # Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
 
 pkgname=amb
-pkgver=20201205
+pkgver=20201223
 pkgrel=1
 pkgdesc='AMB stands for Ancient Machines Book. It is an extremely lightweight file format meant to store any kind of hypertext documentation '
 url='http://ambook.sourceforge.net/'
 license=('MIT')
 arch=('x86_64' 'aarch64')
 conflicts=(${pkgname}-svn)
-makedepends=('tar' 'make' 'gcc' 'sed') 
-source=("http://ambook.sourceforge.net/archiwum/${pkgname}-${pkgver}.tar.xz")
-sha512sums=('9f5ca3aa2429995ce6942a4e8de6f451f0fec397cae4df71989eebae080a085894c1d59d59e19539393c85240d83e839c1adac5369046e0d4d7738033e9a196a')
+depends=('ncurses')
+makedepends=('ncurses')
+source=("http://amb.osdn.io/archiwum/${pkgname}-${pkgver}.tar.xz"
+        "ptui-ncurses.c.patch")
+sha512sums=('4d26bbca83836a890e593c0d95bd9dc92117e93be71b16ed5710dd89854753e772d930de590744b6b4960b2ceef47925a2361fe850ff48fd2bd741b07ea5e0a2'
+            '3dc017d1e933939d5093b65fb0622ecee88b7e9071834229a60c5f277b1caa0b30dd3bd8c2d1106cb5c1af4e562617e55bca17feb3187b32baa4b382a2312b31')
+
+prepare() {
+  patch "${srcdir}/${pkgname}-${pkgver}/ptui/ptui-ncurses.c" < "${startdir}/ptui-ncurses.c.patch"
+}
+
 build() {
+  patch "${srcdir}/${pkgname}-${pkgver}/ptui/ptui-ncurses.c" < "${startdir}/ptui-ncurses.c.patch"
 	cd ${srcdir}"/"${pkgname}"-"${pkgver}
-	make 
+	make
 }
 
 prepare() {

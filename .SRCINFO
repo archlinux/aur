@@ -1,18 +1,17 @@
 pkgbase = amb
 	pkgdesc = AMB stands for Ancient Machines Book. It is an extremely lightweight file format meant to store any kind of hypertext documentation
-	pkgver = 20201205
+	pkgver = 20201223
 	pkgrel = 1
 	url = http://ambook.sourceforge.net/
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = tar
-	makedepends = make
-	makedepends = gcc
-	makedepends = sed
+	makedepends = ncurses
+	depends = ncurses
 	conflicts = amb-svn
-	source = http://ambook.sourceforge.net/archiwum/amb-20201205.tar.xz
-	sha512sums = 9f5ca3aa2429995ce6942a4e8de6f451f0fec397cae4df71989eebae080a085894c1d59d59e19539393c85240d83e839c1adac5369046e0d4d7738033e9a196a
+	source = http://amb.osdn.io/archiwum/amb-20201223.tar.xz
+	source = ptui-ncurses.c.patch
+	sha512sums = 4d26bbca83836a890e593c0d95bd9dc92117e93be71b16ed5710dd89854753e772d930de590744b6b4960b2ceef47925a2361fe850ff48fd2bd741b07ea5e0a2
+	sha512sums = 3dc017d1e933939d5093b65fb0622ecee88b7e9071834229a60c5f277b1caa0b30dd3bd8c2d1106cb5c1af4e562617e55bca17feb3187b32baa4b382a2312b31
 
 pkgname = amb
-

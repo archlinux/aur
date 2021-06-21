@@ -1,0 +1,11 @@
+--- ptui-ncurses.c.org	2021-06-21 19:28:25.344367626 +0200
++++ ptui-ncurses.c	2021-06-21 19:29:37.149819984 +0200
+@@ -28,7 +28,7 @@
+ #define _XOPEN_SOURCE_EXTENDED
+ 
+ #include <locale.h>
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ #include <stdio.h> /* this one contains the NULL definition */
+ #include <string.h>
+ 
