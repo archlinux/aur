@@ -1,9 +1,9 @@
 pkgbase = fluxion-git
 	pkgdesc = Security auditing and social-engineering research tool
-	pkgver = 4.10.r194.1ca414b
-	pkgrel = 2
+	pkgver = 4.10.r215.f1d2b8a
+	pkgrel = 1
 	epoch = 1
-	url = https://fluxionnetwork.github.io/fluxion-git
+	url = https://github.com/fluxionnetwork/fluxion
 	install = fluxion.install
 	arch = any
 	license = GPL3
@@ -33,8 +33,7 @@ pkgbase = fluxion-git
 	provides = fluxion
 	conflicts = fluxion
 	options = zipman
-	source = git+https://github.com/FluxionNetwork/fluxion.git
+	source = git+https://github.com/fluxionnetwork/fluxion.git
 	sha256sums = SKIP
 
 pkgname = fluxion-git
-

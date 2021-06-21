@@ -1,3 +1,1 @@
-post_remove() {
-    rm -r /usr/share/fluxion
-}
+post_remove() { rm -r /usr/share/fluxion; }
