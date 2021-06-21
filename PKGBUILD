@@ -30,6 +30,6 @@ package() {
 	cd "${pkgname}-${pkgver}"
 	cargo install --no-track --locked --all-features --root "${pkgdir}/usr/" --path .
 	install -Dm644 contrib/librespot.service ${pkgdir}/usr/lib/systemd/system/librespot.service
-	# install -Dm644 contrib/librespot.user.service ${pkgdir}/usr/lib/systemd/user/librespot.user.service
+	# install -Dm644 contrib/librespot.user.service ${pkgdir}/usr/lib/systemd/user/librespot.service
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
