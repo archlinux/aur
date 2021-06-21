@@ -4,7 +4,7 @@
 pkgname=gnatcoll-core
 epoch=1
 pkgver=21.0.0
-pkgrel=2
+pkgrel=3
 
 pkgdesc='Gnat components collection - Core packages.'
 url='https://github.com/AdaCore/gnatcoll-core/'
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 license=('GPL3' 'custom')
 
 depends=('libgpr')
-makedepends=('gprbuild')
+makedepends=('gprbuild' 'texlive-bin')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('daa9b3d5fc5d90b015ece1b48d54192bd06a71fec64bdfc242066f2598c30ff5')
@@ -23,6 +23,7 @@ build()
 
     make setup BUILD=PROD prefix=/usr
     make -j1 GPRBUILD_OPTIONS="-R -cargs $CFLAGS -largs $LDFLAGS -gargs"
+    make -C docs html latexpdf
 }
 
 package()
