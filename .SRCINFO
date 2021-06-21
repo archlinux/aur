@@ -18,7 +18,7 @@ pkgbase = fluent-bit
 	depends = openssl
 	backup = etc/fluent-bit/fluent-bit.conf
 	backup = etc/fluent-bit/parsers.conf
-	source = https://www.fluentbit.io/releases/1.7/fluent-bit-1.7.8.tar.gz
+	source = https://fluentbit.io/releases/1.7/fluent-bit-1.7.8.tar.gz
 	sha512sums = 496f57d4d6c2bd149dfd462bc7878b81ba599d7e743790a34591acac607ecd23ed7b589c4483ea4e21fcd31e49e5c583645f00710aae76dca517385f51ddeae0
 
 pkgname = fluent-bit
