@@ -40,6 +40,6 @@ push:
     - git add PKGBUILD
     - git diff-index --quiet HEAD || git commit -m "updates hash for AppImage"
     - git push -o ci.skip "https://${GITLAB_USER_NAME}:${RENOVATE_TOKEN}@${CI_REPOSITORY_URL#*@}" "HEAD:${CI_COMMIT_BRANCH}"
-  only:
-    refs:
-      - merge_requests
+  rules:
+    - if: '$CI_PIPELINE_SOURCE != "merge_request_event"'
+      when: never
