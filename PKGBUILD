@@ -3,7 +3,7 @@
 pkgname=haruhi-dl
 pkgver=2021.06.20
 _name="haruhi-dl-v$pkgver"
-pkgrel=7
+pkgrel=8
 pkgdesc="Fork of youtube-dl, focused on bringing a fast, steady stream of updates. We'll do our best to merge patches to any site, not only youtube."
 arch=('any')
 url="https://haruhi.download"
@@ -12,7 +12,7 @@ depends=('python' 'python-setuptools')
 makedepends=('git')
 optdepends=('ffmpeg: for video post-processing'
             'rtmpdump: for rtmp streams support'
-            'atomicparsley: for embedding thumbnails into m3a files')
+            'atomicparsley: for embedding thumbnails into m4a files')
 provides=("haruhi-dl")
 source=("haruhi-dl.tar.gz::https://git.sakamoto.pl/laudompat/haruhi-dl/-/archive/v$pkgver/$_name.tar.gz")
 md5sums=('SKIP')
@@ -36,6 +36,6 @@ build() {
 package() {
   cd "$srcdir/$_name"
   python setup.py install --root="${pkgdir}/" --optimize=3
-  install -Dm633 haruhi-dl.plugin.zsh "${pkgdir}/usr/share/zsh/site-functions/_haruhi-dl"
-  install -Dm633 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 haruhi-dl.plugin.zsh "${pkgdir}/usr/share/zsh/site-functions/_haruhi-dl"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
