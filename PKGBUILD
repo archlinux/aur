@@ -9,7 +9,7 @@ pkgdesc="A high performance semantic engine for the Ada programming language."
 
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/libadalang"
-license=('GPL')
+license=('GPL3' 'custom')
 
 depends=("gnatcoll-core" "gnatcoll-iconv" "gnatcoll-gmp")
 makedepends=('gprbuild' 'python-setuptools' 'python-mako' 'python-funcy' 'python-e3-core' 'python-docutils')
@@ -42,6 +42,16 @@ package()
   cd "$srcdir/libadalang-$pkgver"
 
   python ada/manage.py install --build-mode=prod "$pkgdir/usr"
+
+  # Install the license.
+  install -D -m644     \
+     "COPYING3"        \
+     "$pkgdir/usr/share/licenses/$pkgname/COPYING3"
+
+  # Install the custom license.
+  install -D -m644     \
+     "COPYING.RUNTIME" \
+     "$pkgdir/usr/share/licenses/$pkgname/COPYING.RUNTIME"
 
   # Install the Python binding
   cd build/python
