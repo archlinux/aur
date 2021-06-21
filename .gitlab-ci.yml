@@ -61,4 +61,4 @@ publish:
     - chmod 700 ~/.ssh
     - echo "$AUR_SSH_KEY" | tr -d '\r' | ssh-add -
     - git remote add aur-defi-app-bin ssh://aur@aur.archlinux.org/defi-app-bin.git || true
-    - git push aur HEAD:master
+    - git push aur-defi-app-bin HEAD:master
