@@ -6,9 +6,6 @@ pkgbase = hannah
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
-	makedepends = tar
-	makedepends = make
-	makedepends = gcc
 	depends = sdl2
 	depends = sdl2_ttf
 	depends = sdl2_image
@@ -18,4 +15,3 @@ pkgbase = hannah
 	sha512sums = 604d799d0f521b917207aaa499eba6faec2f1bcce856ef37811640fb851d2f5a903fbd44415a5fa21dc015eb6b8a0b7b499d458824429405b3f83575848ab3e8
 
 pkgname = hannah
-

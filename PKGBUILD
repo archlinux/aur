@@ -9,7 +9,6 @@ license=('GPL3')
 arch=('x86_64' 'aarch64')
 conflicts=(${pkgname}-svn)
 depends=('sdl2' 'sdl2_ttf' 'sdl2_image' 'sdl2_mixer')
-makedepends=('tar' 'make' 'gcc') 
 source=("https://master.dl.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('604d799d0f521b917207aaa499eba6faec2f1bcce856ef37811640fb851d2f5a903fbd44415a5fa21dc015eb6b8a0b7b499d458824429405b3f83575848ab3e8')
 
