@@ -23,8 +23,8 @@ install="${pkgname}.install"
 conflicts=('rstudio-server')
 source=('git+https://github.com/rstudio/rstudio.git'
 	'rstudio-server.service'
-	"https://s3.amazonaws.com/rstudio-buildtools/gin-${_ginver}.zip"
-	"https://s3.amazonaws.com/rstudio-buildtools/gwt-${_gwtver}.zip"
+	"https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/google-gin/gin-${_ginver}.zip"
+        "https://storage.googleapis.com/gwt-releases/gwt-${_gwtver}.zip"
 	"https://nodejs.org/dist/v${_nodever}/node-v${_nodever}-linux-x64.tar.gz"
 )
 md5sums=('SKIP'
@@ -54,10 +54,12 @@ prepare () {
 	    cp -r "${srcdir}/gwt-${_gwtver}/"* lib/gwt/${_gwtver}
 
 	    cd "${srcdir}/${_gitname}/dependencies/common"
-	    install -d pandoc 
+	    _pandocver=$(grep -oP "(?<=PANDOC_VERSION=\").*(?=\"$)" install-pandoc)
+	    install -d pandoc /${_pandocver}
 
+	    ln -sfT "/usr/share/myspell/dicts" dictionaries
 	    ln -sfT "/usr/share/mathjax2" mathjax-27
-	    ln -sfT "/usr/bin/pandoc" pandoc/pandoc
+	    ln -sfT "/usr/bin/pandoc" pandoc/${_pandocver}/pandoc
 	    ln -sfT "/usr/bin/pandoc-citeproc" pandoc/pandoc-citeproc
 
 	    # Nodejs
@@ -67,9 +69,14 @@ prepare () {
 	    yarn config set ignore-engines true
 	    yarn install
 
+	    # Fix links for src/cpp/session/CMakeLists.txt
+	    cd "${srcdir}/${_gitname}/dependencies"
+	    ln -sfT common/dictionaries dictionaries
+	    ln -sfT common/mathjax-27 mathjax-27
+	    ln -sfT common/pandoc pandoc
 
 	    cd ${srcdir}/${_gitname}/dependencies/common
-	    ./install-dictionaries
+	    # ./install-dictionaries
 	    msg "Downloading and installing R packages..."
 	    ./install-packages
 }
@@ -83,13 +90,20 @@ build() {
   if [ -n $R_PROFILE_USER ]; then
 	  unset R_PROFILE_USER
   fi
-  # Configure with cmake in a new buld directory as recommended in the rstudio INSTALL file
+
+  # Configure with cmake in a new build directory as recommended in the rstudio INSTALL file
   rm -rf ${srcdir}/$_gitname/build
   mkdir "${srcdir}/$_gitname/build"
   cd "${srcdir}/$_gitname/build"
+
   # Configure cmake 
-  #cmake -DRSTUDIO_TARGET=Server -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio-server -DCMAKE_DL_LIBRARIES=/usr/lib64/libdl.so -DCMAKE_LIBR_DOC_DIR=/usr/share/doc/R -DCMAKE_LIBR_EXECUTABLE=/usr/bin/R -DCMAKE_LIBR_HOME=/usr/lib64/R -DCMAKE_LIBR_INCLUDE_DIRS=/usr/include/R -DCMAKE_LIBR_CORE_LIBRARY=usr/lib64/R/lib/libR.so  -DRSTUDIO_USE_SYSTEM_BOOST=Yes ..
-  cmake -DRSTUDIO_TARGET=Server -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio-server -DRSTUDIO_USE_SYSTEM_BOOST=yes -DBoost_NO_BOOST_CMAKE=ON -DRSTUDIO_USE_SYSTEM_SOCI=yes ..
+  cmake -DRSTUDIO_TARGET=Server \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio-server \
+	-DRSTUDIO_USE_SYSTEM_BOOST=yes \
+	-DRSTUDIO_USE_SYSTEM_YAML_CPP=yes \
+	-DBoost_NO_BOOST_CMAKE=ON \
+	-DRSTUDIO_USE_SYSTEM_SOCI=yes ..
 
 }
 
@@ -105,15 +119,15 @@ package() {
   install -Dm 644 "${pkgdir}/usr/lib/rstudio-server/extras/pam/rstudio" "${pkgdir}/etc/pam.d/rstudio"
   # rstudio home directory
   install -d "${pkgdir}/srv/rstudio-server"
-#  mv "${pkgdir}/usr/lib/rstudio-server/www" "${pkgdir}/srv/rstudio"
-#  rm -rf "${pkgdir}/usr/lib/rstudio-server/extras"
   install -d "${pkgdir}/usr/lib//systemd/system"
   install -Dm 644 "${srcdir}/rstudio-server.service" "${pkgdir}/usr/lib//systemd/system/rstudio-server.service"
   install -d "${pkgdir}/etc/rstudio"
-# vars
-mkdir -p ${pkgdir}/run/rstudio-server ${pkgdir}/lock/rstudio-server ${pkgdir}/var/log/rstudio-server ${pkgdir}/var/lib/rstudio-server
-# lns
-mkdir -p $pkgdir/usr/bin
-ln -s /usr/lib/rstudio-server/bin/rserver $pkgdir/usr/bin/rserver
-ln -s /usr/lib/rstudio-server/bin/rstudio-server $pkgdir/usr/bin/rstudio-server
+
+  # vars
+  mkdir -p ${pkgdir}/run/rstudio-server ${pkgdir}/lock/rstudio-server ${pkgdir}/var/log/rstudio-server ${pkgdir}/var/lib/rstudio-server
+
+  # lns
+  mkdir -p $pkgdir/usr/bin
+  ln -s /usr/lib/rstudio-server/bin/rserver $pkgdir/usr/bin/rserver
+  ln -s /usr/lib/rstudio-server/bin/rstudio-server $pkgdir/usr/bin/rstudio-server
 }
