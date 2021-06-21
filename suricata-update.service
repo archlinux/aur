@@ -4,4 +4,4 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/suricata-update "-o /etc/suricata/rules --reload-command='kill -USR2 $$(cat /run/suricata/suricata.pid)'"
+ExecStart=/usr/bin/suricata-update "--reload-command='kill -USR2 $$(cat /run/suricata/suricata.pid)'"
