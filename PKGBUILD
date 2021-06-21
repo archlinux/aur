@@ -2,7 +2,7 @@
 
 _pkgname=fractal
 pkgname=fractal-next
-pkgver=r133.ec7720c0
+pkgver=r137.f94cde40
 pkgrel=1
 pkgdesc="GTK4 client for Matrix written in Rust (fractal-next branch)"
 arch=(x86_64)
