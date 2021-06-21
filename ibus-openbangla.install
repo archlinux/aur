@@ -3,3 +3,5 @@ post_install() {
     echo "1. Make sure ibus is the active input method,"
     echo "2. Add the OpenBangla-Keyboard engine to ibus input method list."
 }
+
+# vim: ft=sh:ts=4:noet

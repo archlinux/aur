@@ -1,5 +1,5 @@
 *
-!openbangla-keyboard.install
 !PKGBUILD
 !.gitignore
 !.SRCINFO
+!fcitx5-openbangla.install
