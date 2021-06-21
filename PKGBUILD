@@ -1,18 +1,18 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=xfun
-_cranver=0.23
+_cranver=0.24
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc='Miscellaneous Functions by Yihui Xie'
+pkgdesc='Supporting Functions for Packages Maintained by 'Yihui Xie''
 arch=(i686 x86_64)
 url='https://cran.r-project.org/package=xfun'
 license=(MIT)
 depends=(r)
 optdepends=(r-testit r-rstudioapi r-tinytex r-mime r-markdown r-knitr r-htmltools r-remotes r-pak r-rmarkdown)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('ec8528e85ea7e7f3dad0148359cdb0b10c8dc586bb99d4ab20b3fb24ed850e37')
+sha256sums=('e3e39a95202f6db4f6de3a8b9a344074a4944a3a8a522d44971390c905e2b583')
 
 build(){
     cd "${srcdir}"
