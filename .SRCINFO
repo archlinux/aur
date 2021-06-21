@@ -1,14 +1,14 @@
 pkgbase = ddns-updater
 	pkgdesc = Lightweight scratch container updating DNS A records periodically for GoDaddy, Namecheap and DuckDNS
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/qdm12/ddns-updater
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = go
-	source = ddns-updater-2.2.0.tar.gz::https://github.com/qdm12/ddns-updater/archive/v2.2.0.tar.gz
-	sha256sums = 9cd94b2a91e1a2c550806b4d0bf009cc49422ca3dbef8f460142ff03a7294d76
+	source = ddns-updater-2.3.0.tar.gz::https://github.com/qdm12/ddns-updater/archive/v2.3.0.tar.gz
+	sha256sums = 25b6b205ac8f6094e0495665bd3f336ce2902aa1fb881e2477aa8eeeaf11f6bc
 
 pkgname = ddns-updater
 
