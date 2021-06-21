@@ -1,3 +1,18 @@
+post_install() {
+	getent group adsklic &>/dev/null || groupadd adsklic
+	id -u adsklic &>/dev/null || useradd -M -r -g adsklic adsklic -d / -s /usr/bin/nologin
+
+	mkdir -p /var/opt/Autodesk/AdskLicensingService
+	chown adsklic:adsklic /var/opt/Autodesk/AdskLicensingService
+}
+
 pre_remove() {
-	rm -rf /var/opt/Autodesk/AdskLicensingService
+	systemctl stop adsklicensing.service
+	systemctl disable adsklicensing.service
+	rm -rf /var/opt/Autodesk/AdskLicensingService \
+		/var/opt/Autodesk/Adlm/.config/ProductInformation.pit
+}
+
+post_remove() {
+	userdel adsklic
 }

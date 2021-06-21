@@ -1,32 +1,38 @@
 # Maintainer: William Tang <galaxyking0419@gmail.com>
 
 pkgname=adsklicensing
-pkgver=9.2.1.2399
+pkgver=11.0.0.4854
 pkgrel=1
-pkgdesc='Autodesk Licensing Checking Software'
+pkgdesc='Autodesk License Checking Software'
 arch=('x86_64')
 url="https://www.autodesk.com/"
 license=('custom')
-depends=('gcc-libs' 'glib2' 'glibc' 'libglvnd' 'libx11' 'libxau' 'libxcb' 'libxdmcp' 'pcre')
+depends=('adlmapps>=23')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
-source=('manual://adsklicensing9.2.1.2399-0-0.x86_64.rpm'
-		'adsklicensing.install'
-		'adsklicensing.service')
-sha256sums=('d9404416708ce2ad5c1f88dbd2bb26fa799440a6b15217be7f85028b0d23c476'
-			'da398f067c4ffe98e31b96b804f64fae31c442a0f86f56e76c8b460255207fb9'
-			'e5612c0dd6297dd959d93369e899fa3fc85a08a2e42358c81b970a3a7d85ce7d')
+source=('manual://adsklicensing11.0.0.4854-0-0.x86_64.rpm'
+		'adsklicensing.install')
+sha256sums=('89b997e24de4477b7107867f97d0db4af8ea211106e96f14088a051f1e438f49'
+			'0d478b18470f95d16a631a5a702b09e016feb435f0fef6668ce2e3a6520cde2c')
 
 options=(!strip)
 install='adsklicensing.install'
 
-package() {
-	cp -a $srcdir/opt $pkgdir/
+prepare() {
+	# Link service program in /usr/bin/
+	mkdir -p usr/bin
+	ln -s /opt/Autodesk/AdskLicensing/11.0.0.4854/AdskLicensingService/AdskLicensingService usr/bin/AdskLicensingService
 
-	# Remove Service Files
-	rm $pkgdir/opt/Autodesk/AdskLicensing/9.2.1.2399/AdskLicensingService/adsklicensing*
+	# Remove init service file
+	rm opt/Autodesk/AdskLicensing/11.0.0.4854/AdskLicensingService/adsklicensing.el6.conf
 
-	# Install Custom Service File
-	install -D -m 644 adsklicensing.service $pkgdir/usr/lib/systemd/system/adsklicensing.service
+	# Move systemd service file
+	chmod 644 opt/Autodesk/AdskLicensing/11.0.0.4854/AdskLicensingService/adsklicensing.el7.service
+	mkdir -p usr/lib/systemd/system
+	mv opt/Autodesk/AdskLicensing/11.0.0.4854/AdskLicensingService/adsklicensing.el7.service \
+		usr/lib/systemd/system/adsklicensing.service
 }
 
+package() {
+	mv opt usr $pkgdir/
+}
