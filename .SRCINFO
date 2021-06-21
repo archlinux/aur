@@ -1,0 +1,18 @@
+pkgbase = weechat-discord-mk3-git
+	pkgdesc = Discord plugin for weechat (mk3)
+	pkgver = r626.a3dd82b
+	pkgrel = 1
+	url = https://github.com/terminal-discord/weechat-discord/tree/mk3
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = clang
+	depends = weechat
+	conflicts = weechat-discord-git
+	options = !lto
+	source = weechat-discord-mk3::git+https://github.com/terminal-discord/weechat-discord.git#branch=mk3
+	md5sums = SKIP
+
+pkgname = weechat-discord-mk3-git
