@@ -1,7 +1,7 @@
 pkgbase = util-linux-aes
 	pkgdesc = Miscellaneous system utilities for Linux, with loop-AES support
 	pkgver = 2.37
-	pkgrel = 3.1
+	pkgrel = 3.2
 	url = https://github.com/karelzak/util-linux
 	install = util-linux-aes.install
 	arch = x86_64
@@ -27,6 +27,7 @@ pkgbase = util-linux-aes
 	source = rfkill-unblock_.service
 	source = rfkill-block_.service
 	validpgpkeys = B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284
+	validpgpkeys = 12D64C3ADCDA0AA427BDACDFF0733C808132F189
 	sha256sums = bd07b7e98839e0359842110525a3032fdb8eaf3a90bedde3dd1652d32d15cce5
 	sha256sums = SKIP
 	sha256sums = 0a78ea9a05191b1ddaeedc8c8d8ae053f9ed4e7cd2f39ef4b3bc356e552c98a2

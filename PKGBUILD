@@ -11,7 +11,7 @@ pkgname=(util-linux-aes util-linux-libs-aes)
 _pkgmajor=2.37
 _realver=${_pkgmajor}
 pkgver=${_realver/-/}
-pkgrel=3.1
+pkgrel=3.2
 pkgdesc='Miscellaneous system utilities for Linux, with loop-AES support'
 url='https://github.com/karelzak/util-linux'
 #url="http://sourceforge.net/projects/loop-aes/"
@@ -20,7 +20,8 @@ makedepends=('asciidoctor' 'libcap-ng' 'libxcrypt' 'python' 'systemd' 'gtk-doc')
 license=('GPL2')
 options=('strip')
 install=${pkgname}.install
-validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
+validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284'  # Karel Zak
+              '12D64C3ADCDA0AA427BDACDFF0733C808132F189') # Jari Ruusu
 source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/${_basename}-${_realver}.tar."{xz,sign}
         #"${_basename}-${pkgver}.diff"
         http://loop-aes.sourceforge.net/updates/${_basename}-${pkgver}-20210620.diff.bz2{,.sign}
