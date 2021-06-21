@@ -1,7 +1,7 @@
 # Maintainer: Whyme Lyu <callme5long@gmail.com>
 pkgname=p3wm
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Three-way merge .pacnew files"
 arch=('any')
 url="https://github.com/5long/p3wm"
@@ -23,7 +23,7 @@ optdepends=(
   'vim: default resolve tool'
 )
 makedepends=('git' 'asciidoctor')
-source=("https://github.com/5long/$pkgname/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/5long/$pkgname/archive/v$pkgver.tar.gz")
 build() {
   cd "$pkgname-$pkgver"
   make
