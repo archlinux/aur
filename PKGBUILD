@@ -1,12 +1,12 @@
 # Maintainer: Oirio Joshi <joshirio@protonmail.com>
 # Author: Vladimir Yakovlev <desktop-app@protonmail.ch>
 pkgname=electronmail-bin
-pkgver=4.12.2
+pkgver=4.12.3
 pkgrel=1
 pkgdesc="Unofficial ProtonMail Desktop App"
 arch=('x86_64')
 url="https://github.com/vladimiry/ElectronMail"
-license=('MIT')
+license=('GPL3')
 # add libappindicator-sharp to the depends array if you are fine with mono deps
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3' 'gconf')
 optdepends=('org.freedesktop.secrets: password storage backend required for auto-login feature'
@@ -16,8 +16,8 @@ conflicts=('electronmail')
 provides=('electronmail')
 install="${pkgname}.install"
 source=("https://github.com/vladimiry/ElectronMail/releases/download/v${pkgver}/electron-mail-${pkgver}-linux-x64.pacman" 'LICENSE')
-md5sums=('d91c4f6b02ede49a86054a8172753169'
-         'fc680045f40b19ce3c3e771aeb08bbd3')
+md5sums=('c6965aa11d03c0f31010e465a6423331'
+         'ff3103b5db8ba4e2c66c511b7a73e407')
 
 package() {
   cd "$srcdir"
