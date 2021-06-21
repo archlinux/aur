@@ -13,4 +13,3 @@ pkgbase = libdecaf
 	sha256sums = SKIP
 
 pkgname = libdecaf
-

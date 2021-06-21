@@ -16,7 +16,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DENABLE_STATIC=OFF \
-    -DENABLE_TESTS=ON ..
+    -DENABLE_TESTS=ON \
+    -DCMAKE_C_FLAGS="-Wno-sizeof-array-div -Wno-array-parameter" ..
     make -C build
 }
 
