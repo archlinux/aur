@@ -4,6 +4,7 @@ stages:
   - build
   - check
   - release
+  - publish
 
 
 before_script:
@@ -46,3 +47,16 @@ push:
   rules:
     - if: '$CI_PIPELINE_SOURCE != "merge_request_event"'
       when: never
+
+publish:
+  tags:
+  - archlinux
+  stage: publish
+  script:
+    - command -v ssh-agent >/dev/null || ( sudo pacman -Sy --noconfirm openssh )
+    - eval $(ssh-agent -s)
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo "$AUR_SSH_KEY" | tr -d '\r' | ssh-add -
+    - git remote add aur-defi-app-bin ssh://aur@aur.archlinux.org/defi-app-bin.git
+    - git push aur
