@@ -19,6 +19,7 @@ prepare() {
 
 build() {
 	cd hypnotix-$pkgver
+	#! add a custom script to run the app under wayand if you're using wayland
 	sed -i '2d' usr/bin/hypnotix
 	sh -c "echo 'if [ \$WAYLAND_DISPLAY=wayland-0 ]
 then
