@@ -10,7 +10,7 @@ license=('GPL3')
 provides=('emacs')
 conflicts=('emacs')
 depends=('jansson' 'ncurses' 'libgccjit' 'librsvg' 'libxpm' 'libjpeg-turbo' 'libtiff' 'giflib' 'libpng' 'gtk3' 'harfbuzz' 'libxcb' 'libxml2' 'gpm' 'libotf' 'm17n-lib' 'hicolor-icon-theme' 'desktop-file-utils' 'alsa-lib' 'gnutls' 'cairo' 'zlib')
-makedepends=('texinfo' 'gnutls' 'libxt' 'clang' 'rustup')
+makedepends=('clang' 'rustup')
 source=("https://github.com/emacs-ng/emacs-ng/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('3856b84cc2c0f9474ef3e9257b54422a4abf235302e0ac7f1eb0fdaf4688f133')
 
