@@ -6,12 +6,12 @@ pkgname=(gnatcoll-python2 gnatcoll-readline gnatcoll-iconv  gnatcoll-gmp
          gnatcoll-lzma    gnatcoll-omp      gnatcoll-syslog gnatcoll-zlib)
 epoch=1
 pkgver=21.0.0
-pkgrel=4
+pkgrel=5
 
 pkgdesc='GNAT Components Collection - Language and library bindings'
 url='https://github.com/AdaCore/gnatcoll-bindings/'
 arch=('i686' 'x86_64')
-license=('GPL')
+license=('GPL3' 'custom')
 
 makedepends=('python2' 'gprbuild' 'gnatcoll-core' 'libiconv' 'syslog-ng')
 
@@ -48,6 +48,21 @@ build()
     python2 setup.py build --prefix=/usr --gpr-opts $_gpr_opts
 }
 
+install_license()
+{
+    cd "$srcdir/$pkgbase-$pkgver"
+
+    # Install the license.
+    install -D -m644     \
+       "COPYING3"        \
+       "$pkgdir/usr/share/licenses/$pkgname/COPYING3"
+
+    # Install the custom license.
+    install -D -m644     \
+       "COPYING.RUNTIME" \
+       "$pkgdir/usr/share/licenses/$pkgname/COPYING.RUNTIME"
+}
+
 package_gnatcoll-python2()
 {
     pkgdesc='GNAT Components Collection - Interface to the python 2 interpreter.'
@@ -57,6 +72,8 @@ package_gnatcoll-python2()
 
     cd "$srcdir/$pkgbase-$pkgver/python"
     python2 setup.py install --prefix="$pkgdir/usr"
+
+    install_license    
 }
 
 package_gnatcoll-readline()
@@ -66,6 +83,8 @@ package_gnatcoll-readline()
 
     cd "$srcdir/$pkgbase-$pkgver/readline"
     python2 setup.py install --prefix="$pkgdir/usr"
+
+    install_license    
 }
 
 package_gnatcoll-iconv()
@@ -75,6 +94,8 @@ package_gnatcoll-iconv()
 
     cd "$srcdir/$pkgbase-$pkgver/iconv"
     python2 setup.py install --prefix="$pkgdir/usr"
+
+    install_license    
 }
 
 package_gnatcoll-gmp()
@@ -84,6 +105,8 @@ package_gnatcoll-gmp()
 
     cd "$srcdir/$pkgbase-$pkgver/gmp"
     python2 setup.py install --prefix="$pkgdir/usr"
+
+    install_license    
 }
 
 package_gnatcoll-lzma()
@@ -93,6 +116,8 @@ package_gnatcoll-lzma()
 
     cd "$srcdir/$pkgbase-$pkgver/lzma"
     python2 setup.py install --prefix="$pkgdir/usr"
+
+    install_license    
 }
 
 package_gnatcoll-omp()
@@ -102,6 +127,8 @@ package_gnatcoll-omp()
 
     cd "$srcdir/$pkgbase-$pkgver/omp"
     python2 setup.py install --prefix="$pkgdir/usr"
+
+    install_license    
 }
 
 package_gnatcoll-syslog()
@@ -111,6 +138,8 @@ package_gnatcoll-syslog()
 
     cd "$srcdir/$pkgbase-$pkgver/syslog"
     python2 setup.py install --prefix="$pkgdir/usr"
+
+    install_license    
 }
 
 package_gnatcoll-zlib()
@@ -120,4 +149,6 @@ package_gnatcoll-zlib()
 
     cd "$srcdir/$pkgbase-$pkgver/zlib"
     python2 setup.py install --prefix="$pkgdir/usr"
+
+    install_license    
 }
