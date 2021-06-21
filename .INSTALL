@@ -1,15 +1,11 @@
-#!/bin/sh
-
 post_install() {
-sed "15a\export LC_CTYPE='zh_CN.UTF-8'" -i /opt/deepinwine/apps/Deepin-DingTalk/run.sh
-sed -i "s|deepin-wine|deepin-wine5|g" /opt/deepinwine/apps/Deepin-DingTalk/run.sh
+    echo "deleting the DingTalk bottle..."
+    find /home -maxdepth 2 -name ".deepinwine" -exec rm -rf \{\}/Deepin-DingTalk/ \;
 }
-
 post_upgrade() {
-sed "15a\export LC_CTYPE='zh_CN.UTF-8'" -i /opt/deepinwine/apps/Deepin-DingTalk/run.sh
-sed -i "s|deepin-wine|deepin-wine5|g" /opt/deepinwine/apps/Deepin-DingTalk/run.sh
+    echo "deleting the DingTalk bottle..."
+    find /home -maxdepth 2 -name ".deepinwine" -exec rm -rf \{\}Deepin-DingTalk/ \;
 }
-
 pre_remove() {
     echo "deleting the DingTalk bottle..."
     find /home -maxdepth 2 -name ".deepinwine" -exec rm -rf \{\}/Deepin-DingTalk/ \;
