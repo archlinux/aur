@@ -20,7 +20,7 @@ sha256sums=('53965f54647ea9c8b59856c7a00079ff5d5a473f549f2d4c9a517dffc6ee7c8f')
 
 build()
 {
-    _gpr_opts="-R -cargs $CFLAGS -largs $LDFLAGS"
+    _gpr_opts="-R -cargs $CFLAGS -fPIC -largs $LDFLAGS"
 
     cd "$srcdir/$pkgbase-$pkgver/python"
     # --gpr-opts reads all remaining arguments, so no quotes
