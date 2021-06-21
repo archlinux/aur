@@ -2,7 +2,7 @@
 # Contributor: Mirko Brombin <send@mirko.pm>
 
 pkgname=amusiz
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='A GTK Amazon Music client for Linux'
 arch=('x86_64')

@@ -1,6 +1,6 @@
 pkgbase = amusiz
 	pkgdesc = A GTK Amazon Music client for Linux
-	pkgver = 1.2.2
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/mirkobrombin/Amusiz
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = amusiz
 	depends = gst-plugins-good
 	depends = gst-plugins-base
 	depends = gst-libav
-	source = amusiz-1.2.2.tar.gz::https://github.com/mirkobrombin/Amusiz/archive/2.1.2.tar.gz
+	source = amusiz-1.3.0.tar.gz::https://github.com/mirkobrombin/Amusiz/archive/1.3.0.tar.gz
 	sha256sums = 197d269c73e0b10b52d4150926334f6760c4bcb240864f72273530a62138280d
 
 pkgname = amusiz
