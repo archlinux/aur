@@ -1,0 +1,12 @@
+pkgbase = adwaita-ex
+	pkgdesc = Extra icons for Adwaita icon theme
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jonian/adwaita-ex
+	arch = any
+	license = GPL
+	depends = adwaita-icon-theme
+	source = adwaita-ex-0.1.0.tag.gz::https://github.com/jonian/adwaita-ex/archive/v0.1.0.tar.gz
+	md5sums = 794d0cdefb9fbcbfc38c4107096c7e28
+
+pkgname = adwaita-ex
