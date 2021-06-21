@@ -1,22 +1,23 @@
 pkgbase = pmemd
 	pkgdesc = PMEMD module of AMBER software package
 	pkgver = 20
-	pkgrel = 7
+	pkgrel = 8
 	url = http://ambermd.org/
 	arch = x86_64
 	license = custom
 	makedepends = cmake>=3.10
 	makedepends = make
-	makedepends = gcc
+	makedepends = gcc10
+	makedepends = gcc10-fortran
 	makedepends = flex
 	makedepends = bison
 	makedepends = patch
 	makedepends = tcsh
 	makedepends = imake
-	makedepends = openmpi
+	makedepends = openmpi-gcc10
 	makedepends = cuda>=11.1
 	depends = ambertools
-	optdepends = openmpi: MPI support
+	optdepends = openmpi-gcc10: MPI support
 	optdepends = cuda: GPU acceleration support
 	optdepends = plumed: metadynamics support
 	optdepends = plumed-mpi: metadynamics support with MPI
@@ -30,10 +31,9 @@ pkgbase = pmemd
 	source = pmemd.cuda.MPI
 	sha256sums = f55fa930598d5a8e9749e8a22d1f25cab7fcf911d98570e35365dd7f262aaafd
 	sha256sums = a4c53639441c8cc85adee397933d07856cc4a723c82c6bea585cd76c197ead75
-	sha256sums = 2c954683c1176f49f29c4899208ef3ae7ec4b050dd1f891c71998f4f27b1cd5a
-	sha256sums = 41f59ec0c13cdda7584f351d83d2238060cf22b95fb53ea476152664116bfcae
-	sha256sums = 11f0225dd52ebfa214cc88ac34a2e037924551e2c1f715876b167e2782c187d8
-	sha256sums = 8cbdffefa5ac731283d10d9b1daa32d2e20ffe4c5aec34525042c36f664cf766
+	sha256sums = 2e7418cf146654c31f524a4e88afdc7a15d6151246beaad25c564676df492670
+	sha256sums = 340c9dcfc5eddf05aeb30681f9e3ea422601f95f5d73c528b58296c3f3cbf8d2
+	sha256sums = ec3051b823c01d34c04096f5babc74d1619abb8cf4ea8e78139af4fb66e11b34
+	sha256sums = e776cd7b01f6f7bbb2668c3d9822de6f842c1ce963f24f017829a50e47a90fad
 
 pkgname = pmemd
-
