@@ -1,5 +1,5 @@
 --- umoria/src/config.cpp	2021-02-11 14:59:45.144360084 -0500
-+++ umoria-aur/src/config.cpp	2021-02-11 16:18:20.813930047 -0500
++++ umoria/src/config.cpp	2021-02-11 16:18:20.813930047 -0500
 @@ -13,18 +13,18 @@
      // Data files used by Umoria
      // NOTE: use relative paths to the executable binary.
@@ -32,13 +32,12 @@
  
      // Game options as set on startup and with `=` set options command -CJS-
 --- umoria/CMakeLists.txt	2021-06-02 10:04:31.000000000 -0400
-+++ umoria/CMakeLists.txt	2021-06-20 14:14:30.510073801 -0400
-@@ -20,7 +20,7 @@
- endif ()
- 
- # Compiler settings (this must come before calling project)
--set(CMAKE_CXX_COMPILER g++)
-+set(CMAKE_CXX_COMPILER g++-10)
- set(CMAKE_CXX_STANDARD 14)
- set(CMAKE_CXX_STANDARD_REQUIRED on)
++++ umoria/CMakeLists.txt	2021-06-21 15:46:20.751269954 -0400
+@@ -33,7 +33,6 @@
+ set(cxx_warnings "${cxx_warnings} -Wextra")
+ set(cxx_warnings "${cxx_warnings} -Wpedantic")
+ set(cxx_warnings "${cxx_warnings} -Wshadow")
+-set(cxx_warnings "${cxx_warnings} -Werror")
+ set(cxx_warnings "${cxx_warnings} -pedantic-errors")
+ set(cxx_warnings "${cxx_warnings} -Weffc++ ")
  
