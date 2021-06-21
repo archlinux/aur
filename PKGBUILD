@@ -1,14 +1,14 @@
-# Maintainer: Ľubomír 'The_K' Kučera <lubomir.kucera.jr at gmail.com>
+# Maintainer: Mateusz Gozdek <mgozdekof@gmail.com>
 
 pkgname=ct
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Container Linux Config Transpiler"
 arch=('any')
-url='https://github.com/coreos/container-linux-config-transpiler'
+url='https://github.com/kinvolk/container-linux-config-transpiler'
 license=('Apache')
 makedepends=('git' 'go' 'make')
-source=("git+https://github.com/coreos/container-linux-config-transpiler.git#tag=v${pkgver}")
+source=("git+https://github.com/kinvolk/container-linux-config-transpiler.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
