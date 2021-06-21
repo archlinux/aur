@@ -11,7 +11,7 @@ pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for f
 arch=(x86_64)
 url=https://www.unrealengine.com/
 makedepends=(mono mono-msbuild dos2unix git openssh)
-depends=(icu sdl2 python lld xdg-user-dirs ccache clang mono mono-msbuild dos2unix)
+depends=(icu sdl2 python lld xdg-user-dirs ccache 'clang<12' 'lld<12' 'llvm<12' 'llvm-libs<12' mono mono-msbuild dos2unix)
 optdepends=('qt5-base: qmake build system for projects'
             'cmake: build system for projects'
             'qtcreator: IDE for projects'
