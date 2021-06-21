@@ -4,13 +4,12 @@
 _pkgname=freerct
 pkgname=${_pkgname}-git
 pkgver=r1793.9a5a6c9b
-pkgrel=4
+pkgrel=5
 pkgdesc="Open Source RollerCoaster Tycoon 1 and 2 implementation"
 arch=('i686' 'x86_64' 'aarch64')
 url="http://freerct.org"
 license=('GPL2')
 depends=('sdl2' 'sdl2_ttf' 'libzip' 'libpng' 'gnu-free-fonts')
-optdepends=('bison' 'flex')
 makedepends=('git' 'cmake')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
@@ -52,7 +51,8 @@ package() {
   install -D -m664 LICENSE-gpl-2.0.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   install -Dm644 "${srcdir}/${_pkgname}/graphics/sprites/logo/logo.png" ${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${_pkgname}.png
-  install -Dm644 "${srcdir}/../${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  #install -Dm644 "${srcdir}/../${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -Dm644 "${startdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
 
 pkgver() {
