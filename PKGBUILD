@@ -14,8 +14,6 @@ license=('GPL3' 'custom')
 depends=('libgpr')
 makedepends=('gprbuild')
 
-conflicts=('gnatcoll' 'gnatcoll-core-git')
-
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('daa9b3d5fc5d90b015ece1b48d54192bd06a71fec64bdfc242066f2598c30ff5')
 
@@ -44,5 +42,4 @@ package()
     install -D -m644     \
        "COPYING.RUNTIME" \
        "$pkgdir/usr/share/licenses/$pkgname/COPYING.RUNTIME"
-    
 }
