@@ -25,9 +25,9 @@
  
  distrib: 
  	@echo "Populating distribution directory with compiled plugins"
---- plugins/Make-arch	2020-04-17 08:29:16.000000000 +0300
-+++ plugins/Make-arch	2020-10-20 00:30:56.335121025 +0300
-@@ -332,25 +332,27 @@
+--- plugins/Make-arch	2020-12-13 09:21:59.000000000 +0300
++++ plugins/Make-arch	2021-06-21 15:22:48.938827194 +0300
+@@ -333,25 +333,27 @@
  	"NM = nm -p" \
  	"RANLIB = touch" \
  	"SHLD = gcc -shared"
@@ -40,8 +40,8 @@
  	"LOPTO = -fPIC -m64 -lstdc++ -o " \
 -	"CC = gcc" \
 -	"CXX = g++" \
-+	"CC = gcc" \
-+	"CXX = g++" \
++	"CC = gcc-10" \
++	"CXX = g++-10" \
  	"DEF = -D" \
  	"CCFLAGS = -m64 -O2 -fPIC -Wall" \
  	"CXXFLAGS = -m64 -O2 -fPIC -Wall" \
@@ -54,7 +54,7 @@
  	"NM = nm -p" \
  	"RANLIB = touch" \
 -	"SHLD = gcc -shared"
-+	"SHLD = gcc -shared"
++	"SHLD = gcc-10 -shared"
  
  LINUXARM64:
  	$(MAKE) dynlibs staticlibs bins \

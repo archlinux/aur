@@ -2,15 +2,15 @@
 
 pkgname=vmd-molfile-plugins
 pkgver=1.9.4a51
-pkgrel=2
+pkgrel=3
 pkgdesc="Visual Molecular Dynamics - molfile plugins"
 url="https://www.ks.uiuc.edu/Research/vmd/plugins"
 license=(custom)
 arch=(x86_64)
-depends=(tcl netcdf)
+depends=(tcl netcdf gcc10)
 makedepends=(make patch)
 sha256sums=('b1c40b21111f5bab56d43d5e442c468d327159b07915af2ec175ba6b12842e5c'
-            '4bd7b8686799d6d366bffeec10d591adbb2270b72d1d5428e6e756c14a0f57e3'
+            'f66172ca4c56dcda18e053887ae41dc28f9fabd9ec2c0668ac4f09aff567fc17'
             'b85e9632f0337b6e46a4a7af5a7b757404a709a53ce20e96e9e8ea3d76e15fc1')
 
 # You should download the source package from the VMD site and put it in the PKGBUILD folder
