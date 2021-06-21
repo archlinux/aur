@@ -5,12 +5,10 @@ pkgbase = nowater
 	url = https://github.com/justanoobcoder/nowater
 	arch = any
 	license = GPL3
-	makedepends = make
 	depends = feh
 	depends = wget
 	depends = jq
 	depends = ffmpeg
-	depends = sed
 	source = nowater-21.06.tar.gz::https://github.com/justanoobcoder/nowater/archive/v21.06.tar.gz
 	md5sums = SKIP
 

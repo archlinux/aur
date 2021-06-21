@@ -8,8 +8,7 @@ pkgdesc="A CLI tool that helps you change wallpaper or live wallpaper easily."
 arch=(any)
 url="https://github.com/justanoobcoder/nowater"
 license=('GPL3')
-depends=('feh' 'wget' 'jq' 'ffmpeg' 'sed')
-makedepends=('make')
+depends=('feh' 'wget' 'jq' 'ffmpeg')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 md5sums=('SKIP')
 
