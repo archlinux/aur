@@ -69,6 +69,5 @@ publish:
     - echo "$AUR_SSH_KEY" | tr -d '\r' | ssh-add -
     - git remote add aur-defi-app-bin ssh://aur@aur.archlinux.org/defi-app-bin.git || true
     - git push aur-defi-app-bin HEAD:master
-  rules:
-    - if: '$CI_PIPELINE_SOURCE != "merge_request_event"'
-      when: never
+  only:
+    - master
