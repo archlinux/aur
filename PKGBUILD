@@ -1,5 +1,5 @@
 # Maintainer: Simon Zack <simonzack@gmail.com>
-# Maintainer: Andreas Gerlach <andigerlach76@gmail.com>
+# Contributor: Andreas Gerlach <andigerlach76@gmail.com>
 pkgname=ijavascript
 pkgver=5.2.0
 pkgrel=1
