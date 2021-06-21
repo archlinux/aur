@@ -5,7 +5,7 @@
 
 pkgname=ffmpeg-amd-full-git
 _srcname=ffmpeg
-pkgver=4.5.r102192.gc7c138e411
+pkgver=4.5.r102781.g05f9b3a0a5
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD; git version)'
 arch=('i686' 'x86_64')
@@ -41,28 +41,27 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswscale.so'
           'libswresample.so' 'ffmpeg' 'ffmpeg-full' 'ffmpeg-git')
 conflicts=('ffmpeg')
-_svt_hevc_ver='33ca9aa8a2a2d28022d3fc03704e99ce01828376'
-_svt_vp9_ver='34c8398e097cb775477b7576e9338f3cf51a5c63'
+_svt_hevc_ver='31014e960e599f0e7769b293ed44a3ed8d3c8543'
+_svt_vp9_ver='bd6dfde9e3c862c911bbb7f02118474b16abb5c5'
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
         '010-ffmpeg-fix-vmaf-model-path.patch'
-        '020-ffmpeg-add-svt-hevc.patch'
-        "030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
+        "020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
+        #"030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
         "040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
         'LICENSE')
 sha256sums=('SKIP'
             '52778c70d9fe6e3a10941b99b96ac7749cec325dc1b9ee11ab75332b5ff68e50'
-            'e65cef16604e699e56041b1c76cca13ed6719525badd62d8f001b782d75f1917'
-            '1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0'
-            '5096f89ad10041a2013cfbf1224af3b7303d4c3295f1b225f7f3d0184027a635'
+            'bed8df383c796bda7d3df7d1778faa459c2bdd179d2201b03de38cba962abbff'
+            'a7b8498f97ca6e04cf60d52a27f2ced6e04f945a68ad008b8def15fe8822e09d'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
     # add svt codec support for hevc and av1
-    sed -i 's/general.texi/general_contents.texi/g' "030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
+    #sed -i 's/general.texi/general_contents.texi/g' "030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
     rm -f ffmpeg/libavcodec/libsvt_{hevc,vp9}.c
     patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-fix-vmaf-model-path.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
+    #patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
 }
 
