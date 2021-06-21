@@ -1,12 +1,13 @@
 pkgbase = gnatcoll-bindings
 	pkgdesc = GNAT Components Collection - Language and library bindings
 	pkgver = 21.0.0
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	url = https://github.com/AdaCore/gnatcoll-bindings/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL3
+	license = custom
 	makedepends = python2
 	makedepends = gprbuild
 	makedepends = gnatcoll-core
