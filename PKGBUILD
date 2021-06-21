@@ -2,8 +2,8 @@
 # Developer: James Muscat <james@timing71.org>
 
 pkgname=timing71
-pkgver=2021.1.1
-pkgrel=2
+pkgver=2021.1.2
+pkgrel=1
 pkgdesc="Desktop client for the Timing71 live timing aggregation service."
 arch=('x86_64')
 url="https://www.timing71.org"
@@ -12,7 +12,7 @@ depends=('electron9')
 # options=(!strip)
 source=("$pkgname-v$pkgver.AppImage::https://releases.timing71.org/client/v$pkgver/Timing71%20Client%20v$pkgver.AppImage"
         "wrapper.sh")
-sha512sums=('c088425bf903beb2df8dcef59cc1f2c9cfab6606c5bfc8630561258fa9a752eb634e5ccd08c34e904fa86dc6e6ce4184186e43d11715e148f194c1d42e49c800'
+sha512sums=('b8427dffdf5c0c4a15a9df05c949545b3c65540c12c8ad2299538b2ccf67bd95a3a1aa4af5e7f63bdda500b9b4411c8aaa4a5ee08bd28ccd6ca95250e99d45c6'
             'cfa60e34c36c03af745c3989bd184f1275cbe962db53dc5aec0ed96c865cbfba98a92b4ebac4f0e17fdc2d0dcb6281d4db23c9ad1fe85514b7e21e3d652685b2')
 
 prepare() {
