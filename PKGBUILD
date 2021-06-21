@@ -1,5 +1,5 @@
 # Maintainer: xiretza <xiretza+aur@gmail.com>
-# Maintainer: Rod Kay <charlie5 on #ada at freenode.net>
+# Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
 pkgname=gnatcoll-sqlite
 epoch=1
