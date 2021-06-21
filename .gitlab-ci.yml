@@ -7,9 +7,6 @@ stages:
 
 
 before_script:
-  tags:
-    - archlinux
-  - sudo pacman -Sy --noconfirm pacman-contrib namcap
   - git config --global user.email "${GIT_USER_EMAIL:-$GITLAB_USER_EMAIL}"
   - git config --global user.name "${GIT_USER_NAME:-$GITLAB_USER_NAME}"
 
