@@ -1,6 +1,6 @@
 pkgbase = mconnect-git
 	pkgdesc = KDE Connect protocol implementation in Vala/C for non-KDE desktops
-	pkgver = v0.3.r46.g81dc247
+	pkgver = 417.81dc247
 	pkgrel = 1
 	url = https://github.com/grimpy/mconnect
 	install = mconnect-git.install

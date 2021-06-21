@@ -5,7 +5,7 @@
 #
 _pkgname="mconnect"
 pkgname="${_pkgname}-git"
-pkgver=v0.3.r46.g81dc247
+pkgver=417.81dc247
 pkgrel=1
 pkgdesc="KDE Connect protocol implementation in Vala/C for non-KDE desktops"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${_pkgname}"
-    echo $(git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
+    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare() {
