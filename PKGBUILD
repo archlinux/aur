@@ -4,7 +4,7 @@
 
 _pkgname="requests-cache"
 pkgname="python-requests-cache"
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="Transparent persistent cache for http://python-requests.org/ library."
 arch=("x86_64")
@@ -15,7 +15,7 @@ makedepends=("git" "python-setuptools")
 provides=("python-requests-cache")
 conflicts=("python2-requests-cache")
 source=("https://files.pythonhosted.org/packages/source/r/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('0b9b5555b3b2ecda74a9aa5abd98174bc7332de2e1d32f9f8f056583b01d6e99')
+sha256sums=('dd9120a4ab7b8128cba9b6b120d8b5560d566a3cd0f828cced3d3fd60a42ec40')
 
 build() {
   cd "$srcdir/$_pkgname-${pkgver}"
