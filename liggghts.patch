@@ -5,7 +5,7 @@
  # see possible settings in doc/Section_start.html#2_2 (step 4)
  
 -LMP_INC =	-DLAMMPS_GZIP -DLAMMPS_VTK
-+LMP_INC =	-DLAMMPS_GZIP 
++LMP_INC =	-DLAMMPS_GZIP -DLAMMPS_VTK
  
  # MPI library, REQUIRED
  # see discussion in doc/Section_start.html#2_2 (step 5)
@@ -28,9 +28,9 @@
 -VTK_INC =	-I/usr/include/vtk-6.2
 -VTK_PATH =	#-L/usr/lib/x86_64-linux-gnu
 -VTK_LIB =	-lvtkCommonCore-6.2 -lvtkIOCore-6.2 -lvtkIOXML-6.2 -lvtkIOLegacy-6.2 -lvtkCommonDataModel-6.2 -lvtkIOParallel-6.2 -lvtkParallelCore-6.2 -lvtkParallelMPI-6.2 -lvtkIOImage-6.2 -lvtkCommonExecutionModel-6.2 -lvtkFiltersCore-6.2 -lvtkIOParallelXML-6.2
-+VTK_INC =
-+VTK_PATH =
-+VTK_LIB =
++VTK_INC =	-I/usr/include/paraview-5.9
++VTK_PATH =	-L/usr/lib
++VTK_LIB =	-lvtkCommonCore-pv5.9 -lvtkIOCore-pv5.9 -lvtkIOXML-pv5.9 -lvtkIOLegacy-pv5.9 -lvtkCommonDataModel-pv5.9 -lvtkIOParallel-pv5.9 -lvtkParallelCore-pv5.9 -lvtkParallelMPI-pv5.9 -lvtkIOImage-pv5.9 -lvtkCommonExecutionModel-pv5.9 -lvtkFiltersCore-pv5.9 -lvtkIOParallelXML-pv5.9
  
  # ---------------------------------------------------------------------
  # build rules and dependencies

@@ -1,16 +1,19 @@
 # Maintainer: xpt <user.xpt@gmail.com>
 
-pkgname=liggghts
-pkgver=3.8.0
-pkgrel=1
+pkgname=liggghts-git
+pkgver=git
+pkgrel=5
 pkgdesc="Open Source Discrete Element Method Particle Simulation Software"
 arch=('any')
 url="https://github.com/CFDEMproject/LIGGGHTS-PUBLIC"
 license=('GPL')
 depends=('paraview' 'openmpi' 'voro++' 'fftw') 
 makedepends=('git')
+provides=('liggghts')
+conflicts=('liggghts')
 source=('liggghts.patch')
-md5sums=('fcecfe6b91ce6d74a84b7ecd09be8f38')
+
+md5sums=('eee93965dc63cba0e7a666080236260b')
 
 _gitroot="https://github.com/CFDEMproject/LIGGGHTS-PUBLIC.git"
 _gitname="liggghts-public"
@@ -37,7 +40,7 @@ build() {
   patch -Np0 < ../liggghts.patch # diff -Naur Makefile.mpi.old Makefile.mpi > liggghts.patch
   cd src
   make  clean-all
-  make $_make || return 1
+  make $MAKEFLAGS $_make || return 1
 }
 
  package() {
