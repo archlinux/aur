@@ -8,6 +8,7 @@ pkgbase = blissify-git
 	makedepends = cargo
 	makedepends = nasm
 	makedepends = clang
+	options = !lto
 	source = git://github.com/Polochon-street/blissify-rs
 	sha512sums = SKIP
 

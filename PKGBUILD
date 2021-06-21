@@ -9,6 +9,7 @@ url="https://github.com/Polochon-street/blissify-rs"
 license=('GPL')
 depends=()
 makedepends=('cargo' 'nasm' 'clang')
+options=('!lto')
 source=("git://github.com/Polochon-street/blissify-rs")
 sha512sums=('SKIP')
 
