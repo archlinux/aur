@@ -29,7 +29,7 @@ noextract=()
 sha256sums=('ce40e764990fbbeb782e496eb63e214bf19b6f301a453d13f70c4f363d1e5bb9'
             'SKIP'
             'ec55ac7da98f5f5ec54d096c5f79b656edec0ebca835b6b9f1d20fb7be7119c5'
-            '613b0ed3fe4b5ee505ddb5122ee41604f464a5049be81c97601ee93970763a23'
+            'f910ab75edcb062375fea70fcb2859de159c9901bc381d33b985072a0344193d'
             'f071e0fd8d0d588f03fcc7db6f3cb3f7ea1b870d3416a0bde142d9aeb839d0f6'
             'bf628aa47fb85f036f250416f13900be61dccac89736434498a80989b16ae85a')
 backup=(${_cfgdir:1}/fastcgi.conf
