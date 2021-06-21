@@ -1,34 +1,41 @@
 image: "registry.devseed.de/all-the-things/docker-archlinux"
 
 stages:
-  - check
   - build
+  - check
   - release
 
 
 before_script:
-  - sudo pacman -Sy --noconfirm pacman-contrib
   - git config --global user.email "${GIT_USER_EMAIL:-$GITLAB_USER_EMAIL}"
   - git config --global user.name "${GIT_USER_NAME:-$GITLAB_USER_NAME}"
 
-update_hash:
-  stage: check
+
+makepkg:
+  tags:
+    - archlinux
+  stage: build
   script:
     # update package hash for integrity check
     - updpkgsums
+    # Test building a source package
+    - sudo -u builder makepkg -C -S --log --noconfirm
+    # Test building and installing the package
+    - sudo -u builder makepkg -C -i --log --noconfirm
   cache:
     key: pkgbuild
     paths:
       - PKGBUILD
 
-makepkg:
-  stage: build
-  needs: ["update_hash"]
+namcap:
+  tags:
+    - archlinux
+  stage: check
   script:
-    # Test building a source package
-    - sudo -u builder makepkg -C -S --log --noconfirm
-    # Test building and installing the package
-    - sudo -u builder makepkg -C -i --log --noconfirm
+    - namcap -i PKGBUILD
+  rules:
+    - if: '$CI_PIPELINE_SOURCE != "merge_request_event"'
+      allow_failure: true
 
 push:
   stage: release
@@ -36,3 +43,6 @@ push:
     - git add PKGBUILD
     - git diff-index --quiet HEAD || git commit -m "updates hash for AppImage"
     - git push -o ci.skip "https://${GITLAB_USER_NAME}:${RENOVATE_TOKEN}@${CI_REPOSITORY_URL#*@}" "HEAD:${CI_COMMIT_BRANCH}"
+  rules:
+    - if: '$CI_PIPELINE_SOURCE != "merge_request_event"'
+      when: never
