@@ -1,7 +1,7 @@
 # Maintainer: Ben Westover <kwestover.kw@gmail.com>
 
 pkgname='tor-browser-arm'
-pkgver='10.0.17'
+pkgver='10.0.18'
 pkgrel='1'
 pkgdesc='Tor Browser Bundle: anonymous browsing using Firefox and Tor (international PKGBUILD) (built for ARM)'
 url='https://sourceforge.net/projects/tor-browser-ports/'

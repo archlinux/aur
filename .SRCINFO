@@ -1,6 +1,6 @@
 pkgbase = tor-browser-arm
 	pkgdesc = Tor Browser Bundle: anonymous browsing using Firefox and Tor (international PKGBUILD) (built for ARM)
-	pkgver = 10.0.17
+	pkgver = 10.0.18
 	pkgrel = 1
 	url = https://sourceforge.net/projects/tor-browser-ports/
 	install = tor-browser-arm.install
@@ -28,8 +28,8 @@ pkgbase = tor-browser-arm
 	optdepends = libnotify: Gnome dialog boxes
 	provides = tor-browser
 	conflicts = tor-browser
-	noextract = tor-browser-linux-armhf-10.0.17_en-US.tar.xz
-	noextract = tor-browser-linux-arm64-10.0.17_en-US.tar.xz
+	noextract = tor-browser-linux-armhf-10.0.18_en-US.tar.xz
+	noextract = tor-browser-linux-arm64-10.0.18_en-US.tar.xz
 	source = tor-browser.desktop.in
 	source = tor-browser.in
 	source = tor-browser.png
@@ -38,10 +38,9 @@ pkgbase = tor-browser-arm
 	sha256sums = d6b4e9fae4b4a35a7207e19c5234d3326b75cc30d5b415f908056fdebae0633d
 	sha256sums = f25ccf68b47f5eb14c6fec0664c74f30ea9c6c58d42fc6abac3b64670aaa3152
 	sha256sums = 7b28b5dbe8ad573bb46e61b4d542b33e01ca240825ca640b4893fee6203b021f
-	source_armv7h = tor-browser-linux-armhf-10.0.17_en-US.tar.xz::https://sourceforge.net/projects/tor-browser-ports/files/10.0.17/tor-browser-linux-armhf-10.0.17_en-US.tar.xz/download
-	sha256sums_armv7h = b4f3da054ef5002a22002d0e80fc3b13260ccf7a453f2ab60ab4ab5effaf2c6a
-	source_aarch64 = tor-browser-linux-arm64-10.0.17_en-US.tar.xz::https://sourceforge.net/projects/tor-browser-ports/files/10.0.17/tor-browser-linux-arm64-10.0.17_en-US.tar.xz/download
-	sha256sums_aarch64 = 3d5e531c8e2cdbef5b637425c2ee5fa204ec4e489caa3ffac7b553c283a7368a
+	source_armv7h = tor-browser-linux-armhf-10.0.18_en-US.tar.xz::https://sourceforge.net/projects/tor-browser-ports/files/10.0.18/tor-browser-linux-armhf-10.0.18_en-US.tar.xz/download
+	sha256sums_armv7h = ed4cd9e29b890c02e84d8742fdf2f8e99e25db9c7481ecbced2a0214c0b497c6
+	source_aarch64 = tor-browser-linux-arm64-10.0.18_en-US.tar.xz::https://sourceforge.net/projects/tor-browser-ports/files/10.0.18/tor-browser-linux-arm64-10.0.18_en-US.tar.xz/download
+	sha256sums_aarch64 = ad71214e151aba353c50d6ca15457de34a62eea1286e5da31c57b94a933e9053
 
 pkgname = tor-browser-arm
-
