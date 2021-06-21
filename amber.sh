@@ -20,5 +20,5 @@ else
     export PYTHONPATH="${AMBERHOME}/lib/python${_pyver}/site-packages:${PYTHONPATH}"
 fi
 
-#export _gccver=10.2.0
-#export LD_LIBRARY_PATH="/usr/lib/gcc/x86_64-pc-linux-gnu/${_gccver}:${LD_LIBRARY_PATH}"
+export _gccver=10.2.0
+export LD_LIBRARY_PATH="/usr/lib/gcc/x86_64-pc-linux-gnu/${_gccver}:${LD_LIBRARY_PATH}"

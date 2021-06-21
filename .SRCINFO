@@ -1,25 +1,25 @@
 pkgbase = ambertools
 	pkgdesc = Biomolecular simulation package (tools only)
 	pkgver = 21
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ambermd.org/
 	arch = x86_64
 	license = GPL
 	license = LGPL
 	makedepends = cmake>=3.10
 	makedepends = make
-	makedepends = gcc
+	makedepends = gcc10
 	makedepends = flex
 	makedepends = bison
 	makedepends = patch
 	makedepends = tcsh
 	makedepends = imake
-	makedepends = openmpi
+	makedepends = openmpi-gcc10
 	makedepends = cuda>=11.1
 	depends = boost
 	depends = zlib
 	depends = bzip2
-	depends = gcc-fortran
+	depends = gcc10-fortran
 	depends = tk
 	depends = libx11
 	depends = libxext
@@ -32,7 +32,7 @@ pkgbase = ambertools
 	depends = python-setuptools
 	depends = perl
 	depends = perl-chemistry-mol
-	optdepends = openmpi: MPI support
+	optdepends = openmpi-gcc10: MPI support
 	optdepends = cuda: GPU acceleration support
 	optdepends = plumed: metadynamics support
 	optdepends = plumed-mpi: metadynamics support with MPI
@@ -47,12 +47,11 @@ pkgbase = ambertools
 	source = sander.OMP
 	source = .version
 	sha256sums = f55fa930598d5a8e9749e8a22d1f25cab7fcf911d98570e35365dd7f262aaafd
-	sha256sums = 7344dcd9c2dc3407a01551af46714cefeff52e20b43ce395c1479d88422c29d8
-	sha256sums = 034e2a84531a7db77d4a19f9976f5b3f8a7a96f222de0157cc4f47bb1c0efe1e
-	sha256sums = 5296a44c433f80188c1a77b7f993540a0d17e302971696fb542523a6dd512839
-	sha256sums = ce3fc27c1d05ab1a47b4701dc18a8a1e15625047594c35b57aa649054fcd25c1
-	sha256sums = 3b55bc5d1aa9f1c045448c07ccee4af209d836f54cfbf2ee2d32a412e6b77e8b
+	sha256sums = 95f8cb643104df144546ab2209540671cd17c04d19ec8679813cc9117e61b51b
+	sha256sums = a907e22c0315d3cbd3db8949125113faa586b1812fc0682acb8a4b3ac12ad9d3
+	sha256sums = 541e1fcb72f34264af40b0b1034c27ef2bdd6338280c87ff2fe9c772240e7aa3
+	sha256sums = bc6b155b71e088b47f9c088064f3b6a7e41543631cba1854cebb69df04f338e0
+	sha256sums = 147cc5ae0856f3d3b8e52041923e235d1979e6658a1f454199600390a8c29192
 	sha256sums = 3f7d7a0cae1531ad36513ec554cae302e78b2b574026e5dbfacf9a0d0c72b1cc
 
 pkgname = ambertools
-
