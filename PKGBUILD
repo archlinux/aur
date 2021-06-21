@@ -56,7 +56,7 @@ _minor=12
 _srcname=linux-${_major}
 pkgbase=linux-cacule-rdb
 pkgver=${_major}.${_minor}
-pkgrel=3
+pkgrel=4
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -79,12 +79,11 @@ source=(
   "${_patchsource}/wine-esync-patches/0001-v5.12-winesync.patch"
   "${_patchsource}/zen-patches-v2/0001-zen-patches.patch"
   "${_patchsource}/lqx-patches-v3/0001-zen-Allow-MSR-writes-by-default.patch"
-  "${_patchsource}/bfq-patches-v13/0001-bfq-patches.patch"
+  "${_patchsource}/bfq-patches-v14/0001-bfq-patches.patch"
   "${_patchsource}/block-patches-v6/0001-block-patches.patch"
   "${_patchsource}/ll-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
   "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
   "${_patchsource}/fixes-miscellaneous/2002-tune-vm-mm-and-vfs-settings.patch"
-  "${_patchsource}/fixes-miscellaneous/objtool-crypto-jp.patch"
 #  "${_patchsource}/fixes-miscellaneous/lrng/lrng-40.patch"
 #  "${_patchsource}/fixes-miscellaneous/lrng/1004-lrng-update-20210607.patch"
   "${_patchsource}/bbr2-patches-v2/0001-bbr2-5.12-introduce-BBRv2.patch"
@@ -533,12 +532,11 @@ sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
             'f7c68f43599c53ce19a14e6f296e5e0820257e80acb9f52a1dec036d0d9a62ab'
             '9eabd1468635477d9c143e9f59d86cf0dd32583bf6bd926080a6707f86d363ed'
             '5587a2d535dcd7ff09080c27f32a02dc67a0d35145b0b49ae10e8520c906a153'
-            '12b36059033201c99e54a0e863c3ded470faff1226d9b984bdb15bd3a8ec4a7c'
+            '8c5296b9920d44184fa3aea34e4100e1848617f18b76c883f31c973dd96044f9'
             '8c892547828704e05cd480e58944327029bf50f81258ae0501a4872b465b20b9'
             '947fa68285a060100d375548a8e8608271b5af18d0bb13139e3a691450f6b630'
             '7cdc6402f6ab8a8b99f7c7c4766a6cf82773ef399903abebf6208bfd2f8b2cf2'
             'f7a36231b794022d49e53f464d25e48f2eebf6266c2cbe5756c63aa3bf03bae7'
-            '2b261d4845899cfec315c81cfbfd3ba653a0465145e7dad9ac2f6595366ea3c8'
             '59dc35df675221c9e54326e4a2ca57074c955387e1d4cb0b6543424bc84bdb11'
             'f71cc3bdd9b3488ece3d7433ff65e0dd9f544f069b82e84e32ad67e2e7f64718'
             '42dc3c76534393d1b59ca3f321797566a7637bbb110f604eb9bf584b867a97a4'
