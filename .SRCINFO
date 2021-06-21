@@ -1,6 +1,6 @@
 pkgbase = r-ggsignif
 	pkgdesc = Significance Brackets for 'ggplot2'
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggsignif
 	arch = any
@@ -12,8 +12,7 @@ pkgbase = r-ggsignif
 	optdepends = r-rmarkdown
 	optdepends = r-spelling
 	optdepends = r-vdiffr
-	source = https://cran.r-project.org/src/contrib/ggsignif_0.6.1.tar.gz
-	sha256sums = 506e684071332dac62005c709833d419f4944a85478e2f4395f218ac314f5e66
+	source = https://cran.r-project.org/src/contrib/ggsignif_0.6.2.tar.gz
+	sha256sums = 41ab291127e48fe3bee6301edd893b1ebaa064005971d4ecbfa3a1687e1b3fa3
 
 pkgname = r-ggsignif
-
