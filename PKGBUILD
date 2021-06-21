@@ -2,12 +2,12 @@
 
 pkgname=plumed-mpi
 pkgver=2.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source plugin for free energy calculations in molecular systems which works together with some of the most popular molecular dynamics engines (with MPI support)"
 url="http://www.plumed.org/"
 license=(GPL)
 arch=(i686 x86_64)
-depends=(lapack zlib gsl openmpi netcdf)
+depends=(lapack zlib gsl gcc10 openmpi-gcc10 netcdf)
 optdepends=('vmd-molfile-plugins: add capability to read vmd compatible trajectories'
             'xdrfile: GROMACS trajectory format support'
             'python-setuptools: Python module support'
