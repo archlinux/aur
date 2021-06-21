@@ -1,7 +1,7 @@
 pkgbase = xmlada
 	pkgdesc = An XML parser for Ada95
 	pkgver = 21.0.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/AdaCore/xmlada/
 	arch = i686
@@ -17,4 +17,3 @@ pkgbase = xmlada
 	sha256sums = 8cf1c7a650a698ec9b7b1c71659be82f7f31a37dbdd8d24636c17ebfb0e7b989
 
 pkgname = xmlada
-

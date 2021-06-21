@@ -6,7 +6,7 @@
 pkgname=xmlada
 epoch=1
 pkgver=21.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An XML parser for Ada95"
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/xmlada/"
@@ -44,5 +44,13 @@ package() {
     # the same installed project files at the same time.
     make -j1 prefix="$pkgdir/usr" install
 
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" COPYING.RUNTIME
+    # Install the license.
+    install -D -m644     \
+       "COPYING3"        \
+       "$pkgdir/usr/share/licenses/$pkgname/COPYING3"
+
+    # Install the custom license.
+    install -D -m644     \
+       "COPYING.RUNTIME" \
+       "$pkgdir/usr/share/licenses/$pkgname/COPYING.RUNTIME"
 }
