@@ -57,4 +57,3 @@ package() {
   ln -sf "libalpm12.so.12.0.2" "libalpm12.so.12"
   ln -sf "libalpm12.so.12" "libalpm12.so"
 }
-
