@@ -1,0 +1,21 @@
+pkgbase = houseflow-git
+	pkgdesc = Home automation platform, written in Rust
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/gbaranski/houseflow
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	arch = i686
+	license = GPL-3.0
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	provides = houseflow
+	conflicts = houseflow
+	source = houseflow::git+https://github.com/gbaranski/houseflow
+	sha256sums = SKIP
+
+pkgname = houseflow-git
