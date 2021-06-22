@@ -1,0 +1,16 @@
+pkgbase = brother-mfc-j491dw
+	pkgdesc = LPR, scanner and CUPS drivers for the Brother MFC-J491DW
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = http://support.brother.com/g/s/id/linux/en/index.html
+	install = brother-mfc-j491dw.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = perl
+	depends = a2ps
+	depends = lib32-libcups
+	source = https://download.brother.com/welcome/dlf103779/mfcj491dwpdrv-1.0.5-0.i386.deb
+	sha256sums = a48acde2f501a88c0d38e09983c39c072cf6da7f37d62036fc3b72ddfb15821e
+
+pkgname = brother-mfc-j491dw
