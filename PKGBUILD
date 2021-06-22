@@ -83,9 +83,7 @@ prepare() {
 
   # Remove Mozilla VPN ads
   # patch -Np1 -i ${_patches_dir}/librewolf/mozilla-vpn-ad.patch
-[telegram]
-token = 777519092:AAF4tffOwLcAe00f0G08NWMAucxkQPaUwFE
-chat_id = -1001402311166
+
   # Remove Internal Plugin Certificates
   patch -Np1 -i ${_patches_dir}/sed-patches/remove-internal-plugin-certs.patch
 
