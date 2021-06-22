@@ -1,0 +1,19 @@
+pkgbase = gaeul-git
+	pkgdesc = Gaeul agents are a set of services that constitue a Hwangsaeul (H8L) deployment
+	pkgver = r225.dcff238
+	pkgrel = 1
+	url = https://github.com/hwangsaeul/gaeul
+	arch = x86_64
+	license = APACHE-2.0
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gaeguli
+	provides = gaeul
+	conflicts = gaeul
+	source = gaeul.sysusers
+	source = git+https://github.com/hwangsaeul/gaeul.git
+	sha256sums = 8d690553c6787bc8bfa2c21adca41e073065ff151d75b260e5e856b53ad0cce5
+	sha256sums = SKIP
+
+pkgname = gaeul-git
