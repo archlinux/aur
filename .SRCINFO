@@ -1,0 +1,15 @@
+pkgbase = python-ibapi
+	pkgdesc = Python IB API
+	pkgver = 9.85.01
+	pkgrel = 1
+	url = https://interactivebrokers.github.io/tws-api
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	depends = python
+	source = https://interactivebrokers.github.io/downloads/twsapi_macunix.985.01.zip
+	source = LICENSE
+	sha256sums = fcd1bb22aac8e646bc7ba269850bdec72520d7700919d13cd8e7c7663864e6ec
+	sha256sums = c60f3a3fe9a6799a346fe9519b2448334d99a6f0ff3db5c9969493be75941c5d
+
+pkgname = python-ibapi
