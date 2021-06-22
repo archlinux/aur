@@ -1,7 +1,7 @@
 # Maintainer: Twann <twann@ctemplar.com>
 
 pkgname=tblock
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 provides=("$pkgname")
 pkgdesc="An anticapitalist ad-blocker that uses the hosts file"
@@ -11,7 +11,7 @@ license=("GPL3")
 makedepends=("make" "pandoc" "gzip" "python>=3" "python-setuptools")
 depends=("python>=3" "python-urllib3" "python-requests" "python-colorama")
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/tblock/tblock/archive/${pkgver}.tar.gz")
-sha512sums=("3be4c200a8b0bffcee83251ccf27d0a32ba354b52909382c8d094b5f3e820089e6220cf1d9c9c6e724776c127dbb7d400f7df892c8cb63939089d779d16e047b")
+sha512sums=("12aca4b1aed6d5504f6fe7cb519d8e40016ee8136232653744d3e941c3ab7ec84191b969991eb356ec162e8ca833f94acd6b9d42f7746f55f3d2d059dd08b5ea")
 
 build()
 {
