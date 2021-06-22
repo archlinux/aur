@@ -5,14 +5,13 @@
 
 pkgname=kiconedit
 pkgver=4.4.0
-pkgrel=5
+pkgrel=6
 pkgdesc="KDE icon editor"
-arch=('i686' 'x86_64')
-url="http://www.kde.org/applications/graphics/kiconedit"
+arch=('x86_64')
+url="https://download.kde.org/stable/extragear/"
 license=('GPL2')
 depends=('kdebase-runtime')
-makedepends=('pkgconfig' 'cmake' 'automoc4')
-install=$pkgname.install
+makedepends=('automoc4' 'cmake' 'pkgconfig')
 source=(http://download.kde.org/stable/extragear/$pkgname-$pkgver.tar.bz2)
 md5sums=('f2db6aff093cea2fcefceb3eb02a94c3')
 
