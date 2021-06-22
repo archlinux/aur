@@ -1,8 +1,8 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_optcomp'
 pkgname="ocaml-$_projectname"
-pkgver='0.14.1'
+pkgver='0.14.2'
 pkgrel='1'
 epoch='1'
 pkgdesc='Optional compilation for OCaml'
@@ -13,7 +13,7 @@ depends=('ocaml>=4.04.2' 'ocaml-base>=0.14.0' 'ocaml-stdio>=0.14.0' 'ocaml-ppxli
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3e38b269a2de8fe9a55492f5a2f5334add706c9dff7bd10885fb28d3bd6b3f12')
+sha256sums=('a52dd9a270bfbfd0aaf8f5ec75f3824184c6700e5bd3196c1aa6664df745ee05')
 
 _sourcedirectory="$_projectname-$pkgver"
 
