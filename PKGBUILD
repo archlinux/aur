@@ -1,9 +1,9 @@
 # Contributor: Edgard Matthijs <ematthijs at skynet dot be>
 
 pkgname=gfourcc
-pkgver=0.1.2.r4.g4163fc4
+pkgver=0.1.4
 pkgrel=1
-pkgdesc="GTKMM3 Tool to change the FOURCC codec and description of an AVI file"
+pkgdesc="Gui Tool to change the FOURCC codec and description of an AVI file"
 arch=('i686' 'x86_64')
 url="https://github.com/gamegard68/gfourcc"
 license=('GPL')
