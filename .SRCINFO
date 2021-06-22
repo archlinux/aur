@@ -1,13 +1,13 @@
 pkgbase = sipsak-git
 	pkgdesc = A small command line tool for developers and administrators of Session Initiation Protocol (SIP) applications.
-	pkgver = r507.c2ecf76
+	pkgver = r524.0bdf6e6
 	pkgrel = 1
 	url = https://github.com/nils-ohlmeier/sipsak
 	arch = x86_64
 	groups = voip
 	license = GPL2
 	makedepends = git
-	makedepends = gcc9
+	makedepends = gcc
 	depends = gnutls
 	depends = openssl
 	depends = c-ares
