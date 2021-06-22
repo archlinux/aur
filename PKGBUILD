@@ -14,7 +14,7 @@ pkgver=6.5.0
 _ver=${pkgver%%.*}
 _islver=0.18
 _cloogver=0.18.4
-pkgrel=5
+pkgrel=6
 pkgdesc="The GNU Compiler Collection (6.x.x)"
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
@@ -25,7 +25,6 @@ source=("https://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz
         "https://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2"
         "http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz"
         libsanitizer.patch
-        Workaround-for-format-security.patch
         c89
         c99
 )
@@ -33,7 +32,6 @@ sha512sums=('ce046f9a50050fd54b870aab764f7db187fe7ea92eb4aaffb7c3689ca623755604e
             '85d0b40f4dbf14cb99d17aa07048cdcab2dc3eb527d2fbb1e84c41b2de5f351025370e57448b63b2b8a8cf8a0843a089c3263f9baee1542d5c2e1cb37ed39d94'
             'd35d67b08ffe13c1a010b65bfe4dd02b0ae013d5b489e330dc950bd3514defca8f734bd37781856dcedf0491ff6122c34eecb4b0fe32a22d7e6bdadea98c8c23'
             'e7861f77d54ac9bc12cfc6d3498a9bc284e72f728435c23866ac0763fb93e94e431d819c3def9f5aa03acbafc437141882e7b3746f4574ec6e5eb66b555cebb6'
-            '7c9dfadad196ac53f7a33d5875bd39aacd4a650e79696ab3177f245ad5e24cdd9fa084c8829820ba82b0159756f89baa9db99f373f42e38e757b3d5b7c699cf5'
             'a02da589b23e4a76b5ca3b3e4e2261ef4cf69dadd9460703f14e34090d4e574025a52acef9f54e897679115e2122b0095d9d7eab556024bb0e9c695915951a58'
             'd17176547a1ed2b7aa4743eb66a06308db182a993985a1905b418dfa46b74723631b17fd0d536adfefbdf4900d3b71cdf1e7d663ad379fa11b58b613dccb931c')
 
@@ -45,7 +43,6 @@ prepare() {
 
   # Apply patches.
   patch --forward --strip=2 --input="${srcdir}"/libsanitizer.patch
-  patch --strip=1 --input="${srcdir}"/Workaround-for-format-security.patch
 
   # Link isl/cloog for in-tree builds
   ln -sf "../isl-${_islver}" isl
@@ -76,8 +73,10 @@ build() {
   export CFLAGS="${CFLAGS/-pipe/} -Wno-error=format-security -Wformat-security"
   export CXXFLAGS="${CXXFLAGS/-pipe/} -Wno-error=format-security -Wformat-security"
 
-  export CFLAGS_FOR_TARGET="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -Wno-error=format-security -Wformat-security"
-  export CXXFLAGS_FOR_TARGET="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -Wno-error=format-security -Wformat-security"
+  # Newer gcc versions don't support the same flags as the oldest versions, and it seems
+  # that xgcc picks up CFLAGS if CFLAGS_FOR_TARGET aren't set (https://gcc.gnu.org/bugzilla/show_bug.cgi?id=25672).
+  export CFLAGS_FOR_TARGET="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions -fstack-protector -Wp,-D_FORTIFY_SOURCE=2 -Wno-error=format-security -Wformat-security"
+  export CXXFLAGS_FOR_TARGET="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions -fstack-protector -Wp,-D_FORTIFY_SOURCE=2 -Wno-error=format-security -Wformat-security"
 
   "${srcdir}/gcc/configure" \
     --prefix=/usr \
@@ -92,6 +91,7 @@ build() {
     --with-linker-hash-style=gnu \
     --with-system-zlib \
     --enable-__cxa_atexit \
+    --enable-build-format-warnings \
     --enable-cet=auto \
     --enable-checking=release \
     --enable-clocale=gnu \
