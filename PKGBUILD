@@ -40,6 +40,6 @@ package() {
 
   # Create startup file for burpsuite-pro.
   echo "#!/bin/sh" > ${pkgdir}/usr/bin/${pkgname}
-  echo "exec \"\$JAVA_HOME/bin/java\" \"-splash:/usr/share/pixmaps/burpsuite-pro-splash.png\" \"--add-opens\" \"java.base/java.lang=ALL-UNNAMED\" \"--add-opens\" \"java.base/javax.crypto=ALL-UNNAMED\" \"--add-opens\" \"java.desktop/javax.swing=ALL-UNNAMED\" \"-jar\" \"/usr/share/${pkgname}/${pkgname}.jar\" \"\$@\"" >> ${pkgdir}/usr/bin/${pkgname}
+  echo "exec \"\$JAVA_HOME/bin/java\" \"-splash:/usr/share/pixmaps/burpsuite-pro-splash.png\" \"--add-opens\" \"java.base/java.lang=ALL-UNNAMED\" \"--add-opens\" \"java.base/javax.crypto=ALL-UNNAMED\" \"--add-opens\" \"java.desktop/javax.swing=ALL-UNNAMED\" \"--illegal-access=permit\" \"-jar\" \"/usr/share/${pkgname}/${pkgname}.jar\" \"\$@\"" >> ${pkgdir}/usr/bin/${pkgname}
   chmod 755 ${pkgdir}/usr/bin/${pkgname}
 }
