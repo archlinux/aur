@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-wintile
 	pkgdesc = Windows 10 window tiling for GNOME
 	pkgver = 7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fmstrat/wintile
 	arch = any
 	license = GPL3
