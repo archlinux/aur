@@ -1,58 +1,33 @@
-# Maintainer : Stefano Capitani <stefanoatmanjarodotorg>
-# Maintainer : lemovice <lemovice-at-ancestris-dot-org> 
+# Maintainer: AlphaJack <alphajack at tuta dot io>
+# Contributor : Stefano Capitani <stefanoatmanjarodotorg>
+# Contributor : lemovice <lemovice-at-ancestris-dot-org> 
 
-pkgname=ancestris
-pkgver=10
+pkgname="ancestris"
+pkgver=11.20210529
 pkgrel=1
-_date=20200208
-pkgdesc='Ancestris is a genealogy program written in Java'
-arch=('any')
-url='http://ancestris.org/'
-license=('CDDL' 'GPL')
+pkgdesc="A genealogy program written in Java"
+url="https://www.ancestris.org"
+license=("GPL3")
+arch=("any")
+optdepends=("java-runtime=8: to use java 8"
+            "java-runtime=10: to use java 10"
+            "java-runtime=11: to use java 11") # java 16 doesn't seem to be supported
+source=("https://www.ancestris.org/dl/pub/ancestris/releases/$pkgname-${pkgver/\.*/}-${pkgver/*\./}.deb")
+sha256sums=('8da5fb5945473d0b4f0d1e4f6e6c301a4ba7ac1d05d80670fe93a8308f6ac76a')
+backup=("etc/ancestris/ancestris.clusters" "etc/ancestris/ancestris.conf")
+options=("!strip")
 
-depends=('jdk11-openjdk' 'ttf-font' 'libxtst' 'giflib' 'atk')
-source=("$url/mw/mw-base/compteur_dl.php?/dl/pub/$pkgname/releases/${pkgname}_${pkgver}-${_date}.zip"
-'ancestris.desktop'
-'ancestris.png')
-
-md5sums=('4805afbf67ab738eb06ffd5ccff7bba8'
-         '2d23096eea04659d55dc6d45fb57cc37'
-         'bae346ed409e57d174386cd7db583ff5')
-DLAGENTS=('ftp::/usr/bin/curl -fC - --ftp-pasv --retry 3 --retry-delay 3 -o %o %u'
-          'http::/usr/bin/curl -A "Mozilla/4.0" -fLC - --retry 3 --retry-delay 3 -o %o %u'
-          'https::/usr/bin/curl -A "Mozilla/4.0" -fLC - --retry 3 --retry-delay 3 -o %o %u'
-          'rsync::/usr/bin/rsync --no-motd -z %u %o'
-          'scp::/usr/bin/scp -C %u %o')
-
-
-build() {
-  # cleanup OS specific files
-  rm $(find -name '*\.exe' -or -name '*\.bat')
-#  rm -r $(find -name 'MacOSX*' -or -name 'Windows*' -or -name 'SunOS*')
-#  rm -r $(find -name 'hpux*' -or -name 'mac*' -or -name 'solaris*' -or -name 'windows*')
-  # Remove 64 bits files on an i686 system else stripping fails
-  if [ `uname -m` = 'i686' ]; then
-  	rm -rf $(find -name '*64*')
-	rm -rf $(find -name '*x64*')
-	rm -rf $(find -name 'Linux-x86_64')
-  fi
-  if [ `uname -m` = 'x86_64' ]; then
-  	rm -rf $(find -name '*86*')
-  fi
+prepare(){
+ tar -xf "data.tar.xz"
 }
 
-package() {
-  install -d ${pkgdir}/usr/share/java
-  cp -r ${pkgname} ${pkgdir}/usr/share/java
-
-  install -d ${pkgdir}/usr/bin
-  ln -s /usr/share/java/${pkgname}/bin/${pkgname} ${pkgdir}/usr/bin/${pkgname}
-
-  install -d ${pkgdir}/usr/share/applications
-  install -m644 /$srcdir/${pkgname}.desktop ${pkgdir}/usr/share/applications
-  
-  install -d ${pkgdir}/usr/share/pixmaps
-  install -m644 $srcdir/${pkgname}.png ${pkgdir}/usr/share/pixmaps
+package(){
+ # remove windows files
+ find . -type f  \( -name "*.exe" -o -name "*.dll" \) -exec rm {} \;
+ # copy program files
+ cp -r "usr" "$pkgdir"
+ # move configuration
+ install -d "$pkgdir/etc"
+ mv "$pkgdir/usr/share/ancestris/etc" "$pkgdir/etc/ancestris"
+ ln -s "/etc/ancestris" "$pkgdir/usr/share/ancestris/etc"
 }
-
-# vim:set ts=2 sw=2 et:
