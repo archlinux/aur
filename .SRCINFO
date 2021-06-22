@@ -1,7 +1,7 @@
 pkgbase = notekeeper
 	pkgdesc = A tiny bash script for taking and organizing simple text notes.
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dcchambers/note-keeper
 	arch = any
 	license = MIT
