@@ -10,8 +10,8 @@
 #
 
 pkgname=thunderbird-localized-beta-bin
-pkgver=90.0b1
-pkgrel=2
+pkgver=90.0b2
+pkgrel=1
 pkgdesc='Standalone mail and news reader from mozilla.org'
 arch=('i686' 'x86_64')
 url="https://www.mozilla.org/thunderbird"
