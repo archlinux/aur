@@ -1,0 +1,13 @@
+pkgbase = hwangsae-git
+	pkgdesc = Hwangsae is a library that implements forwarding and stream access control services for Hwangsaeul
+	pkgver = r288.7ca17e4
+	pkgrel = 1
+	url = https://github.com/hwangsaeul/hwangsae
+	arch = x86_64
+	license = APACHE-2.0
+	provides = hwangsae
+	conflicts = hwangsae
+	source = git+https://github.com/hwangsaeul/hwangsae.git
+	sha256sums = SKIP
+
+pkgname = hwangsae-git
