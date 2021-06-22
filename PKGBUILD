@@ -4,7 +4,7 @@
 pkgname=nowater
 pkgver=21.06
 pkgrel=1
-pkgdesc="A CLI tool that helps you change wallpaper or live wallpaper easily."
+pkgdesc="A CLI tool that helps you set wallpaper or live wallpaper easily."
 arch=(any)
 url="https://github.com/justanoobcoder/nowater"
 license=('GPL3')
