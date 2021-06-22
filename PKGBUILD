@@ -2,7 +2,7 @@
 # Contributor: Daan De Meyer <daan.j.demeyer@gmail.com>
 
 pkgname=libzypp
-pkgver=17.25.5
+pkgver=17.27.0
 pkgrel=1
 pkgdesc="ZYpp Package Management library"
 arch=('x86_64')
@@ -23,6 +23,7 @@ makedepends=(
   'boost'
   'cmake'
   'dejagnu'
+  'doxygen'
   'expat'
   'git'
   'gnupg'
@@ -30,7 +31,7 @@ makedepends=(
   'ninja'
 )
 source=("${pkgname}-${pkgver}::https://github.com/openSUSE/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('98bdc332ffd5706ea8b1eb751661f19ad3f928d002089d9baca93c59aa4c6e5e')
+sha256sums=('1d14db0bb99ad423de6484152526038b7b70f01b83247df445c174fe0d5eeeab')
 
 prepare() {
   # CMake doesn't find FindLibSolv.cmake in /usr/share/cmake/Modules
@@ -47,15 +48,14 @@ build() {
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D LIB=lib \
     -D CMAKE_SKIP_RPATH=1 \
-    -D DISABLE_LIBPROXY=0 \
-    -D DISABLE_AUTODOCS=1 \
     -D DISABLE_MEDIABACKEND_TESTS=ON \
+	-D ENABLE_BUILD_DOCS=ON \
+	-D ENABLE_BUILD_TRANS=ON \
+	-D ENABLE_BUILD_TESTS=ON \
+	-D ENABLE_ZCHUNK_COMPRESSION=ON \
+	-D ENABLE_ZSTD_COMPRESSION=ON \
 
   cmake --build build
-}
-
-check() {
-  ARGS="-V" cmake --test build
 }
 
 package() {
