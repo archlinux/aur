@@ -1,7 +1,7 @@
 pkgbase = nvfancontrol
 	pkgdesc = NVidia dynamic fan control
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/foucault/nvfancontrol
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,7 @@ pkgbase = nvfancontrol
 	source = nvfancontrol-0.5.1.tar.gz::https://github.com/foucault/nvfancontrol/archive/0.5.1.tar.gz
 	source = nvfancontrol-0.5.1.tar.gz.asc::https://github.com/foucault/nvfancontrol/releases/download/0.5.1/nvfancontrol-0.5.1.tar.gz.asc
 	validpgpkeys = 391572CF5690CAF60BB320C6A68E5115BB817582
-	sha256sums = a6947ea4e60840834762414e76c62a5a135dc09e36ad01ca6c68904807678a25
+	sha256sums = 544fe74bdaa3b509c58caac2edbacb4fd48b0fafda2d4e223dbc18cb21cf4845
 	sha256sums = SKIP
 
 pkgname = nvfancontrol
-
