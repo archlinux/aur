@@ -5,7 +5,7 @@ pkgbase = gnome-shell-extension-shuzhi-git
 	url = https://github.com/tuberry/shuzhi
 	arch = any
 	license = GPL3
-	checkdepends = fortune-mod-mingju-git
+	checkdepends = fortune-mod
 	makedepends = git
 	makedepends = make
 	depends = gnome-shell>=3.38
@@ -13,4 +13,3 @@ pkgbase = gnome-shell-extension-shuzhi-git
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-shuzhi-git
-

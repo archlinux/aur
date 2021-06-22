@@ -11,7 +11,7 @@ url="https://github.com/tuberry/shuzhi"
 license=('GPL3')
 depends=('gnome-shell>=3.38')
 makedepends=('git' 'make')
-checkdepends=('fortune-mod-mingju-git')
+checkdepends=('fortune-mod')
 source=("$_pkgname::git+https://github.com/tuberry/shuzhi.git")
 sha256sums=('SKIP')
 
