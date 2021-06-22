@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/um 5.12.10 Kernel Configuration
+# Linux/um 5.12.12 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 11.1.0"
 CONFIG_CC_IS_GCC=y
@@ -767,6 +767,7 @@ CONFIG_BLK_DEV_NBD=y
 #
 # NVME Support
 #
+# CONFIG_NVME_TCP is not set
 # end of NVME Support
 
 #
