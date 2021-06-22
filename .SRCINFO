@@ -12,12 +12,12 @@ pkgbase = ocropy-git
 	depends = python2-pytables
 	depends = imagemagick
 	depends = opencv
-	depends = python2-beautifulsoup4
+	depends = python2-lxml
 	provides = ocropy
+	conflicts = ocropy
 	source = git+https://github.com/ocropus/ocropy.git
 	source = https://github.com/zuphilip/ocropy-models/raw/master/en-default.pyrnn.gz
 	sha256sums = SKIP
 	sha256sums = b749ec701a53915183963c3814a288de7da5a38261bd9008e0ae0674c71cd1f7
 
 pkgname = ocropy-git
-

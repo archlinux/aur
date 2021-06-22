@@ -10,9 +10,10 @@ arch=('any')
 url="https://github.com/ocropus/${_pkgname}"
 license=('APACHE')
 depends=('python2-imaging' 'python2-scipy' 'python2-matplotlib' 'python2-pytables'
-         'imagemagick' 'opencv' 'python2-beautifulsoup4')
+         'imagemagick' 'opencv' 'python2-lxml')
 makedepends=('git')
 provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("git+https://github.com/ocropus/${_pkgname}.git"
         "https://github.com/zuphilip/ocropy-models/raw/master/en-default.pyrnn.gz")
 sha256sums=('SKIP'
@@ -27,8 +28,11 @@ prepare() {
   cd "$srcdir/${_pkgname}"
   cp "$srcdir/en-default.pyrnn.gz" models
   
-  sed -i 's|tostring|tobytes|' ocrolib/common.py
-  sed -i 's|PIL\.Image\.fromstring|PIL\.Image\.frombytes|' ocrolib/common.py
+  #sed -i 's|numpy.fromstring|numpy.frombytes|' ocrolib/common.py
+  #sed -i 's|tostring|tobytes|' ocrolib/common.py
+  #sed -i 's|im.tobytes()|im.tostring()|' 'ocrolib/common.py'
+  #sed -i 's|PIL\.Image\.fromstring|PIL\.Image\.frombytes|' 'ocrolib/common.py'
+  sed -i 's|tobytes|tostring|' ocrolib/common.py
 }
 
 build() {
