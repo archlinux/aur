@@ -26,7 +26,7 @@ prepare() {
 build() {
   cd vocdoni-node
   GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -tags=badgerdb"
-  LDFLAGS="-w -s -X=go.vocdoni.io/dvote/internal.Version=$(git describe --long --tags | sed -e 's/^v//;s/-/.r/;s/-/./g')"
+  LDFLAGS="-w -s -X=go.vocdoni.io/dvote/internal.Version=$pkgver"
   go build $GOFLAGS -ldflags="$LDFLAGS" -o vocdoni-node ./cmd/dvotenode
   go build $GOFLAGS -ldflags="$LDFLAGS" -o vocdoni-cli ./cmd/dvotecli
 }
@@ -34,6 +34,8 @@ build() {
 package() {
   cd vocdoni-node
   mkdir -p ${pkgdir}/usr/bin
+  mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
   install -m 0755 vocdoni-node ${pkgdir}/usr/bin/vocdoni-node
   install -m 0755 vocdoni-cli ${pkgdir}/usr/bin/vocdoni-cli
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
