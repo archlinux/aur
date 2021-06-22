@@ -73,14 +73,14 @@ _clr=${_major}.35-75
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-clear-preempt-rt
 pkgver=${_major}.${_minor}.${_rtpatchver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux Preempt-RT'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-preempt-rt"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_gcc_more_v='20210606'
+_gcc_more_v='20210616'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.${_minor}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.${_minor}.tar.sign"
@@ -321,7 +321,7 @@ sha256sums=('ac37a19d45b77a87e58e3aae8b127a6e7eb85ed7467fc8e58474b387bfd498fd'
             'SKIP'
             '3e1d3531173d5bb276935eaec016ef3c3c0f8f4fcc1fc418d192cc10824ff80d'
             'SKIP'
-            '21454906014ac8e448be85147be06a1e3dfbefb644ef96d9a37c15fcc8e07a42')
+            'e5b449ef1cd5fef9f24f55250afc2fad85df4fd7371db666f7c7f20eff91c33d')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
