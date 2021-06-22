@@ -3,13 +3,13 @@
 _projectname=Mamba
 pkgname="${_projectname,,}"
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A virtual MIDI keyboard and file player/recorder for ALSA/JACK"
 arch=('i686' 'x86_64')
 url="https://github.com/brummer10/${_projectname}"
 license=('0BSD')
 depends=('cairo')
-makedepends=('alsa-lib' 'fluidsynth' 'jack' 'liblo' 'libsigc++' 'libsmf')
+makedepends=('alsa-lib' 'fluidsynth' 'jack' 'liblo' 'libsigc++' 'libsmf' 'xxd')
 optdepends=('new-session-manager: for NSM support')
 groups=('pro-audio')
 source=("https://github.com/brummer10/Mamba/files/6329780/${_projectname}_${pkgver}.tar.gz")
