@@ -2,7 +2,7 @@
 
 pkgname=python-pysmb
 _pypi_pkgname=pysmb
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=0
 pkgdesc="An experimental SMB/CIFS library written in Python"
 arch=(any)
@@ -10,7 +10,7 @@ url="https://miketeo.net/wp/index.php/projects/pysmb"
 license=('ZLIB')
 depends=('python' 'python-setuptools' 'python-pyasn1')
 source=("https://pypi.io/packages/source/p/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.zip")
-sha256sums=('f16e5e796b9dcc1d17ee76f87d53dd471f205fa19b4045eeda5bc7558a57d579')
+sha256sums=('298605b8f467ce15b412caaf9af331c135e88fa2172333af14b1b2916361cb6b')
 
 package() {
   cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
