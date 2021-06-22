@@ -9,7 +9,7 @@
 
 pkgname=python2-matplotlib
 pkgver=2.2.5
-pkgrel=4
+pkgrel=5
 pkgdesc="A python plotting library, making publication quality plots"
 arch=(x86_64)
 url="https://matplotlib.org"
@@ -26,13 +26,13 @@ optdepends=('tk: Tk{Agg,Cairo} backends'
             'python2-tornado: WebAgg backend'
             'ffmpeg: for saving movies'
             'imagemagick: for saving animated gifs'
-            'python2-pillow: for reading/saving jpeg/bmp/tiff files'
+            'python2-imaging: for reading/saving jpeg/bmp/tiff files'
             'ghostscript: usetex dependencies'
             'texlive-bin: usetex dependencies')
 makedepends=(git rsync python2-setuptools
              tk python2-gobject
              python2-wxpython python2-cairocffi python2-tornado
-             python2-pillow ghostscript texlive-bin)
+             python2-imaging ghostscript texlive-bin)
              # qhull missing pkg-config file
              # agg missing some non-upstreamed patches?
 source=("https://github.com/matplotlib/matplotlib/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
