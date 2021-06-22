@@ -1,12 +1,10 @@
 pkgbase = cloudsn
 	pkgdesc = E-mail (POP3, Gmail, IMAP), RSS and tweets notifier
 	pkgver = 0.10.2
-	pkgrel = 4
-	url = http://chuchiperriman.github.com/cloud-services-notifications/
-	install = cloudsn.install
+	pkgrel = 5
+	url = https://chuchiperriman.github.io/cloud-services-notifications/
 	arch = any
 	license = GPL3
-	depends = gtk-update-icon-cache
 	depends = pygtk
 	depends = python2-dbus
 	depends = python2-gobject
@@ -19,4 +17,3 @@ pkgbase = cloudsn
 	md5sums = 470a67a55e00bb6785bf717c58c937f8
 
 pkgname = cloudsn
-

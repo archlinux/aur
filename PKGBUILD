@@ -5,21 +5,19 @@
 _pkgname=cloud-services-notifications
 pkgname=cloudsn
 pkgver=0.10.2
-pkgrel=4
+pkgrel=5
 pkgdesc="E-mail (POP3, Gmail, IMAP), RSS and tweets notifier"
 arch=('any')
-url="http://chuchiperriman.github.com/cloud-services-notifications/"
+url="https://chuchiperriman.github.io/cloud-services-notifications/"
 license=('GPL3')
 
 # See ubuntu package 'python-indicate'
 #'libindicate-gtk2' 'libindicate-gtk3'
-depends=('gtk-update-icon-cache' 'pygtk' 'python2-dbus' 'python2-gobject'
-         'python2-notify' 'python2-xdg')
+depends=('pygtk' 'python2-dbus' 'python2-gobject' 'python2-notify' 'python2-xdg')
 optdepends=('python2-feedparser: RSS support'
             'python2-gnomekeyring: store passwords in gnome-keyring'
             'gstreamer0.10-python: play sounds')
 
-install=cloudsn.install
 source=(https://github.com/chuchiperriman/$_pkgname/archive/$pkgver.tar.gz)
 md5sums=('470a67a55e00bb6785bf717c58c937f8')
 
