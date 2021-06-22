@@ -4,12 +4,12 @@
 pkgname=gtkada
 epoch=1
 pkgver=21.0.0
-pkgrel=2
+pkgrel=3
 
 pkgdesc='Ada bindings for the Gtk+ library.'
 url='https://github.com/AdaCore/gtkada'
 arch=('i686' 'x86_64')
-license=('GPL')
+license=('GPL3' 'custom')
 
 depends=('gcc-ada' 'gtk3')
 makedepends=('gprbuild')
@@ -39,4 +39,14 @@ package()
     cd "$srcdir/$pkgname-$pkgver"
 
     make -j1 PROCESSORS=1 DESTDIR="$pkgdir" install
+    
+    # Install the license.
+    install -D -m644     \
+       "COPYING3"        \
+       "$pkgdir/usr/share/licenses/$pkgname/COPYING3"
+
+    # Install the custom license.
+    install -D -m644     \
+       "COPYING.RUNTIME" \
+       "$pkgdir/usr/share/licenses/$pkgname/COPYING.RUNTIME"
 }
