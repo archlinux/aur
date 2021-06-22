@@ -7,7 +7,7 @@ msg() {
 }
 
 post_install() {
-    msg "Firejail profiles are already present in firejail."
+    msg "Firejail profiles are already present in firejail-git."
     echo ""
     msg "To use profile-sync-daemon add firedragon to ~/.config/psd/psd.conf"
     echo ""
