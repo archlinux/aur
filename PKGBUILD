@@ -3,12 +3,13 @@
 _gemname=http_parser.rb
 pkgname=ruby-$_gemname
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Ruby bindings to https://github.com/ry/http-parser and https://github.com/a2800276/http-parser.java"
 arch=(i686 x86_64)
 url='http://github.com/tmm1/http_parser.rb'
 license=(MIT)
-depends=(ruby ruby-benchmark_suite ruby-ffi ruby-json ruby-rake-compiler ruby-rspec ruby-yajl-ruby)
+depends=(ruby)
+makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)

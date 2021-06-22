@@ -1,22 +1,16 @@
 pkgbase = ruby-http_parser.rb
 	pkgdesc = Ruby bindings to https://github.com/ry/http-parser and https://github.com/a2800276/http-parser.java
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/tmm1/http_parser.rb
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = ruby-rdoc
 	depends = ruby
-	depends = ruby-benchmark_suite
-	depends = ruby-ffi
-	depends = ruby-json
-	depends = ruby-rake-compiler
-	depends = ruby-rspec
-	depends = ruby-yajl-ruby
 	noextract = http_parser.rb-0.6.0.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/http_parser.rb-0.6.0.gem
 	sha256sums = f11d0aec50ef26a7d1f991e627ac88acdb5979282aeba7a5c3be6ce0636ed196
 
 pkgname = ruby-http_parser.rb
-
