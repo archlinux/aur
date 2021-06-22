@@ -1,6 +1,6 @@
 pkgbase = tv-overlord-git
-	pkgdesc = Download and manage tv shows
-	pkgver = r423.c62af1d
+	pkgdesc = Download and manage TV shows
+	pkgver = r446.f394059
 	pkgrel = 1
 	url = https://bitbucket.org/tvoverlord/tv-overlord
 	arch = any
@@ -12,12 +12,12 @@ pkgbase = tv-overlord-git
 	depends = python-colorama
 	depends = python-dateutil
 	depends = python-feedparser
-	depends = python-tvdb_api-git
-	depends = python-requests
+	depends = python-tvdb_api
 	optdepends = deluge: torrent client
 	optdepends = transmission-cli: torrent client
-	source = tv-overlord::git+https://bitbucket.org/tvoverlord/tv-overlord.git
+	provides = tv-overlord
+	conflicts = tv-overlord
+	source = tv-overlord-git::git+https://bitbucket.org/tvoverlord/tv-overlord.git
 	md5sums = SKIP
 
 pkgname = tv-overlord-git
-

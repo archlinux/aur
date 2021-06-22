@@ -1,33 +1,37 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
-_pkgname=tv-overlord
-pkgname=$_pkgname-git
-pkgver=r423.c62af1d
+pkgname=tv-overlord-git
+pkgver=r446.f394059
 pkgrel=1
-pkgdesc="Download and manage tv shows"
+pkgdesc="Download and manage TV shows"
+arch=('any')
 url="https://bitbucket.org/tvoverlord/tv-overlord"
 license=('GPL')
-arch=('any')
-depends=('python-beautifulsoup4' 'python-click' 'python-colorama' 'python-dateutil'
-         #'python-feedparser' 'python-tvdb_api' 'python-requests')
-         'python-feedparser' 'python-tvdb_api-git' 'python-requests')
+depends=('python-beautifulsoup4' 'python-click' 'python-colorama' 'python-dateutil' 'python-feedparser' 'python-tvdb_api')
 makedepends=('git' 'python-setuptools')
 optdepends=('deluge: torrent client' 'transmission-cli: torrent client')
-source=($_pkgname::git+https://bitbucket.org/tvoverlord/tv-overlord.git)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=($pkgname::git+$url.git)
 md5sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+  cd $pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd $pkgname
+  sed -i "s|'tvoverlord/search_providers'.*||" setup.py
+}
+
 build() {
-  cd $_pkgname
+  cd $pkgname
   python setup.py build
 }
 
 package() {
-  cd $_pkgname
+  cd $pkgname
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
