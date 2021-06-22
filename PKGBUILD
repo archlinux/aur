@@ -28,14 +28,24 @@ build()
   export PYTHONPATH="$srcdir/langkit-$pkgver:$PYTHONPATH"
   python ada/manage.py generate
   python ada/manage.py build --build-mode=prod --gargs="-R -cargs $CFLAGS -largs $LDFLAGS -gargs"
-}
 
+  make -C dev_manual html
+}
 
 package()
 {
   cd "$srcdir/libadalang-$pkgver"
 
   python ada/manage.py install --build-mode=prod "$pkgdir/usr"
+
+  # Install the developers manual
+  cd dev_manual/_build/html
+    
+  for file in $(find . -type f); do
+    install -m 644 -D ${file} "$pkgdir/usr/share/doc/$pkgname"/${file#source/}
+  done
+
+  cd "$srcdir/libadalang-$pkgver"
 
   # Install the license.
   install -D -m644     \
