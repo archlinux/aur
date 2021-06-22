@@ -2,7 +2,7 @@
 
 pkgname=hotspot
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Linux perf GUI for performance analysis"
 arch=('any')
 url="https://github.com/KDAB/hotspot"
@@ -18,7 +18,8 @@ build() {
     cd "${pkgname}-v${pkgver}"
     cmake . -DCMAKE_INSTALL_PREFIX=/usr \
           -DRUSTC_DEMANGLE_INCLUDE_DIR=/usr/include/rustc-demangle \
-          -DRUSTC_DEMANGLE_LIBRARY=/usr/lib/rustc-demangle/librustc_demangle.so
+          -DRUSTC_DEMANGLE_LIBRARY=/usr/lib/rustc-demangle/librustc_demangle.so \
+          -DBUILD_TESTING=off
     make
 }
 
