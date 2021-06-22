@@ -1,0 +1,4 @@
+post_install() {
+	echo ':: Auto-updates are not supported and any related errors are to be disregarded.'
+	echo ':: Please consider disabling auto-updates in the menu.'
+}

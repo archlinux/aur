@@ -3,7 +3,7 @@
 
 pkgname=standardnotes-bin
 pkgver=3.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, open-source and completely encrypted notes app'
 arch=('x86_64' 'i686')
 url='https://standardnotes.org'
@@ -16,6 +16,7 @@ makedepends=('asar')
 options=(!strip)
 provides=('standardnotes-desktop')
 conflicts=('standardnotes-desktop')
+install="$pkgname.install"
 source=("$_shortname.sh")
 source_x86_64=("$pkgname-$pkgver-x86_64.AppImage::$_dlurl/$_shortname-$pkgver-linux-x86_64.AppImage")
 source_i686=("$pkgname-$pkgver-i686.AppImage::$_dlurl/$_shortname-$pkgver-linux-i386.AppImage")
@@ -39,7 +40,7 @@ package() {
 	install -d "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
 	install -d "$pkgdir/usr/share/applications/"
 
-	sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/$_shortname|" "squashfs-root/$_shortname.desktop"
+	sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/$_shortname|" "$pkgdir/opt/$pkgname/$_shortname.desktop"
 	ln -s "/opt/$pkgname/$_shortname.desktop" "$pkgdir/usr/share/applications/"
 	ln -s "/opt/$pkgname/$_shortname.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
 }

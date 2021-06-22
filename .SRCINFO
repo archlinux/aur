@@ -1,8 +1,9 @@
 pkgbase = standardnotes-bin
 	pkgdesc = A free, open-source and completely encrypted notes app
 	pkgver = 3.8.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://standardnotes.org
+	install = standardnotes-bin.install
 	arch = x86_64
 	arch = i686
 	license = AGPL3
