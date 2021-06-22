@@ -1,0 +1,23 @@
+pkgbase = qca-qt6-git
+	pkgdesc = Qt Cryptographic Architecture
+	pkgver = 2.3.3_r2427.g7ead0544
+	pkgrel = 1
+	url = https://userbase.kde.org/QCA
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = pkcs11-helper
+	makedepends = botan
+	depends = qt6-5compat
+	depends = nss
+	depends = ca-certificates
+	optdepends = pkcs11-helper: PKCS-11 plugin
+	optdepends = botan: botan plugin
+	provides = qca-qt6
+	conflicts = qca-qt6
+	source = git+https://github.com/KDE/qca.git
+	sha256sums = SKIP
+
+pkgname = qca-qt6-git
