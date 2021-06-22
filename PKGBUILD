@@ -1,10 +1,11 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: Andrew Rabert <ar@nullsum.net>
 # Contributor: Jack Mitchell <jack@embed.me.uk>
 # Contributor: Kevin MacMartin <prurigro at gmail dot com>
 
 pkgname=xboxdrv
 pkgver=0.8.8
-pkgrel=5
+pkgrel=6
 pkgdesc='Userspace gamepad driver for Linux'
 url='http://pingus.seul.org/~grumbel/xboxdrv'
 arch=('x86_64')
