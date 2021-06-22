@@ -1,11 +1,9 @@
 pkgbase = libhandy-git
 	pkgdesc = Library full of GTK+ widgets for mobile phones
-	pkgver = 1.1.90.r20.gfdbf15c
+	pkgver = 1.2.2.r24.g2a55315
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/libhandy
-	arch = i686
 	arch = x86_64
-	arch = armv7h
 	arch = aarch64
 	license = LGPL
 	checkdepends = xorg-server-xvfb
@@ -22,4 +20,3 @@ pkgbase = libhandy-git
 	md5sums = SKIP
 
 pkgname = libhandy-git
-
