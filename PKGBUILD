@@ -3,7 +3,7 @@
 
 pkgname=miniongg
 pkgver=3.0.7_SNAPSHOT.r1.12dbc95e
-pkgrel=5
+pkgrel=6
 pkgdesc="Elder Scrolls Online and World of Warcraft Addon Manager"
 arch=('any')
 url='https://minion.mmoui.com/'
@@ -20,7 +20,7 @@ source=("https://cdn.mmoui.com/minion/v3/MinionClientUpdate-12dbc95eff5898a64f58
 md5sums=("977dcbe4914fe452055d092083960f4c"
 	"862307f1f506b42a576c8d49e90eccbf"
 	"SKIP"
-	"c758cbb772d9878451c51f1c5d8f8353"
+	"ac963b2368a1db40b44d7a3b147546d4"
 	"cb92061ae2d15effbddc3b23600cfeaf")
 
 package() {

@@ -10,6 +10,7 @@ if [ $(vercmp 1.9 "$VERSION") -le 0 ]; then
 	  --add-opens javafx.graphics/com.sun.javafx.css=ALL-UNNAMED \
 	  --add-opens javafx.graphics/javafx.scene.image=ALL-UNNAMED\
 	  --add-opens javafx.base/com.sun.javafx.runtime=ALL-UNNAMED \
+	  --add-opens java.base/java.lang=ALL-UNNAMED \
 	  -jar /usr/share/java/minion/Minion-jfx.jar
 else
 	java -jar /usr/share/java/minion/Minion-jfx.jar
