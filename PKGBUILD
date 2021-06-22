@@ -1,46 +1,41 @@
-# Maintainer: Tajidin Abd <tajidinabd at archlinux dot us>
+# Merged with official ABS qca PKGBUILD by João, 2021/05/29 (all respective contributors apply herein)
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
+# Contributor: Tajidin Abd <tajidinabd at archlinux dot us>
 # Contributor: Antonio Rojas
 
 pkgname=qca-qt5-git
-pkgver=v2.2.1.2.g0be2a2c
+pkgver=2.3.3_r2427.g7ead0544
 pkgrel=1
-pkgdesc="Qt Cryptographic Architecture. Qt5 Build (GIT Version)"
-arch=('i686' 'x86_64')
-license=('LGPL')
-url="http://delta.affinix.com/qca/"
-depends=('qt5-base' )
-makedepends=('cmake' 'doxygen' 'git' 'botan' 'pkcs11-helper' 'libsasl' 'libgcrypt')
-optdepends=('botan: Botan plugin'
-            'pkcs11-helper: PKCS11 plugin'
-            'nss: nss plugin'
-            'libsasl: SASL plugin'
-            'libgcrypt: gcrypt plugin')
-conflicts=('qca-qt5')
-provides=('qca-qt5''qca')
-source=("git://anongit.kde.org/qca.git")
-md5sums=('SKIP')
+pkgdesc='Qt Cryptographic Architecture'
+arch=($CARCH)
+url='https://userbase.kde.org/QCA'
+license=(LGPL)
+depends=(qt5-base nss ca-certificates)
+optdepends=('pkcs11-helper: PKCS-11 plugin' 'botan: botan plugin')
+makedepends=(git cmake doxygen pkcs11-helper botan)
+conflicts=(${pkgname%-git} qca qca-git)
+provides=(${pkgname%-git} qca)
+replaces=(qca-git)
+source=("git+https://github.com/KDE/${pkgname%%-*}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd qca
-  echo "$(git describe --long --tags | tr - .)"
-}
-
-prepare() {
-  mkdir -p build
-  sed 's|_BSD_SOURCE|_DEFAULT_SOURCE|g' -i qca/CMakeLists.txt
+  cd ${pkgname%%-*}
+  _major_ver="$(grep -m1 'set *(QCA_LIB_MAJOR_VERSION' CMakeLists.txt | cut -d '"' -f2)"
+  _minor_ver="$(grep -m1 'set *(QCA_LIB_MINOR_VERSION' CMakeLists.txt | cut -d '"' -f2)"
+  _patch_ver="$(grep -m1 'set *(QCA_LIB_PATCH_VERSION' CMakeLists.txt | cut -d '"' -f2)"
+  echo "${_major_ver}.${_minor_ver}.${_patch_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../qca \
+  cmake -B build -S ${pkgname%%-*} \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_TESTS=OFF \
     -DQCA_INSTALL_IN_QT_PREFIX=ON \
-    -DQCA_SUFFIX=qt5 \
-    -DBUILD_TESTS=OFF
-  make
+    -DQCA_MAN_INSTALL_DIR=/usr/share/man
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 }
