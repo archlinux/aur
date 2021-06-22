@@ -2,7 +2,7 @@
 
 pkgname=gaeguli-git
 pkgver=r352.1dca553
-pkgrel=1
+pkgrel=2
 pkgdesc='[gæguli] is a library for video streaming using SRT'
 arch=('x86_64')
 url='https://github.com/hwangsaeul/gaeguli'
@@ -11,6 +11,9 @@ conflicts=('gaeguli')
 provides=('gaeguli')
 source=('git+https://github.com/hwangsaeul/gaeguli.git')
 sha256sums=('SKIP')
+
+makedepends=(git meson ninja)
+depends=(gst-plugins-bad srt json-glib libnl)
 
 pkgver() {
     cd gaeguli
