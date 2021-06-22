@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=python-pytest-httpserver
-pkgver=0.3.8
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Pytest plugin for testing http clients without contacting the real http server'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'python-werkzeug')
 makedepends=('python-setuptools' 'python-pip' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-coverage' 'python-requests')
 source=("https://github.com/csernazs/pytest-httpserver/archive/${pkgver}/pytest-httpserver-${pkgver}.tar.gz")
-sha256sums=('85994286ed85b16491b6918b1df77c85d31169b83bcdc8d6a52cd6f26cbfa133')
+sha256sums=('1004a73d8be4ec034c0f2e691e49468dc8ffe713c2f58cd1d97a502586e8a25a')
 
 build() {
     cd "pytest-httpserver-${pkgver}"
