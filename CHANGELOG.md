@@ -1,6 +1,25 @@
 <a name="unreleased"></a>
 ## [Unreleased](https://gitlab.com/langurmonkey/gaiasky/tree/master)
-[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/3.1.2...HEAD)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/3.1.3...HEAD)
+
+
+<a name="3.1.3"></a>
+## [3.1.3](https://gitlab.com/langurmonkey/gaiasky/tree/3.1.2) (2021-06-22)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/3.1.2...3.1.3)
+
+### Bug Fixes
+- constellation update thread broken [#371](https://gitlab.com/langurmonkey/gaiasky/issues/371) 
+- remove atmosphere softening hack for close by objects 
+- focus with no star ancestor [#370](https://gitlab.com/langurmonkey/gaiasky/issues/370) 
+
+### Code Refactoring
+- render types reorganized and improved 
+
+### Features
+- adjust spacecraft camera values for better positioning 
+
+### Performance Improvements
+- performance improvements in arbitrary precision vector distance method 
 
 
 <a name="3.1.2"></a>
