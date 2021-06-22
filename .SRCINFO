@@ -1,8 +1,8 @@
 pkgbase = 3dslicer
 	pkgdesc = A multi-platform, free and open source software package for visualization and medical image computing
 	pkgver = 4.11.20210226
-	pkgrel = 1
-	url = https://www.slicer.org/
+	pkgrel = 3
+	url = https://www.slicer.org
 	arch = x86_64
 	license = BSD
 	makedepends = clang
@@ -29,10 +29,11 @@ pkgbase = 3dslicer
 	depends = teem
 	options = !emptydirs
 	options = !strip
-	source = 3dslicer-4.11.20210226::git+https://github.com/Slicer/Slicer.git#tag=v4.11.20210226
+	source = 3dslicer::git+https://github.com/Slicer/Slicer.git#tag=v4.11.20210226
 	source = 3dslicer.svg::https://github.com/Slicer/Slicer/raw/v4.11/Resources/3DSlicerLogo-app-icon.svg
+	source = itk_limits.patch
 	sha512sums = SKIP
 	sha512sums = c23104efcbec3d49b5c26ad5514ed74316423db4aa9e6c7894f02f7ddbe509b577de358dfdd2f7c492963f312b7c146f03d5e41a89ab1298811894dc18746225
+	sha512sums = e0c19c5fc2580366b91b16f20e6b8914dbb003a5ce2741fd5b2d2f5520724266c037b1edac33dc00a344a96c627743c5670f861065e28d81a4b207ab8082cc2e
 
 pkgname = 3dslicer
-
