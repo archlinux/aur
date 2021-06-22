@@ -1,0 +1,26 @@
+pkgbase = boundary
+	pkgdesc = Enables identity-based access management for dynamic infrastructure
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://www.boundaryproject.io/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = go
+	makedepends = nodejs-lts-fermium
+	makedepends = yarn
+	depends = glibc
+	optdepends = postgresql: for local postgresql instance
+	noextract = boundary-ui-40ee317f47100e0be459f9c6aee12e966efd7961.tar.gz
+	source = boundary-0.3.0.tar.gz::https://github.com/hashicorp/boundary/archive/v0.3.0.tar.gz
+	source = boundary-ui-40ee317f47100e0be459f9c6aee12e966efd7961.tar.gz::https://github.com/hashicorp/boundary-ui/archive/40ee317f47100e0be459f9c6aee12e966efd7961.tar.gz
+	source = systemd.service
+	source = tmpfiles.conf
+	source = sysusers.conf
+	b2sums = 7e0e1d87cfea9a228b1188b9e85eecd969c5a0e481111defcd0853b1027f26941055a200d806d63c07667feae316f8899b1120c3b522e06758f396bdfae976d4
+	b2sums = e0e24dc3dde4293d8d129d41c7bdf2a9c80995fdd05d1b4c1093f4275145e60921fd0ef8b330eeca89fb2939758381ceeecd009d268e32742479c8c13e66a8dd
+	b2sums = c35684fbcd28d6aa23abf9e3765321a9434f3826c5d84f5dc95f0695df78007b2f1cb535eeab3a8157f27f7cb6c2444bf40efc468b6a8017de07f87a095e50a1
+	b2sums = 155721b62bf6d820c59b711f547cfdb5c42c7ad713e1e0bb3d973af511b4d5fd57a913c59a39045af7213b19e6fb76e5836190a2c630e2f93bba975657cd719d
+	b2sums = 6c1cf64c430d711b544d9655af746b6525d9ee9c441f7842ee2f115b52886e37c684f97cf30b753971b3ac18a731b4249c7ed8e5311cc759bd69d2a62e089aff
+
+pkgname = boundary

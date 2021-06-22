@@ -1,0 +1,14 @@
+[Unit]
+Description=boundary - @@TYPE@@
+Documentation=https://www.boundaryproject.io/docs
+
+[Service]
+ExecStart=/usr/bin/boundary server -config /etc/boundary/@@TYPE@@.hcl
+User=boundary
+Group=boundary
+LimitMEMLOCK=infinity
+Capabilities=CAP_IPC_LOCK+ep
+CapabilityBoundingSet=CAP_SYSLOG CAP_IPC_LOCK
+
+[Install]
+WantedBy=multi-user.target
