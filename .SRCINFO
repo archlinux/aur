@@ -1,6 +1,6 @@
 pkgbase = vocdoni-node
 	pkgdesc = Vocdoni blockchain voting node
-	pkgver = 0.6.0.r516.gb447fa3
+	pkgver = 1.0.3.r0.gb447fa39
 	pkgrel = 1
 	url = https://github.com/vocdoni/vocdoni-node
 	arch = x86_64
