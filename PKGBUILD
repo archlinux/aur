@@ -10,9 +10,9 @@
 
 pkgbase=calibre-git
 pkgname=calibre-git
-pkgver=5.14.0.r108.g6e32092098
+pkgver=5.21.0.r72.ga0e2b1c5b0
 pkgrel=1
-_dictionaries_commit="d6160c5e006089c711f3fec6eb4e2ade60a4150c"
+_dictionaries_commit="8cd38fb5138f2e456506aaa889ec2b7042a7439e"
 pkgdesc="Ebook management application"
 arch=('i686' 'x86_64')
 url="https://calibre-ebook.com/"
@@ -21,7 +21,7 @@ _py_deps=('apsw' 'beautifulsoup4' 'cchardet' 'cssselect' 'css-parser' 'dateutil'
           'feedparser' 'html2text' 'html5-parser' 'lxml' 'markdown' 'mechanize' 'msgpack'
           'netifaces' 'unrardll' 'pillow' 'psutil' 'py7zr' 'pychm' 'pygments' 'pyqt5'
           'pyqtwebengine' 'regex' 'zeroconf')
-depends=('hunspell' 'hyphen' 'icu' 'jxrlib' 'libmtp' 'libusb'
+depends=('hunspell' 'hyphen' 'icu' 'jxrlib' 'libmtp' 'libstemmer' 'libusb'
          'libwmf' 'mathjax' 'mtdev' 'optipng' 'podofo'
          "${_py_deps[@]/#/python-}" 'qt5-imageformats' 'qt5-svg' 'ttf-liberation' 'udisks2')
 makedepends=('git' 'qt5-x11extras' 'sip' 'pyqt-builder' 'xdg-utils' 'rapydscript-ng' 'python-sphinx')
@@ -36,8 +36,8 @@ source=("git+https://github.com/kovidgoyal/${pkgbase%-git}.git?signed"
         "user-agent-data.json")
 sha256sums=('SKIP'
             'SKIP'
-            '7b48eda270f1ba3cbc20462f56c04d964bb36ecaf6237740e06c57f8f2cc0fc5'
-            '00ffc3a6bdcd49b77bc23a030da68ad9eeae69604c72cd26036083123e3d4039')
+            '50a90de207ce177cb415e3694d16906cfcb7bdb0f8602b8a23bca25f8276d46a'
+            '26e00a8de411f3a134735d508f4bb7b85f9c1abe5b9d031d3d50d59450e74bd6')
 validpgpkeys=('3CE1780F78DD88DF45194FD706BC317B515ACE7C') # Kovid Goyal (New longer key) <kovid@kovidgoyal.net>
 
 pkgver() {
