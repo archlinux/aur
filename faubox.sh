@@ -1,9 +1,9 @@
 #!/bin/sh
 
-# use java 15
+# use java 11
 # 8 suffers from an exception
-# 11 doesn't show the tray icon
-export PATH="/usr/lib/jvm/java-15-openjdk/jre/bin/:$PATH"
+# 16 suffers from an error
+export PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH"
 
 # set the home directory, class path and other java options
 CP=/usr/share/java/faubox/FAUbox.jar
