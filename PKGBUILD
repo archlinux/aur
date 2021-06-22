@@ -2,13 +2,13 @@
 
 pkgname=python2-lxml
 pkgver=4.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python2 binding for the libxml2 and libxslt libraries"
 arch=('any')
 url="https://lxml.de/"
 license=('BSD' 'custom')
 depends=('python2' 'libxslt')
-makedepends=('python2-setuptools')
+makedepends=('python2-setuptools' 'cython2')
 source=("https://github.com/lxml/lxml/archive/lxml-$pkgver.tar.gz")
 sha512sums=('50e42d6269dc45b4c0ab3285c49307f8bee87fcc4b9e0f531e1ee37bcf83c5938b7e361f906a3158fac8df89a79b932dd64a8839455e45f45f3a5f0ba73ff6a5')
 _dir="lxml-lxml-${pkgver}"
