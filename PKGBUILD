@@ -6,9 +6,9 @@
 
 pkgname=jdk8-openj9-bin
 pkgrel=1
-_pkgver_minor="282"
-_pkgver_build="08"
-_j9_version="0.24.0"
+_pkgver_minor="292"
+_pkgver_build="10"
+_j9_version="0.26.0"
 pkgver=8.u${_pkgver_minor}.b${_pkgver_build}
 pkgdesc="Eclipse (former IBM) OpenJ9 with openjdk8"
 arch=('x86_64')
@@ -27,7 +27,7 @@ makedepends=('coreutils' 'bash')
 source=("https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u${_pkgver_minor}-b${_pkgver_build}_openj9-${_j9_version}/OpenJDK8U-jdk_x64_Linux_openj9_8u${_pkgver_minor}b${_pkgver_build}_openj9-${_j9_version}.tar.gz")
 noextract=("OpenJDK8U-jdk_x64_Linux_openj9_8u${_pkgver_minor}b${_pkgver_build}_openj9-${_j9_version}.tar.gz")
 
-sha256sums=('ef10c776dccdff02da6222002a3c023c1cc47d50dd1f6f81314da3d1fe28d13e')
+sha256sums=('06d6c9421778575cf59d50f69b7ac6a7bb237485b3a3c2f89cfb61a056c7b2de')
 
 package() {
     cd "$srcdir"
