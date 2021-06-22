@@ -1,7 +1,7 @@
 pkgbase = diagnostic-languageserver
 	pkgdesc = General purpose Language Server that integrates with linters to support diagnostic features
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.npmjs.com/package/diagnostic-languageserver
 	arch = any
 	license = MIT
@@ -11,4 +11,3 @@ pkgbase = diagnostic-languageserver
 	sha256sums = da1d428c831d59648e447d24838bfea76f3eda8cc867aa87b569aafe4ef47efe
 
 pkgname = diagnostic-languageserver
-
