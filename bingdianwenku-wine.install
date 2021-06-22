@@ -1,0 +1,16 @@
+# bingdianwenku-wine.install
+info() {
+    echo -e "Wine 冰点文库下载器是一款免费的文库下载器软件，用户可以通过使用冰点文库下载器下载各种各样的文库文档。（原官网迫于百度压力已关闭，使用的是第三方的地址）"
+}
+post_install() {
+    info
+}
+post_upgrade() {
+    echo "deleting the bingdianwenku bottle..."
+    find /home -maxdepth 2 -name ".bingdianwenku" -exec rm -rf {} \;
+    info
+}
+pre_remove() {
+    echo "deleting the bingdianwenku bottle..."
+    find /home -maxdepth 2 -name ".bingdianwenku" -exec rm -rf {} \;
+}

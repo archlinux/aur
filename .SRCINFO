@@ -1,0 +1,22 @@
+pkgbase = bingdianwenku-wine
+	pkgdesc = Wine 冰点文库下载器是一款免费的文库下载器软件，用户可以通过使用冰点文库下载器下载各种各样的文库文档。（原官网迫于百度压力已关闭，使用的是第三方的地址）
+	pkgver = v3.2.16.0125
+	pkgrel = 1
+	url = http://www.bingdian001.com/
+	install = bingdianwenku-wine.install
+	arch = any
+	license = unknow
+	depends = wine
+	depends = wqy-zenhei
+	optdepends = wine-mono-gecko-version-fix: Fix the version numbers of wine-mono and wine-gecko files to solve the dialog box that pops up when starting wine.
+	provides = bingdianwenku-wine
+	conflicts = bingdianwenku-wine
+	conflicts = bingdianwenku
+	replaces = bingdianwenku-wine
+	options = !strip
+	source = bingdianwenku.zip::https://dl10.95862788.com/soft/bingdianwenku.zip
+	source = bingdianwenku-wine.install
+	sha256sums = ba13dd597f4701c240ca1793257d2a9b2ff24c118b65619cb4b8fd7078c40584
+	sha256sums = 792ad87a7c283299b007d93ec06f596c81a6aadae839c87e29fa94eff38308c8
+
+pkgname = bingdianwenku-wine
