@@ -1,7 +1,7 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=vsce
 pkgver=1.93.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Visual Studio Code extension manager"
 arch=('any')
 url="https://github.com/Microsoft/vscode-vsce"
@@ -24,12 +24,10 @@ package() {
 	# See https://github.com/npm/cli/issues/1103 for details.
 	find "${pkgdir}/usr" -type d -exec chmod 755 {} +
 
+	# Fix ownership
 	# npm gives ownership of ALL FILES to build user
 	# https://bugs.archlinux.org/task/63396
 	chown -R root:root "${pkgdir}"
-
-	# Fix ownership
-	chown -R root:root "${pkgdir}"/*
 
 	install -D -m644 \
 		"${srcdir}/package/LICENSE" \
