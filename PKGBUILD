@@ -3,13 +3,14 @@
 pkgname=aur-auto-vote-git
 _pkgname=${pkgname%-git}
 _reponame=bin
-pkgver=144.3ea89cc
+pkgver=146.bb877b8
 pkgrel=1
 pkgdesc="Automates voting on installed and uninstalled AUR packages"
 arch=('any')
 url="https://github.com/cryzed/bin"
 license=('MIT')
 depends=('python' 'python-beautifulsoup4' 'python-requests' 'python-html5lib')
+makedepends=('git')
 source=("git+https://github.com/cryzed/bin.git"
         "aur-auto-vote.service.skel"
         "aur-auto-vote.timer")

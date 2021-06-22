@@ -1,11 +1,12 @@
 pkgbase = aur-auto-vote-git
 	pkgdesc = Automates voting on installed and uninstalled AUR packages
-	pkgver = 144.3ea89cc
+	pkgver = 146.bb877b8
 	pkgrel = 1
 	url = https://github.com/cryzed/bin
 	install = aur-auto-vote-git.install
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = python
 	depends = python-beautifulsoup4
 	depends = python-requests
@@ -18,4 +19,3 @@ pkgbase = aur-auto-vote-git
 	md5sums = 0b990cd54f3524b4acbd59ba25adac7f
 
 pkgname = aur-auto-vote-git
-
