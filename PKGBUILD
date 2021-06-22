@@ -3,14 +3,14 @@
 _reponame=Mamba
 _pkgname="${_reponame,,}"
 pkgname="${_pkgname}-git"
-pkgver=1.6.r0.geb41577
+pkgver=2.2.r3.g1041f0a
 pkgrel=1
 pkgdesc="A virtual MIDI keyboard and file player/recorder for ALSA/JACK (git version)"
 arch=('i686' 'x86_64')
 url="https://github.com/brummer10/${_reponame}"
 license=('0BSD')
 depends=('cairo')
-makedepends=('alsa-lib' 'fluidsynth' 'git' 'jack' 'liblo' 'libsigc++' 'libsmf')
+makedepends=('alsa-lib' 'fluidsynth' 'git' 'jack' 'liblo' 'libsigc++' 'libsmf' 'xxd')
 optdepends=('new-session-manager: for NSM support')
 groups=('pro-audio')
 provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}" "${_pkgname//-/.}")
