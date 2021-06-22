@@ -1,9 +1,8 @@
 pkgbase = vocal-git
-	pkgdesc = Podcast Client for the Modern Desktop
-	pkgver = 2.1.5.r239.cab7185
+	pkgdesc = Powerful, beautiful and simple podcast client for Pantheon
+	pkgver = 2.4.2.r415.2cec1f1
 	pkgrel = 1
-	url = http://www.vocalproject.net
-	arch = i686
+	url = https://www.vocalproject.net
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
@@ -11,19 +10,15 @@ pkgbase = vocal-git
 	makedepends = vala
 	depends = clutter-gst
 	depends = clutter-gtk
-	depends = desktop-file-utils
 	depends = granite
-	depends = gstreamer
-	depends = gtk-update-icon-cache
-	depends = gtk3
+	depends = gst-libav
+	depends = gst-plugins-good
+	depends = gvfs
 	depends = libnotify
-	depends = libxml2
-	depends = sqlite
 	depends = webkit2gtk
 	provides = vocal
 	conflicts = vocal
-	source = vocal::git://github.com/needle-and-thread/vocal.git
+	source = vocal-git::git+https://github.com/needle-and-thread/vocal.git
 	md5sums = SKIP
 
 pkgname = vocal-git
-

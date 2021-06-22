@@ -3,39 +3,44 @@
 # Contributor: jus <jus@bitgrid.net>
 # Contributor: jfperini <@jfperini>
 
-_pkgname=vocal
-pkgname=$_pkgname-git
-pkgver=2.1.5.r239.cab7185
+pkgname=vocal-git
+pkgver=2.4.2.r415.2cec1f1
 pkgrel=1
-pkgdesc="Podcast Client for the Modern Desktop"
-arch=('i686' 'x86_64')
-url="http://www.vocalproject.net"
+pkgdesc="Powerful, beautiful and simple podcast client for Pantheon"
+arch=('x86_64')
+url="https://www.vocalproject.net"
 license=('GPL3')
-depends=('clutter-gst' 'clutter-gtk' 'desktop-file-utils' 'granite' 'gstreamer' 'gtk-update-icon-cache' 'gtk3' 'libnotify' 'libxml2' 'sqlite' 'webkit2gtk')
+depends=('clutter-gst' 'clutter-gtk' 'granite' 'gst-libav' 'gst-plugins-good' 'gvfs' 'libnotify' 'webkit2gtk')
 makedepends=('cmake' 'git' 'vala')
-provides=($_pkgname)
-conflicts=($_pkgname)
-source=($_pkgname::git://github.com/needle-and-thread/vocal.git)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=($pkgname::git+https://github.com/needle-and-thread/vocal.git)
 md5sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+  cd $pkgname
   #git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
   printf "%s.r%s.%s" "$(git tag --sort=-version:refname | head -1)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-  cd $_pkgname
+prepare() {
+  cd $pkgname
+
   rm -rf build
   mkdir build
 
-  cd build
+  # Patch: fix build with granite 6 by disabling the About dialog (https://github.com/needle-and-thread/vocal/issues/483)
+  sed -i 's/controller.app.show_about (this);//' src/MainWindow.vala
+}
+
+build() {
+  cd $pkgname/build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr   # -DGSETTINGS_COMPILE=0 -DGSETTINGS_LOCALINSTALL=1
   make
 }
 
 package() {
-  cd $_pkgname/build
+  cd $pkgname/build
   make DESTDIR="$pkgdir/" install
 }
 
