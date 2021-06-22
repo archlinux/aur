@@ -1,6 +1,6 @@
 pkgbase = mips64-ultra-elf-newlib
 	pkgdesc = A C library intended for use on embedded systems (mips64-ultra-elf)
-	pkgver = 4.1.0_r141.479e768
+	pkgver = 4.1.0_r144.128cbf0
 	pkgrel = 1
 	url = http://sourceware.org/newlib/
 	arch = x86_64
@@ -15,4 +15,3 @@ pkgbase = mips64-ultra-elf-newlib
 	sha256sums = SKIP
 
 pkgname = mips64-ultra-elf-newlib
-
