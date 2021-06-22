@@ -1,6 +1,6 @@
 pkgbase = python-adafruit-pureio
 	pkgdesc = Pure python (i.e. no native extensions) access to Linux IO including I2C and SPI. Drop in replacement for smbus and spidev modules
-	pkgver = 1.1.8
+	pkgver = 1.1.9
 	pkgrel = 1
 	url = https://github.com/adafruit/Adafruit_Python_PureIO
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = python-adafruit-pureio
 	makedepends = python-pip
 	depends = python
 	depends = python-raspberry-gpio
-	source = https://pypi.io/packages/source/a/adafruit-pureio/Adafruit_PureIO-1.1.8.tar.gz
-	sha256sums = c6702589aa4bf6dc785e5f4e4ed7e68bef1d93d180633abe548fe3f39d36cad5
+	source = https://pypi.io/packages/source/a/adafruit-pureio/Adafruit_PureIO-1.1.9.tar.gz
+	sha256sums = 2caf22fb07c7f771d83267f331a76cde314723f884a9570ea6f768730c87a879
 
 pkgname = python-adafruit-pureio
-
