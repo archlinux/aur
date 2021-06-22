@@ -1,0 +1,13 @@
+pkgbase = verilog-format-git
+	pkgdesc = Console application for apply format to verilog file.
+	pkgver = c169dd4
+	pkgrel = 1
+	url = https://github.com/ericsonj/verilog-format
+	arch = x86_64
+	license = unkown
+	makedepends = unzip
+	makedepends = git
+	source = verilog-format-git::git+https://github.com/ericsonj/verilog-format
+	sha512sums = SKIP
+
+pkgname = verilog-format-git
