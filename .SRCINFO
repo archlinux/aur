@@ -1,6 +1,6 @@
 pkgbase = python-tvdb_api-git
 	pkgdesc = Easy to use interface to thetvdb.com
-	pkgver = 1.9.r25.g8f34a0d
+	pkgver = 3.1.r2.gd2705e6
 	pkgrel = 1
 	url = https://github.com/dbr/tvdb_api
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = python-tvdb_api-git
 	depends = python-requests-cache
 	provides = python-tvdb_api
 	conflicts = python-tvdb_api
-	source = python-tvdb_api::git://github.com/dbr/tvdb_api.git
+	source = python-tvdb_api-git::git+https://github.com/dbr/tvdb_api.git
 	md5sums = SKIP
 
 pkgname = python-tvdb_api-git
-

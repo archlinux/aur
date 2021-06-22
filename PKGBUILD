@@ -1,9 +1,8 @@
 # Maintainer: willemw <willemw12@gmail.com>
 # Contributor: Clément Démoulins <clement@archivel.fr>
 
-_pkgname=python-tvdb_api
-pkgname=$_pkgname-git
-pkgver=1.9.r25.g8f34a0d
+pkgname=python-tvdb_api-git
+pkgver=3.1.r2.gd2705e6
 pkgrel=1
 pkgdesc="Easy to use interface to thetvdb.com"
 arch=('any')
@@ -11,23 +10,23 @@ url="https://github.com/dbr/tvdb_api"
 license=('GPL')
 depends=('python-requests-cache')
 makedepends=('git' 'python-setuptools')
-provides=($_pkgname)
-conflicts=($_pkgname)
-source=($_pkgname::git://github.com/dbr/tvdb_api.git)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=($pkgname::git+$url.git)
 md5sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+  cd $pkgname
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $_pkgname
+  cd $pkgname
   python setup.py build
 }
 
 package() {
-  cd $_pkgname
+  cd $pkgname
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
