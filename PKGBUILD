@@ -3,7 +3,7 @@
 pkgname=python-protonvpn-nm-lib
 _gitpkgname=protonvpn-nm-lib
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ProtonVPN NetworkManager library."
 arch=("any")
 url="https://github.com/ProtonVPN"
