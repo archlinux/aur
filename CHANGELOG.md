@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.3.0-1] - 2021-06-21
+
+### Added
+
+- Support for Live Slides Update by [@sibprogrammer](https://github.com/sibprogrammer)
+
+### Changed
+
+- When there is a code block on the current slide, you can press
+  `ctrl+e` to execute it and the output will display as virtual
+  text on the slide at the end. Supported languages are bash, ruby,
+  python, and go.
+
 ## [0.2.0-1] - 2021-06-13
 
 ### Added
