@@ -4,12 +4,12 @@
 _project_name=rockarrolla
 pkgname=${_project_name}-git
 pkgver=0.0.1.r362.g8eea847
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple jukebox emulator'
 arch=('x86_64')
 license=('GPL3')
 url='https://gitlab.com/softwareperonista/rockarrolla'
-depends=('taglib' 'gstreamer' 'gtk4')
+depends=('taglib' 'gstreamer' 'gtk4' 'doctrina' 'gst-plugins-good')
 makedepends=('meson' 'vala')
 conflicts=('rockarrolla')
 source=('git+https://gitlab.com/softwareperonista/rockarrolla.git')
