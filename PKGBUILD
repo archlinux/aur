@@ -1,39 +1,25 @@
 # Maintainer: Pat Brisbin <pbrisbin@gmail.com>
-_gitname=vbump
-_gitroot='https://github.com/pbrisbin/vbump'
 
+_gitname=vbump
 pkgname="$_gitname-git"
-pkgver=0.0.0
+pkgver=r10.8dc72bc
 pkgrel=1
 pkgdesc='Automatically bump package versions'
 arch=('any')
-url=$_gitroot
+url=https://github.com/pbrisbin/vbump
 license=('MIT')
+depends=('sh')
 makedepends=('git')
-source=("git://github.com/pbrisbin/$_gitname")
+source=("git+https://github.com/pbrisbin/$_gitname")
 md5sums=('SKIP')
 
-build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
+pkgver() {
+  cd "$_gitname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
-  make DESTDIR="$pkgdir/" install
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_gitname/LICENSE"
+  cd "$_gitname"
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
