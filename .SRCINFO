@@ -1,0 +1,18 @@
+pkgbase = supercollider-autotune-git
+	pkgdesc = Description
+	pkgver = r6.cc9fedf
+	pkgrel = 1
+	url = https://github.com/bolkaaa/autotune
+	arch = any
+	groups = pro-audio
+	groups = supercollider-plugins
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = supercollider-headers-git
+	depends = supercollider
+	source = supercollider-autotune-git-r6.cc9fedf::git+https://github.com/bolkaaa/autotune.git
+	md5sums = SKIP
+
+pkgname = supercollider-autotune-git
+
