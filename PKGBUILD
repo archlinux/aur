@@ -32,6 +32,6 @@ package() {
 	cd "$(dirname $(find -name 'metadata.json' -print -quit))"
 	_extname=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
 	_destdir="${pkgdir}/usr/share/gnome-shell/extensions/${_extname}"
-	install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
-	bsdtar -xvf $_extname.zip -C "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
+	install -d "$pkgdir/usr/share/gnome-shell/extensions/$_extname"
+	bsdtar -xvf $_extname.zip -C "$pkgdir/usr/share/gnome-shell/extensions/$_extname"
 }
