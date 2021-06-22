@@ -3,7 +3,7 @@
 
 pkgname=pspg
 pkgver=5.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Tabular data pager designed to be used with psql'
 arch=('x86_64')
 url="https://github.com/okbob/pspg"
@@ -25,6 +25,8 @@ package() {
   cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}/" install
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 bash-completion.sh "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
 }
 
 # vim:set ts=2 sw=2 et:
