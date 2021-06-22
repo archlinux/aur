@@ -4,7 +4,7 @@ set -eo pipefail
 
 # Remove 'v' character from version string and validate input
 VERSION=${1/v/}
-validVersion='^[0-9]\.[0-9]\.[0-9]$'
+validVersion='^[0-9]+\.[0-9]+\.[0-9]+$'
 if [[ ! $VERSION =~ $validVersion ]]; then
     echo "Invalid version argument: '$1'" >&2
     exit 1
@@ -36,8 +36,9 @@ sed -i "s/sha256sums_i686=.*\$/sha256sums_i686=('${SUM386}')/g" PKGBUILD
 # Change package version
 sed -i "s/pkgver = .*\$/pkgver = ${VERSION}/g" .SRCINFO
 
-# Replace the version string in source URL's
-sed -i "s/\/v[0-9]\.[0-9]\.[0-9]\//\/v${VERSION}\//g" .SRCINFO
+# Replace the version string in source fields
+sed -i "s/\/v[0-9]\+\.[0-9]\+\.[0-9]\+\//\/v${VERSION}\//g" .SRCINFO
+sed -i "s/driftctl-[0-9]\+\.[0-9]\+\.[0-9]\+/driftctl-${VERSION}/g" .SRCINFO
 
 # Replace binaries checksums
 sed -i "s/sha256sums_x86_64 = .*\$/sha256sums_x86_64 = ${SUMAMD64}/g" .SRCINFO
