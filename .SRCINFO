@@ -7,7 +7,6 @@ pkgbase = waypoint
 	license = MPL2
 	makedepends = go
 	makedepends = go-bindata
-	depends = glibc
 	source = waypoint-0.4.0.tar.gz::https://github.com/hashicorp/waypoint/archive/v0.4.0.tar.gz
 	b2sums = c17499223e5f8ed4bb7407d33ff8c798cb50a8a5db00730faa3cb4256953b2e6f128c69f5aae005dc49ec33e8d52895b3b9941c41ca26721a5745bb1f1e451a5
 
