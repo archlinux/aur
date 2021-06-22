@@ -1,6 +1,6 @@
 pkgbase = parallel-launcher
 	pkgdesc = A simple easy-to-use launcher for the ParallelN64 and Mupen64Plus-Next emulators
-	pkgver = 4.2.0
+	pkgver = 4.3.0
 	pkgrel = 0
 	url = https://parallel-launcher.ca
 	install = parallel-launcher.install
@@ -21,8 +21,8 @@ pkgbase = parallel-launcher
 	depends = polkit
 	depends = sqlite
 	depends = libgcrypt
-	source = parallel-launcher-4.2.0.tar.gz
-	md5sums = 8ed79181241ee8b9bbad20109a56877c
+	source = parallel-launcher-4.3.0.tar.gz
+	md5sums = fe6f1f81c05e977350ca97c9b8a3f483
 
 pkgname = parallel-launcher
 
