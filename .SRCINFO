@@ -1,13 +1,13 @@
 pkgbase = revolt-cli-bin
 	pkgdesc = A CLI client for Revolt
-	pkgver = v0.1.1
+	pkgver = v0.2.0
 	pkgrel = 1
 	url = https://github.com/Jan0660/Revolt.Cli
 	arch = x86_64
 	license = GPL3
 	depends = dotnet-runtime
 	options = !strip
-	source = https://github.com/Jan0660/Revolt.Cli/releases/download/v0.1.1/linux-x64.revolt-cli
-	sha256sums = 67f9a11b82089be6f967b36f69e285a802d8978bd30189cd4250bf6087f9dcf3
+	source = https://github.com/Jan0660/Revolt.Cli/releases/download/v0.2.0/linux-x64.revolt-cli
+	sha256sums = deb963bfe206dba480890566235e8af7eb2eb5a44953c1eae7d61ac24a0d7ae8
 
 pkgname = revolt-cli-bin
