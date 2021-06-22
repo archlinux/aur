@@ -1,0 +1,13 @@
+pkgbase = gaeguli-git
+	pkgdesc = [gæguli] is a library for video streaming using SRT
+	pkgver = r352.1dca553
+	pkgrel = 1
+	url = https://github.com/hwangsaeul/gaeguli
+	arch = x86_64
+	license = APACHE-2.0
+	provides = gaeguli
+	conflicts = gaeguli
+	source = git+https://github.com/hwangsaeul/gaeguli.git
+	sha256sums = SKIP
+
+pkgname = gaeguli-git
