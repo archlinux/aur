@@ -11,7 +11,7 @@ license=("GPL3")
 depends=("make" "openmpi" "sqlite")
 makedepends=("boost" "sparsehash")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bcgsc/abyss/archive/$pkgver.tar.gz")
-sha256sums=('b1941d6d975b38d34f41c38b8f4f599fc69d1f37ef3afb71f50318062fb548ea')
+sha512sums=('c7fb8b0a1a1346d138a0a64d2a2886b7c081ed628011b614e8ff14d1cbf4a992a8acb1cc668640c0c6a9c22802e4b0cb839f136b8e1f12fe76dae3248cec1777')
 
 build() {
   cd "${pkgname}-${pkgver}"
