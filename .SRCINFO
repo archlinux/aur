@@ -1,15 +1,13 @@
 pkgbase = adlmflexnetserver-ipv6
-	pkgdesc = Autodesk Network Licensing Software
-	pkgver = 17.0.50
+	pkgdesc = Autodesk Network Licensing Server (Deprcate on August 7, 2021)
+	pkgver = 23.0.21
 	pkgrel = 1
 	url = https://www.autodesk.com/
 	arch = x86_64
 	license = custom
 	depends = gcc-libs
-	depends = glibc
 	options = !strip
-	source = manual://adlmflexnetserverIPV6-17.0.50-0.x86_64.rpm
-	sha256sums = bb46691459247701b9aed3daafe731d141b915da29647e5d201d9c717f62616d
+	source = manual://adlmflexnetserverIPV6-23.0.21-0.x86_64.rpm
+	sha256sums = cbec91d5be3751c79043164dbf02d86da85acdd72cccb1861dc0c976288d3bf2
 
 pkgname = adlmflexnetserver-ipv6
-

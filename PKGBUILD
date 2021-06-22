@@ -1,21 +1,20 @@
 # Maintainer: William Tang <galaxyking0419@gmail.com>
 
 pkgname=adlmflexnetserver-ipv6
-pkgver=17.0.50
+pkgver=23.0.21
 pkgrel=1
-pkgdesc='Autodesk Network Licensing Software'
+pkgdesc='Autodesk Network Licensing Server (Deprcate on August 7, 2021)'
 arch=('x86_64')
 url="https://www.autodesk.com/"
 license=('custom')
-depends=('gcc-libs' 'glibc')
+depends=('gcc-libs')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
-source=('manual://adlmflexnetserverIPV6-17.0.50-0.x86_64.rpm')
-sha256sums=('bb46691459247701b9aed3daafe731d141b915da29647e5d201d9c717f62616d')
+source=('manual://adlmflexnetserverIPV6-23.0.21-0.x86_64.rpm')
+sha256sums=('cbec91d5be3751c79043164dbf02d86da85acdd72cccb1861dc0c976288d3bf2')
 
 options=(!strip)
 
 package() {
-	cp -a $srcdir/opt $pkgdir/
+	mv opt $pkgdir/
 }
-
