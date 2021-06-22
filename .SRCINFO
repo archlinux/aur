@@ -1,13 +1,13 @@
 pkgbase = wiki-monkey
 	pkgdesc = Wiki Monkey - MediaWiki (ArchWiki-optimized) bot and editor-assistant user script (server-enabled version).
 	pkgver = 5.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kynikos/wiki-monkey/wiki
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python-configfile
-	depends = python-xdg
+	depends = python-pyxdg
 	depends = python-flask-restinpeace
 	depends = python-flask-cors
 	depends = python-flask-migrate

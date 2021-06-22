@@ -3,14 +3,14 @@
 pkgname='wiki-monkey'
 # Don't use "-" in pkgver
 pkgver='5.4.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Wiki Monkey - MediaWiki (ArchWiki-optimized) bot and editor-assistant user script (server-enabled version)."
 arch=('any')
 url="https://github.com/kynikos/wiki-monkey/wiki"
 license=('GPL3')
 # Keep in sync with setup.py's install_requires option and requirements.txt
 depends=('python-configfile'
-         'python-xdg'
+         'python-pyxdg'
          'python-flask-restinpeace' # implies 'python-flask-marshmallow', 'python-apispec' and 'python-apispec-webframeworks'
          'python-flask-cors'
          'python-flask-migrate' # implies 'python-flask-sqlalchemy'
