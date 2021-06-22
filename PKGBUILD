@@ -2,13 +2,13 @@
 # Project: nwg-shell for sway, https://github.com/nwg-piotr/nwg-shell
 pkgname=('nwg-drawer')
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Application drawer for sway and other wlroots-based compositors"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/nwg-drawer"
 license=('MIT')
-provides=('nwg-menu')
-conflicts=('nwg-menu-git' 'nwg-menu-bin')
+provides=('nwg-drawer')
+conflicts=('nwg-drawer-git' 'nwg-drawer-bin')
 makedepends=('go')
 depends=('gtk3' 'gtk-layer-shell')
 optdepends=('alacritty: to open .desktop files with Terminal=true'
