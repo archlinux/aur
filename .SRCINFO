@@ -6,11 +6,16 @@ pkgbase = abyss
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = automake
+	makedepends = autoconf
 	makedepends = boost
 	makedepends = sparsehash
 	depends = make
 	depends = openmpi
 	depends = sqlite
+	optdepends = pigz: for parallel gzip
+	optdepends = samtools: to read BAM files
+	optdepends = zsh: to report time and memory usage
 	source = abyss-2.3.1.tar.gz::https://github.com/bcgsc/abyss/archive/2.3.1.tar.gz
 	sha512sums = c7fb8b0a1a1346d138a0a64d2a2886b7c081ed628011b614e8ff14d1cbf4a992a8acb1cc668640c0c6a9c22802e4b0cb839f136b8e1f12fe76dae3248cec1777
 
