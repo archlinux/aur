@@ -1,0 +1,20 @@
+pkgbase = dymo-cups-drivers-git
+	pkgdesc = Unofficial copy of Dymo's CUPS driver, which seems to have disappeared.
+	pkgver = r27.3986268
+	pkgrel = 1
+	url = https://github.com/matthiasbock/dymo-cups-drivers
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = cups
+	depends = automake
+	depends = autoconf
+	depends = gcc
+	provides = dymo-cups-drivers
+	conflicts = dymo-cups-drivers
+	conflicts = dymo-cups-drivers-git
+	source = dymo-cups-drivers::git+https://github.com/matthiasbock/dymo-cups-drivers
+	md5sums = SKIP
+
+pkgname = dymo-cups-drivers-git
+
