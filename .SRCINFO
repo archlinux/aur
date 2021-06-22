@@ -1,7 +1,7 @@
 pkgbase = libadalang
 	pkgdesc = A high performance semantic engine for the Ada programming language.
 	pkgver = 21.0.0
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/AdaCore/libadalang
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = libadalang
 	makedepends = python-funcy
 	makedepends = python-e3-core
 	makedepends = python-docutils
+	makedepends = python-sphinx
 	depends = gnatcoll-iconv
 	depends = gnatcoll-gmp
 	source = libadalang-21.0.0.tar.gz::https://github.com/AdaCore/libadalang/archive/v21.0.0.tar.gz

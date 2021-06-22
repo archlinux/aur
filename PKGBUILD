@@ -4,7 +4,7 @@
 pkgname=libadalang
 epoch=1
 pkgver=21.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A high performance semantic engine for the Ada programming language."
 
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="https://github.com/AdaCore/libadalang"
 license=('GPL3' 'custom')
 
 depends=("gnatcoll-iconv" "gnatcoll-gmp")
-makedepends=('gprbuild' 'python-setuptools' 'python-mako' 'python-funcy' 'python-e3-core' 'python-docutils')
+makedepends=('gprbuild' 'python-setuptools' 'python-mako' 'python-funcy' 'python-e3-core' 'python-docutils' 'python-sphinx')
 
 source=("libadalang-$pkgver.tar.gz::https://github.com/AdaCore/libadalang/archive/v$pkgver.tar.gz"
         "langkit-$pkgver.tar.gz::https://github.com/AdaCore/langkit/archive/v$pkgver.tar.gz")
