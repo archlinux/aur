@@ -1,7 +1,7 @@
 pkgbase = terraform-provider-lxd
 	pkgdesc = Terraform provider to provision infrastructure with LXD
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/terraform-lxd/terraform-provider-lxd
 	arch = x86_64
 	license = MPL2

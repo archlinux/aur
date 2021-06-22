@@ -2,7 +2,7 @@
 
 pkgname=terraform-provider-lxd
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Terraform provider to provision infrastructure with LXD"
 arch=('x86_64')
 url="https://github.com/terraform-lxd/terraform-provider-lxd"
@@ -52,6 +52,6 @@ package() {
     -t "$pkgdir/usr/share/terraform/plugins/registry.terraform.io/terraform-lxd/lxd/$pkgver/linux_amd64"
 
   # documentation
-  install -vDm644 -t "$pkgdir/usr/share/docs/$pkgname" README.md
-  cp -vr docs "$pkgdir/usr/share/docs/$pkgname"
+  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+  cp -vr docs "$pkgdir/usr/share/doc/$pkgname"
 }
