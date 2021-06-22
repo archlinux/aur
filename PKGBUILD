@@ -2,7 +2,7 @@
 
 pkgname=inform-git
 _gitpkg=inform6unix
-pkgver=6.35.r1.5.g222994a
+pkgver=6.35.r1.9.gbac0f70
 pkgrel=1
 pkgdesc="Interactive fiction compiler (git version)"
 arch=(i686 x86_64)
@@ -20,12 +20,12 @@ pkgver() {
   printf "%s" "$(git describe --long --tags | sed 's/v//; s/-/./g')"
 }
 
-prepare(){
+prepare() {
   cd "${srcdir}"/"${_gitpkg}"
   make submodules
 }
 
-build(){
+build() {
   cd "${srcdir}"/"${_gitpkg}"
   make PREFIX=/usr MAN_PREFIX=/usr/share
 }
