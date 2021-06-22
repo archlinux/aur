@@ -4,7 +4,7 @@
 pkgname="gdlauncher-bin"
 _pkgname="gdlauncher"
 pkgver="1.1.11"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
 url="https://gdevs.io"
@@ -15,7 +15,7 @@ provides=('gdlauncher')
 conflicts=('gdlauncher' 'gdlauncher-appimage' 'gdlauncher-git' 'gdlauncher-classic')
 source_x86_64=("GDLauncher-${pkgver}.zip::https://github.com/gorilla-devs/GDLauncher/releases/download/v${pkgver}/GDLauncher-linux-setup.zip"
                "https://github.com/gorilla-devs/GDLauncher/raw/master/public/icon.png")
-md5sums_x86_64=('4c98cd4ade613f5d03b4fc1d3292852f'
+md5sums_x86_64=('ed412a53faf3679af0d081eef0b8637d'
                 'af0ce1364e34f49af3793bf8193c5369')
 icon_sizes=(48 128 256 1024)
 
