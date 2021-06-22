@@ -1,0 +1,18 @@
+pkgbase = ghostgame
+	pkgdesc = A simple RNG-based game, originally written in Python, re-written in Go.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/TheSonicMaster/ghostgame
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	source = ghostgame-1.0.1.tar.gz::https://github.com/TheSonicMaster/ghostgame/archive/refs/tags/1.0.1.tar.gz
+	sha512sums = 9fca9690801be4e611e519b2480801cfc2d2d57b7285de7701db4761e4048fb385d5956ead6d95cdeadd71b2a2b24ffa32fa277791a98dafe6dcb4f10399456d
+
+pkgname = ghostgame
