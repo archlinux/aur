@@ -4,7 +4,7 @@ pkgver=1.0.0.A1
 
 _cyanversion=1.0.0.A14 # Needed to find the right version ZIP
 
-pkgrel=1
+pkgrel=2
 pkgdesc="MTK CLI - Command Line Interface for the Cyan Minecraft Toolkit
 (NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG)"
 arch=( 'any' )
@@ -12,7 +12,7 @@ url=""
 license=('LGPL')
 groups=()
 depends=( 'java-environment' )
-makedepends=( 'gradle>=6.7' )
+makedepends=()
 optdepends=()
 provides=()
 conflicts=()
@@ -27,7 +27,8 @@ md5sums=( "db275ac7a438639381304da44fffd24f" )
 
 build() {
     cd MtkCLI
-    gradle -c ../settings.lite.gradle installation
+    chmod +x ../gradlew
+    ../gradlew -c ../settings.lite.gradle installation
 }
 
 package() {
