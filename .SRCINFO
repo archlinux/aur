@@ -1,12 +1,13 @@
 pkgbase = postgresql-libversion
 	pkgdesc = PostgreSQL extension with support for version string comparison
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/repology/postgresql-libversion
 	arch = x86_64
 	license = MIT
 	makedepends = postgresql-libs
 	makedepends = clang
+	makedepends = llvm
 	depends = libversion
 	depends = postgresql
 	source = postgresql-libversion-2.0.0.tar.gz::https://github.com/repology/postgresql-libversion/archive/2.0.0.tar.gz
