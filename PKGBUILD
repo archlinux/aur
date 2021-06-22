@@ -1,9 +1,9 @@
 # Maintainer: Joey Dumont <joey.dumont@gmail.com>
 _target=mips64-ultra-elf
 pkgname=${_target}-gcc
-_gccver=10.3.0
-_islver=0.22
-pkgver=10.3.0_r141.479e768
+_gccver=11.1.0
+_islver=0.24
+pkgver=11.1.0_r144.128cbf0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=('x86_64')
@@ -17,10 +17,12 @@ replaces=("${_target}-gcc-stage1")
 options=(!emptydirs)
 source=("http://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.xz"
         "http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
-        "git+https://github.com/glankk/n64.git#branch=n64-ultra")
-sha256sums=('64f404c1a650f27fc33da242e1f2df54952e3963a49e06e73f6940f3223ac344'
-            '6c8bc56c477affecba9c59e2c9f026967ac8bad01b51bdd07916db40a517b9fa'
-            'SKIP')
+        "git+https://github.com/glankk/n64.git#branch=n64-ultra"
+        "gcc11-Wno-format-security.patch")
+sha256sums=('4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf'
+            '043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad'
+            'SKIP'
+            '6f9a34812a07e49a568467df11d6ab19b9fd7d953e9ecd739c7a38d9df821b52')
 
 pkgver() {
   cd "${srcdir}/n64/"
@@ -37,6 +39,9 @@ prepare() {
 
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
+
+  # -- Patch Werror=format-security issues.
+  patch --strip=1 --input="$srcdir"/gcc11-Wno-format-security.patch
 
   mkdir "${srcdir}"/build-gcc
 
@@ -72,6 +77,7 @@ build() {
     --with-newlib \
     --without-included-gettext \
     --enable-checking=release \
+    --disable-build-format-warnings \
     --disable-decimal-float \
     --disable-gold \
     --disable-libatomic \
