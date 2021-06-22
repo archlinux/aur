@@ -1,7 +1,7 @@
 pkgbase = vsce
 	pkgdesc = Visual Studio Code extension manager
 	pkgver = 1.93.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Microsoft/vscode-vsce
 	arch = any
 	license = MIT
