@@ -1,6 +1,6 @@
 pkgbase = mips64-ultra-elf-binutils
 	pkgdesc = A set of programs to assemble and manipulate binary and object files for mips64-ultra-elf
-	pkgver = 2.36.1_r134.54b8f95
+	pkgver = 2.36.1_r144.128cbf0
 	pkgrel = 1
 	url = http://www.gnu.org/software/binutils/
 	arch = x86_64
@@ -13,4 +13,3 @@ pkgbase = mips64-ultra-elf-binutils
 	sha256sums = SKIP
 
 pkgname = mips64-ultra-elf-binutils
-
