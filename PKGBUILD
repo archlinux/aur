@@ -68,11 +68,12 @@ _override_max_perf=
 
 pkgbase=nvidia-dkms-performance
 pkgname=(nvidia-dkms-performance nvidia-settings-performance nvidia-utils-performance opencl-nvidia-performance lib32-nvidia-utils-performance lib32-opencl-nvidia-performance)
-pkgver=465.31
-pkgrel=2
+pkgver=470.42.01
+pkgrel=1
 arch=('x86_64')
 url='https://www.nvidia.com/'
 license=('custom')
+options=(!strip)
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}"
 source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         'nvidia-drm-outputclass.conf'
@@ -234,16 +235,15 @@ package_nvidia-utils-performance() {
     replaces=('nvidia-libgl')
     install=nvidia-utils-performance.install
     cd "${_pkg}"
-    
+
     # X driver
-    # TODO: Can be fixed with an ugly binary patch to fix broken GPU overclocking on NVIDIA Optimus laptops.
-    # See: 
-    # https://forums.developer.nvidia.com/t/option-coolbits-is-not-used-optimus-enabled-laptop-running-an-rtx-2070-manjaro-linux/111771/2
     install -D -m755 nvidia_drv.so -t "${pkgdir}/usr/lib/xorg/modules/drivers"
+    
+    # firmware
+    install -D -m644 firmware/gsp.bin -t "${pkgdir}/usr/lib/firmware/nvidia/${pkgver}"
     
     # GLX extension module for X
     install -D -m755 "libglxserver_nvidia.so.${pkgver}" -t "${pkgdir}/usr/lib/nvidia/xorg"
-
     # Ensure that X finds glx
     ln -s "libglxserver_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglxserver_nvidia.so.1"
     ln -s "libglxserver_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglxserver_nvidia.so"
@@ -328,7 +328,6 @@ package_nvidia-utils-performance() {
     sed -i 's/__USER__/nvidia-persistenced/' "${pkgdir}/usr/lib/systemd/system/nvidia-persistenced.service"
     
     # application profiles
-    # TODO: It is possible to add custom application profiles to improve their performance. 
     install -D -m644 "nvidia-application-profiles-${pkgver}-rc" -t "${pkgdir}/usr/share/nvidia"
     install -D -m644 "nvidia-application-profiles-${pkgver}-key-documentation" -t "${pkgdir}/usr/share/nvidia"
     
@@ -422,12 +421,12 @@ package_lib32-nvidia-utils-performance() {
     install -D -m644 "${srcdir}/${_pkg}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
-sha256sums=('6008d001c9335863049c338e7ba6ab96406f4f7af31427aa8c18c6d277272cda'
+sha256sums=('cdf554eafd5ccea00cd0e961e26337b7e8337ac8a2ad57ef019cfb3d62b58913'
             'ae1fee1238da7aeb0e2d3e3d3fe4478dfe3a2bcbbab529586ac8f3bb55aa47ae'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
             '717920f48b4d7ec50b83d2d096bab36449b30f1b5d144f0fe586627025367293'
-            'b6f9a1350c3734297c314e7211e24aab0071de9ff3b0cc536bed59f5461e4822'
-            'f631b7e545ed5d121918a773ec51e12e2e95cb340757ebb3689a295ae066c4e3'
+            '1bc089100f8eb43634f065008b8b6e4a13070f5341d2929cecff51a40a8adeba'
+            'ed20d9fa8b04d8f519feef42f4ffea7998bc29457b4e48d0b2ca863330125fce'
             '7d9392f36374ab609417abe4b5493bbb9d868a2ee29cdb877d4be8b098eb527b'
             '898fe80847fb2974e1d16b380c16569ddb3ab24c6974bbeb72d68e8e13902311'
             '6bb5456f14435ad329d750147c749d7c50fb8ae11778c7fcc9e6e3cd256c4017')
