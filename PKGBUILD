@@ -2,8 +2,8 @@
 # Based on zstd
 
 pkgname=zstd-cmake
-pkgver=1.4.9
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc='Zstandard - Fast real-time compression algorithm (with cmake files)'
 arch=(x86_64)
 url='https://www.zstd.net/'
@@ -15,7 +15,7 @@ checkdepends=('gtest')
 provides=("zstd=${pkgver}" "zstd-static=${pkgver}" "libzstd.so=1-64")
 conflicts=('zstd' 'zstd-static' 'zstd-git')
 source=("https://github.com/facebook/zstd/releases/download/v${pkgver}/zstd-${pkgver}.tar.gz")
-sha256sums=('29ac74e19ea28659017361976240c4b5c5c24db3b89338731a6feb97c038d293')
+sha256sums=('5194fbfa781fcf45b98c5e849651aa7b3b0a008c6b72d4a0db760f3002291e94')
 
 build() {
   cd zstd-${pkgver}
