@@ -2,13 +2,13 @@
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=ocropy
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python-based OCR package using recurrent neural networks (formerly ocropus)"
 arch=('any')
 url="https://github.com/ocropus/ocropy"
 license=('APACHE')
 depends=('python2-imaging' 'python2-scipy' 'python2-matplotlib' 'python2-pytables'
-         'imagemagick' 'opencv' 'python2-beautifulsoup4')
+         'imagemagick' 'opencv' 'python2-lxml')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ocropus/ocropy/archive/v${pkgver}.tar.gz"
         "https://github.com/zuphilip/ocropy-models/raw/master/en-default.pyrnn.gz")
 sha256sums=('8582589e87dd453c736478713c2d740c8e3e4479e519d8f8e8f25288081eff5c'
@@ -18,8 +18,8 @@ prepare() {
   cd "$srcdir/$pkgname-$pkgver"
   cp "$srcdir/en-default.pyrnn.gz" models
 
-  sed -i 's|tostring|tobytes|' ocrolib/common.py
-  sed -i 's|PIL\.Image\.fromstring|PIL\.Image\.frombytes|' ocrolib/common.py
+  sed -i 's|tobytes|tostring|' ocrolib/common.py
+  #sed -i 's|PIL\.Image\.fromstring|PIL\.Image\.frombytes|' ocrolib/common.py
 }
 
 build() {
