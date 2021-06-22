@@ -2,9 +2,10 @@
 
 pkgname=rpi-imager
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Raspberry Pi Imaging Utility"
 depends=('curl' 'libarchive' 'qt5-base' 'qt5-declarative' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-tools')
+optdepends=('dosfstools: SD card bootloader support')
 makedepends=('gcc' 'make' 'cmake')
 arch=('x86_64' 'aarch64')
 url="https://github.com/raspberrypi/rpi-imager"

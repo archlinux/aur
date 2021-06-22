@@ -1,7 +1,7 @@
 pkgbase = rpi-imager
 	pkgdesc = Raspberry Pi Imaging Utility
 	pkgver = 1.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/raspberrypi/rpi-imager
 	arch = x86_64
 	arch = aarch64
@@ -16,6 +16,7 @@ pkgbase = rpi-imager
 	depends = qt5-quickcontrols2
 	depends = qt5-svg
 	depends = qt5-tools
+	optdepends = dosfstools: SD card bootloader support
 	source = rpi-imager-1.6.2.tar.gz::https://github.com/raspberrypi/rpi-imager/archive/v1.6.2.tar.gz
 	source = remove_update_checking.patch
 	sha256sums = 32f7fcd732ed8b707e862f51311c846b13a9dfb805cc6d901c601e2e5c2ec2d7
