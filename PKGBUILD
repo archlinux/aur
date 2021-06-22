@@ -39,5 +39,4 @@ package() {
   ar p "./dist/${pkgname}_${pkgver}_amd64.deb" data.tar.xz | tar xJ -C "$pkgdir"
 
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
 }
