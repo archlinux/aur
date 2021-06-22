@@ -5,17 +5,17 @@
 
 pkgname=bombermaaan
 pkgver=1.4.0.627
-pkgrel=7
+pkgrel=8
 _pkgdate=20081018
 pkgdesc="A classic Bomberman-like game with multiplayer support"
 arch=('i686' 'x86_64')
 url="http://$pkgname.sourceforge.net"
-license=('GPL3')
+license=('GPL3' 'custom:Proprietary')
 depends=('sdl_mixer')
 install=$pkgname.install
 source=("http://downloads.sourceforge.net/$pkgname/Bombermaaan_${pkgver}_${_pkgdate}_src.tar.gz"
         "http://downloads.sourceforge.net/$pkgname/Bombermaaan_${pkgver}_${_pkgdate}_res.tar.gz"
-        "Bombermaan_levels_pack.zip::https://www.moddb.com/downloads/mirror/30444/121/fc5860811eb63e2a1a0b5798bbd92d13"
+        "Bombermaan_levels_pack.zip"
         "$pkgname.png"
         "$pkgname.desktop"
         "print.patch")
