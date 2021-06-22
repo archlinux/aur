@@ -1,0 +1,9 @@
+*
+!/.SRCINFO
+!/.gitignore
+!/PKGBUILD
+!/fix-60-sec-delay.patch
+!/scons-py3.patch
+!/xboxdrv.default
+!/xboxdrv.service
+!/xboxdrvctl-py3.patch
