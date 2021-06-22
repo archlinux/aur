@@ -1,0 +1,11 @@
+--- gtkada-21.0.0/Makefile.in	2020-10-08 00:48:44.000000000 +1100
++++ gtkada-21.0.0/Makefile.in-new	2021-06-22 12:58:52.737613007 +1000
+@@ -26,7 +26,7 @@
+ PROCESSORS   = 0
+ 
+ # Location (under $prefix) where the project files should be copied
+-PRJDIR=lib/gnat
++PRJDIR=share/gpr
+ 
+ GPRBUILD_FULL = ${GPRBUILD} -j${PROCESSORS} -m -p ${GPRBUILD_SWITCHES}
+ GPRINSTALL_FULL = ${GPRINSTALL} -p -f --project-subdir=$(PRJDIR) \
