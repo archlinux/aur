@@ -1,11 +1,9 @@
 pkgbase = python-thinc-git
 	pkgdesc = Practical Machine Learning for NLP
-	pkgver = 8.0.0rc0.r0.g36e20cee
+	pkgver = 8.0.6.r0.g2cdd3d28
 	pkgrel = 1
 	url = https://github.com/explosion/thinc
-	arch = i686
 	arch = x86_64
-	arch = armv7h
 	arch = aarch64
 	license = MIT
 	makedepends = git
@@ -29,7 +27,6 @@ pkgbase = python-thinc-git
 	provides = python-thinc
 	conflicts = python-thinc
 	source = git+https://github.com/explosion/thinc.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = python-thinc-git
-

@@ -2,48 +2,51 @@
 # Contributor: DanManN <dnahimov@gmail.com>
 
 pkgname=python-thinc-git
-pkgver=8.0.0rc0.r0.g36e20cee
+pkgver=8.0.6.r0.g2cdd3d28
 pkgrel=1
-pkgdesc="Practical Machine Learning for NLP"
-arch=(i686 x86_64 armv7h aarch64)
-url="https://github.com/explosion/thinc"
+pkgdesc='Practical Machine Learning for NLP'
+arch=(x86_64 aarch64)
+url='https://github.com/explosion/thinc'
 license=(MIT)
 depends=(
-    python-blis
-    python-catalogue
-    python-cymem
-    python-hypothesis
-    python-mock
-    python-murmurhash
-    python-numpy
-    python-pathlib
-    python-plac
-    python-preshed
-    python-pydantic
-    python-six
-    python-srsly
-    python-tqdm
-    python-wasabi
+	python-blis
+	python-catalogue
+	python-cymem
+	python-hypothesis
+	python-mock
+	python-murmurhash
+	python-numpy
+	python-pathlib
+	python-plac
+	python-preshed
+	python-pydantic
+	python-six
+	python-srsly
+	python-tqdm
+	python-wasabi
 )
-makedepends=(git python-setuptools cython)
+makedepends=(
+	git
+	python-setuptools
+	cython
+)
 provides=(python-thinc)
 conflicts=(python-thinc)
 source=("git+https://github.com/explosion/thinc.git")
-md5sums=('SKIP')
-
+sha256sums=('SKIP')
 
 pkgver() {
-    cd thinc
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd thinc
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd thinc
-    python setup.py build
+	cd thinc
+	python setup.py build
 }
 
 package() {
-    cd thinc
-    python setup.py install --skip-build --root="${pkgdir}" --optimize=1
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"    
+	cd thinc
+	python setup.py install --skip-build --root="${pkgdir}" --optimize=1
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"    
 }
