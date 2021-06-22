@@ -1,8 +1,9 @@
+# Maintainer: René Wagner <rwagner at rw-net dot de>
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-text-simpletable'
-pkgver='2.03'
+pkgver='2.07'
 pkgrel='1'
 pkgdesc="Simple eyecandy ASCII tables"
 arch=('any')
@@ -11,10 +12,9 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='http://search.cpan.org/dist/Text-SimpleTable'
-source=('http://search.cpan.org/CPAN/authors/id/M/MR/MRAMBERG/Text-SimpleTable-2.03.tar.gz')
-md5sums=('a79a1f53846c111e8f6056702c39fa17')
-sha512sums=('1328f59d0f68e4d083cb7e8b0ecc353a162462e5b736b7603da0e42a521728c565d8c224042c1fd94032c481dc689b90686295493a1a7b8e1a0d426275e14ffd')
-_distdir="Text-SimpleTable-2.03"
+source=('http://search.cpan.org/CPAN/authors/id/M/MR/MRAMBERG/Text-SimpleTable-2.07.tar.gz')
+sha256sums=('256d3f38764e96333158b14ab18257b92f3155c60d658cafb80389f72f4619ed')
+_distdir="Text-SimpleTable-2.07"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \

@@ -1,6 +1,6 @@
 pkgbase = perl-text-simpletable
 	pkgdesc = Simple eyecandy ASCII tables
-	pkgver = 2.03
+	pkgver = 2.07
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Text-SimpleTable
 	arch = any
@@ -8,9 +8,7 @@ pkgbase = perl-text-simpletable
 	license = GPL
 	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MR/MRAMBERG/Text-SimpleTable-2.03.tar.gz
-	md5sums = a79a1f53846c111e8f6056702c39fa17
-	sha512sums = 1328f59d0f68e4d083cb7e8b0ecc353a162462e5b736b7603da0e42a521728c565d8c224042c1fd94032c481dc689b90686295493a1a7b8e1a0d426275e14ffd
+	source = http://search.cpan.org/CPAN/authors/id/M/MR/MRAMBERG/Text-SimpleTable-2.07.tar.gz
+	sha256sums = 256d3f38764e96333158b14ab18257b92f3155c60d658cafb80389f72f4619ed
 
 pkgname = perl-text-simpletable
-
