@@ -1,21 +1,16 @@
-From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
-From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
-Date: Tue, 6 Mar 2018 23:39:47 +0100
+From cd141e77470b2b2dc7c630ed2f65c3111710aaf9 Mon Sep 17 00:00:00 2001
+From: Yurii Kolesnykov <root@yurikoles.com>
+Date: Thu, 17 Jun 2021 20:09:14 +0300
 Subject: [PATCH] Use Arch Linux' device access groups
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
 
-  cdrom   → optical
-  dialout → uucp
-  tape    → storage
+Signed-off-by: Yurii Kolesnykov <root@yurikoles.com>
 ---
  rules.d/50-udev-default.rules.in | 14 +++++++-------
  sysusers.d/basic.conf.in         |  6 +++---
  2 files changed, 10 insertions(+), 10 deletions(-)
 
 diff --git a/rules.d/50-udev-default.rules.in b/rules.d/50-udev-default.rules.in
-index edfa8bb107..35b8d4ba41 100644
+index 18a3cf46bf..f3c440fd89 100644
 --- a/rules.d/50-udev-default.rules.in
 +++ b/rules.d/50-udev-default.rules.in
 @@ -22,7 +22,7 @@ SUBSYSTEM=="tty", KERNEL=="sclp_line[0-9]*", GROUP="tty", MODE="0620"
@@ -27,7 +22,7 @@ index edfa8bb107..35b8d4ba41 100644
  
  SUBSYSTEM=="mem", KERNEL=="mem|kmem|port", GROUP="kmem", MODE="0640"
  
-@@ -62,13 +62,13 @@ KERNEL=="irlpt[0-9]*", GROUP="lp"
+@@ -67,13 +67,13 @@ KERNEL=="irlpt[0-9]*", GROUP="lp"
  SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ENV{ID_USB_INTERFACES}=="*:0701??:*", GROUP="lp"
  
  SUBSYSTEM=="block", GROUP="disk"
@@ -48,25 +43,29 @@ index edfa8bb107..35b8d4ba41 100644
  KERNEL=="qft[0-9]*|nqft[0-9]*|zqft[0-9]*|nzqft[0-9]*|rawqft[0-9]*|nrawqft[0-9]*", GROUP="disk"
  KERNEL=="loop-control", GROUP="disk", OPTIONS+="static_node=loop-control"
 diff --git a/sysusers.d/basic.conf.in b/sysusers.d/basic.conf.in
-index 4be0bd869e..cc3721b58a 100644
+index 8cc1a7cad2..be12c76ab6 100644
 --- a/sysusers.d/basic.conf.in
 +++ b/sysusers.d/basic.conf.in
-@@ -24,15 +24,15 @@ g utmp    -     -            -
+@@ -22,16 +22,16 @@ g utmp    {{UTMP_GID   }}     -            -
  
- # Hardware access groups
- g audio   -     -            -
--g cdrom   -     -            -
--g dialout -     -            -
- g disk    -     -            -
- g input   -     -            -
- g kvm     -     -            -
- g lp      -     -            -
-+g optical -     -            -
- g render  -     -            -
- g sgx     -     -            -
--g tape    -     -            -
-+g storage -     -            -
-+g uucp    -     -            -
- g video   -     -            -
+ # Physical and virtual hardware access groups
+ g audio   {{AUDIO_GID  }}     -            -
+-g cdrom   {{CDROM_GID  }}     -            -
+-g dialout {{DIALOUT_GID}}     -            -
+ g disk    {{DISK_GID   }}     -            -
+ g input   {{INPUT_GID  }}     -            -
+ g kmem    {{KMEM_GID   }}     -            -
+ g kvm     {{KVM_GID    }}     -            -
+ g lp      {{LP_GID     }}     -            -
++g optical -                   -            -
+ g render  {{RENDER_GID }}     -            -
+ g sgx     {{SGX_GID    }}     -            -
+-g tape    {{TAPE_GID   }}     -            -
++g storage -                   -            -
++g uucp    -                   -            -
+ g tty     {{TTY_GID    }}     -            -
+ g video   {{VIDEO_GID  }}     -            -
  
- # Default group for normal users
+-- 
+2.32.0
+
