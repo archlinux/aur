@@ -7,6 +7,10 @@ post_install() {
 
   ==> sublime-text-dev install/upgrade note:
   ------------------------------------------------------------------------------
+    This package is now used for the actual 'dev' branch of Sublime Text.
+    If you want to keep using the latest stable release you should instead
+    install 'sublime-text-4' or use the official repos provided by Sublime Text.
+    
     To disable in-application reminders about new Sublime Text dev versions,
     add the following setting to your User Preferences file:
     "update_check": false
