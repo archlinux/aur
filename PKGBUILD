@@ -15,9 +15,9 @@ makedepends=(
 )
 pkgdesc="A fast-paced puzzle game with roots in the arcade"
 pkgname=shiromino
-pkgrel=1
+pkgrel=2
 pkgver='0.2.1'
-sha256sums=('69689ecc19127787dfc5d0442588d6517ea5fe2b423f5bf13bc2d03352cc2407')
+sha256sums=('9fd6b8f7b391df648c3b87c6b11b269d180f2b8c202512e0d22c9cfc5dc6cdc6')
 url=https://github.com/shiromino/shiromino
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 build() {
@@ -25,7 +25,6 @@ build() {
 	cmake\
 		-B build\
 		-DCMAKE_BUILD_TYPE=Release\
-		-DENABLE_OPENGL_INTERPOLATION=1\
 		-S .
 	cmake --build build
 }
