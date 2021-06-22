@@ -1,6 +1,6 @@
 pkgbase = abyss
 	pkgdesc = Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler
-	pkgver = 2.2.5
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/bcgsc/abyss
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = abyss
 	depends = make
 	depends = openmpi
 	depends = sqlite
-	source = https://github.com/bcgsc/abyss/releases/download/2.2.5/abyss-2.2.5.tar.gz
-	sha256sums = 38e886f455074c76b32dd549e94cc345f46cb1d33ab11ad3e8e1f5214fc65521
+	source = abyss-2.3.1.tar.gz::https://github.com/bcgsc/abyss/archive/2.3.1.tar.gz
+	sha256sums = b1941d6d975b38d34f41c38b8f4f599fc69d1f37ef3afb71f50318062fb548ea
 
 pkgname = abyss

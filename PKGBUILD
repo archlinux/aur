@@ -2,7 +2,7 @@
 # Contributor:  Eric Biggers <ebiggers3 at gmail dot com>
 
 pkgname=abyss
-pkgver=2.2.5
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler"
 arch=("i686" "x86_64")
@@ -10,8 +10,8 @@ url="https://github.com/bcgsc/abyss"
 license=("GPL3")
 depends=("make" "openmpi" "sqlite")
 makedepends=("boost" "sparsehash")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/bcgsc/abyss/archive/v$pkgver.tar.gz")
-sha256sums=('38e886f455074c76b32dd549e94cc345f46cb1d33ab11ad3e8e1f5214fc65521')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/bcgsc/abyss/archive/$pkgver.tar.gz")
+sha256sums=('b1941d6d975b38d34f41c38b8f4f599fc69d1f37ef3afb71f50318062fb548ea')
 
 build() {
   cd "${pkgname}-${pkgver}"
