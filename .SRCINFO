@@ -1,6 +1,6 @@
 pkgbase = 1password-beta-bin
 	pkgdesc = Password manager and secure wallet - (bin)
-	pkgver = 8.1.0_45.BETA
+	pkgver = 8.1.0_60.BETA
 	pkgrel = 1
 	url = https://1password.com
 	install = 1password.install

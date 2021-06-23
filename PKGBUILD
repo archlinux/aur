@@ -6,7 +6,7 @@
 pkgname=1password-beta-bin
 _pkgname=1password
 
-pkgver=8.1.0_45.BETA
+pkgver=8.1.0_60.BETA
 pkgrel=1
 conflicts=('1password')
 pkgdesc="Password manager and secure wallet - (bin)"
