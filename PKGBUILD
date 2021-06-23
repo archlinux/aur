@@ -1,9 +1,9 @@
 # Maintainer: Ehsan Ghorbannezad <ehsangn@protonmail.ch>
 _pkgname='lfutils'
 pkgname="${_pkgname}-git"
-pkgver=r23.80b957f
+pkgver=r26.e9104e8
 pkgrel=1
-pkgdesc='Scripts and utilities for lf file manager.'
+pkgdesc='Scripts and utilities for the lf file manager.'
 arch=('x86_64')
 url='https://github.com/soystemd/lfutils'
 license=('GPL')
