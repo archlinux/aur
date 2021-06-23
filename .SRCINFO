@@ -1,6 +1,6 @@
 pkgbase = graph-plotter-hg
-	pkgdesc = GP is aimed to be simple and fast tool to analyse numerical data. It does not claim to replace all other plotters.
-	pkgver = r164+.6c3c03cb02f6+
+	pkgdesc = A simple and very fast tool to view and analyse numerical data (e.g. csv files)
+	pkgver = r196+.96dbba819565+
 	pkgrel = 1
 	url = https://sourceforge.net/projects/graph-plotter/
 	arch = x86_64
@@ -10,9 +10,6 @@ pkgbase = graph-plotter-hg
 	depends = sdl2_ttf
 	depends = ttf-hack
 	source = graph-plotter-code::hg+http://hg.code.sf.net/p/graph-plotter/code
-	source = graph-plotter-ttf-hack.patch
 	sha256sums = SKIP
-	sha256sums = 5068d2fd324fa7a268dc07bcf93362107f68a90da29092bb8bcbb28dab1c45c9
 
 pkgname = graph-plotter-hg
-
