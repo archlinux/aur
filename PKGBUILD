@@ -1,7 +1,7 @@
 # Maintainer  : Matthias Fulz < mfulz [at] olznet [dot] de >
 
 pkgname='gvmd'
-pkgver=20.8.1
+pkgver=21.4.1
 pkgrel=1
 pkgdesc='Vulnerability manager Daemon'
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/greenbone/gvmd/archive/
         "gvmd.install"
         "gvmd.service"
         "gvmd")
-sha512sums=('e946be6c67970fdb0e4e6fbb2ac9445576c280c3ac7503ff42aac2c079e817ee587a37477956917b576bafab3e7caa281da5befa6502b044562051ae976889b2'
+sha512sums=('875038c2e037518c884f3327d7ecc1d096673daac04c649dc341729ed673bf349a95b2f9560797fa17c62d6674fd2ba23dc09cf6114b7e3227b1072c0b3df363'
             'ec2cbedf87bfd8cc1abfc6be9c566b6d2e6f7b1f902f5596d496b01faf208c9921b502d77ec9281ef3c0d03462f2d49bb973f4f9216a106116cd824e938951c2'
             '4d259ff625d29b10040ab1ff7cb472b3dee2355c8ef01275754c5c08779e0de3d5ae1cbb157239fd17d663644b43a642fe15c2d8e13cde037e52ad6a4e2e0afd'
             'e1be40755530f9793c91c47db3bc1fb65266dcea2d1ba5e3ba1de97a93572bc52a18dc182f9c4d11fc4586f714663447917d70321e32c20bbe35765f999141d2'
