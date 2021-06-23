@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 url="https://www.digikam.org/"
 depends=(lensfun opencv akonadi-contacts knotifyconfig libksane kfilemetadata qtav marble-common
-         threadweaver kcalendarcore qt5-xmlpatterns imagemagick glu jasper)
+         threadweaver kcalendarcore qt5-xmlpatterns imagemagick glu jasper kservice-git)
 makedepends=(extra-cmake-modules doxygen eigen boost kdoctools git)
 optdepends=('hugin: panorama tool'
             'qt5-imageformats: support for additional image formats (WEBP, TIFF)'
@@ -17,7 +17,7 @@ optdepends=('hugin: panorama tool'
 conflicts=('digikam')
 provides=('digikam')
 source=('git+https://invent.kde.org/graphics/digikam.git')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd digikam
