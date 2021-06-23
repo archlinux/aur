@@ -1,7 +1,7 @@
 pkgbase = tldr-sh
 	pkgdesc = A fully-functional POSIX shell client for tldr.
-	pkgver = r73.8c852ba
-	pkgrel = 4
+	pkgver = r75.a5c4ba0
+	pkgrel = 1
 	url = https://github.com/raylee/tldr-sh-client
 	arch = any
 	license = MIT
@@ -26,4 +26,3 @@ pkgbase = tldr-sh
 	sha256sums = 9b187a7a8955c602694de859a65a60739784ccebbd04181bce22e0737d880eb5
 
 pkgname = tldr-sh
-
