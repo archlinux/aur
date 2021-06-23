@@ -6,7 +6,7 @@ pkgdesc="The best Minecraft launcher"
 arch=('x86_64')
 url="https://tlauncher.org/"
 license=('custom')
-depends=('jre-openjdk' 'kdesu')
+depends=('jre-openjdk')
 source=(
     'tlauncher.zip::https://tlauncher.org/jar'
     'tlauncher.desktop'
