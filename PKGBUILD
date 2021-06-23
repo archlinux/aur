@@ -1,5 +1,5 @@
 pkgname=website-stalker
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Track changes on websites via git"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
@@ -10,7 +10,7 @@ makedepends=('cargo')
 provides=("${pkgname}")
 
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha256sums=('bfc073d6d94b9e426cb0cfe2d1cbad2851e0919fc4ac097ae65677e50275f460')
+sha256sums=('7f14ab5853f8fd9c47d1b759a4515319e1646961890be755ed25387203998df0')
 
 build() {
   cd $pkgname-$pkgver
@@ -28,10 +28,15 @@ package() {
   install -Dm644 "completions/_${pkgname}" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
 
   # migrate all /usr/local/lib thingies to /usr/lib
-  sed -i "s/\/local\//\//g" systemd/*
+  sed -i "s/\/local\//\//g" systemd/**/*
+  # Set the executable path
+  sed -i "s/ExecStart=.*${pkgname}/ExecStart=\/usr\/bin\/${pkgname}/g" systemd/**/*.service
 
-  install -Dm644 "systemd/systemd.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-  install -Dm644 "systemd/systemd.timer" "${pkgdir}/usr/lib/systemd/system/${pkgname}.timer"
-  install -Dm644 "systemd/sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-  install -Dm644 "systemd/tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+  install -Dm644 "systemd/system/systemd.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -Dm644 "systemd/system/systemd.timer" "${pkgdir}/usr/lib/systemd/system/${pkgname}.timer"
+  install -Dm644 "systemd/system/sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+  install -Dm644 "systemd/system/tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+
+  install -Dm644 "systemd/user/systemd.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
+  install -Dm644 "systemd/user/systemd.timer" "${pkgdir}/usr/lib/systemd/user/${pkgname}.timer"
 }
