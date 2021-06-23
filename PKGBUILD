@@ -3,19 +3,15 @@
 pkgname='perl-locale-maketext-lexicon-dbi'
 _pkgname='Locale-Maketext-Lexicon-DBI'
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Locale::Maketext::Lexicon::DBI - Database based lexicon fetcher/parser'
 arch=(i686 x86_64)
 license=('perl')
-url="http://search.cpan.org/dist/Locale-Maketext-Lexicon-DBI/"
+url="https://search.cpan.org/dist/Locale-Maketext-Lexicon-DBI/"
 options=(!emptydirs)
+depends=('perl' 'perl-dbi' 'perl-locale-maketext-lexicon')
 
-depends=('perl' 'perl-locale-maketext-lexicon')
-makedepends=('perl')
-
-provides=('locale-maketext-lexicon-dbi=0.2.1' 'Locale::Maketext::Lexicon::DBI=0.2.1' 'perl-locale-maketext-lexicon-dbi=0.2.1')
-
-source=("http://search.cpan.org/CPAN/authors/id/M/MD/MDIETRICH/${_pkgname}-v${pkgver}.tar.gz")
+source=("https://search.cpan.org/CPAN/authors/id/M/MD/MDIETRICH/${_pkgname}-v${pkgver}.tar.gz")
 md5sums=('736c288de239f6e06366c8bca6fce431')
 sha512sums=('d438528d80306bc3bb07489702d631c9fbe952164ac8e2efeeaccf5a7d85fc11211d0e1688cf53473efe71766a3012812c62856eece513b9f4a4374eae4058e4')
 
@@ -44,5 +40,3 @@ package() {
   make install
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# vim:set ts=2 sw=2 et:

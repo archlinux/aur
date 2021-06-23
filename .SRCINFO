@@ -1,21 +1,17 @@
 pkgbase = perl-locale-maketext-lexicon-dbi
 	pkgdesc = Locale::Maketext::Lexicon::DBI - Database based lexicon fetcher/parser
 	pkgver = 0.2.1
-	pkgrel = 2
-	url = http://search.cpan.org/dist/Locale-Maketext-Lexicon-DBI/
+	pkgrel = 3
+	url = https://search.cpan.org/dist/Locale-Maketext-Lexicon-DBI/
 	arch = i686
 	arch = x86_64
 	license = perl
-	makedepends = perl
 	depends = perl
+	depends = perl-dbi
 	depends = perl-locale-maketext-lexicon
-	provides = locale-maketext-lexicon-dbi=0.2.1
-	provides = Locale::Maketext::Lexicon::DBI=0.2.1
-	provides = perl-locale-maketext-lexicon-dbi=0.2.1
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MD/MDIETRICH/Locale-Maketext-Lexicon-DBI-v0.2.1.tar.gz
+	source = https://search.cpan.org/CPAN/authors/id/M/MD/MDIETRICH/Locale-Maketext-Lexicon-DBI-v0.2.1.tar.gz
 	md5sums = 736c288de239f6e06366c8bca6fce431
 	sha512sums = d438528d80306bc3bb07489702d631c9fbe952164ac8e2efeeaccf5a7d85fc11211d0e1688cf53473efe71766a3012812c62856eece513b9f4a4374eae4058e4
 
 pkgname = perl-locale-maketext-lexicon-dbi
-
