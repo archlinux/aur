@@ -2,12 +2,13 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=lfs-git
-pkgver=0.5.1.r6.g84dd2fe
+pkgver=0.7.0.r0.g8c71a0f
 pkgrel=1
 pkgdesc="Get information on your mounted disks (git)"
 arch=('x86_64')
 url="https://github.com/Canop/lfs"
 license=('MIT')
+depends=('gcc-libs')
 makedepends=('rust' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
