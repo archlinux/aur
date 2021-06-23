@@ -19,6 +19,7 @@ conflicts=(
 provides=(
   'otf-nerd-fonts'
   'nerd-fonts-cascadia-code'
+  'nerd-fonts-fantasque-sans-mono'
   'nerd-fonts-fira-code'
   'nerd-fonts-hack'
   'nerd-fonts-iosevka'

@@ -10,6 +10,7 @@ pkgbase = nerd-fonts-complete
 	makedepends = xorg-font-util
 	provides = otf-nerd-fonts
 	provides = nerd-fonts-cascadia-code
+	provides = nerd-fonts-fantasque-sans-mono
 	provides = nerd-fonts-fira-code
 	provides = nerd-fonts-hack
 	provides = nerd-fonts-iosevka
@@ -30,4 +31,3 @@ pkgbase = nerd-fonts-complete
 	sha256sums = a084ca91a174b547bab4523507824c76aa91ebcf38f9256a4ffd181813f87bd8
 
 pkgname = nerd-fonts-complete
-
