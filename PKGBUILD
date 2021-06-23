@@ -1,6 +1,6 @@
 # Maintainer: Tim Schneeberger (ThePBone) <tim.schneeberger(at)gmail.com>
 pkgname=ddctoolbox-git
-pkgver=r201.578ce99
+pkgver=r202.578ce99
 pkgrel=1
 epoch=2
 pkgdesc="DDC Toolbox for Linux"
