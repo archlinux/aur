@@ -5,7 +5,7 @@
 # Contributor: Dieter Plaetinck <dieter@plaetinck.be>
 
 pkgname=vcsh-git
-pkgver=1.20190621.r146.g4f013c3
+pkgver=2.0.0beta1.r0.g216ae35
 pkgrel=1
 epoch=1
 pkgdesc='Version Control System for $HOME that manages multiple Git repositories'
@@ -23,7 +23,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "$pkgname"
 	git describe --long --tags --abbrev=7 HEAD |
-		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+		sed 's/^v//;s/-\(alpha\|beta\|rc\)\./\1/;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
