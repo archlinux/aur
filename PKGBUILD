@@ -16,7 +16,10 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare () {
   cd "$srcdir/gdb-$pkgver"
   # https://sourceware.org/bugzilla/show_bug.cgi?id=27657
-  sed -i "s|LIBS = @LIBS@|LIBS = @LIBS@ -lbcrypt|g" gnulib/import/Makefile.in
+  sed -i "s|\$(WIN32LIBS) \$(LIBGNU)|\$(WIN32LIBS) \$(LIBGNU) -lbcrypt|g" gdb/Makefile.in
+
+  # undefined ref to iconv_open
+  sed -i "s|INTL = @LIBINTL@|INTL = @LIBINTL@ -liconv|g" gdbserver/Makefile.in
 }
 
 build() {
