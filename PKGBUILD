@@ -1,14 +1,15 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Contributor: Daniel Nagy <danielnagy at gmx de>
 
 pkgname=libbuspirate
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
-pkgdesc="The libbuspirate is a C library to talk with the bus pirate hardware"
+pkgdesc="A C library to talk with the bus pirate hardware"
 arch=("i686" "x86_64" "armv6h") # maybe more ?
-url="http://sourceforge.net/projects/libbuspirate/"
-license=('GPLv3')
-source=("http://downloads.sourceforge.net/project/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
-sha1sums=('fbbfdddec5ef46870463d654bb2a68f80de9c376')
+url="https://sourceforge.net/projects/libbuspirate/"
+license=('GPL3')
+source=("https://downloads.sourceforge.net/project/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
+sha1sums=('b3e1094296b275d6d6ab326956e6f7819cc332d0')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
