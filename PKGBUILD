@@ -1,11 +1,11 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=ratt-git
-pkgver=r48.a6b1f57
-pkgrel=1
+pkgver=r54.25a2b56
+pkgrel=2
 pkgdesc="A tool for converting websites to RSS/Atom feeds"
 arch=('x86_64')
-url="https://gitlab.com/microo8/ratt"
+url="https://git.sr.ht/~ghost08/ratt"
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
