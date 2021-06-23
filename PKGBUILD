@@ -8,6 +8,8 @@ arch=('i686' 'x86_64')
 url="http://solutions.brother.com/linux/en_us/"
 license=('custom:brother commercial license')
 depends=('cups')
+optdepends=('brscan4: scanner support'
+            'brscan-skey: scan key support')
 install="$pkgname.install"
 source=(
 	"http://www.brother.com/pub/bsc/linux/dlf/mfcj470dwlpr-$pkgver-$pkgrel.i386.rpm"
