@@ -1,49 +1,33 @@
-# $Id
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: damir <damir@archlinux.org>
 # Contributor: Brice Carpentier <brice.carpentier@orange.fr>
 # Contributoe: Andrew <darkseed2007@yandex.ru>
 
 pkgname=loudmouth-ossl
-pkgver=1.4.3
-pkgrel=5
-pkgdesc="A lightweight Jabber client library written in C/Glib. Build with OpenSSL instead of gnutsl (build with gnutls don't work with latest mcabber)"
-arch=('i686' 'x86_64')
+pkgver=1.5.4
+pkgrel=1
+pkgdesc="A lightweight Jabber client library written in C/Glib. Build with OpenSSL instead of gnutls"
+arch=('x86_64')
 license=('LGPL')
-url="http://groups.google.com/group/loudmouth-dev"
-depends=('glib2' 'openssl' 'libidn')
-conflicts=(loudmouth)
-options=('!libtool')
+url="https://mcabber.com/"
+depends=('glib2' 'openssl' 'libidn' 'krb5')
 makedepends=('intltool' 'pkgconfig' 'gtk-doc')
-source=(http://ftp.gnome.org/pub/gnome/sources/loudmouth/1.4/loudmouth-${pkgver}.tar.bz2
-        01-fix-sasl-md5-digest-uri.patch
-        03-drop-stanzas-on-fail.patch
-        07-glib-single-include.patch
-        08-fix-ipv6-connect.patch)
-md5sums=('55339ca42494690c3942ee1465a96937'
-         'dc799cea18b24847b1e008c7424010a3'
-         'b7b2d81b01a5eee5fd5e21cae67b4af7'
-         'd1546ed54740de536f6bb79a18c5dccb'
-         '8e3071299776d32b9be27bba7d3f9ae0')
+conflicts=('loudmouth')
+provides=('loudmouth')
+source=(https://mcabber.com/files/loudmouth/loudmouth-$pkgver.tar.bz2{,.asc})
+sha256sums=('31cbc91c1fddcc5346b3373b8fb45594e9ea9cc7fe36d0595e8912c47ad94d0d'
+            'SKIP')
+validpgpkeys=('EACADFF156849BC89653139E3C2900DEACB7FC95')
 
-prepare() {
-  cd "${srcdir}/loudmouth-${pkgver}"
-  patch -Np1 -i ../01-fix-sasl-md5-digest-uri.patch
-  patch -Np1 -i ../03-drop-stanzas-on-fail.patch
-  patch -Np1 -i ../07-glib-single-include.patch
-  patch -Np1 -i ../08-fix-ipv6-connect.patch
-  libtoolize --force
-  aclocal
-  autoconf
-  automake --add-missing
-}
 build() {
-  cd "${srcdir}/loudmouth-${pkgver}"
-  ./configure --prefix=/usr --disable-static --with-ssl=openssl
+  cd loudmouth-${pkgver}
+  ./configure --prefix=/usr --disable-static --with-compile-warnings=no --enable-gtk-doc --with-ssl=openssl
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
 package() {
-  cd "${srcdir}/loudmouth-${pkgver}"
+  cd loudmouth-${pkgver}
   make DESTDIR="${pkgdir}" install
 }
