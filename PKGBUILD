@@ -3,7 +3,7 @@
 pkgname=backblaze-b2
 _pkgname=b2
 pkgver=2.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Backblaze B2 Command Line Client'
 url='https://github.com/Backblaze/B2_Command_Line_Tool'
 depends=('python'
@@ -28,8 +28,9 @@ sha256sums=('9b3fa855e564815ddbb6e7815bd9b0b761a41f70d49e5c0d6785639f9217c122')
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
 
-    # This requriement seems overly complex, losen
+    # This requriement seems overly strict, relax
     sed -i -e 's:\(arrow>=.*\),.*:\1:' requirements.txt
+    sed -i -e 's:\(docutils==.*\):docutils>=0.16:' requirements.txt
 
     python setup.py build
 }
