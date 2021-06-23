@@ -1,13 +1,12 @@
 pkgbase = joindesktop-git
 	pkgdesc = An official desktop app for Join by Joaoapps built in Electron.
-	pkgver = 0.5.2.r0.g0ed54bf
+	pkgver = 1.0.0.r2.g3041455
 	pkgrel = 1
 	url = https://joaoapps.com/join/desktop
 	arch = x86_64
 	license = unknown
 	makedepends = git
 	makedepends = npm
-	makedepends = nvm
 	depends = electron9
 	optdepends = libnotify: for native notifications
 	provides = joindesktop
@@ -20,4 +19,3 @@ pkgbase = joindesktop-git
 	sha256sums = 306bd114d7229fb09f2ff5a8fae8c544d74092654a4d9652e1a2579706250bda
 
 pkgname = joindesktop-git
-
