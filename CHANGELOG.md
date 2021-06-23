@@ -1,5 +1,6 @@
 # Changelog
 
+* [1.6.0](#1-6-0)
 * [1.5.4](#1-5-4)
 * [1.5.3](#1-5-3)
 * [1.5.2](#1-5-2)
@@ -7,6 +8,35 @@
 * [1.5.0](#1-5-0)
 * [1.4.2](#1-4-2)
 * [1.4.1](#1-4-1)
+
+
+## 1.6.0
+
+### Added
+
+* Text shaping support (https://codeberg.org/dnkl/fuzzel/issues/20).
+* Option for vertical padding between prompt and match list.
+
+
+### Changed
+
+* fcft >= 2.4.0 is now required.
+* In dmenu mode, fuzzel now prints the keyboard input as is, if it
+  does not match any of the items
+  (https://codeberg.org/dnkl/fuzzel/issues/23).
+* The `.desktop` filename is now also matched against
+  (https://codeberg.org/dnkl/fuzzel/issues/25).
+
+
+### Fixed
+
+* Set initial subpixel mode correctly when there is only one monitor.
+* Crash when `~/.cache/fuzzel` contained invalid/corrupt entries.
+
+
+### Contributors
+
+* [loserMcloser](https://codeberg.org/loserMcloser)
 
 
 ## 1.5.4
