@@ -4,7 +4,7 @@
 # Based on python2-pyo by amiguet
 
 pkgname=python-pyo
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Python DSP module'
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('wxpython: wxWidgets GUI')
 provides=("pyo=$pkgver" "python-pyo=$pkgver")
 conflicts=('pyo')
 source=("https://codeload.github.com/belangeo/pyo/tar.gz/$pkgver")
-sha512sums=('2c6dccb53c0bf895c4177d441d72e75b8df60f0004753a380f54c461c80d0e6c07ba117adcbf5e6e5faddd7b155b7e92ff1a26c8a7a0ab36c1d81324a4f0da99')
+sha512sums=('efb6eacee9574e6d411a02c33ca6eb93bfafeacbee09c1f229c0265f1bca41b10d52abaafd137b96355af2a16162adda327b23a54a715fd30435a215bde5054b')
 
 build() {
   cd "$srcdir"/pyo-"$pkgver"
