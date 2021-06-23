@@ -1,53 +1,46 @@
-# Maintainer: Jacob Alexander <haata at kiibohd com>
+# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Contributor: Jacob Alexander <haata at kiibohd com>
+
+pkgbase=germinate
 pkgname=('germinate' 'python-germinate' 'python2-germinate')
 _pkgname=${pkgname[0]}
-pkgver=2.23
+pkgver=2.37
 pkgrel=1
-pkgdesc="Takes lists of seed packages and expands their dependencies to produce a full list of packages. This can be used for purposes such as managing the list of packages present in a derived distribution's archive or CD builds."
-arch=('any')
+pkgdesc='Expands dependencies in a list of seed packages'
+arch=('x86_64')
 url="https://tracker.debian.org/pkg/germinate"
 license=('GPL')
-makedepends=('python' 'python-setuptools' 'python-apt' 'python2-apt')
+makedepends=('python-setuptools' 'python-apt' 'python2-apt' 'python2-setuptools')
 options=(!emptydirs)
 source=("https://mirrors.ocf.berkeley.edu/debian/pool/main/g/germinate/${_pkgname}_$pkgver.tar.xz")
-sha256sums=('aeadbd250ef4c065cc9aa0b0a7410ddee49b5c4aa31209c4f66d23652da612eb')
+sha256sums=('367771cdd892cfa94a46b8df8afec1060604b93d7bb98170d406bcdaddbfd096')
 
 # Base
 # Build last
 package_germinate() {
-	cd "${_pkgname}"
-	depends+=('perl' 'python')
+	cd work
+	depends+=('perl' 'python' 'python-apt')
 
 	# Initial python build
 	python setup.py build
 
 	# Install files to /usr/bin
-	mkdir -p $pkgdir/usr/bin || return 1
-	cp bin/germinate $pkgdir/usr/bin/. || return 1
-	cp bin/germinate-pkg-diff $pkgdir/usr/bin/. || return 1
-	cp bin/germinate-update-metapackage $pkgdir/usr/bin/. || return 1
-	cp debhelper/dh_germinate_clean $pkgdir/usr/bin/. || return 1
-	cp debhelper/dh_germinate_metapackage $pkgdir/usr/bin/. || return 1
+	install -Dm 755 bin/germinate{,-pkg-diff,-update-metapackage} -t "$pkgdir/usr/bin"
 
 	# Install perl libs
-	mkdir -p $pkgdir/usr/share/perl5/vendor_perl/Debhelper/Sequence || return 1
-	cp debhelper/germinate.pm $pkgdir/usr/share/perl5/vendor_perl/Debhelper/Sequence/. || return 1
+	install -Dm 644 debhelper/germinate.pm -t "$pkgdir/usr/share/perl5/vendor_perl/Debhelper/Sequence/"
 
 	# Install man pages (keep original files, or python builds will fail)
-	mkdir -p $pkgdir/usr/share/man/man1 || return 1
-	gzip -k debhelper/*.1 || return 1
-	cp debhelper/dh_germinate_clean.1.gz $pkgdir/usr/share/man/man1/. || return 1
-	cp debhelper/dh_germinate_metapackage.1.gz $pkgdir/usr/share/man/man1/. || return 1
-	gzip -k man/*.1 || return 1
-	cp man/germinate-pkg-diff.1.gz $pkgdir/usr/share/man/man1/. || return 1
-	cp man/germinate-update-metapackage.1.gz $pkgdir/usr/share/man/man1/. || return 1
-	cp man/germinate.1.gz $pkgdir/usr/share/man/man1/. || return 1
+	install -Dm 644 \
+	  debhelper/dh_germinate_{clean,metapackage} \
+	  man/germinate{,-pkg-diff,-update-metapackage}.1 \
+	  -t "$pkgdir/usr/share/man/man1/"
 }
 
 # Python libs
 # Build this first
 package_python-germinate() {
-	cd "${_pkgname}"
+	cd work
 	depends+=('germinate' 'python')
 
 	python setup.py install --root="$pkgdir/" --optimize=1
@@ -60,8 +53,8 @@ package_python-germinate() {
 
 # Python2 libs
 package_python2-germinate() {
-	cd "${_pkgname}"
-	depends+=('germinate' 'python2')
+	cd work
+	depends+=('germinate' 'python2' 'python2-apt')
 
 	python2 setup.py install --root="$pkgdir/" --optimize=1
 
