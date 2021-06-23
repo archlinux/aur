@@ -1,6 +1,6 @@
 pkgbase = ddctoolbox-git
 	pkgdesc = DDC Toolbox for Linux
-	pkgver = r200.578ce99
+	pkgver = r201.578ce99
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/ThePBone/DDCToolbox
