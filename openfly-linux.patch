@@ -1,0 +1,45 @@
+diff --git a/openfly.fast.symbols.dict.yaml b/openfly.fast.symbols.dict.yaml
+index 20430af..1609d6f 100644
+--- a/openfly.fast.symbols.dict.yaml
++++ b/openfly.fast.symbols.dict.yaml
+@@ -15,7 +15,7 @@ sort: by_weight
+ use_preset_vocabulary: false
+ ...
+ ：	;
+-；	;
++；	;;
+ ！	;a
+ 》	;b
+ ”	;c
+diff --git a/openfly.schema.yaml b/openfly.schema.yaml
+index c422969..f27c512 100644
+--- a/openfly.schema.yaml
++++ b/openfly.schema.yaml
+@@ -27,7 +27,7 @@ switches:
+ 
+ engine:
+   processors:
+-    - lua_processor@openfly_shortcut_processor
++    # - lua_processor@openfly_shortcut_processor
+     - ascii_composer
+     - recognizer
+     - key_binder
+@@ -47,7 +47,7 @@ engine:
+     - table_translator
+     - lua_translator@openfly_date_translator
+     - lua_translator@openfly_time_translator
+-    - lua_translator@openfly_shortcut_translator
++    # - lua_translator@openfly_shortcut_translator
+     - reverse_lookup_translator
+     - history_translator@history
+   filters:
+diff --git a/openfly.user.top.dict.yaml b/openfly.user.top.dict.yaml
+index 8677772..88a75ea 100644
+--- a/openfly.user.top.dict.yaml
++++ b/openfly.user.top.dict.yaml
+@@ -9,4 +9,4 @@ version: "v9.9m"
+ sort: by_weight
+ use_preset_vocabulary: false
+ ...
+-微博  wb
++微博	wb
