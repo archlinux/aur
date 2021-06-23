@@ -4,10 +4,10 @@ pkgdesc="ROS - rqt_rviz provides a GUI plugin embedding RViz."
 url='https://wiki.ros.org/rqt_rviz'
 
 pkgname='ros-melodic-rqt-rviz'
-pkgver='0.6.0'
+pkgver='0.7.0'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=6
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -38,9 +38,9 @@ depends=(
 	boost1.69
 )
 
-_dir="rqt_rviz-${pkgver}"
+_dir="rqt_rviz-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_rviz/archive/${pkgver}.tar.gz")
-sha256sums=('5007bf1c30ebe9e68e8ca3a4fa017f81671f1422e55a75b51aaf276ff74bfb0e')
+sha256sums=('3b3970c40d01a48a6f30f729cd4447d932268602cd603797927d51c8dadc0175')
 
 build() {
 	# Use ROS environment variables.
