@@ -2,7 +2,7 @@
 # Maintainer: zoorat <zoorat [at] protonmail [dot] com>
 
 pkgname=raven-reader
-pkgver=1.0.57
+pkgver=1.0.60
 pkgrel=1
 pkgdesc="Simple Desktop RSS Reader made using VueJS"
 url="https://github.com/hello-efficiency-inc/raven-reader"
@@ -13,7 +13,7 @@ _pkgname="Raven\ Reader"
 arch=('x86_64')
 source=("https://download.helloefficiency.com/ravenreader/Raven Reader-${pkgver}.AppImage"
  "${pkgname}.desktop")
-sha512sums=('f43a2e0863f5531f9673e107420d0f54b03554045a030a3d5b3ba8a0591db999fe655b5bf2e3b6da74a9f55e899ffd1be389a82a81ba417aef648b7a52e48c35'
+sha512sums=('42c6149a803caf4f76874e62b5d2a2a797b0e391f086816d4dc1dc331f43cf9982d0bb0a6af86636d6a0e8f60b02edb6f9b169a653c9ccb6073e17d53f5bd4ce'
             '9fa28be0cfac906f0d6acb6be147f797999660fda207df0b282a132950e587b5db0e77c719a38892bf6bc5e1cd77e5e9e24bf9ba169fd5505abd2dcd71ed27cf')
 
 build(){
