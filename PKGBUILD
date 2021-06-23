@@ -2,7 +2,7 @@
 pkgname=ddctoolbox-git
 pkgver=r200.578ce99
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="DDC Toolbox for Linux"
 arch=('any')
 url="https://github.com/ThePBone/DDCToolbox"
@@ -17,6 +17,7 @@ sha256sums=('SKIP'
             'd62019fb77f8cd40c7942453345f20e6479ba4ad22930ca2e138b1cddea9ed34')
 
 prepare() {
+	cd "$srcdir/${pkgname%-git}"
 	git submodule update --init --recursive
 }
 
