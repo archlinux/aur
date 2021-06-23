@@ -1,6 +1,6 @@
 pkgname=iscfpc
-pkgver=1.0.10
-pkgrel=20
+pkgver=1.1.0
+pkgrel=22
 pkgdesc="project maintain tool for FreePascal"
 arch=('x86_64')
 url=https://github.com/isyscore/isc-fpbase
@@ -8,7 +8,7 @@ license=('MPL')
 depends=()
 source=("http://yugioh.vip:9000/static/$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('54efd48506da9e5f31b513cba28e4435')
+md5sums=('df6c3b41b4a6052ab9d3abb90468db50')
 validpgpkeys=()
 
 package() {

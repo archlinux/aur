@@ -1,12 +1,12 @@
 pkgbase = iscfpc
 	pkgdesc = project maintain tool for FreePascal
-	pkgver = 1.0.10
-	pkgrel = 20
+	pkgver = 1.1.0
+	pkgrel = 22
 	url = https://github.com/isyscore/isc-fpbase
 	arch = x86_64
 	license = MPL
-	source = http://yugioh.vip:9000/static/iscfpc-1.0.10.tar.gz
-	md5sums = 54efd48506da9e5f31b513cba28e4435
+	source = http://yugioh.vip:9000/static/iscfpc-1.1.0.tar.gz
+	md5sums = df6c3b41b4a6052ab9d3abb90468db50
 
 pkgname = iscfpc
 
