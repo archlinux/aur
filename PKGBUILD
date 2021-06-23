@@ -56,7 +56,7 @@ _minor=12
 _srcname=linux-${_major}
 pkgbase=linux-cacule
 pkgver=${_major}.${_minor}
-pkgrel=4
+pkgrel=5
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -87,7 +87,7 @@ source=(
   "${_patchsource}/bbr2-patches-v2/0001-bbr2-5.12-introduce-BBRv2.patch"
   "${_patchsource}/btrfs-patches-v13/0001-btrfs-patches.patch"
   "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
-  "${_patchsource}/pf-patches-v3/0001-pf-patches.patch"
+  "${_patchsource}/pf-patches-v4/0001-pf-patches.patch"
 #  "${_patchsource}/lru-patches-v4/0001-lru-patches.patch"
   "${_patchsource}/lru-gen/lru_5.12.patch"
   "${_patchsource}/le9db_patches/le9db1-5.10.patch"
@@ -97,6 +97,7 @@ source=(
   "${_patchsource}/ksm-patches/0001-ksm-patches.patch"
   "${_patchsource}/v4l2loopback-patches/0001-v4l2loopback-patches.patch"
   "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch"
+  "${_patchsource}/compaction-patches/0001-compaction-patches.patch"
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -534,7 +535,7 @@ sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
             '59dc35df675221c9e54326e4a2ca57074c955387e1d4cb0b6543424bc84bdb11'
             'f71cc3bdd9b3488ece3d7433ff65e0dd9f544f069b82e84e32ad67e2e7f64718'
             '42dc3c76534393d1b59ca3f321797566a7637bbb110f604eb9bf584b867a97a4'
-            '0b44848f5b8926a9e9db8064aeefbfb53c289923e25779c11ddb2a5b149fdb12'
+            '677aef8d233c9c19f7b9584bb979117f8f87ff4a2e82e597100b71326eb7ef76'
             '4ad652d36fdd3f5142e66407a964e8e0d3c91ab3e7094a368de1ef1b21f6d19a'
             'd68ed98e7bc5a8f9ebc48c16cd0be47be948578621a70b13fcbb13e280469056'
             '7056565c13628e7885538aca4cdb384f1a2b65c4c02a502ddfe182ddb7ce347e'
@@ -542,4 +543,5 @@ sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
             '5a0c7b01ce8baf4dc480b33eddd203a1620ad4885122a3967f580cb172d0f9b7'
             'efc3e1e4c2ef22a570a0e8cfdaea4617655e1baddce02829d6a0acc5b9a7ab58'
             '64a7a848ca409f359d16e9732f4e623126eeb89bfae85c884391b9b280facdcf'
-            '0b18daa836fd70dbabf68b1db85b01e585f8cad2f1a2ef5c2ced9db4e1f75d3a')
+            '0b18daa836fd70dbabf68b1db85b01e585f8cad2f1a2ef5c2ced9db4e1f75d3a'
+            '977595514eb3708be814bf33d65a9bdb322e94afea45dd681394c95733b5f01a')
