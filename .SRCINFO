@@ -1,6 +1,6 @@
 pkgbase = python-aiopath
 	pkgdesc = Asynchronous pathlib for Python
-	pkgver = 0.5.7
+	pkgver = 0.5.8
 	pkgrel = 1
 	url = https://github.com/alexdelorenzo/aiopath
 	arch = any
@@ -8,8 +8,9 @@ pkgbase = python-aiopath
 	makedepends = python-setuptools
 	depends = python-aiofile
 	depends = python-anyio
-	source = aiopath-0.5.7.tar.gz::https://github.com/alexdelorenzo/aiopath/archive/refs/tags/v0.5.7.tar.gz
-	sha256sums = a010bab7c7701d82631a09c569b6ee4b38e7ba4d8ad26ef2902fc0033fa4ec22
+	source = https://pypi.org/packages/source/a/aiopath/aiopath-0.5.8.tar.gz
+	source = requirements.txt
+	sha256sums = 9d45cfacb01a0de619c5ff1b69ccbd9d4721fb58ee5a8b7bab163976fef42d1f
+	sha256sums = 0bc99fef1d99908d4bd35a9bc81345124f1ebf4a7f12ac93327beac7cf7dca2d
 
 pkgname = python-aiopath
-
