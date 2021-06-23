@@ -2,7 +2,7 @@
 
 _pkgname=wla-dx
 pkgname="${_pkgname/-/_}"
-pkgver=9.12
+pkgver=10.0
 pkgrel=1
 pkgdesc='Multi Platform Cross Assembler Package for GB-Z80 (Game Boy), Z80 (GG, SMS, MSX, Spectrum, Ti86, etc), 6502 (NES, etc), 65C02 (VIC-20, etc), 6510 (C64, etc), 65816 (SNES, etc), HUC6280 (PC-Engine) and SPC-700 (SNES sound chip)'
 url='https://github.com/vhelin/wla-dx'
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 depends=('glibc')
 makedepends=('cmake' 'python-sphinx')
 source=("https://github.com/vhelin/wla-dx/archive/v$pkgver.tar.gz")
-sha512sums=('7506b7f145b2caf6a29d2d22cfc238170347281278a5ed728a705d31f4722deafcb5fbde706a72fcb0d1b653ac0eb8801a095719317469d4fb847978ac56cf89')
+sha512sums=('cd7bb4dca7dcce2db64a86e8bfbb89b133a48592ca1f90696741ab1ff23cc452a99e0dce9e4da92ae10c9c0b17908994a04ccee2b3d7bdbcf8f3a994ef8396c6')
 
 build() {
   cd $_pkgname-$pkgver
