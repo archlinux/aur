@@ -1,6 +1,6 @@
 pkgbase = rdd-git
 	pkgdesc = Redis database dumper
-	pkgver = r28.3b1d553
+	pkgver = r31.7ae95f3
 	pkgrel = 1
 	url = https://github.com/r043v/rdd
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = rdd-git
 	depends = hiredis
 	provides = rdd
 	conflicts = rdd
-	source = rdd-git::git://github.com/r043v/rdd.git
+	source = rdd-git::git+https://github.com/r043v/rdd.git
 	md5sums = SKIP
 
 pkgname = rdd-git
