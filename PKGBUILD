@@ -35,6 +35,6 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	install -Dm755 src/DDCToolbox "$pkgdir/usr/bin/DDCToolbox"
-	install -Dm644 src/"$srcdir/${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications"
+	install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications"
 	install -Dm644 img/icon.png "$pkgdir/usr/share/pixmaps/ddctoolbox.png"
 }
