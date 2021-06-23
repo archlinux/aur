@@ -1,20 +1,25 @@
 pkgbase = kryoflux
 	pkgdesc = USB Floppy Controller for Software Preservation
 	pkgver = 2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kryoflux.com
 	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = gendesk
 	depends = libusb
 	optdepends = jre7-openjdk: for the Kryoflux GUI
 	provides = capsimage
+	conflicts = capsimage
 	source = http://www.kryoflux.com/download/kryoflux_2.6_linux.tar.bz2
 	source = 80-kryoflux.rules
 	source = kryoflux.conf
+	source = kryoflux.sh
+	source = kryoflux.png
 	md5sums = 12d57dcc9657a90c583dded553b8a2e1
 	md5sums = 43ec7eb49fbdab703cafe146145fe0de
 	md5sums = ede10c48b2b1edc5c346e8814f07bcdb
+	md5sums = 0c9d40001d3ebed40dd3032cbdc7ba54
+	md5sums = 510bdad5af6d032a9543a80ae680295e
 
 pkgname = kryoflux
-
