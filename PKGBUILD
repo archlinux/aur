@@ -1,17 +1,18 @@
-# Maintainer: lmartinez-mirror
+# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+
 pkgname=python-icecream
 _name=${pkgname#python-}
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Sweet and creamy print debugging"
 arch=('any')
 url="https://github.com/gruns/icecream"
 license=('MIT')
-depends=('python' 'python-colorama>=0.3.9' 'python-pygments>=2.2.0' 'python-executing>=0.3.1' 'python-asttokens>=2.0.1')
+depends=('python-colorama>=0.3.9' 'python-pygments>=2.2.0' 'python-executing>=0.3.1' 'python-asttokens>=2.0.1')
 makedepends=('python-setuptools')
 provides=('icecream-debugging')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('c2e7b74c1c12caa2cfde050f2e636493ee77a9fb4a494b5593418ab359924a24')
+sha256sums=('47e00e3f4e8477996e7dc420b6fa8ba53f8ced17de65320fedb5b15997b76589')
 
 build() {
   cd "$_name-$pkgver"
