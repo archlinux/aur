@@ -9,7 +9,7 @@ arch=('x86_64' 'i686')
 license=('GPL3')
 
 depends=('boost-libs' 'ffmpeg' 'openssl' 'libpulse' 'opus' 'libxtst' 'libx11' 'libxfixes' 'libevdev' 'libxcb' 'udev')
-makedepends=('git' 'cmake' 'boost')
+makedepends=('git' 'cmake' 'boost' 'make')
 
 source=("$pkgname::git+https://github.com/loki-47-6F-64/sunshine.git#tag=v$pkgver"
         "udev.rules")
@@ -23,6 +23,9 @@ prepare() {
 }
 
 build() {
+    export CFLAGS="${CFLAGS/-Werror=format-security/}"
+    export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
+
     cmake \
         -S "$pkgname" \
         -B build \
