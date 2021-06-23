@@ -1,13 +1,12 @@
 pkgbase = v2ray-browserforwarder
 	pkgdesc = The browser forwarder resources of v2ray
-	pkgver = 4.39.2
+	pkgver = 4.40.1
 	pkgrel = 1
 	url = https://github.com/v2fly/v2ray-core
 	arch = any
 	license = MIT
 	conflicts = v2ray-extra
-	source = v2ray-4.39.2.tar.gz::https://github.com/v2fly/v2ray-core/archive/v4.39.2.tar.gz
-	sha512sums = eac92bfb63f7d2b465ad46ebf7d7e73639d1391c8715d6504624162dca05f632eb8bbed6c322713f08cd258d23cea82af86d1d97002bdf5fb3e61d30895e7d0b
+	source = v2ray-4.40.1.tar.gz::https://github.com/v2fly/v2ray-core/archive/v4.40.1.tar.gz
+	sha512sums = ef9a4f46fc0118793ae789151eb6e5792e96c97de5f19345c47b334ff1557b92306b731b2229b4dfd284263a205e6fb8bf29206ec32a94d875e6d3c20b6e6233
 
 pkgname = v2ray-browserforwarder
-
