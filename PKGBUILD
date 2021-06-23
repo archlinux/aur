@@ -3,7 +3,7 @@
 
 pkgname=python-asttokens
 _pkgname=asttokens
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="Annotate AST trees with source code positions"
 url="https://github.com/gristlabs/asttokens"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 license=('Apache 2.0')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('3e90edd0656e9d86daf7a7909e583a3d')
+md5sums=('0a2a057b9c9a220bffdb3e7512062f17')
 
 build() {
     cd $srcdir/asttokens-$pkgver
