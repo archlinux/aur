@@ -1,38 +1,36 @@
-# Maintainer: Anton Semjonov < a**** \ät semjonov.de >
+# Maintainer: samarthj <dev@samarthj.com>
+# Contributor: Anton Semjonov < a**** \ät semjonov.de >
 
 _pkgname="slirp4netns"
 pkgname="${_pkgname}-git"
-pkgdesc="User-mode networking for unprivileged network namespaces."
-
-pkgver=v0.3.0.r6.g67f04e2
+pkgver=v1.1.11.r14.gdf67b2f
 pkgrel=1
-
+pkgdesc="User-mode networking for unprivileged network namespaces."
 arch=('any')
-url="https://github.com/rootless-containers/$_pkgname"
-license=('GPL-2.0')
-
-depends=()
+depends=(libseccomp libslirp libcap)
 makedepends=('git')
-
-provides=($_pkgname)
-conflicts=($_pkgname)
-
-source=("${_pkgname}::git+${url}.git")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+url="https://github.com/rootless-containers/$_pkgname.git"
+license=(GPL2)
+options=('emptydirs')
+source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname" || exit 1
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-	./autogen.sh
-	./configure --prefix=/usr
-	make
+  cd $_pkgname || exit 1
+  ./autogen.sh
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  make DESTDIR="$pkgdir" install
+  cd $_pkgname || exit 1
+  make install DESTDIR="$pkgdir"
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
