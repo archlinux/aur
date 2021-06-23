@@ -1,0 +1,22 @@
+pkgbase = rime-openfly
+	pkgdesc = 词库开源的小鹤音形 Rime 配方
+	pkgver = 9.9m
+	pkgrel = 1
+	url = https://github.com/amorphobia/openfly
+	install = rime-openfly.install
+	arch = any
+	license = MIT
+	makedepends = librime
+	makedepends = rime-prelude
+	depends = rime-lua-hook
+	optdepends = ibus-rime: input support
+	optdepends = fcitx-rime: input support
+	optdepends = fcitx5-rime: input support
+	source = rime-openfly-9.9m.tar.gz::https://github.com/amorphobia/openfly/archive/v9.9m.tar.gz
+	source = openfly.lua
+	source = rime-openfly.install
+	sha256sums = 25210ecdb652179f5f71048174f2792b8d5d5dc7a08ddc67a60e21af2a805ae2
+	sha256sums = 7cd0316f88ee7bc19ef64b8afa82757208daa7f3818819f26395e1775a702368
+	sha256sums = f90e6ba63a7a347c1cb4dce15782df4f5526ec174659eb23d55fe9f8b4b914cd
+
+pkgname = rime-openfly
