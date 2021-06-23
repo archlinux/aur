@@ -1,7 +1,7 @@
 pkgbase = cloudron-cli
 	pkgdesc = Cloudron Commandline Tool
 	pkgver = 4.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.cloudron.io/cloudron/cloudron-cli
 	arch = any
 	license = MIT
