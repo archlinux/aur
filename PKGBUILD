@@ -4,8 +4,8 @@ _base=url-normalize
 pkgname=python-${_base}
 pkgdesc="URL normalization for Python"
 pkgver=1.4.3
-pkgrel=3
-arch=('x86_64')
+pkgrel=4
+arch=('any')
 url="https://github.com/niksite/${_base}"
 license=(MIT)
 depends=(python-six)
@@ -27,11 +27,12 @@ build() {
 
 check() {
   cd "${_base}-${pkgver}"
-  tox -e py39
+  tox -e py$(python -c "import sys; print(sys.version[:3].replace('.', ''))")
 }
 
 package() {
   cd "${_base}-${pkgver}"
   PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}" --ignore-installed --no-deps dist/*.whl
+  rm -r "${pkgdir}$(python -c "import site; print(site.getsitepackages()[0])")/${_base//-/_}/__pycache__"
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

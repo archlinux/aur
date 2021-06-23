@@ -1,9 +1,9 @@
 pkgbase = python-url-normalize
 	pkgdesc = URL normalization for Python
 	pkgver = 1.4.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/niksite/url-normalize
-	arch = x86_64
+	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-tox
