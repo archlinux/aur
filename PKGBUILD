@@ -2,7 +2,7 @@
 
 pkgname=dust-bin
 _realname="${pkgname%-bin}"
-pkgver=0.5.4
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="du + rust = dust. Like du but more intuitive"
 arch=("x86_64" "i686")
@@ -12,8 +12,8 @@ provides=("${_realname}")
 conflicts=("${_realname}")
 source_x86_64=("https://github.com/bootandy/${_realname}/releases/download/v${pkgver}/${_realname}-v${pkgver}-x86_64-unknown-linux-musl.tar.gz")
 source_i686=("https://github.com/bootandy/${_realname}/releases/download/v${pkgver}/${_realname}-v${pkgver}-i686-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=('33e2f90682a29e71a492883bb857ab45aaaa2af361b57a40ea526ff399bf91eb')
-sha256sums_i686=('20ea2b5696628824b59b4033d42571c09850bbc314df7e3dc31cfd32bfbd84ed')
+sha256sums_x86_64=('585892cc787941bd395f2b09ab1478a943ec2c84b43572a82dd021a6edf7fb64')
+sha256sums_i686=('2005739406d5785e627142331db318e7f2d8f58c332080991e58af434331d386')
 
 package() {
   cd "${srcdir}/${_realname}-v${pkgver}-"*/
