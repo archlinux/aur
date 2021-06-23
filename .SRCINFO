@@ -1,6 +1,6 @@
 pkgbase = nvidia-dkms-performance
 	pkgver = 470.42.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
@@ -18,7 +18,7 @@ pkgbase = nvidia-dkms-performance
 	sha256sums = ae1fee1238da7aeb0e2d3e3d3fe4478dfe3a2bcbbab529586ac8f3bb55aa47ae
 	sha256sums = d8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167
 	sha256sums = 717920f48b4d7ec50b83d2d096bab36449b30f1b5d144f0fe586627025367293
-	sha256sums = 1bc089100f8eb43634f065008b8b6e4a13070f5341d2929cecff51a40a8adeba
+	sha256sums = 60552f23b1f5aec374cc012cc8240176e1a6571cdcb5dba37ff825c73e85b423
 	sha256sums = ed20d9fa8b04d8f519feef42f4ffea7998bc29457b4e48d0b2ca863330125fce
 	sha256sums = 7d9392f36374ab609417abe4b5493bbb9d868a2ee29cdb877d4be8b098eb527b
 	sha256sums = 898fe80847fb2974e1d16b380c16569ddb3ab24c6974bbeb72d68e8e13902311

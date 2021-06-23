@@ -34,6 +34,8 @@ index 4e23d59..4381d45 100644
 +DEST_MODULE_LOCATION[2]="/kernel/drivers/video"
 +BUILT_MODULE_NAME[3]="nvidia-drm"
 +DEST_MODULE_LOCATION[3]="/kernel/drivers/video"
++BUILT_MODULE_NAME[4]="nvidia-peermem"
++DEST_MODULE_LOCATION[4]="/kernel/drivers/video"
 +
 -- 
 2.31.1

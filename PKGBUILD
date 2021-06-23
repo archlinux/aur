@@ -69,7 +69,7 @@ _override_max_perf=
 pkgbase=nvidia-dkms-performance
 pkgname=(nvidia-dkms-performance nvidia-settings-performance nvidia-utils-performance opencl-nvidia-performance lib32-nvidia-utils-performance lib32-opencl-nvidia-performance)
 pkgver=470.42.01
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.nvidia.com/'
 license=('custom')
@@ -296,6 +296,13 @@ package_nvidia-utils-performance() {
     
     # NGX
     install -D -m755 "libnvidia-ngx.so.${pkgver}" -t "${pkgdir}/usr/lib"
+
+    # wine nvngx lib
+    install -D -m755 "_nvngx.dll" -t "${pkgdir}/usr/lib/nvidia/wine"
+    install -D -m755 "nvngx.dll" -t "${pkgdir}/usr/lib/nvidia/wine"
+
+    # nvvm
+    install -D -m755 "libnvidia-nvvm.so.4.0.0" -t "${pkgdir}/usr/lib"
     
     # DEBUG
     install -D -m755 nvidia-debugdump -t "${pkgdir}/usr/bin"
@@ -425,7 +432,7 @@ sha256sums=('cdf554eafd5ccea00cd0e961e26337b7e8337ac8a2ad57ef019cfb3d62b58913'
             'ae1fee1238da7aeb0e2d3e3d3fe4478dfe3a2bcbbab529586ac8f3bb55aa47ae'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
             '717920f48b4d7ec50b83d2d096bab36449b30f1b5d144f0fe586627025367293'
-            '1bc089100f8eb43634f065008b8b6e4a13070f5341d2929cecff51a40a8adeba'
+            '60552f23b1f5aec374cc012cc8240176e1a6571cdcb5dba37ff825c73e85b423'
             'ed20d9fa8b04d8f519feef42f4ffea7998bc29457b4e48d0b2ca863330125fce'
             '7d9392f36374ab609417abe4b5493bbb9d868a2ee29cdb877d4be8b098eb527b'
             '898fe80847fb2974e1d16b380c16569ddb3ab24c6974bbeb72d68e8e13902311'
