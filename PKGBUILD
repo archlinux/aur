@@ -1,22 +1,19 @@
 # Maintainer: Dominik Wetzel <dimonok@web.de>
-# Contributor: Julian Eckhardt <julian@eckhardt.fi>
+# Contributors: Julian Eckhardt <julian@eckhardt.fi>, Paulo Marcos <contato-myghi63@protonmail.com>
 pkgname=kyocera_universal
-pkgver=5.0.0
+pkgver=8.0.0
 pkgrel=1
-pkgdesc="Kyocera Printing Package for many Kyocera printers (stripped of kdialog5)."
-arch=('x86_64' 'i386')
+pkgdesc="Kyocera Printing Package for many Kyocera printers (stripped of kdialog8)."
+arch=('x86_64' 'i686')
 url="https://www.kyocera.com/"
 license=('other')
-depends=('bash-completion' 'cups-filters' 'gcc-libs' 'krb5' 'libcups' 'libgcrypt' 'python2-reportlab' 'zlib' 'python2-pypdf2' 'python2' 'lib32-zlib' 'lib32-libcups' 'lib32-libdbus')
-arch=('i686' 'x86_64')
+depends=('cups-filters' 'dbus' 'gcc-libs' 'glibc' 'krb5' 'libcups' 'libgcrypt' 'python-reportlab' 'python-setuptools' 'zlib')
 makedepends=('unzip' 'wget')
 DLAGENTS=("https::/usr/bin/wget")
-toDwnld="KyoceraLinux_Phase5-2018.08.29" 
-source=("https://cdn.kyostatics.net/dlc/de/driver/all/kyoceralinuxpackages-20160420-upd-v3.-downloadcenteritem-Single-File.downloadcenteritem.tmp/${toDwnld}" 
-python2.patch)
+toDwnld="KyoceraLinuxPackages_20201222_tar_gz.download.gz"
+source=("https://www.kyoceradocumentsolutions.us/content/download-center-americas/us/drivers/drivers/${toDwnld}")
 install=kyodialog-bin.install
-md5sums=('0fbc4ddc4ed392dd92f42a119d01072f'
-	 '9a439ff46454c2b0f7c4d2411ba2237e')
+md5sums=('3b9819e9e1654cbd3ed837731d87039f')
 
 if [ "$arch" == "x86_64" ]; then
   _arch="amd64"
@@ -24,27 +21,28 @@ else
   _arch="i386"
 fi
 
+major=${pkgver%.*.*}
+
 ###########################
 # CHOOSE YOUR REGION HERE #
 ###########################
-Region="EU"
-# Region="Global"
+# Region="EU"
+Region="Global"
 
 prepare() {
   cd $srcdir
-  tar xzf KyoceraLinux-Phase5-2018.08.29.tar.gz -C .
-  ar xv Debian/${Region}/kyodialog_${_arch}/kyodialog_5.0-0_${_arch}.deb
+  tar xzf ${toDwnld} -C .
+  ar xv Debian/${Region}/kyodialog_${_arch}/kyodialog_${major}.0-0_${_arch}.deb
   tar xzf data.tar.gz -C .
-  patch -Np0 -i python2.patch
 }
 
 package() {
   # Remove unnecessary stuff
   cd $srcdir
-  rm -r usr/share/kyocera5/Python
+  rm -r usr/share/kyocera${major}/Python
   rm -r usr/share/applications
-  rm usr/share/kyocera5/appicon_F.png
-  rm usr/bin/kyodialog5
+  rm usr/share/kyocera${major}/appicon_G.png
+  rm usr/bin/kyodialog${major}
   install -D -m644 "usr/share/doc/kyodialog/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
   rm -r ${srcdir}/usr/share/doc
   cd $pkgdir
