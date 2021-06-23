@@ -1,17 +1,17 @@
 pkgbase = mlbv
 	pkgdesc = Command-line interface to MLB game information, schedule, scores, and standings.
 	pkgver = 0.0.18
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kmac/mlbv
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
-	depends = python-requests
-	depends = python-lxml
 	depends = python-dateutil
+	depends = python-lxml
+	depends = python-pytz
+	depends = python-requests
 	depends = streamlink
 	source = https://files.pythonhosted.org/packages/16/e8/7a22675c337f370167f79bf16a952443e32e617596077411183c3dc3b5e0/mlbv-0.0.18.tar.gz
 	md5sums = cd93e5620f3991c98c8473ad46d9c00e
 
 pkgname = mlbv
-
