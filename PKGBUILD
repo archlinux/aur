@@ -1,0 +1,37 @@
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+pkgname=terri-fried-git
+pkgver=r34.463aa1e
+pkgrel=1
+pkgdesc="A multi-platform C++ game made for Ludum Dare 46"
+arch=('any')
+url="https://github.com/polymarsdev/terri-fried"
+license=('custom')
+depends=('raylib' 'pulseaudio')
+makedepends=('git' 'raylib')
+source=('terri-fried-git::git+https://github.com/polymarsdev/terri-fried' 'terri-fried' 'terri-fried.desktop')
+sha256sums=('SKIP'
+            '18f7163da30769b589b2d8b34183f9baf8f19b2ce330d2cef35076e4c3960e44'
+            '2dff3eb7f21bd5dd7a16b9fc1ed53a4de82df389cd98c0ad28a31af4b7571fec')
+pkgver() {
+	cd "$srcdir/terri-fried-git"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+	cd "$srcdir/terri-fried-git/windows/raylib"
+	g++ -O3 -march=native -flto -o terri-fried main.cpp player.cpp platform.cpp -lraylib
+}
+
+package() {
+	cd "$pkgdir"
+	mkdir -p "usr/share/terri-fried/"
+	mkdir -p "usr/bin/"
+	mkdir -p "usr/share/icons/hicolor/32x32/apps"
+	mkdir -p "usr/share/applications"
+	cp "$srcdir/terri-fried-git/windows/raylib/terri-fried" "$pkgdir/usr/share/terri-fried/."
+	cp -r "$srcdir/terri-fried-git/windows/raylib/resources" "$pkgdir/usr/share/terri-fried/."
+	cp "$srcdir/terri-fried" "$pkgdir/usr/bin/."
+	cp "$srcdir/terri-fried-git/windows/raylib/resources/egg.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/terri-fried.png"
+	cp "$srcdir/terri-fried.desktop"  "$pkgdir/usr/share/applications/."
+
+}

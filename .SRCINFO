@@ -1,0 +1,19 @@
+pkgbase = terri-fried-git
+	pkgdesc = A multi-platform C++ game made for Ludum Dare 46
+	pkgver = r34.463aa1e
+	pkgrel = 1
+	url = https://github.com/polymarsdev/terri-fried
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = raylib
+	depends = raylib
+	depends = pulseaudio
+	source = terri-fried-git::git+https://github.com/polymarsdev/terri-fried
+	source = terri-fried
+	source = terri-fried.desktop
+	sha256sums = SKIP
+	sha256sums = 18f7163da30769b589b2d8b34183f9baf8f19b2ce330d2cef35076e4c3960e44
+	sha256sums = 2dff3eb7f21bd5dd7a16b9fc1ed53a4de82df389cd98c0ad28a31af4b7571fec
+
+pkgname = terri-fried-git

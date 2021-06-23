@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Created by HurricanePootis
+
+cd "$HOME/.config" || exit
+
+if ls | grep terri-fried 1> /dev/null
+then
+	echo "bruh" > /dev/null
+else 
+	mkdir terri-fried 
+fi
+
+
+cd "$HOME/.config/terri-fried" || exit
+cp -r "/usr/share/terri-fried/resources" "$HOME/.config/terri-fried/."
+cp "/usr/share/terri-fried/terri-fried" "$HOME/.config/terri-fried/."
+
+"./terri-fried"
+
+wait
+rm -rf "$HOME/.config/terri-fried/terri-fried" "$HOME/.config/terri-fried/resources"
+exit

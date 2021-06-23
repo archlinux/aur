@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Terri-Fried
+Comment=A multi-platform C++ game made for Ludum Dare 46
+Exec=/usr/bin/terri-fried
+Icon=terri-fried
+Terminal=false
+Type=Application
+Categories=Game;
