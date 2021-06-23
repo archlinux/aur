@@ -1,18 +1,24 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=libhandy-glade-catalog-disabled-git
-pkgver=0.91.0.r1.ge3fb740
+pkgver=1.2.2.r24.g2a55315
 pkgrel=1
-pkgdesc="Library full of GTK+ widgets for mobile phones"
-url="https://gitlab.gnome.org/GNOME/libhandy"
-license=(LGPL2.1)
-arch=(i686 x86_64 armv7h aarch64)
+pkgdesc='Library full of GTK+ widgets for mobile phones'
+url='https://gitlab.gnome.org/GNOME/libhandy'
+license=(LGPL)
+arch=(x86_64 aarch64)
 depends=(gtk3)
-makedepends=(git glade gobject-introspection meson vala)
-provides=("libhandy=1" libhandy-1.so libhandy1)
-conflicts=("libhandy>=0.80.0" libhandy1 libhandy-git)
+makedepends=(
+	git
+	gobject-introspection
+	meson
+	vala
+)
+checkdepends=(xorg-server-xvfb)
+provides=(libhandy libhandy-1.so)
+conflicts=(libhandy)
 source=("git+$url.git")
-md5sums=(SKIP)
+md5sums=('SKIP')
 
 pkgver() {
     cd libhandy
@@ -20,12 +26,14 @@ pkgver() {
 }
 
 build() {
-    arch-meson libhandy build -Dgtk_doc=true -Dexamples=false -Dglade_catalog=disabled
-    ninja -C build
+    arch-meson libhandy build -D gtk_doc=true -D examples=false -D glade_catalog=disabled
+    meson compile -C build
 }
 
 check() {
-    meson test -C build --print-errorlogs
+	dbus-run-session xvfb-run \
+		-s '-screen 0 1920x1080x24 -nolisten local' \
+		meson test -C build --print-errorlogs
 }
 
 package() {
