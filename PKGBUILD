@@ -8,7 +8,7 @@ pkgdesc="Library for Nintendo 3DS homebrew development"
 arch=('any')
 url="https://github.com/smealum/ctrulib"
 license=('custom: zlib')
-depends=('devkitarm')
+depends=('devkitARM')
 makedepends=('git')
 provides=('libctru')
 conflicts=('libctru')
@@ -22,7 +22,7 @@ pkgver() {
 }
 
 build() {
-  source /etc/profile.d/devkitarm.sh
+  source /etc/profile.d/devkit-env.sh
   make -C "${srcdir}/${_gitname}/${_libname}"
 }
 
