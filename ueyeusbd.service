@@ -1,5 +1,7 @@
 [Unit]
 Description=IDS uEye USB deamon
+Wants=systemd-udev-settle.service
+After=systemd-udev-settle.service
 
 [Service]
 Type=forking
