@@ -1,4 +1,6 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
+# python-cleo is out of date in community repo, so this package is
+# providing latest version available from pypi
 # pkg: pypi cleo
 _name=cleo
 pkgname=python-$_name-pypi
