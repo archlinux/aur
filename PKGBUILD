@@ -2,7 +2,7 @@
 # Maintainer: Hunter Wittenborn <hunter@hunterwittenborn.com>
 
 pkgname=makedeb-alpha
-pkgver=4.2.8
+pkgver=4.2.9
 pkgrel=1
 pkgdesc="Create Debian archives from PKGBUILDs (alpha release)"
 arch=('any')
