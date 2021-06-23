@@ -1,7 +1,7 @@
 # Maintainer: Fansure Grin <quarlong@qq.com>
 pkgname='keymanager'
 pkgver=4.4.19
-_pkgname="${pkgname}-${pkgver}"
+_pkgname="KeyManager-${pkgver}"
 pkgrel=1
 epoch=
 pkgdesc="Provide safe and convenient certificate application and management"
@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://keymanager.org/"
 license=('unknown')
 groups=()
-depends=()
+depends=('hicolor-icon-theme')
 makedepends=()
 checkdepends=()
 optdepends=()
