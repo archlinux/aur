@@ -1,6 +1,6 @@
 pkgbase = python-twitter
 	pkgdesc = An API and command-line toolset for Twitter (twitter.com)
-	pkgver = 1.18.0
+	pkgver = 1.19.3
 	pkgrel = 2
 	url = http://pypi.python.org/pypi/twitter/
 	arch = any
@@ -12,8 +12,7 @@ pkgbase = python-twitter
 	conflicts = python-twitter-tools-git
 	conflicts = python-twitter-git
 	replaces = python-twitter-tools
-	source = https://pypi.python.org/packages/8a/9d/cea0ec784ba05d56fbd8a56a674ca12d9b012487528ce91e0064b19224f7/twitter-1.18.0.tar.gz
-	sha256sums = acdc85e5beea752967bb64c63bde8b915c49a31a01db1b2fecccf9f2c1d5c44d
+	source = https://files.pythonhosted.org/packages/source/t/twitter/twitter-1.19.3.tar.gz
+	sha256sums = a56ff9575fbd50a51ce91107dcb5a4c3fd00c2ba1bcb172ce538b0948d3626e6
 
 pkgname = python-twitter
-
