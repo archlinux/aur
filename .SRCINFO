@@ -1,8 +1,8 @@
 pkgbase = fatattr-git
 	pkgdesc = Small linux application to see or modify MSDOS attributes in a FAT file system
 	pkgver = r7.0d6431f
-	pkgrel = 1
-	url = https://github.com/Terseus/fatattr
+	pkgrel = 2
+	url = https://gitlab.com/Terseus/fatattr
 	arch = x86_64
 	arch = i686
 	arch = arm
@@ -15,8 +15,9 @@ pkgbase = fatattr-git
 	makedepends = clang
 	provides = fatattr
 	conflicts = fatattr
-	source = fatattr-git::git+https://github.com/Terseus/fatattr.git#branch=master
+	source = fatattr-git::git+https://gitlab.com/Terseus/fatattr.git#branch=master
+	source = scons.patch
 	md5sums = SKIP
+	md5sums = 1e4b2764a0940840bb842ac83ff5e655
 
 pkgname = fatattr-git
-

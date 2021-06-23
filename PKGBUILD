@@ -1,17 +1,23 @@
 # Maintainer: noirscape <deepnavy at waifu dot club>
 pkgname=fatattr-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=r7.0d6431f
-pkgrel=1
+pkgrel=2
 pkgdesc="Small linux application to see or modify MSDOS attributes in a FAT file system"
 arch=("x86_64" "i686" "arm" "armv6h" "armv7h" "aarch64")
-url="https://github.com/Terseus/fatattr"
+url="https://gitlab.com/Terseus/fatattr"
 license=('GPL')
 depends=()
 makedepends=('git' 'scons' 'clang') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("fatattr")
 conflicts=("fatattr")
-source=("$pkgname"::'git+https://github.com/Terseus/fatattr.git#branch=master')
-md5sums=('SKIP')
+source=("$pkgname"::'git+https://gitlab.com/Terseus/fatattr.git#branch=master' "scons.patch")
+md5sums=('SKIP'
+         '1e4b2764a0940840bb842ac83ff5e655')
+
+prepare() {
+	cd "$srcdir/${pkgname%-VCS}"
+	patch --forward --strip=1 --input="${srcdir}/scons.patch"
+}
 
 pkgver() {
 	cd "$srcdir/${pkgname%-VCS}"

@@ -1,0 +1,12 @@
+diff --unified --recursive --text fatattr-git/SConstruct fatattr-git.new/SConstruct
+--- fatattr-git/SConstruct	2021-06-23 15:01:11.901818255 +0200
++++ fatattr-git.new/SConstruct	2021-06-23 15:02:16.761816121 +0200
+@@ -69,7 +69,7 @@
+             print("%s => '%s'" % (name, varlist[name]))
+     if V_PRINTENV > 1:
+         print("Dumping SCons environment...")
+-        print env.Dump()
++        print(env.Dump())
+     exit(0)
+ 
+ dosfs_o = env.Object(V_DOSFS_C)
