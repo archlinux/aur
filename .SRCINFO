@@ -1,0 +1,18 @@
+pkgbase = khealthcertificate-git
+	pkgdesc = Handling of digital vaccination, test and recovery certificates
+	pkgver = r16.4b2cf8a
+	pkgrel = 1
+	url = https://invent.kde.org/pim/khealthcertificate
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	depends = qt5-declarative
+	depends = kcodecs-git
+	depends = karchive-git
+	provides = khealthcertificate
+	conflicts = khealthcertificate
+	source = git+https://invent.kde.org/pim/khealthcertificate.git
+	sha256sums = SKIP
+
+pkgname = khealthcertificate-git
