@@ -4,7 +4,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=curl
-_cranver=4.3.1
+_cranver=4.3.2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -15,7 +15,7 @@ license=(MIT)
 depends=('r>=3.0.0' curl)
 optdepends=(r-spelling r-testthat r-knitr r-jsonlite r-rmarkdown r-magrittr r-httpuv r-webutils)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('2266cb041addf121195108975ae1ad34c433046a7b4e95eec630ee5eda5fff62')
+sha256sums=('90b1facb4be8b6315bb3d272ba2dd90b88973f6ea1ab7f439550230f8500a568')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
