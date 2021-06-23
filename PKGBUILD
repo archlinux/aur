@@ -3,7 +3,7 @@
 # Contributor: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=lua-language-server
-pkgver=1.21.2
+pkgver=2.0.1
 pkgrel=1
 license=('MIT')
 pkgdesc='Lua Language Server coded by Lua'
@@ -15,6 +15,8 @@ source=(
   "${pkgname}::git+https://github.com/sumneko/lua-language-server.git#tag=${pkgver}"
   'wrapper'
 )
+cksums=('SKIP'
+        '1766996792')
 sha256sums=('SKIP'
             'd61e2b4544bb3a4ef052f7d1c6dbc14a3bfd45e0488d231cccdd553b7e22243b')
 b2sums=('SKIP'
