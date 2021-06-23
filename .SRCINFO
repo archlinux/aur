@@ -1,0 +1,19 @@
+pkgbase = jdk11-j9-bin
+	pkgdesc = IBM® SDK, Java Technology Edition, Version 11
+	pkgver = 11.0.11.0
+	pkgrel = 1
+	url = https://www.ibm.com/support/pages/java-sdk-downloads-version-110
+	arch = x86_64
+	license = custom
+	makedepends = coreutils
+	makedepends = bash
+	depends = java-environment-common
+	depends = ca-certificates-utils
+	depends = nss
+	provides = java-environment=11
+	provides = java-runtime=11
+	provides = java-runtime-headless=11
+	source = install_11.0.11.0.bin::https://public.dhe.ibm.com/ibmdl/export/pub/systems/cloud/runtimes/java/11.0.11.0/linux/x86_64/ibm-java-jdk_x64_linux_11.0.11.0-archive.bin
+	sha256sums = 037363b1dd35d7b6a67137baf1c73589b4f7b4e177d40394897726ad6056babd
+
+pkgname = jdk11-j9-bin
