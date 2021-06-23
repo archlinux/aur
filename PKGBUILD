@@ -1,4 +1,4 @@
-# Maintainer: Dustin Childers <dchilders@gmail.com>
+# Maintainer: Rene <rene+_arch@reneschmidt.de>
 
 pkgname=littlenavmap-bin
 pkgver=2.6.13
