@@ -1,6 +1,6 @@
 pkgbase = mwoffliner
 	pkgdesc = Mediawiki/Parsoid HTML snapshot utility and ZIM file builder
-	pkgver = 1.11.1
+	pkgver = 1.11.7
 	pkgrel = 1
 	url = https://github.com/openzim/mwoffliner#readme
 	arch = any
@@ -15,9 +15,8 @@ pkgbase = mwoffliner
 	depends = pngquant
 	depends = imagemagick
 	depends = redis
-	noextract = mwoffliner-1.11.1.tgz
-	source = https://registry.npmjs.org/mwoffliner/-/mwoffliner-1.11.1.tgz
-	sha256sums = f8a560408790add88844bbcf0832801467a45920f257c6ba5e4d0332f238791c
+	noextract = mwoffliner-1.11.7.tgz
+	source = https://registry.npmjs.org/mwoffliner/-/mwoffliner-1.11.7.tgz
+	sha256sums = 6060aa8c5465bba16ffb9a41c60117deb5b0dd986b0adec3a9a7f8e21fb60fbb
 
 pkgname = mwoffliner
-

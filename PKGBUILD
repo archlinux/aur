@@ -1,7 +1,7 @@
 # Maintainer: Justin Kromlinger <mail at hashworks dot net>
-# Contributor: Valentijn "noirscape" V. <neko at catgirlsin dot space>
+# Contributor: Lucy "noirscape" <neko at catgirlsin dot space>
 pkgname=mwoffliner
-pkgver=1.11.1
+pkgver=1.11.7
 pkgrel=1
 pkgdesc="Mediawiki/Parsoid HTML snapshot utility and ZIM file builder"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('zim-tools' 'nodejs' 'npm' 'jpegoptim' 'advancecomp' 'gifsicle' 'pngqua
 optdepends=()
 source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
-sha256sums=('f8a560408790add88844bbcf0832801467a45920f257c6ba5e4d0332f238791c')
+sha256sums=('6060aa8c5465bba16ffb9a41c60117deb5b0dd986b0adec3a9a7f8e21fb60fbb')
 makedepends=('jq')
 
 package() {
