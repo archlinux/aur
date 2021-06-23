@@ -24,7 +24,7 @@ sha512sums=('32ff6d315e8cf9d59485802d5284fde53fa2d9f40ec238428a479f8a1ed1359e9be
 prepare() {
   set -u
   cd "${_srcdir}"
-  #sed -e "/^\s\+'4.4' / s:): | '5.0'&:g" -i 'configure'
+  sed -e "/^\s\+'5.0' / s:): | '5.1'&:g" -i 'configure'
   set +u
 }
 
