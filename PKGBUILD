@@ -1,8 +1,8 @@
 # Maintainer: Pete Alexandrou <pete@ozmartians.com>
 pkgname=vidcutter-git
 pkgver=6.0.5.1
-pkgrel=1
-pkgdesc='A modern, simple to use, constantly evolving and hella fast MEDIA CUTTER + JOINER w/ frame-accurate SmartCut technology + Qt5, libmpv, FFmpeg and MediaInfo powering the backend.'
+pkgrel=2
+pkgdesc='A modern and fast media cutter and joiner'
 arch=('x86_64')
 license=('GPL3')
 url="https://vidcutter.ozmartians.com"
