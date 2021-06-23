@@ -1,0 +1,13 @@
+pkgbase = keymanager
+	pkgdesc = Provide safe and convenient certificate application and management
+	pkgver = 4.4.19
+	pkgrel = 1
+	url = https://keymanager.org/
+	arch = x86_64
+	license = unknown
+	noextract = .AppImage
+	options = !strip
+	source = https://keymanager.trustasia.com/release/keymanager-4.4.19.AppImage
+	sha256sums = a7f1d262762024412819ea7ed9be7a73bf129b80c1ef3a66c9ae12cf72ddb012
+
+pkgname = keymanager
