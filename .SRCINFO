@@ -1,7 +1,7 @@
 pkgbase = riseup-vpn-terminal
-	pkgdesc = Bash script to start Riseup VPN on a terminal
+	pkgdesc = Bash script to start Riseup VPN on a terminal; useful, e.g., when on GNOME or Phoc (PinePhone) without tray icons
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = MIT
 	makedepends = git
