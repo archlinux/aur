@@ -5,7 +5,7 @@
 # Contributor: Jamesjon <universales@protonmail.com>
 pkgname=plymouth-kcm
 pkgver=5.22.2
-pkgrel=2
+pkgrel=1
 pkgdesc="KCM to manage the Plymouth (Boot) theme"
 arch=('any')
 url="https://invent.kde.org/plasma/plymouth-kcm.git"

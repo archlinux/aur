@@ -1,7 +1,7 @@
 pkgbase = plymouth-kcm
 	pkgdesc = KCM to manage the Plymouth (Boot) theme
 	pkgver = 5.22.2
-	pkgrel = 2
+	pkgrel = 1
 	url = https://invent.kde.org/plasma/plymouth-kcm.git
 	arch = any
 	license = GPL
