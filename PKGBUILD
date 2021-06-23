@@ -5,7 +5,7 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 _name=aspy.refactor_imports
 pkgname=python-aspy-refactor-imports
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Utilities for refactoring imports in python-like syntax.'
 arch=(any)
@@ -15,7 +15,7 @@ depends=(python python-cached-property)
 makedepends=(python-pip python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
         LICENSE)
-md5sums=('a98fb0d778516de08fccbfe346534413'
+md5sums=('36c10522fb5ccf6a43ec603d8eff496e'
          'ec6e4db5d90408877624a1ff7086f824')
 
 _first_source() {
