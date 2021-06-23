@@ -19,9 +19,9 @@ post_install() {
   $ECHO "\033[36m**************************************************************\033[0m"
 }
 
-pre_upgrade() {
-  chmod 0755 /opt/todesk
-}
+# pre_upgrade() {
+#   chmod 0755 /opt/todesk
+# }
 
 post_upgrade() {
   post_install

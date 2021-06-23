@@ -2,18 +2,20 @@
 
 pkgname=todesk-bin
 _pkgname=${pkgname%-bin}
-pkgver=1.2.5
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Remote control and team work"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.todesk.com/"
 license=('unknown')
+depends=('gtk3')
 makedepends=('tar')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 # !strip: strip could generate error.
 # ---> 
-# strip: error: the input file './opt/todesk/bin/todeskc' has no sections
+# strip: error: the input file './opt/todesk/bin/todesk' has no sections
+# strip: error: the input file './opt/todesk/bin/todeskd' has no sections
 #
 # emptydirs: leave /opt/todesk/config empty dir
 options=('!strip' 'emptydirs')
@@ -21,9 +23,9 @@ install="${_pkgname}.install"
 source_x86_64=("https://dl.todesk.com/linux/${_pkgname}_${pkgver}_amd64.deb")
 source_aarch64=("https://dl.todesk.com/linux/${_pkgname}_${pkgver}_aarch64.deb")
 source_armv7h=("https://dl.todesk.com/linux/${_pkgname}_${pkgver}_armv7.deb")
-sha256sums_x86_64=('34435c420b8f4afc9337cdf1f131c97a5194e12971906bc9a00a142bd74e7d51')
-sha256sums_aarch64=('f3139bf50c5fca2d1cd0583545e1f1cec6f6ed7243a3556401fbc29325fe3a70')
-sha256sums_armv7h=('479deb3f3a55bf177da1c355ee2700537dfc2ed33594f681c8409286fa12d5d6')
+sha256sums_x86_64=('992a78b37b8e141650b7dde5ee99055c7538761968a081d2ee6eb462d8126270')
+sha256sums_aarch64=('8830915c443ca51bd73996cffc50c8218478f0bde6e7686d4dc1dd88aa399091')
+sha256sums_armv7h=('bbd8f352d8bd08b0e159a5c529f12bb6c3bd22d6217ac99a8134e7bd4d77b931')
 
 build() {
   mkdir -p ${srcdir}/build
@@ -39,9 +41,9 @@ package() {
 
   # lib
   find opt/${_pkgname}/lib     -type f -exec install -Dm644 {} ${pkgdir}/{} \;
-  find opt/${_pkgname}/plugins -type f -exec install -Dm644 {} ${pkgdir}/{} \;
+  # find opt/${_pkgname}/plugins -type f -exec install -Dm644 {} ${pkgdir}/{} \;
 
-  # font
+  # font & icon
   find opt/${_pkgname}/res     -type f -exec install -Dm644 {} ${pkgdir}/{} \;
 
   # config 
@@ -54,7 +56,7 @@ package() {
   install -Dm755 opt/${_pkgname}/bin/${_pkgname}c -t ${pkgdir}/opt/${_pkgname}/bin
 
   # qt.conf 
-  install -Dm644 opt/${_pkgname}/bin/qt.conf -t ${pkgdir}/opt/${_pkgname}/bin
+  # install -Dm644 opt/${_pkgname}/bin/qt.conf -t ${pkgdir}/opt/${_pkgname}/bin
 
   # desktop entry 
   install -Dm644 usr/share/applications/${_pkgname}.desktop -t ${pkgdir}/usr/share/applications
