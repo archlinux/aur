@@ -16,7 +16,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=13.0.0_r388001.dedca78d486e
+pkgver=13.0.0_r391812.dfb8c0873984
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -122,6 +122,8 @@ package_llvm-git() {
     
     # Move analyzer scripts out of /usr/libexec
     mv "$pkgdir"/usr/libexec/{ccc,c++}-analyzer "$pkgdir"/usr/lib/clang/
+    mv "$pkgdir"/usr/libexec/analyze-{cc,c++} "$pkgdir"/usr/lib/clang/
+    mv "$pkgdir"/usr/libexec/intercept-{cc,c++} "$pkgdir"/usr/lib/clang/
     rmdir "$pkgdir"/usr/libexec
     sed -i 's|libexec|lib/clang|' "$pkgdir"/usr/bin/scan-build
 
