@@ -15,8 +15,8 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd "$srcdir/gdb-$pkgver"
-  # gdbserver.exe: undefined ref to dlopen
-  #sed -i "s|GDBSERVER_LIBS = @GDBSERVER_LIBS@|GDBSERVER_LIBS = -ldl @GDBSERVER_LIBS@|g" gdb/gdbserver/Makefile.in
+  # https://sourceware.org/bugzilla/show_bug.cgi?id=27657
+  sed -i "s|LIBS = @LIBS@|LIBS = @LIBS@ -lbcrypt|g" gnulib/import/Makefile.in
 }
 
 build() {
