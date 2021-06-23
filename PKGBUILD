@@ -1,7 +1,7 @@
 # Maintainer: dllud <dllud riseup net>
 
 pkgname=ckb-cli-bin
-pkgver=0.42.1
+pkgver=0.43.0
 pkgrel=1
 pkgdesc="Nervos CKB (Common Knowledge Base) command line tool"
 arch=('x86_64')
@@ -11,8 +11,8 @@ conflicts=('ckb-cli')
 provides=('ckb-cli')
 options=(!strip)
 source=("https://github.com/nervosnetwork/ckb-cli/releases/download/v${pkgver}/ckb-cli_v${pkgver}_x86_64-unknown-linux-gnu.tar.gz"{,.asc})
-validpgpkeys=('64B705B560781FC540477B824F37F694F4631C0A')
-b2sums=('1b41350cee0a6ddaf23f4dd71e721961a2796974ffe046bc1d4799369213b2e839a27875e5447c0c1e91184123362f421d1fb956b6b87a49528a6d9c5f079031'
+validpgpkeys=('8D09AC56856F84AFDB2CEB12E21C4F2E34FF2E93')
+b2sums=('9145784b8af3c59090d1c0d5c04dffd087717d24c181584b87b2339ef89e236d79b3dc5472fecea0c49c1cf3b5b4341d72967a17c5d261d5ed2685b492d00a18'
         'SKIP')
 
 package() {
