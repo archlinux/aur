@@ -21,13 +21,13 @@ source=("git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd libhandy
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd libhandy
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    arch-meson libhandy build -D gtk_doc=true -D examples=false -D glade_catalog=disabled
-    meson compile -C build
+	arch-meson libhandy build -D gtk_doc=true -D examples=false -D glade_catalog=disabled
+	meson compile -C build
 }
 
 check() {
@@ -37,5 +37,5 @@ check() {
 }
 
 package() {
-    DESTDIR="$pkgdir" meson install -C build
+	DESTDIR="$pkgdir" meson install -C build
 }
