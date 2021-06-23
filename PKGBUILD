@@ -2,13 +2,13 @@
 
 pkgname=otf-tenderness
 pkgver=0.601
-pkgrel=1
+pkgrel=2
 pkgdesc='Serif font with a soft impression'
 arch=('any')
 url='http://dotcolon.net/font/?id=tenderness'
 license=('custom')
 depends=('fontconfig' 'xorg-font-utils')
-source=("http://dotcolon.net/DL/font/tenderness_${pkgver/./}.zip")
+source=("http://dotcolon.net/download/fonts/tenderness_${pkgver/./}.zip")
 sha256sums=('e9d512398aca5ae3633795b80918af30df7c7d616a5c381d130bf8ca32037891')
 
 package() {
