@@ -4,7 +4,7 @@
 
 pkgname=dcmtk
 pkgver=3.6.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of libraries and applications implementing large parts the DICOM standard"
 arch=('i686' 'x86_64')
 url="http://dicom.offis.de/dcmtk"
@@ -14,9 +14,6 @@ optdepedns=('libiconv')
 makedepends=('cmake' 'make')
 source=("ftp://dicom.offis.de/pub/dicom/offis/software/dcmtk/dcmtk366/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('2bba96eac5908012eec7f510e05e7e426b3f1d2454fcdec056a3de9eb724b04d9d12f3cd0088b1f3be9c32430367600abdf30514d0f62c2f017f7740d1008b63')
-
-#Currently it's not building otherwise
-options=(!buildflags)
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
