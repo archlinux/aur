@@ -1,0 +1,12 @@
+pkgbase = openrc-init_scripts
+	pkgdesc = A compilation of init scripts for OpenRC sysinit.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://shyanjmc.com
+	arch = any
+	license = GPL
+	depends = openrc
+	source = cupsd.initd
+	sha256sums = SKIP
+
+pkgname = openrc-init_scripts
