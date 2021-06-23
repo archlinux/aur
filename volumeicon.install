@@ -1,0 +1,7 @@
+post_install() {
+  # See FS#34239 for more information
+  echo 'If there are problems running volumeicon, try:'
+  echo 'rm -iv ~/.config/volumeicon/volumeicon'
+}
+
+# vim:set ts=2 sw=2 et:

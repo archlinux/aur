@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Volume Icon
+Comment=Lightweight volume control for the systray
+Exec=volumeicon
+Icon=multimedia-volume-control
+Type=Application
+Terminal=false
+StartupNotify=false
+Categories=GTK;AudioVideo;Audio;Mixer;
