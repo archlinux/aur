@@ -254,7 +254,8 @@ prepare() {
           scripts/config --disable CONFIG_SCHED_INFO
           scripts/config --disable CONFIG_SCHEDSTATS
           scripts/config --disable CONFIG_DEBUG_KERNEL
-          scripts/config --disable CONFIG_RT_GROUP_SCHED          echo "Enabling Full Tickless"
+          scripts/config --disable CONFIG_RT_GROUP_SCHED
+          echo "Enabling Full Tickless"
           scripts/config --disable CONFIG_HZ_PERIODIC
           scripts/config --disable CONFIG_NO_HZ_IDLE
           scripts/config --enable CONFIG_NO_HZ_FULL
