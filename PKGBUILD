@@ -7,8 +7,9 @@ arch=("x86_64")
 url="https://github.com/ransome1/sleek/"
 license=("MIT")
 options=(!strip)
-makedepends=("yarn" "nodejs<16.0.0")
+makedepends=("yarn" "nodejs")
 depends=("electron" "nodejs")
+
 source=("${url}archive/refs/tags/v${pkgver}-2.zip" "sleek.desktop" "sleek")
 sha512sums=('d6f6736f5cbeab6c9225a8ddd4f0df6e9acdfad4522c9546eb6c11e958111e570e47fab38bedf6dd99a5d30fea1f0ab9a6eed58e1e958aaf39c6b78827d74420'
             '605f49606eb0656846ac5dc3b97eca0acb3a781b07c71aff1e027935d5e8ea569d290c95d67bd7347ddd133c1643e6f3c6fe36bd1b52f49e528b34a458afe316'
