@@ -1,7 +1,7 @@
 # Maintainer: Chris Lane <aur at chrislane dot com>
 pkgname=digikam-git
 pkgver=v7.2.0.beta1.r500.g9541292038
-pkgrel=3
+pkgrel=4
 pkgdesc='An advanced digital photo management application'
 arch=('i686' 'x86_64')
 license=('GPL')

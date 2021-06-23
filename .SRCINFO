@@ -1,7 +1,7 @@
 pkgbase = digikam-git
 	pkgdesc = An advanced digital photo management application
 	pkgver = v7.2.0.beta1.r500.g9541292038
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.digikam.org/
 	arch = i686
 	arch = x86_64
@@ -26,6 +26,7 @@ pkgbase = digikam-git
 	depends = imagemagick
 	depends = glu
 	depends = jasper
+	depends = kservice-git
 	optdepends = hugin: panorama tool
 	optdepends = qt5-imageformats: support for additional image formats (WEBP, TIFF)
 	optdepends = rawtherapee: RAW import
@@ -34,7 +35,6 @@ pkgbase = digikam-git
 	provides = digikam
 	conflicts = digikam
 	source = git+https://invent.kde.org/graphics/digikam.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = digikam-git
-
