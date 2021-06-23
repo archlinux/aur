@@ -2,10 +2,10 @@
 
 pkgname=polaronproton-git
 _pkgname=polaronproton
-pkgver=0.10.0.r3.g5c6cd2f
+pkgver=r1.5badb9c
 pkgrel=1
 pkgdesc="Symlink manager for Steam Play (Proton) prefixes"
-url="https://github.com/Meister1593/PolaronProton"
+url="https://github.com/Meister1593/polaronproton"
 arch=("x86_64" "aarch64")
 license=("MIT")
 makedepends=("git" "rust")
@@ -15,8 +15,8 @@ source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
-  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_git_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -27,5 +27,5 @@ build() {
 package() {
     cd "$srcdir/$_pkgname"
     install -Dm 644 "LICENSE.md" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-    install -Dm 755 -t "$pkgdir/usr/bin" "target/release/$_pkgname"{,-cli}
+    install -Dm 755 "target/release/$_pkgname-cli" "$pkgdir/usr/bin/$_pkgname"
 }
