@@ -1,6 +1,6 @@
 pkgbase = dart-sass
 	pkgdesc = Sass makes CSS fun again (canonical implementation)
-	pkgver = 1.34.0
+	pkgver = 1.35.1
 	pkgrel = 1
 	url = http://sass-lang.com/
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = dart-sass
 	provides = sass
 	conflicts = ruby-sass
 	options = !strip
-	source = https://github.com/sass/dart-sass/archive/1.34.0.tar.gz
-	b2sums = 56308f93d811a29865434512e393614f20ba62c38baa33d97a7f57d84450926f42141f6de07ac9795cc9f26cd0fdba52ff5a219193bab57b9baea7b334d21c7c
+	source = https://github.com/sass/dart-sass/archive/1.35.1.tar.gz
+	b2sums = f5dba63286d18fb1c5944d180507ec8a9eacd30a55a069af6ec98a7638d5711a33c0be2b4ed30e9e82eef76860c4bd0414f247137b12b5f64622617ec6faf1e2
 
 pkgname = dart-sass
-
