@@ -1,26 +1,28 @@
 pkgbase = gdlauncher
 	pkgdesc = GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience
-	pkgver = 1.1.7
-	pkgrel = 2
+	pkgver = 1.1.11
+	pkgrel = 1
 	url = https://gdevs.io
 	arch = x86_64
 	license = GPL3
 	makedepends = gendesk
 	makedepends = git
-	makedepends = yarn
 	makedepends = nodejs
+	makedepends = npm
 	makedepends = rust
-	makedepends = unzip
 	depends = libnotify
 	depends = libxss
 	depends = libxtst
 	depends = libindicator-gtk3
 	depends = libappindicator-gtk3
+	depends = electron
+	depends = p7zip
+	provides = gdlauncher
 	conflicts = gdlauncher-appimage
 	conflicts = gdlauncher-git
 	conflicts = gdlauncher-bin
-	source = gdlauncher::git+https://github.com/gorilla-devs/GDLauncher.git
-	md5sums = SKIP
+	conflicts = gdlauncher-appimage
+	source = https://github.com/gorilla-devs/GDLauncher/archive/refs/tags/v1.1.11.tar.gz
+	md5sums = 59a3149bd07acdc6ae4f4f9d7823034a
 
 pkgname = gdlauncher
-

@@ -1,64 +1,70 @@
 # Maintainer: S Stewart <tda@null.net>
 # Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
 pkgname="gdlauncher"
-pkgver="1.1.7"
-pkgrel=2
-commitsha="075ea37f447d8961824fae14e7bd4f2c64ea7c9e"
+pkgver="1.1.11"
+pkgrel=1
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
 url="https://gdevs.io"
 license=('GPL3')
-makedepends=('gendesk' 'git' 'yarn' 'nodejs' 'rust' 'unzip')
-depends=('libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk3')
-conflicts=('gdlauncher-appimage' 'gdlauncher-git' 'gdlauncher-bin')
-source=("gdlauncher::git+https://github.com/gorilla-devs/GDLauncher.git")
-md5sums=('SKIP')
+makedepends=('gendesk' 'git' 'nodejs' 'npm' 'rust')
+depends=('libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk3' 'electron' 'p7zip')
+conflicts=('gdlauncher-appimage' 'gdlauncher-git' 'gdlauncher-bin' 'gdlauncher-appimage')
+provides=('gdlauncher')
+source=("https://github.com/gorilla-devs/GDLauncher/archive/refs/tags/v${pkgver}.tar.gz")
+md5sums=('59a3149bd07acdc6ae4f4f9d7823034a')
+icon_sizes=(48 128 256 1024)
 
 prepare() {
-    # clone source
-    cd "${srcdir}/${pkgname}"
-    git checkout origin/master
-    git switch master
-    git reset --hard ${commitsha}
-
-    # generate .desktop
+    # Generate .desktop
     gendesk --pkgname "GDLauncher" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n -f
     mv "GDLauncher.desktop" "${pkgname}.desktop"
 
-    # put yarn in testing mode
-    cd "${srcdir}/${pkgname}"
-    echo "RELEASE_TESTING=true" > .env    
+    cd "${srcdir}/GDLauncher-${pkgver}/"
+
+    # Apply patches, copied from ObserverOfTime's gdlauncher-git
+    sed -i package.json \
+        -e '/electron-updater/d;/7zip-bin/d' \
+        -e 's$public/electron.js$build/electron.js$' \
+        -e '/"dependencies"/i\  "bundledDependencies": ["7zip-bin"],'
+    patch -p1 -i ../../use-system-7za-and-disable-updater.patch
+    mkdir .git  # Husky needs a .git folder to not die
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
-    yarn
-    yarn release
+    cd "${srcdir}/GDLauncher-${pkgver}/"
+
+    # Install required npm packages
+    export CARGO_HOME="${srcdir}/cargo-cache"
+    npm install --cache="${srcdir}"/npm-cache
+
+    # Build the program
+    export CI=false \
+        APP_TYPE=electron \
+        NODE_ENV=production \
+        REACT_APP_RELEASE_TYPE=setup
+    npx craco build
+    npx webpack --config scripts/electronWebpackConfig.js
 }
 
 package() {
-    # install the main files.
-    install -d -m755 "${pkgdir}/opt/${pkgname}"
-    cd "${srcdir}/${pkgname}/deploy"
-    mkdir gdlauncher/
-    unzip "GDLauncher-linux-setup.zip" -d gdlauncher
-    cp -Rr "${srcdir}/${pkgname}/deploy/${pkgname}"* "${pkgdir}/opt/"
+    # Copy runtime files
+    install -d -m755 "${pkgdir}/usr/lib/gdlauncher/"
+    rm "${srcdir}/GDLauncher-${pkgver}/build/installer"{.nsh,{Header,Sidebar}.bmp}  # Unecessary install files
+    cp -r "${srcdir}/GDLauncher-${pkgver}/"{package.json,build} "${pkgdir}/usr/lib/gdlauncher/"
 
-    # desktop entry
-    install -D -m644 "${srcdir}/${pkgname}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    # Create run script
+    install -d -m755 "${pkgdir}/usr/bin/"
+    printf '#!/bin/sh\nexec electron /usr/lib/gdlauncher "$@"' > "${pkgdir}/usr/bin/gdlauncher"
+    chmod a+x "${pkgdir}/usr/bin/gdlauncher"
 
-    # install the icon
-    install -d -m755 "${pkgdir}/usr/share/icons/hicolor"
-    cp -Rr "${srcdir}/${pkgname}/public/icon.png" "${pkgdir}/usr/share/icons/"
-    
-    # fix file permissions - all files as 644 - directories as 755
-    find "${pkgdir}/"{opt,usr} -type d -exec chmod 755 {} \;
-    find "${pkgdir}/"{opt,usr} -type f -exec chmod 644 {} \;
+    # Desktop entry
+    install -d -m755 "${pkgdir}/usr/share/applications/"
+    install -D -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-    # make sure the main binary has the right permissions
-    chmod +x "${pkgdir}/opt/${pkgname}/${pkgname}"
-
-    # link the binary
-    install -d -m755 "${pkgdir}/usr/bin"
-    ln -sr "${pkgdir}/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    # Install icons
+    for size in "${icon_sizes[@]}"; do
+        install -d -m755 "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/"
+        convert "${srcdir}/GDLauncher-${pkgver}/public/icon.png" -size "${size}/${size}" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
+    done
 }
