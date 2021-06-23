@@ -1,6 +1,6 @@
 # Maintainer: Tim Schneeberger (ThePBone) <tim.schneeberger(at)gmail.com>
 pkgname=ddctoolbox-git
-pkgver=r202.578ce99
+pkgver=r203.578ce99
 pkgrel=1
 epoch=2
 pkgdesc="DDC Toolbox for Linux"
@@ -36,5 +36,5 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 	install -Dm755 src/DDCToolbox "$pkgdir/usr/bin/DDCToolbox"
 	install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications"
-	install -Dm644 img/icon.png "$pkgdir/usr/share/pixmaps/ddctoolbox.png"
+	install -Dm644 res/img/icon.png "$pkgdir/usr/share/pixmaps/ddctoolbox.png"
 }
