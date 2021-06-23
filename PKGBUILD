@@ -10,7 +10,7 @@ arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
 depends=('electron6-bin' 'krb5' 'libsecret' 'lsb-release')
-makedepends=('git' 'npm6' 'python' 'unzip')
+makedepends=('git' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
@@ -21,8 +21,10 @@ sha256sums=('7ceaa20c68ef927ba74db9d46fef2baece4635ea50f524377fc24c6931aaaf30'
 
 if [[ $_target =~ .*-beta ]]; then
 	_sourcedirectory="compass-$_pkgver/packages/compass"
+	makedepends+=('npm')
 else
 	_sourcedirectory="compass-$_pkgver"
+	makedepends+=('npm6')
 fi
 
 _homedirectory="$pkgname-$pkgver-$pkgrel-home"
