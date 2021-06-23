@@ -3,7 +3,7 @@
 
 pkgname=lib32-libcanberra
 pkgver=0.30+2+gc0620e4
-pkgrel=4
+pkgrel=5
 pkgdesc="A small and lightweight implementation of the XDG Sound Theme Specification (32-bit)"
 url="http://0pointer.de/lennart/projects/libcanberra"
 arch=(x86_64)
@@ -15,8 +15,10 @@ provides=("lib32-libcanberra-pulse=$pkgver-$pkgrel" libcanberra{,-gtk,-gtk3}.so)
 replaces=("lib32-libcanberra-pulse<0.30+2+gc0620e4-4")
 options=(libtool)
 _commit=c0620e432650e81062c1967cc669829dbd29b310  # master
-source=("git+http://git.0pointer.net/clone/libcanberra.git#commit=$_commit")
-sha256sums=('SKIP')
+source=("git+http://git.0pointer.net/clone/libcanberra.git#commit=$_commit"
+        libcanberra-multi-backend.patch)
+sha256sums=('SKIP'
+            'de146cae3e40a16b38c8edb4f1a3a423c64eb9c5000e36c316b677e9909c9b06')
 
 pkgver() {
   cd libcanberra
@@ -25,6 +27,11 @@ pkgver() {
 
 prepare() {
   cd libcanberra
+
+  # https://bugs.archlinux.org/task/71341
+  # https://bugs.freedesktop.org/show_bug.cgi?id=51662
+  patch -Np1 -i ../libcanberra-multi-backend.patch
+
   ./autogen.sh
 }
 
