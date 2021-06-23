@@ -1,7 +1,7 @@
 # Maintainer: Matt Pharoah <mtpharoah@gmail.com>
 pkgname=parallel-launcher
 pkgver=4.3.0
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc='A simple easy-to-use launcher for the ParallelN64 and Mupen64Plus-Next emulators'
 arch=('x86_64')
@@ -26,6 +26,7 @@ makedepends=(
 	'gcc'
 	'qt5-declarative'
 	'make'
+	'qt5-tools'
 )
 checkdepends=()
 optdepends=()
