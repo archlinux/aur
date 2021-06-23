@@ -1,4 +1,6 @@
+# Maintainer = Kazaii (mark.a.prosser@gmail.com)
 # Maintainer = Caleb Yates (caldog20@gmail.com)
+# Contributor = Raymii
 # SecureCRT software is owned and copyrighted by Vandyke Inc. The software is free to download for eval and requires a separately purchased license for full features and support
  
 ## To install this package, you need to download the SecureCRT for Linux package in tar.gz format and place it in the same directory as the PKGBUILD
