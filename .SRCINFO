@@ -1,7 +1,7 @@
 pkgbase = python2-sanction
 	pkgdesc = A simple, lightweight OAuth2 client
 	pkgver = 0.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/demianbrecht/sanction
 	arch = any
 	license = MIT
@@ -10,4 +10,3 @@ pkgbase = python2-sanction
 	sha1sums = bc2f4193f9de80bcaac2683ec986dfdf33cbfa38
 
 pkgname = python2-sanction
-

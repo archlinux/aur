@@ -1,11 +1,11 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
+# Contributor: Daniel Nagy <danielnagy at gmx de>
 
 pkgname=python2-sanction
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple, lightweight OAuth2 client"
 url="https://github.com/demianbrecht/sanction"
-depends=( 'python2' )
+depends=('python2')
 license=('MIT')
 arch=('any')
 source=("https://pypi.python.org/packages/source/s/sanction/sanction-$pkgver.tar.gz")
@@ -18,6 +18,6 @@ build() {
 
 package() {
   cd $srcdir/sanction-$pkgver
-  python2 setup.py install --root="$pkgdir" --optimize=1 
+  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build 
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
