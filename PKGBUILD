@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=helm-gcs
-pkgver=0.3.11
+pkgver=0.3.12
 pkgrel=1
 pkgdesc="Helm plugin to manage chart repositories on GCS"
 arch=(x86_64)
@@ -11,7 +11,7 @@ install=helm-gcs.install
 depends=(bash helm)
 makedepends=(go)
 source=("https://github.com/hayorov/helm-gcs/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('5bad04153edf74979e087e5908ead9b4d2cbdc7d0b6b9eb5665c0fa937d9d2ee')
+sha256sums=('9d2b7dc96916dcee73d30e88d56891597f03dee96a04a287f53cb538a7c19134')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
