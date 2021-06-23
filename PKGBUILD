@@ -23,7 +23,7 @@ build() {
   cd "$srcdir/gdb-$pkgver"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure \
+    CXXFLAGS="${CXXFLAGS} -Wno-format-security" ${_arch}-configure \
                  --enable-lto \
                  --disable-source-highlight \
                  --disable-tui \
