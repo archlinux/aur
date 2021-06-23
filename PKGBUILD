@@ -1,4 +1,5 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer:  Ali Kaafarani <ali@kvikshaug.no>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: mh00h <matt.halbert@gmail.com>
 
 pkgname=nextflow
