@@ -6,7 +6,7 @@
 
 _pkg=wildfly
 pkgname="$_pkg"-systemd
-pkgver=22.0.1.Final
+pkgver=24.0.0.Final
 pkgrel=1
 
 pkgdesc='Wildfly Application Server with upstream systemd integration'
@@ -50,8 +50,9 @@ install=${_pkg}.install
 source=(https://download.jboss.org/wildfly/"${pkgver}"/"${_pkg}"-"${pkgver}".tar.gz
 	"${_pkg}".install)
 
-sha256sums=('08d1e420331d0b6ad6c36a4dd782a110152cabfa23439e6ecd9a7c4d50bffd01'
+sha256sums=('4b510847b41052a2509f78bf4099ef55b1a704dab344f9f433b706f96f62a00a'
 	'2844ec981fcf9e6fd93226796e7531b9b8fd30806adba6b31e43d9592a6409c2')
+
 
 package() {
 	# shellcheck disable=2154
