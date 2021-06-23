@@ -1,0 +1,17 @@
+pkgbase = tlauncher-tl
+	pkgdesc = The best Minecraft launcher
+	pkgver = 999
+	pkgrel = 0
+	url = https://tlauncher.org/
+	arch = x86_64
+	license = custom
+	depends = jre-openjdk
+	depends = kdesu
+	source = tlauncher.zip::https://tlauncher.org/jar
+	source = tlauncher.desktop
+	source = tlauncher.svg
+	md5sums = SKIP
+	md5sums = 01c121c05252cd5cb5dcf83d5fd7b4e7
+	md5sums = de9e7f76196ca1b049725e43b7799bdb
+
+pkgname = tlauncher-tl

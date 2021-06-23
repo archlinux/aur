@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.120.2
+Name=TLauncher
+Comment=The best Minecraft launcher
+Exec=java -jar /usr/lib/tlauncher/tlauncher.jar
+Icon=tlauncher
+Terminal=false
+Categories=Game;
