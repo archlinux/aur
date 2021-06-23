@@ -3,7 +3,7 @@
 
 _pkgname=sunshine
 pkgname=${_pkgname}-git
-pkgver=0.7.0.454.4024378
+pkgver=0.7.1.467.cf9eb96
 pkgrel=1
 pkgdesc="Open source implementation of NVIDIA's GameStream, as used by the NVIDIA Shield"
 url="https://github.com/loki-47-6F-64/sunshine"
@@ -11,7 +11,7 @@ arch=('x86_64' 'i686')
 license=('GPL3')
 
 depends=('boost-libs' 'ffmpeg' 'openssl' 'libpulse' 'opus' 'libxtst' 'libx11' 'libxfixes' 'libevdev' 'libxcb' 'udev')
-makedepends=('git' 'cmake' 'boost')
+makedepends=('git' 'cmake' 'boost' 'make')
 
 provides=('sunshine')
 conflicts=("sunshine")
@@ -33,6 +33,9 @@ prepare() {
 }
 
 build() {
+    export CFLAGS="${CFLAGS/-Werror=format-security/}"
+    export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
+
     cmake \
         -S "$_pkgname" \
         -B build \
