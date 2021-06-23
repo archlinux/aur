@@ -1,6 +1,6 @@
 # Maintainer: Ehsan Ghorbannezad <ehsangn@protonmail.ch>
 pkgname=lfutils-meta
-pkgver=1
+pkgver=3
 pkgrel=1
 pkgdesc='Meta package to install some required packages of lfutils.'
 arch=('any')
@@ -11,6 +11,7 @@ optdepends=(
 'transmission-cli: previewing .torrent files'
 )
 depends=(
+    rsync
     archivemount
     ueberzug
     chafa
