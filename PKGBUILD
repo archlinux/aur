@@ -10,6 +10,7 @@ license=('GPL')
 makedepends=('git')
 depends=('lf')
 optdepends=(
+'rsync: copying files using lfpaste'
 'archivemount: mounting and opening archives via lfmount'
 'sxiv: sxiv integration using lfsxiv'
 'ueberzug: image previews'

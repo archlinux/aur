@@ -7,6 +7,7 @@ pkgbase = lfutils-git
 	license = GPL
 	makedepends = git
 	depends = lf
+	optdepends = rsync: copying files using lfpaste
 	optdepends = archivemount: mounting and opening archives via lfmount
 	optdepends = sxiv: sxiv integration using lfsxiv
 	optdepends = ueberzug: image previews
