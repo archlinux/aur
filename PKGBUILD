@@ -16,6 +16,10 @@ source=("${pkgname%-git}::git+https://github.com/ThePBone/DDCToolbox"
 sha256sums=('SKIP'
             'd62019fb77f8cd40c7942453345f20e6479ba4ad22930ca2e138b1cddea9ed34')
 
+prepare() {
+	git submodule update --init --recursive
+}
+
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
