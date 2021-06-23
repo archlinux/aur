@@ -1,6 +1,6 @@
-# Maintainer: Jeppe Toustrup <archlinux@tenzer.dk>
+# Maintainer: Jeppe Fihl-Pearson <archlinux@tenzer.dk>
 pkgname=rdd-git
-pkgver=r28.3b1d553
+pkgver=r31.7ae95f3
 pkgrel=1
 pkgdesc='Redis database dumper'
 arch=('any')
@@ -10,7 +10,7 @@ depends=('hiredis')
 makedepends=('git')
 provides=('rdd')
 conflicts=('rdd')
-source=("${pkgname}::git://github.com/r043v/rdd.git")
+source=("${pkgname}::git+https://github.com/r043v/rdd.git")
 md5sums=('SKIP')
 
 pkgver() {
