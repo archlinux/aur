@@ -2,13 +2,13 @@
 pkgname=gazou-git
 pkgver=0.2.0
 pkgrel=1
-pkgdesc="A Japanese OCR for linux"
+pkgdesc="A Japanese OCR application for linux"
 arch=("i686" "x86_64")
-url="https://github.com/kamui-7/Gazou-OCR"
+url="https://github.com/kamui-7/gazou"
 license=('GPL')
 depends=("tesseract" "leptonica" "qt5-base" "qt5-x11extras")
 makedepends=("cmake" "pkg-config" "git")
-source=("$pkgname::git://github.com/kamui-7/Gazou-OCR.git")
+source=("$pkgname::git://github.com/kamui-7/gazou.git")
 md5sums=('SKIP')
 
 prepare() {
