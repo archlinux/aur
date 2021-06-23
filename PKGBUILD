@@ -2,7 +2,7 @@
 
 _npmname=localtunnel
 pkgname=nodejs-$_npmname
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 #epoch=
 pkgdesc="Expose localhost to the world"
@@ -16,11 +16,11 @@ makedepends=('jq' 'npm')
 #source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
 # Get the NPM registry build, as in: https://git.archlinux.org/svntogit/community.git/tree/trunk/PKGBUILD?h=packages/nodejs-emojione
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
-sha512sums=('83a13468b818603bd00f1223217920268dbea478f7b068385b3fd73f78762ad66746c58f6ce418fa1c351fc67dd637a9f7df1f91c544f65fa48213bef7bbe596')
+sha512sums=('2e2688e7065dcf4c459084295db348eb6667367f0832c561c311e6840fa1e2f8fc47d246ff4edb4075b0425cb2edbf79ff97d53821c97c81eff9ae579e4bda24')
 
 package() {
     export npm_config_cache="$srcdir/npm_cache"
-    npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$_npmname-$pkgver.tgz
+    npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
 
     # Add the license
     mkdir -p "$pkgdir/usr/share/licenses/$pkgname"

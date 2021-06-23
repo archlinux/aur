@@ -1,6 +1,6 @@
 pkgbase = nodejs-localtunnel
 	pkgdesc = Expose localhost to the world
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://localtunnel.me
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = nodejs-localtunnel
 	makedepends = jq
 	makedepends = npm
 	depends = nodejs
-	source = https://registry.npmjs.org/localtunnel/-/localtunnel-2.0.0.tgz
-	sha512sums = 83a13468b818603bd00f1223217920268dbea478f7b068385b3fd73f78762ad66746c58f6ce418fa1c351fc67dd637a9f7df1f91c544f65fa48213bef7bbe596
+	source = https://registry.npmjs.org/localtunnel/-/localtunnel-2.0.1.tgz
+	sha512sums = 2e2688e7065dcf4c459084295db348eb6667367f0832c561c311e6840fa1e2f8fc47d246ff4edb4075b0425cb2edbf79ff97d53821c97c81eff9ae579e4bda24
 
 pkgname = nodejs-localtunnel
-
