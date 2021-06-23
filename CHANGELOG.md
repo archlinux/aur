@@ -1,5 +1,6 @@
 # Changelog
 
+* [2.4.1](#2-4-1)
 * [2.4.0](#2-4-0)
 * [2.3.3](#2-3-3)
 * [2.3.2](#2-3-2)
@@ -19,6 +20,28 @@
 * [2.1.0](#2-1-0)
 * [2.0.0](#2-0-0)
 * [1.1.7](#1-1-7)
+
+
+## 2.4.1
+
+### Changed
+
+* Log messages are now printed to stderr instead of stdout.
+* `fcft_grapheme_rasterize()` now sets a minimum grapheme column count
+  of 2 when the cluster ends with an Emoji variant selector (codepoint
+  0xFE0F).
+
+
+### Fixed
+
+* Compilation error when fallback definition for `FCFT_EXPORT` was used
+  in `meson.build`.
+
+
+### Contributors
+
+* [emersion](https://codeberg.org/emersion)
+* [craigbarnes](https://codeberg.org/craigbarnes)
 
 
 ## 2.4.0
