@@ -20,4 +20,3 @@ pkgbase = authelia-git
 	sha256sums = SKIP
 
 pkgname = authelia-git
-
