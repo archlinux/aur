@@ -1,0 +1,25 @@
+post_install() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	# Link to the binary
+	ln -sf '/opt/Pumble/pumble-desktop' '/usr/bin/pumble-desktop'
+
+	# SUID chrome-sandbox for Electron 5+
+	chmod 4755 '/opt/Pumble/chrome-sandbox' || true
+
+	update-mime-database /usr/share/mime || true
+	update-desktop-database /usr/share/applications || true
+	update-desktop-database -q
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	# Delete the link to the binary
+	rm -f '/usr/bin/pumble-desktop'
+	update-desktop-database -q
+}
