@@ -1,7 +1,7 @@
 pkgname=usbboot-git
 _pkgname=usbboot
 pkgver=2048ae6
-pkgrel=2
+pkgrel=3
 pkgdesc="rpiboot and bin2c executables used by usbbootgui"
 arch=('any')
 url="https://github.com/raspberrypi/usbboot"

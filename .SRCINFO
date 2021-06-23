@@ -1,7 +1,7 @@
 pkgbase = usbboot
-	pkgdesc = GUI for booting a Raspberry Pi device like Pi Zero or compute module as a device
+	pkgdesc = rpiboot and bin2c executables used by usbbootgui
 	pkgver = 2048ae6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/raspberrypi/usbboot
 	arch = any
 	license = Apache License
