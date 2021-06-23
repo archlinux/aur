@@ -1,7 +1,7 @@
 # Maintainer: Jokler <aur@jokler.xyz>
 
 pkgname=bacon
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc='A background rust code checker'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('AGPL3')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('519b2b0cdfa839f599e4719ef008dc546978797e633b7a9b4434a43b371e58299a390b5323abc21880f8580c59cc1e8a9402abb8d191092d34e33d54766035c9')
+sha512sums=('83338f533d76713fb8707900f8bb981d0577a19665a8a035686d97d4dfb8c243db9fb52dd78502be882cfebde4d13ffb39251371d3562ce6481c1b4e3159052c')
 
 build() {
   cd $pkgname-$pkgver
