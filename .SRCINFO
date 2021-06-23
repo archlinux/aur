@@ -1,7 +1,7 @@
 pkgbase = germinate
 	pkgdesc = Expands dependencies in a list of seed packages
 	pkgver = 2.37
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tracker.debian.org/pkg/germinate
 	arch = x86_64
 	license = GPL
@@ -16,11 +16,11 @@ pkgbase = germinate
 pkgname = germinate
 	depends = perl
 	depends = python
-	depends = python-apt
 
 pkgname = python-germinate
 	depends = germinate
 	depends = python
+	depends = python-apt
 
 pkgname = python2-germinate
 	depends = germinate

@@ -5,7 +5,7 @@ pkgbase=germinate
 pkgname=('germinate' 'python-germinate' 'python2-germinate')
 _pkgname=${pkgname[0]}
 pkgver=2.37
-pkgrel=1
+pkgrel=2
 pkgdesc='Expands dependencies in a list of seed packages'
 arch=('x86_64')
 url="https://tracker.debian.org/pkg/germinate"
@@ -19,7 +19,7 @@ sha256sums=('367771cdd892cfa94a46b8df8afec1060604b93d7bb98170d406bcdaddbfd096')
 # Build last
 package_germinate() {
 	cd work
-	depends+=('perl' 'python' 'python-apt')
+	depends+=('perl' 'python')
 
 	# Initial python build
 	python setup.py build
@@ -41,7 +41,7 @@ package_germinate() {
 # Build this first
 package_python-germinate() {
 	cd work
-	depends+=('germinate' 'python')
+	depends+=('germinate' 'python' 'python-apt')
 
 	python setup.py install --root="$pkgdir/" --optimize=1
 
