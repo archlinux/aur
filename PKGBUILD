@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://sdl-stretch.sourceforge.net/"
 license=("GPL")
 depends=('sdl')
-source=("http://downloads.sourceforge.net/project/sdl-stretch/sdl-stretch/0.3.1/SDL_stretch-${pkgver}.tar.bz2")
+source=("https://downloads.sourceforge.net/project/sdl-stretch/sdl-stretch/0.3.1/SDL_stretch-${pkgver}.tar.bz2")
 sha256sums=('7cbf0bfab00c3edd6e71e187d2a2c48277048780e2c92408baab7b623532fcd7')
 
 build() {

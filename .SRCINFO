@@ -9,7 +9,7 @@ pkgbase = sdl_stretch
 	arch = x86_64
 	license = GPL
 	depends = sdl
-	source = http://downloads.sourceforge.net/project/sdl-stretch/sdl-stretch/0.3.1/SDL_stretch-0.3.1.tar.bz2
+	source = https://downloads.sourceforge.net/project/sdl-stretch/sdl-stretch/0.3.1/SDL_stretch-0.3.1.tar.bz2
 	sha256sums = 7cbf0bfab00c3edd6e71e187d2a2c48277048780e2c92408baab7b623532fcd7
 
 pkgname = sdl_stretch
