@@ -1,5 +1,5 @@
 pkgname=mingw-w64-gdb
-pkgver=10.1
+pkgver=10.2
 pkgrel=1
 pkgdesc="The GNU Debugger (mingw-w64)"
 arch=(any)
@@ -9,7 +9,7 @@ depends=('mingw-w64-dlfcn' 'mingw-w64-expat' 'mingw-w64-zlib' 'mingw-w64-readlin
 makedepends=('mingw-w64-configure' 'texinfo')
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz")
-sha256sums=('f82f1eceeec14a3afa2de8d9b0d3c91d5a3820e23e0a01bbb70ef9f0276b62c0')
+sha256sums=('aaa1223d534c9b700a8bec952d9748ee1977513f178727e1bee520ee000b4f29')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -23,7 +23,7 @@ build() {
   cd "$srcdir/gdb-$pkgver"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure \
+    CXXFLAGS="${CXXFLAGS} -Wno-format-security" ${_arch}-configure \
                  --enable-lto \
                  --disable-source-highlight \
                  --disable-tui \
