@@ -1,6 +1,6 @@
 src/
 pkg/
 
-*.tar.bz2
+*.tar.gz
 *.pkg.tar.*
 boost-ublas-c++20-iterator.patch
