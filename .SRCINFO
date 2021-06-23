@@ -10,6 +10,7 @@ pkgbase = gdlauncher
 	makedepends = nodejs
 	makedepends = npm
 	makedepends = rust
+	makedepends = imagemagick
 	depends = libnotify
 	depends = libxss
 	depends = libxtst
