@@ -52,11 +52,11 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.12
-_minor=12
+_minor=13
 _srcname=linux-${_major}
 pkgbase=linux-cacule-rdb
 pkgver=${_major}.${_minor}
-pkgrel=5
+pkgrel=1
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -254,7 +254,7 @@ prepare() {
           scripts/config --disable CONFIG_SCHED_INFO
           scripts/config --disable CONFIG_SCHEDSTATS
           scripts/config --disable CONFIG_DEBUG_KERNEL
-          echo "Enabling Full Tickless"
+          scripts/config --disable CONFIG_RT_GROUP_SCHED          echo "Enabling Full Tickless"
           scripts/config --disable CONFIG_HZ_PERIODIC
           scripts/config --disable CONFIG_NO_HZ_IDLE
           scripts/config --enable CONFIG_NO_HZ_FULL
@@ -522,7 +522,7 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
-            '742e13b424c618689734c3c41a14c5cda5a09d8546ed5b1433153d4619524dfe'
+            '84a39f8cbcca15af34bf431d6eb14d241bb4d1f0455da96ee0cbe1a22d44a39d'
             '075693810fd85c0733b0f551f861b928c8383922076818801de04f962afd3cff'
             'dd89db0483301a62cef23ba797fee1fb9804f570f952df87fe418ee22e353227'
             'a90ec03375bf97c06bf2ca3f1fd0224deee8408077f71447326b2796b53652a1'
