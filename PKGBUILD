@@ -1,7 +1,7 @@
 pkgname=usbbootgui-git
 _pkgname=usbbootgui
 pkgver=1e9cc0f
-pkgrel=3
+pkgrel=4
 pkgdesc="GUI for booting a Raspberry Pi device like Pi Zero or compute module as a device"
 arch=('any')
 url="https://github.com/raspberrypi/usbbootgui"
@@ -9,7 +9,7 @@ license=('mixed')
 depends=(
   'libusb'
   'ncurses'
-  'usbboot'
+  'usbboot-git'
 )
 source=("git+https://github.com/raspberrypi/${_pkgname}.git")
 sha256sums=('SKIP')
