@@ -1,6 +1,6 @@
 pkgbase = yaru-git
 	pkgdesc = Yaru default ubuntu theme
-	pkgver = 21.04.1.r55.g1b607eefa
+	pkgver = 21.04.1.r103.g37c77984e
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/ubuntu/yaru
@@ -66,4 +66,3 @@ pkgname = yaru-session-git
 	depends = yaru-gnome-shell-theme
 	provides = yaru-session
 	conflicts = yaru-session
-
