@@ -2,10 +2,10 @@
 
 pkgname=otf-vegur
 pkgver=0.701
-pkgrel=5
+pkgrel=6
 pkgdesc='Humanist sans-serif font used for the LibreOffice logo'
 arch=('any')
-url='http://dotcolon.net/font/?id=vegur'
+url='https://dotcolon.net/font/vegur'
 license=('custom')
 source=("http://dotcolon.net/download/fonts/vegur_${pkgver/./}.zip"
         'LICENSE')

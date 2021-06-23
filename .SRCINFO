@@ -1,8 +1,8 @@
 pkgbase = otf-vegur
 	pkgdesc = Humanist sans-serif font used for the LibreOffice logo
 	pkgver = 0.701
-	pkgrel = 5
-	url = http://dotcolon.net/font/?id=vegur
+	pkgrel = 6
+	url = https://dotcolon.net/font/vegur
 	arch = any
 	license = custom
 	source = http://dotcolon.net/download/fonts/vegur_0701.zip
