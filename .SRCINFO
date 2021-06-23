@@ -1,35 +1,19 @@
 pkgbase = syncevolution
 	pkgdesc = Synchronize PIM data via various protocols
-	pkgver = 1.5.3
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://syncevolution.org/
 	arch = x86_64
+	arch = aarch64
 	license = LGPL
 	makedepends = intltool
 	makedepends = boost
-	makedepends = python
 	depends = evolution-data-server
 	depends = libgnome-keyring
 	depends = neon
-	depends = openobex
-	depends = python2
-	depends = libunique
-	source = https://download.01.org/syncevolution/syncevolution/sources/syncevolution-1.5.3.tar.gz
-	source = syncevolution-1.5.3-sslcert.patch
-	source = syncevolution-1.5.3-python2.patch
-	sha256sums = e1195fda09bc7782eb8a55674e9e69d69da4780a9aa4a54d37d84da67ee863c0
-	sha256sums = 6904cd9eb9ed4e3eb888bad187315960de9d8a23d69c3c5587e011441cca1494
-	sha256sums = 704cbbf11289c5fd82b8c7228661f8cddaa40714598c56b2154783a35630128e
+	depends = python
+	depends = python-pygments
+	source = https://downloads.syncevolution.org/syncevolution/sources/syncevolution-2.0.0.tar.gz
+	sha256sums = 2c5912e6b9a5064710deb8bf059e5058eae26114f6065de79be586ac4c89513e
 
 pkgname = syncevolution
-
-pkgname = syncevolution-http
-	pkgdesc = Synchronize PIM data via various protocols (HTTP server)
-	arch = any
-	depends = syncevolution
-	depends = python2-dbus
-	depends = python2-twisted
-	depends = python2-gobject2
-	depends = python2-pyopenssl
-	depends = python2-service-identity
-
