@@ -1,0 +1,14 @@
+pkgbase = plow
+	pkgdesc = A high-performance HTTP benchmarking tool with real-time web UI & terminal displaying
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/six-ddc/plow
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	makedepends = go
+	depends = glibc
+	source = plow-1.0.1.tar.gz::https://github.com/six-ddc/plow/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 0cf769e1700248120683f3dc731c489805494d11418e13b7a6c3f5362bb09507
+
+pkgname = plow
