@@ -20,11 +20,13 @@ optdepends=('qt5-base: qmake build system for projects'
             'clion: IDE for projects')
 license=(custom:UnrealEngine)
 source=(com.unrealengine.UE4Editor.desktop
-	ccache_executor.patch
-	stop_mono_clone.patch)
+        ccache_executor.patch
+        stop_mono_clone.patch
+        clang_path_fix.patch)
 sha256sums=('15e9f9d8dc8bd8513f6a5eca990e2aab21fd38724ad57d213b06a6610a951d58'
             '33982486f7fafac35a33dfa37c85cfba8543aa78b5fe13c395d9cccf691ef4b3'
-            'aa9eb83c9f58c539d3cd43e919a4ebd6714c0aa2d32eb9b320049cf04dd01587')
+            'aa9eb83c9f58c539d3cd43e919a4ebd6714c0aa2d32eb9b320049cf04dd01587'
+            '960c5a100e0c3732f3c73fb645d3989d39acf4576d74615bbef38ebeee008b90')
 options=(!strip staticlibs) # Package is 3 Gib smaller with "strip" but it takes a long time and generates many warnings
 
 _ccache_support=false # Patches for ccache. More optimizations might be needed.
@@ -62,6 +64,7 @@ prepare() {
   fi
 
   # Apply custom patches
+  patch -p1 -i "$srcdir/clang_path_fix.patch" # Replace Windows specific search with the correct path (used for -mode=GenerateClangDatabase in UBT)
   if [[ $_system_mono == true ]]
   then
     export UE_USE_SYSTEM_MONO=1
