@@ -26,7 +26,7 @@ conflicts=("${_pkgname}")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname}"
+    cd "${_pkgname}"
     git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
