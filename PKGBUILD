@@ -2,13 +2,11 @@
 
 pkgname=zeronsd
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Unicast DNS resolver for ZeroTier networks"
 url="https://github.com/zerotier/zeronsd"
 license=("BSD-3-Clause")
 arch=("any")
-provides=("zeronsd")
-conflicts=("zeronsd")
 makedepends=("cargo" "git")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zerotier/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 https://github.com/zerotier/$pkgname/archive/refs/tags/v$pkgver.tar.gz
