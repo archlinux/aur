@@ -1,31 +1,31 @@
+# Maintainer: willemw <willemw12@gmail.com>
 # Contributor: wenLiangcan <boxeed at gmail dot com>
 # Contributor: Rafael Beraldo <rafaelluisberaldo@gmail.com>
 
+#pkgname=todo-c-git
 pkgname=todo.c-git
-pkgver=20161020
+pkgver=0.2.6.r11.g3a6c7f9
 pkgrel=1
-pkgdesc="Command line lightweight todo tool with readable storage , written in C"
-arch=("any")
+pkgdesc="Command line lightweight todo tool with readable storage, written in C"
+arch=('x86_64')
 url="https://github.com/hit9/todo.c"
 license=('BSD')
 makedepends=('git')
-provides=('todo.c')
-conflicts=('todo.c' 'todo')
-source=("$pkgname"::'git+https://github.com/hit9/todo.c.git')
-md5sums=('SKIP')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}" 'todo')
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
-    git log -1 --format='%cd' --date=short | tr -d -- '-'
+  cd $pkgname
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$srcdir/$pkgname"
-    make
+  make -C $pkgname
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-    install -Dm755 "src/todo" "$pkgdir/usr/bin/todo"
-    install -Dm644 "LICENSE-BSD" "$pkgdir/usr/share/licenses/todo.c/LICENSE-BSD"
+  install -Dm755 $pkgname/src/todo -t "$pkgdir/usr/bin"
 }
+

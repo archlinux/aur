@@ -1,15 +1,15 @@
 pkgbase = todo.c-git
-	pkgdesc = Command line lightweight todo tool with readable storage , written in C
-	pkgver = 20161020
+	pkgdesc = Command line lightweight todo tool with readable storage, written in C
+	pkgver = 0.2.6.r11.g3a6c7f9
 	pkgrel = 1
 	url = https://github.com/hit9/todo.c
-	arch = any
+	arch = x86_64
 	license = BSD
 	makedepends = git
 	provides = todo.c
 	conflicts = todo.c
 	conflicts = todo
 	source = todo.c-git::git+https://github.com/hit9/todo.c.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = todo.c-git
