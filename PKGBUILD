@@ -1,7 +1,7 @@
-# Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
+# Maintainer:  Oliver Jaksch <arch-aur at com-in dot de>
 
 pkgname=libretro-gw-git
-pkgver=272.e3ba6eb
+pkgver=283.5053898
 pkgrel=1
 pkgdesc="gw-libretro is a libretro core that runs Game & Watch simulators"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
