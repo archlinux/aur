@@ -5,7 +5,7 @@
 _npmname=triton
 pkgname=nodejs-triton
 pkgver=7.15.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Triton client tool and node.js library"
 arch=('any')
 url="https://github.com/joyent/node-triton"
@@ -21,7 +21,7 @@ package() {
     local _npmdir="$pkgdir/usr/lib/node_modules/"
     mkdir -p "$_npmdir"
     cd "$_npmdir"
-    npm install -g --prefix "$pkgdir/usr" "$_npmname@$pkgver"
+    npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
 
     # Remove the files that contain references to $pkgdir
     rm "$pkgdir/usr/lib/node_modules/$_npmname/node_modules/dtrace-provider/build/Makefile"
