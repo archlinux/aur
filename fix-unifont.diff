@@ -2,7 +2,7 @@ Index: asdf/configure
 ===================================================================
 --- asdf.orig/configure
 +++ asdf/configure
-@@ -9849,15 +9849,15 @@ fi
+@@ -9916,15 +9916,15 @@ fi
    prefix=$prefix_save
    exec_prefix=$exec_prefix_save
  
@@ -22,12 +22,12 @@ Index: asdf/configure
    eval "$as_ac_File=yes"
  else
    eval "$as_ac_File=no"
-@@ -9869,18 +9869,18 @@ $as_echo "$ac_res" >&6; }
+@@ -9936,18 +9936,18 @@ $as_echo "$ac_res" >&6; }
  if eval test \"x\$"$as_ac_File"\" = x"yes"; then :
  
  else
--  as_fn_error $? "$UNIFONTDIR/unifont.ttf not found - please use --with-unifontdir=/path/ (needed by SDL2)" "$LINENO" 5
-+  as_fn_error $? "$UNIFONTDIR/Unifont.ttf not found - please use --with-unifontdir=/path/ (needed by SDL2)" "$LINENO" 5
+-  as_fn_error $? "$UNIFONTDIR/unifont.ttf not found - please use --with-unifontdir=/path/ (needed by X11, SDL1.x and SDL2)" "$LINENO" 5
++  as_fn_error $? "$UNIFONTDIR/Unifont.ttf not found - please use --with-unifontdir=/path/ (needed by X11, SDL1.x and SDL2)" "$LINENO" 5
  fi
  
 -	as_ac_File=`$as_echo "ac_cv_file_$UNIFONTDIR/unifont_csur.ttf" | $as_tr_sh`
@@ -46,12 +46,12 @@ Index: asdf/configure
    eval "$as_ac_File=yes"
  else
    eval "$as_ac_File=no"
-@@ -9892,18 +9892,18 @@ $as_echo "$ac_res" >&6; }
+@@ -9959,18 +9959,18 @@ $as_echo "$ac_res" >&6; }
  if eval test \"x\$"$as_ac_File"\" = x"yes"; then :
  
  else
--  as_fn_error $? "$UNIFONTDIR/unifont_csur.ttf not found - please use --with-unifontdir=/path/ (needed by SDL2)" "$LINENO" 5
-+  as_fn_error $? "$UNIFONTDIR/Unifont_CSUR.ttf not found - please use --with-unifontdir=/path/ (needed by SDL2)" "$LINENO" 5
+-  as_fn_error $? "$UNIFONTDIR/unifont_csur.ttf not found - please use --with-unifontdir=/path/ (needed by X11, SDL1.x and SDL2)" "$LINENO" 5
++  as_fn_error $? "$UNIFONTDIR/Unifont_CSUR.ttf not found - please use --with-unifontdir=/path/ (needed by X11, SDL1.x and SDL2)" "$LINENO" 5
  fi
  
 -	as_ac_File=`$as_echo "ac_cv_file_$UNIFONTDIR/unifont_upper.ttf" | $as_tr_sh`
@@ -70,15 +70,32 @@ Index: asdf/configure
    eval "$as_ac_File=yes"
  else
    eval "$as_ac_File=no"
-@@ -9915,7 +9915,7 @@ $as_echo "$ac_res" >&6; }
+@@ -9982,7 +9982,7 @@ $as_echo "$ac_res" >&6; }
  if eval test \"x\$"$as_ac_File"\" = x"yes"; then :
  
  else
--  as_fn_error $? "$UNIFONTDIR/unifont_upper.ttf not found - please use --with-unifontdir=/path/ (needed by SDL2)" "$LINENO" 5
-+  as_fn_error $? "$UNIFONTDIR/Unifont_Upper.ttf not found - please use --with-unifontdir=/path/ (needed by SDL2)" "$LINENO" 5
+-  as_fn_error $? "$UNIFONTDIR/unifont_upper.ttf not found - please use --with-unifontdir=/path/ (needed by X11, SDL1.x and SDL2)" "$LINENO" 5
++  as_fn_error $? "$UNIFONTDIR/Unifont_Upper.ttf not found - please use --with-unifontdir=/path/ (needed by X11, SDL1.x and SDL2)" "$LINENO" 5
  fi
  
  	cat >>confdefs.h <<_ACEOF
+Index: asdf/configure.ac
+===================================================================
+--- asdf.orig/configure.ac
++++ asdf/configure.ac
+@@ -582,9 +582,9 @@ if test "x$HAVE_SDL" = "x1" || test "x$H
+ 
+ dnl locate the ttf-unifont
+ 	AS_AC_EXPAND(UNIFONTDIR, $with_unifontdir)
+-	AC_CHECK_FILE($UNIFONTDIR/unifont.ttf, , AC_MSG_ERROR([$UNIFONTDIR/unifont.ttf not found - please use --with-unifontdir=/path/ (needed by X11, SDL1.x and SDL2)]))
+-	AC_CHECK_FILE($UNIFONTDIR/unifont_csur.ttf, , AC_MSG_ERROR([$UNIFONTDIR/unifont_csur.ttf not found - please use --with-unifontdir=/path/ (needed by X11, SDL1.x and SDL2)]))
+-	AC_CHECK_FILE($UNIFONTDIR/unifont_upper.ttf, , AC_MSG_ERROR([$UNIFONTDIR/unifont_upper.ttf not found - please use --with-unifontdir=/path/ (needed by X11, SDL1.x and SDL2)]))
++	AC_CHECK_FILE($UNIFONTDIR/Unifont.ttf, , AC_MSG_ERROR([$UNIFONTDIR/Unifont.ttf not found - please use --with-unifontdir=/path/ (needed by X11, SDL1.x and SDL2)]))
++	AC_CHECK_FILE($UNIFONTDIR/Unifont_CSUR.ttf, , AC_MSG_ERROR([$UNIFONTDIR/Unifont_CSUR.ttf not found - please use --with-unifontdir=/path/ (needed by X11, SDL1.x and SDL2)]))
++	AC_CHECK_FILE($UNIFONTDIR/Unifont_Upper.ttf, , AC_MSG_ERROR([$UNIFONTDIR/Unifont_Upper.ttf not found - please use --with-unifontdir=/path/ (needed by X11, SDL1.x and SDL2)]))
+ 	AC_DEFINE_UNQUOTED(UNIFONTDIR, "$UNIFONTDIR")
+ fi
+ 
 Index: asdf/stuff/poutput-fontengine.c
 ===================================================================
 --- asdf.orig/stuff/poutput-fontengine.c

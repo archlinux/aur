@@ -1,6 +1,6 @@
 pkgbase = ocp
 	pkgdesc = Open Cubic Player
-	pkgver = 0.2.2
+	pkgver = 0.2.90
 	pkgrel = 1
 	url = https://github.com/mywave82/opencubicplayer
 	arch = i686
@@ -22,14 +22,17 @@ pkgbase = ocp
 	depends = libpng
 	depends = freetype2
 	depends = ttf-unifont
-	source = git+https://github.com/mywave82/opencubicplayer.git#tag=v0.2.2
+	source = git+https://github.com/mywave82/opencubicplayer.git#tag=v0.2.90
 	source = git+https://github.com/mywave82/timidity.git
-	source = git+https://github.com/mywave82/sidplay-residfp-ocp
+	source = git+https://github.com/mywave82/sidplay-residfp-ocp.git
+	source = git+https://github.com/libsidplayfp/exsid-driver.git
+	source = git+https://github.com/mywave82/resid.git
 	source = fix-unifont.diff
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = 98a6ab1b11da171b118e0cf7b0485e7c
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 9eb83ffbabec3f1dd66f66c9100a9c08
 
 pkgname = ocp
-
