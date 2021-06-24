@@ -1,7 +1,7 @@
 pkgbase = nodejs-lua-fmt
 	pkgdesc = A pretty-printer for Lua code
 	pkgver = 2.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/trixnz/lua-fmt
 	arch = any
 	license = MIT
