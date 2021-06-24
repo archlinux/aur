@@ -1,7 +1,7 @@
 # Maintainer: Matt Pharoah <mtpharoah@gmail.com>
 pkgname=parallel-launcher
-pkgver=4.3.0
-pkgrel=1
+pkgver=4.4.0
+pkgrel=0
 epoch=
 pkgdesc='A simple easy-to-use launcher for the ParallelN64 and Mupen64Plus-Next emulators'
 arch=('x86_64')
@@ -37,68 +37,9 @@ backup=()
 options=()
 install='parallel-launcher.install'
 changelog=
-source=('parallel-launcher-4.3.0.tar.gz')
+source=('parallel-launcher-4.4.0.tar.gz')
 noextract=()
-md5sums=('fe6f1f81c05e977350ca97c9b8a3f483')
-validpgpkeys=()
-
-build() {
-	qmake-qt5 app.pro -spec linux-g++
-	lrelease app.pro
-	make
-}
-
-package() {
-	install -D parallel-launcher $pkgdir/usr/bin/parallel-launcher
-	install -D parallel-launcher.desktop $pkgdir/usr/share/applications/parallel-launcher.desktop
-	install -D data/appicon.svg $pkgdir/usr/share/parallel-launcher/appicon.svg
-	install -D bps-mime.xml $pkgdir/usr/share/parallel-launcher/bps-mime.xml
-	install -D lang/parallel-launcher.en_us.qm $pkgdir/usr/share/parallel-launcher/parallel-launcher.en_us.qm
-	install -D lang/parallel-launcher.it.qm $pkgdir/usr/share/parallel-launcher/parallel-launcher.it.qm
-	install -D lang/parallel-launcher.es.qm $pkgdir/usr/share/parallel-launcher/parallel-launcher.es.qm
-	install -D lang/parallel-launcher.eo.qm $pkgdir/usr/share/parallel-launcher/parallel-launcher.eo.qm
-}
-# Maintainer: Matt Pharoah <mtpharoah@gmail.com>
-pkgname=parallel-launcher
-pkgver=4.3.0
-pkgrel=0
-epoch=
-pkgdesc='A simple easy-to-use launcher for the ParallelN64 and Mupen64Plus-Next emulators'
-arch=('x86_64')
-url='https://parallel-launcher.ca'
-license=('GPL3')
-groups=()
-depends=(
-	'glibc'
-	'libstdc++5'
-	'gcc-libs'
-	'qt5-base'
-	'qt5-svg'
-	'sdl2'
-	'findutils'
-	'xdg-utils'
-	'flatpak'
-	'polkit'
-	'sqlite'
-	'libgcrypt'
-)
-makedepends=(
-	'gcc'
-	'qt5-declarative'
-	'make'
-)
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install='parallel-launcher.install'
-changelog=
-source=('parallel-launcher-4.3.0.tar.gz')
-noextract=()
-md5sums=('fe6f1f81c05e977350ca97c9b8a3f483')
+md5sums=('64a2ab2c67fb09cc24e99125c99e06b0')
 validpgpkeys=()
 
 build() {
