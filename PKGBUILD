@@ -3,7 +3,7 @@
 # Contributor: Hugo Osvaldo Barrera <hugo@osvaldobarrera.com.ar>
 pkgname=ocamlfuse
 pkgver=2.7.1
-pkgrel=10
+pkgrel=11
 _pkgcommit=2c9fb2079b3ff59898d871ceb38dc71275efd70a
 pkgdesc="An ocaml binding for fuse."
 arch=('x86_64' 'i686')
@@ -20,11 +20,11 @@ makedepends=(
 'fuse'
 )
 options=('staticlibs')
-source=("https://github.com/astrada/ocamlfuse/archive/$_pkgcommit.zip")
+source=("$pkgname-$pkgver.zip::https://github.com/astrada/ocamlfuse/archive/$_pkgcommit.zip")
 sha256sums=('47895d1d8c8ac362732ab75ff1a5a1db898f67ae570aad4399ea5528c73da612')
 
 build() {
-	cd "$srcdir/$pkgname-$_pkgcommit"
+	cd ${srcdir}/${pkgname}-${pkgver}
 
 	# Old method
 	#cd lib
@@ -34,7 +34,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$pkgname-$_pkgcommit"
+	cd ${srcdir}/${pkgname}-${pkgver}
 
 	# Old method
 	#export OCAMLFIND_DESTDIR="$pkgdir/$(ocamlfind printconf destdir)"
