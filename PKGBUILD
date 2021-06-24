@@ -1,15 +1,16 @@
 # Contributor: Michael Gerdau <mgd@qata.de>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-datetime-format-excel'
 pkgver='0.31'
-pkgrel='1'
-pkgdesc="Perl extension to convert between DateTime and Excel dates"
+pkgrel='2'
+pkgdesc="Convert between DateTime and Excel dates."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-datetime')
-makedepends=()
-url='http://search.cpan.org/dist/DateTime-Format-Excel'
+depends=('perl-datetime>=0.1705')
+makedepends=('perl-module-build>=0.36')
+url='https://metacpan.org/release/DateTime-Format-Excel'
 source=('http://search.cpan.org/CPAN/authors/id/A/AB/ABURS/DateTime-Format-Excel-0.31.tar.gz')
 md5sums=('37ba8d11c5a8dc5c5c5208f5d6c77f33')
 sha512sums=('f9bb11b7a6a0a397ba5617625c031308819ba19efad37f6f275862a2f18e0e5ff07f39009821b1d70489fb4c45083f176dfbed130e9a202f9512ebfcf4c9c295')
@@ -38,6 +39,11 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
+
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
+# vim:set ts=2 sw=2 et:
