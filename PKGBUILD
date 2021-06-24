@@ -1,6 +1,6 @@
 # Maintainer: PY Chuang <pychuang@pm.me>
 pkgname=textlint-plugin-latex2e
-pkgver=1.0.0
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Textlint Plugin LaTeX2ε"
 arch=(any)
@@ -9,7 +9,7 @@ license=("GPL3")
 depends=("nodejs" "textlint")
 makedepends=("npm")
 source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
-sha256sums=("a100671f094c62416759065d37f6dcf1444c0e10144581f787221bd900974ca3")
+sha256sums=("f707cd3eea7f0cd8bd3fd8b36223dd2ffe2f53b9021ad98cd808c1794eecfa6d")
 
 package() {
 
@@ -25,7 +25,6 @@ package() {
         --no-optional \
         --no-audit \
         -g \
-        --user root \
         --prefix "$pkgdir/usr" \
         $pkgname-$pkgver.tgz
 

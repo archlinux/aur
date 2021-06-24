@@ -1,6 +1,6 @@
 pkgbase = textlint-plugin-latex2e
 	pkgdesc = Textlint Plugin LaTeX2ε
-	pkgver = 1.0.0
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://github.com/textlint/textlint-plugin-latex2e
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = textlint-plugin-latex2e
 	makedepends = npm
 	depends = nodejs
 	depends = textlint
-	source = https://registry.npmjs.org/textlint-plugin-latex2e/-/textlint-plugin-latex2e-1.0.0.tgz
-	sha256sums = a100671f094c62416759065d37f6dcf1444c0e10144581f787221bd900974ca3
+	source = https://registry.npmjs.org/textlint-plugin-latex2e/-/textlint-plugin-latex2e-1.1.4.tgz
+	sha256sums = f707cd3eea7f0cd8bd3fd8b36223dd2ffe2f53b9021ad98cd808c1794eecfa6d
 
 pkgname = textlint-plugin-latex2e
-
