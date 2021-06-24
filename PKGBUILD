@@ -4,7 +4,7 @@
 
 pkgname=abntex2
 pkgver=1.9.7
-pkgrel=3
+pkgrel=4
 pkgdesc="a LaTeX class for writing ABNT-compliant documents"
 arch=('i686' 'x86_64')
 url="https://github.com/abntex/abntex2"

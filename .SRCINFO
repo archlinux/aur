@@ -1,7 +1,7 @@
 pkgbase = abntex2
 	pkgdesc = a LaTeX class for writing ABNT-compliant documents
 	pkgver = 1.9.7
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/abntex/abntex2
 	install = abntex2.install
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = abntex2
 	depends = texlive-core
 	depends = texlive-latexextra
 	conflicts = texlive-publishers
-	source = http://dl.bintray.com/laurocesar/generic/abntex2.tds-1.9.7.tar.gz
-	sha1sums = 66b60932890ce5e680edb3a63866340491ec6da2
+	source = https://github.com/abntex/abntex2/archive/refs/tags/2018-11-24-v1.9.7-ctan.tar.gz
+	sha1sums = 41f0d0900de00177937a343fe67a9757a5e954e1
 
 pkgname = abntex2
 
