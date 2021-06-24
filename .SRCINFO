@@ -1,7 +1,7 @@
 pkgbase = nodejs-express
 	pkgdesc = Fast, unopinionated, minimalist web framework for node.
 	pkgver = 4.17.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/expressjs/express
 	arch = any
 	license = MIT
