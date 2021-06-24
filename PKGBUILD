@@ -1,7 +1,7 @@
 # Maintainer: PY Chuang <pychuang@pm.me>
 pkgname=textlint-rule-ginger
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='textlint rule to check your English grammar with Ginger Proofreading'
 arch=(any)
 url='https://github.com/textlint-rule/textlint-rule-ginger'
@@ -24,7 +24,6 @@ package() {
         --no-optional \
         --no-audit \
         -g \
-        --user root \
         --prefix ${pkgdir}/usr \
         ${pkgname}-${pkgver}.tgz
 

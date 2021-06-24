@@ -1,7 +1,7 @@
 pkgbase = textlint-rule-ginger
 	pkgdesc = textlint rule to check your English grammar with Ginger Proofreading
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/textlint-rule/textlint-rule-ginger
 	arch = any
 	license = MIT
@@ -12,4 +12,3 @@ pkgbase = textlint-rule-ginger
 	sha256sums = 464cbe8a5e1e2fe550b875da5af1c185a5f91cbd6ffcca6871be8dbf06cd3b3e
 
 pkgname = textlint-rule-ginger
-
