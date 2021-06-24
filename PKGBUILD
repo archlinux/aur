@@ -18,7 +18,7 @@ build() {
   cd "${srcdir}" || exit
 
   echo "#!/bin/sh" > pacmc.sh
-  echo "/usr/share/${pkgname}/bin/pacmc" >> pacmc.sh
+  echo "/usr/share/${pkgname}/bin/pacmc \"\$@\"" >> pacmc.sh
 }
 
 package() {
