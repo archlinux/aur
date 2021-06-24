@@ -2,7 +2,7 @@
 
 pkgname=pa-notify
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight PulseAudio volume notification"
 arch=(x86_64)
 url="https://github.com/ikrivosheev/pa-notify"
