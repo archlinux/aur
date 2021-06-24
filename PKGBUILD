@@ -1,13 +1,13 @@
 pkgname=git-deps
-depends=(git python python-flask python-pygit2 python-setuptools)
-pkgver=1.0.1
+depends=(git python python-flask python-pygit2 python-setuptools python-wheel)
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='git commit dependency analysis tool'
 arch=(any)
 url=https://github.com/aspiers/git-deps
 license=(GPL2)
-source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz)
-sha512sums=('e298304442184362cf4bb2216314c1d4bbdb9a69a3197b32b6a7d62ba630a73f60e531b5e2c0ad169885cab2fbecabe3a20cc5cdfba505570bc76bf3b997ef1b')
+source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.zip)
+sha512sums=('74880f9427cc94a1cc14236334774f09b5005f29d8310ea8cd75c9d8045018c5618090c5d8aa44e13f70c37d14c6a693db1054c968d936ca69d3971103c61d5a')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

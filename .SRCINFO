@@ -1,6 +1,6 @@
 pkgbase = git-deps
 	pkgdesc = git commit dependency analysis tool
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/aspiers/git-deps
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = git-deps
 	depends = python-flask
 	depends = python-pygit2
 	depends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/g/git-deps/git-deps-1.0.1.tar.gz
-	sha512sums = e298304442184362cf4bb2216314c1d4bbdb9a69a3197b32b6a7d62ba630a73f60e531b5e2c0ad169885cab2fbecabe3a20cc5cdfba505570bc76bf3b997ef1b
+	depends = python-wheel
+	source = https://files.pythonhosted.org/packages/source/g/git-deps/git-deps-1.1.0.zip
+	sha512sums = 74880f9427cc94a1cc14236334774f09b5005f29d8310ea8cd75c9d8045018c5618090c5d8aa44e13f70c37d14c6a693db1054c968d936ca69d3971103c61d5a
 
 pkgname = git-deps
-
