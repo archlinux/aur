@@ -2,8 +2,8 @@
 
 pkgname="riseup-vpn-terminal"
 pkgver=0.0.3
-pkgrel=2
-pkgdesc="Script and desktop entry to start RiseupVPN in a terminal; useful when on desktop environment without tray icon support (e.g. GNOME, Phoc)"
+pkgrel=3
+pkgdesc="Script and desktop entry to start RiseupVPN in a terminal; useful when desktop environment does not support tray icons (e.g. GNOME, Phoc)"
 arch=('any')
 license=('MIT')
 
