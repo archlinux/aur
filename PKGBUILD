@@ -2,23 +2,20 @@
 
 pkgbase=shodo
 pkgname=${pkgbase}
-pkgver=1.1.1
-pkgrel=3
+pkgver=1.1.2
+pkgrel=1
 arch=('any')
 pkgdesc="Assinador fornecido pela Justiça do Trabalho para realizar assinaturas digitais no PJe"
 url="https://pje.csjt.jus.br/manual/index.php/Shod%C5%8D"
 license=('custom')
+makedepends=('imagemagick')
 depends=('java-runtime=8')
 install=${pkgname}.install
 
-DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
-
 source=("${pkgname}-${pkgver}.jar::https://pje.trt5.jus.br/shodo/shodo.jar"
-        "${pkgbase}"-{48,64,128}.png
+        "${pkgbase}.png"
         "${pkgbase}")
-sha256sums=('8a6ae3ad16bb592b73a6ea65f4db3ef4ece774c5ada367ba0ecc75577e2b5cff'
-            '17ea4384cbc047448a6698994ae109884f7ef299b972452b6060587b0e300375'
-            '11b54f2210ef5ba2fe1f0e3b388bdac2d3e67b66f549c85b2efe77e4f573a3a3'
+sha256sums=('c3df7ca55a122b04924ea8ae045cb636fa5ee98a69af71b8263b556178c6e8b4'
             '68c1fa6b45b21fd1a8df30338a957b4657257ab9c8bc456a5873f8a589de9f41'
             'cc1f6d2470a6a77044f89b3f1c6d4b67d4e94746682a85851e754dfb0ebd29ed')
 
@@ -46,11 +43,12 @@ package() {
 
     install -Dm 755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm 755 "${pkgname}-${pkgver}.jar" "${pkgdir}/opt/${pkgname}/${pkgname}.jar"
-    install -Dm 644 "${srcdir}/${pkgname}-128.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm 644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm 644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-    for i in 48 64 128; do
-        install -Dm 644 "${srcdir}/${pkgname}-${i}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
+    for size in 22 24 32 48 64 128; do
+        mkdir -p "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
+        convert "${srcdir}/${pkgname}-${size}.png" -resize "${size}x${size}" \
+            "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
     done
 }
