@@ -1,0 +1,16 @@
+pkgbase = rinstall-git
+	pkgdesc = Declarative install for programs
+	pkgver = r10.9beec7f
+	pkgrel = 1
+	url = https://git.sr.ht/~danyspin97/rinstall
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	provides = rinstall
+	conflicts = rinstall
+	source = rinstall-git::git+https://git.sr.ht/~danyspin97/rinstall
+	sha256sums = SKIP
+
+pkgname = rinstall-git
