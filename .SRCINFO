@@ -1,7 +1,7 @@
 pkgbase = nodejs-cmake-js
 	pkgdesc = CMake.js - a Node.js native addon build tool
 	pkgver = 6.1.0
-	pkgrel = 3
+	pkgrel = 2
 	url = https://github.com/cmake-js/cmake-js
 	arch = any
 	license = MIT
