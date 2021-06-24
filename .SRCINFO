@@ -1,14 +1,13 @@
 pkgbase = emacs-xclip
 	pkgdesc = Emacs interface to xclip
 	pkgver = 0.9
-	pkgrel = 1
-	url = http://www.emacswiki.org/emacs/xclip.el
+	pkgrel = 2
+	url = https://www.emacswiki.org/emacs/xclip.el
 	install = emacs-xclip.install
 	arch = any
 	license = GPL3
 	makedepends = emacs
-	source = http://www.emacswiki.org/emacs/download/xclip.el
+	source = https://www.emacswiki.org/emacs/download/xclip.el
 	sha1sums = c4c4167405702b8f747f0ebd9b962ba075bdbeb8
 
 pkgname = emacs-xclip
-
