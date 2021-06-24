@@ -1,7 +1,7 @@
 pkgbase = pgadmin4-venv
 	pkgdesc = Comprehensive design and management interface for PostgreSQL
 	pkgver = 5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pgadmin.org/
 	arch = x86_64
 	license = custom
@@ -11,11 +11,9 @@ pkgbase = pgadmin4-venv
 	provides = pgadmin4=5.4
 	conflicts = pgadmin4
 	replaces = pgadmin4
-	source = pgAdmin4.desktop
 	source = pgAdmin4.png
 	source = arch_additions.py
 	source = arch_patches.patch
-	sha512sums = e5db1a1924252f4e3aa076352b39ffe2006b79cc9153105ab3438f724a993badf29a8eb6c0ffaa615fc9fdd6ee1c8cc62ba7a1059cf5bd9beff11a7d977d6ad8
 	sha512sums = be2872cd2a3009dea0cff03be122e43085e8aa5e792ec8724deafd9ddf719a3655a0500b03476c0d85d96632952613802825d3cd1566a7de4d75780ca911bdb4
 	sha512sums = 1b762613273ead0cb93b8d9d586cfc101c3bea3fb5588ca2f3a5ca8476b18c46e7b11c15f29a7c7d08190df48c082b09ee3b10fedc154dfa6141f8c71f2da4fb
 	sha512sums = 4741de879e90a0dd267abc060a9b867ebae55d15f233a9896a5c067624bb3b5ffb80ea9feb6383262276c3e450d863b3a2125f2039b41f50feb1accfa5514a89

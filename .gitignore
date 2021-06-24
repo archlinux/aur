@@ -5,3 +5,4 @@ pkg/
 *.tar.gz.asc
 .project
 .settings
+.pydevproject
