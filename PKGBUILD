@@ -3,7 +3,7 @@
 _pkgname=pgadmin4
 pkgname=${_pkgname}-venv
 pkgver=5.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Comprehensive design and management interface for PostgreSQL'
 url='https://www.pgadmin.org/'
 arch=('x86_64')
@@ -19,8 +19,6 @@ sha512sums=(
 	'1b762613273ead0cb93b8d9d586cfc101c3bea3fb5588ca2f3a5ca8476b18c46e7b11c15f29a7c7d08190df48c082b09ee3b10fedc154dfa6141f8c71f2da4fb'
 	'4741de879e90a0dd267abc060a9b867ebae55d15f233a9896a5c067624bb3b5ffb80ea9feb6383262276c3e450d863b3a2125f2039b41f50feb1accfa5514a89'
 )
-
-
 
 prepare() {
 
@@ -45,12 +43,14 @@ prepare() {
 }
 
 package() {
-	install -dm 755 ${srcdir}/pgadmin4 "${pkgdir}/opt/pgadmin4"
-	install -Dm 644 "${srcdir}"/arch_additions.py -t "${pkgdir}/opt/pgadmin4/lib/python${PYTHONVERSION}/site-packages/pgadmin4"
 
-	install -Dm 644 "${srcdir}"/pgAdmin4.png -t "${pkgdir}/opt/pgadmin4"
+	install -dm 755 ${pkgdir}/opt/pgadmin4
+	cp -rp ${srcdir}/pgadmin4/* ${pkgdir}/opt/pgadmin4
+	install -Dm 644 ${srcdir}/arch_additions.py -t ${pkgdir}/opt/pgadmin4/lib/python${PYTHONVERSION}/site-packages/pgadmin4
 
-	install -D /dev/stdin "${pkgdir}/usr/bin/pgadmin4" <<END
+	install -Dm 644 ${srcdir}/pgAdmin4.png -t ${pkgdir}/opt/pgadmin4
+
+	install -D /dev/stdin ${pkgdir}/usr/bin/pgadmin4 <<END
 #!/bin/sh
 cd /opt/pgadmin4
 source bin/activate
@@ -59,7 +59,7 @@ export PGADMIN_SERVER_MODE='OFF'
 python lib/python${PYTHONVERSION}/site-packages/pgadmin4/pgAdmin4.py "\$@"
 END
 
-	install -D /dev/stdin "${pkgdir}/usr/share/applications/pgAdmin4.desktop" <<END
+	install -D /dev/stdin ${pkgdir}/usr/share/applications/pgAdmin4.desktop <<END
 [Desktop Entry]
 Encoding=UTF-8
 Name=pgAdmin 4
