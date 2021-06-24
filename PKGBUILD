@@ -24,12 +24,8 @@ build () {
   cd "$srcdir/$pkgname-$pkgver"
   mkdir -p target/completions
 
-  if pacman -T pacman-git > /dev/null; then
-    _features="git"
-  fi
-
   COMPLETIONS_DIR=target/completions \
-    cargo build --features "${_features:-}" --release
+    cargo build --release
 }
 
 package() {
