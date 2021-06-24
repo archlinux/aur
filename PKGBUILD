@@ -32,7 +32,7 @@ package() {
 
         # desktop entry 
         install -Dvm644 "usr/share/applications/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-		sed -i "/Icon=/c\/usr/share/icons/hicolor/1024x1024/apps/${pkgname}.png" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+		#sed -i "/Icon=/c\/usr/share/icons/hicolor/1024x1024/apps/${pkgname}.png" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	   
 		 # Link to the binary
         install -Dvdm755 "${pkgdir}/usr/bin"
