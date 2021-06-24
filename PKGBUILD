@@ -1,48 +1,38 @@
-# Maintainer: gt <AT> notfoss.com
+# Maintainer: willemw <willemw12@gmail.com>
+# Contributor: gt <AT> notfoss.com
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
-pkgname="lnav-git"
-pkgver="0.8.5.r74.g8b750c8"
-pkgrel="1"
-pkgdesc="A featureful ncurses based log file viewer"
-arch=("i686" "x86_64")
+pkgname=lnav-git
+pkgver=0.10.0.beta1.r6.g872b9411
+pkgrel=1
+pkgdesc="A curses-based tool for viewing and analyzing log files"
+arch=('x86_64')
 url="http://lnav.org/"
-license=("BSD")
-depends=("bzip2" "curl" "ncurses" "pcre" "readline" "sqlite" "zlib")
-makedepends=("git")
-conflicts=("lnav")
-provides=("lnav")
-source=("$pkgname"::"git+https://github.com/tstack/lnav.git")
-md5sums=("SKIP")
+license=('custom:BSD')
+depends=('ncurses' 'curl' 'pcre' 'sqlite3')
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+https://github.com/tstack/lnav.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
-    # tag + number of commits since that + SHA-1 (first 7 characters) of the last commit
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd $pkgname
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$pkgname"
-    ./autogen.sh
-    ./configure \
-        --prefix=/usr \
-        --sbindir=/usr/bin \
-        --libexecdir=/usr/lib/lnav \
-        --sysconfdir=/etc \
-        --sharedstatedir=/usr/share/lnav \
-        --localstatedir=/var/lib/lnav \
-        --disable-static \
-        --with-ncurses \
-        --with-pcre \
-        --with-readline \
-        --with-sqlite3
-    make
+  cd $pkgname
+  ./autogen.sh
+  ./configure --prefix=/usr --disable-static
+  make
 }
 
 package() {
-    cd "$pkgname"
-    make PREFIX=/usr DESTDIR="$pkgdir" install
-
-    # BSD license
-    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd $pkgname
+  install -Dm644 README -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+  install -Dm644 "${pkgname%-git}.1" -t "$pkgdir/usr/share/man/man1"
+  make DESTDIR="$pkgdir/" install
 }
+
