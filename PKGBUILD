@@ -2,7 +2,7 @@
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 pkgname=google-drive-ocamlfuse
 pkgver=0.7.26
-pkgrel=1
+pkgrel=2
 pkgdesc='FUSE-based file system backed by Google Drive, written in OCaml'
 arch=('x86_64' 'i686')
 url='https://astrada.github.io/google-drive-ocamlfuse/'
@@ -19,11 +19,11 @@ makedepends=(
 'ocaml-ounit'
 )
 options=('staticlibs')
-source=("https://github.com/astrada/$pkgname/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/astrada/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('273b1bbc5fc8b98bdee659bd2e5e67ec35cdbd2a75a5f353ba58533cff937890')
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd ${srcdir}/${pkgname}-${pkgver}
 
 	# Old method requires ocamlbuild instead of jbuilder/dune
 	#ocaml setup.ml -configure --prefix /usr --destdir "$pkgdir" --exec-prefix "/usr"
@@ -40,7 +40,7 @@ build() {
 #}
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd ${srcdir}/${pkgname}-${pkgver}
 
 	#export OCAMLFIND_DESTDIR="$pkgdir/$(ocamlfind printconf destdir)"
 	#ocaml setup.ml -install
