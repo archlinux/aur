@@ -1,7 +1,7 @@
 pkgbase = nodejs-wintersmith
 	pkgdesc = A flexible static site generator.
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jnordberg/wintersmith
 	arch = any
 	license = MIT

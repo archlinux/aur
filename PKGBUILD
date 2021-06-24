@@ -4,7 +4,7 @@
 _npmname=wintersmith
 pkgname=nodejs-wintersmith
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A flexible static site generator."
 arch=('any')
 url="https://github.com/jnordberg/wintersmith"
@@ -20,7 +20,7 @@ package() {
     local _npmdir="$pkgdir/usr/lib/node_modules/"
     mkdir -p "$_npmdir"
     cd "$_npmdir"
-    npm install -g --prefix "$pkgdir/usr" "$_npmname@$pkgver"
+    npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
     install -Dm644 "$_npmdir/$_npmname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
     chown -R root:root "${pkgdir}"
 }
