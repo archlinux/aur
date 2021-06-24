@@ -1,7 +1,7 @@
 pkgbase = suricata
 	pkgdesc = An Open Source Next Generation Intrusion Detection and Prevention Engine
 	pkgver = 6.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://suricata-ids.org/
 	install = suricata.install
 	arch = i686

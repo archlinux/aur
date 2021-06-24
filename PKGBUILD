@@ -3,7 +3,7 @@
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 pkgname=suricata
 pkgver=6.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An Open Source Next Generation Intrusion Detection and Prevention Engine"
 arch=('i686' 'x86_64')
 url="http://suricata-ids.org/"
@@ -59,7 +59,7 @@ package() {
     -e 's:^Description=.*:Description=Suricata IDS/IPS daemon:g' \
     -e 's:^After=.*:After=network.target:g' \
     -e 's:^ExecStartPre=.*:PIDFile=suricata/suricata.pid:g' \
-    -e 's:^ExecStart=.*:ExecStart=/usr/bin/suricata -c /etc/suricata/suricata.yaml --pidfile /run/suricata/suricata.pid -q 0:g' \
+    -e 's:^ExecStart=.*:ExecStart=/usr/bin/suricata -c /etc/suricata/suricata.yaml --pidfile /run/suricata/suricata.pid --af-packet :g' \
     "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
   echo "u suricata -" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
