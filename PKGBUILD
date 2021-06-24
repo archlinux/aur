@@ -2,7 +2,7 @@
 
 pkgname=revolt-cli-bin
 pkgdesc="A CLI client for Revolt"
-pkgver=v0.2.0
+pkgver=v0.2.1
 pkgrel=1
 pkgbase=revolt-cli-bin
 replaces=()
@@ -11,10 +11,11 @@ url="https://github.com/Jan0660/Revolt.Cli"
 license=('GPL3')
 groups=()
 makedepends=()
-depends=('dotnet-runtime' 'xsel')
-source=('https://github.com/Jan0660/Revolt.Cli/releases/download/v0.2.0/linux-x64.revolt-cli')
-sha256sums=('deb963bfe206dba480890566235e8af7eb2eb5a44953c1eae7d61ac24a0d7ae8')
+depends=('dotnet-runtime')
+source=('https://github.com/Jan0660/Revolt.Cli/releases/download/v0.2.1/linux-x64.revolt-cli')
+sha256sums=('90dd2c5cec4be210bfc79c2d36fbf59241114110e9c08ff490d06de228e9b203')
 options=(!strip)
+optdepends=('xsel: provide copy support')
 
 package() {
   mv linux-x64.revolt-cli revolt-cli
