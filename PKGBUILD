@@ -1,7 +1,7 @@
 # Maintainer: Cyano Hao <c@cyano.cn>
 
 pkgname=qemu-guest-kernel
-pkgver=5.10.45
+pkgver=5.10.46
 pkgrel=1
 pkgdesc="Linux kernels for QEMU/KVM guests (direct kernel boot)"
 url="https://github.com/guest-kernel/qemu"
@@ -18,20 +18,25 @@ install=archpkg.install
 _srcname=stable-linux
 source=(
 	$_srcname::"git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git?signed#tag=v$pkgver"
-	config.x86
+	{filesystem,systemd}.config
+	arch_x86.config
 )
 validpgpkeys=(
 	"ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
 	"647F28654894E3BD457199BE38DBBDC86092693E"  # Greg Kroah-Hartman
 )
 sha256sums=('SKIP'
-            '98a6c9a50221685ff9bd510c1a413caeddcbb6ecc4b2855bc82d3b5ea3979311')
+            '050c5d02668544d3b07fbd65a5cddb00fe203d07a95b7f924f9de191e55e151f'
+            '910b7965db9777794b923ba36c83b682593c55775a7cc0a91fe28c2b7a43ade1'
+            '145a82106497e007df1b17612f2215c2ae0edd8918762a636aad48e7c83cf20f')
 
 prepare() {
 	cd "$srcdir/$_srcname"
+	cp "$srcdir/"{filesystem,systemd}.config kernel/configs/
+
 	for _arch in x86
 	do
-		cp "$srcdir/config.$_arch" arch/$_arch/configs/qemu_extra.config
+		cp "$srcdir/arch_$_arch.config" arch/$_arch/configs/arch_specific.config
 	done
 }
 
@@ -47,7 +52,9 @@ _build() {
 
 	make ${_def_prefix}defconfig
 	make kvm_guest.config
-	make qemu_extra.config
+	make filesystem.config
+	make systemd.config
+	make arch_specific.config
 
 	make
 	cp $(make -s image_name) "$srcdir/vmlinuz.$_carch"
@@ -62,7 +69,9 @@ _native_build() {
 
 	make defconfig
 	make kvm_guest.config
-	make qemu_extra.config
+	make filesystem.config
+	make systemd.config
+	make arch_specific.config
 
 	make
 	cp $(make -s image_name) "$srcdir/vmlinuz.$CARCH"
