@@ -5,7 +5,7 @@
 
 pkgname=zsh-theme-powerlevel10k
 # Whenever pkgver is updated, _libgit2ver below must also be updated.
-pkgver=1.14.6
+pkgver=1.15.0
 _libgit2ver="tag-d6c37a38587c9af2a9e63449fc8bf951dca0e854"
 pkgrel=1
 pkgdesc="Powerlevel10k is a theme for Zsh. It emphasizes speed, flexibility and out-of-the-box experience."
@@ -23,7 +23,7 @@ optdepends=(
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/romkatv/powerlevel10k/archive/v${pkgver}.tar.gz"
   "libgit2-${_libgit2ver}.tar.gz::https://github.com/romkatv/libgit2/archive/${_libgit2ver}.tar.gz")
-sha512sums=('e4d12cb81ce0bacf6c7021719e4dae3d0f88fe34db022ac0e7ba48a84ef86749d17ef1fe01a5ae392b6b10e3a6ea043dca244bda10be009c461ffc71380a7fcf'
+sha512sums=('ba848aed634fcfcc7da901092cd1d9876df5bde06eae729e684e9bc0aa67109e29e5600d56ae2683769e2ce79948e31b9d07aef11d745d04ef68e24de8ac2ad4'
             '11fd09ce20191392947d171e9212a33a998c1f2c4bcb8ab7440a0dc88653ff1324a1529984a607d545ab8863738f4eb946134c46f44bd1c200c6d98c02657292')
 replaces=('zsh-theme-powerlevel9k')
 
