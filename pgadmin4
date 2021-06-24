@@ -1,0 +1,5 @@
+#!/bin/sh
+cd /opt/pgadmin4
+export PGADMIN_INT_PORT=$(venv/bin/python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()');
+export PGADMIN_SERVER_MODE='OFF'
+venv/bin/python web/pgAdmin4.py "$@"

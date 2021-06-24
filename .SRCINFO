@@ -1,21 +1,30 @@
 pkgbase = pgadmin4-venv
 	pkgdesc = Comprehensive design and management interface for PostgreSQL
 	pkgver = 5.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.pgadmin.org/
 	arch = x86_64
 	license = custom
+	makedepends = imagemagick
 	makedepends = python-pip
 	depends = postgresql-libs
 	depends = python
+	depends = hicolor-icon-theme
 	provides = pgadmin4=5.4
 	conflicts = pgadmin4
 	replaces = pgadmin4
-	source = pgAdmin4.png
+	source = https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v5.4/source/pgadmin4-5.4.tar.gz
+	source = https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v5.4/source/pgadmin4-5.4.tar.gz.asc
+	source = pgadmin4
+	source = pgAdmin4.desktop
 	source = arch_additions.py
 	source = arch_patches.patch
-	sha512sums = be2872cd2a3009dea0cff03be122e43085e8aa5e792ec8724deafd9ddf719a3655a0500b03476c0d85d96632952613802825d3cd1566a7de4d75780ca911bdb4
-	sha512sums = 1b762613273ead0cb93b8d9d586cfc101c3bea3fb5588ca2f3a5ca8476b18c46e7b11c15f29a7c7d08190df48c082b09ee3b10fedc154dfa6141f8c71f2da4fb
-	sha512sums = 4741de879e90a0dd267abc060a9b867ebae55d15f233a9896a5c067624bb3b5ffb80ea9feb6383262276c3e450d863b3a2125f2039b41f50feb1accfa5514a89
+	validpgpkeys = E8697E2EEF76C02D3A6332778881B2A8210976F2
+	sha512sums = 563a38545fcc3e59d6dd0db94d0a2ba433de3ac3f75889ed6e73c0db36f6105db6c92c5ffcd4a7116d726adeeb6bec3d29b517a0b4d6f7fd69ea9818713e3500
+	sha512sums = SKIP
+	sha512sums = 70a85ac956ea54d51486f903531f5fcf26c0c967aedee42d4adc34483653dc655fa1a751b70b858aa2f698c71fbddfc771a77ca3f90f38938c66ea6f8a626237
+	sha512sums = 1353eeedfc091da86f8901b71922ceca53b83d9eb62437e3ca7a48745463a7796c3e5db00e103e023af3a002a8319472ea42e37e8bdef38c29da9e963e49bada
+	sha512sums = d45aa698834ec67b26e061caabb734db22ada85e241ab8ee64c3db3a3027355a0174f84ee186bdfb7b9330dd24ab1d0171f367c75507714f6fb5736346f59006
+	sha512sums = 2a7d23ca23b68fcaceb9c12abb465ba3a420a07a03e3bc976887f3544f41a1ea571b015b1383096b14bd6fe5c7736e77c9116de297e4f7c267ace7e6693919a7
 
 pkgname = pgadmin4-venv

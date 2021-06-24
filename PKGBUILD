@@ -3,7 +3,7 @@
 _pkgname=pgadmin4
 pkgname=${_pkgname}-venv
 pkgver=5.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Comprehensive design and management interface for PostgreSQL'
 url='https://www.pgadmin.org/'
 arch=('x86_64')
@@ -11,66 +11,65 @@ license=('custom')
 replaces=("${_pkgname}")
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
-depends=('postgresql-libs' 'python')
-makedepends=('python-pip')
-source=(pgAdmin4.png arch_additions.py arch_patches.patch)
+depends=('postgresql-libs' 'python' 'hicolor-icon-theme')
+makedepends=('imagemagick' 'python-pip' )
+source=(
+	https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v${pkgver}/source/${_pkgname}-${pkgver}.tar.gz{,.asc}
+	pgadmin4
+	pgAdmin4.desktop
+	arch_additions.py
+	arch_patches.patch
+)
 sha512sums=(
-	'be2872cd2a3009dea0cff03be122e43085e8aa5e792ec8724deafd9ddf719a3655a0500b03476c0d85d96632952613802825d3cd1566a7de4d75780ca911bdb4'
-	'1b762613273ead0cb93b8d9d586cfc101c3bea3fb5588ca2f3a5ca8476b18c46e7b11c15f29a7c7d08190df48c082b09ee3b10fedc154dfa6141f8c71f2da4fb'
-	'4741de879e90a0dd267abc060a9b867ebae55d15f233a9896a5c067624bb3b5ffb80ea9feb6383262276c3e450d863b3a2125f2039b41f50feb1accfa5514a89'
+	'563a38545fcc3e59d6dd0db94d0a2ba433de3ac3f75889ed6e73c0db36f6105db6c92c5ffcd4a7116d726adeeb6bec3d29b517a0b4d6f7fd69ea9818713e3500'
+	'SKIP'
+	'70a85ac956ea54d51486f903531f5fcf26c0c967aedee42d4adc34483653dc655fa1a751b70b858aa2f698c71fbddfc771a77ca3f90f38938c66ea6f8a626237'
+	'1353eeedfc091da86f8901b71922ceca53b83d9eb62437e3ca7a48745463a7796c3e5db00e103e023af3a002a8319472ea42e37e8bdef38c29da9e963e49bada'
+	'd45aa698834ec67b26e061caabb734db22ada85e241ab8ee64c3db3a3027355a0174f84ee186bdfb7b9330dd24ab1d0171f367c75507714f6fb5736346f59006'
+	'2a7d23ca23b68fcaceb9c12abb465ba3a420a07a03e3bc976887f3544f41a1ea571b015b1383096b14bd6fe5c7736e77c9116de297e4f7c267ace7e6693919a7'
 )
 
+validpgpkeys=('E8697E2EEF76C02D3A6332778881B2A8210976F2') # Package Manager (Package Signing Key) <packages@pgadmin.org>
+
 prepare() {
+	cd ${_pkgname}-${pkgver}
+	patch -Np1 < ../arch_patches.patch
+	echo "PyQt5==5.*" >> requirements.txt
+	echo "simple-websocket==0.*" >> requirements.txt
+	echo "Sphinx==4.*" >> requirements.txt
+}
 
-	export PYTHONVERSION="$(python -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')"
+build() {
+	local SRC_DIR=${srcdir}/${_pkgname}-${pkgver}
+	cd $SRC_DIR
 
-	python -m venv "${srcdir}/pgadmin4/"
-	source ${srcdir}/pgadmin4/bin/activate
-	pip install pgadmin4==${pkgver}
+	python -m venv venv
+	venv/bin/pip install -r requirements.txt
 
-	# for better websocket experience
-	pip install simple-websocket
+	make docs PYTHON="${SRC_DIR}/venv/bin/python" SPHINXBUILD="${SRC_DIR}/venv/bin/sphinx-build -W"
 
-	# reinstall to avoid an alignment error
-	pip install psycopg2==2.8.*
-
-	# used for KDE tray icon
-	pip install PyQt5
-	
-	patch -Np1 -d ${srcdir}/pgadmin4/lib/python${PYTHONVERSION}/ < arch_patches.patch
-	
-	find ${srcdir}/pgadmin4/bin -type f -exec sed -i "s|${srcdir}|/opt|g" {} \;
+	find ${SRC_DIR}/venv/bin -type f -exec sed -i "s|${SRC_DIR}|/opt/${_pkgname}|g" {} \;
 }
 
 package() {
+	local SRC_DIR=${srcdir}/${_pkgname}-${pkgver}
+	local PKG_DIR=${pkgdir}/opt/${_pkgname}
+	local IMG_DIR=${pkgdir}/usr/share/icons/hicolor
 
-	install -dm 755 ${pkgdir}/opt/pgadmin4
-	cp -rp ${srcdir}/pgadmin4/* ${pkgdir}/opt/pgadmin4
-	install -Dm 644 ${srcdir}/arch_additions.py -t ${pkgdir}/opt/pgadmin4/lib/python${PYTHONVERSION}/site-packages/pgadmin4
+	install -dm 755 ${PKG_DIR}
+	install -dm 755 ${IMG_DIR}/{256x256,48x48,32x32,16x16}/apps
 
-	install -Dm 644 ${srcdir}/pgAdmin4.png -t ${pkgdir}/opt/pgadmin4
+	cp -rp ${SRC_DIR}/* ${PKG_DIR}/
 
-	install -D /dev/stdin ${pkgdir}/usr/bin/pgadmin4 <<END
-#!/bin/sh
-cd /opt/pgadmin4
-source bin/activate
-export PGADMIN_INT_PORT=\$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()');
-export PGADMIN_SERVER_MODE='OFF'
-python lib/python${PYTHONVERSION}/site-packages/pgadmin4/pgAdmin4.py "\$@"
-END
+	install -Dm 644 ${srcdir}/arch_additions.py -t ${PKG_DIR}/web/
+	
+	convert ${SRC_DIR}/runtime/assets/pgAdmin4.png -resize 256x256 ${IMG_DIR}/256x256/apps/pgAdmin4.png
+	convert ${SRC_DIR}/runtime/assets/pgAdmin4.png -resize 48x48 ${IMG_DIR}/48x48/apps/pgAdmin4.png
+	convert ${SRC_DIR}/runtime/assets/pgAdmin4.png -resize 32x32 ${IMG_DIR}/32x32/apps/pgAdmin4.png
+	convert ${SRC_DIR}/runtime/assets/pgAdmin4.png -resize 16x16 ${IMG_DIR}/16x16/apps/pgAdmin4.png
 
-	install -D /dev/stdin ${pkgdir}/usr/share/applications/pgAdmin4.desktop <<END
-[Desktop Entry]
-Encoding=UTF-8
-Name=pgAdmin 4
-Exec=/usr/bin/pgadmin4
-Icon=/opt/pgadmin4/pgAdmin4.png
-Type=Application
-Categories=Application;Development;Database;
-MimeType=text/html
-DocPath=/opt/pgadmin4/lib/python${PYTHONVERSION}/site-packages/pgadmin4/docs/en_US/_build/html/index.html
-Comment=PostgreSQL Tools
-Keywords=database;db;sql;query;administration;development;
-END
-
+	install -Dm 644 ${srcdir}/pgAdmin4.desktop -t ${pkgdir}/usr/share/applications
+	install -Dm 755 ${srcdir}/pgadmin4 -t ${pkgdir}/usr/bin
+	
+	install -Dm 644 ${SRC_DIR}/LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }

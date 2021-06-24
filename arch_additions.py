@@ -30,7 +30,7 @@ class TrayIconInitializer(Thread):
     def run(self):
         self.app = QtWidgets.QApplication(sys.argv)
         w = QtWidgets.QWidget()
-        trayIcon = SystemTrayIcon(QtGui.QIcon("/opt/pgadmin4/pgAdmin4.png"), w)
+        trayIcon = SystemTrayIcon(QtGui.QIcon("/usr/share/icons/hicolor/256x256/apps/pgAdmin4.png"), w)
         trayIcon.menu.addAction("New pgAdmin4 window", lambda: subprocess.run(["xdg-open", self.url]))
         trayIcon.menu.addAction("Exit server process", self.stop)
         trayIcon.show()

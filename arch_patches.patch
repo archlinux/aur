@@ -1,5 +1,5 @@
---- a/site-packages/pgadmin4/pgAdmin4.py
-+++ b/site-packages/pgadmin4/pgAdmin4.py
+--- a/web/pgAdmin4.py
++++ b/web/pgAdmin4.py
 @@ -142,7 +142,10 @@ else:
  ##########################################################################
  # The entry point
