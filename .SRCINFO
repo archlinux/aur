@@ -1,0 +1,12 @@
+pkgbase = sjtu-dnscrypt-accel
+	pkgdesc = SJTU DNS acceleration configuration for DNScrypt-proxy
+	pkgver = r125654.72a0845284
+	pkgrel = 2
+	arch = any
+	license = MIT
+	depends = dnscrypt-proxy
+	backup = etc/sjtudnscrypt.conf
+	source = list::git+https://github.com/felixonmars/dnsmasq-china-list
+	sha256sums = SKIP
+
+pkgname = sjtu-dnscrypt-accel
