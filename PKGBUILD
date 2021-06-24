@@ -4,7 +4,7 @@
 # Contributor : Lauri Niskanen <ape@ape3000.com>
 
 pkgname=libretro-gambatte-git
-pkgver=889.d8ccae4
+pkgver=908.94221ec
 pkgrel=1
 pkgdesc="Nintendo Game Boy/Game Boy Color core"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
