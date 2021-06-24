@@ -1,22 +1,22 @@
 # Maintainer: Pranav Jerry <libreinator at disroot dot org>
 _basename=naxalnet
 pkgname="$_basename-git"
-pkgver=r30.eb51df8
+pkgver=0.1.0.r2.g47f2324
 pkgrel=1
-pkgdesc="Python script to create a batman-adv mesh network"
+pkgdesc="Python script to create a batman-adv mesh network (development version)"
 arch=("any")
-url="https://git.disroot.org/pranav/$_basename"
+url="https://git.disroot.org/pranav/${_basename}"
 license=("GPL3")
 depends=("iwd" "python-dasbus" "systemd>=248")
 optdepends=("batctl: for debugging")
 makedepends=(git)
 provides=(naxalnet)
-source=("git+https://git.disroot.org/pranav/$_basename.git")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/$_basename"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags|sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
