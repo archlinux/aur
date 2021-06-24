@@ -2,7 +2,7 @@
 
 pkgname=zerotier-systemd-manager-git
 pkgver=r34.6432472
-pkgrel=1
+pkgrel=2
 pkgdesc="Get ZeroTier playing nice with systemd-networkd and -resolved"
 arch=('any')
 url="https://github.com/zerotier/zerotier-systemd-manager"
@@ -10,7 +10,7 @@ license=('BSD-3')
 depends=('zerotier-one')
 makedepends=('go' 'git')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+conflicts=("${pkgname%-git}" "${pkgname/-git/-bin}")
 source=('git+https://github.com/zerotier/zerotier-systemd-manager')
 md5sums=('SKIP')
 
