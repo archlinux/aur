@@ -2,7 +2,7 @@
 # Important: the versions of the packages linux and linux-header must match
 
 pkgname=riffa-git
-pkgver=2.2.2.git20170213
+pkgver=2.2.2.git20210624
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='RIFFA: A Reusable Integration Framework For FPGA Accelerators'
@@ -16,13 +16,15 @@ source=(
 	#"git://github.com/drichmond/riffa.git"
 	"git://github.com/marzoul/riffa.git"
 	'riffa.install'
+	'patch-subdirs.patch'
 	'99-riffa.rules'
 )
 # Note: No check for riffa.install because it is modified by the package() function.
-md5sums=(
+sha256sums=(
 	'SKIP'
 	'SKIP'
-	'd37355781ef46d1f4aa21cd169964f08'
+	'102cc4edf8008a193faf15dfe507d8cdb223036de6059b4c8f495b69ead246ac'
+	'6dd2aee2ba41d68419004f7a80b87fbd6a1d8c723d5a2b3d293fe460a7364676'
 )
 
 pkgver() {
@@ -34,6 +36,14 @@ pkgver() {
 	_gitver=`git log -n 1 --date=short | sed -n -e 's/^Date:\s*\([0-9-]*\)\s*$/\1/p' | tr -d -`
 
 	echo $_distver.git$_gitver;
+}
+
+prepare() {
+	cd "${srcdir}/riffa"
+
+	# At least for Linux >= 5.12
+	patch -p0 -N -i ../../patch-subdirs.patch
+
 }
 
 build() {
