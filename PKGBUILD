@@ -42,7 +42,7 @@ fi
 
 prepare() {
   # Check access to the repository
-  if ! git ls-remote git@github.com:EpicGames/UnrealEngine &>-
+  if ! git ls-remote git@github.com:EpicGames/UnrealEngine &>/dev/null
   then
     error 'You must register at unrealengine.com and link your github account to access this private repo. See the wiki for more info: https://wiki.archlinux.org/index.php/Unreal_Engine_4'
     exit 1
