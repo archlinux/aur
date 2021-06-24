@@ -10,8 +10,8 @@ pkgrel=5
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=(x86_64)
 url=https://www.unrealengine.com/
-makedepends=(mono mono-msbuild dos2unix git openssh)
-depends=(icu sdl2 python lld xdg-user-dirs ccache mono mono-msbuild dos2unix)
+makedepends=(git openssh)
+depends=(icu sdl2 python lld xdg-user-dirs dos2unix)
 optdepends=('qt5-base: qmake build system for projects'
             'cmake: build system for projects'
             'qtcreator: IDE for projects'
@@ -27,10 +27,18 @@ sha256sums=('15e9f9d8dc8bd8513f6a5eca990e2aab21fd38724ad57d213b06a6610a951d58'
             'aa9eb83c9f58c539d3cd43e919a4ebd6714c0aa2d32eb9b320049cf04dd01587')
 options=(!strip staticlibs) # Package is 3 Gib smaller with "strip" but it takes a long time and generates many warnings
 
-# Set options to anything that is not null to enable them.
-_ccache_support=y       # Patches for ccache. More optimizations might be needed.
-_system_mono=y # Uses System mono for unreal. must set UE_USE_SYSTEM_MONO
-		# in your environment for it to work after install
+_ccache_support=false # Patches for ccache. More optimizations might be needed.
+_system_mono=false # Uses System mono for unreal. Must set UE_USE_SYSTEM_MONO in your environment for it to work after install.
+
+if [[ $_ccache_support == true ]]
+then
+  depends+=(ccache)
+fi
+
+if [[ $_system_mono == true ]]
+then
+  depends+=(mono mono-msbuild)
+fi
 
 prepare() {
   # Check access to the repository
@@ -41,7 +49,7 @@ prepare() {
   fi
 
   # Download Unreal Engine source or update if the folder exists
-  if [ ! -d $pkgname ]
+  if [[ ! -d $pkgname ]]
   then
     git clone --depth=1 --branch=$pkgver-release git@github.com:EpicGames/UnrealEngine $pkgname
     cd $pkgname
@@ -52,18 +60,19 @@ prepare() {
     git reset --hard $pkgver-release
   fi
 
-  if [ -n "$_system_mono" ]
+  # Apply custom patches
+  if [[ $_system_mono == true ]]
   then
     export UE_USE_SYSTEM_MONO=1
     patch -p1 -i "$srcdir/stop_mono_clone.patch"
   fi
-  if [ -n "$_ccache_support" ]
+  if [[ $_ccache_support == true ]]
   then
     patch -p1 -i "$srcdir/ccache_executor.patch"
   fi
 
   # Qt Creator source code access
-  if [ ! -d Engine/Plugins/Developer/QtCreatorSourceCodeAccess ]
+  if [[ ! -d Engine/Plugins/Developer/QtCreatorSourceCodeAccess ]]
   then
     git -C Engine/Plugins/Developer clone --depth=1 git@github.com:fire/QtCreatorSourceCodeAccess
   fi
@@ -81,7 +90,7 @@ package() {
   dir="opt/$pkgname"
 
   # Desktop entry
-  if [ "$dir" != "opt/$pkgname" ] # Set new path if dir changed
+  if [[ "$dir" != "opt/$pkgname" ]] # Set new path if dir changed
   then
     sed -i "5c\Path=/$dir/Engine/Binaries/Linux/" com.unrealengine.UE4Editor.desktop
     sed -i "6c\Exec=/$dir/Engine/Binaries/Linux/UE4Editor %F" com.unrealengine.UE4Editor.desktop
