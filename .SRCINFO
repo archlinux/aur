@@ -1,7 +1,7 @@
 pkgbase = nodejs-foundation-cli
 	pkgdesc = The command line installer for Foundation Sites, Emails, Apps.
 	pkgver = 2.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/foundation/foundation-cli
 	arch = any
 	license = MIT

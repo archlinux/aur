@@ -4,7 +4,7 @@
 _npmname=foundation-cli
 pkgname=nodejs-foundation-cli
 pkgver=2.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="The command line installer for Foundation Sites, Emails, Apps."
 arch=('any')
 url="https://github.com/foundation/foundation-cli"
@@ -20,6 +20,6 @@ package() {
     local _npmdir="$pkgdir/usr/lib/node_modules/"
     mkdir -p "$_npmdir"
     cd "$_npmdir"
-    npm install -g --prefix "$pkgdir/usr" "$_npmname@$pkgver"
+    npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
     chown -R root:root "${pkgdir}"
 }
