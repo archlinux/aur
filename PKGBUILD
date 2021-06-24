@@ -1,7 +1,7 @@
 # Maintainer: Mark Stenglein <aur@markstenglein.com>
 
 pkgname=slides-git
-pkgver=0.3.0.r1.g2162d50
+pkgver=0.3.0.r5.gcd4053b
 pkgrel=1
 pkgdesc='Terminal based presentation tool'
 arch=('x86_64')
