@@ -3,7 +3,7 @@
 _npmname=svelte-language-server
 pkgname=nodejs-${_npmname}
 pkgver=0.14.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A language server for Svelte."
 arch=('any')
 url="https://github.com/sveltejs/language-tools/tree/master/packages/language-server"
@@ -15,8 +15,7 @@ sha256sums=('cee687e4c004e14a3e612954f77f37d35894ec31a9e5730ac6abedd58ce7b06f')
 noextract=("${_npmname}-${pkgver}.tgz")
 
 package() {
-  npm install \
-    --user root --global \
+  npm install --global \
     --prefix "${pkgdir}/usr" \
     "${srcdir}/${_npmname}-${pkgver}.tgz"
 

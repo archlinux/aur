@@ -1,7 +1,7 @@
 pkgbase = nodejs-svelte-language-server
 	pkgdesc = A language server for Svelte.
 	pkgver = 0.14.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sveltejs/language-tools/tree/master/packages/language-server
 	arch = any
 	license = MIT
