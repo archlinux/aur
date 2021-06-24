@@ -27,8 +27,6 @@ prepare() {
 package() {
   install -d "${pkgdir}/opt/flexoptix"
   install -d "${pkgdir}/usr/local/bin"
-
-  _appdir="${srcdir}/squashfs-root"
   
   install -Dm644 "${_appdir}/flexoptix-app.desktop" "${pkgdir}/usr/share/applications/flexoptix-app.desktop"
   install -Dm644 "${_appdir}/flexoptix-app.png" "${pkgdir}/usr/share/applications/flexoptix-app.png"
