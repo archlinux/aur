@@ -1,0 +1,15 @@
+pkgbase = spotify2musicbrainz-git
+	pkgdesc = Python script for importing albums on Spotify to MusicBrainz
+	pkgver = 0.3.2.r0.g2f70217
+	pkgrel = 1
+	url = https://gitlab.com/Freso/spotify2musicbrainz
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools-scm
+	depends = python-musicbrainzngs
+	depends = python-spotipy
+	source = git+https://gitlab.com/Freso/spotify2musicbrainz
+	sha1sums = SKIP
+
+pkgname = spotify2musicbrainz-git
