@@ -1,0 +1,14 @@
+pkgbase = create-snowpack-app
+	pkgdesc = Create snowpack apps
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://github.com/snowpackjs/snowpack/tree/main/create-snowpack-app/cli
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = create-snowpack-app-1.10.0.tgz
+	source = https://registry.npmjs.org/create-snowpack-app/-/create-snowpack-app-1.10.0.tgz
+	sha256sums = 0883a39a4d41acce3444eb1e36c5c3279f3cbba76926f30a6e364057a1d2a20a
+
+pkgname = create-snowpack-app
