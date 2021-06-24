@@ -1,7 +1,7 @@
 pkgbase = nodejs-git-split-diffs
 	pkgdesc = GitHub style split diffs with syntax highlighting in your terminal.
 	pkgver = 0.10.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/banga/git-split-diffs
 	arch = any
 	license = MIT
