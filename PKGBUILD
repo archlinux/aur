@@ -1,30 +1,29 @@
 # Maintainer: Mikołaj "D1SoveR" Banasik <d1sover@gmail.com>
 pkgname='kinect-audio-setup'
 pkgver=0.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Tools to download and apply USB Audio Class firmware for Kinect and use it as microphone'
 arch=('x86_64' 'i686')
 url='https://git.ao2.it/kinect-audio-setup.git'
 license=('WTFPL' 'BSD')
-depends=('wget' 'p7zip>=9.20')
-makedepends=('make' 'gcc')
-install="${pkgname}.install"
+makedepends=('make' 'gcc' 'p7zip>=9.20')
 
 source=("git+${url}#tag=v${pkgver}"
-        'improved-fetch.patch'
-        'updated-hash.patch'
-        '55-kinect-audio.rules'
+        'http://download.microsoft.com/download/F/9/9/F99791F2-D5BE-478A-B77A-830AD14950C3/KinectSDK-v1.0-beta2-x86.msi'
         'LICENSE')
 sha256sums=('SKIP'
-            'a27b9e1cffd9c5f062fd15c494e12fdf8bc73e5ae590329bf40eabe16f731c79'
-            'b94f922466b5796e09bc22457654b53fffa138c21c5f6045a13b67824a94e4c9'
-            '8f9f343eeed07c59c65940f4a03814da5e2018cdbc331664bfacc2c98cd7d549'
+            '817764591cff7acc3d678c5bc65dc8724b3d243611c1010dab2c18d0dedd4221'
             'd23efd383bc03aa8cdeac33be24a9c915f05ad92d20f4070e7160bdcff7f4a8c')
 
+UPLOADER_PATH='/usr/bin/kinect_upload_fw'
+FIRMWARE_PATH='/usr/lib/firmware/kinect_uac_firmware.bin'
+
 prepare() {
-  cd "$pkgname"
-  patch -Np1 -i "${srcdir}/improved-fetch.patch"
-  patch -Np1 -i "${srcdir}/updated-hash.patch"
+  msg2 "$(gettext "Extracting the firmware out of Kinect SDK...")"
+  7z e -y -r "KinectSDK-v1.0-beta2-x86.msi" "UACFirmware.*" > /dev/null
+  msg2 "$(gettext "Generating the udev rules file...")"
+  cp "${srcdir}/${pkgname}/contrib/55-kinect_audio.rules.in" "${srcdir}/55-kinect-audio.rules"
+  "${srcdir}/${pkgname}/kinect_patch_udev_rules" "$FIRMWARE_PATH" "$UPLOADER_PATH" "${srcdir}/55-kinect-audio.rules"
 }
 
 build() {
@@ -33,8 +32,9 @@ build() {
 }
 
 package() {
-  install -Dm755 "${srcdir}/${pkgname}/kinect_upload_fw/kinect_upload_fw" "${pkgdir}/usr/bin/kinect_upload_fw"
-  install -Dm755 "${srcdir}/${pkgname}/kinect_fetch_fw" "${pkgdir}/usr/bin/kinect_fetch_fw"
+  FW_FILE=$(ls "${srcdir}"/UACFirmware.* | cut -d ' ' -f 1)
+  install -Dm644 "$FW_FILE" "${pkgdir}${FIRMWARE_PATH}"
+  install -Dm755 "${srcdir}/${pkgname}/kinect_upload_fw/kinect_upload_fw" "${pkgdir}${UPLOADER_PATH}"
   install -Dm644 "${srcdir}/55-kinect-audio.rules" "${pkgdir}/usr/lib/udev/rules.d/55-kinect-audio.rules"
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
