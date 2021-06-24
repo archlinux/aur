@@ -1,0 +1,49 @@
+# This is a default template for a post-install scriptlet.
+# Uncomment only required functions and remove any functions
+# you don't need (and this header).
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+yellow="${bold}$(tput setaf 3)"
+
+## arg 1:  the new package version
+#pre_install() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+post_install() {
+	# do something here
+    cat <<EOF
+    ${yellow}completion support for any shells${all_off}
+
+    bash: \`sudo pacman -S bash-completion\`
+    zsh: \`\`\`zshrc
+         autoload -Uz compinit; compinit
+         \`\`\`
+    OR you can read README with bellow command
+    \`cat /usr/share/doc/fzpac/README.md\`
+    \`\$BROWSER https://github.com/sheepla/fzpac\`
+EOF
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#pre_upgrade() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#post_upgrade() {
+	# do something here
+#}
+
+## arg 1:  the old package version
+#pre_remove() {
+	# do something here
+#}
+
+## arg 1:  the old package version
+#post_remove() {
+	# do something here
+#}
