@@ -3,7 +3,7 @@
 pkgname=librewolf-bin
 provides=(${pkgname//-bin/""})
 conflicts=(${pkgname//-bin/""})
-pkgver=89.0.1
+pkgver=89.0.2
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
@@ -22,19 +22,19 @@ backup=('usr/lib/librewolf/librewolf.cfg'
 options=(!emptydirs)
 install='librewolf-bin.install'
 
-_uploadh_aarch64='1355418969'
-_uploadh_sig_aarch64='5a842fa0a7f47601ba8a69b7145b64a8'
-_uploadh_x86_64='1355084867'
-_uploadh_sig_x86_64='297bdf005abc3f73fe67f7f9e36022da'
+_uploadh_aarch64='1373731337'
+_uploadh_sig_aarch64='b23fac1a7213e8b1c92ba580cbe8a11e'
+_uploadh_x86_64='1373731335'
+_uploadh_sig_x86_64='1a3799b357c86aebbc994ef0d40ec293'
 _uploadpath_aarch64=https://gitlab.com/${pkgname//-bin/""}-community/browser/arch/-/jobs/${_uploadh_aarch64}/artifacts/raw/${pkgname//-bin/""}-${pkgver}-${pkgrel}-aarch64.pkg.tar.zst
 _uploadpath_sig_aarch64=https://gitlab.com/${pkgname//-bin/""}-community/browser/arch/uploads/${_uploadh_sig_aarch64}/${pkgname//-bin/""}-${pkgver}-${pkgrel}-aarch64.pkg.tar.zst.sig
 _uploadpath_x86_64=https://gitlab.com/${pkgname//-bin/""}-community/browser/arch/-/jobs/${_uploadh_x86_64}/artifacts/raw/${pkgname//-bin/""}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst
 _uploadpath_sig_x86_64=https://gitlab.com/${pkgname//-bin/""}-community/browser/arch/uploads/${_uploadh_sig_x86_64}/${pkgname//-bin/""}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst.sig
 source_aarch64=("${_uploadpath_aarch64}" "${_uploadpath_sig_aarch64}")
 source_x86_64=("${_uploadpath_x86_64}" "${_uploadpath_sig_x86_64}")
-sha256sums_x86_64=('fc2ee4d1b2c366b7052d42e1d2b4d19a9a204387663b0bc0fe048e5b7ae86061'
+sha256sums_x86_64=('28895c2ba0a6edc0e239109540b2b6bb27193d9fb32e75f3f104746c520402d3'
                    'SKIP')
-sha256sums_aarch64=('c01da7dd9bca68f138061c721d518c0e2a1d212286b91f5ded2d5db327b5a350'
+sha256sums_aarch64=('11a3e87c4400ea7a87d6926fc134c200b1c0193fb0036851a627451d48c5f531'
                     'SKIP')
 
 package() {
