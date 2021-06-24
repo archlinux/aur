@@ -2,11 +2,13 @@
 
 pkgname=zerotier-systemd-manager-bin
 pkgver=0.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Get ZeroTier playing nice with systemd-networkd and -resolved"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/zerotier/zerotier-systemd-manager"
 depends=('zerotier-one')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}" "${pkgname/-bin/-git}")
 
 source_x86_64=("https://github.com/zerotier/zerotier-systemd-manager/releases/download/v${pkgver}/zerotier-systemd-manager_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/zerotier/zerotier-systemd-manager/releases/download/v${pkgver}/zerotier-systemd-manager_${pkgver}_linux_arm64.tar.gz")
