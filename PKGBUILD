@@ -1,4 +1,5 @@
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
+#!/bin/hint/bash
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 pkgname=openexr2
 pkgver=2.5.5
@@ -23,17 +24,18 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
-  install -D -m644 ${pkgname%2}-$pkgver/LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -vD -m644 ${pkgname%2}-$pkgver/LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
 # Install missing python module
   _pythonpath=$(python -c "from sysconfig import get_path; print(get_path('platlib'))")
-  install -Dm755 build/python3*/imathnumpy.so -t "$pkgdir/$_pythonpath"
+  install -vDm755 build/python3*/imathnumpy.so -t "$pkgdir/$_pythonpath"
   patchelf --set-rpath "" "${pkgdir}/$_pythonpath"/imathnumpy.so
 
 # Install optional python2 module
   compgen -G "build/python2*/imathnumpy.so" && {
     _python2path=$(python2 -c "from sysconfig import get_path; print(get_path('platlib'))")
-    install -Dm755 build/python2*/imathnumpy.so -t "$pkgdir/$_python2path"
+    install -vDm755 build/python2*/imathnumpy.so -t "$pkgdir/$_python2path"
     patchelf --set-rpath "" "${pkgdir}/$_python2path"/imathnumpy.so
-  }
+  } || :
 }
+# vim:set sw=2 ts=2 et:
