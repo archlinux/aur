@@ -1,0 +1,19 @@
+pkgbase = python-kivy-garden-mapview
+	pkgdesc = A kivy garden mapview demo.
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/kivy-garden/mapview
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-kivy
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/m/mapview/mapview-1.0.5.tar.gz
+	sha256sums = c4f073c4cc0919b2411a354280473c3991838e79e15d11a4aa17023f270a3651
+
+pkgname = python-kivy-garden-mapview
+	depends = python
+	depends = python-kivy
+	depends = python-requests
+
