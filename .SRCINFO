@@ -1,7 +1,7 @@
 pkgbase = nodejs-winston
 	pkgdesc = A logger for just about everything.
 	pkgver = 3.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flatiron/winston
 	arch = any
 	license = MIT

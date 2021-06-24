@@ -10,7 +10,7 @@
 _npmname=winston
 pkgname=nodejs-winston
 pkgver=3.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A logger for just about everything."
 arch=(any)
 url="https://github.com/flatiron/winston"
@@ -26,7 +26,7 @@ package() {
     local _npmdir="$pkgdir/usr/lib/node_modules/"
     mkdir -p "$_npmdir"
     cd "$_npmdir"
-    npm install -g --prefix "$pkgdir/usr" "$_npmname@$pkgver"
+    npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
     install -Dm644 "$_npmdir/$_npmname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     chown -R root:root "${pkgdir}"
 }
