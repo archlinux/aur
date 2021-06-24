@@ -1,0 +1,13 @@
+pkgbase = sjtu-dnscrypt-accel-git
+	pkgdesc = SJTU DNS acceleration configuration for DNScrypt-proxy
+	pkgver = r127484.29427213ce
+	pkgrel = 1
+	arch = any
+	license = custom:WTFPL
+	makedepends = git
+	depends = dnscrypt-proxy
+	backup = etc/sjtudnscrypt.conf
+	source = list::git+https://github.com/felixonmars/dnsmasq-china-list
+	sha256sums = SKIP
+
+pkgname = sjtu-dnscrypt-accel-git
