@@ -3,7 +3,7 @@
 _pkgname=houseflow
 pkgname="${_pkgname}-git"
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Home automation platform, written in Rust"
 arch=(
     'x86_64'
