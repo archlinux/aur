@@ -1,6 +1,6 @@
 pkgbase = f1viewer
 	pkgdesc = TUI client for F1TV
-	pkgver = 2.0.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/SoMuchForSubtlety/f1viewer
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = f1viewer
 	optdepends = xclip: copying URLs to clipboard
 	optdepends = gnome-keyring: secret store backend
 	optdepends = kwallet: secret store backend
-	source = f1viewer-2.0.1.tar.gz::https://github.com/SoMuchForSubtlety/f1viewer/archive/v2.0.1.tar.gz
-	sha256sums = 0df83a5f657107559586217ea71c460c97dc730785cc14fd8ebf0e75cd1914a9
+	source = f1viewer-2.1.0.tar.gz::https://github.com/SoMuchForSubtlety/f1viewer/archive/v2.1.0.tar.gz
+	sha256sums = 59354ef3b1ec29e28b845709558270b745ef473a086e550f09598572fb2efa62
 
 pkgname = f1viewer
 
