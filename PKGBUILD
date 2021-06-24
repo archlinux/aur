@@ -10,7 +10,7 @@ license=(MIT)
 depends=(libnotify libpulse)
 makedepends=(cmake)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('1ab8e06f2798eefd6322a2769c5a880a')
+md5sums=('90e87cad29aaf4c70f3c1f622bcce8af')
 
 build() {
     export CFLAGS+=" ${CPPFLAGS}"
