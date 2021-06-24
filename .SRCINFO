@@ -1,7 +1,7 @@
 pkgbase = waypoint
 	pkgdesc = A tool to build, deploy, and release any application on any platform
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.waypointproject.io/
 	arch = x86_64
 	license = MPL2
