@@ -29,6 +29,7 @@ options=(!strip staticlibs) # Package is 3 Gib smaller with "strip" but it takes
 
 _ccache_support=false # Patches for ccache. More optimizations might be needed.
 _system_mono=false # Uses System mono for unreal. Must set UE_USE_SYSTEM_MONO in your environment for it to work after install.
+_install_dir="opt/$pkgname" # Default engine installation directory. Can be useful if you do not have a lot of space in /opt directory.
 
 if [[ $_ccache_support == true ]]
 then
@@ -86,26 +87,23 @@ build() {
 }
 
 package() {
-  # Install dir
-  dir="opt/$pkgname"
-
   # Desktop entry
-  if [[ "$dir" != "opt/$pkgname" ]] # Set new path if dir changed
+  if [[ "$_install_dir" != "opt/$pkgname" ]] # Set new path if dir changed
   then
-    sed -i "5c\Path=/$dir/Engine/Binaries/Linux/" com.unrealengine.UE4Editor.desktop
-    sed -i "6c\Exec=/$dir/Engine/Binaries/Linux/UE4Editor %F" com.unrealengine.UE4Editor.desktop
+    sed -i "5c\Path=/$_install_dir/Engine/Binaries/Linux/" com.unrealengine.UE4Editor.desktop
+    sed -i "6c\Exec=/$_install_dir/Engine/Binaries/Linux/UE4Editor %F" com.unrealengine.UE4Editor.desktop
   fi
-  install -Dm775 com.unrealengine.UE4Editor.desktop $pkgdir/usr/share/applications/com.unrealengine.UE4Editor.desktop
+  install -Dm775 com.unrealengine.UE4Editor.desktop "$pkgdir/usr/share/applications/com.unrealengine.UE4Editor.desktop"
   
   cd $pkgname
   
   # Icon for Desktop entry
-  install -Dm770 Engine/Source/Programs/UnrealVS/Resources/Preview.png $pkgdir/usr/share/pixmaps/ue4editor.png
+  install -Dm770 Engine/Source/Programs/UnrealVS/Resources/Preview.png "$pkgdir/usr/share/pixmaps/ue4editor.png"
 
   # License
-  install -Dm770 LICENSE.md $pkgdir/usr/share/licenses/UnrealEngine/LICENSE.md
+  install -Dm770 LICENSE.md "$pkgdir/usr/share/licenses/UnrealEngine/LICENSE.md"
   
   # Engine
-  install -dm770 "$pkgdir/$dir/Engine"
-  mv LocalBuilds/Engine/Linux/* "$pkgdir/$dir"
+  install -dm770 "$pkgdir/$_install_dir/Engine"
+  mv LocalBuilds/Engine/Linux/* "$pkgdir/$_install_dir"
 }
