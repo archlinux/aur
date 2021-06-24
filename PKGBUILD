@@ -36,12 +36,12 @@ build() {
   # If building takes up too much RAM then you can decrease the unity size or
   # completely disable unity builds.
   meson setup \
+    build \
     --cross-file cross-wine.conf \
     --buildtype=release \
     --unity=on \
     --unity-size=1000 \
-    -Dwith-bitbridge=true \
-    build
+    -Dwith-bitbridge=true
 
   # The unity build takes can take up to 2 GB of RAM per target, so if the
   # system does not have enough RAM to build everything at once we'll limit the
