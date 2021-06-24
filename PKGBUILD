@@ -3,8 +3,8 @@
 
 pkgname=kunst-git
 _pkgname=kunst
-pkgver=20200821
-pkgrel=4
+pkgver=20210624
+pkgrel=1
 pkgdesc="kunst is a daemon that extracts the album art from the songs playing in mpd."
 arch=('any')
 url="https://github.com/sdushantha/kunst"
