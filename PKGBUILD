@@ -16,7 +16,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git')
-pkgver=13.0.0_r384831.c22b09debddb
+pkgver=13.0.0_r391942.833bdbe93cd6
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -114,8 +114,12 @@ package_llvm-minimal-git() {
     rm "$pkgdir"/usr/lib/{LLVMgold,lib{LLVM,LTO}}.so
     rm "$pkgdir"/usr/lib/libRemarks.so
   
-    # Move analyzer scripts out of /usr/libexec
-    mv "$pkgdir"/usr/libexec/{ccc,c++}-analyzer "$pkgdir"/usr/lib/clang/
+    # llvm project doesn't honor CMAKE_INSTALL_LIBEXECDIR 
+    # to comply with archlinux packaging standards we have to move some files manually
+    for libexec_file in "analyze-c++" "analyze-cc" "c++-analyzer" "ccc-analyzer" "intercept-c++" "intercept-cc"
+    do
+        mv "$pkgdir"/usr/libexec/$libexec_file "$pkgdir"/usr/lib/clang/$libexec_file
+    done
     rmdir "$pkgdir"/usr/libexec
     sed -i 's|libexec|lib/clang|' "$pkgdir"/usr/bin/scan-build
 
