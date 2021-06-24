@@ -1,6 +1,6 @@
 pkgbase = seqencematrix
 	pkgdesc = Taxonomy-aware DNA sequence processing toolkit
-	pkgver = 1.8.2
+	pkgver = 1.9
 	pkgrel = 1
 	url = https://github.com/gaurav/taxondna
 	arch = x86_64
@@ -10,10 +10,9 @@ pkgbase = seqencematrix
 	depends = jdk-openjdk
 	depends = openjdk-doc
 	depends = openjdk-src
-	source = https://github.com/gaurav/taxondna/releases/download/v1.8.2/SequenceMatrix.jar
+	source = https://github.com/gaurav/taxondna/releases/download/v1.9/SequenceMatrix-1.9.zip
 	source = seqencematrix.desktop
-	sha256sums = 0e018fa3a737044cde9877946aa8616baeb879429bd05675b743f28927a555c0
+	sha256sums = ba46fe8672ded973c835ea0a636c251d28fa2f80ee30a69469a4a7fab204e814
 	sha256sums = 391168a6dc8ed31fde009c3f103836c2400bf32c882f28ec21332a915eae7bd0
 
 pkgname = seqencematrix
-
