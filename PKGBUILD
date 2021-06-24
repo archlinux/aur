@@ -9,7 +9,7 @@ pkgname=("${pkgbase}-git"
          "${pkgbase}-core-git"
         )
 
-pkgver=0.14.pre.111.g00e1d524
+pkgver=0.14.rc1.31.g528e63d2
 pkgrel=1
 url='http://quassel-irc.org'
 license=('GPL')
@@ -21,8 +21,6 @@ source=(
   'git+https://github.com/quassel/quassel.git'
 )
 md5sums=('SKIP')
-
-_srcdir="${startdir}/src/${pkgbase}"
 
 _builddir="${startdir}/build"
 _cmakecache="CMakeCache.txt"
@@ -70,7 +68,7 @@ package_quassel-client-git() {
         -DWITH_WEBKIT=ON            \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib  \
-        "$_srcdir"
+        "${srcdir}/${pkgbase}"
 
   popd >/dev/null
   _build
@@ -95,7 +93,7 @@ package_quassel-client-light-git() {
         -DWITH_WEBKIT=OFF           \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib  \
-        "$_srcdir"
+        "${srcdir}/${pkgbase}"
 
   popd >/dev/null
   _build
@@ -118,7 +116,7 @@ package_quassel-core-git() {
         -DHAVE_SSL=ON               \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib  \
-        "$_srcdir"
+        "${srcdir}/${pkgbase}"
 
   popd >/dev/null
   _build
@@ -142,7 +140,7 @@ package_quassel-git() {
         -DWITH_WEBKIT=ON            \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib  \
-        "$_srcdir"
+        "${srcdir}/${pkgbase}"
 
   popd >/dev/null
   _build
@@ -164,7 +162,7 @@ package_quassel-light-git() {
         -DWITH_WEBKIT=OFF           \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib  \
-        "$_srcdir"
+        "${srcdir}/${pkgbase}"
 
   popd >/dev/null
   _build
