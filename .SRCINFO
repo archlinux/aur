@@ -26,6 +26,7 @@ pkgbase = kwinft-git
 	depends = xorg-server-xwayland
 	depends = hwids
 	depends = qt5-quickcontrols
+	depends = wlroots-git
 	optdepends = qt5-virtualkeyboard: virtual keyboard support for kwin-wayland
 	provides = kwin
 	conflicts = kwin
@@ -33,4 +34,3 @@ pkgbase = kwinft-git
 	sha256sums = SKIP
 
 pkgname = kwinft-git
-
