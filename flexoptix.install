@@ -1,0 +1,13 @@
+post_install() {
+  echo 'Reloading udevadm rules..'
+  udevadm control --reload-rules
+  udevadm trigger
+}
+
+post_update() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}
