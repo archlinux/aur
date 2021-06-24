@@ -1,0 +1,38 @@
+--- a/site-packages/pgadmin4/pgAdmin4.py
++++ b/site-packages/pgadmin4/pgAdmin4.py
+@@ -142,7 +142,10 @@ else:
+ ##########################################################################
+ # The entry point
+ ##########################################################################
++from arch_additions import TrayIconInitializer, checkRunning
++
+ def main():
++    checkRunning();
+     # Set null device file path to stdout, stdin, stderr if they are None
+     for _name in ('stdin', 'stdout', 'stderr'):
+         if getattr(sys, _name) is None:
+@@ -210,19 +213,22 @@ def main():
+             # 10 is default thread count in CherootServer
+             # num_threads = 10 if config.THREADED_MODE else 1
+             try:
++                ti = TrayIconInitializer("http://{}:{}".format(config.DEFAULT_SERVER, config.EFFECTIVE_SERVER_PORT));
++                ti.daemon = True
++                ti.start()
+                 socketio.run(
+                     app,
+                     host=config.DEFAULT_SERVER,
+                     port=config.EFFECTIVE_SERVER_PORT,
+                 )
+-            except KeyboardInterrupt:
++            finally:
+                 print("CLOSE SERVER")
+-                socketio.stop()
++                sys.exit()
+ 
+     except IOError:
+         app.logger.error("Error starting the app server: %s", sys.exc_info())
+ 
+ 
+ ##########################################################################
+ # Server startup
+ ##########################################################################
