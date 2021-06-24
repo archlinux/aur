@@ -1,6 +1,6 @@
 pkgbase = python-mpris_server
 	pkgdesc = Integrate MPRIS Media Player support into your app
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/alexdelorenzo/mpris_server
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-mpris_server
 	depends = python-pydbus
 	depends = python-unidecode
 	depends = python-emoji
-	source = https://pypi.org/packages/source/m/mpris_server/mpris_server-0.3.3.tar.gz
-	sha256sums = b148880e29956f44b2ec809f2f771db4d03a6a948dd164328c9d58cf1d9dff53
+	source = https://pypi.org/packages/source/m/mpris_server/mpris_server-0.3.4.tar.gz
+	sha256sums = 042935584edeb1c8f455d61d55f8dd11df56d968852cbaef839c882dbc03328a
 
 pkgname = python-mpris_server
