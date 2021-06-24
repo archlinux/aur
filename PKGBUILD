@@ -2,7 +2,7 @@
 
 pkgname=polaronproton-git
 _pkgname=polaronproton
-pkgver=r1.5badb9c
+pkgver=r2.44c6f0d
 pkgrel=1
 pkgdesc="Symlink manager for Steam Play (Proton) prefixes"
 url="https://github.com/Meister1593/polaronproton"
