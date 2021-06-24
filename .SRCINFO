@@ -1,0 +1,14 @@
+pkgbase = http-status-code-manpages
+	pkgdesc = Man pages for HTTP status codes
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/hugopl/http-status-code-manpages
+	arch = any
+	license = WTFPL
+	makedepends = ruby
+	makedepends = make
+	depends = man-db
+	source = http-status-code-manpages-0.1.0.tar.gz::https://github.com/hugopl/http-status-code-manpages/archive/v0.1.0.tar.gz
+	sha256sums = 46c54ba1eb1a3d4e67508d75ebade54c6b888802621bee300b55ea486f98576f
+
+pkgname = http-status-code-manpages
