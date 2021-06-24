@@ -2,7 +2,7 @@
 
 pkgname=ospd-openvas
 pkgver=21.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='OSP Server for openvas'
 arch=('x86_64')
 url="https://github.com/greenbone/ospd-openvas"
@@ -18,6 +18,10 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/greenbone/ospd-openvas/
 sha512sums=('b9a25f61599a191124d65279b96e25b1b30d0c4bf3f101611ca55c0b9e1306b0d4f259278f5705255cbc70dbabf88d7b9ee5f571fa8af73edc9704a37c054070'
             '3461820543ac6bc0cd50026023a6271e015123366fc44ce66ead1221d52c9e534063881f3b46a50a6e43ec9caff697376c35f1ce2cd22944e7b58f02070a78a8'
             'ddaa5ad183265df4a89661acde7f0c8a5d1fd4c0748e3ca2dd267d3e7e05e6975a62023833bdd048ab97076c9ec839e7ad2fd463ef16b246e5813e328956b50e')
+
+backup=(
+        "etc/default/ospd-openvas"
+       )
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
