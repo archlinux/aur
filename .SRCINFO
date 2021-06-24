@@ -1,7 +1,7 @@
 pkgbase = dokku
 	pkgdesc = Docker-powered PaaS that helps build and manage the lifecycle of applications
 	pkgver = 0.24.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dokku/dokku
 	install = dokku.install
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = dokku
 	depends = dos2unix
 	depends = go
 	depends = gliderlabs-sigil
+	depends = inetutils
 	depends = herokuish
 	depends = netrc
 	depends = net-tools
