@@ -87,28 +87,12 @@ prepare() {
     git -C Engine/Plugins/Developer clone --depth=1 git@github.com:fire/QtCreatorSourceCodeAccess
   fi
 
-  export TERM=xterm
   ./Setup.sh
-  ./GenerateProjectFiles.sh $generateProjectArgs
 }
 
 build() {
   cd $pkgname
-  
-  # Build all targets from the "all" rule separately, because building multiple targets in parallel results in an error (but building one target with multiple threads is possible)
-  ARGS=""
-  if [ -n "$_native_cpu_support" ]
-  then
-    ARGS="${ARGS} -EnableNativeInstructionSet"
-  fi
-
-  make "${ARGS}" CrashReportClient-Linux-Shipping
-  make "${ARGS}" CrashReportClientEditor-Linux-Shipping
-  make "${ARGS}" ShaderCompileWorker
-  make "${ARGS}" UnrealLightmass
-  make "${ARGS}" UnrealFrontend
-  make "${ARGS}" UE4Editor
-  make "${ARGS}" UnrealInsights
+  Engine/Build/BatchFiles/RunUAT.sh BuildGraph -target="Make Installed Build Linux" -script=Engine/Build/InstalledEngineBuild.xml -set:WithDDC=false -set:HostPlatformOnly=true
 }
 
 package() {
@@ -133,28 +117,5 @@ package() {
   
   # Engine
   install -dm770 "$pkgdir/$dir/Engine"
-  mv Engine/Binaries "$pkgdir/$dir/Engine/Binaries"
-  mv Engine/Build "$pkgdir/$dir/Engine/Build"
-  mv Engine/Config "$pkgdir/$dir/Engine/Config"
-  mv Engine/Content "$pkgdir/$dir/Engine/Content"
-  mv Engine/Documentation "$pkgdir/$dir/Engine/Documentation"
-  mv Engine/Extras "$pkgdir/$dir/Engine/Extras"
-  mv Engine/Plugins "$pkgdir/$dir/Engine/Plugins"
-  mv Engine/Programs "$pkgdir/$dir/Engine/Programs"
-  mv Engine/Shaders "$pkgdir/$dir/Engine/Shaders"
-  mv Engine/Source "$pkgdir/$dir/Engine/Source"
-  mv Engine/Saved "$pkgdir/$dir/Engine/Saved"
-  
-  # Required folders
-  # install -d "$pkgdir/$dir/Engine/DerivedDataCache"
-  
-  # Content
-  mv FeaturePacks "$pkgdir/$dir/FeaturePacks"
-  mv Samples "$pkgdir/$dir/Samples"
-  mv Templates "$pkgdir/$dir/Templates"
-
-  # Build scripts, used by some plugins (CLion)
-  install -Dm770 GenerateProjectFiles.sh "$pkgdir/$dir/GenerateProjectFiles.sh"
-  install -Dm770 Setup.sh "$pkgdir/$dir/Setup.sh"
-  install -Dm770 .ue4dependencies "$pkgdir/$dir/.ue4dependencies"
+  mv LocalBuilds/Engine/Linux/* "$pkgdir/$dir"
 }
