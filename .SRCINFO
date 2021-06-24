@@ -1,14 +1,17 @@
 pkgbase = mlmmj
-	pkgdesc = Simple and slim mailing-list manager inspired by ezmlm
+	pkgdesc = Simple and slim mailing list manager (MLM) inspired by ezmlm
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mlmmj.org/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = sh
-	source = http://mlmmj.org/releases/mlmmj-1.3.0.tar.bz2
-	sha256sums = 1c5d898143433147aa1b448fe041b2eecf6ab1601d451d426441a0a63008f242
+	source = http://mlmmj.org/releases/mlmmj-1.3.0.tar.gz
+	source = mlmmj-1.3.0.diff
+	sha256sums = 7609d0dd804f0c084c2e483eb58c60012b698bc76464537852a1ee1ff9c6f0e9
+	sha256sums = 18dd3c663c0c5cc4a713b70b7eb03c2a2b9d6af316e1e080febda1ef61be399c
+	b2sums = 6b56ead8fb5840964835b139be7566a14df53266a7d83323176f73430c76702f0dc50f5b255e5881887ad8618abe3ace6cd710128821654709b6135b53adbfe4
+	b2sums = c0beb31414df706e3ce2fc62f8d23f893c8ce199adc2a81a48d3e3df6ddcbd131588d0ad12a4cfcd1d0e3db799ed95101a40d9b88d7ee758413310e2dfe205ab
 
 pkgname = mlmmj
-
