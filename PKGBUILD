@@ -28,8 +28,7 @@ package() {
         cp -a "usr/share/doc/${pkgname}"  "${pkgdir}/usr/share/doc"
 
         # icon
-        install -Ddvm755 "${pkgdir}/usr/share/icons/"
-		cp -a "usr/share/icons/hicolor" "${pkgdir}/usr/share/icons"
+        install -Dvm644 "usr/share/icons/hicolor/0x0/apps/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${pkgname}.png"
 
         # desktop entry 
         install -Dvm644 "usr/share/applications/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
