@@ -19,7 +19,7 @@ _appdir="${srcdir}/squashfs-root"
 
 prepare() {
   chmod +x "${srcdir}/${_appimgname}"
-  "${srcdir}/${_appimgname}" --appimage-extract
+  "${srcdir}/${_appimgname}" --appimage-extract >/dev/null
 
   rm -rf "${_appdir}/usr/lib"
 }
