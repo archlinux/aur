@@ -2,10 +2,11 @@
 
 pkgname=zerotier-systemd-manager-bin
 pkgver=0.1.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Get ZeroTier playing nice with systemd-networkd and -resolved"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/zerotier/zerotier-systemd-manager"
+license=("BSD-3-Clause")
 depends=('zerotier-one')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}" "${pkgname/-bin/-git}")
@@ -21,13 +22,14 @@ sha256sums_armv6h=('54588b5d2c41a7b77129704385a7ae118ba78927e20b27ab100f4c86428c
 sha256sums_armv7h=('1f1f5f2d26d835ea5ac354762d75be2a657b9083a907d07f498bd9231ab7cf33')
 
 prepare() {
-    cd ${srcdir}
-    find . -maxdepth 1 ! -path . -type d -exec mv {} zerotier-systemd-manager \;
+  cd ${srcdir}
+  find . -maxdepth 1 ! -path . -type d -exec mv {} zerotier-systemd-manager \;
 }
 
 package() {
-    _output="${srcdir}/zerotier-systemd-manager"
-    install -Dm644 "${_output}/contrib/zerotier-systemd-manager.service" "${pkgdir}/usr/lib/systemd/system/zerotier-systemd-manager.service"
-    install -Dm644 "${_output}/contrib/zerotier-systemd-manager.timer" "${pkgdir}/usr/lib/systemd/system/zerotier-systemd-manager.timer"
-    install -Dm755 "${_output}/zerotier-systemd-manager" "${pkgdir}/usr/bin/zerotier-systemd-manager"
+  _output="${srcdir}/zerotier-systemd-manager"
+  install -Dm644 "${_output}/contrib/zerotier-systemd-manager.service" "${pkgdir}/usr/lib/systemd/system/zerotier-systemd-manager.service"
+  install -Dm644 "${_output}/contrib/zerotier-systemd-manager.timer" "${pkgdir}/usr/lib/systemd/system/zerotier-systemd-manager.timer"
+  install -Dm755 "${_output}/zerotier-systemd-manager" "${pkgdir}/usr/bin/zerotier-systemd-manager"
+  install -Dm644 "${_output}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -1,12 +1,13 @@
 pkgbase = zerotier-systemd-manager-bin
 	pkgdesc = Get ZeroTier playing nice with systemd-networkd and -resolved
 	pkgver = 0.1.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/zerotier/zerotier-systemd-manager
 	arch = x86_64
 	arch = aarch64
 	arch = armv6h
 	arch = armv7h
+	license = BSD-3-Clause
 	depends = zerotier-one
 	provides = zerotier-systemd-manager
 	conflicts = zerotier-systemd-manager
