@@ -4,8 +4,8 @@
 # pkg: git
 
 pkgname=anbox-image-nocsd
-pkgver=r3.5052c81c
-pkgrel=2
+pkgver=r4.65cdb672
+pkgrel=1
 pkgdesc="Android image for running in Anbox, with no-csd patch and Houdini"
 arch=('x86_64')
 url="https://anbox.io"
