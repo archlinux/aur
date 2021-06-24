@@ -8,10 +8,9 @@ arch=("i686" "x86_64" "pentium4")
 url="https://github.com/AyatanaIndicators/libayatana-common"
 license=("GPL3")
 makedepends=("cmake" "cmake-extras" "glib2")
-depends=("glib2")
+depends=("dconf")
 source=("https://github.com/AyatanaIndicators/$pkgname/archive/$pkgver.tar.gz")
 md5sums=("f0eb7e4fe2d0d18d4c94bb4ff2490f5f")
-options=("!strip" "!buildflags")
 
 build()
 {
