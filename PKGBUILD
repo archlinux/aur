@@ -1,24 +1,20 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=forklift-git
-pkgver=r35.546a72d
+pkgver=r36.da760ae
 pkgrel=1
-pkgdesc="Simple GUI for youtube-dl using PyGObject"
-arch=(any)
-url="https://github.com/Johnn3y/Forklift"
-license=(GPL3)
-depends=(gtk3 libdazzle libhandy python-gobject youtube-dl)
-makedepends=(git meson)
+pkgdesc='Simple GUI for youtube-dl using PyGObject'
+arch=('any')
+url='https://github.com/Johnn3y/Forklift'
+license=('GPL3')
+depends=('gtk3' 'libdazzle' 'libhandy0' 'python-gobject' 'youtube-dl')
+makedepends=('appstream-glib' 'git' 'meson')
 source=("git+https://github.com/Johnn3y/Forklift")
-sha256sums=(SKIP)
+sha256sums=('SKIP')
 
 pkgver() {
   cd Forklift
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd Forklift
 }
 
 build() {
@@ -27,7 +23,7 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build --print-errorlogs || :
 }
 
 package() {

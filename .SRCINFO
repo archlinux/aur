@@ -1,19 +1,19 @@
 pkgbase = forklift-git
 	pkgdesc = Simple GUI for youtube-dl using PyGObject
-	pkgver = r35.546a72d
+	pkgver = r36.da760ae
 	pkgrel = 1
 	url = https://github.com/Johnn3y/Forklift
 	arch = any
 	license = GPL3
+	makedepends = appstream-glib
 	makedepends = git
 	makedepends = meson
 	depends = gtk3
 	depends = libdazzle
-	depends = libhandy
+	depends = libhandy0
 	depends = python-gobject
 	depends = youtube-dl
 	source = git+https://github.com/Johnn3y/Forklift
 	sha256sums = SKIP
 
 pkgname = forklift-git
-
