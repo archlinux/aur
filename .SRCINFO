@@ -8,14 +8,13 @@ pkgbase = openexr2
 	makedepends = cmake
 	makedepends = patchelf
 	makedepends = python
+	makedepends = python-numpy
 	makedepends = boost
 	makedepends = freeglut
-	makedepends = python-numpy
 	makedepends = chrpath
 	depends = zlib
 	optdepends = boost-libs: python support
 	optdepends = python: python support
-	optdepends = python2: python2 support
 	provides = openexr=2.5.5
 	conflicts = openexr
 	source = openexr2-2.5.5.tar.gz::https://github.com/openexr/openexr/archive/v2.5.5.tar.gz

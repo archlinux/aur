@@ -1,6 +1,9 @@
 #!/bin/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
+# Configuration.
+(( ENABLE_PYTHON2 )) && { makedepends+=(python2{,-numpy} 'boost-python2'); optdepends+=('boost-python2-libs: python2 support' 'python2: python2 support'); }
+
 pkgname=openexr2
 pkgver=2.5.5
 pkgrel=1
@@ -9,8 +12,8 @@ url="https://www.openexr.com/"
 arch=('x86_64')
 license=('BSD')
 depends=('zlib')
-makedepends=('cmake' 'patchelf' 'python' 'boost' 'freeglut' 'python-numpy' 'chrpath')
-optdepends=('boost-libs: python support' 'python: python support' 'python2: python2 support')
+makedepends+=('cmake' 'patchelf' python{,-numpy} 'boost' 'freeglut' 'chrpath')
+optdepends+=('boost-libs: python support' 'python: python support')
 conflicts=('openexr')
 provides=("openexr=${pkgver}")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/openexr/openexr/archive/v$pkgver.tar.gz")
