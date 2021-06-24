@@ -25,6 +25,11 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 sha256sums=('SKIP')
 
+pkgver() {
+    cd "${pkgname}"
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
     cd "${_pkgname}"
     cargo build --release --locked
