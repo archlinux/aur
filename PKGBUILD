@@ -32,7 +32,7 @@ package() {
 		cp -a "usr/share/icons/hicolor" "${pkgdir}/usr/share/icons"
 
         # desktop entry 
-        install -Dvm644 "usr/share/applications/${pkgname}.desktop" "${pkgdir}/usr/share/applications"
+        install -Dvm644 "usr/share/applications/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	   
 		 # Link to the binary
         install -Dvdm755 "${pkgdir}/usr/bin"
