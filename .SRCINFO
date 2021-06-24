@@ -1,7 +1,7 @@
 pkgbase = ghidra-git
 	pkgdesc = Software reverse engineering framework (git)
-	pkgver = 10.0.BETA.r132.722256e1c
-	pkgrel = 2
+	pkgver = 10.0.r16.ecef7844f
+	pkgrel = 1
 	url = https://www.nsa.gov/ghidra
 	arch = x86_64
 	license = Apache
