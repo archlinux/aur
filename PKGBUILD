@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034
 pkgname='pacmc'
 pkgver='0.1.0'
-pkgrel=2
+pkgrel=3
 pkgdesc='An easy to use package manager for Fabric Minecraft mods.'
 arch=('any')
 url='https://github.com/bluefireoly/pacmc'
