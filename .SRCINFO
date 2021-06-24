@@ -1,45 +1,14 @@
 pkgbase = maya-bifrost
 	pkgdesc = Autodesk Maya Bifrost Plugin
-	pkgver = 2.2.0.0
+	pkgver = 2.2.1.0
 	pkgrel = 1
 	url = https://area.autodesk.com/bifrost/
 	arch = x86_64
 	license = custom
-	depends = attr
-	depends = bzip2
-	depends = double-conversion
-	depends = freetype2
-	depends = gcc-libs
-	depends = glib2
-	depends = glibc
-	depends = graphite
-	depends = harfbuzz
-	depends = icu
-	depends = libgcrypt
-	depends = libglvnd
-	depends = libgpg-error
-	depends = libpng
-	depends = libx11
-	depends = libxau
-	depends = libxcb
-	depends = libxdmcp
-	depends = lz4
-	depends = md4c
-	depends = ncurses5-compat-libs
-	depends = pcre
-	depends = pcre2
-	depends = qt5-base
-	depends = qt5-svg
-	depends = systemd-libs
-	depends = tbb
-	depends = util-linux-libs
-	depends = xz
-	depends = zlib
-	depends = zstd
-	depends = maya=2020.4
+	depends = maya>=2022
+	depends = maya<2023.0
 	options = !strip
-	source = manual://Bifrost2020-2.2.0.0-2.2.0.0-1.x86_64.rpm
-	sha256sums = 63bfa90674de7ee85645ccaa57ceacb4b2efaf5a80304a158c164b73e08e7112
+	source = manual://Bifrost2022-2.2.1.0-2.2.1.0-1.x86_64.rpm
+	sha256sums = 332ccaa87c45f520352ddbffb774e44cba956a8ff122ba0555332a48309f4f89
 
 pkgname = maya-bifrost
-
