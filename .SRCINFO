@@ -1,6 +1,6 @@
 pkgbase = libretro-atari800-git
 	pkgdesc = libretro implementation of Atari800 v3.1.0 (Atari 5200/400/800/XL/XE) (WIP)
-	pkgver = 150.b406bb8
+	pkgver = 164.b59fb7e
 	pkgrel = 1
 	url = https://github.com/libretro/libretro-atari800
 	arch = i686
@@ -22,4 +22,3 @@ pkgbase = libretro-atari800-git
 	sha256sums = d30794556b622c757dbafb5ce988547967004bd2d779c74e28802f9dd78a167f
 
 pkgname = libretro-atari800-git
-
