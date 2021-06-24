@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034
 pkgname='pacmc'
 pkgver='0.1.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='An easy to use package manager for Fabric Minecraft mods.'
 arch=('any')
 url='https://github.com/bluefireoly/pacmc'
@@ -18,7 +18,7 @@ build() {
   cd "${srcdir}" || exit
 
   echo "#!/bin/sh" > pacmc.sh
-  echo "/usr/share/java/${pkgname}/bin/pacmc" >> pacmc.sh
+  echo "/usr/share/${pkgname}/bin/pacmc" >> pacmc.sh
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = pacmc
 	pkgdesc = An easy to use package manager for Fabric Minecraft mods.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bluefireoly/pacmc
 	arch = any
 	license = GPL3
