@@ -2,7 +2,7 @@
 pkgdesc='Wayland terminal emulator - fast, lightweight and minimalistic'
 pkgname=foot-git
 pkgver=1.7.2
-pkgrel=4
+pkgrel=5
 conflicts=('foot')
 provides=('foot')
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ url=https://codeberg.org/dnkl/foot
 license=(mit)
 makedepends=('meson' 'ninja' 'scdoc' 'python' 'ncurses' 'wayland-protocols' 'tllist')  # ‘llvm’, for PGO with clang
 checkdepends=('check')
-depends=('libxkbcommon' 'wayland' 'pixman' 'fontconfig' 'freetype2' 'fcft' 'foot-terminfo')
+depends=('libxkbcommon' 'wayland' 'pixman' 'fontconfig' 'libutf8proc' 'fcft' 'foot-terminfo')
 optdepends=('libnotify: desktop notifications'
             'xdg-utils: URI launching'
             'bash-completion: bash completions for foot itself')
@@ -52,7 +52,12 @@ build() {
       ;;
   esac
 
-  meson --prefix=/usr --buildtype=release -Db_lto=true . build
+  meson \
+    --prefix=/usr \
+    --buildtype=release \
+    -Db_lto=true \
+    -Dterminfo-install-location=disabled \
+    . build
 
   if [[ ${do_pgo} == yes ]]; then
     find -name "*.gcda" -delete
@@ -104,6 +109,5 @@ check() {
 package() {
   cd foot
   DESTDIR="${pkgdir}/" ninja -C build install
-  rm -rf "${pkgdir}/usr/share/terminfo"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/foot/LICENSE"
 }
