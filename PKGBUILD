@@ -1,7 +1,7 @@
 # Maintainer: PY Chuang <pychuang@pm.me>
 pkgname=textlint-rule-proselint
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Proselint wrapper for textlint'
 arch=(any)
 url='https://github.com/textlint-rule/textlint-rule-proselint'
@@ -24,7 +24,6 @@ package() {
         --no-optional \
         --no-audit \
         -g \
-        --user root \
         --prefix ${pkgdir}/usr \
         ${pkgname}-${pkgver}.tgz
 

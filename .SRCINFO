@@ -1,7 +1,7 @@
 pkgbase = textlint-rule-proselint
 	pkgdesc = Proselint wrapper for textlint
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/textlint-rule/textlint-rule-proselint
 	arch = any
 	license = MIT
@@ -12,4 +12,3 @@ pkgbase = textlint-rule-proselint
 	sha1sums = 88a63c729d263a0082c7c34625d911eddcaf52c2
 
 pkgname = textlint-rule-proselint
-
