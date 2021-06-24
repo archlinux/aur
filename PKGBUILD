@@ -5,7 +5,7 @@
 # Contributor: almostalive   <almostalive2003 at gmail dot com>
 
 pkgname=libretro-vba-next-git
-pkgver=811.90d7d9b
+pkgver=819.d7b7b6d
 pkgrel=1
 pkgdesc="libretro implementation of VBA Next. (Game Boy Advance)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
