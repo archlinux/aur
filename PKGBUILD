@@ -3,6 +3,7 @@
 # Contributor: DigitalPathogen <aur@digitalpathogen.co.uk>
 # Contributor: daronin
 # Contributor: kageurufu
+# Contributor: tux268 <tux268 AT tux268 DOT xyz>
 
 pkgname=burpsuite
 pkgver=2021.6.2
