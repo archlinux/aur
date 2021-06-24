@@ -2,7 +2,7 @@
 # Contributor: Arjun Nemani <nemaniarjun@gmail.com>
 pkgname=textlint-rule-unexpanded-acronym
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='textlint rule that check unexpanded acronym'
 arch=(any)
 url="https://github.com/azu/textlint-rule-unexpanded-acronym"
@@ -24,7 +24,6 @@ package() {
         --no-optional \
         --no-audit \
         -g \
-        --user root \
         --prefix ${pkgdir}/usr \
         ${pkgname}-${pkgver}.tgz
 
