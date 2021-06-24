@@ -1,0 +1,14 @@
+pkgbase = dict-freedict-eng-ara
+	pkgdesc = English -> Arabic dictionary for dictd et al. from Freedict.org
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://freedict.org/
+	install = dict-freedict-eng-ara.install
+	arch = any
+	license = GPL
+	makedepends = freedict-tools
+	optdepends = dictd: dict client and server
+	source = https://download.freedict.org/dictionaries/eng-ara/0.6.3/freedict-eng-ara-0.6.3.src.tar.xz
+	sha512sums = 2604f6ce902e719c61fcf391bef02cdbf5eb60f5acd4f601b243933081689c0cfc4e169400f84bdda95a77110d545ddba444739d9d05b6d5d2a12b7aeab1bbd1
+
+pkgname = dict-freedict-eng-ara
