@@ -4,21 +4,22 @@
 
 pkgname=abntex2
 pkgver=1.9.7
-pkgrel=2
+pkgrel=3
 pkgdesc="a LaTeX class for writing ABNT-compliant documents"
 arch=('i686' 'x86_64')
 url="https://github.com/abntex/abntex2"
 license=('LPPL')
 depends=('texlive-core' 'texlive-latexextra')
-source=("http://dl.bintray.com/laurocesar/generic/${pkgname}.tds-${pkgver}.tar.gz")
+source=("${url}/archive/refs/tags/2018-11-24-v${pkgver}-ctan.tar.gz")
 conflicts=('texlive-publishers')
-sha1sums=('66b60932890ce5e680edb3a63866340491ec6da2')
+sha1sums=('41f0d0900de00177937a343fe67a9757a5e954e1')
 
 install=abntex2.install
 
 package() {
   install -dm755 "${pkgdir}/usr/share/texmf-dist/"
 
+  srcdir=("${pkgname}-2018-11-24-v${pkgver}-ctan")
   for subdir in tex doc bibtex ; do
     cp -r "${srcdir}/${subdir}" "${pkgdir}/usr/share/texmf-dist/"
   done
