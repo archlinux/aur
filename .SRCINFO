@@ -1,6 +1,6 @@
 pkgbase = magics++
 	pkgdesc = Magics is the latest generation of the ECMWF's Meteorological plotting software MAGICS.
-	pkgver = 4.6.0
+	pkgver = 4.8.0
 	pkgrel = 0
 	url = https://software.ecmwf.int/wiki/display/MAGP
 	arch = i686

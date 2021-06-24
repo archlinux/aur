@@ -1,0 +1,22 @@
+diff -u -ur Magics-4.8.0-Source-orig/src/common/Transformation.cc Magics-4.8.0-Source/src/common/Transformation.cc
+--- Magics-4.8.0-Source-orig/src/common/Transformation.cc	2021-05-28 12:11:36.730390748 +0200
++++ Magics-4.8.0-Source/src/common/Transformation.cc	2021-05-28 12:12:37.981234331 +0200
+@@ -14,6 +14,7 @@
+ 
+ #include "Transformation.h"
+ #include <iomanip>
++#include <limits>
+ #include "BasicGraphicsObject.h"
+ #include "Layout.h"
+ #include "MatrixHandler.h"
+diff -u -ur Magics-4.8.0-Source-orig/src/visualisers/SimplePolylineVisualiser.cc Magics-4.8.0-Source/src/visualisers/SimplePolylineVisualiser.cc
+--- Magics-4.8.0-Source-orig/src/visualisers/SimplePolylineVisualiser.cc	2021-05-28 12:11:36.713723847 +0200
++++ Magics-4.8.0-Source/src/visualisers/SimplePolylineVisualiser.cc	2021-05-28 12:16:53.764425882 +0200
+@@ -19,6 +19,7 @@
+ 
+ */
+ 
++#include <limits>
+ #include "SimplePolylineVisualiser.h"
+ #include "Data.h"
+ #include "LegendVisitor.h"
