@@ -1,13 +1,18 @@
 pkgbase = python-django-prometheus
 	pkgdesc = Export Django monitoring metrics for Prometheus.io
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/korfuri/django-prometheus
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	makedepends = python-pip
 	depends = python-django
+	depends = python-prometheus_client
+	optdepends = python-psycopg2: PostgreSQL database monitoring
+	optdepends = python-mysqlclient: MySQL database monitoring
+	optdepends = python-memcached: memcached monitoring
+	optdepends = python-django-redis: redis monitoring
 	source = https://files.pythonhosted.org/packages/source/d/django-prometheus/django-prometheus-2.1.0.tar.gz
 	md5sums = 088d85f344de189989748cd790918ebc
 
