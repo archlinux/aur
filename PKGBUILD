@@ -3,7 +3,7 @@
 
 pkgname=gapi-ocaml
 pkgver=0.3.19
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple OCaml client for Google Services."
 arch=("x86_64" "i686" "armv7h")
 url="https://astrada.github.io/gapi-ocaml/"
@@ -19,7 +19,7 @@ depends=(
 'ocaml-yojson>=1.0.2'
 'ocaml-xmlm>=1.0.2'
 )
-source=(https://github.com/astrada/$pkgname/archive/v$pkgver.tar.gz)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/astrada/$pkgname/archive/v$pkgver.tar.gz")
 options=('!strip' 'staticlibs')
 sha256sums=('3ae81f6e2aa5987ecfab0873a275a0b4f3a10725ce908e4bc4fa1007026db87d')
 
