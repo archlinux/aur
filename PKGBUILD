@@ -9,11 +9,11 @@
 ## Check for new LibreOffice releases:
 # $ wget "https://download.documentfoundation.org/libreoffice/stable/" -q -O /tmp/lo.html && echo "LibreOffice versions" && awk '{print $3;}' /tmp/lo.html|cut -b 7-11|grep --color=never [0-9].[0-9].[0-9]; rm /tmp/lo.html
 # site to look for the sha256sum
-# https://download.documentfoundation.org/libreoffice/stable/7.1.3/rpm/x86_64/LibreOffice_7.1.3_Linux_x86-64_rpm.tar.gz.mirrorlist
+# https://download.documentfoundation.org/libreoffice/stable/7.1.3/rpm/x86_64/LibreOffice_7.1.4_Linux_x86-64_rpm.tar.gz.mirrorlist
 
 pkgname=libreoffice-fresh-rpm
-pkgver=7.1.3
-pkgrel=4
+pkgver=7.1.4
+pkgrel=1
 pkgdesc="Libre Office Suite installed from rpms"
 arch=('x86_64')
 url='https://www.libreoffice.org'
@@ -25,7 +25,7 @@ makedepends=('curl' 'awk')
 optdepends=('jre8-openjdk' 'gtk3' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
 # WARNING sha256sums values should be taken from details page about rpm.tar.gz files from servers. DO NOT USE _updpgksums_ tool.
 arch_mod='x86_64';
-sha256sums=('09adb0653e76614ada61f01f7ce4a4943e4bd90568d141f6a884f0a247b6b1f4')
+sha256sums=('297544fe779515a39a97d80251bfda68f1ef9690e639cdef53bb62885c3029bc')
 source=("https://download.documentfoundation.org/libreoffice/stable/${pkgver}/rpm/${arch_mod}/LibreOffice_${pkgver}_Linux_${arch_mod/_/-}_rpm.tar.gz")
 
 prepare() { ## prepare function
