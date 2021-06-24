@@ -1,7 +1,7 @@
 pkgbase = asterisk
 	pkgdesc = A complete PBX solution
 	pkgver = 18.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.asterisk.org
 	install = asterisk.install
 	arch = x86_64
@@ -156,4 +156,3 @@ pkgname = asterisk
 	backup = etc/asterisk/voicemail.conf
 	backup = etc/asterisk/vpb.conf
 	backup = etc/asterisk/xmpp.conf
-
