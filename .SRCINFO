@@ -1,0 +1,20 @@
+pkgbase = stressberry
+	pkgdesc = Stress tests and temperature plots for the Raspberry Pi
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/nschloe/stressberry
+	arch = any
+	license = GPL3
+	makedepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-install
+	makedepends = python-wheel
+	depends = python-matplotlib
+	depends = python-yaml
+	depends = python-dufte
+	depends = stress
+	source = stressberry-0.3.3.tar.gz::https://github.com/nschloe/stressberry/archive/v0.3.3.tar.gz
+	b2sums = 3ebdcc0f0a951b9a0c8a5a35d96cda2edc535b58f08abeb3eefb281a7bb6c582e66e9eb601acce6c79ad92320c0b97ef481d2e76ffa97ae7e7033a5a7e9c38a3
+
+pkgname = stressberry
