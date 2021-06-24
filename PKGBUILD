@@ -48,7 +48,7 @@ package() {
 
     for size in 22 24 32 48 64 128; do
         mkdir -p "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
-        convert "${srcdir}/${pkgname}-${size}.png" -resize "${size}x${size}" \
+        convert "${srcdir}/${pkgname}.png" -resize "${size}x${size}" \
             "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
     done
 }
