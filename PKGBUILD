@@ -75,6 +75,9 @@ package(){
 
   mv "$pkgdir/var/run" "$pkgdir"
 
+  # Remove stray /tmp
+  rmdir "$pkgdir/tmp"
+
   pushd contrib/systemd
   install -Dm644 -t "$pkgdir/usr/lib/systemd/system/" "$pkname"*.{service,socket}
 
