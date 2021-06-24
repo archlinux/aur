@@ -6,6 +6,7 @@ pkgbase = mattermost-desktop-bin
 	arch = i686
 	arch = x86_64
 	license = Apache
+	makedepends = npm
 	depends = alsa-lib
 	depends = gtk3
 	depends = libnotify

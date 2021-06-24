@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/mattermost/desktop"
 license=('Apache')
 
-makedepends=()
+makedepends=('npm')
 depends=('alsa-lib' 'gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'libutil-linux' 'libappindicator-gtk3' 'libsecret')
 optdepends=()
 
@@ -38,6 +38,9 @@ package() {
     install -d -m 755 "${pkgdir}"/usr/lib/mattermost
 
     cp -r * "$pkgdir/usr/lib/mattermost"
+
+    cd "$pkgdir/usr/lib/mattermost"
+    npx asar extract-file "$pkgdir/usr/lib/mattermost/resources/app.asar" assets/linux/icon.svg
 
     install -d -m 755 "$pkgdir/usr/bin"
     ln -s /usr/lib/mattermost/${_pkgname} "$pkgdir/usr/bin/$_pkgname"
