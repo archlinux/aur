@@ -12,7 +12,7 @@ pkgname=(pipewire-common-git
          pipewire-common-zeroconf-git
          gst-plugin-pipewire-common-git
          )
-pkgver=0.3.30.r171.gb98b9e0e
+pkgver=0.3.30.r196.gd7cddbdb
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -45,7 +45,7 @@ build() {
     -D test=enabled \
     -D libcamera=disabled \
     -D sdl2=disabled \
-    -D wireplumber=disabled \
+    -D roc=disabled \
     -D jack=disabled \
     -D vulkan=disabled \
     -D ffmpeg=disabled \
