@@ -2,7 +2,7 @@
 
 pkgname='gvmd'
 pkgver=21.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Vulnerability manager Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/gvmd"
@@ -32,6 +32,10 @@ sha512sums=('875038c2e037518c884f3327d7ecc1d096673daac04c649dc341729ed673bf349a9
             'b57434d05d3191e460a15ae0e54c3a56f229ffabc3d1b13f395805eb8259ea225379cedaf1554938dd3e442801cd39149707a49ea589c7ca249ff6ffd2340c43'
             'b2f914995939c573f057789c76631896c6545913299e4071526d269efa40f935eb6408e74db9b014c9ff2f3d42770c9196e7fcadb0f7eb02fdf0f2530cbb09de'
             'fee7f0cbc0795d8269aba7df64adb0dfa8765faacba152f4f4b43cb3140b97c3d18fbcfb0abb0ec7b773fba45d725e00aa9b16ddc272cc4423aa99793c1aa931')
+
+backup=(
+        "etc/default/gvmd"
+       )
 
 prepare() {
   cd "${pkgname}-${pkgver}"

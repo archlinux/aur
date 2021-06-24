@@ -1,7 +1,7 @@
 pkgbase = gvmd
 	pkgdesc = Vulnerability manager Daemon
 	pkgver = 21.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greenbone/gvmd
 	arch = x86_64
 	groups = greenbone-vulnerability-manager
@@ -17,6 +17,7 @@ pkgbase = gvmd
 	depends = postgresql
 	depends = libxslt
 	depends = sudo
+	backup = etc/default/gvmd
 	source = gvmd-21.4.1.tar.gz::https://github.com/greenbone/gvmd/archive/v21.4.1.tar.gz
 	source = archlinux_postgres_headers.patch
 	source = greenbone-certdata-sync.timer
