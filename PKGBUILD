@@ -4,7 +4,7 @@
 _npmname=zone-mta
 pkgname=nodejs-zone-mta
 pkgver=3.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Modern outbound MTA cross platform and extendable server application'
 arch=(any)
 url=https://github.com/zone-eu/zone-mta
@@ -20,7 +20,7 @@ package() {
     local _npmdir="$pkgdir/usr/lib/node_modules/"
     mkdir -p "$_npmdir"
     cd "$_npmdir"
-    npm install -g --prefix "$pkgdir/usr" "$_npmname@$pkgver"
+    npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
 
     # Remove the files that contain references to $pkgdir
     rm "$pkgdir/usr/lib/node_modules/$_npmname/node_modules/dtrace-provider/build/Makefile"
