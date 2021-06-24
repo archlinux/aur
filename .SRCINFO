@@ -1,7 +1,7 @@
 pkgbase = nodejs-mocha
 	pkgdesc = Simple, flexible, fun JavaScript test framework for Node.js & The Browser
 	pkgver = 9.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mochajs.org
 	arch = any
 	license = MIT
