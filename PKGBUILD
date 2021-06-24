@@ -15,7 +15,7 @@ makedepends=(git qt5-tools libxrandr extra-cmake-modules)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
 sha256sums=(6c03440056aacc2960de066370284394ac0917720260d295d0d49931c725e1ae)
 
-if [ $_with_plasma == true ]
+if [[ $_with_plasma == true ]]
 then
   depends+=(knotifications kiconthemes)
 fi
@@ -24,7 +24,7 @@ build() {
   mkdir -p $pkgname-$pkgver/build
   cd $pkgname-$pkgver/build
 
-  if [ $_with_plasma == true ]
+  if [[ $_with_plasma == true ]]
   then
       cmake -D CMAKE_INSTALL_PREFIX="$pkgdir/usr" -D WITH_PLASMA=ON ..
   else
