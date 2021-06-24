@@ -3,7 +3,7 @@
 _realname=Sync-my-L2P
 pkgname=sync-my-l2p
 pkgver=2.4.2
-pkgrel=5
+pkgrel=6
 pkgdesc='Sync the L2P and moodle instance of RWTH Aachen University'
 arch=('x86_64')
 url='https://syncmyl2p.de/'
@@ -11,8 +11,8 @@ license=('LGPL3')
 depends=('qt5-base' 'hicolor-icon-theme')
 source=("$_realname-$pkgver.tar.gz::https://github.com/rwthmoodle/$_realname/archive/v$pkgver.tar.gz"
         "https://github.com/rwthmoodle/$_realname/releases/download/v$pkgver/SyncMyL2P-$pkgver-linux.AppImage")
-sha256sums=('f86949f516816e5854151130d419ddefe4c24ee0954369712974e38085109d5c'
-            'b3a65ceffcbe8be48196db16cf72df063d7a15936071cf2c86997d4c0faf19a2')
+sha256sums=('7711abf2a184fc908369eb812d9557b80ce13b12e9dd52835cc3c75c83fcec4c'
+            '225b270775bbb5a972429c3800738767f3353525ffcd947ddcd9a66c37577063')
 
 prepare() {
     # Setup client_id
