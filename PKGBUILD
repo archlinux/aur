@@ -1,4 +1,4 @@
-# Maintainer: Fancy Zhang <springzfx@gmail.com>
+# Maintainer:  ForMat <2934301923[AT]qq.com>
 # Maintainer: ForMat <2934301923[AT]qq.com>
 
 pkgname=qcef
