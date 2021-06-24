@@ -1,52 +1,14 @@
 pkgbase = maya-rokoko-motion-library
 	pkgdesc = Autodesk Maya Rokoko Motion Library Plugin
-	pkgver = 1.1.3
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://www.rokoko.com/motion-library
 	arch = x86_64
 	license = custom
-	depends = bzip2
-	depends = curl
-	depends = double-conversion
-	depends = e2fsprogs
-	depends = freetype2
-	depends = gcc-libs
-	depends = glib2
-	depends = glibc
-	depends = graphite
-	depends = harfbuzz
-	depends = icu
-	depends = keyutils
-	depends = krb5
-	depends = libgcrypt
-	depends = libglvnd
-	depends = libgpg-error
-	depends = libidn2
-	depends = libnghttp2
-	depends = libpng
-	depends = libpsl
-	depends = libssh2
-	depends = libunistring
-	depends = libx11
-	depends = libxau
-	depends = libxcb
-	depends = libxdmcp
-	depends = lz4
-	depends = md4c
-	depends = openssl
-	depends = pcre
-	depends = pcre2
-	depends = qt5-base
-	depends = qt5-declarative
-	depends = qt5-svg
-	depends = systemd-libs
-	depends = xz
-	depends = zlib
-	depends = zstd
-	depends = maya=2020.4
+	depends = maya>=2022
+	depends = maya<2023.0
 	options = !strip
-	source = manual://RokokoMotionLibraryMaya-1.1.3-1.x86_64.rpm
-	sha256sums = 244959bce47192a10a718c29a77d7cd22c4de2d5c0ea30c0c715531f11419848
+	source = manual://RokokoMotionLibraryMaya2022-2.0.0-1.x86_64.rpm
+	sha256sums = ef2322c0584f21d0df8016a1126b0419682dbc91eab856fe243a2d752ae0a253
 
 pkgname = maya-rokoko-motion-library
-
