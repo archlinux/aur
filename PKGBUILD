@@ -4,7 +4,7 @@
 _pkgname=osm2pgsql
 pkgname=$_pkgname-git
 pkgver=1.5.0.r5.gd53d6567
-pkgrel=1
+pkgrel=2
 pkgdesc="tool for loading OpenStreetMap data into a PostgreSQL / PostGIS database"
 arch=('i686' 'x86_64')
 url="https://github.com/openstreetmap/osm2pgsql"
