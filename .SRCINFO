@@ -1,0 +1,14 @@
+pkgbase = phosh-contacts-importer
+	pkgdesc = VCF Contact Importer for Phosh Phone Shell Interface
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://puri.sm/posts/easy-librem-5-app-development-contacts-importer/
+	arch = aarch64
+	license = CC-BY-SA
+	depends = syncevolution
+	source = contacts-importer.sh
+	source = contacts-importer.desktop
+	sha256sums = 9024536a5e7f0ba8aa9d2f4fdda6b73bc06374db4e3478c5d2f4a945236fff75
+	sha256sums = 257f30eee3b928f2916fc43c1d45fd9c0c340286f7f933069cce3fb1d52a6f7f
+
+pkgname = phosh-contacts-importer

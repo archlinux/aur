@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Contacts Importer
+Type=Application
+Icon=preferences-desktop-personal
+Exec=contacts-importer.sh
+Categories=Utility;
