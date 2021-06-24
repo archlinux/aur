@@ -1,0 +1,15 @@
+pkgbase = unity-test-git
+	pkgdesc = Simple unit testing for C
+	pkgver = 2.5.2.r20.g2f74065
+	pkgrel = 1
+	url = https://github.com/throwtheswitch/unity
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake>=3.12
+	provides = unity-test
+	conflicts = unity-test
+	source = unity-test-git::git+https://github.com/throwtheswitch/unity
+	sha256sums = SKIP
+
+pkgname = unity-test-git
