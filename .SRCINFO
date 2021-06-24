@@ -1,5 +1,5 @@
 pkgbase = pyxis
-	pkgdesc = Container plugin for Slurm Workload Manager
+	pkgdesc = Container plugin for the Slurm Workload Manager
 	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/NVIDIA/pyxis

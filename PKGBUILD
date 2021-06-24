@@ -1,8 +1,8 @@
-# Maintainer: Christian Bartz <christianbartz@gmail.com>
+# Maintainer: Christian Bartz <christianbartz [ätt] gmail [döt] com>
 pkgname='pyxis'
 pkgver='0.11.0'
 pkgrel='1'
-pkgdesc='Container plugin for Slurm Workload Manager'
+pkgdesc='Container plugin for the Slurm Workload Manager'
 arch=(x86_64)
 url='https://github.com/NVIDIA/pyxis'
 license=(Apache)
