@@ -5,7 +5,7 @@
 
 pkgname=firefox-bin
 _pkgname=firefox
-pkgver=89.0.1
+pkgver=89.0.2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - official prebuilt binary"
 arch=('x86_64')
@@ -23,7 +23,7 @@ conflicts=('firefox')
 source=(https://download-installer.cdn.mozilla.net/pub/firefox/releases/$pkgver/linux-$arch/en-US/firefox-$pkgver.tar.bz2
         $_pkgname.sh
         $_pkgname.desktop)
-sha256sums=('4c410dcec55127325de16414860b07be84d416e409db818d5cf0124b35b35d1b'
+sha256sums=('964b6b515151bb9a0f4e90e9902afd09ff64bfaafa231480b9829264d36fd76f'
             '9491f195066aa56f4f0bbc83e5f0581a460f4c34ee455ba24db312b540322703'
             'c64008cbf01956ce3dba693230670de58fa9487ad19f4ba76614af13beb1b8ef')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
