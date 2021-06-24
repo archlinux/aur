@@ -1,0 +1,26 @@
+pkgbase = brickadia-launcher
+	pkgdesc = A multiplayer 3D brick building game.
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://brickadia.com
+	arch = x86_64
+	license = unknown
+	depends = glibc
+	depends = gcc-libs
+	depends = bash
+	depends = hicolor-icon-theme
+	depends = fontconfig
+	depends = freetype2
+	depends = libgl
+	depends = dbus
+	depends = libxkbcommon-x11
+	depends = xcb-util-keysyms
+	depends = xcb-util-renderutil
+	depends = xcb-util-image
+	depends = xcb-util-wm
+	noextract = brickadia-launcher-1.5.deb
+	options = !strip
+	source = brickadia-launcher-1.5.deb::https://static.brickadia.com/launcher/1.5/brickadia-launcher.deb
+	sha256sums = a94938152847599b120c397d1762761b02758ec365ed2f3bbc94d50d750eb400
+
+pkgname = brickadia-launcher
