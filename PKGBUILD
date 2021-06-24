@@ -18,6 +18,7 @@ backup=('etc/suricata/suricata.yaml'
         'etc/suricata/threshold.config')
 source=(http://openinfosecfoundation.org/download/$pkgname-$pkgver.tar.gz{,.sig}
         suricata-update.{service,timer})
+validpgpkeys=('B36FDAF2607E10E8FFA89E5E2BA9C98CCDF1E93A') # Open Information Security Foundation
 sha256sums=('5e4647a07cb31b5d6d0049972a45375c137de908a964a44e2d6d231fa3ad4b52'
             'SKIP'
             '57505c464d30623c9d6611ca4b5d08a580c0116b20a4280f39c3720a3f369a92'
