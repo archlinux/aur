@@ -5,22 +5,15 @@
 
 pkgname=xephem
 _pkgname=XEphem
-pkgver=4.0.0
-pkgrel=4
+pkgver=4.0.2
+pkgrel=1
 pkgdesc="The Serious Interactive Astronomical Software Ephemeris"
 arch=('i686' 'x86_64')
 url="https://github.com/XEphem/XEphem"
 license=('custom:MIT')
 depends=('libxmu' 'openmotif' 'perl' 'openssl')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
-       licenseinfo.patch)
-sha256sums=('c60d0920d9264ca177ceb1c2cb16c1a0349c4aed0db676d5469e0f9db862df1e'
-            'bb7bd33bbe3b1c87dfcebb752c85daef2821340952f1bfab16d49f2e9f107730')
-
-prepare() {
-  cd ${_pkgname}-${pkgver}
-  patch -Np1 < "$srcdir"/licenseinfo.patch
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('144db16100c7eac8a9b563cd9398a295e11a3a65fa5f543b1c93191370e5dd72')
 
 build() {
   cd ${_pkgname}-${pkgver}/GUI/$pkgname

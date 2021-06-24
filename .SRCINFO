@@ -1,7 +1,7 @@
 pkgbase = xephem
 	pkgdesc = The Serious Interactive Astronomical Software Ephemeris
-	pkgver = 4.0.0
-	pkgrel = 4
+	pkgver = 4.0.2
+	pkgrel = 1
 	url = https://github.com/XEphem/XEphem
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,7 @@ pkgbase = xephem
 	depends = openmotif
 	depends = perl
 	depends = openssl
-	source = xephem-4.0.0.tar.gz::https://github.com/XEphem/XEphem/archive/4.0.0.tar.gz
-	source = licenseinfo.patch
-	sha256sums = c60d0920d9264ca177ceb1c2cb16c1a0349c4aed0db676d5469e0f9db862df1e
-	sha256sums = bb7bd33bbe3b1c87dfcebb752c85daef2821340952f1bfab16d49f2e9f107730
+	source = xephem-4.0.2.tar.gz::https://github.com/XEphem/XEphem/archive/4.0.2.tar.gz
+	sha256sums = 144db16100c7eac8a9b563cd9398a295e11a3a65fa5f543b1c93191370e5dd72
 
 pkgname = xephem
-
