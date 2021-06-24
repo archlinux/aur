@@ -1,8 +1,8 @@
 # Maintainer: PY Chuang <pychuang@pm.me>
 # Contributor: Arjun Nemani <nemaniarjun@gmail.com>
 pkgname=textlint-rule-write-good
-pkgver=1.6.2
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='textlint rule to check your English style with write good'
 arch=(any)
 url='https://github.com/textlint-rule/textlint-rule-write-good'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('nodejs' 'textlint')
 makedepends=('npm')
 source=(http://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz)
-sha256sums=('898faf1f76a641392bf874d573dd291d346966338fdb77b419f6e52e44285e5f')
+sha256sums=('aac60b0e34226c2ab7fb2a76dd35cce6ab9ad0c626abb8daf8960883823e1ad0')
 
 package() {
     cd ${srcdir}
@@ -25,7 +25,6 @@ package() {
         --no-optional \
         --no-audit \
         -g \
-        --user root \
         --prefix ${pkgdir}/usr \
         ${pkgname}-${pkgver}.tgz
 
