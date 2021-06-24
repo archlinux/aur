@@ -1,0 +1,12 @@
+pkgbase = unity-test
+	pkgdesc = Simple unit testing for C
+	pkgver = 2.5.2
+	pkgrel = 1
+	url = https://github.com/throwtheswitch/unity
+	arch = x86_64
+	license = MIT
+	makedepends = cmake>=3.12
+	source = unity-test-2.5.2.tar.gz::https://github.com/throwtheswitch/unity/archive/refs/tags/v2.5.2.tar.gz
+	sha256sums = 3786de6c8f389be3894feae4f7d8680a02e70ed4dbcce36109c8f8646da2671a
+
+pkgname = unity-test
