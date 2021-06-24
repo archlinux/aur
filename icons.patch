@@ -1,0 +1,12 @@
+diff -u --color -u -r --text mapview-1.0.5/setup.py mapview-1.0.5.patched/setup.py
+--- mapview-1.0.5/setup.py	2020-05-21 00:32:11.000000000 +0200
++++ mapview-1.0.5.patched/setup.py	2021-06-24 18:43:03.553760468 +0200
+@@ -46,7 +46,7 @@
+                 'sphinx_rtd_theme'],
+         'ci': ['coveralls', 'pycodestyle'],
+     },
+-    package_data={},
++    package_data={'': ['icons/*.png']},
+     data_files=[],
+     entry_points={},
+     project_urls={
