@@ -1,7 +1,7 @@
 pkgbase = flent
 	pkgdesc = The FLExible Network Tester.
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://flent.org
 	arch = any
 	license = GPL
@@ -12,11 +12,10 @@ pkgbase = flent
 	optdepends = python-qtpy: for the GUI
 	conflicts = netperf-wrapper
 	replaces = netperf-wrapper
-	source = https://files.pythonhosted.org/packages/source/f/flent/flent-2.0.0.tar.gz
-	source = https://files.pythonhosted.org/packages/source/f/flent/flent-2.0.0.tar.gz.asc
+	source = https://files.pythonhosted.org/packages/source/f/flent/flent-2.0.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/f/flent/flent-2.0.1.tar.gz.asc
 	validpgpkeys = DE6162B5616BA9C9CAAC03074A55C497F744F705
-	sha256sums = 8a9c33336f828b4e8621c59ae74e28c33b501a5ba074470041ff6aa897c15ce9
+	sha256sums = 300a09938dc2b4a0463c9144626f25e0bd736fd47806a9444719fa024d671796
 	sha256sums = SKIP
 
 pkgname = flent
-
