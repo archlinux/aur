@@ -3,7 +3,7 @@
 _npmname=cmake-js
 pkgname=nodejs-cmake-js
 pkgver=6.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="CMake.js - a Node.js native addon build tool"
 arch=('any')
 url="https://github.com/cmake-js/cmake-js"
@@ -20,7 +20,7 @@ package() {
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p "$_npmdir"
   cd "$_npmdir"
-  npm install -g --prefix "$pkgdir/usr" "$_npmname@$pkgver"
+  npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
   install -Dm644 "$_npmdir/$_npmname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   chown -R root:root "${pkgdir}"
 }
