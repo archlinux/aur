@@ -1,7 +1,7 @@
 pkgbase = nodejs-docco
 	pkgdesc = Literate Programming can be Quick and Dirty.
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jashkenas/docco
 	arch = any
 	license = MIT

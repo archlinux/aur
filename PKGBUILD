@@ -7,7 +7,7 @@
 _npmname=docco
 pkgname=nodejs-docco
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Literate Programming can be Quick and Dirty."
 arch=(any)
 url="https://github.com/jashkenas/docco"
@@ -23,7 +23,7 @@ package() {
     local _npmdir="$pkgdir/usr/lib/node_modules/"
     mkdir -p "$_npmdir"
     cd "$_npmdir"
-    npm install -g --prefix "$pkgdir/usr" "$_npmname@$pkgver"
+    npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
     install -Dm644 "$_npmdir/$_npmname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     chown -R root:root "${pkgdir}"
 }
