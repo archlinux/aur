@@ -1,7 +1,7 @@
-# Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
+# Maintainer:  Oliver Jaksch <arch-aur at com-in dot de>
 
 pkgname=libretro-mame2000-git
-pkgver=228.c0de127
+pkgver=235.49671d5
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 pkgdesc="libretro implementation of 2000 version of MAME (0.37b5) (Arcade)"
@@ -25,8 +25,11 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
-  [[ "${CARCH}" == *"arm"* ]] && ARM="ARM=1"
-  make -f Makefile ${ARM}
+  case ${CARCH} in
+    arm|armv6h|armv7h) makeargs="USE_CYCLONE=1" ;;
+    aarch64) makeargs="IS_X86=0" ;;
+  esac
+  make -f Makefile ${makeargs}
 }
 
 package() {
