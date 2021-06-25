@@ -1,53 +1,84 @@
-# Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
+
+_assets_commit='1f2f63338613bcbefa2c1edbc1da91128e9e0451'
+_assets_repo='https://github.com/makehumancommunity/makehuman-assets.git'
+
 pkgname=makehuman
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Parametrical modeling program for creating human bodies"
 arch=('any')
 url="http://www.makehumancommunity.org/"
-depends=('python2-numpy' 'python2-pyqt4' 'python2-opengl')
-makedepends=('mercurial')
-license=('AGPL3')
-source=("hg+https://bitbucket.org/MakeHuman/makehuman#tag=$pkgver"
-        "fix_1184.diff::https://bitbucket.org/MakeHuman/makehuman/commits/deca8874422de7487384393cd71e914910ca658e/raw"
-        "makehuman.desktop" "makehuman.sh")
-md5sums=('SKIP'
-         '1ca34e5592761312eb6dec4eb1f9b589'
-         'f54fdfbc6c783effc4624808d2547563'
-         '534db191b7c6cd5cf976c9a7089b524c')
+license=('AGPL3' 'custom:CC0')
+depends=('python-numpy' 'python-pyqt5' 'python-opengl' 'hicolor-icon-theme')
+makedepends=('git' 'git-lfs')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/makehumancommunity/makehuman/archive/refs/tags/v$pkgver.tar.gz"
+        "git+${_assets_repo}#commit=$_assets_commit"
+        "$pkgname-fix_77.patch::https://github.com/makehumancommunity/makehuman/commit/02c4269a2d4c57f68159fe8f437a8b1978b99099.patch")
+sha512sums=('e15acf536c99f2258abd317e3ff88e908d7447bea07be2c9b2319bd4b1847e76ad3035479e1d71ec5b086aa2442e7530436a6844a11e4c9bfd74abc26c3bd9f5'
+            'SKIP'
+            'f8d697fbb76e121343688992135e4a4456f47528d508b156118dbc22d322cf6261f016dc2f2355912eed1a5db0f6d34e96351632ff6ae770c7483284571548cb')
 
 prepare() {
-  cd "$srcdir/makehuman"
+  cd "$pkgname-assets"
+  # Download git-lfs files
+  git remote | grep -q github || git remote add github "$_assets_repo"
+  git lfs install --local
+  git lfs pull github
 
-  # make sure that we are using python2
-  find . -type f -name "*.py" -exec sed -i 's/^#!.*python$/&2/' '{}' ';'
-  sed -i 's|python"|python2"|' buildscripts/build_prepare.py
+  # copy files from assets repo to makehuman data directory
+  cp -r base/* "$srcdir/$pkgname-$pkgver/$pkgname/data/"
 
-  rm -rf "$srcdir/build"
+  # make build_prepare.py happy
+  cd "$srcdir/$pkgname-$pkgver"
+  mkdir -p .git
+
+  # fix upstream issue #77
+  patch -Np1 < "$srcdir/$pkgname-fix_77.patch"
+
+  # enable release build and set version information
+  cd buildscripts
+  sed -e '/#isRelease = True/s/^#//' \
+      -e 's/#version=.*$/version='"$pkgver/" \
+      -e '/#gitBranch=master/s/^#//' \
+      < build.conf.example > build.conf
+
+  # fix desktop file
+  sed -i -e 's/MakeHuman VERSION/MakeHuman/' \
+      -e 's|Icon=/usr/share/makehuman/makehuman.svg|Icon=makehuman|' \
+      deb/debian/MakeHuman.desktop
 }
 
 build() {
-  cd "$srcdir/makehuman/buildscripts"
-  python2 build_prepare.py "$srcdir/makehuman" "$srcdir/build"
+  cd "$pkgname-$pkgver"
+  # if build directory exists, remove it first
+  [ -d "$srcdir/build" ] && rm -r "$srcdir/build"
+  python buildscripts/build_prepare.py --nodownload . "$srcdir/build"
 
-  cd "$srcdir/build"
-  # make sure that we are using python2 once again, because the build_prepare.py may have donwloaded some new files
-  find . -type f -name "*.py" -exec sed -i 's/^#!.*python$/&2/' '{}' ';'
-  # fix upstream bug #1184 (Export not working with numpy 1.13), this must be done after build_prepare.py (see above)
-  patch -Np1 < "$srcdir/fix_1184.diff"
-
-  cd "$srcdir/build/makehuman"
-  # compile all modules so that they can be tracked by pacman
-  python2 -m compileall .
-  # and also optimize them
-  python2 -OO -m compileall .
+  python -O -m compileall -s "$srcdir/build" -p /opt "$srcdir/build/$pkgname"
 }
 
 package() {
-  install -d -m755 "$pkgdir/opt/"
-  cp -a "$srcdir/build/makehuman" "$pkgdir/opt/"
+  install -d "$pkgdir/opt"
+  mv "$srcdir/build/$pkgname" "$pkgdir/opt/"
 
-  install -D -m644 "$srcdir/build/makehuman/icons/makehuman.png" "$pkgdir/usr/share/pixmaps/makehuman.png"
-  install -D -m755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
-  install -D -m644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  # remove empty directories
+  find "$pkgdir/opt/$pkgname" -empty -type d -delete
+
+  # remove exec permission from regular files except makehuman.py
+  find "$pkgdir/opt/$pkgname" -executable -type f -exec chmod a-x '{}' +
+  chmod a+x "$pkgdir/opt/$pkgname/$pkgname.py"
+
+  cd "$srcdir/$pkgname-$pkgver"
+  install -d "$pkgdir/usr/share/icons/hicolor/32x32/apps"
+  ln -s /opt/$pkgname/icons/$pkgname.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/"
+  install -Dm 644 -t "$pkgdir/usr/share/icons/hicolor/scalable/apps" "$pkgname/icons/$pkgname.svg"
+
+  install -d "$pkgdir/usr/bin"
+  ln -s /opt/$pkgname/$pkgname.py "$pkgdir/usr/bin/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/applications" "buildscripts/deb/debian/MakeHuman.desktop"
+
+  install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$srcdir"/build/LICENSE*.md
 }
