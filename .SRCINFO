@@ -1,22 +1,22 @@
 pkgbase = mindustry
-	pkgver = 6.0_126.2
-	pkgrel = 2
+	pkgver = 7.0_127
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Anuken/Mindustry
 	arch = any
 	license = GPL3
-	makedepends = java-environment>=14
+	makedepends = java-environment>=16
 	makedepends = libicns
 	makedepends = alsa-lib
 	depends = java-runtime>=8
 	depends = sh
 	depends = hicolor-icon-theme
-	source = mindustry-126.2.tar.gz::https://github.com/Anuken/Mindustry/archive/v126.2.tar.gz
+	source = mindustry-127.tar.gz::https://github.com/Anuken/Mindustry/archive/v127.tar.gz
 	source = mindustry.desktop
 	source = mindustry.sh
 	source = mindustry-server.desktop
 	source = mindustry-server.sh
-	sha256sums = b90ccbb5b010c96820847ec1dbeb9b9b813de99e8d6e48498bc0e2833932b6bb
+	sha256sums = cc6708b9e99cbfdf5dcb4f7a379bab20a215a02d7a958189e5c6c6b0ed75d62b
 	sha256sums = e5fd49ed3456c53e91b834cb388956e3f9ded4e2c880352d36cf9c2246ca0f0b
 	sha256sums = 938f5f9f636379402ba0bb9a53345de499f4f3fd50f232b31605129dcf4ea6c9
 	sha256sums = 053030932334f40145e927f6c7e9ebf01bd28ddd1e7b9fba6234b51cc83ad241
@@ -27,4 +27,3 @@ pkgname = mindustry
 
 pkgname = mindustry-server
 	pkgdesc = Server of a sandbox tower defense game written in Java
-
