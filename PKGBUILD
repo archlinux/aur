@@ -1,18 +1,19 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=timescaledb-backup
+_tsdb_version=2.3.0
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for dumping and restoring TimescaleDB databases"
 arch=('x86_64')
 url="https://github.com/timescale/timescaledb-backup"
 license=('custom:TSL')
-depends=('timescaledb' 'glibc')
+depends=('timescaledb')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
-        "https://raw.githubusercontent.com/timescale/timescaledb/master/tsl/LICENSE-TIMESCALE")
+        "LICENSE-TIMESCALE-$_tsdb_version::https://raw.githubusercontent.com/timescale/timescaledb/$_tsdb_version/tsl/LICENSE-TIMESCALE")
 b2sums=('ab84cac38b68fd82cf986394ebfa51019cac5075c151e900257164d4372c0d7304564ef6ef8bdcc29f93153d878d6af75092c881a1b0b6876015200a7e2e20fb'
-        '32bf2e976bf68df573329b3e83fe0060557f1c09859dc12f1c1070e6c2ecb29ee9699e981900e39b3a3ccd41384d28ab7a81bcc953e0d34f00d0048d0f1ea028')
+        '9ae11a930e930953b16f7d6d1d3fbf0ebb6c4d8687cac1475560603442ed8edd452200468f7fe9c82af651d40ccad192c036940bfe57ef093e7c30cce93383f0')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -36,12 +37,13 @@ package() {
   cd "$pkgname-$pkgver"
 
   # binaries
-  install -Dm755 -t "$pkgdir/usr/bin" build/ts-dump build/ts-restore
+  install -vDm755 -t "$pkgdir/usr/bin" build/*
 
   # license
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" \
-    "$srcdir/LICENSE-TIMESCALE" LICENSE NOTICE
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE NOTICE
+  install -vDm644 "$srcdir/LICENSE-TIMESCALE-$_tsdb_version" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE-TIMESCALE"
 
   # documentation
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 }
