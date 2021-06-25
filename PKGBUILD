@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=plastex-git
-pkgver=2.1.r146.g9369e35b
-pkgrel=1
+pkgver=2.1.r246.g11683577
+pkgrel=2
 epoch=2
 pkgdesc="Python-based LaTeX document processing framework"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'texlive-core')
 makedepends=('git')
 provides=('plastex')
 conflicts=('plastex')
-source=("git+https://github.com/tiarno/plastex.git")
+source=("git+https://github.com/plastex/plastex.git")
 md5sums=('SKIP')
 _gitname="plastex"
 
@@ -19,11 +19,6 @@ pkgver() {
  cd ${pkgname%-git}
  git describe --tags | sed 's|-|.r|' |tr - .
 }
-
-#prepare() {
-#  cd ${pkgname%-git}
-#  find  . -name "*.py" -exec sed -i '1s+python+python2+' {} \;
-#}
 
 package() {
   cd ${pkgname%-git}
