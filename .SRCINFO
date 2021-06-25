@@ -1,0 +1,13 @@
+pkgbase = helium-ledger-cli-bin
+	pkgdesc = Companion app for Helium and Ledger devices
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/helium/helium-ledger-cli
+	arch = x86_64
+	license = APACHE
+	depends = systemd-libs
+	provides = helium-ledger-cli
+	source = helium-ledger-cli-2.0.0.tar.gz::https://github.com/helium/helium-ledger-cli/releases/download/v2.0.0/helium-ledger-cli-v2.0.0-x86-64-linux.tar.gz
+	sha256sums = 5dd0f634fd3eac909161f4d1b3ef749effbe8b7390b89c55eaf8a4ce72ec35b8
+
+pkgname = helium-ledger-cli-bin
