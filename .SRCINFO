@@ -1,13 +1,13 @@
 pkgbase = sft
 	pkgdesc = A library for computing the fast Fourier transform (FFT)
-	pkgver = 1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/ISF-H-BRS/SFT
 	arch = x86_64
 	license = LGPL3
 	makedepends = cmake
 	depends = gcc-libs
-	source = SFT-1.0.tar.gz::https://github.com/ISF-H-BRS/SFT/archive/refs/tags/v1.0.tar.gz
-	sha256sums = 61c1513a452ea1bda50bf7d6676a7eb5b0739d2f56c590d1100297a5cbc7f671
+	source = SFT-1.0.1.tar.gz::https://github.com/ISF-H-BRS/SFT/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 4e1a2de9deb8e78d30c355ef56cc567b5c9e7fbb4ab990f2a0415b1e15d1d7ee
 
 pkgname = sft
