@@ -1,14 +1,14 @@
 pkgbase = python-esphome-dashboard
 	pkgdesc = A user facing dashboard embedded in ESPHome
 	pkgver = 20210623.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/esphome/dashboard
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = npm
 	depends = python
 	source = dashboard-20210623.0.tar.gz::https://github.com/esphome/dashboard/archive/refs/tags/20210623.0.tar.gz
 	sha256sums = 70fa48efb2a9024fd5df799c1150e8c624bfd764bc4a22e5bd397c701d87029b
 
 pkgname = python-esphome-dashboard
-
