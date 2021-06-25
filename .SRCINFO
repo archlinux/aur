@@ -1,0 +1,13 @@
+pkgbase = fortune-mod-canada-nctr
+	pkgdesc = Fortune quotes from the Truth and Reconciliation Commission of Canada Calls to Action
+	pkgver = 20210624
+	pkgrel = 1
+	url = https://github.com/mikebirdgeneau/fortune-mod-canada-nctr
+	arch = any
+	groups = fortune-mods
+	license = Public domain
+	makedepends = curl
+	depends = fortune-mod
+
+pkgname = fortune-mod-canada-nctr
+
