@@ -2,7 +2,7 @@
 
 _pkgname=cmake-build-extension
 pkgname="python-$_pkgname-git"
-pkgver=0.2.0.r27.g6363e56
+pkgver=0.3.0.r0.g31b148e
 pkgrel=1
 pkgdesc="Setuptools extension to build and package CMake projects"
 arch=(any)
@@ -39,5 +39,5 @@ package() {
 
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
-	install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
