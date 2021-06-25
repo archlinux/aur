@@ -1,0 +1,15 @@
+post_install() {
+  patch /usr/bin/makepkg < /usr/share/makepkg-nosudo/makepkg.diff
+}
+
+pre_upgrade() {
+  patch -R /usr/bin/makepkg < /usr/share/makepkg-nosudo/makepkg.diff
+}
+
+post_upgrade() {
+  patch /usr/bin/makepkg < /usr/share/makepkg-nosudo/makepkg.diff
+}
+
+pre_remove() {
+  patch -R /usr/bin/makepkg < /usr/share/makepkg-nosudo/makepkg.diff
+}

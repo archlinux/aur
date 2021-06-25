@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = usr/bin/makepkg
+
+[Action]
+Description = Patching makepkg...
+Exec = /usr/bin/bash -c "/usr/bin/patch /usr/bin/makepkg < /usr/share/makepkg-nosudo/makepkg.diff"
+When = PostTransaction
