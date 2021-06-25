@@ -2,8 +2,8 @@
 _name=delta
 _pkgname="git-$_name"
 pkgname="$_pkgname-bin"
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.8.1
+pkgrel=1
 pkgdesc='A viewer for git and diff output'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/dandavison/delta'
@@ -15,11 +15,11 @@ source_i686=("$url/releases/download/$pkgver/${_pkgname}_${pkgver}_i386.deb")
 source_x86_64=("$url/releases/download/$pkgver/${_pkgname}_${pkgver}_amd64.deb")
 source_armv7h=("$url/releases/download/$pkgver/${_pkgname}_${pkgver}_armhf.deb")
 source_aarch64=("$url/releases/download/$pkgver/${_pkgname}_${pkgver}_arm64.deb")
-sha256sums=('706b55667de221b651b0d938dfbb468112b322ed41a634d3ca5c8bd861b19e8a')
-sha256sums_i686=('c51c45b88bfa2076da2ee88896f7b3441262699ebfc1f39777a6f297493790c0')
-sha256sums_x86_64=('6a0fe847b3003d564e20beb3749d342804022842de1cfbac7c42631f730db194')
-sha256sums_armv7h=('afaa922a8eccd723f52c54e402e467409ebaeeb9552d6f44f2463b94bfeb0266')
-sha256sums_aarch64=('94cfee3eb3c9703878fde07de548cf0a00e085cb57d5cc9e1758d5b387dee013')
+sha256sums=('e478acf90c1125af0cfcb055c1e2b358080d192fbf83cf5ddfa40241830ab826')
+sha256sums_i686=('de95b450454be1fb410f5f17dd379f70ad03e291d9f6a9a57181a36d3041747d')
+sha256sums_x86_64=('47595f9b1e7731673b75cdee71156cd009f8b2c4812270c6e39d358ca75d01da')
+sha256sums_armv7h=('f7f9b30a7548c18dac7363d3e937cc685456d25da44d83f2315ed6bad4ffac4d')
+sha256sums_aarch64=('8e2ac5c7a09785b6dfbfdfdd5c0b1544224f7db02493c7db9aa1c05c7c04b2e1')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
