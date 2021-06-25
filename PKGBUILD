@@ -12,6 +12,12 @@ makedepends=('git')
 source=("git+https://github.com/ossrs/state-threads/#commit=${_pkgcommit}")
 sha256sums=('SKIP')
 
+prepare() {
+  cd "${srcdir}"/state-threads
+  ldFlags="$(echo "$LDFLAGS" | sed 's|-Wl,||;s|,| |g') -z noexecstack"
+  sed -ie "s|LDFLAGS     =|LDFLAGS     = ${ldFlags}|" Makefile
+}
+
 build() {
   cd "${srcdir}"/state-threads
   make STATIC_ONLY=no linux-optimized
