@@ -12,11 +12,10 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!strip' '!emptydirs')
 source=($pkgname::git+$url.git)
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C $pkgname describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -30,7 +29,6 @@ build() {
 }
 
 package() {
-  cd build
-  install -Dm755 bin/gdrive "$pkgdir/usr/bin/gdrive"
+  install -Dm755 build/bin/gdrive -t "$pkgdir/usr/bin"
 }
 

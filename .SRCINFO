@@ -12,7 +12,6 @@ pkgbase = gdrive-git
 	options = !strip
 	options = !emptydirs
 	source = gdrive-git::git+https://github.com/prasmussen/gdrive.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = gdrive-git
-
