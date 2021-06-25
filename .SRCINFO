@@ -1,0 +1,21 @@
+pkgbase = shelf-bin
+	pkgdesc = A Good Symlinks Manager
+	pkgver = v0.5.0
+	pkgrel = 1
+	url = https://github.com/mr-karan/doggo
+	arch = x86_64
+	arch = armv6
+	arch = armv7
+	arch = aarch64
+	license = MIT
+	provides = shelf
+	source_x86_64 = https://github.com/iamd3vil/shelf/releases/download/v0.5.0/shelf_0.5.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 8f3be7b68c4ad235218cc2e086f7828f6b73aaaf9b07c44fd411f826f1be1475
+	source_armv6 = https://github.com/iamd3vil/shelf/releases/download/v0.5.0/shelf_0.5.0_Linux_armv6.tar.gz
+	sha256sums_armv6 = 54d21803e8ec5bb9bfdae425a38e09344a059ba3bf9d72302f601ccbd4425f2b
+	source_armv7 = https://github.com/iamd3vil/shelf/releases/download/v0.5.0/shelf_0.5.0_Linux_armv7.tar.gz
+	sha256sums_armv7 = 3e54fa261a85761efbcfdf7eda1a1f7ae44ce321c5062173561abbea7ee562e6
+	source_aarch64 = https://github.com/iamd3vil/shelf/releases/download/v0.5.0/shelf_0.5.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = fa1180fc71238928157defbc81f015efb08c915abef3f16347aab47c88613227
+
+pkgname = shelf-bin
