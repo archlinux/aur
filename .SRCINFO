@@ -1,0 +1,13 @@
+pkgbase = python-numpy-docs
+	pkgdesc = Set of HTML documentation for python-numpy
+	pkgver = 1.20
+	pkgrel = 1
+	url = https://numpy.org/doc/
+	arch = any
+	license = BSD
+	options = docs
+	options = !strip
+	source = python-numpy-docs-1.20.zip::https://numpy.org/doc/1.20/numpy-html.zip
+	sha256sums = 1aef600edb79e0632180aa89271293781b086a0116a024d854858776ea67f6d3
+
+pkgname = python-numpy-docs
