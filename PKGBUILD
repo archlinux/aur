@@ -10,7 +10,7 @@ url="https://github.com/linuxmint/hypnotix"
 license=(GPL3)
 depends=(dconf hicolor-icon-theme python-cairo python-imdbpy python-requests python-setproctitle mpv xapp)
 conflicts=(hypnotix hypnotix-git)
-source=(https://codeload.github.com/linuxmint/hypnotix/tar.gz/refs/tags/1.9)
+source=(https://codeload.github.com/linuxmint/hypnotix/tar.gz/refs/tags/${pkgver})
 sha256sums=('e68cae34397803ca36052f61b5c5993ff91cc47a7e3a93c55e8b01224c61354f')
 prepare() {
 	cd hypnotix-$pkgver
