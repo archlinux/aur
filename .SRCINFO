@@ -5,15 +5,14 @@ pkgbase = qshntoolsplit
 	url = https://aur.archlinux.org/pkgbase/qshntoolsplit/
 	arch = x86_64
 	license = GPL3
-	depends = shntool
 	depends = qt4
+	depends = shntool
 	depends = xterm
 	optdepends = flac: for flac support
 	optdepends = mac: for ape support
 	source = QShnToolSplit-0.0.1.tar
 	source = QShnToolSplit.desktop
-	md5sums = c61a3c11bfb6e9fa90d3ca4d761841a3
-	md5sums = 0126d6608d8c2905873089b1b04eed34
+	sha256sums = f8c3bf7dc9042272e6ac49ff44d4e3d2c31952589c77087a13249cd32b6f4efd
+	sha256sums = d820bfedb8e0fe649527d27ac50d39483699885414db94ea367397be99e64eaa
 
 pkgname = qshntoolsplit
-
