@@ -1,20 +1,20 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgdesc="Wayland terminal emulator - fast, lightweight and minimalistic"
 pkgname=foot
-pkgver=1.7.2  # Don’t forget to update CHANGELOG.md
-pkgrel=3
+pkgver=1.8.0  # Don’t forget to update CHANGELOG.md
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
 changelog=CHANGELOG.md
-depends=('libxkbcommon' 'wayland' 'pixman' 'fontconfig' 'fcft' 'foot-terminfo')
+depends=('libxkbcommon' 'wayland' 'pixman' 'fontconfig' 'libutf8proc' 'fcft' 'foot-terminfo')
 makedepends=('meson' 'ninja' 'scdoc' 'python' 'ncurses' 'wayland-protocols' 'tllist')  # ‘llvm’, for PGO with clang
 checkdepends=('check')
 optdepends=('libnotify: desktop notifications'
             'xdg-utils: URI launching'
             'bash-completion: bash completions for foot itself')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha256sums=('0c5fa72a315b65100dfb8b7343212535e75e990b2a9500e028c6078c7915eb8a')
+sha256sums=('9269acfbef40cb284590de3bf70fc67997ffb6361dec4b4dddae7cdbf4ad6490')
 
 build() {
   cd foot
@@ -46,7 +46,13 @@ build() {
       ;;
   esac
 
-  meson --prefix=/usr --buildtype=release --wrap-mode=nodownload -Db_lto=true . build
+  meson \
+    --prefix=/usr \
+    --buildtype=release \
+    --wrap-mode=nodownload \
+    -Db_lto=true \
+    -Dterminfo-install-location=disabled \
+    . build
 
   if [[ ${do_pgo} == yes ]]; then
     find -name "*.gcda" -delete
@@ -96,6 +102,5 @@ check() {
 package() {
   cd foot
   DESTDIR="${pkgdir}/" ninja -C build install
-  rm -rf "${pkgdir}/usr/share/terminfo"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

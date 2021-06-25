@@ -1,5 +1,6 @@
 # Changelog
 
+* [1.8.0](#1-8-0)
 * [1.7.2](#1-7-2)
 * [1.7.1](#1-7-1)
 * [1.7.0](#1-7-0)
@@ -23,6 +24,242 @@
 * [1.2.2](#1-2-2)
 * [1.2.1](#1-2-1)
 * [1.2.0](#1-2-0)
+
+
+## 1.8.0
+
+### Grapheme shaping
+
+This release adds _experimental, opt-in_ support for grapheme cluster
+segmentation and grapheme shaping.
+
+(note: several of the examples below may not render correctly in your
+browser, viewer or editor).
+
+Grapheme cluster segmentation is the art of splitting up text into
+grapheme clusters, where a cluster may consist of more than one
+Unicode codepoint. For example, 🙂 is a single codepoint, while 👩🏽‍🚀
+consists of 4 codepoints (_Woman_ + _Medium skin tone_ + _Zero width
+joiner_ + _Rocket_). The goal is to _cluster_ codepoints belonging to
+the same grapheme in the same cell in the terminal.
+
+Previous versions of foot implemented a simple grapheme cluster
+segmentation technique that **only** handled zero-width
+codepoints. This allowed us to cluster combining characters, like q́
+(_q_ + _COMBINING ACUTE ACCENT_).
+
+Once we have a grapheme cluster, we need to _shape_ it.
+
+Combining characters are simple: they are typically rendered as
+multiple glyphs layered on top of each other. This is why previous
+versions of foot got away with it without any actual text shaping
+support.
+
+Beyond that, support from the font library is needed. Foot now depends
+on fcft-2.4, which added support for grapheme and text shaping. When
+rendering a cell, we ask the font library: give us the glyph(s) for
+this sequence of codepoints.
+
+Fancy emoji sequences aside, using libutf8proc for grapheme cluster
+segmentation means **improved correctness**.
+
+For full support, the following is required:
+
+* fcft compiled with HarfBuzz support
+* foot compiled with libutf8proc support
+* `tweak.grapheme-shaping=yes` in `foot.ini`
+
+If `tweak.grapheme-shaping` has **not** been enabled, foot will
+neither use libutf8proc to do grapheme cluster segmentation, nor will
+it use fcft’s grapheme shaping capabilities to shape combining
+characters.
+
+This feature is _experimental_ mostly due to the “wcwidth” problem;
+how many cells should foot allocate for a grapheme cluster? While the
+answer may seem simple, the problem is that, whatever the answer is,
+the client application **must** come up with the **same**
+answer. Otherwise we get cursor synchronization issues.
+
+In this release, foot simply adds together the `wcwidth()` of all
+codepoints in the grapheme cluster. This is equivalent to running
+`wcswidth()` on the entire cluster. **This is likely to change in the
+future**.
+
+Finally, note that grapheme shaping is not the same thing as text (or
+text run) shaping. In this version, foot only shapes individual
+graphemes, not entire text runs. That means e.g. ligatures are **not**
+supported.
+
+
+### Added
+
+* Support for DECSET/DECRST 2026, as an alternative to the existing
+  "synchronized updates" DCS sequences
+  (https://codeberg.org/dnkl/foot/issues/459).
+* `cursor.beam-thickness` option to `foot.ini`
+  (https://codeberg.org/dnkl/foot/issues/464).
+* `cursor.underline-thickness` option to `foot.ini`
+  (https://codeberg.org/dnkl/foot/issues/524).
+* Unicode 13 characters U+1FB70 - U+1FB8B to list of box drawing
+  characters rendered by foot itself (rather than using font glyphs)
+  (https://codeberg.org/dnkl/foot/issues/471).
+* Dedicated `[bell]` section to config, supporting multiple actions
+  and a new `command` action to run an arbitrary command.
+  (https://codeberg.org/dnkl/foot/pulls/483)
+* Dedicated `[url]` section to config.
+* `[url].protocols` option to `foot.ini`
+  (https://codeberg.org/dnkl/foot/issues/531).
+* Support for setting the full 256 color palette in foot.ini
+  (https://codeberg.org/dnkl/foot/issues/489)
+* XDG activation support, will be used by `[bell].urgent` when
+  available (falling back to coloring the window margins red when
+  unavailable) (https://codeberg.org/dnkl/foot/issues/487).
+* `ctrl`+`c` as a default key binding; to cancel search/url mode.
+* `${window-title}` to `notify`.
+* Support for including files in `foot.ini`
+  (https://codeberg.org/dnkl/foot/issues/555).
+* `ENVIRONMENT` section in **foot**(1) and **footclient**(1) man pages
+  (https://codeberg.org/dnkl/foot/issues/556).
+* `tweak.pua-double-width` option to `foot.ini`, letting you force
+  _Private Usage Area_ codepoints to be treated as double-width
+  characters.
+* OSC 9 desktop notifications (iTerm2 compatible).
+* Support for LS2 and LS3 (locking shift) escape sequences
+  (https://codeberg.org/dnkl/foot/issues/581).
+* Support for overriding configuration options on the command line
+  (https://codeberg.org/dnkl/foot/issues/554,
+  https://codeberg.org/dnkl/foot/issues/600).
+* `underline-offset` option to `foot.ini`
+  (https://codeberg.org/dnkl/foot/issues/490).
+* `csd.button-color` option to `foot.ini`.
+* `-Dterminfo-install-location=disabled|<custom-path>` meson command
+  line option (https://codeberg.org/dnkl/foot/issues/569).
+
+
+### Changed
+
+* [fcft](https://codeberg.org/dnkl/fcft): required version bumped from
+  2.3.x to 2.4.x.
+* `generate-alt-random-writes.py --sixel`: width and height of emitted
+  sixels has been adjusted.
+* _Concealed_ text (`\E[8m`) is now revealed when highlighted.
+* The background color of highlighted text is now adjusted, when the
+  foreground and background colors are the same, making the
+  highlighted text legible
+  (https://codeberg.org/dnkl/foot/issues/455).
+* `cursor.style=bar` to `cursor.style=beam`. `bar` remains a
+  recognized value, but will eventually be deprecated, and removed.
+* Point values in `line-height`, `letter-spacing`,
+  `horizontal-letter-offset` and `vertical-letter-offset` are now
+  rounded, not truncated, when translated to pixel values.
+* Foot’s exit code is now -26/230 when foot itself failed to launch
+  (due to invalid command line options, client application/shell not
+  found etc). Footclient’s exit code is -36/220 when it itself fails
+  to launch (e.g. bad command line option) and -26/230 when the foot
+  server failed to instantiate a new window
+  (https://codeberg.org/dnkl/foot/issues/466).
+* Background alpha no longer applied to palette or RGB colors that
+  matches the background color.
+* Improved performance on compositors that does not release shm
+  buffers immediately, e.g. KWin
+  (https://codeberg.org/dnkl/foot/issues/478).
+* `ctrl + w` (_extend-to-word-boundary_) can now be used across lines
+  (https://codeberg.org/dnkl/foot/issues/421).
+* Ignore auto-detected URLs that overlap with OSC-8 URLs.
+* Default value for the `notify` option to use `-a ${app-id} -i
+  ${app-id} ...` instead of `-a foot -i foot ...`.
+* `scrollback-*`+`pipe-scrollback` key bindings are now passed through
+  to the client application when the alt screen is active
+  (https://codeberg.org/dnkl/foot/issues/573).
+* Reverse video (`\E[?5h`) now only swaps the default foreground and
+  background colors. Cells with explicit foreground and/or background
+  colors remain unchanged.
+* Tabs (`\t`) are now preserved when the window is resized, and when
+  copying text (https://codeberg.org/dnkl/foot/issues/508).
+* Writing a sixel on top of another sixel no longer erases the first
+  sixel, but the two are instead blended
+  (https://codeberg.org/dnkl/foot/issues/562).
+* Running foot without a configuration file is no longer an error; it
+  has been demoted to a warning, and is no longer presented as a
+  notification in the terminal window, but only logged on stderr.
+
+
+### Deprecated
+
+* `bell` option in `foot.ini`; set actions in the `[bell]` section
+  instead.
+* `url-launch` option in `foot.ini`; use `launch` in the `[url]`
+  section instead.
+* `jump-label-letters` option in `foot.ini`; use `label-letters` in
+  the `[url]` section instead.
+* `osc8-underline` option in `foot.ini`; use `osc8-underline` in the
+  `[url]` section instead.
+
+
+### Removed
+
+* Buffer damage quirk for Plasma/KWin.
+
+
+### Fixed
+
+* `generate-alt-random-writes.py --sixel` sometimes crashing,
+  resulting in PGO build failures.
+* Wrong colors in the 256-color cube
+  (https://codeberg.org/dnkl/foot/issues/479).
+* Memory leak triggered by “opening” an OSC-8 URI and then resetting
+  the terminal without closing the URI
+  (https://codeberg.org/dnkl/foot/issues/495).
+* Assertion when emitting a sixel occupying the entire scrollback
+  history (https://codeberg.org/dnkl/foot/issues/494).
+* Font underlines being positioned below the cell (and thus being
+  invisible) for certain combinations of fonts and font sizes
+  (https://codeberg.org/dnkl/foot/issues/503).
+* Sixels with transparent bottom border being resized below the size
+  specified in _”Set Raster Attributes”_.
+* Fonts sometimes not being reloaded with the correct scaling factor
+  when `dpi-aware=no`, or `dpi-aware=auto` with monitor(s) with a
+  scaling factor > 1 (https://codeberg.org/dnkl/foot/issues/509).
+* Crash caused by certain CSI sequences with very large parameter
+  values (https://codeberg.org/dnkl/foot/issues/522).
+* Rare occurrences where the window did not close when the shell
+  exited. Only seen on FreeBSD
+  (https://codeberg.org/dnkl/foot/issues/534)
+* Foot process(es) sometimes remaining, using 100% CPU, when closing
+  multiple foot windows at the same time
+  (https://codeberg.org/dnkl/foot/issues/542).
+* Regression where `<mod>+shift+tab` always produced `\E[Z` instead of
+  the correct `\E[27;<mod>;9~` sequence
+  (https://codeberg.org/dnkl/foot/issues/547).
+* Crash when a line wrapping OSC-8 URI crossed the scrollback wrap
+  around (https://codeberg.org/dnkl/foot/issues/552).
+* Selection incorrectly wrapping rows ending with an explicit newline
+  (https://codeberg.org/dnkl/foot/issues/565).
+* Off-by-one error in markup of auto-detected URLs when the URL ends
+  in the right-most column.
+* Multi-column characters being cut in half when resizing the
+  alternate screen.
+* Restore `SIGHUP` in spawned processes.
+* Text reflow performance (https://codeberg.org/dnkl/foot/issues/504).
+* IL+DL (`CSI Ps L` + `CSI Ps M`) now moves the cursor to column 0.
+* SS2 and SS3 (single shift) escape sequences behaving like locking
+  shifts (https://codeberg.org/dnkl/foot/issues/580).
+* `TEXT`+`STRING`+`UTF8_STRING` mime types not being recognized in
+  clipboard offers (https://codeberg.org/dnkl/foot/issues/583).
+* Memory leak caused by custom box drawing glyphs not being completely
+  freed when destroying a foot window instance
+  (https://codeberg.org/dnkl/foot/issues/586).
+* Crash in scrollback search when current XKB layout is missing
+  _compose_ definitions.
+* Window title not being updated while window is hidden
+  (https://codeberg.org/dnkl/foot/issues/591).
+* Crash on badly formatted URIs in e.g. OSC-8 URLs.
+* Window being incorrectly resized on CSD/SSD run-time changes.
+
+
+### Contributors
+* [r\_c\_f](https://codeberg.org/r_c_f)
+* [craigbarnes](https://codeberg.org/craigbarnes)
 
 
 ## 1.7.2
@@ -65,6 +302,7 @@
 * PTY not being drained when the client application terminates.
 * `auto_left_margin` not being limited to `cub1`
   (https://codeberg.org/dnkl/foot/issues/441).
+* Crash in scrollback search mode when searching beyond the last output.
 
 
 ### Contributors
@@ -137,6 +375,9 @@
   (https://codeberg.org/dnkl/foot/issues/395).
 * Completions for Bash shell
   (https://codeberg.org/dnkl/foot/issues/10).
+* Implement `XTVERSION` (`CSI > 0q`). Foot will reply with
+  `DCS>|foot(<major>.<minor>.<patch>)ST`
+  (https://codeberg.org/dnkl/foot/issues/359).
 
 
 ### Changed
