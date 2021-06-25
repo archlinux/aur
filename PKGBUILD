@@ -1,5 +1,5 @@
 pkgname=gvst-plugins
-pkgver=$(date +%Y%m%d)
+pkgver=20210112
 pkgrel=1
 pkgdesc="GVST Plugin Suite."
 arch=('x86_64')

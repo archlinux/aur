@@ -1,6 +1,6 @@
 pkgbase = gvst-plugins
 	pkgdesc = GVST Plugin Suite.
-	pkgver = 20210619
+	pkgver = 20210112
 	pkgrel = 1
 	url = https://www.gvst.co.uk/portpage.htm
 	arch = x86_64
