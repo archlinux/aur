@@ -1,33 +1,28 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: willemw <willemw12@gmail.com>
+# Constributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-_pkgname='ucollage'
-pkgname="${_pkgname}-git"
-pkgver=r82.4a7e9a9
+pkgname=ucollage-git
+pkgver=1.0.0.r0.g0393657
 pkgrel=1
-pkgdesc='Terminal image viewer based on Überzug'
+pkgdesc="Extensible command line image viewer inspired by vim"
 arch=('any')
-url='https://github.com/ckardaris/ucollage'
+url="https://github.com/ckardaris/ucollage"
 license=('GPL3')
-depends=('ueberzug')
+depends=('bc' 'ueberzug')
 makedepends=('git')
-optdepends=('ffmpeg: display video thumbnails'
-            'imagemagick: image rotation'
-)
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=("git+${url}.git")
+optdepends=('ffmpeg: video thumbnails' 'imagemagick: image rotation' 'xclip: clipboard pasting')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd $pkgname
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "${_pkgname}"
-  install -Dm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
-  install -Dm644 "${_pkgname}.1" -t "${pkgdir}/usr/share/man/man1"
-  install -Dm644 'README.md' -t "${pkgdir}/usr/share/doc/${_pkgname}"
+  make -C $pkgname PREFIX="$pkgdir/" install
+  sed -i "s|$pkgdir||g" "$pkgdir/usr/bin/ucollage"
 }
 
-# vim: ts=2 sw=2 et:
