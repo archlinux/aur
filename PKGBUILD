@@ -88,7 +88,7 @@ package_kanidm-unixd-clients () {
   install -Dm755 target/release/kanidm_ssh_authorizedkeys_direct "${pkgdir}/usr/bin/kanidm_ssh_authorizedkeys_direct"
   install -Dm755 target/release/kanidm_unixd "${pkgdir}/usr/bin/kanidm_unixd"
   install -Dm755 target/release/kanidm_unixd_status "${pkgdir}/usr/bin/kanidm_unixd_status"
-  install -Dm755 target/release/kanidm_unixd_status "${pkgdir}/usr/bin/kanidm_unixd_tasks"
+  install -Dm755 target/release/kanidm_unixd_tasks "${pkgdir}/usr/bin/kanidm_unixd_tasks"
 
   install -Dm644 $srcdir/../kanidm-unixd.service "$pkgdir/usr/lib/systemd/system/kanidm-unixd.service"
   install -Dm644 $srcdir/../kanidm-unixd-tasks.service "$pkgdir/usr/lib/systemd/system/kanidm-unixd-tasks.service"
@@ -98,11 +98,15 @@ package_kanidm-unixd-clients () {
   install -Dm644 target/release/_completions/_kanidm_cache_invalidate "${pkgdir}/usr/share/zsh/site-functions/_kanidm_cache_invalidate"
   install -Dm644 target/release/_completions/_kanidm_ssh_authorizedkeys "${pkgdir}/usr/share/zsh/site-functions/_kanidm_ssh_authorizedkeys"
   install -Dm644 target/release/_completions/_kanidm_unixd_status "${pkgdir}/usr/share/zsh/site-functions/_kanidm_unixd_status"
+  # TODO as soon it extists
+  # install -Dm644 target/release/_completions/_kanidm_unixd_tasks_status "${pkgdir}/usr/share/zsh/site-functions/_kanidm_unixd_tasks_status"
 
   install -Dm644 target/release/_completions/kanidm_ssh_authorizedkeys_direct.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_ssh_authorizedkeys_direct.sh"
   install -Dm644 target/release/_completions/kanidm_cache_clear.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_cache_clear.sh"
   install -Dm644 target/release/_completions/kanidm_cache_invalidate.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_cache_invalidate.sh"
   install -Dm644 target/release/_completions/kanidm_ssh_authorizedkeys.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_ssh_authorizedkeys.sh"
   install -Dm644 target/release/_completions/kanidm_unixd_status.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_unixd_status.sh"
+  # TODO as soon it extists
+  # install -Dm644 target/release/_completions/kanidm_unixd_tasks_status.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_unixd_tasks_status.sh"
 }
 
