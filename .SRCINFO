@@ -1,6 +1,6 @@
 pkgbase = ttf-twcns-fonts
 	pkgdesc = Chinese TrueType fonts by Ministry of Education of Taiwan government, support CNS11643 standard, including Kai and Sung fontface.
-	pkgver = 20201016
+	pkgver = 20210622
 	pkgrel = 1
 	url = https://data.gov.tw/node/5961
 	arch = any
@@ -12,14 +12,13 @@ pkgbase = ttf-twcns-fonts
 	source = 53-twcns.conf
 	source = LICENSE-zh_TW
 	source = LICENSE
-	sha1sums = 1be79ccf05a336156d40d469c82984523508294a
-	sha1sums = e9a1bf83c957966941a1a3bb7e406169d47facde
-	sha1sums = 08c5ee06a2248340613d9bd7314a824883851bd1
-	sha1sums = 6be77081aa46e90e417ec73027e0477c3297a1c9
+	sha256sums = 7ffbbd6bb8373df944663041a06e68ab26ae7e396928c43e14a052b6dea8082a
+	sha256sums = d24c12eab3666a0dc8b64327ae9d79512cd0cf4c8b71284e9dfec6f6273d8abc
+	sha256sums = 5752216377a7b59433b2cc83164be2f93533446e72953a1d4769ceddd1349a00
+	sha256sums = 114afb4ba741595b69fbabb5e1d6668f095bbe4acfee5e5358d83cfbc72f1351
 
 pkgname = ttf-twcns-fonts
 
 pkgname = ttf-twcns-fonts-doc
 	pkgdesc = Misc files including mapping table, property metadata and voice for ttf-twcns-fonts
 	options = docs
-

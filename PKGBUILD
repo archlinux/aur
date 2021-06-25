@@ -3,7 +3,7 @@
 pkgbase=ttf-twcns-fonts
 pkgname=(${pkgbase}{,-doc})
 pkgdesc='Chinese TrueType fonts by Ministry of Education of Taiwan government, support CNS11643 standard, including Kai and Sung fontface.'
-pkgver=20201016
+pkgver=20210622
 pkgrel=1
 arch=('any')
 url='https://data.gov.tw/node/5961'
@@ -13,10 +13,10 @@ source=('https://www.cns11643.gov.tw/AIDB/Open_Data.zip'
         '53-twcns.conf' # grab from older version of rpm
         'LICENSE-zh_TW'
         'LICENSE')
-sha1sums=('1be79ccf05a336156d40d469c82984523508294a'
-          'e9a1bf83c957966941a1a3bb7e406169d47facde'
-          '08c5ee06a2248340613d9bd7314a824883851bd1'
-          '6be77081aa46e90e417ec73027e0477c3297a1c9')
+sha256sums=('7ffbbd6bb8373df944663041a06e68ab26ae7e396928c43e14a052b6dea8082a'
+            'd24c12eab3666a0dc8b64327ae9d79512cd0cf4c8b71284e9dfec6f6273d8abc'
+            '5752216377a7b59433b2cc83164be2f93533446e72953a1d4769ceddd1349a00'
+            '114afb4ba741595b69fbabb5e1d6668f095bbe4acfee5e5358d83cfbc72f1351')
 #DLAGENTS=('https::/usr/bin/curl -gqb "" -fLC - --retry 999 -o %o %u') # not tested yet
 DLAGENTS=('https::/usr/bin/wget --progress=bar -c -O %o %u')
 
