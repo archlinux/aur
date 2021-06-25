@@ -1,9 +1,14 @@
 pkgbase = inform
 	pkgdesc = Interactive fiction compiler
 	pkgver = 6.35.r2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.inform-fiction.org/
+	arch = aarch64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
 	arch = i686
+	arch = pentium4
 	arch = x86_64
 	groups = inform
 	license = Artistic2.0

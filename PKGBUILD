@@ -6,9 +6,9 @@
 pkgname=inform
 pkgver=6.35.r2
 _ifrel="6.35-r2"
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive fiction compiler"
-arch=(i686 x86_64)
+arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'pentium4' 'x86_64')
 url="http://www.inform-fiction.org/"
 license=('Artistic2.0' 'MIT')
 depends=('glibc')
