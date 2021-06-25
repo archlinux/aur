@@ -3,65 +3,62 @@
 
 _projectname=electron
 _major=11
-_pkgname="${_projectname}${_major}"
-_pkgver=11.4.7
-pkgname="$_pkgname-bin"
-pkgver="${_pkgver/-/.}"
+_pkgname=${_projectname}${_major}
+pkgver=${_major}.4.9
+pkgname=${_pkgname}-bin
 pkgrel=1
 pkgdesc="Build cross platform desktop apps with web technologies - version ${_major} - binary version"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
-url="https://${_projectname}js.org/"
+url=https://electronjs.org/
 license=('MIT')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy')
-optdepends=(
-	'kde-cli-tools: file deletion support (kioclient5)'
-	'libappindicator-gtk3: StatusNotifierItem support'
-	'trash-cli: file deletion support (trash-put)'
-	"xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)"
-)
-_releaseurl="https://github.com/$_projectname/$_projectname/releases/download/v$_pkgver"
+provides=(${_pkgname})
+conflicts=(${_pkgname})
+depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libnghttp2' 'libxslt' 'minizip' 'nss' 're2' 'snappy')
+optdepends=('kde-cli-tools: file deletion support (kioclient5)'
+            'libappindicator-gtk3: StatusNotifierItem support'
+            'pipewire: WebRTC desktop sharing under Wayland'
+            'trash-cli: file deletion support (trash-put)'
+            "xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)")
+_releaseurl="https://github.com/${_projectname}/${_projectname}/releases/download/v${pkgver}"
 source_x86_64=(
-	"$pkgname-chromedriver-$_pkgver-$pkgrel-x86_64.zip::$_releaseurl/chromedriver-v$_pkgver-linux-x64.zip"
-	"$pkgname-$_pkgver-$pkgrel-x86_64.zip::$_releaseurl/$_projectname-v$_pkgver-linux-x64.zip"
+	"${pkgname}-chromedriver-${pkgver}-${pkgrel}-x86_64.zip::${_releaseurl}/chromedriver-v${pkgver}-linux-x64.zip"
+	"${pkgname}-${pkgver}-${pkgrel}-x86_64.zip::${_releaseurl}/${_projectname}-v${pkgver}-linux-x64.zip"
 )
 source_i686=(
-	"$pkgname-chromedriver-$_pkgver-$pkgrel-i686.zip::$_releaseurl/chromedriver-v$_pkgver-linux-ia32.zip"
-	"$pkgname-$_pkgver-$pkgrel-i686.zip::$_releaseurl/$_projectname-v$_pkgver-linux-ia32.zip"
+	"${pkgname}-chromedriver-${pkgver}-${pkgrel}-i686.zip::${_releaseurl}/chromedriver-v${pkgver}-linux-ia32.zip"
+	"${pkgname}-${pkgver}-${pkgrel}-i686.zip::${_releaseurl}/${_projectname}-v${pkgver}-linux-ia32.zip"
 )
 source_armv7h=(
-	"$pkgname-chromedriver-$_pkgver-$pkgrel-armv7h.zip::$_releaseurl/chromedriver-v$_pkgver-linux-armv7l.zip"
-	"$pkgname-$_pkgver-$pkgrel-armv7h.zip::$_releaseurl/$_projectname-v$_pkgver-linux-armv7l.zip"
+	"${pkgname}-chromedriver-${pkgver}-${pkgrel}-armv7h.zip::${_releaseurl}/chromedriver-v${pkgver}-linux-armv7l.zip"
+	"${pkgname}-${pkgver}-${pkgrel}-armv7h.zip::${_releaseurl}/${_projectname}-v${pkgver}-linux-armv7l.zip"
 )
 source_aarch64=(
-	"$pkgname-chromedriver-$_pkgver-$pkgrel-aarch64.zip::$_releaseurl/chromedriver-v$_pkgver-linux-arm64.zip"
-	"$pkgname-$_pkgver-$pkgrel-aarch64.zip::$_releaseurl/$_projectname-v$_pkgver-linux-arm64.zip"
+	"${pkgname}-chromedriver-${pkgver}-${pkgrel}-aarch64.zip::${_releaseurl}/chromedriver-v${pkgver}-linux-arm64.zip"
+	"${pkgname}-${pkgver}-${pkgrel}-aarch64.zip::${_releaseurl}/${_projectname}-v${pkgver}-linux-arm64.zip"
 )
-sha256sums_x86_64=('aa5bf511827d9d6cdc2c1be63a6e17cf1e7a6ee4729224a9067351c9ceab06cc'
-                   '05005d351a1b08a550a8186efba6f4fdd96842355a634934d9a9d7d31c2cd539')
-sha256sums_i686=('0bc42d5046bef680e970eb6a6da3c09a8498f1c8ef5b5394a48c262b7088b829'
-                 '5473f36eb2a9772da7e4f1a162a724b4a5335e8f78fb51d585bac3bd50ff12fc')
-sha256sums_armv7h=('7a54c26e84e3509364f7339e66db60a15ae169dc13207943b79075701da76bfd'
-                   '0de0d74b1206f7ffd9e4c75754bbf6fdf27c83a0ce6b4cd8a6b5af81d7a20ba7')
-sha256sums_aarch64=('57982ae2756463a275a5426abadbf19d8ba10fdcf1d34ae90232ef8422bc1f4d'
-                    'f2261dde71197c358aff85d7a320cbd2315a5adf228218fd9a2f5c8561589323')
+sha256sums_x86_64=('3830e6398e4ee29f18c036f5e06217030dfebfc7c6c9f988f0e9fb3620d1e8f8'
+                   'c18ed2e16e60ca1eddd01ab2e4fff2bbfd9f197ab17b7577155f05687297d7be')
+sha256sums_i686=('95148d3e415717de9e79876b311d050d57c97d243d74560cbb340a69ab9b6b36'
+                 'ef9125268e03f2f1d13c2b2505ba2529af88a8397cad640bd35116caae7ab296')
+sha256sums_armv7h=('d217f7b568d376876719c1aeb751948c6a52447897e1a6429d7da8c7be857a71'
+                   'b43c00f4a0b4cf8affa09cedff93066d23d57a6148af383a8fc9f6d25b63d449')
+sha256sums_aarch64=('e5549af361928eac79cf54e5e15b85b4de13f3ac8adb273d77d53bc2b2602a1e'
+                    '3df038538056fc4a918afe07138052b1f53648c411add47c3a18abe8a30e6f71')
 
 package() {
-	cd "$srcdir/"
-	install -dm755 "$pkgdir/usr/lib/$_pkgname/"
-	find . -mindepth 1 -maxdepth 1 -type f ! -name "*.zip" ! -name "LICENSE*" -exec cp -r --no-preserve=ownership --preserve=mode -t "$pkgdir/usr/lib/$_pkgname/." {} +
+	install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
+	find . -mindepth 1 -maxdepth 1 -type f ! -name "*.zip" ! -name "LICENSE*" -exec cp -r --no-preserve=ownership --preserve=mode -t "${pkgdir}/usr/lib/${_pkgname}/." {} +
 
 	for _folder in 'locales' 'resources' 'swiftshader'; do
-		cp -r --no-preserve=ownership --preserve=mode "$_folder/" "$pkgdir/usr/lib/$_pkgname/$_folder/"
+		cp -r --no-preserve=ownership --preserve=mode "${_folder}/" "${pkgdir}/usr/lib/${_pkgname}/${_folder}/"
 	done
 
-	chmod u+s "$pkgdir/usr/lib/$_pkgname/chrome-sandbox"
+	chmod u+s "${pkgdir}/usr/lib/${_pkgname}/chrome-sandbox"
 
-	install -dm755 "$pkgdir/usr/bin"
-	ln -nfs "/usr/lib/$_pkgname/$_projectname" "$pkgdir/usr/bin/$_pkgname"
+	install -dm755 "${pkgdir}/usr/bin"
+	ln -nfs "/usr/lib/${_pkgname}/${_projectname}" "${pkgdir}/usr/bin/${_pkgname}"
 
 	for _license in 'LICENSE' 'LICENSES.chromium.html'; do
-		install -Dm644 "$_license" "$pkgdir/usr/share/licenses/$pkgname/$_license"
+		install -Dm644 "${_license}" "${pkgdir}/usr/share/licenses/${pkgname}/${_license}"
 	done
 }
