@@ -7,7 +7,7 @@
 
 pkgname=burpsuite
 pkgver=2021.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An integrated platform for performing security testing of web applications (free edition)"
 url="https://portswigger.net/burp/"
 depends=('java-runtime>=9')
@@ -36,7 +36,7 @@ package() {
 
   # Create startup file for burpsuite.
   echo "#!/bin/sh" > ${pkgdir}/usr/bin/${pkgname}
-  echo "exec \$JAVA_HOME/bin/java -jar /usr/share/burpsuite/burpsuite.jar \$@" >> ${pkgdir}/usr/bin/${pkgname}
+  echo "exec \$JAVA_HOME/bin/java --illegal-access=permit -jar /usr/share/burpsuite/burpsuite.jar \$@" >> ${pkgdir}/usr/bin/${pkgname}
   chmod 755 ${pkgdir}/usr/bin/${pkgname}
 }
 
