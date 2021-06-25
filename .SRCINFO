@@ -25,4 +25,3 @@ pkgname = kanidm-unixd-clients
 	pkgdesc = kanidm localhost resolver to resolve posix identities to a kanidm instance.
 	provides = kanidm-unixd-clients
 	conflicts = kanidm-unixd-clients
-
