@@ -3,12 +3,12 @@
 _pkgname=cmake-build-extension
 pkgname="python-$_pkgname-git"
 pkgver=0.3.0.r0.g31b148e
-pkgrel=1
+pkgrel=2
 pkgdesc="Setuptools extension to build and package CMake projects"
 arch=(any)
 url="https://github.com/diegoferigo/cmake-build-extension"
 license=('MIT')
-depends=('python')
+depends=('python' 'python-gitpython' 'ninja' 'cmake')
 makedepends=('git' 'python-setuptools')
 checkdepends=('python-pytest')
 provides=("python-$_pkgname=$pkgver")

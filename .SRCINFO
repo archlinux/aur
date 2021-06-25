@@ -1,7 +1,7 @@
 pkgbase = python-cmake-build-extension-git
 	pkgdesc = Setuptools extension to build and package CMake projects
 	pkgver = 0.3.0.r0.g31b148e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/diegoferigo/cmake-build-extension
 	arch = any
 	license = MIT
@@ -9,6 +9,9 @@ pkgbase = python-cmake-build-extension-git
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python
+	depends = python-gitpython
+	depends = ninja
+	depends = cmake
 	provides = python-cmake-build-extension=0.3.0.r0.g31b148e
 	conflicts = python-cmake-build-extension
 	source = git+https://github.com/diegoferigo/cmake-build-extension.git
