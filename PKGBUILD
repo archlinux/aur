@@ -2,9 +2,10 @@
 # Contributor: Dragutin Cirkovic <dragonmen@gmail.com>
 # Contributor: heinrich5991 <heinrich5991@gmail.com>
 pkgname=srs
-pkgver=3.0_r1
-pkgrel=2
+pkgver=3.0_r5
+pkgrel=1
 pkgdesc="High performance RTMP Server"
+_pkgcommit=c95c53cfe33dc651732cbb0fa621c2ee04d79ea4
 arch=('x86_64')
 url="https://github.com/ossrs/srs"
 license=('MIT')
@@ -14,10 +15,10 @@ depends=('gcc-libs'
 makedepends=('zlib' 'unzip' 'net-tools' 'python' 'git')
 backup=(etc/srs/srs.conf)
 options=('docs')
-source=("git+https://github.com/ossrs/srs/#commit=3809d43ee5a721f25d4d3ca985dfffd306d22166"
+source=("git+https://github.com/ossrs/srs/#commit=${_pkgcommit}"
         "archlinux.patch")
 sha256sums=('SKIP'
-            'SKIP')
+            '01af4fc5b393fe4c590215a8449ab10e7aefe1e377962ca35405baaa2ed43a90')
 
 prepare() {
   cd "${srcdir}"/srs/trunk
