@@ -1,27 +1,24 @@
 # Maintainer: willemw <willemw12@gmail.com>
 # Contributor: farid (farid@archlinux-br.org)
 
-pkgname=pixelize	
+pkgname=pixelize
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Build a large picture from hundreds of smaller ones"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://lashwhip.com/pixelize.html"
 depends=('gtk2')
 #optdepends=('imlib')
 license=('GPL2')
 install=$pkgname.install
-source=(http://lashwhip.com/pixelize/pixelize-1.0.0.tar.gz)
-md5sums=(b3832915803da637bd619b66974b0031)
+source=(http://lashwhip.com/pixelize/pixelize-$pkgver.tar.gz)
+sha256sums=('580b3577c6bc1353ebabcd32c9700cf2e1afe777077b37f6a99b9d2d5e25a7f8')
 
 build() {
-  cd $pkgname-$pkgver
-  make
+  make -C $pkgname-$pkgver
 }
 
 package() {
-  cd $pkgname-$pkgver
-  install -D -m755 pixelize "$pkgdir/usr/bin/pixelize"
-  install -D -m755 make_db "$pkgdir/usr/bin/make_db"
+  install -Dm755 $pkgname-$pkgver/{pixelize,make_db} -t "$pkgdir/usr/bin"
 }
 
