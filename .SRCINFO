@@ -13,8 +13,7 @@ pkgbase = gnofract4d
 	depends = python-cairo
 	depends = python-gobject
 	optdepends = ffmpeg: to create videos
-	source = gnofract4d-4.3.tar.gz::https://github.com/edyoung/gnofract4d/archive/v4.3.tar.gz
-	md5sums = d815353c682eab9787e2fdad26f625ba
+	source = gnofract4d-4.3.tar.gz::https://github.com/fract4d/gnofract4d/archive/v4.3.tar.gz
+	sha256sums = 8fb22fd626b3452957802abe9fba311d495481ddf91a2ecf8a41fc38377639e3
 
 pkgname = gnofract4d
-

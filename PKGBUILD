@@ -16,7 +16,7 @@ makedepends=('python-setuptools')
 optdepends=('ffmpeg: to create videos')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('d815353c682eab9787e2fdad26f625ba')
+sha256sums=('8fb22fd626b3452957802abe9fba311d495481ddf91a2ecf8a41fc38377639e3')
 
 build() {
   cd $pkgname-$pkgver
@@ -30,10 +30,7 @@ check() {
 
 package() {
   cd $pkgname-$pkgver
-
-  install -dm755 "$pkgdir/usr/share/man/man1"
-  install -Dm644 doc/gnofract4d.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
-
+  install -Dm644 doc/$pkgname.1 -t "$pkgdir/usr/share/man/man1"
   ./setup.py install --root="$pkgdir" --optimize=1
 }
 
