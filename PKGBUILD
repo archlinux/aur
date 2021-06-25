@@ -7,23 +7,25 @@ pkgname='ferdi'
 pkgver='5.5.0'
 _recipescommit='3054fd4c362b5be81b5cdd48535a0e7078fcd0a6'
 _internalservercommit='95ae59926dbd88d55a5377be997558a9e112ab49'
-pkgrel='10'
+pkgrel='11'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$pkgname.com"
 license=('Apache')
 depends=('electron8-bin' 'libxkbfile')
-makedepends=('git' 'nodejs-lts-fermium' 'npm6' 'python' 'python2')
+makedepends=('git' 'nodejs' 'npm6' 'python' 'python2')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/get$pkgname/$pkgname/archive/v$pkgver.tar.gz"
 	"$pkgname-$pkgver-$pkgrel-recipes.tar.gz::https://github.com/get$pkgname/recipes/archive/$_recipescommit.tar.gz"
 	"$pkgname-$pkgver-$pkgrel-internal-server.tar.gz::https://github.com/get$pkgname/internal-server/archive/$_internalservercommit.tar.gz"
 	'fix-autostart-path.diff'
+	'gulp-sass-update.diff'
 )
 sha256sums=('319b02b565e34720c8ccefdb08cfe37219304c002e469fdf1a15c8971b573fc3'
             'b72d06155d20292d90c5b9fc05f83b318080abf858669ca2c1a2a539890c3427'
             '70cb957413aec3941845d7d567f250f010e7bd2e8549b530ba16817e62864b55'
-            'b17dcbc621dba3b495bac99ce11f254e2fd086e7cf024fb0f8e89d9530e52227')
+            'b17dcbc621dba3b495bac99ce11f254e2fd086e7cf024fb0f8e89d9530e52227'
+            '840e7fb9191d464503c1a2745c509f6c66c9e95f4f5520aabf4c8660c4f622a8')
 
 _sourcedirectory="$pkgname-$pkgver"
 _homedirectory="$pkgname-$pkgver-$pkgrel-home"
@@ -52,10 +54,11 @@ prepare() {
 	mv "../internal-server-$_internalservercommit/" 'src/internal-server/'
 
 	# Set system Electron version for ABI compatibility
-	sed -E -i -e 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron8/version')"'"|' 'package.json'
+	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron8/version')"'"|' 'package.json'
 
-	# Set node-sass version for node 16 compatibility (gulp-sass update still needed)
+	# Set node-sass and gulp-sass versions for node 16 compatibility
 	sed -E -i 's|("node-sass": ").*"|\16.0.0"|' 'package.json'
+	sed -E -i 's|("gulp-sass": ").*"|\15.0.0"|' 'package.json'
 
 	# Set cld version for GCC11 compatibility
 	sed -E -i 's|("node-sass":.*)|\1\n    "cld": "2.7.0",|' 'package.json'
@@ -66,6 +69,9 @@ prepare() {
 
 	# Specify path for autostart file
 	patch --forward -p1 < '../fix-autostart-path.diff'
+
+	# Set a compiler for gulp-sass explicitly
+	patch --forward -p1 < '../gulp-sass-update.diff'
 
 	# Prepare dependencies
 	HOME="$srcdir/$_homedirectory" npx lerna bootstrap
