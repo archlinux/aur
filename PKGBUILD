@@ -11,6 +11,7 @@ license=('GPL2')
 depends=('openssh' 'qt4')
 makedepends=('cmake')
 source=(http://hugo.pereira.free.fr/software/tgz/qssh-$pkgver.tar.gz)
+sha256sums=('f9e94626834fe9ca7573b6f71a4f33922e926f9af297762f52a4a76d35017947')
 
 build() {
   #qmake-qt4 qssh.pro
@@ -24,4 +25,3 @@ package() {
   make -C build DESTDIR="$pkgdir/" install
 }
 
-sha256sums=('f9e94626834fe9ca7573b6f71a4f33922e926f9af297762f52a4a76d35017947')
