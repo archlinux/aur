@@ -1,6 +1,6 @@
 pkgbase = psst-git
 	pkgdesc = Fast and multi-platform Spotify client with native GUI
-	pkgver = r173.0bb5258
+	pkgver = r213.4ee0b48
 	pkgrel = 1
 	url = https://github.com/jpochyla/psst
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = psst-git
 	makedepends = gtk3
 	makedepends = cairo
 	makedepends = openssl
+	makedepends = clang
 	provides = psst
 	conflicts = psst
 	source = git+https://github.com/jpochyla/psst.git
 	sha256sums = SKIP
 
 pkgname = psst-git
-
