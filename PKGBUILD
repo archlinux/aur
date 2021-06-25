@@ -4,7 +4,7 @@
 
 pkgname='mlmmj'
 pkgver=1.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Simple and slim mailing list manager (MLM) inspired by ezmlm'
 depends=('sh' 'smtp-server')
 arch=('i686' 'x86_64' 'armv7h')
@@ -48,29 +48,29 @@ b2sums=(
 )
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver" || exit 1
   patch -Np1 -i "$srcdir/$pkgname-$pkgver.diff"
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver" || exit 1
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver" || exit 1
   make DESTDIR="$pkgdir" install
 
   for fname in AUTHORS COPYING LICENSE; do
     install -Dm0644 "$fname" "$pkgdir/usr/share/licenses/mlmmj/$fname"
   done
 
-  for fname in ChangeLog FAQ README README.* TUNABLES UPGRADE; do
+  for fname in ChangeLog FAQ README README.* TODO TUNABLES UPGRADE; do
     install -Dm0644 "$fname" "$pkgdir/usr/share/doc/mlmmj/$fname"
   done
 
-  cd "$srcdir"
+  cd "$srcdir" || exit 1
   install -Dm0644 sysuser.conf "$pkgdir/usr/lib/sysusers.d/mlmmj.conf"
   install -Dm0644 tmpfile.conf "$pkgdir/usr/lib/tmpfiles.d/mlmmj.conf"
 }
