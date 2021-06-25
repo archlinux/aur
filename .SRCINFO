@@ -1,0 +1,17 @@
+pkgbase = pixbufloader-vtf-git
+	pkgdesc = Load Valve Texture Files in Gtk+ applications
+	pkgver = r9.2a5a1e7
+	pkgrel = 1
+	url = https://github.com/HurricanePootis/pixbufloader-vtf
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = libvtflib-git
+	makedepends = git
+	makedepends = gdk-pixbuf2
+	depends = libvtflib-git
+	depends = gdk-pixbuf2
+	source = git+https://github.com/HurricanePootis/pixbufloader-vtf
+	md5sums = SKIP
+
+pkgname = pixbufloader-vtf-git
