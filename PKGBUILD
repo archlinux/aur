@@ -6,15 +6,15 @@ arch=('any')
 license=('custom:qwt')
 url="http://qwt.sourceforge.net"
 depends=('mingw-w64-qt6-svg')
-makedepends=('mingw-w64-gcc' 'qt6-base' 'subversion')
+makedepends=('mingw-w64-gcc' 'qt6-base')
 options=('staticlibs' '!strip' '!buildflags')
-source=("svn+https://svn.code.sf.net/p/qwt/code/branches/qwt-6.2")
-sha256sums=('SKIP')
+source=("http://downloads.sourceforge.net/qwt/qwt-beta/6.2.0-rc1/qwt-6.2-rc1.tar.bz2")
+sha256sums=('2dc29d4bacae63e57732857eb4b18b8ac9a451c072817cbc1ee572ef4872f0ec')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-  cd qwt-6.2
+  cd qwt-6.2-rc1
   # Build release only
   sed -i 's|+= debug_and_release|+= release|' qwtbuild.pri
   sed -i '/+= build_all/d' qwtbuild.pri
@@ -39,7 +39,7 @@ build() {
     mkdir -p "${srcdir}/qwt-build-${_arch}"
     cd "${srcdir}"
     rm -rf qwt-build-${_arch}
-    cp -r "qwt-6.2" qwt-build-${_arch}
+    cp -r "qwt-6.2-rc1" qwt-build-${_arch}
     cd qwt-build-${_arch}
 
     # This is a mingw build, so Windows prefix is used. Let's change it:
@@ -54,9 +54,11 @@ package() {
 
   for _target in ${_architectures}; do
 
-    cd "${srcdir}/qwt-build-${_target}/qwt-6.2"
+    cd "${srcdir}/qwt-build-${_target}/qwt-6.2-rc1"
 
     make INSTALL_ROOT=${pkgdir} QTDIR=/usr/${_target}/ install
+
+    install -m644 src/qwt_axis_id.h "$pkgdir"/usr/${_target}/include
 
     cd "${pkgdir}/usr/${_target}"
 

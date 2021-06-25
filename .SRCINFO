@@ -7,13 +7,11 @@ pkgbase = mingw-w64-qwt-qt6
 	license = custom:qwt
 	makedepends = mingw-w64-gcc
 	makedepends = qt6-base
-	makedepends = subversion
 	depends = mingw-w64-qt6-svg
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = svn+https://svn.code.sf.net/p/qwt/code/branches/qwt-6.2
-	sha256sums = SKIP
+	source = http://downloads.sourceforge.net/qwt/qwt-beta/6.2.0-rc1/qwt-6.2-rc1.tar.bz2
+	sha256sums = 2dc29d4bacae63e57732857eb4b18b8ac9a451c072817cbc1ee572ef4872f0ec
 
 pkgname = mingw-w64-qwt-qt6
-
