@@ -1,0 +1,13 @@
+pkgbase = mpv-visualizer-git
+	pkgdesc = various audio visualization.
+	pkgver = r18.a0cd87e
+	pkgrel = 1
+	url = https://github.com/mfcc64/mpv-scripts
+	arch = any
+	makedepends = git
+	depends = mpv
+	provides = mpv-visualizer
+	source = mpv-visualizer::git+https://github.com/mfcc64/mpv-scripts
+	sha256sums = SKIP
+
+pkgname = mpv-visualizer-git
