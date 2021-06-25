@@ -1,25 +1,25 @@
-# Maintainer: mehalter <micah at mehalter.com>
-# Maintainer: Jean Lucas <jean@4ray.co>
 # Maintainer: Luke Street <luke@street.dev>
+# Contributor: mehalter <micah at mehalter.com>
+# Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=ghidra-bin
-pkgver=9.2.3
-_date=20210325
+pkgver=10.0
+_date=20210621
 pkgrel=1
 pkgdesc='Software reverse engineering framework (bin)'
 arch=(x86_64)
 url=https://www.nsa.gov/ghidra
 license=(Apache)
 provides=(ghidra)
-conflicts=(ghidra)
+conflicts=(ghidra ghidra-desktop)
 depends=('java-environment>=11' bash)
 source=(
-  https://ghidra-sre.org/ghidra_${pkgver}_PUBLIC_$_date.zip
+  https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_${pkgver}_build/ghidra_${pkgver}_PUBLIC_$_date.zip
   ghidra.desktop
   ghidra.png::https://raw.githubusercontent.com/NationalSecurityAgency/ghidra/Ghidra_${pkgver}_build/Ghidra/Framework/Generic/src/main/resources/images/GhidraIcon256.png
   https://raw.githubusercontent.com/NationalSecurityAgency/ghidra/Ghidra_${pkgver}_build/LICENSE
 )
-sha256sums=('9019c78f8b38d68fd40908b040466974a370e26ba51b2aaeafc744171040f714'
+sha256sums=('aaf84d14fb059beda10de9056e013186601962b6f87cd31161aaac57698a0f11'
             'e4855b100fbe6b60f868cd74828d0b4ff4eda1ea0a097d3b45fcc034f77cc07f'
             '0e53f1b091046809c0f393326cadc69c27b1d574254e1094beedb312d09aa9c9'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
