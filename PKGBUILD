@@ -3,7 +3,7 @@
 pkgname=shelf-bin
 _pkgver=0.5.0
 pkgver=v${_pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="A Good Symlinks Manager"
 arch=('x86_64' 'armv6' 'armv7' 'aarch64')
 url="https://github.com/iamd3vil/shelf"
