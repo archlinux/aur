@@ -13,11 +13,11 @@ sha256sums=('55201c347a95a6df7600d988cc3ab71323f5eef627a1a3e9808ed2212c5a0987')
 
 package() {
     mkdir -p "${pkgdir}/usr/bin"
-    mkdir -p"${pkgdir}/usr/share/java/${pkgname}/bin"
-    mkdir -p"${pkgdir}/usr/share/java/${pkgname}/conf"
-    mkdir -p"${pkgdir}/usr/share/java/${pkgname}/mvn/bin"
-    mkdir -p"${pkgdir}/usr/share/java/${pkgname}/mvn/lib/ext"
-    mkdir -p"${pkgdir}/usr/share/java/${pkgname}/mvn/conf/logging"
+    mkdir -p "${pkgdir}/usr/share/java/${pkgname}/bin"
+    mkdir -p "${pkgdir}/usr/share/java/${pkgname}/conf"
+    mkdir -p "${pkgdir}/usr/share/java/${pkgname}/mvn/bin"
+    mkdir -p "${pkgdir}/usr/share/java/${pkgname}/mvn/lib/ext"
+    mkdir -p "${pkgdir}/usr/share/java/${pkgname}/mvn/conf/logging"
 
     cd "${srcdir}"
 
