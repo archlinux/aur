@@ -37,7 +37,6 @@ build() {
 }
 
 package() {
-  cd build
-  install -Dm755 bin/gdrive "$pkgdir/usr/bin/gdrive"
+  install -Dm755 build/bin/gdrive -t "$pkgdir/usr/bin"
 }
 
