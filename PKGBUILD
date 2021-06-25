@@ -2,7 +2,7 @@
 # Maintainer: Maël <alemswaj+tutanota+com>
 
 pkgname=hypnotix-wayland
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 pkgdesc="An IPTV streaming application. (With Wayland support). It's the package from the linux mint's github modified to work with wayland as it's whrote on the hypnotix's github repository. IT WORK GREAT EVEN IF YOU USE X11"
 arch=(any)
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(dconf hicolor-icon-theme python-cairo python-imdbpy python-requests python-setproctitle mpv xapp)
 conflicts=(hypnotix hypnotix-git)
 source=(https://codeload.github.com/linuxmint/hypnotix/tar.gz/refs/tags/${pkgver})
-sha256sums=('9a552d6dd1b27f2203e5e6d54578c444bda98ef58d036cbb2016a1672ec059a0')
+sha256sums=('e68cae34397803ca36052f61b5c5993ff91cc47a7e3a93c55e8b01224c61354f')
 prepare() {
 	cd hypnotix-$pkgver
 	sed -i "s/__DEB_VERSION__/$pkgver/g" usr/lib/hypnotix/hypnotix.py
