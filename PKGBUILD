@@ -2,7 +2,7 @@
 # Maintainer: Pavel Sevecek <sevecek at sirrah.troja.mff.cuni.cz>
 
 pkgname=opensph
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="Smoothed particle hydrodynamics library and visualization tools."
 arch=('i686' 'x86_64')
@@ -11,7 +11,8 @@ license=('MIT')
 depends=('wxgtk2' 
          'intel-tbb'
          'eigen'
-         'hdf5')
+         'hdf5'
+         'chaiscript')
 makedepends=('gcc>=7.0.0' 
              'qt5-base')
 source=("git+https://gitlab.com/sevecekp/sph.git")
@@ -29,6 +30,7 @@ build() {
           CONFIG+=use_tbb \
           CONFIG+=use_eigen \
           CONFIG+=use_hdf5 \
+          CONFIG+=use_chaiscript \
           DEFINES+="SPH_VERSION=${pkgver}-${pkgrel}" \
           -spec linux-g++ ${srcdir}/sph/sph.pro
     make
