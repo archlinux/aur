@@ -1,6 +1,6 @@
 pkgbase = ghidra-gekko-broadway-lang-git
 	pkgdesc = Ghidra language definition for GameCube/Wii
-	pkgver = r19.g2c1ee66
+	pkgver = r22.g7257b32
 	pkgrel = 1
 	url = https://github.com/encounter/ghidra-gekko-broadway-lang
 	arch = any
@@ -12,4 +12,3 @@ pkgbase = ghidra-gekko-broadway-lang-git
 	sha512sums = SKIP
 
 pkgname = ghidra-gekko-broadway-lang-git
-

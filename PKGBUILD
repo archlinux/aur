@@ -2,7 +2,7 @@
 
 _pkgname=ghidra-gekko-broadway-lang
 pkgname=ghidra-gekko-broadway-lang-git
-pkgver=r19.g2c1ee66
+pkgver=r22.g7257b32
 pkgrel=1
 pkgdesc="Ghidra language definition for GameCube/Wii"
 url=https://github.com/encounter/${_pkgname}
