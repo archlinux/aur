@@ -11,8 +11,7 @@ pkgbase = img2sdat-git
 	conflicts = img2sdat
 	source = img2sdat-git::git+https://github.com/xpirt/img2sdat.git
 	source = img2sdat.sh
-	md5sums = SKIP
-	md5sums = c4854eebbd20f489f6024678c9bb5db2
+	sha256sums = SKIP
+	sha256sums = 8452916580ddc7e18f814f448db4973d5f3722ee21f1938284fceb52df0b661e
 
 pkgname = img2sdat-git
-

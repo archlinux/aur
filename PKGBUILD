@@ -13,8 +13,8 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 source=($pkgname::git+https://github.com/xpirt/img2sdat.git
         img2sdat.sh)
-md5sums=('SKIP'
-         'c4854eebbd20f489f6024678c9bb5db2')
+sha256sums=('SKIP'
+            '8452916580ddc7e18f814f448db4973d5f3722ee21f1938284fceb52df0b661e')
 
 pkgver() {
   cd $pkgname
@@ -23,9 +23,6 @@ pkgver() {
 
 package() {
   install -Dm755 img2sdat.sh "$pkgdir/usr/bin/img2sdat"
-
-  cd $pkgname
-  install -dm755 "$pkgdir/usr/share/${pkgname%-git}"
-  install -Dm755 *.py "$pkgdir/usr/share/${pkgname%-git}"
+  install -Dm755 $pkgname/*.py -t "$pkgdir/usr/share/${pkgname%-git}"
 }
 
