@@ -36,7 +36,7 @@ build() {
 
 package() {
   cd $pkgname
-  install -Dm644 scalpel.conf "$pkgdir/etc/scalpel/scalpel.conf"
+  install -Dm644 scalpel.conf -t "$pkgdir/etc/scalpel"
   make DESTDIR="$pkgdir" install
 }
 
