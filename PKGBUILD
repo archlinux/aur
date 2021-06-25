@@ -2,41 +2,31 @@
 
 _pkgname=btor2tools
 pkgname=btor2tools-git
-pkgver=r77.9831f99
+pkgver=r79.6ba194b
 pkgrel=1
 pkgdesc="A generic parser and tool package for the BTOR2 format."
-arch=('any')
+arch=('x86_64')
 url="https://github.com/Boolector/btor2tools"
 license=('MIT')
-depends=()
-makedepends=()
-conflicts=()
+depends=('gcc-libs')
+makedepends=('git' 'cmake')
+provides=("$_pkgname")
 source=("git://github.com/Boolector/btor2tools.git")
 sha256sums=('SKIP')
-sha512sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd $srcdir
-}
-
 build() {
-  cd "$srcdir/btor2tools"
-  CFLAGS="" ./configure.sh
-  cd build
-  make
+  cmake -B build -S "$_pkgname" \
+    -DCMAKE_INSTALL_PREFIX='/usr'
+
+  make -C build
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/bin/"
-  mkdir -p "$pkgdir/usr/lib/"
-  mkdir -p "$pkgdir/usr/include/btor2parser"
-
-  install -m755 btor2tools/build/bin/* "$pkgdir/usr/bin/"
-  install -m755 btor2tools/build/lib/*.so "$pkgdir/usr/lib/"
-  install -m755 btor2tools/src/btor2parser/btor2parser.h  "$pkgdir/usr/include/btor2parser"
+  make -C build DESTDIR="$pkgdir" install
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$_pkgname/LICENSE.txt"
 }
