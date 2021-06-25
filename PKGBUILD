@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=wordpress-plugin-breeze
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Cache plugin with extensive options to speed up your website"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('wordpress')
 makedepends=()
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://downloads.wordpress.org/plugin/breeze.${pkgver}.zip")
-sha512sums=('d73a0da483227b840e2bde3a10c9ef4704cf645cbc68d0d03f48deadda696533623926250d53ab9e441fcece0f5e3cff6f81e464a14a5d559a8bfb5d48a5c53a')
+sha512sums=('2c165d69a965b01797bb7657d4ad40b8e07f54113920ac34f1433d053910ff05e8ba698f0da0f19c2aefd91eb8867eac51c2b62d1d8b54cb1c06955ab03cdfb2')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/wordpress/wp-content/plugins"

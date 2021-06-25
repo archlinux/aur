@@ -1,14 +1,13 @@
 pkgbase = wordpress-plugin-breeze
 	pkgdesc = Cache plugin with extensive options to speed up your website
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://wordpress.org/plugins/breeze
 	arch = any
 	license = GPL2
 	depends = wordpress
 	options = !strip
-	source = wordpress-plugin-breeze-1.2.1.tar.gz::https://downloads.wordpress.org/plugin/breeze.1.2.1.zip
-	sha512sums = d73a0da483227b840e2bde3a10c9ef4704cf645cbc68d0d03f48deadda696533623926250d53ab9e441fcece0f5e3cff6f81e464a14a5d559a8bfb5d48a5c53a
+	source = wordpress-plugin-breeze-1.2.2.tar.gz::https://downloads.wordpress.org/plugin/breeze.1.2.2.zip
+	sha512sums = 2c165d69a965b01797bb7657d4ad40b8e07f54113920ac34f1433d053910ff05e8ba698f0da0f19c2aefd91eb8867eac51c2b62d1d8b54cb1c06955ab03cdfb2
 
 pkgname = wordpress-plugin-breeze
-
