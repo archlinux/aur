@@ -1,6 +1,6 @@
 pkgbase = kdenlive-git
 	pkgdesc = A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (Latest Applications GIT Version)
-	pkgver = 21.07.70.r14404
+	pkgver = 21.07.70.r14543
 	pkgrel = 1
 	url = http://www.kdenlive.org/
 	install = kdenlive-git.install
@@ -16,8 +16,10 @@ pkgbase = kdenlive-git
 	depends = kfilemetadata
 	depends = knewstuff
 	depends = knotifyconfig
-	depends = mlt6
+	depends = mlt
 	depends = hicolor-icon-theme
+	depends = purpose
+	depends = qt5-networkauth
 	optdepends = ffmpeg: for FFmpeg plugin
 	optdepends = cdrkit: for creation of DVD ISO images
 	optdepends = dvdauthor: for creation of DVD
@@ -33,4 +35,3 @@ pkgbase = kdenlive-git
 	sha1sums = SKIP
 
 pkgname = kdenlive-git
-
