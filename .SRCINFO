@@ -1,0 +1,11 @@
+pkgbase = vboxmanage-bash-completion
+	pkgdesc = VBoxManage bash completion script
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = BSD
+	depends = bash
+	source = git+https://github.com/gryf/vboxmanage-bash-completion
+	sha512sums = SKIP
+
+pkgname = vboxmanage-bash-completion
