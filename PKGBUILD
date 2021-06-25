@@ -14,8 +14,8 @@ license=('BSD')
 source=(http://ftp.debian.org/debian/pool/main/x/xtail/xtail_$_pkgver.orig.tar.gz
         http://ftp.debian.org/debian/pool/main/x/xtail/xtail_$_pkgver_diff.diff.gz)
 #noextract=(xtail_$_pkgver_diff.diff.gz)
-md5sums=('2e4717c591a2cbbd4aeb63d00c87a0cb'
-         '227635b3097771214e4ed5c97b698ff2')
+sha256sums=('75184926dffd89e9405769b24f01c8ed3b25d3c4a8eac60271fc5bb11f6c2d53'
+            'eb59ff51c5a595e306c28a98c09af3eb8176a0ff891a385107e8a489a2fe5196')
 
 prepare() {
   # Workaround: *.diff.gz file is not extracted
@@ -37,10 +37,8 @@ build() {
 package() {
   cd $pkgname-$_pkgver
 
-  install -dm755 "$pkgdir/usr/share/man/man1"
-  install -Dm644 xtail.1 "$pkgdir/usr/share/man/man1/xtail.1"
-
-  install -Dm755 xtail $pkgdir/usr/bin/xtail
-  install -Dm644 README $pkgdir/usr/share/doc/$pkgname/README
+  install -Dm644 README -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 xtail.1 -t "$pkgdir/usr/share/man/man1"
+  install -Dm755 xtail -t "$pkgdir/usr/bin"
 }
 
