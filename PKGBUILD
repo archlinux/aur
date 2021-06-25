@@ -14,7 +14,6 @@ depends=('gcc-libs'
 makedepends=('zlib' 'unzip' 'net-tools' 'python' 'git')
 backup=(etc/srs/srs.conf)
 options=('docs')
-backup=('usr/conf/srs.conf')
 source=("git+https://github.com/ossrs/srs/#commit=3809d43ee5a721f25d4d3ca985dfffd306d22166"
         "archlinux.patch")
 sha256sums=('SKIP'
