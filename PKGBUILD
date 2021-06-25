@@ -1,6 +1,6 @@
 pkgname=website-stalker-bin
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Track changes on websites via git"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/EdJoPaTo/${pkgname/-bin/}"
@@ -29,9 +29,9 @@ package() {
   install -Dm644 "completions/_${pkgname/-bin/}" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname/-bin/}"
 
   # migrate all /usr/local/lib thingies to /usr/lib
-  sed -i "s/\/local\//\//g" systemd/**/*
+  sed -i "s#/local/#/#g" systemd/**/*
   # Set the executable path
-  sed -i "s/ExecStart=.*${pkgname/-bin/}/ExecStart=\/usr\/bin\/${pkgname/-bin/}/g" systemd/**/*.service
+  sed -i "s#^ExecStart=.*${pkgname/-bin/}#ExecStart=/usr/bin/${pkgname/-bin/}#g" systemd/**/*.service
 
   install -Dm644 "systemd/system/systemd.service" "${pkgdir}/usr/lib/systemd/system/${pkgname/-bin/}.service"
   install -Dm644 "systemd/system/systemd.timer" "${pkgdir}/usr/lib/systemd/system/${pkgname/-bin/}.timer"
