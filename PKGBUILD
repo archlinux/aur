@@ -7,7 +7,7 @@ pkgver=0.3.0.r3.g4376b24
 pkgrel=1
 arch=(any)
 license=(GPL3)
-depends=(osu-mime desktop-file-utils)
+depends=(osu-mime glib2)
 makedepends=(meson)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
