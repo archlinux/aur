@@ -5,20 +5,18 @@ pkgname=rubix
 pkgver=1.0.6
 pkgrel=3
 pkgdesc="Rubik's cube program"
-arch=('i686' 'x86_64')
-url="http://sed.free.fr/rubix/"
+arch=('x86_64')
+url="http://sed.free.fr/rubix"
 license=('custom:Public Domain')
 depends=('libx11')
-source=("http://sed.free.fr/rubix/$pkgname-$pkgver.tar.bz2")
-md5sums=("76346b49b67dd7ade0f69b4ae77e3f3a")
+source=($url/$pkgname-$pkgver.tar.bz2)
+sha256sums=('ccff4c98373f76c6bab751f5f5a60df7ad8691c79b56157e4aba2dd76f501a87')
 
 build() {
-  cd $pkgname-$pkgver
-  make
+  make -C $pkgname-$pkgver
 }
 
 package() {
-  cd $pkgname-$pkgver
-  install -Dm755 rubix "$pkgdir/usr/bin/rubix"
+  install -Dm755 $pkgname-$pkgver/rubix "$pkgdir/usr/bin/rubix"
 }
 
