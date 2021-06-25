@@ -27,7 +27,7 @@ build() {
 }
 
 package() {
-  install -Dm644 qeven.desktop "$pkgdir/usr/share/applications/qeven.desktop"
+  install -Dm644 qeven.desktop -t "$pkgdir/usr/share/applications"
 
   cd ${pkgname}_$pkgver
 
