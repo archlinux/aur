@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota.com>
 # Contributor: spsf64 <at g m a i l  dot com>
 pkgname=webapp-manager
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="Run websites as if they were apps"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-beautifulsoup4' 'python-configobj' 'python-gobject' 'python-pil
 makedepends=('git')
 conflicts=('ice-ssb' 'ice-dev')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('33d2249b7ea445c98e7caee8092c977ff4cffb3c935440ee5ce5e6d3faa20193')
+sha256sums=('05c88d7007d5de77d0dda37eb7772a80f72b0421f8140c73ffa457c841c5132b')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
