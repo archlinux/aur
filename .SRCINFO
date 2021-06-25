@@ -1,0 +1,16 @@
+pkgbase = lesbar-git
+	pkgdesc = Markup language for status bars
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://git.sr.ht/~salmiak/lesbar
+	arch = x86_64
+	license = MIT
+	makedepends = scdoc
+	depends = cairo
+	depends = glib2
+	depends = pango
+	depends = libx11
+	source = git+https://git.sr.ht/~salmiak/lesbar
+	md5sums = SKIP
+
+pkgname = lesbar-git
