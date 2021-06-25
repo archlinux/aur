@@ -1,5 +1,5 @@
 pkgname=rvxx-amp
-pkgver=$(date +%Y%m%d)
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="RVXX Aggressive Guitar Amplifier (VST Plugin)"
 arch=('x86_64')
