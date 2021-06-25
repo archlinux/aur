@@ -1,7 +1,7 @@
 pkgbase = timestamp
 	pkgdesc = Prefix each line with a date/time stamp
 	pkgver = 0.3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kseistrup/timestamp
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = timestamp
 	optdepends = scdoc: for recompiling manual pages
 	source = https://github.com/kseistrup/timestamp/releases/download/v0.3.2/timestamp-0.3.2.tar.xz
 	md5sums = 35e4f67b3f0de337354df63b5ef5be6f
+	sha1sums = a55dec778dc06f642539f6c6cb2145c0d2f00509
 	sha256sums = 141fe4f566011e681959e5f6a512991b6c630abe79d69800ed77db82490a7e77
+	sha512sums = b9222807ac17f9d65b6181feb72ccdc13dba3880c9b03c495fba6f724aa7842e2c39c394b7f178b9f2b7dc5bb32f062cedf1a51cb59af7fd2915de4d3793d56d
+	b2sums = 495f3f66e2ae6d07e042d45f1479b0adbc214964304e27ea282db15ca8bcce9e9dd1a8ac099f61964598035a7f162da5cca8ad6c041e1a63acc9c50c9475391c
 
 pkgname = timestamp
-
