@@ -1,0 +1,11 @@
+pkgbase = arweave-deploy-bin
+	pkgdesc = Arweave-deploy binary with bundled nodejs
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/ArweaveTeam/arweave-deploy
+	arch = x86_64
+	options = !strip
+	source = https://github.com/ArweaveTeam/arweave-deploy/raw/v1.9.0/dist/linux/arweave
+	md5sums = 1089ad4117f571176cd9bcb433f84b55
+
+pkgname = arweave-deploy-bin
