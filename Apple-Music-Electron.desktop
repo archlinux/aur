@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Name=Apple Music
+Comment=Electron wrapper for Apple Music
+GenericName=Apple Music
+Exec=Apple-Music-Electron
+Icon=Apple-Music-Electron
+Categories=AudioVideo;Audio;
+Terminal=false
+StartupNotify=true
+Version=2.0.0
