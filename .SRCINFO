@@ -1,6 +1,6 @@
 pkgbase = swarm-bee
 	pkgdesc = Swarm client implemented in Go, basic building block for Swarm Network
-	pkgver = 0.6.2
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://swarm.ethereum.org/
 	install = swarm-bee.install
@@ -15,8 +15,7 @@ pkgbase = swarm-bee
 	options = !buildflags
 	options = !makeflags
 	backup = etc/bee/bee.yaml
-	source = git+https://github.com/ethersphere/bee.git#tag=v0.6.2
+	source = git+https://github.com/ethersphere/bee.git#tag=v1.0.0
 	sha512sums = SKIP
 
 pkgname = swarm-bee
-

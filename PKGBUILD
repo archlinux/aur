@@ -1,7 +1,7 @@
 # Maintainer: MFW78 <mfw78@chasingseed.com>
 
 pkgname=swarm-bee
-pkgver=0.6.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Swarm client implemented in Go, basic building block for Swarm Network'
 arch=('x86_64')
