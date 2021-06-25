@@ -4,13 +4,13 @@
 
 pkgname=fastdup
 pkgver=0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to quickly find identical files within directory trees"
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/fastdup/"
+url="https://sourceforge.net/projects/fastdup/"
 license=('GPL3')
 depends=('gcc-libs')
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2)
+source=(https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2)
 sha256sums=('b7457826bd472768730cceebca722fd3d780d7b73c5f365d60727f59bdf47ac1')
 
 build() {
