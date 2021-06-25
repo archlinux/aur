@@ -11,30 +11,13 @@ depends=('boost-libs' 'libunwind' 'openssl' 'readline' 'zeromq' 'pcsclite' 'hida
 makedepends=('git' 'cmake' 'boost')
 source=(
     "${pkgname}"::"git+https://git.wownero.com/wownero/wownero.git#branch=dev-v0.10"
-    "git+https://github.com/monero-project/unbound.git"
-    "git+https://github.com/monero-project/supercop.git"
-    "git+https://github.com/monero-project/miniupnp.git"
-    "git+https://github.com/Tencent/rapidjson.git"
-    "git+https://git.wownero.com/wownero/RandomWOW.git#branch=1.1.9-wow"
     monero-boost1.76.patch::https://github.com/selsta/monero/commit/c28d2f7c.patch)
 sha512sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP')
 
 prepare() {
   cd "${pkgname}"
-  git submodule init
-  git config submodule.external/unbound.url "$srcdir/unbound"
-  git config submodule.external/supercop.url "$srcdir/supercop"
-  git config submodule.external/miniupnp.url "$srcdir/miniupnp"
-  git config submodule.external/rapidjson.url "$srcdir/rapidjson"
-  git config submodule.external/RandomWOW.url "$srcdir/RandomWOW"
-  git submodule update
-
+  git submodule update --init --recursive
   patch -p1 < ../monero-boost1.76.patch # Fix build with boost 1.76
 }
 

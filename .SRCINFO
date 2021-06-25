@@ -19,17 +19,7 @@ pkgbase = wownero-git
         depends = libusb
         depends = libudev.so
         source = wownero::git+https://git.wownero.com/wownero/wownero.git#branch=dev-v0.10
-        source = git+https://github.com/monero-project/unbound.git
-        source = git+https://github.com/monero-project/supercop.git
-        source = git+https://github.com/monero-project/miniupnp.git
-        source = git+https://github.com/Tencent/rapidjson.git
-        source = git+https://git.wownero.com/wownero/RandomWOW.git#branch=1.1.9-wow
         source = monero-boost1.76.patch::https://github.com/selsta/monero/commit/c28d2f7c.patch
-        sha512sums = SKIP
-        sha512sums = SKIP
-        sha512sums = SKIP
-        sha512sums = SKIP
-        sha512sums = SKIP
         sha512sums = SKIP
         sha512sums = SKIP
 
