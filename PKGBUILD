@@ -4,8 +4,8 @@
 
 pkgname=git-delta
 _name="${pkgname#*-}"
-pkgver=0.8.0
-pkgrel=3
+pkgver=0.8.1
+pkgrel=1
 
 pkgdesc='A syntax-highlighting pager for git and diff output'
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -17,7 +17,7 @@ depends=('git' 'libgit2')
 
 backup=("etc/gitconfig.$_name")
 source=("$pkgname-$pkgver.tgz::$url/archive/$pkgver.tar.gz")
-sha256sums=('706b55667de221b651b0d938dfbb468112b322ed41a634d3ca5c8bd861b19e8a')
+sha256sums=('e478acf90c1125af0cfcb055c1e2b358080d192fbf83cf5ddfa40241830ab826')
 
 # lto fails, ref: https://aur.archlinux.org/packages/git-delta/#comment-811625
 options=('!lto')
