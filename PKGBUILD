@@ -5,14 +5,14 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 _pkgname='ferdi'
 pkgname="$_pkgname-git"
-pkgver='5.6.0.beta.5.r311.g1dc20272'
+pkgver='5.6.0.beta.5.r331.gaedcfcdf'
 pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$_pkgname.com"
 license=('Apache')
 depends=('electron' 'libxkbfile')
-makedepends=('git' 'nodejs-lts-fermium' 'npm6' 'python' 'python2')
+makedepends=('git' 'nodejs' 'npm6' 'python' 'python2')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
@@ -20,11 +20,13 @@ source=(
 	"$pkgname-recipes::git+https://github.com/get$_pkgname/recipes"
 	"$pkgname-internal-server::git+https://github.com/get$_pkgname/internal-server"
 	'fix-autostart-path.diff'
+	'gulp-sass-update.diff'
 )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            '36c9e0f631f3164f192cfcef294b9411509d8536a8b7e5fdb31b6d118a7b433e')
+            '36c9e0f631f3164f192cfcef294b9411509d8536a8b7e5fdb31b6d118a7b433e'
+            '20be35a9fcc5feeaaa5497f8381958b11d4bf94f3e98b44f39743c1ad7adfa93')
 
 _sourcedirectory="$pkgname"
 _homedirectory="$pkgname-home"
@@ -56,8 +58,12 @@ prepare() {
 	# Set system Electron version for ABI compatibility
 	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron/version')"'"|' 'package.json'
 
-	# Set node-sass version for node 16 compatibility (gulp-sass update still needed)
+	# Set system nodejs version for compatibility
+	sed -E -i 's|("node": ").*"|\1'"$(node --version | sed 's/^v//')"'"|' 'package.json'
+
+	# Set node-sass and gulp-sass versions for node 16 compatibility
 	sed -E -i 's|("node-sass": ").*"|\16.0.0"|' 'package.json'
+	sed -E -i 's|("gulp-sass": ").*"|\15.0.0"|' 'package.json'
 
 	# Prevent Ferdi from being launched in dev mode
 	sed -i "s|import isDevMode from 'electron-is-dev'|const isDevMode = false|g" 'src/index.js' 'src/config.js'
@@ -65,6 +71,9 @@ prepare() {
 
 	# Specify path for autostart file
 	patch --forward -p1 < '../fix-autostart-path.diff'
+
+	# Set a compiler for gulp-sass explicitly
+	patch --forward -p1 < '../gulp-sass-update.diff'
 
 	# Build recipe archives
 	cd "$srcdir/$_sourcedirectory/recipes/"
