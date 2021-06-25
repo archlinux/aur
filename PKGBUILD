@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p
-pkgver=20210613
+pkgver=20210623
 pkgrel=1
 pkgdesc='Mupen64Plus with custom plugins and Qt5 GUI'
 arch=('x86_64')
@@ -22,8 +22,8 @@ source=("git+https://github.com/loganmc10/m64p.git#tag=${_tag}"
         '040-m64p-add-pie.patch'
         'm64p.desktop')
 sha256sums=('SKIP'
-            '18cfd173f15de588285771b6159e69a07f6735d981b7326e8be52c3acce562b0'
-            'e774a0f25f951c5296a83f565384b3d788aa224537c4695e6712ae057d5a54a7'
+            'b8882d2b3cce965bd03b100fc53419ff43d8934c364136bbe63473fca0692fec'
+            'bd2964654f5c346af76a5408adc76d34bf490435c4400cfa1d2340f0ad598dcd'
             '4271db8d4a4c8a39373897562cf0429f20cd95d952ab8385c1b376451ea55096'
             '13879a08f76881c75597883c54917dbcd782ed0486050856043abaeff8ec86db'
             '8df4e8076d28a1bc44f41b0129a9935da9839e8a8cb9944206757e47da561808')
@@ -58,12 +58,13 @@ package() {
     local _sover
     for _component in core audio-sdl2 input-raphnetraw
     do
-        make -C "m64p/mupen64plus-${_component}/projects/unix" DESTDIR="$pkgdir" PREFIX='/usr' LDCONFIG='true' OSD='0' install
+        make -C "m64p/mupen64plus-${_component}/projects/unix" DESTDIR="$pkgdir" PREFIX='/usr' LDCONFIG='true' NEW_DYNAREC='1' NETPLAY='1' OSD='0' install
     done
     _sover="$(find "${pkgdir}/usr/lib" -type f -name 'libmupen64plus.so.*.*.*' | sed 's/^.*\.so\.//')"
     ln -s "libmupen64plus.so.${_sover}" "${pkgdir}/usr/lib/libmupen64plus.so"
     
     # other plugins and components
     install -D -m644 m64p/mupen64plus/libdiscord_game_sdk.so -t "${pkgdir}/usr/lib"
+    install -D -m644 m64p/mupen64plus-input-qt/vosk/libvosk.so -t "${pkgdir}/usr/lib/mupen64plus"
     install -D -m644 m64p/mupen64plus/mupen64plus-{input-qt,{rsp,video}-parallel}.so -t "${pkgdir}/usr/lib/mupen64plus"
 }

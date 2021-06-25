@@ -1,15 +1,6 @@
 --- a/build.sh
 +++ b/build.sh
-@@ -24,7 +24,7 @@ mkdir -p $install_dir
- base_dir=$PWD
- 
- cd $base_dir/mupen64plus-core/projects/unix
--make NETPLAY=1 OSD=0 NO_ASM=1 all
-+make NETPLAY=1 OSD=0 all
- cp -P $base_dir/mupen64plus-core/projects/unix/*$suffix* $install_dir
- cp $base_dir/mupen64plus-core/data/* $install_dir
- 
-@@ -75,9 +75,9 @@ fi
+@@ -77,9 +77,9 @@ fi
  mkdir -p $base_dir/parallel-rsp/build
  cd $base_dir/parallel-rsp/build
  if [[ $UNAME == *"MINGW"* ]]; then
@@ -21,7 +12,7 @@
  fi
  cmake --build .
  cp mupen64plus-rsp-parallel.* $install_dir
-@@ -85,9 +85,9 @@ cp mupen64plus-rsp-parallel.* $install_dir
+@@ -87,9 +87,9 @@ cp mupen64plus-rsp-parallel.* $install_dir
  mkdir -p $base_dir/parallel-rdp-standalone/build
  cd $base_dir/parallel-rdp-standalone/build
  if [[ $UNAME == *"MINGW"* ]]; then

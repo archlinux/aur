@@ -1,6 +1,6 @@
 pkgbase = m64p
 	pkgdesc = Mupen64Plus with custom plugins and Qt5 GUI
-	pkgver = 20210613
+	pkgver = 20210623
 	pkgrel = 1
 	url = https://m64p.github.io/
 	arch = x86_64
@@ -27,15 +27,15 @@ pkgbase = m64p
 	provides = mupen64plus-gui
 	conflicts = mupen64plus-gui
 	conflicts = mupen64plus
-	source = git+https://github.com/loganmc10/m64p.git#tag=v2021.6.13
+	source = git+https://github.com/loganmc10/m64p.git#tag=v2021.6.23
 	source = 010-m64p-remove-build-jobs-limitation.patch
 	source = 020-m64p-change-optimizations.patch
 	source = 030-m64p-fix-paths.patch
 	source = 040-m64p-add-pie.patch
 	source = m64p.desktop
 	sha256sums = SKIP
-	sha256sums = 18cfd173f15de588285771b6159e69a07f6735d981b7326e8be52c3acce562b0
-	sha256sums = e774a0f25f951c5296a83f565384b3d788aa224537c4695e6712ae057d5a54a7
+	sha256sums = b8882d2b3cce965bd03b100fc53419ff43d8934c364136bbe63473fca0692fec
+	sha256sums = bd2964654f5c346af76a5408adc76d34bf490435c4400cfa1d2340f0ad598dcd
 	sha256sums = 4271db8d4a4c8a39373897562cf0429f20cd95d952ab8385c1b376451ea55096
 	sha256sums = 13879a08f76881c75597883c54917dbcd782ed0486050856043abaeff8ec86db
 	sha256sums = 8df4e8076d28a1bc44f41b0129a9935da9839e8a8cb9944206757e47da561808
