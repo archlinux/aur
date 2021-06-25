@@ -1,6 +1,6 @@
 pkgbase = hyperion.ng-git
 	pkgdesc = The reworked version (next generation) of Hyperion, ambient light software - PRE ALPHA
-	pkgver = r2188.36385acc
+	pkgver = r2263.6d004240
 	pkgrel = 1
 	url = https://github.com/hyperion-project/hyperion.ng
 	arch = i686
@@ -18,6 +18,7 @@ pkgbase = hyperion.ng-git
 	depends = qt5-serialport
 	depends = qt5-x11extras
 	depends = avahi
+	depends = mbedtls
 	optdepends = xorg-server: X11 grabbing
 	provides = hyperion
 	conflicts = hyperion
