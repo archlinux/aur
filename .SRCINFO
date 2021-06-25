@@ -1,8 +1,8 @@
 pkgbase = minetest-git-leveldb
 	pkgdesc = Voxel-based sandbox game engine (Git version with LevelDB support)
-	pkgver = 20210612.dc165fe94
+	pkgver = 5.4.0.r236.g63fc728a8
 	pkgrel = 1
-	url = http://www.minetest.net/
+	url = https://www.minetest.net/
 	install = install
 	arch = i686
 	arch = x86_64
@@ -31,12 +31,11 @@ pkgbase = minetest-git-leveldb
 	conflicts = minetest
 	conflicts = minetest-common
 	conflicts = minetest-server
-	source = git://github.com/minetest/minetest.git
-	source = git://github.com/minetest/minetest_game.git
-	source = git://github.com/minetest/irrlicht.git
+	source = git+https://github.com/minetest/minetest.git
+	source = git+https://github.com/minetest/minetest_game.git
+	source = git+https://github.com/minetest/irrlicht.git
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
 
 pkgname = minetest-git-leveldb
-
