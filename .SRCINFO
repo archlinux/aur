@@ -1,0 +1,29 @@
+pkgbase = twitz
+	pkgdesc = A GTK Twitch client for Linux (under development)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/mirkobrombin/Twitz
+	arch = any
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = hicolor-icon-theme
+	depends = dconf
+	depends = python
+	depends = libhandy
+	depends = gtk3
+	depends = python-gobject
+	depends = python-mpv
+	depends = python-opengl
+	depends = webkit2gtk
+	depends = youtube-dl
+	depends = gst-plugins-good
+	depends = gst-plugins-base
+	depends = gst-libav
+	source = twiz-1.1.0.tar.gz::https://github.com/mirkobrombin/Twitz/archive/1.1.0.tar.gz
+	sha256sums = c39f74e082a6bfcabc363914cf68130bb0e49a68725c024baa5e8297d9fd4467
+
+
+pkgname = twitz
+
+
