@@ -14,9 +14,6 @@ conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
-# Keep downloaded dependencies inside srcdir
-GOFLAGS=-mod=vendor
-
 pkgver() {
   git -C $pkgname describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
@@ -28,16 +25,16 @@ prepare() {
 build() {
   cd $pkgname
 
-  # Keep downloaded dependencies inside srcdir
-  GOPATH="$srcdir/build"
-  mkdir -p "$GOPATH"
-  go mod vendor
-
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+  # Keep downloaded dependencies inside srcdir
+  export GOPATH="$srcdir/build"
+  mkdir -p "$GOPATH"
+  go mod vendor
 
   for cmd in nebula{,-cert,-service}; do
     go build -ldflags "-X main.Build=$pkgver" -o $cmd ./cmd/$cmd
