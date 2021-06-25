@@ -1,0 +1,149 @@
+diff --git a/src/mlmmj-make-ml.in b/src/mlmmj-make-ml.in
+index a6e10a3..e4ee4c6 100755
+--- a/src/mlmmj-make-ml.in
++++ b/src/mlmmj-make-ml.in
+@@ -1,9 +1,9 @@
+-#!/bin/sh
++#!/usr/bin/bash
+ #
+ # mlmmj-make-ml - henne@hennevogel.de
+ #
+ 
+-VERSION="0.1"
++VERSION="0.1-bash"
+ DEFAULTDIR="/var/spool/mlmmj"
+ ALIASFILE=/etc/aliases
+ 
+@@ -20,7 +20,7 @@ $0
+ 
+ while getopts ":hL:s:azc:" Option
+ do
+-case "$Option" in 
++case "$Option" in
+ 	h )
+ 	echo "$USAGE"
+ 	exit 0
+@@ -59,7 +59,7 @@ echo "Creating Directorys below $SPOOLDIR. Use '-s spooldir' to change"
+ 
+ if [ -z "$LISTNAME" ]; then
+ 	echo -n "What should the name of the Mailinglist be? [mlmmj-test] : "
+-	read LISTNAME
++	read -r LISTNAME
+ 	if [ -z "$LISTNAME" ]; then
+ 	LISTNAME="mlmmj-test"
+ 	fi
+@@ -67,32 +67,32 @@ fi
+ 
+ LISTDIR="$SPOOLDIR/$LISTNAME"
+ 
+-mkdir -p $LISTDIR
++mkdir -p "$LISTDIR"
+ 
+ for DIR in incoming queue queue/discarded archive text subconf unsubconf \
+ 	   bounce control moderation subscribers.d digesters.d requeue \
+ 	   nomailsubs.d
+ do
+-	mkdir "$LISTDIR"/"$DIR"
++	mkdir "$LISTDIR/$DIR"
+ done
+ 
+ test -f "$LISTDIR"/index || touch "$LISTDIR"/index
+ 
+ echo -n "The Domain for the List? [] : "
+-read FQDN
++read -r FQDN
+ if [ -z "$FQDN" ]; then
+-	FQDN=`domainname -f`
++	FQDN=$(domainname -f)
+ fi
+ 
+ echo -n "The emailaddress of the list owner? [postmaster] : "
+-read OWNER
++read -r OWNER
+ if [ -z "$OWNER" ]; then
+ 	OWNER="postmaster"
+ fi
+-echo "$OWNER" > "$LISTDIR"/"control/owner"
++echo "$OWNER" > "$LISTDIR/control/owner"
+ 
+ (
+-	cd "@textlibdir@"
++	cd "@textlibdir@" || exit 1
+ 	echo
+ 	echo "For the list texts you can choose between the following languages or"
+ 	echo "give a absolute path to a directory containing the texts."
+@@ -102,7 +102,7 @@ echo "$OWNER" > "$LISTDIR"/"control/owner"
+ 
+ 	TEXTPATHDEF=en
+ 	echo -n "The path to texts for the list? [$TEXTPATHDEF] : "
+-	read TEXTPATHIN
++	read -r TEXTPATHIN
+ 	if [ -z "$TEXTPATHIN" ] ; then
+ 		TEXTPATH="$TEXTPATHDEF"
+ 	else
+@@ -115,35 +115,35 @@ echo "$OWNER" > "$LISTDIR"/"control/owner"
+ 		echo "in the source distribution of mlmmj."
+ 		sleep 2
+ 	else
+-		cp "$TEXTPATH"/* "$LISTDIR"/"text"
++		cp "$TEXTPATH"/* "$LISTDIR/text"
+ 	fi
+ )
+ 
+ LISTADDRESS="$LISTNAME@$FQDN"
+-echo "$LISTADDRESS" > "$LISTDIR"/control/"listaddress"
++echo "$LISTADDRESS" > "$LISTDIR/control/listaddress"
+ 
+-MLMMJRECEIVE=`which mlmmj-receive 2>/dev/null`
++MLMMJRECEIVE=$(which mlmmj-receive 2>/dev/null)
+ if [ -z "$MLMMJRECEIVE" ]; then
+ 	MLMMJRECEIVE="/path/to/mlmmj-receive"
+ fi
+ 
+-MLMMJMAINTD=`which mlmmj-maintd 2>/dev/null`
++MLMMJMAINTD=$(which mlmmj-maintd 2>/dev/null)
+ if [ -z "$MLMMJMAINTD" ]; then
+ 	MLMMJMAINTD="/path/to/mlmmj-maintd"
+ fi
+ 
+ ALIAS="$LISTNAME:  \"|$MLMMJRECEIVE -L $SPOOLDIR/$LISTNAME/\""
+-CRONENTRY="0 */2 * * * \"$MLMMJMAINTD -F -L $SPOOLDIR/$LISTNAME/\""
++CRONENTRY="0 */2 * * * $MLMMJMAINTD -F -L $SPOOLDIR/$LISTNAME/"
+ 
+ if [ -n "$A_CREATE" ]; then
+ 	echo "I want to add the following to your $ALIASFILE file:"
+ 	echo "$ALIAS"
+ 
+ 	echo -n "is this ok? [y/N] : "
+-	read OKIDOKI
+-	case $OKIDOKI in
++	read -r OKIDOKI
++	case "$OKIDOKI" in
+ 		y|Y)
+-		echo "$ALIAS" >> $ALIASFILE
++		echo "$ALIAS" >> "$ALIASFILE"
+ 		;;
+ 		n|N)
+ 		exit 0
+@@ -160,10 +160,10 @@ fi
+ if [ "$DO_CHOWN" ] ; then
+ 	echo
+ 	echo -n "chown -R $CHOWN $SPOOLDIR/$LISTNAME? [y/n]: "
+-	read OKIDOKI
+-	case $OKIDOKI in
++	read -r OKIDOKI
++	case "$OKIDOKI" in
+ 		y|Y)
+-			chown -R $CHOWN $SPOOLDIR/$LISTNAME
++			chown -R "$CHOWN" "$SPOOLDIR/$LISTNAME"
+ 		;;
+ 		n|N)
+ 			exit 0
+@@ -181,6 +181,6 @@ echo "$CRONENTRY"
+ 
+ echo
+ echo " ** FINAL NOTES **
+-1) The mailinglist directory have to be owned by the user running the 
++1) The mailinglist directory have to be owned by the user running the
+ mailserver (i.e. starting the binaries to work the list)
+ 2) Run newaliases"
