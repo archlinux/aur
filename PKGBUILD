@@ -9,18 +9,13 @@ arch=('any')
 url="http://podget.sourceforge.net/"
 license=("GPL3")
 depends=('wget')
-source=(http://downloads.sourceforge.net/project/podget/podget/podget-$pkgver/podget-$pkgver.tar.gz)
-md5sums=('d16fb8d111d60420cd435e5f5d289304')
+source=(https://downloads.sourceforge.net/project/podget/podget/podget-$pkgver/podget-$pkgver.tar.gz)
+sha256sums=('54bc846583d06d93aeaf170e0f9ed854bf9a030ce3a6537d68908bb8d3f284d4')
 
 package() {
-  cd $pkgname-$pkgver
+  install -Dm644 $pkgname-$pkgver/README -t "$pkgdir/usr/share/$pkgname"
+  cp -a $pkgname-$pkgver/SCRIPTS/ "$pkgdir/usr/share/$pkgname/scripts/"
 
-  make prefix=/usr DESTDIR="$pkgdir" changelog.gz install
-
-  install -Dm644 README "$pkgdir/usr/share/$pkgname/README"
-
-  cp -r SCRIPTS/ "$pkgdir/usr/share/$pkgname/scripts/"
-  find "$pkgdir/usr/share/$pkgname/scripts/" -type d -exec chmod 755 '{}' \;
-  find "$pkgdir/usr/share/$pkgname/scripts/" -type f -exec chmod 644 '{}' \;
+  make -C $pkgname-$pkgver prefix=/usr DESTDIR="$pkgdir/" changelog.gz install
 }
 
