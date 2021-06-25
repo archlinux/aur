@@ -2,7 +2,7 @@
 # -*- mode: sh -*-
 
 pkgname=fuzzynote
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc='Terminal-based, CRDT-backed, local-first, collaborative note-taking'
 arch=('x86_64')
@@ -13,19 +13,19 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/Sambigeara/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 )
 md5sums=(
-  '011d4f2f0e2e9220b8d775522027d762'
+  '6ef7598f38c35151463633bddd507689'
 )
 sha1sums=(
-  '6ea731eb84f740e3e8a1f499a3ad35de873d8587'
+  '6d81fb2c2e62f6631f986755b7f0fc04826a1eab'
 )
 sha256sums=(
-  '9316971c28a0f777ade0ab149567e1a94fff844cb6583ce3805feefaa3f00b78'
+  '77abe6a9a1bbb3bfea1c315831eecc365dfd712731326f997813710684be32c1'
 )
 sha512sums=(
-  'd116bb53bf0fc6786153ab05acf956099506a0d198d2261b2f6bcb225561ab8a1d466408d1f2726c0bdd03c3a6d0fb9d49a016e4fdb20f7a440824161c090cc7'
+  'c587abbef65f39ddabd1d56a56879a43d6328a6fece5864ba02a0de3e95eae39d0d30460d32868910e1a7873ecc9231b69352771a1440f2f2242c204fa3890b7'
 )
 b2sums=(
-  'aa6e17bbed8b8da8dfc59b37a6202d2a9d65c9e6e682fef5778e0d1cf89d6d23e31308077ffa0c815ab8fc150f277fa75d3316f4f4a8559e865b1f61ce5e3a66'
+  '58b3c7133f695f35cded11abd791f265c9e46debf2ca81e2be9cd9732c3f31c242527346a6fb3a644940e587efd7c56a2cf24359f7bbb5a046be9760125b5a54'
 )
 
 build() {
@@ -36,9 +36,14 @@ build() {
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
-  export GOFLAGS='-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw'
 
-  make build
+  go build \
+    -buildmode=pie \
+    -trimpath \
+    -ldflags="-linkmode=external -X main.version=$pkgver" \
+    -mod=readonly \
+    -modcacherw \
+    -o bin/fzn ./cmd/term
 }
 
 package() {
