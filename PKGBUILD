@@ -1,7 +1,7 @@
-# Maintainer: Vyacheslav Konovalov <f4f7l1hvr@relay.firefox.com>
+# Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=notify-call
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A command-line tool to send desktop notifications and handle actions via D-Bus"
 arch=('x86_64')
@@ -10,16 +10,16 @@ license=('MIT')
 depends=('dbus')
 makedepends=('cargo')
 source=("https://github.com/crabvk/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('48759d3b526dcd654ab47760b100855b3f16d61232475dc7828140fbbb6467946d8b47e864d00eaee2786b6830f3f267d6c15848bf43d7329e759d47a03c48cb')
+sha512sums=('61df73a4110b702349008192c3317158a37d183bcd3975f6c2d8596f719c2dcea1d791f78c302a06c7b40677874688f4f1ee924cecffc3c3895c0e90418331fa')
 
 build() {
     cd "$pkgname-$pkgver"
-    cargo build --release --locked
+    cargo build --release --locked --target-dir=target
 }
 
 check() {
     cd "$pkgname-$pkgver"
-    cargo test --bins --release --locked
+    cargo test --bins --release --locked --target-dir=target
 }
 
 package() {
