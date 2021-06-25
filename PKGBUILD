@@ -32,6 +32,8 @@ build() {
 }
 
 package() {
+  install -Dm644 "${srcdir}"/srs/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
   cd "${srcdir}"/install
   install -d "${pkgdir}"/usr/bin "${pkgdir}"/etc/srs
   cp -r conf/. "${pkgdir}"/etc/srs
