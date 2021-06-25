@@ -8,46 +8,61 @@
 
 _pkgname=krita
 pkgname=${_pkgname}-git
-pkgver=4.3.0.prealpha.3252.ga899f2f428
-pkgrel=2
+pkgver=4.3.0.prealpha.6708.g97865cd60c
+pkgrel=1
 pkgdesc='A full-featured free digital painting studio. Git version.'
 arch=('x86_64')
 url='https://krita.org'
 license=('GPL3')
 
-depends=(kitemviews kitemmodels ki18n kcompletion karchive kguiaddons kcrash
-         qt5-svg qt5-multimedia quazip gsl libraw exiv2 openexr fftw curl
-         boost-libs giflib hicolor-icon-theme)
-makedepends=(git extra-cmake-modules kdoctools boost eigen vc poppler-qt5
-             opencolorio python-pyqt5 libheif sip python-sip)
-optdepends=('poppler-qt5: PDF filter' 'ffmpeg: to save animations'
-            'opencolorio: for the LUT docker' "krita-plugin-gmic: G'MIC plugin"
-            'python-pyqt5: for the Python plugins' 'libheif: HEIF filter')
+depends=(
+	kitemviews kitemmodels ki18n kcompletion karchive kguiaddons kcrash
+	qt5-svg qt5-multimedia quazip gsl libraw exiv2 openexr fftw giflib
+	openjpeg2 opencolorio1 hicolor-icon-theme
+)
+makedepends=(
+	git extra-cmake-modules kdoctools boost eigen vc poppler-qt5
+	python-pyqt5 libheif sip4 python-sip4 kseexpr
+)
+optdepends=(
+	'poppler-qt5: PDF filter'
+	'ffmpeg: to save animations'
+	"krita-plugin-gmic: G'MIC plugin"
+	'python-pyqt5: for the Python plugins'
+	'libheif: HEIF filter'
+	'kseexpr: SeExpr generator layer'
+	'kimageformats: PSD support'
+)
 provides=("${_pkgname}=${pkgver}")
 conflicts=(calligra-krita krita-il10n krita)
 
-source=("git+https://github.com/KDE/${_pkgname}.git")
-sha256sums=('SKIP')
+source=(
+	"git+https://github.com/KDE/${_pkgname}.git"
+	'https://raw.githubusercontent.com/archlinux/svntogit-packages/4877333d60835f6531cc990af955cedb39158893/trunk/krita-opencolorio1.patch'
+)
+sha256sums=(
+	'SKIP'
+	'2f892449e20abc370fe3dc8b5dd12f9964d1d402a909e775641e28685b1719b3'
+)
 
 pkgver() {
-	cd "${srcdir}"/${_pkgname}
+	cd ${_pkgname}
 	git describe --long --tags 2>/dev/null | sed -r 's/^v//;s/-/./g'
 }
 
 prepare() {
-	mkdir -p "${srcdir}"/build
+	patch -d ${_pkgname} -Np1 < krita-opencolorio1.patch
 }
 
 build() {
-	cd "${srcdir}"/build
-	cmake ../${_pkgname} \
+	cmake -B build -S ${_pkgname} \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
-		-DBUILD_TESTING=OFF
-	make
+		-DBUILD_TESTING=OFF \
+		-DBUILD_KRITA_QT_DESIGNER_PLUGINS=ON
+	cmake --build build --clean-first
 }
 
 package() {
-	cd "${srcdir}"/build
-	make DESTDIR="${pkgdir}" install
+	DESTDIR="${pkgdir}" cmake --install build
 }
