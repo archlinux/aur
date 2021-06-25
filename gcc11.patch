@@ -1,0 +1,22 @@
+diff -urN tracy.orig/server/tracy_robin_hood.h tracy/server/tracy_robin_hood.h
+--- tracy.orig/server/tracy_robin_hood.h	2021-06-25 11:50:17.760478231 +0200
++++ tracy/server/tracy_robin_hood.h	2021-06-25 11:51:24.333816162 +0200
+@@ -47,6 +47,7 @@
+ #include <string>
+ #include <type_traits>
+ #include <utility>
++#include <limits>
+ #if __cplusplus >= 201703L
+ #    include <string_view>
+ #endif
+diff -urN tracy.orig/server/TracySourceContents.hpp tracy/server/TracySourceContents.hpp
+--- tracy.orig/server/TracySourceContents.hpp	2021-06-25 11:50:17.757144897 +0200
++++ tracy/server/TracySourceContents.hpp	2021-06-25 11:51:03.617148063 +0200
+@@ -2,6 +2,7 @@
+ #define __TRACYSOURCECONTENTS_HPP__
+
+ #include <stdint.h>
++#include <stddef.h>
+ #include <vector>
+
+ #include "TracySourceTokenizer.hpp"
