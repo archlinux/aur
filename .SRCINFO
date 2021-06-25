@@ -1,13 +1,12 @@
 pkgbase = weakauras-companion-bin
 	pkgdesc = A cross-platform application built to provide the missing link between Wago.io and World of Warcraft. (This is a repackage of the official RPM package.)
-	pkgver = 3.2.2
+	pkgver = 3.3.3
 	pkgrel = 1
 	url = https://github.com/WeakAuras/WeakAuras-Companion
 	arch = x86_64
 	license = GPL2
 	depends = electron
-	source = https://github.com/WeakAuras/WeakAuras-Companion/releases/download/v3.2.2/weakauras-companion-3.2.2.x86_64.rpm
-	sha256sums = fecdb4fdf7c942bbe197eb1198d91e005ca1fc5fdbb0abbfa59b5bdf29ed6ea6
+	source = https://github.com/WeakAuras/WeakAuras-Companion/releases/download/v3.3.3/weakauras-companion-3.3.3.x86_64.rpm
+	sha256sums = d9e61e0bff6b1f91c2d3095a6b0f39df954f7bd8e108ecb38aebd01b717f4a35
 
 pkgname = weakauras-companion-bin
-
