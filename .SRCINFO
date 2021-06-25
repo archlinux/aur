@@ -10,7 +10,6 @@ pkgbase = tesseract-gui
 	depends = pygtk
 	depends = tesseract
 	source = https://downloads.sourceforge.net/project/tesseract-gui/tesseract-gui/tesseract-gui-2/tesseract-gui-2.9.tar.gz
-	md5sums = 71b9a1c7f493652939158f399f29a85c
+	sha256sums = 867c89e3750f820fa661ce0f8aa7a53e4f0a1d5545679e74f3bbf10bd7544ef6
 
 pkgname = tesseract-gui
-

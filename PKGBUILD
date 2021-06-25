@@ -12,18 +12,16 @@ license=('GPL3')
 depends=('imagemagick' 'pygtk' 'tesseract')
 install=$pkgname.install
 source=(https://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgname-${pkgver%%.*}/$pkgname-$pkgver.tar.gz)
-md5sums=('71b9a1c7f493652939158f399f29a85c')
+sha256sums=('867c89e3750f820fa661ce0f8aa7a53e4f0a1d5545679e74f3bbf10bd7544ef6')
 
 prepare() {
-  cd $pkgname-$pkgver
-  sed -i 's|#![ ]*/usr/bin/env python[ ]*$|#!/usr/bin/env python2|' bin/tesseract-gui.py
+  sed -i 's|#![ ]*/usr/bin/env python[ ]*$|#!/usr/bin/env python2|' $pkgname-$pkgver/bin/tesseract-gui.py
 }
 
 package() {
   install -d -m755 "$pkgdir/usr/"{bin,share/icons,share/applications}
 
-  cd $pkgname-$pkgver
-  make BASEDIR="$pkgdir/usr/" install
+  make -C $pkgname-$pkgver BASEDIR="$pkgdir/usr/" install
 
   # Rename
   mv "$pkgdir/usr/bin/"{tesseract-gui.py,$pkgname}
