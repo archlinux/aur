@@ -1,16 +1,16 @@
-# Maintainer: @codebite <codebite0 [at] gmail [dot] com>
+# Maintainer: CodeZ <navintiwari08@gmail.com>
 
 pkgname=hunchly
 pkgdesc='OSINT Software For Online Investigations'
 license=('Commercial')
 url='https://www.hunch.ly'
-pkgver=2.2.2
+pkgver=2.2.6
 pkgrel=1
 package=hunchly.deb
 depends=('gconf' 'libcanberra')
 arch=('i686' 'x86_64')
 source=( "${url}/installers/${package}" )
-md5sums=('cafcbcc9bda7657a9a5f6c00f961442a')
+md5sums=('SKIP')
 
 prepare() {
 	if [ ! -f /opt/google/chrome/extensions/amfnegileeghgikpggcebehdepknalbf.json ]; then

@@ -1,6 +1,6 @@
 pkgbase = hunchly
 	pkgdesc = OSINT Software For Online Investigations
-	pkgver = 2.2.2
+	pkgver = 2.2.6
 	pkgrel = 1
 	url = https://www.hunch.ly
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = hunchly
 	depends = gconf
 	depends = libcanberra
 	source = https://www.hunch.ly/installers/hunchly.deb
-	md5sums = cafcbcc9bda7657a9a5f6c00f961442a
+	md5sums = SKIP
 
 pkgname = hunchly
 
