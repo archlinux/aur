@@ -32,7 +32,7 @@ pkgver() {
 }
 
 package() {
-  install -Dm755 $pkgname/get_iplayer $pkgname/get_iplayer.cgi -t "$pkgdir/usr/bin"
+  install -Dm755 $pkgname/{get_iplayer,get_iplayer.cgi} -t "$pkgdir/usr/bin"
   install -Dm644 $pkgname/README.md -t "$pkgdir/usr/share/doc/get_iplayer"
   install -Dm644 $pkgname/get_iplayer.1 -t "$pkgdir/usr/share/man/man1"
 }
