@@ -1,11 +1,11 @@
 # Maintainer: Arley Henostroza <arllk10@gmail.com>
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 
-_svt_hevc_ver='ead6fdf7c9ff84511b42fc1658c1654b84d83e4b'
-_svt_vp9_ver='7951c3cf6773c5e0ede00e4ce3e3ad2f7e090cfb'
+_svt_hevc_ver='31014e960e599f0e7769b293ed44a3ed8d3c8543'
+_svt_vp9_ver='bd6dfde9e3c862c911bbb7f02118474b16abb5c5'
 
 pkgname=ffmpeg-intel-full-git
-pkgver=4.4.r99647.g2134667227
+pkgver=4.5.r102796.g81bad080cd
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for intel; git version) (based on dbermond package)'
 arch=('x86_64')
@@ -17,15 +17,15 @@ depends=(
         'bzip2' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls' 'ladspa' 'libass' 'aom'
         'aribb24' 'libbluray' 'libbs2b' 'libcaca' 'celt' 'libcdio-paranoia' 'codec2'
         'dav1d' 'libdc1394' 'libavc1394' 'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi'
-        'libgme' 'gsm' 'libilbc' 'libiec61883' 'kvazaar' 'lensfun' 'libmodplug' 'lame'
-        'opencore-amr' 'openjpeg2' 'opus' 'pulseaudio' 'librsvg' 'rubberband' 'rtmpdump'
+        'libgme' 'gsm' 'libilbc' 'libiec61883' 'kvazaar' 'lensfun-git' 'libmodplug' 'lame'
+        'opencore-amr' 'openjpeg2' 'opus' 'libpulse' 'librsvg' 'rubberband' 'rtmpdump'
         'snappy' 'libsoxr' 'speex' 'srt' 'libssh' 'tesseract' 'libtheora' 'uavs3d-git'
         'twolame' 'smbclient' 'v4l-utils' 'vid.stab' 'libvorbis' 'libvpx' 'libwebp'
         'x264'  'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2'
         'lilv' 'xz' 'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
         'libxv' 'libx11'  'libxext' 'zlib' 'libomxil-bellagio' 'libdrm' 'vmaf'
-        'intel-media-sdk' 'libva' 'libvdpau' 'svt-hevc' 'srt' 'tensorflow'
-        'glslang-git' 'librabbitmq-c' 'vulkan-icd-loader' 'svt-av1' 'svt-vp9'
+        'intel-media-sdk' 'libva' 'libvdpau' 'svt-hevc' 'srt' 
+        'glslang-git' 'librabbitmq-c' 'vulkan-icd-loader' 'svt-av1' 'svt-vp9' 'spirv-tools' 'librist'
     # AUR:
         'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
         'libopenmpt-svn' 'rav1e' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2' 'pocketsphinx'
@@ -38,29 +38,26 @@ makedepends=(
         'decklink-sdk'
 )
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
-          'libavutil.so' 'libpostproc.so' 'libavresample.so' 'libswscale.so'
+          'libavutil.so' 'libpostproc.so' 'libswscale.so'
           'libswresample.so' 'ffmpeg' 'ffmpeg-full' 'ffmpeg-git' 'ffmpeg-intel')
 conflicts=('ffmpeg')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
         '010-ffmpeg-fix-vmaf-model-path.patch'
-	"020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
-	"030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
-	"040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
+        "020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
+        "040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
         'LICENSE')
 
 sha256sums=('SKIP'
             '52778c70d9fe6e3a10941b99b96ac7749cec325dc1b9ee11ab75332b5ff68e50'
-            '05ec4d3323dc80ef6c1d4d6d50d339accd51d22b12a735b7a6605f10feb09cec'
-            '1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0'
-            '34e78efe063abc10707e47b4a3ba9d22955bfaf26d5670abb963d8f11f6b22b1'
+            'bed8df383c796bda7d3df7d1778faa459c2bdd179d2201b03de38cba962abbff'
+            'a7b8498f97ca6e04cf60d52a27f2ced6e04f945a68ad008b8def15fe8822e09d'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
     rm -f ffmpeg/libavcodec/libsvt_{hevc,vp9}.c
-    sed -i 's/general.texi/general_contents.texi/g' "030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
+    #sed -i 's/general.texi/general_contents.texi/g' "030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-fix-vmaf-model-path.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
 }
 
@@ -77,7 +74,6 @@ build() {
     
     ./configure \
         --prefix='/usr' \
-	--extra-cflags='-I/usr/include/tensorflow' \
         \
         --disable-rpath \
         --enable-gpl \
@@ -87,7 +83,6 @@ build() {
         --disable-static \
         --disable-stripping \
         --enable-gray \
-        --enable-avresample \
         \
         --enable-alsa \
         --enable-avisynth \
@@ -150,7 +145,7 @@ build() {
         --enable-libssh \
         --enable-libsvthevc \
 	--enable-libsvtav1 \
-        --enable-libtensorflow \
+        --disable-libtensorflow \
         --enable-libtesseract \
         --enable-libtheora \
         --disable-libtls \
