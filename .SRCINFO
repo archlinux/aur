@@ -1,0 +1,31 @@
+pkgbase = rapidyaml-git
+	pkgdesc = A library to parse and emit YAML, and do it fast.
+	pkgver = 0.1.0.r74.g92766c5
+	pkgrel = 1
+	url = https://github.com/biojppm/rapidyaml
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = cmake
+	makedepends = swig
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-cmake-build-extension
+	source = git+https://github.com/biojppm/rapidyaml.git
+	source = git+https://github.com/biojppm/c4core.git
+	source = git+https://github.com/biojppm/cmake.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = rapidyaml-git
+	provides = rapidyaml=0.1.0.r74.g92766c5
+	provides = c4core
+	conflicts = rapidyaml
+	conflicts = c4core
+
+pkgname = python-rapidyaml-git
+	depends = python
+	provides = python-rapidyaml=0.1.0.r74.g92766c5
+	conflicts = python-rapidyaml
