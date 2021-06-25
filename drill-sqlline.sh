@@ -5,4 +5,3 @@ if [ -z "$DRILL_LOG_DIR" ]; then
 fi
 
 exec /opt/apache-drill/bin/drill-embedded
-

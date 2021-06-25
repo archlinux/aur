@@ -1,7 +1,7 @@
 # Maintainer: David Haller <davidhaller@mailbox.org>
 
 pkgname=apache-drill
-pkgver=1.18.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="Schema-free SQL Query Engine for Hadoop, NoSQL and Cloud Storage"
 arch=(any)
@@ -10,8 +10,8 @@ license=('Apache')
 depends=('java-runtime')
 source=("https://www-eu.apache.org/dist/drill/drill-${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "drill-sqlline.sh")
-sha256sums=('e58fc1bed0fe3a0ef101a0705404e887af3f79beaccde8b225e884c06d336597'
-            'cb8fad4535629658654f083c1c323feb4a92b19ed0c4cce2411e23f6910456d3')
+sha256sums=('9374711a08252ff2ac7116c33b6feb627448f109c6e0834cb66d5b8587e6276b'
+            '017be05204b343c7dd3308370fc607f36934ab201a1b525fc51cff75b96b3a16')
 
 package()
 {
@@ -19,7 +19,7 @@ package()
     mkdir -p "${pkgdir}/opt/${pkgname}"
     mkdir -p "${pkgdir}/usr/bin"
 
-    cp -r -t "${pkgdir}/opt/${pkgname}/" "bin/" "conf/" "jars/" "sample-data/" "KEYS" "LICENSE" "NOTICE" "README.md"
+    cp -r -t "${pkgdir}/opt/${pkgname}/" "bin/" "conf/" "jars/" "sample-data/" "KEYS" "LICENSE" "NOTICE" "README.md" "git.properties"
     rm -f "${pkgdir}/opt/${pkgname}/bin/sqlline.bat"
     chmod o+r "${pkgdir}/opt/${pkgname}/conf"/*
 
