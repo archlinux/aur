@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=wordpress-plugin-webp-converter-for-media
-pkgver=3.0.5
+pkgver=3.0.6
 pkgrel=1
 pkgdesc="Speed up your website by serving WebP images instead of standard formats"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('wordpress')
 makedepends=()
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://downloads.wordpress.org/plugin/webp-converter-for-media.zip")
-sha512sums=('68e30e63b2835559e5d14a356cbb7c0bfaf01863f7bf97f38e4167f0f59ea3f81a9c2b563d8ddeccdc0df957e806d1fcc3df04efd9497359e5eb2365847319e0')
+sha512sums=('f2e73191b11aa94e3f78a2c1840da43c506832912dc5a557787aa7cc438cfd667b7c7575d4b9baaa2a2a8dd9499cd78436f3336a9f8a400016b2bc08bb76b84f')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/wordpress/wp-content/plugins"
