@@ -1,0 +1,13 @@
+pkgbase = poe-git
+	pkgdesc = .po file editor
+	pkgver = 0.1.alpha.r11.g4a843ea
+	pkgrel = 1
+	url = https://sr.ht/~strahinja/poe
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = gcc
+	provides = poe
+	source = git+https://git.sr.ht/~strahinja/poe
+	sha256sums = SKIP
+
+pkgname = poe-git
