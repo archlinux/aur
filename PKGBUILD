@@ -1,4 +1,5 @@
-# Maintainer: Leonard de Ruijter <dev@systeemdenker.nl>
+# Maintainer: Lieven Moors <lievenmoors@protonmail.com>
+# Contributor: Leonard de Ruijter <dev@systeemdenker.nl>
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=mididings
