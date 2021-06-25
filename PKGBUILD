@@ -1,7 +1,7 @@
 # Maintainer: Hugo Parente Lima <hugo.pl@gmail.com>
 pkgname=http-status-code-manpages
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Man pages for HTTP status codes"
 url="https://github.com/hugopl/http-status-code-manpages"
 license=('WTFPL')
@@ -9,7 +9,7 @@ arch=('any')
 depends=("man-db")
 makedepends=("ruby" "make")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hugopl/http-status-code-manpages/archive/v${pkgver}.tar.gz")
-sha256sums=('8e8567c73ada88eb38bcbb91660ee1cba334a9bd2d378bb47eaea7def99f579b')
+sha256sums=('8a84ebbd52cbb58faf5f73eee0dc1115ab95318015e7aa989f94803ccc41b6ab')
 
 build() {
 	cd "$pkgname-$pkgver"
