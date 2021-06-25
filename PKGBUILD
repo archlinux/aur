@@ -3,8 +3,8 @@
 # Contributor: Martin F. Schumann
 
 pkgname=unvanquished
-pkgver=0.52.0
-pkgrel=2
+pkgver=0.52.1
+pkgrel=1
 pkgdesc='A team-based, fast-paced, fps/rts hybrid game which pits aliens against humans.'
 arch=('x86_64')
 url='https://www.unvanquished.net'
@@ -47,11 +47,11 @@ source=("unvanquished.install"
         "naclsdk_${_naclsdk_ver}.tar.bz2::https://dl.unvanquished.net/deps/${_naclsdk_ver}.tar.bz2")
 
 md5sums=('6d9430b5b06b93a43a1cb79e14637f0b'
-         '1821ecc4185d15145d78296249c7e612'
-         '049b3aea1db9bfbc5664d035c7ae8ee9'
-         '1610e084189b435a2e0614a07f8871d2'
-         '733baa91bb57497be69b3912bd4f40f5'
-         '37d95bd19b051238b03cfb30f1f27609'
+         '8eaf06371e13bbd09e192dcea08b7ce6'
+         '7b9bef4e73797f522510692a0d6229e3'
+         '3cafdb19b9d21c2d1c70045cf9eb99f3'
+         'fb870952a4df15b5ace446facd8d6fae'
+         'c8623945ec57cf4a356c6f3768a28436'
          '3c2cceeb5c653c4e53543fc892377f38')
 
 # The prepare function mimics the git submodule dance.
