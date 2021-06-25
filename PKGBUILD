@@ -3,20 +3,25 @@
 
 pkgbase=python-pyclipper
 _pkgname=pyclipper
-pkgname="python-${_pkgname}"
-pkgver=1.2.1
+pkgname="python-$_pkgname"
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Cython wrapper for the C++ translation of the Angus Johnson’s Clipper library'
 url="https://github.com/fonttools/$_pkgname"
-arch=('i686' 'x86_64')
-license=('MIT')
-depends=('python')
-makedepends=('python-setuptools' 'cython')
+arch=(x86_64 i686)
+license=(MIT)
+depends=(python)
+makedepends=(python-setuptools cython)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.zip")
-sha256sums=('ca3751e93559f0438969c46f17459d07f983281dac170c3479de56492e152855')
+sha256sums=('48a1b5c585aea10e5b9c0b82d6abe2642fafd9ef158b9921852bc4af815ca20c')
 
-package_python-pyclipper() {
-  cd "$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+build() {
+	cd "$_pkgname-$pkgver"
+	python setup.py build
+}
+
+package() {
+	cd "$_pkgname-$pkgver"
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
