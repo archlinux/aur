@@ -4,10 +4,10 @@
 
 pkgname='mlmmj'
 pkgver=1.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Simple and slim mailing list manager (MLM) inspired by ezmlm'
 depends=('sh' 'smtp-server')
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url='http://mlmmj.org/'
 license=('MIT')
 source=(
