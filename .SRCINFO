@@ -1,12 +1,13 @@
 pkgbase = mattermost-desktop-bin
 	pkgdesc = Mattermost Desktop for Linux (binary)
 	pkgver = 4.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mattermost/desktop
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = npm
+	makedepends = asar
 	depends = alsa-lib
 	depends = gtk3
 	depends = libnotify
