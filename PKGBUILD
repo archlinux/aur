@@ -13,7 +13,7 @@ groups=()
 makedepends=()
 depends=('dotnet-runtime')
 source=('https://github.com/Jan0660/Revolt.Cli/releases/download/v0.2.1/linux-x64.revolt-cli')
-sha256sums=('90dd2c5cec4be210bfc79c2d36fbf59241114110e9c08ff490d06de228e9b203')
+sha256sums=('SKIP')
 options=(!strip)
 optdepends=('xsel: provide copy support')
 
