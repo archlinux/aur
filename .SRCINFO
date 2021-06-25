@@ -1,8 +1,8 @@
 pkgbase = shelf-bin
 	pkgdesc = A Good Symlinks Manager
 	pkgver = v0.5.0
-	pkgrel = 1
-	url = https://github.com/mr-karan/doggo
+	pkgrel = 2
+	url = https://github.com/iamd3vil/shelf
 	arch = x86_64
 	arch = armv6
 	arch = armv7
