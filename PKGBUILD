@@ -28,7 +28,7 @@ pkgver() {
 build() {
     cd "$srcdir"
 
-    arch-meson osu-handler-wine build -D b_ndebug=true
+    arch-meson osu-handler-wine build --unity on -D b_ndebug=true
     meson compile -C build
 }
 
