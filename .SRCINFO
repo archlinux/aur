@@ -1,6 +1,6 @@
 pkgbase = hypnotix-git
 	pkgdesc = An IPTV streaming application
-	pkgver = 1.5.r0.g6659aed
+	pkgver = 1.9
 	pkgrel = 1
 	url = https://github.com/linuxmint/hypnotix
 	arch = any
@@ -14,10 +14,10 @@ pkgbase = hypnotix-git
 	depends = python-setproctitle
 	depends = mpv
 	depends = xapp
+	optdepends = youtube-dl: YouTube channel support
 	provides = hypnotix
 	conflicts = hypnotix
 	source = git+https://github.com/linuxmint/hypnotix.git
 	b2sums = SKIP
 
 pkgname = hypnotix-git
-
