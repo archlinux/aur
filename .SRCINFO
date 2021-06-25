@@ -1,6 +1,6 @@
 pkgbase = kanidm-git
 	pkgdesc = A identity management service and clients.
-	pkgver = v1.1.0.alpha.4.r0.g0ac5da8
+	pkgver = v1.1.0.alpha.4.r55.g9f5d854
 	pkgrel = 1
 	url = https://github.com/kanidm/kanidm
 	arch = x86_64
@@ -25,4 +25,3 @@ pkgname = kanidm-git-unixd-clients
 	pkgdesc = kanidm localhost resolver to resolve posix identities to a kanidm instance.
 	provides = kanidm-unixd-clients
 	conflicts = kanidm-unixd-clients
-

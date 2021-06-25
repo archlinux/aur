@@ -1,18 +1,18 @@
 # kanidm service, the following still needs clarification or work:
 # 
-# * kanidm-unixd-tasks should be installed as soon as merged in upstream master
 # * check the systemd units on their preconditions, especially nptd, ... 
 #   as they are a copy of suse service files from https://build.opensuse.org/package/view_file/home:firstyear:kanidm/kanidm:w
 # * systemd activate and run should be added to package if this is so with other arch packages 
 # 
 # if somebody wants to maintain or contribute, just drop a note, i will add you.
 
+# Maintainer: cubi <coyote_x@gmx.de>
 # Maintainer: soloturn@gmail.com
 
 _basename=kanidm
 pkgbase=kanidm-git
 pkgname=($pkgbase-clients $pkgbase-server $pkgbase-unixd-clients)
-pkgver=v1.1.0.alpha.4.r0.g0ac5da8
+pkgver=v1.1.0.alpha.4.r55.g9f5d854
 pkgrel=1
 pkgdesc='A identity management service and clients.'
 url='https://github.com/kanidm/kanidm'
@@ -62,9 +62,9 @@ package_kanidm-git-server () {
   install -Dm755 target/release/kanidmd "${pkgdir}/usr/bin/kanidmd"
   install -Dm755 target/release/kanidm_badlist_preprocess "${pkgdir}/usr/bin/kanidm_badlist_preprocess"
 
-  install -Dm644 $srcdir/../server.toml "$pkgdir/etc/kanidm/server.toml"
+  install -Dm644 kanidmd/server.toml "$pkgdir/etc/kanidm/server.toml"
 
-  install -Dm644 $srcdir/../kanidmd.service "$pkgdir/usr/lib/systemd/system/kanidmd.service"
+  install -Dm644 platform/opensuse/kanidmd.service "$pkgdir/usr/lib/systemd/system/kanidmd.service"
 
   install -Dm644 target/release/_completions/_kanidmd "${pkgdir}/usr/share/zsh/site-functions/_kanidmd"
   install -Dm644 target/release/_completions/_kanidm_badlist_preprocess "${pkgdir}/usr/share/zsh/site-functions/_kanidm_badlist_preprocess"
@@ -80,8 +80,8 @@ package_kanidm-git-unixd-clients () {
 
   cd "$pkgbase"
 
-  install -Dm755 target/release/libnss_kanidm.so "${pkgdir}/usr/lib/libnss_kanidm.so"
-  install -Dm755 target/release/libpam_kanidm.so "${pkgdir}/usr/lib/security/libpam_kanidm.so"
+  install -Dm755 target/release/libnss_kanidm.so "${pkgdir}/usr/lib/libnss_kanidm.so.2"
+  install -Dm755 target/release/libpam_kanidm.so "${pkgdir}/usr/lib/security/pam_kanidm.so"
 
   install -Dm755 target/release/kanidm_cache_clear "${pkgdir}/usr/bin/kanidm_cache_clear"
   install -Dm755 target/release/kanidm_cache_invalidate "${pkgdir}/usr/bin/kanidm_cache_invalidate"
@@ -89,22 +89,25 @@ package_kanidm-git-unixd-clients () {
   install -Dm755 target/release/kanidm_ssh_authorizedkeys_direct "${pkgdir}/usr/bin/kanidm_ssh_authorizedkeys_direct"
   install -Dm755 target/release/kanidm_unixd "${pkgdir}/usr/bin/kanidm_unixd"
   install -Dm755 target/release/kanidm_unixd_status "${pkgdir}/usr/bin/kanidm_unixd_status"
-  # as soon as merged into master upstream
-  # install -Dm755 target/release/kanidm_unixd_status "${pkgdir}/usr/bin/kanidm_unixd_tasks"
+  install -Dm755 target/release/kanidm_unixd_tasks "${pkgdir}/usr/bin/kanidm_unixd_tasks"
 
-  install -Dm644 $srcdir/../kanidm-unixd.service "$pkgdir/usr/lib/systemd/system/kanidm-unixd.service"
-  install -Dm644 $srcdir/../kanidm-unixd.service "$pkgdir/usr/lib/systemd/system/kanidm-unixd-tasks.service"
+  install -Dm644 platform/opensuse/kanidm-unixd.service "$pkgdir/usr/lib/systemd/system/kanidm-unixd.service"
+  install -Dm644 platform/opensuse/kanidm-unixd-tasks.service "$pkgdir/usr/lib/systemd/system/kanidm-unixd-tasks.service"
 
   install -Dm644 target/release/_completions/_kanidm_ssh_authorizedkeys_direct "${pkgdir}/usr/share/zsh/site-functions/_kanidm_ssh_authorizedkeys_direct"
   install -Dm644 target/release/_completions/_kanidm_cache_clear "${pkgdir}/usr/share/zsh/site-functions/_kanidm_cache_clear"
   install -Dm644 target/release/_completions/_kanidm_cache_invalidate "${pkgdir}/usr/share/zsh/site-functions/_kanidm_cache_invalidate"
   install -Dm644 target/release/_completions/_kanidm_ssh_authorizedkeys "${pkgdir}/usr/share/zsh/site-functions/_kanidm_ssh_authorizedkeys"
   install -Dm644 target/release/_completions/_kanidm_unixd_status "${pkgdir}/usr/share/zsh/site-functions/_kanidm_unixd_status"
+# TODO as soon its there
+#  install -Dm644 target/release/_completions/_kanidm_unixd_tasks_status "${pkgdir}/usr/share/zsh/site-functions/_kanidm_unixd_tasks_status"
 
   install -Dm644 target/release/_completions/kanidm_ssh_authorizedkeys_direct.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_ssh_authorizedkeys_direct.sh"
   install -Dm644 target/release/_completions/kanidm_cache_clear.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_cache_clear.sh"
   install -Dm644 target/release/_completions/kanidm_cache_invalidate.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_cache_invalidate.sh"
   install -Dm644 target/release/_completions/kanidm_ssh_authorizedkeys.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_ssh_authorizedkeys.sh"
   install -Dm644 target/release/_completions/kanidm_unixd_status.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_unixd_status.sh"
+# TODO as soon its there
+#  install -Dm644 target/release/_completions/kanidm_unixd_tasks_status.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_unixd_tasks_status.sh"
 }
 
