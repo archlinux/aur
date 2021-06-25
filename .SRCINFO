@@ -16,8 +16,6 @@ pkgbase = egawari
 	depends = libxi
 	depends = libx11
 	depends = xf86-input-libinput
-	depends = libXi.so
-	depends = libX11.so
 	source = egawari-0.1.2.tar.gz::https://github.com/acedron/egawari/archive/v0.1.2.tar.gz
 	sha256sums = 56639fbd4e34649c63cd15886a1b3f340bff921a7612404761285012a9968408
 
