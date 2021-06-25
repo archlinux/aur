@@ -1,25 +1,32 @@
 # Maintainer: Luke Street <luke@street.dev>
+# Contributor: Daniel Brodsky <danbrodsky@pm.me>
 # Based on AUR ghidra-git
 # Original Darcula patch from https://digmi.org/2019/03/26/ghidracula/
 
 pkgname=ghidra-darcula
 _darcula=08c13c5f1a12624f4d8df8723b39061e11c93241
 _darcula_version=2019.09
-pkgver=9.2.3
-pkgrel=2
+pkgver=10.0
+pkgrel=1
 pkgdesc='Software reverse engineering framework (with dark theme)'
 arch=('x86_64')
 url='https://ghidra-sre.org'
 license=(Apache)
-provides=(ghidra)
-conflicts=(ghidra)
+provides=('ghidra')
+conflicts=(
+  'ghidra'
+  'ghidra-dev'
+  'ghidra-desktop'
+)
 depends=(
-  'java-runtime-common'
-  'jdk11-openjdk'
+  'bash'
+  'java-environment>=11'
+  'polkit'
 )
 makedepends=(
   'git'
-  'gradle6' # gradle>=7 is currently not supported
+  'gradle'
+  'java-environment=11'
   'unzip'
 )
 source=(
@@ -45,15 +52,23 @@ pkgver() {
   git describe --tags | sed 's#Ghidra_##;s#_build##;s#-#+#g;s#+#+r#'
 }
 
+
 prepare() {
   cd "$_pkgname"
 
+  # Check Java version (thanks @ignapk)
+  JDK_VERSION=$(java -version 2>&1)
+  if [[ ! $JDK_VERSION =~ 11\.0 ]]; then
+    echo "FAILURE: You seem to have jdk11 installed correctly but your system defaults to another java version. To enable jdk11 please type: sudo archlinux-java set java-11-openjdk"
+    exit 1
+  fi
+
   echo -e "${_prefix}Setting up the build dependencies"
-  gradle6 --parallel --init-script gradle/support/fetchDependencies.gradle init
+  gradle --parallel --init-script gradle/support/fetchDependencies.gradle init
 
   echo -e "${_prefix}Applying Darcula patch"
   patch -Np1 -i "$srcdir"/darcula.patch
-  sed -i "/dependencies {/a\\\\tcompile ':darcula-laf:${_darcula_version}'" Ghidra/Framework/Docking/build.gradle
+  sed -i "/dependencies {/a\\\\timplementation ':darcula-laf:${_darcula_version}'" Ghidra/Framework/Docking/build.gradle
   echo "MODULE FILE LICENSE: lib/darcula-laf-${_darcula_version}.jar Apache License 2.0" >> Ghidra/Framework/Docking/Module.manifest
 
   echo -e "${_prefix}Setting release to PUBLIC"
@@ -66,28 +81,30 @@ prepare() {
   ##
 
 #  echo -e "${_prefix}Setting up the developers environment"
-#  gradle6 --parallel prepDev
+#  gradle --parallel prepDev
 #
 #  echo -e "${_prefix}Setting up the eclipse configurations"
-#  gradle6 --parallel eclipse
+#  gradle --parallel eclipse
 #
 #  echo -e "${_prefix}Compiling the linux64 native binaries"
-#  gradle6 --parallel buildNatives_linux64
+#  gradle --parallel buildNatives_linux64
 #
 #  echo -e "${_prefix}Compiling the precompile language modules"
-#  gradle6 --parallel sleighCompile
+#  gradle --parallel sleighCompile
 }
 
 build() {
   cd "$srcdir"/darcula-laf
+  echo -e "${_prefix}Patching darcula-laf for Gradle-7.0"
+  sed -i "s/apply plugin: 'maven'/apply plugin: 'maven-publish'/" build.gradle
   echo -e "${_prefix}Building darcula-laf"
-  gradle6 --parallel jar
+  gradle --parallel jar
   mkdir -p "$srcdir/$_pkgname"/flatRepo
-  cp build/libs/darcula-laf-${_darcula_version}.jar -t "$srcdir/$_pkgname"/flatRepo
+  cp build/libs/darcula-laf-${_darcula_version}.jar -t "$srcdir/$_pkgname"/dependencies/flatRepo
 
   cd "$srcdir/$_pkgname"
   echo -e "${_prefix}Building Ghidra"
-  gradle6 --parallel buildGhidra
+  gradle --parallel buildGhidra
 }
 
 package() {
