@@ -3,7 +3,7 @@
 
 pkgbase=wownero-git
 pkgname=wownero-git
-pkgver=0.9.3.3
+pkgver=10.0.0
 pkgrel=1
 pkgdesc="a fairly launched privacy-centric meme coin with no premine and a finite supply"
 license=('BSD')
@@ -13,7 +13,7 @@ depends=('boost-libs' 'libunwind' 'openssl' 'readline' 'zeromq' 'pcsclite' 'hida
 makedepends=('git' 'cmake' 'boost')
 provides=('wownero-git')
 
-source=("${pkgname}"::"git+https://git.wownero.com/wownero/wownero")
+source=("${pkgname}"::"git+https://git.wownero.com/wownero/wownero.git#branch=dev-v0.10")
 
 sha256sums=('SKIP')
 
