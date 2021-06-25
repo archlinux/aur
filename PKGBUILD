@@ -10,15 +10,14 @@ url="https://github.com/boysetsfrog/vimpc"
 license=('GPL3')
 #makedepends=('git')
 makedepends=('boost' 'git')
-depends=('libmpdclient' 'ncurses' 'pcre' 'taglib')
+depends=('libmpdclient' 'taglib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C $pkgname describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -30,7 +29,7 @@ build() {
 
 package() {
   cd $pkgname
-  install -Dm644 doc/vimpcrc.example "$pkgdir/usr/share/doc/vimpc/vimpcrc.example"
+  install -Dm644 doc/vimpcrc.example -t "$pkgdir/usr/share/doc/vimpc"
   make DESTDIR="$pkgdir/" install
 }
 

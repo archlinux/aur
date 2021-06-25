@@ -8,13 +8,10 @@ pkgbase = vimpc-git
 	makedepends = boost
 	makedepends = git
 	depends = libmpdclient
-	depends = ncurses
-	depends = pcre
 	depends = taglib
 	provides = vimpc
 	conflicts = vimpc
 	source = vimpc-git::git+https://github.com/boysetsfrog/vimpc.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = vimpc-git
-
