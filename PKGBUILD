@@ -1,10 +1,10 @@
 # Maintainer: Bryce Hoehn <17hoehbr@gmail.com>
-pkgname=apple-music-electron
-pkgver=1.3.0
+pkgname=Apple-Music-Electron
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Electron wrapper for Apple Music"
 arch=("aarch64" "armv7h" "i686" "x86_64")
-url="https://github.com/17hoehbr/${pkgname}"
+url="https://github.com/cryptofyre/${pkgname}"
 license=("MIT")
 depends=('libxss')
 makedepends=("yarn")
@@ -32,12 +32,8 @@ package() {
   install -dm755 "${pkgdir}/opt" "${pkgdir}/usr/bin"
   cp -r --preserve=mode "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked" "${pkgdir}/opt/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  for _file in "${srcdir}/${pkgname}-${pkgver}/build/icons/"*.png
-  do
-    _filename="$(basename ${_file})"
-    install -Dm644 "${_file}" "${pkgdir}/usr/share/icons/hicolor/${_filename%.png}/apps/${pkgname}.png"
-  done
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/assets/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
   ln -sf "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
-md5sums=('c2dcc7b0c905804716ea350797158e71'
-         '4be822765214b2093185b72422c41587')
+sha256sums=('d9ed59a7dfc3eb8e288c8c1636076ff57ffb8d012521f121587fccf81e28499b'
+            'fdab0c9a7f70ec350dabeef86e742ac4dab3dcc1a9ead74f5f440d6d46df2701')
