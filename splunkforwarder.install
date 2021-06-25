@@ -1,32 +1,10 @@
 SPLUNK_HOME="/opt/splunkforwarder"
 
-pre_install() {
-	group_exists=no
-	# Try to test for group existence in a 'modern' fashion
-	if which getent >/dev/null; then
-		if getent group splunk >/dev/null; then
-			group_exists=yes
-		fi
-	# or fall back
-	elif grep '^splunk:' /etc/group >/dev/null; then
-		group_exists=yes
-	fi
-	
-	if [ "${group_exists}"x = nox ]; then
-		groupadd splunk
-	fi
-	if id splunk > /dev/null 2>&1; then
-		: #user already exists
-	else
-		useradd -c "Splunk Server" -d $SPLUNK_HOME -s /bin/bash -g splunk splunk
-	fi
-}
-
 post_install() {
 	if [ ! -f "$SPLUNK_HOME/etc/splunk-launch.conf" ]; then
 		sed "s%# SPLUNK_HOME=.*%SPLUNK_HOME=$SPLUNK_HOME%g" "$SPLUNK_HOME/etc/splunk-launch.conf.default" > "$SPLUNK_HOME/etc/splunk-launch.conf"
 	fi
-	
+
 	# Build the post-install message in steps:
 	touch "$SPLUNK_HOME/ftr"
 	echo "-------------------------------------------------------------------------" > "$SPLUNK_HOME/ftr"
@@ -43,37 +21,15 @@ post_install() {
 	echo "" >> "$SPLUNK_HOME/ftr"
 	echo "Complete documentation is at http://docs.splunk.com/Documentation/Splunk" >> "$SPLUNK_HOME/ftr"
 	echo "-------------------------------------------------------------------------" >> "$SPLUNK_HOME/ftr"
-	
+
 	echo "Splunk forwarder has been installed to $SPLUNK_HOME"
 	echo "You can start Splunk by running 'systemctl start splunkforwarder'"
-	
-	chown -R splunk:splunk "$SPLUNK_HOME"
 }
 
 pre_upgrade() {
 	echo "Attempting to stop the installed Splunk Server..."
 	$SPLUNK_HOME/bin/splunk stop
 	systemctl stop splunkforwarder
-	
-	group_exists=no
-	# Try to test for group existence in a 'modern' fashion
-	if which getent >/dev/null; then
-		if getent group splunk >/dev/null; then
-			group_exists=yes
-		fi
-	# or fall back
-	elif grep '^splunk:' /etc/group >/dev/null; then
-		group_exists=yes
-	fi
-	
-	if [ "${group_exists}"x = nox ]; then
-		groupadd splunk
-	fi
-	if id splunk > /dev/null 2>&1; then
-		: #user already exists
-	else
-		useradd -c "Splunk Server" -d $SPLUNK_HOME -s /bin/bash -g splunk splunk
-	fi
 }
 
 post_upgrade() {
@@ -93,38 +49,13 @@ post_upgrade() {
 	echo "" >> "$SPLUNK_HOME/ftr"
 	echo "Complete documentation is at http://docs.splunk.com/Documentation/Splunk" >> "$SPLUNK_HOME/ftr"
 	echo "-------------------------------------------------------------------------" >> "$SPLUNK_HOME/ftr"
-	
+
 	echo "Splunk forwarder has been upgraded in $SPLUNK_HOME"
 	echo "Run 'systemctl start splunkforwarder' to complete the upgrade."
-	
-	chown -R splunk:splunk "$SPLUNK_HOME"
 }
 
 pre_remove() {
 	echo "Attempting to stop the installed Splunk Server..."
 	$SPLUNK_HOME/bin/splunk stop
 	systemctl stop splunkforwarder
-}
-
-post_remove() {
-	if [ `pacman -Q | grep splunk | wc -l` -eq 1 ]; then
-		if id splunk > /dev/null 2>&1; then
-			userdel -r splunk
-		fi
-		
-		group_exists=no
-		# Try to test for group existence in a 'modern' fashion
-		if which getent >/dev/null; then
-			if getent group splunk >/dev/null; then
-				group_exists=yes
-			fi
-		# or fall back
-		elif grep '^splunk:' /etc/group >/dev/null; then
-			group_exists=yes
-		fi
-		
-		if [ "${group_exists}"x = yesx ]; then
-			groupdel splunk
-		fi
-	fi
 }
