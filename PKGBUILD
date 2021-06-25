@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=jangouts
-pkgver=0.4.8
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Videoconferencing based on WebRTC and Janus Gateway with an UI inspired by Google Hangouts'
 url='https://github.com/jangouts/jangouts'
@@ -12,7 +12,7 @@ arch=('any')
 license=('custom')
 depends=('janus-gateway')
 source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('d2d6b4fd789a5a79725866324798a3ab6236d57b3d1155615dcb20e73ce5bffb')
+sha256sums=('25905950eb9b47f0f743078de69341d4ce0c59bdbd3a5e6b150baf39f7af5c59')
 options=('!strip')
 backup=("etc/$pkgname/config.json"
         "etc/$pkgname/config.callstats.json")
