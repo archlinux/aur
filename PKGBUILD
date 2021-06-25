@@ -1,7 +1,7 @@
 # Maintainer: Donatien Sattler <donatien-sattler [DOT] web |AT| laposte (DOT) net>
 pkgname=yavalath
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Play this 2 players board game against computer with SDL2 frontend."
 arch=('x86_64')
 url='https://gitlab.com/donatien-sattler/yavalath'
@@ -24,8 +24,6 @@ sha384sums=('SKIP'
 sha512sums=('SKIP'
             '61be6f08bc5c9d1a2d2176b9a253c715078b2c5e37f8f13504d0c6b63188cf3fb8af19e01f40b4f2efec8fabd3304671c94f2e0c70f81d9a4c0c7156704ccf92')
 
-validpgpkeys=("29B705267FE89F6605B287C4C04AB9DE5112A882")
-    
 build() {
     SOURCE_DATE_EPOCH=$(stat -c %Y "${pkgname}-${pkgver}/README.md")
 

@@ -1,7 +1,7 @@
 pkgbase = yavalath
 	pkgdesc = Play this 2 players board game against computer with SDL2 frontend.
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/donatien-sattler/yavalath
 	arch = x86_64
 	license = custom:EUPL-1.2-or-later
@@ -11,7 +11,6 @@ pkgbase = yavalath
 	depends = sdl2_image
 	source = https://gitlab.com/donatien-sattler/yavalath/uploads/6e0df6f9bcc0ece68d101341623c1f29/yavalath-1.1.1.tar.gz.sig
 	source = https://gitlab.com/donatien-sattler/yavalath/-/archive/1.1.1/yavalath-1.1.1.tar.gz
-	validpgpkeys = 29B705267FE89F6605B287C4C04AB9DE5112A882
 	md5sums = SKIP
 	md5sums = 00af72fc76da34bd2cfcac24b6fc99c0
 	sha1sums = SKIP
