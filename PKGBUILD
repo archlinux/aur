@@ -7,6 +7,7 @@ url='https://www.khronos.org/registry/cl/'
 license=('apache')
 makedepends=('git'
              'python'
+             'cmake'
              )
 provides=('opencl-headers')
 conflicts=('opencl-headers')
@@ -40,7 +41,7 @@ build() {
   cd "${srcdir}/build-ocl-headers"
 
   cmake ../OpenCL-Headers \
-    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
 
   make
@@ -48,7 +49,7 @@ build() {
   cd "${srcdir}/build-ocl-hpp"
 
   cmake ../OpenCL-CLHPP \
-    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_EXAMPLES=OFF \
     -DBUILD_TESTS=OFF
