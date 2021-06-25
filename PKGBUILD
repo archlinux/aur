@@ -1,20 +1,20 @@
-# Maintainer:  ROllerozxa (temporaryemail4meh [gee mail])
+# Maintainer:  ROllerozxa <temporaryemail4meh [gee mail]>
 # Contributor: Martin C. Doege <mdoege at compuserve dot com>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Konsta Kokkinen <kray@tsundere.fi>
 pkgname=minetest-git-leveldb
 _pkgname=minetest
-pkgver=20210612.dc165fe94
+pkgver=5.4.0.r236.g63fc728a8
 pkgrel=1
 pkgdesc='Voxel-based sandbox game engine (Git version with LevelDB support)'
-url='http://www.minetest.net/'
+url='https://www.minetest.net/'
 license=('GPL')
 arch=('i686' 'x86_64')
 makedepends=('git' 'cmake' 'ninja')
 depends=('bzip2' 'libpng' 'libjpeg' 'mesa' 'sqlite' 'openal' 'libvorbis' 'curl'
 		'freetype2' 'luajit' 'leveldb' 'gettext' 'hiredis' 'spatialindex' 'gmp')
-source=('git://github.com/minetest/'minetest{,_game}.git
-		'git://github.com/minetest/irrlicht.git')
+source=('git+https://github.com/minetest/'minetest{,_game}.git
+		'git+https://github.com/minetest/irrlicht.git')
 sha1sums=('SKIP' 'SKIP' 'SKIP')
 
 conflicts=("${_pkgname}"{,-common,-server})
@@ -22,8 +22,7 @@ provides=("${_pkgname}"{,-common,-server})
 install=install
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
-	git log -1 --format='%cd.%h' --date=short | tr -d -
+	git -C "${_pkgname}" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
