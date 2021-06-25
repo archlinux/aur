@@ -25,7 +25,7 @@ build() {
 
 package() {
   cd "${pkgname%-fork}-$pkgver"
-  install -Dm600 examples/inadyn.conf "$pkgdir/etc/inadyn.conf"
+  install -Dm600 examples/inadyn.conf -t "$pkgdir/etc"
   make DESTDIR="$pkgdir" install-strip
 }
 
