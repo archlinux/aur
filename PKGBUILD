@@ -2,7 +2,7 @@
 
 pkgname=fortune-mod-hackers
 pkgver=1
-pkgrel=0
+pkgrel=1
 pkgdesc="Quotes from the movie Hackers fortune cookie file"
 arch=('any')
 license=('GPL')
