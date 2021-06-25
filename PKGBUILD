@@ -8,6 +8,7 @@ pkgrel=1
 arch=(any)
 license=(GPL3)
 depends=(osu-mime desktop-file-utils)
+makedepends=(meson)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 install='osu-handler-git.install'
