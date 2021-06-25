@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=bibata-extra-cursor-theme
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Material Based Cursor Theme: More Bibata!"
 arch=('any')
@@ -14,8 +14,8 @@ options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname-bitmaps-$pkgver.zip::$url/releases/download/v$pkgver/bitmaps.zip")
 noextract=("$pkgname-bitmaps-$pkgver.zip")
-sha256sums=('d53c552faad30613f34147bf4ba2eb42ef8d093bf3740104cf1460668190af79'
-            '118a29e5edf8b514c8d9b3ed0d0856b52f84f0dff77bdc02486dd7c8c2988102')
+sha256sums=('e5c2b0e3960f10df8281681a5ada914f2cf89480abc0c17fd8b677015a9d6ea7'
+            'b44127f133ba12a09a389bda500ed6f4e2acb62ab3e1d906562ff2512c25c16d')
 
 prepare() {
 	cd Bibata_Extra_Cursor-$pkgver
@@ -27,7 +27,7 @@ prepare() {
 
 build() {
 	cd Bibata_Extra_Cursor-$pkgver/builder
-	_themes='DarkRed DodgerBlue Pink Turquise'
+	_themes='DarkRed DodgerBlue Pink Turquoise'
 	_sizes='22 24 28 32 40 48 56 64 72 80 88 96'
 
 	set -- ${_sizes}
