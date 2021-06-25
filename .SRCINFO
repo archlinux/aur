@@ -1,6 +1,6 @@
 pkgbase = castero
 	pkgdesc = TUI podcast client for the terminal
-	pkgver = 0.9.2
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://github.com/xgi/castero
 	arch = any
@@ -12,8 +12,7 @@ pkgbase = castero
 	depends = python-lxml
 	depends = python-mpv
 	depends = python-vlc
-	source = castero-0.9.2.tar.gz::https://github.com/xgi/castero/archive/v0.9.2.tar.gz
-	sha256sums = 30f0abf63dac3b467006867df9565a8ad4897bf6834fc0dbcd04cdeb77cc3fce
+	source = castero-0.9.3.tar.gz::https://github.com/xgi/castero/archive/v0.9.3.tar.gz
+	sha256sums = d0cea7efbfc0dd7ae01e496a81b67a1d4a47dbc2ab28ff61be5ae7910015717d
 
 pkgname = castero
-
