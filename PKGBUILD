@@ -1,4 +1,4 @@
-# Maintainer: Lieven Moors <lievenmoors@gmail.com>
+# Maintainer: Lieven Moors <lievenmoors@protonmail.com>
 
 pkgname=tuneit
 pkgver=0.3
