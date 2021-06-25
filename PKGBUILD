@@ -4,7 +4,7 @@
 
 pkgname='mlmmj'
 pkgver=1.3.0
-pkgrel=6
+pkgrel=7
 pkgdesc='Simple and slim mailing list manager (MLM) inspired by ezmlm'
 depends=('smtp-server')
 arch=('i686' 'x86_64' 'armv7h')
@@ -13,6 +13,7 @@ license=('MIT')
 source=(
   "http://mlmmj.org/releases/$pkgname-$pkgver.tar.gz"
   "$pkgname-$pkgver.diff"
+  "$pkgname-$pkgver-bash.diff"
   'sysuser.conf'
   'tmpfile.conf'
 )

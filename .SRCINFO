@@ -1,7 +1,7 @@
 pkgbase = mlmmj
 	pkgdesc = Simple and slim mailing list manager (MLM) inspired by ezmlm
 	pkgver = 1.3.0
-	pkgrel = 6
+	pkgrel = 7
 	url = http://mlmmj.org/
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = mlmmj
 	depends = smtp-server
 	source = http://mlmmj.org/releases/mlmmj-1.3.0.tar.gz
 	source = mlmmj-1.3.0.diff
+	source = mlmmj-1.3.0-bash.diff
 	source = sysuser.conf
 	source = tmpfile.conf
 	md5sums = 365eff26063ddb87097bf2d93311f8a5
