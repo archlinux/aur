@@ -5,6 +5,7 @@ pkgbase = osu-handler
 	install = osu-handler.install
 	arch = any
 	license = GPL3
+	makedepends = meson
 	depends = osu-mime
 	depends = desktop-file-utils
 	source = https://github.com/openglfreak/osu-handler-wine/archive/refs/tags/v0.3.0.tar.gz

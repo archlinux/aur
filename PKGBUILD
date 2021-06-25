@@ -7,6 +7,7 @@ pkgrel=3
 arch=(any)
 license=(GPL3)
 depends=(osu-mime desktop-file-utils)
+makedepends=(meson)
 install='osu-handler.install'
 source=("https://github.com/openglfreak/osu-handler-wine/archive/refs/tags/v${pkgver}.tar.gz"
         osu-file-extensions-handler.desktop
