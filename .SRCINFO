@@ -12,7 +12,6 @@ pkgbase = statnot
 	optdepends = libnotify: send notifications to statnot
 	optdepends = xorg-xsetroot: default configuration calls xsetroot
 	source = statnot-0.0.4.post1::git+https://github.com/halhen/statnot.git#commit=d70982eb5d86e7849295b634721a74a433fcb532
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = statnot
-
