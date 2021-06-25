@@ -13,6 +13,8 @@ depends=('vapoursynth'
          )
 makedepends=('git'
              'cmake'
+             'vulkan-headers'
+             'glslang'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -51,7 +53,7 @@ prepare() {
 build() {
   cd build
   cmake "../${_plug}" \
-    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
 
   make

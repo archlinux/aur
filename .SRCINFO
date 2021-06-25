@@ -7,6 +7,8 @@ pkgbase = vapoursynth-plugin-waifu2x-ncnn-vulkan-git
 	license = MIT
 	makedepends = git
 	makedepends = cmake
+	makedepends = vulkan-headers
+	makedepends = glslang
 	depends = vapoursynth
 	depends = vulkan-icd-loader
 	provides = vapoursynth-plugin-waifu2x-ncnn-vulkan
@@ -21,4 +23,3 @@ pkgbase = vapoursynth-plugin-waifu2x-ncnn-vulkan-git
 	sha256sums = e3b7b0b71ca606031821ac5d63b4ff25ab6874e8521521585de4a308b2f974c9
 
 pkgname = vapoursynth-plugin-waifu2x-ncnn-vulkan-git
-
