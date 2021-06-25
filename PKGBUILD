@@ -1,10 +1,10 @@
 # Maintainer: Cristian Burneci <cburneci at gmail dot com>
 
 pkgname=tv-lite
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="IPTV viewer with Sopcast and Acestream handling capabilities.  It wants to be a replacement for the older TV-Maxe"
-arch=('any')
+arch=('i686' 'x86_64')
 url="http://www.tv-lite.com"
 license=('GPL2')
 groups=()
