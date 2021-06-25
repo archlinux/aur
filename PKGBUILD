@@ -5,26 +5,24 @@
 # Contributor: TDY <tdy@gmx.com>
 # Contributor: NicolÃ¡s de la Torre <ndelatorre@gmail.com>
 
-_pkgname=ulipad
-pkgname=$_pkgname-git
-pkgver=r10.c8627cb
-pkgrel=2
+pkgname=ulipad-git
+pkgver=r13.4c7d590
+pkgrel=1
 pkgdesc="A wxPython powered, programmer oriented and flexible editor"
 arch=('any')
 url="https://github.com/limodou/ulipad"
 license=('GPL')
 makedepends=('git')
 depends=('wxpython')
-optdepends=('psyco: speed support'
-            'python2-pyenchant: spell-checking support')
-source=($pkgname::git://github.com/limodou/ulipad.git
-        $_pkgname.desktop
-        $_pkgname.png
-        $_pkgname.sh)
-md5sums=('SKIP'
-         '8179bab501c1eea2a799f497292b4549'
-         '088feea9980edd118c7297e6d45613af'
-         '23cdc38822e51dc6ffaa86dff94d967d')
+optdepends=('psyco: speed support' 'python2-pyenchant: spell-checking support')
+source=($pkgname::git+$url.git
+        "${pkgname%-git}.desktop"
+        "${pkgname%-git}.png"
+        "${pkgname%-git}.sh")
+sha256sums=('SKIP'
+            'fc93c83105938972fd8b65b8367b4b8b3dc3e9adc6f4eb330fde8c15fc6c85c0'
+            '8385a27168ac073b3117a152b4b3c0035a844c8c46a17bd29abd5c3e70d0f4b2'
+            '702e7a6cb483f9531ed626a9828373d7623001bf501ad3adfb491e953bc9f172')
 
 pkgver() {
   cd $pkgname
@@ -32,18 +30,16 @@ pkgver() {
 }
 
 prepare() {
-  cd $pkgname
-  find . -name "*.py" -exec sed -i "s|env python|env python2|" '{}' \;
-  find . -name "*.py" -exec sed -i "s|/usr/bin/python|/usr/bin/python2|" '{}' \;
+  find $pkgname -name "*.py" -exec sed -i "s|env python|env python2|" '{}' \;
+  find $pkgname -name "*.py" -exec sed -i "s|/usr/bin/python|/usr/bin/python2|" '{}' \;
 }
 
 package() {
-  install -Dm644 $_pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  install -Dm644 $_pkgname.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
-  install -Dm755 $_pkgname.sh "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 "${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm644 "${pkgname%-git}.png" -t "$pkgdir/usr/share/pixmaps"
+  install -Dm755 "${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
 
-  cd $pkgname
-  install -dm755 "$pkgdir/usr/share/$_pkgname"
-  cp -r ./* "$pkgdir/usr/share/$_pkgname"
+  install -dm755 "$pkgdir/usr/share/${pkgname%-git}"
+  cp -a $pkgname/* "$pkgdir/usr/share/${pkgname%-git}"
 }
 
