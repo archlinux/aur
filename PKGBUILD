@@ -1,6 +1,6 @@
 # Maintainer: acedron <acedrons@yahoo.co.jp>
 pkgname=egawari
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Makes your touchpad work like a graphics tablet."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -18,7 +18,7 @@ makedepends=(
     'gcc'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/acedron/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('2f4c7b9b34eed882e70609d2ec0b3fec0e9959429bd7d4e17126c197ad8cffe5')
+sha256sums=('56639fbd4e34649c63cd15886a1b3f340bff921a7612404761285012a9968408')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
