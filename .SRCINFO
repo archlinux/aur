@@ -1,0 +1,16 @@
+pkgbase = doggo-bin
+	pkgdesc = Command-line DNS client for humans
+	pkgver = v0.4.0
+	pkgrel = 1
+	url = https://github.com/mr-karan/doggo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = doggo
+	conflicts = doggo
+	source_x86_64 = https://github.com/mr-karan/doggo/releases/download/v0.4.0/doggo_0.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5f284d10a8418f4d419b02458e995b0a9b303d7c1c8a24aebfada3c5f42e580f
+	source_aarch64 = https://github.com/mr-karan/doggo/releases/download/v0.4.0/doggo_0.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = a09f6d40a4df92f9beca7b6f323f68ebc80768630d7d64d7f8e4558ed7fa2a28
+
+pkgname = doggo-bin
