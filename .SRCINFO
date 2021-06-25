@@ -8,7 +8,7 @@ pkgbase = mvnd
 	depends = java-environment>=7
 	depends = bash
 	depends = maven
-	source = mvnd-0.5.2.zip::https://github.com/mvndaemon/mvnd/releases/download/mvnd/mvnd-0.5.2-linux-amd64.zip
+	source = mvnd-0.5.2.zip::https://github.com/mvndaemon/mvnd/releases/download/0.5.2/mvnd-0.5.2-linux-amd64.zip
 	sha256sums = 55201c347a95a6df7600d988cc3ab71323f5eef627a1a3e9808ed2212c5a0987
 
 pkgname = mvnd

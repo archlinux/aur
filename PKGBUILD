@@ -8,7 +8,7 @@ arch=(x86_64)
 url=https://github.com/mvndaemon/mvnd
 license=('Apache')
 depends=('java-environment>=7' 'bash' 'maven')
-source=("${pkgname}-${pkgver}.zip::https://github.com/mvndaemon/mvnd/releases/download/${pkgname}/${pkgname}-${pkgver}-linux-amd64.zip")
+source=("${pkgname}-${pkgver}.zip::https://github.com/mvndaemon/mvnd/releases/download/${pkgver}/${pkgname}-${pkgver}-linux-amd64.zip")
 sha256sums=('55201c347a95a6df7600d988cc3ab71323f5eef627a1a3e9808ed2212c5a0987')
 
 package() {
