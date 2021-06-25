@@ -6,7 +6,7 @@ pkgname=("python-pytorch" "python-pytorch-opt" "python-pytorch-cuda" "python-pyt
 _pkgname="pytorch"
 pkgver=1.9.0
 _pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -197,7 +197,7 @@ prepare() {
   export CUDNN_LIB_DIR=/usr/lib
   export CUDNN_INCLUDE_DIR=/usr/include
   export TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
-  export TORCH_CUDA_ARCH_LIST="5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6"
+  export TORCH_CUDA_ARCH_LIST="5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.6+PTX"  #include latest PTX for future compat
   export OVERRIDE_TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST}"
 }
 
