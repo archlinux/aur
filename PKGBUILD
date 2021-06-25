@@ -1,5 +1,6 @@
+# Maintainer: Justin Kromlinger <hashworks@archlinux.org>
 # Contributor: Dragutin Cirkovic <dragonmen@gmail.com>
-# Maintainer: heinrich5991 <heinrich5991@gmail.com>
+# Contributor: heinrich5991 <heinrich5991@gmail.com>
 pkgname=srs
 pkgver=3.0_r1
 pkgrel=2
@@ -7,7 +8,8 @@ pkgdesc="High performance RTMP Server"
 arch=('x86_64')
 url="https://github.com/ossrs/srs"
 license=('MIT')
-depends=('openssl'
+depends=('gcc-libs'
+         'openssl'
          'srs-state-threads')
 makedepends=('zlib' 'unzip' 'net-tools' 'python' 'git')
 backup=(etc/srs/srs.conf)

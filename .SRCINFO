@@ -12,6 +12,7 @@ pkgbase = srs
 	makedepends = net-tools
 	makedepends = python
 	makedepends = git
+	depends = gcc-libs
 	depends = openssl
 	depends = srs-state-threads
 	options = docs
