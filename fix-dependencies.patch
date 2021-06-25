@@ -1,12 +1,12 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 23b2230..c9b1bed 100644
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 4de71e3..d7a0e98 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -115,6 +115,7 @@ set(LUXMARK_SRCS
  ADD_EXECUTABLE(luxmark WIN32 ${LUXMARK_SRCS})
  
  TARGET_LINK_LIBRARIES(luxmark ${ALL_LUXCORE_LIBRARIES} ${Boost_LIBRARIES} ${Qt5_LIBRARIES} ${OPENGL_gl_LIBRARY} ${CMAKE_DL_LIBS})
-+TARGET_LINK_LIBRARIES(luxmark opensubdiv.a openvdb.a OpenImageIO python3 blosc dl)
++TARGET_LINK_LIBRARIES(luxmark opensubdiv.a openvdb.a OpenImageIO python3 blosc dl Imath)
  
  if (WIN32)
  	# This is needed by Boost 1.67 but is not found automatically
@@ -28,3 +28,25 @@ index 3544698..be202b4 100644
  		/usr/include
  		/usr/local/include
  		/opt/local/include)
+diff --git a/cmake/Packages/FindOpenEXR.cmake b/cmake/Packages/FindOpenEXR.cmake
+index 7bbd7a0..34ab35e 100644
+--- a/cmake/Packages/FindOpenEXR.cmake
++++ b/cmake/Packages/FindOpenEXR.cmake
+@@ -43,7 +43,7 @@ FIND_PATH(OPENEXR_INCLUDE_DIRS
+ 
+ IF (OPENEXR_INCLUDE_DIRS)
+ # Lookup additional headers in case they are in subdirectories
+-SET(OpenEXR_MODULES Iex Imf half Imath IlmThread)
++SET(OpenEXR_MODULES Iex Imf IlmThread)
+ FOREACH(i ${OpenEXR_MODULES})
+ 	FIND_PATH(OpenEXR_${i}_INCLUDE_DIR
+ 		NAMES ${i}.h ${i}Header.h ${i}Math.h
+@@ -65,7 +65,7 @@ FOREACH(i ${OpenEXR_MODULES})
+ ENDFOREACH(i)
+ ENDIF(OPENEXR_INCLUDE_DIRS)
+ 
+-SET(OpenEXR_LIBRARY_MODULES Iex IlmImf Half Imath IlmThread)
++SET(OpenEXR_LIBRARY_MODULES Iex IlmImf IlmThread)
+ SET(OpenEXR_LIB_SUFFIXES lib64 lib Lib lib/OpenEXR Libs x64/Release/lib)
+ SET(OpenEXR_LIB_SUFFIXES_REL)
+ SET(OpenEXR_LIB_SUFFIXES_DBG)
