@@ -2,7 +2,7 @@
 _kernser=5.12
 
 pkgbase=linux-studio
-pkgver=5.12.12
+pkgver=5.12.13
 pkgrel=1
 pkgdesc='Linux Studio Optimized'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -20,18 +20,16 @@ source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   "git+https://github.com/Frogging-Family/linux-tkg.git"
   "git+https://github.com/graysky2/kernel_compiler_patch.git"
-  config         # the main kernel config file
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('212ab2bc3d9616f48069f506196a0d1fa7f54db1593a76dccccfa23bdfaa3ea8'
+sha256sums=('af485fcde5635981e6713b547cc8904a7f6e74e5ffb784cc08781fa5999dd255'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'f1d688217c754ec97028f8b91f2ce3ff5c9a8a648c40118299c3656ec987735f')
+            'SKIP')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -77,15 +75,19 @@ prepare() {
   msg2 "Apply GCC kernel optimizations patch"
   patch -Np1 < "${srcdir}/kernel_compiler_patch/more-uarches-for-kernel-5.8+.patch"
 
-  echo "Setting config..."
-  cp ../config .config
+  ## Obtain the running system's kernel config
+  zcat /proc/config.gz > kernconfig
+
+  ## Creating New Config
+  msg2 "Setting config..."
+  cp kernconfig .config
   make olddefconfig
 
   ## Customize Kernel Settings
   make nconfig
 
   make -s kernelrelease > version
-  echo "Prepared $pkgbase version $(<version)"
+  msg2 "Prepared $pkgbase version $(<version)"
 }
 
 build() {
