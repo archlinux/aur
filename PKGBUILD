@@ -7,6 +7,7 @@
 # 
 # if somebody wants to maintain or contribute, just drop a note, i will add you.
 
+# Maintainer: cubi <coyote_x@gmx.de>
 # Maintainer: soloturn@gmail.com
 
 _basename=kanidm
