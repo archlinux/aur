@@ -11,8 +11,13 @@
 
 _basename=kanidm
 pkgbase=kanidm-git
-pkgname=($pkgbase-clients $pkgbase-server $pkgbase-unixd-clients)
-pkgver=v1.1.0.alpha.4.r55.g9f5d854
+pkgname=(
+	$_basename-git
+	$_basename-clients-git
+	$_basename-server-git
+	$_basename-unixd-clients-git
+)
+pkgver=v1.1.0.alpha.4.r57.ge1f4a57
 pkgrel=1
 pkgdesc='A identity management service and clients.'
 url='https://github.com/kanidm/kanidm'
@@ -29,8 +34,9 @@ pkgver() {
 
 build () {
   cd "$pkgbase"
-  export RUSTFLAGS="-Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2"
-  cargo build --release --target-dir target
+
+  export KANIDM_BUILD_PROFILE="release_suse_x86_64"
+  cargo build --locked --release --target-dir target
 
   # Now, move the completions to easier to install locations.
   mkdir -p target/release/_completions
@@ -38,12 +44,26 @@ build () {
   cp target/release/build/*/out/kanidm*.bash target/release/_completions/
 }
 
-package_kanidm-git-clients () {
-  conflicts=("$_basename-clients")
+
+package_kanidm-git () {
+  conflicts=("$_basename-bin")
+  depends=(
+	"kanidm-server-git=${pkgver}"
+	"kanidm-clients-git=${pkgver}"
+	"kanidm-unixd-clients-git=${pkgver}"
+  )
+}
+
+
+package_kanidm-clients-git () {
+  conflicts=("$_basename-clients-bin")
   provides=("$_basename-clients")
   pkgdesc='kanidm client to interact with kanidm identity management server.'
+  backup=("etc/kanidm/config")
 
   cd "$pkgbase"
+
+  install -Dm644 examples/config "${pkgdir}/etc/kanidm/config"
 
   install -Dm755 target/release/kanidm "${pkgdir}/usr/bin/kanidm"
 
@@ -52,33 +72,49 @@ package_kanidm-git-clients () {
   install -Dm644 target/release/_completions/kanidm.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm.sh"
 }
 
-package_kanidm-git-server () {
-  conflicts=("$_basename-server")
+package_kanidm-server-git () {
+  conflicts=("$_basename-server-bin")
   provides=("$_basename-server")
   pkgdesc='kanidm server for idendity management, supports RADIUS, ssh key management.'
+  backup=(
+    "etc/kanidm/server.toml"
+    "usr/lib/systemd/system/kanidmd.service"
+  )
 
   cd "$pkgbase"
 
+  install -Dm644 examples/server.toml "${pkgdir}/etc/kanidm/server.toml"
+  install -Dm644 platform/opensuse/kanidmd.service "${pkgdir}/usr/lib/systemd/system/kanidmd.service"
+
   install -Dm755 target/release/kanidmd "${pkgdir}/usr/bin/kanidmd"
   install -Dm755 target/release/kanidm_badlist_preprocess "${pkgdir}/usr/bin/kanidm_badlist_preprocess"
-
-  install -Dm644 kanidmd/server.toml "$pkgdir/etc/kanidm/server.toml"
-
-  install -Dm644 platform/opensuse/kanidmd.service "$pkgdir/usr/lib/systemd/system/kanidmd.service"
 
   install -Dm644 target/release/_completions/_kanidmd "${pkgdir}/usr/share/zsh/site-functions/_kanidmd"
   install -Dm644 target/release/_completions/_kanidm_badlist_preprocess "${pkgdir}/usr/share/zsh/site-functions/_kanidm_badlist_preprocess"
 
   install -Dm644 target/release/_completions/kanidmd.bash "${pkgdir}/usr/share/bash-completion/completions/kanidmd.sh"
   install -Dm644 target/release/_completions/kanidm_badlist_preprocess.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_badlist_preprocess.sh"
+
+  # add web-ui files
+  install -dv "${pkgdir}/usr/share/kanidm/ui/"
+  cp -r kanidmd_web_ui/pkg "${pkgdir}/usr/share/kanidm/ui/"
 }
 
-package_kanidm-git-unixd-clients () {
-  conflicts=("$_basename-unixd-clients")
+package_kanidm-unixd-clients-git () {
+  conflicts=("$_basename-unixd-clients-bin")
   provides=("$_basename-unixd-clients")
   pkgdesc='kanidm localhost resolver to resolve posix identities to a kanidm instance.'
+  backup=(
+    "etc/kanidm/unixd"
+    "usr/lib/systemd/system/kanidm-unixd.service"
+    "usr/lib/systemd/system/kanidm-unixd-tasks.service"
+  )
 
   cd "$pkgbase"
+
+  install -Dm644 examples/unixd "${pkgdir}/etc/kanidm/unixd"
+  install -Dm644 platform/opensuse/kanidm-unixd.service "${pkgdir}/usr/lib/systemd/system/kanidm-unixd.service"
+  install -Dm644 platform/opensuse/kanidm-unixd-tasks.service "${pkgdir}/usr/lib/systemd/system/kanidm-unixd-tasks.service"
 
   install -Dm755 target/release/libnss_kanidm.so "${pkgdir}/usr/lib/libnss_kanidm.so.2"
   install -Dm755 target/release/libpam_kanidm.so "${pkgdir}/usr/lib/security/pam_kanidm.so"
@@ -91,23 +127,15 @@ package_kanidm-git-unixd-clients () {
   install -Dm755 target/release/kanidm_unixd_status "${pkgdir}/usr/bin/kanidm_unixd_status"
   install -Dm755 target/release/kanidm_unixd_tasks "${pkgdir}/usr/bin/kanidm_unixd_tasks"
 
-  install -Dm644 platform/opensuse/kanidm-unixd.service "$pkgdir/usr/lib/systemd/system/kanidm-unixd.service"
-  install -Dm644 platform/opensuse/kanidm-unixd-tasks.service "$pkgdir/usr/lib/systemd/system/kanidm-unixd-tasks.service"
-
   install -Dm644 target/release/_completions/_kanidm_ssh_authorizedkeys_direct "${pkgdir}/usr/share/zsh/site-functions/_kanidm_ssh_authorizedkeys_direct"
   install -Dm644 target/release/_completions/_kanidm_cache_clear "${pkgdir}/usr/share/zsh/site-functions/_kanidm_cache_clear"
   install -Dm644 target/release/_completions/_kanidm_cache_invalidate "${pkgdir}/usr/share/zsh/site-functions/_kanidm_cache_invalidate"
   install -Dm644 target/release/_completions/_kanidm_ssh_authorizedkeys "${pkgdir}/usr/share/zsh/site-functions/_kanidm_ssh_authorizedkeys"
   install -Dm644 target/release/_completions/_kanidm_unixd_status "${pkgdir}/usr/share/zsh/site-functions/_kanidm_unixd_status"
-# TODO as soon its there
-#  install -Dm644 target/release/_completions/_kanidm_unixd_tasks_status "${pkgdir}/usr/share/zsh/site-functions/_kanidm_unixd_tasks_status"
 
   install -Dm644 target/release/_completions/kanidm_ssh_authorizedkeys_direct.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_ssh_authorizedkeys_direct.sh"
   install -Dm644 target/release/_completions/kanidm_cache_clear.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_cache_clear.sh"
   install -Dm644 target/release/_completions/kanidm_cache_invalidate.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_cache_invalidate.sh"
   install -Dm644 target/release/_completions/kanidm_ssh_authorizedkeys.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_ssh_authorizedkeys.sh"
   install -Dm644 target/release/_completions/kanidm_unixd_status.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_unixd_status.sh"
-# TODO as soon its there
-#  install -Dm644 target/release/_completions/kanidm_unixd_tasks_status.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_unixd_tasks_status.sh"
 }
-
