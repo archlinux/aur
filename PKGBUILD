@@ -1,7 +1,7 @@
 # Maintainer: hazelnot <scrabcrab@gmail.com>
 _pkgbase=re3
 pkgname=re3-git
-pkgver=r2913.9a7fa478
+pkgver=r2959.6152f023
 pkgrel=1
 pkgdesc="An open-source project reverse-engineering Grand Theft Auto III"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'premake' 'clang')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 source=(
-    "git+https://github.com/halpz/re3.git"
+    "git+https://github.com/GTAmodding/re3.git"
     "git+https://github.com/aap/librw.git"
     "git+https://github.com/xiph/ogg.git"
     "git+https://github.com/xiph/opus.git"
