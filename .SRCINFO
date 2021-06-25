@@ -1,0 +1,15 @@
+pkgbase = tecate-bitmap-fonts-bdf-git
+	pkgdesc = Monospaced bitmap fonts for X11, good for terminal use. (converted to bdf)
+	pkgver = r64.5c101c9
+	pkgrel = 1
+	url = https://github.com/Tecate/bitmap-fonts
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = pcf2bdf
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	source = git+https://github.com/Tecate/bitmap-fonts
+	sha256sums = SKIP
+
+pkgname = tecate-bitmap-fonts-bdf-git
