@@ -76,7 +76,7 @@ post_install() {
   cp "${DOKKU_LIB_ROOT}/VERSION" "${DOKKU_ROOT}/VERSION"
 
   echo "Update hostname"
-  hostname -f > "${DOKKU_ROOT}/HOSTNAME"
+  cp /etc/hostname "${DOKKU_ROOT}/HOSTNAME"
 
   echo "
     Please add your ssh pubkey like:
