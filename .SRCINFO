@@ -19,6 +19,6 @@ pkgbase = vocal-git
 	provides = vocal
 	conflicts = vocal
 	source = vocal-git::git+https://github.com/needle-and-thread/vocal.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = vocal-git

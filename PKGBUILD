@@ -15,7 +15,7 @@ makedepends=('cmake' 'git' 'vala')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=($pkgname::git+https://github.com/needle-and-thread/vocal.git)
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
@@ -24,23 +24,16 @@ pkgver() {
 }
 
 prepare() {
-  cd $pkgname
-
-  rm -rf build
-  mkdir build
-
   # Patch: fix build with granite 6 by disabling the About dialog (https://github.com/needle-and-thread/vocal/issues/483)
-  sed -i 's/controller.app.show_about (this);//' src/MainWindow.vala
+  sed -i 's/controller.app.show_about (this);//' $pkgname/src/MainWindow.vala
 }
 
 build() {
-  cd $pkgname/build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr   # -DGSETTINGS_COMPILE=0 -DGSETTINGS_LOCALINSTALL=1
-  make
+  cmake -B build -S $pkgname -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev    # -DGSETTINGS_COMPILE=0 -DGSETTINGS_LOCALINSTALL=1
+  make -C build
 }
 
 package() {
-  cd $pkgname/build
-  make DESTDIR="$pkgdir/" install
+  make -C build DESTDIR="$pkgdir/" install
 }
 
