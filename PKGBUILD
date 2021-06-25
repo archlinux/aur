@@ -24,7 +24,7 @@ prepare() {
 build() {
   cd "${pkgname}"
   mkdir -p build && cd build
-  cmake -D BUILD_TESTS=OFF -D CMAKE_BUILD_TYPE=release -D ARCH=default ../
+  cmake -D BUILD_TESTS=OFF -D USE_DEVICE_TREZOR=OFF -D CMAKE_BUILD_TYPE=release -D ARCH=default ../
   make
 }
 
