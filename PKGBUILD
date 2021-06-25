@@ -1,21 +1,20 @@
 # Maintainer: willemw <willemw12@gmail.com>
 # Contributor: unclesam <web _AT_ shinobi-mail _DOT_ de>
 
-_pkgname=mintstick
-pkgname=$_pkgname-git
-pkgver=r198.09aa95f
+pkgname=mintstick-git
+pkgver=r217.43e1194
 pkgrel=1
 pkgdesc="Format or write images to usb-sticks (Linux Mint tool)"
 arch=('any')
 url="https://github.com/linuxmint/mintstick"
 license=('GPL')
-depends=('desktop-file-utils' 'dosfstools' 'python-dbus' 'python-gobject' 'python-pyparted' 'python-xapp' 'udisks2' 'xapps')
+depends=('dosfstools' 'python-dbus' 'python-gobject' 'python-pyparted' 'python-xapp' 'udisks2' 'xapps')
 optdepends=('dosfstools: FAT filesystems' 'e2fsprogs: Ext filesystems' 'ntfs-3g: NTFS filesystems')
 makedepends=('git')
-provides=($_pkgname)
-conflicts=($_pkgname)
-source=($pkgname::git+https://github.com/linuxmint/mintstick.git)
-md5sums=(SKIP)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=($pkgname::git+$url.git)
+sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
