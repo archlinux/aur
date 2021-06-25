@@ -5,7 +5,7 @@
 # Contributor: Drew DeVault
 
 pkgname=nginx-mainline-boringssl
-pkgver=1.19.5
+pkgver=1.21.0
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
 arch=('i686' 'x86_64')
@@ -26,11 +26,12 @@ install=nginx.install
 provides=('nginx')
 conflicts=('nginx')
 source=($url/download/nginx-$pkgver.tar.gz{,.asc}
-        "git+https://boringssl.googlesource.com/boringssl#commit=3743aafdacff2f7b083615a043a37101f740fa53"
+        ##chromium 91.0.4472.77
+        "git+https://boringssl.googlesource.com/boringssl#commit=49f0329110a1d93a5febc2bceceedc655d995420"
         "service"
         "logrotate")
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
-sha256sums=('5c0a46afd6c452d4443f6ec0767f4d5c3e7c499e55a60cd6542b35a61eda799c'
+sha256sums=('fe192a4bac2bd3a769e8695cb9fe14a00e57eaceb919095347a83b5b2afc0771'
             'SKIP'
             'SKIP'
             '05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b'
