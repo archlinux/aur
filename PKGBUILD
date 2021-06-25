@@ -10,8 +10,8 @@ arch=('any')
 license=('GPL3')
 depends=('python')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/garabik/${pkgname}/archive/v${pkgver}.tar.gz"
-        UnicodeData-${pkgver}-${pkgrel}.txt::'http://www.unicode.org/Public/UNIDATA/UnicodeData.txt'
-        Blocks-${pkgver}-${pkgrel}.txt::'http://www.unicode.org/Public/UNIDATA/Blocks.txt')
+        UnicodeData-${pkgver}-${pkgrel}.txt::'https://www.unicode.org/Public/UNIDATA/UnicodeData.txt'
+        Blocks-${pkgver}-${pkgrel}.txt::'https://www.unicode.org/Public/UNIDATA/Blocks.txt')
 sha256sums=('35637578fb6f0758366175951147ab753c95b005e371f9bb5ad21e5ac08c28d8'
             'bdbffbbfc8ad4d3a6d01b5891510458f3d36f7170422af4ea2bed3211a73e8bb'
             '81a82b6a9fcf1a9c12f588d7a1decd73a9afdc4cac95b0eb7e576e7942d6c19f')
