@@ -61,9 +61,10 @@ package_kanidm-server () {
   install -Dm755 target/release/kanidmd "${pkgdir}/usr/bin/kanidmd"
   install -Dm755 target/release/kanidm_badlist_preprocess "${pkgdir}/usr/bin/kanidm_badlist_preprocess"
 
-  install -Dm644 $srcdir/../server.toml "$pkgdir/etc/kanidm/server.toml"
+  install -Dm644 kanidmd/server.toml "$pkgdir/etc/kanidm/server.toml"
 
-  install -Dm644 $srcdir/../kanidmd.service "$pkgdir/usr/lib/systemd/system/kanidmd.service"
+# as soon as it exists
+#  install -Dm644 kanidmd/kanidmd.service "$pkgdir/usr/lib/systemd/system/kanidmd.service"
 
   install -Dm644 target/release/_completions/_kanidmd "${pkgdir}/usr/share/zsh/site-functions/_kanidmd"
   install -Dm644 target/release/_completions/_kanidm_badlist_preprocess "${pkgdir}/usr/share/zsh/site-functions/_kanidm_badlist_preprocess"
@@ -90,8 +91,9 @@ package_kanidm-unixd-clients () {
   install -Dm755 target/release/kanidm_unixd_status "${pkgdir}/usr/bin/kanidm_unixd_status"
   install -Dm755 target/release/kanidm_unixd_tasks "${pkgdir}/usr/bin/kanidm_unixd_tasks"
 
-  install -Dm644 $srcdir/../kanidm-unixd.service "$pkgdir/usr/lib/systemd/system/kanidm-unixd.service"
-  install -Dm644 $srcdir/../kanidm-unixd-tasks.service "$pkgdir/usr/lib/systemd/system/kanidm-unixd-tasks.service"
+# as soon as it exists
+#  install -Dm644 $srcdir/../kanidm-unixd.service "$pkgdir/usr/lib/systemd/system/kanidm-unixd.service"
+#  install -Dm644 $srcdir/../kanidm-unixd-tasks.service "$pkgdir/usr/lib/systemd/system/kanidm-unixd-tasks.service"
 
   install -Dm644 target/release/_completions/_kanidm_ssh_authorizedkeys_direct "${pkgdir}/usr/share/zsh/site-functions/_kanidm_ssh_authorizedkeys_direct"
   install -Dm644 target/release/_completions/_kanidm_cache_clear "${pkgdir}/usr/share/zsh/site-functions/_kanidm_cache_clear"
