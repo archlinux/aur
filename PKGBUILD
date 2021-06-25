@@ -2,7 +2,7 @@
 # Contributor: Christian Krause ("wookietreiber") <christian dot krause at mailbox dot org>
 
 pkgname=wiggletools
-pkgver=1.2.10
+pkgver=1.2.11
 pkgrel=1
 pkgdesc="Compute genome-wide statistics with composable iterators"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('gsl' 'htslib' 'libbigwig' 'python2')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Ensembl/WiggleTools/archive/v${pkgver}.tar.gz"
         "wiggletools-flags.patch")
-sha256sums=('082ee703ad3a5379a70d885002a18d0bf285bb2eff16a9388f640093b630303b'
+sha256sums=('ba239c55d017c5d7fd7e11ebf827a1caf3e504bf61bdcd511cd9342da0e94005'
             'c0d08f1b99d2b0d9849272ca18f064288dbaeb32ad986b015396d7b01c85e77c')
 
 prepare() {

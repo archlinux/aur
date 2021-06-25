@@ -1,6 +1,6 @@
 pkgbase = wiggletools
 	pkgdesc = Compute genome-wide statistics with composable iterators
-	pkgver = 1.2.10
+	pkgver = 1.2.11
 	pkgrel = 1
 	url = https://github.com/Ensembl/WiggleTools
 	arch = i686
@@ -10,10 +10,9 @@ pkgbase = wiggletools
 	depends = htslib
 	depends = libbigwig
 	depends = python2
-	source = wiggletools-1.2.10.tar.gz::https://github.com/Ensembl/WiggleTools/archive/v1.2.10.tar.gz
+	source = wiggletools-1.2.11.tar.gz::https://github.com/Ensembl/WiggleTools/archive/v1.2.11.tar.gz
 	source = wiggletools-flags.patch
-	sha256sums = 082ee703ad3a5379a70d885002a18d0bf285bb2eff16a9388f640093b630303b
+	sha256sums = ba239c55d017c5d7fd7e11ebf827a1caf3e504bf61bdcd511cd9342da0e94005
 	sha256sums = c0d08f1b99d2b0d9849272ca18f064288dbaeb32ad986b015396d7b01c85e77c
 
 pkgname = wiggletools
-
