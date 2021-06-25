@@ -1,6 +1,6 @@
 pkgbase = hm-git
 	pkgdesc = HEVC Test Model - the reference software for HEVC (git version)
-	pkgver = 16.22.r2.g9ea3a3e9
+	pkgver = 16.23.r32.g6169f170
 	pkgrel = 1
 	url = https://hevc.hhi.fraunhofer.de/
 	arch = x86_64
@@ -16,7 +16,8 @@ pkgbase = hm-git
 	conflicts = hm-svn
 	replaces = hm-svn
 	source = git+https://vcgit.hhi.fraunhofer.de/jct-vc/HM.git
+	source = 010-hm-disable-werror.patch
 	sha256sums = SKIP
+	sha256sums = 26ed4fb40812ecfce04b1301dc159fb2a575ece22a3532fe991f72e0f4e9488a
 
 pkgname = hm-git
-
