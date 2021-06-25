@@ -5,7 +5,7 @@
 # Contributor: canton7
 
 pkgname=get_iplayer-git
-pkgver=3.25
+pkgver=3.27.r3.gabd6c84
 pkgrel=1
 pkgdesc="Download TV and radio programmes from BBC iPlayer"
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=('git')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 source=($pkgname::git+$url.git)
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
@@ -32,13 +32,8 @@ pkgver() {
 }
 
 package() {
-  cd $pkgname
-  install -Dm755 get_iplayer "$pkgdir/usr/bin/get_iplayer"
-  install -Dm755 get_iplayer.cgi "$pkgdir/usr/bin/get_iplayer.cgi"
-
-  install -Dm644 README.md "$pkgdir/usr/share/doc/get_iplayer/README.md"
-
-  install -dm755 "$pkgdir/usr/share/man/man1"
-  install -Dm644 get_iplayer.1 "$pkgdir/usr/share/man/man1/get_iplayer.1"
+  install -Dm755 $pkgname/get_iplayer $pkgname/get_iplayer.cgi -t "$pkgdir/usr/bin"
+  install -Dm644 $pkgname/README.md -t "$pkgdir/usr/share/doc/get_iplayer"
+  install -Dm644 $pkgname/get_iplayer.1 -t "$pkgdir/usr/share/man/man1"
 }
 
