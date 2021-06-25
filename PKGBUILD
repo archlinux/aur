@@ -19,7 +19,7 @@ sha256sums=('027a4cfc3f0e83d0ecd10958261c353df7d7a119895ba8c48437865ffcf88df3'
 build() {
     cd "$srcdir"
 
-    arch-meson "osu-handler-wine-${pkgver}" build -D b_ndebug=true
+    arch-meson "osu-handler-wine-${pkgver}" build --unity on -D b_ndebug=true
     meson compile -C build
 }
 
