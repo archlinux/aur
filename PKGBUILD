@@ -9,7 +9,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=python2-protobuf
-pkgver=3.16.0
+pkgver=3.17.3
 pkgrel=1
 pkgdesc='Python 2 bindings for Google Protocol Buffers'
 arch=('x86_64')
@@ -25,7 +25,7 @@ makedepends=('unzip'
              'python2-setuptools'
              )
 source=("https://github.com/protocolbuffers/protobuf/releases/download/v${pkgver}/protobuf-all-${pkgver}.tar.gz")
-sha512sums=('47e35d5bb11c80642dc4a4484690e341cccbe591efdc362516c9a24a56ac695b96b2ea7cf6e94f4e16da8a9c39d64c399417bb8d8f46855335dccaf0e0db866b')
+sha512sums=('4a5e2ba080310492eb4fd8f6d89d46591254544f4fc1ef1b6a3a285aa12089e3124ff41994455b4b77e79eb1e993c68ec9c54e13a78052b9fb29b8cbf1dc67e1')
 
 prepare() {
   cd "protobuf-${pkgver}"
@@ -54,9 +54,9 @@ package() {
     cd python
     PYTHONPATH="$PWD/build/lib.linux-$CARCH-${python_version}:PYTHONPATH" \
     python2 setup.py install --skip-build \
-                            --cpp_implementation \
-                            --optimize=1 \
-                            --root="${pkgdir}"
+                             --cpp_implementation \
+                             --optimize=1 \
+                             --root="${pkgdir}"
   )
   install -vDm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
