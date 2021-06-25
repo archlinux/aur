@@ -8,6 +8,8 @@ arch=('x86_64')
 url="https://writer.drakeet.com/desktop"
 license=('Custom')
 depends=('jre-openjdk')
+conflicts=('purewriter-desktop')
+replaces=('purewriter-desktop')
 source=("https://github.com/PureWriter/desktop/releases/download/$pkgver/PureWriter-$pkgver-Linux-amd64.deb"
         'purewriter'
         'purewriter.png'
