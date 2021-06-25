@@ -1,0 +1,13 @@
+diff --git a/tests/utils/mock_oauth_provider/routes.py b/tests/utils/mock_oauth_provider/routes.py
+index b1254ea..54f0956 100644
+--- a/tests/utils/mock_oauth_provider/routes.py
++++ b/tests/utils/mock_oauth_provider/routes.py
+@@ -13,7 +13,7 @@ from tests.utils.mock_oauth_provider.models import (OAuth2Client, User, db)
+ from tests.utils.mock_oauth_provider.oauth2 import (authorization, require_oauth)
+ 
+ logger = logging.getLogger(__name__)
+-bp = Blueprint(__name__, 'home')
++bp = Blueprint('home', __name__)
+ 
+ 
+ def current_user():
