@@ -1,6 +1,14 @@
 # Maintainer: Leonidas Spyropoulos <artafinde at gmail dot com>
 # Contributor: CyrIng <labs[at]cyring[dot]fr>
 
+### BUILD OPTIONS
+# Set the next variables to ANYTHING that is not null to enable them
+
+# Enable transparency mode in terminal
+_transparency=
+
+### Do no edit below this line unless you know what you're doing
+
 pkgbase=corefreq-git
 pkgname=(corefreq-client-git corefreq-server-git corefreq-dkms-git)
 _gitname=CoreFreq
@@ -24,7 +32,11 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
-  make corefreqd corefreq-cli
+  if [ -n "${_transparency}" ]; then
+    make corefreqd corefreq-cli UI_TRANSPARENCY=1
+  else
+    make corefreqd corefreq-cli
+  fi
 }
 
 package_corefreq-dkms-git() {
