@@ -4,7 +4,7 @@
 
 _pkgname=libretro-ppsspp
 pkgname=libretro-ppsspp-rbp
-pkgver=29806
+pkgver=29976
 pkgrel=1
 pkgdesc='Sony PlayStation Portable core (build for Raspberry Pi)'
 arch=(armv7h)
@@ -28,7 +28,7 @@ makedepends=(
   ninja
   python
 )
-_commit=138d81e14d9e71ea458b405df333fc015f84f460
+_commit=8e9b0122a8815d8c15c0d2cbff6a1f1828ca27fd
 source=(
   libretro-ppsspp::git+https://github.com/hrydgard/ppsspp.git#commit=${_commit}
   git+https://github.com/Kingcom/armips.git
@@ -51,7 +51,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '2234ab0c53849ed728889305a68119a365da16094a1b7ac2c4d2a2ababe5c8f5'
+            'c00fabec601ebf3e209871fe409d047ab47040c199e9e8e5f9ba0abdd9086ce6'
             'c65ae3f20976a573b1a74600b02515e3f665513864a49e10db57c2fd170819e7')
 
 pkgver() {
@@ -63,7 +63,7 @@ pkgver() {
 prepare() {
   cd libretro-ppsspp
 
-  patch -Np1 -i ../libretro-ppsspp-assets-path.patch
+  #patch -Np1 -i ../libretro-ppsspp-assets-path.patch
   patch -Np1 -i ../libretro-ppsspp-system-zstd.patch
 
   for submodule in assets/lang ext/glslang ext/miniupnp; do
@@ -108,7 +108,7 @@ build() {
 
 package() {
   install -Dm 644 build/lib/ppsspp_libretro.so -t "${pkgdir}"/usr/lib/libretro/
-  install -Dm 644 libretro-ppsspp/LICENSE.TXT -t "${pkgdir}"/usr/share/licenses/libretro-ppsspp-git/
+  install -Dm 644 libretro-ppsspp/LICENSE.TXT -t "${pkgdir}"/usr/share/licenses/libretro-ppsspp/
   install -dm 755 "${pkgdir}"/usr/share/libretro/ppsspp
   cp -dr --no-preserve=ownership build/assets "${pkgdir}"/usr/share/libretro/ppsspp/
 }
