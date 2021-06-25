@@ -5,7 +5,7 @@
 _LANG='en'
 
 pkgname=ecodms-client
-pkgver=21.02.1
+pkgver=21.06.1
 pkgrel=1
 pkgdesc="Document Management Software"
 arch=('x86_64')
@@ -15,8 +15,8 @@ depends=('apr' 'bash' 'libappindicator-gtk2' 'libgcrypt' 'qt5-webengine' 'qt5-sv
 options=('!strip')
 install=${pkgname}.install
 
-source_x86_64=("ecodmsclient-${pkgver}_amd64.deb::https://www.ecodms.de/ecodms_210264/focal/ecodmsclient-21.02-1-0_amd64.deb")
-md5sums_x86_64=('28fd3969d2a807f3734e61728fb69111')
+source_x86_64=("ecodmsclient-${pkgver}_amd64.deb::https://www.ecodms.de/ecodms_210664/focal/ecodmsclient-21.06-1-0_amd64.deb")
+md5sums_x86_64=('2cd9723cfacec22a8e4da20a4c154be3')
 
 package() {
   cd "${srcdir}"
