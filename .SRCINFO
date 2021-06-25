@@ -1,6 +1,6 @@
 pkgbase = hidapi-git
 	pkgdesc = Simple library for communicating with USB and Bluetooth HID devices
-	pkgver = 0.10.1.r3.gfb4135c
+	pkgver = 0.10.1.r18.g6fcb0bb
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/libusb/hidapi
@@ -17,9 +17,7 @@ pkgbase = hidapi-git
 	provides = hidapi
 	conflicts = hidapi
 	source = hidapi-git::git+https://github.com/libusb/hidapi
-	source = autoconf-2.70.patch
 	sha256sums = SKIP
-	sha256sums = aeb7706401fc6e9b5b042217622e74ce314142141c91ebc41e185c7bd4a48d57
 
 pkgname = hidapi-git
 
