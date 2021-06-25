@@ -6,7 +6,7 @@ pkgver=v${_pkgver}
 pkgrel=1
 pkgdesc="A Good Symlinks Manager"
 arch=('x86_64' 'armv6' 'armv7' 'aarch64')
-url="https://github.com/mr-karan/doggo"
+url="https://github.com/iamd3vil/shelf"
 license=('MIT')
 depends=()
 makedepends=()
@@ -24,8 +24,7 @@ sha256sums_armv7=('3e54fa261a85761efbcfdf7eda1a1f7ae44ce321c5062173561abbea7ee56
 package() {
     cd "${srcdir}/"
 
-    # Install doggo
+    # Install shelf
     install -D -m0755 shelf \
         "${pkgdir}/usr/bin/shelf"
 }
-
