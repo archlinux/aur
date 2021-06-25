@@ -1,0 +1,17 @@
+pkgbase = fuzzynote
+	pkgdesc = Terminal-based, CRDT-backed, local-first, collaborative note-taking
+	pkgver = 0.18.0
+	pkgrel = 1
+	url = https://github.com/Sambigeara/fuzzynote
+	arch = x86_64
+	license = unknown
+	makedepends = go
+	makedepends = make
+	source = fuzzynote-0.18.0.tar.gz::https://github.com/Sambigeara/fuzzynote/archive/refs/tags/v0.18.0.tar.gz
+	md5sums = 011d4f2f0e2e9220b8d775522027d762
+	sha1sums = 6ea731eb84f740e3e8a1f499a3ad35de873d8587
+	sha256sums = 9316971c28a0f777ade0ab149567e1a94fff844cb6583ce3805feefaa3f00b78
+	sha512sums = d116bb53bf0fc6786153ab05acf956099506a0d198d2261b2f6bcb225561ab8a1d466408d1f2726c0bdd03c3a6d0fb9d49a016e4fdb20f7a440824161c090cc7
+	b2sums = aa6e17bbed8b8da8dfc59b37a6202d2a9d65c9e6e682fef5778e0d1cf89d6d23e31308077ffa0c815ab8fc150f277fa75d3316f4f4a8559e865b1f61ce5e3a66
+
+pkgname = fuzzynote
