@@ -1,7 +1,7 @@
 pkgbase = mkunified-git
 	pkgdesc = Unified kernel image generation utility which supports initrd generation using mkinitcpio
-	pkgver = 0.r1.g8b9d817
-	pkgrel = 3
+	pkgver = 0.r5.gb77ee61
+	pkgrel = 1
 	url = https://github.com/ErnyTech/mkunified
 	arch = any
 	license = AGPL-3.0
@@ -17,4 +17,3 @@ pkgbase = mkunified-git
 	sha256sums = SKIP
 
 pkgname = mkunified-git
-
