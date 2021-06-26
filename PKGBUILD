@@ -1,36 +1,34 @@
 # Maintainer: willemw <willemw12@gmail.com>
 # Contributor: B4SH-B00STER
 
-_pkgname=youtube-dl-gui
-pkgname=$_pkgname-git
+pkgname=youtube-dl-gui-git
 pkgver=0.4.r81.gc5c18e5
-pkgrel=1
-pkgdesc="A cross platform front-end GUI of the popular youtube-dl written in wxPython"
+pkgrel=2
+pkgdesc="Cross platform front-end GUI of the popular youtube-dl written in wxPython"
 arch=('any')
 url="https://github.com/MrS0m30n3/youtube-dl-gui"
 license=('custom:UNLICENSE')
-#depends=('gtk-update-icon-cache' 'python2-twodict' 'wxpython')
-depends=('gtk-update-icon-cache' 'python2-twodict-git' 'wxpython')
+#depends=('python2-twodict' 'python2-wxpython3')
+depends=('python2-twodict-git' 'python2-wxpython3')
 optdepends=('ffmpeg: convert video files to audio-only files'
             'youtube-dl: alternative to the youtube-dl program downloaded by youtube-dl-gui')
 makedepends=('git')
-provides=($_pkgname)
-conflicts=($_pkgname)
-source=($pkgname::git+https://github.com/MrS0m30n3/youtube-dl-gui.git
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
+source=($pkgname::git+$url.git
         youtube-dl-gui.desktop)
-md5sums=('SKIP'
-         '298421ed0a9e2c6475e0bb3f86d2d2a7')
+sha256sums=('SKIP'
+            '1f687872e8105394e8b41ab99f3923e87b1cb6c041602147d7847bc4b8f26e8d')
 
 pkgver() {
-  cd $pkgname
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C $pkgname describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  install -Dm644 youtube-dl-gui.desktop "$pkgdir/usr/share/applications/youtube-dl-gui.desktop"
+  install -Dm644 youtube-dl-gui.desktop -t "$pkgdir/usr/share/applications"
 
   cd $pkgname
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
 
