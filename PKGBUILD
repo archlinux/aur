@@ -1,18 +1,18 @@
-# Maintainer: Max Ferrer (Panda Foss) <maxi.fg13@gmail.com>
+# Maintainer: Nathaniel Maia <natemaia10@gmail.com>
+
 pkgname=baph
-pkgver=0.6
-pkgrel=3
+pkgver=1.1
+pkgrel=1
 pkgdesc="Basic AUR Package Helper"
 arch=('any')
-url="https://github.com/PandaFoss/baph"
+url="https://bitbucket.org/natemaia/baph"
 license=('GPL')
-depends=('coreutils' 'pacman-contrib' 'curl')
-source=('https://raw.githubusercontent.com/PandaFoss/baph/master/baph')
-md5sums=('55365800010330b45842101f0a4e3bf5')
+depends=('sudo' 'curl')
+optdepends=('git: download AUR packages via git')
+source=("git+${url}.git#tag=v${pkgver}")
+md5sums=('SKIP')
 
 package() {
-  cd "${srcdir}"
-  install -Dm755 baph "$pkgdir"/usr/bin/baph
+	cd baph/ &&
+		make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
-
-# vim:set ts=2 sw=2 et:

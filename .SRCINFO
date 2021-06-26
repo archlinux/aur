@@ -1,15 +1,14 @@
 pkgbase = baph
 	pkgdesc = Basic AUR Package Helper
-	pkgver = 0.6
-	pkgrel = 3
-	url = https://github.com/PandaFoss/baph
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://bitbucket.org/natemaia/baph
 	arch = any
 	license = GPL
-	depends = coreutils
-	depends = pacman-contrib
+	depends = sudo
 	depends = curl
-	source = https://raw.githubusercontent.com/PandaFoss/baph/master/baph
-	md5sums = 55365800010330b45842101f0a4e3bf5
+	optdepends = git: download AUR packages via git
+	source = git+https://bitbucket.org/natemaia/baph.git#tag=v1.1
+	md5sums = SKIP
 
 pkgname = baph
-
