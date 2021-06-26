@@ -1,0 +1,14 @@
+pkgbase = polkadot-js-desktop-bin
+	pkgdesc = Polkadot-js Desktop App
+	pkgver = v0.93.1
+	pkgrel = 0
+	url = https://github.com/polkadot-js/apps
+	arch = x86_64
+	license = MIT
+	provides = polkadot-apps
+	conflicts = polkadot-apps
+	options = !strip
+	source = Polkadot-JS-Apps-0.93.1.AppImage::https://github.com/polkadot-js/apps/releases/download/v0.93.1/Polkadot-JS-Apps-0.93.1.AppImage
+	sha256sums = 4da7bdb6701f258b80fce8368a8780709ebdb0110a79201a69dfd0f5f544c2ff
+
+pkgname = polkadot-js-desktop-bin
