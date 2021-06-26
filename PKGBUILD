@@ -7,17 +7,20 @@
 
 # ALARM: Kevin Mihelich <kevin@archlinuxarm.org>
 #  - use -fPIC in host cflags for v7/v8 to fix print_options.c compile
+#  - explicitly link v5/v6 with libatomic
 #  - remove makedepends on ffnvcodec-headers, remove --enable-nvenc, --enable-nvdec
 #  - remove depends on aom, remove --enable-libaom
 #  - remove depends on intel-media-sdk, remove --enable-libmfx
 #  - remove depends on vmaf, remove --enable-vmaf
 #  - remove depends on rav1e, remove --enable-librav1e
+#  - remove depends on svt-av1, remove --enable-libsvtav1
+#  - remove --enable-lto
 # Upstream: https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/ffmpeg/PKGBUILD
 
 pkgname=ffmpeg-mmal
-pkgver=4.3.1
-pkgrel=3
-epoch=1
+pkgver=4.4
+pkgrel=4
+epoch=2
 pkgdesc='ffmpeg built with MMAL hardware acceleration support for Raspberry Pi'
 arch=('armv6h' 'armv7h' 'aarch64')
 url=https://ffmpeg.org/
@@ -40,9 +43,9 @@ depends=(
   libfreetype.so
   libiec61883
   libmodplug
-  libomxil-bellagio
   libpulse
   libraw1394
+  librsvg-2.so
   libsoxr
   libssh
   libtheora
@@ -63,6 +66,7 @@ depends=(
   libxml2
   libxv
   libxvidcore.so
+  libzimg.so
   opencore-amr
   openjpeg2
   opus
@@ -75,7 +79,9 @@ depends=(
   zlib
 )
 makedepends=(
+  amf-headers
   avisynthplus
+  clang
   git
   ladspa
   nasm
@@ -96,7 +102,7 @@ provides=(
   libswscale.so
 )
 conflicts=('ffmpeg')
-_tag=6b6b9e593dd4d3aaf75f48d40a13ef03bdef9fdb
+_tag=dc91b913b6260e85e1304c74ff7bb3c22a8c9fb1
 source=(
   git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
   vmaf-model-path.patch
@@ -114,22 +120,24 @@ pkgver() {
 
 prepare() {
   cd ffmpeg
-
+  git cherry-pick -n 988f2e9eb063db7c1a678729f58aab6eba59a55b # fix nvenc on older gpus
   patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
-  git cherry-pick -n 7c59e1b0f285cd7c7b35fcd71f49c5fd52cf9315 # fix the build with recent libsrt version
 }
 
 build() {
   cd ffmpeg
 
   [[ $CARCH == "armv7h" || $CARCH == "aarch64" ]] && CONFIG='--host-cflags="-fPIC"'
+  [[ $CARCH == "armv6h" || $CARCH == 'arm' ]] && CONFIG='--extra-libs="-latomic"'
 
   ./configure \
     --prefix=/usr \
     --disable-debug \
     --disable-static \
     --disable-stripping \
+    --enable-amf \
     --enable-avisynth \
+    --enable-cuda-llvm \
     --enable-fontconfig \
     --enable-gmp \
     --enable-gnutls \
@@ -151,6 +159,7 @@ build() {
     --enable-libopenjpeg \
     --enable-libopus \
     --enable-libpulse \
+    --enable-librsvg \
     --enable-libsoxr \
     --enable-libspeex \
     --enable-libsrt \
@@ -166,6 +175,7 @@ build() {
     --enable-libxcb \
     --enable-libxml2 \
     --enable-libxvid \
+    --enable-libzimg \
     --enable-mmal \
     --enable-omx \
     --enable-omx-rpi \
