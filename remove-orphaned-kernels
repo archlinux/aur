@@ -20,11 +20,38 @@ def yn_choice(message, default='y'):
         sys.exit(1)
 
 
+def getdeps(pkg):
+    pkginfo = get_output('pacman', '-Qi', pkg)
+    deps = pkginfo.split('Depends On')[1].split(':')[1].rsplit('\n', 1)[0].split()
+    if 'None' in deps:
+        deps.remove('None')
+    return deps
+
+
+def getrdeps(pkg):
+    pkginfo = get_output('pacman', '-Qi', pkg)
+    rdeps = pkginfo.split('Required By')[1].split(':')[1].rsplit('\n', 1)[0].split()
+    if 'None' in rdeps:
+        rdeps.remove('None')
+    return rdeps
+
+
+def is_directly_required(pkg):
+    # Check if package is required by other packages directly - not including a
+    # requirement on an abstract "provides" that the packages provides. For example, if
+    # a packages depends on WIREGUARD_MODULE, which is provided by all kernel packages,
+    # we don't want that to count.
+    for rdep in getrdeps(pkg):
+        if pkg in getdeps(rdep):
+            return True
+    return False
+
+
 running_kernel = get_output('uname', '-r')
 running_pkgs = get_output('pacman', '-Qoq', f'{MODULES}/{running_kernel}')
 all_kernels = [f'{MODULES}/{k}' for k in os.listdir(MODULES)]
 all_pkgs = get_output('pacman', '-Qoq', *all_kernels).split()
-orphaned_packages = get_output('pacman', '-Qdtq', *all_pkgs).split()
+orphaned_packages = [pkg for pkg in all_pkgs if not is_directly_required(pkg)]
 
 non_orphaned = []
 orphaned_not_running = []

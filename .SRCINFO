@@ -1,6 +1,6 @@
 pkgbase = remove-orphaned-kernels
 	pkgdesc = pacman -Rs orphaned kernel and driver packages, excluding currently-running.
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/remove-orphaned-kernels/
 	arch = any
@@ -11,4 +11,3 @@ pkgbase = remove-orphaned-kernels
 	sha256sums = a6939f973aa8013944354db38d4b42e0bcf69673fbabbc804af9842d27101649
 
 pkgname = remove-orphaned-kernels
-
