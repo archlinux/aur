@@ -1,20 +1,16 @@
 pkgbase = awb
 	pkgdesc = AsciiDoc Website Builder - build a website using AsciiDoc markup
 	pkgver = 0.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jared.henley.id.au/software/awb/
 	install = awb.install
 	arch = any
 	license = GPL
 	depends = python
 	depends = asciidoc
-	noextract = awb-website.tar.bz2
-	source = http://sourceforge.net/projects/awb/files/awb/0.3.5/awb-0.3.5.tar.bz2/download
-	source = http://awb.sourceforge.net/awb-website.tar.bz2
+	source = https://jared.henley.id.au/software/awb/download/awb-0.3.5.tar.bz2
 	source = awb.conf
 	md5sums = b7f9bf1195b69f7186fa17c683b8fe49
-	md5sums = e86f2250f14c44c62d26cbc7d8059db3
 	md5sums = d41ef48ff0f0dd585661eb6dec540c5e
 
 pkgname = awb
-
