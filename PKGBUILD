@@ -1,8 +1,8 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=fish-fzf
-pkgver=7.0
-pkgrel=2
+pkgver=7.1
+pkgrel=1
 pkgdesc="fzf key-bindings into fish"
 arch=('any')
 url="https://github.com/PatrickF1/fzf.fish"
@@ -16,7 +16,7 @@ makedepends=('git')
 # checkdepends=('fish-fishtape')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('eec99573b40d6a5429496b3f5ba3da21080564d7c58b54522cab82a862d1792a67b84c0ac7034d43f1bd50d87982074fee0d3199e2585f6fc5cfcdb78db8b8fb')
+sha512sums=('11c89a1ce0fbb9d50370cbb694fb59d0b94847d92ab8333af28493130dce02f55b41df99641d69c6f0503641e891e5ea935ce1e3cb4f095239fd8619ee694e44')
 
 # check() {
 #   cd "fzf.fish-$pkgver/"
