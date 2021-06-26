@@ -2,7 +2,7 @@
 
 export GIT_LFS_SKIP_SMUDGE=1
 pkgname=veloren-git
-pkgver=0.10.0.r111.f132c3fcb
+pkgver=0.10.0.r229.d479b6d20
 pkgrel=1
 pkgdesc="An open-world, open-source multiplayer voxel RPG"
 arch=('x86_64' 'i686')
@@ -34,7 +34,9 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname"
-    VELOREN_USERDATA_STRATEGY='system' cargo build --release --bin veloren-voxygen --bin veloren-server-cli
+    export VELOREN_USERDATA_STRATEGY='system' 
+    cargo build --release --bin veloren-voxygen --no-default-features --features="default-publish"
+    cargo build --release --bin veloren-server-cli
 }
 
 package() {
