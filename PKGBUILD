@@ -1,29 +1,37 @@
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Maintainer: Triangulum Labs <triangulumlabs@gmail.com>
 # Contributor: FrozenCow <frozencow@gmail.com>
 
-pkgname=usrsctp-git
-pkgver=0.9.4.0
-pkgrel=2
-pkgdesc="A portable SCTP userland stack"
+pkgname=libusrsctp-git
+pkgver=0.9.5.0.r37.gde7d903
+pkgrel=1
+pkgdesc='A portable SCTP userland stack'
+arch=(x86_64 i686)
+url='https://github.com/sctplab/usrsctp'
+license=(BSD)
+makedepends=(cmake git)
+conflicts=("${pkgname%-git}" usrsctp-git)
+provides=("${pkgname%-git}=$pkgver" usrsctp-git)
+replaces=(usrsctp-git)
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
 
-arch=('i686' 'x86_64')
-url="https://github.com/sctplab/usrsctp"
-license=("BSD")
-
-makedepends=('cmake' 'git')
-source=("${pkgver}::https://github.com/sctplab/usrsctp/archive/0.9.4.0.tar.gz")
-sha256sums=('e7b8f908d71dc69c9a2bf55d609e8fdbb2fa7cc647f8b23a837d36a05c59cd77')
+pkgver() {
+	cd "$pkgname"
+	git describe --long --abbrev=7 --tags |
+		sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-  cd "$srcdir/usrsctp-$pkgver"
-  unset CPPFLAGS
-  export CFLAGS="$CFLAGS -fPIC"
-  cmake .
-  make
+	cd "$pkgname"
+	unset CPPFLAGS
+	export CFLAGS="$CFLAGS -fPIC"
+	cmake .
+	make
 }
 
 package() {
-  cd "$srcdir/usrsctp-$pkgver"
-  make DESTDIR="$pkgdir/" install
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "$pkgname"
+	make DESTDIR="$pkgdir/" install
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.md
 }
