@@ -2,7 +2,7 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kdsoap-git
-pkgver=1.99.50_r1699.g914c1de3
+pkgver=1.99.50_r1730.g12f0ee76
 pkgrel=1
 pkgdesc='Qt-based client-side and server-side SOAP component'
 license=(GPL3 LGPL custom)
@@ -14,6 +14,11 @@ conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+$url.git")
 sha256sums=('SKIP')
+
+prepare() {
+  cd KDSoap
+  git submodule update --init --recursive
+}
 
 pkgver() {
   cd KDSoap

@@ -1,6 +1,6 @@
 pkgbase = kdsoap-git
 	pkgdesc = Qt-based client-side and server-side SOAP component
-	pkgver = 1.99.50_r1699.g914c1de3
+	pkgver = 1.99.50_r1730.g12f0ee76
 	pkgrel = 1
 	url = https://github.com/KDAB/KDSoap
 	arch = x86_64
@@ -16,4 +16,3 @@ pkgbase = kdsoap-git
 	sha256sums = SKIP
 
 pkgname = kdsoap-git
-
