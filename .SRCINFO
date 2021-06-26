@@ -1,0 +1,17 @@
+pkgbase = openctm-tools
+	pkgdesc = Open Compressed Triangle Mesh file format
+	pkgver = 1.0.3
+	pkgrel = 1
+	epoch = 2
+	url = https://sourceforge.net/projects/openctm
+	arch = x86_64
+	license = zlib
+	depends = gtk2
+	depends = glu
+	depends = glut
+	source = openctm-tools-1.0.3::https://downloads.sourceforge.net/project/openctm/OpenCTM-1.0.3/OpenCTM-1.0.3-src.tar.bz2
+	source = OpenCTM-1.0.3.patch
+	sha512sums = fdfa08d19ecbfea99ba01aa2032e941ed6313394a96bd69f8984c2d2d079d836c616471d2bdf6f40175e75659f3ad0ba41502bc3d8224091472f40893ea8746e
+	sha512sums = 4e15479bc95e8b82977ca1adff2d6a4b4d81e99d83bc0b66933c035cd54fb97807d2a3ff9981cfca505f46b1c2027005199330b26da5494fa97ab022b4e4a0b3
+
+pkgname = openctm-tools
