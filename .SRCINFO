@@ -6,7 +6,6 @@ pkgbase = tisc-git
 	arch = x86_64
 	license = ISC
 	makedepends = git
-	makedepends = cmake
 	depends = glibc
 	provides = tisc
 	conflicts = tisc
