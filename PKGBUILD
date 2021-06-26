@@ -4,7 +4,7 @@
 # Contributor: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=easyeffects-git
-pkgver=5.0.1.r559.g037df92f
+pkgver=5.0.1.r567.g626190b3
 pkgrel=1
 pkgdesc='Audio Effects for Pipewire applications'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -19,7 +19,7 @@ optdepends=('calf: limiter, compressor exciter, bass enhancer and others'
             'yelp: in-app help')
 conflicts=("${pkgname%%-git}")
 provides=("${pkgname%%-git}")
-source=("${pkgname%%-git}::git+https://github.com/wwmm/pulseeffects.git#commit=037df92f256072ce5ae2bb92598c65c7cd25645b")
+source=("${pkgname%%-git}::git+https://github.com/wwmm/pulseeffects.git#branch=gtk4")
 sha512sums=('SKIP')
 
 pkgver() {

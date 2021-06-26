@@ -1,6 +1,6 @@
 pkgbase = easyeffects-git
 	pkgdesc = Audio Effects for Pipewire applications
-	pkgver = 5.0.1.r559.g037df92f
+	pkgver = 5.0.1.r567.g626190b3
 	pkgrel = 1
 	url = https://github.com/wwmm/pulseeffects
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgbase = easyeffects-git
 	optdepends = yelp: in-app help
 	provides = easyeffects
 	conflicts = easyeffects
-	source = easyeffects::git+https://github.com/wwmm/pulseeffects.git#commit=037df92f256072ce5ae2bb92598c65c7cd25645b
+	source = easyeffects::git+https://github.com/wwmm/pulseeffects.git#branch=gtk4
 	sha512sums = SKIP
 
 pkgname = easyeffects-git
