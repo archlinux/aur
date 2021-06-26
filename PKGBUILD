@@ -1,26 +1,33 @@
+# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 # Contributor: orhun <orhunparmaksiz@gmail.com>
 
 pkgname=faint-git
-pkgdesc="Extensible TUI fuzzy file explorer (git)"
-pkgver=1.0.r0.g531da62
+pkgdesc="Extensible TUI fuzzy file explorer"
+pkgver=1.2.0.r6.g84f6fd7
 pkgrel=1
-arch=('x86_64')
+arch=('any')
 url="https://github.com/salman-abedin/faint"
-license=('GPL2')
+license=('GPL')
 depends=('fzf')
-makedepends=('make' 'git')
-conflicts=("${pkgname%-git}")
+makedepends=('git')
 provides=("${pkgname%-git}")
-source=("git+$url")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
-  git describe --long --tags $(git rev-list --tags --max-count=1) | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$pkgname"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd "$pkgname"
+	sed -i 10d Makefile
 }
 
 package() {
-  cd "${pkgname%-git}"
-  make BIN_DIR="$pkgdir/usr/bin" install
-  install -Dm 644 "README.md" -t "$pkgdir/usr/share/doc/$pkgname"
+	cd "$pkgname"
+	make DIR_BIN="$pkgdir/usr/bin" install
+	install -Dm 644 faintrc -t "$pkgdir/etc/"
+	install -Dm 644 "README.md" -t "$pkgdir/usr/share/doc/$pkgname"
 }
