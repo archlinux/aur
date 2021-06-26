@@ -1,24 +1,24 @@
 pkgbase = disman-git
 	pkgdesc = Qt/C++ display management library by the KWinFT project (libkscreen fork)
-	pkgver = 0.522.80_r1794.gb5c1515
+	pkgver = 0.522.80_r1808.g431141e
 	pkgrel = 1
 	url = https://gitlab.com/kwinft/disman
 	arch = x86_64
 	license = LGPL
 	makedepends = git
-	makedepends = extra-cmake-modules-git
-	makedepends = kwayland-git
+	makedepends = extra-cmake-modules
+	makedepends = kwayland
 	makedepends = libxcb
 	makedepends = wrapland-git
-	depends = kcoreaddons-git
+	depends = kcoreaddons
 	depends = qt5-x11extras
 	optdepends = libxcb: for the X11 backend plugin
 	optdepends = wrapland-git: for the KWinFT and wlroots backend plugins
-	optdepends = kwayland-git: for the KDE output-management backend plugin
+	optdepends = kwayland: for the KDE output-management backend plugin
 	provides = disman
 	conflicts = disman
+	conflicts = libkscreen
 	source = git+https://gitlab.com/kwinft/disman.git
 	sha512sums = SKIP
 
 pkgname = disman-git
-
