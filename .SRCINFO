@@ -1,6 +1,6 @@
 pkgbase = python-emcee
 	pkgdesc = Kick ass affine-invariant ensemble MCMC sampling
-	pkgver = 3.0.2
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = http://emcee.readthedocs.io/
 	arch = i686
@@ -10,12 +10,12 @@ pkgbase = python-emcee
 	checkdepends = python-scipy
 	checkdepends = python-h5py
 	makedepends = python-setuptools-scm
+	makedepends = python-wheel
 	depends = python-numpy
 	optdepends = python-tqdm: For progress bars
 	optdepends = python-h5py: For HDF5 backend
 	optdepends = python-emcee-doc: Documentations for emcee
-	source = https://files.pythonhosted.org/packages/source/e/emcee/emcee-3.0.2.tar.gz
-	md5sums = 24b3bea970457d3cd14d37c406df68d7
+	source = https://files.pythonhosted.org/packages/source/e/emcee/emcee-3.1.0.tar.gz
+	md5sums = 313d2be5d1dd59a56eacc069ff79a50a
 
 pkgname = python-emcee
-
