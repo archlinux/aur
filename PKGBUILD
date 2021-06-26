@@ -2,7 +2,7 @@
 
 pkgname=mc-tlauncher
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Minecraft TLauncher Client for the AUR <visit tlauncher.org>"
 arch=("any")
@@ -23,7 +23,7 @@ sha256sums=('95b04ac7b5c2e3b719156c0e2b4b1edcf8c08ddf04afededd4b352dcdbe46d33'
 
 prepare() {
 	unzip -o jar -d "${srcdir}/${pkgname}-extracted/"
-	"mv ${srcdir}/${pkgname}-extracted/TLauncher-2.8.jar" "${srcdir}/${pkgname}-extracted/tlauncher.jar"
+	mv "${srcdir}/${pkgname}-extracted/TLauncher-2.8.jar" "${srcdir}/${pkgname}-extracted/tlauncher.jar"
 }
 
 package() {
