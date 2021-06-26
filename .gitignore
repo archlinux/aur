@@ -1,0 +1,5 @@
+pkg/
+src/
+qjsonstruct-git/
+
+*.tar.zst
