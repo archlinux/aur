@@ -1,7 +1,7 @@
 pkgbase = doggo-git
 	pkgdesc = Command-line DNS Client for Humans. Written in Golang
 	pkgver = r95.6b42a5e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mr-karan/doggo
 	arch = any
 	license = GPL3

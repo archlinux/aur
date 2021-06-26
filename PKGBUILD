@@ -2,7 +2,7 @@
 pkgname=doggo-git
 _pkgname=doggo
 pkgver=r95.6b42a5e
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line DNS Client for Humans. Written in Golang" 
 arch=('any')
 url="https://github.com/mr-karan/doggo"
@@ -15,7 +15,7 @@ source=(git+https://github.com/mr-karan/doggo.git)
 md5sums=('SKIP')
 build() {
 	cd "${srcdir}"/"${_pkgname}"
-	make
+	make CLI_BIN=./bin/doggo.bin
 }
 
 pkgver() {
