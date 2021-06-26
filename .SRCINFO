@@ -1,6 +1,6 @@
 pkgbase = linux-g14
 	pkgdesc = Linux
-	pkgver = 5.12.11.arch1
+	pkgver = 5.12.12.arch1
 	pkgrel = 1
 	url = https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/
 	arch = x86_64
@@ -16,10 +16,9 @@ pkgbase = linux-g14
 	makedepends = git
 	makedepends = gcc>=11.0
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.12.11-arch1
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.12.12-arch1
 	source = config
 	source = choose-gcc-optimization.sh
-	source = sys-kernel_arch-sources-g14_files_0001-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch
 	source = sys-kernel_arch-sources-g14_files-0003-flow-x13-sound.patch
 	source = sys-kernel_arch-sources-g14_files-0004-5.8+--more-uarches-for-kernel.patch::https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-5.8+.patch
 	source = sys-kernel_arch-sources-g14_files-0005-lru-multi-generational.patch
@@ -33,7 +32,6 @@ pkgbase = linux-g14
 	sha256sums = SKIP
 	sha256sums = 1c48dc71e8dabd48e538b2284ab3b9e2a768e7d80c2c74e552dc1d93239370e2
 	sha256sums = 1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee
-	sha256sums = d9f5742fed4406396698897aa042d4d5fdbfd7c51add7483a777f9ab41901aac
 	sha256sums = 4a9e44dfbc7e9574ae86cf53a896b6c67f03b224e90e18982dfb0e4ba02a6c1b
 	sha256sums = fa6cee9527d8e963d3398085d1862edc509a52e4540baec463edb8a9dd95bee0
 	sha256sums = b9e4b11f6ca413fa7fcd1d810215bf3a36e69eedc4570f4209f7c1957083b2f3

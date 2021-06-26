@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=5.12.11.arch1
+pkgver=5.12.12.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -18,10 +18,10 @@ options=('!strip')
 _srcname=archlinux-linux
 _fedora_kernel_commit_id=19ba47dedb21773e0338321928a8580e214409fb
 source=(
-	"$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
+	"$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
 	config         # the main kernel config file
   "choose-gcc-optimization.sh"
-	"sys-kernel_arch-sources-g14_files_0001-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch"
+	#"sys-kernel_arch-sources-g14_files_0001-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch"
 	#"sys-kernel_arch-sources-g14_files-0002-acpi_unused.patch"
   "sys-kernel_arch-sources-g14_files-0003-flow-x13-sound.patch"
 	"sys-kernel_arch-sources-g14_files-0004-5.8+--more-uarches-for-kernel.patch"::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-5.8+.patch"
@@ -48,7 +48,6 @@ validpgpkeys=(
 sha256sums=('SKIP'
             '1c48dc71e8dabd48e538b2284ab3b9e2a768e7d80c2c74e552dc1d93239370e2'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
-            'd9f5742fed4406396698897aa042d4d5fdbfd7c51add7483a777f9ab41901aac'
             '4a9e44dfbc7e9574ae86cf53a896b6c67f03b224e90e18982dfb0e4ba02a6c1b'
             'fa6cee9527d8e963d3398085d1862edc509a52e4540baec463edb8a9dd95bee0'
             'b9e4b11f6ca413fa7fcd1d810215bf3a36e69eedc4570f4209f7c1957083b2f3'
