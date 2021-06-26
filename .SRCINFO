@@ -1,6 +1,6 @@
 pkgbase = fluffychat-bin
 	pkgdesc = Chat with your friends
-	pkgver = 0.32.2
+	pkgver = 0.33.0
 	pkgrel = 1
 	url = https://fluffychat.im/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = fluffychat-bin
 	depends = xdg-user-dirs
 	provides = fluffychat
 	conflicts = fluffychat
-	source = fluffychat-0.32.2.tar.gz::https://gitlab.com/api/v4/projects/16112282/packages/generic/fluffychat/0.32.2/fluffychat-linux-x86.tar.gz
-	sha256sums = 131b3438a78349751f4f3f9e816b3345fa3615e4d6ff339eaff3c2bd4925fa6f
+	source = fluffychat-0.33.0.tar.gz::https://gitlab.com/api/v4/projects/16112282/packages/generic/fluffychat/0.33.0/fluffychat-linux-x86.tar.gz
+	sha256sums = 1efe6beb9b557e05dc250d2ce9f2fd39bdc759210914932cdb2660af1cbe0dde
 
 pkgname = fluffychat-bin
