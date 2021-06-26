@@ -1,0 +1,39 @@
+#!/sbin/openrc-run 
+
+# The order doesn't matter.
+
+# Execute this program at start.
+command="[absolute_path_to_command]"
+# Because every distro can change the bindir, is a good idea specify the system value of bindir.
+command=@bindir@/[command]
+
+# Execute the above program with this arguments.
+command_args="[args]"
+
+# Create the PID file (for statsu function) in this absolute path.
+pidfile="[absolute_path_to_PID]"
+# Since OpenRC service names must be unique, a value of
+pidfile="/var/run/${RC_SVCNAME}.pid"
+
+
+# If the daemon runs in the foreground by default but has options to background itself and to create a pidfile, then you'll also need specifie this.
+# Usually the argument is; --daemon but can change.
+command_args_background="[args]"
+
+# Programs name
+name=[name]
+
+# Dependencies, are specified by others services
+depend() {
+	# NET; They are not satisfied by the loopback interface, so "need net" requires some other interface to be up.
+	need net
+	use dns logger netmount
+}
+
+# If the program dont create the PID you can specify to OpenRC for create it.
+command_background=true
+
+# If your daemon doesn't know how to change its own user or group, then you can tell start-stop-daemon to launch it as an unprivileged user with
+command_user="user:group"
+
+

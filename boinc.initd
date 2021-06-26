@@ -1,0 +1,20 @@
+#!/sbin/openrc-run 
+
+command="/usr/bin/boinc"
+
+command_args="--allow_remote_gui_rpc --redirectio --dir /var/lib/bonc"
+pidfile="/var/run/${RC_SVCNAME}.pid"
+command_args_background="--daemon"
+
+name=boinc
+
+depend() {
+	need net
+	use dns logger netmount
+}
+
+command_background=true
+
+command_user="boinc:boinc"
+
+
