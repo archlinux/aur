@@ -1,0 +1,16 @@
+pkgbase = rsstail-go
+	pkgdesc = A functional subset of rsstail implemented in Go
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitea.com/vimacs/rsstail-go
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	conflicts = rsstail
+	source = rsstail-go-1.0.tar.xz::https://gitea.com/attachments/edaa6e02-4901-4908-825c-456260b0d525
+	sha256sums = b27d8728aa71d6415d259cc8ac20ecf45cb2b5c589e656fef058fc893fde1105
+
+pkgname = rsstail-go
