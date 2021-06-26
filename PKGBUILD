@@ -1,5 +1,5 @@
 pkgname=mkunified-git
-pkgver=0.r5.gb77ee61
+pkgver=0.r5.g1a5763a
 pkgrel=1
 pkgdesc="Unified kernel image generation utility which supports initrd generation using mkinitcpio"
 arch=(any)
