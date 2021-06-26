@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _cranname=colorspace
-_cranver=2.0-1
+_cranver=2.0-2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(BSD)
 depends=('r>=3.0.0')
 optdepends=(r-kernsmooth r-kernlab r-mvtnorm r-vcd r-shiny r-shinyjs r-ggplot2 r-dplyr r-scales r-png r-jpeg r-knitr r-rmarkdown r-rcolorbrewer r-rcartocolor r-scico r-viridis r-wesanderson)
 source=("${pkgname}-${pkgver}.tar.gz::https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('f82fdde36058678d1bd0f410eb45a5874aa28d74e2de30399f28b070a284425e')
+sha256sums=('b891cd2ec129ed5f116429345947bcaadc33969758a108521eb0cf36bd12183a')
 
 build() {
   cd "${srcdir}"
