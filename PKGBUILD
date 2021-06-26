@@ -2,7 +2,7 @@
 
 pkgname=python-dmsh
 _name=dmsh
-pkgver=0.2.16
+pkgver=0.2.17
 pkgrel=1
 pkgdesc="Simple mesh generator inspired by distmesh."
 arch=('x86_64')
@@ -13,10 +13,11 @@ makedepends=('python'
 	'python-setuptools')
 depends=('python-meshplex' 'python-numpy' 'python-scipy')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-b2sums=('33e28c8bdd4ea57421fcf0e8c9d02943afc8be4a701e7d237ca348d287da589261b8bc587c6f975602bad41d19409b56435f7817c3b3a0f81c45ec408c47380f')
+b2sums=('36fd09ebe1f3d852c83a47ca9d03a563877029f8a137d9b6620550a6888ec6c6f1a0ac81ce8797f82bfaa37904f3c93dab8e40b1faae72d1613759904b5e6db4')
 
 build() {
 	cd "$srcdir/$_name-$pkgver"
+	export PYTHONHASHSEED=0
 	python -c "from setuptools import setup; setup()" build
 }
 
