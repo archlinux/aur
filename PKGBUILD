@@ -19,7 +19,7 @@ pkgver() {
 }
 
 package() {
-	echo "  -> Installing tpm..."
+  echo "  -> Installing tpm..."
   install -dDm 755 "$pkgdir/usr/share/$pkgname"
   cp -r $_repo/* "$pkgdir/usr/share/$pkgname"
 }
