@@ -1,38 +1,31 @@
-diff --git a/openfly.fast.symbols.dict.yaml b/openfly.fast.symbols.dict.yaml
-index 20430af..1609d6f 100644
---- a/openfly.fast.symbols.dict.yaml
-+++ b/openfly.fast.symbols.dict.yaml
-@@ -15,7 +15,7 @@ sort: by_weight
- use_preset_vocabulary: false
- ...
- ：	;
--；	;
-+；	;;
- ！	;a
- 》	;b
- ”	;c
-diff --git a/openfly.schema.yaml b/openfly.schema.yaml
-index c422969..f27c512 100644
---- a/openfly.schema.yaml
-+++ b/openfly.schema.yaml
-@@ -27,7 +27,7 @@ switches:
+diff --git a/lua/openfly_shortcut_processor.lua b/lua/openfly_shortcut_processor.lua
+index 7975b43..a49cb40 100644
+--- a/lua/openfly_shortcut_processor.lua
++++ b/lua/openfly_shortcut_processor.lua
+@@ -26,6 +26,8 @@ local command = {
+     ["ogj"] = {'open "' .. user_path .. '"'},
+     ["ojs"] = {'open -a Calculator.app'},
+     ["owd"] = {'open -a "Microsoft Word.app"'},
++  },
++  ["Linux"] = {
+   }
+ }
+ local option = {
+diff --git a/lua/openfly_shortcut_translator.lua b/lua/openfly_shortcut_translator.lua
+index 3b6fc37..62d00a9 100644
+--- a/lua/openfly_shortcut_translator.lua
++++ b/lua/openfly_shortcut_translator.lua
+@@ -23,6 +23,10 @@ local labels = {
+     ["ojf"] = {"[简繁切换]"},
+     ["ojs"] = {"[计算器]"},
+     ["owd"] = {"[Word]"},
++  },
++  ["Linux"] = {
++    ["oei"] = {"[启用二重简码]", "[关闭]"},
++    ["ojf"] = {"[简繁切换]"},
+   }
+ }
  
- engine:
-   processors:
--    - lua_processor@openfly_shortcut_processor
-+    # - lua_processor@openfly_shortcut_processor
-     - ascii_composer
-     - recognizer
-     - key_binder
-@@ -47,7 +47,7 @@ engine:
-     - table_translator
-     - lua_translator@openfly_date_translator
-     - lua_translator@openfly_time_translator
--    - lua_translator@openfly_shortcut_translator
-+    # - lua_translator@openfly_shortcut_translator
-     - reverse_lookup_translator
-     - history_translator@history
-   filters:
 diff --git a/openfly.user.top.dict.yaml b/openfly.user.top.dict.yaml
 index 8677772..88a75ea 100644
 --- a/openfly.user.top.dict.yaml
