@@ -68,7 +68,7 @@ _subarch=36
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck-uksm
-pkgver=5.12.12
+pkgver=5.12.13
 pkgrel=1
 _ckpatchversion=1
 _ckpatch="patch-5.12-ck${_ckpatchversion}"
@@ -94,12 +94,14 @@ source=(
   0006-x86-setup-remove-CONFIG_X86_RESERVE_LOW-and-reservel.patch
   0007-x86-crash-remove-crash_reserve_low_1M.patch
   0008-UKSM.patch
+  0009-bbr2.patch
+  0010-btrfs.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('f9aef3da2f65916cc30da9a066217d3379036e6a32a732224da7fee86c80810315484f48132b50b8cf8eb5e0b055ad1b7bbe63dadd0eb54b0b0626bc57c20963'
+b2sums=('3a959a1779a8c19f59346e4b5cb6f9af84fdca993b248b2ea7c9fac6cd4c1f73d7a268a0f287143bdd4924711cf54223669a4e706327a40776ad0b9683b505de'
         'SKIP'
         'SKIP'
         '30d1df754608bb423cbc99c2097ad521baa091b9a3b39df4bd5c2d50c57eec54d8fa0e4a4a04b847c3d1b87ba682cadc8db45fabeefdc9ad7caaf8e77b96e41a'
@@ -111,7 +113,9 @@ b2sums=('f9aef3da2f65916cc30da9a066217d3379036e6a32a732224da7fee86c80810315484f4
         '1810832172e1b006a5471d8e317573343884feed9abc9e7380a32d83c958b0e6aa68adf9a647c9b7b714783997591f5d80e754c6e7357279661eee998f22864c'
         '4e7cb958f95d99bba9810e675d4f1b0b3c171f78e9fe96ff9d265f792f4ceb1367f2f4d238f36b5ca1c395e14abdabbf0f8ce2dc07c4fe567d822a8b629dfa05'
         '2251f8bf84e141b4661f84cc2ce7b21783ac0a349b2651477dfcbc5383b796b2e588d85ee411398b15c820cb3672256be8ed281c8bccfad252c9dd5b0e1e0cd5'
-        '14f45171afc3b15488b40a05e58b352c5057da3a5782e13527392f7750d8e45a8db54f9b50b218fedb8bf679de3b4e5d78e230a44f7b1aa482f7b3aa831bd641')
+        '14f45171afc3b15488b40a05e58b352c5057da3a5782e13527392f7750d8e45a8db54f9b50b218fedb8bf679de3b4e5d78e230a44f7b1aa482f7b3aa831bd641'
+        '0c5f2e21e27aee6c8d8eaa07daa111ff2687756413f8a909cf03acc8f836367c6b27050966f9b7bf1521ad11b84fe94fb42d70c33693c80a674ef223cf2cfc00'
+        '705a8f2037eef3afdd0f2a7648cc8d00bfc03112385b44a8907182812b6aed075519a9236909c0e3ba09df887381dd76cb01c601e0df05119136f7318587a416')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
